@@ -32,6 +32,7 @@ const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New 
         var t = localStorage.getItem('tema');
         if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'escuro' : 'classico';
         document.documentElement.dataset.theme = t;
+        if (localStorage.getItem('sidebar') === 'collapsed') document.documentElement.classList.add('sidebar-collapsed');
       } catch (e) { document.documentElement.dataset.theme = 'classico'; }
     })();
   </script>
@@ -46,8 +47,10 @@ const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New 
 
   <div class="shell">
     <div class="scrim" data-drawer-close></div>
+    <button class="btn sidebar-expand" id="sidebar-expand" aria-label="Expandir menu" title="Expandir menu">» Menu</button>
     <aside class="sidebar" id="nav" data-pagefind-ignore>
       <button class="btn drawer-close" aria-label="Fechar navegação" data-drawer-close>✕</button>
+      <button class="btn sidebar-collapse" id="sidebar-collapse" aria-label="Recolher menu" title="Recolher menu">«</button>
       <a class="brand" href={url('')}>New RPG System <span class="d6">D6</span>
         <small>do mortal ao semideus</small></a>
 
@@ -95,6 +98,14 @@ const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New 
     document.querySelector('.drawer-toggle')?.addEventListener('click', open);
     document.querySelectorAll('[data-drawer-close]').forEach((el) => el.addEventListener('click', close));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+    // recolher/expandir menu (desktop)
+    const setSidebar = (collapsed: boolean) => {
+      document.documentElement.classList.toggle('sidebar-collapsed', collapsed);
+      try { localStorage.setItem('sidebar', collapsed ? 'collapsed' : 'open'); } catch {}
+    };
+    document.getElementById('sidebar-collapse')?.addEventListener('click', () => setSidebar(true));
+    document.getElementById('sidebar-expand')?.addEventListener('click', () => setSidebar(false));
 
     // tema
     const setTema = (t: string) => { document.documentElement.dataset.theme = t; try { localStorage.setItem('tema', t); } catch {} markTema(t); };

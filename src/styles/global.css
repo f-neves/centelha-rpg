@@ -113,6 +113,17 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 /* topbar (mobile) */
 .topbar { display: none; }
 
+/* recolher/expandir o menu (desktop) */
+.sidebar-collapse, .sidebar-expand { display: none; }
+@media (min-width: 901px) {
+  .sidebar-collapse { display: inline-flex; position: absolute; top: .7rem; right: .7rem; padding: .15rem .5rem; line-height: 1; }
+  .sidebar-expand { position: fixed; top: .7rem; left: .7rem; z-index: 50; padding: .2rem .6rem; line-height: 1; box-shadow: 0 2px 8px var(--shadow); }
+  html.sidebar-collapsed .shell { grid-template-columns: 1fr; }
+  html.sidebar-collapsed .sidebar { display: none; }
+  html.sidebar-collapsed .content { padding-left: clamp(3rem, 6vw, 5rem); }
+  html.sidebar-collapsed .sidebar-expand { display: inline-flex; }
+}
+
 /* ---------- nav ---------- */
 .brand { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); font-size: 1.25rem; text-decoration: none; display: block; line-height: 1.1; }
 .brand .d6 { color: var(--accent-strong); }
