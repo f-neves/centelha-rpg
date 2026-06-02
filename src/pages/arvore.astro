@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+import { loadData, TRILHA_LABEL } from '../lib/data';
+const d = await loadData();
+---
+<Base title="Árvores de Técnicas" largura="wide" descricao="Os grafos de pré-requisitos de cada Caminho.">
+  <h1>Árvores de Técnicas</h1>
+  <p class="lead">Cada Caminho é uma árvore: as Técnicas se destravam por pré-requisitos que ramificam e cruzam entre atributos. Escolha um Caminho para explorar o grafo interativo e o custo em XP de cada cadeia.</p>
+  {Object.entries(d.arvoreCaminhos).map(([trilha, porAttr]) => (
+    <section>
+      <h2>Trilha {TRILHA_LABEL[trilha]}</h2>
+      <div class="grid-cards">
+        {Object.entries(porAttr).flatMap(([, lista]) => (lista as any[])).map((c: any) => (
+          <a class="panel" href={url(`caminhos/${c.id}`)} style="text-decoration:none;color:inherit">
+            <div class="cinzel" style="color:var(--accent)">{c.nome}</div>
+            <div class="muted" style="font-size:.82rem">{d.A[c.atributo.id].nome} · {d.porCaminho[c.id]?.length ?? 0} Técnicas</div>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+</Base>

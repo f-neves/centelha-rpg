@@ -1,0 +1,26 @@
+[
+  {
+    "id": "compaixao",
+    "nome": "Compaixão",
+    "resiste": "a crueldade",
+    "descricao": "Empatia e misericórdia; o impulso de poupar e cuidar."
+  },
+  {
+    "id": "conviccao",
+    "nome": "Convicção",
+    "resiste": "a dor, a tortura e o desânimo",
+    "descricao": "Determinação inabalável diante do sofrimento."
+  },
+  {
+    "id": "temperanca",
+    "nome": "Temperança",
+    "resiste": "a tentação e a provocação",
+    "descricao": "Disciplina e clareza; autocontrole sob pressão."
+  },
+  {
+    "id": "valor",
+    "nome": "Valor",
+    "resiste": "o medo e a intimidação",
+    "descricao": "Bravura para encarar o perigo."
+  }
+]

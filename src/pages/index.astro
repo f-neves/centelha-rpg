@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import { url, NAV, FERRAMENTAS } from '../lib/site';
+import { getCollection } from 'astro:content';
+const nTec = (await getCollection('tecnicas')).length;
+const nCam = (await getCollection('caminhos')).length;
+const nArt = (await getCollection('artes')).length;
+const capitulos = NAV.filter((n) => n.numeral);
+---
+<Base title="Início" largura="wide">
+  <header style="text-align:center;margin:1.5rem 0 2.5rem">
+    <p class="muted cinzel" style="letter-spacing:.4em;text-transform:uppercase;font-size:.8rem">Sistema de Interpretação</p>
+    <h1 style="font-size:clamp(2.2rem,6vw,3.4rem);margin:.2em 0">New RPG System <span style="color:var(--accent-strong)">D6</span></h1>
+    <p class="tag-orn">❖ ❖ ❖</p>
+    <p class="lead" style="max-width:34rem;margin:.5rem auto 0;font-style:italic">Do mortal ao semideus, um dado de cada vez.</p>
+    <p style="max-width:40rem;margin:1rem auto 0" class="muted">
+      Um sistema de pool de d6 que equilibra realismo tático e agilidade cinematográfica —
+      onde a perícia, a vontade e a centelha de poder decidem o destino.
+    </p>
+    <div class="btn-row" style="justify-content:center;margin-top:1.4rem">
+      <a class="btn primary" href={url('regras/coracao-do-sistema')}>Começar a ler</a>
+      <a class="btn" href={url('ficha')}>Criar personagem</a>
+      <a class="btn" href={url('caminhos')}>Explorar Caminhos</a>
+    </div>
+  </header>
+
+  <section style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem">
+    {[['Caminhos', nCam], ['Técnicas', nTec], ['Artes', nArt]].map(([k, v]) => (
+      <div class="panel" style="text-align:center;min-width:8rem">
+        <div class="cinzel" style="font-size:2rem;color:var(--accent)">{v}</div>
+        <div class="muted">{k}</div>
+      </div>
+    ))}
+  </section>
+
+  <h2>Os Capítulos</h2>
+  <div class="grid-cards">
+    {capitulos.map((c) => (
+      <a class="panel" href={url(c.slug)} style="text-decoration:none;color:inherit;display:block">
+        <div class="cinzel" style="color:var(--accent);font-size:.8rem">Capítulo {c.numeral}</div>
+        <div class="cinzel" style="font-size:1.1rem;margin-top:.2rem">{c.titulo}</div>
+      </a>
+    ))}
+  </div>
+
+  <h2>Ferramentas</h2>
+  <div class="grid-cards">
+    {FERRAMENTAS.map((f) => (
+      <a class="panel" href={url(f.slug)} style="text-decoration:none;color:inherit;display:block">
+        <div class="cinzel" style="font-size:1.05rem;color:var(--accent)">{f.titulo}</div>
+      </a>
+    ))}
+  </div>
+
+  <p class="muted" style="margin-top:2rem;text-align:center">
+    Edição viva e jogável de ponta a ponta. Tecle <kbd>/</kbd> para buscar qualquer regra.
+  </p>
+</Base>

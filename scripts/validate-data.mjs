@@ -1,0 +1,54 @@
+// Portão de integridade dos dados — roda ANTES do astro build.
+// Falha com mensagem clara em: id duplicado, referência órfã (prereq/caminho/atributo),
+// campo obrigatório faltando ou tipo inválido. Sem isso, o site não builda.
+import fs from 'node:fs';
+import path from 'node:path';
+import { z } from 'zod';
+
+const DIR = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..', 'src', 'data');
+const read = (f) => JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8'));
+const erros = [];
+const fail = (msg) => erros.push(msg);
+
+const custo = z.object({ energia: z.number().int().nonnegative().optional(), mana: z.number().int().nonnegative().optional(), vontade: z.number().int().nonnegative().optional() });
+const S = {
+  atributos: z.object({ id: z.string(), nome: z.string(), grupo: z.enum(['fisico', 'social', 'mental']), descricao: z.string() }),
+  habilidades: z.object({ id: z.string(), nome: z.string(), grupo: z.enum(['combate', 'fisica', 'social', 'saber', 'tecnica']), descricao: z.string() }),
+  virtudes: z.object({ id: z.string(), nome: z.string(), resiste: z.string(), descricao: z.string() }),
+  caminhos: z.object({ id: z.string(), nome: z.string(), trilha: z.enum(['corpo', 'voz', 'mente']), atributo: z.string(), habilidade_ancora: z.string().optional(), descricao: z.string() }),
+  tecnicas: z.object({ id: z.string(), nome: z.string(), caminho: z.string(), atributo: z.string(), banda: z.number().int().min(1).max(5), tipo: z.enum(['passiva', 'ativa', 'reflexiva']), custo, prereq: z.array(z.string()), aliases: z.array(z.string()), texto: z.string(), pendente: z.boolean() }),
+  artes: z.object({ id: z.string(), nome: z.string(), categoria: z.enum(['elemental', 'universal']), atributo_conjuracao: z.string(), niveis: z.array(z.object({ nivel: z.number().int().min(1).max(5), nome: z.string(), efeito: z.string(), custo: z.object({ mana: z.number().int().min(1).max(5) }) })).length(5), aliases: z.array(z.string()), pendente: z.boolean() }),
+  glossario: z.object({ id: z.string(), termo: z.string(), aliases: z.array(z.string()), definicao: z.string() }),
+};
+
+const data = {};
+for (const k of Object.keys(S)) {
+  const arr = read(`${k}.json`);
+  if (!Array.isArray(arr)) { fail(`${k}.json: deve ser um array`); continue; }
+  const ids = new Set();
+  arr.forEach((item, i) => {
+    const r = S[k].safeParse(item);
+    if (!r.success) fail(`${k}[${i}] (${item.id ?? '?'}): ${r.error.issues.map((e) => `${e.path.join('.')} ${e.message}`).join('; ')}`);
+    if (item.id != null) { if (ids.has(item.id)) fail(`${k}: id duplicado "${item.id}"`); ids.add(item.id); }
+  });
+  data[k] = arr;
+}
+
+// integridade referencial
+const setOf = (k) => new Set((data[k] || []).map((x) => x.id));
+const A = setOf('atributos'), C = setOf('caminhos'), T = setOf('tecnicas');
+for (const c of data.caminhos || []) if (!A.has(c.atributo)) fail(`caminho "${c.id}": atributo inexistente "${c.atributo}"`);
+for (const t of data.tecnicas || []) {
+  if (!C.has(t.caminho)) fail(`técnica "${t.id}": caminho inexistente "${t.caminho}"`);
+  if (!A.has(t.atributo)) fail(`técnica "${t.id}": atributo inexistente "${t.atributo}"`);
+  for (const p of t.prereq) if (!T.has(p)) fail(`técnica "${t.id}": prereq órfão "${p}"`);
+}
+for (const a of data.artes || []) if (!A.has(a.atributo_conjuracao)) fail(`arte "${a.id}": atributo_conjuracao inexistente "${a.atributo_conjuracao}"`);
+
+if (erros.length) {
+  console.error(`\n✘ Validação de dados FALHOU (${erros.length} erro(s)):`);
+  for (const e of erros) console.error('  • ' + e);
+  console.error('');
+  process.exit(1);
+}
+console.log(`✓ Dados válidos: ${data.tecnicas.length} técnicas, ${data.caminhos.length} caminhos, ${data.artes.length} artes — referências íntegras.`);

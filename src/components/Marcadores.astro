@@ -1,0 +1,27 @@
+---
+// Gerencia os botões [data-bm] em todo o site (estado em localStorage, por aparelho).
+---
+<script>
+  const KEY = 'centelha:marcadores';
+  const load = (): string[] => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } };
+  const save = (a: string[]) => localStorage.setItem(KEY, JSON.stringify([...new Set(a)]));
+  let set = new Set(load());
+
+  const reflect = () => document.querySelectorAll<HTMLElement>('[data-bm]').forEach((b) => {
+    const on = set.has(b.dataset.bm!);
+    b.setAttribute('aria-pressed', String(on));
+    if (b.textContent === '☆' || b.textContent === '★') b.textContent = on ? '★' : '☆';
+  });
+
+  document.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLElement>('[data-bm]');
+    if (!b) return;
+    const id = b.dataset.bm!;
+    set.has(id) ? set.delete(id) : set.add(id);
+    save([...set]);
+    reflect();
+    document.dispatchEvent(new CustomEvent('marcadores:change', { detail: [...set] }));
+  });
+  reflect();
+  (window as any).marcadores = { get: () => [...set] };
+</script>

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "briga",
+    "nome": "Briga",
+    "grupo": "combate",
+    "descricao": "Combate corpo-a-corpo desarmado: socos, agarrões, projeções."
+  },
+  {
+    "id": "armas-de-corte",
+    "nome": "Armas de Corte",
+    "grupo": "combate",
+    "descricao": "Espadas, machados, adagas — lâminas que retalham ou perfuram."
+  },
+  {
+    "id": "armas-de-impacto",
+    "nome": "Armas de Impacto",
+    "grupo": "combate",
+    "descricao": "Maças, martelos, bastões — golpes contundentes."
+  },
+  {
+    "id": "armas-de-haste",
+    "nome": "Armas de Haste",
+    "grupo": "combate",
+    "descricao": "Lanças, alabardas — alcance e controle de distância."
+  },
+  {
+    "id": "armas-a-distancia",
+    "nome": "Armas à Distância",
+    "grupo": "combate",
+    "descricao": "Arcos, bestas e armas de arremesso."
+  },
+  {
+    "id": "esquiva",
+    "nome": "Esquiva",
+    "grupo": "combate",
+    "descricao": "Desviar-se de golpes e perigos pela mobilidade."
+  },
+  {
+    "id": "escudos",
+    "nome": "Escudos",
+    "grupo": "combate",
+    "descricao": "Bloquear com escudo e usá-lo ofensivamente."
+  },
+  {
+    "id": "atletismo",
+    "nome": "Atletismo",
+    "grupo": "fisica",
+    "descricao": "Correr, saltar, escalar, nadar — proeza física geral."
+  },
+  {
+    "id": "resistencia",
+    "nome": "Resistência",
+    "grupo": "fisica",
+    "descricao": "Suportar fadiga, dor, privação e esforço prolongado."
+  },
+  {
+    "id": "furtividade",
+    "nome": "Furtividade",
+    "grupo": "fisica",
+    "descricao": "Mover-se sem ser visto nem ouvido."
+  },
+  {
+    "id": "prontidao",
+    "nome": "Prontidão",
+    "grupo": "fisica",
+    "descricao": "Estar alerta; notar perigo e reagir a tempo."
+  },
+  {
+    "id": "sobrevivencia",
+    "nome": "Sobrevivência",
+    "grupo": "fisica",
+    "descricao": "Caçar, rastrear, orientar-se e durar no ermo."
+  },
+  {
+    "id": "labia",
+    "nome": "Lábia",
+    "grupo": "social",
+    "descricao": "Persuadir, charmar e negociar com palavras."
+  },
+  {
+    "id": "oratoria",
+    "nome": "Oratória",
+    "grupo": "social",
+    "descricao": "Discursar e mover plateias."
+  },
+  {
+    "id": "etiqueta",
+    "nome": "Etiqueta",
+    "grupo": "social",
+    "descricao": "Conduzir-se conforme costumes e protocolos."
+  },
+  {
+    "id": "empatia",
+    "nome": "Empatia",
+    "grupo": "social",
+    "descricao": "Ler emoções e intenções alheias."
+  },
+  {
+    "id": "intimidacao",
+    "nome": "Intimidação",
+    "grupo": "social",
+    "descricao": "Dobrar pela ameaça, pela força ou pelo medo."
+  },
+  {
+    "id": "manha",
+    "nome": "Manha",
+    "grupo": "social",
+    "descricao": "Esperteza de rua, blefe e malandragem."
+  },
+  {
+    "id": "investigacao",
+    "nome": "Investigação",
+    "grupo": "saber",
+    "descricao": "Achar pistas, conectar fatos, reconstituir o que houve."
+  },
+  {
+    "id": "conhecimentos",
+    "nome": "Conhecimentos",
+    "grupo": "saber",
+    "descricao": "Saber acadêmico amplo: história, geografia, lore."
+  },
+  {
+    "id": "ocultismo",
+    "nome": "Ocultismo",
+    "grupo": "saber",
+    "descricao": "O sobrenatural, a feitiçaria e seus símbolos."
+  },
+  {
+    "id": "medicina",
+    "nome": "Medicina",
+    "grupo": "saber",
+    "descricao": "Tratar feridas, doenças e venenos."
+  },
+  {
+    "id": "ciencias",
+    "nome": "Ciências",
+    "grupo": "saber",
+    "descricao": "Lógica, matemática e o estudo do mundo natural."
+  },
+  {
+    "id": "craft",
+    "nome": "Craft",
+    "grupo": "tecnica",
+    "descricao": "Construir e consertar — o ofício das mãos."
+  },
+  {
+    "id": "ladinagem",
+    "nome": "Ladinagem",
+    "grupo": "tecnica",
+    "descricao": "Fechaduras, armadilhas, prestidigitação e furto."
+  },
+  {
+    "id": "cavalgar",
+    "nome": "Cavalgar",
+    "grupo": "tecnica",
+    "descricao": "Conduzir montarias e veículos."
+  },
+  {
+    "id": "performance",
+    "nome": "Performance",
+    "grupo": "tecnica",
+    "descricao": "Música, atuação e artes que encantam."
+  },
+  {
+    "id": "tatica",
+    "nome": "Tática",
+    "grupo": "tecnica",
+    "descricao": "Ler o campo de batalha e comandar movimentos."
+  },
+  {
+    "id": "politica",
+    "nome": "Política",
+    "grupo": "tecnica",
+    "descricao": "Intriga, burocracia e jogo de poder."
+  },
+  {
+    "id": "comercio",
+    "nome": "Comércio",
+    "grupo": "tecnica",
+    "descricao": "Avaliar, barganhar e mover bens e dinheiro."
+  }
+]

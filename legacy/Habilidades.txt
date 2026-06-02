@@ -1,0 +1,121 @@
+*HABILIDADES PRIMÁRIAS*
+-Combate
+Arquearia
+Armas de Corte
+Armas de Haste
+Armas de Impacto
+Armas Perfurantes
+Arremesso
+Briga
+Esquiva
+Escudos
+
+-Físicas / Mobilidade
+Atletismo
+Resistência
+Prontidão
+Furtividade
+Sobrevivência
+
+
+-Sociais / Mentais
+Investigação
+Conhecimentos
+Ocultismo
+Manha
+Oratória
+Etiqueta
+Negociação
+Lábia
+Empatia
+Integridade
+Intimidação
+Investigação
+Presença
+
+-Técnicas / Utilidade
+Medicina
+Ladinagem
+Craft
+
+
+*HABILIDADES SECUNDÁRIAS*
+-SOCIAIS
+Atuação
+Sedução
+Liderança
+Política
+Disfarce
+Intimidação
+Interrogatório
+
+
+-CONHECIMENTO
+Burocracia
+Herbologia
+História
+Religião
+Heráldica
+Astronomia
+Geografia
+Alquimia
+Arquitetura
+Direito
+Bestiário
+Estratégia
+Tática
+Genealogia
+Folclore
+
+-OFÍCIO / PROFISSÃO
+Ferraria
+Carpintaria
+Costura
+Culinária
+Joalheria
+Couraria
+Alvenaria
+Mineração
+Pesca
+Agricultura
+Navegação 
+Marcenaria
+Armadureiro
+Armeiro
+Escrivania
+Cartografia
+Veterinário
+Adestramento
+
+
+-EXPRESSÃO / CULTURA
+Tocar Instrumento
+Canto
+Dança
+Poesia
+Pintura
+Escultura
+Caligrafia
+Contação de Histórias
+
+
+-SUBTERFÚGIO / RUA
+Jogos
+Falsificação
+Prestidigitação
+Abrir Fechaduras
+Contrabando
+Apostar
+Roubo
+Ocultação
+Vigilância Urbana
+Cavalgar
+
+
+-INTERIOR / DISCIPLINA / ESPÍRITO
+Meditação
+Ritualismo
+Autocontrole
+Concentração
+Leitura Corporal
+Interpretação de Sonhos

@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+---
+<Base title="Meus Marcadores" descricao="As Técnicas, Artes e regras que você favoritou neste aparelho.">
+  <h1>Meus Marcadores</h1>
+  <p class="muted">Os favoritos ficam salvos <strong>apenas neste aparelho/navegador</strong> (não sincronizam entre dispositivos).</p>
+  <div id="mk-out"></div>
+</Base>
+
+<script>
+  import tecnicas from '../data/tecnicas.json';
+  import artes from '../data/artes.json';
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const TEC: Record<string, any> = Object.fromEntries((tecnicas as any[]).map((t) => [t.id, t]));
+  const ART: Record<string, any> = Object.fromEntries((artes as any[]).map((a) => [a.id, a]));
+
+  function render() {
+    const ids: string[] = (window as any).marcadores?.get?.() ?? JSON.parse(localStorage.getItem('centelha:marcadores') || '[]');
+    const out = document.getElementById('mk-out')!;
+    if (!ids.length) { out.innerHTML = '<p class="muted">Nada marcado ainda. Clique no ☆ ao lado de uma Técnica ou Arte.</p>'; return; }
+    const tec = ids.filter((i) => i.startsWith('tecnica:')).map((i) => TEC[i.slice(8)]).filter(Boolean);
+    const art = ids.filter((i) => i.startsWith('arte:')).map((i) => ART[i.slice(5)]).filter(Boolean);
+    let h = '';
+    if (tec.length) h += '<h2>Técnicas</h2><ul class="mk-list">' + tec.map((t) =>
+      `<li><a href="${base}/caminhos/${t.caminho}#${t.id}">${t.nome}</a> <span class="muted">B${t.banda}</span>
+       <button class="rm" data-bm="tecnica:${t.id}" aria-label="Remover">★</button></li>`).join('') + '</ul>';
+    if (art.length) h += '<h2>Artes</h2><ul class="mk-list">' + art.map((a) =>
+      `<li><a href="${base}/arcano#${a.id}">${a.nome}</a> <span class="muted">${a.categoria}</span>
+       <button class="rm" data-bm="arte:${a.id}" aria-label="Remover">★</button></li>`).join('') + '</ul>';
+    out.innerHTML = h;
+  }
+  render();
+  document.addEventListener('marcadores:change', render);
+</script>
+
+<style>
+  .mk-list { list-style: none; padding: 0; }
+  .mk-list li { display: flex; align-items: center; gap: .5rem; padding: .4rem .2rem; border-bottom: 1px solid var(--rule); }
+  .mk-list li a { flex: 1; }
+  .mk-list .rm { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 1.1rem; }
+</style>

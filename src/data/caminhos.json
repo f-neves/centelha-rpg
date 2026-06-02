@@ -1,0 +1,386 @@
+[
+  {
+    "id": "punho-de-ferro",
+    "nome": "Punho de Ferro",
+    "trilha": "corpo",
+    "atributo": "forca",
+    "habilidade_ancora": "Briga / Impacto",
+    "descricao": "o poder que esmaga guardas, ossos e muralhas"
+  },
+  {
+    "id": "atlas",
+    "nome": "Atlas",
+    "trilha": "corpo",
+    "atributo": "forca",
+    "habilidade_ancora": "Atletismo",
+    "descricao": "erguer, arremessar e arrancar pesos descomunais"
+  },
+  {
+    "id": "quebra-muralhas",
+    "nome": "Quebra-Muralhas",
+    "trilha": "corpo",
+    "atributo": "forca",
+    "habilidade_ancora": "Armas de Impacto",
+    "descricao": "destruir estruturas e defesas"
+  },
+  {
+    "id": "agarrao-do-urso",
+    "nome": "Agarrão do Urso",
+    "trilha": "corpo",
+    "atributo": "forca",
+    "habilidade_ancora": "Briga",
+    "descricao": "agarrar, imobilizar, esmagar, arremessar"
+  },
+  {
+    "id": "sangue-fervente",
+    "nome": "Sangue Fervente",
+    "trilha": "corpo",
+    "atributo": "forca",
+    "habilidade_ancora": "Briga",
+    "descricao": "a ira que vira poder"
+  },
+  {
+    "id": "vento",
+    "nome": "Vento",
+    "trilha": "corpo",
+    "atributo": "destreza",
+    "habilidade_ancora": "Atletismo",
+    "descricao": "a graça que vira velocidade que vira voo"
+  },
+  {
+    "id": "gato",
+    "nome": "Gato",
+    "trilha": "corpo",
+    "atributo": "destreza",
+    "habilidade_ancora": "Atletismo",
+    "descricao": "acrobacia, equilíbrio, quedas, escalada"
+  },
+  {
+    "id": "mao-veloz",
+    "nome": "Mão Veloz",
+    "trilha": "corpo",
+    "atributo": "destreza",
+    "habilidade_ancora": "Ladinagem",
+    "descricao": "prestidigitação, desarmar, controle fino"
+  },
+  {
+    "id": "olho-de-aguia",
+    "nome": "Olho de Águia",
+    "trilha": "corpo",
+    "atributo": "destreza",
+    "habilidade_ancora": "Armas à Distância",
+    "descricao": "a flecha que nunca erra"
+  },
+  {
+    "id": "danca-da-lamina",
+    "nome": "Dança da Lâmina",
+    "trilha": "corpo",
+    "atributo": "destreza",
+    "habilidade_ancora": "Armas de Corte",
+    "descricao": "a esgrima que vira arte"
+  },
+  {
+    "id": "sombra",
+    "nome": "Sombra",
+    "trilha": "corpo",
+    "atributo": "destreza",
+    "habilidade_ancora": "Furtividade",
+    "descricao": "estar e não estar"
+  },
+  {
+    "id": "pele-de-pedra",
+    "nome": "Pele de Pedra",
+    "trilha": "corpo",
+    "atributo": "vigor",
+    "habilidade_ancora": "Resistência",
+    "descricao": "a carne que vira pedra que vira lenda"
+  },
+  {
+    "id": "coracao-incansavel",
+    "nome": "Coração Incansável",
+    "trilha": "corpo",
+    "atributo": "vigor",
+    "habilidade_ancora": "Resistência",
+    "descricao": "fôlego, fadiga, marcha sem fim"
+  },
+  {
+    "id": "sangue-imune",
+    "nome": "Sangue Imune",
+    "trilha": "corpo",
+    "atributo": "vigor",
+    "habilidade_ancora": "Resistência",
+    "descricao": "venenos, doenças, ambientes extremos"
+  },
+  {
+    "id": "carne-teimosa",
+    "nome": "Carne Teimosa",
+    "trilha": "corpo",
+    "atributo": "vigor",
+    "habilidade_ancora": "Resistência / Convicção",
+    "descricao": "ignorar ferimentos, recusar-se a cair"
+  },
+  {
+    "id": "cerne-vital",
+    "nome": "Cerne Vital",
+    "trilha": "corpo",
+    "atributo": "vigor",
+    "habilidade_ancora": "Resistência",
+    "descricao": "a vida que se recusa a apagar"
+  },
+  {
+    "id": "voz-de-mel",
+    "nome": "Voz de Mel",
+    "trilha": "voz",
+    "atributo": "carisma",
+    "habilidade_ancora": "Lábia",
+    "descricao": "palavras que abrem portas e corações"
+  },
+  {
+    "id": "lenda-viva",
+    "nome": "Lenda Viva",
+    "trilha": "voz",
+    "atributo": "carisma",
+    "habilidade_ancora": "Oratória",
+    "descricao": "a presença que move multidões"
+  },
+  {
+    "id": "estandarte",
+    "nome": "Estandarte",
+    "trilha": "voz",
+    "atributo": "carisma",
+    "habilidade_ancora": "Oratória / Tática",
+    "descricao": "liderança, coordenar, moral"
+  },
+  {
+    "id": "musa",
+    "nome": "Musa",
+    "trilha": "voz",
+    "atributo": "carisma",
+    "habilidade_ancora": "Performance",
+    "descricao": "encantar plateias, mover emoções"
+  },
+  {
+    "id": "brasa",
+    "nome": "Brasa",
+    "trilha": "voz",
+    "atributo": "carisma",
+    "habilidade_ancora": "Oratória",
+    "descricao": "inflamar paixões, incitar"
+  },
+  {
+    "id": "comando",
+    "nome": "Comando",
+    "trilha": "voz",
+    "atributo": "manipulacao",
+    "habilidade_ancora": "Intimidação / Oratória",
+    "descricao": "a palavra que dobra a vontade alheia"
+  },
+  {
+    "id": "teia",
+    "nome": "Teia",
+    "trilha": "voz",
+    "atributo": "manipulacao",
+    "habilidade_ancora": "Manha / Política",
+    "descricao": "intriga, plantar ideias, chantagem"
+  },
+  {
+    "id": "serpente-das-palavras",
+    "nome": "Serpente das Palavras",
+    "trilha": "voz",
+    "atributo": "manipulacao",
+    "habilidade_ancora": "Lábia",
+    "descricao": "barganha, torcer sentidos, lábia ardilosa"
+  },
+  {
+    "id": "sussurro",
+    "nome": "Sussurro",
+    "trilha": "voz",
+    "atributo": "manipulacao",
+    "habilidade_ancora": "Manha",
+    "descricao": "semear medo, dúvida, paranoia"
+  },
+  {
+    "id": "marionete",
+    "nome": "Marionete",
+    "trilha": "voz",
+    "atributo": "manipulacao",
+    "habilidade_ancora": "Manha",
+    "descricao": "sugestão profunda, reescrever desejos"
+  },
+  {
+    "id": "mascara",
+    "nome": "Máscara",
+    "trilha": "voz",
+    "atributo": "manipulacao",
+    "habilidade_ancora": "Manha",
+    "descricao": "o rosto que não se lê (disfarce e engano)"
+  },
+  {
+    "id": "beleza-cativante",
+    "nome": "Beleza Cativante",
+    "trilha": "voz",
+    "atributo": "aparencia",
+    "habilidade_ancora": "Lábia",
+    "descricao": "atrair, seduzir, desarmar pela presença"
+  },
+  {
+    "id": "semblante",
+    "nome": "Semblante",
+    "trilha": "voz",
+    "atributo": "aparencia",
+    "habilidade_ancora": "Intimidação",
+    "descricao": "impor respeito ou medo pela presença"
+  },
+  {
+    "id": "camaleao",
+    "nome": "Camaleão",
+    "trilha": "voz",
+    "atributo": "aparencia",
+    "habilidade_ancora": "Ladinagem / Manha",
+    "descricao": "alterar a própria aparência"
+  },
+  {
+    "id": "aura",
+    "nome": "Aura",
+    "trilha": "voz",
+    "atributo": "aparencia",
+    "habilidade_ancora": "Performance",
+    "descricao": "irradiar emoção à volta"
+  },
+  {
+    "id": "mascara-impassivel",
+    "nome": "Máscara Impassível",
+    "trilha": "voz",
+    "atributo": "aparencia",
+    "habilidade_ancora": "Manha",
+    "descricao": "esconder emoções, blefe perfeito"
+  },
+  {
+    "id": "olho-agucado",
+    "nome": "Olho Aguçado",
+    "trilha": "mente",
+    "atributo": "percepcao",
+    "habilidade_ancora": "Prontidão",
+    "descricao": "o que você percebe, ninguém esconde"
+  },
+  {
+    "id": "sentinela",
+    "nome": "Sentinela",
+    "trilha": "mente",
+    "atributo": "percepcao",
+    "habilidade_ancora": "Prontidão",
+    "descricao": "alerta, detectar perigo e emboscadas"
+  },
+  {
+    "id": "cacador",
+    "nome": "Caçador",
+    "trilha": "mente",
+    "atributo": "percepcao",
+    "habilidade_ancora": "Sobrevivência",
+    "descricao": "rastrear, farejar, seguir trilhas"
+  },
+  {
+    "id": "olho-da-verdade",
+    "nome": "Olho da Verdade",
+    "trilha": "mente",
+    "atributo": "percepcao",
+    "habilidade_ancora": "Empatia / Investigação",
+    "descricao": "detectar mentiras, ilusões, disfarces"
+  },
+  {
+    "id": "comunhao",
+    "nome": "Comunhão",
+    "trilha": "mente",
+    "atributo": "percepcao",
+    "habilidade_ancora": "Ocultismo",
+    "descricao": "perceber o sobrenatural, auras, espíritos"
+  },
+  {
+    "id": "vinculo-animal",
+    "nome": "Vínculo Animal",
+    "trilha": "mente",
+    "atributo": "percepcao",
+    "habilidade_ancora": "Sobrevivência",
+    "descricao": "a voz que as feras entendem"
+  },
+  {
+    "id": "mente-afiada",
+    "nome": "Mente Afiada",
+    "trilha": "mente",
+    "atributo": "inteligencia",
+    "habilidade_ancora": "Conhecimentos",
+    "descricao": "o intelecto que tudo decifra"
+  },
+  {
+    "id": "erudito",
+    "nome": "Erudito",
+    "trilha": "mente",
+    "atributo": "inteligencia",
+    "habilidade_ancora": "Conhecimentos",
+    "descricao": "saber enciclopédico, idiomas"
+  },
+  {
+    "id": "artesao",
+    "nome": "Artesão",
+    "trilha": "mente",
+    "atributo": "inteligencia",
+    "habilidade_ancora": "Craft",
+    "descricao": "crafts sobre-humanos, obras-primas"
+  },
+  {
+    "id": "estrategista",
+    "nome": "Estrategista",
+    "trilha": "mente",
+    "atributo": "inteligencia",
+    "habilidade_ancora": "Tática",
+    "descricao": "ler batalhas, prever, planos"
+  },
+  {
+    "id": "investigador",
+    "nome": "Investigador",
+    "trilha": "mente",
+    "atributo": "inteligencia",
+    "habilidade_ancora": "Investigação",
+    "descricao": "reconstituir cenas, conectar pistas"
+  },
+  {
+    "id": "reflexo-mental",
+    "nome": "Reflexo Mental",
+    "trilha": "mente",
+    "atributo": "raciocinio",
+    "habilidade_ancora": "Prontidão",
+    "descricao": "iniciativa, reagir e pensar sob pressão"
+  },
+  {
+    "id": "improviso",
+    "nome": "Improviso",
+    "trilha": "mente",
+    "atributo": "raciocinio",
+    "habilidade_ancora": "Manha / Craft",
+    "descricao": "soluções instantâneas, usar o ambiente"
+  },
+  {
+    "id": "pressagio",
+    "nome": "Presságio",
+    "trilha": "mente",
+    "atributo": "raciocinio",
+    "habilidade_ancora": "Prontidão / Ocultismo",
+    "descricao": "a intuição que sente o perigo"
+  },
+  {
+    "id": "leitura-fria",
+    "nome": "Leitura Fria",
+    "trilha": "mente",
+    "atributo": "raciocinio",
+    "habilidade_ancora": "Empatia",
+    "descricao": "deduzir pessoas, prever ações, ler tells"
+  },
+  {
+    "id": "mente-serena",
+    "nome": "Mente Serena",
+    "trilha": "mente",
+    "atributo": "raciocinio",
+    "habilidade_ancora": "Ocultismo / Autocontrole",
+    "descricao": "foco, transe, blindagem mental"
+  }
+]

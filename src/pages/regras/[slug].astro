@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { url } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const caps = (await getCollection('chapters')).sort((a, b) => a.data.ordem - b.data.ordem);
+  return caps.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, prev: caps[i - 1], next: caps[i + 1] },
+  }));
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regras/${e.id}`);
+---
+<Base title={entry.data.titulo} descricao={entry.data.resumo}>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">
+    Capítulo {entry.data.numeral}
+  </p>
+  <h1>{entry.data.titulo}</h1>
+  <p class="tag-orn" style="text-align:left">❖</p>
+  <Content />
+
+  <nav class="cap-nav" aria-label="Navegação entre capítulos">
+    {prev ? <a class="btn" href={url(slugOf(prev))}>← {prev.data.titulo}</a> : <span />}
+    {next ? <a class="btn" href={url(slugOf(next))}>{next.data.titulo} →</a> : <span />}
+  </nav>
+</Base>
+
+<style>
+  .cap-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+  .cap-nav .btn { max-width: 48%; }
+</style>

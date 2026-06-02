@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+import { loadData } from '../lib/data';
+const d = await loadData();
+const elem = d.artes.filter((a) => a.categoria === 'elemental');
+const univ = d.artes.filter((a) => a.categoria === 'universal');
+const Arte = (a: any) => a;
+---
+<Base title="O Arcano" largura="wide" descricao="As 18 Artes da feitiçaria, do dardo de fogo ao senhor do tempo.">
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo VII</p>
+  <h1>O Arcano</h1>
+  <p class="lead">A feitiçaria é a quarta trilha dos Caminhos — e a única que de fato <em>quebra</em> as regras do mundo. Ela se aprende em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um.</p>
+
+  <p>Cada <strong>Arte</strong> tem <strong>5 níveis</strong>: o nível <em>N</em> exige <strong>Centelha ≥ N</strong> e <strong>Ocultismo ≥ N</strong>. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana = nível do efeito</strong>. Dentro do seu nível, você improvisa efeitos compatíveis.</p>
+
+  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong> — rápido, em combate: custa Ticks como uma ação, mais o Mana. &nbsp; <strong>Ritual</strong> — lento, fora de combate: custa metade do Mana ou alcança efeitos muito maiores.</div>
+
+  {[['As Seis Artes Elementais', elem], ['As Doze Artes Universais', univ]].map(([titulo, lista]) => (
+    <section>
+      <h2 style="text-align:center;border:none">{titulo}</h2>
+      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))">
+        {(lista as any[]).map((a) => (
+          <div class="panel arte" id={a.id} data-permalink>
+            <div class="arte-head">
+              <span class="cinzel arte-nome">{a.nome}</span>
+              <button class="bm" data-bm={`arte:${a.id}`} title="Marcar" aria-label={`Marcar ${a.nome}`}>☆</button>
+            </div>
+            <div class="muted arte-conj">conjura com {d.A[a.atributo_conjuracao.id].nome}</div>
+            <ol class="niveis">
+              {a.niveis.map((n: any) => (
+                <li><span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong> — {n.efeito} <span class="muted">({n.custo.mana} Mana)</span></li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .arte-head { display: flex; align-items: center; gap: .5rem; }
+  .arte-nome { color: var(--accent); font-size: 1.15rem; flex: 1; }
+  .arte-conj { font-size: .82rem; font-style: italic; margin-bottom: .4rem; }
+  .niveis { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+  .niveis li { margin-bottom: .3rem; line-height: 1.4; }
+  .niveis .lvl { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%;
+    background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .72rem; }
+  .bm { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--gold); }
+  .bm[aria-pressed='true'] { color: var(--accent); }
+</style>

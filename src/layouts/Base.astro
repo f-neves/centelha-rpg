@@ -1,0 +1,122 @@
+---
+import '@fontsource/cinzel/600.css';
+import '@fontsource/cinzel/700.css';
+import '@fontsource/cinzel/900.css';
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/400-italic.css';
+import '@fontsource/eb-garamond/600.css';
+import '../styles/global.css';
+import { url, NAV, FERRAMENTAS } from '../lib/site';
+import GlossarioTooltip from '../components/GlossarioTooltip.astro';
+import Marcadores from '../components/Marcadores.astro';
+import Busca from '../components/Busca.astro';
+
+interface Props { title: string; descricao?: string; largura?: 'prose' | 'wide' | 'full'; }
+const { title, descricao = 'New RPG System D6 — sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose' } = Astro.props;
+
+const here = Astro.url.pathname.replace(/\/+$/, '');
+const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
+const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New RPG System D6`;
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={descricao} />
+  <link rel="icon" href={url('favicon.svg')} />
+  <script is:inline>
+    (function () {
+      try {
+        var t = localStorage.getItem('tema');
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'escuro' : 'classico';
+        document.documentElement.dataset.theme = t;
+      } catch (e) { document.documentElement.dataset.theme = 'classico'; }
+    })();
+  </script>
+</head>
+<body>
+  <a href="#conteudo" class="skip">Pular para o conteúdo</a>
+
+  <div class="topbar" data-pagefind-ignore>
+    <button class="btn drawer-toggle" aria-label="Abrir navegação" aria-expanded="false">☰ Menu</button>
+    <a class="brand" href={url('')}>Centelha <span class="d6">D6</span></a>
+  </div>
+
+  <div class="shell">
+    <div class="scrim" data-drawer-close></div>
+    <aside class="sidebar" id="nav" data-pagefind-ignore>
+      <button class="btn drawer-close" aria-label="Fechar navegação" data-drawer-close>✕</button>
+      <a class="brand" href={url('')}>New RPG System <span class="d6">D6</span>
+        <small>do mortal ao semideus</small></a>
+
+      <div style="margin-top:1rem"><Busca /></div>
+
+      <nav class="toc" aria-label="Capítulos">
+        <div class="grp">Regras</div>
+        {NAV.map((n) => (
+          <a href={url(n.slug)} aria-current={isActive(n.slug) ? 'page' : undefined}>
+            {n.numeral && <span class="num">{n.numeral}</span>}
+            <span>{n.titulo}</span>
+          </a>
+        ))}
+        <div class="grp">Ferramentas</div>
+        {FERRAMENTAS.map((f) => (
+          <a href={url(f.slug)} aria-current={isActive(f.slug) ? 'page' : undefined}>
+            <span class="num">◆</span><span>{f.titulo}</span>
+          </a>
+        ))}
+      </nav>
+
+      <div class="grp" style="margin-top:1.4rem">Aparência</div>
+      <div class="btn-row" id="tema-ctl">
+        <button class="btn" data-tema="classico" title="Tema clássico (pergaminho)">Clássico</button>
+        <button class="btn" data-tema="escuro" title="Tema escuro">Escuro</button>
+        <button class="btn" data-tema="legivel" title="Alto contraste">Legível</button>
+      </div>
+    </aside>
+
+    <main class="content" id="conteudo" data-pagefind-body>
+      <article class={largura === 'full' ? '' : largura}>
+        <slot />
+      </article>
+    </main>
+  </div>
+
+  <GlossarioTooltip />
+  <Marcadores />
+
+  <script>
+    // gaveta mobile
+    const body = document.body;
+    const open = () => { body.classList.add('drawer-open'); document.querySelector('.drawer-toggle')?.setAttribute('aria-expanded', 'true'); };
+    const close = () => { body.classList.remove('drawer-open'); document.querySelector('.drawer-toggle')?.setAttribute('aria-expanded', 'false'); };
+    document.querySelector('.drawer-toggle')?.addEventListener('click', open);
+    document.querySelectorAll('[data-drawer-close]').forEach((el) => el.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+    // tema
+    const setTema = (t: string) => { document.documentElement.dataset.theme = t; try { localStorage.setItem('tema', t); } catch {} markTema(t); };
+    const markTema = (t: string) => document.querySelectorAll('#tema-ctl .btn').forEach((b) => {
+      const on = (b as HTMLElement).dataset.tema === t;
+      b.classList.toggle('primary', on); b.setAttribute('aria-pressed', String(on));
+    });
+    document.querySelectorAll('#tema-ctl .btn').forEach((b) => b.addEventListener('click', () => setTema((b as HTMLElement).dataset.tema!)));
+    markTema(document.documentElement.dataset.theme || 'classico');
+
+    // permalink "copiar link" em títulos e em blocos com id (data-permalink)
+    const copy = (hash: string) => {
+      const u = location.origin + location.pathname + '#' + hash;
+      navigator.clipboard?.writeText(u);
+    };
+    document.querySelectorAll('main h2[id], main h3[id], main [data-permalink][id]').forEach((el) => {
+      const a = document.createElement('a');
+      a.className = 'anchor'; a.href = '#' + el.id; a.title = 'Copiar link'; a.setAttribute('aria-label', 'Copiar link para esta seção');
+      a.textContent = '🔗';
+      a.addEventListener('click', (e) => { e.preventDefault(); history.replaceState(null, '', '#' + el.id); copy(el.id); a.textContent = '✓'; setTimeout(() => (a.textContent = '🔗'), 1200); });
+      el.appendChild(a);
+    });
+  </script>
+</body>
+</html>

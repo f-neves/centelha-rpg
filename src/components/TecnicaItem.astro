@@ -1,0 +1,41 @@
+---
+import { url } from '../lib/site';
+import { custoTagTecnica } from '../lib/data';
+interface Props { t: any; T: Record<string, any>; destrava?: string[]; }
+const { t, T, destrava = [] } = Astro.props;
+const prereqLink = (pid: string) => url(`caminhos/${T[pid]?.caminho?.id ?? ''}`) + '#' + pid;
+---
+<div class="tec" id={t.id} data-permalink>
+  <div class="tec-head">
+    <span class="tec-nome cinzel">{t.nome}</span>
+    <span class="badge banda">Banda {t.banda}</span>
+    <span class={`badge ${t.tipo}`}>{custoTagTecnica(t)}</span>
+    {t.pendente && <span class="badge pendente" title="Texto provisório — revisar">Rascunho</span>}
+    <button class="bm" data-bm={`tecnica:${t.id}`} title="Marcar" aria-label={`Marcar ${t.nome}`}>☆</button>
+  </div>
+  <p class="tec-eff" set:html={t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')} />
+  {t.prereq.length > 0 && (
+    <p class="tec-meta">Requer:
+      {t.prereq.map((p: any, i: number) => (
+        <>{i > 0 && ' + '}<a href={prereqLink(p.id)}>{T[p.id]?.nome ?? p.id}</a></>
+      ))}
+    </p>
+  )}
+  {destrava.length > 0 && (
+    <p class="tec-meta">Destrava:
+      {destrava.map((d, i) => (
+        <>{i > 0 && ' · '}<a href={prereqLink(d)}>{T[d]?.nome ?? d}</a></>
+      ))}
+    </p>
+  )}
+</div>
+
+<style>
+  .tec { margin: 0 0 1rem; padding-left: .8rem; border-left: 2px solid var(--rule); scroll-margin-top: 4rem; }
+  .tec-head { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+  .tec-nome { font-weight: 600; color: var(--ink); font-size: 1.05rem; }
+  .tec-eff { margin: .25rem 0 .2rem; }
+  .tec-meta { font-size: .85rem; color: var(--ink-soft); margin: .1rem 0; }
+  .bm { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--gold); margin-left: auto; line-height: 1; }
+  .bm[aria-pressed='true'] { color: var(--accent); }
+</style>

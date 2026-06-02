@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadData } from '../lib/data';
+const d = await loadData();
+const termos = [...d.glossario].sort((a, b) => a.termo.localeCompare(b.termo, 'pt'));
+---
+<Base title="Glossário" descricao="Os termos-chave do sistema, com sinônimos e definições.">
+  <h1>Glossário</h1>
+  <p class="lead">Os termos que aparecem por todo o livro. No corpo do texto, eles viram um balão ao passar o mouse. Os sinônimos ajudam a busca — procure por <em>willpower</em> e chegue a Vontade.</p>
+  <dl class="gloss-list no-gloss">
+    {termos.map((g) => (
+      <div id={g.id} data-permalink class="gloss-item">
+        <dt class="cinzel">{g.termo}</dt>
+        <dd>
+          {g.definicao}
+          {g.aliases.length > 0 && <span class="muted al"> — também: {g.aliases.join(', ')}</span>}
+        </dd>
+      </div>
+    ))}
+  </dl>
+</Base>
+
+<style>
+  .gloss-list { margin: 1.5rem 0; }
+  .gloss-item { padding: .7rem 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 4rem; }
+  .gloss-item dt { color: var(--accent); font-size: 1.1rem; }
+  .gloss-item dd { margin: .2rem 0 0; }
+  .al { font-size: .85rem; }
+</style>

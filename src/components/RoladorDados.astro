@@ -1,0 +1,72 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+<div class={`rolador panel ${compact ? 'compact' : ''}`}>
+  <div class="rd-fields">
+    <label>Atributo<input type="number" min="0" max="12" value="3" data-rd="atr" /></label>
+    <label>Habilidade<input type="number" min="0" max="12" value="3" data-rd="hab" /></label>
+    <label>Especialidade<input type="number" min="0" max="6" value="0" data-rd="esp" /></label>
+    <label>Alvo (opcional)<input type="number" min="0" placeholder="Defesa/Dif." data-rd="alvo" /></label>
+  </div>
+  <div class="rd-actions">
+    <span class="muted rd-pool" data-rd="pool"></span>
+    <button class="btn primary" data-rd="roll">Rolar</button>
+  </div>
+  <div class="rd-out" data-rd="out" hidden></div>
+</div>
+
+<style>
+  .rolador .rd-fields { display: flex; gap: .7rem; flex-wrap: wrap; }
+  .rolador label { display: flex; flex-direction: column; font-size: .78rem; color: var(--ink-soft); font-family: 'Cinzel'; gap: .2rem; }
+  .rolador input { width: 5.5rem; padding: .35rem .4rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: 1rem; }
+  .rd-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
+  .rd-out { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--rule); }
+  .rd-dice { display: flex; gap: .35rem; flex-wrap: wrap; margin: .4rem 0; }
+  .die { width: 2rem; height: 2rem; display: grid; place-items: center; border: 1.5px solid var(--accent); border-radius: 6px; font-family: 'Cinzel'; font-weight: 700; background: var(--panel-2); }
+  .die.dropped { opacity: .35; border-color: var(--rule); text-decoration: line-through; }
+  .rd-total { font-family: 'Cinzel'; font-size: 1.3rem; color: var(--accent); }
+  .rd-res { font-family: 'Cinzel'; }
+  .rd-res.ok { color: #1d7a3a; } .rd-res.fail { color: #9a3412; }
+  [data-theme='escuro'] .rd-res.ok { color: #6fdc92; } [data-theme='escuro'] .rd-res.fail { color: #ffb088; }
+</style>
+
+<script>
+  import { pool } from '../lib/calc';
+  document.querySelectorAll<HTMLElement>('.rolador').forEach((root) => {
+    const get = (k: string) => root.querySelector<HTMLInputElement>(`[data-rd="${k}"]`);
+    const num = (k: string) => Math.max(0, parseInt(get(k)?.value || '0') || 0);
+    const out = root.querySelector<HTMLElement>('[data-rd="out"]')!;
+    const poolEl = root.querySelector<HTMLElement>('[data-rd="pool"]')!;
+    const d6 = () => Math.floor(Math.random() * 6) + 1;
+
+    const updatePool = () => {
+      const p = pool(num('atr'), num('hab'));
+      poolEl.textContent = `Pool: ${p.dados}d6${p.bonus ? ' +2' : ''}${num('esp') ? ` · +${num('esp')}d6 descartando ${num('esp')}` : ''}`;
+    };
+    ['atr', 'hab', 'esp'].forEach((k) => get(k)?.addEventListener('input', updatePool));
+    updatePool();
+
+    root.querySelector('[data-rd="roll"]')?.addEventListener('click', () => {
+      const p = pool(num('atr'), num('hab'));
+      const esp = Math.min(num('esp'), p.dados); // não descarta mais que rola
+      const n = p.dados + esp;
+      let rolls = Array.from({ length: n }, d6);
+      const sorted = [...rolls].map((v, i) => ({ v, i })).sort((a, b) => a.v - b.v);
+      const drop = new Set(sorted.slice(0, esp).map((x) => x.i));
+      const kept = rolls.filter((_, i) => !drop.has(i));
+      const total = kept.reduce((s, v) => s + v, 0) + p.bonus;
+      const dice = rolls.map((v, i) => `<span class="die ${drop.has(i) ? 'dropped' : ''}">${v}</span>`).join('');
+      const alvoRaw = get('alvo')?.value;
+      let res = '';
+      if (alvoRaw !== '' && alvoRaw != null) {
+        const alvo = num('alvo');
+        const ok = total > alvo;
+        const margens = ok ? Math.floor((total - alvo) / 6) : 0;
+        res = `<p class="rd-res ${ok ? 'ok' : 'fail'}">${ok ? `Sucesso! supera ${alvo}` : `Falha — não supera ${alvo}`}${margens ? ` · ${margens} Margem${margens > 1 ? 's' : ''} (+${margens}d6)` : ''}</p>`;
+      }
+      out.hidden = false;
+      out.innerHTML = `<div class="rd-dice">${dice}</div><div><span class="rd-total">${total}</span> <span class="muted">(${n}d6${p.bonus ? ' +2' : ''}${esp ? `, −${esp} menor${esp > 1 ? 'es' : ''}` : ''})</span></div>${res}`;
+    });
+  });
+</script>

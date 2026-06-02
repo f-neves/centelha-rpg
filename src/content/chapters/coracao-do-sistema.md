@@ -1,0 +1,57 @@
+---
+ordem: 1
+numeral: "I"
+titulo: "O Coração do Sistema"
+resumo: "Rolagens, dificuldade e margem — a soma simples que move tudo."
+---
+
+Toda ação significativa nasce de uma soma simples: um **Atributo** (talento bruto) somado a uma **Habilidade** (treino). Esse total vira um punhado de dados de seis lados — o seu *pool* — que você rola e soma para enfrentar o mundo.
+
+## Montando o Pool
+
+Some Atributo + Habilidade. A metade desse valor (arredondada para baixo) é a **quantidade de dados**. Se a soma for **ímpar**, some um **bônus fixo de +2** ao resultado.
+
+<p class="formula">Dados = ⌊(Atributo + Habilidade) ÷ 2⌋ · +2 se a soma for ímpar</p>
+
+| Soma (Atrib + Hab) | Você rola |
+|:---:|:---:|
+| 4 | 2d6 |
+| 5 | 2d6 + 2 |
+| 6 | 3d6 |
+| 9 | 4d6 + 2 |
+| 10 | 5d6 |
+
+## Sucesso e Dificuldade
+
+Você tem **sucesso** quando o total **supera** o alvo — a Defesa de um inimigo ou a **Dificuldade** de uma tarefa. A Dificuldade usa a mesma régua de Atributo + Habilidade: o número reflete o quão excepcional precisa ser quem a encara.
+
+| Dificuldade | Desafio | Atrib + Hab à altura |
+|:---:|---|---|
+| 5 | Fácil | 3 — competente |
+| 10 | Média | 6 — bom no ofício |
+| 15 | Difícil | 8 — perito |
+| 20 | Limite humano | 10 — mestre |
+| 25 | Excepcional | raros humanos |
+| 30+ | Sobre-humano | requer Centelha / Caminhos |
+
+<p class="muted">No nível "à altura", tarefas fáceis e médias são um cara-ou-coroa; a maestria traz confiabilidade. Quem não tem competência simplesmente não alcança as dificuldades altas.</p>
+
+## Margem: graus de sucesso
+
+Passar raspando é diferente de passar com sobra. A cada **6 pontos** que seu total supera o alvo, você ganha **uma Margem**. Em combate, cada Margem vira **+1d6 de dano**; em outras ações, o Mestre converte a Margem num efeito melhor — mais rápido, mais fino, mais duradouro.
+
+## Rolagens Opostas e Valores Passivos
+
+Quando alguém se opõe a você, em geral apenas o lado *ativo* rola, contra um **Valor Passivo** do outro.
+
+<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 (+ modificadores)</p>
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2. O guarda não rola — sua vigilância é um muro a ser superado.</div>
+
+Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o maior total vence; empates favorecem quem defende ou mantém o *status quo*.
+
+## Ações Estendidas
+
+Tarefas longas — forjar uma lâmina, decifrar um tomo — usam três valores: uma **Dificuldade**, um **Intervalo** de tempo e um **Acúmulo** a atingir. A cada intervalo você rola; o quanto o total *passar* da Dificuldade soma ao Acúmulo. Ao alcançá-lo, a obra está pronta.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Forjar uma espada fina: Dificuldade 12, intervalo semanal, Acúmulo 30. A cada semana o ferreiro rola e soma o excedente sobre 12 — chegando a 30, a lâmina nasce.</div>

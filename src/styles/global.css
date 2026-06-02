@@ -1,0 +1,199 @@
+/* ===== New RPG System D6 — temas e base ===== */
+
+/* textura de pergaminho vetorial (sutil) — só no tema clássico */
+:root {
+  --fiber: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg stroke='%23b39a5c' stroke-width='0.5' fill='none' opacity='0.22'%3E%3Cpath d='M-5 24 Q75 19 155 26'/%3E%3Cpath d='M-5 58 Q75 63 155 55'/%3E%3Cpath d='M-5 95 Q75 90 155 99'/%3E%3Cpath d='M-5 130 Q75 135 155 128'/%3E%3C/g%3E%3Cg fill='%23a3884e' opacity='0.16'%3E%3Ccircle cx='34' cy='42' r='0.9'/%3E%3Ccircle cx='104' cy='73' r='0.8'/%3E%3Ccircle cx='64' cy='112' r='1'/%3E%3Ccircle cx='126' cy='30' r='0.7'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- Clássico (safira / pergaminho) — padrão ---------- */
+:root, [data-theme='classico'] {
+  --bg: #f3e9d2;
+  --bg-soft: #ece0c0;
+  --panel: #fbf6e7;
+  --panel-2: #f4ebd0;
+  --panel-border: #d8c79c;
+  --ink: #2a2720;
+  --ink-soft: #574f3d;
+  --accent: #1f3f8f;        /* safira */
+  --accent-strong: #16306e;
+  --accent-soft: #3a5aa8;
+  --on-accent: #f6efda;
+  --rule: #cdbd92;
+  --gold: #b08d3a;
+  --shadow: rgba(60,45,15,.12);
+  --tex: var(--fiber);
+  --tex-size: 150px 150px;
+}
+
+/* ---------- Escuro ---------- */
+[data-theme='escuro'] {
+  --bg: #15171c;
+  --bg-soft: #1b1e25;
+  --panel: #1e222a;
+  --panel-2: #232732;
+  --panel-border: #333a47;
+  --ink: #e9e5d7;
+  --ink-soft: #afa994;
+  --accent: #8fb0ff;
+  --accent-strong: #b6ccff;
+  --accent-soft: #7c9bdf;
+  --on-accent: #11151f;
+  --rule: #39414f;
+  --gold: #d9b85f;
+  --shadow: rgba(0,0,0,.4);
+  --tex: none;
+  --tex-size: auto;
+}
+
+/* ---------- Legível (alto contraste, sem pergaminho) ---------- */
+[data-theme='legivel'] {
+  --bg: #ffffff;
+  --bg-soft: #f1f1f1;
+  --panel: #ffffff;
+  --panel-2: #f6f6f6;
+  --panel-border: #9a9a9a;
+  --ink: #111111;
+  --ink-soft: #333333;
+  --accent: #123a8a;
+  --accent-strong: #0c2a66;
+  --accent-soft: #1c4aa0;
+  --on-accent: #ffffff;
+  --rule: #b3b3b3;
+  --gold: #7a5e16;
+  --shadow: rgba(0,0,0,.18);
+  --tex: none;
+  --tex-size: auto;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image: var(--tex);
+  background-size: var(--tex-size);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 1.18rem;
+  line-height: 1.62;
+  -webkit-text-size-adjust: 100%;
+}
+[data-theme='legivel'] body { font-size: 1.22rem; line-height: 1.7; }
+
+h1, h2, h3, h4, .cinzel { font-family: 'Cinzel', Georgia, serif; line-height: 1.18; color: var(--accent); }
+h1 { font-size: 2.1rem; margin: 0 0 .5em; }
+h2 { font-size: 1.5rem; margin: 1.6em 0 .4em; padding-bottom: .2em; border-bottom: 1.5px solid var(--rule); }
+h3 { font-size: 1.2rem; margin: 1.3em 0 .3em; color: var(--accent-strong); }
+h4 { font-size: 1.02rem; margin: 1.1em 0 .3em; color: var(--accent-strong); font-variant: small-caps; letter-spacing: .04em; }
+p { margin: 0 0 .8em; }
+a { color: var(--accent); text-underline-offset: .15em; }
+a:hover { color: var(--accent-strong); }
+strong { color: var(--accent-strong); }
+em { color: var(--ink-soft); }
+hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+/* skip link */
+.skip { position: absolute; left: -9999px; top: 0; background: var(--accent); color: var(--on-accent); padding: .5em 1em; z-index: 100; }
+.skip:focus { left: 0; }
+
+/* ---------- shell: sidebar + conteúdo ---------- */
+.shell { display: grid; grid-template-columns: 17rem 1fr; min-height: 100vh; }
+.sidebar {
+  border-right: 1.5px solid var(--rule); background: var(--bg-soft);
+  padding: 1.2rem 1rem 3rem; position: sticky; top: 0; height: 100vh; overflow-y: auto;
+}
+.content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 5rem; }
+.prose { max-width: 42rem; }
+.wide { max-width: 60rem; }
+
+/* topbar (mobile) */
+.topbar { display: none; }
+
+/* ---------- nav ---------- */
+.brand { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); font-size: 1.25rem; text-decoration: none; display: block; line-height: 1.1; }
+.brand .d6 { color: var(--accent-strong); }
+.brand small { display:block; font-family:'EB Garamond'; font-style:italic; font-weight:400; font-size:.78rem; color: var(--ink-soft); letter-spacing:0; }
+nav.toc { margin-top: 1.2rem; }
+nav.toc .grp { font-variant: small-caps; letter-spacing: .08em; color: var(--ink-soft); font-size: .82rem; margin: 1.1rem 0 .3rem; font-family:'Cinzel'; }
+nav.toc a { display: flex; gap: .5rem; align-items: baseline; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: 4px; font-size: 1rem; }
+nav.toc a:hover { background: var(--panel); }
+nav.toc a[aria-current='page'] { background: var(--accent); color: var(--on-accent); }
+nav.toc a[aria-current='page'] .num { color: var(--on-accent); }
+nav.toc a .num { color: var(--accent); font-family: 'Cinzel'; font-size: .8rem; min-width: 2.1rem; }
+
+/* ---------- componentes ---------- */
+.panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; padding: 1rem 1.1rem; box-shadow: 0 1px 2px var(--shadow); }
+.callout { background: var(--panel); border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: 4px; padding: .8rem 1rem; margin: 1em 0; }
+.callout.exemplo { border-left-color: var(--accent-soft); font-style: italic; }
+.callout.regra { border-left-color: var(--gold); }
+.callout .lbl { font-family: 'Cinzel'; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .25rem; }
+.callout.regra .lbl { color: var(--gold); }
+
+.formula { display: block; text-align: center; font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 9%, transparent); border: 1px solid var(--rule); border-radius: 4px;
+  padding: .6rem .8rem; margin: 1em 0; font-size: .98rem; }
+
+table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .98rem; }
+thead th { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: left; padding: .5rem .6rem; }
+tbody td, tbody th { padding: .42rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: top; text-align: left; }
+tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong); font-size: .9rem; }
+tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+.table-wrap { overflow-x: auto; }
+
+/* badges */
+.badge { display: inline-block; font-size: .72rem; font-family: 'Cinzel'; letter-spacing: .03em; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--panel-border); color: var(--ink-soft); background: var(--panel-2); white-space: nowrap; }
+.badge.banda { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.badge.passiva { border-color: var(--gold); color: var(--gold); }
+.badge.ativa { border-color: var(--accent-soft); color: var(--accent); }
+.badge.reflexiva { border-color: var(--accent-strong); color: var(--accent-strong); }
+.badge.pendente { background: #8a2b14; color: #fff; border-color: transparent; }
+
+/* glossário tooltip */
+.gloss { border-bottom: 1.5px dotted var(--accent-soft); cursor: help; }
+.gloss-pop { position: absolute; z-index: 50; max-width: 22rem; background: var(--panel); color: var(--ink);
+  border: 1px solid var(--accent); border-radius: 6px; padding: .6rem .75rem; box-shadow: 0 4px 14px var(--shadow);
+  font-size: .92rem; font-style: normal; line-height: 1.45; }
+.gloss-pop b { font-family: 'Cinzel'; color: var(--accent); display: block; margin-bottom: .15rem; font-size: .85rem; }
+
+/* botões */
+.btn { font-family: 'Cinzel'; font-size: .9rem; cursor: pointer; border: 1px solid var(--panel-border);
+  background: var(--panel); color: var(--ink); padding: .45rem .9rem; border-radius: 5px; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.btn-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+
+/* permalink âncora */
+.anchor { color: var(--ink-soft); text-decoration: none; opacity: 0; margin-left: .4rem; font-size: .8em; }
+:hover > .anchor, .anchor:focus { opacity: 1; }
+
+/* utilidades */
+.muted { color: var(--ink-soft); font-style: italic; }
+.tag-orn { color: var(--gold); letter-spacing: .3em; text-align: center; }
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .8rem; }
+.lead { font-size: 1.12em; }
+.lead::first-letter { font-family: 'Cinzel'; font-weight: 900; float: left; font-size: 3.1em; line-height: .8; padding: .05em .12em 0 0; color: var(--accent); }
+
+/* ---------- responsivo ---------- */
+.drawer-toggle, .drawer-close, .scrim { display: none; }
+@media (max-width: 900px) {
+  .shell { grid-template-columns: 1fr; }
+  .topbar { display: flex; align-items: center; gap: .6rem; position: sticky; top: 0; z-index: 30;
+    background: var(--bg-soft); border-bottom: 1.5px solid var(--rule); padding: .55rem .8rem; }
+  .topbar .brand { font-size: 1.05rem; }
+  .drawer-toggle { display: inline-flex; }
+  .sidebar { position: fixed; top: 0; left: 0; width: min(20rem, 86vw); height: 100vh; z-index: 40;
+    transform: translateX(-105%); transition: transform .22s ease; box-shadow: 4px 0 20px var(--shadow); }
+  body.drawer-open .sidebar { transform: translateX(0); }
+  body.drawer-open .scrim { display: block; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 35; }
+  .drawer-close { display: inline-flex; position: absolute; top: .6rem; right: .6rem; }
+  .content { padding: 1rem 1rem 4rem; }
+  .prose { max-width: 100%; }
+  .prose p { text-align: left; }
+}
+
+/* pagefind UI mínima */
+:root { --pagefind-ui-primary: var(--accent); --pagefind-ui-text: var(--ink); --pagefind-ui-background: var(--panel); --pagefind-ui-border: var(--panel-border); --pagefind-ui-tag: var(--bg-soft); }

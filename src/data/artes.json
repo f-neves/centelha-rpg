@@ -1,0 +1,902 @@
+[
+  {
+    "id": "fogo",
+    "nome": "Fogo",
+    "categoria": "elemental",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Faísca",
+        "efeito": "acende/apaga fogo; dardo flamejante (1d6)",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Labareda",
+        "efeito": "jato de fogo em linha (2d6)",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Bola de Fogo",
+        "efeito": "explosão em área (3d6); parede de chamas",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Tempestade Ígnea",
+        "efeito": "área grande, dano contínuo; imune a fogo",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Cataclismo",
+        "efeito": "mar de fogo; coluna/elemental de chamas",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "gelo",
+    "nome": "Gelo",
+    "categoria": "elemental",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Lasca de Gelo",
+        "efeito": "resfria, congela água rasa; dardo (1d6)",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Rajada Gélida",
+        "efeito": "cone de frio (2d6), desacelera",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Prisão de Gelo",
+        "efeito": "aprisiona um alvo; muralha de gelo",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Nevasca",
+        "efeito": "tempestade gélida em área",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Inverno Eterno",
+        "efeito": "congela uma grande área; imobiliza um campo",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "raio",
+    "nome": "Raio",
+    "categoria": "elemental",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Faísca",
+        "efeito": "choque que atordoa; dardo (1d6)",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Relâmpago",
+        "efeito": "raio em linha (2d6)",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Corrente",
+        "efeito": "salta entre vários alvos (3d6 dividido)",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Tempestade",
+        "efeito": "relâmpagos do céu numa área",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Fúria de Zeus",
+        "efeito": "descarga cataclísmica",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "agua",
+    "nome": "Água",
+    "categoria": "elemental",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Manipular Água",
+        "efeito": "move e molda água; jato sob pressão",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Onda",
+        "efeito": "empurra/derruba; cria névoa",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Respirar Água",
+        "efeito": "respira submerso; controla correntes",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Maremoto",
+        "efeito": "grande onda; afoga uma área",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Senhor dos Mares",
+        "efeito": "comanda rios e mares",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "vento",
+    "nome": "Vento",
+    "categoria": "elemental",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Brisa",
+        "efeito": "rajadas que empurram, apagam, carregam som",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Vendaval",
+        "efeito": "desvia projéteis; rajada cortante (2d6)",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Sustentar",
+        "efeito": "plana e levita por curtos períodos",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Ciclone",
+        "efeito": "tornado que ergue e arremessa",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Senhor dos Céus",
+        "efeito": "voa; comanda tempestades de vento",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "terra",
+    "nome": "Terra",
+    "categoria": "elemental",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Moldar Terra",
+        "efeito": "molda terra/pedra; arremessa pedras (1d6)",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Muralha de Pedra",
+        "efeito": "ergue barreiras; abre o chão",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Terremoto Local",
+        "efeito": "sacode e fende o solo",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Moldar Metal",
+        "efeito": "dobra e molda metal",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Senhor da Terra",
+        "efeito": "remodela o terreno",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "cura",
+    "nome": "Cura",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Sarar",
+        "efeito": "estanca sangramento, cura dano leve",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Fechar Feridas",
+        "efeito": "cura Letal moderado; suspende a dor",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Restaurar",
+        "efeito": "ferimentos graves, doenças, venenos",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Regenerar",
+        "efeito": "recompõe membros; doenças mortais",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Sopro de Vida",
+        "efeito": "traz o recém-morto; expurga quase tudo",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "vida",
+    "nome": "Vida",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Acelerar Vida",
+        "efeito": "faz plantas crescerem; cura leve",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Despertar",
+        "efeito": "anima plantas para enredar",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Moldar Carne",
+        "efeito": "altera corpos vivos",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Florescer",
+        "efeito": "transforma um ermo em floresta",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Dádiva da Vida",
+        "efeito": "cura em massa; vida exuberante",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "morte",
+    "nome": "Morte",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Toque Mórbido",
+        "efeito": "decomposição; dreno (1d6 + cura você)",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Enfraquecer",
+        "efeito": "adoece o alvo; fala com mortos recentes",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Erguer Morto",
+        "efeito": "anima um cadáver; aura de medo",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Praga",
+        "efeito": "doença e murchez numa área",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Ceifador",
+        "efeito": "ceifa a vida; ergue uma legião",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "fascinacao",
+    "nome": "Fascinação",
+    "categoria": "universal",
+    "atributo_conjuracao": "manipulacao",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Sugestão",
+        "efeito": "impulso sutil; distrai",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Encanto",
+        "efeito": "o alvo o vê como amigo",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Comando",
+        "efeito": "ordem resistível só com Vontade",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Ilusão Plena",
+        "efeito": "ilusões convincentes ou domínio",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Reescrever a Mente",
+        "efeito": "altera memórias e lealdades",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "adivinhacao",
+    "nome": "Adivinhação",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Pressentir",
+        "efeito": "sente perigo e mentiras",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Vidência",
+        "efeito": "vê eventos distantes",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Ler o Destino",
+        "efeito": "vislumbra futuros prováveis",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Olho Distante",
+        "efeito": "observa lugar conhecido em tempo real",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Oráculo",
+        "efeito": "responde sobre passado e futuro",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "fortuna",
+    "nome": "Fortuna",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Empurrãozinho",
+        "efeito": "re-role um dado ou imponha −1",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Sorte & Azar",
+        "efeito": "+1d6 a um aliado ou −1d6 a um inimigo",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Destino Torto",
+        "efeito": "força repetir uma rolagem",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Maré da Sorte",
+        "efeito": "coincidências favoráveis por uma cena",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Senhor do Acaso",
+        "efeito": "torna o quase-impossível certo",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "conjuracao",
+    "nome": "Conjuração",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Telecinese Leve",
+        "efeito": "move objetos pequenos",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Passo Brusco",
+        "efeito": "teletransporte curto visível",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Convocar",
+        "efeito": "traz objeto distante; fenda curta",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Portal",
+        "efeito": "entre dois lugares próximos",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Dobrar o Espaço",
+        "efeito": "teletransporte longo de grupo",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "forcas",
+    "nome": "Forças",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Empurrão de Força",
+        "efeito": "empurra/segura; escudo breve",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Telecinese",
+        "efeito": "move e arremessa objetos pesados",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Escudo de Força",
+        "efeito": "barreira; impacto cinético (3d6)",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Esmagar",
+        "efeito": "comprime alvo/objeto",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Dominar Forças",
+        "efeito": "manipula gravidade e cinética",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "materia",
+    "nome": "Matéria",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Alterar Matéria",
+        "efeito": "cor, textura, temperatura",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Transmutar",
+        "efeito": "converte material em semelhante",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Moldar",
+        "efeito": "reformula objetos; cria itens simples",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Criar Substância",
+        "efeito": "conjura matéria",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Alquimia Suprema",
+        "efeito": "transmuta qualquer matéria",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "tempo",
+    "nome": "Tempo",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Apressar/Retardar",
+        "efeito": "acelera ou atrasa um alvo",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Instante",
+        "efeito": "ação extra; congela objeto por segundos",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Bolha Temporal",
+        "efeito": "acelera/retarda área pequena",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Reverter",
+        "efeito": "desfaz alguns segundos",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Senhor do Tempo",
+        "efeito": "para o tempo brevemente",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "espirito",
+    "nome": "Espírito",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Sentir Espíritos",
+        "efeito": "percebe e fala com espíritos",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Pacto Menor",
+        "efeito": "invoca espírito/elemental menor",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Vincular",
+        "efeito": "liga espírito a objeto; bane fracos",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Invocar",
+        "efeito": "chama espírito poderoso como aliado",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Senhor dos Espíritos",
+        "efeito": "comanda hostes; abre portas",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "protecao",
+    "nome": "Proteção",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Salvaguarda",
+        "efeito": "ward pessoal; dissipa magia fraca",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Barreira",
+        "efeito": "campo protetor contra ataques",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Refúgio",
+        "efeito": "área segura que repele ameaças",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Dissipar",
+        "efeito": "anula/enfraquece magias",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Santuário",
+        "efeito": "protege um local; barreira quase impenetrável",
+        "custo": {
+          "mana": 5
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  }
+]

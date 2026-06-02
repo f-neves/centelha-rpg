@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+const termos = (await getCollection('glossario')).map((e) => ({
+  termo: e.data.termo, aliases: e.data.aliases, definicao: e.data.definicao,
+}));
+---
+<script type="application/json" id="gloss-data" set:html={JSON.stringify(termos)} />
+<script>
+  type T = { termo: string; aliases: string[]; definicao: string };
+  const raw = document.getElementById('gloss-data')?.textContent || '[]';
+  const termos: T[] = JSON.parse(raw);
+
+  // mapa "texto a casar" -> definição (termo + aliases), maiores primeiro
+  const entries: { needle: string; termo: string; def: string }[] = [];
+  for (const t of termos) {
+    for (const n of [t.termo, ...t.aliases]) entries.push({ needle: n, termo: t.termo, def: t.definicao });
+  }
+  entries.sort((a, b) => b.needle.length - a.needle.length);
+
+  const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const usados = new Set<string>(); // 1 marcação por termo na página
+
+  const scan = document.querySelector('main');
+  if (scan) {
+    const SKIP = new Set(['A', 'CODE', 'PRE', 'BUTTON', 'INPUT', 'H1', 'SCRIPT', 'STYLE']);
+    const walker = document.createTreeWalker(scan, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        const p = n.parentElement;
+        if (!p || SKIP.has(p.tagName) || p.closest('.gloss, .no-gloss')) return NodeFilter.FILTER_REJECT;
+        return n.textContent && n.textContent.trim().length > 2 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      },
+    });
+    const textNodes: Text[] = [];
+    let cur: Node | null;
+    while ((cur = walker.nextNode())) textNodes.push(cur as Text);
+
+    for (const node of textNodes) {
+      const text = node.textContent || '';
+      const ntext = norm(text);
+      for (const e of entries) {
+        if (usados.has(e.termo)) continue;
+        const nn = norm(e.needle);
+        const i = ntext.indexOf(nn);
+        if (i < 0) continue;
+        // limites de palavra
+        const before = i === 0 ? ' ' : ntext[i - 1];
+        const after = i + nn.length >= ntext.length ? ' ' : ntext[i + nn.length];
+        if (/[a-z0-9]/.test(before) || /[a-z0-9]/.test(after)) continue;
+        usados.add(e.termo);
+        const span = document.createElement('span');
+        span.className = 'gloss';
+        span.tabIndex = 0;
+        span.setAttribute('role', 'button');
+        span.setAttribute('aria-label', `${e.termo}: ${e.def}`);
+        span.dataset.def = e.def;
+        span.dataset.termo = e.termo;
+        span.textContent = text.slice(i, i + e.needle.length);
+        const after2 = node.splitText(i);
+        after2.textContent = after2.textContent!.slice(e.needle.length);
+        node.parentNode!.insertBefore(span, after2);
+        break; // um termo por nó
+      }
+    }
+  }
+
+  // popover
+  let pop: HTMLDivElement | null = null;
+  const hide = () => { pop?.remove(); pop = null; };
+  const show = (el: HTMLElement) => {
+    hide();
+    pop = document.createElement('div');
+    pop.className = 'gloss-pop';
+    pop.innerHTML = `<b></b>`;
+    pop.querySelector('b')!.textContent = el.dataset.termo!;
+    pop.append(document.createTextNode(el.dataset.def!));
+    document.body.append(pop);
+    const r = el.getBoundingClientRect();
+    const top = window.scrollY + r.bottom + 6;
+    let left = window.scrollX + r.left;
+    pop.style.top = top + 'px'; pop.style.left = '0px';
+    const pw = pop.offsetWidth;
+    left = Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 10);
+    pop.style.left = Math.max(8, left) + 'px';
+  };
+  document.addEventListener('mouseover', (e) => { const t = (e.target as HTMLElement).closest('.gloss'); if (t) show(t as HTMLElement); });
+  document.addEventListener('mouseout', (e) => { if ((e.target as HTMLElement).closest('.gloss')) hide(); });
+  document.addEventListener('focusin', (e) => { const t = (e.target as HTMLElement).closest('.gloss'); if (t) show(t as HTMLElement); });
+  document.addEventListener('focusout', hide);
+  document.addEventListener('click', (e) => { const t = (e.target as HTMLElement).closest('.gloss'); if (t) (pop ? hide() : show(t as HTMLElement)); });
+  window.addEventListener('scroll', hide, { passive: true });
+</script>

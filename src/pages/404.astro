@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+---
+<Base title="Página não encontrada">
+  <div style="text-align:center;padding:3rem 0">
+    <p class="cinzel" style="font-size:4rem;color:var(--accent);margin:0">404</p>
+    <p class="lead">Este caminho não leva a lugar nenhum… ainda.</p>
+    <div class="btn-row" style="justify-content:center;margin-top:1.5rem">
+      <a class="btn primary" href={url('')}>Voltar ao início</a>
+      <a class="btn" href={url('caminhos')}>Os Caminhos</a>
+    </div>
+  </div>
+</Base>

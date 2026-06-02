@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import { url } from '../../lib/site';
+import { loadData, TRILHA_LABEL, TRILHA_SUB } from '../../lib/data';
+const d = await loadData();
+---
+<Base title="Os Caminhos" largura="wide" descricao="Os 48 subcaminhos de Técnicas, do mundano ao divino.">
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo VI</p>
+  <h1>Os Caminhos</h1>
+  <p class="lead">Tudo o que um personagem aprende de extraordinário — uma manobra marcial, um dom social, um sentido sobre-humano — é uma <a href={url('glossario') + '#tecnica'} class="no-gloss">Técnica</a> de um <strong>Caminho</strong>. Cada Caminho é uma árvore temática que cresce do mundano ao divino, e só floresce em quem tem <strong>Centelha</strong>.</p>
+
+  <div class="callout regra"><span class="lbl">Como ler</span>Cada Técnica traz a banda (faixa de poder), o tipo (passiva, ativa, reflexiva) e o custo em Energia/Vontade. Uma Técnica de banda <em>N</em> exige Centelha ≥ ⌈N ÷ 3⌉. Ative o custo em Energia igual à banda; passivas são grátis.</div>
+
+  {Object.entries(d.arvoreCaminhos).map(([trilha, porAttr]) => (
+    <section>
+      <h2 style="text-align:center;border:none">Trilha {TRILHA_LABEL[trilha]}</h2>
+      <p class="muted" style="text-align:center;margin-top:-.4rem">{TRILHA_SUB[trilha]}</p>
+      {Object.entries(porAttr).map(([attrId, lista]) => (
+        <>
+          <h3 style="text-align:center">{d.A[attrId].nome}</h3>
+          <div class="grid-cards">
+            {lista.map((c: any) => (
+              <a class="panel cam-card" href={url(`caminhos/${c.id}`)}>
+                <div class="cinzel cam-nome">{c.nome}</div>
+                <div class="muted cam-desc">{c.descricao}</div>
+                <div class="cam-meta">{d.porCaminho[c.id]?.length ?? 0} Técnicas</div>
+              </a>
+            ))}
+          </div>
+        </>
+      ))}
+    </section>
+  ))}
+</Base>
+
+<style>
+  .cam-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: .25rem; }
+  .cam-nome { color: var(--accent); font-size: 1.1rem; }
+  .cam-desc { font-size: .88rem; line-height: 1.4; flex: 1; }
+  .cam-meta { font-family: 'Cinzel'; font-size: .75rem; color: var(--gold); }
+</style>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Ficha — New RPG System D6</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600&display=swap');
+:root{
+  --ink:#322c22; --ink-soft:#5b5141; --parch:#f4ebd4;
+  --sapphire:#1f3f8f; --sapphire-dk:#152a63; --rule:#c9b88a; --box:#ece0bf;
+}
+*{ box-sizing:border-box; }
+@page{ size:A4; margin:12mm 0mm 12mm 0mm; }
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{
+  font-family:'EB Garamond', Constantia, Georgia, serif; color:var(--ink); font-size:9.5pt;
+  margin:0; padding:0 13mm; line-height:1.25;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.pagebg{ position:fixed; inset:0; background:var(--parch); z-index:-2; }
+.frame{ position:fixed; inset:6mm; border:1.3px solid var(--sapphire); z-index:-1; }
+.frame2{ position:fixed; inset:7.4mm; border:.7px solid var(--rule); z-index:-1; }
+
+.page{ break-after:page; }
+.page:last-child{ break-after:auto; }
+
+/* ---- title ---- */
+.head{ text-align:center; margin-bottom:3mm; }
+.head .game{ font-family:'Cinzel'; font-weight:900; font-size:17pt; color:var(--sapphire); letter-spacing:.04em; }
+.head .game small{ font-size:11pt; }
+.head .sheet{ font-family:'Cinzel'; font-size:8pt; letter-spacing:.35em; color:var(--ink-soft); text-transform:uppercase; }
+
+h2{ font-family:'Cinzel'; font-weight:700; color:#f7efda; background:var(--sapphire); font-size:9pt;
+  letter-spacing:.08em; text-transform:uppercase; padding:1.2mm 2.5mm; margin:3mm 0 1.5mm; border-radius:1px; }
+h3{ font-family:'Cinzel'; font-size:8pt; color:var(--sapphire-dk); letter-spacing:.06em; text-transform:uppercase;
+  margin:2mm 0 .8mm; border-bottom:.7px solid var(--rule); padding-bottom:.4mm; }
+
+/* ---- fields ---- */
+.f{ display:flex; align-items:baseline; gap:1.5mm; margin-bottom:1mm; }
+.f .lbl{ font-family:'Cinzel'; font-size:7.2pt; color:var(--sapphire-dk); letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; }
+.f .line{ flex:1; border-bottom:.8px solid var(--rule); min-height:3.6mm; }
+
+/* ---- dots ---- */
+.dot{ display:inline-block; width:2.9mm; height:2.9mm; border:1px solid var(--sapphire); border-radius:50%; margin-right:.5mm; vertical-align:middle; }
+.trait{ display:flex; align-items:center; justify-content:space-between; margin-bottom:.7mm; }
+.trait .tn{ font-size:9pt; }
+.trait .dots{ white-space:nowrap; }
+
+.cols3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm 5mm; }
+.cols2{ display:grid; grid-template-columns:1fr 1fr; gap:3mm 5mm; }
+
+/* skill row with specialty box */
+.srow{ display:flex; align-items:center; gap:1mm; margin-bottom:.5mm; }
+.srow .sn{ font-size:8.6pt; flex:1; }
+.srow .dots{ white-space:nowrap; }
+
+/* ---- panels / boxes ---- */
+.panel{ border:1px solid var(--rule); background:rgba(31,63,143,.05); border-left:3px solid var(--sapphire); padding:2mm 2.5mm; margin-bottom:2mm; }
+.derv{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:1mm; }
+.derv .dl{ font-family:'Cinzel'; font-size:7.4pt; color:var(--sapphire-dk); text-transform:uppercase; letter-spacing:.03em; }
+.derv .dv{ flex:0 0 16mm; border-bottom:.8px solid var(--rule); min-height:3.4mm; margin-left:2mm; }
+.formula-mini{ font-size:6.8pt; color:var(--ink-soft); font-style:italic; }
+
+/* track of small boxes */
+.track{ line-height:0; }
+.track i{ display:inline-block; width:3.4mm; height:3.4mm; border:1px solid var(--sapphire); margin:0 .4mm .6mm 0; }
+
+table.eq{ width:100%; border-collapse:collapse; font-size:8pt; margin-top:1mm; }
+table.eq th{ background:var(--sapphire); color:#f7efda; font-family:'Cinzel'; font-size:6.6pt; letter-spacing:.04em;
+  text-transform:uppercase; padding:1.2mm 1.5mm; text-align:left; }
+table.eq td{ border-bottom:.7px solid var(--rule); height:5.2mm; padding:0 1.5mm; }
+
+.notelines{ border:.8px solid var(--rule); background:rgba(31,63,143,.03); min-height:40mm; border-radius:1px; }
+.small{ font-size:7pt; color:var(--ink-soft); }
+.ref{ font-size:7pt; }
+.ref b{ color:var(--sapphire-dk); font-family:'Cinzel'; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="pagebg"></div><div class="frame"></div><div class="frame2"></div>
+
+<!-- ===================== PAGE 1 ===================== -->
+<section class="page">
+  <div class="head">
+    <div class="game">New RPG System <small>D6</small></div>
+    <div class="sheet">Ficha de Personagem</div>
+  </div>
+
+  <div class="cols3">
+    <div class="f"><span class="lbl">Nome</span><span class="line"></span></div>
+    <div class="f"><span class="lbl">Conceito</span><span class="line"></span></div>
+    <div class="f"><span class="lbl">Jogador</span><span class="line"></span></div>
+  </div>
+
+  <!-- ATRIBUTOS -->
+  <h2>Atributos</h2>
+  <div class="cols3">
+    <div>
+      <h3>Físicos</h3>
+      <div class="trait"><span class="tn">Força</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Destreza</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Vigor</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+    </div>
+    <div>
+      <h3>Sociais</h3>
+      <div class="trait"><span class="tn">Carisma</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Manipulação</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Aparência</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+    </div>
+    <div>
+      <h3>Mentais</h3>
+      <div class="trait"><span class="tn">Percepção</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Inteligência</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Raciocínio</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+    </div>
+  </div>
+
+  <!-- HABILIDADES -->
+  <h2>Habilidades <span style="font-family:'EB Garamond';text-transform:none;letter-spacing:0;font-weight:400;font-size:7pt">(○ nível · □ especialidade)</span></h2>
+  <div class="cols3">
+    <div>
+      <h3>Combate</h3>
+      <div class="srow"><span class="sn">Briga</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Armas de Corte</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Armas de Impacto</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Armas de Haste</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Armas à Distância</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Esquiva</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Escudos</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <h3>Físicas &amp; Mobilidade</h3>
+      <div class="srow"><span class="sn">Atletismo</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Resistência</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Furtividade</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Prontidão</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Sobrevivência</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+    </div>
+    <div>
+      <h3>Sociais</h3>
+      <div class="srow"><span class="sn">Lábia</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Oratória</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Etiqueta</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Empatia</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Intimidação</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Manha</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <h3>Saber</h3>
+      <div class="srow"><span class="sn">Investigação</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Conhecimentos</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Ocultismo</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Medicina</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Ciências</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+    </div>
+    <div>
+      <h3>Técnicas</h3>
+      <div class="srow"><span class="sn">Craft</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Ladinagem</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Cavalgar</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Performance</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Tática</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Política</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn">Comércio</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <h3>Secundárias</h3>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span></div>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span></div>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span></div>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span></div>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span></div>
+    </div>
+  </div>
+
+  <!-- VIRTUDES + DERIVADOS -->
+  <div class="cols2" style="margin-top:2mm; align-items:start">
+    <div>
+      <h2>Centelha, Virtudes &amp; Vontade</h2>
+      <div class="trait"><span class="tn"><strong>Centelha</strong> <span class="small">(0–5)</span></span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <h3>Virtudes</h3>
+      <div class="trait"><span class="tn">Compaixão</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Convicção</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Temperança</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="trait"><span class="tn">Valor</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <h3>Força de Vontade</h3>
+      <div class="track"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div>
+      <h2>Derivados</h2>
+      <div class="panel">
+        <div class="derv"><span class="dl">Pontos de Vida</span><span class="dv"></span></div>
+        <div class="formula-mini">25 + (Vigor × 3) &nbsp;|&nbsp; estados: Saudável › Machucado(−1) › Ferido(−2) › Grave(−3) › Crítico(−4) › Caído</div>
+        <div class="track" style="margin-top:1mm"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="derv" style="margin-top:1.5mm"><span class="dl">Defesa (Esquiva)</span><span class="dv"></span></div>
+        <div class="derv"><span class="dl">Defesa (Bloqueio)</span><span class="dv"></span></div>
+        <div class="formula-mini">(Destreza + Hab) × 2 − ⌊soma/4⌋ + Espec. + ⌈Centelha/2⌉ + mods</div>
+        <div class="derv" style="margin-top:1.5mm"><span class="dl">Defesa Mental</span><span class="dv"></span></div>
+        <div class="formula-mini">⌊(Integridade + Vontade)/2⌋ + Centelha &nbsp;·&nbsp; Integridade = Compaixão + Temperança</div>
+        <div class="derv" style="margin-top:1.5mm"><span class="dl">Iniciativa</span><span class="dv"></span></div>
+        <div class="formula-mini">1d6 + Raciocínio + Prontidão</div>
+      </div>
+      <div class="panel">
+        <div class="derv"><span class="dl">Energia &nbsp;<span class="formula-mini">(Cent×3 + Virtudes + Vontade)</span></span><span class="dv"></span></div>
+        <div class="track"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="derv" style="margin-top:1mm"><span class="dl">Mana &nbsp;<span class="formula-mini">(Cent×2 + Vontade)</span></span><span class="dv"></span></div>
+        <div class="track"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 2 ===================== -->
+<section class="page">
+  <h2>Armas</h2>
+  <table class="eq">
+    <thead><tr><th style="width:24%">Arma</th><th>Dano</th><th>Acerto</th><th>Def.</th><th>Speed</th><th>Faixa</th><th style="width:34%">Tags / Notas</th></tr></thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="cols2" style="align-items:start">
+    <div>
+      <h2>Armadura &amp; Escudo</h2>
+      <table class="eq">
+        <thead><tr><th>Item</th><th>Soak</th><th>Prot.</th><th>Penalidades</th></tr></thead>
+        <tbody>
+          <tr><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h2>Arcano — Artes</h2>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+      <div class="srow"><span class="sn" style="border-bottom:.7px solid var(--rule)">&nbsp;</span><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></div>
+    </div>
+  </div>
+
+  <h2>Caminhos &amp; Técnicas</h2>
+  <table class="eq">
+    <thead><tr><th style="width:26%">Caminho</th><th style="width:30%">Técnica</th><th>Banda</th><th>Custo</th><th style="width:26%">Efeito</th></tr></thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="cols2" style="align-items:start">
+    <div>
+      <h2>Equipamento &amp; Posses</h2>
+      <div class="notelines" style="min-height:34mm"></div>
+      <div class="f" style="margin-top:1.5mm"><span class="lbl">XP — Total</span><span class="line"></span><span class="lbl">Gasto</span><span class="line"></span></div>
+    </div>
+    <div>
+      <h2>História &amp; Notas</h2>
+      <div class="notelines" style="min-height:40mm"></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+---
+import { url } from '../lib/site';
+const pfUi = url('pagefind/pagefind-ui.js');
+const pfCss = url('pagefind/pagefind-ui.css');
+const base = url('');
+---
+<button class="btn busca-abrir" aria-label="Buscar (tecle /)" style="width:100%;text-align:left">
+  🔍 Buscar… <kbd style="float:right;opacity:.6">/</kbd>
+</button>
+
+<dialog class="busca-modal" aria-label="Busca">
+  <div class="busca-head">
+    <strong class="cinzel">Busca</strong>
+    <button class="btn busca-fechar" aria-label="Fechar">✕</button>
+  </div>
+  <div id="pagefind"></div>
+  <p class="muted busca-hint">Busca o texto inteiro do site. Conceitos também funcionam: tente <em>willpower</em>, <em>iniciativa</em>, <em>absorção</em>.</p>
+</dialog>
+
+<style>
+  .busca-modal { width: min(40rem, 92vw); border: 1px solid var(--accent); border-radius: 8px; padding: 1rem 1.1rem 1.2rem; background: var(--panel); color: var(--ink); box-shadow: 0 10px 40px var(--shadow); }
+  .busca-modal::backdrop { background: rgba(0,0,0,.45); }
+  .busca-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
+  .busca-hint { font-size: .85rem; margin-top: .6rem; }
+  #pagefind { --pagefind-ui-scale: .9; }
+</style>
+
+<script define:vars={{ pfUi, pfCss, base }}>
+  const dlg = document.querySelector('.busca-modal');
+  let inited = false;
+  async function ensure() {
+    if (inited) return; inited = true;
+    const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = pfCss; document.head.append(link);
+    try {
+      const mod = await import(/* @vite-ignore */ pfUi);
+      new (window.PagefindUI || mod.PagefindUI)({ element: '#pagefind', showSubResults: true, showImages: false, basePath: base + 'pagefind/' });
+    } catch (e) {
+      document.getElementById('pagefind').innerHTML = '<p class="muted">A busca fica disponível no site publicado (índice gerado no build).</p>';
+    }
+  }
+  function open() { ensure(); dlg.showModal(); setTimeout(() => dlg.querySelector('input')?.focus(), 60); }
+  document.querySelectorAll('.busca-abrir').forEach((b) => b.addEventListener('click', open));
+  document.querySelector('.busca-fechar')?.addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+  document.addEventListener('keydown', (e) => {
+    const tag = document.activeElement?.tagName;
+    if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') { e.preventDefault(); open(); }
+  });
+</script>

@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+import { loadData } from '../lib/data';
+const d = await loadData();
+const artes = [...d.artes].sort((a, b) => a.categoria.localeCompare(b.categoria) || a.nome.localeCompare(b.nome));
+---
+<Base title="Artes do Arcano" largura="wide" descricao="Filtre as 18 Artes por categoria e nível.">
+  <h1>Artes do Arcano</h1>
+  <p class="lead">As 18 linhas de feitiçaria. Filtre por categoria ou busque por efeito. O capítulo completo está em <a href={url('arcano')}>O Arcano</a>.</p>
+
+  <div class="filtros panel">
+    <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
+    <fieldset style="display:inline-block;border:1px solid var(--panel-border);border-radius:5px;padding:.3rem .6rem;margin-left:.6rem">
+      <legend style="font-family:Cinzel;font-size:.72rem">Categoria</legend>
+      <label class="chk"><input type="checkbox" data-fa="cat" value="elemental" />elemental</label>
+      <label class="chk"><input type="checkbox" data-fa="cat" value="universal" />universal</label>
+    </fieldset>
+  </div>
+
+  <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(18rem,1fr))">
+    {artes.map((a) => (
+      <a class="panel arte-card" href={url('arcano') + '#' + a.id}
+         data-cat={a.categoria} data-txt={(a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase()}>
+        <div class="cinzel" style="color:var(--accent);font-size:1.1rem">{a.nome}</div>
+        <div class="muted" style="font-size:.8rem">{a.categoria} · conjura com {d.A[a.atributo_conjuracao.id].nome}</div>
+        <div style="font-size:.85rem;margin-top:.3rem">{a.niveis.map((n: any) => n.nome).join(' · ')}</div>
+      </a>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .arte-card { text-decoration: none; color: inherit; display: block; }
+  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; }
+</style>
+
+<script>
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.arte-card'));
+  const q = () => (document.querySelector('[data-fa="q"]') as HTMLInputElement).value.trim().toLowerCase();
+  const cats = () => Array.from(document.querySelectorAll<HTMLInputElement>('[data-fa="cat"]:checked')).map((c) => c.value);
+  const apply = () => { const t = q(), c = cats(); for (const el of cards) el.style.display = (!c.length || c.includes(el.dataset.cat!)) && (!t || el.dataset.txt!.includes(t)) ? '' : 'none'; };
+  document.querySelectorAll('[data-fa]').forEach((e) => e.addEventListener('input', apply));
+  apply();
+</script>

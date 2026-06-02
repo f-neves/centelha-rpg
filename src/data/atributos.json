@@ -1,0 +1,56 @@
+[
+  {
+    "id": "forca",
+    "nome": "Força",
+    "grupo": "fisico",
+    "descricao": "Poder físico bruto — erguer, golpear, quebrar, dobrar o ferro."
+  },
+  {
+    "id": "destreza",
+    "nome": "Destreza",
+    "grupo": "fisico",
+    "descricao": "Agilidade, precisão e coordenação fina do corpo."
+  },
+  {
+    "id": "vigor",
+    "nome": "Vigor",
+    "grupo": "fisico",
+    "descricao": "Resistência, fôlego e saúde; o quanto o corpo aguenta."
+  },
+  {
+    "id": "carisma",
+    "nome": "Carisma",
+    "grupo": "social",
+    "descricao": "A presença que inspira, cativa e arrasta multidões."
+  },
+  {
+    "id": "manipulacao",
+    "nome": "Manipulação",
+    "grupo": "social",
+    "descricao": "A arte de torcer vontades, conduzir e enganar."
+  },
+  {
+    "id": "aparencia",
+    "nome": "Aparência",
+    "grupo": "social",
+    "descricao": "O impacto imediato da presença física sobre os outros."
+  },
+  {
+    "id": "percepcao",
+    "nome": "Percepção",
+    "grupo": "mental",
+    "descricao": "O quanto você nota do mundo à sua volta."
+  },
+  {
+    "id": "inteligencia",
+    "nome": "Inteligência",
+    "grupo": "mental",
+    "descricao": "Saber, raciocínio estruturado, memória e criação."
+  },
+  {
+    "id": "raciocinio",
+    "nome": "Raciocínio",
+    "grupo": "mental",
+    "descricao": "Rapidez mental: reagir, improvisar e pensar sob pressão."
+  }
+]

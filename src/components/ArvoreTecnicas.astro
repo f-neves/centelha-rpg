@@ -1,0 +1,139 @@
+---
+interface Props { caminho: string; }
+const { caminho } = Astro.props;
+---
+<section class="arvore" aria-label="Árvore de Técnicas">
+  <h2>Árvore de Técnicas</h2>
+  <p class="muted" style="margin-top:-.3rem;font-size:.9rem">Cada linha é uma banda. As setas seguem os pré-requisitos. Clique num nó para ver o efeito e a cadeia de XP até ele.</p>
+  <div class="arv-wrap">
+    <svg class="arv-edges" aria-hidden="true"></svg>
+    <div class="arv-grid" data-caminho={caminho}></div>
+  </div>
+  <div class="arv-detalhe panel" hidden></div>
+</section>
+
+<style>
+  .arv-wrap { position: relative; overflow-x: auto; padding: .4rem 0; }
+  .arv-edges { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  .arv-grid { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.1rem; min-width: max-content; }
+  .arv-row { display: flex; gap: .6rem; align-items: center; }
+  .arv-rowlbl { font-family: 'Cinzel'; font-size: .7rem; color: var(--gold); width: 5.5rem; flex: 0 0 5.5rem; text-transform: uppercase; letter-spacing: .05em; }
+  .arv-node { font-family: 'Cinzel'; font-size: .82rem; cursor: pointer; border: 1.5px solid var(--panel-border); background: var(--panel);
+    color: var(--ink); padding: .35rem .6rem; border-radius: 6px; white-space: nowrap; }
+  .arv-node:hover { border-color: var(--accent); }
+  .arv-node[data-tipo='passiva'] { border-style: dashed; }
+  .arv-node[aria-pressed='true'] { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+  .arv-node.chain { box-shadow: 0 0 0 2px var(--gold); }
+  .arv-detalhe { margin-top: 1rem; }
+  .arv-detalhe .x { float: right; cursor: pointer; border: none; background: none; color: var(--ink-soft); font-size: 1.1rem; }
+</style>
+
+<script>
+  import tecnicas from '../data/tecnicas.json';
+  import caminhos from '../data/caminhos.json';
+  import regras from '../data/regras.json';
+
+  type Tec = { id: string; nome: string; caminho: string; banda: number; tipo: string; custo: any; prereq: string[]; texto: string; pendente: boolean };
+  const BASE = import.meta.env.BASE_URL; // /centelha-rpg/
+  const ALL = tecnicas as Tec[];
+  const byId: Record<string, Tec> = Object.fromEntries(ALL.map((t) => [t.id, t]));
+  const camNome: Record<string, string> = Object.fromEntries((caminhos as any[]).map((c) => [c.id, c.nome]));
+  const perBanda = (regras as any).xp.tecnica.valor as number;
+  const destrava: Record<string, string[]> = {};
+  for (const t of ALL) for (const p of t.prereq) (destrava[p] ??= []).push(t.id);
+
+  const grid = document.querySelector<HTMLElement>('.arv-grid');
+  const svg = document.querySelector<SVGSVGElement>('.arv-edges');
+  const det = document.querySelector<HTMLElement>('.arv-detalhe');
+  if (grid && svg && det) {
+    const cam = grid.dataset.caminho!;
+    const mine = ALL.filter((t) => t.caminho === cam);
+    const LABEL: Record<number, string> = { 1: 'Mortal+', 2: 'Herói', 3: 'Semideus', 4: 'Semideus', 5: 'Quase-deus' };
+    const nodeEls: Record<string, HTMLElement> = {};
+
+    for (let b = 1; b <= 5; b++) {
+      const lista = mine.filter((t) => t.banda === b);
+      if (!lista.length) continue;
+      const row = document.createElement('div'); row.className = 'arv-row';
+      const lbl = document.createElement('div'); lbl.className = 'arv-rowlbl'; lbl.textContent = `B${b} · ${LABEL[b]}`;
+      row.append(lbl);
+      for (const t of lista) {
+        const n = document.createElement('button');
+        n.className = 'arv-node'; n.textContent = t.nome; n.dataset.id = t.id; n.dataset.tipo = t.tipo;
+        n.setAttribute('aria-pressed', 'false');
+        n.addEventListener('click', () => select(t.id));
+        row.append(n); nodeEls[t.id] = n;
+      }
+      grid.append(row);
+    }
+
+    const NS = 'http://www.w3.org/2000/svg';
+    function drawEdges(highlight: Set<string> = new Set()) {
+      svg.innerHTML = '';
+      const wrap = svg.parentElement!.getBoundingClientRect();
+      svg.setAttribute('width', String(wrap.width)); svg.setAttribute('height', String(wrap.height));
+      for (const t of mine) {
+        for (const p of t.prereq) {
+          const a = nodeEls[p], bEl = nodeEls[t.id];
+          if (!a || !bEl) continue; // cruzamento externo: não desenha
+          const ra = a.getBoundingClientRect(), rb = bEl.getBoundingClientRect();
+          const x1 = ra.left + ra.width / 2 - wrap.left, y1 = ra.bottom - wrap.top;
+          const x2 = rb.left + rb.width / 2 - wrap.left, y2 = rb.top - wrap.top;
+          const line = document.createElementNS(NS, 'path');
+          line.setAttribute('d', `M${x1} ${y1} C ${x1} ${(y1 + y2) / 2}, ${x2} ${(y1 + y2) / 2}, ${x2} ${y2}`);
+          const on = highlight.has(p) && highlight.has(t.id);
+          line.setAttribute('stroke', on ? 'var(--gold)' : 'var(--rule)');
+          line.setAttribute('stroke-width', on ? '2.2' : '1.2');
+          line.setAttribute('fill', 'none');
+          svg.append(line);
+        }
+      }
+    }
+
+    // fecho de pré-requisitos (intra + cross) → cadeia + XP
+    function closure(id: string): Set<string> {
+      const seen = new Set<string>(); const stack = [id];
+      while (stack.length) {
+        const x = stack.pop()!; if (seen.has(x)) continue; seen.add(x);
+        for (const p of byId[x]?.prereq ?? []) if (byId[p]) stack.push(p);
+      }
+      return seen;
+    }
+    const fmtCusto = (t: Tec) => t.tipo === 'passiva' ? 'passiva'
+      : [t.custo.energia != null ? `${t.custo.energia} Energia` : '', t.custo.vontade ? `+${t.custo.vontade} Vontade` : ''].filter(Boolean).join(' · ');
+
+    function select(id: string) {
+      const t = byId[id];
+      const chain = closure(id);
+      Object.entries(nodeEls).forEach(([nid, el]) => {
+        el.setAttribute('aria-pressed', String(nid === id));
+        el.classList.toggle('chain', chain.has(nid) && nid !== id);
+      });
+      drawEdges(chain);
+      const xp = [...chain].reduce((s, cid) => s + (byId[cid]?.banda ?? 0) * perBanda, 0);
+      const linkTec = (cid: string) => {
+        const tt = byId[cid]; if (!tt) return cid;
+        return `<a href="${BASE}caminhos/${tt.caminho}#${cid}">${tt.nome}${tt.caminho !== cam ? ` <span class="muted">(${camNome[tt.caminho] ?? ''})</span>` : ''}</a>`;
+      };
+      const requer = t.prereq.length ? `<p class="tec-meta">Requer: ${t.prereq.map(linkTec).join(' + ')}</p>` : '';
+      const unlocks = (destrava[id] ?? []).length ? `<p class="tec-meta">Destrava: ${(destrava[id] ?? []).map(linkTec).join(' · ')}</p>` : '';
+      const cadeia = [...chain].map((c) => byId[c]).sort((a, b) => a.banda - b.banda).map((c) => c.nome).join(' → ');
+      det.hidden = false;
+      det.innerHTML =
+        `<button class="x" aria-label="Fechar">✕</button>` +
+        `<div class="cinzel" style="color:var(--accent);font-size:1.1rem">${t.nome}</div>` +
+        `<div style="margin:.2rem 0"><span class="badge banda">Banda ${t.banda}</span> <span class="badge ${t.tipo}">${fmtCusto(t) || t.tipo}</span>${t.pendente ? ' <span class="badge pendente">Rascunho</span>' : ''}</div>` +
+        `<p>${t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</p>` + requer + unlocks +
+        `<hr><p class="tec-meta"><strong>Planejador:</strong> a cadeia completa de pré-requisitos custa <strong>${xp} XP</strong> em Técnicas (${chain.size} no total).</p>` +
+        `<p class="tec-meta">${cadeia}</p>`;
+      det.querySelector('.x')?.addEventListener('click', () => { det.hidden = true; Object.values(nodeEls).forEach((e) => { e.setAttribute('aria-pressed', 'false'); e.classList.remove('chain'); }); drawEdges(); });
+      det.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    requestAnimationFrame(() => drawEdges());
+    let raf = 0;
+    window.addEventListener('resize', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => drawEdges()); });
+    // abre o nó vindo de #id
+    if (location.hash) { const t = byId[location.hash.slice(1)]; if (t && t.caminho === cam) select(t.id); }
+  }
+</script>

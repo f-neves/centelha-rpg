@@ -1,0 +1,209 @@
+{
+  "pisos": {
+    "atributo": 2,
+    "habilidade": 0,
+    "virtude": 1,
+    "vontade": 5,
+    "centelha": 0,
+    "caminho": 0
+  },
+  "limitesCriacao": {
+    "atributo": 4,
+    "habilidade": 3,
+    "centelha": 2
+  },
+  "orcamentoPadrao": 400,
+  "orcamentoCru": 300,
+  "orcamentoHeroico": 500,
+  "progressaoPorSessao": [
+    8,
+    15
+  ],
+  "xp": {
+    "atributo": {
+      "tipo": "mult",
+      "valor": 10
+    },
+    "habilidadePrimaria": {
+      "tipo": "mult",
+      "valor": 5
+    },
+    "habilidadeSecundaria": {
+      "tipo": "mult",
+      "valor": 2
+    },
+    "especialidadePrimaria": {
+      "tipo": "flat",
+      "valor": 10
+    },
+    "especialidadeSecundaria": {
+      "tipo": "flat",
+      "valor": 5
+    },
+    "virtude": {
+      "tipo": "mult",
+      "valor": 5
+    },
+    "vontade": {
+      "tipo": "mult",
+      "valor": 2
+    },
+    "centelha": {
+      "tipo": "mult",
+      "valor": 15
+    },
+    "tecnica": {
+      "tipo": "porBanda",
+      "valor": 5
+    },
+    "arte": {
+      "tipo": "porNivel",
+      "valor": 10
+    }
+  },
+  "dadoArmaPorPeso": {
+    "leve": 1,
+    "media": 2,
+    "pesada": 3
+  },
+  "dificuldade": [
+    {
+      "dif": 5,
+      "desafio": "Fácil",
+      "aaltura": "3 — competente"
+    },
+    {
+      "dif": 10,
+      "desafio": "Média",
+      "aaltura": "6 — bom no ofício"
+    },
+    {
+      "dif": 15,
+      "desafio": "Difícil",
+      "aaltura": "8 — perito"
+    },
+    {
+      "dif": 20,
+      "desafio": "Limite humano",
+      "aaltura": "10 — mestre"
+    },
+    {
+      "dif": 25,
+      "desafio": "Excepcional",
+      "aaltura": "raros humanos"
+    },
+    {
+      "dif": 30,
+      "desafio": "Sobre-humano",
+      "aaltura": "requer Centelha / Caminhos"
+    }
+  ],
+  "bandas": [
+    {
+      "centelha": 1,
+      "bandas": "1–3",
+      "estatura": "Mortal+"
+    },
+    {
+      "centelha": 2,
+      "bandas": "4–6",
+      "estatura": "Herói"
+    },
+    {
+      "centelha": 3,
+      "bandas": "7–9",
+      "estatura": "Semideus"
+    },
+    {
+      "centelha": 4,
+      "bandas": "10–12",
+      "estatura": "Semideus"
+    },
+    {
+      "centelha": 5,
+      "bandas": "13–15",
+      "estatura": "Quase-deus"
+    }
+  ],
+  "ferimentos": [
+    {
+      "minPct": 76,
+      "maxPct": 100,
+      "estado": "Saudável",
+      "penAcao": 0,
+      "penDefesa": 0
+    },
+    {
+      "minPct": 51,
+      "maxPct": 75,
+      "estado": "Machucado",
+      "penAcao": -1,
+      "penDefesa": 0
+    },
+    {
+      "minPct": 26,
+      "maxPct": 50,
+      "estado": "Ferido",
+      "penAcao": -2,
+      "penDefesa": -1
+    },
+    {
+      "minPct": 11,
+      "maxPct": 25,
+      "estado": "Grave",
+      "penAcao": -3,
+      "penDefesa": -2
+    },
+    {
+      "minPct": 1,
+      "maxPct": 10,
+      "estado": "Crítico",
+      "penAcao": -4,
+      "penDefesa": -3
+    },
+    {
+      "minPct": 0,
+      "maxPct": 0,
+      "estado": "Caído",
+      "penAcao": null,
+      "penDefesa": null
+    }
+  ],
+  "derivados": {
+    "pv": {
+      "base": 25,
+      "vigorMult": 3
+    },
+    "defesa": {
+      "atributo": "destreza",
+      "mult": 2,
+      "somaDiv": 4,
+      "especialidade": true,
+      "centelhaCeilDiv": 2
+    },
+    "defesaMental": {
+      "integridade": [
+        "compaixao",
+        "temperanca"
+      ],
+      "div": 2,
+      "maisCentelha": true
+    },
+    "energia": {
+      "centelhaMult": 3,
+      "maisSomaVirtudes": true,
+      "maisVontade": true
+    },
+    "mana": {
+      "centelhaMult": 2,
+      "maisVontade": true
+    },
+    "iniciativa": {
+      "dado": 6,
+      "soma": [
+        "raciocinio",
+        "prontidao"
+      ]
+    }
+  }
+}

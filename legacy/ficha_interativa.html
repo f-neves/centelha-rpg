@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha Interativa — New RPG System D6</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600&display=swap');
+:root{
+  --ink:#322c22; --ink-soft:#5b5141; --parch:#f4ebd4; --parch2:#efe4c8;
+  --sapphire:#1f3f8f; --sapphire-dk:#152a63; --rule:#c9b88a; --box:#ece0bf;
+  --gold:#b08d3a; --red:#9e2b25; --green:#2c6e49;
+}
+*{ box-sizing:border-box; }
+body{ font-family:'EB Garamond',Georgia,serif; color:var(--ink); background:var(--parch2);
+  margin:0; padding:0 0 40px; font-size:15px; line-height:1.3; }
+.wrap{ max-width:1080px; margin:0 auto; background:var(--parch);
+  border-left:1px solid var(--rule); border-right:1px solid var(--rule); padding:0 22px 30px; }
+h1{ font-family:'Cinzel'; font-weight:900; color:var(--sapphire); text-align:center; font-size:26px; margin:0; letter-spacing:.04em; padding-top:18px; }
+.sub{ text-align:center; font-family:'Cinzel'; font-size:10px; letter-spacing:.3em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:14px; }
+h2{ font-family:'Cinzel'; font-weight:700; color:#f7efda; background:var(--sapphire); font-size:13px;
+  letter-spacing:.07em; text-transform:uppercase; padding:5px 10px; margin:22px 0 10px; border-radius:2px; }
+h3{ font-family:'Cinzel'; font-size:11px; color:var(--sapphire-dk); letter-spacing:.05em; text-transform:uppercase;
+  margin:12px 0 5px; border-bottom:1px solid var(--rule); padding-bottom:2px; }
+
+.idrow{ display:grid; grid-template-columns:2fr 2fr 1fr; gap:14px; margin-bottom:6px; }
+.idrow label{ display:flex; flex-direction:column; font-size:10px; font-family:'Cinzel'; letter-spacing:.04em; color:var(--sapphire-dk); text-transform:uppercase; }
+input.txt{ font-family:'EB Garamond'; font-size:15px; border:none; border-bottom:1px solid var(--rule); background:transparent; padding:3px 2px; color:var(--ink); }
+input.txt:focus{ outline:none; border-bottom-color:var(--sapphire); }
+
+/* ---- XP sticky bar ---- */
+.xpbar{ position:sticky; top:0; z-index:10; background:var(--sapphire); color:#f7efda;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding:9px 14px; border-radius:0 0 4px 4px;
+  box-shadow:0 2px 6px rgba(0,0,0,.18); margin:0 -22px 6px; }
+.xpbar .big{ font-family:'Cinzel'; font-weight:700; font-size:15px; }
+.xpbar .big b{ font-size:20px; }
+.xpbar .rem.neg{ color:#ffd0cb; }
+.xpbar .rem.ok{ color:#cfe9d6; }
+.xpbar label{ font-size:12px; font-family:'Cinzel'; letter-spacing:.03em; display:flex; align-items:center; gap:6px; }
+.xpbar input{ width:64px; font-family:'Cinzel'; font-size:14px; text-align:center; border:none; border-radius:3px; padding:3px; }
+.xpbar button{ font-family:'Cinzel'; font-size:11px; background:var(--sapphire-dk); color:#f7efda; border:1px solid #2a4a9e;
+  padding:4px 9px; border-radius:3px; cursor:pointer; }
+.xpbar button:hover{ background:#23408a; }
+.breakdown{ font-size:11px; color:#cdd8ee; }
+
+.cols3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px 26px; }
+.cols2{ display:grid; grid-template-columns:1fr 1fr; gap:8px 26px; align-items:start; }
+@media(max-width:760px){ .cols3{ grid-template-columns:1fr; } .cols2{ grid-template-columns:1fr; } }
+
+/* ---- trait rows ---- */
+.trow{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:2px 0; }
+.trow .nm{ font-size:14.5px; }
+.trow .nm small{ color:var(--ink-soft); font-size:11px; }
+.dots{ white-space:nowrap; display:flex; align-items:center; gap:3px; }
+.dot{ width:16px; height:16px; border:1.4px solid var(--sapphire); border-radius:50%; cursor:pointer; background:transparent; transition:background .08s; flex:0 0 auto; }
+.dot.on{ background:var(--sapphire); }
+.dot.free{ border-color:var(--gold); }
+.dot.on.free{ background:var(--gold); }
+.dot:hover{ box-shadow:0 0 0 2px rgba(31,63,143,.25); }
+/* specialty squares */
+.spec{ display:flex; gap:2px; margin-left:10px; }
+.sq{ width:12px; height:12px; border:1.2px solid var(--ink-soft); cursor:pointer; background:transparent; flex:0 0 auto; border-radius:1px; }
+.sq.on{ background:var(--ink-soft); }
+.sq.dis{ opacity:.3; cursor:not-allowed; }
+.tcost{ font-size:10px; color:var(--ink-soft); width:42px; text-align:right; font-family:'Cinzel'; }
+
+/* ---- panels ---- */
+.panel{ border:1px solid var(--rule); background:rgba(31,63,143,.05); border-left:4px solid var(--sapphire); padding:10px 12px; border-radius:2px; }
+.derv{ display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px dotted var(--rule); }
+.derv .dl{ font-family:'Cinzel'; font-size:11px; color:var(--sapphire-dk); text-transform:uppercase; letter-spacing:.02em; }
+.derv .dv{ font-family:'Cinzel'; font-weight:700; font-size:17px; color:var(--sapphire); }
+.derv .fm{ display:block; font-size:9.5px; color:var(--ink-soft); font-style:italic; font-family:'EB Garamond'; font-weight:400; text-transform:none; letter-spacing:0; }
+
+/* ---- repeaters ---- */
+table.rep{ width:100%; border-collapse:collapse; font-size:13px; }
+table.rep th{ background:var(--sapphire); color:#f7efda; font-family:'Cinzel'; font-size:9.5px; letter-spacing:.04em;
+  text-transform:uppercase; padding:4px 6px; text-align:left; }
+table.rep td{ border-bottom:1px solid var(--rule); padding:2px 6px; }
+table.rep input.txt{ width:100%; }
+table.rep select{ font-family:'EB Garamond'; font-size:13px; border:1px solid var(--rule); border-radius:3px; padding:2px; background:#fff; }
+.addbtn{ font-family:'Cinzel'; font-size:11px; background:var(--box); color:var(--sapphire-dk); border:1px solid var(--rule);
+  padding:4px 10px; border-radius:3px; cursor:pointer; margin-top:6px; }
+.addbtn:hover{ background:#e3d4ab; }
+.rm{ color:var(--red); cursor:pointer; font-weight:700; border:none; background:none; font-size:15px; }
+.note{ font-size:11px; color:var(--ink-soft); font-style:italic; }
+.minicost{ font-family:'Cinzel'; font-size:11px; color:var(--sapphire-dk); }
+.cam{ border:1px solid var(--rule); border-radius:3px; margin-bottom:5px; background:rgba(255,255,255,.25); }
+.cam-head{ padding:6px 10px; font-family:'Cinzel'; font-size:13px; color:var(--sapphire-dk); display:flex; align-items:center; gap:8px; user-select:none; }
+.cam-head[data-camtog]{ cursor:pointer; }
+.cam-head[data-camtog]:hover{ background:rgba(31,63,143,.06); }
+.chev{ cursor:pointer; }
+.chev:hover{ color:var(--sapphire); }
+.cam-meta{ margin-left:auto; font-family:'EB Garamond'; font-size:11px; color:var(--ink-soft); font-style:italic; }
+.cam-body{ padding:6px 10px 9px; border-top:1px dotted var(--rule); }
+.tpill{ display:inline-block; margin:3px 4px 0 0; padding:3px 9px; border:1px solid var(--rule); border-radius:12px; font-size:12px; cursor:pointer; background:#fff; }
+.tpill small{ color:var(--ink-soft); font-size:10px; }
+.tpill.on{ background:var(--sapphire); color:#f7efda; border-color:var(--sapphire); }
+.tpill.on small{ color:#cdd8ee; }
+.tpill:hover{ box-shadow:0 0 0 2px rgba(31,63,143,.2); }
+.fxline{ font-size:12px; padding:1px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>New RPG System D6</h1>
+  <div class="sub">Ficha Interativa de Personagem</div>
+
+  <div class="xpbar">
+    <span class="big">XP gasto: <b id="xpSpent">0</b></span>
+    <label>Orçamento <input type="number" id="xpBudget" value="400"></label>
+    <span class="big">Restante: <b id="xpRem" class="rem ok">400</b></span>
+    <span class="breakdown" id="xpBreak"></span>
+    <button id="resetBtn" title="Zerar a ficha">Resetar</button>
+  </div>
+
+  <div class="idrow">
+    <label>Nome<input class="txt" data-id="nome"></label>
+    <label>Conceito<input class="txt" data-id="conceito"></label>
+    <label>Jogador<input class="txt" data-id="jogador"></label>
+  </div>
+
+  <h2>Atributos <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">(piso 2 · custo nível×10)</span></h2>
+  <div class="cols3" id="attrs"></div>
+
+  <div class="cols2">
+    <div>
+      <h2>Centelha, Virtudes &amp; Vontade</h2>
+      <div id="power"></div>
+    </div>
+    <div>
+      <h2>Derivados <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">(calculados)</span></h2>
+      <div class="panel" id="derived"></div>
+    </div>
+  </div>
+
+  <h2>Habilidades <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">(piso 0 · custo nível×5 · ☐ especialidade ×10)</span></h2>
+  <div class="cols3" id="skills"></div>
+
+  <h2>Habilidades Secundárias <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">(custo nível×2 · esp. ×5)</span></h2>
+  <div class="cols3" id="secondary"></div>
+
+  <h2>Caminhos &amp; Técnicas <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">(custo banda×5)</span></h2>
+  <div id="tecnicas"></div>
+
+  <h2>Arcano — Artes <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">(custo nível×10 · exige Centelha ≥ nível e Ocultismo ≥ nível)</span></h2>
+  <div id="artes"></div>
+
+</div>
+
+<script>
+//// ---------- definitions ----------
+const ATTRS = [
+  ['Força','Físicos'],['Destreza','Físicos'],['Vigor','Físicos'],
+  ['Carisma','Sociais'],['Manipulação','Sociais'],['Aparência','Sociais'],
+  ['Percepção','Mentais'],['Inteligência','Mentais'],['Raciocínio','Mentais'],
+];
+const SKILLS = [
+  ['Briga','Combate'],['Armas de Corte','Combate'],['Armas de Impacto','Combate'],['Armas de Haste','Combate'],
+  ['Armas à Distância','Combate'],['Esquiva','Combate'],['Escudos','Combate'],
+  ['Atletismo','Físicas'],['Resistência','Físicas'],['Furtividade','Físicas'],['Prontidão','Físicas'],['Sobrevivência','Físicas'],
+  ['Lábia','Sociais'],['Oratória','Sociais'],['Etiqueta','Sociais'],['Empatia','Sociais'],['Intimidação','Sociais'],['Manha','Sociais'],
+  ['Investigação','Saber'],['Conhecimentos','Saber'],['Ocultismo','Saber'],['Medicina','Saber'],['Ciências','Saber'],
+  ['Craft','Técnicas'],['Ladinagem','Técnicas'],['Cavalgar','Técnicas'],['Performance','Técnicas'],['Tática','Técnicas'],['Política','Técnicas'],['Comércio','Técnicas'],
+];
+const VIRTUES = ['Compaixão','Convicção','Temperança','Valor'];
+const SECONDARY_LIST = ['Atuação','Sedução','Liderança','Disfarce','Interrogatório','Burocracia','Herbologia','História','Religião','Heráldica','Astronomia','Geografia','Alquimia','Arquitetura','Direito','Bestiário','Estratégia','Genealogia','Folclore','Ferraria','Carpintaria','Costura','Culinária','Joalheria','Couraria','Alvenaria','Mineração','Pesca','Agricultura','Navegação','Marcenaria','Armadureiro','Armeiro','Escrivania','Cartografia','Veterinário','Adestramento','Tocar Instrumento','Canto','Dança','Poesia','Pintura','Escultura','Caligrafia','Contação de Histórias','Jogos','Falsificação','Prestidigitação','Abrir Fechaduras','Contrabando','Apostar','Roubo','Ocultação','Vigilância Urbana','Meditação','Ritualismo','Autocontrole','Concentração','Leitura Corporal','Interpretação de Sonhos'];
+const SUBCAMINHOS = ['Punho de Ferro','Atlas','Quebra-Muralhas','Agarrão do Urso','Sangue Fervente','Vento','Gato','Mão Veloz','Olho de Águia','Dança da Lâmina','Sombra','Pele de Pedra','Coração Incansável','Sangue Imune','Carne Teimosa','Cerne Vital','Voz de Mel','Lenda Viva','Estandarte','Musa','Brasa','Comando','Teia','Serpente das Palavras','Sussurro','Marionete','Máscara','Beleza Cativante','Semblante','Camaleão','Aura','Máscara Impassível','Olho Aguçado','Sentinela','Caçador','Olho da Verdade','Comunhão','Vínculo Animal','Mente Afiada','Erudito','Artesão','Estrategista','Investigador','Reflexo Mental','Improviso','Presságio','Leitura Fria','Mente Serena'];
+const ARTES = ['Fogo','Gelo','Raio','Água','Vento','Terra','Cura','Vida','Morte','Fascinação','Adivinhação','Fortuna','Conjuração','Forças','Matéria','Tempo','Espírito','Proteção'];
+const SECONDARY = [
+['Atuação','Sociais'],['Sedução','Sociais'],['Liderança','Sociais'],['Disfarce','Sociais'],['Interrogatório','Sociais'],
+['Burocracia','Conhecimento'],['Herbologia','Conhecimento'],['História','Conhecimento'],['Religião','Conhecimento'],['Heráldica','Conhecimento'],['Astronomia','Conhecimento'],['Geografia','Conhecimento'],['Alquimia','Conhecimento'],['Arquitetura','Conhecimento'],['Direito','Conhecimento'],['Bestiário','Conhecimento'],['Estratégia','Conhecimento'],['Genealogia','Conhecimento'],['Folclore','Conhecimento'],
+['Ferraria','Ofício'],['Carpintaria','Ofício'],['Costura','Ofício'],['Culinária','Ofício'],['Joalheria','Ofício'],['Couraria','Ofício'],['Alvenaria','Ofício'],['Mineração','Ofício'],['Pesca','Ofício'],['Agricultura','Ofício'],['Navegação','Ofício'],['Marcenaria','Ofício'],['Armadureiro','Ofício'],['Armeiro','Ofício'],['Escrivania','Ofício'],['Cartografia','Ofício'],['Veterinário','Ofício'],['Adestramento','Ofício'],
+['Tocar Instrumento','Expressão'],['Canto','Expressão'],['Dança','Expressão'],['Poesia','Expressão'],['Pintura','Expressão'],['Escultura','Expressão'],['Caligrafia','Expressão'],['Contação de Histórias','Expressão'],
+['Jogos','Subterfúgio'],['Falsificação','Subterfúgio'],['Prestidigitação','Subterfúgio'],['Abrir Fechaduras','Subterfúgio'],['Contrabando','Subterfúgio'],['Apostar','Subterfúgio'],['Roubo','Subterfúgio'],['Ocultação','Subterfúgio'],['Vigilância Urbana','Subterfúgio'],
+['Meditação','Interior'],['Ritualismo','Interior'],['Autocontrole','Interior'],['Concentração','Interior'],['Leitura Corporal','Interior'],['Interpretação de Sonhos','Interior']
+];
+const TECH = {
+'Passo Veloz':['Vento',1],'Salto do Grilo':['Vento',1],'Reflexos de Vento':['Vento',1],'Corrida Vertical':['Vento',2],'Passos sobre Folhas':['Vento',2],'Esquiva Impossível':['Vento',2],'Encontrão Relâmpago':['Vento',2],'Mil Passos':['Vento',3],'Borrão':['Vento',3],'Ataque Relâmpago':['Vento',4],'Passo do Trovão':['Vento',4],'Cavalgar o Vento':['Vento',5],'Velocidade Divina':['Vento',5],
+'Golpe Pesado':['Punho de Ferro',1],'Quebrar Guarda':['Punho de Ferro',1],'Mão de Ferro':['Punho de Ferro',1],'Soco Trovejante':['Punho de Ferro',2],'Esmagar':['Punho de Ferro',2],'Investida Devastadora':['Punho de Ferro',2],'Golpe do Titã':['Punho de Ferro',3],'Punho que Parte Pedra':['Punho de Ferro',3],'Quebra-Montanhas':['Punho de Ferro',4],'Onda de Choque':['Punho de Ferro',4],'Punho do Cataclismo':['Punho de Ferro',5],
+'Tom de Autoridade':['Comando',1],'Ordem Curta':['Comando',1],'Encarar':['Comando',1],'Voz de Comando':['Comando',2],'Submissão':['Comando',2],'Comando Inspirador':['Comando',2],'Comando Irresistível':['Comando',3],'Aterrorizar':['Comando',3],'Dominação':['Comando',4],'Quebrar o Espírito':['Comando',4],'Palavra de Lei':['Comando',5],
+'Pressentimento':['Presságio',1],'Instinto de Sobrevivência':['Presságio',1],'Faro para Mentiras':['Presságio',1],'Reflexos Premonitórios':['Presságio',2],'Pressentir o Golpe':['Presságio',2],'Ler o Momento':['Presságio',2],'Vislumbre':['Presságio',3],'Esquiva Profética':['Presságio',3],'Caminho do Destino':['Presságio',4],'Ler o Fio':['Presságio',4],'Olho do Oráculo':['Presságio',5],
+'Pele Curtida':['Pele de Pedra',1],'Aguentar o Tranco':['Pele de Pedra',1],'Tensionar':['Pele de Pedra',1],'Pele de Pedra (téc.)':['Pele de Pedra',2],'Inquebrantável':['Pele de Pedra',2],'Carne de Granito':['Pele de Pedra',3],'Fortaleza Viva':['Pele de Pedra',4],'Pele Adamantina':['Pele de Pedra',5],
+'Mira Firme':['Olho de Águia',1],'Tiro Rápido':['Olho de Águia',1],'Olho de Alcance':['Olho de Águia',1],'Tiro Perfurante':['Olho de Águia',2],'Disparo Múltiplo':['Olho de Águia',2],'Tiro Impossível':['Olho de Águia',3],'Flecha que Persegue':['Olho de Águia',4],'Chuva de Mil Flechas':['Olho de Águia',5],
+'Primeira Impressão':['Voz de Mel',1],'Palavra Calmante':['Voz de Mel',1],'Charme':['Voz de Mel',1],'Carisma Magnético':['Voz de Mel',2],'Desarmar':['Voz de Mel',2],'Encantamento':['Voz de Mel',3],'Coração nas Mãos':['Voz de Mel',4],'Voz que Move Multidões':['Voz de Mel',5],
+'Sentidos Apurados':['Olho Aguçado',1],'Olhar do Caçador':['Olho Aguçado',1],'Visão na Penumbra':['Olho Aguçado',1],'Ler o Terreno':['Olho Aguçado',2],'Ouvido Absoluto':['Olho Aguçado',2],'Visão Verdadeira':['Olho Aguçado',3],'Clarividência':['Olho Aguçado',4],'Olho que Tudo Vê':['Olho Aguçado',5],
+'Recuperação Acelerada':['Cerne Vital',1],'Ignorar a Dor':['Cerne Vital',1],'Segundo Fôlego':['Cerne Vital',1],'Fechar Feridas':['Cerne Vital',2],'Constituição Férrea':['Cerne Vital',2],'Regeneração':['Cerne Vital',3],'Recompor-se':['Cerne Vital',4],'Imortalidade Tênue':['Cerne Vital',5],
+'Pisar Leve':['Sombra',1],'Esgueirar':['Sombra',1],'Mãos Sutis':['Sombra',1],'Manto de Sombras':['Sombra',2],'Bote Silencioso':['Sombra',2],'Andar entre Olhares':['Sombra',3],'Unir-se à Sombra':['Sombra',4],'Inexistência':['Sombra',5],
+'Postura Fluida':['Dança da Lâmina',1],'Aparar':['Dança da Lâmina',1],'Finta':['Dança da Lâmina',1],'Riposte':['Dança da Lâmina',2],'Desarme':['Dança da Lâmina',2],'Dança entre Lâminas':['Dança da Lâmina',3],'Mil Cortes':['Dança da Lâmina',4],'Lâmina Perfeita':['Dança da Lâmina',5],
+'Fúria':['Sangue Fervente',1],'Ignorar Ferimentos':['Sangue Fervente',1],'Brado de Guerra':['Sangue Fervente',1],'Sede de Sangue':['Sangue Fervente',2],'Investida Furiosa':['Sangue Fervente',2],'Frenesi':['Sangue Fervente',3],'Não Sentir Dor':['Sangue Fervente',4],'Avatar da Carnificina':['Sangue Fervente',5],
+'Presença Imponente':['Lenda Viva',1],'Inspirar':['Lenda Viva',1],'Discurso':['Lenda Viva',1],'Estandarte Vivo':['Lenda Viva',2],'Temor Reverente':['Lenda Viva',2],'Carisma Heroico':['Lenda Viva',3],'Lenda em Vida':['Lenda Viva',4],'Ícone':['Lenda Viva',5],
+'Memória Eidética':['Mente Afiada',1],'Cálculo Veloz':['Mente Afiada',1],'Dedução':['Mente Afiada',1],'Mente Enciclopédica':['Mente Afiada',2],'Ler a Situação':['Mente Afiada',2],'Pensamento Acelerado':['Mente Afiada',3],'Mente Palaciana':['Mente Afiada',4],'Onisciência Momentânea':['Mente Afiada',5],
+'Empatia Selvagem':['Vínculo Animal',1],'Acalmar Fera':['Vínculo Animal',1],'Chamado':['Vínculo Animal',1],'Companheiro':['Vínculo Animal',2],'Falar com os Animais':['Vínculo Animal',2],'Matilha':['Vínculo Animal',3],'Forma Bestial':['Vínculo Animal',4],'Senhor das Feras':['Vínculo Animal',5],
+'Rosto de Pôquer':['Máscara',1],'Fingir':['Máscara',1],'Disfarce Rápido':['Máscara',1],'Mentira Perfeita':['Máscara',2],'Identidade Falsa':['Máscara',2],'Camaleão Social':['Máscara',3],'Roubar Rosto':['Máscara',4],'Mil Faces':['Máscara',5],
+'Força de Carga':['Atlas',1],'Levantamento Poderoso':['Atlas',1],'Arremesso':['Atlas',1],'Carregar o Mundo':['Atlas',2],'Esmagamento':['Atlas',2],'Arrancar':['Atlas',3],'Força Titânica':['Atlas',4],'Atlas':['Atlas',5],
+'Demolidor':['Quebra-Muralhas',1],'Pancada Destrutiva':['Quebra-Muralhas',1],'Romper':['Quebra-Muralhas',1],'Estilhaçar':['Quebra-Muralhas',2],'Abrir Brecha':['Quebra-Muralhas',2],'Esmaga-Pedra':['Quebra-Muralhas',3],'Terremoto':['Quebra-Muralhas',4],'Quebra-Muralhas':['Quebra-Muralhas',5],
+'Pegada de Ferro':['Agarrão do Urso',1],'Imobilizar':['Agarrão do Urso',1],'Projeção':['Agarrão do Urso',1],'Esmagar nos Braços':['Agarrão do Urso',2],'Escudo de Carne':['Agarrão do Urso',2],'Dominar':['Agarrão do Urso',3],'Aperto Esmagador':['Agarrão do Urso',4],'Abraço do Titã':['Agarrão do Urso',5],
+'Equilíbrio Felino':['Gato',1],'Queda de Gato':['Gato',1],'Escalada Veloz':['Gato',1],'Contorção':['Gato',2],'Salto Acrobático':['Gato',2],'Andar de Aranha':['Gato',3],'Imponderável':['Gato',4],'Graça Sobrenatural':['Gato',5],
+'Dedos Ágeis':['Mão Veloz',1],'Truque de Mão':['Mão Veloz',1],'Desarme Rápido':['Mão Veloz',1],'Mãos Borradas':['Mão Veloz',2],'Toque Preciso':['Mão Veloz',2],'Mil Dedos':['Mão Veloz',3],'Mãos Impossíveis':['Mão Veloz',4],'Mão do Prestidigitador Divino':['Mão Veloz',5],
+'Fôlego Profundo':['Coração Incansável',1],'Segundo Vento':['Coração Incansável',1],'Marcha Forçada':['Coração Incansável',1],'Incansável':['Coração Incansável',2],'Pulmões de Ferro':['Coração Incansável',2],'Sem Limites':['Coração Incansável',3],'Vigor Inesgotável':['Coração Incansável',4],'Coração Eterno':['Coração Incansável',5],
+'Estômago de Ferro':['Sangue Imune',1],'Resistir Doença':['Sangue Imune',1],'Aclimatação':['Sangue Imune',1],'Sangue Limpo':['Sangue Imune',2],'Pele Resiliente':['Sangue Imune',2],'Imunidade':['Sangue Imune',3],'Corpo Inóspito':['Sangue Imune',4],'Sangue Divino':['Sangue Imune',5],
+'Aguentar Firme':['Carne Teimosa',1],'Cerrar os Dentes':['Carne Teimosa',1],'De Pé':['Carne Teimosa',1],'Teimosia':['Carne Teimosa',2],'Não Vou Cair':['Carne Teimosa',2],'Vontade de Viver':['Carne Teimosa',3],'Último Suspiro':['Carne Teimosa',4],'Recusa à Morte':['Carne Teimosa',5],
+'Voz de Líder':['Estandarte',1],'Coordenar':['Estandarte',1],'Reunir':['Estandarte',1],'Formação':['Estandarte',2],'Grito de Guerra':['Estandarte',2],'Maestria de Campo':['Estandarte',3],'General':['Estandarte',4],'Estandarte Eterno':['Estandarte',5],
+'Presença Cênica':['Musa',1],'Tocar a Alma':['Musa',1],'Distrair':['Musa',1],'Inspiração Artística':['Musa',2],'Encantar a Multidão':['Musa',2],'Obra-Prima':['Musa',3],'Voz que Cura':['Musa',4],'Canção Imortal':['Musa',5],
+'Centelha':['Brasa',1],'Incitar':['Brasa',1],'Inflamar':['Brasa',1],'Discurso Ardente':['Brasa',2],'Provocação':['Brasa',2],'Fogo nos Corações':['Brasa',3],'Pavio Curto':['Brasa',4],'Incêndio':['Brasa',5],
+'Trama':['Teia',1],'Plantar Ideia':['Teia',1],'Cunha':['Teia',1],'Chantagem':['Teia',2],'Rede de Favores':['Teia',2],'Virar o Jogo':['Teia',3],'Mestre dos Cordéis':['Teia',4],'Teia':['Teia',5],
+'Língua de Prata':['Serpente das Palavras',1],'Torcer':['Serpente das Palavras',1],'Pechinchar':['Serpente das Palavras',1],'Contrato Capcioso':['Serpente das Palavras',2],'Confundir':['Serpente das Palavras',2],'Palavras de Veludo':['Serpente das Palavras',3],'Pacto Inquebrável':['Serpente das Palavras',4],'Voz da Serpente':['Serpente das Palavras',5],
+'Sussurro':['Sussurro',1],'Semear Dúvida':['Sussurro',1],'Inquietar':['Sussurro',1],'Paranoia':['Sussurro',2],'Boato':['Sussurro',2],'Veneno na Mente':['Sussurro',3],'Pesadelo Acordado':['Sussurro',4],'Coro de Sussurros':['Sussurro',5],
+'Sugestão':['Marionete',1],'Ler Desejos':['Marionete',1],'Empurrão Sutil':['Marionete',1],'Compulsão':['Marionete',2],'Fios Invisíveis':['Marionete',2],'Titereiro':['Marionete',3],'Reescrever Desejos':['Marionete',4],'Marionete':['Marionete',5],
+'Magnetismo':['Beleza Cativante',1],'Sedução':['Beleza Cativante',1],'Desarmar com Charme':['Beleza Cativante',1],'Encanto Irresistível':['Beleza Cativante',2],'Olhar Cativante':['Beleza Cativante',2],'Beleza Inebriante':['Beleza Cativante',3],'Visão Divina':['Beleza Cativante',4],'Beleza que Move o Mundo':['Beleza Cativante',5],
+'Porte':['Semblante',1],'Olhar Severo':['Semblante',1],'Imponência':['Semblante',1],'Aura de Comando':['Semblante',2],'Encarar a Morte':['Semblante',2],'Presença Avassaladora':['Semblante',3],'Majestade':['Semblante',4],'Semblante de Deus':['Semblante',5],
+'Disfarce':['Camaleão',1],'Mudar de Cara':['Camaleão',1],'Misturar-se':['Camaleão',1],'Segunda Pele':['Camaleão',2],'Rosto Comum':['Camaleão',2],'Impostor':['Camaleão',3],'Forma Fluida':['Camaleão',4],'Mil Rostos':['Camaleão',5],
+'Aura Sutil':['Aura',1],'Irradiar Calma':['Aura',1],'Irradiar Temor':['Aura',1],'Campo Emocional':['Aura',2],'Presença Tangível':['Aura',2],'Maré Emocional':['Aura',3],'Aura Avassaladora':['Aura',4],'Aura Divina':['Aura',5],
+'Face Neutra':['Máscara Impassível',1],'Esconder Sentir':['Máscara Impassível',1],'Mentira de Olhos':['Máscara Impassível',1],'Inescrutável':['Máscara Impassível',2],'Calma Absoluta':['Máscara Impassível',2],'Véu da Mente':['Máscara Impassível',3],'Máscara Perfeita':['Máscara Impassível',4],'Vazio':['Máscara Impassível',5],
+'Vigilância':['Sentinela',1],'Sentir Perigo':['Sentinela',1],'Olho Atento':['Sentinela',1],'Nunca Desprevenido':['Sentinela',2],'Varredura':['Sentinela',2],'Sexto Sentido':['Sentinela',3],'Olhos por Toda Parte':['Sentinela',4],'Guardião Incansável':['Sentinela',5],
+'Rastreador':['Caçador',1],'Faro':['Caçador',1],'Ler o Rastro':['Caçador',1],'Trilha Fria':['Caçador',2],'Predador':['Caçador',2],'Caça Implacável':['Caçador',3],'Sentidos de Caçada':['Caçador',4],'Olho do Caçador Divino':['Caçador',5],
+'Ler Pessoas':['Olho da Verdade',1],'Farejar Mentira':['Olho da Verdade',1],'Ver Através':['Olho da Verdade',1],'Olho Crítico':['Olho da Verdade',2],'Desmascarar':['Olho da Verdade',2],'Verdade Nua':['Olho da Verdade',3],'Olho que Não Erra':['Olho da Verdade',4],'Visão da Verdade':['Olho da Verdade',5],
+'Sensível':['Comunhão',1],'Ver Auras':['Comunhão',1],'Sentir o Véu':['Comunhão',1],'Olho Espiritual':['Comunhão',2],'Ler o Lugar':['Comunhão',2],'Comunhão':['Comunhão',3],'Olhar Além':['Comunhão',4],'Olho do Vidente':['Comunhão',5],
+'Vasto Saber':['Erudito',1],'Lembrar':['Erudito',1],'Poliglota':['Erudito',1],'Biblioteca Viva':['Erudito',2],'Decifrar':['Erudito',2],'Sábio':['Erudito',3],'Mente Universal':['Erudito',4],'Conhecimento Absoluto':['Erudito',5],
+'Mãos Hábeis':['Artesão',1],'Improvisar':['Artesão',1],'Olho de Artífice':['Artesão',1],'Obra Fina':['Artesão',2],'Reparo Veloz':['Artesão',2],'Mestre Artesão':['Artesão',3],'Engenho Sobre-humano':['Artesão',4],'Forja dos Deuses':['Artesão',5],
+'Mente Tática':['Estrategista',1],'Antecipar':['Estrategista',1],'Plano':['Estrategista',1],'Ler a Batalha':['Estrategista',2],'Emboscada':['Estrategista',2],'Grande Estrategista':['Estrategista',3],'Xeque-Mate':['Estrategista',4],'Mente do General Divino':['Estrategista',5],
+'Olhar Investigativo':['Investigador',1],'Pista':['Investigador',1],'Conectar':['Investigador',1],'Reconstituir':['Investigador',2],'Interrogar':['Investigador',2],'Detetive':['Investigador',3],'Nada Escapa':['Investigador',4],'A Verdade Revelada':['Investigador',5],
+'Mente Rápida':['Reflexo Mental',1],'Reação':['Reflexo Mental',1],'Decisão Instantânea':['Reflexo Mental',1],'Reflexos de Raio':['Reflexo Mental',2],'Pensar e Agir':['Reflexo Mental',2],'Tempo de Sobra':['Reflexo Mental',3],'Mente Acelerada':['Reflexo Mental',4],'Reflexo Divino':['Reflexo Mental',5],
+'Jeitinho':['Improviso',1],'Usar o Cenário':['Improviso',1],'Virar a Mesa':['Improviso',1],'Solução Genial':['Improviso',2],'MacGyver':['Improviso',2],'Sempre uma Saída':['Improviso',3],'Improviso Magistral':['Improviso',4],'Lei de Murphy Reversa':['Improviso',5],
+'Ler o Outro':['Leitura Fria',1],'Adivinhar':['Leitura Fria',1],'Ler Tells':['Leitura Fria',1],'Perfil':['Leitura Fria',2],'Antecipar a Pessoa':['Leitura Fria',2],'Mente Aberta como Livro':['Leitura Fria',3],'Conhecer de Relance':['Leitura Fria',4],'Leitor de Almas':['Leitura Fria',5],
+'Calma':['Mente Serena',1],'Foco':['Mente Serena',1],'Centrar-se':['Mente Serena',1],'Mente Imperturbável':['Mente Serena',2],'Transe':['Mente Serena',2],'Fortaleza Mental':['Mente Serena',3],'Vazio Sereno':['Mente Serena',4],'Mente de Diamante':['Mente Serena',5]
+};
+const CAMTREE={}; Object.entries(TECH).forEach(([t,v])=>{ (CAMTREE[v[0]]=CAMTREE[v[0]]||[]).push([t,v[1]]); });
+Object.values(CAMTREE).forEach(a=>a.sort((x,y)=>x[1]-y[1]));
+const CAM_ORDER=[...new Set(Object.values(TECH).map(v=>v[0]))];
+const OPEN={cam:{},arte:{}};
+const ARTE_DESC={'Fogo':'chamas, calor, combustão','Gelo':'frio, congelar, neve','Raio':'eletricidade, relâmpago, tempestade','Água':'líquidos, marés, névoa','Vento':'ar, rajadas, voo','Terra':'pedra, metal, terremoto','Cura':'sarar feridas, doenças, venenos','Vida':'crescimento, biologia, plantas e carne','Morte':'decadência, necromancia, espíritos','Fascinação':'mente, encanto, ilusão, comando','Adivinhação':'premonição, ver à distância, ler o oculto','Fortuna':'sorte, azar, probabilidade','Conjuração':'mover, teleportar, dobrar o espaço','Forças':'energia cinética, telecinese, escudos','Matéria':'transmutar, moldar e criar substância','Tempo':'acelerar, retardar, vislumbrar','Espírito':'invocar e pactuar com entidades','Proteção':'wards, barreiras, dissipar magia'};
+const ARTE_FX={'Fogo':['Faísca — acende/apaga fogo; dardo flamejante (1d6)','Labareda — jato de fogo em linha (2d6)','Bola de Fogo — explosão em área (3d6); parede de chamas','Tempestade Ígnea — área grande, dano contínuo; imune a fogo','Cataclismo — mar de fogo; coluna/elemental de chamas'],'Cura':['Sarar — estanca sangramento, cura dano leve','Fechar Feridas — cura Letal moderado; suspende a dor','Restaurar — ferimentos graves, doenças, venenos','Regenerar — recompõe membros; doenças mortais','Sopro de Vida — traz o recém-morto; expurga quase tudo'],'Fascinação':['Sugestão — impulso sutil; distrai','Encanto — o alvo o vê como amigo','Comando — ordem resistível só com Vontade','Ilusão Plena — ilusões convincentes ou domínio','Reescrever a Mente — altera memórias e lealdades'],'Fortuna':['Empurrãozinho — re-role um dado ou imponha −1','Sorte & Azar — +1d6 a um aliado ou −1d6 a um inimigo','Destino Torto — força repetir uma rolagem','Maré da Sorte — coincidências favoráveis por uma cena','Senhor do Acaso — torna o quase-impossível certo'],
+'Gelo':['Lasca de Gelo — resfria, congela água rasa; dardo (1d6)','Rajada Gélida — cone de frio (2d6), desacelera','Prisão de Gelo — aprisiona um alvo; muralha de gelo','Nevasca — tempestade gélida em área','Inverno Eterno — congela uma grande área; imobiliza um campo'],
+'Raio':['Faísca — choque que atordoa; dardo (1d6)','Relâmpago — raio em linha (2d6)','Corrente — salta entre vários alvos (3d6 dividido)','Tempestade — relâmpagos do céu numa área','Fúria de Zeus — descarga cataclísmica'],
+'Água':['Manipular Água — move e molda água; jato sob pressão','Onda — empurra/derruba; cria névoa','Respirar Água — respira submerso; controla correntes','Maremoto — grande onda; afoga uma área','Senhor dos Mares — comanda rios e mares'],
+'Vento':['Brisa — rajadas que empurram, apagam, carregam som','Vendaval — desvia projéteis; rajada cortante (2d6)','Sustentar — plana e levita por curtos períodos','Ciclone — tornado que ergue e arremessa','Senhor dos Céus — voa; comanda tempestades de vento'],
+'Terra':['Moldar Terra — molda terra/pedra; arremessa pedras (1d6)','Muralha de Pedra — ergue barreiras; abre o chão','Terremoto Local — sacode e fende o solo','Moldar Metal — dobra e molda metal','Senhor da Terra — remodela o terreno'],
+'Vida':['Acelerar Vida — faz plantas crescerem; cura leve','Despertar — anima plantas para enredar','Moldar Carne — altera corpos vivos','Florescer — transforma um ermo em floresta','Dádiva da Vida — cura em massa; vida exuberante'],
+'Morte':['Toque Mórbido — decomposição; dreno (1d6 + cura você)','Enfraquecer — adoece o alvo; fala com mortos recentes','Erguer Morto — anima um cadáver; aura de medo','Praga — doença e murchez numa área','Ceifador — ceifa a vida; ergue uma legião'],
+'Adivinhação':['Pressentir — sente perigo e mentiras','Vidência — vê eventos distantes','Ler o Destino — vislumbra futuros prováveis','Olho Distante — observa lugar conhecido em tempo real','Oráculo — responde sobre passado e futuro'],
+'Conjuração':['Telecinese Leve — move objetos pequenos','Passo Brusco — teletransporte curto visível','Convocar — traz objeto distante; fenda curta','Portal — entre dois lugares próximos','Dobrar o Espaço — teletransporte longo de grupo'],
+'Forças':['Empurrão de Força — empurra/segura; escudo breve','Telecinese — move e arremessa objetos pesados','Escudo de Força — barreira; impacto cinético (3d6)','Esmagar — comprime alvo/objeto','Dominar Forças — manipula gravidade e cinética'],
+'Matéria':['Alterar Matéria — cor, textura, temperatura','Transmutar — converte material em semelhante','Moldar — reformula objetos; cria itens simples','Criar Substância — conjura matéria','Alquimia Suprema — transmuta qualquer matéria'],
+'Tempo':['Apressar/Retardar — acelera ou atrasa um alvo','Instante — ação extra; congela objeto por segundos','Bolha Temporal — acelera/retarda área pequena','Reverter — desfaz alguns segundos','Senhor do Tempo — para o tempo brevemente'],
+'Espírito':['Sentir Espíritos — percebe e fala com espíritos','Pacto Menor — invoca espírito/elemental menor','Vincular — liga espírito a objeto; bane fracos','Invocar — chama espírito poderoso como aliado','Senhor dos Espíritos — comanda hostes; abre portas'],
+'Proteção':['Salvaguarda — ward pessoal; dissipa magia fraca','Barreira — campo protetor contra ataques','Refúgio — área segura que repele ameaças','Dissipar — anula/enfraquece magias','Santuário — protege um local; barreira quase impenetrável']};
+const slug = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'_');
+
+// cost of buying a dot-trait from floor F up to value V at multiplier M (cost per new dot = newvalue × M)
+function dotCost(F,V,M){ let c=0; for(let v=F+1; v<=V; v++) c += v*M; return c; }
+
+//// ---------- state ----------
+const DEFAULT = () => ({
+  id:{}, attrs:{}, skills:{}, spec:{}, skills2:{}, spec2:{}, virtues:{}, willpower:5, centelha:0,
+  secondary:[], tech:{}, arte:{}, budget:400
+});
+ATTRS.forEach(([n])=>{}); // placeholder
+let S;
+function fresh(){
+  S = DEFAULT();
+  ATTRS.forEach(([n])=> S.attrs[slug(n)] = 2);
+  SKILLS.forEach(([n])=>{ S.skills[slug(n)] = 0; S.spec[slug(n)] = 0; });
+  VIRTUES.forEach(n=> S.virtues[slug(n)] = 1);
+  SECONDARY.forEach(([n])=>{ S.skills2[slug(n)]=0; S.spec2[slug(n)]=0; });
+}
+function normalize(){
+  if(!S.skills2)S.skills2={}; if(!S.spec2)S.spec2={};
+  SECONDARY.forEach(([n])=>{ const k=slug(n); if(S.skills2[k]==null)S.skills2[k]=0; if(S.spec2[k]==null)S.spec2[k]=0; });
+  if(!S.tech){ S.tech={}; if(Array.isArray(S.tecnicas)) S.tecnicas.forEach(r=>{ if(r&&r.name&&TECH[r.name]) S.tech[r.name]=true; }); }
+  if(!S.arte){ S.arte={}; if(Array.isArray(S.artes)) S.artes.forEach(r=>{ if(r&&r.name) S.arte[r.name]=r.lvl||0; }); }
+}
+function load(){
+  try{ const raw = localStorage.getItem('nrsd6_ficha'); if(raw){ S = JSON.parse(raw); return true; } }catch(e){}
+  return false;
+}
+function save(){ try{ localStorage.setItem('nrsd6_ficha', JSON.stringify(S)); }catch(e){} }
+
+//// ---------- dot/square builders ----------
+function dotsHTML(kind, key, value, max, floor){
+  let h = '<span class="dots" data-kind="'+kind+'" data-key="'+key+'">';
+  for(let d=1; d<=max; d++){
+    let cls='dot'+(d<=value?' on':'')+(d<=floor?' free':'');
+    h += '<span class="'+cls+'" data-d="'+d+'"></span>';
+  }
+  h += '</span>';
+  return h;
+}
+function specHTML(key, value, maxAllowed){
+  let h='<span class="spec" data-spec="'+key+'">';
+  for(let d=1; d<=5; d++){
+    let dis = d>maxAllowed;
+    let cls='sq'+(d<=value?' on':'')+(dis?' dis':'');
+    h += '<span class="'+cls+'" data-d="'+d+'"></span>';
+  }
+  h+='</span>';
+  return h;
+}
+
+//// ---------- render ----------
+function renderAttrs(){
+  const groups={'Físicos':[],'Sociais':[],'Mentais':[]};
+  ATTRS.forEach(([n,g])=> groups[g].push(n));
+  let html='';
+  for(const g of ['Físicos','Sociais','Mentais']){
+    html+='<div><h3>'+g+'</h3>';
+    for(const n of groups[g]){ const k=slug(n);
+      html+='<div class="trow"><span class="nm">'+n+'</span>'+dotsHTML('attr',k,S.attrs[k],5,2)+'</div>';
+    }
+    html+='</div>';
+  }
+  document.getElementById('attrs').innerHTML=html;
+}
+function renderSkills(){
+  const order=['Combate','Físicas','Sociais','Saber','Técnicas'];
+  const groups={}; order.forEach(o=>groups[o]=[]);
+  SKILLS.forEach(([n,g])=>groups[g].push(n));
+  // split into 3 columns roughly: col1 Combate+Físicas, col2 Sociais+Saber, col3 Técnicas
+  const cols=[['Combate','Físicas'],['Sociais','Saber'],['Técnicas']];
+  let html='';
+  for(const col of cols){
+    html+='<div>';
+    for(const g of col){
+      html+='<h3>'+g+'</h3>';
+      for(const n of groups[g]){ const k=slug(n);
+        html+='<div class="trow"><span class="nm">'+n+'</span><span style="display:flex;align-items:center">'
+          +dotsHTML('skill',k,S.skills[k],5,0)+specHTML(k,S.spec[k],S.skills[k])+'</span></div>';
+      }
+    }
+    html+='</div>';
+  }
+  document.getElementById('skills').innerHTML=html;
+}
+function renderPower(){
+  let html='';
+  html+='<div class="trow"><span class="nm"><b>Centelha</b> <small>(0–5)</small></span>'+dotsHTML('centelha','centelha',S.centelha,5,0)+'</div>';
+  html+='<h3>Virtudes</h3>';
+  VIRTUES.forEach(n=>{ const k=slug(n);
+    html+='<div class="trow"><span class="nm">'+n+'</span>'+dotsHTML('virtue',k,S.virtues[k],5,1)+'</div>';
+  });
+  html+='<h3>Força de Vontade <small style="font-weight:400">(piso 5 · ×2)</small></h3>';
+  html+='<div class="trow"><span class="nm">Vontade</span>'+dotsHTML('willpower','willpower',S.willpower,10,5)+'</div>';
+  document.getElementById('power').innerHTML=html;
+}
+function renderSecondary(){
+  const order=['Sociais','Conhecimento','Ofício','Expressão','Subterfúgio','Interior'];
+  const groups={}; order.forEach(g=>groups[g]=[]);
+  SECONDARY.forEach(([n,g])=>groups[g].push(n));
+  const cols=[['Sociais','Conhecimento'],['Ofício'],['Expressão','Subterfúgio','Interior']];
+  let html='';
+  for(const col of cols){ html+='<div>';
+    for(const g of col){ html+='<h3>'+g+'</h3>';
+      for(const n of groups[g]){ const k=slug(n);
+        html+='<div class="trow"><span class="nm">'+n+'</span><span style="display:flex;align-items:center">'
+          +dotsHTML('skill2',k,S.skills2[k]||0,5,0)+specHTML('2_'+k,S.spec2[k]||0,S.skills2[k]||0)+'</span></div>';
+      }
+    }
+    html+='</div>';
+  }
+  document.getElementById('secondary').innerHTML=html;
+}
+function renderCaminhos(){
+  let html='';
+  CAM_ORDER.forEach(cam=>{
+    const techs=CAMTREE[cam]; const sel=techs.filter(([t])=>S.tech[t]);
+    const cost=sel.reduce((s,[t,b])=>s+b*5,0); const open=OPEN.cam[cam];
+    html+='<div class="cam"><div class="cam-head" data-camtog="'+cam.replace(/"/g,'&quot;')+'">'
+      +'<span class="chev">'+(open?'▾':'▸')+'</span><span>'+cam+'</span>'
+      +'<span class="cam-meta">'+(sel.length?(sel.length+' téc · '+cost+' XP'):'—')+'</span></div>';
+    html+='<div class="cam-body" style="display:'+(open?'block':'none')+'">';
+    techs.forEach(([t,b])=>{ html+='<span class="tpill'+(S.tech[t]?' on':'')+'" data-tech="'+t.replace(/"/g,'&quot;')+'">'+t+' <small>b'+b+' · '+(b*5)+'</small></span>'; });
+    html+='</div></div>';
+  });
+  document.getElementById('tecnicas').innerHTML=html;
+}
+function renderArtes(){
+  let html='';
+  ARTES.forEach(art=>{
+    const lvl=S.arte[art]||0; const cost=dotCost(0,lvl,10); const open=OPEN.arte[art];
+    html+='<div class="cam"><div class="cam-head">'
+      +'<span class="chev" data-artetog="'+art.replace(/"/g,'&quot;')+'">'+(open?'▾':'▸')+' '+art+'</span>'
+      +dotsHTML('arte2',art,lvl,5,0)
+      +'<span class="cam-meta">'+(lvl?('nível '+lvl+' · '+cost+' XP'):'—')+'</span></div>';
+    html+='<div class="cam-body" style="display:'+(open?'block':'none')+'">';
+    const fx=ARTE_FX[art];
+    if(fx){ for(let i=0;i<5;i++){ const hi=(i+1<=lvl)?' style="color:var(--sapphire-dk);font-weight:600"':''; html+='<div class="fxline"'+hi+'>'+(i+1)+' — '+fx[i]+'</div>'; } }
+    else { html+='<div class="fxline note" style="font-style:italic;color:var(--ink-soft)">'+(ARTE_DESC[art]||'')+' — efeitos por nível a detalhar</div>'; }
+    html+='</div></div>';
+  });
+  document.getElementById('artes').innerHTML=html;
+}
+
+//// ---------- derived & XP ----------
+const A = n => S.attrs[slug(n)]||0;
+const SK = n => S.skills[slug(n)]||0;
+const SP = n => S.spec[slug(n)]||0;
+const VI = n => S.virtues[slug(n)]||0;
+
+function renderDerived(){
+  const vigor=A('Vigor'), des=A('Destreza'), rac=A('Raciocínio');
+  const esq=SK('Esquiva'), pront=SK('Prontidão'), espEsq=SP('Esquiva');
+  const integridade=VI('Compaixão')+VI('Temperança');
+  const virtSum=VIRTUES.reduce((s,n)=>s+VI(n),0);
+  const W=S.willpower, C=S.centelha;
+  const pv=25+3*vigor;
+  const somaEsq=des+esq;
+  const defEsq=somaEsq*2 - Math.floor(somaEsq/4) + espEsq + Math.ceil(C/2);
+  const defMental=Math.floor((integridade+W)/2)+C;
+  const energia=3*C+virtSum+W;
+  const mana=2*C+W;
+  const ini=rac+pront;
+  document.getElementById('derived').innerHTML =
+    row('Pontos de Vida',pv,'25 + Vigor×3')
+    + row('Defesa (Esquiva)',defEsq,'(Des+Esquiva)×2 − ⌊/4⌋ + esp + ⌈Cent/2⌉ + mods')
+    + row('Defesa Mental',defMental,'⌊(Integridade '+integridade+' + Vontade)/2⌋ + Centelha')
+    + row('Energia',energia,'Centelha×3 + Virtudes('+virtSum+') + Vontade')
+    + row('Mana',mana,'Centelha×2 + Vontade')
+    + row('Iniciativa','1d6 + '+ini,'+ Raciocínio + Prontidão');
+}
+function row(l,v,fm){ return '<div class="derv"><span class="dl">'+l+'<span class="fm">'+fm+'</span></span><span class="dv">'+v+'</span></div>'; }
+
+function recompute(){
+  let xpAttr=0,xpSkill=0,xpSpec=0,xpVirt=0,xpWill=0,xpCent=0,xpSec=0,xpTec=0,xpArte=0;
+  ATTRS.forEach(([n])=> xpAttr+=dotCost(2,S.attrs[slug(n)],10));
+  SKILLS.forEach(([n])=>{ const k=slug(n); xpSkill+=dotCost(0,S.skills[k],5); xpSpec+=(S.spec[k]||0)*10; });
+  VIRTUES.forEach(n=> xpVirt+=dotCost(1,S.virtues[slug(n)],5));
+  xpWill=dotCost(5,S.willpower,2);
+  xpCent=dotCost(0,S.centelha,15);
+  SECONDARY.forEach(([n])=>{ const k=slug(n); xpSec+=dotCost(0,S.skills2[k]||0,2)+(S.spec2[k]||0)*5; });
+  Object.keys(S.tech).forEach(t=>{ if(S.tech[t]&&TECH[t]) xpTec+=TECH[t][1]*5; });
+  ARTES.forEach(a=> xpArte+=dotCost(0,S.arte[a]||0,10));
+  const total=xpAttr+xpSkill+xpSpec+xpVirt+xpWill+xpCent+xpSec+xpTec+xpArte;
+  document.getElementById('xpSpent').textContent=total;
+  const rem=(S.budget||0)-total;
+  const remEl=document.getElementById('xpRem');
+  remEl.textContent=rem; remEl.className='rem '+(rem<0?'neg':'ok');
+  document.getElementById('xpBreak').innerHTML=
+    'Atrib '+xpAttr+' · Perícias '+(xpSkill+xpSpec)+' · Virtudes '+xpVirt+' · Vontade '+xpWill+' · Centelha '+xpCent
+    +(xpSec?' · Secund. '+xpSec:'')+(xpTec?' · Técnicas '+xpTec:'')+(xpArte?' · Artes '+xpArte:'');
+  renderDerived();
+  save();
+}
+
+//// ---------- update a single dot row in place ----------
+function refreshDots(kind,key){
+  const span=document.querySelector('.dots[data-kind="'+kind+'"][data-key="'+key+'"]');
+  if(!span) return;
+  let val=0,floor=0;
+  if(kind==='attr'){val=S.attrs[key];floor=2;}
+  else if(kind==='skill'){val=S.skills[key];floor=0;}
+  else if(kind==='virtue'){val=S.virtues[key];floor=1;}
+  else if(kind==='centelha'){val=S.centelha;floor=0;}
+  else if(kind==='willpower'){val=S.willpower;floor=5;}
+  else if(kind==='sec'){val=S.secondary[+key].lvl||0;floor=0;}
+  else if(kind==='arte'){val=S.artes[+key].lvl||0;floor=0;}
+  span.querySelectorAll('.dot').forEach(d=>{ const dd=+d.dataset.d;
+    d.classList.toggle('on',dd<=val); d.classList.toggle('free',dd<=floor); });
+}
+
+//// ---------- interactions ----------
+function setDot(kind,key,d){
+  const get=()=>{
+    if(kind==='attr')return [S.attrs[key],2];
+    if(kind==='skill')return [S.skills[key],0];
+    if(kind==='skill2')return [S.skills2[key]||0,0];
+    if(kind==='virtue')return [S.virtues[key],1];
+    if(kind==='centelha')return [S.centelha,0];
+    if(kind==='willpower')return [S.willpower,5];
+    if(kind==='sec')return [S.secondary[+key].lvl||0,0];
+    if(kind==='arte2')return [S.arte[key]||0,0];
+  };
+  let [val,floor]=get();
+  let nv = (d<=floor) ? floor : (val===d ? d-1 : d);
+  if(nv<floor) nv=floor;
+  if(kind==='attr')S.attrs[key]=nv;
+  else if(kind==='skill'){S.skills[key]=nv; if((S.spec[key]||0)>nv)S.spec[key]=nv; renderSkills();}
+  else if(kind==='skill2'){S.skills2[key]=nv; if((S.spec2[key]||0)>nv)S.spec2[key]=nv; renderSecondary();}
+  else if(kind==='virtue')S.virtues[key]=nv;
+  else if(kind==='centelha')S.centelha=nv;
+  else if(kind==='willpower')S.willpower=nv;
+  else if(kind==='sec'){S.secondary[+key].lvl=nv; if((S.secondary[+key].spec||0)>nv)S.secondary[+key].spec=nv; renderSecondary();}
+  else if(kind==='arte2'){S.arte[key]=nv; renderArtes();}
+  if(kind==='attr'||kind==='virtue'||kind==='centelha'||kind==='willpower') refreshDots(kind,key);
+  recompute();
+}
+function setSpec(key,d){
+  if(key.indexOf('2_')===0){ const sl=key.slice(2); const cur=S.spec2[sl]||0;
+    let nv=(cur===d?d-1:d); if(nv>(S.skills2[sl]||0))nv=S.skills2[sl]||0; if(nv<0)nv=0; S.spec2[sl]=nv; renderSecondary();
+  } else { const cur=S.spec[key]||0; let nv=(cur===d?d-1:d); if(nv>(S.skills[key]||0))nv=S.skills[key]||0; if(nv<0)nv=0; S.spec[key]=nv; renderSkills(); }
+  recompute();
+}
+
+document.addEventListener('click',e=>{
+  const dot=e.target.closest('.dot');
+  if(dot){ const span=dot.closest('.dots'); setDot(span.dataset.kind, span.dataset.key, +dot.dataset.d); return; }
+  const sq=e.target.closest('.sq');
+  if(sq && !sq.classList.contains('dis')){ const sp=sq.closest('.spec'); setSpec(sp.dataset.spec, +sq.dataset.d); return; }
+  const ct=e.target.closest('[data-camtog]'); if(ct){ OPEN.cam[ct.dataset.camtog]=!OPEN.cam[ct.dataset.camtog]; renderCaminhos(); return; }
+  const at=e.target.closest('[data-artetog]'); if(at){ OPEN.arte[at.dataset.artetog]=!OPEN.arte[at.dataset.artetog]; renderArtes(); return; }
+  const tp=e.target.closest('.tpill'); if(tp){ S.tech[tp.dataset.tech]=!S.tech[tp.dataset.tech]; renderCaminhos(); recompute(); return; }
+});
+document.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.dataset.id!==undefined){ S.id[t.dataset.id]=t.value; save(); }
+});
+document.getElementById('xpBudget').addEventListener('input',e=>{ S.budget=+e.target.value||0; recompute(); });
+document.getElementById('resetBtn').onclick=()=>{ if(confirm('Zerar a ficha e voltar aos pisos iniciais?')){ fresh(); localStorage.removeItem('nrsd6_ficha'); boot(); } };
+
+//// ---------- boot ----------
+function buildDatalists(){
+  const mk=(id,arr)=>{ let dl=document.getElementById(id); if(!dl){ dl=document.createElement('datalist'); dl.id=id; document.body.appendChild(dl); }
+    dl.innerHTML=arr.map(o=>'<option value="'+o.replace(/"/g,'&quot;')+'">').join(''); };
+  mk('camList',SUBCAMINHOS); mk('tecList',Object.keys(TECH)); mk('arteList',ARTES);
+}
+function boot(){
+  normalize();
+  buildDatalists();
+  renderAttrs(); renderSkills(); renderPower(); renderSecondary(); renderCaminhos(); renderArtes();
+  // restore identity + budget inputs
+  document.querySelectorAll('input.txt[data-id]').forEach(inp=>{ inp.value=S.id[inp.dataset.id]||''; });
+  document.getElementById('xpBudget').value=S.budget||400;
+  recompute();
+}
+if(!load()) fresh();
+boot();
+</script>
+</body>
+</html>

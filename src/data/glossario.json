@@ -1,0 +1,202 @@
+[
+  {
+    "id": "ticks",
+    "termo": "Ticks",
+    "aliases": [
+      "speed",
+      "tempo de ação",
+      "linha do tempo"
+    ],
+    "definicao": "Unidade de tempo do combate. Cada ação custa um número de Ticks (a Speed); depois de agir, você só joga de novo quando eles passam."
+  },
+  {
+    "id": "iniciativa",
+    "termo": "Iniciativa",
+    "aliases": [
+      "ordem de ação"
+    ],
+    "definicao": "1d6 + Raciocínio + Prontidão no início do combate; define a ordem e a distância em Ticks até cada um agir."
+  },
+  {
+    "id": "pool",
+    "termo": "Pool",
+    "aliases": [
+      "dados",
+      "pool de dados"
+    ],
+    "definicao": "O punhado de d6 que você rola: ⌊(Atributo + Habilidade) ÷ 2⌋ dados, +2 fixo se a soma for ímpar."
+  },
+  {
+    "id": "margem",
+    "termo": "Margem",
+    "aliases": [
+      "graus de sucesso"
+    ],
+    "definicao": "Cada 6 pontos acima do alvo é uma Margem — em combate vira +1d6 de dano; fora dele, um efeito melhor."
+  },
+  {
+    "id": "dificuldade",
+    "termo": "Dificuldade",
+    "aliases": [
+      "dif",
+      "alvo"
+    ],
+    "definicao": "O alvo de uma tarefa, na mesma régua de Atributo + Habilidade (5 fácil, 10 média, 20 limite humano)."
+  },
+  {
+    "id": "soak",
+    "termo": "Soak",
+    "aliases": [
+      "absorção",
+      "redução de dano"
+    ],
+    "definicao": "Absorção de dano: Vigor contra Impacto, metade do Vigor contra letal; a armadura soma mais."
+  },
+  {
+    "id": "penetracao",
+    "termo": "Penetração",
+    "aliases": [
+      "pen",
+      "perfuração"
+    ],
+    "definicao": "Atributo de armas perfurantes; se não vencer a Proteção da armadura, o dano perfurante é anulado."
+  },
+  {
+    "id": "ruptura",
+    "termo": "Ruptura",
+    "aliases": [
+      "crush"
+    ],
+    "definicao": "Tag (Crush) que ignora todo o Soak de impacto da armadura — a resposta às placas."
+  },
+  {
+    "id": "defesa",
+    "termo": "Defesa",
+    "aliases": [
+      "esquiva",
+      "bloqueio"
+    ],
+    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 − ⌊soma÷4⌋ + Especialidade + ⌈Centelha÷2⌉."
+  },
+  {
+    "id": "defesa-mental",
+    "termo": "Defesa Mental",
+    "aliases": [
+      "resistência mental"
+    ],
+    "definicao": "Muro passivo contra manipulação e poderes mentais: ⌊(Integridade + Vontade) ÷ 2⌋ + Centelha."
+  },
+  {
+    "id": "centelha",
+    "termo": "Centelha",
+    "aliases": [
+      "essência",
+      "spark",
+      "poder"
+    ],
+    "definicao": "O nível de poder pessoal (0–5), do mortal ao semideus. Destrava as bandas dos Caminhos e dimensiona Energia e Mana."
+  },
+  {
+    "id": "vontade",
+    "termo": "Vontade",
+    "aliases": [
+      "willpower",
+      "força de vontade"
+    ],
+    "definicao": "Força de Vontade — reserva (piso 5) gasta para melhorar ações, resistir a efeitos mentais, ignorar penalidades e conjurar."
+  },
+  {
+    "id": "energia",
+    "termo": "Energia",
+    "aliases": [
+      "reserva de técnicas"
+    ],
+    "definicao": "Combustível dos Caminhos mundanos: (Centelha × 3) + soma das Virtudes + Vontade."
+  },
+  {
+    "id": "mana",
+    "termo": "Mana",
+    "aliases": [
+      "reserva mágica"
+    ],
+    "definicao": "Combustível do Arcano: (Centelha × 2) + Vontade. Conjurar custa Mana = nível do efeito."
+  },
+  {
+    "id": "integridade",
+    "termo": "Integridade",
+    "aliases": [
+      "compostura"
+    ],
+    "definicao": "Compaixão + Temperança — bússola moral e compostura; sustenta a Defesa Mental."
+  },
+  {
+    "id": "especialidade",
+    "termo": "Especialidade",
+    "aliases": [
+      "especialização"
+    ],
+    "definicao": "Treino focado: por ponto, role +1d6 e descarte o menor (até o nível na Habilidade). Em valores fixos, +1 por ponto."
+  },
+  {
+    "id": "banda",
+    "termo": "Banda",
+    "aliases": [
+      "faixa de poder"
+    ],
+    "definicao": "Faixa de poder de uma Técnica (1–5). A banda N exige Centelha ≥ ⌈N ÷ 3⌉."
+  },
+  {
+    "id": "caminho",
+    "termo": "Caminho",
+    "aliases": [
+      "subcaminho",
+      "trilha de técnicas"
+    ],
+    "definicao": "Árvore temática de Técnicas ancorada num atributo, do mundano ao divino."
+  },
+  {
+    "id": "tecnica",
+    "termo": "Técnica",
+    "aliases": [
+      "poder",
+      "manobra",
+      "charm"
+    ],
+    "definicao": "Cada nó de um Caminho: uma manobra, dom ou poder, com banda, tipo, custo e pré-requisitos."
+  },
+  {
+    "id": "arte",
+    "termo": "Arte",
+    "aliases": [
+      "feitiçaria",
+      "magia",
+      "path"
+    ],
+    "definicao": "Linha de feitiçaria do Arcano, comprada e evoluída em separado, em 5 níveis."
+  },
+  {
+    "id": "virtude",
+    "termo": "Virtude",
+    "aliases": [
+      "virtudes"
+    ],
+    "definicao": "Compaixão, Convicção, Temperança, Valor (1–5): movem a alma e alimentam resistências e façanhas."
+  },
+  {
+    "id": "stunt",
+    "termo": "Stunt",
+    "aliases": [
+      "manobra criativa"
+    ],
+    "definicao": "Bônus por descrever a ação com criatividade e uso do cenário (+2 fixo, +1d6 ou +2d6)."
+  },
+  {
+    "id": "valor-passivo",
+    "termo": "Valor Passivo",
+    "aliases": [
+      "passiva",
+      "percepção passiva"
+    ],
+    "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 do outro serve de alvo."
+  }
+]

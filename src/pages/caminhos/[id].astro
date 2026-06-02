@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import { url } from '../../lib/site';
+import { loadData, BANDA_LABEL, caminhoComArtigo } from '../../lib/data';
+import TecnicaItem from '../../components/TecnicaItem.astro';
+import ArvoreTecnicas from '../../components/ArvoreTecnicas.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const caminhos = await getCollection('caminhos');
+  return caminhos.map((c) => ({ params: { id: c.id }, props: { id: c.id } }));
+}
+const { id } = Astro.props;
+const d = await loadData();
+const cam = d.C[id];
+const techs = d.porCaminho[id] ?? [];
+const bandas = [1, 2, 3, 4, 5].map((b) => [b, techs.filter((t) => t.banda === b)]).filter(([, l]) => (l as any[]).length);
+const attr = d.A[cam.atributo.id];
+const titulo = caminhoComArtigo(cam.nome);
+---
+<Base title={titulo} largura="wide" descricao={cam.descricao}>
+  <p class="muted"><a href={url('caminhos')}>← Os Caminhos</a></p>
+  <p class="muted cinzel" style="letter-spacing:.2em;text-transform:uppercase;font-size:.76rem;margin:0">
+    Trilha {cam.trilha} · {attr.nome}{cam.habilidade_ancora ? ` · âncora ${cam.habilidade_ancora}` : ''}
+  </p>
+  <h1 style="margin-bottom:.1em">{titulo}</h1>
+  <p class="lead" style="font-style:italic">{cam.descricao}</p>
+
+  <ArvoreTecnicas caminho={id} />
+
+  {bandas.map(([b, lista]) => (
+    <section>
+      <h2>Banda {b} — {BANDA_LABEL[b as number]}</h2>
+      {(lista as any[]).map((t) => <TecnicaItem t={t} T={d.T} destrava={d.destrava[t.id] ?? []} />)}
+    </section>
+  ))}
+</Base>

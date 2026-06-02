@@ -1,0 +1,16 @@
+# build / deps
+node_modules/
+dist/
+.astro/
+
+# temporários de inspeção
+_shots/
+_pages/
+
+# legado (saídas grandes — mantidas localmente, fora do repo do site)
+legacy/*.pdf
+
+# SO / editor
+.DS_Store
+Thumbs.db
+*.log
