@@ -18,6 +18,8 @@ const { title, descricao = 'New RPG System D6 — sistema de RPG de mesa em d6, 
 const here = Astro.url.pathname.replace(/\/+$/, '');
 const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
 const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New RPG System D6`;
+const ogUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
+const ogImage = Astro.site ? new URL(url('icon-512.png'), Astro.site).href : url('icon-512.png');
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -27,6 +29,20 @@ const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New 
   <title>{fullTitle}</title>
   <meta name="description" content={descricao} />
   <link rel="icon" href={url('favicon.svg')} />
+  <link rel="manifest" href={url('manifest.webmanifest')} />
+  <link rel="apple-touch-icon" href={url('icon-192.png')} />
+  <meta name="theme-color" content="#1f3f8f" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="New RPG System D6" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={descricao} />
+  <meta property="og:url" content={ogUrl} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary" />
+  <script is:inline define:vars={{ sw: url('sw.js') }}>
+    if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register(sw).catch(() => {}));
+  </script>
   <script is:inline>
     (function () {
       try {
