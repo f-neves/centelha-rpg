@@ -10,9 +10,11 @@ import RoladorDados from '../components/RoladorDados.astro';
     <label>Orçamento <input type="number" id="xpBudget" value="400" /></label>
     <span class="big">Restam: <b id="xpRem" class="rem ok">400</b></span>
     <span class="breakdown" id="xpBreak"></span>
-    <span class="modo-toggle" role="group" aria-label="Modo da ficha">
-      <button class="btn" data-modo="criacao" title="Aplica os limites de criação">Criação</button>
-      <button class="btn" data-modo="evolucao" title="Libera além dos limites de criação">Evolução</button>
+    <span class="modo-wrap"><span class="modo-lbl">Modo</span>
+      <span class="modo-toggle" role="group" aria-label="Modo da ficha">
+        <button class="btn" data-modo="criacao" title="Aplica os limites de criação (Atrib 4 · Hab 3 · Centelha 2)">Criação</button>
+        <button class="btn" data-modo="evolucao" title="Libera além dos limites de criação (em jogo)">Evolução</button>
+      </span>
     </span>
     <span class="xp-btns">
       <button class="btn" id="f-kael">Kael</button>
@@ -129,7 +131,11 @@ import RoladorDados from '../components/RoladorDados.astro';
   const dotsHTML = (kind: string, key: string, value: number, max: number, floor: number) => {
     const cap = capFor(kind);
     let h = `<span class="dots" data-kind="${kind}" data-key="${key}">`;
-    for (let d = 1; d <= max; d++) h += `<span class="dot${d <= value ? ' on' : ''}${d <= floor ? ' free' : ''}${d > cap ? ' cap' : ''}" data-d="${d}"></span>`;
+    for (let d = 1; d <= max; d++) {
+      const capped = d > cap;
+      const tip = capped ? ' title="Limite de criação — ative \'Evolução\' na barra de XP para passar daqui"' : '';
+      h += `<span class="dot${d <= value ? ' on' : ''}${d <= floor ? ' free' : ''}${capped ? ' cap' : ''}" data-d="${d}"${tip}></span>`;
+    }
     return h + '</span>';
   };
   const specHTML = (key: string, value: number, maxAllowed: number) => {
@@ -367,6 +373,8 @@ import RoladorDados from '../components/RoladorDados.astro';
   .dot.cap { opacity: .25; cursor: not-allowed; border-style: dotted; } .dot.cap:hover { box-shadow: none; }
   .rollv { background: none; border: none; cursor: pointer; font-size: .85rem; opacity: .35; margin-left: .35rem; padding: 0; line-height: 1; }
   .rollv:hover { opacity: 1; }
+  .modo-wrap { display: inline-flex; align-items: center; gap: .35rem; }
+  .modo-lbl { font-family: 'Cinzel'; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
   .modo-toggle { display: inline-flex; gap: 0; border: 1px solid var(--on-accent); border-radius: 5px; overflow: hidden; }
   .modo-toggle .btn { border: none; border-radius: 0; }
   .modo-toggle .btn.primary { background: var(--on-accent); color: var(--accent); }
