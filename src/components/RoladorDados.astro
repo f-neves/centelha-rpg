@@ -17,7 +17,8 @@ const { compact = false } = Astro.props;
   <div class="rd-out" data-rd="out" hidden></div>
 </div>
 
-<style>
+<!-- is:global: os dados/resultado são criados via JS (innerHTML) -->
+<style is:global>
   .rolador .rd-fields { display: flex; gap: .7rem; flex-wrap: wrap; }
   .rolador label { display: flex; flex-direction: column; font-size: .78rem; color: var(--ink-soft); font-family: 'Cinzel'; gap: .2rem; }
   .rolador input { width: 5.5rem; padding: .35rem .4rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: 1rem; }
