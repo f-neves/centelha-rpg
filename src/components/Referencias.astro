@@ -90,7 +90,7 @@
     hide();
     currentIt = it;
     pop = document.createElement('div'); pop.className = 'ref-pop';
-    const tag = document.createElement('span'); tag.className = 'ref-tipo'; tag.textContent = it.tipo;
+    const tag = document.createElement('span'); tag.className = 'ref-tipo'; tag.textContent = it.tipo.charAt(0).toUpperCase() + it.tipo.slice(1);
     const b = document.createElement('b'); b.textContent = it.nome;
     const r = document.createElement('span'); r.className = 'ref-resumo'; r.textContent = it.resumo;
     const bar = document.createElement('span'); bar.className = 'ref-bar';
@@ -133,7 +133,7 @@
   function refModal(payload: { tipo?: string; nome?: string; descricao?: string; niveis?: any[]; url?: string }) {
     if (!modal) return;
     const body = modal.querySelector('.ref-modal-body')!;
-    let h = `<div class="rm-head"><span class="ref-tipo">${esc(payload.tipo || '')}</span><b>${esc(payload.nome || '')}</b></div>`;
+    let h = `<div class="rm-head"><span class="ref-tipo">${esc(cap(payload.tipo || ''))}</span><b>${esc(payload.nome || '')}</b></div>`;
     if (payload.descricao) h += `<p class="rm-desc">${esc(payload.descricao)}</p>`;
     if (Array.isArray(payload.niveis) && payload.niveis.length) {
       h += '<div class="rm-niveis">';
@@ -144,6 +144,7 @@
     body.innerHTML = h;
     if (!modal.open) modal.showModal();
   }
+  const cap = (s = '') => s.charAt(0).toUpperCase() + s.slice(1);
   (window as any).refModal = refModal;
   const openModal = (it: Ref & { detalhe?: any }) => refModal({ tipo: it.tipo, nome: it.nome, descricao: it.detalhe?.descricao ?? it.resumo, niveis: it.detalhe?.niveis, url: it.url });
   modal?.querySelector('.ref-modal-x')?.addEventListener('click', () => modal.close());
@@ -177,7 +178,7 @@
     for (const it of list) {
       const card = document.createElement('div'); card.className = 'cs-card';
       card.dataset.txt = (it.nome + ' ' + it.tipo + ' ' + it.resumo).toLowerCase();
-      card.innerHTML = `<span class="ref-tipo">${it.tipo}</span><a href="${it.url}"><b>${it.nome}</b></a><button class="cs-x" aria-label="Remover" data-k="${keyOf(it)}">✕</button><span class="cs-resumo"></span>`;
+      card.innerHTML = `<span class="ref-tipo">${cap(it.tipo)}</span><a href="${it.url}"><b>${it.nome}</b></a><button class="cs-x" aria-label="Remover" data-k="${keyOf(it)}">✕</button><span class="cs-resumo"></span>`;
       card.querySelector('.cs-resumo')!.textContent = it.resumo;
       panel.append(card);
     }
@@ -205,7 +206,8 @@
   if ('requestIdleCallback' in window) (window as any).requestIdleCallback(start); else setTimeout(start, 200);
 </script>
 
-<style>
+<!-- is:global porque os elementos (auto-links, hovercard, consulta, modal) são criados via JS -->
+<style is:global>
   .ref { color: var(--accent); text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: .15em; cursor: pointer; }
   .ref:hover { color: var(--accent-strong); }
   .ref-pop { position: absolute; z-index: 60; max-width: 24rem; background: var(--panel); color: var(--ink);

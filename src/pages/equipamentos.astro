@@ -36,7 +36,7 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
             <td class="c">{a.maos}</td>
             <td class="c">{a.ticks}</td>
             <td>{a.tipoDano}{a.pen ? ` · Pen ${a.pen}` : ''}</td>
-            <td>{habs[a.pericia] ?? a.pericia}</td>
+            <td>{habs[(a.pericia as any).id] ?? (a.pericia as any).id}</td>
             <td class="muted">{a.tags.join(', ')}</td>
           </tr>
         ))}
