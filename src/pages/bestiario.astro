@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+import { loadData } from '../lib/data';
+import { getCollection } from 'astro:content';
+const d = await loadData();
+const inimigos = (await getCollection('inimigos')).map((e) => e.data).sort((a, b) => a.ameaca - b.ameaca || a.nome.localeCompare(b.nome));
+const TIPO: Record<string, string> = { capanga: 'Capanga', soldado: 'Soldado', elite: 'Elite', fera: 'Fera', chefe: 'Chefe' };
+const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
+const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
+const allTags = [...new Set(inimigos.flatMap((i) => i.tags))].sort();
+const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
+---
+<Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — capangas, soldados, elites, feras e chefes, com blocos de combate calculados.">
+  <h1>Bestiário & NPCs</h1>
+  <p class="lead">Adversários prontos para a mesa, do camponês ao semideus menor. Os números seguem as mesmas fórmulas dos personagens — PV, Defesa, Soak, Iniciativa e pools de ataque já calculados.</p>
+
+  <div class="callout regra"><span class="lbl">Como rodar</span>O bloco traz o <strong>pool de ataque</strong> (já com o Acerto da arma) e o <strong>dano</strong> prontos para rolar. <strong>Ameaça</strong> (◆) é uma referência rápida de perigo, de 1 a 6. NPCs com <strong>Centelha</strong> usam Técnicas/Artes — os links abrem o efeito.</div>
+
+  <div class="callout"><span class="lbl">Regra de Horda</span>Para muitos capangas iguais, trate o grupo como <strong>uma unidade</strong>: um pool de ataque com <strong>+1d6 a cada 2 membros extras</strong>, e cada acerto tira um membro. Um herói hábil corta vários por turno, mas a maré desgasta a guarda (Esquiva −1 / Bloqueio −2 por inimigo extra).</div>
+
+  <div class="filtros panel">
+    <label>Buscar <input type="search" data-bf="q" placeholder="nome, conceito, tag…" /></label>
+    <fieldset><legend>Tipo</legend>{Object.entries(TIPO).map(([k, v]) => <label class="chk"><input type="checkbox" data-bf="tipo" value={k} />{v}</label>)}</fieldset>
+    <fieldset><legend>Tag</legend>{allTags.map((t) => <label class="chk"><input type="checkbox" data-bf="tag" value={t} />{t}</label>)}</fieldset>
+    <p class="muted bf-count"></p>
+  </div>
+
+  <div class="besta-list">
+    {inimigos.map((i) => (
+      <article class="besta" id={i.id} data-permalink data-tipo={i.tipo} data-tags={i.tags.join(' ')}
+        data-txt={(i.nome + ' ' + i.conceito + ' ' + i.tags.join(' ') + ' ' + i.descricao).toLowerCase()}>
+        <header class="besta-head">
+          <span class="besta-nome cinzel">{i.nome}</span>
+          <span class="badge">{TIPO[i.tipo]}</span>
+          {i.centelha > 0 && <span class="badge banda">Centelha {i.centelha}</span>}
+          <span class="ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
+          {i.pendente && <span class="badge pendente" title="Stat block provisório — revisar">Rascunho</span>}
+        </header>
+        <p class="besta-con muted">{i.conceito} — {i.descricao}</p>
+        <div class="besta-stats">
+          <span><b>PV</b> {i.pv}</span>
+          <span><b>Defesa</b> {i.defesa}</span>
+          <span><b>Def. Mental</b> {i.defesaMental}</span>
+          <span><b>Soak</b> {i.soak.impacto}/{i.soak.letal}{i.soak.protecao ? ` · Prot ${i.soak.protecao}` : ''}</span>
+          <span><b>Iniciativa</b> {i.iniciativa}</span>
+        </div>
+        <ul class="besta-atk">
+          {i.ataques.map((a) => (
+            <li><span class="atk-nome">{a.nome}</span> — pool <b>{a.pool}</b> · dano <b>{a.dano}</b> · Speed {a.ticks}{a.notas ? <span class="muted"> · {a.notas}</span> : null}</li>
+          ))}
+        </ul>
+        {i.tecnicas.length > 0 && (
+          <p class="besta-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t.id)}>{d.T[t.id]?.nome ?? t.id}</a></>))}</p>
+        )}
+        {i.artes.length > 0 && (
+          <p class="besta-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id.id}>{arteNome[a.id.id] ?? a.id.id}</a> {a.nivel}</>))}</p>
+        )}
+        {i.notas && <p class="besta-notas">{i.notas}</p>}
+      </article>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .filtros { margin: 1rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: flex-end; }
+  .filtros label { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink-soft); }
+  .filtros input[type='search'] { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); min-width: 12rem; }
+  .filtros fieldset { border: 1px solid var(--panel-border); border-radius: 5px; padding: .3rem .6rem; }
+  .filtros legend { font-family: 'Cinzel'; font-size: .72rem; color: var(--ink-soft); }
+  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; font-family: 'EB Garamond'; }
+  .bf-count { width: 100%; margin: 0; }
+  .besta-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1rem; }
+  .besta { border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: 6px; background: var(--panel); padding: .8rem 1rem; scroll-margin-top: 4rem; }
+  .besta-head { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+  .besta-nome { font-size: 1.15rem; color: var(--accent); flex: 1 1 auto; }
+  .ameaca { color: var(--gold); letter-spacing: .1em; font-size: .8rem; }
+  .besta-con { font-style: italic; margin: .3rem 0 .5rem; font-size: .92rem; }
+  .besta-stats { display: flex; flex-wrap: wrap; gap: .3rem .9rem; padding: .4rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); font-size: .92rem; }
+  .besta-stats b { font-family: 'Cinzel'; color: var(--accent-strong); font-size: .72rem; text-transform: uppercase; }
+  .besta-atk { list-style: none; padding: 0; margin: .5rem 0; font-size: .92rem; }
+  .besta-atk li { padding: .1rem 0; } .atk-nome { font-family: 'Cinzel'; font-size: .85rem; }
+  .besta-ref { font-size: .9rem; margin: .25rem 0; } .besta-ref b { font-family: 'Cinzel'; font-size: .75rem; color: var(--accent-strong); }
+  .besta-notas { font-size: .88rem; color: var(--ink-soft); font-style: italic; margin: .4rem 0 0; }
+</style>
+
+<script>
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.besta'));
+  const count = document.querySelector<HTMLElement>('.bf-count')!;
+  const q = () => (document.querySelector('[data-bf="q"]') as HTMLInputElement).value.trim().toLowerCase();
+  const checked = (s: string) => Array.from(document.querySelectorAll<HTMLInputElement>(`[data-bf="${s}"]:checked`)).map((c) => c.value);
+  function apply() {
+    const text = q(), tipos = checked('tipo'), tags = checked('tag');
+    let n = 0;
+    for (const c of cards) {
+      const ok = (!tipos.length || tipos.includes(c.dataset.tipo!)) &&
+        (!tags.length || tags.some((t) => c.dataset.tags!.split(' ').includes(t))) &&
+        (!text || c.dataset.txt!.includes(text));
+      c.style.display = ok ? '' : 'none'; if (ok) n++;
+    }
+    count.textContent = `${n} adversário${n === 1 ? '' : 's'}`;
+  }
+  document.querySelectorAll('[data-bf]').forEach((e) => e.addEventListener('input', apply));
+  apply();
+</script>

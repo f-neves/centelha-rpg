@@ -19,6 +19,17 @@ const S = {
   tecnicas: z.object({ id: z.string(), nome: z.string(), caminho: z.string(), atributo: z.string(), banda: z.number().int().min(1).max(5), tipo: z.enum(['passiva', 'ativa', 'reflexiva']), custo, prereq: z.array(z.string()), aliases: z.array(z.string()), texto: z.string(), pendente: z.boolean() }),
   artes: z.object({ id: z.string(), nome: z.string(), categoria: z.enum(['elemental', 'universal']), atributo_conjuracao: z.string(), niveis: z.array(z.object({ nivel: z.number().int().min(1).max(5), nome: z.string(), efeito: z.string(), custo: z.object({ mana: z.number().int().min(1).max(5) }) })).length(5), aliases: z.array(z.string()), pendente: z.boolean() }),
   glossario: z.object({ id: z.string(), termo: z.string(), aliases: z.array(z.string()), definicao: z.string() }),
+  inimigos: z.object({
+    id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
+    ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(5),
+    conceito: z.string(), descricao: z.string(), tags: z.array(z.string()),
+    pv: z.number().int(), defesa: z.number().int(), defesaMental: z.number().int(),
+    soak: z.object({ impacto: z.number().int(), letal: z.number().int(), protecao: z.number().int() }),
+    iniciativa: z.string(), atributos: z.record(z.number().int()),
+    ataques: z.array(z.object({ nome: z.string(), pool: z.string(), dano: z.string(), ticks: z.number().int(), notas: z.string().optional() })),
+    tecnicas: z.array(z.string()), artes: z.array(z.object({ id: z.string(), nivel: z.number().int() })),
+    notas: z.string(), pendente: z.boolean(),
+  }),
 };
 
 const data = {};
@@ -44,6 +55,11 @@ for (const t of data.tecnicas || []) {
   for (const p of t.prereq) if (!T.has(p)) fail(`técnica "${t.id}": prereq órfão "${p}"`);
 }
 for (const a of data.artes || []) if (!A.has(a.atributo_conjuracao)) fail(`arte "${a.id}": atributo_conjuracao inexistente "${a.atributo_conjuracao}"`);
+const ART = setOf('artes');
+for (const i of data.inimigos || []) {
+  for (const t of i.tecnicas) if (!T.has(t)) fail(`inimigo "${i.id}": técnica inexistente "${t}"`);
+  for (const a of i.artes) if (!ART.has(a.id)) fail(`inimigo "${i.id}": arte inexistente "${a.id}"`);
+}
 
 if (erros.length) {
   console.error(`\n✘ Validação de dados FALHOU (${erros.length} erro(s)):`);

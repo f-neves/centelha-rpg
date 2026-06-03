@@ -98,6 +98,31 @@ const glossario = defineCollection({
   }),
 });
 
+const inimigos = defineCollection({
+  loader: file('src/data/inimigos.json'),
+  schema: z.object({
+    id: z.string(),
+    nome: z.string(),
+    tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
+    ameaca: z.number().int().min(1).max(6),
+    centelha: z.number().int().min(0).max(5),
+    conceito: z.string(),
+    descricao: z.string(),
+    tags: z.array(z.string()),
+    pv: z.number().int(),
+    defesa: z.number().int(),
+    defesaMental: z.number().int(),
+    soak: z.object({ impacto: z.number().int(), letal: z.number().int(), protecao: z.number().int() }),
+    iniciativa: z.string(),
+    atributos: z.record(z.number().int()),
+    ataques: z.array(z.object({ nome: z.string(), pool: z.string(), dano: z.string(), ticks: z.number().int(), notas: z.string().optional() })),
+    tecnicas: z.array(reference('tecnicas')),
+    artes: z.array(z.object({ id: reference('artes'), nivel: z.number().int().min(1).max(5) })),
+    notas: z.string(),
+    pendente: z.boolean(),
+  }),
+});
+
 const chapters = defineCollection({
   loader: glob({ pattern: '**/*.md', base: 'src/content/chapters' }),
   schema: z.object({
@@ -116,5 +141,6 @@ export const collections = {
   tecnicas,
   artes,
   glossario,
+  inimigos,
   chapters,
 };
