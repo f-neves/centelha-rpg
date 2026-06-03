@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { url } from '../../lib/site';
 import { loadData, TRILHA_LABEL, TRILHA_SUB } from '../../lib/data';
+import Icone from '../../components/Icone.astro';
 const d = await loadData();
 ---
 <Base title="Os Caminhos" largura="wide" descricao="Os 48 subcaminhos de Técnicas, do mundano ao divino.">
@@ -13,11 +14,11 @@ const d = await loadData();
 
   {Object.entries(d.arvoreCaminhos).map(([trilha, porAttr]) => (
     <section>
-      <h2 style="text-align:center;border:none">Trilha {TRILHA_LABEL[trilha]}</h2>
+      <h2 style="text-align:center;border:none;display:flex;align-items:center;justify-content:center;gap:.5rem"><Icone nome={trilha} size={26} /> Trilha {TRILHA_LABEL[trilha]}</h2>
       <p class="muted" style="text-align:center;margin-top:-.4rem">{TRILHA_SUB[trilha]}</p>
       {Object.entries(porAttr).map(([attrId, lista]) => (
         <>
-          <h3 style="text-align:center">{d.A[attrId].nome}</h3>
+          <h3 style="text-align:center"><Icone nome={attrId} /> {d.A[attrId].nome}</h3>
           <div class="grid-cards">
             {lista.map((c: any) => (
               <a class="panel cam-card" href={url(`caminhos/${c.id}`)}>

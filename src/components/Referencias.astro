@@ -147,8 +147,23 @@
   const cap = (s = '') => s.charAt(0).toUpperCase() + s.slice(1);
   (window as any).refModal = refModal;
   const openModal = (it: Ref & { detalhe?: any }) => refModal({ tipo: it.tipo, nome: it.nome, descricao: it.detalhe?.descricao ?? it.resumo, niveis: it.detalhe?.niveis, url: it.url });
+  function compareModal(list: any[]) {
+    if (!modal || !list.length) return;
+    const body = modal.querySelector('.ref-modal-body')!;
+    let h = '<div class="rm-compare">';
+    for (const it of list) {
+      h += `<div class="rm-col"><span class="ref-tipo">${esc(cap(it.tipo))}</span><b class="rm-cnome">${esc(it.nome)}</b><p class="rm-cdesc">${esc(it.detalhe?.descricao ?? it.resumo ?? '')}</p>`;
+      if (Array.isArray(it.detalhe?.niveis)) h += '<div class="rm-niveis">' + it.detalhe.niveis.map((n: any) => `<div class="rm-lv"><span class="rm-n">${n.nivel}</span><span>${n.rotulo ? `<b>${esc(n.rotulo)}</b> ` : ''}${esc(n.texto)}</span></div>`).join('') + '</div>';
+      h += `<a class="rm-go" href="${it.url}">abrir →</a></div>`;
+    }
+    body.innerHTML = h + '</div>';
+    modal.classList.add('wide');
+    if (!modal.open) modal.showModal();
+  }
+  (window as any).compareModal = compareModal;
   modal?.querySelector('.ref-modal-x')?.addEventListener('click', () => modal.close());
   modal?.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+  modal?.addEventListener('close', () => modal.classList.remove('wide'));
   document.addEventListener('click', (e) => {
     const el = (e.target as HTMLElement).closest?.('main a[href], main .ref') as HTMLElement | null;
     if (!el || !INDEX) return;
@@ -174,7 +189,8 @@
       document.body.append(panel);
     }
     const filtro = list.length >= 4 ? `<input class="cs-filter" type="search" placeholder="filtrar fixados…" aria-label="Filtrar fixados">` : '';
-    panel.innerHTML = `<div class="cs-head"><span>📌 Consulta <span class="cs-n">${list.length}</span></span><button class="cs-clear" title="Limpar">limpar</button></div>${filtro}`;
+    const cmp = list.length >= 2 ? `<button class="cs-comparar" title="Comparar lado a lado">comparar</button>` : '';
+    panel.innerHTML = `<div class="cs-head"><span>📌 Consulta <span class="cs-n">${list.length}</span></span>${cmp}<button class="cs-clear" title="Limpar">limpar</button></div>${filtro}`;
     for (const it of list) {
       const card = document.createElement('div'); card.className = 'cs-card';
       card.dataset.txt = (it.nome + ' ' + it.tipo + ' ' + it.resumo).toLowerCase();
@@ -183,6 +199,7 @@
       panel.append(card);
     }
     panel.querySelector('.cs-clear')?.addEventListener('click', () => { savePins([]); renderConsulta(); });
+    panel.querySelector('.cs-comparar')?.addEventListener('click', () => compareModal(list));
     panel.querySelectorAll('.cs-x').forEach((b) => b.addEventListener('click', () => removePin((b as HTMLElement).dataset.k!)));
     panel.querySelector('.cs-filter')?.addEventListener('input', (e) => {
       const q = (e.target as HTMLInputElement).value.toLowerCase();
@@ -256,4 +273,10 @@
   .rm-lv .rm-n { flex: 0 0 1.5rem; height: 1.5rem; display: inline-grid; place-items: center; background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .8rem; border-radius: 50%; }
   .rm-lv b { color: var(--accent-strong); font-family: 'Cinzel'; font-size: .85rem; }
   .rm-go { display: inline-block; margin-top: .8rem; font-style: italic; color: var(--accent); text-decoration: none; }
+  .ref-modal.wide { width: min(58rem, 95vw); }
+  .rm-compare { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: .4rem; }
+  .rm-col { flex: 0 0 16rem; border: 1px solid var(--panel-border); border-radius: 8px; padding: .7rem .8rem; background: var(--panel-2); }
+  .rm-col .rm-cnome { display: block; font-family: 'Cinzel'; color: var(--accent); font-size: 1.05rem; margin: .3rem 0; }
+  .rm-col .rm-cdesc { font-size: .9rem; margin: 0 0 .5rem; }
+  .cs-comparar { background: var(--on-accent); color: var(--accent); border: none; border-radius: 4px; font-size: .68rem; cursor: pointer; padding: .05rem .5rem; font-family: 'Cinzel'; margin-right: .3rem; }
 </style>

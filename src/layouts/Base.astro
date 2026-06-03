@@ -20,6 +20,13 @@ const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
 const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New RPG System D6`;
 const ogUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
 const ogImage = Astro.site ? new URL(url('icon-512.png'), Astro.site).href : url('icon-512.png');
+
+// breadcrumbs automáticos
+const baseNoSlash = url('').replace(/\/$/, '');
+const partes = here.slice(baseNoSlash.length).split('/').filter(Boolean);
+const crumbs: { label: string; href?: string }[] = [{ label: 'Início', href: url('') }];
+if (partes[0] === 'caminhos' && partes[1]) crumbs.push({ label: 'Os Caminhos', href: url('caminhos') });
+if (partes.length) crumbs.push({ label: title });
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -98,6 +105,16 @@ const ogImage = Astro.site ? new URL(url('icon-512.png'), Astro.site).href : url
     </aside>
 
     <main class="content" id="conteudo" data-pagefind-body>
+      {crumbs.length > 1 && (
+        <nav class="crumbs" aria-label="Trilha de navegação" data-pagefind-ignore>
+          {crumbs.map((c, i) => (
+            <>
+              {i > 0 && <span class="crumb-sep">›</span>}
+              {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+            </>
+          ))}
+        </nav>
+      )}
       <article class={largura === 'full' ? '' : largura}>
         <slot />
       </article>

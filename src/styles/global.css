@@ -182,6 +182,13 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 .anchor { color: var(--ink-soft); text-decoration: none; opacity: 0; margin-left: .4rem; font-size: .8em; }
 :hover > .anchor, .anchor:focus { opacity: 1; }
 
+/* breadcrumbs */
+.crumbs { font-size: .82rem; color: var(--ink-soft); margin: 0 0 1rem; font-family: 'Cinzel'; letter-spacing: .02em; }
+.crumbs a { color: var(--accent); text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+.crumbs .crumb-sep { margin: 0 .45rem; color: var(--rule); }
+.crumbs [aria-current='page'] { color: var(--ink); }
+
 /* realce ao chegar por permalink */
 @keyframes target-flash { 0% { background: color-mix(in srgb, var(--gold) 45%, transparent); } 100% { background: transparent; } }
 .target-flash { animation: target-flash 1.8s ease-out; border-radius: 4px; }
