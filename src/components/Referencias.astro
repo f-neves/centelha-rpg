@@ -61,9 +61,10 @@
     }
   }
 
-  // 2) resolve a entidade de um elemento (auto-link OU qualquer link interno)
+  // 2) resolve a entidade de um elemento (auto-link, nó da árvore OU qualquer link interno)
   function entityFor(el: HTMLElement): Ref | null {
     if (el.dataset?.ref && byRef[el.dataset.ref]) return byRef[el.dataset.ref];
+    if (el.dataset?.id && byHash[el.dataset.id]) return byHash[el.dataset.id]; // nós da Árvore de Técnicas
     const href = el.getAttribute('href'); if (!href) return null;
     let u: URL; try { u = new URL(href, location.href); } catch { return null; }
     if (u.origin !== location.origin) return null;
@@ -76,19 +77,21 @@
 
   // 3) hovercard (interativo: dá pra fixar)
   let pop: HTMLDivElement | null = null;
+  let currentIt: Ref | null = null;
   let hideTimer = 0;
-  const hide = () => { pop?.remove(); pop = null; };
+  const hide = () => { pop?.remove(); pop = null; currentIt = null; };
   const scheduleHide = () => { clearTimeout(hideTimer); hideTimer = window.setTimeout(hide, 240); };
   const cancelHide = () => clearTimeout(hideTimer);
   function show(el: HTMLElement, it: Ref) {
     hide();
+    currentIt = it;
     pop = document.createElement('div'); pop.className = 'ref-pop';
     const tag = document.createElement('span'); tag.className = 'ref-tipo'; tag.textContent = it.tipo;
     const b = document.createElement('b'); b.textContent = it.nome;
     const r = document.createElement('span'); r.className = 'ref-resumo'; r.textContent = it.resumo;
     const bar = document.createElement('span'); bar.className = 'ref-bar';
     const go = document.createElement('a'); go.className = 'ref-go'; go.textContent = 'abrir →'; go.href = it.url;
-    const pin = document.createElement('button'); pin.className = 'ref-pin'; pin.type = 'button'; pin.textContent = '📌 fixar'; pin.title = 'Fixar na consulta';
+    const pin = document.createElement('button'); pin.className = 'ref-pin'; pin.type = 'button'; pin.innerHTML = '📌 fixar <kbd>f</kbd>'; pin.title = 'Fixar na consulta (tecla f)';
     pin.addEventListener('click', (e) => { e.preventDefault(); addPin(it); hide(); });
     bar.append(go, pin);
     pop.append(tag, b, r, bar);
@@ -100,18 +103,25 @@
     let left = Math.min(window.scrollX + rect.left, window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 10);
     pop.style.left = Math.max(8, left) + 'px';
   }
+  const SEL = 'main a[href], main .ref, main .arv-node';
   const handle = (target: EventTarget | null) => {
-    const el = (target as HTMLElement)?.closest?.('main a[href], main .ref') as HTMLElement | null;
+    const el = (target as HTMLElement)?.closest?.(SEL) as HTMLElement | null;
     if (!el) return;
     cancelHide();
     if (!INDEX) { load().then(() => { const it = entityFor(el); if (it && el.matches(':hover')) show(el, it); }); return; }
     const it = entityFor(el); if (it) show(el, it);
   };
   document.addEventListener('mouseover', (e) => handle(e.target));
-  document.addEventListener('mouseout', (e) => { if ((e.target as HTMLElement)?.closest?.('main a[href], main .ref')) scheduleHide(); });
-  document.addEventListener('focusin', (e) => { const el = (e.target as HTMLElement).closest?.('.ref') as HTMLElement; if (el && INDEX) { const it = entityFor(el); if (it) show(el, it); } });
+  document.addEventListener('mouseout', (e) => { if ((e.target as HTMLElement)?.closest?.(SEL)) scheduleHide(); });
+  document.addEventListener('focusin', (e) => { const el = (e.target as HTMLElement).closest?.('.ref, .arv-node') as HTMLElement; if (el && INDEX) { const it = entityFor(el); if (it) show(el, it); } });
   document.addEventListener('focusout', scheduleHide);
   window.addEventListener('scroll', hide, { passive: true });
+  // teclado: f fixa o cartão aberto; Esc fecha
+  document.addEventListener('keydown', (e) => {
+    const tag = document.activeElement?.tagName;
+    if (e.key === 'Escape') { hide(); return; }
+    if (e.key.toLowerCase() === 'f' && currentIt && pop && tag !== 'INPUT' && tag !== 'TEXTAREA') { e.preventDefault(); addPin(currentIt); hide(); }
+  });
 
   // 4) painel de consulta (fixados) — persiste na sessão entre páginas
   const PIN_KEY = 'centelha:consulta';
@@ -122,20 +132,37 @@
   function renderConsulta() {
     let panel = document.getElementById('consulta');
     const list = pins().map((k) => byKey[k]).filter(Boolean);
-    if (!list.length) { panel?.remove(); return; }
+    if (!list.length) { panel?.remove(); markPinned(); return; }
     if (!panel) {
       panel = document.createElement('aside'); panel.id = 'consulta'; panel.setAttribute('aria-label', 'Consulta fixada');
       document.body.append(panel);
     }
-    panel.innerHTML = `<div class="cs-head"><span>📌 Consulta</span><button class="cs-clear" title="Limpar">limpar</button></div>`;
+    const filtro = list.length >= 4 ? `<input class="cs-filter" type="search" placeholder="filtrar fixados…" aria-label="Filtrar fixados">` : '';
+    panel.innerHTML = `<div class="cs-head"><span>📌 Consulta <span class="cs-n">${list.length}</span></span><button class="cs-clear" title="Limpar">limpar</button></div>${filtro}`;
     for (const it of list) {
       const card = document.createElement('div'); card.className = 'cs-card';
+      card.dataset.txt = (it.nome + ' ' + it.tipo + ' ' + it.resumo).toLowerCase();
       card.innerHTML = `<span class="ref-tipo">${it.tipo}</span><a href="${it.url}"><b>${it.nome}</b></a><button class="cs-x" aria-label="Remover" data-k="${keyOf(it)}">✕</button><span class="cs-resumo"></span>`;
       card.querySelector('.cs-resumo')!.textContent = it.resumo;
       panel.append(card);
     }
     panel.querySelector('.cs-clear')?.addEventListener('click', () => { savePins([]); renderConsulta(); });
     panel.querySelectorAll('.cs-x').forEach((b) => b.addEventListener('click', () => removePin((b as HTMLElement).dataset.k!)));
+    panel.querySelector('.cs-filter')?.addEventListener('input', (e) => {
+      const q = (e.target as HTMLInputElement).value.toLowerCase();
+      panel!.querySelectorAll<HTMLElement>('.cs-card').forEach((c) => { c.style.display = !q || c.dataset.txt!.includes(q) ? '' : 'none'; });
+    });
+    markPinned();
+  }
+
+  // realça no texto os links/termos das entidades fixadas
+  function markPinned() {
+    if (!INDEX) return;
+    const set = new Set(pins());
+    document.querySelectorAll<HTMLElement>(SEL).forEach((el) => {
+      const it = entityFor(el);
+      el.classList.toggle('ref-pinned', !!(it && set.has(keyOf(it))));
+    });
   }
 
   // init: carrega o índice no idle, faz o auto-link e restaura a consulta
@@ -158,6 +185,11 @@
   .ref-pop .ref-pin { font-family: 'Cinzel'; font-size: .72rem; cursor: pointer; border: 1px solid var(--panel-border);
     background: var(--panel-2); color: var(--ink-soft); border-radius: 5px; padding: .12rem .45rem; }
   .ref-pop .ref-pin:hover { border-color: var(--accent); color: var(--accent); }
+  .ref-pop .ref-pin kbd { font-family: monospace; font-size: .7em; border: 1px solid var(--panel-border); border-radius: 3px; padding: 0 .25em; margin-left: .15em; }
+
+  /* realce de entidades fixadas no texto */
+  .ref-pinned { background: color-mix(in srgb, var(--gold) 24%, transparent); border-radius: 3px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent); }
+  .arv-node.ref-pinned { background: color-mix(in srgb, var(--gold) 20%, var(--panel)); box-shadow: 0 0 0 2px var(--gold); }
 
   /* painel de consulta (fixados) */
   #consulta { position: fixed; right: .8rem; bottom: .8rem; z-index: 55; width: min(20rem, 90vw); max-height: 60vh; overflow-y: auto;
@@ -165,6 +197,8 @@
   #consulta .cs-head { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center;
     background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .82rem; padding: .4rem .7rem; }
   #consulta .cs-clear { background: none; border: 1px solid var(--on-accent); color: var(--on-accent); border-radius: 4px; font-size: .68rem; cursor: pointer; padding: .05rem .4rem; font-family: 'Cinzel'; }
+  #consulta .cs-n { background: var(--on-accent); color: var(--accent); border-radius: 999px; font-size: .68rem; padding: 0 .4rem; margin-left: .2rem; }
+  #consulta .cs-filter { width: calc(100% - 1.4rem); margin: .5rem .7rem 0; padding: .3rem .45rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: .85rem; }
   #consulta .cs-card { padding: .5rem .7rem; border-bottom: 1px solid var(--rule); position: relative; }
   #consulta .cs-card a { text-decoration: none; }
   #consulta .cs-card b { font-family: 'Cinzel'; color: var(--accent); }
