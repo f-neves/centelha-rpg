@@ -649,5 +649,343 @@
     "artes": [],
     "notas": "Couro grosso (Soak natural alto pelo Vigor 5). Difícil de derrubar.",
     "pendente": true
+  },
+  {
+    "id": "comandante",
+    "nome": "Comandante Tocado",
+    "tipo": "elite",
+    "ameaca": 5,
+    "centelha": 1,
+    "conceito": "líder de guerra",
+    "descricao": "Inspira tropas e quebra a moral inimiga; luta bem, mas comanda melhor.",
+    "tags": [
+      "humano",
+      "centelha"
+    ],
+    "pv": 37,
+    "defesa": 12,
+    "defesaMental": 7,
+    "soak": {
+      "impacto": 10,
+      "letal": 8,
+      "protecao": 3
+    },
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 3,
+      "destreza": 4,
+      "vigor": 4,
+      "carisma": 5,
+      "manipulacao": 2,
+      "aparencia": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Espada longa",
+        "pool": "4d6 +1",
+        "dano": "2d6 +1 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "voz-de-lider",
+      "coordenar",
+      "tom-de-autoridade"
+    ],
+    "artes": [],
+    "notas": "Concede ações e bônus aos aliados (Estandarte/Comando). Some Carisma quando inspira. Mate-o e a tropa vacila.",
+    "pendente": true
+  },
+  {
+    "id": "cultista",
+    "nome": "Cultista Sombrio",
+    "tipo": "elite",
+    "ameaca": 4,
+    "centelha": 1,
+    "conceito": "feiticeiro da morte",
+    "descricao": "Servo de poderes proibidos; drena a vida e ergue os mortos.",
+    "tags": [
+      "humano",
+      "centelha",
+      "arcano"
+    ],
+    "pv": 34,
+    "defesa": 10,
+    "defesaMental": 6,
+    "soak": {
+      "impacto": 3,
+      "letal": 1,
+      "protecao": 0
+    },
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 2,
+      "destreza": 3,
+      "vigor": 3,
+      "carisma": 2,
+      "manipulacao": 4,
+      "aparencia": 2,
+      "percepcao": 2,
+      "inteligencia": 3,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Toque mórbido (Morte 1)",
+        "pool": "3d6+2",
+        "dano": "1d6 necrótico",
+        "ticks": 6,
+        "notas": "Dreno: cura o cultista"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 2
+      }
+    ],
+    "notas": "Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.",
+    "pendente": true
+  },
+  {
+    "id": "esqueleto",
+    "nome": "Esqueleto Guerreiro",
+    "tipo": "soldado",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "morto-vivo",
+    "descricao": "Ossos animados que não sentem dor nem medo; lutam até despedaçar.",
+    "tags": [
+      "morto-vivo"
+    ],
+    "pv": 34,
+    "defesa": 9,
+    "defesaMental": 5,
+    "soak": {
+      "impacto": 5,
+      "letal": 3,
+      "protecao": 1
+    },
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 3,
+      "destreza": 3,
+      "vigor": 3,
+      "carisma": 2,
+      "manipulacao": 2,
+      "aparencia": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Espada enferrujada",
+        "pool": "2d6+2 +1",
+        "dano": "1d6 +1 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Morto-vivo: imune a medo, veneno e efeitos mentais. Dano de Impacto (esmagar ossos) é especialmente eficaz.",
+    "pendente": true
+  },
+  {
+    "id": "espectro",
+    "nome": "Espectro",
+    "tipo": "elite",
+    "ameaca": 4,
+    "centelha": 1,
+    "conceito": "assombração incorpórea",
+    "descricao": "Um morto que não partiu; atravessa paredes e gela a alma.",
+    "tags": [
+      "morto-vivo",
+      "espírito"
+    ],
+    "pv": 34,
+    "defesa": 15,
+    "defesaMental": 7,
+    "soak": {
+      "impacto": 3,
+      "letal": 1,
+      "protecao": 0
+    },
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 2,
+      "destreza": 4,
+      "vigor": 3,
+      "carisma": 2,
+      "manipulacao": 4,
+      "aparencia": 2,
+      "percepcao": 4,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Toque gélido",
+        "pool": "2d6",
+        "dano": "2d6 +2 necrótico (vs Def. Mental)",
+        "ticks": 5,
+        "notas": "gela a vontade do alvo"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Incorpóreo: imune a dano físico não-mágico e atravessa matéria. Só Arcano, Proteção e armas encantadas o ferem.",
+    "pendente": true
+  },
+  {
+    "id": "ogro",
+    "nome": "Ogro",
+    "tipo": "chefe",
+    "ameaca": 5,
+    "centelha": 0,
+    "conceito": "brutamontes monstruoso",
+    "descricao": "Montanha de músculo e fúria; cada golpe é um aríete.",
+    "tags": [
+      "fera",
+      "gigante"
+    ],
+    "pv": 43,
+    "defesa": 4,
+    "defesaMental": 4,
+    "soak": {
+      "impacto": 8,
+      "letal": 5,
+      "protecao": 0
+    },
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 6,
+      "destreza": 2,
+      "vigor": 6,
+      "carisma": 2,
+      "manipulacao": 2,
+      "aparencia": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Clava enorme",
+        "pool": "4d6+2",
+        "dano": "3d6 +6 impacto",
+        "ticks": 7,
+        "notas": "Ruptura; derruba o alvo"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Força e Vigor 6 (acima do humano). Lento (Speed 7) e de Defesa baixa: cerque e explore a lentidão.",
+    "pendente": true
+  },
+  {
+    "id": "aranha-gigante",
+    "nome": "Aranha Gigante",
+    "tipo": "fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "predadora venenosa",
+    "descricao": "Emboscadora de patas longas; uma picada e a presa amolece.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 34,
+    "defesa": 13,
+    "defesaMental": 3,
+    "soak": {
+      "impacto": 3,
+      "letal": 1,
+      "protecao": 0
+    },
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 3,
+      "destreza": 4,
+      "vigor": 3,
+      "carisma": 2,
+      "manipulacao": 2,
+      "aparencia": 2,
+      "percepcao": 4,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Picada peçonhenta",
+        "pool": "3d6+2 +1",
+        "dano": "1d6 +3 perfurante · Pen 1",
+        "ticks": 5,
+        "notas": "Veneno: Convicção+Vigor ou −2 em ações por uma cena"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Sobe paredes, ataca das sombras e prende a presa em teia.",
+    "pendente": true
+  },
+  {
+    "id": "mago-de-batalha",
+    "nome": "Mago de Batalha",
+    "tipo": "chefe",
+    "ameaca": 6,
+    "centelha": 2,
+    "conceito": "artilharia arcana",
+    "descricao": "Conjura fogo e força sobre o campo; perigoso a qualquer distância.",
+    "tags": [
+      "humano",
+      "centelha",
+      "arcano"
+    ],
+    "pv": 34,
+    "defesa": 12,
+    "defesaMental": 8,
+    "soak": {
+      "impacto": 3,
+      "letal": 1,
+      "protecao": 0
+    },
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 2,
+      "destreza": 3,
+      "vigor": 3,
+      "carisma": 2,
+      "manipulacao": 2,
+      "aparencia": 2,
+      "percepcao": 2,
+      "inteligencia": 5,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Bola de fogo (Fogo 3)",
+        "pool": "5d6",
+        "dano": "3d6 fogo (área)",
+        "ticks": 6,
+        "notas": "3 Mana; explosão em área"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 3
+      },
+      {
+        "id": "forcas",
+        "nivel": 2
+      }
+    ],
+    "notas": "Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.",
+    "pendente": true
   }
 ]
