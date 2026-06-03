@@ -1,4 +1,25 @@
 {
+  "escalaHabilidade": [
+    { "nivel": 0, "rotulo": "Leigo", "texto": "Sem treino: só o talento bruto do Atributo, e mal. Erra o que um treinado acerta." },
+    { "nivel": 1, "rotulo": "Iniciado", "texto": "Noções básicas; o aprendiz. Resolve o trivial com sorte." },
+    { "nivel": 2, "rotulo": "Competente", "texto": "O profissional comum da área; faz bem o cotidiano." },
+    { "nivel": 3, "rotulo": "Profissional", "texto": "Confiável e respeitado; vence a maioria dos desafios médios sem suar." },
+    { "nivel": 4, "rotulo": "Perito", "texto": "Referência regional; resolve o que trava os outros." },
+    { "nivel": 5, "rotulo": "Mestre", "texto": "Um dos melhores que existem; faz o que poucos sequer sonham." }
+  ],
+  "escalaCentelha": [
+    { "nivel": 0, "rotulo": "Mortal", "texto": "Pessoa comum — cerca de 95% da população. Sem acesso a Técnicas ou Artes." },
+    { "nivel": 1, "rotulo": "Tocado (Mortal+)", "texto": "A fagulha acendeu: herói incipiente. Abre a banda 1 dos Caminhos." },
+    { "nivel": 2, "rotulo": "Herói", "texto": "Façanhas que assombram mortais; bandas 4–6." },
+    { "nivel": 3, "rotulo": "Semideus", "texto": "Começa a quebrar as leis do mundo mundano; bandas 7–9." },
+    { "nivel": 4, "rotulo": "Semideus maior", "texto": "Poder que molda regiões; bandas 10–12." },
+    { "nivel": 5, "rotulo": "Quase-deus", "texto": "À beira do divino; bandas 13–15." }
+  ],
+  "escalaVontade": [
+    { "nivel": 5, "rotulo": "Heroica", "texto": "Reserva padrão de um herói; o piso. Gasta-se para potencializar ações, resistir a medo/manipulação e conjurar." },
+    { "nivel": 7, "rotulo": "Férrea", "texto": "Determinação acima do comum; raramente se esgota numa cena." },
+    { "nivel": 9, "rotulo": "Lendária", "texto": "Vontade que dobra o destino; um poço fundo de combustível heroico." }
+  ],
   "pisos": {
     "atributo": 2,
     "habilidade": 0,

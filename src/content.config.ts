@@ -7,6 +7,8 @@ const custo = z.object({
   vontade: z.number().int().nonnegative().optional(),
 });
 
+const escala = z.array(z.object({ nivel: z.number().int(), texto: z.string() }));
+
 const atributos = defineCollection({
   loader: file('src/data/atributos.json'),
   schema: z.object({
@@ -14,6 +16,7 @@ const atributos = defineCollection({
     nome: z.string(),
     grupo: z.enum(['fisico', 'social', 'mental']),
     descricao: z.string(),
+    niveis: escala.optional(),
   }),
 });
 
@@ -34,6 +37,7 @@ const virtudes = defineCollection({
     nome: z.string(),
     resiste: z.string(),
     descricao: z.string(),
+    niveis: escala.optional(),
   }),
 });
 

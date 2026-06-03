@@ -103,6 +103,23 @@ import RoladorDados from '../components/RoladorDados.astro';
     ['Meditação', 'Interior'], ['Ritualismo', 'Interior'], ['Autocontrole', 'Interior'], ['Concentração', 'Interior'], ['Leitura Corporal', 'Interior'], ['Interpretação de Sonhos', 'Interior'],
   ];
 
+  const SEC_NOME: Record<string, string> = Object.fromEntries(SECONDARY.map(([n]) => [slug(n), n]));
+  const TRACO_DESC: Record<string, string> = {
+    centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava as bandas dos Caminhos e dimensiona Energia e Mana.',
+    willpower: 'Reserva de determinação (piso 5). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
+  };
+  function openTraitModal(nm: HTMLElement) {
+    const dots = nm.closest('.trow')?.querySelector('.dots') as HTMLElement | null; if (!dots) return;
+    const k = dots.dataset.kind!, key = dots.dataset.key!;
+    let p: any = null;
+    if (k === 'attr') { const a = (ATTRS_D as any[]).find((x) => x.id === key); p = { tipo: 'atributo', nome: a.nome, descricao: a.descricao, niveis: a.niveis }; }
+    else if (k === 'skill') { const h = (HAB_D as any[]).find((x) => x.id === key); p = { tipo: 'perícia', nome: h.nome, descricao: h.descricao, niveis: (regras as any).escalaHabilidade }; }
+    else if (k === 'skill2') { p = { tipo: 'perícia secundária', nome: SEC_NOME[key] || key, descricao: 'Conhecimento ou ofício específico (custo reduzido). Segue a mesma escala de competência.', niveis: (regras as any).escalaHabilidade }; }
+    else if (k === 'virtue') { const v = (VIRT_D as any[]).find((x) => x.id === key); p = { tipo: 'virtude', nome: v.nome, descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: v.niveis }; }
+    else if (k === 'centelha') { p = { tipo: 'traço', nome: 'Centelha', descricao: TRACO_DESC.centelha, niveis: (regras as any).escalaCentelha }; }
+    else if (k === 'willpower') { p = { tipo: 'traço', nome: 'Força de Vontade', descricao: TRACO_DESC.willpower, niveis: (regras as any).escalaVontade }; }
+    if (p && (window as any).refModal) (window as any).refModal(p);
+  }
   const CAM_ORDER = (CAM_D as any[]).map((c) => c.id);
   const CAM_NOME: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.nome]));
   const CAMTREE: Record<string, [string, string, number][]> = {};
@@ -308,6 +325,8 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
+    const nm = t.closest<HTMLElement>('.trow .nm');
+    if (nm) { openTraitModal(nm); return; }
     const dot = t.closest<HTMLElement>('.dots .dot');
     if (dot) { if (dot.classList.contains('cap')) return; const s = dot.parentElement as HTMLElement; setDot(s.dataset.kind!, s.dataset.key!, +dot.dataset.d!); return; }
     const rb = t.closest<HTMLElement>('.rollv');
@@ -426,7 +445,8 @@ import RoladorDados from '../components/RoladorDados.astro';
   @media (max-width: 760px) { .cols3, .cols2 { grid-template-columns: 1fr; } }
 
   .trow { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .12rem 0; }
-  .trow .nm { font-size: 1rem; } .trow .nm small { color: var(--ink-soft); font-size: .8rem; }
+  .trow .nm { font-size: 1rem; cursor: help; } .trow .nm:hover { text-decoration: underline dotted var(--accent-soft); }
+  .trow .nm small { color: var(--ink-soft); font-size: .8rem; }
   .tr-r { display: flex; align-items: center; }
   .dots { display: inline-flex; gap: 3px; align-items: center; }
   .dot { width: 15px; height: 15px; border: 1.5px solid var(--accent); border-radius: 50%; cursor: pointer; background: transparent; transition: background .08s; flex: 0 0 auto; }

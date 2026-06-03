@@ -2,6 +2,7 @@
 // Servido estático em /centelha-rpg/ref-index.json e carregado sob demanda no cliente.
 import type { APIRoute } from 'astro';
 import { loadData, custoTagTecnica } from '../lib/data';
+import { regras } from '../lib/calc';
 import { url } from '../lib/site';
 
 const short = (s: string, n = 170) => (s.length > n ? s.slice(0, n - 1) + '…' : s);
@@ -10,17 +11,21 @@ export const GET: APIRoute = async () => {
   const d = await loadData();
   const items: any[] = [];
 
-  for (const g of d.glossario)
-    items.push({ id: g.id, tipo: 'termo', nome: g.termo, url: url('glossario') + '#' + g.id, resumo: g.definicao, termos: [g.termo, ...g.aliases], autolink: true });
+  const escalaH = (regras as any).escalaHabilidade, escalaC = (regras as any).escalaCentelha, escalaW = (regras as any).escalaVontade;
+
+  for (const g of d.glossario) {
+    const niveis = g.id === 'centelha' ? escalaC : (g.id === 'vontade' ? escalaW : undefined);
+    items.push({ id: g.id, tipo: 'termo', nome: g.termo, url: url('glossario') + '#' + g.id, resumo: g.definicao, termos: [g.termo, ...g.aliases], autolink: true, detalhe: { descricao: g.definicao, niveis } });
+  }
 
   for (const a of d.atributos)
-    items.push({ id: a.id, tipo: 'atributo', nome: a.nome, url: url('regras/atributos-e-pericias'), resumo: a.descricao, termos: [a.nome], autolink: true });
+    items.push({ id: a.id, tipo: 'atributo', nome: a.nome, url: url('regras/atributos-e-pericias'), resumo: a.descricao, termos: [a.nome], autolink: true, detalhe: { descricao: a.descricao, niveis: (a as any).niveis } });
 
   for (const h of d.habilidades)
-    items.push({ id: h.id, tipo: 'perícia', nome: h.nome, url: url('regras/atributos-e-pericias'), resumo: h.descricao, termos: [h.nome], autolink: true });
+    items.push({ id: h.id, tipo: 'perícia', nome: h.nome, url: url('regras/atributos-e-pericias'), resumo: h.descricao, termos: [h.nome], autolink: true, detalhe: { descricao: h.descricao, niveis: escalaH } });
 
   for (const v of d.virtudes)
-    items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/centelha-virtudes-vontade'), resumo: `${v.descricao} Resiste a ${v.resiste}.`, termos: [v.nome], autolink: true });
+    items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/centelha-virtudes-vontade'), resumo: `${v.descricao} Resiste a ${v.resiste}.`, termos: [v.nome], autolink: true, detalhe: { descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: (v as any).niveis } });
 
   // caminhos/artes: auto-link só nomes multi-palavra (evita ruído com "Vento", "Fogo", "Gato"…)
   const multipalavra = (n: string) => /[\s-]/.test(n);

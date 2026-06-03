@@ -1,7 +1,11 @@
 ---
-// Sistema unificado de referências: tooltips em termos + hovercards em links internos.
-// Carrega /ref-index.json sob demanda (uma vez, cacheado).
+// Sistema unificado de referências: tooltips em termos + hovercards em links internos
+// + modal local (clique abre na própria página). Carrega /ref-index.json sob demanda.
 ---
+<dialog class="ref-modal" aria-label="Detalhe">
+  <button class="ref-modal-x" aria-label="Fechar">✕</button>
+  <div class="ref-modal-body"></div>
+</dialog>
 <script>
   type Ref = { id: string; tipo: string; nome: string; url: string; resumo: string; caminho?: string; termos: string[]; autolink: boolean };
   const BASE = import.meta.env.BASE_URL;
@@ -123,6 +127,37 @@
     if (e.key.toLowerCase() === 'f' && currentIt && pop && tag !== 'INPUT' && tag !== 'TEXTAREA') { e.preventDefault(); addPin(currentIt); hide(); }
   });
 
+  // 3b) modal local — clique abre na própria página (em vez de navegar)
+  const modal = document.querySelector('.ref-modal') as HTMLDialogElement | null;
+  const esc = (s: string) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  function refModal(payload: { tipo?: string; nome?: string; descricao?: string; niveis?: any[]; url?: string }) {
+    if (!modal) return;
+    const body = modal.querySelector('.ref-modal-body')!;
+    let h = `<div class="rm-head"><span class="ref-tipo">${esc(payload.tipo || '')}</span><b>${esc(payload.nome || '')}</b></div>`;
+    if (payload.descricao) h += `<p class="rm-desc">${esc(payload.descricao)}</p>`;
+    if (Array.isArray(payload.niveis) && payload.niveis.length) {
+      h += '<div class="rm-niveis">';
+      for (const n of payload.niveis) h += `<div class="rm-lv"><span class="rm-n">${n.nivel}</span><span>${n.rotulo ? `<b>${esc(n.rotulo)}</b> — ` : ''}${esc(n.texto)}</span></div>`;
+      h += '</div>';
+    }
+    if (payload.url) h += `<a class="rm-go" href="${payload.url}">ver no livro →</a>`;
+    body.innerHTML = h;
+    if (!modal.open) modal.showModal();
+  }
+  (window as any).refModal = refModal;
+  const openModal = (it: Ref & { detalhe?: any }) => refModal({ tipo: it.tipo, nome: it.nome, descricao: it.detalhe?.descricao ?? it.resumo, niveis: it.detalhe?.niveis, url: it.url });
+  modal?.querySelector('.ref-modal-x')?.addEventListener('click', () => modal.close());
+  modal?.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+  document.addEventListener('click', (e) => {
+    const el = (e.target as HTMLElement).closest?.('main a[href], main .ref') as HTMLElement | null;
+    if (!el || !INDEX) return;
+    let it: any = null;
+    if (el.classList.contains('ref') || el.dataset?.ref) it = entityFor(el);
+    else { try { const u = new URL((el as HTMLAnchorElement).href, location.href); const hash = u.hash.slice(1); if (hash && byHash[hash]) it = byHash[hash]; } catch {} }
+    if (!it) return;
+    e.preventDefault(); hide(); openModal(it);
+  });
+
   // 4) painel de consulta (fixados) — persiste na sessão entre páginas
   const PIN_KEY = 'centelha:consulta';
   const pins = (): string[] => { try { return JSON.parse(sessionStorage.getItem(PIN_KEY) || '[]'); } catch { return []; } };
@@ -205,4 +240,18 @@
   #consulta .cs-resumo { display: block; font-size: .82rem; color: var(--ink-soft); margin-top: .2rem; }
   #consulta .cs-x { position: absolute; top: .35rem; right: .4rem; background: none; border: none; color: var(--ink-soft); cursor: pointer; font-size: .8rem; }
   @media (max-width: 620px) { #consulta { right: .4rem; left: .4rem; width: auto; } }
+
+  /* modal local */
+  .ref-modal { width: min(34rem, 92vw); border: 1px solid var(--accent); border-radius: 10px; padding: 1.1rem 1.2rem 1.3rem;
+    background: var(--panel); color: var(--ink); box-shadow: 0 14px 50px var(--shadow); position: relative; }
+  .ref-modal::backdrop { background: rgba(0,0,0,.5); }
+  .ref-modal-x { position: absolute; top: .5rem; right: .6rem; background: none; border: none; font-size: 1.1rem; color: var(--ink-soft); cursor: pointer; }
+  .rm-head { display: flex; align-items: center; gap: .5rem; margin-bottom: .4rem; }
+  .rm-head b { font-family: 'Cinzel'; color: var(--accent); font-size: 1.25rem; }
+  .rm-desc { margin: 0 0 .7rem; }
+  .rm-niveis { border-top: 1px solid var(--rule); padding-top: .5rem; }
+  .rm-lv { display: flex; gap: .6rem; align-items: baseline; padding: .22rem 0; font-size: .95rem; line-height: 1.4; }
+  .rm-lv .rm-n { flex: 0 0 1.5rem; height: 1.5rem; display: inline-grid; place-items: center; background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .8rem; border-radius: 50%; }
+  .rm-lv b { color: var(--accent-strong); font-family: 'Cinzel'; font-size: .85rem; }
+  .rm-go { display: inline-block; margin-top: .8rem; font-style: italic; color: var(--accent); text-decoration: none; }
 </style>

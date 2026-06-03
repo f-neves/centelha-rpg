@@ -1,56 +1,65 @@
 [
-  {
-    "id": "forca",
-    "nome": "Força",
-    "grupo": "fisico",
-    "descricao": "Poder físico bruto — erguer, golpear, quebrar, dobrar o ferro."
-  },
-  {
-    "id": "destreza",
-    "nome": "Destreza",
-    "grupo": "fisico",
-    "descricao": "Agilidade, precisão e coordenação fina do corpo."
-  },
-  {
-    "id": "vigor",
-    "nome": "Vigor",
-    "grupo": "fisico",
-    "descricao": "Resistência, fôlego e saúde; o quanto o corpo aguenta."
-  },
-  {
-    "id": "carisma",
-    "nome": "Carisma",
-    "grupo": "social",
-    "descricao": "A presença que inspira, cativa e arrasta multidões."
-  },
-  {
-    "id": "manipulacao",
-    "nome": "Manipulação",
-    "grupo": "social",
-    "descricao": "A arte de torcer vontades, conduzir e enganar."
-  },
-  {
-    "id": "aparencia",
-    "nome": "Aparência",
-    "grupo": "social",
-    "descricao": "O impacto imediato da presença física sobre os outros."
-  },
-  {
-    "id": "percepcao",
-    "nome": "Percepção",
-    "grupo": "mental",
-    "descricao": "O quanto você nota do mundo à sua volta."
-  },
-  {
-    "id": "inteligencia",
-    "nome": "Inteligência",
-    "grupo": "mental",
-    "descricao": "Saber, raciocínio estruturado, memória e criação."
-  },
-  {
-    "id": "raciocinio",
-    "nome": "Raciocínio",
-    "grupo": "mental",
-    "descricao": "Rapidez mental: reagir, improvisar e pensar sob pressão."
-  }
+  { "id": "forca", "nome": "Força", "grupo": "fisico", "descricao": "Poder físico bruto — erguer, golpear, quebrar, dobrar o ferro. Soma ao dano corpo-a-corpo e define o quanto você carrega e arromba.", "niveis": [
+    { "nivel": 1, "texto": "Franzino: mal carrega o próprio peso; perde quedas de braço para quase todos." },
+    { "nivel": 2, "texto": "Comum: a força de uma pessoa média, sem treino." },
+    { "nivel": 3, "texto": "Forte: atlético e treinado; arromba uma porta com esforço." },
+    { "nivel": 4, "texto": "Muito forte: atleta de força; carrega outra pessoa correndo." },
+    { "nivel": 5, "texto": "Pico humano: dos mais fortes que já viveram; dobra barras de ferro." }
+  ] },
+  { "id": "destreza", "nome": "Destreza", "grupo": "fisico", "descricao": "Agilidade, precisão e coordenação fina. Base da maioria dos ataques e da Defesa por Esquiva.", "niveis": [
+    { "nivel": 1, "texto": "Desajeitado: tropeça, derruba coisas, mãos lentas." },
+    { "nivel": 2, "texto": "Comum: coordenação normal do dia a dia." },
+    { "nivel": 3, "texto": "Ágil: reflexos rápidos e mãos firmes; bom em esportes." },
+    { "nivel": 4, "texto": "Muito ágil: acrobata, batedor de carteira, espadachim fino." },
+    { "nivel": 5, "texto": "Pico humano: precisão e velocidade no limite do que um corpo alcança." }
+  ] },
+  { "id": "vigor", "nome": "Vigor", "grupo": "fisico", "descricao": "Resistência, fôlego e saúde — o quanto o corpo aguenta. Define Pontos de Vida e Soak natural.", "niveis": [
+    { "nivel": 1, "texto": "Doentio: cansa rápido; uma gripe o derruba." },
+    { "nivel": 2, "texto": "Comum: saúde mediana." },
+    { "nivel": 3, "texto": "Resistente: aguenta esforço e dor bem acima da média." },
+    { "nivel": 4, "texto": "Muito resistente: corre maratonas, ignora o frio, custa a cair." },
+    { "nivel": 5, "texto": "Pico humano: constituição de ferro; sobrevive ao que mataria quase todos." }
+  ] },
+  { "id": "carisma", "nome": "Carisma", "grupo": "social", "descricao": "A presença que inspira, cativa e arrasta multidões — simpatia, liderança natural e magnetismo.", "niveis": [
+    { "nivel": 1, "texto": "Desagradável: afasta as pessoas sem querer." },
+    { "nivel": 2, "texto": "Comum: passa despercebido socialmente." },
+    { "nivel": 3, "texto": "Cativante: faz amigos com facilidade; é ouvido." },
+    { "nivel": 4, "texto": "Magnético: lidera salas; pessoas o seguem de bom grado." },
+    { "nivel": 5, "texto": "Inspirador: move multidões; uma lenda viva pelo puro carisma." }
+  ] },
+  { "id": "manipulacao", "nome": "Manipulação", "grupo": "social", "descricao": "A arte de torcer vontades, conduzir e enganar — barganha, intriga e coerção.", "niveis": [
+    { "nivel": 1, "texto": "Transparente: mente mal; é lido facilmente." },
+    { "nivel": 2, "texto": "Comum: negocia o trivial." },
+    { "nivel": 3, "texto": "Persuasivo: convence e blefa com habilidade." },
+    { "nivel": 4, "texto": "Manipulador hábil: arma jogos sociais e quase sempre vence." },
+    { "nivel": 5, "texto": "Mestre da intriga: dobra até os céticos; tece conspirações inteiras." }
+  ] },
+  { "id": "aparencia", "nome": "Aparência", "grupo": "social", "descricao": "O impacto imediato da presença física sobre os outros — beleza, porte, o quanto você marca.", "niveis": [
+    { "nivel": 1, "texto": "Marcante pela falta de graça; difícil de ignorar (no mau sentido)." },
+    { "nivel": 2, "texto": "Comum: rosto na multidão." },
+    { "nivel": 3, "texto": "Atraente: chama olhares; causa boa primeira impressão." },
+    { "nivel": 4, "texto": "Deslumbrante: para conversas quando entra num salão." },
+    { "nivel": 5, "texto": "Beleza inesquecível: quem o vê não esquece; quase sobrenatural." }
+  ] },
+  { "id": "percepcao", "nome": "Percepção", "grupo": "mental", "descricao": "O quanto você nota do mundo à sua volta — sentidos, atenção e instinto para o que está fora do lugar.", "niveis": [
+    { "nivel": 1, "texto": "Distraído: não vê o óbvio; pego de surpresa sempre." },
+    { "nivel": 2, "texto": "Comum: nota o que salta aos olhos." },
+    { "nivel": 3, "texto": "Observador: capta detalhes e mentiras pequenas." },
+    { "nivel": 4, "texto": "Aguçado: percebe o quase-imperceptível; difícil de enganar." },
+    { "nivel": 5, "texto": "Nada lhe escapa: lê uma sala num relance, sente o perigo no ar." }
+  ] },
+  { "id": "inteligencia", "nome": "Inteligência", "grupo": "mental", "descricao": "Saber, raciocínio estruturado, memória e criação — o conhecimento acumulado e a capacidade de aplicá-lo.", "niveis": [
+    { "nivel": 1, "texto": "Simplório: dificuldade com abstrações e planos." },
+    { "nivel": 2, "texto": "Comum: senso prático mediano." },
+    { "nivel": 3, "texto": "Culto/esperto: bem informado, deduz e planeja bem." },
+    { "nivel": 4, "texto": "Brilhante: erudito; resolve problemas que travam os outros." },
+    { "nivel": 5, "texto": "Gênio: mente de era; enxerga padrões invisíveis para o resto." }
+  ] },
+  { "id": "raciocinio", "nome": "Raciocínio", "grupo": "mental", "descricao": "Agilidade mental: reagir, improvisar e pensar sob pressão. Base da Iniciativa.", "niveis": [
+    { "nivel": 1, "texto": "Lento: demora a reagir; congela na crise." },
+    { "nivel": 2, "texto": "Comum: reage no tempo normal." },
+    { "nivel": 3, "texto": "Rápido: pensa de pé, improvisa bem." },
+    { "nivel": 4, "texto": "Afiadíssimo: age antes dos outros perceberem." },
+    { "nivel": 5, "texto": "Relâmpago: decide perfeito no meio do caos, num piscar." }
+  ] }
 ]
