@@ -1,271 +1,327 @@
 ---
 import Base from '../layouts/Base.astro';
 import RoladorDados from '../components/RoladorDados.astro';
-import { loadData } from '../lib/data';
-const d = await loadData();
-const grpAttr: Record<string, string> = { fisico: 'Físicos', social: 'Sociais', mental: 'Mentais' };
-const grpHab: Record<string, string> = { combate: 'Combate', fisica: 'Físicas & Mobilidade', social: 'Sociais', saber: 'Saber', tecnica: 'Técnicas' };
-const attrsByGrp = (g: string) => d.atributos.filter((a) => a.grupo === g);
-const habsByGrp = (g: string) => d.habilidades.filter((h) => h.grupo === g);
-const caminhosOrd = [...d.caminhos].sort((a, b) => a.nome.localeCompare(b.nome));
 ---
-<Base title="Ficha de Personagem" largura="wide" descricao="Monte um personagem com XP ao vivo: atributos, perícias, virtudes, Técnicas e Artes, com todos os derivados calculados.">
+<Base title="Ficha de Personagem" largura="wide" descricao="Monte um personagem com XP ao vivo: atributos, perícias, secundárias, Técnicas e Artes — tudo por bolinhas, com os derivados calculados.">
   <h1>Ficha de Personagem</h1>
-  <p class="lead">Clique nas bolinhas para distribuir os pontos. Tudo se calcula ao vivo — XP, Defesa, PV, Energia, Mana. As bolinhas <span style="color:var(--gold)">douradas</span> são o piso grátis. Salva sozinho neste aparelho; compartilhe pelo botão de link.</p>
 
-  <div class="ficha-top">
-    <label class="fld grow">Nome<input id="f-nome" type="text" placeholder="Seu herói" /></label>
-    <label class="fld">Orçamento de XP<input id="f-orc" type="number" min="0" value="400" /></label>
-    <div class="btn-row">
-      <button class="btn" id="f-kael">Carregar Kael</button>
-      <button class="btn" id="f-link">Copiar link</button>
+  <div class="xpbar" id="painel">
+    <span class="big">XP: <b id="xpSpent">0</b></span>
+    <label>Orçamento <input type="number" id="xpBudget" value="400" /></label>
+    <span class="big">Restam: <b id="xpRem" class="rem ok">400</b></span>
+    <span class="breakdown" id="xpBreak"></span>
+    <span class="xp-btns">
+      <button class="btn" id="f-kael">Kael</button>
+      <button class="btn" id="f-link">Link</button>
       <button class="btn" id="f-reset">Resetar</button>
+    </span>
+  </div>
+
+  <div class="idrow">
+    <label>Nome<input class="txt" data-id="nome" placeholder="Seu herói" /></label>
+    <label>Conceito<input class="txt" data-id="conceito" /></label>
+    <label>Jogador<input class="txt" data-id="jogador" /></label>
+  </div>
+
+  <h2 class="barh">Atributos <small>(piso 2 · nível×10)</small></h2>
+  <div class="cols3" id="attrs"></div>
+
+  <div class="cols2">
+    <div>
+      <h2 class="barh">Centelha, Virtudes &amp; Vontade</h2>
+      <div id="power"></div>
+    </div>
+    <div>
+      <h2 class="barh">Derivados <small>(calculados)</small></h2>
+      <div class="panel" id="derived"></div>
     </div>
   </div>
 
-  <div id="painel" class="painel" aria-live="polite"></div>
+  <h2 class="barh">Habilidades <small>(piso 0 · nível×5 · ☐ especialidade ×10)</small></h2>
+  <div class="cols3" id="skills"></div>
 
-  <div class="ficha-cols">
-    <section>
-      <h2>Atributos</h2>
-      {['fisico', 'social', 'mental'].map((g) => (
-        <div class="bloco">
-          <h4>{grpAttr[g]}</h4>
-          {attrsByGrp(g).map((a) => (
-            <div class="trait"><span class="t-nome">{a.nome}</span>
-              <span class="dots" data-kind="attr" data-id={a.id} data-max="5" data-floor="2"></span></div>
-          ))}
-        </div>
-      ))}
+  <h2 class="barh">Habilidades Secundárias <small>(nível×2 · esp. ×5)</small></h2>
+  <div class="cols3" id="secondary"></div>
 
-      <h2>Virtudes &amp; Poder</h2>
-      <div class="bloco">
-        {d.virtudes.map((v) => (
-          <div class="trait"><span class="t-nome">{v.nome}</span>
-            <span class="dots" data-kind="virt" data-id={v.id} data-max="5" data-floor="1"></span></div>
-        ))}
-        <div class="trait"><span class="t-nome">Força de Vontade</span>
-          <span class="dots" data-kind="vontade" data-id="vontade" data-max="10" data-floor="5"></span></div>
-        <div class="trait"><span class="t-nome">Centelha</span>
-          <span class="dots" data-kind="centelha" data-id="centelha" data-max="5" data-floor="0"></span></div>
-      </div>
-    </section>
+  <h2 class="barh">Caminhos &amp; Técnicas <small>(custo banda×5)</small></h2>
+  <div id="tecnicas"></div>
 
-    <section>
-      <h2>Habilidades</h2>
-      <p class="muted" style="font-size:.82rem;margin-top:-.4rem">valor · <span style="color:var(--gold)">especialidade</span> (quadradinhos, até o nível da perícia)</p>
-      {['combate', 'fisica', 'social', 'saber', 'tecnica'].map((g) => (
-        <div class="bloco">
-          <h4>{grpHab[g]}</h4>
-          {habsByGrp(g).map((h) => (
-            <div class="trait skill"><span class="t-nome">{h.nome}</span>
-              <span class="dots" data-kind="skill" data-id={h.id} data-max="5" data-floor="0"></span>
-              <span class="dots spec" data-kind="spec" data-id={h.id} data-floor="0"></span>
-            </div>
-          ))}
-        </div>
-      ))}
-    </section>
+  <h2 class="barh">Arcano — Artes <small>(nível×10 · exige Centelha ≥ nível e Ocultismo ≥ nível)</small></h2>
+  <div id="artes"></div>
 
-    <section>
-      <h2>Técnicas</h2>
-      <div class="add-row">
-        <select id="f-tec-sel">
-          <option value="">— escolher Técnica —</option>
-          {caminhosOrd.map((c) => (
-            <optgroup label={c.nome}>
-              {d.porCaminho[c.id]?.map((t) => <option value={t.id}>{t.nome} (B{t.banda})</option>)}
-            </optgroup>
-          ))}
-        </select>
-        <button class="btn" id="f-tec-add">Adicionar</button>
-      </div>
-      <ul id="f-tec-list" class="chosen"></ul>
-
-      <h2>Artes</h2>
-      <div class="bloco artes-grid">
-        {[...d.artes].sort((a, b) => a.nome.localeCompare(b.nome)).map((a) => (
-          <div class="trait"><span class="t-nome">{a.nome}</span>
-            <span class="dots" data-kind="arte" data-id={a.id} data-max="5" data-floor="0"></span></div>
-        ))}
-      </div>
-    </section>
-  </div>
-
-  <h2>Rolar</h2>
+  <h2 class="barh">Rolar</h2>
   <RoladorDados compact />
 </Base>
 
 <script>
   import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, energia, mana, iniciativa } from '../lib/calc';
-  import tecnicas from '../data/tecnicas.json';
-  const TEC: Record<string, any> = Object.fromEntries((tecnicas as any[]).map((t) => [t.id, t]));
+  import ATTRS_D from '../data/atributos.json';
+  import HAB_D from '../data/habilidades.json';
+  import VIRT_D from '../data/virtudes.json';
+  import CAM_D from '../data/caminhos.json';
+  import TEC_D from '../data/tecnicas.json';
+  import ARTE_D from '../data/artes.json';
 
+  const el = (id: string) => document.getElementById(id)!;
+  const slug = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   const KEY = 'centelha:ficha';
   const BASE = import.meta.env.BASE_URL;
-  const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
-  const DOTS = Array.from(document.querySelectorAll<HTMLElement>('.dots'));
-  const painel = $('#painel');
-  let tecSel: string[] = [];
-  let S: Record<string, Record<string, number>> = {};
 
-  // ---- bolinhas ----
-  const maxOf = (el: HTMLElement) => el.dataset.max ? +el.dataset.max : (el.dataset.kind === 'spec' ? (S.skill?.[el.dataset.id!] ?? 0) : 5);
-  function defaults() {
-    for (const el of DOTS) {
-      const k = el.dataset.kind!, id = el.dataset.id!, fl = +el.dataset.floor!;
-      (S[k] ??= {}); if (S[k][id] == null) S[k][id] = fl;
-    }
-  }
-  function renderDots(el: HTMLElement) {
-    const k = el.dataset.kind!, id = el.dataset.id!, fl = +el.dataset.floor!;
-    const max = maxOf(el), v = S[k]?.[id] ?? fl;
-    const nome = el.closest('.trait')?.querySelector('.t-nome')?.textContent ?? '';
-    el.setAttribute('role', 'group'); el.setAttribute('aria-label', `${nome}: ${v}`);
-    if (max === 0) { el.innerHTML = '<span class="spec-none muted">—</span>'; return; }
-    let h = '';
-    for (let i = 1; i <= max; i++)
-      h += `<button type="button" class="dot ${i <= v ? 'on' : ''} ${i <= fl ? 'floor' : ''} ${k === 'spec' ? 'sq' : ''}" data-i="${i}" aria-label="${nome} ${i}"></button>`;
-    el.innerHTML = h;
-  }
-  const renderAll = () => DOTS.forEach(renderDots);
+  const ATTR_GRP: Record<string, string> = { fisico: 'Físicos', social: 'Sociais', mental: 'Mentais' };
+  const HAB_GRP: Record<string, string> = { combate: 'Combate', fisica: 'Físicas', social: 'Sociais', saber: 'Saber', tecnica: 'Técnicas' };
+  const SECONDARY: [string, string][] = [
+    ['Atuação', 'Sociais'], ['Sedução', 'Sociais'], ['Liderança', 'Sociais'], ['Disfarce', 'Sociais'], ['Interrogatório', 'Sociais'],
+    ['Burocracia', 'Conhecimento'], ['Herbologia', 'Conhecimento'], ['História', 'Conhecimento'], ['Religião', 'Conhecimento'], ['Heráldica', 'Conhecimento'], ['Astronomia', 'Conhecimento'], ['Geografia', 'Conhecimento'], ['Alquimia', 'Conhecimento'], ['Arquitetura', 'Conhecimento'], ['Direito', 'Conhecimento'], ['Bestiário', 'Conhecimento'], ['Estratégia', 'Conhecimento'], ['Genealogia', 'Conhecimento'], ['Folclore', 'Conhecimento'],
+    ['Ferraria', 'Ofício'], ['Carpintaria', 'Ofício'], ['Costura', 'Ofício'], ['Culinária', 'Ofício'], ['Joalheria', 'Ofício'], ['Couraria', 'Ofício'], ['Alvenaria', 'Ofício'], ['Mineração', 'Ofício'], ['Pesca', 'Ofício'], ['Agricultura', 'Ofício'], ['Navegação', 'Ofício'], ['Marcenaria', 'Ofício'], ['Armadureiro', 'Ofício'], ['Armeiro', 'Ofício'], ['Escrivania', 'Ofício'], ['Cartografia', 'Ofício'], ['Veterinário', 'Ofício'], ['Adestramento', 'Ofício'],
+    ['Tocar Instrumento', 'Expressão'], ['Canto', 'Expressão'], ['Dança', 'Expressão'], ['Poesia', 'Expressão'], ['Pintura', 'Expressão'], ['Escultura', 'Expressão'], ['Caligrafia', 'Expressão'], ['Contação de Histórias', 'Expressão'],
+    ['Jogos', 'Subterfúgio'], ['Falsificação', 'Subterfúgio'], ['Prestidigitação', 'Subterfúgio'], ['Abrir Fechaduras', 'Subterfúgio'], ['Contrabando', 'Subterfúgio'], ['Apostar', 'Subterfúgio'], ['Roubo', 'Subterfúgio'], ['Ocultação', 'Subterfúgio'], ['Vigilância Urbana', 'Subterfúgio'],
+    ['Meditação', 'Interior'], ['Ritualismo', 'Interior'], ['Autocontrole', 'Interior'], ['Concentração', 'Interior'], ['Leitura Corporal', 'Interior'], ['Interpretação de Sonhos', 'Interior'],
+  ];
 
-  document.addEventListener('click', (e) => {
-    const dot = (e.target as HTMLElement).closest<HTMLElement>('.dots .dot'); if (!dot) return;
-    const el = dot.parentElement as HTMLElement;
-    const k = el.dataset.kind!, id = el.dataset.id!, fl = +el.dataset.floor!, max = maxOf(el);
-    const i = +dot.dataset.i!, cur = S[k]?.[id] ?? fl;
-    let nv = i === cur ? i - 1 : i;
-    nv = Math.max(fl, Math.min(max, nv));
-    (S[k] ??= {})[id] = nv;
-    renderDots(el);
-    if (k === 'skill') { // especialidade não passa do nível da perícia
-      const specEl = document.querySelector<HTMLElement>(`.dots[data-kind="spec"][data-id="${id}"]`);
-      if (specEl) { if ((S.spec?.[id] ?? 0) > nv) (S.spec ??= {})[id] = nv; renderDots(specEl); }
-    }
-    recompute(); save();
-  });
-
-  // ---- XP + derivados ----
-  const g = (k: string, id: string) => S[k]?.[id] ?? 0;
-  function xpBreakdown() {
-    const sum = (o: Record<string, number> = {}, f: (v: number) => number) => Object.values(o).reduce((s, v) => s + f(v), 0);
-    const attr = sum(S.attr, (v) => custoPontos('atributo', 2, v));
-    const skill = sum(S.skill, (v) => custoPontos('habilidadePrimaria', 0, v));
-    const spec = sum(S.spec, (v) => v * 10);
-    const virt = sum(S.virt, (v) => custoPontos('virtude', 1, v));
-    const vont = custoPontos('vontade', 5, g('vontade', 'vontade') || 5);
-    const cent = custoPontos('centelha', 0, g('centelha', 'centelha'));
-    const tec = tecSel.reduce((s, id) => s + custoTecnica(TEC[id]?.banda ?? 1), 0);
-    const arte = sum(S.arte, (v) => custoArte(v));
-    return { attr, skill, spec, virt, vont, cent, tec, arte, total: attr + skill + spec + virt + vont + cent + tec + arte };
-  }
-  function recompute() {
-    const virt = { compaixao: g('virt', 'compaixao'), conviccao: g('virt', 'conviccao'), temperanca: g('virt', 'temperanca'), valor: g('virt', 'valor') };
-    const cent = g('centelha', 'centelha'), vont = g('vontade', 'vontade') || 5;
-    const der = {
-      pv: pv(g('attr', 'vigor')),
-      defesa: defesa({ destreza: g('attr', 'destreza'), habilidade: g('skill', 'esquiva'), especialidade: g('spec', 'esquiva'), centelha: cent }),
-      defesaMental: defesaMental({ virtudes: virt, vontade: vont, centelha: cent }),
-      energia: energia({ centelha: cent, virtudes: virt, vontade: vont }),
-      mana: mana({ centelha: cent, vontade: vont }),
-      ini: iniciativa({ raciocinio: g('attr', 'raciocinio'), prontidao: g('skill', 'prontidao') }),
-    };
-    const xp = xpBreakdown();
-    const orc = +($('#f-orc') as HTMLInputElement).value || 0;
-    const rest = orc - xp.total;
-    painel.innerHTML =
-      `<div class="painel-xp ${rest < 0 ? 'over' : ''}"><span class="big">${xp.total}</span> / ${orc} XP <span class="muted">· restam ${rest}</span></div>` +
-      `<div class="painel-bd muted">Atrib ${xp.attr} · Perícias ${xp.skill} · Espec ${xp.spec} · Virtudes ${xp.virt} · Vontade ${xp.vont} · Centelha ${xp.cent} · Técnicas ${xp.tec} · Artes ${xp.arte}</div>` +
-      `<div class="painel-der"><div><b>PV</b>${der.pv}</div><div><b>Defesa</b>${der.defesa}</div><div><b>Def. Mental</b>${der.defesaMental}</div><div><b>Energia</b>${der.energia}</div><div><b>Mana</b>${der.mana}</div><div><b>Iniciativa</b>${der.ini.str}</div></div>`;
-    save();
-  }
-
-  // ---- técnicas ----
-  function renderTec() {
-    const ul = $('#f-tec-list');
-    ul.innerHTML = tecSel.map((id) => {
-      const t = TEC[id]; if (!t) return '';
-      return `<li><span><a href="${BASE}caminhos/${t.caminho}#${id}">${t.nome}</a> <span class="muted">B${t.banda} · ${custoTecnica(t.banda)} XP</span></span><button class="rm" data-rm="${id}" aria-label="Remover">✕</button></li>`;
-    }).join('');
-    ul.querySelectorAll('[data-rm]').forEach((b) => b.addEventListener('click', () => { tecSel = tecSel.filter((x) => x !== (b as HTMLElement).dataset.rm); renderTec(); recompute(); }));
-  }
+  const CAM_ORDER = (CAM_D as any[]).map((c) => c.id);
+  const CAM_NOME: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.nome]));
+  const CAMTREE: Record<string, [string, string, number][]> = {};
+  for (const t of TEC_D as any[]) (CAMTREE[t.caminho] ??= []).push([t.id, t.nome, t.banda]);
+  for (const k in CAMTREE) CAMTREE[k].sort((a, b) => a[2] - b[2]);
+  const TECBAND: Record<string, number> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.banda]));
 
   // ---- estado ----
-  function collect() { return { nome: ($('#f-nome') as HTMLInputElement).value, orc: +($('#f-orc') as HTMLInputElement).value || 0, S, tec: tecSel }; }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(collect())); } catch {} }
-  function applyState(s: any) {
-    ($('#f-nome') as HTMLInputElement).value = s.nome || '';
-    ($('#f-orc') as HTMLInputElement).value = s.orc ?? 400;
-    S = s.S || s.t || {}; // compat: formato antigo usava .t
-    tecSel = Array.isArray(s.tec) ? s.tec : [];
-    defaults(); renderAll(); renderTec(); recompute();
+  let S: any;
+  const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
+  function fresh() {
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 5, centelha: 0, tech: {}, arte: {}, budget: 400 };
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 2));
+    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
+    (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
+    SECONDARY.forEach(([n]) => { S.skills2[slug(n)] = 0; S.spec2[slug(n)] = 0; });
+  }
+  function normalize() {
+    S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
+    S.willpower ??= 5; S.centelha ??= 0; S.budget ??= 400;
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 2));
+    (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] ??= 0; });
+    (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
+    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] ??= 0; S.spec2[k] ??= 0; });
+  }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} };
+
+  // ---- builders ----
+  const dotsHTML = (kind: string, key: string, value: number, max: number, floor: number) => {
+    let h = `<span class="dots" data-kind="${kind}" data-key="${key}">`;
+    for (let d = 1; d <= max; d++) h += `<span class="dot${d <= value ? ' on' : ''}${d <= floor ? ' free' : ''}" data-d="${d}"></span>`;
+    return h + '</span>';
+  };
+  const specHTML = (key: string, value: number, maxAllowed: number) => {
+    let h = `<span class="spec" data-spec="${key}">`;
+    for (let d = 1; d <= 5; d++) h += `<span class="sq${d <= value ? ' on' : ''}${d > maxAllowed ? ' dis' : ''}" data-d="${d}"></span>`;
+    return h + '</span>';
+  };
+  const trow = (nm: string, right: string) => `<div class="trow"><span class="nm">${nm}</span><span class="tr-r">${right}</span></div>`;
+
+  // ---- render ----
+  function renderAttrs() {
+    const groups: Record<string, any[]> = { Físicos: [], Sociais: [], Mentais: [] };
+    (ATTRS_D as any[]).forEach((a) => groups[ATTR_GRP[a.grupo]].push(a));
+    el('attrs').innerHTML = ['Físicos', 'Sociais', 'Mentais'].map((g) =>
+      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 5, 2))).join('')}</div>`).join('');
+  }
+  function renderPower() {
+    let h = trow('<b>Centelha</b> <small>(0–5)</small>', dotsHTML('centelha', 'centelha', S.centelha, 5, 0));
+    h += '<h3>Virtudes</h3>';
+    (VIRT_D as any[]).forEach((v) => (h += trow(v.nome, dotsHTML('virtue', v.id, S.virtues[v.id], 5, 1))));
+    h += '<h3>Força de Vontade <small>(piso 5 · ×2)</small></h3>';
+    h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 10, 5));
+    el('power').innerHTML = h;
+  }
+  function renderSkills() {
+    const groups: Record<string, any[]> = { Combate: [], Físicas: [], Sociais: [], Saber: [], Técnicas: [] };
+    (HAB_D as any[]).forEach((s) => groups[HAB_GRP[s.grupo]].push(s));
+    const cols = [['Combate', 'Físicas'], ['Sociais', 'Saber'], ['Técnicas']];
+    el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
+      `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 5, 0) + specHTML(s.id, S.spec[s.id] || 0, S.skills[s.id] || 0))).join('')).join('') + '</div>').join('');
+  }
+  function renderSecondary() {
+    const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
+    const cols = [['Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
+    el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
+      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 5, 0) + specHTML('2_' + k, S.spec2[k] || 0, S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
+  }
+  function renderCaminhos() {
+    el('tecnicas').innerHTML = CAM_ORDER.map((cam) => {
+      const techs = CAMTREE[cam] || [];
+      const sel = techs.filter(([id]) => S.tech[id]);
+      const cost = sel.reduce((s, [, , b]) => s + b * 5, 0);
+      const open = OPEN.cam[cam];
+      const pills = techs.map(([id, nome, b]) => `<span class="tpill${S.tech[id] ? ' on' : ''}" data-tech="${id}">${nome} <small>b${b} · ${b * 5}</small></span>`).join('');
+      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Caminho ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${pills}</div></div>`;
+    }).join('');
+  }
+  function renderArtes() {
+    el('artes').innerHTML = (ARTE_D as any[]).map((a) => {
+      const lvl = S.arte[a.id] || 0, cost = custoArte(lvl), open = OPEN.arte[a.id];
+      const fx = a.niveis.map((n: any) => `<div class="fxline${n.nivel <= lvl ? ' hi' : ''}">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('');
+      return `<div class="cam"><div class="cam-head"><span class="chev" data-artetog="${a.id}">${open ? '▾' : '▸'} ${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 5, 0)}<span class="cam-meta">${lvl ? `nível ${lvl} · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${fx}</div></div>`;
+    }).join('');
+  }
+  const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, SP = (id: string) => S.spec[id] || 0, VI = (id: string) => S.virtues[id] || 0;
+  function renderDerived() {
+    const virt = { compaixao: VI('compaixao'), conviccao: VI('conviccao'), temperanca: VI('temperanca'), valor: VI('valor') };
+    const C = S.centelha, W = S.willpower, integ = virt.compaixao + virt.temperanca;
+    const r = (l: string, v: any, fm: string) => `<div class="derv"><span class="dl">${l}<span class="fm">${fm}</span></span><span class="dv">${v}</span></div>`;
+    el('derived').innerHTML =
+      r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
+      r('Defesa (Esquiva)', defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), especialidade: SP('esquiva'), centelha: C }), '(Des+Esquiva)×2 − ⌊/4⌋ + esp + ⌈Cent/2⌉') +
+      r('Defesa Mental', defesaMental({ virtudes: virt, vontade: W, centelha: C }), `⌊(Integridade ${integ} + Vontade)/2⌋ + Centelha`) +
+      r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
+      r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade') +
+      r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão');
+  }
+  function recompute() {
+    let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
+    (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 2, S.attrs[a.id] || 2)));
+    (HAB_D as any[]).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || 0) * 10; });
+    (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
+    xw = custoPontos('vontade', 5, S.willpower || 5);
+    xc = custoPontos('centelha', 0, S.centelha || 0);
+    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || 0) * 5; });
+    Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECBAND[id]) xt += TECBAND[id] * 5; });
+    (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
+    const total = xa + xs + xsp + xv + xw + xc + x2 + xt + xar;
+    el('xpSpent').textContent = String(total);
+    const rem = (S.budget || 0) - total, re = el('xpRem'); re.textContent = String(rem); re.className = 'rem ' + (rem < 0 ? 'neg' : 'ok');
+    el('xpBreak').innerHTML = `Atrib ${xa} · Perícias ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '');
+    renderDerived(); save();
   }
 
-  $('#f-tec-add').addEventListener('click', () => {
-    const sel = $('#f-tec-sel') as HTMLSelectElement; const id = sel.value;
-    if (id && !tecSel.includes(id)) { tecSel.push(id); renderTec(); recompute(); }
-    sel.value = '';
+  // ---- interações ----
+  const floorOf: Record<string, number> = { attr: 2, skill: 0, skill2: 0, virtue: 1, centelha: 0, willpower: 5, arte2: 0 };
+  const valOf = (k: string, key: string) => ({ attr: S.attrs[key], skill: S.skills[key], skill2: S.skills2[key] || 0, virtue: S.virtues[key], centelha: S.centelha, willpower: S.willpower, arte2: S.arte[key] || 0 } as any)[k] || 0;
+  function refreshDots(kind: string, key: string) {
+    const span = document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`); if (!span) return;
+    const floor = floorOf[kind], val = valOf(kind, key);
+    span.querySelectorAll('.dot').forEach((d) => { const dd = +(d as HTMLElement).dataset.d!; d.classList.toggle('on', dd <= val); d.classList.toggle('free', dd <= floor); });
+  }
+  function setDot(kind: string, key: string, d: number) {
+    const floor = floorOf[kind], val = valOf(kind, key);
+    let nv = d <= floor ? floor : val === d ? d - 1 : d; if (nv < floor) nv = floor;
+    if (kind === 'attr') S.attrs[key] = nv;
+    else if (kind === 'skill') { S.skills[key] = nv; if ((S.spec[key] || 0) > nv) S.spec[key] = nv; renderSkills(); }
+    else if (kind === 'skill2') { S.skills2[key] = nv; if ((S.spec2[key] || 0) > nv) S.spec2[key] = nv; renderSecondary(); }
+    else if (kind === 'virtue') S.virtues[key] = nv;
+    else if (kind === 'centelha') S.centelha = nv;
+    else if (kind === 'willpower') S.willpower = nv;
+    else if (kind === 'arte2') { S.arte[key] = nv; renderArtes(); }
+    if (['attr', 'virtue', 'centelha', 'willpower'].includes(kind)) refreshDots(kind, key);
+    recompute();
+  }
+  function setSpec(specKey: string, d: number) {
+    if (specKey.startsWith('2_')) { const sl = specKey.slice(2); let nv = (S.spec2[sl] || 0) === d ? d - 1 : d; nv = Math.max(0, Math.min(nv, S.skills2[sl] || 0)); S.spec2[sl] = nv; renderSecondary(); }
+    else { let nv = (S.spec[specKey] || 0) === d ? d - 1 : d; nv = Math.max(0, Math.min(nv, S.skills[specKey] || 0)); S.spec[specKey] = nv; renderSkills(); }
+    recompute();
+  }
+
+  document.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    const dot = t.closest<HTMLElement>('.dots .dot');
+    if (dot) { const s = dot.parentElement as HTMLElement; setDot(s.dataset.kind!, s.dataset.key!, +dot.dataset.d!); return; }
+    const sq = t.closest<HTMLElement>('.spec .sq');
+    if (sq && !sq.classList.contains('dis')) { setSpec((sq.parentElement as HTMLElement).dataset.spec!, +sq.dataset.d!); return; }
+    const pill = t.closest<HTMLElement>('.tpill');
+    if (pill) { const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
+    const ct = t.closest<HTMLElement>('[data-camtog]');
+    if (ct) { OPEN.cam[ct.dataset.camtog!] = !OPEN.cam[ct.dataset.camtog!]; renderCaminhos(); return; }
+    const at = t.closest<HTMLElement>('[data-artetog]');
+    if (at) { OPEN.arte[at.dataset.artetog!] = !OPEN.arte[at.dataset.artetog!]; renderArtes(); return; }
   });
-  $('#f-orc').addEventListener('input', recompute);
-  $('#f-nome').addEventListener('input', save);
-  $('#f-reset').addEventListener('click', () => { if (confirm('Limpar a ficha?')) { localStorage.removeItem(KEY); location.hash = ''; location.reload(); } });
-  $('#f-link').addEventListener('click', () => {
-    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(collect()))));
+
+  // idrow + budget
+  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { S.id[inp.dataset.id!] = inp.value; save(); }));
+  (el('xpBudget') as HTMLInputElement).addEventListener('input', (e) => { S.budget = +(e.target as HTMLInputElement).value || 0; recompute(); });
+
+  function syncInputs() {
+    document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => (inp.value = S.id?.[inp.dataset.id!] || ''));
+    (el('xpBudget') as HTMLInputElement).value = String(S.budget ?? 400);
+  }
+  function renderAll() { syncInputs(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); recompute(); }
+
+  // botões
+  el('f-reset').addEventListener('click', () => { if (confirm('Limpar a ficha?')) { localStorage.removeItem(KEY); location.hash = ''; fresh(); renderAll(); } });
+  el('f-link').addEventListener('click', () => {
+    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
     navigator.clipboard?.writeText(location.origin + location.pathname + '#p=' + b64);
-    const b = $('#f-link'); b.textContent = 'Link copiado ✓'; setTimeout(() => (b.textContent = 'Copiar link'), 1400);
+    const b = el('f-link'); b.textContent = '✓'; setTimeout(() => (b.textContent = 'Link'), 1200);
+  });
+  el('f-kael').addEventListener('click', () => {
+    fresh();
+    S.id = { nome: 'Kael, o Batedor', conceito: 'Batedor', jogador: '' };
+    Object.assign(S.attrs, { destreza: 4, vigor: 3, percepcao: 3, raciocinio: 3 });
+    Object.assign(S.skills, { furtividade: 3, 'armas-a-distancia': 3, prontidao: 2, atletismo: 2, sobrevivencia: 2, investigacao: 1, briga: 1, esquiva: 1 });
+    Object.assign(S.spec, { furtividade: 1, 'armas-a-distancia': 1 });
+    Object.assign(S.virtues, { conviccao: 2, temperanca: 2, valor: 3 });
+    S.centelha = 1;
+    S.tech = { 'pisar-leve': true, esgueirar: true, 'mira-firme': true };
+    renderAll();
   });
 
-  const KAEL = { nome: 'Kael, o Batedor', orc: 400,
-    S: { attr: { forca: 2, destreza: 4, vigor: 3, carisma: 2, manipulacao: 2, aparencia: 2, percepcao: 3, inteligencia: 2, raciocinio: 3 },
-      skill: { furtividade: 3, 'armas-a-distancia': 3, prontidao: 2, atletismo: 2, sobrevivencia: 2, investigacao: 1, briga: 1, esquiva: 1 },
-      spec: { furtividade: 1, 'armas-a-distancia': 1 },
-      virt: { compaixao: 1, conviccao: 2, temperanca: 2, valor: 3 }, vontade: { vontade: 5 }, centelha: { centelha: 1 }, arte: {} },
-    tec: ['pisar-leve', 'esgueirar', 'mira-firme'] };
-  $('#f-kael').addEventListener('click', () => applyState(structuredClone(KAEL)));
-
+  // init
   function init() {
     const m = location.hash.match(/p=([^&]+)/);
-    if (m) { try { return applyState(JSON.parse(decodeURIComponent(escape(atob(m[1]))))); } catch {} }
-    try { const raw = localStorage.getItem(KEY); if (raw) return applyState(JSON.parse(raw)); } catch {}
-    defaults(); renderAll(); renderTec(); recompute();
+    if (m) { try { S = JSON.parse(decodeURIComponent(escape(atob(m[1])))); normalize(); return renderAll(); } catch {} }
+    try { const raw = localStorage.getItem(KEY); if (raw) { S = JSON.parse(raw); normalize(); return renderAll(); } } catch {}
+    fresh(); renderAll();
   }
   init();
 </script>
 
 <style>
-  .ficha-top { display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; margin: 1rem 0; }
-  .fld { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .78rem; color: var(--ink-soft); gap: .2rem; }
-  .fld.grow { flex: 1; min-width: 12rem; }
-  .fld input { padding: .4rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: 1rem; }
-  .painel { background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: .7rem 1rem; margin-bottom: 1.4rem; box-shadow: 0 2px 8px var(--shadow); }
-  .painel-xp .big { font-family: 'Cinzel'; font-size: 1.6rem; color: var(--accent); }
-  .painel-xp.over .big { color: #b3401f; }
-  .painel-bd { font-size: .8rem; margin: .2rem 0 .5rem; }
-  .painel-der { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; }
-  .painel-der div { font-size: .95rem; } .painel-der b { font-family: 'Cinzel'; color: var(--accent); font-size: .72rem; display: block; }
-  .ficha-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.4rem 2rem; align-items: start; }
-  .bloco { margin-bottom: 1rem; }
-  .trait { display: flex; align-items: center; gap: .6rem; padding: .18rem 0; }
-  .t-nome { flex: 1; }
+  .xpbar { display: flex; gap: 1rem 1.2rem; flex-wrap: wrap; align-items: center; background: var(--accent); color: var(--on-accent); padding: .6rem 1rem; border-radius: 7px; margin: 1rem 0; }
+  .xpbar .big { font-family: 'Cinzel'; font-size: .95rem; } .xpbar .big b { font-size: 1.3rem; }
+  .xpbar .rem.neg { color: #ffd0cb; } .xpbar label { font-family: 'Cinzel'; font-size: .8rem; display: flex; align-items: center; gap: .4rem; }
+  .xpbar input { width: 4.5rem; text-align: center; border: none; border-radius: 4px; padding: .25rem; font-family: 'Cinzel'; }
+  .xpbar .breakdown { font-size: .78rem; opacity: .9; flex: 1 1 12rem; }
+  .xpbar .xp-btns { display: flex; gap: .4rem; margin-left: auto; }
+  .xpbar .btn { background: var(--accent-strong); color: var(--on-accent); border-color: transparent; padding: .25rem .6rem; font-size: .78rem; }
 
+  .idrow { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 1rem; margin-bottom: .4rem; }
+  .idrow label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .04em; color: var(--ink-soft); text-transform: uppercase; }
+  .idrow .txt { font-family: 'EB Garamond'; font-size: 1rem; border: none; border-bottom: 1px solid var(--rule); background: transparent; padding: .2rem; color: var(--ink); }
+  .idrow .txt:focus { outline: none; border-bottom-color: var(--accent); }
+
+  h2.barh { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 700; font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; padding: .35rem .7rem; border: none; border-radius: 3px; margin: 1.5rem 0 .7rem; }
+  h2.barh small { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: .72rem; opacity: .85; }
+  .ficha-x h3, #attrs h3, #skills h3, #secondary h3, #power h3 { font-family: 'Cinzel'; font-size: .72rem; color: var(--accent-strong); letter-spacing: .04em; text-transform: uppercase; margin: .9rem 0 .35rem; border-bottom: 1px solid var(--rule); padding-bottom: .15rem; }
+
+  .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .3rem 1.6rem; }
+  .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: .3rem 1.6rem; align-items: start; }
+  @media (max-width: 760px) { .cols3, .cols2 { grid-template-columns: 1fr; } }
+
+  .trow { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .12rem 0; }
+  .trow .nm { font-size: 1rem; } .trow .nm small { color: var(--ink-soft); font-size: .8rem; }
+  .tr-r { display: flex; align-items: center; }
   .dots { display: inline-flex; gap: 3px; align-items: center; }
-  .dot { width: 15px; height: 15px; border-radius: 50%; border: 1.6px solid var(--accent); background: transparent; cursor: pointer; padding: 0; transition: background .08s, box-shadow .08s; }
-  .dot.on { background: var(--accent); }
-  .dot.floor { border-color: var(--gold); }
-  .dot.floor.on { background: var(--gold); }
-  .dot.sq { border-radius: 3px; width: 12px; height: 12px; border-color: var(--gold); }
-  .dot.sq.on { background: var(--gold); }
-  .dot:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
-  .dots.spec { margin-left: .2rem; }
-  .spec-none { font-size: .85rem; }
+  .dot { width: 15px; height: 15px; border: 1.5px solid var(--accent); border-radius: 50%; cursor: pointer; background: transparent; transition: background .08s; flex: 0 0 auto; }
+  .dot.on { background: var(--accent); } .dot.free { border-color: var(--gold); } .dot.on.free { background: var(--gold); }
+  .dot:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent); }
+  .spec { display: flex; gap: 2px; margin-left: .6rem; }
+  .sq { width: 12px; height: 12px; border: 1.2px solid var(--ink-soft); cursor: pointer; background: transparent; flex: 0 0 auto; border-radius: 2px; }
+  .sq.on { background: var(--gold); border-color: var(--gold); } .sq.dis { opacity: .28; cursor: not-allowed; }
 
-  .add-row { display: flex; gap: .5rem; }
-  .add-row select { flex: 1; padding: .4rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); }
-  .chosen { list-style: none; padding: 0; margin: .6rem 0; }
-  .chosen li { display: flex; justify-content: space-between; align-items: center; padding: .3rem .2rem; border-bottom: 1px solid var(--rule); }
-  .chosen .rm { background: none; border: none; color: var(--ink-soft); cursor: pointer; font-size: 1rem; }
-  .artes-grid { columns: 2; }
-  .artes-grid .trait { break-inside: avoid; }
-  @media (max-width: 520px) { .artes-grid { columns: 1; } }
+  .panel { border: 1px solid var(--panel-border); background: var(--panel); border-left: 4px solid var(--accent); padding: .6rem .8rem; border-radius: 3px; }
+  .derv { display: flex; justify-content: space-between; align-items: baseline; padding: .2rem 0; border-bottom: 1px dotted var(--rule); }
+  .derv .dl { font-family: 'Cinzel'; font-size: .72rem; color: var(--accent-strong); text-transform: uppercase; }
+  .derv .dv { font-family: 'Cinzel'; font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+  .derv .fm { display: block; font-size: .68rem; color: var(--ink-soft); font-style: italic; font-family: 'EB Garamond'; font-weight: 400; text-transform: none; }
+
+  .cam { border: 1px solid var(--panel-border); border-radius: 4px; margin-bottom: .4rem; background: var(--panel); }
+  .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: .9rem; color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; }
+  .cam-head[data-camtog] { cursor: pointer; } .cam-head[data-camtog]:hover { background: var(--panel-2); }
+  .chev { cursor: pointer; } .chev:hover { color: var(--accent); }
+  .cam-meta { margin-left: auto; font-family: 'EB Garamond'; font-size: .8rem; color: var(--ink-soft); font-style: italic; }
+  .cam-body { padding: .4rem .7rem .6rem; border-top: 1px dotted var(--rule); }
+  .tpill { display: inline-block; margin: .2rem .3rem 0 0; padding: .2rem .6rem; border: 1px solid var(--panel-border); border-radius: 12px; font-size: .85rem; cursor: pointer; background: var(--bg); }
+  .tpill small { color: var(--ink-soft); font-size: .72rem; }
+  .tpill.on { background: var(--accent); color: var(--on-accent); border-color: transparent; } .tpill.on small { color: var(--on-accent); opacity: .85; }
+  .tpill:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .fxline { font-size: .85rem; padding: .08rem 0; color: var(--ink-soft); }
+  .fxline.hi { color: var(--ink); } .fxline.hi b { color: var(--accent-strong); }
 </style>
