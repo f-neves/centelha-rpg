@@ -181,6 +181,11 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 .anchor { color: var(--ink-soft); text-decoration: none; opacity: 0; margin-left: .4rem; font-size: .8em; }
 :hover > .anchor, .anchor:focus { opacity: 1; }
 
+/* realce ao chegar por permalink */
+@keyframes target-flash { 0% { background: color-mix(in srgb, var(--gold) 45%, transparent); } 100% { background: transparent; } }
+.target-flash { animation: target-flash 1.8s ease-out; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .target-flash { animation: none; } }
+
 /* utilidades */
 .muted { color: var(--ink-soft); font-style: italic; }
 .tag-orn { color: var(--gold); letter-spacing: .3em; text-align: center; }

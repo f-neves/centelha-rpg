@@ -9,6 +9,7 @@ import '../styles/global.css';
 import { url, NAV, FERRAMENTAS } from '../lib/site';
 import Referencias from '../components/Referencias.astro';
 import Marcadores from '../components/Marcadores.astro';
+import NestaPagina from '../components/NestaPagina.astro';
 import Busca from '../components/Busca.astro';
 
 interface Props { title: string; descricao?: string; largura?: 'prose' | 'wide' | 'full'; }
@@ -89,6 +90,7 @@ const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New 
 
   <Referencias />
   <Marcadores />
+  <NestaPagina />
 
   <script>
     // gaveta mobile
@@ -128,6 +130,19 @@ const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New 
       a.addEventListener('click', (e) => { e.preventDefault(); history.replaceState(null, '', '#' + el.id); copy(el.id); a.textContent = '✓'; setTimeout(() => (a.textContent = '🔗'), 1200); });
       el.appendChild(a);
     });
+
+    // realce ao chegar por permalink (#id) — pisca o alvo
+    const flash = () => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('target-flash');
+      void (el as HTMLElement).offsetWidth; // reinicia a animação
+      el.classList.add('target-flash');
+    };
+    window.addEventListener('hashchange', flash);
+    setTimeout(flash, 120);
   </script>
 </body>
 </html>

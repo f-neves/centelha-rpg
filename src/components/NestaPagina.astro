@@ -1,0 +1,65 @@
+---
+// Sumário flutuante da página atual (h2/h3), com realce da seção visível.
+---
+<button id="otp-fab" class="btn" aria-expanded="false" aria-controls="otp-panel" hidden>❡ Nesta página</button>
+<nav id="otp-panel" aria-label="Nesta página" hidden></nav>
+
+<script>
+  const main = document.querySelector('main');
+  // gera ids em títulos que não têm (páginas .astro não recebem id automático como o markdown)
+  if (main) {
+    const slug = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const seen = new Set(Array.from(main.querySelectorAll('[id]')).map((e) => e.id));
+    main.querySelectorAll<HTMLElement>('h2, h3').forEach((h) => {
+      if (h.id) return;
+      let base = slug(h.textContent || 'sec') || 'sec', id = base, i = 2;
+      while (seen.has(id)) id = `${base}-${i++}`;
+      seen.add(id); h.id = id;
+    });
+  }
+  const heads = main ? Array.from(main.querySelectorAll<HTMLElement>('h2[id], h3[id]')) : [];
+  const fab = document.getElementById('otp-fab')!;
+  const panel = document.getElementById('otp-panel')!;
+
+  if (heads.length >= 2) {
+    fab.hidden = false;
+    panel.innerHTML = heads
+      .map((h) => `<a href="#${h.id}" data-id="${h.id}" class="otp-${h.tagName.toLowerCase()}">${h.textContent!.replace('🔗', '').trim()}</a>`)
+      .join('');
+
+    const toggle = (open?: boolean) => {
+      const show = open ?? panel.hidden;
+      panel.hidden = !show;
+      fab.setAttribute('aria-expanded', String(show));
+    };
+    fab.addEventListener('click', () => toggle());
+    panel.addEventListener('click', (e) => { if ((e.target as HTMLElement).tagName === 'A') toggle(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggle(false); });
+    document.addEventListener('click', (e) => {
+      if (!panel.hidden && !panel.contains(e.target as Node) && e.target !== fab) toggle(false);
+    });
+
+    // realce da seção visível
+    const links = new Map(Array.from(panel.querySelectorAll<HTMLElement>('a')).map((a) => [a.dataset.id, a]));
+    const io = new IntersectionObserver((entries) => {
+      for (const en of entries) {
+        if (en.isIntersecting) {
+          panel.querySelectorAll('.active').forEach((a) => a.classList.remove('active'));
+          links.get((en.target as HTMLElement).id)?.classList.add('active');
+        }
+      }
+    }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });
+    heads.forEach((h) => io.observe(h));
+  }
+</script>
+
+<style>
+  #otp-fab { position: fixed; left: .8rem; bottom: .8rem; z-index: 54; box-shadow: 0 2px 10px var(--shadow); font-size: .82rem; }
+  #otp-panel { position: fixed; left: .8rem; bottom: 3rem; z-index: 54; width: min(17rem, 80vw); max-height: 60vh; overflow-y: auto;
+    background: var(--panel); border: 1px solid var(--accent); border-radius: 9px; box-shadow: 0 8px 28px var(--shadow); padding: .5rem; }
+  #otp-panel a { display: block; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: 5px; font-size: .9rem; border-left: 2px solid transparent; }
+  #otp-panel a:hover { background: var(--panel-2); }
+  #otp-panel a.otp-h3 { padding-left: 1.3rem; font-size: .84rem; color: var(--ink-soft); }
+  #otp-panel a.active { border-left-color: var(--accent); color: var(--accent); font-weight: 600; background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  @media (min-width: 901px) { #otp-fab, #otp-panel { left: 18rem; } html.sidebar-collapsed #otp-fab, html.sidebar-collapsed #otp-panel { left: .8rem; } }
+</style>

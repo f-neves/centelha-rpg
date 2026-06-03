@@ -22,14 +22,16 @@ export const GET: APIRoute = async () => {
   for (const v of d.virtudes)
     items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/centelha-virtudes-vontade'), resumo: `${v.descricao} Resiste a ${v.resiste}.`, termos: [v.nome], autolink: true });
 
+  // caminhos/artes: auto-link só nomes multi-palavra (evita ruído com "Vento", "Fogo", "Gato"…)
+  const multipalavra = (n: string) => /[\s-]/.test(n);
   for (const c of d.caminhos)
-    items.push({ id: c.id, tipo: 'caminho', nome: c.nome, url: url('caminhos/' + c.id), resumo: short(`${d.A[c.atributo.id].nome} · ${c.descricao}`), caminho: c.id, termos: [c.nome], autolink: false });
+    items.push({ id: c.id, tipo: 'caminho', nome: c.nome, url: url('caminhos/' + c.id), resumo: short(`${d.A[c.atributo.id].nome} · ${c.descricao}`), caminho: c.id, termos: [c.nome], autolink: multipalavra(c.nome) });
 
   for (const t of d.tecnicas)
     items.push({ id: t.id, tipo: 'técnica', nome: t.nome, url: url('caminhos/' + t.caminho.id) + '#' + t.id, resumo: short(`Banda ${t.banda} · ${custoTagTecnica(t)} — ${t.texto.replace(/\*\*/g, '')}`), caminho: t.caminho.id, termos: [t.nome], autolink: false });
 
   for (const a of d.artes)
-    items.push({ id: a.id, tipo: 'arte', nome: a.nome, url: url('arcano') + '#' + a.id, resumo: short(`${a.categoria} · conjura com ${d.A[a.atributo_conjuracao.id].nome} — ${a.niveis.map((n: any) => n.nome).join(', ')}`), termos: [a.nome], autolink: false });
+    items.push({ id: a.id, tipo: 'arte', nome: a.nome, url: url('arcano') + '#' + a.id, resumo: short(`${a.categoria} · conjura com ${d.A[a.atributo_conjuracao.id].nome} — ${a.niveis.map((n: any) => n.nome).join(', ')}`), termos: [a.nome], autolink: multipalavra(a.nome) });
 
   return new Response(JSON.stringify(items), { headers: { 'content-type': 'application/json; charset=utf-8' } });
 };

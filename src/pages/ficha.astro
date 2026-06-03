@@ -102,6 +102,7 @@ const caminhosOrd = [...d.caminhos].sort((a, b) => a.nome.localeCompare(b.nome))
   const TEC: Record<string, any> = Object.fromEntries((tecnicas as any[]).map((t) => [t.id, t]));
 
   const KEY = 'centelha:ficha';
+  const BASE = import.meta.env.BASE_URL;
   const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
   const inputs = () => Array.from(document.querySelectorAll<HTMLInputElement>('[data-trait]'));
   const painel = $('#painel');
@@ -164,7 +165,7 @@ const caminhosOrd = [...d.caminhos].sort((a, b) => a.nome.localeCompare(b.nome))
     const ul = $('#f-tec-list');
     ul.innerHTML = tecSel.map((id) => {
       const t = TEC[id]; if (!t) return '';
-      return `<li><span>${t.nome} <span class="muted">B${t.banda} · ${custoTecnica(t.banda)} XP</span></span><button class="rm" data-rm="${id}" aria-label="Remover">✕</button></li>`;
+      return `<li><span><a href="${BASE}caminhos/${t.caminho}#${id}">${t.nome}</a> <span class="muted">B${t.banda} · ${custoTecnica(t.banda)} XP</span></span><button class="rm" data-rm="${id}" aria-label="Remover">✕</button></li>`;
     }).join('');
     ul.querySelectorAll('[data-rm]').forEach((b) => b.addEventListener('click', () => { tecSel = tecSel.filter((x) => x !== (b as HTMLElement).dataset.rm); renderTec(); recompute(); }));
   }

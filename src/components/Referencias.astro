@@ -9,6 +9,8 @@
   const byHash: Record<string, Ref> = {};   // técnica/arte/termo por id (âncora)
   const byCaminho: Record<string, Ref> = {}; // caminho por slug
   const byRef: Record<string, Ref> = {};     // itens auto-linkáveis por id
+  const byKey: Record<string, Ref> = {};     // tipo:id (chave única p/ fixados)
+  const keyOf = (it: Ref) => it.tipo + ':' + it.id;
   const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
   async function load() {
@@ -19,6 +21,7 @@
       if (it.tipo === 'termo' || it.tipo === 'técnica' || it.tipo === 'arte') byHash[it.id] = it;
       if (it.tipo === 'caminho') byCaminho[it.id] = it;
       if (it.autolink) byRef[it.id] = it;
+      byKey[keyOf(it)] = it;
     }
     return INDEX!;
   }
@@ -29,7 +32,7 @@
     const entries: { needle: string; it: Ref }[] = [];
     for (const it of INDEX) if (it.autolink) for (const t of it.termos) entries.push({ needle: t, it });
     entries.sort((a, b) => b.needle.length - a.needle.length);
-    const SKIP = new Set(['A', 'CODE', 'PRE', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'H1', 'SCRIPT', 'STYLE', 'OPTION', 'LABEL']);
+    const SKIP = new Set(['A', 'CODE', 'PRE', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'H1', 'H2', 'H3', 'H4', 'SCRIPT', 'STYLE', 'OPTION', 'LABEL']);
     const walker = document.createTreeWalker(scan, NodeFilter.SHOW_TEXT, {
       acceptNode(n) {
         const p = (n as Text).parentElement;
@@ -71,39 +74,72 @@
     return null;
   }
 
-  // 3) hovercard
+  // 3) hovercard (interativo: dá pra fixar)
   let pop: HTMLDivElement | null = null;
+  let hideTimer = 0;
   const hide = () => { pop?.remove(); pop = null; };
+  const scheduleHide = () => { clearTimeout(hideTimer); hideTimer = window.setTimeout(hide, 240); };
+  const cancelHide = () => clearTimeout(hideTimer);
   function show(el: HTMLElement, it: Ref) {
     hide();
     pop = document.createElement('div'); pop.className = 'ref-pop';
     const tag = document.createElement('span'); tag.className = 'ref-tipo'; tag.textContent = it.tipo;
     const b = document.createElement('b'); b.textContent = it.nome;
     const r = document.createElement('span'); r.className = 'ref-resumo'; r.textContent = it.resumo;
-    const go = document.createElement('span'); go.className = 'ref-go'; go.textContent = 'abrir →';
-    pop.append(tag, b, r, go);
+    const bar = document.createElement('span'); bar.className = 'ref-bar';
+    const go = document.createElement('a'); go.className = 'ref-go'; go.textContent = 'abrir →'; go.href = it.url;
+    const pin = document.createElement('button'); pin.className = 'ref-pin'; pin.type = 'button'; pin.textContent = '📌 fixar'; pin.title = 'Fixar na consulta';
+    pin.addEventListener('click', (e) => { e.preventDefault(); addPin(it); hide(); });
+    bar.append(go, pin);
+    pop.append(tag, b, r, bar);
+    pop.addEventListener('mouseenter', cancelHide);
+    pop.addEventListener('mouseleave', scheduleHide);
     document.body.append(pop);
     const rect = el.getBoundingClientRect();
-    const top = window.scrollY + rect.bottom + 6;
-    let left = window.scrollX + rect.left;
-    pop.style.top = top + 'px'; pop.style.left = '0px';
-    left = Math.min(left, window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 10);
+    pop.style.top = window.scrollY + rect.bottom + 6 + 'px'; pop.style.left = '0px';
+    let left = Math.min(window.scrollX + rect.left, window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 10);
     pop.style.left = Math.max(8, left) + 'px';
   }
   const handle = (target: EventTarget | null) => {
     const el = (target as HTMLElement)?.closest?.('main a[href], main .ref') as HTMLElement | null;
     if (!el) return;
+    cancelHide();
     if (!INDEX) { load().then(() => { const it = entityFor(el); if (it && el.matches(':hover')) show(el, it); }); return; }
     const it = entityFor(el); if (it) show(el, it);
   };
   document.addEventListener('mouseover', (e) => handle(e.target));
-  document.addEventListener('mouseout', (e) => { if ((e.target as HTMLElement)?.closest?.('main a[href], main .ref')) hide(); });
+  document.addEventListener('mouseout', (e) => { if ((e.target as HTMLElement)?.closest?.('main a[href], main .ref')) scheduleHide(); });
   document.addEventListener('focusin', (e) => { const el = (e.target as HTMLElement).closest?.('.ref') as HTMLElement; if (el && INDEX) { const it = entityFor(el); if (it) show(el, it); } });
-  document.addEventListener('focusout', hide);
+  document.addEventListener('focusout', scheduleHide);
   window.addEventListener('scroll', hide, { passive: true });
 
-  // init: carrega o índice no idle e faz o auto-link
-  const start = () => load().then(() => autolink());
+  // 4) painel de consulta (fixados) — persiste na sessão entre páginas
+  const PIN_KEY = 'centelha:consulta';
+  const pins = (): string[] => { try { return JSON.parse(sessionStorage.getItem(PIN_KEY) || '[]'); } catch { return []; } };
+  const savePins = (a: string[]) => sessionStorage.setItem(PIN_KEY, JSON.stringify([...new Set(a)]));
+  function addPin(it: Ref) { const a = pins(); a.push(keyOf(it)); savePins(a); renderConsulta(); }
+  function removePin(key: string) { savePins(pins().filter((k) => k !== key)); renderConsulta(); }
+  function renderConsulta() {
+    let panel = document.getElementById('consulta');
+    const list = pins().map((k) => byKey[k]).filter(Boolean);
+    if (!list.length) { panel?.remove(); return; }
+    if (!panel) {
+      panel = document.createElement('aside'); panel.id = 'consulta'; panel.setAttribute('aria-label', 'Consulta fixada');
+      document.body.append(panel);
+    }
+    panel.innerHTML = `<div class="cs-head"><span>📌 Consulta</span><button class="cs-clear" title="Limpar">limpar</button></div>`;
+    for (const it of list) {
+      const card = document.createElement('div'); card.className = 'cs-card';
+      card.innerHTML = `<span class="ref-tipo">${it.tipo}</span><a href="${it.url}"><b>${it.nome}</b></a><button class="cs-x" aria-label="Remover" data-k="${keyOf(it)}">✕</button><span class="cs-resumo"></span>`;
+      card.querySelector('.cs-resumo')!.textContent = it.resumo;
+      panel.append(card);
+    }
+    panel.querySelector('.cs-clear')?.addEventListener('click', () => { savePins([]); renderConsulta(); });
+    panel.querySelectorAll('.cs-x').forEach((b) => b.addEventListener('click', () => removePin((b as HTMLElement).dataset.k!)));
+  }
+
+  // init: carrega o índice no idle, faz o auto-link e restaura a consulta
+  const start = () => load().then(() => { autolink(); renderConsulta(); });
   if ('requestIdleCallback' in window) (window as any).requestIdleCallback(start); else setTimeout(start, 200);
 </script>
 
@@ -112,10 +148,27 @@
   .ref:hover { color: var(--accent-strong); }
   .ref-pop { position: absolute; z-index: 60; max-width: 24rem; background: var(--panel); color: var(--ink);
     border: 1px solid var(--accent); border-radius: 7px; padding: .55rem .7rem; box-shadow: 0 6px 20px var(--shadow);
-    font-size: .9rem; line-height: 1.4; font-style: normal; pointer-events: none; }
-  .ref-pop .ref-tipo { display: inline-block; font-family: 'Cinzel'; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase;
+    font-size: .9rem; line-height: 1.4; font-style: normal; pointer-events: auto; }
+  .ref-tipo { display: inline-block; font-family: 'Cinzel'; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase;
     background: var(--accent); color: var(--on-accent); border-radius: 999px; padding: .05rem .5rem; margin-right: .4rem; vertical-align: middle; }
   .ref-pop b { font-family: 'Cinzel'; color: var(--accent); font-size: .98rem; }
-  .ref-pop .ref-resumo { display: block; margin: .25rem 0 .1rem; color: var(--ink); }
-  .ref-pop .ref-go { font-size: .75rem; color: var(--ink-soft); font-style: italic; }
+  .ref-pop .ref-resumo { display: block; margin: .25rem 0 .35rem; color: var(--ink); }
+  .ref-pop .ref-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .ref-pop .ref-go { font-size: .78rem; color: var(--accent); font-style: italic; text-decoration: none; }
+  .ref-pop .ref-pin { font-family: 'Cinzel'; font-size: .72rem; cursor: pointer; border: 1px solid var(--panel-border);
+    background: var(--panel-2); color: var(--ink-soft); border-radius: 5px; padding: .12rem .45rem; }
+  .ref-pop .ref-pin:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* painel de consulta (fixados) */
+  #consulta { position: fixed; right: .8rem; bottom: .8rem; z-index: 55; width: min(20rem, 90vw); max-height: 60vh; overflow-y: auto;
+    background: var(--panel); border: 1px solid var(--accent); border-radius: 9px; box-shadow: 0 8px 28px var(--shadow); }
+  #consulta .cs-head { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center;
+    background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .82rem; padding: .4rem .7rem; }
+  #consulta .cs-clear { background: none; border: 1px solid var(--on-accent); color: var(--on-accent); border-radius: 4px; font-size: .68rem; cursor: pointer; padding: .05rem .4rem; font-family: 'Cinzel'; }
+  #consulta .cs-card { padding: .5rem .7rem; border-bottom: 1px solid var(--rule); position: relative; }
+  #consulta .cs-card a { text-decoration: none; }
+  #consulta .cs-card b { font-family: 'Cinzel'; color: var(--accent); }
+  #consulta .cs-resumo { display: block; font-size: .82rem; color: var(--ink-soft); margin-top: .2rem; }
+  #consulta .cs-x { position: absolute; top: .35rem; right: .4rem; background: none; border: none; color: var(--ink-soft); cursor: pointer; font-size: .8rem; }
+  @media (max-width: 620px) { #consulta { right: .4rem; left: .4rem; width: auto; } }
 </style>
