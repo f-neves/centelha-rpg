@@ -12,7 +12,8 @@ const { caminho } = Astro.props;
   <div class="arv-detalhe panel" hidden></div>
 </section>
 
-<style>
+<!-- is:global: nós, arestas e o painel de detalhe são criados via JS (sem o atributo de escopo) -->
+<style is:global>
   .arv-wrap { position: relative; overflow-x: auto; padding: .4rem 0; }
   .arv-edges { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   .arv-grid { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.1rem; min-width: max-content; }
@@ -24,8 +25,9 @@ const { caminho } = Astro.props;
   .arv-node[data-tipo='passiva'] { border-style: dashed; }
   .arv-node[aria-pressed='true'] { background: var(--accent); color: var(--on-accent); border-color: transparent; }
   .arv-node.chain { box-shadow: 0 0 0 2px var(--gold); }
-  .arv-detalhe { margin-top: 1rem; }
-  .arv-detalhe .x { float: right; cursor: pointer; border: none; background: none; color: var(--ink-soft); font-size: 1.1rem; }
+  .arv-detalhe { margin-top: 1rem; position: relative; padding-right: 2.2rem; }
+  .arv-detalhe .x { position: absolute; top: .5rem; right: .6rem; cursor: pointer; border: none; background: none; color: var(--ink-soft); font-size: 1.2rem; line-height: 1; }
+  .arv-detalhe .x:hover { color: var(--accent); }
 </style>
 
 <script>
