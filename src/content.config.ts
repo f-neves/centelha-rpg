@@ -98,6 +98,33 @@ const glossario = defineCollection({
   }),
 });
 
+const armas = defineCollection({
+  loader: file('src/data/armas.json'),
+  schema: z.object({
+    id: z.string(), nome: z.string(),
+    classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia']),
+    atrib: reference('atributos'), pericia: reference('habilidades'),
+    dado: z.number().int().min(1).max(3), acerto: z.number().int(), defesaArma: z.number().int(),
+    maos: z.number().int().min(1).max(2), ticks: z.number().int(),
+    tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(3),
+    tags: z.array(z.string()), notas: z.string(),
+  }),
+});
+
+const armaduras = defineCollection({
+  loader: file('src/data/armaduras.json'),
+  schema: z.object({
+    id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']),
+    soak: z.number().int(), protecao: z.number().int(), esquiva: z.number().int(),
+    lentidao: z.string(), furtividade: z.number().int(), notas: z.string(),
+  }),
+});
+
+const escudos = defineCollection({
+  loader: file('src/data/escudos.json'),
+  schema: z.object({ id: z.string(), nome: z.string(), bloqueio: z.number().int(), notas: z.string() }),
+});
+
 const inimigos = defineCollection({
   loader: file('src/data/inimigos.json'),
   schema: z.object({
@@ -142,5 +169,8 @@ export const collections = {
   artes,
   glossario,
   inimigos,
+  armas,
+  armaduras,
+  escudos,
   chapters,
 };

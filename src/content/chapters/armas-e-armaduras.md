@@ -7,6 +7,8 @@ resumo: "Classes + Tags: a arma define o estilo, não a potência bruta."
 
 Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a arma define o *estilo*, não a potência bruta. Pegar "a mais forte" não existe — cada escolha vence umas situações e perde outras.
 
+<div class="callout regra"><span class="lbl">Catálogo</span>Para filtrar e comparar todo o equipamento, veja a página de <a href="/equipamentos">Equipamentos</a> — e escolha arma/armadura direto na <a href="/ficha">Ficha</a> para ver o ataque, a Defesa e o Soak já calculados.</div>
+
 ## Classes de Arma
 
 <div class="table-wrap">

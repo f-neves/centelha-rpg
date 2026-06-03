@@ -30,6 +30,15 @@ const S = {
     tecnicas: z.array(z.string()), artes: z.array(z.object({ id: z.string(), nivel: z.number().int() })),
     notas: z.string(), pendente: z.boolean(),
   }),
+  armas: z.object({
+    id: z.string(), nome: z.string(), classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia']),
+    atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), acerto: z.number().int(),
+    defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(),
+    tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(3),
+    tags: z.array(z.string()), notas: z.string(),
+  }),
+  armaduras: z.object({ id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: z.number().int(), protecao: z.number().int(), esquiva: z.number().int(), lentidao: z.string(), furtividade: z.number().int(), notas: z.string() }),
+  escudos: z.object({ id: z.string(), nome: z.string(), bloqueio: z.number().int(), notas: z.string() }),
 };
 
 const data = {};
@@ -55,10 +64,14 @@ for (const t of data.tecnicas || []) {
   for (const p of t.prereq) if (!T.has(p)) fail(`técnica "${t.id}": prereq órfão "${p}"`);
 }
 for (const a of data.artes || []) if (!A.has(a.atributo_conjuracao)) fail(`arte "${a.id}": atributo_conjuracao inexistente "${a.atributo_conjuracao}"`);
-const ART = setOf('artes');
+const ART = setOf('artes'), H = setOf('habilidades');
 for (const i of data.inimigos || []) {
   for (const t of i.tecnicas) if (!T.has(t)) fail(`inimigo "${i.id}": técnica inexistente "${t}"`);
   for (const a of i.artes) if (!ART.has(a.id)) fail(`inimigo "${i.id}": arte inexistente "${a.id}"`);
+}
+for (const w of data.armas || []) {
+  if (!A.has(w.atrib)) fail(`arma "${w.id}": atributo inexistente "${w.atrib}"`);
+  if (!H.has(w.pericia)) fail(`arma "${w.id}": perícia inexistente "${w.pericia}"`);
 }
 
 if (erros.length) {

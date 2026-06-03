@@ -1,0 +1,6 @@
+[
+  { "id": "nenhum", "nome": "Nenhum", "bloqueio": 0, "notas": "Mãos livres." },
+  { "id": "broquel", "nome": "Broquel", "bloqueio": 1, "notas": "Leve; apara e bloqueia projéteis pequenos." },
+  { "id": "escudo", "nome": "Escudo", "bloqueio": 2, "notas": "O padrão; bloqueia projéteis." },
+  { "id": "paves", "nome": "Pavês", "bloqueio": 3, "notas": "Parede móvel; −1 em ataques, pesado." }
+]

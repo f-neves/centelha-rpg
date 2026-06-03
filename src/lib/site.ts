@@ -24,6 +24,7 @@ export const NAV = [
 export const FERRAMENTAS = [
   { slug: 'ficha', titulo: 'Ficha de Personagem' },
   { slug: 'bestiario', titulo: 'Bestiário & NPCs' },
+  { slug: 'equipamentos', titulo: 'Equipamentos' },
   { slug: 'rolador', titulo: 'Rolador de Dados' },
   { slug: 'tecnicas', titulo: 'Técnicas (filtros)' },
   { slug: 'artes', titulo: 'Artes do Arcano' },

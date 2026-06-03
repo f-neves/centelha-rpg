@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+import { getCollection } from 'astro:content';
+const armas = (await getCollection('armas')).map((e) => e.data);
+const armaduras = (await getCollection('armaduras')).map((e) => e.data);
+const escudos = (await getCollection('escudos')).map((e) => e.data);
+const habs = Object.fromEntries((await getCollection('habilidades')).map((h) => [h.id, h.data.nome]));
+const CLASSE: Record<string, string> = { leve: 'Leve', media: 'Média', pesada: 'Pesada', haste: 'Haste', distancia: 'Distância', nenhuma: 'Nenhuma' };
+const ordem = ['leve', 'media', 'pesada', 'haste', 'distancia'];
+armas.sort((a, b) => ordem.indexOf(a.classe) - ordem.indexOf(b.classe) || a.nome.localeCompare(b.nome));
+const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
+---
+<Base title="Equipamentos" largura="wide" descricao="Catálogo filtrável de armas, armaduras e escudos — com dano, Soak e os trade-offs.">
+  <h1>Equipamentos</h1>
+  <p class="lead">A arma define o <em>estilo</em>, não a potência bruta. As regras completas estão em <a href={url('regras/armas-e-armaduras')}>Armas &amp; Armaduras</a>; aqui está o catálogo para filtrar e comparar.</p>
+
+  <div class="filtros panel">
+    <label>Buscar <input type="search" data-ef="q" placeholder="nome, tag…" /></label>
+    <fieldset><legend>Classe</legend>{ordem.map((c) => <label class="chk"><input type="checkbox" data-ef="classe" value={c} />{CLASSE[c]}</label>)}</fieldset>
+    <fieldset><legend>Tag</legend>{allTags.map((t) => <label class="chk"><input type="checkbox" data-ef="tag" value={t} />{t}</label>)}</fieldset>
+  </div>
+
+  <h2>Armas</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dado</th><th class="c">Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th>Dano</th><th>Perícia</th><th>Tags</th></tr></thead>
+      <tbody>
+        {armas.map((a) => (
+          <tr data-arma data-classe={a.classe} data-tags={a.tags.join(' ')} data-txt={(a.nome + ' ' + a.tags.join(' ') + ' ' + a.notas).toLowerCase()}>
+            <th>{a.nome}</th>
+            <td>{CLASSE[a.classe]}</td>
+            <td class="c">{a.dado}d6</td>
+            <td class="c">{a.acerto >= 0 ? '+' : ''}{a.acerto}</td>
+            <td class="c">{a.defesaArma >= 0 ? '+' : ''}{a.defesaArma}</td>
+            <td class="c">{a.maos}</td>
+            <td class="c">{a.ticks}</td>
+            <td>{a.tipoDano}{a.pen ? ` · Pen ${a.pen}` : ''}</td>
+            <td>{habs[a.pericia] ?? a.pericia}</td>
+            <td class="muted">{a.tags.join(', ')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="muted ef-count"></p>
+
+  <h2>Armaduras</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Armadura</th><th class="c">Soak</th><th class="c">Prot.</th><th class="c">Esquiva</th><th>Lentidão</th><th class="c">Furtiv.</th><th>Notas</th></tr></thead>
+      <tbody>
+        {armaduras.map((a) => (
+          <tr><th>{a.nome}</th><td class="c">+{a.soak}</td><td class="c">{a.protecao}</td><td class="c">{a.esquiva}</td><td>{a.lentidao}</td><td class="c">{a.furtividade}</td><td class="muted">{a.notas}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Escudos</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Escudo</th><th class="c">Bloqueio</th><th>Notas</th></tr></thead>
+      <tbody>{escudos.filter((s) => s.bloqueio > 0).map((s) => <tr><th>{s.nome}</th><td class="c">+{s.bloqueio}</td><td class="muted">{s.notas}</td></tr>)}</tbody>
+    </table>
+  </div>
+</Base>
+
+<style>
+  .filtros { margin: 1rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: flex-end; }
+  .filtros label { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink-soft); }
+  .filtros input[type='search'] { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); min-width: 12rem; }
+  .filtros fieldset { border: 1px solid var(--panel-border); border-radius: 5px; padding: .3rem .6rem; }
+  .filtros legend { font-family: 'Cinzel'; font-size: .72rem; color: var(--ink-soft); }
+  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; font-family: 'EB Garamond'; }
+</style>
+
+<script>
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('tr[data-arma]'));
+  const count = document.querySelector<HTMLElement>('.ef-count')!;
+  const q = () => (document.querySelector('[data-ef="q"]') as HTMLInputElement).value.trim().toLowerCase();
+  const checked = (s: string) => Array.from(document.querySelectorAll<HTMLInputElement>(`[data-ef="${s}"]:checked`)).map((c) => c.value);
+  function apply() {
+    const text = q(), classes = checked('classe'), tags = checked('tag');
+    let n = 0;
+    for (const r of rows) {
+      const ok = (!classes.length || classes.includes(r.dataset.classe!)) &&
+        (!tags.length || tags.some((t) => r.dataset.tags!.split(' ').includes(t))) &&
+        (!text || r.dataset.txt!.includes(text));
+      r.style.display = ok ? '' : 'none'; if (ok) n++;
+    }
+    count.textContent = `${n} arma${n === 1 ? '' : 's'}`;
+  }
+  document.querySelectorAll('[data-ef]').forEach((e) => e.addEventListener('input', apply));
+  apply();
+</script>
