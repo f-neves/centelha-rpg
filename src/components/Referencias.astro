@@ -1,0 +1,121 @@
+---
+// Sistema unificado de referências: tooltips em termos + hovercards em links internos.
+// Carrega /ref-index.json sob demanda (uma vez, cacheado).
+---
+<script>
+  type Ref = { id: string; tipo: string; nome: string; url: string; resumo: string; caminho?: string; termos: string[]; autolink: boolean };
+  const BASE = import.meta.env.BASE_URL;
+  let INDEX: Ref[] | null = null;
+  const byHash: Record<string, Ref> = {};   // técnica/arte/termo por id (âncora)
+  const byCaminho: Record<string, Ref> = {}; // caminho por slug
+  const byRef: Record<string, Ref> = {};     // itens auto-linkáveis por id
+  const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+  async function load() {
+    if (INDEX) return INDEX;
+    try { INDEX = await (await fetch(BASE + 'ref-index.json')).json(); }
+    catch { INDEX = []; }
+    for (const it of INDEX!) {
+      if (it.tipo === 'termo' || it.tipo === 'técnica' || it.tipo === 'arte') byHash[it.id] = it;
+      if (it.tipo === 'caminho') byCaminho[it.id] = it;
+      if (it.autolink) byRef[it.id] = it;
+    }
+    return INDEX!;
+  }
+
+  // 1) auto-link seguro na prosa (glossário + atributos/perícias/virtudes), 1ª ocorrência
+  function autolink() {
+    const scan = document.querySelector('main'); if (!scan || !INDEX) return;
+    const entries: { needle: string; it: Ref }[] = [];
+    for (const it of INDEX) if (it.autolink) for (const t of it.termos) entries.push({ needle: t, it });
+    entries.sort((a, b) => b.needle.length - a.needle.length);
+    const SKIP = new Set(['A', 'CODE', 'PRE', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'H1', 'SCRIPT', 'STYLE', 'OPTION', 'LABEL']);
+    const walker = document.createTreeWalker(scan, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        const p = (n as Text).parentElement;
+        if (!p || SKIP.has(p.tagName) || p.closest('.ref, .no-gloss, .arv-node, .badge')) return NodeFilter.FILTER_REJECT;
+        return n.textContent && n.textContent.trim().length > 2 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      },
+    });
+    const nodes: Text[] = []; let c: Node | null;
+    while ((c = walker.nextNode())) nodes.push(c as Text);
+    const used = new Set<string>();
+    for (const node of nodes) {
+      const text = node.textContent || ''; const nt = norm(text);
+      for (const e of entries) {
+        if (used.has(e.it.id)) continue;
+        const nn = norm(e.needle); const i = nt.indexOf(nn); if (i < 0) continue;
+        const before = i === 0 ? ' ' : nt[i - 1], after = i + nn.length >= nt.length ? ' ' : nt[i + nn.length];
+        if (/[a-z0-9]/.test(before) || /[a-z0-9]/.test(after)) continue;
+        used.add(e.it.id);
+        const a = document.createElement('a');
+        a.className = 'ref'; a.href = e.it.url; a.dataset.ref = e.it.id;
+        a.textContent = text.slice(i, i + e.needle.length);
+        const rest = node.splitText(i); rest.textContent = rest.textContent!.slice(e.needle.length);
+        node.parentNode!.insertBefore(a, rest);
+        break;
+      }
+    }
+  }
+
+  // 2) resolve a entidade de um elemento (auto-link OU qualquer link interno)
+  function entityFor(el: HTMLElement): Ref | null {
+    if (el.dataset?.ref && byRef[el.dataset.ref]) return byRef[el.dataset.ref];
+    const href = el.getAttribute('href'); if (!href) return null;
+    let u: URL; try { u = new URL(href, location.href); } catch { return null; }
+    if (u.origin !== location.origin) return null;
+    const hash = u.hash.slice(1);
+    if (hash && byHash[hash]) return byHash[hash];
+    const seg = u.pathname.replace(/\/+$/, '').split('/').pop() || '';
+    if (byCaminho[seg]) return byCaminho[seg];
+    return null;
+  }
+
+  // 3) hovercard
+  let pop: HTMLDivElement | null = null;
+  const hide = () => { pop?.remove(); pop = null; };
+  function show(el: HTMLElement, it: Ref) {
+    hide();
+    pop = document.createElement('div'); pop.className = 'ref-pop';
+    const tag = document.createElement('span'); tag.className = 'ref-tipo'; tag.textContent = it.tipo;
+    const b = document.createElement('b'); b.textContent = it.nome;
+    const r = document.createElement('span'); r.className = 'ref-resumo'; r.textContent = it.resumo;
+    const go = document.createElement('span'); go.className = 'ref-go'; go.textContent = 'abrir →';
+    pop.append(tag, b, r, go);
+    document.body.append(pop);
+    const rect = el.getBoundingClientRect();
+    const top = window.scrollY + rect.bottom + 6;
+    let left = window.scrollX + rect.left;
+    pop.style.top = top + 'px'; pop.style.left = '0px';
+    left = Math.min(left, window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 10);
+    pop.style.left = Math.max(8, left) + 'px';
+  }
+  const handle = (target: EventTarget | null) => {
+    const el = (target as HTMLElement)?.closest?.('main a[href], main .ref') as HTMLElement | null;
+    if (!el) return;
+    if (!INDEX) { load().then(() => { const it = entityFor(el); if (it && el.matches(':hover')) show(el, it); }); return; }
+    const it = entityFor(el); if (it) show(el, it);
+  };
+  document.addEventListener('mouseover', (e) => handle(e.target));
+  document.addEventListener('mouseout', (e) => { if ((e.target as HTMLElement)?.closest?.('main a[href], main .ref')) hide(); });
+  document.addEventListener('focusin', (e) => { const el = (e.target as HTMLElement).closest?.('.ref') as HTMLElement; if (el && INDEX) { const it = entityFor(el); if (it) show(el, it); } });
+  document.addEventListener('focusout', hide);
+  window.addEventListener('scroll', hide, { passive: true });
+
+  // init: carrega o índice no idle e faz o auto-link
+  const start = () => load().then(() => autolink());
+  if ('requestIdleCallback' in window) (window as any).requestIdleCallback(start); else setTimeout(start, 200);
+</script>
+
+<style>
+  .ref { color: var(--accent); text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: .15em; cursor: pointer; }
+  .ref:hover { color: var(--accent-strong); }
+  .ref-pop { position: absolute; z-index: 60; max-width: 24rem; background: var(--panel); color: var(--ink);
+    border: 1px solid var(--accent); border-radius: 7px; padding: .55rem .7rem; box-shadow: 0 6px 20px var(--shadow);
+    font-size: .9rem; line-height: 1.4; font-style: normal; pointer-events: none; }
+  .ref-pop .ref-tipo { display: inline-block; font-family: 'Cinzel'; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase;
+    background: var(--accent); color: var(--on-accent); border-radius: 999px; padding: .05rem .5rem; margin-right: .4rem; vertical-align: middle; }
+  .ref-pop b { font-family: 'Cinzel'; color: var(--accent); font-size: .98rem; }
+  .ref-pop .ref-resumo { display: block; margin: .25rem 0 .1rem; color: var(--ink); }
+  .ref-pop .ref-go { font-size: .75rem; color: var(--ink-soft); font-style: italic; }
+</style>
