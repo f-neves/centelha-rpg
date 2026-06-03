@@ -115,7 +115,9 @@ const { caminho } = Astro.props;
         const tt = byId[cid]; if (!tt) return cid;
         return `<a href="${BASE}caminhos/${tt.caminho}#${cid}">${tt.nome}${tt.caminho !== cam ? ` <span class="muted">(${camNome[tt.caminho] ?? ''})</span>` : ''}</a>`;
       };
-      const requer = t.prereq.length ? `<p class="tec-meta">Requer: ${t.prereq.map(linkTec).join(' + ')}</p>` : '';
+      // todos os pré-requisitos (cadeia transitiva), ordenados por banda
+      const preIds = [...chain].filter((c) => c !== id).map((c) => byId[c]).filter(Boolean).sort((a, b) => a.banda - b.banda || (a.prereq?.length || 0) - (b.prereq?.length || 0));
+      const requer = preIds.length ? `<p class="tec-meta"><strong>Pré-Requisitos:</strong> ${preIds.map((c) => linkTec(c.id)).join(' · ')}</p>` : '';
       const unlocks = (destrava[id] ?? []).length ? `<p class="tec-meta">Destrava: ${(destrava[id] ?? []).map(linkTec).join(' · ')}</p>` : '';
       const cadeia = [...chain].map((c) => byId[c]).sort((a, b) => a.banda - b.banda).map((c) => c.nome).join(' → ');
       det.hidden = false;
