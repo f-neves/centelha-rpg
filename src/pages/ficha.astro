@@ -10,10 +10,18 @@ import RoladorDados from '../components/RoladorDados.astro';
     <label>Orçamento <input type="number" id="xpBudget" value="400" /></label>
     <span class="big">Restam: <b id="xpRem" class="rem ok">400</b></span>
     <span class="breakdown" id="xpBreak"></span>
+    <span class="modo-toggle" role="group" aria-label="Modo da ficha">
+      <button class="btn" data-modo="criacao" title="Aplica os limites de criação">Criação</button>
+      <button class="btn" data-modo="evolucao" title="Libera além dos limites de criação">Evolução</button>
+    </span>
     <span class="xp-btns">
       <button class="btn" id="f-kael">Kael</button>
+      <button class="btn" id="f-export">Exportar</button>
+      <button class="btn" id="f-import">Importar</button>
+      <button class="btn" id="f-print">Imprimir</button>
       <button class="btn" id="f-link">Link</button>
       <button class="btn" id="f-reset">Resetar</button>
+      <input type="file" id="f-file" accept="application/json,.json" hidden />
     </span>
   </div>
 
@@ -54,7 +62,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 </Base>
 
 <script>
-  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, energia, mana, iniciativa } from '../lib/calc';
+  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, energia, mana, iniciativa, regras } from '../lib/calc';
   import ATTRS_D from '../data/atributos.json';
   import HAB_D from '../data/habilidades.json';
   import VIRT_D from '../data/virtudes.json';
@@ -84,12 +92,24 @@ import RoladorDados from '../components/RoladorDados.astro';
   for (const t of TEC_D as any[]) (CAMTREE[t.caminho] ??= []).push([t.id, t.nome, t.banda]);
   for (const k in CAMTREE) CAMTREE[k].sort((a, b) => a[2] - b[2]);
   const TECBAND: Record<string, number> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.banda]));
+  const TECPRE: Record<string, string[]> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.prereq || []]));
+  const TECNOME: Record<string, string> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.nome]));
+  const CREA = (regras as any).limitesCriacao as { atributo: number; habilidade: number; centelha: number };
+  const centReq = (b: number) => Math.ceil(b / 3);
+  // teto de cada tipo conforme o modo (criação aplica os limites; evolução libera)
+  function capFor(kind: string): number {
+    if (kind === 'arte2') return Math.min(S.centelha || 0, S.skills?.ocultismo || 0); // Arte ≤ Centelha e ≤ Ocultismo
+    const full: Record<string, number> = { attr: 5, skill: 5, skill2: 5, virtue: 5, centelha: 5, willpower: 10 };
+    if (S.modo === 'evolucao') return full[kind] ?? 5;
+    const crea: Record<string, number> = { attr: CREA.atributo, skill: CREA.habilidade, skill2: CREA.habilidade, virtue: 5, centelha: CREA.centelha, willpower: 10 };
+    return crea[kind] ?? 5;
+  }
 
   // ---- estado ----
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 5, centelha: 0, tech: {}, arte: {}, budget: 400 };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 5, centelha: 0, tech: {}, arte: {}, budget: 400, modo: 'criacao' };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 2));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -97,7 +117,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
-    S.willpower ??= 5; S.centelha ??= 0; S.budget ??= 400;
+    S.willpower ??= 5; S.centelha ??= 0; S.budget ??= 400; S.modo ??= 'criacao';
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 2));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] ??= 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
@@ -107,8 +127,9 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   // ---- builders ----
   const dotsHTML = (kind: string, key: string, value: number, max: number, floor: number) => {
+    const cap = capFor(kind);
     let h = `<span class="dots" data-kind="${kind}" data-key="${key}">`;
-    for (let d = 1; d <= max; d++) h += `<span class="dot${d <= value ? ' on' : ''}${d <= floor ? ' free' : ''}" data-d="${d}"></span>`;
+    for (let d = 1; d <= max; d++) h += `<span class="dot${d <= value ? ' on' : ''}${d <= floor ? ' free' : ''}${d > cap ? ' cap' : ''}" data-d="${d}"></span>`;
     return h + '</span>';
   };
   const specHTML = (key: string, value: number, maxAllowed: number) => {
@@ -117,13 +138,14 @@ import RoladorDados from '../components/RoladorDados.astro';
     return h + '</span>';
   };
   const trow = (nm: string, right: string) => `<div class="trow"><span class="nm">${nm}</span><span class="tr-r">${right}</span></div>`;
+  const rollBtn = (k: string, key: string) => `<button class="rollv" data-roll="${k}:${key}" title="Enviar ao rolador" aria-label="Rolar">🎲</button>`;
 
   // ---- render ----
   function renderAttrs() {
     const groups: Record<string, any[]> = { Físicos: [], Sociais: [], Mentais: [] };
     (ATTRS_D as any[]).forEach((a) => groups[ATTR_GRP[a.grupo]].push(a));
     el('attrs').innerHTML = ['Físicos', 'Sociais', 'Mentais'].map((g) =>
-      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 5, 2))).join('')}</div>`).join('');
+      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 5, 2) + rollBtn('attr', a.id))).join('')}</div>`).join('');
   }
   function renderPower() {
     let h = trow('<b>Centelha</b> <small>(0–5)</small>', dotsHTML('centelha', 'centelha', S.centelha, 5, 0));
@@ -138,7 +160,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     (HAB_D as any[]).forEach((s) => groups[HAB_GRP[s.grupo]].push(s));
     const cols = [['Combate', 'Físicas'], ['Sociais', 'Saber'], ['Técnicas']];
     el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 5, 0) + specHTML(s.id, S.spec[s.id] || 0, S.skills[s.id] || 0))).join('')).join('') + '</div>').join('');
+      `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 5, 0) + specHTML(s.id, S.spec[s.id] || 0, S.skills[s.id] || 0) + rollBtn('skill', s.id))).join('')).join('') + '</div>').join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
@@ -152,7 +174,16 @@ import RoladorDados from '../components/RoladorDados.astro';
       const sel = techs.filter(([id]) => S.tech[id]);
       const cost = sel.reduce((s, [, , b]) => s + b * 5, 0);
       const open = OPEN.cam[cam];
-      const pills = techs.map(([id, nome, b]) => `<span class="tpill${S.tech[id] ? ' on' : ''}" data-tech="${id}">${nome} <small>b${b} · ${b * 5}</small></span>`).join('');
+      const pills = techs.map(([id, nome, b]) => {
+        const owned = !!S.tech[id];
+        const centOk = (S.centelha || 0) >= centReq(b);
+        const miss = (TECPRE[id] || []).filter((p) => !S.tech[p]);
+        const ok = centOk && miss.length === 0;
+        const cls = 'tpill' + (owned ? ' on' : '') + (!owned && !ok ? ' locked' : '') + (owned && !ok ? ' invalid' : '');
+        const reasons: string[] = []; if (!centOk) reasons.push('Centelha ' + centReq(b)); if (miss.length) reasons.push('pré: ' + miss.map((p) => TECNOME[p]).join(', '));
+        const title = reasons.length ? ` title="Requer ${reasons.join(' · ').replace(/"/g, '')}"` : '';
+        return `<span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>b${b} · ${b * 5}</small></span>`;
+      }).join('');
       return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Caminho ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${pills}</div></div>`;
     }).join('');
   }
@@ -204,11 +235,12 @@ import RoladorDados from '../components/RoladorDados.astro';
   function setDot(kind: string, key: string, d: number) {
     const floor = floorOf[kind], val = valOf(kind, key);
     let nv = d <= floor ? floor : val === d ? d - 1 : d; if (nv < floor) nv = floor;
+    nv = Math.min(nv, capFor(kind)); if (nv < floor) nv = floor;
     if (kind === 'attr') S.attrs[key] = nv;
-    else if (kind === 'skill') { S.skills[key] = nv; if ((S.spec[key] || 0) > nv) S.spec[key] = nv; renderSkills(); }
+    else if (kind === 'skill') { S.skills[key] = nv; if ((S.spec[key] || 0) > nv) S.spec[key] = nv; renderSkills(); if (key === 'ocultismo') renderArtes(); }
     else if (kind === 'skill2') { S.skills2[key] = nv; if ((S.spec2[key] || 0) > nv) S.spec2[key] = nv; renderSecondary(); }
     else if (kind === 'virtue') S.virtues[key] = nv;
-    else if (kind === 'centelha') S.centelha = nv;
+    else if (kind === 'centelha') { S.centelha = nv; renderCaminhos(); renderArtes(); }
     else if (kind === 'willpower') S.willpower = nv;
     else if (kind === 'arte2') { S.arte[key] = nv; renderArtes(); }
     if (['attr', 'virtue', 'centelha', 'willpower'].includes(kind)) refreshDots(kind, key);
@@ -223,11 +255,16 @@ import RoladorDados from '../components/RoladorDados.astro';
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
     const dot = t.closest<HTMLElement>('.dots .dot');
-    if (dot) { const s = dot.parentElement as HTMLElement; setDot(s.dataset.kind!, s.dataset.key!, +dot.dataset.d!); return; }
+    if (dot) { if (dot.classList.contains('cap')) return; const s = dot.parentElement as HTMLElement; setDot(s.dataset.kind!, s.dataset.key!, +dot.dataset.d!); return; }
+    const rb = t.closest<HTMLElement>('.rollv');
+    if (rb) { const [k, key] = rb.dataset.roll!.split(':'); const rd = (n: string) => document.querySelector<HTMLInputElement>(`[data-rd="${n}"]`);
+      if (k === 'attr') { const a = rd('atr'); if (a) { a.value = String(S.attrs[key] || 0); a.dispatchEvent(new Event('input')); } }
+      else { const hb = rd('hab'), es = rd('esp'); if (hb) hb.value = String(S.skills[key] || 0); if (es) es.value = String(S.spec[key] || 0); hb?.dispatchEvent(new Event('input')); }
+      document.querySelector('.rolador')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     const sq = t.closest<HTMLElement>('.spec .sq');
     if (sq && !sq.classList.contains('dis')) { setSpec((sq.parentElement as HTMLElement).dataset.spec!, +sq.dataset.d!); return; }
     const pill = t.closest<HTMLElement>('.tpill');
-    if (pill) { const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
+    if (pill) { if (pill.classList.contains('locked')) return; const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
     const ct = t.closest<HTMLElement>('[data-camtog]');
     if (ct) { OPEN.cam[ct.dataset.camtog!] = !OPEN.cam[ct.dataset.camtog!]; renderCaminhos(); return; }
     const at = t.closest<HTMLElement>('[data-artetog]');
@@ -242,9 +279,32 @@ import RoladorDados from '../components/RoladorDados.astro';
     document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => (inp.value = S.id?.[inp.dataset.id!] || ''));
     (el('xpBudget') as HTMLInputElement).value = String(S.budget ?? 400);
   }
-  function renderAll() { syncInputs(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); recompute(); }
+  function markModo() {
+    document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => { const on = b.dataset.modo === (S.modo || 'criacao'); b.classList.toggle('primary', on); b.setAttribute('aria-pressed', String(on)); });
+  }
+  function clampToMode() {
+    // ao entrar em Criação, respeita os tetos (reduz o que passou)
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = Math.min(S.attrs[a.id] || 2, capFor('attr'))));
+    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = Math.min(S.skills[h.id] || 0, capFor('skill')); if ((S.spec[h.id] || 0) > S.skills[h.id]) S.spec[h.id] = S.skills[h.id]; });
+    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] = Math.min(S.skills2[k] || 0, capFor('skill2')); if ((S.spec2[k] || 0) > S.skills2[k]) S.spec2[k] = S.skills2[k]; });
+    S.centelha = Math.min(S.centelha || 0, capFor('centelha'));
+  }
+  function setModo(m: string) { S.modo = m; if (m === 'criacao') clampToMode(); renderAll(); }
+  function renderAll() { syncInputs(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); recompute(); }
 
   // botões
+  document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => b.addEventListener('click', () => setModo(b.dataset.modo!)));
+  el('f-export').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = (S.id?.nome ? slug(S.id.nome) : 'ficha') + '.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  });
+  el('f-import').addEventListener('click', () => el('f-file').click());
+  el('f-file').addEventListener('change', (e) => {
+    const f = (e.target as HTMLInputElement).files?.[0]; if (!f) return;
+    const r = new FileReader(); r.onload = () => { try { S = JSON.parse(String(r.result)); normalize(); renderAll(); } catch { alert('Arquivo JSON inválido.'); } }; r.readAsText(f);
+  });
+  el('f-print').addEventListener('click', () => window.print());
   el('f-reset').addEventListener('click', () => { if (confirm('Limpar a ficha?')) { localStorage.removeItem(KEY); location.hash = ''; fresh(); renderAll(); } });
   el('f-link').addEventListener('click', () => {
     const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
@@ -304,6 +364,12 @@ import RoladorDados from '../components/RoladorDados.astro';
   .dot { width: 15px; height: 15px; border: 1.5px solid var(--accent); border-radius: 50%; cursor: pointer; background: transparent; transition: background .08s; flex: 0 0 auto; }
   .dot.on { background: var(--accent); } .dot.free { border-color: var(--gold); } .dot.on.free { background: var(--gold); }
   .dot:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent); }
+  .dot.cap { opacity: .25; cursor: not-allowed; border-style: dotted; } .dot.cap:hover { box-shadow: none; }
+  .rollv { background: none; border: none; cursor: pointer; font-size: .85rem; opacity: .35; margin-left: .35rem; padding: 0; line-height: 1; }
+  .rollv:hover { opacity: 1; }
+  .modo-toggle { display: inline-flex; gap: 0; border: 1px solid var(--on-accent); border-radius: 5px; overflow: hidden; }
+  .modo-toggle .btn { border: none; border-radius: 0; }
+  .modo-toggle .btn.primary { background: var(--on-accent); color: var(--accent); }
   .spec { display: flex; gap: 2px; margin-left: .6rem; }
   .sq { width: 12px; height: 12px; border: 1.2px solid var(--ink-soft); cursor: pointer; background: transparent; flex: 0 0 auto; border-radius: 2px; }
   .sq.on { background: var(--gold); border-color: var(--gold); } .sq.dis { opacity: .28; cursor: not-allowed; }
@@ -324,6 +390,19 @@ import RoladorDados from '../components/RoladorDados.astro';
   .tpill small { color: var(--ink-soft); font-size: .72rem; }
   .tpill.on { background: var(--accent); color: var(--on-accent); border-color: transparent; } .tpill.on small { color: var(--on-accent); opacity: .85; }
   .tpill:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .tpill.locked { opacity: .5; cursor: not-allowed; border-style: dashed; }
+  .tpill.invalid { border-color: #b3401f; box-shadow: 0 0 0 1px #b3401f inset; }
   .fxline { font-size: .85rem; padding: .08rem 0; color: var(--ink-soft); }
   .fxline.hi { color: var(--ink); } .fxline.hi b { color: var(--accent-strong); }
+
+  /* impressão: só a ficha, sem o chrome do site */
+  @media print {
+    .sidebar, .topbar, .scrim, #consulta, #otp-fab, #otp-panel, .busca-modal, .ref-pop, .xp-btns, .modo-toggle, .rollv, .rolador, .skip { display: none !important; }
+    .shell { display: block !important; } .content { padding: 0 !important; }
+    .cam-body { display: block !important; } /* abre todos os caminhos/artes na impressão */
+    .xpbar { background: none !important; color: var(--ink) !important; border-bottom: 2px solid var(--accent); border-radius: 0; }
+    .xpbar .big b, .xpbar .rem { color: var(--accent) !important; }
+    h2.barh { background: none !important; color: var(--accent) !important; border-bottom: 1.5px solid var(--accent); border-radius: 0; }
+    a[href]::after { content: ''; }
+  }
 </style>
