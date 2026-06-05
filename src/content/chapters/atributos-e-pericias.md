@@ -5,11 +5,11 @@ titulo: "Atributos & Perícias"
 resumo: "Os nove Atributos, as trinta Habilidades, Especialidade e Stunts."
 ---
 
-Nove **Atributos** descrevem o que o corpo, a alma social e a mente do personagem são capazes de fazer. Trinta **Habilidades** primárias descrevem o que ele aprendeu a fazer com elas.
+Nove **Atributos** descrevem o que o corpo, o social e a mente do personagem são capazes de fazer. Trinta **Habilidades** primárias descrevem o que ele aprendeu a fazer com elas.
 
 ## Os Nove Atributos
 
-Variam de 1 a 5 (com teto futuro de 10), agrupados em três tríades.
+Variam de 1 a 5 (para humanos comuns), agrupados em três tríades.
 
 | Físicos | Sociais | Mentais |
 |---|---|---|
@@ -19,7 +19,7 @@ Variam de 1 a 5 (com teto futuro de 10), agrupados em três tríades.
 
 ## As Trinta Habilidades
 
-Variam de 0 a 5. Além destas, há *Habilidades Secundárias* ilimitadas e específicas (Herbologia, Falsificação, Navegação…), criadas conforme a história pede.
+Variam de 0 a 5. Além destas, há **Habilidades Secundárias** ilimitadas e específicas (Herbologia, Falsificação, Navegação…), criadas conforme a história pede.
 
 #### Combate
 Briga · Armas de Corte · Armas de Impacto · Armas de Haste · Armas à Distância · Esquiva · Escudos
