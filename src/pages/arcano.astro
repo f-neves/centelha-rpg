@@ -12,7 +12,7 @@ const Arte = (a: any) => a;
   <h1>O Arcano</h1>
   <p class="lead">A feitiçaria é a quarta trilha dos Caminhos — e a única que de fato <em>quebra</em> as regras do mundo. Ela se aprende em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um.</p>
 
-  <p>Cada <strong>Arte</strong> tem <strong>5 níveis</strong>: o nível <em>N</em> exige <strong>Centelha ≥ N</strong> e <strong>Ocultismo ≥ N</strong>. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana = nível do efeito</strong>. Dentro do seu nível, você improvisa efeitos compatíveis.</p>
+  <p>Cada <strong>Arte</strong> tem <strong>5 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia, e o nível <em>N</em> exige <strong>Ocultismo ≥ N</strong> — é a perícia que mede a profundidade. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana = nível do efeito</strong>. Dentro do seu nível, você improvisa efeitos compatíveis.</p>
 
   <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong> — rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1–2, <strong>6</strong> no 3, <strong>7</strong> nos 4–5), mais o Mana. &nbsp; <strong>Ritual</strong> — lento, fora de combate: metade do Mana <em>e</em> alcança escalas que nenhum Feitiço atinge.</div>
 
@@ -47,7 +47,7 @@ const Arte = (a: any) => a;
         </tbody>
       </table>
     </div>
-    <p><strong>Rearranjar é livre:</strong> encolha um mostrador para esticar outro de igual passo (mirre a área para dobrar o alcance) sem mudar o custo. <strong>Ultrapassar o gabarito</strong> custa: cada passo a mais num mostrador conta como <strong>+1 nível efetivo</strong> — mais <strong>+1 Mana</strong>, e exige <strong>Centelha e Ocultismo ≥</strong> esse nível. Num Feitiço, o nível efetivo nunca passa do menor entre a sua Centelha e o seu Ocultismo.</p>
+    <p><strong>Rearranjar é livre:</strong> encolha um mostrador para esticar outro de igual passo (mirre a área para dobrar o alcance) sem mudar o custo. <strong>Ultrapassar o gabarito</strong> custa: cada passo a mais num mostrador conta como <strong>+1 nível efetivo</strong> — mais <strong>+1 Mana</strong>, e exige <strong>Ocultismo ≥</strong> esse nível (a Centelha só precisa estar acesa). Num Feitiço, o nível efetivo nunca passa do seu <strong>Ocultismo</strong>.</p>
 
     <h2>Conjuração composta</h2>
     <p>Você pode trançar <strong>várias Artes numa única conjuração</strong> — o mesmo idioma dos combos de Técnica. Junte K Artes e pague a <strong>soma dos Manas + uma sobretaxa progressiva de +(k−1)</strong> (a 2ª Arte +1, a 3ª +2…). É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem a escada dele.</p>

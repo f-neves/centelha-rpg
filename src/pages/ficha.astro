@@ -56,7 +56,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   <div class="cam-tools"><button class="btn" id="cam-all">Expandir todos</button></div>
   <div class="cols3" id="tecnicas"></div>
 
-  <h2 class="barh">Arcano — Artes <small>(nível×10 · exige Centelha ≥ nível e Ocultismo ≥ nível)</small></h2>
+  <h2 class="barh">Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0 e Ocultismo ≥ nível)</small></h2>
   <div class="cols3" id="artes"></div>
 
   <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Soak)</small></h2>
@@ -140,7 +140,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   // teto de cada tipo conforme o modo (criação aplica os limites; evolução libera).
   // Na criação, permite-se UM pico: um atributo em 5 e uma perícia primária em 4.
   function capFor(kind: string, key?: string): number {
-    if (kind === 'arte2') return Math.min(S.centelha || 0, S.skills?.ocultismo || 0); // Arte ≤ Centelha e ≤ Ocultismo
+    if (kind === 'arte2') return (S.centelha || 0) > 0 ? (S.skills?.ocultismo || 0) : 0; // Arte: exige Centelha > 0; nível ≤ Ocultismo
     const full: Record<string, number> = { attr: 5, skill: 5, skill2: 5, virtue: 5, centelha: 5, willpower: 10 };
     if (S.modo === 'evolucao') return full[kind] ?? 5;
     if (kind === 'attr' || kind === 'skill') {
