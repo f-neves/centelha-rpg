@@ -15,8 +15,8 @@ function stat(b) {
   const arm = { soak: 0, prot: 0, esquiva: 0, ...b.armadura };
   const C = b.centelha || 0;
   const pv = D.pv.base + at.vigor * D.pv.vigorMult;
-  const somaEsq = at.destreza + (pe.esquiva || 0);
-  const defesa = somaEsq * D.defesa.mult - fl(somaEsq / D.defesa.somaDiv) + ce(C / D.defesa.centelhaCeilDiv) + (arm.esquiva || 0);
+  const espEsq = (b.especialidades && b.especialidades.esquiva) || 0;
+  const defesa = (at.destreza + (pe.esquiva || 0) + espEsq + C) * D.defesa.mult + (arm.esquiva || 0);
   const defesaMental = fl(((b.integridade ?? 4) + (b.vontade ?? 5)) / D.defesaMental.div) + C;
   const ini = at.raciocinio + (pe.prontidao || 0);
   const ataques = (b.ataques || []).map((a) => {

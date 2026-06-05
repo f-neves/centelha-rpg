@@ -76,7 +76,7 @@
       "esquiva",
       "bloqueio"
     ],
-    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 − ⌊soma÷4⌋ + Especialidade + ⌈Centelha÷2⌉."
+    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade + Especialidade + Centelha) × 2."
   },
   {
     "id": "defesa-mental",

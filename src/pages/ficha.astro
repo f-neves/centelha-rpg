@@ -263,7 +263,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     const soakI = A('vigor') + (arm.soak || 0), soakL = Math.floor(A('vigor') / 2) + (arm.soak || 0);
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
-      r('Defesa (Esquiva)', defEsq, '(Des+Esquiva)×2 − ⌊/4⌋ + esp + ⌈Cent/2⌉ + armadura') +
+      r('Defesa (Esquiva)', defEsq, '(Des + Esquiva + esp + Centelha)×2 + armadura') +
       r('Defesa Mental', defesaMental({ virtudes: virt, vontade: W, centelha: C }), `⌊(Integridade ${integ} + Vontade)/2⌋ + Centelha`) +
       r('Soak (Imp/Letal)', `${soakI} / ${soakL}${arm.protecao ? ` · Prot ${arm.protecao}` : ''}`, 'Vigor (½ no letal) + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +

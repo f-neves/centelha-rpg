@@ -12,7 +12,7 @@ export interface Atributos {
 export interface Pericias { [id: string]: number }
 export interface Virtudes { compaixao: number; conviccao: number; temperanca: number; valor: number }
 
-const floor = Math.floor, ceil = Math.ceil;
+const floor = Math.floor;
 
 /** Pool de dados: ⌊(Atrib+Hab)/2⌋ dados, +2 se a soma for ímpar. */
 export function pool(atributo: number, habilidade: number) {
@@ -29,11 +29,10 @@ export function pv(vigor: number) {
   return d.base + vigor * d.vigorMult;
 }
 
-/** Defesa (Esquiva): (Des+Hab)×2 − ⌊soma/4⌋ + Especialidade + ⌈Centelha/2⌉. */
+/** Defesa (Esquiva): (Destreza + Habilidade + Especialidade + Centelha) × 2. */
 export function defesa(opts: { destreza: number; habilidade: number; especialidade?: number; centelha: number }) {
   const d = regras.derivados.defesa;
-  const soma = opts.destreza + opts.habilidade;
-  return soma * d.mult - floor(soma / d.somaDiv) + (opts.especialidade ?? 0) + ceil(opts.centelha / d.centelhaCeilDiv);
+  return (opts.destreza + opts.habilidade + (opts.especialidade ?? 0) + opts.centelha) * d.mult;
 }
 
 export function integridade(v: Virtudes) {

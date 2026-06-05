@@ -203,9 +203,8 @@
     "defesa": {
       "atributo": "destreza",
       "mult": 2,
-      "somaDiv": 4,
       "especialidade": true,
-      "centelhaCeilDiv": 2
+      "maisCentelha": true
     },
     "defesaMental": {
       "integridade": [

@@ -11,7 +11,7 @@
   dava +5") **deixou de existir**: o Kael foi rebalanceado para **Centelha 2**
   (exemplo iniciante ~994 XP) com **Prontidão 3**, o que dá **1d6+6** — agora
   consistente com o doc. Derivados atuais do Kael (travados em `scripts/test-kael.mjs`):
-  **PV 37 · Defesa 14 · Def. Mental 7 · Energia 24 · Mana 11 · Iniciativa 1d6+6**.
+  **PV 37 · Defesa 18 · Def. Mental 7 · Energia 24 · Mana 11 · Iniciativa 1d6+6**.
 
 ## Técnicas com prosa provisória (pendente:true) — 0
 

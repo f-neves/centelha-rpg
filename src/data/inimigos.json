@@ -55,7 +55,7 @@
       "humano"
     ],
     "pv": 34,
-    "defesa": 9,
+    "defesa": 10,
     "defesaMental": 4,
     "soak": {
       "impacto": 5,
@@ -99,7 +99,7 @@
       "humano"
     ],
     "pv": 34,
-    "defesa": 8,
+    "defesa": 9,
     "defesaMental": 5,
     "soak": {
       "impacto": 7,
@@ -143,7 +143,7 @@
       "humano"
     ],
     "pv": 34,
-    "defesa": 12,
+    "defesa": 13,
     "defesaMental": 5,
     "soak": {
       "impacto": 7,
@@ -187,7 +187,7 @@
       "humano"
     ],
     "pv": 31,
-    "defesa": 11,
+    "defesa": 12,
     "defesaMental": 4,
     "soak": {
       "impacto": 4,
@@ -276,7 +276,7 @@
       "humano"
     ],
     "pv": 37,
-    "defesa": 11,
+    "defesa": 12,
     "defesaMental": 6,
     "soak": {
       "impacto": 10,
@@ -321,7 +321,7 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 17,
+    "defesa": 20,
     "defesaMental": 6,
     "soak": {
       "impacto": 5,
@@ -372,7 +372,7 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 17,
+    "defesa": 20,
     "defesaMental": 6,
     "soak": {
       "impacto": 5,
@@ -423,7 +423,7 @@
       "arcano"
     ],
     "pv": 31,
-    "defesa": 10,
+    "defesa": 12,
     "defesaMental": 6,
     "soak": {
       "impacto": 2,
@@ -474,7 +474,7 @@
       "centelha"
     ],
     "pv": 40,
-    "defesa": 10,
+    "defesa": 12,
     "defesaMental": 7,
     "soak": {
       "impacto": 11,
@@ -523,7 +523,7 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 16,
+    "defesa": 21,
     "defesaMental": 9,
     "soak": {
       "impacto": 8,
@@ -572,7 +572,7 @@
       "fera"
     ],
     "pv": 34,
-    "defesa": 13,
+    "defesa": 14,
     "defesaMental": 3,
     "soak": {
       "impacto": 3,
@@ -663,7 +663,7 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 12,
+    "defesa": 14,
     "defesaMental": 7,
     "soak": {
       "impacto": 10,
@@ -713,7 +713,7 @@
       "arcano"
     ],
     "pv": 34,
-    "defesa": 10,
+    "defesa": 12,
     "defesaMental": 6,
     "soak": {
       "impacto": 3,
@@ -763,7 +763,7 @@
       "morto-vivo"
     ],
     "pv": 34,
-    "defesa": 9,
+    "defesa": 10,
     "defesaMental": 5,
     "soak": {
       "impacto": 5,
@@ -808,7 +808,7 @@
       "espírito"
     ],
     "pv": 34,
-    "defesa": 15,
+    "defesa": 18,
     "defesaMental": 7,
     "soak": {
       "impacto": 3,
@@ -899,7 +899,7 @@
       "fera"
     ],
     "pv": 34,
-    "defesa": 13,
+    "defesa": 14,
     "defesaMental": 3,
     "soak": {
       "impacto": 3,
@@ -946,7 +946,7 @@
       "arcano"
     ],
     "pv": 34,
-    "defesa": 12,
+    "defesa": 16,
     "defesaMental": 8,
     "soak": {
       "impacto": 3,

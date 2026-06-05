@@ -5,7 +5,7 @@ titulo: "O Coração do Sistema"
 resumo: "Rolagens, dificuldade e margem — a soma simples que move tudo."
 ---
 
-Toda ação significativa nasce de uma soma simples: um **Atributo**  (capacidades inerentes do personagem) somado a uma **Habilidade** (conhecimentos adquiridos ao longo da vida). Esse total vira um punhado de dados de seis lados — o seu *pool* — que você rola para enfrentar o mundo.
+Toda ação significativa nasce de uma soma simples: um **Atributo** (capacidades inerentes do personagem) somado a uma **Habilidade** (conhecimentos adquiridos ao longo da vida). Esse total vira um punhado de dados de seis lados — o seu *pool* — que você rola para enfrentar o mundo.
 
 ## Montando o Pool
 
@@ -37,8 +37,8 @@ Você tem **sucesso** quando o total **supera** o alvo — a Defesa de um inimig
 | 10 | Média | 6 | Competente |
 | 15 | Difícil | 8 | Perito |
 | 20 | Limite humano | 10 | Mestre |
-| 25 | Excepcional | 14 |  Heroi |
-| 30+ | Sobre-humano | 18 | Semi-deus|
+| 25 | Excepcional | 14 |  Herói |
+| 30+ | Sobre-humano | 18 | Semideus|
 
 <p class="muted">No nível "à altura", tarefas fáceis e médias são um cara-ou-coroa; a maestria traz confiabilidade. Quem não tem competência simplesmente não alcança as dificuldades altas.</p>
 
@@ -50,13 +50,13 @@ Passar raspando é diferente de passar com sobra. A cada **6 pontos** que seu to
 
 Quando alguém se opõe a você, em geral apenas o lado *ativo* rola, contra um **Valor Passivo** do outro.
 
-<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 (+ modificadores)</p>
+<p class="formula">Valor Passivo = (Atributo + Habilidade + Especialidade + Centelha) × 2 (+ modificadores)</p>
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2. O guarda não rola — sua vigilância é um muro a ser superado.</div>
 
 Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o maior total vence; empates favorecem quem defende ou mantém o *status quo*.
 
-| Soma (Atrib + Hab) | Def Passiva |
+| Soma (Atrib + Hab + Esp + Cent) | Def Passiva |
 |:---:|:---:|
 | 2 | 4 |
 | 3 | 6 |
@@ -67,7 +67,6 @@ Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o 
 | 8 | 16 |
 | 9 | 18 |
 | 10 | 20 |
-
 
 ## Ações Estendidas
 
