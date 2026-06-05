@@ -52,25 +52,27 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 | Mana | (Centelha × 2) + Força de Vontade |
 | Iniciativa | 1d6 + Raciocínio + Prontidão |
 
-## Exemplo: Kael, o Batedor
+## Três exemplos, um por orçamento
 
-Um herói **enxuto** de Centelha 1, montado com apenas **375 XP** — útil para enxergar como os custos se somam. No orçamento padrão de 1000, Kael sobraria fôlego para subir à Centelha 2, abrir um terceiro Caminho ou aprofundar os atributos; aqui ele fica deliberadamente magro para servir de gabarito de cálculo.
+Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1000), **Sora** no veterano (1400) e **Veil** no herói (1800). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Caminhos, Técnicas, perícias e especialidades. É o toolbox que carrega a profundidade.
+
+### Kael, o Batedor — Iniciante (Centelha 2)
+
+Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do grupo e abre a luta de longe.
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Destreza 4 · Percepção, Vigor, Raciocínio 3 · demais 2 | 160 |
-| Habilidades | Furtividade 3, Armas à Distância 3 · Prontidão, Atletismo, Sobrevivência 2 · Investigação, Briga, Esquiva 1 | 120 |
-| Especialidades | Furtividade, Armas à Distância | 20 |
-| Virtudes | Valor 3 · Temperança, Convicção 2 | 45 |
-| Centelha | 0 → 1 | 15 |
-| Técnicas | Sombra: Pisar Leve, Esgueirar · Olho de Águia: Mira Firme | 15 |
-| **Total** | | **375** |
+| Atributos | Percepção 5 (pico) · Destreza, Vigor 4 · Força, Raciocínio, Inteligência 3 · Carisma, Manipulação, Aparência 2 | 350 |
+| Habilidades | Furtividade 4 (pico) · Armas à Distância, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Medicina 1 | 235 |
+| Secundárias | três em 2 (Rastreio, Escalada, Falcoaria) | 18 |
+| Especialidades | Furtividade, Armas à Distância, Sobrevivência | 30 |
+| Virtudes | Valor 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 90 |
+| Força de Vontade | 5 → 7 | 26 |
+| Centelha | 0 → 2 | 45 |
+| Técnicas | 21, de Olho de Águia, Sombra e Vento (bandas 1–3) | 200 |
+| **Total** | | **994** |
 
-<p class="muted">Derivados: PV 34 · Defesa 10 · Energia 16 · Mana 7 · Iniciativa 1d6+5. Os 625 XP restantes do orçamento padrão dariam a Kael a Centelha 2, atributos mais altos e um punhado de novas Técnicas.</p>
-
-## Exemplos: Veterano e Herói
-
-Nos orçamentos maiores, repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), a maior parte do bolo se converte em **largura** — mais Caminhos, Técnicas, perícias e especialidades. É o toolbox que carrega a profundidade.
+<p class="muted">Derivados: PV 37 · Defesa 14 · Def. Mental 7 · Energia 24 · Mana 11 · Iniciativa 1d6+6. Sobram 6 XP. Mira firme à distância e some na sombra entre os tiros.</p>
 
 ### Sora, a Capitã — Veterana (Centelha 2)
 

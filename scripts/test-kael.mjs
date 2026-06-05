@@ -6,10 +6,10 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const r = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/regras.json'), 'utf8'));
 const D = r.derivados, fl = Math.floor, ce = Math.ceil;
 
-// Kael, o Batedor (Centelha 1, ~375 XP)
-const at = { vigor: 3, destreza: 4, raciocinio: 3 };
-const esquiva = 1, espEsq = 0, prontidao = 2, cent = 1, vont = 5;
-const V = { compaixao: 1, conviccao: 2, temperanca: 2, valor: 3 };
+// Kael, o Batedor (Centelha 2, ~1000 XP — exemplo iniciante)
+const at = { vigor: 4, destreza: 4, raciocinio: 3 };
+const esquiva = 3, espEsq = 0, prontidao = 3, cent = 2, vont = 7;
+const V = { compaixao: 2, conviccao: 3, temperanca: 2, valor: 4 };
 
 const pv = D.pv.base + at.vigor * D.pv.vigorMult;
 const soma = at.destreza + esquiva;
@@ -20,7 +20,7 @@ const energia = cent * D.energia.centelhaMult + (V.compaixao + V.conviccao + V.t
 const mana = cent * D.mana.centelhaMult + vont;
 const ini = at.raciocinio + prontidao;
 
-const esperado = { pv: 34, defesa: 10, defM: 5, energia: 16, mana: 7, ini: 5 };
+const esperado = { pv: 37, defesa: 14, defM: 7, energia: 24, mana: 11, ini: 6 };
 const got = { pv, defesa, defM, energia, mana, ini };
 const erros = Object.keys(esperado).filter((k) => got[k] !== esperado[k]);
 if (erros.length) {
@@ -28,4 +28,4 @@ if (erros.length) {
   for (const k of erros) console.error(`  ${k}: esperado ${esperado[k]}, obtido ${got[k]}`);
   process.exit(1);
 }
-console.log('✓ Regressão Kael OK — PV 34 · Defesa 10 · Def. Mental 5 · Energia 16 · Mana 7 · Iniciativa 1d6+5.');
+console.log('✓ Regressão Kael OK — PV 37 · Defesa 14 · Def. Mental 7 · Energia 24 · Mana 11 · Iniciativa 1d6+6.');

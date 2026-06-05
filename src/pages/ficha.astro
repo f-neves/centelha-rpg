@@ -17,7 +17,6 @@ import RoladorDados from '../components/RoladorDados.astro';
       </span>
     </span>
     <span class="xp-btns">
-      <button class="btn" id="f-kael">Kael</button>
       <button class="btn" id="f-export">Exportar</button>
       <button class="btn" id="f-import">Importar</button>
       <button class="btn" id="f-print">Imprimir</button>
@@ -415,18 +414,6 @@ import RoladorDados from '../components/RoladorDados.astro';
     const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
     navigator.clipboard?.writeText(location.origin + location.pathname + '#p=' + b64);
     const b = el('f-link'); b.textContent = '✓'; setTimeout(() => (b.textContent = 'Link'), 1200);
-  });
-  el('f-kael').addEventListener('click', () => {
-    fresh();
-    S.id = { nome: 'Kael, o Batedor', conceito: 'Batedor', jogador: '' };
-    Object.assign(S.attrs, { destreza: 4, vigor: 3, percepcao: 3, raciocinio: 3 });
-    Object.assign(S.skills, { furtividade: 3, 'armas-a-distancia': 3, prontidao: 2, atletismo: 2, sobrevivencia: 2, investigacao: 1, briga: 1, esquiva: 1 });
-    Object.assign(S.spec, { furtividade: 1, 'armas-a-distancia': 1 });
-    Object.assign(S.virtues, { conviccao: 2, temperanca: 2, valor: 3 });
-    S.centelha = 1;
-    S.tech = { 'pisar-leve': true, esgueirar: true, 'mira-firme': true };
-    S.equip = { arma: 'arco', armadura: 'leve', escudo: 'nenhum' };
-    renderAll();
   });
 
   // init
