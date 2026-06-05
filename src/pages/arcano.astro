@@ -14,7 +14,37 @@ const Arte = (a: any) => a;
 
   <p>Cada <strong>Arte</strong> tem <strong>5 níveis</strong>: o nível <em>N</em> exige <strong>Centelha ≥ N</strong> e <strong>Ocultismo ≥ N</strong>. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana = nível do efeito</strong>. Dentro do seu nível, você improvisa efeitos compatíveis.</p>
 
-  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong> — rápido, em combate: custa Ticks como uma ação, mais o Mana. &nbsp; <strong>Ritual</strong> — lento, fora de combate: custa metade do Mana ou alcança efeitos muito maiores.</div>
+  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong> — rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1–2, <strong>6</strong> no 3, <strong>7</strong> nos 4–5), mais o Mana. &nbsp; <strong>Ritual</strong> — lento, fora de combate: metade do Mana <em>e</em> alcança escalas que nenhum Feitiço atinge.</div>
+
+  <section class="arcano-regras">
+    <h2>Improviso: os mostradores</h2>
+    <p>O efeito impresso de cada nível é apenas o <strong>gabarito</strong> — a forma típica daquele patamar. Dentro do seu nível você molda a magia girando cinco <strong>mostradores</strong>:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Mostrador</th><th>Do mínimo…</th><th>…ao máximo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Alcance</strong></td><td>toque</td><td>curto → médio (à vista) → longo</td></tr>
+          <tr><td><strong>Área</strong></td><td>um alvo</td><td>pequena → uma sala → um campo</td></tr>
+          <tr><td><strong>Alvos</strong></td><td>1</td><td>poucos → um grupo → uma multidão</td></tr>
+          <tr><td><strong>Duração</strong></td><td>instantâneo</td><td>rodadas → a cena → horas → permanente</td></tr>
+          <tr><td><strong>Potência</strong></td><td>mínima</td><td>o dano/intensidade do gabarito → além</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Rearranjar é livre:</strong> encolha um mostrador para esticar outro de igual passo (mirre a área para dobrar o alcance) sem mudar o custo. <strong>Ultrapassar o gabarito</strong> custa: cada passo a mais num mostrador conta como <strong>+1 nível efetivo</strong> — mais <strong>+1 Mana</strong>, e exige <strong>Centelha e Ocultismo ≥</strong> esse nível. Num Feitiço, o nível efetivo nunca passa do menor entre a sua Centelha e o seu Ocultismo.</p>
+
+    <h2>Conjuração composta</h2>
+    <p>Você pode trançar <strong>várias Artes numa única conjuração</strong> — o mesmo idioma dos combos de Técnica. Junte K Artes e pague a <strong>soma dos Manas + uma sobretaxa progressiva de +(k−1)</strong> (a 2ª Arte +1, a 3ª +2…). É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem a escada dele.</p>
+    <p class="formula">Fogo (Labareda, nível 2) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 2 + 1 + <strong>1</strong> de sobretaxa = <strong>4</strong>, numa conjuração só.</p>
+
+    <h2>Rituais: a alta magia</h2>
+    <p>Com tempo e sossego, a feitiçaria deixa de ser dardo e vira obra. O Ritual roda como <strong>ação estendida</strong> (Dificuldade + Intervalo + Acúmulo de sucessos ao longo de minutos ou horas) e dá <strong>duas dádivas</strong>:</p>
+    <ul>
+      <li><strong>Economia</strong> — paga <strong>metade do Mana</strong> (arredondado para cima).</li>
+      <li><strong>Escala</strong> — empurra os mostradores <em>muito</em> além do que um Feitiço comporta: cobrir uma vila, durar até a próxima lua, lavrar uma maldição permanente. O efeito-<em>base</em> ainda não passa do nível de Arte que você domina — um mestre de Fogo nível 2 incendeia um casarão inteiro, mas não invoca o Cataclismo do nível 5.</li>
+    </ul>
+    <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e dados ao Acúmulo. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
+  </section>
 
   {[['As Seis Artes Elementais', elem], ['As Doze Artes Universais', univ]].map(([titulo, lista]) => (
     <section>

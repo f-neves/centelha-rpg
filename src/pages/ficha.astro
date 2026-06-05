@@ -7,8 +7,8 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   <div class="xpbar" id="painel">
     <span class="big">XP: <b id="xpSpent">0</b></span>
-    <label>Orçamento <input type="number" id="xpBudget" value="400" /></label>
-    <span class="big">Restam: <b id="xpRem" class="rem ok">400</b></span>
+    <label>Orçamento <input type="number" id="xpBudget" value="1000" /></label>
+    <span class="big">Restam: <b id="xpRem" class="rem ok">1000</b></span>
     <span class="breakdown" id="xpBreak"></span>
     <span class="modo-wrap"><span class="modo-lbl">Modo</span>
       <span class="modo-toggle" role="group" aria-label="Modo da ficha">
@@ -128,14 +128,24 @@ import RoladorDados from '../components/RoladorDados.astro';
   const TECBAND: Record<string, number> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.banda]));
   const TECPRE: Record<string, string[]> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.prereq || []]));
   const TECNOME: Record<string, string> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.nome]));
-  const CREA = (regras as any).limitesCriacao as { atributo: number; habilidade: number; centelha: number };
+  const CREA = (regras as any).limitesCriacao as { atributo: number; habilidade: number; centelha: number; picoAtributo?: number; picoHabilidade?: number };
   const centReq = (b: number) => Math.ceil(b / 3);
-  // teto de cada tipo conforme o modo (criação aplica os limites; evolução libera)
-  function capFor(kind: string): number {
+  // teto de cada tipo conforme o modo (criação aplica os limites; evolução libera).
+  // Na criação, permite-se UM pico: um atributo em 5 e uma perícia primária em 4.
+  function capFor(kind: string, key?: string): number {
     if (kind === 'arte2') return Math.min(S.centelha || 0, S.skills?.ocultismo || 0); // Arte ≤ Centelha e ≤ Ocultismo
     const full: Record<string, number> = { attr: 5, skill: 5, skill2: 5, virtue: 5, centelha: 5, willpower: 10 };
     if (S.modo === 'evolucao') return full[kind] ?? 5;
-    const crea: Record<string, number> = { attr: CREA.atributo, skill: CREA.habilidade, skill2: CREA.habilidade, virtue: 5, centelha: CREA.centelha, willpower: 10 };
+    if (kind === 'attr' || kind === 'skill') {
+      const base = kind === 'attr' ? CREA.atributo : CREA.habilidade;
+      const pico = (kind === 'attr' ? CREA.picoAtributo : CREA.picoHabilidade) ?? base;
+      if (pico <= base) return base;
+      const store: Record<string, number> = kind === 'attr' ? S.attrs : S.skills;
+      let outroPico = false; // já existe outro traço deste tipo acima do teto-base?
+      for (const k in store) { if (k !== key && (store[k] || 0) > base) { outroPico = true; break; } }
+      return outroPico ? base : pico;
+    }
+    const crea: Record<string, number> = { skill2: CREA.habilidade, virtue: 5, centelha: CREA.centelha, willpower: 10 };
     return crea[kind] ?? 5;
   }
 
@@ -143,7 +153,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 5, centelha: 0, tech: {}, arte: {}, budget: 400, modo: 'criacao', equip: { arma: 'desarmado', armadura: 'nenhuma', escudo: 'nenhum' } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 5, centelha: 0, tech: {}, arte: {}, budget: 1000, modo: 'criacao', equip: { arma: 'desarmado', armadura: 'nenhuma', escudo: 'nenhum' } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 2));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -151,7 +161,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
-    S.willpower ??= 5; S.centelha ??= 0; S.budget ??= 400; S.modo ??= 'criacao';
+    S.willpower ??= 5; S.centelha ??= 0; S.budget ??= 1000; S.modo ??= 'criacao';
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.armadura ??= 'nenhuma'; S.equip.escudo ??= 'nenhum';
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 2));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] ??= 0; });
@@ -162,7 +172,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   // ---- builders ----
   const dotsHTML = (kind: string, key: string, value: number, max: number, floor: number) => {
-    const cap = capFor(kind);
+    const cap = capFor(kind, key);
     let h = `<span class="dots" data-kind="${kind}" data-key="${key}" tabindex="0" role="slider" aria-valuemin="${floor}" aria-valuemax="${cap}" aria-valuenow="${value}" aria-label="${key.replace(/-/g, ' ')} (use as setas)">`;
     for (let d = 1; d <= max; d++) {
       const capped = d > cap;
@@ -297,8 +307,16 @@ import RoladorDados from '../components/RoladorDados.astro';
     span.setAttribute('aria-valuenow', String(val));
     span.querySelectorAll('.dot').forEach((d) => { const dd = +(d as HTMLElement).dataset.d!; d.classList.toggle('on', dd <= val); d.classList.toggle('free', dd <= floor); });
   }
+  function refreshCaps(kind: string) {
+    document.querySelectorAll(`.dots[data-kind="${kind}"]`).forEach((span) => {
+      const key = (span as HTMLElement).dataset.key!;
+      const cap = capFor(kind, key);
+      span.setAttribute('aria-valuemax', String(cap));
+      span.querySelectorAll('.dot').forEach((d) => { const dd = +(d as HTMLElement).dataset.d!; d.classList.toggle('cap', dd > cap); });
+    });
+  }
   function applyVal(kind: string, key: string, nv: number) {
-    const floor = floorOf[kind]; nv = Math.max(floor, Math.min(nv, capFor(kind)));
+    const floor = floorOf[kind]; nv = Math.max(floor, Math.min(nv, capFor(kind, key)));
     if (kind === 'attr') S.attrs[key] = nv;
     else if (kind === 'skill') { S.skills[key] = nv; if ((S.spec[key] || 0) > nv) S.spec[key] = nv; renderSkills(); if (key === 'ocultismo') renderArtes(); }
     else if (kind === 'skill2') { S.skills2[key] = nv; if ((S.spec2[key] || 0) > nv) S.spec2[key] = nv; renderSecondary(); }
@@ -307,6 +325,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     else if (kind === 'willpower') S.willpower = nv;
     else if (kind === 'arte2') { S.arte[key] = nv; renderArtes(); }
     if (['attr', 'virtue', 'centelha', 'willpower'].includes(kind)) refreshDots(kind, key);
+    if (kind === 'attr' && S.modo === 'criacao') refreshCaps('attr'); // o pico de um trava os 5 dos demais
     recompute();
   }
   function setDot(kind: string, key: string, d: number) {
@@ -360,16 +379,16 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   function syncInputs() {
     document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => (inp.value = S.id?.[inp.dataset.id!] || ''));
-    (el('xpBudget') as HTMLInputElement).value = String(S.budget ?? 400);
+    (el('xpBudget') as HTMLInputElement).value = String(S.budget ?? 1000);
   }
   function markModo() {
     document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => { const on = b.dataset.modo === (S.modo || 'criacao'); b.classList.toggle('primary', on); b.setAttribute('aria-pressed', String(on)); });
   }
   function clampToMode() {
     // ao entrar em Criação, respeita os tetos (reduz o que passou)
-    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = Math.min(S.attrs[a.id] || 2, capFor('attr'))));
-    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = Math.min(S.skills[h.id] || 0, capFor('skill')); if ((S.spec[h.id] || 0) > S.skills[h.id]) S.spec[h.id] = S.skills[h.id]; });
-    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] = Math.min(S.skills2[k] || 0, capFor('skill2')); if ((S.spec2[k] || 0) > S.skills2[k]) S.spec2[k] = S.skills2[k]; });
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = Math.min(S.attrs[a.id] || 2, capFor('attr', a.id))));
+    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = Math.min(S.skills[h.id] || 0, capFor('skill', h.id)); if ((S.spec[h.id] || 0) > S.skills[h.id]) S.spec[h.id] = S.skills[h.id]; });
+    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] = Math.min(S.skills2[k] || 0, capFor('skill2', k)); if ((S.spec2[k] || 0) > S.skills2[k]) S.spec2[k] = S.skills2[k]; });
     S.centelha = Math.min(S.centelha || 0, capFor('centelha'));
   }
   function setModo(m: string) { S.modo = m; if (m === 'criacao') clampToMode(); renderAll(); }

@@ -31,15 +31,20 @@
   "limitesCriacao": {
     "atributo": 4,
     "habilidade": 3,
-    "centelha": 2
+    "centelha": 2,
+    "picoAtributo": 5,
+    "picoHabilidade": 4,
+    "picoQuantidade": 1,
+    "notaPico": "Na criação permite-se UM atributo em 5 e UMA perícia primária em 4 — o talento superlativo do herói."
   },
-  "orcamentoPadrao": 400,
-  "orcamentoCru": 300,
-  "orcamentoHeroico": 500,
+  "orcamentoPadrao": 1000,
+  "orcamentoVeterano": 1400,
+  "orcamentoHeroico": 1800,
   "progressaoPorSessao": [
-    8,
-    15
+    10,
+    20
   ],
+  "centelhaGate": "A Centelha só aumenta com permissão do Mestre, num marco de história ou feito maior. O XP paga o custo (×15), mas o salto de tier é narrativo — não se compra em massa.",
   "xp": {
     "atributo": {
       "tipo": "mult",
@@ -259,5 +264,52 @@
     "danoFixo": "peso da arma",
     "ignoraSoak": true,
     "requerFurarArmadura": true
+  },
+  "economiaPoderes": {
+    "nota": "Tempo (Ticks) das Técnicas e empilhamento. A Energia limita a CENA; os Ticks limitam o MOMENTO.",
+    "passivaTicks": 0,
+    "reflexivaTicks": 0,
+    "reflexivaPorGatilho": 1,
+    "suplementarTicks": 0,
+    "ticksIndependente": [
+      { "banda": "1–2", "ticks": 5 },
+      { "banda": "3", "ticks": 6 },
+      { "banda": "4–5", "ticks": 7 }
+    ],
+    "combo": {
+      "regra": "Numa única ação você empilha quantas Técnicas suplementares quiser, mas cada acréscimo encarece: a k-ésima Técnica somada à ação custa +(k−1) de Energia de sobretaxa (2ª +1, 3ª +2, 4ª +3…).",
+      "sobretaxaPorK": "(k−1)",
+      "sobretaxaTotal": "T(K−1) = (K−1)·K÷2",
+      "porque": "Combinar custa MAIS que usar separado, mas economiza Ticks e concentra os efeitos num só golpe (mais Margem)."
+    },
+    "posturas": {
+      "regra": "Postura sustentada: paga a Energia uma vez e dura a cena. Mantém até Centelha posturas ao mesmo tempo; abandonar é livre.",
+      "simultaneasMax": "Centelha"
+    },
+    "vontade": { "banda4": 1, "banda5": 2 }
+  },
+  "arcano": {
+    "nota": "Detalhamento do uso das Artes: improviso por mostradores, conjuração composta (espelha o combo) e Rituais. Mana = nível do efeito; conjura Ocultismo + Atributo.",
+    "feiticoTicks": [
+      { "nivel": "1–2", "ticks": 5 },
+      { "nivel": "3", "ticks": 6 },
+      { "nivel": "4–5", "ticks": 7 }
+    ],
+    "improviso": {
+      "regra": "O efeito impresso é o GABARITO daquele nível. Rearranjar mostradores de igual passo é livre (encolher um para esticar outro). Cada passo ACIMA do gabarito num mostrador conta como +1 nível efetivo: +1 Mana e exige Centelha e Ocultismo ≥ nível efetivo.",
+      "mostradores": ["alcance", "área", "alvos", "duração", "potência"],
+      "tetoFeitico": "nível efetivo ≤ min(Centelha, Ocultismo)"
+    },
+    "composta": {
+      "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos Manas + sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior nível.",
+      "sobretaxaPorK": "(k−1)"
+    },
+    "ritual": {
+      "manaMetade": "metade do Mana (arredonda para cima)",
+      "escala": "empurra os mostradores muito além do limite de um Feitiço (grande área, duração longa ou permanente, efeitos impossíveis em combate) — mas o efeito-base não ultrapassa o nível de Arte que você conhece.",
+      "acao": "estendida (Dif + Intervalo + Acúmulo)",
+      "cooperacao": "vários feiticeiros que conheçam a Arte somam Mana e dados na ação estendida",
+      "backlash": false
+    }
   }
 }

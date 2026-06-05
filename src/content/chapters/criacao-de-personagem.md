@@ -13,7 +13,7 @@ Um personagem é construído gastando **Experiência** (XP) a partir de valores-
 
 Tudo começa no mínimo e é comprado dali: **Atributos 2** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 5** · **Centelha 0** · qualquer **Caminho 0**.
 
-A **Centelha 0** é o mortal comum — cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial sugerido: **~400 XP** (campanha mais crua ~300; mais heroica ~500).
+A **Centelha 0** é o mortal comum — cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial padrão: **1000 XP** (iniciante), **1400** (veterano) ou **1800** (herói). Com 1000 XP, um personagem já chega como Centelha 2, com vários atributos no teto de criação e um arsenal de Técnicas.
 
 ## Custos de XP
 
@@ -33,9 +33,13 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 <p class="muted">A Centelha cara reflete a raridade: alcançar Centelha 3 custa 90 XP acumulados; a Centelha 5, 225 — o trabalho de uma vida. Técnica de banda <em>N</em> exige Centelha ≥ ⌈N/3⌉; Arte de nível <em>N</em> exige Centelha ≥ N e Ocultismo ≥ N.</p>
 
+<div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha não se compra em massa: ela só sobe com <strong>permissão do Mestre</strong>, num marco de história ou feito maior. O XP paga o custo (× 15), mas o salto de tier — de herói a semideus — é uma conquista narrativa, não uma transação de balcão.</div>
+
 ## Limites na criação
 
 Atributo máximo **4**; Habilidade máxima **3**; Centelha máxima **2** (a maioria dos heróis começa em 1). O 5º ponto e tiers maiores vêm com o jogo.
+
+Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 5** e **uma única Perícia primária a 4** já na criação — o talento superlativo que o define. Os demais respeitam os tetos acima.
 
 ## Traços derivados
 
@@ -50,7 +54,7 @@ Atributo máximo **4**; Habilidade máxima **3**; Centelha máxima **2** (a maio
 
 ## Exemplo: Kael, o Batedor
 
-Um herói de Centelha 1, montado com ~375 XP.
+Um herói **enxuto** de Centelha 1, montado com apenas **375 XP** — útil para enxergar como os custos se somam. No orçamento padrão de 1000, Kael sobraria fôlego para subir à Centelha 2, abrir um terceiro Caminho ou aprofundar os atributos; aqui ele fica deliberadamente magro para servir de gabarito de cálculo.
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
@@ -62,4 +66,4 @@ Um herói de Centelha 1, montado com ~375 XP.
 | Técnicas | Sombra: Pisar Leve, Esgueirar · Olho de Águia: Mira Firme | 15 |
 | **Total** | | **375** |
 
-<p class="muted">Derivados: PV 34 · Defesa 10 · Energia 16 · Mana 7 · Iniciativa 1d6+5. Com 400 XP, sobram ~25 para uma 4ª Técnica.</p>
+<p class="muted">Derivados: PV 34 · Defesa 10 · Energia 16 · Mana 7 · Iniciativa 1d6+5. Os 625 XP restantes do orçamento padrão dariam a Kael a Centelha 2, atributos mais altos e um punhado de novas Técnicas.</p>
