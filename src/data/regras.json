@@ -258,11 +258,10 @@
     "estabilizar": { "pericia": "Medicina", "dif": 10, "alternativa": "Vigor + Convicção (em si mesmo)" }
   },
   "quaseAcerto": {
-    "faixa": "peso da arma + Centelha do atacante",
-    "pesoPorClasse": { "leve": 1, "media": 2, "pesada": 3 },
-    "danoFixo": "peso da arma",
+    "margem": "Bônus QA da arma + Centelha do atacante",
+    "dano": "Dano QA da arma − Redução QA da armadura (mínimo 0)",
     "ignoraSoak": true,
-    "requerFurarArmadura": true
+    "nota": "Errar por ≤ margem é um raspão. A armadura NÃO reduz a margem (você nica o alvo blindado com a mesma frequência), mas tem uma Redução de Dano de Quase-Acerto própria (leve 1, média 2, pesada 3) que abate o Dano QA da arma; o Soak normal não se aplica ao raspão."
   },
   "economiaPoderes": {
     "nota": "Tempo (Ticks) das Técnicas e empilhamento. A Energia limita a CENA; os Ticks limitam o MOMENTO.",

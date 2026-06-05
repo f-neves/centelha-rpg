@@ -29,7 +29,7 @@ Para atacar: monte o pool de Atributo + Habilidade, some o **Acerto da Arma**, a
 
 Use **Esquiva** (com a habilidade Esquiva, mais a mobilidade do terreno) ou **Bloqueio** (com a perícia da própria arma ou Escudos, mais a Defesa da Arma e o escudo). Escolha a melhor — mas nem tudo se bloqueia.
 
-<div class="callout"><span class="lbl">Quase Acerto</span>Errar por pouco — dentro de uma <strong>Faixa</strong> igual ao <strong>peso da arma + sua Centelha</strong> (peso: leve 1, média 2, pesada 3) — ainda raspa o alvo, causando dano fixo igual ao peso, sem redução por Soak (desde que a arma consiga furar a armadura). Um mortal raspa por 1–3; uma lâmina mítica quase nunca erra de fato — mas o raspão continua sendo só o peso, um corte que sangra mais do que mata.</div>
+<div class="callout"><span class="lbl">Quase Acerto</span>Errar por pouco — dentro de uma <strong>Margem</strong> igual ao <strong>Bônus de Quase-Acerto da arma + sua Centelha</strong> — ainda raspa o alvo. Armas leves e rápidas têm Bônus QA alto (raspam muito, mas de leve); armas pesadas têm Bônus QA baixo (raspam raro, mas fundo). O raspão causa o <strong>Dano de Quase-Acerto da arma</strong> (leve 1 · média 2 · pesada 3), <strong>sem o Soak normal</strong>, mas reduzido pela <strong>Redução de Quase-Acerto da armadura</strong> (leve 1 · média 2 · pesada 3, mínimo 0). A armadura <em>não</em> estreita a Margem — você nica o alvo blindado igual, mas a placa absorve o arranhão. Quanto mais Centelha, mais largo o raspão.</div>
 
 ## Modificadores situacionais
 

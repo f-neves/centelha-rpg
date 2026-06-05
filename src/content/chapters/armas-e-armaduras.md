@@ -37,36 +37,38 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 
 <div class="table-wrap">
 
-| Arma | Construção | Dano | Destaque |
-|---|---|:---:|---|
-| Adaga | Leve · Ágil · Perf. 2 · Arremessável | 1d6 | rápida, precisa, perfura leve |
-| Espada Curta | Leve | 1d6 | veloz e defensiva |
-| Espada Longa | Média · Versátil | 2d6 | a clássica adaptável |
-| Machado | Média | 2d6 | corte pesado |
-| Espada Serrilhada | Média · Sangramento | 2d6 | feridas que sangram (−Acerto) |
-| Maça | Média · Crush | 2d6 | abre armaduras |
-| Picareta de Guerra | Média · Perf. 3 | 2d6 | fura malha e placa |
-| Lança | Haste · Perf. 2 | 2d6 | alcance + estocada |
-| Alabarda | Haste · Crush · Pesada | 2d6 | alcance e impacto, lenta |
-| Montante | Pesada | 3d6 | espadão de duas mãos |
-| Martelo de Guerra | Pesada · Crush | 3d6 | esmaga placas |
-| Arco | Distância · Munição · Perf. 2 | 2d6 | precisão à distância |
-| Besta Pesada | Distância · Munição · Perf. 3 · recarga | 3d6 | fura quase tudo |
+| Arma | Construção | Dano | Q-Acerto (B/D) | Destaque |
+|---|---|:---:|:---:|---|
+| Adaga | Leve · Ágil · Perf. 2 · Arremessável | 1d6 | 3 / 1 | rápida, precisa, perfura leve |
+| Espada Curta | Leve | 1d6 | 3 / 1 | veloz e defensiva |
+| Espada Longa | Média · Versátil | 2d6 | 2 / 2 | a clássica adaptável |
+| Machado | Média | 2d6 | 2 / 2 | corte pesado |
+| Espada Serrilhada | Média · Sangramento | 2d6 | 2 / 2 | feridas que sangram (−Acerto) |
+| Maça | Média · Crush | 2d6 | 2 / 2 | abre armaduras |
+| Picareta de Guerra | Média · Perf. 3 | 2d6 | 2 / 2 | fura malha e placa |
+| Lança | Haste · Perf. 2 | 2d6 | 2 / 2 | alcance + estocada |
+| Alabarda | Haste · Crush · Pesada | 2d6 | 1 / 2 | alcance e impacto, lenta |
+| Montante | Pesada | 3d6 | 1 / 3 | espadão de duas mãos |
+| Martelo de Guerra | Pesada · Crush | 3d6 | 1 / 3 | esmaga placas |
+| Arco | Distância · Munição · Perf. 2 | 2d6 | 2 / 1 | precisão à distância |
+| Besta Pesada | Distância · Munição · Perf. 3 · recarga | 3d6 | 1 / 2 | fura quase tudo |
 
 </div>
 
+<p class="muted"><strong>Q-Acerto (B/D)</strong> = <strong>Bônus</strong> e <strong>Dano</strong> de Quase-Acerto. A Margem do raspão é <em>Bônus + Centelha do atacante</em>; o dano é <em>Dano − Redução QA da armadura</em>, sem Soak. Armas leves nicam muito por pouco (3/1); pesadas nicam raro mas fundo (1/3).</p>
+
 ## Armaduras
 
-A armadura soma **Soak** (Impacto e Corte) e dá **Proteção** (o nível que a Penetração precisa vencer). Mas o peso se paga.
+A armadura soma **Soak** (Impacto e Corte), dá **Proteção** (o nível que a Penetração precisa vencer) e abate o raspão com a **Redução de Quase-Acerto** (Red. QA). Mas o peso se paga.
 
 <div class="table-wrap">
 
-| Armadura | Soak | Prot. | Esquiva | Lentidão | Furtiv. / Técnicas |
-|---|:---:|:---:|:---:|---|---|
-| Nenhuma | 0 | 0 | — | — | — |
-| Leve (couro) | +2 | 1 | −0 | — | −0 |
-| Média (malha) | +4 | 2 | −1 | −1 Iniciativa | −2 Furtividade |
-| Pesada (placas) | +6 | 3 | −2 | +1 Tick · −3 Inic. | −4 Furt.; bloqueia Técnicas ágeis |
+| Armadura | Soak | Prot. | Red. QA | Esquiva | Lentidão | Furtiv. / Técnicas |
+|---|:---:|:---:|:---:|:---:|---|---|
+| Nenhuma | 0 | 0 | 0 | — | — | — |
+| Leve (couro) | +2 | 1 | 1 | −0 | — | −0 |
+| Média (malha) | +4 | 2 | 2 | −1 | −1 Iniciativa | −2 Furtividade |
+| Pesada (placas) | +6 | 3 | 3 | −2 | +1 Tick · −3 Inic. | −4 Furt.; bloqueia Técnicas ágeis |
 
 </div>
 

@@ -1,6 +1,6 @@
 [
-  { "id": "nenhuma", "nome": "Nenhuma", "classe": "nenhuma", "soak": 0, "protecao": 0, "esquiva": 0, "lentidao": "—", "furtividade": 0, "notas": "Sem proteção; máxima mobilidade." },
-  { "id": "leve", "nome": "Leve (couro)", "classe": "leve", "soak": 2, "protecao": 1, "esquiva": 0, "lentidao": "—", "furtividade": 0, "notas": "Mal protege, mas mantém você veloz, evasivo e silencioso." },
-  { "id": "media", "nome": "Média (malha)", "classe": "media", "soak": 4, "protecao": 2, "esquiva": -1, "lentidao": "−1 Iniciativa", "furtividade": -2, "notas": "Bom meio-termo; perfurantes ricocheteiam." },
-  { "id": "pesada", "nome": "Pesada (placas)", "classe": "pesada", "soak": 6, "protecao": 3, "esquiva": -2, "lentidao": "+1 Tick · −3 Iniciativa", "furtividade": -4, "notas": "Tanque: mais fácil de acertar, lento e barulhento; bloqueia Técnicas ágeis." }
+  { "id": "nenhuma", "nome": "Nenhuma", "classe": "nenhuma", "soak": 0, "protecao": 0, "reducaoQA": 0, "esquiva": 0, "lentidao": "—", "furtividade": 0, "notas": "Sem proteção; máxima mobilidade." },
+  { "id": "leve", "nome": "Leve (couro)", "classe": "leve", "soak": 2, "protecao": 1, "reducaoQA": 1, "esquiva": 0, "lentidao": "—", "furtividade": 0, "notas": "Mal protege, mas mantém você veloz, evasivo e silencioso." },
+  { "id": "media", "nome": "Média (malha)", "classe": "media", "soak": 4, "protecao": 2, "reducaoQA": 2, "esquiva": -1, "lentidao": "−1 Iniciativa", "furtividade": -2, "notas": "Bom meio-termo; perfurantes ricocheteiam." },
+  { "id": "pesada", "nome": "Pesada (placas)", "classe": "pesada", "soak": 6, "protecao": 3, "reducaoQA": 3, "esquiva": -2, "lentidao": "+1 Tick · −3 Iniciativa", "furtividade": -4, "notas": "Tanque: mais fácil de acertar, lento e barulhento; bloqueia Técnicas ágeis." }
 ]

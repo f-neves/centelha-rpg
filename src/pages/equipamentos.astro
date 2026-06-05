@@ -24,7 +24,7 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
   <h2>Armas</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dado</th><th class="c">Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th>Dano</th><th>Perícia</th><th>Tags</th></tr></thead>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dado</th><th class="c">Acerto</th><th class="c">Q-Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th>Dano</th><th>Perícia</th><th>Tags</th></tr></thead>
       <tbody>
         {armas.map((a) => (
           <tr data-arma data-classe={a.classe} data-tags={a.tags.join(' ')} data-txt={(a.nome + ' ' + a.tags.join(' ') + ' ' + a.notas).toLowerCase()}>
@@ -32,6 +32,7 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
             <td>{CLASSE[a.classe]}</td>
             <td class="c">{a.dado}d6</td>
             <td class="c">{a.acerto >= 0 ? '+' : ''}{a.acerto}</td>
+            <td class="c">{a.bonusQA} / {a.danoQA}</td>
             <td class="c">{a.defesaArma >= 0 ? '+' : ''}{a.defesaArma}</td>
             <td class="c">{a.maos}</td>
             <td class="c">{a.ticks}</td>
@@ -48,10 +49,10 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
   <h2>Armaduras</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Armadura</th><th class="c">Soak</th><th class="c">Prot.</th><th class="c">Esquiva</th><th>Lentidão</th><th class="c">Furtiv.</th><th>Notas</th></tr></thead>
+      <thead><tr><th>Armadura</th><th class="c">Soak</th><th class="c">Prot.</th><th class="c">Red. QA</th><th class="c">Esquiva</th><th>Lentidão</th><th class="c">Furtiv.</th><th>Notas</th></tr></thead>
       <tbody>
         {armaduras.map((a) => (
-          <tr><th>{a.nome}</th><td class="c">+{a.soak}</td><td class="c">{a.protecao}</td><td class="c">{a.esquiva}</td><td>{a.lentidao}</td><td class="c">{a.furtividade}</td><td class="muted">{a.notas}</td></tr>
+          <tr><th>{a.nome}</th><td class="c">+{a.soak}</td><td class="c">{a.protecao}</td><td class="c">{a.reducaoQA}</td><td class="c">{a.esquiva}</td><td>{a.lentidao}</td><td class="c">{a.furtividade}</td><td class="muted">{a.notas}</td></tr>
         ))}
       </tbody>
     </table>
