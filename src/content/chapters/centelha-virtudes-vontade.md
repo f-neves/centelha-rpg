@@ -13,7 +13,7 @@ A Centelha vai de 0 a 5 (e além, no futuro). Em **0** está o mortal comum — 
 
 | A Centelha… | Efeito |
 |---|---|
-| Reforça defesas | soma a Centelha à Defesa (antes do ×2, valendo o dobro) e à Defesa Mental |
+| Reforça defesas | +Centelha (1 por ponto) à Defesa e à Defesa Mental |
 | Dimensiona os pools | determina o tamanho das reservas de Energia e Mana |
 | Destrava os Caminhos | cada banda de poder exige uma Centelha mínima |
 

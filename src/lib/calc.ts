@@ -29,10 +29,10 @@ export function pv(vigor: number) {
   return d.base + vigor * d.vigorMult;
 }
 
-/** Defesa (Esquiva): (Destreza + Habilidade + Especialidade + Centelha) × 2. */
+/** Defesa (Esquiva): (Destreza + Habilidade) × 2 + Especialidade + Centelha. */
 export function defesa(opts: { destreza: number; habilidade: number; especialidade?: number; centelha: number }) {
   const d = regras.derivados.defesa;
-  return (opts.destreza + opts.habilidade + (opts.especialidade ?? 0) + opts.centelha) * d.mult;
+  return (opts.destreza + opts.habilidade) * d.mult + (opts.especialidade ?? 0) + opts.centelha;
 }
 
 export function integridade(v: Virtudes) {

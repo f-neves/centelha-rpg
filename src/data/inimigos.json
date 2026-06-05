@@ -321,7 +321,7 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 20,
+    "defesa": 19,
     "defesaMental": 6,
     "soak": {
       "impacto": 5,
@@ -372,7 +372,7 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 20,
+    "defesa": 19,
     "defesaMental": 6,
     "soak": {
       "impacto": 5,
@@ -423,7 +423,7 @@
       "arcano"
     ],
     "pv": 31,
-    "defesa": 12,
+    "defesa": 11,
     "defesaMental": 6,
     "soak": {
       "impacto": 2,
@@ -474,7 +474,7 @@
       "centelha"
     ],
     "pv": 40,
-    "defesa": 12,
+    "defesa": 11,
     "defesaMental": 7,
     "soak": {
       "impacto": 11,
@@ -523,7 +523,7 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 21,
+    "defesa": 19,
     "defesaMental": 9,
     "soak": {
       "impacto": 8,
@@ -663,7 +663,7 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 14,
+    "defesa": 13,
     "defesaMental": 7,
     "soak": {
       "impacto": 10,
@@ -713,7 +713,7 @@
       "arcano"
     ],
     "pv": 34,
-    "defesa": 12,
+    "defesa": 11,
     "defesaMental": 6,
     "soak": {
       "impacto": 3,
@@ -808,7 +808,7 @@
       "espírito"
     ],
     "pv": 34,
-    "defesa": 18,
+    "defesa": 17,
     "defesaMental": 7,
     "soak": {
       "impacto": 3,
@@ -946,7 +946,7 @@
       "arcano"
     ],
     "pv": 34,
-    "defesa": 16,
+    "defesa": 14,
     "defesaMental": 8,
     "soak": {
       "impacto": 3,

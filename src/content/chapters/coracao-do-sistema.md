@@ -50,13 +50,13 @@ Passar raspando é diferente de passar com sobra. A cada **6 pontos** que seu to
 
 Quando alguém se opõe a você, em geral apenas o lado *ativo* rola, contra um **Valor Passivo** do outro.
 
-<p class="formula">Valor Passivo = (Atributo + Habilidade + Especialidade + Centelha) × 2 (+ modificadores)</p>
+<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + Especialidade + Centelha (+ modificadores)</p>
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão + Especialidade + Centelha) × 2 — para um guarda comum, sem Especialidade nem Centelha, isso é só (Percepção + Prontidão) × 2. O guarda não rola — sua vigilância é um muro a ser superado.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2 + Especialidade + Centelha — para um guarda comum, sem as duas últimas, isso é só (Percepção + Prontidão) × 2. O guarda não rola — sua vigilância é um muro a ser superado.</div>
 
 Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o maior total vence; empates favorecem quem defende ou mantém o *status quo*.
 
-| Soma (Atrib + Hab + Esp + Cent) | Def Passiva |
+| Soma (Atrib + Hab) | Def Passiva (×2) |
 |:---:|:---:|
 | 2 | 4 |
 | 3 | 6 |

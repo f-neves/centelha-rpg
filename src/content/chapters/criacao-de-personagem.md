@@ -46,7 +46,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 | Traço | Fórmula |
 |---|---|
 | Pontos de Vida | 25 + (Vigor × 3) |
-| Defesa | (Destreza + Habilidade + Especialidade + Centelha) × 2 |
+| Defesa | (Destreza + Habilidade) × 2 + Especialidade + Centelha |
 | Defesa Mental | ⌊(Integridade + Vontade) ÷ 2⌋ + Centelha · (Integridade = Compaixão + Temperança) |
 | Energia | (Centelha × 3) + soma das 4 Virtudes + Força de Vontade |
 | Mana | (Centelha × 2) + Força de Vontade |
@@ -72,7 +72,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Técnicas | 21, de Olho de Águia, Sombra e Vento (bandas 1–3) | 200 |
 | **Total** | | **994** |
 
-<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 7 · Energia 24 · Mana 11 · Iniciativa 1d6+6. Sobram 6 XP. Mira firme à distância e some na sombra entre os tiros.</p>
+<p class="muted">Derivados: PV 37 · Defesa 16 · Def. Mental 7 · Energia 24 · Mana 11 · Iniciativa 1d6+6. Sobram 6 XP. Mira firme à distância e some na sombra entre os tiros.</p>
 
 ### Sora, a Capitã — Veterana (Centelha 2)
 
@@ -88,7 +88,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Técnicas | 24, dos Caminhos Comando, Pele de Pedra e Dança da Lâmina (bandas 1–4) | 260 |
 | **Total** | | **1390** |
 
-<p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 9 · Energia 28 · Mana 12 · Iniciativa 1d6+6. Sobram 10 XP. Uma líder de tropa que comba posturas defensivas e golpes precisos.</p>
+<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 9 · Energia 28 · Mana 12 · Iniciativa 1d6+6. Sobram 10 XP. Uma líder de tropa que comba posturas defensivas e golpes precisos.</p>
 
 ### Veil, o Feiticeiro-guerreiro — Herói (Centelha 3)
 
@@ -105,7 +105,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Técnicas | 25, de Mente Afiada, Pele de Pedra e Dança da Lâmina (bandas 1–4) | 270 |
 | **Total** | | **1799** |
 
-<p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 11 · Energia 33 · Mana 15 · Iniciativa 1d6+6. Sobra 1 XP. Um semideus que tece Feitiços e lâmina no mesmo turno — note o Ocultismo 4 sustentando Artes de nível 3.</p>
+<p class="muted">Derivados: PV 37 · Defesa 17 · Def. Mental 11 · Energia 33 · Mana 15 · Iniciativa 1d6+6. Sobra 1 XP. Um semideus que tece Feitiços e lâmina no mesmo turno — note o Ocultismo 4 sustentando Artes de nível 3.</p>
 
 ## O mortal-tocado: magia como estudo, não como tier
 
@@ -128,4 +128,4 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Técnicas | 20 de Mente Afiada (bandas 1–3) | 145 |
 | **Total** | | **1391** |
 
-<p class="muted">Derivados: PV 34 · Defesa 14 · Def. Mental 8 · Energia 24 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Sobram 9 XP. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong> — ele <em>conhece</em> magia mais funda que o Veil, mas seu tanque o obriga a escolher poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível. É o feiticeiro de torre, não o feiticeiro-guerreiro: poderoso quando prepara o terreno, frágil na queda de braço prolongada.</p>
+<p class="muted">Derivados: PV 34 · Defesa 13 · Def. Mental 8 · Energia 24 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Sobram 9 XP. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong> — ele <em>conhece</em> magia mais funda que o Veil, mas seu tanque o obriga a escolher poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível. É o feiticeiro de torre, não o feiticeiro-guerreiro: poderoso quando prepara o terreno, frágil na queda de braço prolongada.</p>

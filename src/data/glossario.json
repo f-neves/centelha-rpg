@@ -76,7 +76,7 @@
       "esquiva",
       "bloqueio"
     ],
-    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade + Especialidade + Centelha) × 2."
+    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + Especialidade + Centelha."
   },
   {
     "id": "defesa-mental",
@@ -197,6 +197,6 @@
       "passiva",
       "percepção passiva"
     ],
-    "definicao": "Quando só um lado rola: (Atributo + Habilidade + Especialidade + Centelha) × 2 do outro serve de alvo. Como Especialidade e Centelha são raras, na prática a maioria é só (Atributo + Habilidade) × 2."
+    "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 + Especialidade + Centelha do outro serve de alvo. Como Especialidade e Centelha são raras, na prática a maioria é só (Atributo + Habilidade) × 2."
   }
 ]

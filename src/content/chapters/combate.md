@@ -25,7 +25,7 @@ No início, role a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tira o 
 
 Para atacar: monte o pool de Atributo + Habilidade, some o **Acerto da Arma**, aplique Especialidade, Stunts e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra). A Defesa é um valor **fixo e passivo** — o atacante é quem rola.
 
-<p class="formula">Defesa = (Destreza + Habilidade + Especialidade + Centelha) × 2 + mods</p>
+<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha + mods</p>
 
 Use **Esquiva** (com a habilidade Esquiva, mais a mobilidade do terreno) ou **Bloqueio** (com a perícia da própria arma ou Escudos, mais a Defesa da Arma e o escudo). Escolha a melhor — mas nem tudo se bloqueia.
 
