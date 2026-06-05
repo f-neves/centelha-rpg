@@ -67,3 +67,40 @@ Um herói **enxuto** de Centelha 1, montado com apenas **375 XP** — útil para
 | **Total** | | **375** |
 
 <p class="muted">Derivados: PV 34 · Defesa 10 · Energia 16 · Mana 7 · Iniciativa 1d6+5. Os 625 XP restantes do orçamento padrão dariam a Kael a Centelha 2, atributos mais altos e um punhado de novas Técnicas.</p>
+
+## Exemplos: Veterano e Herói
+
+Nos orçamentos maiores, repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), a maior parte do bolo se converte em **largura** — mais Caminhos, Técnicas, perícias e especialidades. É o toolbox que carrega a profundidade.
+
+### Sora, a Capitã — Veterana (Centelha 2)
+
+| Compra | Detalhe | XP |
+|---|---|:---:|
+| Atributos | Destreza 5 (pico) · Força, Vigor, Carisma 4 · Percepção, Raciocínio, Inteligência, Manipulação, Aparência 3 | 480 |
+| Habilidades | Armas de Corte 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Atletismo, Tática, Comando, Intimidação, Resistência, Liderança) · duas em 2 · uma em 1 | 325 |
+| Secundárias | seis em 2–3 (Etiqueta, Cavalgar, Jogos de Guerra…) | 48 |
+| Especialidades | cinco (Armas de Corte, Tática, Comando…) | 50 |
+| Virtudes | Valor 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
+| Força de Vontade | 5 → 8 | 42 |
+| Centelha | 0 → 2 | 45 |
+| Técnicas | 24, dos Caminhos Comando, Pele de Pedra e Dança da Lâmina (bandas 1–4) | 260 |
+| **Total** | | **1390** |
+
+<p class="muted">Derivados: PV 37 · Defesa 15 · Def. Mental 9 · Energia 28 · Mana 12 · Iniciativa 1d6+6. Sobram 10 XP. Uma líder de tropa que comba posturas defensivas e golpes precisos.</p>
+
+### Veil, o Feiticeiro-guerreiro — Herói (Centelha 3)
+
+| Compra | Detalhe | XP |
+|---|---|:---:|
+| Atributos | Inteligência 5 (pico) · Força, Destreza, Vigor, Percepção 4 · Raciocínio, Carisma, Manipulação, Aparência 3 | 520 |
+| Habilidades | Ocultismo 4 (pico) · oito perícias em 3 · três em 2 | 335 |
+| Secundárias | seis em 2–3 | 54 |
+| Especialidades | seis primárias + duas secundárias | 70 |
+| Virtudes | Convicção 4 · Valor 4 · Temperança 4 · Compaixão 3 | 160 |
+| Força de Vontade | 5 → 9 | 60 |
+| Centelha | 0 → 3 | 90 |
+| Artes | Fogo, Forças, Proteção e Cura — todas no nível 3 | 240 |
+| Técnicas | 25, de Mente Afiada, Pele de Pedra e Dança da Lâmina (bandas 1–4) | 270 |
+| **Total** | | **1799** |
+
+<p class="muted">Derivados: PV 37 · Defesa 15 · Def. Mental 11 · Energia 33 · Mana 15 · Iniciativa 1d6+6. Sobra 1 XP. Um semideus que tece Feitiços e lâmina no mesmo turno — note o Ocultismo 4 sustentando Artes de nível 3.</p>

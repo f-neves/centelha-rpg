@@ -295,6 +295,18 @@
       { "nivel": "3", "ticks": 6 },
       { "nivel": "4–5", "ticks": 7 }
     ],
+    "resistencia": {
+      "rolagem": "Ocultismo + Atributo de conjuração da Arte",
+      "tipos": [
+        { "efeito": "Dano e projéteis", "resiste": "Defesa (Esquiva) para acertar; depois o dano é reduzido pelo Soak", "ex": "dardo de fogo, raio, lança de gelo" },
+        { "efeito": "Corpo e veneno", "resiste": "Vigor + Convicção (resistência de fortitude)", "ex": "transmutação, doença, frio que enrijece, paralisia física" },
+        { "efeito": "Mente e alma", "resiste": "Defesa Mental (passiva) — a conjuração precisa superá-la", "ex": "medo, fascínio, ilusão, domínio" },
+        { "efeito": "Aprisionamento e contato", "resiste": "Defesa (Esquiva) para prender; escapar depois com Força ou Atletismo vs o nível efetivo do efeito", "ex": "correntes, lama, agarrão telecinético" },
+        { "efeito": "Em aliados, objetos ou cenário", "resiste": "sem resistência (efeito automático)", "ex": "cura, escudo, muralha, luz" }
+      ],
+      "armadura": "O Soak de armadura conta normalmente contra dano mágico, salvo efeitos cujo texto diga que furam ou ignoram armadura.",
+      "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
+    },
     "improviso": {
       "regra": "O efeito impresso é o GABARITO daquele nível. Rearranjar mostradores de igual passo é livre (encolher um para esticar outro). Cada passo ACIMA do gabarito num mostrador conta como +1 nível efetivo: +1 Mana e exige Centelha e Ocultismo ≥ nível efetivo.",
       "mostradores": ["alcance", "área", "alvos", "duração", "potência"],

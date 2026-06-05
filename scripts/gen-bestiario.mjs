@@ -37,7 +37,7 @@ function stat(b) {
     iniciativa: `1d6 + ${ini}`,
     atributos: at, ataques,
     tecnicas: b.tecnicas || [], artes: b.artes || [],
-    notas: b.notas || '', pendente: true,
+    notas: b.notas || '', pendente: b.pendente ?? false,
   };
 }
 
@@ -132,15 +132,15 @@ const NPCS = [
   { id: 'lobo', nome: 'Lobo', tipo: 'fera', ameaca: 2, centelha: 0,
     conceito: 'predador de matilha', descricao: 'Rápido e implacável em grupo; ataca os flancos.', tags: ['fera'],
     attrs: { forca: 3, destreza: 4, vigor: 3, percepcao: 4 }, pericias: { briga: 3, esquiva: 3, prontidao: 4, furtividade: 3 }, integridade: 3, vontade: 4,
-    ataques: [{ nome: 'Mordida', atrib: 'forca', pericia: 'briga', dado: 1, mao: 2, tipo: 'perfurante', acerto: 1, ticks: 5, notas: 'Em matilha: cerca e derruba' }],
-    notas: 'Anda em matilha (3–6). Use Horda para grandes alcateias.' },
+    ataques: [{ nome: 'Mordida', atrib: 'forca', pericia: 'briga', dado: 1, mao: 2, tipo: 'perfurante', acerto: 1, ticks: 5, notas: 'Em matilha: ataca pelo flanco (−2 na Defesa do alvo)' }],
+    notas: 'Anda em matilha (3–6). Dois ou mais coordenados somam Flanco (−2 Defesa) e Pressão; use Horda para grandes alcateias.' },
 
   { id: 'urso', nome: 'Urso', tipo: 'fera', ameaca: 4, centelha: 0,
     conceito: 'fera colossal', descricao: 'Força esmagadora e couro grosso; um perigo sério sozinho.', tags: ['fera'],
     attrs: { forca: 5, destreza: 2, vigor: 5, percepcao: 3 }, pericias: { briga: 3, resistencia: 4, prontidao: 3 }, integridade: 3, vontade: 5,
     armadura: { soak: 1, prot: 0, esquiva: 0 },
-    ataques: [{ nome: 'Garras', atrib: 'forca', pericia: 'briga', dado: 2, mao: 2, tipo: 'corte', acerto: 1, ticks: 6, notas: 'Pode agarrar e esmagar' }],
-    notas: 'Couro grosso (Soak natural alto pelo Vigor 5). Difícil de derrubar.' },
+    ataques: [{ nome: 'Garras', atrib: 'forca', pericia: 'briga', dado: 2, mao: 2, tipo: 'corte', acerto: 1, ticks: 6, notas: 'Dilacerantes: golpe com Margem abre Sangramento (= Margem, máx 3); pode agarrar' }],
+    notas: 'Couro grosso (Soak natural alto pelo Vigor 5). Defesa baixa, mas aguenta — e as garras sangram. Difícil de derrubar.' },
 
   { id: 'comandante', nome: 'Comandante Tocado', tipo: 'elite', ameaca: 5, centelha: 1,
     conceito: 'líder de guerra', descricao: 'Inspira tropas e quebra a moral inimiga; luta bem, mas comanda melhor.', tags: ['humano', 'centelha'],
@@ -180,7 +180,7 @@ const NPCS = [
   { id: 'aranha-gigante', nome: 'Aranha Gigante', tipo: 'fera', ameaca: 3, centelha: 0,
     conceito: 'predadora venenosa', descricao: 'Emboscadora de patas longas; uma picada e a presa amolece.', tags: ['fera'],
     attrs: { forca: 3, destreza: 4, vigor: 3, percepcao: 4 }, pericias: { briga: 3, furtividade: 4, esquiva: 3, prontidao: 4 }, integridade: 2, vontade: 4,
-    ataques: [{ nome: 'Picada peçonhenta', atrib: 'destreza', pericia: 'briga', dado: 1, mao: 2, tipo: 'perfurante', acerto: 1, pen: 1, ticks: 5, notas: 'Veneno: Convicção+Vigor ou −2 em ações por uma cena' }],
+    ataques: [{ nome: 'Picada peçonhenta', atrib: 'destreza', pericia: 'briga', dado: 1, mao: 2, tipo: 'perfurante', acerto: 1, pen: 1, ticks: 5, notas: 'Veneno (efeito de Corpo): resista com Vigor + Convicção ou sofra −2 em ações por uma cena' }],
     notas: 'Sobe paredes, ataca das sombras e prende a presa em teia.' },
 
   { id: 'mago-de-batalha', nome: 'Mago de Batalha', tipo: 'chefe', ameaca: 6, centelha: 2,

@@ -41,7 +41,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Testa de ferro frágil. Em grupo, use a regra de Horda.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "bandido-de-estrada",
@@ -85,7 +85,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Couro leve (Soak +2). Tenta emboscar.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "guarda-da-cidade",
@@ -129,7 +129,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Malha (Soak +4, Esquiva −1) + escudo (+2 ao Bloqueio). Chama reforço.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "soldado-veterano",
@@ -173,7 +173,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Aproveita Quase Acerto e foca alvos isolados.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "arqueiro",
@@ -217,7 +217,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Perfurante Pen 2 (zera contra malha/placa). Mira (+2) quando pode.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "bruto",
@@ -262,7 +262,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Speed 7 (age pouco). Cerque-o e explore a lentidão.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "capitao-da-guarda",
@@ -306,7 +306,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Placa (Soak +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "assassino-das-sombras",
@@ -357,7 +357,7 @@
     ],
     "artes": [],
     "notas": "Bote Silencioso: +2d6 e ignora parte da Defesa contra alvo desavisado.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "duelista",
@@ -407,7 +407,7 @@
     ],
     "artes": [],
     "notas": "Aparar: +3 na Defesa; Riposte contra-ataca ao aparar.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "feiticeiro-menor",
@@ -459,7 +459,7 @@
       }
     ],
     "notas": "Mana = Centelha×2 + Vontade = 8. Nível 2 (Labareda, 2d6) custa 2 Mana.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "cavaleiro-de-elite",
@@ -508,7 +508,7 @@
     ],
     "artes": [],
     "notas": "Placa + Pele de Pedra: Soak altíssimo. Use Ruptura (Crush) ou dano pesado.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "campeao",
@@ -558,7 +558,7 @@
     ],
     "artes": [],
     "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de banda 1–2.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "lobo",
@@ -597,13 +597,13 @@
         "pool": "3d6 +1",
         "dano": "1d6 +3 perfurante",
         "ticks": 5,
-        "notas": "Em matilha: cerca e derruba"
+        "notas": "Em matilha: ataca pelo flanco (−2 na Defesa do alvo)"
       }
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Anda em matilha (3–6). Use Horda para grandes alcateias.",
-    "pendente": true
+    "notas": "Anda em matilha (3–6). Dois ou mais coordenados somam Flanco (−2 Defesa) e Pressão; use Horda para grandes alcateias.",
+    "pendente": false
   },
   {
     "id": "urso",
@@ -642,13 +642,13 @@
         "pool": "4d6 +1",
         "dano": "2d6 +5 corte",
         "ticks": 6,
-        "notas": "Pode agarrar e esmagar"
+        "notas": "Dilacerantes: golpe com Margem abre Sangramento (= Margem, máx 3); pode agarrar"
       }
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Couro grosso (Soak natural alto pelo Vigor 5). Difícil de derrubar.",
-    "pendente": true
+    "notas": "Couro grosso (Soak natural alto pelo Vigor 5). Defesa baixa, mas aguenta — e as garras sangram. Difícil de derrubar.",
+    "pendente": false
   },
   {
     "id": "comandante",
@@ -697,7 +697,7 @@
     ],
     "artes": [],
     "notas": "Concede ações e bônus aos aliados (Estandarte/Comando). Some Carisma quando inspira. Mate-o e a tropa vacila.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "cultista",
@@ -749,7 +749,7 @@
       }
     ],
     "notas": "Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "esqueleto",
@@ -793,7 +793,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Morto-vivo: imune a medo, veneno e efeitos mentais. Dano de Impacto (esmagar ossos) é especialmente eficaz.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "espectro",
@@ -839,7 +839,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Incorpóreo: imune a dano físico não-mágico e atravessa matéria. Só Arcano, Proteção e armas encantadas o ferem.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "ogro",
@@ -885,7 +885,7 @@
     "tecnicas": [],
     "artes": [],
     "notas": "Força e Vigor 6 (acima do humano). Lento (Speed 7) e de Defesa baixa: cerque e explore a lentidão.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "aranha-gigante",
@@ -924,13 +924,13 @@
         "pool": "3d6+2 +1",
         "dano": "1d6 +3 perfurante · Pen 1",
         "ticks": 5,
-        "notas": "Veneno: Convicção+Vigor ou −2 em ações por uma cena"
+        "notas": "Veneno (efeito de Corpo): resista com Vigor + Convicção ou sofra −2 em ações por uma cena"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Sobe paredes, ataca das sombras e prende a presa em teia.",
-    "pendente": true
+    "pendente": false
   },
   {
     "id": "mago-de-batalha",
@@ -986,6 +986,6 @@
       }
     ],
     "notas": "Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.",
-    "pendente": true
+    "pendente": false
   }
 ]
