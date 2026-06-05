@@ -7,7 +7,7 @@ const custo = z.object({
   vontade: z.number().int().nonnegative().optional(),
 });
 
-const escala = z.array(z.object({ nivel: z.number().int(), texto: z.string() }));
+const escala = z.array(z.object({ nivel: z.number().int(), texto: z.string(), conduta: z.string().optional() }));
 
 const atributos = defineCollection({
   loader: file('src/data/atributos.json'),

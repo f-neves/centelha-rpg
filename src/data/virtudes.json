@@ -1,30 +1,30 @@
 [
   { "id": "compaixao", "nome": "Compaixão", "resiste": "a crueldade", "descricao": "Empatia e misericórdia; o impulso de poupar e cuidar.", "niveis": [
-    { "nivel": 1, "texto": "Fria: indiferente ao sofrimento alheio; capaz de crueldade sem peso." },
-    { "nivel": 2, "texto": "Reservada: importa-se com os seus, pouco com estranhos." },
-    { "nivel": 3, "texto": "Gentil: trata bem os outros e hesita em ferir inocentes." },
-    { "nivel": 4, "texto": "Altruísta: sacrifica-se pelos outros; não passa pela dor alheia." },
-    { "nivel": 5, "texto": "Santa: sente o sofrimento do mundo como seu; misericórdia sem limites." }
+    { "nivel": 1, "texto": "Fria: indiferente ao sofrimento alheio; capaz de crueldade sem peso.", "conduta": "Não deve nada a ninguém: ajuda só quando lhe convém e não perde o sono por quem fica para trás." },
+    { "nivel": 2, "texto": "Reservada: importa-se com os seus, pouco com estranhos.", "conduta": "Protege os seus — sangue, bando, juramentados; estranhos que se virem." },
+    { "nivel": 3, "texto": "Gentil: trata bem os outros e hesita em ferir inocentes.", "conduta": "Não maltrata os indefesos e estende a mão a quem cruza seu caminho ferido." },
+    { "nivel": 4, "texto": "Altruísta: sacrifica-se pelos outros; não passa pela dor alheia.", "conduta": "Põe o bem alheio à frente do próprio conforto; não passa ao largo de quem sofre." },
+    { "nivel": 5, "texto": "Santa: sente o sofrimento do mundo como seu; misericórdia sem limites.", "conduta": "Socorre todo sofrimento que alcança, amigo ou inimigo, mesmo a um custo terrível para si." }
   ] },
   { "id": "conviccao", "nome": "Convicção", "resiste": "a dor, a tortura e o desânimo", "descricao": "Determinação inabalável diante do sofrimento.", "niveis": [
-    { "nivel": 1, "texto": "Frouxa: desiste e dobra-se sob pressão." },
-    { "nivel": 2, "texto": "Comum: segue em frente em tempos normais." },
-    { "nivel": 3, "texto": "Firme: mantém o rumo mesmo quando dói." },
-    { "nivel": 4, "texto": "Inabalável: tortura e desespero não a quebram." },
-    { "nivel": 5, "texto": "Inquebrável: nada no mundo a faz abandonar sua causa." }
+    { "nivel": 1, "texto": "Frouxa: desiste e dobra-se sob pressão.", "conduta": "Cede quando a pressão aperta; abandona promessas que custam caro." },
+    { "nivel": 2, "texto": "Comum: segue em frente em tempos normais.", "conduta": "Cumpre o que prometeu enquanto o preço for razoável." },
+    { "nivel": 3, "texto": "Firme: mantém o rumo mesmo quando dói.", "conduta": "Honra a palavra e a causa ainda que custe; não recua à primeira perda." },
+    { "nivel": 4, "texto": "Inabalável: tortura e desespero não a quebram.", "conduta": "Suporta dor, perda e a tentação de desistir sem trair aquilo em que crê." },
+    { "nivel": 5, "texto": "Inquebrável: nada no mundo a faz abandonar sua causa.", "conduta": "Nada — nem tortura, nem ruína, nem a morte — o afasta de sua causa." }
   ] },
   { "id": "temperanca", "nome": "Temperança", "resiste": "a tentação e a provocação", "descricao": "Disciplina e clareza; autocontrole sob pressão.", "niveis": [
-    { "nivel": 1, "texto": "Impulsiva: cede a todo impulso e provocação." },
-    { "nivel": 2, "texto": "Comum: controla-se na maior parte do tempo." },
-    { "nivel": 3, "texto": "Disciplinada: resiste a tentações e mantém a cabeça fria." },
-    { "nivel": 4, "texto": "Serena: provocações e vícios escorregam por ela." },
-    { "nivel": 5, "texto": "Autocontrole absoluto: imperturbável diante de qualquer isca." }
+    { "nivel": 1, "texto": "Impulsiva: cede a todo impulso e provocação.", "conduta": "Age no calor do momento: morde toda isca e cede a todo apetite." },
+    { "nivel": 2, "texto": "Comum: controla-se na maior parte do tempo.", "conduta": "Em geral pensa antes de agir, mas escorrega sob forte provocação." },
+    { "nivel": 3, "texto": "Disciplinada: resiste a tentações e mantém a cabeça fria.", "conduta": "Mantém a cabeça fria diante de insultos e vícios; escolhe a hora de agir." },
+    { "nivel": 4, "texto": "Serena: provocações e vícios escorregam por ela.", "conduta": "Provocações e prazeres não o desviam; raramente perde a compostura." },
+    { "nivel": 5, "texto": "Autocontrole absoluto: imperturbável diante de qualquer isca.", "conduta": "Nenhuma isca, fúria ou tentação o move um milímetro do que decidiu." }
   ] },
   { "id": "valor", "nome": "Valor", "resiste": "o medo e a intimidação", "descricao": "Bravura para encarar o perigo.", "niveis": [
-    { "nivel": 1, "texto": "Covarde: foge do perigo; congela diante de ameaças." },
-    { "nivel": 2, "texto": "Cauteloso: enfrenta o risco quando precisa, com medo." },
-    { "nivel": 3, "texto": "Corajoso: encara o perigo de frente." },
-    { "nivel": 4, "texto": "Destemido: o medo quase não o toca." },
-    { "nivel": 5, "texto": "Heroico: encara monstros e exércitos sem vacilar." }
+    { "nivel": 1, "texto": "Covarde: foge do perigo; congela diante de ameaças.", "conduta": "Foge do perigo e abandona o posto quando a ameaça é real." },
+    { "nivel": 2, "texto": "Cauteloso: enfrenta o risco quando precisa, com medo.", "conduta": "Enfrenta o risco só quando não há saída, e com o coração na mão." },
+    { "nivel": 3, "texto": "Corajoso: encara o perigo de frente.", "conduta": "Não vira as costas a uma luta justa nem larga um aliado por medo." },
+    { "nivel": 4, "texto": "Destemido: o medo quase não o toca.", "conduta": "Encara ameaças que fariam outros fugir; o medo não dita suas escolhas." },
+    { "nivel": 5, "texto": "Heroico: encara monstros e exércitos sem vacilar.", "conduta": "Marcha contra monstros e exércitos sem vacilar, ainda que sozinho." }
   ] }
 ]
