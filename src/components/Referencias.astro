@@ -30,13 +30,18 @@
     return INDEX!;
   }
 
-  // 1) auto-link seguro na prosa (glossário + atributos/perícias/virtudes), 1ª ocorrência
+  // 1) auto-link seguro na prosa (glossário + atributos/perícias/virtudes).
+  // Escopo = BLOCO/tópico (p, li, td, th…): cada termo distinto linka 1× POR BLOCO,
+  // então o mesmo termo pode reaparecer linkado em outros blocos da página.
+  // "Na dúvida, mais links" — listas separadas por · viram um bloco, mas todos os
+  // termos do bloco linkam (não há mais teto de 1 link por linha).
   function autolink() {
     const scan = document.querySelector('main'); if (!scan || !INDEX) return;
     const entries: { needle: string; it: Ref }[] = [];
     for (const it of INDEX) if (it.autolink) for (const t of it.termos) entries.push({ needle: t, it });
     entries.sort((a, b) => b.needle.length - a.needle.length);
     const SKIP = new Set(['A', 'CODE', 'PRE', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'H1', 'H2', 'H3', 'H4', 'SCRIPT', 'STYLE', 'OPTION', 'LABEL']);
+    const BLOCK = 'p,li,td,th,blockquote,figcaption,dd,dt,caption,summary,h5,h6';
     const walker = document.createTreeWalker(scan, NodeFilter.SHOW_TEXT, {
       acceptNode(n) {
         const p = (n as Text).parentElement;
@@ -46,22 +51,45 @@
     });
     const nodes: Text[] = []; let c: Node | null;
     while ((c = walker.nextNode())) nodes.push(c as Text);
-    const used = new Set<string>();
+    const usedBy = new Map<Element, Set<string>>(); // bloco → ids já linkados nele
     for (const node of nodes) {
       const text = node.textContent || ''; const nt = norm(text);
+      const block = (node.parentElement && node.parentElement.closest(BLOCK)) || scan;
+      let used = usedBy.get(block); if (!used) { used = new Set(); usedBy.set(block, used); }
+      // coleta todas as ocorrências (1 por entidade ainda não usada no bloco), sem sobrepor
+      const taken = new Array(nt.length).fill(false);
+      const hits: { start: number; len: number; it: Ref }[] = [];
       for (const e of entries) {
         if (used.has(e.it.id)) continue;
-        const nn = norm(e.needle); const i = nt.indexOf(nn); if (i < 0) continue;
-        const before = i === 0 ? ' ' : nt[i - 1], after = i + nn.length >= nt.length ? ' ' : nt[i + nn.length];
-        if (/[a-z0-9]/.test(before) || /[a-z0-9]/.test(after)) continue;
-        used.add(e.it.id);
-        const a = document.createElement('a');
-        a.className = 'ref'; a.href = e.it.url; a.dataset.ref = e.it.id;
-        a.textContent = text.slice(i, i + e.needle.length);
-        const rest = node.splitText(i); rest.textContent = rest.textContent!.slice(e.needle.length);
-        node.parentNode!.insertBefore(a, rest);
-        break;
+        const nn = norm(e.needle); if (!nn) continue;
+        let from = 0, i: number;
+        while ((i = nt.indexOf(nn, from)) >= 0) {
+          const end = i + nn.length;
+          const before = i === 0 ? ' ' : nt[i - 1], after = end >= nt.length ? ' ' : nt[end];
+          let overlap = false; for (let k = i; k < end; k++) if (taken[k]) { overlap = true; break; }
+          if (!overlap && !/[a-z0-9]/.test(before) && !/[a-z0-9]/.test(after)) {
+            for (let k = i; k < end; k++) taken[k] = true;
+            hits.push({ start: i, len: nn.length, it: e.it });
+            used.add(e.it.id);
+            break; // uma ocorrência por entidade por bloco
+          }
+          from = i + 1;
+        }
       }
+      if (!hits.length) continue;
+      hits.sort((a, b) => a.start - b.start);
+      const frag = document.createDocumentFragment();
+      let pos = 0;
+      for (const h of hits) {
+        if (h.start > pos) frag.appendChild(document.createTextNode(text.slice(pos, h.start)));
+        const a = document.createElement('a');
+        a.className = 'ref'; a.href = h.it.url; a.dataset.ref = h.it.id;
+        a.textContent = text.slice(h.start, h.start + h.len);
+        frag.appendChild(a);
+        pos = h.start + h.len;
+      }
+      if (pos < text.length) frag.appendChild(document.createTextNode(text.slice(pos)));
+      node.parentNode!.replaceChild(frag, node);
     }
   }
 
