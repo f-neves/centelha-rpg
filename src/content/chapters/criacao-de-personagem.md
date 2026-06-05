@@ -106,3 +106,26 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | **Total** | | **1799** |
 
 <p class="muted">Derivados: PV 37 · Defesa 15 · Def. Mental 11 · Energia 33 · Mana 15 · Iniciativa 1d6+6. Sobra 1 XP. Um semideus que tece Feitiços e lâmina no mesmo turno — note o Ocultismo 4 sustentando Artes de nível 3.</p>
+
+## O mortal-tocado: magia como estudo, não como tier
+
+Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte de nível N basta **Centelha maior que 0** (uma fagulha qualquer) e **Ocultismo ≥ N**. A Centelha é só o interruptor; quem mede a *profundidade* da magia é o Ocultismo. Isso abre um arquétipo que os exemplos anteriores escondem — o feiticeiro **mortal-tocado**, que estudou fundo o que quase não tem por natureza.
+
+### Bram, o Erudito-tocado — Veterano (Centelha 1)
+
+Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe fazer com ela humilha conjuradores de tier maior. Conjura Artes de **nível 4** com Centelha **1** — algo que Veil, um semideus de Centelha 3, sequer alcança, porque seu Ocultismo para em 4 e o de Bram também chega lá.
+
+| Compra | Detalhe | XP |
+|---|---|:---:|
+| Atributos | Inteligência 5 (pico) · Manipulação, Percepção 4 · Raciocínio, Vigor, Destreza, Carisma 3 · Força, Aparência 2 | 380 |
+| Habilidades | Ocultismo 4 (pico) · Acadêmicos, Investigação, Esquiva, Prontidão 3 · Medicina, Resistência, Concussão, Furtividade, Etiqueta 2 · Linguística 1 | 250 |
+| Secundárias | oito (Astronomia, Alquimia, Heráldica, Caligrafia, Criptografia, Botânica…) | 66 |
+| Especialidades | seis (Ocultismo: invocação · Adivinhação · Acadêmicos…) | 60 |
+| Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Valor 2 | 105 |
+| Força de Vontade | 5 → 9 | 60 |
+| Centelha | 0 → 1 | 15 |
+| Artes | Adivinhação, Forças **nível 4** · Proteção 3 · Cura 2 · Fogo, Fascinação 1 | 310 |
+| Técnicas | 20 de Mente Afiada (bandas 1–3) | 145 |
+| **Total** | | **1391** |
+
+<p class="muted">Derivados: PV 34 · Defesa 12 · Def. Mental 8 · Energia 24 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Sobram 9 XP. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong> — ele <em>conhece</em> magia mais funda que o Veil, mas seu tanque o obriga a escolher poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível. É o feiticeiro de torre, não o feiticeiro-guerreiro: poderoso quando prepara o terreno, frágil na queda de braço prolongada.</p>
