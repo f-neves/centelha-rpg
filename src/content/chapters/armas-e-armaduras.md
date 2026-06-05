@@ -30,6 +30,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 - **Ágil** — usa Destreza no dano; +1 na Defesa da Arma.
 - **Perfurante (Pen 1–3)** — se Pen ≤ Proteção, o dano perfurante é anulado.
 - **Versátil** — 1 ou 2 mãos (em 2 mãos: +1 dado, −1 Defesa da Arma).
+- **Sangramento** — um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
 - **Arremessável · Munição · Pesada** — lançar; gastar munição; usar Força total e −1 em ações ágeis.
 
 ## Armas de Exemplo
@@ -42,6 +43,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 | Espada Curta | Leve | 1d6 | veloz e defensiva |
 | Espada Longa | Média · Versátil | 2d6 | a clássica adaptável |
 | Machado | Média | 2d6 | corte pesado |
+| Espada Serrilhada | Média · Sangramento | 2d6 | feridas que sangram (−Acerto) |
 | Maça | Média · Crush | 2d6 | abre armaduras |
 | Picareta de Guerra | Média · Perf. 3 | 2d6 | fura malha e placa |
 | Lança | Haste · Perf. 2 | 2d6 | alcance + estocada |

@@ -226,5 +226,38 @@
         "prontidao"
       ]
     }
+  },
+  "combateTatico": {
+    "nota": "Modificadores situacionais aplicados ao valor PASSIVO da Defesa do alvo (+ = mais difícil de acertar, − = mais fácil). Cada ±1 ≈ ∓6% de chance perto do baseline (~42%).",
+    "modificadorCap": 6,
+    "modificadores": [
+      { "nome": "Cobertura parcial", "valor": 2, "alvo": "defesa", "nota": "parapeito, batente, aliado à frente" },
+      { "nome": "Cobertura pesada", "valor": 4, "alvo": "defesa", "nota": "só cabeça/braço expostos, seteira (cobertura total não pode ser alvejada)" },
+      { "nome": "Defesa total", "valor": 4, "alvo": "defesa", "nota": "abre mão do ataque na rodada para se proteger" },
+      { "nome": "Alvo pequeno/errático à distância", "valor": 2, "alvo": "defesa", "nota": "esquiva em zigue-zague, alvo menor" },
+      { "nome": "Terreno alto", "valor": -2, "alvo": "defesa", "nota": "atacante em posição superior" },
+      { "nome": "Mirar", "valor": -2, "alvo": "defesa", "nota": "gasta uma ação preparando o golpe" },
+      { "nome": "Alvo prono — corpo a corpo", "valor": -2, "alvo": "defesa", "nota": "caído é fácil de alcançar de perto" },
+      { "nome": "Alvo prono — à distância", "valor": 2, "alvo": "defesa", "nota": "deitado é um alvo menor de longe" },
+      { "nome": "Flanco ou pelas costas", "valor": -2, "alvo": "defesa", "nota": "não pode usar a melhor defesa contra você" },
+      { "nome": "Surpreso, cego ou imobilizado", "valor": -4, "alvo": "defesa", "nota": "praticamente sem esquiva ativa" },
+      { "nome": "Postura agressiva", "valor": -2, "alvo": "defesa-propria", "nota": "−2 à sua própria Defesa e +2 ao seu ataque até a próxima ação" }
+    ]
+  },
+  "sangramento": {
+    "nota": "No início de cada rodada do personagem ele sofre N de dano Letal (já ignora Soak). Lento de propósito: dá tempo de estabilizar.",
+    "gatilhoEstado": "Grave",
+    "valorEstado": 1,
+    "tag": "Sangramento",
+    "valorTagMax": 3,
+    "teto": 5,
+    "estabilizar": { "pericia": "Medicina", "dif": 10, "alternativa": "Vigor + Convicção (em si mesmo)" }
+  },
+  "quaseAcerto": {
+    "faixa": "peso da arma + Centelha do atacante",
+    "pesoPorClasse": { "leve": 1, "media": 2, "pesada": 3 },
+    "danoFixo": "peso da arma",
+    "ignoraSoak": true,
+    "requerFurarArmadura": true
   }
 }

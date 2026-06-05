@@ -29,7 +29,28 @@ Para atacar: monte o pool de Atributo + Habilidade, some o **Acerto da Arma**, a
 
 Use **Esquiva** (com a habilidade Esquiva, mais a mobilidade do terreno) ou **Bloqueio** (com a perícia da própria arma ou Escudos, mais a Defesa da Arma e o escudo). Escolha a melhor — mas nem tudo se bloqueia.
 
-<div class="callout"><span class="lbl">Quase Acerto</span>Errar por pouco — dentro de uma <strong>Faixa</strong> igual ao peso da arma (leve 1, média 2, pesada 3) — ainda raspa o alvo, causando dano fixo igual ao peso, sem redução por Soak (desde que a arma consiga furar a armadura).</div>
+<div class="callout"><span class="lbl">Quase Acerto</span>Errar por pouco — dentro de uma <strong>Faixa</strong> igual ao <strong>peso da arma + sua Centelha</strong> (peso: leve 1, média 2, pesada 3) — ainda raspa o alvo, causando dano fixo igual ao peso, sem redução por Soak (desde que a arma consiga furar a armadura). Um mortal raspa por 1–3; uma lâmina mítica quase nunca erra de fato — mas o raspão continua sendo só o peso, um corte que sangra mais do que mata.</div>
+
+## Modificadores situacionais
+
+Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles ajustam o **valor passivo da Defesa do alvo**. Positivo torna o alvo mais difícil de acertar; negativo, mais fácil. Use o **grau menor (±2)** para vantagens comuns e o **maior (±4)** para situações marcantes.
+
+| Situação | Defesa do alvo |
+|---|:---:|
+| Cobertura parcial (parapeito, aliado à frente) | **+2** |
+| Cobertura pesada (só cabeça/braço expostos, seteira) | **+4** |
+| Postura defensiva total (abre mão do ataque) | **+4** |
+| Alvo pequeno ou errático, à distância | **+2** |
+| Atacante em terreno alto | **−2** |
+| Mirar (gasta uma ação preparando o golpe) | **−2** |
+| Alvo prono — atacado **corpo a corpo** | **−2** |
+| Alvo prono — atacado **à distância** | **+2** |
+| Flanco ou pelas costas | **−2** |
+| Alvo surpreso, cego ou imobilizado | **−4** |
+
+<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. O empilhamento de modificadores numa mesma Defesa é limitado a <strong>±6</strong> — nenhuma soma de vantagens transforma o golpe em acerto (ou erro) automático.</p>
+
+<p class="formula">Cobertura total — sem nenhuma linha de visão — não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
 
 ## Dano e Armadura
 
@@ -49,3 +70,5 @@ Você pode dividir sua ação em vários golpes, ao custo de precisão; e cada i
 | 3 ataques | 1º −2d6, 2º −3d6, 3º −4d6 |
 
 Cada ataque extra também reduz sua Esquiva (−1) e seu Bloqueio (−2) até a próxima ação. Um único oponente brilhante resiste a muitos fracos — mas a maré da multidão acaba furando qualquer guarda.
+
+A posição fecha o cerco: quem ataca pelo **flanco ou pelas costas** ganha o **−2 na Defesa** do alvo (ver *Modificadores situacionais*), porque ele não pode voltar a melhor guarda contra todos ao mesmo tempo. Dois inimigos coordenados — um prendendo a frente, outro contornando — combinam a penalidade de pressão com a de flanco: é assim que o número vira vantagem tática, e não só mais dados.

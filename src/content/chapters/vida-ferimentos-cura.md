@@ -28,6 +28,21 @@ O dano é marcado em duas trilhas sobre esse total: **Impacto** (que em geral ap
 
 Cair a 0 PV deixa você **incapacitado**; se o golpe que o derrubou foi sobretudo de Impacto, você apenas desmaia. A morte verdadeira só chega quando o **dano Letal acumulado iguala o seu PV máximo** — dá para nocautear alguém sem matá-lo, mas tirar uma vida exige sangue suficiente.
 
+## Sangramento e Estabilização
+
+Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. No **início de cada rodada** do personagem, um Sangramento **N** causa **N de dano Letal** (já passa direto pelo Soak). Ele é lento de propósito: há tempo de reagir antes que mate.
+
+Há duas formas de começar a sangrar:
+
+- **Ferimento muito grave** — cair ao estado **Grave** (ou pior) por dano **Letal** (corte/perfuração) abre um **Sangramento 1**.
+- **Arma ou poder próprio para isso** — armas com a tag **Sangramento** (lâminas serrilhadas, garras) e certas Técnicas/Artes que rasgam carne abrem um **Sangramento igual à Margem do golpe** (máximo 3), em qualquer estado.
+
+Sangramentos não se somam livremente: vale o **maior**, e cada fonte adicional acrescenta apenas +1 (teto **5**).
+
+<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Medicina vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Convicção vs Dif 10</strong>. Qualquer cura de PV — descanso, Medicina ou magia — também o estanca.</div>
+
+<p class="muted">Um aliado <strong>Caído</strong> que ainda sangra continua acumulando dano Letal rumo à morte: alguém precisa chegar até ele. É a hora em que parar para estabilizar o companheiro pesa tanto quanto desferir mais um golpe.</p>
+
 ## Recuperação
 
 Você recupera o equivalente ao seu Vigor em PV a cada intervalo — tão mais lento quanto pior o estado:
