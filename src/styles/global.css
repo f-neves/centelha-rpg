@@ -149,8 +149,8 @@ nav.toc a .num { color: var(--accent); font-family: 'Cinzel'; font-size: .8rem; 
   padding: .6rem .8rem; margin: 1em 0; font-size: .98rem; }
 
 table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .98rem; }
-thead th { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: left; padding: .5rem .6rem; }
-tbody td, tbody th { padding: .42rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: top; text-align: left; }
+thead th { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: center; vertical-align: middle; padding: .5rem .6rem; }
+tbody td, tbody th { padding: .42rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: middle; text-align: center; }
 td.c, th.c { text-align: center; }
 tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong); font-size: .9rem; }
 tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, transparent); }
