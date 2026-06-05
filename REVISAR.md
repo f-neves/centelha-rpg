@@ -1,22 +1,34 @@
 # REVISAR — pontos a conferir do New RPG System D6 (site V1)
 
-> Gerado por `migrate-to-json.mjs`. Cada item aqui ou foi redigido provisoriamente, ou diverge da fonte e precisa de decisão humana.
+> Origem: gerado por `migrate-to-json.mjs`. Cada item aqui ou foi redigido
+> provisoriamente, ou divergia da fonte e pedia decisão humana. Itens já
+> resolvidos ficam marcados ✅ como registro histórico.
 
 ## Divergências de mecânica
 
-- **Iniciativa do Kael.** A fórmula é `1d6 + Raciocínio + Prontidão`. Com os atributos do exemplo (Raciocínio 3, Prontidão 2) o resultado é **1d6+5**. O texto antigo do doc dizia "1d6+6" — mantivemos a fórmula (→ **+5**), conforme decisão do autor. PV 34 · Defesa 10 · Energia 16 · Mana 7 conferem.
+- ✅ **Iniciativa do Kael (RESOLVIDO).** A fórmula é `1d6 + Raciocínio + Prontidão`.
+  A divergência antiga ("doc dizia 1d6+6, mas o Kael Centelha 1 com Prontidão 2
+  dava +5") **deixou de existir**: o Kael foi rebalanceado para **Centelha 2**
+  (exemplo iniciante ~994 XP) com **Prontidão 3**, o que dá **1d6+6** — agora
+  consistente com o doc. Derivados atuais do Kael (travados em `scripts/test-kael.mjs`):
+  **PV 37 · Defesa 14 · Def. Mental 7 · Energia 24 · Mana 11 · Iniciativa 1d6+6**.
 
 ## Técnicas com prosa provisória (pendente:true) — 0
 
-Nenhuma: todas as Técnicas têm prosa vinda do catálogo `.md`.
+Nenhuma: todas as 398 Técnicas têm prosa vinda do catálogo `.md`.
 
-## Bestiário — stat blocks provisórios (todos `pendente:true`)
+## Bestiário — stat blocks
 
-Os 14 NPCs de `src/data/inimigos.json` foram **gerados** por `scripts/gen-bestiario.mjs`
+Os **21 NPCs** de `src/data/inimigos.json` são **gerados** por `scripts/gen-bestiario.mjs`
 a partir de builds compactas — os números (PV, Defesa, Defesa Mental, Soak, Iniciativa
-e pools de ataque) são **calculados pelas fórmulas de `regras.json`**, então são
-consistentes; mas os *builds* em si (atributos/perícias/equipamento escolhidos) são uma
-**proposta de balanceamento minha** e merecem revisão de design. A **Regra de Horda**
-exibida na página também é proposta (não estava nos docs). Ajustar/expandir à vontade —
-editar o gerador e rodar `node scripts/gen-bestiario.mjs`, ou editar o JSON direto.
+e pools de ataque) são **calculados pelas fórmulas de `regras.json`**, logo são
+consistentes por construção.
 
+- ✅ **Saíram de Rascunho:** `pendente` agora é `false` para todos os 21 (commit `1ebd09f`).
+  Os builds foram revisados e integrados às regras táticas: o Lobo usa **Flanco −2**
+  (matilha), as garras do Urso causam **Sangramento (= Margem, máx 3)** e o veneno da
+  Aranha segue a resolução de "efeito de Corpo: Vigor + Convicção".
+- ⚠️ **Ainda proposta (não estava nos docs):** a **Regra de Horda** exibida na página de
+  Bestiário é sugestão minha de design — confirmar/ajustar antes de canonizar.
+
+Para mexer: editar o gerador e rodar `node scripts/gen-bestiario.mjs`, ou editar o JSON direto.
