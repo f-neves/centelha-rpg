@@ -142,7 +142,7 @@
     }
     if (payload.url) h += `<a class="rm-go" href="${payload.url}">ver no livro →</a>`;
     body.innerHTML = h;
-    if (!modal.open) modal.showModal();
+    if (!modal.open) { const sx = window.scrollX, sy = window.scrollY; modal.showModal(); window.scrollTo(sx, sy); requestAnimationFrame(() => window.scrollTo(sx, sy)); }
   }
   const cap = (s = '') => s.charAt(0).toUpperCase() + s.slice(1);
   (window as any).refModal = refModal;
@@ -158,7 +158,7 @@
     }
     body.innerHTML = h + '</div>';
     modal.classList.add('wide');
-    if (!modal.open) modal.showModal();
+    if (!modal.open) { const sx = window.scrollX, sy = window.scrollY; modal.showModal(); window.scrollTo(sx, sy); requestAnimationFrame(() => window.scrollTo(sx, sy)); }
   }
   (window as any).compareModal = compareModal;
   modal?.querySelector('.ref-modal-x')?.addEventListener('click', () => modal.close());
@@ -260,9 +260,10 @@
   #consulta .cs-x { position: absolute; top: .35rem; right: .4rem; background: none; border: none; color: var(--ink-soft); cursor: pointer; font-size: .8rem; }
   @media (max-width: 620px) { #consulta { right: .4rem; left: .4rem; width: auto; } }
 
-  /* modal local */
+  /* modal local — position:fixed centralizado para o showModal() NÃO rolar a página até o diálogo */
   .ref-modal { width: min(34rem, 92vw); border: 1px solid var(--accent); border-radius: 10px; padding: 1.1rem 1.2rem 1.3rem;
-    background: var(--panel); color: var(--ink); box-shadow: 0 14px 50px var(--shadow); position: relative; }
+    background: var(--panel); color: var(--ink); box-shadow: 0 14px 50px var(--shadow);
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; max-height: 85vh; overflow: auto; }
   .ref-modal::backdrop { background: rgba(0,0,0,.5); }
   .ref-modal-x { position: absolute; top: .5rem; right: .6rem; background: none; border: none; font-size: 1.1rem; color: var(--ink-soft); cursor: pointer; }
   .rm-head { display: flex; align-items: center; gap: .5rem; margin-bottom: .4rem; }

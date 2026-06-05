@@ -54,10 +54,10 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   <h2 class="barh">Caminhos &amp; Técnicas <small>(custo banda×5)</small></h2>
   <div class="cam-tools"><button class="btn" id="cam-all">Expandir todos</button></div>
-  <div id="tecnicas"></div>
+  <div class="cols3" id="tecnicas"></div>
 
   <h2 class="barh">Arcano — Artes <small>(nível×10 · exige Centelha ≥ nível e Ocultismo ≥ nível)</small></h2>
-  <div id="artes"></div>
+  <div class="cols3" id="artes"></div>
 
   <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Soak)</small></h2>
   <div class="equip-row">
@@ -127,6 +127,14 @@ import RoladorDados from '../components/RoladorDados.astro';
   const TECBAND: Record<string, number> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.banda]));
   const TECPRE: Record<string, string[]> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.prereq || []]));
   const TECNOME: Record<string, string> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.nome]));
+  const TECTEXT: Record<string, string> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.texto || '']));
+  const mdBold = (s: string) => s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  // divide uma lista em 3 colunas contíguas (como as grades de perícias)
+  const col3 = <T,>(items: T[], render: (x: T) => string) => {
+    const n = Math.ceil(items.length / 3);
+    return [items.slice(0, n), items.slice(n, 2 * n), items.slice(2 * n)]
+      .map((c) => '<div>' + c.map(render).join('') + '</div>').join('');
+  };
   const CREA = (regras as any).limitesCriacao as { atributo: number; habilidade: number; centelha: number; picoAtributo?: number; picoHabilidade?: number };
   const centReq = (b: number) => Math.ceil(b / 3);
   // teto de cada tipo conforme o modo (criação aplica os limites; evolução libera).
@@ -217,12 +225,12 @@ import RoladorDados from '../components/RoladorDados.astro';
       `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 5, 0) + specHTML('2_' + k, S.spec2[k] || 0, S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
   }
   function renderCaminhos() {
-    el('tecnicas').innerHTML = CAM_ORDER.map((cam) => {
+    const card = (cam: string) => {
       const techs = CAMTREE[cam] || [];
       const sel = techs.filter(([id]) => S.tech[id]);
       const cost = sel.reduce((s, [, , b]) => s + b * 5, 0);
       const open = OPEN.cam[cam];
-      const pills = techs.map(([id, nome, b]) => {
+      const rows = techs.map(([id, nome, b]) => {
         const owned = !!S.tech[id];
         const centOk = (S.centelha || 0) >= centReq(b);
         const miss = (TECPRE[id] || []).filter((p) => !S.tech[p]);
@@ -230,17 +238,20 @@ import RoladorDados from '../components/RoladorDados.astro';
         const cls = 'tpill' + (owned ? ' on' : '') + (!owned && !ok ? ' locked' : '') + (owned && !ok ? ' invalid' : '');
         const reasons: string[] = []; if (!centOk) reasons.push('Centelha ' + centReq(b)); if (miss.length) reasons.push('pré: ' + miss.map((p) => TECNOME[p]).join(', '));
         const title = reasons.length ? ` title="Requer ${reasons.join(' · ').replace(/"/g, '')}"` : '';
-        return `<span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>b${b} · ${b * 5}</small></span>`;
+        const desc = TECTEXT[id] ? `<div class="tdesc">${mdBold(TECTEXT[id])}</div>` : '';
+        return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>b${b} · ${b * 5}</small></span>${desc}</div>`;
       }).join('');
-      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Caminho ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${pills}</div></div>`;
-    }).join('');
+      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Caminho ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
+    };
+    el('tecnicas').innerHTML = col3(CAM_ORDER, card);
   }
   function renderArtes() {
-    el('artes').innerHTML = (ARTE_D as any[]).map((a) => {
+    const card = (a: any) => {
       const lvl = S.arte[a.id] || 0, cost = custoArte(lvl), open = OPEN.arte[a.id];
       const fx = a.niveis.map((n: any) => `<div class="fxline${n.nivel <= lvl ? ' hi' : ''}">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('');
       return `<div class="cam"><div class="cam-head"><span class="chev" data-artetog="${a.id}">${open ? '▾' : '▸'} ${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 5, 0)}<span class="cam-meta">${lvl ? `nível ${lvl} · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${fx}</div></div>`;
-    }).join('');
+    };
+    el('artes').innerHTML = col3(ARTE_D as any[], card);
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, SP = (id: string) => S.spec[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   function renderDerived() {
@@ -479,7 +490,8 @@ import RoladorDados from '../components/RoladorDados.astro';
   .derv .fm { display: block; font-size: .68rem; color: var(--ink-soft); font-style: italic; font-family: 'EB Garamond'; font-weight: 400; text-transform: none; }
 
   .cam { border: 1px solid var(--panel-border); border-radius: 4px; margin-bottom: .4rem; background: var(--panel); }
-  .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: .9rem; color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; }
+  .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: .9rem; color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .cam-nm { min-width: 0; }
   .cam-head[data-camtog] { cursor: pointer; } .cam-head[data-camtog]:hover { background: var(--panel-2); }
   .chev { cursor: pointer; } .chev:hover { color: var(--accent); }
   .cam-meta { margin-left: auto; font-family: 'EB Garamond'; font-size: .8rem; color: var(--ink-soft); font-style: italic; }
@@ -492,6 +504,10 @@ import RoladorDados from '../components/RoladorDados.astro';
   .tpill.invalid { border-color: #b3401f; box-shadow: 0 0 0 1px #b3401f inset; }
   .fxline { font-size: .85rem; padding: .08rem 0; color: var(--ink-soft); }
   .fxline.hi { color: var(--ink); } .fxline.hi b { color: var(--accent-strong); }
+  .techrow { margin-bottom: .5rem; }
+  .techrow .tpill { margin: 0; }
+  .tdesc { font-size: .8rem; line-height: 1.35; color: var(--ink-soft); margin: .2rem 0 0 .15rem; }
+  .tdesc strong { color: var(--accent-strong); font-weight: 600; }
 
   .equip-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: .2rem 0 .8rem; }
   .equip-row label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .74rem; color: var(--ink-soft); gap: .2rem; }
