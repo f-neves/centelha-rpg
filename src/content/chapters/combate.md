@@ -23,9 +23,13 @@ No início, role a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tira o 
 
 ## Ataque e Defesa
 
-Para atacar: monte o pool de Atributo + Habilidade, some o **Acerto da Arma**, aplique Especialidade, Stunts e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra). A Defesa é um valor **fixo e passivo** — o atacante é quem rola.
+Para atacar: monte o pool de Atributo + Habilidade, some o **Acerto da Arma**, aplique Especialidade, Stunts e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
 
-<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha + mods</p>
+<p class="formula"> Ataque = (Destreza + Habilidade + Especialidade) + Arma</p>
+
+A Defesa é um valor **fixo** e **passivo**.
+
+<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha</p>
 
 Use **Esquiva** (com a habilidade Esquiva, mais a mobilidade do terreno) ou **Bloqueio** (com a perícia da própria arma ou Escudos, mais a Defesa da Arma e o escudo). Escolha a melhor — mas nem tudo se bloqueia.
 
@@ -54,9 +58,9 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 
 ## Dano e Armadura
 
-<p class="formula">Dano = (Dado da Arma + Força + Margem) − Soak</p>
+<p class="formula">Dano = (Dado da Arma + Margem) + Força − Absorção</p>
 
-O **Dado da Arma** é 1d6 (leve), 2d6 (média) ou 3d6 (pesada). Armas de uma mão somam metade da Força; as de duas mãos, a Força inteira. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
+O **Dado da Arma** é 1d6 (leve), 2d6 (média) ou 3d6 (pesada). Armas de uma mão somam metade da Força (arredondado para cima); as de duas mãos, a Força inteira. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
 
 O dano vem em três sabores: **Impacto** (contundente), **Corte** e **Perfuração** (ambos letais). O **Soak** absorve o golpe — naturalmente igual ao Vigor contra Impacto e à metade do Vigor contra dano letal; armaduras somam mais. Armas perfurantes têm **Penetração**: se ela não vencer a Proteção da armadura, o dano é anulado. Já as armas com a tag **Ruptura** ignoram o Soak de impacto da armadura, amassando-a.
 

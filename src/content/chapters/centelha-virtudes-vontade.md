@@ -28,19 +28,19 @@ Cada Virtude vai de 1 a 5 e governa o que move — e o que resiste dentro de —
 | Compaixão | empatia e misericórdia; resiste à crueldade |
 | Convicção | determinação; resiste à dor, à tortura e ao desânimo |
 | Temperança | disciplina e clareza; resiste à tentação e à provocação |
-| Valor | bravura; resiste ao medo e à intimidação |
+| Bravura | coragem; resiste ao medo e à intimidação |
 
-Para **resistir** a uma pressão, role a Virtude apropriada somada a um Atributo (medo = Valor + Vigor; provocação = Temperança + Raciocínio; suportar a dor = Convicção + Vigor).
+Para **resistir** a uma pressão, role a Virtude apropriada somada a um Atributo (medo = Bravura + Vigor; provocação = Temperança + Raciocínio; suportar a dor = Convicção + Vigor).
 
 ### Traços derivados
 
 **Força de Vontade** começa em 5 e cresce com a experiência — uma reserva gasta para melhorar um ataque, resistir a ataques sociais e mentais, ignorar penalidades e conjurar feitiços.
 
-**Integridade** (Compaixão + Temperança) é a sua bússola moral e compostura; o trauma e a atrocidade a corroem.
+**Integridade** é a perícia de firmeza moral e compostura — o quanto você se mantém inteiro sob pressão e resiste a manipulação e poderes mentais.
 
 A **Defesa Mental** é o muro passivo que manipulações e poderes mentais precisam superar:
 
-<p class="formula">Defesa Mental = ⌊(Integridade + Força de Vontade) ÷ 2⌋ + Centelha</p>
+<p class="formula">Defesa Mental = (Integridade × 2) + Força de Vontade + Centelha</p>
 
 <p class="muted">Uma Integridade baixa derruba a Defesa Mental — quem está quebrado por dentro é mais fácil de dobrar.</p>
 

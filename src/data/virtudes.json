@@ -20,7 +20,7 @@
     { "nivel": 4, "texto": "Serena: provocações e vícios escorregam por ela.", "conduta": "Provocações e prazeres não o desviam; raramente perde a compostura." },
     { "nivel": 5, "texto": "Autocontrole absoluto: imperturbável diante de qualquer isca.", "conduta": "Nenhuma isca, fúria ou tentação o move um milímetro do que decidiu." }
   ] },
-  { "id": "valor", "nome": "Valor", "resiste": "o medo e a intimidação", "descricao": "Bravura para encarar o perigo.", "niveis": [
+  { "id": "valor", "nome": "Bravura", "resiste": "o medo e a intimidação", "descricao": "Coragem para encarar o perigo.", "niveis": [
     { "nivel": 1, "texto": "Covarde: foge do perigo; congela diante de ameaças.", "conduta": "Foge do perigo e abandona o posto quando a ameaça é real." },
     { "nivel": 2, "texto": "Cauteloso: enfrenta o risco quando precisa, com medo.", "conduta": "Enfrenta o risco só quando não há saída, e com o coração na mão." },
     { "nivel": 3, "texto": "Corajoso: encara o perigo de frente.", "conduta": "Não vira as costas a uma luta justa nem larga um aliado por medo." },

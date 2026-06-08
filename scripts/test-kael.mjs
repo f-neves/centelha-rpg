@@ -8,18 +8,17 @@ const D = r.derivados, fl = Math.floor;
 
 // Kael, o Batedor (Centelha 2, ~1000 XP — exemplo iniciante)
 const at = { vigor: 4, destreza: 4, raciocinio: 3 };
-const esquiva = 3, espEsq = 0, prontidao = 3, cent = 2, vont = 7;
+const esquiva = 3, espEsq = 0, prontidao = 3, cent = 2, vont = 7, integridade = 2;
 const V = { compaixao: 2, conviccao: 3, temperanca: 2, valor: 4 };
 
 const pv = D.pv.base + at.vigor * D.pv.vigorMult;
 const defesa = (at.destreza + esquiva) * D.defesa.mult + espEsq + cent;
-const integ = V.compaixao + V.temperanca;
-const defM = fl((integ + vont) / D.defesaMental.div) + cent;
+const defM = integridade * D.defesaMental.mult + (D.defesaMental.maisVontade ? vont : 0) + (D.defesaMental.maisCentelha ? cent : 0);
 const energia = cent * D.energia.centelhaMult + (V.compaixao + V.conviccao + V.temperanca + V.valor) + vont;
 const mana = cent * D.mana.centelhaMult + vont;
 const ini = at.raciocinio + prontidao;
 
-const esperado = { pv: 37, defesa: 16, defM: 7, energia: 24, mana: 11, ini: 6 };
+const esperado = { pv: 37, defesa: 16, defM: 13, energia: 24, mana: 11, ini: 6 };
 const got = { pv, defesa, defM, energia, mana, ini };
 const erros = Object.keys(esperado).filter((k) => got[k] !== esperado[k]);
 if (erros.length) {
@@ -27,4 +26,4 @@ if (erros.length) {
   for (const k of erros) console.error(`  ${k}: esperado ${esperado[k]}, obtido ${got[k]}`);
   process.exit(1);
 }
-console.log('✓ Regressão Kael OK — PV 37 · Defesa 16 · Def. Mental 7 · Energia 24 · Mana 11 · Iniciativa 1d6+6.');
+console.log('✓ Regressão Kael OK — PV 37 · Defesa 16 · Def. Mental 13 · Energia 24 · Mana 11 · Iniciativa 1d6+6.');

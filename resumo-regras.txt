@@ -1,0 +1,283 @@
+========================================================
+  CENTELHA — RESUMO DE REGRAS
+  Jogadas · Ataque · Defesa · Vida
+========================================================
+(Escopo deste resumo: apenas o motor de jogadas e os
+cálculos de ataque, defesa e vida. Não cobre Caminhos,
+Feitiçaria, Armas & Armaduras, Criação de Personagem nem
+a descrição das habilidades.)
+
+
+--------------------------------------------------------
+1. O CORAÇÃO DO SISTEMA — A JOGADA
+--------------------------------------------------------
+
+Toda ação nasce de uma soma simples:
+    Atributo (capacidade inerente) + Habilidade (treino).
+
+Essa soma vira um punhado de dados de seis lados (o POOL).
+
+  MONTANDO O POOL
+    Dados = ⌊(Atributo + Habilidade) ÷ 2⌋
+    +2 fixo ao resultado SE a soma for ímpar.
+
+    Soma (Atrib+Hab) -> Você rola
+        2   1d6
+        3   1d6 + 2
+        4   2d6
+        5   2d6 + 2
+        6   3d6
+        7   3d6 + 2
+        8   4d6
+        9   4d6 + 2
+       10   5d6
+       11   5d6 + 2
+       12   6d6
+
+
+--------------------------------------------------------
+2. SUCESSO E DIFICULDADE
+--------------------------------------------------------
+
+Há SUCESSO quando o total SUPERA o alvo (Defesa do inimigo
+ou Dificuldade da tarefa). Empate NÃO é sucesso.
+
+    Dificuldade | Desafio        | Atrib+Hab à altura | Nível
+        5       | Fácil          |  3   | Iniciante
+       10       | Média          |  6   | Competente
+       15       | Difícil        |  8   | Perito
+       20       | Limite humano  | 10   | Mestre
+       25       | Excepcional    | 14   | Herói
+       30+      | Sobre-humano   | 18   | Semideus
+
+
+--------------------------------------------------------
+3. MARGEM — GRAUS DE SUCESSO
+--------------------------------------------------------
+
+A cada 6 PONTOS que o total supera o alvo, ganha-se 1 MARGEM.
+
+  - Em combate: cada Margem = +1d6 de dano.
+  - Fora de combate: o Mestre converte a Margem em efeito
+    melhor (mais rápido, mais fino, mais duradouro).
+
+
+--------------------------------------------------------
+4. ROLAGENS OPOSTAS E VALORES PASSIVOS
+--------------------------------------------------------
+
+Quando alguém se opõe a você, em geral só o lado ATIVO
+rola, contra um VALOR PASSIVO do outro (o defensor não rola;
+sua capacidade é um muro a ser superado).
+
+    Valor Passivo = (Atributo + Habilidade) × 2
+                    + Especialidade + Centelha (+ modificadores)
+
+  Para um personagem comum (sem Especialidade nem Centelha),
+  isso é simplesmente (Atributo + Habilidade) × 2.
+
+    Soma (Atrib+Hab) -> Passiva (×2)
+        2    4
+        3    6
+        4    8
+        5   10
+        6   12
+        7   14
+        8   16
+        9   18
+       10   20
+
+  Quando os DOIS agem de fato (queda de braço, corrida),
+  ambos rolam e o maior total vence; empate favorece quem
+  defende ou mantém o status quo.
+
+
+--------------------------------------------------------
+5. AÇÕES ESTENDIDAS
+--------------------------------------------------------
+
+Tarefas longas usam três valores: Dificuldade, Intervalo
+de tempo e Acúmulo. A cada intervalo você rola; o quanto o
+total PASSAR da Dificuldade soma ao Acúmulo. Ao alcançá-lo,
+a obra fica pronta.
+
+
+========================================================
+  COMBATE
+========================================================
+
+O combate corre numa linha do tempo de TICKS, não em turnos
+rígidos. Cada ação custa um tempo (a Speed da ação) e você
+só volta a jogar quando esses Ticks passarem.
+
+
+--------------------------------------------------------
+6. INICIATIVA E SPEED
+--------------------------------------------------------
+
+    Iniciativa = 1d6 + Raciocínio + Prontidão
+
+Quem tira o maior valor age primeiro; a diferença para os
+demais vira a distância (em Ticks) até a vez de cada um.
+
+    Ticks | Tipo de ação     | Exemplos
+      3   | Muito rápida     | correr, abrir porta, sacar arma
+      4   | Utilitária       | pegar item, interagir com cenário
+      5   | Ataque leve      | faca, adaga, espada curta, bastão
+      6   | Ataque médio     | espada longa, machado 1 mão, lança
+      7   | Ataque pesado    | martelo, montante, alabarda
+
+
+--------------------------------------------------------
+7. ATAQUE
+--------------------------------------------------------
+
+Monte o pool, some o Acerto da Arma, aplique Especialidade,
+Stunts e Técnicas, e role. Acerta se o total SUPERAR a
+Defesa do alvo (empate erra).
+
+    Ataque = (Destreza + Habilidade + Especialidade) + Arma
+
+
+--------------------------------------------------------
+8. DEFESA
+--------------------------------------------------------
+
+A Defesa é um valor FIXO e PASSIVO (o atacante é quem rola).
+
+    Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha
+
+Use a melhor entre:
+  - ESQUIVA: habilidade Esquiva + mobilidade do terreno.
+  - BLOQUEIO: perícia da própria arma (ou Escudos) + Defesa
+    da Arma + escudo.
+  (Nem tudo, porém, pode ser bloqueado.)
+
+  QUASE ACERTO (raspão)
+    Errar por pouco — dentro de uma Margem igual ao
+    "Bônus de Quase-Acerto da arma + sua Centelha" — ainda
+    raspa o alvo.
+      - Armas leves/rápidas: Bônus QA alto (raspam muito,
+        de leve). Armas pesadas: Bônus QA baixo (raspam
+        raro, mas fundo).
+      - Dano do raspão = Dano de Quase-Acerto da arma
+        (leve 1 · média 2 · pesada 3), SEM o Soak normal,
+        reduzido pela Redução de Quase-Acerto da armadura
+        (leve 1 · média 2 · pesada 3, mínimo 0).
+      - A armadura NÃO estreita a Margem; só absorve o
+        arranhão. Mais Centelha = raspão mais largo.
+
+
+--------------------------------------------------------
+9. MODIFICADORES SITUACIONAIS (à Defesa do alvo)
+--------------------------------------------------------
+
+Posição, cobertura e postura ajustam o VALOR PASSIVO da
+Defesa do alvo. Positivo = mais difícil de acertar;
+negativo = mais fácil. Grau menor ±2 (comum), maior ±4
+(situações marcantes).
+
+    Situação                                    | Defesa
+    Cobertura parcial (parapeito, aliado)       |  +2
+    Cobertura pesada (só cabeça/braço, seteira) |  +4
+    Postura defensiva total (abre mão do ataque)|  +4
+    Alvo pequeno/errático, à distância          |  +2
+    Atacante em terreno alto                    |  -2
+    Mirar (gasta uma ação preparando o golpe)   |  -2
+    Alvo prono — atacado corpo a corpo          |  -2
+    Alvo prono — atacado à distância            |  +2
+    Flanco ou pelas costas                      |  -2
+    Alvo surpreso, cego ou imobilizado          |  -4
+
+  POSTURA AGRESSIVA (mexe nos dois lados): -2 à sua própria
+  Defesa até a próxima ação em troca de +2 no seu ataque.
+
+  Empilhamento de modificadores numa mesma Defesa é limitado
+  a ±6. Cobertura TOTAL (sem linha de visão) não pode ser
+  alvejada: primeiro flanqueie ou destrua o anteparo.
+
+
+--------------------------------------------------------
+10. DANO E ARMADURA
+--------------------------------------------------------
+
+    Dano = (Dado da Arma + Margem) + Força − Absorção
+
+  - Dado da Arma: 1d6 (leve), 2d6 (média), 3d6 (pesada).
+  - Força: armas de 1 mão somam METADE da Força (arred. p/
+    cima); armas de 2 mãos somam a Força INTEIRA.
+  - Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
+
+  TIPOS DE DANO
+    Impacto (contundente) · Corte e Perfuração (ambos letais).
+
+  SOAK (absorção natural do corpo)
+    - Contra Impacto:  Soak = Vigor
+    - Contra Letal:    Soak = metade do Vigor
+    (Armaduras somam mais Soak.)
+
+  - PENETRAÇÃO (perfurantes): se não vencer a Proteção da
+    armadura, o dano é anulado.
+  - RUPTURA: ignora o Soak de impacto da armadura, amassando-a.
+
+
+--------------------------------------------------------
+11. PRESSÃO: MUITOS CONTRA UM
+--------------------------------------------------------
+
+Você pode dividir sua ação em vários golpes, ao custo de
+precisão:
+
+    Nº de ataques | Penalidade
+      2 ataques   | 1º -1d6, 2º -2d6
+      3 ataques   | 1º -2d6, 2º -3d6, 3º -4d6
+
+Cada ataque extra também reduz sua Esquiva (-1) e seu
+Bloqueio (-2) até a próxima ação. Atacar pelo flanco ou
+pelas costas dá o -2 na Defesa do alvo (ver modificadores).
+
+
+========================================================
+  VIDA E TRAÇOS DE RESISTÊNCIA
+========================================================
+
+--------------------------------------------------------
+12. PONTOS DE VIDA (PV)
+--------------------------------------------------------
+
+    PV = 25 + (Vigor × 3)
+
+
+--------------------------------------------------------
+13. SOAK (absorção de dano)
+--------------------------------------------------------
+
+    Soak vs Impacto = Vigor            (+ armadura)
+    Soak vs Letal   = ⌊Vigor ÷ 2⌋      (+ armadura)
+
+
+--------------------------------------------------------
+14. DEFESA MENTAL
+--------------------------------------------------------
+
+Muro passivo que manipulações e poderes mentais precisam
+superar.
+
+    Integridade   = perícia (firmeza moral / compostura)
+    Defesa Mental = (Integridade × 2) + Vontade + Centelha
+
+  (Integridade baixa derruba a Defesa Mental: quem está
+  quebrado por dentro é mais fácil de dobrar.)
+
+
+--------------------------------------------------------
+15. RESISTIR COM VIRTUDES
+--------------------------------------------------------
+
+Para resistir a uma pressão, role a Virtude apropriada
+somada a um Atributo:
+    - Medo / intimidação   = Bravura + Vigor
+    - Provocação           = Temperança + Raciocínio
+    - Suportar a dor       = Convicção + Vigor
+
+========================================================

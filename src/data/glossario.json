@@ -84,7 +84,7 @@
     "aliases": [
       "resistência mental"
     ],
-    "definicao": "Muro passivo contra manipulação e poderes mentais: ⌊(Integridade + Vontade) ÷ 2⌋ + Centelha."
+    "definicao": "Muro passivo contra manipulação e poderes mentais: (Integridade × 2) + Vontade + Centelha."
   },
   {
     "id": "centelha",
@@ -127,7 +127,7 @@
     "aliases": [
       "compostura"
     ],
-    "definicao": "Compaixão + Temperança — bússola moral e compostura; sustenta a Defesa Mental."
+    "definicao": "Perícia de firmeza moral e compostura; resistir a manipulação e poderes mentais. Sustenta a Defesa Mental."
   },
   {
     "id": "especialidade",
@@ -180,7 +180,7 @@
     "aliases": [
       "virtudes"
     ],
-    "definicao": "Compaixão, Convicção, Temperança, Valor (1–5): movem a alma e alimentam resistências e façanhas."
+    "definicao": "Compaixão, Convicção, Temperança, Bravura (1–5): movem a alma e alimentam resistências e façanhas."
   },
   {
     "id": "stunt",

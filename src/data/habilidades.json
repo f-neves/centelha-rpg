@@ -162,10 +162,10 @@
     "descricao": "Música, atuação e artes que encantam."
   },
   {
-    "id": "tatica",
-    "nome": "Tática",
+    "id": "integridade",
+    "nome": "Integridade",
     "grupo": "tecnica",
-    "descricao": "Ler o campo de batalha e comandar movimentos."
+    "descricao": "Firmeza moral e compostura; resistir a manipulação e poderes mentais (sustenta a Defesa Mental)."
   },
   {
     "id": "politica",

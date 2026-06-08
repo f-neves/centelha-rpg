@@ -14,9 +14,10 @@
   --panel-border: #d8c79c;
   --ink: #2a2720;
   --ink-soft: #574f3d;
-  --accent: #1f3f8f;        /* safira */
+  --accent: #00BAB4;        /* safira */
   --accent-strong: #16306e;
   --accent-soft: #3a5aa8;
+  --link: #193474;          /* hiperlink: um tom mais escuro que o accent */
   --on-accent: #f6efda;
   --rule: #cdbd92;
   --gold: #b08d3a;
@@ -37,6 +38,7 @@
   --accent: #8fb0ff;
   --accent-strong: #b6ccff;
   --accent-soft: #7c9bdf;
+  --link: var(--accent);    /* no escuro o link permanece claro p/ legibilidade */
   --on-accent: #11151f;
   --rule: #39414f;
   --gold: #d9b85f;
@@ -57,6 +59,7 @@
   --accent: #123a8a;
   --accent-strong: #0c2a66;
   --accent-soft: #1c4aa0;
+  --link: #0f3174;          /* hiperlink: um tom mais escuro que o accent */
   --on-accent: #ffffff;
   --rule: #b3b3b3;
   --gold: #7a5e16;
@@ -88,7 +91,7 @@ h2 { font-size: 1.5rem; margin: 1.6em 0 .4em; padding-bottom: .2em; border-botto
 h3 { font-size: 1.2rem; margin: 1.3em 0 .3em; color: var(--accent-strong); }
 h4 { font-size: 1.02rem; margin: 1.1em 0 .3em; color: var(--accent-strong); font-variant: small-caps; letter-spacing: .04em; }
 p { margin: 0 0 .8em; }
-a { color: var(--accent); text-underline-offset: .15em; }
+a { color: var(--link); text-underline-offset: .15em; }
 a:hover { color: var(--accent-strong); }
 strong { color: var(--accent-strong); }
 em { color: var(--ink-soft); }
@@ -149,7 +152,8 @@ nav.toc a .num { color: var(--accent); font-family: 'Cinzel'; font-size: .8rem; 
   padding: .6rem .8rem; margin: 1em 0; font-size: .98rem; }
 
 table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .98rem; }
-thead th { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: center; vertical-align: middle; padding: .5rem .6rem; }
+thead th { background: var(--accent-strong); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: center; vertical-align: middle; padding: .5rem .6rem; }
+thead th a, thead th a:hover { color: var(--on-accent); text-decoration: underline; }
 tbody td, tbody th { padding: .42rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: middle; text-align: center; }
 td.c, th.c { text-align: center; }
 tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong); font-size: .9rem; }

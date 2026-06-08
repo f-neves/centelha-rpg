@@ -256,7 +256,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, SP = (id: string) => S.spec[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   function renderDerived() {
     const virt = { compaixao: VI('compaixao'), conviccao: VI('conviccao'), temperanca: VI('temperanca'), valor: VI('valor') };
-    const C = S.centelha, W = S.willpower, integ = virt.compaixao + virt.temperanca;
+    const C = S.centelha, W = S.willpower, integ = SK('integridade');
     const r = (l: string, v: any, fm: string) => `<div class="derv"><span class="dl">${l}<span class="fm">${fm}</span></span><span class="dv">${v}</span></div>`;
     const arm = ARMADURA[S.equip?.armadura || 'nenhuma'] || { esquiva: 0, soak: 0, protecao: 0 };
     const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), especialidade: SP('esquiva'), centelha: C }) + (arm.esquiva || 0);
@@ -264,7 +264,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
       r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + esp + Centelha + armadura') +
-      r('Defesa Mental', defesaMental({ virtudes: virt, vontade: W, centelha: C }), `⌊(Integridade ${integ} + Vontade)/2⌋ + Centelha`) +
+      r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} × 2) + Vontade + Centelha`) +
       r('Soak (Imp/Letal)', `${soakI} / ${soakL}${arm.protecao ? ` · Prot ${arm.protecao}` : ''}`, 'Vigor (½ no letal) + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade') +

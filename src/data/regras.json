@@ -207,11 +207,8 @@
       "maisCentelha": true
     },
     "defesaMental": {
-      "integridade": [
-        "compaixao",
-        "temperanca"
-      ],
-      "div": 2,
+      "mult": 2,
+      "maisVontade": true,
       "maisCentelha": true
     },
     "energia": {

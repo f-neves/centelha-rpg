@@ -47,7 +47,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 |---|---|
 | Pontos de Vida | 25 + (Vigor × 3) |
 | Defesa | (Destreza + Habilidade) × 2 + Especialidade + Centelha |
-| Defesa Mental | ⌊(Integridade + Vontade) ÷ 2⌋ + Centelha · (Integridade = Compaixão + Temperança) |
+| Defesa Mental | (Integridade × 2) + Vontade + Centelha · (Integridade = perícia) |
 | Energia | (Centelha × 3) + soma das 4 Virtudes + Força de Vontade |
 | Mana | (Centelha × 2) + Força de Vontade |
 | Iniciativa | 1d6 + Raciocínio + Prontidão |
@@ -66,7 +66,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Habilidades | Furtividade 4 (pico) · Armas à Distância, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Medicina 1 | 235 |
 | Secundárias | três em 2 (Rastreio, Escalada, Falcoaria) | 18 |
 | Especialidades | Furtividade, Armas à Distância, Sobrevivência | 30 |
-| Virtudes | Valor 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 90 |
+| Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 90 |
 | Força de Vontade | 5 → 7 | 26 |
 | Centelha | 0 → 2 | 45 |
 | Técnicas | 21, de Olho de Águia, Sombra e Vento (bandas 1–3) | 200 |
@@ -79,10 +79,10 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Destreza 5 (pico) · Força, Vigor, Carisma 4 · Percepção, Raciocínio, Inteligência, Manipulação, Aparência 3 | 480 |
-| Habilidades | Armas de Corte 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Atletismo, Tática, Comando, Intimidação, Resistência, Liderança) · duas em 2 · uma em 1 | 325 |
+| Habilidades | Armas de Corte 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Atletismo, Integridade, Comando, Intimidação, Resistência, Liderança) · duas em 2 · uma em 1 | 325 |
 | Secundárias | seis em 2–3 (Etiqueta, Cavalgar, Jogos de Guerra…) | 48 |
-| Especialidades | cinco (Armas de Corte, Tática, Comando…) | 50 |
-| Virtudes | Valor 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
+| Especialidades | cinco (Armas de Corte, Integridade, Comando…) | 50 |
+| Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
 | Força de Vontade | 5 → 8 | 42 |
 | Centelha | 0 → 2 | 45 |
 | Técnicas | 24, dos Caminhos Comando, Pele de Pedra e Dança da Lâmina (bandas 1–4) | 260 |
@@ -98,7 +98,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Habilidades | Ocultismo 4 (pico) · oito perícias em 3 · três em 2 | 335 |
 | Secundárias | seis em 2–3 | 54 |
 | Especialidades | seis primárias + duas secundárias | 70 |
-| Virtudes | Convicção 4 · Valor 4 · Temperança 4 · Compaixão 3 | 160 |
+| Virtudes | Convicção 4 · Bravura 4 · Temperança 4 · Compaixão 3 | 160 |
 | Força de Vontade | 5 → 9 | 60 |
 | Centelha | 0 → 3 | 90 |
 | Artes | Fogo, Forças, Proteção e Cura — todas no nível 3 | 240 |
@@ -121,7 +121,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Habilidades | Ocultismo 4 (pico) · Acadêmicos, Investigação, Esquiva, Prontidão 3 · Medicina, Resistência, Concussão, Furtividade, Etiqueta 2 · Linguística 1 | 250 |
 | Secundárias | oito (Astronomia, Alquimia, Heráldica, Caligrafia, Criptografia, Botânica…) | 66 |
 | Especialidades | seis (Ocultismo: invocação · Adivinhação · Acadêmicos…) | 60 |
-| Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Valor 2 | 105 |
+| Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 105 |
 | Força de Vontade | 5 → 9 | 60 |
 | Centelha | 0 → 1 | 15 |
 | Artes | Adivinhação, Forças **nível 4** · Proteção 3 · Cura 2 · Fogo, Fascinação 1 | 310 |

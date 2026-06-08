@@ -34,7 +34,7 @@ Lábia · Oratória · Etiqueta · Empatia · Intimidação · Manha
 Investigação · Conhecimentos · Ocultismo · Medicina · Ciências
 
 #### Técnicas
-Craft · Ladinagem · Cavalgar · Performance · Tática · Política · Comércio
+Craft · Ladinagem · Cavalgar · Performance · Integridade · Política · Comércio
 
 <p class="muted">O tipo de dano de uma arma (corte, perfuração ou impacto) é propriedade da arma, não da perícia: "Armas de Corte" cobre tanto a espada que retalha quanto a adaga que perfura.</p>
 
