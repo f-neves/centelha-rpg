@@ -47,7 +47,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 |---|---|
 | Pontos de Vida | 25 + (Vigor × 3) |
 | Defesa | (Destreza + Habilidade) × 2 + Especialidade + Centelha |
-| Defesa Mental | (Integridade × 2) + Vontade + Centelha · (Integridade = perícia) |
+| Defesa Mental | (Integridade × 2) + Vontade + Centelha |
 | Energia | (Centelha × 3) + soma das 4 Virtudes + Força de Vontade |
 | Mana | (Centelha × 2) + Força de Vontade |
 | Iniciativa | 1d6 + Raciocínio + Prontidão |
