@@ -33,7 +33,7 @@ const base = url('');
     const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = pfCss; document.head.append(link);
     try {
       const mod = await import(/* @vite-ignore */ pfUi);
-      new (window.PagefindUI || mod.PagefindUI)({ element: '#pagefind', showSubResults: true, showImages: false, basePath: base + 'pagefind/' });
+      new (window.PagefindUI || mod.PagefindUI)({ element: '#pagefind', showSubResults: true, showImages: false, bundlePath: base + 'pagefind/' });
     } catch (e) {
       document.getElementById('pagefind').innerHTML = '<p class="muted">A busca fica disponível no site publicado (índice gerado no build).</p>';
     }
