@@ -308,7 +308,7 @@
     "nome": "Mente Afiada",
     "trilha": "mente",
     "atributo": "inteligencia",
-    "habilidade_ancora": "Conhecimentos",
+    "habilidade_ancora": "Conhecimentos Gerais",
     "descricao": "o intelecto que tudo decifra"
   },
   {
@@ -316,7 +316,7 @@
     "nome": "Erudito",
     "trilha": "mente",
     "atributo": "inteligencia",
-    "habilidade_ancora": "Conhecimentos",
+    "habilidade_ancora": "Conhecimentos Gerais",
     "descricao": "saber enciclopédico, idiomas"
   },
   {
@@ -324,7 +324,7 @@
     "nome": "Artesão",
     "trilha": "mente",
     "atributo": "inteligencia",
-    "habilidade_ancora": "Craft",
+    "habilidade_ancora": "Conhecimentos Gerais / Ofício",
     "descricao": "crafts sobre-humanos, obras-primas"
   },
   {
@@ -332,7 +332,7 @@
     "nome": "Estrategista",
     "trilha": "mente",
     "atributo": "inteligencia",
-    "habilidade_ancora": "Tática",
+    "habilidade_ancora": "Conhecimentos Gerais / Liderança",
     "descricao": "ler batalhas, prever, planos"
   },
   {
@@ -356,7 +356,7 @@
     "nome": "Improviso",
     "trilha": "mente",
     "atributo": "raciocinio",
-    "habilidade_ancora": "Manha / Craft",
+    "habilidade_ancora": "Manha",
     "descricao": "soluções instantâneas, usar o ambiente"
   },
   {
