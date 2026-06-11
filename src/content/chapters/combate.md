@@ -5,7 +5,7 @@ titulo: "Combate"
 resumo: "Ticks, iniciativa, ataque, defesa, dano, modificadores situacionais, Técnicas e combos, e pressão numérica."
 ---
 
-O combate corre numa linha do tempo de **Ticks**, não em turnos rígidos. Cada ação custa um tempo — sua **Speed** — e, depois de agir, você só volta a jogar quando esses Ticks passarem. Escolher *quando* agir vale tanto quanto *como*.
+O combate corre numa linha do tempo de **Ticks** (cada um ≈ **1 segundo**), não em turnos rígidos. Cada ação custa um tempo — sua **Speed** — e, depois de agir, você só volta a jogar quando esses Ticks passarem. Escolher *quando* agir vale tanto quanto *como*.
 
 ## Iniciativa e a Escala de Speed
 
@@ -23,15 +23,15 @@ No início, role a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tira o 
 
 ## Deslocamento
 
-Mover-se tem três medidas, em **metros** (arredonde ao inteiro mais próximo):
+Como cada Tick vale ~1 segundo, as velocidades vêm em **metros por segundo (m/s)** — multiplique pela duração (em Ticks) para a distância. Arredonde ao inteiro mais próximo.
 
-| Medida | Fórmula | Quando |
-|---|---|---|
-| **Deslocamento livre** | (Destreza + Corrida) ÷ 2 | o passo que você dá **sem gastar ação** — reposicionar, avançar, recuar enquanto faz outra coisa |
-| **Velocidade de Corrida** | Destreza × 1,5 + Corrida | quando você **gasta a ação correndo**: a velocidade sustentada |
-| **Velocidade de Arranque** | (Força + Corrida) ÷ 2 + Destreza | o **pique inicial** (os ~3 primeiros segundos): a explosão para fechar distância, saltar à frente ou disparar de surpresa |
+| Medida | Fórmula | Unidade | Quando |
+|---|---|:---:|---|
+| **Deslocamento livre** | (Destreza + Corrida) ÷ 2 | **m (fixo)** | a distância que você desliza **durante outra ação** (normalmente um ataque), sem gastá-la: o arqueiro que recua dois passos e dispara, o duelista que circula enquanto golpeia |
+| **Velocidade de Corrida** | Destreza × 1,5 + Corrida | **m/s** | quando você **gasta a ação correndo** — a velocidade sustentada, Tick após Tick |
+| **Velocidade de Arranque** | (Força + Corrida) ÷ 2 + Destreza | **m/s** | o **pique inicial**: vale nos **~3 primeiros segundos** (3 Ticks) de uma corrida; depois você cai para a Velocidade de Corrida |
 
-<p class="muted">O Arranque recompensa a <strong>Força</strong> — a explosão custa músculo; a corrida sustentada vive da <strong>Destreza</strong> e do treino (<strong>Corrida</strong>). Quem dispara primeiro nem sempre é quem chega mais longe.</p>
+<p class="muted">O Deslocamento livre é uma <strong>distância fixa</strong>, não uma velocidade: é o reposicionamento que cabe dentro do tempo de um golpe — você pode movê-lo em qualquer direção para realizar o ataque. Já o <strong>Arranque</strong> recompensa a <strong>Força</strong> (a explosão custa músculo) e a <strong>Corrida</strong> sustentada vive da <strong>Destreza</strong> e do treino: quem dispara primeiro nem sempre é quem chega mais longe.</p>
 
 ## Ataque e Defesa
 
