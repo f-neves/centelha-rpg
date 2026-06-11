@@ -94,6 +94,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   const ATTR_GRP: Record<string, string> = { fisico: 'Físicos', social: 'Sociais', mental: 'Mentais' };
   const HAB_GRP: Record<string, string> = { combate: 'Combate', fisica: 'Físicas', social: 'Sociais', saber: 'Saber', tecnica: 'Técnicas' };
   const SECONDARY: [string, string][] = [
+    ['Briga', 'Combate'],
     ['Lábia', 'Sociais'], ['Intimidação', 'Sociais'], ['Atuação', 'Sociais'], ['Sedução', 'Sociais'], ['Disfarce', 'Sociais'], ['Interrogatório', 'Sociais'],
     ['Política', 'Conhecimento'], ['Ciências', 'Conhecimento'], ['Comércio', 'Conhecimento'], ['Herbologia', 'Conhecimento'], ['História', 'Conhecimento'], ['Religião', 'Conhecimento'], ['Heráldica', 'Conhecimento'], ['Astronomia', 'Conhecimento'], ['Geografia', 'Conhecimento'], ['Alquimia', 'Conhecimento'], ['Arquitetura', 'Conhecimento'], ['Direito', 'Conhecimento'], ['Bestiário', 'Conhecimento'], ['Estratégia', 'Conhecimento'], ['Genealogia', 'Conhecimento'], ['Folclore', 'Conhecimento'],
     ['Ofício', 'Ofício'], ['Cavalgar', 'Ofício'], ['Ferraria', 'Ofício'], ['Carpintaria', 'Ofício'], ['Costura', 'Ofício'], ['Culinária', 'Ofício'], ['Joalheria', 'Ofício'], ['Couraria', 'Ofício'], ['Alvenaria', 'Ofício'], ['Mineração', 'Ofício'], ['Pesca', 'Ofício'], ['Agricultura', 'Ofício'], ['Navegação', 'Ofício'], ['Marcenaria', 'Ofício'], ['Armadureiro', 'Ofício'], ['Armeiro', 'Ofício'], ['Escrivania', 'Ofício'], ['Cartografia', 'Ofício'], ['Veterinário', 'Ofício'], ['Adestramento', 'Ofício'],
@@ -213,14 +214,14 @@ import RoladorDados from '../components/RoladorDados.astro';
   }
   function renderSkills() {
     const groups: Record<string, any[]> = { Combate: [], Físicas: [], Sociais: [], Saber: [], Técnicas: [] };
-    (HAB_D as any[]).forEach((s) => groups[HAB_GRP[s.grupo]].push(s));
+    (HAB_D as any[]).filter((s) => !s.secundaria).forEach((s) => groups[HAB_GRP[s.grupo]].push(s));
     const cols = [['Combate', 'Físicas'], ['Sociais', 'Saber'], ['Técnicas']];
     el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
       (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 5, 0) + specHTML(s.id, S.spec[s.id] || 0, S.skills[s.id] || 0) + rollBtn('skill', s.id))).join('') : '').join('') + '</div>').join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
-    const cols = [['Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
+    const cols = [['Combate', 'Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
     el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
       `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 5, 0) + specHTML('2_' + k, S.spec2[k] || 0, S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
   }
@@ -274,13 +275,13 @@ import RoladorDados from '../components/RoladorDados.astro';
     const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];
     const esc = ESCUDO[S.equip?.escudo || 'nenhum'] || { bloqueio: 0 };
     const C = S.centelha || 0, forca = S.attrs.forca || 0;
-    const soma = (S.attrs[w.atrib] || 0) + (S.skills[w.pericia] || 0);
+    const soma = (S.attrs[w.atrib] || 0) + (S.skills[w.pericia] || S.skills2[w.pericia] || 0);
     const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
     const pool = `${dados}d6${bonus ? '+2' : ''}${w.acerto ? ` +${w.acerto}` : ''}`;
     const dist = w.tags.includes('distância');
     const forcaAp = dist ? 0 : (w.maos === 2 ? forca : Math.floor(forca / 2));
     const dano = `${w.dado}d6${forcaAp ? ` +${forcaAp}` : ''} ${w.tipoDano}${w.pen ? ` · Pen ${w.pen}` : ''}`;
-    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || 0, especialidade: S.spec[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqueio || 0);
+    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, especialidade: S.spec[w.pericia] || S.spec2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqueio || 0);
     el('combate').innerHTML =
       `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${pool}</b> · dano <b>${dano}</b> · Speed ${w.ticks}</div>` +
       (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(${w.pericia === 'escudos' ? 'Escudos' : w.nome} + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqueio ? ` + escudo ${esc.bloqueio}` : ''})</span></div>`) +
@@ -294,7 +295,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   function recompute() {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
     (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 2, S.attrs[a.id] || 2)));
-    (HAB_D as any[]).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || 0) * 10; });
+    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || 0) * 10; });
     (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
     xw = custoPontos('vontade', 5, S.willpower || 5);
     xc = custoPontos('centelha', 0, S.centelha || 0);

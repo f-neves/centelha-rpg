@@ -4,7 +4,8 @@
     "nome": "Briga",
     "grupo": "combate",
     "atributos": ["forca", "destreza"],
-    "descricao": "Combate corpo-a-corpo desarmado: socos, agarrões, projeções."
+    "secundaria": true,
+    "descricao": "Combate corpo-a-corpo desarmado: socos, agarrões, projeções. Perícia secundária (a arma Desarmado a usa)."
   },
   {
     "id": "armas-de-corte",

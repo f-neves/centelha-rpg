@@ -27,6 +27,7 @@ const habilidades = defineCollection({
     nome: z.string(),
     grupo: z.enum(['combate', 'fisica', 'social', 'saber', 'tecnica']),
     atributos: z.array(z.string()).optional(),
+    secundaria: z.boolean().optional(),
     descricao: z.string(),
   }),
 });
