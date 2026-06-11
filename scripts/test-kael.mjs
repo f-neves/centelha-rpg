@@ -17,15 +17,16 @@ const defM = integridade * D.defesaMental.mult + (D.defesaMental.maisVontade ? v
 const energia = cent * D.energia.centelhaMult + (V.compaixao + V.conviccao + V.temperanca + V.valor) + vont;
 const mana = cent * D.mana.centelhaMult + vont;
 const ini = at.raciocinio + prontidao;
-const dz = D.deslocamento, dc = (c) => Math.round(at.forca * (c.forca || 0) + at.destreza * (c.destreza || 0) + corrida * (c.corrida || 0));
-const desl = { arr: dc(dz.arranque), cor: dc(dz.corrida), nor: dc(dz.normal) };
+const dz = D.deslocamento, traits = { forca: at.forca, destreza: at.destreza, corrida, acrobacias: 0, centelha: cent };
+const dc = (c) => Math.round(Object.entries(c).reduce((s, [k, v]) => s + (traits[k] || 0) * v, 0));
+const desl = { cor: dc(dz.corrida), nor: dc(dz.normal), pul: dc(dz.pulo) };
 
-const esperado = { pv: 37, defesa: 16, defM: 13, energia: 24, mana: 11, ini: 6, deslArr: 7, deslCor: 9, deslNor: 4 };
-const got = { pv, defesa, defM, energia, mana, ini, deslArr: desl.arr, deslCor: desl.cor, deslNor: desl.nor };
+const esperado = { pv: 37, defesa: 16, defM: 13, energia: 24, mana: 11, ini: 6, deslCor: 9, deslNor: 4, deslPulo: 176 };
+const got = { pv, defesa, defM, energia, mana, ini, deslCor: desl.cor, deslNor: desl.nor, deslPulo: desl.pul };
 const erros = Object.keys(esperado).filter((k) => got[k] !== esperado[k]);
 if (erros.length) {
   console.error('✘ Regressão Kael FALHOU:');
   for (const k of erros) console.error(`  ${k}: esperado ${esperado[k]}, obtido ${got[k]}`);
   process.exit(1);
 }
-console.log('✓ Regressão Kael OK — PV 37 · Defesa 16 · Def. Mental 13 · Energia 24 · Mana 11 · Iniciativa 1d6+6 · Desloc 4/9/7 m.');
+console.log('✓ Regressão Kael OK — PV 37 · Defesa 16 · Def. Mental 13 · Energia 24 · Mana 11 · Iniciativa 1d6+6 · Desloc 4 m / 9 m·s · Pulo 176 cm.');

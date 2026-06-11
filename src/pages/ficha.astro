@@ -269,10 +269,10 @@ import RoladorDados from '../components/RoladorDados.astro';
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade') +
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão') +
-      (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), corrida: SK('corrida') });
+      (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), corrida: SK('corrida'), acrobacias: SK('acrobacias'), centelha: C });
         return r('Deslocamento livre', `${dz.normal} m`, '(Des + Corrida) ÷ 2 · distância na ação') +
           r('Vel. de Corrida', `${dz.corrida} m/s`, 'Destreza × 1,5 + Corrida') +
-          r('Vel. de Arranque', `${dz.arranque} m/s`, '(Força + Corrida) ÷ 2 + Destreza · ~3s'); })();
+          r('Pulo', `${dz.pulo} cm`, 'Força×20 + Acrobacias×10 + Destreza×4 + Centelha×50'); })();
   }
   function renderCombate() {
     const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];

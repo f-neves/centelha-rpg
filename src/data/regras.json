@@ -228,10 +228,10 @@
       ]
     },
     "deslocamento": {
-      "nota": "Tick ≈ 1 segundo. Arranque e Corrida são VELOCIDADES (m/s; ×Ticks = distância); Arranque vale os ~3 primeiros segundos de corrida e depois cai p/ Corrida. Normal é uma DISTÂNCIA FIXA (m) — o reposicionamento que cabe dentro de outra ação (ex.: atacar), movível em qualquer direção. Arredonda ao inteiro.",
-      "arranque": { "forca": 0.5, "corrida": 0.5, "destreza": 1 },
+      "nota": "Tick ≈ 1 segundo. Corrida é VELOCIDADE (m/s; ×Ticks = distância). Normal é DISTÂNCIA FIXA (m) — reposicionamento dentro de outra ação, movível em qualquer direção. Pulo é o alcance do salto em CM (corrida ou parado); +50 cm por nível de Centelha. Arredonda ao inteiro.",
       "corrida": { "destreza": 1.5, "corrida": 1 },
-      "normal": { "destreza": 0.5, "corrida": 0.5 }
+      "normal": { "destreza": 0.5, "corrida": 0.5 },
+      "pulo": { "forca": 20, "acrobacias": 10, "destreza": 4, "centelha": 50 }
     }
   },
   "combateTatico": {

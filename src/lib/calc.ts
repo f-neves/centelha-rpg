@@ -61,12 +61,12 @@ export function iniciativa(traits: Record<string, number>) {
   return { dado: d.dado, bonus, str: `1d6 + ${bonus}` };
 }
 
-/** Deslocamento (metros): arranque (pique), corrida (sustentada) e normal (livre). */
-export function deslocamento(opts: { forca: number; destreza: number; corrida: number }) {
+/** Deslocamento: corrida (m/s) e normal (m fixo) de movimento, e pulo (cm). */
+export function deslocamento(traits: { forca?: number; destreza?: number; corrida?: number; acrobacias?: number; centelha?: number }) {
   const d = regras.derivados.deslocamento as Record<string, Record<string, number>>;
   const calc = (c: Record<string, number>) =>
-    Math.round((opts.forca * (c.forca ?? 0)) + (opts.destreza * (c.destreza ?? 0)) + (opts.corrida * (c.corrida ?? 0)));
-  return { arranque: calc(d.arranque), corrida: calc(d.corrida), normal: calc(d.normal) };
+    Math.round(Object.entries(c).reduce((s, [k, v]) => s + ((traits as Record<string, number>)[k] ?? 0) * v, 0));
+  return { corrida: calc(d.corrida), normal: calc(d.normal), pulo: calc(d.pulo) };
 }
 
 // ----- XP -----
