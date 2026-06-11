@@ -12,7 +12,7 @@
     "nome": "Atlas",
     "trilha": "corpo",
     "atributo": "forca",
-    "habilidade_ancora": "Atletismo",
+    "habilidade_ancora": "Halterofilismo",
     "descricao": "erguer, arremessar e arrancar pesos descomunais"
   },
   {
@@ -44,7 +44,7 @@
     "nome": "Vento",
     "trilha": "corpo",
     "atributo": "destreza",
-    "habilidade_ancora": "Atletismo",
+    "habilidade_ancora": "Corrida",
     "descricao": "a graça que vira velocidade que vira voo"
   },
   {
@@ -52,7 +52,7 @@
     "nome": "Gato",
     "trilha": "corpo",
     "atributo": "destreza",
-    "habilidade_ancora": "Atletismo",
+    "habilidade_ancora": "Acrobacias",
     "descricao": "acrobacia, equilíbrio, quedas, escalada"
   },
   {
@@ -324,7 +324,7 @@
     "nome": "Artesão",
     "trilha": "mente",
     "atributo": "inteligencia",
-    "habilidade_ancora": "Conhecimentos Gerais / Ofício",
+    "habilidade_ancora": "Ofícios Gerais",
     "descricao": "crafts sobre-humanos, obras-primas"
   },
   {

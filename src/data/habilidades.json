@@ -4,8 +4,7 @@
     "nome": "Briga",
     "grupo": "combate",
     "atributos": ["forca", "destreza"],
-    "secundaria": true,
-    "descricao": "Combate corpo-a-corpo desarmado: socos, agarrões, projeções. Perícia secundária (a arma Desarmado a usa)."
+    "descricao": "Combate corpo-a-corpo desarmado: socos, agarrões, projeções."
   },
   {
     "id": "armas-de-corte",
@@ -50,11 +49,25 @@
     "descricao": "Bloquear com escudo e usá-lo ofensivamente."
   },
   {
-    "id": "atletismo",
-    "nome": "Atletismo",
+    "id": "halterofilismo",
+    "nome": "Halterofilismo",
     "grupo": "fisica",
-    "atributos": ["forca", "destreza", "vigor"],
-    "descricao": "Correr, saltar, escalar, nadar — proeza física geral."
+    "atributos": ["forca", "vigor"],
+    "descricao": "Erguer, carregar, arrombar e dobrar pela força bruta — o vigor aplicado ao peso."
+  },
+  {
+    "id": "acrobacias",
+    "nome": "Acrobacias",
+    "grupo": "fisica",
+    "atributos": ["destreza", "raciocinio"],
+    "descricao": "Equilíbrio, cambalhota, contorção, escapar de amarras e queda segura."
+  },
+  {
+    "id": "corrida",
+    "nome": "Corrida",
+    "grupo": "fisica",
+    "atributos": ["destreza", "vigor"],
+    "descricao": "Velocidade e fôlego de corrida: sprintar, perseguir, fugir, cobrir distância."
   },
   {
     "id": "furtividade",
@@ -69,13 +82,6 @@
     "grupo": "fisica",
     "atributos": ["percepcao", "raciocinio"],
     "descricao": "Estar alerta; notar perigo (Percepção) e reagir a tempo (Raciocínio). É o par do Raciocínio na Iniciativa."
-  },
-  {
-    "id": "sobrevivencia",
-    "nome": "Sobrevivência",
-    "grupo": "fisica",
-    "atributos": ["percepcao", "inteligencia", "vigor"],
-    "descricao": "Caçar, rastrear, orientar-se e durar no ermo."
   },
   {
     "id": "resistencia",
@@ -134,6 +140,13 @@
     "descricao": "Inspirar, comandar e coordenar um grupo."
   },
   {
+    "id": "negociacao",
+    "nome": "Negociação",
+    "grupo": "social",
+    "atributos": ["carisma", "manipulacao", "inteligencia", "raciocinio"],
+    "descricao": "Barganhar, avaliar valor e fechar acordos — pela presença, pelo conhecimento ou pela esperteza do momento."
+  },
+  {
     "id": "investigacao",
     "nome": "Investigação",
     "grupo": "saber",
@@ -169,10 +182,17 @@
     "descricao": "Navegar instituições, leis, registros e logística — saber o sistema (Inteligência) e jogá-lo na hora (Raciocínio)."
   },
   {
-    "id": "negociacao",
-    "nome": "Negociação",
+    "id": "sobrevivencia",
+    "nome": "Sobrevivência",
     "grupo": "saber",
-    "atributos": ["carisma", "manipulacao", "inteligencia", "raciocinio"],
-    "descricao": "Barganhar, avaliar valor e fechar acordos — pela presença, pelo conhecimento ou pela esperteza do momento."
+    "atributos": ["percepcao", "inteligencia", "vigor"],
+    "descricao": "Caçar, rastrear, orientar-se e durar no ermo — o saber prático da natureza."
+  },
+  {
+    "id": "oficios-gerais",
+    "nome": "Ofícios Gerais",
+    "grupo": "saber",
+    "atributos": ["inteligencia", "destreza"],
+    "descricao": "O faz-tudo prático: consertar, escorar, remendar, mexer com madeira e ferro de modo genérico — útil, sem ser mestre de nenhum ofício específico (esses ficam nas secundárias: Ferraria, Carpintaria…)."
   }
 ]
