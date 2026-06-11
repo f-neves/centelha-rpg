@@ -33,6 +33,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 - **Versátil** — 1 ou 2 mãos (em 2 mãos: +1 dado, −1 Defesa da Arma).
 - **Sangramento** — um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
 - **Arremessável · Munição · Pesada** — lançar; gastar munição; usar Força total e −1 em ações ágeis.
+- **Imobiliza** — não causa dano: um acerto deixa o alvo **Imobilizado** até escapar (Força ou Acrobacias vs o lançamento).
 
 ## Armas de Exemplo
 
@@ -57,6 +58,10 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 | Machado de Arremesso | Arremesso | 2d6 | 2 / 2 | gira no ar; golpe forte e curto |
 | Azagaia | Arremesso · Perf. 2 | 2d6 | 2 / 2 | javelina; fura à distância, lança curta na mão |
 | Funda | Arremesso · Munição | 1d6 | 2 / 1 | pedras a longa distância, impacto |
+| Dardos | Arremesso · Ágil · Munição | 1d6 | 3 / 1 | velozes em sequência, fracos vs armadura |
+| Bumerangue | Arremesso | 1d6 | 2 / 1 | atinge em curva e volta à mão se erra |
+| Rede | Arremesso · Imobiliza | — | — | prende o alvo em vez de ferir |
+| Pilum | Arremesso · Perf. 3 | 2d6 | 1 / 2 | anti-escudo: fura placa e entorta ao cravar |
 
 </div>
 

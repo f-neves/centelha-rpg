@@ -21,6 +21,18 @@ No início, role a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tira o 
 
 <p class="muted">Armas leves agem mais vezes e defendem melhor; as pesadas batem como um trovão, mas deixam você exposto entre os golpes. A arma define o seu estilo.</p>
 
+## Deslocamento
+
+Mover-se tem três medidas, em **metros** (arredonde ao inteiro mais próximo):
+
+| Medida | Fórmula | Quando |
+|---|---|---|
+| **Deslocamento livre** | (Destreza + Corrida) ÷ 2 | o passo que você dá **sem gastar ação** — reposicionar, avançar, recuar enquanto faz outra coisa |
+| **Velocidade de Corrida** | Destreza × 1,5 + Corrida | quando você **gasta a ação correndo**: a velocidade sustentada |
+| **Velocidade de Arranque** | (Força + Corrida) ÷ 2 + Destreza | o **pique inicial** (os ~3 primeiros segundos): a explosão para fechar distância, saltar à frente ou disparar de surpresa |
+
+<p class="muted">O Arranque recompensa a <strong>Força</strong> — a explosão custa músculo; a corrida sustentada vive da <strong>Destreza</strong> e do treino (<strong>Corrida</strong>). Quem dispara primeiro nem sempre é quem chega mais longe.</p>
+
 ## Ataque e Defesa
 
 Para atacar: monte o pool de Atributo + Habilidade, some o **Acerto da Arma**, aplique Especialidade, Stunts e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).

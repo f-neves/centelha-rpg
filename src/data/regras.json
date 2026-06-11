@@ -226,6 +226,12 @@
         "raciocinio",
         "prontidao"
       ]
+    },
+    "deslocamento": {
+      "nota": "Distâncias de movimento em metros (arredonda ao inteiro mais próximo). Arranque = pique inicial (~3s); Corrida = velocidade sustentada gastando a ação; Normal = passo livre, sem gastar ação.",
+      "arranque": { "forca": 0.5, "corrida": 0.5, "destreza": 1 },
+      "corrida": { "destreza": 1.5, "corrida": 1 },
+      "normal": { "destreza": 0.5, "corrida": 0.5 }
     }
   },
   "combateTatico": {

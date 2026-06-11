@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ataque × Defesa — Centelha RPG</title>
+<style>
+  :root{
+    --bg:#faf9f5; --card:#fff; --ink:#1f1e1b; --muted:#6b6a64;
+    --line:#e4e2da; --accent:#378ADD; --good:#1D9E75; --bad:#D85A30;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#1a1915; --card:#23221d; --ink:#ecebe4; --muted:#a8a69c;
+      --line:#34332c; --accent:#85B7EB; --good:#5DCAA5; --bad:#F0997B;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;padding:18px;}
+  h1{font-size:19px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:820px}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card h2{font-size:14px;margin:0 0 14px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted)}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0}
+  .row label{font-size:14px}
+  .row .val{font-weight:600;font-size:14px;min-width:74px;text-align:right}
+  input[type=range]{flex:1;accent-color:var(--accent)}
+  select{background:var(--card);color:var(--ink);border:1px solid var(--line);
+    border-radius:7px;padding:5px 8px;font-size:14px}
+  .check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-top:6px}
+  .result{max-width:820px;margin-top:14px;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:18px}
+  .resgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:14px}
+  .metric .k{font-size:12px;color:var(--muted)}
+  .metric .v{font-size:23px;font-weight:600;margin-top:2px}
+  .metric .vs{font-size:12px;color:var(--muted);margin-top:2px}
+  .barwrap{height:14px;background:var(--line);border-radius:8px;overflow:hidden}
+  .bar{height:100%;background:var(--good);width:0;transition:width .15s}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+  <h1>Ataque × Defesa</h1>
+  <p class="sub">Ataque = [rolo c/ descarte] + B + (X·Centelha) + Bônus &nbsp;·&nbsp; Defesa = 4A + B + (X·Especialidade) + (X·Centelha) + Bônus</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Atacante (rola)</h2>
+      <div class="row"><label>Atributo + Habilidade</label><input type="range" id="aS" min="2" max="18" value="10"><span class="val" id="aSv">10 → 5d6</span></div>
+      <div class="row"><label>Especialidade (descarte)</label><input type="range" id="aE" min="0" max="3" value="0"><span class="val" id="aEv">0</span></div>
+      <div class="row"><label>Centelha (nível)</label><input type="range" id="aCn" min="0" max="5" value="0"><span class="val" id="aCnv">0</span></div>
+      <div class="row"><label>X Centelha</label>
+        <select id="aXc"><option value="1">×1</option><option value="2">×2</option><option value="3">×3</option></select></div>
+      <div class="row"><label>Bônus fixo</label><input type="range" id="aB" min="0" max="5" value="0"><span class="val" id="aBv">+0</span></div>
+    </div>
+
+    <div class="card">
+      <h2>Defensor (estático)</h2>
+      <div class="row"><label>Atributo + Habilidade</label><input type="range" id="dS" min="2" max="18" value="10"><span class="val" id="dSv">10 → 5d6</span></div>
+      <div class="row"><label>Especialidade</label><input type="range" id="dE" min="0" max="3" value="0"><span class="val" id="dEv">0</span></div>
+      <div class="row"><label>X Especialidade</label>
+        <select id="dXe"><option value="1">×1</option><option value="2">×2</option><option value="3">×3</option></select></div>
+      <div class="row"><label>Centelha (nível)</label><input type="range" id="dCn" min="0" max="5" value="0"><span class="val" id="dCnv">0</span></div>
+      <div class="row"><label>X Centelha</label>
+        <select id="dXc"><option value="1">×1</option><option value="2">×2</option><option value="3">×3</option></select></div>
+      <div class="row"><label>Bônus fixo</label><input type="range" id="dB" min="0" max="5" value="0"><span class="val" id="dBv">+0</span></div>
+      <div class="check"><input type="checkbox" id="lock" checked><label for="lock">Mesma graduação do atacante (Atributo+Habilidade)</label></div>
+    </div>
+  </div>
+
+  <div class="result">
+    <div class="resgrid">
+      <div class="metric"><div class="k">Rolo do atacante</div><div class="v" id="rollNot">5d6</div><div class="vs" id="rollBreak"></div></div>
+      <div class="metric"><div class="k">Total (min–média–max)</div><div class="v" id="rollRange">5–17.5–30</div></div>
+      <div class="metric"><div class="k">Defesa a superar (≥)</div><div class="v" id="defVal">20</div><div class="vs" id="defBreak"></div></div>
+      <div class="metric"><div class="k">Chance de acerto</div><div class="v" id="hit" style="color:var(--accent)">31%</div></div>
+    </div>
+    <div class="barwrap"><div class="bar" id="bar"></div></div>
+    <p class="note" id="note"></p>
+  </div>
+
+<script>
+function somaToPool(S){ return { dice: Math.floor(S/2), bonus: (S%2)?2:0 }; }
+function notation(S){ const p=somaToPool(S); return p.dice+"d6"+(p.bonus?("+"+p.bonus):""); }
+
+function topkPMF(rolled, keep){
+  const N=rolled;
+  if(keep>=N){
+    let pmf={0:1};
+    for(let i=0;i<N;i++){const np={};for(const s in pmf){for(let f=1;f<=6;f++){np[+s+f]=(np[+s+f]||0)+pmf[s]/6;}}pmf=np;}
+    return pmf;
+  }
+  const fact=[1]; for(let i=1;i<=N;i++) fact[i]=fact[i-1]*i;
+  const pmf={};
+  (function rec(face,rem,counts){
+    if(face===6){
+      const c6=counts.concat([rem]);
+      let w=fact[N]; for(const c of c6) w/=fact[c];
+      let need=keep,s=0;
+      for(let f=6;f>=1;f--){const t=Math.min(need,c6[f-1]);s+=t*f;need-=t;if(need===0)break;}
+      pmf[s]=(pmf[s]||0)+w; return;
+    }
+    for(let c=0;c<=rem;c++) rec(face+1,rem-c,counts.concat([c]));
+  })(1,N,[]);
+  const tot=Math.pow(6,N);
+  for(const k in pmf) pmf[k]/=tot;
+  return pmf;
+}
+
+const $=id=>document.getElementById(id);
+function update(){
+  if($('lock').checked){ $('dS').value=$('aS').value; $('dS').disabled=true; }
+  else { $('dS').disabled=false; }
+
+  const aS=+$('aS').value, aE=+$('aE').value, aCn=+$('aCn').value, aXc=+$('aXc').value, aB=+$('aB').value;
+  const dS=+$('dS').value, dE=+$('dE').value, dXe=+$('dXe').value, dCn=+$('dCn').value, dXc=+$('dXc').value, dB=+$('dB').value;
+
+  $('aSv').textContent = aS+" → "+notation(aS);
+  $('dSv').textContent = dS+" → "+notation(dS);
+  $('aEv').textContent=aE; $('aCnv').textContent=aCn; $('aBv').textContent="+"+aB;
+  $('dEv').textContent=dE; $('dCnv').textContent=dCn; $('dBv').textContent="+"+dB;
+
+  const ap=somaToPool(aS);
+  const aCentFlat = aXc*aCn;
+  const attackFlat = ap.bonus + aCentFlat + aB;
+  const pmf=topkPMF(ap.dice+aE, ap.dice);
+  let mean=0; for(const s in pmf) mean+=(+s)*pmf[s]; mean+=attackFlat;
+  const minR=ap.dice+attackFlat, maxR=6*ap.dice+attackFlat;
+
+  const dp=somaToPool(dS);
+  const dEsp = dXe*dE, dCent = dXc*dCn;
+  const defense=4*dp.dice+dp.bonus+dEsp+dCent+dB;
+
+  let hit=0; for(const s in pmf){ if((+s)+attackFlat>=defense) hit+=pmf[s]; }
+
+  $('rollNot').textContent = (aE>0? `rola ${ap.dice+aE}d6, mantém ${ap.dice}` : notation(aS));
+  $('rollBreak').textContent = (aCentFlat>0?`+${aCentFlat} Centelha`:'') + (aB>0?`${aCentFlat>0?', ':''}+${aB} bônus`:'');
+  $('rollRange').textContent = `${minR} – ${mean.toFixed(1)} – ${maxR}`;
+  $('defVal').textContent = defense;
+  $('defBreak').textContent = `4·${dp.dice}+${dp.bonus}`
+     + (dEsp?` +${dEsp} esp`:'') + (dCent?` +${dCent} C`:'') + (dB?` +${dB} bônus`:'');
+  $('hit').textContent = (hit*100).toFixed(1)+'%';
+
+  const bar=$('bar'); bar.style.width=(hit*100)+'%';
+  const col = hit>=0.5?'var(--good)':(hit>=0.2?'var(--accent)':'var(--bad)');
+  bar.style.background=col; $('hit').style.color=col;
+
+  let note='';
+  if(defense>maxR) note=`Impossível: defesa ${defense} > máximo do ataque ${maxR}.`;
+  else if(defense<=minR) note=`Automático: defesa ${defense} ≤ mínimo do ataque ${minR}.`;
+  else note=`A defesa fica ${(defense-mean>=0?'+':'')}${(defense-mean).toFixed(1)} em relação à média do ataque (${mean.toFixed(1)}).`;
+  $('note').textContent=note;
+}
+document.querySelectorAll('input,select').forEach(el=>{
+  el.addEventListener('input',update); el.addEventListener('change',update);
+});
+update();
+</script>
+</body>
+</html>

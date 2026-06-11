@@ -72,7 +72,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 </Base>
 
 <script>
-  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, energia, mana, iniciativa, regras } from '../lib/calc';
+  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, energia, mana, iniciativa, deslocamento, regras } from '../lib/calc';
   import ATTRS_D from '../data/atributos.json';
   import HAB_D from '../data/habilidades.json';
   import VIRT_D from '../data/virtudes.json';
@@ -268,7 +268,11 @@ import RoladorDados from '../components/RoladorDados.astro';
       r('Soak (Imp/Letal)', `${soakI} / ${soakL}${arm.protecao ? ` · Prot ${arm.protecao}` : ''}`, 'Vigor (½ no letal) + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade') +
-      r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão');
+      r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão') +
+      (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), corrida: SK('corrida') });
+        return r('Deslocamento livre', `${dz.normal} m`, '(Des + Corrida) ÷ 2') +
+          r('Vel. de Corrida', `${dz.corrida} m`, 'Destreza × 1,5 + Corrida') +
+          r('Vel. de Arranque', `${dz.arranque} m`, '(Força + Corrida) ÷ 2 + Destreza'); })();
   }
   function renderCombate() {
     const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];

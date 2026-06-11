@@ -350,6 +350,90 @@
     "notas": "Tira de couro que lança pedras a grande distância; barata e silenciosa, mas exige espaço para girar. Dano de impacto (quebra ossos sob armadura)."
   },
   {
+    "id": "dardos",
+    "nome": "Dardos",
+    "classe": "arremesso",
+    "atrib": "destreza",
+    "pericia": "arremesso",
+    "dado": 1,
+    "acerto": 2,
+    "bonusQA": 3,
+    "danoQA": 1,
+    "defesaArma": 0,
+    "maos": 1,
+    "ticks": 4,
+    "tipoDano": "perfurante",
+    "pen": 0,
+    "tags": [
+      "ágil",
+      "arremessável",
+      "munição"
+    ],
+    "notas": "Pequenos e velozes, lançados em sequência; precisos de perto, fracos contra armadura. Carregados às dezenas."
+  },
+  {
+    "id": "bumerangue",
+    "nome": "Bumerangue",
+    "classe": "arremesso",
+    "atrib": "destreza",
+    "pericia": "arremesso",
+    "dado": 1,
+    "acerto": 1,
+    "bonusQA": 2,
+    "danoQA": 1,
+    "defesaArma": 0,
+    "maos": 1,
+    "ticks": 5,
+    "tipoDano": "impacto",
+    "pen": 0,
+    "tags": [
+      "arremessável"
+    ],
+    "notas": "Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição."
+  },
+  {
+    "id": "rede",
+    "nome": "Rede",
+    "classe": "arremesso",
+    "atrib": "destreza",
+    "pericia": "arremesso",
+    "dado": 1,
+    "acerto": 0,
+    "bonusQA": 1,
+    "danoQA": 0,
+    "defesaArma": 0,
+    "maos": 1,
+    "ticks": 5,
+    "tipoDano": "impacto",
+    "pen": 0,
+    "tags": [
+      "arremessável",
+      "imobiliza"
+    ],
+    "notas": "Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento)."
+  },
+  {
+    "id": "pilum",
+    "nome": "Pilum",
+    "classe": "arremesso",
+    "atrib": "forca",
+    "pericia": "arremesso",
+    "dado": 2,
+    "acerto": 1,
+    "bonusQA": 1,
+    "danoQA": 2,
+    "defesaArma": 0,
+    "maos": 1,
+    "ticks": 5,
+    "tipoDano": "perfurante",
+    "pen": 3,
+    "tags": [
+      "perfurante",
+      "arremessável"
+    ],
+    "notas": "Dardo pesado anti-escudo: fura placa (Pen 3) e entorta ao cravar, inutilizando o escudo atingido."
+  },
+  {
     "id": "desarmado",
     "nome": "Desarmado / Briga",
     "classe": "leve",
