@@ -108,7 +108,7 @@ const armas = defineCollection({
   loader: file('src/data/armas.json'),
   schema: z.object({
     id: z.string(), nome: z.string(),
-    classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia']),
+    classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
     atrib: reference('atributos'), pericia: reference('habilidades'),
     dado: z.number().int().min(1).max(3), acerto: z.number().int(),
     bonusQA: z.number().int().min(0), danoQA: z.number().int().min(0), defesaArma: z.number().int(),

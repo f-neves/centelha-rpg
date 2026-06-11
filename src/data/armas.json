@@ -154,7 +154,8 @@
     "pen": 2,
     "tags": [
       "alcance",
-      "perfurante"
+      "perfurante",
+      "arremessável"
     ],
     "notas": "Alcance + estocada; ricocheteia em armadura média/pesada."
   },
@@ -262,6 +263,91 @@
       "distância"
     ],
     "notas": "Fura quase tudo (Pen 3); recarga lenta."
+  },
+  {
+    "id": "adaga-de-arremesso",
+    "nome": "Adaga de Arremesso",
+    "classe": "arremesso",
+    "atrib": "destreza",
+    "pericia": "arremesso",
+    "dado": 1,
+    "acerto": 2,
+    "bonusQA": 3,
+    "danoQA": 1,
+    "defesaArma": 0,
+    "maos": 1,
+    "ticks": 4,
+    "tipoDano": "perfurante",
+    "pen": 1,
+    "tags": [
+      "ágil",
+      "perfurante",
+      "arremessável",
+      "munição"
+    ],
+    "notas": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto."
+  },
+  {
+    "id": "machado-de-arremesso",
+    "nome": "Machado de Arremesso",
+    "classe": "arremesso",
+    "atrib": "forca",
+    "pericia": "arremesso",
+    "dado": 2,
+    "acerto": 1,
+    "bonusQA": 2,
+    "danoQA": 2,
+    "defesaArma": 0,
+    "maos": 1,
+    "ticks": 5,
+    "tipoDano": "corte",
+    "pen": 0,
+    "tags": [
+      "arremessável"
+    ],
+    "notas": "Machado curto e pesado que gira no ar; golpe forte de curto alcance. Recuperável."
+  },
+  {
+    "id": "azagaia",
+    "nome": "Azagaia",
+    "classe": "arremesso",
+    "atrib": "destreza",
+    "pericia": "arremesso",
+    "dado": 2,
+    "acerto": 1,
+    "bonusQA": 2,
+    "danoQA": 2,
+    "defesaArma": 0,
+    "maos": 1,
+    "ticks": 5,
+    "tipoDano": "perfurante",
+    "pen": 2,
+    "tags": [
+      "perfurante",
+      "arremessável"
+    ],
+    "notas": "Dardo de arremesso (javelina): fura à distância e ainda serve de lança curta na mão. Fura armadura leve (Pen 2)."
+  },
+  {
+    "id": "funda",
+    "nome": "Funda",
+    "classe": "arremesso",
+    "atrib": "destreza",
+    "pericia": "arremesso",
+    "dado": 1,
+    "acerto": 1,
+    "bonusQA": 2,
+    "danoQA": 1,
+    "defesaArma": 0,
+    "maos": 1,
+    "ticks": 6,
+    "tipoDano": "impacto",
+    "pen": 0,
+    "tags": [
+      "munição",
+      "arremessável"
+    ],
+    "notas": "Tira de couro que lança pedras a grande distância; barata e silenciosa, mas exige espaço para girar. Dano de impacto (quebra ossos sob armadura)."
   },
   {
     "id": "desarmado",

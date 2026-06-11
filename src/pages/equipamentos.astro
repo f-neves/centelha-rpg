@@ -6,8 +6,8 @@ const armas = (await getCollection('armas')).map((e) => e.data);
 const armaduras = (await getCollection('armaduras')).map((e) => e.data);
 const escudos = (await getCollection('escudos')).map((e) => e.data);
 const habs = Object.fromEntries((await getCollection('habilidades')).map((h) => [h.id, h.data.nome]));
-const CLASSE: Record<string, string> = { leve: 'Leve', media: 'Média', pesada: 'Pesada', haste: 'Haste', distancia: 'Distância', nenhuma: 'Nenhuma' };
-const ordem = ['leve', 'media', 'pesada', 'haste', 'distancia'];
+const CLASSE: Record<string, string> = { leve: 'Leve', media: 'Média', pesada: 'Pesada', haste: 'Haste', distancia: 'Distância', arremesso: 'Arremesso', nenhuma: 'Nenhuma' };
+const ordem = ['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso'];
 armas.sort((a, b) => ordem.indexOf(a.classe) - ordem.indexOf(b.classe) || a.nome.localeCompare(b.nome));
 const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
 ---

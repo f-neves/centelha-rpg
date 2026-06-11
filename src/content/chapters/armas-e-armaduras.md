@@ -20,6 +20,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 | Pesada | 7 | 3d6 | +0 | −1 | 2 | dano que vence armadura — mas lenta e te expõe |
 | Haste | 6 | 2d6 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
 | Distância | 6 | 1–3d6 | +1 | — | 2 | domina antes do contato; depende de munição |
+| Arremesso | 4–6 | 1–2d6 | +1 | — | 1 | lançar com a mão: alcance curto, uma mão, projétil recuperável |
 
 </div>
 
@@ -46,12 +47,16 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 | Espada Serrilhada | Média · Sangramento | 2d6 | 2 / 2 | feridas que sangram (−Acerto) |
 | Maça | Média · Crush | 2d6 | 2 / 2 | abre armaduras |
 | Picareta de Guerra | Média · Perf. 3 | 2d6 | 2 / 2 | fura malha e placa |
-| Lança | Haste · Perf. 2 | 2d6 | 2 / 2 | alcance + estocada |
+| Lança | Haste · Perf. 2 · Arremessável | 2d6 | 2 / 2 | alcance + estocada; também se arremessa |
 | Alabarda | Haste · Crush · Pesada | 2d6 | 1 / 2 | alcance e impacto, lenta |
 | Montante | Pesada | 3d6 | 1 / 3 | espadão de duas mãos |
 | Martelo de Guerra | Pesada · Crush | 3d6 | 1 / 3 | esmaga placas |
 | Arco | Distância · Munição · Perf. 2 | 2d6 | 2 / 1 | precisão à distância |
 | Besta Pesada | Distância · Munição · Perf. 3 · recarga | 3d6 | 1 / 2 | fura quase tudo |
+| Adaga de Arremesso | Arremesso · Ágil · Perf. 1 · Munição | 1d6 | 3 / 1 | facas de arremesso, às dezenas |
+| Machado de Arremesso | Arremesso | 2d6 | 2 / 2 | gira no ar; golpe forte e curto |
+| Azagaia | Arremesso · Perf. 2 | 2d6 | 2 / 2 | javelina; fura à distância, lança curta na mão |
+| Funda | Arremesso · Munição | 1d6 | 2 / 1 | pedras a longa distância, impacto |
 
 </div>
 
