@@ -12,7 +12,7 @@
     ],
     "pv": 31,
     "defesa": 4,
-    "defesaMental": 4,
+    "defesaMental": 12,
     "soak": {
       "impacto": 2,
       "letal": 1,
@@ -56,7 +56,7 @@
     ],
     "pv": 34,
     "defesa": 10,
-    "defesaMental": 4,
+    "defesaMental": 13,
     "soak": {
       "impacto": 5,
       "letal": 3,
@@ -100,7 +100,7 @@
     ],
     "pv": 34,
     "defesa": 9,
-    "defesaMental": 5,
+    "defesaMental": 15,
     "soak": {
       "impacto": 7,
       "letal": 5,
@@ -144,7 +144,7 @@
     ],
     "pv": 34,
     "defesa": 13,
-    "defesaMental": 5,
+    "defesaMental": 16,
     "soak": {
       "impacto": 7,
       "letal": 5,
@@ -188,7 +188,7 @@
     ],
     "pv": 31,
     "defesa": 12,
-    "defesaMental": 4,
+    "defesaMental": 13,
     "soak": {
       "impacto": 4,
       "letal": 3,
@@ -232,7 +232,7 @@
     ],
     "pv": 37,
     "defesa": 6,
-    "defesaMental": 4,
+    "defesaMental": 13,
     "soak": {
       "impacto": 6,
       "letal": 4,
@@ -277,7 +277,7 @@
     ],
     "pv": 37,
     "defesa": 12,
-    "defesaMental": 6,
+    "defesaMental": 19,
     "soak": {
       "impacto": 10,
       "letal": 8,
@@ -322,7 +322,7 @@
     ],
     "pv": 34,
     "defesa": 19,
-    "defesaMental": 6,
+    "defesaMental": 15,
     "soak": {
       "impacto": 5,
       "letal": 3,
@@ -373,7 +373,7 @@
     ],
     "pv": 34,
     "defesa": 19,
-    "defesaMental": 6,
+    "defesaMental": 17,
     "soak": {
       "impacto": 5,
       "letal": 3,
@@ -424,7 +424,7 @@
     ],
     "pv": 31,
     "defesa": 11,
-    "defesaMental": 6,
+    "defesaMental": 17,
     "soak": {
       "impacto": 2,
       "letal": 1,
@@ -475,7 +475,7 @@
     ],
     "pv": 40,
     "defesa": 11,
-    "defesaMental": 7,
+    "defesaMental": 20,
     "soak": {
       "impacto": 11,
       "letal": 8,
@@ -524,7 +524,7 @@
     ],
     "pv": 37,
     "defesa": 19,
-    "defesaMental": 9,
+    "defesaMental": 22,
     "soak": {
       "impacto": 8,
       "letal": 6,
@@ -573,7 +573,7 @@
     ],
     "pv": 34,
     "defesa": 14,
-    "defesaMental": 3,
+    "defesaMental": 10,
     "soak": {
       "impacto": 3,
       "letal": 1,
@@ -618,7 +618,7 @@
     ],
     "pv": 40,
     "defesa": 4,
-    "defesaMental": 4,
+    "defesaMental": 11,
     "soak": {
       "impacto": 6,
       "letal": 3,
@@ -664,7 +664,7 @@
     ],
     "pv": 37,
     "defesa": 13,
-    "defesaMental": 7,
+    "defesaMental": 20,
     "soak": {
       "impacto": 10,
       "letal": 8,
@@ -714,7 +714,7 @@
     ],
     "pv": 34,
     "defesa": 11,
-    "defesaMental": 6,
+    "defesaMental": 14,
     "soak": {
       "impacto": 3,
       "letal": 1,
@@ -764,7 +764,7 @@
     ],
     "pv": 34,
     "defesa": 10,
-    "defesaMental": 5,
+    "defesaMental": 15,
     "soak": {
       "impacto": 5,
       "letal": 3,
@@ -809,7 +809,7 @@
     ],
     "pv": 34,
     "defesa": 17,
-    "defesaMental": 7,
+    "defesaMental": 17,
     "soak": {
       "impacto": 3,
       "letal": 1,
@@ -855,7 +855,7 @@
     ],
     "pv": 43,
     "defesa": 4,
-    "defesaMental": 4,
+    "defesaMental": 11,
     "soak": {
       "impacto": 8,
       "letal": 5,
@@ -900,7 +900,7 @@
     ],
     "pv": 34,
     "defesa": 14,
-    "defesaMental": 3,
+    "defesaMental": 8,
     "soak": {
       "impacto": 3,
       "letal": 1,
@@ -947,7 +947,7 @@
     ],
     "pv": 34,
     "defesa": 14,
-    "defesaMental": 8,
+    "defesaMental": 20,
     "soak": {
       "impacto": 3,
       "letal": 1,

@@ -22,7 +22,7 @@ Variam de 1 a 5 (para humanos comuns), agrupados em três tríades.
 Variam de 0 a 5, em **quatro grupos de sete**. Cada perícia pareia, conforme o uso, com um ou mais **Atributos** — a mesma Investigação é Percepção para *achar*, Raciocínio para *deduzir* e Inteligência para *reconstituir*. Além destas, há **Habilidades Secundárias** ilimitadas e específicas (Ferraria, Herbologia, Falsificação, Navegação…), mais baratas e criadas conforme a história pede.
 
 #### Combate
-Briga · Armas de Corte · Armas de Impacto · Armas de Haste · Armas à Distância · Esquiva · Escudos
+Briga · Armas de Uma Mão · Armas de Duas Mãos · Arremesso · Atirador · Esquiva · Escudos
 
 #### Físicas
 Halterofilismo · Acrobacias · Corrida · Resistência · Furtividade · Prontidão · Integridade
@@ -33,7 +33,7 @@ Persuasão · Oratória · Etiqueta · Empatia · Manha · Liderança · Negocia
 #### Saber
 Investigação · Conhecimentos Gerais · Ocultismo · Medicina · Burocracia · Sobrevivência · Ofícios Gerais
 
-<p class="muted">O tipo de dano de uma arma (corte, perfuração ou impacto) é propriedade da arma, não da perícia: "Armas de Corte" cobre tanto a espada que retalha quanto a adaga que perfura.</p>
+<p class="muted">As perícias de arma se organizam pelo <strong>punho</strong> (uma mão, duas mãos), não pelo tipo de dano: "Armas de Uma Mão" cobre tanto a espada que retalha quanto a maça que esmaga. Corte, perfuração e impacto são propriedade da <em>arma</em> — a mesma perícia empunha vários estilos.</p>
 
 ## Especialidade — a arte de errar menos
 

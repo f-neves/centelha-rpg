@@ -4,7 +4,7 @@
     "nome": "Punho de Ferro",
     "trilha": "corpo",
     "atributo": "forca",
-    "habilidade_ancora": "Briga / Impacto",
+    "habilidade_ancora": "Briga",
     "descricao": "o poder que esmaga guardas, ossos e muralhas"
   },
   {
@@ -20,7 +20,7 @@
     "nome": "Quebra-Muralhas",
     "trilha": "corpo",
     "atributo": "forca",
-    "habilidade_ancora": "Armas de Impacto",
+    "habilidade_ancora": "Armas de Duas Mãos",
     "descricao": "destruir estruturas e defesas"
   },
   {
@@ -68,7 +68,7 @@
     "nome": "Olho de Águia",
     "trilha": "corpo",
     "atributo": "destreza",
-    "habilidade_ancora": "Armas à Distância",
+    "habilidade_ancora": "Atirador",
     "descricao": "a flecha que nunca erra"
   },
   {
@@ -76,7 +76,7 @@
     "nome": "Dança da Lâmina",
     "trilha": "corpo",
     "atributo": "destreza",
-    "habilidade_ancora": "Armas de Corte",
+    "habilidade_ancora": "Armas de Uma Mão",
     "descricao": "a esgrima que vira arte"
   },
   {

@@ -63,9 +63,9 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Percepção 5 (pico) · Destreza, Vigor 4 · Força, Raciocínio, Inteligência 3 · Carisma, Manipulação, Aparência 2 | 350 |
-| Habilidades | Furtividade 4 (pico) · Armas à Distância, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Medicina 1 | 235 |
+| Habilidades | Furtividade 4 (pico) · Atirador, Prontidão, Esquiva, Corrida, Sobrevivência 3 · Investigação, Briga 2 · Medicina 1 | 235 |
 | Secundárias | três em 2 (Rastreio, Escalada, Falcoaria) | 18 |
-| Especialidades | Furtividade, Armas à Distância, Sobrevivência | 30 |
+| Especialidades | Furtividade, Atirador, Sobrevivência | 30 |
 | Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 90 |
 | Força de Vontade | 5 → 7 | 26 |
 | Centelha | 0 → 2 | 45 |
@@ -79,7 +79,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Destreza 5 (pico) · Força, Vigor, Carisma 4 · Percepção, Raciocínio, Inteligência, Manipulação, Aparência 3 | 480 |
-| Habilidades | Armas de Corte 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Atletismo, Integridade, Comando, Intimidação, Resistência, Liderança) · duas em 2 · uma em 1 | 325 |
+| Habilidades | Armas de Uma Mão 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Corrida, Integridade, Negociação, Liderança, Resistência, Halterofilismo) · duas em 2 · uma em 1 | 325 |
 | Secundárias | seis em 2–3 (Etiqueta, Cavalgar, Jogos de Guerra…) | 48 |
 | Especialidades | cinco (Armas de Corte, Integridade, Comando…) | 50 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |

@@ -7,32 +7,32 @@
     "descricao": "Combate corpo-a-corpo desarmado: socos, agarrões, projeções."
   },
   {
-    "id": "armas-de-corte",
-    "nome": "Armas de Corte",
+    "id": "armas-uma-mao",
+    "nome": "Armas de Uma Mão",
     "grupo": "combate",
     "atributos": ["destreza", "forca"],
-    "descricao": "Espadas, machados, adagas — lâminas que retalham ou perfuram."
+    "descricao": "Lâminas, maças e machados de uma mão — esgrima e golpe, da finesse (Destreza) à potência (Força). O tipo de dano vem da arma, não da perícia."
   },
   {
-    "id": "armas-de-impacto",
-    "nome": "Armas de Impacto",
+    "id": "armas-duas-maos",
+    "nome": "Armas de Duas Mãos",
     "grupo": "combate",
     "atributos": ["forca", "destreza"],
-    "descricao": "Maças, martelos, bastões — golpes contundentes."
+    "descricao": "Montantes, martelos, lanças e alabardas — armas grandes de duas mãos: alcance, potência e ruptura."
   },
   {
-    "id": "armas-de-haste",
-    "nome": "Armas de Haste",
+    "id": "arremesso",
+    "nome": "Arremesso",
     "grupo": "combate",
     "atributos": ["destreza", "forca"],
-    "descricao": "Lanças, alabardas — alcance e controle de distância."
+    "descricao": "Lançar armas e objetos: adagas, azagaias, machados de arremesso — precisão (Destreza) e potência (Força)."
   },
   {
-    "id": "armas-a-distancia",
-    "nome": "Armas à Distância",
+    "id": "atirador",
+    "nome": "Atirador",
     "grupo": "combate",
     "atributos": ["percepcao", "destreza"],
-    "descricao": "Arcos, bestas e armas de arremesso (mira pela Percepção; Destreza é muito situacional)."
+    "descricao": "Arcos e bestas — o tiro mirado, conduzido pela Percepção (Destreza é muito situacional)."
   },
   {
     "id": "esquiva",
