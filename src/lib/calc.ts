@@ -60,6 +60,12 @@ export function mana(opts: { centelha: number; vontade: number }) {
   return opts.centelha * d.centelhaMult + (d.maisVontade ? opts.vontade : 0);
 }
 
+/** Fôlego: reserva física p/ ações comuns. base + Vigor×5 + Resistência×4 + Vontade×2. */
+export function folego(opts: { vigor: number; resistencia: number; vontade: number }) {
+  const d = regras.derivados.folego as { base: number; vigorMult: number; resistenciaMult: number; vontadeMult: number };
+  return d.base + opts.vigor * d.vigorMult + opts.resistencia * d.resistenciaMult + opts.vontade * d.vontadeMult;
+}
+
 /** Iniciativa: 1d6 + Raciocínio + Prontidão. */
 export function iniciativa(traits: Record<string, number>) {
   const d = regras.derivados.iniciativa;

@@ -72,7 +72,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 </Base>
 
 <script>
-  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, energia, mana, iniciativa, deslocamento, ataqueCentelha, regras } from '../lib/calc';
+  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, regras } from '../lib/calc';
   import ATTRS_D from '../data/atributos.json';
   import HAB_D from '../data/habilidades.json';
   import VIRT_D from '../data/virtudes.json';
@@ -268,6 +268,7 @@ import RoladorDados from '../components/RoladorDados.astro';
       r('Soak (Imp/Letal)', `${soakI} / ${soakL}${arm.protecao ? ` · Prot ${arm.protecao}` : ''}`, 'Vigor (½ no letal) + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade') +
+      r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick') +
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão') +
       (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), corrida: SK('corrida'), acrobacias: SK('acrobacias'), centelha: C });
         return r('Deslocamento livre', `${dz.normal} m`, '(Des + Corrida) ÷ 2 · distância na ação') +

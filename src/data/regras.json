@@ -231,6 +231,15 @@
       "centelhaMult": 2,
       "maisVontade": true
     },
+    "folego": {
+      "nota": "Reserva física p/ ações comuns (atacar, defender, correr, saltar, carregar). Recupera +Vigor por Tick parado. Custo = taxa por Tick enquanto a ação dura: LEVE = Vigor/Tick (net 0, sustentável a luta toda); PESADA = +sobrecarga/Tick acima (custo líquido = sobrecarga × Ticks da ação). Fôlego 0 = exausto: só ações leves até recuperar um respiro. Base por raça (humano = 10).",
+      "base": 10,
+      "vigorMult": 5,
+      "resistenciaMult": 4,
+      "vontadeMult": 2,
+      "recuperaPorTickAtributo": "vigor",
+      "sobrecargaPesada": 2
+    },
     "iniciativa": {
       "dado": 6,
       "soma": [

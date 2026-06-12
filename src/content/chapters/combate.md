@@ -52,6 +52,19 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 
 <p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso — Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, a Acrobacia controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
+## Fôlego
+
+Toda ação física — atacar, defender, correr, saltar, carregar peso — vem do **Fôlego**, a reserva do corpo. É grande e se renova sozinha, mas o esforço pesado a queima rápido: depois de uma rajada, você precisa de um respiro.
+
+<p class="formula">Fôlego = 10 (base racial) + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
+
+Parado, você **recupera +Vigor de Fôlego por Tick**. O gasto é uma *taxa por Tick* enquanto a ação dura:
+
+- **Ações leves** — ataque normal de uma mão, passo, pulo baixo, carga leve — custam exatamente o que você recupera: **net zero**. Você as sustenta a luta inteira sem cansar.
+- **Ações pesadas** — golpe forte ou de duas mãos, sprint, salto longo, carga pesada — drenam **+2 de Fôlego por Tick** acima da recuperação. O custo líquido é **2 × os Ticks da ação**: um golpe de Speed 7 tira **14**; o sprint, 2 por Tick corrido; um salto longo (3 Ticks), 6.
+
+<p class="muted">Com o Fôlego em <strong>0</strong> você está <strong>exausto</strong>: só ações leves, até recuperar um respiro. Um herói típico (Vigor/Resistência 4, Vontade 7 → Fôlego ~50) aguenta umas <strong>3–4 ações pesadas</strong> seguidas antes de precisar parar; uns 12 Ticks de calmaria enchem o tanque de novo. Vigor e Resistência altos = mais rajada e recarga mais rápida.</p>
+
 ## Ataque e Defesa
 
 Para atacar: monte o pool de Atributo + Habilidade, some o **Acerto da Arma**, aplique Especialidade, Stunts e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
