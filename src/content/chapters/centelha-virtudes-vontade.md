@@ -40,7 +40,7 @@ Para **resistir** a uma pressão, role a Virtude apropriada somada a um Atributo
 
 A **Defesa Mental** é o muro passivo que manipulações e poderes mentais precisam superar:
 
-<p class="formula">Defesa Mental = (Integridade × 2) + Força de Vontade + Centelha</p>
+<p class="formula">Defesa Mental = (Integridade × 2) + Força de Vontade + Centelha×2</p>
 
 <p class="muted">Uma Integridade baixa derruba a Defesa Mental — quem está quebrado por dentro é mais fácil de dobrar.</p>
 

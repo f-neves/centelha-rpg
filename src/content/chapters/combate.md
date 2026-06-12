@@ -54,13 +54,15 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 
 Para atacar: monte o pool de Atributo + Habilidade, some o **Acerto da Arma**, aplique Especialidade, Stunts e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
 
-<p class="formula"> Ataque = (Destreza + Habilidade + Especialidade) + Arma</p>
+<p class="formula"> Ataque = (Destreza + Habilidade + Especialidade) + Arma + Centelha×2</p>
 
 A Defesa é um valor **fixo** e **passivo**.
 
-<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha</p>
+<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha×2</p>
 
 Use **Esquiva** (com a habilidade Esquiva, mais a mobilidade do terreno) ou **Bloqueio** (com a perícia da própria arma ou Escudos, mais a Defesa da Arma e o escudo). Escolha a melhor — mas nem tudo se bloqueia.
+
+<p class="muted">A <strong>Centelha</strong> soma <strong>+2 por ponto</strong> dos dois lados — ao ataque e às três defesas (Esquiva, Bloqueio e Mental). Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda.</p>
 
 <div class="callout"><span class="lbl">Quase Acerto</span>Errar por pouco — dentro de uma <strong>Margem</strong> igual ao <strong>Bônus de Quase-Acerto da arma + sua Centelha</strong> — ainda raspa o alvo. Armas leves e rápidas têm Bônus QA alto (raspam muito, mas de leve); armas pesadas têm Bônus QA baixo (raspam raro, mas fundo). O raspão causa o <strong>Dano de Quase-Acerto da arma</strong> (leve 1 · média 2 · pesada 3), <strong>sem o Soak normal</strong>, mas reduzido pela <strong>Redução de Quase-Acerto da armadura</strong> (leve 1 · média 2 · pesada 3, mínimo 0). A armadura <em>não</em> estreita a Margem — você nica o alvo blindado igual, mas a placa absorve o arranhão. Quanto mais Centelha, mais largo o raspão.</div>
 

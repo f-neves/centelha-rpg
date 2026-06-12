@@ -29,16 +29,22 @@ export function pv(vigor: number) {
   return d.base + vigor * d.vigorMult;
 }
 
-/** Defesa (Esquiva): (Destreza + Habilidade) × 2 + Especialidade + Centelha. */
+/** Defesa (Esquiva/Bloqueio): (Destreza + Habilidade) × 2 + Especialidade + Centelha×2. */
 export function defesa(opts: { destreza: number; habilidade: number; especialidade?: number; centelha: number }) {
-  const d = regras.derivados.defesa;
-  return (opts.destreza + opts.habilidade) * d.mult + (opts.especialidade ?? 0) + opts.centelha;
+  const d = regras.derivados.defesa as { mult: number; centelhaMult?: number };
+  return (opts.destreza + opts.habilidade) * d.mult + (opts.especialidade ?? 0) + opts.centelha * (d.centelhaMult ?? 1);
 }
 
-/** Defesa Mental: Integridade×2 + Vontade + Centelha. Integridade é a perícia homônima. */
+/** Defesa Mental: Integridade×2 + Vontade + Centelha×2. Integridade é a perícia homônima. */
 export function defesaMental(opts: { integridade: number; vontade: number; centelha: number }) {
-  const d = regras.derivados.defesaMental;
-  return opts.integridade * d.mult + (d.maisVontade ? opts.vontade : 0) + (d.maisCentelha ? opts.centelha : 0);
+  const d = regras.derivados.defesaMental as { mult: number; maisVontade?: boolean; maisCentelha?: boolean; centelhaMult?: number };
+  return opts.integridade * d.mult + (d.maisVontade ? opts.vontade : 0) + (d.maisCentelha ? opts.centelha * (d.centelhaMult ?? 1) : 0);
+}
+
+/** Bônus de Centelha somado à SOMA do ataque (simétrico às defesas). */
+export function ataqueCentelha(centelha: number) {
+  const d = regras.derivados.ataque as { centelhaMult?: number };
+  return centelha * (d?.centelhaMult ?? 0);
 }
 
 /** Energia: (Centelha×3) + soma das Virtudes + Vontade. */

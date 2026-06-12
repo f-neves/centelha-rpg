@@ -16,14 +16,14 @@ function stat(b) {
   const C = b.centelha || 0;
   const pv = D.pv.base + at.vigor * D.pv.vigorMult;
   const espEsq = (b.especialidades && b.especialidades.esquiva) || 0;
-  const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + C + (arm.esquiva || 0);
+  const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + C * (D.defesa.centelhaMult ?? 1) + (arm.esquiva || 0);
   const integ = pe.integridade ?? b.integridade ?? 2;
-  const defesaMental = integ * D.defesaMental.mult + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + (D.defesaMental.maisCentelha ? C : 0);
+  const defesaMental = integ * D.defesaMental.mult + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + (D.defesaMental.maisCentelha ? C * (D.defesaMental.centelhaMult ?? 1) : 0);
   const ini = at.raciocinio + (pe.prontidao || 0);
   const ataques = (b.ataques || []).map((a) => {
     const soma = (at[a.atrib] || 0) + (pe[a.pericia] || 0);
     const dados = fl(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
-    const acerto = a.acerto || 0;
+    const acerto = (a.acerto || 0) + C * (D.ataque?.centelhaMult ?? 0);
     const pool = `${dados}d6${bonus ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`;
     const forcaAp = a.mao === 2 ? at.forca : fl(at.forca / 2);
     const fa = a.distancia ? 0 : forcaAp;

@@ -204,12 +204,18 @@
       "atributo": "destreza",
       "mult": 2,
       "especialidade": true,
-      "maisCentelha": true
+      "maisCentelha": true,
+      "centelhaMult": 2
     },
     "defesaMental": {
       "mult": 2,
       "maisVontade": true,
-      "maisCentelha": true
+      "maisCentelha": true,
+      "centelhaMult": 2
+    },
+    "ataque": {
+      "nota": "Bônus de Centelha somado à soma do ataque (esquiva/bloqueio/mental ganham o mesmo nas defesas).",
+      "centelhaMult": 2
     },
     "energia": {
       "centelhaMult": 3,

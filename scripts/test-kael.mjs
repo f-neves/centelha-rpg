@@ -12,8 +12,8 @@ const esquiva = 3, espEsq = 0, prontidao = 3, cent = 2, vont = 7, integridade = 
 const V = { compaixao: 2, conviccao: 3, temperanca: 2, valor: 4 };
 
 const pv = D.pv.base + at.vigor * D.pv.vigorMult;
-const defesa = (at.destreza + esquiva) * D.defesa.mult + espEsq + cent;
-const defM = integridade * D.defesaMental.mult + (D.defesaMental.maisVontade ? vont : 0) + (D.defesaMental.maisCentelha ? cent : 0);
+const defesa = (at.destreza + esquiva) * D.defesa.mult + espEsq + cent * (D.defesa.centelhaMult ?? 1);
+const defM = integridade * D.defesaMental.mult + (D.defesaMental.maisVontade ? vont : 0) + (D.defesaMental.maisCentelha ? cent * (D.defesaMental.centelhaMult ?? 1) : 0);
 const energia = cent * D.energia.centelhaMult + (V.compaixao + V.conviccao + V.temperanca + V.valor) + vont;
 const mana = cent * D.mana.centelhaMult + vont;
 const ini = at.raciocinio + prontidao;
@@ -21,7 +21,7 @@ const dz = D.deslocamento, traits = { forca: at.forca, destreza: at.destreza, co
 const dc = (c) => Math.round(Object.entries(c).reduce((s, [k, v]) => s + (traits[k] || 0) * v, 0));
 const desl = { arr: dc(dz.arranque), cor: dc(dz.corrida), nor: dc(dz.normal), sv: dc(dz.saltoVertical), shp: dc(dz.saltoHorizontalParado), shc: dc(dz.saltoHorizontalCorrendo) };
 
-const esperado = { pv: 37, defesa: 16, defM: 13, energia: 24, mana: 11, ini: 6, deslArr: 7, deslCor: 9, deslNor: 4, saltoV: 176, saltoHP: 3, saltoHC: 11 };
+const esperado = { pv: 37, defesa: 18, defM: 15, energia: 24, mana: 11, ini: 6, deslArr: 7, deslCor: 9, deslNor: 4, saltoV: 176, saltoHP: 3, saltoHC: 11 };
 const got = { pv, defesa, defM, energia, mana, ini, deslArr: desl.arr, deslCor: desl.cor, deslNor: desl.nor, saltoV: desl.sv, saltoHP: desl.shp, saltoHC: desl.shc };
 const erros = Object.keys(esperado).filter((k) => got[k] !== esperado[k]);
 if (erros.length) {
@@ -29,4 +29,4 @@ if (erros.length) {
   for (const k of erros) console.error(`  ${k}: esperado ${esperado[k]}, obtido ${got[k]}`);
   process.exit(1);
 }
-console.log('✓ Regressão Kael OK — PV 37 · Defesa 16 · Def. Mental 13 · Energia 24 · Mana 11 · Iniciativa 1d6+6 · Arranque 7/Corrida 9 m·s · Livre 4 m · Salto V176/HP3/HC11.');
+console.log('✓ Regressão Kael OK — PV 37 · Defesa 18 · Def. Mental 15 · Energia 24 · Mana 11 · Iniciativa 1d6+6 · Arranque 7/Corrida 9 m·s · Livre 4 m · Salto V176/HP3/HC11.');

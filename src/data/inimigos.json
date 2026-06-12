@@ -321,8 +321,8 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 19,
-    "defesaMental": 15,
+    "defesa": 20,
+    "defesaMental": 16,
     "soak": {
       "impacto": 5,
       "letal": 3,
@@ -343,7 +343,7 @@
     "ataques": [
       {
         "nome": "Adaga (Ágil, Perf. 2)",
-        "pool": "4d6+2 +2",
+        "pool": "4d6+2 +4",
         "dano": "1d6 +1 perfurante · Pen 2",
         "ticks": 5,
         "notas": "Ágil: usa Destreza no dano"
@@ -372,8 +372,8 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 19,
-    "defesaMental": 17,
+    "defesa": 20,
+    "defesaMental": 18,
     "soak": {
       "impacto": 5,
       "letal": 3,
@@ -394,7 +394,7 @@
     "ataques": [
       {
         "nome": "Florete (Ágil, Perf. 1)",
-        "pool": "5d6 +2",
+        "pool": "5d6 +4",
         "dano": "1d6 +1 perfurante · Pen 1",
         "ticks": 5
       }
@@ -423,8 +423,8 @@
       "arcano"
     ],
     "pv": 31,
-    "defesa": 11,
-    "defesaMental": 17,
+    "defesa": 12,
+    "defesaMental": 18,
     "soak": {
       "impacto": 2,
       "letal": 1,
@@ -445,7 +445,7 @@
     "ataques": [
       {
         "nome": "Dardo flamejante (Fogo 1)",
-        "pool": "3d6+2",
+        "pool": "3d6+2 +2",
         "dano": "1d6 fogo",
         "ticks": 6,
         "notas": "Custa 1 Mana; resistido por Soak/Esquiva"
@@ -474,8 +474,8 @@
       "centelha"
     ],
     "pv": 40,
-    "defesa": 11,
-    "defesaMental": 20,
+    "defesa": 12,
+    "defesaMental": 21,
     "soak": {
       "impacto": 11,
       "letal": 8,
@@ -496,7 +496,7 @@
     "ataques": [
       {
         "nome": "Montante",
-        "pool": "4d6",
+        "pool": "4d6 +2",
         "dano": "3d6 +4 corte",
         "ticks": 7
       }
@@ -523,8 +523,8 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 19,
-    "defesaMental": 22,
+    "defesa": 21,
+    "defesaMental": 24,
     "soak": {
       "impacto": 8,
       "letal": 6,
@@ -545,7 +545,7 @@
     "ataques": [
       {
         "nome": "Espada longa (golpe duplo)",
-        "pool": "5d6 +1",
+        "pool": "5d6 +5",
         "dano": "2d6 +2 corte",
         "ticks": 6,
         "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
@@ -663,8 +663,8 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 13,
-    "defesaMental": 20,
+    "defesa": 14,
+    "defesaMental": 21,
     "soak": {
       "impacto": 10,
       "letal": 8,
@@ -685,7 +685,7 @@
     "ataques": [
       {
         "nome": "Espada longa",
-        "pool": "4d6 +1",
+        "pool": "4d6 +3",
         "dano": "2d6 +1 corte",
         "ticks": 6
       }
@@ -713,8 +713,8 @@
       "arcano"
     ],
     "pv": 34,
-    "defesa": 11,
-    "defesaMental": 14,
+    "defesa": 12,
+    "defesaMental": 15,
     "soak": {
       "impacto": 3,
       "letal": 1,
@@ -735,7 +735,7 @@
     "ataques": [
       {
         "nome": "Toque mórbido (Morte 1)",
-        "pool": "3d6+2",
+        "pool": "3d6+2 +2",
         "dano": "1d6 necrótico",
         "ticks": 6,
         "notas": "Dreno: cura o cultista"
@@ -808,8 +808,8 @@
       "espírito"
     ],
     "pv": 34,
-    "defesa": 17,
-    "defesaMental": 17,
+    "defesa": 18,
+    "defesaMental": 18,
     "soak": {
       "impacto": 3,
       "letal": 1,
@@ -830,7 +830,7 @@
     "ataques": [
       {
         "nome": "Toque gélido",
-        "pool": "2d6",
+        "pool": "2d6 +2",
         "dano": "2d6 +2 necrótico (vs Def. Mental)",
         "ticks": 5,
         "notas": "gela a vontade do alvo"
@@ -946,8 +946,8 @@
       "arcano"
     ],
     "pv": 34,
-    "defesa": 14,
-    "defesaMental": 20,
+    "defesa": 16,
+    "defesaMental": 22,
     "soak": {
       "impacto": 3,
       "letal": 1,
@@ -968,7 +968,7 @@
     "ataques": [
       {
         "nome": "Bola de fogo (Fogo 3)",
-        "pool": "5d6",
+        "pool": "5d6 +4",
         "dano": "3d6 fogo (área)",
         "ticks": 6,
         "notas": "3 Mana; explosão em área"
