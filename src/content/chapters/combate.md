@@ -9,7 +9,9 @@ O combate corre numa linha do tempo de **Ticks** (cada um ≈ **1 segundo**), n�
 
 ## Iniciativa e a Escala de Speed
 
-No início, role a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tira o maior valor age primeiro; a diferença para os demais vira a distância, em Ticks, até a vez de cada um.
+No início, cada um rola a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tirar o maior valor começa no **Tick 0**; todos os demais começam no **Tick 1**. A partir daí, a distância pesa: a cada **6 pontos** abaixo da maior iniciativa, o retardatário **começa 1 Tick mais tarde** e **perde 1d6 na primeira ação** (pego no contrapé). A penalidade é ⌊(maior − sua) ÷ 6⌋, em Ticks e em dados. (Empate na maior iniciativa: começa quem tiver o maior Raciocínio; persistindo, decidam no 1d6.)
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>A maior iniciativa da cena foi <strong>14</strong>. Quem tirou de <strong>9 a 13</strong> (1–5 atrás) começa no Tick 1, sem perda. Quem tirou de <strong>3 a 8</strong> (6–11 atrás) começa no <strong>Tick 2</strong> e <strong>perde 1d6</strong> na primeira ação. Quem tirou <strong>1 ou 2</strong> (12–13 atrás) começa no <strong>Tick 3</strong> e <strong>perde 2d6</strong>. A perda vale só para a <em>primeira</em> ação — depois, todos jogam em pé de igualdade na linha de Ticks.</div>
 
 | Ticks | Tipo de ação | Exemplos |
 |:---:|---|---|

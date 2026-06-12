@@ -231,7 +231,10 @@
       "soma": [
         "raciocinio",
         "prontidao"
-      ]
+      ],
+      "nota": "Role 1d6 + Raciocínio + Prontidão. O maior começa no Tick 0; os demais no Tick 1. A cada 'gapPorPenalidade' pontos abaixo da maior iniciativa, o participante começa 1 Tick depois E perde 1d6 na primeira ação. Penalidade = ⌊(maior − sua) / gapPorPenalidade⌋ (em Ticks somados ao baseTickNaoPrimeiro, e em d6 da 1ª ação).",
+      "baseTickNaoPrimeiro": 1,
+      "gapPorPenalidade": 6
     },
     "deslocamento": {
       "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação. Corrida (Speed 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). Salto (Speed 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
