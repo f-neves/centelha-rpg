@@ -23,15 +23,18 @@ No início, role a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tira o 
 
 ## Deslocamento
 
-Mover-se tem três medidas. Como cada Tick vale ~1 segundo, a **Corrida** é uma *velocidade* (m/s; × Ticks = distância); as outras são distâncias fixas. Arredonde ao inteiro mais próximo.
+O **Deslocamento livre** é a distância que você desliza **de graça durante outra ação** (atacar, conjurar) — em qualquer direção, sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia:
 
-| Medida | Fórmula | Unidade | Quando |
-|---|---|:---:|---|
-| **Deslocamento livre** | (Destreza + Corrida) ÷ 2 | **m** | a distância que você desliza **durante outra ação** (normalmente um ataque), sem gastá-la — movível em qualquer direção: o arqueiro que recua e dispara, o duelista que circula enquanto golpeia |
-| **Velocidade de Corrida** | Destreza × 1,5 + Corrida | **m/s** | quando você **gasta a ação correndo** — a velocidade sustentada, Tick após Tick |
-| **Pulo** | (Força × 20) + (Acrobacias × 10) + (Destreza × 4) | **cm** | o **salto** — alcance de um pulo (com impulso ou parado), por cima de um obstáculo ou à frente para fechar distância. **+50 cm por nível de Centelha.** |
+<p class="formula">Deslocamento livre (m) = (Destreza + Corrida) ÷ 2</p>
 
-<p class="muted">O Deslocamento livre é o reposicionamento que cabe no tempo de um golpe. O <strong>Pulo</strong> é a explosão de força do corpo: a <strong>Força</strong> lança, a <strong>Acrobacia</strong> controla, a <strong>Destreza</strong> ajusta — e a <strong>Centelha</strong> rompe os limites mortais (+50 cm por nível, do salto humano ao pulo lendário).</p>
+Para ir além, você gasta a vez numa **ação de movimento**. Cada Tick vale ~1 segundo.
+
+| Ação de movimento | Alcance | Fórmula |
+|---|---|---|
+| **Corrida** | velocidade sustentada (m/s; × Ticks corridos = distância) | Destreza × 1,5 + Corrida |
+| **Pulo** | salto único — parado ou com impulso (cm) | (Força × 20) + (Acrobacias × 10) + (Destreza × 4) + 50 por **Centelha** |
+
+<p class="muted">A <strong>Corrida</strong> sustentada vive da Destreza e do treino; o <strong>Pulo</strong> é a explosão de força do corpo — a Força lança, a Acrobacia controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do salto humano (~1 m) ao pulo lendário.</p>
 
 ## Ataque e Defesa
 
