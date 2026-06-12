@@ -286,7 +286,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     const flat = (w.acerto || 0) + ataqueCentelha(C);
     const pool = `${dados}d6${bonus ? '+2' : ''}${flat ? ` +${flat}` : ''}`;
     const dist = w.tags.includes('distância');
-    const forcaAp = dist ? 0 : (w.maos === 2 ? forca : Math.floor(forca / 2));
+    const fm = regras.derivados.danoForca; const forcaAp = dist ? 0 : forca * (w.maos === 2 ? fm.duasMaos : fm.umaMao);
     const dano = `${w.dado}d6${forcaAp ? ` +${forcaAp}` : ''} ${w.tipoDano}${w.pen ? ` · Pen ${w.pen}` : ''}`;
     const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, especialidade: S.spec[w.pericia] || S.spec2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqueio || 0);
     el('combate').innerHTML =

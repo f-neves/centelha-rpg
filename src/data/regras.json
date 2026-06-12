@@ -200,6 +200,11 @@
       "base": 25,
       "vigorMult": 3
     },
+    "danoForca": {
+      "nota": "Multiplicador da Força somada ao dano por nº de mãos. À distância = 0.",
+      "umaMao": 1,
+      "duasMaos": 2
+    },
     "defesa": {
       "atributo": "destreza",
       "mult": 2,

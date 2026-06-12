@@ -34,7 +34,7 @@
       {
         "nome": "Forcado/Pancada",
         "pool": "1d6+2",
-        "dano": "1d6 +2 impacto",
+        "dano": "1d6 +4 impacto",
         "ticks": 5
       }
     ],
@@ -78,7 +78,7 @@
       {
         "nome": "Facão",
         "pool": "2d6+2 +2",
-        "dano": "1d6 +1 corte",
+        "dano": "1d6 +3 corte",
         "ticks": 5
       }
     ],
@@ -122,7 +122,7 @@
       {
         "nome": "Espada curta",
         "pool": "3d6 +2",
-        "dano": "1d6 +1 corte",
+        "dano": "1d6 +3 corte",
         "ticks": 5
       }
     ],
@@ -166,7 +166,7 @@
       {
         "nome": "Espada longa",
         "pool": "4d6 +1",
-        "dano": "2d6 +1 corte",
+        "dano": "2d6 +3 corte",
         "ticks": 6
       }
     ],
@@ -254,7 +254,7 @@
       {
         "nome": "Martelo de guerra",
         "pool": "4d6",
-        "dano": "3d6 +5 impacto",
+        "dano": "3d6 +10 impacto",
         "ticks": 7,
         "notas": "Ruptura: ignora Soak de armadura"
       }
@@ -299,7 +299,7 @@
       {
         "nome": "Espada longa",
         "pool": "4d6 +1",
-        "dano": "2d6 +1 corte",
+        "dano": "2d6 +3 corte",
         "ticks": 6
       }
     ],
@@ -344,7 +344,7 @@
       {
         "nome": "Adaga (Ágil, Perf. 2)",
         "pool": "4d6+2 +4",
-        "dano": "1d6 +1 perfurante · Pen 2",
+        "dano": "1d6 +3 perfurante · Pen 2",
         "ticks": 5,
         "notas": "Ágil: usa Destreza no dano"
       }
@@ -395,7 +395,7 @@
       {
         "nome": "Florete (Ágil, Perf. 1)",
         "pool": "5d6 +4",
-        "dano": "1d6 +1 perfurante · Pen 1",
+        "dano": "1d6 +3 perfurante · Pen 1",
         "ticks": 5
       }
     ],
@@ -497,7 +497,7 @@
       {
         "nome": "Montante",
         "pool": "4d6 +2",
-        "dano": "3d6 +4 corte",
+        "dano": "3d6 +8 corte",
         "ticks": 7
       }
     ],
@@ -546,7 +546,7 @@
       {
         "nome": "Espada longa (golpe duplo)",
         "pool": "5d6 +5",
-        "dano": "2d6 +2 corte",
+        "dano": "2d6 +4 corte",
         "ticks": 6,
         "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
       }
@@ -595,7 +595,7 @@
       {
         "nome": "Mordida",
         "pool": "3d6 +1",
-        "dano": "1d6 +3 perfurante",
+        "dano": "1d6 +6 perfurante",
         "ticks": 5,
         "notas": "Em matilha: ataca pelo flanco (−2 na Defesa do alvo)"
       }
@@ -640,7 +640,7 @@
       {
         "nome": "Garras",
         "pool": "4d6 +1",
-        "dano": "2d6 +5 corte",
+        "dano": "2d6 +10 corte",
         "ticks": 6,
         "notas": "Dilacerantes: golpe com Margem abre Sangramento (= Margem, máx 3); pode agarrar"
       }
@@ -686,7 +686,7 @@
       {
         "nome": "Espada longa",
         "pool": "4d6 +3",
-        "dano": "2d6 +1 corte",
+        "dano": "2d6 +3 corte",
         "ticks": 6
       }
     ],
@@ -786,7 +786,7 @@
       {
         "nome": "Espada enferrujada",
         "pool": "2d6+2 +1",
-        "dano": "1d6 +1 corte",
+        "dano": "1d6 +3 corte",
         "ticks": 5
       }
     ],
@@ -831,7 +831,7 @@
       {
         "nome": "Toque gélido",
         "pool": "2d6 +2",
-        "dano": "2d6 +2 necrótico (vs Def. Mental)",
+        "dano": "2d6 +4 necrótico (vs Def. Mental)",
         "ticks": 5,
         "notas": "gela a vontade do alvo"
       }
@@ -877,7 +877,7 @@
       {
         "nome": "Clava enorme",
         "pool": "4d6+2",
-        "dano": "3d6 +6 impacto",
+        "dano": "3d6 +12 impacto",
         "ticks": 7,
         "notas": "Ruptura; derruba o alvo"
       }
@@ -922,7 +922,7 @@
       {
         "nome": "Picada peçonhenta",
         "pool": "3d6+2 +1",
-        "dano": "1d6 +3 perfurante · Pen 1",
+        "dano": "1d6 +6 perfurante · Pen 1",
         "ticks": 5,
         "notas": "Veneno (efeito de Corpo): resista com Vigor + Convicção ou sofra −2 em ações por uma cena"
       }

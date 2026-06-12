@@ -25,7 +25,7 @@ function stat(b) {
     const dados = fl(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
     const acerto = (a.acerto || 0) + C * (D.ataque?.centelhaMult ?? 0);
     const pool = `${dados}d6${bonus ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`;
-    const forcaAp = a.mao === 2 ? at.forca : fl(at.forca / 2);
+    const fm = D.danoForca; const forcaAp = a.mao === 2 ? at.forca * fm.duasMaos : at.forca * fm.umaMao;
     const fa = a.distancia ? 0 : forcaAp;
     const dano = `${a.dado}d6${fa ? ` +${fa}` : ''} ${a.tipo}${a.pen ? ` · Pen ${a.pen}` : ''}`;
     return { nome: a.nome, pool, dano, ticks: a.ticks, ...(a.notas ? { notas: a.notas } : {}) };

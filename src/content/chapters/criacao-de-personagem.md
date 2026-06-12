@@ -80,8 +80,8 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 |---|---|:---:|
 | Atributos | Destreza 5 (pico) · Força, Vigor, Carisma 4 · Percepção, Raciocínio, Inteligência, Manipulação, Aparência 3 | 480 |
 | Habilidades | Armas de Uma Mão 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Corrida, Integridade, Negociação, Liderança, Resistência, Halterofilismo) · duas em 2 · uma em 1 | 325 |
-| Secundárias | seis em 2–3 (Etiqueta, Cavalgar, Jogos de Guerra…) | 48 |
-| Especialidades | cinco (Armas de Corte, Integridade, Comando…) | 50 |
+| Secundárias | seis em 2–3 (Estratégia, Cavalgar, Jogos de Guerra…) | 48 |
+| Especialidades | cinco (Armas de Uma Mão, Integridade, Liderança…) | 50 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
 | Força de Vontade | 5 → 8 | 42 |
 | Centelha | 0 → 2 | 45 |
@@ -118,9 +118,9 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Inteligência 5 (pico) · Manipulação, Percepção 4 · Raciocínio, Vigor, Destreza, Carisma 3 · Força, Aparência 2 | 380 |
-| Habilidades | Ocultismo 4 (pico) · Acadêmicos, Investigação, Esquiva, Prontidão 3 · Medicina, Resistência, Concussão, Furtividade, Etiqueta 2 · Linguística 1 | 250 |
+| Habilidades | Ocultismo 4 (pico) · Conhecimentos Gerais, Investigação, Esquiva, Prontidão 3 · Medicina, Resistência, Burocracia, Furtividade, Etiqueta 2 · Persuasão 1 | 250 |
 | Secundárias | oito (Astronomia, Alquimia, Heráldica, Caligrafia, Criptografia, Botânica…) | 66 |
-| Especialidades | seis (Ocultismo: invocação · Adivinhação · Acadêmicos…) | 60 |
+| Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos Gerais…) | 60 |
 | Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 105 |
 | Força de Vontade | 5 → 9 | 60 |
 | Centelha | 0 → 1 | 15 |
