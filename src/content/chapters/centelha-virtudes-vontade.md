@@ -15,7 +15,7 @@ A Centelha vai de 0 a 5 (e além, no futuro). Em **0** está o mortal comum — 
 |---|---|
 | Reforça defesas | +Centelha (1 por ponto) à Defesa e à Defesa Mental |
 | Dimensiona os pools | determina o tamanho das reservas de Energia e Mana |
-| Destrava os Caminhos | cada banda de poder exige uma Centelha mínima |
+| Destrava as Proezas | cada banda de poder exige uma Centelha mínima |
 
 É a principal forma de progredir depois que Atributos e Habilidades atingem o teto.
 

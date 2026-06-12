@@ -11,7 +11,7 @@ Um personagem é construído gastando **Experiência** (XP) a partir de valores-
 
 ## Pisos e princípios
 
-Tudo começa no mínimo e é comprado dali: **Atributos 2** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 5** · **Centelha 0** · qualquer **Caminho 0**.
+Tudo começa no mínimo e é comprado dali: **Atributos 2** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 5** · **Centelha 0** · qualquer **Proeza 0**.
 
 A **Centelha 0** é o mortal comum — cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial padrão: **1000 XP** (iniciante), **1400** (veterano) ou **1800** (herói). Com 1000 XP, um personagem já chega como Centelha 2, com vários atributos no teto de criação e um arsenal de Técnicas.
 
@@ -28,7 +28,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Virtude | novo × 5 | 1→2 = 10 · 2→3 = 15 |
 | Força de Vontade | novo × 2 | 5→6 = 12 |
 | Centelha | novo × 15 | 0→1 = 15 · 2→3 = 45 |
-| Técnica de Caminho | banda × 5 | banda 1 = 5 · banda 3 = 15 |
+| Técnica de Proeza | banda × 5 | banda 1 = 5 · banda 3 = 15 |
 | Nível de Arte (Arcano) | nível × 10 | nível 1 = 10 · nível 3 = 30 |
 
 <p class="muted">A Centelha cara reflete a raridade: alcançar Centelha 3 custa 90 XP acumulados; a Centelha 5, 225 — o trabalho de uma vida. Técnica de banda <em>N</em> exige Centelha ≥ ⌈N/3⌉; Arte de nível <em>N</em> exige Centelha &gt; 0 (qualquer fagulha) e Ocultismo ≥ N.</p>
@@ -54,7 +54,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 
 ## Três exemplos, um por orçamento
 
-Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1000), **Sora** no veterano (1400) e **Veil** no herói (1800). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Caminhos, Técnicas, perícias e especialidades. É o toolbox que carrega a profundidade.
+Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1000), **Sora** no veterano (1400) e **Veil** no herói (1800). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Proezas, Técnicas, perícias e especialidades. É o toolbox que carrega a profundidade.
 
 ### Kael, o Batedor — Iniciante (Centelha 2)
 
@@ -85,7 +85,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
 | Força de Vontade | 5 → 8 | 42 |
 | Centelha | 0 → 2 | 45 |
-| Técnicas | 24, dos Caminhos Comando, Pele de Pedra e Dança da Lâmina (bandas 1–4) | 260 |
+| Técnicas | 24, das Proezas Comando, Pele de Pedra e Dança da Lâmina (bandas 1–4) | 260 |
 | **Total** | | **1390** |
 
 <p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 18 · Energia 28 · Mana 12 · Iniciativa 1d6+6. Sobram 10 XP. Uma líder de tropa que comba posturas defensivas e golpes precisos.</p>

@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 export const BANDA_LABEL: Record<number, string> = { 1: 'Mortal+', 2: 'Herói', 3: 'Semideus', 4: 'Semideus', 5: 'Quase-deus' };
 
 const FEM = new Set(['Pele de Pedra', 'Dança da Lâmina', 'Voz de Mel', 'Lenda Viva', 'Mente Afiada', 'Máscara', 'Sombra', 'Teia', 'Serpente das Palavras', 'Marionete', 'Beleza Cativante', 'Aura', 'Máscara Impassível', 'Comunhão', 'Leitura Fria', 'Mente Serena', 'Musa', 'Brasa', 'Mão Veloz', 'Carne Teimosa']);
-/** "Caminho do/da X" conforme o gênero do nome. */
-export const caminhoComArtigo = (nome: string) => `Caminho ${FEM.has(nome) ? 'da' : 'do'} ${nome}`;
+/** "Proeza da/do X" conforme o gênero do nome. */
+export const caminhoComArtigo = (nome: string) => `Proeza ${FEM.has(nome) ? 'da' : 'do'} ${nome}`;
 export const TRILHA_LABEL: Record<string, string> = { corpo: 'Corpo', voz: 'Voz', mente: 'Mente' };
 export const TRILHA_SUB: Record<string, string> = {
   corpo: 'força, agilidade e resiliência do corpo',

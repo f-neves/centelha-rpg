@@ -94,7 +94,7 @@
       "spark",
       "poder"
     ],
-    "definicao": "O nível de poder pessoal (0–5), do mortal ao semideus. Destrava as bandas dos Caminhos e dimensiona Energia e Mana."
+    "definicao": "O nível de poder pessoal (0–5), do mortal ao semideus. Destrava as bandas das Proezas e dimensiona Energia e Mana."
   },
   {
     "id": "vontade",
@@ -111,7 +111,7 @@
     "aliases": [
       "reserva de técnicas"
     ],
-    "definicao": "Combustível dos Caminhos mundanos: (Centelha × 3) + soma das Virtudes + Vontade."
+    "definicao": "Combustível das Proezas mundanos: (Centelha × 3) + soma das Virtudes + Vontade."
   },
   {
     "id": "mana",
@@ -147,7 +147,7 @@
   },
   {
     "id": "caminho",
-    "termo": "Caminho",
+    "termo": "Proeza",
     "aliases": [
       "subcaminho",
       "trilha de técnicas"
@@ -162,7 +162,7 @@
       "manobra",
       "charm"
     ],
-    "definicao": "Cada nó de um Caminho: uma manobra, dom ou poder, com banda, tipo, custo e pré-requisitos."
+    "definicao": "Cada nó de uma Proeza: uma manobra, dom ou poder, com banda, tipo, custo e pré-requisitos."
   },
   {
     "id": "arte",

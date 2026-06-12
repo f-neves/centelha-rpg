@@ -5,15 +5,15 @@ import { loadData, BANDA_LABEL, custoTagTecnica } from '../lib/data';
 const d = await loadData();
 const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeCompare(d.C[b.caminho.id].nome) || a.banda - b.banda);
 ---
-<Base title="Técnicas" largura="wide" descricao="Todas as Técnicas dos Caminhos, com filtros por atributo, caminho, banda, tipo e custo.">
+<Base title="Técnicas" largura="wide" descricao="Todas as Técnicas das Proezas, com filtros por atributo, caminho, banda, tipo e custo.">
   <h1>Técnicas</h1>
-  <p class="lead">As {techs.length} Técnicas de todos os Caminhos. Filtre por atributo, caminho, banda ou tipo — ou busque pelo nome.</p>
+  <p class="lead">As {techs.length} Técnicas de todas as Proezas. Filtre por atributo, caminho, banda ou tipo — ou busque pelo nome.</p>
 
   <div class="filtros panel" role="region" aria-label="Filtros">
     <div class="f-row">
       <label>Buscar<input type="search" data-f="q" placeholder="nome ou efeito…" /></label>
       <label>Atributo<select data-f="atributo"><option value="">todos</option>{d.atributos.map((a) => <option value={a.id}>{a.nome}</option>)}</select></label>
-      <label>Caminho<select data-f="caminho"><option value="">todos</option>{[...d.caminhos].sort((a, b) => a.nome.localeCompare(b.nome)).map((c) => <option value={c.id} data-atr={c.atributo.id}>{c.nome}</option>)}</select></label>
+      <label>Proeza<select data-f="caminho"><option value="">todos</option>{[...d.caminhos].sort((a, b) => a.nome.localeCompare(b.nome)).map((c) => <option value={c.id} data-atr={c.atributo.id}>{c.nome}</option>)}</select></label>
     </div>
     <div class="f-row">
       <fieldset><legend>Banda</legend>{[1, 2, 3, 4, 5].map((b) => <label class="chk"><input type="checkbox" data-f="banda" value={b} />{b}</label>)}</fieldset>

@@ -25,7 +25,7 @@ const ogImage = Astro.site ? new URL(url('icon-512.png'), Astro.site).href : url
 const baseNoSlash = url('').replace(/\/$/, '');
 const partes = here.slice(baseNoSlash.length).split('/').filter(Boolean);
 const crumbs: { label: string; href?: string }[] = [{ label: 'Início', href: url('') }];
-if (partes[0] === 'caminhos' && partes[1]) crumbs.push({ label: 'Os Caminhos', href: url('caminhos') });
+if (partes[0] === 'caminhos' && partes[1]) crumbs.push({ label: 'As Proezas', href: url('caminhos') });
 if (partes.length) crumbs.push({ label: title });
 ---
 <!doctype html>

@@ -9,7 +9,7 @@
   ],
   "escalaCentelha": [
     { "nivel": 0, "rotulo": "Mortal", "texto": "Pessoa comum — cerca de 95% da população. Sem acesso a Técnicas ou Artes." },
-    { "nivel": 1, "rotulo": "Tocado (Mortal+)", "texto": "A fagulha acendeu: herói incipiente. Abre a banda 1 dos Caminhos." },
+    { "nivel": 1, "rotulo": "Tocado (Mortal+)", "texto": "A fagulha acendeu: herói incipiente. Abre a banda 1 das Proezas." },
     { "nivel": 2, "rotulo": "Herói", "texto": "Façanhas que assombram mortais; bandas 4–6." },
     { "nivel": 3, "rotulo": "Semideus", "texto": "Começa a quebrar as leis do mundo mundano; bandas 7–9." },
     { "nivel": 4, "rotulo": "Semideus maior", "texto": "Poder que molda regiões; bandas 10–12." },
@@ -121,7 +121,7 @@
     {
       "dif": 30,
       "desafio": "Sobre-humano",
-      "aaltura": "requer Centelha / Caminhos"
+      "aaltura": "requer Centelha / Proezas"
     }
   ],
   "bandas": [

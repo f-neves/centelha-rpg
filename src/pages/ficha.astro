@@ -52,7 +52,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   <h2 class="barh">Habilidades Secundárias <small>(nível×2 · esp. ×5)</small></h2>
   <div class="cols3" id="secondary"></div>
 
-  <h2 class="barh">Caminhos &amp; Técnicas <small>(custo banda×5)</small></h2>
+  <h2 class="barh">Proezas &amp; Técnicas <small>(custo banda×5)</small></h2>
   <div class="cam-tools"><button class="btn" id="cam-all">Expandir todos</button></div>
   <div class="cols3" id="tecnicas"></div>
 
@@ -104,7 +104,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   const SEC_NOME: Record<string, string> = Object.fromEntries(SECONDARY.map(([n]) => [slug(n), n]));
   const TRACO_DESC: Record<string, string> = {
-    centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava as bandas dos Caminhos e dimensiona Energia e Mana.',
+    centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava as bandas das Proezas e dimensiona Energia e Mana.',
     willpower: 'Reserva de determinação (piso 5). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
   };
   function openTraitModal(nm: HTMLElement) {
@@ -241,7 +241,7 @@ import RoladorDados from '../components/RoladorDados.astro';
         const desc = TECTEXT[id] ? `<div class="tdesc">${mdBold(TECTEXT[id])}</div>` : '';
         return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>b${b} · ${b * 5}</small></span>${desc}</div>`;
       }).join('');
-      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Caminho ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
+      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Proeza ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
     };
     el('tecnicas').innerHTML = col3(CAM_ORDER, card);
   }

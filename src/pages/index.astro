@@ -20,12 +20,12 @@ const capitulos = NAV.filter((n) => n.numeral);
     <div class="btn-row" style="justify-content:center;margin-top:1.4rem">
       <a class="btn primary" href={url('regras/coracao-do-sistema')}>Começar a ler</a>
       <a class="btn" href={url('ficha')}>Criar personagem</a>
-      <a class="btn" href={url('caminhos')}>Explorar Caminhos</a>
+      <a class="btn" href={url('caminhos')}>Explorar Proezas</a>
     </div>
   </header>
 
   <section style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem">
-    {[['Caminhos', nCam], ['Técnicas', nTec], ['Artes', nArt]].map(([k, v]) => (
+    {[['Proezas', nCam], ['Técnicas', nTec], ['Artes', nArt]].map(([k, v]) => (
       <div class="panel" style="text-align:center;min-width:8rem">
         <div class="cinzel" style="font-size:2rem;color:var(--accent)">{v}</div>
         <div class="muted">{k}</div>

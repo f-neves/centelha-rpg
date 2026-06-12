@@ -15,7 +15,7 @@ export const NAV = [
   { slug: 'regras/centelha-virtudes-vontade', titulo: 'Centelha, Virtudes & Vontade', numeral: 'III' },
   { slug: 'regras/combate', titulo: 'Combate', numeral: 'IV' },
   { slug: 'regras/vida-ferimentos-cura', titulo: 'Vida, Ferimentos & Cura', numeral: 'V' },
-  { slug: 'caminhos', titulo: 'Os Caminhos', numeral: 'VI' },
+  { slug: 'caminhos', titulo: 'As Proezas', numeral: 'VI' },
   { slug: 'arcano', titulo: 'O Arcano', numeral: 'VII' },
   { slug: 'regras/armas-e-armaduras', titulo: 'Armas & Armaduras', numeral: 'VIII' },
   { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'IX' },
