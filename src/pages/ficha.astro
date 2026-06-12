@@ -272,7 +272,9 @@ import RoladorDados from '../components/RoladorDados.astro';
       (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), corrida: SK('corrida'), acrobacias: SK('acrobacias'), centelha: C });
         return r('Deslocamento livre', `${dz.normal} m`, '(Des + Corrida) ÷ 2 · distância na ação') +
           r('Vel. de Corrida', `${dz.corrida} m/s`, 'Destreza × 1,5 + Corrida') +
-          r('Pulo', `${dz.pulo} cm`, 'Força×20 + Acrobacias×10 + Destreza×4 + Centelha×50'); })();
+          r('Salto Vertical', `${dz.saltoVertical} cm`, 'Força×20 + Acro×10 + Des×4 + Centelha×50') +
+          r('Salto Horiz. Parado', `${dz.saltoHorizontalParado} m`, '(Força + Acrobacias + Centelha) ÷ 2') +
+          r('Salto Horiz. Correndo', `${dz.saltoHorizontalCorrendo} m`, 'Vel. de Corrida + Acrobacias ÷ 2 + Centelha'); })();
   }
   function renderCombate() {
     const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];

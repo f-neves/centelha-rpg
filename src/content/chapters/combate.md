@@ -32,9 +32,11 @@ Para ir além, você gasta a vez numa **ação de movimento**. Cada Tick vale ~1
 | Ação de movimento | Alcance | Fórmula |
 |---|---|---|
 | **Corrida** | velocidade sustentada (m/s; × Ticks corridos = distância) | Destreza × 1,5 + Corrida |
-| **Pulo** | salto único — parado ou com impulso (cm) | (Força × 20) + (Acrobacias × 10) + (Destreza × 4) + 50 por **Centelha** |
+| **Salto** vertical | altura, em cm | (Força × 20) + (Acrobacias × 10) + (Destreza × 4) + 50 por Centelha |
+| **Salto** horizontal — parado | distância sem impulso, em m | (Força + Acrobacias + Centelha) ÷ 2 |
+| **Salto** horizontal — correndo | distância com impulso, em m | Velocidade atual + (Acrobacias ÷ 2) + Centelha |
 
-<p class="muted">A <strong>Corrida</strong> sustentada vive da Destreza e do treino; o <strong>Pulo</strong> é a explosão de força do corpo — a Força lança, a Acrobacia controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do salto humano (~1 m) ao pulo lendário.</p>
+<p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua Velocidade de Corrida no instante do impulso (na ficha, supõe-se corrida plena). A <strong>Corrida</strong> sustentada vive da Destreza e do treino; o <strong>Salto</strong> é a explosão de força do corpo — a Força lança, a Acrobacia controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
 ## Ataque e Defesa
 

@@ -228,10 +228,12 @@
       ]
     },
     "deslocamento": {
-      "nota": "Tick ≈ 1 segundo. Corrida é VELOCIDADE (m/s; ×Ticks = distância). Normal é DISTÂNCIA FIXA (m) — reposicionamento dentro de outra ação, movível em qualquer direção. Pulo é o alcance do salto em CM (corrida ou parado); +50 cm por nível de Centelha. Arredonda ao inteiro.",
+      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) durante outra ação; Corrida = velocidade (m/s). Saltos (ação Salto): Vertical em CM (altura); Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, supondo impulso pleno). saltoHorizontalCorrendo = (Destreza×1,5 + Corrida) já expandido. Arredonda ao inteiro.",
       "corrida": { "destreza": 1.5, "corrida": 1 },
       "normal": { "destreza": 0.5, "corrida": 0.5 },
-      "pulo": { "forca": 20, "acrobacias": 10, "destreza": 4, "centelha": 50 }
+      "saltoVertical": { "forca": 20, "acrobacias": 10, "destreza": 4, "centelha": 50 },
+      "saltoHorizontalParado": { "forca": 0.5, "acrobacias": 0.5, "centelha": 0.5 },
+      "saltoHorizontalCorrendo": { "destreza": 1.5, "corrida": 1, "acrobacias": 0.5, "centelha": 1 }
     }
   },
   "combateTatico": {

@@ -66,7 +66,12 @@ export function deslocamento(traits: { forca?: number; destreza?: number; corrid
   const d = regras.derivados.deslocamento as Record<string, Record<string, number>>;
   const calc = (c: Record<string, number>) =>
     Math.round(Object.entries(c).reduce((s, [k, v]) => s + ((traits as Record<string, number>)[k] ?? 0) * v, 0));
-  return { corrida: calc(d.corrida), normal: calc(d.normal), pulo: calc(d.pulo) };
+  return {
+    corrida: calc(d.corrida), normal: calc(d.normal),
+    saltoVertical: calc(d.saltoVertical),
+    saltoHorizontalParado: calc(d.saltoHorizontalParado),
+    saltoHorizontalCorrendo: calc(d.saltoHorizontalCorrendo),
+  };
 }
 
 // ----- XP -----
