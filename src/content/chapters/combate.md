@@ -13,7 +13,7 @@ No início, role a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tira o 
 
 | Ticks | Tipo de ação | Exemplos |
 |:---:|---|---|
-| 3 | Muito rápida | correr, abrir porta, sacar arma |
+| 3 | Muito rápida | correr, saltar, abrir porta, sacar arma |
 | 4 | Utilitária | pegar item, interagir com o cenário |
 | 5 | Ataque leve | faca, adaga, espada curta, bastão |
 | 6 | Ataque médio | espada longa, machado de uma mão, lança |
@@ -27,16 +27,28 @@ O **Deslocamento livre** é a distância que você desliza **de graça durante o
 
 <p class="formula">Deslocamento livre (m) = (Destreza + Corrida) ÷ 2</p>
 
-Para ir além, você gasta a vez numa **ação de movimento**. Cada Tick vale ~1 segundo.
+Para ir além, gaste a vez numa **ação de movimento** — Corrida ou Salto, ambas **Speed 3**. Cada Tick vale ~1 segundo.
 
-| Ação de movimento | Alcance | Fórmula |
+### Corrida (Speed 3)
+
+Interrompível a **qualquer Tick** — você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo); do **4º Tick em diante**, à **Velocidade de Corrida** (o ritmo sustentado). Cada valor é em metros por Tick.
+
+| Fase | Quando | m por Tick |
 |---|---|---|
-| **Corrida** | velocidade sustentada (m/s; × Ticks corridos = distância) | Destreza × 1,5 + Corrida |
-| **Salto** vertical | altura, em cm | (Força × 20) + (Acrobacias × 10) + (Destreza × 4) + 50 por Centelha |
-| **Salto** horizontal — parado | distância sem impulso, em m | (Força + Acrobacias + Centelha) ÷ 2 |
-| **Salto** horizontal — correndo | distância com impulso, em m | Velocidade atual + (Acrobacias ÷ 2) + Centelha |
+| **Arranque** | Ticks 1–3 | (Força + Corrida) ÷ 2 + Destreza |
+| **Corrida** | Tick 4 em diante | Destreza × 1,5 + Corrida |
 
-<p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua Velocidade de Corrida no instante do impulso (na ficha, supõe-se corrida plena). A <strong>Corrida</strong> sustentada vive da Destreza e do treino; o <strong>Salto</strong> é a explosão de força do corpo — a Força lança, a Acrobacia controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
+### Salto (Speed 3)
+
+Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três alcances, conforme a direção e o impulso:
+
+| Salto | Alcance | Fórmula |
+|---|---|---|
+| **Vertical** | altura, em cm | (Força × 20) + (Acrobacias × 10) + (Destreza × 4) + 50 por Centelha |
+| **Horizontal — parado** | distância, em m | (Força + Acrobacias + Centelha) ÷ 2 |
+| **Horizontal — correndo** | distância, em m | Velocidade atual + (Acrobacias ÷ 2) + Centelha |
+
+<p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso — Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, a Acrobacia controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
 ## Ataque e Defesa
 

@@ -271,7 +271,8 @@ import RoladorDados from '../components/RoladorDados.astro';
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão') +
       (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), corrida: SK('corrida'), acrobacias: SK('acrobacias'), centelha: C });
         return r('Deslocamento livre', `${dz.normal} m`, '(Des + Corrida) ÷ 2 · distância na ação') +
-          r('Vel. de Corrida', `${dz.corrida} m/s`, 'Destreza × 1,5 + Corrida') +
+          r('Vel. de Arranque', `${dz.arranque} m/s`, '(Força + Corrida) ÷ 2 + Destreza · Ticks 1–3') +
+          r('Vel. de Corrida', `${dz.corrida} m/s`, 'Destreza × 1,5 + Corrida · Tick 4+') +
           r('Salto Vertical', `${dz.saltoVertical} cm`, 'Força×20 + Acro×10 + Des×4 + Centelha×50') +
           r('Salto Horiz. Parado', `${dz.saltoHorizontalParado} m`, '(Força + Acrobacias + Centelha) ÷ 2') +
           r('Salto Horiz. Correndo', `${dz.saltoHorizontalCorrendo} m`, 'Vel. de Corrida + Acrobacias ÷ 2 + Centelha'); })();
