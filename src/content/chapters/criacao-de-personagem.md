@@ -63,7 +63,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Percepção 5 (pico) · Destreza, Vigor 4 · Força, Raciocínio, Inteligência 3 · Carisma, Manipulação, Aparência 2 | 350 |
-| Habilidades | Furtividade 4 (pico) · Atirador, Prontidão, Esquiva, Corrida, Sobrevivência 3 · Investigação, Briga 2 · Medicina 1 | 235 |
+| Habilidades | Furtividade 4 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Medicina 1 | 235 |
 | Secundárias | três em 2 (Rastreio, Escalada, Falcoaria) | 18 |
 | Especialidades | Furtividade, Atirador, Sobrevivência | 30 |
 | Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 90 |
@@ -79,7 +79,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Destreza 5 (pico) · Força, Vigor, Carisma 4 · Percepção, Raciocínio, Inteligência, Manipulação, Aparência 3 | 480 |
-| Habilidades | Armas de Uma Mão 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Corrida, Integridade, Negociação, Liderança, Resistência, Halterofilismo) · duas em 2 · uma em 1 | 325 |
+| Habilidades | Armas de Uma Mão 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Liderança, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 325 |
 | Secundárias | seis em 2–3 (Estratégia, Cavalgar, Jogos de Guerra…) | 48 |
 | Especialidades | cinco (Armas de Uma Mão, Integridade, Liderança…) | 50 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
@@ -118,7 +118,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Inteligência 5 (pico) · Manipulação, Percepção 4 · Raciocínio, Vigor, Destreza, Carisma 3 · Força, Aparência 2 | 380 |
-| Habilidades | Ocultismo 4 (pico) · Conhecimentos Gerais, Investigação, Esquiva, Prontidão 3 · Medicina, Resistência, Burocracia, Furtividade, Etiqueta 2 · Persuasão 1 | 250 |
+| Habilidades | Ocultismo 4 (pico) · Conhecimentos Gerais, Investigação, Esquiva, Prontidão 3 · Medicina, Resistência, Burocracia, Furtividade, Sociabilidade 2 · Persuasão 1 | 250 |
 | Secundárias | oito (Astronomia, Alquimia, Heráldica, Caligrafia, Criptografia, Botânica…) | 66 |
 | Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos Gerais…) | 60 |
 | Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 105 |

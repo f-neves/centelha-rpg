@@ -3,196 +3,274 @@
     "id": "briga",
     "nome": "Briga",
     "grupo": "combate",
-    "atributos": ["forca", "destreza"],
+    "atributos": [
+      "forca",
+      "destreza"
+    ],
     "descricao": "Combate corpo-a-corpo desarmado: socos, agarrões, projeções."
   },
   {
     "id": "armas-uma-mao",
     "nome": "Armas de Uma Mão",
     "grupo": "combate",
-    "atributos": ["destreza", "forca"],
+    "atributos": [
+      "destreza",
+      "forca"
+    ],
     "descricao": "Lâminas, maças e machados de uma mão — esgrima e golpe, da finesse (Destreza) à potência (Força). O tipo de dano vem da arma, não da perícia."
   },
   {
     "id": "armas-duas-maos",
     "nome": "Armas de Duas Mãos",
     "grupo": "combate",
-    "atributos": ["forca", "destreza"],
+    "atributos": [
+      "forca",
+      "destreza"
+    ],
     "descricao": "Montantes, martelos, lanças e alabardas — armas grandes de duas mãos: alcance, potência e ruptura."
   },
   {
     "id": "arremesso",
     "nome": "Arremesso",
     "grupo": "combate",
-    "atributos": ["destreza", "forca"],
+    "atributos": [
+      "destreza",
+      "forca"
+    ],
     "descricao": "Lançar armas e objetos: adagas, azagaias, machados de arremesso — precisão (Destreza) e potência (Força)."
   },
   {
     "id": "atirador",
     "nome": "Atirador",
     "grupo": "combate",
-    "atributos": ["percepcao", "destreza"],
+    "atributos": [
+      "percepcao",
+      "destreza"
+    ],
     "descricao": "Arcos e bestas — o tiro mirado, conduzido pela Percepção (Destreza é muito situacional)."
   },
   {
     "id": "esquiva",
     "nome": "Esquiva",
     "grupo": "combate",
-    "atributos": ["destreza"],
+    "atributos": [
+      "destreza"
+    ],
     "descricao": "Desviar-se de golpes e perigos pela mobilidade."
   },
   {
     "id": "escudos",
     "nome": "Escudos",
     "grupo": "combate",
-    "atributos": ["destreza", "forca"],
+    "atributos": [
+      "destreza",
+      "forca"
+    ],
     "descricao": "Bloquear com escudo e usá-lo ofensivamente."
   },
   {
-    "id": "halterofilismo",
-    "nome": "Halterofilismo",
+    "id": "atletismo",
+    "nome": "Atletismo",
     "grupo": "fisica",
-    "atributos": ["forca", "vigor"],
-    "descricao": "Erguer, carregar, arrombar e dobrar pela força bruta — o vigor aplicado ao peso."
-  },
-  {
-    "id": "acrobacias",
-    "nome": "Acrobacias",
-    "grupo": "fisica",
-    "atributos": ["destreza", "raciocinio"],
-    "descricao": "Equilíbrio, cambalhota, contorção, escapar de amarras e queda segura."
-  },
-  {
-    "id": "corrida",
-    "nome": "Corrida",
-    "grupo": "fisica",
-    "atributos": ["destreza", "vigor"],
-    "descricao": "Velocidade e fôlego de corrida: sprintar, perseguir, fugir, cobrir distância."
+    "atributos": [
+      "forca",
+      "destreza",
+      "vigor"
+    ],
+    "descricao": "Correr, saltar, escalar, nadar e proeza física geral — agilidade e fôlego do corpo em movimento. (Sustenta Deslocamento e Saltos.)"
   },
   {
     "id": "furtividade",
     "nome": "Furtividade",
     "grupo": "fisica",
-    "atributos": ["destreza"],
+    "atributos": [
+      "destreza"
+    ],
     "descricao": "Mover-se sem ser visto nem ouvido."
   },
   {
     "id": "prontidao",
     "nome": "Prontidão",
     "grupo": "fisica",
-    "atributos": ["percepcao", "raciocinio"],
+    "atributos": [
+      "percepcao",
+      "raciocinio"
+    ],
     "descricao": "Estar alerta; notar perigo (Percepção) e reagir a tempo (Raciocínio). É o par do Raciocínio na Iniciativa."
   },
   {
     "id": "resistencia",
     "nome": "Resistência",
     "grupo": "fisica",
-    "atributos": ["vigor"],
+    "atributos": [
+      "vigor"
+    ],
     "descricao": "Suportar fadiga, dor, privação e esforço prolongado."
   },
   {
     "id": "integridade",
     "nome": "Integridade",
     "grupo": "fisica",
-    "atributos": ["vontade", "vigor", "inteligencia", "raciocinio"],
+    "atributos": [
+      "vontade",
+      "vigor",
+      "inteligencia",
+      "raciocinio"
+    ],
     "descricao": "Firmeza moral e compostura; resistir a manipulação e poderes mentais (sustenta a Defesa Mental). Tronco na Força de Vontade, com pés no Vigor (físico) e na Inteligência/Raciocínio (mental)."
+  },
+  {
+    "id": "energia-espiritual",
+    "nome": "Energia Espiritual",
+    "grupo": "fisica",
+    "atributos": [
+      "vontade"
+    ],
+    "descricao": "A reserva e o controle da energia interior — alimenta a Mana (e, talvez, a Energia). O treino do espírito que move o poder."
   },
   {
     "id": "persuasao",
     "nome": "Persuasão",
     "grupo": "social",
-    "atributos": ["carisma", "manipulacao"],
+    "atributos": [
+      "carisma",
+      "manipulacao"
+    ],
     "descricao": "Convencer pela razão, pelo charme ou pela boa-fé — Carisma quando é sincero, Manipulação quando é cálculo."
   },
   {
     "id": "oratoria",
     "nome": "Oratória",
     "grupo": "social",
-    "atributos": ["carisma", "manipulacao"],
+    "atributos": [
+      "carisma",
+      "manipulacao"
+    ],
     "descricao": "Discursar e mover plateias."
   },
   {
-    "id": "etiqueta",
-    "nome": "Etiqueta",
+    "id": "sociabilidade",
+    "nome": "Sociabilidade",
     "grupo": "social",
-    "atributos": ["percepcao", "carisma", "manipulacao"],
-    "descricao": "Ler a sala (Percepção) e conduzir-se conforme costumes e protocolos."
+    "atributos": [
+      "carisma",
+      "manipulacao"
+    ],
+    "descricao": "Cativar, enturmar-se e conduzir-se com graça em qualquer roda."
   },
   {
     "id": "empatia",
     "nome": "Empatia",
     "grupo": "social",
-    "atributos": ["percepcao", "carisma", "manipulacao"],
+    "atributos": [
+      "percepcao",
+      "carisma",
+      "manipulacao"
+    ],
     "descricao": "Ler emoções e intenções alheias (Percepção) e conectar-se a elas."
   },
   {
     "id": "manha",
     "nome": "Manha",
     "grupo": "social",
-    "atributos": ["carisma", "manipulacao", "raciocinio", "percepcao"],
+    "atributos": [
+      "carisma",
+      "manipulacao",
+      "raciocinio",
+      "percepcao"
+    ],
     "descricao": "Esperteza de rua, blefe e malandragem — influência social, sacada rápida (Raciocínio) e faro de rua (Percepção)."
   },
   {
     "id": "lideranca",
     "nome": "Liderança",
     "grupo": "social",
-    "atributos": ["carisma", "inteligencia"],
+    "atributos": [
+      "carisma",
+      "inteligencia"
+    ],
     "descricao": "Inspirar, comandar e coordenar um grupo."
   },
   {
-    "id": "negociacao",
-    "nome": "Negociação",
+    "id": "politica",
+    "nome": "Política",
     "grupo": "social",
-    "atributos": ["carisma", "manipulacao", "inteligencia", "raciocinio"],
-    "descricao": "Barganhar, avaliar valor e fechar acordos — pela presença, pelo conhecimento ou pela esperteza do momento."
+    "atributos": [
+      "manipulacao",
+      "carisma",
+      "inteligencia"
+    ],
+    "descricao": "Intriga, alianças, jogo de poder e leitura de quem realmente manda."
   },
   {
     "id": "investigacao",
     "nome": "Investigação",
     "grupo": "saber",
-    "atributos": ["percepcao", "raciocinio", "inteligencia"],
+    "atributos": [
+      "percepcao",
+      "raciocinio",
+      "inteligencia"
+    ],
     "descricao": "Achar pistas (Percepção), deduzir na hora (Raciocínio) e reconstituir o que houve (Inteligência). A perícia mais mental-completa."
   },
   {
     "id": "conhecimentos",
     "nome": "Conhecimentos Gerais",
     "grupo": "saber",
-    "atributos": ["inteligencia"],
+    "atributos": [
+      "inteligencia"
+    ],
     "descricao": "Saber acadêmico amplo: história, geografia, lore, teoria."
   },
   {
     "id": "ocultismo",
     "nome": "Ocultismo",
     "grupo": "saber",
-    "atributos": ["inteligencia", "percepcao"],
+    "atributos": [
+      "inteligencia",
+      "percepcao"
+    ],
     "descricao": "O sobrenatural, a feitiçaria e seus símbolos."
   },
   {
     "id": "medicina",
     "nome": "Medicina",
     "grupo": "saber",
-    "atributos": ["inteligencia", "percepcao"],
+    "atributos": [
+      "inteligencia",
+      "percepcao"
+    ],
     "descricao": "Tratar feridas, doenças e venenos."
   },
   {
     "id": "burocracia",
     "nome": "Burocracia",
     "grupo": "saber",
-    "atributos": ["inteligencia", "raciocinio"],
+    "atributos": [
+      "inteligencia",
+      "raciocinio"
+    ],
     "descricao": "Navegar instituições, leis, registros e logística — saber o sistema (Inteligência) e jogá-lo na hora (Raciocínio)."
   },
   {
     "id": "sobrevivencia",
     "nome": "Sobrevivência",
     "grupo": "saber",
-    "atributos": ["percepcao", "inteligencia", "vigor"],
+    "atributos": [
+      "percepcao",
+      "inteligencia",
+      "vigor"
+    ],
     "descricao": "Caçar, rastrear, orientar-se e durar no ermo — o saber prático da natureza."
   },
   {
     "id": "oficios-gerais",
     "nome": "Ofícios Gerais",
     "grupo": "saber",
-    "atributos": ["inteligencia", "destreza"],
+    "atributos": [
+      "inteligencia",
+      "destreza"
+    ],
     "descricao": "O faz-tudo prático: consertar, escorar, remendar, mexer com madeira e ferro de modo genérico — útil, sem ser mestre de nenhum ofício específico (esses ficam nas secundárias: Ferraria, Carpintaria…)."
   }
 ]

@@ -27,7 +27,7 @@ No início, cada um rola a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem
 
 O **Deslocamento livre** é a distância que você desliza **de graça durante outra ação** (atacar, conjurar) — em qualquer direção, sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia:
 
-<p class="formula">Deslocamento livre (m) = (Destreza + Corrida) ÷ 2</p>
+<p class="formula">Deslocamento livre (m) = (Destreza + Atletismo) ÷ 2</p>
 
 Para ir além, gaste a vez numa **ação de movimento** — Corrida ou Salto, ambas **Speed 3**. Cada Tick vale ~1 segundo.
 
@@ -37,8 +37,8 @@ Interrompível a **qualquer Tick** — você decide quando parar. A largada acel
 
 | Fase | Quando | m por Tick |
 |---|---|---|
-| **Arranque** | Ticks 1–3 | (Força + Corrida) ÷ 2 + Destreza |
-| **Corrida** | Tick 4 em diante | Destreza × 1,5 + Corrida |
+| **Arranque** | Ticks 1–3 | (Força + Atletismo) ÷ 2 + Destreza |
+| **Corrida** | Tick 4 em diante | Destreza × 1,5 + Atletismo |
 
 ### Salto (Speed 3)
 
@@ -46,11 +46,11 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 
 | Salto | Alcance | Fórmula |
 |---|---|---|
-| **Vertical** | altura, em cm | (Força × 20) + (Acrobacias × 10) + (Destreza × 4) + 50 por Centelha |
-| **Horizontal — parado** | distância, em m | (Força + Acrobacias + Centelha) ÷ 2 |
-| **Horizontal — correndo** | distância, em m | Velocidade atual + (Acrobacias ÷ 2) + Centelha |
+| **Vertical** | altura, em cm | (Força × 20) + (Atletismo × 10) + (Destreza × 4) + 50 por Centelha |
+| **Horizontal — parado** | distância, em m | (Força + Atletismo + Centelha) ÷ 2 |
+| **Horizontal — correndo** | distância, em m | Velocidade atual + (Atletismo ÷ 2) + Centelha |
 
-<p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso — Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, a Acrobacia controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
+<p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso — Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, o Atletismo controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
 ## Fôlego
 

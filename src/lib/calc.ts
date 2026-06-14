@@ -74,7 +74,7 @@ export function iniciativa(traits: Record<string, number>) {
 }
 
 /** Deslocamento: corrida (m/s) e normal (m fixo) de movimento, e pulo (cm). */
-export function deslocamento(traits: { forca?: number; destreza?: number; corrida?: number; acrobacias?: number; centelha?: number }) {
+export function deslocamento(traits: { forca?: number; destreza?: number; atletismo?: number; centelha?: number }) {
   const d = regras.derivados.deslocamento as Record<string, Record<string, number>>;
   const calc = (c: Record<string, number>) =>
     Math.round(Object.entries(c).reduce((s, [k, v]) => s + ((traits as Record<string, number>)[k] ?? 0) * v, 0));

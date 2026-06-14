@@ -17,18 +17,18 @@ Variam de 1 a 5 (para humanos comuns), agrupados em três tríades.
 | Destreza | Manipulação | Inteligência |
 | Vigor | Aparência | Raciocínio |
 
-## As Vinte e Oito Habilidades
+## As Vinte e Sete Habilidades
 
-Variam de 0 a 5, em **quatro grupos de sete**. Cada perícia pareia, conforme o uso, com um ou mais **Atributos** — a mesma Investigação é Percepção para *achar*, Raciocínio para *deduzir* e Inteligência para *reconstituir*. Além destas, há **Habilidades Secundárias** ilimitadas e específicas (Ferraria, Herbologia, Falsificação, Navegação…), mais baratas e criadas conforme a história pede.
+Variam de 0 a 5, em quatro grupos (Combate, Sociais e Saber com sete; Físicas com seis). Cada perícia pareia, conforme o uso, com um ou mais **Atributos** — a mesma Investigação é Percepção para *achar*, Raciocínio para *deduzir* e Inteligência para *reconstituir*. Além destas, há **Habilidades Secundárias** ilimitadas e específicas (Halterofilismo, Etiqueta, Ferraria, Herbologia, Falsificação…), mais baratas e criadas conforme a história pede.
 
 #### Combate
 Briga · Armas de Uma Mão · Armas de Duas Mãos · Arremesso · Atirador · Esquiva · Escudos
 
 #### Físicas
-Halterofilismo · Acrobacias · Corrida · Resistência · Furtividade · Prontidão · Integridade
+Atletismo · Furtividade · Prontidão · Resistência · Integridade · Energia Espiritual
 
 #### Sociais
-Persuasão · Oratória · Etiqueta · Empatia · Manha · Liderança · Negociação
+Persuasão · Oratória · Sociabilidade · Empatia · Manha · Liderança · Política
 
 #### Saber
 Investigação · Conhecimentos Gerais · Ocultismo · Medicina · Burocracia · Sobrevivência · Ofícios Gerais

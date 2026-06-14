@@ -33,7 +33,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 - **Versátil** — 1 ou 2 mãos (em 2 mãos: +1 dado, −1 Defesa da Arma).
 - **Sangramento** — um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
 - **Arremessável · Munição · Pesada** — lançar; gastar munição; usar Força total e −1 em ações ágeis.
-- **Imobiliza** — não causa dano: um acerto deixa o alvo **Imobilizado** até escapar (Força ou Acrobacias vs o lançamento).
+- **Imobiliza** — não causa dano: um acerto deixa o alvo **Imobilizado** até escapar (Força ou Atletismo vs o lançamento).
 
 ## Armas de Exemplo
 
