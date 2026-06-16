@@ -214,7 +214,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 10, 1));
     h += '<h3>Aparência <small>(1–10 · piso 1 · ×2)</small></h3>';
     const am = aparenciaMod(S.aparencia);
-    h += trow('Aparência', dotsHTML('aparencia', 'aparencia', S.aparencia, 10, 1) + `<span class="apmod" title="Modificador na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`);
+    h += trow(`Aparência <span class="apmod" title="Bônus/Penalidade na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`, dotsHTML('aparencia', 'aparencia', S.aparencia, 10, 1));
     el('power').innerHTML = h;
   }
   function renderSkills() {

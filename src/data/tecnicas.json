@@ -6670,5 +6670,202 @@
     "aliases": [],
     "texto": "paz e clareza absolutas; nada perturba, engana ou domina a sua mente.",
     "pendente": false
+  },
+  {
+    "id": "farejar-a-mentira",
+    "nome": "Farejar a Mentira",
+    "caminho": "leitor-de-almas",
+    "atributo": "perspicacia",
+    "banda": 1,
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 1
+    },
+    "prereq": [
+      "olhar-perspicaz"
+    ],
+    "aliases": [],
+    "texto": "Quando alguém lhe mente, role **Perspicácia + Empatia** vs a Defesa Social do alvo; o sucesso revela *que houve* mentira (não o conteúdo).",
+    "pendente": false
+  },
+  {
+    "id": "ler-a-sala",
+    "nome": "Ler a Sala",
+    "caminho": "leitor-de-almas",
+    "atributo": "perspicacia",
+    "banda": 2,
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "olhar-perspicaz"
+    ],
+    "aliases": [],
+    "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+2** nas jogadas sociais que explorem o que captou.",
+    "pendente": false
+  },
+  {
+    "id": "brecha-emocional",
+    "nome": "Brecha Emocional",
+    "caminho": "leitor-de-almas",
+    "atributo": "perspicacia",
+    "banda": 3,
+    "tipo": "ativa",
+    "custo": {
+      "energia": 3
+    },
+    "prereq": [
+      "farejar-a-mentira"
+    ],
+    "aliases": [],
+    "texto": "Lê o que o alvo mais teme ou deseja; a próxima jogada de **Influência** alinhada a isso ganha **+1 grau de Margem** (ou +2 na soma).",
+    "pendente": false
+  },
+  {
+    "id": "antecipar-o-gesto",
+    "nome": "Antecipar o Gesto",
+    "caminho": "leitor-de-almas",
+    "atributo": "perspicacia",
+    "banda": 4,
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 4,
+      "vontade": 1
+    },
+    "prereq": [
+      "ler-a-sala"
+    ],
+    "aliases": [],
+    "texto": "Lê microssinais e antevê a ação do alvo: **+3 na Defesa** contra ele, ou sabe qual manobra social ele tentará antes que role.",
+    "pendente": false
+  },
+  {
+    "id": "coracao-aberto",
+    "nome": "Coração Aberto",
+    "caminho": "leitor-de-almas",
+    "atributo": "perspicacia",
+    "banda": 5,
+    "tipo": "ativa",
+    "custo": {
+      "energia": 5,
+      "vontade": 1
+    },
+    "prereq": [
+      "brecha-emocional",
+      "antecipar-o-gesto"
+    ],
+    "aliases": [],
+    "texto": "Por uma cena, lê intenções como livro aberto: nenhuma mentira ou disfarce social passa sem que você role para perceber, e sente as **motivações reais** de quem o encara.",
+    "pendente": false
+  },
+  {
+    "id": "voz-calma",
+    "nome": "Voz Calma",
+    "caminho": "porte-inabalavel",
+    "atributo": "compostura",
+    "banda": 1,
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 1
+    },
+    "prereq": [
+      "semblante-fechado"
+    ],
+    "aliases": [],
+    "texto": "Ao ser alvo de intimidação ou provocação, **+3 na Defesa Mental** contra o efeito e não demonstra qualquer abalo.",
+    "pendente": false
+  },
+  {
+    "id": "mascara-sustentada",
+    "nome": "Máscara Sustentada",
+    "caminho": "porte-inabalavel",
+    "atributo": "compostura",
+    "banda": 2,
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "semblante-fechado"
+    ],
+    "aliases": [],
+    "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+2** para enganar sobre quem você é (soma à Compostura vs Perspicácia).",
+    "pendente": false
+  },
+  {
+    "id": "aguas-profundas",
+    "nome": "Águas Profundas",
+    "caminho": "porte-inabalavel",
+    "atributo": "compostura",
+    "banda": 3,
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "voz-calma"
+    ],
+    "aliases": [],
+    "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−2**.",
+    "pendente": false
+  },
+  {
+    "id": "inabalavel",
+    "nome": "Inabalável",
+    "caminho": "porte-inabalavel",
+    "atributo": "compostura",
+    "banda": 4,
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 4,
+      "vontade": 1
+    },
+    "prereq": [
+      "mascara-sustentada"
+    ],
+    "aliases": [],
+    "texto": "Ignora uma penalidade social ou de medo por rodada; provocações e Influência que **dependam de te abalar** falham se não superarem sua Compostura por 6+.",
+    "pendente": false
+  },
+  {
+    "id": "enigma-vivo",
+    "nome": "Enigma Vivo",
+    "caminho": "porte-inabalavel",
+    "atributo": "compostura",
+    "banda": 5,
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "aguas-profundas",
+      "inabalavel"
+    ],
+    "aliases": [],
+    "texto": "Você é fundamentalmente ilegível: leitura social e adivinhação mundana sobre suas intenções falham salvo Margem alta, e mantém quantas personas quiser sem esforço.",
+    "pendente": false
+  },
+  {
+    "id": "olhar-perspicaz",
+    "nome": "Olhar Perspicaz",
+    "caminho": "leitor-de-almas",
+    "atributo": "perspicacia",
+    "banda": 1,
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [],
+    "aliases": [],
+    "texto": "Ao encontrar alguém, sente de imediato o **humor dominante** e se ele está hostil, amedrontado ou mentindo de forma escancarada — sem rolar.",
+    "pendente": false
+  },
+  {
+    "id": "semblante-fechado",
+    "nome": "Semblante Fechado",
+    "caminho": "porte-inabalavel",
+    "atributo": "compostura",
+    "banda": 1,
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [],
+    "aliases": [],
+    "texto": "Sua face nada entrega: leituras sociais **casuais** falham automaticamente; ler você exige uma ação dedicada (vs sua Defesa Social).",
+    "pendente": false
   }
 ]

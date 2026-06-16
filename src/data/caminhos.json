@@ -382,5 +382,21 @@
     "atributo": "raciocinio",
     "habilidade_ancora": "Ocultismo / Autocontrole",
     "descricao": "foco, transe, blindagem mental"
+  },
+  {
+    "id": "leitor-de-almas",
+    "nome": "Leitor de Almas",
+    "trilha": "voz",
+    "atributo": "perspicacia",
+    "habilidade_ancora": "Empatia",
+    "descricao": "ler emoções, mentiras e intenções alheias"
+  },
+  {
+    "id": "porte-inabalavel",
+    "nome": "Porte Inabalável",
+    "trilha": "voz",
+    "atributo": "compostura",
+    "habilidade_ancora": "Sociabilidade",
+    "descricao": "a calma que nada atravessa nem revela"
   }
 ]
