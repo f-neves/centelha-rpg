@@ -13,9 +13,13 @@ Variam de 1 a 5 (para humanos comuns), agrupados em três tríades.
 
 | Físicos | Sociais | Mentais |
 |---|---|---|
-| Força | Carisma | Percepção |
-| Destreza | Manipulação | Inteligência |
-| Vigor | Aparência | Raciocínio |
+| Força | Influência | Percepção |
+| Destreza | Perspicácia | Inteligência |
+| Vigor | Compostura | Raciocínio |
+
+A tríade social forma um loop tático, espelhando o combate: **Influência** age sobre os outros (persuadir, comandar, seduzir, coagir) e é resistida pela **Defesa Mental** (Integridade); **Perspicácia** lê o outro (rola com a perícia Empatia) e é resistida pela **Defesa Social**; **Compostura** é essa defesa — o controle da própria máscara, que esconde intenções e fragilidade.
+
+**Aparência** deixou de ser Atributo: virou um traço próprio de **1 a 10** (como a Força de Vontade), piso 1, custo ×2 por ponto. Ela soma um modificador **direcional** (−4 a +4 pela curva) à jogada social — a favor quando ajuda o objetivo (seduzir, impressionar) e contra quando atrapalha (intimidar, ou ao se passar por algo distante do que se é). A Compostura define o raio de quanto da própria Aparência se consegue mascarar.
 
 ## As Vinte e Sete Habilidades
 

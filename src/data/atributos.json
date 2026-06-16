@@ -20,26 +20,26 @@
     { "nivel": 4, "texto": "Muito resistente: corre maratonas, ignora o frio, custa a cair." },
     { "nivel": 5, "texto": "Pico humano: constituição de ferro; sobrevive ao que mataria quase todos." }
   ] },
-  { "id": "carisma", "nome": "Carisma", "grupo": "social", "descricao": "A presença que inspira, cativa e arrasta multidões — simpatia, liderança natural e magnetismo.", "niveis": [
-    { "nivel": 1, "texto": "Desagradável: afasta as pessoas sem querer." },
-    { "nivel": 2, "texto": "Comum: passa despercebido socialmente." },
-    { "nivel": 3, "texto": "Cativante: faz amigos com facilidade; é ouvido." },
-    { "nivel": 4, "texto": "Magnético: lidera salas; pessoas o seguem de bom grado." },
-    { "nivel": 5, "texto": "Inspirador: move multidões; uma lenda viva pelo puro carisma." }
+  { "id": "influencia", "nome": "Influência", "grupo": "social", "descricao": "A capacidade de agir sobre os pensamentos e as ações alheias — persuadir, comandar, inspirar, seduzir ou coagir. O atributo ofensivo do social (resistido pela Defesa Mental).", "niveis": [
+    { "nivel": 1, "texto": "Inábil: suas palavras caem no vazio; ninguém se move por você." },
+    { "nivel": 2, "texto": "Comum: convence o trivial, no tom certo." },
+    { "nivel": 3, "texto": "Persuasivo: conduz a conversa e move quem está em cima do muro." },
+    { "nivel": 4, "texto": "Dominante: dobra vontades, comanda salas, acende multidões." },
+    { "nivel": 5, "texto": "Irresistível: poucos resistem ao que você quer que pensem ou façam." }
   ] },
-  { "id": "manipulacao", "nome": "Manipulação", "grupo": "social", "descricao": "A arte de torcer vontades, conduzir e enganar — barganha, intriga e coerção.", "niveis": [
-    { "nivel": 1, "texto": "Transparente: mente mal; é lido facilmente." },
-    { "nivel": 2, "texto": "Comum: negocia o trivial." },
-    { "nivel": 3, "texto": "Persuasivo: convence e blefa com habilidade." },
-    { "nivel": 4, "texto": "Manipulador hábil: arma jogos sociais e quase sempre vence." },
-    { "nivel": 5, "texto": "Mestre da intriga: dobra até os céticos; tece conspirações inteiras." }
+  { "id": "perspicacia", "nome": "Perspicácia", "grupo": "social", "descricao": "A leitura do outro — emoções, intenções, sinceridade, o clima de uma sala. O sensor social (rola com a perícia Empatia; oposto à Compostura do alvo).", "niveis": [
+    { "nivel": 1, "texto": "Cego social: não percebe o óbvio nas pessoas; é enganado fácil." },
+    { "nivel": 2, "texto": "Comum: lê emoções evidentes." },
+    { "nivel": 3, "texto": "Perspicaz: fareja mentiras pequenas e o humor da roda." },
+    { "nivel": 4, "texto": "Argúcia: enxerga intenções escondidas e o que não foi dito." },
+    { "nivel": 5, "texto": "Leitor de almas: quase nada nas pessoas lhe escapa." }
   ] },
-  { "id": "aparencia", "nome": "Aparência", "grupo": "social", "descricao": "O impacto imediato da presença física sobre os outros — beleza, porte, o quanto você marca.", "niveis": [
-    { "nivel": 1, "texto": "Marcante pela falta de graça; difícil de ignorar (no mau sentido)." },
-    { "nivel": 2, "texto": "Comum: rosto na multidão." },
-    { "nivel": 3, "texto": "Atraente: chama olhares; causa boa primeira impressão." },
-    { "nivel": 4, "texto": "Deslumbrante: para conversas quando entra num salão." },
-    { "nivel": 5, "texto": "Beleza inesquecível: quem o vê não esquece; quase sobrenatural." }
+  { "id": "compostura", "nome": "Compostura", "grupo": "social", "descricao": "O controle da própria apresentação — maneirismos, trejeitos e a máscara que você mostra. Esconde intenções e fragilidade; sustenta a Defesa Social (vs leitura) e o raio de quanto da própria Aparência se mascara.", "niveis": [
+    { "nivel": 1, "texto": "Transparente: tudo o que sente aparece; é um livro aberto." },
+    { "nivel": 2, "texto": "Comum: disfarça o trivial." },
+    { "nivel": 3, "texto": "Controlado: mantém a pose e esconde o que quer." },
+    { "nivel": 4, "texto": "Insondável: mostra e oculta à vontade; difícil de ler." },
+    { "nivel": 5, "texto": "Máscara perfeita: ninguém atravessa a fachada que você escolhe." }
   ] },
   { "id": "percepcao", "nome": "Percepção", "grupo": "mental", "descricao": "O quanto você nota do mundo à sua volta — sentidos, atenção e instinto para o que está fora do lugar.", "niveis": [
     { "nivel": 1, "texto": "Distraído: não vê o óbvio; pego de surpresa sempre." },

@@ -16,17 +16,39 @@
     { "nivel": 5, "rotulo": "Quase-deus", "texto": "À beira do divino; bandas 13–15." }
   ],
   "escalaVontade": [
-    { "nivel": 5, "rotulo": "Heroica", "texto": "Reserva padrão de um herói; o piso. Gasta-se para potencializar ações, resistir a medo/manipulação e conjurar." },
+    { "nivel": 1, "rotulo": "Frágil", "texto": "Vontade fraca: cede fácil ao medo, à manipulação e ao cansaço. O piso de quem nada investe." },
+    { "nivel": 5, "rotulo": "Heroica", "texto": "Reserva sólida de um herói. Gasta-se para potencializar ações, resistir a medo/manipulação e conjurar." },
     { "nivel": 7, "rotulo": "Férrea", "texto": "Determinação acima do comum; raramente se esgota numa cena." },
     { "nivel": 9, "rotulo": "Lendária", "texto": "Vontade que dobra o destino; um poço fundo de combustível heroico." }
   ],
+  "escalaAparencia": [
+    { "nivel": 1, "rotulo": "Deformado (−4)", "texto": "Repulsivo ou desfigurado; o piso (grátis). −4 nas jogadas sociais alinhadas, mas +4 ao INTIMIDAR." },
+    { "nivel": 2, "rotulo": "Muito feio (−2)", "texto": "Destoa na multidão pela falta de graça." },
+    { "nivel": 3, "rotulo": "Feio (−1)", "texto": "Pouco atraente, sem chamar atenção pelo bem." },
+    { "nivel": 4, "rotulo": "Comum", "texto": "Aparência mediana — sem bônus nem ônus." },
+    { "nivel": 5, "rotulo": "Comum", "texto": "Aparência mediana — sem bônus nem ônus." },
+    { "nivel": 6, "rotulo": "Comum (situacional)", "texto": "No teto do normal; o Mestre pode dar +1 em contexto favorável." },
+    { "nivel": 7, "rotulo": "Bonito (+1)", "texto": "Atraente; chama olhares." },
+    { "nivel": 8, "rotulo": "Beleza (+2)", "texto": "Beleza marcante; abre portas." },
+    { "nivel": 9, "rotulo": "Beleza universal (+3)", "texto": "Quem o vê não esquece." },
+    { "nivel": 10, "rotulo": "Extraordinário (+4)", "texto": "Beleza quase sobrenatural; para conversas num salão." }
+  ],
+  "aparencia": {
+    "nota": "Traço próprio 1–10 (não é atributo), piso 1 grátis, custo ×2 por ponto. Modificador DIRECIONAL somado FLAT à jogada social — à parte do teto ±6 dos modificadores situacionais. + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
+    "piso": 1,
+    "min": 1,
+    "max": 10,
+    "custoMult": 2,
+    "curva": { "1": -4, "2": -2, "3": -1, "4": 0, "5": 0, "6": 0, "7": 1, "8": 2, "9": 3, "10": 4 }
+  },
   "pisos": {
-    "atributo": 2,
+    "atributo": 1,
     "habilidade": 0,
     "virtude": 1,
-    "vontade": 5,
+    "vontade": 1,
     "centelha": 0,
-    "caminho": 0
+    "caminho": 0,
+    "aparencia": 1
   },
   "limitesCriacao": {
     "atributo": 4,
@@ -37,9 +59,9 @@
     "picoQuantidade": 1,
     "notaPico": "Na criação permite-se UM atributo em 5 e UMA perícia primária em 4 — o talento superlativo do herói."
   },
-  "orcamentoPadrao": 1000,
-  "orcamentoVeterano": 1400,
-  "orcamentoHeroico": 1800,
+  "orcamentoPadrao": 1200,
+  "orcamentoVeterano": 1600,
+  "orcamentoHeroico": 2000,
   "progressaoPorSessao": [
     10,
     20
@@ -71,6 +93,10 @@
       "valor": 5
     },
     "vontade": {
+      "tipo": "mult",
+      "valor": 2
+    },
+    "aparencia": {
       "tipo": "mult",
       "valor": 2
     },
@@ -217,6 +243,11 @@
       "maisVontade": true,
       "maisCentelha": true,
       "centelhaMult": 2
+    },
+    "defesaSocial": {
+      "nota": "Resiste à leitura (Perspicácia + Empatia). (Compostura + Temperança + Centelha) × 2 — tudo dentro do ×2; Temperança maxa em 5 e leva ×2 p/ casar com a Vontade ×1 da Def. Mental (ambas teto ~30).",
+      "mult": 2,
+      "tracos": ["compostura", "temperanca", "centelha"]
     },
     "ataque": {
       "nota": "Bônus de Centelha somado à soma do ataque (esquiva/bloqueio/mental ganham o mesmo nas defesas).",

@@ -10,7 +10,7 @@ const fl = Math.floor, ce = Math.ceil;
 
 // build compacta → stat block calculado
 function stat(b) {
-  const at = { forca: 2, destreza: 2, vigor: 2, carisma: 2, manipulacao: 2, aparencia: 2, percepcao: 2, inteligencia: 2, raciocinio: 2, ...b.attrs };
+  const at = { forca: 2, destreza: 2, vigor: 2, influencia: 2, perspicacia: 2, compostura: 2, percepcao: 2, inteligencia: 2, raciocinio: 2, ...b.attrs };
   const pe = b.pericias || {};
   const arm = { soak: 0, prot: 0, esquiva: 0, ...b.armadura };
   const C = b.centelha || 0;
@@ -86,7 +86,7 @@ const NPCS = [
 
   { id: 'capitao-da-guarda', nome: 'Capitão da Guarda', tipo: 'elite', ameaca: 4, centelha: 0,
     conceito: 'comandante mortal', descricao: 'Líder competente; coordena subordinados e segura a linha.', tags: ['humano'],
-    attrs: { forca: 3, destreza: 4, vigor: 4, carisma: 3 }, pericias: { 'armas-uma-mao': 4, esquiva: 3, escudos: 3, prontidao: 4, oratoria: 3, tatica: 3 }, integridade: 6, vontade: 7,
+    attrs: { forca: 3, destreza: 4, vigor: 4, influencia: 3 }, pericias: { 'armas-uma-mao': 4, esquiva: 3, escudos: 3, prontidao: 4, oratoria: 3, tatica: 3 }, integridade: 6, vontade: 7,
     armadura: { soak: 6, prot: 3, esquiva: -2 },
     ataques: [{ nome: 'Espada longa', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 2, mao: 1, tipo: 'corte', acerto: 1, ticks: 6 }],
     notas: 'Placa (Soak +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.' },
@@ -124,7 +124,7 @@ const NPCS = [
 
   { id: 'campeao', nome: 'Campeão (semideus menor)', tipo: 'chefe', ameaca: 6, centelha: 2,
     conceito: 'herói inimigo', descricao: 'Um adversário à altura dos PJs: rápido, forte e com Técnicas de herói.', tags: ['humano', 'centelha'],
-    attrs: { forca: 4, destreza: 5, vigor: 4, carisma: 4 }, pericias: { 'armas-uma-mao': 5, esquiva: 4, escudos: 3, prontidao: 5, intimidacao: 4, oratoria: 3 }, integridade: 6, vontade: 8,
+    attrs: { forca: 4, destreza: 5, vigor: 4, influencia: 4 }, pericias: { 'armas-uma-mao': 5, esquiva: 4, escudos: 3, prontidao: 5, intimidacao: 4, oratoria: 3 }, integridade: 6, vontade: 8,
     armadura: { soak: 4, prot: 2, esquiva: -1 },
     ataques: [{ nome: 'Espada longa (golpe duplo)', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 2, mao: 1, tipo: 'corte', acerto: 1, ticks: 6, notas: 'Pode dividir em 2 ataques (−1d6/−2d6)' }],
     tecnicas: ['golpe-pesado', 'quebrar-guarda', 'soco-trovejante'],
@@ -145,15 +145,15 @@ const NPCS = [
 
   { id: 'comandante', nome: 'Comandante Tocado', tipo: 'elite', ameaca: 5, centelha: 1,
     conceito: 'líder de guerra', descricao: 'Inspira tropas e quebra a moral inimiga; luta bem, mas comanda melhor.', tags: ['humano', 'centelha'],
-    attrs: { forca: 3, destreza: 4, vigor: 4, carisma: 5 }, pericias: { 'armas-uma-mao': 4, esquiva: 3, escudos: 3, oratoria: 4, tatica: 4, intimidacao: 4, prontidao: 3 }, integridade: 6, vontade: 7,
+    attrs: { forca: 3, destreza: 4, vigor: 4, influencia: 5 }, pericias: { 'armas-uma-mao': 4, esquiva: 3, escudos: 3, oratoria: 4, tatica: 4, intimidacao: 4, prontidao: 3 }, integridade: 6, vontade: 7,
     armadura: { soak: 6, prot: 3, esquiva: -2 },
     ataques: [{ nome: 'Espada longa', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 2, mao: 1, tipo: 'corte', acerto: 1, ticks: 6 }],
     tecnicas: ['voz-de-lider', 'coordenar', 'tom-de-autoridade'],
-    notas: 'Concede ações e bônus aos aliados (Estandarte/Comando). Some Carisma quando inspira. Mate-o e a tropa vacila.' },
+    notas: 'Concede ações e bônus aos aliados (Estandarte/Comando). Some Influência quando inspira. Mate-o e a tropa vacila.' },
 
   { id: 'cultista', nome: 'Cultista Sombrio', tipo: 'elite', ameaca: 4, centelha: 1,
     conceito: 'feiticeiro da morte', descricao: 'Servo de poderes proibidos; drena a vida e ergue os mortos.', tags: ['humano', 'centelha', 'arcano'],
-    attrs: { forca: 2, destreza: 3, vigor: 3, manipulacao: 4, inteligencia: 3 }, pericias: { ocultismo: 4, esquiva: 2, prontidao: 2, manha: 3 }, integridade: 3, vontade: 7,
+    attrs: { forca: 2, destreza: 3, vigor: 3, influencia: 4, inteligencia: 3 }, pericias: { ocultismo: 4, esquiva: 2, prontidao: 2, manha: 3 }, integridade: 3, vontade: 7,
     ataques: [{ nome: 'Toque mórbido (Morte 1)', atrib: 'inteligencia', pericia: 'ocultismo', dado: 1, distancia: true, tipo: 'necrótico', ticks: 6, notas: 'Dreno: cura o cultista' }],
     artes: [{ id: 'morte', nivel: 2 }],
     notas: 'Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.' },
@@ -167,8 +167,8 @@ const NPCS = [
 
   { id: 'espectro', nome: 'Espectro', tipo: 'elite', ameaca: 4, centelha: 1,
     conceito: 'assombração incorpórea', descricao: 'Um morto que não partiu; atravessa paredes e gela a alma.', tags: ['morto-vivo', 'espírito'],
-    attrs: { forca: 2, destreza: 4, vigor: 3, manipulacao: 4, percepcao: 4 }, pericias: { esquiva: 4, intimidacao: 4, furtividade: 5, prontidao: 4 }, integridade: 4, vontade: 8,
-    ataques: [{ nome: 'Toque gélido', atrib: 'manipulacao', pericia: 'briga', dado: 2, mao: 2, tipo: 'necrótico (vs Def. Mental)', ticks: 5, notas: 'gela a vontade do alvo' }],
+    attrs: { forca: 2, destreza: 4, vigor: 3, influencia: 4, percepcao: 4 }, pericias: { esquiva: 4, intimidacao: 4, furtividade: 5, prontidao: 4 }, integridade: 4, vontade: 8,
+    ataques: [{ nome: 'Toque gélido', atrib: 'influencia', pericia: 'briga', dado: 2, mao: 2, tipo: 'necrótico (vs Def. Mental)', ticks: 5, notas: 'gela a vontade do alvo' }],
     notas: 'Incorpóreo: imune a dano físico não-mágico e atravessa matéria. Só Arcano, Proteção e armas encantadas o ferem.' },
 
   { id: 'ogro', nome: 'Ogro', tipo: 'chefe', ameaca: 5, centelha: 0,

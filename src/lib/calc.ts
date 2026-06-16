@@ -6,7 +6,7 @@ export { regras };
 
 export interface Atributos {
   forca: number; destreza: number; vigor: number;
-  carisma: number; manipulacao: number; aparencia: number;
+  influencia: number; perspicacia: number; compostura: number;
   percepcao: number; inteligencia: number; raciocinio: number;
 }
 export interface Pericias { [id: string]: number }
@@ -41,10 +41,23 @@ export function defesaMental(opts: { integridade: number; vontade: number; cente
   return opts.integridade * d.mult + (d.maisVontade ? opts.vontade : 0) + (d.maisCentelha ? opts.centelha * (d.centelhaMult ?? 1) : 0);
 }
 
+/** Defesa Social (vs leitura/Perspicácia): (Compostura + Temperança + Centelha) × 2. */
+export function defesaSocial(opts: { compostura: number; temperanca: number; centelha: number }) {
+  const d = regras.derivados.defesaSocial as { mult: number; tracos: string[] };
+  const v: Record<string, number> = { compostura: opts.compostura, temperanca: opts.temperanca, centelha: opts.centelha };
+  return d.tracos.reduce((s, k) => s + (v[k] ?? 0), 0) * d.mult;
+}
+
 /** Bônus de Centelha somado à SOMA do ataque (simétrico às defesas). */
 export function ataqueCentelha(centelha: number) {
   const d = regras.derivados.ataque as { centelhaMult?: number };
   return centelha * (d?.centelhaMult ?? 0);
+}
+
+/** Modificador da Aparência (curva −4..+4) somado FLAT à jogada social alinhada. */
+export function aparenciaMod(nivel: number) {
+  const a = regras.aparencia as { curva: Record<string, number> };
+  return a.curva[String(nivel)] ?? 0;
 }
 
 /** Energia: (Centelha×3) + soma das Virtudes + Vontade. */

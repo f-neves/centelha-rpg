@@ -453,7 +453,7 @@
     "id": "fascinacao",
     "nome": "Fascinação",
     "categoria": "universal",
-    "atributo_conjuracao": "manipulacao",
+    "atributo_conjuracao": "influencia",
     "niveis": [
       {
         "nivel": 1,

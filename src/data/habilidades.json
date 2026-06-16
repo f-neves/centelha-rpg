@@ -133,8 +133,7 @@
     "nome": "Persuasão",
     "grupo": "social",
     "atributos": [
-      "carisma",
-      "manipulacao"
+      "influencia"
     ],
     "descricao": "Convencer pela razão, pelo charme ou pela boa-fé — Carisma quando é sincero, Manipulação quando é cálculo."
   },
@@ -143,8 +142,7 @@
     "nome": "Oratória",
     "grupo": "social",
     "atributos": [
-      "carisma",
-      "manipulacao"
+      "influencia"
     ],
     "descricao": "Discursar e mover plateias."
   },
@@ -153,8 +151,8 @@
     "nome": "Sociabilidade",
     "grupo": "social",
     "atributos": [
-      "carisma",
-      "manipulacao"
+      "influencia",
+      "compostura"
     ],
     "descricao": "Cativar, enturmar-se e conduzir-se com graça em qualquer roda."
   },
@@ -164,8 +162,7 @@
     "grupo": "social",
     "atributos": [
       "percepcao",
-      "carisma",
-      "manipulacao"
+      "perspicacia"
     ],
     "descricao": "Ler emoções e intenções alheias (Percepção) e conectar-se a elas."
   },
@@ -174,8 +171,8 @@
     "nome": "Manha",
     "grupo": "social",
     "atributos": [
-      "carisma",
-      "manipulacao",
+      "influencia",
+      "compostura",
       "raciocinio",
       "percepcao"
     ],
@@ -186,7 +183,7 @@
     "nome": "Liderança",
     "grupo": "social",
     "atributos": [
-      "carisma",
+      "influencia",
       "inteligencia"
     ],
     "descricao": "Inspirar, comandar e coordenar um grupo."
@@ -196,8 +193,8 @@
     "nome": "Política",
     "grupo": "social",
     "atributos": [
-      "manipulacao",
-      "carisma",
+      "influencia",
+      "perspicacia",
       "inteligencia"
     ],
     "descricao": "Intriga, alianças, jogo de poder e leitura de quem realmente manda."

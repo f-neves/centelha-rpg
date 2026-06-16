@@ -131,7 +131,7 @@
     "id": "voz-de-mel",
     "nome": "Voz de Mel",
     "trilha": "voz",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "habilidade_ancora": "Lábia",
     "descricao": "palavras que abrem portas e corações"
   },
@@ -139,7 +139,7 @@
     "id": "lenda-viva",
     "nome": "Lenda Viva",
     "trilha": "voz",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "habilidade_ancora": "Oratória",
     "descricao": "a presença que move multidões"
   },
@@ -147,7 +147,7 @@
     "id": "estandarte",
     "nome": "Estandarte",
     "trilha": "voz",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "habilidade_ancora": "Oratória / Tática",
     "descricao": "liderança, coordenar, moral"
   },
@@ -155,7 +155,7 @@
     "id": "musa",
     "nome": "Musa",
     "trilha": "voz",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "habilidade_ancora": "Performance",
     "descricao": "encantar plateias, mover emoções"
   },
@@ -163,7 +163,7 @@
     "id": "brasa",
     "nome": "Brasa",
     "trilha": "voz",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "habilidade_ancora": "Oratória",
     "descricao": "inflamar paixões, incitar"
   },
@@ -171,7 +171,7 @@
     "id": "comando",
     "nome": "Comando",
     "trilha": "voz",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "habilidade_ancora": "Intimidação / Oratória",
     "descricao": "a palavra que dobra a vontade alheia"
   },
@@ -179,7 +179,7 @@
     "id": "teia",
     "nome": "Teia",
     "trilha": "voz",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "habilidade_ancora": "Manha / Política",
     "descricao": "intriga, plantar ideias, chantagem"
   },
@@ -187,7 +187,7 @@
     "id": "serpente-das-palavras",
     "nome": "Serpente das Palavras",
     "trilha": "voz",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "habilidade_ancora": "Lábia",
     "descricao": "barganha, torcer sentidos, lábia ardilosa"
   },
@@ -195,7 +195,7 @@
     "id": "sussurro",
     "nome": "Sussurro",
     "trilha": "voz",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "habilidade_ancora": "Manha",
     "descricao": "semear medo, dúvida, paranoia"
   },
@@ -203,7 +203,7 @@
     "id": "marionete",
     "nome": "Marionete",
     "trilha": "voz",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "habilidade_ancora": "Manha",
     "descricao": "sugestão profunda, reescrever desejos"
   },
@@ -211,7 +211,7 @@
     "id": "mascara",
     "nome": "Máscara",
     "trilha": "voz",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "habilidade_ancora": "Manha",
     "descricao": "o rosto que não se lê (disfarce e engano)"
   },
@@ -219,7 +219,7 @@
     "id": "beleza-cativante",
     "nome": "Beleza Cativante",
     "trilha": "voz",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "habilidade_ancora": "Lábia",
     "descricao": "atrair, seduzir, desarmar pela presença"
   },
@@ -227,7 +227,7 @@
     "id": "semblante",
     "nome": "Semblante",
     "trilha": "voz",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "habilidade_ancora": "Intimidação",
     "descricao": "impor respeito ou medo pela presença"
   },
@@ -235,7 +235,7 @@
     "id": "camaleao",
     "nome": "Camaleão",
     "trilha": "voz",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "habilidade_ancora": "Ladinagem / Manha",
     "descricao": "alterar a própria aparência"
   },
@@ -243,7 +243,7 @@
     "id": "aura",
     "nome": "Aura",
     "trilha": "voz",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "habilidade_ancora": "Performance",
     "descricao": "irradiar emoção à volta"
   },
@@ -251,7 +251,7 @@
     "id": "mascara-impassivel",
     "nome": "Máscara Impassível",
     "trilha": "voz",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "habilidade_ancora": "Manha",
     "descricao": "esconder emoções, blefe perfeito"
   },

@@ -406,7 +406,7 @@
     "id": "tom-de-autoridade",
     "nome": "Tom de Autoridade",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -419,7 +419,7 @@
     "id": "ordem-curta",
     "nome": "Ordem Curta",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -436,7 +436,7 @@
     "id": "encarar",
     "nome": "Encarar",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -453,7 +453,7 @@
     "id": "voz-de-comando",
     "nome": "Voz de Comando",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -470,7 +470,7 @@
     "id": "submissao",
     "nome": "Submissão",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -487,7 +487,7 @@
     "id": "comando-inspirador",
     "nome": "Comando Inspirador",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -505,7 +505,7 @@
     "id": "comando-irresistivel",
     "nome": "Comando Irresistível",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -523,7 +523,7 @@
     "id": "aterrorizar",
     "nome": "Aterrorizar",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -540,7 +540,7 @@
     "id": "dominacao",
     "nome": "Dominação",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -558,7 +558,7 @@
     "id": "quebrar-o-espirito",
     "nome": "Quebrar o Espírito",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -577,7 +577,7 @@
     "id": "palavra-de-lei",
     "nome": "Palavra de Lei",
     "caminho": "comando",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -1044,7 +1044,7 @@
     "id": "primeira-impressao",
     "nome": "Primeira Impressão",
     "caminho": "voz-de-mel",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -1057,7 +1057,7 @@
     "id": "palavra-calmante",
     "nome": "Palavra Calmante",
     "caminho": "voz-de-mel",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -1074,7 +1074,7 @@
     "id": "charme",
     "nome": "Charme",
     "caminho": "voz-de-mel",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -1091,7 +1091,7 @@
     "id": "carisma-magnetico",
     "nome": "Carisma Magnético",
     "caminho": "voz-de-mel",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -1108,7 +1108,7 @@
     "id": "desarmar",
     "nome": "Desarmar",
     "caminho": "voz-de-mel",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -1125,7 +1125,7 @@
     "id": "encantamento",
     "nome": "Encantamento",
     "caminho": "voz-de-mel",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -1142,7 +1142,7 @@
     "id": "coracao-nas-maos",
     "nome": "Coração nas Mãos",
     "caminho": "voz-de-mel",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -1160,7 +1160,7 @@
     "id": "voz-que-move-multidoes",
     "nome": "Voz que Move Multidões",
     "caminho": "voz-de-mel",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -1842,7 +1842,7 @@
     "id": "presenca-imponente",
     "nome": "Presença Imponente",
     "caminho": "lenda-viva",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -1855,7 +1855,7 @@
     "id": "inspirar",
     "nome": "Inspirar",
     "caminho": "lenda-viva",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -1872,7 +1872,7 @@
     "id": "discurso",
     "nome": "Discurso",
     "caminho": "lenda-viva",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -1889,7 +1889,7 @@
     "id": "estandarte-vivo",
     "nome": "Estandarte Vivo",
     "caminho": "lenda-viva",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -1906,7 +1906,7 @@
     "id": "temor-reverente",
     "nome": "Temor Reverente",
     "caminho": "lenda-viva",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -1923,7 +1923,7 @@
     "id": "carisma-heroico",
     "nome": "Carisma Heroico",
     "caminho": "lenda-viva",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -1941,7 +1941,7 @@
     "id": "lenda-em-vida",
     "nome": "Lenda em Vida",
     "caminho": "lenda-viva",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -1959,7 +1959,7 @@
     "id": "icone",
     "nome": "Ícone",
     "caminho": "lenda-viva",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -2245,7 +2245,7 @@
     "id": "rosto-de-poquer",
     "nome": "Rosto de Pôquer",
     "caminho": "mascara",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -2258,7 +2258,7 @@
     "id": "fingir",
     "nome": "Fingir",
     "caminho": "mascara",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -2275,7 +2275,7 @@
     "id": "disfarce-rapido",
     "nome": "Disfarce Rápido",
     "caminho": "mascara",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -2292,7 +2292,7 @@
     "id": "mentira-perfeita",
     "nome": "Mentira Perfeita",
     "caminho": "mascara",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -2309,7 +2309,7 @@
     "id": "identidade-falsa",
     "nome": "Identidade Falsa",
     "caminho": "mascara",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -2326,7 +2326,7 @@
     "id": "camaleao-social",
     "nome": "Camaleão Social",
     "caminho": "mascara",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -2344,7 +2344,7 @@
     "id": "roubar-rosto",
     "nome": "Roubar Rosto",
     "caminho": "mascara",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -2362,7 +2362,7 @@
     "id": "mil-faces",
     "nome": "Mil Faces",
     "caminho": "mascara",
-    "atributo": "manipulacao",
+    "atributo": "compostura",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -3445,7 +3445,7 @@
     "id": "voz-de-lider",
     "nome": "Voz de Líder",
     "caminho": "estandarte",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -3458,7 +3458,7 @@
     "id": "coordenar",
     "nome": "Coordenar",
     "caminho": "estandarte",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -3475,7 +3475,7 @@
     "id": "reunir",
     "nome": "Reunir",
     "caminho": "estandarte",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -3492,7 +3492,7 @@
     "id": "formacao",
     "nome": "Formação",
     "caminho": "estandarte",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -3509,7 +3509,7 @@
     "id": "grito-de-guerra",
     "nome": "Grito de Guerra",
     "caminho": "estandarte",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -3526,7 +3526,7 @@
     "id": "maestria-de-campo",
     "nome": "Maestria de Campo",
     "caminho": "estandarte",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -3544,7 +3544,7 @@
     "id": "general",
     "nome": "General",
     "caminho": "estandarte",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -3562,7 +3562,7 @@
     "id": "estandarte-eterno",
     "nome": "Estandarte Eterno",
     "caminho": "estandarte",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -3580,7 +3580,7 @@
     "id": "presenca-cenica",
     "nome": "Presença Cênica",
     "caminho": "musa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -3593,7 +3593,7 @@
     "id": "tocar-a-alma",
     "nome": "Tocar a Alma",
     "caminho": "musa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -3610,7 +3610,7 @@
     "id": "distrair",
     "nome": "Distrair",
     "caminho": "musa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -3627,7 +3627,7 @@
     "id": "inspiracao-artistica",
     "nome": "Inspiração Artística",
     "caminho": "musa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -3644,7 +3644,7 @@
     "id": "encantar-a-multidao",
     "nome": "Encantar a Multidão",
     "caminho": "musa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -3661,7 +3661,7 @@
     "id": "obra-prima",
     "nome": "Obra-Prima",
     "caminho": "musa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -3679,7 +3679,7 @@
     "id": "voz-que-cura",
     "nome": "Voz que Cura",
     "caminho": "musa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -3697,7 +3697,7 @@
     "id": "cancao-imortal",
     "nome": "Canção Imortal",
     "caminho": "musa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -3715,7 +3715,7 @@
     "id": "centelha",
     "nome": "Centelha",
     "caminho": "brasa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -3728,7 +3728,7 @@
     "id": "incitar",
     "nome": "Incitar",
     "caminho": "brasa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -3745,7 +3745,7 @@
     "id": "inflamar",
     "nome": "Inflamar",
     "caminho": "brasa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -3762,7 +3762,7 @@
     "id": "discurso-ardente",
     "nome": "Discurso Ardente",
     "caminho": "brasa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -3779,7 +3779,7 @@
     "id": "provocacao",
     "nome": "Provocação",
     "caminho": "brasa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -3796,7 +3796,7 @@
     "id": "fogo-nos-coracoes",
     "nome": "Fogo nos Corações",
     "caminho": "brasa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -3814,7 +3814,7 @@
     "id": "pavio-curto",
     "nome": "Pavio Curto",
     "caminho": "brasa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -3832,7 +3832,7 @@
     "id": "incendio",
     "nome": "Incêndio",
     "caminho": "brasa",
-    "atributo": "carisma",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -3850,7 +3850,7 @@
     "id": "trama",
     "nome": "Trama",
     "caminho": "teia",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -3863,7 +3863,7 @@
     "id": "plantar-ideia",
     "nome": "Plantar Ideia",
     "caminho": "teia",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -3880,7 +3880,7 @@
     "id": "cunha",
     "nome": "Cunha",
     "caminho": "teia",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -3897,7 +3897,7 @@
     "id": "chantagem",
     "nome": "Chantagem",
     "caminho": "teia",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -3914,7 +3914,7 @@
     "id": "rede-de-favores",
     "nome": "Rede de Favores",
     "caminho": "teia",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -3931,7 +3931,7 @@
     "id": "virar-o-jogo",
     "nome": "Virar o Jogo",
     "caminho": "teia",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -3949,7 +3949,7 @@
     "id": "mestre-dos-cordeis",
     "nome": "Mestre dos Cordéis",
     "caminho": "teia",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -3967,7 +3967,7 @@
     "id": "teia",
     "nome": "Teia",
     "caminho": "teia",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -3985,7 +3985,7 @@
     "id": "lingua-de-prata",
     "nome": "Língua de Prata",
     "caminho": "serpente-das-palavras",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -3998,7 +3998,7 @@
     "id": "torcer",
     "nome": "Torcer",
     "caminho": "serpente-das-palavras",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4015,7 +4015,7 @@
     "id": "pechinchar",
     "nome": "Pechinchar",
     "caminho": "serpente-das-palavras",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4032,7 +4032,7 @@
     "id": "contrato-capcioso",
     "nome": "Contrato Capcioso",
     "caminho": "serpente-das-palavras",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4049,7 +4049,7 @@
     "id": "confundir",
     "nome": "Confundir",
     "caminho": "serpente-das-palavras",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4066,7 +4066,7 @@
     "id": "palavras-de-veludo",
     "nome": "Palavras de Veludo",
     "caminho": "serpente-das-palavras",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -4084,7 +4084,7 @@
     "id": "pacto-inquebravel",
     "nome": "Pacto Inquebrável",
     "caminho": "serpente-das-palavras",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -4102,7 +4102,7 @@
     "id": "voz-da-serpente",
     "nome": "Voz da Serpente",
     "caminho": "serpente-das-palavras",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -4120,7 +4120,7 @@
     "id": "sussurro",
     "nome": "Sussurro",
     "caminho": "sussurro",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -4133,7 +4133,7 @@
     "id": "semear-duvida",
     "nome": "Semear Dúvida",
     "caminho": "sussurro",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4150,7 +4150,7 @@
     "id": "inquietar",
     "nome": "Inquietar",
     "caminho": "sussurro",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4167,7 +4167,7 @@
     "id": "paranoia",
     "nome": "Paranoia",
     "caminho": "sussurro",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4184,7 +4184,7 @@
     "id": "boato",
     "nome": "Boato",
     "caminho": "sussurro",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4201,7 +4201,7 @@
     "id": "veneno-na-mente",
     "nome": "Veneno na Mente",
     "caminho": "sussurro",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -4219,7 +4219,7 @@
     "id": "pesadelo-acordado",
     "nome": "Pesadelo Acordado",
     "caminho": "sussurro",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -4237,7 +4237,7 @@
     "id": "coro-de-sussurros",
     "nome": "Coro de Sussurros",
     "caminho": "sussurro",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -4255,7 +4255,7 @@
     "id": "sugestao",
     "nome": "Sugestão",
     "caminho": "marionete",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4270,7 +4270,7 @@
     "id": "ler-desejos",
     "nome": "Ler Desejos",
     "caminho": "marionete",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -4285,7 +4285,7 @@
     "id": "empurrao-sutil",
     "nome": "Empurrão Sutil",
     "caminho": "marionete",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4302,7 +4302,7 @@
     "id": "compulsao",
     "nome": "Compulsão",
     "caminho": "marionete",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4319,7 +4319,7 @@
     "id": "fios-invisiveis",
     "nome": "Fios Invisíveis",
     "caminho": "marionete",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4336,7 +4336,7 @@
     "id": "titereiro",
     "nome": "Titereiro",
     "caminho": "marionete",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -4354,7 +4354,7 @@
     "id": "reescrever-desejos",
     "nome": "Reescrever Desejos",
     "caminho": "marionete",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -4372,7 +4372,7 @@
     "id": "marionete",
     "nome": "Marionete",
     "caminho": "marionete",
-    "atributo": "manipulacao",
+    "atributo": "influencia",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -4390,7 +4390,7 @@
     "id": "magnetismo",
     "nome": "Magnetismo",
     "caminho": "beleza-cativante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -4403,7 +4403,7 @@
     "id": "seducao",
     "nome": "Sedução",
     "caminho": "beleza-cativante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4420,7 +4420,7 @@
     "id": "desarmar-com-charme",
     "nome": "Desarmar com Charme",
     "caminho": "beleza-cativante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4437,7 +4437,7 @@
     "id": "encanto-irresistivel",
     "nome": "Encanto Irresistível",
     "caminho": "beleza-cativante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4454,7 +4454,7 @@
     "id": "olhar-cativante",
     "nome": "Olhar Cativante",
     "caminho": "beleza-cativante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4471,7 +4471,7 @@
     "id": "beleza-inebriante",
     "nome": "Beleza Inebriante",
     "caminho": "beleza-cativante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -4489,7 +4489,7 @@
     "id": "visao-divina",
     "nome": "Visão Divina",
     "caminho": "beleza-cativante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -4507,7 +4507,7 @@
     "id": "beleza-que-move-o-mundo",
     "nome": "Beleza que Move o Mundo",
     "caminho": "beleza-cativante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -4525,7 +4525,7 @@
     "id": "porte",
     "nome": "Porte",
     "caminho": "semblante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -4538,7 +4538,7 @@
     "id": "olhar-severo",
     "nome": "Olhar Severo",
     "caminho": "semblante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4555,7 +4555,7 @@
     "id": "imponencia",
     "nome": "Imponência",
     "caminho": "semblante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4572,7 +4572,7 @@
     "id": "aura-de-comando",
     "nome": "Aura de Comando",
     "caminho": "semblante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4589,7 +4589,7 @@
     "id": "encarar-a-morte",
     "nome": "Encarar a Morte",
     "caminho": "semblante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4606,7 +4606,7 @@
     "id": "presenca-avassaladora",
     "nome": "Presença Avassaladora",
     "caminho": "semblante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -4624,7 +4624,7 @@
     "id": "majestade",
     "nome": "Majestade",
     "caminho": "semblante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -4642,7 +4642,7 @@
     "id": "semblante-de-deus",
     "nome": "Semblante de Deus",
     "caminho": "semblante",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -4660,7 +4660,7 @@
     "id": "disfarce",
     "nome": "Disfarce",
     "caminho": "camaleao",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -4673,7 +4673,7 @@
     "id": "mudar-de-cara",
     "nome": "Mudar de Cara",
     "caminho": "camaleao",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4690,7 +4690,7 @@
     "id": "misturar-se",
     "nome": "Misturar-se",
     "caminho": "camaleao",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4707,7 +4707,7 @@
     "id": "segunda-pele",
     "nome": "Segunda Pele",
     "caminho": "camaleao",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4724,7 +4724,7 @@
     "id": "rosto-comum",
     "nome": "Rosto Comum",
     "caminho": "camaleao",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4741,7 +4741,7 @@
     "id": "impostor",
     "nome": "Impostor",
     "caminho": "camaleao",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -4759,7 +4759,7 @@
     "id": "forma-fluida",
     "nome": "Forma Fluida",
     "caminho": "camaleao",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -4777,7 +4777,7 @@
     "id": "mil-rostos",
     "nome": "Mil Rostos",
     "caminho": "camaleao",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -4795,7 +4795,7 @@
     "id": "aura-sutil",
     "nome": "Aura Sutil",
     "caminho": "aura",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -4808,7 +4808,7 @@
     "id": "irradiar-calma",
     "nome": "Irradiar Calma",
     "caminho": "aura",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4825,7 +4825,7 @@
     "id": "irradiar-temor",
     "nome": "Irradiar Temor",
     "caminho": "aura",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4842,7 +4842,7 @@
     "id": "campo-emocional",
     "nome": "Campo Emocional",
     "caminho": "aura",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4859,7 +4859,7 @@
     "id": "presenca-tangivel",
     "nome": "Presença Tangível",
     "caminho": "aura",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -4876,7 +4876,7 @@
     "id": "mare-emocional",
     "nome": "Maré Emocional",
     "caminho": "aura",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -4894,7 +4894,7 @@
     "id": "aura-avassaladora",
     "nome": "Aura Avassaladora",
     "caminho": "aura",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -4912,7 +4912,7 @@
     "id": "aura-divina",
     "nome": "Aura Divina",
     "caminho": "aura",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 5,
     "tipo": "ativa",
     "custo": {
@@ -4930,7 +4930,7 @@
     "id": "face-neutra",
     "nome": "Face Neutra",
     "caminho": "mascara-impassivel",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "passiva",
     "custo": {},
@@ -4943,7 +4943,7 @@
     "id": "esconder-sentir",
     "nome": "Esconder Sentir",
     "caminho": "mascara-impassivel",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4960,7 +4960,7 @@
     "id": "mentira-de-olhos",
     "nome": "Mentira de Olhos",
     "caminho": "mascara-impassivel",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 1,
     "tipo": "ativa",
     "custo": {
@@ -4977,7 +4977,7 @@
     "id": "inescrutavel",
     "nome": "Inescrutável",
     "caminho": "mascara-impassivel",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "passiva",
     "custo": {},
@@ -4992,7 +4992,7 @@
     "id": "calma-absoluta",
     "nome": "Calma Absoluta",
     "caminho": "mascara-impassivel",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 2,
     "tipo": "ativa",
     "custo": {
@@ -5009,7 +5009,7 @@
     "id": "veu-da-mente",
     "nome": "Véu da Mente",
     "caminho": "mascara-impassivel",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 3,
     "tipo": "ativa",
     "custo": {
@@ -5027,7 +5027,7 @@
     "id": "mascara-perfeita",
     "nome": "Máscara Perfeita",
     "caminho": "mascara-impassivel",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 4,
     "tipo": "ativa",
     "custo": {
@@ -5045,7 +5045,7 @@
     "id": "vazio",
     "nome": "Vazio",
     "caminho": "mascara-impassivel",
-    "atributo": "aparencia",
+    "atributo": "compostura",
     "banda": 5,
     "tipo": "ativa",
     "custo": {

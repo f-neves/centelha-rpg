@@ -87,6 +87,14 @@
     "definicao": "Muro passivo contra manipulação e poderes mentais: (Integridade × 2) + Vontade + Centelha×2."
   },
   {
+    "id": "defesa-social",
+    "termo": "Defesa Social",
+    "aliases": [
+      "resistência social"
+    ],
+    "definicao": "Muro passivo contra a leitura social (Perspicácia): (Compostura + Temperança + Centelha) × 2."
+  },
+  {
     "id": "centelha",
     "termo": "Centelha",
     "aliases": [

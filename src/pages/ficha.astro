@@ -7,8 +7,8 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   <div class="xpbar" id="painel">
     <span class="big">XP: <b id="xpSpent">0</b></span>
-    <label>Orçamento <input type="number" id="xpBudget" value="1000" /></label>
-    <span class="big">Restam: <b id="xpRem" class="rem ok">1000</b></span>
+    <label>Orçamento <input type="number" id="xpBudget" value="1200" /></label>
+    <span class="big">Restam: <b id="xpRem" class="rem ok">1200</b></span>
     <span class="breakdown" id="xpBreak"></span>
     <span class="modo-wrap"><span class="modo-lbl">Modo</span>
       <span class="modo-toggle" role="group" aria-label="Modo da ficha">
@@ -32,7 +32,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     <label>Jogador<input class="txt" data-id="jogador" /></label>
   </div>
 
-  <h2 class="barh">Atributos <small>(piso 2 · nível×10)</small></h2>
+  <h2 class="barh">Atributos <small>(piso 1 · nível×10)</small></h2>
   <div class="cols3" id="attrs"></div>
 
   <div class="cols2">
@@ -72,7 +72,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 </Base>
 
 <script>
-  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, regras } from '../lib/calc';
+  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, regras } from '../lib/calc';
   import ATTRS_D from '../data/atributos.json';
   import HAB_D from '../data/habilidades.json';
   import VIRT_D from '../data/virtudes.json';
@@ -106,7 +106,8 @@ import RoladorDados from '../components/RoladorDados.astro';
   const SEC_NOME: Record<string, string> = Object.fromEntries(SECONDARY.map(([n]) => [slug(n), n]));
   const TRACO_DESC: Record<string, string> = {
     centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava as bandas das Proezas e dimensiona Energia e Mana.',
-    willpower: 'Reserva de determinação (piso 5). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
+    willpower: 'Reserva de determinação (piso 1). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
+    aparencia: 'Traço próprio (1–10, piso 1, ×2). Modificador direcional na jogada social: ajuda alinhado (seduzir/impressionar), atrapalha invertido (intimidar). A Compostura mascara parte dele.',
   };
   function openTraitModal(nm: HTMLElement) {
     const dots = nm.closest('.trow')?.querySelector('.dots') as HTMLElement | null; if (!dots) return;
@@ -118,6 +119,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     else if (k === 'virtue') { const v = (VIRT_D as any[]).find((x) => x.id === key); p = { tipo: 'virtude', nome: v.nome, descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: v.niveis }; }
     else if (k === 'centelha') { p = { tipo: 'traço', nome: 'Centelha', descricao: TRACO_DESC.centelha, niveis: (regras as any).escalaCentelha }; }
     else if (k === 'willpower') { p = { tipo: 'traço', nome: 'Força de Vontade', descricao: TRACO_DESC.willpower, niveis: (regras as any).escalaVontade }; }
+    else if (k === 'aparencia') { p = { tipo: 'traço', nome: 'Aparência', descricao: TRACO_DESC.aparencia, niveis: (regras as any).escalaAparencia }; }
     if (p && (window as any).refModal) (window as any).refModal(p);
   }
   const CAM_ORDER = (CAM_D as any[]).map((c) => c.id);
@@ -142,7 +144,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   // Na criação, permite-se UM pico: um atributo em 5 e uma perícia primária em 4.
   function capFor(kind: string, key?: string): number {
     if (kind === 'arte2') return (S.centelha || 0) > 0 ? (S.skills?.ocultismo || 0) : 0; // Arte: exige Centelha > 0; nível ≤ Ocultismo
-    const full: Record<string, number> = { attr: 5, skill: 5, skill2: 5, virtue: 5, centelha: 5, willpower: 10 };
+    const full: Record<string, number> = { attr: 5, skill: 5, skill2: 5, virtue: 5, centelha: 5, willpower: 10, aparencia: 10 };
     if (S.modo === 'evolucao') return full[kind] ?? 5;
     if (kind === 'attr' || kind === 'skill') {
       const base = kind === 'attr' ? CREA.atributo : CREA.habilidade;
@@ -153,7 +155,7 @@ import RoladorDados from '../components/RoladorDados.astro';
       for (const k in store) { if (k !== key && (store[k] || 0) > base) { outroPico = true; break; } }
       return outroPico ? base : pico;
     }
-    const crea: Record<string, number> = { skill2: CREA.habilidade, virtue: 5, centelha: CREA.centelha, willpower: 10 };
+    const crea: Record<string, number> = { skill2: CREA.habilidade, virtue: 5, centelha: CREA.centelha, willpower: 10, aparencia: 10 };
     return crea[kind] ?? 5;
   }
 
@@ -161,17 +163,17 @@ import RoladorDados from '../components/RoladorDados.astro';
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 5, centelha: 0, tech: {}, arte: {}, budget: 1000, modo: 'criacao', equip: { arma: 'desarmado', armadura: 'nenhuma', escudo: 'nenhum' } };
-    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 2));
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, tech: {}, arte: {}, budget: 1200, modo: 'criacao', equip: { arma: 'desarmado', armadura: 'nenhuma', escudo: 'nenhum' } };
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
     SECONDARY.forEach(([n]) => { S.skills2[slug(n)] = 0; S.spec2[slug(n)] = 0; });
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
-    S.willpower ??= 5; S.centelha ??= 0; S.budget ??= 1000; S.modo ??= 'criacao';
+    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1200; S.modo ??= 'criacao';
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.armadura ??= 'nenhuma'; S.equip.escudo ??= 'nenhum';
-    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 2));
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] ??= 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
     SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] ??= 0; S.spec2[k] ??= 0; });
@@ -202,14 +204,17 @@ import RoladorDados from '../components/RoladorDados.astro';
     const groups: Record<string, any[]> = { Físicos: [], Sociais: [], Mentais: [] };
     (ATTRS_D as any[]).forEach((a) => groups[ATTR_GRP[a.grupo]].push(a));
     el('attrs').innerHTML = ['Físicos', 'Sociais', 'Mentais'].map((g) =>
-      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 5, 2) + rollBtn('attr', a.id))).join('')}</div>`).join('');
+      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 5, 1) + rollBtn('attr', a.id))).join('')}</div>`).join('');
   }
   function renderPower() {
     let h = trow('<b>Centelha</b> <small>(0–5)</small>', dotsHTML('centelha', 'centelha', S.centelha, 5, 0));
     h += '<h3>Virtudes</h3>';
     (VIRT_D as any[]).forEach((v) => (h += trow(v.nome, dotsHTML('virtue', v.id, S.virtues[v.id], 5, 1))));
-    h += '<h3>Força de Vontade <small>(piso 5 · ×2)</small></h3>';
-    h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 10, 5));
+    h += '<h3>Força de Vontade <small>(piso 1 · ×2)</small></h3>';
+    h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 10, 1));
+    h += '<h3>Aparência <small>(1–10 · piso 1 · ×2)</small></h3>';
+    const am = aparenciaMod(S.aparencia);
+    h += trow('Aparência', dotsHTML('aparencia', 'aparencia', S.aparencia, 10, 1) + `<span class="apmod" title="Modificador na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`);
     el('power').innerHTML = h;
   }
   function renderSkills() {
@@ -265,7 +270,8 @@ import RoladorDados from '../components/RoladorDados.astro';
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
       r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + esp + Centelha + armadura') +
-      r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} × 2) + Vontade + Centelha`) +
+      r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} × 2) + Vontade + Centelha×2`) +
+      r('Defesa Social', defesaSocial({ compostura: A('compostura'), temperanca: VI('temperanca'), centelha: C }), '(Compostura + Temperança + Centelha) × 2') +
       r('Soak (Imp/Letal)', `${soakI} / ${soakL}${arm.protecao ? ` · Prot ${arm.protecao}` : ''}`, 'Vigor (½ no letal) + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade') +
@@ -302,25 +308,26 @@ import RoladorDados from '../components/RoladorDados.astro';
     fill('eq-arma', ARMA_D as any[], S.equip.arma); fill('eq-armadura', ARMADURA_D as any[], S.equip.armadura); fill('eq-escudo', ESCUDO_D as any[], S.equip.escudo);
   }
   function recompute() {
-    let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
-    (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 2, S.attrs[a.id] || 2)));
+    let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
+    (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 1, S.attrs[a.id] || 1)));
     (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || 0) * 10; });
     (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
-    xw = custoPontos('vontade', 5, S.willpower || 5);
+    xw = custoPontos('vontade', 1, S.willpower || 1);
+    xap = custoPontos('aparencia', 1, S.aparencia || 1);
     xc = custoPontos('centelha', 0, S.centelha || 0);
     SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || 0) * 5; });
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECBAND[id]) xt += TECBAND[id] * 5; });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
-    const total = xa + xs + xsp + xv + xw + xc + x2 + xt + xar;
+    const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar;
     el('xpSpent').textContent = String(total);
     const rem = (S.budget || 0) - total, re = el('xpRem'); re.textContent = String(rem); re.className = 'rem ' + (rem < 0 ? 'neg' : 'ok');
-    el('xpBreak').innerHTML = `Atrib ${xa} · Perícias ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '');
+    el('xpBreak').innerHTML = `Atrib ${xa} · Perícias ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '');
     renderDerived(); renderCombate(); save();
   }
 
   // ---- interações ----
-  const floorOf: Record<string, number> = { attr: 2, skill: 0, skill2: 0, virtue: 1, centelha: 0, willpower: 5, arte2: 0 };
-  const valOf = (k: string, key: string) => ({ attr: S.attrs[key], skill: S.skills[key], skill2: S.skills2[key] || 0, virtue: S.virtues[key], centelha: S.centelha, willpower: S.willpower, arte2: S.arte[key] || 0 } as any)[k] || 0;
+  const floorOf: Record<string, number> = { attr: 1, skill: 0, skill2: 0, virtue: 1, centelha: 0, willpower: 1, aparencia: 1, arte2: 0 };
+  const valOf = (k: string, key: string) => ({ attr: S.attrs[key], skill: S.skills[key], skill2: S.skills2[key] || 0, virtue: S.virtues[key], centelha: S.centelha, willpower: S.willpower, aparencia: S.aparencia, arte2: S.arte[key] || 0 } as any)[k] || 0;
   function refreshDots(kind: string, key: string) {
     const span = document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`); if (!span) return;
     const floor = floorOf[kind], val = valOf(kind, key);
@@ -343,8 +350,10 @@ import RoladorDados from '../components/RoladorDados.astro';
     else if (kind === 'virtue') S.virtues[key] = nv;
     else if (kind === 'centelha') { S.centelha = nv; renderCaminhos(); renderArtes(); }
     else if (kind === 'willpower') S.willpower = nv;
+    else if (kind === 'aparencia') S.aparencia = nv;
     else if (kind === 'arte2') { S.arte[key] = nv; renderArtes(); }
-    if (['attr', 'virtue', 'centelha', 'willpower'].includes(kind)) refreshDots(kind, key);
+    if (['attr', 'virtue', 'centelha', 'willpower', 'aparencia'].includes(kind)) refreshDots(kind, key);
+    if (kind === 'aparencia') { const m = aparenciaMod(nv); const sp = document.querySelector('.apmod'); if (sp) sp.textContent = (m >= 0 ? '+' : '') + m; }
     if (kind === 'attr' && S.modo === 'criacao') refreshCaps('attr'); // o pico de um trava os 5 dos demais
     recompute();
   }
@@ -399,14 +408,14 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   function syncInputs() {
     document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => (inp.value = S.id?.[inp.dataset.id!] || ''));
-    (el('xpBudget') as HTMLInputElement).value = String(S.budget ?? 1000);
+    (el('xpBudget') as HTMLInputElement).value = String(S.budget ?? 1200);
   }
   function markModo() {
     document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => { const on = b.dataset.modo === (S.modo || 'criacao'); b.classList.toggle('primary', on); b.setAttribute('aria-pressed', String(on)); });
   }
   function clampToMode() {
     // ao entrar em Criação, respeita os tetos (reduz o que passou)
-    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = Math.min(S.attrs[a.id] || 2, capFor('attr', a.id))));
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = Math.min(S.attrs[a.id] || 1, capFor('attr', a.id))));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = Math.min(S.skills[h.id] || 0, capFor('skill', h.id)); if ((S.spec[h.id] || 0) > S.skills[h.id]) S.spec[h.id] = S.skills[h.id]; });
     SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] = Math.min(S.skills2[k] || 0, capFor('skill2', k)); if ((S.spec2[k] || 0) > S.skills2[k]) S.spec2[k] = S.skills2[k]; });
     S.centelha = Math.min(S.centelha || 0, capFor('centelha'));
@@ -492,6 +501,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   .spec { display: flex; gap: 2px; margin-left: .6rem; }
   .sq { width: 12px; height: 12px; border: 1.2px solid var(--ink-soft); cursor: pointer; background: transparent; flex: 0 0 auto; border-radius: 2px; }
   .sq.on { background: var(--gold); border-color: var(--gold); } .sq.dis { opacity: .28; cursor: not-allowed; }
+  .apmod { margin-left: .5rem; font-family: 'Cinzel'; font-weight: 700; font-size: .95rem; color: var(--accent); }
 
   #derived { border: 1px solid var(--panel-border); background: var(--panel); border-left: 4px solid var(--accent); padding: .6rem .8rem; border-radius: 3px; }
   .derv { display: flex; justify-content: space-between; align-items: baseline; padding: .2rem 0; border-bottom: 1px dotted var(--rule); }

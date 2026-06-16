@@ -11,9 +11,11 @@ Um personagem é construído gastando **Experiência** (XP) a partir de valores-
 
 ## Pisos e princípios
 
-Tudo começa no mínimo e é comprado dali: **Atributos 2** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 5** · **Centelha 0** · qualquer **Proeza 0**.
+Tudo começa no mínimo e é comprado dali: **Atributos 1** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 1** · **Aparência 1** · **Centelha 0** · qualquer **Proeza 0**.
 
-A **Centelha 0** é o mortal comum — cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial padrão: **1000 XP** (iniciante), **1400** (veterano) ou **1800** (herói). Com 1000 XP, um personagem já chega como Centelha 2, com vários atributos no teto de criação e um arsenal de Técnicas.
+A **Centelha 0** é o mortal comum — cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial padrão: **1200 XP** (iniciante), **1600** (veterano) ou **2000** (herói). Com 1200 XP, um personagem já chega como Centelha 2, com vários atributos no teto de criação e um arsenal de Técnicas.
+
+> **Recalibração em curso.** Os pisos baixaram: **Atributos e Força de Vontade agora começam em 1** (antes 2 e 5) — por isso os orçamentos subiram 200. A **Aparência** saiu dos Atributos e virou trilha própria (1–10, ×2). Os quatro exemplos abaixo já usam a tríade social nova (Influência · Perspicácia · Compostura), mas seus **totais de XP estão sendo reajustados** à nova curva — trate os números como aproximados até o fechamento da tabela de custo.
 
 ## Custos de XP
 
@@ -62,7 +64,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Percepção 5 (pico) · Destreza, Vigor 4 · Força, Raciocínio, Inteligência 3 · Carisma, Manipulação, Aparência 2 | 350 |
+| Atributos | Percepção 5 (pico) · Destreza, Vigor 4 · Força, Raciocínio, Inteligência 3 · Influência, Perspicácia, Compostura 2 | 350 |
 | Habilidades | Furtividade 4 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Medicina 1 | 235 |
 | Secundárias | três em 2 (Rastreio, Escalada, Falcoaria) | 18 |
 | Especialidades | Furtividade, Atirador, Sobrevivência | 30 |
@@ -78,7 +80,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Destreza 5 (pico) · Força, Vigor, Carisma 4 · Percepção, Raciocínio, Inteligência, Manipulação, Aparência 3 | 480 |
+| Atributos | Destreza 5 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Inteligência, Perspicácia, Compostura 3 | 480 |
 | Habilidades | Armas de Uma Mão 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Liderança, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 325 |
 | Secundárias | seis em 2–3 (Estratégia, Cavalgar, Jogos de Guerra…) | 48 |
 | Especialidades | cinco (Armas de Uma Mão, Integridade, Liderança…) | 50 |
@@ -94,7 +96,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Inteligência 5 (pico) · Força, Destreza, Vigor, Percepção 4 · Raciocínio, Carisma, Manipulação, Aparência 3 | 520 |
+| Atributos | Inteligência 5 (pico) · Força, Destreza, Vigor, Percepção 4 · Raciocínio, Influência, Perspicácia, Compostura 3 | 520 |
 | Habilidades | Ocultismo 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Integridade, Conhecimentos Gerais…) · três em 2 | 335 |
 | Secundárias | seis em 2–3 | 54 |
 | Especialidades | seis primárias + duas secundárias | 70 |
@@ -117,7 +119,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Inteligência 5 (pico) · Manipulação, Percepção 4 · Raciocínio, Vigor, Destreza, Carisma 3 · Força, Aparência 2 | 380 |
+| Atributos | Inteligência 5 (pico) · Influência, Percepção 4 · Raciocínio, Vigor, Destreza, Perspicácia 3 · Força, Compostura 2 | 380 |
 | Habilidades | Ocultismo 4 (pico) · Conhecimentos Gerais, Investigação, Esquiva, Prontidão 3 · Medicina, Resistência, Burocracia, Furtividade, Sociabilidade 2 · Persuasão 1 | 250 |
 | Secundárias | oito (Astronomia, Alquimia, Heráldica, Caligrafia, Criptografia, Botânica…) | 66 |
 | Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos Gerais…) | 60 |
