@@ -9,6 +9,21 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 
 <div class="callout regra"><span class="lbl">Catálogo</span>Para filtrar e comparar todo o equipamento, veja a página de <a href="/equipamentos">Equipamentos</a> — e escolha arma/armadura direto na <a href="/ficha">Ficha</a> para ver o ataque, a Defesa e o Soak já calculados.</div>
 
+## Como ler uma arma
+
+Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele entra no [Combate](/regras/combate):
+
+- **Speed** — quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
+- **Dano** — o **dado de dano** do golpe (1d6/2d6/3d6), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6).
+- **Acerto** — um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
+- **Def. (Defesa da Arma)** — quanto a arma acrescenta ao seu **Bloqueio**.
+- **Mãos** — uma ou duas; algumas são *Versáteis* e servem nas duas formas.
+- **Q-Acerto (B/D)** — Bônus e Dano de **Quase-Acerto**: o quanto e o quão fundo a arma "raspa" num quase-erro.
+
+<div class="callout exemplo"><span class="lbl">Lendo uma arma</span>A <strong>Espada Longa</strong> é <em>Média · Versátil</em>: <strong>Speed 6</strong> (ataque médio), <strong>2d6</strong> de dado de dano + Força, <strong>+1</strong> no pool de ataque e <strong>+1</strong> no Bloqueio. Como é <em>Versátil</em>, dá para empunhá-la a duas mãos por <strong>+1 dado de dano</strong> e <strong>−1</strong> de Defesa da Arma — a mesma lâmina, dois estilos.</div>
+
+<p class="muted">Escolha pela <strong>fantasia</strong> — o duelista veloz, o brutamontes de montante, o lanceiro que controla a distância —, não pelo número "mais forte". Cada classe vence umas situações e perde outras; não existe a arma ótima.</p>
+
 ## Classes de Arma
 
 <div class="table-wrap">
