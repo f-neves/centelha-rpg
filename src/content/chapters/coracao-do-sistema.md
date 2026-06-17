@@ -5,6 +5,8 @@ titulo: "O Coração do Sistema"
 resumo: "Rolagens, dificuldade e margem — a soma simples que move tudo."
 ---
 
+Neste jogo você interpreta um herói num mundo conduzido pelo **Mestre**. Na maior parte do tempo é só conversa: você diz o que seu personagem faz, o Mestre descreve o que acontece. Os dados só entram quando o resultado é **incerto e importa** — então o Mestre define o quão difícil é a tarefa (a **Dificuldade**), você junta os dados certos e rola. Este capítulo ensina exatamente isso: como uma rolagem funciona.
+
 Toda ação significativa nasce de uma soma simples: um **Atributo** (capacidades inerentes do personagem) somado a uma **Habilidade** (conhecimentos adquiridos ao longo da vida). Esse total vira um punhado de dados de seis lados — o seu *pool* — que você rola para enfrentar o mundo.
 
 ## Montando o Pool
@@ -41,6 +43,8 @@ Você tem **sucesso** quando o total **supera** o alvo — a Defesa de um inimig
 | 30+ | Sobre-humano | 18 | Semideus|
 
 <p class="muted">No nível "à altura", tarefas fáceis e médias são um cara-ou-coroa; a maestria traz confiabilidade. Quem não tem competência simplesmente não alcança as dificuldades altas.</p>
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Para escalar um muro liso (Dificuldade 10), Kael soma <strong>Força 3 + Atletismo 2 = 5</strong> → rola <strong>2d6+2</strong>. Saem 9 nos dados, +2 = <strong>11</strong>: supera 10, ele sobe. Se tivesse passado de 16 (6 acima do alvo), ganharia uma <strong>Margem</strong> — subiria mais rápido, ou alcançaria um peitoril mais alto.</div>
 
 ## Margem: graus de sucesso
 
