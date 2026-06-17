@@ -12,7 +12,7 @@ export const NAV = [
   { slug: '', titulo: 'Início', numeral: '' },
   { slug: 'regras/coracao-do-sistema', titulo: 'O Coração do Sistema', numeral: 'I' },
   { slug: 'regras/atributos-e-pericias', titulo: 'Atributos & Habilidades', numeral: 'II' },
-  { slug: 'regras/centelha-virtudes-vontade', titulo: 'Centelha, Virtudes & Vontade', numeral: 'III' },
+  { slug: 'regras/centelha-virtudes-vontade', titulo: 'Centelha, Virtudes, Vontade & Fôlego', numeral: 'III' },
   { slug: 'regras/combate', titulo: 'Combate', numeral: 'IV' },
   { slug: 'regras/vida-ferimentos-cura', titulo: 'Vida, Ferimentos & Cura', numeral: 'V' },
   { slug: 'caminhos', titulo: 'As Proezas', numeral: 'VI' },

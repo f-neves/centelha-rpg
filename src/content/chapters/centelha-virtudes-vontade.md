@@ -1,8 +1,8 @@
 ---
 ordem: 3
 numeral: "III"
-titulo: "Centelha, Virtudes & Vontade"
-resumo: "A alma e o poder — o que eleva o herói, o que o move e o que ele resiste."
+titulo: "Centelha, Virtudes, Vontade & Fôlego"
+resumo: "A alma, o poder e o corpo — o que eleva o herói, o que o move, o que ele resiste e o que o sustenta na luta."
 ---
 
 Atributos e Habilidades dizem o que o corpo e a mente conseguem fazer. Mas o que separa um mestre-de-armas mortal de um herói de lenda é a **Centelha** — o nível de poder pessoal. Em volta dela giram as quatro **Virtudes**, que movem a alma do personagem, e a **Força de Vontade**, a reserva que ele queima para transcender o momento.
@@ -88,3 +88,13 @@ A **Defesa Mental** é o muro passivo que convencimentos, intimidações e poder
 <p class="formula">Defesa Mental = (Integridade × 2) + Força de Vontade + Centelha×2</p>
 
 <p class="muted">Uma Integridade baixa derruba a Defesa Mental — quem está quebrado por dentro é mais fácil de dobrar. (A sua irmã social, a <strong>Defesa Social</strong>, protege contra quem tenta te <em>ler</em>, e vem da Compostura + Temperança + Centelha.)</p>
+
+## Fôlego
+
+Se a Centelha é a alma e a Vontade é a determinação, o **Fôlego** é o **corpo**: a reserva física de onde sai toda ação extenuante — atacar, defender, correr, saltar, carregar peso. É grande e se renova sozinha, mas o esforço pesado a queima rápido; depois de uma rajada, o corpo pede um respiro.
+
+<p class="formula">Fôlego = 10 (base racial) + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
+
+Ele nasce dos três traços que dizem o quanto o corpo aguenta: o **Vigor** (o motor), a **Resistência** (o tanque) e a **Força de Vontade** (a teimosia de seguir quando o corpo já pediu para parar) — por isso o Fôlego mora aqui, entre os traços que sustentam o herói. Um humano comum parte de **10**; um lutador de Vigor e Resistência altos chega à casa dos 50–70.
+
+Você **recupera Vigor de Fôlego a cada Tick, o tempo todo** — inclusive no meio da luta. Quem tem Vigor alto literalmente *recupera o fôlego enquanto troca golpes leves*; quem abusa de golpes pesados drena a reserva e precisa recuar para respirar. **Como o Fôlego se gasta e se recupera em combate** — o custo de cada golpe, o **Esforço** (forçar o golpe) e a ação de **Tomar Fôlego** — está no capítulo de [Combate](/regras/combate#folego).

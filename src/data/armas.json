@@ -188,7 +188,7 @@
       "pesada"
     ],
     "notas": "Alcance e impacto; Ruptura. Lenta.",
-    "folego": 30
+    "folego": 32
   },
   {
     "id": "montante",
@@ -207,7 +207,7 @@
     "pen": 0,
     "tags": [],
     "notas": "Espadão de duas mãos; dano que vence armadura, mas lento.",
-    "folego": 35
+    "folego": 38
   },
   {
     "id": "martelo-de-guerra",
@@ -228,7 +228,7 @@
       "ruptura"
     ],
     "notas": "Esmaga placas (Ruptura).",
-    "folego": 35
+    "folego": 38
   },
   {
     "id": "arco",
