@@ -91,10 +91,10 @@ A **Defesa Mental** é o muro passivo que convencimentos, intimidações e poder
 
 ## Fôlego
 
-Se a Centelha é a alma e a Vontade é a determinação, o **Fôlego** é o **corpo**: a reserva física de onde sai toda ação extenuante — atacar, defender, correr, saltar, carregar peso. É grande e se renova sozinha, mas o esforço pesado a queima rápido; depois de uma rajada, o corpo pede um respiro.
+Se a Centelha é a alma e a Vontade é a determinação, o **Fôlego** é o **corpo**: a reserva física de onde sai toda ação extenuante — atacar, correr, saltar, carregar peso. É grande, mas só se renova quando o corpo descansa: depois de uma rajada de esforço, ele pede um respiro.
 
 <p class="formula">Fôlego = 10 (base racial) + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
 
 Ele nasce dos três traços que dizem o quanto o corpo aguenta: o **Vigor** (o motor), a **Resistência** (o tanque) e a **Força de Vontade** (a teimosia de seguir quando o corpo já pediu para parar) — por isso o Fôlego mora aqui, entre os traços que sustentam o herói. Um humano comum parte de **10**; um lutador de Vigor e Resistência altos chega à casa dos 50–70.
 
-Você **recupera Vigor de Fôlego a cada Tick, o tempo todo** — inclusive no meio da luta. Quem tem Vigor alto literalmente *recupera o fôlego enquanto troca golpes leves*; quem abusa de golpes pesados drena a reserva e precisa recuar para respirar. **Como o Fôlego se gasta e se recupera em combate** — o custo de cada golpe, o **Esforço** (forçar o golpe) e a ação de **Tomar Fôlego** — está no capítulo de [Combate](/regras/combate#folego).
+Você **recupera Vigor de Fôlego a cada Tick em que NÃO está se esforçando** — defender, recuar e parar repõem a reserva; atacar e correr a gastam e não recuperam. Por isso ninguém pressiona a luta inteira: alterna-se **rajada e respiro**, e quem tem mais Vigor volta ao ar mais rápido. **Como o Fôlego se gasta e se recupera em combate** — o custo de cada golpe, o **Esforço** (forçar o golpe) e a ação de **Tomar Fôlego** — está no capítulo de [Combate](/regras/combate#folego).

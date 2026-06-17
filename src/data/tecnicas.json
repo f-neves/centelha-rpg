@@ -3156,7 +3156,7 @@
       "sem-limites"
     ],
     "aliases": [],
-    "texto": "Nenhum golpe seu **drena no líquido**: o custo bruto nunca passa de Vigor×Speed — todo ataque ao menos se paga. Dispensa sono e comida por longos períodos.",
+    "texto": "Sua reserva **nunca para de se renovar**: você recupera Vigor de Fôlego por Tick **mesmo enquanto ataca ou corre**. Na prática, golpes leves passam a se pagar sozinhos e só os pesados e o Esforço ainda drenam. Dispensa sono e comida por longos períodos.",
     "pendente": false
   },
   {

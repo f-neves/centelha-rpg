@@ -305,7 +305,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, especialidade: S.spec[w.pericia] || S.spec2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqueio || 0);
     el('combate').innerHTML =
       `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${pool}</b> · dano <b>${dano}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
-      `<div class="cmb muted">Fôlego bruto ${w.folego ?? 0} (recupera Vigor/Tick). Esforço: cada +1d6 dobra o Fôlego (${(w.folego ?? 0) * 2} → ${(w.folego ?? 0) * 4}…) e +1 Speed.</div>` +
+      `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego (${(w.folego ?? 0) * 2} → ${(w.folego ?? 0) * 4}…) e +1 Speed.</div>` +
       (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(${w.pericia === 'escudos' ? 'Escudos' : w.nome} + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqueio ? ` + escudo ${esc.bloqueio}` : ''})</span></div>`) +
       (w.notas ? `<div class="cmb muted">${w.notas}</div>` : '') +
       (S.equip.armadura !== 'nenhuma' && ARMADURA[S.equip.armadura]?.notas ? `<div class="cmb muted">Armadura: ${ARMADURA[S.equip.armadura].notas}</div>` : '');

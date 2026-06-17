@@ -60,7 +60,7 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 Qualquer ataque pode ser **forçado**: gaste Fôlego extra para somar dados ao ataque. Cada **+1d6 dobra o custo de Fôlego do golpe e soma +1 à Speed** (mais lento, mais exposto): +1d6 = ×2 e Speed +1; +2d6 = ×4 e Speed +2; e assim por diante. **Não há teto** — a própria duplicação é o limite: forçar muito esgota o Fôlego num átimo.
 
-É a manobra para dois momentos: **furar uma defesa alta** (os dados extras ajudam a superá-la) ou **encerrar rápido** um inimigo frágil (mais Margem = mais dano). É a alavanca de "dar tudo" disponível a *qualquer um*, mesmo o mortal sem Centelha — mas o preço cresce rápido: forçar a arma **leve** é viável; forçar a **pesada**, quase proibitivo (um pesado +1d6 já custa 76 de Fôlego bruto — uma rajada inteira num só golpe, e você fica à beira da exaustão).
+É a manobra para dois momentos: **furar uma defesa alta** (os dados extras ajudam a superá-la) ou **encerrar rápido** um inimigo frágil (mais Margem = mais dano). É a alavanca de "dar tudo" disponível a *qualquer um*, mesmo o mortal sem Centelha — mas o preço cresce rápido: forçar a arma **leve** ainda cabe (um leve +1d6 custa 30 de Fôlego — mais da metade da reserva de um herói, e você fica ofegante); forçar a **pesada** é proibitivo (um pesado +1d6 custa 76 — mais do que o Fôlego total de quase qualquer um; só um lutador de reserva descomunal ergue um golpe desses).
 
 ## Dano e Armadura
 
@@ -114,25 +114,27 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 
 ## Fôlego
 
-Toda ação física — atacar, defender, correr, saltar, carregar peso — vem do **Fôlego**, a reserva do corpo. É grande e se renova sozinha, mas o esforço pesado a queima rápido: depois de uma rajada, você precisa de um respiro.
+Toda ação física extenuante — atacar, correr, saltar, carregar peso — vem do **Fôlego**, a reserva do corpo. É grande, mas só se renova quando você **dá um tempo**: enquanto se esforça, gasta; quando para de se esforçar, recupera.
 
 <p class="formula">Fôlego = 10 (base racial) + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
 
-Você **recupera +Vigor de Fôlego por Tick o tempo todo** — inclusive lutando. E cada golpe **gasta o Fôlego (bruto) da arma** (no catálogo e na ficha): leve **15**, médio **24**, pesado **38**. Como você recupera durante os Ticks do golpe, o que pesa de fato é o **líquido** = bruto − (Vigor × Speed):
+Você **recupera +Vigor de Fôlego por Tick sempre que NÃO está numa ação que gaste Fôlego** — defender, recuar e esquivar não custam nada e deixam a reserva voltar; atacar e correr **gastam e não recuperam**. Cada golpe custa o **Fôlego da arma** (no catálogo e na ficha): leve **15**, médio **24**, pesado **38**.
 
-| Golpe | Vigor 3 | Vigor 4 | Vigor 5 |
-|---|:---:|:---:|:---:|
-| Leve (Speed 5) | 0 | **−5** *(regenera)* | −10 |
-| Médio (Speed 6) | +6 | **0** *(sustenta)* | −6 |
-| Pesado (Speed 7) | +17 | **+10** *(dreno)* | +3 *(devagar)* |
+Como atacar não recupera, uma **sequência** de golpes drena rápido. Do cheio, um herói de Fôlego ~50 dá cerca de:
 
-Golpes **leves se pagam** — e até devolvem Fôlego a quem tem Vigor alto; os **pesados drenam**. A tática nasce daí: **lute leve para acumular** Fôlego e **gaste-o** num golpe pesado, num Esforço ou numa ação extenuante (sprint, salto longo, carga pesada, que drenam como um golpe pesado). Um herói de Fôlego ~50 aguenta **~6 golpes pesados** seguidos antes de precisar mudar de marcha.
+| Arma | Golpes seguidos do cheio | Lutando de forma sustentada |
+|---|:---:|:---:|
+| Leve (15) | ~3–4 | ataca ~⅔ do tempo |
+| Média (24) | ~2–3 | ataca ~½ do tempo |
+| Pesada (38) | ~2 | ataca ~⅖ do tempo |
 
-<div class="callout regra"><span class="lbl">Tomar Fôlego</span>Gaste uma ação completa (<strong>Speed 5</strong>) só defendendo e esquivando, sem se mover além do básico, e <strong>recupere metade do Fôlego máximo</strong> de uma vez — o "recuar e respirar". Essa ação <em>é</em> o descanso: vale a metade cheia, não o +Vigor por Tick por cima. Restaura cerca de uma rajada de golpes pesados.</div>
+A tática nasce daí: **ninguém ataca a luta inteira**. Você pressiona em rajada e depois **recua para respirar** — defendendo, reposicionando ou Tomando Fôlego. A **arma leve** rende mais golpes seguidos e volta mais rápido; a **pesada** bate forte mas esgota em dois golpes. Quem tem **Vigor e Resistência altos** respira mais rápido e aguenta rajadas maiores.
+
+<div class="callout regra"><span class="lbl">Tomar Fôlego</span>Gaste uma ação completa (<strong>Speed 5</strong>) só defendendo e esquivando, sem se mover além do básico, e <strong>recupere metade do Fôlego máximo</strong> de uma vez — o "recuar e respirar". Restaura cerca de uma rajada inteira.</div>
 
 Quando o tanque aperta:
 
-- **Defender** (Esquiva e Bloqueio passivos) **não custa** Fôlego — é o que permite recuperar lutando na defensiva.
+- **Defender** (Esquiva e Bloqueio passivos) **não custa** Fôlego e **recupera** — é o que permite recompor o ar lutando na defensiva.
 - **Abaixo de 25%** do Fôlego: **−1d6** em toda ação física (o corpo começa a falhar).
 - **Fôlego 0 — exausto:** você só pode **defender** ou **Tomar Fôlego**; não ataca nem força um golpe.
 

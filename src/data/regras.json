@@ -263,13 +263,12 @@
       "maisVontade": true
     },
     "folego": {
-      "nota": "Reserva física p/ ações comuns (atacar, defender, correr, saltar, carregar). Recupera +Vigor por Tick parado. Custo = taxa por Tick enquanto a ação dura: LEVE = Vigor/Tick (net 0, sustentável a luta toda); PESADA = +sobrecarga/Tick acima (custo líquido = sobrecarga × Ticks da ação). Fôlego 0 = exausto: só ações leves até recuperar um respiro. Base por raça (humano = 10).",
+      "nota": "Reserva física p/ ações comuns (atacar, correr, saltar, carregar). Você recupera +Vigor de Fôlego por Tick SEMPRE QUE NÃO está numa ação que gaste Fôlego — defender, recuar e parar recuperam; atacar e correr gastam e NÃO recuperam. Cada golpe custa o Fôlego (cheio) da arma (campo 'folego' em armas.json: leve 15, médio 24, pesado 38); como atacar não recupera, uma sequência de golpes drena rápido e força um respiro. Tomar Fôlego (ação Speed 5, só defendendo) = +metade do máximo. <25% do pool = −1d6 em ações físicas; 0 = exausto (só defende ou Toma Fôlego). Base por raça (humano = 10).",
       "base": 10,
       "vigorMult": 5,
       "resistenciaMult": 4,
       "vontadeMult": 2,
-      "recuperaPorTickAtributo": "vigor",
-      "sobrecargaPesada": 2
+      "recuperaPorTickAtributo": "vigor"
     },
     "iniciativa": {
       "dado": 6,
