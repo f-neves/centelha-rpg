@@ -5,15 +5,26 @@ titulo: "Vida, Ferimentos & Cura"
 resumo: "Pontos de Vida, limiares de ferimento, nocaute, morte e recuperação."
 ---
 
-Heróis aguentam o tranco. O combate não começa com a morte à espreita a cada golpe — a não ser que a diferença de poder seja gritante. Os Pontos de Vida medem o quanto você suporta antes de cair.
+Heróis aguentam o tranco. O combate não começa com a morte à espreita a cada golpe — a não ser que a diferença de poder seja gritante. Os **Pontos de Vida** medem o quanto você suporta antes de cair.
+
+Quando você sofre dano (o que sobra do golpe depois do Soak), você o **marca** na sua folha. Ele vem em duas trilhas, que se comportam de modo diferente:
+
+- **Impacto** (contundente) — em regra só **nocauteia**: derruba, mas não mata.
+- **Letal** (corte e perfuração) — **fere de verdade**: é o que tira vidas.
+
+A **soma das duas** trilhas é o seu dano total, e é ela que define o seu estado. A morte, porém, só olha para o Letal — como você verá.
 
 ## Pontos de Vida
 
 <p class="formula">PV = 25 + (Vigor × 3)</p>
 
-O dano é marcado em duas trilhas sobre esse total: **Impacto** (que em geral apenas nocauteia) e **Letal** (corte e perfuração, que ferem de verdade). A soma das duas determina seu estado.
+A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcentagem dela que diz em que estado você está, na tabela abaixo.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram tem <strong>PV 37</strong>. Numa briga feia, leva <strong>20 de Impacto + 8 de Letal = 28</strong> de dano: restam <strong>9 PV</strong> (24% → <strong>Grave</strong>). Está mal — mas longe de morrer: a morte exigiria <strong>37 de Letal</strong>, e ele só tem 8. Se cair a 0 com a maior parte sendo Impacto, ele <em>desmaia</em>, não morre.</div>
 
 ## Limiares de Ferimento
+
+Conforme a Vida restante cai, a dor cobra seu preço — as penalidades incidem nas suas **jogadas** e na sua **Defesa**:
 
 | Vida restante | Estado | Penalidade |
 |---|---|---|
