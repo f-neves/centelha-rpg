@@ -33,7 +33,7 @@ const S = {
   armas: z.object({
     id: z.string(), nome: z.string(), classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
     atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), acerto: z.number().int(),
-    defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(),
+    defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
     tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(3),
     tags: z.array(z.string()), notas: z.string(),
   }),

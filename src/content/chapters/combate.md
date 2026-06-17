@@ -114,8 +114,8 @@ Toda ação física — atacar, defender, correr, saltar, carregar peso — vem 
 
 Parado, você **recupera +Vigor de Fôlego por Tick**. O gasto é uma *taxa por Tick* enquanto a ação dura:
 
-- **Ações leves** — ataque normal de uma mão, passo, pulo baixo, carga leve — custam exatamente o que você recupera: **net zero**. Você as sustenta a luta inteira sem cansar.
-- **Ações pesadas** — golpe forte ou de duas mãos, sprint, salto longo, carga pesada — drenam **+2 de Fôlego por Tick** acima da recuperação. O custo líquido é **2 × os Ticks da ação**: um golpe de Speed 7 tira **14**; o sprint, 2 por Tick corrido; um salto longo (3 Ticks), 6.
+- **Cada golpe custa o Fôlego da arma** (mostrado no catálogo e na ficha) — em geral a sobrecarga da classe × a Speed: arma **leve ~0** (sustentável a luta toda), **média ~6**, **pesada ~14**. O brutamontes dá **3–4 golpes pesados** e respira; o esgrimista leve quase não cansa.
+- **Outras ações pesadas** — sprint, salto longo, carga pesada — drenam **+2 de Fôlego por Tick** acima da recuperação (custo líquido = **2 × os Ticks da ação**): um salto longo de 3 Ticks tira 6.
 
 <p class="muted">Com o Fôlego em <strong>0</strong> você está <strong>exausto</strong>: só ações leves, até recuperar um respiro. Um herói típico (Vigor/Resistência 4, Vontade 7 → Fôlego ~50) aguenta umas <strong>3–4 ações pesadas</strong> seguidas antes de precisar parar; uns 12 Ticks de calmaria enchem o tanque de novo. Vigor e Resistência altos = mais rajada e recarga mais rápida.</p>
 

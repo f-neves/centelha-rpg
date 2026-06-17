@@ -112,7 +112,7 @@ const armas = defineCollection({
     atrib: reference('atributos'), pericia: reference('habilidades'),
     dado: z.number().int().min(1).max(3), acerto: z.number().int(),
     bonusQA: z.number().int().min(0), danoQA: z.number().int().min(0), defesaArma: z.number().int(),
-    maos: z.number().int().min(1).max(2), ticks: z.number().int(),
+    maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
     tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(3),
     tags: z.array(z.string()), notas: z.string(),
   }),

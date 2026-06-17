@@ -24,7 +24,7 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
   <h2>Armas</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dado</th><th class="c">Acerto</th><th class="c">Q-Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th>Dano</th><th>Habilidade</th><th>Tags</th></tr></thead>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dado</th><th class="c">Acerto</th><th class="c">Q-Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th class="c">Fôlego</th><th>Dano</th><th>Habilidade</th><th>Tags</th></tr></thead>
       <tbody>
         {armas.map((a) => (
           <tr data-arma data-classe={a.classe} data-tags={a.tags.join(' ')} data-txt={(a.nome + ' ' + a.tags.join(' ') + ' ' + a.notas).toLowerCase()}>
@@ -36,6 +36,7 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
             <td class="c">{a.defesaArma >= 0 ? '+' : ''}{a.defesaArma}</td>
             <td class="c">{a.maos}</td>
             <td class="c">{a.ticks}</td>
+            <td class="c">{a.folego}</td>
             <td>{a.tipoDano}{a.pen ? ` · Pen ${a.pen}` : ''}</td>
             <td>{habs[(a.pericia as any).id] ?? (a.pericia as any).id}</td>
             <td class="muted">{a.tags.join(', ')}</td>

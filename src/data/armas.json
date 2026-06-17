@@ -19,7 +19,8 @@
       "perfurante",
       "arremessável"
     ],
-    "notas": "Rápida e precisa; perfura armadura leve."
+    "notas": "Rápida e precisa; perfura armadura leve.",
+    "folego": 0
   },
   {
     "id": "espada-curta",
@@ -37,7 +38,8 @@
     "tipoDano": "corte",
     "pen": 0,
     "tags": [],
-    "notas": "Veloz e defensiva."
+    "notas": "Veloz e defensiva.",
+    "folego": 0
   },
   {
     "id": "espada-longa",
@@ -57,7 +59,8 @@
     "tags": [
       "versátil"
     ],
-    "notas": "A clássica adaptável (versátil: 2 mãos = +1 dado, −1 Def. Arma)."
+    "notas": "A clássica adaptável (versátil: 2 mãos = +1 dado, −1 Def. Arma).",
+    "folego": 6
   },
   {
     "id": "machado",
@@ -75,7 +78,8 @@
     "tipoDano": "corte",
     "pen": 0,
     "tags": [],
-    "notas": "Corte pesado."
+    "notas": "Corte pesado.",
+    "folego": 6
   },
   {
     "id": "espada-serrilhada",
@@ -95,7 +99,8 @@
     "tags": [
       "sangramento"
     ],
-    "notas": "Sangramento: um golpe com Margem abre Sangramento igual à Margem (máx 3). Troca um pouco de Acerto pelo dano contínuo."
+    "notas": "Sangramento: um golpe com Margem abre Sangramento igual à Margem (máx 3). Troca um pouco de Acerto pelo dano contínuo.",
+    "folego": 6
   },
   {
     "id": "maca",
@@ -115,7 +120,8 @@
     "tags": [
       "ruptura"
     ],
-    "notas": "Ruptura: ignora o Soak de armadura — anti-placa."
+    "notas": "Ruptura: ignora o Soak de armadura — anti-placa.",
+    "folego": 6
   },
   {
     "id": "picareta-de-guerra",
@@ -135,7 +141,8 @@
     "tags": [
       "perfurante"
     ],
-    "notas": "Fura malha e placa (Pen 3)."
+    "notas": "Fura malha e placa (Pen 3).",
+    "folego": 6
   },
   {
     "id": "lanca",
@@ -157,7 +164,8 @@
       "perfurante",
       "arremessável"
     ],
-    "notas": "Alcance + estocada; ricocheteia em armadura média/pesada."
+    "notas": "Alcance + estocada; ricocheteia em armadura média/pesada.",
+    "folego": 6
   },
   {
     "id": "alabarda",
@@ -179,7 +187,8 @@
       "ruptura",
       "pesada"
     ],
-    "notas": "Alcance e impacto; Ruptura. Lenta."
+    "notas": "Alcance e impacto; Ruptura. Lenta.",
+    "folego": 12
   },
   {
     "id": "montante",
@@ -197,7 +206,8 @@
     "tipoDano": "corte",
     "pen": 0,
     "tags": [],
-    "notas": "Espadão de duas mãos; dano que vence armadura, mas lento."
+    "notas": "Espadão de duas mãos; dano que vence armadura, mas lento.",
+    "folego": 14
   },
   {
     "id": "martelo-de-guerra",
@@ -217,7 +227,8 @@
     "tags": [
       "ruptura"
     ],
-    "notas": "Esmaga placas (Ruptura)."
+    "notas": "Esmaga placas (Ruptura).",
+    "folego": 14
   },
   {
     "id": "arco",
@@ -239,7 +250,8 @@
       "perfurante",
       "distância"
     ],
-    "notas": "Precisão à distância; gasta munição."
+    "notas": "Precisão à distância; gasta munição.",
+    "folego": 6
   },
   {
     "id": "besta-pesada",
@@ -262,7 +274,8 @@
       "recarga",
       "distância"
     ],
-    "notas": "Fura quase tudo (Pen 3); recarga lenta."
+    "notas": "Fura quase tudo (Pen 3); recarga lenta.",
+    "folego": 6
   },
   {
     "id": "adaga-de-arremesso",
@@ -285,7 +298,8 @@
       "arremessável",
       "munição"
     ],
-    "notas": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto."
+    "notas": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto.",
+    "folego": 0
   },
   {
     "id": "machado-de-arremesso",
@@ -305,7 +319,8 @@
     "tags": [
       "arremessável"
     ],
-    "notas": "Machado curto e pesado que gira no ar; golpe forte de curto alcance. Recuperável."
+    "notas": "Machado curto e pesado que gira no ar; golpe forte de curto alcance. Recuperável.",
+    "folego": 5
   },
   {
     "id": "azagaia",
@@ -326,7 +341,8 @@
       "perfurante",
       "arremessável"
     ],
-    "notas": "Dardo de arremesso (javelina): fura à distância e ainda serve de lança curta na mão. Fura armadura leve (Pen 2)."
+    "notas": "Dardo de arremesso (javelina): fura à distância e ainda serve de lança curta na mão. Fura armadura leve (Pen 2).",
+    "folego": 5
   },
   {
     "id": "funda",
@@ -347,7 +363,8 @@
       "munição",
       "arremessável"
     ],
-    "notas": "Tira de couro que lança pedras a grande distância; barata e silenciosa, mas exige espaço para girar. Dano de impacto (quebra ossos sob armadura)."
+    "notas": "Tira de couro que lança pedras a grande distância; barata e silenciosa, mas exige espaço para girar. Dano de impacto (quebra ossos sob armadura).",
+    "folego": 0
   },
   {
     "id": "dardos",
@@ -369,7 +386,8 @@
       "arremessável",
       "munição"
     ],
-    "notas": "Pequenos e velozes, lançados em sequência; precisos de perto, fracos contra armadura. Carregados às dezenas."
+    "notas": "Pequenos e velozes, lançados em sequência; precisos de perto, fracos contra armadura. Carregados às dezenas.",
+    "folego": 0
   },
   {
     "id": "bumerangue",
@@ -389,7 +407,8 @@
     "tags": [
       "arremessável"
     ],
-    "notas": "Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição."
+    "notas": "Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição.",
+    "folego": 0
   },
   {
     "id": "rede",
@@ -410,7 +429,8 @@
       "arremessável",
       "imobiliza"
     ],
-    "notas": "Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento)."
+    "notas": "Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento).",
+    "folego": 0
   },
   {
     "id": "pilum",
@@ -431,7 +451,8 @@
       "perfurante",
       "arremessável"
     ],
-    "notas": "Dardo pesado anti-escudo: fura placa (Pen 3) e entorta ao cravar, inutilizando o escudo atingido."
+    "notas": "Dardo pesado anti-escudo: fura placa (Pen 3) e entorta ao cravar, inutilizando o escudo atingido.",
+    "folego": 5
   },
   {
     "id": "desarmado",
@@ -449,6 +470,7 @@
     "tipoDano": "impacto",
     "pen": 0,
     "tags": [],
-    "notas": "Socos e agarrões; dano de Impacto (Letal só com a Técnica Mão de Ferro)."
+    "notas": "Socos e agarrões; dano de Impacto (Letal só com a Técnica Mão de Ferro).",
+    "folego": 0
   }
 ]
