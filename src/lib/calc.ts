@@ -14,7 +14,7 @@ export interface Virtudes { compaixao: number; conviccao: number; temperanca: nu
 
 const floor = Math.floor;
 
-/** Pool de dados: ⌊(Atrib+Hab)/2⌋ dados, +2 se a soma for ímpar. */
+/** Pool de dados: [(Atrib+Hab)/2] dados, +2 se a soma for ímpar. */
 export function pool(atributo: number, habilidade: number) {
   const soma = atributo + habilidade;
   return { dados: floor(soma / 2), bonus: soma % 2 === 1 ? 2 : 0, soma };

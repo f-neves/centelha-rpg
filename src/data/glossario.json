@@ -24,7 +24,7 @@
       "dados",
       "pool de dados"
     ],
-    "definicao": "O punhado de d6 que você rola: ⌊(Atributo + Habilidade) ÷ 2⌋ dados, +2 fixo se a soma for ímpar."
+    "definicao": "O punhado de d6 que você rola: [(Atributo + Habilidade) ÷ 2] dados, +2 fixo se a soma for ímpar."
   },
   {
     "id": "margem",

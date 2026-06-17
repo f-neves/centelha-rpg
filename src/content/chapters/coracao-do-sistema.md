@@ -11,7 +11,7 @@ Toda ação significativa nasce de uma soma simples: um **Atributo** (capacidade
 
 O *pool* básico é determinado pela soma de Atributo + Habilidade. A metade desse valor (arredondada para baixo) é a **quantidade de dados**. Se a soma for **ímpar**, some um **bônus fixo de +2** ao resultado.
 
-<p class="formula">Dados = ⌊(Atributo + Habilidade) ÷ 2⌋ · +2 se a soma for ímpar</p>
+<p class="formula">Dados = [(Atributo + Habilidade) ÷ 2] · +2 se a soma for ímpar</p>
 
 | Soma (Atrib + Hab) | Você rola |
 |:---:|:---:|

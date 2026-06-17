@@ -277,7 +277,7 @@
         "raciocinio",
         "prontidao"
       ],
-      "nota": "Role 1d6 + Raciocínio + Prontidão. O maior começa no Tick 0; os demais no Tick 1. A cada 'gapPorPenalidade' pontos abaixo da maior iniciativa, o participante começa 1 Tick depois E perde 1d6 na primeira ação. Penalidade = ⌊(maior − sua) / gapPorPenalidade⌋ (em Ticks somados ao baseTickNaoPrimeiro, e em d6 da 1ª ação).",
+      "nota": "Role 1d6 + Raciocínio + Prontidão. O maior começa no Tick 0; os demais no Tick 1. A cada 'gapPorPenalidade' pontos abaixo da maior iniciativa, o participante começa 1 Tick depois E perde 1d6 na primeira ação. Penalidade = [(maior − sua) / gapPorPenalidade] (em Ticks somados ao baseTickNaoPrimeiro, e em d6 da 1ª ação).",
       "baseTickNaoPrimeiro": 1,
       "gapPorPenalidade": 6
     },

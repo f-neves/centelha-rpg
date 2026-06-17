@@ -5,7 +5,7 @@ import { url } from '../lib/site';
 ---
 <Base title="Rolador de Dados" descricao="Monta o pool pela regra e rola: total e Margens.">
   <h1>Rolador de Dados</h1>
-  <p class="lead">Informe Atributo + Habilidade: o pool é <strong>⌊(Atrib + Hab) ÷ 2⌋ dados</strong>, com <strong>+2</strong> se a soma for ímpar. Cada ponto de <strong>Especialidade</strong> rola +1d6 e descarta o menor. Defina um <strong>Alvo</strong> para ver sucesso e Margens (cada 6 acima = +1d6 de dano).</p>
+  <p class="lead">Informe Atributo + Habilidade: o pool é <strong>[(Atrib + Hab) ÷ 2] dados</strong>, com <strong>+2</strong> se a soma for ímpar. Cada ponto de <strong>Especialidade</strong> rola +1d6 e descarta o menor. Defina um <strong>Alvo</strong> para ver sucesso e Margens (cada 6 acima = +1d6 de dano).</p>
   <RoladorDados />
   <p class="muted" style="margin-top:1.5rem">Dica: a régua de Dificuldade vai de 5 (fácil) a 20 (limite humano). Veja <a href={url('regras/coracao-do-sistema')}>O Coração do Sistema</a>.</p>
 </Base>
