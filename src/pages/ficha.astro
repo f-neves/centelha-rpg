@@ -41,7 +41,7 @@ import RoladorDados from '../components/RoladorDados.astro';
       <div id="power"></div>
     </div>
     <div>
-      <h2 class="barh">Derivados <small>(calculados)</small><button class="deriv-toggle" id="deriv-toggle" type="button">Contrair</button></h2>
+      <h2 class="barh">Derivados <small>(calculados)</small><button class="deriv-toggle" id="deriv-toggle" type="button">Expandir</button></h2>
       <div class="panel no-gloss" id="derived"></div>
     </div>
   </div>
@@ -171,7 +171,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
-    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1200; S.modo ??= 'criacao'; S.derivCol ??= false;
+    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1200; S.modo ??= 'criacao'; S.derivCol ??= true;
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.armadura ??= 'nenhuma'; S.equip.escudo ??= 'nenhum';
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] ??= 0; });
@@ -220,12 +220,14 @@ import RoladorDados from '../components/RoladorDados.astro';
   function renderSkills() {
     const groups: Record<string, any[]> = { Combate: [], Físicas: [], Sociais: [], Saber: [], Técnicas: [] };
     (HAB_D as any[]).filter((s) => !s.secundaria).forEach((s) => groups[HAB_GRP[s.grupo]].push(s));
+    Object.values(groups).forEach((arr) => arr.sort((a, b) => a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' })));
     const cols = [['Combate', 'Físicas'], ['Sociais'], ['Saber']];
     el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
       (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 5, 0) + specHTML(s.id, S.spec[s.id] || 0, S.skills[s.id] || 0) + rollBtn('skill', s.id))).join('') : '').join('') + '</div>').join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
+    Object.values(groups).forEach((arr) => arr.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' })));
     const cols = [['Corpo', 'Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
     el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
       `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 5, 0) + specHTML('2_' + k, S.spec2[k] || 0, S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
