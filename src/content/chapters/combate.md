@@ -56,6 +56,12 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 <p class="muted">A <strong>Centelha</strong> soma <strong>+2 por ponto</strong> dos dois lados — ao ataque e a todas as defesas. Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda.</p>
 
+### Esforço: forçar o golpe
+
+Qualquer ataque pode ser **forçado**: gaste Fôlego extra para somar **+1d6** (no máximo **+2d6**) ao ataque. Cada dado extra custa **+Speed de Fôlego** — o mesmo que pesar uma classe a mais no golpe (adaga/punho +5 por dado, espada longa +6, montante +7).
+
+É a manobra para dois momentos: **furar uma defesa alta** (os dados extras ajudam a superá-la) ou **encerrar rápido** um inimigo frágil (mais Margem = mais dano). É a alavanca de "dar tudo" disponível a *qualquer um*, mesmo o mortal sem Centelha — mas cobra caro: até o golpe mais econômico, forçado, deixa de ser sustentável numa luta longa. O teto de **+2d6** mantém o Esforço tático, e não decisivo sozinho.
+
 ## Dano e Armadura
 
 <p class="formula">Dano = (Dado da Arma + Margem) + Força − Soak</p>

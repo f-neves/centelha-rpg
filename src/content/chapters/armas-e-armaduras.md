@@ -18,7 +18,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 - **Acerto** — um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)** — quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos** — uma ou duas; algumas são *Versáteis* e servem nas duas formas.
-- **Fôlego** — quanto cada golpe **custa da sua reserva de Fôlego** (a sobrecarga da classe × a Speed): leve **~0** (sustentável a luta toda), média **~6**, pesada **~14**. O brutamontes dá **3–4 golpes pesados** e precisa de um respiro; o esgrimista leve quase não cansa.
+- **Fôlego** — quanto cada golpe **custa da sua reserva de Fôlego** (a sobrecarga da classe × a Speed): leve **~0** (sustentável a luta toda), média **~6**, pesada **~14**. O brutamontes dá **3–4 golpes pesados** e precisa de um respiro; o esgrimista leve quase não cansa. *(Qualquer golpe pode ser **forçado** — +1d6/+2d6 no ataque por +Speed de Fôlego cada; ver o **Esforço** em [Combate](/regras/combate).)*
 - **Q-Acerto (B/D)** — Bônus e Dano de **Quase-Acerto**: o quanto e o quão fundo a arma "raspa" num quase-erro.
 
 <div class="callout exemplo"><span class="lbl">Lendo uma arma</span>A <strong>Espada Longa</strong> é <em>Média · Versátil</em>: <strong>Speed 6</strong> (ataque médio), <strong>2d6</strong> de dado de dano + Força, <strong>+1</strong> no pool de ataque e <strong>+1</strong> no Bloqueio. Como é <em>Versátil</em>, dá para empunhá-la a duas mãos por <strong>+1 dado de dano</strong> e <strong>−1</strong> de Defesa da Arma — a mesma lâmina, dois estilos.</div>
