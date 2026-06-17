@@ -41,7 +41,7 @@ import RoladorDados from '../components/RoladorDados.astro';
       <div id="power"></div>
     </div>
     <div>
-      <h2 class="barh">Derivados <small>(calculados)</small></h2>
+      <h2 class="barh">Derivados <small>(calculados)</small><button class="deriv-toggle" id="deriv-toggle" type="button">Contrair</button></h2>
       <div class="panel no-gloss" id="derived"></div>
     </div>
   </div>
@@ -171,7 +171,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
-    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1200; S.modo ??= 'criacao';
+    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1200; S.modo ??= 'criacao'; S.derivCol ??= false;
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.armadura ??= 'nenhuma'; S.equip.escudo ??= 'nenhum';
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] ??= 0; });
@@ -263,7 +263,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   function renderDerived() {
     const virt = { compaixao: VI('compaixao'), conviccao: VI('conviccao'), temperanca: VI('temperanca'), valor: VI('valor') };
     const C = S.centelha, W = S.willpower, integ = SK('integridade');
-    const r = (l: string, v: any, fm: string) => `<div class="derv"><span class="dl">${l}<span class="fm">${fm}</span></span><span class="dv">${v}</span></div>`;
+    const r = (l: string, v: any, fm: string, extra = false) => `<div class="derv${extra ? ' derv-extra' : ''}"><span class="dl">${l}<span class="fm">${fm}</span></span><span class="dv">${v}</span></div>`;
     const arm = ARMADURA[S.equip?.armadura || 'nenhuma'] || { esquiva: 0, soak: 0, protecao: 0 };
     const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), especialidade: SP('esquiva'), centelha: C }) + (arm.esquiva || 0);
     const soakI = A('vigor') + (arm.soak || 0), soakL = Math.floor(A('vigor') / 2) + (arm.soak || 0);
@@ -274,16 +274,20 @@ import RoladorDados from '../components/RoladorDados.astro';
       r('Defesa Social', defesaSocial({ compostura: A('compostura'), temperanca: VI('temperanca'), centelha: C }), '(Compostura + Temperança + Centelha) × 2') +
       r('Soak (Imp/Letal)', `${soakI} / ${soakL}${arm.protecao ? ` · Prot ${arm.protecao}` : ''}`, 'Vigor (½ no letal) + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
-      r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade') +
-      r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick') +
-      r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão') +
+      r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade', true) +
+      r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick', true) +
+      r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão', true) +
       (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), atletismo: SK('atletismo'), centelha: C });
-        return r('Deslocamento livre', `${dz.normal} m`, '(Des + Atletismo) ÷ 2 · distância na ação') +
-          r('Vel. de Arranque', `${dz.arranque} m/s`, '(Força + Atletismo) ÷ 2 + Destreza · Ticks 1–3') +
-          r('Vel. de Corrida', `${dz.corrida} m/s`, 'Destreza × 1,5 + Atletismo · Tick 4+') +
-          r('Salto Vertical', `${dz.saltoVertical} cm`, 'Força×20 + Atletismo×10 + Des×4 + Centelha×50') +
-          r('Salto Horiz. Parado', `${dz.saltoHorizontalParado} m`, '(Força + Atletismo + Centelha) ÷ 2') +
-          r('Salto Horiz. Correndo', `${dz.saltoHorizontalCorrendo} m`, 'Vel. de Corrida + Atletismo ÷ 2 + Centelha'); })();
+        return r('Deslocamento livre', `${dz.normal} m`, '(Des + Atletismo) ÷ 2 · distância na ação', true) +
+          r('Vel. de Arranque', `${dz.arranque} m/s`, '(Força + Atletismo) ÷ 2 + Destreza · Ticks 1–3', true) +
+          r('Vel. de Corrida', `${dz.corrida} m/s`, 'Destreza × 1,5 + Atletismo · Tick 4+', true) +
+          r('Salto Vertical', `${dz.saltoVertical} cm`, 'Força×20 + Atletismo×10 + Des×4 + Centelha×50', true) +
+          r('Salto Horiz. Parado', `${dz.saltoHorizontalParado} m`, '(Força + Atletismo + Centelha) ÷ 2', true) +
+          r('Salto Horiz. Correndo', `${dz.saltoHorizontalCorrendo} m`, 'Vel. de Corrida + Atletismo ÷ 2 + Centelha', true); })();
+  }
+  function applyDerivCol() {
+    el('derived').classList.toggle('collapsed', !!S.derivCol);
+    el('deriv-toggle').textContent = S.derivCol ? 'Expandir' : 'Contrair';
   }
   function renderCombate() {
     const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];
@@ -421,7 +425,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     S.centelha = Math.min(S.centelha || 0, capFor('centelha'));
   }
   function setModo(m: string) { S.modo = m; if (m === 'criacao') clampToMode(); renderAll(); }
-  function renderAll() { syncInputs(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); }
+  function renderAll() { syncInputs(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); }
 
   // botões
   document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => b.addEventListener('click', () => setModo(b.dataset.modo!)));
@@ -436,6 +440,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     const r = new FileReader(); r.onload = () => { try { S = JSON.parse(String(r.result)); normalize(); renderAll(); } catch { alert('Arquivo JSON inválido.'); } }; r.readAsText(f);
   });
   el('f-print').addEventListener('click', () => window.print());
+  el('deriv-toggle').addEventListener('click', () => { S.derivCol = !S.derivCol; applyDerivCol(); save(); });
   let camAllOpen = false;
   el('cam-all').addEventListener('click', () => { camAllOpen = !camAllOpen; CAM_ORDER.forEach((c) => (OPEN.cam[c] = camAllOpen)); renderCaminhos(); el('cam-all').textContent = camAllOpen ? 'Recolher todos' : 'Expandir todos'; });
   (['eq-arma', 'eq-armadura', 'eq-escudo'] as const).forEach((id) => el(id).addEventListener('change', (e) => { S.equip[id.slice(3)] = (e.target as HTMLSelectElement).value; renderDerived(); renderCombate(); save(); }));
@@ -508,6 +513,10 @@ import RoladorDados from '../components/RoladorDados.astro';
   .derv .dl { font-family: 'Cinzel'; font-size: .72rem; color: var(--accent-strong); text-transform: uppercase; }
   .derv .dv { font-family: 'Cinzel'; font-weight: 700; font-size: 1.1rem; color: var(--accent); }
   .derv .fm { display: block; font-size: .68rem; color: var(--ink-soft); font-style: italic; font-family: 'EB Garamond'; font-weight: 400; text-transform: none; }
+  h2.barh .deriv-toggle { float: right; font-family: 'Cinzel'; font-size: .68rem; text-transform: none; letter-spacing: 0; padding: .12rem .55rem; background: var(--accent-strong); color: var(--on-accent); border: none; border-radius: 3px; cursor: pointer; }
+  h2.barh .deriv-toggle:hover { filter: brightness(1.1); }
+  #derived.collapsed .derv-extra { display: none; }
+  @media print { h2.barh .deriv-toggle { display: none !important; } #derived.collapsed .derv-extra { display: flex !important; } }
 
   .cam { border: 1px solid var(--panel-border); border-radius: 4px; margin-bottom: .4rem; background: var(--panel); }
   .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: .9rem; color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
