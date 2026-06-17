@@ -20,7 +20,7 @@
       "arremessável"
     ],
     "notas": "Rápida e precisa; perfura armadura leve.",
-    "folego": 0
+    "folego": 15
   },
   {
     "id": "espada-curta",
@@ -39,7 +39,7 @@
     "pen": 0,
     "tags": [],
     "notas": "Veloz e defensiva.",
-    "folego": 0
+    "folego": 15
   },
   {
     "id": "espada-longa",
@@ -60,7 +60,7 @@
       "versátil"
     ],
     "notas": "A clássica adaptável (versátil: 2 mãos = +1 dado, −1 Def. Arma).",
-    "folego": 6
+    "folego": 24
   },
   {
     "id": "machado",
@@ -79,7 +79,7 @@
     "pen": 0,
     "tags": [],
     "notas": "Corte pesado.",
-    "folego": 6
+    "folego": 24
   },
   {
     "id": "espada-serrilhada",
@@ -100,7 +100,7 @@
       "sangramento"
     ],
     "notas": "Sangramento: um golpe com Margem abre Sangramento igual à Margem (máx 3). Troca um pouco de Acerto pelo dano contínuo.",
-    "folego": 6
+    "folego": 24
   },
   {
     "id": "maca",
@@ -121,7 +121,7 @@
       "ruptura"
     ],
     "notas": "Ruptura: ignora o Soak de armadura — anti-placa.",
-    "folego": 6
+    "folego": 24
   },
   {
     "id": "picareta-de-guerra",
@@ -142,7 +142,7 @@
       "perfurante"
     ],
     "notas": "Fura malha e placa (Pen 3).",
-    "folego": 6
+    "folego": 24
   },
   {
     "id": "lanca",
@@ -165,7 +165,7 @@
       "arremessável"
     ],
     "notas": "Alcance + estocada; ricocheteia em armadura média/pesada.",
-    "folego": 6
+    "folego": 24
   },
   {
     "id": "alabarda",
@@ -188,7 +188,7 @@
       "pesada"
     ],
     "notas": "Alcance e impacto; Ruptura. Lenta.",
-    "folego": 12
+    "folego": 30
   },
   {
     "id": "montante",
@@ -207,7 +207,7 @@
     "pen": 0,
     "tags": [],
     "notas": "Espadão de duas mãos; dano que vence armadura, mas lento.",
-    "folego": 14
+    "folego": 35
   },
   {
     "id": "martelo-de-guerra",
@@ -228,7 +228,7 @@
       "ruptura"
     ],
     "notas": "Esmaga placas (Ruptura).",
-    "folego": 14
+    "folego": 35
   },
   {
     "id": "arco",
@@ -251,7 +251,7 @@
       "distância"
     ],
     "notas": "Precisão à distância; gasta munição.",
-    "folego": 6
+    "folego": 20
   },
   {
     "id": "besta-pesada",
@@ -275,7 +275,7 @@
       "distância"
     ],
     "notas": "Fura quase tudo (Pen 3); recarga lenta.",
-    "folego": 6
+    "folego": 20
   },
   {
     "id": "adaga-de-arremesso",
@@ -299,7 +299,7 @@
       "munição"
     ],
     "notas": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto.",
-    "folego": 0
+    "folego": 12
   },
   {
     "id": "machado-de-arremesso",
@@ -320,7 +320,7 @@
       "arremessável"
     ],
     "notas": "Machado curto e pesado que gira no ar; golpe forte de curto alcance. Recuperável.",
-    "folego": 5
+    "folego": 20
   },
   {
     "id": "azagaia",
@@ -342,7 +342,7 @@
       "arremessável"
     ],
     "notas": "Dardo de arremesso (javelina): fura à distância e ainda serve de lança curta na mão. Fura armadura leve (Pen 2).",
-    "folego": 5
+    "folego": 20
   },
   {
     "id": "funda",
@@ -364,7 +364,7 @@
       "arremessável"
     ],
     "notas": "Tira de couro que lança pedras a grande distância; barata e silenciosa, mas exige espaço para girar. Dano de impacto (quebra ossos sob armadura).",
-    "folego": 0
+    "folego": 12
   },
   {
     "id": "dardos",
@@ -387,7 +387,7 @@
       "munição"
     ],
     "notas": "Pequenos e velozes, lançados em sequência; precisos de perto, fracos contra armadura. Carregados às dezenas.",
-    "folego": 0
+    "folego": 12
   },
   {
     "id": "bumerangue",
@@ -408,7 +408,7 @@
       "arremessável"
     ],
     "notas": "Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição.",
-    "folego": 0
+    "folego": 12
   },
   {
     "id": "rede",
@@ -430,7 +430,7 @@
       "imobiliza"
     ],
     "notas": "Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento).",
-    "folego": 0
+    "folego": 12
   },
   {
     "id": "pilum",
@@ -452,7 +452,7 @@
       "arremessável"
     ],
     "notas": "Dardo pesado anti-escudo: fura placa (Pen 3) e entorta ao cravar, inutilizando o escudo atingido.",
-    "folego": 5
+    "folego": 20
   },
   {
     "id": "desarmado",
@@ -471,6 +471,6 @@
     "pen": 0,
     "tags": [],
     "notas": "Socos e agarrões; dano de Impacto (Letal só com a Técnica Mão de Ferro).",
-    "folego": 0
+    "folego": 15
   }
 ]

@@ -58,9 +58,9 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 ### Esforço: forçar o golpe
 
-Qualquer ataque pode ser **forçado**: gaste Fôlego extra para somar **+1d6** (no máximo **+2d6**) ao ataque. Cada dado extra custa **+Speed de Fôlego** — o mesmo que pesar uma classe a mais no golpe (adaga/punho +5 por dado, espada longa +6, montante +7).
+Qualquer ataque pode ser **forçado**: gaste Fôlego extra para somar dados ao ataque. Cada **+1d6 dobra o custo de Fôlego do golpe e soma +1 à Speed** (mais lento, mais exposto): +1d6 = ×2 e Speed +1; +2d6 = ×4 e Speed +2; e assim por diante. **Não há teto** — a própria duplicação é o limite: forçar muito esgota o Fôlego num átimo.
 
-É a manobra para dois momentos: **furar uma defesa alta** (os dados extras ajudam a superá-la) ou **encerrar rápido** um inimigo frágil (mais Margem = mais dano). É a alavanca de "dar tudo" disponível a *qualquer um*, mesmo o mortal sem Centelha — mas cobra caro: até o golpe mais econômico, forçado, deixa de ser sustentável numa luta longa. O teto de **+2d6** mantém o Esforço tático, e não decisivo sozinho.
+É a manobra para dois momentos: **furar uma defesa alta** (os dados extras ajudam a superá-la) ou **encerrar rápido** um inimigo frágil (mais Margem = mais dano). É a alavanca de "dar tudo" disponível a *qualquer um*, mesmo o mortal sem Centelha — mas o preço cresce rápido: forçar a arma **leve** é viável; forçar a **pesada**, quase proibitivo (um pesado +1d6 já custa 70 de Fôlego bruto).
 
 ## Dano e Armadura
 
@@ -118,12 +118,23 @@ Toda ação física — atacar, defender, correr, saltar, carregar peso — vem 
 
 <p class="formula">Fôlego = 10 (base racial) + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
 
-Parado, você **recupera +Vigor de Fôlego por Tick**. O gasto é uma *taxa por Tick* enquanto a ação dura:
+Você **recupera +Vigor de Fôlego por Tick o tempo todo** — inclusive lutando. E cada golpe **gasta o Fôlego (bruto) da arma** (no catálogo e na ficha): leve **15**, médio **24**, pesado **35**. Como você recupera durante os Ticks do golpe, o que pesa de fato é o **líquido** = bruto − (Vigor × Speed):
 
-- **Cada golpe custa o Fôlego da arma** (mostrado no catálogo e na ficha) — em geral a sobrecarga da classe × a Speed: arma **leve ~0** (sustentável a luta toda), **média ~6**, **pesada ~14**. O brutamontes dá **3–4 golpes pesados** e respira; o esgrimista leve quase não cansa.
-- **Outras ações pesadas** — sprint, salto longo, carga pesada — drenam **+2 de Fôlego por Tick** acima da recuperação (custo líquido = **2 × os Ticks da ação**): um salto longo de 3 Ticks tira 6.
+| Golpe | Vigor 3 | Vigor 4 | Vigor 5 |
+|---|:---:|:---:|:---:|
+| Leve (Speed 5) | 0 | **−5** *(regenera)* | −10 |
+| Médio (Speed 6) | +6 | **0** *(sustenta)* | −6 |
+| Pesado (Speed 7) | +14 | **+7** *(dreno)* | 0 |
 
-<p class="muted">Com o Fôlego em <strong>0</strong> você está <strong>exausto</strong>: só ações leves, até recuperar um respiro. Um herói típico (Vigor/Resistência 4, Vontade 7 → Fôlego ~50) aguenta umas <strong>3–4 ações pesadas</strong> seguidas antes de precisar parar; uns 12 Ticks de calmaria enchem o tanque de novo. Vigor e Resistência altos = mais rajada e recarga mais rápida.</p>
+Golpes **leves se pagam** — e até devolvem Fôlego a quem tem Vigor alto; os **pesados drenam**. A tática nasce daí: **lute leve para acumular** Fôlego e **gaste-o** num golpe pesado, num Esforço ou numa ação extenuante (sprint, salto longo, carga pesada, que drenam como um golpe pesado). Um herói de Fôlego ~50 aguenta **~6 golpes pesados** seguidos antes de precisar mudar de marcha.
+
+<div class="callout regra"><span class="lbl">Tomar Fôlego</span>Gaste uma ação completa (<strong>Speed 5</strong>) só defendendo e esquivando, sem se mover além do básico, e <strong>recupere metade do Fôlego máximo</strong> de uma vez — o "recuar e respirar".</div>
+
+Quando o tanque aperta:
+
+- **Defender** (Esquiva e Bloqueio passivos) **não custa** Fôlego — é o que permite recuperar lutando na defensiva.
+- **Abaixo de 25%** do Fôlego: **−1d6** em toda ação física (o corpo começa a falhar).
+- **Fôlego 0 — exausto:** você só pode **defender** ou **Tomar Fôlego**; não ataca nem força um golpe.
 
 ## Vantagem tática: posição e número
 
