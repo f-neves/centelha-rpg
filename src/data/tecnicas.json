@@ -3059,7 +3059,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "dobra o tempo de esforço, corrida e prender a respiração.",
+    "texto": "Recupera **+2× Vigor** de Fôlego por Tick — o dobro da recuperação normal.",
     "pendente": false
   },
   {
@@ -3076,7 +3076,7 @@
       "folego-profundo"
     ],
     "aliases": [],
-    "texto": "remove a fadiga acumulada numa ação.",
+    "texto": "Uma vez por cena, recupere **metade do Fôlego máximo** numa ação **rápida (Speed 1)** — o respiro que quase não custa tempo.",
     "pendente": false
   },
   {
@@ -3091,7 +3091,7 @@
       "folego-profundo"
     ],
     "aliases": [],
-    "texto": "viaja muito mais sem exaustão.",
+    "texto": "Fora de combate, corrida e marcha forçada custam **metade** do Fôlego; não acumula exaustão em jornadas longas.",
     "pendente": false
   },
   {
@@ -3106,7 +3106,7 @@
       "folego-profundo"
     ],
     "aliases": [],
-    "texto": "quase não sente fadiga em esforços prolongados.",
+    "texto": "Ignora a penalidade de **−1d6** do cansaço: age sem perda mesmo abaixo de 25% do Fôlego.",
     "pendente": false
   },
   {
@@ -3123,7 +3123,7 @@
       "segundo-vento"
     ],
     "aliases": [],
-    "texto": "prende a respiração por minutos; resiste a fumaça e gases.",
+    "texto": "**Postura:** enquanto sustentada, cada golpe custa o Fôlego de **uma classe mais leve** (pesado→médio, médio→leve). Também prende a respiração por minutos: resiste a fumaça e gases.",
     "pendente": false
   },
   {
@@ -3141,7 +3141,7 @@
       "pulmoes-de-ferro"
     ],
     "aliases": [],
-    "texto": "age no auge por horas; corre dias sem parar.",
+    "texto": "**Postura:** enquanto sustentada, o **Esforço custa um grau de duplicação a menos** — o +1d6 sai pelo custo normal do golpe; o +2d6 dobra só uma vez. Age no auge por horas.",
     "pendente": false
   },
   {
@@ -3156,7 +3156,7 @@
       "sem-limites"
     ],
     "aliases": [],
-    "texto": "nunca se cansa; dispensa sono e comida por longos períodos.",
+    "texto": "Nenhum golpe seu **drena no líquido**: o custo bruto nunca passa de Vigor×Speed — todo ataque ao menos se paga. Dispensa sono e comida por longos períodos.",
     "pendente": false
   },
   {
@@ -3174,7 +3174,7 @@
       "vigor-inesgotavel"
     ],
     "aliases": [],
-    "texto": "fôlego infinito; resiste a qualquer ambiente, esforço ou privação.",
+    "texto": "Por uma cena, seu **Fôlego não diminui**: ataque, force o golpe e corra à vontade sem gastar nada. O coração que não para.",
     "pendente": false
   },
   {
