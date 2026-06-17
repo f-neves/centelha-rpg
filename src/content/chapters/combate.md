@@ -75,7 +75,7 @@ A Defesa é um valor **fixo** e **passivo**.
 
 <p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha×2</p>
 
-Use **Esquiva** (com a habilidade Esquiva, mais a mobilidade do terreno) ou **Bloqueio** (com a perícia da própria arma ou Escudos, mais a Defesa da Arma e o escudo). Escolha a melhor — mas nem tudo se bloqueia.
+Use **Esquiva** (com a habilidade Esquiva, mais a mobilidade do terreno) ou **Bloqueio** (com a habilidade da própria arma ou Escudos, mais a Defesa da Arma e o escudo). Escolha a melhor — mas nem tudo se bloqueia.
 
 <p class="muted">A <strong>Centelha</strong> soma <strong>+2 por ponto</strong> dos dois lados — ao ataque e às três defesas (Esquiva, Bloqueio e Mental). Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda.</p>
 

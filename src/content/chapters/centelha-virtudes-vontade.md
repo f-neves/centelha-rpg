@@ -36,7 +36,7 @@ Para **resistir** a uma pressão, role a Virtude apropriada somada a um Atributo
 
 **Força de Vontade** começa em 5 e cresce com a experiência — uma reserva gasta para melhorar um ataque, resistir a ataques sociais e mentais, ignorar penalidades e conjurar feitiços.
 
-**Integridade** é a perícia de firmeza moral e compostura — o quanto você se mantém inteiro sob pressão e resiste a manipulação e poderes mentais.
+**Integridade** é a habilidade de firmeza moral e compostura — o quanto você se mantém inteiro sob pressão e resiste a manipulação e poderes mentais.
 
 A **Defesa Mental** é o muro passivo que manipulações e poderes mentais precisam superar:
 

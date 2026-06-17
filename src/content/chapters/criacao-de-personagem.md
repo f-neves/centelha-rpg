@@ -41,7 +41,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 Atributo máximo **4**; Habilidade máxima **3**; Centelha máxima **2** (a maioria dos heróis começa em 1). O 5º ponto e tiers maiores vêm com o jogo.
 
-Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 5** e **uma única Perícia primária a 4** já na criação — o talento superlativo que o define. Os demais respeitam os tetos acima.
+Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 5** e **uma única Habilidade primária a 4** já na criação — o talento superlativo que o define. Os demais respeitam os tetos acima.
 
 ## Traços derivados
 
@@ -56,7 +56,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 
 ## Três exemplos, um por orçamento
 
-Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1000), **Sora** no veterano (1400) e **Veil** no herói (1800). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Proezas, Técnicas, perícias e especialidades. É o toolbox que carrega a profundidade.
+Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1000), **Sora** no veterano (1400) e **Veil** no herói (1800). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Proezas, Técnicas, habilidades e especialidades. É o toolbox que carrega a profundidade.
 
 ### Kael, o Batedor — Iniciante (Centelha 2)
 
@@ -82,7 +82,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Destreza 5 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 630 |
-| Habilidades | Armas de Uma Mão 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Liderança, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 325 |
+| Habilidades | Armas de Uma Mão 4 (pico) · oito habilidades em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Liderança, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 325 |
 | Secundárias | seis em 2–3 (Estratégia, Cavalgar, Jogos de Guerra…) | 48 |
 | Especialidades | cinco (Armas de Uma Mão, Integridade, Liderança…) | 50 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
@@ -99,7 +99,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Inteligência 5 (pico) · Força, Destreza, Vigor 4 · Percepção, Raciocínio, Influência, Perspicácia, Compostura 3 | 660 |
-| Habilidades | Ocultismo 4 (pico) · oito perícias em 3 (Esquiva, Prontidão, Integridade, Conhecimentos Gerais…) · três em 2 | 335 |
+| Habilidades | Ocultismo 4 (pico) · oito habilidades em 3 (Esquiva, Prontidão, Integridade, Conhecimentos Gerais…) · três em 2 | 335 |
 | Secundárias | seis em 2–3 | 54 |
 | Especialidades | seis primárias + duas secundárias | 70 |
 | Virtudes | Convicção 4 · Bravura 4 · Temperança 4 · Compaixão 3 | 160 |

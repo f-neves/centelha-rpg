@@ -22,7 +22,7 @@ export const GET: APIRoute = async () => {
     items.push({ id: a.id, tipo: 'atributo', nome: a.nome, url: url('regras/atributos-e-pericias'), resumo: a.descricao, termos: [a.nome], autolink: true, detalhe: { descricao: a.descricao, niveis: (a as any).niveis } });
 
   for (const h of d.habilidades)
-    items.push({ id: h.id, tipo: 'perícia', nome: h.nome, url: url('regras/atributos-e-pericias'), resumo: h.descricao, termos: [h.nome], autolink: true, detalhe: { descricao: h.descricao, niveis: escalaH } });
+    items.push({ id: h.id, tipo: 'habilidade', nome: h.nome, url: url('regras/atributos-e-pericias'), resumo: h.descricao, termos: [h.nome], autolink: true, detalhe: { descricao: h.descricao, niveis: escalaH } });
 
   for (const v of d.virtudes)
     items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/centelha-virtudes-vontade'), resumo: `${v.descricao} Resiste a ${v.resiste}.`, termos: [v.nome], autolink: true, detalhe: { descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: (v as any).niveis } });

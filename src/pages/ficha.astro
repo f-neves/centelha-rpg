@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import RoladorDados from '../components/RoladorDados.astro';
 ---
-<Base title="Ficha de Personagem" largura="wide" descricao="Monte um personagem com XP ao vivo: atributos, perícias, secundárias, Técnicas e Artes — tudo por bolinhas, com os derivados calculados.">
+<Base title="Ficha de Personagem" largura="wide" descricao="Monte um personagem com XP ao vivo: atributos, habilidades, secundárias, Técnicas e Artes — tudo por bolinhas, com os derivados calculados.">
   <h1>Ficha de Personagem</h1>
 
   <div class="xpbar" id="painel">
@@ -99,7 +99,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     ['Ciências', 'Conhecimento'], ['Comércio', 'Conhecimento'], ['Herbologia', 'Conhecimento'], ['História', 'Conhecimento'], ['Religião', 'Conhecimento'], ['Heráldica', 'Conhecimento'], ['Astronomia', 'Conhecimento'], ['Geografia', 'Conhecimento'], ['Alquimia', 'Conhecimento'], ['Arquitetura', 'Conhecimento'], ['Direito', 'Conhecimento'], ['Bestiário', 'Conhecimento'], ['Estratégia', 'Conhecimento'], ['Genealogia', 'Conhecimento'], ['Folclore', 'Conhecimento'],
     ['Cavalgar', 'Ofício'], ['Ferraria', 'Ofício'], ['Carpintaria', 'Ofício'], ['Costura', 'Ofício'], ['Culinária', 'Ofício'], ['Joalheria', 'Ofício'], ['Couraria', 'Ofício'], ['Alvenaria', 'Ofício'], ['Mineração', 'Ofício'], ['Pesca', 'Ofício'], ['Agricultura', 'Ofício'], ['Navegação', 'Ofício'], ['Marcenaria', 'Ofício'], ['Armadureiro', 'Ofício'], ['Armeiro', 'Ofício'], ['Escrivania', 'Ofício'], ['Cartografia', 'Ofício'], ['Veterinário', 'Ofício'], ['Adestramento', 'Ofício'],
     ['Performance', 'Expressão'], ['Tocar Instrumento', 'Expressão'], ['Canto', 'Expressão'], ['Dança', 'Expressão'], ['Poesia', 'Expressão'], ['Pintura', 'Expressão'], ['Escultura', 'Expressão'], ['Caligrafia', 'Expressão'], ['Contação de Histórias', 'Expressão'],
-    ['Ladinagem', 'Subterfúgio'], ['Jogos', 'Subterfúgio'], ['Falsificação', 'Subterfúgio'], ['Prestidigitação', 'Subterfúgio'], ['Abrir Fechaduras', 'Subterfúgio'], ['Contrabando', 'Subterfúgio'], ['Apostar', 'Subterfúgio'], ['Roubo', 'Subterfúgio'], ['Ocultação', 'Subterfúgio'], ['Vigilância Urbana', 'Subterfúgio'],
+    ['Ladinagem', 'Subterfúgio'], ['Jogos', 'Subterfúgio'], ['Falsificação', 'Subterfúgio'], ['Abrir Fechaduras', 'Subterfúgio'], ['Contrabando', 'Subterfúgio'], ['Apostar', 'Subterfúgio'], ['Roubo', 'Subterfúgio'], ['Ocultação', 'Subterfúgio'], ['Vigilância Urbana', 'Subterfúgio'],
     ['Meditação', 'Interior'], ['Ritualismo', 'Interior'], ['Autocontrole', 'Interior'], ['Concentração', 'Interior'], ['Leitura Corporal', 'Interior'], ['Interpretação de Sonhos', 'Interior'],
   ];
 
@@ -114,8 +114,8 @@ import RoladorDados from '../components/RoladorDados.astro';
     const k = dots.dataset.kind!, key = dots.dataset.key!;
     let p: any = null;
     if (k === 'attr') { const a = (ATTRS_D as any[]).find((x) => x.id === key); p = { tipo: 'atributo', nome: a.nome, descricao: a.descricao, niveis: a.niveis }; }
-    else if (k === 'skill') { const h = (HAB_D as any[]).find((x) => x.id === key); p = { tipo: 'perícia', nome: h.nome, descricao: h.descricao, niveis: (regras as any).escalaHabilidade }; }
-    else if (k === 'skill2') { p = { tipo: 'perícia secundária', nome: SEC_NOME[key] || key, descricao: 'Conhecimento ou ofício específico (custo reduzido). Segue a mesma escala de competência.', niveis: (regras as any).escalaHabilidade }; }
+    else if (k === 'skill') { const h = (HAB_D as any[]).find((x) => x.id === key); p = { tipo: 'habilidade', nome: h.nome, descricao: h.descricao, niveis: (regras as any).escalaHabilidade }; }
+    else if (k === 'skill2') { p = { tipo: 'habilidade secundária', nome: SEC_NOME[key] || key, descricao: 'Conhecimento ou ofício específico (custo reduzido). Segue a mesma escala de competência.', niveis: (regras as any).escalaHabilidade }; }
     else if (k === 'virtue') { const v = (VIRT_D as any[]).find((x) => x.id === key); p = { tipo: 'virtude', nome: v.nome, descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: v.niveis }; }
     else if (k === 'centelha') { p = { tipo: 'traço', nome: 'Centelha', descricao: TRACO_DESC.centelha, niveis: (regras as any).escalaCentelha }; }
     else if (k === 'willpower') { p = { tipo: 'traço', nome: 'Força de Vontade', descricao: TRACO_DESC.willpower, niveis: (regras as any).escalaVontade }; }
@@ -132,7 +132,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   const TECNOME: Record<string, string> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.nome]));
   const TECTEXT: Record<string, string> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.texto || '']));
   const mdBold = (s: string) => s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  // divide uma lista em 3 colunas contíguas (como as grades de perícias)
+  // divide uma lista em 3 colunas contíguas (como as grades de habilidades)
   const col3 = <T,>(items: T[], render: (x: T) => string) => {
     const n = Math.ceil(items.length / 3);
     return [items.slice(0, n), items.slice(n, 2 * n), items.slice(2 * n)]
@@ -141,7 +141,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   const CREA = (regras as any).limitesCriacao as { atributo: number; habilidade: number; centelha: number; picoAtributo?: number; picoHabilidade?: number };
   const centReq = (b: number) => Math.ceil(b / 3);
   // teto de cada tipo conforme o modo (criação aplica os limites; evolução libera).
-  // Na criação, permite-se UM pico: um atributo em 5 e uma perícia primária em 4.
+  // Na criação, permite-se UM pico: um atributo em 5 e uma habilidade primária em 4.
   function capFor(kind: string, key?: string): number {
     if (kind === 'arte2') return (S.centelha || 0) > 0 ? (S.skills?.ocultismo || 0) : 0; // Arte: exige Centelha > 0; nível ≤ Ocultismo
     const full: Record<string, number> = { attr: 5, skill: 5, skill2: 5, virtue: 5, centelha: 5, willpower: 10, aparencia: 10 };
@@ -327,7 +327,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar;
     el('xpSpent').textContent = String(total);
     const rem = (S.budget || 0) - total, re = el('xpRem'); re.textContent = String(rem); re.className = 'rem ' + (rem < 0 ? 'neg' : 'ok');
-    el('xpBreak').innerHTML = `Atrib ${xa} · Perícias ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '');
+    el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '');
     renderDerived(); renderCombate(); save();
   }
 

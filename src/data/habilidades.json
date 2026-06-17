@@ -17,7 +17,7 @@
       "destreza",
       "forca"
     ],
-    "descricao": "Lâminas, maças e machados de uma mão — esgrima e golpe, da finesse (Destreza) à potência (Força). O tipo de dano vem da arma, não da perícia."
+    "descricao": "Lâminas, maças e machados de uma mão — esgrima e golpe, da finesse (Destreza) à potência (Força). O tipo de dano vem da arma, não da habilidade."
   },
   {
     "id": "armas-duas-maos",
@@ -129,6 +129,15 @@
     "descricao": "A reserva e o controle da energia interior — alimenta a Mana (e, talvez, a Energia). O treino do espírito que move o poder."
   },
   {
+    "id": "prestidigitacao",
+    "nome": "Prestidigitação",
+    "grupo": "fisica",
+    "atributos": [
+      "destreza"
+    ],
+    "descricao": "Dedos rápidos e mãos treinadas: escamotear, ocultar e plantar objetos, bater carteiras, truques de palco e o toque preciso que engana o olho."
+  },
+  {
     "id": "persuasao",
     "nome": "Persuasão",
     "grupo": "social",
@@ -208,7 +217,7 @@
       "raciocinio",
       "inteligencia"
     ],
-    "descricao": "Achar pistas (Percepção), deduzir na hora (Raciocínio) e reconstituir o que houve (Inteligência). A perícia mais mental-completa."
+    "descricao": "Achar pistas (Percepção), deduzir na hora (Raciocínio) e reconstituir o que houve (Inteligência). A habilidade mais mental-completa."
   },
   {
     "id": "conhecimentos",

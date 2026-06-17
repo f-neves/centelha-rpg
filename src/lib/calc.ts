@@ -35,7 +35,7 @@ export function defesa(opts: { destreza: number; habilidade: number; especialida
   return (opts.destreza + opts.habilidade) * d.mult + (opts.especialidade ?? 0) + opts.centelha * (d.centelhaMult ?? 1);
 }
 
-/** Defesa Mental: Integridade×2 + Vontade + Centelha×2. Integridade é a perícia homônima. */
+/** Defesa Mental: Integridade×2 + Vontade + Centelha×2. Integridade é a habilidade homônima. */
 export function defesaMental(opts: { integridade: number; vontade: number; centelha: number }) {
   const d = regras.derivados.defesaMental as { mult: number; maisVontade?: boolean; maisCentelha?: boolean; centelhaMult?: number };
   return opts.integridade * d.mult + (d.maisVontade ? opts.vontade : 0) + (d.maisCentelha ? opts.centelha * (d.centelhaMult ?? 1) : 0);

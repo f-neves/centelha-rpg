@@ -27,7 +27,7 @@
     { "nivel": 4, "texto": "Dominante: dobra vontades, comanda salas, acende multidões." },
     { "nivel": 5, "texto": "Irresistível: poucos resistem ao que você quer que pensem ou façam." }
   ] },
-  { "id": "perspicacia", "nome": "Perspicácia", "grupo": "social", "descricao": "A leitura do outro — emoções, intenções, sinceridade, o clima de uma sala. O sensor social (rola com a perícia Empatia; oposto à Compostura do alvo).", "niveis": [
+  { "id": "perspicacia", "nome": "Perspicácia", "grupo": "social", "descricao": "A leitura do outro — emoções, intenções, sinceridade, o clima de uma sala. O sensor social (rola com a habilidade Empatia; oposto à Compostura do alvo).", "niveis": [
     { "nivel": 1, "texto": "Cego social: não percebe o óbvio nas pessoas; é enganado fácil." },
     { "nivel": 2, "texto": "Comum: lê emoções evidentes." },
     { "nivel": 3, "texto": "Perspicaz: fareja mentiras pequenas e o humor da roda." },
