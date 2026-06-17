@@ -9,6 +9,22 @@ Um personagem é construído gastando **Experiência** (XP) a partir de valores-
 
 <div class="callout regra"><span class="lbl">Atalho</span>A <a href="/ficha">Ficha de Personagem</a> faz toda esta conta ao vivo: gaste pontos e veja o XP e os derivados se atualizarem.</div>
 
+## Passo a passo da criação
+
+Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão nas seções abaixo, e a [Ficha](/ficha) faz as contas por você.
+
+1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas") — ela guia todas as escolhas seguintes.
+2. **Orçamento.** Combine com o Mestre: **1200** (iniciante), **1600** (veterano) ou **2000** (herói). Todo o resto sai desse bolo de XP.
+3. **Atributos.** Suba do piso 1. Teto **4** na criação, com **um único** atributo em **5** (o seu pico).
+4. **Habilidades e Especialidades.** Teto **3**, com **uma única** primária em **4** (o pico de perícia). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
+5. **Virtudes.** As quatro, de 1 a 5 — elas também alimentam a Energia.
+6. **Força de Vontade e Aparência.** Suba a Vontade do piso 1 (um herói costuma levá-la a 5+); escolha a Aparência (1–10, normal por volta de 4–6).
+7. **Centelha.** Teto **2** na criação. É cara (×15) e define o seu tier — a maioria começa em 1; quem quer um herói de saga já compra 2.
+8. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte.
+9. **Derivados.** PV, Defesas, Energia/Mana, Fôlego e Iniciativa saem de fórmulas — confira na tabela mais abaixo, ou deixe a Ficha calcular.
+
+<p class="muted">Não há ordem obrigatória de <em>compra</em> — esta é só a sequência mais fácil de raciocinar.</p>
+
 ## Pisos e princípios
 
 Tudo começa no mínimo e é comprado dali: **Atributos 1** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 1** · **Aparência 1** · **Centelha 0** · qualquer **Proeza 0**.
@@ -28,7 +44,8 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Habilidade secundária | novo × 2 | 0→1 = 2 · 2→3 = 6 |
 | Especialidade (prim. / sec.) | 10 / 5 por ponto | limite = nível na Habilidade |
 | Virtude | novo × 5 | 1→2 = 10 · 2→3 = 15 |
-| Força de Vontade | novo × 2 | 5→6 = 12 |
+| Força de Vontade | novo × 2 | 1→2 = 4 · 5→6 = 12 |
+| Aparência | novo × 2 | 1→2 = 4 · 7→8 = 16 |
 | Centelha | novo × 15 | 0→1 = 15 · 2→3 = 45 |
 | Técnica de Proeza | banda × 5 | banda 1 = 5 · banda 3 = 15 |
 | Nível de Arte (Arcano) | nível × 10 | nível 1 = 10 · nível 3 = 30 |
@@ -50,13 +67,15 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 | Pontos de Vida | 25 + (Vigor × 3) |
 | Defesa | (Destreza + Habilidade) × 2 + Especialidade + Centelha×2 |
 | Defesa Mental | (Integridade × 2) + Vontade + Centelha×2 |
+| Defesa Social | (Compostura + Temperança + Centelha) × 2 |
 | Energia | (Centelha × 3) + soma das 4 Virtudes + Força de Vontade |
 | Mana | (Centelha × 2) + Força de Vontade |
+| Fôlego | 10 + (Vigor × 5) + (Resistência × 4) + (Vontade × 2) |
 | Iniciativa | 1d6 + Raciocínio + Prontidão |
 
 ## Três exemplos, um por orçamento
 
-Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1000), **Sora** no veterano (1400) e **Veil** no herói (1800). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Proezas, Técnicas, habilidades e especialidades. É o toolbox que carrega a profundidade.
+Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1200), **Sora** no veterano (1600) e **Veil** no herói (2000). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Proezas, Técnicas, habilidades e especialidades. É o toolbox que carrega a profundidade.
 
 ### Kael, o Batedor — Iniciante (Centelha 2)
 
