@@ -13,11 +13,11 @@ import NestaPagina from '../components/NestaPagina.astro';
 import Busca from '../components/Busca.astro';
 
 interface Props { title: string; descricao?: string; largura?: 'prose' | 'wide' | 'full'; }
-const { title, descricao = 'New RPG System D6 — sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose' } = Astro.props;
+const { title, descricao = 'Centelha — sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose' } = Astro.props;
 
 const here = Astro.url.pathname.replace(/\/+$/, '');
 const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
-const fullTitle = title === 'Início' ? 'New RPG System D6' : `${title} — New RPG System D6`;
+const fullTitle = title === 'Início' ? 'Centelha' : `${title} — Centelha`;
 const ogUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
 const ogImage = Astro.site ? new URL(url('icon-512.png'), Astro.site).href : url('icon-512.png');
 
@@ -40,7 +40,7 @@ if (partes.length) crumbs.push({ label: title });
   <link rel="apple-touch-icon" href={url('icon-192.png')} />
   <meta name="theme-color" content="#1f3f8f" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="New RPG System D6" />
+  <meta property="og:site_name" content="Centelha" />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={descricao} />
   <meta property="og:url" content={ogUrl} />
@@ -75,7 +75,7 @@ if (partes.length) crumbs.push({ label: title });
     <aside class="sidebar" id="nav" data-pagefind-ignore>
       <button class="btn drawer-close" aria-label="Fechar navegação" data-drawer-close>✕</button>
       <button class="btn sidebar-collapse" id="sidebar-collapse" aria-label="Recolher menu" title="Recolher menu">«</button>
-      <a class="brand" href={url('')}>New RPG System <span class="d6">D6</span>
+      <a class="brand" href={url('')}>Centelha <span class="d6">D6</span>
         <small>do mortal ao semideus</small></a>
 
       <div style="margin-top:1rem"><Busca /></div>

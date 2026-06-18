@@ -282,7 +282,7 @@
       "humano"
     ],
     "pv": 37,
-    "defesa": 10,
+    "defesa": 11,
     "defesaMental": 19,
     "soak": {
       "impacto": 12,
@@ -484,7 +484,7 @@
       "centelha"
     ],
     "pv": 40,
-    "defesa": 10,
+    "defesa": 11,
     "defesaMental": 21,
     "soak": {
       "impacto": 14,
@@ -677,7 +677,7 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 12,
+    "defesa": 13,
     "defesaMental": 21,
     "soak": {
       "impacto": 13,

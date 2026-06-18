@@ -8,7 +8,7 @@ const escudos = (await getCollection('escudos')).map((e) => e.data);
 const habs = Object.fromEntries((await getCollection('habilidades')).map((h) => [h.id, h.data.nome]));
 const CLASSE: Record<string, string> = { leve: 'Leve', media: 'Média', pesada: 'Pesada', haste: 'Haste', distancia: 'Distância', arremesso: 'Arremesso', nenhuma: 'Nenhuma' };
 const MODO: Record<string, string> = { corte: 'Corte', projetil: 'Projétil', perfConc: 'Perf.C', impacto: 'Impacto' };
-const modoStr = (m: any) => `${MODO[m.tipo]}${m.perf != null ? ` (perf.${m.perf})` : ''}${m.principal ? '' : '*'}`;
+const modoStr = (m: any) => `${MODO[m.tipo]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : '*'}`;
 const ordem = ['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso'];
 armas.sort((a, b) => ordem.indexOf(a.classe) - ordem.indexOf(b.classe) || a.nome.localeCompare(b.nome));
 const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
@@ -48,10 +48,10 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
     </table>
   </div>
   <p class="muted ef-count"></p>
-  <p class="muted">A coluna <strong>Modos</strong> lista os modos de ataque da arma; <code>*</code> = modo secundário (−2 ao acerto e −2 ao dano). <em>perf.N</em> = Nível de Perfuração (só Projétil e Perf.C passam pelo gate da armadura).</p>
+  <p class="muted">A coluna <strong>Modos</strong> lista os modos de ataque da arma; <code>*</code> = modo secundário (−2 ao acerto e −2 ao dano). <em>(N0)–(N5)</em> = Nível de Perfuração da arma (só Projétil e Perf.C passam pelo gate da armadura).</p>
 
   <h2>Armaduras</h2>
-  <p class="muted">Três Soaks: <strong>Impacto</strong>, <strong>Corte</strong> e <strong>Perfuração</strong> (Projétil e Perf. Concentrada usam o de Perfuração). O <strong>Nível</strong> entre parênteses é a Resistência à Perfuração: a Perfuração da arma precisa ser ≥ ele, senão resvala — e ele <em>não soma</em> ao empilhar (vale o maior). A <strong>Penalidade</strong> incide nas ações físicas (esquiva/bloqueio) e <strong>dobra</strong> para Furtividade e atividades delicadas. Empilhar vale o maior Soak de cada categoria; as penalidades somam.</p>
+  <p class="muted">Três Soaks: <strong>Impacto</strong>, <strong>Corte</strong> e <strong>Perfuração</strong> (Projétil e Perf. Concentrada usam o de Perfuração). O <strong>Nível</strong> entre parênteses é a Resistência à Perfuração: a Perfuração da arma precisa ser ≥ ele, senão resvala — e ele <em>não soma</em> ao empilhar (vale o maior). A <strong>Penalidade</strong> incide em qualquer ação física (Ataque, Esquiva, Bloqueio, Deslocamento, Salto) e <strong>dobra</strong> para Furtividade e atividades delicadas. Empilhar vale o maior Soak de cada categoria; as penalidades somam.</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Armadura</th><th class="c">Classe</th><th class="c">Impacto</th><th class="c">Corte</th><th class="c">Perfuração (Nível)</th><th class="c">Red. QA</th><th class="c">Penalidade</th><th>Notas</th></tr></thead>

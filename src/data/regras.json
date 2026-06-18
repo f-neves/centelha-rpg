@@ -311,8 +311,8 @@
     },
     "empilhamento": "Soak de cada categoria (Impacto/Corte/Perfuração) = MAIOR valor entre as peças; o Soak natural soma por cima. Resistência à Perfuração (Nível) = sempre o MAIOR, NUNCA soma (vale também para Proezas de pele dura). Penalidade = SOMA das peças.",
     "penalidade": {
-      "nota": "Valor único por armadura (geral: leve −1, média −2, pesada −4; pode variar por peça). Incide em qualquer ação física que não seja ataque, incluindo Esquiva e Bloqueio. Para FURTIVIDADE e atividades delicadas, a Penalidade é DOBRADA.",
-      "leve": 1, "media": 2, "pesada": 4, "furtividadeDobra": true
+      "nota": "Valor único por armadura (geral: leve −1, média −2, pesada −3; pode variar por peça). Incide em qualquer ação física, incluindo Ataque, Esquiva, Bloqueio, Deslocamento e Salto. Para Furtividade e atividades delicadas, a Penalidade DOBRA.",
+      "leve": 1, "media": 2, "pesada": 3, "furtividadeDobra": true
     },
     "armaduraMult": 1.5,
     "perfuracaoSoakNota": "O Soak de Perfuração da armadura = metade do menor entre os antigos Projétil e Perf. Concentrada (arredonda p/ baixo): ao penetrar (gate aberto), a perfuração encontra pouca proteção. O Nível (R.Perf) é que mede a dificuldade de furar."

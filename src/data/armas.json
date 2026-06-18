@@ -5,7 +5,7 @@
     "tipoDano": "perfConc", "pen": 0,
     "modos": [ { "tipo": "perfConc", "perf": 0, "principal": true }, { "tipo": "corte", "principal": false } ],
     "tags": [ "ágil", "arremessável" ],
-    "notas": "Rápida e precisa; perfura pele (perf. 0), mas para em couro duro. Contra armadura, mira na fresta."
+    "notas": "Rápida e precisa; perfura pele (N0), mas para em couro duro. Contra armadura, mira na fresta."
   },
   {
     "id": "espada-curta", "nome": "Espada Curta", "classe": "leve", "atrib": "destreza", "pericia": "armas-uma-mao",
@@ -13,7 +13,7 @@
     "tipoDano": "corte", "pen": 0,
     "modos": [ { "tipo": "corte", "principal": true }, { "tipo": "perfConc", "perf": 1, "principal": false } ],
     "tags": [],
-    "notas": "Veloz e defensiva. Corta (principal) ou estoca (perf. 1)."
+    "notas": "Veloz e defensiva. Corta (principal) ou estoca (N1)."
   },
   {
     "id": "espada-longa", "nome": "Espada Longa", "classe": "media", "atrib": "destreza", "pericia": "armas-uma-mao",
@@ -21,7 +21,7 @@
     "tipoDano": "corte", "pen": 0,
     "modos": [ { "tipo": "corte", "principal": true }, { "tipo": "perfConc", "perf": 1, "principal": false } ],
     "tags": [ "versátil" ],
-    "notas": "A clássica adaptável (versátil: 2 mãos = +1 dado, −1 Def. Arma). Corta ou estoca nas frestas (perf. 1)."
+    "notas": "A clássica adaptável (versátil: 2 mãos = +1 dado, −1 Def. Arma). Corta ou estoca nas frestas (N1)."
   },
   {
     "id": "machado", "nome": "Machado", "classe": "media", "atrib": "forca", "pericia": "armas-uma-mao",
@@ -53,7 +53,7 @@
     "tipoDano": "perfConc", "pen": 2,
     "modos": [ { "tipo": "perfConc", "perf": 2, "principal": true }, { "tipo": "impacto", "principal": false } ],
     "tags": [],
-    "notas": "O bico concentrado (perf. 2) vence a placa pelo ponto; o lado do martelo bate (impacto). A arma-de-mão anti-placa."
+    "notas": "O bico concentrado (N2) vence a placa pelo ponto; o lado do martelo bate (impacto). A arma-de-mão anti-placa."
   },
   {
     "id": "lanca", "nome": "Lança", "classe": "haste", "atrib": "destreza", "pericia": "armas-duas-maos",
@@ -61,7 +61,7 @@
     "tipoDano": "perfConc", "pen": 1,
     "modos": [ { "tipo": "perfConc", "perf": 1, "principal": true } ],
     "tags": [ "alcance", "arremessável" ],
-    "notas": "Alcance + estocada (perf. 1): fura couro e malha, mas resvala na placa."
+    "notas": "Alcance + estocada (N1): fura couro e malha, mas resvala na placa."
   },
   {
     "id": "alabarda", "nome": "Alabarda", "classe": "haste", "atrib": "forca", "pericia": "armas-duas-maos",
@@ -77,7 +77,7 @@
     "tipoDano": "corte", "pen": 0,
     "modos": [ { "tipo": "corte", "principal": true }, { "tipo": "perfConc", "perf": 1, "principal": false }, { "tipo": "impacto", "principal": false } ],
     "tags": [],
-    "notas": "Espadão de duas mãos: corta com força, meia-espada estoca as frestas (perf. 1) ou golpeia com o pomo (impacto). Lento."
+    "notas": "Espadão de duas mãos: corta com força, meia-espada estoca as frestas (N1) ou golpeia com o pomo (impacto). Lento."
   },
   {
     "id": "martelo-de-guerra", "nome": "Martelo de Guerra", "classe": "pesada", "atrib": "forca", "pericia": "armas-duas-maos",
@@ -85,7 +85,7 @@
     "tipoDano": "impacto", "pen": 0,
     "modos": [ { "tipo": "impacto", "principal": true }, { "tipo": "perfConc", "perf": 2, "principal": false } ],
     "tags": [],
-    "notas": "Esmaga placas (Impacto, principal); o bico do reverso (perf. 2) fura quando precisa. O fim da era do escudo."
+    "notas": "Esmaga placas (Impacto, principal); o bico do reverso (N2) fura quando precisa. O fim da era do escudo."
   },
   {
     "id": "arco", "nome": "Arco", "classe": "distancia", "atrib": "destreza", "pericia": "atirador",
@@ -93,7 +93,7 @@
     "tipoDano": "projetil", "pen": 1,
     "modos": [ { "tipo": "projetil", "perf": 1, "principal": true } ],
     "tags": [ "munição", "distância" ],
-    "notas": "Precisão à distância; gasta munição. Perfura couro e malha (perf. 1), resvala na placa."
+    "notas": "Precisão à distância; gasta munição. Perfura couro e malha (N1), resvala na placa."
   },
   {
     "id": "besta-pesada", "nome": "Besta Pesada", "classe": "distancia", "atrib": "destreza", "pericia": "atirador",
@@ -101,7 +101,7 @@
     "tipoDano": "projetil", "pen": 2,
     "modos": [ { "tipo": "projetil", "perf": 2, "principal": true } ],
     "tags": [ "munição", "recarga", "distância" ],
-    "notas": "O virote (perf. 2) fura até a placa; recarga lenta. A resposta de longe contra cavaleiro."
+    "notas": "O virote (N2) fura até a placa; recarga lenta. A resposta de longe contra cavaleiro."
   },
   {
     "id": "adaga-de-arremesso", "nome": "Adaga de Arremesso", "classe": "arremesso", "atrib": "destreza", "pericia": "arremesso",
@@ -125,7 +125,7 @@
     "tipoDano": "projetil", "pen": 1,
     "modos": [ { "tipo": "projetil", "perf": 1, "principal": true }, { "tipo": "perfConc", "perf": 1, "principal": false } ],
     "tags": [ "arremessável" ],
-    "notas": "Dardo de arremesso (javelina): fura à distância (perf. 1) e ainda serve de lança curta na mão (estocada perf. 1)."
+    "notas": "Dardo de arremesso (javelina): fura à distância (N1) e ainda serve de lança curta na mão (estocada N1)."
   },
   {
     "id": "funda", "nome": "Funda", "classe": "arremesso", "atrib": "destreza", "pericia": "arremesso",
@@ -165,7 +165,7 @@
     "tipoDano": "projetil", "pen": 2,
     "modos": [ { "tipo": "projetil", "perf": 2, "principal": true } ],
     "tags": [ "arremessável" ],
-    "notas": "Dardo pesado anti-escudo: fura placa (perf. 2) e entorta ao cravar, inutilizando o escudo atingido."
+    "notas": "Dardo pesado anti-escudo: fura placa (N2) e entorta ao cravar, inutilizando o escudo atingido."
   },
   {
     "id": "desarmado", "nome": "Desarmado / Briga", "classe": "leve", "atrib": "forca", "pericia": "briga",

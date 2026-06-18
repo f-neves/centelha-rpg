@@ -305,18 +305,19 @@ import RoladorDados from '../components/RoladorDados.astro';
     const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];
     const esc = ESCUDO[S.equip?.escudo || 'nenhum'] || { bloqCaC: 0, bloqProjetil: 0, penalidade: 0 };
     const C = S.centelha || 0, forca = S.attrs.forca || 0;
+    const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
+    const armorPen = empilharArmaduras(pecas).penalidade || 0;
+    const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
     const soma = (S.attrs[w.atrib] || 0) + (S.skills[w.pericia] || S.skills2[w.pericia] || 0);
     const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
-    const flat = (w.acerto || 0) + ataqueCentelha(C);
-    const pool = `${dados}d6${bonus ? '+2' : ''}${flat ? ` +${flat}` : ''}`;
+    const flat = (w.acerto || 0) + ataqueCentelha(C) - armorPen;
+    const pool = `${dados}d6${bonus ? '+2' : ''}${flat ? ` ${sgn(flat)}` : ''}`;
     const dist = w.tags.includes('distância');
     const fm = regras.derivados.danoForca; const forcaAp = dist ? 0 : forca * (w.maos === 2 ? fm.duasMaos : fm.umaMao);
     const danoBase = `${w.dado}d6${forcaAp ? ` +${forcaAp}` : ''}`;
     const modos = (w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[];
-    const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (perf. ${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
+    const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
     const temSec = modos.some((m) => !m.principal);
-    const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
-    const armorPen = empilharArmaduras(pecas).penalidade || 0;
     const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, especialidade: S.spec[w.pericia] || S.spec2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqCaC || 0) - armorPen;
     el('combate').innerHTML =
       `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${pool}</b> · dano base <b>${danoBase}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
