@@ -113,23 +113,36 @@ const armas = defineCollection({
     dado: z.number().int().min(1).max(3), acerto: z.number().int(),
     bonusQA: z.number().int().min(0), danoQA: z.number().int().min(0), defesaArma: z.number().int(),
     maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
-    tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(3),
+    tipoDano: z.enum(['corte', 'projetil', 'perfConc', 'impacto']), pen: z.number().int().min(0).max(5),
+    modos: z.array(z.object({
+      tipo: z.enum(['corte', 'projetil', 'perfConc', 'impacto']),
+      perf: z.number().int().min(0).max(5).optional(),
+      principal: z.boolean(),
+    })),
     tags: z.array(z.string()), notas: z.string(),
   }),
+});
+
+const soakModos = z.object({
+  impacto: z.number().int(), corte: z.number().int(), perfuracao: z.number().int(),
 });
 
 const armaduras = defineCollection({
   loader: file('src/data/armaduras.json'),
   schema: z.object({
     id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']),
-    soak: z.number().int(), protecao: z.number().int(), reducaoQA: z.number().int().min(0), esquiva: z.number().int(),
-    lentidao: z.string(), furtividade: z.number().int(), notas: z.string(),
+    soak: soakModos, resistPerf: z.number().int().min(0), reducaoQA: z.number().int().min(0),
+    penalidade: z.number().int().min(0), acesso: z.number().int().optional(), notas: z.string(),
   }),
 });
 
 const escudos = defineCollection({
   loader: file('src/data/escudos.json'),
-  schema: z.object({ id: z.string(), nome: z.string(), bloqueio: z.number().int(), notas: z.string() }),
+  schema: z.object({
+    id: z.string(), nome: z.string(),
+    bloqCaC: z.number().int(), bloqProjetil: z.number().int(), penalidade: z.number().int(),
+    acesso: z.number().int().optional(), notas: z.string(),
+  }),
 });
 
 const inimigos = defineCollection({
@@ -146,7 +159,7 @@ const inimigos = defineCollection({
     pv: z.number().int(),
     defesa: z.number().int(),
     defesaMental: z.number().int(),
-    soak: z.object({ impacto: z.number().int(), letal: z.number().int(), protecao: z.number().int() }),
+    soak: soakModos, resistPerf: z.number().int().min(0),
     iniciativa: z.string(),
     atributos: z.record(z.number().int()),
     ataques: z.array(z.object({ nome: z.string(), pool: z.string(), dano: z.string(), ticks: z.number().int(), notas: z.string().optional() })),

@@ -42,7 +42,7 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
           <span><b>PV</b> {i.pv}</span>
           <span><b>Defesa</b> {i.defesa}</span>
           <span><b>Def. Mental</b> {i.defesaMental}</span>
-          <span><b>Soak</b> {i.soak.impacto}/{i.soak.letal}{i.soak.protecao ? ` · Prot ${i.soak.protecao}` : ''}</span>
+          <span><b>Soak</b> Im{i.soak.impacto}/Co{i.soak.corte}/Pf{i.soak.perfuracao}{i.resistPerf ? ` · Nível ${i.resistPerf}` : ''}</span>
           <span><b>Iniciativa</b> {i.iniciativa}</span>
         </div>
         <ul class="besta-atk">

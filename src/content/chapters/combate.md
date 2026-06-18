@@ -68,7 +68,33 @@ Qualquer ataque pode ser **forçado**: gaste Fôlego extra para somar dados ao a
 
 O **Dado da Arma** é 1d6 (leve), 2d6 (média) ou 3d6 (pesada). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
 
-O dano vem em três sabores: **Impacto** (contundente), **Corte** e **Perfuração** (ambos letais). O **Soak** absorve o golpe — naturalmente igual ao Vigor contra Impacto e à metade do Vigor contra dano letal; armaduras somam mais. Armas perfurantes têm **Penetração**: se ela não vencer a Proteção da armadura, o dano é anulado. Já as armas com a tag **Ruptura** ignoram o Soak de impacto da armadura, amassando-a.
+### Os quatro modos de dano
+
+Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um — você escolhe conforme o alvo:
+
+- **Corte** — gume deslizante (espada, machado). Letal.
+- **Projétil** — flecha, virote, dardo lançado. Letal.
+- **Perf. Concentrada** — ponta rígida com energia concentrada (estocada, adaga de rondel, bico de picareta). Letal.
+- **Impacto** — maça, martelo, malho; também socos e quedas. Em regra **nocauteia** (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
+
+O Soak total de um golpe é **Soak natural + Centelha + a absorção da armadura**. A armadura tem **três Soaks** — Impacto, Corte e Perfuração —, e **Projétil e Perf. Concentrada usam o mesmo Soak de Perfuração**:
+
+- **Soak natural:** Vigor cheio contra **Impacto**; metade do Vigor contra os letais (Corte, Projétil, Perf.).
+- **+ Centelha:** some o nível de Centelha a *todos* os Soaks (sua dureza sobre-humana protege em qualquer frente).
+- **+ armadura:** a placa quase zera o Corte, mal segura o Impacto e tem Perfuração baixa. Empilhar peças vale o **maior Soak de cada categoria**; ver [Armas & Armaduras](/regras/armas-e-armaduras).
+
+### O gate de Perfuração
+
+Os modos **Projétil** e **Perf. Concentrada** têm um **Nível de Perfuração** (0–5) e enfrentam o **Nível** (Resistência à Perfuração) da armadura:
+
+- Se o Nível de Perfuração da arma for **menor** que o da armadura, o golpe **resvala — dano 0** (nem rola).
+- Se for **igual ou maior**, o gate abre: rola o dano e subtrai o **Soak de Perfuração** (baixo — ao furar, encontra pouca proteção).
+
+**Corte e Impacto não passam pelo gate** — sempre subtraem a absorção direto. É por isso que a placa completa (Nível 3) é à prova de qualquer arma de mão (espada, flecha, lança, besta, picareta param em perf. 0–2), cedendo só ao Impacto, à perfuração nível 3+ (cerco, magia), Proeza ou feitiçaria. O **Nível nunca soma** ao empilhar armaduras: vale sempre o maior.
+
+### Trocar de modo
+
+Cada arma tem um **modo principal** (sem custo) e, às vezes, **secundários** — alternar para um secundário custa **−2 ao acerto e −2 ao dano** (estocar com uma lâmina de corte é mais difícil e sai mais fraco). Algumas armas, como a **Alabarda**, têm vários modos *principais*: alternam sem penalidade.
 
 ## Quase-Acerto
 

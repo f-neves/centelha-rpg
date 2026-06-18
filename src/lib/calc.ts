@@ -79,6 +79,48 @@ export function folego(opts: { vigor: number; resistencia: number; vontade: numb
   return d.base + opts.vigor * d.vigorMult + opts.resistencia * d.resistenciaMult + opts.vontade * d.vontadeMult;
 }
 
+// ----- Dano, Soak e armadura -----
+export type Modo = 'corte' | 'projetil' | 'perfConc' | 'impacto';
+export type SoakCat = 'impacto' | 'corte' | 'perfuracao';
+export const MODOS: Modo[] = ['corte', 'projetil', 'perfConc', 'impacto'];
+export const MODO_NOME: Record<Modo, string> = { corte: 'Corte', projetil: 'Projétil', perfConc: 'Perf. Concentrada', impacto: 'Impacto' };
+/** Cada modo de ataque cai numa das 3 categorias de Soak da armadura (Projétil e Perf.C → Perfuração). */
+export const MODO_SOAK: Record<Modo, SoakCat> = { corte: 'corte', projetil: 'perfuracao', perfConc: 'perfuracao', impacto: 'impacto' };
+export const SOAK_CATS: SoakCat[] = ['impacto', 'corte', 'perfuracao'];
+export const SOAK_CAT_NOME: Record<SoakCat, string> = { impacto: 'Impacto', corte: 'Corte', perfuracao: 'Perfuração' };
+
+/** Soak natural do corpo: Impacto = Vigor cheio; corte e perfuração = metade do Vigor. */
+export function soakNatural(vigor: number, cat: Modo | SoakCat) {
+  return cat === 'impacto' ? vigor : floor(vigor / 2);
+}
+
+/** Empilha peças de armadura: maior Soak de cada categoria; Resist.Perf (Nível) = MAIOR (nunca soma); Penalidade SOMA. */
+export function empilharArmaduras(
+  pecas: Array<{ soak?: Partial<Record<SoakCat, number>>; resistPerf?: number; penalidade?: number }>,
+) {
+  const soak: Record<SoakCat, number> = { impacto: 0, corte: 0, perfuracao: 0 };
+  let resistPerf = 0, penalidade = 0;
+  for (const p of pecas) {
+    for (const c of SOAK_CATS) soak[c] = Math.max(soak[c], p.soak?.[c] ?? 0);
+    resistPerf = Math.max(resistPerf, p.resistPerf ?? 0);
+    penalidade += p.penalidade ?? 0;
+  }
+  return { soak, resistPerf, penalidade };
+}
+
+/** Soak total de um modo = Soak natural + Centelha + absorção da armadura na categoria do modo. */
+export function soak(opts: { vigor: number; centelha: number; modo: Modo; armaduraSoak?: number }) {
+  const c = (regras.dano as { centelhaNoSoak?: number })?.centelhaNoSoak ?? 0;
+  return soakNatural(opts.vigor, opts.modo) + opts.centelha * c + (opts.armaduraSoak ?? 0);
+}
+
+/** O gate de Perfuração abre? Só vale p/ projétil e perf. concentrada; corte/impacto sempre passam. */
+export function gatePerfuracaoAbre(modo: Modo, perfArma: number, resistPerf: number) {
+  const modos = (regras.dano as { gatePerfuracao?: { modos: string[] } })?.gatePerfuracao?.modos ?? ['projetil', 'perfConc'];
+  if (!modos.includes(modo)) return true;
+  return perfArma >= resistPerf;
+}
+
 /** Iniciativa: 1d6 + Raciocínio + Prontidão. */
 export function iniciativa(traits: Record<string, number>) {
   const d = regras.derivados.iniciativa;

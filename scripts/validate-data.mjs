@@ -11,6 +11,7 @@ const erros = [];
 const fail = (msg) => erros.push(msg);
 
 const custo = z.object({ energia: z.number().int().nonnegative().optional(), mana: z.number().int().nonnegative().optional(), vontade: z.number().int().nonnegative().optional() });
+const soakModos = z.object({ impacto: z.number().int(), corte: z.number().int(), perfuracao: z.number().int() });
 const S = {
   atributos: z.object({ id: z.string(), nome: z.string(), grupo: z.enum(['fisico', 'social', 'mental']), descricao: z.string(), niveis: z.array(z.object({ nivel: z.number().int(), texto: z.string() })).optional() }),
   habilidades: z.object({ id: z.string(), nome: z.string(), grupo: z.enum(['combate', 'fisica', 'social', 'saber', 'tecnica']), atributos: z.array(z.string()).optional(), secundaria: z.boolean().optional(), descricao: z.string() }),
@@ -24,7 +25,7 @@ const S = {
     ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(5),
     conceito: z.string(), descricao: z.string(), tags: z.array(z.string()),
     pv: z.number().int(), defesa: z.number().int(), defesaMental: z.number().int(),
-    soak: z.object({ impacto: z.number().int(), letal: z.number().int(), protecao: z.number().int() }),
+    soak: soakModos, resistPerf: z.number().int().min(0),
     iniciativa: z.string(), atributos: z.record(z.number().int()),
     ataques: z.array(z.object({ nome: z.string(), pool: z.string(), dano: z.string(), ticks: z.number().int(), notas: z.string().optional() })),
     tecnicas: z.array(z.string()), artes: z.array(z.object({ id: z.string(), nivel: z.number().int() })),
@@ -34,11 +35,12 @@ const S = {
     id: z.string(), nome: z.string(), classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
     atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), acerto: z.number().int(),
     defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
-    tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(3),
+    tipoDano: z.enum(['corte', 'projetil', 'perfConc', 'impacto']), pen: z.number().int().min(0).max(5),
+    modos: z.array(z.object({ tipo: z.enum(['corte', 'projetil', 'perfConc', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
     tags: z.array(z.string()), notas: z.string(),
   }),
-  armaduras: z.object({ id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: z.number().int(), protecao: z.number().int(), esquiva: z.number().int(), lentidao: z.string(), furtividade: z.number().int(), notas: z.string() }),
-  escudos: z.object({ id: z.string(), nome: z.string(), bloqueio: z.number().int(), notas: z.string() }),
+  armaduras: z.object({ id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: soakModos, resistPerf: z.number().int().min(0), reducaoQA: z.number().int().min(0).optional(), penalidade: z.number().int().min(0), acesso: z.number().int().optional(), notas: z.string() }),
+  escudos: z.object({ id: z.string(), nome: z.string(), bloqCaC: z.number().int(), bloqProjetil: z.number().int(), penalidade: z.number().int(), acesso: z.number().int().optional(), notas: z.string() }),
 };
 
 const data = {};

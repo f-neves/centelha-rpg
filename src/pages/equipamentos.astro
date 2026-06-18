@@ -7,6 +7,8 @@ const armaduras = (await getCollection('armaduras')).map((e) => e.data);
 const escudos = (await getCollection('escudos')).map((e) => e.data);
 const habs = Object.fromEntries((await getCollection('habilidades')).map((h) => [h.id, h.data.nome]));
 const CLASSE: Record<string, string> = { leve: 'Leve', media: 'Média', pesada: 'Pesada', haste: 'Haste', distancia: 'Distância', arremesso: 'Arremesso', nenhuma: 'Nenhuma' };
+const MODO: Record<string, string> = { corte: 'Corte', projetil: 'Projétil', perfConc: 'Perf.C', impacto: 'Impacto' };
+const modoStr = (m: any) => `${MODO[m.tipo]}${m.perf != null ? ` (perf.${m.perf})` : ''}${m.principal ? '' : '*'}`;
 const ordem = ['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso'];
 armas.sort((a, b) => ordem.indexOf(a.classe) - ordem.indexOf(b.classe) || a.nome.localeCompare(b.nome));
 const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
@@ -24,7 +26,7 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
   <h2>Armas</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dado</th><th class="c">Acerto</th><th class="c">Q-Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th class="c">Fôlego</th><th>Dano</th><th>Habilidade</th><th>Tags</th></tr></thead>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dado</th><th class="c">Acerto</th><th class="c">Q-Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th class="c">Fôlego</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
       <tbody>
         {armas.map((a) => (
           <tr data-arma data-classe={a.classe} data-tags={a.tags.join(' ')} data-txt={(a.nome + ' ' + a.tags.join(' ') + ' ' + a.notas).toLowerCase()}>
@@ -37,7 +39,7 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
             <td class="c">{a.maos}</td>
             <td class="c">{a.ticks}</td>
             <td class="c">{a.folego}</td>
-            <td>{a.tipoDano}{a.pen ? ` · Pen ${a.pen}` : ''}</td>
+            <td>{(a.modos ?? [{ tipo: a.tipoDano, perf: a.pen, principal: true }]).map(modoStr).join(' · ')}</td>
             <td>{habs[(a.pericia as any).id] ?? (a.pericia as any).id}</td>
             <td class="muted">{a.tags.join(', ')}</td>
           </tr>
@@ -46,24 +48,27 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
     </table>
   </div>
   <p class="muted ef-count"></p>
+  <p class="muted">A coluna <strong>Modos</strong> lista os modos de ataque da arma; <code>*</code> = modo secundário (−2 ao acerto e −2 ao dano). <em>perf.N</em> = Nível de Perfuração (só Projétil e Perf.C passam pelo gate da armadura).</p>
 
   <h2>Armaduras</h2>
+  <p class="muted">Três Soaks: <strong>Impacto</strong>, <strong>Corte</strong> e <strong>Perfuração</strong> (Projétil e Perf. Concentrada usam o de Perfuração). O <strong>Nível</strong> entre parênteses é a Resistência à Perfuração: a Perfuração da arma precisa ser ≥ ele, senão resvala — e ele <em>não soma</em> ao empilhar (vale o maior). A <strong>Penalidade</strong> incide nas ações físicas (esquiva/bloqueio) e <strong>dobra</strong> para Furtividade e atividades delicadas. Empilhar vale o maior Soak de cada categoria; as penalidades somam.</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Armadura</th><th class="c">Soak</th><th class="c">Prot.</th><th class="c">Red. QA</th><th class="c">Esquiva</th><th>Lentidão</th><th class="c">Furtiv.</th><th>Notas</th></tr></thead>
+      <thead><tr><th>Armadura</th><th class="c">Classe</th><th class="c">Impacto</th><th class="c">Corte</th><th class="c">Perfuração (Nível)</th><th class="c">Red. QA</th><th class="c">Penalidade</th><th>Notas</th></tr></thead>
       <tbody>
         {armaduras.map((a) => (
-          <tr><th>{a.nome}</th><td class="c">+{a.soak}</td><td class="c">{a.protecao}</td><td class="c">{a.reducaoQA}</td><td class="c">{a.esquiva}</td><td>{a.lentidao}</td><td class="c">{a.furtividade}</td><td class="muted">{a.notas}</td></tr>
+          <tr><th>{a.nome}</th><td class="c">{CLASSE[a.classe]}</td><td class="c">{a.soak.impacto}</td><td class="c">{a.soak.corte}</td><td class="c">{a.soak.perfuracao} (N{a.resistPerf})</td><td class="c">{a.reducaoQA}</td><td class="c">{a.penalidade ? `−${a.penalidade}` : '0'}</td><td class="muted">{a.notas}</td></tr>
         ))}
       </tbody>
     </table>
   </div>
 
   <h2>Escudos</h2>
+  <p class="muted">Escudo é <strong>bônus de Defesa</strong> (ajuda a não ser acertado), não absorção. Dois valores conforme o ataque: <strong>CaC</strong> (corpo a corpo) e <strong>Projétil</strong>. A <strong>Penalidade</strong> incide nas outras ações físicas (esquiva etc.), nunca no bloqueio do próprio escudo.</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Escudo</th><th class="c">Bloqueio</th><th>Notas</th></tr></thead>
-      <tbody>{escudos.filter((s) => s.bloqueio > 0).map((s) => <tr><th>{s.nome}</th><td class="c">+{s.bloqueio}</td><td class="muted">{s.notas}</td></tr>)}</tbody>
+      <thead><tr><th>Escudo</th><th class="c">Bloq. CaC</th><th class="c">Bloq. Projétil</th><th class="c">Penalidade</th><th>Notas</th></tr></thead>
+      <tbody>{escudos.filter((s) => s.bloqCaC > 0 || s.bloqProjetil > 0).map((s) => <tr><th>{s.nome}</th><td class="c">+{s.bloqCaC}</td><td class="c">+{s.bloqProjetil}</td><td class="c">{s.penalidade ? `−${s.penalidade}` : '0'}</td><td class="muted">{s.notas}</td></tr>)}</tbody>
     </table>
   </div>
 </Base>

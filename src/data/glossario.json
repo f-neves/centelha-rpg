@@ -50,24 +50,32 @@
       "absorção",
       "redução de dano"
     ],
-    "definicao": "Absorção de dano: Vigor contra Impacto, metade do Vigor contra letal; a armadura soma mais."
+    "definicao": "Absorção de dano. A armadura tem três Soaks — Impacto, Corte e Perfuração (Projétil e Perf. Concentrada usam o de Perfuração). Soak total = natural (Vigor no Impacto, metade do Vigor nos letais) + Centelha + a absorção da armadura na categoria."
+  },
+  {
+    "id": "modos-de-dano",
+    "termo": "Modos de dano",
+    "aliases": [
+      "corte",
+      "projétil",
+      "perfuração concentrada",
+      "perf. concentrada",
+      "impacto",
+      "modo de ataque"
+    ],
+    "definicao": "Os quatro modos de um golpe: Corte, Projétil, Perf. Concentrada e Impacto. Cada arma tem um modo principal (sem custo) e, às vezes, secundários (−2 acerto e −2 dano). A armadura tem três Soaks: Impacto, Corte e Perfuração (Projétil e Perf. Concentrada usam o de Perfuração)."
   },
   {
     "id": "penetracao",
     "termo": "Penetração",
     "aliases": [
       "pen",
-      "perfuração"
+      "nível de perfuração",
+      "resistência à perfuração",
+      "r.perf",
+      "gate"
     ],
-    "definicao": "Atributo de armas perfurantes; se não vencer a Proteção da armadura, o dano perfurante é anulado."
-  },
-  {
-    "id": "ruptura",
-    "termo": "Ruptura",
-    "aliases": [
-      "crush"
-    ],
-    "definicao": "Tag (Crush) que ignora todo o Soak de impacto da armadura — a resposta às placas."
+    "definicao": "Nível de Perfuração da arma (0–5) vs Resistência à Perfuração da armadura. Só vale para Projétil e Perf. Concentrada: se a Perfuração da arma for menor que a Resistência, o golpe resvala (dano 0); se for igual ou maior, o gate abre e rola-se o dano menos a absorção. Corte e Impacto não passam pelo gate."
   },
   {
     "id": "defesa",

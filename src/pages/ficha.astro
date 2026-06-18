@@ -62,8 +62,11 @@ import RoladorDados from '../components/RoladorDados.astro';
   <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Soak)</small></h2>
   <div class="equip-row">
     <label>Arma <select id="eq-arma"></select></label>
-    <label>Armadura <select id="eq-armadura"></select></label>
     <label>Escudo <select id="eq-escudo"></select></label>
+  </div>
+  <div class="equip-arm">
+    <span class="equip-lbl">Armaduras <small>(empilháveis — vale o maior Soak de cada modo; penalidades somam)</small></span>
+    <div id="eq-armaduras" class="arm-checks"></div>
   </div>
   <div class="panel" id="combate"></div>
 
@@ -72,7 +75,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 </Base>
 
 <script>
-  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, regras } from '../lib/calc';
+  import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, SOAK_CATS, regras } from '../lib/calc';
   import ATTRS_D from '../data/atributos.json';
   import HAB_D from '../data/habilidades.json';
   import VIRT_D from '../data/virtudes.json';
@@ -163,7 +166,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, tech: {}, arte: {}, budget: 1200, modo: 'criacao', equip: { arma: 'desarmado', armadura: 'nenhuma', escudo: 'nenhum' } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, tech: {}, arte: {}, budget: 1200, modo: 'criacao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -172,7 +175,9 @@ import RoladorDados from '../components/RoladorDados.astro';
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
     S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1200; S.modo ??= 'criacao'; S.derivCol ??= true;
-    S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.armadura ??= 'nenhuma'; S.equip.escudo ??= 'nenhum';
+    S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.escudo ??= 'nenhum';
+    if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
+    delete S.equip.armadura;
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] ??= 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
@@ -266,15 +271,20 @@ import RoladorDados from '../components/RoladorDados.astro';
     const virt = { compaixao: VI('compaixao'), conviccao: VI('conviccao'), temperanca: VI('temperanca'), valor: VI('valor') };
     const C = S.centelha, W = S.willpower, integ = SK('integridade');
     const r = (l: string, v: any, fm: string, extra = false) => `<div class="derv${extra ? ' derv-extra' : ''}"><span class="dl">${l}<span class="fm">${fm}</span></span><span class="dv">${v}</span></div>`;
-    const arm = ARMADURA[S.equip?.armadura || 'nenhuma'] || { esquiva: 0, soak: 0, protecao: 0 };
-    const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), especialidade: SP('esquiva'), centelha: C }) + (arm.esquiva || 0);
-    const soakI = A('vigor') + (arm.soak || 0), soakL = Math.floor(A('vigor') / 2) + (arm.soak || 0);
+    const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
+    const armSt = empilharArmaduras(pecas);
+    const escD = ESCUDO[S.equip?.escudo || 'nenhum'] || { penalidade: 0 };
+    const penFisica = (armSt.penalidade || 0) + (escD.penalidade || 0);
+    const cs = (regras.dano as any)?.centelhaNoSoak ?? 0;
+    const vig = A('vigor');
+    const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), especialidade: SP('esquiva'), centelha: C }) - penFisica;
+    const soakStr = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0)).join(' / ');
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
-      r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + esp + Centelha + armadura') +
+      r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + esp + Centelha − penalidade') +
       r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} × 2) + Vontade + Centelha×2`) +
       r('Defesa Social', defesaSocial({ compostura: A('compostura'), temperanca: VI('temperanca'), centelha: C }), '(Compostura + Temperança + Centelha) × 2') +
-      r('Soak (Imp/Letal)', `${soakI} / ${soakL}${arm.protecao ? ` · Prot ${arm.protecao}` : ''}`, 'Vigor (½ no letal) + armadura') +
+      r('Soak Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor no Impacto, ½ Vigor em Corte/Perf + Centelha + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade', true) +
       r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick', true) +
@@ -293,7 +303,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   }
   function renderCombate() {
     const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];
-    const esc = ESCUDO[S.equip?.escudo || 'nenhum'] || { bloqueio: 0 };
+    const esc = ESCUDO[S.equip?.escudo || 'nenhum'] || { bloqCaC: 0, bloqProjetil: 0, penalidade: 0 };
     const C = S.centelha || 0, forca = S.attrs.forca || 0;
     const soma = (S.attrs[w.atrib] || 0) + (S.skills[w.pericia] || S.skills2[w.pericia] || 0);
     const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
@@ -301,18 +311,33 @@ import RoladorDados from '../components/RoladorDados.astro';
     const pool = `${dados}d6${bonus ? '+2' : ''}${flat ? ` +${flat}` : ''}`;
     const dist = w.tags.includes('distância');
     const fm = regras.derivados.danoForca; const forcaAp = dist ? 0 : forca * (w.maos === 2 ? fm.duasMaos : fm.umaMao);
-    const dano = `${w.dado}d6${forcaAp ? ` +${forcaAp}` : ''} ${w.tipoDano}${w.pen ? ` · Pen ${w.pen}` : ''}`;
-    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, especialidade: S.spec[w.pericia] || S.spec2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqueio || 0);
+    const danoBase = `${w.dado}d6${forcaAp ? ` +${forcaAp}` : ''}`;
+    const modos = (w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[];
+    const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (perf. ${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
+    const temSec = modos.some((m) => !m.principal);
+    const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
+    const armorPen = empilharArmaduras(pecas).penalidade || 0;
+    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, especialidade: S.spec[w.pericia] || S.spec2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqCaC || 0) - armorPen;
     el('combate').innerHTML =
-      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${pool}</b> · dano <b>${dano}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
+      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${pool}</b> · dano base <b>${danoBase}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
+      `<div class="cmb"><b>Modos</b> — ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −2 dano)</span>' : ''}</div>` +
       `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego (${(w.folego ?? 0) * 2} → ${(w.folego ?? 0) * 4}…) e +1 Speed.</div>` +
-      (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(${w.pericia === 'escudos' ? 'Escudos' : w.nome} + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqueio ? ` + escudo ${esc.bloqueio}` : ''})</span></div>`) +
+      (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(${w.pericia === 'escudos' ? 'Escudos' : w.nome} + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqCaC ? ` + escudo ${esc.bloqCaC}` : ''}${armorPen ? ` − armadura ${armorPen}` : ''})</span></div>`) +
+      (esc.bloqProjetil ? `<div class="cmb muted">Escudo vs projétil: +${esc.bloqProjetil} à Defesa contra ataques à distância${esc.penalidade ? ` · −${esc.penalidade} nas outras ações físicas (não no próprio bloqueio)` : ''}.</div>` : '') +
       (w.notas ? `<div class="cmb muted">${w.notas}</div>` : '') +
-      (S.equip.armadura !== 'nenhuma' && ARMADURA[S.equip.armadura]?.notas ? `<div class="cmb muted">Armadura: ${ARMADURA[S.equip.armadura].notas}</div>` : '');
+      (pecas.length ? `<div class="cmb muted">Armadura: ${pecas.map((p: any) => p.nome).join(' + ')}.</div>` : '');
   }
   function populateEquip() {
     const fill = (id: string, list: any[], sel: string) => { const s = el(id) as HTMLSelectElement; s.innerHTML = list.map((o) => `<option value="${o.id}">${o.nome}</option>`).join(''); s.value = sel; };
-    fill('eq-arma', ARMA_D as any[], S.equip.arma); fill('eq-armadura', ARMADURA_D as any[], S.equip.armadura); fill('eq-escudo', ESCUDO_D as any[], S.equip.escudo);
+    fill('eq-arma', ARMA_D as any[], S.equip.arma); fill('eq-escudo', ESCUDO_D as any[], S.equip.escudo);
+    const box = el('eq-armaduras');
+    box.innerHTML = (ARMADURA_D as any[]).filter((a) => a.id !== 'nenhuma')
+      .map((a) => `<label class="arm-chk"><input type="checkbox" data-arm="${a.id}"${(S.equip.armaduras || []).includes(a.id) ? ' checked' : ''}/> ${a.nome}</label>`).join('');
+    box.querySelectorAll('input[data-arm]').forEach((cb) => cb.addEventListener('change', (e) => {
+      const t = e.target as HTMLInputElement; const set = new Set<string>(S.equip.armaduras || []);
+      if (t.checked) set.add(t.dataset.arm!); else set.delete(t.dataset.arm!);
+      S.equip.armaduras = [...set]; renderDerived(); renderCombate(); save();
+    }));
   }
   function recompute() {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
@@ -446,7 +471,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   el('deriv-toggle').addEventListener('click', () => { S.derivCol = !S.derivCol; applyDerivCol(); save(); });
   let camAllOpen = false;
   el('cam-all').addEventListener('click', () => { camAllOpen = !camAllOpen; CAM_ORDER.forEach((c) => (OPEN.cam[c] = camAllOpen)); renderCaminhos(); el('cam-all').textContent = camAllOpen ? 'Recolher todos' : 'Expandir todos'; });
-  (['eq-arma', 'eq-armadura', 'eq-escudo'] as const).forEach((id) => el(id).addEventListener('change', (e) => { S.equip[id.slice(3)] = (e.target as HTMLSelectElement).value; renderDerived(); renderCombate(); save(); }));
+  (['eq-arma', 'eq-escudo'] as const).forEach((id) => el(id).addEventListener('change', (e) => { S.equip[id.slice(3)] = (e.target as HTMLSelectElement).value; renderDerived(); renderCombate(); save(); }));
   el('f-reset').addEventListener('click', () => { if (confirm('Limpar a ficha?')) { localStorage.removeItem(KEY); location.hash = ''; fresh(); renderAll(); } });
   el('f-link').addEventListener('click', () => {
     const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
@@ -544,6 +569,11 @@ import RoladorDados from '../components/RoladorDados.astro';
   .equip-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: .2rem 0 .8rem; }
   .equip-row label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .74rem; color: var(--ink-soft); gap: .2rem; }
   .equip-row select { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: .95rem; min-width: 10rem; }
+  .equip-arm { margin: 0 0 .8rem; }
+  .equip-lbl { display: block; font-family: 'Cinzel'; font-size: .74rem; color: var(--ink-soft); margin-bottom: .35rem; }
+  .equip-lbl small { font-weight: normal; }
+  .arm-checks { display: flex; flex-wrap: wrap; gap: .3rem .9rem; }
+  .arm-chk { display: inline-flex; align-items: center; gap: .3rem; font-family: 'EB Garamond'; font-size: .95rem; color: var(--ink); }
   #combate .cmb { padding: .15rem 0; font-size: .95rem; } #combate .cmb b { color: var(--accent-strong); }
 
   /* impressão: só a ficha, sem o chrome do site */

@@ -1,6 +1,10 @@
 [
-  { "id": "nenhum", "nome": "Nenhum", "bloqueio": 0, "notas": "Mãos livres." },
-  { "id": "broquel", "nome": "Broquel", "bloqueio": 1, "notas": "Leve; apara e bloqueia projéteis pequenos." },
-  { "id": "escudo", "nome": "Escudo", "bloqueio": 2, "notas": "O padrão; bloqueia projéteis." },
-  { "id": "paves", "nome": "Pavês", "bloqueio": 3, "notas": "Parede móvel; −1 em ataques, pesado." }
+  { "id": "nenhum", "nome": "Nenhum", "bloqCaC": 0, "bloqProjetil": 0, "penalidade": 0, "acesso": 10, "notas": "Mãos livres." },
+  { "id": "broquel", "nome": "Broquel (buckler)", "bloqCaC": 3, "bloqProjetil": 1, "penalidade": 0, "acesso": 9, "notas": "Minúsculo, na mão longe do corpo. Todo o valor vem do uso ativo: desviar o golpe e proteger a mão da espada. Péssimo contra flecha. Barato e onipresente." },
+  { "id": "targe", "nome": "Targe / rodela", "bloqCaC": 3, "bloqProjetil": 2, "penalidade": 1, "acesso": 7, "notas": "Pequeno, preso ao antebraço, às vezes com espigão. Bom duelista, cobertura limitada." },
+  { "id": "redondo", "nome": "Escudo redondo", "bloqCaC": 4, "bloqProjetil": 3, "penalidade": 1, "acesso": 8, "notas": "Médio, versátil, usado de forma agressiva (soco com o umbo, prende a arma inimiga). O melhor todo-terreno barato." },
+  { "id": "heater", "nome": "Heater (escudo de cavaleiro)", "bloqCaC": 4, "bloqProjetil": 4, "penalidade": 2, "acesso": 6, "notas": "Preso por alças, cobre o tronco. Cobertura passiva a pé e a cavalo." },
+  { "id": "kite", "nome": "Kite normando", "bloqCaC": 4, "bloqProjetil": 4, "penalidade": 2, "acesso": 5, "notas": "Grande, afunilado para cobrir a perna na montaria. Muita cobertura, pesado." },
+  { "id": "scutum", "nome": "Scutum romano", "bloqCaC": 4, "bloqProjetil": 4, "penalidade": 3, "acesso": 3, "notas": "Retangular curvo, de madeira laminada. Cobre o corpo e multiplica em formação (testudo). Pesado para uso individual." },
+  { "id": "paves", "nome": "Pavês (pavise)", "bloqCaC": 3, "bloqProjetil": 5, "penalidade": 4, "acesso": 5, "notas": "Parede portátil do besteiro. Plantado, é cobertura quase total contra projétil. Não serve para duelar." }
 ]

@@ -290,6 +290,33 @@
       "saltoHorizontalCorrendo": { "destreza": 1.5, "atletismo": 1.5, "centelha": 1 }
     }
   },
+  "dano": {
+    "nota": "Quatro MODOS de ataque (Corte, Projétil, Perf. Concentrada, Impacto). A arma escolhe o modo por golpe. A armadura tem TRÊS Soaks: Impacto, Corte e Perfuração — tanto Projétil quanto Perf. Concentrada usam o Soak de Perfuração. O Soak total de um golpe = Soak natural do modo + Centelha + a absorção da armadura na categoria correspondente.",
+    "modos": [
+      { "id": "corte", "nome": "Corte", "natural": "metadeVigor", "soakArmadura": "corte", "gate": false },
+      { "id": "projetil", "nome": "Projétil", "natural": "metadeVigor", "soakArmadura": "perfuracao", "gate": true },
+      { "id": "perfConc", "nome": "Perf. Concentrada", "natural": "metadeVigor", "soakArmadura": "perfuracao", "gate": true },
+      { "id": "impacto", "nome": "Impacto", "natural": "vigor", "soakArmadura": "impacto", "gate": false }
+    ],
+    "soakNatural": { "impacto": "vigor", "corte": "metadeVigor", "perfuracao": "metadeVigor" },
+    "centelhaNoSoak": 1,
+    "gatePerfuracao": {
+      "nota": "Só para os modos Projétil e Perf. Concentrada. Se o Nível de Perfuração da arma for MENOR que a Resistência à Perfuração (Nível) da armadura, o golpe RESVALA (dano 0, nem rola). Se for IGUAL OU MAIOR, o gate abre: rola o dano e subtrai o Soak de Perfuração. Corte e Impacto nunca passam pelo gate.",
+      "modos": ["projetil", "perfConc"]
+    },
+    "modoSecundario": {
+      "nota": "Usar um modo NÃO-principal da arma é mais difícil e sai mais fraco: −2 ao acerto E −2 ao dano. Armas com vários modos principais (ex.: Alabarda) não sofrem nada ao alternar entre eles.",
+      "acerto": -2,
+      "dano": -2
+    },
+    "empilhamento": "Soak de cada categoria (Impacto/Corte/Perfuração) = MAIOR valor entre as peças; o Soak natural soma por cima. Resistência à Perfuração (Nível) = sempre o MAIOR, NUNCA soma (vale também para Proezas de pele dura). Penalidade = SOMA das peças.",
+    "penalidade": {
+      "nota": "Valor único por armadura (geral: leve −1, média −2, pesada −4; pode variar por peça). Incide em qualquer ação física que não seja ataque, incluindo Esquiva e Bloqueio. Para FURTIVIDADE e atividades delicadas, a Penalidade é DOBRADA.",
+      "leve": 1, "media": 2, "pesada": 4, "furtividadeDobra": true
+    },
+    "armaduraMult": 1.5,
+    "perfuracaoSoakNota": "O Soak de Perfuração da armadura = metade do menor entre os antigos Projétil e Perf. Concentrada (arredonda p/ baixo): ao penetrar (gate aberto), a perfuração encontra pouca proteção. O Nível (R.Perf) é que mede a dificuldade de furar."
+  },
   "combateTatico": {
     "nota": "Modificadores situacionais aplicados ao valor PASSIVO da Defesa do alvo (+ = mais difícil de acertar, − = mais fácil). Cada ±1 ≈ ∓6% de chance perto do baseline (~42%).",
     "modificadorCap": 6,

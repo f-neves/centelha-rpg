@@ -15,9 +15,10 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 2,
-      "letal": 1,
-      "protecao": 0
+      "corte": 1,
+      "perfuracao": 1
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 2,
@@ -55,13 +56,14 @@
       "humano"
     ],
     "pv": 34,
-    "defesa": 10,
+    "defesa": 9,
     "defesaMental": 13,
     "soak": {
-      "impacto": 5,
-      "letal": 3,
-      "protecao": 1
+      "impacto": 6,
+      "corte": 7,
+      "perfuracao": 2
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 3,
@@ -99,13 +101,14 @@
       "humano"
     ],
     "pv": 34,
-    "defesa": 9,
+    "defesa": 8,
     "defesaMental": 15,
     "soak": {
-      "impacto": 7,
-      "letal": 5,
-      "protecao": 2
+      "impacto": 4,
+      "corte": 13,
+      "perfuracao": 3
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 3,
@@ -143,13 +146,14 @@
       "humano"
     ],
     "pv": 34,
-    "defesa": 13,
+    "defesa": 12,
     "defesaMental": 16,
     "soak": {
-      "impacto": 7,
-      "letal": 5,
-      "protecao": 2
+      "impacto": 4,
+      "corte": 13,
+      "perfuracao": 3
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 3,
@@ -187,13 +191,14 @@
       "humano"
     ],
     "pv": 31,
-    "defesa": 12,
+    "defesa": 11,
     "defesaMental": 13,
     "soak": {
-      "impacto": 4,
-      "letal": 3,
-      "protecao": 1
+      "impacto": 5,
+      "corte": 7,
+      "perfuracao": 2
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 2,
@@ -210,13 +215,13 @@
       {
         "nome": "Arco",
         "pool": "4d6 +1",
-        "dano": "2d6 perfurante · Pen 2",
+        "dano": "2d6 projetil · perf. 1",
         "ticks": 6
       }
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Perfurante Pen 2 (zera contra malha/placa). Mira (+2) quando pode.",
+    "notas": "Projétil perf. 1: fura couro e malha, mas resvala na placa (Resist. 2). Mira (+2) quando pode.",
     "pendente": false
   },
   {
@@ -231,13 +236,14 @@
       "humano"
     ],
     "pv": 37,
-    "defesa": 6,
+    "defesa": 5,
     "defesaMental": 13,
     "soak": {
-      "impacto": 6,
-      "letal": 4,
-      "protecao": 1
+      "impacto": 7,
+      "corte": 8,
+      "perfuracao": 3
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 2",
     "atributos": {
       "forca": 5,
@@ -256,7 +262,7 @@
         "pool": "4d6",
         "dano": "3d6 +10 impacto",
         "ticks": 7,
-        "notas": "Ruptura: ignora Soak de armadura"
+        "notas": "Impacto: a armadura quase não absorve (anti-placa)"
       }
     ],
     "tecnicas": [],
@@ -276,13 +282,14 @@
       "humano"
     ],
     "pv": 37,
-    "defesa": 12,
+    "defesa": 10,
     "defesaMental": 19,
     "soak": {
-      "impacto": 10,
-      "letal": 8,
-      "protecao": 3
+      "impacto": 12,
+      "corte": 17,
+      "perfuracao": 8
     },
+    "resistPerf": 3,
     "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 3,
@@ -321,13 +328,14 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 20,
+    "defesa": 19,
     "defesaMental": 16,
     "soak": {
-      "impacto": 5,
-      "letal": 3,
-      "protecao": 1
+      "impacto": 7,
+      "corte": 8,
+      "perfuracao": 3
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 3,
@@ -342,11 +350,11 @@
     },
     "ataques": [
       {
-        "nome": "Adaga (Ágil, Perf. 2)",
+        "nome": "Adaga (Ágil)",
         "pool": "4d6+2 +4",
-        "dano": "1d6 +3 perfurante · Pen 2",
+        "dano": "1d6 +3 perfConc · perf. 0",
         "ticks": 5,
-        "notas": "Ágil: usa Destreza no dano"
+        "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
       }
     ],
     "tecnicas": [
@@ -372,13 +380,14 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 20,
+    "defesa": 19,
     "defesaMental": 18,
     "soak": {
-      "impacto": 5,
-      "letal": 3,
-      "protecao": 1
+      "impacto": 7,
+      "corte": 8,
+      "perfuracao": 3
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 3,
@@ -393,9 +402,9 @@
     },
     "ataques": [
       {
-        "nome": "Florete (Ágil, Perf. 1)",
+        "nome": "Florete (Ágil)",
         "pool": "5d6 +4",
-        "dano": "1d6 +3 perfurante · Pen 1",
+        "dano": "1d6 +3 perfConc · perf. 1",
         "ticks": 5
       }
     ],
@@ -426,10 +435,11 @@
     "defesa": 12,
     "defesaMental": 18,
     "soak": {
-      "impacto": 2,
-      "letal": 1,
-      "protecao": 0
+      "impacto": 3,
+      "corte": 2,
+      "perfuracao": 2
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 2,
@@ -474,13 +484,14 @@
       "centelha"
     ],
     "pv": 40,
-    "defesa": 12,
+    "defesa": 10,
     "defesaMental": 21,
     "soak": {
-      "impacto": 11,
-      "letal": 8,
-      "protecao": 3
+      "impacto": 14,
+      "corte": 18,
+      "perfuracao": 9
     },
+    "resistPerf": 3,
     "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 4,
@@ -507,7 +518,7 @@
       "tensionar"
     ],
     "artes": [],
-    "notas": "Placa + Pele de Pedra: Soak altíssimo. Use Ruptura (Crush) ou dano pesado.",
+    "notas": "Placa + Pele de Pedra: Soak altíssimo contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.",
     "pendente": false
   },
   {
@@ -523,13 +534,14 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 21,
+    "defesa": 20,
     "defesaMental": 24,
     "soak": {
-      "impacto": 8,
-      "letal": 6,
-      "protecao": 2
+      "impacto": 7,
+      "corte": 16,
+      "perfuracao": 6
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 4,
@@ -576,9 +588,10 @@
     "defesaMental": 10,
     "soak": {
       "impacto": 3,
-      "letal": 1,
-      "protecao": 0
+      "corte": 1,
+      "perfuracao": 1
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 3,
@@ -595,7 +608,7 @@
       {
         "nome": "Mordida",
         "pool": "3d6 +1",
-        "dano": "1d6 +6 perfurante",
+        "dano": "1d6 +6 perfConc · perf. 1",
         "ticks": 5,
         "notas": "Em matilha: ataca pelo flanco (−2 na Defesa do alvo)"
       }
@@ -620,10 +633,11 @@
     "defesa": 4,
     "defesaMental": 11,
     "soak": {
-      "impacto": 6,
-      "letal": 3,
-      "protecao": 0
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 5,
@@ -663,13 +677,14 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 14,
+    "defesa": 12,
     "defesaMental": 21,
     "soak": {
-      "impacto": 10,
-      "letal": 8,
-      "protecao": 3
+      "impacto": 13,
+      "corte": 18,
+      "perfuracao": 9
     },
+    "resistPerf": 3,
     "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 3,
@@ -716,10 +731,11 @@
     "defesa": 12,
     "defesaMental": 15,
     "soak": {
-      "impacto": 3,
-      "letal": 1,
-      "protecao": 0
+      "impacto": 4,
+      "corte": 2,
+      "perfuracao": 2
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 2,
@@ -763,13 +779,14 @@
       "morto-vivo"
     ],
     "pv": 34,
-    "defesa": 10,
+    "defesa": 9,
     "defesaMental": 15,
     "soak": {
-      "impacto": 5,
-      "letal": 3,
-      "protecao": 1
+      "impacto": 6,
+      "corte": 7,
+      "perfuracao": 2
     },
+    "resistPerf": 1,
     "iniciativa": "1d6 + 2",
     "atributos": {
       "forca": 3,
@@ -811,10 +828,11 @@
     "defesa": 18,
     "defesaMental": 18,
     "soak": {
-      "impacto": 3,
-      "letal": 1,
-      "protecao": 0
+      "impacto": 4,
+      "corte": 2,
+      "perfuracao": 2
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 2,
@@ -857,10 +875,11 @@
     "defesa": 4,
     "defesaMental": 11,
     "soak": {
-      "impacto": 8,
-      "letal": 5,
-      "protecao": 0
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 2",
     "atributos": {
       "forca": 6,
@@ -879,7 +898,7 @@
         "pool": "4d6+2",
         "dano": "3d6 +12 impacto",
         "ticks": 7,
-        "notas": "Ruptura; derruba o alvo"
+        "notas": "Impacto; derruba o alvo"
       }
     ],
     "tecnicas": [],
@@ -903,9 +922,10 @@
     "defesaMental": 8,
     "soak": {
       "impacto": 3,
-      "letal": 1,
-      "protecao": 0
+      "corte": 1,
+      "perfuracao": 1
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 3,
@@ -922,7 +942,7 @@
       {
         "nome": "Picada peçonhenta",
         "pool": "3d6+2 +1",
-        "dano": "1d6 +6 perfurante · Pen 1",
+        "dano": "1d6 +6 perfConc · perf. 1",
         "ticks": 5,
         "notas": "Veneno (efeito de Corpo): resista com Vigor + Convicção ou sofra −2 em ações por uma cena"
       }
@@ -949,10 +969,11 @@
     "defesa": 16,
     "defesaMental": 22,
     "soak": {
-      "impacto": 3,
-      "letal": 1,
-      "protecao": 0
+      "impacto": 5,
+      "corte": 3,
+      "perfuracao": 3
     },
+    "resistPerf": 0,
     "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 2,
