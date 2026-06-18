@@ -290,12 +290,16 @@ import RoladorDados from '../components/RoladorDados.astro';
       r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick', true) +
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão', true) +
       (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), atletismo: SK('atletismo'), centelha: C });
-        return r('Deslocamento livre', `${dz.normal} m`, '(Des + Atletismo) ÷ 2 · distância na ação', true) +
-          r('Vel. de Arranque', `${dz.arranque} m/s`, '(Força + Atletismo) ÷ 2 + Destreza · Ticks 1–3', true) +
-          r('Vel. de Corrida', `${dz.corrida} m/s`, 'Destreza × 1,5 + Atletismo · Tick 4+', true) +
-          r('Salto Vertical', `${dz.saltoVertical} cm`, 'Força×20 + Atletismo×10 + Des×4 + Centelha×50', true) +
-          r('Salto Horiz. Parado', `${dz.saltoHorizontalParado} m`, '(Força + Atletismo + Centelha) ÷ 2', true) +
-          r('Salto Horiz. Correndo', `${dz.saltoHorizontalCorrendo} m`, 'Vel. de Corrida + Atletismo ÷ 2 + Centelha', true); })();
+        const mp = (v: number) => Math.max(0, v - penFisica);
+        const cmp = (v: number) => Math.max(0, v - penFisica * 10);
+        const ps = penFisica ? ` − penalidade ${penFisica}` : '';
+        const psv = penFisica ? ` − penalidade×10` : '';
+        return r('Deslocamento livre', `${mp(dz.normal)} m`, `(Des + Atletismo) ÷ 2 · distância na ação${ps}`, true) +
+          r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `(Força + Atletismo) ÷ 2 + Destreza · Ticks 1–3${ps}`, true) +
+          r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `Destreza × 1,5 + Atletismo · Tick 4+${ps}`, true) +
+          r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força×20 + Atletismo×10 + Des×4 + Centelha×50${psv}`, true) +
+          r('Salto Horiz. Parado', `${mp(dz.saltoHorizontalParado)} m`, `(Força + Atletismo + Centelha) ÷ 2${ps}`, true) +
+          r('Salto Horiz. Correndo', `${mp(dz.saltoHorizontalCorrendo)} m`, `Vel. de Corrida + Atletismo ÷ 2 + Centelha${ps}`, true); })();
   }
   function applyDerivCol() {
     el('derived').classList.toggle('collapsed', !!S.derivCol);

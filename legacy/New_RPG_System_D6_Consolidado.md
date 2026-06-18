@@ -1,4 +1,4 @@
-# New RPG System D6 — Regras Consolidadas (v0.3)
+# Centelha — Regras Consolidadas (v0.3)
 
 > **Status:** rascunho de trabalho. Consolida os dois guias originais, resolve inconsistências e incorpora as decisões de design. 🔧 = **proposta minha, ajustável**. 🚧 = **pilar a desenvolver**.
 

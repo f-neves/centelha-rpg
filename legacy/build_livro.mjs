@@ -1,4 +1,4 @@
-// build_livro.mjs — gera livro.html (New RPG System D6) com design teal/pergaminho/2-colunas/Paged.js
+// build_livro.mjs — gera livro.html (Centelha) com design teal/pergaminho/2-colunas/Paged.js
 // Uso: node build_livro.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -719,7 +719,7 @@ const cover = `
 <section class="cover">
   <span class="corner c-tl">${CORNER}</span><span class="corner c-tr">${CORNER}</span><span class="corner c-bl">${CORNER}</span><span class="corner c-br">${CORNER}</span>
   <div class="kicker">Sistema de Interpretação</div>
-  <h1>New RPG System<span class="d6">D6</span></h1>
+  <h1>Centelha<span class="d6">D6</span></h1>
   <div class="dline"><span>❖</span></div>
   <div class="sub">Do mortal ao semideus, um dado de cada vez</div>
   <p class="tagline">Um sistema de pool de dados que equilibra realismo tático e agilidade cinematográfica — onde a perícia, a vontade e a centelha de poder decidem o destino.</p>
@@ -755,7 +755,7 @@ const html = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>New RPG System D6 — Livro de Regras</title>
+<title>Centelha — Livro de Regras</title>
 <style>${CSS}</style>
 ${STRINGSET}
 </head>
