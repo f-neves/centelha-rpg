@@ -290,10 +290,11 @@ import RoladorDados from '../components/RoladorDados.astro';
       r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick', true) +
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão', true) +
       (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), atletismo: SK('atletismo'), centelha: C });
-        const mp = (v: number) => Math.max(0, v - penFisica);
-        const cmp = (v: number) => Math.max(0, v - penFisica * 10);
-        const ps = penFisica ? ` − penalidade ${penFisica}` : '';
-        const psv = penFisica ? ` − penalidade×10` : '';
+        const penMov = Math.floor(penFisica / 2);
+        const mp = (v: number) => Math.max(0, v - penMov);
+        const cmp = (v: number) => Math.max(0, v - penMov * 10);
+        const ps = penMov ? ` − ½ penalidade (${penMov})` : '';
+        const psv = penMov ? ` − ½ penalidade×10` : '';
         return r('Deslocamento livre', `${mp(dz.normal)} m`, `(Des + Atletismo) ÷ 2 · distância na ação${ps}`, true) +
           r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `(Força + Atletismo) ÷ 2 + Destreza · Ticks 1–3${ps}`, true) +
           r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `Destreza × 1,5 + Atletismo · Tick 4+${ps}`, true) +
