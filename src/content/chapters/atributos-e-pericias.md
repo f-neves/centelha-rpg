@@ -2,10 +2,10 @@
 ordem: 2
 numeral: "II"
 titulo: "Atributos & Habilidades"
-resumo: "Os nove Atributos e a Aparência, as 28 Habilidades primárias, as secundárias, a Especialidade e os Stunts."
+resumo: "Os nove Atributos, as 28 Habilidades primárias, as secundárias, a Especialidade e os Stunts."
 ---
 
-Quando o resultado de uma ação é incerto, o jogo a resolve somando um **Atributo** (o talento bruto que você *é*) a uma **Habilidade** (o treino que você *aprendeu*) e rolando esse tanto de dados — o passo a passo da rolagem está no [Coração do Sistema](/regras/coracao-do-sistema). Este capítulo apresenta as peças: os **nove Atributos** (mais a **Aparência**), as **28 Habilidades primárias**, as Habilidades secundárias, a Especialidade e os Stunts.
+Quando o resultado de uma ação é incerto, o jogo a resolve somando um **Atributo** (o talento bruto que você *é*) a uma **Habilidade** (o treino que você *aprendeu*) e rolando esse tanto de dados — o passo a passo da rolagem está no [Coração do Sistema](/regras/coracao-do-sistema). Este capítulo apresenta as peças: os **nove Atributos** (a **Aparência** tem [capítulo próprio](/regras/aparencia-virtudes-vontade)), as **28 Habilidades primárias**, as Habilidades secundárias, a Especialidade e os Stunts.
 
 ## Os Nove Atributos
 
@@ -59,23 +59,7 @@ A faixa **1–5 é a régua mortal**: o **5** é o ápice que um ser humano já 
 
 ## A Aparência
 
-A **Aparência** não é um Atributo — é um traço próprio, de **1 a 10** (como a Força de Vontade), que mede o impacto físico que você causa nos outros. Importa porque entra **direto nas jogadas sociais**: some um modificador (a tabela abaixo) sempre que a aparência for relevante.
-
-E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele — o belo tem **−** ao intimidar, o feio tem **+**; e quem é marcante demais sofre ao tentar passar despercebido. A **Compostura** define o quanto dessa aparência você consegue mascarar.
-
-| Nível | | Modificador |
-|:---:|---|:---:|
-| 1 | Deformado | **−4** |
-| 2 | Muito feio | **−2** |
-| 3 | Feio | **−1** |
-| 4–5 | Comum | 0 |
-| 6 | Comum (no teto) | 0* |
-| 7 | Bonito | **+1** |
-| 8 | Beleza | **+2** |
-| 9 | Beleza universal | **+3** |
-| 10 | Extraordinário | **+4** |
-
-<p class="muted">O nível 1 é o piso grátis; o valor importa mesmo nos extremos. Repare na simetria: a deformidade que repele na sedução (−4) é a mesma que apavora na intimidação (+4).</p>
+A **Aparência** não é um Atributo — é um traço próprio (de **1 a 10**) que mede o impacto físico que você causa nos outros e pesa, de forma direcional, nas jogadas sociais. Ela ganhou capítulo próprio: veja [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).
 
 ## As Vinte e Oito Habilidades Primárias
 

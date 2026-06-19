@@ -1,6 +1,6 @@
 ---
-ordem: 7
-numeral: "VII"
+ordem: 8
+numeral: "VIII"
 titulo: "Vida, Ferimentos & Cura"
 resumo: "Pontos de Vida, limiares de ferimento, nocaute, morte e recuperação."
 ---

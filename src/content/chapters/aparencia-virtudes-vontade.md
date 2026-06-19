@@ -1,11 +1,31 @@
 ---
 ordem: 3
 numeral: "III"
-titulo: "Virtudes, Vontade & Fôlego"
-resumo: "A alma, a determinação e o corpo — o que move o herói, o que ele queima para transcender e o que o sustenta na luta."
+titulo: "Aparência, Virtudes & Vontade"
+resumo: "A presença que você causa, a alma que te move e a determinação que você queima para forçar o destino."
 ---
 
-Atributos e Habilidades dizem o que o corpo e a mente **conseguem fazer**. Mas o herói também tem uma vida interior e um corpo que cansa: as quatro **Virtudes** que movem sua alma, a **Força de Vontade** que ele queima para forçar o destino, e o **Fôlego** que o sustenta enquanto luta. (O que o eleva acima do mortal — a **Centelha** — é o próximo capítulo.)
+Atributos e Habilidades dizem o que o corpo e a mente **conseguem fazer**. Este capítulo trata do resto da pessoa: a **Aparência** que ela causa nos outros, as quatro **Virtudes** que movem sua alma e a **Força de Vontade** que ela queima para transcender o momento.
+
+## A Aparência
+
+A **Aparência** não é um Atributo — é um traço próprio, de **1 a 10** (como a Força de Vontade), que mede o impacto físico que você causa nos outros. Importa porque entra **direto nas jogadas sociais**: some um modificador (a tabela abaixo) sempre que a aparência for relevante.
+
+E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele — o belo tem **−** ao intimidar, o feio tem **+**; e quem é marcante demais sofre ao tentar passar despercebido. A **Compostura** define o quanto dessa aparência você consegue mascarar.
+
+| Nível | | Modificador |
+|:---:|---|:---:|
+| 1 | Deformado | **−4** |
+| 2 | Muito feio | **−2** |
+| 3 | Feio | **−1** |
+| 4–5 | Comum | 0 |
+| 6 | Comum (no teto) | 0* |
+| 7 | Bonito | **+1** |
+| 8 | Beleza | **+2** |
+| 9 | Beleza universal | **+3** |
+| 10 | Extraordinário | **+4** |
+
+<p class="muted">O nível 1 é o piso grátis; o valor importa mesmo nos extremos. Repare na simetria: a deformidade que repele na sedução (−4) é a mesma que apavora na intimidação (+4).</p>
 
 ## As Quatro Virtudes
 
@@ -32,7 +52,7 @@ A **Força de Vontade** é a reserva interior de determinação — o tanto de s
 
 Você gasta Vontade para **turbinar uma ação importante**, **resistir** a medo e manipulação, **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas. Ela se recupera com descanso e respiro.
 
-Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na **Mana** (Centelha×2 + Vontade), na **Energia**, no **Fôlego** e na **Defesa Mental**. Uma vontade fraca não só cede sob pressão — encolhe tudo o que o personagem tem de reserva.
+Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na **Mana** (Centelha×2 + Vontade), na **Energia**, no **[Fôlego](/regras/folego)** e na **Defesa Mental**. Uma vontade fraca não só cede sob pressão — encolhe tudo o que o personagem tem de reserva.
 
 ## Integridade & Defesa Mental
 
@@ -43,13 +63,3 @@ A **Defesa Mental** é o muro passivo que convencimentos, intimidações e poder
 <p class="formula">Defesa Mental = (Integridade × 2) + Força de Vontade + Centelha×2</p>
 
 <p class="muted">Uma Integridade baixa derruba a Defesa Mental — quem está quebrado por dentro é mais fácil de dobrar. (A sua irmã social, a <strong>Defesa Social</strong>, protege contra quem tenta te <em>ler</em>, e vem da Compostura + Temperança + Centelha.)</p>
-
-## Fôlego
-
-Se a Vontade é a determinação, o **Fôlego** é o **corpo**: a reserva física de onde sai toda ação extenuante — atacar, correr, saltar, carregar peso. É grande, mas só se renova quando o corpo descansa: depois de uma rajada de esforço, ele pede um respiro.
-
-<p class="formula">Fôlego = 10 (base racial) + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
-
-Ele nasce dos três traços que dizem o quanto o corpo aguenta: o **Vigor** (o motor), a **Resistência** (o tanque) e a **Força de Vontade** (a teimosia de seguir quando o corpo já pediu para parar). Um humano comum parte de **10**; um lutador de Vigor e Resistência altos chega à casa dos 50–70.
-
-Você **recupera Vigor de Fôlego a cada Tick em que NÃO está se esforçando** — defender, recuar e parar repõem a reserva; atacar e correr a gastam e não recuperam. Por isso ninguém pressiona a luta inteira: alterna-se **rajada e respiro**, e quem tem mais Vigor volta ao ar mais rápido. **Como o Fôlego se gasta e se recupera em combate** — o custo de cada golpe, o **Esforço** (forçar o golpe) e a ação de **Tomar Fôlego** — está no capítulo de [Combate](/regras/combate#folego).

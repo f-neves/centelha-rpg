@@ -1,6 +1,6 @@
 ---
-ordem: 5
-numeral: "V"
+ordem: 6
+numeral: "VI"
 titulo: "Combate"
 resumo: "Como uma luta funciona: a linha do tempo, o ataque, o dano, a defesa, o movimento, o fôlego, a vantagem tática e as Técnicas."
 ---
