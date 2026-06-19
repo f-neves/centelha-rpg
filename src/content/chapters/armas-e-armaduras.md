@@ -56,22 +56,22 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 | Arma | Classe | Modos (★ = principal) | Dado | Q-Acerto | Destaque |
 |---|---|---|:---:|:---:|---|
-| Adaga | Leve · Ágil | ★Perf.C (N0) · Corte | 1d6 | 3 / 1 | rápida e precisa; só fura pele (mira na fresta) |
-| Espada Curta | Leve | ★Corte · Perf.C (N1) | 1d6 | 3 / 1 | veloz e defensiva |
-| Espada Longa | Média · Versátil | ★Corte · Perf.C (N1) | 2d6 | 2 / 2 | a clássica adaptável |
+| Adaga | Leve · Ágil | ★Perfurante (N0) · Corte | 1d6 | 3 / 1 | rápida e precisa; só fura pele (mira na fresta) |
+| Espada Curta | Leve | ★Corte · Perfurante (N1) | 1d6 | 3 / 1 | veloz e defensiva |
+| Espada Longa | Média · Versátil | ★Corte · Perfurante (N1) | 2d6 | 2 / 2 | a clássica adaptável |
 | Machado | Média | ★Corte · Impacto | 2d6 | 2 / 2 | corta ou bate de chapa |
-| Espada Serrilhada | Média · Sangramento | ★Corte · Perf.C (N1) | 2d6 | 2 / 2 | feridas que sangram (−Acerto) |
+| Espada Serrilhada | Média · Sangramento | ★Corte · Perfurante (N1) | 2d6 | 2 / 2 | feridas que sangram (−Acerto) |
 | Maça | Média | ★Impacto | 2d6 | 2 / 2 | anti-placa: o Impacto quase não é absorvido |
-| Picareta de Guerra | Média | ★Perf.C (N2) · Impacto | 2d6 | 2 / 2 | o bico vence a placa pelo ponto |
-| Lança | Haste · Arremessável | ★Perf.C (N1) | 2d6 | 2 / 2 | alcance + estocada; resvala na placa |
-| Alabarda | Haste · Pesada | ★Corte · ★Perf.C (N1) · ★Impacto | 2d6 | 1 / 2 | três modos PRINCIPAIS num cabo; cobre tudo |
-| Montante | Pesada | ★Corte · Perf.C (N1) · Impacto | 3d6 | 1 / 3 | espadão; meia-espada estoca, pomo bate |
-| Martelo de Guerra | Pesada | ★Impacto · Perf.C (N2) | 3d6 | 1 / 3 | esmaga placas; o bico fura quando precisa |
+| Picareta de Guerra | Média | ★Perfurante (N2) · Impacto | 2d6 | 2 / 2 | o bico vence a placa pelo ponto |
+| Lança | Haste · Arremessável | ★Perfurante (N1) | 2d6 | 2 / 2 | alcance + estocada; resvala na placa |
+| Alabarda | Haste · Pesada | ★Corte · ★Perfurante (N1) · ★Impacto | 2d6 | 1 / 2 | três modos PRINCIPAIS num cabo; cobre tudo |
+| Montante | Pesada | ★Corte · Perfurante (N1) · Impacto | 3d6 | 1 / 3 | espadão; meia-espada estoca, pomo bate |
+| Martelo de Guerra | Pesada | ★Impacto · Perfurante (N2) | 3d6 | 1 / 3 | esmaga placas; o bico fura quando precisa |
 | Arco | Distância · Munição | ★Projétil (N1) | 2d6 | 2 / 1 | precisão à distância; resvala na placa |
 | Besta Pesada | Distância · Munição · recarga | ★Projétil (N2) | 3d6 | 1 / 2 | o virote fura até a placa |
 | Adaga de Arremesso | Arremesso · Ágil · Munição | ★Projétil (N1) | 1d6 | 3 / 1 | facas de arremesso, às dezenas |
 | Machado de Arremesso | Arremesso | ★Corte · Impacto | 2d6 | 2 / 2 | gira no ar; golpe forte e curto |
-| Azagaia | Arremesso | ★Projétil (N1) · Perf.C (N1) | 2d6 | 2 / 2 | javelina; fura à distância, lança curta na mão |
+| Azagaia | Arremesso | ★Projétil (N1) · Perfurante (N1) | 2d6 | 2 / 2 | javelina; fura à distância, lança curta na mão |
 | Funda | Arremesso · Munição | ★Impacto | 1d6 | 2 / 1 | pedras a longa distância; Impacto (sem gate) |
 | Dardos | Arremesso · Ágil · Munição | ★Projétil (N1) | 1d6 | 3 / 1 | velozes em sequência |
 | Bumerangue | Arremesso | ★Impacto | 1d6 | 2 / 1 | atinge em curva e volta à mão se erra |
@@ -80,7 +80,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> ★ = principal (sem custo); os demais são secundários (−2 ao acerto e −2 ao dano). O <strong>(N0)–(N5)</strong> após Perf.C/Projétil é o <strong>Nível de Perfuração</strong> da arma. <strong>Q-Acerto (B/D)</strong> = Bônus e Dano de Quase-Acerto: a Margem do raspão é <em>Bônus + Centelha</em>; o dano é <em>Dano − Redução QA da armadura</em>, sem Soak. Leves nicam muito por pouco (3/1); pesadas nicam raro mas fundo (1/3).</p>
+<p class="muted"><strong>Modos:</strong> ★ = principal (sem custo); os demais são secundários (−2 ao acerto e −2 ao dano). O <strong>(N0)–(N5)</strong> após Perfurante/Projétil é o <strong>Nível de Perfuração</strong> da arma. <strong>Q-Acerto (B/D)</strong> = Bônus e Dano de Quase-Acerto: a Margem do raspão é <em>Bônus + Centelha</em>; o dano é <em>Dano − Redução QA da armadura</em>, sem Soak. Leves nicam muito por pouco (3/1); pesadas nicam raro mas fundo (1/3).</p>
 
 ## Armaduras
 

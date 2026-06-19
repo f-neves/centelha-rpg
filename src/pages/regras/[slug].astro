@@ -33,3 +33,55 @@ const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regr
   .cap-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
   .cap-nav .btn { max-width: 48%; }
 </style>
+
+<!-- Tabelas ordenáveis: clique no cabeçalho para ordenar (a última coluna, normalmente descrição, não ordena). -->
+<style is:global>
+  main table th.ord { cursor: pointer; user-select: none; }
+  main table th.ord::after { content: ' ⇅'; opacity: .35; font-size: .82em; }
+  main table th.ord.asc::after { content: ' ↑'; opacity: .9; }
+  main table th.ord.desc::after { content: ' ↓'; opacity: .9; }
+  main table th.ord:hover, main table th.ord:focus-visible { color: var(--accent-strong); outline: none; }
+</style>
+<script>
+  function ordenarTabelas() {
+    document.querySelectorAll<HTMLTableElement>('main table').forEach((table) => {
+      const head = table.tHead, body = table.tBodies[0];
+      if (!head || !body || !head.rows[0]) return;
+      const ths = Array.from(head.rows[0].cells);
+      if (ths.length < 2) return;
+      const numOf = (s: string) => {
+        const m = s.replace(/[−–]/g, '-').match(/-?\d+(?:[.,]\d+)?/);
+        return m ? parseFloat(m[0].replace(',', '.')) : null;
+      };
+      ths.forEach((th, col) => {
+        if (col === ths.length - 1) return; // pula a última coluna (descrições)
+        th.classList.add('ord');
+        th.tabIndex = 0;
+        th.setAttribute('role', 'button');
+        const ordenar = () => {
+          const dir = th.classList.contains('asc') ? 'desc' : 'asc';
+          ths.forEach((o) => o.classList.remove('asc', 'desc'));
+          th.classList.add(dir);
+          const rows = Array.from(body.rows);
+          const val = (r: HTMLTableRowElement) => (r.cells[col]?.textContent || '').trim();
+          const vazio = (s: string) => s === '' || s === '—' || s === '–';
+          const numerico = rows.every((r) => { const v = val(r); return vazio(v) || numOf(v) !== null; });
+          rows.sort((a, b) => {
+            const A = val(a), B = val(b);
+            let c: number;
+            if (numerico) c = (vazio(A) ? -Infinity : numOf(A)!) - (vazio(B) ? -Infinity : numOf(B)!);
+            else c = A.localeCompare(B, 'pt', { numeric: true, sensitivity: 'base' });
+            return dir === 'asc' ? c : -c;
+          });
+          rows.forEach((r) => body.appendChild(r));
+        };
+        th.addEventListener('click', ordenar);
+        th.addEventListener('keydown', (e) => {
+          const k = (e as KeyboardEvent).key;
+          if (k === 'Enter' || k === ' ') { e.preventDefault(); ordenar(); }
+        });
+      });
+    });
+  }
+  ordenarTabelas();
+</script>
