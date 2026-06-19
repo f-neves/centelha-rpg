@@ -1,0 +1,382 @@
+================================================================
+ARMADURAS, PERFURACAO E ESCUDOS - MODULO DE REFERENCIA
+Para integracao no Centelha RPG
+================================================================
+
+PROPOSITO
+Tabelas comparativas de armaduras e escudos medievais, com valores de
+0 a 10 que servem de REFERENCIA E COMPARACAO entre os itens, nao de
+numero final de jogo. O Claude Code faz o balanceamento, convertendo
+esses ranks em numeros reais a partir do dano e da forca calculados no
+sistema (ver secao IMPLEMENTACAO). Documento pensado para ser lido por
+um agente e transformado em mecanica.
+
+RESUMO DAS DUAS LOGICAS, NAO CONFUNDIR:
+  ARMADURA = ABSORCAO. Reduz o dano depois que o golpe acerta.
+  ESCUDO   = BONUS DE DEFESA. Ajuda a NAO ser acertado, quando usado.
+Sao camadas diferentes e se somam: o escudo tenta evitar o acerto, a
+armadura reduz o que passa.
+
+
+----------------------------------------------------------------
+1. DEFINICAO DAS ESCALAS
+----------------------------------------------------------------
+
+DEFESA DA ARMADURA (colunas Corte, Projetil, Perf. Concentrada, Impacto)
+o nivel 0 a 10 NAO e o valor de absorcao, e a comparacao entre as
+armaduras. A absorcao real e calculada pelo Claude Code a partir do
+dano das armas e da forca (ver IMPLEMENTACAO).
+  0  = pele nua, nenhuma protecao
+  10 = praticamente invulneravel ao ataque de uma pessoa forte sem uma
+       arma especializada ou pesada
+
+  Ressalva 1 (PROJETIL): a escala foi ancorada em forca humana, mas
+  projetil nao depende de musculo. Uma besta de manivela armazena bem
+  mais energia que qualquer braco. A coluna Projetil esta calibrada
+  para condicao realista de batalha (distancia media, angulo variavel).
+  A queima-roupa e perpendicular ao alvo, subtraia 2 a 3 das armaduras
+  de placa.
+
+  Ressalva 2 (PERFURACAO): toda arma que perfura tem um NIVEL DE
+  PERFURACAO de 0 a 5, e toda armadura tem uma RESISTENCIA A PERFURACAO.
+  Niveis de perfuracao das armas (ver secao 4 para o mapa por arma):
+    Nivel 0 = adaga. Perfura pele, para em couro duro.
+    Nivel 1 = flechas, espada em estocada, lanca. Perfura couro e malha,
+              nao perfura placa.
+    Nivel 2 = virote de besta, bico de picareta de guerra, adaga
+              encantada. Perfura placa.
+    Nivel 3 = armas grandes, armas de cerco, flechas/virotes magicos.
+    Nivel 4 e 5 = armas de cerco pesadas (derrubar fortaleza) ou armas
+                  epicas.
+
+  MECANICA DO GATE DE PERFURACAO (vale para os modos Projetil e Perf.
+  Concentrada, NAO para Corte e Impacto):
+    a) Se o nivel de perfuracao da arma for MENOR que a resistencia a
+       perfuracao da armadura, a arma RESVALA, sem causar dano.
+    b) Se o nivel for IGUAL OU MAIOR, o gate abre. Rola-se o dano e
+       subtrai-se a absorcao da coluna correspondente (Projetil ou
+       Perf. Concentrada). So o que sobra vira dano.
+    Exemplo: arco+flecha (perfuracao 1, dano 1d6 + forca) contra couro
+    (resistencia 1, absorcao Projetil 2). Gate abre (1 >= 1). Dano
+    rolado 5, menos 2 de absorcao, dano final 3.
+    Overkill nao reduz mais: um nivel muito acima da resistencia ainda
+    subtrai a mesma absorcao, so garante que o gate abra.
+
+  Ressalva 3 (IMPACTO): nenhuma armadura chega a 10 contra impacto. A
+  energia atravessa o aco intacto e quebra o corpo dentro. Por isso a
+  coluna Impacto tem teto mais baixo em tudo (max 6 a 7). Impacto e
+  Corte nao passam pelo gate de perfuracao, sempre aplicam a absorcao
+  da coluna direto.
+
+ACESSO
+  0  = so para os mais ricos, raro
+  10 = qualquer soldado conseguia
+  Ancora: facilidade de obter em cidades medias do cenario.
+
+
+----------------------------------------------------------------
+2. TAXONOMIA DE ATAQUE (LEIA ANTES DE USAR A TABELA)
+----------------------------------------------------------------
+
+A divisao limpa Corte / Perfuracao / Impacto vem de jogo, nao de
+historia militar. Na realidade:
+
+- A arma nao tem um "tipo". O usuario escolhe o modo conforme o alvo.
+  Uma espada longa cortava, estocava (perfurava) e batia com o pomo ou
+  guarda contra placa (mordhau). Alabarda e poleaxe tinham gancho,
+  ponta e lamina ou malho num so cabo.
+
+- Contra placa, ninguem cortava. O combatente trocava de modo: estocava
+  nas frestas ou batia para transferir trauma.
+
+Por isso as colunas sao MODOS DE ATAQUE, nao armas. Uma mesma arma usa
+normalmente 2 colunas. Poucas armas tem as 3.
+
+  CORTE              = gume deslizante (espada, machado, falchion)
+  PROJETIL           = flecha bodkin, virote de besta
+  PERF. CONCENTRADA  = ponta estreita e rigida com energia concentrada
+                       (estoque, adaga de rondel, bico de picareta)
+  IMPACTO            = maca, martelo de guerra, porrete, malho de poleaxe
+
+
+----------------------------------------------------------------
+3. TABELA PRINCIPAL DE ARMADURAS
+----------------------------------------------------------------
+
+| Armadura                       | Corte | Projetil | Perf.Conc | Impacto | Resist.Perf | Acesso |
+|--------------------------------|-------|----------|-----------|---------|-------------|--------|
+| Gambeson (acolchoado)          |   6   |    3     |     2     |    4    |      0      |   9    |
+| Couro endurecido (cuir bouilli)|   4   |    2     |     2     |    3    |      1      |   8    |
+| Cota de malha (sem acolchoado) |   8   |    4     |     3     |    2    |      1      |   4    |
+| Malha + gambeson               |   9   |    5     |     4     |    4    |      1      |   3    |
+| Brigandina / coat of plates    |   8   |    6     |     5     |    5    |      1      |   6    |
+| Lamelar (bizantino/estepe)     |   7   |    6     |     5     |    4    |      1      |   3 *  |
+| Placa de transicao (sec. XIV)  |   9   |    7     |     6     |    5    |      2      |   2    |
+| Placa completa (sec. XV)       |  10   |    8     |     9     |  6 a 7  |      2      |   1    |
+
+NOTAS DE LEITURA DA TABELA:
+
+* Lamelar: acesso 3 no Ocidente (exotico). Na estepe, mundo bizantino e
+  Asia era equipamento padrao, acesso ~7 "em casa".
+
+Resist.Perf da placa = 2 significa que so arma de nivel 2 ou mais a
+perfura (besta pesada, bico de picareta, magia, cerco). Espada, adaga,
+flecha e lanca (nivel 0 e 1) RESVALAM na placa completa. Esse e o
+ponto de design: placa e a prova de arma comum, vencida por arma
+especialista ou por proeza/feiticaria.
+
+EMPILHAR ARMADURAS: pode usar qualquer combinacao, mas apenas o MAIOR
+valor de cada tipo (Corte, Projetil, Perf. Concentrada, Impacto) entra
+na absorcao. Para Resist.Perf, vale tambem o maior. Usar mais armaduras
+soma peso e soma as penalidades.
+
+PENALIDADES DE ARMADURA: aplicadas em qualquer acao fisica que NAO seja
+ataque, incluindo esquiva e bloqueio.
+
+
+----------------------------------------------------------------
+4. NIVEIS DE PERFURACAO POR ARMA (DERIVADO, VERIFICAR)
+----------------------------------------------------------------
+
+Mapa sugerido a partir da Ressalva 2. Ajustar conforme o arsenal real
+do sistema.
+
+  Nivel 0 : adaga comum, faca
+  Nivel 1 : espada (estocada), lanca, arco e flecha, dardo, azagaia
+  Nivel 2 : virote de besta, bico de picareta de guerra, estoque
+            reforcado, adaga encantada
+  Nivel 3 : armas grandes de duas maos pesadas, ariete leve, armas de
+            cerco leves, flecha/virote magico
+  Nivel 4 a 5 : cerco pesado (muralhas), armas epicas
+
+PONTO A CONFIRMAR: a picareta de guerra esta no nivel 2 porque
+historicamente era a arma de mao que vencia placa por ponto concentrado.
+A Ressalva 2 original so listava virote e adaga encantada no nivel 2.
+Se o designer quiser placa vencivel so por magia, subir Resist.Perf da
+placa para 3 e mover besta/picareta para fora do alcance dela.
+
+
+----------------------------------------------------------------
+5. NOTAS POR ARMADURA E COMO ERAM USADAS
+----------------------------------------------------------------
+
+GAMBESON
+  O que quase todo mundo realmente vestia. Vinte a trinta camadas de
+  linho ou la costurado. Para corte glissante, surpreendentemente bom
+  (6). Unica camada que de fato ABSORVE, por isso seu impacto 4 e alto
+  para o peso. Resist.Perf 0: nao para ponta. Usado sozinho pela
+  infantaria e como base obrigatoria sob qualquer outra armadura.
+
+COURO ENDURECIDO (CUIR BOUILLI)
+  Superestimado pela ficcao como peitoral de linha de frente. Na pratica
+  serviu mais para defesas de membro e kit barato. Para a adaga nivel 0
+  (Resist.Perf 1).
+
+COTA DE MALHA (sem acolchoado)
+  Campea do corte (8), pior em impacto (2): sem acolchoado a energia
+  passa direto e quebra osso sob aneis intactos. NUNCA usada sozinha na
+  realidade. Flecha nivel 1 fura, lamina larga nao passa. Resist.Perf 1.
+  CUSTO: cara, ao contrario da intuicao. Cada anel forjado e rebitado a
+  mao, 20 a 30 mil aneis. Valia um cavalo de guerra.
+
+MALHA + GAMBESON
+  A combinacao que de fato aconteceu. Quase imune a corte (9), e o
+  acolchoado finalmente da absorcao real contra impacto (4).
+
+BRIGANDINA / COAT OF PLATES
+  Placas pequenas rebitadas em tecido, vestidas sobre malha. Inventada
+  para dar protecao tipo-placa a quem nao pagava armadura completa.
+  Melhor custo-beneficio do periodo. Ponto fraco nas frestas entre
+  placas.
+
+LAMELAR
+  Exemplo incomum no Ocidente, padrao no Oriente e na estepe. Placas
+  sobrepostas boas contra flecha. Cordoes de amarracao sao o ponto fraco.
+
+PLACA DE TRANSICAO (sec. XIV)
+  Mistura de malha e primeiras placas rigidas. Etapa cara e cavaleiresca
+  rumo a placa completa.
+
+PLACA COMPLETA (sec. XV, bom aco)
+  Corte 10 literal: nenhuma espada ou machado corta bom aco. Projetil 8
+  (o mito "flecha atravessa placa" so ocorre em conjuncao rara). Vencida
+  por nivel de perfuracao 2 ou por impacto pesado, nao por gume.
+
+
+----------------------------------------------------------------
+6. VARIANTE: PLACA DE MUNICAO
+----------------------------------------------------------------
+
+Placa produzida em serie, aco pior, ajuste generico. Equipou infantaria
+no fim do sec. XV e no XVI.
+  ACESSO: ~4 (em vez de 1)
+  DEFESA: subtraia 1 a 2 de cada coluna da placa completa
+  RESIST.PERF: 2 (mantem)
+Util como "armadura de tropa" oposta a placa sob medida do nobre.
+
+
+----------------------------------------------------------------
+7. ESCUDOS
+----------------------------------------------------------------
+
+LOGICA: escudo nao e absorcao, e BONUS DE DEFESA, e so quando usado.
+Formula de defesa do sistema:
+  Defesa = (Atributo + Habilidade) x 2 + Escudo
+O escudo tem DOIS valores de bloqueio, conforme o ataque recebido:
+  BLOQUEIO CORPO A CORPO  = contra ataques de melee
+  BLOQUEIO PROJETIL       = contra flechas, virotes e itens arremessados
+
+A tabela e COMPARATIVA (0 a 10), igual a de armadura. O Claude Code
+converte em numero real de Defesa no balanceamento.
+ANCORA: Defesa de escudo 10 = intransponivel, como uma parede.
+
+| Escudo                       | Bloq. CaC | Bloq. Projetil | Penalidade | Acesso |
+|------------------------------|-----------|----------------|------------|--------|
+| Broquel (buckler)            |     5     |       2        |     0      |   9    |
+| Targe / rodela (no antebraco)|     6     |       4        |     1      |   7    |
+| Escudo redondo (umbo central)|     7     |       6        |     2      |   8    |
+| Heater (cavaleiro, alca)     |     7     |       7        |     3      |   6    |
+| Kite normando (cavalaria)    |     7     |       8        |     4      |   5    |
+| Scutum romano *              |     8     |       8        |     5      |   3    |
+| Pave (pavise) *              |     5     |      10        |     8      |   5    |
+
+* Scutum e pave sao os incomuns. O pave NAO e escudo de combate corpo a
+  corpo, e parede portatil: o besteiro o finca no chao e recarrega atras.
+  Bloqueio Projetil 10 (a parede da ancora) vale plantado. Penalidade 8
+  porque carrega-lo no melee e inviavel. Scutum brilha em formacao, valor
+  sobe quando varios formam muralha (testudo).
+
+PENALIDADE DO ESCUDO: aplica a esquiva e demais acoes fisicas, igual a
+da armadura, mas NAO desconta do bloqueio feito com o proprio escudo. O
+valor de Bloqueio ja e o numero liquido. (Sem essa regra, um kite com
+Bloqueio 7 e Penalidade 4 teria bloqueio efetivo absurdo de baixo.)
+
+NOTAS POR ESCUDO:
+
+BROQUEL (BUCKLER)
+  Minusculo, segurado na mao longe do corpo. Quase nenhuma cobertura
+  passiva, todo o valor vem do uso ativo: desviar o golpe e proteger a
+  mao da espada (esgrima de espada e broquel). Pessimo contra flecha,
+  nao da onde se esconder. Barato e onipresente.
+
+TARGE / RODELA
+  Pequeno, preso ao antebraco, as vezes com espigao para atacar. Bom
+  duelista, cobertura limitada.
+
+ESCUDO REDONDO (UMBO CENTRAL)
+  Medio, versatil, usado de forma agressiva (soco com o umbo, prender a
+  arma inimiga). O melhor todo-terreno barato.
+
+HEATER (ESCUDO DE CAVALEIRO)
+  Preso por alcas (enarmes), cobre o tronco. Da cobertura passiva
+  enquanto livra menos o braco. Usado a pe e a cavalo.
+
+KITE NORMANDO
+  Grande, afunilado para cobrir a perna na montaria. Muita cobertura,
+  pesado.
+
+SCUTUM (ROMANO, INCOMUM)
+  Retangular curvo, de madeira laminada. Cobertura de corpo, multiplica
+  em formacao. Pesado para uso individual.
+
+PAVE (PAVISE, INCOMUM)
+  Parede portatil de besteiro. Plantado, e cobertura quase total contra
+  projetil. Nao serve para duelar.
+
+
+----------------------------------------------------------------
+7.1 MATERIAIS DO ESCUDO (TABELA OPCIONAL)
+----------------------------------------------------------------
+
+Decisao do designer: pode ficar so como descricao. Mas o material muda a
+penalidade DE VERDADE por causa do tamanho, entao a tabela ganha o lugar:
+escudo pequeno pode ser de metal solido sem peso proibitivo, escudo
+grande de metal solido e inviavel. Foi por isso que, na historia, escudo
+grande sempre teve nucleo de madeira. A durabilidade (quebrar) e nota de
+sabor: quando quebra fica a criterio do mestre, mas o jogador deve saber
+que o material importa.
+
+| Material                         | Penalidade | Durabilidade                          |
+|----------------------------------|------------|---------------------------------------|
+| Madeira (prancha + couro + umbo) | base       | Racha e lasca. Pode ser partido por   |
+|                                  |            | machado. Semi-descartavel (viking).   |
+| Madeira c/ borda e umbo de metal | +0 a +1    | Borda resiste mais, corpo ainda racha.|
+|                                  |            | Padrao medieval comum.                |
+| Metal solido (aco/ferro)         | +2 a +3    | Nao quebra, amassa e entorta. So vale |
+|                                  | (inviavel  | em escudo pequeno (broquel, rodela).  |
+|                                  |  no grande)|                                       |
+| Vime / couro sobre madeira leve  | -1         | Flexivel, absorve flecha bem, ruim    |
+|                                  |            | contra golpe pesado. Leve e barato.   |
+
+
+----------------------------------------------------------------
+8. INSIGHTS DE DESIGN (LEITURA CRUZADA)
+----------------------------------------------------------------
+
+ARMADURA:
+A. Coluna CORTE so sobe. A historia da armadura e vencer o corte, e a
+   placa o resolveu (10). Quando o corte morreu, ninguem atacou placa
+   com gume.
+B. Coluna IMPACTO e achatada e baixa, teto 6 a 7. Nenhuma armadura torna
+   invulneravel a martelo. Vulnerabilidade nunca resolvida.
+C. Quando a placa zerou corte e quase zerou projetil, o combate migrou
+   para IMPACTO e PERFURACAO nivel 2 (besta pesada, picareta). Poleaxe e
+   martelo de Lucerna existem porque atacam essas duas frentes num cabo.
+D. DEFESA e ACESSO sao quase inversos. Excecao: brigandina (boa defesa,
+   acesso medio). Ponto otimo da curva, por isso foi tao popular.
+
+ESCUDO:
+E. Escudo quebra a curva custo/protecao mais forte que a brigandina.
+   Acesso 8 ou 9 entregando bloqueio alto. Sujeito de gambeson e escudo
+   redondo se defende melhor que um de malha sem escudo, por fracao do
+   preco. Por isso o escudo foi universal por mil anos.
+F. E por isso o escudo MORREU. Quando a placa completa cobriu o corpo
+   todo, a mao do escudo ficou melhor numa arma de duas maos. O escudo
+   some exatamente quando a placa chega, mesmo arco do corte. Gancho
+   narrativo para diferenciar eras no cenario.
+G. Eixo ativo/passivo e a bifurcacao de build: broquel e puro ativo
+   (recompensa pericia e reacao), pave e scutum sao pura cobertura
+   passiva (peso alto, pouca pericia). Antiprojetil e o destaque do
+   escudo, onde ele humilha a armadura.
+
+
+----------------------------------------------------------------
+9. IMPLEMENTACAO NO CENTELHA RPG
+----------------------------------------------------------------
+
+DUAS CAMADAS DISTINTAS, NAO MISTURAR:
+
+ARMADURA = ABSORCAO (pos-acerto)
+  O rank 0 a 10 e comparativo. O Claude Code converte em absorcao real
+  ancorando o 10 no topo de dano do sistema. Exemplo dado pelo designer:
+  se o maior ataque cortante calculado for 3d6 + 10, a placa completa
+  (Corte 10) deve absorver por volta de 21 de dano cortante. Os ranks
+  menores escalam proporcionalmente a partir desse topo, por modo.
+  Fluxo de resolucao de um golpe que acertou:
+    1. Modo perfurante (Projetil ou Perf.Conc): checar o gate (nivel da
+       arma vs Resist.Perf da armadura). Se resvala, dano 0.
+    2. Subtrair a absorcao da coluna do modo. Sobra = dano.
+    3. Corte e Impacto pulam o passo 1, vao direto ao passo 2.
+
+ESCUDO = BONUS DE DEFESA (pre-acerto), quando usado
+  Defesa = (Atributo + Habilidade) x 2 + Escudo
+  O valor de Escudo e o Bloqueio CaC ou Bloqueio Projetil conforme o
+  ataque. Rank comparativo convertido pelo Claude Code, com Defesa de
+  escudo 10 ancorada em "parede intransponivel". A penalidade do escudo
+  entra nas acoes fisicas (esquiva etc.), nao no proprio bloqueio.
+
+PENALIDADES (armadura + escudo) somam e incidem em toda acao fisica que
+nao seja ataque, incluindo esquiva e bloqueio com OUTRO recurso.
+
+ALTA ABSORCAO E RESOLVIDA FORA DA ARMA: contra placa de absorcao muito
+alta, o caminho do sistema sao proezas (habilidades sobre-humanas) e
+feiticarias (fogo, gelo, teleporte, summon), alem das armas de nivel de
+perfuracao 2 ou mais. Arma comum nao e o vetor contra o topo da placa.
+
+PONTA SOLTA (decisao do designer)
+  IP / publicacao: nada aqui depende de catalogo de terceiros. Modulo
+  original, livre de problema de licenca.
+
+================================================================
+FIM
+================================================================
