@@ -35,9 +35,9 @@
   --panel-border: #333a47;
   --ink: #e9e5d7;
   --ink-soft: #afa994;
-  --accent: #8fb0ff;
-  --accent-strong: #b6ccff;
-  --accent-soft: #7c9bdf;
+  --accent: #3fc9c2;        /* teal (claro p/ fundo escuro) */
+  --accent-strong: #8fe3dd; /* teal pálido */
+  --accent-soft: #4fb3ac;   /* teal médio */
   --link: #b39ae0;          /* hiperlink: ametista clara (legível no escuro) */
   --on-accent: #11151f;
   --rule: #39414f;
@@ -56,9 +56,9 @@
   --panel-border: #9a9a9a;
   --ink: #111111;
   --ink-soft: #333333;
-  --accent: #123a8a;
-  --accent-strong: #0c2a66;
-  --accent-soft: #1c4aa0;
+  --accent: #0e5a55;        /* teal escuro (alto contraste) */
+  --accent-strong: #083f3b; /* petróleo escuro */
+  --accent-soft: #14756d;   /* teal médio-escuro */
   --link: #5b2e91;          /* hiperlink: ametista escura (alto contraste) */
   --on-accent: #ffffff;
   --rule: #b3b3b3;
