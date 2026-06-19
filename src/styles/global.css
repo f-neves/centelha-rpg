@@ -111,7 +111,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 }
 .content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 5rem; }
 .prose { max-width: 70rem; margin-inline: auto; }
-.wide { max-width: 60rem; }
+.wide { max-width: 60rem; margin-inline: auto; }
 
 /* topbar (mobile) */
 .topbar { display: none; }
