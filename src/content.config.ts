@@ -111,7 +111,7 @@ const armas = defineCollection({
     classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
     atrib: reference('atributos'), pericia: reference('habilidades'),
     dado: z.number().int().min(1).max(3), acerto: z.number().int(),
-    bonusQA: z.number().int().min(0), danoQA: z.number().int().min(0), defesaArma: z.number().int(),
+    defesaArma: z.number().int(),
     maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
     tipoDano: z.enum(['corte', 'projetil', 'perfConc', 'impacto']), pen: z.number().int().min(0).max(5),
     modos: z.array(z.object({
@@ -131,7 +131,7 @@ const armaduras = defineCollection({
   loader: file('src/data/armaduras.json'),
   schema: z.object({
     id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']),
-    soak: soakModos, resistPerf: z.number().int().min(0), reducaoQA: z.number().int().min(0),
+    soak: soakModos, resistPerf: z.number().int().min(0),
     penalidade: z.number().int().min(0), acesso: z.number().int().optional(), notas: z.string(),
   }),
 });

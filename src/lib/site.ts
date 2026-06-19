@@ -14,11 +14,12 @@ export const NAV = [
   { slug: 'regras/atributos-e-pericias', titulo: 'Atributos & Habilidades', numeral: 'II' },
   { slug: 'regras/centelha-virtudes-vontade', titulo: 'Centelha, Virtudes, Vontade & Fôlego', numeral: 'III' },
   { slug: 'regras/combate', titulo: 'Combate', numeral: 'IV' },
-  { slug: 'regras/vida-ferimentos-cura', titulo: 'Vida, Ferimentos & Cura', numeral: 'V' },
-  { slug: 'caminhos', titulo: 'As Proezas', numeral: 'VI' },
-  { slug: 'arcano', titulo: 'O Arcano', numeral: 'VII' },
-  { slug: 'regras/armas-e-armaduras', titulo: 'Armas & Armaduras', numeral: 'VIII' },
-  { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'IX' },
+  { slug: 'regras/quase-acerto', titulo: 'Quase-Acerto', numeral: 'V' },
+  { slug: 'regras/vida-ferimentos-cura', titulo: 'Vida, Ferimentos & Cura', numeral: 'VI' },
+  { slug: 'caminhos', titulo: 'As Proezas', numeral: 'VII' },
+  { slug: 'arcano', titulo: 'O Arcano', numeral: 'VIII' },
+  { slug: 'regras/armas-e-armaduras', titulo: 'Armas & Armaduras', numeral: 'IX' },
+  { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'X' },
 ];
 
 export const FERRAMENTAS = [

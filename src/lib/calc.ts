@@ -83,7 +83,9 @@ export function folego(opts: { vigor: number; resistencia: number; vontade: numb
 export type Modo = 'corte' | 'projetil' | 'perfConc' | 'impacto';
 export type SoakCat = 'impacto' | 'corte' | 'perfuracao';
 export const MODOS: Modo[] = ['corte', 'projetil', 'perfConc', 'impacto'];
-export const MODO_NOME: Record<Modo, string> = { corte: 'Corte', projetil: 'Projétil', perfConc: 'Perf. Concentrada', impacto: 'Impacto' };
+export const MODO_NOME: Record<Modo, string> = { corte: 'Corte', projetil: 'Projétil', perfConc: 'Perfurante', impacto: 'Impacto' };
+/** Ordem de exibição dos modos da arma: Projétil mantém a frente; depois Impacto · Corte · Perfurante. */
+export const MODO_ORDEM: Record<Modo, number> = { projetil: 0, impacto: 1, corte: 2, perfConc: 3 };
 /** Cada modo de ataque cai numa das 3 categorias de Soak da armadura (Projétil e Perf.C → Perfuração). */
 export const MODO_SOAK: Record<Modo, SoakCat> = { corte: 'corte', projetil: 'perfuracao', perfConc: 'perfuracao', impacto: 'impacto' };
 export const SOAK_CATS: SoakCat[] = ['impacto', 'corte', 'perfuracao'];

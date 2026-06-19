@@ -39,7 +39,7 @@ const S = {
     modos: z.array(z.object({ tipo: z.enum(['corte', 'projetil', 'perfConc', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
     tags: z.array(z.string()), notas: z.string(),
   }),
-  armaduras: z.object({ id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: soakModos, resistPerf: z.number().int().min(0), reducaoQA: z.number().int().min(0).optional(), penalidade: z.number().int().min(0), acesso: z.number().int().optional(), notas: z.string() }),
+  armaduras: z.object({ id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: soakModos, resistPerf: z.number().int().min(0), penalidade: z.number().int().min(0), acesso: z.number().int().optional(), notas: z.string() }),
   escudos: z.object({ id: z.string(), nome: z.string(), bloqCaC: z.number().int(), bloqProjetil: z.number().int(), penalidade: z.number().int(), acesso: z.number().int().optional(), notas: z.string() }),
 };
 

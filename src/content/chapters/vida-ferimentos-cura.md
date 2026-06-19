@@ -1,6 +1,6 @@
 ---
-ordem: 5
-numeral: "V"
+ordem: 6
+numeral: "VI"
 titulo: "Vida, Ferimentos & Cura"
 resumo: "Pontos de Vida, limiares de ferimento, nocaute, morte e recuperação."
 ---

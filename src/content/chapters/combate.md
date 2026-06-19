@@ -98,7 +98,7 @@ Cada arma tem um **modo principal** (sem custo) e, às vezes, **secundários** �
 
 ## Quase-Acerto
 
-<div class="callout"><span class="lbl">Quase Acerto</span>Errar por pouco — dentro de uma <strong>Margem</strong> igual ao <strong>Bônus de Quase-Acerto da arma + sua Centelha</strong> — ainda raspa o alvo. Armas leves e rápidas têm Bônus QA alto (raspam muito, mas de leve); armas pesadas têm Bônus QA baixo (raspam raro, mas fundo). O raspão causa o <strong>Dano de Quase-Acerto da arma</strong> (leve 1 · média 2 · pesada 3), <strong>sem o Soak normal</strong>, mas reduzido pela <strong>Redução de Quase-Acerto da armadura</strong> (leve 1 · média 2 · pesada 3, mínimo 0). A armadura <em>não</em> estreita a Margem — você nica o alvo blindado igual, mas a placa absorve o arranhão. Quanto mais Centelha, mais largo o raspão.</div>
+Errar por pouco ainda raspa o alvo. Como o **Quase-Acerto** funciona em detalhe — a Margem do raspão, os valores por classe de arma e de armadura, e os modificadores que o afetam — é o assunto do próximo capítulo, [Quase-Acerto](/regras/quase-acerto).
 
 ## Esquivar ou Bloquear
 

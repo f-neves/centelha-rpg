@@ -345,10 +345,22 @@
     "estabilizar": { "pericia": "Medicina", "dif": 10, "alternativa": "Vigor + Convicção (em si mesmo)" }
   },
   "quaseAcerto": {
-    "margem": "Bônus QA da arma + Centelha do atacante",
-    "dano": "Dano QA da arma − Redução QA da armadura (mínimo 0)",
+    "margem": "Bônus QA da arma + Bônus QA da armadura do alvo + Centelha do atacante",
+    "dano": "Dano QA da arma − Redução QA da armadura do alvo (mínimo 0)",
     "ignoraSoak": true,
-    "nota": "Errar por ≤ margem é um raspão. A armadura NÃO reduz a margem (você nica o alvo blindado com a mesma frequência), mas tem uma Redução de Dano de Quase-Acerto própria (leve 1, média 2, pesada 3) que abate o Dano QA da arma; o Soak normal não se aplica ao raspão."
+    "pesoPorDado": { "1": "leve", "2": "media", "3": "pesada" },
+    "porClasseArma": {
+      "leve": { "bonus": 3, "dano": 2 },
+      "media": { "bonus": 2, "dano": 4 },
+      "pesada": { "bonus": 1, "dano": 6 }
+    },
+    "porClasseArmadura": {
+      "nenhuma": { "bonus": 0, "reducao": 0 },
+      "leve": { "bonus": 1, "reducao": 0 },
+      "media": { "bonus": 2, "reducao": 4 },
+      "pesada": { "bonus": 3, "reducao": 6 }
+    },
+    "nota": "Errar por ≤ margem é um raspão (não passa pelo Soak normal). Valores FIXOS por classe: a classe da arma sai do dado (1d6 leve, 2d6 média, 3d6 pesada). A armadura SOMA seu Bônus QA à margem (o alvo blindado é maior e mais lento, então é raspado com mais frequência) e abate o dano do raspão com a Redução. Leve nica muito e raso; pesada nica raro e fundo; a placa é nicada o tempo todo, mas a redução come quase tudo. Pode receber modificadores situacionais, de encantamento, de Proeza e de magia (ver cap. Quase-Acerto)."
   },
   "economiaPoderes": {
     "nota": "Tempo (Ticks) das Técnicas e empilhamento. A Energia limita a CENA; os Ticks limitam o MOMENTO.",
