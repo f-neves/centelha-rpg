@@ -1,4 +1,4 @@
-# REVISAR — pontos a conferir do New RPG System D6 (site V1)
+# REVISAR — pontos a conferir do Centelha (site V1)
 
 > Origem: gerado por `migrate-to-json.mjs`. Cada item aqui ou foi redigido
 > provisoriamente, ou divergia da fonte e pedia decisão humana. Itens já

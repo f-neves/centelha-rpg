@@ -1,6 +1,6 @@
-# New RPG System D6 — site (Centelha)
+# Centelha — site 
 
-Site estático de regras do **New RPG System D6**, em **Astro**, publicado no **GitHub Pages**
+Site estático de regras do **Centelha**, em **Astro**, publicado no **GitHub Pages**
 em `https://f-neves.github.io/centelha-rpg/`.
 
 100% estático, sem backend e sem nenhuma chave de API. Conteúdo pré-renderizado (bom para SEO e

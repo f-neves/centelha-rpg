@@ -33,7 +33,7 @@ export default defineConfig({
     AstroPWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'New RPG System D6 — Centelha',
+        name: 'Centelha',
         short_name: 'Centelha D6',
         description: 'Sistema de RPG de mesa em d6, do mortal ao semideus.',
         lang: 'pt-BR',

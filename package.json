@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "New RPG System D6 — site de regras (Astro, estático, GitHub Pages)",
+  "description": "Centelha — site de regras (Astro, estático, GitHub Pages)",
   "scripts": {
     "dev": "astro dev",
     "build": "node scripts/validate-data.mjs && node scripts/test-kael.mjs && astro build && pagefind --site dist",
