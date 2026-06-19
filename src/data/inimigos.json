@@ -59,8 +59,8 @@
     "defesa": 9,
     "defesaMental": 13,
     "soak": {
-      "impacto": 6,
-      "corte": 7,
+      "impacto": 5,
+      "corte": 5,
       "perfuracao": 2
     },
     "resistPerf": 1,
@@ -105,8 +105,8 @@
     "defesaMental": 15,
     "soak": {
       "impacto": 4,
-      "corte": 13,
-      "perfuracao": 3
+      "corte": 9,
+      "perfuracao": 2
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 5",
@@ -150,8 +150,8 @@
     "defesaMental": 16,
     "soak": {
       "impacto": 4,
-      "corte": 13,
-      "perfuracao": 3
+      "corte": 9,
+      "perfuracao": 2
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 5",
@@ -194,8 +194,8 @@
     "defesa": 11,
     "defesaMental": 13,
     "soak": {
-      "impacto": 5,
-      "corte": 7,
+      "impacto": 4,
+      "corte": 5,
       "perfuracao": 2
     },
     "resistPerf": 1,
@@ -239,8 +239,8 @@
     "defesa": 5,
     "defesaMental": 13,
     "soak": {
-      "impacto": 7,
-      "corte": 8,
+      "impacto": 6,
+      "corte": 6,
       "perfuracao": 3
     },
     "resistPerf": 1,
@@ -285,9 +285,9 @@
     "defesa": 11,
     "defesaMental": 19,
     "soak": {
-      "impacto": 12,
-      "corte": 17,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 13,
+      "perfuracao": 6
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 6",
@@ -331,8 +331,8 @@
     "defesa": 19,
     "defesaMental": 16,
     "soak": {
-      "impacto": 7,
-      "corte": 8,
+      "impacto": 6,
+      "corte": 6,
       "perfuracao": 3
     },
     "resistPerf": 1,
@@ -383,8 +383,8 @@
     "defesa": 19,
     "defesaMental": 18,
     "soak": {
-      "impacto": 7,
-      "corte": 8,
+      "impacto": 6,
+      "corte": 6,
       "perfuracao": 3
     },
     "resistPerf": 1,
@@ -487,9 +487,9 @@
     "defesa": 11,
     "defesaMental": 21,
     "soak": {
-      "impacto": 14,
-      "corte": 18,
-      "perfuracao": 9
+      "impacto": 12,
+      "corte": 14,
+      "perfuracao": 7
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 5",
@@ -538,8 +538,8 @@
     "defesaMental": 24,
     "soak": {
       "impacto": 7,
-      "corte": 16,
-      "perfuracao": 6
+      "corte": 12,
+      "perfuracao": 5
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 7",
@@ -680,9 +680,9 @@
     "defesa": 13,
     "defesaMental": 21,
     "soak": {
-      "impacto": 13,
-      "corte": 18,
-      "perfuracao": 9
+      "impacto": 11,
+      "corte": 14,
+      "perfuracao": 7
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 5",
@@ -782,8 +782,8 @@
     "defesa": 9,
     "defesaMental": 15,
     "soak": {
-      "impacto": 6,
-      "corte": 7,
+      "impacto": 5,
+      "corte": 5,
       "perfuracao": 2
     },
     "resistPerf": 1,

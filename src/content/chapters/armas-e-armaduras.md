@@ -91,14 +91,14 @@ A armadura **absorve dano depois do acerto**, com **três Soaks**: **Impacto**, 
 | Armadura | Classe | Impacto | Corte | Perfuração (Nível) | Red.QA | Penalidade |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
 | Nenhuma | — | 0 | 0 | 0 (N0) | 0 | 0 |
-| Gambeson | leve | 4 | 9 | 1 (N0) | 1 | −1 |
-| Couro endurecido | leve | 3 | 6 | 1 (N1) | 1 | −1 |
-| Cota de malha | média | 1 | 12 | 2 (N1) | 2 | −2 |
-| Brigandina | média | 6 | 12 | 4 (N1) | 2 | −2 |
-| Lamelar | média | 4 | 11 | 4 (N1) | 2 | −2 |
-| Placa de transição | pesada | 6 | 14 | 4 (N2) | 3 | −3 |
-| Placa de munição | pesada | 6 | 13 | 5 (N2) | 3 | −3 |
-| Placa completa | pesada | 8 | 15 | 6 (N3) | 3 | −3 |
+| Gambeson | leve | 3 | 6 | 1 (N0) | 1 | −1 |
+| Couro endurecido | leve | 2 | 4 | 1 (N1) | 1 | −1 |
+| Cota de malha | média | 1 | 8 | 1 (N1) | 2 | −2 |
+| Brigandina | média | 4 | 8 | 3 (N1) | 2 | −2 |
+| Lamelar | média | 3 | 8 | 3 (N1) | 2 | −2 |
+| Placa de transição | pesada | 4 | 10 | 3 (N2) | 3 | −3 |
+| Placa de munição | pesada | 4 | 9 | 4 (N2) | 3 | −3 |
+| Placa completa | pesada | 6 | 11 | 4 (N3) | 3 | −3 |
 
 </div>
 
@@ -126,10 +126,10 @@ O escudo não absorve: é **bônus de Defesa** (ajuda a *não* ser acertado), e 
 
 A pedra-papel-tesoura sai dos números acima:
 
-- **Placa completa × Corte** = 15 de Soak: uma espada (3d6+10 no topo) faz **~5**; uma lâmina comum, quase nada. **Ninguém corta placa.**
+- **Placa completa × Corte** = 11 de Soak: uma espada (3d6+10 no topo) faz **~7**; uma lâmina leve, quase nada. **Ninguém corta placa de leve.**
 - **Placa × Projétil/Perf. nível 0–2** (flecha, lança, adaga, besta, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão.
-- **Placa × Impacto** (maça, martelo) = só 8 de Soak: o malho **passa** (a vulnerabilidade nunca resolvida — agora a principal via contra placa).
-- **Placa × Perfuração nível 3+** (cerco, magia, armas épicas) = o gate abre — e aí a placa só tem **6** de Soak de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
+- **Placa × Impacto** (maça, martelo) = só 6 de Soak: o malho **passa** (a vulnerabilidade nunca resolvida — a principal via contra placa).
+- **Placa × Perfuração nível 3+** (cerco, magia, armas épicas) = o gate abre — e aí a placa só tem **4** de Soak de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
 - Sem armadura, o **corte** brilha; a **malha** mata o corte mas cede ao impacto; cada armadura tem seu furo.
 
 <div class="callout"><span class="lbl">Como derrotar cada armadura</span>O cavaleiro de placas é quase intocável por gume, flecha e estocada, mas um camponês com um malho (Impacto) ainda o amassa — e três deles o derrubam pela lentidão. Contra o topo da placa, o caminho é Impacto, Perfuração nível 3+ (cerco/magia), Proeza ou feitiçaria.</div>
