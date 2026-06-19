@@ -55,7 +55,7 @@ A tríade social forma um loop tático, espelhando o combate: um age, o outro re
 
 ### Acima de 5
 
-A faixa **1–5 é a régua mortal**: o **5** é o ápice que um ser humano já alcançou. Valores de **6 a 10** são **sobre-humanos** — força que dobra portões de ferro, sentidos que leem uma cidade num relance — e só se abrem pela **Centelha**, o traço de tier de poder. *Como* a Centelha eleva esse teto é assunto do [capítulo da Centelha](/regras/centelha-virtudes-vontade).
+A faixa **1–5 é a régua mortal**: o **5** é o ápice que um ser humano já alcançou. Valores de **6 a 10** são **sobre-humanos** — força que dobra portões de ferro, sentidos que leem uma cidade num relance — e só se abrem pela **Centelha**, o traço de tier de poder. *Como* a Centelha eleva esse teto é assunto do [capítulo da Centelha](/regras/centelha).
 
 ## A Aparência
 

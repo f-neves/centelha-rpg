@@ -25,7 +25,7 @@ export const GET: APIRoute = async () => {
     items.push({ id: h.id, tipo: 'habilidade', nome: h.nome, url: url('regras/atributos-e-pericias'), resumo: h.descricao, termos: [h.nome], autolink: true, detalhe: { descricao: h.descricao, niveis: escalaH } });
 
   for (const v of d.virtudes)
-    items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/centelha-virtudes-vontade'), resumo: `${v.descricao} Resiste a ${v.resiste}.`, termos: [v.nome], autolink: true, detalhe: { descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: (v as any).niveis } });
+    items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/virtudes-vontade-folego'), resumo: `${v.descricao} Resiste a ${v.resiste}.`, termos: [v.nome], autolink: true, detalhe: { descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: (v as any).niveis } });
 
   // caminhos/artes: auto-link só nomes multi-palavra (evita ruído com "Vento", "Fogo", "Gato"…)
   const multipalavra = (n: string) => /[\s-]/.test(n);
