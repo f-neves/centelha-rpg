@@ -56,8 +56,8 @@ Para evitar personagens distorcidos:
 
 Calculados após a compra:
 - **Pontos de Vida** = 25 + (Vigor × 3)
-- **Defesa** = (Destreza + Habilidade) × 2 − ⌊soma ÷ 4⌋ + Especialidade + ⌈Centelha ÷ 2⌉
-- **Defesa Mental** = ⌊(Integridade + Força de Vontade) ÷ 2⌋ + Centelha · *(Integridade = Compaixão + Temperança)*
+- **Defesa** = (Destreza + Habilidade) × 2 − [soma ÷ 4] + Especialidade + ⌈Centelha ÷ 2⌉
+- **Defesa Mental** = [(Integridade + Força de Vontade) ÷ 2] + Centelha · *(Integridade = Compaixão + Temperança)*
 - **Energia** = (Centelha × 3) + soma das 4 Virtudes + Força de Vontade
 - **Mana** = (Centelha × 2) + Força de Vontade
 - **Iniciativa** = 1d6 + Raciocínio + Prontidão

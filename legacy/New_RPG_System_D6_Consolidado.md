@@ -24,7 +24,7 @@ Sistema inspirado em **Exalted 2ª edição** (combate) e **Scion** (escala de p
 Toda ação soma um **Atributo + uma Habilidade** e converte o total num pool de dados (Xd6), que é **somado** e comparado a um alvo.
 
 **Conversão da soma em dados:**
-- **Quantidade de dados (X)** = ⌊soma ÷ 2⌋.
+- **Quantidade de dados (X)** = [soma ÷ 2].
 - **Bônus fixo (+2)** = se a soma for **ímpar**, +2 ao total; se par, +0.
 
 | Soma (Atrib + Hab) | Pool |
@@ -67,7 +67,7 @@ Valor Passivo = (Atributo + Habilidade) × 2   (+ situacionais / stunts)
 
 Ex.: o furtivo rola Destreza + Furtividade contra a **Percepção Passiva = (Percepção + Prontidão) × 2** do vigia (que não rola). Quando **ambos** agem ativamente, comparam-se as rolagens — maior vence (empate favorece o status quo / defensor).
 
-> A **Defesa de combate** é o caso especial calibrado: `×2 − ⌊soma/4⌋` (§7.2).
+> A **Defesa de combate** é o caso especial calibrado: `×2 − [soma/4]` (§7.2).
 
 ### 1.4 Ações Estendidas
 
@@ -143,7 +143,7 @@ Quatro **Virtudes** (1–5), as mesmas de Exalted 2e:
 **Traços derivados:**
 - **Força de Vontade** = soma das **duas maiores** Virtudes (~5–8 inicial).
 - **Integridade** = Compaixão + Temperança (escala 2–10). Trilha moral/compostura; degrada com trauma e atrocidades.
-- **Defesa Mental** = **⌊(Integridade + Força de Vontade) ÷ 2⌋ + Centelha**. Valor passivo que ataques de Voz/Mente e influência precisam superar. *(Integridade baixa → Defesa Mental menor: você fica mais manipulável.)*
+- **Defesa Mental** = **[(Integridade + Força de Vontade) ÷ 2] + Centelha**. Valor passivo que ataques de Voz/Mente e influência precisam superar. *(Integridade baixa → Defesa Mental menor: você fica mais manipulável.)*
 
 **Testes de resistência** rolam **Virtude + Atributo** (medo = Valor + Vigor; provocação = Temperança + Raciocínio; suportar dor = Convicção + Vigor).
 
@@ -193,7 +193,7 @@ Combate roda numa **linha do tempo de Ticks**. Cada ação custa **Speed** (Tick
 ### 7.2 Defesa (valor fixo e passivo)
 
 ```
-Defesa = (Destreza + Habilidade) × 2 − ⌊(Destreza+Habilidade) ÷ 4⌋
+Defesa = (Destreza + Habilidade) × 2 − [(Destreza+Habilidade) ÷ 4]
          + Especialidade (+1/ponto) + ⌈Centelha ÷ 2⌉ + modificadores
 ```
 
@@ -216,14 +216,14 @@ Dano Final = (Dado da Arma + Força + Margem) − Soak
 ```
 
 - **Dado da Arma:** Leve 1d6 · Média 2d6 · Pesada 3d6.
-- **Força:** 1 mão soma ⌊Força/2⌋; 2 mãos soma Força inteira.
+- **Força:** 1 mão soma [Força/2]; 2 mãos soma Força inteira.
 - **Margem:** +1d6 por **6 pontos** acima da Defesa (ver §1.2).
 
 **Tipos:** Impacto (*Bashing*) · Corte (*Letal*) · Perfuração (*Letal*).
 
 ### 8.2 Soak
 
-- **Natural:** 🔧 Impacto = **Vigor**; Letal = **⌊Vigor/2⌋**.
+- **Natural:** 🔧 Impacto = **Vigor**; Letal = **[Vigor/2]**.
 - **Armadura:** Soak adicional + Proteção contra perfuração (🚧 equipamentos).
 
 ### 8.3 Penetração e Ruptura

@@ -410,8 +410,8 @@ function renderDerived(){
   const ini=rac+pront;
   document.getElementById('derived').innerHTML =
     row('Pontos de Vida',pv,'25 + Vigor×3')
-    + row('Defesa (Esquiva)',defEsq,'(Des+Esquiva)×2 − ⌊/4⌋ + esp + ⌈Cent/2⌉ + mods')
-    + row('Defesa Mental',defMental,'⌊(Integridade '+integridade+' + Vontade)/2⌋ + Centelha')
+    + row('Defesa (Esquiva)',defEsq,'(Des+Esquiva)×2 − [/4] + esp + ⌈Cent/2⌉ + mods')
+    + row('Defesa Mental',defMental,'[(Integridade '+integridade+' + Vontade)/2] + Centelha')
     + row('Energia',energia,'Centelha×3 + Virtudes('+virtSum+') + Vontade')
     + row('Mana',mana,'Centelha×2 + Vontade')
     + row('Iniciativa','1d6 + '+ini,'+ Raciocínio + Prontidão');

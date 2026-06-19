@@ -441,7 +441,7 @@ const chCore = `
   <p class="lead">Toda ação significativa nasce de uma soma simples: um <strong>Atributo</strong> (talento bruto) somado a uma <strong>Habilidade</strong> (treino). Esse total vira um punhado de dados de seis lados — o seu <em>pool</em> — que você rola e soma para enfrentar o mundo.</p>
   <h2>Montando o Pool</h2>
   <p>Some Atributo + Habilidade. A metade desse valor (arredondada para baixo) é a <strong>quantidade de dados</strong>. Se a soma for <strong>ímpar</strong>, some um <strong>bônus fixo de +2</strong> ao resultado.</p>
-  <span class="formula">Dados = ⌊(Atributo + Habilidade) ÷ 2⌋ &nbsp;•&nbsp; +2 se a soma for ímpar</span>
+  <span class="formula">Dados = [(Atributo + Habilidade) ÷ 2] &nbsp;•&nbsp; +2 se a soma for ímpar</span>
   <table><thead><tr><th>Soma</th><th>Você rola</th></tr></thead><tbody>
     <tr><td class="c">4</td><td>2d6</td></tr><tr><td class="c">5</td><td>2d6 + 2</td></tr><tr><td class="c">6</td><td>3d6</td></tr><tr><td class="c">9</td><td>4d6 + 2</td></tr><tr><td class="c">10</td><td>5d6</td></tr>
   </tbody></table>
@@ -514,7 +514,7 @@ const chSoul = `
   <h3>Traços derivados</h3>
   <p><strong>Força de Vontade</strong> começa em 5 e cresce com a experiência — gasta para melhorar um ataque, resistir a poderes mentais, ignorar penalidades e conjurar.</p>
   <p><strong>Integridade</strong> (Compaixão + Temperança) é a bússola moral e a compostura.</p>
-  <span class="formula">Defesa Mental = ⌊(Integridade + Vontade) ÷ 2⌋ + Centelha</span>
+  <span class="formula">Defesa Mental = [(Integridade + Vontade) ÷ 2] + Centelha</span>
   <p class="subtle">Quem está quebrado por dentro é mais fácil de dobrar.</p>
   <div class="box rule"><span class="lbl">Canalizar Virtude</span>Uma vez por cena, por Virtude, numa ação coerente com ela, some o valor da Virtude à soma base: a rolagem vira <strong>Atributo + Habilidade + Virtude</strong>. O herói movido por suas paixões transcende.</div>
 </section>`;
@@ -531,7 +531,7 @@ const chCombat = `
   <p class="subtle">Armas leves agem mais vezes e defendem melhor; as pesadas batem como trovão, mas deixam você exposto entre os golpes.</p>
   <h2>Ataque e Defesa</h2>
   <p>Para atacar: monte o pool de Atributo + Habilidade, some o <strong>Acerto da Arma</strong>, aplique Especialidade, Stunts e Técnicas, e role. Acerta se <strong>superar a Defesa</strong> (empate erra). A Defesa é <strong>fixa e passiva</strong> — quem rola é o atacante.</p>
-  <span class="formula">Defesa = (Destreza + Habilidade) × 2 − ⌊soma ÷ 4⌋ + Espec. + ⌈Centelha ÷ 2⌉ + mods</span>
+  <span class="formula">Defesa = (Destreza + Habilidade) × 2 − [soma ÷ 4] + Espec. + ⌈Centelha ÷ 2⌉ + mods</span>
   <p>Use <strong>Esquiva</strong> (perícia Esquiva + mobilidade) ou <strong>Bloqueio</strong> (perícia da arma ou Escudos + Defesa da Arma). Escolha a melhor — mas nem tudo se bloqueia.</p>
   <div class="box"><span class="lbl">Quase Acerto</span>Errar por pouco — numa <strong>Faixa</strong> igual ao peso da arma (leve 1, média 2, pesada 3) — ainda raspa o alvo, causando dano fixo igual ao peso, sem Soak (se a arma furar a armadura).</div>
   <h2>Dano e Armadura</h2>
@@ -690,8 +690,8 @@ const chCreation = `
   <h2>Traços derivados</h2>
   <table><tbody>
     <tr><th>Pontos de Vida</th><td>25 + (Vigor × 3)</td></tr>
-    <tr><th>Defesa</th><td>(Des + Hab) × 2 − ⌊soma÷4⌋ + Espec. + ⌈Cent÷2⌉</td></tr>
-    <tr><th>Defesa Mental</th><td>⌊(Integridade + Vontade)÷2⌋ + Centelha</td></tr>
+    <tr><th>Defesa</th><td>(Des + Hab) × 2 − [soma÷4] + Espec. + ⌈Cent÷2⌉</td></tr>
+    <tr><th>Defesa Mental</th><td>[(Integridade + Vontade)÷2] + Centelha</td></tr>
     <tr><th>Energia</th><td>(Cent × 3) + Virtudes + Vontade</td></tr>
     <tr><th>Mana</th><td>(Cent × 2) + Vontade</td></tr>
     <tr><th>Iniciativa</th><td>1d6 + Raciocínio + Prontidão</td></tr>

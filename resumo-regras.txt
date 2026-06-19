@@ -18,7 +18,7 @@ Toda ação nasce de uma soma simples:
 Essa soma vira um punhado de dados de seis lados (o POOL).
 
   MONTANDO O POOL
-    Dados = ⌊(Atributo + Habilidade) ÷ 2⌋
+    Dados = [(Atributo + Habilidade) ÷ 2]
     +2 fixo ao resultado SE a soma for ímpar.
 
     Soma (Atrib+Hab) -> Você rola
@@ -253,7 +253,7 @@ pelas costas dá o -2 na Defesa do alvo (ver modificadores).
 --------------------------------------------------------
 
     Soak vs Impacto = Vigor            (+ armadura)
-    Soak vs Letal   = ⌊Vigor ÷ 2⌋      (+ armadura)
+    Soak vs Letal   = [Vigor ÷ 2]      (+ armadura)
 
 
 --------------------------------------------------------
