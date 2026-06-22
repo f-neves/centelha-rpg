@@ -87,7 +87,6 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | −2 de Acerto | −1 |
 | −1 de Bloqueio | −1 |
 | +1 de Speed (mais lenta) | −2 |
-| −1 nível de Perfuração | −2 |
 | −1 nível de Rest. Perfuração | −2 |
 | −1 de Absorção | −1 |
 | +1 de Penalidade | −2 |
@@ -141,20 +140,21 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 |---|:---:|
 | Faca | 6 pp |
 | Bastão | 4 pp |
-| Lança P | 5 pp |
-| Lança G | 8 pp |
+| Lança | 5 pp |
+| Lança Longa | 8 pp |
 | Machadinha | 8 pp |
 | Machado | 30 pp |
 | Machado G | 80 pp |
-| Espada P | 15 pp |
+| Espada Média | 15 pp |
 | Espada | 25 pp |
-| Espada G | 70 pp |
+| Espada Grande | 70 pp |
 | Sabre | 30 pp |
 | Alabarda | 28 pp |
 | Martelo | 25 pp |
-| Martelo G | 100 pp |
+| Martelo Grande | 100 pp |
 | Maça Estrela | 32 pp |
-| Arco | 6 pp |
+| Arco | 14 pp |
+| Arco Curto | 8 pp |
 | Arco Composto | 25 pp |
 | Flechas (10) | 1 pp |
 | Besta | 35 pp |
@@ -172,15 +172,15 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 
 | Armadura | Classe | Preço |
 |---|:---:|:---:|
-| Leather | Leve | 12 pp |
-| C. shirt | Leve | 20 pp |
-| Breastplate | Leve | 28 pp |
-| C. Hauberk | Média | 50 pp |
+| Couro | Leve | 12 pp |
+| Camisa de malha | Leve | 20 pp |
+| Peitoral | Leve | 28 pp |
+| Cota de malha | Média | 50 pp |
 | Lamelar | Média | 45 pp |
-| Rein. Breastplate | Pesada | 9 po |
-| Art. Plate | Pesada | 14 po |
-| Chain Sw | Super-pesada | 18 po |
-| Superh. Plate | Super-pesada | 25 po |
+| Peitoral reforçado | Pesada | 9 po |
+| Placa articulada | Pesada | 14 po |
+| Malha completa | Super-pesada | 18 po |
+| Placa completa | Super-pesada | 25 po |
 
 </div>
 
