@@ -160,6 +160,12 @@ tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong);
 tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, transparent); }
 .table-wrap { overflow-x: auto; }
 
+/* catálogos lado a lado: duas colunas de tabelas que empilham no mobile */
+.cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.6rem; align-items: start; }
+.cat-grid > * { min-width: 0; }
+.cat-cap { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong); margin: .6em 0 .2em; }
+@media (max-width: 720px) { .cat-grid { grid-template-columns: 1fr; } }
+
 /* badges */
 .badge { display: inline-block; font-size: .72rem; font-family: 'Cinzel'; letter-spacing: .03em; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--panel-border); color: var(--ink-soft); background: var(--panel-2); white-space: nowrap; }
 .badge.banda { background: var(--accent); color: var(--on-accent); border-color: transparent; }

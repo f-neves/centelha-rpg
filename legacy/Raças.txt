@@ -1,0 +1,159 @@
+
+Os anões são humanóides de baixa estatura, porém muito corpulentos. Eles costumam viver nas montanhas e colinas e muitas vezes, dentro delas. Costumam ter peles de cores mais morenas e raramente têm cores de cabelos e olhos claros. Eles medem de 1,20 a 1,50 m e pesam entre 70 e 100 kg. Eles atingem a maturidade por volta dos 18 anos e podem viver mais de 300 anos.
+
+Características raciais dos anões:
+- Custo de Pontos de XP: 30
+- +1 de Vigor: Os anões são muito corpulentos. Sua característica de Vigor pode chegar a 6.
+- -1 de Perspicácia: Os anões costumam ser arrogantes e prepotentes, o que limita seu tato social. A característica Perspicácia pode chegar a um máximo de 4.
+- Baixa estatura: Por terem as pernas curtas, os anões correm a metade da velocidade normal de um humano.
+- Resistência a venenos: Os anões são incrivelmente resistentes aos venenos. Todos os testes de resitência contra venenos são feitos com +1d6.
+- Visão no escuro: Os anões podem ver na completa escuridão, porém não podem distinguir cores neste caso. É necessário um tempo para que os olhos dos anão se adapte às diferentes condições de iluminação.
+- Mestre dos Ofícios: Os anões aprendem desde cedo a arte de trabalhar os materiais brutos, principalmente pedra e metais. Todos eles recebem um bônus de +1d6 em todos os testes de Ofícios, se ele já possuir pontos na habilidade.
+
+
+
+
+Os elfos são seres que vivem ligados ao mundo natural. Eles são esguios, porém têm uma aparência mais frágil que outros seres. Eles possuem orelhas pontudas e faces alongadas e angulares. A variação de cores de cabelos, pele e olhos é mais variada do que a humana. Pesam  entre 40 e 65 kg e medem entre 1,40 e 1,70 m. Eles atingem maturidade aos 20 anos e podem viver mais de 600 anos.
+
+Características Raciais dos Elfos:
+- Custo de Pontos de XP: 50
+- +1 de Destreza: Os elfos são mais graciosos e podem ter até 6 na sua caractérística Destreza.
+- -1 de Vigor: Os elfos possuem corpos mais frágeis e sua característica Vigor não pode ultrapassar 4.
+- Aparência Universal: Como descendentes das fadas, os elfos possuem uma aparência que atrai quase todas as outras raças. Eles não sofrem penalidades de aparência ao lidarem com outras raças humanóides.
+- Sentidos Naturais Aguçados: Os elfos são seres que têm uma conexão inata com a natureza. Estando eles em ambientes naturais e se concentrando por um turno inteiro, os elfos podem fazer testes de Percepção envolvendo sua visão ou audição com +1d6 em sua parada de dados e eles podem enchergar duas vezes mais do que um humano. O efeito desta habilidade perdura por uma cena e enquanto o elfo estiver no ambiente natural.
+- Resiliência Mental: Os elfos são naturalmente resistentes ao controle mental. Qualquer efeito de controle mental feito contra os elfos têm sua dificuldade aumentada em +4 ou o elfo recebe +1d6 adicionais para resistir ao efeito.
+
+
+
+Gnomos Pesam  entre 20 e 45 kg e medem entre 1,00 m e 1,30 m. Eles atingem maturidade aos 20 anos e podem viver mais de 400 anos.
+
+Características Raciais dos Gnomos:
+- Custo de Pontos de XP: 40
+- +1 de Vigor: Os gnomos são resistentes e podem ter até 6 na sua caractérística Vigor.
+- -1 de Força: Os gnomos, por serem pequenos, sua Força não pode ultrapassar 4.
+
+- Baixa estatura: Por terem as pernas curtas, os gnomos correm a metade da velocidade normal de um humano.
+- Visão no escuro: Os gnomos podem ver na completa escuridão, porém não podem distinguir cores neste caso. É necessário um tempo para que seus olhos se adapte às diferentes condições de iluminação.
+- Feitiçaria: Os gnomos possuem facilidade em criar ilusões, recebendo um bônus de +2 para fazer e detectar feitiçarias de ilusão.
+- Empatia com animais: Seu carisma natural reflete também com outros seres em que têm contato, recebem +2 quando lidam com animais.
+
+
+Haflings medem de 80cm a 1,20 m e pesam entre 20 e 35 kg. Eles atingem a maturidade por volta dos 18 anos e podem viver mais de 300 anos.
+
+Características raciais dos Haflings:
+- Custo de Pontos de XP: 30
+- +1 de Destreza: Os Haflings são mais graciosos e podem ter até 6 na sua caractérística Destreza.
+- -1 de Força: Os Halflings, por serem pequenos, sua Força não pode ultrapassar 4.
+- Baixa estatura: Por terem as pernas curtas, os haflings correm a metade da velocidade normal de um humano.
+- Atletas: recebem +1d6 dados em Atletismo e habilidades secundárias correlacionads.
+
+
+
+Os meio-elfos são filhos de pais humanos com mães elfas. Há uma probabilidade muito pequena da concepção acontecer. Apesar dele se parecer mais com um elfo do que com um humano, ele não tem todas as suas características. A altura e peso costumam ser mais parecidas com a dos elfos variando de 1,60 a 1,90 m e de 50 a 90 kg. Costumam ter poucos pêlos como os elfos e tem uma expectativa de vida mais longa que a dos humanos; podem chegar até 200 anos. Porém, por se tratar de uma raça híbrida, são inferteis e incapazes de gerar descendentes.
+
+Características Raciais dos Meio-Elfos:
+- Custo de Pontos de XP: 20
+- Aparência Universal: Como descendentes das fadas, os elfos possuem uma aparência que atrai quase todas as outras raças e isso se espelha também nos meio-elfos. Eles não sofrem penalidades de aparência ao lidarem com outras raças humanóides.
+- Resiliência Mental: Os meio-elfos têm a resistência ao controle mental parecida com a de seu ancestral elfo, porém, menos formidável. Em qualquer efeito de controle mental feito contra os meio-elfos, eles recebe +2 para resistir ao efeito.
+
+
+Os Orcs são humanóides com uma herança metamorfa. Eles têm uma constituição física superior a qualquer outra raça mediana. Eles normalmente têm cores de pele e pêlos que variam do marrom ao verde. Olhos e cabelos costumam ser pretos, mas outras cores também podem ocorrer. Eles medem entre 1,80 e 2,30 m e pesam entre 80 e 140 kg. Eles atingem a maturidade por volta dos 14 anos e vivem pouco mais de 60 anos.
+
+Característica raciais dos Orcs:
+- Custo de Pontos de XP: 40
+- +1 de Força e Vigor: Os orcs são criaturas poderosas e truculentas. Suas característica de Força e Vigor Podem chegar a 6.
+- -1 de Perspicácia, Compostura e Inteligência: Sua força e robustez são descompensados por sua falta de tato social e capacidade de lógica. Suas característica de Perspicácia, Compostura e Inteligência podem chegar a no máximo 4.
+- Aparência: O valor de aparência de um Orc é 1 a menos do nível que ele pagou. ex: Comprou aparência 7, o valor real de aparência é 6.
+- Vitalidade: Os orcs recebem um +(Vigor) pontos de vida extra.
+- Frenesi: Os Orcs são capazes de entrar em um frenesi semelhante a algumas criaturas. Nesse estado ele somente é capaz de realizar ações físicas, a não ser intimidar (uma ação reflexo) e não recebe nenhuma penalidade de dano. Ao tentar intimidar alguém nesse estado o orc recebe dois dados adicionais em sua parada de dados.
+- Visão Noturna: Os orcs podem enchergar sem penalidades sob a penumbra, mas não sob escuridão completa.
+
+
+
+Tabela de progressão de idade para efeitos de envelhecimento:
+Raça	|Idade Adulta	|Maturidade¹	|Velho²		|Venerável³	
+Anão	|18 anos	|100 anos	|160 anos	|220 anos	
+Elfo	|20 anos	|85 anos	|170 anos	|250 anos	
+Gnomo	|18 anos	|75 anos	|125 anos	|175 anos	
+Halfling|16 anos	|45 anos	|70 anos	|100 anos	
+Humano	|15 anos	|35 anos	|50 anos	|70 anos	
+Meio-Elfo|15 anos	|55 anos	|85 anos	|110 anos	
+Meio-Orc|14 anos	|30 anos	|45 anos	|60 anos	
+
+¹ -1 nos atributos físicos
+² -2 nos atributos físicos
+³ -3 nos atributos físicos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

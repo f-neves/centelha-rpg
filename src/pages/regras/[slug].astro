@@ -49,8 +49,18 @@ const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regr
       if (!head || !body || !head.rows[0]) return;
       const ths = Array.from(head.rows[0].cells);
       if (ths.length < 2) return;
-      const numOf = (s: string) => {
-        const m = s.replace(/[−–]/g, '-').match(/-?\d+(?:[.,]\d+)?/);
+      // Valor para ordenar: ciente de moeda (pc/pp/po/pl convertidos para cobre) e de frações (½ ¼ ¾).
+      const FRAC: Record<string, number> = { '½': 0.5, '¼': 0.25, '¾': 0.75, '⅓': 1 / 3, '⅔': 2 / 3 };
+      const CUR: Record<string, number> = { pc: 1, pp: 10, po: 100, pl: 1000 };
+      const numOf = (raw: string) => {
+        const s = raw.replace(/[−–]/g, '-').trim();
+        const cm = s.match(/(-?)\s*([½¼¾⅓⅔]|\d+(?:[.,]\d+)?)\s*(pc|pp|po|pl)\b/i);
+        if (cm) {
+          const base = FRAC[cm[2]] ?? parseFloat(cm[2].replace(',', '.'));
+          return (cm[1] === '-' ? -1 : 1) * base * CUR[cm[3].toLowerCase()];
+        }
+        if (FRAC[s] != null) return FRAC[s];
+        const m = s.match(/-?\d+(?:[.,]\d+)?/);
         return m ? parseFloat(m[0].replace(',', '.')) : null;
       };
       ths.forEach((th, col) => {
