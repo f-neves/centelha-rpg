@@ -15,17 +15,18 @@ E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, i
 
 | Nível | | Modificador |
 |:---:|---|:---:|
-| 1 | Deformado | **−4** |
-| 2 | Muito feio | **−2** |
-| 3 | Feio | **−1** |
-| 4–5 | Comum | 0 |
-| 6 | Comum (no teto) | 0* |
-| 7 | Bonito | **+1** |
-| 8 | Beleza | **+2** |
-| 9 | Beleza universal | **+3** |
-| 10 | Extraordinário | **+4** |
+| 1 | Deformado | −4 |
+| 2 | Muito feio | −2 |
+| 3 | Feio | −1 |
+| 5 | Comum | 0 |
+| 5 | Comum | 0 |
+| 6 | Comum | 0* |
+| 7 | Bonito | +1 |
+| 8 | Beleza | +2 |
+| 9 | Beleza universal | +3 |
+| 10 | Extraordinário | +4 |
 
-<p class="muted">O nível 1 é o piso grátis; o valor importa mesmo nos extremos. Repare na simetria: a deformidade que repele na sedução (−4) é a mesma que apavora na intimidação (+4).</p>
+<p class="muted">* - Pode receber bônus situacionais de acordo com a descrição da aparência.</p>
 
 ## As Quatro Virtudes
 

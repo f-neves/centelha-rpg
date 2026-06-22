@@ -54,7 +54,7 @@ A arma **leve** raspa muito (Margem larga) mas raso; a **pesada** raspa pouco ma
 
 Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a Margem do atacante — um alvo encouraçado é maior, mais lento e mais fácil de roçar. Em troca, a **Redução** come o dano do raspão. Resultado: o cavaleiro de placa é nicado quase toda rodada, mas a maioria desses nicks bate em **0**. A armadura leve quase não muda a Margem e não reduz nada — protege pelo Soak, não contra raspões.
 
-<div class="callout"><span class="lbl">Empilhar</span>Ao usar mais de uma peça de armadura, <strong>some</strong> os Bônus de QA. A Redução do Raspão não é somada, use apenas a <strong>maior</strong> Redução entre elas.</div>
+<div class="callout"><span class="lbl">Empilhar</span>Ao usar mais de uma peça de armadura, <strong>some</strong> os Bônus de Quase-Acerto. A Redução do Raspão não é somada, use apenas a <strong>maior</strong> Redução entre elas.</div>
 
 ## Modificadores
 
