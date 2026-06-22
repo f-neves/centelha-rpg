@@ -90,15 +90,15 @@ A armadura **absorve dano depois do acerto**, com **três Soaks**: **Impacto**, 
 
 | Armadura | Classe | Impacto | Corte | Perfuração (Nível) | Penalidade |
 |---|:---:|:---:|:---:|:---:|:---:|
-| Nenhuma | — | 0 | 0 | 0 (N0) | 0 |
-| Gambeson | leve | 3 | 6 | 1 (N0) | −1 |
-| Couro endurecido | leve | 2 | 4 | 1 (N1) | −1 |
-| Cota de malha | média | 1 | 8 | 1 (N1) | −2 |
-| Brigandina | média | 4 | 8 | 3 (N1) | −2 |
-| Lamelar | média | 3 | 8 | 3 (N1) | −2 |
-| Placa de transição | pesada | 4 | 10 | 3 (N2) | −3 |
-| Placa de munição | pesada | 4 | 9 | 4 (N2) | −3 |
-| Placa completa | pesada | 6 | 11 | 4 (N3) | −3 |
+| Nenhuma | — | 0 | 0 | 0 / N 0 | 0 |
+| Gambeson | leve | 3 | 6 | 1 / N 0 | −1 |
+| Couro endurecido | leve | 2 | 4 | 1 / N 1 | −1 |
+| Cota de malha | média | 1 | 8 | 1 / N 1 | −2 |
+| Brigandina | média | 4 | 8 | 3 / N 1 | −2 |
+| Lamelar | média | 3 | 8 | 3 / N 1 | −2 |
+| Placa de transição | pesada | 4 | 10 | 3 / N 2 | −3 |
+| Placa de munição | pesada | 4 | 9 | 4 / N 2 | −3 |
+| Placa completa | pesada | 6 | 11 | 4 / N 3 | −3 |
 
 </div>
 
