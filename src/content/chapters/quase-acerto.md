@@ -11,7 +11,7 @@ No [Combate](/regras/combate), um ataque acerta quando a soma supera a Defesa. M
 
 Depois de rolar o ataque e **não** superar a Defesa, compare o quanto faltou com a **Margem de Quase-Acerto**:
 
-<p class="formula">Margem = Bônus QA da arma + Bônus QA da armadura do alvo + Centelha do atacante</p>
+<p class="formula">Margem de QA = Bônus QA da arma + Bônus QA da armadura do alvo</p>
 
 Se você errou por **um valor menor ou igual à Margem**, é um raspão. O raspão causa:
 
@@ -47,14 +47,14 @@ A arma **leve** raspa muito (Margem larga) mas raso; a **pesada** raspa pouco ma
 |---|:---:|:---:|
 | Nenhuma | +0 | 0 |
 | Leve | +1 | 0 |
-| Média | +2 | 4 |
-| Pesada | +3 | 6 |
+| Média | +2 | 2 |
+| Pesada | +3 | 4 |
 
 </div>
 
 Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a Margem do atacante — um alvo encouraçado é maior, mais lento e mais fácil de roçar. Em troca, a **Redução** come o dano do raspão. Resultado: o cavaleiro de placa é nicado quase toda rodada, mas a maioria desses nicks bate em **0**. A armadura leve quase não muda a Margem e não reduz nada — protege pelo Soak, não contra raspões.
 
-<div class="callout"><span class="lbl">Empilhar</span>Ao usar mais de uma peça de armadura, vale o <strong>maior</strong> Bônus de QA e a <strong>maior</strong> Redução entre elas (não somam).</div>
+<div class="callout"><span class="lbl">Empilhar</span>Ao usar mais de uma peça de armadura, <strong>some</strong> os Bônus de QA. A Redução do Raspão não é somada, use apenas a <strong>maior</strong> Redução entre elas.</div>
 
 ## Modificadores
 
