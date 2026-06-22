@@ -1,13 +1,13 @@
 ---
-ordem: 13
-numeral: "XIII"
+ordem: 10
+numeral: "X"
 titulo: "Custo de Serviço & Itens"
 resumo: "Moedas, renda por estrato, qualidade de armas e armaduras e o catálogo de preços do mundo."
 ---
 
 O dinheiro mede tempo e trabalho. Esta página reúne **o que se ganha**, **o que se gasta** e **como a qualidade muda o preço** de uma arma ou armadura — do raspão de cobre do servo ao lavor de joias da relíquia nobre.
 
-<div class="callout"><span class="lbl">Provisório</span>Os preços e nomes do catálogo de armas, armaduras e escudos vêm das tabelas antigas e ainda <strong>não batem</strong> com os itens de <a href="/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XI). Use como referência de ordem de grandeza; a reconciliação dos dois capítulos vem depois.</div>
+<div class="callout"><span class="lbl">Provisório</span>Os nomes das armaduras já foram <strong>traduzidos</strong> e alinhados ao vocabulário de <a href="/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (Cap. XI) — Couro, Camisa de malha, Peitoral, Cota de malha, Lamelar, Peitoral reforçado, Placa articulada, Malha completa, Placa completa. Ainda assim, as <strong>listas e os preços</strong> dos dois capítulos não batem por completo: use como referência de ordem de grandeza; a reconciliação final vem depois.</div>
 
 ## Moedas & Conversão
 

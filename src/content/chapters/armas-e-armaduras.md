@@ -1,6 +1,6 @@
 ---
-ordem: 11
-numeral: "XI"
+ordem: 9
+numeral: "IX"
 titulo: "Armas & Armaduras"
 resumo: "Classes + Tags: a arma define o estilo, não a potência bruta."
 ---
@@ -18,7 +18,6 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 - **Acerto** — um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)** — quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos** — uma ou duas; algumas são *Versáteis* e servem nas duas formas.
-- **Fôlego** — o **custo** do golpe (leve **15**, médio **24**, pesado **38**). Atacar gasta esse Fôlego e **não recupera**; você só repõe quando **não** ataca (defendendo, recuando, parando). Por isso a **arma leve rende mais golpes seguidos** antes do respiro e a **pesada esgota em dois**. *(Qualquer golpe pode ser **forçado**: cada +1d6 dobra o Fôlego e soma +1 à Speed, sem teto — ver o **Esforço** em [Combate](/regras/combate).)*
 - **Modos** — os **modos de ataque** da arma (Impacto, Corte, Perfurante, Projétil). A maioria das armas tem **mais de um**, e você escolhe por golpe conforme o alvo. Um deles é o **principal** (sem custo); os **secundários** saem com **−2 ao acerto e −2 ao dano**. Cada modo de perfuração carrega um **Nível de Perfuração**, escrito **(N0)–(N5)**. Ver *Os quatro modos de dano* em [Combate](/regras/combate).
 - **Quase-Acerto** — errar por pouco ainda raspa. O valor é **fixo pela classe** (peso) da arma e da armadura; veja o capítulo [Quase-Acerto](/regras/quase-acerto).
 
@@ -30,14 +29,14 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 <div class="table-wrap">
 
-| Classe | Speed | Fôlego | Dano | Acerto | Def. | Mãos | Estilo |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| Leve | 5 | 15 | 1d6 | +2 | +1 | 1 | tempo, precisão e defesa; habilita Técnicas ágeis |
-| Média | 6 | 24 | 2d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
-| Pesada | 7 | 38 | 3d6 | +0 | −1 | 2 | dano que vence armadura — mas lenta e te expõe |
-| Haste | 6 | 24 | 2d6 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
-| Distância | 6 | 20 | 1–3d6 | +1 | — | 2 | domina antes do contato; depende de munição |
-| Arremesso | 4–6 | 12–20 | 1–2d6 | +1 | — | 1 | lançar com a mão: alcance curto, uma mão, projétil recuperável |
+| Classe | Speed | Dano | Acerto | Def. | Mãos | Estilo |
+|---|:---:|:---:|:---:|:---:|:---:|---|
+| Leve | 5 | 1d6 | +2 | +1 | 1 | tempo, precisão e defesa; habilita Técnicas ágeis |
+| Média | 6 | 2d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
+| Pesada | 7 | 3d6 | +0 | −1 | 2 | dano que vence armadura — mas lenta e te expõe |
+| Haste | 6 | 2d6 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
+| Distância | 6 | 1–3d6 | +1 | — | 2 | domina antes do contato; depende de munição |
+| Arremesso | 4–6 | 1–2d6 | +1 | — | 1 | lançar com a mão: alcance curto, uma mão, projétil recuperável |
 
 </div>
 

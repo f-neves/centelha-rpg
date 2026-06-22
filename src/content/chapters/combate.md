@@ -1,8 +1,8 @@
 ---
-ordem: 6
-numeral: "VI"
+ordem: 7
+numeral: "VII"
 titulo: "Combate"
-resumo: "Como uma luta funciona: a linha do tempo, o ataque, o dano, a defesa, o movimento, o fôlego, a vantagem tática e as Técnicas."
+resumo: "Como uma luta funciona: a linha do tempo, o ataque, o dano, a defesa, o movimento, a vantagem tática e as Técnicas."
 ---
 
 O combate não corre em turnos rígidos: corre numa **linha do tempo de Ticks** (cada um ≈ **1 segundo**). Cada ação custa um tempo — a sua **Speed** — e, depois de agir, você só volta a jogar quando esses Ticks passarem. Escolher *quando* agir vale tanto quanto *como*.
@@ -20,7 +20,7 @@ Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um bandido de <strong>Defesa 10</strong>. Seu pool de ataque dá <strong>3d6+5</strong>; ele rola e soma <strong>16</strong>. 16 supera 10 → acerta, com diferença de 6 — exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ele rola o dano da espada (2d6) + a Margem (1d6) + a Força, desconta o Soak do bandido, e o que sobra abre ferimento.</div>
 
-No osso, é só isso. O resto do capítulo são as camadas que dão profundidade tática: **quando** agir, **como** se mover, **gerir o fôlego**, **usar a posição** e **desencadear Técnicas**.
+No osso, é só isso. O resto do capítulo são as camadas que dão profundidade tática: **quando** agir, **como** se mover, **usar a posição** e **desencadear Técnicas**.
 
 ## A linha do tempo: Ticks, Speed e Iniciativa
 
@@ -55,12 +55,6 @@ A Defesa é um valor **fixo** e **passivo** — o alvo não rola para se defende
 Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha **1 Margem**, e cada Margem vira **+1d6 de dano**. Um acerto raspando arranha; um acerto folgado despedaça.
 
 <p class="muted">A <strong>Centelha</strong> soma <strong>+2 por ponto</strong> dos dois lados — ao ataque e a todas as defesas. Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda.</p>
-
-### Esforço: forçar o golpe
-
-Qualquer ataque pode ser **forçado**: gaste Fôlego extra para somar dados ao ataque. Cada **+1d6 dobra o custo de Fôlego do golpe e soma +1 à Speed** (mais lento, mais exposto): +1d6 = ×2 e Speed +1; +2d6 = ×4 e Speed +2; e assim por diante. **Não há teto** — a própria duplicação é o limite: forçar muito esgota o Fôlego num átimo.
-
-É a manobra para dois momentos: **furar uma defesa alta** (os dados extras ajudam a superá-la) ou **encerrar rápido** um inimigo frágil (mais Margem = mais dano). É a alavanca de "dar tudo" disponível a *qualquer um*, mesmo o mortal sem Centelha — mas o preço cresce rápido: forçar a arma **leve** ainda cabe (um leve +1d6 custa 30 de Fôlego — mais da metade da reserva de um herói, e você fica ofegante); forçar a **pesada** é proibitivo (um pesado +1d6 custa 76 — mais do que o Fôlego total de quase qualquer um; só um lutador de reserva descomunal ergue um golpe desses).
 
 ## Dano e Armadura
 
@@ -138,31 +132,7 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 
 <p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso — Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, o Atletismo controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
-## Fôlego
-
-Toda ação física extenuante — atacar, correr, saltar, carregar peso — vem do **Fôlego**, a reserva do corpo. É grande, mas só se renova quando você **dá um tempo**: enquanto se esforça, gasta; quando para de se esforçar, recupera.
-
-<p class="formula">Fôlego = 10 (base racial) + Vigor × 5 + Resistência × 4 + Força de Vontade × 2</p>
-
-Você **recupera +Vigor de Fôlego por Tick sempre que NÃO está numa ação que gaste Fôlego** — defender, recuar e esquivar não custam nada e deixam a reserva voltar; atacar e correr **gastam e não recuperam**. Cada golpe custa o **Fôlego da arma** (no catálogo e na ficha): leve **15**, médio **24**, pesado **38**.
-
-Como atacar não recupera, uma **sequência** de golpes drena rápido. Do cheio, um herói de Fôlego ~50 dá cerca de:
-
-| Arma | Golpes seguidos do cheio | Lutando de forma sustentada |
-|---|:---:|:---:|
-| Leve (15) | ~3–4 | ataca ~⅔ do tempo |
-| Média (24) | ~2–3 | ataca ~½ do tempo |
-| Pesada (38) | ~2 | ataca ~⅖ do tempo |
-
-A tática nasce daí: **ninguém ataca a luta inteira**. Você pressiona em rajada e depois **recua para respirar** — defendendo, reposicionando ou Tomando Fôlego. A **arma leve** rende mais golpes seguidos e volta mais rápido; a **pesada** bate forte mas esgota em dois golpes. Quem tem **Vigor e Resistência altos** respira mais rápido e aguenta rajadas maiores.
-
-<div class="callout regra"><span class="lbl">Tomar Fôlego</span>Gaste uma ação completa (<strong>Speed 5</strong>) só defendendo e esquivando, sem se mover além do básico, e <strong>recupere metade do Fôlego máximo</strong> de uma vez — o "recuar e respirar". Restaura cerca de uma rajada inteira.</div>
-
-Quando o tanque aperta:
-
-- **Defender** (Esquiva e Bloqueio passivos) **não custa** Fôlego e **recupera** — é o que permite recompor o ar lutando na defensiva.
-- **Abaixo de 25%** do Fôlego: **−1d6** em toda ação física (o corpo começa a falhar).
-- **Fôlego 0 — exausto:** você só pode **defender** ou **Tomar Fôlego**; não ataca nem força um golpe.
+<div class="callout regra"><span class="lbl">Regra opcional</span>O <strong>Fôlego</strong> — o cansaço que limita as rajadas de golpes, o <strong>Esforço</strong> (forçar o golpe por mais dados) e a ação de <strong>Tomar Fôlego</strong> — é um <strong>módulo avançado</strong>, reunido no capítulo <a href="/regras/folego">Fôlego</a>. As mesas que jogam sem ele simplesmente ignoram custo e recuperação de Fôlego; nada mais no Combate depende disso.</div>
 
 ## Vantagem tática: posição e número
 

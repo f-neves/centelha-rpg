@@ -1,6 +1,6 @@
 ---
-ordem: 14
-numeral: "XIV"
+ordem: 6
+numeral: "VI"
 titulo: "Raças"
 resumo: "O que cada povo é no mundo — e como sua herança move os tetos de Atributo e abre traços que nenhum humano tem."
 ---
