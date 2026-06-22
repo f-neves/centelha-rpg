@@ -75,6 +75,10 @@ Uma arma ou armadura não é só "a peça": cada **ponto de qualidade** a mais o
 
 Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçamento** da qualidade: uma arma **Boa** (+1) leva uma melhoria de +1; uma **Ótima** (+2) leva duas, ou uma de +2 — ou ainda uma de +2 paga em parte com uma piora.
 
+<div class="cat-grid">
+
+<div>
+
 <div class="table-wrap">
 
 | Piora | Pontos |
@@ -83,28 +87,36 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | −2 de Acerto | −1 |
 | −1 de Bloqueio | −1 |
 | +1 de Speed (mais lenta) | −2 |
-| -1 nível de Perfuração | -2 |
-| -1 nível de Rest. Perfuração | -2 |
-| -1 de Absorção | -1 |
-| +1 de Penalidade | -2 |
-| -20% de Alcance | -1 |
-| +30% de Peso | -1 |
+| −1 nível de Perfuração | −2 |
+| −1 nível de Rest. Perfuração | −2 |
+| −1 de Absorção | −1 |
+| +1 de Penalidade | −2 |
+| −20% de Alcance | −1 |
+| +30% de Peso | −1 |
 
 </div>
 
+</div>
+
+<div>
+
 <div class="table-wrap">
 
-| Melhoria  | Pontos |  
+| Melhoria | Pontos |
 |:---:|:---:|
-| +1 de Dano |  +1 |
+| +1 de Dano | +1 |
 | +2 de Acerto | +1 |
 | +1 de Bloqueio | +2 |
 | +1 nível de Perfuração | +2 |
 | +1 nível de Rest. Perfuração | +2 |
 | +1 de Absorção | +1 |
-| -1 de Penalidade | +2 |
+| −1 de Penalidade | +2 |
 | +20% de Alcance | +1 |
-| -30% de Peso | +1 |
+| −30% de Peso | +1 |
+
+</div>
+
+</div>
 
 </div>
 
