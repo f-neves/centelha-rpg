@@ -30,12 +30,12 @@ Em regra, o humano é o **baseline neutro**:
 | Raça | Custo XP | Teto +1 (até 6) | Teto −1 (máx 4) | Porte |
 |---|:---:|---|---|---|
 | Humano | 0 | — | — | médio |
-| Meio-Elfo | 40 | — | — | médio-alto |
-| Anão | 50 | Vigor | Perspicácia | baixo, corpulento |
-| Halfling | 50 | Destreza | Força | muito baixo |
-| Gnomo | 60 | Vigor | Força | muito baixo |
-| Orc | 70 | Força, Vigor | Perspicácia, Compostura, Inteligência | alto, robusto |
-| Elfo | 90 | Destreza | Vigor | esguio |
+| Meio-Elfo | 20 | — | — | médio-alto |
+| Anão | 30 | Vigor | Perspicácia | baixo, corpulento |
+| Halfling | 30 | Destreza | Força | muito baixo |
+| Gnomo | 40 | Vigor | Força | muito baixo |
+| Orc | 40 | Força, Vigor | Perspicácia, Compostura, Inteligência | alto, robusto |
+| Elfo | 50 | Destreza | Vigor | esguio |
 
 </div>
 
@@ -43,7 +43,7 @@ Em regra, o humano é o **baseline neutro**:
 
 Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas — muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros. Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a maturidade por volta dos 18 anos e podem viver mais de **300 anos**.
 
-- **Custo de XP:** 50
+- **Custo de XP:** 30
 - **+1 teto de Vigor** (até 6) — corpulência de pedra.
 - **−1 teto de Perspicácia** (máx 4) — arrogantes e prepotentes, pouco tato social.
 - **Baixa estatura** — pernas curtas: **deslocamento pela metade** da velocidade de um humano.
@@ -55,7 +55,7 @@ Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e coli
 
 Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das outras raças, com **orelhas pontudas** e faces alongadas e angulares. A variação de cores de cabelo, pele e olhos é maior que a humana. Pesam **40–65 kg** e medem **1,40–1,70 m**. Maturidade aos 20 anos; podem viver mais de **600 anos**.
 
-- **Custo de XP:** 90
+- **Custo de XP:** 50
 - **+1 teto de Destreza** (até 6) — graça sobre-humana.
 - **−1 teto de Vigor** (máx 4) — corpo frágil.
 - **Aparência Universal** — descendentes das fadas, sua beleza atrai quase toda raça: o elfo **não sofre penalidades de Aparência** ao lidar com outras raças humanóides, mesmo as que lhe seriam hostis.
@@ -66,7 +66,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 
 Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturidade aos 20 anos; podem viver mais de **400 anos**.
 
-- **Custo de XP:** 60
+- **Custo de XP:** 40
 - **+1 teto de Vigor** (até 6) — resistência teimosa num corpo miúdo.
 - **−1 teto de Força** (máx 4) — pequenos demais para grande força bruta.
 - **Baixa estatura** — **deslocamento pela metade** da velocidade de um humano.
@@ -78,7 +78,7 @@ Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Maturida
 
 Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a maturidade por volta dos 18 anos e podem viver mais de **300 anos**.
 
-- **Custo de XP:** 50
+- **Custo de XP:** 30
 - **+1 teto de Destreza** (até 6) — mãos e pés leves.
 - **−1 teto de Força** (máx 4) — porte miúdo.
 - **Baixa estatura** — **deslocamento pela metade** da velocidade de um humano.
@@ -88,7 +88,7 @@ Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atinge
 
 Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se parece mais com um elfo do que com um humano — sem, contudo, herdar tudo. Altura e peso puxam ao elfo: **1,60–1,90 m** e **50–90 kg**. Têm poucos pelos, como os elfos, e vivem mais que humanos — até **200 anos**. Por serem híbridos, são **inférteis**.
 
-- **Custo de XP:** 40
+- **Custo de XP:** 20
 - **Sem deslocamento de tetos** — herdam o equilíbrio físico humano.
 - **Aparência Universal** — o sangue feérico se reflete na aparência: o meio-elfo **não sofre penalidades de Aparência** ao lidar com outras raças humanóides.
 - **Resiliência Mental** — versão mais branda da do ancestral élfico: **+2** para resistir a qualquer efeito de controle mental.
@@ -97,7 +97,7 @@ Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se 
 
 Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos, mas há exceções. Medem **1,80–2,30 m** e pesam **80–140 kg**. Maturidade por volta dos 14 anos; vivem pouco mais de **60 anos**.
 
-- **Custo de XP:** 70
+- **Custo de XP:** 40
 - **+1 teto de Força e de Vigor** (ambos até 6) — criaturas poderosas e truculentas.
 - **−1 teto de Perspicácia, Compostura e Inteligência** (máx 4) — a força não vem acompanhada de tato social nem de lógica fina.
 - **Aparência rebaixada** — a Aparência do orc vale **1 a menos** que o nível pago (paga Aparência 7, vale 6).
