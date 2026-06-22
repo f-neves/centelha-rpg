@@ -22,6 +22,7 @@ export const NAV = [
   { slug: 'arcano', titulo: 'O Arcano', numeral: 'X' },
   { slug: 'regras/armas-e-armaduras', titulo: 'Armas & Armaduras', numeral: 'XI' },
   { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'XII' },
+  { slug: 'regras/custo-de-servico-e-itens', titulo: 'Custo de Serviço & Itens', numeral: 'XIII' },
 ];
 
 export const FERRAMENTAS = [
