@@ -27,13 +27,15 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 ## Classes de Arma
 
+<p class="muted">Esta tabela é um <strong>guia geral por peso</strong> — a média de cada classe. Use-a como <strong>referência para inventar armas novas</strong>; cada <em>arma de exemplo</em> (abaixo) traz os seus próprios números, que podem variar dentro da classe (duas armas da mesma classe podem diferir em Speed, Acerto ou Defesa).</p>
+
 <div class="table-wrap">
 
 | Classe | Speed | Dano | Acerto | Def. | Mãos | Estilo |
 |---|:---:|:---:|:---:|:---:|:---:|---|
 | Leve | 5 | 1d6 | +2 | +1 | 1 | tempo, precisão e defesa; habilita Técnicas ágeis |
 | Média | 6 | 2d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
-| Pesada | 7 | 3d6 | +0 | −1 | 2 | dano que vence armadura — mas lenta e te expõe |
+| Pesada | 7 | 3d6 | +0 | −2 | 2 | dano que vence armadura — mas lenta e te expõe, com guarda baixa |
 | Haste | 6 | 2d6 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
 | Distância | 6 | 1–3d6 | +1 | — | 2 | domina antes do contato; depende de munição |
 | Arremesso | 4–6 | 1–2d6 | +1 | — | 1 | lançar com a mão: alcance curto, uma mão, projétil recuperável |
@@ -53,33 +55,33 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 <div class="table-wrap">
 
-| Arma | Classe | Modos (★ = principal) | Dado | Destaque |
-|---|---|---|:---:|---|
-| Adaga | Leve | Corte · ★Perfurante (N0) | 1d6 | Ágil, arremessável. Rápida e precisa; só fura pele (mira na fresta) |
-| Espada Curta | Leve | ★Corte · Perfurante (N1) | 1d6 | Veloz e defensiva |
-| Espada Longa | Média | ★Corte · Perfurante (N1) | 2d6 | Versátil (2 mãos: +1 dado, −1 Def.). A clássica adaptável |
-| Machado | Média | Impacto · ★Corte | 2d6 | Corta ou bate de chapa |
-| Espada Serrilhada | Média | ★Corte · Perfurante (N1) | 2d6 | Sangramento (−Acerto): feridas que continuam drenando |
-| Maça | Média | ★Impacto | 2d6 | Anti-placa: o Impacto quase não é absorvido |
-| Picareta de Guerra | Média | Impacto · ★Perfurante (N2) | 2d6 | O bico vence a placa pelo ponto |
-| Lança | Média | ★Perfurante (N1) | 2d6 | Haste, arremessável. Alcance + estocada; resvala na placa |
-| Alabarda | Média | ★Impacto · ★Corte · ★Perfurante (N1) | 2d6 | Haste, pesada (lenta). Três modos PRINCIPAIS num cabo; cobre tudo |
-| Montante | Pesada | Impacto · ★Corte · Perfurante (N1) | 3d6 | Espadão; meia-espada estoca, pomo bate |
-| Martelo de Guerra | Pesada | ★Impacto · Perfurante (N2) | 3d6 | Esmaga placas; o bico fura quando precisa |
-| Arco | Média | ★Projétil (N1) | 2d6 | Distância, munição. Precisão à distância; resvala na placa |
-| Besta Pesada | Pesada | ★Projétil (N2) | 3d6 | Distância, munição, recarga. O virote fura até a placa |
-| Adaga de Arremesso | Leve | ★Projétil (N1) | 1d6 | Arremesso, ágil, munição. Facas às dezenas |
-| Machado de Arremesso | Média | Impacto · ★Corte | 2d6 | Arremesso. Gira no ar; golpe forte e curto |
-| Azagaia | Média | ★Projétil (N1) · Perfurante (N1) | 2d6 | Arremesso. Javelina: fura à distância, lança curta na mão |
-| Funda | Leve | ★Impacto | 1d6 | Arremesso, munição. Pedras a longa distância; Impacto (sem gate) |
-| Dardos | Leve | ★Projétil (N1) | 1d6 | Arremesso, ágil, munição. Velozes em sequência |
-| Bumerangue | Leve | ★Impacto | 1d6 | Arremesso. Atinge em curva e volta à mão se erra |
-| Rede | Leve | ★Impacto | 1d6 | Arremesso, imobiliza. Prende o alvo em vez de ferir |
-| Pilum | Média | ★Projétil (N2) | 2d6 | Arremesso. Anti-escudo: fura placa e entorta ao cravar |
+| Arma | Classe | Modos | Speed | Dano | Acerto | Defesa | Mãos | Destaque |
+|---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
+| Adaga | Leve | ★P(N0) · C | 5 | 1d6 | +2 | +1 | 1 | Ágil, arremessável. Rápida e precisa; só fura pele (mira na fresta) |
+| Espada Curta | Leve | ★C · P(N1) | 5 | 1d6 | +2 | +1 | 1 | Veloz e defensiva |
+| Espada Longa | Média | ★C · P(N1) | 6 | 2d6 | +1 | +1 | 1 | Versátil (2 mãos: +1 dado, −1 Def.). A clássica adaptável |
+| Machado | Média | ★C · I | 6 | 2d6 | +1 | 0 | 1 | Corta ou bate de chapa. Guarda menor que a espada, mas alterna pro Impacto |
+| Espada Serrilhada | Média | ★C · P(N1) | 6 | 2d6 | +0 | +1 | 1 | Sangramento (−Acerto): feridas que continuam drenando |
+| Maça | Média | ★I | 6 | 2d6 | +1 | +1 | 1 | Anti-placa: o Impacto quase não é absorvido |
+| Picareta de Guerra | Média | ★P(N2) · I | 6 | 2d6 | +1 | +1 | 1 | O bico vence a placa pelo ponto |
+| Lança | Haste | ★P(N1) | 6 | 2d6 | +1 | +2 | 2 | Alcance, arremessável. Estocada que controla a distância; resvala na placa |
+| Alabarda | Haste | ★C · ★P(N1) · ★I | 6 | 2d6 | +1 | +2 | 2 | Alcance, pesada (lenta). Três modos principais num cabo; cobre tudo |
+| Montante | Pesada | ★C · P(N1) · I | 7 | 3d6 | +0 | −2 | 2 | Espadão; dano alto, guarda baixa — te expõe entre os golpes |
+| Martelo de Guerra | Pesada | ★I · P(N2) | 7 | 3d6 | +0 | −2 | 2 | Esmaga placas; o bico fura quando precisa. Pouca defesa |
+| Arco | Distância | ★P(N1) | 6 | 2d6 | +1 | 0 | 2 | Munição, distância. Precisão à distância; resvala na placa |
+| Besta Pesada | Distância | ★P(N2) | 6 | 3d6 | +1 | 0 | 2 | Munição, recarga, distância. O virote fura até a placa |
+| Adaga de Arremesso | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 0 | 1 | Ágil, munição. Facas às dezenas |
+| Machado de Arremesso | Arremesso | ★C · I | 5 | 2d6 | +1 | 0 | 1 | Gira no ar; golpe forte e curto |
+| Azagaia | Arremesso | ★P(N1) | 5 | 2d6 | +1 | 0 | 1 | Javelina: fura à distância ou na estocada em punho |
+| Funda | Arremesso | ★I | 6 | 1d6 | +1 | 0 | 1 | Munição. Pedras a longa distância; Impacto (sem gate) |
+| Dardos | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 0 | 1 | Ágil, munição. Velozes em sequência |
+| Bumerangue | Arremesso | ★I | 5 | 1d6 | +1 | 0 | 1 | Atinge em curva e volta à mão se erra |
+| Rede | Arremesso | ★I | 5 | 1d6 | +0 | 0 | 1 | Imobiliza. Prende o alvo em vez de ferir |
+| Pilum | Arremesso | ★P(N2) | 5 | 2d6 | +1 | 0 | 1 | Anti-escudo: fura placa e entorta ao cravar |
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> ★ = principal (sem custo); os demais são secundários (−2 ao acerto e −2 ao dano). O <strong>(N0)–(N5)</strong> após Perfurante/Projétil é o <strong>Nível de Perfuração</strong> da arma. A <strong>Classe</strong> é o peso (pelo dado: 1d6 Leve, 2d6 Média, 3d6 Pesada) — também define o Quase-Acerto (ver [capítulo próprio](/regras/quase-acerto)). Tags e forma (Haste, Distância, Arremesso) ficam em Destaque.</p>
+<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Corte · <strong>P</strong> = Perfuração (estocada ou Projétil — usam o mesmo Soak). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −2 ao dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Speed</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> vira 2 mãos por +1 dado e −1 Defesa). O <strong>Quase-Acerto</strong> sai do dado de Dano (1d6 leve, 2d6 média, 3d6 pesada) — ver <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
 
 ## Armaduras
 

@@ -25,7 +25,7 @@
   },
   {
     "id": "machado", "nome": "Machado", "classe": "media", "atrib": "forca", "pericia": "armas-uma-mao",
-    "dado": 2, "acerto": 1, "defesaArma": 1, "maos": 1, "ticks": 6, "folego": 24,
+    "dado": 2, "acerto": 1, "defesaArma": 0, "maos": 1, "ticks": 6, "folego": 24,
     "tipoDano": "corte", "pen": 0,
     "modos": [ { "tipo": "corte", "principal": true }, { "tipo": "impacto", "principal": false } ],
     "tags": [],
@@ -73,7 +73,7 @@
   },
   {
     "id": "montante", "nome": "Montante", "classe": "pesada", "atrib": "forca", "pericia": "armas-duas-maos",
-    "dado": 3, "acerto": 0, "defesaArma": -1, "maos": 2, "ticks": 7, "folego": 38,
+    "dado": 3, "acerto": 0, "defesaArma": -2, "maos": 2, "ticks": 7, "folego": 38,
     "tipoDano": "corte", "pen": 0,
     "modos": [ { "tipo": "corte", "principal": true }, { "tipo": "perfConc", "perf": 1, "principal": false }, { "tipo": "impacto", "principal": false } ],
     "tags": [],
@@ -81,7 +81,7 @@
   },
   {
     "id": "martelo-de-guerra", "nome": "Martelo de Guerra", "classe": "pesada", "atrib": "forca", "pericia": "armas-duas-maos",
-    "dado": 3, "acerto": 0, "defesaArma": -1, "maos": 2, "ticks": 7, "folego": 38,
+    "dado": 3, "acerto": 0, "defesaArma": -2, "maos": 2, "ticks": 7, "folego": 38,
     "tipoDano": "impacto", "pen": 0,
     "modos": [ { "tipo": "impacto", "principal": true }, { "tipo": "perfConc", "perf": 2, "principal": false } ],
     "tags": [],
