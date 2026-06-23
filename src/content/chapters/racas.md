@@ -111,7 +111,7 @@ A herança também define **quanto tempo** o corpo dura. Ao cruzar cada marco, o
 
 <div class="table-wrap">
 
-| Raça | Adulto | Maturidade¹ | Velho² | Venerável³ |
+| Raça | Adulto | Maturidade | Velho¹ | Venerável² |
 |---|:---:|:---:|:---:|:---:|
 | Meio-Orc | 14 | 30 | 45 | 60 |
 | Humano | 15 | 35 | 50 | 70 |
@@ -123,4 +123,4 @@ A herança também define **quanto tempo** o corpo dura. Ao cruzar cada marco, o
 
 </div>
 
-<p class="muted">¹ −1 nos Atributos físicos · ² −2 nos Atributos físicos · ³ −3 nos Atributos físicos. Idades em anos.</p>
+<p class="muted">A <strong>Maturidade</strong> não traz penalidade. ¹ Velho: −1 nos Atributos físicos · ² Venerável: −2 nos Atributos físicos. Idades em anos.</p>
