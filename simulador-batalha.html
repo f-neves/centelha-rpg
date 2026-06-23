@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulador de Batalha — Centelha RPG</title>
+<style>
+  :root{
+    --bg:#faf9f5; --card:#fff; --ink:#1f1e1b; --muted:#6b6a64;
+    --line:#e4e2da; --accent:#378ADD; --good:#1D9E75; --bad:#D85A30; --warn:#C99A2E;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#1a1915; --card:#23221d; --ink:#ecebe4; --muted:#a8a69c;
+      --line:#34332c; --accent:#85B7EB; --good:#5DCAA5; --bad:#F0997B; --warn:#E3C06B;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;padding:18px;max-width:1180px;margin:0 auto;}
+  h1{font-size:21px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:12.5px;margin:0 0 16px}
+  .sub code{background:var(--line);padding:1px 5px;border-radius:4px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card h2{font-size:13px;margin:0 0 12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .card h2 .tag{float:right;text-transform:none;letter-spacing:0;font-weight:400;color:var(--accent)}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0}
+  .row label{font-size:13.5px;flex:0 0 auto}
+  .row .val{font-weight:600;font-size:13px;min-width:88px;text-align:right;color:var(--accent)}
+  input[type=range]{flex:1;accent-color:var(--accent);min-width:70px}
+  select{background:var(--card);color:var(--ink);border:1px solid var(--line);
+    border-radius:7px;padding:5px 8px;font-size:13.5px;flex:1;min-width:90px}
+  .check{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);margin:7px 0}
+  .check input{accent-color:var(--accent)}
+  .sep{border:0;border-top:1px solid var(--line);margin:12px 0}
+  .mini{font-size:11.5px;color:var(--muted);margin:2px 0 8px}
+  .result{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .resgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:14px;margin-bottom:14px}
+  .metric .k{font-size:11.5px;color:var(--muted)}
+  .metric .v{font-size:24px;font-weight:700;margin-top:2px}
+  .metric .vs{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .barwrap{height:24px;background:var(--line);border-radius:7px;overflow:hidden;display:flex}
+  .seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;transition:width .15s}
+  .seg.hit{background:var(--good)} .seg.graze{background:var(--warn)} .seg.miss{background:var(--bad)}
+  .hist{margin-top:14px}
+  .hbar{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12px}
+  .hbar .lab{flex:0 0 96px;color:var(--muted)}
+  .hbar .track{flex:1;height:13px;background:var(--line);border-radius:6px;overflow:hidden}
+  .hbar .fill{height:100%;background:var(--accent)}
+  .hbar .pct{flex:0 0 52px;text-align:right;font-variant-numeric:tabular-nums}
+  .note{font-size:13px;color:var(--muted);margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+  .note b{color:var(--ink)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+  @media(max-width:560px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <h1>Simulador de Batalha — Centelha</h1>
+  <p class="sub">
+    Ataque = <code>[melhores N de (N+Esp)d6]</code> + Acerto + Centelha×2 + bônus &nbsp;·&nbsp;
+    Defesa = <code>(Dex+Hab)×2 + Esp + Centelha×2</code> − penalidade da armadura &nbsp;·&nbsp;
+    Margem = <code>⌊(total−Defesa)/6⌋</code> &nbsp;·&nbsp;
+    Dano = <code>(dado+Margem)d6 + Força×mãos − Soak</code>. Sem Fôlego.
+  </p>
+
+  <div class="grid">
+    <!-- ATACANTE -->
+    <div class="card">
+      <h2>Atacante <span class="tag" id="aWClass"></span></h2>
+      <div class="row"><label>Arma (preset)</label><select id="aWeapon"></select></div>
+      <div class="row"><label>Atributo + Habilidade</label><input type="range" id="aS" min="2" max="18" value="10"><span class="val" id="aSv"></span></div>
+      <div class="row"><label>Especialidade (+d6, descarta menor)</label><input type="range" id="aE" min="0" max="3" value="0"><span class="val" id="aEv"></span></div>
+      <div class="row"><label>Centelha</label><input type="range" id="aC" min="0" max="5" value="0"><span class="val" id="aCv"></span></div>
+      <hr class="sep">
+      <div class="row"><label>Dado da arma</label><input type="range" id="aDie" min="1" max="3" value="2"><span class="val" id="aDiev"></span></div>
+      <div class="row"><label>Acerto da arma</label><input type="range" id="aAcc" min="-3" max="4" value="1"><span class="val" id="aAccv"></span></div>
+      <div class="row"><label>Força</label><input type="range" id="aFor" min="0" max="8" value="3"><span class="val" id="aForv"></span></div>
+      <div class="row"><label>Empunhadura</label><select id="aHands"><option value="1">1 mão (+Força)</option><option value="2">2 mãos (+2×Força)</option></select></div>
+      <div class="row"><label>Modo de dano</label><select id="aMode">
+        <option value="corte">Corte</option><option value="impacto">Impacto</option>
+        <option value="projetil">Projétil</option><option value="perfConc">Perfurante</option></select></div>
+      <div class="row" id="aPerfRow"><label>Nível de Perfuração da arma</label><input type="range" id="aPerf" min="0" max="5" value="1"><span class="val" id="aPerfv"></span></div>
+      <hr class="sep">
+      <div class="check"><input type="checkbox" id="aSecond"><label for="aSecond">Modo secundário (−2 acerto, −2 dano)</label></div>
+      <div class="check"><input type="checkbox" id="aAggr"><label for="aAggr">Postura agressiva (+2 acerto, −2 Defesa própria)</label></div>
+      <div class="row"><label>Penalidade (−Xd6: multiataque/ferimento)</label><input type="range" id="aPen" min="0" max="4" value="0"><span class="val" id="aPenv"></span></div>
+      <div class="row"><label>Bônus fixo (±)</label><input type="range" id="aB" min="-5" max="5" value="0"><span class="val" id="aBv"></span></div>
+    </div>
+
+    <!-- DEFENSOR -->
+    <div class="card">
+      <h2>Defensor <span class="tag" id="dAClass"></span></h2>
+      <div class="row"><label>Armadura (preset)</label><select id="dArmor"></select></div>
+      <div class="row"><label>Atributo + Habilidade (Dex+Esquiva)</label><input type="range" id="dS" min="2" max="18" value="10"><span class="val" id="dSv"></span></div>
+      <div class="check"><input type="checkbox" id="lock" checked><label for="lock">Mesma graduação do atacante</label></div>
+      <div class="row"><label>Especialidade</label><input type="range" id="dE" min="0" max="3" value="0"><span class="val" id="dEv"></span></div>
+      <div class="row"><label>Centelha</label><input type="range" id="dC" min="0" max="5" value="0"><span class="val" id="dCv"></span></div>
+      <div class="row"><label>Vigor (Soak natural)</label><input type="range" id="dVig" min="0" max="8" value="3"><span class="val" id="dVigv"></span></div>
+      <hr class="sep">
+      <div class="mini">Soak da armadura por categoria · Resist. à Perfuração (Nível)</div>
+      <div class="two">
+        <div class="row"><label>Soak Impacto</label><input type="range" id="dSi" min="0" max="12" value="0"><span class="val" id="dSiv"></span></div>
+        <div class="row"><label>Soak Corte</label><input type="range" id="dSc" min="0" max="12" value="0"><span class="val" id="dScv"></span></div>
+        <div class="row"><label>Soak Perfuração</label><input type="range" id="dSp" min="0" max="12" value="0"><span class="val" id="dSpv"></span></div>
+        <div class="row"><label>Resist. Perfuração</label><input type="range" id="dRp" min="0" max="5" value="0"><span class="val" id="dRpv"></span></div>
+      </div>
+      <div class="row"><label>Penalidade da armadura</label><input type="range" id="dPen" min="0" max="4" value="0"><span class="val" id="dPenv"></span></div>
+      <div class="check"><input type="checkbox" id="dApplyPen" checked><label for="dApplyPen">Penalidade reduz a Defesa (Esquiva/Bloqueio)</label></div>
+      <hr class="sep">
+      <div class="row"><label>Modificador tático na Defesa (±)</label><input type="range" id="dTac" min="-6" max="6" value="0"><span class="val" id="dTacv"></span></div>
+      <div class="mini">Cobertura, flanco, prono, mirar, terreno… (Combate). Move também a janela do Quase-Acerto.</div>
+      <div class="row"><label>Bônus fixo na Defesa (±)</label><input type="range" id="dB" min="-5" max="5" value="0"><span class="val" id="dBv"></span></div>
+      <div class="row"><label>PV do alvo (golpes p/ derrubar)</label><input type="range" id="dPV" min="10" max="80" value="37"><span class="val" id="dPVv"></span></div>
+    </div>
+  </div>
+
+  <div class="result">
+    <div class="resgrid">
+      <div class="metric"><div class="k">Rolo do atacante</div><div class="v" id="rollNot">5d6</div><div class="vs" id="rollBreak"></div></div>
+      <div class="metric"><div class="k">Total (mín–média–máx)</div><div class="v" id="rollRange" style="font-size:18px">—</div></div>
+      <div class="metric"><div class="k">Defesa efetiva (≥ p/ acertar)</div><div class="v" id="defVal">20</div><div class="vs" id="defBreak"></div></div>
+      <div class="metric"><div class="k">Dano esperado / golpe</div><div class="v" id="edmg" style="color:var(--good)">0</div><div class="vs" id="edmgBreak"></div></div>
+      <div class="metric"><div class="k">Golpes p/ derrubar</div><div class="v" id="swings">—</div><div class="vs" id="swingsBreak"></div></div>
+    </div>
+
+    <div class="mini">Acerto cheio · Quase-Acerto (raspão) · Erro</div>
+    <div class="barwrap">
+      <div class="seg hit" id="segHit"></div>
+      <div class="seg graze" id="segGraze"></div>
+      <div class="seg miss" id="segMiss"></div>
+    </div>
+
+    <div class="hist" id="hist"></div>
+
+    <p class="note" id="note"></p>
+  </div>
+
+<script>
+// ---------- presets ----------
+const WEAPONS = [
+  {n:'— manual —', cl:null},
+  {n:'Adaga',            cl:'leve',     die:1, acc:2, hands:1, mode:'perfConc', perf:0},
+  {n:'Espada Curta',     cl:'leve',     die:1, acc:2, hands:1, mode:'corte',    perf:0},
+  {n:'Desarmado / Briga',cl:'leve',     die:1, acc:0, hands:1, mode:'impacto',  perf:0},
+  {n:'Espada Longa',     cl:'média',    die:2, acc:1, hands:1, mode:'corte',    perf:0},
+  {n:'Machado',          cl:'média',    die:2, acc:1, hands:1, mode:'corte',    perf:0},
+  {n:'Maça',             cl:'média',    die:2, acc:1, hands:1, mode:'impacto',  perf:0},
+  {n:'Picareta de Guerra',cl:'média',   die:2, acc:1, hands:1, mode:'perfConc', perf:2},
+  {n:'Lança',            cl:'haste',    die:2, acc:1, hands:2, mode:'perfConc', perf:1},
+  {n:'Alabarda',         cl:'haste',    die:2, acc:1, hands:2, mode:'corte',    perf:1},
+  {n:'Montante',         cl:'pesada',   die:3, acc:0, hands:2, mode:'corte',    perf:1},
+  {n:'Martelo de Guerra',cl:'pesada',   die:3, acc:0, hands:2, mode:'impacto',  perf:2},
+  {n:'Arco',             cl:'distância',die:2, acc:1, hands:2, mode:'projetil', perf:1},
+  {n:'Besta Pesada',     cl:'distância',die:3, acc:1, hands:2, mode:'projetil', perf:2},
+];
+const ARMORS = [
+  {n:'— manual —', cl:null},
+  {n:'Nenhuma',            cl:'nenhuma', i:0,c:0,p:0, rp:0, pen:0},
+  {n:'Gambeson',           cl:'leve',    i:3,c:6,p:1, rp:0, pen:1},
+  {n:'Couro endurecido',   cl:'leve',    i:2,c:4,p:1, rp:1, pen:1},
+  {n:'Cota de malha',      cl:'média',   i:1,c:8,p:1, rp:1, pen:2},
+  {n:'Brigandina',         cl:'média',   i:4,c:8,p:3, rp:1, pen:2},
+  {n:'Lamelar',            cl:'média',   i:3,c:8,p:3, rp:1, pen:2},
+  {n:'Placa de transição', cl:'pesada',  i:4,c:10,p:3,rp:2, pen:3},
+  {n:'Placa de munição',   cl:'pesada',  i:4,c:9,p:4, rp:2, pen:3},
+  {n:'Placa completa',     cl:'pesada',  i:6,c:11,p:4,rp:3, pen:3},
+];
+// Quase-Acerto por classe (dado da arma) e por classe de armadura
+const QA_W = {1:{b:3,d:2}, 2:{b:2,d:4}, 3:{b:1,d:6}};
+const QA_A = {nenhuma:{b:0,r:0}, leve:{b:1,r:0}, 'média':{b:2,r:2}, pesada:{b:3,r:4}};
+const MODE_CAT = {corte:'corte', impacto:'impacto', projetil:'perfuracao', perfConc:'perfuracao'};
+const GATE_MODES = {projetil:1, perfConc:1};
+
+// ---------- mecânica de dados ----------
+const floor=Math.floor;
+function somaToPool(S){return {dice:floor(S/2), bonus:(S%2)?2:0};}
+function notation(S){const p=somaToPool(S);return p.dice+"d6"+(p.bonus?("+"+p.bonus):"");}
+function topkPMF(rolled,keep){
+  const N=rolled;
+  if(N<=0) return {0:1};
+  if(keep>=N){let pmf={0:1};for(let i=0;i<N;i++){const np={};for(const s in pmf)for(let f=1;f<=6;f++)np[+s+f]=(np[+s+f]||0)+pmf[s]/6;pmf=np;}return pmf;}
+  const fact=[1];for(let i=1;i<=N;i++)fact[i]=fact[i-1]*i;
+  const pmf={};
+  (function rec(face,rem,counts){
+    if(face===6){const c6=counts.concat([rem]);let w=fact[N];for(const c of c6)w/=fact[c];
+      let need=keep,s=0;for(let f=6;f>=1;f--){const t=Math.min(need,c6[f-1]);s+=t*f;need-=t;if(need===0)break;}
+      pmf[s]=(pmf[s]||0)+w;return;}
+    for(let c=0;c<=rem;c++)rec(face+1,rem-c,counts.concat([c]));
+  })(1,N,[]);
+  const tot=Math.pow(6,N);for(const k in pmf)pmf[k]/=tot;return pmf;
+}
+function pmfNd6(n){let p={0:1};for(let i=0;i<n;i++){const np={};for(const s in p)for(let f=1;f<=6;f++)np[+s+f]=(np[+s+f]||0)+p[s]/6;p=np;}return p;}
+function addPt(o,k,w){o[k]=(o[k]||0)+w;}
+
+const $=id=>document.getElementById(id);
+
+// preencher selects
+const wSel=$('aWeapon'); WEAPONS.forEach((w,i)=>{const o=document.createElement('option');o.value=i;o.textContent=w.n;wSel.appendChild(o);});
+const aSel=$('dArmor'); ARMORS.forEach((a,i)=>{const o=document.createElement('option');o.value=i;o.textContent=a.n;aSel.appendChild(o);});
+wSel.value=4; aSel.value=1; // Espada Longa vs Nenhuma
+
+function applyWeapon(){
+  const w=WEAPONS[+wSel.value]; if(!w.cl) return;
+  $('aDie').value=w.die; $('aAcc').value=w.acc; $('aHands').value=w.hands; $('aMode').value=w.mode; $('aPerf').value=w.perf;
+}
+function applyArmor(){
+  const a=ARMORS[+aSel.value]; if(!a.cl) return;
+  $('dSi').value=a.i; $('dSc').value=a.c; $('dSp').value=a.p; $('dRp').value=a.rp; $('dPen').value=a.pen;
+}
+wSel.addEventListener('change',()=>{applyWeapon();update();});
+aSel.addEventListener('change',()=>{applyArmor();update();});
+
+function update(){
+  if($('lock').checked){$('dS').value=$('aS').value;$('dS').disabled=true;} else {$('dS').disabled=false;}
+  const aS=+$('aS').value, aE=+$('aE').value, aC=+$('aC').value;
+  const die=+$('aDie').value, acc=+$('aAcc').value, forca=+$('aFor').value, hands=+$('aHands').value;
+  const mode=$('aMode').value, perf=+$('aPerf').value;
+  const second=$('aSecond').checked, aggr=$('aAggr').checked, aPen=+$('aPen').value, aB=+$('aB').value;
+  const dS=+$('dS').value, dE=+$('dE').value, dC=+$('dC').value, dVig=+$('dVig').value;
+  const si=+$('dSi').value, sc=+$('dSc').value, sp=+$('dSp').value, rp=+$('dRp').value;
+  const dPen=+$('dPen').value, applyPen=$('dApplyPen').checked, dTac=+$('dTac').value, dB=+$('dB').value, PV=+$('dPV').value;
+
+  // labels
+  $('aSv').textContent=aS+" → "+notation(aS); $('dSv').textContent=dS+" → "+notation(dS);
+  $('aEv').textContent="+"+aE+"d6"; $('aCv').textContent=aC; $('aDiev').textContent=die+"d6";
+  $('aAccv').textContent=(acc>=0?"+":"")+acc; $('aForv').textContent=forca;
+  $('aPerfv').textContent="N"+perf; $('aPenv').textContent="−"+aPen+"d6"; $('aBv').textContent=(aB>=0?"+":"")+aB;
+  $('dEv').textContent=dE; $('dCv').textContent=dC; $('dVigv').textContent=dVig;
+  $('dSiv').textContent=si; $('dScv').textContent=sc; $('dSpv').textContent=sp; $('dRpv').textContent="N"+rp;
+  $('dPenv').textContent="−"+dPen; $('dTacv').textContent=(dTac>=0?"+":"")+dTac; $('dBv').textContent=(dB>=0?"+":"")+dB; $('dPVv').textContent=PV;
+  $('aWClass').textContent = WEAPONS[+wSel.value].cl ? WEAPONS[+wSel.value].n : "manual";
+  $('dAClass').textContent = ARMORS[+aSel.value].cl ? ARMORS[+aSel.value].n : "manual";
+  $('aPerfRow').style.display = GATE_MODES[mode] ? '' : 'none';
+
+  // pool do ataque (com penalidade de dados e especialidade)
+  const pool=somaToPool(aS);
+  const keep=Math.max(1, pool.dice - aPen);
+  const rolled=keep + aE;
+  const attackFlat = pool.bonus + acc + aC*2 + (aggr?2:0) + (second?-2:0) + aB;
+  const pmf=topkPMF(rolled, keep);
+
+  // defesa efetiva
+  const baseDef = dS*2 + dE + dC*2 + dB;
+  const effDef = baseDef + dTac - (applyPen?dPen:0);
+
+  // Quase-Acerto
+  const qaW = QA_W[die] || {b:0,d:0};
+  const aCl = ARMORS[+aSel.value].cl;
+  const qaA = QA_A[aCl] || {b:0,r:0};
+  const qaMargin = qaW.b + qaA.b;
+  const grazeDmg = Math.max(0, qaW.d - qaA.r);
+
+  // soak
+  const soakNat = (mode==='impacto') ? dVig : floor(dVig/2);
+  const cat = MODE_CAT[mode];
+  const armSoak = cat==='impacto'?si : cat==='corte'?sc : sp;
+  const soakTotal = soakNat + dC*1 + armSoak;
+  const gateClosed = GATE_MODES[mode] && (perf < rp);
+  const dmgAdd = forca*(hands===2?2:1) - soakTotal + (second?-2:0);
+
+  // agregação
+  const dmg={}; let hit=0,graze=0,miss=0; const marg={0:0,1:0,2:0,3:0};
+  let minT=Infinity,maxT=-Infinity,meanT=0;
+  for(const s in pmf){const p=pmf[s];const t=(+s)+attackFlat; meanT+=t*p; if(t<minT)minT=t; if(t>maxT)maxT=t;
+    if(t>effDef){hit+=p; const m=floor((t-effDef)/6); marg[Math.min(3,m)]+=p;
+      if(gateClosed){addPt(dmg,0,p);} else {const dice=die+m; const dp=pmfNd6(dice);
+        for(const d in dp){addPt(dmg, Math.max(0,(+d)+dmgAdd), dp[d]*p);}}
+    } else if(t>=effDef-qaMargin){graze+=p; addPt(dmg, grazeDmg, p);}
+    else {miss+=p; addPt(dmg,0,p);}
+  }
+  // métricas de dano
+  let eDmg=0; for(const v in dmg) eDmg+=(+v)*dmg[v];
+  const pZero = dmg[0]||0;
+  let hitMean=0; if(hit>0){ // dano médio quando acerta cheio
+    let acc2=0; for(const s in pmf){const t=(+s)+attackFlat; if(t>effDef){const m=floor((t-effDef)/6);
+      if(gateClosed){} else {const dice=die+m;const dp=pmfNd6(dice);for(const d in dp)acc2+=Math.max(0,(+d)+dmgAdd)*dp[d]*pmf[s];}}}
+    hitMean=acc2/hit;
+  }
+
+  // render métricas
+  $('rollNot').textContent = aE>0 ? `rola ${rolled}d6, mantém ${keep}` : `${keep}d6`+(pool.bonus?`+${pool.bonus}`:'');
+  const fParts=[]; if(acc)fParts.push(`${acc>=0?'+':''}${acc} acerto`); if(aC)fParts.push(`+${aC*2} C`); if(aggr)fParts.push('+2 postura'); if(second)fParts.push('−2 sec'); if(aB)fParts.push(`${aB>=0?'+':''}${aB}`);
+  $('rollBreak').textContent=fParts.join(' ');
+  $('rollRange').textContent=`${minT} – ${meanT.toFixed(1)} – ${maxT}`;
+  $('defVal').textContent=effDef;
+  $('defBreak').textContent=`${dS}×2`+(dE?`+${dE}e`:'')+(dC?`+${dC*2}C`:'')+(dTac?` ${dTac>=0?'+':''}${dTac}t`:'')+(applyPen&&dPen?` −${dPen}p`:'');
+  $('edmg').textContent=eDmg.toFixed(2);
+  $('edmgBreak').textContent = `cheio ${hitMean.toFixed(1)} · raspão ${grazeDmg}`;
+  const swings = eDmg>0 ? PV/eDmg : Infinity;
+  $('swings').textContent = isFinite(swings)? Math.ceil(swings) : '∞';
+  $('swingsBreak').textContent = isFinite(swings)? `~${swings.toFixed(1)} (PV ${PV})` : 'dano 0';
+
+  // barra hit/graze/miss
+  $('segHit').style.width=(hit*100)+'%'; $('segHit').textContent= hit>0.08?`${(hit*100).toFixed(0)}% acerto`:'';
+  $('segGraze').style.width=(graze*100)+'%'; $('segGraze').textContent= graze>0.08?`${(graze*100).toFixed(0)}% raspão`:'';
+  $('segMiss').style.width=(miss*100)+'%'; $('segMiss').textContent= miss>0.08?`${(miss*100).toFixed(0)}% erro`:'';
+
+  // histograma: P(dano ≥ X) e P(dano=0); margem
+  const cum=x=>{let s=0;for(const v in dmg)if(+v>=x)s+=dmg[v];return s;};
+  const thr=[1,5,10,15,20,25];
+  let h=`<div class="mini">Distribuição do dano por golpe</div>`;
+  h+=`<div class="hbar"><div class="lab">dano = 0</div><div class="track"><div class="fill" style="width:${(pZero*100).toFixed(1)}%;background:var(--bad)"></div></div><div class="pct">${(pZero*100).toFixed(0)}%</div></div>`;
+  for(const x of thr){const pc=cum(x); if(x>maxDmgGuess(die,dmgAdd)&&pc<0.005)continue;
+    h+=`<div class="hbar"><div class="lab">dano ≥ ${x}</div><div class="track"><div class="fill" style="width:${(pc*100).toFixed(1)}%"></div></div><div class="pct">${(pc*100).toFixed(0)}%</div></div>`;}
+  h+=`<div class="mini" style="margin-top:10px">Margens quando acerta cheio</div>`;
+  for(let m=0;m<=3;m++){const lab=m===3?'3+':m; const pc=marg[m];
+    h+=`<div class="hbar"><div class="lab">Margem ${lab} (${m===3?'+3d6+':'+'+m+'d6'} dano)</div><div class="track"><div class="fill" style="width:${(pc*100).toFixed(1)}%;background:var(--good)"></div></div><div class="pct">${(pc*100).toFixed(0)}%</div></div>`;}
+  $('hist').innerHTML=h;
+
+  // nota interpretativa
+  let n='';
+  if(gateClosed) n=`<b>Resvala:</b> o Nível de Perfuração da arma (N${perf}) é menor que a Resistência da armadura (N${rp}) — o acerto cheio causa <b>0</b> (o gate não abre). Só o Quase-Acerto e a troca de modo furam essa guarda. `;
+  if(effDef>maxT) n+=`Acerto cheio <b>impossível</b> (Defesa ${effDef} > máx ${maxT}); só resta o raspão (${(graze*100).toFixed(0)}%). `;
+  else if(effDef<minT) n+=`Acerto <b>automático</b> (Defesa ${effDef} ≤ mín ${minT}). `;
+  const dom = hit>=graze&&hit>=miss?'acertos cheios':(graze>=miss?'raspões':'erros');
+  n+=`Cenário dominado por <b>${dom}</b>. A média do total de ataque (${meanT.toFixed(1)}) fica ${(meanT-effDef>=0?'+':'')}${(meanT-effDef).toFixed(1)} vs a Defesa. Dano médio por golpe (somando acerto, raspão e erro): <b>${eDmg.toFixed(2)}</b>.`;
+  $('note').innerHTML=n;
+}
+function maxDmgGuess(die,add){return 6*(die+5)+add;}
+
+document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',update);el.addEventListener('change',update);});
+applyWeapon(); applyArmor(); update();
+</script>
+</body>
+</html>
