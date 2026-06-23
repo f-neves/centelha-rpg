@@ -30,12 +30,12 @@ Em regra, o humano é o **baseline neutro**:
 | Raça | Custo XP | Teto +1 (até 6) | Teto −1 (máx 4) | Porte |
 |---|:---:|---|---|---|
 | Humano | 0 | — | — | médio |
-| Meio-Elfo | 20 | — | — | médio-alto |
 | Anão | 30 | Vigor | Perspicácia | baixo, corpulento |
-| Halfling | 30 | Destreza | Força | muito baixo |
 | Gnomo | 40 | Vigor | Força | muito baixo |
-| Orc | 40 | Força, Vigor | Perspicácia, Compostura, Inteligência | alto, robusto |
+| Halfling | 30 | Destreza | Força | muito baixo |
 | Elfo | 50 | Destreza | Vigor | esguio |
+| Meio-Elfo | 20 | — | — | médio-alto |
+| Orc | 40 | Força, Vigor | Perspicácia, Compostura, Inteligência | alto, robusto |
 
 </div>
 
@@ -113,14 +113,14 @@ A herança também define **quanto tempo** o corpo dura. Ao cruzar cada marco, o
 
 | Raça | Adulto | Maturidade | Velho¹ | Venerável² |
 |---|:---:|:---:|:---:|:---:|
-| Meio-Orc | 14 | 30 | 45 | 60 |
 | Humano | 15 | 35 | 50 | 70 |
-| Meio-Elfo | 15 | 55 | 85 | 110 |
-| Halfling | 16 | 45 | 70 | 100 |
 | Anão | 18 | 100 | 160 | 220 |
 | Gnomo | 18 | 75 | 125 | 175 |
+| Halfling | 16 | 45 | 70 | 100 |
 | Elfo | 20 | 85 | 170 | 250 |
+| Meio-Elfo | 15 | 55 | 85 | 110 |
+| Meio-Orc | 14 | 30 | 45 | 60 |
 
 </div>
 
-<p class="muted">A <strong>Maturidade</strong> não traz penalidade. ¹ Velho: −1 nos Atributos físicos · ² Venerável: −2 nos Atributos físicos. Idades em anos.</p>
+<p class="muted">Idades em anos. ¹ Velho: −1 nos Atributos físicos · ² Venerável: −2 nos Atributos físicos. Essas penalidades consideram exemplares comuns das raças; seres que estão constantemente em atividade podem demorar mais para apresentar a perda dos atributos.</p>
