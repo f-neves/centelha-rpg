@@ -45,12 +45,12 @@
   },
   {
     "id": "soak",
-    "termo": "Soak",
+    "termo": "Absorção",
     "aliases": [
-      "absorção",
+      "soak",
       "redução de dano"
     ],
-    "definicao": "Absorção de dano. A armadura tem três Soaks — Impacto, Corte e Perfuração (Projétil e Perf. Concentrada usam o de Perfuração). Soak total = natural (Vigor no Impacto, metade do Vigor nos letais) + Centelha + a absorção da armadura na categoria."
+    "definicao": "Absorção de dano. A armadura tem três Absorções — Impacto, Corte e Perfuração (Projétil e Perf. Concentrada usam a de Perfuração). Absorção total = natural (Vigor + Centelha no Impacto; só a Centelha em Corte/Perfuração) + a absorção da armadura na categoria."
   },
   {
     "id": "modos-de-dano",
@@ -63,7 +63,7 @@
       "impacto",
       "modo de ataque"
     ],
-    "definicao": "Os quatro modos de um golpe: Corte, Projétil, Perf. Concentrada e Impacto. Cada arma tem um modo principal (sem custo) e, às vezes, secundários (−2 acerto e −2 dano). A armadura tem três Soaks: Impacto, Corte e Perfuração (Projétil e Perf. Concentrada usam o de Perfuração)."
+    "definicao": "Os quatro modos de um golpe: Corte, Projétil, Perf. Concentrada e Impacto. Cada arma tem um modo principal (sem custo) e, às vezes, secundários (−2 acerto e −2 dano). A armadura tem três Absorções: Impacto, Corte e Perfuração (Projétil e Perf. Concentrada usam a de Perfuração)."
   },
   {
     "id": "penetracao",

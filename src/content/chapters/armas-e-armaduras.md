@@ -7,7 +7,7 @@ resumo: "Classes + Tags: a arma define o estilo, não a potência bruta."
 
 Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a arma define o *estilo*, não a potência bruta. Pegar "a mais forte" não existe — cada escolha vence umas situações e perde outras.
 
-<div class="callout regra"><span class="lbl">Catálogo</span>Para filtrar e comparar todo o equipamento, veja a página de <a href="/equipamentos">Equipamentos</a> — e escolha arma/armadura direto na <a href="/ficha">Ficha</a> para ver o ataque, a Defesa e o Soak já calculados.</div>
+<div class="callout regra"><span class="lbl">Catálogo</span>Para filtrar e comparar todo o equipamento, veja a página de <a href="/equipamentos">Equipamentos</a> — e escolha arma/armadura direto na <a href="/ficha">Ficha</a> para ver o ataque, a Defesa e a Absorção já calculada.</div>
 
 ## Como ler uma arma
 
@@ -81,11 +81,11 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Corte · <strong>P</strong> = Perfuração (estocada ou Projétil — usam o mesmo Soak). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −2 ao dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Speed</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> vira 2 mãos por +1 dado e −1 Defesa). O <strong>Quase-Acerto</strong> sai do dado de Dano (1d6 leve, 2d6 média, 3d6 pesada) — ver <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
+<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Corte · <strong>P</strong> = Perfuração (estocada ou Projétil — usam a mesma Absorção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −2 ao dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Speed</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> vira 2 mãos por +1 dado e −1 Defesa). O <strong>Quase-Acerto</strong> sai do dado de Dano (1d6 leve, 2d6 média, 3d6 pesada) — ver <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
 
 ## Armaduras
 
-A armadura **absorve dano depois do acerto**, com **três Soaks**: **Impacto**, **Corte** e **Perfuração** (calibrados em pontos). Projétil e Perf. Concentrada usam o mesmo **Soak de Perfuração**. Repare na lógica histórica: a **placa** quase zera o **corte** (ninguém corta bom aço), mas o **impacto** atravessa o aço e quebra o corpo dentro. A **Perfuração** funciona ao contrário: é **difícil de furar** — cada armadura tem um **Nível** (Resistência à Perfuração, 0–5) que o Nível de Perfuração da arma precisa alcançar, senão o golpe **resvala** —, mas, **quando furada, absorve pouco** (o Soak de Perfuração é baixo de propósito). A **Penalidade** incide nas ações físicas. O efeito da armadura no **Quase-Acerto** (bônus de margem + redução do raspão) é fixo pela classe — ver [Quase-Acerto](/regras/quase-acerto).
+A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impacto**, **Corte** e **Perfuração** (calibrados em pontos). Projétil e Perf. Concentrada usam a mesma **Absorção de Perfuração**. Repare na lógica histórica: a **placa** quase zera o **corte** (ninguém corta bom aço), mas o **impacto** atravessa o aço e quebra o corpo dentro. A **Perfuração** funciona ao contrário: é **difícil de furar** — cada armadura tem um **Nível** (Resistência à Perfuração, 0–5) que o Nível de Perfuração da arma precisa alcançar, senão o golpe **resvala** —, mas, **quando furada, absorve pouco** (a Absorção de Perfuração é baixa de propósito). A **Penalidade** incide nas ações físicas. O efeito da armadura no **Quase-Acerto** (bônus de margem + redução do raspão) é fixo pela classe — ver [Quase-Acerto](/regras/quase-acerto).
 
 <div class="table-wrap">
 
@@ -103,7 +103,7 @@ A armadura **absorve dano depois do acerto**, com **três Soaks**: **Impacto**, 
 
 </div>
 
-<p class="muted"><strong>Penalidade:</strong> incide em qualquer ação física, incluindo <strong>Ataque, Esquiva, Bloqueio, Deslocamento e Salto</strong>; para <strong>Furtividade e atividades delicadas, dobra</strong>. <strong>Empilhar:</strong> dá para vestir mais de uma peça (gambeson sob malha, p.ex.) — vale o <strong>maior Soak de cada categoria</strong>, o <strong>maior Nível</strong> (a Resistência à Perfuração NUNCA soma) e a <strong>soma das Penalidades</strong>. A placa te torna um tanque, mas mais fácil de acertar e furtivo péssimo. Armadura não reduz o Bloqueio diretamente — mas a Penalidade dela, sim.</p>
+<p class="muted"><strong>Penalidade:</strong> incide em qualquer ação física, incluindo <strong>Ataque, Esquiva, Bloqueio, Deslocamento e Salto</strong>; para <strong>Furtividade e atividades delicadas, dobra</strong>. <strong>Empilhar:</strong> dá para vestir mais de uma peça (gambeson sob malha, p.ex.) — vale o <strong>maior Absorção de cada categoria</strong>, o <strong>maior Nível</strong> (a Resistência à Perfuração NUNCA soma) e a <strong>soma das Penalidades</strong>. A placa te torna um tanque, mas mais fácil de acertar e furtivo péssimo. Armadura não reduz o Bloqueio diretamente — mas a Penalidade dela, sim.</p>
 
 ## Escudos
 
@@ -127,10 +127,10 @@ O escudo não absorve: é **bônus de Defesa** (ajuda a *não* ser acertado), e 
 
 A pedra-papel-tesoura sai dos números acima:
 
-- **Placa completa × Corte** = 11 de Soak: uma espada (3d6+10 no topo) faz **~7**; uma lâmina leve, quase nada. **Ninguém corta placa de leve.**
+- **Placa completa × Corte** = 11 de Absorção: uma espada (3d6+10 no topo) faz **~7**; uma lâmina leve, quase nada. **Ninguém corta placa de leve.**
 - **Placa × Projétil/Perf. nível 0–2** (flecha, lança, adaga, besta, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão.
-- **Placa × Impacto** (maça, martelo) = só 6 de Soak: o malho **passa** (a vulnerabilidade nunca resolvida — a principal via contra placa).
-- **Placa × Perfuração nível 3+** (cerco, magia, armas épicas) = o gate abre — e aí a placa só tem **4** de Soak de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
+- **Placa × Impacto** (maça, martelo) = só 6 de Absorção: o malho **passa** (a vulnerabilidade nunca resolvida — a principal via contra placa).
+- **Placa × Perfuração nível 3+** (cerco, magia, armas épicas) = o gate abre — e aí a placa só tem **4** de Absorção de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
 - Sem armadura, o **corte** brilha; a **malha** mata o corte mas cede ao impacto; cada armadura tem seu furo.
 
 <div class="callout"><span class="lbl">Como derrotar cada armadura</span>O cavaleiro de placas é quase intocável por gume, flecha e estocada, mas um camponês com um malho (Impacto) ainda o amassa — e três deles o derrubam pela lentidão. Contra o topo da placa, o caminho é Impacto, Perfuração nível 3+ (cerco/magia), Proeza ou feitiçaria.</div>

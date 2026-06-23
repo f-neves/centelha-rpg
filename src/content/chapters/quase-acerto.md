@@ -17,7 +17,7 @@ Se você errou por **um valor menor ou igual à Margem**, é um raspão. O rasp�
 
 <p class="formula">Dano do raspão = Dano QA da arma − Redução QA da armadura (mínimo 0)</p>
 
-O dano do raspão **ignora o Soak normal** (já é o que sobra de um golpe que quase não conectou) e **não rola dados** — é um valor fixo. Não abre Margem de dano, não dispara Sangramento por si só: é só o arranhão.
+O dano do raspão **ignora a Absorção normal** (já é o que sobra de um golpe que quase não conectou) e **não rola dados** — é um valor fixo. Não abre Margem de dano, não dispara Sangramento por si só: é só o arranhão.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um cavaleiro de <strong>placa</strong> com a <strong>espada longa</strong> (arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong> — errou por 3. A Margem é <strong>2 (arma média) + 3 (placa) + 2 (Centelha de Kael) = 7</strong>. Como 3 ≤ 7, raspa. O dano é <strong>4 (arma média) − 6 (redução da placa) = 0</strong>: faíscas no aço. Contra um alvo de <strong>couro</strong>, a mesma arma faria <strong>4 − 0 = 4</strong> de raspão.</div>
 
@@ -52,7 +52,7 @@ A arma **leve** raspa muito (Margem larga) mas raso; a **pesada** raspa pouco ma
 
 </div>
 
-Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a Margem do atacante — um alvo encouraçado é maior, mais lento e mais fácil de roçar. Em troca, a **Redução** come o dano do raspão. Resultado: o cavaleiro de placa é nicado quase toda rodada, mas a maioria desses nicks bate em **0**. A armadura leve quase não muda a Margem e não reduz nada — protege pelo Soak, não contra raspões.
+Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a Margem do atacante — um alvo encouraçado é maior, mais lento e mais fácil de roçar. Em troca, a **Redução** come o dano do raspão. Resultado: o cavaleiro de placa é nicado quase toda rodada, mas a maioria desses nicks bate em **0**. A armadura leve quase não muda a Margem e não reduz nada — protege pelo Absorção, não contra raspões.
 
 <div class="callout"><span class="lbl">Empilhar</span>Ao usar mais de uma peça de armadura, <strong>some</strong> os Bônus de Quase-Acerto. A Redução do Raspão não é somada, use apenas a <strong>maior</strong> Redução entre elas.</div>
 
@@ -65,4 +65,4 @@ A Margem e o dano do raspão são o ponto de partida; várias coisas os ajustam:
 - **Proezas** — Técnicas podem ampliar a Margem, transformar raspões em golpes de verdade, fazer o raspão sangrar, ou (na defesa) anular o Quase-Acerto contra o portador. São o caminho herói para tornar a válvula uma arma.
 - **Magia (Feitiçaria)** — feitiços podem conceder os mesmos efeitos por uma cena (afiar, amaldiçoar a guarda do alvo, blindar contra raspões) ou criar raspões a partir de efeitos que normalmente nem rolam para acertar.
 
-<p class="muted">Em todos os casos, o raspão continua <strong>ignorando o Soak normal</strong> e sendo um valor fixo — os modificadores mexem na Margem, no Dano do raspão ou na Redução, não na natureza do Quase-Acerto.</p>
+<p class="muted">Em todos os casos, o raspão continua <strong>ignorando a Absorção normal</strong> e sendo um valor fixo — os modificadores mexem na Margem, no Dano do raspão ou na Redução, não na natureza do Quase-Acerto.</p>

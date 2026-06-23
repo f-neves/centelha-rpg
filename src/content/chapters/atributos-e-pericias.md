@@ -33,7 +33,7 @@ Essa régua é geral: um **3** em Força é "forte"; um **3** em Inteligência �
 
 **Destreza** — Agilidade, precisão e coordenação fina. É a base da maioria dos ataques e da Defesa por Esquiva. *Principais Habilidades:* Esquiva, Furtividade, Prestidigitação, Atirador, Atletismo, Ofícios Gerais — e a *finesse* nas armas.
 
-**Vigor** — Resistência, fôlego e saúde: o quanto o corpo aguenta. Define os **Pontos de Vida** e o **Soak** natural (a carne que absorve dano). *Principais Habilidades:* Resistência, Atletismo, Sobrevivência.
+**Vigor** — Resistência, fôlego e saúde: o quanto o corpo aguenta. Define os **Pontos de Vida** e o **Absorção** natural (a carne que absorve dano). *Principais Habilidades:* Resistência, Atletismo, Sobrevivência.
 
 ### Sociais — o trato com os outros
 

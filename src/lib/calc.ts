@@ -91,9 +91,9 @@ export const MODO_SOAK: Record<Modo, SoakCat> = { corte: 'corte', projetil: 'per
 export const SOAK_CATS: SoakCat[] = ['impacto', 'corte', 'perfuracao'];
 export const SOAK_CAT_NOME: Record<SoakCat, string> = { impacto: 'Impacto', corte: 'Corte', perfuracao: 'Perfuração' };
 
-/** Soak natural do corpo: Impacto = Vigor cheio; corte e perfuração = metade do Vigor. */
+/** Absorção natural do corpo: Impacto = Vigor cheio; Corte e Perfuração = 0 (a carne não para o fio/ponta — só a Centelha e a armadura). A Centelha é somada à parte (em `soak()`), então: I = Vigor + Centelha, C = Centelha, P = Centelha. */
 export function soakNatural(vigor: number, cat: Modo | SoakCat) {
-  return cat === 'impacto' ? vigor : floor(vigor / 2);
+  return cat === 'impacto' ? vigor : 0;
 }
 
 /** Empilha peças de armadura: maior Soak de cada categoria; Resist.Perf (Nível) = MAIOR (nunca soma); Penalidade SOMA. */

@@ -15,10 +15,10 @@ Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 2. **Na sua vez, escolha uma ação.** Cada ação custa um tempo (a **Speed**); após agir, você só volta quando esses Ticks passarem.
 3. **Para acertar, role seu pool de ataque** e compare com a **Defesa** do alvo — um número fixo. Se o total **superar** a Defesa, você acerta (empate erra).
 4. **Quanto melhor o acerto, mais forte o golpe:** a cada **6 pontos acima da Defesa**, o dano ganha **+1d6** — isso se chama **Margem**.
-5. **O dano, menos o Soak** (a absorção do alvo), vira ferimento.
+5. **O dano, menos a Absorção** (a absorção do alvo), vira ferimento.
 6. **Quem chega a 0 de Vida cai.** Ferimentos, morte e sangramento são assunto do próximo capítulo, [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um bandido de <strong>Defesa 10</strong>. Seu pool de ataque dá <strong>3d6+5</strong>; ele rola e soma <strong>16</strong>. 16 supera 10 → acerta, com diferença de 6 — exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ele rola o dano da espada (2d6) + a Margem (1d6) + a Força, desconta o Soak do bandido, e o que sobra abre ferimento.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um bandido de <strong>Defesa 10</strong>. Seu pool de ataque dá <strong>3d6+5</strong>; ele rola e soma <strong>16</strong>. 16 supera 10 → acerta, com diferença de 6 — exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ele rola o dano da espada (2d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
 
 No osso, é só isso. O resto do capítulo são as camadas que dão profundidade tática: **quando** agir, **como** se mover, **usar a posição** e **desencadear Técnicas**.
 
@@ -58,9 +58,9 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 ## Dano e Armadura
 
-<p class="formula">Dano = (Dado da Arma + Margem) + Força − Soak</p>
+<p class="formula">Dano = (Dado da Arma + Margem) + Força − Absorção</p>
 
-O **Dado da Arma** é 1d6 (leve), 2d6 (média) ou 3d6 (pesada). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
+O **Dado da Arma** é 1d6 (leve), 2d6 (média) ou 3d6 (pesada). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força** — **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
 
 ### Os quatro modos de dano
 
@@ -71,18 +71,17 @@ Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um — você
 - **Perf. Concentrada** — ponta rígida com energia concentrada (estocada, adaga de rondel, bico de picareta). Letal.
 - **Impacto** — maça, martelo, malho; também socos e quedas. Em regra **nocauteia** (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
 
-O Soak total de um golpe é **Soak natural + Centelha + a absorção da armadura**. A armadura tem **três Soaks** — Impacto, Corte e Perfuração —, e **Projétil e Perf. Concentrada usam o mesmo Soak de Perfuração**:
+A **Absorção** total de um golpe é **Absorção natural + a absorção da armadura**. A armadura tem **três Absorções** — Impacto, Corte e Perfuração —, e **Projétil e Perf. Concentrada usam a mesma Absorção de Perfuração**:
 
-- **Soak natural:** Vigor cheio contra **Impacto**; metade do Vigor contra os letais (Corte, Projétil, Perf.).
-- **+ Centelha:** some o nível de Centelha a *todos* os Soaks (sua dureza sobre-humana protege em qualquer frente).
-- **+ armadura:** a placa quase zera o Corte, mal segura o Impacto e tem Perfuração baixa. Empilhar peças vale o **maior Soak de cada categoria**; ver [Armas & Armaduras](/regras/armas-e-armaduras).
+- **Absorção natural:** **Vigor + Centelha** contra o **Impacto** (o corpo e a fagulha amortecem a pancada); **só a Centelha** contra os letais (Corte, Projétil, Perf.) — a carne nua não para o fio nem a ponta, apenas a dureza sobre-humana da **Centelha** o faz. Um mortal (Centelha 0) tem **0** de Absorção natural contra lâminas: depende inteiramente da armadura.
+- **+ armadura:** a placa quase zera o Corte, mal segura o Impacto e tem Perfuração baixa. Empilhar peças vale a **maior Absorção de cada categoria**; ver [Armas & Armaduras](/regras/armas-e-armaduras).
 
 ### O gate de Perfuração
 
 Os modos **Projétil** e **Perf. Concentrada** têm um **Nível de Perfuração** (0–5) e enfrentam o **Nível** (Resistência à Perfuração) da armadura:
 
 - Se o Nível de Perfuração da arma for **menor** que o da armadura, o golpe **resvala — dano 0** (nem rola).
-- Se for **igual ou maior**, o gate abre: rola o dano e subtrai o **Soak de Perfuração** (baixo — ao furar, encontra pouca proteção).
+- Se for **igual ou maior**, o gate abre: rola o dano e subtrai a **Absorção de Perfuração** (baixa — ao furar, encontra pouca proteção).
 
 **Corte e Impacto não passam pelo gate** — sempre subtraem a absorção direto. É por isso que a placa completa (Nível 3) é à prova de qualquer arma de mão (espada, flecha, lança, besta, picareta param em N0–N2), cedendo só ao Impacto, à perfuração nível 3+ (cerco, magia), Proeza ou feitiçaria. O **Nível nunca soma** ao empilhar armaduras: vale sempre o maior.
 
@@ -99,7 +98,9 @@ Errar por pouco ainda raspa o alvo. Como o **Quase-Acerto** funciona em detalhe 
 Sua Defesa pode vir de duas fontes, e você usa **a melhor** delas contra cada golpe:
 
 - **Esquiva** — com a habilidade Esquiva, mais a mobilidade do terreno. Some sai da frente.
-- **Bloqueio** — com a habilidade da própria arma ou Escudos, mais a Defesa da Arma e o escudo. Apara o golpe.
+- **Bloqueio** — com a habilidade da própria arma ou Escudos, mais a **Defesa da Arma** e o escudo. Apara o golpe.
+
+A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** — o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**. Quem usa **uma só mão** pode ocupar a outra para defender: um **escudo** (+3 a +4) ou uma **arma de parada na mão inábil** (+1) eleva o Bloqueio. É a troca central da empunhadura — **mais dano e alcance com as duas mãos, ou mais guarda com uma mão livre.**
 
 Mas **nem tudo se bloqueia ou se esquiva** — uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída.
 
@@ -164,7 +165,7 @@ Você pode dividir sua ação em vários golpes, ao custo de precisão; e cada i
 | 2 ataques | 1º −1d6, 2º −2d6 |
 | 3 ataques | 1º −2d6, 2º −3d6, 3º −4d6 |
 
-Cada ataque extra também reduz sua Esquiva (−1) e seu Bloqueio (−2) até a próxima ação. Um único oponente brilhante resiste a muitos fracos — mas a maré da multidão acaba furando qualquer guarda.
+<div class="callout regra"><span class="lbl">Guarda sob pressão</span>Cada ataque que você <strong>faz ou recebe</strong> reduz sua <strong>Esquiva e Bloqueio em −2</strong>, e o efeito <strong>acumula até a sua próxima ação</strong> — quando você age, a guarda se refaz e o acúmulo zera. <strong>Sem teto:</strong> ninguém desvia de uma dúzia de golpes. Atacar te expõe; ser cercado te expõe muito mais. Um único oponente brilhante resiste a alguns fracos — mas a maré da multidão acaba furando qualquer guarda.</div>
 
 A posição fecha o cerco: quem ataca pelo **flanco ou pelas costas** ganha o **−2 na Defesa** do alvo, porque ele não pode voltar a melhor guarda contra todos ao mesmo tempo. Dois inimigos coordenados — um prendendo a frente, outro contornando — combinam a penalidade de pressão com a de flanco: é assim que o número vira vantagem tática, e não só mais dados.
 

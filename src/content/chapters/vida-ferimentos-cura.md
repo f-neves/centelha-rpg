@@ -7,7 +7,7 @@ resumo: "Pontos de Vida, limiares de ferimento, nocaute, morte e recuperação."
 
 Heróis aguentam o tranco. O combate não começa com a morte à espreita a cada golpe — a não ser que a diferença de poder seja gritante. Os **Pontos de Vida** medem o quanto você suporta antes de cair.
 
-Quando você sofre dano (o que sobra do golpe depois do Soak), você o **marca** na sua folha. Ele vem em duas trilhas, que se comportam de modo diferente:
+Quando você sofre dano (o que sobra do golpe depois da Absorção), você o **marca** na sua folha. Ele vem em duas trilhas, que se comportam de modo diferente:
 
 - **Impacto** (contundente) — em regra só **nocauteia**: derruba, mas não mata.
 - **Letal** (corte, projétil e perfuração) — **fere de verdade**: é o que tira vidas.
@@ -41,7 +41,7 @@ Cair a 0 PV deixa você **incapacitado**; se o golpe que o derrubou foi sobretud
 
 ## Sangramento e Estabilização
 
-Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. No **início de cada rodada** do personagem, um Sangramento **N** causa **N de dano Letal** (já passa direto pelo Soak). Ele é lento de propósito: há tempo de reagir antes que mate.
+Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. No **início de cada rodada** do personagem, um Sangramento **N** causa **N de dano Letal** (já passa direto pelo Absorção). Ele é lento de propósito: há tempo de reagir antes que mate.
 
 Há duas formas de começar a sangrar:
 

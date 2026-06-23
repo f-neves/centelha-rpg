@@ -57,7 +57,7 @@
   },
   {
     "id": "lanca", "nome": "Lança", "classe": "haste", "atrib": "destreza", "pericia": "armas-duas-maos",
-    "dado": 2, "acerto": 1, "defesaArma": 2, "maos": 2, "ticks": 6, "folego": 24,
+    "dado": 2, "acerto": 1, "defesaArma": 2, "maos": 2, "ticks": 6, "folego": 24, "forcaMult": 1,
     "tipoDano": "perfConc", "pen": 1,
     "modos": [ { "tipo": "perfConc", "perf": 1, "principal": true } ],
     "tags": [ "alcance", "arremessável" ],

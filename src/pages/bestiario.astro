@@ -13,7 +13,7 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 ---
 <Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — capangas, soldados, elites, feras e chefes, com blocos de combate calculados.">
   <h1>Bestiário & NPCs</h1>
-  <p class="lead">Adversários prontos para a mesa, do camponês ao semideus menor. Os números seguem as mesmas fórmulas dos personagens — PV, Defesa, Soak, Iniciativa e pools de ataque já calculados.</p>
+  <p class="lead">Adversários prontos para a mesa, do camponês ao semideus menor. Os números seguem as mesmas fórmulas dos personagens — PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados.</p>
 
   <div class="callout regra"><span class="lbl">Como rodar</span>O bloco traz o <strong>pool de ataque</strong> (já com o Acerto da arma) e o <strong>dano</strong> prontos para rolar. <strong>Ameaça</strong> (◆) é uma referência rápida de perigo, de 1 a 6. NPCs com <strong>Centelha</strong> usam Técnicas/Artes — os links abrem o efeito.</div>
 
@@ -42,7 +42,7 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
           <span><b>PV</b> {i.pv}</span>
           <span><b>Defesa</b> {i.defesa}</span>
           <span><b>Def. Mental</b> {i.defesaMental}</span>
-          <span><b>Soak</b> Im{i.soak.impacto}/Co{i.soak.corte}/Pf{i.soak.perfuracao}{i.resistPerf ? ` · Nível ${i.resistPerf}` : ''}</span>
+          <span><b>Absorção</b> Im{i.soak.impacto}/Co{i.soak.corte}/Pf{i.soak.perfuracao}{i.resistPerf ? ` · Nível ${i.resistPerf}` : ''}</span>
           <span><b>Iniciativa</b> {i.iniciativa}</span>
         </div>
         <ul class="besta-atk">

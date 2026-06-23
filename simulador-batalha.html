@@ -63,7 +63,7 @@
     Ataque = <code>[melhores N de (N+Esp)d6]</code> + Acerto + Centelha×2 + bônus &nbsp;·&nbsp;
     Defesa = <code>(Dex+Hab)×2 + Esp + Centelha×2</code> − penalidade da armadura &nbsp;·&nbsp;
     Margem = <code>⌊(total−Defesa)/6⌋</code> &nbsp;·&nbsp;
-    Dano = <code>(dado+Margem)d6 + Força×mãos − Soak</code>. Sem Fôlego.
+    Dano = <code>(dado+Margem)d6 + Força×mãos − Absorção</code>. Sem Fôlego.
   </p>
 
   <div class="grid">
@@ -98,13 +98,13 @@
       <div class="check"><input type="checkbox" id="lock" checked><label for="lock">Mesma graduação do atacante</label></div>
       <div class="row"><label>Especialidade</label><input type="range" id="dE" min="0" max="3" value="0"><span class="val" id="dEv"></span></div>
       <div class="row"><label>Centelha</label><input type="range" id="dC" min="0" max="5" value="0"><span class="val" id="dCv"></span></div>
-      <div class="row"><label>Vigor (Soak natural)</label><input type="range" id="dVig" min="0" max="8" value="3"><span class="val" id="dVigv"></span></div>
+      <div class="row"><label>Vigor (Absorção natural)</label><input type="range" id="dVig" min="0" max="8" value="3"><span class="val" id="dVigv"></span></div>
       <hr class="sep">
-      <div class="mini">Soak da armadura por categoria · Resist. à Perfuração (Nível)</div>
+      <div class="mini">Absorção da armadura por categoria · Resist. à Perfuração (Nível)</div>
       <div class="two">
-        <div class="row"><label>Soak Impacto</label><input type="range" id="dSi" min="0" max="12" value="0"><span class="val" id="dSiv"></span></div>
-        <div class="row"><label>Soak Corte</label><input type="range" id="dSc" min="0" max="12" value="0"><span class="val" id="dScv"></span></div>
-        <div class="row"><label>Soak Perfuração</label><input type="range" id="dSp" min="0" max="12" value="0"><span class="val" id="dSpv"></span></div>
+        <div class="row"><label>Absorção Impacto</label><input type="range" id="dSi" min="0" max="12" value="0"><span class="val" id="dSiv"></span></div>
+        <div class="row"><label>Absorção Corte</label><input type="range" id="dSc" min="0" max="12" value="0"><span class="val" id="dScv"></span></div>
+        <div class="row"><label>Absorção Perfuração</label><input type="range" id="dSp" min="0" max="12" value="0"><span class="val" id="dSpv"></span></div>
         <div class="row"><label>Resist. Perfuração</label><input type="range" id="dRp" min="0" max="5" value="0"><span class="val" id="dRpv"></span></div>
       </div>
       <div class="row"><label>Penalidade da armadura</label><input type="range" id="dPen" min="0" max="4" value="0"><span class="val" id="dPenv"></span></div>
@@ -254,7 +254,7 @@ function update(){
   const grazeDmg = Math.max(0, qaW.d - qaA.r);
 
   // soak
-  const soakNat = (mode==='impacto') ? dVig : floor(dVig/2);
+  const soakNat = (mode==='impacto') ? dVig : 0; // Absorção natural: Vigor só no Impacto; Corte/Perf = só Centelha (dC, somado abaixo)
   const cat = MODE_CAT[mode];
   const armSoak = cat==='impacto'?si : cat==='corte'?sc : sp;
   const soakTotal = soakNat + dC*1 + armSoak;

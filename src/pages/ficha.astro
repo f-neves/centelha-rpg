@@ -59,13 +59,13 @@ import RoladorDados from '../components/RoladorDados.astro';
   <h2 class="barh">Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0 e Ocultismo ≥ nível)</small></h2>
   <div class="cols3" id="artes"></div>
 
-  <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Soak)</small></h2>
+  <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Absorção)</small></h2>
   <div class="equip-row">
     <label>Arma <select id="eq-arma"></select></label>
     <label>Escudo <select id="eq-escudo"></select></label>
   </div>
   <div class="equip-arm">
-    <span class="equip-lbl">Armaduras <small>(empilháveis — vale o maior Soak de cada modo; penalidades somam)</small></span>
+    <span class="equip-lbl">Armaduras <small>(empilháveis — vale a maior Absorção de cada modo; penalidades somam)</small></span>
     <div id="eq-armaduras" class="arm-checks"></div>
   </div>
   <div class="panel" id="combate"></div>
@@ -284,7 +284,7 @@ import RoladorDados from '../components/RoladorDados.astro';
       r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + esp + Centelha − penalidade') +
       r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} × 2) + Vontade + Centelha×2`) +
       r('Defesa Social', defesaSocial({ compostura: A('compostura'), temperanca: VI('temperanca'), centelha: C }), '(Compostura + Temperança + Centelha) × 2') +
-      r('Soak Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor no Impacto, ½ Vigor em Corte/Perf + Centelha + armadura') +
+      r('Absorção Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor + Centelha no Impacto; só Centelha em Corte/Perf; + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade', true) +
       r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick', true) +
@@ -318,7 +318,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     const flat = (w.acerto || 0) + ataqueCentelha(C) - armorPen;
     const pool = `${dados}d6${bonus ? '+2' : ''}${flat ? ` ${sgn(flat)}` : ''}`;
     const dist = w.tags.includes('distância');
-    const fm = regras.derivados.danoForca; const forcaAp = dist ? 0 : forca * (w.maos === 2 ? fm.duasMaos : fm.umaMao);
+    const fm = regras.derivados.danoForca; const forcaAp = dist ? 0 : forca * ((w as any).forcaMult ?? (w.maos === 2 ? fm.duasMaos : fm.umaMao));
     const danoBase = `${w.dado}d6${forcaAp ? ` +${forcaAp}` : ''}`;
     const modos = ((w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[]).slice().sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
     const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
