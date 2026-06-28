@@ -374,7 +374,9 @@
         { "membros": "32–63", "magnitude": 5 }
       ]
     },
-    "ataque": "Uma rolagem por rodada: pool de um capanga + Magnitude d6 no ACERTO e + Magnitude d6 no DANO (o enxame que conecta cai todo em cima). Sem penalidade de guarda extra da Pressão — a ameaça do esquadrão já é a chuva de dados.",
+    "ataque": "O esquadrão faz UM ataque por inimigo engajado, até Magnitude + 1 ataques (teto de frente de combate). Contra um alvo só os golpes concentram numa única rolagem; contra vários, espalham-se um por inimigo. Cada ataque rola o pool de um capanga + Magnitude d6 no ACERTO e + Magnitude d6 no DANO (o enxame que conecta cai todo em cima). Sem penalidade de guarda extra da Pressão — a ameaça já é a chuva de dados.",
+    "ataquesPorRodada": "um por inimigo engajado, até Magnitude + 1",
+    "modos": "Os ataques podem ser de modos diferentes (Impacto / Corte / Perfuração, corpo a corpo ou à distância). Um esquadrão híbrido o bastante — armas variadas — ataca sempre pelo modo de MENOR Absorção do alvo.",
     "defesa": -2,
     "defesaNota": "Defesa do esquadrão = a de um capanga −2 (aglomerado, alvo fácil).",
     "pv": {

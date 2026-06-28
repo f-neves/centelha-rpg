@@ -32,17 +32,22 @@ function pcAtaca(pc, sq) {
   return baixas;
 }
 
-// Esquadrão ataca um PC. M soma no acerto E no dano.
-function hordaAtaca(sq, alvo) {
+// Esquadrão ataca: UM ataque por inimigo engajado, até Magnitude+1 (teto de frente).
+// Cada ataque é concentrado (+M no acerto e +M no dano). Híbrido = menor Absorção do alvo.
+function hordaAtacaMulti(sq, vivos) {
   const M = mag(sq.membros);
-  const dadosAc = pool(sq.membroAtkDados + M);
-  const acerto = soma(dadosAc) + sq.membroAtkFlat;
-  if (acerto <= alvo.def) { linha(`   Esquadrão (Mag ${M}) ataca ${alvo.nome}: ${acerto} vs Def ${alvo.def} → não passa.`); return; }
-  const margem = Math.floor((acerto - alvo.def) / 6);
-  const dadosDn = pool(sq.membroDanoDados + M + margem);
-  const dano = Math.max(0, soma(dadosDn) + sq.membroDanoFlat - alvo.soak);
-  alvo.pv -= dano;
-  linha(`   Esquadrão (Mag ${M}) ataca ${alvo.nome}: ${acerto} vs Def ${alvo.def} → ${dano} de dano. [${alvo.nome} PV ${Math.max(0, alvo.pv)}/${alvo.pvMax}]`);
+  const nAtk = Math.min(M + 1, vivos.length);
+  const ordem = [...vivos].sort((a, b) => a.pv - b.pv); // foca os mais feridos primeiro
+  linha(`   Esquadrão (Mag ${M}) → ${nAtk} ataque(s) [até Magnitude+1 = ${M + 1}, limitado a ${vivos.length} alvo(s)]:`);
+  for (let i = 0; i < nAtk; i++) {
+    const alvo = ordem[i % ordem.length];
+    const acerto = soma(pool(sq.membroAtkDados + M)) + sq.membroAtkFlat;
+    if (acerto <= alvo.def) { linha(`     → ${alvo.nome}: ${acerto} vs Def ${alvo.def} → não passa.`); continue; }
+    const margem = Math.floor((acerto - alvo.def) / 6);
+    const dn = Math.max(0, soma(pool(sq.membroDanoDados + M + margem)) + sq.membroDanoFlat - alvo.soak);
+    alvo.pv -= dn;
+    linha(`     → ${alvo.nome}: ${acerto} vs Def ${alvo.def} (margem ${margem}) → ${dn} de dano. [PV ${Math.max(0, alvo.pv)}/${alvo.pvMax}]`);
+  }
 }
 
 function esquadrao(nome, n, tier) {
@@ -70,9 +75,9 @@ function encontro(titulo, pcs, sq, { maxRodadas = 30, foco = 0 } = {}) {
     // Horda age — foca o alvo de menor PV vivo
     const vivos = pcs.filter(p => p.pv > 0);
     if (!vivos.length) { linha(`\n>>> Todos os PCs caíram na rodada ${r}. A multidão venceu.`); return; }
-    const alvo = vivos.reduce((a, b) => (b.pv < a.pv ? b : a));
-    hordaAtaca(sq, alvo);
-    if (alvo.pv <= 0) linha(`   !! ${alvo.nome} CAIU.`);
+    const pvAntes = new Map(vivos.map(p => [p, p.pv]));
+    hordaAtacaMulti(sq, vivos);
+    vivos.filter(p => p.pv <= 0 && pvAntes.get(p) > 0).forEach(p => linha(`   !! ${p.nome} CAIU.`));
   }
   linha(`\n>>> ${maxRodadas} rodadas sem desfecho.`);
 }

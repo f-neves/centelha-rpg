@@ -1,6 +1,9 @@
 // sim-horda.mjs — valida a Regra de Horda (modelo "esquadrão único" / Magnitude)
 // Decisões travadas pelo usuário:
-//  - Ofensiva exponencial: Magnitude M = floor(log2(membros)); ataque único = pool do membro + M d6.
+//  - Ofensiva exponencial: Magnitude M = floor(log2(membros)). O esquadrão faz UM ataque por
+//    inimigo engajado, até M+1 (contra alvo solo = 1 ataque concentrado, +M d6 no acerto e no dano).
+//    NB: este Monte Carlo é SOLO (1 herói) → 1 ataque/rodada = exatamente o caso validado.
+//    O bloco "CALIBRAÇÃO v2" mostra por que "M+1 ataques SEMPRE (mesmo no solo)" é inbalanceável.
 //  - Baixas: PV do esquadrão = N × PV_membro; dano acumula; membro cai quando o dano passa o PV dele.
 //    (membros restantes = ceil(hordaHP / PV_membro)) — dano grande transborda e derruba vários.
 //  - Defesa: −2 (aglomerado, alvo fácil).
@@ -50,14 +53,17 @@ function umaLuta(hero, membro, N0, opts) {
     }
     if (kills1 === null) kills1 = killsEsteTurno;
     if (N <= 0) return { heroVenceu: true, round, kills1 };
-    // ---- Turno da horda: UM ataque, pool do membro + Magnitude d6 ----
+    // ---- Turno da horda ----
     const M = magnitude(N);
-    const a = ataque(membro.nd + M, membro.flat, hero.def);
-    if (a.hit) {
-      // opcional: Magnitude também engrossa o DANO (enxame que cai em cima)
-      const margemDano = a.margem + (opts.magNoDano ? M : 0);
-      heroPV -= dano(membro.dDano, membro.bDano, margemDano, hero.absorcao);
-      if (heroPV <= 0) return { heroVenceu: false, round, kills1 };
+    // nº de ataques e bônus de dano por ataque são parametrizáveis (calibração):
+    const nAtk = opts.nAtkFn ? opts.nAtkFn(M) : 1;                       // padrão: 1 ataque
+    const danoB = opts.danoBonusFn ? opts.danoBonusFn(M) : (opts.magNoDano ? M : 0);
+    for (let i = 0; i < nAtk; i++) {
+      const a = ataque(membro.nd + M, membro.flat, hero.def); // +M d6 no acerto (conectar)
+      if (a.hit) {
+        heroPV -= dano(membro.dDano, membro.bDano, a.margem + danoB, hero.absorcao);
+        if (heroPV <= 0) return { heroVenceu: false, round, kills1 };
+      }
     }
   }
   return { heroVenceu: false, round: 60, kills1, empate: true };
@@ -105,3 +111,29 @@ cenario('Capanga Elite (PV 15)',    hero, { ...membro, def: 12, absorcao: 9, nd:
 console.log('\n--- HERÓI LEVE (PV31/soak2/Def16) ---');
 cenario('Capanga Comum (PV 5)',    heroFraco, membro, tamanhos, { pvMembro: 5,  magNoDano: true });
 cenario('Capanga Treinado (PV 10)', heroFraco, { ...membro, def: 9, absorcao: 5, nd: 2, flat: 4 }, tamanhos, { pvMembro: 10, magNoDano: true });
+
+console.log('\n\n############ CALIBRAÇÃO v2 — Magnitude+1 ATAQUES (modelo do usuário) ############');
+console.log('Benchmark a preservar (solo): tanque aguenta ~20 Comuns, morre ~30-40; ~8 Treinados.');
+const ceilM2 = (M) => Math.ceil(M / 2);
+const Mp1 = (M) => M + 1;
+const tank = hero;                          // PV37/soak8/Def16
+const leve = { ...hero, pv: 31, absorcao: 2 };
+const comum = membro;                        // 1d6+3 atk, dano 1d6+2, def6, soak1
+const trein = { ...membro, def: 9, absorcao: 5, nd: 2, flat: 4, dDano: 1, bDano: 3 };
+const modelos = [
+  ['BASE validado (1 atq, +M dano)', { nAtkFn: () => 1, danoBonusFn: (M) => M }],
+  ['v2: M+1 atq, dano +ceil(M/2)',   { nAtkFn: Mp1,     danoBonusFn: ceilM2 }],
+  ['v2: M+1 atq, dano +0 (só margem)',{ nAtkFn: Mp1,     danoBonusFn: () => 0 }],
+];
+for (const [nome, op] of modelos) {
+  console.log(`\n--- ${nome} ---`);
+  for (const [hn, h] of [['Tanque', tank], ['Leve', leve]]) {
+    for (const [mn, m, pv] of [['Comum', comum, 5], ['Treinado', trein, 10]]) {
+      const row = [12, 20, 30, 40].map(N => {
+        let vit = 0; for (let t = 0; t < TRIALS; t++) if (umaLuta(h, m, N, { pvMembro: pv, ...op }).heroVenceu) vit++;
+        return `${String(N).padStart(2)}:${String(Math.round(100*vit/TRIALS)).padStart(3)}%`;
+      }).join('  ');
+      console.log(`  ${hn.padEnd(6)} vs ${mn.padEnd(9)} | ${row}`);
+    }
+  }
+}
