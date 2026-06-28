@@ -169,6 +169,26 @@ Você pode dividir sua ação em vários golpes, ao custo de precisão; e cada i
 
 A posição fecha o cerco: quem ataca pelo **flanco ou pelas costas** ganha o **−2 na Defesa** do alvo, porque ele não pode voltar a melhor guarda contra todos ao mesmo tempo. Dois inimigos coordenados — um prendendo a frente, outro contornando — combinam a penalidade de pressão com a de flanco: é assim que o número vira vantagem tática, e não só mais dados.
 
+### Regra de Horda
+
+Quando muitos capangas iguais avançam juntos, não role um por um — trate o bando como **um só esquadrão**. O tamanho vira **Magnitude**, e cada degrau exige cerca do **dobro** de gente:
+
+<div class="table-wrap">
+
+| Membros | 2–3 | 4–7 | 8–15 | 16–31 | 32–63 |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Magnitude** | 1 | 2 | 3 | 4 | 5 |
+
+</div>
+
+- **Ataque** — uma rolagem por rodada: o pool de um capanga **+ Magnitude d6 no acerto e + Magnitude d6 no dano** (o enxame que conecta cai todo em cima). O esquadrão **não** aplica a penalidade de guarda da Pressão; sua ameaça já é a chuva de dados.
+- **Defesa** — a de um capanga **−2**: multidão amontoada é alvo fácil.
+- **Baixas** — o esquadrão tem **PV = nº de membros × o PV-de-horda do capanga** (Comum **5**, Treinado **10**, Elite **15**). Na horda o capanga perde o **piso de durabilidade de 25**, que protege só heróis e NPCs nomeados. O dano que você causa **acumula**; cada vez que o total passa o PV-de-horda de um capanga, **cai um membro** — um golpe pesado derruba vários de uma vez. Conforme caem, a **Magnitude desce em degraus**, até sobrar um (Magnitude 0), que volta a ser um NPC comum. Ataques em **área** batem direto no PV do esquadrão.
+
+Na prática, um lutador resistente abre caminho por ~**20 Comuns**, ~**8 Treinados** ou ~**5 Elites** antes de correr risco real — mas uma maré de **30 ou 40** afoga até ele. É o pilar do sistema: um herói vence vários fracos e, ainda assim, **perde para a multidão**.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora encara <strong>20 recrutas</strong> (Comuns). Magnitude <strong>4</strong>: o PV do esquadrão é 20 × 5 = <strong>100</strong>, e o ataque deles é <strong>1d6 + 4d6</strong> no acerto e <strong>+4d6</strong> no dano. No 1º golpe Sora rola o montante e causa 19 de dano: 19 ÷ 5 = <strong>3 baixas</strong> (sobram 4 acumulados). Restam 17 — ainda Magnitude 4. Ela ceifa ~4–5 por rodada; ao chegar a 15 membros a Magnitude cai para 3 e a horda morde menos.</div>
+
 ## Técnicas em combate: tempo e combos
 
 As Técnicas das Proezas entram na luta por **dois mostradores independentes**: a **Energia** é o combustível da *cena* (quanto você ainda tem no tanque); os **Ticks** são o custo do *momento* (quanto tempo o poder rouba da sua linha do tempo). Decidir entre os dois — "gasto tempo agora ou guardo o tanque?" — é metade da tática.

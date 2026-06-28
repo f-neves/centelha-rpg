@@ -362,6 +362,29 @@
     },
     "nota": "Errar por ≤ margem é um raspão (não passa pela Absorção normal). Valores FIXOS por classe: a classe da arma sai do dado (1d6 leve, 2d6 média, 3d6 pesada). A armadura SOMA seu Bônus QA à margem (o alvo blindado é maior e mais lento, então é raspado com mais frequência) e abate o dano do raspão com a Redução. Leve nica muito e raso; pesada nica raro e fundo; a placa é nicada o tempo todo, mas a redução come quase tudo. Pode receber modificadores situacionais, de encantamento, de Proeza e de magia (ver cap. Quase-Acerto)."
   },
+  "horda": {
+    "nota": "Esquadrão único: muitos capangas iguais lutam como UMA unidade. A Magnitude mede o tamanho e soma dados; o dano acumulado vira baixas. Cumpre o pilar 'um herói vence vários fracos, mas perde para a multidão'.",
+    "magnitude": {
+      "formula": "Magnitude = [log2(membros)] — cada degrau exige cerca do dobro de gente",
+      "tabela": [
+        { "membros": "2–3", "magnitude": 1 },
+        { "membros": "4–7", "magnitude": 2 },
+        { "membros": "8–15", "magnitude": 3 },
+        { "membros": "16–31", "magnitude": 4 },
+        { "membros": "32–63", "magnitude": 5 }
+      ]
+    },
+    "ataque": "Uma rolagem por rodada: pool de um capanga + Magnitude d6 no ACERTO e + Magnitude d6 no DANO (o enxame que conecta cai todo em cima). Sem penalidade de guarda extra da Pressão — a ameaça do esquadrão já é a chuva de dados.",
+    "defesa": -2,
+    "defesaNota": "Defesa do esquadrão = a de um capanga −2 (aglomerado, alvo fácil).",
+    "pv": {
+      "nota": "PV do esquadrão = nº de membros × PV-de-horda do capanga. Na horda o capanga PERDE o piso heroico de 25 da fórmula de PV (esse piso vale só para PCs e NPCs nomeados).",
+      "porTier": { "comum": 5, "treinado": 10, "elite": 15 }
+    },
+    "baixas": "O dano que você causa acumula no PV do esquadrão; cada vez que o total passa o PV-de-horda de um capanga, cai 1 membro (um golpe pesado derruba vários de uma vez). Conforme os membros caem, a Magnitude desce em degraus. Ataques em ÁREA batem direto no PV do esquadrão.",
+    "fim": "Em Magnitude 0 (1 membro) o último capanga volta a ser um NPC comum.",
+    "referencia": "Um lutador resistente abre caminho por ~20 Comuns, ~8 Treinados ou ~5 Elites antes de correr risco real; uma maré de 30–40 afoga até ele. Sem armadura, aguenta bem menos."
+  },
   "economiaPoderes": {
     "nota": "Tempo (Ticks) das Técnicas e empilhamento. A Energia limita a CENA; os Ticks limitam o MOMENTO.",
     "passivaTicks": 0,

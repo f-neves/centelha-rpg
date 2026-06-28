@@ -28,7 +28,12 @@ consistentes por construção.
   Os builds foram revisados e integrados às regras táticas: o Lobo usa **Flanco −2**
   (matilha), as garras do Urso causam **Sangramento (= Margem, máx 3)** e o veneno da
   Aranha segue a resolução de "efeito de Corpo: Vigor + Convicção".
-- ⚠️ **Ainda proposta (não estava nos docs):** a **Regra de Horda** exibida na página de
-  Bestiário é sugestão minha de design — confirmar/ajustar antes de canonizar.
+- ✅ **Regra de Horda CANONIZADA (28/jun/2026).** Deixou de ser proposta: virou regra
+  oficial (modelo "esquadrão único" / Magnitude), validada por Monte Carlo
+  (`scripts/sim-horda.mjs`). Magnitude = [log2(membros)] soma +Md6 ao acerto E ao dano de
+  uma rolagem/rodada; Defesa do bando −2; PV = nº de membros × PV-de-horda do capanga
+  (Comum 5 · Treinado 10 · Elite 15, sem o piso heroico de 25); dano acumulado vira
+  baixas. Em `regras.json` (`horda`), prosa em `combate.md` (seção "Regra de Horda") e
+  callout do `/bestiario` apontando para ela.
 
 Para mexer: editar o gerador e rodar `node scripts/gen-bestiario.mjs`, ou editar o JSON direto.
