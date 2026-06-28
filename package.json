@@ -9,8 +9,7 @@
     "build": "node scripts/validate-data.mjs && node scripts/test-kael.mjs && astro build && pagefind --site dist",
     "validate": "node scripts/validate-data.mjs && node scripts/test-kael.mjs",
     "preview": "astro preview",
-    "astro": "astro",
-    "data": "node legacy/migrate-to-json.mjs"
+    "astro": "astro"
   },
   "dependencies": {
     "astro": "^5.6.1"

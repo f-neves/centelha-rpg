@@ -71,9 +71,13 @@ src/data/
 cada push na `main`. O `base` é `/centelha-rpg/` (configurado em `astro.config.mjs`); todos os
 links internos passam por ele.
 
-## Legado (impressão)
+## Legado (fonte original)
 
-O pipeline antigo de PDF (Paged.js + Edge headless) e os documentos-fonte ficam em **`legacy/`**.
-Os JSON canônicos foram gerados uma única vez por `legacy/migrate-to-json.mjs` a partir do
-`build_livro.mjs` e dos `.md`; daí em diante os JSON em `src/data/` são a fonte editável.
-Para regerar os JSON do zero: `npm run data`.
+A pasta **`legacy/`** guarda apenas o material-fonte histórico do projeto: os PDFs originais
+(Guias Simplificado e de Combate), os `.md` de design (Consolidado, Caminhos, Arcano, Criação,
+Equipamentos) e notas (`Habilidades.txt`, `Raças.txt`, `Recursos.docx`). Serve só de arquivo —
+o site lê exclusivamente de `src/data/`.
+
+O antigo pipeline de impressão em PDF (Paged.js + Edge headless) e o gerador `migrate-to-json.mjs`
+foram **removidos**: os JSON em `src/data/` são editados à mão e são a única fonte canônica
+(recuperáveis pelo histórico do git, se um dia forem necessários).

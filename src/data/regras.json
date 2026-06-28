@@ -345,7 +345,7 @@
     "estabilizar": { "pericia": "Medicina", "dif": 10, "alternativa": "Vigor + Convicção (em si mesmo)" }
   },
   "quaseAcerto": {
-    "margem": "Bônus QA da arma + Bônus QA da armadura do alvo + Centelha do atacante",
+    "margem": "Bônus QA da arma + Bônus QA da armadura do alvo",
     "dano": "Dano QA da arma − Redução QA da armadura do alvo (mínimo 0)",
     "ignoraSoak": true,
     "pesoPorDado": { "1": "leve", "2": "media", "3": "pesada" },

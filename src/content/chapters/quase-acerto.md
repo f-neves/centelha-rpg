@@ -19,7 +19,7 @@ Se você errou por **um valor menor ou igual à Margem**, é um raspão. O rasp�
 
 O dano do raspão **ignora a Absorção normal** (já é o que sobra de um golpe que quase não conectou) e **não rola dados** — é um valor fixo. Não abre Margem de dano, não dispara Sangramento por si só: é só o arranhão.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um cavaleiro de <strong>placa</strong> com a <strong>espada longa</strong> (arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong> — errou por 3. A Margem é <strong>2 (arma média) + 3 (placa) + 2 (Centelha de Kael) = 7</strong>. Como 3 ≤ 7, raspa. O dano é <strong>4 (arma média) − 6 (redução da placa) = 0</strong>: faíscas no aço. Contra um alvo de <strong>couro</strong>, a mesma arma faria <strong>4 − 0 = 4</strong> de raspão.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael ataca um cavaleiro de <strong>placa</strong> com a <strong>espada longa</strong> (arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong> — errou por 3. A Margem é <strong>2 (arma média) + 3 (placa) = 5</strong>. Como 3 ≤ 5, raspa. O dano é <strong>4 (arma média) − 6 (redução da placa) = 0</strong>: faíscas no aço. Contra um alvo de <strong>couro</strong>, a mesma arma faria <strong>4 − 0 = 4</strong> de raspão.</div>
 
 ## A lógica das classes
 
