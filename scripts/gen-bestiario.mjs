@@ -98,15 +98,15 @@ const NPCS = [
     ataques: [{ nome: 'Espada longa', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 2, mao: 1, tipo: 'corte', acerto: 1, ticks: 6 }],
     notas: 'Placa (Soak +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.' },
 
-  { id: 'assassino-das-sombras', nome: 'Assassino das Sombras', tipo: 'elite', ameaca: 4, centelha: 1,
+  { id: 'assassino-das-sombras', nome: 'Assassino das Sombras', tipo: 'elite', ameaca: 4, centelha: 2,
     conceito: 'lâmina silenciosa', descricao: 'Surge das sombras, aplica um golpe e some.', tags: ['humano', 'centelha'],
     attrs: { forca: 3, destreza: 5, vigor: 3, percepcao: 4 }, pericias: { 'armas-uma-mao': 4, furtividade: 5, esquiva: 4, prontidao: 4, manha: 3 }, integridade: 4, vontade: 6,
     armadura: 'couro',
     ataques: [{ nome: 'Adaga (Ágil)', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 1, mao: 1, tipo: 'perfConc', acerto: 2, perf: 0, ticks: 5, notas: 'Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido' }],
     tecnicas: ['pisar-leve', 'esgueirar', 'bote-silencioso', 'manto-de-sombras'],
-    notas: 'Bote Silencioso: +2d6 e ignora parte da Defesa contra alvo desavisado.' },
+    notas: 'Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).' },
 
-  { id: 'duelista', nome: 'Duelista', tipo: 'elite', ameaca: 4, centelha: 1,
+  { id: 'duelista', nome: 'Duelista', tipo: 'elite', ameaca: 4, centelha: 2,
     conceito: 'esgrimista exímio', descricao: 'Vive do duelo: apara, finta e responde com a ripose.', tags: ['humano', 'centelha'],
     attrs: { forca: 3, destreza: 5, vigor: 3 }, pericias: { 'armas-uma-mao': 5, esquiva: 4, prontidao: 4 }, integridade: 5, vontade: 6,
     armadura: 'couro',

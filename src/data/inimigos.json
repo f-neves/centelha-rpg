@@ -320,7 +320,7 @@
     "nome": "Assassino das Sombras",
     "tipo": "elite",
     "ameaca": 4,
-    "centelha": 1,
+    "centelha": 2,
     "conceito": "lâmina silenciosa",
     "descricao": "Surge das sombras, aplica um golpe e some.",
     "tags": [
@@ -328,12 +328,12 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 19,
-    "defesaMental": 16,
+    "defesa": 21,
+    "defesaMental": 18,
     "soak": {
-      "impacto": 6,
-      "corte": 6,
-      "perfuracao": 3
+      "impacto": 7,
+      "corte": 7,
+      "perfuracao": 4
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 6",
@@ -351,7 +351,7 @@
     "ataques": [
       {
         "nome": "Adaga (Ágil)",
-        "pool": "4d6+2 +4",
+        "pool": "4d6+2 +6",
         "dano": "1d6 +3 perfConc · perf. 0",
         "ticks": 5,
         "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
@@ -364,7 +364,7 @@
       "manto-de-sombras"
     ],
     "artes": [],
-    "notas": "Bote Silencioso: +2d6 e ignora parte da Defesa contra alvo desavisado.",
+    "notas": "Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).",
     "pendente": false
   },
   {
@@ -372,7 +372,7 @@
     "nome": "Duelista",
     "tipo": "elite",
     "ameaca": 4,
-    "centelha": 1,
+    "centelha": 2,
     "conceito": "esgrimista exímio",
     "descricao": "Vive do duelo: apara, finta e responde com a ripose.",
     "tags": [
@@ -380,12 +380,12 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 19,
-    "defesaMental": 18,
+    "defesa": 21,
+    "defesaMental": 20,
     "soak": {
-      "impacto": 6,
-      "corte": 6,
-      "perfuracao": 3
+      "impacto": 7,
+      "corte": 7,
+      "perfuracao": 4
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 6",
@@ -403,7 +403,7 @@
     "ataques": [
       {
         "nome": "Florete (Ágil)",
-        "pool": "5d6 +4",
+        "pool": "5d6 +6",
         "dano": "1d6 +3 perfConc · perf. 1",
         "ticks": 5
       }
