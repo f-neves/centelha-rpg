@@ -15,7 +15,7 @@ const { id } = Astro.props;
 const d = await loadData();
 const cam = d.C[id];
 const techs = d.porCaminho[id] ?? [];
-const bandas = [1, 2, 3, 4, 5].map((b) => [b, techs.filter((t) => t.banda === b)]).filter(([, l]) => (l as any[]).length);
+const bandas = Array.from({ length: 15 }, (_, i) => i + 1).map((b) => [b, techs.filter((t) => t.banda === b)]).filter(([, l]) => (l as any[]).length);
 const attr = d.A[cam.atributo.id];
 const titulo = caminhoComArtigo(cam.nome);
 ---
@@ -31,7 +31,7 @@ const titulo = caminhoComArtigo(cam.nome);
 
   {bandas.map(([b, lista]) => (
     <section>
-      <h2>Banda {b} — {BANDA_LABEL[b as number]}</h2>
+      <h2>Banda {b} · {BANDA_LABEL[b as number]}</h2>
       {(lista as any[]).map((t) => <TecnicaItem t={t} T={d.T} destrava={d.destrava[t.id] ?? []} />)}
     </section>
   ))}

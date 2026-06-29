@@ -50,14 +50,15 @@ const { caminho } = Astro.props;
   if (grid && svg && det) {
     const cam = grid.dataset.caminho!;
     const mine = ALL.filter((t) => t.caminho === cam);
-    const LABEL: Record<number, string> = { 1: 'Tocado', 2: 'Herói', 3: 'Grande herói', 4: 'Lendário', 5: 'Semideus' };
+    const TIER_NOME = ['Tocado', 'Herói', 'Grande herói', 'Lendário', 'Semideus'];
+    const LABEL = (b) => TIER_NOME[Math.ceil(b / 3) - 1];
     const nodeEls: Record<string, HTMLElement> = {};
 
-    for (let b = 1; b <= 5; b++) {
+    for (let b = 1; b <= 15; b++) {
       const lista = mine.filter((t) => t.banda === b);
       if (!lista.length) continue;
       const row = document.createElement('div'); row.className = 'arv-row';
-      const lbl = document.createElement('div'); lbl.className = 'arv-rowlbl'; lbl.textContent = `B${b} · ${LABEL[b]}`;
+      const lbl = document.createElement('div'); lbl.className = 'arv-rowlbl'; lbl.textContent = `B${b} · ${LABEL(b)}`;
       row.append(lbl);
       for (const t of lista) {
         const n = document.createElement('button');

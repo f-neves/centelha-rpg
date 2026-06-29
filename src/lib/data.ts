@@ -1,6 +1,10 @@
 import { getCollection } from 'astro:content';
 
-export const BANDA_LABEL: Record<number, string> = { 1: 'Tocado', 2: 'Herói', 3: 'Grande herói', 4: 'Lendário', 5: 'Semideus' };
+/** Nome do tier por banda (15 bandas, 3 por tier de Centelha: tier = ceil(banda/3)). */
+export const TIER_NOME = ['Tocado', 'Herói', 'Grande herói', 'Lendário', 'Semideus'];
+export const BANDA_LABEL: Record<number, string> = Object.fromEntries(
+  Array.from({ length: 15 }, (_, i) => [i + 1, TIER_NOME[Math.ceil((i + 1) / 3) - 1]])
+);
 
 const FEM = new Set(['Pele de Pedra', 'Dança da Lâmina', 'Voz de Mel', 'Lenda Viva', 'Mente Afiada', 'Máscara', 'Sombra', 'Teia', 'Serpente das Palavras', 'Marionete', 'Beleza Cativante', 'Aura', 'Máscara Impassível', 'Comunhão', 'Leitura Fria', 'Mente Serena', 'Musa', 'Brasa', 'Mão Veloz', 'Carne Teimosa']);
 /** "Proeza da/do X" conforme o gênero do nome. */
