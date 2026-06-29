@@ -295,7 +295,7 @@
       "quebrar-guarda"
     ],
     "aliases": [],
-    "texto": "O golpe ganha a tag **Crush** (ignora o Soak de impacto da armadura).",
+    "texto": "O golpe ignora a Absorção de Impacto da armadura do alvo.",
     "pendente": false
   },
   {
@@ -345,7 +345,7 @@
       "esmagar"
     ],
     "aliases": [],
-    "texto": "Suas mãos quebram pedra e metal; ataques ignoram armadura mundana.",
+    "texto": "Suas mãos quebram pedra e metal; ataques ignoram a Absorção de armaduras mundanas (não a Absorção natural do alvo).",
     "pendente": false
   },
   {
@@ -1000,7 +1000,7 @@
       "tiro-perfurante"
     ],
     "aliases": [],
-    "texto": "Acerta a distâncias extremas, contorna cobertura parcial e mira pontos vitais (ignora parte da Defesa).",
+    "texto": "Acerta a distâncias extremas, contorna cobertura parcial e mira pontos vitais (ignora a penalidade de cobertura do alvo).",
     "pendente": false
   },
   {
@@ -1381,7 +1381,7 @@
       "ignorar-a-dor"
     ],
     "aliases": [],
-    "texto": "Grande bônus para resistir a venenos e doenças.",
+    "texto": "+2 para resistir a venenos e doenças.",
     "pendente": false
   },
   {
@@ -1398,7 +1398,7 @@
       "fechar-feridas"
     ],
     "aliases": [],
-    "texto": "Recupera PV automaticamente a cada turno.",
+    "texto": "Recupera PV igual ao seu Vigor no início de cada turno.",
     "pendente": false
   },
   {
@@ -1515,7 +1515,7 @@
       "esgueirar"
     ],
     "aliases": [],
-    "texto": "Ataque furtivo contra alvo desavisado: +2d6 e ignora parte da Defesa.",
+    "texto": "Ataque furtivo contra alvo desavisado: +2d6 de dano (o alvo desavisado já sofre a penalidade de Defesa por surpresa).",
     "pendente": false
   },
   {
@@ -1782,7 +1782,7 @@
       "brado-de-guerra"
     ],
     "aliases": [],
-    "texto": "Avança e ataca com +dano por knockback.",
+    "texto": "Avança e ataca com +1d6 de dano por knockback.",
     "pendente": false
   },
   {
@@ -2654,7 +2654,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus para agarrar e manter agarrões.",
+    "texto": "+2 para agarrar e manter agarrões.",
     "pendente": false
   },
   {
@@ -2789,7 +2789,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "nunca cai de superfícies estreitas; +acrobacia/escalada.",
+    "texto": "nunca cai de superfícies estreitas; +2 em Atletismo.",
     "pendente": false
   },
   {
@@ -2924,7 +2924,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus em prestidigitação, fechaduras e furto.",
+    "texto": "+2 em prestidigitação, fechaduras e furto.",
     "pendente": false
   },
   {
@@ -3187,7 +3187,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus contra venenos e comida estragada.",
+    "texto": "+2 contra venenos e comida estragada.",
     "pendente": false
   },
   {
@@ -3451,7 +3451,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "aliados que o seguem ganham bônus de moral; ordens claras.",
+    "texto": "aliados que o seguem ganham +1 de moral; ordens claras.",
     "pendente": false
   },
   {
@@ -3502,7 +3502,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "aliados coordenados ganham bônus de defesa/ataque juntos.",
+    "texto": "aliados coordenados ganham +1 de Defesa e de ataque juntos.",
     "pendente": false
   },
   {
@@ -3519,7 +3519,7 @@
       "reunir"
     ],
     "aliases": [],
-    "texto": "inspira investida (+dano/movimento num avanço).",
+    "texto": "inspira investida (+1d6 de dano num avanço).",
     "pendente": false
   },
   {
@@ -3586,7 +3586,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus em performance; prende atenção.",
+    "texto": "+2 em performance; prende atenção.",
     "pendente": false
   },
   {
@@ -3721,7 +3721,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "bônus para incitar, provocar e inflamar.",
+    "texto": "+2 para incitar, provocar e inflamar.",
     "pendente": false
   },
   {
@@ -3856,7 +3856,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "bônus em intrigas e em ler fraquezas sociais.",
+    "texto": "+2 em intrigas e em ler fraquezas sociais.",
     "pendente": false
   },
   {
@@ -3991,7 +3991,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus em barganha e meias-verdades.",
+    "texto": "+2 em barganha e meias-verdades.",
     "pendente": false
   },
   {
@@ -4126,7 +4126,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "bônus para insinuar e plantar emoções negativas sutis.",
+    "texto": "+2 para insinuar e plantar emoções negativas sutis.",
     "pendente": false
   },
   {
@@ -4396,7 +4396,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "bônus quando a aparência importa; olhares se voltam a você.",
+    "texto": "+2 quando a aparência importa; olhares se voltam a você.",
     "pendente": false
   },
   {
@@ -4531,7 +4531,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "bônus para impor respeito; é levado a sério de imediato.",
+    "texto": "+2 para impor respeito; é levado a sério de imediato.",
     "pendente": false
   },
   {
@@ -4666,7 +4666,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus para se disfarçar com adereços.",
+    "texto": "+2 para se disfarçar com adereços.",
     "pendente": false
   },
   {
@@ -4936,7 +4936,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "suas emoções nunca transparecem; grande bônus em blefe.",
+    "texto": "suas emoções nunca transparecem; +2 em blefe.",
     "pendente": false
   },
   {
@@ -5069,7 +5069,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus em Prontidão; difícil de surpreender.",
+    "texto": "+2 em Prontidão; difícil de surpreender.",
     "pendente": false
   },
   {
@@ -5202,7 +5202,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus para rastrear e ler sinais.",
+    "texto": "+2 para rastrear e ler sinais.",
     "pendente": false
   },
   {
@@ -5337,7 +5337,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus para perceber emoções e mentiras.",
+    "texto": "+2 para perceber emoções e mentiras.",
     "pendente": false
   },
   {
@@ -5607,7 +5607,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus em Conhecimentos; sabe um pouco de tudo.",
+    "texto": "+2 em Conhecimentos; sabe um pouco de tudo.",
     "pendente": false
   },
   {
@@ -5740,7 +5740,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus em Craft; conserta e improvisa com facilidade.",
+    "texto": "+2 em Ofícios; conserta e improvisa com facilidade.",
     "pendente": false
   },
   {
@@ -5875,7 +5875,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus em Tática; lê o campo num instante.",
+    "texto": "+2 em Tática; lê o campo num instante.",
     "pendente": false
   },
   {
@@ -6010,7 +6010,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus em Investigação; nota o que outros não veem.",
+    "texto": "+2 em Investigação; nota o que outros não veem.",
     "pendente": false
   },
   {
@@ -6145,7 +6145,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus de Iniciativa; pensa veloz sob pressão.",
+    "texto": "+2 de Iniciativa; pensa veloz sob pressão.",
     "pendente": false
   },
   {
@@ -6278,7 +6278,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "bônus para improvisar com o que há à mão.",
+    "texto": "+2 para improvisar com o que há à mão.",
     "pendente": false
   },
   {
@@ -6413,7 +6413,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus para deduzir personalidade e intenção.",
+    "texto": "+2 para deduzir personalidade e intenção.",
     "pendente": false
   },
   {
@@ -6548,7 +6548,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "grande bônus para manter o foco e resistir a distração e provocação.",
+    "texto": "+2 para manter o foco e resistir a distração e provocação.",
     "pendente": false
   },
   {
@@ -6597,7 +6597,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "bônus para resistir a manipulação, medo e efeitos mentais.",
+    "texto": "+2 para resistir a manipulação, medo e efeitos mentais.",
     "pendente": false
   },
   {

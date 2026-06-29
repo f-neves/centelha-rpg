@@ -410,6 +410,13 @@
     },
     "vontade": { "banda4": 1, "banda5": 2 }
   },
+  "empilhamentoProezas": {
+    "nota": "Limites de acúmulo dos bônus de Proezas, para o número não quebrar o combate calibrado.",
+    "absorcao": "Absorção permanente de Proezas NÃO soma entre passivas: vale a MAIOR de cada tipo de dano (Impacto/Corte/Perfuração). Bônus reflexivos ou ativos de Absorção (ex.: Tensionar) entram por cima, só naquele golpe ou cena. A Absorção de Proeza soma normalmente com a da armadura e com a natural.",
+    "defesaReflexiva": "Bônus reflexivos de Defesa de Proezas (ex.: Aparar, Reflexos de Vento, Voz Calma, +3) contam para o TETO de ±6 dos modificadores situacionais de Defesa: não empilham além disso com cobertura, flanco, postura, etc.",
+    "acaoExtra": "Efeitos que concedem ação ou ataque EXTRA não acumulam: no máximo UMA ação extra por turno, qualquer que seja a fonte (Proeza ou Arte). Combos de 'aja de novo' não se somam.",
+    "bypassArmadura": "Ignorar a Absorção de armadura (ex.: Punho que Parte Pedra, Esmagar) afeta só a parte da ARMADURA; a Absorção natural do alvo (Vigor no Impacto, Centelha) continua valendo."
+  },
   "arcano": {
     "nota": "Detalhamento do uso das Artes: improviso por mostradores, conjuração composta (espelha o combo) e Rituais. Mana = nível do efeito; conjura Ocultismo + Atributo.",
     "feiticoTicks": [
