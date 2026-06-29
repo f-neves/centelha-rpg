@@ -50,7 +50,7 @@ const { caminho } = Astro.props;
   if (grid && svg && det) {
     const cam = grid.dataset.caminho!;
     const mine = ALL.filter((t) => t.caminho === cam);
-    const LABEL: Record<number, string> = { 1: 'Mortal+', 2: 'Herói', 3: 'Semideus', 4: 'Semideus', 5: 'Quase-deus' };
+    const LABEL: Record<number, string> = { 1: 'Tocado', 2: 'Herói', 3: 'Grande herói', 4: 'Lendário', 5: 'Semideus' };
     const nodeEls: Record<string, HTMLElement> = {};
 
     for (let b = 1; b <= 5; b++) {

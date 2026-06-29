@@ -8,12 +8,12 @@
     { "nivel": 5, "rotulo": "Mestre", "texto": "Um dos melhores que existem; faz o que poucos sequer sonham." }
   ],
   "escalaCentelha": [
-    { "nivel": 0, "rotulo": "Mortal", "texto": "Pessoa comum — cerca de 95% da população. Sem acesso a Técnicas ou Artes." },
-    { "nivel": 1, "rotulo": "Tocado (Mortal+)", "texto": "A fagulha acendeu: herói incipiente. Abre a banda 1 das Proezas." },
-    { "nivel": 2, "rotulo": "Herói", "texto": "Façanhas que assombram mortais; bandas 4–6." },
-    { "nivel": 3, "rotulo": "Semideus", "texto": "Começa a quebrar as leis do mundo mundano; bandas 7–9." },
-    { "nivel": 4, "rotulo": "Semideus maior", "texto": "Poder que molda regiões; bandas 10–12." },
-    { "nivel": 5, "rotulo": "Quase-deus", "texto": "À beira do divino; bandas 13–15." }
+    { "nivel": 0, "rotulo": "Mortal", "texto": "Pessoa comum, cerca de 95% da população. Sem acesso a Proezas ou Artes; vive do que treinou." },
+    { "nivel": 1, "rotulo": "Tocado", "texto": "A fagulha acendeu: refino sobre-humano, ainda dentro do possível. Proezas até a banda 3; ganha Energia e Mana." },
+    { "nivel": 2, "rotulo": "Herói", "texto": "Façanhas sobre-humanas que assombram mortais. Proezas até a banda 6." },
+    { "nivel": 3, "rotulo": "Grande herói", "texto": "Feitos conhecidos em muitos lugares; começa a quebrar as leis da física. Proezas até a banda 9." },
+    { "nivel": 4, "rotulo": "Lendário", "texto": "Há lendas sobre ele; mudou o rumo de nações. Proezas até a banda 12." },
+    { "nivel": 5, "rotulo": "Semideus", "texto": "Material de fábula, venerado como divindade. Proezas até a banda 15 (teto atual)." }
   ],
   "escalaVontade": [
     { "nivel": 1, "rotulo": "Frágil", "texto": "Vontade fraca: cede fácil ao medo, à manipulação e ao cansaço. O piso de quem nada investe." },
@@ -154,7 +154,7 @@
     {
       "centelha": 1,
       "bandas": "1–3",
-      "estatura": "Mortal+"
+      "estatura": "Tocado"
     },
     {
       "centelha": 2,
@@ -164,17 +164,17 @@
     {
       "centelha": 3,
       "bandas": "7–9",
-      "estatura": "Semideus"
+      "estatura": "Grande herói"
     },
     {
       "centelha": 4,
       "bandas": "10–12",
-      "estatura": "Semideus"
+      "estatura": "Lendário"
     },
     {
       "centelha": 5,
       "bandas": "13–15",
-      "estatura": "Quase-deus"
+      "estatura": "Semideus"
     }
   ],
   "ferimentos": [

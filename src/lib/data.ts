@@ -1,6 +1,6 @@
 import { getCollection } from 'astro:content';
 
-export const BANDA_LABEL: Record<number, string> = { 1: 'Mortal+', 2: 'Herói', 3: 'Semideus', 4: 'Semideus', 5: 'Quase-deus' };
+export const BANDA_LABEL: Record<number, string> = { 1: 'Tocado', 2: 'Herói', 3: 'Grande herói', 4: 'Lendário', 5: 'Semideus' };
 
 const FEM = new Set(['Pele de Pedra', 'Dança da Lâmina', 'Voz de Mel', 'Lenda Viva', 'Mente Afiada', 'Máscara', 'Sombra', 'Teia', 'Serpente das Palavras', 'Marionete', 'Beleza Cativante', 'Aura', 'Máscara Impassível', 'Comunhão', 'Leitura Fria', 'Mente Serena', 'Musa', 'Brasa', 'Mão Veloz', 'Carne Teimosa']);
 /** "Proeza da/do X" conforme o gênero do nome. */
