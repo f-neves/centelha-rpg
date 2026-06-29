@@ -35,22 +35,22 @@ function cost(b) {
 }
 
 const BUILDS = {
-  'Kael (1200)': { budget: 1200, aparencia: 4, vont: 7, cent: 2,
+  'Kael (1400)': { budget: 1400, aparencia: 4, vont: 7, cent: 2,
     attrs: { percepcao: 5, destreza: 4, vigor: 4, forca: 3, raciocinio: 3, inteligencia: 2, influencia: 2, perspicacia: 2, compostura: 2 },
     skills: { 4: 1, 3: 5, 2: 2, 1: 1 }, skillsById: { integridade: 0 }, sec: { 2: 3 }, espP: 3,
-    virt: { valor: 4, conviccao: 3, temperanca: 2, compaixao: 2 }, bandpts: 40 },
-  'Sora (1600)': { budget: 1600, aparencia: 5, vont: 8, cent: 2,
+    virt: { valor: 4, conviccao: 3, temperanca: 2, compaixao: 2 }, bandpts: 81 },
+  'Sora (1800)': { budget: 1800, aparencia: 5, vont: 8, cent: 2,
     attrs: { destreza: 5, forca: 4, vigor: 4, influencia: 4, percepcao: 3, raciocinio: 3, inteligencia: 2, perspicacia: 3, compostura: 3 },
     skills: { 4: 1, 3: 8, 2: 2, 1: 1 }, skillsById: { integridade: 3 }, sec: { 3: 2, 2: 4 }, espP: 5,
-    virt: { valor: 4, conviccao: 4, temperanca: 3, compaixao: 3 }, bandpts: 52 },
-  'Veil (2000)': { budget: 2000, aparencia: 5, vont: 9, cent: 3,
+    virt: { valor: 4, conviccao: 4, temperanca: 3, compaixao: 3 }, bandpts: 92 },
+  'Veil (2400)': { budget: 2400, aparencia: 5, vont: 9, cent: 3,
     attrs: { inteligencia: 5, forca: 4, destreza: 4, vigor: 4, percepcao: 3, raciocinio: 3, influencia: 3, perspicacia: 3, compostura: 3 },
     skills: { 4: 1, 3: 8, 2: 3 }, skillsById: { integridade: 3 }, sec: { 3: 3, 2: 3 }, espP: 6, espS: 2,
-    virt: { conviccao: 4, valor: 4, temperanca: 4, compaixao: 3 }, bandpts: 54, artes: [3, 3, 3, 3] },
-  'Bram (1600)': { budget: 1600, aparencia: 4, vont: 9, cent: 1,
+    virt: { conviccao: 4, valor: 4, temperanca: 4, compaixao: 3 }, bandpts: 134, artes: [3, 3, 3, 3] },
+  'Bram (1800)': { budget: 1800, aparencia: 4, vont: 9, cent: 1,
     attrs: { inteligencia: 5, influencia: 4, percepcao: 4, raciocinio: 3, vigor: 3, destreza: 3, perspicacia: 3, forca: 2, compostura: 2 },
     skills: { 4: 1, 3: 4, 2: 5, 1: 1 }, skillsById: { integridade: 0 }, sec: { 3: 3, 2: 5 }, espP: 6,
-    virt: { conviccao: 4, temperanca: 3, compaixao: 3, valor: 2 }, bandpts: 25, artes: [4, 4, 3, 2, 1, 1] },
+    virt: { conviccao: 4, temperanca: 3, compaixao: 3, valor: 2 }, bandpts: 12, artes: [4, 4, 4, 4, 4, 3] },
 };
 
 for (const [nome, b] of Object.entries(BUILDS)) {

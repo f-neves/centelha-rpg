@@ -7,8 +7,8 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   <div class="xpbar" id="painel">
     <span class="big">XP: <b id="xpSpent">0</b></span>
-    <label>Orçamento <input type="number" id="xpBudget" value="1200" /></label>
-    <span class="big">Restam: <b id="xpRem" class="rem ok">1200</b></span>
+    <label>Orçamento <input type="number" id="xpBudget" value="1400" /></label>
+    <span class="big">Restam: <b id="xpRem" class="rem ok">1400</b></span>
     <span class="breakdown" id="xpBreak"></span>
     <span class="modo-wrap"><span class="modo-lbl">Modo</span>
       <span class="modo-toggle" role="group" aria-label="Modo da ficha">
@@ -166,7 +166,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, tech: {}, arte: {}, budget: 1200, modo: 'criacao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, tech: {}, arte: {}, budget: 1400, modo: 'criacao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -174,7 +174,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
-    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1200; S.modo ??= 'criacao'; S.derivCol ??= true;
+    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1400; S.modo ??= 'criacao'; S.derivCol ??= true;
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.escudo ??= 'nenhum';
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
@@ -446,7 +446,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   function syncInputs() {
     document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => (inp.value = S.id?.[inp.dataset.id!] || ''));
-    (el('xpBudget') as HTMLInputElement).value = String(S.budget ?? 1200);
+    (el('xpBudget') as HTMLInputElement).value = String(S.budget ?? 1400);
   }
   function markModo() {
     document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => { const on = b.dataset.modo === (S.modo || 'criacao'); b.classList.toggle('primary', on); b.setAttribute('aria-pressed', String(on)); });

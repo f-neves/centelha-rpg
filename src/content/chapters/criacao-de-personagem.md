@@ -14,7 +14,7 @@ Um personagem é construído gastando **Experiência** (XP) a partir de valores-
 Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão nas seções abaixo, e a [Ficha](/ficha) faz as contas por você.
 
 1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas") — ela guia todas as escolhas seguintes.
-2. **Orçamento.** Combine com o Mestre: **1200** (iniciante), **1600** (veterano) ou **2000** (herói). Todo o resto sai desse bolo de XP.
+2. **Orçamento.** Combine com o Mestre: **1400** (iniciante), **1800** (veterano) ou **2400** (herói). Todo o resto sai desse bolo de XP.
 3. **Atributos.** Suba do piso 1. Teto **4** na criação, com **um único** atributo em **5** (o seu pico).
 4. **Habilidades e Especialidades.** Teto **3**, com **uma única** primária em **4** (o pico de perícia). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 5. **Virtudes.** As quatro, de 1 a 5 — elas também alimentam a Energia.
@@ -29,7 +29,7 @@ Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão n
 
 Tudo começa no mínimo e é comprado dali: **Atributos 1** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 1** · **Aparência 1** · **Centelha 0** · qualquer **Proeza 0**.
 
-A **Centelha 0** é o mortal comum — cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial padrão: **1200 XP** (iniciante), **1600** (veterano) ou **2000** (herói). Com 1200 XP, um personagem já chega como Centelha 2, com vários atributos no teto de criação e um arsenal de Técnicas.
+A **Centelha 0** é o mortal comum — cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial padrão: **1400 XP** (iniciante), **1800** (veterano) ou **2400** (herói). Com 1400 XP, um personagem já chega como Centelha 2, com vários atributos no teto de criação e um arsenal de Técnicas.
 
 > **Pisos e custos (fechados).** **Atributos e Força de Vontade começam em 1** (antes 2 e 5); a **Aparência** saiu dos Atributos e virou trilha própria (1–10, custo ×2). Por isso os orçamentos subiram 200. Os quatro exemplos abaixo já usam a tríade social nova (Influência · Perspicácia · Compostura) e estão **recusteados pela tabela final** (totais conferidos pela função de custo real).
 
@@ -75,7 +75,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 
 ## Três exemplos, um por orçamento
 
-Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1200), **Sora** no veterano (1600) e **Veil** no herói (2000). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Proezas, Técnicas, habilidades e especialidades. É o toolbox que carrega a profundidade.
+Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1400), **Sora** no veterano (1800) e **Veil** no herói (2400). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Proezas, Técnicas, habilidades e especialidades. É o toolbox que carrega a profundidade.
 
 ### Kael, o Batedor — Iniciante (Centelha 2)
 
@@ -91,10 +91,10 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Força de Vontade | 1 → 7 | 54 |
 | Aparência | 1 → 4 (normal) | 18 |
 | Centelha | 0 → 2 | 45 |
-| Técnicas | 13, de Olho de Águia, Sombra e Vento (bandas 1 a 6) | 200 |
-| **Total** | | **1190** |
+| Técnicas | 23, de Olho de Águia, Sombra, Vento e outras (bandas 1 a 6) | 405 |
+| **Total** | | **1395** |
 
-<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 11 · Def. Social 12 · Energia 24 · Mana 11 · Iniciativa 1d6+6. Sobram 10 XP. Mira firme à distância e some na sombra entre os tiros.</p>
+<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 11 · Def. Social 12 · Energia 24 · Mana 11 · Iniciativa 1d6+6. Sobram 5 XP. Mira firme à distância e some na sombra entre os tiros.</p>
 
 ### Sora, a Capitã — Veterana (Centelha 2)
 
@@ -108,8 +108,8 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Força de Vontade | 1 → 8 | 70 |
 | Aparência | 1 → 5 (normal) | 28 |
 | Centelha | 0 → 2 | 45 |
-| Técnicas | 15, das Proezas Comando, Pele de Pedra e Dança da Lâmina (bandas 1 a 6) | 260 |
-| **Total** | | **1596** |
+| Técnicas | 25, das Proezas Comando, Pele de Pedra, Dança da Lâmina e outras (bandas 1 a 6) | 460 |
+| **Total** | | **1796** |
 
 <p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 18 · Def. Social 16 · Energia 28 · Mana 12 · Iniciativa 1d6+6. Sobram 4 XP. Uma líder de tropa que comba posturas defensivas e golpes precisos.</p>
 
@@ -126,8 +126,8 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Aparência | 1 → 5 (normal) | 28 |
 | Centelha | 0 → 3 | 90 |
 | Artes | Fogo, Forças, Proteção e Cura — todas no nível 3 | 240 |
-| Técnicas | 12, de Mente Afiada, Pele de Pedra e Dança da Lâmina (bandas 1 a 9) | 270 |
-| **Total** | | **1995** |
+| Técnicas | 27, de Mente Afiada, Pele de Pedra, Dança da Lâmina e outras (bandas 1 a 9) | 670 |
+| **Total** | | **2395** |
 
 <p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 21 · Def. Social 20 · Energia 33 · Mana 15 · Iniciativa 1d6+6. Sobram 5 XP. Um semideus que tece Feitiços e lâmina no mesmo turno — note o Ocultismo 4 sustentando Artes de nível 3.</p>
 
@@ -149,8 +149,8 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Força de Vontade | 1 → 9 | 88 |
 | Aparência | 1 → 4 (normal) | 18 |
 | Centelha | 0 → 1 | 15 |
-| Artes | Adivinhação, Forças **nível 4** · Proteção 3 · Cura 2 · Fogo, Fascinação 1 | 310 |
-| Técnicas | 12 de Mente Afiada (bandas 1 a 3) | 125 |
-| **Total** | | **1597** |
+| Artes | Adivinhação, Forças, Proteção, Cura, Fogo **nível 4** · Fascinação 3 | 560 |
+| Técnicas | 6, de Mente Afiada e Erudito (bandas 1 a 3) | 60 |
+| **Total** | | **1782** |
 
-<p class="muted">Derivados: PV 34 · Defesa 14 · Def. Mental 11 · Def. Social 12 · Energia 24 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Sobram 3 XP. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong> — ele <em>conhece</em> magia mais funda que o Veil, mas seu tanque o obriga a escolher poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível. É o feiticeiro de torre, não o feiticeiro-guerreiro: poderoso quando prepara o terreno, frágil na queda de braço prolongada.</p>
+<p class="muted">Derivados: PV 34 · Defesa 14 · Def. Mental 11 · Def. Social 12 · Energia 24 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Sobram 18 XP. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong> — ele <em>conhece</em> magia mais funda que o Veil, mas seu tanque o obriga a escolher poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível. É o feiticeiro de torre, não o feiticeiro-guerreiro: poderoso quando prepara o terreno, frágil na queda de braço prolongada.</p>
