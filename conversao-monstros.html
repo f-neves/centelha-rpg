@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conversão de Monstros · D&D 3.5 / Pathfinder → Centelha</title>
+<style>
+/* ===== paleta Centelha (claro/escuro) ===== */
+:root{
+  --bg:#f3e9d2; --bg-soft:#ece0c0; --panel:#fbf6e7; --panel-2:#f4ebd0;
+  --border:#d8c79c; --ink:#2a2720; --ink-soft:#574f3d;
+  --accent:#00BAB4; --accent-strong:#0B3B47; --accent-soft:#2E8C86;
+  --gold:#b08d3a; --rule:#cdbd92; --shadow:rgba(60,45,15,.12);
+  --dnd:#8a4b2f; --cent:#0B3B47;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171c; --bg-soft:#1b1e25; --panel:#1e222a; --panel-2:#232732;
+    --border:#333a47; --ink:#e9e5d7; --ink-soft:#afa994;
+    --accent:#3fc9c2; --accent-strong:#8fe3dd; --accent-soft:#4fb3ac;
+    --gold:#d9b85f; --rule:#39414f; --shadow:rgba(0,0,0,.4);
+    --dnd:#d8956f; --cent:#8fe3dd;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 "Iowan Old Style","Palatino Linotype",Georgia,serif;
+  padding:0;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 20px 80px}
+header.hero{
+  background:linear-gradient(135deg,var(--accent-strong),#08303a);
+  color:#f6efda; padding:38px 20px 30px; text-align:center;
+  border-bottom:3px solid var(--gold);
+}
+header.hero h1{margin:0 0 6px; font-size:2rem; letter-spacing:.5px}
+header.hero p{margin:4px auto 0; max-width:640px; color:#cfe9e6; font-size:1.02rem}
+.tag{display:inline-block; font-size:.72rem; letter-spacing:1.5px; text-transform:uppercase;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
+  padding:3px 10px; border-radius:20px; margin-bottom:14px}
+h2{font-size:1.5rem; color:var(--accent-strong); border-bottom:2px solid var(--rule);
+  padding-bottom:6px; margin:44px 0 16px}
+@media (prefers-color-scheme: dark){h2{color:var(--accent-strong)}}
+h3{color:var(--accent-soft); margin:26px 0 10px; font-size:1.15rem}
+p{margin:10px 0}
+a{color:var(--accent-soft)}
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:12px;
+  padding:18px 22px; margin:16px 0; box-shadow:0 2px 8px var(--shadow)}
+.note{background:var(--panel-2); border-left:4px solid var(--accent); border-radius:0 8px 8px 0;
+  padding:12px 16px; margin:14px 0; font-size:.95rem}
+.note b{color:var(--accent-soft)}
+code{background:var(--bg-soft); padding:1px 6px; border-radius:5px; font-size:.9em;
+  font-family:"SF Mono",Consolas,monospace}
+.formula{font-family:"SF Mono",Consolas,monospace; background:var(--bg-soft);
+  border:1px solid var(--border); border-radius:8px; padding:10px 14px; display:inline-block;
+  font-size:.95rem; margin:6px 0}
+/* tabelas de referência */
+table{border-collapse:collapse; width:100%; font-size:.92rem; margin:12px 0}
+.scroll{overflow-x:auto; border:1px solid var(--border); border-radius:10px}
+th,td{padding:7px 10px; border-bottom:1px solid var(--rule); text-align:left; white-space:nowrap}
+th{background:var(--accent-strong); color:#f6efda; position:sticky; top:0; font-size:.82rem;
+  letter-spacing:.4px; text-transform:uppercase; z-index:2}
+tbody tr:nth-child(even){background:var(--panel-2)}
+tbody tr:hover{background:var(--bg-soft)}
+td.c,th.c{text-align:center}
+.ref-mini{max-width:520px}
+.ref-mini td,.ref-mini th{white-space:normal}
+/* colunas D&D vs Centelha */
+.dndcol{color:var(--dnd); font-weight:600}
+.centcol{color:var(--cent); font-weight:700}
+.grp-dnd{background:#8a4b2f !important; color:#fff !important}
+.grp-cent{background:var(--accent-soft) !important; color:#04231f !important}
+@media (prefers-color-scheme: dark){.grp-cent{color:#04231f !important}}
+.att{display:inline-block; min-width:16px; text-align:center; font-weight:700}
+.big{color:var(--gold)}
+.sk{font-size:.86rem; color:var(--ink-soft)}
+.cent-badge{display:inline-block; background:var(--accent); color:#04231f; font-weight:700;
+  border-radius:50%; width:24px; height:24px; line-height:24px; text-align:center; font-size:.82rem}
+.cent0{background:var(--bg-soft); color:var(--ink-soft)}
+.magic-yes{color:var(--accent-soft); font-weight:600}
+/* controles */
+.controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:18px 0}
+.controls input,.controls select{padding:8px 12px; border:1px solid var(--border);
+  border-radius:8px; background:var(--panel); color:var(--ink); font-size:.95rem}
+.controls input{flex:1; min-width:200px}
+.count{color:var(--ink-soft); font-size:.9rem}
+.legend{display:flex; gap:18px; flex-wrap:wrap; font-size:.85rem; color:var(--ink-soft); margin:8px 0}
+.legend span{display:flex; align-items:center; gap:6px}
+.sw{width:14px; height:14px; border-radius:3px; display:inline-block}
+.toc{columns:2; gap:24px; font-size:.95rem}
+.toc a{display:block; padding:2px 0}
+@media (max-width:640px){.toc{columns:1}}
+footer{color:var(--ink-soft); font-size:.85rem; text-align:center; margin-top:50px;
+  border-top:1px solid var(--rule); padding-top:18px}
+.mono{font-family:"SF Mono",Consolas,monospace; font-size:.85rem}
+details.method{margin:10px 0}
+details.method summary{cursor:pointer; font-weight:600; color:var(--accent-soft)}
+.pill{display:inline-block; font-size:.72rem; padding:2px 8px; border-radius:12px;
+  background:var(--bg-soft); border:1px solid var(--border); margin:0 3px 3px 0}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="tag">Centelha · Oficina de Conversão</div>
+  <h1>Monstros de D&amp;D 3.5 &amp; Pathfinder → Centelha</h1>
+  <p>Como traduzir as 6 Habilidades e as Perícias de um monstro em 9 Atributos, Perícias e Centelha. Metodologia + tabela viva de 122 criaturas.</p>
+</header>
+
+<div class="wrap">
+
+<div class="panel">
+  <b>Índice</b>
+  <nav class="toc">
+    <a href="#visao">1 · Visão geral</a>
+    <a href="#atributos">2 · Habilidades → 9 Atributos</a>
+    <a href="#curva">3 · A curva de valor</a>
+    <a href="#tamanho">4 · Bônus de tamanho</a>
+    <a href="#pericias">5 · Perícias → Perícias</a>
+    <a href="#centelha">6 · A escada de Centelha</a>
+    <a href="#exemplos">7 · Exemplos passo a passo</a>
+    <a href="#tabela">8 · Tabela: 122 monstros</a>
+  </nav>
+</div>
+
+<h2 id="visao">1 · Visão geral</h2>
+<p>D&amp;D 3.5 e Pathfinder descrevem um monstro por <b>6 Habilidades</b> (Força, Destreza, Constituição, Inteligência, Sabedoria, Carisma) que vão de ~1 a ~45, mais uma lista de <b>Perícias</b> treinadas. O Centelha descreve por <b>9 Atributos</b> (escala mortal 1&ndash;5), <b>28 Perícias</b> (0&ndash;5) e o traço de <b>Centelha</b> (0&ndash;5+), que é o <i>tier</i> de poder mítico.</p>
+<p>A conversão tem quatro peças: <b>(a)</b> desdobrar as 6 Habilidades nos 9 Atributos; <b>(b)</b> passar cada score pela <b>curva</b> ancorada em <code>8&ndash;10 = Atributo 2</code>; <b>(c)</b> comprimir os <i>ranks</i> de perícia em 0&ndash;5; <b>(d)</b> ler a natureza mágica da criatura como <b>Centelha</b>. Não é uma fórmula única e sagrada: a curva dá o ponto de partida e a gente afina os ícones à mão.</p>
+
+<h2 id="atributos">2 · As 6 Habilidades → os 9 Atributos</h2>
+<p>Quatro Habilidades mapeiam direto. Sabedoria e Carisma, que no D&amp;D concentram muita coisa, <b>se desdobram</b> nos atributos Sociais e Mentais do Centelha:</p>
+<div class="scroll">
+<table class="ref-mini" style="max-width:100%">
+<thead><tr><th>Atributo Centelha</th><th>Grupo</th><th>Vem de (D&amp;D)</th><th>Racional</th></tr></thead>
+<tbody>
+<tr><td><b>Força</b></td><td>Físico</td><td class="dndcol">Str</td><td>direto (+ tamanho)</td></tr>
+<tr><td><b>Destreza</b></td><td>Físico</td><td class="dndcol">Dex</td><td>direto</td></tr>
+<tr><td><b>Vigor</b></td><td>Físico</td><td class="dndcol">Con</td><td>direto (+ tamanho); mortos-vivos usam Car</td></tr>
+<tr><td><b>Influência</b></td><td>Social</td><td class="dndcol">Cha</td><td>presença, liderança, força de personalidade</td></tr>
+<tr><td><b>Perspicácia</b></td><td>Social</td><td class="dndcol">(Int + Cha)/2</td><td>lábia e leitura: astúcia + charme</td></tr>
+<tr><td><b>Compostura</b></td><td>Social</td><td class="dndcol">(Sab + Car)/2</td><td>aprumo, porte, autocontrole</td></tr>
+<tr><td><b>Percepção</b></td><td>Mental</td><td class="dndcol">Sab</td><td>sentidos, intuição (Observar/Ouvir, Vontade)</td></tr>
+<tr><td><b>Inteligência</b></td><td>Mental</td><td class="dndcol">Int</td><td>direto; conhecimento e educação</td></tr>
+<tr><td><b>Raciocínio</b></td><td>Mental</td><td class="dndcol">(Sab + Int)/2</td><td>argúcia, reação: intuição + intelecto</td></tr>
+</tbody>
+</table>
+</div>
+<div class="note"><b>Mente vazia (Int &ldquo;&mdash;&rdquo;):</b> Inteligência = 0; Raciocínio vem só da Sabedoria e Perspicácia só do Carisma. <b>Incorpóreo (Str &ldquo;&mdash;&rdquo;):</b> Força não se aplica (0). <b>Morto-vivo (Con &ldquo;&mdash;&rdquo;):</b> Vigor deriva do Carisma (como os PV no Pathfinder).</p></div>
+
+<h2 id="curva">3 · A curva de valor</h2>
+<p>Cada score cru de D&amp;D passa por esta escada. A âncora é a sua: <b>8&ndash;11 = Atributo 2</b> (humano comum). A faixa <b>16&ndash;19 = 5</b> é o pico humano natural; acima disso já é território sobre-humano, e o número <b>pode passar de 5</b> livremente para colossos e criaturas antigas (o Centelha não trava o topo do atributo, só a criação de PJs).</p>
+<div class="scroll"><table class="ref-mini" style="max-width:100%">
+<thead><tr><th>Score D&amp;D/PF</th><th class="c">Atributo</th><th>Leitura</th></tr></thead>
+<tbody>
+<tr><td>1</td><td class="c">0</td><td>mal funcional</td></tr>
+<tr><td>2&ndash;7</td><td class="c">1</td><td>fraco / animalesco</td></tr>
+<tr><td><b>8&ndash;11</b></td><td class="c"><b>2</b></td><td><b>humano comum (âncora)</b></td></tr>
+<tr><td>12&ndash;13</td><td class="c">3</td><td>acima da média</td></tr>
+<tr><td>14&ndash;15</td><td class="c">4</td><td>excepcional</td></tr>
+<tr><td>16&ndash;19</td><td class="c">5</td><td>pico humano</td></tr>
+<tr><td>20&ndash;21</td><td class="c">6</td><td>sobre-humano leve</td></tr>
+<tr><td>22&ndash;24</td><td class="c">7</td><td>monstruoso</td></tr>
+<tr><td>25&ndash;27</td><td class="c">8</td><td>gigantesco</td></tr>
+<tr><td>28&ndash;31</td><td class="c">9</td><td>titânico</td></tr>
+<tr><td>32&ndash;35</td><td class="c">10</td><td>colossal</td></tr>
+<tr><td>36&ndash;40</td><td class="c">11</td><td>lendário</td></tr>
+<tr><td>41&ndash;45</td><td class="c">12</td><td>mítico</td></tr>
+<tr><td>46+</td><td class="c">13+</td><td>divino (+1 a cada 6)</td></tr>
+</tbody></table></div>
+<p class="formula">Atributo &asymp; 2 + arredonda((score &minus; 10) / ~2,3), com retornos decrescentes no topo</p>
+
+<h2 id="tamanho">4 · Bônus de tamanho (Força &amp; Vigor)</h2>
+<p>Massa importa: um ogro é mais forte que o mais forte dos humanos, não igual. Depois da curva, criaturas grandes somam um bônus fixo em <b>Força e Vigor</b>, empurrando os brutamontes acima do pico humano (é assim que o ogro chega a 7&ndash;8).</p>
+<div class="legend">
+  <span><span class="pill">Médio / Pequeno / Minúsculo</span> +0</span>
+  <span><span class="pill">Grande</span> +1</span>
+  <span><span class="pill">Enorme</span> +2</span>
+  <span><span class="pill">Imenso</span> +3</span>
+  <span><span class="pill">Colossal</span> +4</span>
+</div>
+
+<h2 id="pericias">5 · Perícias → Perícias</h2>
+<p>Converta os <b>ranks investidos</b> (o treino puro), não o modificador final. O modificador do D&amp;D já soma o atributo; o Centelha soma o Atributo à parte na hora de rolar, então usar o bônus total contaria o atributo duas vezes. Os ranks (0&ndash;~CR+3 no 3.5, capados em <code>Dados de Vida</code> no PF) comprimem para 0&ndash;5:</p>
+<div class="scroll"><table class="ref-mini" style="max-width:100%">
+<thead><tr><th class="c">Ranks D&amp;D</th><th class="c">Perícia Centelha</th></tr></thead>
+<tbody>
+<tr><td class="c">0</td><td class="c">0 (só o atributo)</td></tr>
+<tr><td class="c">1&ndash;3</td><td class="c">1</td></tr>
+<tr><td class="c">4&ndash;6</td><td class="c">2</td></tr>
+<tr><td class="c">7&ndash;9</td><td class="c">3</td></tr>
+<tr><td class="c">10&ndash;13</td><td class="c">4</td></tr>
+<tr><td class="c">14+</td><td class="c">5</td></tr>
+</tbody></table></div>
+<div class="note"><b>Bônus raciais</b> (o +4 do goblin em Furtividade, o +8 do dragão em Perceber) não viram ranks: eles marcam uma <b>especialidade</b> ou, mais tarde, uma <b>Proeza</b> passiva. Criaturas mágicas antigas podem ultrapassar 5 (teto 10 em casos extremos). Muitas perícias de D&amp;D colapsam numa só do Centelha:</div>
+<div class="scroll"><table style="max-width:100%">
+<thead><tr><th>Perícia Centelha</th><th>Absorve (D&amp;D 3.5 / PF)</th></tr></thead>
+<tbody>
+<tr><td><b>Furtividade</b></td><td>Esconder-se, Mover-se Silenciosamente (Stealth)</td></tr>
+<tr><td><b>Prontidão</b></td><td>Observar, Ouvir (Perception)</td></tr>
+<tr><td><b>Atletismo</b></td><td>Escalar, Saltar, Nadar (Climb, Swim, Acrobatics parte)</td></tr>
+<tr><td><b>Sobrevivência</b></td><td>Sobrevivência, Adestrar Animais, Cavalgar</td></tr>
+<tr><td><b>Empatia</b> / <b>Manha</b></td><td>Sentir Motivação, Adivinhação; Blefar, Furtar</td></tr>
+<tr><td><b>Persuasão</b> / <b>Oratória</b></td><td>Diplomacia, Intimidar</td></tr>
+<tr><td><b>Conhecimentos</b> / <b>Ocultismo</b></td><td>Conhecimento (arcano, planos, religião, natureza…)</td></tr>
+<tr><td><b>Prestidigitação</b></td><td>Acrobacia, Prestidigitação, Equilíbrio</td></tr>
+</tbody></table></div>
+
+<h2 id="centelha">6 · A escada de Centelha</h2>
+<p>Centelha é o <i>tier</i> de poder, não um atributo. A regra: <b>criatura mundana = 0</b>; quem <b>usa ou emana magia</b> tem a Centelha desperta (&ge;1); feras <b>naturalmente mágicas</b> (basilisco, pégaso, fada) já nascem com ela. As mais poderosas <b>passam de 5</b>.</p>
+<div class="scroll"><table style="max-width:100%">
+<thead><tr><th class="c">Centelha</th><th>Quem</th><th>Exemplos</th></tr></thead>
+<tbody>
+<tr><td class="c"><span class="cent-badge cent0">0</span></td><td>mundano, sem nada sobrenatural</td><td>goblin, lobo, ogro, bandido, esqueleto inerte</td></tr>
+<tr><td class="c"><span class="cent-badge">1</span></td><td>toque de magia; morto-vivo com poder; fera menor mágica</td><td>ghoul, harpia, hipogrifo, cão infernal</td></tr>
+<tr><td class="c"><span class="cent-badge">2</span></td><td>sobrenatural nítido; petrificação, sopro, dreno</td><td>basilisco, medusa, sombra, espectro, minotauro élite</td></tr>
+<tr><td class="c"><span class="cent-badge">3</span></td><td>monstro mágico maior; conjura; imortal menor</td><td>múmia, pégaso, unicórnio, trol, súcubo</td></tr>
+<tr><td class="c"><span class="cent-badge">4</span></td><td>lendário; dragão jovem/adulto, exterior forte</td><td>dragão adulto, vrock, deva astral, lich</td></tr>
+<tr><td class="c"><span class="cent-badge">5</span></td><td>quase-deus; dragão ancião, senhor demoníaco menor</td><td>dragão ancião, planetar, erínia-mestra</td></tr>
+<tr><td class="c"><span class="cent-badge" style="background:var(--gold)">6&ndash;8</span></td><td>entidade; extrapola o teto mortal</td><td>balor, diabo maior, solar, grande dragão vermelho</td></tr>
+<tr><td class="c"><span class="cent-badge" style="background:var(--gold)">9</span></td><td>único, irrepetível</td><td>uma entidade cósmica nomeada</td></tr>
+</tbody></table></div>
+
+<h2 id="exemplos">7 · Exemplos passo a passo</h2>
+<div id="worked"></div>
+
+<h2 id="tabela">8 · Tabela viva: 122 monstros</h2>
+<p>Os <b>scores crus de D&amp;D/PF</b> (colunas cor de ferrugem) entram; a coluna <b>Centelha</b> (teal) é <b>calculada ao vivo</b> pela metodologia acima, no seu navegador. Clique num cabeçalho de atributo para ver a conta. Fonte de cada bicho na coluna origem.</p>
+<div class="controls">
+  <input id="q" type="search" placeholder="Filtrar por nome, tipo, origem… (ex.: dragão, morto-vivo, ogro)">
+  <select id="fcent">
+    <option value="">Centelha: todas</option>
+    <option value="0">0 · mundano</option>
+    <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+    <option value="4">4</option><option value="5">5</option><option value="6+">6+</option>
+  </select>
+  <span class="count" id="count"></span>
+</div>
+<div class="legend">
+  <span><span class="sw" style="background:var(--dnd)"></span> Habilidades D&amp;D (origem)</span>
+  <span><span class="sw" style="background:var(--accent-soft)"></span> Atributos Centelha (calculado)</span>
+</div>
+<div class="scroll">
+<table id="tbl">
+<thead>
+  <tr>
+    <th rowspan="2">Criatura</th>
+    <th rowspan="2">Origem</th>
+    <th rowspan="2" class="c">CR</th>
+    <th colspan="6" class="c grp-dnd">Habilidades D&amp;D · For Des Con Int Sab Car</th>
+    <th colspan="9" class="c grp-cent" title="clique para a fórmula">Atributos Centelha · Fo De Vi In Pe Co Pc It Ra</th>
+    <th rowspan="2" class="c">Cent.</th>
+    <th rowspan="2">Perícias-chave (Centelha)</th>
+  </tr>
+  <tr>
+    <th class="c dndcol">St</th><th class="c dndcol">Dx</th><th class="c dndcol">Cn</th><th class="c dndcol">In</th><th class="c dndcol">Ws</th><th class="c dndcol">Ch</th>
+    <th class="c centcol" data-att="forca" title="Força ← Str + tamanho">Fo</th>
+    <th class="c centcol" data-att="destreza" title="Destreza ← Dex">De</th>
+    <th class="c centcol" data-att="vigor" title="Vigor ← Con + tamanho">Vi</th>
+    <th class="c centcol" data-att="influencia" title="Influência ← Cha">In</th>
+    <th class="c centcol" data-att="perspicacia" title="Perspicácia ← (Int+Cha)/2">Pe</th>
+    <th class="c centcol" data-att="compostura" title="Compostura ← (Sab+Car)/2">Co</th>
+    <th class="c centcol" data-att="percepcao" title="Percepção ← Sab">Pc</th>
+    <th class="c centcol" data-att="inteligencia" title="Inteligência ← Int">It</th>
+    <th class="c centcol" data-att="raciocinio" title="Raciocínio ← (Sab+Int)/2">Ra</th>
+  </tr>
+</thead>
+<tbody id="rows"></tbody>
+</table>
+</div>
+
+<footer>
+  Oficina de Conversão · Centelha RPG. Valores de origem seguem os stat blocks do <i>Pathfinder Bestiary 1</i> e do <i>Livro dos Monstros 3.5</i>.
+  A coluna Centelha é derivada; ajuste fino esperado por criatura. Gerado como referência de design.
+</footer>
+
+</div><!--/wrap-->
+
+<script>
+/* ===================== MOTOR DE CONVERSÃO ===================== */
+// curva score D&D -> atributo Centelha
+function attr(s){
+  if(s===null||s===undefined||s==='-') return null;
+  s=+s;
+  if(s<=1) return 0;
+  if(s<=7) return 1;
+  if(s<=11) return 2;
+  if(s<=13) return 3;
+  if(s<=15) return 4;
+  if(s<=19) return 5;
+  if(s<=21) return 6;
+  if(s<=24) return 7;
+  if(s<=27) return 8;
+  if(s<=31) return 9;
+  if(s<=35) return 10;
+  if(s<=40) return 11;
+  if(s<=45) return 12;
+  return 12 + Math.floor((s-45)/6);
+}
+const SIZEBON={medio:0,pequeno:0,minusculo:0,grande:1,enorme:2,imenso:3,colossal:4};
+function avg(a,b){ // média de dois scores, tratando '-'
+  const A=(a==='-'||a==null), B=(b==='-'||b==null);
+  if(A&&B) return null;
+  if(A) return +b; if(B) return +a;
+  return Math.round((+a+ +b)/2);
+}
+// recebe {str,dex,con,int,wis,cha,size} -> 9 atributos Centelha
+function converte(m){
+  const sz=SIZEBON[m.size]||0;
+  const str=m.str, con=m.con;
+  // morto-vivo sem Con usa Car para Vigor
+  const vigScore = (con==='-'||con==null) ? m.cha : con;
+  return {
+    forca:       (str==='-'||str==null) ? 0 : (attr(str)+sz),
+    destreza:    attr(m.dex),
+    vigor:       (vigScore==='-'||vigScore==null) ? 1 : (attr(vigScore)+sz),
+    influencia:  attr(m.cha),
+    perspicacia: attr(avg(m.int,m.cha)),
+    compostura:  attr(avg(m.wis,m.cha)),
+    percepcao:   attr(m.wis),
+    inteligencia:(m.int==='-'||m.int==null) ? 0 : attr(m.int),
+    raciocinio:  attr(avg(m.wis,m.int)),
+  };
+}
+const ORD=['forca','destreza','vigor','influencia','perspicacia','compostura','percepcao','inteligencia','raciocinio'];
+
+/* ===================== DADOS (122 monstros) ===================== */
+/* size: medio|pequeno|minusculo|grande|enorme|imenso|colossal
+   scores crus D&D/PF; '-' = não se aplica. cent = Centelha (definida pela natureza).
+   src abrevia a origem. sk = perícias-chave já em Centelha (0-5). */
+const DATA = [
+/* ---- Humanoides & Gigantes ---- */
+{name:"Goblin",type:"humanoide Pequeno",src:"PF B1",cr:"1/3",str:11,dex:15,con:12,int:10,wis:9,cha:6,size:"pequeno",cent:0,sk:["Furtividade 2","Sobrevivência 1"],worked:true,note:"Mundano, sem nada sobrenatural: Centelha 0. O +4 racial em Furtividade vira especialidade."},
+{name:"Kobold",type:"humanoide Pequeno (reptiliano)",src:"PF B1",cr:"1/4",str:9,dex:13,con:10,int:10,wis:9,cha:8,size:"pequeno",cent:0,sk:["Ofícios 1","Furtividade 1","Prontidão 1"]},
+{name:"Orc",type:"humanoide Médio",src:"PF B1",cr:"1/3",str:17,dex:11,con:12,int:7,wis:8,cha:6,size:"medio",cent:0,sk:["Prontidão 1"]},
+{name:"Hobgoblin",type:"humanoide Médio",src:"PF B1",cr:"1/2",str:15,dex:15,con:16,int:10,wis:12,cha:8,size:"medio",cent:0,sk:["Furtividade 2","Prontidão 1"]},
+{name:"Gnoll",type:"humanoide Médio",src:"PF B1",cr:"1",str:15,dex:10,con:13,int:8,wis:11,cha:8,size:"medio",cent:0,sk:["Prontidão 1"]},
+{name:"Bugbear",type:"humanoide Médio",src:"PF B1",cr:"2",str:16,dex:13,con:13,int:10,wis:10,cha:9,size:"medio",cent:0,sk:["Furtividade 3","Prontidão 2"]},
+{name:"Homem-lagarto",type:"humanoide Médio (reptiliano)",src:"PF B1",cr:"1",str:13,dex:10,con:13,int:9,wis:12,cha:10,size:"medio",cent:0,sk:["Atletismo 1","Sobrevivência 1"]},
+{name:"Trogloditas",type:"humanoide Médio (reptiliano)",src:"PF B1",cr:"1",str:13,dex:9,con:14,int:8,wis:11,cha:10,size:"medio",cent:0,sk:["Furtividade 1"]},
+{name:"Ogro",type:"humanoide Grande (gigante)",src:"PF B1",cr:"3",str:21,dex:8,con:15,int:6,wis:10,cha:7,size:"grande",cent:0,sk:["Atletismo 1"],worked:true,note:"Força 21 dá curva 6; +1 de tamanho (Grande) = Força 7. É assim que o brutamontes fica acima do pico humano. Centelha 0: pura massa, nada mágico."},
+{name:"Ettin",type:"humanoide Grande (gigante)",src:"PF B1",cr:"6",str:23,dex:8,con:15,int:6,wis:10,cha:11,size:"grande",cent:0,sk:["Prontidão 3","Sobrevivência 2"]},
+{name:"Trol",type:"humanoide Grande (gigante)",src:"PF B1",cr:"5",str:21,dex:14,con:23,int:6,wis:9,cha:6,size:"grande",cent:1,sk:["Prontidão 1"],note:"Regeneração sobrenatural desperta a Centelha 1."},
+{name:"Gigante da Colina",type:"humanoide Grande (gigante)",src:"PF B1",cr:"7",str:25,dex:8,con:19,int:6,wis:10,cha:7,size:"grande",cent:0,sk:["Atletismo 2","Prontidão 1"]},
+{name:"Gigante da Pedra",type:"humanoide Grande (gigante)",src:"PF B1",cr:"8",str:27,dex:15,con:19,int:10,wis:12,cha:11,size:"grande",cent:0,sk:["Furtividade 3","Atletismo 2"]},
+{name:"Gigante do Fogo",type:"humanoide Grande (gigante)",src:"MM 3.5",cr:"10",str:31,dex:9,con:22,int:10,wis:14,cha:11,size:"grande",cent:1,sk:["Ofícios 2","Prontidão 2"],note:"Imunidade a fogo (Ex/Su) tênue: Centelha 1."},
+{name:"Gigante do Gelo",type:"humanoide Grande (gigante)",src:"MM 3.5",cr:"9",str:29,dex:9,con:21,int:10,wis:12,cha:11,size:"grande",cent:1,sk:["Atletismo 2","Prontidão 1"]},
+{name:"Gigante das Nuvens",type:"humanoide Enorme (gigante)",src:"MM 3.5",cr:"11",str:35,dex:12,con:21,int:12,wis:16,cha:15,size:"enorme",cent:1,sk:["Prontidão 3","Ofícios 2"],note:"Poderes mágicos inatos (Sp): Centelha 1."},
+{name:"Gigante da Tempestade",type:"humanoide Enorme (gigante)",src:"MM 3.5",cr:"13",str:39,dex:14,con:23,int:16,wis:20,cha:15,size:"enorme",cent:2,sk:["Prontidão 4","Conhecimentos 2"],note:"Controle do clima e magia: Centelha 2."},
+{name:"Ciclope",type:"humanoide Grande (gigante)",src:"PF B1",cr:"5",str:25,dex:8,con:18,int:9,wis:12,cha:9,size:"grande",cent:1,sk:["Ofícios 2","Prontidão 2"],note:"Lampejo de premonição (Su): Centelha 1."},
+
+/* ---- Feras & Animais ---- */
+{name:"Lobo",type:"animal Médio",src:"PF B1",cr:"1",str:13,dex:15,con:15,int:2,wis:12,cha:6,size:"medio",cent:0,sk:["Prontidão 2","Furtividade 2","Sobrevivência 2"]},
+{name:"Lobo Atroz",type:"animal Grande",src:"PF B1",cr:"3",str:25,dex:15,con:17,int:2,wis:12,cha:10,size:"grande",cent:0,sk:["Prontidão 2","Furtividade 2"]},
+{name:"Urso-pardo",type:"animal Grande",src:"PF B1",cr:"4",str:27,dex:13,con:19,int:2,wis:12,cha:6,size:"grande",cent:0,sk:["Atletismo 3","Prontidão 1"]},
+{name:"Leão",type:"animal Grande",src:"PF B1",cr:"3",str:21,dex:17,con:15,int:2,wis:15,cha:10,size:"grande",cent:0,sk:["Furtividade 3","Prontidão 2"]},
+{name:"Tigre",type:"animal Grande",src:"PF B1",cr:"4",str:23,dex:15,con:17,int:2,wis:15,cha:10,size:"grande",cent:0,sk:["Furtividade 3","Atletismo 2"]},
+{name:"Javali",type:"animal Médio",src:"PF B1",cr:"2",str:15,dex:10,con:17,int:2,wis:13,cha:4,size:"medio",cent:0,sk:["Prontidão 1"]},
+{name:"Rinoceronte",type:"animal Grande",src:"PF B1",cr:"4",str:24,dex:12,con:20,int:2,wis:13,cha:6,size:"grande",cent:0,sk:["Prontidão 1"]},
+{name:"Elefante",type:"animal Enorme",src:"PF B1",cr:"7",str:30,dex:10,con:21,int:2,wis:13,cha:7,size:"enorme",cent:0,sk:["Prontidão 2"]},
+{name:"Gorila",type:"animal Grande",src:"PF B1",cr:"2",str:19,dex:15,con:14,int:2,wis:13,cha:7,size:"grande",cent:0,sk:["Atletismo 3"]},
+{name:"Crocodilo",type:"animal Grande",src:"PF B1",cr:"2",str:19,dex:12,con:15,int:1,wis:12,cha:2,size:"grande",cent:0,sk:["Furtividade 2","Atletismo 2"]},
+{name:"Cobra Constritora",type:"animal Médio",src:"PF B1",cr:"2",str:17,dex:17,con:13,int:1,wis:12,cha:2,size:"medio",cent:0,sk:["Furtividade 2","Atletismo 2"]},
+{name:"Aranha Gigante",type:"praga Médio",src:"PF B1",cr:"1",str:11,dex:17,con:12,int:"-",wis:10,cha:2,size:"medio",cent:0,sk:["Furtividade 3","Atletismo 3"]},
+{name:"Escorpião Gigante",type:"praga Grande",src:"PF B1",cr:"3",str:19,dex:12,con:16,int:"-",wis:10,cha:2,size:"grande",cent:0,sk:["Furtividade 1"]},
+{name:"Águia Gigante",type:"besta mágica Grande",src:"PF B1",cr:"3",str:18,dex:15,con:15,int:10,wis:14,cha:13,size:"grande",cent:1,sk:["Prontidão 3","Atletismo 2"],note:"Besta mágica inteligente: Centelha 1."},
+{name:"Roc",type:"animal Imenso",src:"PF B1",cr:"9",str:34,dex:13,con:21,int:2,wis:15,cha:11,size:"imenso",cent:0,sk:["Prontidão 3"]},
+{name:"Rato Gigante",type:"animal Pequeno",src:"PF B1",cr:"1/8",str:2,dex:15,con:11,int:2,wis:13,cha:4,size:"pequeno",cent:0,sk:["Furtividade 2","Atletismo 2"]},
+
+/* ---- Monstros, aberrações & plantas ---- */
+{name:"Corujurso",type:"besta mágica Grande",src:"PF B1",cr:"4",str:21,dex:12,con:18,int:2,wis:12,cha:10,size:"grande",cent:1,sk:["Prontidão 4"],note:"Besta mágica: Centelha 1."},
+{name:"Minotauro",type:"humanoide monstruoso Grande",src:"PF B1",cr:"4",str:19,dex:10,con:15,int:7,wis:10,cha:8,size:"grande",cent:1,sk:["Prontidão 3","Sobrevivência 2"],note:"Astúcia natural (labirinto, Su): Centelha 1."},
+{name:"Harpia",type:"humanoide monstruoso Médio",src:"PF B1",cr:"4",str:12,dex:17,con:10,int:7,wis:12,cha:17,size:"medio",cent:2,sk:["Oratória 2","Furtividade 2"],note:"Canção cativante (Su): Centelha 2."},
+{name:"Gárgula",type:"humanoide monstruoso Médio",src:"PF B1",cr:"4",str:15,dex:14,con:18,int:6,wis:11,cha:7,size:"medio",cent:1,sk:["Furtividade 3"],note:"Congelar/RD mágica: Centelha 1."},
+{name:"Grifo",type:"besta mágica Grande",src:"PF B1",cr:"4",str:16,dex:15,con:16,int:5,wis:13,cha:8,size:"grande",cent:1,sk:["Prontidão 2","Atletismo 2"]},
+{name:"Hipogrifo",type:"besta mágica Grande",src:"MM 3.5",cr:"2",str:18,dex:15,con:16,int:2,wis:13,cha:8,size:"grande",cent:1,sk:["Prontidão 2"]},
+{name:"Mantícora",type:"besta mágica Grande",src:"PF B1",cr:"5",str:20,dex:15,con:18,int:7,wis:12,cha:9,size:"grande",cent:1,sk:["Prontidão 2","Atletismo 1"],note:"Espinhos de cauda: Centelha 1."},
+{name:"Quimera",type:"besta mágica Grande",src:"PF B1",cr:"7",str:19,dex:13,con:17,int:4,wis:13,cha:10,size:"grande",cent:2,sk:["Prontidão 3","Furtividade 1"],note:"Sopro dracônico: Centelha 2."},
+{name:"Wyvern",type:"dragão Grande",src:"PF B1",cr:"6",str:19,dex:12,con:17,int:7,wis:12,cha:11,size:"grande",cent:2,sk:["Prontidão 2","Furtividade 1"],note:"Veneno e linhagem dracônica: Centelha 2."},
+{name:"Hidra (5 cabeças)",type:"besta mágica Enorme",src:"PF B1",cr:"4",str:21,dex:12,con:20,int:2,wis:10,cha:6,size:"enorme",cent:1,sk:["Prontidão 3"],note:"Cabeças que rebrotam (Su): Centelha 1."},
+{name:"Basilisco",type:"besta mágica Médio",src:"PF B1",cr:"5",str:16,dex:8,con:15,int:2,wis:13,cha:11,size:"medio",cent:2,sk:["Furtividade 2","Prontidão 3"],note:"Naturalmente mágico, olhar petrificante: Centelha 2."},
+{name:"Cocatriz",type:"besta mágica Pequeno",src:"PF B1",cr:"3",str:6,dex:17,con:11,int:2,wis:13,cha:8,size:"pequeno",cent:2,sk:["Prontidão 2"],note:"Toque que petrifica: Centelha 2."},
+{name:"Górgona (touro de ferro)",type:"besta mágica Grande",src:"PF B1",cr:"8",str:24,dex:10,con:24,int:2,wis:16,cha:9,size:"grande",cent:2,sk:["Prontidão 4"],note:"Sopro que petrifica (Su): Centelha 2. Não confundir com a Medusa."},
+{name:"Besta Deslocadora",type:"besta mágica Grande",src:"MM 3.5",cr:"4",str:18,dex:15,con:16,int:12,wis:12,cha:8,size:"grande",cent:2,sk:["Furtividade 3","Prontidão 2"],note:"Deslocamento (Su): Centelha 2."},
+{name:"Aranha das Fases",type:"besta mágica Grande",src:"MM 3.5",cr:"5",str:17,dex:17,con:16,int:7,wis:13,cha:11,size:"grande",cent:2,sk:["Furtividade 3"],note:"Salto etéreo: Centelha 2."},
+{name:"Monstro da Ferrugem",type:"aberração Médio",src:"PF B1",cr:"3",str:10,dex:17,con:13,int:2,wis:13,cha:8,size:"medio",cent:1,sk:["Prontidão 3"],note:"Corrói metal (Su): Centelha 1."},
+{name:"Cubo Gelatinoso",type:"limo Grande",src:"PF B1",cr:"3",str:10,dex:1,con:26,int:"-",wis:1,cha:1,size:"grande",cent:0,sk:[],note:"Mente vazia: Int/Rac 0. Con 26 + tamanho = Vigor 9. Centelha 0."},
+{name:"Mímico",type:"aberração Médio",src:"MM 3.5",cr:"4",str:19,dex:12,con:17,int:10,wis:13,cha:10,size:"medio",cent:1,sk:["Furtividade 4"],note:"Mudar de forma (disfarce): Centelha 1."},
+{name:"Montão Tropeçante",type:"planta Grande",src:"PF B1",cr:"6",str:21,dex:10,con:17,int:7,wis:10,cha:9,size:"grande",cent:1,sk:["Furtividade 3","Prontidão 2"],note:"Absorve raio (Su): Centelha 1."},
+{name:"Treant",type:"planta Enorme",src:"PF B1",cr:"8",str:29,dex:8,con:21,int:12,wis:16,cha:13,size:"enorme",cent:2,sk:["Persuasão 2","Sobrevivência 3"],note:"Animar árvores (Su): Centelha 2."},
+{name:"Verme Púrpura",type:"besta mágica Imenso",src:"PF B1",cr:"12",str:35,dex:10,con:25,int:1,wis:8,cha:8,size:"imenso",cent:1,sk:["Prontidão 1"]},
+{name:"Bulette",type:"besta mágica Enorme",src:"PF B1",cr:"7",str:27,dex:13,con:23,int:2,wis:13,cha:6,size:"enorme",cent:1,sk:["Atletismo 3","Prontidão 2"]},
+{name:"Aboleth",type:"aberração Enorme",src:"PF B1",cr:"7",str:26,dex:12,con:20,int:18,wis:17,cha:17,size:"enorme",cent:4,sk:["Conhecimentos 4","Ocultismo 3","Percepção 3"],note:"Poderes psíquicos e magia ancestral: Centelha 4."},
+
+/* ---- Mortos-vivos ---- */
+{name:"Esqueleto Humano",type:"morto-vivo Médio",src:"PF B1",cr:"1/3",str:15,dex:14,con:"-",int:"-",wis:10,cha:10,size:"medio",cent:0,sk:[],note:"Con — → Vigor vem do Carisma (2). Mente vazia: Int/Rac 0. Casca inerte: Centelha 0."},
+{name:"Zumbi Humano",type:"morto-vivo Médio",src:"PF B1",cr:"1/2",str:17,dex:10,con:"-",int:"-",wis:10,cha:10,size:"medio",cent:0,sk:[]},
+{name:"Ghoul",type:"morto-vivo Médio",src:"PF B1",cr:"1",str:13,dex:15,con:"-",int:13,wis:14,cha:14,size:"medio",cent:1,sk:["Furtividade 2","Prontidão 2"],note:"Paralisia (Su): Centelha 1."},
+{name:"Ghast",type:"morto-vivo Médio",src:"PF B1",cr:"2",str:17,dex:17,con:"-",int:13,wis:14,cha:16,size:"medio",cent:2,sk:["Furtividade 3","Prontidão 2"],note:"Fedor e paralisia: Centelha 2."},
+{name:"Sombra",type:"morto-vivo Médio (incorpóreo)",src:"PF B1",cr:"3",str:"-",dex:14,con:"-",int:6,wis:12,cha:15,size:"medio",cent:2,sk:["Furtividade 4"],note:"Str — → Força 0. Dreno de Força e incorpóreo: Centelha 2."},
+{name:"Wight",type:"morto-vivo Médio",src:"PF B1",cr:"3",str:12,dex:12,con:"-",int:11,wis:13,cha:15,size:"medio",cent:2,sk:["Furtividade 3","Prontidão 2"],note:"Dreno de energia (Su): Centelha 2."},
+{name:"Assombração (Wraith)",type:"morto-vivo Médio (incorpóreo)",src:"PF B1",cr:"5",str:"-",dex:16,con:"-",int:14,wis:14,cha:21,size:"medio",cent:2,sk:["Furtividade 4","Persuasão 3","Prontidão 3"],note:"Dreno de Constituição, incorpóreo (Car 21 → Vigor 6): Centelha 2."},
+{name:"Espectro",type:"morto-vivo Médio (incorpóreo)",src:"MM 3.5",cr:"7",str:"-",dex:16,con:"-",int:14,wis:14,cha:17,size:"medio",cent:3,sk:["Furtividade 4","Prontidão 3"],note:"Dreno de nível, voo, incorpóreo: Centelha 3."},
+{name:"Múmia",type:"morto-vivo Médio",src:"PF B1",cr:"5",str:24,dex:10,con:"-",int:6,wis:15,cha:15,size:"medio",cent:3,sk:["Prontidão 3"],note:"Podridão e aura de desespero (Su): Centelha 3. Str 24 → Força 7."},
+{name:"Bodak",type:"morto-vivo Médio",src:"MM 3.5",cr:"8",str:15,dex:15,con:"-",int:6,wis:12,cha:16,size:"medio",cent:3,sk:["Prontidão 3","Furtividade 2"],note:"Olhar mortal (Su): Centelha 3."},
+{name:"Vampiro",type:"morto-vivo Médio",src:"PF B1",cr:"9",str:16,dex:18,con:"-",int:14,wis:16,cha:26,size:"medio",cent:4,sk:["Manha 5","Persuasão 4","Furtividade 3"],note:"Dominar, forma gasosa, filhos da noite: Centelha 4. Car 26 → Vigor 8, Influência 8."},
+{name:"Lich",type:"morto-vivo Médio",src:"PF B1",cr:"12",str:10,dex:14,con:"-",int:22,wis:14,cha:16,size:"medio",cent:5,sk:["Ocultismo 5","Conhecimentos 5","Prontidão 3"],note:"Arquimago imortal: Centelha 5. Int 20 → Inteligência 6."},
+
+/* ---- Demônios (caóticos e malignos) ---- */
+{name:"Dretch",type:"exterior Pequeno (demônio)",src:"PF B1",cr:"2",str:12,dex:10,con:14,int:6,wis:11,cha:11,size:"pequeno",cent:2,sk:["Prontidão 1"],note:"Poderes mágicos: Centelha 2."},
+{name:"Quasit",type:"exterior Minúsculo (demônio)",src:"PF B1",cr:"2",str:8,dex:17,con:11,int:11,wis:12,cha:14,size:"minusculo",cent:2,sk:["Furtividade 4","Manha 2"],note:"Invisibilidade, forma alternativa: Centelha 2."},
+{name:"Súcubo",type:"exterior Médio (demônio)",src:"PF B1",cr:"7",str:13,dex:17,con:20,int:18,wis:14,cha:27,size:"medio",cent:3,sk:["Persuasão 4","Manha 4","Empatia 3"],note:"Enfeitiçar, mudar de forma, dreno: Centelha 3. Car 27 → Influência 8."},
+{name:"Vrock",type:"exterior Grande (demônio)",src:"PF B1",cr:"9",str:21,dex:15,con:25,int:14,wis:16,cha:16,size:"grande",cent:4,sk:["Prontidão 4","Atletismo 3"],note:"Esporos, dança da ruína: Centelha 4."},
+{name:"Hezrou",type:"exterior Grande (demônio)",src:"PF B1",cr:"11",str:27,dex:15,con:25,int:14,wis:16,cha:18,size:"grande",cent:4,sk:["Prontidão 4","Atletismo 3"]},
+{name:"Glabrezu",type:"exterior Enorme (demônio)",src:"PF B1",cr:"13",str:33,dex:14,con:27,int:18,wis:20,cha:20,size:"enorme",cent:5,sk:["Ocultismo 4","Persuasão 4","Prontidão 4"],note:"Realizar desejos traiçoeiros: Centelha 5."},
+{name:"Marilith",type:"exterior Grande (demônio)",src:"PF B1",cr:"17",str:29,dex:25,con:25,int:18,wis:18,cha:25,size:"grande",cent:6,sk:["Armas 5","Prontidão 4","Liderança 4"],note:"General demoníaca de seis braços: Centelha 6. Dex 25 → Destreza 8."},
+{name:"Balor",type:"exterior Grande (demônio)",src:"PF B1",cr:"20",str:35,dex:25,con:36,int:24,wis:24,cha:27,size:"grande",cent:8,sk:["Armas 5","Ocultismo 5","Prontidão 5","Liderança 5"],note:"Senhor demoníaco: extrapola o teto mortal, Centelha 8. Str 35 → curva 10 +1 tamanho = Força 11; Con 36 → Vigor 11."},
+
+/* ---- Diabos (leais e malignos) ---- */
+{name:"Lêmure",type:"exterior Médio (diabo)",src:"PF B1",cr:"1",str:12,dex:10,con:14,int:"-",wis:5,cha:11,size:"medio",cent:1,sk:[],note:"Massa infernal sem mente: Int/Rac 0, mas natureza extraplanar dá Centelha 1."},
+{name:"Diabrete (Imp)",type:"exterior Minúsculo (diabo)",src:"PF B1",cr:"2",str:10,dex:17,con:10,int:13,wis:12,cha:14,size:"minusculo",cent:2,sk:["Furtividade 4","Manha 3"],note:"Invisibilidade, adivinhação, forma alternativa: Centelha 2."},
+{name:"Diabo Barbado",type:"exterior Médio (diabo)",src:"MM 3.5",cr:"5",str:15,dex:15,con:17,int:6,wis:12,cha:10,size:"medio",cent:3,sk:["Armas 3","Prontidão 3"],note:"Teletransporte, doença infernal: Centelha 3."},
+{name:"Erínia",type:"exterior Médio (diabo)",src:"PF B1",cr:"8",str:20,dex:23,con:21,int:14,wis:18,cha:21,size:"medio",cent:4,sk:["Atirador 4","Persuasão 3","Prontidão 4"],note:"Corda de comando, teletransporte, voo: Centelha 4."},
+{name:"Diabo Ósseo",type:"exterior Grande (diabo)",src:"MM 3.5",cr:"9",str:23,dex:19,con:21,int:16,wis:18,cha:18,size:"grande",cent:4,sk:["Prontidão 4","Furtividade 3","Ocultismo 3"]},
+{name:"Diabo de Gelo",type:"exterior Grande (diabo)",src:"MM 3.5",cr:"13",str:27,dex:21,con:25,int:22,wis:20,cha:20,size:"grande",cent:5,sk:["Armas 5","Ocultismo 4","Liderança 4"]},
+{name:"Rakshasa",type:"exterior Médio",src:"PF B1",cr:"10",str:14,dex:18,con:16,int:13,wis:13,cha:17,size:"medio",cent:4,sk:["Manha 5","Furtividade 4","Persuasão 3"],note:"Ilusões, mudar de forma, resistência à magia: Centelha 4."},
+{name:"Diabo do Fosso (Pit Fiend)",type:"exterior Grande (diabo)",src:"PF B1",cr:"20",str:37,dex:29,con:35,int:26,wis:30,cha:26,size:"grande",cent:8,sk:["Ocultismo 5","Liderança 5","Prontidão 5","Persuasão 5"],note:"Príncipe infernal: Centelha 8. Str 37 → curva 11 +1 = Força 12; Con 35 → Vigor 11; Sab 30 → Percepção 9."},
+
+/* ---- Celestiais & exteriores bons ---- */
+{name:"Archon Cão",type:"exterior Médio (celestial)",src:"MM 3.5",cr:"4",str:18,dex:14,con:16,int:13,wis:14,cha:12,size:"medio",cent:3,sk:["Prontidão 3","Atletismo 2"],note:"Teletransporte, aura de menaça: Centelha 3."},
+{name:"Deva Astral",type:"exterior Médio (anjo)",src:"PF B1",cr:"14",str:26,dex:19,con:21,int:18,wis:18,cha:23,size:"medio",cent:5,sk:["Armas 4","Ocultismo 4","Persuasão 4","Prontidão 4"],note:"Anjo mensageiro: Centelha 5."},
+{name:"Planetar",type:"exterior Grande (anjo)",src:"PF B1",cr:"16",str:27,dex:19,con:24,int:22,wis:25,cha:24,size:"grande",cent:6,sk:["Armas 5","Ocultismo 5","Persuasão 4","Prontidão 5"],note:"Anjo guerreiro: Centelha 6."},
+{name:"Solar",type:"exterior Grande (anjo)",src:"PF B1",cr:"23",str:28,dex:20,con:30,int:23,wis:27,cha:25,size:"grande",cent:8,sk:["Armas 5","Ocultismo 5","Oratória 5","Prontidão 5"],note:"Anjo supremo: Centelha 8. Sab 27 → Percepção 8; Con 30 → Vigor 9 +1 = 10."},
+{name:"Couatl",type:"exterior Médio",src:"PF B1",cr:"10",str:15,dex:21,con:17,int:18,wis:20,cha:19,size:"medio",cent:4,sk:["Ocultismo 4","Persuasão 3","Prontidão 4"],note:"Serpente emplumada mágica: Centelha 4."},
+{name:"Ghaele (azata)",type:"exterior Médio (celestial)",src:"MM 3.5",cr:"13",str:20,dex:21,con:18,int:20,wis:20,cha:24,size:"medio",cent:5,sk:["Ocultismo 4","Oratória 4","Prontidão 4"],note:"Cavaleiro-estrela: Centelha 5."},
+
+/* ---- Elementais & gênios ---- */
+{name:"Djinn",type:"exterior Grande (ar)",src:"PF B1",cr:"5",str:18,dex:19,con:14,int:14,wis:15,cha:15,size:"grande",cent:3,sk:["Ofícios 3","Persuasão 3","Prontidão 2"],note:"Gênio do ar, magia inata: Centelha 3."},
+{name:"Efreeti",type:"exterior Grande (fogo)",src:"PF B1",cr:"8",str:23,dex:17,con:18,int:14,wis:15,cha:15,size:"grande",cent:3,sk:["Ofícios 4","Manha 3","Prontidão 3"],note:"Gênio do fogo, desejos: Centelha 3."},
+{name:"Salamandra",type:"exterior Médio (fogo)",src:"PF B1",cr:"6",str:16,dex:13,con:18,int:14,wis:15,cha:13,size:"medio",cent:2,sk:["Ofícios 3","Armas 2"],note:"Calor corporal, linhagem elemental: Centelha 2."},
+{name:"Elemental da Terra (Grande)",type:"exterior Grande (terra)",src:"PF B1",cr:"5",str:26,dex:8,con:21,int:6,wis:11,cha:11,size:"grande",cent:2,sk:["Atletismo 2"],note:"Ser de pura terra: Centelha 2."},
+{name:"Xorn",type:"exterior Médio (terra)",src:"MM 3.5",cr:"6",str:21,dex:13,con:21,int:10,wis:11,cha:10,size:"medio",cent:2,sk:["Prontidão 3","Furtividade 2"],note:"Deslizar pela pedra (Su): Centelha 2."},
+
+/* ---- Fadas ---- */
+{name:"Dríade",type:"fada Médio",src:"PF B1",cr:"3",str:10,dex:19,con:13,int:14,wis:15,cha:18,size:"medio",cent:3,sk:["Persuasão 3","Furtividade 3","Sobrevivência 3"],note:"Naturalmente mágica, enfeitiçar: Centelha 3."},
+{name:"Ninfa",type:"fada Médio",src:"PF B1",cr:"7",str:10,dex:21,con:13,int:16,wis:17,cha:19,size:"medio",cent:4,sk:["Ocultismo 3","Furtividade 4","Persuasão 3"],note:"Beleza cegante, magia druídica: Centelha 4."},
+{name:"Sátiro",type:"fada Médio",src:"PF B1",cr:"4",str:14,dex:15,con:15,int:12,wis:14,cha:19,size:"medio",cent:2,sk:["Oratória 3","Persuasão 4","Furtividade 2"],note:"Flautas encantadas (Su): Centelha 2."},
+{name:"Pixie",type:"fada Pequeno",src:"PF B1",cr:"4",str:7,dex:20,con:11,int:16,wis:15,cha:16,size:"pequeno",cent:3,sk:["Furtividade 5","Ocultismo 2"],note:"Invisibilidade, flechas do sono: Centelha 3. Dex 20 → Destreza 6."},
+
+/* ---- Diversos icônicos ---- */
+{name:"Fogo-fátuo",type:"aberração Pequeno",src:"PF B1",cr:"6",str:1,dex:29,con:10,int:15,wis:16,cha:14,size:"pequeno",cent:3,sk:["Furtividade 5","Prontidão 3"],note:"Str 1 → Força 0. Dex 29 → Destreza 10. Ser de pura energia: Centelha 3."},
+{name:"Medusa",type:"humanoide monstruoso Médio",src:"PF B1",cr:"7",str:10,dex:15,con:18,int:12,wis:13,cha:15,size:"medio",cent:2,sk:["Furtividade 3","Atirador 2","Manha 2"],note:"Olhar petrificante (Su): Centelha 2."},
+{name:"Doppelganger",type:"humanoide monstruoso Médio",src:"PF B1",cr:"3",str:12,dex:13,con:14,int:13,wis:14,cha:13,size:"medio",cent:2,sk:["Manha 4","Empatia 3","Furtividade 2"],note:"Mudar de forma, ler a mente: Centelha 2."},
+{name:"Pégaso",type:"besta mágica Grande",src:"PF B1",cr:"3",str:18,dex:15,con:16,int:10,wis:13,cha:13,size:"grande",cent:3,sk:["Prontidão 3","Atletismo 2"],note:"Naturalmente mágico, detectar o bem/mal (Su): Centelha 3."},
+{name:"Unicórnio",type:"besta mágica Grande",src:"PF B1",cr:"3",str:18,dex:17,con:16,int:11,wis:21,cha:24,size:"grande",cent:3,sk:["Sobrevivência 4","Prontidão 3"],note:"Cura, teletransporte, naturalmente mágico: Centelha 3. Sab 21 → Percepção 6; Car 24 → Influência 7."},
+{name:"Ogro Mago (Oni)",type:"exterior Grande",src:"MM 3.5",cr:"8",str:21,dex:15,con:16,int:14,wis:14,cha:18,size:"grande",cent:4,sk:["Ocultismo 3","Manha 3","Persuasão 3"],note:"Regeneração, voo, feitiços, mudar de forma: Centelha 4."},
+{name:"Esfinge (Ginosfinge)",type:"besta mágica Grande",src:"MM 3.5",cr:"8",str:21,dex:14,con:19,int:18,wis:19,cha:19,size:"grande",cent:4,sk:["Conhecimentos 5","Ocultismo 4","Prontidão 4"],note:"Guardadora de enigmas, magia arcana: Centelha 4."},
+{name:"Naga Espírita",type:"aberração Grande",src:"MM 3.5",cr:"9",str:17,dex:13,con:17,int:16,wis:19,cha:17,size:"grande",cent:4,sk:["Ocultismo 4","Persuasão 3","Prontidão 4"],note:"Olhar encantador e conjuração: Centelha 4."},
+{name:"Behir",type:"besta mágica Enorme",src:"MM 3.5",cr:"8",str:26,dex:13,con:21,int:7,wis:14,cha:12,size:"enorme",cent:1,sk:["Furtividade 3","Prontidão 3"],note:"Sopro elétrico: Centelha 1."},
+{name:"Lâmia",type:"humanoide monstruoso Grande",src:"MM 3.5",cr:"6",str:18,dex:21,con:17,int:13,wis:20,cha:17,size:"grande",cent:3,sk:["Manha 4","Furtividade 3","Ocultismo 2"],note:"Dreno de Sabedoria, ilusões: Centelha 3."},
+{name:"Bruxa Verde (Hag)",type:"humanoide monstruoso Médio",src:"MM 3.5",cr:"5",str:21,dex:12,con:18,int:13,wis:13,cha:14,size:"medio",cent:3,sk:["Ocultismo 3","Manha 3","Furtividade 2"],note:"Fraqueza mística, mímica, feitiços: Centelha 3."},
+{name:"Kraken",type:"besta mágica Colossal",src:"MM 3.5",cr:"18",str:34,dex:10,con:28,int:21,wis:20,cha:21,size:"colossal",cent:6,sk:["Prontidão 5","Ocultismo 4"],note:"Leviatã dos mares, magia: Centelha 6. Str 34 → curva 10 +4 tamanho = Força 14."},
+{name:"Tarrasque",type:"besta mágica Colossal",src:"MM 3.5",cr:"20",str:45,dex:8,con:35,int:3,wis:14,cha:14,size:"colossal",cent:7,sk:["Prontidão 4"],note:"Cataclismo vivo, quase indestrutível: Centelha 7. Str 45 → curva 12 +4 = Força 16."},
+
+/* ---- Dragões vermelhos (linha de idade) e outras cores ---- */
+{name:"Filhote de Dragão Vermelho",type:"dragão Médio",src:"PF B1",cr:"7",str:21,dex:10,con:19,int:12,wis:15,cha:12,size:"medio",cent:3,sk:["Prontidão 3","Atletismo 2","Manha 2"],note:"Já nasce mágico, sopro de fogo: Centelha 3."},
+{name:"Dragão Vermelho Jovem",type:"dragão Grande",src:"PF B1",cr:"10",str:25,dex:12,con:19,int:12,wis:13,cha:12,size:"grande",cent:4,sk:["Prontidão 4","Manha 3","Ocultismo 2"],note:"Sopro e feitiços iniciais: Centelha 4."},
+{name:"Dragão Vermelho Adulto",type:"dragão Enorme",src:"PF B1",cr:"14",str:31,dex:10,con:23,int:16,wis:17,cha:16,size:"enorme",cent:5,sk:["Prontidão 5","Persuasão 4","Ocultismo 3"],note:"Feiticeiro alado temível: Centelha 5. Str 31 → curva 9 +2 = Força 11."},
+{name:"Dragão Vermelho Ancião",type:"dragão Imenso",src:"PF B1",cr:"19",str:39,dex:8,con:27,int:20,wis:21,cha:20,size:"imenso",cent:6,sk:["Prontidão 5","Ocultismo 5","Persuasão 5","Conhecimentos 4"],worked:true,note:"Str 39 → curva 11 +3 tamanho = Força 14. Con 27 → curva 8 +3 = Vigor 11. Sab 21 → Percepção 6. Extrapola o mortal: Centelha 6."},
+{name:"Grande Wyrm Vermelho",type:"dragão Colossal",src:"MM 3.5",cr:"22",str:45,dex:10,con:33,int:22,wis:25,cha:22,size:"colossal",cent:8,sk:["Prontidão 6","Ocultismo 6","Persuasão 5","Conhecimentos 5"],note:"Lenda encarnada: Centelha 8. Str 45 → curva 12 +4 = Força 16; perícias podem passar de 5."},
+{name:"Dragão Branco Jovem",type:"dragão Grande",src:"PF B1",cr:"6",str:21,dex:10,con:17,int:8,wis:11,cha:10,size:"grande",cent:3,sk:["Prontidão 3","Furtividade 3"],note:"Sopro de frio, o mais feral dos cromáticos: Centelha 3."},
+{name:"Dragão Azul Adulto",type:"dragão Enorme",src:"PF B1",cr:"13",str:29,dex:10,con:23,int:16,wis:17,cha:16,size:"enorme",cent:5,sk:["Furtividade 4","Prontidão 4","Manha 4"],note:"Sopro elétrico, ilusionista do deserto: Centelha 5."},
+{name:"Dragão Verde Adulto",type:"dragão Enorme",src:"PF B1",cr:"12",str:27,dex:12,con:21,int:16,wis:17,cha:16,size:"enorme",cent:5,sk:["Manha 4","Persuasão 4","Furtividade 3"],note:"Sopro de gás, manipulador: Centelha 5."},
+{name:"Dragão Dourado Adulto",type:"dragão Enorme (metálico)",src:"PF B1",cr:"17",str:35,dex:10,con:27,int:22,wis:21,cha:22,size:"enorme",cent:6,sk:["Ocultismo 5","Persuasão 5","Prontidão 5","Conhecimentos 5"],note:"O mais nobre dos dragões: Centelha 6. Str 35 → curva 10 +2 = Força 12."}
+];
+
+/* ===================== RENDER ===================== */
+function badge(c){
+  const cls = c===0 ? 'cent-badge cent0' : (c>=6 ? 'cent-badge' : 'cent-badge');
+  const st = c>=6 ? ' style="background:var(--gold)"' : '';
+  return '<span class="'+cls+'"'+st+'>'+c+'</span>';
+}
+function cell(v){ return v===null ? '&ndash;' : v; }
+function attClass(v){ return v>=6 ? 'att big' : 'att'; }
+
+function render(list){
+  const rows = list.map(m=>{
+    const c = converte(m);
+    const catt = ORD.map(k=>{
+      const v=c[k];
+      return '<td class="c centcol" data-k="'+k+'"><span class="'+attClass(v)+'">'+cell(v)+'</span></td>';
+    }).join('');
+    const dnd = ['str','dex','con','int','wis','cha'].map(k=>'<td class="c dndcol">'+cell(m[k])+'</td>').join('');
+    const sk = (m.sk||[]).map(s=>'<span class="pill">'+s+'</span>').join(' ');
+    return '<tr data-name="'+(m.name+' '+m.type+' '+m.src).toLowerCase()+'" data-cent="'+m.cent+'">'
+      +'<td><b>'+m.name+'</b><br><span class="sk">'+m.type+'</span></td>'
+      +'<td class="sk">'+m.src+'</td>'
+      +'<td class="c">'+m.cr+'</td>'
+      + dnd + catt
+      +'<td class="c">'+badge(m.cent)+'</td>'
+      +'<td class="sk">'+sk+'</td></tr>';
+  }).join('');
+  document.getElementById('rows').innerHTML = rows;
+  document.getElementById('count').textContent = list.length+' criaturas';
+}
+
+/* filtro */
+function applyFilter(){
+  const q=document.getElementById('q').value.toLowerCase().trim();
+  const fc=document.getElementById('fcent').value;
+  const list=DATA.filter(m=>{
+    const hay=(m.name+' '+m.type+' '+m.src).toLowerCase();
+    if(q && !hay.includes(q)) return false;
+    if(fc==='6+'){ if(m.cent<6) return false; }
+    else if(fc!=='' && String(m.cent)!==fc) return false;
+    return true;
+  });
+  render(list);
+}
+document.getElementById('q').addEventListener('input',applyFilter);
+document.getElementById('fcent').addEventListener('change',applyFilter);
+
+/* exemplos passo a passo (gera dos 3 primeiros marcados) */
+function worked(){
+  const picks = DATA.filter(m=>m.worked);
+  const html = picks.map(m=>{
+    const c=converte(m); const sz=SIZEBON[m.size]||0;
+    return '<div class="panel"><h3>'+m.name+' <span class="sk">('+m.type+', '+m.src+')</span></h3>'
+      +'<p class="mono">Str '+m.str+' · Dex '+m.dex+' · Con '+m.con+' · Int '+m.int+' · Sab '+m.wis+' · Car '+m.cha+' · tamanho '+m.size+(sz?(' (+'+sz+' Fo/Vi)'):'')+'</p>'
+      +'<p>Força = curva('+m.str+')'+(sz?('+'+sz):'')+' = <b class="centcol">'+c.forca+'</b> · '
+      +'Destreza = <b class="centcol">'+c.destreza+'</b> · Vigor = <b class="centcol">'+c.vigor+'</b> · '
+      +'Percepção(Sab) = <b class="centcol">'+c.percepcao+'</b> · Inteligência = <b class="centcol">'+c.inteligencia+'</b><br>'
+      +'Influência(Car) = <b class="centcol">'+c.influencia+'</b> · Perspicácia((Int+Car)/2) = <b class="centcol">'+c.perspicacia+'</b> · '
+      +'Compostura((Sab+Car)/2) = <b class="centcol">'+c.compostura+'</b> · Raciocínio((Sab+Int)/2) = <b class="centcol">'+c.raciocinio+'</b></p>'
+      +'<p><b>Centelha '+m.cent+'</b> — '+(m.note||'')+'</p></div>';
+  }).join('');
+  document.getElementById('worked').innerHTML = html;
+}
+
+worked();
+applyFilter();
+</script>
+</body>
+</html>
