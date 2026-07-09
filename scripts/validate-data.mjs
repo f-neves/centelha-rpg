@@ -22,13 +22,15 @@ const S = {
   glossario: z.object({ id: z.string(), termo: z.string(), aliases: z.array(z.string()), definicao: z.string() }),
   inimigos: z.object({
     id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
-    ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(5),
+    categoria: z.string().optional(),
+    ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(10),
     conceito: z.string(), descricao: z.string(), tags: z.array(z.string()),
     pv: z.number().int(), defesa: z.number().int(), defesaMental: z.number().int(),
     soak: soakModos, resistPerf: z.number().int().min(0),
     iniciativa: z.string(), atributos: z.record(z.number().int()),
     ataques: z.array(z.object({ nome: z.string(), pool: z.string(), dano: z.string(), ticks: z.number().int(), notas: z.string().optional() })),
     tecnicas: z.array(z.string()), artes: z.array(z.object({ id: z.string(), nivel: z.number().int() })),
+    poderes: z.array(z.object({ efeito: z.string(), tipo: z.enum(['proeza', 'feiticaria', 'natural']), alvo: z.string(), caminho: z.string().optional(), arte: z.string().optional() })).optional(),
     notas: z.string(), pendente: z.boolean(),
   }),
   armas: z.object({

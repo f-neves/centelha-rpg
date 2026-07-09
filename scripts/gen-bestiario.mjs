@@ -37,8 +37,10 @@ function stat(b) {
     return { nome: a.nome, pool, dano, ticks: a.ticks, ...(a.notas ? { notas: a.notas } : {}) };
   });
   const soak = Object.fromEntries(SOAKCATS.map((m) => [m, soakNat(at.vigor, m) + C * cNoSoak + (arm.soak?.[m] ?? 0)]));
-  return {
-    id: b.id, nome: b.nome, tipo: b.tipo, ameaca: b.ameaca, centelha: C,
+  const out = {
+    id: b.id, nome: b.nome, tipo: b.tipo,
+    categoria: b.categoria || catFromTags(b.tags || []),
+    ameaca: b.ameaca, centelha: C,
     conceito: b.conceito, descricao: b.descricao, tags: b.tags || [],
     pv, defesa, defesaMental,
     soak, resistPerf: arm.resistPerf ?? 0,
@@ -47,6 +49,16 @@ function stat(b) {
     tecnicas: b.tecnicas || [], artes: b.artes || [],
     notas: b.notas || '', pendente: b.pendente ?? false,
   };
+  if (b.poderes && b.poderes.length) out.poderes = b.poderes;
+  return out;
+}
+// categoria dos NPCs feitos à mão (pelos tags), quando não vem explícita
+function catFromTags(tags) {
+  if (tags.includes('morto-vivo') || tags.includes('espírito')) return 'Morto-vivo';
+  if (tags.includes('gigante')) return 'Gigante';
+  if (tags.includes('fera')) return 'Fera';
+  if (tags.includes('arcano')) return 'Conjurador';
+  return 'Humano';
 }
 
 const NPCS = [
@@ -199,7 +211,176 @@ const NPCS = [
     notas: 'Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.' },
 ];
 
-const inimigos = NPCS.map(stat);
+// ===================================================================
+// Criaturas convertidas de D&D 3.5 / Pathfinder.
+// Fonte ÚNICA: conversao-monstros.html (DATA = scores crus; PODERES = poderes mapeados).
+// A conversão de Habilidades→Atributos e a curva vivem no HTML; aqui só reusamos.
+// ===================================================================
+const catalogos = {
+  caminhos: JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/caminhos.json'), 'utf8')),
+  tecnicas: JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/tecnicas.json'), 'utf8')),
+  artes: JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/artes.json'), 'utf8')),
+};
+// nome de Caminho → id (mais longos primeiro p/ "Máscara Impassível" ganhar de "Máscara")
+const CAM = catalogos.caminhos.map((c) => ({ id: c.id, nome: c.nome })).sort((a, b) => b.nome.length - a.nome.length);
+const TEC = catalogos.tecnicas.map((t) => ({ id: t.id, nome: t.nome, caminho: t.caminho?.id ?? t.caminho, banda: t.banda }));
+const ARTE_NOME2ID = Object.fromEntries(catalogos.artes.map((a) => [a.nome, a.id]));
+const ARTE_LIST = catalogos.artes.map((a) => a.nome).join('|');
+
+// motor de conversão (espelha o do HTML)
+function attr(s) {
+  if (s === null || s === undefined || s === '-') return null;
+  s = +s;
+  if (s <= 1) return 0; if (s <= 7) return 1; if (s <= 11) return 2; if (s <= 13) return 3;
+  if (s <= 15) return 4; if (s <= 19) return 5; if (s <= 21) return 6; if (s <= 24) return 7;
+  if (s <= 27) return 8; if (s <= 31) return 9; if (s <= 35) return 10; if (s <= 40) return 11;
+  if (s <= 45) return 12; return 12 + Math.floor((s - 45) / 6);
+}
+const SIZEBON = { medio: 0, pequeno: 0, minusculo: 0, grande: 1, enorme: 2, imenso: 3, colossal: 4 };
+const avg2 = (a, b) => { const A = (a === '-' || a == null), B = (b === '-' || b == null); if (A && B) return null; if (A) return +b; if (B) return +a; return Math.round((+a + +b) / 2); };
+function converte(m) {
+  const sz = SIZEBON[m.size] || 0;
+  const vig = (m.con === '-' || m.con == null) ? m.cha : m.con;
+  return {
+    forca: (m.str === '-' || m.str == null) ? 0 : (attr(m.str) + sz),
+    destreza: attr(m.dex),
+    vigor: (vig === '-' || vig == null) ? 1 : (attr(vig) + sz),
+    influencia: attr(m.cha), perspicacia: attr(avg2(m.int, m.cha)), compostura: attr(avg2(m.wis, m.cha)),
+    percepcao: attr(m.wis), inteligencia: (m.int === '-' || m.int == null) ? 0 : attr(m.int), raciocinio: attr(avg2(m.wis, m.int)),
+  };
+}
+
+// extrai DATA e PODERES do HTML (mesma técnica das validações)
+const html = fs.readFileSync(path.join(ROOT, 'conversao-monstros.html'), 'utf8');
+function evalBlock(marker, close) {
+  const s = html.indexOf(marker); if (s < 0) throw new Error(`bloco não achado: ${marker}`);
+  const e = html.indexOf(close, s); if (e < 0) throw new Error(`fim do bloco não achado: ${close}`);
+  return html.slice(s + marker.length, e + close.length);
+}
+let DATA, PODERES;
+eval('DATA=' + evalBlock('const DATA = ', '];'));
+eval('PODERES=' + evalBlock('const PODERES = ', '\n};'));
+
+const slug = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const crNum = (cr) => { const s = String(cr); if (s.includes('/')) { const [a, b] = s.split('/'); return +a / +b; } return +s; };
+const ameacaDe = (cr) => { const n = crNum(cr); return n < 1 ? 1 : n < 3 ? 2 : n < 5 ? 3 : n < 8 ? 4 : n < 14 ? 5 : 6; };
+function categoriaDe(t) {
+  t = t.toLowerCase();
+  if (t.includes('dragão')) return 'Dragão';
+  if (t.includes('(demônio)')) return 'Demônio';
+  if (t.includes('(diabo)')) return 'Diabo';
+  if (t.includes('(anjo)') || t.includes('(celestial)')) return 'Celestial';
+  if (t.includes('(ar)') || t.includes('(fogo)') || t.includes('(terra)') || t.includes('(água)')) return 'Elemental';
+  if (t.includes('exterior')) return 'Exterior';
+  if (t.includes('morto-vivo')) return 'Morto-vivo';
+  if (t.includes('fada')) return 'Fada';
+  if (t.includes('planta')) return 'Planta';
+  if (t.includes('limo')) return 'Limo';
+  if (t.includes('humanoide monstruoso')) return 'Monstro';
+  if (t.includes('aberração')) return 'Aberração';
+  if (t.includes('gigante')) return 'Gigante';
+  if (t.includes('humanoide')) return 'Humanoide';
+  if (t.includes('besta mágica')) return 'Besta mágica';
+  if (t.includes('animal') || t.includes('praga')) return 'Fera';
+  return 'Monstro';
+}
+const CAT_DESC = {
+  'Dragão': 'Predador alado e mágico, orgulho e ganância feitos carne.',
+  'Demônio': 'Horror caótico do Abismo, feito de fúria e corrupção.',
+  'Diabo': 'Tirano leal do Inferno, calculista e cruel.',
+  'Celestial': 'Servo do bem, luz encarnada em guerra contra as trevas.',
+  'Elemental': 'Ser de um único elemento, sem alma mortal.',
+  'Exterior': 'Nativo de outro plano, alheio às leis mortais.',
+  'Morto-vivo': 'Um morto que não descansa, movido por magia ou ódio.',
+  'Fada': 'Espírito da natureza, belo e caprichoso.',
+  'Planta': 'Vegetal desperto, lento e implacável.',
+  'Limo': 'Massa informe que digere tudo que toca.',
+  'Monstro': 'Aberração humanoide de lendas antigas.',
+  'Aberração': 'Coisa de forma errada, de pesadelos e profundezas.',
+  'Gigante': 'Colosso humanoide, força bruta em escala descomunal.',
+  'Humanoide': 'Povo civilizado ou selvagem, do tamanho de um homem.',
+  'Besta mágica': 'Fera tocada pela magia, além do reino natural.',
+  'Fera': 'Animal selvagem, perigo puro sem malícia.',
+};
+function tipoDe(cat, ameaca) {
+  if (['Fera', 'Besta mágica'].includes(cat) && ameaca <= 4) return 'fera';
+  if (ameaca >= 5) return 'chefe';
+  if (ameaca === 4) return 'elite';
+  if (ameaca <= 1) return 'capanga';
+  return 'soldado';
+}
+function ataqueDe(m, at, cat, ameaca) {
+  if (/incorpóreo/.test(m.type)) {
+    return { nome: 'Toque dilacerante', atrib: 'influencia', pericia: 'briga', dado: 2, mao: 2, tipo: 'necrótico (vs Def. Mental)', ticks: 5, notas: 'atravessa matéria; só Arcano, Proteção ou arma encantada o ferem' };
+  }
+  const dado = ({ minusculo: 1, pequeno: 1, medio: 1, grande: 2, enorme: 3, imenso: 3, colossal: 4 })[m.size] || 1;
+  let nome = 'Ataque natural', tipo = 'perfConc';
+  if (cat === 'Gigante') { nome = 'Pancada descomunal'; tipo = 'impacto'; }
+  else if (cat === 'Humanoide' || cat === 'Monstro') { nome = 'Arma'; tipo = 'corte'; }
+  else if (cat === 'Morto-vivo') { nome = 'Golpe'; tipo = 'impacto'; }
+  else if (cat === 'Limo') { nome = 'Pseudópode'; tipo = 'impacto'; }
+  else if (cat === 'Dragão') { nome = 'Garras e mordida'; tipo = 'perfConc'; }
+  else if (['Demônio', 'Diabo', 'Celestial', 'Exterior', 'Elemental'].includes(cat)) { nome = 'Golpe planar'; tipo = 'corte'; }
+  else { nome = 'Garras e presas'; tipo = 'perfConc'; }
+  const ticks = dado >= 3 ? 7 : dado === 2 ? 6 : 5;
+  return { nome, atrib: 'forca', pericia: 'briga', dado, mao: 2, tipo, acerto: 0, ticks };
+}
+function poderesDe(name, centelha) {
+  const list = PODERES[name] || [];
+  const poderes = []; const tecSet = new Set(); const arteMap = {};
+  for (const [efeito, k, alvo] of list) {
+    const tipo = k === 'p' ? 'proeza' : k === 'a' ? 'feiticaria' : 'natural';
+    const pod = { efeito, tipo, alvo };
+    if (k === 'a') {
+      const pairs = [...alvo.matchAll(new RegExp(`(${ARTE_LIST})\\s*·\\s*N(\\d)`, 'g'))];
+      if (pairs.length) {
+        pod.arte = ARTE_NOME2ID[pairs[0][1]];
+        for (const [, an, nv] of pairs) { const id = ARTE_NOME2ID[an]; const n = Math.min(+nv, centelha || 5, 5); if (centelha >= 1) arteMap[id] = Math.max(arteMap[id] || 0, n); }
+      }
+    } else if (k === 'p') {
+      const cam = CAM.find((c) => alvo.includes(c.nome));
+      if (cam) {
+        pod.caminho = cam.id;
+        for (const t of TEC) { if (t.caminho === cam.id && alvo.includes(t.nome) && Math.ceil(t.banda / 3) <= (centelha || 0)) tecSet.add(t.id); }
+      }
+    }
+    poderes.push(pod);
+  }
+  return { poderes, tecnicas: [...tecSet], artes: Object.entries(arteMap).map(([id, nivel]) => ({ id, nivel })) };
+}
+
+const cl = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const CONV = DATA.map((m) => {
+  const at = converte(m);
+  const cat = categoriaDe(m.type);
+  const ameaca = ameacaDe(m.cr);
+  const { poderes, tecnicas, artes } = poderesDe(m.name, m.cent);
+  const tags = [...new Set([slug(cat), ...(m.cent > 0 ? ['centelha'] : []), ...(/incorpóreo/.test(m.type) ? ['incorpóreo'] : []), ...(artes.length ? ['mágico'] : [])])];
+  const briga = cl(ameaca + (m.cent > 0 ? 1 : 0), 1, 5);
+  const notasPart = [];
+  if (m.sk && m.sk.length) notasPart.push(`Perícias notáveis: ${m.sk.join(', ')}.`);
+  if (m.cent > 5) notasPart.push('Centelha acima do teto mortal (entidade).');
+  return stat({
+    id: 'mon-' + slug(m.name),
+    nome: m.name, tipo: tipoDe(cat, ameaca), categoria: cat, ameaca, centelha: m.cent,
+    conceito: m.type, descricao: CAT_DESC[cat] || '',
+    tags,
+    attrs: at,
+    pericias: { briga, esquiva: cl(Math.floor(at.destreza / 3), 0, 4), prontidao: cl(Math.floor(at.percepcao / 2), 0, 5), integridade: cl(at.compostura, 2, 8) },
+    integridade: cl(at.compostura, 2, 8), vontade: cl(5 + m.cent, 5, 12),
+    armadura: 'nenhuma',
+    ataques: [ataqueDe(m, at, cat, ameaca)],
+    tecnicas, artes, poderes,
+    notas: notasPart.join(' '),
+    pendente: true,
+  });
+});
+
+const inimigos = [...NPCS.map(stat), ...CONV];
 fs.writeFileSync(path.join(ROOT, 'src/data/inimigos.json'), JSON.stringify(inimigos, null, 2) + '\n', 'utf8');
-console.log(`inimigos.json: ${inimigos.length} NPCs.`);
-for (const n of inimigos) console.log(`  ${n.nome} — PV ${n.pv} · Def ${n.defesa} · DefM ${n.defesaMental} · Soak Im${n.soak.impacto}/Co${n.soak.corte}/Pf${n.soak.perfuracao} (Nível ${n.resistPerf}) · Ini ${n.iniciativa}`);
+const byCat = {};
+for (const n of inimigos) byCat[n.categoria] = (byCat[n.categoria] || 0) + 1;
+console.log(`inimigos.json: ${inimigos.length} entradas (${NPCS.length} feitos à mão + ${CONV.length} convertidos).`);
+console.log('Por categoria:', JSON.stringify(byCat));
+const semPoder = CONV.filter((c) => !c.poderes || !c.poderes.length).length;
+console.log(`Convertidos sem poderes mapeados: ${semPoder}.`);

@@ -4,40 +4,62 @@ import { url } from '../lib/site';
 import { loadData } from '../lib/data';
 import { getCollection } from 'astro:content';
 const d = await loadData();
-const inimigos = (await getCollection('inimigos')).map((e) => e.data).sort((a, b) => a.ameaca - b.ameaca || a.nome.localeCompare(b.nome));
+const inimigos = (await getCollection('inimigos')).map((e) => e.data)
+  .sort((a, b) => (a.categoria || '').localeCompare(b.categoria || '') || a.ameaca - b.ameaca || a.nome.localeCompare(b.nome));
 const TIPO: Record<string, string> = { capanga: 'Capanga', soldado: 'Soldado', elite: 'Elite', fera: 'Fera', chefe: 'Chefe' };
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
+const camNome: Record<string, string> = Object.fromEntries(d.caminhos.map((c) => [c.id, c.nome]));
 const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
-const allTags = [...new Set(inimigos.flatMap((i) => i.tags))].sort();
+
+// listas de poderes por criatura (ids p/ filtro)
+const caminhosDe = (i: any) => [...new Set((i.poderes || []).filter((p: any) => p.tipo === 'proeza' && p.caminho).map((p: any) => p.caminho))];
+const artesDe = (i: any) => [...new Set((i.poderes || []).filter((p: any) => p.tipo === 'feiticaria' && p.arte).map((p: any) => p.arte))];
+
+const categorias = [...new Set(inimigos.map((i) => i.categoria || 'Outro'))].sort();
+const caminhosUsados = [...new Set(inimigos.flatMap(caminhosDe))].map((id) => ({ id, nome: camNome[id] || id })).sort((a, b) => a.nome.localeCompare(b.nome));
+const artesUsadas = [...new Set(inimigos.flatMap(artesDe))].map((id) => ({ id, nome: arteNome[id] || id })).sort((a, b) => a.nome.localeCompare(b.nome));
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 ---
-<Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — capangas, soldados, elites, feras e chefes, com blocos de combate calculados.">
+<Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — do goblin ao dragão ancião, com blocos de combate calculados e poderes traduzidos em Proezas e Feitiçarias.">
   <h1>Bestiário & NPCs</h1>
-  <p class="lead">Adversários prontos para a mesa, do camponês ao semideus menor. Os números seguem as mesmas fórmulas dos personagens — PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados.</p>
+  <p class="lead">Adversários prontos para a mesa, do camponês ao dragão ancião. Os números seguem as mesmas fórmulas dos personagens — PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados — e os poderes especiais vêm traduzidos em <strong>Proezas</strong> (Técnicas de Caminho) e <strong>Feitiçarias</strong> (Artes).</p>
 
-  <div class="callout regra"><span class="lbl">Como rodar</span>O bloco traz o <strong>pool de ataque</strong> (já com o Acerto da arma) e o <strong>dano</strong> prontos para rolar. <strong>Ameaça</strong> (◆) é uma referência rápida de perigo, de 1 a 6. NPCs com <strong>Centelha</strong> usam Técnicas/Artes — os links abrem o efeito.</div>
+  <div class="callout regra"><span class="lbl">Como rodar</span>O bloco traz o <strong>pool de ataque</strong> (já com o Acerto) e o <strong>dano</strong> prontos para rolar. <strong>Ameaça</strong> (◆) é uma referência rápida de perigo, de 1 a 6. Criaturas com <strong>Centelha</strong> usam Técnicas/Artes; a lista de <strong>Poderes</strong> indica o Caminho ou Arte que reproduz cada efeito.</div>
 
-  <div class="callout"><span class="lbl">Regra de Horda</span>Muitos capangas iguais lutam como um <strong>esquadrão único</strong>: o tamanho vira <strong>Magnitude</strong> (2–3 = +1d6, 4–7 = +2, 8–15 = +3, 16–31 = +4…), somada ao <strong>acerto e ao dano</strong>; o esquadrão faz <strong>um ataque por inimigo engajado (até Magnitude+1)</strong>, podendo misturar modos (e, se híbrido, mira a menor Absorção do alvo); a Defesa cai <strong>−2</strong> (aglomerado) e o PV do bando = nº de membros × o PV-de-horda do capanga (Comum 5, Treinado 10, Elite 15). Cada vez que seu dano passa o PV de um, cai um membro. <a href={url('regras/combate') + '#regra-de-horda'}>Regra completa →</a></div>
+  <div class="callout"><span class="lbl">Regra de Horda</span>Muitos capangas iguais lutam como um <strong>esquadrão único</strong>: o tamanho vira <strong>Magnitude</strong> (2–3 = +1d6, 4–7 = +2, 8–15 = +3…), somada ao <strong>acerto e ao dano</strong>; a Defesa cai <strong>−2</strong> (aglomerado). <a href={url('regras/combate') + '#regra-de-horda'}>Regra completa →</a></div>
 
   <div class="filtros panel">
-    <label>Buscar <input type="search" data-bf="q" placeholder="nome, conceito, tag…" /></label>
-    <fieldset><legend>Tipo</legend>{Object.entries(TIPO).map(([k, v]) => <label class="chk"><input type="checkbox" data-bf="tipo" value={k} />{v}</label>)}</fieldset>
-    <fieldset><legend>Tag</legend>{allTags.map((t) => <label class="chk"><input type="checkbox" data-bf="tag" value={t} />{t}</label>)}</fieldset>
+    <label class="busca">Buscar <input type="search" data-bf="q" placeholder="nome, conceito, efeito…" /></label>
+    <label>Proeza (Caminho)
+      <select data-bf="proeza">
+        <option value="">qualquer Caminho</option>
+        {caminhosUsados.map((c) => <option value={c.id}>{c.nome}</option>)}
+      </select>
+    </label>
+    <label>Feitiçaria (Arte)
+      <select data-bf="feiticaria">
+        <option value="">qualquer Arte</option>
+        {artesUsadas.map((a) => <option value={a.id}>{a.nome}</option>)}
+      </select>
+    </label>
+    <fieldset class="cats"><legend>Tipo de criatura</legend>{categorias.map((c) => <label class="chk"><input type="checkbox" data-bf="categoria" value={c} />{c}</label>)}</fieldset>
     <p class="muted bf-count"></p>
   </div>
 
   <div class="besta-list">
     {inimigos.map((i) => (
-      <article class="besta" id={i.id} data-permalink data-tipo={i.tipo} data-tags={i.tags.join(' ')}
-        data-txt={(i.nome + ' ' + i.conceito + ' ' + i.tags.join(' ') + ' ' + i.descricao).toLowerCase()}>
+      <article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
+        data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
+        data-txt={(i.nome + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}>
         <header class="besta-head">
           <span class="besta-nome cinzel">{i.nome}</span>
+          <span class="badge cat">{i.categoria}</span>
           <span class="badge">{TIPO[i.tipo]}</span>
           {i.centelha > 0 && <span class="badge banda">Centelha {i.centelha}</span>}
           <span class="ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
           {i.pendente && <span class="badge pendente" title="Stat block provisório — revisar">Rascunho</span>}
         </header>
-        <p class="besta-con muted">{i.conceito} — {i.descricao}</p>
+        <p class="besta-con muted">{i.conceito}{i.descricao ? ` — ${i.descricao}` : ''}</p>
         <div class="besta-stats">
           <span><b>PV</b> {i.pv}</span>
           <span><b>Defesa</b> {i.defesa}</span>
@@ -50,6 +72,16 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
             <li><span class="atk-nome">{a.nome}</span> — pool <b>{a.pool}</b> · dano <b>{a.dano}</b> · Speed {a.ticks}{a.notas ? <span class="muted"> · {a.notas}</span> : null}</li>
           ))}
         </ul>
+        {i.poderes && i.poderes.length > 0 && (
+          <div class="besta-poderes">
+            <span class="pw-lbl">Poderes</span>
+            <ul>
+              {i.poderes.map((p: any) => (
+                <li class={`pw pw-${p.tipo}`}><span class="pw-ef">{p.efeito}</span><span class="pw-arw">→</span><span class="pw-alvo">{p.alvo}</span></li>
+              ))}
+            </ul>
+          </div>
+        )}
         {i.tecnicas.length > 0 && (
           <p class="besta-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t.id)}>{d.T[t.id]?.nome ?? t.id}</a></>))}</p>
         )}
@@ -64,42 +96,59 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 
 <style>
   .filtros { margin: 1rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: flex-end; }
-  .filtros label { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink-soft); }
-  .filtros input[type='search'] { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); min-width: 12rem; }
-  .filtros fieldset { border: 1px solid var(--panel-border); border-radius: 5px; padding: .3rem .6rem; }
+  .filtros > label { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: .25rem; }
+  .filtros input[type='search'], .filtros select { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-family: 'EB Garamond'; font-size: .95rem; }
+  .filtros .busca input { min-width: 13rem; }
+  .filtros select { min-width: 11rem; }
+  .filtros fieldset { border: 1px solid var(--panel-border); border-radius: 5px; padding: .3rem .6rem; max-width: 100%; }
   .filtros legend { font-family: 'Cinzel'; font-size: .72rem; color: var(--ink-soft); }
-  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; font-family: 'EB Garamond'; }
+  .cats { display: flex; flex-wrap: wrap; gap: .1rem .4rem; }
+  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .4rem; font-family: 'EB Garamond'; font-size: .92rem; }
   .bf-count { width: 100%; margin: 0; }
-  .besta-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1rem; }
+  .besta-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: 1rem; }
   .besta { border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: 6px; background: var(--panel); padding: .8rem 1rem; scroll-margin-top: 4rem; }
   .besta-head { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
   .besta-nome { font-size: 1.15rem; color: var(--accent); flex: 1 1 auto; }
+  .badge.cat { background: var(--accent-strong); color: var(--on-accent); }
   .ameaca { color: var(--gold); letter-spacing: .1em; font-size: .8rem; }
   .besta-con { font-style: italic; margin: .3rem 0 .5rem; font-size: .92rem; }
   .besta-stats { display: flex; flex-wrap: wrap; gap: .3rem .9rem; padding: .4rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); font-size: .92rem; }
   .besta-stats b { font-family: 'Cinzel'; color: var(--accent-strong); font-size: .72rem; text-transform: uppercase; }
   .besta-atk { list-style: none; padding: 0; margin: .5rem 0; font-size: .92rem; }
   .besta-atk li { padding: .1rem 0; } .atk-nome { font-family: 'Cinzel'; font-size: .85rem; }
+  .besta-poderes { margin: .5rem 0 .25rem; }
+  .pw-lbl { font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; color: var(--accent-strong); }
+  .besta-poderes ul { list-style: none; padding: 0; margin: .2rem 0 0; font-size: .88rem; }
+  .pw { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; padding: .1rem 0; }
+  .pw-ef { color: var(--ink); }
+  .pw-arw { color: var(--ink-soft); }
+  .pw-alvo { font-weight: 600; padding: .05rem .5rem; border-radius: 10px; font-size: .82rem; }
+  .pw-proeza .pw-alvo { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent-strong); }
+  .pw-feiticaria .pw-alvo { background: color-mix(in srgb, var(--gold) 26%, transparent); color: var(--ink); }
+  .pw-natural .pw-alvo { background: var(--bg-soft); color: var(--ink-soft); font-weight: 500; }
   .besta-ref { font-size: .9rem; margin: .25rem 0; } .besta-ref b { font-family: 'Cinzel'; font-size: .75rem; color: var(--accent-strong); }
-  .besta-notas { font-size: .88rem; color: var(--ink-soft); font-style: italic; margin: .4rem 0 0; }
+  .besta-notas { font-size: .84rem; color: var(--ink-soft); font-style: italic; margin: .4rem 0 0; }
 </style>
 
 <script>
   const cards = Array.from(document.querySelectorAll<HTMLElement>('.besta'));
   const count = document.querySelector<HTMLElement>('.bf-count')!;
-  const q = () => (document.querySelector('[data-bf="q"]') as HTMLInputElement).value.trim().toLowerCase();
+  const val = (s: string) => (document.querySelector(`[data-bf="${s}"]`) as HTMLInputElement | HTMLSelectElement)?.value.trim().toLowerCase() ?? '';
   const checked = (s: string) => Array.from(document.querySelectorAll<HTMLInputElement>(`[data-bf="${s}"]:checked`)).map((c) => c.value);
   function apply() {
-    const text = q(), tipos = checked('tipo'), tags = checked('tag');
+    const text = val('q'), proeza = val('proeza'), feit = val('feiticaria'), cats = checked('categoria');
     let n = 0;
     for (const c of cards) {
-      const ok = (!tipos.length || tipos.includes(c.dataset.tipo!)) &&
-        (!tags.length || tags.some((t) => c.dataset.tags!.split(' ').includes(t))) &&
+      const caminhos = (c.dataset.caminhos || '').split(' ').filter(Boolean);
+      const artes = (c.dataset.artes || '').split(' ').filter(Boolean);
+      const ok = (!cats.length || cats.includes(c.dataset.categoria!)) &&
+        (!proeza || caminhos.includes(proeza)) &&
+        (!feit || artes.includes(feit)) &&
         (!text || c.dataset.txt!.includes(text));
       c.style.display = ok ? '' : 'none'; if (ok) n++;
     }
     count.textContent = `${n} adversário${n === 1 ? '' : 's'}`;
   }
-  document.querySelectorAll('[data-bf]').forEach((e) => e.addEventListener('input', apply));
+  document.querySelectorAll('[data-bf]').forEach((e) => { e.addEventListener('input', apply); e.addEventListener('change', apply); });
   apply();
 </script>

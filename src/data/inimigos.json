@@ -3,6 +3,7 @@
     "id": "camponis-assustado",
     "nome": "Camponês Assustado",
     "tipo": "capanga",
+    "categoria": "Humano",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "civil sem treino",
@@ -48,6 +49,7 @@
     "id": "bandido-de-estrada",
     "nome": "Bandido de Estrada",
     "tipo": "capanga",
+    "categoria": "Humano",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "salteador oportunista",
@@ -93,6 +95,7 @@
     "id": "guarda-da-cidade",
     "nome": "Guarda da Cidade",
     "tipo": "soldado",
+    "categoria": "Humano",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "milícia treinada",
@@ -138,6 +141,7 @@
     "id": "soldado-veterano",
     "nome": "Soldado Veterano",
     "tipo": "soldado",
+    "categoria": "Humano",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "lâmina experiente",
@@ -183,6 +187,7 @@
     "id": "arqueiro",
     "nome": "Arqueiro",
     "tipo": "soldado",
+    "categoria": "Humano",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "fogo à distância",
@@ -228,6 +233,7 @@
     "id": "bruto",
     "nome": "Bruto",
     "tipo": "soldado",
+    "categoria": "Humano",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "músculo pesado",
@@ -274,6 +280,7 @@
     "id": "capitao-da-guarda",
     "nome": "Capitão da Guarda",
     "tipo": "elite",
+    "categoria": "Humano",
     "ameaca": 4,
     "centelha": 0,
     "conceito": "comandante mortal",
@@ -319,6 +326,7 @@
     "id": "assassino-das-sombras",
     "nome": "Assassino das Sombras",
     "tipo": "elite",
+    "categoria": "Humano",
     "ameaca": 4,
     "centelha": 2,
     "conceito": "lâmina silenciosa",
@@ -371,6 +379,7 @@
     "id": "duelista",
     "nome": "Duelista",
     "tipo": "elite",
+    "categoria": "Humano",
     "ameaca": 4,
     "centelha": 2,
     "conceito": "esgrimista exímio",
@@ -422,6 +431,7 @@
     "id": "feiticeiro-menor",
     "nome": "Feiticeiro Menor",
     "tipo": "elite",
+    "categoria": "Conjurador",
     "ameaca": 4,
     "centelha": 1,
     "conceito": "conjurador iniciante",
@@ -475,6 +485,7 @@
     "id": "cavaleiro-de-elite",
     "nome": "Cavaleiro de Elite",
     "tipo": "elite",
+    "categoria": "Humano",
     "ameaca": 5,
     "centelha": 1,
     "conceito": "tanque tocado pela Centelha",
@@ -525,6 +536,7 @@
     "id": "campeao",
     "nome": "Campeão (semideus menor)",
     "tipo": "chefe",
+    "categoria": "Humano",
     "ameaca": 6,
     "centelha": 2,
     "conceito": "herói inimigo",
@@ -576,6 +588,7 @@
     "id": "lobo",
     "nome": "Lobo",
     "tipo": "fera",
+    "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "predador de matilha",
@@ -622,6 +635,7 @@
     "id": "urso",
     "nome": "Urso",
     "tipo": "fera",
+    "categoria": "Fera",
     "ameaca": 4,
     "centelha": 0,
     "conceito": "fera colossal",
@@ -668,6 +682,7 @@
     "id": "comandante",
     "nome": "Comandante Tocado",
     "tipo": "elite",
+    "categoria": "Humano",
     "ameaca": 5,
     "centelha": 1,
     "conceito": "líder de guerra",
@@ -718,6 +733,7 @@
     "id": "cultista",
     "nome": "Cultista Sombrio",
     "tipo": "elite",
+    "categoria": "Conjurador",
     "ameaca": 4,
     "centelha": 1,
     "conceito": "feiticeiro da morte",
@@ -771,6 +787,7 @@
     "id": "esqueleto",
     "nome": "Esqueleto Guerreiro",
     "tipo": "soldado",
+    "categoria": "Morto-vivo",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "morto-vivo",
@@ -816,6 +833,7 @@
     "id": "espectro",
     "nome": "Espectro",
     "tipo": "elite",
+    "categoria": "Morto-vivo",
     "ameaca": 4,
     "centelha": 1,
     "conceito": "assombração incorpórea",
@@ -863,6 +881,7 @@
     "id": "ogro",
     "nome": "Ogro",
     "tipo": "chefe",
+    "categoria": "Gigante",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "brutamontes monstruoso",
@@ -910,6 +929,7 @@
     "id": "aranha-gigante",
     "nome": "Aranha Gigante",
     "tipo": "fera",
+    "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "predadora venenosa",
@@ -956,6 +976,7 @@
     "id": "mago-de-batalha",
     "nome": "Mago de Batalha",
     "tipo": "chefe",
+    "categoria": "Conjurador",
     "ameaca": 6,
     "centelha": 2,
     "conceito": "artilharia arcana",
@@ -1008,5 +1029,8001 @@
     ],
     "notas": "Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.",
     "pendente": false
+  },
+  {
+    "id": "mon-goblin",
+    "nome": "Goblin",
+    "tipo": "capanga",
+    "categoria": "Humanoide",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "humanoide Pequeno",
+    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "tags": [
+      "humanoide"
+    ],
+    "pv": 34,
+    "defesa": 10,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 2,
+      "destreza": 4,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "1d6+2",
+        "dano": "1d6 +4 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 2, Sobrevivência 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-kobold",
+    "nome": "Kobold",
+    "tipo": "capanga",
+    "categoria": "Humanoide",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "humanoide Pequeno (reptiliano)",
+    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "tags": [
+      "humanoide"
+    ],
+    "pv": 31,
+    "defesa": 8,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 2,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 2,
+      "destreza": 3,
+      "vigor": 2,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "1d6+2",
+        "dano": "1d6 +4 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Ofícios 1, Furtividade 1, Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-orc",
+    "nome": "Orc",
+    "tipo": "capanga",
+    "categoria": "Humanoide",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "humanoide Médio",
+    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "tags": [
+      "humanoide"
+    ],
+    "pv": 34,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 5,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "3d6",
+        "dano": "1d6 +10 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-hobgoblin",
+    "nome": "Hobgoblin",
+    "tipo": "capanga",
+    "categoria": "Humanoide",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "humanoide Médio",
+    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "tags": [
+      "humanoide"
+    ],
+    "pv": 40,
+    "defesa": 10,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 4,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "2d6+2",
+        "dano": "1d6 +8 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 2, Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-gnoll",
+    "nome": "Gnoll",
+    "tipo": "soldado",
+    "categoria": "Humanoide",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "humanoide Médio",
+    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "tags": [
+      "humanoide"
+    ],
+    "pv": 34,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 4,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "3d6",
+        "dano": "1d6 +8 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-bugbear",
+    "nome": "Bugbear",
+    "tipo": "soldado",
+    "categoria": "Humanoide",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "humanoide Médio",
+    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "tags": [
+      "humanoide"
+    ],
+    "pv": 34,
+    "defesa": 8,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 5,
+      "destreza": 3,
+      "vigor": 3,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "3d6+2",
+        "dano": "1d6 +10 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-homem-lagarto",
+    "nome": "Homem-lagarto",
+    "tipo": "soldado",
+    "categoria": "Humanoide",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "humanoide Médio (reptiliano)",
+    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "tags": [
+      "humanoide"
+    ],
+    "pv": 34,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 3,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "2d6+2",
+        "dano": "1d6 +6 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Atletismo 1, Sobrevivência 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-trogloditas",
+    "nome": "Trogloditas",
+    "tipo": "soldado",
+    "categoria": "Humanoide",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "humanoide Médio (reptiliano)",
+    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "tags": [
+      "humanoide"
+    ],
+    "pv": 37,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 4,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 3,
+      "destreza": 2,
+      "vigor": 4,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "2d6+2",
+        "dano": "1d6 +6 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-ogro",
+    "nome": "Ogro",
+    "tipo": "soldado",
+    "categoria": "Gigante",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "humanoide Grande (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante"
+    ],
+    "pv": 40,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 7,
+      "destreza": 2,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "5d6",
+        "dano": "2d6 +14 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Atletismo 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-ettin",
+    "nome": "Ettin",
+    "tipo": "elite",
+    "categoria": "Gigante",
+    "ameaca": 4,
+    "centelha": 0,
+    "conceito": "humanoide Grande (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante"
+    ],
+    "pv": 40,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 8,
+      "destreza": 2,
+      "vigor": 5,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "6d6",
+        "dano": "2d6 +16 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 3, Sobrevivência 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-trol",
+    "nome": "Trol",
+    "tipo": "elite",
+    "categoria": "Gigante",
+    "ameaca": 4,
+    "centelha": 1,
+    "conceito": "humanoide Grande (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante",
+      "centelha"
+    ],
+    "pv": 49,
+    "defesa": 12,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 9,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 7,
+      "destreza": 4,
+      "vigor": 8,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "6d6 +2",
+        "dano": "2d6 +14 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 1.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Regeneração",
+        "tipo": "proeza",
+        "alvo": "Cerne Vital · Regeneração (b9)",
+        "caminho": "cerne-vital"
+      }
+    ]
+  },
+  {
+    "id": "mon-gigante-da-colina",
+    "nome": "Gigante da Colina",
+    "tipo": "elite",
+    "categoria": "Gigante",
+    "ameaca": 4,
+    "centelha": 0,
+    "conceito": "humanoide Grande (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante"
+    ],
+    "pv": 43,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 9,
+      "destreza": 2,
+      "vigor": 6,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "6d6+2",
+        "dano": "2d6 +18 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Atletismo 2, Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-gigante-da-pedra",
+    "nome": "Gigante da Pedra",
+    "tipo": "chefe",
+    "categoria": "Gigante",
+    "ameaca": 5,
+    "centelha": 0,
+    "conceito": "humanoide Grande (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante"
+    ],
+    "pv": 43,
+    "defesa": 10,
+    "defesaMental": 11,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 9,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "7d6",
+        "dano": "2d6 +18 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 3, Atletismo 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-gigante-do-fogo",
+    "nome": "Gigante do Fogo",
+    "tipo": "chefe",
+    "categoria": "Gigante",
+    "ameaca": 5,
+    "centelha": 1,
+    "conceito": "humanoide Grande (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante",
+      "centelha"
+    ],
+    "pv": 49,
+    "defesa": 6,
+    "defesaMental": 14,
+    "soak": {
+      "impacto": 9,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 10,
+      "destreza": 2,
+      "vigor": 8,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 3,
+      "percepcao": 4,
+      "inteligencia": 2,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "7d6+2 +2",
+        "dano": "2d6 +20 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Ofícios 2, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Imune a fogo",
+        "tipo": "proeza",
+        "alvo": "Sangue Imune · Imunidade (b7)",
+        "caminho": "sangue-imune"
+      },
+      {
+        "efeito": "Arremessar rocha",
+        "tipo": "proeza",
+        "alvo": "Atlas / Quebra-Muralhas",
+        "caminho": "quebra-muralhas"
+      }
+    ]
+  },
+  {
+    "id": "mon-gigante-do-gelo",
+    "nome": "Gigante do Gelo",
+    "tipo": "chefe",
+    "categoria": "Gigante",
+    "ameaca": 5,
+    "centelha": 1,
+    "conceito": "humanoide Grande (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante",
+      "centelha"
+    ],
+    "pv": 46,
+    "defesa": 6,
+    "defesaMental": 14,
+    "soak": {
+      "impacto": 8,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 10,
+      "destreza": 2,
+      "vigor": 7,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "7d6+2 +2",
+        "dano": "2d6 +20 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Atletismo 2, Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-gigante-das-nuvens",
+    "nome": "Gigante das Nuvens",
+    "tipo": "chefe",
+    "categoria": "Gigante",
+    "ameaca": 5,
+    "centelha": 1,
+    "conceito": "humanoide Enorme (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 49,
+    "defesa": 10,
+    "defesaMental": 18,
+    "soak": {
+      "impacto": 9,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 12,
+      "destreza": 3,
+      "vigor": 8,
+      "influencia": 4,
+      "perspicacia": 4,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 3,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "8d6+2 +2",
+        "dano": "3d6 +24 impacto",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "vento",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3, Ofícios 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Névoa e poderes do ar (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Vento · N2",
+        "arte": "vento"
+      },
+      {
+        "efeito": "Arremessar rocha",
+        "tipo": "proeza",
+        "alvo": "Atlas",
+        "caminho": "atlas"
+      }
+    ]
+  },
+  {
+    "id": "mon-gigante-da-tempestade",
+    "nome": "Gigante da Tempestade",
+    "tipo": "chefe",
+    "categoria": "Gigante",
+    "ameaca": 5,
+    "centelha": 2,
+    "conceito": "humanoide Enorme (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 52,
+    "defesa": 14,
+    "defesaMental": 21,
+    "soak": {
+      "impacto": 11,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 8",
+    "atributos": {
+      "forca": 13,
+      "destreza": 4,
+      "vigor": 9,
+      "influencia": 4,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 6,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "9d6 +4",
+        "dano": "3d6 +26 impacto",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "vento",
+        "nivel": 2
+      },
+      {
+        "id": "raio",
+        "nivel": 2
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 4, Conhecimentos 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Comandar o clima",
+        "tipo": "feiticaria",
+        "alvo": "Vento · N5 + Raio · N4",
+        "arte": "vento"
+      },
+      {
+        "efeito": "Ver e ouvir à distância",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N2",
+        "arte": "adivinhacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-ciclope",
+    "nome": "Ciclope",
+    "tipo": "elite",
+    "categoria": "Gigante",
+    "ameaca": 4,
+    "centelha": 1,
+    "conceito": "humanoide Grande (gigante)",
+    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "tags": [
+      "gigante",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 6,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 9,
+      "destreza": 2,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Pancada descomunal",
+        "pool": "7d6 +2",
+        "dano": "2d6 +18 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fortuna",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Ofícios 2, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Lampejo de premonição (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fortuna · N1 / Adivinhação",
+        "arte": "fortuna"
+      }
+    ]
+  },
+  {
+    "id": "mon-lobo",
+    "nome": "Lobo",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 37,
+    "defesa": 10,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 4,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 3,
+      "destreza": 4,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "2d6+2",
+        "dano": "1d6 +6 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 2, Furtividade 2, Sobrevivência 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Faro e caça em matilha",
+        "tipo": "proeza",
+        "alvo": "Caçador · Faro (b2)",
+        "caminho": "cacador"
+      }
+    ]
+  },
+  {
+    "id": "mon-lobo-atroz",
+    "nome": "Lobo Atroz",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 43,
+    "defesa": 10,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 9,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "6d6",
+        "dano": "2d6 +18 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 2, Furtividade 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-urso-pardo",
+    "nome": "Urso-pardo",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 43,
+    "defesa": 8,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 9,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "6d6",
+        "dano": "2d6 +18 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Atletismo 3, Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-leao",
+    "nome": "Leão",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 40,
+    "defesa": 12,
+    "defesaMental": 11,
+    "soak": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 7,
+      "destreza": 5,
+      "vigor": 5,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 3,
+      "percepcao": 4,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6",
+        "dano": "2d6 +14 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Bote (pounce)",
+        "tipo": "proeza",
+        "alvo": "Sangue Fervente · Investida Furiosa (b5)",
+        "caminho": "sangue-fervente"
+      },
+      {
+        "efeito": "Emboscar",
+        "tipo": "proeza",
+        "alvo": "Sombra · Esgueirar (b3)",
+        "caminho": "sombra"
+      }
+    ]
+  },
+  {
+    "id": "mon-tigre",
+    "nome": "Tigre",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 43,
+    "defesa": 10,
+    "defesaMental": 11,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 8,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 3,
+      "percepcao": 4,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6+2",
+        "dano": "2d6 +16 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 3, Atletismo 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-javali",
+    "nome": "Javali",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 40,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 4,
+      "destreza": 2,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "3d6",
+        "dano": "1d6 +8 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-rinoceronte",
+    "nome": "Rinoceronte",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 46,
+    "defesa": 8,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 7,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 8,
+      "destreza": 3,
+      "vigor": 7,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6+2",
+        "dano": "2d6 +16 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-elefante",
+    "nome": "Elefante",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 4,
+    "centelha": 0,
+    "conceito": "animal Enorme",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 49,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 8,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 11,
+      "destreza": 2,
+      "vigor": 8,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "7d6+2",
+        "dano": "3d6 +22 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Pisoteio",
+        "tipo": "proeza",
+        "alvo": "Quebra-Muralhas · Demolidor (b1)",
+        "caminho": "quebra-muralhas"
+      },
+      {
+        "efeito": "Agarrar com a tromba",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso · Imobilizar (b2)",
+        "caminho": "agarrao-do-urso"
+      }
+    ]
+  },
+  {
+    "id": "mon-gorila",
+    "nome": "Gorila",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 40,
+    "defesa": 10,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "4d6",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Atletismo 3.",
+    "pendente": true
+  },
+  {
+    "id": "mon-crocodilo",
+    "nome": "Crocodilo",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 40,
+    "defesa": 8,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 6,
+      "destreza": 3,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 0,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "4d6",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 2, Atletismo 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-cobra-constritora",
+    "nome": "Cobra Constritora",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 34,
+    "defesa": 12,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 5,
+      "destreza": 5,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 0,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "3d6+2",
+        "dano": "1d6 +10 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 2, Atletismo 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Constrição",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
+        "caminho": "agarrao-do-urso"
+      }
+    ]
+  },
+  {
+    "id": "mon-aranha-gigante",
+    "nome": "Aranha Gigante",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "praga Médio",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 34,
+    "defesa": 12,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 2,
+      "destreza": 5,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 0,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "2d6",
+        "dano": "1d6 +4 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 3, Atletismo 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Teia",
+        "tipo": "natural",
+        "alvo": "natural (Ex)"
+      },
+      {
+        "efeito": "Mordida venenosa",
+        "tipo": "natural",
+        "alvo": "veneno natural"
+      }
+    ]
+  },
+  {
+    "id": "mon-escorpiao-gigante",
+    "nome": "Escorpião Gigante",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "praga Grande",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 43,
+    "defesa": 8,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 0,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "4d6+2",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 1.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Ferrão venenoso",
+        "tipo": "natural",
+        "alvo": "veneno natural (tag da arma)"
+      }
+    ]
+  },
+  {
+    "id": "mon-aguia-gigante",
+    "nome": "Águia Gigante",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 3,
+    "centelha": 1,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha"
+    ],
+    "pv": 40,
+    "defesa": 12,
+    "defesaMental": 16,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 6,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 3,
+      "perspicacia": 3,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 2,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6 +2",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "sentidos-apurados"
+    ],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 3, Atletismo 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Visão aguçada",
+        "tipo": "proeza",
+        "alvo": "Olho Aguçado · Sentidos Apurados (b1)",
+        "caminho": "olho-agucado"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "natural",
+        "alvo": "asas (natural)"
+      }
+    ]
+  },
+  {
+    "id": "mon-roc",
+    "nome": "Roc",
+    "tipo": "chefe",
+    "categoria": "Fera",
+    "ameaca": 5,
+    "centelha": 0,
+    "conceito": "animal Imenso",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 52,
+    "defesa": 8,
+    "defesaMental": 11,
+    "soak": {
+      "impacto": 9,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 13,
+      "destreza": 3,
+      "vigor": 9,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 3,
+      "percepcao": 4,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "9d6",
+        "dano": "3d6 +26 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 3.",
+    "pendente": true
+  },
+  {
+    "id": "mon-rato-gigante",
+    "nome": "Rato Gigante",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "animal Pequeno",
+    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 31,
+    "defesa": 10,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 2,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 1,
+      "destreza": 4,
+      "vigor": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "1d6",
+        "dano": "1d6 +2 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 2, Atletismo 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-corujurso",
+    "nome": "Corujurso",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 3,
+    "centelha": 1,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha"
+    ],
+    "pv": 43,
+    "defesa": 10,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 7,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6+2 +2",
+        "dano": "2d6 +14 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "imobilizar"
+    ],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Abraço (agarrar)",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso · Imobilizar (b2)",
+        "caminho": "agarrao-do-urso"
+      }
+    ]
+  },
+  {
+    "id": "mon-minotauro",
+    "nome": "Minotauro",
+    "tipo": "soldado",
+    "categoria": "Monstro",
+    "ameaca": 3,
+    "centelha": 1,
+    "conceito": "humanoide monstruoso Grande",
+    "descricao": "Aberração humanoide de lendas antigas.",
+    "tags": [
+      "monstro",
+      "centelha"
+    ],
+    "pv": 40,
+    "defesa": 6,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 2,
+      "vigor": 5,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "5d6 +2",
+        "dano": "2d6 +12 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "faro"
+    ],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 3, Sobrevivência 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Faro no labirinto (Su)",
+        "tipo": "proeza",
+        "alvo": "Caçador · Faro (b2)",
+        "caminho": "cacador"
+      },
+      {
+        "efeito": "Investida chifruda",
+        "tipo": "proeza",
+        "alvo": "Sangue Fervente · Investida Furiosa (b5)",
+        "caminho": "sangue-fervente"
+      }
+    ]
+  },
+  {
+    "id": "mon-harpia",
+    "nome": "Harpia",
+    "tipo": "soldado",
+    "categoria": "Monstro",
+    "ameaca": 3,
+    "centelha": 2,
+    "conceito": "humanoide monstruoso Médio",
+    "descricao": "Aberração humanoide de lendas antigas.",
+    "tags": [
+      "monstro",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 31,
+    "defesa": 16,
+    "defesaMental": 19,
+    "soak": {
+      "impacto": 4,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 3,
+      "destreza": 5,
+      "vigor": 2,
+      "influencia": 5,
+      "perspicacia": 3,
+      "compostura": 4,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "3d6+2 +4",
+        "dano": "1d6 +6 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [
+      "olhar-cativante"
+    ],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Oratória 2, Furtividade 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Canção cativante (Su)",
+        "tipo": "proeza",
+        "alvo": "Beleza Cativante · Olhar Cativante (b5)",
+        "caminho": "beleza-cativante"
+      },
+      {
+        "efeito": "(alternativa mágica)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N2",
+        "arte": "fascinacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-gargula",
+    "nome": "Gárgula",
+    "tipo": "soldado",
+    "categoria": "Monstro",
+    "ameaca": 3,
+    "centelha": 1,
+    "conceito": "humanoide monstruoso Médio",
+    "descricao": "Aberração humanoide de lendas antigas.",
+    "tags": [
+      "monstro",
+      "centelha"
+    ],
+    "pv": 40,
+    "defesa": 12,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 4,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "4d6 +2",
+        "dano": "1d6 +8 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Pele de pedra / RD",
+        "tipo": "proeza",
+        "alvo": "Pele de Pedra · Pele de Pedra (b4)",
+        "caminho": "pele-de-pedra"
+      },
+      {
+        "efeito": "Imobilidade (freeze)",
+        "tipo": "proeza",
+        "alvo": "Máscara / Sombra",
+        "caminho": "mascara"
+      }
+    ]
+  },
+  {
+    "id": "mon-grifo",
+    "nome": "Grifo",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 3,
+    "centelha": 1,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha"
+    ],
+    "pv": 43,
+    "defesa": 12,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6 +2",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 2, Atletismo 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-hipogrifo",
+    "nome": "Hipogrifo",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 2,
+    "centelha": 1,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha"
+    ],
+    "pv": 43,
+    "defesa": 12,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "4d6+2 +2",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-manticora",
+    "nome": "Mantícora",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 4,
+    "centelha": 1,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha"
+    ],
+    "pv": 43,
+    "defesa": 12,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 7,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "6d6 +2",
+        "dano": "2d6 +14 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 2, Atletismo 1.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Espinhos de cauda",
+        "tipo": "natural",
+        "alvo": "ataque natural (Atirador)"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "natural",
+        "alvo": "asas (natural)"
+      }
+    ]
+  },
+  {
+    "id": "mon-quimera",
+    "nome": "Quimera",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 12,
+    "defesaMental": 17,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6+2 +4",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3, Furtividade 1.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro dracônico",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N2",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "natural",
+        "alvo": "asas (natural)"
+      }
+    ]
+  },
+  {
+    "id": "mon-wyvern",
+    "nome": "Wyvern",
+    "tipo": "elite",
+    "categoria": "Dragão",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "dragão Grande",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha"
+    ],
+    "pv": 43,
+    "defesa": 12,
+    "defesaMental": 17,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "5d6+2 +4",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 2, Furtividade 1.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Ferrão venenoso",
+        "tipo": "natural",
+        "alvo": "veneno natural"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "natural",
+        "alvo": "asas (natural)"
+      }
+    ]
+  },
+  {
+    "id": "mon-hidra-5-cabecas",
+    "nome": "Hidra (5 cabeças)",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 3,
+    "centelha": 1,
+    "conceito": "besta mágica Enorme",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha"
+    ],
+    "pv": 49,
+    "defesa": 10,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 9,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 8,
+      "destreza": 3,
+      "vigor": 8,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "6d6 +2",
+        "dano": "3d6 +16 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Cabeças que rebrotam (Su)",
+        "tipo": "proeza",
+        "alvo": "Cerne Vital · Regeneração (b9)",
+        "caminho": "cerne-vital"
+      }
+    ]
+  },
+  {
+    "id": "mon-basilisco",
+    "nome": "Basilisco",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "besta mágica Médio",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 37,
+    "defesa": 8,
+    "defesaMental": 17,
+    "soak": {
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 5,
+      "destreza": 2,
+      "vigor": 4,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6 +4",
+        "dano": "1d6 +10 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "materia",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 2, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Olhar petrificante (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N3 (carne → pedra)",
+        "arte": "materia"
+      }
+    ]
+  },
+  {
+    "id": "mon-cocatriz",
+    "nome": "Cocatriz",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 3,
+    "centelha": 2,
+    "conceito": "besta mágica Pequeno",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 31,
+    "defesa": 16,
+    "defesaMental": 15,
+    "soak": {
+      "impacto": 4,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 1,
+      "destreza": 5,
+      "vigor": 2,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "2d6+2 +4",
+        "dano": "1d6 +2 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "materia",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Toque que petrifica (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N3",
+        "arte": "materia"
+      }
+    ]
+  },
+  {
+    "id": "mon-gorgona-touro-de-ferro",
+    "nome": "Górgona (touro de ferro)",
+    "tipo": "chefe",
+    "categoria": "Besta mágica",
+    "ameaca": 5,
+    "centelha": 2,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 49,
+    "defesa": 8,
+    "defesaMental": 17,
+    "soak": {
+      "impacto": 10,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 8,
+      "destreza": 2,
+      "vigor": 8,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 3,
+      "percepcao": 5,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "6d6+2 +4",
+        "dano": "2d6 +16 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "materia",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro petrificante (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N4",
+        "arte": "materia"
+      }
+    ]
+  },
+  {
+    "id": "mon-besta-deslocadora",
+    "nome": "Besta Deslocadora",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 3,
+    "centelha": 2,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 14,
+    "defesaMental": 15,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 6,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 3,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6 +4",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "imobilizar"
+    ],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Deslocamento (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N1 (ilusão) / Proteção",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Tentáculos",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso · Imobilizar (b2)",
+        "caminho": "agarrao-do-urso"
+      }
+    ]
+  },
+  {
+    "id": "mon-aranha-das-fases",
+    "nome": "Aranha das Fases",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 16,
+    "defesaMental": 17,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 5,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6+2 +4",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "espirito",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Salto etéreo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N2 / Conjuração",
+        "arte": "espirito"
+      }
+    ]
+  },
+  {
+    "id": "mon-monstro-da-ferrugem",
+    "nome": "Monstro da Ferrugem",
+    "tipo": "soldado",
+    "categoria": "Aberração",
+    "ameaca": 3,
+    "centelha": 1,
+    "conceito": "aberração Médio",
+    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "tags": [
+      "aberracao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 34,
+    "defesa": 14,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 4,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 2,
+      "destreza": 5,
+      "vigor": 3,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "3d6 +2",
+        "dano": "1d6 +4 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "materia",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Corrói metal (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N2",
+        "arte": "materia"
+      }
+    ]
+  },
+  {
+    "id": "mon-cubo-gelatinoso",
+    "nome": "Cubo Gelatinoso",
+    "tipo": "soldado",
+    "categoria": "Limo",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "limo Grande",
+    "descricao": "Massa informe que digere tudo que toca.",
+    "tags": [
+      "limo"
+    ],
+    "pv": 52,
+    "defesa": 0,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 9,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 0",
+    "atributos": {
+      "forca": 3,
+      "destreza": 0,
+      "vigor": 9,
+      "influencia": 0,
+      "perspicacia": 0,
+      "compostura": 0,
+      "percepcao": 0,
+      "inteligencia": 0,
+      "raciocinio": 0
+    },
+    "ataques": [
+      {
+        "nome": "Pseudópode",
+        "pool": "3d6",
+        "dano": "2d6 +6 impacto",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true
+  },
+  {
+    "id": "mon-mimico",
+    "nome": "Mímico",
+    "tipo": "soldado",
+    "categoria": "Aberração",
+    "ameaca": 3,
+    "centelha": 1,
+    "conceito": "aberração Médio",
+    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "tags": [
+      "aberracao",
+      "centelha"
+    ],
+    "pv": 40,
+    "defesa": 10,
+    "defesaMental": 14,
+    "soak": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 5,
+      "destreza": 3,
+      "vigor": 5,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "4d6+2 +2",
+        "dano": "1d6 +10 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Assumir forma de objeto (Su)",
+        "tipo": "proeza",
+        "alvo": "Camaleão",
+        "caminho": "camaleao"
+      },
+      {
+        "efeito": "Cola aderente",
+        "tipo": "natural",
+        "alvo": "natural (Ex)"
+      }
+    ]
+  },
+  {
+    "id": "mon-montao-tropecante",
+    "nome": "Montão Tropeçante",
+    "tipo": "elite",
+    "categoria": "Planta",
+    "ameaca": 4,
+    "centelha": 1,
+    "conceito": "planta Grande",
+    "descricao": "Vegetal desperto, lento e implacável.",
+    "tags": [
+      "planta",
+      "centelha"
+    ],
+    "pv": 43,
+    "defesa": 6,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 7,
+      "destreza": 2,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "6d6 +2",
+        "dano": "2d6 +14 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Absorve raio (Su)",
+        "tipo": "proeza",
+        "alvo": "Sangue Imune (raio)",
+        "caminho": "sangue-imune"
+      },
+      {
+        "efeito": "Constrição",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso",
+        "caminho": "agarrao-do-urso"
+      }
+    ]
+  },
+  {
+    "id": "mon-treant",
+    "nome": "Treant",
+    "tipo": "chefe",
+    "categoria": "Planta",
+    "ameaca": 5,
+    "centelha": 2,
+    "conceito": "planta Enorme",
+    "descricao": "Vegetal desperto, lento e implacável.",
+    "tags": [
+      "planta",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 49,
+    "defesa": 8,
+    "defesaMental": 19,
+    "soak": {
+      "impacto": 10,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 11,
+      "destreza": 2,
+      "vigor": 8,
+      "influencia": 3,
+      "perspicacia": 3,
+      "compostura": 4,
+      "percepcao": 5,
+      "inteligencia": 3,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "8d6 +4",
+        "dano": "3d6 +22 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [
+      "pele-de-pedra"
+    ],
+    "artes": [
+      {
+        "id": "vida",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Persuasão 2, Sobrevivência 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Animar árvores (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Vida · N2",
+        "arte": "vida"
+      },
+      {
+        "efeito": "Casca / RD",
+        "tipo": "proeza",
+        "alvo": "Pele de Pedra · Pele de Pedra (b4)",
+        "caminho": "pele-de-pedra"
+      }
+    ]
+  },
+  {
+    "id": "mon-verme-purpura",
+    "nome": "Verme Púrpura",
+    "tipo": "chefe",
+    "categoria": "Besta mágica",
+    "ameaca": 5,
+    "centelha": 1,
+    "conceito": "besta mágica Imenso",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha"
+    ],
+    "pv": 58,
+    "defesa": 6,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 12,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
+    "atributos": {
+      "forca": 13,
+      "destreza": 2,
+      "vigor": 11,
+      "influencia": 2,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 0,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "9d6 +2",
+        "dano": "3d6 +26 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Prontidão 1.",
+    "pendente": true
+  },
+  {
+    "id": "mon-bulette",
+    "nome": "Bulette",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 4,
+    "centelha": 1,
+    "conceito": "besta mágica Enorme",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha"
+    ],
+    "pv": 52,
+    "defesa": 10,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 10,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 10,
+      "destreza": 3,
+      "vigor": 9,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "7d6+2 +2",
+        "dano": "3d6 +20 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Perícias notáveis: Atletismo 3, Prontidão 2.",
+    "pendente": true
+  },
+  {
+    "id": "mon-aboleth",
+    "nome": "Aboleth",
+    "tipo": "elite",
+    "categoria": "Aberração",
+    "ameaca": 4,
+    "centelha": 4,
+    "conceito": "aberração Enorme",
+    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "tags": [
+      "aberracao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 49,
+    "defesa": 16,
+    "defesaMental": 27,
+    "soak": {
+      "impacto": 12,
+      "corte": 8,
+      "perfuracao": 8
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 10,
+      "destreza": 3,
+      "vigor": 8,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "7d6+2 +8",
+        "dano": "3d6 +20 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "materia",
+        "nivel": 3
+      },
+      {
+        "id": "agua",
+        "nivel": 3
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 4
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Conhecimentos 4, Ocultismo 3, Percepção 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Muco que transforma pele (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N3 + Água · N3",
+        "arte": "materia"
+      },
+      {
+        "efeito": "Domínio psíquico",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N4",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Telepatia",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N2",
+        "arte": "adivinhacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-esqueleto-humano",
+    "nome": "Esqueleto Humano",
+    "tipo": "capanga",
+    "categoria": "Morto-vivo",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo"
+    ],
+    "pv": 31,
+    "defesa": 10,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 2,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 4,
+      "destreza": 4,
+      "vigor": 2,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 0,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "2d6+2",
+        "dano": "1d6 +8 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true
+  },
+  {
+    "id": "mon-zumbi-humano",
+    "nome": "Zumbi Humano",
+    "tipo": "capanga",
+    "categoria": "Morto-vivo",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo"
+    ],
+    "pv": 31,
+    "defesa": 4,
+    "defesaMental": 9,
+    "soak": {
+      "impacto": 2,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 5,
+      "destreza": 2,
+      "vigor": 2,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 0,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "3d6",
+        "dano": "1d6 +10 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true
+  },
+  {
+    "id": "mon-ghoul",
+    "nome": "Ghoul",
+    "tipo": "soldado",
+    "categoria": "Morto-vivo",
+    "ameaca": 2,
+    "centelha": 1,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 37,
+    "defesa": 12,
+    "defesaMental": 16,
+    "soak": {
+      "impacto": 5,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 3,
+      "destreza": 4,
+      "vigor": 4,
+      "influencia": 4,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 3,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "3d6 +2",
+        "dano": "1d6 +6 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [
+      "faro"
+    ],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 2, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Paralisia (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Faro do carniçal",
+        "tipo": "proeza",
+        "alvo": "Caçador · Faro (b2)",
+        "caminho": "cacador"
+      }
+    ]
+  },
+  {
+    "id": "mon-ghast",
+    "nome": "Ghast",
+    "tipo": "soldado",
+    "categoria": "Morto-vivo",
+    "ameaca": 2,
+    "centelha": 2,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 16,
+    "defesaMental": 19,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 5,
+      "destreza": 5,
+      "vigor": 5,
+      "influencia": 5,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 3,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "4d6 +4",
+        "dano": "1d6 +10 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Paralisia e fedor (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2 + Vento (fedor)",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-sombra",
+    "nome": "Sombra",
+    "tipo": "soldado",
+    "categoria": "Morto-vivo",
+    "ameaca": 3,
+    "centelha": 2,
+    "conceito": "morto-vivo Médio (incorpóreo)",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "incorpóreo",
+      "mágico"
+    ],
+    "pv": 37,
+    "defesa": 14,
+    "defesaMental": 19,
+    "soak": {
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 0,
+      "destreza": 4,
+      "vigor": 4,
+      "influencia": 4,
+      "perspicacia": 2,
+      "compostura": 4,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Toque dilacerante",
+        "pool": "4d6 +4",
+        "dano": "2d6 necrótico (vs Def. Mental)",
+        "ticks": 5,
+        "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 1
+      },
+      {
+        "id": "espirito",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Dreno de Força (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N1",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Incorpóreo",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N2 / Sombra · Manto de Sombras (b5)",
+        "arte": "espirito"
+      }
+    ]
+  },
+  {
+    "id": "mon-wight",
+    "nome": "Wight",
+    "tipo": "soldado",
+    "categoria": "Morto-vivo",
+    "ameaca": 3,
+    "centelha": 2,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 37,
+    "defesa": 12,
+    "defesaMental": 19,
+    "soak": {
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 3,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 4,
+      "perspicacia": 3,
+      "compostura": 4,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "3d6+2 +4",
+        "dano": "1d6 +6 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Dreno de energia (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-assombracao-wraith",
+    "nome": "Assombração (Wraith)",
+    "tipo": "elite",
+    "categoria": "Morto-vivo",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "morto-vivo Médio (incorpóreo)",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "incorpóreo",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 16,
+    "defesaMental": 21,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 0,
+      "destreza": 5,
+      "vigor": 6,
+      "influencia": 6,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 4,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Toque dilacerante",
+        "pool": "5d6+2 +4",
+        "dano": "2d6 necrótico (vs Def. Mental)",
+        "ticks": 5,
+        "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 2
+      },
+      {
+        "id": "espirito",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 4, Persuasão 3, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Dreno de Constituição (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Incorpóreo",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N3",
+        "arte": "espirito"
+      }
+    ]
+  },
+  {
+    "id": "mon-espectro",
+    "nome": "Espectro",
+    "tipo": "elite",
+    "categoria": "Morto-vivo",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "morto-vivo Médio (incorpóreo)",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "incorpóreo",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 18,
+    "defesaMental": 24,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 0,
+      "destreza": 5,
+      "vigor": 5,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 4,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Toque dilacerante",
+        "pool": "5d6 +6",
+        "dano": "2d6 necrótico (vs Def. Mental)",
+        "ticks": 5,
+        "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 3
+      },
+      {
+        "id": "espirito",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 4, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Dreno de nível (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Voo e incorpóreo",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N3",
+        "arte": "espirito"
+      }
+    ]
+  },
+  {
+    "id": "mon-mumia",
+    "nome": "Múmia",
+    "tipo": "elite",
+    "categoria": "Morto-vivo",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 37,
+    "defesa": 10,
+    "defesaMental": 22,
+    "soak": {
+      "impacto": 7,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 7,
+      "destreza": 2,
+      "vigor": 4,
+      "influencia": 4,
+      "perspicacia": 2,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "6d6 +6",
+        "dano": "1d6 +14 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Podridão da múmia (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Aura de desespero (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3 (medo) / Lenda Viva · Temor Reverente (b5)",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-bodak",
+    "nome": "Bodak",
+    "tipo": "chefe",
+    "categoria": "Morto-vivo",
+    "ameaca": 5,
+    "centelha": 3,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 16,
+    "defesaMental": 22,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 4,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 5,
+      "perspicacia": 2,
+      "compostura": 4,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "4d6+2 +6",
+        "dano": "1d6 +8 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3, Furtividade 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Olhar mortal (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N5",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-vampiro",
+    "nome": "Vampiro",
+    "tipo": "chefe",
+    "categoria": "Morto-vivo",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 49,
+    "defesa": 20,
+    "defesaMental": 29,
+    "soak": {
+      "impacto": 12,
+      "corte": 8,
+      "perfuracao": 8
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 5,
+      "destreza": 5,
+      "vigor": 8,
+      "influencia": 8,
+      "perspicacia": 6,
+      "compostura": 6,
+      "percepcao": 5,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "5d6 +8",
+        "dano": "1d6 +10 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [
+      "regeneracao"
+    ],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      },
+      {
+        "id": "vento",
+        "nivel": 3
+      },
+      {
+        "id": "espirito",
+        "nivel": 2
+      },
+      {
+        "id": "morte",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Manha 5, Persuasão 4, Furtividade 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Dominar (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N3",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Forma gasosa",
+        "tipo": "feiticaria",
+        "alvo": "Espírito / Vento · N3",
+        "arte": "vento"
+      },
+      {
+        "efeito": "Filhos da noite (convoca)",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N2",
+        "arte": "espirito"
+      },
+      {
+        "efeito": "Regeneração",
+        "tipo": "proeza",
+        "alvo": "Cerne Vital · Regeneração (b9)",
+        "caminho": "cerne-vital"
+      },
+      {
+        "efeito": "Dreno de sangue",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N1",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-lich",
+    "nome": "Lich",
+    "tipo": "chefe",
+    "categoria": "Morto-vivo",
+    "ameaca": 5,
+    "centelha": 5,
+    "conceito": "morto-vivo Médio",
+    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "tags": [
+      "morto-vivo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 20,
+    "defesaMental": 28,
+    "soak": {
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 2,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 7,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Golpe",
+        "pool": "3d6+2 +10",
+        "dano": "1d6 +4 impacto",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "protecao",
+        "nivel": 3
+      },
+      {
+        "id": "morte",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 5, Conhecimentos 5, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Feitiços de mago (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo / Gelo / Morte / Proteção · N3–N5",
+        "arte": "protecao"
+      },
+      {
+        "efeito": "Toque paralisante (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Aura de medo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-dretch",
+    "nome": "Dretch",
+    "tipo": "soldado",
+    "categoria": "Demônio",
+    "ameaca": 2,
+    "centelha": 2,
+    "conceito": "exterior Pequeno (demônio)",
+    "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+    "tags": [
+      "demonio",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 37,
+    "defesa": 8,
+    "defesaMental": 15,
+    "soak": {
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 3,
+      "destreza": 2,
+      "vigor": 4,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "3d6 +4",
+        "dano": "1d6 +6 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "vento",
+        "nivel": 2
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 1.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Fedor e telepatia (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Vento · N2 (fedor) + Fascinação · N1",
+        "arte": "vento"
+      }
+    ]
+  },
+  {
+    "id": "mon-quasit",
+    "nome": "Quasit",
+    "tipo": "soldado",
+    "categoria": "Demônio",
+    "ameaca": 2,
+    "centelha": 2,
+    "conceito": "exterior Minúsculo (demônio)",
+    "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+    "tags": [
+      "demonio",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 31,
+    "defesa": 16,
+    "defesaMental": 17,
+    "soak": {
+      "impacto": 4,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 2,
+      "destreza": 5,
+      "vigor": 2,
+      "influencia": 4,
+      "perspicacia": 3,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "2d6+2 +4",
+        "dano": "1d6 +4 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 1
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 1
+      },
+      {
+        "id": "materia",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 4, Manha 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Invisibilidade e susto (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N1",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Adivinhação",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N1",
+        "arte": "adivinhacao"
+      },
+      {
+        "efeito": "Forma alternativa",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N2",
+        "arte": "materia"
+      }
+    ]
+  },
+  {
+    "id": "mon-sucubo",
+    "nome": "Súcubo",
+    "tipo": "elite",
+    "categoria": "Demônio",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "exterior Médio (demônio)",
+    "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+    "tags": [
+      "demonio",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 18,
+    "defesaMental": 26,
+    "soak": {
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 3,
+      "destreza": 5,
+      "vigor": 6,
+      "influencia": 8,
+      "perspicacia": 7,
+      "compostura": 6,
+      "percepcao": 4,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "4d6 +6",
+        "dano": "1d6 +6 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [
+      "encanto-irresistivel"
+    ],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      },
+      {
+        "id": "materia",
+        "nivel": 2
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Persuasão 4, Manha 4, Empatia 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Beijo dreno e enfeitiçar (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N4",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Sedução",
+        "tipo": "proeza",
+        "alvo": "Beleza Cativante · Encanto Irresistível (b4)",
+        "caminho": "beleza-cativante"
+      },
+      {
+        "efeito": "Mudar de forma",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N2",
+        "arte": "materia"
+      },
+      {
+        "efeito": "Teleporte",
+        "tipo": "feiticaria",
+        "alvo": "Conjuração · N4",
+        "arte": "conjuracao"
+      }
+    ]
+  },
+  {
+    "id": "mon-vrock",
+    "nome": "Vrock",
+    "tipo": "chefe",
+    "categoria": "Demônio",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "exterior Grande (demônio)",
+    "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+    "tags": [
+      "demonio",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 52,
+    "defesa": 18,
+    "defesaMental": 27,
+    "soak": {
+      "impacto": 13,
+      "corte": 8,
+      "perfuracao": 8
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 7,
+      "destreza": 4,
+      "vigor": 9,
+      "influencia": 5,
+      "perspicacia": 4,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "6d6 +8",
+        "dano": "2d6 +14 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 3
+      },
+      {
+        "id": "espirito",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 4, Atletismo 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Esporos e dança da ruína (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Vida (esporos) + Morte · N3",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Convocar demônios (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N4",
+        "arte": "espirito"
+      }
+    ]
+  },
+  {
+    "id": "mon-hezrou",
+    "nome": "Hezrou",
+    "tipo": "chefe",
+    "categoria": "Demônio",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "exterior Grande (demônio)",
+    "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+    "tags": [
+      "demonio",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 52,
+    "defesa": 18,
+    "defesaMental": 27,
+    "soak": {
+      "impacto": 13,
+      "corte": 8,
+      "perfuracao": 8
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 9,
+      "destreza": 4,
+      "vigor": 9,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "7d6 +8",
+        "dano": "2d6 +18 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "vento",
+        "nivel": 2
+      },
+      {
+        "id": "espirito",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 4, Atletismo 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Fedor nauseante (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Vento · N2 / Morte",
+        "arte": "vento"
+      },
+      {
+        "efeito": "Convocar (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N4",
+        "arte": "espirito"
+      }
+    ]
+  },
+  {
+    "id": "mon-glabrezu",
+    "nome": "Glabrezu",
+    "tipo": "chefe",
+    "categoria": "Demônio",
+    "ameaca": 5,
+    "centelha": 5,
+    "conceito": "exterior Enorme (demônio)",
+    "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+    "tags": [
+      "demonio",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 55,
+    "defesa": 20,
+    "defesaMental": 32,
+    "soak": {
+      "impacto": 15,
+      "corte": 10,
+      "perfuracao": 10
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 8",
+    "atributos": {
+      "forca": 12,
+      "destreza": 4,
+      "vigor": 10,
+      "influencia": 6,
+      "perspicacia": 5,
+      "compostura": 6,
+      "percepcao": 6,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "8d6+2 +10",
+        "dano": "3d6 +24 corte",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fortuna",
+        "nivel": 4
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 4, Persuasão 4, Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Realizar desejo traiçoeiro (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fortuna · N4 / Fascinação",
+        "arte": "fortuna"
+      },
+      {
+        "efeito": "Feitiços",
+        "tipo": "feiticaria",
+        "alvo": "várias · N3–N4"
+      },
+      {
+        "efeito": "Teleporte",
+        "tipo": "feiticaria",
+        "alvo": "Conjuração · N4",
+        "arte": "conjuracao"
+      }
+    ]
+  },
+  {
+    "id": "mon-marilith",
+    "nome": "Marilith",
+    "tipo": "chefe",
+    "categoria": "Demônio",
+    "ameaca": 6,
+    "centelha": 6,
+    "conceito": "exterior Grande (demônio)",
+    "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+    "tags": [
+      "demonio",
+      "centelha"
+    ],
+    "pv": 52,
+    "defesa": 32,
+    "defesaMental": 37,
+    "soak": {
+      "impacto": 15,
+      "corte": 10,
+      "perfuracao": 10
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 10,
+      "destreza": 8,
+      "vigor": 9,
+      "influencia": 8,
+      "perspicacia": 7,
+      "compostura": 7,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "7d6+2 +12",
+        "dano": "2d6 +20 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "aperto-esmagador"
+    ],
+    "artes": [],
+    "notas": "Perícias notáveis: Armas 5, Prontidão 4, Liderança 4. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Seis lâminas (Ex)",
+        "tipo": "proeza",
+        "alvo": "Dança da Lâmina + Mão Veloz",
+        "caminho": "danca-da-lamina"
+      },
+      {
+        "efeito": "Constrição",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
+        "caminho": "agarrao-do-urso"
+      },
+      {
+        "efeito": "Feitiços (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "várias · N3"
+      }
+    ]
+  },
+  {
+    "id": "mon-balor",
+    "nome": "Balor",
+    "tipo": "chefe",
+    "categoria": "Demônio",
+    "ameaca": 6,
+    "centelha": 8,
+    "conceito": "exterior Grande (demônio)",
+    "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+    "tags": [
+      "demonio",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 61,
+    "defesa": 36,
+    "defesaMental": 44,
+    "soak": {
+      "impacto": 20,
+      "corte": 14,
+      "perfuracao": 14
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 10",
+    "atributos": {
+      "forca": 11,
+      "destreza": 8,
+      "vigor": 12,
+      "influencia": 8,
+      "perspicacia": 8,
+      "compostura": 8,
+      "percepcao": 7,
+      "inteligencia": 7,
+      "raciocinio": 7
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "8d6 +16",
+        "dano": "2d6 +22 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 5
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Prontidão 5, Liderança 5. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Espada e chicote flamejantes",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N4",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Aura de fogo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N4 / Proteção",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Morte explosiva",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N5",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Comandar legiões",
+        "tipo": "proeza",
+        "alvo": "Comando / Estandarte",
+        "caminho": "estandarte"
+      },
+      {
+        "efeito": "Teleporte",
+        "tipo": "feiticaria",
+        "alvo": "Conjuração · N4",
+        "arte": "conjuracao"
+      }
+    ]
+  },
+  {
+    "id": "mon-lemure",
+    "nome": "Lêmure",
+    "tipo": "soldado",
+    "categoria": "Diabo",
+    "ameaca": 2,
+    "centelha": 1,
+    "conceito": "exterior Médio (diabo)",
+    "descricao": "Tirano leal do Inferno, calculista e cruel.",
+    "tags": [
+      "diabo",
+      "centelha"
+    ],
+    "pv": 37,
+    "defesa": 6,
+    "defesaMental": 12,
+    "soak": {
+      "impacto": 5,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 1",
+    "atributos": {
+      "forca": 3,
+      "destreza": 2,
+      "vigor": 4,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 1,
+      "inteligencia": 0,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "3d6 +2",
+        "dano": "1d6 +6 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [
+      "recuperacao-acelerada"
+    ],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Regeneração fraca (Ex)",
+        "tipo": "proeza",
+        "alvo": "Cerne Vital · Recuperação Acelerada (b1)",
+        "caminho": "cerne-vital"
+      }
+    ]
+  },
+  {
+    "id": "mon-diabrete-imp",
+    "nome": "Diabrete (Imp)",
+    "tipo": "soldado",
+    "categoria": "Diabo",
+    "ameaca": 2,
+    "centelha": 2,
+    "conceito": "exterior Minúsculo (diabo)",
+    "descricao": "Tirano leal do Inferno, calculista e cruel.",
+    "tags": [
+      "diabo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 31,
+    "defesa": 16,
+    "defesaMental": 17,
+    "soak": {
+      "impacto": 4,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 2,
+      "destreza": 5,
+      "vigor": 2,
+      "influencia": 4,
+      "perspicacia": 4,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 3,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "2d6+2 +4",
+        "dano": "1d6 +4 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 1
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 1
+      },
+      {
+        "id": "materia",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 4, Manha 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Invisibilidade (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N1",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Adivinhação",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N1",
+        "arte": "adivinhacao"
+      },
+      {
+        "efeito": "Forma alternativa",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N2",
+        "arte": "materia"
+      },
+      {
+        "efeito": "Ferrão venenoso",
+        "tipo": "natural",
+        "alvo": "natural"
+      }
+    ]
+  },
+  {
+    "id": "mon-diabo-barbado",
+    "nome": "Diabo Barbado",
+    "tipo": "elite",
+    "categoria": "Diabo",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "exterior Médio (diabo)",
+    "descricao": "Tirano leal do Inferno, calculista e cruel.",
+    "tags": [
+      "diabo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 16,
+    "defesaMental": 18,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 4,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "4d6+2 +6",
+        "dano": "1d6 +8 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 2
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Armas 3, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Doença infernal (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Teleporte",
+        "tipo": "feiticaria",
+        "alvo": "Conjuração · N3",
+        "arte": "conjuracao"
+      },
+      {
+        "efeito": "Trava a ferida (Ex)",
+        "tipo": "natural",
+        "alvo": "natural"
+      }
+    ]
+  },
+  {
+    "id": "mon-erinia",
+    "nome": "Erínia",
+    "tipo": "chefe",
+    "categoria": "Diabo",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "exterior Médio (diabo)",
+    "descricao": "Tirano leal do Inferno, calculista e cruel.",
+    "tags": [
+      "diabo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 26,
+    "defesaMental": 29,
+    "soak": {
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 6,
+      "destreza": 7,
+      "vigor": 6,
+      "influencia": 6,
+      "perspicacia": 5,
+      "compostura": 6,
+      "percepcao": 5,
+      "inteligencia": 4,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "5d6+2 +8",
+        "dano": "1d6 +12 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 2
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Atirador 4, Persuasão 3, Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Corda de comando (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N2 / Forças",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Teleporte",
+        "tipo": "feiticaria",
+        "alvo": "Conjuração · N4",
+        "arte": "conjuracao"
+      },
+      {
+        "efeito": "Arco certeiro",
+        "tipo": "proeza",
+        "alvo": "Olho de Águia / Atirador",
+        "caminho": "olho-de-aguia"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "natural",
+        "alvo": "asas"
+      }
+    ]
+  },
+  {
+    "id": "mon-diabo-osseo",
+    "nome": "Diabo Ósseo",
+    "tipo": "chefe",
+    "categoria": "Diabo",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "exterior Grande (diabo)",
+    "descricao": "Tirano leal do Inferno, calculista e cruel.",
+    "tags": [
+      "diabo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 46,
+    "defesa": 20,
+    "defesaMental": 27,
+    "soak": {
+      "impacto": 11,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 8,
+      "destreza": 5,
+      "vigor": 7,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "6d6+2 +8",
+        "dano": "2d6 +16 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 2
+      },
+      {
+        "id": "gelo",
+        "nivel": 2
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 4, Furtividade 3, Ocultismo 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Ferrão que enfraquece (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Parede de gelo (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Gelo · N2",
+        "arte": "gelo"
+      },
+      {
+        "efeito": "Invisibilidade",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N1",
+        "arte": "fascinacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-diabo-de-gelo",
+    "nome": "Diabo de Gelo",
+    "tipo": "chefe",
+    "categoria": "Diabo",
+    "ameaca": 5,
+    "centelha": 5,
+    "conceito": "exterior Grande (diabo)",
+    "descricao": "Tirano leal do Inferno, calculista e cruel.",
+    "tags": [
+      "diabo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 52,
+    "defesa": 26,
+    "defesaMental": 32,
+    "soak": {
+      "impacto": 14,
+      "corte": 9,
+      "perfuracao": 9
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 9",
+    "atributos": {
+      "forca": 9,
+      "destreza": 6,
+      "vigor": 9,
+      "influencia": 6,
+      "perspicacia": 6,
+      "compostura": 6,
+      "percepcao": 6,
+      "inteligencia": 7,
+      "raciocinio": 6
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "7d6 +10",
+        "dano": "2d6 +18 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "gelo",
+        "nivel": 3
+      },
+      {
+        "id": "protecao",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Armas 5, Ocultismo 4, Liderança 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Aura de frio (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Gelo · N3",
+        "arte": "gelo"
+      },
+      {
+        "efeito": "Lança e muralha de gelo",
+        "tipo": "feiticaria",
+        "alvo": "Gelo · N2–N3",
+        "arte": "gelo"
+      },
+      {
+        "efeito": "Feitiços",
+        "tipo": "feiticaria",
+        "alvo": "Gelo / Proteção · N3–N4",
+        "arte": "protecao"
+      }
+    ]
+  },
+  {
+    "id": "mon-rakshasa",
+    "nome": "Rakshasa",
+    "tipo": "chefe",
+    "categoria": "Exterior",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "exterior Médio",
+    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "tags": [
+      "exterior",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 20,
+    "defesaMental": 25,
+    "soak": {
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 4,
+      "destreza": 5,
+      "vigor": 5,
+      "influencia": 5,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 3,
+      "inteligencia": 3,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "4d6+2 +8",
+        "dano": "1d6 +8 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 4
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 2
+      },
+      {
+        "id": "materia",
+        "nivel": 3
+      },
+      {
+        "id": "protecao",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Manha 5, Furtividade 4, Persuasão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Ilusões e ler pensamentos (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N4 + Adivinhação · N2",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Mudar de forma",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N3",
+        "arte": "materia"
+      },
+      {
+        "efeito": "Só arma benta fere (RM)",
+        "tipo": "feiticaria",
+        "alvo": "Proteção · N4",
+        "arte": "protecao"
+      }
+    ]
+  },
+  {
+    "id": "mon-diabo-do-fosso-pit-fiend",
+    "nome": "Diabo do Fosso (Pit Fiend)",
+    "tipo": "chefe",
+    "categoria": "Diabo",
+    "ameaca": 6,
+    "centelha": 8,
+    "conceito": "exterior Grande (diabo)",
+    "descricao": "Tirano leal do Inferno, calculista e cruel.",
+    "tags": [
+      "diabo",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 58,
+    "defesa": 40,
+    "defesaMental": 44,
+    "soak": {
+      "impacto": 19,
+      "corte": 13,
+      "perfuracao": 13
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 13",
+    "atributos": {
+      "forca": 12,
+      "destreza": 9,
+      "vigor": 11,
+      "influencia": 8,
+      "perspicacia": 8,
+      "compostura": 9,
+      "percepcao": 9,
+      "inteligencia": 8,
+      "raciocinio": 9
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "8d6+2 +16",
+        "dano": "2d6 +24 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 3
+      },
+      {
+        "id": "espirito",
+        "nivel": 4
+      },
+      {
+        "id": "fogo",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Aura de medo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3 / Lenda Viva",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Feitiços e desejo",
+        "tipo": "feiticaria",
+        "alvo": "várias · N4–N5"
+      },
+      {
+        "efeito": "Convocar diabos",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N4",
+        "arte": "espirito"
+      },
+      {
+        "efeito": "Labareda",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N4",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Doença (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-archon-cao",
+    "nome": "Archon Cão",
+    "tipo": "soldado",
+    "categoria": "Celestial",
+    "ameaca": 3,
+    "centelha": 3,
+    "conceito": "exterior Médio (celestial)",
+    "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+    "tags": [
+      "celestial",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 16,
+    "defesaMental": 20,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 5,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 3,
+      "perspicacia": 3,
+      "compostura": 3,
+      "percepcao": 4,
+      "inteligencia": 3,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "4d6+2 +6",
+        "dano": "1d6 +10 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 2
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 2
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3, Atletismo 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Aura de menaça (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N2 (temor sagrado)",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Teleporte",
+        "tipo": "feiticaria",
+        "alvo": "Conjuração · N2",
+        "arte": "conjuracao"
+      },
+      {
+        "efeito": "Farejar o mal",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N1",
+        "arte": "adivinhacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-deva-astral",
+    "nome": "Deva Astral",
+    "tipo": "chefe",
+    "categoria": "Celestial",
+    "ameaca": 6,
+    "centelha": 5,
+    "conceito": "exterior Médio (anjo)",
+    "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+    "tags": [
+      "celestial",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 22,
+    "defesaMental": 32,
+    "soak": {
+      "impacto": 11,
+      "corte": 8,
+      "perfuracao": 8
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 8,
+      "destreza": 5,
+      "vigor": 6,
+      "influencia": 7,
+      "perspicacia": 6,
+      "compostura": 6,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "6d6+2 +10",
+        "dano": "1d6 +16 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "raio",
+        "nivel": 3
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 2
+      },
+      {
+        "id": "materia",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Feitiços celestiais (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Cura / Proteção / Raio · N3–N4",
+        "arte": "raio"
+      },
+      {
+        "efeito": "Maça estonteante",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N2",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Mudar de forma",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N2",
+        "arte": "materia"
+      }
+    ]
+  },
+  {
+    "id": "mon-planetar",
+    "nome": "Planetar",
+    "tipo": "chefe",
+    "categoria": "Celestial",
+    "ameaca": 6,
+    "centelha": 6,
+    "conceito": "exterior Grande (anjo)",
+    "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+    "tags": [
+      "celestial",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 49,
+    "defesa": 24,
+    "defesaMental": 39,
+    "soak": {
+      "impacto": 14,
+      "corte": 10,
+      "perfuracao": 10
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 11",
+    "atributos": {
+      "forca": 9,
+      "destreza": 5,
+      "vigor": 8,
+      "influencia": 7,
+      "perspicacia": 7,
+      "compostura": 8,
+      "percepcao": 8,
+      "inteligencia": 7,
+      "raciocinio": 7
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "7d6 +12",
+        "dano": "2d6 +18 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "regeneracao"
+    ],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 4
+      },
+      {
+        "id": "protecao",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Persuasão 4, Prontidão 5. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Feitiços de clérigo (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Cura / Vida / Proteção / Morte · N4",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Aura sagrada",
+        "tipo": "feiticaria",
+        "alvo": "Proteção · N4",
+        "arte": "protecao"
+      },
+      {
+        "efeito": "Regeneração",
+        "tipo": "proeza",
+        "alvo": "Cerne Vital · Regeneração (b9)",
+        "caminho": "cerne-vital"
+      }
+    ]
+  },
+  {
+    "id": "mon-solar",
+    "nome": "Solar",
+    "tipo": "chefe",
+    "categoria": "Celestial",
+    "ameaca": 6,
+    "centelha": 8,
+    "conceito": "exterior Grande (anjo)",
+    "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+    "tags": [
+      "celestial",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 55,
+    "defesa": 32,
+    "defesaMental": 44,
+    "soak": {
+      "impacto": 18,
+      "corte": 13,
+      "perfuracao": 13
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 12",
+    "atributos": {
+      "forca": 10,
+      "destreza": 6,
+      "vigor": 10,
+      "influencia": 8,
+      "perspicacia": 7,
+      "compostura": 8,
+      "percepcao": 8,
+      "inteligencia": 7,
+      "raciocinio": 8
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "7d6+2 +16",
+        "dano": "2d6 +20 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 5
+      },
+      {
+        "id": "espirito",
+        "nivel": 5
+      },
+      {
+        "id": "cura",
+        "nivel": 5
+      }
+    ],
+    "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Oratória 5, Prontidão 5. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Feitiços supremos (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "várias · N5"
+      },
+      {
+        "efeito": "Arco de luz que mata",
+        "tipo": "feiticaria",
+        "alvo": "Raio / Morte · N5",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Convocar anjos",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N5",
+        "arte": "espirito"
+      },
+      {
+        "efeito": "Ressurreição",
+        "tipo": "feiticaria",
+        "alvo": "Cura · N5",
+        "arte": "cura"
+      }
+    ]
+  },
+  {
+    "id": "mon-couatl",
+    "nome": "Couatl",
+    "tipo": "chefe",
+    "categoria": "Exterior",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "exterior Médio",
+    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "tags": [
+      "exterior",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 24,
+    "defesaMental": 29,
+    "soak": {
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 8",
+    "atributos": {
+      "forca": 4,
+      "destreza": 6,
+      "vigor": 5,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 6,
+      "percepcao": 6,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "4d6+2 +8",
+        "dano": "1d6 +8 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "materia",
+        "nivel": 2
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Feitiços (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "várias · N3–N4"
+      },
+      {
+        "efeito": "Constrição venenosa",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso + veneno",
+        "caminho": "agarrao-do-urso"
+      },
+      {
+        "efeito": "Mudar de forma",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N2",
+        "arte": "materia"
+      },
+      {
+        "efeito": "Telepatia",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N2",
+        "arte": "adivinhacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-ghaele-azata",
+    "nome": "Ghaele (azata)",
+    "tipo": "chefe",
+    "categoria": "Celestial",
+    "ameaca": 5,
+    "centelha": 5,
+    "conceito": "exterior Médio (celestial)",
+    "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+    "tags": [
+      "celestial",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 26,
+    "defesaMental": 34,
+    "soak": {
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 9",
+    "atributos": {
+      "forca": 6,
+      "destreza": 6,
+      "vigor": 5,
+      "influencia": 7,
+      "perspicacia": 7,
+      "compostura": 7,
+      "percepcao": 6,
+      "inteligencia": 6,
+      "raciocinio": 6
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "5d6+2 +10",
+        "dano": "1d6 +12 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "espirito",
+        "nivel": 3
+      },
+      {
+        "id": "raio",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Forma de globo de luz (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Espírito · N3 + Fogo (luz)",
+        "arte": "espirito"
+      },
+      {
+        "efeito": "Raio de luz",
+        "tipo": "feiticaria",
+        "alvo": "Raio · N3",
+        "arte": "raio"
+      },
+      {
+        "efeito": "Feitiços",
+        "tipo": "feiticaria",
+        "alvo": "várias · N3–N4"
+      }
+    ]
+  },
+  {
+    "id": "mon-djinn",
+    "nome": "Djinn",
+    "tipo": "elite",
+    "categoria": "Elemental",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "exterior Grande (ar)",
+    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "tags": [
+      "elemental",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 18,
+    "defesaMental": 22,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 6,
+      "destreza": 5,
+      "vigor": 5,
+      "influencia": 4,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "5d6+2 +6",
+        "dano": "2d6 +12 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "agua",
+        "nivel": 2
+      },
+      {
+        "id": "materia",
+        "nivel": 2
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 1
+      },
+      {
+        "id": "vento",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Ilusão, água e comida (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Água · N2 + Matéria · N2 + Fascinação · N1",
+        "arte": "agua"
+      },
+      {
+        "efeito": "Forma de redemoinho",
+        "tipo": "feiticaria",
+        "alvo": "Vento · N4",
+        "arte": "vento"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "feiticaria",
+        "alvo": "Vento · N5",
+        "arte": "vento"
+      }
+    ]
+  },
+  {
+    "id": "mon-efreeti",
+    "nome": "Efreeti",
+    "tipo": "chefe",
+    "categoria": "Elemental",
+    "ameaca": 5,
+    "centelha": 3,
+    "conceito": "exterior Grande (fogo)",
+    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "tags": [
+      "elemental",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 18,
+    "defesaMental": 22,
+    "soak": {
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 8,
+      "destreza": 5,
+      "vigor": 6,
+      "influencia": 4,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "6d6+2 +6",
+        "dano": "2d6 +16 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fortuna",
+        "nivel": 3
+      },
+      {
+        "id": "fogo",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Ofícios 4, Manha 3, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Conceder desejos (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fortuna · N4 / Matéria",
+        "arte": "fortuna"
+      },
+      {
+        "efeito": "Muralha de fogo",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N3",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Corpo em chamas",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N4",
+        "arte": "fogo"
+      }
+    ]
+  },
+  {
+    "id": "mon-salamandra",
+    "nome": "Salamandra",
+    "tipo": "elite",
+    "categoria": "Elemental",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "exterior Médio (fogo)",
+    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "tags": [
+      "elemental",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 12,
+    "defesaMental": 19,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 5,
+      "destreza": 3,
+      "vigor": 5,
+      "influencia": 3,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "5d6 +4",
+        "dano": "1d6 +10 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [
+      "imobilizar"
+    ],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Ofícios 3, Armas 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Calor corporal (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N2",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Constrição de cauda",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso · Imobilizar (b2)",
+        "caminho": "agarrao-do-urso"
+      }
+    ]
+  },
+  {
+    "id": "mon-elemental-da-terra-grande",
+    "nome": "Elemental da Terra (Grande)",
+    "tipo": "elite",
+    "categoria": "Elemental",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "exterior Grande (terra)",
+    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "tags": [
+      "elemental",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 46,
+    "defesa": 8,
+    "defesaMental": 15,
+    "soak": {
+      "impacto": 9,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 9,
+      "destreza": 2,
+      "vigor": 7,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "7d6 +4",
+        "dano": "2d6 +18 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "pele-de-pedra"
+    ],
+    "artes": [
+      {
+        "id": "terra",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Atletismo 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Deslizar na pedra e empurrão",
+        "tipo": "feiticaria",
+        "alvo": "Terra · N2",
+        "arte": "terra"
+      },
+      {
+        "efeito": "Corpo de terra",
+        "tipo": "proeza",
+        "alvo": "Pele de Pedra · Carne de Granito (b7)",
+        "caminho": "pele-de-pedra"
+      }
+    ]
+  },
+  {
+    "id": "mon-xorn",
+    "nome": "Xorn",
+    "tipo": "elite",
+    "categoria": "Elemental",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "exterior Médio (terra)",
+    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "tags": [
+      "elemental",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 12,
+    "defesaMental": 15,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 6,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "5d6+2 +4",
+        "dano": "1d6 +12 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "terra",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3, Furtividade 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Deslizar pela pedra (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Terra · N3",
+        "arte": "terra"
+      },
+      {
+        "efeito": "Devorar metal e gema",
+        "tipo": "natural",
+        "alvo": "natural (Ex)"
+      }
+    ]
+  },
+  {
+    "id": "mon-driade",
+    "nome": "Dríade",
+    "tipo": "soldado",
+    "categoria": "Fada",
+    "ameaca": 3,
+    "centelha": 3,
+    "conceito": "fada Médio",
+    "descricao": "Espírito da natureza, belo e caprichoso.",
+    "tags": [
+      "fada",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 34,
+    "defesa": 18,
+    "defesaMental": 24,
+    "soak": {
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 2,
+      "destreza": 5,
+      "vigor": 3,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 4,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "3d6 +6",
+        "dano": "1d6 +4 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 2
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 2
+      },
+      {
+        "id": "materia",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Persuasão 3, Furtividade 3, Sobrevivência 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Passo-arbóreo e enfeitiço (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N2 + Conjuração · N2",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Fundir-se à árvore",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N2 / Espírito",
+        "arte": "materia"
+      }
+    ]
+  },
+  {
+    "id": "mon-ninfa",
+    "nome": "Ninfa",
+    "tipo": "elite",
+    "categoria": "Fada",
+    "ameaca": 4,
+    "centelha": 4,
+    "conceito": "fada Médio",
+    "descricao": "Espírito da natureza, belo e caprichoso.",
+    "tags": [
+      "fada",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 34,
+    "defesa": 24,
+    "defesaMental": 27,
+    "soak": {
+      "impacto": 7,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 2,
+      "destreza": 6,
+      "vigor": 3,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "3d6+2 +8",
+        "dano": "1d6 +4 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [
+      "beleza-inebriante"
+    ],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      },
+      {
+        "id": "agua",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 3, Furtividade 4, Persuasão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Beleza cegante (Su)",
+        "tipo": "proeza",
+        "alvo": "Beleza Cativante · Beleza Inebriante (b8)",
+        "caminho": "beleza-cativante"
+      },
+      {
+        "efeito": "(alternativa mágica)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N3",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Feitiços druídicos",
+        "tipo": "feiticaria",
+        "alvo": "Vida / Água · N3",
+        "arte": "agua"
+      }
+    ]
+  },
+  {
+    "id": "mon-satiro",
+    "nome": "Sátiro",
+    "tipo": "soldado",
+    "categoria": "Fada",
+    "ameaca": 3,
+    "centelha": 2,
+    "conceito": "fada Médio",
+    "descricao": "Espírito da natureza, belo e caprichoso.",
+    "tags": [
+      "fada",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 37,
+    "defesa": 14,
+    "defesaMental": 21,
+    "soak": {
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 4,
+      "destreza": 4,
+      "vigor": 4,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 4,
+      "inteligencia": 3,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "4d6 +4",
+        "dano": "1d6 +8 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Oratória 3, Persuasão 4, Furtividade 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Flautas encantadas (Su)",
+        "tipo": "proeza",
+        "alvo": "Musa / Beleza Cativante",
+        "caminho": "beleza-cativante"
+      },
+      {
+        "efeito": "(alternativa mágica)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N2",
+        "arte": "fascinacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-pixie",
+    "nome": "Pixie",
+    "tipo": "soldado",
+    "categoria": "Fada",
+    "ameaca": 3,
+    "centelha": 3,
+    "conceito": "fada Pequeno",
+    "descricao": "Espírito da natureza, belo e caprichoso.",
+    "tags": [
+      "fada",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 31,
+    "defesa": 22,
+    "defesaMental": 24,
+    "soak": {
+      "impacto": 5,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 1,
+      "destreza": 6,
+      "vigor": 2,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 4,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "2d6+2 +6",
+        "dano": "1d6 +2 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 5, Ocultismo 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Invisibilidade natural (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N1",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Flechas do sono / amnésia",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N2",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "natural",
+        "alvo": "asas"
+      }
+    ]
+  },
+  {
+    "id": "mon-fogo-fatuo",
+    "nome": "Fogo-fátuo",
+    "tipo": "elite",
+    "categoria": "Aberração",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "aberração Pequeno",
+    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "tags": [
+      "aberracao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 31,
+    "defesa": 30,
+    "defesaMental": 22,
+    "soak": {
+      "impacto": 5,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 0,
+      "destreza": 9,
+      "vigor": 2,
+      "influencia": 4,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 5,
+      "inteligencia": 4,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "2d6+2 +6",
+        "dano": "1d6 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 1
+      },
+      {
+        "id": "raio",
+        "nivel": 1
+      },
+      {
+        "id": "vento",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 5, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Invisibilidade natural (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N1",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Choque elétrico",
+        "tipo": "feiticaria",
+        "alvo": "Raio · N1",
+        "arte": "raio"
+      },
+      {
+        "efeito": "Pairar e voar",
+        "tipo": "feiticaria",
+        "alvo": "Vento · N3",
+        "arte": "vento"
+      }
+    ]
+  },
+  {
+    "id": "mon-medusa",
+    "nome": "Medusa",
+    "tipo": "elite",
+    "categoria": "Monstro",
+    "ameaca": 4,
+    "centelha": 2,
+    "conceito": "humanoide monstruoso Médio",
+    "descricao": "Aberração humanoide de lendas antigas.",
+    "tags": [
+      "monstro",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 14,
+    "defesaMental": 19,
+    "soak": {
+      "impacto": 7,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 2,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 4,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 3,
+      "inteligencia": 3,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "3d6+2 +4",
+        "dano": "1d6 +4 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "materia",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 3, Atirador 2, Manha 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Olhar petrificante (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N3",
+        "arte": "materia"
+      },
+      {
+        "efeito": "Cabelos-serpente",
+        "tipo": "natural",
+        "alvo": "veneno natural"
+      }
+    ]
+  },
+  {
+    "id": "mon-doppelganger",
+    "nome": "Doppelganger",
+    "tipo": "soldado",
+    "categoria": "Monstro",
+    "ameaca": 3,
+    "centelha": 2,
+    "conceito": "humanoide monstruoso Médio",
+    "descricao": "Aberração humanoide de lendas antigas.",
+    "tags": [
+      "monstro",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 37,
+    "defesa": 12,
+    "defesaMental": 19,
+    "soak": {
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 3,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 3,
+      "perspicacia": 3,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 3,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "3d6+2 +4",
+        "dano": "1d6 +6 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "materia",
+        "nivel": 2
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Manha 4, Empatia 3, Furtividade 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Mudar de forma (Su)",
+        "tipo": "proeza",
+        "alvo": "Camaleão / Máscara",
+        "caminho": "camaleao"
+      },
+      {
+        "efeito": "(alternativa mágica)",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N2",
+        "arte": "materia"
+      },
+      {
+        "efeito": "Ler pensamentos (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N1 / Empatia",
+        "arte": "adivinhacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-pegaso",
+    "nome": "Pégaso",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 3,
+    "centelha": 3,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 16,
+    "defesaMental": 20,
+    "soak": {
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 6,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 3,
+      "perspicacia": 3,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 2,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6 +6",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "adivinhacao",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3, Atletismo 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Detectar o bem e o mal (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N1",
+        "arte": "adivinhacao"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "natural",
+        "alvo": "asas"
+      }
+    ]
+  },
+  {
+    "id": "mon-unicornio",
+    "nome": "Unicórnio",
+    "tipo": "fera",
+    "categoria": "Besta mágica",
+    "ameaca": 3,
+    "centelha": 3,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 18,
+    "defesaMental": 28,
+    "soak": {
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 8",
+    "atributos": {
+      "forca": 6,
+      "destreza": 5,
+      "vigor": 6,
+      "influencia": 7,
+      "perspicacia": 5,
+      "compostura": 7,
+      "percepcao": 6,
+      "inteligencia": 2,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6 +6",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "imunidade"
+    ],
+    "artes": [
+      {
+        "id": "cura",
+        "nivel": 3
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Sobrevivência 4, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Cura pelo chifre (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Cura · N3",
+        "arte": "cura"
+      },
+      {
+        "efeito": "Teleporte",
+        "tipo": "feiticaria",
+        "alvo": "Conjuração · N2",
+        "arte": "conjuracao"
+      },
+      {
+        "efeito": "Imune a veneno e encanto",
+        "tipo": "proeza",
+        "alvo": "Sangue Imune · Imunidade (b7)",
+        "caminho": "sangue-imune"
+      }
+    ]
+  },
+  {
+    "id": "mon-ogro-mago-oni",
+    "nome": "Ogro Mago (Oni)",
+    "tipo": "chefe",
+    "categoria": "Exterior",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "exterior Grande",
+    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "tags": [
+      "exterior",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 18,
+    "defesaMental": 27,
+    "soak": {
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 7,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 4,
+      "inteligencia": 4,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Golpe planar",
+        "pool": "6d6 +8",
+        "dano": "2d6 +14 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "regeneracao"
+    ],
+    "artes": [
+      {
+        "id": "vento",
+        "nivel": 4
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 1
+      },
+      {
+        "id": "materia",
+        "nivel": 3
+      },
+      {
+        "id": "gelo",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 3, Manha 3, Persuasão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Regeneração (Su)",
+        "tipo": "proeza",
+        "alvo": "Cerne Vital · Regeneração (b9)",
+        "caminho": "cerne-vital"
+      },
+      {
+        "efeito": "Voo, invisibilidade, forma (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Vento · N5 + Fascinação · N1 + Matéria · N3",
+        "arte": "vento"
+      },
+      {
+        "efeito": "Cone de frio",
+        "tipo": "feiticaria",
+        "alvo": "Gelo · N2",
+        "arte": "gelo"
+      }
+    ]
+  },
+  {
+    "id": "mon-esfinge-ginosfinge",
+    "nome": "Esfinge (Ginosfinge)",
+    "tipo": "chefe",
+    "categoria": "Besta mágica",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "besta mágica Grande",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 18,
+    "defesaMental": 27,
+    "soak": {
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 7,
+      "destreza": 4,
+      "vigor": 6,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "6d6 +8",
+        "dano": "2d6 +14 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "forcas",
+        "nivel": 2
+      },
+      {
+        "id": "adivinhacao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Feitiços arcanos (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "várias · N3–N4"
+      },
+      {
+        "efeito": "Rugido (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Forças · N2 / Vento",
+        "arte": "forcas"
+      },
+      {
+        "efeito": "Ver o invisível",
+        "tipo": "feiticaria",
+        "alvo": "Adivinhação · N2",
+        "arte": "adivinhacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-naga-espirita",
+    "nome": "Naga Espírita",
+    "tipo": "chefe",
+    "categoria": "Aberração",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "aberração Grande",
+    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "tags": [
+      "aberracao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 16,
+    "defesaMental": 27,
+    "soak": {
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 6,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "5d6+2 +8",
+        "dano": "2d6 +12 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Olhar encantador (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N3",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Cuspe venenoso",
+        "tipo": "natural",
+        "alvo": "natural"
+      },
+      {
+        "efeito": "Feitiços",
+        "tipo": "feiticaria",
+        "alvo": "várias · N3"
+      }
+    ]
+  },
+  {
+    "id": "mon-behir",
+    "nome": "Behir",
+    "tipo": "chefe",
+    "categoria": "Besta mágica",
+    "ameaca": 5,
+    "centelha": 1,
+    "conceito": "besta mágica Enorme",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 49,
+    "defesa": 10,
+    "defesaMental": 14,
+    "soak": {
+      "impacto": 9,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 10,
+      "destreza": 3,
+      "vigor": 8,
+      "influencia": 3,
+      "perspicacia": 2,
+      "compostura": 3,
+      "percepcao": 4,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "7d6+2 +2",
+        "dano": "3d6 +20 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "raio",
+        "nivel": 1
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 3, Prontidão 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro elétrico (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Raio · N3",
+        "arte": "raio"
+      },
+      {
+        "efeito": "Engolir inteiro (Ex)",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
+        "caminho": "agarrao-do-urso"
+      }
+    ]
+  },
+  {
+    "id": "mon-lamia",
+    "nome": "Lâmia",
+    "tipo": "elite",
+    "categoria": "Monstro",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "humanoide monstruoso Grande",
+    "descricao": "Aberração humanoide de lendas antigas.",
+    "tags": [
+      "monstro",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 22,
+    "defesaMental": 24,
+    "soak": {
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 8",
+    "atributos": {
+      "forca": 6,
+      "destreza": 6,
+      "vigor": 6,
+      "influencia": 5,
+      "perspicacia": 4,
+      "compostura": 5,
+      "percepcao": 6,
+      "inteligencia": 3,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "5d6+2 +6",
+        "dano": "2d6 +12 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 2
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Manha 4, Furtividade 3, Ocultismo 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Dreno de Sabedoria (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Ilusões (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N3",
+        "arte": "fascinacao"
+      }
+    ]
+  },
+  {
+    "id": "mon-bruxa-verde-hag",
+    "nome": "Bruxa Verde (Hag)",
+    "tipo": "elite",
+    "categoria": "Monstro",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "humanoide monstruoso Médio",
+    "descricao": "Aberração humanoide de lendas antigas.",
+    "tags": [
+      "monstro",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 14,
+    "defesaMental": 22,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 6,
+      "destreza": 3,
+      "vigor": 5,
+      "influencia": 4,
+      "perspicacia": 4,
+      "compostura": 4,
+      "percepcao": 3,
+      "inteligencia": 3,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "5d6+2 +6",
+        "dano": "1d6 +12 corte",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "morte",
+        "nivel": 2
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 3, Manha 3, Furtividade 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Fraqueza mística (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N2",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Mímica e ilusão (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N2",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Feitiços",
+        "tipo": "feiticaria",
+        "alvo": "várias · N3"
+      }
+    ]
+  },
+  {
+    "id": "mon-kraken",
+    "nome": "Kraken",
+    "tipo": "chefe",
+    "categoria": "Besta mágica",
+    "ameaca": 6,
+    "centelha": 6,
+    "conceito": "besta mágica Colossal",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 64,
+    "defesa": 16,
+    "defesaMental": 35,
+    "soak": {
+      "impacto": 19,
+      "corte": 12,
+      "perfuracao": 12
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 9",
+    "atributos": {
+      "forca": 14,
+      "destreza": 2,
+      "vigor": 13,
+      "influencia": 6,
+      "perspicacia": 6,
+      "compostura": 6,
+      "percepcao": 6,
+      "inteligencia": 6,
+      "raciocinio": 6
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "9d6+2 +12",
+        "dano": "4d6 +28 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [
+      "abraco-do-tita"
+    ],
+    "artes": [
+      {
+        "id": "agua",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Constrição e afundar (Ex)",
+        "tipo": "proeza",
+        "alvo": "Agarrão do Urso · Abraço do Titã (b14)",
+        "caminho": "agarrao-do-urso"
+      },
+      {
+        "efeito": "Tinta e tempestade (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Água · N4",
+        "arte": "agua"
+      },
+      {
+        "efeito": "Feitiços",
+        "tipo": "feiticaria",
+        "alvo": "várias · N4"
+      }
+    ]
+  },
+  {
+    "id": "mon-tarrasque",
+    "nome": "Tarrasque",
+    "tipo": "chefe",
+    "categoria": "Besta mágica",
+    "ameaca": 6,
+    "centelha": 7,
+    "conceito": "besta mágica Colossal",
+    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "tags": [
+      "besta-magica",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 67,
+    "defesa": 18,
+    "defesaMental": 34,
+    "soak": {
+      "impacto": 21,
+      "corte": 14,
+      "perfuracao": 14
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 16,
+      "destreza": 2,
+      "vigor": 14,
+      "influencia": 4,
+      "perspicacia": 2,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e presas",
+        "pool": "10d6+2 +14",
+        "dano": "4d6 +32 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [
+      "imortalidade-tenue"
+    ],
+    "artes": [
+      {
+        "id": "protecao",
+        "nivel": 4
+      },
+      {
+        "id": "morte",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 4. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Carapaça reflete magia (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Proteção · N4",
+        "arte": "protecao"
+      },
+      {
+        "efeito": "Regeneração implacável (Su)",
+        "tipo": "proeza",
+        "alvo": "Cerne Vital · Imortalidade Tênue (b15)",
+        "caminho": "cerne-vital"
+      },
+      {
+        "efeito": "Bramido de pânico (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3 / Lenda Viva · Ícone (b15)",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-filhote-de-dragao-vermelho",
+    "nome": "Filhote de Dragão Vermelho",
+    "tipo": "elite",
+    "categoria": "Dragão",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "dragão Médio",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 40,
+    "defesa": 10,
+    "defesaMental": 22,
+    "soak": {
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 6,
+      "destreza": 2,
+      "vigor": 5,
+      "influencia": 3,
+      "perspicacia": 3,
+      "compostura": 4,
+      "percepcao": 4,
+      "inteligencia": 3,
+      "raciocinio": 4
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "5d6+2 +6",
+        "dano": "1d6 +12 perfConc",
+        "ticks": 5
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 2
+      },
+      {
+        "id": "morte",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3, Atletismo 2, Manha 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro de fogo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N2",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Presença medonha",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-dragao-vermelho-jovem",
+    "nome": "Dragão Vermelho Jovem",
+    "tipo": "chefe",
+    "categoria": "Dragão",
+    "ameaca": 5,
+    "centelha": 4,
+    "conceito": "dragão Grande",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 16,
+    "defesaMental": 23,
+    "soak": {
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 9,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 3,
+      "perspicacia": 3,
+      "compostura": 3,
+      "percepcao": 3,
+      "inteligencia": 3,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "7d6 +8",
+        "dano": "2d6 +18 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [
+      "temor-reverente"
+    ],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro de fogo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N3",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Presença aterradora",
+        "tipo": "proeza",
+        "alvo": "Lenda Viva · Temor Reverente (b5)",
+        "caminho": "lenda-viva"
+      },
+      {
+        "efeito": "Feitiços iniciais",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N2",
+        "arte": "fogo"
+      }
+    ]
+  },
+  {
+    "id": "mon-dragao-vermelho-adulto",
+    "nome": "Dragão Vermelho Adulto",
+    "tipo": "chefe",
+    "categoria": "Dragão",
+    "ameaca": 6,
+    "centelha": 5,
+    "conceito": "dragão Enorme",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 52,
+    "defesa": 14,
+    "defesaMental": 30,
+    "soak": {
+      "impacto": 14,
+      "corte": 9,
+      "perfuracao": 9
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 11,
+      "destreza": 2,
+      "vigor": 9,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "8d6 +10",
+        "dano": "3d6 +22 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 4
+      },
+      {
+        "id": "morte",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro de fogo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N4",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Aura de fogo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N4 / Proteção",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Presença aterradora",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Feitiços de feiticeiro",
+        "tipo": "feiticaria",
+        "alvo": "várias · N3"
+      }
+    ]
+  },
+  {
+    "id": "mon-dragao-vermelho-anciao",
+    "nome": "Dragão Vermelho Ancião",
+    "tipo": "chefe",
+    "categoria": "Dragão",
+    "ameaca": 6,
+    "centelha": 6,
+    "conceito": "dragão Imenso",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 58,
+    "defesa": 16,
+    "defesaMental": 35,
+    "soak": {
+      "impacto": 17,
+      "corte": 11,
+      "perfuracao": 11
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 9",
+    "atributos": {
+      "forca": 14,
+      "destreza": 2,
+      "vigor": 11,
+      "influencia": 6,
+      "perspicacia": 6,
+      "compostura": 6,
+      "percepcao": 6,
+      "inteligencia": 6,
+      "raciocinio": 6
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "9d6+2 +12",
+        "dano": "3d6 +28 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 5
+      },
+      {
+        "id": "morte",
+        "nivel": 4
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 4
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 5, Ocultismo 5, Persuasão 5, Conhecimentos 4. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro de fogo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N5",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Presença que paralisa",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N4 / Fascinação · N4",
+        "arte": "morte"
+      },
+      {
+        "efeito": "Feitiços",
+        "tipo": "feiticaria",
+        "alvo": "várias · N4–N5"
+      },
+      {
+        "efeito": "Voo",
+        "tipo": "natural",
+        "alvo": "asas"
+      }
+    ]
+  },
+  {
+    "id": "mon-grande-wyrm-vermelho",
+    "nome": "Grande Wyrm Vermelho",
+    "tipo": "chefe",
+    "categoria": "Dragão",
+    "ameaca": 6,
+    "centelha": 8,
+    "conceito": "dragão Colossal",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 67,
+    "defesa": 20,
+    "defesaMental": 42,
+    "soak": {
+      "impacto": 22,
+      "corte": 15,
+      "perfuracao": 15
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 11",
+    "atributos": {
+      "forca": 16,
+      "destreza": 2,
+      "vigor": 14,
+      "influencia": 7,
+      "perspicacia": 7,
+      "compostura": 7,
+      "percepcao": 8,
+      "inteligencia": 7,
+      "raciocinio": 7
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "10d6+2 +16",
+        "dano": "4d6 +32 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 5
+      },
+      {
+        "id": "tempo",
+        "nivel": 4
+      },
+      {
+        "id": "morte",
+        "nivel": 5
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 6, Ocultismo 6, Persuasão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro cataclísmico",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N5",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Dobrar o tempo",
+        "tipo": "feiticaria",
+        "alvo": "Tempo · N4",
+        "arte": "tempo"
+      },
+      {
+        "efeito": "Feitiços supremos",
+        "tipo": "feiticaria",
+        "alvo": "várias · N5"
+      },
+      {
+        "efeito": "Presença divina",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N5 + Lenda Viva · Ícone (b15)",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-dragao-branco-jovem",
+    "nome": "Dragão Branco Jovem",
+    "tipo": "elite",
+    "categoria": "Dragão",
+    "ameaca": 4,
+    "centelha": 3,
+    "conceito": "dragão Grande",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 43,
+    "defesa": 10,
+    "defesaMental": 18,
+    "soak": {
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 7,
+      "destreza": 2,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "6d6 +6",
+        "dano": "2d6 +14 perfConc",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "gelo",
+        "nivel": 3
+      },
+      {
+        "id": "morte",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Prontidão 3, Furtividade 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro de frio (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Gelo · N3",
+        "arte": "gelo"
+      },
+      {
+        "efeito": "Andar no gelo e nevasca",
+        "tipo": "feiticaria",
+        "alvo": "Gelo · N2",
+        "arte": "gelo"
+      },
+      {
+        "efeito": "Presença",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-dragao-azul-adulto",
+    "nome": "Dragão Azul Adulto",
+    "tipo": "chefe",
+    "categoria": "Dragão",
+    "ameaca": 5,
+    "centelha": 5,
+    "conceito": "dragão Enorme",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 52,
+    "defesa": 14,
+    "defesaMental": 30,
+    "soak": {
+      "impacto": 14,
+      "corte": 9,
+      "perfuracao": 9
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 11,
+      "destreza": 2,
+      "vigor": 9,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "8d6 +10",
+        "dano": "3d6 +22 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "raio",
+        "nivel": 4
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      },
+      {
+        "id": "morte",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Furtividade 4, Prontidão 4, Manha 4.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro elétrico (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Raio · N4",
+        "arte": "raio"
+      },
+      {
+        "efeito": "Miragem no deserto (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N3",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Presença",
+        "tipo": "feiticaria",
+        "alvo": "Morte · N3",
+        "arte": "morte"
+      }
+    ]
+  },
+  {
+    "id": "mon-dragao-verde-adulto",
+    "nome": "Dragão Verde Adulto",
+    "tipo": "chefe",
+    "categoria": "Dragão",
+    "ameaca": 5,
+    "centelha": 5,
+    "conceito": "dragão Enorme",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 49,
+    "defesa": 18,
+    "defesaMental": 30,
+    "soak": {
+      "impacto": 13,
+      "corte": 9,
+      "perfuracao": 9
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 10,
+      "destreza": 3,
+      "vigor": 8,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5,
+      "percepcao": 5,
+      "inteligencia": 5,
+      "raciocinio": 5
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "7d6+2 +10",
+        "dano": "3d6 +20 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "agua",
+        "nivel": 3
+      },
+      {
+        "id": "vida",
+        "nivel": 2
+      }
+    ],
+    "notas": "Perícias notáveis: Manha 4, Persuasão 4, Furtividade 3.",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro de gás (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Água · N3 / Morte (veneno)",
+        "arte": "agua"
+      },
+      {
+        "efeito": "Enredar (Sp)",
+        "tipo": "feiticaria",
+        "alvo": "Vida · N2",
+        "arte": "vida"
+      },
+      {
+        "efeito": "Manipular",
+        "tipo": "proeza",
+        "alvo": "Serpente das Palavras",
+        "caminho": "serpente-das-palavras"
+      }
+    ]
+  },
+  {
+    "id": "mon-dragao-dourado-adulto",
+    "nome": "Dragão Dourado Adulto",
+    "tipo": "chefe",
+    "categoria": "Dragão",
+    "ameaca": 6,
+    "centelha": 6,
+    "conceito": "dragão Enorme (metálico)",
+    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "tags": [
+      "dragao",
+      "centelha",
+      "mágico"
+    ],
+    "pv": 55,
+    "defesa": 16,
+    "defesaMental": 37,
+    "soak": {
+      "impacto": 16,
+      "corte": 11,
+      "perfuracao": 11
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 10",
+    "atributos": {
+      "forca": 12,
+      "destreza": 2,
+      "vigor": 10,
+      "influencia": 7,
+      "perspicacia": 7,
+      "compostura": 7,
+      "percepcao": 6,
+      "inteligencia": 7,
+      "raciocinio": 7
+    },
+    "ataques": [
+      {
+        "nome": "Garras e mordida",
+        "pool": "8d6+2 +12",
+        "dano": "3d6 +24 perfConc",
+        "ticks": 7
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fogo",
+        "nivel": 4
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      },
+      {
+        "id": "protecao",
+        "nivel": 4
+      },
+      {
+        "id": "materia",
+        "nivel": 3
+      }
+    ],
+    "notas": "Perícias notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
+    "pendente": true,
+    "poderes": [
+      {
+        "efeito": "Sopro de fogo (Su)",
+        "tipo": "feiticaria",
+        "alvo": "Fogo · N4",
+        "arte": "fogo"
+      },
+      {
+        "efeito": "Sopro debilitante",
+        "tipo": "feiticaria",
+        "alvo": "Fascinação · N3",
+        "arte": "fascinacao"
+      },
+      {
+        "efeito": "Feitiços divinos",
+        "tipo": "feiticaria",
+        "alvo": "Cura / Proteção · N4",
+        "arte": "protecao"
+      },
+      {
+        "efeito": "Mudar de forma",
+        "tipo": "feiticaria",
+        "alvo": "Matéria · N3",
+        "arte": "materia"
+      }
+    ]
   }
 ]
