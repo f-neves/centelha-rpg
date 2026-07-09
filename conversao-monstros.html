@@ -19,7 +19,7 @@
     --border:#333a47; --ink:#e9e5d7; --ink-soft:#afa994;
     --accent:#3fc9c2; --accent-strong:#8fe3dd; --accent-soft:#4fb3ac;
     --gold:#d9b85f; --rule:#39414f; --shadow:rgba(0,0,0,.4);
-    --dnd:#d8956f; --cent:#8fe3dd;
+    --dnd:#d8956f; --cent:#e38f8f;
   }
 }
 *{box-sizing:border-box}
@@ -99,6 +99,21 @@ details.method{margin:10px 0}
 details.method summary{cursor:pointer; font-weight:600; color:var(--accent-soft)}
 .pill{display:inline-block; font-size:.72rem; padding:2px 8px; border-radius:12px;
   background:var(--bg-soft); border:1px solid var(--border); margin:0 3px 3px 0}
+/* cartões de poder (seção 10) */
+.pcards{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:12px}
+.pcard{background:var(--panel); border:1px solid var(--border); border-radius:10px;
+  padding:12px 15px; box-shadow:0 2px 6px var(--shadow)}
+.pcard h4{margin:0 0 4px; color:var(--accent-strong); font-size:1.02rem}
+.pcard .meta{font-size:.76rem; color:var(--ink-soft); margin-bottom:8px}
+.pw{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; margin:5px 0; font-size:.9rem; line-height:1.4}
+.pw .ef{color:var(--ink); font-weight:600}
+.pw .arrow{color:var(--ink-soft)}
+.tgt{display:inline-block; font-size:.78rem; padding:2px 9px; border-radius:12px; font-weight:600}
+.tgt-p{background:var(--accent-soft); color:#04231f}
+.tgt-a{background:var(--gold); color:#2a2010}
+.tgt-n{background:var(--bg-soft); color:var(--ink-soft); border:1px solid var(--border)}
+td .grp-cent{background:transparent !important; color:inherit !important}
+th.grp-cent{color:#04231f !important}
 </style>
 </head>
 <body>
@@ -121,6 +136,8 @@ details.method summary{cursor:pointer; font-weight:600; color:var(--accent-soft)
     <a href="#centelha">6 · A escada de Centelha</a>
     <a href="#exemplos">7 · Exemplos passo a passo</a>
     <a href="#tabela">8 · Tabela: 122 monstros</a>
+    <a href="#poderes-metodo">9 · Efeitos mágicos → Proezas &amp; Feitiçarias</a>
+    <a href="#poderes-lista">10 · Poderes criatura por criatura</a>
   </nav>
 </div>
 
@@ -268,6 +285,37 @@ details.method summary{cursor:pointer; font-weight:600; color:var(--accent-soft)
 <tbody id="rows"></tbody>
 </table>
 </div>
+
+<h2 id="poderes-metodo">9 · Efeitos mágicos → Proezas &amp; Feitiçarias</h2>
+<p>Stats só dão o corpo do monstro. O que o torna <i>aquele</i> monstro são os <b>poderes especiais</b>: o sopro do dragão, o olhar da medusa, o dreno do espectro. No Centelha eles viram <b>Proezas</b> (Técnicas de um Caminho, ligadas a um atributo) ou <b>Feitiçarias</b> (Artes do Arcano). A regra de bolso vem do próprio rótulo do D&amp;D:</p>
+<div class="scroll"><table class="ref-mini" style="max-width:100%">
+<thead><tr><th>Rótulo D&amp;D/PF</th><th>Vira</th><th>Porquê</th></tr></thead>
+<tbody>
+<tr><td><b>Extraordinário (Ex)</b></td><td class="centcol">Proeza</td><td>força física/treino: agarrar, bote, faro, pele dura, imunidade natural</td></tr>
+<tr><td><b>Sobrenatural (Su)</b> que muda o próprio corpo</td><td class="centcol">Proeza de Vigor</td><td>regeneração, incorpóreo-como-estado, resistência mística vira Técnica do corpo</td></tr>
+<tr><td><b>Sobrenatural (Su)</b> que projeta efeito</td><td class="big">Feitiçaria</td><td>sopro, olhar, dreno, aura: efeito mágico externo = Arte</td></tr>
+<tr><td><b>Similar a magia (Sp)</b> / conjuração</td><td class="big">Feitiçaria</td><td>as Artes espelham a lista de magias da criatura</td></tr>
+</tbody></table></div>
+<div class="note"><b>Nível/banda do poder:</b> a <b>Arte</b> vai do nível <b>N1</b> (truque) ao <b>N5</b> (cataclismo), limitada a <code>min(Centelha, Ocultismo)</code> da criatura; escale pela idade/CR (dragão adulto ≈ N4, ancião ≈ N5). A <b>Proeza</b> segue as bandas do Caminho, com o <b>portão de Centelha</b> (banda B exige Centelha ≥ ⌈B/3⌉): um bicho de Centelha 2 alcança até a banda 6; Centelha 4, até a 12.</div>
+
+<h3>Tabela-mestre: arquétipos de poder → Centelha</h3>
+<div class="scroll"><table style="max-width:100%">
+<thead><tr><th>Efeito do monstro</th><th>Rótulo</th><th class="grp-cent">Proeza (Caminho · Técnica)</th><th class="grp-cent">Feitiçaria (Arte · nível)</th></tr></thead>
+<tbody id="master"></tbody>
+</table></div>
+
+<h2 id="poderes-lista">10 · Poderes traduzidos, criatura por criatura</h2>
+<p>Primeira passada: cada criatura sobrenatural com seus poderes já mapeados em Proezas (<span class="magic-yes">teal</span>) e Feitiçarias (<span class="big">ouro</span>). O que é natural/Ex aparece em cinza. É o esqueleto que vamos usar para preencher <code>tecnicas</code>/<code>artes</code> ao alimentar o <b>/bestiário</b>.</p>
+<div class="controls">
+  <input id="pq" type="search" placeholder="Filtrar poderes por criatura ou efeito… (ex.: sopro, dreno, dragão)">
+  <span class="count" id="pcount"></span>
+</div>
+<div class="legend">
+  <span><span class="sw" style="background:var(--accent-soft)"></span> Proeza (Caminho)</span>
+  <span><span class="sw" style="background:var(--gold)"></span> Feitiçaria (Arte)</span>
+  <span><span class="sw" style="background:var(--ink-soft)"></span> Natural / Ex</span>
+</div>
+<div id="powers"></div>
 
 <footer>
   Oficina de Conversão · Centelha RPG. Valores de origem seguem os stat blocks do <i>Pathfinder Bestiary 1</i> e do <i>Livro dos Monstros 3.5</i>.
@@ -537,6 +585,167 @@ function worked(){
   document.getElementById('worked').innerHTML = html;
 }
 
+/* ===================== TABELA-MESTRE DE ARQUÉTIPOS ===================== */
+const MASTER = [
+ {ef:"Sopro elemental (fogo/frio/ácido/raio)",tag:"Su",p:"",a:"<b>Arte do elemento</b> · N2–N5 (pela idade)"},
+ {ef:"Sopro que petrifica (górgona)",tag:"Su",p:"",a:"<b>Matéria</b> · N4 (carne → pedra)"},
+ {ef:"Olhar petrificante (basilisco, medusa)",tag:"Su",p:"",a:"<b>Matéria</b> · N3–N4 (olhar sustentado)"},
+ {ef:"Dreno de nível/energia (espectro, vampiro)",tag:"Su",p:"",a:"<b>Morte</b> · N2–N3 (dreno + cura você)"},
+ {ef:"Dreno de atributo (sombra, wraith)",tag:"Su",p:"",a:"<b>Morte</b> · N1–N2"},
+ {ef:"Paralisia (ghoul, ghast)",tag:"Su",p:"",a:"<b>Morte</b> · N2 ou <b>Fascinação</b> · N3"},
+ {ef:"Doença e podridão (múmia)",tag:"Su",p:"",a:"<b>Morte</b> · N2 (adoece) + Vida"},
+ {ef:"Aura de medo / presença aterradora",tag:"Su",p:"Lenda Viva · <i>Temor Reverente</i> (b5)",a:"<b>Morte</b> · N3 (aura de medo)"},
+ {ef:"Encantar / dominar (mágico)",tag:"Sp",p:"Marionete · <i>Compulsão</i> (b4)",a:"<b>Fascinação</b> · N2–N4"},
+ {ef:"Canção / beleza cativante (harpia, ninfa)",tag:"Su",p:"Beleza Cativante · <i>Olhar Cativante</i> (b5)",a:"<b>Fascinação</b> · N2"},
+ {ef:"Regeneração / cura acelerada (trol)",tag:"Su",p:"Cerne Vital · <i>Regeneração</i> (b9)",a:"Vida / Cura · N2"},
+ {ef:"Redução de dano / pele pétrea",tag:"Ex/Su",p:"Pele de Pedra · <i>Pele de Pedra</i> (b4) → <i>Inquebrantável</i> (b8)",a:""},
+ {ef:"Imunidades naturais (fogo, veneno, doença)",tag:"Ex",p:"Sangue Imune · <i>Imunidade</i> (b7)",a:""},
+ {ef:"Incorpóreo (fantasma, espectro)",tag:"Su",p:"Sombra · <i>Manto de Sombras</i> (b5)",a:"<b>Espírito</b> · N2–N3 (forma incorpórea)"},
+ {ef:"Invisibilidade natural (fogo-fátuo, imp)",tag:"Su",p:"Sombra · <i>Andar entre Olhares</i> (b8)",a:"<b>Fascinação</b> · N1 (véu)"},
+ {ef:"Mudar de forma (doppelganger, oni)",tag:"Su",p:"Camaleão / Máscara (disfarce mundano)",a:"<b>Matéria</b> · N2–N3 (própria forma)"},
+ {ef:"Voo mágico (sem asas)",tag:"Su",p:"",a:"<b>Vento</b> · N3 (planar) → N5 (voar)"},
+ {ef:"Teletransporte (diabos, erínia)",tag:"Sp",p:"",a:"<b>Conjuração</b> · N2–N5 / Espírito (planar)"},
+ {ef:"Convocar aliados (demônios)",tag:"Sp",p:"",a:"<b>Espírito</b> · N4 / Conjuração"},
+ {ef:"Feitiços de conjurador (lich, dragão, naga)",tag:"Sp",p:"",a:"As <b>Artes</b> que espelham a lista de magias"},
+ {ef:"Resistência à magia",tag:"Su",p:"Sangue Imune · <i>Corpo Inóspito</i> (b10)",a:"<b>Proteção</b> · N1–N2 (ward)"},
+ {ef:"Agarrar / constringir / engolir",tag:"Ex",p:"Agarrão do Urso · <i>Imobilizar</i> (b2) → <i>Aperto Esmagador</i> (b10)",a:""},
+ {ef:"Bote / investida (pounce, rake)",tag:"Ex",p:"Sangue Fervente · <i>Investida Furiosa</i> (b5) / Vento",a:""},
+ {ef:"Pisoteio / derrubar (trample)",tag:"Ex",p:"Quebra-Muralhas · <i>Demolidor</i> (b1) → <i>Esmaga-Pedra</i> (b8)",a:""},
+ {ef:"Sentidos aguçados (faro, visão cega)",tag:"Ex",p:"Caçador · <i>Faro</i> (b2) / Olho Aguçado / Sentinela",a:""},
+ {ef:"Corrói metal (monstro da ferrugem)",tag:"Su",p:"",a:"<b>Matéria</b> · N2 (converte / corrói)"},
+ {ef:"Veneno / teia (natural)",tag:"Ex",p:"ataque natural (tag da arma)",a:"se mágico → Morte / Conjuração · N1"},
+ {ef:"Olhar / toque da morte (bodak)",tag:"Su",p:"",a:"<b>Morte</b> · N5 (ceifa a vida)"},
+ {ef:"Ler mente / detectar (telepatia, detect)",tag:"Su/Sp",p:"Leitura Fria / Comunhão / Olho da Verdade",a:"<b>Adivinhação</b> · N1–N2"},
+ {ef:"Parar / dobrar o tempo (blink, dragão antigo)",tag:"Sp",p:"Reflexo Mental",a:"<b>Tempo</b> · N2–N5"},
+];
+function renderMaster(){
+  document.getElementById('master').innerHTML = MASTER.map(r=>
+    '<tr><td><b>'+r.ef+'</b></td><td class="c">'+r.tag+'</td>'
+    +'<td>'+(r.p?('<span class="tgt tgt-p" style="white-space:normal">'+r.p+'</span>'):'<span class="sk">—</span>')+'</td>'
+    +'<td>'+(r.a?('<span class="tgt tgt-a" style="white-space:normal">'+r.a+'</span>'):'<span class="sk">—</span>')+'</td></tr>'
+  ).join('');
+}
+
+/* ===================== PODERES POR CRIATURA (1ª passada) ===================== */
+/* [efeito, tipo(p=Proeza|a=Arte|n=natural/Ex), alvo] */
+const PODERES = {
+"Lobo":[["Faro e caça em matilha","p","Caçador · Faro (b2)"]],
+"Leão":[["Bote (pounce)","p","Sangue Fervente · Investida Furiosa (b5)"],["Emboscar","p","Sombra · Esgueirar (b3)"]],
+"Elefante":[["Pisoteio","p","Quebra-Muralhas · Demolidor (b1)"],["Agarrar com a tromba","p","Agarrão do Urso · Imobilizar (b2)"]],
+"Cobra Constritora":[["Constrição","p","Agarrão do Urso · Aperto Esmagador (b10)"]],
+"Escorpião Gigante":[["Ferrão venenoso","n","veneno natural (tag da arma)"]],
+"Aranha Gigante":[["Teia","n","natural (Ex)"],["Mordida venenosa","n","veneno natural"]],
+"Trol":[["Regeneração","p","Cerne Vital · Regeneração (b9)"]],
+"Gigante do Fogo":[["Imune a fogo","p","Sangue Imune · Imunidade (b7)"],["Arremessar rocha","p","Atlas / Quebra-Muralhas"]],
+"Gigante das Nuvens":[["Névoa e poderes do ar (Sp)","a","Vento · N2"],["Arremessar rocha","p","Atlas"]],
+"Gigante da Tempestade":[["Comandar o clima","a","Vento · N5 + Raio · N4"],["Ver e ouvir à distância","a","Adivinhação · N2"]],
+"Ciclope":[["Lampejo de premonição (Su)","a","Fortuna · N1 / Adivinhação"]],
+"Águia Gigante":[["Visão aguçada","p","Olho Aguçado · Sentidos Apurados (b1)"],["Voo","n","asas (natural)"]],
+"Corujurso":[["Abraço (agarrar)","p","Agarrão do Urso · Imobilizar (b2)"]],
+"Minotauro":[["Faro no labirinto (Su)","p","Caçador · Faro (b2)"],["Investida chifruda","p","Sangue Fervente · Investida Furiosa (b5)"]],
+"Harpia":[["Canção cativante (Su)","p","Beleza Cativante · Olhar Cativante (b5)"],["(alternativa mágica)","a","Fascinação · N2"]],
+"Gárgula":[["Pele de pedra / RD","p","Pele de Pedra · Pele de Pedra (b4)"],["Imobilidade (freeze)","p","Máscara / Sombra"]],
+"Mantícora":[["Espinhos de cauda","n","ataque natural (Atirador)"],["Voo","n","asas (natural)"]],
+"Quimera":[["Sopro dracônico","a","Fogo · N2"],["Voo","n","asas (natural)"]],
+"Wyvern":[["Ferrão venenoso","n","veneno natural"],["Voo","n","asas (natural)"]],
+"Hidra (5 cabeças)":[["Cabeças que rebrotam (Su)","p","Cerne Vital · Regeneração (b9)"]],
+"Basilisco":[["Olhar petrificante (Su)","a","Matéria · N3 (carne → pedra)"]],
+"Cocatriz":[["Toque que petrifica (Su)","a","Matéria · N3"]],
+"Górgona (touro de ferro)":[["Sopro petrificante (Su)","a","Matéria · N4"]],
+"Besta Deslocadora":[["Deslocamento (Su)","a","Fascinação · N1 (ilusão) / Proteção"],["Tentáculos","p","Agarrão do Urso · Imobilizar (b2)"]],
+"Aranha das Fases":[["Salto etéreo (Su)","a","Espírito · N2 / Conjuração"]],
+"Monstro da Ferrugem":[["Corrói metal (Su)","a","Matéria · N2"]],
+"Mímico":[["Assumir forma de objeto (Su)","p","Camaleão"],["Cola aderente","n","natural (Ex)"]],
+"Montão Tropeçante":[["Absorve raio (Su)","p","Sangue Imune (raio)"],["Constrição","p","Agarrão do Urso"]],
+"Treant":[["Animar árvores (Su)","a","Vida · N2"],["Casca / RD","p","Pele de Pedra · Pele de Pedra (b4)"]],
+"Aboleth":[["Muco que transforma pele (Su)","a","Matéria · N3 + Água · N3"],["Domínio psíquico","a","Fascinação · N4"],["Telepatia","a","Adivinhação · N2"]],
+"Ghoul":[["Paralisia (Su)","a","Morte · N2"],["Faro do carniçal","p","Caçador · Faro (b2)"]],
+"Ghast":[["Paralisia e fedor (Su)","a","Morte · N2 + Vento (fedor)"]],
+"Sombra":[["Dreno de Força (Su)","a","Morte · N1"],["Incorpóreo","a","Espírito · N2 / Sombra · Manto de Sombras (b5)"]],
+"Wight":[["Dreno de energia (Su)","a","Morte · N2"]],
+"Assombração (Wraith)":[["Dreno de Constituição (Su)","a","Morte · N2"],["Incorpóreo","a","Espírito · N3"]],
+"Espectro":[["Dreno de nível (Su)","a","Morte · N3"],["Voo e incorpóreo","a","Espírito · N3"]],
+"Múmia":[["Podridão da múmia (Su)","a","Morte · N2"],["Aura de desespero (Su)","a","Morte · N3 (medo) / Lenda Viva · Temor Reverente (b5)"]],
+"Bodak":[["Olhar mortal (Su)","a","Morte · N5"]],
+"Vampiro":[["Dominar (Sp)","a","Fascinação · N3"],["Forma gasosa","a","Espírito / Vento · N3"],["Filhos da noite (convoca)","a","Espírito · N2"],["Regeneração","p","Cerne Vital · Regeneração (b9)"],["Dreno de sangue","a","Morte · N1"]],
+"Lich":[["Feitiços de mago (Sp)","a","Fogo / Gelo / Morte / Proteção · N3–N5"],["Toque paralisante (Su)","a","Morte · N2"],["Aura de medo (Su)","a","Morte · N3"]],
+"Dretch":[["Fedor e telepatia (Sp)","a","Vento · N2 (fedor) + Fascinação · N1"]],
+"Quasit":[["Invisibilidade e susto (Sp)","a","Fascinação · N1"],["Adivinhação","a","Adivinhação · N1"],["Forma alternativa","a","Matéria · N2"]],
+"Súcubo":[["Beijo dreno e enfeitiçar (Sp)","a","Fascinação · N4"],["Sedução","p","Beleza Cativante · Encanto Irresistível (b4)"],["Mudar de forma","a","Matéria · N2"],["Teleporte","a","Conjuração · N4"]],
+"Vrock":[["Esporos e dança da ruína (Su)","a","Vida (esporos) + Morte · N3"],["Convocar demônios (Sp)","a","Espírito · N4"]],
+"Hezrou":[["Fedor nauseante (Su)","a","Vento · N2 / Morte"],["Convocar (Sp)","a","Espírito · N4"]],
+"Glabrezu":[["Realizar desejo traiçoeiro (Sp)","a","Fortuna · N4 / Fascinação"],["Feitiços","a","várias · N3–N4"],["Teleporte","a","Conjuração · N4"]],
+"Marilith":[["Seis lâminas (Ex)","p","Dança da Lâmina + Mão Veloz"],["Constrição","p","Agarrão do Urso · Aperto Esmagador (b10)"],["Feitiços (Sp)","a","várias · N3"]],
+"Balor":[["Espada e chicote flamejantes","a","Fogo · N4"],["Aura de fogo (Su)","a","Fogo · N4 / Proteção"],["Morte explosiva","a","Fogo · N5"],["Comandar legiões","p","Comando / Estandarte"],["Teleporte","a","Conjuração · N4"]],
+"Lêmure":[["Regeneração fraca (Ex)","p","Cerne Vital · Recuperação Acelerada (b1)"]],
+"Diabrete (Imp)":[["Invisibilidade (Sp)","a","Fascinação · N1"],["Adivinhação","a","Adivinhação · N1"],["Forma alternativa","a","Matéria · N2"],["Ferrão venenoso","n","natural"]],
+"Diabo Barbado":[["Doença infernal (Su)","a","Morte · N2"],["Teleporte","a","Conjuração · N3"],["Trava a ferida (Ex)","n","natural"]],
+"Erínia":[["Corda de comando (Sp)","a","Fascinação · N2 / Forças"],["Teleporte","a","Conjuração · N4"],["Arco certeiro","p","Olho de Águia / Atirador"],["Voo","n","asas"]],
+"Diabo Ósseo":[["Ferrão que enfraquece (Su)","a","Morte · N2"],["Parede de gelo (Sp)","a","Gelo · N2"],["Invisibilidade","a","Fascinação · N1"]],
+"Diabo de Gelo":[["Aura de frio (Su)","a","Gelo · N3"],["Lança e muralha de gelo","a","Gelo · N2–N3"],["Feitiços","a","Gelo / Proteção · N3–N4"]],
+"Rakshasa":[["Ilusões e ler pensamentos (Sp)","a","Fascinação · N4 + Adivinhação · N2"],["Mudar de forma","a","Matéria · N3"],["Só arma benta fere (RM)","a","Proteção · N4"]],
+"Diabo do Fosso (Pit Fiend)":[["Aura de medo (Su)","a","Morte · N3 / Lenda Viva"],["Feitiços e desejo","a","várias · N4–N5"],["Convocar diabos","a","Espírito · N4"],["Labareda","a","Fogo · N4"],["Doença (Su)","a","Morte · N3"]],
+"Archon Cão":[["Aura de menaça (Su)","a","Fascinação · N2 (temor sagrado)"],["Teleporte","a","Conjuração · N2"],["Farejar o mal","a","Adivinhação · N1"]],
+"Deva Astral":[["Feitiços celestiais (Sp)","a","Cura / Proteção / Raio · N3–N4"],["Maça estonteante","a","Fascinação · N2"],["Mudar de forma","a","Matéria · N2"]],
+"Planetar":[["Feitiços de clérigo (Sp)","a","Cura / Vida / Proteção / Morte · N4"],["Aura sagrada","a","Proteção · N4"],["Regeneração","p","Cerne Vital · Regeneração (b9)"]],
+"Solar":[["Feitiços supremos (Sp)","a","várias · N5"],["Arco de luz que mata","a","Raio / Morte · N5"],["Convocar anjos","a","Espírito · N5"],["Ressurreição","a","Cura · N5"]],
+"Couatl":[["Feitiços (Sp)","a","várias · N3–N4"],["Constrição venenosa","p","Agarrão do Urso + veneno"],["Mudar de forma","a","Matéria · N2"],["Telepatia","a","Adivinhação · N2"]],
+"Ghaele (azata)":[["Forma de globo de luz (Su)","a","Espírito · N3 + Fogo (luz)"],["Raio de luz","a","Raio · N3"],["Feitiços","a","várias · N3–N4"]],
+"Djinn":[["Ilusão, água e comida (Sp)","a","Água · N2 + Matéria · N2 + Fascinação · N1"],["Forma de redemoinho","a","Vento · N4"],["Voo","a","Vento · N5"]],
+"Efreeti":[["Conceder desejos (Sp)","a","Fortuna · N4 / Matéria"],["Muralha de fogo","a","Fogo · N3"],["Corpo em chamas","a","Fogo · N4"]],
+"Salamandra":[["Calor corporal (Su)","a","Fogo · N2"],["Constrição de cauda","p","Agarrão do Urso · Imobilizar (b2)"]],
+"Elemental da Terra (Grande)":[["Deslizar na pedra e empurrão","a","Terra · N2"],["Corpo de terra","p","Pele de Pedra · Carne de Granito (b7)"]],
+"Xorn":[["Deslizar pela pedra (Su)","a","Terra · N3"],["Devorar metal e gema","n","natural (Ex)"]],
+"Dríade":[["Passo-arbóreo e enfeitiço (Sp)","a","Fascinação · N2 + Conjuração · N2"],["Fundir-se à árvore","a","Matéria · N2 / Espírito"]],
+"Ninfa":[["Beleza cegante (Su)","p","Beleza Cativante · Beleza Inebriante (b8)"],["(alternativa mágica)","a","Fascinação · N3"],["Feitiços druídicos","a","Vida / Água · N3"]],
+"Sátiro":[["Flautas encantadas (Su)","p","Musa / Beleza Cativante"],["(alternativa mágica)","a","Fascinação · N2"]],
+"Pixie":[["Invisibilidade natural (Su)","a","Fascinação · N1"],["Flechas do sono / amnésia","a","Fascinação · N2"],["Voo","n","asas"]],
+"Fogo-fátuo":[["Invisibilidade natural (Su)","a","Fascinação · N1"],["Choque elétrico","a","Raio · N1"],["Pairar e voar","a","Vento · N3"]],
+"Medusa":[["Olhar petrificante (Su)","a","Matéria · N3"],["Cabelos-serpente","n","veneno natural"]],
+"Doppelganger":[["Mudar de forma (Su)","p","Camaleão / Máscara"],["(alternativa mágica)","a","Matéria · N2"],["Ler pensamentos (Su)","a","Adivinhação · N1 / Empatia"]],
+"Pégaso":[["Detectar o bem e o mal (Su)","a","Adivinhação · N1"],["Voo","n","asas"]],
+"Unicórnio":[["Cura pelo chifre (Sp)","a","Cura · N3"],["Teleporte","a","Conjuração · N2"],["Imune a veneno e encanto","p","Sangue Imune · Imunidade (b7)"]],
+"Ogro Mago (Oni)":[["Regeneração (Su)","p","Cerne Vital · Regeneração (b9)"],["Voo, invisibilidade, forma (Sp)","a","Vento · N5 + Fascinação · N1 + Matéria · N3"],["Cone de frio","a","Gelo · N2"]],
+"Esfinge (Ginosfinge)":[["Feitiços arcanos (Sp)","a","várias · N3–N4"],["Rugido (Su)","a","Forças · N2 / Vento"],["Ver o invisível","a","Adivinhação · N2"]],
+"Naga Espírita":[["Olhar encantador (Su)","a","Fascinação · N3"],["Cuspe venenoso","n","natural"],["Feitiços","a","várias · N3"]],
+"Behir":[["Sopro elétrico (Su)","a","Raio · N3"],["Engolir inteiro (Ex)","p","Agarrão do Urso · Aperto Esmagador (b10)"]],
+"Lâmia":[["Dreno de Sabedoria (Su)","a","Morte · N2"],["Ilusões (Sp)","a","Fascinação · N3"]],
+"Bruxa Verde (Hag)":[["Fraqueza mística (Su)","a","Morte · N2"],["Mímica e ilusão (Sp)","a","Fascinação · N2"],["Feitiços","a","várias · N3"]],
+"Kraken":[["Constrição e afundar (Ex)","p","Agarrão do Urso · Abraço do Titã (b14)"],["Tinta e tempestade (Su)","a","Água · N4"],["Feitiços","a","várias · N4"]],
+"Tarrasque":[["Carapaça reflete magia (Su)","a","Proteção · N4"],["Regeneração implacável (Su)","p","Cerne Vital · Imortalidade Tênue (b15)"],["Bramido de pânico (Su)","a","Morte · N3 / Lenda Viva · Ícone (b15)"]],
+"Filhote de Dragão Vermelho":[["Sopro de fogo (Su)","a","Fogo · N2"],["Presença medonha","a","Morte · N3"]],
+"Dragão Vermelho Jovem":[["Sopro de fogo (Su)","a","Fogo · N3"],["Presença aterradora","p","Lenda Viva · Temor Reverente (b5)"],["Feitiços iniciais","a","Fogo · N2"]],
+"Dragão Vermelho Adulto":[["Sopro de fogo (Su)","a","Fogo · N4"],["Aura de fogo (Su)","a","Fogo · N4 / Proteção"],["Presença aterradora","a","Morte · N3"],["Feitiços de feiticeiro","a","várias · N3"]],
+"Dragão Vermelho Ancião":[["Sopro de fogo (Su)","a","Fogo · N5"],["Presença que paralisa","a","Morte · N4 / Fascinação · N4"],["Feitiços","a","várias · N4–N5"],["Voo","n","asas"]],
+"Grande Wyrm Vermelho":[["Sopro cataclísmico","a","Fogo · N5"],["Dobrar o tempo","a","Tempo · N4"],["Feitiços supremos","a","várias · N5"],["Presença divina","a","Morte · N5 + Lenda Viva · Ícone (b15)"]],
+"Dragão Branco Jovem":[["Sopro de frio (Su)","a","Gelo · N3"],["Andar no gelo e nevasca","a","Gelo · N2"],["Presença","a","Morte · N3"]],
+"Dragão Azul Adulto":[["Sopro elétrico (Su)","a","Raio · N4"],["Miragem no deserto (Sp)","a","Fascinação · N3"],["Presença","a","Morte · N3"]],
+"Dragão Verde Adulto":[["Sopro de gás (Su)","a","Água · N3 / Morte (veneno)"],["Enredar (Sp)","a","Vida · N2"],["Manipular","p","Serpente das Palavras"]],
+"Dragão Dourado Adulto":[["Sopro de fogo (Su)","a","Fogo · N4"],["Sopro debilitante","a","Fascinação · N3"],["Feitiços divinos","a","Cura / Proteção · N4"],["Mudar de forma","a","Matéria · N3"]],
+};
+function renderPowers(filter){
+  const q=(filter||'').toLowerCase().trim();
+  const entries=Object.keys(PODERES).filter(name=>{
+    if(!q) return true;
+    const hay=(name+' '+PODERES[name].map(x=>x[0]+' '+x[2]).join(' ')).toLowerCase();
+    return hay.includes(q);
+  });
+  const html='<div class="pcards">'+entries.map(name=>{
+    const m=DATA.find(d=>d.name===name);
+    const meta=m?('Centelha '+m.cent+' · '+m.type+' · '+m.src):'';
+    const rows=PODERES[name].map(x=>{
+      const cls=x[1]==='p'?'tgt-p':x[1]==='a'?'tgt-a':'tgt-n';
+      return '<div class="pw"><span class="ef">'+x[0]+'</span><span class="arrow">→</span><span class="tgt '+cls+'">'+x[2]+'</span></div>';
+    }).join('');
+    return '<div class="pcard"><h4>'+name+'</h4><div class="meta">'+meta+'</div>'+rows+'</div>';
+  }).join('')+'</div>';
+  document.getElementById('powers').innerHTML=html;
+  document.getElementById('pcount').textContent=entries.length+' criaturas mapeadas';
+}
+document.getElementById('pq').addEventListener('input',e=>renderPowers(e.target.value));
+
+renderMaster();
+renderPowers('');
 worked();
 applyFilter();
 </script>
