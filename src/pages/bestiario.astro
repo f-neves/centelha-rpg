@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
 import { getCollection } from 'astro:content';
+import imagens from '../data/imagens-bestiario.json';
+const IMG: Record<string, string> = imagens;
 const d = await loadData();
 const inimigos = (await getCollection('inimigos')).map((e) => e.data)
   .sort((a, b) => (a.categoria || '').localeCompare(b.categoria || '') || a.ameaca - b.ameaca || a.nome.localeCompare(b.nome));
@@ -19,12 +21,13 @@ const categorias = [...new Set(inimigos.map((i) => i.categoria || 'Outro'))].sor
 const caminhosUsados = [...new Set(inimigos.flatMap(caminhosDe))].map((id) => ({ id, nome: camNome[id] || id })).sort((a, b) => a.nome.localeCompare(b.nome));
 const artesUsadas = [...new Set(inimigos.flatMap(artesDe))].map((id) => ({ id, nome: arteNome[id] || id })).sort((a, b) => a.nome.localeCompare(b.nome));
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
+const comArte = inimigos.filter((i) => IMG[i.id]).length;
 ---
-<Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — do goblin ao dragão ancião, com blocos de combate calculados e poderes traduzidos em Proezas e Feitiçarias.">
+<Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — do goblin ao dragão ancião, com blocos de combate calculados, arte de referência e poderes traduzidos em Proezas e Feitiçarias.">
   <h1>Bestiário & NPCs</h1>
   <p class="lead">Adversários prontos para a mesa, do camponês ao dragão ancião. Os números seguem as mesmas fórmulas dos personagens — PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados — e os poderes especiais vêm traduzidos em <strong>Proezas</strong> (Técnicas de Caminho) e <strong>Feitiçarias</strong> (Artes).</p>
 
-  <div class="callout regra"><span class="lbl">Como rodar</span>O bloco traz o <strong>pool de ataque</strong> (já com o Acerto) e o <strong>dano</strong> prontos para rolar. <strong>Ameaça</strong> (◆) é uma referência rápida de perigo, de 1 a 6. Criaturas com <strong>Centelha</strong> usam Técnicas/Artes; a lista de <strong>Poderes</strong> indica o Caminho ou Arte que reproduz cada efeito.</div>
+  <div class="callout regra"><span class="lbl">Como rodar</span>O bloco traz o <strong>pool de ataque</strong> (já com o Acerto) e o <strong>dano</strong> prontos para rolar. <strong>Ameaça</strong> (◆) é uma referência rápida de perigo, de 1 a 6. Criaturas com <strong>Centelha</strong> usam Técnicas/Artes; a lista de <strong>Poderes</strong> indica o Caminho ou Arte que reproduz cada efeito. Toque na arte para ampliar.</div>
 
   <div class="callout"><span class="lbl">Regra de Horda</span>Muitos capangas iguais lutam como um <strong>esquadrão único</strong>: o tamanho vira <strong>Magnitude</strong> (2–3 = +1d6, 4–7 = +2, 8–15 = +3…), somada ao <strong>acerto e ao dano</strong>; a Defesa cai <strong>−2</strong> (aglomerado). <a href={url('regras/combate') + '#regra-de-horda'}>Regra completa →</a></div>
 
@@ -51,46 +54,70 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
       <article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
         data-txt={(i.nome + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}>
-        <header class="besta-head">
-          <span class="besta-nome cinzel">{i.nome}</span>
-          <span class="badge cat">{i.categoria}</span>
-          <span class="badge">{TIPO[i.tipo]}</span>
-          {i.centelha > 0 && <span class="badge banda">Centelha {i.centelha}</span>}
-          <span class="ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
-          {i.pendente && <span class="badge pendente" title="Stat block provisório — revisar">Rascunho</span>}
-        </header>
-        <p class="besta-con muted">{i.conceito}{i.descricao ? ` — ${i.descricao}` : ''}</p>
-        <div class="besta-stats">
-          <span><b>PV</b> {i.pv}</span>
-          <span><b>Defesa</b> {i.defesa}</span>
-          <span><b>Def. Mental</b> {i.defesaMental}</span>
-          <span><b>Absorção</b> Im{i.soak.impacto}/Co{i.soak.corte}/Pf{i.soak.perfuracao}{i.resistPerf ? ` · Nível ${i.resistPerf}` : ''}</span>
-          <span><b>Iniciativa</b> {i.iniciativa}</span>
+
+        <figure class={`arte${IMG[i.id] ? '' : ' sem-arte'}`} data-cent={i.centelha}>
+          {IMG[i.id]
+            ? <img src={url(IMG[i.id])} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
+                   data-full={url(IMG[i.id])} data-nome={i.nome} />
+            : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
+          <span class="arte-ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
+          {i.centelha > 0 && <span class="arte-cent" title={`Centelha ${i.centelha}`}>✦ {i.centelha}</span>}
+        </figure>
+
+        <div class="besta-corpo">
+          <header class="besta-head">
+            <span class="besta-nome cinzel">{i.nome}</span>
+            <span class="badge cat">{i.categoria}</span>
+            <span class="badge">{TIPO[i.tipo]}</span>
+            {i.pendente && <span class="badge pendente" title="Stat block provisório — revisar">Rascunho</span>}
+          </header>
+          <p class="besta-con muted">{i.conceito}{i.descricao ? ` — ${i.descricao}` : ''}</p>
+
+          <dl class="besta-stats">
+            <div><dt>PV</dt><dd>{i.pv}</dd></div>
+            <div><dt>Defesa</dt><dd>{i.defesa}</dd></div>
+            <div><dt>Def. Mental</dt><dd>{i.defesaMental}</dd></div>
+            <div><dt>Absorção</dt><dd>{i.soak.impacto}/{i.soak.corte}/{i.soak.perfuracao}{i.resistPerf ? `·N${i.resistPerf}` : ''}</dd></div>
+            <div><dt>Iniciativa</dt><dd>{i.iniciativa}</dd></div>
+          </dl>
+
+          <ul class="besta-atk">
+            {i.ataques.map((a) => (
+              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">pool <b>{a.pool}</b> · dano <b>{a.dano}</b> · Speed {a.ticks}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+            ))}
+          </ul>
+
+          {i.poderes && i.poderes.length > 0 && (
+            <div class="besta-poderes">
+              <span class="pw-lbl">Poderes</span>
+              <ul>
+                {i.poderes.map((p: any) => (
+                  <li class={`pw pw-${p.tipo}`}><span class="pw-ef">{p.efeito}</span><span class="pw-arw">→</span><span class="pw-alvo">{p.alvo}</span></li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {(i.tecnicas.length > 0 || i.artes.length > 0 || i.notas) && (
+            <details class="besta-mais">
+              <summary>Técnicas, Artes &amp; notas</summary>
+              {i.tecnicas.length > 0 && (
+                <p class="besta-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t.id)}>{d.T[t.id]?.nome ?? t.id}</a></>))}</p>
+              )}
+              {i.artes.length > 0 && (
+                <p class="besta-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id.id}>{arteNome[a.id.id] ?? a.id.id}</a> {a.nivel}</>))}</p>
+              )}
+              {i.notas && <p class="besta-notas">{i.notas}</p>}
+            </details>
+          )}
         </div>
-        <ul class="besta-atk">
-          {i.ataques.map((a) => (
-            <li><span class="atk-nome">{a.nome}</span> — pool <b>{a.pool}</b> · dano <b>{a.dano}</b> · Speed {a.ticks}{a.notas ? <span class="muted"> · {a.notas}</span> : null}</li>
-          ))}
-        </ul>
-        {i.poderes && i.poderes.length > 0 && (
-          <div class="besta-poderes">
-            <span class="pw-lbl">Poderes</span>
-            <ul>
-              {i.poderes.map((p: any) => (
-                <li class={`pw pw-${p.tipo}`}><span class="pw-ef">{p.efeito}</span><span class="pw-arw">→</span><span class="pw-alvo">{p.alvo}</span></li>
-              ))}
-            </ul>
-          </div>
-        )}
-        {i.tecnicas.length > 0 && (
-          <p class="besta-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t.id)}>{d.T[t.id]?.nome ?? t.id}</a></>))}</p>
-        )}
-        {i.artes.length > 0 && (
-          <p class="besta-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id.id}>{arteNome[a.id.id] ?? a.id.id}</a> {a.nivel}</>))}</p>
-        )}
-        {i.notas && <p class="besta-notas">{i.notas}</p>}
       </article>
     ))}
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-fechar" aria-label="Fechar">✕</button>
+    <figure><img id="lb-img" src="" alt="" /><figcaption id="lb-cap" class="cinzel"></figcaption></figure>
   </div>
 </Base>
 
@@ -105,29 +132,102 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
   .cats { display: flex; flex-wrap: wrap; gap: .1rem .4rem; }
   .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .4rem; font-family: 'EB Garamond'; font-size: .92rem; }
   .bf-count { width: 100%; margin: 0; }
-  .besta-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: 1rem; }
-  .besta { border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: 6px; background: var(--panel); padding: .8rem 1rem; scroll-margin-top: 4rem; }
-  .besta-head { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
-  .besta-nome { font-size: 1.15rem; color: var(--accent); flex: 1 1 auto; }
+
+  .besta-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1.15rem; }
+
+  /* --- Card como entrada de bestiário --- */
+  .besta {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--panel-border); border-radius: 9px; background: var(--panel);
+    overflow: hidden; scroll-margin-top: 4rem;
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 8%, transparent);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .besta:hover { transform: translateY(-3px); box-shadow: 0 10px 26px color-mix(in srgb, var(--ink) 16%, transparent); border-color: color-mix(in srgb, var(--accent) 40%, var(--panel-border)); }
+  .besta:target { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
+
+  /* Placa de ilustração: fundo pergaminho fixo (claro nos dois temas) + multiply une PNG e JPG */
+  .arte {
+    position: relative; margin: 0; aspect-ratio: 4 / 3;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%);
+    border-bottom: 1px solid var(--panel-border);
+    overflow: hidden; cursor: zoom-in;
+  }
+  .arte::after { /* vinheta impressa */
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    box-shadow: inset 0 0 2.4rem rgba(60, 42, 18, .22), inset 0 -1.2rem 1.6rem rgba(60, 42, 18, .1);
+  }
+  .arte img {
+    width: 100%; height: 100%; object-fit: contain; padding: .5rem .6rem .2rem;
+    mix-blend-mode: multiply; filter: saturate(1.02);
+    transition: transform .35s ease;
+  }
+  .besta:hover .arte img { transform: scale(1.045); }
+  .arte.sem-arte { cursor: default; }
+  .capitular {
+    font-size: 4.6rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f);
+    text-shadow: 0 1px 0 #fff, 0 2px 4px rgba(90, 60, 20, .25); user-select: none;
+  }
+  .arte-ameaca {
+    position: absolute; left: .55rem; bottom: .45rem; z-index: 2;
+    color: var(--gold); letter-spacing: .08em; font-size: .82rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,.55); filter: drop-shadow(0 0 1px rgba(0,0,0,.4));
+  }
+  .arte-cent {
+    position: absolute; right: .5rem; top: .5rem; z-index: 2;
+    font-family: 'Cinzel'; font-size: .7rem; font-weight: 600; letter-spacing: .03em;
+    padding: .12rem .45rem; border-radius: 999px;
+    color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000);
+    box-shadow: 0 1px 3px rgba(0,0,0,.35);
+  }
+
+  .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
+  .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
+  .besta-nome { font-size: 1.12rem; color: var(--accent); flex: 1 1 auto; line-height: 1.15; }
   .badge.cat { background: var(--accent-strong); color: var(--on-accent); }
-  .ameaca { color: var(--gold); letter-spacing: .1em; font-size: .8rem; }
-  .besta-con { font-style: italic; margin: .3rem 0 .5rem; font-size: .92rem; }
-  .besta-stats { display: flex; flex-wrap: wrap; gap: .3rem .9rem; padding: .4rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); font-size: .92rem; }
-  .besta-stats b { font-family: 'Cinzel'; color: var(--accent-strong); font-size: .72rem; text-transform: uppercase; }
-  .besta-atk { list-style: none; padding: 0; margin: .5rem 0; font-size: .92rem; }
-  .besta-atk li { padding: .1rem 0; } .atk-nome { font-family: 'Cinzel'; font-size: .85rem; }
-  .besta-poderes { margin: .5rem 0 .25rem; }
-  .pw-lbl { font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; color: var(--accent-strong); }
-  .besta-poderes ul { list-style: none; padding: 0; margin: .2rem 0 0; font-size: .88rem; }
-  .pw { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; padding: .1rem 0; }
-  .pw-ef { color: var(--ink); }
+  .besta-con { font-style: italic; margin: .3rem 0 .55rem; font-size: .9rem; }
+
+  .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr)); gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
+  .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
+  .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; }
+  .besta-stats dd { margin: 0; font-size: 1rem; font-variant-numeric: tabular-nums; font-weight: 600; }
+
+  .besta-atk { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: .9rem; display: flex; flex-direction: column; gap: .3rem; }
+  .besta-atk li { display: flex; flex-direction: column; gap: .05rem; padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+  .atk-nome { font-family: 'Cinzel'; font-size: .82rem; color: var(--ink); }
+  .atk-rolls b { color: var(--accent-strong); }
+  .atk-nota { font-size: .82rem; font-style: italic; }
+
+  .besta-poderes { margin: .15rem 0 .35rem; }
+  .pw-lbl { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
+  .besta-poderes ul { list-style: none; padding: 0; margin: .25rem 0 0; font-size: .86rem; display: flex; flex-direction: column; gap: .18rem; }
+  .pw { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem; }
   .pw-arw { color: var(--ink-soft); }
-  .pw-alvo { font-weight: 600; padding: .05rem .5rem; border-radius: 10px; font-size: .82rem; }
+  .pw-alvo { font-weight: 600; padding: .05rem .5rem; border-radius: 10px; font-size: .8rem; }
   .pw-proeza .pw-alvo { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent-strong); }
   .pw-feiticaria .pw-alvo { background: color-mix(in srgb, var(--gold) 26%, transparent); color: var(--ink); }
   .pw-natural .pw-alvo { background: var(--bg-soft); color: var(--ink-soft); font-weight: 500; }
-  .besta-ref { font-size: .9rem; margin: .25rem 0; } .besta-ref b { font-family: 'Cinzel'; font-size: .75rem; color: var(--accent-strong); }
-  .besta-notas { font-size: .84rem; color: var(--ink-soft); font-style: italic; margin: .4rem 0 0; }
+
+  .besta-mais { margin-top: auto; font-size: .9rem; }
+  .besta-mais > summary { cursor: pointer; font-family: 'Cinzel'; font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); padding: .35rem 0 .1rem; list-style: none; display: flex; align-items: center; gap: .35rem; }
+  .besta-mais > summary::-webkit-details-marker { display: none; }
+  .besta-mais > summary::before { content: '▸'; transition: transform .15s ease; color: var(--accent); }
+  .besta-mais[open] > summary::before { transform: rotate(90deg); }
+  .besta-ref { font-size: .88rem; margin: .25rem 0; } .besta-ref b { font-family: 'Cinzel'; font-size: .72rem; color: var(--accent-strong); }
+  .besta-notas { font-size: .84rem; color: var(--ink-soft); font-style: italic; margin: .35rem 0 0; }
+
+  /* --- Lightbox --- */
+  .lightbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: color-mix(in srgb, #1a120a 82%, transparent); backdrop-filter: blur(3px); animation: lb-in .18s ease; }
+  .lightbox[hidden] { display: none; }
+  .lightbox figure { margin: 0; max-width: min(680px, 92vw); max-height: 88vh; display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+  .lightbox img { max-width: 100%; max-height: 78vh; object-fit: contain; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); border-radius: 8px; padding: 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+  .lb-cap, #lb-cap { color: #f3e8cf; font-size: 1.25rem; letter-spacing: .02em; }
+  .lb-fechar { position: absolute; top: 1rem; right: 1.2rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: none; background: rgba(255,255,255,.12); color: #fff; font-size: 1.2rem; cursor: pointer; transition: background .15s; }
+  .lb-fechar:hover { background: rgba(255,255,255,.25); }
+  @keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .besta, .arte img, .lightbox { transition: none; animation: none; } .besta:hover { transform: none; } .besta:hover .arte img { transform: none; } }
 </style>
 
 <script>
@@ -151,4 +251,16 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
   }
   document.querySelectorAll('[data-bf]').forEach((e) => { e.addEventListener('input', apply); e.addEventListener('change', apply); });
   apply();
+
+  // Lightbox da arte
+  const lb = document.getElementById('lightbox') as HTMLElement;
+  const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+  const lbCap = document.getElementById('lb-cap') as HTMLElement;
+  function abrir(src: string, nome: string) { lbImg.src = src; lbImg.alt = `Ilustração de ${nome}`; lbCap.textContent = nome; lb.hidden = false; document.body.style.overflow = 'hidden'; }
+  function fechar() { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; }
+  document.querySelectorAll<HTMLImageElement>('.arte img[data-full]').forEach((im) => {
+    im.addEventListener('click', () => abrir(im.dataset.full!, im.dataset.nome || ''));
+  });
+  lb.addEventListener('click', (e) => { if (e.target === lb || (e.target as HTMLElement).classList.contains('lb-fechar')) fechar(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) fechar(); });
 </script>
