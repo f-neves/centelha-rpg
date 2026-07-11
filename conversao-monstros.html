@@ -70,6 +70,10 @@ td.c,th.c{text-align:center}
 /* colunas D&D vs Centelha */
 .dndcol{color:var(--dnd); font-weight:600}
 .centcol{color:var(--cent); font-weight:700}
+/* cabeçalhos ordenáveis */
+#tbl th.sortable{cursor:pointer; user-select:none}
+#tbl th.sortable:hover{filter:brightness(1.12)}
+.sort-arrow{font-size:.78em; margin-left:3px; opacity:.9}
 .grp-dnd{background:#8a4b2f !important; color:#fff !important}
 .grp-cent{background:var(--accent-soft) !important; color:#04231f !important}
 @media (prefers-color-scheme: dark){.grp-cent{color:#04231f !important}}
@@ -261,25 +265,25 @@ th.grp-cent{color:#04231f !important}
 <table id="tbl">
 <thead>
   <tr>
-    <th rowspan="2">Criatura</th>
-    <th rowspan="2">Origem</th>
-    <th rowspan="2" class="c">CR</th>
+    <th rowspan="2" class="sortable" data-sort="name">Criatura</th>
+    <th rowspan="2" class="sortable" data-sort="src">Origem</th>
+    <th rowspan="2" class="c sortable" data-sort="cr">CR</th>
     <th colspan="6" class="c grp-dnd">Habilidades D&amp;D · For Des Con Int Sab Car</th>
-    <th colspan="9" class="c grp-cent" title="clique para a fórmula">Atributos Centelha · Fo De Vi In Pe Co Pc It Ra</th>
-    <th rowspan="2" class="c">Cent.</th>
-    <th rowspan="2">Perícias-chave (Centelha)</th>
+    <th colspan="9" class="c grp-cent" title="clique nas siglas para ordenar">Atributos Centelha · Fo De Vi In Pe Co Pc It Ra</th>
+    <th rowspan="2" class="c sortable" data-sort="cent">Cent.</th>
+    <th rowspan="2" class="sortable" data-sort="sk">Perícias-chave (Centelha)</th>
   </tr>
   <tr>
-    <th class="c dndcol">St</th><th class="c dndcol">Dx</th><th class="c dndcol">Cn</th><th class="c dndcol">In</th><th class="c dndcol">Ws</th><th class="c dndcol">Ch</th>
-    <th class="c centcol" data-att="forca" title="Força ← Str + tamanho">Fo</th>
-    <th class="c centcol" data-att="destreza" title="Destreza ← Dex">De</th>
-    <th class="c centcol" data-att="vigor" title="Vigor ← Con + tamanho">Vi</th>
-    <th class="c centcol" data-att="influencia" title="Influência ← Cha">In</th>
-    <th class="c centcol" data-att="perspicacia" title="Perspicácia ← (Int+Cha)/2">Pe</th>
-    <th class="c centcol" data-att="compostura" title="Compostura ← (Sab+Car)/2">Co</th>
-    <th class="c centcol" data-att="percepcao" title="Percepção ← Sab">Pc</th>
-    <th class="c centcol" data-att="inteligencia" title="Inteligência ← Int">It</th>
-    <th class="c centcol" data-att="raciocinio" title="Raciocínio ← (Sab+Int)/2">Ra</th>
+    <th class="c dndcol sortable" data-sort="str">St</th><th class="c dndcol sortable" data-sort="dex">Dx</th><th class="c dndcol sortable" data-sort="con">Cn</th><th class="c dndcol sortable" data-sort="int">In</th><th class="c dndcol sortable" data-sort="wis">Ws</th><th class="c dndcol sortable" data-sort="cha">Ch</th>
+    <th class="c centcol sortable" data-sort="forca" data-att="forca" title="Força ← Str + tamanho">Fo</th>
+    <th class="c centcol sortable" data-sort="destreza" data-att="destreza" title="Destreza ← Dex">De</th>
+    <th class="c centcol sortable" data-sort="vigor" data-att="vigor" title="Vigor ← Con + tamanho">Vi</th>
+    <th class="c centcol sortable" data-sort="influencia" data-att="influencia" title="Influência ← Cha">In</th>
+    <th class="c centcol sortable" data-sort="perspicacia" data-att="perspicacia" title="Perspicácia ← (Int+Cha)/2">Pe</th>
+    <th class="c centcol sortable" data-sort="compostura" data-att="compostura" title="Compostura ← (Sab+Car)/2">Co</th>
+    <th class="c centcol sortable" data-sort="percepcao" data-att="percepcao" title="Percepção ← Sab">Pc</th>
+    <th class="c centcol sortable" data-sort="inteligencia" data-att="inteligencia" title="Inteligência ← Int">It</th>
+    <th class="c centcol sortable" data-sort="raciocinio" data-att="raciocinio" title="Raciocínio ← (Sab+Int)/2">Ra</th>
   </tr>
 </thead>
 <tbody id="rows"></tbody>
@@ -552,6 +556,35 @@ function render(list){
   document.getElementById('count').textContent = list.length+' criaturas';
 }
 
+/* ordenação por cabeçalho */
+let sortKey=null, sortDir=-1; // dir: -1 maior→menor, 1 menor→maior
+const DND_KEYS=['str','dex','con','int','wis','cha'];
+function crVal(cr){
+  if(cr==null) return -1;
+  cr=String(cr).trim();
+  if(cr.includes('/')){ const p=cr.split('/'); return (+p[0])/(+p[1]||1); }
+  const n=parseFloat(cr); return isNaN(n)?-1:n;
+}
+function sortVal(m,key){
+  if(key==='name') return m.name.toLowerCase();
+  if(key==='src')  return (m.src||'').toLowerCase();
+  if(key==='cr')   return crVal(m.cr);
+  if(key==='cent') return +m.cent;
+  if(key==='sk')   return (m.sk||[]).length;
+  if(DND_KEYS.includes(key)){ const v=m[key]; return (v==='-'||v==null)?-1:+v; }
+  const v=converte(m)[key]; return (v==null)?-1:v; // atributo Centelha derivado
+}
+function markArrows(){
+  document.querySelectorAll('#tbl th.sortable').forEach(th=>{
+    const old=th.querySelector('.sort-arrow'); if(old) old.remove();
+    if(th.dataset.sort===sortKey){
+      const s=document.createElement('span');
+      s.className='sort-arrow'; s.textContent=(sortDir===1?'▲':'▼');
+      th.appendChild(s);
+    }
+  });
+}
+
 /* filtro */
 function applyFilter(){
   const q=document.getElementById('q').value.toLowerCase().trim();
@@ -563,10 +596,26 @@ function applyFilter(){
     else if(fc!=='' && String(m.cent)!==fc) return false;
     return true;
   });
+  if(sortKey){
+    list.sort((a,b)=>{
+      const va=sortVal(a,sortKey), vb=sortVal(b,sortKey);
+      const cmp = (typeof va==='string') ? va.localeCompare(vb,'pt') : (va-vb);
+      return cmp*sortDir;
+    });
+  }
   render(list);
+  markArrows();
 }
 document.getElementById('q').addEventListener('input',applyFilter);
 document.getElementById('fcent').addEventListener('change',applyFilter);
+document.querySelectorAll('#tbl th.sortable').forEach(th=>{
+  th.addEventListener('click',()=>{
+    const k=th.dataset.sort;
+    if(sortKey===k){ sortDir=-sortDir; } // mesmo cabeçalho: inverte
+    else { sortKey=k; sortDir=(k==='name'||k==='src')?1:-1; } // texto sobe A→Z; número desce (maior→menor)
+    applyFilter();
+  });
+});
 
 /* exemplos passo a passo (gera dos 3 primeiros marcados) */
 function worked(){
