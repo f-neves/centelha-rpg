@@ -1,0 +1,3905 @@
+{
+ "camponis-assustado": {
+  "en": "Frightened Peasant",
+  "hab": [
+   {
+    "n": "Sem treino",
+    "d": "ataques e Defesa em nível mínimo, quase sempre erra"
+   },
+   {
+    "n": "Testa de ferro frágil",
+    "d": "poucos PV, cai com um golpe qualquer"
+   },
+   {
+    "n": "Pavor de sangue",
+    "d": "foge do combate assim que sofre o primeiro ferimento"
+   },
+   {
+    "n": "Horda",
+    "d": "em grupo, use a regra de Horda em vez de rolar cada um"
+   }
+  ]
+ },
+ "bandido-de-estrada": {
+  "en": "Highway Bandit",
+  "hab": [
+   {
+    "n": "Couro leve",
+    "d": "Absorção +2 contra golpes"
+   },
+   {
+    "n": "Emboscada",
+    "d": "ataca de surpresa quando pode escolher o terreno"
+   },
+   {
+    "n": "Matar em bando",
+    "d": "ganha vantagem lutando em grupo contra um alvo isolado"
+   },
+   {
+    "n": "Recuo oportunista",
+    "d": "foge da luta assim que ela vira contra o bando"
+   }
+  ]
+ },
+ "guarda-da-cidade": {
+  "en": "City Guard",
+  "hab": [
+   {
+    "n": "Malha",
+    "d": "Absorção +4, mas Esquiva −1"
+   },
+   {
+    "n": "Escudo",
+    "d": "+2 ao Bloqueio"
+   },
+   {
+    "n": "Formação",
+    "d": "ganha bônus de Defesa lutando lado a lado com outro guarda"
+   },
+   {
+    "n": "Chamar reforço",
+    "d": "grita por apoio; mais guardas chegam em poucas rodadas"
+   }
+  ]
+ },
+ "soldado-veterano": {
+  "en": "Veteran Soldier",
+  "hab": [
+   {
+    "n": "Olho de guerra",
+    "d": "lê a luta e nunca é pego de surpresa fácil"
+   },
+   {
+    "n": "Explora aberturas",
+    "d": "converte Quase Acerto do alvo em bônus de dano no contra-ataque"
+   },
+   {
+    "n": "Foco no isolado",
+    "d": "prioriza e ganha bônus de ataque contra quem está sem apoio"
+   },
+   {
+    "n": "Golpe calculado",
+    "d": "ataque básico confiável, poucos desperdícios"
+   }
+  ]
+ },
+ "arqueiro": {
+  "en": "Archer",
+  "hab": [
+   {
+    "n": "Arco",
+    "d": "ataque à distância com Perfuração nível 1: fura couro e malha, resvala em placa (Resistência 2)"
+   },
+   {
+    "n": "Mira",
+    "d": "gasta uma ação para mirar e ganha +2 no próximo disparo"
+   },
+   {
+    "n": "Domina o campo",
+    "d": "prioriza alvos antes que cheguem ao corpo a corpo"
+   },
+   {
+    "n": "Recuo tático",
+    "d": "recua e reposiciona se for cercado"
+   }
+  ]
+ },
+ "bruto": {
+  "en": "Brute",
+  "hab": [
+   {
+    "n": "Golpe pesado",
+    "d": "dano alto por acerto, mira em quebrar a guarda do alvo"
+   },
+   {
+    "n": "Passo lento",
+    "d": "Velocidade 7, age com atraso e reage mal a cercos"
+   },
+   {
+    "n": "Força bruta",
+    "d": "ignora parte da Absorção leve ao acertar"
+   },
+   {
+    "n": "Vulnerável ao cerco",
+    "d": "perde eficácia quando flanqueado por vários oponentes"
+   }
+  ]
+ },
+ "capitao-da-guarda": {
+  "en": "Captain of the Guard",
+  "hab": [
+   {
+    "n": "Placa",
+    "d": "Absorção +6, mas Esquiva −2 e movimento lento"
+   },
+   {
+    "n": "Escudo",
+    "d": "bônus adicional ao Bloqueio"
+   },
+   {
+    "n": "Comando de tropa",
+    "d": "coordena subordinados, dando-lhes bônus de ataque ou Defesa"
+   },
+   {
+    "n": "Pico do mortal",
+    "d": "melhores números que um humano comum alcança sem Centelha"
+   }
+  ]
+ },
+ "assassino-das-sombras": {
+  "en": "Shadow Assassin",
+  "hab": [
+   {
+    "n": "Bote Silencioso",
+    "d": "+2d6 de dano contra alvo desavisado (que já sofre penalidade de Defesa por surpresa)"
+   },
+   {
+    "n": "Andar nas sombras",
+    "d": "esconde-se e aproxima-se sem ser notado"
+   },
+   {
+    "n": "Golpe e sumiço",
+    "d": "ataca e desaparece de cena antes da reação do alvo"
+   },
+   {
+    "n": "Lâmina precisa",
+    "d": "ataques confiáveis mesmo sem o bônus de surpresa"
+   }
+  ]
+ },
+ "duelista": {
+  "en": "Duelist",
+  "hab": [
+   {
+    "n": "Aparar",
+    "d": "+3 na Defesa ao usar a ação de aparar"
+   },
+   {
+    "n": "Riposte",
+    "d": "contra-ataca automaticamente quando apara com sucesso"
+   },
+   {
+    "n": "Finta",
+    "d": "engana a guarda do alvo, reduzindo a Defesa dele no próximo golpe"
+   },
+   {
+    "n": "Estocada precisa",
+    "d": "ataque rápido e certeiro, pouco dano bruto mas difícil de evitar"
+   }
+  ]
+ },
+ "feiticeiro-menor": {
+  "en": "Minor Sorcerer",
+  "hab": [
+   {
+    "n": "Reserva de Mana",
+    "d": "Mana = Centelha×2 + Vontade, total 8"
+   },
+   {
+    "n": "Labareda",
+    "d": "magia nível 2, 2d6 de dano à distância, custa 2 Mana"
+   },
+   {
+    "n": "Frágil no corpo a corpo",
+    "d": "Defesa e Absorção baixas, evita combate direto"
+   },
+   {
+    "n": "Mantém distância",
+    "d": "reposiciona para conjurar fora do alcance do inimigo"
+   }
+  ]
+ },
+ "cavaleiro-de-elite": {
+  "en": "Elite Knight",
+  "hab": [
+   {
+    "n": "Placa",
+    "d": "Absorção alta, Esquiva reduzida pelo peso da armadura"
+   },
+   {
+    "n": "Pele de Pedra",
+    "d": "Absorção altíssima contra dano de corte"
+   },
+   {
+    "n": "Falha de Impacto",
+    "d": "vulnerável a dano de Impacto, que a placa quase não absorve"
+   },
+   {
+    "n": "Falha de perfuração",
+    "d": "perfuração nível 2+ ou uma Proeza atravessa sua defesa"
+   },
+   {
+    "n": "Muralha de aço",
+    "d": "aguenta punição prolongada sem cair"
+   }
+  ]
+ },
+ "campeao": {
+  "en": "Champion (Minor Demigod)",
+  "hab": [
+   {
+    "n": "Reserva de Energia",
+    "d": "Energia ≈ Centelha×3 + Virtudes + Vontade"
+   },
+   {
+    "n": "Técnica de herói",
+    "d": "pode gastar Energia em Técnicas de banda 1 ou 2 em combate"
+   },
+   {
+    "n": "Velocidade sobre-humana",
+    "d": "age antes da maioria dos oponentes na Iniciativa"
+   },
+   {
+    "n": "Golpe de herói",
+    "d": "dano bem acima do de um humano comum"
+   },
+   {
+    "n": "Resistência tocada",
+    "d": "Absorção e PV muito acima do normal para um mortal"
+   },
+   {
+    "n": "Adversário à altura",
+    "d": "pensado para desafiar diretamente um grupo de PJs"
+   }
+  ]
+ },
+ "lobo": {
+  "en": "Wolf",
+  "hab": [
+   {
+    "n": "Matilha",
+    "d": "caça em grupo de 3 a 6; use Horda para alcateias grandes"
+   },
+   {
+    "n": "Flanco",
+    "d": "dois ou mais lobos coordenados impõem −2 na Defesa do alvo"
+   },
+   {
+    "n": "Pressão",
+    "d": "a matilha nunca deixa o alvo se recompor com folga"
+   },
+   {
+    "n": "Faro aguçado",
+    "d": "fareja presas escondidas a boa distância"
+   },
+   {
+    "n": "Mordida",
+    "d": "ataque básico rápido e recorrente"
+   }
+  ]
+ },
+ "urso": {
+  "en": "Bear",
+  "hab": [
+   {
+    "n": "Couro grosso",
+    "d": "Absorção natural alta, reflexo do Vigor 5"
+   },
+   {
+    "n": "Força esmagadora",
+    "d": "garras causam dano alto por golpe"
+   },
+   {
+    "n": "Defesa baixa, corpo duro",
+    "d": "é fácil de acertar, mas difícil de derrubar"
+   },
+   {
+    "n": "Garras que sangram",
+    "d": "ferimentos abertos pioram com o tempo de combate"
+   },
+   {
+    "n": "Fera colossal",
+    "d": "perigo sério mesmo sozinha, sem precisar de apoio"
+   }
+  ]
+ },
+ "comandante": {
+  "en": "Touched Commander",
+  "hab": [
+   {
+    "n": "Estandarte de Comando",
+    "d": "concede ação extra ou bônus de ataque/Defesa a aliados próximos"
+   },
+   {
+    "n": "Inspira tropas",
+    "d": "gasta Influência para erguer a moral do próprio lado"
+   },
+   {
+    "n": "Quebra de moral",
+    "d": "pode forçar teste de Vontade em inimigos, deixando-os Abalados"
+   },
+   {
+    "n": "Comanda melhor que luta",
+    "d": "combate competente, mas seu real poder é coordenar outros"
+   },
+   {
+    "n": "Ponto de colapso",
+    "d": "a queda do comandante abala a moral de toda a tropa que lidera"
+   }
+  ]
+ },
+ "cultista": {
+  "en": "Dark Cultist",
+  "hab": [
+   {
+    "n": "Drenar vida",
+    "d": "toque corpo a corpo causa dano e cura o cultista no mesmo tanto"
+   },
+   {
+    "n": "Ritual da morte",
+    "d": "em poucos minutos ergue um morto-vivo (Morte 3) para lutar ao seu lado"
+   },
+   {
+    "n": "Maldição do apodrecer",
+    "d": "toque ou olhar; quem falha em Vontade fica Abalado e sofre penalidade em Vigor na cena"
+   },
+   {
+    "n": "Frágil no corpo a corpo",
+    "d": "Absorção e Defesa baixas em combate direto; prefere manter distância e usar mortos-vivos como escudo"
+   }
+  ]
+ },
+ "esqueleto": {
+  "en": "Skeleton Warrior",
+  "hab": [
+   {
+    "n": "Morto-vivo",
+    "d": "imune a Medo, veneno e efeitos mentais"
+   },
+   {
+    "n": "Não sente dor",
+    "d": "ignora penalidades por ferimentos e luta até ser despedaçado"
+   },
+   {
+    "n": "Ossos expostos",
+    "d": "Absorção reduzida contra dano de Impacto; esmagar é especialmente eficaz"
+   },
+   {
+    "n": "Golpe de lâmina enferrujada",
+    "d": "ataque corpo a corpo simples e direto, sem talento tático"
+   }
+  ]
+ },
+ "espectro": {
+  "en": "Spectre",
+  "hab": [
+   {
+    "n": "Incorpóreo",
+    "d": "atravessa paredes e objetos; imune a dano físico não mágico, só Arcano, Proteção ou armas encantadas o ferem"
+   },
+   {
+    "n": "Toque que gela a alma",
+    "d": "corpo a corpo; causa dano e reduz temporariamente o Vigor da vítima"
+   },
+   {
+    "n": "Voo",
+    "d": "flutua e voa livremente, inclusive sobre obstáculos e vazios"
+   },
+   {
+    "n": "Presença sepulcral",
+    "d": "quem vê o espectro de perto e falha em Vontade fica Abalado"
+   },
+   {
+    "n": "Sombra silenciosa",
+    "d": "difícil de perceber ou ouvir sem sentidos ou magia especial"
+   }
+  ]
+ },
+ "ogro": {
+  "en": "Ogre",
+  "hab": [
+   {
+    "n": "Golpe de clava",
+    "d": "ataque corpo a corpo de dano alto; um acerto já é um aríete"
+   },
+   {
+    "n": "Força de gigante",
+    "d": "Força 6; derruba portas, arremessa destroços e desequilibra oponentes"
+   },
+   {
+    "n": "Lento",
+    "d": "Deslocamento reduzido (Speed 7); fácil de cercar ou driblar em corrida"
+   },
+   {
+    "n": "Vigor bruto",
+    "d": "Vigor 6 compensa a Defesa baixa; aguenta golpes que derrubariam outro"
+   }
+  ]
+ },
+ "aranha-gigante": {
+  "en": "Giant Spider",
+  "hab": [
+   {
+    "n": "Andar em paredes e teias",
+    "d": "escala superfícies verticais e tetos sem esforço"
+   },
+   {
+    "n": "Emboscada",
+    "d": "ataca das sombras com bônus de Iniciativa e dano no primeiro golpe"
+   },
+   {
+    "n": "Picada venenosa",
+    "d": "quem falha em resistir ao veneno fica enfraquecido, com penalidade em ações físicas na cena"
+   },
+   {
+    "n": "Teia prendedora",
+    "d": "dispara teia a distância; quem falha em Atletismo ou Força fica Imobilizado"
+   },
+   {
+    "n": "Camuflagem",
+    "d": "Furtividade alta entre sombras e vegetação para armar emboscadas"
+   }
+  ]
+ },
+ "mago-de-batalha": {
+  "en": "War Mage",
+  "hab": [
+   {
+    "n": "Bola de fogo",
+    "d": "explosão numa área; dano alto a todos dentro, metade se Esquivar"
+   },
+   {
+    "n": "Escudo de força",
+    "d": "camada extra de Absorção (Forças) que bloqueia golpes até se esgotar"
+   },
+   {
+    "n": "Concentração arcana",
+    "d": "se sofrer dano em corpo a corpo, arrisca perder a conjuração seguinte"
+   },
+   {
+    "n": "Raio de energia",
+    "d": "ataque à distância confiável que ignora cobertura leve"
+   },
+   {
+    "n": "Grande reserva arcana",
+    "d": "Mana 12 sustenta múltiplas magias ativas na mesma cena"
+   },
+   {
+    "n": "Mantém distância",
+    "d": "evita corpo a corpo; reposiciona-se para conjurar com segurança"
+   }
+  ]
+ },
+ "mon-goblin": {
+  "en": "Goblin",
+  "hab": [
+   {
+    "n": "Pequeno e furtivo",
+    "d": "Furtividade 2; some entre sombras e vegetação com facilidade"
+   },
+   {
+    "n": "Visão no escuro",
+    "d": "enxerga sem penalidade em ambientes escuros"
+   },
+   {
+    "n": "Emboscada em bando",
+    "d": "ataca em grupo e flanqueia presas maiores"
+   },
+   {
+    "n": "Faro de sobrevivente",
+    "d": "Sobrevivência 1; rastreia e se orienta no território"
+   }
+  ]
+ },
+ "mon-kobold": {
+  "en": "Kobold",
+  "hab": [
+   {
+    "n": "Visão no escuro",
+    "d": "enxerga bem em túneis e cavernas sem luz"
+   },
+   {
+    "n": "Armadilheiro",
+    "d": "Ofícios 1; monta armadilhas simples antes do combate"
+   },
+   {
+    "n": "Furtivo",
+    "d": "Furtividade 1 para se esconder e vigiar"
+   },
+   {
+    "n": "Alerta",
+    "d": "Prontidão 1; dificilmente é surpreendido"
+   },
+   {
+    "n": "Corpo frágil",
+    "d": "poucos PV; prefere lutar em grupo ou de dentro de armadilhas"
+   }
+  ]
+ },
+ "mon-orc": {
+  "en": "Orc",
+  "hab": [
+   {
+    "n": "Fúria de combate",
+    "d": "ataca com força bruta; dano corpo a corpo acima do humano"
+   },
+   {
+    "n": "Visão no escuro",
+    "d": "enxerga sem penalidade no escuro"
+   },
+   {
+    "n": "Alerta",
+    "d": "Prontidão 1; raramente é pego de surpresa"
+   },
+   {
+    "n": "Selvagem",
+    "d": "luta até PV baixos, sem recuar"
+   }
+  ]
+ },
+ "mon-hobgoblin": {
+  "en": "Hobgoblin",
+  "hab": [
+   {
+    "n": "Disciplina militar",
+    "d": "ganha bônus ao lutar em formação ao lado de aliados"
+   },
+   {
+    "n": "Furtivo",
+    "d": "Furtividade 2; coordena emboscadas em silêncio"
+   },
+   {
+    "n": "Alerta",
+    "d": "Prontidão 1; evita surpresas"
+   },
+   {
+    "n": "Visão no escuro",
+    "d": "enxerga sem luz"
+   }
+  ]
+ },
+ "mon-gnoll": {
+  "en": "Gnoll",
+  "hab": [
+   {
+    "n": "Mordida selvagem",
+    "d": "ataque de mordida além da arma"
+   },
+   {
+    "n": "Caçador em matilha",
+    "d": "bônus ao atacar acompanhado de outro gnoll"
+   },
+   {
+    "n": "Alerta",
+    "d": "Prontidão 1; raramente é pego de surpresa"
+   },
+   {
+    "n": "Visão no escuro",
+    "d": "enxerga sem penalidade no escuro"
+   }
+  ]
+ },
+ "mon-bugbear": {
+  "en": "Bugbear",
+  "hab": [
+   {
+    "n": "Furtividade surpreendente",
+    "d": "Furtividade 3 apesar do porte; emboscadas eficazes"
+   },
+   {
+    "n": "Golpe surpresa",
+    "d": "dano extra ao acertar um alvo desprevenido"
+   },
+   {
+    "n": "Alerta",
+    "d": "Prontidão 2; dificilmente é surpreendido"
+   },
+   {
+    "n": "Visão no escuro",
+    "d": "enxerga sem luz"
+   }
+  ]
+ },
+ "mon-homem-lagarto": {
+  "en": "Lizardfolk",
+  "hab": [
+   {
+    "n": "Nadador nato",
+    "d": "nada sem penalidade e prende a respiração por longos períodos"
+   },
+   {
+    "n": "Rabada",
+    "d": "ataque de cauda além da arma principal"
+   },
+   {
+    "n": "Atlético",
+    "d": "Atletismo 1; escala e salta bem"
+   },
+   {
+    "n": "Sobrevivente do pântano",
+    "d": "Sobrevivência 1; rastreia e se camufla em áreas alagadas"
+   }
+  ]
+ },
+ "mon-trogloditas": {
+  "en": "Troglodyte",
+  "hab": [
+   {
+    "n": "Pele camaleão",
+    "d": "camuflagem natural contra pedra; Furtividade 1 elevada em cavernas"
+   },
+   {
+    "n": "Fedor nauseante",
+    "d": "quem chega perto e falha em Vigor fica Abalado por enjoo"
+   },
+   {
+    "n": "Garras",
+    "d": "ataque corpo a corpo além da arma primitiva"
+   },
+   {
+    "n": "Visão no escuro",
+    "d": "enxerga sem luz em cavernas"
+   }
+  ]
+ },
+ "mon-ogro": {
+  "en": "Ogre",
+  "hab": [
+   {
+    "n": "Golpe brutal",
+    "d": "ataque corpo a corpo de dano alto com clava ou machado gigante"
+   },
+   {
+    "n": "Força de gigante",
+    "d": "derruba portas, arremessa objetos e desequilibra oponentes menores"
+   },
+   {
+    "n": "Atlético",
+    "d": "Atletismo 1; escala e corre melhor do que o esperado para o tamanho"
+   },
+   {
+    "n": "Alvo grande",
+    "d": "tamanho Grande facilita ser acertado, mas aguenta mais dano graças à massa"
+   }
+  ]
+ },
+ "mon-ettin": {
+  "en": "Ettin",
+  "hab": [
+   {
+    "n": "Duas cabeças, dois ataques",
+    "d": "ataca com duas armas diferentes na mesma rodada, cada golpe mirando um alvo distinto"
+   },
+   {
+    "n": "Vigilância dupla",
+    "d": "nunca é Surpreendido e ignora bônus de flanco ou emboscada contra si"
+   },
+   {
+    "n": "Golpe brutal",
+    "d": "dano alto de arma grande em cada acerto"
+   },
+   {
+    "n": "Visão no escuro",
+    "d": "enxerga normalmente no escuro até 18m"
+   },
+   {
+    "n": "Couro calejado",
+    "d": "Absorção alta contra impactos"
+   }
+  ]
+ },
+ "mon-trol": {
+  "en": "Troll",
+  "hab": [
+   {
+    "n": "Regeneração",
+    "d": "recupera PV todo turno mesmo ferido grave; só fogo ou ácido interrompem"
+   },
+   {
+    "n": "Fraqueza ao fogo",
+    "d": "sofre dano extra e não regenera contra fogo ou ácido"
+   },
+   {
+    "n": "Garras e mordida",
+    "d": "dois ataques de garra mais mordida na mesma rodada"
+   },
+   {
+    "n": "Braços longos",
+    "d": "alcance de 3m, ataca sem precisar se aproximar"
+   },
+   {
+    "n": "Faro aguçado",
+    "d": "detecta inimigos escondidos ou invisíveis pelo cheiro a curta distância"
+   }
+  ]
+ },
+ "mon-gigante-da-colina": {
+  "en": "Hill Giant",
+  "hab": [
+   {
+    "n": "Arremesso de rocha",
+    "d": "ataque à distância de até 36m, dano de arma grande"
+   },
+   {
+    "n": "Marretada",
+    "d": "acerto forte pode derrubar alvo Médio ou menor"
+   },
+   {
+    "n": "Brutalidade cega",
+    "d": "continua lutando normalmente mesmo Abalado"
+   },
+   {
+    "n": "Couro grosso",
+    "d": "Absorção alta"
+   },
+   {
+    "n": "Faro de caçador",
+    "d": "Prontidão alta para notar emboscadas e presas"
+   }
+  ]
+ },
+ "mon-gigante-da-pedra": {
+  "en": "Stone Giant",
+  "hab": [
+   {
+    "n": "Arremesso certeiro",
+    "d": "ataque à distância de até 45m, dano alto e raramente erra"
+   },
+   {
+    "n": "Camuflagem pétrea",
+    "d": "Furtividade alta parado ou movendo-se devagar em terreno rochoso"
+   },
+   {
+    "n": "Sentir vibrações",
+    "d": "percebe criaturas próximas através da rocha, ignora escuridão e invisibilidade a curta distância"
+   },
+   {
+    "n": "Couro de pedra",
+    "d": "Absorção muito alta"
+   },
+   {
+    "n": "Punho esmagador",
+    "d": "dano alto corpo a corpo, pode derrubar o alvo"
+   },
+   {
+    "n": "Passos silenciosos",
+    "d": "atravessa cavernas e penhascos sem disparar a Prontidão de vigias"
+   }
+  ]
+ },
+ "mon-gigante-do-fogo": {
+  "en": "Fire Giant",
+  "hab": [
+   {
+    "n": "Imune a fogo",
+    "d": "não sofre dano de fogo"
+   },
+   {
+    "n": "Arremesso de rocha",
+    "d": "ataque à distância de até 36m, dano alto"
+   },
+   {
+    "n": "Armadura da forja",
+    "d": "Absorção muito alta com armadura pesada forjada por eles mesmos"
+   },
+   {
+    "n": "Golpe de espadão",
+    "d": "dano altíssimo corpo a corpo, mas ataque mais lento (perde a Iniciativa no turno seguinte)"
+   },
+   {
+    "n": "Sangue de forja",
+    "d": "Vontade alta, resiste a Abalado"
+   },
+   {
+    "n": "Presença marcial",
+    "d": "comanda tropas próximas; aliados a até 9m ganham +1d em Ataque"
+   }
+  ]
+ },
+ "mon-gigante-do-gelo": {
+  "en": "Frost Giant",
+  "hab": [
+   {
+    "n": "Imune ao frio",
+    "d": "não sofre dano de frio"
+   },
+   {
+    "n": "Arremesso de rocha",
+    "d": "ataque à distância de até 36m, dano alto"
+   },
+   {
+    "n": "Camuflagem branca",
+    "d": "Furtividade alta em neve e gelo"
+   },
+   {
+    "n": "Machado descomunal",
+    "d": "dano alto corpo a corpo"
+   },
+   {
+    "n": "Vigor ártico",
+    "d": "Absorção alta e imune a exaustão pelo frio"
+   }
+  ]
+ },
+ "mon-gigante-das-nuvens": {
+  "en": "Cloud Giant",
+  "hab": [
+   {
+    "n": "Névoa oculta",
+    "d": "conjura névoa espessa num raio de 9m; concede Furtividade a aliados e dificulta Ataques à distância contra eles"
+   },
+   {
+    "n": "Arremesso de rocha",
+    "d": "ataque à distância de até 36m, dano alto"
+   },
+   {
+    "n": "Passos no vento",
+    "d": "flutua e plana por curtas distâncias, ignora dano de queda"
+   },
+   {
+    "n": "Telepatia",
+    "d": "comunica-se mentalmente com aliados a até 18m"
+   },
+   {
+    "n": "Couro nas alturas",
+    "d": "Absorção alta"
+   },
+   {
+    "n": "Castelo entre nuvens",
+    "d": "conhece rotas aéreas e pode convocar servos alados em seu domínio"
+   }
+  ]
+ },
+ "mon-gigante-da-tempestade": {
+  "en": "Storm Giant",
+  "hab": [
+   {
+    "n": "Comandar o clima",
+    "d": "convoca tempestade sobre uma área, reduzindo visibilidade e Ataques à distância inimigos"
+   },
+   {
+    "n": "Ver e ouvir à distância",
+    "d": "observa e escuta eventos a quilômetros, quase impossível de emboscar"
+   },
+   {
+    "n": "Imune a raios",
+    "d": "não sofre dano elétrico"
+   },
+   {
+    "n": "Anfíbio",
+    "d": "nada e respira debaixo d'água sem penalidade"
+   },
+   {
+    "n": "Fúria do raio",
+    "d": "golpe de arma soma dano elétrico extra"
+   },
+   {
+    "n": "Presença régia",
+    "d": "falha de inimigos em teste de Vontade contra ele causa Abalado"
+   }
+  ]
+ },
+ "mon-ciclope": {
+  "en": "Cyclops",
+  "hab": [
+   {
+    "n": "Lampejo de premonição",
+    "d": "gasta Centelha para pressentir um golpe certeiro e evitá-lo por completo"
+   },
+   {
+    "n": "Olho único",
+    "d": "campo de visão limitado; sofre penalidade contra flanco e ataques furtivos"
+   },
+   {
+    "n": "Clava colossal",
+    "d": "dano alto corpo a corpo"
+   },
+   {
+    "n": "Força ciclópica",
+    "d": "arremessa rochedos ou derruba estruturas pequenas"
+   },
+   {
+    "n": "Couro grosso",
+    "d": "Absorção alta"
+   }
+  ]
+ },
+ "mon-lobo": {
+  "en": "Wolf",
+  "hab": [
+   {
+    "n": "Caça em matilha",
+    "d": "ganha bônus de Ataque quando luta ao lado de outro lobo contra o mesmo alvo"
+   },
+   {
+    "n": "Faro apurado",
+    "d": "rastreia presas pelo cheiro mesmo fora de vista"
+   },
+   {
+    "n": "Mordida derrubante",
+    "d": "acerto forte pode derrubar alvo Médio ou menor"
+   },
+   {
+    "n": "Sentidos alerta",
+    "d": "Iniciativa alta, dificilmente é Surpreendido"
+   }
+  ]
+ },
+ "mon-lobo-atroz": {
+  "en": "Dire Wolf",
+  "hab": [
+   {
+    "n": "Mordida esmagadora",
+    "d": "dano alto, pode derrubar alvo Médio"
+   },
+   {
+    "n": "Faro de longa distância",
+    "d": "rastreia presas a quilômetros pelo cheiro"
+   },
+   {
+    "n": "Caça em matilha",
+    "d": "ganha bônus de Ataque lutando ao lado de outro lobo contra o mesmo alvo"
+   },
+   {
+    "n": "Porte avantajado",
+    "d": "Absorção e PV acima do normal para uma fera"
+   }
+  ]
+ },
+ "mon-urso-pardo": {
+  "en": "Brown Bear",
+  "hab": [
+   {
+    "n": "Garras destroçadoras",
+    "d": "dois ataques de garra na mesma rodada"
+   },
+   {
+    "n": "Abraço esmagador",
+    "d": "agarra o alvo e causa dano contínuo enquanto preso"
+   },
+   {
+    "n": "Fúria ferida",
+    "d": "ferido grave, ganha +1d em Ataque e Dano"
+   },
+   {
+    "n": "Couro grosso",
+    "d": "Absorção alta"
+   }
+  ]
+ },
+ "mon-leao": {
+  "en": "Lion",
+  "hab": [
+   {
+    "n": "Bote",
+    "d": "ao correr até o alvo, ataca com garras e mordida na mesma ação"
+   },
+   {
+    "n": "Emboscar",
+    "d": "bônus de dano no primeiro ataque saindo de Furtividade"
+   },
+   {
+    "n": "Mordida no pescoço",
+    "d": "alvo derrubado sofre dano extra em ataques seguintes"
+   },
+   {
+    "n": "Passo silencioso",
+    "d": "Furtividade alta em vegetação alta e savana"
+   }
+  ]
+ },
+ "mon-tigre": {
+  "en": "Tiger",
+  "hab": [
+   {
+    "n": "Bote e dilaceramento",
+    "d": "ao correr até o alvo, ataca com garras e mordida; garras presas causam dano extra a cada rodada"
+   },
+   {
+    "n": "Caçador solitário",
+    "d": "bônus de Furtividade emboscando presas sozinho"
+   },
+   {
+    "n": "Mordida no pescoço",
+    "d": "agarra o alvo e reduz seu deslocamento enquanto preso"
+   },
+   {
+    "n": "Nadador ágil",
+    "d": "atravessa rios e lagos sem penalidade, ataca normalmente na água"
+   }
+  ]
+ },
+ "mon-javali": {
+  "en": "Boar",
+  "hab": [
+   {
+    "n": "Investida",
+    "d": "ataque após correr em linha reta causa dano extra ao acertar"
+   },
+   {
+    "n": "Presas afiadas",
+    "d": "corte que sangra, causando dano leve contínuo"
+   },
+   {
+    "n": "Couro grosso",
+    "d": "Absorção contra ataques leves"
+   },
+   {
+    "n": "Teimosia selvagem",
+    "d": "resiste a Abalado, luta normalmente até ferido grave"
+   }
+  ]
+ },
+ "mon-rinoceronte": {
+  "en": "Rhinoceros",
+  "hab": [
+   {
+    "n": "Investida",
+    "d": "corre 6m ou mais antes de atacar; dano extra e Reflexos ou Caído"
+   },
+   {
+    "n": "Couro espesso",
+    "d": "Absorção alta contra golpes cortantes e perfurantes"
+   },
+   {
+    "n": "Chifre perfurante",
+    "d": "ataque corpo a corpo com dano alto"
+   },
+   {
+    "n": "Fúria cega",
+    "d": "quando Abalado, carrega contra o alvo mais próximo sem hesitar"
+   }
+  ]
+ },
+ "mon-elefante": {
+  "en": "Elephant",
+  "hab": [
+   {
+    "n": "Pisoteio",
+    "d": "área de 3m sob as patas; dano alto e Reflexos ou Caído"
+   },
+   {
+    "n": "Agarrar com a tromba",
+    "d": "agarra um alvo Médio ou menor; pode arremessá-lo 4m causando dano"
+   },
+   {
+    "n": "Couro grosso",
+    "d": "Absorção alta contra cortes e perfurações"
+   },
+   {
+    "n": "Investida avassaladora",
+    "d": "moveu antes de atacar: dano extra e empurra o alvo 2m"
+   },
+   {
+    "n": "Corpo enorme",
+    "d": "PV muito altos, dificilmente é Derrubado"
+   }
+  ]
+ },
+ "mon-gorila": {
+  "en": "Gorilla",
+  "hab": [
+   {
+    "n": "Força brutal",
+    "d": "golpe corpo a corpo com dano alto"
+   },
+   {
+    "n": "Escalada natural",
+    "d": "sobe superfícies verticais sem penalidade de deslocamento"
+   },
+   {
+    "n": "Arremesso",
+    "d": "agarra e lança objetos ou inimigos pequenos a até 4m"
+   },
+   {
+    "n": "Pelagem espessa",
+    "d": "Absorção moderada"
+   }
+  ]
+ },
+ "mon-crocodilo": {
+  "en": "Crocodile",
+  "hab": [
+   {
+    "n": "Mordida e rolamento",
+    "d": "após morder e agarrar, rola na água causando dano contínuo até o alvo escapar (Atletismo)"
+   },
+   {
+    "n": "Emboscada aquática",
+    "d": "submerso, ganha bônus de Furtividade e surpresa no primeiro ataque"
+   },
+   {
+    "n": "Nado",
+    "d": "desloca na água na mesma velocidade que em terra, sem penalidade"
+   },
+   {
+    "n": "Couro escamoso",
+    "d": "Absorção alta contra golpes cortantes"
+   }
+  ]
+ },
+ "mon-cobra-constritora": {
+  "en": "Constrictor Snake",
+  "hab": [
+   {
+    "n": "Constrição",
+    "d": "após morder e agarrar, causa dano contínuo por rodada até o alvo se soltar (Atletismo)"
+   },
+   {
+    "n": "Corpo flexível",
+    "d": "desliza por espaços apertados; bônus em Esquiva"
+   },
+   {
+    "n": "Sentido térmico",
+    "d": "detecta presas pelo calor mesmo no escuro total"
+   },
+   {
+    "n": "Sem membros",
+    "d": "resistente a Derrubar"
+   }
+  ]
+ },
+ "mon-aranha-gigante": {
+  "en": "Giant Spider",
+  "hab": [
+   {
+    "n": "Teia",
+    "d": "dispara teia a 6m; alvo preso precisa de Atletismo para se soltar"
+   },
+   {
+    "n": "Mordida venenosa",
+    "d": "acerto injeta veneno; falha em Vigor causa dano contínuo e Abalado"
+   },
+   {
+    "n": "Andar em teias",
+    "d": "move sobre teias e superfícies verticais sem penalidade"
+   },
+   {
+    "n": "Emboscada",
+    "d": "bônus de Furtividade ao atacar de surpresa"
+   }
+  ]
+ },
+ "mon-escorpiao-gigante": {
+  "en": "Giant Scorpion",
+  "hab": [
+   {
+    "n": "Ferrão venenoso",
+    "d": "ataque de cauda; acerto força Vigor ou dano contínuo e Fraqueza"
+   },
+   {
+    "n": "Garras duplas",
+    "d": "dois ataques de agarrar por rodada, podem prender o alvo"
+   },
+   {
+    "n": "Carapaça quitinosa",
+    "d": "Absorção alta"
+   },
+   {
+    "n": "Sentido vibratório",
+    "d": "percebe movimento no chão mesmo às cegas"
+   }
+  ]
+ },
+ "mon-aguia-gigante": {
+  "en": "Giant Eagle",
+  "hab": [
+   {
+    "n": "Voo veloz",
+    "d": "desloca no ar com grande alcance e velocidade"
+   },
+   {
+    "n": "Visão aguçada",
+    "d": "detecta alvos a centenas de metros, ignora penalidades de distância em Prontidão"
+   },
+   {
+    "n": "Mergulho predatório",
+    "d": "ataque após mergulho de altura causa dano extra"
+   },
+   {
+    "n": "Garras que agarram",
+    "d": "ergue e carrega presas de tamanho Pequeno ou menor"
+   },
+   {
+    "n": "Nobreza selvagem",
+    "d": "imune a Medo de criaturas menores que ela"
+   }
+  ]
+ },
+ "mon-roc": {
+  "en": "Roc",
+  "hab": [
+   {
+    "n": "Voo colossal",
+    "d": "desloca no ar a grande velocidade, mesmo carregando presas enormes"
+   },
+   {
+    "n": "Garras que erguem",
+    "d": "agarra uma criatura Grande ou menor e a ergue nos ares, podendo soltá-la para dano de queda"
+   },
+   {
+    "n": "Mergulho esmagador",
+    "d": "ataque após mergulho causa dano alto e pode Derrubar"
+   },
+   {
+    "n": "Bico devastador",
+    "d": "ataque corpo a corpo com dano alto"
+   },
+   {
+    "n": "Grito ensurdecedor",
+    "d": "grito em área de 9m; falha em Vontade causa Abalado"
+   },
+   {
+    "n": "Visão de predador ápice",
+    "d": "enxerga presas a quilômetros, ignora penalidades por distância"
+   },
+   {
+    "n": "Corpo colossal",
+    "d": "PV muito altos e Absorção alta contra ataques físicos"
+   }
+  ]
+ },
+ "mon-rato-gigante": {
+  "en": "Giant Rat",
+  "hab": [
+   {
+    "n": "Mordida imunda",
+    "d": "acerto pode causar doença; falha em Vigor debilita com o tempo"
+   },
+   {
+    "n": "Enxame urbano",
+    "d": "em grupo com outros ratos, ganha bônus para flanquear"
+   },
+   {
+    "n": "Fuga pelas frestas",
+    "d": "bônus de Furtividade para escapar por buracos e esgotos"
+   }
+  ]
+ },
+ "mon-corujurso": {
+  "en": "Owlbear",
+  "hab": [
+   {
+    "n": "Abraço esmagador",
+    "d": "após acertar com as duas garras, agarra o alvo e causa dano contínuo por rodada"
+   },
+   {
+    "n": "Garras furiosas",
+    "d": "dois ataques de garra por rodada com dano alto"
+   },
+   {
+    "n": "Bico cortante",
+    "d": "ataque extra de bico quando o alvo já está agarrado"
+   },
+   {
+    "n": "Sentidos apurados",
+    "d": "audição e olfato detectam presas escondidas mesmo contra Furtividade"
+   },
+   {
+    "n": "Fúria descontrolada",
+    "d": "gravemente ferido, ganha bônus de dano mas ataca sem distinguir aliados"
+   }
+  ]
+ },
+ "mon-minotauro": {
+  "en": "Minotaur",
+  "hab": [
+   {
+    "n": "Investida chifruda",
+    "d": "move 4m ou mais antes de atacar; dano extra com os chifres e pode Derrubar"
+   },
+   {
+    "n": "Faro no labirinto (Su)",
+    "d": "nunca se perde e sempre sabe o caminho de volta em passagens e labirintos"
+   },
+   {
+    "n": "Fúria de touro",
+    "d": "quando Abalado, ganha bônus de dano mas penalidade em Defesa"
+   },
+   {
+    "n": "Machado duplo",
+    "d": "ataque corpo a corpo pesado com dano alto"
+   },
+   {
+    "n": "Casco firme",
+    "d": "resistente a Derrubar e terrenos difíceis"
+   }
+  ]
+ },
+ "mon-harpia": {
+  "en": "Harpy",
+  "hab": [
+   {
+    "n": "Canção cativante (Su)",
+    "d": "quem ouve e falha em Vontade fica Enfeitiçado, caminhando até a harpia e ignorando perigos"
+   },
+   {
+    "n": "Garras aviformes",
+    "d": "dois ataques de garra por rodada com dano moderado"
+   },
+   {
+    "n": "Voo rasante",
+    "d": "desloca no ar em baixa altura, ideal para emboscadas em penhascos"
+   },
+   {
+    "n": "Feitiçaria (alternativa mágica)",
+    "d": "pode substituir a canção por um pequeno efeito mágico de controle ou ilusão"
+   },
+   {
+    "n": "Ninho no penhasco",
+    "d": "bônus de Furtividade e Prontidão em terrenos rochosos e alturas"
+   }
+  ]
+ },
+ "mon-gargula": {
+  "en": "Gargoyle",
+  "hab": [
+   {
+    "n": "Pele de pedra",
+    "d": "Absorção alta contra ataques físicos e mágicos"
+   },
+   {
+    "n": "Imobilidade (freeze)",
+    "d": "finge ser estátua parada; bônus enorme de Furtividade"
+   },
+   {
+    "n": "Voo silencioso",
+    "d": "desloca no ar sem ruído, surpreendendo presas"
+   },
+   {
+    "n": "Garras e chifres",
+    "d": "múltiplos ataques corpo a corpo na mesma rodada"
+   },
+   {
+    "n": "Corpo pétreo",
+    "d": "imune a Veneno e não precisa respirar"
+   }
+  ]
+ },
+ "mon-grifo": {
+  "en": "Griffon",
+  "hab": [
+   {
+    "n": "Voo veloz",
+    "d": "desloca no ar com grande velocidade e agilidade"
+   },
+   {
+    "n": "Garras de mergulho",
+    "d": "ataque após mergulho causa dano extra e pode Derrubar"
+   },
+   {
+    "n": "Bico de águia",
+    "d": "ataque corpo a corpo adicional com dano moderado"
+   },
+   {
+    "n": "Visão de caçador",
+    "d": "detecta presas em movimento a grande distância"
+   }
+  ]
+ },
+ "mon-hipogrifo": {
+  "en": "Hippogriff",
+  "hab": [
+   {
+    "n": "Voo veloz",
+    "d": "desloca-se livremente pelo ar, ganha Iniciativa +1 em perseguições aéreas"
+   },
+   {
+    "n": "Garras e bico",
+    "d": "ataca com garras e bico no mesmo turno"
+   },
+   {
+    "n": "Investida em mergulho",
+    "d": "dano extra ao atacar descendo do ar contra alvo no chão"
+   },
+   {
+    "n": "Sentidos de predador",
+    "d": "Prontidão 2; raramente é surpreendido"
+   }
+  ]
+ },
+ "mon-manticora": {
+  "en": "Manticore",
+  "hab": [
+   {
+    "n": "Voo",
+    "d": "combate e persegue livremente pelo ar"
+   },
+   {
+    "n": "Saraivada de espinhos",
+    "d": "dispara vários espinhos da cauda a até 18m; pode atingir dois alvos na mesma rodada"
+   },
+   {
+    "n": "Garras de leão",
+    "d": "ataque secundário logo após a mordida"
+   },
+   {
+    "n": "Perseguição implacável",
+    "d": "Prontidão 2 e Atletismo 1; raramente perde o alvo de vista"
+   }
+  ]
+ },
+ "mon-quimera": {
+  "en": "Chimera",
+  "hab": [
+   {
+    "n": "Sopro dracônico",
+    "d": "cone de 9m; dano alto, metade se Esquivar"
+   },
+   {
+    "n": "Voo",
+    "d": "combate e persegue livremente pelo ar"
+   },
+   {
+    "n": "Três cabeças, três mordidas",
+    "d": "ataca com leão, cabra e dragão no mesmo turno"
+   },
+   {
+    "n": "Chifrada de cabra",
+    "d": "pode derrubar o alvo atingido"
+   },
+   {
+    "n": "Sentidos triplos",
+    "d": "Prontidão 3; quase imune a emboscadas"
+   },
+   {
+    "n": "Passo leve",
+    "d": "Furtividade 1 apesar do porte"
+   }
+  ]
+ },
+ "mon-wyvern": {
+  "en": "Wyvern",
+  "hab": [
+   {
+    "n": "Voo veloz",
+    "d": "domina o ar, ataca em mergulho"
+   },
+   {
+    "n": "Ferrão venenoso",
+    "d": "ataque de cauda; falha em Resistência causa veneno debilitante (penalidade cumulativa por rodada)"
+   },
+   {
+    "n": "Investida em mergulho",
+    "d": "dano extra ao atacar descendo em voo"
+   },
+   {
+    "n": "Garras que prendem",
+    "d": "agarra alvos pequenos e os carrega no ar"
+   },
+   {
+    "n": "Predador alado",
+    "d": "Prontidão 2, Furtividade 1; ataca de surpresa vindo do alto"
+   }
+  ]
+ },
+ "mon-hidra-5-cabecas": {
+  "en": "Hydra (5-headed)",
+  "hab": [
+   {
+    "n": "Cabeças que rebrotam",
+    "d": "recupera PV perdidos a cada rodada, a menos que sofra dano de fogo na mesma rodada"
+   },
+   {
+    "n": "Cinco mordidas",
+    "d": "ataca com uma mordida por cabeça viva no mesmo turno"
+   },
+   {
+    "n": "Muitos olhos",
+    "d": "Prontidão 3; quase impossível de surpreender"
+   },
+   {
+    "n": "Corpo descomunal",
+    "d": "porte Enorme; resiste a ser derrubado ou Abalado"
+   }
+  ]
+ },
+ "mon-basilisco": {
+  "en": "Basilisk",
+  "hab": [
+   {
+    "n": "Olhar petrificante",
+    "d": "quem encara falha em Resistência vira pedra; sucesso causa Abalado"
+   },
+   {
+    "n": "Mordida reptiliana",
+    "d": "ataque físico simples além do olhar"
+   },
+   {
+    "n": "Emboscada nas pedras",
+    "d": "Furtividade 2; camufla-se entre rochas"
+   },
+   {
+    "n": "Sentidos aguçados",
+    "d": "Prontidão 3 compensa a visão fraca"
+   },
+   {
+    "n": "Reflexo traidor",
+    "d": "espelho ou superfície reflexiva pode virar o próprio olhar contra ele"
+   }
+  ]
+ },
+ "mon-cocatriz": {
+  "en": "Cockatrice",
+  "hab": [
+   {
+    "n": "Toque que petrifica",
+    "d": "bicada que petrifica em teste de Resistência falho"
+   },
+   {
+    "n": "Voo ágil",
+    "d": "pequeno e veloz no ar; bônus de Esquiva contra ataques"
+   },
+   {
+    "n": "Bicadas rápidas",
+    "d": "dois ataques de bico no mesmo turno"
+   },
+   {
+    "n": "Sentidos de ave",
+    "d": "Prontidão 2"
+   }
+  ]
+ },
+ "mon-gorgona-touro-de-ferro": {
+  "en": "Gorgon (Iron Bull)",
+  "hab": [
+   {
+    "n": "Sopro petrificante",
+    "d": "cone de 9m; falha em Resistência petrifica, sucesso causa Abalado"
+   },
+   {
+    "n": "Couraça de ferro",
+    "d": "Absorção alta; ignora a maior parte dos golpes cortantes e perfurantes"
+   },
+   {
+    "n": "Investida de chifre",
+    "d": "carga corrida causa dano extra e pode derrubar o alvo"
+   },
+   {
+    "n": "Pisoteio",
+    "d": "atropela e fere alvos menores no caminho"
+   },
+   {
+    "n": "Corpo metálico",
+    "d": "imune a veneno e doença"
+   },
+   {
+    "n": "Guardiã atenta",
+    "d": "Prontidão 4"
+   }
+  ]
+ },
+ "mon-besta-deslocadora": {
+  "en": "Displacer Beast",
+  "hab": [
+   {
+    "n": "Deslocamento",
+    "d": "imagem ilusória faz o primeiro ataque de cada oponente contra ela errar automaticamente"
+   },
+   {
+    "n": "Tentáculos gêmeos",
+    "d": "dois ataques de tentáculo além da mordida no mesmo turno"
+   },
+   {
+    "n": "Resistência à magia",
+    "d": "vantagem em testes de Resistência contra feitiços dirigidos a ela"
+   },
+   {
+    "n": "Emboscadora",
+    "d": "Furtividade 3; ataca das sombras antes de ser notada"
+   },
+   {
+    "n": "Prontidão felina",
+    "d": "Prontidão 2"
+   }
+  ]
+ },
+ "mon-aranha-das-fases": {
+  "en": "Phase Spider",
+  "hab": [
+   {
+    "n": "Salto etéreo",
+    "d": "desaparece e reaparece a até 9m, ignorando obstáculos e ataques de oportunidade"
+   },
+   {
+    "n": "Mordida venenosa",
+    "d": "falha em Resistência causa veneno debilitante"
+   },
+   {
+    "n": "Fio de teia",
+    "d": "prende o alvo, reduzindo sua Esquiva até se soltar"
+   },
+   {
+    "n": "Emboscada etérea",
+    "d": "Furtividade 3; surge do Plano Etéreo sem aviso"
+   },
+   {
+    "n": "Retirada instantânea",
+    "d": "foge para o Etéreo assim que gravemente ferida"
+   }
+  ]
+ },
+ "mon-monstro-da-ferrugem": {
+  "en": "Rust Monster",
+  "hab": [
+   {
+    "n": "Corrói metal",
+    "d": "toque das antenas enferruja e destrói armas e armaduras metálicas (reduz a Absorção do alvo)"
+   },
+   {
+    "n": "Faro por metal",
+    "d": "Prontidão 3; localiza objetos metálicos a distância"
+   },
+   {
+    "n": "Mordida fraca",
+    "d": "ataque secundário de pouco dano"
+   },
+   {
+    "n": "Fuga cautelosa",
+    "d": "prefere recuar a enfrentar quem já perdeu o metal"
+   }
+  ]
+ },
+ "mon-cubo-gelatinoso": {
+  "en": "Gelatinous Cube",
+  "hab": [
+   {
+    "n": "Corpo transparente",
+    "d": "quase invisível parado; exige Prontidão alta para notar antes do contato"
+   },
+   {
+    "n": "Engolfa",
+    "d": "encosta e envolve o alvo, causando dano contínuo enquanto Agarrado"
+   },
+   {
+    "n": "Ácido corrosivo",
+    "d": "dano extra por rodada a quem estiver dentro do cubo; corrói equipamento exposto"
+   },
+   {
+    "n": "Mente vazia",
+    "d": "imune a efeitos mentais e a Abalado"
+   },
+   {
+    "n": "Preenche o corredor",
+    "d": "ocupa toda a passagem; difícil de contornar ou escapar"
+   }
+  ]
+ },
+ "mon-mimico": {
+  "en": "Mimic",
+  "hab": [
+   {
+    "n": "Disfarce de objeto",
+    "d": "parece um baú ou móvel comum; exige teste de Prontidão para perceber o engano"
+   },
+   {
+    "n": "Cola aderente",
+    "d": "quem toca fica Agarrado até se soltar com Atletismo"
+   },
+   {
+    "n": "Mordida de emboscada",
+    "d": "dano extra no primeiro ataque contra alvo desavisado"
+   },
+   {
+    "n": "Imóvel e paciente",
+    "d": "Furtividade 4 enquanto disfarçado"
+   }
+  ]
+ },
+ "mon-montao-tropecante": {
+  "en": "Shambling Mound",
+  "hab": [
+   {
+    "n": "Absorve raio",
+    "d": "dano elétrico recebido cura PV em vez de feri-lo"
+   },
+   {
+    "n": "Constrição",
+    "d": "agarra e esmaga; dano contínuo enquanto o alvo estiver Agarrado"
+   },
+   {
+    "n": "Casca vegetal",
+    "d": "Absorção elevada contra golpes cortantes e perfurantes"
+   },
+   {
+    "n": "Emboscada no pântano",
+    "d": "Furtividade 3; confunde-se com vegetação densa"
+   },
+   {
+    "n": "Passo pesado, sentidos atentos",
+    "d": "Prontidão 2 apesar da lentidão"
+   }
+  ]
+ },
+ "mon-treant": {
+  "en": "Treant",
+  "hab": [
+   {
+    "n": "Animar árvores",
+    "d": "transforma árvores próximas em aliados temporários que lutam ao seu lado"
+   },
+   {
+    "n": "Casca reforçada",
+    "d": "Absorção alta contra golpes físicos"
+   },
+   {
+    "n": "Braços longos",
+    "d": "alcance de 3m no ataque corpo a corpo; dano alto"
+   },
+   {
+    "n": "Vulnerável ao fogo",
+    "d": "sofre dano adicional de ataques flamejantes"
+   },
+   {
+    "n": "Guardião da floresta",
+    "d": "Persuasão 2 e Sobrevivência 3; negocia com plantas e animais"
+   },
+   {
+    "n": "Confunde-se com a mata",
+    "d": "parece árvore comum quando imóvel, dificultando ser notado"
+   }
+  ]
+ },
+ "mon-verme-purpura": {
+  "en": "Purple Worm",
+  "hab": [
+   {
+    "n": "Mordida colossal",
+    "d": "ataque corpo a corpo com dano muito alto, ignora parte da Absorção por ser Imenso"
+   },
+   {
+    "n": "Engole inteiro",
+    "d": "acerto crítico prende o alvo dentro do corpo; dano contínuo automático a cada rodada até escapar"
+   },
+   {
+    "n": "Ferrão de cauda venenoso",
+    "d": "ataque secundário na mesma rodada; veneno causa Enfraquecido e dano contínuo se falhar em Resistência"
+   },
+   {
+    "n": "Escavador implacável",
+    "d": "atravessa terra e rocha sem perder deslocamento, pode emergir sob um alvo com bônus de Iniciativa"
+   },
+   {
+    "n": "Sentido de tremor",
+    "d": "percebe qualquer criatura em contato com o solo em 18m, ignora invisibilidade e escuridão nesse alcance"
+   },
+   {
+    "n": "Cego além do tremor",
+    "d": "sem visão real; sofre penalidade contra alvos voando ou flutuando fora do alcance do tremor"
+   },
+   {
+    "n": "Carapaça anelada",
+    "d": "Absorção altíssima, resistente a esmagamento e queda"
+   }
+  ]
+ },
+ "mon-bulette": {
+  "en": "Bulette",
+  "hab": [
+   {
+    "n": "Salto de emboscada",
+    "d": "emerge do solo e salta até 9m sobre a presa; bônus de Iniciativa na primeira rodada"
+   },
+   {
+    "n": "Mordida trituradora",
+    "d": "dano alto corpo a corpo; acerto forte derruba o alvo (Caído)"
+   },
+   {
+    "n": "Couraça de placas",
+    "d": "Absorção elevada, natural"
+   },
+   {
+    "n": "Escavação veloz",
+    "d": "desloca-se sob a terra ignorando terreno difícil, some e reaparece em cena"
+   },
+   {
+    "n": "Sentido de tremor",
+    "d": "localiza presas pelo contato com o solo mesmo sem visão"
+   },
+   {
+    "n": "Fúria voraz",
+    "d": "bônus de dano contra alvos já Feridos ou Caídos"
+   }
+  ]
+ },
+ "mon-aboleth": {
+  "en": "Aboleth",
+  "hab": [
+   {
+    "n": "Muco transmutador",
+    "d": "toque de tentáculo transforma a pele do alvo, permitindo respirar água mas exigindo umidade constante (senão dano contínuo em terra seca)"
+   },
+   {
+    "n": "Domínio psíquico",
+    "d": "falha em teste de Vontade torna o alvo Dominado, obedece ordens simples por cena"
+   },
+   {
+    "n": "Telepatia",
+    "d": "comunica-se mentalmente com qualquer criatura em alcance amplo, sem barreira de idioma"
+   },
+   {
+    "n": "Tentáculos múltiplos",
+    "d": "até quatro ataques secundários na mesma rodada"
+   },
+   {
+    "n": "Memória ancestral",
+    "d": "bônus em Conhecimentos e Ocultismo por lembranças de eras esquecidas"
+   },
+   {
+    "n": "Pele antiga e escamosa",
+    "d": "Absorção alta"
+   },
+   {
+    "n": "Respiração aquática obrigatória",
+    "d": "fora d'água por muito tempo fica Enfraquecido progressivamente"
+   },
+   {
+    "n": "Presença alienígena",
+    "d": "quem falha ao resistir ao domínio também fica Abalado pelo contato mental"
+   }
+  ]
+ },
+ "mon-esqueleto-humano": {
+  "en": "Human Skeleton",
+  "hab": [
+   {
+    "n": "Sem carne",
+    "d": "imune a veneno, doença e efeitos mentais, nunca fica Abalado por medo"
+   },
+   {
+    "n": "Ossos frágeis a impacto",
+    "d": "sofre dano extra de armas de concussão (Absorção reduzida contra elas)"
+   },
+   {
+    "n": "Ataque de arma simples",
+    "d": "golpe corpo a corpo com espada ou lança sem talento especial"
+   }
+  ]
+ },
+ "mon-zumbi-humano": {
+  "en": "Human Zombie",
+  "hab": [
+   {
+    "n": "Sem carne",
+    "d": "imune a veneno, doença e efeitos mentais"
+   },
+   {
+    "n": "Golpe pesado e lento",
+    "d": "dano alto mas Iniciativa reduzida"
+   },
+   {
+    "n": "Últimos estertores",
+    "d": "uma vez por cena, um golpe que zeraria seus PV o deixa com 1 PV"
+   }
+  ]
+ },
+ "mon-ghoul": {
+  "en": "Ghoul",
+  "hab": [
+   {
+    "n": "Toque paralisante",
+    "d": "acerto de garra exige teste de Vontade; falha torna o alvo Paralisado por rodadas"
+   },
+   {
+    "n": "Faro do carniçal",
+    "d": "detecta cadáveres e feridos graves a distância; bônus de Iniciativa contra alvos debilitados"
+   },
+   {
+    "n": "Garras e mordida",
+    "d": "dois ataques na mesma ação"
+   },
+   {
+    "n": "Constituição de morto-vivo",
+    "d": "imune a veneno e resistente a efeitos que exijam Fortitude"
+   }
+  ]
+ },
+ "mon-ghast": {
+  "en": "Ghast",
+  "hab": [
+   {
+    "n": "Fedor nauseante",
+    "d": "aura de 3m; falha em Resistência deixa o alvo Enjoado (Abalado) até se afastar"
+   },
+   {
+    "n": "Toque paralisante",
+    "d": "mais potente que o do ghoul comum, dificuldade maior no teste de Vontade"
+   },
+   {
+    "n": "Garras afiadas",
+    "d": "dano superior ao de um ghoul comum"
+   },
+   {
+    "n": "Constituição de morto-vivo",
+    "d": "imune a veneno e doença"
+   },
+   {
+    "n": "Faro do carniçal",
+    "d": "localiza carne morta ou moribunda pelo cheiro"
+   }
+  ]
+ },
+ "mon-sombra": {
+  "en": "Shadow",
+  "hab": [
+   {
+    "n": "Incorpórea",
+    "d": "atravessa paredes e objetos; só pode ser ferida por armas mágicas ou de prata"
+   },
+   {
+    "n": "Toque drenante",
+    "d": "acerto reduz Atletismo/Força do alvo temporariamente (Enfraquecido) e cura a sombra"
+   },
+   {
+    "n": "Camuflagem nas trevas",
+    "d": "bônus alto de Furtividade em ambientes escuros"
+   },
+   {
+    "n": "Deslize silencioso",
+    "d": "move-se sem ruído, surpreende com bônus de Iniciativa"
+   },
+   {
+    "n": "Reduzida à sombra",
+    "d": "pode se achatar e escoar por frestas mínimas"
+   }
+  ]
+ },
+ "mon-wight": {
+  "en": "Wight",
+  "hab": [
+   {
+    "n": "Toque de dreno vital",
+    "d": "acerto causa dano e reduz o máximo de PV do alvo até um descanso completo"
+   },
+   {
+    "n": "Criação de súditos",
+    "d": "humanoide morto pelo dreno pode se levantar como novo Wight na cena seguinte"
+   },
+   {
+    "n": "Constituição de morto-vivo",
+    "d": "imune a veneno, doença e efeitos mentais"
+   },
+   {
+    "n": "Garras cortantes",
+    "d": "ataque corpo a corpo padrão"
+   },
+   {
+    "n": "Faro de vida",
+    "d": "percebe criaturas vivas próximas mesmo sem visão direta"
+   }
+  ]
+ },
+ "mon-assombracao-wraith": {
+  "en": "Wraith",
+  "hab": [
+   {
+    "n": "Incorpórea",
+    "d": "atravessa paredes e objetos; imune a ataques não mágicos"
+   },
+   {
+    "n": "Toque drenante",
+    "d": "reduz Constituição/PV máximo do alvo e cura a Assombração pelo valor drenado"
+   },
+   {
+    "n": "Voo silencioso",
+    "d": "desloca-se voando sem ruído, bônus de Furtividade"
+   },
+   {
+    "n": "Presença sepulcral",
+    "d": "quem se aproxima faz teste de Vontade; falha deixa Abalado"
+   },
+   {
+    "n": "Cria súditos",
+    "d": "vítima morta pelo dreno pode ressurgir como Assombração subordinada"
+   },
+   {
+    "n": "Frio da morte",
+    "d": "o ar ao redor esfria, delatando sua presença a quem for sensível"
+   }
+  ]
+ },
+ "mon-espectro": {
+  "en": "Spectre",
+  "hab": [
+   {
+    "n": "Incorpóreo",
+    "d": "ignora armaduras físicas, atravessa paredes e obstáculos"
+   },
+   {
+    "n": "Dreno de nível",
+    "d": "toque impõe penalidade duradoura em testes do alvo até ser removida por magia"
+   },
+   {
+    "n": "Voo veloz",
+    "d": "desloca-se voando em alta velocidade mesmo perseguindo fugitivos"
+   },
+   {
+    "n": "Terror sepulcral",
+    "d": "presença próxima força teste de Vontade; falha deixa Abalado"
+   },
+   {
+    "n": "Regenera-se com o dreno",
+    "d": "recupera PV ao drenar uma vítima"
+   },
+   {
+    "n": "Cria espectros subordinados",
+    "d": "vítimas mortas pelo dreno podem ressurgir sob seu comando"
+   },
+   {
+    "n": "Frio sobrenatural",
+    "d": "sua aproximação é sentida como queda brusca de temperatura"
+   }
+  ]
+ },
+ "mon-mumia": {
+  "en": "Mummy",
+  "hab": [
+   {
+    "n": "Toque da podridão",
+    "d": "acerto contamina o alvo com maldição que impede cura mágica até tratada por ritual"
+   },
+   {
+    "n": "Aura de desespero",
+    "d": "quem se aproxima em 9m faz teste de Vontade; falha deixa Abalado"
+   },
+   {
+    "n": "Passo lento porém implacável",
+    "d": "Iniciativa baixa, mas nunca perde o alvo numa perseguição"
+   },
+   {
+    "n": "Vulnerável ao fogo",
+    "d": "sofre dano extra de chamas (Absorção reduzida)"
+   },
+   {
+    "n": "Ataduras enroladas",
+    "d": "Absorção elevada contra cortes e perfurações"
+   },
+   {
+    "n": "Constituição de morto-vivo",
+    "d": "imune a veneno e efeitos mentais"
+   },
+   {
+    "n": "Golpe esmagador",
+    "d": "ataque corpo a corpo com dano consistente mesmo sem talento extra"
+   }
+  ]
+ },
+ "mon-bodak": {
+  "en": "Bodak",
+  "hab": [
+   {
+    "n": "Olhar mortal",
+    "d": "quem cruza o olhar em campo aberto faz teste de Resistência; falha grave reduz o alvo a 0 PV instantaneamente"
+   },
+   {
+    "n": "Pele cinzenta e rachada",
+    "d": "Absorção elevada"
+   },
+   {
+    "n": "Vulnerável à luz solar direta",
+    "d": "sofre Abalado e penalidade em testes sob o sol"
+   },
+   {
+    "n": "Presença perturbadora",
+    "d": "mesmo resistindo ao olhar mortal, quem falha fica Abalado"
+   },
+   {
+    "n": "Garras ressecadas",
+    "d": "ataque corpo a corpo padrão"
+   },
+   {
+    "n": "Constituição de morto-vivo",
+    "d": "imune a veneno, doença e efeitos mentais"
+   },
+   {
+    "n": "Odiado pela vida",
+    "d": "plantas e animais próximos reagem com pavor, delatando sua presença"
+   }
+  ]
+ },
+ "mon-vampiro": {
+  "en": "Vampire",
+  "hab": [
+   {
+    "n": "Olhar dominador",
+    "d": "teste de Vontade; falha torna o alvo Dominado, obedece ordens simples por cena"
+   },
+   {
+    "n": "Forma gasosa",
+    "d": "transforma-se em névoa, imune a dano físico e passa por frestas"
+   },
+   {
+    "n": "Filhos da noite",
+    "d": "convoca um enxame de morcegos, ratos ou um bando de lobos para auxiliar no combate"
+   },
+   {
+    "n": "Regeneração",
+    "d": "recupera PV a cada rodada; só é impedida por dano de prata, fogo ou luz solar"
+   },
+   {
+    "n": "Mordida drenante",
+    "d": "dano corpo a corpo que cura o vampiro pelo valor causado"
+   },
+   {
+    "n": "Força sobre-humana",
+    "d": "bônus em Atletismo e Acrobacia"
+   },
+   {
+    "n": "Fraquezas clássicas",
+    "d": "sofre dano grave sob luz solar direta, água corrente e estaca no coração"
+   },
+   {
+    "n": "Sem reflexo nem sombra",
+    "d": "passa despercebido em espelhos e retratos"
+   },
+   {
+    "n": "Sedução vampírica",
+    "d": "bônus em Persuasão e Manha ao encantar vítimas antes de atacar"
+   }
+  ]
+ },
+ "mon-lich": {
+  "en": "Lich",
+  "hab": [
+   {
+    "n": "Feitiços de arcanista",
+    "d": "conjura magias de dano, controle e ilusão como um mago experiente, com grande variedade de efeitos"
+   },
+   {
+    "n": "Toque paralisante",
+    "d": "acerto desarmado exige teste de Fortitude; falha torna o alvo Paralisado"
+   },
+   {
+    "n": "Aura de medo",
+    "d": "presença em 9m força teste de Vontade; falha deixa Abalado"
+   },
+   {
+    "n": "Filactério",
+    "d": "se destruído, sua essência retorna ao filactério e reforma o corpo após um tempo, dificultando a morte permanente"
+   },
+   {
+    "n": "Constituição de morto-vivo",
+    "d": "imune a frio, veneno, doença e efeitos mentais"
+   },
+   {
+    "n": "Toque gélido",
+    "d": "pode substituir o toque paralisante por dreno de energia fria, causando dano extra"
+   },
+   {
+    "n": "Mente arquivista",
+    "d": "séculos de estudo garantem bônus altíssimo em Ocultismo e Conhecimentos"
+   },
+   {
+    "n": "Comando sobre mortos-vivos",
+    "d": "pode dominar e comandar mortos-vivos inferiores nas proximidades"
+   },
+   {
+    "n": "Corpo ressecado",
+    "d": "imune a efeitos que exijam respiração ou fluxo sanguíneo"
+   },
+   {
+    "n": "Presença de poder",
+    "d": "sua simples chegada é sentida como distorção mágica no ambiente"
+   }
+  ]
+ },
+ "mon-dretch": {
+  "en": "Dretch",
+  "hab": [
+   {
+    "n": "Fedor nauseante",
+    "d": "aura de 3m; falha no teste de Fortitude = Enjoado por 1 rodada"
+   },
+   {
+    "n": "Telepatia",
+    "d": "comunica-se mentalmente com qualquer criatura em até 30m"
+   },
+   {
+    "n": "Duas garras",
+    "d": "dois ataques corpo a corpo na mesma ação, dano baixo cada"
+   },
+   {
+    "n": "Susto",
+    "d": "feitiçaria, 1x por cena; falha no teste de Vontade = Abalado"
+   },
+   {
+    "n": "Sangue abissal",
+    "d": "resistente a fogo, frio e ácido; imune a veneno"
+   }
+  ]
+ },
+ "mon-quasit": {
+  "en": "Quasit",
+  "hab": [
+   {
+    "n": "Invisibilidade",
+    "d": "feitiçaria; fica invisível à vontade como ação livre"
+   },
+   {
+    "n": "Susto",
+    "d": "feitiçaria, 1x por cena; falha no teste de Vontade = Abalado"
+   },
+   {
+    "n": "Adivinhação",
+    "d": "feitiçaria, 1x por cena; vislumbra o futuro próximo e ganha vantagem no próximo teste"
+   },
+   {
+    "n": "Forma alternativa",
+    "d": "feitiçaria; vira morcego, centopeia gigante ou lobo, ganhando voo ou deslocamento extra"
+   },
+   {
+    "n": "Garra e ferrão venenosos",
+    "d": "ataque corpo a corpo; crítico = alvo Envenenado"
+   },
+   {
+    "n": "Regeneração",
+    "d": "recupera PV toda rodada, exceto se ferido por arma benta ou de prata"
+   }
+  ]
+ },
+ "mon-sucubo": {
+  "en": "Succubus",
+  "hab": [
+   {
+    "n": "Beijo dreno",
+    "d": "toque corpo a corpo; drena PV e, se a Vontade falhar, Enfeitiça o alvo por uma cena"
+   },
+   {
+    "n": "Sedução",
+    "d": "proeza; teste de Persuasão ou Manha contra Vontade do alvo abre uma ação livre de aproximação ou distração"
+   },
+   {
+    "n": "Mudar de forma",
+    "d": "feitiçaria; assume forma de qualquer humanoide Médio, indistinguível sem magia"
+   },
+   {
+    "n": "Teleporte",
+    "d": "feitiçaria; desloca-se instantaneamente até 60m, ignorando obstáculos"
+   },
+   {
+    "n": "Asas",
+    "d": "voo com deslocamento igual ao dobro do terrestre"
+   },
+   {
+    "n": "Charme sobre-humano",
+    "d": "ganha bônus em testes de Persuasão e Manha contra alvos atraídos por ela"
+   },
+   {
+    "n": "Pele resistente",
+    "d": "metade do dano de armas comuns não abençoadas"
+   }
+  ]
+ },
+ "mon-vrock": {
+  "en": "Vrock",
+  "hab": [
+   {
+    "n": "Esporos entorpecentes",
+    "d": "explosão de 6m ao ficar Agonizante; falha em Fortitude = Enfraquecido"
+   },
+   {
+    "n": "Dança da ruína",
+    "d": "se dois ou mais Vrocks dançarem 3 rodadas seguidas, liberam explosão de área grande com dano alto"
+   },
+   {
+    "n": "Convocar demônios",
+    "d": "feitiçaria, 1x por cena; traz 1d4 dretches ou outro vrock para a luta"
+   },
+   {
+    "n": "Garras e bico",
+    "d": "três ataques corpo a corpo na mesma ação, dano baixo cada"
+   },
+   {
+    "n": "Grito ensurdecedor",
+    "d": "cone de 6m, 1x por cena; falha em Fortitude = Atordoado por 1 rodada"
+   },
+   {
+    "n": "Voo",
+    "d": "asas de abutre, deslocamento de voo alto e ágil"
+   },
+   {
+    "n": "Imagem espelhada",
+    "d": "feitiçaria; cria duplicatas ilusórias que dão bônus de Esquiva até serem atingidas"
+   }
+  ]
+ },
+ "mon-hezrou": {
+  "en": "Hezrou",
+  "hab": [
+   {
+    "n": "Fedor nauseante",
+    "d": "aura de 6m; falha em Fortitude = Enjoado enquanto permanecer perto"
+   },
+   {
+    "n": "Mordida e garras",
+    "d": "ataque corpo a corpo; crítico permite Agarrar o alvo"
+   },
+   {
+    "n": "Convocar",
+    "d": "feitiçaria, 1x por cena; traz outro demônio para reforçar a luta"
+   },
+   {
+    "n": "Corpo maciço",
+    "d": "Absorção alta e força suficiente para arrombar portas e objetos"
+   },
+   {
+    "n": "Teleporte",
+    "d": "feitiçaria, 1x por cena; desloca-se instantaneamente, podendo levar um alvo Agarrado"
+   },
+   {
+    "n": "Sangue abissal",
+    "d": "resistente a fogo, frio, ácido e eletricidade"
+   }
+  ]
+ },
+ "mon-glabrezu": {
+  "en": "Glabrezu",
+  "hab": [
+   {
+    "n": "Desejo traiçoeiro",
+    "d": "feitiçaria, 1x por história; concede um pedido ao alvo com uma cláusula oculta que o prejudica depois"
+   },
+   {
+    "n": "Feitiços",
+    "d": "feitiçaria; lança Confusão, Imagem Espelhada e efeitos de área como conjurador experiente"
+   },
+   {
+    "n": "Visão verdadeira",
+    "d": "enxerga através de ilusões, disfarces e invisibilidade"
+   },
+   {
+    "n": "Pinças e garras",
+    "d": "quatro ataques corpo a corpo na mesma ação (duas pinças esmagam, duas garras cortam)"
+   },
+   {
+    "n": "Teleporte",
+    "d": "feitiçaria, 1x por cena; desloca-se com até 6 aliados por até 300m"
+   },
+   {
+    "n": "Sangue abissal",
+    "d": "imune a veneno e eletricidade; resistente a fogo e frio"
+   },
+   {
+    "n": "Telepatia",
+    "d": "comunica-se mentalmente com qualquer criatura em até 30m"
+   }
+  ]
+ },
+ "mon-marilith": {
+  "en": "Marilith",
+  "hab": [
+   {
+    "n": "Seis lâminas",
+    "d": "proeza; ataca com seis espadas na mesma rodada, um golpe independente por lâmina"
+   },
+   {
+    "n": "Cauda constritora",
+    "d": "proeza; ataque de cauda que Agarra e esmaga o alvo a cada rodada de aperto"
+   },
+   {
+    "n": "Feitiços",
+    "d": "feitiçaria; lança Teleporte, Telecinesia e Paralisar como conjuradora nata"
+   },
+   {
+    "n": "Visão verdadeira",
+    "d": "enxerga através de ilusões, disfarces e invisibilidade"
+   },
+   {
+    "n": "Tática de guerra",
+    "d": "concede Iniciativa extra a aliados demoníacos próximos"
+   },
+   {
+    "n": "Corpo de serpente",
+    "d": "desloca-se sobre o chão ignorando terreno difícil"
+   },
+   {
+    "n": "Regeneração",
+    "d": "recupera PV toda rodada, exceto se ferida por arma benta ou fogo"
+   },
+   {
+    "n": "Presença aterradora",
+    "d": "falha no teste de Vontade = Abalado ao vê-la em combate"
+   }
+  ]
+ },
+ "mon-balor": {
+  "en": "Balor",
+  "hab": [
+   {
+    "n": "Espada flamejante",
+    "d": "ataque corpo a corpo com dano extra de fogo"
+   },
+   {
+    "n": "Chicote de energia",
+    "d": "alcance 9m; acerto puxa o alvo para perto ou o derruba (Caído)"
+   },
+   {
+    "n": "Aura de fogo",
+    "d": "quem chega a até 3m sofre dano de fogo automático toda rodada"
+   },
+   {
+    "n": "Morte explosiva",
+    "d": "ao cair a 0 PV, explode em 12m; falha em Reflexos = dano alto"
+   },
+   {
+    "n": "Comandar legiões",
+    "d": "proeza; concede ação extra ou Iniciativa a demônios aliados na área"
+   },
+   {
+    "n": "Teleporte",
+    "d": "feitiçaria; desloca-se instantaneamente, ignorando prisões e paredes"
+   },
+   {
+    "n": "Voo",
+    "d": "asas flamejantes, deslocamento de voo alto"
+   },
+   {
+    "n": "Sangue abissal",
+    "d": "imune a fogo; vulnerável a frio (sofre dano extra)"
+   },
+   {
+    "n": "Visão verdadeira",
+    "d": "enxerga através de ilusões, disfarces e invisibilidade"
+   }
+  ]
+ },
+ "mon-lemure": {
+  "en": "Lemure",
+  "hab": [
+   {
+    "n": "Regeneração fraca",
+    "d": "recupera 1 PV por rodada, exceto se ferido por arma benta ou fogo"
+   },
+   {
+    "n": "Massa amorfa",
+    "d": "imune a Medo e a efeitos que dependam de mente própria"
+   },
+   {
+    "n": "Garras rudimentares",
+    "d": "ataque corpo a corpo simples, dano baixo"
+   },
+   {
+    "n": "Carne infernal",
+    "d": "resistente a fogo"
+   }
+  ]
+ },
+ "mon-diabrete-imp": {
+  "en": "Imp",
+  "hab": [
+   {
+    "n": "Ferrão venenoso",
+    "d": "ataque corpo a corpo; falha em Fortitude = Enfraquecido"
+   },
+   {
+    "n": "Invisibilidade",
+    "d": "feitiçaria; fica invisível à vontade como ação livre"
+   },
+   {
+    "n": "Adivinhação",
+    "d": "feitiçaria, 1x por cena; revela uma informação oculta sobre um alvo ou cena"
+   },
+   {
+    "n": "Forma alternativa",
+    "d": "feitiçaria; vira corvo ou aranha pequena, ganhando voo ou Furtividade extra"
+   },
+   {
+    "n": "Regeneração",
+    "d": "recupera PV toda rodada, exceto se ferido por arma benta ou de prata"
+   },
+   {
+    "n": "Sangue infernal",
+    "d": "imune a fogo e veneno; resistente a frio e ácido"
+   }
+  ]
+ },
+ "mon-diabo-barbado": {
+  "en": "Bearded Devil (Barbazu)",
+  "hab": [
+   {
+    "n": "Glaive serrilhada",
+    "d": "ataque corpo a corpo com alcance, dano alto"
+   },
+   {
+    "n": "Mordida com doença infernal",
+    "d": "falha em Fortitude = Enfermo, perde PV máximo até ser curado"
+   },
+   {
+    "n": "Barba viva",
+    "d": "ao ser atacada corpo a corpo, pode Agarrar o atacante com a barba como reação"
+   },
+   {
+    "n": "Trava a ferida",
+    "d": "reduz a cura recebida pelo alvo ferido por ela até o fim da cena"
+   },
+   {
+    "n": "Teleporte",
+    "d": "feitiçaria, 1x por cena; desloca-se instantaneamente até 60m"
+   },
+   {
+    "n": "Regeneração",
+    "d": "recupera PV toda rodada, exceto se ferida por arma benta ou de prata"
+   },
+   {
+    "n": "Sangue infernal",
+    "d": "imune a fogo; resistente a ácido e frio"
+   }
+  ]
+ },
+ "mon-erinia": {
+  "en": "Erinyes",
+  "hab": [
+   {
+    "n": "Arco certeiro",
+    "d": "proeza; ataque à distância de alcance longo, ignora parte da Absorção"
+   },
+   {
+    "n": "Corda de comando",
+    "d": "feitiçaria; à distância, Agarra o alvo e, se a Vontade falhar, o obriga a obedecer uma ordem simples"
+   },
+   {
+    "n": "Espada flamejante",
+    "d": "ataque corpo a corpo alternativo com dano extra"
+   },
+   {
+    "n": "Teleporte",
+    "d": "feitiçaria, 1x por cena; desloca-se instantaneamente até 60m"
+   },
+   {
+    "n": "Voo",
+    "d": "asas emplumadas, deslocamento de voo alto e combate aéreo"
+   },
+   {
+    "n": "Visão verdadeira",
+    "d": "enxerga através de ilusões, disfarces e invisibilidade"
+   }
+  ]
+ },
+ "mon-diabo-osseo": {
+  "en": "Bone Devil (Osyluth)",
+  "hab": [
+   {
+    "n": "Ferrão que enfraquece",
+    "d": "ataque de cauda; falha em Fortitude = Enfraquecido"
+   },
+   {
+    "n": "Garras ósseas",
+    "d": "dois ataques corpo a corpo na mesma ação, dano médio cada"
+   },
+   {
+    "n": "Parede de gelo",
+    "d": "feitiçaria, 1x por cena; ergue parede de 6m que bloqueia passagem ou visão"
+   },
+   {
+    "n": "Invisibilidade",
+    "d": "feitiçaria; fica invisível à vontade"
+   },
+   {
+    "n": "Carapaça óssea",
+    "d": "Absorção alta contra ataques físicos"
+   },
+   {
+    "n": "Sangue infernal",
+    "d": "imune a fogo e veneno; resistente a frio e ácido"
+   }
+  ]
+ },
+ "mon-diabo-de-gelo": {
+  "en": "Ice Devil (Gelugon)",
+  "hab": [
+   {
+    "n": "Lança de gelo",
+    "d": "ataque corpo a corpo com alcance, dano alto de frio"
+   },
+   {
+    "n": "Aura de frio",
+    "d": "quem chega a até 3m sofre dano de frio automático toda rodada"
+   },
+   {
+    "n": "Ferrão de cauda venenoso",
+    "d": "ataque extra na mesma ação; falha em Fortitude = Enfraquecido"
+   },
+   {
+    "n": "Muralha de gelo",
+    "d": "feitiçaria, 1x por cena; ergue parede de 9m que bloqueia passagem"
+   },
+   {
+    "n": "Feitiços",
+    "d": "feitiçaria; lança Teleporte e outros efeitos como conjurador experiente"
+   },
+   {
+    "n": "Sangue infernal",
+    "d": "imune a frio, fogo e veneno; resistente a ácido"
+   },
+   {
+    "n": "Visão verdadeira",
+    "d": "enxerga através de ilusões, disfarces e invisibilidade"
+   }
+  ]
+ },
+ "mon-rakshasa": {
+  "en": "Rakshasa",
+  "hab": [
+   {
+    "n": "Garras traiçoeiras",
+    "d": "dois ataques corpo a corpo na mesma ação, dano médio cada"
+   },
+   {
+    "n": "Mudar de forma",
+    "d": "feitiçaria; assume qualquer forma humanoide à vontade, indistinguível sem magia"
+   },
+   {
+    "n": "Ler pensamentos",
+    "d": "feitiçaria; sonda a mente de um alvo próximo e revela intenções ou segredos"
+   },
+   {
+    "n": "Ilusões",
+    "d": "feitiçaria; cria imagens sensoriais convincentes para enganar ou distrair"
+   },
+   {
+    "n": "Só arma benta fere",
+    "d": "resistência mágica; imune a quase todo dano, exceto de armas abençoadas"
+   },
+   {
+    "n": "Magia reversa",
+    "d": "alguns feitiços lançados contra ele produzem o efeito oposto ao pretendido"
+   }
+  ]
+ },
+ "mon-diabo-do-fosso-pit-fiend": {
+  "en": "Pit Fiend",
+  "hab": [
+   {
+    "n": "Aura de medo",
+    "d": "quem entrar em 12m e falhar em Vontade fica Abalado"
+   },
+   {
+    "n": "Labareda",
+    "d": "bola de fogo em área de 6m; dano alto, metade se Esquivar"
+   },
+   {
+    "n": "Convocar diabos",
+    "d": "1x por cena chama 1d6 diabos menores para lutar ao seu lado"
+   },
+   {
+    "n": "Mordida com doença infernal",
+    "d": "acerto injeta doença; falha em Resistência reduz Vigor até ser curado"
+   },
+   {
+    "n": "Ferrão de cauda venenoso",
+    "d": "ataque extra na rodada; veneno causa dano contínuo"
+   },
+   {
+    "n": "Conceder desejos e feitiços supremos",
+    "d": "1x por história realiza um feitiço de qualquer nível"
+   },
+   {
+    "n": "Regeneração",
+    "d": "recupera PV toda rodada; só armas sagradas ou de prata interrompem"
+   },
+   {
+    "n": "Imunidade a fogo e veneno",
+    "d": "sem efeito de dano de fogo ou venenos comuns"
+   },
+   {
+    "n": "Visão verdadeira",
+    "d": "ignora ilusão e invisibilidade; voa livremente"
+   }
+  ]
+ },
+ "mon-archon-cao": {
+  "en": "Hound Archon",
+  "hab": [
+   {
+    "n": "Aura de menaça",
+    "d": "inimigos em 6m que falharem em Vontade ficam Abalados"
+   },
+   {
+    "n": "Teleporte",
+    "d": "desloca-se instantaneamente até 12m, 1x por cena"
+   },
+   {
+    "n": "Farejar o mal",
+    "d": "detecta criaturas malignas em até 18m, mesmo ocultas"
+   },
+   {
+    "n": "Forma canina",
+    "d": "vira cão ou lobo de guerra, trocando arma pela mordida e ganhando movimento extra"
+   },
+   {
+    "n": "Círculo protetor",
+    "d": "aliados a 3m ganham +1d de Absorção contra ataques malignos"
+   }
+  ]
+ },
+ "mon-deva-astral": {
+  "en": "Astral Deva",
+  "hab": [
+   {
+    "n": "Maça estonteante",
+    "d": "crítico atordoa o alvo, que perde a próxima ação"
+   },
+   {
+    "n": "Golpe sagrado",
+    "d": "dano extra em ataques corpo a corpo contra criaturas malignas"
+   },
+   {
+    "n": "Mudar de forma",
+    "d": "assume forma humana ou animal por cena"
+   },
+   {
+    "n": "Feitiços celestiais",
+    "d": "1x por cena cura ferimentos, remove doença/maldição ou abençoa um aliado"
+   },
+   {
+    "n": "Teleporte sem erro",
+    "d": "desloca-se a qualquer distância dentro do mesmo plano"
+   },
+   {
+    "n": "Aura protetora",
+    "d": "aliados a 6m ganham +1d de Defesa contra o mal"
+   },
+   {
+    "n": "Voo e imunidade",
+    "d": "voa livremente; imune a doença e veneno"
+   }
+  ]
+ },
+ "mon-planetar": {
+  "en": "Planetar",
+  "hab": [
+   {
+    "n": "Espada de luz cegante",
+    "d": "acerto forte pode cegar o alvo se falhar em Vontade"
+   },
+   {
+    "n": "Aura sagrada",
+    "d": "aliados a 9m ganham +1d de Absorção e Defesa contra malignos"
+   },
+   {
+    "n": "Regeneração",
+    "d": "recupera PV toda rodada; só dano de origem maligna interrompe"
+   },
+   {
+    "n": "Feitiços de clérigo supremo",
+    "d": "1x por cena cura em massa, dissipa magia ou concede proteção"
+   },
+   {
+    "n": "Verbo verdadeiro",
+    "d": "compreende e fala qualquer idioma, mesmo mensagens mentais"
+   },
+   {
+    "n": "Teleporte instantâneo",
+    "d": "desloca-se sem gastar ação extra dentro da cena"
+   },
+   {
+    "n": "Voo e imunidade",
+    "d": "voa livremente; imune a doença e veneno"
+   }
+  ]
+ },
+ "mon-solar": {
+  "en": "Solar",
+  "hab": [
+   {
+    "n": "Arco da aurora",
+    "d": "flecha a distância; alvo maligno que falhar em Resistência sofre dano letal imediato"
+   },
+   {
+    "n": "Espada afiada",
+    "d": "crítico pode decepar um membro ou matar em um só golpe"
+   },
+   {
+    "n": "Ressurreição",
+    "d": "1x por história traz um aliado morto de volta à vida"
+   },
+   {
+    "n": "Convocar anjos",
+    "d": "chama 1d6 celestiais menores para lutar ao seu lado"
+   },
+   {
+    "n": "Aura protetora suprema",
+    "d": "aliados a 12m ganham +2d de Defesa contra o mal"
+   },
+   {
+    "n": "Feitiços supremos",
+    "d": "1x por cena lança qualquer feitiço divino"
+   },
+   {
+    "n": "Regeneração",
+    "d": "recupera PV toda rodada; só dano sagrado oposto interrompe"
+   },
+   {
+    "n": "Visão verdadeira e telepatia",
+    "d": "ignora ilusão e invisibilidade; lê pensamentos a distância"
+   },
+   {
+    "n": "Voo",
+    "d": "desloca-se livremente pelos ares"
+   }
+  ]
+ },
+ "mon-couatl": {
+  "en": "Couatl",
+  "hab": [
+   {
+    "n": "Constrição venenosa",
+    "d": "agarra e esmaga; vítima sofre dano contínuo e, se falhar em Resistência, fica Abalada"
+   },
+   {
+    "n": "Mudar de forma",
+    "d": "assume forma humanoide ou animal por cena"
+   },
+   {
+    "n": "Telepatia",
+    "d": "comunica-se mentalmente com qualquer criatura em até 18m"
+   },
+   {
+    "n": "Viagem planar",
+    "d": "1x por cena desloca-se entre planos ou realidades"
+   },
+   {
+    "n": "Feitiços arcanos e divinos",
+    "d": "acesso amplo a magias de cura, proteção e ataque"
+   },
+   {
+    "n": "Voo",
+    "d": "voa com asas emplumadas"
+   }
+  ]
+ },
+ "mon-ghaele-azata": {
+  "en": "Ghaele",
+  "hab": [
+   {
+    "n": "Raio de luz",
+    "d": "ataque a 9m que cega o alvo se falhar em Resistência"
+   },
+   {
+    "n": "Forma de globo de luz",
+    "d": "vira esfera luminosa, ganhando voo e Absorção alta contra ataques físicos"
+   },
+   {
+    "n": "Feitiços feéricos",
+    "d": "lança livremente magias de ilusão, encantamento e proteção"
+   },
+   {
+    "n": "Detectar pensamentos e o mal",
+    "d": "percebe intenções e alinhamento a até 18m"
+   },
+   {
+    "n": "Resistência a magia",
+    "d": "chance de anular feitiços dirigidos a ela"
+   },
+   {
+    "n": "Aura de beleza",
+    "d": "quem a encarar e falhar em Vontade fica Abalado ou fascinado"
+   }
+  ]
+ },
+ "mon-djinn": {
+  "en": "Djinn",
+  "hab": [
+   {
+    "n": "Forma de redemoinho",
+    "d": "vira tornado que arrasta e derruba quem estiver a 3m"
+   },
+   {
+    "n": "Voo veloz",
+    "d": "desloca-se pelos ares com grande velocidade"
+   },
+   {
+    "n": "Véu",
+    "d": "muda a própria aparência ou a de uma área pequena"
+   },
+   {
+    "n": "Criar água e comida",
+    "d": "conjura recursos do nada sem gastar ação em combate"
+   },
+   {
+    "n": "Invisibilidade",
+    "d": "some da visão por uma cena"
+   },
+   {
+    "n": "Domínio do vento",
+    "d": "ganha +1d de Esquiva contra ataques à distância"
+   }
+  ]
+ },
+ "mon-efreeti": {
+  "en": "Efreeti",
+  "hab": [
+   {
+    "n": "Corpo em chamas",
+    "d": "quem acertar em combate corpo a corpo sofre dano de fogo"
+   },
+   {
+    "n": "Muralha de fogo",
+    "d": "cria parede que causa dano a quem a atravessa"
+   },
+   {
+    "n": "Conceder desejos",
+    "d": "pode realizar um desejo poderoso como favor, com custo narrativo"
+   },
+   {
+    "n": "Imunidade a fogo",
+    "d": "sem efeito de dano de fogo; vulnerável a frio (dano aumentado)"
+   },
+   {
+    "n": "Invisibilidade e viagem planar",
+    "d": "some de vista ou desloca-se entre planos"
+   },
+   {
+    "n": "Voo",
+    "d": "desloca-se livremente pelos ares"
+   }
+  ]
+ },
+ "mon-salamandra": {
+  "en": "Salamander",
+  "hab": [
+   {
+    "n": "Calor corporal",
+    "d": "quem lutar corpo a corpo com ela sofre dano de fogo por rodada"
+   },
+   {
+    "n": "Constrição de cauda",
+    "d": "agarra e esmaga o alvo, causando dano contínuo"
+   },
+   {
+    "n": "Lança flamejante",
+    "d": "ataque corpo a corpo com alcance estendido"
+   },
+   {
+    "n": "Imunidade a fogo",
+    "d": "sem efeito de dano de fogo; vulnerável a frio"
+   },
+   {
+    "n": "Resistente a calor extremo",
+    "d": "move-se e sobrevive livremente em lava"
+   }
+  ]
+ },
+ "mon-elemental-da-terra-grande": {
+  "en": "Large Earth Elemental",
+  "hab": [
+   {
+    "n": "Deslizar na pedra",
+    "d": "move-se através de terra e rocha sem deixar rastro"
+   },
+   {
+    "n": "Empurrão",
+    "d": "golpe pode derrubar ou arremessar o alvo para trás"
+   },
+   {
+    "n": "Corpo de terra",
+    "d": "+1d de Absorção contra armas físicas"
+   },
+   {
+    "n": "Imunidade mental e a venenos",
+    "d": "sem efeito de veneno, doença ou efeitos mentais"
+   },
+   {
+    "n": "Não precisa respirar",
+    "d": "imune a afogamento e gases"
+   }
+  ]
+ },
+ "mon-xorn": {
+  "en": "Xorn",
+  "hab": [
+   {
+    "n": "Deslizar pela pedra",
+    "d": "atravessa rocha sólida como se fosse água"
+   },
+   {
+    "n": "Mordida tríplice",
+    "d": "três ataques de mordida na mesma rodada"
+   },
+   {
+    "n": "Devorar metal e gema",
+    "d": "engole e destrói itens metálicos ou preciosos em um turno"
+   },
+   {
+    "n": "Sentido sísmico",
+    "d": "percebe movimento através da pedra, ignora escuridão e invisibilidade"
+   },
+   {
+    "n": "Faro para tesouro",
+    "d": "detecta metais e gemas a até 18m"
+   }
+  ]
+ },
+ "mon-driade": {
+  "en": "Dryad",
+  "hab": [
+   {
+    "n": "Enfeitiçar",
+    "d": "alvo que falhar em Vontade fica Encantado e obedece ordens pacíficas"
+   },
+   {
+    "n": "Passo-arbóreo",
+    "d": "teleporta-se de árvore em árvore dentro da floresta"
+   },
+   {
+    "n": "Fundir-se à árvore",
+    "d": "esconde-se por completo dentro do tronco de uma árvore"
+   },
+   {
+    "n": "Vínculo com a árvore-lar",
+    "d": "sofre dano se sua árvore for destruída"
+   },
+   {
+    "n": "Furtividade natural",
+    "d": "+2d em Furtividade dentro de florestas"
+   },
+   {
+    "n": "Empatia selvagem",
+    "d": "acalma e comanda animais próximos"
+   }
+  ]
+ },
+ "mon-ninfa": {
+  "en": "Nymph",
+  "hab": [
+   {
+    "n": "Beleza cegante",
+    "d": "quem a encarar e falhar em Vontade fica cego ou Abalado"
+   },
+   {
+    "n": "Feitiços druídicos",
+    "d": "convoca natureza, cura ou controla plantas e água"
+   },
+   {
+    "n": "Graça sobrenatural",
+    "d": "+1d de Esquiva e Defesa"
+   },
+   {
+    "n": "Afinidade com água",
+    "d": "nada e respira debaixo d'água livremente"
+   },
+   {
+    "n": "Fascínio",
+    "d": "quem a observar por mais de uma rodada pode ficar Enfeitiçado"
+   },
+   {
+    "n": "Furtividade natural",
+    "d": "quase invisível em ambiente selvagem"
+   }
+  ]
+ },
+ "mon-satiro": {
+  "en": "Satyr",
+  "hab": [
+   {
+    "n": "Flautas do medo",
+    "d": "quem ouvir e falhar em Vontade fica Abalado e foge"
+   },
+   {
+    "n": "Flautas do encanto",
+    "d": "pode enfeitiçar ou acalmar ouvintes com a melodia certa"
+   },
+   {
+    "n": "Chifres",
+    "d": "ataque de cabeçada corpo a corpo"
+   },
+   {
+    "n": "Furtividade natural",
+    "d": "esconde-se facilmente em florestas"
+   },
+   {
+    "n": "Passos ágeis",
+    "d": "+1d de Esquiva e sem penalidade em terreno difícil"
+   }
+  ]
+ },
+ "mon-pixie": {
+  "en": "Pixie",
+  "hab": [
+   {
+    "n": "Invisibilidade à vontade",
+    "d": "ação livre; fica invisível até atacar, +3d6 em Furtividade enquanto oculta"
+   },
+   {
+    "n": "Voo veloz",
+    "d": "desloca 12m voando; ignora terreno difícil, +1 Esquiva contra ataques corpo a corpo"
+   },
+   {
+    "n": "Flecha do sono",
+    "d": "alcance 18m; falha em Vontade: Inconsciente até o fim da cena"
+   },
+   {
+    "n": "Flecha da amnésia",
+    "d": "alcance 18m; falha em Vontade: perde as memórias da última hora"
+   },
+   {
+    "n": "Corpo minúsculo",
+    "d": "+1 Defesa contra criaturas Médias ou maiores, difícil de acertar"
+   },
+   {
+    "n": "Glamour distrativo",
+    "d": "1x por cena, cria uma ilusão que desvia a atenção; falha em Vontade faz o alvo perder a próxima ação"
+   },
+   {
+    "n": "Fuga élfica",
+    "d": "abaixo de metade dos PV, pode ficar invisível e voar para longe como reação"
+   }
+  ]
+ },
+ "mon-fogo-fatuo": {
+  "en": "Will-o'-Wisp",
+  "hab": [
+   {
+    "n": "Incorpórea",
+    "d": "imune a dano físico não mágico, sofre metade do dano de armas mágicas"
+   },
+   {
+    "n": "Invisibilidade natural",
+    "d": "some de vista até atacar ou se revelar; +3d6 em Furtividade"
+   },
+   {
+    "n": "Toque elétrico",
+    "d": "corpo a corpo; dano alto ao alvo tocado"
+   },
+   {
+    "n": "Voo etéreo",
+    "d": "desloca 12m voando, passa por frestas e grades finas"
+   },
+   {
+    "n": "Luz enganosa",
+    "d": "brilha como uma tocha distante para atrair vítimas ao perigo"
+   },
+   {
+    "n": "Evasiva",
+    "d": "+2 Esquiva contra ataques à distância"
+   },
+   {
+    "n": "Imune a eletricidade",
+    "d": "ignora dano de choques e raios"
+   }
+  ]
+ },
+ "mon-medusa": {
+  "en": "Medusa",
+  "hab": [
+   {
+    "n": "Olhar petrificante",
+    "d": "quem encara a medusa em combate faz Vontade; falha: Petrificado (imóvel, morre em falhas seguidas)"
+   },
+   {
+    "n": "Cabelos-serpente",
+    "d": "ataque adicional corpo a corpo; acerto injeta veneno, falha em Fortitude: Abalado"
+   },
+   {
+    "n": "Véu do olhar",
+    "d": "pode cobrir o rosto para não petrificar aliados sem querer"
+   },
+   {
+    "n": "Imune a petrificação e veneno",
+    "d": "a própria magia e venenos de serpente não afetam a medusa"
+   },
+   {
+    "n": "Tiro traiçoeiro",
+    "d": "ataque à distância adicional com arco, ignora parte da Absorção"
+   }
+  ]
+ },
+ "mon-doppelganger": {
+  "en": "Doppelganger",
+  "hab": [
+   {
+    "n": "Mudar de forma",
+    "d": "1 ação, assume a aparência de qualquer humanoide já visto"
+   },
+   {
+    "n": "Ler pensamentos",
+    "d": "perto do alvo, sonda a mente; falha em Vontade revela um segredo"
+   },
+   {
+    "n": "Mímica perfeita",
+    "d": "+3d6 em Manha ao se passar por outra pessoa"
+   },
+   {
+    "n": "Mente protegida",
+    "d": "imune a efeitos simples de leitura ou controle mental"
+   },
+   {
+    "n": "Reflexos ágeis",
+    "d": "+1 Esquiva, prefere fugir a lutar quando desmascarado"
+   }
+  ]
+ },
+ "mon-pegaso": {
+  "en": "Pegasus",
+  "hab": [
+   {
+    "n": "Voo majestoso",
+    "d": "desloca 15m voando, alta manobrabilidade mesmo em espaços apertados"
+   },
+   {
+    "n": "Detectar o bem e o mal",
+    "d": "sente intenções morais num raio de 18m"
+   },
+   {
+    "n": "Coice poderoso",
+    "d": "ataque corpo a corpo com dano alto"
+   },
+   {
+    "n": "Sentidos aguçados",
+    "d": "+2d6 em Prontidão, dificilmente é surpreendido"
+   },
+   {
+    "n": "Coração nobre",
+    "d": "imune a Medo"
+   },
+   {
+    "n": "Só o puro cavalga",
+    "d": "só aceita cavaleiros de intenções verdadeiramente boas"
+   }
+  ]
+ },
+ "mon-unicornio": {
+  "en": "Unicorn",
+  "hab": [
+   {
+    "n": "Toque curativo do chifre",
+    "d": "toque, 1x por cena por alvo: remove uma condição negativa ou restaura PV"
+   },
+   {
+    "n": "Teleporte",
+    "d": "1x por cena, desloca-se instantaneamente até 12m ignorando obstáculos"
+   },
+   {
+    "n": "Imune a veneno e encanto",
+    "d": "venenos e efeitos de encantamento não afetam o unicórnio"
+   },
+   {
+    "n": "Chifre perfurante",
+    "d": "investida de ao menos 6m antes do golpe: dano alto"
+   },
+   {
+    "n": "Sentidos aguçados",
+    "d": "+2d6 em Prontidão"
+   },
+   {
+    "n": "Presença pura",
+    "d": "criaturas de má índole falham em Vontade para se aproximar dela"
+   }
+  ]
+ },
+ "mon-ogro-mago-oni": {
+  "en": "Ogre Mage (Oni)",
+  "hab": [
+   {
+    "n": "Regeneração",
+    "d": "recupera PV a cada rodada; só dano de fogo ou ácido impede a regeneração"
+   },
+   {
+    "n": "Voo",
+    "d": "desloca 12m voando"
+   },
+   {
+    "n": "Invisibilidade à vontade",
+    "d": "1x por cena, some de vista por até uma cena inteira"
+   },
+   {
+    "n": "Forma gasosa",
+    "d": "vira névoa por uma rodada, imune a dano físico e passa por frestas"
+   },
+   {
+    "n": "Cone de frio",
+    "d": "cone de 9m; dano alto, metade se Esquivar"
+   },
+   {
+    "n": "Sono",
+    "d": "alvo em alcance falha em Vontade: cai Inconsciente"
+   },
+   {
+    "n": "Força de ogro",
+    "d": "dano corpo a corpo elevado, arremessa objetos pesados"
+   },
+   {
+    "n": "Rosto humano",
+    "d": "+2d6 em Manha ao se passar por humano"
+   }
+  ]
+ },
+ "mon-esfinge-ginosfinge": {
+  "en": "Sphinx (Gynosphinx)",
+  "hab": [
+   {
+    "n": "Feitiços arcanos",
+    "d": "lança magias de dano e controle, mais de uma vez por cena"
+   },
+   {
+    "n": "Rugido paralisante",
+    "d": "raio 9m; falha em Vontade: Abalado e perde a próxima ação"
+   },
+   {
+    "n": "Ver o invisível",
+    "d": "enxerga criaturas ocultas ou invisíveis sem teste"
+   },
+   {
+    "n": "Voo",
+    "d": "asas leoninas, desloca 12m voando"
+   },
+   {
+    "n": "Garras devastadoras",
+    "d": "ataque corpo a corpo com dano alto"
+   },
+   {
+    "n": "Sabedoria ancestral",
+    "d": "+3d6 em testes de Conhecimentos"
+   },
+   {
+    "n": "Enigma mortal",
+    "d": "propõe um enigma; falha em Vontade causa dano ou deixa o alvo Abalado"
+   }
+  ]
+ },
+ "mon-naga-espirita": {
+  "en": "Spirit Naga",
+  "hab": [
+   {
+    "n": "Olhar encantador",
+    "d": "quem cruza o olhar falha em Vontade: Enfeitiçado, obedece por uma cena"
+   },
+   {
+    "n": "Cuspe venenoso",
+    "d": "alcance 9m; acerto injeta veneno, falha em Fortitude: dano contínuo e Abalado"
+   },
+   {
+    "n": "Feitiços arcanos",
+    "d": "repertório de magias de dano e controle"
+   },
+   {
+    "n": "Corpo serpentino",
+    "d": "rasteja e nada com igual facilidade, +2d6 em Furtividade em água ou vegetação"
+   },
+   {
+    "n": "Imune ao próprio veneno",
+    "d": "o veneno da naga não a afeta"
+   },
+   {
+    "n": "Sentidos aguçados",
+    "d": "+2d6 em Prontidão, difícil de emboscar"
+   },
+   {
+    "n": "Presa envenenada",
+    "d": "mordida corpo a corpo como ataque secundário"
+   }
+  ]
+ },
+ "mon-behir": {
+  "en": "Behir",
+  "hab": [
+   {
+    "n": "Sopro elétrico",
+    "d": "linha de 18m; dano alto, metade se Esquivar"
+   },
+   {
+    "n": "Engolir inteiro",
+    "d": "alvo já agarrado pode ser engolido; dano contínuo por rodada preso dentro"
+   },
+   {
+    "n": "Escalada serpentina",
+    "d": "sobe paredes e rochas na mesma velocidade do chão"
+   },
+   {
+    "n": "Sentidos aguçados",
+    "d": "+2d6 em Prontidão em cavernas"
+   },
+   {
+    "n": "Corpo blindado",
+    "d": "+1 Absorção contra ataques físicos"
+   }
+  ]
+ },
+ "mon-lamia": {
+  "en": "Lamia",
+  "hab": [
+   {
+    "n": "Toque drenante",
+    "d": "corpo a corpo; falha em Vontade: perde Sabedoria e fica Abalado"
+   },
+   {
+    "n": "Ilusões",
+    "d": "cria imagens falsas para emboscar; falha em Vontade e o alvo é enganado"
+   },
+   {
+    "n": "Garras",
+    "d": "ataque corpo a corpo secundário"
+   },
+   {
+    "n": "Corpo híbrido",
+    "d": "parte inferior animal dá +2d6 em Atletismo"
+   },
+   {
+    "n": "Sedução enganosa",
+    "d": "+3d6 em Manha para atrair vítimas"
+   },
+   {
+    "n": "Sentidos do deserto",
+    "d": "+2d6 em Furtividade em terreno árido e rochoso"
+   }
+  ]
+ },
+ "mon-bruxa-verde-hag": {
+  "en": "Green Hag",
+  "hab": [
+   {
+    "n": "Toque da fraqueza",
+    "d": "corpo a corpo; falha em Fortitude: força reduzida (Abalado)"
+   },
+   {
+    "n": "Mímica de voz",
+    "d": "+3d6 em Manha ao imitar qualquer voz já ouvida"
+   },
+   {
+    "n": "Disfarce ilusório",
+    "d": "parece bela ou inofensiva até revelar a forma verdadeira"
+   },
+   {
+    "n": "Feitiços arcanos",
+    "d": "lança magias menores de maldição e controle"
+   },
+   {
+    "n": "Garras",
+    "d": "ataque corpo a corpo secundário"
+   },
+   {
+    "n": "Fôlego anfíbio",
+    "d": "respira e nada debaixo d'água sem penalidade"
+   },
+   {
+    "n": "Sentidos do pântano",
+    "d": "+2d6 em Prontidão em pântanos e florestas"
+   }
+  ]
+ },
+ "mon-kraken": {
+  "en": "Kraken",
+  "hab": [
+   {
+    "n": "Tentáculos múltiplos",
+    "d": "vários ataques por rodada, cada um pode agarrar um alvo diferente"
+   },
+   {
+    "n": "Constrição",
+    "d": "alvo agarrado sofre dano alto por rodada e fica Imobilizado"
+   },
+   {
+    "n": "Afundar embarcações",
+    "d": "dano automático alto contra estruturas e navios"
+   },
+   {
+    "n": "Nuvem de tinta",
+    "d": "raio 18m; obscurece a visão, penalidade em ataques à distância contra ele"
+   },
+   {
+    "n": "Convocar tempestade",
+    "d": "agita o mar numa grande área, dificulta movimento e visão dos inimigos"
+   },
+   {
+    "n": "Feitiços arcanos",
+    "d": "repertório de magias de dano e controle em larga escala"
+   },
+   {
+    "n": "Sentidos das profundezas",
+    "d": "percebe vibrações na água, não pode ser surpreendido"
+   },
+   {
+    "n": "Escala colossal",
+    "d": "alcance de ataque muito maior que o normal, +2 Absorção"
+   }
+  ]
+ },
+ "mon-tarrasque": {
+  "en": "Tarrasque",
+  "hab": [
+   {
+    "n": "Carapaça reflete magia",
+    "d": "feitiços dirigidos a ela podem ricochetear de volta ao conjurador"
+   },
+   {
+    "n": "Regeneração implacável",
+    "d": "recupera grande quantidade de PV a cada rodada"
+   },
+   {
+    "n": "Bramido de pânico",
+    "d": "raio 18m; falha em Vontade: Abalado e foge por uma rodada"
+   },
+   {
+    "n": "Múltiplos ataques",
+    "d": "morde, arranha e golpeia com a cauda no mesmo turno, cada um com dano alto"
+   },
+   {
+    "n": "Investida destruidora",
+    "d": "atropela tudo em seu caminho, ignora terreno e estruturas leves"
+   },
+   {
+    "n": "Quase imune",
+    "d": "resiste a veneno, doença e à maioria dos efeitos mentais"
+   },
+   {
+    "n": "Fúria implacável",
+    "d": "abaixo de metade dos PV, ganha um ataque extra por rodada"
+   },
+   {
+    "n": "Escala colossal",
+    "d": "alcance e Absorção muito acima do normal"
+   }
+  ]
+ },
+ "mon-filhote-de-dragao-vermelho": {
+  "en": "Red Dragon Wyrmling",
+  "hab": [
+   {
+    "n": "Sopro de fogo",
+    "d": "cone de 9m; dano alto, metade se Esquivar"
+   },
+   {
+    "n": "Presença medonha",
+    "d": "quem vê o dragão falha em Vontade: Abalado"
+   },
+   {
+    "n": "Voo",
+    "d": "desloca 12m voando"
+   },
+   {
+    "n": "Garras e mordida",
+    "d": "dois ataques corpo a corpo no mesmo turno"
+   },
+   {
+    "n": "Imune a fogo",
+    "d": "não sofre dano de fogo, nem do próprio sopro"
+   },
+   {
+    "n": "Sentidos aguçados",
+    "d": "+2d6 em Prontidão, enxerga no escuro"
+   },
+   {
+    "n": "Orgulho e ganância",
+    "d": "+2d6 em Persuasão ao negociar ou intimidar em torno de seu tesouro"
+   }
+  ]
+ },
+ "mon-dragao-vermelho-jovem": {
+  "en": "Young Red Dragon",
+  "hab": [
+   {
+    "n": "Sopro de fogo",
+    "d": "cone de 9m; 6d6 de dano, metade se Esquivar (recarrega após 1d6 turnos)"
+   },
+   {
+    "n": "Presença aterradora",
+    "d": "falha no teste de Vontade = Abalado (raio de 18m)"
+   },
+   {
+    "n": "Voo veloz",
+    "d": "manobra alta no ar; pode atacar em mergulho com +1d6 na Iniciativa"
+   },
+   {
+    "n": "Multiataque",
+    "d": "garra, garra e mordida no mesmo turno"
+   },
+   {
+    "n": "Imune a fogo",
+    "d": "ignora todo dano de fogo"
+   },
+   {
+    "n": "Sentidos dracônicos",
+    "d": "visão no escuro e faro apurado; inimigos não conseguem Furtividade contra ele"
+   },
+   {
+    "n": "Escamas rígidas",
+    "d": "Absorção +2d6 contra ataques físicos"
+   },
+   {
+    "n": "Feitiços iniciais",
+    "d": "lança 1 truque arcano por cena (feiticaria) sem gastar ação extra"
+   }
+  ]
+ },
+ "mon-dragao-vermelho-adulto": {
+  "en": "Adult Red Dragon",
+  "hab": [
+   {
+    "n": "Sopro de fogo",
+    "d": "cone de 12m; 9d6 de dano, metade se Esquivar"
+   },
+   {
+    "n": "Aura de fogo",
+    "d": "quem o acerta em combate corpo a corpo sofre 2d6 de dano automático"
+   },
+   {
+    "n": "Presença aterradora",
+    "d": "falha no teste de Vontade = Abalado em raio de 24m"
+   },
+   {
+    "n": "Voo",
+    "d": "manobra excelente; reposiciona-se livremente antes de atacar"
+   },
+   {
+    "n": "Multiataque",
+    "d": "garra, garra, mordida e cauda no mesmo turno"
+   },
+   {
+    "n": "Imune a fogo",
+    "d": "ignora todo dano de fogo"
+   },
+   {
+    "n": "Escamas grossas",
+    "d": "Absorção +3d6 contra ataques físicos"
+   },
+   {
+    "n": "Feitiços de feiticeiro",
+    "d": "lança feitiços intermediários (feiticaria) durante o combate"
+   },
+   {
+    "n": "Sentidos aguçados",
+    "d": "detecta invisíveis e furtivos automaticamente"
+   }
+  ]
+ },
+ "mon-dragao-vermelho-anciao": {
+  "en": "Ancient Red Dragon",
+  "hab": [
+   {
+    "n": "Sopro de fogo",
+    "d": "cone de 15m; 12d6 de dano, metade se Esquivar"
+   },
+   {
+    "n": "Presença que paralisa",
+    "d": "falha simples no teste de Vontade = Abalado; falha por 3 ou mais = Paralisado por 1 turno"
+   },
+   {
+    "n": "Feitiços",
+    "d": "lança feitiços avançados (feiticaria) sem gastar a ação principal"
+   },
+   {
+    "n": "Voo dominante",
+    "d": "manobra total no ar, ignora terreno difícil enquanto voa"
+   },
+   {
+    "n": "Multiataque",
+    "d": "garra, garra, mordida e cauda no mesmo turno"
+   },
+   {
+    "n": "Imune a fogo",
+    "d": "e resistente a feitiços de centelha menor (dificulta ser alvo)"
+   },
+   {
+    "n": "Escamas ancestrais",
+    "d": "Absorção +4d6 contra ataques físicos"
+   },
+   {
+    "n": "Sentidos onipresentes",
+    "d": "impossível ser surpreendido; percebe invisibilidade e ilusões comuns"
+   },
+   {
+    "n": "Autoridade dracônica",
+    "d": "efeitos de medo ou dominação de centelha menor falham automaticamente"
+   }
+  ]
+ },
+ "mon-grande-wyrm-vermelho": {
+  "en": "Great Wyrm Red Dragon",
+  "hab": [
+   {
+    "n": "Sopro cataclísmico",
+    "d": "cone de 18m; 15d6 de dano, metade se Esquivar (ainda deixa Abalado mesmo com sucesso)"
+   },
+   {
+    "n": "Dobrar o tempo",
+    "d": "age duas vezes na mesma rodada, uma ação extra completa (1x por cena)"
+   },
+   {
+    "n": "Feitiços supremos",
+    "d": "lança feitiços de centelha altíssima, incluindo cura própria e efeitos em área"
+   },
+   {
+    "n": "Presença divina",
+    "d": "falha no teste de Vontade = Abalado; falha por 5 ou mais = Paralisado de terror por 1 turno"
+   },
+   {
+    "n": "Voo perfeito",
+    "d": "manobra máxima no ar, ignora qualquer obstáculo aéreo"
+   },
+   {
+    "n": "Multiataque total",
+    "d": "garra, garra, mordida, cauda e golpe de asas no mesmo turno"
+   },
+   {
+    "n": "Imune a fogo",
+    "d": "e resistente à maioria dos feitiços (exige sucesso duplo para afetá-lo)"
+   },
+   {
+    "n": "Escamas lendárias",
+    "d": "Absorção +5d6 contra ataques físicos"
+   },
+   {
+    "n": "Sentidos supremos",
+    "d": "ignora Furtividade e ilusões comuns; nada passa despercebido"
+   },
+   {
+    "n": "Vontade de wyrm",
+    "d": "nunca fica Abalado por efeitos de medo comuns; só presenças divinas o afetam"
+   }
+  ]
+ },
+ "mon-dragao-branco-jovem": {
+  "en": "Young White Dragon",
+  "hab": [
+   {
+    "n": "Sopro de frio",
+    "d": "cone de 9m; 6d6 de dano, metade se Esquivar"
+   },
+   {
+    "n": "Andar no gelo e nevasca",
+    "d": "move-se sem penalidade sobre gelo e neve; pode gerar nevasca que reduz a Prontidão dos inimigos"
+   },
+   {
+    "n": "Presença",
+    "d": "falha no teste de Vontade = Abalado (raio de 12m)"
+   },
+   {
+    "n": "Voo em mergulho",
+    "d": "ataca vindo de cima com bônus de Iniciativa"
+   },
+   {
+    "n": "Multiataque",
+    "d": "garra, garra e mordida no mesmo turno"
+   },
+   {
+    "n": "Imune a frio",
+    "d": "ignora todo dano de frio"
+   },
+   {
+    "n": "Sentidos no gelo",
+    "d": "visão no escuro e faro apurado; inimigos não conseguem emboscá-lo sob neve"
+   },
+   {
+    "n": "Escamas gélidas",
+    "d": "Absorção +2d6 contra ataques físicos"
+   }
+  ]
+ },
+ "mon-dragao-azul-adulto": {
+  "en": "Adult Blue Dragon",
+  "hab": [
+   {
+    "n": "Sopro elétrico",
+    "d": "linha de 18m; 9d6 de dano, metade se Esquivar"
+   },
+   {
+    "n": "Miragem no deserto",
+    "d": "cria ilusão que engana a Prontidão do alvo, escondendo sua posição real por 1 turno"
+   },
+   {
+    "n": "Presença",
+    "d": "falha no teste de Vontade = Abalado (raio de 18m)"
+   },
+   {
+    "n": "Enterrar e emergir",
+    "d": "some sob a areia e ressurge para atacar de surpresa, com bônus de Iniciativa"
+   },
+   {
+    "n": "Voo",
+    "d": "manobra excelente sobre dunas e terreno aberto"
+   },
+   {
+    "n": "Multiataque",
+    "d": "garra, garra, mordida e cauda no mesmo turno"
+   },
+   {
+    "n": "Imune a eletricidade",
+    "d": "ignora todo dano elétrico"
+   },
+   {
+    "n": "Sentidos do deserto",
+    "d": "percebe vibrações no chão a longa distância; dificulta Furtividade contra ele"
+   },
+   {
+    "n": "Escamas azuis",
+    "d": "Absorção +3d6 contra ataques físicos"
+   }
+  ]
+ },
+ "mon-dragao-verde-adulto": {
+  "en": "Adult Green Dragon",
+  "hab": [
+   {
+    "n": "Sopro de gás",
+    "d": "cone de 12m; dano e Enfraquecido se falhar em teste de Vigor, metade do dano se Esquivar"
+   },
+   {
+    "n": "Enredar",
+    "d": "vinhas e raízes prendem todos numa área de 6m; exige teste para se soltar"
+   },
+   {
+    "n": "Manipular",
+    "d": "usa Manha ou Persuasão com bônus para enganar e manobrar NPCs a seu favor"
+   },
+   {
+    "n": "Presença",
+    "d": "falha no teste de Vontade = Abalado"
+   },
+   {
+    "n": "Voo em emboscada",
+    "d": "mergulha por entre a copa das árvores para atacar de surpresa"
+   },
+   {
+    "n": "Multiataque",
+    "d": "garra, garra e mordida no mesmo turno"
+   },
+   {
+    "n": "Imune a veneno",
+    "d": "e ao próprio gás que exala"
+   },
+   {
+    "n": "Camuflagem na mata",
+    "d": "bônus de Furtividade em florestas e pântanos"
+   },
+   {
+    "n": "Escamas verdes",
+    "d": "Absorção +3d6 contra ataques físicos"
+   }
+  ]
+ },
+ "mon-dragao-dourado-adulto": {
+  "en": "Adult Gold Dragon",
+  "hab": [
+   {
+    "n": "Sopro de fogo",
+    "d": "cone de 12m; 9d6 de dano, metade se Esquivar"
+   },
+   {
+    "n": "Sopro debilitante",
+    "d": "cone alternativo de gás sem dano; falha em teste de Vigor deixa o alvo Enfraquecido por 1 turno"
+   },
+   {
+    "n": "Feitiços divinos",
+    "d": "lança feitiços de cura e proteção (feiticaria) em si ou em aliados"
+   },
+   {
+    "n": "Mudar de forma",
+    "d": "assume forma humana ou animal pequena, mantendo parte dos sentidos dracônicos"
+   },
+   {
+    "n": "Presença",
+    "d": "falha no teste de Vontade = Abalado"
+   },
+   {
+    "n": "Voo dominante",
+    "d": "domina os céus com grande manobra"
+   },
+   {
+    "n": "Multiataque",
+    "d": "garra, garra e mordida no mesmo turno"
+   },
+   {
+    "n": "Imune a fogo",
+    "d": "e resistente a efeitos de medo; não fica Abalado por presenças de centelha menor"
+   },
+   {
+    "n": "Sentidos e sabedoria dracônica",
+    "d": "detecta mentiras e ignora ilusões simples"
+   },
+   {
+    "n": "Escamas douradas",
+    "d": "Absorção +4d6 contra ataques físicos"
+   }
+  ]
+ }
+}

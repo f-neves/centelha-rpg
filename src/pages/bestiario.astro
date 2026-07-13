@@ -4,11 +4,19 @@ import { url } from '../lib/site';
 import { loadData } from '../lib/data';
 import { getCollection } from 'astro:content';
 import imagens from '../data/imagens-bestiario.json';
+import habilidades from '../data/habilidades-bestiario.json';
 const IMG: Record<string, string> = imagens;
+const HAB: Record<string, { en?: string; hab: { n: string; d: string }[] }> = habilidades;
 const d = await loadData();
 const inimigos = (await getCollection('inimigos')).map((e) => e.data)
-  .sort((a, b) => (a.categoria || '').localeCompare(b.categoria || '') || a.ameaca - b.ameaca || a.nome.localeCompare(b.nome));
+  .sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
 const TIPO: Record<string, string> = { capanga: 'Capanga', soldado: 'Soldado', elite: 'Elite', fera: 'Fera', chefe: 'Chefe' };
+// Atributos (ordem canônica: físico · social · mental) com rótulo curto e nome cheio
+const ATR: [string, string, string][] = [
+  ['forca', 'For', 'Força'], ['destreza', 'Des', 'Destreza'], ['vigor', 'Vig', 'Vigor'],
+  ['influencia', 'Inf', 'Influência'], ['perspicacia', 'Psp', 'Perspicácia'], ['compostura', 'Cmp', 'Compostura'],
+  ['percepcao', 'Per', 'Percepção'], ['inteligencia', 'Int', 'Inteligência'], ['raciocinio', 'Rac', 'Raciocínio'],
+];
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
 const camNome: Record<string, string> = Object.fromEntries(d.caminhos.map((c) => [c.id, c.nome]));
 const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
@@ -25,7 +33,7 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
 ---
 <Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — do goblin ao dragão ancião, com blocos de combate calculados, arte de referência e poderes traduzidos em Proezas e Feitiçarias.">
   <h1>Bestiário & NPCs</h1>
-  <p class="lead">Adversários prontos para a mesa, do camponês ao dragão ancião. Os números seguem as mesmas fórmulas dos personagens — PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados — e os poderes especiais vêm traduzidos em <strong>Proezas</strong> (Técnicas de Caminho) e <strong>Feitiçarias</strong> (Artes).</p>
+  <p class="lead">Adversários prontos para a mesa, do camponês ao dragão ancião. Os números seguem as mesmas fórmulas dos personagens (PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados), e os poderes especiais vêm traduzidos em <strong>Proezas</strong> (Técnicas de Caminho) e <strong>Feitiçarias</strong> (Artes).</p>
 
   <div class="callout regra"><span class="lbl">Como rodar</span>O bloco traz o <strong>pool de ataque</strong> (já com o Acerto) e o <strong>dano</strong> prontos para rolar. <strong>Ameaça</strong> (◆) é uma referência rápida de perigo, de 1 a 6. Criaturas com <strong>Centelha</strong> usam Técnicas/Artes; a lista de <strong>Poderes</strong> indica o Caminho ou Arte que reproduz cada efeito. Toque na arte para ampliar.</div>
 
@@ -46,6 +54,19 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
       </select>
     </label>
     <fieldset class="cats"><legend>Tipo de criatura</legend>{categorias.map((c) => <label class="chk"><input type="checkbox" data-bf="categoria" value={c} />{c}</label>)}</fieldset>
+    <label class="ord">Ordenar por
+      <span class="ord-row">
+        <select id="ord-key">
+          <option value="nome">Nome (A→Z)</option>
+          <option value="en">Nome em inglês</option>
+          <option value="pv">PV</option>
+          <option value="defesa">Defesa</option>
+          <option value="centelha">Centelha</option>
+          <option value="ameaca">Ameaça</option>
+        </select>
+        <button type="button" id="ord-dir" title="Inverter ordem" aria-label="Inverter ordem"><span class="ord-arw">↑</span></button>
+      </span>
+    </label>
     <p class="muted bf-count"></p>
   </div>
 
@@ -53,7 +74,8 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
     {inimigos.map((i) => (
       <article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
-        data-txt={(i.nome + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}>
+        data-nome={i.nome} data-en={HAB[i.id]?.en || i.nome} data-pv={i.pv} data-defesa={i.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
+        data-txt={(i.nome + ' ' + (HAB[i.id]?.en || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (HAB[i.id]?.hab || []).map((h) => h.n + ' ' + h.d).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}>
 
         <figure class={`arte${IMG[i.id] ? '' : ' sem-arte'}`} data-cent={i.centelha}>
           {IMG[i.id]
@@ -71,7 +93,7 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
             <span class="badge">{TIPO[i.tipo]}</span>
             {i.pendente && <span class="badge pendente" title="Stat block provisório — revisar">Rascunho</span>}
           </header>
-          <p class="besta-con muted">{i.conceito}{i.descricao ? ` — ${i.descricao}` : ''}</p>
+          <p class="besta-con muted">{i.conceito}{i.descricao ? ` · ${i.descricao}` : ''}</p>
 
           <dl class="besta-stats">
             <div><dt>PV</dt><dd>{i.pv}</dd></div>
@@ -81,15 +103,37 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
             <div><dt>Iniciativa</dt><dd>{i.iniciativa}</dd></div>
           </dl>
 
+          {i.atributos && (
+            <div class="besta-atrib">
+              <span class="atr-lbl">Atributos</span>
+              <div class="atr-grid">
+                {ATR.map(([k, ab, full]) => (
+                  <span class="atr" title={full}><span class="atr-ab">{ab}</span><span class="atr-v">{(i.atributos as any)[k]}</span></span>
+                ))}
+              </div>
+            </div>
+          )}
+
           <ul class="besta-atk">
             {i.ataques.map((a) => (
               <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">pool <b>{a.pool}</b> · dano <b>{a.dano}</b> · Speed {a.ticks}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
             ))}
           </ul>
 
+          {HAB[i.id]?.hab?.length > 0 && (
+            <div class="besta-hab">
+              <span class="hab-lbl">Habilidades</span>
+              <ul>
+                {HAB[i.id].hab.map((h) => (
+                  <li><span class="hab-n">{h.n}</span><span class="hab-d">{h.d}</span></li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {i.poderes && i.poderes.length > 0 && (
             <div class="besta-poderes">
-              <span class="pw-lbl">Poderes</span>
+              <span class="pw-lbl">Poderes <span class="pw-sub">(sistema)</span></span>
               <ul>
                 {i.poderes.map((p: any) => (
                   <li class={`pw pw-${p.tipo}`}><span class="pw-ef">{p.efeito}</span><span class="pw-arw">→</span><span class="pw-alvo">{p.alvo}</span></li>
@@ -119,6 +163,8 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
     <button class="lb-fechar" aria-label="Fechar">✕</button>
     <figure><img id="lb-img" src="" alt="" /><figcaption id="lb-cap" class="cinzel"></figcaption></figure>
   </div>
+
+  <button id="ao-topo" class="ao-topo" aria-label="Voltar ao topo" title="Voltar ao topo" hidden>↑</button>
 </Base>
 
 <style>
@@ -132,6 +178,11 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   .cats { display: flex; flex-wrap: wrap; gap: .1rem .4rem; }
   .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .4rem; font-family: 'EB Garamond'; font-size: .92rem; }
   .bf-count { width: 100%; margin: 0; }
+
+  .ord-row { display: flex; gap: .3rem; align-items: stretch; }
+  #ord-dir { padding: 0 .55rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--accent-strong); cursor: pointer; font-size: 1rem; line-height: 1; display: flex; align-items: center; transition: background .15s, border-color .15s; }
+  #ord-dir:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--bg)); }
+  #ord-dir .ord-arw { font-weight: 700; }
 
   .besta-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1.15rem; }
 
@@ -194,6 +245,23 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; }
   .besta-stats dd { margin: 0; font-size: 1rem; font-variant-numeric: tabular-nums; font-weight: 600; }
 
+  /* Atributos */
+  .besta-atrib { margin: 0 0 .55rem; }
+  .atr-lbl { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
+  .atr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .2rem .4rem; margin-top: .3rem; }
+  .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .35rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .atr-ab { font-family: 'Cinzel'; font-size: .68rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .02em; }
+  .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; color: var(--accent-strong); }
+
+  /* Habilidades */
+  .besta-hab { margin: .15rem 0 .45rem; }
+  .hab-lbl { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
+  .besta-hab ul { list-style: none; padding: 0; margin: .3rem 0 0; font-size: .88rem; display: flex; flex-direction: column; gap: .28rem; }
+  .besta-hab li { padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--gold) 55%, transparent); line-height: 1.3; }
+  .hab-n { font-family: 'Cinzel'; font-size: .8rem; color: var(--ink); }
+  .hab-n::after { content: ': '; color: var(--ink-soft); font-family: 'EB Garamond'; }
+  .hab-d { color: var(--ink-soft); }
+
   .besta-atk { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: .9rem; display: flex; flex-direction: column; gap: .3rem; }
   .besta-atk li { display: flex; flex-direction: column; gap: .05rem; padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
   .atk-nome { font-family: 'Cinzel'; font-size: .82rem; color: var(--ink); }
@@ -202,6 +270,7 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
 
   .besta-poderes { margin: .15rem 0 .35rem; }
   .pw-lbl { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
+  .pw-sub { font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0; color: var(--ink-soft); font-size: .7rem; }
   .besta-poderes ul { list-style: none; padding: 0; margin: .25rem 0 0; font-size: .86rem; display: flex; flex-direction: column; gap: .18rem; }
   .pw { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem; }
   .pw-arw { color: var(--ink-soft); }
@@ -227,7 +296,23 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   .lb-fechar { position: absolute; top: 1rem; right: 1.2rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: none; background: rgba(255,255,255,.12); color: #fff; font-size: 1.2rem; cursor: pointer; transition: background .15s; }
   .lb-fechar:hover { background: rgba(255,255,255,.25); }
   @keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
-  @media (prefers-reduced-motion: reduce) { .besta, .arte img, .lightbox { transition: none; animation: none; } .besta:hover { transform: none; } .besta:hover .arte img { transform: none; } }
+
+  /* Voltar ao topo */
+  .ao-topo {
+    position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 60;
+    width: 2.9rem; height: 2.9rem; border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--panel-border));
+    background: var(--accent-strong); color: var(--on-accent);
+    font-size: 1.3rem; line-height: 1; cursor: pointer;
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--ink) 28%, transparent);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, background .15s;
+  }
+  .ao-topo.show { opacity: 1; transform: translateY(0); }
+  .ao-topo:hover { background: var(--accent); }
+  .ao-topo[hidden] { display: none; }
+
+  @media (prefers-reduced-motion: reduce) { .besta, .arte img, .lightbox, .ao-topo { transition: none; animation: none; } .besta:hover { transform: none; } .besta:hover .arte img { transform: none; } }
 </style>
 
 <script>
@@ -251,6 +336,45 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   }
   document.querySelectorAll('[data-bf]').forEach((e) => { e.addEventListener('input', apply); e.addEventListener('change', apply); });
   apply();
+
+  // Ordenação (complementar: desempate sempre por nome A→Z)
+  const list = document.querySelector<HTMLElement>('.besta-list')!;
+  const ordKey = document.getElementById('ord-key') as HTMLSelectElement;
+  const ordDir = document.getElementById('ord-dir') as HTMLButtonElement;
+  const ordArw = ordDir.querySelector('.ord-arw') as HTMLElement;
+  const NUM = ['pv', 'defesa', 'centelha', 'ameaca'];
+  let dir = 1; // 1 = crescente, -1 = decrescente
+  const coll = new Intl.Collator('pt', { sensitivity: 'base' });
+  function sortCards() {
+    const key = ordKey.value;
+    const num = NUM.includes(key);
+    cards.sort((a, b) => {
+      let cmp = num
+        ? (parseFloat(a.dataset[key] || '0') - parseFloat(b.dataset[key] || '0'))
+        : coll.compare(a.dataset[key] || '', b.dataset[key] || '');
+      cmp *= dir;
+      return cmp || coll.compare(a.dataset.nome || '', b.dataset.nome || '');
+    });
+    const frag = document.createDocumentFragment();
+    for (const c of cards) frag.appendChild(c);
+    list.appendChild(frag);
+  }
+  function setArrow() { ordArw.textContent = dir === 1 ? '↑' : '↓'; }
+  ordKey.addEventListener('change', () => { dir = NUM.includes(ordKey.value) ? -1 : 1; setArrow(); sortCards(); });
+  ordDir.addEventListener('click', () => { dir = -dir; setArrow(); sortCards(); });
+  setArrow(); sortCards();
+
+  // Voltar ao topo
+  const topBtn = document.getElementById('ao-topo') as HTMLButtonElement;
+  const onScroll = () => {
+    const show = window.scrollY > 600;
+    if (show) { topBtn.hidden = false; requestAnimationFrame(() => topBtn.classList.add('show')); }
+    else { topBtn.classList.remove('show'); }
+  };
+  topBtn.addEventListener('transitionend', () => { if (!topBtn.classList.contains('show')) topBtn.hidden = true; });
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   // Lightbox da arte
   const lb = document.getElementById('lightbox') as HTMLElement;
