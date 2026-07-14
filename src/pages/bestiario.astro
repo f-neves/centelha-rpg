@@ -108,7 +108,7 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
               <span class="atr-lbl">Atributos</span>
               <div class="atr-grid">
                 {ATR.map(([k, ab, full]) => (
-                  <span class="atr" title={full}><span class="atr-ab">{ab}</span><span class="atr-v">{(i.atributos as any)[k]}</span></span>
+                  <span class="atr" title={full}><span class="atr-nm"><span class="atr-ab">{ab}</span><span class="atr-full">{full}</span></span><span class="atr-v">{(i.atributos as any)[k]}</span></span>
                 ))}
               </div>
             </div>
@@ -248,10 +248,18 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   /* Atributos */
   .besta-atrib { margin: 0 0 .55rem; }
   .atr-lbl { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
-  .atr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .2rem .4rem; margin-top: .3rem; }
-  .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .35rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
-  .atr-ab { font-family: 'Cinzel'; font-size: .68rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .02em; }
+  /* colunas: Físico | Social | Mental (ordem de coluna, não de linha) */
+  .atr-grid { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: .2rem .4rem; margin-top: .3rem; }
+  .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .atr-nm { font-family: 'Cinzel'; font-size: .68rem; color: var(--ink-soft); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .atr-ab { text-transform: uppercase; letter-spacing: .02em; }
+  .atr-full { display: none; font-size: .64rem; letter-spacing: 0; }
   .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; color: var(--accent-strong); }
+  /* nome por extenso em telas maiores */
+  @media (min-width: 720px) {
+    .atr-ab { display: none; }
+    .atr-full { display: inline; }
+  }
 
   /* Habilidades */
   .besta-hab { margin: .15rem 0 .45rem; }
