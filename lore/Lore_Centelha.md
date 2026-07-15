@@ -19,7 +19,7 @@
 - **[TRAVADO] Deuses = mistura de duas origens:** (a) mortais que **ascenderam** a Centelha ao máximo; (b) entidades e forças cósmicas **pré-existentes** que acumularam Centelhas por vários meios.
 - **[TRAVADO] Poder é inversamente proporcional ao apego ao mundano.** Quanto mais poderoso o ser, menos tempo/atenção tem para um mortal específico. Não por ócio: por ter afazeres de importância superior.
 - **[TRAVADO] A Lei (imposição cósmica):** deuses zelam pelos seus cultos, mas **não podem influenciar mortais diretamente**.
-  - **[TRAVADO] Origem da Lei = a Queda élfica** (ver seção 2 e 7.1). Quando os elfos tentaram **agarrar a própria Primeira Luz**, o cosmos respondeu selando a ordem imortal/divina para longe da mortal e da Fonte. A Lei é essa separação. A Grande Guerra foi o único momento em que ela foi rompida; o Pacto pós-guerra a re-selou.
+  - **[TRAVADO] Origem da Lei = a Queda élfica** (ver seção 2 e a subseção "A origem da Lei"). Quando os elfos tentaram **agarrar a própria Primeira Luz**, o cosmos respondeu selando a ordem imortal/divina para longe da mortal e da Fonte. A Lei é essa separação. A Grande Guerra foi o único momento em que ela foi rompida; o Pacto pós-guerra a re-selou.
   - Corolário [TRAVADO]: a Lei proíbe o **direto** (aparecer, fulminar, dar poder a um mortal nomeado) mas tolera o **difuso/sutil, através de cultos e do tecido da crença**. A supressão pós-guerra (ver seção 4) é o exemplo canônico do que a Lei permite.
   - Implicações temáticas [PROPOSTA, decorrem da decisão]: (1) a Centelha é "coisa que não se agarra direto"; a **ascensão é uma escalada longa, não um roubo** (os elfos tentaram o atalho e foram punidos com o oposto do que buscavam: mortalidade). (2) Mortais poderosos podem acender a Centelha de outro porque estão **do lado mortal** da Lei; deuses altos, não. (3) A própria **Fonte (Primeira Luz) ficou selada**: ninguém mais a alcança diretamente.
 
@@ -47,7 +47,7 @@
 **[TRAVADO]** Toda a cadeia abaixo. A Centelha é cósmica, então seres de qualquer origem (inclusive de outros planos/planetas) carregam estilhaços da Primeira Luz.
 
 1. **Elfos: exilados feéricos.** Vieram de um plano/reino feérico, de onde fugiram por serem subjugados por raças mais fortes. Chegaram a este mundo (já habitado por criaturas mágicas e não mágicas) e se tornaram os humanoides dominantes; espalharam-se pelas terras e por outros planetas. Eram **soberbos, inteligentes, sagazes, arrogantes** e **imortais à velhice** (mas mataveis).
-2. **A Queda élfica (maldição da mortalidade + a Lei).** Após dezenas de milhares de anos dominando tudo que tocavam, no ápice da soberba **tentaram agarrar a própria Primeira Luz** e romperam a **barreira entre a ordem mortal e a imortal/divina**. A resposta do cosmos foi dupla: (1) toda a raça foi **amaldiçoada com a mortalidade** (passaram a viver séculos, em alguns casos milênios); (2) desceu sobre toda divindade a **Lei** que separa o alto do baixo (ver seção 1 e 7.1). Tiveram que **refazer sociedade, costumes, filosofia**: quase uma outra raça. Levou milhares de anos para se reestabelecerem. É a **falha original** do mundo.
+2. **A Queda élfica (maldição da mortalidade + a Lei).** Após dezenas de milhares de anos dominando tudo que tocavam, no ápice da soberba **tentaram agarrar a própria Primeira Luz** e romperam a **barreira entre a ordem mortal e a imortal/divina**. A resposta do cosmos foi dupla: (1) toda a raça foi **amaldiçoada com a mortalidade** (passaram a viver séculos, em alguns casos milênios); (2) desceu sobre toda divindade a **Lei** que separa o alto do baixo (ver seção 1 e a subseção "A origem da Lei"). Tiveram que **refazer sociedade, costumes, filosofia**: quase uma outra raça. Levou milhares de anos para se reestabelecerem. É a **falha original** do mundo.
 3. **Criação e escravidão dos anões.** Com a mortalidade, perceberam outra raça possível no planeta. **Da própria rocha, moldaram e deram vida aos anões**, e os escravizaram. Forçaram-nos a viver do que lhes era anti-natural: cidades nas árvores, artefatos de madeira e folhas, transportes vegetais. (Elfos têm predisposição para a natureza, a arte, o delicado; anões vêm da rocha dura, das montanhas, e preferem metais, joias, forja, fogo.)
 4. **Fuga e Guerra de Libertação.** Muitos anões fugiram das florestas para o fundo da terra e o interior das montanhas (seu lugar de conforto), cavando cada vez mais fundo. Por mais dezenas de milhares de anos o domínio élfico perdurou. Os anões fugitivos, querendo libertar os que ainda eram escravos, usaram o **conhecimento aprendido dos elfos** somado à sua **habilidade quase inata com forja e metal** e guerrearam. A **guerra durou quase um século** e terminou com **todos os anões libertos, em todo lugar**.
 5. **Inimizade eterna.** Anões e elfos viraram **inimigos mortais para sempre**, mesmo que hoje **não lembrem o porquê**. Coexistem, mas em ambientes diferentes.
@@ -133,9 +133,39 @@
 
 ---
 
-## 7. Fios em aberto / a discutir
+## 7. Panteões e mitologias [esqueleto TRAVADO; nomes a definir]
 
-### 7.1. A origem da Lei (deuses não tocam mortais diretamente) [TRAVADO: opção A]
+Formato geral: **"a cara de Exalted 2e"** aplicado à metafísica já fixa. Sem verdade única: cada cultura interpreta as mesmas potências reais ao seu modo.
+
+### Estrutura do divino [TRAVADO]
+
+- **Poucas grandes potências + incontáveis deuses locais.** As grandes potências (conhecidas em todo lugar sob **nomes diferentes**) = as **entidades cósmicas pré-existentes** + os **maiores ascendidos**. Deuses menores nascem de **cultos locais**.
+- **Duas economias de divindade (mistura explícita):**
+  - **Deuses menores / ascendidos VIVEM de culto:** a crença os sustenta e faz crescer sua Centelha; nascem de cultos e podem **morrer se esquecidos**. Por isso "zelam pelos cultos" (é o alimento), e a Lei os obriga a receber esse alimento só indiretamente.
+  - **Entidades cósmicas primordiais são autossuficientes:** não precisam de adoração (têm Centelha própria, acumulada desde antes). Frias, distantes, ocupadas com afazeres de importância superior.
+- **Em torno de que se organizam (VARIA por cultura):** mistura de **domínios/conceitos** (guerra, morte, colheita, mar, forja, conhecimento, comércio...) com **espíritos de lugar e ancestrais**. A ênfase muda com o povo:
+  - **Povos da natureza (floresta, ermos):** cultuam mais **espíritos locais, entidades da natureza e conceitos do convívio**; mais ligados ao sobrenatural, mais animistas/"supersticiosos".
+  - **Povos urbanos:** cultuam **ancestrais** e **domínios de civilização** (guerra, conhecimento, forja, comércio); **menos ligados a espíritos/superstição**.
+  - **Há exceções** a essas regras.
+
+### As ortodoxias organizadas [TRAVADO]
+
+- **Não uma, mas VÁRIAS grandes religiões organizadas, rivais entre si.** Ponto-chave: têm **origem comum** e **todas servem, no fundo, à supressão** (afastar os mortais de magia e tecnologia), mas **divergem em doutrina** e por isso **entram em conflito**. Modelo dado pelo usuário = **o cristianismo e suas vertentes**: uma vertente "católica" centrada numa figura tipo papa; uma "evangélica" contrária à adoração de imagens/figuras; um feixe "protestante" de outras vertentes.
+- **Clérigos e Paladinos** seguem essas ordens e seus deuses: o braço pastoral e armado das ortodoxias, logo (sem saber) agentes da supressão.
+- [PROPOSTA/coerência] A **rivalidade sectária mascara a função comum**: todas empurram o mesmo tabu antimagia enquanto brigam por doutrina. A supressão se esconde à vista de todos, dividida em seitas. Motor de intriga e de metaplot (descobrir a origem comum das igrejas = tocar no segredo da supressão).
+
+### A definir [EM ABERTO]
+
+- Nomes e identidades das **grandes potências** (quantas? quais domínios? como se ligam à Primeira Luz, aos planos elementais, aos corpos celestes / às **luas de Uldun**, dado o tema lunar de "Waning"?).
+- Nomes, doutrinas e a **origem comum** das ortodoxias rivais (fundadas pelos deuses sobreviventes da Guerra? por um profeta? qual foi o cisma original?).
+- Exemplos de **deuses locais** e **espíritos de lugar** por região (Waning, The Neck...).
+- Ponte com o sistema: como **Clérigos/Paladinos** se encaixam na mecânica (Centelha, Proezas, Arcano; poder divino como quê?).
+
+---
+
+## 8. Fios em aberto / a discutir
+
+### 8.1. A origem da Lei (deuses não tocam mortais diretamente) [TRAVADO: opção A]
 
 **Decisão do usuário:** a Lei nasce da **barreira que os elfos quebraram ao tentar agarrar a Primeira Luz**. Os dois mistérios (a barreira élfica e a Lei) são **um só evento**, a Queda élfica (seção 2, item 2).
 
@@ -147,9 +177,9 @@ Opções descartadas: **(B)** Lei intrínseca (gradiente metafísico); **(C)** L
 
 **[EM ABERTO] Detalhes finos ainda por decidir:** COMO os deuses romperam a Lei na Grande Guerra (por avatares/campeões? uma brecha? e por que romper foi em si destrutivo?); e se há quem hoje saiba/suspeite que a Lei existe.
 
-### 7.2. Outros fios pendentes
+### 8.2. Outros fios pendentes
 
-- **[RESOLVIDO]** ~~A barreira dos elfos~~ = tentativa de agarrar a Primeira Luz (ver 7.1).
+- **[RESOLVIDO]** ~~A barreira dos elfos~~ = tentativa de agarrar a Primeira Luz (ver "A origem da Lei").
 - **[PROPOSTA/quase resolvido]** Quem impôs a Lei: pela decisão A, foi o **próprio cosmos/Primeira Luz reagindo** ao ser agarrado (não uma entidade legisladora). Confirmar se fica assim ou se alguma entidade pré-existente teve papel.
 - **[TRAVADO/direção] Raças jogáveis:** roster DETALHADO (cultura + sociedade + mecânica) = os **7 atuais** + expansão com **raças básicas de Exalted e D&D 5e**; **jogável na mesa = qualquer ser que tenha Centelha** (aberto). A lista curada de "detalhados" fica para depois, provavelmente puxada pela geografia.
 - **[TRAVADO/direção] Mitologias e culturas:** mistura rica **ao estilo Exalted 2nd edition** (muitos deuses/espíritos com cultos, filosofias/religiões organizadas, cultos de ancestrais, temas elementais). Cada cultura interpreta a **mesma metafísica real** à sua maneira, o payoff do "sem verdade única".
