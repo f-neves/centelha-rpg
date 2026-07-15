@@ -10,6 +10,10 @@ _pages/
 # legado (saídas grandes — mantidas localmente, fora do repo do site)
 legacy/*.pdf
 
+# mapas originais em alta resolução (pesados; versionamos as cópias reduzidas Uldun_*.jpg)
+lore/mapas/Mapa Teste.jpg
+lore/mapas/Mapa Teste1.jpg
+
 # SO / editor
 .DS_Store
 Thumbs.db

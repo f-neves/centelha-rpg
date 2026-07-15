@@ -19,7 +19,7 @@
 - **[TRAVADO] Deuses = mistura de duas origens:** (a) mortais que **ascenderam** a Centelha ao máximo; (b) entidades e forças cósmicas **pré-existentes** que acumularam Centelhas por vários meios.
 - **[TRAVADO] Poder é inversamente proporcional ao apego ao mundano.** Quanto mais poderoso o ser, menos tempo/atenção tem para um mortal específico. Não por ócio: por ter afazeres de importância superior.
 - **[TRAVADO] A Lei (imposição cósmica):** deuses zelam pelos seus cultos, mas **não podem influenciar mortais diretamente**.
-  - **[TRAVADO] Origem da Lei = a Queda élfica** (ver seção 2 e 6.1). Quando os elfos tentaram **agarrar a própria Primeira Luz**, o cosmos respondeu selando a ordem imortal/divina para longe da mortal e da Fonte. A Lei é essa separação. A Grande Guerra foi o único momento em que ela foi rompida; o Pacto pós-guerra a re-selou.
+  - **[TRAVADO] Origem da Lei = a Queda élfica** (ver seção 2 e 7.1). Quando os elfos tentaram **agarrar a própria Primeira Luz**, o cosmos respondeu selando a ordem imortal/divina para longe da mortal e da Fonte. A Lei é essa separação. A Grande Guerra foi o único momento em que ela foi rompida; o Pacto pós-guerra a re-selou.
   - Corolário [TRAVADO]: a Lei proíbe o **direto** (aparecer, fulminar, dar poder a um mortal nomeado) mas tolera o **difuso/sutil, através de cultos e do tecido da crença**. A supressão pós-guerra (ver seção 4) é o exemplo canônico do que a Lei permite.
   - Implicações temáticas [PROPOSTA, decorrem da decisão]: (1) a Centelha é "coisa que não se agarra direto"; a **ascensão é uma escalada longa, não um roubo** (os elfos tentaram o atalho e foram punidos com o oposto do que buscavam: mortalidade). (2) Mortais poderosos podem acender a Centelha de outro porque estão **do lado mortal** da Lei; deuses altos, não. (3) A própria **Fonte (Primeira Luz) ficou selada**: ninguém mais a alcança diretamente.
 
@@ -47,7 +47,7 @@
 **[TRAVADO]** Toda a cadeia abaixo. A Centelha é cósmica, então seres de qualquer origem (inclusive de outros planos/planetas) carregam estilhaços da Primeira Luz.
 
 1. **Elfos: exilados feéricos.** Vieram de um plano/reino feérico, de onde fugiram por serem subjugados por raças mais fortes. Chegaram a este mundo (já habitado por criaturas mágicas e não mágicas) e se tornaram os humanoides dominantes; espalharam-se pelas terras e por outros planetas. Eram **soberbos, inteligentes, sagazes, arrogantes** e **imortais à velhice** (mas mataveis).
-2. **A Queda élfica (maldição da mortalidade + a Lei).** Após dezenas de milhares de anos dominando tudo que tocavam, no ápice da soberba **tentaram agarrar a própria Primeira Luz** e romperam a **barreira entre a ordem mortal e a imortal/divina**. A resposta do cosmos foi dupla: (1) toda a raça foi **amaldiçoada com a mortalidade** (passaram a viver séculos, em alguns casos milênios); (2) desceu sobre toda divindade a **Lei** que separa o alto do baixo (ver seção 1 e 6.1). Tiveram que **refazer sociedade, costumes, filosofia**: quase uma outra raça. Levou milhares de anos para se reestabelecerem. É a **falha original** do mundo.
+2. **A Queda élfica (maldição da mortalidade + a Lei).** Após dezenas de milhares de anos dominando tudo que tocavam, no ápice da soberba **tentaram agarrar a própria Primeira Luz** e romperam a **barreira entre a ordem mortal e a imortal/divina**. A resposta do cosmos foi dupla: (1) toda a raça foi **amaldiçoada com a mortalidade** (passaram a viver séculos, em alguns casos milênios); (2) desceu sobre toda divindade a **Lei** que separa o alto do baixo (ver seção 1 e 7.1). Tiveram que **refazer sociedade, costumes, filosofia**: quase uma outra raça. Levou milhares de anos para se reestabelecerem. É a **falha original** do mundo.
 3. **Criação e escravidão dos anões.** Com a mortalidade, perceberam outra raça possível no planeta. **Da própria rocha, moldaram e deram vida aos anões**, e os escravizaram. Forçaram-nos a viver do que lhes era anti-natural: cidades nas árvores, artefatos de madeira e folhas, transportes vegetais. (Elfos têm predisposição para a natureza, a arte, o delicado; anões vêm da rocha dura, das montanhas, e preferem metais, joias, forja, fogo.)
 4. **Fuga e Guerra de Libertação.** Muitos anões fugiram das florestas para o fundo da terra e o interior das montanhas (seu lugar de conforto), cavando cada vez mais fundo. Por mais dezenas de milhares de anos o domínio élfico perdurou. Os anões fugitivos, querendo libertar os que ainda eram escravos, usaram o **conhecimento aprendido dos elfos** somado à sua **habilidade quase inata com forja e metal** e guerrearam. A **guerra durou quase um século** e terminou com **todos os anões libertos, em todo lugar**.
 5. **Inimizade eterna.** Anões e elfos viraram **inimigos mortais para sempre**, mesmo que hoje **não lembrem o porquê**. Coexistem, mas em ambientes diferentes.
@@ -103,9 +103,39 @@
 
 ---
 
-## 6. Fios em aberto / a discutir
+## 6. Geografia: o mundo de Uldun (parte jogável)
 
-### 6.1. A origem da Lei (deuses não tocam mortais diretamente) [TRAVADO: opção A]
+- **[TRAVADO] Planeta principal do sistema = Uldun.** O mapa atual **não é o mundo inteiro**: é a **parte "jogável"**, a região onde os jogadores mais vão atuar. Mapas em `lore/mapas/`: cópias reduzidas versionadas `Uldun_parte-jogavel_rotulado.jpg` (com rótulos) e `Uldun_parte-jogavel.jpg` (sem rótulos); os originais em alta (`Mapa Teste*.jpg`, 10240px) ficam locais, fora do git. Leitura do mapa: Waning é a landmass central em lua minguante; The Neck são as ilhas a noroeste; The White Wall, as montanhas ao norte.
+
+### Waning (o continente central)
+
+- **[TRAVADO]** O continente **mais populoso e povoado**, em forma de **lua minguante** (daí o nome). Análogo a **Faerûn** (Forgotten Realms). Composto por **três ilhas gigantescas**: Calin, Syl e Mére.
+  - **Calin** (norte): os **maiores centros urbanos**, poucas criaturas selvagens. Análogo à **Sword Coast** (FR) ou às **Terras Espalhadas / Scavenger Lands** (Exalted). Já tem algumas cidades definidas (a detalhar depois).
+  - **Syl** (oeste/sudoeste): terras **um pouco mais selvagens**. Análogo ao **Shining Sea** (FR) ou à região **Leste** (Exalted).
+  - **Mére** (leste/sudeste): a **maior** das regiões e a de **criaturas mais perigosas e selvagens**. Vista como terra "**bárbara**" pelo povo de Calin, mas mais por **desconhecimento e medo**. Guarda algumas das **cidades mais mágicas e tecnológicas do planeta**, tão afastadas de Calin que lá são desconhecidas. (Gancho: um bolsão avançado/blindado escondido no fim do mundo conhecido.)
+
+### The Neck (as ilhas do pescoço, noroeste)
+
+- **[TRAVADO]** Conjunto de ilhas habitado quase só por **humanos**: povos **supersticiosos**, de **pouca tecnologia** e **avessos à magia** (poucos xamãs, poucas criaturas mágicas).
+- **[TRAVADO] Chegada dos anões (há pouco mais de um século):** anões **exilados do White Wall** aportaram aqui, na proporção de **10 humanos por anão**. Os humanos não gostaram, mas os anões, mesmo em minoria, tinham **armas e artefatos muito superiores**; uma guerra mataria os dois lados. Fecharam um **acordo de convivência**. Levou **décadas** para os anões se integrarem por completo. Com o tempo, a **tecnologia e o conhecimento anão** somados ao **saber naval (rudimentar) humano** fizeram os dois prosperarem (crafts anões + navegação humana = ganho mútuo), mesmo os humanos não gostando de admitir.
+- [PROPOSTA/coerência] The Neck é um **eco em miniatura e invertido da saga antiga**: onde antes elfos escravizaram anões, aqui humanos e anões, forçados a conviver, se erguem juntos. Rima com o padrão pré-Guerra (humanos + tec anão = avanço), agora em escala pequena e pós-supressão. Candidato natural a um **bolsão que começa a se destravar** (a superstição/aversão à magia = marca da supressão; a chegada anã fura isso devagar).
+
+### The White Wall (montanhas geladas do norte) e a Fenda
+
+- **[TRAVADO]** Cordilheira **gélida ao norte**, **terra natal original dos anões**.
+- **[TRAVADO] A Fenda:** algumas **centenas de anos atrás**, por razões **desconhecidas**, abriu-se uma **fenda para outro plano** (candidatos a nomear: **Agonia / Sombras / Pesadelo**). Dela saíram **criaturas poderosas e medonhas** que guerrearam contra os anões por **séculos** e por fim **mataram ou expulsaram todos** das montanhas; os sobreviventes desceram para The Neck.
+- **[TRAVADO] Estética das criaturas da Fenda** (referências em `lore/creatures/`): terror de **pesadelo**, humanoides **esquálidos e alongados com crânio de ave** e garras longas, além de horrores **negros e reptilianos** (arte "Banshee"). Reforça o plano da Fenda como **reino de Pesadelo/Sombra/Agonia**.
+- [PROPOSTA/coerência] A Fenda é uma **anomalia planar localizada e ATIVA**, colada à área jogável = gancho de campanha imediato. Não contradiz "planos de fundo": justamente porque os planos em geral NÃO tocam o material, uma fenda aberta é um evento raro e alarmante, uma das poucas grandes camadas temáticas (o plano escuro) vazando. [EM ABERTO] o nome do plano e a causa da abertura.
+
+### Resto do mapa
+
+- **[EM ABERTO]** Há várias massas de terra e arquipélagos **sem rótulo** no mapa (grande aglomerado a sudoeste, terras a leste, ilhas nas bordas). Nomear conforme a campanha pedir. E, além do mapa jogável, **o resto de Uldun** (outros continentes) e **os outros planetas do sistema** seguem por definir.
+
+---
+
+## 7. Fios em aberto / a discutir
+
+### 7.1. A origem da Lei (deuses não tocam mortais diretamente) [TRAVADO: opção A]
 
 **Decisão do usuário:** a Lei nasce da **barreira que os elfos quebraram ao tentar agarrar a Primeira Luz**. Os dois mistérios (a barreira élfica e a Lei) são **um só evento**, a Queda élfica (seção 2, item 2).
 
@@ -117,14 +147,14 @@ Opções descartadas: **(B)** Lei intrínseca (gradiente metafísico); **(C)** L
 
 **[EM ABERTO] Detalhes finos ainda por decidir:** COMO os deuses romperam a Lei na Grande Guerra (por avatares/campeões? uma brecha? e por que romper foi em si destrutivo?); e se há quem hoje saiba/suspeite que a Lei existe.
 
-### 6.2. Outros fios pendentes
+### 7.2. Outros fios pendentes
 
-- **[RESOLVIDO]** ~~A barreira dos elfos~~ = tentativa de agarrar a Primeira Luz (ver 6.1).
+- **[RESOLVIDO]** ~~A barreira dos elfos~~ = tentativa de agarrar a Primeira Luz (ver 7.1).
 - **[PROPOSTA/quase resolvido]** Quem impôs a Lei: pela decisão A, foi o **próprio cosmos/Primeira Luz reagindo** ao ser agarrado (não uma entidade legisladora). Confirmar se fica assim ou se alguma entidade pré-existente teve papel.
 - **[TRAVADO/direção] Raças jogáveis:** roster DETALHADO (cultura + sociedade + mecânica) = os **7 atuais** + expansão com **raças básicas de Exalted e D&D 5e**; **jogável na mesa = qualquer ser que tenha Centelha** (aberto). A lista curada de "detalhados" fica para depois, provavelmente puxada pela geografia.
 - **[TRAVADO/direção] Mitologias e culturas:** mistura rica **ao estilo Exalted 2nd edition** (muitos deuses/espíritos com cultos, filosofias/religiões organizadas, cultos de ancestrais, temas elementais). Cada cultura interpreta a **mesma metafísica real** à sua maneira, o payoff do "sem verdade única".
-- **[PARCIAL/importar] Geografia:** o usuário **já tem mapas e nomes**. Aguardando compartilhar (imagem do mapa + lista de nomes) para importar como âncora canônica antes de eu inventar qualquer coisa.
-- **[PARCIAL/importar] Nomes próprios:** o usuário tem nome dos **continentes** e talvez do **mundo/planeta principal**; o resto (reino feérico élfico, planos, eras, primeiros deuses/entidades, cidades) a determinar juntos.
+- **[IMPORTADO] Geografia:** mapas e nomes principais já na **seção 6**. Falta: **nomear** as massas de terra sem rótulo, **detalhar as cidades de Calin** (e as cidades escondidas de Mére), e o resto de Uldun.
+- **[PARCIAL] Nomes próprios:** definidos = planeta **Uldun**; continente **Waning** (ilhas **Calin/Syl/Mére**); **The Neck**; **The White Wall**. A determinar: **reino feérico** de origem élfica, os **planos** (incl. o **plano da Fenda**: Agonia/Sombras/Pesadelo), as **eras**, os **primeiros deuses/entidades**, e nomes de **cidades**.
 - **[EM ABERTO] Os planetas:** quais importam, habitados, alcançáveis; herança da fase interplanetária (cidades voadoras, teleportes) que sobrou em ruínas.
 
 ---
