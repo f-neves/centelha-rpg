@@ -121,11 +121,11 @@ Opções descartadas: **(B)** Lei intrínseca (gradiente metafísico); **(C)** L
 
 - **[RESOLVIDO]** ~~A barreira dos elfos~~ = tentativa de agarrar a Primeira Luz (ver 6.1).
 - **[PROPOSTA/quase resolvido]** Quem impôs a Lei: pela decisão A, foi o **próprio cosmos/Primeira Luz reagindo** ao ser agarrado (não uma entidade legisladora). Confirmar se fica assim ou se alguma entidade pré-existente teve papel.
-- **[EM ABERTO]** Quais raças da seção 2 viram raças jogáveis completas x povos de cenário.
-- **[EM ABERTO]** Nomes próprios: do mundo/planeta, do reino feérico de origem élfica, dos planos, das eras, dos primeiros deuses/entidades.
-- **[EM ABERTO]** Geografia jogável: âncora de região/continente para rodar.
-- **[EM ABERTO]** Os planetas: quais importam, habitados, alcançáveis; herança da fase interplanetária (cidades voadoras, teleportes) que sobrou em ruínas.
-- **[EM ABERTO]** Panteões e mitologias por cultura (o pilar "várias mitologias").
+- **[TRAVADO/direção] Raças jogáveis:** roster DETALHADO (cultura + sociedade + mecânica) = os **7 atuais** + expansão com **raças básicas de Exalted e D&D 5e**; **jogável na mesa = qualquer ser que tenha Centelha** (aberto). A lista curada de "detalhados" fica para depois, provavelmente puxada pela geografia.
+- **[TRAVADO/direção] Mitologias e culturas:** mistura rica **ao estilo Exalted 2nd edition** (muitos deuses/espíritos com cultos, filosofias/religiões organizadas, cultos de ancestrais, temas elementais). Cada cultura interpreta a **mesma metafísica real** à sua maneira, o payoff do "sem verdade única".
+- **[PARCIAL/importar] Geografia:** o usuário **já tem mapas e nomes**. Aguardando compartilhar (imagem do mapa + lista de nomes) para importar como âncora canônica antes de eu inventar qualquer coisa.
+- **[PARCIAL/importar] Nomes próprios:** o usuário tem nome dos **continentes** e talvez do **mundo/planeta principal**; o resto (reino feérico élfico, planos, eras, primeiros deuses/entidades, cidades) a determinar juntos.
+- **[EM ABERTO] Os planetas:** quais importam, habitados, alcançáveis; herança da fase interplanetária (cidades voadoras, teleportes) que sobrou em ruínas.
 
 ---
 
