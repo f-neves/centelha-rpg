@@ -37,7 +37,12 @@ Gere um mapa de fantasia **colorido e completo (água E terreno)** usando a imag
 
 **ESTILO:** mapa de fantasia pintado à mão, atlas em pergaminho, coeso; sombreamento de relevo delicado (luz vindo do noroeste); rios e lagos em azul fino DENTRO da terra (descendo das montanhas para o mar, sempre contidos na terra); nada fotorrealista, parece desenhado à mão.
 
-**DETALHES:** preserve o enquadramento quadrado e a resolução; transições suaves; o resultado deve parecer um único mapa ilustrado coeso; sem rótulos (os nomes entram depois).
+**DETALHES:** preserve o enquadramento quadrado; transições suaves; o resultado deve parecer um único mapa ilustrado coeso; sem rótulos (os nomes entram depois).
+
+**SAÍDA / FORMATO DO ARQUIVO (obrigatório):**
+- **Sem compressão com perdas.** Entregue a imagem em formato sem perdas (PNG, TIFF ou SVG). Nada de JPG.
+- **Mesmas dimensões do arquivo de entrada:** o arquivo final deve ter exatamente **10240 × 10240** (mesma largura e altura do original, quadrado). Não reduza a resolução.
+- **Pode retornar um arquivo SVG** (vetorial). Se retornar SVG, preserve o `viewBox` / dimensões de 10240 × 10240 e mantenha a fidelidade dos contornos da máscara (a separação entre terra e mar).
 
 ---
 
