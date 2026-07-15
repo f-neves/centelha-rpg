@@ -19,7 +19,9 @@
 - **[TRAVADO] Deuses = mistura de duas origens:** (a) mortais que **ascenderam** a Centelha ao máximo; (b) entidades e forças cósmicas **pré-existentes** que acumularam Centelhas por vários meios.
 - **[TRAVADO] Poder é inversamente proporcional ao apego ao mundano.** Quanto mais poderoso o ser, menos tempo/atenção tem para um mortal específico. Não por ócio: por ter afazeres de importância superior.
 - **[TRAVADO] A Lei (imposição cósmica):** deuses zelam pelos seus cultos, mas **não podem influenciar mortais diretamente**.
-  - Corolário [PROPOSTA, coerente com a história]: a Lei proíbe o **direto** (aparecer, fulminar, dar poder a um mortal nomeado) mas tolera o **difuso/sutil, através de cultos e do tecido da crença**. A supressão pós-guerra (ver seção 4) é o exemplo canônico do que a Lei permite.
+  - **[TRAVADO] Origem da Lei = a Queda élfica** (ver seção 2 e 6.1). Quando os elfos tentaram **agarrar a própria Primeira Luz**, o cosmos respondeu selando a ordem imortal/divina para longe da mortal e da Fonte. A Lei é essa separação. A Grande Guerra foi o único momento em que ela foi rompida; o Pacto pós-guerra a re-selou.
+  - Corolário [TRAVADO]: a Lei proíbe o **direto** (aparecer, fulminar, dar poder a um mortal nomeado) mas tolera o **difuso/sutil, através de cultos e do tecido da crença**. A supressão pós-guerra (ver seção 4) é o exemplo canônico do que a Lei permite.
+  - Implicações temáticas [PROPOSTA, decorrem da decisão]: (1) a Centelha é "coisa que não se agarra direto"; a **ascensão é uma escalada longa, não um roubo** (os elfos tentaram o atalho e foram punidos com o oposto do que buscavam: mortalidade). (2) Mortais poderosos podem acender a Centelha de outro porque estão **do lado mortal** da Lei; deuses altos, não. (3) A própria **Fonte (Primeira Luz) ficou selada**: ninguém mais a alcança diretamente.
 
 ### O despertar da Centelha
 
@@ -45,7 +47,7 @@
 **[TRAVADO]** Toda a cadeia abaixo. A Centelha é cósmica, então seres de qualquer origem (inclusive de outros planos/planetas) carregam estilhaços da Primeira Luz.
 
 1. **Elfos: exilados feéricos.** Vieram de um plano/reino feérico, de onde fugiram por serem subjugados por raças mais fortes. Chegaram a este mundo (já habitado por criaturas mágicas e não mágicas) e se tornaram os humanoides dominantes; espalharam-se pelas terras e por outros planetas. Eram **soberbos, inteligentes, sagazes, arrogantes** e **imortais à velhice** (mas mataveis).
-2. **A Queda élfica (maldição da mortalidade).** Após dezenas de milhares de anos dominando tudo que tocavam, quebraram **uma barreira desconhecida** (ainda não definida, ver seção 5). Como consequência, toda a raça foi **amaldiçoada com a mortalidade**: passaram a viver séculos (em alguns casos, milênios). Tiveram que **refazer sociedade, costumes, filosofia**: quase uma outra raça. Levou milhares de anos para se reestabelecerem.
+2. **A Queda élfica (maldição da mortalidade + a Lei).** Após dezenas de milhares de anos dominando tudo que tocavam, no ápice da soberba **tentaram agarrar a própria Primeira Luz** e romperam a **barreira entre a ordem mortal e a imortal/divina**. A resposta do cosmos foi dupla: (1) toda a raça foi **amaldiçoada com a mortalidade** (passaram a viver séculos, em alguns casos milênios); (2) desceu sobre toda divindade a **Lei** que separa o alto do baixo (ver seção 1 e 6.1). Tiveram que **refazer sociedade, costumes, filosofia**: quase uma outra raça. Levou milhares de anos para se reestabelecerem. É a **falha original** do mundo.
 3. **Criação e escravidão dos anões.** Com a mortalidade, perceberam outra raça possível no planeta. **Da própria rocha, moldaram e deram vida aos anões**, e os escravizaram. Forçaram-nos a viver do que lhes era anti-natural: cidades nas árvores, artefatos de madeira e folhas, transportes vegetais. (Elfos têm predisposição para a natureza, a arte, o delicado; anões vêm da rocha dura, das montanhas, e preferem metais, joias, forja, fogo.)
 4. **Fuga e Guerra de Libertação.** Muitos anões fugiram das florestas para o fundo da terra e o interior das montanhas (seu lugar de conforto), cavando cada vez mais fundo. Por mais dezenas de milhares de anos o domínio élfico perdurou. Os anões fugitivos, querendo libertar os que ainda eram escravos, usaram o **conhecimento aprendido dos elfos** somado à sua **habilidade quase inata com forja e metal** e guerrearam. A **guerra durou quase um século** e terminou com **todos os anões libertos, em todo lugar**.
 5. **Inimizade eterna.** Anões e elfos viraram **inimigos mortais para sempre**, mesmo que hoje **não lembrem o porquê**. Coexistem, mas em ambientes diferentes.
@@ -103,22 +105,22 @@
 
 ## 6. Fios em aberto / a discutir
 
-### 6.1. A origem da Lei (deuses não tocam mortais diretamente) [EM ABERTO, em discussão]
+### 6.1. A origem da Lei (deuses não tocam mortais diretamente) [TRAVADO: opção A]
 
-Pista de tempo no próprio texto: na Grande Guerra os deuses se envolveram "de uma maneira **nunca antes vista**". Se o envolvimento direto foi inédito, **algo já os continha antes da guerra**. Logo, a *origem* da Lei é **anterior** à guerra, e a guerra foi onde a Lei foi **rompida e depois re-selada** (o "Pacto"). A supressão sutil é o primeiro ato dos deuses já **sob a Lei renovada** (difuso porque o direto voltou a ser proibido).
+**Decisão do usuário:** a Lei nasce da **barreira que os elfos quebraram ao tentar agarrar a Primeira Luz**. Os dois mistérios (a barreira élfica e a Lei) são **um só evento**, a Queda élfica (seção 2, item 2).
 
-Opções para a origem anterior:
+Raciocínio que sustentou a escolha (pista de tempo): na Grande Guerra os deuses se envolveram "de uma maneira **nunca antes vista**". Se o envolvimento direto foi inédito, **algo já os continha antes da guerra**. Logo a *origem* da Lei é **anterior** à guerra; a guerra foi onde a Lei foi **rompida e depois re-selada** (o "Pacto"), e a supressão sutil é o primeiro ato dos deuses já sob a Lei renovada.
 
-- **A) [PROPOSTA recomendada] A Lei nasce da barreira que os elfos quebraram.** O que os elfos romperam foi a **fronteira entre a ordem mortal e a imortal/divina**, possivelmente ao tentar **agarrar a própria Primeira Luz** (o ápice da soberba). Resposta dupla do cosmos: (1) **maldição da mortalidade** sobre os elfos; (2) a **Lei** descendo sobre toda divindade. Os dois mistérios (a barreira élfica e a Lei) viram **um só evento**. A guerra, muito depois, foi quando os deuses **quebraram** essa Lei antiga; o Pacto pós-guerra a re-selou mais forte. Vantagens: paga o fio da barreira; põe os elfos como falha original do mundo; dá à Centelha o caráter de "coisa que não se agarra direto"; explica por que mortais poderosos podem acender a Centelha de outro (estão do lado mortal da Lei) mas os deuses altos não podem.
-- **B) A Lei é intrínseca (gradiente metafísico).** Quanto mais alto em Centelha, menos se toca o baixo sem destruí-lo (razão física do "desligamento" dos poderosos). A guerra só provou e o Pacto formalizou. Aqui a barreira élfica seria **outra coisa** (ex.: o selo que os trouxe do reino feérico).
-- **C) A Lei é jovem, só da guerra.** Simples, mas contraria "nunca antes vista". Menos elegante.
+Opções descartadas: **(B)** Lei intrínseca (gradiente metafísico); **(C)** Lei jovem, só da guerra (contraria "nunca antes vista").
 
-**Sub-decisão (se A):** a barreira élfica foi tentativa de agarrar a Primeira Luz? Ou um selo planar? Ou um tabu ainda a definir?
+**Payoffs desta decisão** (ver detalhamento em 1, "A Lei"): paga o fio da barreira élfica; põe os elfos como falha original do mundo; sela a própria Primeira Luz; faz da ascensão uma escalada, não um roubo; e explica por que mortais poderosos acendem a Centelha de outros mas deuses altos não podem tocar mortais.
+
+**[EM ABERTO] Detalhes finos ainda por decidir:** COMO os deuses romperam a Lei na Grande Guerra (por avatares/campeões? uma brecha? e por que romper foi em si destrutivo?); e se há quem hoje saiba/suspeite que a Lei existe.
 
 ### 6.2. Outros fios pendentes
 
-- **[EM ABERTO]** O que exatamente foi a "barreira desconhecida" dos elfos (liga-se a 6.1).
-- **[EM ABERTO]** Quem/o quê impôs a Lei (o tecido da realidade? as entidades pré-existentes? a própria Primeira Luz reagindo?).
+- **[RESOLVIDO]** ~~A barreira dos elfos~~ = tentativa de agarrar a Primeira Luz (ver 6.1).
+- **[PROPOSTA/quase resolvido]** Quem impôs a Lei: pela decisão A, foi o **próprio cosmos/Primeira Luz reagindo** ao ser agarrado (não uma entidade legisladora). Confirmar se fica assim ou se alguma entidade pré-existente teve papel.
 - **[EM ABERTO]** Quais raças da seção 2 viram raças jogáveis completas x povos de cenário.
 - **[EM ABERTO]** Nomes próprios: do mundo/planeta, do reino feérico de origem élfica, dos planos, das eras, dos primeiros deuses/entidades.
 - **[EM ABERTO]** Geografia jogável: âncora de região/continente para rodar.
