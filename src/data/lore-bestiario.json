@@ -1,0 +1,2678 @@
+{
+ "camponis-assustado": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Não escolheu lutar: foi arrastado por um senhor, um bando ou o desespero da fome. Segura a foice ou o cajado tremendo, grita mais do que golpeia, e corre ao primeiro sangue, seu ou alheio."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Vive de plantio, de criação de porcos e do medo de tudo que vem de fora da aldeia: soldados, bandidos, feiticeiros, monstros."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É a face mais comum do povo de Uldun: Centelha zero, sem treino, criado sob o tabu da Supressão a temer qualquer coisa que cheire a magia. Quando pega em armas, é sinal de que algo já deu muito errado na região."
+   }
+  ]
+ },
+ "bandido-de-estrada": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Ataca em bando, de emboscada, mirando carroças isoladas e viajantes cansados. Se a luta emperra ou os companheiros caem, recua sem vergonha: prefere viver pobre a morrer rico."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive em quadrilhas soltas escondidas em matas e desfiladeiros, sob um chefe mais valente ou mais cruel que o resto."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Prospera nas estradas entre cidades de Calin e nos ermos de The Neck, onde a milícia é escassa e a fome empurra gente comum para o roubo."
+   }
+  ]
+ },
+ "guarda-da-cidade": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Patrulha em duplas ou pequenos pelotões, luta em formação fechada com escudo e lança curta, e prioriza conter o problema até chegar reforço."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Serve às ordens de um capitão e, em última instância, às ortodoxias supressoras que mandam nas grandes cidades de Calin."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É a disciplina greco-romana de Calin em carne e osso: milícia treinada, hierárquica, que enxerga em qualquer sinal de magia um problema a ser reportado à igreja antes de ser combatido."
+   }
+  ]
+ },
+ "soldado-veterano": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Não desperdiça movimento: lê a postura do inimigo, espera a abertura e responde com economia. Anos de campanha ensinaram que bravura sem cálculo mata cedo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Cansado, pragmático, sem ilusões sobre glória; trata recrutas com uma mistura de desprezo e cuidado paternal."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Homens assim sobraram das guerras de fronteira de Calin e das campanhas contra os horrores da Fenda no White Wall: sobreviveram por saber quando não lutar."
+   }
+  ]
+ },
+ "arqueiro": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Escolhe o terreno alto ou a distância antes de qualquer coisa, abre o combate com flechas e recua se a linha inimiga o alcança, pois sabe que corpo a corpo não é seu jogo."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Cuida do arco e das flechas com mais atenção do que da própria armadura; caça é tanto sustento quanto treino."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Comum entre milícias de Calin e caçadores dos ermos de Syl e Mére, onde dominar o arco é sobrevivência tanto contra bestas quanto contra bandidos."
+   }
+  ]
+ },
+ "bruto": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Lento para se mover, rápido para golpear: cada ataque busca quebrar a guarda ou derrubar de vez. Não se importa em levar um corte se puder devolver um esmagamento."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Direto, pouco dado a estratégia, confia no próprio tamanho e na intimidação que ele causa."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "O músculo pesado de bandos e milícias por toda Uldun; sem Centelha alguma, vive da força bruta num mundo onde poder mágico é raro e temido."
+   }
+  ]
+ },
+ "capitao-da-guarda": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Coordena subordinados, distribui posições e mantém a linha mesmo sob pressão; prefere vencer pela disciplina do grupo a arriscar um duelo pessoal."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Responde a um magistrado, senhor ou às ortodoxias supressoras, e carrega a autoridade de decidir quando chamar reforços ou declarar um alarme."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Encarna o comando mortal das cidades de Calin: sem faísca divina, apenas competência, experiência e a confiança de quem já segurou a linha antes."
+   }
+  ]
+ },
+ "assassino-das-sombras": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Estuda o alvo, espera o momento de menor atenção, ataca uma vez e desaparece antes que alguém reaja."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Trabalha sozinho ou para uma guilda discreta, vendido a quem paga bem e não faz perguntas."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Carrega Centelha suficiente para se mover como sombra entre sombras, um talento raro que o torna valioso (e temido) tanto para nobres de Calin quanto para cultos escusos de Mére."
+   }
+  ]
+ },
+ "duelista": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Vive do duelo: para golpes com precisão, finta para abrir espaço e responde com a ripose certeira, tratando a espada como conversa e não como açougue."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Orgulhoso da própria técnica, valoriza a honra do embate mais do que o resultado bruto; despreza quem luta sujo."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Figura comum nos salões e academias de esgrima das cidades de Calin, onde o duelo formal ainda é visto como arte civilizada, longe do tabu que recai sobre a magia."
+   }
+  ]
+ },
+ "feiticeiro-menor": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Evita o corpo a corpo, onde é frágil, e prefere abrir distância para golpear com fogo antes que o inimigo chegue perto."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Inseguro quanto ao próprio poder, ainda descobrindo os limites da centelha que desperta em si."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É exatamente o tipo de figura que a Supressão ensinou o povo a temer: um conjurador iniciante, tocado por um poder que as igrejas ortodoxas de Calin chamam de herança da Tecelã e pregam contra."
+   }
+  ]
+ },
+ "cavaleiro-de-elite": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Avança como muralha, absorve golpes que derrubariam outro soldado e segura posições que ninguém mais aguentaria segurar."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Disciplinado e confiável, o tipo de guerreiro em quem um comandante apoia toda a linha de batalha."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Foi tocado pela Centelha o bastante para que sua pele resista como pedra, um dom raro entre humanos que o eleva acima da tropa comum e desperta tanto respeito quanto desconfiança."
+   }
+  ]
+ },
+ "campeao": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Luta como poucos: rápido, forte, e capaz de golpes que vão além do treino mortal comum, um adversário à altura de heróis."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Convicto da própria causa, seja ela nobre ou perversa; não se vê como vilão, mas como o obstáculo necessário."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É um semideus menor, alguém que ascendeu na escala da Centelha o bastante para manifestar Técnicas de herói, algo raríssimo em Uldun e que marca seu portador para sempre aos olhos do povo e das igrejas supressoras."
+   }
+  ]
+ },
+ "comandante": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Luta bem, mas comanda melhor: sua presença no campo reorganiza tropas em pânico e quebra a moral do lado inimigo antes mesmo do choque das lâminas."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Lidera exércitos ou bandos de guerra, respeitado por soldados que confiam mais na sua palavra do que na própria espada."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Foi tocado pela Centelha o suficiente para liderar como poucos líderes mortais conseguem, um dom que faz dele figura central em qualquer conflito de Uldun, de Calin a Mére."
+   }
+  ]
+ },
+ "cultista": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Serve poderes que a maioria teme nomear, drenando a vida de vítimas e erguendo os mortos para servir sua vontade."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Opera em seitas escondidas, longe da vista das ortodoxias supressoras, atraindo desesperados e ambiciosos com promessas de poder proibido."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Aprendeu a colher a Centelha dos mortos em vez de deixá-la voltar à Primeira Luz, um crime que a Ceifadora e as igrejas de Calin igualmente condenam; muitos desses cultos rastreiam sua doutrina até horrores vindos da Fenda, no White Wall."
+   }
+  ]
+ },
+ "mago-de-batalha": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Mantém distância do combate corpo a corpo, usa o terreno a seu favor e abre o confronto com rajadas de fogo e força para quebrar formações antes de qualquer aproximação."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Carrega grimórios e focos raros como bens mais preciosos que a própria armadura, e trata cada magia preparada como recurso escasso a ser gasto com cálculo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Frio e calculista, vê tropas comuns como escudo descartável e tem orgulho quase arrogante do próprio dom arcano."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "A Supressão tornou a arte arcana tabu e temida em Calin e no The Neck, então um mago de guerra deste calibre só floresce longe da vista das igrejas supressoras, formado nas escolas escondidas de Mére ou a soldo de um senhor de guerra disposto a arriscar a fúria do povo em troca de vantagem no campo de batalha."
+   }
+  ]
+ },
+ "mon-goblin": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Covardes quando sozinhos ou em desvantagem, cruéis com qualquer coisa mais fraca, preferem emboscada e armadilha a luta franca."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vivem em bandos numerosos e barulhentos, liderados pelo mais forte ou mais esperto do momento, em guerra territorial constante com tribos vizinhas."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Fazem ninho em cavernas, ruínas e esgotos, acumulam tralha furtada sem valor aparente e domam lobos ou ratos gigantes quando conseguem."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "São um dos povos ásperos que os anões moldaram da própria rocha da montanha, usando técnicas aprendidas pela metade dos elfos; sem a lapidação que os anões deram a si mesmos, os goblins saíram numerosos, de vida curta e sempre à margem das cidades humanas."
+   }
+  ]
+ },
+ "mon-kobold": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Covardes em combate direto, letais quando podem escolher o momento, através de armadilhas, túneis colapsáveis e emboscadas planejadas com paciência."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Escavam warrens labirínticos cheios de engenhocas, chocam ovos em câmaras aquecidas e veneram ou imitam qualquer dragão que aceite protegê-los."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Clãs pequenos e disciplinados, com hierarquia rígida em que o mais fraco serve ao mais forte sem questionar."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Primos distantes dos lagartos e trogloditas que povoam as profundezas de Mére e das ruínas do White Wall, os kobolds prosperam nos túneis abandonados desde que a Fenda expulsou os anões, ocupando galerias que ninguém mais ousa reclamar."
+   }
+  ]
+ },
+ "mon-orc": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guerreiros ferozes que só respeitam força bruta e coragem provada em combate, e desprezam abertamente qualquer sinal de fraqueza."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vivem em hordas ou tribos lideradas por quem vence em duelo direto; a lealdade dura só enquanto o chefe segue vencendo."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Têm vida curta e violenta, geram filhos cedo e marcham em bandos que saqueiam fronteiras e postos avançados isolados."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Assim como os goblins, são filhos ásperos moldados pelos anões a partir da própria rocha da montanha; livres desde o nascimento, nunca escravizados, cresceram bárbaros e sem lugar fixo, e por isso vagam pelas fronteiras selvagens de Mére e do White Wall perdido."
+   }
+  ]
+ },
+ "mon-hobgoblin": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Disciplinados e metódicos, lutam em formação fechada e valorizam hierarquia militar acima de tudo, ao contrário dos goblins soltos."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Organizam-se em legiões com postos e patentes claras, obediência estrita e ambição constante de conquista territorial."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Erguem fortificações duráveis, treinam diariamente e tratam goblins e outros povos ásperos como recrutas ou escravos de guerra."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Entre os filhos que os anões moldaram da rocha, os hobgoblins foram os que melhor herdaram o senso de ordem da forja; erguem acampamentos fortificados nas terras selvagens de Mére, disciplinados o bastante para preocupar até exércitos humanos."
+   }
+  ]
+ },
+ "mon-gnoll": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caçam em bando uivante, devoram o que matam sem cerimônia e atacam tanto por fome quanto pelo puro prazer de destruir."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Seguem manadas e caravanas como predadores oportunistas, e marcam território com ossos e restos do que caçaram."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Bandos soltos, sem hierarquia estável além de quem estiver mais faminto ou mais violento no momento."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Gnolls não nascem, eles rasgam caminho para fora de carcaças tocadas por uma fome vinda de além mundo; corre entre os caçadores de Mére o boato de que os primeiros bandos surgiram perto da Fenda, e desde então toda alcateia carrega um cheiro de coisa que não deveria existir neste plano."
+   }
+  ]
+ },
+ "mon-bugbear": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Predadores furtivos apesar do tamanho avantajado, preferem emboscar na escuridão a enfrentar qualquer inimigo de frente."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Movem-se com um silêncio antinatural para o porte que têm e escondem seus covis perto de rotas usadas por viajantes."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Convivem em pequenos bandos junto a goblins e hobgoblins, impondo-se pela força sempre que querem a melhor parte da presa."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Mais um ramo dos povos ásperos saídos da forja incompleta dos anões, os bugbears cresceram grandes e sorrateiros o bastante para aterrorizar sozinhos vilarejos isolados nas bordas de Mére e do The Neck."
+   }
+  ]
+ },
+ "mon-homem-lagarto": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Frios e pragmáticos, avaliam cada situação apenas por sobrevivência e proveito, sem a noção humana de bem e mal."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Caçam nos pântanos e alagados, comem o que caem e guardam ovos em ninhos comunais aquecidos pelo sol."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Tribos lideradas por quem é mais capaz na caça ou na guerra, com decisões tomadas em consenso frio pelos mais velhos."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Prosperam nos brejos e deltas de Mére, onde a selva esconde tanto perigo quanto cidade escondida; para eles humanos e elfos são só mais uma presa ou aliança passageira, sem o peso das rixas antigas que outras raças carregam."
+   }
+  ]
+ },
+ "mon-trogloditas": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Agressivos e territoriais, atacam por instinto puro quando encurralados ou famintos."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Liberam de si um fedor nauseante que atordoa intrusos, e vivem em cavernas úmidas onde caçam morcegos, fungos e o que cai nas galerias."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Pequenos clãs primitivos sem ambição além de defender a própria toca, quase sem contato com a superfície."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Parentes distantes e degenerados dos lagartos, multiplicaram-se nas profundezas abandonadas do White Wall depois que a Fenda expulsou os anões, reivindicando túneis que antes eram forja e hoje são só caverna."
+   }
+  ]
+ },
+ "mon-ogro": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Age por impulso e fome, resolve qualquer problema no porrete antes de pensar; fácil de enganar, mas perigoso quando irritado."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Vive sozinho ou em pequeno grupo familiar, guarda cavernas ou ruínas cheias de ossos e tralha roubada, e come praticamente qualquer coisa, gente inclusive."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Sem organização além do bando doméstico; obedece a quem for mais forte ou esperto o bastante para enganá-lo."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Relíquia bruta de um mundo mais selvagem, o ogro é hoje pesadelo comum dos caminhos isolados de Mére e das terras altas do White Wall, temido por camponeses que já não sabem dizer se é besta, gigante caído ou coisa pior escapada da Fenda."
+   }
+  ]
+ },
+ "mon-ettin": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "As duas cabeças discutem entre si sobre quase tudo, da direção a seguir a quem come primeiro, o que o torna imprevisível em combate."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Vive em cavernas isoladas nas montanhas, ataca viajantes por fome ou irritação, e guarda o que caça sem dividir com ninguém."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Burro e rabugento, mas as duas mentes tornam difícil pegá-lo desprevenido."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Outra relíquia gigante que sobrou nas serras despovoadas perto do White Wall, o ettin discutindo consigo mesmo virou folclore recorrente entre caçadores e viajantes de Mére, sinal certo de perigo duplo pela frente."
+   }
+  ]
+ },
+ "mon-trol": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caça por fome insaciável, ataca sem tática além de rasgar e devorar, e só recua quando o fogo entra em cena."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Regenera qualquer ferimento a olhos vistos, teme apenas brasa e chama, e vive perto de pântanos e pontes à espreita de quem passa."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Quase sem raciocínio além do apetite, mas com uma astúcia animal de emboscada."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "O trol ecoa direto o folclore nórdico do The Neck, onde velhas histórias já avisavam para levar tocha acesa perto de pontes e pântanos; hoje o povo supersticioso das ilhas trata qualquer ataque de trol como prova viva de que os contos antigos nunca foram só contos."
+   }
+  ]
+ },
+ "mon-gigante-da-colina": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guloso e pouco esperto, resolve tudo com força e mau humor, e ataca rebanhos e vilarejos atrás de comida fácil."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Pastoreia animais roubados, vive em cavernas ou fortes de pedra crua nas colinas, e come em excesso e sem modos."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Bandos familiares soltos, onde o respeito se conquista apenas pela força do braço."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "O mais rude entre os gigantes, ainda segue à sua maneira grosseira a velha ordem que coloca a tempestade e o Senhor da Guerra e da Tempestade acima de todos eles; para o povo comum de Mére e do White Wall é só mais um monstro faminto descendo da colina."
+   }
+  ]
+ },
+ "mon-gigante-da-pedra": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Reclusivo e pacífico até ser provocado, prefere evitar contato com outras raças a impor sua força."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Esculpe formas belas na pedra nua das próprias cavernas, medita por longos períodos e arremessa rochas com precisão mortal quando ameaçado."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Contemplativo e discreto, quase um artista, mas devastador quando a guerra chega até ele."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Recolhido nas profundezas de montanhas que os anões já chamaram de lar, o gigante da pedra é talvez o único vizinho silencioso que restou no White Wall depois da Fenda, e poucos sabem dizer se ainda há covis intactos ou se os horrores já os alcançaram também."
+   }
+  ]
+ },
+ "mon-gigante-do-fogo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Disciplinado e militarista, obedece a uma hierarquia rígida em que só a força bruta decide quem manda. Não questiona ordens do superior mais forte, e usa a mesma lógica para tratar todos abaixo dele."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive em fortalezas erguidas sobre fendas vulcânicas, onde forja armaduras e armas em placas do tamanho de portões. Mantém escravos, orcs e ogros em geral, para o trabalho pesado das minas e fornalhas."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Cavernas de lava e crateras ainda quentes, onde o calor extremo não incomoda nem a ele nem ao ferro que trabalha."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Sua forja é vista como um eco grosseiro e violento da tradição sagrada do Forjador, uma cópia bárbara do ofício dos anões feita a fogo e chicote. Para o povo comum, é lenda de fornalha de uma era mais mágica que a Supressão preferiria esquecida."
+   }
+  ]
+ },
+ "mon-gigante-do-gelo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Violento e orgulhoso, vive para o saque e a guerra, e só respeita quem o supera em combate direto."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Organiza-se em clãs liderados por um jarl, cujo poder dura enquanto ninguém o derrota; os clãs vivem em salões compridos, entre fogueiras e banquetes ruidosos."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Caça em bando com lobos adestrados e guarda o tesouro saqueado como prova de status diante dos outros gigantes."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Disputa as montanhas geladas do White Wall tanto com os anões exilados quanto com os horrores que saíram da Fenda, e para o povo supersticioso do Neck é a lenda de inverno que rouba gado e crianças."
+   }
+  ]
+ },
+ "mon-gigante-das-nuvens": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caprichoso e vaidoso, trata mortais como curiosidades ou peças de um jogo, e prefere enigmas e caçadas a guerra direta."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Forma uma espécie de nobreza aérea, vivendo em castelos flutuantes sustentados por magia antiga, servida por ogros e águias gigantes."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Coleciona curiosidades trazidas de baixo e organiza banquetes suntuosos e caçadas como passatempo."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Seus castelos no céu são relíquia viva de um tempo em que a magia domava até o vento, prova de que o mundo já foi diferente antes da Supressão. Poucos mortais os avistam, e quem avista raramente é acreditado."
+   }
+  ]
+ },
+ "mon-gigante-da-tempestade": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Sábio e reservado, prefere observar a interferir, e quando age, age com justiça severa e definitiva."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive isolado em fortalezas sobre recifes ou ilhas remotas, evitando contato tanto com outros gigantes quanto com mortais."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Filósofo e guardião por natureza, valoriza conhecimento e equilíbrio acima de qualquer demonstração de força."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Diz vigiar de longe as rotas do Senhor do Mar e das Estradas, cuidando das águas sem se intrometer nos assuntos dos homens. Sua Centelha, a maior entre os gigantes, o aproxima do divino e o torna ainda mais temido pelas igrejas supressoras."
+   }
+  ]
+ },
+ "mon-ciclope": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Solitário e desconfiado, vive por instinto e reage com hostilidade a qualquer estranho que se aproxime de sua toca."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Pastoreia rebanhos ou caça sozinho, e habita cavernas isoladas bem longe de qualquer povoado."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Costuma ocupar ruínas esquecidas de uma era anterior à Supressão, tomando templos e torres em decadência como sua toca. Para os pastores de Mére e Syl, é a figura por trás das velhas histórias de assombração de montanha."
+   }
+  ]
+ },
+ "mon-lobo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caça em matilha organizada, sob a liderança de um casal alfa que coordena cercos e emboscadas contra presas maiores que um lobo sozinho."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Ronda florestas, planícies abertas e as bordas de assentamentos humanos, marcando um território amplo com uivos."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Vive livre nos ermos de Syl, onde os animistas locais o tratam com respeito quase reverente, e nas franjas selvagens de Mére. Não carrega magia nem malícia, só fome e instinto de sobrevivência."
+   }
+  ]
+ },
+ "mon-lobo-atroz": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Como o lobo comum, mas maior e mais audacioso, ataca presas e grupos de viajantes que uma matilha comum evitaria."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Por vezes é domesticado por orcs e goblins, que o usam como montaria de guerra ou guarda de acampamento."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Prefere florestas profundas e regiões frias, territórios ainda pouco pisados por gente."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Encontrado nos ermos mais selvagens de Mére e nas bordas do White Wall, muitas vezes adestrado pelos clãs ásperos que os anões um dia moldaram da rocha."
+   }
+  ]
+ },
+ "mon-urso-pardo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Solitário e territorial, hiberna no inverno e defende ferozmente qualquer filhote ou pedaço de território que considere seu."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Onívoro oportunista, pesca, forrageia e caça conforme a estação e o que a terra oferece."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Habita as florestas e montanhas de Syl e o interior denso de Mére, temido por caçadores apesar de não carregar nenhuma marca de magia, só a força bruta da natureza."
+   }
+  ]
+ },
+ "mon-leao": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Vive em bando liderado por fêmeas caçadoras, enquanto o macho protege o território e disputa domínio com rivais de fora."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Divide o cuidado dos filhotes entre as fêmeas do bando, um arranjo social raro entre os grandes felinos."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Prefere savanas e planícies abertas, típicas das terras mais quentes de Mére."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nas planícies de Mére é símbolo de realeza e coragem para diversos povos locais, caçado tanto por respeito quanto como prova de valentia."
+   }
+  ]
+ },
+ "mon-tigre": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Solitário e territorial, caça por emboscada silenciosa e evita confronto que não seja estritamente necessário."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive em florestas densas e junglosas, sempre perto de fontes de água."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Ronda as selvas mais fechadas de Mére, onde as histórias locais o descrevem quase como espírito da mata, muito por causa do respeito quase religioso da região aos grandes predadores, embora seja apenas um animal comum."
+   }
+  ]
+ },
+ "mon-javali": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Pouco medroso apesar do tamanho, carrega com agressividade direta quando se sente encurralado."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Vive em grupos familiares e forrageia raízes, tubérculos e frutos caídos no solo da floresta."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Comum nas florestas de Syl e nos campos cultivados de Calin, caçado tanto como praga agrícola quanto como prova de coragem entre jovens caçadores."
+   }
+  ]
+ },
+ "mon-rinoceronte": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Solitário e de vista curta, geralmente pacato se não provocado, mas carrega com violência total quando se sente ameaçado."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Ocupa savanas abertas e áreas de vegetação rasteira, longe de florestas fechadas."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Habita as planícies mais amplas de Mére, respeitado pelos povos locais como símbolo de resistência bruta e teimosia."
+   }
+  ]
+ },
+ "mon-elefante": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Vive em manadas matriarcais, com forte laço social entre fêmeas e crias e uma memória apurada para rotas e perigos."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Herbívoro que migra por longas distâncias em busca de água e pasto, moldando a paisagem por onde passa."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "As manadas cruzam as savanas e florestas de Mére, tratadas por alguns povos locais como animais quase sagrados pela sabedoria aparente e a longevidade, sem qualquer laço real com magia."
+   }
+  ]
+ },
+ "mon-gorila": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Vive em grupos familiares liderados por um macho dominante, geralmente pacífico a menos que provocado ou defendendo o grupo."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Habita florestas densas e encostas montanhosas, raramente se afastando da cobertura das árvores."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Encontrado nas selvas mais remotas de Mére, raramente avistado por forasteiros, e tratado pelas lendas locais como guardião silencioso da mata."
+   }
+  ]
+ },
+ "mon-crocodilo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caçador de emboscada: fica imóvel por horas, quase todo submerso, até fechar as mandíbulas sobre a presa e arrastá-la para debaixo d'água. Não tem malícia nem plano, só fome e paciência."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive em rios lentos, pântanos e mangues, sobretudo nas terras baixas e alagadas de Mére e nas margens quentes do sul de Calin."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Topo da cadeia alimentar de sua lagoa: come peixes, aves, mamíferos que vêm beber água e, sem hesitar, gente descuidada na beira do rio."
+   }
+  ]
+ },
+ "mon-cobra-constritora": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Não usa veneno: enrosca o corpo em torno da presa e aperta a cada expiração dela, até sufocar, depois engole inteiro. Ataca só quando faminta ou encurralada."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Prefere selvas úmidas e ribeirinhas quentes, comuns nas florestas fechadas de Mére e nos brejos do interior de Syl."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Predadora solitária e paciente, caça por emboscada em galhos baixos ou tocas alheias; sua pele grossa e seu tamanho a deixam quase sem inimigos naturais adultos."
+   }
+  ]
+ },
+ "mon-aranha-gigante": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Tece teias densas entre árvores ou em bocas de caverna e espera vibrarem; injeta veneno paralisante e embrulha a presa para comer com calma, ou guardar para depois."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Infesta florestas fechadas e grutas escuras, praga comum nas matas profundas de Mére e nas cavernas do White Wall."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Vive em ninhadas: onde há uma, costuma haver dezenas de filhotes crescendo depressa, o que torna um ninho descoberto tarde um perigo sério para vilarejos próximos."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "O povo comum, temperado pela Supressão a desconfiar de qualquer coisa fora do natural, vê um ninho de aranhas do tamanho de um cão como maldição ou praga enviada, não como mero acidente da natureza."
+   }
+  ]
+ },
+ "mon-escorpiao-gigante": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Ataca com as pinças para prender a presa e crava o ferrão por cima, injetando veneno que paralisa ou mata aos poucos. É territorial e reage com violência a qualquer intrusão em sua toca."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Cava tocas em solo seco e pedregoso; comum nas terras áridas do interior de Mére e nas ruínas quentes que pontilham a fronteira sul."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Solitário fora da época de acasalamento, come praticamente qualquer coisa que se mova perto demais de sua toca, de roedores a viajantes desavisados."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Caravaneiros de Mére contam histórias de escorpiões do tamanho de um boi como sinal de terra amaldiçoada, reforçando o medo supersticioso que a Supressão semeou por toda parte fora da magia comum."
+   }
+  ]
+ },
+ "mon-aguia-gigante": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caça em pares ou pequenos bandos, mergulhando de grandes alturas para arrebatar a presa com as garras; é orgulhosa, territorial e nada tolerante com invasores em seu domínio."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Fala sua própria língua sonora, feita de gritos e assobios, e vive em ninhos-fortaleza no alto de penhascos, geralmente em bandos familiares que duram gerações."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Domina os picos e correntes de ar quente do White Wall e das montanhas que cercam Syl, longe do alcance de quase todo predador."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Em Syl, onde tudo carrega um espírito, dizem que a águia gigante é kami de vento e altura em corpo de ave, e recusar-se a caçá-la é sinal comum de respeito local."
+   }
+  ]
+ },
+ "mon-roc": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Predador solitário de força descomunal, capaz de erguer um elefante nas garras; caça o que encontra nos ares e no chão sem se preocupar com tamanho da presa."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Faz ninho em picos isolados e inacessíveis, longe de qualquer povoado, quase sempre nas cordilheiras mais remotas de Mére ou do White Wall."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Não tem predadores naturais adultos; sua raridade e o tamanho do território que exige mantêm poucos exemplares espalhados pelo continente."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É relíquia viva de um mundo mais mágico do que o de hoje; quando um roc sobrevoa uma vila, a Supressão faz o povo rezar antes de correr, certo de ter visto um presságio dos deuses."
+   }
+  ]
+ },
+ "mon-rato-gigante": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Vive em bandos oportunistas, ataca em grupo quando encurralado e foge à primeira chance; morde e some, confiando em número e velocidade."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Infesta esgotos, porões e depósitos de grão, tanto nas grandes cidades de Calin quanto nos entrepostos costeiros de Mére."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Prolifera onde há lixo e comida fácil; sua mordida suja carrega doença, o que faz dele mais temido pela praga que espalha do que pela força bruta."
+   }
+  ]
+ },
+ "mon-corujurso": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Fera de temperamento péssimo e fome constante, ataca por puro instinto assim que percebe uma presa, sem calcular perigo nem recuar até matar ou ser morta."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Marca território com garras nas árvores e uivos guturais que misturam o grito da coruja ao rugido do urso; caça sozinha, dia ou noite, e devora quase tudo que caça."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Vive nas profundezas de florestas densas, sobretudo nas matas fechadas de Mére e nos bosques selvagens do interior de Syl, onde poucos predadores ousam disputar seu espaço."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Ninguém sabe dizer se o corujurso nasceu da natureza ou de algum experimento arcano perdido da Grande Guerra; para o povo comum, pouco importa, é só mais uma fera tocada por magia a evitar."
+   }
+  ]
+ },
+ "mon-minotauro": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Força bruta e fúria primitiva guiam o minotauro em combate; carrega machado enorme e não recua diante de nada, confiando no instinto e na violência para resolver qualquer impasse."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive isolado ou em pequenos clãs dentro de labirintos, ruínas e complexos de túneis que conhece de cor, guardando tesouro ou território com posse quase religiosa."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Orgulhoso e vingativo, guarda rancor de intrusos por anos; sob a brutalidade esconde uma memória apurada para cada corredor e cada rosto que já invadiu seu domínio."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "As selvas de Mére escondem cidades e complexos labirínticos antigos demais para qualquer mapa comum, e é lá, entre pedra esquecida e cultos caídos, que os minotauros mais temidos ainda vivem, isolados do resto do mundo."
+   }
+  ]
+ },
+ "mon-harpia": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caça em bandos usando o canto encantador para atrair viajantes e marinheiros para perto, então cerca e despedaça a presa hipnotizada com garras e dentes."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Faz ninho em penhascos costeiros e ruínas à beira-mar, acumulando ossos e pertences de vítimas antigas ao redor do covil como um monturo macabro."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Cruel e vaidosa, tira prazer em ludibriar antes de matar; despreza presas que resistem ao canto e reserva ódio especial para quem escapa uma vez."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nos portos de Mére e nas costas ásperas do Neck, marinheiros confundem seu grito com os horrores de crânio de ave que se conta terem escapado da Fenda, e poucos se dão ao trabalho de corrigir o engano."
+   }
+  ]
+ },
+ "mon-gargula": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Fica imóvel como estátua de pedra por dias, esperando o momento certo, e desperta em silêncio para emboscar quem profanou o local que guarda."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Não precisa comer nem dormir como criatura viva; existe para vigiar, e isso a torna um guardião paciente onde qualquer sentinela de carne e osso desistiria havia muito."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Fria e metódica, sem ódio nem prazer no ataque, apenas cumprindo o propósito para o qual foi talhada ou invocada, geração após geração de intrusos."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Muitas gárgulas ainda montam guarda em templos e bibliotecas caídas da Tecelã, de antes da Supressão; encontrar uma viva reforça no povo comum o medo antigo de que pedra também possa trair."
+   }
+  ]
+ },
+ "mon-grifo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caça em mergulho, combinando a velocidade da águia com a força do leão; é territorial ao extremo e ataca qualquer coisa, inclusive hipogrifos, que cruze seu espaço aéreo."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive em casais ou pequenos bandos em ninhos de penhasco, criando os filhotes juntos e caçando em duplas coordenadas quando a presa é grande demais para um só."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Domina picos altos e planaltos ventosos, sobretudo no White Wall e nas serras que dividem Calin de Syl."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Ovos e filhotes de grifo são disputados havia gerações por cavaleiros de Calin que sonham montá-los em batalha, embora domar um adulto continue sendo tarefa de poucos e caro demais para a maioria."
+   }
+  ]
+ },
+ "mon-hipogrifo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Mais dócil e gregário que seu primo grifo, vive em manadas e reage a ameaças fugindo em voo antes de brigar, embora se defenda com força quando encurralado."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Forma bandos de várias famílias que pastam e voam juntos, com hierarquia frouxa liderada pelo garanhão mais velho e mais alerta a predadores."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Habita planícies altas e campos abertos entre montanhas, comum nas pastagens ventosas de Syl e nas bordas do White Wall."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Por ser mais fácil de domar que o grifo, o hipogrifo virou montaria de prestígio entre batedores e mensageiros de Calin, ainda que precise fugir de território de grifo sempre que os dois se cruzam."
+   }
+  ]
+ },
+ "mon-manticora": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caça sozinha, atacando de longe com uma saraivada de espinhos disparados da cauda antes de fechar a distância com garras e mandíbulas; prefere ferir e cansar a presa a arriscar-se em briga direta."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Astuta e vaidosa, com rosto quase humano que a torna ainda mais perturbadora; gosta de conversar com a presa antes de matá-la, saboreando o medo tanto quanto a carne."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Devora qualquer animal grande, mas prefere gente, o que a torna terror lendário de estradas e vilarejos isolados perto de seu território."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Vive nas franjas mais selvagens de Mére, onde a fama de território bárbaro esconde perigos antigos; comerciantes evitam certas trilhas havia gerações só por causa de histórias de mantícoras que falam antes de matar."
+   }
+  ]
+ },
+ "mon-quimera": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Três cabeças, três vontades: o leão comanda o corpo e a fúria, a cabra teima e desconfia, o dragão cospe o sopro que decide as caçadas. A criatura ruge, bale e queima quase ao mesmo tempo, e essa desarmonia interna a torna imprevisível até para quem a estuda de longe."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Vive em picos e desfiladeiros isolados, onde disputa território com grifos e mantícoras. Caça rebanhos e viajantes solitários, arrastando a presa para o ninho antes que as outras cabeças brigem pela parte maior."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Não há um só temperamento, há três presos ao mesmo fôlego: a soberba do leão, a obstinação da cabra, o apetite frio do dragão. Isso a torna cruel sem ser exatamente astuta, perigosa por impulso e não por plano."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Para o povo comum é prova viva de que a era anterior à Supressão gerava monstros que ninguém hoje sabe explicar; camponeses erguem capelas nas encostas onde uma foi avistada, pedindo à Verdejante que mantenha a fera longe do rebanho."
+   }
+  ]
+ },
+ "mon-wyvern": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caçador aéreo territorial, ataca em mergulho e finaliza a presa com o ferrão da cauda, que carrega um veneno lento e cruel. Prefere gado, cavalos e alvos isolados a combate direto com grupos armados."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Faz ninho em falésias e torres de pedra abandonadas, empilhando ossos e couro do que trouxe ao covil. É menos raciocinado que um dragão verdadeiro, mas aprende rápido a evitar armadilhas que já o feriram antes."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Orcs, goblins e mercenários sem escrúpulos às vezes capturam filhotes e os domam como montaria de guerra, trocando carne farta por obediência relutante; a lealdade dura só enquanto durar a comida."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É contado entre os dragões, e como todo dragão carrega o peso da Supressão: aldeias inteiras erguem sinos de alarme e recompensas quando um se instala por perto, lembrando que o mundo antigo era mais selvagem e mais mágico do que o de hoje."
+   }
+  ]
+ },
+ "mon-hidra-5-cabecas": {
+  "secoes": [
+   {
+    "t": "Ecologia",
+    "d": "Vive em pântanos, lagos e cavernas úmidas, onde a fartura de presas sustenta suas cinco cabeças famintas. Cada cabeça morde por conta própria, e cortar uma sem cauterizar o coto só multiplica o problema."
+   },
+   {
+    "t": "Comportamento",
+    "d": "Não caça por estratégia, caça por fome: ataca tudo que se move perto demais do território e raramente recua, porque uma cabeça perdida é rapidamente substituída por duas. Prefere emboscar na água ou na lama, onde a fuga da presa é mais lenta."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É citada como prova de que a magia da era antiga ainda respira nos pântanos esquecidos; em Syl, quem se aventura perto de um covil de hidra deixa oferendas aos kami do lugar antes, achando que a besta é castigo por um espírito da água ofendido."
+   }
+  ]
+ },
+ "mon-basilisco": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Réptil solitário e paciente, ataca de emboscada e depende do olhar petrificante para vencer presas maiores que ele. Não persegue longe: prefere esperar a vítima se aproximar de sua toca."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Faz covil em ruínas, cavernas e minas abandonadas, cercado de estátuas de pedra que já foram gente ou animal. Come devagar, às vezes só depois que a presa petrificada começa a rachar e esfarelar, séculos depois."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Muitas de suas tocas ficam em ruínas da Grande Guerra, e o povo comum jura que as estátuas ao redor são soldados daquele tempo, presos como aviso do preço de mexer com magia."
+   }
+  ]
+ },
+ "mon-cocatriz": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Pequeno, ágil e agressivo para o tamanho, ataca em bando como galinhas ciumentas de seu terreiro, bicando com um toque que petrifica aos poucos quem não recua a tempo."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive em bandos que lembram criação de aves, com ninhos, ovos e disputa de hierarquia entre os machos de crista mais vistosa; defende o ninho com uma fúria desproporcional ao tamanho."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É o pesadelo dos criadores de aves em Calin: um cocatriz solto num galinheiro é contado como praga e maldição, e caçá-lo virou ofício de aldeia, quase um rito de passagem para jovens caçadores."
+   }
+  ]
+ },
+ "mon-gorgona-touro-de-ferro": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Touro couraçado de placas que parecem metal vivo, carrega em linha reta contra qualquer ameaça e usa o bafo que solidifica os pulmões da presa como arma tão certeira quanto os chifres."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Pasta em charnecas e campos abertos como um touro comum até ser provocado; então nada o detém, e sua passagem deixa vítimas transformadas em estátuas cinzentas atrás de si."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Muitos acreditam que a górgona nasceu de um touro comum tocado pelos experimentos da Grande Guerra, quando magia e engenho de metal se misturavam sem controle; hoje é citada como aviso vivo do que a Supressão jurou nunca mais permitir."
+   }
+  ]
+ },
+ "mon-besta-deslocadora": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Predador felino de seis membros e dois tentáculos nos ombros, caça em grupo e usa uma distorção natural ao redor do corpo para parecer estar sempre um passo fora de onde realmente está; o golpe certeiro vem exatamente desse engano."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Caça em bandos organizados por florestas densas e cavernas, coordenando emboscadas com uma disciplina que surpreende quem espera fera comum. Carrega um ódio natural e antigo por cães élficos e criaturas semelhantes, instinto que nenhum estudioso soube explicar por completo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Sorrateira, paciente e cruel, prefere isolar um alvo do grupo antes de atacar; a distorção visual que a cerca a torna quase impossível de acertar no primeiro golpe."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Sábios de Calin suspeitam que a besta deslocadora não é totalmente deste mundo, que carrega em si um resquício de outro plano, torto como os horrores da Fenda; ninguém provou a origem, mas o medo já bastou para render um lugar entre os monstros mais temidos dos ermos."
+   }
+  ]
+ },
+ "mon-aranha-das-fases": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Aranha gigante que some e reaparece piscando entre este mundo e um véu etéreo logo abaixo dele, usando essa passagem para emboscar presas sem aviso e escapar de perseguições impossíveis."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Tece teias tanto no mundo material quanto no véu que o espelha, e arrasta presas paralisadas por seu veneno para o lado etéreo, onde devora em paz, longe de qualquer resgate."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É tratada como parente distante dos horrores que atravessam a Fenda: não vem de lá, mas cruza um véu do mesmo jeito, e isso basta para que caçadores de Syl a tratem com o mesmo respeito assustado que dão a um espírito hostil fora de lugar."
+   }
+  ]
+ },
+ "mon-monstro-da-ferrugem": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Criatura de antenas sensíveis que fareja metal a distância e se lança sobre ele com fome irresistível, mais interessada em devorar espadas e armaduras do que em ferir quem as carrega."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Vive em tocas subterrâneas e ruínas, remoendo tudo de ferro que encontra; é dócil até ser cercado ou impedido de alcançar seu alvo, e só então usa as antenas para enferrujar quem estiver no caminho."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Ferreiros e aventureiros contam histórias de covis inteiros enferrujados até o pó, e muitos juram que a praga chegou pela Fenda, arrastada de um plano onde nada de metal resiste."
+   }
+  ]
+ },
+ "mon-cubo-gelatinoso": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo lentamente tudo que toca; não persegue, apenas avança e engole o que estiver em seu caminho."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Limpa dungeons e ruínas por acidente, carregando dentro de si moedas, ossos e fivelas de metal que sobrevivem à digestão lenta, um arquivo grotesco de todos que morreram ali antes."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Exploradores de ruínas da Grande Guerra o temem mais pela surpresa que pelo perigo: é fácil de evitar se visto a tempo, e quase sempre fatal para quem não percebe a diferença entre corredor vazio e gelatina viva."
+   }
+  ]
+ },
+ "mon-mimico": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então prende e devora a vítima antes que ela perceba o engano."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Vive sozinho em dungeons, ruínas e cavernas, sempre perto de rotas que aventureiros e saqueadores costumam seguir; raramente se move enquanto não precisa caçar de novo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Mais esperto do que a maioria das criaturas de forma estranha, observa os hábitos de quem passa por seu território e ajusta o disfarce ao que tem mais chance de atrair uma mão incauta."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É contado entre as coisas de forma errada que o povo acredita terem origem na Fenda, e nenhuma história assusta mais um caçador de tesouros do que a certeza de que o próximo baú pode ser o último que ele abre."
+   }
+  ]
+ },
+ "mon-montao-tropecante": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Amontoado de vegetação podre e restos que ganhou vontade própria, avança devagar mas sem cansar, esmagando e envenenando o que alcança com seus braços de galhos entrelaçados."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Costuma se formar perto de pântanos e brejos após tempestades fortes, arrastando cadáveres e restos orgânicos para dentro de si, que usa como alimento e material de crescimento."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Camponeses de Mére e Syl contam que um montão tropeçante nasce quando a terra se recusa a esquecer uma morte violenta; alguns druidas e xamãs o deixam em paz, como se fosse uma forma torta e lenta de luto da própria natureza."
+   }
+  ]
+ },
+ "mon-treant": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Árvore desperta há séculos, move-se e fala devagar, do jeito de quem pensa em estações e não em instantes; quando enfim decide agir, esmaga com a força bruta de um carvalho ancestral."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Guardião solitário de florestas antigas, aceita a companhia de dríades, sátiros e druidas, e trata madeireiros e incendiários como a pior ameaça que existe."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Paciente quase além da compreensão mortal, lento para confiar e mais lento ainda para esquecer um dano feito à sua floresta; uma vez irritado, carrega a raiva por gerações inteiras."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Em Syl é reverenciado quase como um kami de carne e casca, guardião físico do que os espíritos protegem de forma sutil; sua ligação antiga com os elfos, povo nascido do véu feérico, faz dele um dos poucos seres que ainda lembra o mundo antes da Queda e da Supressão."
+   }
+  ]
+ },
+ "mon-verme-purpura": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Verme titânico que escava túneis inteiros com a boca, engolindo o que encontra pela frente e usando o ferrão da cauda contra o que escapa da mordida."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Vive nas profundezas do subsolo, longe da luz, cavando novas galerias sempre que a comida escasseia; sua passagem pode desabar minas inteiras sem que ele perceba o dano feito acima."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É um dos poucos monstros grandes o bastante para assustar até os anões do White Wall, e mineradores contam sua chegada como um desastre natural, não como uma caçada: quando um verme púrpura escava perto, a única defesa é fugir da rota."
+   }
+  ]
+ },
+ "mon-bulette": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Predador solitário que emerge do solo sem aviso e ataca por puro instinto voraz, sem malícia real. Devora quase tudo que se move e depois volta a cavar, indiferente ao que deixou para trás."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive sob campos, charnecas e bosques abertos, sentindo vibrações do solo a grande distância. Prefere terrenos macios onde possa se deslocar sob a terra com facilidade."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Não caça em bando nem forma qualquer laço, defendendo sozinha um território vasto. Nada além de comer e cavar parece lhe interessar."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É uma fera relíquia de um mundo mais mágico que a Supressão tentou apagar. Camponeses de Calin e Mére contam histórias de campos que engolem gado inteiro, e as igrejas supressoras usam o bulette como prova viva de que a magia selvagem ainda espreita sob os pés de todos."
+   }
+  ]
+ },
+ "mon-aboleth": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Paciente além de qualquer medida mortal, prefere manipular e escravizar a atacar diretamente. Fala dentro da mente das vítimas, sem precisar abrir a boca."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive em colônias antigas nas profundezas aquáticas, servido por escravos transformados: o limo de seu toque converte lentamente a vítima em criatura submissa e adaptada à água."
+   },
+   {
+    "t": "Hábitat e ecologia",
+    "d": "Domina lagos subterrâneos, mares internos e ruínas afundadas, raramente emergindo à superfície. Suas memórias passam de geração em geração, e cada aboleth carrega dentro de si as lembranças de todos os seus ancestrais."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Arrogante e desdenhoso, considera-se herdeiro legítimo de um mundo que pertencia à sua espécie muito antes de elfos, anões ou homens caminharem sobre ele."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Os aboleths parecem mais velhos que a própria Fenda, talvez até mais velhos que a divisão da Primeira Luz em Centelhas individuais. Os sábios de Syl sussurram que são restos de uma era que o mundo esqueceu de matar."
+   }
+  ]
+ },
+ "mon-esqueleto-humano": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Não pensa nem sente, apenas obedece à vontade de quem o ergueu. Move-se com a rigidez de ossos secos e ataca sem hesitação, medo ou cansaço."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Não come, não dorme e não apodrece mais, pois já não há carne a apodrecer. Sobrevive enquanto a magia que o sustenta não for desfeita."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Guarda criptas, masmorras e campos de batalha esquecidos, imóvel por anos até que algo desperte sua ordem."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "A Centelha deste corpo já se foi há muito, reciclada à Primeira Luz ou levada a um além; o que resta é um casco vazio movido por vontade alheia. Por isso as igrejas supressoras o veem menos como uma alma amaldiçoada que como um insulto grosseiro à ordem natural da morte."
+   }
+  ]
+ },
+ "mon-zumbi-humano": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Lento, desajeitado e obtuso, mas incansável: avança direto ao alvo mais próximo, sem tática, medo ou hesitação."
+   },
+   {
+    "t": "Ecologia",
+    "d": "A carne apodrece aos poucos mesmo animada, e o zumbi mal nota o próprio corpo se desfazendo. Não sente dor, fome ou fadiga como um vivo sentiria."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Costuma se acumular onde os mortos não foram enterrados a tempo, como covas rasas de batalhas antigas ou vilarejos assolados por pragas."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Aqui a Centelha já partiu, e o cadáver é reanimado por uma compulsão bruta imposta de fora. Erguer um zumbi é um dos atos mais reprimidos pelas ortodoxias de Calin, prova imediata de necromancia ativa numa comunidade."
+   }
+  ]
+ },
+ "mon-ghoul": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caça em matilha por instinto faminto, atacando para paralisar a presa com as garras e devorando carne, viva ou morta, sem distinção."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Ronda cemitérios, catacumbas e campos de batalha, evitando a luz do dia e se escondendo em criptas e covas violadas."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Muitos ghouls já foram gente, transformados por uma maldição, uma doença ou o próprio ato de comer carne humana em desespero. O que resta é fome pura vestida de memória."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Dizem os sacerdotes de Syl que o ghoul nasce quando a Centelha de alguém se recusa a seguir aos ancestrais e se torna apenas apetite. Profanar um túmulo é um dos piores pecados contra os mortos, e é por isso que os ghouls são caçados sem piedade por guardiões de santuário."
+   }
+  ]
+ },
+ "mon-ghast": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Mais astuto e forte que um ghoul comum, costuma liderar pequenas matilhas de ghouls, preferindo emboscadas a ataques cegos."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Prefere criptas fétidas e ossários, onde o próprio fedor de sua presença enjoa e atordoa quem se aproxima."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Alimenta-se com mais requinte cruel que os ghouls que comanda, guardando as melhores presas para si antes de dividir os restos."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Um ghast é o que sobra quando a fome de um ghoul amadurece por séculos. Em regiões de Mére, onde os mortos de guerras antigas nunca foram todos recolhidos, ainda se encontram ossários inteiros liderados por um só ghast paciente."
+   }
+  ]
+ },
+ "mon-sombra": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Incorpórea e silenciosa, desliza pela escuridão e ataca com um toque que rouba força e vigor, sem palavras nem propósito além de se alimentar."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Habita lugares sem luz: cavernas profundas, criptas seladas e ruínas onde o sol nunca chega."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Não guarda memória de quem foi, apenas um vazio faminto que imita vagamente a forma humana."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Alguns eruditos de Syl dizem que a sombra é o que resta quando uma Centelha se apaga perto demais da Fenda, um resquício escuro do plano de pesadelo colado à alma extinta. Onde uma sombra aparece, os camponeses juram sentir o mesmo frio das histórias sobre a fenda do White Wall."
+   }
+  ]
+ },
+ "mon-wight": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Odeia os vivos com uma ferocidade fria e calculada, atacando para drenar a força vital da presa; se ela morre assim, ele a ergue como sua própria serva."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Cerca-se de zumbis e outros wights que ele mesmo criou, comandando-os com uma vontade que ainda lembra, de longe, a de quem foi em vida."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Costuma nascer de alguém que morreu consumido por ódio ou traição, e essa raiva o prende ao mundo em vez de deixá-lo seguir adiante."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "O wight é a prova mais literal de que uma Centelha pode ser roubada aos poucos: cada vítima que ele drena alimenta a sua própria e cria um novo servo faminto. As igrejas de Calin apontam esse ciclo como o motivo pelo qual a necromancia nunca deve ser tolerada."
+   }
+  ]
+ },
+ "mon-assombracao-wraith": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Mais inteligente e implacável que a sombra comum, paira sobre suas vítimas como uma capa negra e rouba a vida com um toque gelado."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Muitas vezes comanda sombras e outros mortos-vivos incorpóreos menores, impondo-se como senhor de uma tumba ou ruína."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Costuma surgir de uma morte particularmente cruel, sobretudo às mãos de outro morto-vivo, ou de massacres esquecidos pela história."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Uma assombração é uma Centelha que não apenas se recusou a partir, mas se voltou contra a própria vida. Ruínas de batalhas da Grande Guerra, onde milhares morreram de uma só vez, são os lugares onde mais se relatam essas presenças."
+   }
+  ]
+ },
+ "mon-espectro": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Incorpóreo e implacável, persegue os vivos com uma velocidade e um ódio que não conhecem descanso nem piedade."
+   },
+   {
+    "t": "Personalidade",
+    "d": "É o ódio puro do que restou de uma pessoa, sem nenhum traço de quem foi além da fúria de ter sido morto."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Cada vítima que mata sob certas condições se ergue como novo espectro, multiplicando essa fúria de tumba em tumba."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Os sacerdotes da Ceifadora ensinam que um espectro nasce quando uma alma morre com tanto ódio que a própria deusa da morte se recusa a recebê-la, deixando-a presa entre o mundo e o além. É considerada a mais pura expressão de uma Centelha que apodreceu por dentro."
+   }
+  ]
+ },
+ "mon-mumia": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Metódica e implacável, avança devagar mas sem parar, e seu toque carrega uma podridão que consome quem sobrevive ao encontro."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Quase sempre foi alguém embalsamado por rituais sagrados para guardar eternamente um túmulo, um templo ou um tesouro específico."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Dorme séculos dentro de câmaras seladas, despertando apenas quando intrusos profanam o local que jurou proteger."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Os ritos que criam múmias sobrevivem sobretudo nas cidades mágicas escondidas de Mére, onde reis e sacerdotes de antes da Supressão se fizeram guardiões eternos de suas próprias tumbas. Abrir uma dessas câmaras é acordar uma promessa selada há gerações."
+   }
+  ]
+ },
+ "mon-bodak": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Caminha como um cadáver oco, movido por um ódio cego a tudo que ainda respira. Seu simples olhar é capaz de matar quem encara de volta."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Casca cinzenta e sem cabelo, com o rosto encolhido como uma máscara de caveira: criatura que já não pertence a nenhum mundo saudável."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Costuma vagar sozinho, sem matilha nem senhor, atraído apenas pelo calor da vida que despreza e deseja apagar."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nenhum monstro combina tanto com a Fenda quanto o bodak: dizem que é o que sobra de alguém arrastado para o plano de pesadelo e devolvido ao mundo com a Centelha torcida em algo que só sabe odiar. Os poucos sobreviventes de expedições ao White Wall descrevem exatamente essa figura de crânio de ave e garras longas antes de fugir."
+   }
+  ]
+ },
+ "mon-vampiro": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Sedutor, calculista e paciente, prefere manipular e seduzir a atacar abertamente, alimentando-se do sangue dos vivos para manter sua existência roubada."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Costuma se infiltrar entre a nobreza e a alta sociedade, tecendo teias de influência que duram gerações inteiras enquanto finge envelhecer como qualquer mortal."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Conserva fragmentos de quem foi em vida, mas distorcidos por uma fome que nunca se sacia e por séculos de solidão."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Um vampiro é alguém que recusou devolver sua Centelha à Primeira Luz e a manteve à força, roubando um pouco da Centelha alheia a cada mordida. Nos salões dourados de Calin, onde a Supressão prega o medo da magia, nenhuma figura é mais temida ou mais fascinante que um nobre que nunca envelhece."
+   }
+  ]
+ },
+ "mon-lich": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Frio, calculista e obcecado por conhecimento e poder, trata a própria morte como um mero obstáculo que a magia soube contornar."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Isola-se em torres, criptas ou bibliotecas esquecidas, cercado de servos e mortos-vivos menores que protegem seu segredo mais precioso."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Prendeu a própria Centelha a um objeto selado, o falso coração que o mantém preso ao mundo mesmo com o corpo reduzido a ossos secos. Destruir apenas o corpo nunca é o bastante."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Um lich é quase sempre um mago de antes da Supressão, alguém que se recusou a aceitar o tabu antimagia e trocou sua própria alma pela imortalidade. Para as ortodoxias de Calin, ele é a prova viva do que aconteceria se o mundo voltasse a permitir o poder desenfreado que quase o destruiu na Grande Guerra."
+   }
+  ]
+ },
+ "mon-dretch": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Covardes quando sozinhos, mas ganham fúria cega em enxame: mordem, arranham e rasgam tudo o que está ao alcance, inclusive uns aos outros quando a fome aperta."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Ocupam o degrau mais baixo entre os demônios do Abismo, tratados como bucha de canhão pelos demônios maiores; não têm lealdade nem hierarquia própria, só medo do que vem depois deles na cadeia de comando."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Comem qualquer coisa orgânica, viva ou podre, e se multiplicam onde há morte e desespero acumulados."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Quando a Fenda cospe algo pequeno e numeroso, é quase sempre um enxame de dretches; camponeses do White Wall os chamam de vermes da fenda e sabem que, se aparecem aos montes, algo maior os empurrou para fora."
+   }
+  ]
+ },
+ "mon-quasit": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Cruel e covarde em doses iguais, prefere torturar os fracos e fugir dos fortes, trocando de forma (morcego, gato, rato, sapo) para espiar sem ser notado."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Vive para servir um mestre mais poderoso, seja um senhor demoníaco, seja um mago mortal incauto que aceitou seu serviço em troca de favores obscuros."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Sarcástico e mentiroso, deleita se com o sofrimento alheio; obedece apenas enquanto teme o dono e trai no instante em que enxerga vantagem."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Circula disfarçado nas cidades de Calin como familiar de hereges que flertam com o tabu antimagia, sussurrando segredos e semeando pequenas desgraças no dia a dia de quem confia demais nele."
+   }
+  ]
+ },
+ "mon-sucubo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Sedutora paciente, estuda a vítima antes de agir, assume o rosto e a voz de quem o alvo deseja e conduz a presa passo a passo até a ruína."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Trabalha sozinha ou a serviço de senhores demoníacos maiores, infiltrando cortes e conventos mortais como espiã e corruptora, raramente revelando sua verdadeira forma."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Alimenta se da energia vital e emocional roubada em beijos e noites de prazer, deixando a vítima exausta, obcecada ou lentamente corrompida."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nas ortodoxias supressoras de Calin ela é o rosto do pecado perfeito: bela demais para ser natural, prova viva de que a Fenda também sabe seduzir, não só aterrorizar."
+   }
+  ]
+ },
+ "mon-vrock": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Ataca em bando como abutres de guerra, gritando um chamado que atrai mais demônios e, quando cercado, dança um ritual frenético que espalha esporos venenosos sobre aliados e inimigos."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Prefere campos de batalha e ruínas cobertas de cadáveres, onde caça carniça tanto quanto combate."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Serve como tropa de choque descartável nas legiões do Abismo, mandado à frente para desgastar o inimigo antes que os demônios de comando entrem em ação."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Quando exércitos antigos entram em colapso perto da Fenda, dizem os veteranos, os corpos empilhados atraem algo com asas negras e cheiro de carniça: sinal de que os abutres do Abismo encontraram seu banquete."
+   }
+  ]
+ },
+ "mon-hezrou": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Brutal e direto, ataca com força bruta e mordida venenosa, sem tática nem paciência, apenas fome de destruição."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Exala um fedor nauseante que enfraquece quem chega perto, e se banha em imundície e carcaça como parte natural de sua existência."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Serve como músculo intermediário nas hostes demoníacas, forte demais para ser bucha de canhão mas sem inteligência para comandar."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Onde a Fenda vaza mais fundo, sacerdotes contam de sapos gigantes fedorentos que arrasam vilarejos inteiros antes de qualquer exército conseguir reagir."
+   }
+  ]
+ },
+ "mon-glabrezu": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Astuto e paciente, prefere negociar a lutar: aparece diante de mortais desesperados e oferece poder, riqueza ou conhecimento em troca de um preço que corrói a alma de quem aceita."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Fala com cortesia fria e lógica impecável, escondendo prazer sádico por trás de cada barganha cumprida à risca, mas sempre na letra mais cruel possível."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Ocupa posição de prestígio entre os demônios por sua inteligência, agindo como tentador e conselheiro de outros demônios tanto quanto de mortais."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "As ortodoxias de Calin usam sua lenda para justificar a Supressão: todo pacto mágico tentador, dizem os padres, tem um glabrezu sorrindo do outro lado, esperando a assinatura."
+   }
+  ]
+ },
+ "mon-marilith": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Comanda com disciplina rara entre os demônios, planeja campanhas inteiras e usa suas seis espadas em combinações mortais que nenhum mortal treina para enfrentar."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Ambiciosa e implacável, despreza o caos desorganizado dos demônios inferiores e sonha em um dia rivalizar com os próprios senhores do Abismo."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Serve como generala de exércitos demoníacos, impondo ordem tática a hordas que normalmente só sabem destruir."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Contam os poucos sobreviventes de invasões vindas da Fenda que, entre o caos de horrores desgovernados, às vezes surge algo pior: uma vontade fria que organiza o massacre."
+   }
+  ]
+ },
+ "mon-balor": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Comanda hordas inteiras com chicote flamejante numa mão e espada em outra, avançando através do campo de batalha como uma calamidade viva."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Explode em chamas ao morrer, arrastando quem estiver por perto para a destruição junto com ele, um último ato de fúria abissal."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Está entre os poucos demônios fortes o bastante para comandar exércitos e disputar territórios no Abismo com senhores demoníacos menores."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Orgulhoso e cruel, vê mortais como brinquedos frágeis e outros demônios como ferramentas a serem gastas sem hesitação."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "As lendas do White Wall falam do rei de fogo da fenda, figura tão terrível que os anões exilados juram que sua chegada, séculos atrás, foi o verdadeiro motivo da queda das montanhas."
+   }
+  ]
+ },
+ "mon-lemure": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Vaga sem rumo, gemendo e obedecendo ordens de forma mecânica, incapaz de pensar além do instinto de atacar o que lhe é apontado."
+   },
+   {
+    "t": "Sociedade",
+    "d": "É o que resta de uma alma condenada derretida na forma mais baixa do Inferno, usado como massa de manobra descartável pelos diabos superiores, que os reformam em tropas melhores quando convém."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Onde a Supressão fala em almas perdidas devoradas pela Fenda, os lêmures são a prova viva: rostos quase humanos, apagados, arrastando se sem memória do que foram."
+   }
+  ]
+ },
+ "mon-diabrete-imp": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Prefere espionar, sussurrar e manipular a lutar abertamente, trocando de forma (rato, corvo, gato preto) para se infiltrar sem ser notado."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Serve como familiar e espião de feiticeiros e senhores infernais, cumprindo tarefas por anos a fio em troca de proteção ou de uma alma prometida ao final do serviço."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Perspicaz, sarcástico e paciente, prefere o plano de longo prazo à violência imediata, sempre com um contrato ou uma armadilha guardada na manga."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Circula em Calin como o mais discreto dos horrores: um corvo comum pousado na janela do inquisidor, ouvindo tudo, relatando tudo, tecendo lentamente a queda de alguém."
+   }
+  ]
+ },
+ "mon-diabo-barbado": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Ataca na linha de frente com uma glaive brutal e uma barba viva que infecta feridas, avançando em formação disciplinada como soldado experiente."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Ocupa a base da tropa de combate infernal, invejoso dos diabos superiores e sempre em busca de provar valor suficiente para subir na hierarquia rígida do Inferno."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Quando exércitos vindos da Fenda avançam em formação e não em horda, os veteranos sabem: não é o caos do Abismo que chegou, é a disciplina fria do Inferno."
+   }
+  ]
+ },
+ "mon-erinia": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Combate com arco e corda que prende a alma tanto quanto o corpo, elegante e calculista, escolhendo alvos que rendem mais como almas contratadas do que como inimigos mortos."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Recruta mortais para o Inferno através de pactos e contratos sedutores, aparecendo como anjo caído de beleza terrível para conquistar a confiança antes de fechar o acordo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Fria, disciplinada e vaidosa, guarda um resquício da glória celestial que um dia teve antes de cair, e despreza quem se rende fácil demais."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "As ortodoxias de Calin pregam que ela é a prova de que até um celestial pode ceder à tentação da Fenda, e usam sua lenda para justificar a desconfiança até dos anjos que dizem servir a Lei."
+   }
+  ]
+ },
+ "mon-diabo-osseo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Age como fiscal cruel da burocracia infernal, verificando contratos, punindo desvios e garantindo que nenhum pacto seja quebrado sem o preço devido."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Meticuloso, frio e implacável com regras, prefere a tortura lenta e calculada ao confronto direto, saboreando o momento em que encontra uma falha no acordo de alguém."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Serve como fiscal e mensageiro entre camadas do Inferno, respeitado pela competência burocrática mais do que pela força bruta."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Os escribas heréticos que estudam a Fenda em segredo dizem que, se o Inferno tem cobradores de dívida, o diabo ósseo é quem bate à porta quando alguém tenta escapar de um pacto."
+   }
+  ]
+ },
+ "mon-diabo-de-gelo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Comanda tropas com precisão militar impecável, usando frio absoluto e uma glaive perfurante para congelar a vontade de lutar do inimigo antes mesmo do combate."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Ocupa posição de general nas hostes infernais, respeitado por disciplina e histórico de vitórias, treinando diabos menores com rigor implacável."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Habita as camadas geladas do Inferno, confortável em temperaturas que matariam qualquer mortal em minutos."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "No White Wall gelado, onde a Fenda mais se aproxima, os poucos que sobrevivem a um encontro com algo assim juram que o próprio ar ficou mais frio antes de vê lo, como se o gelo chegasse primeiro que o diabo."
+   }
+  ]
+ },
+ "mon-rakshasa": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Predador social por excelência: disfarça-se de nobre, mercador ou sacerdote e manipula suas vítimas ao longo de anos, satisfazendo apetites cruéis sob uma máscara de refinamento impecável."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Raramente forma grupos; quando vários se reúnem, tecem intrigas de corte que se estendem por gerações, cada um fingindo servir ao outro enquanto trama a própria ascensão."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Vaidoso e epicurista, saboreia o luxo e o sofrimento alheio em doses iguais; despreza a violência bruta e prefere a ruína lenta, quase artística."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Veste as melhores sedas, come e bebe com refinamento obsceno, e mantém as palmas viradas ao contrário sempre escondidas sob luvas."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "As igrejas supressoras vigiam feitiços óbvios, mas não a sedução e a mentira: um rakshasa entrincheirado numa corte de Calin ou nas cidades ocultas de Mère passa décadas sem ser descoberto. A Lei que barra os deuses de tocar mortais nunca o alcançou, pois ele jamais foi mortal."
+   }
+  ]
+ },
+ "mon-diabo-do-fosso-pit-fiend": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "General absoluto, comanda legiões inteiras do Inferno com disciplina fria, usando contratos e juramentos como arma tanto quanto garras e fogo."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Ocupa o topo da hierarquia infernal, logo abaixo dos Arquiduques; diabos menores o temem e obedecem sem hesitar."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Calculista e paciente, cruel por princípio e não por impulso; encara a corrupção de uma alma como obra de longo prazo, quase artesanal."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Governa a partir de fortalezas do Inferno, só cruzando ao mundo material quando um pacto o convoca ou um culto abre a porta certa."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Pactos com diabos são o pesadelo que as igrejas supressoras mais pregam contra: cada contrato assinado em desespero, seja por dívida, guerra ou fome, é uma fresta que nem a Supressão fecha. Muitos clérigos suspeitam que a própria Fenda tenha atraído a atenção de senhores do Inferno como este."
+   }
+  ]
+ },
+ "mon-archon-cao": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guerreiro leal e disciplinado, patrulha fronteiras do bem com cabeça de cão sempre alerta e faro apurado para a mentira."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Serve em matilhas organizadas sob comando de arautos maiores, cumprindo sua função sem jamais questionar a ordem recebida."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Honesto até a rigidez, desconfia de artimanhas e de quem fala demais; prefere o combate franco a qualquer estratagema."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Contido pela Lei que impede os deuses de agir direto, um archon cão só cruza ao mundo mortal em raros chamados desesperados, e mesmo assim evita ser visto: para o povo da Supressão, um anjo com cara de cão seria mais um monstro a temer do que um salvador."
+   }
+  ]
+ },
+ "mon-deva-astral": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Conselheira serena e guerreira paciente, prefere curar e guiar a lutar, mas não hesita quando o mal ataca primeiro."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Viaja sozinha ou em pequenos grupos, muitas vezes disfarçada de peregrina ou curandeira entre os mortais que protege."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Compassiva, quase materna, mas com um fundo inflexível de justiça que não perdoa a crueldade deliberada."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "A Lei impede os deuses de tocar mortais, então uma deva astral é o mais próximo que uma vila esquecida chega de ver a face do sagrado; ainda assim ela evita revelar sua natureza, pois a Supressão ensinou os povos a temer até a bondade sobrenatural."
+   }
+  ]
+ },
+ "mon-planetar": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Soldado de elite da guerra eterna contra o mal, age com determinação sombria e reserva a compaixão para depois da batalha."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Comanda hostes de archons e devas em campanhas específicas, sempre sob ordens de potências maiores."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Grave, quase taciturno, carrega o peso de eras de conflito e não se ilude sobre o custo real da guerra."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Um planetar só pisa em Uldun quando um mal antigo desperta, seja um horror vindo da Fenda ou um culto que rasga a Supressão; sua presença costuma ser o primeiro sinal de que a crise é grave demais para mortais resolverem sozinhos."
+   }
+  ]
+ },
+ "mon-solar": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "A mais alta expressão da vontade divina em forma de guerreiro, quase nunca visto, reservado para as maiores crises cósmicas."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Não tem par entre celestiais menores; quando aparece, archons e devas o tratam como general supremo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Sereno além da compreensão mortal, fala pouco, age com precisão absoluta e sem dúvida."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Habita o coração do plano Divino/Celeste, ao lado das potências que serve."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "A Lei que barra os deuses de tocar mortais diretamente talvez nem alcance um solar, o que torna sua aparição um evento de era: as escrituras das igrejas supressoras falam de arautos de espada de luz vistos nos dias da Grande Guerra, e temem, ou rezam, para que um retorne."
+   }
+  ]
+ },
+ "mon-couatl": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guardiã antiga e telepata, observa mais do que age, e protege o equilíbrio entre o conhecimento útil e o conhecimento perigoso."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Solitária por natureza, mas mantém pactos silenciosos com outras couatls espalhadas por templos esquecidos."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Sábia e paciente, comunica-se por imagens e sensações diretamente na mente de quem se aproxima com respeito."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Dorme enrolada em ruínas de pirâmides e templos monumentais, quase invisível entre as pedras."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "A serpente emplumada encontra em Mère seu lar mais natural, entre as cidades mágicas escondidas atrás da fachada dita bárbara; anciãos de Mère juram que uma couatl ensinou aos primeiros sacerdotes os ritos que sobreviveram à Supressão, guardados em segredo sob as pirâmides."
+   }
+  ]
+ },
+ "mon-ghaele-azata": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Campeã caótica do bem, ágil e etérea, aparece para socorrer causas justas e some antes de ser agradecida."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Viaja com cortejos de fadas e heróis mortais que jurou proteger, sem hierarquia fixa, movida por afinidade e capricho."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Apaixonada e artística, ama a beleza tanto quanto a justiça e não vê contradição nenhuma nisso."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vem de um plano de liberdade selvagem, atravessando o véu de espíritos quando sente um chamado justo."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Por vir de um plano ligado ao véu feérico, uma ghaele às vezes é confundida com espírito da natureza pelos animistas de Syl, que a recebem com reverência sem saber que lidam com uma potência muito além dos kami locais."
+   }
+  ]
+ },
+ "mon-djinn": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Nobre do ar, orgulhoso e honrado, cumpre acordos ao pé da letra mas adora explorar as brechas na redação de um pedido."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive em palácios flutuantes cheios de música, dança e banquetes, cercado de servos e cortesãos de vento."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Vaidoso e prazeroso, valoriza etiqueta e boa companhia acima de qualquer riqueza material."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Um djinn preso numa lamparina ou anel é lenda recorrente nos contos de Mère e nas rotas de comércio de Calin; poucos mercadores confiam nessas histórias, mas todo aventureiro que encontra um sabe que barganhar com um ser do ar exige mais cautela do que qualquer contrato humano."
+   }
+  ]
+ },
+ "mon-efreeti": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Tirano do fogo, constrói impérios de escravos e queima quem desafia sua autoridade, cumprindo tratos com prazer sádico pela letra fria do acordo."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Governa cidades inteiras de bronze e chamas no plano elemental, erguidas à custa de mãos escravizadas."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Cruel e orgulhoso, rival eterno dos djinns, vê a submissão alheia como prova viva de sua grandeza."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Reina sobre cidades como a lendária Cidade de Bronze, no coração do fogo elemental."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Efreets povoam as lendas de Mère como senhores de fornalhas antigas, e alguns forjadores desesperados ainda arriscam pactos com um deles para acender fornos que a Supressão proibiu de reacender por meios arcanos."
+   }
+  ]
+ },
+ "mon-salamandra": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guerreiro e ferreiro do fogo, torso serpentino terminando em cauda que crepita como brasa, ficando mais cruel quanto mais quente fica sua ira."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Serve efreets como soldado e artesão, forjando armas em fornalhas que nenhum mortal suportaria tocar."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive entre lava e brasas do plano elemental do fogo, raramente cruzando ao mundo material sem ser convocada."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Quando um culto ou um efreeti abre uma fresta para o plano do fogo, é comum que salamandras sejam as primeiras a atravessar, sempre a serviço de um senhor maior, nunca por conta própria."
+   }
+  ]
+ },
+ "mon-elemental-da-terra-grande": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Força bruta da terra viva, avança em linha reta esmagando o que encontra, sem malícia nem hesitação."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Não come, não dorme, não envelhece; existe apenas enquanto o propósito de sua invocação ou a vontade do seu plano o sustentam."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Nasce das profundezas rochosas do plano elemental da terra, movendo-se pela pedra sólida como se fosse água."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Raramente visto fora de rituais antigos ou minas profundas do White Wall, um elemental da terra desperto é tomado pelo povo comum como sinal de que a montanha acordou zangada, mais um argumento das igrejas supressoras contra quem ainda ousa invocar tais forças."
+   }
+  ]
+ },
+ "mon-xorn": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Nada pela rocha sólida como um peixe na água, alheio a quase tudo que acontece na superfície do mundo."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Devora metais e pedras preciosas com prazer genuíno, ignorando carne, ouro cunhado ou qualquer coisa que não seja mineral puro."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Eremita e desinteressado, sua lógica é tão estranha à mente mortal quanto a pedra é estranha ao peixe."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Mineiros anões do White Wall contam histórias antigas de tesouros que somem dentro da própria rocha; poucos sabem que um xorn satisfeito apenas passou por ali e comeu o que interessava, sem notar sequer que havia alguém cavando ao lado."
+   }
+  ]
+ },
+ "mon-driade": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guardiã caprichosa de uma única árvore, encanta viajantes que se aproximam demais e os afasta ou os prende conforme o humor do momento."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive isolada, ligada para sempre ao destino do seu carvalho ou salgueiro; se a árvore morre, ela morre junto."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Bela, sedutora e imprevisível: pode ser aliada gentil de quem protege a floresta ou inimiga implacável de quem traz o machado."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Nunca se afasta de sua clareira além do que a magia que a une à árvore permite."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "As dríades carregam a marca da origem feérica dos elfos, sendo primas distantes desse povo caído; entre os animistas de Syl são veneradas como kami de carne e seiva, guardiãs vivas de bosques que a Supressão jamais conseguiu tornar mundanos."
+   }
+  ]
+ },
+ "mon-ninfa": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guarda um recanto isolado (uma nascente, uma cachoeira, um bosque intocado) e reage à intrusão com humor imprevisível: pode acolher o viajante com graça ou desvelar sua beleza terrível até cegá-lo ou paralisá-lo de espanto."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive em clareiras, poças de água limpa e quedas d'água afastadas de qualquer caminho batido, lugares que ninguém mais visita há gerações."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Vaidosa e caprichosa, oscila entre a generosidade de uma protetora da natureza e a crueldade fria de quem não reconhece limites morais mortais."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Solitária por natureza, quando muito divide seu retiro com sátiros e dríades, cercada por poucos admiradores encantados que nunca mais partem."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "É eco vivo do véu de espíritos ligado à origem feérica dos elfos; em Syl é venerada como um kami das águas, enquanto as igrejas supressoras de Calin a tratam como tentação perigosa de um mundo mais mágico que devia ter ficado no passado."
+   }
+  ]
+ },
+ "mon-satiro": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Viaja em bandos festivos, recebendo forasteiros com música, vinho e brincadeiras, e prefere fugir a enfrentar perigo sério, salvo quando embriagado de coragem."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Vive para o vinho, a flauta e a dança, colecionando histórias e amantes com o mesmo entusiasmo displicente."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Reúne-se em bandos soltos, sem chefia fixa, sempre nos claros de floresta onde ninfas e outras fadas também se abrigam."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Despreocupado e sensual, é generoso com quem lhe agrada e covarde diante de ameaças reais."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Parente da mesma origem feérica que deu nascimento aos elfos, é tomado em Syl por travessura de algum kami da mata, e visto com desconfiança pelas ortodoxias de Calin como resquício pagão de antes da Supressão."
+   }
+  ]
+ },
+ "mon-pixie": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Adora pregar peças, usando invisibilidade e um pó que apaga memórias para brincar com viajantes sem nunca deixar rastro de sua passagem."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Recolhe curiosidades brilhantes, guarda pequenos tesouros sem valor real e passa as noites em música e dança nas clareiras."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Bosques floridos, clareiras escondidas e troncos ocos servem de lar e esconderijo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Brincalhona e curiosa, raramente age com malícia verdadeira, mas torna-se implacável com quem agride a natureza que protege."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Ligada à mesma origem feérica que precede a Queda dos elfos, em Syl é tratada como pequeno kami travesso e benigno; no supersticioso Neck, camponeses deixam oferendas simples só para afastar suas peças."
+   }
+  ]
+ },
+ "mon-fogo-fatuo": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Paira sobre pântanos e charcos imitando a luz de uma fogueira distante ou lanterna amiga, guiando viajantes perdidos para longe da segurança até a morte lenta."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Alimenta-se do medo e da força vital de suas vítimas antes de consumir o que resta delas, solitário e territorial em seu brejo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Frio, calculista e infinitamente paciente, saboreia o pânico de quem ainda acredita estar sendo salvo."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Diz-se que nasce de uma Centelha corrompida, quase uma ponta avançada do horror que vaza da Fenda; em Syl e Mére contam-se histórias de luzes que levam quem as segue para nunca mais voltar."
+   }
+  ]
+ },
+ "mon-medusa": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Evita ser vista, cobrindo o rosto e as serpentes que lhe cobrem a cabeça, e só ataca quando encurralada ou traída, transformando o intruso em estátua de pedra com um único olhar."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive em ruínas isoladas e cavernas esquecidas, muitas vezes cercada por um jardim macabro de estátuas: os que ousaram encará-la."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Amarga e solitária, fruto de uma maldição antiga, alterna desprezo pelos mortais com um desejo secreto e nunca admitido de companhia."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Raramente convive com outras de sua espécie, e quando o faz é numa desconfiança mútua entre irmãs da mesma sentença."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Sua maldição é mais antiga que a Grande Guerra, relíquia de um tempo mais mágico; o povo comum, sob o peso da Supressão, só enxerga o monstro e nunca a tragédia por trás do véu."
+   }
+  ]
+ },
+ "mon-doppelganger": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Elimina ou substitui alguém e assume sua forma e memórias, infiltrando-se em vilas e cortes para viver anos a fio sem ser notado."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Age sozinho por segurança, evitando até os de sua própria espécie, mas negocia informações com quem paga bem e mantém segredo."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Estuda a vítima antes de roubar seu rosto, memoriza trejeitos e voz, e foge ao menor sinal de suspeita."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Pragmático e frio, sobrevivente acima de tudo, sente-se mais seguro na pele alheia do que na própria."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Prospera na desconfiança generalizada que a Supressão semeou, pois ninguém espera magia tão sutil e silenciosa; em Calin, onde caçam 'possuídos' com fervor, aprendeu a apontar o dedo primeiro para desviar suspeita de si."
+   }
+  ]
+ },
+ "mon-pegaso": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Voa livre em bandos pelos céus altos, evitando toda civilização, e só se deixa montar por quem prova, ao longo de anos, um coração puro."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Vive em manadas soltas lideradas por um garanhão ou égua mais velha, defendendo os potros com ferocidade absoluta."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Ocupa planaltos altos e picos isolados, bem longe de estradas e cidades."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Nobre e altivo, leal a quem conquista sua confiança, e implacável com qualquer traição."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Relíquia viva de um mundo mais mágico, cultuada por alguns como sinal do Sol; camponeses que nunca viram Centelha tão alta a encaram com o mesmo temor supersticioso reservado a dragões."
+   }
+  ]
+ },
+ "mon-unicornio": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guarda sozinho florestas intocadas, fugindo ao mínimo sinal de corrupção ou mentira, mas defende com fúria total quem estiver sob seu cuidado."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Alimenta-se de ervas raras e água de nascentes puras; seu chifre, ao toque, purifica veneno e cura doença."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Sereno e incorruptível, julga o coração de quem se aproxima antes de qualquer palavra ser dita."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Encarna a pureza rara de uma Centelha alta; em Syl é quase reverenciado como um kami, e para as igrejas supressoras de Calin é uma prova incômoda de que nem toda magia é ameaça, prova que muitas vezes preferem esconder do povo."
+   }
+  ]
+ },
+ "mon-ogro-mago-oni": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Usa metamorfose e invisibilidade para se passar por humano sedutor ou nobre elegante, iludindo vilas inteiras antes de revelar sua verdadeira forma monstruosa."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Prefere agir sozinho ou como senhor de um bando de ogros e goblins menores, tratando-os como servos descartáveis."
+   },
+   {
+    "t": "Hábitos",
+    "d": "Arma esquemas de engano que levam anos para florescer, acumulando riqueza e favores como quem tece uma teia paciente."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Cruel e orgulhoso da própria astúcia, despreza a força bruta como recurso de último caso."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nativo de um plano distante, contido em teoria pela Lei que impede os deuses de agir direto, mas ele próprio escapa a essa contenção; sussurra-se que atravessa por rasgos como a Fenda, ou por portais mais antigos e esquecidos nas selvas de Mére."
+   }
+  ]
+ },
+ "mon-esfinge-ginosfinge": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Guarda ruínas e tesouros de saber antigo, desafiando qualquer intruso com enigmas antes de cogitar o combate, e respeita quem responde com inteligência mais do que com força."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Ocupa templos esquecidos, criptas de sábios e ruínas soterradas no deserto ou nas montanhas."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Solitária por hábito, mas mantém laços telepáticos e troca conhecimento com outras esfinges distantes, quase como uma irmandade invisível."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Paciente e orgulhosa do próprio intelecto, mais interessada em testar do que em destruir."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Guardiã de um saber anterior à Grande Guerra, do tipo que a Tecelã protege e que as igrejas supressoras temem; suas ruínas talvez escondam respostas sobre a Fenda que ninguém mais ousa procurar."
+   }
+  ]
+ },
+ "mon-naga-espirita": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Enrosca-se sobre tesouros e ruínas esquecidas, atacando com veneno e feitiços antes mesmo de considerar negociar, e só o faz quando lhe convém."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive em templos afundados, pântanos antigos e ruínas de civilizações que ela própria viu cair."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Isolada como uma pequena rainha decadente, cercada quando muito por poucos servos ou cultistas atraídos por promessas de poder."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Arrogante e longeva, vê os mortais como efêmeros demais para merecer qualquer respeito."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Relíquia de eras anteriores à Grande Guerra, guarda segredos de magia que a Supressão tentou apagar; em Mére, onde cidades mágicas se escondem sob a selva, é temida como guardiã de um passado que devia ter ficado enterrado."
+   }
+  ]
+ },
+ "mon-behir": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Emboscada em passagens estreitas, enrosca o corpo serpentino para esmagar a presa e crivá-la de raio caso tente fugir."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Habita cavernas profundas, desfiladeiros rochosos e tocas escavadas nas montanhas."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Predador solitário e ferozmente territorial, disputa caça e covis com dragões azuis quando os encontra, sem nunca ceder terreno de bom grado."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Fera das profundezas que ainda vive nos ermos onde nem os anões se aventuram mais, mais um motivo para o povo comum temer o que se move sob a terra desde que a Fenda se abriu."
+   }
+  ]
+ },
+ "mon-lamia": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Seduz viajantes com ilusão de beleza e promessas doces, drenando a sabedoria e a vontade de quem cai em seu encanto até deixá-lo uma casca vazia."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Ocupa ruínas isoladas, oásis enganosos e cavernas no limite do deserto ou da selva."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Vaidosa e predatória, saboreia o engano quase tanto quanto a presa em si."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Solitária e territorial, tolera no máximo servos enfeitiçados que a sirvam sem questionar."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Dita descendente de um antigo pacto ou maldição de antes da Supressão; em Mére, onde cidades escondidas guardam magias esquecidas, corre a lenda de que lâmias já foram sacerdotisas caídas em desgraça."
+   }
+  ]
+ },
+ "mon-bruxa-verde-hag": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Usa metamorfose para parecer uma velha camponesa ou donzela indefesa, atraindo vítimas para o pântano antes de revelar garras e magia sombria."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive em pântanos, brejos e florestas apodrecidas, longe de estradas vigiadas."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Prefere a solidão, mas às vezes forma covens com outras bruxas para trocar segredos e maldições."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Invejosa e cruel, ressente a beleza e a felicidade alheia, e as corrompe sempre que pode."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Figura do folclore rural em Syl e no Neck, confundida por camponeses supersticiosos com espírito maligno da mata; para as igrejas de Calin é prova viva de que magia sem lei corrompe quem a possui."
+   }
+  ]
+ },
+ "mon-kraken": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "O kraken é o predador supremo dos abismos oceânicos: solitário, territorial e imprevisível, prefere emboscar baleias, leviatãs menores e navios que cruzam suas águas antes de recolher-se de novo às profundezas onde nunca chega luz."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Domina léguas de mar como um reino próprio; cardumes, polvos e criaturas abissais o evitam ou seguem à distância para se alimentar dos restos de suas caçadas, e rotas inteiras de migração se desviam de seu território."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Por trás dos olhos frios há uma inteligência antiquíssima: alguns marujos juram que o kraken barganha, poupando quem lhe oferece tributo, mas a maioria só encontra silêncio e depois os tentáculos."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nas rotas marítimas de Calin, capitães fazem oferendas ao Senhor do Mar e das Estradas antes de cruzar certas águas marcadas nos mapas antigos como domínio do afogado. O kraken é tido como relíquia viva de um mundo mais mágico, anterior à Supressão, prova de que o fundo do mar guarda segredos que nem a Lei alcança."
+   }
+  ]
+ },
+ "mon-tarrasque": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "A Tarrasca não caça por fome nem conquista por ambição: desperta de seu sono milenar apenas para destruir, devorar e voltar a dormir, ignorando dor, fogo e feitiço enquanto arrasa tudo em seu caminho."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Nenhum predador a ameaça e nenhum ecossistema a contém; sua passagem deixa terra estéril por gerações, e reinos inteiros aprenderam a ler os sinais de seu despertar como quem lê o fim do mundo."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Não há malícia nela, só fúria pura e instinto: é uma força da natureza, não uma vilã que pensa, o que a torna ainda mais aterradora para quem tenta negociar ou fugir."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "As lendas dizem que a Tarrasca desperta quando o orgulho e o poder dos mortais crescem demais, um eco distante da Grande Guerra que quase destruiu Uldun. As igrejas supressoras de Calin usam sua história como sermão vivo: prova de que magia e tecnologia desenfreadas convocam monstros que nem os deuses sobreviventes ousam despertar de novo."
+   }
+  ]
+ },
+ "mon-filhote-de-dragao-vermelho": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Ainda recém-saído do ovo, o filhote de dragão vermelho já nasce arrogante e impulsivo, atacando por orgulho ferido antes mesmo de entender o próprio perigo, e testando garras e sopro de fogo em presas fáceis perto do ninho."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive escondido perto do covil da mãe ou sozinho em fendas vulcânicas e cavernas quentes, começando a juntar as primeiras moedas e relíquias de um tesouro que só vai crescer com os anos."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Vaidoso desde cedo, adora ser temido mais do que compreendido, e reage com fúria desproporcional a qualquer sinal de desrespeito, mesmo vindo de criaturas que mal representam ameaça."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Quando um filhote é avistado, aldeias vizinhas já tratam o caso como presságio: dragões são lembranças vivas de uma era mais mágica que a Supressão tentou apagar, e ver um nascer é sinal, para muitos sacerdotes, de que a vigilância dos deuses está falhando."
+   }
+  ]
+ },
+ "mon-dragao-vermelho-jovem": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "O dragão vermelho jovem já defende um território definido com violência calculada, atacando quem se aproxima do covil e usando o sopro de fogo tanto para caçar quanto para impor respeito às vizinhanças."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Solitário por natureza, tolera no máximo servos amedrontados ou cultistas dispostos a trazer tributo, tratando qualquer aliança como relação de posse, nunca de igualdade."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Orgulhoso e ávido por elogios, guarda rancor de humilhações reais ou imaginadas, e mede seu valor pelo tamanho do tesouro que consegue empilhar sob as próprias garras."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nas fronteiras selvagens de Mére, onde o povo já convive com monstros mais estranhos que em Calin, um dragão jovem que reivindica uma montanha vira lenda local quase da noite para o dia, tema de canções de aviso e oferendas deixadas na entrada de covis."
+   }
+  ]
+ },
+ "mon-dragao-vermelho-adulto": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "O dragão vermelho adulto já não caça por necessidade: impõe tributo às comunidades ao redor de seu covil, exigindo ouro, gado ou sacrifícios simbólicos em troca de não arrasar vilas inteiras."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Governa como um tirano solitário, cercado por servos, cultistas ou criaturas subjugadas que cuidam do covil e espalham seu nome com medo reverente pelas terras vizinhas."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Extremamente vaidoso e calculista, adora manipular mortais com promessas e ameaças veladas, tratando a bajulação como tributo tão valioso quanto o ouro do próprio tesouro."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Em Mére, onde cidades mágicas avançadas se escondem sob a fama de terra bárbara, um dragão vermelho adulto pode governar um vale inteiro como um rei não reconhecido, algo que as igrejas supressoras de Calin preferem não admitir que ainda existe."
+   }
+  ]
+ },
+ "mon-dragao-vermelho-anciao": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Séculos de vida tornaram o dragão vermelho ancião paciente e cruel ao mesmo tempo: raramente ataca por impulso, preferindo manipular reinos inteiros à distância antes de mostrar as garras."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Comanda cultos, exércitos de mercenários e até nobres corrompidos pela promessa de poder, construindo uma rede de influência que rivaliza com a de qualquer corte humana."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Sua vaidade amadureceu em algo quase divino: acredita-se superior a reis, sacerdotes e talvez até a alguns dos próprios deuses, e poucos ousam contradizê-lo."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Um dragão vermelho ancião é o tipo de relíquia que a Supressão gostaria de apagar da memória: prova viva e falante de que o mundo já foi mais mágico, sobrevivendo escondida nas montanhas mais remotas de Mére, cobrando tributo de quem ousa se aproximar."
+   }
+  ]
+ },
+ "mon-grande-wyrm-vermelho": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Tão antigo que já não distingue mais súditos de brinquedos, o grande wyrm vermelho raramente se move: prefere que o mundo venha até ele, e pune com fogo e desdém qualquer intrusão em seu domínio milenar."
+   },
+   {
+    "t": "Ecologia",
+    "d": "Seu covil se tornou, ao longo dos séculos, um ecossistema próprio, com criaturas menores vivendo à sombra do tesouro e do medo que ele projeta sobre a região inteira."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Sua arrogância beira a certeza divina: viu impérios nascerem e caírem, e trata mortais, mesmo reis, como curiosidades passageiras diante da própria permanência."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Sábios sussurram que um grande wyrm vermelho guarda em sua Centelha ecos de eras anteriores à Grande Guerra, quase alcançando o patamar de semideus; para as igrejas supressoras, ele é o argumento final contra quem sonha reacender os poderes antigos."
+   }
+  ]
+ },
+ "mon-dragao-branco-jovem": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Menos astuto e mais selvagem que seus parentes, o dragão branco jovem caça por instinto puro, guiado pela fome e pelo território, atacando quase tudo o que se move em seu gelo sem muito cálculo."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive em cavernas de gelo, glaciares e fendas congeladas, onde talha seu covil escavando através de rocha e neve com garras e sopro gélido."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Primitivo mesmo para um dragão, reage mais por raiva e posse do que por orgulho refinado, e confia quase inteiramente nos próprios sentidos afiados para sobreviver."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "No gelo do White Wall e nas ilhas do Neck, onde anões exilados e humanos supersticiosos já temem o que espreita sob a neve, um dragão branco jovem é mais uma prova de que aquelas terras continuam hostis, ainda que sua origem nada tenha a ver com os horrores que saíram da Fenda."
+   }
+  ]
+ },
+ "mon-dragao-azul-adulto": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "O dragão azul adulto é caçador paciente e territorial ao extremo, capaz de se enterrar na areia por dias esperando a presa certa antes de golpear com o sopro de raios e as garras afiadas."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Domina desertos e ermos áridos, marcando cada duna e rocha de seu território com um senso quase obsessivo de posse, atacando qualquer intruso, mágico ou não, sem hesitar."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Mais orgulhoso do próprio domínio do que do tesouro em si, encara qualquer pegada estranha em suas terras como insulto pessoal, e pode perseguir um intruso por léguas só para provar um ponto."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nas fronteiras áridas de Mére, tribos locais aprenderam a ler as tempestades de areia como aviso de que um dragão azul está caçando, e evitam certas rotas havia gerações, muito antes de qualquer igreja supressora inventar nome para o medo."
+   }
+  ]
+ },
+ "mon-dragao-verde-adulto": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Sutil e paciente, o dragão verde adulto prefere manipular a atacar de frente, usando conversas envenenadas, mentiras plantadas e o próprio sopro tóxico como ferramentas de um jogo de longo prazo."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Gosta de se infiltrar na política de comunidades próximas, cultivando espiões, informantes e rivalidades que servem a seus interesses sem que ninguém perceba a mão por trás."
+   },
+   {
+    "t": "Hábitat",
+    "d": "Vive em florestas densas e pântanos sombrios que corrompe lentamente com seu veneno, transformando o próprio território num reflexo de sua natureza traiçoeira."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Nas matas selvagens à beira de Syl, onde espíritos da natureza são reverenciados em cada árvore, um dragão verde que se instala numa floresta corrompe não só o solo mas a relação do povo com os próprios kami locais, um insulto que os xamãs raramente perdoam."
+   }
+  ]
+ },
+ "mon-dragao-dourado-adulto": {
+  "secoes": [
+   {
+    "t": "Comportamento",
+    "d": "Ao contrário dos parentes cromáticos, o dragão dourado adulto raramente impõe medo por escolha: prefere assumir forma mortal e caminhar disfarçado entre vilas e cidades, testando o caráter das pessoas antes de revelar quem realmente é."
+   },
+   {
+    "t": "Personalidade",
+    "d": "Sábio, paciente e movido por senso de justiça, aprecia enigmas, música e atos de bondade genuína, e não hesita em confrontar tiranos, inclusive dragões cromáticos, quando a ocasião exige."
+   },
+   {
+    "t": "Sociedade",
+    "d": "Costuma agir sozinho ou em segredo, evitando reconhecimento, e prefere guiar mortais com pequenos gestos a governar abertamente qualquer território."
+   },
+   {
+    "t": "No mundo de Centelha",
+    "d": "Mesmo sendo uma força do bem, o dragão dourado não escapa do preconceito da Supressão: para as igrejas de Calin, magia é magia, e um sábio disfarçado de mendigo ou de mercador generoso corre o risco de ser denunciado e caçado só por existir, ironia amarga com a qual aprendeu a conviver havia séculos."
+   }
+  ]
+ }
+}

@@ -6,9 +6,11 @@ import { getCollection } from 'astro:content';
 import imagens from '../data/imagens-bestiario.json';
 import habilidades from '../data/habilidades-bestiario.json';
 import dimensoes from '../data/dimensoes-bestiario.json';
+import loredata from '../data/lore-bestiario.json';
 const IMG: Record<string, string> = imagens;
 const HAB: Record<string, { en?: string; hab: { n: string; d: string }[] }> = habilidades;
 const DIM: Record<string, { porte: string; medida: string; peso: string }> = dimensoes;
+const LORE: Record<string, { secoes: { t: string; d: string }[] }> = loredata;
 const d = await loadData();
 const inimigos = (await getCollection('inimigos')).map((e) => e.data)
   .sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
@@ -160,6 +162,13 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
               {i.notas && <p class="besta-notas">{i.notas}</p>}
             </details>
           )}
+
+          {LORE[i.id]?.secoes?.length > 0 && (
+            <div class="besta-foot">
+              <button class="besta-info" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">ⓘ</span> Informações</button>
+              <template class="lore-tpl">{LORE[i.id].secoes.map((s) => (<><h4>{s.t}</h4><p>{s.d}</p></>))}</template>
+            </div>
+          )}
         </div>
       </article>
     ))}
@@ -171,6 +180,20 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   </div>
 
   <button id="ao-topo" class="ao-topo" aria-label="Voltar ao topo" title="Voltar ao topo" hidden>↑</button>
+
+  <div class="infobox" id="infobox" hidden role="dialog" aria-modal="true" aria-labelledby="ib-nome">
+    <div class="ib-card">
+      <button class="ib-fechar" aria-label="Fechar">✕</button>
+      <header class="ib-head">
+        <img class="ib-art" id="ib-art" src="" alt="" />
+        <div class="ib-head-txt">
+          <h3 id="ib-nome" class="cinzel"></h3>
+          <p class="ib-sub" id="ib-sub"></p>
+        </div>
+      </header>
+      <div class="ib-body" id="ib-body"></div>
+    </div>
+  </div>
 </Base>
 
 <style>
@@ -305,6 +328,18 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   .besta-ref { font-size: .88rem; margin: .25rem 0; } .besta-ref b { font-family: 'Cinzel'; font-size: .72rem; color: var(--accent-strong); }
   .besta-notas { font-size: .84rem; color: var(--ink-soft); font-style: italic; margin: .35rem 0 0; }
 
+  .besta-foot { margin-top: auto; padding-top: .6rem; }
+  .besta-info {
+    display: inline-flex; align-items: center; gap: .35rem; width: 100%; justify-content: center;
+    padding: .4rem .6rem; border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--panel-border));
+    border-radius: 6px; background: color-mix(in srgb, var(--accent) 7%, transparent);
+    color: var(--accent-strong); font-family: 'Cinzel'; font-size: .74rem; letter-spacing: .02em;
+    cursor: pointer; transition: background .15s, border-color .15s;
+  }
+  .besta-info:hover { background: color-mix(in srgb, var(--accent) 16%, transparent); border-color: var(--accent); }
+  .besta-info .i-ic { font-size: .95rem; line-height: 1; }
+  .lore-tpl { display: none; }
+
   /* --- Lightbox --- */
   .lightbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: color-mix(in srgb, #1a120a 82%, transparent); backdrop-filter: blur(3px); animation: lb-in .18s ease; }
   .lightbox[hidden] { display: none; }
@@ -331,6 +366,32 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   .ao-topo[hidden] { display: none; }
 
   @media (prefers-reduced-motion: reduce) { .besta, .arte img, .lightbox, .ao-topo { transition: none; animation: none; } .besta:hover { transform: none; } .besta:hover .arte img { transform: none; } }
+</style>
+
+<style is:global>
+  /* Card flutuante de informações (conteúdo criado via JS → is:global) */
+  .infobox { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center; padding: 1.2rem; background: color-mix(in srgb, #1a120a 78%, transparent); backdrop-filter: blur(3px); animation: ib-fade .18s ease; }
+  .infobox[hidden] { display: none; }
+  .infobox .ib-card {
+    position: relative; width: min(560px, 94vw); max-height: 88vh; overflow-y: auto;
+    background: var(--panel); color: var(--ink);
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--panel-border));
+    border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    padding: 1.3rem 1.4rem 1.5rem;
+  }
+  .infobox .ib-fechar { position: absolute; top: .6rem; right: .6rem; width: 2rem; height: 2rem; border-radius: 50%; border: none; background: color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); font-size: 1rem; cursor: pointer; transition: background .15s; }
+  .infobox .ib-fechar:hover { background: color-mix(in srgb, var(--ink) 22%, transparent); }
+  .infobox .ib-head { display: flex; gap: .9rem; align-items: center; margin-bottom: .9rem; padding-right: 1.6rem; border-bottom: 1px dotted var(--rule); padding-bottom: .8rem; }
+  .infobox .ib-art { width: 84px; height: 84px; object-fit: contain; border-radius: 8px; padding: .3rem; flex: 0 0 auto; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); mix-blend-mode: multiply; }
+  .infobox .ib-art[hidden] { display: none; }
+  .infobox .ib-head-txt { min-width: 0; }
+  .infobox #ib-nome { margin: 0; font-size: 1.5rem; color: var(--accent); line-height: 1.1; }
+  .infobox .ib-sub { margin: .25rem 0 0; font-size: .82rem; color: var(--ink-soft); font-style: italic; }
+  .infobox .ib-body h4 { font-family: 'Cinzel'; font-size: .82rem; letter-spacing: .02em; color: var(--accent-strong); margin: .95rem 0 .2rem; }
+  .infobox .ib-body h4:first-child { margin-top: 0; }
+  .infobox .ib-body p { margin: 0; font-size: .96rem; line-height: 1.5; color: var(--ink); }
+  @keyframes ib-fade { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .infobox { animation: none; } }
 </style>
 
 <script>
@@ -405,4 +466,32 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
   });
   lb.addEventListener('click', (e) => { if (e.target === lb || (e.target as HTMLElement).classList.contains('lb-fechar')) fechar(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) fechar(); });
+
+  // Card flutuante de informações (lore)
+  const ib = document.getElementById('infobox') as HTMLElement;
+  const ibNome = document.getElementById('ib-nome') as HTMLElement;
+  const ibSub = document.getElementById('ib-sub') as HTMLElement;
+  const ibArt = document.getElementById('ib-art') as HTMLImageElement;
+  const ibBody = document.getElementById('ib-body') as HTMLElement;
+  function abrirInfo(card: HTMLElement) {
+    const tpl = card.querySelector<HTMLTemplateElement>('.lore-tpl');
+    ibBody.replaceChildren();
+    if (tpl) ibBody.appendChild(tpl.content.cloneNode(true));
+    ibNome.textContent = card.dataset.nome || '';
+    const porte = card.querySelector('.besta-porte');
+    const con = card.querySelector('.besta-con');
+    const porteTxt = porte ? Array.from(porte.childNodes).map((n) => n.textContent).join(' ') : '';
+    ibSub.textContent = (porteTxt || con?.textContent || '').replace(/\s*·\s*/g, ' · ').replace(/\s+/g, ' ').trim();
+    const img = card.querySelector<HTMLImageElement>('.arte img[data-full]');
+    if (img) { ibArt.src = img.src; ibArt.alt = ibNome.textContent || ''; ibArt.hidden = false; }
+    else { ibArt.removeAttribute('src'); ibArt.hidden = true; }
+    ib.hidden = false; document.body.style.overflow = 'hidden';
+    (ib.querySelector('.ib-fechar') as HTMLElement)?.focus();
+  }
+  function fecharInfo() { ib.hidden = true; ibBody.replaceChildren(); document.body.style.overflow = ''; }
+  document.querySelectorAll<HTMLButtonElement>('.besta-info').forEach((b) => {
+    b.addEventListener('click', () => { const card = b.closest('.besta') as HTMLElement; if (card) abrirInfo(card); });
+  });
+  ib.addEventListener('click', (e) => { if (e.target === ib || (e.target as HTMLElement).classList.contains('ib-fechar')) fecharInfo(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ib.hidden) fecharInfo(); });
 </script>
