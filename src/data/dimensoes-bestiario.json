@@ -1,0 +1,687 @@
+{
+ "camponis-assustado": {
+  "porte": "Médio",
+  "medida": "≈1,65 m de altura",
+  "peso": "≈65 kg"
+ },
+ "bandido-de-estrada": {
+  "porte": "Médio",
+  "medida": "≈1,72 m de altura",
+  "peso": "≈70 kg"
+ },
+ "guarda-da-cidade": {
+  "porte": "Médio",
+  "medida": "≈1,75 m de altura",
+  "peso": "≈78 kg"
+ },
+ "soldado-veterano": {
+  "porte": "Médio",
+  "medida": "≈1,78 m de altura",
+  "peso": "≈82 kg"
+ },
+ "arqueiro": {
+  "porte": "Médio",
+  "medida": "≈1,73 m de altura",
+  "peso": "≈70 kg"
+ },
+ "bruto": {
+  "porte": "Médio",
+  "medida": "≈1,9 m de altura",
+  "peso": "≈110 kg"
+ },
+ "capitao-da-guarda": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura",
+  "peso": "≈85 kg"
+ },
+ "assassino-das-sombras": {
+  "porte": "Médio",
+  "medida": "≈1,7 m de altura",
+  "peso": "≈65 kg"
+ },
+ "duelista": {
+  "porte": "Médio",
+  "medida": "≈1,75 m de altura",
+  "peso": "≈70 kg"
+ },
+ "feiticeiro-menor": {
+  "porte": "Médio",
+  "medida": "≈1,68 m de altura",
+  "peso": "≈60 kg"
+ },
+ "cavaleiro-de-elite": {
+  "porte": "Médio",
+  "medida": "≈1,85 m de altura",
+  "peso": "≈95 kg"
+ },
+ "campeao": {
+  "porte": "Médio",
+  "medida": "≈1,9 m de altura",
+  "peso": "≈90 kg"
+ },
+ "comandante": {
+  "porte": "Médio",
+  "medida": "≈1,85 m de altura",
+  "peso": "≈88 kg"
+ },
+ "cultista": {
+  "porte": "Médio",
+  "medida": "≈1,7 m de altura",
+  "peso": "≈62 kg"
+ },
+ "mago-de-batalha": {
+  "porte": "Médio",
+  "medida": "≈1,75 m de altura",
+  "peso": "≈75 kg"
+ },
+ "mon-goblin": {
+  "porte": "Pequeno",
+  "medida": "≈0,95 m de altura",
+  "peso": "≈18 kg"
+ },
+ "mon-kobold": {
+  "porte": "Pequeno",
+  "medida": "≈0,75 m de altura",
+  "peso": "≈16 kg"
+ },
+ "mon-orc": {
+  "porte": "Médio",
+  "medida": "≈2 m de altura",
+  "peso": "≈95 kg"
+ },
+ "mon-hobgoblin": {
+  "porte": "Médio",
+  "medida": "≈1,7 m de altura",
+  "peso": "≈73 kg"
+ },
+ "mon-gnoll": {
+  "porte": "Médio",
+  "medida": "≈2,15 m de altura",
+  "peso": "≈135 kg"
+ },
+ "mon-bugbear": {
+  "porte": "Médio",
+  "medida": "≈2,15 m de altura",
+  "peso": "≈113 kg"
+ },
+ "mon-homem-lagarto": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura (cerca de 2,4 m de comprimento com a cauda)",
+  "peso": "≈90 kg"
+ },
+ "mon-trogloditas": {
+  "porte": "Médio",
+  "medida": "≈1,7 m de altura",
+  "peso": "≈75 kg"
+ },
+ "mon-ogro": {
+  "porte": "Grande",
+  "medida": "≈2,9 m de altura",
+  "peso": "≈290 kg"
+ },
+ "mon-ettin": {
+  "porte": "Grande",
+  "medida": "≈4 m de altura",
+  "peso": "≈1,8 t"
+ },
+ "mon-trol": {
+  "porte": "Grande",
+  "medida": "≈3 m de altura",
+  "peso": "≈200 kg"
+ },
+ "mon-gigante-da-colina": {
+  "porte": "Grande",
+  "medida": "≈4,3 m de altura",
+  "peso": "≈590 kg"
+ },
+ "mon-gigante-da-pedra": {
+  "porte": "Grande",
+  "medida": "≈3,7 m de altura",
+  "peso": "≈770 kg"
+ },
+ "mon-gigante-do-fogo": {
+  "porte": "Grande",
+  "medida": "altura ≈ 4,5 m",
+  "peso": "≈ 3,2 t"
+ },
+ "mon-gigante-do-gelo": {
+  "porte": "Grande",
+  "medida": "altura ≈ 4,3 m",
+  "peso": "≈ 2,8 t"
+ },
+ "mon-gigante-das-nuvens": {
+  "porte": "Enorme",
+  "medida": "altura ≈ 7 m",
+  "peso": "≈ 8 t"
+ },
+ "mon-gigante-da-tempestade": {
+  "porte": "Enorme",
+  "medida": "altura ≈ 7,5 m",
+  "peso": "≈ 11 t"
+ },
+ "mon-ciclope": {
+  "porte": "Grande",
+  "medida": "altura ≈ 3,2 m",
+  "peso": "≈ 400 kg"
+ },
+ "mon-lobo": {
+  "porte": "Médio",
+  "medida": "comprimento ≈ 1,5 m, do focinho à cauda",
+  "peso": "≈ 45 kg"
+ },
+ "mon-lobo-atroz": {
+  "porte": "Grande",
+  "medida": "comprimento ≈ 2,7 m",
+  "peso": "≈ 350 kg"
+ },
+ "mon-urso-pardo": {
+  "porte": "Grande",
+  "medida": "altura ≈ 2,4 m, quando ereto",
+  "peso": "≈ 400 kg"
+ },
+ "mon-leao": {
+  "porte": "Grande",
+  "medida": "comprimento ≈ 2,5 m, com cauda",
+  "peso": "≈ 190 kg"
+ },
+ "mon-tigre": {
+  "porte": "Grande",
+  "medida": "comprimento ≈ 2,9 m, com cauda",
+  "peso": "≈ 220 kg"
+ },
+ "mon-javali": {
+  "porte": "Médio",
+  "medida": "comprimento ≈ 1,5 m",
+  "peso": "≈ 110 kg"
+ },
+ "mon-rinoceronte": {
+  "porte": "Grande",
+  "medida": "comprimento ≈ 3,6 m",
+  "peso": "≈ 2 t"
+ },
+ "mon-elefante": {
+  "porte": "Enorme",
+  "medida": "comprimento ≈ 6,5 m",
+  "peso": "≈ 5,5 t"
+ },
+ "mon-gorila": {
+  "porte": "Grande",
+  "medida": "altura ≈ 1,7 m em pé, envergadura de braços ≈ 2,4 m",
+  "peso": "≈ 180 kg"
+ },
+ "mon-crocodilo": {
+  "porte": "Grande",
+  "medida": "Comprimento total ≈3,5 m (corpo e cauda)",
+  "peso": "≈450 kg"
+ },
+ "mon-cobra-constritora": {
+  "porte": "Médio",
+  "medida": "Comprimento total ≈3,5 m",
+  "peso": "≈40 kg"
+ },
+ "mon-aranha-gigante": {
+  "porte": "Médio",
+  "medida": "Corpo ≈0,6 m, envergadura das pernas ≈1,8 m",
+  "peso": "≈25 kg"
+ },
+ "mon-escorpiao-gigante": {
+  "porte": "Grande",
+  "medida": "Comprimento total ≈3 m (com cauda)",
+  "peso": "≈350 kg"
+ },
+ "mon-aguia-gigante": {
+  "porte": "Grande",
+  "medida": "Altura ≈1,2 m, envergadura ≈4,5 m",
+  "peso": "≈180 kg"
+ },
+ "mon-roc": {
+  "porte": "Imenso",
+  "medida": "Comprimento ≈9 m, envergadura ≈18 m",
+  "peso": "≈18 toneladas"
+ },
+ "mon-rato-gigante": {
+  "porte": "Pequeno",
+  "medida": "Comprimento total ≈0,9 m (com cauda)",
+  "peso": "≈12 kg"
+ },
+ "mon-corujurso": {
+  "porte": "Grande",
+  "medida": "Altura ≈2,4 m",
+  "peso": "≈230 kg"
+ },
+ "mon-minotauro": {
+  "porte": "Grande",
+  "medida": "Altura ≈2,4 m",
+  "peso": "≈250 kg"
+ },
+ "mon-harpia": {
+  "porte": "Médio",
+  "medida": "Altura ≈1,6 m, envergadura ≈4,5 m",
+  "peso": "≈55 kg"
+ },
+ "mon-gargula": {
+  "porte": "Médio",
+  "medida": "Altura ≈1,5 m",
+  "peso": "≈180 kg (pedra densa)"
+ },
+ "mon-grifo": {
+  "porte": "Grande",
+  "medida": "Corpo ≈2,4 m, envergadura ≈4,5 m",
+  "peso": "≈230 kg"
+ },
+ "mon-hipogrifo": {
+  "porte": "Grande",
+  "medida": "Comprimento ≈3 m, envergadura ≈5,5 m",
+  "peso": "≈450 kg"
+ },
+ "mon-manticora": {
+  "porte": "Grande",
+  "medida": "Comprimento total ≈3,5 m (corpo e cauda)",
+  "peso": "≈380 kg"
+ },
+ "mon-quimera": {
+  "porte": "Grande",
+  "medida": "corpo e cauda ≈4,5 m, altura ao ombro ≈1,8 m, envergadura ≈6 m",
+  "peso": "≈600 kg"
+ },
+ "mon-wyvern": {
+  "porte": "Grande",
+  "medida": "≈5,5 m da cabeça à ponta da cauda, envergadura ≈6 m",
+  "peso": "≈250 kg"
+ },
+ "mon-hidra-5-cabecas": {
+  "porte": "Enorme",
+  "medida": "corpo e pescoços ≈9 m de comprimento",
+  "peso": "≈4 t"
+ },
+ "mon-basilisco": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de comprimento, do focinho à cauda",
+  "peso": "≈135 kg"
+ },
+ "mon-cocatriz": {
+  "porte": "Pequeno",
+  "medida": "≈60 cm de comprimento, envergadura ≈90 cm",
+  "peso": "≈11 kg"
+ },
+ "mon-gorgona-touro-de-ferro": {
+  "porte": "Grande",
+  "medida": "≈3,5 m de comprimento, ≈1,8 m ao ombro",
+  "peso": "≈1,8 t (pele de ferro maciço, bem acima do normal para o porte)"
+ },
+ "mon-besta-deslocadora": {
+  "porte": "Grande",
+  "medida": "≈2,7 m de comprimento, cauda tentacular incluída",
+  "peso": "≈230 kg"
+ },
+ "mon-aranha-das-fases": {
+  "porte": "Grande",
+  "medida": "corpo ≈1,5 m, envergadura de pernas ≈3 m",
+  "peso": "≈160 kg"
+ },
+ "mon-monstro-da-ferrugem": {
+  "porte": "Médio",
+  "medida": "≈1,5 m de comprimento",
+  "peso": "≈120 kg"
+ },
+ "mon-cubo-gelatinoso": {
+  "porte": "Grande",
+  "medida": "cubo de ≈3 m de lado",
+  "peso": "≈14 t (massa gelatinosa densa, bem acima do normal para o porte)"
+ },
+ "mon-mimico": {
+  "porte": "Médio",
+  "medida": "≈1,2 m de altura na forma de baú",
+  "peso": "≈150 kg"
+ },
+ "mon-montao-tropecante": {
+  "porte": "Grande",
+  "medida": "≈2,7 m de altura",
+  "peso": "≈1,4 t (massa vegetal e lodo compacto)"
+ },
+ "mon-treant": {
+  "porte": "Enorme",
+  "medida": "≈7,5 m de altura",
+  "peso": "≈2 t"
+ },
+ "mon-verme-purpura": {
+  "porte": "Imenso",
+  "medida": "≈24 m de comprimento",
+  "peso": "≈36 t"
+ },
+ "mon-bulette": {
+  "porte": "Enorme",
+  "medida": "≈2,7 m de altura no dorso, cerca de 6 m do focinho à cauda",
+  "peso": "≈1,4 t"
+ },
+ "mon-aboleth": {
+  "porte": "Enorme",
+  "medida": "≈6,5 m de comprimento, corpo alongado com tentáculos",
+  "peso": "≈2,7 t"
+ },
+ "mon-esqueleto-humano": {
+  "porte": "Médio",
+  "medida": "≈1,7 m de altura",
+  "peso": "≈15 kg, apenas ossos"
+ },
+ "mon-zumbi-humano": {
+  "porte": "Médio",
+  "medida": "≈1,7 m de altura",
+  "peso": "≈75 kg"
+ },
+ "mon-ghoul": {
+  "porte": "Médio",
+  "medida": "≈1,7 m de altura",
+  "peso": "≈60 kg, corpo ressecado"
+ },
+ "mon-ghast": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura",
+  "peso": "≈65 kg"
+ },
+ "mon-sombra": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura, silhueta humanoide difusa",
+  "peso": "sem peso, forma incorpórea sem massa"
+ },
+ "mon-wight": {
+  "porte": "Médio",
+  "medida": "≈1,75 m de altura",
+  "peso": "≈60 kg, corpo dessecado"
+ },
+ "mon-assombracao-wraith": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura, silhueta humanoide flutuante",
+  "peso": "sem peso, forma incorpórea"
+ },
+ "mon-espectro": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura, silhueta humanoide flutuante",
+  "peso": "sem peso, forma incorpórea"
+ },
+ "mon-mumia": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura",
+  "peso": "≈85 kg, corpo dessecado e ataduras"
+ },
+ "mon-bodak": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura",
+  "peso": "≈65 kg, corpo emagrecido"
+ },
+ "mon-vampiro": {
+  "porte": "Médio",
+  "medida": "≈1,75 m de altura",
+  "peso": "≈75 kg"
+ },
+ "mon-lich": {
+  "porte": "Médio",
+  "medida": "≈1,75 m de altura",
+  "peso": "≈40 kg, esqueleto e vestes"
+ },
+ "mon-dretch": {
+  "porte": "Pequeno",
+  "medida": "altura ≈90 cm",
+  "peso": "≈27 kg"
+ },
+ "mon-quasit": {
+  "porte": "Miúdo",
+  "medida": "altura ≈30 cm",
+  "peso": "≈3,5 kg"
+ },
+ "mon-sucubo": {
+  "porte": "Médio",
+  "medida": "altura ≈1,75 m",
+  "peso": "≈59 kg"
+ },
+ "mon-vrock": {
+  "porte": "Grande",
+  "medida": "altura ≈2,4 m (envergadura ≈4,5 m)",
+  "peso": "≈230 kg"
+ },
+ "mon-hezrou": {
+  "porte": "Grande",
+  "medida": "altura ≈3 m",
+  "peso": "≈320 kg"
+ },
+ "mon-glabrezu": {
+  "porte": "Enorme",
+  "medida": "altura ≈3,7 m",
+  "peso": "≈1,8 t"
+ },
+ "mon-marilith": {
+  "porte": "Grande",
+  "medida": "comprimento ≈6 m",
+  "peso": "≈1,8 t"
+ },
+ "mon-balor": {
+  "porte": "Enorme",
+  "medida": "altura ≈4,3 m (envergadura ≈9 m)",
+  "peso": "≈3,6 t"
+ },
+ "mon-lemure": {
+  "porte": "Médio",
+  "medida": "altura ≈1,5 m",
+  "peso": "≈45 kg"
+ },
+ "mon-diabrete-imp": {
+  "porte": "Miúdo",
+  "medida": "altura ≈60 cm",
+  "peso": "≈3,6 kg"
+ },
+ "mon-diabo-barbado": {
+  "porte": "Médio",
+  "medida": "altura ≈2,1 m",
+  "peso": "≈90 kg"
+ },
+ "mon-erinia": {
+  "porte": "Médio",
+  "medida": "altura ≈1,8 m (envergadura ≈4,5 m)",
+  "peso": "≈68 kg"
+ },
+ "mon-diabo-osseo": {
+  "porte": "Grande",
+  "medida": "altura ≈2,7 m",
+  "peso": "≈230 kg"
+ },
+ "mon-diabo-de-gelo": {
+  "porte": "Grande",
+  "medida": "altura ≈3,3 m",
+  "peso": "≈360 kg"
+ },
+ "mon-rakshasa": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura",
+  "peso": "≈80 kg"
+ },
+ "mon-diabo-do-fosso-pit-fiend": {
+  "porte": "Grande",
+  "medida": "≈2,7 m de altura, envergadura ≈4 m",
+  "peso": "≈360 kg"
+ },
+ "mon-archon-cao": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura",
+  "peso": "≈100 kg"
+ },
+ "mon-deva-astral": {
+  "porte": "Médio",
+  "medida": "≈2 m de altura, envergadura ≈3,6 m",
+  "peso": "≈90 kg"
+ },
+ "mon-planetar": {
+  "porte": "Grande",
+  "medida": "≈2,7 m de altura, envergadura ≈6 m",
+  "peso": "≈225 kg"
+ },
+ "mon-solar": {
+  "porte": "Grande",
+  "medida": "≈3 m de altura, envergadura ≈7 m",
+  "peso": "≈320 kg"
+ },
+ "mon-couatl": {
+  "porte": "Médio",
+  "medida": "≈3 m de comprimento, envergadura ≈2,4 m",
+  "peso": "≈115 kg"
+ },
+ "mon-ghaele-azata": {
+  "porte": "Médio",
+  "medida": "≈1,8 m de altura",
+  "peso": "≈90 kg"
+ },
+ "mon-djinn": {
+  "porte": "Grande",
+  "medida": "≈3 m de altura",
+  "peso": "≈200 kg"
+ },
+ "mon-efreeti": {
+  "porte": "Grande",
+  "medida": "≈3,6 m de altura",
+  "peso": "≈320 kg"
+ },
+ "mon-salamandra": {
+  "porte": "Médio",
+  "medida": "≈2,7 m de comprimento total",
+  "peso": "≈100 kg"
+ },
+ "mon-elemental-da-terra-grande": {
+  "porte": "Grande",
+  "medida": "≈3 m de altura",
+  "peso": "≈2 toneladas"
+ },
+ "mon-xorn": {
+  "porte": "Médio",
+  "medida": "≈1,5 m de altura, corpo esférico",
+  "peso": "≈450 kg"
+ },
+ "mon-driade": {
+  "porte": "Médio",
+  "medida": "≈1,65 m de altura",
+  "peso": "≈50 kg"
+ },
+ "mon-ninfa": {
+  "porte": "Médio",
+  "medida": "altura ≈1,7 m",
+  "peso": "≈55 kg"
+ },
+ "mon-satiro": {
+  "porte": "Médio",
+  "medida": "altura ≈1,5 m",
+  "peso": "≈65 kg"
+ },
+ "mon-pixie": {
+  "porte": "Miúdo",
+  "medida": "altura ≈30 cm",
+  "peso": "≈3 kg"
+ },
+ "mon-fogo-fatuo": {
+  "porte": "Miúdo",
+  "medida": "diâmetro ≈30 cm (orbe de luz flutuante)",
+  "peso": "≈0,5 kg, quase sem massa"
+ },
+ "mon-medusa": {
+  "porte": "Médio",
+  "medida": "altura ≈1,75 m",
+  "peso": "≈55 kg"
+ },
+ "mon-doppelganger": {
+  "porte": "Médio",
+  "medida": "altura ≈1,8 m na forma humana padrão",
+  "peso": "≈70 kg"
+ },
+ "mon-pegaso": {
+  "porte": "Grande",
+  "medida": "corpo ≈2,7 m, envergadura ≈9 m",
+  "peso": "≈450 kg"
+ },
+ "mon-unicornio": {
+  "porte": "Grande",
+  "medida": "corpo ≈2,4 m, altura ≈1,7 m aos ombros",
+  "peso": "≈350 kg"
+ },
+ "mon-ogro-mago-oni": {
+  "porte": "Grande",
+  "medida": "altura ≈2,7 m",
+  "peso": "≈290 kg"
+ },
+ "mon-esfinge-ginosfinge": {
+  "porte": "Grande",
+  "medida": "corpo ≈3 m, envergadura ≈6 m",
+  "peso": "≈230 kg"
+ },
+ "mon-naga-espirita": {
+  "porte": "Grande",
+  "medida": "comprimento ≈6 m",
+  "peso": "≈320 kg"
+ },
+ "mon-behir": {
+  "porte": "Enorme",
+  "medida": "comprimento ≈9 m",
+  "peso": "≈3,6 t"
+ },
+ "mon-lamia": {
+  "porte": "Grande",
+  "medida": "comprimento ≈3 m, corpo com quartos traseiros de leão",
+  "peso": "≈160 kg"
+ },
+ "mon-bruxa-verde-hag": {
+  "porte": "Médio",
+  "medida": "altura ≈1,5 m",
+  "peso": "≈80 kg"
+ },
+ "mon-kraken": {
+  "porte": "Colossal",
+  "medida": "≈35 m de comprimento total, entre corpo e tentáculos",
+  "peso": "≈140 toneladas"
+ },
+ "mon-tarrasque": {
+  "porte": "Colossal",
+  "medida": "≈27 m de comprimento, chegando a ≈15 m de altura quando se ergue",
+  "peso": "≈450 toneladas"
+ },
+ "mon-filhote-de-dragao-vermelho": {
+  "porte": "Médio",
+  "medida": "≈2,7 m de comprimento, com a cauda",
+  "peso": "≈90 kg"
+ },
+ "mon-dragao-vermelho-jovem": {
+  "porte": "Grande",
+  "medida": "≈4,9 m de comprimento, com a cauda",
+  "peso": "≈900 kg"
+ },
+ "mon-dragao-vermelho-adulto": {
+  "porte": "Enorme",
+  "medida": "≈9 m de comprimento, com a cauda",
+  "peso": "≈7,3 toneladas"
+ },
+ "mon-dragao-vermelho-anciao": {
+  "porte": "Imenso",
+  "medida": "≈16,5 m de comprimento, com a cauda",
+  "peso": "≈59 toneladas"
+ },
+ "mon-grande-wyrm-vermelho": {
+  "porte": "Colossal",
+  "medida": "≈20 m de comprimento, com a cauda",
+  "peso": "≈88 toneladas"
+ },
+ "mon-dragao-branco-jovem": {
+  "porte": "Grande",
+  "medida": "≈4,3 m de comprimento, com a cauda",
+  "peso": "≈700 kg"
+ },
+ "mon-dragao-azul-adulto": {
+  "porte": "Enorme",
+  "medida": "≈9,5 m de comprimento, envergadura de ≈14 m",
+  "peso": "≈7,5 toneladas"
+ },
+ "mon-dragao-verde-adulto": {
+  "porte": "Enorme",
+  "medida": "≈9 m de comprimento, com a cauda",
+  "peso": "≈7 toneladas"
+ },
+ "mon-dragao-dourado-adulto": {
+  "porte": "Enorme",
+  "medida": "≈9,5 m de comprimento, envergadura de ≈15 m",
+  "peso": "≈9 toneladas"
+ }
+}
