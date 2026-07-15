@@ -154,12 +154,58 @@ Formato geral: **"a cara de Exalted 2e"** aplicado à metafísica já fixa. Sem 
 - **Clérigos e Paladinos** seguem essas ordens e seus deuses: o braço pastoral e armado das ortodoxias, logo (sem saber) agentes da supressão.
 - [PROPOSTA/coerência] A **rivalidade sectária mascara a função comum**: todas empurram o mesmo tabu antimagia enquanto brigam por doutrina. A supressão se esconde à vista de todos, dividida em seitas. Motor de intriga e de metaplot (descobrir a origem comum das igrejas = tocar no segredo da supressão).
 
-### A definir [EM ABERTO]
+### O panorama religioso [PROPOSTA v1 · rascunho autorizado]
 
-- Nomes e identidades das **grandes potências** (quantas? quais domínios? como se ligam à Primeira Luz, aos planos elementais, aos corpos celestes / às **luas de Uldun**, dado o tema lunar de "Waning"?).
-- Nomes, doutrinas e a **origem comum** das ortodoxias rivais (fundadas pelos deuses sobreviventes da Guerra? por um profeta? qual foi o cisma original?).
-- Exemplos de **deuses locais** e **espíritos de lugar** por região (Waning, The Neck...).
-- Ponte com o sistema: como **Clérigos/Paladinos** se encaixam na mecânica (Centelha, Proezas, Arcano; poder divino como quê?).
+Nem toda religião serve à supressão nem briga. Há três grandes famílias, com graus diferentes de convívio:
+
+- **Os panteões culturais** (a maioria): fés politeístas, cada uma modelada livremente numa mitologia real (grega, japonesa, asteca, nórdica...), que cultuam as grandes potências sob nomes próprios, mais seus deuses locais e ancestrais. **Costumam coexistir em paz**, como no mundo real: um mercador de Calin respeita os deuses de Syl e negocia com quem reza a outros nomes.
+- **As tradições animistas e filosóficas:** xamanismo, druidismo, cultos de espíritos de lugar, e as escolas de monastério que **não veneram deus nenhum** (meditação, debate, privação, autoaperfeiçoamento). Discretas; toleradas de longe, temidas de perto (a marca da supressão sobre quem lida com o sobrenatural).
+- **As ortodoxias supressoras:** a família de igrejas rivais de origem comum (ver "As ortodoxias organizadas"), evangélicas e expansionistas, que pregam o tabu antimagia. **São a fonte de quase todo o atrito religioso:** brigam entre si por doutrina e perseguem as práticas mágico-adjacentes das outras fés (oráculos, druidas, xamãs) como pecado. Fortes no **núcleo humano e urbano** (onde a supressão morde mais), fracas na periferia mágica e longeva. Disso nasce uma **geografia da fé:** quanto mais urbano e humano, mais ortodoxia; quanto mais mágico e antigo, mais panteão e animismo.
+
+### O panteão verdadeiro (as grandes potências) [PROPOSTA v1 · nomes provisórios]
+
+Sob todos os nomes locais estão poucas potências reais; cada cultura as batiza e mitologiza à sua maneira. Títulos de trabalho:
+
+**Primordiais (autossuficientes, frios, não vivem de culto):**
+- **O Sol (a Luz Alta):** dia, ordem, o grande fogo que a si basta. Uns o veem como a face mais próxima da Primeira Luz; outros, como seu primeiro e maior ladrão (a entidade que mais acumulou Luz). Distante.
+- **A Lua (a Errante):** mudança, destino, marés, noite, loucura, o oculto e o disfarce. Volúvel; suas **fases são suas faces** (o continente-coração se chama Waning, a minguante, por causa dela). A potência mais entranhada no mundo.
+- **A Primeira Luz:** não é pessoa, é a Fonte. Poucos cultos esotéricos a reverenciam como a Primeira Chama; as ortodoxias chamam de pecado original o gesto de tentar alcançá-la (a soberba élfica).
+
+**Potências de domínio (as maiores ascendidas; conhecidas em todo lugar sob nomes diferentes; vivem de culto pan-cultural):**
+1. **O Senhor da Guerra e da Tempestade** (guerra, valor, céu, temporal).
+2. **A Ceifadora** (morte, submundo, a colheita das almas, o portão dos ancestrais).
+3. **A Verdejante** (terra, colheita, fertilidade, lar, vida).
+4. **O Senhor do Mar e das Estradas** (mar, viagem, horizontes, tormenta).
+5. **O Forjador** (forja, ofício, fogo domado, artifício; no mito, o primeiro a ascender pela obra das mãos, caro aos anões).
+6. **A Tecelã** (saber, magia, leitura do destino, oráculos, mistério; a mais malvista pelas ortodoxias).
+7. **O de Muitas Faces** (comércio, estradas, sorte, astúcia, o limiar; o trapaceiro).
+- (Provável 8ª a decidir: uma potência de amor/beleza/laços, cara aos elfos.)
+
+### As culturas e seus panteões (inspirações reais) [PROPOSTA v1 · tentativo, ajusta às cidades]
+
+- **Calin (núcleo urbano, cosmopolita):** civilização **greco-romana / mediterrânea** de cidades-estado e império, com templos às grandes potências sob nomes olímpicos. É também a **sede das ortodoxias supressoras**, que crescem por cima do velho panteão cívico (tensão entre culto tradicional e igrejas reformadoras).
+- **Syl (semi-selvagem):** cultura **nipônica / xintoísta**: espíritos (kami) em tudo, honra, reverência à natureza e aos ancestrais; animista mas ordeira.
+- **Mére (vasta, dita "bárbara", esconde cidades avançadas):** cultura **mesoamericana (asteca/maia)**: monumental, sanguínea, serpente-emplumada; vista como selvagem de fora, na verdade sofisticada e **magicamente avançada** (as cidades escondidas). Encaixa no "bárbara por ignorância, secretamente adiantada".
+- **The Neck (ilhéus humanos, agora com anões):** folk **nórdico / celta** de ilhas (espíritos, deuses do mar, túmulos de ancestrais), agora entretecido com o **culto anão de ancestral e forja**.
+- **White Wall (pátria anã, hoje tomada):** religião anã de **ancestral e forja** (nórdico-anão), perdida com a Fenda.
+- **Transversais aos lugares:** **elfos** = fé antiga e melancólica, **quase monoteísta** em torno da **Lua/Destino** (+ panteão menor), obcecada pela imortalidade perdida; **gnomos** = cultos de mistério e escolas de filosofia; **orcs/goblins** = xamanismo totêmico (força, sangue, ancestrais); **halflings** = fé comunal de lar e colheita, pacífica.
+
+### Os papéis religiosos [PROPOSTA v1]
+
+- **Clérigo:** sacerdote ordenado de uma ortodoxia ou de um templo de panteão; canaliza o favor do deus.
+- **Paladino:** devoto militante, guerreiro sagrado de uma ordem; o braço armado da doutrina (e, sem saber, da supressão).
+- **Xamã:** intermediário animista com espíritos e ancestrais (povos da natureza, Syl, orcs, The Neck).
+- **Druida:** guardião do equilíbrio natural e das potências verdes/elementais (elfos, culturas de floresta).
+- **Monge:** ordem filosófica/monástica; **autoaperfeiçoamento por disciplina, sem cultuar deus** (meditação, debate, privação). O "terceiro caminho".
+- **Devoto / místico / vidente:** praticante leigo, oráculo, ocultista; folk, desconfiado pelas ortodoxias.
+
+**[EM ABERTO] Ponte com a mecânica (coerência com a Lei):** se **deuses não tocam mortais diretamente**, como o clérigo tem poder? Proposta: o poder do clérigo NÃO é o deus descendo (proibido); é a **própria Centelha do clérigo**, moldada pela devoção e amplificada pelo **campo de crença do culto** (a crença molda as camadas). O deus abençoa indiretamente sustentando esse campo. Logo, "milagres" = **Proezas/Artes** de sabor devocional, talvez alimentadas pela congregação. Mantém a Lei intacta e dispensa criar classe nova. Ironia útil: as ortodoxias condenam a magia enquanto seus clérigos a usam sob outro nome. (O monge é o caso-limite: busca a ascensão da Centelha por disciplina, o que as ortodoxias considerariam soberba.)
+
+### Ainda a nomear [EM ABERTO]
+
+- **Nomes próprios** de cada grande potência em cada cultura; nomes das **ortodoxias rivais** e o **cisma original** (fundação por profeta/concílio pós-Guerra?).
+- **Deuses locais e espíritos de lugar** por cidade/região (casar com as cidades que o usuário está escrevendo).
+- Fechar a **mecânica** de clérigo/paladino/monge (poder divino via Centelha + campo de crença).
 
 ---
 
