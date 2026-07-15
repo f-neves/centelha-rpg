@@ -2,7 +2,34 @@
 
 > Rascunho vivo do worldbuilding. Não é conteúdo do site (fica fora de `src/`, não entra no build nem no GitHub Pages). Serve para consolidar decisões e discussões conforme co-desenhamos o mundo.
 >
-> Convenções: **[TRAVADO]** = decidido pelo usuário. **[EM ABERTO]** = a discutir. **[PROPOSTA]** = ideia minha aguardando aval.
+> As convenções de tags e um guia para quem for ajudar na escrita estão na seção **"Para o assistente de escrita"**, logo abaixo.
+
+---
+
+## Para o assistente de escrita (Claude/ChatGPT)
+
+Este é o documento-cânone do worldbuilding de **Centelha** (um RPG). Se você foi chamado para ajudar na escrita, seu papel é **desenvolver os pontos em aberto e aprimorar a prosa**, sem contrariar o que já foi decidido.
+
+**Legenda das tags:**
+- **[TRAVADO]** = cânone decidido pelo autor. NÃO altere; trate como verdade fixa e mantenha coerência com isso.
+- **[PROPOSTA]** / **[PROPOSTA v1]** = rascunho sugerido, aguardando aval do autor. Pode refinar, mas sinalize o que mudou.
+- **[PARCIAL]** = parcialmente decidido; faltam os detalhes indicados.
+- **[EM ABERTO]** = ainda não decidido. **É aqui que a ajuda é mais bem-vinda:** proponha 2 a 3 opções concretas e coerentes, e ofereça escrever a prosa quando o autor escolher.
+- **[RESOLVIDO]** / **[IMPORTADO]** = já concluído.
+
+**Como ajudar:** ancore tudo nos itens [TRAVADO] (a metafísica da Primeira Luz e da Centelha, a Lei que impede os deuses de tocar mortais, a supressão, a história das raças, a geografia de Uldun). Marque suas adições como [PROPOSTA] e não sobrescreva nomes ou decisões do autor. Quando o autor validar, o item pode ser promovido de [PROPOSTA]/[EM ABERTO] para [TRAVADO].
+
+**Regras de escrita do autor (valem para TODO texto produzido aqui):**
+1. **Nunca use travessão (—).** Única exceção: falas de personagem em ficção. No lugar, use vírgula, dois-pontos, parênteses, ponto ou ponto-médio (·).
+2. Evite jargão e maneirismos de IA ("vale ressaltar", "é importante notar", "mergulhar fundo", "tapeçaria", aberturas tipo "Claro!", fechamentos que só resumem o que acabou de ser dito).
+3. Nunca use pisos unicode ⌊ ⌋; use colchetes [ ].
+4. Escreva em português.
+
+**Maiores frentes abertas agora:**
+- **Seção 7 (Panteões):** nomear as grandes potências em cada cultura; nomear as ortodoxias rivais e o cisma original; deuses locais por cidade; fechar a mecânica de clérigo/paladino/monge.
+- **Seção 8 (Fios em aberto):** nome e natureza do plano da Fenda; raças jogáveis detalhadas; frame de campanha; como os deuses romperam a Lei; nomes de cidades, do reino feérico élfico e das eras.
+
+(Este documento fica fora de `src/`, não entra no site nem no build.)
 
 ---
 
