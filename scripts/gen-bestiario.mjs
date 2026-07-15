@@ -149,19 +149,6 @@ const NPCS = [
     tecnicas: ['golpe-pesado', 'quebrar-guarda', 'soco-trovejante'],
     notas: 'Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de banda 1–2.' },
 
-  { id: 'lobo', nome: 'Lobo', tipo: 'fera', ameaca: 2, centelha: 0,
-    conceito: 'predador de matilha', descricao: 'Rápido e implacável em grupo; ataca os flancos.', tags: ['fera'],
-    attrs: { forca: 3, destreza: 4, vigor: 3, percepcao: 4 }, pericias: { briga: 3, esquiva: 3, prontidao: 4, furtividade: 3 }, integridade: 3, vontade: 4,
-    ataques: [{ nome: 'Mordida', atrib: 'forca', pericia: 'briga', dado: 1, mao: 2, tipo: 'perfConc', acerto: 1, perf: 1, ticks: 5, notas: 'Em matilha: ataca pelo flanco (−2 na Defesa do alvo)' }],
-    notas: 'Anda em matilha (3–6). Dois ou mais coordenados somam Flanco (−2 Defesa) e Pressão; use Horda para grandes alcateias.' },
-
-  { id: 'urso', nome: 'Urso', tipo: 'fera', ameaca: 4, centelha: 0,
-    conceito: 'fera colossal', descricao: 'Força esmagadora e couro grosso; um perigo sério sozinho.', tags: ['fera'],
-    attrs: { forca: 5, destreza: 2, vigor: 5, percepcao: 3 }, pericias: { briga: 3, resistencia: 4, prontidao: 3 }, integridade: 3, vontade: 5,
-    armadura: 'nenhuma',
-    ataques: [{ nome: 'Garras', atrib: 'forca', pericia: 'briga', dado: 2, mao: 2, tipo: 'corte', acerto: 1, ticks: 6, notas: 'Dilacerantes: golpe com Margem abre Sangramento (= Margem, máx 3); pode agarrar' }],
-    notas: 'Couro grosso (Soak natural alto pelo Vigor 5). Defesa baixa, mas aguenta — e as garras sangram. Difícil de derrubar.' },
-
   { id: 'comandante', nome: 'Comandante Tocado', tipo: 'elite', ameaca: 5, centelha: 1,
     conceito: 'líder de guerra', descricao: 'Inspira tropas e quebra a moral inimiga; luta bem, mas comanda melhor.', tags: ['humano', 'centelha'],
     attrs: { forca: 3, destreza: 4, vigor: 4, influencia: 5 }, pericias: { 'armas-uma-mao': 4, esquiva: 3, escudos: 3, oratoria: 4, tatica: 4, intimidacao: 4, prontidao: 3 }, integridade: 6, vontade: 7,
@@ -176,32 +163,6 @@ const NPCS = [
     ataques: [{ nome: 'Toque mórbido (Morte 1)', atrib: 'inteligencia', pericia: 'ocultismo', dado: 1, distancia: true, tipo: 'necrótico', ticks: 6, notas: 'Dreno: cura o cultista' }],
     artes: [{ id: 'morte', nivel: 2 }],
     notas: 'Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.' },
-
-  { id: 'esqueleto', nome: 'Esqueleto Guerreiro', tipo: 'soldado', ameaca: 2, centelha: 0,
-    conceito: 'morto-vivo', descricao: 'Ossos animados que não sentem dor nem medo; lutam até despedaçar.', tags: ['morto-vivo'],
-    attrs: { forca: 3, destreza: 3, vigor: 3 }, pericias: { 'armas-uma-mao': 2, esquiva: 2, escudos: 1 }, integridade: 5, vontade: 5,
-    armadura: 'couro',
-    ataques: [{ nome: 'Espada enferrujada', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 1, mao: 1, tipo: 'corte', acerto: 1, ticks: 5 }],
-    notas: 'Morto-vivo: imune a medo, veneno e efeitos mentais. Dano de Impacto (esmagar ossos) é especialmente eficaz.' },
-
-  { id: 'espectro', nome: 'Espectro', tipo: 'elite', ameaca: 4, centelha: 1,
-    conceito: 'assombração incorpórea', descricao: 'Um morto que não partiu; atravessa paredes e gela a alma.', tags: ['morto-vivo', 'espírito'],
-    attrs: { forca: 2, destreza: 4, vigor: 3, influencia: 4, percepcao: 4 }, pericias: { esquiva: 4, intimidacao: 4, furtividade: 5, prontidao: 4 }, integridade: 4, vontade: 8,
-    ataques: [{ nome: 'Toque gélido', atrib: 'influencia', pericia: 'briga', dado: 2, mao: 2, tipo: 'necrótico (vs Def. Mental)', ticks: 5, notas: 'gela a vontade do alvo' }],
-    notas: 'Incorpóreo: imune a dano físico não-mágico e atravessa matéria. Só Arcano, Proteção e armas encantadas o ferem.' },
-
-  { id: 'ogro', nome: 'Ogro', tipo: 'chefe', ameaca: 5, centelha: 0,
-    conceito: 'brutamontes monstruoso', descricao: 'Montanha de músculo e fúria; cada golpe é um aríete.', tags: ['fera', 'gigante'],
-    attrs: { forca: 6, destreza: 2, vigor: 6 }, pericias: { briga: 3, 'armas-duas-maos': 3, resistencia: 4, intimidacao: 3 }, integridade: 3, vontade: 5,
-    armadura: 'nenhuma',
-    ataques: [{ nome: 'Clava enorme', atrib: 'forca', pericia: 'armas-duas-maos', dado: 3, mao: 2, tipo: 'impacto', acerto: 0, ticks: 7, notas: 'Impacto; derruba o alvo' }],
-    notas: 'Força e Vigor 6 (acima do humano). Lento (Speed 7) e de Defesa baixa: cerque e explore a lentidão.' },
-
-  { id: 'aranha-gigante', nome: 'Aranha Gigante', tipo: 'fera', ameaca: 3, centelha: 0,
-    conceito: 'predadora venenosa', descricao: 'Emboscadora de patas longas; uma picada e a presa amolece.', tags: ['fera'],
-    attrs: { forca: 3, destreza: 4, vigor: 3, percepcao: 4 }, pericias: { briga: 3, furtividade: 4, esquiva: 3, prontidao: 4 }, integridade: 2, vontade: 4,
-    ataques: [{ nome: 'Picada peçonhenta', atrib: 'destreza', pericia: 'briga', dado: 1, mao: 2, tipo: 'perfConc', acerto: 1, perf: 1, ticks: 5, notas: 'Veneno (efeito de Corpo): resista com Vigor + Convicção ou sofra −2 em ações por uma cena' }],
-    notas: 'Sobe paredes, ataca das sombras e prende a presa em teia.' },
 
   { id: 'mago-de-batalha', nome: 'Mago de Batalha', tipo: 'chefe', ameaca: 6, centelha: 2,
     conceito: 'artilharia arcana', descricao: 'Conjura fogo e força sobre o campo; perigoso a qualquer distância.', tags: ['humano', 'centelha', 'arcano'],
