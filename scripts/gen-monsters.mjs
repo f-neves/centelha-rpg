@@ -31,7 +31,9 @@ const CAT_OVERRIDE = {
   'mon-harpia': 'Humanoide monstruoso', 'mon-lamia': 'Humanoide monstruoso',
   'mon-medusa': 'Humanoide monstruoso', 'mon-minotauro': 'Humanoide monstruoso',
   // Outsider nativo (PF1e Outsider native)
-  'mon-couatl': 'Outsider', 'mon-ogro-mago-oni': 'Outsider', 'mon-rakshasa': 'Outsider',
+  'mon-couatl': 'Outsider', 'mon-rakshasa': 'Outsider',
+  // Oni é do tipo gigante
+  'mon-ogro-mago-oni': 'Gigante',
   // ajustes pontuais
   'mon-doppelganger': 'Aberração', 'mon-unicornio': 'Besta mágica',
 };
