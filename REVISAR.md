@@ -37,3 +37,25 @@ consistentes por construção.
   callout do `/bestiario` apontando para ela.
 
 Para mexer: editar o gerador e rodar `node scripts/gen-bestiario.mjs`, ou editar o JSON direto.
+
+## Bestiário — dados unificados em `monsters.json` (arquitetura)
+
+- **Estado atual (modo "gerado"):** a página `/bestiario` lê **só** `src/data/monsters.json`
+  (137 criaturas, todas as infos por objeto). Esse arquivo é **gerado** por
+  `scripts/gen-monsters.mjs` (roda no `npm run build`), que junta os stat blocks calculados
+  (`inimigos.json`, saída do `gen-bestiario.mjs`) com os arquivos-fonte autorais
+  (`habilidades-bestiario.json`, `dimensoes-bestiario.json`, `lore-bestiario.json`,
+  `imagens-bestiario.json`). Esses 5 arquivos seguem como **fontes editáveis**.
+- **⏳ PENDÊNCIA (quando o sistema fechar):** migrar para **fonte única de verdade** =
+  editar `monsters.json` direto e **aposentar os 5 arquivos-fonte** (inimigos + os 4
+  satélites) mais o `gen-monsters`/`gen-bestiario` (virariam, no máximo, um script opcional
+  de "recalcular stats in-place" preservando o que foi escrito à mão). Decisão do usuário:
+  fazer isso só ao travar o conteúdo, para não perder o recálculo automático dos stats
+  enquanto o sistema ainda muda.
+
+## Bestiário — pendência de balanceamento
+
+- **⏳ Redução de dano (Absorção) por tamanho:** o **PV já escala com o porte**
+  (`regras.derivados.pv.porte`: Miúdo 15+V×1 … Colossal 45+V×5). Falta avaliar se a
+  **Absorção natural** também deve variar com o tamanho (criaturas grandes absorvendo mais,
+  miúdas menos), a decidir junto com o usuário.

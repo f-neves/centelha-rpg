@@ -2,18 +2,10 @@
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
-import { getCollection } from 'astro:content';
-import imagens from '../data/imagens-bestiario.json';
-import habilidades from '../data/habilidades-bestiario.json';
-import dimensoes from '../data/dimensoes-bestiario.json';
-import loredata from '../data/lore-bestiario.json';
-const IMG: Record<string, string> = imagens;
-const HAB: Record<string, { en?: string; hab: { n: string; d: string }[] }> = habilidades;
-const DIM: Record<string, { porte: string; medida: string; peso: string }> = dimensoes;
-const LORE: Record<string, { secoes: { t: string; d: string }[] }> = loredata;
+import monsters from '../data/monsters.json';
 const d = await loadData();
-const inimigos = (await getCollection('inimigos')).map((e) => e.data)
-  .sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
+// Fonte ÚNICA da página: monsters.json (gerado por scripts/gen-monsters.mjs a partir dos arquivos-fonte).
+const inimigos = ([...monsters] as any[]).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
 const TIPO: Record<string, string> = { capanga: 'Capanga', soldado: 'Soldado', elite: 'Elite', fera: 'Fera', chefe: 'Chefe' };
 // Atributos (ordem canônica: físico · social · mental) com rótulo curto e nome cheio
 const ATR: [string, string, string][] = [
@@ -33,7 +25,7 @@ const categorias = [...new Set(inimigos.map((i) => i.categoria || 'Outro'))].sor
 const caminhosUsados = [...new Set(inimigos.flatMap(caminhosDe))].map((id) => ({ id, nome: camNome[id] || id })).sort((a, b) => a.nome.localeCompare(b.nome));
 const artesUsadas = [...new Set(inimigos.flatMap(artesDe))].map((id) => ({ id, nome: arteNome[id] || id })).sort((a, b) => a.nome.localeCompare(b.nome));
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
-const comArte = inimigos.filter((i) => IMG[i.id]).length;
+const comArte = inimigos.filter((i) => i.imagem).length;
 ---
 <Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — do goblin ao dragão ancião, com blocos de combate calculados, arte de referência e poderes traduzidos em Proezas e Feitiçarias.">
   <h1>Bestiário & NPCs</h1>
@@ -78,13 +70,13 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
     {inimigos.map((i) => (
       <article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
-        data-nome={i.nome} data-en={HAB[i.id]?.en || i.nome} data-pv={i.pv} data-defesa={i.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
-        data-txt={(i.nome + ' ' + (HAB[i.id]?.en || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (HAB[i.id]?.hab || []).map((h) => h.n + ' ' + h.d).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}>
+        data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
+        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}>
 
-        <figure class={`arte${IMG[i.id] ? '' : ' sem-arte'}`} data-cent={i.centelha}>
-          {IMG[i.id]
-            ? <img src={url(IMG[i.id])} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
-                   data-full={url(IMG[i.id])} data-nome={i.nome} />
+        <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
+          {i.imagem
+            ? <img src={url(i.imagem)} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
+                   data-full={url(i.imagem)} data-nome={i.nome} />
             : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
           <span class="arte-ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
           {i.centelha > 0 && <span class="arte-cent" title={`Centelha ${i.centelha}`}>✦ {i.centelha}</span>}
@@ -99,16 +91,16 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
           </header>
           <p class="besta-con muted">{i.conceito}{i.descricao ? ` · ${i.descricao}` : ''}</p>
 
-          {DIM[i.id] && (
-            <p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">{DIM[i.id].porte}</span><span class="pt-sep">·</span>{DIM[i.id].medida}<span class="pt-sep">·</span>{DIM[i.id].peso}</p>
+          {i.porte && (
+            <p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
           )}
 
           <dl class="besta-stats">
-            <div><dt>PV</dt><dd>{i.pv}</dd></div>
-            <div><dt>Defesa</dt><dd>{i.defesa}</dd></div>
-            <div><dt>Def. Mental</dt><dd>{i.defesaMental}</dd></div>
-            <div><dt>Absorção</dt><dd>{i.soak.impacto}/{i.soak.corte}/{i.soak.perfuracao}{i.resistPerf ? `·N${i.resistPerf}` : ''}</dd></div>
-            <div><dt>Iniciativa</dt><dd>{i.iniciativa}</dd></div>
+            <div><dt>PV</dt><dd>{i.combate.pv}</dd></div>
+            <div><dt>Defesa</dt><dd>{i.combate.defesa}</dd></div>
+            <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
+            <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}</dd></div>
+            <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
           </dl>
 
           {i.atributos && (
@@ -123,17 +115,17 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
           )}
 
           <ul class="besta-atk">
-            {i.ataques.map((a) => (
-              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">pool <b>{a.pool}</b> · dano <b>{a.dano}</b> · Speed {a.ticks}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+            {i.combate.ataques.map((a: any) => (
+              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">pool <b>{a.pool}</b> · dano <b>{a.dano}</b> · Speed {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
             ))}
           </ul>
 
-          {HAB[i.id]?.hab?.length > 0 && (
+          {i.habilidades?.length > 0 && (
             <div class="besta-hab">
               <span class="hab-lbl">Habilidades</span>
               <ul>
-                {HAB[i.id].hab.map((h) => (
-                  <li><span class="hab-n">{h.n}</span><span class="hab-d">{h.d}</span></li>
+                {i.habilidades.map((h: any) => (
+                  <li><span class="hab-n">{h.nome}</span><span class="hab-d">{h.descricao}</span></li>
                 ))}
               </ul>
             </div>
@@ -154,19 +146,19 @@ const comArte = inimigos.filter((i) => IMG[i.id]).length;
             <details class="besta-mais">
               <summary>Técnicas, Artes &amp; notas</summary>
               {i.tecnicas.length > 0 && (
-                <p class="besta-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t.id)}>{d.T[t.id]?.nome ?? t.id}</a></>))}</p>
+                <p class="besta-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t)}>{d.T[t]?.nome ?? t}</a></>))}</p>
               )}
               {i.artes.length > 0 && (
-                <p class="besta-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id.id}>{arteNome[a.id.id] ?? a.id.id}</a> {a.nivel}</>))}</p>
+                <p class="besta-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>
               )}
               {i.notas && <p class="besta-notas">{i.notas}</p>}
             </details>
           )}
 
-          {LORE[i.id]?.secoes?.length > 0 && (
+          {i.lore?.length > 0 && (
             <div class="besta-foot">
               <button class="besta-info" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">ⓘ</span> Informações</button>
-              <template class="lore-tpl">{LORE[i.id].secoes.map((s) => (<><h4>{s.t}</h4><p>{s.d}</p></>))}</template>
+              <template class="lore-tpl">{i.lore.map((s: any) => (<><h4>{s.titulo}</h4><p>{s.texto}</p></>))}</template>
             </div>
           )}
         </div>
