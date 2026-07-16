@@ -270,120 +270,426 @@ Pular longe e alto, resistir a quedas, e a investida que derruba (o knockback mo
 - Tronco B · Cair (queda e impacto): (Queda Amortecida + Aterrissar de Pé) → (Queda sem Dano + Salto Atacante) → Pousar como Meteoro → **Impacto Cataclísmico**; Andar Sobre o Ar ← Salto Impossível + Queda sem Dano.
 - Tronco C · Investir (knockback): (Impulso + Pique de Corrida) → Investida Arrasadora → Investida Imparável → alimenta Impacto Cataclísmico.
 
-### 1.8 Sangue Fervente `[existe]` · a detalhar
-Fúria voluntária (postura): +dano, −defesa, juízo nublado como amarra de contrato (não recua, não usa finesse, ataca o mais próximo). **Pendências:** como se sai da fúria (teste ou até acabar inimigos) e se conversa com a Virtude Valor.
+### 1.8 Sangue Fervente `[existe]` · a fúria
+Fúria voluntária (postura): +dano, −Defesa, juízo nublado. O **controle sobre a fúria cresce com o nível**: baixo = entra e não consegue sair (presa até não haver mais inimigo de pé); médio = pode tentar sair com um teste; alto = entra e sai à vontade, com domínio pleno. Encosta na Virtude **Valor** (canaliza Valor pra entrar e sustentar). Amarra de contrato enquanto sem controle: não recua, não usa finesse de Destreza nem Técnicas de Mente/Voz, ataca o mais próximo.
+
+- **N1 · Tocado** · **Fúria** (+dano, −Defesa; sem controle, só sai quando não houver mais inimigo de pé) · **Ignorar Ferimentos** (em fúria, ignora um nível de penalidade de ferimento) · **Brado de Guerra** (rugido que abala inimigos próximos)
+- **N2 · Herói** · **Sede de Sangue** (cada inimigo derrubado prolonga a fúria e devolve Energia) · **Investida Furiosa** (avança e ataca com +dano por knockback)
+- **N3 · Grande herói** · **Frenesi** (ataca repetidamente sem a penalidade de múltiplos ataques; aqui já dá pra tentar SAIR da fúria com um teste)
+- **N4 · Lendário** · **Não Sentir Dor** (em fúria, continua lutando mesmo abaixo de 0 PV até o fim da cena)
+- **N5 · Semideus** · **Avatar da Carnificina** (tempestade de violência: dano massivo, imune a medo, quase imparável; entra e sai à vontade, domínio pleno)
 
 ---
 
-## 2. DESTREZA (7 Proezas) · a detalhar
-Subcaminhos atuais: Vento, Gato, Mão Veloz, Olho de Águia, Dança da Lâmina, Sombra. Todos reaproveitados; +1 novo.
+## 2. DESTREZA (6 Proezas)
+Todos os 6 caminhos atuais reaproveitados; o combate de Destreza (esquiva, aparar) mora no Vento e na Dança da Lâmina.
 
-- **Vento** `[existe]` · o Esquivo. Esquiva, reflexos, desviar de golpe e flecha.
-- **Gato** `[existe]` · o Acrobata. Equilíbrio, correr por terreno impossível, cair de pé.
-- **Sombra** `[existe]` · furtividade, mover-se sem ser visto nem ouvido.
-- **Mão Veloz** `[existe]` · prestidigitação e furto: roubar, ocultar, truque de mão; fechaduras e armadilhas.
-- **Olho de Águia** `[existe]` · o Preciso à distância. Mira, tiro certeiro, o ponto vital.
-- **Dança da Lâmina** `[existe]` · duelo e aparar fino; estocada precisa no corpo a corpo.
-- **Ligeiro** `[novo]` · velocidade de mãos e pés: sacar, recarregar, agir antes, ações extras num átimo. (∩ Raciocínio · Relâmpago, por ângulos diferentes: aqui é o corpo, lá é a mente)
+#### Vento `[existe]` · o Esquivo e o Veloz · esquiva, reflexos e deslocamento sobre-humano
+- **N1 · Tocado** · **Passo Veloz** (O 1º deslocamento da cena, ou sacar/empunhar uma a…) · **Reflexos de Vento** (Após ver um ataque que te visa, +3 na Defesa contr…)
+- **N2 · Herói** · **Salto do Grilo** (Triplica distância/altura de um salto; ignora terr…) · **Passos sobre Folhas** (Move-se em silêncio e sem deixar rastro; superfíci…) · **Esquiva Impossível** () · **Encontrão Relâmpago** (Investida que cruza a distância e derruba o alvo (…)
+- **N3 · Grande herói** · **Corrida Vertical** (Enquanto se mover, corre por paredes, tetos e sobr…) · **Mil Passos** (Numa ação, percorre distâncias enormes; supera cav…) · **Borrão** (Vira um borrão: −2d6 a disparos contra você; pode…)
+- **N4 · Lendário** · **Ataque Relâmpago** (1×/turno, faça um ataque extra a custo de Ticks re…) · **Passo do Trovão** (Move-se em linha reta como um piscar, atravessando…)
+- **N5 · Semideus** · **Cavalgar o Vento** (Você voa, ágil como uma andorinha.) · **Velocidade Divina** (O tempo parece congelar: aja uma vez extra na linh…)
 
-## 3. VIGOR (6 Proezas) · a detalhar
-Subcaminhos atuais: Pele de Pedra, Coração Incansável, Sangue Imune, Carne Teimosa, Cerne Vital. Todos reaproveitados; +1 novo. É aqui que mora todo o "combate de aguentar".
+#### Gato `[existe]` · o Acrobata · equilíbrio, escalada, quedas, contorção
+- **N1 · Tocado** · **Equilíbrio Felino** (nunca cai de superfícies estreitas; +2 em Atletismo.) · **Queda de Gato** (reduz muito o dano de quedas; cai de pé.) · **Escalada Veloz** (sobe superfícies difíceis em velocidade de corrida.)
+- **N2 · Herói** · **Contorção** (passa por aberturas mínimas, escapa de amarras e g…) · **Salto Acrobático** (piruetas que reposicionam e desviam.)
+- **N3 · Grande herói** · **Andar de Aranha** (escala qualquer superfície, até de cabeça para bai…)
+- **N4 · Lendário** · **Imponderável** (equilibra-se sobre cordas, lâminas e fios; pousa s…)
+- **N5 · Semideus** · **Graça Sobrenatural** (move-se por qualquer terreno como se a gravidade n…)
 
-- **Pele de Pedra** `[existe]` · o Couro de Pedra. Soak natural altíssimo; a flecha não fura, a lâmina desliza.
-- **Carne Teimosa** `[existe]` · o Inquebrável. Ignora dor, atordoamento, nocaute; não cai, não sangra até morrer.
-- **Sangue Imune** `[existe]` · o Imune. Veneno, doença e toxina não o tocam.
-- **Coração Incansável** `[existe]` · o Incansável. Fôlego sem fim, prender a respiração, lutar por horas.
-- **Cerne Vital** `[existe]` · o Regenerador. Estanca hemorragia, fecha a carne, volta da beira da morte.
-- **Sobrevivente** `[novo]` · o extremo não o mata: gelo, deserto, fome, sede, ausência de sono.
+#### Mão Veloz `[existe]` · o Larápio · prestidigitação, furto, mãos rápidas, mecanismos
+- **N1 · Tocado** · **Dedos Ágeis** (+2 em prestidigitação, fechaduras e furto.) · **Truque de Mão** (some/planta/rouba objetos pequenos sem ser visto.) · **Desarme Rápido** (tira um objeto/arma da mão do alvo num gesto.)
+- **N2 · Herói** · **Mãos Borradas** (manipula vários objetos rápido demais para acompan…) · **Toque Preciso** (desarma armadilhas e abre qualquer fechadura munda…)
+- **N3 · Grande herói** · **Mil Dedos** (várias ações manuais finas numa única ação.)
+- **N4 · Lendário** · **Mãos Impossíveis** (proezas que desafiam a física (pegar flechas no ar…)
+- **N5 · Semideus** · **Mão do Prestidigitador Divino** (manipula tudo ao alcance das mãos com velocidade s…)
 
-## 4. INFLUÊNCIA (10 Proezas) · a detalhar
-Já é o atributo mais povoado. Os 10 subcaminhos cobrem bem os arquétipos; a revisão aqui é mais sobre checar redundância entre os quatro estilos de manipulação (Teia, Serpente, Sussurro, Marionete) do que criar novos.
+#### Olho de Águia `[existe]` · o Preciso à distância · mira, tiro certeiro, alcance
+- **N1 · Tocado** · **Mira Firme** (Gastando uma ação para mirar, +2 ao ataque à distâ…) · **Tiro Rápido** (Saca e dispara num só gesto (reduz os Ticks do dis…) · **Olho de Alcance** (Dobra o alcance efetivo sem penalidade.)
+- **N2 · Herói** · **Tiro Perfurante** (+1 de Penetração e +1d6 de dano num disparo cuidad…) · **Disparo Múltiplo** (Dispara em 2 alvos próximos com penalidade reduzida.)
+- **N3 · Grande herói** · **Tiro Impossível** (Acerta a distâncias extremas, contorna cobertura p…)
+- **N4 · Lendário** · **Flecha que Persegue** (O disparo curva e persegue o alvo, ignorando cober…)
+- **N5 · Semideus** · **Chuva de Mil Flechas** (Um disparo vira uma saraivada que cobre uma área i…)
 
-- **Voz de Mel** `[existe]` · Dobrar a Vontade / persuadir e encantar um alvo.
-- **Comando** `[existe]` · Reunir e Comandar; ordens que se obedecem, coordenar.
-- **Estandarte** `[existe]` · liderança e moral; segurar a linha, o ponto de reunião.
-- **Lenda Viva** `[existe]` · o Inspirador; acende coragem e devoção nos aliados.
-- **Musa** `[existe]` · inspirar arte, paixão, o melhor do outro. (borda com Seduzir)
-- **Brasa** `[existe]` · a emoção que pega fogo; fervor, e o pavor que se impõe pela voz (prima da Presença Aterradora de Força).
-- **Teia** `[existe]` · o Titereiro; a trama de longo prazo, mover peças.
-- **Serpente das Palavras** `[existe]` · a mentira convincente, plantar a ideia falsa.
-- **Sussurro** `[existe]` · a influência sutil e discreta, a sugestão que ninguém nota.
-- **Marionete** `[existe]` · o domínio da vontade alheia; o controle mais fundo.
+#### Dança da Lâmina `[existe]` · o Duelista · aparar, riposte, duelo de lâminas
+- **N1 · Tocado** · **Postura Fluida** (+1 ao Bloqueio com armas de corte; apara sem penal…) · **Finta** (Engana a guarda: −2 na Defesa do alvo no seu próxi…) · **Aparar** (+3 na Defesa por Bloqueio contra um golpe.)
+- **N2 · Herói** · **Riposte** (Ao aparar com sucesso, contra-ataca imediatamente.) · **Desarme** (Tenta arrancar a arma do oponente (Destreza+Corte…)
+- **N3 · Grande herói** · **Dança entre Lâminas** (Não sofre desgaste de defesa contra vários atacant…)
+- **N4 · Lendário** · **Mil Cortes** (Vários ataques num só gesto, cada um a custo reduz…)
+- **N5 · Semideus** · **Lâmina Perfeita** (Cada ataque acha um ponto vital e cada defesa é im…)
 
-## 5. PERSPICÁCIA (7 Proezas) · a detalhar
-Só tem 1 subcaminho hoje (Leitor de Almas). É o atributo com mais trabalho novo pela frente.
+#### Sombra `[existe]` · a Sombra · furtividade, sumir, ataque furtivo
+- **N1 · Tocado** · **Pisar Leve** (+2 em Furtividade; move-se em silêncio mesmo em ri…) · **Mãos Sutis** (Furta ou planta objetos sem ser percebido (vs Perc…) · **Esgueirar** (Some de vista ao quebrar a linha de visão e reposi…)
+- **N2 · Herói** · **Manto de Sombras** (Nas sombras, torna-se quase invisível enquanto se…) · **Bote Silencioso** (Ataque furtivo contra alvo desavisado: +2d6 de dan…)
+- **N3 · Grande herói** · **Andar entre Olhares** (Move-se à vista sem ser notado, desde que ninguém…)
+- **N4 · Lendário** · **Unir-se à Sombra** (Funde-se às sombras: invisível, e capaz de atraves…)
+- **N5 · Semideus** · **Inexistência** (Apaga sua presença: invisível, inaudível e indetec…)
 
-- **Leitor de Almas** `[existe]` · o capstone geral; quase nada nas pessoas lhe escapa. Serve de âncora que os outros seis alimentam.
-- **Leitor de Mentiras** `[novo]` · fareja o engano, sabe quando mentem, sente a verdade.
-- **Leitor de Corações** `[novo]` · lê a emoção real sob a fachada (medo, amor, culpa escondidos).
-- **Antecipador** `[novo]` · sabe o que o outro vai fazer; sente o golpe ou a traição se formar. (∩ Raciocínio · Presságio: aqui lê a pessoa, lá calcula o padrão)
-- **Avaliador** `[novo]` · mede a pessoa num relance: caráter, competência, o ponto fraco, se é perigosa.
-- **Leitor da Sala** `[novo]` · capta o clima coletivo, as hierarquias, as alianças e tensões de um grupo.
-- **Farejador do Oculto** `[novo]` · sente a natureza escondida: a Centelha, a maldição, o não-humano disfarçado. (∩ Percepção · Olho da Verdade)
+## 3. VIGOR (5 Proezas)
+Todos os 5 reaproveitados; é aqui que vive o "combate de aguentar" (encaixar, regenerar, lutar por mais tempo).
 
-## 6. COMPOSTURA (7 Proezas) · a detalhar
-Subcaminhos atuais: Máscara, Beleza Cativante, Semblante, Camaleão, Aura, Máscara Impassível, Porte Inabalável. Reaproveitados; alguns (Beleza Cativante, Aura, Semblante) vivem na borda Compostura∩Aparência (projetar uma imagem escolhida).
+#### Pele de Pedra `[existe]` · o Couro de Pedra · soak natural, aparar o golpe com o corpo
+- **N1 · Tocado** · **Pele Curtida** (+1 de Soak contra Impacto.) · **Aguentar o Tranco** (Ignora a penalidade do estado Machucado (−1).) · **Tensionar** (Ao ser atingido, +2 de Soak contra aquele golpe.)
+- **N2 · Herói** · **Pele de Pedra** (+2 de Soak (todos os tipos) e reduz as penalidades…)
+- **N3 · Grande herói** · **Carne de Granito** (A pele apara golpes mundanos que não a penetram; i…) · **Inquebrantável** (Dano de Impacto nunca te mata, só nocauteia; +1 ao…)
+- **N4 · Lendário** · **Fortaleza Viva** (Imune a dano não-mágico por um turno.)
+- **N5 · Semideus** · **Pele Adamantina** (Quase indestrutível: reduz drasticamente todo dano…)
 
-- **Máscara Impassível** `[existe]` · o rosto que nada revela; esconde emoção, dor e mentira sob pressão.
-- **Porte Inabalável** `[existe]` · o Inabalável; resiste à leitura, à intimidação, à sedução e à tortura. (∩ Vontade)
-- **Máscara** `[existe]` · o Disfarçado; assume outra fachada, papel, identidade.
-- **Camaleão** `[existe]` · pertence a qualquer meio; etiqueta, desenvoltura, passar despercebido.
-- **Semblante** `[existe]` · o controle fino da expressão; mostra só o que quer mostrar.
-- **Aura** `[existe]` · o Insondável; projeta a presença escolhida, atenua ou impõe o próprio brilho.
-- **Beleza Cativante** `[existe]` · a imagem que seduz pela aparência controlada. (∩ Influência)
+#### Carne Teimosa `[existe]` · o Inquebrável · ignora ferimento, não cai, adia a morte
+- **N1 · Tocado** · **Aguentar Firme** (ignora a penalidade do estado Machucado.) · **De Pé** (levanta-se na hora ao ser derrubado, sem gastar a…) · **Cerrar os Dentes** (ignora a penalidade de ferimento por uma ação cruc…)
+- **N2 · Herói** · **Teimosia** (reduz todas as penalidades de ferimento em 1.) · **Não Vou Cair** (ao chegar a 0 PV, fica de pé por mais um turno.)
+- **N3 · Grande herói** · **Vontade de Viver** (age normalmente mesmo gravemente ferido por uma ce…)
+- **N4 · Lendário** · **Último Suspiro** (no limiar da morte, realiza uma última ação heroic…)
+- **N5 · Semideus** · **Recusa à Morte** (adia a própria morte por pura vontade até terminar…)
 
-## 7. PERCEPÇÃO (6 Proezas) · a detalhar
-Subcaminhos atuais: Olho Aguçado, Sentinela, Caçador, Olho da Verdade, Comunhão, Vínculo Animal. Todos reaproveitados.
+#### Sangue Imune `[existe]` · o Imune · venenos, doenças, ambientes extremos
+- **N1 · Tocado** · **Estômago de Ferro** (+2 contra venenos e comida estragada.) · **Resistir Doença** (raramente adoece.) · **Aclimatação** (adapta-se rápido a calor, frio e altitude.)
+- **N2 · Herói** · **Sangue Limpo** (neutraliza um veneno já no corpo; expele toxinas.) · **Pele Resiliente** (suporta temperaturas e ambientes que matariam outr…)
+- **N3 · Grande herói** · **Imunidade** (imune a venenos e doenças mundanos.)
+- **N4 · Lendário** · **Corpo Inóspito** (sobrevive em ambientes letais (sem ar, submerso, v…)
+- **N5 · Semideus** · **Sangue Divino** (imune a quase todo veneno, doença e ambiente; o co…)
 
-- **Olho Aguçado** `[existe]` · o Observador; nota o detalhe que todos perderam, afia os sentidos.
-- **Sentinela** `[existe]` · nunca é pega de surpresa; fareja a emboscada, sente o perigo.
-- **Caçador** `[existe]` · o Rastreador; segue a trilha, fareja a caça, encontra quem se esconde.
-- **Olho da Verdade** `[existe]` · vê através da mentira e da ilusão; o oculto à vista. (∩ Perspicácia)
-- **Comunhão** `[existe]` · o Vidente do Oculto; pressente magia, presença, o que não devia estar ali.
-- **Vínculo Animal** `[existe]` · a ligação com as bestas; sente e fala pelos animais.
+#### Coração Incansável `[existe]` · o Incansável · fôlego sem fim, lutar e marchar sem cansar
+- **N1 · Tocado** · **Fôlego Profundo** (Recupera +2× Vigor de Fôlego por Tick — o dobro da…) · **Marcha Forçada** (Fora de combate, corrida e marcha forçada custam m…) · **Segundo Vento** (Uma vez por cena, recupere metade do Fôlego máximo…)
+- **N2 · Herói** · **Incansável** (Ignora a penalidade de −1d6 do cansaço: age sem pe…) · **Pulmões de Ferro** (Postura: enquanto sustentada, cada golpe custa o F…)
+- **N3 · Grande herói** · **Sem Limites** (Postura: enquanto sustentada, o Esforço custa um g…)
+- **N4 · Lendário** · **Vigor Inesgotável** (Sua reserva nunca para de se renovar: você recuper…)
+- **N5 · Semideus** · **Coração Eterno** (Por uma cena, seu Fôlego não diminui: ataque, forc…)
 
-## 8. INTELIGÊNCIA (6 Proezas) · a detalhar
-Subcaminhos atuais: Mente Afiada, Erudito, Artesão, Estrategista, Investigador. Reaproveitados; +1 novo.
+#### Cerne Vital `[existe]` · o Regenerador · cura acelerada, fechar feridas, voltar da morte
+- **N1 · Tocado** · **Recuperação Acelerada** (Cura o dobro do normal e estabiliza sozinho ao cair.) · **Ignorar a Dor** (Ignora a penalidade de um ferimento por um turno.) · **Segundo Fôlego** (Recupera um punhado de PV de Impacto numa ação.)
+- **N2 · Herói** · **Fechar Feridas** (Estanca sangramentos e cura dano Letal leve em min…) · **Constituição Férrea** (+2 para resistir a venenos e doenças.)
+- **N3 · Grande herói** · **Regeneração** (Recupera PV igual ao seu Vigor no início de cada t…)
+- **N4 · Lendário** · **Recompor-se** (Fecha ferimentos graves, recoloca ossos e cicatriz…)
+- **N5 · Semideus** · **Imortalidade Tênue** (Volta de golpes que matariam e regenera membros; s…)
 
-- **Erudito** `[existe]` · o Sábio; saber e memória sem fundo.
-- **Investigador** `[existe]` · o Detetive; deduz o oculto, junta pistas, reconstrói o que houve. (∩ Percepção)
-- **Estrategista** `[existe]` · planeja e joga lances à frente; a tática que encurrala. (∩ Percepção)
-- **Artesão** `[existe]` · o Artífice; cria e constrói o que não existia.
-- **Mente Afiada** `[existe]` · o Analista; vê o padrão no caos e prevê o sistema.
-- **Poliglota** `[novo]` · lê e fala qualquer língua; decifra o código, a escrita perdida.
+## 4. INFLUÊNCIA (12 Proezas)
+Os 10 atuais + 2 novas de manipulação (o Vigarista, o Confessor), a pedido.
 
-## 9. RACIOCÍNIO (6 Proezas) · a detalhar
-Subcaminhos atuais: Reflexo Mental, Improviso, Presságio, Leitura Fria, Mente Serena. Reaproveitados; +1 novo.
+#### Comando `[existe]` · o Comandante · autoridade, ordens, terror, dominação da vontade
+- **N1 · Tocado** · **Tom de Autoridade** (Ao dar ordens ou intimidar, a Defesa Mental do alv…) · **Encarar** (Um olhar que faz um alvo de vontade fraca hesitar,…) · **Ordem Curta** (Manip+Intimidação vs Def. Mental: o alvo obedece u…)
+- **N2 · Herói** · **Voz de Comando** (Comanda um pequeno grupo de uma vez; a ordem dura…) · **Submissão** (Num confronto, quebra a coragem do alvo: ele se en…) · **Comando Inspirador** (Ordens que também encorajam: aliados obedecem de b…)
+- **N3 · Grande herói** · **Aterrorizar** (Instila terror sobrenatural; um grupo inteiro foge…) · **Comando Irresistível** (Uma ordem que o alvo deve gastar Vontade a cada tu…)
+- **N4 · Lendário** · **Dominação** (Implanta uma ordem permanente que dura um dia; o a…) · **Quebrar o Espírito** (Estilhaça a vontade do alvo, deixando-o quebrado e…)
+- **N5 · Semideus** · **Palavra de Lei** (Sua ordem falada torna-se quase absoluta; multidõe…)
 
-- **Reflexo Mental** `[existe]` · o Relâmpago; iniciativa, o reflexo que age no primeiro instante.
-- **Improviso** `[existe]` · acha a saída na hora, vira o jogo com o que tem à mão.
-- **Presságio** `[existe]` · o Antecipador; lê o fluxo e prevê o próximo lance, na luta e na conversa. (∩ Perspicácia)
-- **Leitura Fria** `[existe]` · o Calculista; lê a situação e decide o melhor lance num átimo.
-- **Mente Serena** `[existe]` · o Sereno na Crise; pensa claro no caos, não trava. (∩ Compostura)
-- **Adaptável** `[novo]` · troca de plano no meio da ação, responde ao inesperado sem perder o passo.
+#### Voz de Mel `[existe]` · o Encantador · charme, apaziguar, cativar pela palavra
+- **N1 · Tocado** · **Primeira Impressão** (Em abordagens amistosas, a Defesa Mental do alvo é…) · **Palavra Calmante** (Baixa um grau a hostilidade de alguém (ou grupo) a…) · **Charme** (Num pedido plausível, +1d6 e o alvo gasta Vontade…)
+- **N2 · Herói** · **Carisma Magnético** (Prende a atenção de uma plateia; aliados inspirado…) · **Desarmar** (Convence alguém a baixar a guarda ou a arma; suspe…)
+- **N3 · Grande herói** · **Encantamento** (Por uma cena, o alvo o vê como um amigo querido (v…)
+- **N4 · Lendário** · **Coração nas Mãos** (Altera de forma duradoura a disposição e a lealdad…)
+- **N5 · Semideus** · **Voz que Move Multidões** (Um discurso comove uma cidade inteira a seguir a s…)
 
----
+#### Lenda Viva `[existe]` · o Inspirador · presença, discurso, inspirar aliados
+- **N1 · Tocado** · **Presença Imponente** (+2 onde porte e reputação importam; entra num salã…) · **Discurso** (Move uma plateia a sentir o que você quer (esperan…) · **Inspirar** (Aliados que o ouvem ganham +1 nas ações por um tur…)
+- **N2 · Herói** · **Estandarte Vivo** (Enquanto visível, aliados resistem melhor a medo e…) · **Temor Reverente** (Sua presença faz inimigos comuns hesitarem em atac…)
+- **N3 · Grande herói** · **Carisma Heroico** (Inspira uma multidão ou exército a agir como um só.)
+- **N4 · Lendário** · **Lenda em Vida** (Histórias suas o precedem; estranhos já o admiram…)
+- **N5 · Semideus** · **Ícone** (Torna-se um símbolo: multidões o seguem, dispostas…)
+
+#### Estandarte `[existe]` · o General · liderança de grupo, coordenar, moral
+- **N1 · Tocado** · **Voz de Líder** (aliados que o seguem ganham +1 de moral; ordens cl…) · **Reunir** (reagrupa aliados abalados, removendo medo leve.) · **Coordenar** (um aliado age no melhor momento (concede reação/re…)
+- **N2 · Herói** · **Formação** (aliados coordenados ganham +1 de Defesa e de ataqu…) · **Grito de Guerra** (inspira investida (+1d6 de dano num avanço).)
+- **N3 · Grande herói** · **Maestria de Campo** (comanda um grupo como uma unidade; concede ações c…)
+- **N4 · Lendário** · **General** (dirige uma tropa com eficiência sobre-humana; reve…)
+- **N5 · Semideus** · **Estandarte Eterno** (torna-se o símbolo da batalha; um exército luta co…)
+
+#### Musa `[existe]` · a Musa · performance, mover as emoções da plateia
+- **N1 · Tocado** · **Presença Cênica** (+2 em performance; prende atenção.) · **Distrair** (a apresentação desvia a atenção de todos por um mo…) · **Tocar a Alma** (a plateia sente uma emoção escolhida.)
+- **N2 · Herói** · **Inspiração Artística** (dá aos ouvintes um bônus duradouro (coragem/foco)…) · **Encantar a Multidão** (a plateia fica absorta enquanto você se apresenta.)
+- **N3 · Grande herói** · **Obra-Prima** (performance que comove e muda atitudes.)
+- **N4 · Lendário** · **Voz que Cura** (a arte restaura o espírito — remove trauma, medo,…)
+- **N5 · Semideus** · **Canção Imortal** (move massas às lágrimas ou à fúria; ecoa e inspira…)
+
+#### Brasa `[existe]` · o Tribuno · incitar, inflamar multidões, provocar
+- **N1 · Tocado** · **Centelha** (+2 para incitar, provocar e inflamar.) · **Incitar** (provoca raiva/paixão, empurrando à ação.) · **Inflamar** (acende o ânimo de aliados (fervor temporário).)
+- **N2 · Herói** · **Discurso Ardente** (arrebata uma multidão para uma causa por uma cena.) · **Provocação** (força um inimigo a agir por impulso.)
+- **N3 · Grande herói** · **Fogo nos Corações** (inflama uma multidão à revolta ou ao fervor.)
+- **N4 · Lendário** · **Pavio Curto** (incendeia paixões a ponto de mover cidades (motim,…)
+- **N5 · Semideus** · **Incêndio** (suas palavras espalham um fervor que consome reino…)
+
+#### Teia `[existe]` · o Titereiro (intriga) · tramas, plantar ideias, chantagem
+- **N1 · Tocado** · **Trama** (+2 em intrigas e em ler fraquezas sociais.) · **Cunha** (semeia desconfiança entre dois aliados.) · **Plantar Ideia** (insinua uma ideia que o alvo crê ser sua.)
+- **N2 · Herói** · **Chantagem** (usa uma alavanca para dobrar a vontade de alguém.) · **Rede de Favores** (cultiva uma teia de contatos e dívidas.)
+- **N3 · Grande herói** · **Virar o Jogo** (vira facções e pessoas umas contra as outras numa…)
+- **N4 · Lendário** · **Mestre dos Cordéis** (orquestra intrigas de longo alcance; manipula uma…)
+- **N5 · Semideus** · **Teia** (nada acontece numa região sem ser parte do seu pla…)
+
+#### Serpente das Palavras `[existe]` · o Negociador Torto · barganha, meias-verdades, contratos capciosos
+- **N1 · Tocado** · **Língua de Prata** (+2 em barganha e meias-verdades.) · **Pechinchar** (obtém condições muito melhores numa negociação.) · **Torcer** (reinterpreta uma frase/acordo a seu favor.)
+- **N2 · Herói** · **Contrato Capcioso** (fecha acordos com armadilhas que o alvo não percebe.) · **Confundir** (emaranha o alvo em lógica até ele concordar.)
+- **N3 · Grande herói** · **Palavras de Veludo** (convence alguém de quase qualquer coisa razoável (…)
+- **N4 · Lendário** · **Pacto Inquebrável** (sela acordos que o alvo se sente compelido a cumpr…)
+- **N5 · Semideus** · **Voz da Serpente** (dobra até os céticos; faz o mal parecer bem e a me…)
+
+#### Sussurro `[existe]` · o Sussurrador · paranoia, boato, semear dúvida
+- **N1 · Tocado** · **Sussurro** (+2 para insinuar e plantar emoções negativas sutis.) · **Inquietar** (deixa o alvo nervoso, com a sensação de ser observ…) · **Semear Dúvida** (faz o alvo duvidar de quem confiava.)
+- **N2 · Herói** · **Paranoia** (instala suspeita corrosiva (vs Defesa Mental).) · **Boato** (espalha um rumor que mina reputações.)
+- **N3 · Grande herói** · **Veneno na Mente** (corrói a confiança e a sanidade de um alvo ao long…)
+- **N4 · Lendário** · **Pesadelo Acordado** (assombra o alvo com medos e visões; quebra a compo…)
+- **N5 · Semideus** · **Coro de Sussurros** (semeia pânico e desconfiança numa multidão; vira a…)
+
+#### Marionete `[existe]` · o Titereiro (domínio) · sugestão, compulsão, controle direto
+- **N1 · Tocado** · **Sugestão** (planta um impulso simples que o alvo tende a segui…) · **Ler Desejos** (percebe o que o alvo quer e teme.) · **Empurrão Sutil** (inclina uma decisão indecisa na direção que você q…)
+- **N2 · Herói** · **Compulsão** (impõe um desejo passageiro que o alvo racionaliza…) · **Fios Invisíveis** (guia o comportamento do alvo sutilmente por uma ce…)
+- **N3 · Grande herói** · **Titereiro** (controla as ações do alvo por um curto tempo (resi…)
+- **N4 · Lendário** · **Reescrever Desejos** (altera o que o alvo deseja de forma duradoura.)
+- **N5 · Semideus** · **Marionete** (domina um alvo por completo, corpo e vontade, como…)
+
+#### O Vigarista `[novo]` · o golpista: farsa, embuste, o grande golpe
+- **N1 · Tocado** · **Lábia** (passiva, +bônus pra enganar e blefar) · **Papo de Vendedor** (convence de um valor ou qualidade falsa) · **Golpe Rápido** (aplica um pequeno embuste na hora)
+- **N2 · Herói** · **Persona de Confiança** (veste uma identidade crível que abre portas) · **Isca** (faz o alvo morder o anzol, querer o que você oferece)
+- **N3 · Grande herói** · **O Grande Golpe** (orquestra um embuste que engana um grupo ou instituição)
+- **N4 · Lendário** · **Castelo de Cartas** (sustenta uma farsa enorme por muito tempo sem ruir)
+- **N5 · Semideus** · **A Farsa Perfeita** (engana uma corte ou cidade inteira; a verdade nunca aparece)
+
+#### O Confessor `[novo]` · arrancar segredos e confissões (∩ Perspicácia: aqui o alvo *conta*, lá você *lê*)
+- **N1 · Tocado** · **Ouvido Amigo** (passiva, +bônus pra fazer alguém se abrir) · **Sondar** (extrai um dado que o alvo não queria dar) · **Ganhar Confiança** (baixa a guarda do alvo)
+- **N2 · Herói** · **Interrogatório** (arranca a verdade lendo e pressionando) · **Confissão** (leva o alvo a admitir o que esconde)
+- **N3 · Grande herói** · **Abrir o Cofre** (o alvo revela seus segredos mais guardados)
+- **N4 · Lendário** · **Voz que Desata** (quase ninguém consegue esconder a verdade de você)
+- **N5 · Semideus** · **O Confessor** (extrai qualquer segredo de qualquer um; a mente se abre)
+
+## 5. PERSPICÁCIA (4 Proezas)
+Só o Leitor de Almas existia; +3 novas. Consolidei (não fiz as 7 do esboço) pra não sobrepor com Raciocínio e Percepção.
+
+#### Leitor de Almas `[existe]` · o Leitor de Almas · o sensor geral: sente humor, mentira e intenção
+- **N1 · Tocado** · **Olhar Perspicaz** (Ao encontrar alguém, sente de imediato o humor dom…) · **Farejar a Mentira** (Quando alguém lhe mente, role Perspicácia + Empati…)
+- **N2 · Herói** · **Ler a Sala** (Uma ação para mapear tensões, alianças e o humor d…) · **Brecha Emocional** (Lê o que o alvo mais teme ou deseja; a próxima jog…) · **Antecipar o Gesto** (Lê microssinais e antevê a ação do alvo: +3 na Def…)
+- **N3 · Grande herói** · **Coração Aberto** (Por uma cena, lê intenções como livro aberto: nenh…)
+
+#### O Avaliador `[novo]` · medir a pessoa: valor, ameaça, ponto fraco
+- **N1 · Tocado** · **Primeira Vista** (passiva, +bônus pra avaliar alguém) · **Medir o Oponente** (sabe se é mais forte ou fraco e o nível de ameaça) · **Achar a Fraqueza** (identifica o ponto fraco físico ou emocional)
+- **N2 · Herói** · **Tasação** (avalia valor, competência e caráter num relance) · **Ponto de Pressão** (sabe o que dizer pra abalar o alvo)
+- **N3 · Grande herói** · **Nada Escapa ao Olhar** (lê de imediato tudo o que importa sobre alguém)
+- **N4 · Lendário** · **Ver o Cerne** (enxerga a verdadeira natureza e a maior fraqueza de qualquer um)
+- **N5 · Semideus** · **Juiz de Almas** (mede qualquer ser por completo; sabe como vencê-lo ou quebrá-lo)
+
+#### O Confidente `[novo]` · abrir a pessoa: empatia, vínculo, confiança
+- **N1 · Tocado** · **Empatia** (passiva, +bônus pra entender e acolher) · **Ombro Amigo** (faz o alvo confiar e desabafar) · **Sentir a Dor** (entende o que o alvo sofre por dentro)
+- **N2 · Herói** · **Conexão** (cria um vínculo genuíno rápido) · **Palavra Certa** (sabe o que dizer pra confortar ou mover o alvo)
+- **N3 · Grande herói** · **Alma Gêmea** (entende o alvo tão fundo que ganha lealdade plena)
+- **N4 · Lendário** · **Nada se Esconde** (ninguém esconde de você o que sente de verdade)
+- **N5 · Semideus** · **Elo de Almas** (compreende e toca a alma de qualquer um; abre o mais fechado dos corações)
+
+#### O Farejador da Natureza `[novo]` · sentir a natureza oculta de um ser (∩ Percepção · Comunhão)
+- **N1 · Tocado** · **Faro para o Estranho** (passiva, sente quando alguém não é o que aparenta) · **Sentir a Centelha** (percebe poder adormecido ou desperto num ser) · **Cheiro de Mentira Viva** (nota o disfarce que esconde outra natureza)
+- **N2 · Herói** · **Ver Além da Pele** (distingue humano de não-humano disfarçado) · **Medir o Poder** (estima a Centelha e o perigo real de alguém)
+- **N3 · Grande herói** · **Desmascarar a Natureza** (revela a verdadeira natureza oculta de um ser)
+- **N4 · Lendário** · **Olhar que Atravessa** (nenhuma natureza disfarçada se esconde de você)
+- **N5 · Semideus** · **Conhecer a Essência** (percebe a natureza espiritual verdadeira de qualquer criatura)
+
+## 6. COMPOSTURA (7 Proezas)
+Os 7 atuais reaproveitados; Beleza Cativante, Aura e Semblante ficam aqui como controle da imagem projetada.
+
+#### Máscara `[existe]` · o Disfarçado · fingir, identidade falsa, roubar rosto
+- **N1 · Tocado** · **Rosto de Pôquer** (Suas emoções e intenções não vazam; +2 para blefar…) · **Fingir** (Finge convincentemente uma emoção ou atitude (medo…) · **Disfarce Rápido** (Muda postura, voz e maneirismos para parecer outro…)
+- **N2 · Herói** · **Mentira Perfeita** (Uma mentira que resiste a escrutínio (vs Defesa Me…) · **Identidade Falsa** (Sustenta uma persona inteira de forma crível por u…)
+- **N3 · Grande herói** · **Camaleão Social** (Mistura-se a qualquer grupo como se pertencesse a…)
+- **N4 · Lendário** · **Roubar Rosto** (Imita uma pessoa específica de forma convincente (…)
+- **N5 · Semideus** · **Mil Faces** (Torna-se indistinguível de quem quiser; nem os ínt…)
+
+#### Camaleão `[existe]` · o Camaleão · misturar-se, mudar de cara, impostor
+- **N1 · Tocado** · **Disfarce** (+2 para se disfarçar com adereços.) · **Misturar-se** (passa por "mais um da multidão".) · **Mudar de Cara** (altera postura, expressão e voz para parecer outra…)
+- **N2 · Herói** · **Segunda Pele** (muda a própria aparência física por uma cena, sem…) · **Rosto Comum** (torna-se esquecível; testemunhas não conseguem des…)
+- **N3 · Grande herói** · **Impostor** (imita a aparência de uma pessoa específica de form…)
+- **N4 · Lendário** · **Forma Fluida** (altera o corpo livremente — altura, idade, feições…)
+- **N5 · Semideus** · **Mil Rostos** (assume qualquer aparência humana perfeitamente; ni…)
+
+#### Beleza Cativante `[existe]` · a Beleza · magnetismo, sedução pela aparência (∩ Aparência/Influência)
+- **N1 · Tocado** · **Magnetismo** (+2 quando a aparência importa; olhares se voltam a…) · **Desarmar com Charme** (a beleza baixa a guarda do alvo.) · **Sedução** (desperta atração num alvo receptivo (vs Defesa Men…)
+- **N2 · Herói** · **Encanto Irresistível** (cativa uma sala inteira; todos querem sua atenção.) · **Olhar Cativante** (prende o alvo num momento de fascínio.)
+- **N3 · Grande herói** · **Beleza Inebriante** (o alvo, encantado, cede a pedidos razoáveis.)
+- **N4 · Lendário** · **Visão Divina** (inspira devoção quase religiosa; multidões se rend…)
+- **N5 · Semideus** · **Beleza que Move o Mundo** (incomparável; quem o vê faria qualquer coisa por u…)
+
+#### Semblante `[existe]` · o Imponente · impor respeito e medo pela presença
+- **N1 · Tocado** · **Porte** (+2 para impor respeito; é levado a sério de imedia…) · **Olhar Severo** (um olhar faz um alvo hesitar ou recuar.) · **Imponência** (sua presença domina o ambiente; conversas silencia…)
+- **N2 · Herói** · **Aura de Comando** (subordinados e fracos obedecem instintivamente sua…) · **Encarar a Morte** (seu semblante inspira medo real (vs Defesa Mental).)
+- **N3 · Grande herói** · **Presença Avassaladora** (inimigos comuns congelam ou fogem diante de você.)
+- **N4 · Lendário** · **Majestade** (irradia autoridade divina; multidões se ajoelham o…)
+- **N5 · Semideus** · **Semblante de Deus** (sua mera presença impõe reverência ou terror absol…)
+
+#### Aura `[existe]` · a Aura · irradiar uma emoção ao redor (∩ Influência)
+- **N1 · Tocado** · **Aura Sutil** (emana uma emoção tênue (conforto/desconforto) a qu…) · **Irradiar Calma** (acalma pessoas e animais ao redor.) · **Irradiar Temor** (incute medo leve nos próximos.)
+- **N2 · Herói** · **Campo Emocional** (impõe uma emoção a todos numa área por um tempo.) · **Presença Tangível** (a aura afeta até os resistentes.)
+- **N3 · Grande herói** · **Maré Emocional** (domina o clima emocional de uma multidão.)
+- **N4 · Lendário** · **Aura Avassaladora** (a emoção irradiada torna-se quase irresistível num…)
+- **N5 · Semideus** · **Aura Divina** (sua presença banha uma região inteira na emoção qu…)
+
+#### Máscara Impassível `[existe]` · a Máscara Impassível · esconder emoção, resistir à leitura
+- **N1 · Tocado** · **Face Neutra** (suas emoções nunca transparecem; +2 em blefe.) · **Esconder Sentir** (oculta uma emoção/reação no momento.) · **Mentira de Olhos** (mente sem nenhum sinal físico (vs Olho da Verdade).)
+- **N2 · Herói** · **Inescrutável** (ninguém lê suas intenções; imune a leitura corpora…) · **Calma Absoluta** (mantém compostura perfeita sob tortura, terror ou…)
+- **N3 · Grande herói** · **Véu da Mente** (esconde pensamentos e intenções até de poderes que…)
+- **N4 · Lendário** · **Máscara Perfeita** (finge qualquer estado interior de forma indetectáv…)
+- **N5 · Semideus** · **Vazio** (torna-se ilegível e impenetrável; nem a magia mais…)
+
+#### Porte Inabalável `[existe]` · o Inabalável · resistir a intimidação e provocação, ser ilegível (∩ Vontade)
+- **N1 · Tocado** · **Semblante Fechado** (Sua face nada entrega: leituras sociais casuais fa…) · **Voz Calma** (Ao ser alvo de intimidação ou provocação, +3 na De…)
+- **N2 · Herói** · **Máscara Sustentada** (Assume uma persona (humor, status aparente) e a su…) · **Águas Profundas** (Suas mentiras não disparam tells e suas intenções…) · **Inabalável** (Ignora uma penalidade social ou de medo por rodada…)
+- **N3 · Grande herói** · **Enigma Vivo** (Você é fundamentalmente ilegível: leitura social e…)
+
+## 7. PERCEPÇÃO (6 Proezas)
+Todos os 6 reaproveitados.
+
+#### Olho Aguçado `[existe]` · o Observador · sentidos apurados, ver o detalhe e o invisível
+- **N1 · Tocado** · **Sentidos Apurados** (+2 em testes de Percepção e na Percepção Passiva;…) · **Olhar do Caçador** (Saiba uma informação concreta sobre um alvo (ferid…) · **Visão na Penumbra** (Enxerga em luz fraca como de dia; na escuridão per…)
+- **N2 · Herói** · **Ouvido Absoluto** (Ouve sussurros distantes, batimentos e sons atravé…) · **Ler o Terreno** (Num relance, percebe rotas, armadilhas e fraquezas…)
+- **N3 · Grande herói** · **Visão Verdadeira** (Vê o invisível, ilusões e disfarces; a escuridão p…)
+- **N4 · Lendário** · **Clarividência** (Percebe à distância um local que conhece.)
+- **N5 · Semideus** · **Olho que Tudo Vê** (Visão de raio-x e percepção a quilômetros; nada se…)
+
+#### Sentinela `[existe]` · a Sentinela · vigilância, não ser surpreendido, sexto sentido
+- **N1 · Tocado** · **Vigilância** (+2 em Prontidão; difícil de surpreender.) · **Olho Atento** (nota o que está fora do lugar (armadilhas, espreit…) · **Sentir Perigo** (pressente uma ameaça oculta nas redondezas.)
+- **N2 · Herói** · **Nunca Desprevenido** (age normalmente em emboscadas; não pode ser pego d…) · **Varredura** (num relance, mapeia ameaças, saídas e vantagens.)
+- **N3 · Grande herói** · **Sexto Sentido** (sente intenções hostis antes que ocorram; reage a…)
+- **N4 · Lendário** · **Olhos por Toda Parte** (percebe tudo numa grande área ao mesmo tempo.)
+- **N5 · Semideus** · **Guardião Incansável** (vigilância perfeita e constante; nada o pega despr…)
+
+#### Caçador `[existe]` · o Rastreador · faro, trilha, caça implacável
+- **N1 · Tocado** · **Rastreador** (+2 para rastrear e ler sinais.) · **Faro** (segue um cheiro ou trilha mesmo tênue.) · **Ler o Rastro** (deduz o que houve por marcas (quantos, quando, par…)
+- **N2 · Herói** · **Trilha Fria** (segue rastros antigos ou apagados.) · **Predador** (aproxima-se da presa sem ser notado; conhece seus…)
+- **N3 · Grande herói** · **Caça Implacável** (persegue um alvo por qualquer terreno, dias a fio.)
+- **N4 · Lendário** · **Sentidos de Caçada** (localiza uma presa específica à distância; sente s…)
+- **N5 · Semideus** · **Olho do Caçador Divino** (nada que você caça escapa, onde quer que se esconda.)
+
+#### Olho da Verdade `[existe]` · o Olho da Verdade · ver mentiras, disfarces e ilusões (∩ Perspicácia)
+- **N1 · Tocado** · **Ler Pessoas** (+2 para perceber emoções e mentiras.) · **Farejar Mentira** (sente quando alguém mente.) · **Ver Através** (nota disfarces e fingimentos malfeitos.)
+- **N2 · Herói** · **Olho Crítico** (percebe falsificações e segundas intenções.) · **Desmascarar** (revela um disfarce ou mentira mundana (vs Camaleão…)
+- **N3 · Grande herói** · **Verdade Nua** (vê através de ilusões e enganos, inclusive alguns…)
+- **N4 · Lendário** · **Olho que Não Erra** (nenhuma mentira ou disfarce o engana.)
+- **N5 · Semideus** · **Visão da Verdade** (percebe a verdade absoluta de uma pessoa ou situaç…)
+
+#### Comunhão `[existe]` · o Vidente do Oculto · pressentir magia, espíritos, o invisível
+- **N1 · Tocado** · **Sensível** (pressente o sobrenatural próximo (magia, espíritos…) · **Ver Auras** (percebe o estado/natureza de alguém como cores.) · **Sentir o Véu** (nota presenças invisíveis e ecos do passado num lu…)
+- **N2 · Herói** · **Olho Espiritual** (vê espíritos, encantamentos ativos e marcas mágicas.) · **Ler o Lugar** (percebe o que aconteceu num local.)
+- **N3 · Grande herói** · **Comunhão** (comunica-se com espíritos e percebe o mundo invisí…)
+- **N4 · Lendário** · **Olhar Além** (enxerga planos sobrepostos ao mundo; lê a teia de…)
+- **N5 · Semideus** · **Olho do Vidente** (percebe a verdadeira natureza espiritual de tudo;…)
+
+#### Vínculo Animal `[existe]` · o Vínculo Animal · sentir, chamar e comandar bestas
+- **N1 · Tocado** · **Empatia Selvagem** (Sente o humor e a intenção dos animais; eles raram…) · **Acalmar Fera** (Tranquiliza um animal hostil ou assustado.) · **Chamado** (Atrai animais próximos do tipo apropriado.)
+- **N2 · Herói** · **Companheiro** (Vincula-se a um animal que o acompanha e obedece c…) · **Falar com os Animais** (Comunica-se com bestas em conceitos simples.)
+- **N3 · Grande herói** · **Matilha** (Comanda um grupo de animais como aliados coordenad…)
+- **N4 · Lendário** · **Forma Bestial** (Assume traços de um animal — sentidos, garras, vel…)
+- **N5 · Semideus** · **Senhor das Feras** (Convoca e comanda a vida selvagem de toda uma regi…)
+
+## 8. INTELIGÊNCIA (5 Proezas)
+Os 5 atuais reaproveitados; Poliglota já é Técnica dentro do Erudito, não vira Proeza à parte.
+
+#### Erudito `[existe]` · o Sábio · saber vasto, línguas, decifrar (inclui Poliglota)
+- **N1 · Tocado** · **Vasto Saber** (+2 em Conhecimentos; sabe um pouco de tudo.) · **Lembrar** (recorda um fato relevante que estudou.) · **Poliglota** (compreende e aprende idiomas com facilidade espant…)
+- **N2 · Herói** · **Biblioteca Viva** (conhecimento profundo em muitas áreas.) · **Decifrar** (lê escritas antigas, cifras e línguas mortas.)
+- **N3 · Grande herói** · **Sábio** (domina saberes raros; conecta conhecimentos distan…)
+- **N4 · Lendário** · **Mente Universal** (sabe quase tudo que a civilização registrou.)
+- **N5 · Semideus** · **Conhecimento Absoluto** (qualquer saber humano está ao seu alcance; lê qual…)
+
+#### Investigador `[existe]` · o Detetive · pistas, reconstituir, desvendar
+- **N1 · Tocado** · **Olhar Investigativo** (+2 em Investigação; nota o que outros não veem.) · **Pista** (identifica um indício relevante.) · **Conectar** (liga dois fatos numa dedução.)
+- **N2 · Herói** · **Reconstituir** (reconstrói o que houve num local pelos vestígios.) · **Interrogar** (extrai a verdade lendo reações e inconsistências.)
+- **N3 · Grande herói** · **Detetive** (resolve um mistério complexo juntando as peças.)
+- **N4 · Lendário** · **Nada Escapa** (percebe o detalhe crucial que ninguém viu; desvend…)
+- **N5 · Semideus** · **A Verdade Revelada** (de pistas mínimas, reconstrói a verdade completa d…)
+
+#### Estrategista `[existe]` · o Estrategista · tática, antecipar, orquestrar batalhas
+- **N1 · Tocado** · **Mente Tática** (+2 em Tática; lê o campo num instante.) · **Antecipar** (prevê o próximo movimento de um oponente.) · **Plano** (traça um plano com etapas e contingências.)
+- **N2 · Herói** · **Ler a Batalha** (identifica o ponto fraco de uma força e o momento…) · **Emboscada** (prepara armadilhas e posições de grande vantagem i…)
+- **N3 · Grande herói** · **Grande Estrategista** (orquestra uma batalha para virar o jogo.)
+- **N4 · Lendário** · **Xeque-Mate** (prevê e contrapõe os planos do inimigo passos à fr…)
+- **N5 · Semideus** · **Mente do General Divino** (conduz guerras como um jogo já vencido.)
+
+#### Artesão `[existe]` · o Artífice · criar, consertar, engenho, forja lendária
+- **N1 · Tocado** · **Mãos Hábeis** (+2 em Ofícios; conserta e improvisa com facilidade.) · **Olho de Artífice** (avalia qualidade, função e fraqueza de um objeto.) · **Improvisar** (constrói uma ferramenta/solução com o que tem.)
+- **N2 · Herói** · **Obra Fina** (cria itens de qualidade excepcional.) · **Reparo Veloz** (conserta ou monta algo complexo numa fração do tem…)
+- **N3 · Grande herói** · **Mestre Artesão** (cria obras-primas que parecem impossíveis.)
+- **N4 · Lendário** · **Engenho Sobre-humano** (constrói máquinas e autômatos além da técnica de s…)
+- **N5 · Semideus** · **Forja dos Deuses** (cria artefatos lendários e maravilhas que desafiam…)
+
+#### Mente Afiada `[existe]` · o Analista · memória, cálculo, dedução, ver o sistema
+- **N1 · Tocado** · **Memória Eidética** (Lembra perfeitamente de tudo que viu ou ouviu.) · **Cálculo Veloz** (Resolve cálculos, estimativas e lógica num instante.) · **Dedução** (Junta as pistas disponíveis e o Mestre revela uma…)
+- **N2 · Herói** · **Mente Enciclopédica** (Saiba um fato relevante sobre quase qualquer assun…) · **Ler a Situação** (Analisa um ambiente ou grupo e identifica dinâmica…)
+- **N3 · Grande herói** · **Pensamento Acelerado** (Pensa muitas vezes mais rápido; planeja em segundo…)
+- **N4 · Lendário** · **Mente Palaciana** (Resolve problemas imensos; prevê cadeias de evento…)
+- **N5 · Semideus** · **Onisciência Momentânea** (Por um instante, compreende um sistema inteiro — u…)
+
+## 9. RACIOCÍNIO (5 Proezas)
+Os 5 atuais reaproveitados.
+
+#### Reflexo Mental `[existe]` · o Relâmpago · iniciativa, reação, agir antes de todos
+- **N1 · Tocado** · **Mente Rápida** (+2 de Iniciativa; pensa veloz sob pressão.) · **Decisão Instantânea** (toma a melhor decisão num átimo.) · **Reação** (responde a um evento súbito sem ser pego de surpre…)
+- **N2 · Herói** · **Reflexos de Raio** (age sempre entre os primeiros.) · **Pensar e Agir** (realiza uma ação mental e uma física quase simultâ…)
+- **N3 · Grande herói** · **Tempo de Sobra** (o caos parece em câmera lenta; planeja no meio da…)
+- **N4 · Lendário** · **Mente Acelerada** (reage tão rápido que age várias vezes enquanto out…)
+- **N5 · Semideus** · **Reflexo Divino** (reage ao instantâneo; nada o pega despreparado.)
+
+#### Improviso `[existe]` · o Improvisador · virar o jogo com o que há à mão
+- **N1 · Tocado** · **Jeitinho** (+2 para improvisar com o que há à mão.) · **Usar o Cenário** (transforma um elemento do ambiente em vantagem.) · **Virar a Mesa** (inverte uma situação ruim com uma ideia inesperada.)
+- **N2 · Herói** · **Solução Genial** (resolve um problema de um jeito que ninguém espera…) · **MacGyver** (monta um dispositivo improvisado funcional na hora.)
+- **N3 · Grande herói** · **Sempre uma Saída** (encontra escapatória até nas situações mais fechad…)
+- **N4 · Lendário** · **Improviso Magistral** (vira qualquer cenário a seu favor com engenhosidad…)
+- **N5 · Semideus** · **Lei de Murphy Reversa** (o improvável dá certo nas suas mãos; transforma o…)
+
+#### Presságio `[existe]` · o Presságio · pressentir, prever o golpe, precognição (∩ Perspicácia)
+- **N1 · Tocado** · **Pressentimento** (Você sente um arrepio de aviso antes de perigo imi…) · **Faro para Mentiras** (Sente quando algo está "errado" — uma mentira, uma…) · **Instinto de Sobrevivência** (Mesmo pego de surpresa, você age normalmente (anul…)
+- **N2 · Herói** · **Reflexos Premonitórios** (+2 na Iniciativa; 1×/cena, refaça uma rolagem de D…) · **Pressentir o Golpe** (Defende-se normalmente contra um ataque que não po…) · **Ler o Momento** (Antes de agir, vislumbra a consequência imediata p…)
+- **N3 · Grande herói** · **Vislumbre** (Um lampejo de um futuro próximo possível (próximos…) · **Esquiva Profética** (Você se esquiva como quem já sabia: anula um ataqu…)
+- **N4 · Lendário** · **Proeza do Destino** (1×/cena, refaça qualquer rolagem (sua ou que o afe…) · **Ler o Fio** (Percebe os "fios" do destino: intenções e ações pr…)
+- **N5 · Semideus** · **Olho do Oráculo** (Verdadeira precognição: faça ao Mestre uma pergunt…)
+
+#### Leitura Fria `[existe]` · o Calculista · ler tells, perfilar, antecipar a pessoa (∩ Perspicácia)
+- **N1 · Tocado** · **Ler o Outro** (+2 para deduzir personalidade e intenção.) · **Adivinhar** (infere um fato sobre o alvo só de observá-lo.) · **Ler Tells** (percebe os sinais que denunciam o próximo ato do a…)
+- **N2 · Herói** · **Perfil** (monta um perfil preciso após breve contato.) · **Antecipar a Pessoa** (prevê como o alvo reagirá a uma situação.)
+- **N3 · Grande herói** · **Mente Aberta como Livro** (lê alguém tão bem que prevê escolhas e descobre se…)
+- **N4 · Lendário** · **Conhecer de Relance** (num olhar, sabe quem é, o que quer e como agirá.)
+- **N5 · Semideus** · **Leitor de Almas** (compreende qualquer pessoa por completo num instan…)
+
+#### Mente Serena `[existe]` · o Sereno · calma no caos, resistir a medo e domínio mental (∩ Compostura)
+- **N1 · Tocado** · **Calma** (+2 para manter o foco e resistir a distração e pro…) · **Centrar-se** (recupera a compostura após um susto.) · **Foco** (concentra-se totalmente, ignorando ruído, dor e me…)
+- **N2 · Herói** · **Mente Imperturbável** (+2 para resistir a manipulação, medo e efeitos men…) · **Transe** (entra em meditação profunda (clareza, recuperação).)
+- **N3 · Grande herói** · **Fortaleza Mental** (blindagem contra intrusões e domínios mentais (vs…)
+- **N4 · Lendário** · **Vazio Sereno** (mente intransponível; imune a quase toda influênci…)
+- **N5 · Semideus** · **Mente de Diamante** (paz e clareza absolutas; nada perturba, engana ou…)
+
+## Modificadores por nível (×3, provisório)
+
+Régua travada por ora: **bônus da Proeza = Nível × 3.**
+
+| Nível | Bônus | vs igual | Absorve vantagem alheia de |
+|:---:|:---:|:---:|:---:|
+| 1 | +3 | ~68% | +3 |
+| 2 | +6 | ~84% | +6 |
+| 3 | +9 | ~95% | +9 |
+| 4 | +12 | ~99% | +12 |
+| 5 | +15 | quase certo | +15 |
+
+Numa disputa o bônus do outro lado subtrai, então o nível alto só cede a desníveis enormes (um N5 = +15 só é contestado por outro N5 ou um abismo de atributo). Validado contra o bestiário: um Centelha 3 (Proeza nível 3 = +9) *contesta* a Força de um bruto Centelha 0/1 de F13-14 (gap ~10-12), mas não o domina; dominar exige nível 5. A Centelha ainda dá +2/nível a ataque e às 4 defesas, por fora disto.
+
+**Três tipos de Técnica** (o ×3 só se aplica ao segundo):
+1. **Capacidade / escala:** não tem bônus; o nível *é* a escala do que você consegue (erguer uma carroça, saltar um vale).
+2. **Bônus graduado:** Nível × 3 na rolagem ou no valor passivo (Pés Fincados, mira, prestidigitação).
+3. **Estado quase-perfeito:** resolve pela subtração acima; o gap para vencê-lo cresce com o nível (imunidade, "não pode ser movido/bloqueado").
 
 ## Contagem
 
-| Atributo | Proezas | Existentes reaproveitadas | Novas |
+| Atributo | Proezas | Reaproveitadas | Novas |
 |---|:---:|:---:|:---:|
 | Força | 8 | 5 | 3 |
-| Destreza | 7 | 6 | 1 |
-| Vigor | 6 | 5 | 1 |
-| Influência | 10 | 10 | 0 |
-| Perspicácia | 7 | 1 | 6 |
+| Destreza | 6 | 6 | 0 |
+| Vigor | 5 | 5 | 0 |
+| Influência | 12 | 10 | 2 |
+| Perspicácia | 4 | 1 | 3 |
 | Compostura | 7 | 7 | 0 |
 | Percepção | 6 | 6 | 0 |
-| Inteligência | 6 | 5 | 1 |
-| Raciocínio | 6 | 5 | 1 |
-| **Total** | **63** | **50** | **13** |
+| Inteligência | 5 | 5 | 0 |
+| Raciocínio | 5 | 5 | 0 |
+| **Total** | **58** | **50** | **8** |
 
-Dos 48 subcaminhos atuais, 47 são reaproveitados direto e 1 (Punho de Ferro) desce a Técnica dentro de Força de Guerra. As 13 novas se concentram em Perspicácia (que estava quase vazia) e em buracos pontuais dos outros atributos.
+Reaproveita os 48 subcaminhos atuais (Punho de Ferro desceu a Técnica dentro de Força de Guerra). As 8 novas: 3 em Força (Força de Guerra, Presença Aterradora, Arremesso), 2 em Influência (Vigarista, Confessor), 3 em Perspicácia (Avaliador, Confidente, Farejador da Natureza).
 
 ## Pendências abertas
 
-- **Sangue Fervente:** como se sai da fúria (teste ou até acabar inimigos); conversa com Valor?
-- **Quebra-Muralhas:** penetração mordendo soak natural só no N4 (decisão minha, falta o seu aval).
-- **Influência:** os quatro estilos de manipulação (Teia, Serpente, Sussurro, Marionete) são distintos o bastante ou consolidam?
-- **Compostura∩Aparência:** Beleza Cativante, Aura e Semblante são de Compostura, de Aparência, ou da borda?
+- **Densidade dos funis:** os caminhos reaproveitados têm ~3 Técnicas no N1 (funil 3·2·1·1·1), mais enxuto que o padrão de Força (≥5 no N1). Decidir se alargamos todos ou aceitamos o enxuto na revisão.
+- **Bestiário quente:** o pool de ataque dos brutos grandes (9d6 vindo de Centelha 0) está acima da régua da Centelha; rebalancear na revisão do bestiário, não é questão de Proeza.
+- **Quantização (×3):** aplicar a régua Técnica a Técnica, etiquetando cada uma como tipo 1/2/3.
+- **Quando fechar:** migrar os dados (as ~400 Técnicas em tecnicas.json estão por banda; viram nível 1-5) e trocar a tabela banda→nível em centelha.md/regras.json.
