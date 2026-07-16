@@ -121,11 +121,11 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
             <span class="besta-nome cinzel">{i.nome}</span>
             <span class="badge cat">{i.categoria}</span>
           </header>
-          <p class="besta-con muted">{conceitoLimpo(i)}{i.descricao ? ` · ${i.descricao}` : ''}</p>
-
           {i.porte && (
             <p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
           )}
+
+          {i.descricao && <p class="besta-con muted">{i.descricao}</p>}
 
           {i.ecologia?.tipo && ((i.ecologia.terreno || []).length > 0 || (i.ecologia.clima || []).length > 0) && (
             <p class="besta-eco">
