@@ -127,8 +127,11 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
             <p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
           )}
 
-          {i.ecologia?.tipo && (
-            <p class="besta-eco">{ecoLinha(i)}</p>
+          {i.ecologia?.tipo && ((i.ecologia.terreno || []).length > 0 || (i.ecologia.clima || []).length > 0) && (
+            <p class="besta-eco">
+              {(i.ecologia.terreno || []).map((t: string) => <span class="badge terr">{ECO_TERR[t] || t}</span>)}
+              {(i.ecologia.clima || []).map((c: string) => <span class={`badge clima cl-${c}`}>{ECO_CLIMA[c] || c}</span>)}
+            </p>
           )}
 
           <dl class="besta-stats">
@@ -275,11 +278,11 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     text-shadow: 0 1px 2px rgba(0,0,0,.55); filter: drop-shadow(0 0 1px rgba(0,0,0,.4));
   }
   .arte-cent {
-    position: absolute; right: .5rem; top: .5rem; z-index: 2;
-    font-family: 'Cinzel'; font-size: .7rem; font-weight: 600; letter-spacing: .03em;
-    padding: .12rem .45rem; border-radius: 999px;
+    position: absolute; left: .5rem; top: .5rem; z-index: 2;
+    font-family: 'Cinzel'; font-size: 1.4rem; font-weight: 600; letter-spacing: .03em;
+    padding: .24rem .9rem; border-radius: 999px;
     color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000);
-    box-shadow: 0 1px 3px rgba(0,0,0,.35);
+    box-shadow: 0 2px 6px rgba(0,0,0,.4);
   }
 
   .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
@@ -292,8 +295,14 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .pt-cat { font-family: 'Cinzel'; font-size: .74rem; color: var(--ink); }
   .pt-sep { color: color-mix(in srgb, var(--ink) 35%, transparent); }
 
-  /* Ecologia: categoria · terrenos · climas, em texto separado por · */
-  .besta-eco { margin: 0 0 .55rem; font-size: .82rem; color: var(--ink-soft); line-height: 1.35; }
+  /* Ecologia: terrenos e climas como badges (a categoria fica no badge do cabeçalho) */
+  .besta-eco { display: flex; flex-wrap: wrap; gap: .3rem; margin: 0 0 .55rem; }
+  .badge.terr { background: color-mix(in srgb, #4b7a3f 20%, var(--panel-2)); color: var(--ink); border-color: color-mix(in srgb, #4b7a3f 38%, var(--panel-border)); }
+  .badge.clima { color: var(--ink); }
+  .clima.cl-Cold { background: color-mix(in srgb, #5b8fbf 24%, var(--panel-2)); border-color: color-mix(in srgb, #5b8fbf 42%, var(--panel-border)); }
+  .clima.cl-Temperate { background: color-mix(in srgb, #6a9a55 24%, var(--panel-2)); border-color: color-mix(in srgb, #6a9a55 42%, var(--panel-border)); }
+  .clima.cl-Tropical { background: color-mix(in srgb, #c8792f 26%, var(--panel-2)); border-color: color-mix(in srgb, #c8792f 44%, var(--panel-border)); }
+  .clima.cl-Extraplanar { background: color-mix(in srgb, #8a5bbf 24%, var(--panel-2)); border-color: color-mix(in srgb, #8a5bbf 42%, var(--panel-border)); }
 
   .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr)); gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
   .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
