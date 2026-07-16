@@ -202,11 +202,73 @@ Lançar longe, pesado, gente e objetos como arma. Pele = peso/tamanho/distância
 - Tronco 2 · Peso e ruína: (Peso Arremessável + Ricochete Brutal) → Arremesso de Cerco → Projétil Devastador → **Arremesso que Racha o Céu**.
 - Tronco 3 · Seres e cadência: (Arremesso Certeiro + Sempre à Mão) → (Chuva de Pedras + Lançar o Inimigo) → Arremesso Colossal → Lançar a Fera.
 
-### 1.6 Agarrão do Urso `[existe]` · a detalhar
-Imobilizar, e imobilizar o maior que você; esmagar enquanto segura. Pele = tamanho (domina o do seu porte → ogro → gigante → colosso). Alimenta Arremesso e Atlas.
+### 1.6 Agarrão do Urso `[existe]`
+Imobilizar, e imobilizar o maior que você; esmagar enquanto segura. Pele = tamanho (do seu porte → ogro → gigante → colosso). Alimenta Arremesso e Atlas.
 
-### 1.7 Salto `[novo]` · a detalhar
-Pular longe e alto, resistir a quedas, e a investida que derruba (knockback). **Pendência:** confirmar que a investida/derrubar mora aqui.
+**N1 · Tocado**
+1. **Pegada de Urso** (ativa) · agarra e imobiliza um alvo do seu porte com firmeza; bônus na disputa de agarrão.
+2. **Não Solto** (reflexiva) · uma vez que agarrou, é muito difícil se soltar de você; mantém a pega sob esforço.
+3. **Esmagar na Pega** (ativa) · enquanto segura, causa dano de compressão contínuo (Impacto que ignora Esquiva, o alvo está preso).
+4. **Chave e Torção** (ativa) · imobiliza um membro; reduz as ações do alvo, força a largar a arma, submete pela dor.
+5. **Escapar e Prender** (reflexiva) · escapa de agarrões alheios e reverte, virando o preso em quem prende.
+
+**N2 · Herói**
+1. **Agarrar o Maior** (ativa) · imobiliza criaturas 1 nível de tamanho acima (um ogro), que te sacudiriam fora.
+2. **Prensa Esmagadora** (ativa) · o esmagar vira dano pesado; quebra costelas, sufoca, arranca o fôlego.
+3. **Escudo de Carne** (ativa) · usa o agarrado como escudo ou refém; ataques contra você acertam ele.
+4. **Arrastar** (ativa) · move-se carregando ou arrastando o preso sem soltá-lo. (alimenta Arremesso · Lançar o Inimigo)
+
+**N3 · Grande herói**
+1. **Agarrar o Gigante** (ativa) · imobiliza criaturas até 2 níveis de tamanho acima; escala e prende o que é muito maior.
+2. **Imobilização Total** (ativa) · prende o alvo por completo; ele não age enquanto você segurar e vencer a disputa.
+3. **Despedaçar na Pega** (ativa) · a prensa aleija: quebra ossos, arranca membros, mata pequenos de uma vez.
+
+**N4 · Lendário**
+1. **Domar o Colosso** (ativa) · prende e controla criaturas colossais; monta e subjuga o que ninguém deveria tocar.
+2. **Aperto Fatal** (ativa) · a prensa mata ou incapacita mesmo grandes criaturas dado tempo; nada respira no seu abraço.
+
+**N5 · Semideus**
+1. **Prisão de Carne** (ativa) · seu agarrão é inescapável para quase tudo; nem colossos, nem força bruta, nem magia comum solta o preso.
+2. **Esmagar Montanhas de Carne** (ativa) · esmaga na pega o que tem o tamanho de uma casa; parte um leviatã com os braços.
+
+**Cadeias**
+- Tronco A · Prender (escala de tamanho): Pegada de Urso → Agarrar o Maior → Agarrar o Gigante → Domar o Colosso → **Prisão de Carne**.
+- Tronco B · Esmagar: Esmagar na Pega → Prensa Esmagadora → Despedaçar na Pega → Aperto Fatal → **Esmagar Montanhas de Carne**.
+- Tronco C · Controlar: (Chave e Torção + Escapar e Prender) → (Escudo de Carne + Arrastar) → Imobilização Total (← Não Solto).
+
+### 1.7 Salto `[novo]`
+Pular longe e alto, resistir a quedas, e a investida que derruba (o knockback mora aqui). Pele = distância/altura.
+
+**N1 · Tocado**
+1. **Salto do Gato** (passiva) · pula distâncias e alturas muito além do humano; alcança o telhado, cruza o fosso.
+2. **Queda Amortecida** (passiva) · cai de alturas que machucariam sem se ferir; reduz muito o dano de queda.
+3. **Impulso** (ativa) · uma investida curta que fecha distância num átimo e derruba o alvo (knockback leve).
+4. **Pique de Corrida** (passiva) · velocidade explosiva na arrancada; alcança quem foge, escapa de quem persegue.
+5. **Aterrissar de Pé** (reflexiva) · sempre cai equilibrado e pronto pra agir; não fica prono ao pousar.
+
+**N2 · Herói**
+1. **Salto Impossível** (ativa) · salta de telhado a telhado, por cima da muralha, alturas que parecem voo curto.
+2. **Investida Arrasadora** (ativa) · a carga derruba e joga vários alvos em linha; quebra uma formação na corrida.
+3. **Queda sem Dano** (passiva) · cai de qualquer altura mundana ileso, de pé.
+4. **Salto Atacante** (ativa) · desce de um salto sobre o alvo com dano somado (pancada aérea).
+
+**N3 · Grande herói**
+1. **Passo do Gigante** (ativa) · cada salto cobre distâncias enormes; cruza um rio, um vale, de um pulo.
+2. **Investida Imparável** (ativa) · a carga atravessa tudo no caminho, derruba muros e fileiras; nada te para no impulso.
+3. **Pousar como Meteoro** (ativa, área) · a queda vira impacto em área; o chão treme, derruba quem está perto.
+
+**N4 · Lendário**
+1. **Salto que Some no Céu** (ativa) · salta tão alto e longe que some da vista; reaparece a distâncias absurdas.
+2. **Andar Sobre o Ar** (passiva) · o salto encadeia; usa quedas e impulsos pra se manter no alto, quase flutuando.
+
+**N5 · Semideus**
+1. **Salto entre Horizontes** (ativa) · um pulo cruza a paisagem, de uma montanha a outra; a distância deixa de importar.
+2. **Impacto Cataclísmico** (ativa, área) · a queda do alto arrasa uma área inteira; abre cratera, derruba estruturas, o solo se parte.
+
+**Cadeias**
+- Tronco A · Saltar (distância e altura): Salto do Gato → Salto Impossível → Passo do Gigante → Salto que Some no Céu → **Salto entre Horizontes**.
+- Tronco B · Cair (queda e impacto): (Queda Amortecida + Aterrissar de Pé) → (Queda sem Dano + Salto Atacante) → Pousar como Meteoro → **Impacto Cataclísmico**; Andar Sobre o Ar ← Salto Impossível + Queda sem Dano.
+- Tronco C · Investir (knockback): (Impulso + Pique de Corrida) → Investida Arrasadora → Investida Imparável → alimenta Impacto Cataclísmico.
 
 ### 1.8 Sangue Fervente `[existe]` · a detalhar
 Fúria voluntária (postura): +dano, −defesa, juízo nublado como amarra de contrato (não recua, não usa finesse, ataca o mais próximo). **Pendências:** como se sai da fúria (teste ou até acabar inimigos) e se conversa com a Virtude Valor.
@@ -321,7 +383,6 @@ Dos 48 subcaminhos atuais, 47 são reaproveitados direto e 1 (Punho de Ferro) de
 
 ## Pendências abertas
 
-- **Salto:** confirmar que a investida/knockback mora nele.
 - **Sangue Fervente:** como se sai da fúria (teste ou até acabar inimigos); conversa com Valor?
 - **Quebra-Muralhas:** penetração mordendo soak natural só no N4 (decisão minha, falta o seu aval).
 - **Influência:** os quatro estilos de manipulação (Teia, Serpente, Sussurro, Marionete) são distintos o bastante ou consolidam?
