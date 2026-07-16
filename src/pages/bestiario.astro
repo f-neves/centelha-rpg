@@ -76,6 +76,12 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
         <button type="button" id="ord-dir" title="Inverter ordem" aria-label="Inverter ordem"><span class="ord-arw">↑</span></button>
       </span>
     </label>
+    <label class="ord">Centelha
+      <select data-bf="centelha">
+        <option value="">qualquer</option>
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => <option value={String(n)}>{n}</option>)}
+      </select>
+    </label>
     {/* Proeza (Caminho) e Feitiçaria (Arte) ocultos por ora — trocar false por true reativa */}
     {false && (
       <>
@@ -96,7 +102,10 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     <fieldset class="cats"><legend>Tipo de criatura</legend>{categoriasUsadas.map((c) => <label class="chk"><input type="checkbox" data-bf="tipo" value={c} />{c}</label>)}</fieldset>
     <fieldset class="cats"><legend>Terreno</legend>{terrenosUsados.map((t) => <label class="chk"><input type="checkbox" data-bf="terreno" value={t.k} />{t.nome}</label>)}</fieldset>
     <fieldset class="cats"><legend>Clima</legend>{climasUsados.map((c) => <label class="chk"><input type="checkbox" data-bf="clima" value={c.k} />{c.nome}</label>)}</fieldset>
-    <fieldset class="cats"><legend>Arte</legend><label class="chk"><input type="checkbox" data-bf="semimg" value="1" />Só sem imagem</label></fieldset>
+    {/* Filtro "Sem imagem" oculto (todas as criaturas têm arte) — trocar false por true reativa */}
+    {false && (
+      <fieldset class="cats"><legend>Arte</legend><label class="chk"><input type="checkbox" data-bf="semimg" value="1" />Só sem imagem</label></fieldset>
+    )}
     <p class="muted bf-count"></p>
   </div>
 
@@ -119,7 +128,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
         <div class="besta-corpo">
           <header class="besta-head">
-            <span class="besta-nome cinzel">{i.nome}</span>
+            <span class="besta-nome cinzel">{i.nome}{i.nomeIngles && i.nomeIngles.toLowerCase() !== i.nome.toLowerCase() && <span class="besta-nome-en"> ({i.nomeIngles})</span>}</span>
           </header>
           <div class="besta-badges">
             {i.categoria && <span class="badge cat">{i.categoria}</span>}
@@ -287,6 +296,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
   .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
   .besta-nome { font-size: 1.12rem; color: var(--accent); line-height: 1.15; }
+  .besta-nome-en { font-size: .82rem; font-weight: 400; color: var(--muted); font-style: italic; }
   .badge.cat { background: var(--accent-strong); color: var(--on-accent); }
   .besta-con { font-style: italic; margin: .3rem 0 .4rem; font-size: .9rem; }
   .besta-porte { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; margin: 0 0 .5rem; font-size: .84rem; color: var(--ink-soft); }
@@ -419,7 +429,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   const val = (s: string) => (document.querySelector(`[data-bf="${s}"]`) as HTMLInputElement | HTMLSelectElement)?.value.trim().toLowerCase() ?? '';
   const checked = (s: string) => Array.from(document.querySelectorAll<HTMLInputElement>(`[data-bf="${s}"]:checked`)).map((c) => c.value);
   function apply() {
-    const text = val('q'), proeza = val('proeza'), feit = val('feiticaria');
+    const text = val('q'), proeza = val('proeza'), feit = val('feiticaria'), centelha = val('centelha');
     const tipos = checked('tipo'), terrs = checked('terreno'), climas = checked('clima');
     const semimg = checked('semimg').length > 0;
     let n = 0;
@@ -429,6 +439,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
       const cTerr = (c.dataset.terreno || '').split(' ').filter(Boolean);
       const cClima = (c.dataset.clima || '').split(' ').filter(Boolean);
       const ok = (!tipos.length || tipos.includes(c.dataset.tipo!)) &&
+        (!centelha || c.dataset.centelha === centelha) &&
         (!semimg || c.dataset.semimg === '1') &&
         (!terrs.length || terrs.some((t) => cTerr.includes(t))) &&
         (!climas.length || climas.some((t) => cClima.includes(t))) &&
