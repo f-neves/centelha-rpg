@@ -41,6 +41,14 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "vontade": 6,
+  "aparencia": 6,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 4,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 37,
    "defesa": 6,
@@ -145,6 +153,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 75,
@@ -306,6 +322,14 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 50,
    "defesa": 12,
@@ -429,6 +453,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 54,
    "defesa": 8,
@@ -523,6 +555,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 70,
@@ -620,6 +660,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -736,6 +784,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 34,
    "defesa": 12,
@@ -851,6 +907,14 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "vontade": 8,
+  "aparencia": 10,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 4
   },
   "combate": {
    "pv": 40,
@@ -991,6 +1055,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 31,
    "defesa": 11,
@@ -1090,6 +1162,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 21,
@@ -1155,7 +1235,7 @@
  },
  {
   "id": "mon-assombracao-wraith",
-  "nome": "Assombração (Wraith)",
+  "nome": "Assombração",
   "nomeIngles": "Wraith",
   "categoria": "Morto-vivo",
   "tipo": "elite",
@@ -1197,6 +1277,14 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 7,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 43,
@@ -1331,6 +1419,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 4,
@@ -1425,6 +1521,14 @@
    "percepcao": 3,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
   },
   "combate": {
    "pv": 43,
@@ -1525,6 +1629,14 @@
    "percepcao": 7,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "vontade": 12,
+  "aparencia": -2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 95,
@@ -1693,6 +1805,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 9,
@@ -1791,6 +1911,14 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 5,
+   "temperanca": 5,
+   "valor": 5
   },
   "combate": {
    "pv": 46,
@@ -1896,6 +2024,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
   "combate": {
    "pv": 37,
    "defesa": 14,
@@ -1991,6 +2127,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 3,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 2,
+   "temperanca": 1,
+   "valor": 2
   },
   "combate": {
    "pv": 40,
@@ -2088,6 +2232,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -2205,6 +2357,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 16,
    "defesa": 10,
@@ -2295,6 +2455,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 80,
@@ -2408,6 +2576,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 75,
@@ -2534,6 +2710,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 24,
    "defesa": 4,
@@ -2627,6 +2811,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 50,
@@ -2727,6 +2919,14 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -2855,6 +3055,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 4,
@@ -2951,6 +3159,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 8,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 40,
@@ -3080,6 +3296,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 37,
    "defesa": 8,
@@ -3184,6 +3408,14 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "vontade": 8,
+  "aparencia": 6,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 4,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 40,
    "defesa": 18,
@@ -3287,6 +3519,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 85,
    "defesa": 4,
@@ -3380,6 +3620,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -3482,6 +3730,14 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "vontade": 8,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 3,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 40,
@@ -3629,6 +3885,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 8,
@@ -3732,6 +3996,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 80,
@@ -3843,6 +4115,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 28,
    "defesa": 8,
@@ -3938,6 +4218,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 8,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 37,
@@ -4051,6 +4339,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 4,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 31,
    "defesa": 4,
@@ -4148,6 +4444,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -4248,6 +4552,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 37,
    "defesa": 8,
@@ -4343,6 +4655,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 37,
    "defesa": 10,
@@ -4437,6 +4757,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 54,
@@ -4534,6 +4862,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 10,
@@ -4624,6 +4960,14 @@
    "percepcao": 3,
    "inteligencia": 5,
    "raciocinio": 4
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 75,
@@ -4720,6 +5064,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 40,
@@ -4827,6 +5179,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 40,
    "defesa": 8,
@@ -4930,6 +5290,14 @@
    "percepcao": 4,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 50,
@@ -5035,6 +5403,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 34,
    "defesa": 10,
@@ -5133,6 +5509,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 37,
    "defesa": 12,
@@ -5228,6 +5612,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 26,
@@ -5325,6 +5717,14 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 54,
    "defesa": 18,
@@ -5420,6 +5820,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 54,
@@ -5536,6 +5944,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 54,
    "defesa": 18,
@@ -5634,6 +6050,14 @@
    "percepcao": 3,
    "inteligencia": 0,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 34,
@@ -5739,6 +6163,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 3
   },
   "combate": {
    "pv": 20,
@@ -5848,6 +6280,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 24,
@@ -5961,6 +6401,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 37,
    "defesa": 13,
@@ -6067,6 +6515,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -6183,6 +6639,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 10,
@@ -6271,6 +6735,14 @@
    "percepcao": 6,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 5
   },
   "combate": {
    "pv": 40,
@@ -6420,6 +6892,14 @@
    "inteligencia": 1,
    "raciocinio": 3
   },
+  "vontade": 10,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
+  },
   "combate": {
    "pv": 95,
    "defesa": 22,
@@ -6531,6 +7011,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 50,
    "defesa": 8,
@@ -6629,6 +7117,14 @@
    "percepcao": 0,
    "inteligencia": 0,
    "raciocinio": 0
+  },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 2
   },
   "combate": {
    "pv": 66,
@@ -6734,6 +7230,14 @@
    "percepcao": 2,
    "inteligencia": 3,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 34,
@@ -6841,6 +7345,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 28,
    "defesa": 16,
@@ -6941,6 +7453,14 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 54,
    "defesa": 22,
@@ -7040,6 +7560,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -7146,6 +7674,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 28,
    "defesa": 12,
@@ -7239,6 +7775,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 40,
@@ -7334,6 +7878,14 @@
    "percepcao": 1,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 30,
@@ -7438,6 +7990,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": 10,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 5
   },
   "combate": {
    "pv": 43,
@@ -7587,6 +8147,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 5,
+   "temperanca": 5,
+   "valor": 4
+  },
   "combate": {
    "pv": 40,
    "defesa": 16,
@@ -7726,6 +8294,14 @@
    "percepcao": 6,
    "inteligencia": 7,
    "raciocinio": 6
+  },
+  "vontade": 10,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 5,
+   "temperanca": 5,
+   "valor": 5
   },
   "combate": {
    "pv": 66,
@@ -7870,6 +8446,14 @@
    "percepcao": 9,
    "inteligencia": 8,
    "raciocinio": 9
+  },
+  "vontade": 12,
+  "aparencia": -1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 74,
@@ -8042,6 +8626,14 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 5,
+   "temperanca": 5,
+   "valor": 5
+  },
   "combate": {
    "pv": 58,
    "defesa": 20,
@@ -8185,6 +8777,14 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
   },
   "combate": {
    "pv": 17,
@@ -8333,6 +8933,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 10,
@@ -8432,6 +9040,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 40,
@@ -8533,6 +9149,14 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 50,
@@ -8681,6 +9305,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 10,
@@ -8772,6 +9404,14 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -8913,6 +9553,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 8,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 5
+  },
   "combate": {
    "pv": 43,
    "defesa": 10,
@@ -9013,6 +9661,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
   },
   "combate": {
    "pv": 80,
@@ -9171,6 +9827,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 8,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 5
+  },
   "combate": {
    "pv": 54,
    "defesa": 10,
@@ -9320,6 +9984,14 @@
    "percepcao": 6,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "vontade": 11,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
   },
   "combate": {
    "pv": 85,
@@ -9493,6 +10165,14 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "vontade": 10,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
+  },
   "combate": {
    "pv": 75,
    "defesa": 18,
@@ -9645,6 +10325,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
   },
   "combate": {
    "pv": 80,
@@ -9804,6 +10492,14 @@
    "percepcao": 6,
    "inteligencia": 6,
    "raciocinio": 6
+  },
+  "vontade": 11,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
   },
   "combate": {
    "pv": 95,
@@ -9966,6 +10662,14 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "vontade": 9,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
+  },
   "combate": {
    "pv": 54,
    "defesa": 16,
@@ -10112,6 +10816,14 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "vontade": 9,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
+  },
   "combate": {
    "pv": 70,
    "defesa": 12,
@@ -10215,6 +10927,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
   },
   "combate": {
    "pv": 28,
@@ -10339,6 +11059,14 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 8,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 3,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 34,
@@ -10481,6 +11209,14 @@
    "inteligencia": 4,
    "raciocinio": 5
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 54,
    "defesa": 16,
@@ -10584,6 +11320,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 31,
    "defesa": 12,
@@ -10682,6 +11426,14 @@
    "percepcao": 5,
    "inteligencia": 2,
    "raciocinio": 4
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 34,
@@ -10785,6 +11537,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 34,
@@ -10890,6 +11650,14 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 37,
    "defesa": 6,
@@ -10989,6 +11757,14 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 54,
@@ -11132,6 +11908,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 75,
    "defesa": 10,
@@ -11228,6 +12012,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 58,
@@ -11355,6 +12147,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 30,
    "defesa": 10,
@@ -11451,6 +12251,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 17,
@@ -11551,6 +12359,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 18,
    "defesa": 10,
@@ -11647,6 +12463,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 12,
@@ -11740,6 +12564,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 17,
@@ -11837,6 +12669,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 17,
@@ -11942,6 +12782,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 18,
    "defesa": 10,
@@ -12045,6 +12893,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 19,
@@ -12152,6 +13008,14 @@
    "inteligencia": 0,
    "raciocinio": 3
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 8,
@@ -12247,6 +13111,14 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 43,
@@ -12391,6 +13263,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 8,
@@ -12501,6 +13381,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 54,
@@ -12651,6 +13539,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 8,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 40,
    "defesa": 18,
@@ -12789,6 +13685,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 31,
    "defesa": 10,
@@ -12887,6 +13791,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 70,
    "defesa": 10,
@@ -12977,6 +13889,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 40,
@@ -13076,6 +13996,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 50,
@@ -13185,6 +14113,14 @@
    "inteligencia": 4,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 31,
    "defesa": 12,
@@ -13291,6 +14227,14 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "vontade": 8,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 5
   },
   "combate": {
    "pv": 40,
@@ -13429,6 +14373,14 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 5
+  },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 17,
@@ -13577,6 +14529,14 @@
    "inteligencia": 0,
    "raciocinio": 3
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 40,
    "defesa": 4,
@@ -13673,6 +14633,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 9,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 80,
    "defesa": 16,
@@ -13766,6 +14734,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 3,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 2,
+   "temperanca": 1,
+   "valor": 2
   },
   "combate": {
    "pv": 40,
@@ -13862,6 +14838,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 40,
@@ -13984,6 +14968,14 @@
    "inteligencia": 0,
    "raciocinio": 0
   },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 2
+  },
   "combate": {
    "pv": 62,
    "defesa": 2,
@@ -14083,6 +15075,14 @@
    "percepcao": 6,
    "inteligencia": 6,
    "raciocinio": 6
+  },
+  "vontade": 10,
+  "aparencia": 12,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 5
   },
   "combate": {
    "pv": 40,
@@ -14228,6 +15228,14 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "vontade": 7,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 40,
    "defesa": 16,
@@ -14349,6 +15357,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 8,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 43,
    "defesa": 14,
@@ -14453,6 +15469,14 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "vontade": 6,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -14579,6 +15603,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 40,
    "defesa": 10,
@@ -14673,6 +15705,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 46,
@@ -14777,6 +15817,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 54,
@@ -14884,6 +15932,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 5
   },
   "combate": {
    "pv": 54,
@@ -14997,6 +16053,14 @@
    "percepcao": 6,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 5
   },
   "combate": {
    "pv": 80,
@@ -15137,6 +16201,14 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 5
+  },
   "combate": {
    "pv": 75,
    "defesa": 10,
@@ -15267,6 +16339,14 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 5
+  },
   "combate": {
    "pv": 62,
    "defesa": 6,
@@ -15392,6 +16472,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 5
+  },
   "combate": {
    "pv": 58,
    "defesa": 6,
@@ -15500,6 +16588,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 54,
    "defesa": 18,
@@ -15599,6 +16695,14 @@
    "percepcao": 6,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 85,
@@ -15743,6 +16847,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 4,
@@ -15845,6 +16957,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 26,
@@ -15951,6 +17071,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 34,
    "defesa": 8,
@@ -16046,6 +17174,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 3
   },
   "combate": {
    "pv": 34,
@@ -16148,6 +17284,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 8,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 34,
    "defesa": 10,
@@ -16248,6 +17392,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 3
+  },
   "combate": {
    "pv": 25,
    "defesa": 6,
@@ -16345,6 +17497,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 34,
    "defesa": 8,
@@ -16439,6 +17599,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 34,
@@ -16536,6 +17704,14 @@
    "percepcao": 5,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 62,
@@ -16656,6 +17832,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 50,
    "defesa": 10,
@@ -16757,6 +17941,14 @@
    "percepcao": 8,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "vontade": 12,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
   },
   "combate": {
    "pv": 115,
@@ -16923,6 +18115,14 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
   "combate": {
    "pv": 54,
    "defesa": 16,
@@ -17018,6 +18218,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -17121,6 +18329,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 8,
@@ -17221,6 +18437,14 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "vontade": 9,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 58,
    "defesa": 26,
@@ -17314,6 +18538,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 31,
@@ -17442,6 +18674,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 12,
@@ -17532,6 +18772,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
   },
   "combate": {
    "pv": 37,
@@ -17628,6 +18876,14 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 66,
@@ -17763,6 +19019,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 75,
    "defesa": 10,
@@ -17868,6 +19132,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 37,
    "defesa": 10,
@@ -17961,6 +19233,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 50,
@@ -18057,6 +19337,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -18161,6 +19449,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 40,
    "defesa": 10,
@@ -18263,6 +19559,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 34,
@@ -18369,6 +19673,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 16,
    "defesa": 12,
@@ -18467,6 +19779,14 @@
    "percepcao": 7,
    "inteligencia": 4,
    "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": -1,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 5,
+   "temperanca": 5,
+   "valor": 5
   },
   "combate": {
    "pv": 70,
@@ -18570,6 +19890,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 10,
@@ -18664,6 +19992,14 @@
    "percepcao": 6,
    "inteligencia": 1,
    "raciocinio": 3
+  },
+  "vontade": 10,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
   },
   "combate": {
    "pv": 110,
@@ -18776,6 +20112,14 @@
    "inteligencia": 5,
    "raciocinio": 3
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 32,
    "defesa": 24,
@@ -18880,6 +20224,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 46,
    "defesa": 18,
@@ -18980,6 +20332,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 7,
+  "aparencia": 6,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 4,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 34,
    "defesa": 14,
@@ -19077,6 +20437,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 40,
@@ -19177,6 +20545,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 4,
@@ -19274,6 +20650,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 24,
@@ -19382,6 +20766,14 @@
    "percepcao": 6,
    "inteligencia": 6,
    "raciocinio": 6
+  },
+  "vontade": 11,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 110,
@@ -19528,6 +20920,14 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
   "combate": {
    "pv": 37,
    "defesa": 18,
@@ -19636,6 +21036,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 8,
@@ -19734,6 +21142,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 40,
@@ -19835,6 +21251,14 @@
    "percepcao": 6,
    "inteligencia": 3,
    "raciocinio": 5
+  },
+  "vontade": 8,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -19974,6 +21398,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 10,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 4
+  },
   "combate": {
    "pv": 26,
    "defesa": 8,
@@ -20071,6 +21503,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 50,
@@ -20188,6 +21628,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
   "combate": {
    "pv": 37,
    "defesa": 6,
@@ -20296,6 +21744,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 37,
    "defesa": 12,
@@ -20399,6 +21855,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 70,
@@ -20508,6 +21972,14 @@
    "percepcao": 4,
    "inteligencia": 7,
    "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 40,
@@ -20665,6 +22137,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 8,
+  "aparencia": 10,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 4
+  },
   "combate": {
    "pv": 58,
    "defesa": 18,
@@ -20770,6 +22250,14 @@
    "inteligencia": 0,
    "raciocinio": 0
   },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 2
+  },
   "combate": {
    "pv": 49,
    "defesa": 2,
@@ -20866,6 +22354,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 37,
@@ -20975,6 +22471,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 10,
@@ -21076,6 +22580,14 @@
    "percepcao": 4,
    "inteligencia": 0,
    "raciocinio": 4
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 54,
@@ -21185,6 +22697,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 31,
    "defesa": 10,
@@ -21279,6 +22799,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 70,
@@ -21379,6 +22907,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 10,
@@ -21466,6 +23002,14 @@
    "percepcao": 2,
    "inteligencia": 5,
    "raciocinio": 2
+  },
+  "vontade": 8,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 34,
@@ -21588,6 +23132,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 75,
    "defesa": 4,
@@ -21705,6 +23257,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 54,
    "defesa": 12,
@@ -21819,6 +23379,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 9,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 54,
    "defesa": 20,
@@ -21917,6 +23485,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 11,
+  "aparencia": -1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 66,
@@ -22058,6 +23634,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 75,
    "defesa": 8,
@@ -22155,6 +23739,14 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 7,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 40,
@@ -22284,6 +23876,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 6,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 4,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 26,
    "defesa": 14,
@@ -22388,6 +23988,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 37,
    "defesa": 10,
@@ -22487,6 +24095,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 40,
@@ -22603,6 +24219,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 50,
@@ -22726,6 +24350,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 3,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 24,
    "defesa": 10,
@@ -22831,6 +24463,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 8,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 37,
    "defesa": 18,
@@ -22930,6 +24570,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 34,
@@ -23043,6 +24691,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 3,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 2,
+   "temperanca": 1,
+   "valor": 2
   },
   "combate": {
    "pv": 54,
@@ -23161,6 +24817,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 46,
    "defesa": 10,
@@ -23255,6 +24919,14 @@
    "percepcao": 3,
    "inteligencia": 0,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 54,
@@ -23351,6 +25023,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -23460,6 +25140,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 8,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -23594,6 +25282,14 @@
    "inteligencia": 4,
    "raciocinio": 5
   },
+  "vontade": 8,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
+  },
   "combate": {
    "pv": 46,
    "defesa": 18,
@@ -23695,6 +25391,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 54,
@@ -23837,6 +25541,14 @@
    "inteligencia": 7,
    "raciocinio": 7
   },
+  "vontade": 10,
+  "aparencia": -1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
+  },
   "combate": {
    "pv": 90,
    "defesa": 18,
@@ -23935,6 +25647,14 @@
    "percepcao": 4,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 90,
@@ -24043,6 +25763,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
+  },
   "combate": {
    "pv": 58,
    "defesa": 18,
@@ -24137,6 +25865,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 46,
@@ -24241,6 +25977,14 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
   "combate": {
    "pv": 54,
    "defesa": 16,
@@ -24337,6 +26081,14 @@
    "percepcao": 5,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 3,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 34,
@@ -24484,6 +26236,14 @@
    "inteligencia": 0,
    "raciocinio": 0
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 3
+  },
   "combate": {
    "pv": 25,
    "defesa": 6,
@@ -24583,6 +26343,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 50,
@@ -24688,6 +26456,14 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 54,
@@ -24851,6 +26627,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 4,
@@ -24953,6 +26737,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 70,
    "defesa": 10,
@@ -25049,6 +26841,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 46,
@@ -25149,6 +26949,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 3,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 2,
+   "temperanca": 1,
+   "valor": 3
+  },
   "combate": {
    "pv": 85,
    "defesa": 12,
@@ -25246,6 +27054,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -25380,6 +27196,14 @@
    "inteligencia": 7,
    "raciocinio": 7
   },
+  "vontade": 10,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 85,
    "defesa": 30,
@@ -25483,6 +27307,14 @@
    "percepcao": 4,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 8,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 3,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 17,
@@ -25626,6 +27458,14 @@
    "percepcao": 8,
    "inteligencia": 7,
    "raciocinio": 7
+  },
+  "vontade": 11,
+  "aparencia": 11,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 5
   },
   "combate": {
    "pv": 62,
@@ -25773,6 +27613,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 28,
    "defesa": 12,
@@ -25863,6 +27711,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -25958,6 +27814,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 37,
    "defesa": 8,
@@ -26052,6 +27916,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 5
   },
   "combate": {
    "pv": 18,
@@ -26152,6 +28024,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 50,
    "defesa": 12,
@@ -26242,6 +28122,14 @@
    "percepcao": 0,
    "inteligencia": 0,
    "raciocinio": 0
+  },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 2
   },
   "combate": {
    "pv": 80,
@@ -26342,6 +28230,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
   },
   "combate": {
    "pv": 17,
@@ -26487,6 +28383,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 54,
    "defesa": 12,
@@ -26615,6 +28519,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 8,
@@ -26708,6 +28620,14 @@
    "percepcao": 3,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 40,
@@ -26860,6 +28780,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 26,
    "defesa": 12,
@@ -26960,6 +28888,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 24,
    "defesa": 10,
@@ -27055,6 +28991,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 75,
@@ -27159,6 +29103,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 45,
    "defesa": 12,
@@ -27262,6 +29214,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 6,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 37,
    "defesa": 12,
@@ -27356,6 +29316,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 58,
@@ -27455,6 +29423,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 85,
@@ -27573,6 +29549,14 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
+  "vontade": 9,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
   "combate": {
    "pv": 70,
    "defesa": 16,
@@ -27678,6 +29662,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 37,
    "defesa": 12,
@@ -27782,6 +29774,14 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 40,
@@ -27911,6 +29911,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 37,
    "defesa": 8,
@@ -28015,6 +30023,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 16,
    "defesa": 8,
@@ -28102,6 +30118,14 @@
    "percepcao": 4,
    "inteligencia": 3,
    "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 3,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -28233,6 +30257,14 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 40,
    "defesa": 16,
@@ -28336,6 +30368,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 9,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 95,
@@ -28442,6 +30482,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 37,
    "defesa": 8,
@@ -28537,6 +30585,14 @@
    "percepcao": 4,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -28637,6 +30693,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 26,
@@ -28741,6 +30805,14 @@
    "percepcao": 7,
    "inteligencia": 1,
    "raciocinio": 4
+  },
+  "vontade": 5,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 3
   },
   "combate": {
    "pv": 90,
@@ -28851,6 +30923,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 12,
@@ -28956,6 +31036,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 40,
    "defesa": 12,
@@ -29060,6 +31148,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 26,
    "defesa": 14,
@@ -29156,6 +31252,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 26,
    "defesa": 6,
@@ -29250,6 +31354,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 24,
@@ -29346,6 +31458,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 26,
    "defesa": 6,
@@ -29441,6 +31561,14 @@
    "percepcao": 8,
    "inteligencia": 7,
    "raciocinio": 8
+  },
+  "vontade": 12,
+  "aparencia": 12,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 5
   },
   "combate": {
    "pv": 70,
@@ -29606,6 +31734,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 12,
@@ -29707,6 +31843,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -29839,6 +31983,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 17,
    "defesa": 14,
@@ -29938,6 +32090,14 @@
    "percepcao": 4,
    "inteligencia": 5,
    "raciocinio": 5
+  },
+  "vontade": 8,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
   },
   "combate": {
    "pv": 43,
@@ -30094,6 +32254,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 28,
    "defesa": 12,
@@ -30193,6 +32361,14 @@
    "percepcao": 8,
    "inteligencia": 1,
    "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
   },
   "combate": {
    "pv": 115,
@@ -30305,6 +32481,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 12,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 115,
@@ -30456,6 +32640,14 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 14,
@@ -30557,6 +32749,14 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
+  "vontade": 6,
+  "aparencia": 6,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 4,
+   "temperanca": 3,
+   "valor": 4
+  },
   "combate": {
    "pv": 37,
    "defesa": 14,
@@ -30651,6 +32851,14 @@
    "percepcao": 4,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 54,
@@ -30751,6 +32959,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 80,
    "defesa": 8,
@@ -30846,6 +33062,14 @@
    "percepcao": 5,
    "inteligencia": 3,
    "raciocinio": 4
+  },
+  "vontade": 7,
+  "aparencia": 3,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 2,
+   "temperanca": 1,
+   "valor": 3
   },
   "combate": {
    "pv": 75,
@@ -30979,6 +33203,14 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 3,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 2,
+   "temperanca": 1,
+   "valor": 2
+  },
   "combate": {
    "pv": 40,
    "defesa": 10,
@@ -31081,6 +33313,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 70,
    "defesa": 4,
@@ -31175,6 +33415,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -31280,6 +33528,14 @@
    "percepcao": 2,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 62,
@@ -31396,6 +33652,14 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
+  "vontade": 10,
+  "aparencia": 12,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 5
+  },
   "combate": {
    "pv": 49,
    "defesa": 22,
@@ -31503,6 +33767,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 46,
    "defesa": 8,
@@ -31597,6 +33869,14 @@
    "percepcao": 3,
    "inteligencia": 0,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 80,
@@ -31697,6 +33977,14 @@
    "percepcao": 6,
    "inteligencia": 2,
    "raciocinio": 5
+  },
+  "vontade": 8,
+  "aparencia": 10,
+  "virtudes": {
+   "compaixao": 3,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 54,
@@ -31839,6 +34127,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 58,
    "defesa": 8,
@@ -31941,6 +34237,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 8,
@@ -32036,6 +34340,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "combate": {
    "pv": 54,
@@ -32137,6 +34449,14 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 9,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 49,
@@ -32312,6 +34632,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
   "combate": {
    "pv": 26,
    "defesa": 12,
@@ -32410,6 +34738,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 5,
+  "aparencia": 3,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 2,
+   "temperanca": 1,
+   "valor": 2
+  },
   "combate": {
    "pv": 26,
    "defesa": 10,
@@ -32504,6 +34840,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 1
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
   },
   "combate": {
    "pv": 95,
@@ -32615,6 +34959,14 @@
    "inteligencia": 0,
    "raciocinio": 3
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 54,
    "defesa": 8,
@@ -32710,6 +35062,14 @@
    "percepcao": 3,
    "inteligencia": 0,
    "raciocinio": 3
+  },
+  "vontade": 6,
+  "aparencia": 3,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 2,
+   "temperanca": 1,
+   "valor": 2
   },
   "combate": {
    "pv": 54,
@@ -32816,6 +35176,14 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
   "combate": {
    "pv": 17,
    "defesa": 12,
@@ -32911,6 +35279,14 @@
    "percepcao": 5,
    "inteligencia": 4,
    "raciocinio": 4
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
    "pv": 66,
@@ -33049,6 +35425,14 @@
    "inteligencia": 2,
    "raciocinio": 3
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 37,
    "defesa": 14,
@@ -33157,6 +35541,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 37,
    "defesa": 12,
@@ -33261,6 +35653,14 @@
    "percepcao": 3,
    "inteligencia": 2,
    "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -33382,6 +35782,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 54,
    "defesa": 14,
@@ -33486,6 +35894,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 34,
    "defesa": 14,
@@ -33588,6 +36004,14 @@
    "percepcao": 3,
    "inteligencia": 1,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 8,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 5
   },
   "combate": {
    "pv": 54,
@@ -33709,6 +36133,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
   "combate": {
    "pv": 37,
    "defesa": 18,
@@ -33813,6 +36245,14 @@
    "percepcao": 2,
    "inteligencia": 2,
    "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 43,
@@ -33940,6 +36380,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
   "combate": {
    "pv": 37,
    "defesa": 14,
@@ -34044,6 +36492,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
   "combate": {
    "pv": 50,
    "defesa": 12,
@@ -34147,6 +36603,14 @@
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 31,

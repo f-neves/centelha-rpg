@@ -79,7 +79,7 @@ function stat(b) {
     categoria: b.categoria || catFromTags(b.tags || []),
     ameaca: b.ameaca, centelha: C,
     conceito: b.conceito, descricao: b.descricao, tags: b.tags || [],
-    pv, defesa, defesaMental,
+    pv, defesa, defesaMental, vontade: b.vontade ?? 5,
     soak, resistPerf,
     iniciativa: `1d6 + ${ini}`,
     atributos: at, ataques,
@@ -397,6 +397,7 @@ const NOME_PT = {
   'mon-crab-swarm': 'Enxame de Caranguejo', 'mon-dire-bat': 'Morcego Atroz', 'mon-dire-rat': 'Rato Atroz',
   'mon-dire-wolverine': 'Carcaju Atroz', 'mon-dog': 'Cachorro', 'mon-dolphin': 'Golfinho',
   'mon-elasmosaurus': 'Elasmossauro', 'mon-electric-eel': 'Enguia Elétrica', 'mon-fire-beetle': 'Besouro de Fogo',
+  'mon-assombracao-wraith': 'Assombração',
   'mon-flesh-golem': 'Golem de Carne', 'mon-giant-ant': 'Formiga Gigante', 'mon-giant-centipede': 'Centopéia Gigante',
   // remapeamentos (nome PT + inglês ajustado em habilidades.en)
   'mon-dire-bear-cave-bear': 'Urso Atroz', 'mon-dire-boar-daeodon': 'Javali Atroz',

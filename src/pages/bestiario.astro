@@ -22,6 +22,9 @@ const ATR: [string, string, string][] = [
   ['influencia', 'Inf', 'Influência'], ['perspicacia', 'Psp', 'Perspicácia'], ['compostura', 'Cmp', 'Compostura'],
   ['percepcao', 'Per', 'Percepção'], ['inteligencia', 'Int', 'Inteligência'], ['raciocinio', 'Rac', 'Raciocínio'],
 ];
+// Modificador social da Aparência (curva do sistema, extrapolada além de 1–10 para criaturas extremas).
+const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
+const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : AP_CURVA[n]);
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
 const camNome: Record<string, string> = Object.fromEntries(d.caminhos.map((c) => [c.id, c.nome]));
 const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
@@ -157,6 +160,19 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
                 {ATR.map(([k, ab, full]) => (
                   <span class="atr" title={full}><span class="atr-nm"><span class="atr-ab">{ab}</span><span class="atr-full">{full}</span></span><span class="atr-v">{(i.atributos as any)[k]}</span></span>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {i.virtudes && (
+            <div class="besta-tracos">
+              <div class="tr-linha">
+                <span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">{i.vontade}</span></span>
+                <span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">{i.aparencia} <small class="tr-mod">({apMod(i.aparencia) >= 0 ? '+' : ''}{apMod(i.aparencia)})</small></span></span>
+              </div>
+              <div class="tr-virt" title="Virtudes: Compaixão · Convicção · Temperança · Valor">
+                <span class="tr-nm">Virtudes</span>
+                <span class="tr-vv">Comp {i.virtudes.compaixao} · Conv {i.virtudes.conviccao} · Temp {i.virtudes.temperanca} · Val {i.virtudes.valor}</span>
               </div>
             </div>
           )}
@@ -330,6 +346,16 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     .atr-ab { display: none; }
     .atr-full { display: inline; }
   }
+
+  /* Traços derivados (Vontade · Aparência · Virtudes) */
+  .besta-tracos { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .28rem; }
+  .tr-linha { display: flex; gap: .4rem; }
+  .tr { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .tr-nm { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
+  .tr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; color: var(--accent-strong); }
+  .tr-mod { font-weight: 600; font-size: .72rem; color: var(--ink-soft); }
+  .tr-virt { display: flex; align-items: baseline; gap: .45rem; padding: .1rem .4rem; }
+  .tr-vv { font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--ink-soft); }
 
   /* Habilidades */
   .besta-atk { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: .9rem; display: flex; flex-direction: column; gap: .3rem; }
