@@ -1072,8 +1072,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/army-ant-swarm.png",
+  "semImagem": false,
   "atributos": {
    "forca": 0,
    "destreza": 4,
@@ -3045,8 +3045,8 @@
     "Temperate"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/bison.png",
+  "semImagem": false,
   "atributos": {
    "forca": 9,
    "destreza": 2,
@@ -3471,8 +3471,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/brachiosaurus.png",
+  "semImagem": false,
   "atributos": {
    "forca": 14,
    "destreza": 2,
@@ -4534,8 +4534,8 @@
     "Extraplanar"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/cauchemar.png",
+  "semImagem": false,
   "atributos": {
    "forca": 11,
    "destreza": 4,
@@ -11912,8 +11912,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/electric-eel.png",
+  "semImagem": false,
   "atributos": {
    "forca": 3,
    "destreza": 4,
@@ -13344,8 +13344,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/fire-beetle.png",
+  "semImagem": false,
   "atributos": {
    "forca": 2,
    "destreza": 2,
@@ -17734,8 +17734,8 @@
     "Cold"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/grizzly-bear.png",
+  "semImagem": false,
   "atributos": {
    "forca": 7,
    "destreza": 3,
@@ -22945,8 +22945,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/monitor-lizard.png",
+  "semImagem": false,
   "atributos": {
    "forca": 5,
    "destreza": 4,
@@ -24053,8 +24053,8 @@
     "Extraplanar"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/nessian-warhound.png",
+  "semImagem": false,
   "atributos": {
    "forca": 9,
    "destreza": 4,
@@ -25778,8 +25778,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/poison-frog.png",
+  "semImagem": false,
   "atributos": {
    "forca": 1,
    "destreza": 3,
@@ -25868,8 +25868,8 @@
     "Temperate"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/pony.png",
+  "semImagem": false,
   "atributos": {
    "forca": 3,
    "destreza": 3,
@@ -26062,8 +26062,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/pteranodon.png",
+  "semImagem": false,
   "atributos": {
    "forca": 6,
    "destreza": 5,
@@ -26779,8 +26779,8 @@
     "Temperate"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/raven.png",
+  "semImagem": false,
   "atributos": {
    "forca": 1,
    "destreza": 4,
@@ -30752,8 +30752,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/toad.png",
+  "semImagem": false,
   "atributos": {
    "forca": 0,
    "destreza": 3,
@@ -30970,8 +30970,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/triceratops.png",
+  "semImagem": false,
   "atributos": {
    "forca": 10,
    "destreza": 2,
@@ -32402,8 +32402,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/viper.png",
+  "semImagem": false,
   "atributos": {
    "forca": 1,
    "destreza": 5,
@@ -32729,8 +32729,8 @@
     "Temperate"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/weasel.png",
+  "semImagem": false,
   "atributos": {
    "forca": 1,
    "destreza": 4,
@@ -33153,8 +33153,8 @@
     "Cold"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/winter-wolf.png",
+  "semImagem": false,
   "atributos": {
    "forca": 7,
    "destreza": 3,
