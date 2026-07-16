@@ -5038,8 +5038,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/cheetah.png",
+  "semImagem": false,
   "atributos": {
    "forca": 5,
    "destreza": 5,
@@ -9599,8 +9599,8 @@
     "Temperate"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/dracolisk.png",
+  "semImagem": false,
   "atributos": {
    "forca": 7,
    "destreza": 2,
@@ -11369,8 +11369,8 @@
     "Temperate"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/drow-noble.png",
+  "semImagem": false,
   "atributos": {
    "forca": 3,
    "destreza": 5,
@@ -11818,8 +11818,8 @@
     "Tropical"
    ]
   },
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/elasmosaurus.png",
+  "semImagem": false,
   "atributos": {
    "forca": 10,
    "destreza": 4,
