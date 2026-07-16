@@ -383,6 +383,27 @@ const CONV = DATA.map((m) => {
   });
 });
 
+// Ajustes à mão pós-conversão (criaturas cujo stat block calculado não capta o caso):
+// nome em Português (mantendo o id/slug em inglês p/ satélites e imagem), e valores
+// que o motor não deriva (ex.: um constructo tem casco/Absorção mesmo com Vigor 0,
+// e não tem mente → Defesa Mental "-"). O nome inglês segue vindo de habilidades.en.
+const HAND_OVERRIDE = {
+  'mon-animated-object': {
+    nome: 'Objeto Animado',
+    defesaMental: '-', // constructo não tem mente
+    soak: { impacto: 2, corte: 4, perfuracao: 4 }, // casco de um objeto Médio (varia com tamanho/material)
+    atributos: { percepcao: 2 },
+  },
+  'mon-army-ant-swarm': { nome: 'Enxame de Formigas' },
+};
+for (const c of CONV) {
+  const h = HAND_OVERRIDE[c.id]; if (!h) continue;
+  if (h.nome) c.nome = h.nome;
+  if (h.defesaMental !== undefined) c.defesaMental = h.defesaMental;
+  if (h.soak) c.soak = { ...c.soak, ...h.soak };
+  if (h.atributos) Object.assign(c.atributos, h.atributos);
+}
+
 const inimigos = [...NPCS.map(stat), ...CONV];
 fs.writeFileSync(path.join(ROOT, 'src/data/inimigos.json'), JSON.stringify(inimigos, null, 2) + '\n', 'utf8');
 const byCat = {};

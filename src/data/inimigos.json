@@ -8792,23 +8792,24 @@
   },
   {
     "id": "mon-animated-object",
-    "nome": "Animated Object",
+    "nome": "Objeto Animado",
     "tipo": "soldado",
     "categoria": "Monstro",
     "ameaca": 3,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "constructo Médio",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
-      "monstro"
+      "monstro",
+      "centelha"
     ],
     "pv": 25,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 6,
+    "defesaMental": "-",
     "soak": {
-      "impacto": 0,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 2,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 0",
@@ -8819,14 +8820,14 @@
       "influencia": 0,
       "perspicacia": 0,
       "compostura": 0,
-      "percepcao": 0,
+      "percepcao": 2,
       "inteligencia": 0,
       "raciocinio": 0
     },
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "3d6+2",
+        "pool": "4d6 +2",
         "dano": "1d6 +4 corte",
         "ticks": 5
       }
@@ -8885,7 +8886,7 @@
   },
   {
     "id": "mon-army-ant-swarm",
-    "nome": "Army Ant Swarm",
+    "nome": "Enxame de Formigas",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,

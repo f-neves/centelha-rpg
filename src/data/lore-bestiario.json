@@ -296,6 +296,10 @@
       {
         "t": "Comportamento",
         "d": "Sem mente própria, o objeto apenas cumpre a última ordem recebida ou ataca qualquer intruso que cruze seu posto, sem hesitação, cansaço ou piedade."
+      },
+      {
+        "t": "Tamanho e Material",
+        "d": "Objetos animados variam enormemente: um candelabro desperto e um navio animado são a mesma criatura em escalas opostas. O tamanho e o material (madeira, pedra ou metal) alteram muito a Força, a Destreza, os PV, a Defesa e a Absorção. Os valores desta ficha são de um objeto Médio; ajuste conforme o item. Exemplos por porte: Minúsculo: candelabro · Pequeno: cadeira · Médio: jaula · Grande: estátua · Enorme: carroça · Imenso: catapulta · Colossal: navio."
       }
     ]
   },

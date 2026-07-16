@@ -160,7 +160,7 @@ const inimigos = defineCollection({
     tags: z.array(z.string()),
     pv: z.number().int(),
     defesa: z.number().int(),
-    defesaMental: z.number().int(),
+    defesaMental: z.union([z.number().int(), z.literal('-')]), // "-" = sem mente (constructos)
     soak: soakModos, resistPerf: z.number().int().min(0),
     iniciativa: z.string(),
     atributos: z.record(z.number().int()),

@@ -386,101 +386,6 @@
   ]
  },
  {
-  "id": "mon-animated-object",
-  "nome": "Animated Object",
-  "nomeIngles": "Animated Object",
-  "categoria": "Construto",
-  "tipo": "soldado",
-  "conceito": "constructo Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
-  "tags": [
-   "monstro"
-  ],
-  "ameaca": 3,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "1,5 m de altura",
-   "peso": "150 kg"
-  },
-  "ecologia": {
-   "tipo": "Construct",
-   "terreno": [
-    "Any",
-    "Ruins"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/animated-object.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 4,
-   "destreza": 2,
-   "vigor": 0,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 0,
-   "percepcao": 0,
-   "inteligencia": 0,
-   "raciocinio": 0
-  },
-  "combate": {
-   "pv": 25,
-   "defesa": 4,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 0,
-    "corte": 0,
-    "perfuracao": 0
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 0",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "3d6+2",
-     "dano": "1d6 +4 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Corpo Inanimado",
-    "descricao": "Feito de madeira, pedra ou metal, o objeto animado não respira, não sente medo e é imune a doenças, venenos e efeitos que dependem de mente ou emoção."
-   },
-   {
-    "nome": "Casco Resistente",
-    "descricao": "A superfície do objeto absorve grande parte de qualquer impacto físico, reduzindo o dano recebido."
-   },
-   {
-    "nome": "Golpe Bruto",
-    "descricao": "O objeto ataca com pancadas contundentes, usando a própria massa como arma."
-   },
-   {
-    "nome": "Formas Variadas",
-    "descricao": "Alguns objetos animados ganham garras extras, capacidade de escalar, nadar ou voar, ou um golpe capaz de arremessar o oponente ao chão, dependendo do item original."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Origem",
-    "texto": "Um objeto animado não nasce, é feito. Móveis, estátuas, armaduras vazias e portões inteiros já foram despertados por magia para servir como guardiões silenciosos."
-   },
-   {
-    "titulo": "Comportamento",
-    "texto": "Sem mente própria, o objeto apenas cumpre a última ordem recebida ou ataca qualquer intruso que cruze seu posto, sem hesitação, cansaço ou piedade."
-   }
-  ]
- },
- {
   "id": "mon-ankheg",
   "nome": "Ankheg",
   "nomeIngles": "Ankheg",
@@ -1041,100 +946,6 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Contido pela Lei que impede os deuses de agir direto, um archon cão só cruza ao mundo mortal em raros chamados desesperados, e mesmo assim evita ser visto: para o povo da Supressão, um anjo com cara de cão seria mais um monstro a temer do que um salvador."
-   }
-  ]
- },
- {
-  "id": "mon-army-ant-swarm",
-  "nome": "Army Ant Swarm",
-  "nomeIngles": "Army Ant Swarm",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "praga Minúsculo",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 4,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Miúdo",
-  "dimensoes": {
-   "medida": "3 m de diâmetro (massa do enxame)",
-   "peso": "poucos gramas por indivíduo, toneladas no total"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Jungle"
-   ],
-   "clima": [
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/army-ant-swarm.png",
-  "semImagem": false,
-  "atributos": {
-   "forca": 0,
-   "destreza": 4,
-   "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
-   "percepcao": 2,
-   "inteligencia": 0,
-   "raciocinio": 2
-  },
-  "combate": {
-   "pv": 17,
-   "defesa": 10,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 2,
-    "corte": 1,
-    "perfuracao": 1
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "2d6",
-     "dano": "1d6 perfConc",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Massa Viva",
-    "descricao": "O enxame cobre toda uma área ao redor de suas vítimas e é praticamente imune a ataques de arma isolados, já que ferir algumas formigas não detém as milhares restantes."
-   },
-   {
-    "nome": "Aderência",
-    "descricao": "Ao tentar fugir do enxame, a vítima continua sendo mordida por formigas que se agarram a ela, sofrendo dano contínuo até conseguir arrancá-las."
-   },
-   {
-    "nome": "Devorar",
-    "descricao": "Contra alvos indefesos ou incapacitados, o enxame os consome em questão de instantes, causando dano descomunal."
-   },
-   {
-    "nome": "Pânico e Distração",
-    "descricao": "Estar dentro do enxame dificulta enormemente a concentração, podendo interromper feitiços ou ações que exijam foco."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Natureza",
-    "texto": "Um enxame de formigas-soldado nunca para. Ele avança como uma maré viva, consumindo tudo (plantas, animais, o que for) que encontra pelo caminho."
-   },
-   {
-    "titulo": "Habitat",
-    "texto": "Comum nas selvas quentes, o enxame se desloca em marchas constantes, obrigando comunidades próximas a fugir ou se trancar até a passagem da praga."
    }
   ]
  },
@@ -12220,6 +12031,100 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Raramente visto fora de rituais antigos ou minas profundas do White Wall, um elemental da terra desperto é tomado pelo povo comum como sinal de que a montanha acordou zangada, mais um argumento das igrejas supressoras contra quem ainda ousa invocar tais forças."
+   }
+  ]
+ },
+ {
+  "id": "mon-army-ant-swarm",
+  "nome": "Enxame de Formigas",
+  "nomeIngles": "Army Ant Swarm",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 4,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Miúdo",
+  "dimensoes": {
+   "medida": "3 m de diâmetro (massa do enxame)",
+   "peso": "poucos gramas por indivíduo"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Jungle"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/army-ant-swarm.png",
+  "semImagem": false,
+  "atributos": {
+   "forca": 0,
+   "destreza": 4,
+   "vigor": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
+   "percepcao": 2,
+   "inteligencia": 0,
+   "raciocinio": 2
+  },
+  "combate": {
+   "pv": 17,
+   "defesa": 10,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 2,
+    "corte": 1,
+    "perfuracao": 1
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "2d6",
+     "dano": "1d6 perfConc",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Massa Viva",
+    "descricao": "O enxame cobre toda uma área ao redor de suas vítimas e é praticamente imune a ataques de arma isolados, já que ferir algumas formigas não detém as milhares restantes."
+   },
+   {
+    "nome": "Aderência",
+    "descricao": "Ao tentar fugir do enxame, a vítima continua sendo mordida por formigas que se agarram a ela, sofrendo dano contínuo até conseguir arrancá-las."
+   },
+   {
+    "nome": "Devorar",
+    "descricao": "Contra alvos indefesos ou incapacitados, o enxame os consome em questão de instantes, causando dano descomunal."
+   },
+   {
+    "nome": "Pânico e Distração",
+    "descricao": "Estar dentro do enxame dificulta enormemente a concentração, podendo interromper feitiços ou ações que exijam foco."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Natureza",
+    "texto": "Um enxame de formigas-soldado nunca para. Ele avança como uma maré viva, consumindo tudo (plantas, animais, o que for) que encontra pelo caminho."
+   },
+   {
+    "titulo": "Habitat",
+    "texto": "Comum nas selvas quentes, o enxame se desloca em marchas constantes, obrigando comunidades próximas a fugir ou se trancar até a passagem da praga."
    }
   ]
  },
@@ -24461,6 +24366,106 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "É eco vivo do véu de espíritos ligado à origem feérica dos elfos; em Syl é venerada como um kami das águas, enquanto as igrejas supressoras de Calin a tratam como tentação perigosa de um mundo mais mágico que devia ter ficado no passado."
+   }
+  ]
+ },
+ {
+  "id": "mon-animated-object",
+  "nome": "Objeto Animado",
+  "nomeIngles": "Animated Object",
+  "categoria": "Construto",
+  "tipo": "soldado",
+  "conceito": "constructo Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+   "monstro",
+   "centelha"
+  ],
+  "ameaca": 3,
+  "centelha": 1,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,5 m de altura",
+   "peso": "150 kg"
+  },
+  "ecologia": {
+   "tipo": "Construct",
+   "terreno": [
+    "Any",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/animated-object.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 4,
+   "destreza": 2,
+   "vigor": 0,
+   "influencia": 0,
+   "perspicacia": 0,
+   "compostura": 0,
+   "percepcao": 2,
+   "inteligencia": 0,
+   "raciocinio": 0
+  },
+  "combate": {
+   "pv": 25,
+   "defesa": 6,
+   "defesaMental": "-",
+   "absorcao": {
+    "impacto": 2,
+    "corte": 4,
+    "perfuracao": 4
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 0",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "4d6 +2",
+     "dano": "1d6 +4 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Corpo Inanimado",
+    "descricao": "Feito de madeira, pedra ou metal, o objeto animado não respira, não sente medo e é imune a doenças, venenos e efeitos que dependem de mente ou emoção."
+   },
+   {
+    "nome": "Casco Resistente",
+    "descricao": "A superfície do objeto absorve grande parte de qualquer impacto físico, reduzindo o dano recebido."
+   },
+   {
+    "nome": "Golpe Bruto",
+    "descricao": "O objeto ataca com pancadas contundentes, usando a própria massa como arma."
+   },
+   {
+    "nome": "Formas Variadas",
+    "descricao": "Alguns objetos animados ganham garras extras, capacidade de escalar, nadar ou voar, ou um golpe capaz de arremessar o oponente ao chão, dependendo do item original."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Origem",
+    "texto": "Um objeto animado não nasce, é feito. Móveis, estátuas, armaduras vazias e portões inteiros já foram despertados por magia para servir como guardiões silenciosos."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Sem mente própria, o objeto apenas cumpre a última ordem recebida ou ataca qualquer intruso que cruze seu posto, sem hesitação, cansaço ou piedade."
+   },
+   {
+    "titulo": "Tamanho e Material",
+    "texto": "Objetos animados variam enormemente: um candelabro desperto e um navio animado são a mesma criatura em escalas opostas. O tamanho e o material (madeira, pedra ou metal) alteram muito a Força, a Destreza, os PV, a Defesa e a Absorção. Os valores desta ficha são de um objeto Médio; ajuste conforme o item. Exemplos por porte: Minúsculo: candelabro · Pequeno: cadeira · Médio: jaula · Grande: estátua · Enorme: carroça · Imenso: catapulta · Colossal: navio."
    }
   ]
  },
