@@ -14,7 +14,11 @@ legacy/*.pdf
 lore/mapas/Mapa Teste.jpg
 lore/mapas/Mapa Teste1.jpg
 
+# material de referência (PDFs/artes de D&D e Pathfinder — pesado, fora do repo)
+D&D/
+
 # SO / editor
+bash.exe.stackdump
 .DS_Store
 Thumbs.db
 *.log

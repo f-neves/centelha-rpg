@@ -38,10 +38,10 @@
    "defesaMental": 27,
    "absorcao": {
     "impacto": 12,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 12,
+    "perfuracao": 12
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -187,8 +187,8 @@
    "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -299,8 +299,8 @@
    "defesaMental": 17,
    "absorcao": {
     "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -947,10 +947,10 @@
    "defesaMental": 44,
    "absorcao": {
     "impacto": 20,
-    "corte": 14,
-    "perfuracao": 14
+    "corte": 18,
+    "perfuracao": 18
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
@@ -1299,10 +1299,10 @@
    "defesaMental": 14,
    "absorcao": {
     "impacto": 9,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 9,
+    "perfuracao": 9
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -1415,8 +1415,8 @@
    "defesaMental": 15,
    "absorcao": {
     "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -1968,10 +1968,10 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 10,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 9,
+    "perfuracao": 9
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -2445,8 +2445,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -2844,8 +2844,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -3088,8 +3088,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -3176,8 +3176,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 9,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 0",
@@ -3633,8 +3633,8 @@
    "defesaMental": 32,
    "absorcao": {
     "impacto": 14,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 9",
@@ -3767,8 +3767,8 @@
    "defesaMental": 44,
    "absorcao": {
     "impacto": 19,
-    "corte": 13,
-    "perfuracao": 13
+    "corte": 15,
+    "perfuracao": 15
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 13",
@@ -3928,8 +3928,8 @@
    "defesaMental": 27,
    "absorcao": {
     "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
@@ -4201,8 +4201,8 @@
    "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -4469,10 +4469,10 @@
    "defesaMental": 30,
    "absorcao": {
     "impacto": 14,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 13,
+    "perfuracao": 13
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -4615,8 +4615,8 @@
    "defesaMental": 18,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -4753,10 +4753,10 @@
    "defesaMental": 37,
    "absorcao": {
     "impacto": 16,
-    "corte": 11,
-    "perfuracao": 11
+    "corte": 15,
+    "perfuracao": 15
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
@@ -4913,10 +4913,10 @@
    "defesaMental": 30,
    "absorcao": {
     "impacto": 13,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 13,
+    "perfuracao": 13
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -5055,10 +5055,10 @@
    "defesaMental": 30,
    "absorcao": {
     "impacto": 14,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 13,
+    "perfuracao": 13
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -5202,10 +5202,10 @@
    "defesaMental": 35,
    "absorcao": {
     "impacto": 17,
-    "corte": 11,
-    "perfuracao": 11
+    "corte": 18,
+    "perfuracao": 18
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
@@ -5352,8 +5352,8 @@
    "defesaMental": 23,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -5828,8 +5828,8 @@
    "defesaMental": 22,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -5960,10 +5960,10 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 8,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 8,
+    "perfuracao": 8
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -6067,8 +6067,8 @@
    "defesaMental": 15,
    "absorcao": {
     "impacto": 9,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -6318,8 +6318,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -6418,8 +6418,8 @@
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
@@ -6771,8 +6771,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -7696,8 +7696,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -7792,8 +7792,8 @@
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -7894,10 +7894,10 @@
    "defesaMental": 21,
    "absorcao": {
     "impacto": 11,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 10,
+    "perfuracao": 10
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
@@ -8022,10 +8022,10 @@
    "defesaMental": 18,
    "absorcao": {
     "impacto": 9,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 9,
+    "perfuracao": 9
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -8141,8 +8141,8 @@
    "defesaMental": 14,
    "absorcao": {
     "impacto": 9,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -8255,8 +8255,8 @@
    "defesaMental": 14,
    "absorcao": {
     "impacto": 8,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -8353,10 +8353,10 @@
    "defesaMental": 32,
    "absorcao": {
     "impacto": 15,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 14,
+    "perfuracao": 14
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
@@ -8670,8 +8670,8 @@
    "defesaMental": 17,
    "absorcao": {
     "impacto": 10,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -8778,8 +8778,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -8868,10 +8868,10 @@
    "defesaMental": 42,
    "absorcao": {
     "impacto": 22,
-    "corte": 15,
-    "perfuracao": 15
+    "corte": 25,
+    "perfuracao": 25
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 11",
    "ataques": [
     {
@@ -9022,8 +9022,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -9322,8 +9322,8 @@
    "defesaMental": 27,
    "absorcao": {
     "impacto": 13,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -9445,10 +9445,10 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 9,
+    "perfuracao": 9
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
@@ -9541,8 +9541,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -10003,10 +10003,10 @@
    "defesaMental": 35,
    "absorcao": {
     "impacto": 19,
-    "corte": 12,
-    "perfuracao": 12
+    "corte": 22,
+    "perfuracao": 22
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
@@ -10138,8 +10138,8 @@
    "defesaMental": 24,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
@@ -10264,8 +10264,8 @@
    "defesaMental": 11,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -10708,8 +10708,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -10913,8 +10913,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -11017,8 +11017,8 @@
    "defesaMental": 37,
    "absorcao": {
     "impacto": 15,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
@@ -11370,8 +11370,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -11584,8 +11584,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -11815,8 +11815,8 @@
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
@@ -12081,8 +12081,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -12175,8 +12175,8 @@
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -12419,8 +12419,8 @@
    "defesaMental": 20,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -12675,8 +12675,8 @@
    "defesaMental": 39,
    "absorcao": {
     "impacto": 14,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 11",
@@ -12945,8 +12945,8 @@
    "defesaMental": 17,
    "absorcao": {
     "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -13288,8 +13288,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -13720,8 +13720,8 @@
    "defesaMental": 44,
    "absorcao": {
     "impacto": 18,
-    "corte": 13,
-    "perfuracao": 13
+    "corte": 15,
+    "perfuracao": 15
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 12",
@@ -14231,10 +14231,10 @@
    "defesaMental": 34,
    "absorcao": {
     "impacto": 21,
-    "corte": 14,
-    "perfuracao": 14
+    "corte": 24,
+    "perfuracao": 24
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -14369,8 +14369,8 @@
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -14459,10 +14459,10 @@
    "defesaMental": 19,
    "absorcao": {
     "impacto": 10,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 10,
+    "perfuracao": 10
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -14672,8 +14672,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -14777,8 +14777,8 @@
    "defesaMental": 28,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
@@ -14907,8 +14907,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -15160,10 +15160,10 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 12,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 13,
+    "perfuracao": 13
    },
-   "resistenciaPerfuracao": 0,
+   "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
@@ -15262,8 +15262,8 @@
    "defesaMental": 27,
    "absorcao": {
     "impacto": 13,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -15499,8 +15499,8 @@
    "defesaMental": 17,
    "absorcao": {
     "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",

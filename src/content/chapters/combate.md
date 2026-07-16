@@ -85,6 +85,24 @@ Os modos **Projétil** e **Perf. Concentrada** têm um **Nível de Perfuração*
 
 **Corte e Impacto não passam pelo gate** — sempre subtraem a absorção direto. É por isso que a placa completa (Nível 3) é à prova de qualquer arma de mão (espada, flecha, lança, besta, picareta param em N0–N2), cedendo só ao Impacto, à perfuração nível 3+ (cerco, magia), Proeza ou feitiçaria. O **Nível nunca soma** ao empilhar armaduras: vale sempre o maior.
 
+### Couraça de Porte
+
+Bichos muito maiores que um homem não são só sacos de vida maiores: a pura massa, a pele grossa, as escamas e o casco viram **armadura de carne**. Cada porte acima do Médio soma uma **Couraça** à Absorção, e os maiores ganham um **Nível de Perfuração natural** (o mesmo gate da placa: flecha e lança comuns resvalam).
+
+A Couraça incide **só em Corte e Perfuração** — o **Impacto a ignora**. Cortar ou furar uma montanha de carne arranha a superfície; já uma pancada concentrada (maça, martelo, malho, um pedregulho) transfere a energia para dentro, do mesmo jeito que o Impacto vence a placa. Contra um titã, **esmague, não corte** — e contra os maiores, nem isso basta sem Centelha.
+
+| Porte | Couraça (Corte/Perf.) | Perfuração natural |
+|---|---|---|
+| Médio e menores | — | — |
+| Grande | +2 | — |
+| Enorme | +4 | 1 |
+| Imenso | +7 | 2 |
+| Colossal | +10 | 3 |
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Um <strong>Verme Púrpura</strong> (Imenso) tem Absorção <strong>13</strong> contra lâminas. Um soldado com espada longa (2d6+3, média 10) não abre um arranhão; a flecha (Perf. 1) resvala na Perfuração natural 2. Um herói de montante ainda crava 7, e uma Proeza que rasga ou um martelo no <strong>Impacto</strong> (que ignora a Couraça) é o caminho para feri-lo de verdade. Já o <strong>Tarrasque</strong> (Colossal, Absorção 24, Perf. 3) zomba de qualquer aço mortal: só Centelha, Proeza ou feitiçaria o marcam.</div>
+
+A Couraça **empilha** com armadura (soma na Absorção) e com a Absorção de Proeza; o Nível de Perfuração natural entra no gate como o de uma armadura (vale sempre o **maior**, nunca soma).
+
 ### Trocar de modo
 
 Cada arma tem um **modo principal** (sem custo) e, às vezes, **secundários** — alternar para um secundário custa **−2 ao acerto e −2 ao dano** (estocar com uma lâmina de corte é mais difícil e sai mais fraco). Algumas armas, como a **Alabarda**, têm vários modos *principais*: alternam sem penalidade.

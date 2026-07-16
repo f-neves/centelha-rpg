@@ -33,6 +33,17 @@ function pvDe(id, vigor) {
   const t = (D.pv.porte && D.pv.porte[key]) || { base: D.pv.base, vigorMult: D.pv.vigorMult };
   return t.base + vigor * t.vigorMult;
 }
+// Couraça de porte: Absorção extra (só letais) + R.Perf natural (gate), da tabela regras.dano.couracaPorte.
+const COURACA = regras.dano?.couracaPorte || {};
+// Overrides pontuais: bichos grandes mas "moles" (sem escamas/casco de titã) não ganham a couraça cheia.
+const COURACA_OVERRIDE = {
+  'mon-roc': { couraca: 0, resistPerf: 0 }, // pássaro imenso: pura massa, mas sem couraça natural
+};
+function couracaDe(id) {
+  if (COURACA_OVERRIDE[id]) return COURACA_OVERRIDE[id];
+  const key = DIMPORTE[id] || 'medio';
+  return COURACA[key] || { couraca: 0, resistPerf: 0 };
+}
 
 // build compacta → stat block calculado
 function stat(b) {
@@ -57,14 +68,19 @@ function stat(b) {
     const dano = `${a.dado}d6${fa ? ` +${fa}` : ''} ${a.tipo}${perf != null ? ` · perf. ${perf}` : ''}`;
     return { nome: a.nome, pool, dano, ticks: a.ticks, ...(a.notas ? { notas: a.notas } : {}) };
   });
-  const soak = Object.fromEntries(SOAKCATS.map((m) => [m, soakNat(at.vigor, m) + C * cNoSoak + (arm.soak?.[m] ?? 0)]));
+  const cv = couracaDe(b.id);
+  const soak = Object.fromEntries(SOAKCATS.map((m) => {
+    const base = soakNat(at.vigor, m) + C * cNoSoak + (arm.soak?.[m] ?? 0);
+    return [m, base + (m === 'impacto' ? 0 : cv.couraca)]; // couraça de porte só nos letais
+  }));
+  const resistPerf = Math.max(arm.resistPerf ?? 0, cv.resistPerf ?? 0);
   const out = {
     id: b.id, nome: b.nome, tipo: b.tipo,
     categoria: b.categoria || catFromTags(b.tags || []),
     ameaca: b.ameaca, centelha: C,
     conceito: b.conceito, descricao: b.descricao, tags: b.tags || [],
     pv, defesa, defesaMental,
-    soak, resistPerf: arm.resistPerf ?? 0,
+    soak, resistPerf,
     iniciativa: `1d6 + ${ini}`,
     atributos: at, ataques,
     tecnicas: b.tecnicas || [], artes: b.artes || [],

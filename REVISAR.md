@@ -55,7 +55,12 @@ Para mexer: editar o gerador e rodar `node scripts/gen-bestiario.mjs`, ou editar
 
 ## Bestiário — pendência de balanceamento
 
-- **⏳ Redução de dano (Absorção) por tamanho:** o **PV já escala com o porte**
-  (`regras.derivados.pv.porte`: Miúdo 15+V×1 … Colossal 45+V×5). Falta avaliar se a
-  **Absorção natural** também deve variar com o tamanho (criaturas grandes absorvendo mais,
-  miúdas menos), a decidir junto com o usuário.
+- ✅ **Redução de dano (Absorção) por tamanho (RESOLVIDO).** Além do PV, a **Absorção
+  natural agora escala com o porte** via `regras.dano.couracaPorte`: uma **Couraça** somada
+  **só a Corte/Perfuração** (o Impacto a ignora, seguindo sendo o abridor de lata contra
+  massa) e um **Nível de Perfuração natural** (gate) para os maiores. Tabela: Grande +2/RP0 ·
+  Enorme +4/RP1 · Imenso +7/RP2 · Colossal +10/RP3 (Médio e menores = 0). Aplicada no
+  `gen-bestiario.mjs` (`couracaDe`), com override pontual para bichos "grandes mas moles"
+  (`COURACA_OVERRIDE`, hoje só o Roc). Efeito: soldado/arqueiro comum cravam 0 a partir de
+  Imenso; heróis (montante, Proeza, Impacto) ainda arranham; Colossal exige Centelha/magia.
+  Documentado no cap. Combate ("Couraça de Porte"). Commit da couraça abaixo.

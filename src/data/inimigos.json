@@ -1132,8 +1132,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1178,8 +1178,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1225,8 +1225,8 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 9,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1279,8 +1279,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1325,8 +1325,8 @@
     "defesaMental": 11,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1372,8 +1372,8 @@
     "defesaMental": 14,
     "soak": {
       "impacto": 9,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -1433,8 +1433,8 @@
     "defesaMental": 14,
     "soak": {
       "impacto": 8,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1481,10 +1481,10 @@
     "defesaMental": 18,
     "soak": {
       "impacto": 9,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 9,
+      "perfuracao": 9
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 12,
@@ -1548,10 +1548,10 @@
     "defesaMental": 21,
     "soak": {
       "impacto": 11,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 10,
+      "perfuracao": 10
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 8",
     "atributos": {
       "forca": 13,
@@ -1623,8 +1623,8 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1736,8 +1736,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -1782,8 +1782,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -1828,8 +1828,8 @@
     "defesaMental": 11,
     "soak": {
       "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -1888,8 +1888,8 @@
     "defesaMental": 11,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -1980,8 +1980,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 7,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2026,10 +2026,10 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 8,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 8,
+      "perfuracao": 8
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 11,
@@ -2086,8 +2086,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2132,8 +2132,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -2290,8 +2290,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2344,8 +2344,8 @@
     "defesaMental": 16,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -2498,8 +2498,8 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -2555,8 +2555,8 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2748,8 +2748,8 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2795,8 +2795,8 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2842,8 +2842,8 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2902,8 +2902,8 @@
     "defesaMental": 17,
     "soak": {
       "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2967,8 +2967,8 @@
     "defesaMental": 17,
     "soak": {
       "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3026,10 +3026,10 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 9,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 9,
+      "perfuracao": 9
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 2",
     "atributos": {
       "forca": 8,
@@ -3204,8 +3204,8 @@
     "defesaMental": 17,
     "soak": {
       "impacto": 10,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -3265,8 +3265,8 @@
     "defesaMental": 15,
     "soak": {
       "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -3334,8 +3334,8 @@
     "defesaMental": 17,
     "soak": {
       "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3454,8 +3454,8 @@
     "defesaMental": 9,
     "soak": {
       "impacto": 9,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 0",
@@ -3561,8 +3561,8 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3623,10 +3623,10 @@
     "defesaMental": 19,
     "soak": {
       "impacto": 10,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 10,
+      "perfuracao": 10
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 11,
@@ -3691,10 +3691,10 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 12,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 13,
+      "perfuracao": 13
     },
-    "resistPerf": 0,
+    "resistPerf": 2,
     "iniciativa": "1d6 + 2",
     "atributos": {
       "forca": 13,
@@ -3738,10 +3738,10 @@
     "defesaMental": 12,
     "soak": {
       "impacto": 10,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 9,
+      "perfuracao": 9
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 10,
@@ -3786,10 +3786,10 @@
     "defesaMental": 27,
     "soak": {
       "impacto": 12,
-      "corte": 8,
-      "perfuracao": 8
+      "corte": 12,
+      "perfuracao": 12
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 10,
@@ -4912,8 +4912,8 @@
     "defesaMental": 27,
     "soak": {
       "impacto": 13,
-      "corte": 8,
-      "perfuracao": 8
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -4983,8 +4983,8 @@
     "defesaMental": 27,
     "soak": {
       "impacto": 13,
-      "corte": 8,
-      "perfuracao": 8
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -5054,10 +5054,10 @@
     "defesaMental": 32,
     "soak": {
       "impacto": 15,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 14,
+      "perfuracao": 14
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 8",
     "atributos": {
       "forca": 12,
@@ -5129,8 +5129,8 @@
     "defesaMental": 37,
     "soak": {
       "impacto": 15,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -5198,10 +5198,10 @@
     "defesaMental": 44,
     "soak": {
       "impacto": 20,
-      "corte": 14,
-      "perfuracao": 14
+      "corte": 18,
+      "perfuracao": 18
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 10",
     "atributos": {
       "forca": 11,
@@ -5588,8 +5588,8 @@
     "defesaMental": 27,
     "soak": {
       "impacto": 11,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -5669,8 +5669,8 @@
     "defesaMental": 32,
     "soak": {
       "impacto": 14,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 11,
+      "perfuracao": 11
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -5831,8 +5831,8 @@
     "defesaMental": 44,
     "soak": {
       "impacto": 19,
-      "corte": 13,
-      "perfuracao": 13
+      "corte": 15,
+      "perfuracao": 15
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 13",
@@ -6085,8 +6085,8 @@
     "defesaMental": 39,
     "soak": {
       "impacto": 14,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 11",
@@ -6164,8 +6164,8 @@
     "defesaMental": 44,
     "soak": {
       "impacto": 18,
-      "corte": 13,
-      "perfuracao": 13
+      "corte": 15,
+      "perfuracao": 15
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 12",
@@ -6408,8 +6408,8 @@
     "defesaMental": 22,
     "soak": {
       "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -6493,8 +6493,8 @@
     "defesaMental": 22,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -6639,8 +6639,8 @@
     "defesaMental": 15,
     "soak": {
       "impacto": 9,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -7291,8 +7291,8 @@
     "defesaMental": 20,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -7357,8 +7357,8 @@
     "defesaMental": 28,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -7436,8 +7436,8 @@
     "defesaMental": 27,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -7523,8 +7523,8 @@
     "defesaMental": 27,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7599,8 +7599,8 @@
     "defesaMental": 27,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7670,10 +7670,10 @@
     "defesaMental": 14,
     "soak": {
       "impacto": 9,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 9,
+      "perfuracao": 9
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 10,
@@ -7737,8 +7737,8 @@
     "defesaMental": 24,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -7884,10 +7884,10 @@
     "defesaMental": 35,
     "soak": {
       "impacto": 19,
-      "corte": 12,
-      "perfuracao": 12
+      "corte": 22,
+      "perfuracao": 22
     },
-    "resistPerf": 0,
+    "resistPerf": 3,
     "iniciativa": "1d6 + 9",
     "atributos": {
       "forca": 14,
@@ -7958,10 +7958,10 @@
     "defesaMental": 34,
     "soak": {
       "impacto": 21,
-      "corte": 14,
-      "perfuracao": 14
+      "corte": 24,
+      "perfuracao": 24
     },
-    "resistPerf": 0,
+    "resistPerf": 3,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 16,
@@ -8108,8 +8108,8 @@
     "defesaMental": 23,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -8183,10 +8183,10 @@
     "defesaMental": 30,
     "soak": {
       "impacto": 14,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 13,
+      "perfuracao": 13
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 11,
@@ -8265,10 +8265,10 @@
     "defesaMental": 35,
     "soak": {
       "impacto": 17,
-      "corte": 11,
-      "perfuracao": 11
+      "corte": 18,
+      "perfuracao": 18
     },
-    "resistPerf": 0,
+    "resistPerf": 2,
     "iniciativa": "1d6 + 9",
     "atributos": {
       "forca": 14,
@@ -8350,10 +8350,10 @@
     "defesaMental": 42,
     "soak": {
       "impacto": 22,
-      "corte": 15,
-      "perfuracao": 15
+      "corte": 25,
+      "perfuracao": 25
     },
-    "resistPerf": 0,
+    "resistPerf": 3,
     "iniciativa": "1d6 + 11",
     "atributos": {
       "forca": 16,
@@ -8436,8 +8436,8 @@
     "defesaMental": 18,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -8513,10 +8513,10 @@
     "defesaMental": 30,
     "soak": {
       "impacto": 14,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 13,
+      "perfuracao": 13
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 11,
@@ -8594,10 +8594,10 @@
     "defesaMental": 30,
     "soak": {
       "impacto": 13,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 13,
+      "perfuracao": 13
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 10,
@@ -8671,10 +8671,10 @@
     "defesaMental": 37,
     "soak": {
       "impacto": 16,
-      "corte": 11,
-      "perfuracao": 11
+      "corte": 15,
+      "perfuracao": 15
     },
-    "resistPerf": 0,
+    "resistPerf": 1,
     "iniciativa": "1d6 + 10",
     "atributos": {
       "forca": 12,

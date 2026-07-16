@@ -310,6 +310,16 @@
     ],
     "soakNatural": { "impacto": "vigor", "corte": "zero", "perfuracao": "zero" },
     "centelhaNoSoak": 1,
+    "couracaPorte": {
+      "nota": "Couraça natural pela MASSA/pele/escamas/casco da criatura, por porte. Absorção EXTRA aplicada SÓ a Corte e Perfuração — o Impacto NÃO recebe couraça (continua sendo o abridor de lata contra massa, do mesmo modo que é a resposta contra placa). 'resistPerf' = gate natural de Perfuração: projétil/estocada com Nível de Perfuração ABAIXO dele resvala (0, nem rola). Empilha com armadura: a couraça SOMA na Absorção; o resistPerf pega o MAIOR (nunca soma). Porte lido de dimensoes-bestiario.json; Médio (humanoide padrão) e menores = 0.",
+      "minusculo": { "couraca": 0, "resistPerf": 0 },
+      "pequeno": { "couraca": 0, "resistPerf": 0 },
+      "medio": { "couraca": 0, "resistPerf": 0 },
+      "grande": { "couraca": 2, "resistPerf": 0 },
+      "enorme": { "couraca": 4, "resistPerf": 1 },
+      "imenso": { "couraca": 7, "resistPerf": 2 },
+      "colossal": { "couraca": 10, "resistPerf": 3 }
+    },
     "gatePerfuracao": {
       "nota": "Só para os modos Projétil e Perf. Concentrada. Se o Nível de Perfuração da arma for MENOR que a Resistência à Perfuração (Nível) da armadura, o golpe RESVALA (dano 0, nem rola). Se for IGUAL OU MAIOR, o gate abre: rola o dano e subtrai a Absorção de Perfuração. Corte e Impacto nunca passam pelo gate.",
       "modos": ["projetil", "perfConc"]
