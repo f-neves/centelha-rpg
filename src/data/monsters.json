@@ -15413,7 +15413,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 7,
+  "centelha": 9,
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
@@ -15443,19 +15443,19 @@
   },
   "combate": {
    "pv": 115,
-   "defesa": 18,
-   "defesaMental": 34,
+   "defesa": 22,
+   "defesaMental": 38,
    "absorcao": {
-    "impacto": 21,
-    "corte": 24,
-    "perfuracao": 24
+    "impacto": 23,
+    "corte": 26,
+    "perfuracao": 26
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "10d6+2 +14",
+     "pool": "10d6+2 +18",
      "dano": "4d6 +16 perfConc",
      "speed": 7
     }
