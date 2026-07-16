@@ -447,7 +447,7 @@
     ]
   },
   "mon-ankylosaurus": {
-    "en": "Ankylosaurus",
+    "en": "Dinosaur, Ankylosaurus",
     "hab": [
       {
         "n": "Cauda Atordoante",
@@ -514,7 +514,7 @@
     ]
   },
   "mon-archon-cao": {
-    "en": "Hound Archon",
+    "en": "Archon, Hound",
     "hab": [
       {
         "n": "Aura de menaça",
@@ -539,7 +539,7 @@
     ]
   },
   "mon-army-ant-swarm": {
-    "en": "Army Ant Swarm",
+    "en": "Swarm, Army Ant",
     "hab": [
       {
         "n": "Massa Viva",
@@ -635,7 +635,7 @@
     ]
   },
   "mon-babau": {
-    "en": "Babau",
+    "en": "Demon, Babau",
     "hab": [
       {
         "n": "Limo Protetor",
@@ -660,7 +660,7 @@
     ]
   },
   "mon-balor": {
-    "en": "Balor",
+    "en": "Demon, Balor",
     "hab": [
       {
         "n": "Espada flamejante",
@@ -701,7 +701,7 @@
     ]
   },
   "mon-barbed-devil-hamatula": {
-    "en": "Barbed Devil",
+    "en": "Devil, Barbed",
     "hab": [
       {
         "n": "Defesa Espinhosa",
@@ -814,7 +814,7 @@
     ]
   },
   "mon-bat-swarm": {
-    "en": "Bat Swarm",
+    "en": "Swarm, Bat",
     "hab": [
       {
         "n": "Enxame Voraz",
@@ -1026,7 +1026,7 @@
     ]
   },
   "mon-brachiosaurus": {
-    "en": "Brachiosaurus",
+    "en": "Dinosaur, Brachiosaurus",
     "hab": [
       {
         "n": "Visão penumbra e faro",
@@ -1072,7 +1072,7 @@
     ]
   },
   "mon-bruxa-verde-hag": {
-    "en": "Green Hag",
+    "en": "Hag, Green",
     "hab": [
       {
         "n": "Toque da fraqueza",
@@ -1243,7 +1243,7 @@
     ]
   },
   "mon-centipede-swarm": {
-    "en": "Centipede Swarm",
+    "en": "Swarm, Centipede",
     "hab": [
       {
         "n": "Enxame Venenoso",
@@ -1352,7 +1352,7 @@
     ]
   },
   "mon-clay-golem": {
-    "en": "Clay Golem",
+    "en": "Golem, Clay",
     "hab": [
       {
         "n": "Corpo de Argila Endurecida",
@@ -1494,7 +1494,7 @@
     ]
   },
   "mon-crab-swarm": {
-    "en": "Crab Swarm",
+    "en": "Swarm, Crab",
     "hab": [
       {
         "n": "Enxame Cortante",
@@ -1619,7 +1619,7 @@
     ]
   },
   "mon-dark-naga": {
-    "en": "Dark Naga",
+    "en": "Naga, Dark",
     "hab": [
       {
         "n": "Leitura de pensamentos",
@@ -1694,7 +1694,7 @@
     ]
   },
   "mon-deinonychus": {
-    "en": "Deinonychus",
+    "en": "Dinosaur, Deinonychus",
     "hab": [
       {
         "n": "Visão penumbra e faro",
@@ -1744,7 +1744,7 @@
     ]
   },
   "mon-deva-astral": {
-    "en": "Astral Deva",
+    "en": "Angel, Astral Deva",
     "hab": [
       {
         "n": "Maça estonteante",
@@ -1777,7 +1777,7 @@
     ]
   },
   "mon-diabo-barbado": {
-    "en": "Bearded Devil (Barbazu)",
+    "en": "Devil, Bearded (Barbazu)",
     "hab": [
       {
         "n": "Glaive serrilhada",
@@ -1810,7 +1810,7 @@
     ]
   },
   "mon-diabo-de-gelo": {
-    "en": "Ice Devil (Gelugon)",
+    "en": "Devil, Ice (Gelugon)",
     "hab": [
       {
         "n": "Lança de gelo",
@@ -1884,7 +1884,7 @@
     ]
   },
   "mon-diabo-osseo": {
-    "en": "Bone Devil (Osyluth)",
+    "en": "Devil, Bone (Osyluth)",
     "hab": [
       {
         "n": "Ferrão que enfraquece",
@@ -2568,7 +2568,7 @@
     ]
   },
   "mon-dretch": {
-    "en": "Dretch",
+    "en": "Demon, Dretch",
     "hab": [
       {
         "n": "Fedor nauseante",
@@ -2730,7 +2730,7 @@
     ]
   },
   "mon-efreeti": {
-    "en": "Efreeti",
+    "en": "Genie, Efreeti",
     "hab": [
       {
         "n": "Corpo em chamas",
@@ -2759,7 +2759,7 @@
     ]
   },
   "mon-elasmosaurus": {
-    "en": "Elasmosaurus",
+    "en": "Dinosaur, Elasmosaurus",
     "hab": [
       {
         "n": "Visão penumbra e faro",
@@ -2826,7 +2826,7 @@
     ]
   },
   "mon-elemental-da-terra-grande": {
-    "en": "Large Earth Elemental",
+    "en": "Elemental, Large Earth",
     "hab": [
       {
         "n": "Deslizar na pedra",
@@ -3088,7 +3088,7 @@
     ]
   },
   "mon-flesh-golem": {
-    "en": "Flesh Golem",
+    "en": "Golem, Flesh",
     "hab": [
       {
         "n": "Corpo Costurado",
@@ -3647,7 +3647,7 @@
     ]
   },
   "mon-gigante-da-colina": {
-    "en": "Hill Giant",
+    "en": "Giant, Hill",
     "hab": [
       {
         "n": "Arremesso de rocha",
@@ -3672,7 +3672,7 @@
     ]
   },
   "mon-gigante-da-pedra": {
-    "en": "Stone Giant",
+    "en": "Giant, Stone",
     "hab": [
       {
         "n": "Arremesso certeiro",
@@ -3701,7 +3701,7 @@
     ]
   },
   "mon-gigante-da-tempestade": {
-    "en": "Storm Giant",
+    "en": "Giant, Storm",
     "hab": [
       {
         "n": "Comandar o clima",
@@ -3730,7 +3730,7 @@
     ]
   },
   "mon-gigante-das-nuvens": {
-    "en": "Cloud Giant",
+    "en": "Giant, Cloud",
     "hab": [
       {
         "n": "Névoa oculta",
@@ -3759,7 +3759,7 @@
     ]
   },
   "mon-gigante-do-fogo": {
-    "en": "Fire Giant",
+    "en": "Giant, Fire",
     "hab": [
       {
         "n": "Imune a fogo",
@@ -3788,7 +3788,7 @@
     ]
   },
   "mon-gigante-do-gelo": {
-    "en": "Frost Giant",
+    "en": "Giant, Frost",
     "hab": [
       {
         "n": "Imune ao frio",
@@ -3834,7 +3834,7 @@
     ]
   },
   "mon-glabrezu": {
-    "en": "Glabrezu",
+    "en": "Demon, Glabrezu",
     "hab": [
       {
         "n": "Desejo traiçoeiro",
@@ -4088,7 +4088,7 @@
     ]
   },
   "mon-guardian-naga": {
-    "en": "Guardian Naga",
+    "en": "Naga, Guardian",
     "hab": [
       {
         "n": "Veneno debilitante",
@@ -4168,7 +4168,7 @@
     ]
   },
   "mon-hezrou": {
-    "en": "Hezrou",
+    "en": "Demon, Hezrou",
     "hab": [
       {
         "n": "Fedor nauseante",
@@ -4306,7 +4306,7 @@
     ]
   },
   "mon-horned-devil-cornugon": {
-    "en": "Horned Devil",
+    "en": "Devil, Horned",
     "hab": [
       {
         "n": "Ferida Infernal",
@@ -4377,7 +4377,7 @@
     ]
   },
   "mon-ice-golem": {
-    "en": "Ice Golem",
+    "en": "Golem, Ice",
     "hab": [
       {
         "n": "Corpo de Gelo Vivo",
@@ -4514,7 +4514,7 @@
     ]
   },
   "mon-iron-golem": {
-    "en": "Iron Golem",
+    "en": "Golem, Iron",
     "hab": [
       {
         "n": "Sopro de gás venenoso",
@@ -4705,7 +4705,7 @@
     ]
   },
   "mon-lantern-archon": {
-    "en": "Lantern Archon",
+    "en": "Archon, Lantern",
     "hab": [
       {
         "n": "Raios de Luz",
@@ -4751,7 +4751,7 @@
     ]
   },
   "mon-leech-swarm": {
-    "en": "Leech Swarm",
+    "en": "Swarm, Leech",
     "hab": [
       {
         "n": "Nuvem Viva",
@@ -4984,7 +4984,7 @@
     ]
   },
   "mon-marilith": {
-    "en": "Marilith",
+    "en": "Demon, Marilith",
     "hab": [
       {
         "n": "Seis lâminas",
@@ -5359,7 +5359,7 @@
     ]
   },
   "mon-nabasu": {
-    "en": "Nabasu",
+    "en": "Demon, Nabasu",
     "hab": [
       {
         "n": "Roubo de Vida",
@@ -5384,7 +5384,7 @@
     ]
   },
   "mon-naga-espirita": {
-    "en": "Spirit Naga",
+    "en": "Naga, Spirit",
     "hab": [
       {
         "n": "Olhar encantador",
@@ -5417,7 +5417,7 @@
     ]
   },
   "mon-nalfeshnee": {
-    "en": "Nalfeshnee",
+    "en": "Demon, Nalfeshnee",
     "hab": [
       {
         "n": "Nimbo Profano",
@@ -5496,7 +5496,7 @@
     ]
   },
   "mon-night-hag": {
-    "en": "Night Hag",
+    "en": "Hag, Night",
     "hab": [
       {
         "n": "Visão no escuro",
@@ -5837,7 +5837,7 @@
     ]
   },
   "mon-planetar": {
-    "en": "Planetar",
+    "en": "Angel, Planetar",
     "hab": [
       {
         "n": "Espada de luz cegante",
@@ -5933,7 +5933,7 @@
     ]
   },
   "mon-pteranodon": {
-    "en": "Pteranodon",
+    "en": "Dinosaur, Pteranodon",
     "hab": [
       {
         "n": "Visão penumbra e faro",
@@ -5950,7 +5950,7 @@
     ]
   },
   "mon-quasit": {
-    "en": "Quasit",
+    "en": "Demon, Quasit",
     "hab": [
       {
         "n": "Invisibilidade",
@@ -6037,7 +6037,7 @@
     ]
   },
   "mon-rat-swarm": {
-    "en": "Rat Swarm",
+    "en": "Swarm, Rat",
     "hab": [
       {
         "n": "Massa enxameante",
@@ -6317,7 +6317,7 @@
     ]
   },
   "mon-sea-hag": {
-    "en": "Sea Hag",
+    "en": "Hag, Sea",
     "hab": [
       {
         "n": "Olho maligno",
@@ -6517,7 +6517,7 @@
     ]
   },
   "mon-small-air-elemental": {
-    "en": "Air Elemental",
+    "en": "Elemental, Air",
     "hab": [
       {
         "n": "Voo perfeito",
@@ -6538,7 +6538,7 @@
     ]
   },
   "mon-small-earth-elemental": {
-    "en": "Earth Elemental",
+    "en": "Elemental, Earth",
     "hab": [
       {
         "n": "Escavar e fundir com a pedra",
@@ -6559,7 +6559,7 @@
     ]
   },
   "mon-small-fire-elemental": {
-    "en": "Fire Elemental",
+    "en": "Elemental, Fire",
     "hab": [
       {
         "n": "Toque em chamas",
@@ -6580,7 +6580,7 @@
     ]
   },
   "mon-small-water-elemental": {
-    "en": "Water Elemental",
+    "en": "Elemental, Water",
     "hab": [
       {
         "n": "Nado veloz",
@@ -6601,7 +6601,7 @@
     ]
   },
   "mon-solar": {
-    "en": "Solar",
+    "en": "Angel, Solar",
     "hab": [
       {
         "n": "Arco da aurora",
@@ -6667,7 +6667,7 @@
     ]
   },
   "mon-spider-swarm": {
-    "en": "Spider Swarm",
+    "en": "Swarm, Spider",
     "hab": [
       {
         "n": "Enxame",
@@ -6713,7 +6713,7 @@
     ]
   },
   "mon-stegosaurus": {
-    "en": "Stegosaurus",
+    "en": "Dinosaur, Stegosaurus",
     "hab": [
       {
         "n": "Visão penumbra e faro",
@@ -6755,7 +6755,7 @@
     ]
   },
   "mon-stone-golem": {
-    "en": "Stone Golem",
+    "en": "Golem, Stone",
     "hab": [
       {
         "n": "Onda de lentidão",
@@ -6776,7 +6776,7 @@
     ]
   },
   "mon-sucubo": {
-    "en": "Succubus",
+    "en": "Demon, Succubus",
     "hab": [
       {
         "n": "Beijo dreno",
@@ -7013,7 +7013,7 @@
     ]
   },
   "mon-triceratops": {
-    "en": "Triceratops",
+    "en": "Dinosaur, Triceratops",
     "hab": [
       {
         "n": "Visão penumbra e faro",
@@ -7080,7 +7080,7 @@
     ]
   },
   "mon-trumpet-archon": {
-    "en": "Trumpet Archon",
+    "en": "Archon, Trumpet",
     "hab": [
       {
         "n": "Espadão Celestial",
@@ -7109,7 +7109,7 @@
     ]
   },
   "mon-tyrannosaurus": {
-    "en": "Tyrannosaurus",
+    "en": "Dinosaur, Tyrannosaurus",
     "hab": [
       {
         "n": "Faro e visão apurados",
@@ -7363,7 +7363,7 @@
     ]
   },
   "mon-vrock": {
-    "en": "Vrock",
+    "en": "Demon, Vrock",
     "hab": [
       {
         "n": "Esporos entorpecentes",
@@ -7396,7 +7396,7 @@
     ]
   },
   "mon-wasp-swarm": {
-    "en": "Wasp Swarm",
+    "en": "Swarm, Wasp",
     "hab": [
       {
         "n": "Enxame",
@@ -7434,7 +7434,7 @@
     ]
   },
   "mon-wererat-human-form": {
-    "en": "Wererat",
+    "en": "Lycanthrope, Wererat",
     "hab": [
       {
         "n": "Forma Mutável",
@@ -7463,7 +7463,7 @@
     ]
   },
   "mon-werewolf": {
-    "en": "Werewolf",
+    "en": "Lycanthrope, Werewolf",
     "hab": [
       {
         "n": "Forma Mutável",

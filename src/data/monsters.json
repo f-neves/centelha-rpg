@@ -485,7 +485,7 @@
  {
   "id": "mon-ankylosaurus",
   "nome": "Ankylosaurus",
-  "nomeIngles": "Ankylosaurus",
+  "nomeIngles": "Dinosaur, Ankylosaurus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -811,7 +811,7 @@
  {
   "id": "mon-archon-cao",
   "nome": "Archon Cão",
-  "nomeIngles": "Hound Archon",
+  "nomeIngles": "Archon, Hound",
   "categoria": "Celestial",
   "tipo": "soldado",
   "conceito": "exterior Médio (celestial)",
@@ -1387,7 +1387,7 @@
  {
   "id": "mon-babau",
   "nome": "Babau",
-  "nomeIngles": "Babau",
+  "nomeIngles": "Demon, Babau",
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior (demônio) Médio",
@@ -1486,7 +1486,7 @@
  {
   "id": "mon-balor",
   "nome": "Balor",
-  "nomeIngles": "Balor",
+  "nomeIngles": "Demon, Balor",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (demônio)",
@@ -1753,7 +1753,7 @@
  {
   "id": "mon-barbed-devil-hamatula",
   "nome": "Barbed Devil (Hamatula)",
-  "nomeIngles": "Barbed Devil",
+  "nomeIngles": "Devil, Barbed",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (diabo) Médio",
@@ -3248,7 +3248,7 @@
  {
   "id": "mon-brachiosaurus",
   "nome": "Braquiossauro",
-  "nomeIngles": "Brachiosaurus",
+  "nomeIngles": "Dinosaur, Brachiosaurus",
   "categoria": "Animal",
   "tipo": "chefe",
   "conceito": "animal Imenso",
@@ -3442,7 +3442,7 @@
  {
   "id": "mon-bruxa-verde-hag",
   "nome": "Bruxa Verde (Hag)",
-  "nomeIngles": "Green Hag",
+  "nomeIngles": "Hag, Green",
   "categoria": "Humanoide monstruoso",
   "tipo": "elite",
   "conceito": "humanoide monstruoso Médio",
@@ -6901,7 +6901,7 @@
  {
   "id": "mon-dark-naga",
   "nome": "Dark Naga",
-  "nomeIngles": "Dark Naga",
+  "nomeIngles": "Naga, Dark",
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Grande",
@@ -7202,7 +7202,7 @@
  {
   "id": "mon-deinonychus",
   "nome": "Deinonychus",
-  "nomeIngles": "Deinonychus",
+  "nomeIngles": "Dinosaur, Deinonychus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -7399,7 +7399,7 @@
  {
   "id": "mon-deva-astral",
   "nome": "Deva Astral",
-  "nomeIngles": "Astral Deva",
+  "nomeIngles": "Angel, Astral Deva",
   "categoria": "Celestial",
   "tipo": "chefe",
   "conceito": "exterior Médio (anjo)",
@@ -7547,7 +7547,7 @@
  {
   "id": "mon-diabo-barbado",
   "nome": "Diabo Barbado",
-  "nomeIngles": "Bearded Devil (Barbazu)",
+  "nomeIngles": "Devil, Bearded (Barbazu)",
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior Médio (diabo)",
@@ -7686,7 +7686,7 @@
  {
   "id": "mon-diabo-de-gelo",
   "nome": "Diabo de Gelo",
-  "nomeIngles": "Ice Devil (Gelugon)",
+  "nomeIngles": "Devil, Ice (Gelugon)",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (diabo)",
@@ -8002,7 +8002,7 @@
  {
   "id": "mon-diabo-osseo",
   "nome": "Diabo Ósseo",
-  "nomeIngles": "Bone Devil (Osyluth)",
+  "nomeIngles": "Devil, Bone (Osyluth)",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (diabo)",
@@ -10176,7 +10176,7 @@
  {
   "id": "mon-dretch",
   "nome": "Dretch",
-  "nomeIngles": "Dretch",
+  "nomeIngles": "Demon, Dretch",
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Pequeno (demônio)",
@@ -10950,7 +10950,7 @@
  {
   "id": "mon-efreeti",
   "nome": "Efreeti",
-  "nomeIngles": "Efreeti",
+  "nomeIngles": "Genie, Efreeti",
   "categoria": "Elemental",
   "tipo": "chefe",
   "conceito": "exterior Grande (fogo)",
@@ -11094,7 +11094,7 @@
  {
   "id": "mon-elasmosaurus",
   "nome": "Elasmossauro",
-  "nomeIngles": "Elasmosaurus",
+  "nomeIngles": "Dinosaur, Elasmosaurus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -11188,7 +11188,7 @@
  {
   "id": "mon-elemental-da-terra-grande",
   "nome": "Elemental da Terra (Grande)",
-  "nomeIngles": "Large Earth Elemental",
+  "nomeIngles": "Elemental, Large Earth",
   "categoria": "Elemental",
   "tipo": "elite",
   "conceito": "exterior Grande (terra)",
@@ -11411,7 +11411,7 @@
  {
   "id": "mon-spider-swarm",
   "nome": "Enxame de Aranhas",
-  "nomeIngles": "Spider Swarm",
+  "nomeIngles": "Swarm, Spider",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Minúsculo",
@@ -11512,7 +11512,7 @@
  {
   "id": "mon-crab-swarm",
   "nome": "Enxame de Caranguejo",
-  "nomeIngles": "Crab Swarm",
+  "nomeIngles": "Swarm, Crab",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Minúsculo",
@@ -11607,7 +11607,7 @@
  {
   "id": "mon-centipede-swarm",
   "nome": "Enxame de Centopéia",
-  "nomeIngles": "Centipede Swarm",
+  "nomeIngles": "Swarm, Centipede",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Minúsculo",
@@ -11703,7 +11703,7 @@
  {
   "id": "mon-army-ant-swarm",
   "nome": "Enxame de Formigas",
-  "nomeIngles": "Army Ant Swarm",
+  "nomeIngles": "Swarm, Army Ant",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Minúsculo",
@@ -11797,7 +11797,7 @@
  {
   "id": "mon-bat-swarm",
   "nome": "Enxame de Morcegos",
-  "nomeIngles": "Bat Swarm",
+  "nomeIngles": "Swarm, Bat",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Minúsculo",
@@ -11902,7 +11902,7 @@
  {
   "id": "mon-rat-swarm",
   "nome": "Enxame de Ratos",
-  "nomeIngles": "Rat Swarm",
+  "nomeIngles": "Swarm, Rat",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Minúsculo",
@@ -12006,7 +12006,7 @@
  {
   "id": "mon-leech-swarm",
   "nome": "Enxame de Sanguessugas",
-  "nomeIngles": "Leech Swarm",
+  "nomeIngles": "Swarm, Leech",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Minúsculo",
@@ -12114,7 +12114,7 @@
  {
   "id": "mon-wasp-swarm",
   "nome": "Enxame de Vespas",
-  "nomeIngles": "Wasp Swarm",
+  "nomeIngles": "Swarm, Wasp",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Minúsculo",
@@ -12849,7 +12849,7 @@
  {
   "id": "mon-stegosaurus",
   "nome": "Estegossauro",
-  "nomeIngles": "Stegosaurus",
+  "nomeIngles": "Dinosaur, Stegosaurus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -14738,7 +14738,7 @@
  {
   "id": "mon-gigante-da-colina",
   "nome": "Gigante da Colina",
-  "nomeIngles": "Hill Giant",
+  "nomeIngles": "Giant, Hill",
   "categoria": "Gigante",
   "tipo": "elite",
   "conceito": "humanoide Grande (gigante)",
@@ -14846,7 +14846,7 @@
  {
   "id": "mon-gigante-da-pedra",
   "nome": "Gigante da Pedra",
-  "nomeIngles": "Stone Giant",
+  "nomeIngles": "Giant, Stone",
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Grande (gigante)",
@@ -14957,7 +14957,7 @@
  {
   "id": "mon-gigante-da-tempestade",
   "nome": "Gigante da Tempestade",
-  "nomeIngles": "Storm Giant",
+  "nomeIngles": "Giant, Storm",
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Enorme (gigante)",
@@ -15096,7 +15096,7 @@
  {
   "id": "mon-gigante-das-nuvens",
   "nome": "Gigante das Nuvens",
-  "nomeIngles": "Cloud Giant",
+  "nomeIngles": "Giant, Cloud",
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Enorme (gigante)",
@@ -15227,7 +15227,7 @@
  {
   "id": "mon-gigante-do-fogo",
   "nome": "Gigante do Fogo",
-  "nomeIngles": "Fire Giant",
+  "nomeIngles": "Giant, Fire",
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Grande (gigante)",
@@ -15352,7 +15352,7 @@
  {
   "id": "mon-gigante-do-gelo",
   "nome": "Gigante do Gelo",
-  "nomeIngles": "Frost Giant",
+  "nomeIngles": "Giant, Frost",
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Grande (gigante)",
@@ -15560,7 +15560,7 @@
  {
   "id": "mon-glabrezu",
   "nome": "Glabrezu",
-  "nomeIngles": "Glabrezu",
+  "nomeIngles": "Demon, Glabrezu",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Enorme (demônio)",
@@ -15910,7 +15910,7 @@
  {
   "id": "mon-clay-golem",
   "nome": "Golem de Argila",
-  "nomeIngles": "Clay Golem",
+  "nomeIngles": "Golem, Clay",
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Grande",
@@ -16007,7 +16007,7 @@
  {
   "id": "mon-flesh-golem",
   "nome": "Golem de Carne",
-  "nomeIngles": "Flesh Golem",
+  "nomeIngles": "Golem, Flesh",
   "categoria": "Construto",
   "tipo": "elite",
   "conceito": "constructo Grande",
@@ -16107,7 +16107,7 @@
  {
   "id": "mon-iron-golem",
   "nome": "Golem de Ferro",
-  "nomeIngles": "Iron Golem",
+  "nomeIngles": "Golem, Iron",
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Grande",
@@ -16208,7 +16208,7 @@
  {
   "id": "mon-ice-golem",
   "nome": "Golem de Gelo",
-  "nomeIngles": "Ice Golem",
+  "nomeIngles": "Golem, Ice",
   "categoria": "Construto",
   "tipo": "elite",
   "conceito": "constructo Médio",
@@ -16304,7 +16304,7 @@
  {
   "id": "mon-stone-golem",
   "nome": "Golem de Pedra",
-  "nomeIngles": "Stone Golem",
+  "nomeIngles": "Golem, Stone",
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Grande",
@@ -17181,7 +17181,7 @@
  {
   "id": "mon-guardian-naga",
   "nome": "Guardian Naga",
-  "nomeIngles": "Guardian Naga",
+  "nomeIngles": "Naga, Guardian",
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Grande",
@@ -17589,7 +17589,7 @@
  {
   "id": "mon-hezrou",
   "nome": "Hezrou",
-  "nomeIngles": "Hezrou",
+  "nomeIngles": "Demon, Hezrou",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (demônio)",
@@ -18429,7 +18429,7 @@
  {
   "id": "mon-horned-devil-cornugon",
   "nome": "Horned Devil (Cornugon)",
-  "nomeIngles": "Horned Devil",
+  "nomeIngles": "Devil, Horned",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (diabo) Grande",
@@ -19934,7 +19934,7 @@
  {
   "id": "mon-lantern-archon",
   "nome": "Lantern Archon",
-  "nomeIngles": "Lantern Archon",
+  "nomeIngles": "Archon, Lantern",
   "categoria": "Celestial",
   "tipo": "soldado",
   "conceito": "exterior (anjo) Pequeno",
@@ -21879,7 +21879,7 @@
  {
   "id": "mon-marilith",
   "nome": "Marilith",
-  "nomeIngles": "Marilith",
+  "nomeIngles": "Demon, Marilith",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (demônio)",
@@ -23555,7 +23555,7 @@
  {
   "id": "mon-nabasu",
   "nome": "Nabasu",
-  "nomeIngles": "Nabasu",
+  "nomeIngles": "Demon, Nabasu",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (demônio) Médio",
@@ -23654,7 +23654,7 @@
  {
   "id": "mon-naga-espirita",
   "nome": "Naga Espírita",
-  "nomeIngles": "Spirit Naga",
+  "nomeIngles": "Naga, Spirit",
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Grande",
@@ -23798,7 +23798,7 @@
  {
   "id": "mon-nalfeshnee",
   "nome": "Nalfeshnee",
-  "nomeIngles": "Nalfeshnee",
+  "nomeIngles": "Demon, Nalfeshnee",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (demônio) Enorme",
@@ -24099,7 +24099,7 @@
  {
   "id": "mon-night-hag",
   "nome": "Night Hag",
-  "nomeIngles": "Night Hag",
+  "nomeIngles": "Hag, Night",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Médio",
@@ -25587,7 +25587,7 @@
  {
   "id": "mon-planetar",
   "nome": "Planetar",
-  "nomeIngles": "Planetar",
+  "nomeIngles": "Angel, Planetar",
   "categoria": "Celestial",
   "tipo": "chefe",
   "conceito": "exterior Grande (anjo)",
@@ -26113,7 +26113,7 @@
  {
   "id": "mon-pteranodon",
   "nome": "Pteranodonte",
-  "nomeIngles": "Pteranodon",
+  "nomeIngles": "Dinosaur, Pteranodon",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -26303,7 +26303,7 @@
  {
   "id": "mon-quasit",
   "nome": "Quasit",
-  "nomeIngles": "Quasit",
+  "nomeIngles": "Demon, Quasit",
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Minúsculo (demônio)",
@@ -28193,7 +28193,7 @@
  {
   "id": "mon-sea-hag",
   "nome": "Sea Hag",
-  "nomeIngles": "Sea Hag",
+  "nomeIngles": "Hag, Sea",
   "categoria": "Humanoide monstruoso",
   "tipo": "soldado",
   "conceito": "humanoide monstruoso Médio",
@@ -29020,7 +29020,7 @@
  {
   "id": "mon-small-air-elemental",
   "nome": "Small Air Elemental",
-  "nomeIngles": "Air Elemental",
+  "nomeIngles": "Elemental, Air",
   "categoria": "Elemental",
   "tipo": "soldado",
   "conceito": "exterior (ar) Pequeno",
@@ -29116,7 +29116,7 @@
  {
   "id": "mon-small-earth-elemental",
   "nome": "Small Earth Elemental",
-  "nomeIngles": "Earth Elemental",
+  "nomeIngles": "Elemental, Earth",
   "categoria": "Elemental",
   "tipo": "soldado",
   "conceito": "exterior (terra) Pequeno",
@@ -29212,7 +29212,7 @@
  {
   "id": "mon-small-fire-elemental",
   "nome": "Small Fire Elemental",
-  "nomeIngles": "Fire Elemental",
+  "nomeIngles": "Elemental, Fire",
   "categoria": "Elemental",
   "tipo": "soldado",
   "conceito": "exterior (fogo) Pequeno",
@@ -29307,7 +29307,7 @@
  {
   "id": "mon-small-water-elemental",
   "nome": "Small Water Elemental",
-  "nomeIngles": "Water Elemental",
+  "nomeIngles": "Elemental, Water",
   "categoria": "Elemental",
   "tipo": "soldado",
   "conceito": "exterior (água) Pequeno",
@@ -29402,7 +29402,7 @@
  {
   "id": "mon-solar",
   "nome": "Solar",
-  "nomeIngles": "Solar",
+  "nomeIngles": "Angel, Solar",
   "categoria": "Celestial",
   "tipo": "chefe",
   "conceito": "exterior Grande (anjo)",
@@ -29899,7 +29899,7 @@
  {
   "id": "mon-sucubo",
   "nome": "Súcubo",
-  "nomeIngles": "Succubus",
+  "nomeIngles": "Demon, Succubus",
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior Médio (demônio)",
@@ -30712,7 +30712,7 @@
  {
   "id": "mon-tyrannosaurus",
   "nome": "Tiranossauro",
-  "nomeIngles": "Tyrannosaurus",
+  "nomeIngles": "Dinosaur, Tyrannosaurus",
   "categoria": "Animal",
   "tipo": "chefe",
   "conceito": "animal Imenso",
@@ -31043,7 +31043,7 @@
  {
   "id": "mon-triceratops",
   "nome": "Tricerátops",
-  "nomeIngles": "Triceratops",
+  "nomeIngles": "Dinosaur, Triceratops",
   "categoria": "Animal",
   "tipo": "chefe",
   "conceito": "animal Enorme",
@@ -31356,7 +31356,7 @@
  {
   "id": "mon-trumpet-archon",
   "nome": "Trumpet Archon",
-  "nomeIngles": "Trumpet Archon",
+  "nomeIngles": "Archon, Trumpet",
   "categoria": "Celestial",
   "tipo": "chefe",
   "conceito": "exterior (anjo) Médio",
@@ -32872,7 +32872,7 @@
  {
   "id": "mon-vrock",
   "nome": "Vrock",
-  "nomeIngles": "Vrock",
+  "nomeIngles": "Demon, Vrock",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (demônio)",
@@ -33010,7 +33010,7 @@
  {
   "id": "mon-wererat-human-form",
   "nome": "Wererat (Human Form)",
-  "nomeIngles": "Wererat",
+  "nomeIngles": "Lycanthrope, Wererat",
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio",
@@ -33117,7 +33117,7 @@
  {
   "id": "mon-werewolf",
   "nome": "WerewolF",
-  "nomeIngles": "Werewolf",
+  "nomeIngles": "Lycanthrope, Werewolf",
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio",
