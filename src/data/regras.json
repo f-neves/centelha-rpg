@@ -223,8 +223,18 @@
   ],
   "derivados": {
     "pv": {
+      "nota": "PV base considera criatura de porte Médio (humanoide). base + Vigor×vigorMult. Criaturas de outros portes usam a tabela `porte` (base e multiplicador escalam com o tamanho): maiores aguentam mais mesmo com o mesmo Vigor. Médio = valores do topo (default para PCs).",
       "base": 25,
-      "vigorMult": 3
+      "vigorMult": 3,
+      "porte": {
+        "minusculo": { "base": 15, "vigorMult": 1 },
+        "pequeno": { "base": 20, "vigorMult": 2 },
+        "medio": { "base": 25, "vigorMult": 3 },
+        "grande": { "base": 30, "vigorMult": 4 },
+        "enorme": { "base": 35, "vigorMult": 5 },
+        "imenso": { "base": 40, "vigorMult": 5 },
+        "colossal": { "base": 45, "vigorMult": 5 }
+      }
     },
     "danoForca": {
       "nota": "Multiplicador da Força somada ao dano por nº de mãos. À distância = 0.",

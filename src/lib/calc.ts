@@ -24,9 +24,13 @@ export function poolStr(atributo: number, habilidade: number) {
   return `${dados}d6${bonus ? ` + ${bonus}` : ''}`;
 }
 
-export function pv(vigor: number) {
-  const d = regras.derivados.pv;
-  return d.base + vigor * d.vigorMult;
+export type Porte = 'minusculo' | 'pequeno' | 'medio' | 'grande' | 'enorme' | 'imenso' | 'colossal';
+
+/** PV máximo. base + Vigor×mult, escalando com o porte (Médio = default, usado por PCs). */
+export function pv(vigor: number, porte: Porte = 'medio') {
+  const d = regras.derivados.pv as { base: number; vigorMult: number; porte?: Record<string, { base: number; vigorMult: number }> };
+  const t = d.porte?.[porte] ?? { base: d.base, vigorMult: d.vigorMult };
+  return t.base + vigor * t.vigorMult;
 }
 
 /** Defesa (Esquiva/Bloqueio): (Destreza + Habilidade) × 2 + Especialidade + Centelha×2. */

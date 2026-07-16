@@ -18,6 +18,18 @@ A **soma das duas** trilhas é o seu dano total, e é ela que define o seu estad
 
 <p class="formula">PV = 25 + (Vigor × 3)</p>
 
+Essa é a durabilidade de uma criatura de **porte Médio**, o padrão dos humanoides e dos personagens. Criaturas maiores aguentam mais e as menores bem menos, mesmo com o mesmo Vigor: a base e o multiplicador escalam com o tamanho. Um urso (Grande) de Vigor 5 tem 50 PV, enquanto um elfo (Médio) de mesmo Vigor tem 40.
+
+| Porte | PV |
+|---|---|
+| Miúdo | 15 + (Vigor × 1) |
+| Pequeno | 20 + (Vigor × 2) |
+| Médio | 25 + (Vigor × 3) |
+| Grande | 30 + (Vigor × 4) |
+| Enorme | 35 + (Vigor × 5) |
+| Imenso | 40 + (Vigor × 5) |
+| Colossal | 45 + (Vigor × 5) |
+
 A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcentagem dela que diz em que estado você está, na tabela abaixo.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Bram tem <strong>PV 37</strong>. Numa briga feia, leva <strong>20 de Impacto + 8 de Letal = 28</strong> de dano: restam <strong>9 PV</strong> (24% → <strong>Grave</strong>). Está mal — mas longe de morrer: a morte exigiria <strong>37 de Letal</strong>, e ele só tem 8. Se cair a 0 com a maior parte sendo Impacto, ele <em>desmaia</em>, não morre.</div>

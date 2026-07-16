@@ -13,13 +13,34 @@ const cNoSoak = regras.dano?.centelhaNoSoak ?? 0;
 // Soak natural por modo: Impacto = Vigor cheio; letais = metade do Vigor.
 const soakNat = (vigor, modo) => (modo === 'impacto' ? vigor : fl(vigor / 2));
 
+// Porte por criatura (para o PV escalar com o tamanho) — usa o porte exibido em dimensoes-bestiario.json,
+// para que o PV e o Porte do card sempre concordem. Fallback: Médio.
+const DIMPORTE = (() => {
+  try {
+    const dim = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/dimensoes-bestiario.json'), 'utf8'));
+    const norm = { miudo: 'minusculo', minusculo: 'minusculo', pequeno: 'pequeno', medio: 'medio', grande: 'grande', enorme: 'enorme', imenso: 'imenso', colossal: 'colossal' };
+    const map = {};
+    for (const [id, d] of Object.entries(dim)) {
+      const k = String(d.porte || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      map[id] = norm[k] || 'medio';
+    }
+    return map;
+  } catch { return {}; }
+})();
+// PV escalado por porte: base + Vigor×mult da tabela regras.derivados.pv.porte (Médio = default).
+function pvDe(id, vigor) {
+  const key = DIMPORTE[id] || 'medio';
+  const t = (D.pv.porte && D.pv.porte[key]) || { base: D.pv.base, vigorMult: D.pv.vigorMult };
+  return t.base + vigor * t.vigorMult;
+}
+
 // build compacta → stat block calculado
 function stat(b) {
   const at = { forca: 2, destreza: 2, vigor: 2, influencia: 2, perspicacia: 2, compostura: 2, percepcao: 2, inteligencia: 2, raciocinio: 2, ...b.attrs };
   const pe = b.pericias || {};
   const arm = ARMAD[b.armadura || 'nenhuma'] || ARMAD['nenhuma'];
   const C = b.centelha || 0;
-  const pv = D.pv.base + at.vigor * D.pv.vigorMult;
+  const pv = pvDe(b.id, at.vigor);
   const espEsq = (b.especialidades && b.especialidades.esquiva) || 0;
   const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + C * (D.defesa.centelhaMult ?? 1) - (arm.penalidade || 0);
   const integ = pe.integridade ?? b.integridade ?? 2;
