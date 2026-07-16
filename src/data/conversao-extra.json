@@ -219,7 +219,7 @@
     "wis": 11,
     "cha": 1,
     "size": "medio",
-    "cent": 0,
+    "cent": 1,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },
@@ -347,7 +347,7 @@
     "wis": 1,
     "cha": 1,
     "size": "enorme",
-    "cent": 0,
+    "cent": 1,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },
@@ -1403,7 +1403,7 @@
     "wis": 11,
     "cha": 1,
     "size": "grande",
-    "cent": 0,
+    "cent": 2,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },
@@ -1419,7 +1419,7 @@
     "wis": 11,
     "cha": 1,
     "size": "grande",
-    "cent": 0,
+    "cent": 2,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },
@@ -1435,7 +1435,7 @@
     "wis": 11,
     "cha": 1,
     "size": "medio",
-    "cent": 0,
+    "cent": 1,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },
@@ -1451,7 +1451,7 @@
     "wis": 11,
     "cha": 1,
     "size": "grande",
-    "cent": 0,
+    "cent": 3,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },
@@ -1467,7 +1467,7 @@
     "wis": 11,
     "cha": 1,
     "size": "grande",
-    "cent": 0,
+    "cent": 2,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },
@@ -1483,7 +1483,7 @@
     "wis": 1,
     "cha": 1,
     "size": "medio",
-    "cent": 0,
+    "cent": 1,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },
@@ -2075,7 +2075,7 @@
     "wis": 1,
     "cha": 1,
     "size": "grande",
-    "cent": 0,
+    "cent": 1,
     "sk": [],
     "note": "Importado do Bestiary 1 (PF). Poderes a mapear."
   },

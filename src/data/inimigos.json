@@ -282,19 +282,19 @@
     "tipo": "elite",
     "categoria": "Humano",
     "ameaca": 4,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "comandante mortal",
     "descricao": "Líder competente; coordena subordinados e segura a linha.",
     "tags": [
       "humano"
     ],
     "pv": 37,
-    "defesa": 11,
-    "defesaMental": 19,
+    "defesa": 13,
+    "defesaMental": 21,
     "soak": {
-      "impacto": 10,
-      "corte": 13,
-      "perfuracao": 6
+      "impacto": 11,
+      "corte": 14,
+      "perfuracao": 7
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 6",
@@ -312,7 +312,7 @@
     "ataques": [
       {
         "nome": "Espada longa",
-        "pool": "4d6 +1",
+        "pool": "4d6 +3",
         "dano": "2d6 +3 corte",
         "ticks": 6
       }
@@ -1268,19 +1268,20 @@
     "tipo": "elite",
     "categoria": "Gigante",
     "ameaca": 4,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "humanoide Grande (gigante)",
     "descricao": "Colosso humanoide, força bruta em escala descomunal.",
     "tags": [
-      "gigante"
+      "gigante",
+      "centelha"
     ],
     "pv": 54,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 6,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 7,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1298,7 +1299,7 @@
     "ataques": [
       {
         "nome": "Pancada descomunal",
-        "pool": "6d6+2",
+        "pool": "7d6 +2",
         "dano": "2d6 +9 impacto",
         "ticks": 6
       }
@@ -2011,7 +2012,7 @@
   },
   {
     "id": "mon-elefante",
-    "nome": "Elefante",
+    "nome": "Mamute",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
@@ -3443,19 +3444,20 @@
     "tipo": "soldado",
     "categoria": "Limo",
     "ameaca": 3,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "limo Grande",
     "descricao": "Massa informe que digere tudo que toca.",
     "tags": [
-      "limo"
+      "limo",
+      "centelha"
     ],
     "pv": 66,
-    "defesa": 0,
-    "defesaMental": 9,
+    "defesa": 2,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 0",
@@ -3473,7 +3475,7 @@
     "ataques": [
       {
         "nome": "Pseudópode",
-        "pool": "3d6",
+        "pool": "3d6+2 +2",
         "dano": "2d6 +3 impacto",
         "ticks": 6
       }
@@ -3904,19 +3906,20 @@
     "tipo": "capanga",
     "categoria": "Morto-vivo",
     "ameaca": 1,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "morto-vivo Médio",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
-      "morto-vivo"
+      "morto-vivo",
+      "centelha"
     ],
     "pv": 31,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 6,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 3,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3934,7 +3937,7 @@
     "ataques": [
       {
         "nome": "Golpe",
-        "pool": "3d6",
+        "pool": "3d6+2 +2",
         "dano": "1d6 +5 impacto",
         "ticks": 5
       }
@@ -8932,7 +8935,7 @@
   },
   {
     "id": "mon-giant-ant",
-    "nome": "Giant Ant",
+    "nome": "Formiga Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -9357,19 +9360,20 @@
     "tipo": "elite",
     "categoria": "Planta",
     "ameaca": 4,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "planta Médio",
     "descricao": "Vegetal desperto, lento e implacável.",
     "tags": [
-      "planta"
+      "planta",
+      "centelha"
     ],
     "pv": 40,
-    "defesa": 8,
-    "defesaMental": 9,
+    "defesa": 10,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -9387,7 +9391,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6",
+        "pool": "5d6+2 +2",
         "dano": "1d6 +6 perfConc",
         "ticks": 5
       }
@@ -9399,7 +9403,7 @@
   },
   {
     "id": "mon-dire-bat",
-    "nome": "Dire Bat",
+    "nome": "Morcego Atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -9445,7 +9449,7 @@
   },
   {
     "id": "mon-bat-swarm",
-    "nome": "Bat Swarm",
+    "nome": "Enxame de Morcegos",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -9491,7 +9495,7 @@
   },
   {
     "id": "mon-grizzly-bear",
-    "nome": "Grizzly Bear",
+    "nome": "Urso Pardo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -9537,7 +9541,7 @@
   },
   {
     "id": "mon-dire-bear-cave-bear",
-    "nome": "Dire Bear (Cave Bear)",
+    "nome": "Urso Atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
@@ -9630,7 +9634,7 @@
   },
   {
     "id": "mon-fire-beetle",
-    "nome": "Fire Beetle",
+    "nome": "Besouro de Fogo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -9676,7 +9680,7 @@
   },
   {
     "id": "mon-giant-stag-beetle",
-    "nome": "Giant Stag Beetle",
+    "nome": "Besouro-Veado Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -9722,23 +9726,24 @@
   },
   {
     "id": "mon-black-pudding",
-    "nome": "Black Pudding",
+    "nome": "Pudim Negro",
     "tipo": "elite",
     "categoria": "Limo",
     "ameaca": 4,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "limo Enorme",
     "descricao": "Massa informe que digere tudo que toca.",
     "tags": [
-      "limo"
+      "limo",
+      "centelha"
     ],
     "pv": 80,
-    "defesa": 0,
-    "defesaMental": 9,
+    "defesa": 2,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 0",
@@ -9756,7 +9761,7 @@
     "ataques": [
       {
         "nome": "Pseudópode",
-        "pool": "5d6+2",
+        "pool": "6d6 +2",
         "dano": "3d6 +7 impacto",
         "ticks": 7
       }
@@ -9768,7 +9773,7 @@
   },
   {
     "id": "mon-dire-boar-daeodon",
-    "nome": "Dire Boar (Daeodon)",
+    "nome": "Javali Atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -9907,7 +9912,7 @@
   },
   {
     "id": "mon-leopard",
-    "nome": "Leopard",
+    "nome": "Leopardo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -10046,7 +10051,7 @@
   },
   {
     "id": "mon-giant-centipede",
-    "nome": "Giant Centipede",
+    "nome": "Centopéia Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -10092,7 +10097,7 @@
   },
   {
     "id": "mon-centipede-swarm",
-    "nome": "Centipede Swarm",
+    "nome": "Enxame de Centopéia",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -10279,7 +10284,7 @@
   },
   {
     "id": "mon-giant-crab",
-    "nome": "Giant Crab",
+    "nome": "Caranguejo Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -10325,7 +10330,7 @@
   },
   {
     "id": "mon-crab-swarm",
-    "nome": "Crab Swarm",
+    "nome": "Enxame de Caranguejo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -10840,7 +10845,7 @@
   },
   {
     "id": "mon-brachiosaurus",
-    "nome": "Brachiosaurus",
+    "nome": "Braquiossauro",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -10932,7 +10937,7 @@
   },
   {
     "id": "mon-elasmosaurus",
-    "nome": "Elasmosaurus",
+    "nome": "Elasmossauro",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
@@ -10978,7 +10983,7 @@
   },
   {
     "id": "mon-pteranodon",
-    "nome": "Pteranodon",
+    "nome": "Pteranodonte",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -11024,7 +11029,7 @@
   },
   {
     "id": "mon-stegosaurus",
-    "nome": "Stegosaurus",
+    "nome": "Estegossauro",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
@@ -11070,7 +11075,7 @@
   },
   {
     "id": "mon-tyrannosaurus",
-    "nome": "Tyrannosaurus",
+    "nome": "Tiranossauro",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -11116,7 +11121,7 @@
   },
   {
     "id": "mon-triceratops",
-    "nome": "Triceratops",
+    "nome": "Tricerátops",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -11162,7 +11167,7 @@
   },
   {
     "id": "mon-dog",
-    "nome": "Dog",
+    "nome": "Cachorro",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -11301,7 +11306,7 @@
   },
   {
     "id": "mon-dolphin",
-    "nome": "Dolphin",
+    "nome": "Golfinho",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -11582,7 +11587,7 @@
   },
   {
     "id": "mon-electric-eel",
-    "nome": "Electric Eel",
+    "nome": "Enguia Elétrica",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -11628,7 +11633,7 @@
   },
   {
     "id": "mon-giant-moray-eel",
-    "nome": "Giant Moray Eel",
+    "nome": "Moreia Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
@@ -11862,7 +11867,7 @@
   },
   {
     "id": "mon-mastodon",
-    "nome": "Mastodon",
+    "nome": "Mastodonte",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -12093,7 +12098,7 @@
   },
   {
     "id": "mon-monkey",
-    "nome": "Monkey",
+    "nome": "Macaco",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12139,7 +12144,7 @@
   },
   {
     "id": "mon-raven",
-    "nome": "Raven",
+    "nome": "Corvo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12185,7 +12190,7 @@
   },
   {
     "id": "mon-toad",
-    "nome": "Toad",
+    "nome": "Sapo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12277,7 +12282,7 @@
   },
   {
     "id": "mon-weasel",
-    "nome": "Weasel",
+    "nome": "Doninha",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12323,7 +12328,7 @@
   },
   {
     "id": "mon-giant-flytrap",
-    "nome": "Giant Flytrap",
+    "nome": "Papa-Moscas Gigante",
     "tipo": "chefe",
     "categoria": "Planta",
     "ameaca": 5,
@@ -12416,7 +12421,7 @@
   },
   {
     "id": "mon-poison-frog",
-    "nome": "Poison Frog",
+    "nome": "Rã Venenosa",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12791,23 +12796,24 @@
   },
   {
     "id": "mon-clay-golem",
-    "nome": "Clay Golem",
+    "nome": "Golem de Argila",
     "tipo": "chefe",
     "categoria": "Monstro",
     "ameaca": 5,
-    "centelha": 0,
+    "centelha": 2,
     "conceito": "constructo Grande",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
-      "monstro"
+      "monstro",
+      "centelha"
     ],
     "pv": 34,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 8,
+    "defesaMental": 15,
     "soak": {
-      "impacto": 1,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -12825,7 +12831,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "6d6+2",
+        "pool": "6d6+2 +4",
         "dano": "2d6 +8 corte",
         "ticks": 6
       }
@@ -12837,23 +12843,24 @@
   },
   {
     "id": "mon-flesh-golem",
-    "nome": "Flesh Golem",
+    "nome": "Golem de Carne",
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
-    "centelha": 0,
+    "centelha": 2,
     "conceito": "constructo Grande",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
-      "monstro"
+      "monstro",
+      "centelha"
     ],
     "pv": 34,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 8,
+    "defesaMental": 15,
     "soak": {
-      "impacto": 1,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -12871,7 +12878,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "5d6+2",
+        "pool": "6d6 +4",
         "dano": "2d6 +7 corte",
         "ticks": 6
       }
@@ -12883,23 +12890,24 @@
   },
   {
     "id": "mon-ice-golem",
-    "nome": "Ice Golem",
+    "nome": "Golem de Gelo",
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "constructo Médio",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
-      "monstro"
+      "monstro",
+      "centelha"
     ],
     "pv": 25,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 6,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 0,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 1,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -12917,7 +12925,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "4d6+2",
+        "pool": "5d6 +2",
         "dano": "1d6 +5 corte",
         "ticks": 5
       }
@@ -12929,23 +12937,24 @@
   },
   {
     "id": "mon-iron-golem",
-    "nome": "Iron Golem",
+    "nome": "Golem de Ferro",
     "tipo": "chefe",
     "categoria": "Monstro",
     "ameaca": 5,
-    "centelha": 0,
+    "centelha": 3,
     "conceito": "constructo Grande",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
-      "monstro"
+      "monstro",
+      "centelha"
     ],
     "pv": 34,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 10,
+    "defesaMental": 18,
     "soak": {
-      "impacto": 1,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 4,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -12963,7 +12972,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "8d6",
+        "pool": "8d6 +6",
         "dano": "2d6 +11 corte",
         "ticks": 6
       }
@@ -12975,23 +12984,24 @@
   },
   {
     "id": "mon-stone-golem",
-    "nome": "Stone Golem",
+    "nome": "Golem de Pedra",
     "tipo": "chefe",
     "categoria": "Monstro",
     "ameaca": 5,
-    "centelha": 0,
+    "centelha": 2,
     "conceito": "constructo Grande",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
-      "monstro"
+      "monstro",
+      "centelha"
     ],
     "pv": 34,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 8,
+    "defesaMental": 15,
     "soak": {
-      "impacto": 1,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -13009,7 +13019,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "7d6+2",
+        "pool": "7d6+2 +4",
         "dano": "2d6 +10 corte",
         "ticks": 6
       }
@@ -13021,23 +13031,24 @@
   },
   {
     "id": "mon-gray-ooze",
-    "nome": "Gray Ooze",
+    "nome": "Limo Cinzento",
     "tipo": "soldado",
     "categoria": "Limo",
     "ameaca": 3,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "limo Médio",
     "descricao": "Massa informe que digere tudo que toca.",
     "tags": [
-      "limo"
+      "limo",
+      "centelha"
     ],
     "pv": 49,
-    "defesa": 0,
-    "defesaMental": 9,
+    "defesa": 2,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 8,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 9,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 0",
@@ -13055,7 +13066,7 @@
     "ataques": [
       {
         "nome": "Pseudópode",
-        "pool": "4d6",
+        "pool": "4d6+2 +2",
         "dano": "1d6 +5 impacto",
         "ticks": 5
       }
@@ -13254,7 +13265,7 @@
   },
   {
     "id": "mon-bison",
-    "nome": "Bison",
+    "nome": "Bisão",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -13393,7 +13404,7 @@
   },
   {
     "id": "mon-pony",
-    "nome": "Pony",
+    "nome": "Pônei",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -13439,7 +13450,7 @@
   },
   {
     "id": "mon-hyena",
-    "nome": "Hyena",
+    "nome": "Hiena",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -13485,7 +13496,7 @@
   },
   {
     "id": "mon-dire-hyena-hyaenodon",
-    "nome": "Dire Hyena (Hyaenodon)",
+    "nome": "Hiena Atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -13625,7 +13636,7 @@
   },
   {
     "id": "mon-iron-cobra",
-    "nome": "Iron Cobra",
+    "nome": "Cobra de Ferro",
     "tipo": "soldado",
     "categoria": "Monstro",
     "ameaca": 2,
@@ -13718,7 +13729,7 @@
   },
   {
     "id": "mon-giant-leech",
-    "nome": "Giant Leech",
+    "nome": "Sanguessuga Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -13764,7 +13775,7 @@
   },
   {
     "id": "mon-leech-swarm",
-    "nome": "Leech Swarm",
+    "nome": "Enxame de Sanguessugas",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -13998,7 +14009,7 @@
   },
   {
     "id": "mon-monitor-lizard",
-    "nome": "Monitor Lizard",
+    "nome": "Lagarto-Monitor",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -14044,7 +14055,7 @@
   },
   {
     "id": "mon-giant-frilled-lizard",
-    "nome": "Giant Frilled Lizard",
+    "nome": "Lagarto de Gola Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
@@ -14184,7 +14195,7 @@
   },
   {
     "id": "mon-giant-mantis",
-    "nome": "Giant Mantis",
+    "nome": "Louva-a-Deus Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -14747,23 +14758,24 @@
   },
   {
     "id": "mon-ochre-jelly",
-    "nome": "Ochre Jelly",
+    "nome": "Geleia Ocre",
     "tipo": "elite",
     "categoria": "Limo",
     "ameaca": 4,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "limo Grande",
     "descricao": "Massa informe que digere tudo que toca.",
     "tags": [
-      "limo"
+      "limo",
+      "centelha"
     ],
     "pv": 62,
-    "defesa": 0,
-    "defesaMental": 9,
+    "defesa": 2,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 8,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 9,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 0",
@@ -14781,7 +14793,7 @@
     "ataques": [
       {
         "nome": "Pseudópode",
-        "pool": "4d6+2",
+        "pool": "5d6 +2",
         "dano": "2d6 +5 impacto",
         "ticks": 6
       }
@@ -14793,7 +14805,7 @@
   },
   {
     "id": "mon-octopus",
-    "nome": "Octopus",
+    "nome": "Polvo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -14839,7 +14851,7 @@
   },
   {
     "id": "mon-giant-octopus",
-    "nome": "Giant Octopus",
+    "nome": "Polvo Gigante",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -15026,7 +15038,7 @@
   },
   {
     "id": "mon-dire-rat",
-    "nome": "Dire Rat",
+    "nome": "Rato Atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -15072,7 +15084,7 @@
   },
   {
     "id": "mon-rat-swarm",
-    "nome": "Rat Swarm",
+    "nome": "Enxame de Ratos",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -15399,7 +15411,7 @@
   },
   {
     "id": "mon-shark",
-    "nome": "Shark",
+    "nome": "Tubarão",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -15445,7 +15457,7 @@
   },
   {
     "id": "mon-dire-shark-megalodon",
-    "nome": "Dire Shark (Megalodon)",
+    "nome": "Tubarão Atroz",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -15678,7 +15690,7 @@
   },
   {
     "id": "mon-giant-slug",
-    "nome": "Giant Slug",
+    "nome": "Lesma Gigante",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -15724,7 +15736,7 @@
   },
   {
     "id": "mon-venomous-snake",
-    "nome": "Venomous Snake",
+    "nome": "Serpente Venenosa",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -15770,7 +15782,7 @@
   },
   {
     "id": "mon-spider-swarm",
-    "nome": "Spider Swarm",
+    "nome": "Enxame de Aranhas",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -15816,7 +15828,7 @@
   },
   {
     "id": "mon-squid",
-    "nome": "Squid",
+    "nome": "Lula",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -15862,7 +15874,7 @@
   },
   {
     "id": "mon-giant-squid",
-    "nome": "Giant Squid",
+    "nome": "Lula Gigante",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -16189,7 +16201,7 @@
   },
   {
     "id": "mon-violet-fungus",
-    "nome": "Violet Fungus",
+    "nome": "Fungo Violeta",
     "tipo": "soldado",
     "categoria": "Planta",
     "ameaca": 3,
@@ -16235,7 +16247,7 @@
   },
   {
     "id": "mon-giant-wasp",
-    "nome": "Giant Wasp",
+    "nome": "Vespa Gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -16281,7 +16293,7 @@
   },
   {
     "id": "mon-wasp-swarm",
-    "nome": "Wasp Swarm",
+    "nome": "Enxame de Vespas",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -16327,7 +16339,7 @@
   },
   {
     "id": "mon-wolverine",
-    "nome": "Wolverine",
+    "nome": "Carcaju",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -16373,7 +16385,7 @@
   },
   {
     "id": "mon-dire-wolverine",
-    "nome": "Dire Wolverine",
+    "nome": "Carcaju Atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -16560,7 +16572,7 @@
   },
   {
     "id": "mon-yellow-musk-creeper",
-    "nome": "Yellow Musk Creeper",
+    "nome": "Trepadeira de Almíscar Amarelo",
     "tipo": "soldado",
     "categoria": "Planta",
     "ameaca": 2,

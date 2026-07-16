@@ -140,7 +140,7 @@ const NPCS = [
     ataques: [{ nome: 'Martelo de guerra', atrib: 'forca', pericia: 'armas-duas-maos', dado: 3, mao: 2, tipo: 'impacto', acerto: 0, ticks: 7, notas: 'Impacto: a armadura quase não absorve (anti-placa)' }],
     notas: 'Speed 7 (age pouco). Cerque-o e explore a lentidão.' },
 
-  { id: 'capitao-da-guarda', nome: 'Capitão da Guarda', tipo: 'elite', ameaca: 4, centelha: 0,
+  { id: 'capitao-da-guarda', nome: 'Capitão da Guarda', tipo: 'elite', ameaca: 4, centelha: 1,
     conceito: 'comandante mortal', descricao: 'Líder competente; coordena subordinados e segura a linha.', tags: ['humano'],
     attrs: { forca: 3, destreza: 4, vigor: 4, influencia: 3 }, pericias: { 'armas-uma-mao': 4, esquiva: 3, escudos: 3, prontidao: 4, oratoria: 3, tatica: 3 }, integridade: 6, vontade: 7,
     armadura: 'placa-completa',
@@ -387,17 +387,50 @@ const CONV = DATA.map((m) => {
 // nome em Português (mantendo o id/slug em inglês p/ satélites e imagem), e valores
 // que o motor não deriva (ex.: um constructo tem casco/Absorção mesmo com Vigor 0,
 // e não tem mente → Defesa Mental "-"). O nome inglês segue vindo de habilidades.en.
+// Nome em Português (o inglês continua vindo de habilidades.en; id/slug segue em inglês
+// para não quebrar satélites nem a imagem). Só o rótulo exibido muda.
+const NOME_PT = {
+  'mon-animated-object': 'Objeto Animado', 'mon-army-ant-swarm': 'Enxame de Formigas',
+  'mon-assassin-vine': 'Vinha Assassina', 'mon-bat-swarm': 'Enxame de Morcegos',
+  'mon-bison': 'Bisão', 'mon-brachiosaurus': 'Braquiossauro', 'mon-black-pudding': 'Pudim Negro',
+  'mon-centipede-swarm': 'Enxame de Centopéia', 'mon-clay-golem': 'Golem de Argila',
+  'mon-crab-swarm': 'Enxame de Caranguejo', 'mon-dire-bat': 'Morcego Atroz', 'mon-dire-rat': 'Rato Atroz',
+  'mon-dire-wolverine': 'Carcaju Atroz', 'mon-dog': 'Cachorro', 'mon-dolphin': 'Golfinho',
+  'mon-elasmosaurus': 'Elasmossauro', 'mon-electric-eel': 'Enguia Elétrica', 'mon-fire-beetle': 'Besouro de Fogo',
+  'mon-flesh-golem': 'Golem de Carne', 'mon-giant-ant': 'Formiga Gigante', 'mon-giant-centipede': 'Centopéia Gigante',
+  // remapeamentos (nome PT + inglês ajustado em habilidades.en)
+  'mon-dire-bear-cave-bear': 'Urso Atroz', 'mon-dire-boar-daeodon': 'Javali Atroz',
+  'mon-dire-hyena-hyaenodon': 'Hiena Atroz', 'mon-dire-shark-megalodon': 'Tubarão Atroz',
+  'mon-elefante': 'Mamute',
+  // traduções em lote
+  'mon-giant-crab': 'Caranguejo Gigante', 'mon-giant-flytrap': 'Papa-Moscas Gigante',
+  'mon-giant-frilled-lizard': 'Lagarto de Gola Gigante', 'mon-giant-leech': 'Sanguessuga Gigante',
+  'mon-giant-mantis': 'Louva-a-Deus Gigante', 'mon-giant-moray-eel': 'Moreia Gigante',
+  'mon-giant-octopus': 'Polvo Gigante', 'mon-giant-slug': 'Lesma Gigante', 'mon-giant-squid': 'Lula Gigante',
+  'mon-giant-stag-beetle': 'Besouro-Veado Gigante', 'mon-giant-wasp': 'Vespa Gigante',
+  'mon-gray-ooze': 'Limo Cinzento', 'mon-grizzly-bear': 'Urso Pardo', 'mon-hyena': 'Hiena',
+  'mon-ice-golem': 'Golem de Gelo', 'mon-iron-cobra': 'Cobra de Ferro', 'mon-iron-golem': 'Golem de Ferro',
+  'mon-leech-swarm': 'Enxame de Sanguessugas', 'mon-leopard': 'Leopardo', 'mon-mastodon': 'Mastodonte',
+  'mon-monitor-lizard': 'Lagarto-Monitor', 'mon-monkey': 'Macaco', 'mon-ochre-jelly': 'Geleia Ocre',
+  'mon-octopus': 'Polvo', 'mon-poison-frog': 'Rã Venenosa', 'mon-pony': 'Pônei',
+  'mon-pteranodon': 'Pteranodonte', 'mon-rat-swarm': 'Enxame de Ratos', 'mon-raven': 'Corvo',
+  'mon-shark': 'Tubarão', 'mon-spider-swarm': 'Enxame de Aranhas', 'mon-squid': 'Lula',
+  'mon-stegosaurus': 'Estegossauro', 'mon-stone-golem': 'Golem de Pedra', 'mon-toad': 'Sapo',
+  'mon-triceratops': 'Tricerátops', 'mon-tyrannosaurus': 'Tiranossauro', 'mon-venomous-snake': 'Serpente Venenosa',
+  'mon-violet-fungus': 'Fungo Violeta', 'mon-wasp-swarm': 'Enxame de Vespas', 'mon-weasel': 'Doninha',
+  'mon-wolverine': 'Carcaju', 'mon-yellow-musk-creeper': 'Trepadeira de Almíscar Amarelo',
+};
+// Ajustes à mão que o motor não deriva (ex.: um constructo tem casco/Absorção mesmo com
+// Vigor 0, e não tem mente → Defesa Mental "-").
 const HAND_OVERRIDE = {
   'mon-animated-object': {
-    nome: 'Objeto Animado',
     defesaMental: '-', // constructo não tem mente
     soak: { impacto: 2, corte: 4, perfuracao: 4 }, // casco de um objeto Médio (varia com tamanho/material)
     atributos: { percepcao: 2 },
   },
-  'mon-army-ant-swarm': { nome: 'Enxame de Formigas' },
-  'mon-assassin-vine': { nome: 'Vinha Assassina' },
 };
 for (const c of CONV) {
+  if (NOME_PT[c.id]) c.nome = NOME_PT[c.id];
   const h = HAND_OVERRIDE[c.id]; if (!h) continue;
   if (h.nome) c.nome = h.nome;
   if (h.defesaMental !== undefined) c.defesaMental = h.defesaMental;
