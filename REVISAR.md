@@ -38,6 +38,36 @@ consistentes por construção.
 
 Para mexer: editar o gerador e rodar `node scripts/gen-bestiario.mjs`, ou editar o JSON direto.
 
+## Bestiário — expansão do Bestiary 1 (PF): 137 → 308 criaturas
+
+Importadas **171 criaturas** do `D&D/Bestiary 1 (1st Printing).pdf` (fora do repo).
+Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
+- Parser `pymupdf` extrai cada ficha (Str/Dex/Con/Int/Wis/Cha, CR, tipo, tamanho,
+  Environment, texto bruto das habilidades) → **`src/data/conversao-extra.json`** (171 stat
+  blocks crus), lido pelo `gen-bestiario.mjs` junto do DATA do `conversao-monstros.html`.
+- **Categoria** no molde do Bestiary 1 em **`src/data/categoria-extra.json`** (id→categoria),
+  mesclada no `CAT_OVERRIDE` do `gen-monsters.mjs`.
+- Habilidades/Lore/Dimensões/Terreno/Clima autoradas (12 agentes) e mescladas nos 4 satélites.
+- 149 imagens de `D&D/Bestiary_Pathfinder_nomeado` → `public/bestiario/*.jpg` (600px).
+- `gen-bestiario`: porte para PV/couraça agora usa a `size` real da ficha quando não há
+  porte em `dimensoes-bestiario.json` (fallback). Imagem virou **opcional** no `gen-monsters`
+  (flag `semImagem`, badge "Sem imagem", filtro "Só sem imagem").
+
+**⏳ PENDÊNCIAS desta expansão:**
+- **Poderes a mapear:** as 171 novas têm Habilidades descritas, mas SEM mapeamento formal
+  para Proezas (Técnicas) / Feitiçarias (Artes). `PODERES` do HTML não cobre elas
+  (`Convertidos sem poderes mapeados: 200`).
+- **Centelha por heurística:** atribuída por `prep.py` (CR + natureza: mundano=0; senão
+  1/2/3/4/5 por faixa de CR). Revisar junto com os Poderes.
+- **Idades de dragão NÃO entraram:** as fichas de dragão por idade (Jovem/Adulto/Ancião de
+  cada cor) estão em TABELAS de progressão no PDF, formato que o parser não captura (pegou
+  uma entrada por dragão). Falta um parser dedicado dessas tabelas. Tamanhos de elemental
+  entraram normalmente.
+- **22 criaturas sem imagem** (`semImagem:true`): Grizzly Bear, Fire Beetle, Cheetah,
+  dinossauros (Brachiosaurus/Elasmosaurus/Pteranodon/Triceratops), Drow Noble, Electric Eel,
+  Raven, Toad, Viper, Weasel, Poison Frog, Dracolisk, Nessian Warhound, Bison, Pony, Monitor
+  Lizard, Cauchemar, Winter Wolf, Army Ant Swarm. Filtráveis por "Só sem imagem".
+
 ## Bestiário — dados unificados em `monsters.json` (arquitetura)
 
 - **Estado atual (modo "gerado"):** a página `/bestiario` lê **só** `src/data/monsters.json`
