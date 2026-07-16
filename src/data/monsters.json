@@ -3830,7 +3830,7 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/dog.jpg",
+  "imagem": "bestiario/dog.png",
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -5022,7 +5022,7 @@
     "Tropical"
    ]
   },
-  "imagem": "bestiario/giant-centipede.jpg",
+  "imagem": "bestiario/giant-centipede.png",
   "semImagem": false,
   "atributos": {
    "forca": 2,
