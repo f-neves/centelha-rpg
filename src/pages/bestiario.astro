@@ -11,6 +11,11 @@ const TIPO: Record<string, string> = { capanga: 'Capanga', soldado: 'Soldado', e
 const ECO_TIPO: Record<string, string> = { Aberration: 'Aberração', Animal: 'Animal', Astral: 'Astral', Beast: 'Besta', Celestial: 'Celestial', Construct: 'Construto', Dragon: 'Dragão', Dream: 'Onírico', Elemental: 'Elemental', Ethereal: 'Etéreo', Fey: 'Fada', Fiend: 'Corruptor', Fungus: 'Fungo', Giant: 'Gigante', Humanoid: 'Humanoide', Monitor: 'Monitor', Negative: 'Negativo', Ooze: 'Limo', Petitioner: 'Suplicante', Plant: 'Planta', Positive: 'Positivo', Shadow: 'Sombra', Spirit: 'Espírito', Time: 'Tempo', Undead: 'Morto-vivo' };
 const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
 const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
+// Selos do Pathfinder disponíveis (public/icones-bestiario). Sem selo → cai no disco colorido.
+const ICO_TIPO = new Set(['Dragon', 'Undead', 'Ooze', 'Plant', 'Fiend', 'Animal', 'Beast', 'Humanoid', 'Giant']);
+const ICO_TERR = new Set(['Mountain', 'Forest', 'Plains', 'Swamp', 'Water', 'Coast', 'Urban', 'Underground', 'Ruins', 'Sky', 'Cold']);
+const styTipo = (t: string) => (ICO_TIPO.has(t) ? `background-image:url(${url(`icones-bestiario/tipo-${t}.png`)})` : '');
+const styTerr = (t: string) => (ICO_TERR.has(t) ? `background-image:url(${url(`icones-bestiario/terr-${t}.png`)})` : '');
 // Atributos (ordem canônica: físico · social · mental) com rótulo curto e nome cheio
 const ATR: [string, string, string][] = [
   ['forca', 'For', 'Força'], ['destreza', 'Des', 'Destreza'], ['vigor', 'Vig', 'Vigor'],
@@ -101,21 +106,19 @@ const comArte = inimigos.filter((i) => i.imagem).length;
 
           {i.ecologia?.tipo && (
             <p class="besta-eco">
-              <span class="eco-grp" title="Tipo de criatura">
-                <span class={`eco-ic tipo t-${i.ecologia.tipo}`} aria-hidden="true"></span>{ECO_TIPO[i.ecologia.tipo] || i.ecologia.tipo}
+              <span class="eco-chip" title="Tipo de criatura">
+                <span class={`eco-ic tipo${styTipo(i.ecologia.tipo) ? ' has-ico' : ''}`} style={styTipo(i.ecologia.tipo)} aria-hidden="true"></span>{ECO_TIPO[i.ecologia.tipo] || i.ecologia.tipo}
               </span>
-              {i.ecologia.terreno && i.ecologia.terreno.length > 0 && (
-                <span class="eco-grp" title="Terreno">
-                  <span class="eco-ic terr" aria-hidden="true"></span>{i.ecologia.terreno.map((t: string) => ECO_TERR[t] || t).join(' · ')}
+              {(i.ecologia.terreno || []).map((t: string) => (
+                <span class="eco-chip" title="Terreno">
+                  <span class={`eco-ic terr${styTerr(t) ? ' has-ico' : ''}`} style={styTerr(t)} aria-hidden="true"></span>{ECO_TERR[t] || t}
                 </span>
-              )}
-              {i.ecologia.clima && i.ecologia.clima.length > 0 && (
-                <span class="eco-grp" title="Clima">
-                  {i.ecologia.clima.map((c: string) => (
-                    <span class={`eco-clima cl-${c}`}><span class="eco-ic clima" aria-hidden="true"></span>{ECO_CLIMA[c] || c}</span>
-                  ))}
+              ))}
+              {(i.ecologia.clima || []).map((c: string) => (
+                <span class={`eco-chip clima cl-${c}`} title="Clima">
+                  <span class="eco-ic clima" aria-hidden="true"></span>{ECO_CLIMA[c] || c}
                 </span>
-              )}
+              ))}
             </p>
           )}
 
@@ -289,14 +292,13 @@ const comArte = inimigos.filter((i) => i.imagem).length;
   .pt-cat { font-family: 'Cinzel'; font-size: .74rem; color: var(--ink); }
   .pt-sep { color: color-mix(in srgb, var(--ink) 35%, transparent); }
 
-  /* Ecologia: tipo · terreno · clima. Os .eco-ic são discos coloridos (trocáveis por selos do Pathfinder). */
-  .besta-eco { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .7rem; margin: 0 0 .55rem; font-size: .8rem; color: var(--ink-soft); }
-  .eco-grp { display: inline-flex; align-items: center; gap: .3rem; }
-  .eco-ic { width: .82rem; height: .82rem; border-radius: 50%; flex: 0 0 auto; background: var(--rule) center/cover no-repeat; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 20%, transparent); }
+  /* Ecologia: tipo · terreno · clima. Selo do Pathfinder (has-ico) quando existe; senão disco colorido. */
+  .besta-eco { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; margin: 0 0 .55rem; font-size: .78rem; color: var(--ink-soft); }
+  .eco-chip { display: inline-flex; align-items: center; gap: .28rem; }
+  .eco-ic { width: .8rem; height: .8rem; border-radius: 50%; flex: 0 0 auto; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 20%, transparent); }
+  .eco-ic.has-ico { width: 1.4rem; height: 1.4rem; border-radius: 50%; background-color: #f2e9d2; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 30%, transparent); }
   .eco-ic.tipo { background: var(--accent-strong); }
   .eco-ic.terr { background: #4b7a3f; }
-  .eco-clima { display: inline-flex; align-items: center; gap: .28rem; }
-  .eco-clima .eco-ic.clima { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent); }
   .cl-Cold .eco-ic.clima { background: #5b8fbf; }
   .cl-Temperate .eco-ic.clima { background: #6a9a55; }
   .cl-Tropical .eco-ic.clima { background: #c8792f; }
