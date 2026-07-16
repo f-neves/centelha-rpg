@@ -17,13 +17,33 @@ const LORE = read('lore-bestiario.json');
 const IMG = read('imagens-bestiario.json');
 const ECO = read('ecologia-bestiario.json'); // tipo (PF2e) + terreno + clima, por id
 
+// Categoria = tipo de criatura no molde do Bestiary 1 (Pathfinder 1e, pág. 318 "Monsters by Type"),
+// derivada do ecologia.tipo + ajustes por criatura. Vai para o badge de Categoria.
+const CAT_LABEL = {
+  Aberration: 'Aberração', Animal: 'Animal', Beast: 'Besta mágica', Celestial: 'Celestial',
+  Construct: 'Construto', Dragon: 'Dragão', Elemental: 'Elemental', Fey: 'Fada', Fiend: 'Corruptor',
+  Giant: 'Gigante', Humanoid: 'Humanoide', Ooze: 'Limo', Plant: 'Planta', Undead: 'Morto-vivo',
+  Monitor: 'Outsider', Spirit: 'Espírito',
+};
+const CAT_OVERRIDE = {
+  // Humanoide monstruoso (PF1e Monstrous Humanoid)
+  'mon-bruxa-verde-hag': 'Humanoide monstruoso', 'mon-gargula': 'Humanoide monstruoso',
+  'mon-harpia': 'Humanoide monstruoso', 'mon-lamia': 'Humanoide monstruoso',
+  'mon-medusa': 'Humanoide monstruoso', 'mon-minotauro': 'Humanoide monstruoso',
+  // Outsider nativo (PF1e Outsider native)
+  'mon-couatl': 'Outsider', 'mon-ogro-mago-oni': 'Outsider', 'mon-rakshasa': 'Outsider',
+  // ajustes pontuais
+  'mon-doppelganger': 'Aberração', 'mon-unicornio': 'Besta mágica',
+};
+const catDe = (id, tipo) => CAT_OVERRIDE[id] || CAT_LABEL[tipo] || tipo || null;
+
 function build(c) {
   const h = HAB[c.id] || {}, d = DIM[c.id] || {}, l = LORE[c.id] || {}, e = ECO[c.id] || {};
   return {
     id: c.id,
     nome: c.nome,
     nomeIngles: h.en || null,
-    categoria: c.categoria || null,
+    categoria: catDe(c.id, e.tipo) || c.categoria || null,
     tipo: c.tipo,
     conceito: c.conceito,
     descricao: c.descricao || '',

@@ -32,10 +32,12 @@ const artesDe = (i: any) => [...new Set((i.poderes || []).filter((p: any) => p.t
 
 const caminhosUsados = [...new Set(inimigos.flatMap(caminhosDe))].map((id) => ({ id, nome: camNome[id] || id })).sort((a, b) => a.nome.localeCompare(b.nome));
 const artesUsadas = [...new Set(inimigos.flatMap(artesDe))].map((id) => ({ id, nome: arteNome[id] || id })).sort((a, b) => a.nome.localeCompare(b.nome));
-// Listas de filtro construídas DINAMICAMENTE do JSON (tipo · terreno · clima). Novo valor no dado → novo no filtro.
-const tiposUsados = [...new Set(inimigos.map((i) => i.ecologia?.tipo).filter(Boolean))].map((k) => ({ k, nome: ECO_TIPO[k] || k })).sort((a, b) => a.nome.localeCompare(b.nome));
+// Listas de filtro construídas DINAMICAMENTE do JSON (categoria · terreno · clima). Novo valor no dado → novo no filtro.
+const categoriasUsadas = [...new Set(inimigos.map((i) => i.categoria).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt'));
 const terrenosUsados = [...new Set(inimigos.flatMap((i) => i.ecologia?.terreno || []))].map((k) => ({ k, nome: ECO_TERR[k] || k })).sort((a, b) => a.nome.localeCompare(b.nome));
 const climasUsados = [...new Set(inimigos.flatMap((i) => i.ecologia?.clima || []))].map((k) => ({ k, nome: ECO_CLIMA[k] || k })).sort((a, b) => a.nome.localeCompare(b.nome));
+// Linha de ecologia (texto puro, separada por ·): categoria · terrenos · climas
+const ecoLinha = (i: any) => [i.categoria, ...(i.ecologia?.terreno || []).map((t: string) => ECO_TERR[t] || t), ...(i.ecologia?.clima || []).map((c: string) => ECO_CLIMA[c] || c)].filter(Boolean).join(' · ');
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 const cap = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 // conceito sem o porte repetido (o Porte já aparece à parte), com inicial maiúscula
@@ -91,7 +93,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
         </label>
       </>
     )}
-    <fieldset class="cats"><legend>Tipo de criatura</legend>{tiposUsados.map((t) => <label class="chk"><input type="checkbox" data-bf="tipo" value={t.k} />{t.nome}</label>)}</fieldset>
+    <fieldset class="cats"><legend>Tipo de criatura</legend>{categoriasUsadas.map((c) => <label class="chk"><input type="checkbox" data-bf="tipo" value={c} />{c}</label>)}</fieldset>
     <fieldset class="cats"><legend>Terreno</legend>{terrenosUsados.map((t) => <label class="chk"><input type="checkbox" data-bf="terreno" value={t.k} />{t.nome}</label>)}</fieldset>
     <fieldset class="cats"><legend>Clima</legend>{climasUsados.map((c) => <label class="chk"><input type="checkbox" data-bf="clima" value={c.k} />{c.nome}</label>)}</fieldset>
     <p class="muted bf-count"></p>
@@ -100,7 +102,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   <div class="besta-list">
     {inimigos.map((i) => (
       <article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
-        data-tipo={i.ecologia?.tipo || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')}
+        data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')}
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
         data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
         data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}>
@@ -118,7 +120,6 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
           <header class="besta-head">
             <span class="besta-nome cinzel">{i.nome}</span>
             <span class="badge cat">{i.categoria}</span>
-            <span class="badge">{TIPO[i.tipo]}</span>
           </header>
           <p class="besta-con muted">{conceitoLimpo(i)}{i.descricao ? ` · ${i.descricao}` : ''}</p>
 
@@ -127,21 +128,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
           )}
 
           {i.ecologia?.tipo && (
-            <p class="besta-eco">
-              <span class="eco-chip" title="Tipo de criatura">
-                <span class={`eco-ic tipo${styTipo(i.ecologia.tipo) ? ' has-ico' : ''}`} style={styTipo(i.ecologia.tipo)} aria-hidden="true"></span>{ECO_TIPO[i.ecologia.tipo] || i.ecologia.tipo}
-              </span>
-              {(i.ecologia.terreno || []).map((t: string) => (
-                <span class="eco-chip" title="Terreno">
-                  <span class={`eco-ic terr${styTerr(t) ? ' has-ico' : ''}`} style={styTerr(t)} aria-hidden="true"></span>{ECO_TERR[t] || t}
-                </span>
-              ))}
-              {(i.ecologia.clima || []).map((c: string) => (
-                <span class={`eco-chip clima cl-${c}`} title="Clima">
-                  <span class="eco-ic clima" aria-hidden="true"></span>{ECO_CLIMA[c] || c}
-                </span>
-              ))}
-            </p>
+            <p class="besta-eco">{ecoLinha(i)}</p>
           )}
 
           <dl class="besta-stats">
@@ -305,17 +292,8 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .pt-cat { font-family: 'Cinzel'; font-size: .74rem; color: var(--ink); }
   .pt-sep { color: color-mix(in srgb, var(--ink) 35%, transparent); }
 
-  /* Ecologia: tipo · terreno · clima. Selo do Pathfinder (has-ico) quando existe; senão disco colorido. */
-  .besta-eco { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; margin: 0 0 .55rem; font-size: .78rem; color: var(--ink-soft); }
-  .eco-chip { display: inline-flex; align-items: center; gap: .28rem; }
-  .eco-ic { width: .8rem; height: .8rem; border-radius: 50%; flex: 0 0 auto; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 20%, transparent); }
-  .eco-ic.has-ico { width: 1.4rem; height: 1.4rem; border-radius: 50%; background-color: #f2e9d2; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 30%, transparent); }
-  .eco-ic.tipo { background: var(--accent-strong); }
-  .eco-ic.terr { background: #4b7a3f; }
-  .cl-Cold .eco-ic.clima { background: #5b8fbf; }
-  .cl-Temperate .eco-ic.clima { background: #6a9a55; }
-  .cl-Tropical .eco-ic.clima { background: #c8792f; }
-  .cl-Extraplanar .eco-ic.clima { background: #8a5bbf; }
+  /* Ecologia: categoria · terrenos · climas, em texto separado por · */
+  .besta-eco { margin: 0 0 .55rem; font-size: .82rem; color: var(--ink-soft); line-height: 1.35; }
 
   .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr)); gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
   .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
