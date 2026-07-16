@@ -4831,10 +4831,10 @@
    "tipo": "Dragon",
    "terreno": [
     "Desert",
-    "Underground"
+    "Mountain"
    ],
    "clima": [
-    "Temperate"
+    "Tropical"
    ]
   },
   "imagem": "bestiario/dragao-azul-adulto.jpg",
@@ -4987,7 +4987,7 @@
    "tipo": "Dragon",
    "terreno": [
     "Cold",
-    "Underground"
+    "Mountain"
    ],
    "clima": [
     "Cold"
@@ -5134,10 +5134,12 @@
   "ecologia": {
    "tipo": "Dragon",
    "terreno": [
-    "Mountain"
+    "Mountain",
+    "Plains"
    ],
    "clima": [
-    "Temperate"
+    "Temperate",
+    "Tropical"
    ]
   },
   "imagem": "bestiario/dragao-dourado-adulto.jpg",
@@ -5303,10 +5305,12 @@
   "ecologia": {
    "tipo": "Dragon",
    "terreno": [
-    "Forest"
+    "Forest",
+    "Jungle"
    ],
    "clima": [
-    "Temperate"
+    "Temperate",
+    "Tropical"
    ]
   },
   "imagem": "bestiario/dragao-verde-adulto.jpg",
@@ -5457,7 +5461,8 @@
     "Mountain"
    ],
    "clima": [
-    "Temperate"
+    "Temperate",
+    "Tropical"
    ]
   },
   "imagem": "bestiario/dragao-vermelho-adulto.jpg",
@@ -5610,10 +5615,12 @@
   "ecologia": {
    "tipo": "Dragon",
    "terreno": [
-    "Mountain"
+    "Mountain",
+    "Underground"
    ],
    "clima": [
-    "Temperate"
+    "Temperate",
+    "Tropical"
    ]
   },
   "imagem": "bestiario/dragao-vermelho-anciao.jpg",
@@ -5772,7 +5779,8 @@
     "Mountain"
    ],
    "clima": [
-    "Temperate"
+    "Temperate",
+    "Tropical"
    ]
   },
   "imagem": "bestiario/dragao-vermelho-jovem.jpg",
@@ -7517,6 +7525,7 @@
     "Mountain"
    ],
    "clima": [
+    "Temperate",
     "Tropical"
    ]
   },
@@ -9588,6 +9597,7 @@
     "Underground"
    ],
    "clima": [
+    "Temperate",
     "Tropical"
    ]
   },

@@ -61,21 +61,6 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
   <div class="filtros panel">
     <label class="busca">Buscar <input type="search" data-bf="q" placeholder="nome, conceito, efeito…" /></label>
-    <label>Proeza (Caminho)
-      <select data-bf="proeza">
-        <option value="">qualquer Caminho</option>
-        {caminhosUsados.map((c) => <option value={c.id}>{c.nome}</option>)}
-      </select>
-    </label>
-    <label>Feitiçaria (Arte)
-      <select data-bf="feiticaria">
-        <option value="">qualquer Arte</option>
-        {artesUsadas.map((a) => <option value={a.id}>{a.nome}</option>)}
-      </select>
-    </label>
-    <fieldset class="cats"><legend>Tipo de criatura</legend>{tiposUsados.map((t) => <label class="chk"><input type="checkbox" data-bf="tipo" value={t.k} />{t.nome}</label>)}</fieldset>
-    <fieldset class="cats"><legend>Terreno</legend>{terrenosUsados.map((t) => <label class="chk"><input type="checkbox" data-bf="terreno" value={t.k} />{t.nome}</label>)}</fieldset>
-    <fieldset class="cats"><legend>Clima</legend>{climasUsados.map((c) => <label class="chk"><input type="checkbox" data-bf="clima" value={c.k} />{c.nome}</label>)}</fieldset>
     <label class="ord">Ordenar por
       <span class="ord-row">
         <select id="ord-key">
@@ -89,6 +74,26 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
         <button type="button" id="ord-dir" title="Inverter ordem" aria-label="Inverter ordem"><span class="ord-arw">↑</span></button>
       </span>
     </label>
+    {/* Proeza (Caminho) e Feitiçaria (Arte) ocultos por ora — trocar false por true reativa */}
+    {false && (
+      <>
+        <label>Proeza (Caminho)
+          <select data-bf="proeza">
+            <option value="">qualquer Caminho</option>
+            {caminhosUsados.map((c) => <option value={c.id}>{c.nome}</option>)}
+          </select>
+        </label>
+        <label>Feitiçaria (Arte)
+          <select data-bf="feiticaria">
+            <option value="">qualquer Arte</option>
+            {artesUsadas.map((a) => <option value={a.id}>{a.nome}</option>)}
+          </select>
+        </label>
+      </>
+    )}
+    <fieldset class="cats"><legend>Tipo de criatura</legend>{tiposUsados.map((t) => <label class="chk"><input type="checkbox" data-bf="tipo" value={t.k} />{t.nome}</label>)}</fieldset>
+    <fieldset class="cats"><legend>Terreno</legend>{terrenosUsados.map((t) => <label class="chk"><input type="checkbox" data-bf="terreno" value={t.k} />{t.nome}</label>)}</fieldset>
+    <fieldset class="cats"><legend>Clima</legend>{climasUsados.map((c) => <label class="chk"><input type="checkbox" data-bf="clima" value={c.k} />{c.nome}</label>)}</fieldset>
     <p class="muted bf-count"></p>
   </div>
 
@@ -114,7 +119,6 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
             <span class="besta-nome cinzel">{i.nome}</span>
             <span class="badge cat">{i.categoria}</span>
             <span class="badge">{TIPO[i.tipo]}</span>
-            {i.pendente && <span class="badge pendente" title="Stat block provisório — revisar">Rascunho</span>}
           </header>
           <p class="besta-con muted">{conceitoLimpo(i)}{i.descricao ? ` · ${i.descricao}` : ''}</p>
 
