@@ -9118,23 +9118,24 @@
   },
   {
     "id": "mon-assassin-vine",
-    "nome": "Assassin Vine",
+    "nome": "Vinha Assassina",
     "tipo": "soldado",
     "categoria": "Planta",
     "ameaca": 3,
-    "centelha": 0,
+    "centelha": 1,
     "conceito": "planta Grande",
     "descricao": "Vegetal desperto, lento e implacável.",
     "tags": [
-      "planta"
+      "planta",
+      "centelha"
     ],
     "pv": 54,
-    "defesa": 4,
-    "defesaMental": 9,
+    "defesa": 6,
+    "defesaMental": 12,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 7,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -9152,7 +9153,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6",
+        "pool": "5d6+2 +2",
         "dano": "2d6 +7 perfConc",
         "ticks": 6
       }

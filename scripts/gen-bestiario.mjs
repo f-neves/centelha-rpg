@@ -395,6 +395,7 @@ const HAND_OVERRIDE = {
     atributos: { percepcao: 2 },
   },
   'mon-army-ant-swarm': { nome: 'Enxame de Formigas' },
+  'mon-assassin-vine': { nome: 'Vinha Assassina' },
 };
 for (const c of CONV) {
   const h = HAND_OVERRIDE[c.id]; if (!h) continue;

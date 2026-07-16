@@ -1049,109 +1049,6 @@
   ]
  },
  {
-  "id": "mon-assassin-vine",
-  "nome": "Assassin Vine",
-  "nomeIngles": "Assassin Vine",
-  "categoria": "Planta",
-  "tipo": "soldado",
-  "conceito": "planta Grande",
-  "descricao": "Vegetal desperto, lento e implacável.",
-  "tags": [
-   "planta"
-  ],
-  "ameaca": 3,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Grande",
-  "dimensoes": {
-   "medida": "6 m de comprimento",
-   "peso": "200 kg"
-  },
-  "ecologia": {
-   "tipo": "Plant",
-   "terreno": [
-    "Forest",
-    "Swamp"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/assassin-vine.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 7,
-   "destreza": 2,
-   "vigor": 6,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 0,
-   "raciocinio": 3
-  },
-  "combate": {
-   "pv": 54,
-   "defesa": 4,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 4",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "5d6",
-     "dano": "2d6 +7 perfConc",
-     "speed": 6
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Camuflagem",
-    "descricao": "Parada, a trepadeira-assassina parece uma planta comum; só um observador muito atento nota o perigo antes do primeiro ataque."
-   },
-   {
-    "nome": "Emaranhar",
-    "descricao": "Faz plantas próximas despertarem e se agarrarem aos pés de quem estiver ao redor, dificultando a fuga."
-   },
-   {
-    "nome": "Constrição",
-    "descricao": "Envolve a vítima em seus caules lenhosos e a esmaga lentamente enquanto a mantém presa."
-   },
-   {
-    "nome": "Sentidos Sem Olhos",
-    "descricao": "Percebe movimento e calor ao redor mesmo sem ter olhos, através de suas folhas sensíveis."
-   },
-   {
-    "nome": "Resistências Naturais",
-    "descricao": "É imune a eletricidade e resiste bem a frio e fogo."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Natureza",
-    "texto": "Carnívora e sem qualquer inteligência, a trepadeira-assassina agarra e esmaga animais e viajantes, depositando os corpos junto às próprias raízes como adubo."
-   },
-   {
-    "titulo": "Caçada",
-    "texto": "Fica imóvel esperando uma presa se aproximar; uma vez que a vítima sai de seu alcance de percepção, a planta volta a ficar quieta, à espera do próximo incauto."
-   },
-   {
-    "titulo": "Curiosidade",
-    "texto": "Produz frutinhas escuras e amargas, alimentadas pelo que a planta compostou; dizem que as trepadeiras mais assassinas dão os frutos mais doces."
-   }
-  ]
- },
- {
   "id": "assassino-das-sombras",
   "nome": "Assassino das Sombras",
   "nomeIngles": "Shadow Assassin",
@@ -32279,6 +32176,110 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "É um dos poucos monstros grandes o bastante para assustar até os anões do White Wall, e mineradores contam sua chegada como um desastre natural, não como uma caçada: quando um verme púrpura escava perto, a única defesa é fugir da rota."
+   }
+  ]
+ },
+ {
+  "id": "mon-assassin-vine",
+  "nome": "Vinha Assassina",
+  "nomeIngles": "Assassin Vine",
+  "categoria": "Planta",
+  "tipo": "soldado",
+  "conceito": "planta Grande",
+  "descricao": "Vegetal desperto, lento e implacável.",
+  "tags": [
+   "planta",
+   "centelha"
+  ],
+  "ameaca": 3,
+  "centelha": 1,
+  "pendente": true,
+  "porte": "Grande",
+  "dimensoes": {
+   "medida": "6 m de comprimento",
+   "peso": "200 kg"
+  },
+  "ecologia": {
+   "tipo": "Plant",
+   "terreno": [
+    "Forest",
+    "Swamp"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/assassin-vine.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 7,
+   "destreza": 2,
+   "vigor": 6,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 0,
+   "raciocinio": 3
+  },
+  "combate": {
+   "pv": 54,
+   "defesa": 6,
+   "defesaMental": 12,
+   "absorcao": {
+    "impacto": 7,
+    "corte": 6,
+    "perfuracao": 6
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 4",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "5d6+2 +2",
+     "dano": "2d6 +7 perfConc",
+     "speed": 6
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Camuflagem",
+    "descricao": "Parada, a trepadeira-assassina parece uma planta comum; só um observador muito atento nota o perigo antes do primeiro ataque."
+   },
+   {
+    "nome": "Emaranhar",
+    "descricao": "Faz plantas próximas despertarem e se agarrarem aos pés de quem estiver ao redor, dificultando a fuga."
+   },
+   {
+    "nome": "Constrição",
+    "descricao": "Envolve a vítima em seus caules lenhosos e a esmaga lentamente enquanto a mantém presa."
+   },
+   {
+    "nome": "Sentidos Sem Olhos",
+    "descricao": "Percebe movimento e calor ao redor mesmo sem ter olhos, através de suas folhas sensíveis."
+   },
+   {
+    "nome": "Resistências Naturais",
+    "descricao": "É imune a eletricidade e resiste bem a frio e fogo."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Natureza",
+    "texto": "Carnívora e sem qualquer inteligência, a trepadeira-assassina agarra e esmaga animais e viajantes, depositando os corpos junto às próprias raízes como adubo."
+   },
+   {
+    "titulo": "Caçada",
+    "texto": "Fica imóvel esperando uma presa se aproximar; uma vez que a vítima sai de seu alcance de percepção, a planta volta a ficar quieta, à espera do próximo incauto."
+   },
+   {
+    "titulo": "Curiosidade",
+    "texto": "Produz frutinhas escuras e amargas, alimentadas pelo que a planta compostou; dizem que as trepadeiras mais assassinas dão os frutos mais doces."
    }
   ]
  },
