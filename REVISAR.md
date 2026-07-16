@@ -68,6 +68,23 @@ Para mexer: editar o gerador e rodar `node scripts/gen-bestiario.mjs`, ou editar
   pelos ícones redondos do Pathfinder (extraídos em `D&D/type_icon`, fora do repo). O markup
   do card já está pronto para receber os PNGs sem mexer no dado.
 
+## Bestiário — dano natural, filtros e cards flutuantes
+
+- **Dano natural = Força ×1 (mudança de balanço).** O `ataqueDe` do `gen-bestiario.mjs`
+  passou de `mao: 2` para `mao: 1`: o ataque natural de uma criatura soma a Força UMA vez
+  (um só membro), pois a Força só dobra ao empunhar arma com vários membros. Isso reduziu
+  o bônus de dano de todas as criaturas convertidas (ex.: Aboleth `3d6 +20` → `3d6 +10`).
+  Criaturas com muitos membros devem ATACAR VÁRIAS VEZES, não somar mais Força por golpe.
+  Explicado no topo da página (callout "Dano natural"). NPCs com arma de duas mãos seguem ×2.
+- **`≈` removido** de `dimensoes-bestiario.json` (medida/peso); o "valor médio" agora é
+  explicado em callout ("Valores médios") em vez do símbolo.
+- **Filtros dinâmicos:** o filtro "Tipo de criatura" passou de `categoria` para o `ecologia.tipo`
+  (PF2e), e foram somados filtros de **Terreno** e **Clima**, todos montados dinamicamente do
+  JSON (novo valor no dado → aparece no filtro sozinho).
+- **Cards flutuantes:** Habilidades, Poderes e Técnicas/Artes/Notas saíram do corpo do card
+  para um segundo modal ("Habilidades & Poderes"), irmão do de "Informações", padronizando a
+  altura dos cards. Conteúdo clonado de `<template class="mech-tpl">` com estilos `is:global`.
+
 ## Bestiário — pendência de balanceamento
 
 - ✅ **Redução de dano (Absorção) por tamanho (RESOLVIDO).** Além do PV, a **Absorção

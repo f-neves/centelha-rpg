@@ -309,7 +309,7 @@ function tipoDe(cat, ameaca) {
 }
 function ataqueDe(m, at, cat, ameaca) {
   if (/incorpóreo/.test(m.type)) {
-    return { nome: 'Toque dilacerante', atrib: 'influencia', pericia: 'briga', dado: 2, mao: 2, tipo: 'necrótico (vs Def. Mental)', ticks: 5, notas: 'atravessa matéria; só Arcano, Proteção ou arma encantada o ferem' };
+    return { nome: 'Toque dilacerante', atrib: 'influencia', pericia: 'briga', dado: 2, mao: 1, tipo: 'necrótico (vs Def. Mental)', ticks: 5, notas: 'atravessa matéria; só Arcano, Proteção ou arma encantada o ferem' };
   }
   const dado = ({ minusculo: 1, pequeno: 1, medio: 1, grande: 2, enorme: 3, imenso: 3, colossal: 4 })[m.size] || 1;
   let nome = 'Ataque natural', tipo = 'perfConc';
@@ -321,7 +321,8 @@ function ataqueDe(m, at, cat, ameaca) {
   else if (['Demônio', 'Diabo', 'Celestial', 'Exterior', 'Elemental'].includes(cat)) { nome = 'Golpe planar'; tipo = 'corte'; }
   else { nome = 'Garras e presas'; tipo = 'perfConc'; }
   const ticks = dado >= 3 ? 7 : dado === 2 ? 6 : 5;
-  return { nome, atrib: 'forca', pericia: 'briga', dado, mao: 2, tipo, acerto: 0, ticks };
+  // Ataque natural = UM membro (garra/braço/tentáculo) → Força ×1. Força ×2 exige arma com vários membros.
+  return { nome, atrib: 'forca', pericia: 'briga', dado, mao: 1, tipo, acerto: 0, ticks };
 }
 function poderesDe(name, centelha) {
   const list = PODERES[name] || [];

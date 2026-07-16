@@ -17,8 +17,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "≈6,5 m de comprimento, corpo alongado com tentáculos",
-   "peso": "≈2,7 t"
+   "medida": "6,5 m de comprimento, corpo alongado com tentáculos",
+   "peso": "2,7 t"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -57,7 +57,7 @@
     {
      "nome": "Garras e presas",
      "pool": "7d6+2 +8",
-     "dano": "3d6 +20 perfConc",
+     "dano": "3d6 +10 perfConc",
      "speed": 7
     }
    ]
@@ -176,8 +176,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Altura ≈1,2 m, envergadura ≈4,5 m",
-   "peso": "≈180 kg"
+   "medida": "Altura 1,2 m, envergadura 4,5 m",
+   "peso": "180 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -216,7 +216,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6 +2",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -298,8 +298,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "corpo ≈1,5 m, envergadura de pernas ≈3 m",
-   "peso": "≈160 kg"
+   "medida": "corpo 1,5 m, envergadura de pernas 3 m",
+   "peso": "160 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -338,7 +338,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6+2 +4",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -412,8 +412,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "Corpo ≈0,6 m, envergadura das pernas ≈1,8 m",
-   "peso": "≈25 kg"
+   "medida": "Corpo 0,6 m, envergadura das pernas 1,8 m",
+   "peso": "25 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -452,7 +452,7 @@
     {
      "nome": "Garras e presas",
      "pool": "2d6",
-     "dano": "1d6 +4 perfConc",
+     "dano": "1d6 +2 perfConc",
      "speed": 5
     }
    ]
@@ -527,8 +527,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura",
-   "peso": "≈100 kg"
+   "medida": "1,8 m de altura",
+   "peso": "100 kg"
   },
   "ecologia": {
    "tipo": "Celestial",
@@ -567,7 +567,7 @@
     {
      "nome": "Golpe planar",
      "pool": "4d6+2 +6",
-     "dano": "1d6 +10 corte",
+     "dano": "1d6 +5 corte",
      "speed": 5
     }
    ]
@@ -665,8 +665,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,73 m de altura",
-   "peso": "≈70 kg"
+   "medida": "1,73 m de altura",
+   "peso": "70 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -764,8 +764,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,7 m de altura",
-   "peso": "≈65 kg"
+   "medida": "1,7 m de altura",
+   "peso": "65 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -870,7 +870,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura, silhueta humanoide flutuante",
+   "medida": "1,8 m de altura, silhueta humanoide flutuante",
    "peso": "sem peso, forma incorpórea"
   },
   "ecologia": {
@@ -1005,8 +1005,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura ≈4,3 m (envergadura ≈9 m)",
-   "peso": "≈3,6 t"
+   "medida": "altura 4,3 m (envergadura 9 m)",
+   "peso": "3,6 t"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -1044,7 +1044,7 @@
     {
      "nome": "Golpe planar",
      "pool": "8d6 +16",
-     "dano": "2d6 +22 corte",
+     "dano": "2d6 +11 corte",
      "speed": 6
     }
    ]
@@ -1170,8 +1170,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,72 m de altura",
-   "peso": "≈70 kg"
+   "medida": "1,72 m de altura",
+   "peso": "70 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -1270,8 +1270,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de comprimento, do focinho à cauda",
-   "peso": "≈135 kg"
+   "medida": "1,8 m de comprimento, do focinho à cauda",
+   "peso": "135 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -1310,7 +1310,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6 +4",
-     "dano": "1d6 +10 perfConc",
+     "dano": "1d6 +5 perfConc",
      "speed": 5
     }
    ]
@@ -1386,8 +1386,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "comprimento ≈9 m",
-   "peso": "≈3,6 t"
+   "medida": "comprimento 9 m",
+   "peso": "3,6 t"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -1426,7 +1426,7 @@
     {
      "nome": "Garras e presas",
      "pool": "7d6+2 +2",
-     "dano": "3d6 +20 perfConc",
+     "dano": "3d6 +10 perfConc",
      "speed": 7
     }
    ]
@@ -1512,8 +1512,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈2,7 m de comprimento, cauda tentacular incluída",
-   "peso": "≈230 kg"
+   "medida": "2,7 m de comprimento, cauda tentacular incluída",
+   "peso": "230 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -1551,7 +1551,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6 +4",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -1639,8 +1639,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura",
-   "peso": "≈65 kg, corpo emagrecido"
+   "medida": "1,8 m de altura",
+   "peso": "65 kg, corpo emagrecido"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -1679,7 +1679,7 @@
     {
      "nome": "Golpe",
      "pool": "4d6+2 +6",
-     "dano": "1d6 +8 impacto",
+     "dano": "1d6 +4 impacto",
      "speed": 5
     }
    ]
@@ -1765,8 +1765,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,9 m de altura",
-   "peso": "≈110 kg"
+   "medida": "1,9 m de altura",
+   "peso": "110 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -1865,8 +1865,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈1,5 m",
-   "peso": "≈80 kg"
+   "medida": "altura 1,5 m",
+   "peso": "80 kg"
   },
   "ecologia": {
    "tipo": "Fey",
@@ -1905,7 +1905,7 @@
     {
      "nome": "Arma",
      "pool": "5d6+2 +6",
-     "dano": "1d6 +12 corte",
+     "dano": "1d6 +6 corte",
      "speed": 5
     }
    ]
@@ -2010,8 +2010,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈2,15 m de altura",
-   "peso": "≈113 kg"
+   "medida": "2,15 m de altura",
+   "peso": "113 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -2050,7 +2050,7 @@
     {
      "nome": "Arma",
      "pool": "3d6+2",
-     "dano": "1d6 +10 corte",
+     "dano": "1d6 +5 corte",
      "speed": 5
     }
    ]
@@ -2113,8 +2113,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "≈2,7 m de altura no dorso, cerca de 6 m do focinho à cauda",
-   "peso": "≈1,4 t"
+   "medida": "2,7 m de altura no dorso, cerca de 6 m do focinho à cauda",
+   "peso": "1,4 t"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -2153,7 +2153,7 @@
     {
      "nome": "Garras e presas",
      "pool": "7d6+2 +2",
-     "dano": "3d6 +20 perfConc",
+     "dano": "3d6 +10 perfConc",
      "speed": 7
     }
    ]
@@ -2224,8 +2224,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,9 m de altura",
-   "peso": "≈90 kg"
+   "medida": "1,9 m de altura",
+   "peso": "90 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -2335,8 +2335,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,65 m de altura",
-   "peso": "≈65 kg"
+   "medida": "1,65 m de altura",
+   "peso": "65 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -2433,8 +2433,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura",
-   "peso": "≈85 kg"
+   "medida": "1,8 m de altura",
+   "peso": "85 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -2531,8 +2531,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,85 m de altura",
-   "peso": "≈95 kg"
+   "medida": "1,85 m de altura",
+   "peso": "95 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -2639,8 +2639,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈ 3,2 m",
-   "peso": "≈ 400 kg"
+   "medida": "altura 3,2 m",
+   "peso": "400 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -2678,7 +2678,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "7d6 +2",
-     "dano": "2d6 +18 impacto",
+     "dano": "2d6 +9 impacto",
      "speed": 6
     }
    ]
@@ -2752,8 +2752,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "Comprimento total ≈3,5 m",
-   "peso": "≈40 kg"
+   "medida": "Comprimento total 3,5 m",
+   "peso": "40 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -2792,7 +2792,7 @@
     {
      "nome": "Garras e presas",
      "pool": "3d6+2",
-     "dano": "1d6 +10 perfConc",
+     "dano": "1d6 +5 perfConc",
      "speed": 5
     }
    ]
@@ -2859,8 +2859,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "≈60 cm de comprimento, envergadura ≈90 cm",
-   "peso": "≈11 kg"
+   "medida": "60 cm de comprimento, envergadura 90 cm",
+   "peso": "11 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -2899,7 +2899,7 @@
     {
      "nome": "Garras e presas",
      "pool": "2d6+2 +4",
-     "dano": "1d6 +2 perfConc",
+     "dano": "1d6 +1 perfConc",
      "speed": 5
     }
    ]
@@ -2970,8 +2970,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,85 m de altura",
-   "peso": "≈88 kg"
+   "medida": "1,85 m de altura",
+   "peso": "88 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -3077,8 +3077,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Altura ≈2,4 m",
-   "peso": "≈230 kg"
+   "medida": "Altura 2,4 m",
+   "peso": "230 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -3116,7 +3116,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6+2 +2",
-     "dano": "2d6 +14 perfConc",
+     "dano": "2d6 +7 perfConc",
      "speed": 6
     }
    ]
@@ -3193,8 +3193,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈3 m de comprimento, envergadura ≈2,4 m",
-   "peso": "≈115 kg"
+   "medida": "3 m de comprimento, envergadura 2,4 m",
+   "peso": "115 kg"
   },
   "ecologia": {
    "tipo": "Celestial",
@@ -3233,7 +3233,7 @@
     {
      "nome": "Golpe planar",
      "pool": "4d6+2 +8",
-     "dano": "1d6 +8 corte",
+     "dano": "1d6 +4 corte",
      "speed": 5
     }
    ]
@@ -3340,8 +3340,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Comprimento total ≈3,5 m (corpo e cauda)",
-   "peso": "≈450 kg"
+   "medida": "Comprimento total 3,5 m (corpo e cauda)",
+   "peso": "450 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -3380,7 +3380,7 @@
     {
      "nome": "Garras e presas",
      "pool": "4d6",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -3438,8 +3438,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cubo de ≈3 m de lado",
-   "peso": "≈14 t (massa gelatinosa densa, bem acima do normal para o porte)"
+   "medida": "cubo de 3 m de lado",
+   "peso": "14 t (massa gelatinosa densa, bem acima do normal para o porte)"
   },
   "ecologia": {
    "tipo": "Ooze",
@@ -3477,7 +3477,7 @@
     {
      "nome": "Pseudópode",
      "pool": "3d6",
-     "dano": "2d6 +6 impacto",
+     "dano": "2d6 +3 impacto",
      "speed": 6
     }
    ]
@@ -3541,8 +3541,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,7 m de altura",
-   "peso": "≈62 kg"
+   "medida": "1,7 m de altura",
+   "peso": "62 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -3647,8 +3647,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈2 m de altura, envergadura ≈3,6 m",
-   "peso": "≈90 kg"
+   "medida": "2 m de altura, envergadura 3,6 m",
+   "peso": "90 kg"
   },
   "ecologia": {
    "tipo": "Celestial",
@@ -3686,7 +3686,7 @@
     {
      "nome": "Golpe planar",
      "pool": "6d6+2 +10",
-     "dano": "1d6 +16 corte",
+     "dano": "1d6 +8 corte",
      "speed": 5
     }
    ]
@@ -3794,8 +3794,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈2,1 m",
-   "peso": "≈90 kg"
+   "medida": "altura 2,1 m",
+   "peso": "90 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -3833,7 +3833,7 @@
     {
      "nome": "Golpe planar",
      "pool": "4d6+2 +6",
-     "dano": "1d6 +8 corte",
+     "dano": "1d6 +4 corte",
      "speed": 5
     }
    ]
@@ -3932,8 +3932,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈3,3 m",
-   "peso": "≈360 kg"
+   "medida": "altura 3,3 m",
+   "peso": "360 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -3972,7 +3972,7 @@
     {
      "nome": "Golpe planar",
      "pool": "7d6 +10",
-     "dano": "2d6 +18 corte",
+     "dano": "2d6 +9 corte",
      "speed": 6
     }
    ]
@@ -4076,8 +4076,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈2,7 m de altura, envergadura ≈4 m",
-   "peso": "≈360 kg"
+   "medida": "2,7 m de altura, envergadura 4 m",
+   "peso": "360 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -4115,7 +4115,7 @@
     {
      "nome": "Golpe planar",
      "pool": "8d6+2 +16",
-     "dano": "2d6 +24 corte",
+     "dano": "2d6 +12 corte",
      "speed": 6
     }
    ]
@@ -4246,8 +4246,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈2,7 m",
-   "peso": "≈230 kg"
+   "medida": "altura 2,7 m",
+   "peso": "230 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -4285,7 +4285,7 @@
     {
      "nome": "Golpe planar",
      "pool": "6d6+2 +8",
-     "dano": "2d6 +16 corte",
+     "dano": "2d6 +8 corte",
      "speed": 6
     }
    ]
@@ -4389,8 +4389,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "altura ≈60 cm",
-   "peso": "≈3,6 kg"
+   "medida": "altura 60 cm",
+   "peso": "3,6 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -4428,7 +4428,7 @@
     {
      "nome": "Golpe planar",
      "pool": "2d6+2 +4",
-     "dano": "1d6 +4 corte",
+     "dano": "1d6 +2 corte",
      "speed": 5
     }
    ]
@@ -4537,8 +4537,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈3 m de altura",
-   "peso": "≈200 kg"
+   "medida": "3 m de altura",
+   "peso": "200 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -4577,7 +4577,7 @@
     {
      "nome": "Golpe planar",
      "pool": "5d6+2 +6",
-     "dano": "2d6 +12 corte",
+     "dano": "2d6 +6 corte",
      "speed": 6
     }
    ]
@@ -4685,8 +4685,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈1,8 m na forma humana padrão",
-   "peso": "≈70 kg"
+   "medida": "altura 1,8 m na forma humana padrão",
+   "peso": "70 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -4724,7 +4724,7 @@
     {
      "nome": "Arma",
      "pool": "3d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +3 corte",
      "speed": 5
     }
    ]
@@ -4824,8 +4824,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "≈9,5 m de comprimento, envergadura de ≈14 m",
-   "peso": "≈7,5 toneladas"
+   "medida": "9,5 m de comprimento, envergadura de 14 m",
+   "peso": "7,5 toneladas"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -4864,7 +4864,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "8d6 +10",
-     "dano": "3d6 +22 perfConc",
+     "dano": "3d6 +11 perfConc",
      "speed": 7
     }
    ]
@@ -4980,8 +4980,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈4,3 m de comprimento, com a cauda",
-   "peso": "≈700 kg"
+   "medida": "4,3 m de comprimento, com a cauda",
+   "peso": "700 kg"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -5020,7 +5020,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "6d6 +6",
-     "dano": "2d6 +14 perfConc",
+     "dano": "2d6 +7 perfConc",
      "speed": 6
     }
    ]
@@ -5128,8 +5128,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "≈9,5 m de comprimento, envergadura de ≈15 m",
-   "peso": "≈9 toneladas"
+   "medida": "9,5 m de comprimento, envergadura de 15 m",
+   "peso": "9 toneladas"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -5167,7 +5167,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "8d6+2 +12",
-     "dano": "3d6 +24 perfConc",
+     "dano": "3d6 +12 perfConc",
      "speed": 7
     }
    ]
@@ -5297,8 +5297,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "≈9 m de comprimento, com a cauda",
-   "peso": "≈7 toneladas"
+   "medida": "9 m de comprimento, com a cauda",
+   "peso": "7 toneladas"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -5336,7 +5336,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "7d6+2 +10",
-     "dano": "3d6 +20 perfConc",
+     "dano": "3d6 +10 perfConc",
      "speed": 7
     }
    ]
@@ -5448,8 +5448,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "≈9 m de comprimento, com a cauda",
-   "peso": "≈7,3 toneladas"
+   "medida": "9 m de comprimento, com a cauda",
+   "peso": "7,3 toneladas"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -5487,7 +5487,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "8d6 +10",
-     "dano": "3d6 +22 perfConc",
+     "dano": "3d6 +11 perfConc",
      "speed": 7
     }
    ]
@@ -5604,8 +5604,8 @@
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
-   "medida": "≈16,5 m de comprimento, com a cauda",
-   "peso": "≈59 toneladas"
+   "medida": "16,5 m de comprimento, com a cauda",
+   "peso": "59 toneladas"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -5643,7 +5643,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "9d6+2 +12",
-     "dano": "3d6 +28 perfConc",
+     "dano": "3d6 +14 perfConc",
      "speed": 7
     }
    ]
@@ -5763,8 +5763,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈4,9 m de comprimento, com a cauda",
-   "peso": "≈900 kg"
+   "medida": "4,9 m de comprimento, com a cauda",
+   "peso": "900 kg"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -5802,7 +5802,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "7d6 +8",
-     "dano": "2d6 +18 perfConc",
+     "dano": "2d6 +9 perfConc",
      "speed": 6
     }
    ]
@@ -5908,8 +5908,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "altura ≈90 cm",
-   "peso": "≈27 kg"
+   "medida": "altura 90 cm",
+   "peso": "27 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -5947,7 +5947,7 @@
     {
      "nome": "Golpe planar",
      "pool": "3d6 +4",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +3 corte",
      "speed": 5
     }
    ]
@@ -6031,8 +6031,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,65 m de altura",
-   "peso": "≈50 kg"
+   "medida": "1,65 m de altura",
+   "peso": "50 kg"
   },
   "ecologia": {
    "tipo": "Fey",
@@ -6070,7 +6070,7 @@
     {
      "nome": "Garras e presas",
      "pool": "3d6 +6",
-     "dano": "1d6 +4 perfConc",
+     "dano": "1d6 +2 perfConc",
      "speed": 5
     }
    ]
@@ -6171,8 +6171,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,75 m de altura",
-   "peso": "≈70 kg"
+   "medida": "1,75 m de altura",
+   "peso": "70 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -6275,8 +6275,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈3,6 m de altura",
-   "peso": "≈320 kg"
+   "medida": "3,6 m de altura",
+   "peso": "320 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -6314,7 +6314,7 @@
     {
      "nome": "Golpe planar",
      "pool": "6d6+2 +6",
-     "dano": "2d6 +16 corte",
+     "dano": "2d6 +8 corte",
      "speed": 6
     }
    ]
@@ -6416,8 +6416,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "comprimento ≈ 6,5 m",
-   "peso": "≈ 5,5 t"
+   "medida": "comprimento 6,5 m",
+   "peso": "5,5 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -6456,7 +6456,7 @@
     {
      "nome": "Garras e presas",
      "pool": "7d6+2",
-     "dano": "3d6 +22 perfConc",
+     "dano": "3d6 +11 perfConc",
      "speed": 7
     }
    ]
@@ -6533,8 +6533,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈3 m de altura",
-   "peso": "≈2 toneladas"
+   "medida": "3 m de altura",
+   "peso": "2 toneladas"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -6573,7 +6573,7 @@
     {
      "nome": "Golpe planar",
      "pool": "7d6 +4",
-     "dano": "2d6 +18 corte",
+     "dano": "2d6 +9 corte",
      "speed": 6
     }
    ]
@@ -6661,8 +6661,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈1,8 m (envergadura ≈4,5 m)",
-   "peso": "≈68 kg"
+   "medida": "altura 1,8 m (envergadura 4,5 m)",
+   "peso": "68 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -6700,7 +6700,7 @@
     {
      "nome": "Golpe planar",
      "pool": "5d6+2 +8",
-     "dano": "1d6 +12 corte",
+     "dano": "1d6 +6 corte",
      "speed": 5
     }
    ]
@@ -6803,8 +6803,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Comprimento total ≈3 m (com cauda)",
-   "peso": "≈350 kg"
+   "medida": "Comprimento total 3 m (com cauda)",
+   "peso": "350 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -6842,7 +6842,7 @@
     {
      "nome": "Garras e presas",
      "pool": "4d6+2",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -6912,8 +6912,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "corpo ≈3 m, envergadura ≈6 m",
-   "peso": "≈230 kg"
+   "medida": "corpo 3 m, envergadura 6 m",
+   "peso": "230 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -6952,7 +6952,7 @@
     {
      "nome": "Garras e presas",
      "pool": "6d6 +8",
-     "dano": "2d6 +14 perfConc",
+     "dano": "2d6 +7 perfConc",
      "speed": 6
     }
    ]
@@ -7060,7 +7060,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura, silhueta humanoide flutuante",
+   "medida": "1,8 m de altura, silhueta humanoide flutuante",
    "peso": "sem peso, forma incorpórea"
   },
   "ecologia": {
@@ -7197,8 +7197,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,7 m de altura",
-   "peso": "≈15 kg, apenas ossos"
+   "medida": "1,7 m de altura",
+   "peso": "15 kg, apenas ossos"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -7237,7 +7237,7 @@
     {
      "nome": "Golpe",
      "pool": "2d6+2",
-     "dano": "1d6 +8 impacto",
+     "dano": "1d6 +4 impacto",
      "speed": 5
     }
    ]
@@ -7295,8 +7295,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈4 m de altura",
-   "peso": "≈1,8 t"
+   "medida": "4 m de altura",
+   "peso": "1,8 t"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -7335,7 +7335,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "6d6",
-     "dano": "2d6 +16 impacto",
+     "dano": "2d6 +8 impacto",
      "speed": 6
     }
    ]
@@ -7403,8 +7403,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,68 m de altura",
-   "peso": "≈60 kg"
+   "medida": "1,68 m de altura",
+   "peso": "60 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -7508,8 +7508,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈2,7 m de comprimento, com a cauda",
-   "peso": "≈90 kg"
+   "medida": "2,7 m de comprimento, com a cauda",
+   "peso": "90 kg"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -7547,7 +7547,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "5d6+2 +6",
-     "dano": "1d6 +12 perfConc",
+     "dano": "1d6 +6 perfConc",
      "speed": 5
     }
    ]
@@ -7645,8 +7645,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "diâmetro ≈30 cm (orbe de luz flutuante)",
-   "peso": "≈0,5 kg, quase sem massa"
+   "medida": "diâmetro 30 cm (orbe de luz flutuante)",
+   "peso": "0,5 kg, quase sem massa"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -7791,8 +7791,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "Altura ≈1,5 m",
-   "peso": "≈180 kg (pedra densa)"
+   "medida": "Altura 1,5 m",
+   "peso": "180 kg (pedra densa)"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -7831,7 +7831,7 @@
     {
      "nome": "Arma",
      "pool": "4d6 +2",
-     "dano": "1d6 +8 corte",
+     "dano": "1d6 +4 corte",
      "speed": 5
     }
    ]
@@ -7912,8 +7912,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura",
-   "peso": "≈90 kg"
+   "medida": "1,8 m de altura",
+   "peso": "90 kg"
   },
   "ecologia": {
    "tipo": "Celestial",
@@ -7951,7 +7951,7 @@
     {
      "nome": "Golpe planar",
      "pool": "5d6+2 +10",
-     "dano": "1d6 +12 corte",
+     "dano": "1d6 +6 corte",
      "speed": 5
     }
    ]
@@ -8054,8 +8054,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura",
-   "peso": "≈65 kg"
+   "medida": "1,8 m de altura",
+   "peso": "65 kg"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -8094,7 +8094,7 @@
     {
      "nome": "Golpe",
      "pool": "4d6 +4",
-     "dano": "1d6 +10 impacto",
+     "dano": "1d6 +5 impacto",
      "speed": 5
     }
    ]
@@ -8174,8 +8174,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,7 m de altura",
-   "peso": "≈60 kg, corpo ressecado"
+   "medida": "1,7 m de altura",
+   "peso": "60 kg, corpo ressecado"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -8214,7 +8214,7 @@
     {
      "nome": "Golpe",
      "pool": "3d6 +2",
-     "dano": "1d6 +6 impacto",
+     "dano": "1d6 +3 impacto",
      "speed": 5
     }
    ]
@@ -8296,8 +8296,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈4,3 m de altura",
-   "peso": "≈590 kg"
+   "medida": "4,3 m de altura",
+   "peso": "590 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -8336,7 +8336,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "6d6+2",
-     "dano": "2d6 +18 impacto",
+     "dano": "2d6 +9 impacto",
      "speed": 6
     }
    ]
@@ -8402,8 +8402,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈3,7 m de altura",
-   "peso": "≈770 kg"
+   "medida": "3,7 m de altura",
+   "peso": "770 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -8442,7 +8442,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "7d6",
-     "dano": "2d6 +18 impacto",
+     "dano": "2d6 +9 impacto",
      "speed": 6
     }
    ]
@@ -8514,8 +8514,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura ≈ 7,5 m",
-   "peso": "≈ 11 t"
+   "medida": "altura 7,5 m",
+   "peso": "11 t"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -8554,7 +8554,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "9d6 +4",
-     "dano": "3d6 +26 impacto",
+     "dano": "3d6 +13 impacto",
      "speed": 7
     }
    ]
@@ -8652,8 +8652,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura ≈ 7 m",
-   "peso": "≈ 8 t"
+   "medida": "altura 7 m",
+   "peso": "8 t"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -8692,7 +8692,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "8d6+2 +2",
-     "dano": "3d6 +24 impacto",
+     "dano": "3d6 +12 impacto",
      "speed": 7
     }
    ]
@@ -8781,8 +8781,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈ 4,5 m",
-   "peso": "≈ 3,2 t"
+   "medida": "altura 4,5 m",
+   "peso": "3,2 t"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -8821,7 +8821,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "7d6+2 +2",
-     "dano": "2d6 +20 impacto",
+     "dano": "2d6 +10 impacto",
      "speed": 6
     }
    ]
@@ -8905,8 +8905,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈ 4,3 m",
-   "peso": "≈ 2,8 t"
+   "medida": "altura 4,3 m",
+   "peso": "2,8 t"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -8945,7 +8945,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "7d6+2 +2",
-     "dano": "2d6 +20 impacto",
+     "dano": "2d6 +10 impacto",
      "speed": 6
     }
    ]
@@ -9013,8 +9013,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura ≈3,7 m",
-   "peso": "≈1,8 t"
+   "medida": "altura 3,7 m",
+   "peso": "1,8 t"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -9052,7 +9052,7 @@
     {
      "nome": "Golpe planar",
      "pool": "8d6+2 +10",
-     "dano": "3d6 +24 corte",
+     "dano": "3d6 +12 corte",
      "speed": 7
     }
    ]
@@ -9153,8 +9153,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈2,15 m de altura",
-   "peso": "≈135 kg"
+   "medida": "2,15 m de altura",
+   "peso": "135 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -9194,7 +9194,7 @@
     {
      "nome": "Arma",
      "pool": "3d6",
-     "dano": "1d6 +8 corte",
+     "dano": "1d6 +4 corte",
      "speed": 5
     }
    ]
@@ -9256,8 +9256,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "≈0,95 m de altura",
-   "peso": "≈18 kg"
+   "medida": "0,95 m de altura",
+   "peso": "18 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -9296,7 +9296,7 @@
     {
      "nome": "Arma",
      "pool": "1d6+2",
-     "dano": "1d6 +4 corte",
+     "dano": "1d6 +2 corte",
      "speed": 5
     }
    ]
@@ -9360,8 +9360,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈3,5 m de comprimento, ≈1,8 m ao ombro",
-   "peso": "≈1,8 t (pele de ferro maciço, bem acima do normal para o porte)"
+   "medida": "3,5 m de comprimento, 1,8 m ao ombro",
+   "peso": "1,8 t (pele de ferro maciço, bem acima do normal para o porte)"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -9400,7 +9400,7 @@
     {
      "nome": "Garras e presas",
      "pool": "6d6+2 +4",
-     "dano": "2d6 +16 perfConc",
+     "dano": "2d6 +8 perfConc",
      "speed": 6
     }
    ]
@@ -9478,8 +9478,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈ 1,7 m em pé, envergadura de braços ≈ 2,4 m",
-   "peso": "≈ 180 kg"
+   "medida": "altura 1,7 m em pé, envergadura de braços 2,4 m",
+   "peso": "180 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -9518,7 +9518,7 @@
     {
      "nome": "Garras e presas",
      "pool": "4d6",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -9578,8 +9578,8 @@
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
-   "medida": "≈20 m de comprimento, com a cauda",
-   "peso": "≈88 toneladas"
+   "medida": "20 m de comprimento, com a cauda",
+   "peso": "88 toneladas"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -9618,7 +9618,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "10d6+2 +16",
-     "dano": "4d6 +32 perfConc",
+     "dano": "4d6 +16 perfConc",
      "speed": 7
     }
    ]
@@ -9742,8 +9742,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Corpo ≈2,4 m, envergadura ≈4,5 m",
-   "peso": "≈230 kg"
+   "medida": "Corpo 2,4 m, envergadura 4,5 m",
+   "peso": "230 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -9782,7 +9782,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6 +2",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -9844,8 +9844,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,75 m de altura",
-   "peso": "≈78 kg"
+   "medida": "1,75 m de altura",
+   "peso": "78 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -9943,8 +9943,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "Altura ≈1,6 m, envergadura ≈4,5 m",
-   "peso": "≈55 kg"
+   "medida": "Altura 1,6 m, envergadura 4,5 m",
+   "peso": "55 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -9984,7 +9984,7 @@
     {
      "nome": "Arma",
      "pool": "3d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +3 corte",
      "speed": 5
     }
    ]
@@ -10072,8 +10072,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈3 m",
-   "peso": "≈320 kg"
+   "medida": "altura 3 m",
+   "peso": "320 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -10111,7 +10111,7 @@
     {
      "nome": "Golpe planar",
      "pool": "7d6 +8",
-     "dano": "2d6 +18 corte",
+     "dano": "2d6 +9 corte",
      "speed": 6
     }
    ]
@@ -10204,8 +10204,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "corpo e pescoços ≈9 m de comprimento",
-   "peso": "≈4 t"
+   "medida": "corpo e pescoços 9 m de comprimento",
+   "peso": "4 t"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -10244,7 +10244,7 @@
     {
      "nome": "Garras e presas",
      "pool": "6d6 +2",
-     "dano": "3d6 +16 perfConc",
+     "dano": "3d6 +8 perfConc",
      "speed": 7
     }
    ]
@@ -10310,8 +10310,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Comprimento ≈3 m, envergadura ≈5,5 m",
-   "peso": "≈450 kg"
+   "medida": "Comprimento 3 m, envergadura 5,5 m",
+   "peso": "450 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -10350,7 +10350,7 @@
     {
      "nome": "Garras e presas",
      "pool": "4d6+2 +2",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -10412,8 +10412,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,7 m de altura",
-   "peso": "≈73 kg"
+   "medida": "1,7 m de altura",
+   "peso": "73 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -10452,7 +10452,7 @@
     {
      "nome": "Arma",
      "pool": "2d6+2",
-     "dano": "1d6 +8 corte",
+     "dano": "1d6 +4 corte",
      "speed": 5
     }
    ]
@@ -10514,8 +10514,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura (cerca de 2,4 m de comprimento com a cauda)",
-   "peso": "≈90 kg"
+   "medida": "1,8 m de altura (cerca de 2,4 m de comprimento com a cauda)",
+   "peso": "90 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -10554,7 +10554,7 @@
     {
      "nome": "Arma",
      "pool": "2d6+2",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +3 corte",
      "speed": 5
     }
    ]
@@ -10616,8 +10616,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "comprimento ≈ 1,5 m",
-   "peso": "≈ 110 kg"
+   "medida": "comprimento 1,5 m",
+   "peso": "110 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -10655,7 +10655,7 @@
     {
      "nome": "Garras e presas",
      "pool": "3d6",
-     "dano": "1d6 +8 perfConc",
+     "dano": "1d6 +4 perfConc",
      "speed": 5
     }
    ]
@@ -10713,8 +10713,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "≈0,75 m de altura",
-   "peso": "≈16 kg"
+   "medida": "0,75 m de altura",
+   "peso": "16 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -10752,7 +10752,7 @@
     {
      "nome": "Arma",
      "pool": "1d6+2",
-     "dano": "1d6 +4 corte",
+     "dano": "1d6 +2 corte",
      "speed": 5
     }
    ]
@@ -10820,8 +10820,8 @@
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
-   "medida": "≈35 m de comprimento total, entre corpo e tentáculos",
-   "peso": "≈140 toneladas"
+   "medida": "35 m de comprimento total, entre corpo e tentáculos",
+   "peso": "140 toneladas"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -10859,7 +10859,7 @@
     {
      "nome": "Garras e presas",
      "pool": "9d6+2 +12",
-     "dano": "4d6 +28 perfConc",
+     "dano": "4d6 +14 perfConc",
      "speed": 7
     }
    ]
@@ -10964,8 +10964,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento ≈3 m, corpo com quartos traseiros de leão",
-   "peso": "≈160 kg"
+   "medida": "comprimento 3 m, corpo com quartos traseiros de leão",
+   "peso": "160 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -11004,7 +11004,7 @@
     {
      "nome": "Arma",
      "pool": "5d6+2 +6",
-     "dano": "2d6 +12 corte",
+     "dano": "2d6 +6 corte",
      "speed": 6
     }
    ]
@@ -11100,8 +11100,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento ≈ 2,5 m, com cauda",
-   "peso": "≈ 190 kg"
+   "medida": "comprimento 2,5 m, com cauda",
+   "peso": "190 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -11139,7 +11139,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6",
-     "dano": "2d6 +14 perfConc",
+     "dano": "2d6 +7 perfConc",
      "speed": 6
     }
    ]
@@ -11215,8 +11215,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈1,5 m",
-   "peso": "≈45 kg"
+   "medida": "altura 1,5 m",
+   "peso": "45 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -11254,7 +11254,7 @@
     {
      "nome": "Golpe planar",
      "pool": "3d6 +2",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +3 corte",
      "speed": 5
     }
    ]
@@ -11323,8 +11323,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,75 m de altura",
-   "peso": "≈40 kg, esqueleto e vestes"
+   "medida": "1,75 m de altura",
+   "peso": "40 kg, esqueleto e vestes"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -11363,7 +11363,7 @@
     {
      "nome": "Golpe",
      "pool": "3d6+2 +10",
-     "dano": "1d6 +4 impacto",
+     "dano": "1d6 +2 impacto",
      "speed": 5
     }
    ]
@@ -11477,8 +11477,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "comprimento ≈ 1,5 m, do focinho à cauda",
-   "peso": "≈ 45 kg"
+   "medida": "comprimento 1,5 m, do focinho à cauda",
+   "peso": "45 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -11519,7 +11519,7 @@
     {
      "nome": "Garras e presas",
      "pool": "2d6+2",
-     "dano": "1d6 +6 perfConc",
+     "dano": "1d6 +3 perfConc",
      "speed": 5
     }
    ]
@@ -11584,8 +11584,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento ≈ 2,7 m",
-   "peso": "≈ 350 kg"
+   "medida": "comprimento 2,7 m",
+   "peso": "350 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -11626,7 +11626,7 @@
     {
      "nome": "Garras e presas",
      "pool": "6d6",
-     "dano": "2d6 +18 perfConc",
+     "dano": "2d6 +9 perfConc",
      "speed": 6
     }
    ]
@@ -11690,8 +11690,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,75 m de altura",
-   "peso": "≈75 kg"
+   "medida": "1,75 m de altura",
+   "peso": "75 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -11810,8 +11810,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Comprimento total ≈3,5 m (corpo e cauda)",
-   "peso": "≈380 kg"
+   "medida": "Comprimento total 3,5 m (corpo e cauda)",
+   "peso": "380 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -11850,7 +11850,7 @@
     {
      "nome": "Garras e presas",
      "pool": "6d6 +2",
-     "dano": "2d6 +14 perfConc",
+     "dano": "2d6 +7 perfConc",
      "speed": 6
     }
    ]
@@ -11924,8 +11924,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento ≈6 m",
-   "peso": "≈1,8 t"
+   "medida": "comprimento 6 m",
+   "peso": "1,8 t"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -11963,7 +11963,7 @@
     {
      "nome": "Golpe planar",
      "pool": "7d6+2 +12",
-     "dano": "2d6 +20 corte",
+     "dano": "2d6 +10 corte",
      "speed": 6
     }
    ]
@@ -12063,8 +12063,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈1,75 m",
-   "peso": "≈55 kg"
+   "medida": "altura 1,75 m",
+   "peso": "55 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -12104,7 +12104,7 @@
     {
      "nome": "Arma",
      "pool": "3d6+2 +4",
-     "dano": "1d6 +4 corte",
+     "dano": "1d6 +2 corte",
      "speed": 5
     }
    ]
@@ -12192,8 +12192,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,2 m de altura na forma de baú",
-   "peso": "≈150 kg"
+   "medida": "1,2 m de altura na forma de baú",
+   "peso": "150 kg"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -12232,7 +12232,7 @@
     {
      "nome": "Garras e presas",
      "pool": "4d6+2 +2",
-     "dano": "1d6 +10 perfConc",
+     "dano": "1d6 +5 perfConc",
      "speed": 5
     }
    ]
@@ -12307,8 +12307,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Altura ≈2,4 m",
-   "peso": "≈250 kg"
+   "medida": "Altura 2,4 m",
+   "peso": "250 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -12347,7 +12347,7 @@
     {
      "nome": "Arma",
      "pool": "5d6 +2",
-     "dano": "2d6 +12 corte",
+     "dano": "2d6 +6 corte",
      "speed": 6
     }
    ]
@@ -12430,8 +12430,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,5 m de comprimento",
-   "peso": "≈120 kg"
+   "medida": "1,5 m de comprimento",
+   "peso": "120 kg"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -12469,7 +12469,7 @@
     {
      "nome": "Garras e presas",
      "pool": "3d6 +2",
-     "dano": "1d6 +4 perfConc",
+     "dano": "1d6 +2 perfConc",
      "speed": 5
     }
    ]
@@ -12540,8 +12540,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈2,7 m de altura",
-   "peso": "≈1,4 t (massa vegetal e lodo compacto)"
+   "medida": "2,7 m de altura",
+   "peso": "1,4 t (massa vegetal e lodo compacto)"
   },
   "ecologia": {
    "tipo": "Plant",
@@ -12581,7 +12581,7 @@
     {
      "nome": "Garras e presas",
      "pool": "6d6 +2",
-     "dano": "2d6 +14 perfConc",
+     "dano": "2d6 +7 perfConc",
      "speed": 6
     }
    ]
@@ -12658,8 +12658,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura",
-   "peso": "≈85 kg, corpo dessecado e ataduras"
+   "medida": "1,8 m de altura",
+   "peso": "85 kg, corpo dessecado e ataduras"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -12698,7 +12698,7 @@
     {
      "nome": "Golpe",
      "pool": "6d6 +6",
-     "dano": "1d6 +14 impacto",
+     "dano": "1d6 +7 impacto",
      "speed": 5
     }
    ]
@@ -12792,8 +12792,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento ≈6 m",
-   "peso": "≈320 kg"
+   "medida": "comprimento 6 m",
+   "peso": "320 kg"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -12833,7 +12833,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6+2 +8",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -12935,8 +12935,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈1,7 m",
-   "peso": "≈55 kg"
+   "medida": "altura 1,7 m",
+   "peso": "55 kg"
   },
   "ecologia": {
    "tipo": "Fey",
@@ -12975,7 +12975,7 @@
     {
      "nome": "Garras e presas",
      "pool": "3d6+2 +8",
-     "dano": "1d6 +4 perfConc",
+     "dano": "1d6 +2 perfConc",
      "speed": 5
     }
    ]
@@ -13079,8 +13079,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈2,9 m de altura",
-   "peso": "≈290 kg"
+   "medida": "2,9 m de altura",
+   "peso": "290 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -13120,7 +13120,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "5d6",
-     "dano": "2d6 +14 impacto",
+     "dano": "2d6 +7 impacto",
      "speed": 6
     }
    ]
@@ -13184,8 +13184,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈2,7 m",
-   "peso": "≈290 kg"
+   "medida": "altura 2,7 m",
+   "peso": "290 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -13224,7 +13224,7 @@
     {
      "nome": "Golpe planar",
      "pool": "6d6 +8",
-     "dano": "2d6 +14 corte",
+     "dano": "2d6 +7 corte",
      "speed": 6
     }
    ]
@@ -13344,8 +13344,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈2 m de altura",
-   "peso": "≈95 kg"
+   "medida": "2 m de altura",
+   "peso": "95 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -13385,7 +13385,7 @@
     {
      "nome": "Arma",
      "pool": "3d6",
-     "dano": "1d6 +10 corte",
+     "dano": "1d6 +5 corte",
      "speed": 5
     }
    ]
@@ -13449,8 +13449,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "corpo ≈2,7 m, envergadura ≈9 m",
-   "peso": "≈450 kg"
+   "medida": "corpo 2,7 m, envergadura 9 m",
+   "peso": "450 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -13490,7 +13490,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6 +6",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -13583,8 +13583,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "altura ≈30 cm",
-   "peso": "≈3 kg"
+   "medida": "altura 30 cm",
+   "peso": "3 kg"
   },
   "ecologia": {
    "tipo": "Fey",
@@ -13622,7 +13622,7 @@
     {
      "nome": "Garras e presas",
      "pool": "2d6+2 +6",
-     "dano": "1d6 +2 perfConc",
+     "dano": "1d6 +1 perfConc",
      "speed": 5
     }
    ]
@@ -13725,8 +13725,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈2,7 m de altura, envergadura ≈6 m",
-   "peso": "≈225 kg"
+   "medida": "2,7 m de altura, envergadura 6 m",
+   "peso": "225 kg"
   },
   "ecologia": {
    "tipo": "Celestial",
@@ -13764,7 +13764,7 @@
     {
      "nome": "Golpe planar",
      "pool": "7d6 +12",
-     "dano": "2d6 +18 corte",
+     "dano": "2d6 +9 corte",
      "speed": 6
     }
    ]
@@ -13870,8 +13870,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "altura ≈30 cm",
-   "peso": "≈3,5 kg"
+   "medida": "altura 30 cm",
+   "peso": "3,5 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -13909,7 +13909,7 @@
     {
      "nome": "Golpe planar",
      "pool": "2d6+2 +4",
-     "dano": "1d6 +4 corte",
+     "dano": "1d6 +2 corte",
      "speed": 5
     }
    ]
@@ -14013,8 +14013,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "corpo e cauda ≈4,5 m, altura ao ombro ≈1,8 m, envergadura ≈6 m",
-   "peso": "≈600 kg"
+   "medida": "corpo e cauda 4,5 m, altura ao ombro 1,8 m, envergadura 6 m",
+   "peso": "600 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -14052,7 +14052,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6+2 +4",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -14141,8 +14141,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura",
-   "peso": "≈80 kg"
+   "medida": "1,8 m de altura",
+   "peso": "80 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -14182,7 +14182,7 @@
     {
      "nome": "Golpe planar",
      "pool": "4d6+2 +8",
-     "dano": "1d6 +8 corte",
+     "dano": "1d6 +4 corte",
      "speed": 5
     }
    ]
@@ -14292,8 +14292,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "Comprimento total ≈0,9 m (com cauda)",
-   "peso": "≈12 kg"
+   "medida": "Comprimento total 0,9 m (com cauda)",
+   "peso": "12 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -14333,7 +14333,7 @@
     {
      "nome": "Garras e presas",
      "pool": "1d6",
-     "dano": "1d6 +2 perfConc",
+     "dano": "1d6 +1 perfConc",
      "speed": 5
     }
    ]
@@ -14387,8 +14387,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento ≈ 3,6 m",
-   "peso": "≈ 2 t"
+   "medida": "comprimento 3,6 m",
+   "peso": "2 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -14427,7 +14427,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6+2",
-     "dano": "2d6 +16 perfConc",
+     "dano": "2d6 +8 perfConc",
      "speed": 6
     }
    ]
@@ -14485,8 +14485,8 @@
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
-   "medida": "Comprimento ≈9 m, envergadura ≈18 m",
-   "peso": "≈18 toneladas"
+   "medida": "Comprimento 9 m, envergadura 18 m",
+   "peso": "18 toneladas"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -14525,7 +14525,7 @@
     {
      "nome": "Garras e presas",
      "pool": "9d6",
-     "dano": "3d6 +26 perfConc",
+     "dano": "3d6 +13 perfConc",
      "speed": 7
     }
    ]
@@ -14601,8 +14601,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈2,7 m de comprimento total",
-   "peso": "≈100 kg"
+   "medida": "2,7 m de comprimento total",
+   "peso": "100 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -14641,7 +14641,7 @@
     {
      "nome": "Golpe planar",
      "pool": "5d6 +4",
-     "dano": "1d6 +10 corte",
+     "dano": "1d6 +5 corte",
      "speed": 5
     }
    ]
@@ -14729,8 +14729,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈1,5 m",
-   "peso": "≈65 kg"
+   "medida": "altura 1,5 m",
+   "peso": "65 kg"
   },
   "ecologia": {
    "tipo": "Fey",
@@ -14768,7 +14768,7 @@
     {
      "nome": "Garras e presas",
      "pool": "4d6 +4",
-     "dano": "1d6 +8 perfConc",
+     "dano": "1d6 +4 perfConc",
      "speed": 5
     }
    ]
@@ -14858,8 +14858,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈3 m de altura, envergadura ≈7 m",
-   "peso": "≈320 kg"
+   "medida": "3 m de altura, envergadura 7 m",
+   "peso": "320 kg"
   },
   "ecologia": {
    "tipo": "Celestial",
@@ -14897,7 +14897,7 @@
     {
      "nome": "Golpe planar",
      "pool": "7d6+2 +16",
-     "dano": "2d6 +20 corte",
+     "dano": "2d6 +10 corte",
      "speed": 6
     }
    ]
@@ -15020,8 +15020,8 @@
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,78 m de altura",
-   "peso": "≈82 kg"
+   "medida": "1,78 m de altura",
+   "peso": "82 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -15121,7 +15121,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,8 m de altura, silhueta humanoide difusa",
+   "medida": "1,8 m de altura, silhueta humanoide difusa",
    "peso": "sem peso, forma incorpórea sem massa"
   },
   "ecologia": {
@@ -15252,8 +15252,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura ≈1,75 m",
-   "peso": "≈59 kg"
+   "medida": "altura 1,75 m",
+   "peso": "59 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -15291,7 +15291,7 @@
     {
      "nome": "Golpe planar",
      "pool": "4d6 +6",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +3 corte",
      "speed": 5
     }
    ]
@@ -15407,8 +15407,8 @@
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
-   "medida": "≈27 m de comprimento, chegando a ≈15 m de altura quando se ergue",
-   "peso": "≈450 toneladas"
+   "medida": "27 m de comprimento, chegando a 15 m de altura quando se ergue",
+   "peso": "450 toneladas"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -15446,7 +15446,7 @@
     {
      "nome": "Garras e presas",
      "pool": "10d6+2 +14",
-     "dano": "4d6 +32 perfConc",
+     "dano": "4d6 +16 perfConc",
      "speed": 7
     }
    ]
@@ -15554,8 +15554,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento ≈ 2,9 m, com cauda",
-   "peso": "≈ 220 kg"
+   "medida": "comprimento 2,9 m, com cauda",
+   "peso": "220 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -15594,7 +15594,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6+2",
-     "dano": "2d6 +16 perfConc",
+     "dano": "2d6 +8 perfConc",
      "speed": 6
     }
    ]
@@ -15654,8 +15654,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "≈7,5 m de altura",
-   "peso": "≈2 t"
+   "medida": "7,5 m de altura",
+   "peso": "2 t"
   },
   "ecologia": {
    "tipo": "Plant",
@@ -15693,7 +15693,7 @@
     {
      "nome": "Garras e presas",
      "pool": "8d6 +4",
-     "dano": "3d6 +22 perfConc",
+     "dano": "3d6 +11 perfConc",
      "speed": 7
     }
    ]
@@ -15783,8 +15783,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,7 m de altura",
-   "peso": "≈75 kg"
+   "medida": "1,7 m de altura",
+   "peso": "75 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -15823,7 +15823,7 @@
     {
      "nome": "Arma",
      "pool": "2d6+2",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +3 corte",
      "speed": 5
     }
    ]
@@ -15886,8 +15886,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈3 m de altura",
-   "peso": "≈200 kg"
+   "medida": "3 m de altura",
+   "peso": "200 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -15927,7 +15927,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "6d6 +2",
-     "dano": "2d6 +14 impacto",
+     "dano": "2d6 +7 impacto",
      "speed": 6
     }
    ]
@@ -16002,8 +16002,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "corpo ≈2,4 m, altura ≈1,7 m aos ombros",
-   "peso": "≈350 kg"
+   "medida": "corpo 2,4 m, altura 1,7 m aos ombros",
+   "peso": "350 kg"
   },
   "ecologia": {
    "tipo": "Fey",
@@ -16041,7 +16041,7 @@
     {
      "nome": "Garras e presas",
      "pool": "5d6 +6",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -16141,8 +16141,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈ 2,4 m, quando ereto",
-   "peso": "≈ 400 kg"
+   "medida": "altura 2,4 m, quando ereto",
+   "peso": "400 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -16182,7 +16182,7 @@
     {
      "nome": "Garras e presas",
      "pool": "6d6",
-     "dano": "2d6 +18 perfConc",
+     "dano": "2d6 +9 perfConc",
      "speed": 6
     }
    ]
@@ -16242,8 +16242,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,75 m de altura",
-   "peso": "≈75 kg"
+   "medida": "1,75 m de altura",
+   "peso": "75 kg"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -16282,7 +16282,7 @@
     {
      "nome": "Golpe",
      "pool": "5d6 +8",
-     "dano": "1d6 +10 impacto",
+     "dano": "1d6 +5 impacto",
      "speed": 5
     }
    ]
@@ -16415,8 +16415,8 @@
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
-   "medida": "≈24 m de comprimento",
-   "peso": "≈36 t"
+   "medida": "24 m de comprimento",
+   "peso": "36 t"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -16454,7 +16454,7 @@
     {
      "nome": "Garras e presas",
      "pool": "9d6 +2",
-     "dano": "3d6 +26 perfConc",
+     "dano": "3d6 +13 perfConc",
      "speed": 7
     }
    ]
@@ -16526,8 +16526,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura ≈2,4 m (envergadura ≈4,5 m)",
-   "peso": "≈230 kg"
+   "medida": "altura 2,4 m (envergadura 4,5 m)",
+   "peso": "230 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -16565,7 +16565,7 @@
     {
      "nome": "Golpe planar",
      "pool": "6d6 +8",
-     "dano": "2d6 +14 corte",
+     "dano": "2d6 +7 corte",
      "speed": 6
     }
    ]
@@ -16663,8 +16663,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,75 m de altura",
-   "peso": "≈60 kg, corpo dessecado"
+   "medida": "1,75 m de altura",
+   "peso": "60 kg, corpo dessecado"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -16703,7 +16703,7 @@
     {
      "nome": "Golpe",
      "pool": "3d6+2 +4",
-     "dano": "1d6 +6 impacto",
+     "dano": "1d6 +3 impacto",
      "speed": 5
     }
    ]
@@ -16782,8 +16782,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "≈5,5 m da cabeça à ponta da cauda, envergadura ≈6 m",
-   "peso": "≈250 kg"
+   "medida": "5,5 m da cabeça à ponta da cauda, envergadura 6 m",
+   "peso": "250 kg"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -16821,7 +16821,7 @@
     {
      "nome": "Garras e mordida",
      "pool": "5d6+2 +4",
-     "dano": "2d6 +12 perfConc",
+     "dano": "2d6 +6 perfConc",
      "speed": 6
     }
    ]
@@ -16900,8 +16900,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,5 m de altura, corpo esférico",
-   "peso": "≈450 kg"
+   "medida": "1,5 m de altura, corpo esférico",
+   "peso": "450 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -16940,7 +16940,7 @@
     {
      "nome": "Golpe planar",
      "pool": "5d6+2 +4",
-     "dano": "1d6 +12 corte",
+     "dano": "1d6 +6 corte",
      "speed": 5
     }
    ]
@@ -17023,8 +17023,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "≈1,7 m de altura",
-   "peso": "≈75 kg"
+   "medida": "1,7 m de altura",
+   "peso": "75 kg"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -17063,7 +17063,7 @@
     {
      "nome": "Golpe",
      "pool": "3d6",
-     "dano": "1d6 +10 impacto",
+     "dano": "1d6 +5 impacto",
      "speed": 5
     }
    ]
