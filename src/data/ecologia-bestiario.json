@@ -132,6 +132,15 @@
       "Temperate"
     ]
   },
+  "mon-aasimar": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-aboleth": {
     "tipo": "Aberration",
     "terreno": [
@@ -150,6 +159,37 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-animated-object": {
+    "tipo": "Construct",
+    "terreno": [
+      "Any",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-ankheg": {
+    "tipo": "Beast",
+    "terreno": [
+      "Plains",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-ankylosaurus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
     ]
   },
   "mon-aranha-das-fases": {
@@ -182,6 +222,25 @@
       "Extraplanar"
     ]
   },
+  "mon-army-ant-swarm": {
+    "tipo": "Animal",
+    "terreno": [
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-assassin-vine": {
+    "tipo": "Plant",
+    "terreno": [
+      "Forest",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-assombracao-wraith": {
     "tipo": "Undead",
     "terreno": [
@@ -190,6 +249,24 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-aurochs": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-babau": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
     ]
   },
   "mon-balor": {
@@ -201,6 +278,35 @@
       "Extraplanar"
     ]
   },
+  "mon-barbed-devil-hamatula": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-barghest": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-basidirond": {
+    "tipo": "Plant",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
   "mon-basilisco": {
     "tipo": "Beast",
     "terreno": [
@@ -209,6 +315,38 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-bat": {
+    "tipo": "Animal",
+    "terreno": [
+      "Underground",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-bat-swarm": {
+    "tipo": "Animal",
+    "terreno": [
+      "Underground",
+      "Ruins",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-bebilith": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
     ]
   },
   "mon-behir": {
@@ -230,6 +368,25 @@
       "Temperate"
     ]
   },
+  "mon-bison": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "mon-black-pudding": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-bodak": {
     "tipo": "Undead",
     "terreno": [
@@ -238,6 +395,36 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-boggard": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-brachiosaurus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-bralani": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
     ]
   },
   "mon-bruxa-verde-hag": {
@@ -270,10 +457,109 @@
       "Temperate"
     ]
   },
+  "mon-cat": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-cauchemar": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-cave-fisher": {
+    "tipo": "Animal",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-centaur": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-centipede-swarm": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-cheetah": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-choker": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-chuul": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-ciclope": {
     "tipo": "Giant",
     "terreno": [
       "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-clay-golem": {
+    "tipo": "Construct",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-cloaker": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
     ],
     "clima": [
       "Temperate"
@@ -318,6 +604,25 @@
       "Extraplanar"
     ]
   },
+  "mon-crab-swarm": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-crag-linnorm": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
   "mon-crocodilo": {
     "tipo": "Animal",
     "terreno": [
@@ -330,6 +635,65 @@
   },
   "mon-cubo-gelatinoso": {
     "tipo": "Ooze",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-dark-creeper": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-dark-naga": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-dark-stalker": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-darkmantle": {
+    "tipo": "Beast",
+    "terreno": [
+      "Underground",
+      "Ruins",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-deinonychus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-derro": {
+    "tipo": "Humanoid",
     "terreno": [
       "Underground"
     ],
@@ -392,6 +756,95 @@
       "Extraplanar"
     ]
   },
+  "mon-dire-ape-gigantopithecus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-dire-bat": {
+    "tipo": "Animal",
+    "terreno": [
+      "Underground",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-dire-bear-cave-bear": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-dire-boar-daeodon": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-dire-hyena-hyaenodon": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-dire-lion-spotted-lion": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Plains",
+      "Mountain"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-dire-rat": {
+    "tipo": "Animal",
+    "terreno": [
+      "Urban",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-dire-shark-megalodon": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-dire-wolverine": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
   "mon-djinn": {
     "tipo": "Elemental",
     "terreno": [
@@ -402,10 +855,39 @@
       "Extraplanar"
     ]
   },
+  "mon-dog": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-dolphin": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
   "mon-doppelganger": {
     "tipo": "Humanoid",
     "terreno": [
       "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-dracolisk": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Swamp",
+      "Underground"
     ],
     "clima": [
       "Temperate"
@@ -484,6 +966,16 @@
       "Tropical"
     ]
   },
+  "mon-dragon-turtle": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-dretch": {
     "tipo": "Fiend",
     "terreno": [
@@ -502,6 +994,42 @@
       "Temperate"
     ]
   },
+  "mon-drider": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-drow": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-drow-noble": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-duergar": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-efreeti": {
     "tipo": "Elemental",
     "terreno": [
@@ -509,6 +1037,24 @@
     ],
     "clima": [
       "Extraplanar"
+    ]
+  },
+  "mon-elasmosaurus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-electric-eel": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
     ]
   },
   "mon-elefante": {
@@ -579,6 +1125,15 @@
       "Temperate"
     ]
   },
+  "mon-ettercap": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-ettin": {
     "tipo": "Giant",
     "terreno": [
@@ -599,10 +1154,40 @@
       "Tropical"
     ]
   },
+  "mon-fire-beetle": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-flesh-golem": {
+    "tipo": "Construct",
+    "terreno": [
+      "Ruins",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-fogo-fatuo": {
     "tipo": "Aberration",
     "terreno": [
       "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-froghemoth": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Swamp",
+      "Water"
     ],
     "clima": [
       "Temperate"
@@ -637,11 +1222,173 @@
       "Temperate"
     ]
   },
+  "mon-ghost": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Urban",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-ghoul": {
     "tipo": "Undead",
     "terreno": [
       "Underground",
       "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-giant-ant": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-giant-centipede": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-giant-crab": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-giant-flytrap": {
+    "tipo": "Plant",
+    "terreno": [
+      "Swamp",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-giant-frilled-lizard": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains",
+      "Mountain"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-giant-frog": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-giant-leech": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-giant-mantis": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-giant-moray-eel": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-giant-octopus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-giant-slug": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-giant-squid": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "mon-giant-stag-beetle": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-giant-wasp": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-gibbering-mouther": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
     ],
     "clima": [
       "Temperate"
@@ -707,6 +1454,16 @@
       "Cold"
     ]
   },
+  "mon-girallon": {
+    "tipo": "Beast",
+    "terreno": [
+      "Jungle",
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
   "mon-glabrezu": {
     "tipo": "Fiend",
     "terreno": [
@@ -768,11 +1525,51 @@
       "Tropical"
     ]
   },
+  "mon-gray-ooze": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Swamp",
+      "Underground"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "mon-greater-barghest": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-grifo": {
     "tipo": "Beast",
     "terreno": [
       "Mountain",
       "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-grizzly-bear": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-guardian-naga": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Plains",
+      "Ruins"
     ],
     "clima": [
       "Temperate"
@@ -787,6 +1584,25 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-hawk": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Sky"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-hell-hound": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
     ]
   },
   "mon-hezrou": {
@@ -838,6 +1654,112 @@
       "Tropical"
     ]
   },
+  "mon-homunculus": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Urban",
+      "Ruins",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-horned-devil-cornugon": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-horse": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-hyena": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-ice-golem": {
+    "tipo": "Construct",
+    "terreno": [
+      "Cold",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-ice-linnorm": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-intellect-devourer": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-invisible-stalker": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-iron-cobra": {
+    "tipo": "Construct",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-iron-golem": {
+    "tipo": "Construct",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-janni": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Desert"
+    ],
+    "clima": [
+      "Tropical",
+      "Extraplanar"
+    ]
+  },
   "mon-javali": {
     "tipo": "Animal",
     "terreno": [
@@ -865,6 +1787,16 @@
       "Cold"
     ]
   },
+  "mon-kyton": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
   "mon-lamia": {
     "tipo": "Humanoid",
     "terreno": [
@@ -875,12 +1807,33 @@
       "Temperate"
     ]
   },
+  "mon-lantern-archon": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
   "mon-leao": {
     "tipo": "Animal",
     "terreno": [
       "Plains"
     ],
     "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-leech-swarm": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
       "Tropical"
     ]
   },
@@ -893,6 +1846,16 @@
       "Extraplanar"
     ]
   },
+  "mon-leopard": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
   "mon-lich": {
     "tipo": "Undead",
     "terreno": [
@@ -901,6 +1864,16 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-lillend": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Forest",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
     ]
   },
   "mon-lobo": {
@@ -937,6 +1910,15 @@
       "Temperate"
     ]
   },
+  "mon-marid": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
   "mon-marilith": {
     "tipo": "Fiend",
     "terreno": [
@@ -946,12 +1928,42 @@
       "Extraplanar"
     ]
   },
+  "mon-mastodon": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
   "mon-medusa": {
     "tipo": "Humanoid",
     "terreno": [
       "Ruins",
       "Underground",
       "Desert"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-mephit": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-merfolk": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Water",
+      "Coast"
     ],
     "clima": [
       "Temperate"
@@ -977,6 +1989,46 @@
       "Temperate"
     ]
   },
+  "mon-mite": {
+    "tipo": "Fey",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-mohrg": {
+    "tipo": "Undead",
+    "terreno": [
+      "Any",
+      "Ruins",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-monitor-lizard": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-monkey": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
   "mon-monstro-da-ferrugem": {
     "tipo": "Aberration",
     "terreno": [
@@ -997,6 +2049,16 @@
       "Tropical"
     ]
   },
+  "mon-morlock": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-mumia": {
     "tipo": "Undead",
     "terreno": [
@@ -1005,6 +2067,15 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-nabasu": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
     ]
   },
   "mon-naga-espirita": {
@@ -1018,6 +2089,51 @@
       "Tropical"
     ]
   },
+  "mon-nalfeshnee": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-neothelid": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-nessian-warhound": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-night-hag": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-nightmare": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
   "mon-ninfa": {
     "tipo": "Fey",
     "terreno": [
@@ -1026,6 +2142,27 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-ochre-jelly": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Underground",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-octopus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate",
+      "Cold"
     ]
   },
   "mon-ogro": {
@@ -1060,6 +2197,26 @@
       "Temperate"
     ]
   },
+  "mon-orca": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-otyugh": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Swamp",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-pegaso": {
     "tipo": "Beast",
     "terreno": [
@@ -1069,6 +2226,16 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-phoenix": {
+    "tipo": "Beast",
+    "terreno": [
+      "Desert",
+      "Mountain"
+    ],
+    "clima": [
+      "Tropical"
     ]
   },
   "mon-pixie": {
@@ -1087,6 +2254,44 @@
     ],
     "clima": [
       "Extraplanar"
+    ]
+  },
+  "mon-poison-frog": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-pony": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-pseudodragon": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-pteranodon": {
+    "tipo": "Animal",
+    "terreno": [
+      "Coast",
+      "Sky"
+    ],
+    "clima": [
+      "Tropical"
     ]
   },
   "mon-quasit": {
@@ -1118,12 +2323,61 @@
       "Temperate"
     ]
   },
+  "mon-rat-swarm": {
+    "tipo": "Animal",
+    "terreno": [
+      "Urban",
+      "Underground",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-rato-gigante": {
     "tipo": "Animal",
     "terreno": [
       "Urban",
       "Underground",
       "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-raven": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-remorhaz": {
+    "tipo": "Beast",
+    "terreno": [
+      "Cold",
+      "Underground"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-retriever": {
+    "tipo": "Construct",
+    "terreno": [
+      "Any",
+      "Ruins"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-riding-dog": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Any"
     ],
     "clima": [
       "Temperate"
@@ -1149,6 +2403,28 @@
       "Temperate"
     ]
   },
+  "mon-roper": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Cold"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "mon-sahuagin": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
   "mon-salamandra": {
     "tipo": "Elemental",
     "terreno": [
@@ -1166,6 +2442,127 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-sea-hag": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-sea-serpent": {
+    "tipo": "Beast",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-shaitan": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Underground",
+      "Mountain"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-shark": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-shocker-lizard": {
+    "tipo": "Beast",
+    "terreno": [
+      "Swamp"
+    ],
+    "clima": [
+      "Tropical",
+      "Temperate"
+    ]
+  },
+  "mon-shoggoth": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Water",
+      "Underground",
+      "Cold"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-skeletal-champion": {
+    "tipo": "Undead",
+    "terreno": [
+      "Any",
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-skum-ulat-kini": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Water",
+      "Underground"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "mon-small-air-elemental": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-small-earth-elemental": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Underground",
+      "Mountain"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-small-fire-elemental": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-small-water-elemental": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Extraplanar"
     ]
   },
   "mon-solar": {
@@ -1187,6 +2584,59 @@
       "Temperate"
     ]
   },
+  "mon-spider-swarm": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-squid": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-stegosaurus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "mon-stirge": {
+    "tipo": "Beast",
+    "terreno": [
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-stone-golem": {
+    "tipo": "Construct",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-sucubo": {
     "tipo": "Fiend",
     "terreno": [
@@ -1196,10 +2646,50 @@
       "Extraplanar"
     ]
   },
+  "mon-svirfneblin": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-tarn-linnorm": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Water",
+      "Swamp"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
   "mon-tarrasque": {
     "tipo": "Beast",
     "terreno": [
       "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-tengu": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Mountain",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-tiefling": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Urban",
+      "Plains",
+      "Forest"
     ],
     "clima": [
       "Temperate"
@@ -1215,6 +2705,17 @@
       "Tropical"
     ]
   },
+  "mon-toad": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
   "mon-treant": {
     "tipo": "Plant",
     "terreno": [
@@ -1222,6 +2723,15 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-triceratops": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
     ]
   },
   "mon-trogloditas": {
@@ -1243,6 +2753,26 @@
     "clima": [
       "Cold",
       "Temperate"
+    ]
+  },
+  "mon-trumpet-archon": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-tyrannosaurus": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
     ]
   },
   "mon-unicornio": {
@@ -1275,6 +2805,37 @@
       "Temperate"
     ]
   },
+  "mon-vargouille": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "mon-vegepygmy": {
+    "tipo": "Plant",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-venomous-snake": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Jungle",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
   "mon-verme-purpura": {
     "tipo": "Beast",
     "terreno": [
@@ -1282,6 +2843,27 @@
     ],
     "clima": [
       "Temperate"
+    ]
+  },
+  "mon-violet-fungus": {
+    "tipo": "Plant",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-viper": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Swamp",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
     ]
   },
   "mon-vrock": {
@@ -1293,11 +2875,79 @@
       "Extraplanar"
     ]
   },
+  "mon-wasp-swarm": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-weasel": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-wererat-human-form": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-werewolf": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
   "mon-wight": {
     "tipo": "Undead",
     "terreno": [
       "Ruins",
       "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "mon-winter-wolf": {
+    "tipo": "Beast",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-wolverine": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "mon-worg": {
+    "tipo": "Beast",
+    "terreno": [
+      "Forest",
+      "Plains"
     ],
     "clima": [
       "Temperate"
@@ -1312,6 +2962,17 @@
       "Temperate"
     ]
   },
+  "mon-xill": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
   "mon-xorn": {
     "tipo": "Elemental",
     "terreno": [
@@ -1320,6 +2981,38 @@
     "clima": [
       "Temperate",
       "Extraplanar"
+    ]
+  },
+  "mon-yellow-musk-creeper": {
+    "tipo": "Plant",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "mon-yeth-hound": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Temperate",
+      "Extraplanar"
+    ]
+  },
+  "mon-yeti": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Mountain",
+      "Cold"
+    ],
+    "clima": [
+      "Cold"
     ]
   },
   "mon-zumbi-humano": {

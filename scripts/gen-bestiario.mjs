@@ -258,8 +258,16 @@ function evalBlock(marker, close) {
 let DATA, PODERES;
 eval('DATA=' + evalBlock('const DATA = ', '];'));
 eval('PODERES=' + evalBlock('const PODERES = ', '\n};'));
+// Criaturas importadas do Bestiary 1 (PF): stat blocks parseados do PDF. Poderes a mapear (PODERES vazio).
+try {
+  const EXTRA = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/conversao-extra.json'), 'utf8'));
+  DATA = DATA.concat(EXTRA);
+  console.log(`+ conversao-extra.json: ${EXTRA.length} criaturas importadas.`);
+} catch { /* sem extras ainda */ }
 
 const slug = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// Porte para PV/couraça: usa dimensoes-bestiario.json quando existe; senão a size real da ficha (DATA).
+for (const m of DATA) { const id = 'mon-' + slug(m.name); if (!DIMPORTE[id] && m.size) DIMPORTE[id] = m.size; }
 const crNum = (cr) => { const s = String(cr); if (s.includes('/')) { const [a, b] = s.split('/'); return +a / +b; } return +s; };
 const ameacaDe = (cr) => { const n = crNum(cr); return n < 1 ? 1 : n < 3 ? 2 : n < 5 ? 3 : n < 8 ? 4 : n < 14 ? 5 : 6; };
 function categoriaDe(t) {

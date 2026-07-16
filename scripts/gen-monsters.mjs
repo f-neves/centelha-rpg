@@ -37,6 +37,8 @@ const CAT_OVERRIDE = {
   // ajustes pontuais
   'mon-doppelganger': 'Aberração', 'mon-unicornio': 'Besta mágica',
 };
+// criaturas importadas do Bestiary 1: categoria calculada do tipo PF (categoria-extra.json)
+try { Object.assign(CAT_OVERRIDE, read('categoria-extra.json')); } catch { /* sem extras */ }
 const catDe = (id, tipo) => CAT_OVERRIDE[id] || CAT_LABEL[tipo] || tipo || null;
 
 function build(c) {
@@ -57,6 +59,7 @@ function build(c) {
     dimensoes: { medida: d.medida || null, peso: d.peso || null },
     ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
     imagem: IMG[c.id] || null,
+    semImagem: !IMG[c.id],
     atributos: c.atributos,
     combate: {
       pv: c.pv,
@@ -87,7 +90,7 @@ for (const m of monsters) {
   if (!m.lore.length) problemas.push(`${m.id}: sem lore`);
   if (!m.dimensoes.medida) problemas.push(`${m.id}: sem dimensoes`);
   if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);
-  if (!m.imagem) problemas.push(`${m.id}: sem imagem`);
+  // imagem opcional: criaturas sem arte ganham semImagem:true e o badge "Sem imagem"
 }
 if (problemas.length) {
   console.error('FALHA na unificação:\n' + problemas.join('\n'));
