@@ -20,6 +20,16 @@
    "medida": "≈6,5 m de comprimento, corpo alongado com tentáculos",
    "peso": "≈2,7 t"
   },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground",
+    "Water"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/aboleth.jpg",
   "atributos": {
    "forca": 10,
@@ -169,6 +179,16 @@
    "medida": "Altura ≈1,2 m, envergadura ≈4,5 m",
    "peso": "≈180 kg"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Mountain",
+    "Sky"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/aguia-gigante.jpg",
   "atributos": {
    "forca": 6,
@@ -281,6 +301,16 @@
    "medida": "corpo ≈1,5 m, envergadura de pernas ≈3 m",
    "peso": "≈160 kg"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Forest",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/aranha-das-fases.jpg",
   "atributos": {
    "forca": 6,
@@ -384,6 +414,16 @@
   "dimensoes": {
    "medida": "Corpo ≈0,6 m, envergadura das pernas ≈1,8 m",
    "peso": "≈25 kg"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Forest",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/aranha-gigante.jpg",
   "atributos": {
@@ -489,6 +529,16 @@
   "dimensoes": {
    "medida": "≈1,8 m de altura",
    "peso": "≈100 kg"
+  },
+  "ecologia": {
+   "tipo": "Celestial",
+   "terreno": [
+    "Mountain",
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/archon-cao.jpg",
   "atributos": {
@@ -618,6 +668,16 @@
    "medida": "≈1,73 m de altura",
    "peso": "≈70 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/arqueiro.jpg",
   "atributos": {
    "forca": 2,
@@ -706,6 +766,15 @@
   "dimensoes": {
    "medida": "≈1,7 m de altura",
    "peso": "≈65 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/assassino-das-sombras.jpg",
   "atributos": {
@@ -803,6 +872,16 @@
   "dimensoes": {
    "medida": "≈1,8 m de altura, silhueta humanoide flutuante",
    "peso": "sem peso, forma incorpórea"
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/assombracao-wraith.jpg",
   "atributos": {
@@ -928,6 +1007,15 @@
   "dimensoes": {
    "medida": "altura ≈4,3 m (envergadura ≈9 m)",
    "peso": "≈3,6 t"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/balor.jpg",
   "atributos": {
@@ -1085,6 +1173,16 @@
    "medida": "≈1,72 m de altura",
    "peso": "≈70 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Plains",
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/bandido-de-estrada.jpg",
   "atributos": {
    "forca": 3,
@@ -1174,6 +1272,16 @@
   "dimensoes": {
    "medida": "≈1,8 m de comprimento, do focinho à cauda",
    "peso": "≈135 kg"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Underground",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/basilisco.jpg",
   "atributos": {
@@ -1280,6 +1388,16 @@
   "dimensoes": {
    "medida": "comprimento ≈9 m",
    "peso": "≈3,6 t"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Mountain",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/behir.jpg",
   "atributos": {
@@ -1396,6 +1514,15 @@
   "dimensoes": {
    "medida": "≈2,7 m de comprimento, cauda tentacular incluída",
    "peso": "≈230 kg"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/besta-deslocadora.jpg",
   "atributos": {
@@ -1515,6 +1642,16 @@
    "medida": "≈1,8 m de altura",
    "peso": "≈65 kg, corpo emagrecido"
   },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/bodak.jpg",
   "atributos": {
    "forca": 4,
@@ -1631,6 +1768,15 @@
    "medida": "≈1,9 m de altura",
    "peso": "≈110 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/bruto.jpg",
   "atributos": {
    "forca": 5,
@@ -1721,6 +1867,16 @@
   "dimensoes": {
    "medida": "altura ≈1,5 m",
    "peso": "≈80 kg"
+  },
+  "ecologia": {
+   "tipo": "Fey",
+   "terreno": [
+    "Swamp",
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/bruxa-verde-hag.jpg",
   "atributos": {
@@ -1857,6 +2013,16 @@
    "medida": "≈2,15 m de altura",
    "peso": "≈113 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Underground",
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/bugbear.jpg",
   "atributos": {
    "forca": 5,
@@ -1949,6 +2115,16 @@
   "dimensoes": {
    "medida": "≈2,7 m de altura no dorso, cerca de 6 m do focinho à cauda",
    "peso": "≈1,4 t"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Underground",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/bulette.jpg",
   "atributos": {
@@ -2051,6 +2227,16 @@
    "medida": "≈1,9 m de altura",
    "peso": "≈90 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/campeao.jpg",
   "atributos": {
    "forca": 4,
@@ -2152,6 +2338,16 @@
    "medida": "≈1,65 m de altura",
    "peso": "≈65 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Plains",
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/camponis-assustado.jpg",
   "atributos": {
    "forca": 2,
@@ -2239,6 +2435,15 @@
   "dimensoes": {
    "medida": "≈1,8 m de altura",
    "peso": "≈85 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/capitao-da-guarda.jpg",
   "atributos": {
@@ -2328,6 +2533,16 @@
   "dimensoes": {
    "medida": "≈1,85 m de altura",
    "peso": "≈95 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/cavaleiro-de-elite.jpg",
   "atributos": {
@@ -2426,6 +2641,15 @@
   "dimensoes": {
    "medida": "altura ≈ 3,2 m",
    "peso": "≈ 400 kg"
+  },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/ciclope.jpg",
   "atributos": {
@@ -2531,6 +2755,16 @@
    "medida": "Comprimento total ≈3,5 m",
    "peso": "≈40 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Jungle",
+    "Swamp"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
   "imagem": "bestiario/cobra-constritora.jpg",
   "atributos": {
    "forca": 5,
@@ -2627,6 +2861,16 @@
   "dimensoes": {
    "medida": "≈60 cm de comprimento, envergadura ≈90 cm",
    "peso": "≈11 kg"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Forest",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/cocatriz.jpg",
   "atributos": {
@@ -2729,6 +2973,16 @@
    "medida": "≈1,85 m de altura",
    "peso": "≈88 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/comandante.jpg",
   "atributos": {
    "forca": 3,
@@ -2825,6 +3079,15 @@
   "dimensoes": {
    "medida": "Altura ≈2,4 m",
    "peso": "≈230 kg"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/corujurso.jpg",
   "atributos": {
@@ -2932,6 +3195,16 @@
   "dimensoes": {
    "medida": "≈3 m de comprimento, envergadura ≈2,4 m",
    "peso": "≈115 kg"
+  },
+  "ecologia": {
+   "tipo": "Celestial",
+   "terreno": [
+    "Jungle",
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/couatl.jpg",
   "atributos": {
@@ -3070,6 +3343,16 @@
    "medida": "Comprimento total ≈3,5 m (corpo e cauda)",
    "peso": "≈450 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Water",
+    "Swamp"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
   "imagem": "bestiario/crocodilo.jpg",
   "atributos": {
    "forca": 6,
@@ -3157,6 +3440,15 @@
   "dimensoes": {
    "medida": "cubo de ≈3 m de lado",
    "peso": "≈14 t (massa gelatinosa densa, bem acima do normal para o porte)"
+  },
+  "ecologia": {
+   "tipo": "Ooze",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/cubo-gelatinoso.jpg",
   "atributos": {
@@ -3251,6 +3543,16 @@
   "dimensoes": {
    "medida": "≈1,7 m de altura",
    "peso": "≈62 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/cultista.jpg",
   "atributos": {
@@ -3347,6 +3649,15 @@
   "dimensoes": {
    "medida": "≈2 m de altura, envergadura ≈3,6 m",
    "peso": "≈90 kg"
+  },
+  "ecologia": {
+   "tipo": "Celestial",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/deva-astral.jpg",
   "atributos": {
@@ -3486,6 +3797,15 @@
    "medida": "altura ≈2,1 m",
    "peso": "≈90 kg"
   },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
   "imagem": "bestiario/diabo-barbado.jpg",
   "atributos": {
    "forca": 4,
@@ -3614,6 +3934,16 @@
   "dimensoes": {
    "medida": "altura ≈3,3 m",
    "peso": "≈360 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Cold",
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/diabo-de-gelo.jpg",
   "atributos": {
@@ -3748,6 +4078,15 @@
   "dimensoes": {
    "medida": "≈2,7 m de altura, envergadura ≈4 m",
    "peso": "≈360 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/diabo-do-fosso-pit-fiend.jpg",
   "atributos": {
@@ -3910,6 +4249,15 @@
    "medida": "altura ≈2,7 m",
    "peso": "≈230 kg"
   },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
   "imagem": "bestiario/diabo-osseo.jpg",
   "atributos": {
    "forca": 8,
@@ -4043,6 +4391,15 @@
   "dimensoes": {
    "medida": "altura ≈60 cm",
    "peso": "≈3,6 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/diabrete-imp.jpg",
   "atributos": {
@@ -4183,6 +4540,16 @@
    "medida": "≈3 m de altura",
    "peso": "≈200 kg"
   },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Sky",
+    "Desert"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
   "imagem": "bestiario/djinn.jpg",
   "atributos": {
    "forca": 6,
@@ -4321,6 +4688,15 @@
    "medida": "altura ≈1,8 m na forma humana padrão",
    "peso": "≈70 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/doppelganger.jpg",
   "atributos": {
    "forca": 3,
@@ -4450,6 +4826,16 @@
   "dimensoes": {
    "medida": "≈9,5 m de comprimento, envergadura de ≈14 m",
    "peso": "≈7,5 toneladas"
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Desert",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/dragao-azul-adulto.jpg",
   "atributos": {
@@ -4597,6 +4983,16 @@
    "medida": "≈4,3 m de comprimento, com a cauda",
    "peso": "≈700 kg"
   },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Cold",
+    "Underground"
+   ],
+   "clima": [
+    "Cold"
+   ]
+  },
   "imagem": "bestiario/dragao-branco-jovem.jpg",
   "atributos": {
    "forca": 7,
@@ -4734,6 +5130,15 @@
   "dimensoes": {
    "medida": "≈9,5 m de comprimento, envergadura de ≈15 m",
    "peso": "≈9 toneladas"
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/dragao-dourado-adulto.jpg",
   "atributos": {
@@ -4895,6 +5300,15 @@
    "medida": "≈9 m de comprimento, com a cauda",
    "peso": "≈7 toneladas"
   },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/dragao-verde-adulto.jpg",
   "atributos": {
    "forca": 10,
@@ -5036,6 +5450,15 @@
   "dimensoes": {
    "medida": "≈9 m de comprimento, com a cauda",
    "peso": "≈7,3 toneladas"
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/dragao-vermelho-adulto.jpg",
   "atributos": {
@@ -5183,6 +5606,15 @@
   "dimensoes": {
    "medida": "≈16,5 m de comprimento, com a cauda",
    "peso": "≈59 toneladas"
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/dragao-vermelho-anciao.jpg",
   "atributos": {
@@ -5334,6 +5766,15 @@
    "medida": "≈4,9 m de comprimento, com a cauda",
    "peso": "≈900 kg"
   },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/dragao-vermelho-jovem.jpg",
   "atributos": {
    "forca": 9,
@@ -5470,6 +5911,15 @@
    "medida": "altura ≈90 cm",
    "peso": "≈27 kg"
   },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
   "imagem": "bestiario/dretch.jpg",
   "atributos": {
    "forca": 3,
@@ -5583,6 +6033,15 @@
   "dimensoes": {
    "medida": "≈1,65 m de altura",
    "peso": "≈50 kg"
+  },
+  "ecologia": {
+   "tipo": "Fey",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/driade.jpg",
   "atributos": {
@@ -5715,6 +6174,15 @@
    "medida": "≈1,75 m de altura",
    "peso": "≈70 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/duelista.jpg",
   "atributos": {
    "forca": 3,
@@ -5809,6 +6277,15 @@
   "dimensoes": {
    "medida": "≈3,6 m de altura",
    "peso": "≈320 kg"
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Desert"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/efreeti.jpg",
   "atributos": {
@@ -5942,6 +6419,16 @@
    "medida": "comprimento ≈ 6,5 m",
    "peso": "≈ 5,5 t"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Plains",
+    "Jungle"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
   "imagem": "bestiario/elefante.jpg",
   "atributos": {
    "forca": 11,
@@ -6048,6 +6535,16 @@
   "dimensoes": {
    "medida": "≈3 m de altura",
    "peso": "≈2 toneladas"
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Underground",
+    "Mountain"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/elemental-da-terra-grande.jpg",
   "atributos": {
@@ -6166,6 +6663,15 @@
   "dimensoes": {
    "medida": "altura ≈1,8 m (envergadura ≈4,5 m)",
    "peso": "≈68 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/erinia.jpg",
   "atributos": {
@@ -6300,6 +6806,15 @@
    "medida": "Comprimento total ≈3 m (com cauda)",
    "peso": "≈350 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Desert"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/escorpiao-gigante.jpg",
   "atributos": {
    "forca": 6,
@@ -6399,6 +6914,16 @@
   "dimensoes": {
    "medida": "corpo ≈3 m, envergadura ≈6 m",
    "peso": "≈230 kg"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Desert",
+    "Ruins"
+   ],
+   "clima": [
+    "Tropical"
+   ]
   },
   "imagem": "bestiario/esfinge-ginosfinge.jpg",
   "atributos": {
@@ -6538,6 +7063,16 @@
    "medida": "≈1,8 m de altura, silhueta humanoide flutuante",
    "peso": "sem peso, forma incorpórea"
   },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/espectro.jpg",
   "atributos": {
    "forca": 0,
@@ -6665,6 +7200,16 @@
    "medida": "≈1,7 m de altura",
    "peso": "≈15 kg, apenas ossos"
   },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/esqueleto-humano.jpg",
   "atributos": {
    "forca": 4,
@@ -6752,6 +7297,16 @@
   "dimensoes": {
    "medida": "≈4 m de altura",
    "peso": "≈1,8 t"
+  },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Mountain",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/ettin.jpg",
   "atributos": {
@@ -6851,6 +7406,15 @@
    "medida": "≈1,68 m de altura",
    "peso": "≈60 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/feiticeiro-menor.jpg",
   "atributos": {
    "forca": 2,
@@ -6946,6 +7510,15 @@
   "dimensoes": {
    "medida": "≈2,7 m de comprimento, com a cauda",
    "peso": "≈90 kg"
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Tropical"
+   ]
   },
   "imagem": "bestiario/filhote-de-dragao-vermelho.jpg",
   "atributos": {
@@ -7074,6 +7647,15 @@
   "dimensoes": {
    "medida": "diâmetro ≈30 cm (orbe de luz flutuante)",
    "peso": "≈0,5 kg, quase sem massa"
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Swamp"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/fogo-fatuo.jpg",
   "atributos": {
@@ -7212,6 +7794,16 @@
    "medida": "Altura ≈1,5 m",
    "peso": "≈180 kg (pedra densa)"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Ruins",
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/gargula.jpg",
   "atributos": {
    "forca": 4,
@@ -7322,6 +7914,15 @@
   "dimensoes": {
    "medida": "≈1,8 m de altura",
    "peso": "≈90 kg"
+  },
+  "ecologia": {
+   "tipo": "Celestial",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/ghaele-azata.jpg",
   "atributos": {
@@ -7456,6 +8057,16 @@
    "medida": "≈1,8 m de altura",
    "peso": "≈65 kg"
   },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Underground",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/ghast.jpg",
   "atributos": {
    "forca": 5,
@@ -7565,6 +8176,16 @@
   "dimensoes": {
    "medida": "≈1,7 m de altura",
    "peso": "≈60 kg, corpo ressecado"
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Underground",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/ghoul.jpg",
   "atributos": {
@@ -7678,6 +8299,16 @@
    "medida": "≈4,3 m de altura",
    "peso": "≈590 kg"
   },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Plains",
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/gigante-da-colina.jpg",
   "atributos": {
    "forca": 9,
@@ -7773,6 +8404,16 @@
   "dimensoes": {
    "medida": "≈3,7 m de altura",
    "peso": "≈770 kg"
+  },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Mountain",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/gigante-da-pedra.jpg",
   "atributos": {
@@ -7875,6 +8516,16 @@
   "dimensoes": {
    "medida": "altura ≈ 7,5 m",
    "peso": "≈ 11 t"
+  },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Coast",
+    "Water"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/gigante-da-tempestade.jpg",
   "atributos": {
@@ -8004,6 +8655,16 @@
    "medida": "altura ≈ 7 m",
    "peso": "≈ 8 t"
   },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Sky",
+    "Mountain"
+   ],
+   "clima": [
+    "Cold"
+   ]
+  },
   "imagem": "bestiario/gigante-das-nuvens.jpg",
   "atributos": {
    "forca": 12,
@@ -8123,6 +8784,16 @@
    "medida": "altura ≈ 4,5 m",
    "peso": "≈ 3,2 t"
   },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Mountain",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/gigante-do-fogo.jpg",
   "atributos": {
    "forca": 10,
@@ -8237,6 +8908,16 @@
    "medida": "altura ≈ 4,3 m",
    "peso": "≈ 2,8 t"
   },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Cold",
+    "Mountain"
+   ],
+   "clima": [
+    "Cold"
+   ]
+  },
   "imagem": "bestiario/gigante-do-gelo.jpg",
   "atributos": {
    "forca": 10,
@@ -8334,6 +9015,15 @@
   "dimensoes": {
    "medida": "altura ≈3,7 m",
    "peso": "≈1,8 t"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/glabrezu.jpg",
   "atributos": {
@@ -8466,6 +9156,17 @@
    "medida": "≈2,15 m de altura",
    "peso": "≈135 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Desert",
+    "Plains"
+   ],
+   "clima": [
+    "Tropical",
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/gnoll.jpg",
   "atributos": {
    "forca": 4,
@@ -8557,6 +9258,16 @@
   "dimensoes": {
    "medida": "≈0,95 m de altura",
    "peso": "≈18 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Forest",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/goblin.jpg",
   "atributos": {
@@ -8651,6 +9362,16 @@
   "dimensoes": {
    "medida": "≈3,5 m de comprimento, ≈1,8 m ao ombro",
    "peso": "≈1,8 t (pele de ferro maciço, bem acima do normal para o porte)"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Plains",
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/gorgona-touro-de-ferro.jpg",
   "atributos": {
@@ -8760,6 +9481,16 @@
    "medida": "altura ≈ 1,7 m em pé, envergadura de braços ≈ 2,4 m",
    "peso": "≈ 180 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Jungle",
+    "Forest"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
   "imagem": "bestiario/gorila.jpg",
   "atributos": {
    "forca": 6,
@@ -8849,6 +9580,16 @@
   "dimensoes": {
    "medida": "≈20 m de comprimento, com a cauda",
    "peso": "≈88 toneladas"
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain",
+    "Underground"
+   ],
+   "clima": [
+    "Tropical"
+   ]
   },
   "imagem": "bestiario/grande-wyrm-vermelho.jpg",
   "atributos": {
@@ -9004,6 +9745,16 @@
    "medida": "Corpo ≈2,4 m, envergadura ≈4,5 m",
    "peso": "≈230 kg"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Mountain",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/grifo.jpg",
   "atributos": {
    "forca": 6,
@@ -9096,6 +9847,15 @@
    "medida": "≈1,75 m de altura",
    "peso": "≈78 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/guarda-da-cidade.jpg",
   "atributos": {
    "forca": 3,
@@ -9185,6 +9945,17 @@
   "dimensoes": {
    "medida": "Altura ≈1,6 m, envergadura ≈4,5 m",
    "peso": "≈55 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Coast",
+    "Mountain",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/harpia.jpg",
   "atributos": {
@@ -9303,6 +10074,15 @@
   "dimensoes": {
    "medida": "altura ≈3 m",
    "peso": "≈320 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/hezrou.jpg",
   "atributos": {
@@ -9427,6 +10207,16 @@
    "medida": "corpo e pescoços ≈9 m de comprimento",
    "peso": "≈4 t"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Swamp",
+    "Water"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/hidra-5-cabecas.jpg",
   "atributos": {
    "forca": 8,
@@ -9523,6 +10313,16 @@
    "medida": "Comprimento ≈3 m, envergadura ≈5,5 m",
    "peso": "≈450 kg"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Plains",
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/hipogrifo.jpg",
   "atributos": {
    "forca": 6,
@@ -9614,6 +10414,16 @@
   "dimensoes": {
    "medida": "≈1,7 m de altura",
    "peso": "≈73 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Forest",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/hobgoblin.jpg",
   "atributos": {
@@ -9707,6 +10517,16 @@
    "medida": "≈1,8 m de altura (cerca de 2,4 m de comprimento com a cauda)",
    "peso": "≈90 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Swamp",
+    "Jungle"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
   "imagem": "bestiario/homem-lagarto.jpg",
   "atributos": {
    "forca": 3,
@@ -9799,6 +10619,15 @@
    "medida": "comprimento ≈ 1,5 m",
    "peso": "≈ 110 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/javali.jpg",
   "atributos": {
    "forca": 4,
@@ -9886,6 +10715,15 @@
   "dimensoes": {
    "medida": "≈0,75 m de altura",
    "peso": "≈16 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/kobold.jpg",
   "atributos": {
@@ -9984,6 +10822,15 @@
   "dimensoes": {
    "medida": "≈35 m de comprimento total, entre corpo e tentáculos",
    "peso": "≈140 toneladas"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Water"
+   ],
+   "clima": [
+    "Cold"
+   ]
   },
   "imagem": "bestiario/kraken.jpg",
   "atributos": {
@@ -10120,6 +10967,16 @@
    "medida": "comprimento ≈3 m, corpo com quartos traseiros de leão",
    "peso": "≈160 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Desert",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/lamia.jpg",
   "atributos": {
    "forca": 6,
@@ -10246,6 +11103,15 @@
    "medida": "comprimento ≈ 2,5 m, com cauda",
    "peso": "≈ 190 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Plains"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
   "imagem": "bestiario/leao.jpg",
   "atributos": {
    "forca": 7,
@@ -10352,6 +11218,15 @@
    "medida": "altura ≈1,5 m",
    "peso": "≈45 kg"
   },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
   "imagem": "bestiario/lemure.jpg",
   "atributos": {
    "forca": 3,
@@ -10450,6 +11325,16 @@
   "dimensoes": {
    "medida": "≈1,75 m de altura",
    "peso": "≈40 kg, esqueleto e vestes"
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/lich.jpg",
   "atributos": {
@@ -10595,6 +11480,18 @@
    "medida": "comprimento ≈ 1,5 m, do focinho à cauda",
    "peso": "≈ 45 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Forest",
+    "Mountain",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate",
+    "Cold"
+   ]
+  },
   "imagem": "bestiario/lobo.jpg",
   "atributos": {
    "forca": 3,
@@ -10690,6 +11587,18 @@
    "medida": "comprimento ≈ 2,7 m",
    "peso": "≈ 350 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Forest",
+    "Mountain",
+    "Plains"
+   ],
+   "clima": [
+    "Cold",
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/lobo-atroz.jpg",
   "atributos": {
    "forca": 9,
@@ -10783,6 +11692,15 @@
   "dimensoes": {
    "medida": "≈1,75 m de altura",
    "peso": "≈75 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/mago-de-batalha.jpg",
   "atributos": {
@@ -10895,6 +11813,16 @@
    "medida": "Comprimento total ≈3,5 m (corpo e cauda)",
    "peso": "≈380 kg"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Mountain",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/manticora.jpg",
   "atributos": {
    "forca": 7,
@@ -10998,6 +11926,15 @@
   "dimensoes": {
    "medida": "comprimento ≈6 m",
    "peso": "≈1,8 t"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/marilith.jpg",
   "atributos": {
@@ -11129,6 +12066,17 @@
    "medida": "altura ≈1,75 m",
    "peso": "≈55 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Ruins",
+    "Underground",
+    "Desert"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/medusa.jpg",
   "atributos": {
    "forca": 2,
@@ -11247,6 +12195,16 @@
    "medida": "≈1,2 m de altura na forma de baú",
    "peso": "≈150 kg"
   },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/mimico.jpg",
   "atributos": {
    "forca": 5,
@@ -11351,6 +12309,16 @@
   "dimensoes": {
    "medida": "Altura ≈2,4 m",
    "peso": "≈250 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Underground",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/minotauro.jpg",
   "atributos": {
@@ -11465,6 +12433,15 @@
    "medida": "≈1,5 m de comprimento",
    "peso": "≈120 kg"
   },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/monstro-da-ferrugem.jpg",
   "atributos": {
    "forca": 2,
@@ -11565,6 +12542,17 @@
   "dimensoes": {
    "medida": "≈2,7 m de altura",
    "peso": "≈1,4 t (massa vegetal e lodo compacto)"
+  },
+  "ecologia": {
+   "tipo": "Plant",
+   "terreno": [
+    "Swamp",
+    "Forest"
+   ],
+   "clima": [
+    "Temperate",
+    "Tropical"
+   ]
   },
   "imagem": "bestiario/montao-tropecante.jpg",
   "atributos": {
@@ -11672,6 +12660,16 @@
   "dimensoes": {
    "medida": "≈1,8 m de altura",
    "peso": "≈85 kg, corpo dessecado e ataduras"
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Desert"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/mumia.jpg",
   "atributos": {
@@ -11796,6 +12794,17 @@
   "dimensoes": {
    "medida": "comprimento ≈6 m",
    "peso": "≈320 kg"
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Jungle",
+    "Swamp",
+    "Water"
+   ],
+   "clima": [
+    "Tropical"
+   ]
   },
   "imagem": "bestiario/naga-espirita.jpg",
   "atributos": {
@@ -11928,6 +12937,16 @@
   "dimensoes": {
    "medida": "altura ≈1,7 m",
    "peso": "≈55 kg"
+  },
+  "ecologia": {
+   "tipo": "Fey",
+   "terreno": [
+    "Forest",
+    "Water"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/ninfa.jpg",
   "atributos": {
@@ -12063,6 +13082,17 @@
    "medida": "≈2,9 m de altura",
    "peso": "≈290 kg"
   },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Mountain",
+    "Forest",
+    "Swamp"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/ogro.jpg",
   "atributos": {
    "forca": 7,
@@ -12156,6 +13186,16 @@
   "dimensoes": {
    "medida": "altura ≈2,7 m",
    "peso": "≈290 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Mountain",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/ogro-mago-oni.jpg",
   "atributos": {
@@ -12307,6 +13347,17 @@
    "medida": "≈2 m de altura",
    "peso": "≈95 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Plains",
+    "Mountain",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/orc.jpg",
   "atributos": {
    "forca": 5,
@@ -12400,6 +13451,17 @@
   "dimensoes": {
    "medida": "corpo ≈2,7 m, envergadura ≈9 m",
    "peso": "≈450 kg"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Sky",
+    "Plains",
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/pegaso.jpg",
   "atributos": {
@@ -12523,6 +13585,15 @@
   "dimensoes": {
    "medida": "altura ≈30 cm",
    "peso": "≈3 kg"
+  },
+  "ecologia": {
+   "tipo": "Fey",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/pixie.jpg",
   "atributos": {
@@ -12656,6 +13727,15 @@
   "dimensoes": {
    "medida": "≈2,7 m de altura, envergadura ≈6 m",
    "peso": "≈225 kg"
+  },
+  "ecologia": {
+   "tipo": "Celestial",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/planetar.jpg",
   "atributos": {
@@ -12793,6 +13873,15 @@
    "medida": "altura ≈30 cm",
    "peso": "≈3,5 kg"
   },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
   "imagem": "bestiario/quasit.jpg",
   "atributos": {
    "forca": 2,
@@ -12927,6 +14016,15 @@
    "medida": "corpo e cauda ≈4,5 m, altura ao ombro ≈1,8 m, envergadura ≈6 m",
    "peso": "≈600 kg"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/quimera.jpg",
   "atributos": {
    "forca": 6,
@@ -13045,6 +14143,17 @@
   "dimensoes": {
    "medida": "≈1,8 m de altura",
    "peso": "≈80 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Jungle",
+    "Urban"
+   ],
+   "clima": [
+    "Tropical",
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/rakshasa.jpg",
   "atributos": {
@@ -13186,6 +14295,17 @@
    "medida": "Comprimento total ≈0,9 m (com cauda)",
    "peso": "≈12 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Urban",
+    "Underground",
+    "Swamp"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/rato-gigante.jpg",
   "atributos": {
    "forca": 1,
@@ -13269,6 +14389,16 @@
   "dimensoes": {
    "medida": "comprimento ≈ 3,6 m",
    "peso": "≈ 2 t"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Plains",
+    "Jungle"
+   ],
+   "clima": [
+    "Tropical"
+   ]
   },
   "imagem": "bestiario/rinoceronte.jpg",
   "atributos": {
@@ -13357,6 +14487,16 @@
   "dimensoes": {
    "medida": "Comprimento ≈9 m, envergadura ≈18 m",
    "peso": "≈18 toneladas"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Mountain",
+    "Sky"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/roc.jpg",
   "atributos": {
@@ -13463,6 +14603,16 @@
   "dimensoes": {
    "medida": "≈2,7 m de comprimento total",
    "peso": "≈100 kg"
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Mountain",
+    "Desert"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/salamandra.jpg",
   "atributos": {
@@ -13581,6 +14731,15 @@
   "dimensoes": {
    "medida": "altura ≈1,5 m",
    "peso": "≈65 kg"
+  },
+  "ecologia": {
+   "tipo": "Fey",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/satiro.jpg",
   "atributos": {
@@ -13701,6 +14860,15 @@
   "dimensoes": {
    "medida": "≈3 m de altura, envergadura ≈7 m",
    "peso": "≈320 kg"
+  },
+  "ecologia": {
+   "tipo": "Celestial",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/solar.jpg",
   "atributos": {
@@ -13855,6 +15023,16 @@
    "medida": "≈1,78 m de altura",
    "peso": "≈82 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/soldado-veterano.jpg",
   "atributos": {
    "forca": 3,
@@ -13945,6 +15123,16 @@
   "dimensoes": {
    "medida": "≈1,8 m de altura, silhueta humanoide difusa",
    "peso": "sem peso, forma incorpórea sem massa"
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/sombra.jpg",
   "atributos": {
@@ -14066,6 +15254,15 @@
   "dimensoes": {
    "medida": "altura ≈1,75 m",
    "peso": "≈59 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/sucubo.jpg",
   "atributos": {
@@ -14213,6 +15410,15 @@
    "medida": "≈27 m de comprimento, chegando a ≈15 m de altura quando se ergue",
    "peso": "≈450 toneladas"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/tarrasque.jpg",
   "atributos": {
    "forca": 16,
@@ -14351,6 +15557,16 @@
    "medida": "comprimento ≈ 2,9 m, com cauda",
    "peso": "≈ 220 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Jungle",
+    "Forest"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
   "imagem": "bestiario/tigre.jpg",
   "atributos": {
    "forca": 8,
@@ -14440,6 +15656,15 @@
   "dimensoes": {
    "medida": "≈7,5 m de altura",
    "peso": "≈2 t"
+  },
+  "ecologia": {
+   "tipo": "Plant",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/treant.jpg",
   "atributos": {
@@ -14561,6 +15786,16 @@
    "medida": "≈1,7 m de altura",
    "peso": "≈75 kg"
   },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate",
+    "Tropical"
+   ]
+  },
   "imagem": "bestiario/trogloditas.jpg",
   "atributos": {
    "forca": 3,
@@ -14653,6 +15888,17 @@
   "dimensoes": {
    "medida": "≈3 m de altura",
    "peso": "≈200 kg"
+  },
+  "ecologia": {
+   "tipo": "Giant",
+   "terreno": [
+    "Swamp",
+    "Mountain"
+   ],
+   "clima": [
+    "Cold",
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/trol.jpg",
   "atributos": {
@@ -14758,6 +16004,15 @@
   "dimensoes": {
    "medida": "corpo ≈2,4 m, altura ≈1,7 m aos ombros",
    "peso": "≈350 kg"
+  },
+  "ecologia": {
+   "tipo": "Fey",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/unicornio.jpg",
   "atributos": {
@@ -14889,6 +16144,17 @@
    "medida": "altura ≈ 2,4 m, quando ereto",
    "peso": "≈ 400 kg"
   },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Forest",
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate",
+    "Cold"
+   ]
+  },
   "imagem": "bestiario/urso-pardo.jpg",
   "atributos": {
    "forca": 9,
@@ -14978,6 +16244,16 @@
   "dimensoes": {
    "medida": "≈1,75 m de altura",
    "peso": "≈75 kg"
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Urban",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/vampiro.jpg",
   "atributos": {
@@ -15142,6 +16418,15 @@
    "medida": "≈24 m de comprimento",
    "peso": "≈36 t"
   },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/verme-purpura.jpg",
   "atributos": {
    "forca": 13,
@@ -15243,6 +16528,15 @@
   "dimensoes": {
    "medida": "altura ≈2,4 m (envergadura ≈4,5 m)",
    "peso": "≈230 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/vrock.jpg",
   "atributos": {
@@ -15372,6 +16666,16 @@
    "medida": "≈1,75 m de altura",
    "peso": "≈60 kg, corpo dessecado"
   },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/wight.jpg",
   "atributos": {
    "forca": 3,
@@ -15481,6 +16785,15 @@
    "medida": "≈5,5 m da cabeça à ponta da cauda, envergadura ≈6 m",
    "peso": "≈250 kg"
   },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
   "imagem": "bestiario/wyvern.jpg",
   "atributos": {
    "forca": 6,
@@ -15589,6 +16902,16 @@
   "dimensoes": {
    "medida": "≈1,5 m de altura, corpo esférico",
    "peso": "≈450 kg"
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate",
+    "Extraplanar"
+   ]
   },
   "imagem": "bestiario/xorn.jpg",
   "atributos": {
@@ -15702,6 +17025,16 @@
   "dimensoes": {
    "medida": "≈1,7 m de altura",
    "peso": "≈75 kg"
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
   },
   "imagem": "bestiario/zumbi-humano.jpg",
   "atributos": {

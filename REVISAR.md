@@ -53,6 +53,21 @@ Para mexer: editar o gerador e rodar `node scripts/gen-bestiario.mjs`, ou editar
   fazer isso só ao travar o conteúdo, para não perder o recálculo automático dos stats
   enquanto o sistema ainda muda.
 
+## Bestiário — ecologia (tipo · terreno · clima)
+
+- **Novo satélite `ecologia-bestiario.json`** (por id): `tipo` (taxonomia PF2e, 1 valor),
+  `terreno` (array) e `clima` (array). Mesclado pelo `gen-monsters.mjs` em
+  `monsters.json` como objeto `ecologia`. Fonte editável à mão, como os outros satélites.
+  O `tipo` do topo de `monsters.json` continua sendo o PAPEL de combate (capanga/elite/…);
+  a taxonomia fica em `ecologia.tipo` para não colidir.
+- Classificação inicial dos 137 gerada por 8 autores em paralelo (rubrica de mapeamento
+  PF1e/3.5 → tipos PF2e; ambiente canônico do Pathfinder quando conhecido). Distribuição:
+  Humanoid 29 · Beast 19 · Fiend 17 · Animal 15 · Undead 12 · Giant 10 · Dragon 10 ·
+  Celestial 6 · Fey 6 · Aberration 5 · Elemental 5 · Plant 2 · Ooze 1.
+- **⏳ PENDÊNCIA (visual):** os selos são discos coloridos provisórios (`.eco-ic`). Trocar
+  pelos ícones redondos do Pathfinder (extraídos em `D&D/type_icon`, fora do repo). O markup
+  do card já está pronto para receber os PNGs sem mexer no dado.
+
 ## Bestiário — pendência de balanceamento
 
 - ✅ **Redução de dano (Absorção) por tamanho (RESOLVIDO).** Além do PV, a **Absorção

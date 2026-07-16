@@ -15,9 +15,10 @@ const HAB = read('habilidades-bestiario.json');
 const DIM = read('dimensoes-bestiario.json');
 const LORE = read('lore-bestiario.json');
 const IMG = read('imagens-bestiario.json');
+const ECO = read('ecologia-bestiario.json'); // tipo (PF2e) + terreno + clima, por id
 
 function build(c) {
-  const h = HAB[c.id] || {}, d = DIM[c.id] || {}, l = LORE[c.id] || {};
+  const h = HAB[c.id] || {}, d = DIM[c.id] || {}, l = LORE[c.id] || {}, e = ECO[c.id] || {};
   return {
     id: c.id,
     nome: c.nome,
@@ -32,6 +33,7 @@ function build(c) {
     pendente: !!c.pendente,
     porte: d.porte || null,
     dimensoes: { medida: d.medida || null, peso: d.peso || null },
+    ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
     imagem: IMG[c.id] || null,
     atributos: c.atributos,
     combate: {
@@ -62,6 +64,7 @@ for (const m of monsters) {
   if (!m.habilidades.length) problemas.push(`${m.id}: sem habilidades`);
   if (!m.lore.length) problemas.push(`${m.id}: sem lore`);
   if (!m.dimensoes.medida) problemas.push(`${m.id}: sem dimensoes`);
+  if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);
   if (!m.imagem) problemas.push(`${m.id}: sem imagem`);
 }
 if (problemas.length) {
