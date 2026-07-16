@@ -2260,7 +2260,7 @@
     ]
   },
   "mon-dragao-azul-adulto": {
-    "en": "Adult Blue Dragon",
+    "en": "Dragon, Adult Blue",
     "hab": [
       {
         "n": "Sopro elétrico",
@@ -2301,7 +2301,7 @@
     ]
   },
   "mon-dragao-branco-jovem": {
-    "en": "Young White Dragon",
+    "en": "Dragon, Young White",
     "hab": [
       {
         "n": "Sopro de frio",
@@ -2338,7 +2338,7 @@
     ]
   },
   "mon-dragao-dourado-adulto": {
-    "en": "Adult Gold Dragon",
+    "en": "Dragon, Adult Gold",
     "hab": [
       {
         "n": "Sopro de fogo",
@@ -2383,7 +2383,7 @@
     ]
   },
   "mon-dragao-verde-adulto": {
-    "en": "Adult Green Dragon",
+    "en": "Dragon, Adult Green",
     "hab": [
       {
         "n": "Sopro de gás",
@@ -2424,7 +2424,7 @@
     ]
   },
   "mon-dragao-vermelho-adulto": {
-    "en": "Adult Red Dragon",
+    "en": "Dragon, Adult Red",
     "hab": [
       {
         "n": "Sopro de fogo",
@@ -2465,7 +2465,7 @@
     ]
   },
   "mon-dragao-vermelho-anciao": {
-    "en": "Ancient Red Dragon",
+    "en": "Dragon, Ancient Red",
     "hab": [
       {
         "n": "Sopro de fogo",
@@ -2506,7 +2506,7 @@
     ]
   },
   "mon-dragao-vermelho-jovem": {
-    "en": "Young Red Dragon",
+    "en": "Dragon, Young Red",
     "hab": [
       {
         "n": "Sopro de fogo",
@@ -3034,7 +3034,7 @@
     ]
   },
   "mon-filhote-de-dragao-vermelho": {
-    "en": "Red Dragon Wyrmling",
+    "en": "Dragon, Wyrmling Red",
     "hab": [
       {
         "n": "Sopro de fogo",
@@ -3959,7 +3959,7 @@
     ]
   },
   "mon-grande-wyrm-vermelho": {
-    "en": "Great Wyrm Red Dragon",
+    "en": "Dragon, Great Wyrm Red",
     "hab": [
       {
         "n": "Sopro cataclísmico",

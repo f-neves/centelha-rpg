@@ -8973,7 +8973,7 @@
  {
   "id": "mon-dragao-azul-adulto",
   "nome": "Dragão Azul Adulto",
-  "nomeIngles": "Adult Blue Dragon",
+  "nomeIngles": "Dragon, Adult Blue",
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme",
@@ -9130,7 +9130,7 @@
  {
   "id": "mon-dragao-branco-jovem",
   "nome": "Dragão Branco Jovem",
-  "nomeIngles": "Young White Dragon",
+  "nomeIngles": "Dragon, Young White",
   "categoria": "Dragão",
   "tipo": "elite",
   "conceito": "dragão Grande",
@@ -9279,7 +9279,7 @@
  {
   "id": "mon-dragao-dourado-adulto",
   "nome": "Dragão Dourado Adulto",
-  "nomeIngles": "Adult Gold Dragon",
+  "nomeIngles": "Dragon, Adult Gold",
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme (metálico)",
@@ -9451,7 +9451,7 @@
  {
   "id": "mon-dragao-verde-adulto",
   "nome": "Dragão Verde Adulto",
-  "nomeIngles": "Adult Green Dragon",
+  "nomeIngles": "Dragon, Adult Green",
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme",
@@ -9605,7 +9605,7 @@
  {
   "id": "mon-dragao-vermelho-adulto",
   "nome": "Dragão Vermelho Adulto",
-  "nomeIngles": "Adult Red Dragon",
+  "nomeIngles": "Dragon, Adult Red",
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme",
@@ -9763,7 +9763,7 @@
  {
   "id": "mon-dragao-vermelho-anciao",
   "nome": "Dragão Vermelho Ancião",
-  "nomeIngles": "Ancient Red Dragon",
+  "nomeIngles": "Dragon, Ancient Red",
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Imenso",
@@ -9925,7 +9925,7 @@
  {
   "id": "mon-dragao-vermelho-jovem",
   "nome": "Dragão Vermelho Jovem",
-  "nomeIngles": "Young Red Dragon",
+  "nomeIngles": "Dragon, Young Red",
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Grande",
@@ -13251,7 +13251,7 @@
  {
   "id": "mon-filhote-de-dragao-vermelho",
   "nome": "Filhote de Dragão Vermelho",
-  "nomeIngles": "Red Dragon Wyrmling",
+  "nomeIngles": "Dragon, Wyrmling Red",
   "categoria": "Dragão",
   "tipo": "elite",
   "conceito": "dragão Médio",
@@ -16716,7 +16716,7 @@
  {
   "id": "mon-grande-wyrm-vermelho",
   "nome": "Grande Wyrm Vermelho",
-  "nomeIngles": "Great Wyrm Red Dragon",
+  "nomeIngles": "Dragon, Great Wyrm Red",
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Colossal",
