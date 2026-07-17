@@ -163,8 +163,8 @@ export function custoPontos(chave: keyof typeof regras.xp, de: number, ate: numb
   for (let v = de + 1; v <= ate; v++) c += step(spec, v);
   return c;
 }
-export function custoTecnica(banda: number) {
-  return step(regras.xp.tecnica as any, 0, banda);
+export function custoTecnica(nivel: number) {
+  return step(regras.xp.tecnica as any, nivel);
 }
 export function custoArte(nivel: number) {
   // arte = nível × valor; total p/ chegar ao nível N = soma 1..N

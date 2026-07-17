@@ -106,8 +106,8 @@
       "valor": 15
     },
     "tecnica": {
-      "tipo": "porBanda",
-      "valor": 5
+      "tipo": "porNivel",
+      "valor": 10
     },
     "arte": {
       "tipo": "porNivel",

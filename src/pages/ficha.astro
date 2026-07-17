@@ -128,9 +128,9 @@ import RoladorDados from '../components/RoladorDados.astro';
   const CAM_ORDER = (CAM_D as any[]).map((c) => c.id);
   const CAM_NOME: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.nome]));
   const CAMTREE: Record<string, [string, string, number][]> = {};
-  for (const t of TEC_D as any[]) (CAMTREE[t.caminho] ??= []).push([t.id, t.nome, t.banda]);
+  for (const t of TEC_D as any[]) (CAMTREE[t.caminho] ??= []).push([t.id, t.nome, t.nivel]);
   for (const k in CAMTREE) CAMTREE[k].sort((a, b) => a[2] - b[2]);
-  const TECBAND: Record<string, number> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.banda]));
+  const TECNIV: Record<string, number> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.nivel]));
   const TECPRE: Record<string, string[]> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.prereq || []]));
   const TECNOME: Record<string, string> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.nome]));
   const TECTEXT: Record<string, string> = Object.fromEntries((TEC_D as any[]).map((t) => [t.id, t.texto || '']));
@@ -142,7 +142,7 @@ import RoladorDados from '../components/RoladorDados.astro';
       .map((c) => '<div>' + c.map(render).join('') + '</div>').join('');
   };
   const CREA = (regras as any).limitesCriacao as { atributo: number; habilidade: number; centelha: number; picoAtributo?: number; picoHabilidade?: number };
-  const centReq = (b: number) => Math.ceil(b / 3);
+  const centReq = (b: number) => b;
   // teto de cada tipo conforme o modo (criação aplica os limites; evolução libera).
   // Na criação, permite-se UM pico: um atributo em 5 e uma habilidade primária em 4.
   function capFor(kind: string, key?: string): number {
@@ -241,7 +241,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     const card = (cam: string) => {
       const techs = CAMTREE[cam] || [];
       const sel = techs.filter(([id]) => S.tech[id]);
-      const cost = sel.reduce((s, [, , b]) => s + b * 5, 0);
+      const cost = sel.reduce((s, [, , b]) => s + b * 10, 0);
       const open = OPEN.cam[cam];
       const rows = techs.map(([id, nome, b]) => {
         const owned = !!S.tech[id];
@@ -252,7 +252,7 @@ import RoladorDados from '../components/RoladorDados.astro';
         const reasons: string[] = []; if (!centOk) reasons.push('Centelha ' + centReq(b)); if (miss.length) reasons.push('pré: ' + miss.map((p) => TECNOME[p]).join(', '));
         const title = reasons.length ? ` title="Requer ${reasons.join(' · ').replace(/"/g, '')}"` : '';
         const desc = TECTEXT[id] ? `<div class="tdesc">${mdBold(TECTEXT[id])}</div>` : '';
-        return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>N${Math.ceil(b / 3)} · ${b * 5}</small></span>${desc}</div>`;
+        return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>N${b} · ${b * 10}</small></span>${desc}</div>`;
       }).join('');
       return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Proeza ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
     };
@@ -354,7 +354,7 @@ import RoladorDados from '../components/RoladorDados.astro';
     xap = custoPontos('aparencia', 1, S.aparencia || 1);
     xc = custoPontos('centelha', 0, S.centelha || 0);
     SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || 0) * 5; });
-    Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECBAND[id]) xt += TECBAND[id] * 5; });
+    Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += TECNIV[id] * 10; });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
     const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar;
     el('xpSpent').textContent = String(total);

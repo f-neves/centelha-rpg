@@ -40,7 +40,7 @@ const { caminho } = Astro.props;
   const ALL = tecnicas as Tec[];
   const byId: Record<string, Tec> = Object.fromEntries(ALL.map((t) => [t.id, t]));
   const camNome: Record<string, string> = Object.fromEntries((caminhos as any[]).map((c) => [c.id, c.nome]));
-  const perBanda = (regras as any).xp.tecnica.valor as number;
+  const perNivel = (regras as any).xp.tecnica.valor as number;
   const destrava: Record<string, string[]> = {};
   for (const t of ALL) for (const p of t.prereq) (destrava[p] ??= []).push(t.id);
 
@@ -113,7 +113,7 @@ const { caminho } = Astro.props;
         el.classList.toggle('chain', chain.has(nid) && nid !== id);
       });
       drawEdges(chain);
-      const xp = [...chain].reduce((s, cid) => s + (byId[cid]?.banda ?? 0) * perBanda, 0);
+      const xp = [...chain].reduce((s, cid) => s + (byId[cid]?.nivel ?? 0) * perNivel, 0);
       const linkTec = (cid: string) => {
         const tt = byId[cid]; if (!tt) return cid;
         return `<a href="${BASE}caminhos/${tt.caminho}#${cid}">${tt.nome}${tt.caminho !== cam ? ` <span class="muted">(${camNome[tt.caminho] ?? ''})</span>` : ''}</a>`;
