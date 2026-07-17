@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Mesa" largura="wide" descricao="Página da mesa: membros, personagens e recursos.">
+  <div id="setup" class="aviso" hidden>
+    <strong>Área de contas ainda não configurada.</strong>
+    <p class="muted">Falta ligar o Supabase. Veja <code>supabase/README.md</code>.</p>
+  </div>
+
+  <div id="carregando" class="muted">Carregando…</div>
+  <div id="erro" class="erro" hidden></div>
+
+  <div id="mesa" hidden>
+    <header class="mesa-cab">
+      <div>
+        <span id="papel" class="papel"></span>
+        <h1 id="nome" class="cinzel" style="margin:.2rem 0 0"></h1>
+        <p id="descricao" class="muted"></p>
+      </div>
+      <div class="mesa-cab-acoes">
+        <div id="box-convite" class="convite" hidden>
+          <span class="muted">Código de convite</span>
+          <div class="convite-linha">
+            <code id="codigo"></code>
+            <button class="btn" id="btn-copiar" title="Copiar código">Copiar</button>
+          </div>
+        </div>
+        <button class="btn" id="btn-sair-mesa" hidden>Sair da mesa</button>
+      </div>
+    </header>
+
+    <section class="bloco">
+      <h2>Membros</h2>
+      <ul id="membros" class="membros"></ul>
+    </section>
+  </div>
+</Base>
+
+<script>
+  import { getSupabase } from '../lib/supabase';
+  import { exigirLogin, supabaseConfigurado } from '../lib/auth';
+
+  const base = import.meta.env.BASE_URL;
+  const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
+  const esc = (s: string) => (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const id = new URLSearchParams(location.search).get('id');
+
+  const mostraErro = (t: string) => {
+    document.getElementById('carregando')!.hidden = true;
+    const el = document.getElementById('erro')!; el.hidden = false; el.textContent = t;
+  };
+
+  async function main() {
+    if (!supabaseConfigurado) {
+      document.getElementById('carregando')!.hidden = true;
+      document.getElementById('setup')!.hidden = false;
+      return;
+    }
+    if (!id) return mostraErro('Mesa não informada.');
+    const user = await exigirLogin(base);
+    if (!user) return;
+
+    const sb = getSupabase();
+    const { data: mesa, error } = await sb.from('mesas').select('*').eq('id', id).maybeSingle();
+    if (error) return mostraErro('Erro: ' + error.message);
+    if (!mesa) return mostraErro('Mesa não encontrada ou você não tem acesso a ela.');
+
+    const ehMestre = mesa.mestre_id === user.id;
+    document.getElementById('carregando')!.hidden = true;
+    document.getElementById('mesa')!.hidden = false;
+    document.getElementById('nome')!.textContent = mesa.nome;
+    document.getElementById('descricao')!.textContent = mesa.descricao || '';
+    const papel = document.getElementById('papel')!;
+    papel.textContent = ehMestre ? 'Mestre' : 'Jogador';
+    papel.classList.add(ehMestre ? 'p-mestre' : 'p-jogador');
+
+    if (ehMestre) {
+      const box = document.getElementById('box-convite')!; box.hidden = false;
+      document.getElementById('codigo')!.textContent = mesa.codigo_convite;
+      document.getElementById('btn-copiar')!.addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(mesa.codigo_convite); (document.getElementById('btn-copiar') as HTMLButtonElement).textContent = 'Copiado!'; setTimeout(() => (document.getElementById('btn-copiar')!.textContent = 'Copiar'), 1400); } catch {}
+      });
+    } else {
+      const sairBtn = document.getElementById('btn-sair-mesa')! as HTMLButtonElement;
+      sairBtn.hidden = false;
+      sairBtn.addEventListener('click', async () => {
+        if (!confirm('Sair desta mesa? Seus personagens deixam de ficar ligados a ela.')) return;
+        await sb.from('mesa_membros').delete().eq('mesa_id', id).eq('user_id', user.id);
+        location.href = u('mesas');
+      });
+    }
+
+    await renderMembros(sb, mesa.mestre_id);
+  }
+
+  async function renderMembros(sb: any, mestreId: string) {
+    const { data, error } = await sb
+      .from('mesa_membros')
+      .select('papel, user_id, profiles(nome)')
+      .eq('mesa_id', id)
+      .order('entrou_em', { ascending: true });
+    const ul = document.getElementById('membros')!;
+    if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
+    ul.innerHTML = (data || []).map((m: any) => {
+      const nome = m.profiles?.nome || '(sem nome)';
+      const mestre = m.papel === 'mestre' || m.user_id === mestreId;
+      return `<li><span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span> ${esc(nome)}</li>`;
+    }).join('');
+  }
+
+  main();
+</script>
+
+<!-- is:global: cabeçalho e listas são preenchidos via JS -->
+<style is:global>
+  .mesa-cab { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; margin-bottom: 1rem; }
+  .mesa-cab-acoes { display: flex; flex-direction: column; gap: .6rem; align-items: flex-end; }
+  .convite { text-align: right; }
+  .convite-linha { display: flex; align-items: center; gap: .5rem; }
+  .convite code { font-size: 1.25rem; letter-spacing: .12em; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: .2rem .6rem; }
+  .bloco { margin-top: 1.4rem; }
+  .membros { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
+  .membros li { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
+  .papel { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; padding: .1rem .5rem; border-radius: 999px; font-weight: 700; }
+  .p-mestre { background: color-mix(in srgb, var(--gold, #b8860b) 25%, transparent); color: var(--ink); }
+  .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
+  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
+  .erro { color: #b3261e; }
+</style>

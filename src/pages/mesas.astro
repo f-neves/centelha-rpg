@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Minhas Mesas" descricao="Suas mesas como mestre e como jogador.">
+  <h1>Minhas Mesas</h1>
+
+  <div id="setup" class="aviso" hidden>
+    <strong>Área de contas ainda não configurada.</strong>
+    <p class="muted">Falta ligar o Supabase. Veja <code>supabase/README.md</code>.</p>
+  </div>
+
+  <div id="carregando" class="muted">Carregando…</div>
+
+  <div id="conteudo" hidden>
+    <div id="lista"></div>
+
+    <div class="acoes-mesa">
+      <form id="form-criar" class="painel">
+        <h2>Criar mesa</h2>
+        <p class="muted">Você vira o <strong>mestre</strong> desta mesa.</p>
+        <label>Nome da mesa<input name="nome" required maxlength="80" /></label>
+        <label>Descrição (opcional)<input name="descricao" maxlength="200" /></label>
+        <button class="btn primary" type="submit">Criar</button>
+      </form>
+
+      <form id="form-entrar" class="painel">
+        <h2>Entrar em uma mesa</h2>
+        <p class="muted">Use o <strong>código de convite</strong> que o mestre te passou.</p>
+        <label>Código<input name="codigo" required maxlength="12" style="text-transform:uppercase" /></label>
+        <button class="btn primary" type="submit">Entrar</button>
+      </form>
+    </div>
+    <p id="msg" class="msg" role="status" aria-live="polite"></p>
+  </div>
+</Base>
+
+<script>
+  import { getSupabase } from '../lib/supabase';
+  import { exigirLogin, supabaseConfigurado } from '../lib/auth';
+
+  const base = import.meta.env.BASE_URL;
+  const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
+  const msg = document.getElementById('msg')!;
+  const setMsg = (t: string, erro = true) => { msg.textContent = t; msg.classList.toggle('erro', erro); };
+  const esc = (s: string) => (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+
+  async function main() {
+    if (!supabaseConfigurado) {
+      document.getElementById('carregando')!.hidden = true;
+      document.getElementById('setup')!.hidden = false;
+      return;
+    }
+    const user = await exigirLogin(base);
+    if (!user) return; // já redirecionou
+    document.getElementById('carregando')!.hidden = true;
+    document.getElementById('conteudo')!.hidden = false;
+    await render();
+
+    document.getElementById('form-criar')!.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = e.target as HTMLFormElement;
+      setMsg('Criando…', false);
+      const { data, error } = await getSupabase().rpc('criar_mesa', {
+        p_nome: (f.nome as any).value, p_descricao: (f.descricao as any).value,
+      });
+      if (error) return setMsg('Não deu para criar: ' + error.message);
+      location.href = u('mesa') + '?id=' + (data as any).id;
+    });
+
+    document.getElementById('form-entrar')!.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = e.target as HTMLFormElement;
+      setMsg('Entrando…', false);
+      const { data, error } = await getSupabase().rpc('entrar_na_mesa', {
+        p_codigo: (f.codigo as any).value,
+      });
+      if (error) return setMsg('Código inválido ou erro: ' + error.message);
+      location.href = u('mesa') + '?id=' + (data as any).id;
+    });
+  }
+
+  async function render() {
+    const { data, error } = await getSupabase()
+      .from('mesa_membros')
+      .select('papel, mesa:mesas(id, nome, descricao, codigo_convite, mestre_id)')
+      .order('entrou_em', { ascending: true });
+    const lista = document.getElementById('lista')!;
+    if (error) { lista.innerHTML = `<p class="erro">Erro ao carregar: ${esc(error.message)}</p>`; return; }
+    const linhas = (data || []).filter((r: any) => r.mesa);
+    if (!linhas.length) { lista.innerHTML = '<p class="muted">Você ainda não está em nenhuma mesa. Crie uma ou entre com um código abaixo.</p>'; return; }
+    lista.innerHTML = '<div class="mesa-grid">' + linhas.map((r: any) => {
+      const m = r.mesa; const mestre = r.papel === 'mestre';
+      return `<a class="mesa-card" href="${u('mesa')}?id=${m.id}">
+        <span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span>
+        <span class="mesa-nome cinzel">${esc(m.nome)}</span>
+        ${m.descricao ? `<span class="mesa-desc">${esc(m.descricao)}</span>` : ''}
+        ${mestre ? `<span class="mesa-cod">Convite: <code>${esc(m.codigo_convite)}</code></span>` : ''}
+      </a>`;
+    }).join('') + '</div>';
+  }
+
+  main();
+</script>
+
+<!-- is:global: a lista de mesas é criada via JS -->
+<style is:global>
+  .acoes-mesa { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
+  @media (max-width: 640px) { .acoes-mesa { grid-template-columns: 1fr; } }
+  .painel { border: 1px solid var(--rule); border-radius: 8px; padding: 1rem; background: var(--panel); }
+  .painel h2 { margin-top: 0; }
+  .painel label { display: block; margin-bottom: .7rem; font-weight: 600; }
+  .painel input { display: block; width: 100%; margin-top: .25rem; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
+  .mesa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .mesa-card { display: flex; flex-direction: column; gap: .35rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
+  .mesa-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .mesa-nome { font-size: 1.2rem; font-weight: 700; }
+  .mesa-desc { color: var(--muted); font-size: .95rem; }
+  .mesa-cod { font-size: .85rem; color: var(--muted); }
+  .papel { align-self: flex-start; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; padding: .1rem .5rem; border-radius: 999px; font-weight: 700; }
+  .p-mestre { background: color-mix(in srgb, var(--gold, #b8860b) 25%, transparent); color: var(--ink); }
+  .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
+  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
+  .msg { margin-top: .8rem; }
+  .msg.erro { color: #b3261e; }
+</style>
