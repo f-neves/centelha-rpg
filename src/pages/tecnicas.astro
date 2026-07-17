@@ -5,9 +5,9 @@ import { loadData, BANDA_LABEL, custoTagTecnica } from '../lib/data';
 const d = await loadData();
 const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeCompare(d.C[b.caminho.id].nome) || a.banda - b.banda);
 ---
-<Base title="Técnicas" largura="wide" descricao="Todas as Técnicas das Proezas, com filtros por atributo, caminho, banda, tipo e custo.">
+<Base title="Técnicas" largura="wide" descricao="Todas as Técnicas das Proezas, com filtros por atributo, caminho, nível, tipo e custo.">
   <h1>Técnicas</h1>
-  <p class="lead">As {techs.length} Técnicas de todas as Proezas. Filtre por atributo, caminho, banda ou tipo — ou busque pelo nome.</p>
+  <p class="lead">As {techs.length} Técnicas de todas as Proezas. Filtre por atributo, caminho, nível ou tipo — ou busque pelo nome.</p>
 
   <div class="filtros panel" role="region" aria-label="Filtros">
     <div class="f-row">
@@ -16,7 +16,7 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
       <label>Proeza<select data-f="caminho"><option value="">todos</option>{[...d.caminhos].sort((a, b) => a.nome.localeCompare(b.nome)).map((c) => <option value={c.id} data-atr={c.atributo.id}>{c.nome}</option>)}</select></label>
     </div>
     <div class="f-row">
-      <fieldset><legend>Banda</legend>{Array.from({ length: 15 }, (_, i) => i + 1).map((b) => <label class="chk"><input type="checkbox" data-f="banda" value={b} />{b}</label>)}</fieldset>
+      <fieldset><legend>Nível</legend>{Array.from({ length: 5 }, (_, i) => i + 1).map((b) => <label class="chk"><input type="checkbox" data-f="nivel" value={b} />{b}</label>)}</fieldset>
       <fieldset><legend>Tipo</legend>{['passiva', 'ativa', 'reflexiva'].map((t) => <label class="chk"><input type="checkbox" data-f="tipo" value={t} />{t}</label>)}</fieldset>
       <button class="btn" data-f="clear">Limpar</button>
     </div>
@@ -26,11 +26,11 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
   <div class="tec-list">
     {techs.map((t) => (
       <a class="tec-row" href={url(`caminhos/${t.caminho.id}`) + '#' + t.id}
-         data-atributo={t.atributo.id} data-caminho={t.caminho.id} data-banda={t.banda} data-tipo={t.tipo}
+         data-atributo={t.atributo.id} data-caminho={t.caminho.id} data-nivel={t.nivel} data-tipo={t.tipo}
          data-nome={t.nome.toLowerCase()} data-texto={t.texto.toLowerCase()}>
         <span class="tr-nome cinzel">{t.nome}</span>
         <span class="tr-cam muted">{d.C[t.caminho.id].nome}</span>
-        <span class="badge banda">B{t.banda}</span>
+        <span class="badge banda">N{t.nivel}</span>
         <span class={`badge ${t.tipo}`}>{custoTagTecnica(t)}</span>
         <span class="tr-eff" set:html={t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')} />
       </a>
@@ -66,13 +66,13 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
 
   function apply() {
     const text = q(), atr = sel('atributo'), cam = sel('caminho');
-    const bandas = checked('banda'), tipos = checked('tipo');
+    const niveis = checked('nivel'), tipos = checked('tipo');
     let n = 0;
     for (const r of rows) {
       const ok =
         (!atr || r.dataset.atributo === atr) &&
         (!cam || r.dataset.caminho === cam) &&
-        (!bandas.length || bandas.includes(r.dataset.banda!)) &&
+        (!niveis.length || niveis.includes(r.dataset.nivel!)) &&
         (!tipos.length || tipos.includes(r.dataset.tipo!)) &&
         (!text || r.dataset.nome!.includes(text) || r.dataset.texto!.includes(text));
       r.style.display = ok ? '' : 'none';
@@ -96,7 +96,7 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
     (document.querySelector('[data-f="q"]') as HTMLInputElement).value = '';
     (document.querySelector('[data-f="atributo"]') as HTMLSelectElement).value = '';
     if (camSel) { camSel.value = ''; camSel.querySelectorAll('option').forEach((o) => ((o as HTMLOptionElement).hidden = false)); }
-    get('banda').concat(get('tipo')).forEach((c) => (c.checked = false));
+    get('nivel').concat(get('tipo')).forEach((c) => (c.checked = false));
     apply();
   });
   apply();

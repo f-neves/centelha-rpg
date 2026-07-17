@@ -110,7 +110,7 @@
       "spark",
       "poder"
     ],
-    "definicao": "O nível de poder pessoal (0–5), do mortal ao semideus. Destrava as bandas das Proezas e dimensiona Energia e Mana."
+    "definicao": "O nível de poder pessoal (0–5), do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana."
   },
   {
     "id": "vontade",
@@ -155,11 +155,12 @@
   },
   {
     "id": "banda",
-    "termo": "Banda",
+    "termo": "Nível",
     "aliases": [
-      "faixa de poder"
+      "faixa de poder",
+      "banda"
     ],
-    "definicao": "Faixa de poder de uma Técnica (1–5). A banda N exige Centelha ≥ ⌈N ÷ 3⌉."
+    "definicao": "Faixa de poder de uma Técnica, de 1 a 5. O nível N exige Centelha ≥ N e mede a escala do efeito."
   },
   {
     "id": "caminho",
@@ -178,7 +179,7 @@
       "manobra",
       "charm"
     ],
-    "definicao": "Cada nó de uma Proeza: uma manobra, dom ou poder, com banda, tipo, custo e pré-requisitos."
+    "definicao": "Cada nó de uma Proeza: uma manobra, dom ou poder, com nível, tipo, custo e pré-requisitos."
   },
   {
     "id": "arte",

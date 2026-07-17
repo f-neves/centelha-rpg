@@ -10,7 +10,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "O 1º deslocamento da cena, ou sacar/empunhar uma arma, custa **−2 Ticks** (mín. 1).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "salto-do-grilo",
@@ -27,7 +28,8 @@
     ],
     "aliases": [],
     "texto": "Triplica distância/altura de um salto; ignora terreno difícil; aterrissa de pé.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "reflexos-de-vento",
@@ -44,7 +46,8 @@
     ],
     "aliases": [],
     "texto": "Após ver um ataque que te visa, **+3 na Defesa** contra ele.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "corrida-vertical",
@@ -61,7 +64,8 @@
     ],
     "aliases": [],
     "texto": "Enquanto se mover, corre por paredes, tetos e sobre a água por um turno.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "passos-sobre-folhas",
@@ -76,7 +80,8 @@
     ],
     "aliases": [],
     "texto": "Move-se em silêncio e sem deixar rastro; superfícies frágeis (gelo fino, galhos) o suportam.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "esquiva-impossivel",
@@ -93,7 +98,8 @@
     ],
     "aliases": [],
     "texto": "",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "encontrao-relampago",
@@ -111,7 +117,8 @@
     ],
     "aliases": [],
     "texto": "Investida que cruza a distância e **derruba** o alvo (Força+Corrida vs Defesa; recuo + prono).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "mil-passos",
@@ -128,7 +135,8 @@
     ],
     "aliases": [],
     "texto": "Numa ação, percorre distâncias enormes; supera cavalos a galope e flechas em velocidade de viagem.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "borrao",
@@ -146,7 +154,8 @@
     ],
     "aliases": [],
     "texto": "Vira um borrão: **−2d6** a disparos contra você; pode cruzar um campo de batalha num único Tick.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "ataque-relampago",
@@ -163,7 +172,8 @@
     ],
     "aliases": [],
     "texto": "1×/turno, faça um **ataque extra** a custo de Ticks reduzido — golpe antes que percebam.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "passo-do-trovao",
@@ -180,7 +190,8 @@
     ],
     "aliases": [],
     "texto": "Move-se em linha reta como um piscar, **atravessando** obstáculos e oponentes no caminho.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "cavalgar-o-vento",
@@ -198,7 +209,8 @@
     ],
     "aliases": [],
     "texto": "Você **voa**, ágil como uma andorinha.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "velocidade-divina",
@@ -217,7 +229,8 @@
     ],
     "aliases": [],
     "texto": "O tempo parece congelar: **aja uma vez extra** na linha de Ticks neste intervalo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "golpe-pesado",
@@ -230,7 +243,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Seus ataques de Força em corpo-a-corpo somam **+2 ao dano**.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "quebrar-guarda",
@@ -247,7 +261,8 @@
     ],
     "aliases": [],
     "texto": "Se acertar, **−2 na Defesa** do alvo até a próxima ação dele.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "mao-de-ferro",
@@ -262,7 +277,8 @@
     ],
     "aliases": [],
     "texto": "Golpes desarmados contam como arma (sem penalidade vs armados) e podem causar dano **Letal** à vontade.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "soco-trovejante",
@@ -279,7 +295,8 @@
     ],
     "aliases": [],
     "texto": "Arremessa o alvo (knockback) e o **atordoa** (perde Ticks) se ele falhar num teste de Vigor.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "esmagar",
@@ -296,7 +313,8 @@
     ],
     "aliases": [],
     "texto": "O golpe ignora a Absorção de Impacto da armadura do alvo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "investida-devastadora",
@@ -314,7 +332,8 @@
     ],
     "aliases": [],
     "texto": "Avança e desfere um golpe que derruba e empurra; some a distância percorrida ao impacto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "golpe-do-tita",
@@ -331,7 +350,8 @@
     ],
     "aliases": [],
     "texto": "**+3d6** de dano num único golpe colossal.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "punho-que-parte-pedra",
@@ -346,7 +366,8 @@
     ],
     "aliases": [],
     "texto": "Suas mãos quebram pedra e metal; ataques ignoram a Absorção de armaduras mundanas (não a Absorção natural do alvo).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "quebra-montanhas",
@@ -363,7 +384,8 @@
     ],
     "aliases": [],
     "texto": "Destrói estruturas, portões e muralhas com um golpe.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "onda-de-choque",
@@ -381,7 +403,8 @@
     ],
     "aliases": [],
     "texto": "O soco projeta uma onda que atinge todos numa linha/área à frente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "punho-do-cataclismo",
@@ -400,7 +423,8 @@
     ],
     "aliases": [],
     "texto": "Racha o chão num raio enorme; devasta a área e remodela o terreno.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "tom-de-autoridade",
@@ -413,7 +437,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Ao dar ordens ou intimidar, a **Defesa Mental do alvo é −2**; as pessoas instintivamente o tratam como alguém a obedecer.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ordem-curta",
@@ -430,7 +455,8 @@
     ],
     "aliases": [],
     "texto": "Manip+Intimidação vs Def. Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "encarar",
@@ -447,7 +473,8 @@
     ],
     "aliases": [],
     "texto": "Um olhar que faz um alvo de vontade fraca hesitar, recuar ou congelar por um instante.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "voz-de-comando",
@@ -464,7 +491,8 @@
     ],
     "aliases": [],
     "texto": "Comanda um pequeno grupo de uma vez; a ordem dura a cena se não contrariar a natureza dos alvos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "submissao",
@@ -481,7 +509,8 @@
     ],
     "aliases": [],
     "texto": "Num confronto, quebra a coragem do alvo: ele se encolhe, foge ou se rende (vontade forte gasta Vontade para resistir).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "comando-inspirador",
@@ -499,7 +528,8 @@
     ],
     "aliases": [],
     "texto": "Ordens que também encorajam: aliados obedecem de bom grado e ganham **+1d6** na ação ordenada.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "comando-irresistivel",
@@ -517,7 +547,8 @@
     ],
     "aliases": [],
     "texto": "Uma ordem que o alvo deve gastar **Vontade a cada turno** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "aterrorizar",
@@ -534,7 +565,8 @@
     ],
     "aliases": [],
     "texto": "Instila terror sobrenatural; um grupo inteiro foge ou paralisa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "dominacao",
@@ -552,7 +584,8 @@
     ],
     "aliases": [],
     "texto": "Implanta uma ordem permanente que dura um dia; o alvo racionaliza obedecer.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "quebrar-o-espirito",
@@ -571,7 +604,8 @@
     ],
     "aliases": [],
     "texto": "Estilhaça a vontade do alvo, deixando-o quebrado e dócil por um tempo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "palavra-de-lei",
@@ -589,7 +623,8 @@
     ],
     "aliases": [],
     "texto": "Sua ordem falada torna-se quase absoluta; multidões e exércitos obedecem um decreto divino. Resistir custa vários pontos de Vontade.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "pressentimento",
@@ -602,7 +637,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Você sente um arrepio de aviso antes de perigo iminente ou emboscada (o Mestre lhe dá um pressentimento vago).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "instinto-de-sobrevivencia",
@@ -619,7 +655,8 @@
     ],
     "aliases": [],
     "texto": "Mesmo pego de surpresa, você age normalmente (anula a surpresa).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "faro-para-mentiras",
@@ -636,7 +673,8 @@
     ],
     "aliases": [],
     "texto": "Sente quando algo está \"errado\" — uma mentira, uma armadilha, uma traição — mesmo sem prova.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "reflexos-premonitorios",
@@ -651,7 +689,8 @@
     ],
     "aliases": [],
     "texto": "**+2 na Iniciativa**; 1×/cena, refaça uma rolagem de Defesa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "pressentir-o-golpe",
@@ -668,7 +707,8 @@
     ],
     "aliases": [],
     "texto": "Defende-se normalmente contra um ataque que não poderia ver (pelas costas, oculto).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "ler-o-momento",
@@ -685,7 +725,8 @@
     ],
     "aliases": [],
     "texto": "Antes de agir, vislumbra a consequência imediata provável (\"se eu fizer X, o que acontece?\").",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "vislumbre",
@@ -702,7 +743,8 @@
     ],
     "aliases": [],
     "texto": "Um lampejo de um futuro próximo possível (próximos minutos); o Mestre dá uma premonição útil.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "esquiva-profetica",
@@ -720,7 +762,8 @@
     ],
     "aliases": [],
     "texto": "Você se esquiva como quem já sabia: **anula** um ataque, agindo pela previsão.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "caminho-do-destino",
@@ -738,7 +781,8 @@
     ],
     "aliases": [],
     "texto": "1×/cena, **refaça qualquer rolagem** (sua ou que o afete), declarando \"eu previ isto\".",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "ler-o-fio",
@@ -755,7 +799,8 @@
     ],
     "aliases": [],
     "texto": "Percebe os \"fios\" do destino: intenções e ações prováveis de uma pessoa, ou os eventos que se aproximam de um lugar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "olho-do-oraculo",
@@ -774,7 +819,8 @@
     ],
     "aliases": [],
     "texto": "Verdadeira precognição: faça ao Mestre uma pergunta significativa sobre o futuro e receba uma resposta enigmática, porém verdadeira — ou reescreva um resultado uma vez.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "pele-curtida",
@@ -787,7 +833,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+1 de Soak contra Impacto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "aguentar-o-tranco",
@@ -802,7 +849,8 @@
     ],
     "aliases": [],
     "texto": "Ignora a penalidade do estado Machucado (−1).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "tensionar",
@@ -819,7 +867,8 @@
     ],
     "aliases": [],
     "texto": "Ao ser atingido, +2 de Soak contra aquele golpe.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "pele-de-pedra",
@@ -836,7 +885,8 @@
     ],
     "aliases": [],
     "texto": "+2 de Soak (todos os tipos) e reduz as penalidades de ferimento em 1.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "inquebrantavel",
@@ -851,7 +901,8 @@
     ],
     "aliases": [],
     "texto": "Dano de Impacto nunca te mata, só nocauteia; +1 ao limiar de morte.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "carne-de-granito",
@@ -868,7 +919,8 @@
     ],
     "aliases": [],
     "texto": "A pele apara golpes mundanos que não a penetram; imune a cortes leves.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "fortaleza-viva",
@@ -886,7 +938,8 @@
     ],
     "aliases": [],
     "texto": "Imune a dano não-mágico por um turno.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "pele-adamantina",
@@ -904,7 +957,8 @@
     ],
     "aliases": [],
     "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes letais.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "mira-firme",
@@ -917,7 +971,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Gastando uma ação para mirar, +2 ao ataque à distância.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "tiro-rapido",
@@ -934,7 +989,8 @@
     ],
     "aliases": [],
     "texto": "Saca e dispara num só gesto (reduz os Ticks do disparo).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "olho-de-alcance",
@@ -949,7 +1005,8 @@
     ],
     "aliases": [],
     "texto": "Dobra o alcance efetivo sem penalidade.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "tiro-perfurante",
@@ -966,7 +1023,8 @@
     ],
     "aliases": [],
     "texto": "+1 de Penetração e +1d6 de dano num disparo cuidadoso.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "disparo-multiplo",
@@ -983,7 +1041,8 @@
     ],
     "aliases": [],
     "texto": "Dispara em 2 alvos próximos com penalidade reduzida.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "tiro-impossivel",
@@ -1001,7 +1060,8 @@
     ],
     "aliases": [],
     "texto": "Acerta a distâncias extremas, contorna cobertura parcial e mira pontos vitais (ignora a penalidade de cobertura do alvo).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "flecha-que-persegue",
@@ -1019,7 +1079,8 @@
     ],
     "aliases": [],
     "texto": "O disparo curva e persegue o alvo, ignorando cobertura.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "chuva-de-mil-flechas",
@@ -1038,7 +1099,8 @@
     ],
     "aliases": [],
     "texto": "Um disparo vira uma saraivada que cobre uma área inteira.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "primeira-impressao",
@@ -1051,7 +1113,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Em abordagens amistosas, a Defesa Mental do alvo é −2.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "palavra-calmante",
@@ -1068,7 +1131,8 @@
     ],
     "aliases": [],
     "texto": "Baixa um grau a hostilidade de alguém (ou grupo) ainda não violento.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "charme",
@@ -1085,7 +1149,8 @@
     ],
     "aliases": [],
     "texto": "Num pedido plausível, +1d6 e o alvo gasta Vontade só para ignorá-lo friamente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "carisma-magnetico",
@@ -1102,7 +1167,8 @@
     ],
     "aliases": [],
     "texto": "Prende a atenção de uma plateia; aliados inspirados ganham +1 nas ações por uma cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "desarmar",
@@ -1119,7 +1185,8 @@
     ],
     "aliases": [],
     "texto": "Convence alguém a baixar a guarda ou a arma; suspende a hostilidade do momento.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "encantamento",
@@ -1136,7 +1203,8 @@
     ],
     "aliases": [],
     "texto": "Por uma cena, o alvo o vê como um amigo querido (vs Defesa Mental; quebra se você o trair abertamente).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "coracao-nas-maos",
@@ -1154,7 +1222,8 @@
     ],
     "aliases": [],
     "texto": "Altera de forma duradoura a disposição e a lealdade de alguém.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "voz-que-move-multidoes",
@@ -1172,7 +1241,8 @@
     ],
     "aliases": [],
     "texto": "Um discurso comove uma cidade inteira a seguir a sua causa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "sentidos-apurados",
@@ -1185,7 +1255,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em testes de Percepção e na Percepção Passiva; nunca é pego totalmente de surpresa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "olhar-do-cacador",
@@ -1202,7 +1273,8 @@
     ],
     "aliases": [],
     "texto": "Saiba uma informação concreta sobre um alvo (ferido? armado? mentindo agora?).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "visao-na-penumbra",
@@ -1217,7 +1289,8 @@
     ],
     "aliases": [],
     "texto": "Enxerga em luz fraca como de dia; na escuridão percebe formas, calor e movimento.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ler-o-terreno",
@@ -1234,7 +1307,8 @@
     ],
     "aliases": [],
     "texto": "Num relance, percebe rotas, armadilhas e fraquezas estruturais.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "ouvido-absoluto",
@@ -1249,7 +1323,8 @@
     ],
     "aliases": [],
     "texto": "Ouve sussurros distantes, batimentos e sons através de paredes finas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "visao-verdadeira",
@@ -1267,7 +1342,8 @@
     ],
     "aliases": [],
     "texto": "Vê o invisível, ilusões e disfarces; a escuridão perfeita não o cega.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "clarividencia",
@@ -1285,7 +1361,8 @@
     ],
     "aliases": [],
     "texto": "Percebe à distância um local que conhece.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "olho-que-tudo-ve",
@@ -1303,7 +1380,8 @@
     ],
     "aliases": [],
     "texto": "Visão de raio-x e percepção a quilômetros; nada se esconde de você.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "recuperacao-acelerada",
@@ -1316,7 +1394,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Cura o dobro do normal e estabiliza sozinho ao cair.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ignorar-a-dor",
@@ -1333,7 +1412,8 @@
     ],
     "aliases": [],
     "texto": "Ignora a penalidade de um ferimento por um turno.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "segundo-folego",
@@ -1350,7 +1430,8 @@
     ],
     "aliases": [],
     "texto": "Recupera um punhado de PV de Impacto numa ação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "fechar-feridas",
@@ -1367,7 +1448,8 @@
     ],
     "aliases": [],
     "texto": "Estanca sangramentos e cura dano Letal leve em minutos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "constituicao-ferrea",
@@ -1382,7 +1464,8 @@
     ],
     "aliases": [],
     "texto": "+2 para resistir a venenos e doenças.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "regeneracao",
@@ -1399,7 +1482,8 @@
     ],
     "aliases": [],
     "texto": "Recupera PV igual ao seu Vigor no início de cada turno.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "recompor-se",
@@ -1417,7 +1501,8 @@
     ],
     "aliases": [],
     "texto": "Fecha ferimentos graves, recoloca ossos e cicatriza cortes profundos em segundos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "imortalidade-tenue",
@@ -1435,7 +1520,8 @@
     ],
     "aliases": [],
     "texto": "Volta de golpes que matariam e regenera membros; só a destruição total o mata.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "pisar-leve",
@@ -1448,7 +1534,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em Furtividade; move-se em silêncio mesmo em ritmo normal.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "esgueirar",
@@ -1465,7 +1552,8 @@
     ],
     "aliases": [],
     "texto": "Some de vista ao quebrar a linha de visão e reposiciona-se sem ser notado.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "maos-sutis",
@@ -1482,7 +1570,8 @@
     ],
     "aliases": [],
     "texto": "Furta ou planta objetos sem ser percebido (vs Percepção Passiva).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "manto-de-sombras",
@@ -1499,7 +1588,8 @@
     ],
     "aliases": [],
     "texto": "Nas sombras, torna-se quase invisível enquanto se move devagar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "bote-silencioso",
@@ -1516,7 +1606,8 @@
     ],
     "aliases": [],
     "texto": "Ataque furtivo contra alvo desavisado: +2d6 de dano (o alvo desavisado já sofre a penalidade de Defesa por surpresa).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "andar-entre-olhares",
@@ -1533,7 +1624,8 @@
     ],
     "aliases": [],
     "texto": "Move-se à vista sem ser notado, desde que ninguém o encare diretamente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "unir-se-a-sombra",
@@ -1551,7 +1643,8 @@
     ],
     "aliases": [],
     "texto": "Funde-se às sombras: invisível, e capaz de atravessá-las por curtas distâncias.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "inexistencia",
@@ -1569,7 +1662,8 @@
     ],
     "aliases": [],
     "texto": "Apaga sua presença: invisível, inaudível e indetectável por meios mundanos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "postura-fluida",
@@ -1582,7 +1676,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+1 ao Bloqueio com armas de corte; apara sem penalidade.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "aparar",
@@ -1599,7 +1694,8 @@
     ],
     "aliases": [],
     "texto": "+3 na Defesa por Bloqueio contra um golpe.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "finta",
@@ -1616,7 +1712,8 @@
     ],
     "aliases": [],
     "texto": "Engana a guarda: −2 na Defesa do alvo no seu próximo ataque.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "riposte",
@@ -1633,7 +1730,8 @@
     ],
     "aliases": [],
     "texto": "Ao aparar com sucesso, contra-ataca imediatamente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "desarme",
@@ -1650,7 +1748,8 @@
     ],
     "aliases": [],
     "texto": "Tenta arrancar a arma do oponente (Destreza+Corte vs Defesa).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "danca-entre-laminas",
@@ -1668,7 +1767,8 @@
     ],
     "aliases": [],
     "texto": "Não sofre desgaste de defesa contra vários atacantes por uma rodada.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "mil-cortes",
@@ -1686,7 +1786,8 @@
     ],
     "aliases": [],
     "texto": "Vários ataques num só gesto, cada um a custo reduzido.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "lamina-perfeita",
@@ -1704,7 +1805,8 @@
     ],
     "aliases": [],
     "texto": "Cada ataque acha um ponto vital e cada defesa é impecável.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "furia",
@@ -1719,7 +1821,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Entra em fúria: +1d6 de dano corpo-a-corpo, −1 na Defesa enquanto durar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ignorar-ferimentos",
@@ -1734,7 +1837,8 @@
     ],
     "aliases": [],
     "texto": "Em fúria, ignora um nível de penalidade de ferimento.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "brado-de-guerra",
@@ -1751,7 +1855,8 @@
     ],
     "aliases": [],
     "texto": "Rugido que abala inimigos próximos (vs Defesa Mental).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "sede-de-sangue",
@@ -1766,7 +1871,8 @@
     ],
     "aliases": [],
     "texto": "Cada inimigo derrubado prolonga a fúria e devolve um pouco de Energia.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "investida-furiosa",
@@ -1783,7 +1889,8 @@
     ],
     "aliases": [],
     "texto": "Avança e ataca com +1d6 de dano por knockback.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "frenesi",
@@ -1800,7 +1907,8 @@
     ],
     "aliases": [],
     "texto": "Ataca repetidamente sem as penalidades de múltiplos ataques por uma rodada.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "nao-sentir-dor",
@@ -1818,7 +1926,8 @@
     ],
     "aliases": [],
     "texto": "Em fúria, continua lutando mesmo abaixo de 0 PV até o fim da cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "avatar-da-carnificina",
@@ -1836,7 +1945,8 @@
     ],
     "aliases": [],
     "texto": "Uma tempestade de violência: dano massivo, imune a medo, quase imparável.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "presenca-imponente",
@@ -1849,7 +1959,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 onde porte e reputação importam; entra num salão e as cabeças se viram.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "inspirar",
@@ -1866,7 +1977,8 @@
     ],
     "aliases": [],
     "texto": "Aliados que o ouvem ganham +1 nas ações por um turno.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "discurso",
@@ -1883,7 +1995,8 @@
     ],
     "aliases": [],
     "texto": "Move uma plateia a sentir o que você quer (esperança, raiva, calma).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "estandarte-vivo",
@@ -1900,7 +2013,8 @@
     ],
     "aliases": [],
     "texto": "Enquanto visível, aliados resistem melhor a medo e desânimo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "temor-reverente",
@@ -1917,7 +2031,8 @@
     ],
     "aliases": [],
     "texto": "Sua presença faz inimigos comuns hesitarem em atacá-lo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "carisma-heroico",
@@ -1935,7 +2050,8 @@
     ],
     "aliases": [],
     "texto": "Inspira uma multidão ou exército a agir como um só.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "lenda-em-vida",
@@ -1953,7 +2069,8 @@
     ],
     "aliases": [],
     "texto": "Histórias suas o precedem; estranhos já o admiram ou temem.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "icone",
@@ -1971,7 +2088,8 @@
     ],
     "aliases": [],
     "texto": "Torna-se um símbolo: multidões o seguem, dispostas a tudo pela sua causa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "memoria-eidetica",
@@ -1984,7 +2102,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Lembra perfeitamente de tudo que viu ou ouviu.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "calculo-veloz",
@@ -1999,7 +2118,8 @@
     ],
     "aliases": [],
     "texto": "Resolve cálculos, estimativas e lógica num instante.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "deducao",
@@ -2016,7 +2136,8 @@
     ],
     "aliases": [],
     "texto": "Junta as pistas disponíveis e o Mestre revela uma conclusão lógica.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "mente-enciclopedica",
@@ -2033,7 +2154,8 @@
     ],
     "aliases": [],
     "texto": "Saiba um fato relevante sobre quase qualquer assunto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "ler-a-situacao",
@@ -2050,7 +2172,8 @@
     ],
     "aliases": [],
     "texto": "Analisa um ambiente ou grupo e identifica dinâmica, ameaças e oportunidades.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "pensamento-acelerado",
@@ -2068,7 +2191,8 @@
     ],
     "aliases": [],
     "texto": "Pensa muitas vezes mais rápido; planeja em segundos, ganha ações mentais extras.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "mente-palaciana",
@@ -2086,7 +2210,8 @@
     ],
     "aliases": [],
     "texto": "Resolve problemas imensos; prevê cadeias de eventos e enigmas \"impossíveis\".",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "onisciencia-momentanea",
@@ -2104,7 +2229,8 @@
     ],
     "aliases": [],
     "texto": "Por um instante, compreende um sistema inteiro — uma cidade, uma conspiração, uma máquina — como se o estudasse por anos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "empatia-selvagem",
@@ -2117,7 +2243,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Sente o humor e a intenção dos animais; eles raramente o atacam sem motivo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "acalmar-fera",
@@ -2134,7 +2261,8 @@
     ],
     "aliases": [],
     "texto": "Tranquiliza um animal hostil ou assustado.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "chamado",
@@ -2151,7 +2279,8 @@
     ],
     "aliases": [],
     "texto": "Atrai animais próximos do tipo apropriado.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "companheiro",
@@ -2168,7 +2297,8 @@
     ],
     "aliases": [],
     "texto": "Vincula-se a um animal que o acompanha e obedece comandos simples.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "falar-com-os-animais",
@@ -2185,7 +2315,8 @@
     ],
     "aliases": [],
     "texto": "Comunica-se com bestas em conceitos simples.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "matilha",
@@ -2203,7 +2334,8 @@
     ],
     "aliases": [],
     "texto": "Comanda um grupo de animais como aliados coordenados.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "forma-bestial",
@@ -2221,7 +2353,8 @@
     ],
     "aliases": [],
     "texto": "Assume traços de um animal — sentidos, garras, velocidade — ou parte de sua forma.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "senhor-das-feras",
@@ -2239,7 +2372,8 @@
     ],
     "aliases": [],
     "texto": "Convoca e comanda a vida selvagem de toda uma região; transforma-se plenamente em grandes bestas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "rosto-de-poquer",
@@ -2252,7 +2386,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Suas emoções e intenções não vazam; +2 para blefar e mentir.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "fingir",
@@ -2269,7 +2404,8 @@
     ],
     "aliases": [],
     "texto": "Finge convincentemente uma emoção ou atitude (medo, amizade, ignorância).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "disfarce-rapido",
@@ -2286,7 +2422,8 @@
     ],
     "aliases": [],
     "texto": "Muda postura, voz e maneirismos para parecer outro papel social.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "mentira-perfeita",
@@ -2303,7 +2440,8 @@
     ],
     "aliases": [],
     "texto": "Uma mentira que resiste a escrutínio (vs Defesa Mental / Olho da Verdade).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "identidade-falsa",
@@ -2320,7 +2458,8 @@
     ],
     "aliases": [],
     "texto": "Sustenta uma persona inteira de forma crível por uma cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "camaleao-social",
@@ -2338,7 +2477,8 @@
     ],
     "aliases": [],
     "texto": "Mistura-se a qualquer grupo como se pertencesse a ele.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "roubar-rosto",
@@ -2356,7 +2496,8 @@
     ],
     "aliases": [],
     "texto": "Imita uma pessoa específica de forma convincente (voz, trejeitos, detalhes).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "mil-faces",
@@ -2374,7 +2515,8 @@
     ],
     "aliases": [],
     "texto": "Torna-se indistinguível de quem quiser; nem os íntimos percebem a troca.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "forca-de-carga",
@@ -2387,7 +2529,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "carrega/ergue o dobro do normal sem penalidade.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "levantamento-poderoso",
@@ -2404,7 +2547,8 @@
     ],
     "aliases": [],
     "texto": "ergue por um instante algo muito além do humano (viga, portão, pedra).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "arremesso",
@@ -2421,7 +2565,8 @@
     ],
     "aliases": [],
     "texto": "atira objetos pesados ou pessoas como arma.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "carregar-o-mundo",
@@ -2436,7 +2581,8 @@
     ],
     "aliases": [],
     "texto": "sustenta pesos imensos por longos períodos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "esmagamento",
@@ -2453,7 +2599,8 @@
     ],
     "aliases": [],
     "texto": "agarra e esmaga um objeto ou membro.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "arrancar",
@@ -2471,7 +2618,8 @@
     ],
     "aliases": [],
     "texto": "arranca árvores, postes e portões para usar como arma.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "forca-titanica",
@@ -2489,7 +2637,8 @@
     ],
     "aliases": [],
     "texto": "ergue carroças, estátuas e pedras de tonelada.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "atlas",
@@ -2507,7 +2656,8 @@
     ],
     "aliases": [],
     "texto": "sustenta ou arremessa coisas de escala absurda (uma muralha, um barco).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "demolidor",
@@ -2520,7 +2670,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+1 dado de dano contra objetos/estruturas; ignora parte da dureza.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "pancada-destrutiva",
@@ -2537,7 +2688,8 @@
     ],
     "aliases": [],
     "texto": "um golpe quebra portas, fechaduras e correntes.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "romper",
@@ -2554,7 +2706,8 @@
     ],
     "aliases": [],
     "texto": "força passagem por barreiras frágeis sem perder o ritmo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "estilhacar",
@@ -2571,7 +2724,8 @@
     ],
     "aliases": [],
     "texto": "quebra escudos e armas inferiores ao bloquear.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "abrir-brecha",
@@ -2588,7 +2742,8 @@
     ],
     "aliases": [],
     "texto": "derruba uma parede fraca num golpe.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "esmaga-pedra",
@@ -2606,7 +2761,8 @@
     ],
     "aliases": [],
     "texto": "rompe pedra e portões reforçados.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "terremoto",
@@ -2624,7 +2780,8 @@
     ],
     "aliases": [],
     "texto": "bate o chão, abre fendas e derruba quem está perto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "quebra-muralhas",
@@ -2642,7 +2799,8 @@
     ],
     "aliases": [],
     "texto": "derruba muralhas e torres; abre caminho por qualquer fortificação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "pegada-de-ferro",
@@ -2655,7 +2813,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para agarrar e manter agarrões.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "imobilizar",
@@ -2672,7 +2831,8 @@
     ],
     "aliases": [],
     "texto": "prende o agarrado (ele gasta ação para escapar).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "projecao",
@@ -2689,7 +2849,8 @@
     ],
     "aliases": [],
     "texto": "arremessa um inimigo agarrado (dano + afasta).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "esmagar-nos-bracos",
@@ -2706,7 +2867,8 @@
     ],
     "aliases": [],
     "texto": "dano contínuo a quem está agarrado.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "escudo-de-carne",
@@ -2723,7 +2885,8 @@
     ],
     "aliases": [],
     "texto": "usa o agarrado como escudo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "dominar",
@@ -2741,7 +2904,8 @@
     ],
     "aliases": [],
     "texto": "controla o corpo do oponente (sufoca, quebra membros).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "aperto-esmagador",
@@ -2759,7 +2923,8 @@
     ],
     "aliases": [],
     "texto": "esmaga ossos e armaduras no abraço; parte armas e escudos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "abraco-do-tita",
@@ -2777,7 +2942,8 @@
     ],
     "aliases": [],
     "texto": "agarra e esmaga criaturas enormes; nada escapa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "equilibrio-felino",
@@ -2790,7 +2956,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "nunca cai de superfícies estreitas; +2 em Atletismo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "queda-de-gato",
@@ -2807,7 +2974,8 @@
     ],
     "aliases": [],
     "texto": "reduz muito o dano de quedas; cai de pé.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "escalada-veloz",
@@ -2824,7 +2992,8 @@
     ],
     "aliases": [],
     "texto": "sobe superfícies difíceis em velocidade de corrida.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "contorcao",
@@ -2841,7 +3010,8 @@
     ],
     "aliases": [],
     "texto": "passa por aberturas mínimas, escapa de amarras e grades.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "salto-acrobatico",
@@ -2858,7 +3028,8 @@
     ],
     "aliases": [],
     "texto": "piruetas que reposicionam e desviam.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "andar-de-aranha",
@@ -2876,7 +3047,8 @@
     ],
     "aliases": [],
     "texto": "escala qualquer superfície, até de cabeça para baixo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "imponderavel",
@@ -2894,7 +3066,8 @@
     ],
     "aliases": [],
     "texto": "equilibra-se sobre cordas, lâminas e fios; pousa sem peso.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "graca-sobrenatural",
@@ -2912,7 +3085,8 @@
     ],
     "aliases": [],
     "texto": "move-se por qualquer terreno como se a gravidade não o tocasse.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "dedos-ageis",
@@ -2925,7 +3099,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em prestidigitação, fechaduras e furto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "truque-de-mao",
@@ -2942,7 +3117,8 @@
     ],
     "aliases": [],
     "texto": "some/planta/rouba objetos pequenos sem ser visto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "desarme-rapido",
@@ -2959,7 +3135,8 @@
     ],
     "aliases": [],
     "texto": "tira um objeto/arma da mão do alvo num gesto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "maos-borradas",
@@ -2976,7 +3153,8 @@
     ],
     "aliases": [],
     "texto": "manipula vários objetos rápido demais para acompanhar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "toque-preciso",
@@ -2993,7 +3171,8 @@
     ],
     "aliases": [],
     "texto": "desarma armadilhas e abre qualquer fechadura mundana num instante.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "mil-dedos",
@@ -3011,7 +3190,8 @@
     ],
     "aliases": [],
     "texto": "várias ações manuais finas numa única ação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "maos-impossiveis",
@@ -3029,7 +3209,8 @@
     ],
     "aliases": [],
     "texto": "proezas que desafiam a física (pegar flechas no ar, refazer um mecanismo num piscar).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "mao-do-prestidigitador-divino",
@@ -3047,7 +3228,8 @@
     ],
     "aliases": [],
     "texto": "manipula tudo ao alcance das mãos com velocidade sobre-humana absoluta.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "folego-profundo",
@@ -3060,7 +3242,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Recupera **+2× Vigor** de Fôlego por Tick — o dobro da recuperação normal.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "segundo-vento",
@@ -3077,7 +3260,8 @@
     ],
     "aliases": [],
     "texto": "Uma vez por cena, recupere **metade do Fôlego máximo** numa ação **rápida (Speed 1)** — o respiro que quase não custa tempo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "marcha-forcada",
@@ -3092,7 +3276,8 @@
     ],
     "aliases": [],
     "texto": "Fora de combate, corrida e marcha forçada custam **metade** do Fôlego; não acumula exaustão em jornadas longas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "incansavel",
@@ -3107,7 +3292,8 @@
     ],
     "aliases": [],
     "texto": "Ignora a penalidade de **−1d6** do cansaço: age sem perda mesmo abaixo de 25% do Fôlego.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "pulmoes-de-ferro",
@@ -3124,7 +3310,8 @@
     ],
     "aliases": [],
     "texto": "**Postura:** enquanto sustentada, cada golpe custa o Fôlego de **uma classe mais leve** (pesado→médio, médio→leve). Também prende a respiração por minutos: resiste a fumaça e gases.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "sem-limites",
@@ -3142,7 +3329,8 @@
     ],
     "aliases": [],
     "texto": "**Postura:** enquanto sustentada, o **Esforço custa um grau de duplicação a menos** — o +1d6 sai pelo custo normal do golpe; o +2d6 dobra só uma vez. Age no auge por horas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "vigor-inesgotavel",
@@ -3157,7 +3345,8 @@
     ],
     "aliases": [],
     "texto": "Sua reserva **nunca para de se renovar**: você recupera Vigor de Fôlego por Tick **mesmo enquanto ataca ou corre**. Na prática, golpes leves passam a se pagar sozinhos e só os pesados e o Esforço ainda drenam. Dispensa sono e comida por longos períodos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "coracao-eterno",
@@ -3175,7 +3364,8 @@
     ],
     "aliases": [],
     "texto": "Por uma cena, seu **Fôlego não diminui**: ataque, force o golpe e corra à vontade sem gastar nada. O coração que não para.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "estomago-de-ferro",
@@ -3188,7 +3378,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 contra venenos e comida estragada.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "resistir-doenca",
@@ -3203,7 +3394,8 @@
     ],
     "aliases": [],
     "texto": "raramente adoece.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "aclimatacao",
@@ -3220,7 +3412,8 @@
     ],
     "aliases": [],
     "texto": "adapta-se rápido a calor, frio e altitude.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "sangue-limpo",
@@ -3237,7 +3430,8 @@
     ],
     "aliases": [],
     "texto": "neutraliza um veneno já no corpo; expele toxinas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "pele-resiliente",
@@ -3252,7 +3446,8 @@
     ],
     "aliases": [],
     "texto": "suporta temperaturas e ambientes que matariam outros.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "imunidade",
@@ -3270,7 +3465,8 @@
     ],
     "aliases": [],
     "texto": "imune a venenos e doenças mundanos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "corpo-inospito",
@@ -3288,7 +3484,8 @@
     ],
     "aliases": [],
     "texto": "sobrevive em ambientes letais (sem ar, submerso, veneno no ar) por um tempo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "sangue-divino",
@@ -3306,7 +3503,8 @@
     ],
     "aliases": [],
     "texto": "imune a quase todo veneno, doença e ambiente; o corpo rejeita a corrupção.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "aguentar-firme",
@@ -3319,7 +3517,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "ignora a penalidade do estado Machucado.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "cerrar-os-dentes",
@@ -3336,7 +3535,8 @@
     ],
     "aliases": [],
     "texto": "ignora a penalidade de ferimento por uma ação crucial.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "de-pe",
@@ -3353,7 +3553,8 @@
     ],
     "aliases": [],
     "texto": "levanta-se na hora ao ser derrubado, sem gastar a ação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "teimosia",
@@ -3368,7 +3569,8 @@
     ],
     "aliases": [],
     "texto": "reduz todas as penalidades de ferimento em 1.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "nao-vou-cair",
@@ -3385,7 +3587,8 @@
     ],
     "aliases": [],
     "texto": "ao chegar a 0 PV, fica de pé por mais um turno.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "vontade-de-viver",
@@ -3403,7 +3606,8 @@
     ],
     "aliases": [],
     "texto": "age normalmente mesmo gravemente ferido por uma cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "ultimo-suspiro",
@@ -3421,7 +3625,8 @@
     ],
     "aliases": [],
     "texto": "no limiar da morte, realiza uma última ação heroica plena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "recusa-a-morte",
@@ -3439,7 +3644,8 @@
     ],
     "aliases": [],
     "texto": "adia a própria morte por pura vontade até terminar o que precisa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "voz-de-lider",
@@ -3452,7 +3658,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "aliados que o seguem ganham +1 de moral; ordens claras.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "coordenar",
@@ -3469,7 +3676,8 @@
     ],
     "aliases": [],
     "texto": "um aliado age no melhor momento (concede reação/reposiciona iniciativa).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "reunir",
@@ -3486,7 +3694,8 @@
     ],
     "aliases": [],
     "texto": "reagrupa aliados abalados, removendo medo leve.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "formacao",
@@ -3503,7 +3712,8 @@
     ],
     "aliases": [],
     "texto": "aliados coordenados ganham +1 de Defesa e de ataque juntos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "grito-de-guerra",
@@ -3520,7 +3730,8 @@
     ],
     "aliases": [],
     "texto": "inspira investida (+1d6 de dano num avanço).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "maestria-de-campo",
@@ -3538,7 +3749,8 @@
     ],
     "aliases": [],
     "texto": "comanda um grupo como uma unidade; concede ações coordenadas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "general",
@@ -3556,7 +3768,8 @@
     ],
     "aliases": [],
     "texto": "dirige uma tropa com eficiência sobre-humana; reverte uma derrota iminente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "estandarte-eterno",
@@ -3574,7 +3787,8 @@
     ],
     "aliases": [],
     "texto": "torna-se o símbolo da batalha; um exército luta como um só corpo enquanto você estiver de pé.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "presenca-cenica",
@@ -3587,7 +3801,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em performance; prende atenção.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "tocar-a-alma",
@@ -3604,7 +3819,8 @@
     ],
     "aliases": [],
     "texto": "a plateia sente uma emoção escolhida.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "distrair",
@@ -3621,7 +3837,8 @@
     ],
     "aliases": [],
     "texto": "a apresentação desvia a atenção de todos por um momento.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "inspiracao-artistica",
@@ -3638,7 +3855,8 @@
     ],
     "aliases": [],
     "texto": "dá aos ouvintes um bônus duradouro (coragem/foco) por uma cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "encantar-a-multidao",
@@ -3655,7 +3873,8 @@
     ],
     "aliases": [],
     "texto": "a plateia fica absorta enquanto você se apresenta.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "obra-prima",
@@ -3673,7 +3892,8 @@
     ],
     "aliases": [],
     "texto": "performance que comove e muda atitudes.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "voz-que-cura",
@@ -3691,7 +3911,8 @@
     ],
     "aliases": [],
     "texto": "a arte restaura o espírito — remove trauma, medo, desespero.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "cancao-imortal",
@@ -3709,7 +3930,8 @@
     ],
     "aliases": [],
     "texto": "move massas às lágrimas ou à fúria; ecoa e inspira por gerações.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "centelha",
@@ -3722,7 +3944,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para incitar, provocar e inflamar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "incitar",
@@ -3739,7 +3962,8 @@
     ],
     "aliases": [],
     "texto": "provoca raiva/paixão, empurrando à ação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "inflamar",
@@ -3756,7 +3980,8 @@
     ],
     "aliases": [],
     "texto": "acende o ânimo de aliados (fervor temporário).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "discurso-ardente",
@@ -3773,7 +3998,8 @@
     ],
     "aliases": [],
     "texto": "arrebata uma multidão para uma causa por uma cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "provocacao",
@@ -3790,7 +4016,8 @@
     ],
     "aliases": [],
     "texto": "força um inimigo a agir por impulso.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "fogo-nos-coracoes",
@@ -3808,7 +4035,8 @@
     ],
     "aliases": [],
     "texto": "inflama uma multidão à revolta ou ao fervor.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "pavio-curto",
@@ -3826,7 +4054,8 @@
     ],
     "aliases": [],
     "texto": "incendeia paixões a ponto de mover cidades (motim, levante).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "incendio",
@@ -3844,7 +4073,8 @@
     ],
     "aliases": [],
     "texto": "suas palavras espalham um fervor que consome reinos; uma fagulha vira revolução.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "trama",
@@ -3857,7 +4087,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em intrigas e em ler fraquezas sociais.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "plantar-ideia",
@@ -3874,7 +4105,8 @@
     ],
     "aliases": [],
     "texto": "insinua uma ideia que o alvo crê ser sua.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "cunha",
@@ -3891,7 +4123,8 @@
     ],
     "aliases": [],
     "texto": "semeia desconfiança entre dois aliados.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "chantagem",
@@ -3908,7 +4141,8 @@
     ],
     "aliases": [],
     "texto": "usa uma alavanca para dobrar a vontade de alguém.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "rede-de-favores",
@@ -3925,7 +4159,8 @@
     ],
     "aliases": [],
     "texto": "cultiva uma teia de contatos e dívidas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "virar-o-jogo",
@@ -3943,7 +4178,8 @@
     ],
     "aliases": [],
     "texto": "vira facções e pessoas umas contra as outras numa cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "mestre-dos-cordeis",
@@ -3961,7 +4197,8 @@
     ],
     "aliases": [],
     "texto": "orquestra intrigas de longo alcance; manipula uma corte nos bastidores.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "teia",
@@ -3979,7 +4216,8 @@
     ],
     "aliases": [],
     "texto": "nada acontece numa região sem ser parte do seu plano; reis dançam sem saber.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "lingua-de-prata",
@@ -3992,7 +4230,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em barganha e meias-verdades.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "torcer",
@@ -4009,7 +4248,8 @@
     ],
     "aliases": [],
     "texto": "reinterpreta uma frase/acordo a seu favor.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "pechinchar",
@@ -4026,7 +4266,8 @@
     ],
     "aliases": [],
     "texto": "obtém condições muito melhores numa negociação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "contrato-capcioso",
@@ -4043,7 +4284,8 @@
     ],
     "aliases": [],
     "texto": "fecha acordos com armadilhas que o alvo não percebe.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "confundir",
@@ -4060,7 +4302,8 @@
     ],
     "aliases": [],
     "texto": "emaranha o alvo em lógica até ele concordar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "palavras-de-veludo",
@@ -4078,7 +4321,8 @@
     ],
     "aliases": [],
     "texto": "convence alguém de quase qualquer coisa razoável (vs Defesa Mental).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "pacto-inquebravel",
@@ -4096,7 +4340,8 @@
     ],
     "aliases": [],
     "texto": "sela acordos que o alvo se sente compelido a cumprir.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "voz-da-serpente",
@@ -4114,7 +4359,8 @@
     ],
     "aliases": [],
     "texto": "dobra até os céticos; faz o mal parecer bem e a mentira, verdade.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "sussurro",
@@ -4127,7 +4373,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para insinuar e plantar emoções negativas sutis.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "semear-duvida",
@@ -4144,7 +4391,8 @@
     ],
     "aliases": [],
     "texto": "faz o alvo duvidar de quem confiava.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "inquietar",
@@ -4161,7 +4409,8 @@
     ],
     "aliases": [],
     "texto": "deixa o alvo nervoso, com a sensação de ser observado.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "paranoia",
@@ -4178,7 +4427,8 @@
     ],
     "aliases": [],
     "texto": "instala suspeita corrosiva (vs Defesa Mental).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "boato",
@@ -4195,7 +4445,8 @@
     ],
     "aliases": [],
     "texto": "espalha um rumor que mina reputações.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "veneno-na-mente",
@@ -4213,7 +4464,8 @@
     ],
     "aliases": [],
     "texto": "corrói a confiança e a sanidade de um alvo ao longo da cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "pesadelo-acordado",
@@ -4231,7 +4483,8 @@
     ],
     "aliases": [],
     "texto": "assombra o alvo com medos e visões; quebra a compostura dele.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "coro-de-sussurros",
@@ -4249,7 +4502,8 @@
     ],
     "aliases": [],
     "texto": "semeia pânico e desconfiança numa multidão; vira aliados em inimigos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "sugestao",
@@ -4264,7 +4518,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "planta um impulso simples que o alvo tende a seguir (vs Defesa Mental).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ler-desejos",
@@ -4279,7 +4534,8 @@
     ],
     "aliases": [],
     "texto": "percebe o que o alvo quer e teme.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "empurrao-sutil",
@@ -4296,7 +4552,8 @@
     ],
     "aliases": [],
     "texto": "inclina uma decisão indecisa na direção que você quer.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "compulsao",
@@ -4313,7 +4570,8 @@
     ],
     "aliases": [],
     "texto": "impõe um desejo passageiro que o alvo racionaliza como seu.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "fios-invisiveis",
@@ -4330,7 +4588,8 @@
     ],
     "aliases": [],
     "texto": "guia o comportamento do alvo sutilmente por uma cena.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "titereiro",
@@ -4348,7 +4607,8 @@
     ],
     "aliases": [],
     "texto": "controla as ações do alvo por um curto tempo (resistível com Vontade).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "reescrever-desejos",
@@ -4366,7 +4626,8 @@
     ],
     "aliases": [],
     "texto": "altera o que o alvo deseja de forma duradoura.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "marionete",
@@ -4384,7 +4645,8 @@
     ],
     "aliases": [],
     "texto": "domina um alvo por completo, corpo e vontade, como um fantoche.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "magnetismo",
@@ -4397,7 +4659,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 quando a aparência importa; olhares se voltam a você.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "seducao",
@@ -4414,7 +4677,8 @@
     ],
     "aliases": [],
     "texto": "desperta atração num alvo receptivo (vs Defesa Mental).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "desarmar-com-charme",
@@ -4431,7 +4695,8 @@
     ],
     "aliases": [],
     "texto": "a beleza baixa a guarda do alvo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "encanto-irresistivel",
@@ -4448,7 +4713,8 @@
     ],
     "aliases": [],
     "texto": "cativa uma sala inteira; todos querem sua atenção.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "olhar-cativante",
@@ -4465,7 +4731,8 @@
     ],
     "aliases": [],
     "texto": "prende o alvo num momento de fascínio.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "beleza-inebriante",
@@ -4483,7 +4750,8 @@
     ],
     "aliases": [],
     "texto": "o alvo, encantado, cede a pedidos razoáveis.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "visao-divina",
@@ -4501,7 +4769,8 @@
     ],
     "aliases": [],
     "texto": "inspira devoção quase religiosa; multidões se rendem ao seu charme.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "beleza-que-move-o-mundo",
@@ -4519,7 +4788,8 @@
     ],
     "aliases": [],
     "texto": "incomparável; quem o vê faria qualquer coisa por um sorriso seu.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "porte",
@@ -4532,7 +4802,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para impor respeito; é levado a sério de imediato.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "olhar-severo",
@@ -4549,7 +4820,8 @@
     ],
     "aliases": [],
     "texto": "um olhar faz um alvo hesitar ou recuar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "imponencia",
@@ -4566,7 +4838,8 @@
     ],
     "aliases": [],
     "texto": "sua presença domina o ambiente; conversas silenciam quando você entra.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "aura-de-comando",
@@ -4583,7 +4856,8 @@
     ],
     "aliases": [],
     "texto": "subordinados e fracos obedecem instintivamente sua presença.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "encarar-a-morte",
@@ -4600,7 +4874,8 @@
     ],
     "aliases": [],
     "texto": "seu semblante inspira medo real (vs Defesa Mental).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "presenca-avassaladora",
@@ -4618,7 +4893,8 @@
     ],
     "aliases": [],
     "texto": "inimigos comuns congelam ou fogem diante de você.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "majestade",
@@ -4636,7 +4912,8 @@
     ],
     "aliases": [],
     "texto": "irradia autoridade divina; multidões se ajoelham ou tremem.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "semblante-de-deus",
@@ -4654,7 +4931,8 @@
     ],
     "aliases": [],
     "texto": "sua mera presença impõe reverência ou terror absolutos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "disfarce",
@@ -4667,7 +4945,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para se disfarçar com adereços.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "mudar-de-cara",
@@ -4684,7 +4963,8 @@
     ],
     "aliases": [],
     "texto": "altera postura, expressão e voz para parecer outra pessoa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "misturar-se",
@@ -4701,7 +4981,8 @@
     ],
     "aliases": [],
     "texto": "passa por \"mais um da multidão\".",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "segunda-pele",
@@ -4718,7 +4999,8 @@
     ],
     "aliases": [],
     "texto": "muda a própria aparência física por uma cena, sem adereços.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "rosto-comum",
@@ -4735,7 +5017,8 @@
     ],
     "aliases": [],
     "texto": "torna-se esquecível; testemunhas não conseguem descrevê-lo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "impostor",
@@ -4753,7 +5036,8 @@
     ],
     "aliases": [],
     "texto": "imita a aparência de uma pessoa específica de forma convincente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "forma-fluida",
@@ -4771,7 +5055,8 @@
     ],
     "aliases": [],
     "texto": "altera o corpo livremente — altura, idade, feições — à vontade.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "mil-rostos",
@@ -4789,7 +5074,8 @@
     ],
     "aliases": [],
     "texto": "assume qualquer aparência humana perfeitamente; ninguém jamais o reconhece.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "aura-sutil",
@@ -4802,7 +5088,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "emana uma emoção tênue (conforto/desconforto) a quem está perto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "irradiar-calma",
@@ -4819,7 +5106,8 @@
     ],
     "aliases": [],
     "texto": "acalma pessoas e animais ao redor.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "irradiar-temor",
@@ -4836,7 +5124,8 @@
     ],
     "aliases": [],
     "texto": "incute medo leve nos próximos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "campo-emocional",
@@ -4853,7 +5142,8 @@
     ],
     "aliases": [],
     "texto": "impõe uma emoção a todos numa área por um tempo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "presenca-tangivel",
@@ -4870,7 +5160,8 @@
     ],
     "aliases": [],
     "texto": "a aura afeta até os resistentes.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "mare-emocional",
@@ -4888,7 +5179,8 @@
     ],
     "aliases": [],
     "texto": "domina o clima emocional de uma multidão.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "aura-avassaladora",
@@ -4906,7 +5198,8 @@
     ],
     "aliases": [],
     "texto": "a emoção irradiada torna-se quase irresistível numa grande área.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "aura-divina",
@@ -4924,7 +5217,8 @@
     ],
     "aliases": [],
     "texto": "sua presença banha uma região inteira na emoção que escolher.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "face-neutra",
@@ -4937,7 +5231,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "suas emoções nunca transparecem; +2 em blefe.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "esconder-sentir",
@@ -4954,7 +5249,8 @@
     ],
     "aliases": [],
     "texto": "oculta uma emoção/reação no momento.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "mentira-de-olhos",
@@ -4971,7 +5267,8 @@
     ],
     "aliases": [],
     "texto": "mente sem nenhum sinal físico (vs Olho da Verdade).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "inescrutavel",
@@ -4986,7 +5283,8 @@
     ],
     "aliases": [],
     "texto": "ninguém lê suas intenções; imune a leitura corporal mundana.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "calma-absoluta",
@@ -5003,7 +5301,8 @@
     ],
     "aliases": [],
     "texto": "mantém compostura perfeita sob tortura, terror ou provocação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "veu-da-mente",
@@ -5021,7 +5320,8 @@
     ],
     "aliases": [],
     "texto": "esconde pensamentos e intenções até de poderes que leem a mente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "mascara-perfeita",
@@ -5039,7 +5339,8 @@
     ],
     "aliases": [],
     "texto": "finge qualquer estado interior de forma indetectável, mesmo para semideuses.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "vazio",
@@ -5057,7 +5358,8 @@
     ],
     "aliases": [],
     "texto": "torna-se ilegível e impenetrável; nem a magia mais sutil decifra o que você sente ou trama.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "vigilancia",
@@ -5070,7 +5372,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em Prontidão; difícil de surpreender.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "sentir-perigo",
@@ -5087,7 +5390,8 @@
     ],
     "aliases": [],
     "texto": "pressente uma ameaça oculta nas redondezas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "olho-atento",
@@ -5104,7 +5408,8 @@
     ],
     "aliases": [],
     "texto": "nota o que está fora do lugar (armadilhas, espreita).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "nunca-desprevenido",
@@ -5119,7 +5424,8 @@
     ],
     "aliases": [],
     "texto": "age normalmente em emboscadas; não pode ser pego de surpresa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "varredura",
@@ -5136,7 +5442,8 @@
     ],
     "aliases": [],
     "texto": "num relance, mapeia ameaças, saídas e vantagens.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "sexto-sentido",
@@ -5154,7 +5461,8 @@
     ],
     "aliases": [],
     "texto": "sente intenções hostis antes que ocorram; reage a ataques invisíveis.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "olhos-por-toda-parte",
@@ -5172,7 +5480,8 @@
     ],
     "aliases": [],
     "texto": "percebe tudo numa grande área ao mesmo tempo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "guardiao-incansavel",
@@ -5190,7 +5499,8 @@
     ],
     "aliases": [],
     "texto": "vigilância perfeita e constante; nada o pega desprevenido, nem o sobrenatural.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "rastreador",
@@ -5203,7 +5513,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para rastrear e ler sinais.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "faro",
@@ -5220,7 +5531,8 @@
     ],
     "aliases": [],
     "texto": "segue um cheiro ou trilha mesmo tênue.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ler-o-rastro",
@@ -5237,7 +5549,8 @@
     ],
     "aliases": [],
     "texto": "deduz o que houve por marcas (quantos, quando, para onde).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "trilha-fria",
@@ -5254,7 +5567,8 @@
     ],
     "aliases": [],
     "texto": "segue rastros antigos ou apagados.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "predador",
@@ -5271,7 +5585,8 @@
     ],
     "aliases": [],
     "texto": "aproxima-se da presa sem ser notado; conhece seus hábitos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "caca-implacavel",
@@ -5289,7 +5604,8 @@
     ],
     "aliases": [],
     "texto": "persegue um alvo por qualquer terreno, dias a fio.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "sentidos-de-cacada",
@@ -5307,7 +5623,8 @@
     ],
     "aliases": [],
     "texto": "localiza uma presa específica à distância; sente sua presença.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "olho-do-cacador-divino",
@@ -5325,7 +5642,8 @@
     ],
     "aliases": [],
     "texto": "nada que você caça escapa, onde quer que se esconda.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "ler-pessoas",
@@ -5338,7 +5656,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para perceber emoções e mentiras.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "farejar-mentira",
@@ -5355,7 +5674,8 @@
     ],
     "aliases": [],
     "texto": "sente quando alguém mente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ver-atraves",
@@ -5372,7 +5692,8 @@
     ],
     "aliases": [],
     "texto": "nota disfarces e fingimentos malfeitos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "olho-critico",
@@ -5389,7 +5710,8 @@
     ],
     "aliases": [],
     "texto": "percebe falsificações e segundas intenções.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "desmascarar",
@@ -5406,7 +5728,8 @@
     ],
     "aliases": [],
     "texto": "revela um disfarce ou mentira mundana (vs Camaleão/Máscara).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "verdade-nua",
@@ -5424,7 +5747,8 @@
     ],
     "aliases": [],
     "texto": "vê através de ilusões e enganos, inclusive alguns mágicos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "olho-que-nao-erra",
@@ -5442,7 +5766,8 @@
     ],
     "aliases": [],
     "texto": "nenhuma mentira ou disfarce o engana.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "visao-da-verdade",
@@ -5460,7 +5785,8 @@
     ],
     "aliases": [],
     "texto": "percebe a verdade absoluta de uma pessoa ou situação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "sensivel",
@@ -5473,7 +5799,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "pressente o sobrenatural próximo (magia, espíritos, lugares de poder).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ver-auras",
@@ -5490,7 +5817,8 @@
     ],
     "aliases": [],
     "texto": "percebe o estado/natureza de alguém como cores.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "sentir-o-veu",
@@ -5507,7 +5835,8 @@
     ],
     "aliases": [],
     "texto": "nota presenças invisíveis e ecos do passado num lugar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "olho-espiritual",
@@ -5524,7 +5853,8 @@
     ],
     "aliases": [],
     "texto": "vê espíritos, encantamentos ativos e marcas mágicas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "ler-o-lugar",
@@ -5541,7 +5871,8 @@
     ],
     "aliases": [],
     "texto": "percebe o que aconteceu num local.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "comunhao",
@@ -5559,7 +5890,8 @@
     ],
     "aliases": [],
     "texto": "comunica-se com espíritos e percebe o mundo invisível.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "olhar-alem",
@@ -5577,7 +5909,8 @@
     ],
     "aliases": [],
     "texto": "enxerga planos sobrepostos ao mundo; lê a teia de essência.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "olho-do-vidente",
@@ -5595,7 +5928,8 @@
     ],
     "aliases": [],
     "texto": "percebe a verdadeira natureza espiritual de tudo; nada do oculto lhe é velado.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "vasto-saber",
@@ -5608,7 +5942,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em Conhecimentos; sabe um pouco de tudo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "lembrar",
@@ -5625,7 +5960,8 @@
     ],
     "aliases": [],
     "texto": "recorda um fato relevante que estudou.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "poliglota",
@@ -5640,7 +5976,8 @@
     ],
     "aliases": [],
     "texto": "compreende e aprende idiomas com facilidade espantosa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "biblioteca-viva",
@@ -5657,7 +5994,8 @@
     ],
     "aliases": [],
     "texto": "conhecimento profundo em muitas áreas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "decifrar",
@@ -5674,7 +6012,8 @@
     ],
     "aliases": [],
     "texto": "lê escritas antigas, cifras e línguas mortas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "sabio",
@@ -5692,7 +6031,8 @@
     ],
     "aliases": [],
     "texto": "domina saberes raros; conecta conhecimentos distantes.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "mente-universal",
@@ -5710,7 +6050,8 @@
     ],
     "aliases": [],
     "texto": "sabe quase tudo que a civilização registrou.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "conhecimento-absoluto",
@@ -5728,7 +6069,8 @@
     ],
     "aliases": [],
     "texto": "qualquer saber humano está ao seu alcance; lê qualquer língua na hora.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "maos-habeis",
@@ -5741,7 +6083,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em Ofícios; conserta e improvisa com facilidade.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "improvisar",
@@ -5758,7 +6101,8 @@
     ],
     "aliases": [],
     "texto": "constrói uma ferramenta/solução com o que tem.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "olho-de-artifice",
@@ -5775,7 +6119,8 @@
     ],
     "aliases": [],
     "texto": "avalia qualidade, função e fraqueza de um objeto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "obra-fina",
@@ -5792,7 +6137,8 @@
     ],
     "aliases": [],
     "texto": "cria itens de qualidade excepcional.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "reparo-veloz",
@@ -5809,7 +6155,8 @@
     ],
     "aliases": [],
     "texto": "conserta ou monta algo complexo numa fração do tempo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "mestre-artesao",
@@ -5827,7 +6174,8 @@
     ],
     "aliases": [],
     "texto": "cria obras-primas que parecem impossíveis.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "engenho-sobre-humano",
@@ -5845,7 +6193,8 @@
     ],
     "aliases": [],
     "texto": "constrói máquinas e autômatos além da técnica de sua era.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "forja-dos-deuses",
@@ -5863,7 +6212,8 @@
     ],
     "aliases": [],
     "texto": "cria artefatos lendários e maravilhas que desafiam o possível.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "mente-tatica",
@@ -5876,7 +6226,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em Tática; lê o campo num instante.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "antecipar",
@@ -5893,7 +6244,8 @@
     ],
     "aliases": [],
     "texto": "prevê o próximo movimento de um oponente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "plano",
@@ -5910,7 +6262,8 @@
     ],
     "aliases": [],
     "texto": "traça um plano com etapas e contingências.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ler-a-batalha",
@@ -5927,7 +6280,8 @@
     ],
     "aliases": [],
     "texto": "identifica o ponto fraco de uma força e o momento de agir.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "emboscada",
@@ -5944,7 +6298,8 @@
     ],
     "aliases": [],
     "texto": "prepara armadilhas e posições de grande vantagem inicial.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "grande-estrategista",
@@ -5962,7 +6317,8 @@
     ],
     "aliases": [],
     "texto": "orquestra uma batalha para virar o jogo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "xeque-mate",
@@ -5980,7 +6336,8 @@
     ],
     "aliases": [],
     "texto": "prevê e contrapõe os planos do inimigo passos à frente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "mente-do-general-divino",
@@ -5998,7 +6355,8 @@
     ],
     "aliases": [],
     "texto": "conduz guerras como um jogo já vencido.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "olhar-investigativo",
@@ -6011,7 +6369,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 em Investigação; nota o que outros não veem.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "pista",
@@ -6028,7 +6387,8 @@
     ],
     "aliases": [],
     "texto": "identifica um indício relevante.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "conectar",
@@ -6045,7 +6405,8 @@
     ],
     "aliases": [],
     "texto": "liga dois fatos numa dedução.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "reconstituir",
@@ -6062,7 +6423,8 @@
     ],
     "aliases": [],
     "texto": "reconstrói o que houve num local pelos vestígios.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "interrogar",
@@ -6079,7 +6441,8 @@
     ],
     "aliases": [],
     "texto": "extrai a verdade lendo reações e inconsistências.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "detetive",
@@ -6097,7 +6460,8 @@
     ],
     "aliases": [],
     "texto": "resolve um mistério complexo juntando as peças.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "nada-escapa",
@@ -6115,7 +6479,8 @@
     ],
     "aliases": [],
     "texto": "percebe o detalhe crucial que ninguém viu; desvenda conspirações.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "a-verdade-revelada",
@@ -6133,7 +6498,8 @@
     ],
     "aliases": [],
     "texto": "de pistas mínimas, reconstrói a verdade completa de qualquer evento.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "mente-rapida",
@@ -6146,7 +6512,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 de Iniciativa; pensa veloz sob pressão.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "reacao",
@@ -6163,7 +6530,8 @@
     ],
     "aliases": [],
     "texto": "responde a um evento súbito sem ser pego de surpresa.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "decisao-instantanea",
@@ -6180,7 +6548,8 @@
     ],
     "aliases": [],
     "texto": "toma a melhor decisão num átimo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "reflexos-de-raio",
@@ -6195,7 +6564,8 @@
     ],
     "aliases": [],
     "texto": "age sempre entre os primeiros.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "pensar-e-agir",
@@ -6212,7 +6582,8 @@
     ],
     "aliases": [],
     "texto": "realiza uma ação mental e uma física quase simultâneas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "tempo-de-sobra",
@@ -6230,7 +6601,8 @@
     ],
     "aliases": [],
     "texto": "o caos parece em câmera lenta; planeja no meio da ação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "mente-acelerada",
@@ -6248,7 +6620,8 @@
     ],
     "aliases": [],
     "texto": "reage tão rápido que age várias vezes enquanto outros pensam.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "reflexo-divino",
@@ -6266,7 +6639,8 @@
     ],
     "aliases": [],
     "texto": "reage ao instantâneo; nada o pega despreparado.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "jeitinho",
@@ -6279,7 +6653,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para improvisar com o que há à mão.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "usar-o-cenario",
@@ -6296,7 +6671,8 @@
     ],
     "aliases": [],
     "texto": "transforma um elemento do ambiente em vantagem.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "virar-a-mesa",
@@ -6313,7 +6689,8 @@
     ],
     "aliases": [],
     "texto": "inverte uma situação ruim com uma ideia inesperada.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "solucao-genial",
@@ -6330,7 +6707,8 @@
     ],
     "aliases": [],
     "texto": "resolve um problema de um jeito que ninguém esperava.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "macgyver",
@@ -6347,7 +6725,8 @@
     ],
     "aliases": [],
     "texto": "monta um dispositivo improvisado funcional na hora.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "sempre-uma-saida",
@@ -6365,7 +6744,8 @@
     ],
     "aliases": [],
     "texto": "encontra escapatória até nas situações mais fechadas.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "improviso-magistral",
@@ -6383,7 +6763,8 @@
     ],
     "aliases": [],
     "texto": "vira qualquer cenário a seu favor com engenhosidade quase mágica.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "lei-de-murphy-reversa",
@@ -6401,7 +6782,8 @@
     ],
     "aliases": [],
     "texto": "o improvável dá certo nas suas mãos; transforma o caos em plano.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "ler-o-outro",
@@ -6414,7 +6796,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para deduzir personalidade e intenção.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "adivinhar",
@@ -6431,7 +6814,8 @@
     ],
     "aliases": [],
     "texto": "infere um fato sobre o alvo só de observá-lo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ler-tells",
@@ -6448,7 +6832,8 @@
     ],
     "aliases": [],
     "texto": "percebe os sinais que denunciam o próximo ato do alvo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "perfil",
@@ -6465,7 +6850,8 @@
     ],
     "aliases": [],
     "texto": "monta um perfil preciso após breve contato.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "antecipar-a-pessoa",
@@ -6482,7 +6868,8 @@
     ],
     "aliases": [],
     "texto": "prevê como o alvo reagirá a uma situação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "mente-aberta-como-livro",
@@ -6500,7 +6887,8 @@
     ],
     "aliases": [],
     "texto": "lê alguém tão bem que prevê escolhas e descobre segredos.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "conhecer-de-relance",
@@ -6518,7 +6906,8 @@
     ],
     "aliases": [],
     "texto": "num olhar, sabe quem é, o que quer e como agirá.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "leitor-de-almas",
@@ -6536,7 +6925,8 @@
     ],
     "aliases": [],
     "texto": "compreende qualquer pessoa por completo num instante.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "calma",
@@ -6549,7 +6939,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "+2 para manter o foco e resistir a distração e provocação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "foco",
@@ -6566,7 +6957,8 @@
     ],
     "aliases": [],
     "texto": "concentra-se totalmente, ignorando ruído, dor e medo por uma ação.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "centrar-se",
@@ -6583,7 +6975,8 @@
     ],
     "aliases": [],
     "texto": "recupera a compostura após um susto.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "mente-imperturbavel",
@@ -6598,7 +6991,8 @@
     ],
     "aliases": [],
     "texto": "+2 para resistir a manipulação, medo e efeitos mentais.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "transe",
@@ -6615,7 +7009,8 @@
     ],
     "aliases": [],
     "texto": "entra em meditação profunda (clareza, recuperação).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "fortaleza-mental",
@@ -6633,7 +7028,8 @@
     ],
     "aliases": [],
     "texto": "blindagem contra intrusões e domínios mentais (vs Fascinação/Marionete).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "vazio-sereno",
@@ -6651,7 +7047,8 @@
     ],
     "aliases": [],
     "texto": "mente intransponível; imune a quase toda influência mental e ilusão.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 4
   },
   {
     "id": "mente-de-diamante",
@@ -6669,7 +7066,8 @@
     ],
     "aliases": [],
     "texto": "paz e clareza absolutas; nada perturba, engana ou domina a sua mente.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 5
   },
   {
     "id": "farejar-a-mentira",
@@ -6686,7 +7084,8 @@
     ],
     "aliases": [],
     "texto": "Quando alguém lhe mente, role **Perspicácia + Empatia** vs a Defesa Social do alvo; o sucesso revela *que houve* mentira (não o conteúdo).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "ler-a-sala",
@@ -6703,7 +7102,8 @@
     ],
     "aliases": [],
     "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+2** nas jogadas sociais que explorem o que captou.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "brecha-emocional",
@@ -6720,7 +7120,8 @@
     ],
     "aliases": [],
     "texto": "Lê o que o alvo mais teme ou deseja; a próxima jogada de **Influência** alinhada a isso ganha **+1 grau de Margem** (ou +2 na soma).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "antecipar-o-gesto",
@@ -6738,7 +7139,8 @@
     ],
     "aliases": [],
     "texto": "Lê microssinais e antevê a ação do alvo: **+3 na Defesa** contra ele, ou sabe qual manobra social ele tentará antes que role.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "coracao-aberto",
@@ -6757,7 +7159,8 @@
     ],
     "aliases": [],
     "texto": "Por uma cena, lê intenções como livro aberto: nenhuma mentira ou disfarce social passa sem que você role para perceber, e sente as **motivações reais** de quem o encara.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "voz-calma",
@@ -6774,7 +7177,8 @@
     ],
     "aliases": [],
     "texto": "Ao ser alvo de intimidação ou provocação, **+3 na Defesa Mental** contra o efeito e não demonstra qualquer abalo.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "mascara-sustentada",
@@ -6791,7 +7195,8 @@
     ],
     "aliases": [],
     "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+2** para enganar sobre quem você é (soma à Compostura vs Perspicácia).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "aguas-profundas",
@@ -6806,7 +7211,8 @@
     ],
     "aliases": [],
     "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−2**.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "inabalavel",
@@ -6824,7 +7230,8 @@
     ],
     "aliases": [],
     "texto": "Ignora uma penalidade social ou de medo por rodada; provocações e Influência que **dependam de te abalar** falham se não superarem sua Compostura por 6+.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 2
   },
   {
     "id": "enigma-vivo",
@@ -6840,7 +7247,8 @@
     ],
     "aliases": [],
     "texto": "Você é fundamentalmente ilegível: leitura social e adivinhação mundana sobre suas intenções falham salvo Margem alta, e mantém quantas personas quiser sem esforço.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 3
   },
   {
     "id": "olhar-perspicaz",
@@ -6853,7 +7261,8 @@
     "prereq": [],
     "aliases": [],
     "texto": "Ao encontrar alguém, sente de imediato o **humor dominante** e se ele está hostil, amedrontado ou mentindo de forma escancarada — sem rolar.",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   },
   {
     "id": "semblante-fechado",
@@ -6866,6 +7275,7 @@
     "prereq": [],
     "aliases": [],
     "texto": "Sua face nada entrega: leituras sociais **casuais** falham automaticamente; ler você exige uma ação dedicada (vs sua Defesa Social).",
-    "pendente": false
+    "pendente": false,
+    "nivel": 1
   }
 ]

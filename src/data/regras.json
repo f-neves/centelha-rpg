@@ -9,12 +9,13 @@
   ],
   "escalaCentelha": [
     { "nivel": 0, "rotulo": "Mortal", "texto": "Pessoa comum, cerca de 95% da população. Sem acesso a Proezas ou Artes; vive do que treinou." },
-    { "nivel": 1, "rotulo": "Tocado", "texto": "A fagulha acendeu: refino sobre-humano, ainda dentro do possível. Proezas até a banda 3; ganha Energia e Mana." },
-    { "nivel": 2, "rotulo": "Herói", "texto": "Façanhas sobre-humanas que assombram mortais. Proezas até a banda 6." },
-    { "nivel": 3, "rotulo": "Grande herói", "texto": "Feitos conhecidos em muitos lugares; começa a quebrar as leis da física. Proezas até a banda 9." },
-    { "nivel": 4, "rotulo": "Lendário", "texto": "Há lendas sobre ele; mudou o rumo de nações. Proezas até a banda 12." },
-    { "nivel": 5, "rotulo": "Semideus", "texto": "Material de fábula, venerado como divindade. Proezas até a banda 15 (teto atual)." }
+    { "nivel": 1, "rotulo": "Tocado", "texto": "A fagulha acendeu: refino sobre-humano, ainda dentro do possível. Proezas de nível 1; ganha Energia e Mana." },
+    { "nivel": 2, "rotulo": "Herói", "texto": "Façanhas sobre-humanas que assombram mortais. Proezas até o nível 2." },
+    { "nivel": 3, "rotulo": "Grande herói", "texto": "Feitos conhecidos em muitos lugares; começa a quebrar as leis da física. Proezas até o nível 3." },
+    { "nivel": 4, "rotulo": "Lendário", "texto": "Há lendas sobre ele; mudou o rumo de nações. Proezas até o nível 4." },
+    { "nivel": 5, "rotulo": "Semideus", "texto": "Material de fábula, venerado como divindade. Proezas até o nível 5 (teto)." }
   ],
+  "modificadorProeza": { "porNivel": 3, "nota": "Bônus de Proeza a uma tarefa = Nível × 3 (N1 +3 … N5 +15), por cima do +2/ponto de Centelha em ataque e defesas." },
   "escalaVontade": [
     { "nivel": 1, "rotulo": "Frágil", "texto": "Vontade fraca: cede fácil ao medo, à manipulação e ao cansaço. O piso de quem nada investe." },
     { "nivel": 5, "rotulo": "Heroica", "texto": "Reserva sólida de um herói. Gasta-se para potencializar ações, resistir a medo/manipulação e conjurar." },

@@ -52,7 +52,7 @@ import RoladorDados from '../components/RoladorDados.astro';
   <h2 class="barh">Habilidades Secundárias <small>(nível×2 · esp. ×5)</small></h2>
   <div class="cols3" id="secondary"></div>
 
-  <h2 class="barh">Proezas &amp; Técnicas <small>(custo banda×5)</small></h2>
+  <h2 class="barh">Proezas &amp; Técnicas <small>(custo em XP)</small></h2>
   <div class="cam-tools"><button class="btn" id="cam-all">Expandir todos</button></div>
   <div class="cols3" id="tecnicas"></div>
 
@@ -108,7 +108,7 @@ import RoladorDados from '../components/RoladorDados.astro';
 
   const SEC_NOME: Record<string, string> = Object.fromEntries(SECONDARY.map(([n]) => [slug(n), n]));
   const TRACO_DESC: Record<string, string> = {
-    centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava as bandas das Proezas e dimensiona Energia e Mana.',
+    centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana.',
     willpower: 'Reserva de determinação (piso 1). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
     aparencia: 'Traço próprio (1–10, piso 1, ×2). Modificador direcional na jogada social: ajuda alinhado (seduzir/impressionar), atrapalha invertido (intimidar). A Compostura mascara parte dele.',
   };
@@ -252,7 +252,7 @@ import RoladorDados from '../components/RoladorDados.astro';
         const reasons: string[] = []; if (!centOk) reasons.push('Centelha ' + centReq(b)); if (miss.length) reasons.push('pré: ' + miss.map((p) => TECNOME[p]).join(', '));
         const title = reasons.length ? ` title="Requer ${reasons.join(' · ').replace(/"/g, '')}"` : '';
         const desc = TECTEXT[id] ? `<div class="tdesc">${mdBold(TECTEXT[id])}</div>` : '';
-        return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>b${b} · ${b * 5}</small></span>${desc}</div>`;
+        return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>N${Math.ceil(b / 3)} · ${b * 5}</small></span>${desc}</div>`;
       }).join('');
       return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Proeza ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
     };

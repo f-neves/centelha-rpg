@@ -23,7 +23,7 @@ import { url } from '../lib/site';
     const art = ids.filter((i) => i.startsWith('arte:')).map((i) => ART[i.slice(5)]).filter(Boolean);
     let h = '';
     if (tec.length) h += '<h2>Técnicas</h2><ul class="mk-list">' + tec.map((t) =>
-      `<li><a href="${base}/caminhos/${t.caminho}#${t.id}">${t.nome}</a> <span class="muted">B${t.banda}</span>
+      `<li><a href="${base}/caminhos/${t.caminho}#${t.id}">${t.nome}</a> <span class="muted">N${t.nivel}</span>
        <button class="rm" data-bm="tecnica:${t.id}" aria-label="Remover">★</button></li>`).join('') + '</ul>';
     if (art.length) h += '<h2>Artes</h2><ul class="mk-list">' + art.map((a) =>
       `<li><a href="${base}/arcano#${a.id}">${a.nome}</a> <span class="muted">${a.categoria}</span>

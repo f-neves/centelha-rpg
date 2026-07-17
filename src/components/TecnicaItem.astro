@@ -8,7 +8,7 @@ const prereqLink = (pid: string) => url(`caminhos/${T[pid]?.caminho?.id ?? ''}`)
 <div class="tec" id={t.id} data-permalink>
   <div class="tec-head">
     <span class="tec-nome cinzel">{t.nome}</span>
-    <span class="badge banda">Banda {t.banda}</span>
+    <span class="badge banda">Nível {t.nivel}</span>
     <span class={`badge ${t.tipo}`}>{custoTagTecnica(t)}</span>
     {t.pendente && <span class="badge pendente" title="Texto provisório — revisar">Rascunho</span>}
     <button class="bm" data-bm={`tecnica:${t.id}`} title="Marcar" aria-label={`Marcar ${t.nome}`}>☆</button>

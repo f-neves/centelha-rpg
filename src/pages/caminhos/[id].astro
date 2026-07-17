@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { url } from '../../lib/site';
-import { loadData, BANDA_LABEL, caminhoComArtigo } from '../../lib/data';
+import { loadData, TIER_NOME, caminhoComArtigo } from '../../lib/data';
 import TecnicaItem from '../../components/TecnicaItem.astro';
 import ArvoreTecnicas from '../../components/ArvoreTecnicas.astro';
 import Icone from '../../components/Icone.astro';
@@ -15,7 +15,7 @@ const { id } = Astro.props;
 const d = await loadData();
 const cam = d.C[id];
 const techs = d.porCaminho[id] ?? [];
-const bandas = Array.from({ length: 15 }, (_, i) => i + 1).map((b) => [b, techs.filter((t) => t.banda === b)]).filter(([, l]) => (l as any[]).length);
+const niveis = Array.from({ length: 5 }, (_, i) => i + 1).map((b) => [b, techs.filter((t) => t.nivel === b)]).filter(([, l]) => (l as any[]).length);
 const attr = d.A[cam.atributo.id];
 const titulo = caminhoComArtigo(cam.nome);
 ---
@@ -29,9 +29,9 @@ const titulo = caminhoComArtigo(cam.nome);
 
   <ArvoreTecnicas caminho={id} />
 
-  {bandas.map(([b, lista]) => (
+  {niveis.map(([b, lista]) => (
     <section>
-      <h2>Banda {b} · {BANDA_LABEL[b as number]}</h2>
+      <h2>Nível {b} · {TIER_NOME[(b as number) - 1]}</h2>
       {(lista as any[]).map((t) => <TecnicaItem t={t} T={d.T} destrava={d.destrava[t.id] ?? []} />)}
     </section>
   ))}

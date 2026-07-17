@@ -47,10 +47,10 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Força de Vontade | novo × 2 | 1→2 = 4 · 5→6 = 12 |
 | Aparência | novo × 2 | 1→2 = 4 · 7→8 = 16 |
 | Centelha | novo × 15 | 0→1 = 15 · 2→3 = 45 |
-| Técnica de Proeza | banda × 5 | banda 1 = 5 · banda 8 = 40 · banda 15 = 75 |
+| Técnica de Proeza | cresce com o poder | nível 1 ≈ 5–15 · nível 3 ≈ 35–45 · nível 5 ≈ 65–75 |
 | Nível de Arte (Arcano) | nível × 10 | nível 1 = 10 · nível 3 = 30 |
 
-<p class="muted">A Centelha cara reflete a raridade: alcançar Centelha 3 custa 90 XP acumulados; a Centelha 5, 225 — o trabalho de uma vida. Técnica de banda <em>N</em> exige Centelha ≥ ⌈N/3⌉; Arte de nível <em>N</em> exige Centelha &gt; 0 (qualquer fagulha) e Ocultismo ≥ N.</p>
+<p class="muted">A Centelha cara reflete a raridade: alcançar Centelha 3 custa 90 XP acumulados; a Centelha 5, 225 — o trabalho de uma vida. Técnica de nível <em>N</em> exige Centelha ≥ N; Arte de nível <em>N</em> exige Centelha &gt; 0 (qualquer fagulha) e Ocultismo ≥ N.</p>
 
 <div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha não se compra em massa: ela só sobe com <strong>permissão do Mestre</strong>, num marco de história ou feito maior. O XP paga o custo (× 15), mas o salto de tier — de herói a semideus — é uma conquista narrativa, não uma transação de balcão.</div>
 
@@ -91,7 +91,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Força de Vontade | 1 → 7 | 54 |
 | Aparência | 1 → 4 (normal) | 18 |
 | Centelha | 0 → 2 | 45 |
-| Técnicas | 23, de Olho de Águia, Sombra, Vento e outras (bandas 1 a 6) | 405 |
+| Técnicas | 23, de Olho de Águia, Sombra, Vento e outras (níveis 1 a 2) | 405 |
 | **Total** | | **1395** |
 
 <p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 11 · Def. Social 12 · Energia 24 · Mana 11 · Iniciativa 1d6+6. Sobram 5 XP. Mira firme à distância e some na sombra entre os tiros.</p>
@@ -108,7 +108,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Força de Vontade | 1 → 8 | 70 |
 | Aparência | 1 → 5 (normal) | 28 |
 | Centelha | 0 → 2 | 45 |
-| Técnicas | 25, das Proezas Comando, Pele de Pedra, Dança da Lâmina e outras (bandas 1 a 6) | 460 |
+| Técnicas | 25, das Proezas Comando, Pele de Pedra, Dança da Lâmina e outras (níveis 1 a 2) | 460 |
 | **Total** | | **1796** |
 
 <p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 18 · Def. Social 16 · Energia 28 · Mana 12 · Iniciativa 1d6+6. Sobram 4 XP. Uma líder de tropa que comba posturas defensivas e golpes precisos.</p>
@@ -126,7 +126,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Aparência | 1 → 5 (normal) | 28 |
 | Centelha | 0 → 3 | 90 |
 | Artes | Fogo, Forças, Proteção e Cura — todas no nível 3 | 240 |
-| Técnicas | 27, de Mente Afiada, Pele de Pedra, Dança da Lâmina e outras (bandas 1 a 9) | 670 |
+| Técnicas | 27, de Mente Afiada, Pele de Pedra, Dança da Lâmina e outras (níveis 1 a 3) | 670 |
 | **Total** | | **2395** |
 
 <p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 21 · Def. Social 20 · Energia 33 · Mana 15 · Iniciativa 1d6+6. Sobram 5 XP. Um semideus que tece Feitiços e lâmina no mesmo turno — note o Ocultismo 4 sustentando Artes de nível 3.</p>
@@ -150,7 +150,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Aparência | 1 → 4 (normal) | 18 |
 | Centelha | 0 → 1 | 15 |
 | Artes | Adivinhação, Forças, Proteção, Cura, Fogo **nível 4** · Fascinação 3 | 560 |
-| Técnicas | 6, de Mente Afiada e Erudito (bandas 1 a 3) | 60 |
+| Técnicas | 6, de Mente Afiada e Erudito (nível 1) | 60 |
 | **Total** | | **1782** |
 
 <p class="muted">Derivados: PV 34 · Defesa 14 · Def. Mental 11 · Def. Social 12 · Energia 24 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Sobram 18 XP. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong> — ele <em>conhece</em> magia mais funda que o Veil, mas seu tanque o obriga a escolher poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível. É o feiticeiro de torre, não o feiticeiro-guerreiro: poderoso quando prepara o terreno, frágil na queda de braço prolongada.</p>

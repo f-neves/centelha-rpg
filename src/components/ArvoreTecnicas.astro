@@ -4,7 +4,7 @@ const { caminho } = Astro.props;
 ---
 <section class="arvore" aria-label="Árvore de Técnicas">
   <h2>Árvore de Técnicas</h2>
-  <p class="muted" style="margin-top:-.3rem;font-size:.9rem">Cada linha é uma banda. As setas seguem os pré-requisitos. Clique num nó para ver o efeito e a cadeia de XP até ele.</p>
+  <p class="muted" style="margin-top:-.3rem;font-size:.9rem">Cada linha é uma faixa de poder. As setas seguem os pré-requisitos. Clique num nó para ver o efeito e a cadeia de XP até ele.</p>
   <div class="arv-wrap">
     <svg class="arv-edges" aria-hidden="true"></svg>
     <div class="arv-grid" data-caminho={caminho}></div>
@@ -127,7 +127,7 @@ const { caminho } = Astro.props;
       det.innerHTML =
         `<button class="x" aria-label="Fechar">✕</button>` +
         `<div class="cinzel" style="color:var(--accent);font-size:1.1rem">${t.nome}</div>` +
-        `<div style="margin:.2rem 0"><span class="badge banda">Banda ${t.banda}</span> <span class="badge ${t.tipo}">${fmtCusto(t) || t.tipo}</span>${t.pendente ? ' <span class="badge pendente">Rascunho</span>' : ''}</div>` +
+        `<div style="margin:.2rem 0"><span class="badge banda">Nível ${t.nivel}</span> <span class="badge ${t.tipo}">${fmtCusto(t) || t.tipo}</span>${t.pendente ? ' <span class="badge pendente">Rascunho</span>' : ''}</div>` +
         `<p>${t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</p>` + requer + unlocks +
         `<hr><p class="tec-meta"><strong>Planejador:</strong> a cadeia completa de pré-requisitos custa <strong>${xp} XP</strong> em Técnicas (${chain.size} no total).</p>` +
         `<p class="tec-meta">${cadeia}</p>`;
