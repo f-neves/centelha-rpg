@@ -11,7 +11,7 @@
     "texto": "O 1º deslocamento da cena, ou sacar/empunhar uma arma, custa **−2 Ticks** (mín. 1).",
     "pendente": false,
     "nivel": 1,
-    "efeito": "bonus"
+    "efeito": "estado"
   },
   {
     "id": "salto-do-grilo",
@@ -26,7 +26,7 @@
       "passo-veloz"
     ],
     "aliases": [],
-    "texto": "Triplica distância/altura de um salto; ignora terreno difícil; aterrissa de pé.",
+    "texto": "Quadruplica distância/altura de um salto; ignora terreno difícil; aterrissa de pé.",
     "pendente": false,
     "nivel": 2,
     "efeito": "salto"
@@ -133,7 +133,7 @@
       "corrida-vertical"
     ],
     "aliases": [],
-    "texto": "Numa ação, percorre distâncias enormes; supera cavalos a galope e flechas em velocidade de viagem.",
+    "texto": "Numa ação, percorre distâncias enormes (~×3 o normal); supera cavalos a galope e flechas em velocidade de viagem.",
     "pendente": false,
     "nivel": 3,
     "efeito": "velocidade"
@@ -152,7 +152,7 @@
       "esquiva-impossivel"
     ],
     "aliases": [],
-    "texto": "Vira um borrão: **−2d6** a disparos contra você; pode cruzar um campo de batalha num único Tick.",
+    "texto": "Vira um borrão: **−9** a disparos contra você; pode cruzar um campo de batalha num único Tick.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -241,7 +241,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Seus ataques de Força em corpo-a-corpo somam **+2 ao dano**.",
+    "texto": "Seus ataques de Força em corpo-a-corpo somam **+1d6 de dano**.",
     "pendente": false,
     "nivel": 1,
     "efeito": "dano"
@@ -259,7 +259,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Se acertar, **−2 na Defesa** do alvo até a próxima ação dele.",
+    "texto": "Se acertar, **−3 na Defesa** do alvo até a próxima ação dele.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -311,7 +311,7 @@
       "quebrar-guarda"
     ],
     "aliases": [],
-    "texto": "O golpe ignora a Absorção de Impacto da armadura do alvo.",
+    "texto": "O golpe ignora 4 de Absorção de Impacto da armadura do alvo.",
     "pendente": false,
     "nivel": 2,
     "efeito": "penetracao"
@@ -364,7 +364,7 @@
       "esmagar"
     ],
     "aliases": [],
-    "texto": "Suas mãos quebram pedra e metal; ataques ignoram a Absorção de armaduras mundanas (não a Absorção natural do alvo).",
+    "texto": "Suas mãos quebram pedra e metal; ataques ignoram 6 de Absorção de armaduras mundanas (não a Absorção natural do alvo).",
     "pendente": false,
     "nivel": 3,
     "efeito": "penetracao"
@@ -435,7 +435,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Ao dar ordens ou intimidar, a **Defesa Mental do alvo é −2**; as pessoas instintivamente o tratam como alguém a obedecer.",
+    "texto": "Ao dar ordens ou intimidar, a **Defesa Mental do alvo é −3**; as pessoas instintivamente o tratam como alguém a obedecer.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -526,7 +526,7 @@
       "presenca-imponente"
     ],
     "aliases": [],
-    "texto": "Ordens que também encorajam: aliados obedecem de bom grado e ganham **+1d6** na ação ordenada.",
+    "texto": "Ordens que também encorajam: aliados obedecem de bom grado e ganham **+6** na ação ordenada.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -687,7 +687,7 @@
       "instinto-de-sobrevivencia"
     ],
     "aliases": [],
-    "texto": "**+2 na Iniciativa**; 1×/cena, refaça uma rolagem de Defesa.",
+    "texto": "**+6 na Iniciativa**; 1×/cena, refaça uma rolagem de Defesa.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -831,7 +831,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+1 de Soak contra Impacto.",
+    "texto": "+2 de Soak contra Impacto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "soak"
@@ -883,7 +883,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "+2 de Soak (todos os tipos) e reduz as penalidades de ferimento em 1.",
+    "texto": "+4 de Soak (todos os tipos) e reduz as penalidades de ferimento em 1.",
     "pendente": false,
     "nivel": 2,
     "efeito": "soak"
@@ -969,7 +969,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Gastando uma ação para mirar, +2 ao ataque à distância.",
+    "texto": "Gastando uma ação para mirar, +3 ao ataque à distância.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -990,7 +990,7 @@
     "texto": "Saca e dispara num só gesto (reduz os Ticks do disparo).",
     "pendente": false,
     "nivel": 1,
-    "efeito": "bonus"
+    "efeito": "estado"
   },
   {
     "id": "olho-de-alcance",
@@ -1021,7 +1021,7 @@
       "mira-firme"
     ],
     "aliases": [],
-    "texto": "+1 de Penetração e +1d6 de dano num disparo cuidadoso.",
+    "texto": "+4 de Penetração e +1d6 de dano num disparo cuidadoso.",
     "pendente": false,
     "nivel": 2,
     "efeito": "penetracao"
@@ -1111,7 +1111,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Em abordagens amistosas, a Defesa Mental do alvo é −2.",
+    "texto": "Em abordagens amistosas, a Defesa Mental do alvo é −3.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -1147,7 +1147,7 @@
       "primeira-impressao"
     ],
     "aliases": [],
-    "texto": "Num pedido plausível, +1d6 e o alvo gasta Vontade só para ignorá-lo friamente.",
+    "texto": "Num pedido plausível, +3 e o alvo gasta Vontade só para ignorá-lo friamente.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -1165,7 +1165,7 @@
       "charme"
     ],
     "aliases": [],
-    "texto": "Prende a atenção de uma plateia; aliados inspirados ganham +1 nas ações por uma cena.",
+    "texto": "Prende a atenção de uma plateia; aliados inspirados ganham +6 nas ações por uma cena.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -1253,7 +1253,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em testes de Percepção e na Percepção Passiva; nunca é pego totalmente de surpresa.",
+    "texto": "+3 em testes de Percepção e na Percepção Passiva; nunca é pego totalmente de surpresa.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -1462,7 +1462,7 @@
       "ignorar-a-dor"
     ],
     "aliases": [],
-    "texto": "+2 para resistir a venenos e doenças.",
+    "texto": "+6 para resistir a venenos e doenças.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -1532,7 +1532,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em Furtividade; move-se em silêncio mesmo em ritmo normal.",
+    "texto": "+3 em Furtividade; move-se em silêncio mesmo em ritmo normal.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -1674,7 +1674,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+1 ao Bloqueio com armas de corte; apara sem penalidade.",
+    "texto": "+3 ao Bloqueio com armas de corte; apara sem penalidade.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -1710,7 +1710,7 @@
       "postura-fluida"
     ],
     "aliases": [],
-    "texto": "Engana a guarda: −2 na Defesa do alvo no seu próximo ataque.",
+    "texto": "Engana a guarda: −3 na Defesa do alvo no seu próximo ataque.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -1887,7 +1887,7 @@
       "brado-de-guerra"
     ],
     "aliases": [],
-    "texto": "Avança e ataca com +1d6 de dano por knockback.",
+    "texto": "Avança e ataca com +2d6 de dano por knockback.",
     "pendente": false,
     "nivel": 2,
     "efeito": "dano"
@@ -1957,7 +1957,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 onde porte e reputação importam; entra num salão e as cabeças se viram.",
+    "texto": "+3 onde porte e reputação importam; entra num salão e as cabeças se viram.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -1975,7 +1975,7 @@
       "presenca-imponente"
     ],
     "aliases": [],
-    "texto": "Aliados que o ouvem ganham +1 nas ações por um turno.",
+    "texto": "Aliados que o ouvem ganham +3 nas ações por um turno.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -2384,7 +2384,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Suas emoções e intenções não vazam; +2 para blefar e mentir.",
+    "texto": "Suas emoções e intenções não vazam; +3 para blefar e mentir.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -2545,7 +2545,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "ergue por um instante algo muito além do humano (viga, portão, pedra).",
+    "texto": "ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra).",
     "pendente": false,
     "nivel": 2,
     "efeito": "carga"
@@ -2563,7 +2563,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "atira objetos pesados ou pessoas como arma.",
+    "texto": "atira objetos pesados ou pessoas como arma (~×2 o normal).",
     "pendente": false,
     "nivel": 1,
     "efeito": "carga"
@@ -2579,7 +2579,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "sustenta pesos imensos por longos períodos.",
+    "texto": "sustenta pesos imensos por longos períodos (~×4 o normal).",
     "pendente": false,
     "nivel": 2,
     "efeito": "carga"
@@ -2635,7 +2635,7 @@
       "arrancar"
     ],
     "aliases": [],
-    "texto": "ergue carroças, estátuas e pedras de tonelada.",
+    "texto": "ergue carroças, estátuas e pedras de tonelada (~×30 o normal).",
     "pendente": false,
     "nivel": 4,
     "efeito": "carga"
@@ -2654,7 +2654,7 @@
       "forca-titanica"
     ],
     "aliases": [],
-    "texto": "sustenta ou arremessa coisas de escala absurda (uma muralha, um barco).",
+    "texto": "sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco).",
     "pendente": false,
     "nivel": 5,
     "efeito": "carga"
@@ -2668,7 +2668,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+1 dado de dano contra objetos/estruturas; ignora parte da dureza.",
+    "texto": "+1d6 de dano contra objetos/estruturas; ignora parte da dureza.",
     "pendente": false,
     "nivel": 1,
     "efeito": "dano"
@@ -2811,7 +2811,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para agarrar e manter agarrões.",
+    "texto": "+3 para agarrar e manter agarrões.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -2940,7 +2940,7 @@
       "aperto-esmagador"
     ],
     "aliases": [],
-    "texto": "agarra e esmaga criaturas enormes; nada escapa.",
+    "texto": "agarra e esmaga criaturas de qualquer porte; nada escapa.",
     "pendente": false,
     "nivel": 5,
     "efeito": "tamanho"
@@ -2954,7 +2954,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "nunca cai de superfícies estreitas; +2 em Atletismo.",
+    "texto": "nunca cai de superfícies estreitas; +3 em Atletismo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -2972,7 +2972,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "reduz muito o dano de quedas; cai de pé.",
+    "texto": "reduz muito o dano de quedas (×2); cai de pé.",
     "pendente": false,
     "nivel": 1,
     "efeito": "salto"
@@ -2990,7 +2990,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "sobe superfícies difíceis em velocidade de corrida.",
+    "texto": "sobe superfícies difíceis em velocidade de corrida (×1,5).",
     "pendente": false,
     "nivel": 1,
     "efeito": "velocidade"
@@ -3097,7 +3097,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em prestidigitação, fechaduras e furto.",
+    "texto": "+3 em prestidigitação, fechaduras e furto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3376,7 +3376,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 contra venenos e comida estragada.",
+    "texto": "+3 contra venenos e comida estragada.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3570,7 +3570,7 @@
     "texto": "reduz todas as penalidades de ferimento em 1.",
     "pendente": false,
     "nivel": 2,
-    "efeito": "bonus"
+    "efeito": "estado"
   },
   {
     "id": "nao-vou-cair",
@@ -3656,7 +3656,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "aliados que o seguem ganham +1 de moral; ordens claras.",
+    "texto": "aliados que o seguem ganham +3 de moral; ordens claras.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3710,7 +3710,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "aliados coordenados ganham +1 de Defesa e de ataque juntos.",
+    "texto": "aliados coordenados ganham +6 de Defesa e de ataque juntos.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -3728,7 +3728,7 @@
       "reunir"
     ],
     "aliases": [],
-    "texto": "inspira investida (+1d6 de dano num avanço).",
+    "texto": "inspira investida (+2d6 de dano num avanço).",
     "pendente": false,
     "nivel": 2,
     "efeito": "dano"
@@ -3799,7 +3799,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em performance; prende atenção.",
+    "texto": "+3 em performance; prende atenção.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3942,7 +3942,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para incitar, provocar e inflamar.",
+    "texto": "+3 para incitar, provocar e inflamar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -4085,7 +4085,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em intrigas e em ler fraquezas sociais.",
+    "texto": "+3 em intrigas e em ler fraquezas sociais.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -4228,7 +4228,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em barganha e meias-verdades.",
+    "texto": "+3 em barganha e meias-verdades.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -4371,7 +4371,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para insinuar e plantar emoções negativas sutis.",
+    "texto": "+3 para insinuar e plantar emoções negativas sutis.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -4657,7 +4657,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 quando a aparência importa; olhares se voltam a você.",
+    "texto": "+3 quando a aparência importa; olhares se voltam a você.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -4800,7 +4800,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para impor respeito; é levado a sério de imediato.",
+    "texto": "+3 para impor respeito; é levado a sério de imediato.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -4943,7 +4943,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para se disfarçar com adereços.",
+    "texto": "+3 para se disfarçar com adereços.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -5229,7 +5229,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "suas emoções nunca transparecem; +2 em blefe.",
+    "texto": "suas emoções nunca transparecem; +3 em blefe.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -5370,7 +5370,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em Prontidão; difícil de surpreender.",
+    "texto": "+3 em Prontidão; difícil de surpreender.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -5511,7 +5511,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para rastrear e ler sinais.",
+    "texto": "+3 para rastrear e ler sinais.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -5654,7 +5654,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para perceber emoções e mentiras.",
+    "texto": "+3 para perceber emoções e mentiras.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -5940,7 +5940,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em Conhecimentos; sabe um pouco de tudo.",
+    "texto": "+3 em Conhecimentos; sabe um pouco de tudo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -6081,7 +6081,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em Ofícios; conserta e improvisa com facilidade.",
+    "texto": "+3 em Ofícios; conserta e improvisa com facilidade.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -6224,7 +6224,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em Tática; lê o campo num instante.",
+    "texto": "+3 em Tática; lê o campo num instante.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -6367,7 +6367,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 em Investigação; nota o que outros não veem.",
+    "texto": "+3 em Investigação; nota o que outros não veem.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -6510,7 +6510,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 de Iniciativa; pensa veloz sob pressão.",
+    "texto": "+3 de Iniciativa; pensa veloz sob pressão.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -6651,7 +6651,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para improvisar com o que há à mão.",
+    "texto": "+3 para improvisar com o que há à mão.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -6794,7 +6794,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para deduzir personalidade e intenção.",
+    "texto": "+3 para deduzir personalidade e intenção.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -6937,7 +6937,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+2 para manter o foco e resistir a distração e provocação.",
+    "texto": "+3 para manter o foco e resistir a distração e provocação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -6989,7 +6989,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "+2 para resistir a manipulação, medo e efeitos mentais.",
+    "texto": "+6 para resistir a manipulação, medo e efeitos mentais.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7100,7 +7100,7 @@
       "olhar-perspicaz"
     ],
     "aliases": [],
-    "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+2** nas jogadas sociais que explorem o que captou.",
+    "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+6** nas jogadas sociais que explorem o que captou.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7118,7 +7118,7 @@
       "farejar-a-mentira"
     ],
     "aliases": [],
-    "texto": "Lê o que o alvo mais teme ou deseja; a próxima jogada de **Influência** alinhada a isso ganha **+1 grau de Margem** (ou +2 na soma).",
+    "texto": "Lê o que o alvo mais teme ou deseja; a próxima jogada de **Influência** alinhada a isso ganha **+3 graus de Margem** (ou +6 na soma).",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7137,7 +7137,7 @@
       "ler-a-sala"
     ],
     "aliases": [],
-    "texto": "Lê microssinais e antevê a ação do alvo: **+3 na Defesa** contra ele, ou sabe qual manobra social ele tentará antes que role.",
+    "texto": "Lê microssinais e antevê a ação do alvo: **+6 na Defesa** contra ele, ou sabe qual manobra social ele tentará antes que role.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7193,7 +7193,7 @@
       "semblante-fechado"
     ],
     "aliases": [],
-    "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+2** para enganar sobre quem você é (soma à Compostura vs Perspicácia).",
+    "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+6** para enganar sobre quem você é (soma à Compostura vs Perspicácia).",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7209,7 +7209,7 @@
       "voz-calma"
     ],
     "aliases": [],
-    "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−2**.",
+    "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−6**.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"

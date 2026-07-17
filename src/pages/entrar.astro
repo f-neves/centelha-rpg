@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Entrar" descricao="Acesse sua conta para gerenciar personagens e mesas.">
+  <h1>Entrar</h1>
+
+  <div id="auth-setup" class="aviso" hidden>
+    <strong>Área de contas ainda não configurada.</strong>
+    <p class="muted">Falta ligar o Supabase (banco + login). Veja <code>supabase/README.md</code> no projeto.</p>
+  </div>
+
+  <div id="auth-logado" class="painel" hidden>
+    <p>Você já está logado como <strong id="logado-nome"></strong>.</p>
+    <div class="btn-row">
+      <a class="btn primary" id="ir-mesas">Minhas Mesas</a>
+      <button class="btn" id="btn-sair">Sair</button>
+    </div>
+  </div>
+
+  <div id="auth-forms">
+    <div class="tabs" role="tablist">
+      <button class="tab primary" data-tab="entrar" role="tab" aria-selected="true">Entrar</button>
+      <button class="tab" data-tab="criar" role="tab" aria-selected="false">Criar conta</button>
+    </div>
+
+    <form id="form-entrar" class="painel" data-painel="entrar">
+      <label>E-mail<input type="email" name="email" autocomplete="email" required /></label>
+      <label>Senha<input type="password" name="senha" autocomplete="current-password" required /></label>
+      <div class="btn-row">
+        <button class="btn primary" type="submit">Entrar</button>
+        <button class="btn linkish" type="button" id="btn-esqueci">Esqueci a senha</button>
+      </div>
+    </form>
+
+    <form id="form-criar" class="painel" data-painel="criar" hidden>
+      <label>Nome (como aparece na mesa)<input type="text" name="nome" autocomplete="nickname" required /></label>
+      <label>E-mail<input type="email" name="email" autocomplete="email" required /></label>
+      <label>Senha (mín. 6)<input type="password" name="senha" autocomplete="new-password" minlength="6" required /></label>
+      <div class="btn-row">
+        <button class="btn primary" type="submit">Criar conta</button>
+      </div>
+    </form>
+
+    <p id="auth-msg" class="auth-msg" role="status" aria-live="polite"></p>
+  </div>
+</Base>
+
+<script>
+  import { entrar, cadastrar, recuperarSenha, sair, usuarioAtual, perfilNome, supabaseConfigurado } from '../lib/auth';
+  const base = import.meta.env.BASE_URL;
+  const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
+  const q = new URLSearchParams(location.search);
+  const proximo = q.get('proximo');
+  const destino = proximo && proximo.startsWith('/') ? location.origin + proximo : u('mesas');
+
+  const msg = document.getElementById('auth-msg')!;
+  const setMsg = (t: string, erro = true) => { msg.textContent = t; msg.classList.toggle('erro', erro); msg.classList.toggle('ok', !t ? false : !erro); };
+
+  async function init() {
+    if (!supabaseConfigurado) {
+      document.getElementById('auth-setup')!.hidden = false;
+      document.getElementById('auth-forms')!.hidden = true;
+      return;
+    }
+    const user = await usuarioAtual();
+    if (user) {
+      document.getElementById('auth-forms')!.hidden = true;
+      const box = document.getElementById('auth-logado')!;
+      box.hidden = false;
+      document.getElementById('logado-nome')!.textContent = (await perfilNome()) || user.email || '';
+      (document.getElementById('ir-mesas') as HTMLAnchorElement).href = u('mesas');
+      document.getElementById('btn-sair')!.addEventListener('click', async () => { await sair(); location.reload(); });
+    }
+  }
+  init();
+
+  // abas
+  document.querySelectorAll<HTMLButtonElement>('.tab').forEach((t) => t.addEventListener('click', () => {
+    const alvo = t.dataset.tab!;
+    document.querySelectorAll<HTMLButtonElement>('.tab').forEach((b) => {
+      const on = b === t; b.classList.toggle('primary', on); b.setAttribute('aria-selected', String(on));
+    });
+    document.querySelectorAll<HTMLElement>('[data-painel]').forEach((p) => { p.hidden = p.dataset.painel !== alvo; });
+    setMsg('');
+  }));
+
+  document.getElementById('form-entrar')!.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const f = e.target as HTMLFormElement;
+    setMsg('Entrando…', false);
+    const { erro } = await entrar((f.email as any).value, (f.senha as any).value);
+    if (erro) return setMsg(erro);
+    location.href = destino;
+  });
+
+  document.getElementById('form-criar')!.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const f = e.target as HTMLFormElement;
+    setMsg('Criando conta…', false);
+    const { erro } = await cadastrar((f.email as any).value, (f.senha as any).value, (f.nome as any).value);
+    if (erro) return setMsg(erro);
+    // Se a confirmação de e-mail estiver ligada, não há sessão ainda.
+    const user = await usuarioAtual();
+    if (user) { location.href = destino; }
+    else setMsg('Conta criada. Confirme pelo link enviado ao seu e-mail e depois entre.', false);
+  });
+
+  document.getElementById('btn-esqueci')!.addEventListener('click', async () => {
+    const email = (document.querySelector('#form-entrar input[name=email]') as HTMLInputElement).value;
+    if (!email) return setMsg('Escreva seu e-mail no campo acima primeiro.');
+    const { erro } = await recuperarSenha(email);
+    setMsg(erro || 'Se houver conta com esse e-mail, enviamos um link de redefinição.', !!erro);
+  });
+</script>
+
+<style>
+  .tabs { display: flex; gap: .4rem; margin: 1rem 0 .8rem; }
+  .tab { padding: .5rem 1rem; border: 1px solid var(--rule); background: var(--panel); border-radius: 6px 6px 0 0; cursor: pointer; }
+  .painel { border: 1px solid var(--rule); border-radius: 8px; padding: 1rem; max-width: 26rem; background: var(--panel); }
+  form.painel label { display: block; margin-bottom: .7rem; font-weight: 600; }
+  form.painel input { display: block; width: 100%; margin-top: .25rem; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
+  .btn-row { display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; margin-top: .4rem; }
+  .btn.linkish { background: none; border: none; color: var(--accent); cursor: pointer; padding: .3rem; }
+  .auth-msg { margin-top: .8rem; max-width: 26rem; }
+  .auth-msg.erro { color: #b3261e; }
+  .auth-msg.ok { color: var(--accent-strong, var(--accent)); }
+  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
+</style>

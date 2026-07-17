@@ -3,6 +3,11 @@ node_modules/
 dist/
 .astro/
 
+# segredos de ambiente (Supabase) — NUNCA versionar
+.env
+.env.local
+.env.*.local
+
 # temporários de inspeção
 _shots/
 _pages/

@@ -94,6 +94,13 @@ if (partes.length) crumbs.push({ label: title });
             <span class="num">◆</span><span>{f.titulo}</span>
           </a>
         ))}
+        <div class="grp">Jogo</div>
+        <a href={url('mesas')} aria-current={isActive('mesas') ? 'page' : undefined}>
+          <span class="num">◆</span><span>Minhas Mesas</span>
+        </a>
+        <a href={url('entrar')} id="auth-link" aria-current={isActive('entrar') ? 'page' : undefined}>
+          <span class="num">◆</span><span class="auth-label">Entrar</span>
+        </a>
       </nav>
 
       <div class="grp" style="margin-top:1.4rem">Aparência</div>
@@ -176,6 +183,27 @@ if (partes.length) crumbs.push({ label: title });
     };
     window.addEventListener('hashchange', flash);
     setTimeout(flash, 120);
+
+    // estado de login no menu (carrega o cliente Supabase sob demanda p/ não pesar as páginas)
+    (async () => {
+      const link = document.getElementById('auth-link');
+      const label = link?.querySelector('.auth-label');
+      if (!link || !label) return;
+      try {
+        const { usuarioAtual, perfilNome, sair, supabaseConfigurado } = await import('../lib/auth');
+        if (!supabaseConfigurado) return;
+        const user = await usuarioAtual();
+        if (!user) return;
+        const nome = await perfilNome();
+        label.textContent = 'Sair' + (nome ? ' · ' + nome : '');
+        link.setAttribute('href', '#');
+        link.addEventListener('click', async (e) => {
+          e.preventDefault();
+          await sair();
+          location.href = import.meta.env.BASE_URL;
+        });
+      } catch {}
+    })();
   </script>
 </body>
 </html>
