@@ -6009,7 +6009,7 @@
   },
   {
     "id": "mon-archon-cao",
-    "nome": "Archon Cão",
+    "nome": "Arconte Cão",
     "tipo": "soldado",
     "categoria": "Celestial",
     "ameaca": 3,
@@ -7919,7 +7919,7 @@
   },
   {
     "id": "mon-bruxa-verde-hag",
-    "nome": "Bruxa Verde (Hag)",
+    "nome": "Bruxa Verde",
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
@@ -9123,7 +9123,7 @@
   },
   {
     "id": "mon-dire-ape-gigantopithecus",
-    "nome": "Dire Ape (Gigantopithecus)",
+    "nome": "Símio Atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -9170,7 +9170,7 @@
   },
   {
     "id": "mon-lantern-archon",
-    "nome": "Lantern Archon",
+    "nome": "Arconte Lanterna",
     "tipo": "soldado",
     "categoria": "Celestial",
     "ameaca": 2,
@@ -9218,7 +9218,7 @@
   },
   {
     "id": "mon-trumpet-archon",
-    "nome": "Trumpet Archon",
+    "nome": "Arconte Trombeta",
     "tipo": "chefe",
     "categoria": "Celestial",
     "ameaca": 6,
@@ -10884,7 +10884,7 @@
   },
   {
     "id": "mon-barbed-devil-hamatula",
-    "nome": "Barbed Devil (Hamatula)",
+    "nome": "Diabo Espinhoso",
     "tipo": "chefe",
     "categoria": "Diabo",
     "ameaca": 5,
@@ -10932,7 +10932,7 @@
   },
   {
     "id": "mon-horned-devil-cornugon",
-    "nome": "Horned Devil (Cornugon)",
+    "nome": "Diabo Chifrudo",
     "tipo": "chefe",
     "categoria": "Diabo",
     "ameaca": 6,
@@ -11879,7 +11879,7 @@
   },
   {
     "id": "mon-small-air-elemental",
-    "nome": "Small Air Elemental",
+    "nome": "Elemental do Ar (Pequeno)",
     "tipo": "soldado",
     "categoria": "Elemental",
     "ameaca": 2,
@@ -11927,7 +11927,7 @@
   },
   {
     "id": "mon-small-earth-elemental",
-    "nome": "Small Earth Elemental",
+    "nome": "Elemental da Terra (Pequeno)",
     "tipo": "soldado",
     "categoria": "Elemental",
     "ameaca": 2,
@@ -11975,7 +11975,7 @@
   },
   {
     "id": "mon-small-fire-elemental",
-    "nome": "Small Fire Elemental",
+    "nome": "Elemental do Fogo (Pequeno)",
     "tipo": "soldado",
     "categoria": "Elemental",
     "ameaca": 2,
@@ -12023,7 +12023,7 @@
   },
   {
     "id": "mon-small-water-elemental",
-    "nome": "Small Water Elemental",
+    "nome": "Elemental da Água (Pequeno)",
     "tipo": "soldado",
     "categoria": "Elemental",
     "ameaca": 2,
@@ -14211,7 +14211,7 @@
   },
   {
     "id": "mon-dire-lion-spotted-lion",
-    "nome": "Dire Lion (Spotted Lion)",
+    "nome": "Leão Atroz",
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
@@ -14353,7 +14353,7 @@
   },
   {
     "id": "mon-wererat-human-form",
-    "nome": "Wererat (Human Form)",
+    "nome": "Homem-Rato (forma humana)",
     "tipo": "soldado",
     "categoria": "Humanoide",
     "ameaca": 2,
@@ -14401,7 +14401,7 @@
   },
   {
     "id": "mon-werewolf",
-    "nome": "WerewolF",
+    "nome": "Lobisomem",
     "tipo": "soldado",
     "categoria": "Humanoide",
     "ameaca": 2,
@@ -14736,7 +14736,7 @@
   },
   {
     "id": "mon-dark-naga",
-    "nome": "Dark Naga",
+    "nome": "Naga Negra",
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
@@ -14784,7 +14784,7 @@
   },
   {
     "id": "mon-guardian-naga",
-    "nome": "Guardian Naga",
+    "nome": "Naga Guardiã",
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
@@ -14880,7 +14880,7 @@
   },
   {
     "id": "mon-night-hag",
-    "nome": "Night Hag",
+    "nome": "Bruxa Noturna",
     "tipo": "chefe",
     "categoria": "Exterior",
     "ameaca": 5,
@@ -15595,7 +15595,7 @@
   },
   {
     "id": "mon-sea-hag",
-    "nome": "Sea Hag",
+    "nome": "Bruxa do Mar",
     "tipo": "soldado",
     "categoria": "Monstro",
     "ameaca": 3,

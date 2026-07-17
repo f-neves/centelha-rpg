@@ -398,6 +398,15 @@ const NOME_PT = {
   'mon-dire-wolverine': 'Carcaju Atroz', 'mon-dog': 'Cachorro', 'mon-dolphin': 'Golfinho',
   'mon-elasmosaurus': 'Elasmossauro', 'mon-electric-eel': 'Enguia Elétrica', 'mon-fire-beetle': 'Besouro de Fogo',
   'mon-assombracao-wraith': 'Assombração',
+  // padronização de famílias que tinham sobrado em inglês
+  'mon-barbed-devil-hamatula': 'Diabo Espinhoso', 'mon-horned-devil-cornugon': 'Diabo Chifrudo',
+  'mon-bruxa-verde-hag': 'Bruxa Verde', 'mon-dark-naga': 'Naga Negra', 'mon-guardian-naga': 'Naga Guardiã',
+  'mon-archon-cao': 'Arconte Cão', 'mon-lantern-archon': 'Arconte Lanterna', 'mon-trumpet-archon': 'Arconte Trombeta',
+  'mon-night-hag': 'Bruxa Noturna', 'mon-sea-hag': 'Bruxa do Mar',
+  'mon-small-air-elemental': 'Elemental do Ar (Pequeno)', 'mon-small-earth-elemental': 'Elemental da Terra (Pequeno)',
+  'mon-small-fire-elemental': 'Elemental do Fogo (Pequeno)', 'mon-small-water-elemental': 'Elemental da Água (Pequeno)',
+  'mon-wererat-human-form': 'Homem-Rato (forma humana)', 'mon-werewolf': 'Lobisomem',
+  'mon-dire-ape-gigantopithecus': 'Símio Atroz', 'mon-dire-lion-spotted-lion': 'Leão Atroz',
   'mon-flesh-golem': 'Golem de Carne', 'mon-giant-ant': 'Formiga Gigante', 'mon-giant-centipede': 'Centopéia Gigante',
   // remapeamentos (nome PT + inglês ajustado em habilidades.en)
   'mon-dire-bear-cave-bear': 'Urso Atroz', 'mon-dire-boar-daeodon': 'Javali Atroz',

@@ -296,7 +296,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Altura 1,2 m, envergadura 4,5 m",
+   "medida": "1,2 m de altura, envergadura 4,5 m",
    "peso": "180 kg"
   },
   "ecologia": {
@@ -530,7 +530,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "comprimento 9 m",
+   "medida": "9 m de comprimento",
    "peso": "2.700 kg"
   },
   "ecologia": {
@@ -866,7 +866,7 @@
  },
  {
   "id": "mon-archon-cao",
-  "nome": "Archon Cão",
+  "nome": "Arconte Cão",
   "nomeIngles": "Archon, Hound",
   "categoria": "Celestial",
   "tipo": "soldado",
@@ -1010,6 +1010,230 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Contido pela Lei que impede os deuses de agir direto, um archon cão só cruza ao mundo mortal em raros chamados desesperados, e mesmo assim evita ser visto: para o povo da Supressão, um anjo com cara de cão seria mais um monstro a temer do que um salvador."
+   }
+  ]
+ },
+ {
+  "id": "mon-lantern-archon",
+  "nome": "Arconte Lanterna",
+  "nomeIngles": "Archon, Lantern",
+  "categoria": "Celestial",
+  "tipo": "soldado",
+  "conceito": "exterior (anjo) Pequeno",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+   "celestial",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 2,
+  "pendente": true,
+  "porte": "Pequeno",
+  "dimensoes": {
+   "medida": "1 m de diâmetro",
+   "peso": "5 kg"
+  },
+  "ecologia": {
+   "tipo": "Celestial",
+   "terreno": [
+    "Sky",
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/lantern-archon.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 0,
+   "destreza": 2,
+   "vigor": 3,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 10,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 4
+  },
+  "combate": {
+   "pv": 26,
+   "defesa": 8,
+   "defesaMental": 15,
+   "absorcao": {
+    "impacto": 5,
+    "corte": 3,
+    "perfuracao": 3
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "1d6+2 +4",
+     "dano": "1d6 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Raios de Luz",
+    "descricao": "Dispara feixes de luz pura à distância que atravessam qualquer proteção sobrenatural do alvo."
+   },
+   {
+    "nome": "Absorção Contra o Mal",
+    "descricao": "Sua forma luminosa reduz drasticamente qualquer dano físico infligido por criaturas malignas."
+   },
+   {
+    "nome": "Imunidades Celestiais",
+    "descricao": "É imune a eletricidade e a efeitos que transformam em pedra."
+   },
+   {
+    "nome": "Voo Perfeito",
+    "descricao": "Flutua e voa com controle impecável, praticamente sem esforço."
+   },
+   {
+    "nome": "Fusão",
+    "descricao": "Nove desses seres podem se fundir numa única entidade de vento e luz muito mais poderosa, permanecendo unidos por alguns instantes antes de se separar novamente."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Natureza",
+    "texto": "São globos de pureza espiritual e luz pálida, curiosos e amistosos, sempre dispostos a conversar e ajudar viajantes, embora sua força seja fraca demais para tarefas físicas comuns."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Brilham constantemente, controlando a cor e a intensidade da própria luz por prazer, e costumam modular esse brilho ao ritmo de música ou conversa."
+   }
+  ]
+ },
+ {
+  "id": "mon-trumpet-archon",
+  "nome": "Arconte Trombeta",
+  "nomeIngles": "Archon, Trumpet",
+  "categoria": "Celestial",
+  "tipo": "chefe",
+  "conceito": "exterior (anjo) Médio",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+   "celestial",
+   "centelha"
+  ],
+  "ameaca": 6,
+  "centelha": 5,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "2 m de altura",
+   "peso": "100 kg"
+  },
+  "ecologia": {
+   "tipo": "Celestial",
+   "terreno": [
+    "Sky",
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/trumpet-archon.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 6,
+   "destreza": 5,
+   "vigor": 8,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5,
+   "percepcao": 6,
+   "inteligencia": 5,
+   "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": 12,
+  "virtudes": {
+   "compaixao": 5,
+   "conviccao": 5,
+   "temperanca": 4,
+   "valor": 5
+  },
+  "combate": {
+   "pv": 49,
+   "defesa": 22,
+   "defesaMental": 30,
+   "absorcao": {
+    "impacto": 13,
+    "corte": 9,
+    "perfuracao": 9
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 8",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "5d6+2 +10",
+     "dano": "1d6 +6 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Espadão Celestial",
+    "descricao": "Empunha uma espada de duas mãos abençoada, capaz de golpes devastadores contra qualquer inimigo."
+   },
+   {
+    "nome": "Trombeta Paralisante",
+    "descricao": "Uma vez por cena, sopra sua trombeta mágica e todos ao redor, exceto seus aliados celestiais, devem passar num teste de Compostura ou ficam paralisados por alguns instantes."
+   },
+   {
+    "nome": "Círculo Contra o Mal",
+    "descricao": "Está sempre envolto por uma proteção que dificulta ataques e possessões de criaturas malignas."
+   },
+   {
+    "nome": "Resistência Mágica",
+    "descricao": "Feitiços hostis frequentemente falham ao atingi-lo, como se sua vontade repelisse a magia."
+   },
+   {
+    "nome": "Voo Excelente",
+    "descricao": "Voa com grande velocidade e agilidade, mesmo carregando armadura e arma pesadas."
+   },
+   {
+    "nome": "Magias Sagradas",
+    "descricao": "Domina uma vasta gama de bênçãos e curas, lançando-as em batalha para apoiar aliados e afastar o mal."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Papel",
+    "texto": "Mensageiros das divindades do bem, os arautos-trombeta lideram exércitos celestiais e servem como intermediários quando um deus precisa falar diretamente com mortais."
+   },
+   {
+    "titulo": "Aparência",
+    "texto": "Têm pele da cor do mármore, olhos brancos sem pupila e vozes cristalinas, quase musicais."
+   },
+   {
+    "titulo": "Símbolo",
+    "texto": "Todo arauto-trombeta carrega um chifre ou trombeta encantada, adornada com o brasão de seu senhor, usada tanto para comunicação quanto como arma."
    }
   ]
  },
@@ -1394,7 +1618,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 1,8 m de altura no ombro",
+   "medida": "1,8 m de altura no ombro",
    "peso": "900 kg"
   },
   "ecologia": {
@@ -1497,7 +1721,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,8 m",
+   "medida": "1,8 m de altura",
    "peso": "80 kg"
   },
   "ecologia": {
@@ -1605,7 +1829,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura 4,3 m (envergadura 9 m)",
+   "medida": "4,3 m de altura (envergadura 9 m)",
    "peso": "3,6 t"
   },
   "ecologia": {
@@ -1867,117 +2091,6 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Prospera nas estradas entre cidades de Calin e nos ermos de The Neck, onde a milícia é escassa e a fome empurra gente comum para o roubo."
-   }
-  ]
- },
- {
-  "id": "mon-barbed-devil-hamatula",
-  "nome": "Barbed Devil (Hamatula)",
-  "nomeIngles": "Devil, Barbed",
-  "categoria": "Corruptor",
-  "tipo": "chefe",
-  "conceito": "exterior (diabo) Médio",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-   "diabo",
-   "centelha"
-  ],
-  "ameaca": 5,
-  "centelha": 4,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "altura 2,1 m",
-   "peso": "135 kg"
-  },
-  "ecologia": {
-   "tipo": "Fiend",
-   "terreno": [
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/barbed-devil-hamatula.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 7,
-   "destreza": 7,
-   "vigor": 7,
-   "influencia": 5,
-   "perspicacia": 4,
-   "compostura": 5,
-   "percepcao": 4,
-   "inteligencia": 3,
-   "raciocinio": 4
-  },
-  "vontade": 9,
-  "aparencia": 0,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 5,
-   "temperanca": 5,
-   "valor": 5
-  },
-  "combate": {
-   "pv": 46,
-   "defesa": 26,
-   "defesaMental": 27,
-   "absorcao": {
-    "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 6",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "6d6 +8",
-     "dano": "1d6 +7 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Defesa Espinhosa",
-    "descricao": "Seu corpo é coberto de espinhos afiados; quem o golpeia corpo a corpo ou desarmado sofre dano perfurante dos próprios espinhos, a menos que ataque com arma de alcance."
-   },
-   {
-    "nome": "Empalar",
-    "descricao": "Ao manter um inimigo agarrado, pode cravar suas garras ainda mais fundo, causando dano perfurante severo adicional."
-   },
-   {
-    "nome": "Pavor pelo Toque",
-    "descricao": "Suas garras espalham terror; quem é ferido por elas pode fugir amedrontado por vários instantes, a menos que resista com força de vontade."
-   },
-   {
-    "nome": "Visão nas Trevas",
-    "descricao": "Enxerga perfeitamente até em escuridão mágica absoluta."
-   },
-   {
-    "nome": "Resistências Infernais",
-    "descricao": "Resiste a ácido e frio, é imune a fogo e veneno, e uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma boa."
-   },
-   {
-    "nome": "Poderes Ígneos",
-    "descricao": "Pode criar chamas, lançar raios ofuscantes de luz, projetar ilusões elaboradas ou desaparecer para outro lugar à vontade."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Guardião dos Cárceres Infernais",
-    "texto": "Sentinela dos calabouços do Inferno, zela pelas correntes dos condenados e os tesouros escondidos de demônios maiores, sentindo prazer perverso no calor do sangue sobre seus próprios espinhos."
-   },
-   {
-    "titulo": "Colecionador de Troféus",
-    "texto": "Costuma pendurar restos perfurados de suas vítimas nas paredes de seu covil, como um colecionador macabro de despojos de guerra."
    }
   ]
  },
@@ -2330,7 +2443,7 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "cerca de 12 centímetros de envergadura",
+   "medida": "12 centímetros de envergadura",
    "peso": "poucos gramas"
   },
   "ecologia": {
@@ -2551,7 +2664,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "comprimento 9 m",
+   "medida": "9 m de comprimento",
    "peso": "3,6 t"
   },
   "ecologia": {
@@ -3494,7 +3607,7 @@
   "porte": "Imenso",
   "dimensoes": {
    "medida": "24 metros de comprimento",
-   "peso": "29 toneladas"
+   "peso": "29 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -3688,8 +3801,231 @@
   ]
  },
  {
+  "id": "mon-sea-hag",
+  "nome": "Bruxa do Mar",
+  "nomeIngles": "Hag, Sea",
+  "categoria": "Humanoide monstruoso",
+  "tipo": "soldado",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+   "monstro",
+   "centelha"
+  ],
+  "ameaca": 3,
+  "centelha": 2,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,8 metro de altura",
+   "peso": "68 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Water",
+    "Coast"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/sea-hag.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 5,
+   "destreza": 5,
+   "vigor": 5,
+   "influencia": 4,
+   "perspicacia": 4,
+   "compostura": 4,
+   "percepcao": 3,
+   "inteligencia": 3,
+   "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 40,
+   "defesa": 16,
+   "defesaMental": 19,
+   "absorcao": {
+    "impacto": 7,
+    "corte": 4,
+    "perfuracao": 4
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 4",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "4d6+2 +4",
+     "dano": "1d6 +5 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Olho maligno",
+    "descricao": "Até três vezes por cena, lança um olhar amaldiçoado; se o alvo falhar num teste de Compostura, fica paralisado de terror, e se atingido de novo enquanto amaldiçoado pode cair em coma por dias."
+   },
+   {
+    "nome": "Aparência horrenda",
+    "descricao": "Sua simples visão é tão repulsiva que quem a encara de perto deve testar Vigor ou ser enfraquecido instantaneamente."
+   },
+   {
+    "nome": "Resistência a magia",
+    "descricao": "Uma proteção sobrenatural dificulta que feitiços a atinjam."
+   },
+   {
+    "nome": "Anfíbia",
+    "descricao": "Respira tanto na água quanto no ar, nadando com grande destreza."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "Enxerga perfeitamente no escuro."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "O rosto que ninguém suporta ver",
+    "texto": "Tão repulsiva é a aparência da bruxa do mar que sua simples presença enfraquece quem ousa encará-la de perto."
+   },
+   {
+    "titulo": "Maldição no olhar",
+    "texto": "Seu olhar amaldiçoado condena vítimas a um pavor paralisante, e quem já sofreu essa maldição corre o risco de mergulhar num sono comatoso do qual poucos despertam."
+   },
+   {
+    "titulo": "Covens entre as ondas",
+    "texto": "Como outras bruxas de sua laia, reúnem-se em conluios de três, escolhendo portos e enseadas afastadas para tramar contra marinheiros e povoados costeiros."
+   }
+  ]
+ },
+ {
+  "id": "mon-night-hag",
+  "nome": "Bruxa Noturna",
+  "nomeIngles": "Hag, Night",
+  "categoria": "Corruptor",
+  "tipo": "chefe",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+   "exterior",
+   "centelha"
+  ],
+  "ameaca": 5,
+  "centelha": 4,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "entre 1,68 m e 2,13 m de altura",
+   "peso": "70 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/night-hag.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 6,
+   "destreza": 5,
+   "vigor": 7,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5,
+   "percepcao": 5,
+   "inteligencia": 5,
+   "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
+  },
+  "combate": {
+   "pv": 46,
+   "defesa": 20,
+   "defesaMental": 27,
+   "absorcao": {
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 7",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +6 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Visão no escuro",
+    "descricao": "Enxerga perfeitamente na escuridão total."
+   },
+   {
+    "nome": "Pele curtida e mente imune",
+    "descricao": "Sua carne absorve golpes comuns, exceto ferro frio e armas mágicas, e ela é imune a encantos, medo, sono, fogo e frio, além de resistir bem à maioria das magias."
+   },
+   {
+    "nome": "Mordida doentia",
+    "descricao": "Sua mordida transmite uma febre que drena Vigor da vítima dia após dia até ela ser curada ou sucumbir."
+   },
+   {
+    "nome": "Assombra sonhos",
+    "descricao": "Usando sua pedra do coração, torna-se etérea e cavalga sobre um alvo adormecido a noite inteira, drenando um pouco de sua vitalidade a cada despertar."
+   },
+   {
+    "nome": "Rosto de empréstimo",
+    "descricao": "Pode assumir a forma de qualquer humanoide à vontade."
+   },
+   {
+    "nome": "Pedra do coração",
+    "descricao": "Carrega uma gema mágica que cura suas doenças, reforça sua resistência a provações, e sem ela perde o poder de virar fantasma ou aprisionar almas."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Corretora de almas",
+    "texto": "Caça mortais nos momentos de maior vulnerabilidade, prolongando a agonia noite após noite até prender a alma torturada em gemas escuras."
+   },
+   {
+    "titulo": "Rosto mutável, fome antiga",
+    "texto": "Sua aparência varia muito de uma para outra, mas todas compartilham o mesmo apetite por sofrimento alheio e mercados sombrios de almas."
+   }
+  ]
+ },
+ {
   "id": "mon-bruxa-verde-hag",
-  "nome": "Bruxa Verde (Hag)",
+  "nome": "Bruxa Verde",
   "nomeIngles": "Hag, Green",
   "categoria": "Humanoide monstruoso",
   "tipo": "elite",
@@ -3705,7 +4041,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,5 m",
+   "medida": "1,5 m de altura",
    "peso": "80 kg"
   },
   "ecologia": {
@@ -4091,7 +4427,7 @@
   "porte": "Pequeno",
   "dimensoes": {
    "medida": "60 centímetros de comprimento",
-   "peso": "de 9 a 23 quilos"
+   "peso": "de 9 a 23 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -4629,8 +4965,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1 metro de comprimento",
-   "peso": "cerca de 18 quilos"
+   "medida": "1 metro de comprimento",
+   "peso": "18 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -4733,7 +5069,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "até 3,7 metros de comprimento",
-   "peso": "até 900 quilos"
+   "peso": "até 900 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -4835,8 +5171,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "cerca de 45 centímetros de comprimento",
-   "peso": "cerca de 4 a 7 quilos"
+   "medida": "45 centímetros de comprimento",
+   "peso": "4 a 7 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -4936,7 +5272,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "cerca de 4 m de comprimento",
+   "medida": "4 m de comprimento",
    "peso": "1.600 kg"
   },
   "ecologia": {
@@ -5587,7 +5923,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "altura 1 m",
+   "medida": "1 m de altura",
    "peso": "16 kg"
   },
   "ecologia": {
@@ -5691,7 +6027,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento 2,7 m",
+   "medida": "2,7 m de comprimento",
    "peso": "160 kg"
   },
   "ecologia": {
@@ -5796,7 +6132,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 3,2 m",
+   "medida": "3,2 m de altura",
    "peso": "400 kg"
   },
   "ecologia": {
@@ -5919,7 +6255,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "envergadura 2,4 m",
+   "medida": "2,4 m de envergadura",
    "peso": "45 kg"
   },
   "ecologia": {
@@ -6491,7 +6827,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Altura 2,4 m",
+   "medida": "2,4 m de altura",
    "peso": "230 kg"
   },
   "ecologia": {
@@ -6614,8 +6950,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "cerca de 55 centímetros de comprimento",
-   "peso": "cerca de 1,2 quilo"
+   "medida": "55 centímetros de comprimento",
+   "peso": "1,2 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -7319,7 +7655,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "altura 1,2 m",
+   "medida": "1,2 m de altura",
    "peso": "36 kg"
   },
   "ecologia": {
@@ -7411,114 +7747,6 @@
   ]
  },
  {
-  "id": "mon-dark-naga",
-  "nome": "Dark Naga",
-  "nomeIngles": "Naga, Dark",
-  "categoria": "Aberração",
-  "tipo": "chefe",
-  "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
-  "tags": [
-   "aberracao",
-   "centelha"
-  ],
-  "ameaca": 5,
-  "centelha": 3,
-  "pendente": true,
-  "porte": "Grande",
-  "dimensoes": {
-   "medida": "cerca de 3,6 m de comprimento",
-   "peso": "mais de 136 kg"
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Underground",
-    "Ruins"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/dark-naga.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 5,
-   "destreza": 6,
-   "vigor": 6,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
-   "percepcao": 4,
-   "inteligencia": 5,
-   "raciocinio": 5
-  },
-  "vontade": 8,
-  "aparencia": 1,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 4
-  },
-  "combate": {
-   "pv": 54,
-   "defesa": 22,
-   "defesaMental": 24,
-   "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 7",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "5d6 +6",
-     "dano": "2d6 +5 perfConc",
-     "speed": 6
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Leitura de pensamentos",
-    "descricao": "Lê constantemente os pensamentos de quem está perto, a menos que a mente esteja protegida."
-   },
-   {
-    "nome": "Mente blindada",
-    "descricao": "É imune a qualquer leitura ou intrusão mental e resiste melhor a encantos e dominações."
-   },
-   {
-    "nome": "Ferrão sonífero",
-    "descricao": "Seu ferrão injeta um veneno que faz a vítima cair num sono profundo por horas se ela falhar em um teste de Vigor."
-   },
-   {
-    "nome": "Feitiçaria treinada",
-    "descricao": "Domina um repertório de magias arcanas, de mísseis mágicos a raios e relâmpagos."
-   },
-   {
-    "nome": "Corpo imune a peçonhas",
-    "descricao": "Nenhum veneno a afeta."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Serpente cobiçosa",
-    "texto": "De escamas negras e brilhantes, desliza por terras esquecidas e ruínas abandonadas atrás de tesouros e joias mórbidas."
-   },
-   {
-    "titulo": "Língua bifurcada, só mentiras",
-    "texto": "Manipula quem não consegue subjugar, e destrói com veneno e magia quem resiste; odeia sobretudo as de sua própria espécie."
-   }
-  ]
- },
- {
   "id": "mon-dark-stalker",
   "nome": "Dark Stalker",
   "nomeIngles": "Dark Stalker",
@@ -7535,7 +7763,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,8 m",
+   "medida": "1,8 m de altura",
    "peso": "45 kg"
   },
   "ecologia": {
@@ -7752,7 +7980,7 @@
   "porte": "Médio",
   "dimensoes": {
    "medida": "3 metros de comprimento",
-   "peso": "70 quilos"
+   "peso": "70 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -7854,7 +8082,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "altura 1,2 m",
+   "medida": "1,2 m de altura",
    "peso": "36 kg"
   },
   "ecologia": {
@@ -8122,7 +8350,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 2,1 m",
+   "medida": "2,1 m de altura",
    "peso": "90 kg"
   },
   "ecologia": {
@@ -8252,6 +8480,117 @@
   ]
  },
  {
+  "id": "mon-horned-devil-cornugon",
+  "nome": "Diabo Chifrudo",
+  "nomeIngles": "Devil, Horned",
+  "categoria": "Corruptor",
+  "tipo": "chefe",
+  "conceito": "exterior (diabo) Grande",
+  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+   "diabo",
+   "centelha"
+  ],
+  "ameaca": 6,
+  "centelha": 5,
+  "pendente": true,
+  "porte": "Grande",
+  "dimensoes": {
+   "medida": "2,7 m de altura",
+   "peso": "315 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/horned-devil-cornugon.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 10,
+   "destreza": 8,
+   "vigor": 10,
+   "influencia": 7,
+   "perspicacia": 5,
+   "compostura": 7,
+   "percepcao": 7,
+   "inteligencia": 4,
+   "raciocinio": 5
+  },
+  "vontade": 10,
+  "aparencia": -1,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 5,
+   "temperanca": 5,
+   "valor": 5
+  },
+  "combate": {
+   "pv": 70,
+   "defesa": 30,
+   "defesaMental": 34,
+   "absorcao": {
+    "impacto": 15,
+    "corte": 12,
+    "perfuracao": 12
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 8",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "7d6+2 +10",
+     "dano": "2d6 +10 corte",
+     "speed": 6
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Ferida Infernal",
+    "descricao": "O golpe de sua cauda abre feridas que sangram continuamente, difíceis de estancar mesmo com cuidados médicos ou magia de cura comum."
+   },
+   {
+    "nome": "Atordoar com a Corrente",
+    "descricao": "Cada acerto de sua corrente espinhosa pode deixar o alvo atordoado por vários instantes, incapaz de agir."
+   },
+   {
+    "nome": "Aura de Pavor",
+    "descricao": "Uma presença aterrorizante emana dele constantemente, incutindo medo em quem se aproxima."
+   },
+   {
+    "nome": "Regeneração",
+    "descricao": "Cura ferimentos rapidamente durante o combate; apenas armas ou magias abençoadas conseguem feri-lo de forma permanente."
+   },
+   {
+    "nome": "Visão nas Trevas",
+    "descricao": "Enxerga perfeitamente até em escuridão mágica absoluta."
+   },
+   {
+    "nome": "Poderes Infernais",
+    "descricao": "Pode anular magias de bem, lançar bolas de fogo e relâmpagos, projetar ilusões ou desaparecer para outro lugar à vontade."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Comandante das Legiões",
+    "texto": "Entre os guerreiros mais letais e obedientes do Inferno, espalha o domínio infernal onde quer que marche, comandando fiendes menores com disciplina implacável."
+   },
+   {
+    "titulo": "Corrente Espinhosa",
+    "texto": "Empunha uma corrente farpada com destreza mortal, e suas asas largas e chifres imponentes o tornam um terror reconhecível mesmo à distância."
+   }
+  ]
+ },
+ {
   "id": "mon-diabo-de-gelo",
   "nome": "Diabo de Gelo",
   "nomeIngles": "Devil, Ice (Gelugon)",
@@ -8269,7 +8608,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 3,3 m",
+   "medida": "3,3 m de altura",
    "peso": "360 kg"
   },
   "ecologia": {
@@ -8584,6 +8923,117 @@
   ]
  },
  {
+  "id": "mon-barbed-devil-hamatula",
+  "nome": "Diabo Espinhoso",
+  "nomeIngles": "Devil, Barbed",
+  "categoria": "Corruptor",
+  "tipo": "chefe",
+  "conceito": "exterior (diabo) Médio",
+  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+   "diabo",
+   "centelha"
+  ],
+  "ameaca": 5,
+  "centelha": 4,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "2,1 m de altura",
+   "peso": "135 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/barbed-devil-hamatula.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 7,
+   "destreza": 7,
+   "vigor": 7,
+   "influencia": 5,
+   "perspicacia": 4,
+   "compostura": 5,
+   "percepcao": 4,
+   "inteligencia": 3,
+   "raciocinio": 4
+  },
+  "vontade": 9,
+  "aparencia": 0,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 5,
+   "temperanca": 5,
+   "valor": 5
+  },
+  "combate": {
+   "pv": 46,
+   "defesa": 26,
+   "defesaMental": 27,
+   "absorcao": {
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 6",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "6d6 +8",
+     "dano": "1d6 +7 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Defesa Espinhosa",
+    "descricao": "Seu corpo é coberto de espinhos afiados; quem o golpeia corpo a corpo ou desarmado sofre dano perfurante dos próprios espinhos, a menos que ataque com arma de alcance."
+   },
+   {
+    "nome": "Empalar",
+    "descricao": "Ao manter um inimigo agarrado, pode cravar suas garras ainda mais fundo, causando dano perfurante severo adicional."
+   },
+   {
+    "nome": "Pavor pelo Toque",
+    "descricao": "Suas garras espalham terror; quem é ferido por elas pode fugir amedrontado por vários instantes, a menos que resista com força de vontade."
+   },
+   {
+    "nome": "Visão nas Trevas",
+    "descricao": "Enxerga perfeitamente até em escuridão mágica absoluta."
+   },
+   {
+    "nome": "Resistências Infernais",
+    "descricao": "Resiste a ácido e frio, é imune a fogo e veneno, e uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma boa."
+   },
+   {
+    "nome": "Poderes Ígneos",
+    "descricao": "Pode criar chamas, lançar raios ofuscantes de luz, projetar ilusões elaboradas ou desaparecer para outro lugar à vontade."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Guardião dos Cárceres Infernais",
+    "texto": "Sentinela dos calabouços do Inferno, zela pelas correntes dos condenados e os tesouros escondidos de demônios maiores, sentindo prazer perverso no calor do sangue sobre seus próprios espinhos."
+   },
+   {
+    "titulo": "Colecionador de Troféus",
+    "texto": "Costuma pendurar restos perfurados de suas vítimas nas paredes de seu covil, como um colecionador macabro de despojos de guerra."
+   }
+  ]
+ },
+ {
   "id": "mon-diabo-osseo",
   "nome": "Diabo Ósseo",
   "nomeIngles": "Devil, Bone (Osyluth)",
@@ -8601,7 +9051,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 2,7 m",
+   "medida": "2,7 m de altura",
    "peso": "230 kg"
   },
   "ecologia": {
@@ -8753,7 +9203,7 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "altura 60 cm",
+   "medida": "60 cm de altura",
    "peso": "3,6 kg"
   },
   "ecologia": {
@@ -8889,220 +9339,6 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Circula em Calin como o mais discreto dos horrores: um corvo comum pousado na janela do inquisidor, ouvindo tudo, relatando tudo, tecendo lentamente a queda de alguém."
-   }
-  ]
- },
- {
-  "id": "mon-dire-ape-gigantopithecus",
-  "nome": "Dire Ape (Gigantopithecus)",
-  "nomeIngles": "Dire Ape",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 3,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Grande",
-  "dimensoes": {
-   "medida": "2,7 m de altura",
-   "peso": "550 kg"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Forest"
-   ],
-   "clima": [
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/dire-ape-gigantopithecus.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 6,
-   "destreza": 4,
-   "vigor": 6,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 1
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "combate": {
-   "pv": 54,
-   "defesa": 10,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "4d6+2",
-     "dano": "2d6 +6 perfConc",
-     "speed": 6
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Garras e Presas",
-    "descricao": "Ataca com mordida e duas garras poderosas, típicas de um grande primata selvagem."
-   },
-   {
-    "nome": "Dilacerar",
-    "descricao": "Se as duas garras acertam o mesmo alvo ao mesmo tempo, o dire ape rasga a carne com força extra, causando dano adicional."
-   },
-   {
-    "nome": "Trepador Nato",
-    "descricao": "Escala árvores e penhascos com a mesma velocidade com que corre pelo chão."
-   },
-   {
-    "nome": "Faro Aguçado",
-    "descricao": "Sente cheiros a grande distância e enxerga bem mesmo em pouca luz, raramente sendo pego de surpresa."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Território",
-    "texto": "O dire ape ataca sem aviso qualquer coisa que invada seu território, incluindo outros de sua espécie fora do próprio bando, e só recua quando o intruso está morto ou fugiu."
-   },
-   {
-    "titulo": "Comportamento",
-    "texto": "Contra oponentes bem protegidos, prefere agarrar e imobilizar o alvo no chão antes de dilacerá-lo com as garras."
-   },
-   {
-    "titulo": "Aparência",
-    "texto": "Um macho adulto chega a quase três metros de altura, com testa protuberante, olhos fundos e braços musculosos que quase tocam o chão."
-   }
-  ]
- },
- {
-  "id": "mon-dire-lion-spotted-lion",
-  "nome": "Dire Lion (Spotted Lion)",
-  "nomeIngles": "Dire Lion",
-  "categoria": "Aberração",
-  "tipo": "elite",
-  "conceito": "monstro Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
-  "tags": [
-   "monstro",
-   "centelha"
-  ],
-  "ameaca": 4,
-  "centelha": 3,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "2,5 m de comprimento",
-   "peso": "300 kg"
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Plains",
-    "Mountain"
-   ],
-   "clima": [
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/dire-lion-spotted-lion.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 8,
-   "destreza": 4,
-   "vigor": 5,
-   "influencia": 2,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 1
-  },
-  "vontade": 8,
-  "aparencia": 1,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 40,
-   "defesa": 16,
-   "defesaMental": 18,
-   "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "6d6+2 +6",
-     "dano": "1d6 +8 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Investida Avassaladora",
-    "descricao": "Ao avançar em carga, ataca com a mordida e as duas garras no mesmo movimento, derrubando a presa antes que ela reaja."
-   },
-   {
-    "nome": "Garras Rasgando",
-    "descricao": "Agarra o alvo com a mordida e crava as garras traseiras repetidamente enquanto o segura, rasgando a carne a cada rodada."
-   },
-   {
-    "nome": "Faro e Visão Noturna",
-    "descricao": "Enxerga bem na penumbra e fareja presas mesmo escondidas ou distantes."
-   },
-   {
-    "nome": "Predador Furtivo",
-    "descricao": "Move-se com grande agilidade e quase sem ruído entre a vegetação densa, perfeito para emboscadas."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Leão das Cavernas",
-    "texto": "Também chamado de leão-manchado, este predador imenso pode medir mais de quatro metros e pesar toneladas."
-   },
-   {
-    "titulo": "Crueldade Selvagem",
-    "texto": "Ao contrário de outros grandes felinos, parece extrair prazer perverso em atormentar a presa antes de matá-la, brincando com seu terror."
-   },
-   {
-    "titulo": "Prole de Deuses Cruéis",
-    "texto": "Muitas tribos creem que estes leões descendem de divindades malignas e caçam a fera assim que percebem sua presença nas redondezas."
    }
   ]
  },
@@ -9380,7 +9616,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,8 m na forma humana padrão",
+   "medida": "1,8 m de altura na forma humana padrão",
    "peso": "70 kg"
   },
   "ecologia": {
@@ -9527,7 +9763,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 2,4 m de comprimento",
+   "medida": "2,4 m de comprimento",
    "peso": "180 kg"
   },
   "ecologia": {
@@ -9637,7 +9873,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "9,5 m de comprimento, envergadura de 14 m",
-   "peso": "7,5 toneladas"
+   "peso": "7,5 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -9959,7 +10195,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "9,5 m de comprimento, envergadura de 15 m",
-   "peso": "9 toneladas"
+   "peso": "9 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -10139,7 +10375,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "9 m de comprimento, com a cauda",
-   "peso": "7 toneladas"
+   "peso": "7 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -10301,7 +10537,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "9 m de comprimento, com a cauda",
-   "peso": "7,3 toneladas"
+   "peso": "7,3 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -10467,7 +10703,7 @@
   "porte": "Imenso",
   "dimensoes": {
    "medida": "16,5 m de comprimento, com a cauda",
-   "peso": "59 toneladas"
+   "peso": "59 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -10791,7 +11027,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "9 metros de comprimento",
-   "peso": "4 toneladas"
+   "peso": "4 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -10903,7 +11139,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "altura 90 cm",
+   "medida": "90 cm de altura",
    "peso": "27 kg"
   },
   "ecologia": {
@@ -11185,7 +11421,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "3 metros de altura",
-   "peso": "180 quilos"
+   "peso": "180 kg"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -11296,7 +11532,7 @@
   "porte": "Médio",
   "dimensoes": {
    "medida": "1,6 metro de altura",
-   "peso": "55 quilos"
+   "peso": "55 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -11403,7 +11639,7 @@
   "porte": "Médio",
   "dimensoes": {
    "medida": "1,6 metro de altura",
-   "peso": "55 quilos"
+   "peso": "55 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -11625,8 +11861,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,2 metro de altura",
-   "peso": "cerca de 55 quilos"
+   "medida": "1,2 metro de altura",
+   "peso": "55 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -11884,7 +12120,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "14 metros de comprimento",
-   "peso": "1,8 tonelada"
+   "peso": "1,8 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -11970,6 +12206,109 @@
   ]
  },
  {
+  "id": "mon-small-water-elemental",
+  "nome": "Elemental da Água (Pequeno)",
+  "nomeIngles": "Elemental, Water",
+  "categoria": "Elemental",
+  "tipo": "soldado",
+  "conceito": "exterior (água) Pequeno",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+   "elemental",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 1,
+  "pendente": true,
+  "porte": "Pequeno",
+  "dimensoes": {
+   "medida": "1,2 metro de altura, corpo líquido em constante fluxo",
+   "peso": "100 kg"
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Water"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/small-water-elemental.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 4,
+   "destreza": 2,
+   "vigor": 3,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 26,
+   "defesa": 6,
+   "defesaMental": 12,
+   "absorcao": {
+    "impacto": 4,
+    "corte": 2,
+    "perfuracao": 2
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "3d6+2 +2",
+     "dano": "1d6 +4 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Nado veloz",
+    "descricao": "Move-se pela água com grande velocidade e controle, muito mais ágil do que em terra firme."
+   },
+   {
+    "nome": "Vórtice",
+    "descricao": "Uma vez por cena pode se transformar em um pequeno redemoinho, sugando e desorientando quem estiver próximo."
+   },
+   {
+    "nome": "Encharcar",
+    "descricao": "Seu toque encharca tochas, pergaminhos e outros itens sensíveis à água, e pode apagar fogo pequeno."
+   },
+   {
+    "nome": "Domínio da água",
+    "descricao": "Quase impossível de afogar ou arrastar, e ataques contra ele em meio líquido perdem força."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Onda com vontade",
+    "texto": "Convocado das águas de outro plano, assume forma líquida que nunca para de se mover, mesmo em repouso aparente."
+   },
+   {
+    "titulo": "Frieza sem malícia",
+    "texto": "Não odeia nem ama; apenas cumpre a vontade de quem o trouxe até se libertar do vínculo."
+   }
+  ]
+ },
+ {
   "id": "mon-elemental-da-terra-grande",
   "nome": "Elemental da Terra (Grande)",
   "nomeIngles": "Elemental, Large Earth",
@@ -11988,7 +12327,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "3 m de altura",
-   "peso": "2 toneladas"
+   "peso": "2 t"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -12107,6 +12446,317 @@
   ]
  },
  {
+  "id": "mon-small-earth-elemental",
+  "nome": "Elemental da Terra (Pequeno)",
+  "nomeIngles": "Elemental, Earth",
+  "categoria": "Elemental",
+  "tipo": "soldado",
+  "conceito": "exterior (terra) Pequeno",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+   "elemental",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 1,
+  "pendente": true,
+  "porte": "Pequeno",
+  "dimensoes": {
+   "medida": "1,2 metro de altura, denso e compacto",
+   "peso": "300 kg"
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Underground",
+    "Mountain"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/small-earth-elemental.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 5,
+   "destreza": 2,
+   "vigor": 3,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 26,
+   "defesa": 6,
+   "defesaMental": 12,
+   "absorcao": {
+    "impacto": 4,
+    "corte": 2,
+    "perfuracao": 2
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "4d6 +2",
+     "dano": "1d6 +5 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Escavar e fundir com a pedra",
+    "descricao": "Cava pela terra sólida como se fosse água e atravessa a rocha, deixando o caminho intacto atrás de si."
+   },
+   {
+    "nome": "Domínio da terra",
+    "descricao": "Ganha vantagem para empurrar ou derrubar quem toca o chão, e dificilmente é ele mesmo derrubado."
+   },
+   {
+    "nome": "Corpo de pedra viva",
+    "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+   },
+   {
+    "nome": "Sente tremores",
+    "descricao": "Percebe movimento através da terra e da pedra ao redor, mesmo sem enxergar."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Osso do mundo",
+    "texto": "Fragmento vivo da própria pedra fundamental, move-se devagar mas com força capaz de rachar muralhas."
+   },
+   {
+    "titulo": "Paciência de montanha",
+    "texto": "Onde outros elementais agem por impulso, o da terra espera, imóvel como rocha, até o momento certo de atacar."
+   }
+  ]
+ },
+ {
+  "id": "mon-small-air-elemental",
+  "nome": "Elemental do Ar (Pequeno)",
+  "nomeIngles": "Elemental, Air",
+  "categoria": "Elemental",
+  "tipo": "soldado",
+  "conceito": "exterior (ar) Pequeno",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+   "elemental",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 1,
+  "pendente": true,
+  "porte": "Pequeno",
+  "dimensoes": {
+   "medida": "1,2 metro de diâmetro, em constante redemoinho",
+   "peso": "praticamente sem peso"
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Sky",
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/small-air-elemental.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 3,
+   "destreza": 5,
+   "vigor": 3,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 26,
+   "defesa": 14,
+   "defesaMental": 12,
+   "absorcao": {
+    "impacto": 4,
+    "corte": 2,
+    "perfuracao": 2
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "3d6 +2",
+     "dano": "1d6 +3 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Voo perfeito",
+    "descricao": "Flutua e manobra no ar com controle total, sem risco de perder equilíbrio ou cair."
+   },
+   {
+    "nome": "Redemoinho",
+    "descricao": "Uma vez por cena pode se transformar em um pequeno tornado, arrastando quem estiver perto para dentro dele."
+   },
+   {
+    "nome": "Domínio do ar",
+    "descricao": "Ataques feitos à distância contra ele perdem força, como se o vento desviasse os projéteis."
+   },
+   {
+    "nome": "Corpo imaterial de vento",
+    "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Sopro vivo",
+    "texto": "Convocado de planos distantes, o elemental do ar é um turbilhão com vontade própria, sempre em movimento, nunca em repouso."
+   },
+   {
+    "titulo": "Servo relutante",
+    "texto": "Obedece a quem o convocou apenas enquanto o vínculo mágico se sustenta; rompido o elo, volta furioso ao próprio plano."
+   }
+  ]
+ },
+ {
+  "id": "mon-small-fire-elemental",
+  "nome": "Elemental do Fogo (Pequeno)",
+  "nomeIngles": "Elemental, Fire",
+  "categoria": "Elemental",
+  "tipo": "soldado",
+  "conceito": "exterior (fogo) Pequeno",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+   "elemental",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 1,
+  "pendente": true,
+  "porte": "Pequeno",
+  "dimensoes": {
+   "medida": "1,2 metro de altura, silhueta de chamas",
+   "peso": "praticamente sem peso"
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/small-fire-elemental.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 2,
+   "destreza": 3,
+   "vigor": 2,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 24,
+   "defesa": 10,
+   "defesaMental": 12,
+   "absorcao": {
+    "impacto": 3,
+    "corte": 2,
+    "perfuracao": 2
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +2 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Toque em chamas",
+    "descricao": "Seu golpe deixa a vítima queimando, sofrendo dano contínuo até que alguém apague o fogo ou o efeito passe."
+   },
+   {
+    "nome": "Corpo incandescente",
+    "descricao": "Imune ao próprio fogo e a queimaduras, mas a água fria e o gelo o enfraquecem visivelmente."
+   },
+   {
+    "nome": "Veloz como labareda",
+    "descricao": "Corre e se espalha com rapidez incomum, quase como o próprio fogo se alastrando."
+   },
+   {
+    "nome": "Feito de chama pura",
+    "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Fragmento do incêndio eterno",
+    "texto": "Arrancado de um plano onde tudo arde sem se consumir, deixa um rastro de fumaça e cinzas por onde passa."
+   },
+   {
+    "titulo": "Fome de queimar",
+    "texto": "Não distingue amigo de inimigo quando solto perto de algo inflamável; sua natureza é simplesmente consumir."
+   }
+  ]
+ },
+ {
   "id": "mon-electric-eel",
   "nome": "Enguia Elétrica",
   "nomeIngles": "Electric Eel",
@@ -12122,8 +12772,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "cerca de 1,8 metro de comprimento",
-   "peso": "cerca de 20 quilos"
+   "medida": "1,8 metro de comprimento",
+   "peso": "20 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -12334,7 +12984,7 @@
   "porte": "Miúdo",
   "dimensoes": {
    "medida": "enxame de 3 m de diâmetro",
-   "peso": "cerca de 15 kg no total"
+   "peso": "15 kg no total"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -12437,7 +13087,7 @@
   "porte": "Miúdo",
   "dimensoes": {
    "medida": "2 cm de comprimento (por indivíduo)",
-   "peso": "enxame de milhares de indivíduos, poucos quilos ao todo"
+   "peso": "enxame de milhares de indivíduos, poucos kg ao todo"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -13087,7 +13737,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,8 m (envergadura 4,5 m)",
+   "medida": "1,8 m de altura (envergadura 4,5 m)",
    "peso": "68 kg"
   },
   "ecologia": {
@@ -13767,7 +14417,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "9 metros de comprimento e 4,3 metros de altura",
-   "peso": "2,3 toneladas"
+   "peso": "2,3 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -13865,8 +14515,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,8 metro de altura",
-   "peso": "cerca de 90 quilos"
+   "medida": "1,8 metro de altura",
+   "peso": "90 kg"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -14710,8 +15360,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,2 metro de altura",
-   "peso": "cerca de 23 quilos"
+   "medida": "1,2 metro de altura",
+   "peso": "23 kg"
   },
   "ecologia": {
    "tipo": "Plant",
@@ -14813,7 +15463,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "Altura 1,5 m",
+   "medida": "1,5 m de altura",
    "peso": "180 kg (pedra densa)"
   },
   "ecologia": {
@@ -14942,7 +15592,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 15 cm de altura em repouso, alastrando-se muito mais quando ativa",
+   "medida": "15 cm de altura em repouso, alastrando-se muito mais quando ativa",
    "peso": "230 kg"
   },
   "ecologia": {
@@ -16028,7 +16678,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura 7,5 m",
+   "medida": "7,5 m de altura",
    "peso": "11 t"
   },
   "ecologia": {
@@ -16175,7 +16825,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura 7 m",
+   "medida": "7 m de altura",
    "peso": "8 t"
   },
   "ecologia": {
@@ -16313,7 +16963,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 4,5 m",
+   "medida": "4,5 m de altura",
    "peso": "3,2 t"
   },
   "ecologia": {
@@ -16446,7 +17096,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 4,3 m",
+   "medida": "4,3 m de altura",
    "peso": "2,8 t"
   },
   "ecologia": {
@@ -16671,7 +17321,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura 3,7 m",
+   "medida": "3,7 m de altura",
    "peso": "1,8 t"
   },
   "ecologia": {
@@ -17575,7 +18225,7 @@
   "porte": "Médio",
   "dimensoes": {
    "medida": "2,5 metros de comprimento",
-   "peso": "150 quilos"
+   "peso": "150 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -17806,7 +18456,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 1,7 m em pé, envergadura de braços 2,4 m",
+   "medida": "1,7 m de altura em pé, envergadura de braços 2,4 m",
    "peso": "180 kg"
   },
   "ecologia": {
@@ -17916,7 +18566,7 @@
   "porte": "Colossal",
   "dimensoes": {
    "medida": "20 m de comprimento, com a cauda",
-   "peso": "88 toneladas"
+   "peso": "88 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -18395,106 +19045,6 @@
   ]
  },
  {
-  "id": "mon-guardian-naga",
-  "nome": "Guardian Naga",
-  "nomeIngles": "Naga, Guardian",
-  "categoria": "Aberração",
-  "tipo": "chefe",
-  "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
-  "tags": [
-   "aberracao",
-   "centelha"
-  ],
-  "ameaca": 5,
-  "centelha": 4,
-  "pendente": true,
-  "porte": "Grande",
-  "dimensoes": {
-   "medida": "cerca de 4,3 m de comprimento",
-   "peso": "159 kg"
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Plains",
-    "Ruins"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/guardian-naga.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 7,
-   "destreza": 7,
-   "vigor": 7,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
-   "percepcao": 5,
-   "inteligencia": 5,
-   "raciocinio": 5
-  },
-  "vontade": 9,
-  "aparencia": 1,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 4
-  },
-  "combate": {
-   "pv": 58,
-   "defesa": 26,
-   "defesaMental": 27,
-   "absorcao": {
-    "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 7",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "6d6 +8",
-     "dano": "2d6 +7 perfConc",
-     "speed": 6
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Veneno debilitante",
-    "descricao": "A mordida ou o cuspe injetam um veneno que corrói a vitalidade da vítima ao longo de vários instantes, a menos que ela resista em testes de Vigor sucessivos."
-   },
-   {
-    "nome": "Cuspe à distância",
-    "descricao": "Consegue cuspir seu veneno com precisão em um alvo a até 9 metros."
-   },
-   {
-    "nome": "Magias sagradas e arcanas",
-    "descricao": "Lança tanto feitiços arcanos quanto orações de cura e proteção, incomum entre as serpentes de sua espécie."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Guardiã de lugares sagrados",
-    "texto": "De escamas radiantes e capuz de cobra, protege cachoeiras, picos e templos que considera dignos de reverência."
-   },
-   {
-    "titulo": "Linhagem de sentinelas",
-    "texto": "Um casal costuma se instalar perto de um local que julga precisar de proteção, criando a ninhada ali; os filhotes escolhem partir ou assumir a guarda do ancestral."
-   }
-  ]
- },
- {
   "id": "mon-harpia",
   "nome": "Harpia",
   "nomeIngles": "Harpy",
@@ -18512,7 +19062,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "Altura 1,6 m, envergadura 4,5 m",
+   "medida": "1,6 m de altura, envergadura 4,5 m",
    "peso": "55 kg"
   },
   "ecologia": {
@@ -18648,8 +19198,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "cerca de 50 centímetros de envergadura",
-   "peso": "cerca de 1 quilo"
+   "medida": "50 centímetros de envergadura",
+   "peso": "1 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -18852,7 +19402,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 3 m",
+   "medida": "3 m de altura",
    "peso": "320 kg"
   },
   "ecologia": {
@@ -19312,7 +19862,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Comprimento 3 m, envergadura 5,5 m",
+   "medida": "3 m de comprimento, envergadura 5,5 m",
    "peso": "450 kg"
   },
   "ecologia": {
@@ -19630,6 +20180,121 @@
   ]
  },
  {
+  "id": "mon-wererat-human-form",
+  "nome": "Homem-Rato (forma humana)",
+  "nomeIngles": "Lycanthrope, Wererat",
+  "categoria": "Humanoide",
+  "tipo": "soldado",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+   "humanoide",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 2,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,7 m de altura",
+   "peso": "65 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/wererat-human-form.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 3,
+   "destreza": 4,
+   "vigor": 4,
+   "influencia": 1,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 5,
+   "inteligencia": 2,
+   "raciocinio": 3
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 37,
+   "defesa": 14,
+   "defesaMental": 15,
+   "absorcao": {
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 5",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "3d6 +4",
+     "dano": "1d6 +3 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Forma Mutável",
+    "descricao": "Pode assumir forma humana, híbrida ou de rato gigante à vontade, cada uma com vantagens diferentes em combate ou disfarce."
+   },
+   {
+    "nome": "Ataque Furtivo",
+    "descricao": "Golpeia com precisão cirúrgica quando a vítima está distraída ou cercada, causando dano extra."
+   },
+   {
+    "nome": "Esquiva Sobrenatural",
+    "descricao": "Evita quase por completo efeitos de área ao tentar escapar, saindo praticamente ileso onde outros se feririam gravemente."
+   },
+   {
+    "nome": "Pele Resistente em Forma Híbrida",
+    "descricao": "Na forma de meio-rato, sua pele grossa absorve boa parte dos golpes comuns; apenas prata a fere por completo."
+   },
+   {
+    "nome": "Mordida Maldita",
+    "descricao": "Em forma híbrida, a mordida transmite uma doença sombria; se não for curada, a vítima corre o risco de se tornar uma nova criatura amaldiçoada como ela."
+   },
+   {
+    "nome": "Afinidade com Ratos",
+    "descricao": "Entende e se comunica com ratos comuns e gigantes, que raramente atacam um dos seus."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Sociedade nas Sombras",
+    "texto": "Vivem em guildas escondidas sob cidades, misturados entre ladrões e contrabandistas comuns."
+   },
+   {
+    "titulo": "Maldição que se Espalha",
+    "texto": "Cada mordida não curada é uma sentença: a vítima pode em breve se tornar outra criatura como ela, sem nunca ter escolhido esse destino."
+   },
+   {
+    "titulo": "Disfarce Perfeito",
+    "texto": "Durante o dia, muitos vivem vidas comuns como mercadores, ladrões ou guardas, escondendo a fera sob a pele humana."
+   }
+  ]
+ },
+ {
   "id": "mon-homunculus",
   "nome": "Homunculus",
   "nomeIngles": "Homunculus",
@@ -19646,7 +20311,7 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "cerca de 75 cm de envergadura",
+   "medida": "75 cm de envergadura",
    "peso": "3 kg"
   },
   "ecologia": {
@@ -19735,117 +20400,6 @@
    {
     "titulo": "Loucura da orfandade",
     "texto": "Se o criador morre, o homúnculo perde a razão e passa a atacar cegamente qualquer um que se aproxime de seu covil."
-   }
-  ]
- },
- {
-  "id": "mon-horned-devil-cornugon",
-  "nome": "Horned Devil (Cornugon)",
-  "nomeIngles": "Devil, Horned",
-  "categoria": "Corruptor",
-  "tipo": "chefe",
-  "conceito": "exterior (diabo) Grande",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-   "diabo",
-   "centelha"
-  ],
-  "ameaca": 6,
-  "centelha": 5,
-  "pendente": true,
-  "porte": "Grande",
-  "dimensoes": {
-   "medida": "altura 2,7 m",
-   "peso": "315 kg"
-  },
-  "ecologia": {
-   "tipo": "Fiend",
-   "terreno": [
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/horned-devil-cornugon.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 10,
-   "destreza": 8,
-   "vigor": 10,
-   "influencia": 7,
-   "perspicacia": 5,
-   "compostura": 7,
-   "percepcao": 7,
-   "inteligencia": 4,
-   "raciocinio": 5
-  },
-  "vontade": 10,
-  "aparencia": -1,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 5,
-   "temperanca": 5,
-   "valor": 5
-  },
-  "combate": {
-   "pv": 70,
-   "defesa": 30,
-   "defesaMental": 34,
-   "absorcao": {
-    "impacto": 15,
-    "corte": 12,
-    "perfuracao": 12
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 8",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "7d6+2 +10",
-     "dano": "2d6 +10 corte",
-     "speed": 6
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Ferida Infernal",
-    "descricao": "O golpe de sua cauda abre feridas que sangram continuamente, difíceis de estancar mesmo com cuidados médicos ou magia de cura comum."
-   },
-   {
-    "nome": "Atordoar com a Corrente",
-    "descricao": "Cada acerto de sua corrente espinhosa pode deixar o alvo atordoado por vários instantes, incapaz de agir."
-   },
-   {
-    "nome": "Aura de Pavor",
-    "descricao": "Uma presença aterrorizante emana dele constantemente, incutindo medo em quem se aproxima."
-   },
-   {
-    "nome": "Regeneração",
-    "descricao": "Cura ferimentos rapidamente durante o combate; apenas armas ou magias abençoadas conseguem feri-lo de forma permanente."
-   },
-   {
-    "nome": "Visão nas Trevas",
-    "descricao": "Enxerga perfeitamente até em escuridão mágica absoluta."
-   },
-   {
-    "nome": "Poderes Infernais",
-    "descricao": "Pode anular magias de bem, lançar bolas de fogo e relâmpagos, projetar ilusões ou desaparecer para outro lugar à vontade."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Comandante das Legiões",
-    "texto": "Entre os guerreiros mais letais e obedientes do Inferno, espalha o domínio infernal onde quer que marche, comandando fiendes menores com disciplina implacável."
-   },
-   {
-    "titulo": "Corrente Espinhosa",
-    "texto": "Empunha uma corrente farpada com destreza mortal, e suas asas largas e chifres imponentes o tornam um terror reconhecível mesmo à distância."
    }
   ]
  },
@@ -20087,7 +20641,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "cerca de 60 cm de altura",
+   "medida": "60 cm de altura",
    "peso": "18 kg"
   },
   "ecologia": {
@@ -20198,7 +20752,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,8 m de altura",
+   "medida": "1,8 m de altura",
    "peso": "70 kg"
   },
   "ecologia": {
@@ -20413,7 +20967,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "comprimento 1,5 m",
+   "medida": "1,5 m de comprimento",
    "peso": "110 kg"
   },
   "ecologia": {
@@ -20743,7 +21297,7 @@
   "porte": "Colossal",
   "dimensoes": {
    "medida": "35 m de comprimento total, entre corpo e tentáculos",
-   "peso": "140 toneladas"
+   "peso": "140 t"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -21226,7 +21780,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento 3 m, corpo com quartos traseiros de leão",
+   "medida": "3 m de comprimento, corpo com quartos traseiros de leão",
    "peso": "160 kg"
   },
   "ecologia": {
@@ -21356,114 +21910,6 @@
   ]
  },
  {
-  "id": "mon-lantern-archon",
-  "nome": "Lantern Archon",
-  "nomeIngles": "Archon, Lantern",
-  "categoria": "Celestial",
-  "tipo": "soldado",
-  "conceito": "exterior (anjo) Pequeno",
-  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-  "tags": [
-   "celestial",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 2,
-  "pendente": true,
-  "porte": "Pequeno",
-  "dimensoes": {
-   "medida": "1 m de diâmetro",
-   "peso": "5 kg"
-  },
-  "ecologia": {
-   "tipo": "Celestial",
-   "terreno": [
-    "Sky",
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/lantern-archon.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 0,
-   "destreza": 2,
-   "vigor": 3,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 7,
-  "aparencia": 10,
-  "virtudes": {
-   "compaixao": 5,
-   "conviccao": 5,
-   "temperanca": 4,
-   "valor": 4
-  },
-  "combate": {
-   "pv": 26,
-   "defesa": 8,
-   "defesaMental": 15,
-   "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "1d6+2 +4",
-     "dano": "1d6 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Raios de Luz",
-    "descricao": "Dispara feixes de luz pura à distância que atravessam qualquer proteção sobrenatural do alvo."
-   },
-   {
-    "nome": "Absorção Contra o Mal",
-    "descricao": "Sua forma luminosa reduz drasticamente qualquer dano físico infligido por criaturas malignas."
-   },
-   {
-    "nome": "Imunidades Celestiais",
-    "descricao": "É imune a eletricidade e a efeitos que transformam em pedra."
-   },
-   {
-    "nome": "Voo Perfeito",
-    "descricao": "Flutua e voa com controle impecável, praticamente sem esforço."
-   },
-   {
-    "nome": "Fusão",
-    "descricao": "Nove desses seres podem se fundir numa única entidade de vento e luz muito mais poderosa, permanecendo unidos por alguns instantes antes de se separar novamente."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Natureza",
-    "texto": "São globos de pureza espiritual e luz pálida, curiosos e amistosos, sempre dispostos a conversar e ajudar viajantes, embora sua força seja fraca demais para tarefas físicas comuns."
-   },
-   {
-    "titulo": "Comportamento",
-    "texto": "Brilham constantemente, controlando a cor e a intensidade da própria luz por prazer, e costumam modular esse brilho ao ritmo de música ou conversa."
-   }
-  ]
- },
- {
   "id": "mon-leao",
   "nome": "Leão",
   "nomeIngles": "Lion",
@@ -21479,7 +21925,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento 2,5 m, com cauda",
+   "medida": "2,5 m de comprimento, com cauda",
    "peso": "190 kg"
   },
   "ecologia": {
@@ -21587,6 +22033,114 @@
   ]
  },
  {
+  "id": "mon-dire-lion-spotted-lion",
+  "nome": "Leão Atroz",
+  "nomeIngles": "Dire Lion",
+  "categoria": "Aberração",
+  "tipo": "elite",
+  "conceito": "monstro Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+   "monstro",
+   "centelha"
+  ],
+  "ameaca": 4,
+  "centelha": 3,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "2,5 m de comprimento",
+   "peso": "300 kg"
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Plains",
+    "Mountain"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/dire-lion-spotted-lion.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 8,
+   "destreza": 4,
+   "vigor": 5,
+   "influencia": 2,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 1
+  },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 40,
+   "defesa": 16,
+   "defesaMental": 18,
+   "absorcao": {
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 2",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "6d6+2 +6",
+     "dano": "1d6 +8 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Investida Avassaladora",
+    "descricao": "Ao avançar em carga, ataca com a mordida e as duas garras no mesmo movimento, derrubando a presa antes que ela reaja."
+   },
+   {
+    "nome": "Garras Rasgando",
+    "descricao": "Agarra o alvo com a mordida e crava as garras traseiras repetidamente enquanto o segura, rasgando a carne a cada rodada."
+   },
+   {
+    "nome": "Faro e Visão Noturna",
+    "descricao": "Enxerga bem na penumbra e fareja presas mesmo escondidas ou distantes."
+   },
+   {
+    "nome": "Predador Furtivo",
+    "descricao": "Move-se com grande agilidade e quase sem ruído entre a vegetação densa, perfeito para emboscadas."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Leão das Cavernas",
+    "texto": "Também chamado de leão-manchado, este predador imenso pode medir mais de quatro metros e pesar toneladas."
+   },
+   {
+    "titulo": "Crueldade Selvagem",
+    "texto": "Ao contrário de outros grandes felinos, parece extrair prazer perverso em atormentar a presa antes de matá-la, brincando com seu terror."
+   },
+   {
+    "titulo": "Prole de Deuses Cruéis",
+    "texto": "Muitas tribos creem que estes leões descendem de divindades malignas e caçam a fera assim que percebem sua presença nas redondezas."
+   }
+  ]
+ },
+ {
   "id": "mon-lemure",
   "nome": "Lêmure",
   "nomeIngles": "Lemure",
@@ -21603,7 +22157,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,5 m",
+   "medida": "1,5 m de altura",
    "peso": "45 kg"
   },
   "ecologia": {
@@ -21829,8 +22383,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "cerca de 6 a 9 metros de comprimento",
-   "peso": "várias toneladas de massa viscosa"
+   "medida": "6 a 9 metros de comprimento",
+   "peso": "várias t de massa viscosa"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -22223,7 +22777,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1 m de diâmetro",
+   "medida": "1 m de diâmetro",
    "peso": "150 kg"
   },
   "ecologia": {
@@ -22312,6 +22866,118 @@
   ]
  },
  {
+  "id": "mon-werewolf",
+  "nome": "Lobisomem",
+  "nomeIngles": "Lycanthrope, Werewolf",
+  "categoria": "Humanoide",
+  "tipo": "soldado",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+   "humanoide",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 2,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,8 m de altura",
+   "peso": "80 kg"
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Forest",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/werewolf.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 5,
+   "destreza": 3,
+   "vigor": 4,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 4,
+   "inteligencia": 2,
+   "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 37,
+   "defesa": 12,
+   "defesaMental": 15,
+   "absorcao": {
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 4",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "4d6 +4",
+     "dano": "1d6 +5 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Forma Mutável",
+    "descricao": "Alterna entre forma humana, híbrida e lobo puro, cada uma útil para caçar, se disfarçar ou lutar."
+   },
+   {
+    "nome": "Pele Resistente em Forma Híbrida",
+    "descricao": "Na forma híbrida, sua pele peluda absorve grande parte dos ferimentos comuns; só prata a fere de verdade."
+   },
+   {
+    "nome": "Mordida que Derruba e Amaldiçoa",
+    "descricao": "A mordida em forma híbrida pode derrubar a vítima no chão e transmitir a maldição da licantropia caso a ferida não seja tratada a tempo."
+   },
+   {
+    "nome": "Firme Contra o Medo",
+    "descricao": "Veterano de combate, resiste melhor ao pavor que a maioria dos guerreiros."
+   },
+   {
+    "nome": "Afinidade com Lobos",
+    "descricao": "Comanda e se entende com lobos comuns e gigantes, que o reconhecem como um dos seus."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Fúria sob a Lua",
+    "texto": "Mesmo controlando a transformação, carrega uma sede de sangue que aflora quando a lua cheia surge no céu."
+   },
+   {
+    "titulo": "Maldição Contagiosa",
+    "texto": "Qualquer sobrevivente mordido e não curado corre o risco de se tornar um lobisomem na próxima lua cheia."
+   },
+   {
+    "titulo": "Caçador entre os Seus",
+    "texto": "Muitos vivem escondidos em vilarejos comuns, caçando sozinhos ou em pequenos bandos nas noites sem lua."
+   }
+  ]
+ },
+ {
   "id": "mon-lobo",
   "nome": "Lobo",
   "nomeIngles": "Wolf",
@@ -22327,7 +22993,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "comprimento 1,5 m, do focinho à cauda",
+   "medida": "1,5 m de comprimento, do focinho à cauda",
    "peso": "45 kg"
   },
   "ecologia": {
@@ -22443,7 +23109,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento 2,7 m",
+   "medida": "2,7 m de comprimento",
    "peso": "350 kg"
   },
   "ecologia": {
@@ -22670,8 +23336,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,2 metro de comprimento de manto",
-   "peso": "cerca de 12 quilos"
+   "medida": "1,2 metro de comprimento de manto",
+   "peso": "12 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -22774,8 +23440,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "cerca de 13,7 metros de comprimento",
-   "peso": "cerca de 680 quilos"
+   "medida": "13,7 metros de comprimento",
+   "peso": "680 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -22881,8 +23547,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "cerca de 40 centímetros de altura",
-   "peso": "cerca de 5 quilos"
+   "medida": "40 centímetros de altura",
+   "peso": "5 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -23461,7 +24127,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento 6 m",
+   "medida": "6 m de comprimento",
    "peso": "1,8 t"
   },
   "ecologia": {
@@ -23607,8 +24273,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "cerca de 4 metros de altura",
-   "peso": "cerca de 6 toneladas"
+   "medida": "4 metros de altura",
+   "peso": "6 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -23713,7 +24379,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,75 m",
+   "medida": "1,75 m de altura",
    "peso": "55 kg"
   },
   "ecologia": {
@@ -24194,7 +24860,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "Altura 2,4 m",
+   "medida": "2,4 m de altura",
    "peso": "250 kg"
   },
   "ecologia": {
@@ -24325,7 +24991,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "cerca de 60 cm de altura",
+   "medida": "60 cm de altura",
    "peso": "9 kg"
   },
   "ecologia": {
@@ -24436,7 +25102,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,75 m de altura",
+   "medida": "1,75 m de altura",
    "peso": "70 kg"
   },
   "ecologia": {
@@ -24894,8 +25560,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 3,5 metros de comprimento",
-   "peso": "cerca de 90 quilos"
+   "medida": "3,5 metros de comprimento",
+   "peso": "90 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -25257,7 +25923,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,8 m",
+   "medida": "1,8 m de altura",
    "peso": "90 kg"
   },
   "ecologia": {
@@ -25365,7 +26031,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento 6 m",
+   "medida": "6 m de comprimento",
    "peso": "320 kg"
   },
   "ecologia": {
@@ -25500,6 +26166,214 @@
   ]
  },
  {
+  "id": "mon-guardian-naga",
+  "nome": "Naga Guardiã",
+  "nomeIngles": "Naga, Guardian",
+  "categoria": "Aberração",
+  "tipo": "chefe",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+   "aberracao",
+   "centelha"
+  ],
+  "ameaca": 5,
+  "centelha": 4,
+  "pendente": true,
+  "porte": "Grande",
+  "dimensoes": {
+   "medida": "4,3 m de comprimento",
+   "peso": "159 kg"
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Plains",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/guardian-naga.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 7,
+   "destreza": 7,
+   "vigor": 7,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5,
+   "percepcao": 5,
+   "inteligencia": 5,
+   "raciocinio": 5
+  },
+  "vontade": 9,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
+  "combate": {
+   "pv": 58,
+   "defesa": 26,
+   "defesaMental": 27,
+   "absorcao": {
+    "impacto": 11,
+    "corte": 9,
+    "perfuracao": 9
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 7",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "6d6 +8",
+     "dano": "2d6 +7 perfConc",
+     "speed": 6
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Veneno debilitante",
+    "descricao": "A mordida ou o cuspe injetam um veneno que corrói a vitalidade da vítima ao longo de vários instantes, a menos que ela resista em testes de Vigor sucessivos."
+   },
+   {
+    "nome": "Cuspe à distância",
+    "descricao": "Consegue cuspir seu veneno com precisão em um alvo a até 9 metros."
+   },
+   {
+    "nome": "Magias sagradas e arcanas",
+    "descricao": "Lança tanto feitiços arcanos quanto orações de cura e proteção, incomum entre as serpentes de sua espécie."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Guardiã de lugares sagrados",
+    "texto": "De escamas radiantes e capuz de cobra, protege cachoeiras, picos e templos que considera dignos de reverência."
+   },
+   {
+    "titulo": "Linhagem de sentinelas",
+    "texto": "Um casal costuma se instalar perto de um local que julga precisar de proteção, criando a ninhada ali; os filhotes escolhem partir ou assumir a guarda do ancestral."
+   }
+  ]
+ },
+ {
+  "id": "mon-dark-naga",
+  "nome": "Naga Negra",
+  "nomeIngles": "Naga, Dark",
+  "categoria": "Aberração",
+  "tipo": "chefe",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+   "aberracao",
+   "centelha"
+  ],
+  "ameaca": 5,
+  "centelha": 3,
+  "pendente": true,
+  "porte": "Grande",
+  "dimensoes": {
+   "medida": "3,6 m de comprimento",
+   "peso": "mais de 136 kg"
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/dark-naga.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 5,
+   "destreza": 6,
+   "vigor": 6,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5,
+   "percepcao": 4,
+   "inteligencia": 5,
+   "raciocinio": 5
+  },
+  "vontade": 8,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
+  "combate": {
+   "pv": 54,
+   "defesa": 22,
+   "defesaMental": 24,
+   "absorcao": {
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 7",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "5d6 +6",
+     "dano": "2d6 +5 perfConc",
+     "speed": 6
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Leitura de pensamentos",
+    "descricao": "Lê constantemente os pensamentos de quem está perto, a menos que a mente esteja protegida."
+   },
+   {
+    "nome": "Mente blindada",
+    "descricao": "É imune a qualquer leitura ou intrusão mental e resiste melhor a encantos e dominações."
+   },
+   {
+    "nome": "Ferrão sonífero",
+    "descricao": "Seu ferrão injeta um veneno que faz a vítima cair num sono profundo por horas se ela falhar em um teste de Vigor."
+   },
+   {
+    "nome": "Feitiçaria treinada",
+    "descricao": "Domina um repertório de magias arcanas, de mísseis mágicos a raios e relâmpagos."
+   },
+   {
+    "nome": "Corpo imune a peçonhas",
+    "descricao": "Nenhum veneno a afeta."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Serpente cobiçosa",
+    "texto": "De escamas negras e brilhantes, desliza por terras esquecidas e ruínas abandonadas atrás de tesouros e joias mórbidas."
+   },
+   {
+    "titulo": "Língua bifurcada, só mentiras",
+    "texto": "Manipula quem não consegue subjugar, e destrói com veneno e magia quem resiste; odeia sobretudo as de sua própria espécie."
+   }
+  ]
+ },
+ {
   "id": "mon-nalfeshnee",
   "nome": "Nalfeshnee",
   "nomeIngles": "Demon, Nalfeshnee",
@@ -25516,7 +26390,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "altura 6 m",
+   "medida": "6 m de altura",
    "peso": "3.600 kg"
   },
   "ecologia": {
@@ -25623,7 +26497,7 @@
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
-   "medida": "cerca de 12 m de comprimento",
+   "medida": "12 m de comprimento",
    "peso": "6.000 kg"
   },
   "ecologia": {
@@ -25825,117 +26699,6 @@
   ]
  },
  {
-  "id": "mon-night-hag",
-  "nome": "Night Hag",
-  "nomeIngles": "Hag, Night",
-  "categoria": "Corruptor",
-  "tipo": "chefe",
-  "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-   "exterior",
-   "centelha"
-  ],
-  "ameaca": 5,
-  "centelha": 4,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "entre 1,68 m e 2,13 m de altura",
-   "peso": "70 kg"
-  },
-  "ecologia": {
-   "tipo": "Fiend",
-   "terreno": [
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/night-hag.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 6,
-   "destreza": 5,
-   "vigor": 7,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
-   "percepcao": 5,
-   "inteligencia": 5,
-   "raciocinio": 5
-  },
-  "vontade": 9,
-  "aparencia": 0,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 5,
-   "temperanca": 1,
-   "valor": 6
-  },
-  "combate": {
-   "pv": 46,
-   "defesa": 20,
-   "defesaMental": 27,
-   "absorcao": {
-    "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 7",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "5d6+2 +8",
-     "dano": "1d6 +6 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Visão no escuro",
-    "descricao": "Enxerga perfeitamente na escuridão total."
-   },
-   {
-    "nome": "Pele curtida e mente imune",
-    "descricao": "Sua carne absorve golpes comuns, exceto ferro frio e armas mágicas, e ela é imune a encantos, medo, sono, fogo e frio, além de resistir bem à maioria das magias."
-   },
-   {
-    "nome": "Mordida doentia",
-    "descricao": "Sua mordida transmite uma febre que drena Vigor da vítima dia após dia até ela ser curada ou sucumbir."
-   },
-   {
-    "nome": "Assombra sonhos",
-    "descricao": "Usando sua pedra do coração, torna-se etérea e cavalga sobre um alvo adormecido a noite inteira, drenando um pouco de sua vitalidade a cada despertar."
-   },
-   {
-    "nome": "Rosto de empréstimo",
-    "descricao": "Pode assumir a forma de qualquer humanoide à vontade."
-   },
-   {
-    "nome": "Pedra do coração",
-    "descricao": "Carrega uma gema mágica que cura suas doenças, reforça sua resistência a provações, e sem ela perde o poder de virar fantasma ou aprisionar almas."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Corretora de almas",
-    "texto": "Caça mortais nos momentos de maior vulnerabilidade, prolongando a agonia noite após noite até prender a alma torturada em gemas escuras."
-   },
-   {
-    "titulo": "Rosto mutável, fome antiga",
-    "texto": "Sua aparência varia muito de uma para outra, mas todas compartilham o mesmo apetite por sofrimento alheio e mercados sombrios de almas."
-   }
-  ]
- },
- {
   "id": "mon-nightmare",
   "nome": "Nightmare",
   "nomeIngles": "Nightmare",
@@ -25952,7 +26715,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 2,7 m de comprimento",
+   "medida": "2,7 m de comprimento",
    "peso": "800 kg"
   },
   "ecologia": {
@@ -26056,7 +26819,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,7 m",
+   "medida": "1,7 m de altura",
    "peso": "55 kg"
   },
   "ecologia": {
@@ -26431,7 +27194,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 2,7 m",
+   "medida": "2,7 m de altura",
    "peso": "290 kg"
   },
   "ecologia": {
@@ -26713,7 +27476,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "de 4,5 a 7,5 metros de comprimento",
-   "peso": "de 3,6 a 5,4 toneladas"
+   "peso": "de 3,6 a 5,4 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -26815,7 +27578,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 2,4 m de altura, tentáculos alcançam até 4,5 m",
+   "medida": "2,4 m de altura, tentáculos alcançam até 4,5 m",
    "peso": "500 kg"
   },
   "ecologia": {
@@ -27283,7 +28046,7 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "altura 30 cm",
+   "medida": "30 cm de altura",
    "peso": "3 kg"
   },
   "ecologia": {
@@ -27586,7 +28349,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "cerca de 60 cm de envergadura",
+   "medida": "60 cm de envergadura",
    "peso": "4,5 kg"
   },
   "ecologia": {
@@ -27999,7 +28762,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "envergadura de 9 metros",
-   "peso": "18 quilos"
+   "peso": "18 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -28206,7 +28969,7 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "altura 30 cm",
+   "medida": "30 cm de altura",
    "peso": "3,5 kg"
   },
   "ecologia": {
@@ -28754,7 +29517,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "cerca de 60 cm de comprimento",
+   "medida": "60 cm de comprimento",
    "peso": "até 11 kg"
   },
   "ecologia": {
@@ -28966,8 +29729,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "cerca de 7,5 metros de comprimento",
-   "peso": "cerca de 4500 kg"
+   "medida": "7,5 metros de comprimento",
+   "peso": "4500 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -29078,7 +29841,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "corpo do tamanho de um elefante, cerca de 4,5 metros de comprimento",
-   "peso": "várias toneladas"
+   "peso": "várias t"
   },
   "ecologia": {
    "tipo": "Construct",
@@ -29190,7 +29953,7 @@
   "porte": "Médio",
   "dimensoes": {
    "medida": "90 centímetros de comprimento",
-   "peso": "35 quilos"
+   "peso": "35 kg"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -29291,7 +30054,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento 3,6 m",
+   "medida": "3,6 m de comprimento",
    "peso": "2 t"
   },
   "ecologia": {
@@ -29522,8 +30285,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 3 metros de altura",
-   "peso": "várias centenas de quilos"
+   "medida": "3 metros de altura",
+   "peso": "várias centenas de kg"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -29635,8 +30398,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 2,1 metros de altura",
-   "peso": "cerca de 113 kg"
+   "medida": "2,1 metros de altura",
+   "peso": "113 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -29996,7 +30759,7 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "cerca de 10 centímetros de comprimento",
+   "medida": "10 centímetros de comprimento",
    "peso": "poucos gramas"
   },
   "ecologia": {
@@ -30094,7 +30857,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,5 m",
+   "medida": "1,5 m de altura",
    "peso": "65 kg"
   },
   "ecologia": {
@@ -30215,118 +30978,6 @@
   ]
  },
  {
-  "id": "mon-sea-hag",
-  "nome": "Sea Hag",
-  "nomeIngles": "Hag, Sea",
-  "categoria": "Humanoide monstruoso",
-  "tipo": "soldado",
-  "conceito": "humanoide monstruoso Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
-  "tags": [
-   "monstro",
-   "centelha"
-  ],
-  "ameaca": 3,
-  "centelha": 2,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "cerca de 1,8 metro de altura",
-   "peso": "cerca de 68 kg"
-  },
-  "ecologia": {
-   "tipo": "Humanoid",
-   "terreno": [
-    "Water",
-    "Coast"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/sea-hag.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 5,
-   "destreza": 5,
-   "vigor": 5,
-   "influencia": 4,
-   "perspicacia": 4,
-   "compostura": 4,
-   "percepcao": 3,
-   "inteligencia": 3,
-   "raciocinio": 3
-  },
-  "vontade": 7,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 40,
-   "defesa": 16,
-   "defesaMental": 19,
-   "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 4",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "4d6+2 +4",
-     "dano": "1d6 +5 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Olho maligno",
-    "descricao": "Até três vezes por cena, lança um olhar amaldiçoado; se o alvo falhar num teste de Compostura, fica paralisado de terror, e se atingido de novo enquanto amaldiçoado pode cair em coma por dias."
-   },
-   {
-    "nome": "Aparência horrenda",
-    "descricao": "Sua simples visão é tão repulsiva que quem a encara de perto deve testar Vigor ou ser enfraquecido instantaneamente."
-   },
-   {
-    "nome": "Resistência a magia",
-    "descricao": "Uma proteção sobrenatural dificulta que feitiços a atinjam."
-   },
-   {
-    "nome": "Anfíbia",
-    "descricao": "Respira tanto na água quanto no ar, nadando com grande destreza."
-   },
-   {
-    "nome": "Sentidos",
-    "descricao": "Enxerga perfeitamente no escuro."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "O rosto que ninguém suporta ver",
-    "texto": "Tão repulsiva é a aparência da bruxa do mar que sua simples presença enfraquece quem ousa encará-la de perto."
-   },
-   {
-    "titulo": "Maldição no olhar",
-    "texto": "Seu olhar amaldiçoado condena vítimas a um pavor paralisante, e quem já sofreu essa maldição corre o risco de mergulhar num sono comatoso do qual poucos despertam."
-   },
-   {
-    "titulo": "Covens entre as ondas",
-    "texto": "Como outras bruxas de sua laia, reúnem-se em conluios de três, escolhendo portos e enseadas afastadas para tramar contra marinheiros e povoados costeiros."
-   }
-  ]
- },
- {
   "id": "mon-sea-serpent",
   "nome": "Sea Serpent",
   "nomeIngles": "Sea Serpent",
@@ -30344,7 +30995,7 @@
   "porte": "Imenso",
   "dimensoes": {
    "medida": "corpo serpentino de mais de 18 metros de comprimento",
-   "peso": "dezenas de toneladas"
+   "peso": "dezenas de t"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -30454,8 +31105,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 2,5 metros de comprimento",
-   "peso": "cerca de 18 quilos"
+   "medida": "2,5 metros de comprimento",
+   "peso": "18 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -30668,8 +31319,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "cerca de 90 cm de comprimento",
-   "peso": "cerca de 11 kg"
+   "medida": "90 cm de comprimento",
+   "peso": "11 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -30780,7 +31431,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "corpo de cerca de 4,5 metros de diâmetro, capaz de se esticar bem além disso",
-   "peso": "massa disforme de várias toneladas"
+   "peso": "massa disforme de várias t"
   },
   "ecologia": {
    "tipo": "Ooze",
@@ -30880,6 +31531,112 @@
   ]
  },
  {
+  "id": "mon-dire-ape-gigantopithecus",
+  "nome": "Símio Atroz",
+  "nomeIngles": "Dire Ape",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 3,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Grande",
+  "dimensoes": {
+   "medida": "2,7 m de altura",
+   "peso": "550 kg"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Forest"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/dire-ape-gigantopithecus.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 6,
+   "destreza": 4,
+   "vigor": 6,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 54,
+   "defesa": 10,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 6,
+    "corte": 5,
+    "perfuracao": 5
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 2",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "4d6+2",
+     "dano": "2d6 +6 perfConc",
+     "speed": 6
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Garras e Presas",
+    "descricao": "Ataca com mordida e duas garras poderosas, típicas de um grande primata selvagem."
+   },
+   {
+    "nome": "Dilacerar",
+    "descricao": "Se as duas garras acertam o mesmo alvo ao mesmo tempo, o dire ape rasga a carne com força extra, causando dano adicional."
+   },
+   {
+    "nome": "Trepador Nato",
+    "descricao": "Escala árvores e penhascos com a mesma velocidade com que corre pelo chão."
+   },
+   {
+    "nome": "Faro Aguçado",
+    "descricao": "Sente cheiros a grande distância e enxerga bem mesmo em pouca luz, raramente sendo pego de surpresa."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Território",
+    "texto": "O dire ape ataca sem aviso qualquer coisa que invada seu território, incluindo outros de sua espécie fora do próprio bando, e só recua quando o intruso está morto ou fugiu."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Contra oponentes bem protegidos, prefere agarrar e imobilizar o alvo no chão antes de dilacerá-lo com as garras."
+   },
+   {
+    "titulo": "Aparência",
+    "texto": "Um macho adulto chega a quase três metros de altura, com testa protuberante, olhos fundos e braços musculosos que quase tocam o chão."
+   }
+  ]
+ },
+ {
   "id": "mon-skeletal-champion",
   "nome": "Skeletal Champion",
   "nomeIngles": "Skeletal Champion",
@@ -30896,8 +31653,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,8 metro de altura",
-   "peso": "cerca de 25 kg de ossos e armadura"
+   "medida": "1,8 metro de altura",
+   "peso": "25 kg de ossos e armadura"
   },
   "ecologia": {
    "tipo": "Undead",
@@ -31009,8 +31766,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,8 metro de altura",
-   "peso": "cerca de 80 kg"
+   "medida": "1,8 metro de altura",
+   "peso": "80 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -31102,420 +31859,6 @@
    {
     "titulo": "Nome perdido, identidade roubada",
     "texto": "Poucos lembram que já foram chamados de ulat-kini, pois o próprio nome de seu povo foi apagado junto com a glória que um dia tiveram."
-   }
-  ]
- },
- {
-  "id": "mon-small-air-elemental",
-  "nome": "Small Air Elemental",
-  "nomeIngles": "Elemental, Air",
-  "categoria": "Elemental",
-  "tipo": "soldado",
-  "conceito": "exterior (ar) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-   "elemental",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 1,
-  "pendente": true,
-  "porte": "Pequeno",
-  "dimensoes": {
-   "medida": "cerca de 1,2 metro de diâmetro, em constante redemoinho",
-   "peso": "praticamente sem peso"
-  },
-  "ecologia": {
-   "tipo": "Elemental",
-   "terreno": [
-    "Sky",
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/small-air-elemental.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 3,
-   "destreza": 5,
-   "vigor": 3,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 6,
-  "aparencia": 5,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 26,
-   "defesa": 14,
-   "defesaMental": 12,
-   "absorcao": {
-    "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "3d6 +2",
-     "dano": "1d6 +3 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Voo perfeito",
-    "descricao": "Flutua e manobra no ar com controle total, sem risco de perder equilíbrio ou cair."
-   },
-   {
-    "nome": "Redemoinho",
-    "descricao": "Uma vez por cena pode se transformar em um pequeno tornado, arrastando quem estiver perto para dentro dele."
-   },
-   {
-    "nome": "Domínio do ar",
-    "descricao": "Ataques feitos à distância contra ele perdem força, como se o vento desviasse os projéteis."
-   },
-   {
-    "nome": "Corpo imaterial de vento",
-    "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Sopro vivo",
-    "texto": "Convocado de planos distantes, o elemental do ar é um turbilhão com vontade própria, sempre em movimento, nunca em repouso."
-   },
-   {
-    "titulo": "Servo relutante",
-    "texto": "Obedece a quem o convocou apenas enquanto o vínculo mágico se sustenta; rompido o elo, volta furioso ao próprio plano."
-   }
-  ]
- },
- {
-  "id": "mon-small-earth-elemental",
-  "nome": "Small Earth Elemental",
-  "nomeIngles": "Elemental, Earth",
-  "categoria": "Elemental",
-  "tipo": "soldado",
-  "conceito": "exterior (terra) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-   "elemental",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 1,
-  "pendente": true,
-  "porte": "Pequeno",
-  "dimensoes": {
-   "medida": "cerca de 1,2 metro de altura, denso e compacto",
-   "peso": "cerca de 300 quilos"
-  },
-  "ecologia": {
-   "tipo": "Elemental",
-   "terreno": [
-    "Underground",
-    "Mountain"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/small-earth-elemental.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 5,
-   "destreza": 2,
-   "vigor": 3,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 6,
-  "aparencia": 5,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 26,
-   "defesa": 6,
-   "defesaMental": 12,
-   "absorcao": {
-    "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "4d6 +2",
-     "dano": "1d6 +5 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Escavar e fundir com a pedra",
-    "descricao": "Cava pela terra sólida como se fosse água e atravessa a rocha, deixando o caminho intacto atrás de si."
-   },
-   {
-    "nome": "Domínio da terra",
-    "descricao": "Ganha vantagem para empurrar ou derrubar quem toca o chão, e dificilmente é ele mesmo derrubado."
-   },
-   {
-    "nome": "Corpo de pedra viva",
-    "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
-   },
-   {
-    "nome": "Sente tremores",
-    "descricao": "Percebe movimento através da terra e da pedra ao redor, mesmo sem enxergar."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Osso do mundo",
-    "texto": "Fragmento vivo da própria pedra fundamental, move-se devagar mas com força capaz de rachar muralhas."
-   },
-   {
-    "titulo": "Paciência de montanha",
-    "texto": "Onde outros elementais agem por impulso, o da terra espera, imóvel como rocha, até o momento certo de atacar."
-   }
-  ]
- },
- {
-  "id": "mon-small-fire-elemental",
-  "nome": "Small Fire Elemental",
-  "nomeIngles": "Elemental, Fire",
-  "categoria": "Elemental",
-  "tipo": "soldado",
-  "conceito": "exterior (fogo) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-   "elemental",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 1,
-  "pendente": true,
-  "porte": "Pequeno",
-  "dimensoes": {
-   "medida": "cerca de 1,2 metro de altura, silhueta de chamas",
-   "peso": "praticamente sem peso"
-  },
-  "ecologia": {
-   "tipo": "Elemental",
-   "terreno": [
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/small-fire-elemental.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 2,
-   "destreza": 3,
-   "vigor": 2,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 6,
-  "aparencia": 5,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 24,
-   "defesa": 10,
-   "defesaMental": 12,
-   "absorcao": {
-    "impacto": 3,
-    "corte": 2,
-    "perfuracao": 2
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +2 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Toque em chamas",
-    "descricao": "Seu golpe deixa a vítima queimando, sofrendo dano contínuo até que alguém apague o fogo ou o efeito passe."
-   },
-   {
-    "nome": "Corpo incandescente",
-    "descricao": "Imune ao próprio fogo e a queimaduras, mas a água fria e o gelo o enfraquecem visivelmente."
-   },
-   {
-    "nome": "Veloz como labareda",
-    "descricao": "Corre e se espalha com rapidez incomum, quase como o próprio fogo se alastrando."
-   },
-   {
-    "nome": "Feito de chama pura",
-    "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Fragmento do incêndio eterno",
-    "texto": "Arrancado de um plano onde tudo arde sem se consumir, deixa um rastro de fumaça e cinzas por onde passa."
-   },
-   {
-    "titulo": "Fome de queimar",
-    "texto": "Não distingue amigo de inimigo quando solto perto de algo inflamável; sua natureza é simplesmente consumir."
-   }
-  ]
- },
- {
-  "id": "mon-small-water-elemental",
-  "nome": "Small Water Elemental",
-  "nomeIngles": "Elemental, Water",
-  "categoria": "Elemental",
-  "tipo": "soldado",
-  "conceito": "exterior (água) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-   "elemental",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 1,
-  "pendente": true,
-  "porte": "Pequeno",
-  "dimensoes": {
-   "medida": "cerca de 1,2 metro de altura, corpo líquido em constante fluxo",
-   "peso": "cerca de 100 quilos"
-  },
-  "ecologia": {
-   "tipo": "Elemental",
-   "terreno": [
-    "Water"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/small-water-elemental.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 4,
-   "destreza": 2,
-   "vigor": 3,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 6,
-  "aparencia": 5,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 26,
-   "defesa": 6,
-   "defesaMental": 12,
-   "absorcao": {
-    "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +4 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Nado veloz",
-    "descricao": "Move-se pela água com grande velocidade e controle, muito mais ágil do que em terra firme."
-   },
-   {
-    "nome": "Vórtice",
-    "descricao": "Uma vez por cena pode se transformar em um pequeno redemoinho, sugando e desorientando quem estiver próximo."
-   },
-   {
-    "nome": "Encharcar",
-    "descricao": "Seu toque encharca tochas, pergaminhos e outros itens sensíveis à água, e pode apagar fogo pequeno."
-   },
-   {
-    "nome": "Domínio da água",
-    "descricao": "Quase impossível de afogar ou arrastar, e ataques contra ele em meio líquido perdem força."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Onda com vontade",
-    "texto": "Convocado das águas de outro plano, assume forma líquida que nunca para de se mover, mesmo em repouso aparente."
-   },
-   {
-    "titulo": "Frieza sem malícia",
-    "texto": "Não odeia nem ama; apenas cumpre a vontade de quem o trouxe até se libertar do vínculo."
    }
   ]
  },
@@ -31957,8 +32300,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "cerca de 30 centímetros de comprimento, envergadura de 45 centímetros",
-   "peso": "menos de 1 quilo"
+   "medida": "30 centímetros de comprimento, envergadura de 45 centímetros",
+   "peso": "menos de 1 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -32066,7 +32409,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "altura 1,75 m",
+   "medida": "1,75 m de altura",
    "peso": "59 kg"
   },
   "ecologia": {
@@ -32229,8 +32572,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "cerca de 90 centímetros de altura",
-   "peso": "cerca de 18 quilos"
+   "medida": "90 centímetros de altura",
+   "peso": "18 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -32458,7 +32801,7 @@
   "porte": "Colossal",
   "dimensoes": {
    "medida": "27 m de comprimento, chegando a 15 m de altura quando se ergue",
-   "peso": "450 toneladas"
+   "peso": "450 t"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -32614,8 +32957,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,75 metro de altura",
-   "peso": "cerca de 55 quilos"
+   "medida": "1,75 metro de altura",
+   "peso": "55 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -32722,8 +33065,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,75 metro de altura",
-   "peso": "cerca de 68 quilos"
+   "medida": "1,75 metro de altura",
+   "peso": "68 kg"
   },
   "ecologia": {
    "tipo": "Monitor",
@@ -32826,7 +33169,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "comprimento 2,9 m, com cauda",
+   "medida": "2,9 m de comprimento, com cauda",
    "peso": "220 kg"
   },
   "ecologia": {
@@ -32934,7 +33277,7 @@
   "porte": "Imenso",
   "dimensoes": {
    "medida": "12 metros de comprimento",
-   "peso": "6,4 toneladas"
+   "peso": "6,4 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -33177,7 +33520,7 @@
   "porte": "Médio",
   "dimensoes": {
    "medida": "trepadeira que se estende por até 3 m ao redor do caule central",
-   "peso": "cerca de 100 kg de massa vegetal"
+   "peso": "100 kg de massa vegetal"
   },
   "ecologia": {
    "tipo": "Plant",
@@ -33289,7 +33632,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "9 metros de comprimento",
-   "peso": "9,1 toneladas"
+   "peso": "9,1 t"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -33610,122 +33953,6 @@
   ]
  },
  {
-  "id": "mon-trumpet-archon",
-  "nome": "Trumpet Archon",
-  "nomeIngles": "Archon, Trumpet",
-  "categoria": "Celestial",
-  "tipo": "chefe",
-  "conceito": "exterior (anjo) Médio",
-  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-  "tags": [
-   "celestial",
-   "centelha"
-  ],
-  "ameaca": 6,
-  "centelha": 5,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "2 m de altura",
-   "peso": "100 kg"
-  },
-  "ecologia": {
-   "tipo": "Celestial",
-   "terreno": [
-    "Sky",
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/trumpet-archon.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 6,
-   "destreza": 5,
-   "vigor": 8,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
-   "percepcao": 6,
-   "inteligencia": 5,
-   "raciocinio": 5
-  },
-  "vontade": 10,
-  "aparencia": 12,
-  "virtudes": {
-   "compaixao": 5,
-   "conviccao": 5,
-   "temperanca": 4,
-   "valor": 5
-  },
-  "combate": {
-   "pv": 49,
-   "defesa": 22,
-   "defesaMental": 30,
-   "absorcao": {
-    "impacto": 13,
-    "corte": 9,
-    "perfuracao": 9
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 8",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "5d6+2 +10",
-     "dano": "1d6 +6 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Espadão Celestial",
-    "descricao": "Empunha uma espada de duas mãos abençoada, capaz de golpes devastadores contra qualquer inimigo."
-   },
-   {
-    "nome": "Trombeta Paralisante",
-    "descricao": "Uma vez por cena, sopra sua trombeta mágica e todos ao redor, exceto seus aliados celestiais, devem passar num teste de Compostura ou ficam paralisados por alguns instantes."
-   },
-   {
-    "nome": "Círculo Contra o Mal",
-    "descricao": "Está sempre envolto por uma proteção que dificulta ataques e possessões de criaturas malignas."
-   },
-   {
-    "nome": "Resistência Mágica",
-    "descricao": "Feitiços hostis frequentemente falham ao atingi-lo, como se sua vontade repelisse a magia."
-   },
-   {
-    "nome": "Voo Excelente",
-    "descricao": "Voa com grande velocidade e agilidade, mesmo carregando armadura e arma pesadas."
-   },
-   {
-    "nome": "Magias Sagradas",
-    "descricao": "Domina uma vasta gama de bênçãos e curas, lançando-as em batalha para apoiar aliados e afastar o mal."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Papel",
-    "texto": "Mensageiros das divindades do bem, os arautos-trombeta lideram exércitos celestiais e servem como intermediários quando um deus precisa falar diretamente com mortais."
-   },
-   {
-    "titulo": "Aparência",
-    "texto": "Têm pele da cor do mármore, olhos brancos sem pupila e vozes cristalinas, quase musicais."
-   },
-   {
-    "titulo": "Símbolo",
-    "texto": "Todo arauto-trombeta carrega um chifre ou trombeta encantada, adornada com o brasão de seu senhor, usada tanto para comunicação quanto como arma."
-   }
-  ]
- },
- {
   "id": "mon-shark",
   "nome": "Tubarão",
   "nomeIngles": "Shark",
@@ -33741,8 +33968,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 3 metros de comprimento",
-   "peso": "cerca de 136 kg"
+   "medida": "3 metros de comprimento",
+   "peso": "136 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -33844,8 +34071,8 @@
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
-   "medida": "cerca de 18 metros de comprimento",
-   "peso": "cerca de 45000 kg"
+   "medida": "18 metros de comprimento",
+   "peso": "45000 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -34314,7 +34541,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 2,4 m, quando ereto",
+   "medida": "2,4 m de altura, quando ereto",
    "peso": "400 kg"
   },
   "ecologia": {
@@ -34607,7 +34834,7 @@
   "porte": "Pequeno",
   "dimensoes": {
    "medida": "entre 30 e 51 centímetros de altura, envergadura entre 38 e 89 centímetros",
-   "peso": "cerca de 2 quilos"
+   "peso": "2 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -34714,7 +34941,7 @@
   "porte": "Pequeno",
   "dimensoes": {
    "medida": "entre 60 centímetros e 1,2 metro de altura",
-   "peso": "entre 7 e 20 quilos"
+   "peso": "entre 7 e 20 kg"
   },
   "ecologia": {
    "tipo": "Plant",
@@ -34934,8 +35161,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 3 metros de comprimento",
-   "peso": "cerca de 150 quilos"
+   "medida": "3 metros de comprimento",
+   "peso": "150 kg"
   },
   "ecologia": {
    "tipo": "Animal",
@@ -35255,7 +35482,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "altura 2,4 m (envergadura 4,5 m)",
+   "medida": "2,4 m de altura (envergadura 4,5 m)",
    "peso": "230 kg"
   },
   "ecologia": {
@@ -35380,233 +35607,6 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Quando exércitos antigos entram em colapso perto da Fenda, dizem os veteranos, os corpos empilhados atraem algo com asas negras e cheiro de carniça: sinal de que os abutres do Abismo encontraram seu banquete."
-   }
-  ]
- },
- {
-  "id": "mon-wererat-human-form",
-  "nome": "Wererat (Human Form)",
-  "nomeIngles": "Lycanthrope, Wererat",
-  "categoria": "Humanoide",
-  "tipo": "soldado",
-  "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
-  "tags": [
-   "humanoide",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 2,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "1,7 m de altura",
-   "peso": "65 kg"
-  },
-  "ecologia": {
-   "tipo": "Humanoid",
-   "terreno": [
-    "Urban"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/wererat-human-form.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 3,
-   "destreza": 4,
-   "vigor": 4,
-   "influencia": 1,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 5,
-   "inteligencia": 2,
-   "raciocinio": 3
-  },
-  "vontade": 7,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 37,
-   "defesa": 14,
-   "defesaMental": 15,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 5",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "3d6 +4",
-     "dano": "1d6 +3 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Forma Mutável",
-    "descricao": "Pode assumir forma humana, híbrida ou de rato gigante à vontade, cada uma com vantagens diferentes em combate ou disfarce."
-   },
-   {
-    "nome": "Ataque Furtivo",
-    "descricao": "Golpeia com precisão cirúrgica quando a vítima está distraída ou cercada, causando dano extra."
-   },
-   {
-    "nome": "Esquiva Sobrenatural",
-    "descricao": "Evita quase por completo efeitos de área ao tentar escapar, saindo praticamente ileso onde outros se feririam gravemente."
-   },
-   {
-    "nome": "Pele Resistente em Forma Híbrida",
-    "descricao": "Na forma de meio-rato, sua pele grossa absorve boa parte dos golpes comuns; apenas prata a fere por completo."
-   },
-   {
-    "nome": "Mordida Maldita",
-    "descricao": "Em forma híbrida, a mordida transmite uma doença sombria; se não for curada, a vítima corre o risco de se tornar uma nova criatura amaldiçoada como ela."
-   },
-   {
-    "nome": "Afinidade com Ratos",
-    "descricao": "Entende e se comunica com ratos comuns e gigantes, que raramente atacam um dos seus."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Sociedade nas Sombras",
-    "texto": "Vivem em guildas escondidas sob cidades, misturados entre ladrões e contrabandistas comuns."
-   },
-   {
-    "titulo": "Maldição que se Espalha",
-    "texto": "Cada mordida não curada é uma sentença: a vítima pode em breve se tornar outra criatura como ela, sem nunca ter escolhido esse destino."
-   },
-   {
-    "titulo": "Disfarce Perfeito",
-    "texto": "Durante o dia, muitos vivem vidas comuns como mercadores, ladrões ou guardas, escondendo a fera sob a pele humana."
-   }
-  ]
- },
- {
-  "id": "mon-werewolf",
-  "nome": "WerewolF",
-  "nomeIngles": "Lycanthrope, Werewolf",
-  "categoria": "Humanoide",
-  "tipo": "soldado",
-  "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
-  "tags": [
-   "humanoide",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 2,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "1,8 m de altura",
-   "peso": "80 kg"
-  },
-  "ecologia": {
-   "tipo": "Humanoid",
-   "terreno": [
-    "Forest",
-    "Plains"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/werewolf.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 5,
-   "destreza": 3,
-   "vigor": 4,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 4,
-   "inteligencia": 2,
-   "raciocinio": 2
-  },
-  "vontade": 7,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 37,
-   "defesa": 12,
-   "defesaMental": 15,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 4",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "4d6 +4",
-     "dano": "1d6 +5 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Forma Mutável",
-    "descricao": "Alterna entre forma humana, híbrida e lobo puro, cada uma útil para caçar, se disfarçar ou lutar."
-   },
-   {
-    "nome": "Pele Resistente em Forma Híbrida",
-    "descricao": "Na forma híbrida, sua pele peluda absorve grande parte dos ferimentos comuns; só prata a fere de verdade."
-   },
-   {
-    "nome": "Mordida que Derruba e Amaldiçoa",
-    "descricao": "A mordida em forma híbrida pode derrubar a vítima no chão e transmitir a maldição da licantropia caso a ferida não seja tratada a tempo."
-   },
-   {
-    "nome": "Firme Contra o Medo",
-    "descricao": "Veterano de combate, resiste melhor ao pavor que a maioria dos guerreiros."
-   },
-   {
-    "nome": "Afinidade com Lobos",
-    "descricao": "Comanda e se entende com lobos comuns e gigantes, que o reconhecem como um dos seus."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Fúria sob a Lua",
-    "texto": "Mesmo controlando a transformação, carrega uma sede de sangue que aflora quando a lua cheia surge no céu."
-   },
-   {
-    "titulo": "Maldição Contagiosa",
-    "texto": "Qualquer sobrevivente mordido e não curado corre o risco de se tornar um lobisomem na próxima lua cheia."
-   },
-   {
-    "titulo": "Caçador entre os Seus",
-    "texto": "Muitos vivem escondidos em vilarejos comuns, caçando sozinhos ou em pequenos bandos nas noites sem lua."
    }
   ]
  },
@@ -35756,8 +35756,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 2,4 m de comprimento e 1,35 m de altura na cernelha",
-   "peso": "cerca de 200 kg"
+   "medida": "2,4 m de comprimento e 1,35 m de altura na cernelha",
+   "peso": "200 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -35868,8 +35868,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 90 cm de altura na cernelha",
-   "peso": "cerca de 135 kg"
+   "medida": "90 cm de altura na cernelha",
+   "peso": "135 kg"
   },
   "ecologia": {
    "tipo": "Beast",
@@ -36106,8 +36106,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,8 m de altura, corpo humanoide com mandíbulas alienígenas",
-   "peso": "cerca de 80 kg"
+   "medida": "1,8 m de altura, corpo humanoide com mandíbulas alienígenas",
+   "peso": "80 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -36353,8 +36353,8 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "cerca de 1,2 m de altura na cernelha, com asas membranosas como as de um morcego",
-   "peso": "cerca de 180 kg"
+   "medida": "1,2 m de altura na cernelha, com asas membranosas como as de um morcego",
+   "peso": "180 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -36466,8 +36466,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "cerca de 2,7 m de altura, coberto por pelagem branca e espessa",
-   "peso": "cerca de 360 kg"
+   "medida": "2,7 m de altura, coberto por pelagem branca e espessa",
+   "peso": "360 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
