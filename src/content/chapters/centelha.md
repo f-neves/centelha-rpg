@@ -58,6 +58,19 @@ Uma Técnica de nível 3 só está ao alcance de um Grande herói (Centelha 3) o
 
 Quando uma Técnica melhora uma **tarefa** (esquivar, agarrar, mirar, resistir a ser movido), ela soma **Nível × 3** à jogada: **+3** no nível 1, subindo até **+15** no nível 5. Como numa disputa o bônus do outro lado se subtrai, o nível baixo é modesto (um +3 tende a vencer o igual, mas cede ao bem mais forte) e o alto é quase perfeito (um +15 só é contestado por outro semideus ou um abismo de atributo). Esse bônus é **por cima** do +2 por ponto de Centelha que já pesa em ataque e nas defesas.
 
-Nem toda Técnica é um bônus. Umas dão pura **capacidade** (erguer uma carroça, saltar um vale), e aí o nível é a escala do que você consegue; outras impõem um **estado** (imunidade, "não pode ser movido"), vencido só por quem traz vantagem maior que o nível.
+Mas nem toda melhora é um bônus de rolagem. Erguer peso não é o mesmo que mirar melhor, e pular longe não é o mesmo que resistir a veneno. Por isso cada **tipo** de efeito tem sua própria escala por nível:
+
+| Trilha | O que cresce | N1 | N2 | N3 | N4 | N5 |
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **Bônus** | + à rolagem/disputa | +3 | +6 | +9 | +12 | +15 |
+| **Absorção** | + Soak | +2 | +4 | +6 | +9 | +12 |
+| **Dano** | + dados de dano | +1d6 | +2d6 | +3d6 | +4d6 | +6d6 |
+| **Penetração** | Soak ignorado | 2 | 4 | 6 | toda a armadura | armadura + natural |
+| **Carga** | × peso que ergue | ×2 | ×4 | ×10 | ×30 | ×100 |
+| **Salto** | × distância do salto | ×2 | ×4 | ×8 | ×20 | ×50 |
+| **Velocidade** | × deslocamento | ×1,5 | ×2 | ×3 | ×5 | ×10 |
+| **Tamanho** | porte que afeta | igual | +1 | +2 | +3 | qualquer |
+
+A **maioria** das Técnicas, porém, não tem número nenhum: são **estados e capacidades** (ver no escuro, ficar invisível, imune a veneno, voar, controlar uma besta). O nível dessas é a régua de quão absoluto o efeito é: em disputa, só cede a quem traz poder efetivamente maior. Alcance, área, número de alvos e duração são **dials** que uma Técnica pode esticar por cima do efeito principal, na mesma lógica do improviso do Arcano.
 
 <div class="callout regra"><span class="lbl">O Portão da Centelha</span>A Centelha sobe <strong>só com permissão do Mestre</strong>, num marco de história ou feito maior. O XP paga o custo (caro: ×15 por ponto), mas o <strong>salto de tier é narrativo</strong>: poder não se compra em massa, conquista-se na história.</div>

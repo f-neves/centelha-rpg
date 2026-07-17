@@ -15,7 +15,26 @@
     { "nivel": 4, "rotulo": "Lendário", "texto": "Há lendas sobre ele; mudou o rumo de nações. Proezas até o nível 4." },
     { "nivel": 5, "rotulo": "Semideus", "texto": "Material de fábula, venerado como divindade. Proezas até o nível 5 (teto)." }
   ],
-  "modificadorProeza": { "porNivel": 3, "nota": "Bônus de Proeza a uma tarefa = Nível × 3 (N1 +3 … N5 +15), por cima do +2/ponto de Centelha em ataque e defesas." },
+  "escalasProeza": {
+    "nota": "Cada Técnica cresce conforme seu nível (1 a 5). O TIPO de melhora define a trilha e a escala. A maioria das Técnicas é 'estado' (uma capacidade, sem número). Os valores abaixo somam por cima do +2/ponto de Centelha que já pesa em ataque e nas 4 defesas.",
+    "trilhas": {
+      "bonus": { "rotulo": "Bônus", "unidade": "+ à rolagem ou ao valor passivo", "valores": ["+3", "+6", "+9", "+12", "+15"], "uso": "perícia, ataque, defesa, resistir, disputa, penalidade ao alvo, Iniciativa, redução de Ticks" },
+      "soak": { "rotulo": "Absorção", "unidade": "+ Soak", "valores": ["+2", "+4", "+6", "+9", "+12"], "uso": "reduzir o dano recebido" },
+      "dano": { "rotulo": "Dano", "unidade": "+ dados de dano", "valores": ["+1d6", "+2d6", "+3d6", "+4d6", "+6d6"], "uso": "golpe mais forte" },
+      "penetracao": { "rotulo": "Penetração", "unidade": "Soak ignorado", "valores": ["2", "4", "6", "toda a armadura", "armadura + Soak natural"], "uso": "furar a defesa do alvo" },
+      "carga": { "rotulo": "Carga", "unidade": "× capacidade de erguer/carregar", "valores": ["×2", "×4", "×10", "×30", "×100"], "uso": "levantar, carregar, arremessar peso", "anchor": ["uma pessoa/porta", "carroça/cavalo", "~1 t: viga/pedra de cerco", "~5-10 t: estátua/parede", "dezenas de t: torre/navio"] },
+      "salto": { "rotulo": "Salto", "unidade": "× distância/altura de salto", "valores": ["×2", "×4", "×8", "×20", "×50"], "uso": "pular longe/alto, cair sem dano", "anchor": ["telhado/fosso", "de telhado a telhado", "cruza um rio", "some da vista", "de montanha a montanha"] },
+      "velocidade": { "rotulo": "Velocidade", "unidade": "× deslocamento", "valores": ["×1,5", "×2", "×3", "×5", "×10"], "uso": "correr, mover-se", "anchor": ["mais rápido que a corrida", "atleta de elite dobrado", "supera um cavalo a galope", "um borrão", "quase teleporte"] },
+      "tamanho": { "rotulo": "Tamanho", "unidade": "porte que consegue afetar", "valores": ["seu porte", "+1 categoria", "+2 categorias", "+3 categorias", "qualquer porte"], "uso": "agarrar, bloquear, dominar criatura maior" },
+      "estado": { "rotulo": "Estado", "unidade": "capacidade sem número", "valores": ["—", "—", "—", "—", "—"], "uso": "destrava uma capacidade, sentido, imunidade, voo, invisibilidade, controle ou efeito qualitativo. É a MAIORIA das Técnicas.", "nota": "em disputa resolve pela subtração: o efeito só cede a quem traz poder (nível/atributo) efetivamente maior." }
+    },
+    "mostradores": {
+      "nota": "Dials secundários que uma Técnica pode escalar por cima do efeito principal, na mesma lógica do improviso do Arcano.",
+      "alcance": ["3 m", "8 m", "20 m", "50 m", "150 m"],
+      "alvos": ["1", "3", "10", "50", "300+"],
+      "duracao": ["1 ação", "1 turno", "1 cena", "horas", "1 dia ou mais"]
+    }
+  },
   "escalaVontade": [
     { "nivel": 1, "rotulo": "Frágil", "texto": "Vontade fraca: cede fácil ao medo, à manipulação e ao cansaço. O piso de quem nada investe." },
     { "nivel": 5, "rotulo": "Heroica", "texto": "Reserva sólida de um herói. Gasta-se para potencializar ações, resistir a medo/manipulação e conjurar." },

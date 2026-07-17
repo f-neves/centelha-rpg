@@ -651,24 +651,27 @@ Os 5 atuais reaproveitados.
 - **N4 · Lendário** · **Vazio Sereno** (mente intransponível; imune a quase toda influênci…)
 - **N5 · Semideus** · **Mente de Diamante** (paz e clareza absolutas; nada perturba, engana ou…)
 
-## Modificadores por nível (×3, provisório)
+## Quantização · trilhas de modificador por nível (IMPLEMENTADO)
 
-Régua travada por ora: **bônus da Proeza = Nível × 3.**
+`×3` travado. Mas nem tudo é bônus de rolagem: cada **tipo** de efeito tem sua trilha por nível. Definido em `regras.json → escalasProeza` e documentado em `centelha.md`.
 
-| Nível | Bônus | vs igual | Absorve vantagem alheia de |
-|:---:|:---:|:---:|:---:|
-| 1 | +3 | ~68% | +3 |
-| 2 | +6 | ~84% | +6 |
-| 3 | +9 | ~95% | +9 |
-| 4 | +12 | ~99% | +12 |
-| 5 | +15 | quase certo | +15 |
+| Trilha (`efeito`) | O que cresce | N1 | N2 | N3 | N4 | N5 |
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **bonus** | + à rolagem/disputa | +3 | +6 | +9 | +12 | +15 |
+| **soak** | + Absorção | +2 | +4 | +6 | +9 | +12 |
+| **dano** | + dados de dano | +1d6 | +2d6 | +3d6 | +4d6 | +6d6 |
+| **penetracao** | Soak ignorado | 2 | 4 | 6 | toda armadura | armadura+natural |
+| **carga** | × peso erguido | ×2 | ×4 | ×10 | ×30 | ×100 |
+| **salto** | × distância de salto | ×2 | ×4 | ×8 | ×20 | ×50 |
+| **velocidade** | × deslocamento | ×1,5 | ×2 | ×3 | ×5 | ×10 |
+| **tamanho** | porte que afeta | igual | +1 | +2 | +3 | qualquer |
+| **estado** | capacidade sem número | — | — | — | — | — |
 
-Numa disputa o bônus do outro lado subtrai, então o nível alto só cede a desníveis enormes (um N5 = +15 só é contestado por outro N5 ou um abismo de atributo). Validado contra o bestiário: um Centelha 3 (Proeza nível 3 = +9) *contesta* a Força de um bruto Centelha 0/1 de F13-14 (gap ~10-12), mas não o domina; dominar exige nível 5. A Centelha ainda dá +2/nível a ataque e às 4 defesas, por fora disto.
+Dials secundários (alcance/alvos/duração) esticam por cima, na lógica do improviso do Arcano.
 
-**Três tipos de Técnica** (o ×3 só se aplica ao segundo):
-1. **Capacidade / escala:** não tem bônus; o nível *é* a escala do que você consegue (erguer uma carroça, saltar um vale).
-2. **Bônus graduado:** Nível × 3 na rolagem ou no valor passivo (Pés Fincados, mira, prestidigitação).
-3. **Estado quase-perfeito:** resolve pela subtração acima; o gap para vencê-lo cresce com o nível (imunidade, "não pode ser movido/bloqueado").
+**Validação (bestiário):** um Centelha 3 (nível 3 = +9) contesta a Força de um bruto Centelha 0-1 de F13-14 (gap ~10-12), mas só domina no nível 5. A Centelha ainda dá +2/nível a ataque e 4 defesas, por fora disto.
+
+**Classificação das 410 Técnicas** (via subagentes, campo `efeito` em tecnicas.json): **331 estado** (81%, capacidades sem número), 55 bonus, 7 dano, 6 carga, 3 penetracao, 3 soak, 2 salto, 2 velocidade, 1 tamanho. A maioria é capacidade: o nível é o gate + a escala do que a Técnica destrava.
 
 ## Contagem
 
@@ -687,9 +690,17 @@ Numa disputa o bônus do outro lado subtrai, então o nível alto só cede a des
 
 Reaproveita os 48 subcaminhos atuais (Punho de Ferro desceu a Técnica dentro de Força de Guerra). As 8 novas: 3 em Força (Força de Guerra, Presença Aterradora, Arremesso), 2 em Influência (Vigarista, Confessor), 3 em Perspicácia (Avaliador, Confidente, Farejador da Natureza).
 
+## Implementação no site (fases)
+
+- **FEITO · banda→nível 1-5:** gating, exibição, filtros, árvore, ficha, glossário, capítulos. `nivel` (ceil(banda/3)) em todas as Técnicas + schema. Build verde.
+- **FEITO · Fase 1 (custo):** XP de Técnica = **nível × 10** (spec `porNivel`), removida a banda do cálculo de custo. Kael verde.
+- **FEITO · Fase 2 (trilhas):** `escalasProeza` no regras.json + campo `efeito` nas 410 Técnicas (classificadas) + tabela no centelha.md.
+- **A FAZER · Fase 3 (migração pesada):** remover a banda de vez (Speed independente por nível em vez de banda; apagar o campo `banda` e do schema); e SURFAR o modificador de cada Técnica na UI (mostrar o valor da trilha ao lado da Técnica).
+
 ## Pendências abertas
 
-- **Densidade dos funis:** os caminhos reaproveitados têm ~3 Técnicas no N1 (funil 3·2·1·1·1), mais enxuto que o padrão de Força (≥5 no N1). Decidir se alargamos todos ou aceitamos o enxuto na revisão.
-- **Bestiário quente:** o pool de ataque dos brutos grandes (9d6 vindo de Centelha 0) está acima da régua da Centelha; rebalancear na revisão do bestiário, não é questão de Proeza.
-- **Quantização (×3):** aplicar a régua Técnica a Técnica, etiquetando cada uma como tipo 1/2/3.
-- **Quando fechar:** migrar os dados (as ~400 Técnicas em tecnicas.json estão por banda; viram nível 1-5) e trocar a tabela banda→nível em centelha.md/regras.json.
+- **Números por Técnica vs. régua:** o texto de cada Técnica ainda traz o número antigo ("+2 em Furtividade"); a régua diz nível×3 (=+3 no N1). Reconciliar o texto com a trilha (ou surfar a trilha e deixar o texto como sabor) é parte da Fase 3.
+- **Custo nível×10 é placeholder** (balanceamento depois); os totais de XP nos exemplos de `criacao-de-personagem.md` ficaram desatualizados.
+- **Densidade dos funis:** caminhos reaproveitados têm ~3 Técnicas no N1 (funil 3·2·1·1·1), mais enxuto que o padrão de Força. Alargar ou aceitar.
+- **Bestiário quente:** pool de ataque dos brutos grandes acima da régua da Centelha; rebalancear na revisão do bestiário.
+- **Reorg de conteúdo:** as novas árvores do doc (Atlas reorganizado, Força de Guerra, Presença Aterradora, Arremesso, Salto, Vigarista/Confessor, novas de Perspicácia) ainda NÃO estão na data viva.

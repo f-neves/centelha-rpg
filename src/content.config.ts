@@ -64,6 +64,7 @@ const tecnicas = defineCollection({
     atributo: reference('atributos'),
     banda: z.number().int().min(1).max(15),
     nivel: z.number().int().min(1).max(5),
+    efeito: z.enum(['bonus', 'soak', 'dano', 'penetracao', 'carga', 'salto', 'velocidade', 'tamanho', 'estado']),
     tipo: z.enum(['passiva', 'ativa', 'reflexiva']),
     custo,
     prereq: z.array(reference('tecnicas')),
