@@ -170,33 +170,6 @@
       "aaltura": "requer Centelha / Proezas"
     }
   ],
-  "bandas": [
-    {
-      "centelha": 1,
-      "bandas": "1–3",
-      "estatura": "Tocado"
-    },
-    {
-      "centelha": 2,
-      "bandas": "4–6",
-      "estatura": "Herói"
-    },
-    {
-      "centelha": 3,
-      "bandas": "7–9",
-      "estatura": "Grande herói"
-    },
-    {
-      "centelha": 4,
-      "bandas": "10–12",
-      "estatura": "Lendário"
-    },
-    {
-      "centelha": 5,
-      "bandas": "13–15",
-      "estatura": "Semideus"
-    }
-  ],
   "ferimentos": [
     {
       "minPct": 76,
@@ -434,9 +407,9 @@
     "reflexivaPorGatilho": 1,
     "suplementarTicks": 0,
     "ticksIndependente": [
-      { "banda": "1–2", "ticks": 5 },
-      { "banda": "3", "ticks": 6 },
-      { "banda": "4–5", "ticks": 7 }
+      { "nivel": "1–2", "ticks": 5 },
+      { "nivel": "3", "ticks": 6 },
+      { "nivel": "4–5", "ticks": 7 }
     ],
     "combo": {
       "regra": "Numa única ação você empilha quantas Técnicas suplementares quiser, mas cada acréscimo encarece: a k-ésima Técnica somada à ação custa +(k−1) de Energia de sobretaxa (2ª +1, 3ª +2, 4ª +3…).",
@@ -448,7 +421,7 @@
       "regra": "Postura sustentada: paga a Energia uma vez e dura a cena. Mantém até Centelha posturas ao mesmo tempo; abandonar é livre.",
       "simultaneasMax": "Centelha"
     },
-    "vontade": { "banda4": 1, "banda5": 2 }
+    "vontade": { "nivel4": 1, "nivel5": 2 }
   },
   "empilhamentoProezas": {
     "nota": "Limites de acúmulo dos bônus de Proezas, para o número não quebrar o combate calibrado.",

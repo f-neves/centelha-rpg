@@ -169,6 +169,7 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 /* badges */
 .badge { display: inline-block; font-size: .72rem; font-family: 'Cinzel'; letter-spacing: .03em; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--panel-border); color: var(--ink-soft); background: var(--panel-2); white-space: nowrap; }
 .badge.banda { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.badge.mod { border-color: var(--gold); color: var(--gold); font-weight: 600; }
 .badge.passiva { border-color: var(--gold); color: var(--gold); }
 .badge.ativa { border-color: var(--accent-soft); color: var(--accent); }
 .badge.reflexiva { border-color: var(--accent-strong); color: var(--accent-strong); }

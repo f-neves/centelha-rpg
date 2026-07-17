@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
-import { loadData, BANDA_LABEL, custoTagTecnica } from '../lib/data';
+import { loadData, custoTagTecnica, modProeza } from '../lib/data';
 const d = await loadData();
-const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeCompare(d.C[b.caminho.id].nome) || a.banda - b.banda);
+const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeCompare(d.C[b.caminho.id].nome) || a.nivel - b.nivel);
 ---
 <Base title="Técnicas" largura="wide" descricao="Todas as Técnicas das Proezas, com filtros por atributo, caminho, nível, tipo e custo.">
   <h1>Técnicas</h1>
@@ -32,6 +32,7 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
         <span class="tr-cam muted">{d.C[t.caminho.id].nome}</span>
         <span class="badge banda">N{t.nivel}</span>
         <span class={`badge ${t.tipo}`}>{custoTagTecnica(t)}</span>
+        {(() => { const m = modProeza(t.efeito, t.nivel); return m ? <span class="badge mod" title={m.t}>{m.v}</span> : null; })()}
         <span class="tr-eff" set:html={t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')} />
       </a>
     ))}

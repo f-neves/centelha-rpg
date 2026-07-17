@@ -4,7 +4,6 @@
     "nome": "Passo Veloz",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -19,7 +18,6 @@
     "nome": "Salto do Grilo",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -38,7 +36,6 @@
     "nome": "Reflexos de Vento",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 2,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -57,7 +54,6 @@
     "nome": "Corrida Vertical",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -76,7 +72,6 @@
     "nome": "Passos sobre Folhas",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -93,7 +88,6 @@
     "nome": "Esquiva Impossível",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "reflexiva",
     "custo": {
       "energia": 2
@@ -112,7 +106,6 @@
     "nome": "Encontrão Relâmpago",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -132,7 +125,6 @@
     "nome": "Mil Passos",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -151,7 +143,6 @@
     "nome": "Borrão",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 9,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -171,7 +162,6 @@
     "nome": "Ataque Relâmpago",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 11,
     "tipo": "reflexiva",
     "custo": {
       "energia": 4
@@ -190,7 +180,6 @@
     "nome": "Passo do Trovão",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4
@@ -209,7 +198,6 @@
     "nome": "Cavalgar o Vento",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5
@@ -229,7 +217,6 @@
     "nome": "Velocidade Divina",
     "caminho": "vento",
     "atributo": "destreza",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -250,7 +237,6 @@
     "nome": "Golpe Pesado",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -265,7 +251,6 @@
     "nome": "Quebrar Guarda",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -284,7 +269,6 @@
     "nome": "Mão de Ferro",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 3,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -301,7 +285,6 @@
     "nome": "Soco Trovejante",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -320,7 +303,6 @@
     "nome": "Esmagar",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -339,7 +321,6 @@
     "nome": "Investida Devastadora",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -359,7 +340,6 @@
     "nome": "Golpe do Titã",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -378,7 +358,6 @@
     "nome": "Punho que Parte Pedra",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 8,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -395,7 +374,6 @@
     "nome": "Quebra-Montanhas",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4
@@ -414,7 +392,6 @@
     "nome": "Onda de Choque",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4
@@ -434,7 +411,6 @@
     "nome": "Punho do Cataclismo",
     "caminho": "punho-de-ferro",
     "atributo": "forca",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -455,7 +431,6 @@
     "nome": "Tom de Autoridade",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -470,7 +445,6 @@
     "nome": "Ordem Curta",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -489,7 +463,6 @@
     "nome": "Encarar",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -508,7 +481,6 @@
     "nome": "Voz de Comando",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -527,7 +499,6 @@
     "nome": "Submissão",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -546,7 +517,6 @@
     "nome": "Comando Inspirador",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 6,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -566,7 +536,6 @@
     "nome": "Comando Irresistível",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 9,
     "tipo": "ativa",
     "custo": {
       "energia": 3,
@@ -586,7 +555,6 @@
     "nome": "Aterrorizar",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -605,7 +573,6 @@
     "nome": "Dominação",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -625,7 +592,6 @@
     "nome": "Quebrar o Espírito",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -646,7 +612,6 @@
     "nome": "Palavra de Lei",
     "caminho": "comando",
     "atributo": "influencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -666,7 +631,6 @@
     "nome": "Pressentimento",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -681,7 +645,6 @@
     "nome": "Instinto de Sobrevivência",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 3,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -700,7 +663,6 @@
     "nome": "Faro para Mentiras",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -719,7 +681,6 @@
     "nome": "Reflexos Premonitórios",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 5,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -736,7 +697,6 @@
     "nome": "Pressentir o Golpe",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 5,
     "tipo": "reflexiva",
     "custo": {
       "energia": 2
@@ -755,7 +715,6 @@
     "nome": "Ler o Momento",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -774,7 +733,6 @@
     "nome": "Vislumbre",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -793,7 +751,6 @@
     "nome": "Esquiva Profética",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 8,
     "tipo": "reflexiva",
     "custo": {
       "energia": 3
@@ -813,7 +770,6 @@
     "nome": "Proeza do Destino",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -833,7 +789,6 @@
     "nome": "Ler o Fio",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4
@@ -852,7 +807,6 @@
     "nome": "Olho do Oráculo",
     "caminho": "pressagio",
     "atributo": "raciocinio",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -873,7 +827,6 @@
     "nome": "Pele Curtida",
     "caminho": "pele-de-pedra",
     "atributo": "vigor",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -888,7 +841,6 @@
     "nome": "Aguentar o Tranco",
     "caminho": "pele-de-pedra",
     "atributo": "vigor",
-    "banda": 2,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -905,7 +857,6 @@
     "nome": "Tensionar",
     "caminho": "pele-de-pedra",
     "atributo": "vigor",
-    "banda": 3,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -924,7 +875,6 @@
     "nome": "Pele de Pedra",
     "caminho": "pele-de-pedra",
     "atributo": "vigor",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -943,7 +893,6 @@
     "nome": "Inquebrantável",
     "caminho": "pele-de-pedra",
     "atributo": "vigor",
-    "banda": 8,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -960,7 +909,6 @@
     "nome": "Carne de Granito",
     "caminho": "pele-de-pedra",
     "atributo": "vigor",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -979,7 +927,6 @@
     "nome": "Fortaleza Viva",
     "caminho": "pele-de-pedra",
     "atributo": "vigor",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -999,7 +946,6 @@
     "nome": "Pele Adamantina",
     "caminho": "pele-de-pedra",
     "atributo": "vigor",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -1019,7 +965,6 @@
     "nome": "Mira Firme",
     "caminho": "olho-de-aguia",
     "atributo": "destreza",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -1034,7 +979,6 @@
     "nome": "Tiro Rápido",
     "caminho": "olho-de-aguia",
     "atributo": "destreza",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1053,7 +997,6 @@
     "nome": "Olho de Alcance",
     "caminho": "olho-de-aguia",
     "atributo": "destreza",
-    "banda": 3,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -1070,7 +1013,6 @@
     "nome": "Tiro Perfurante",
     "caminho": "olho-de-aguia",
     "atributo": "destreza",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1089,7 +1031,6 @@
     "nome": "Disparo Múltiplo",
     "caminho": "olho-de-aguia",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1108,7 +1049,6 @@
     "nome": "Tiro Impossível",
     "caminho": "olho-de-aguia",
     "atributo": "destreza",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -1128,7 +1068,6 @@
     "nome": "Flecha que Persegue",
     "caminho": "olho-de-aguia",
     "atributo": "destreza",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -1148,7 +1087,6 @@
     "nome": "Chuva de Mil Flechas",
     "caminho": "olho-de-aguia",
     "atributo": "destreza",
-    "banda": 13,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -1169,7 +1107,6 @@
     "nome": "Primeira Impressão",
     "caminho": "voz-de-mel",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -1184,7 +1121,6 @@
     "nome": "Palavra Calmante",
     "caminho": "voz-de-mel",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1203,7 +1139,6 @@
     "nome": "Charme",
     "caminho": "voz-de-mel",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1222,7 +1157,6 @@
     "nome": "Carisma Magnético",
     "caminho": "voz-de-mel",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1241,7 +1175,6 @@
     "nome": "Desarmar",
     "caminho": "voz-de-mel",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1260,7 +1193,6 @@
     "nome": "Encantamento",
     "caminho": "voz-de-mel",
     "atributo": "influencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -1279,7 +1211,6 @@
     "nome": "Coração nas Mãos",
     "caminho": "voz-de-mel",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -1299,7 +1230,6 @@
     "nome": "Voz que Move Multidões",
     "caminho": "voz-de-mel",
     "atributo": "influencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -1319,7 +1249,6 @@
     "nome": "Sentidos Apurados",
     "caminho": "olho-agucado",
     "atributo": "percepcao",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -1334,7 +1263,6 @@
     "nome": "Olhar do Caçador",
     "caminho": "olho-agucado",
     "atributo": "percepcao",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1353,7 +1281,6 @@
     "nome": "Visão na Penumbra",
     "caminho": "olho-agucado",
     "atributo": "percepcao",
-    "banda": 3,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -1370,7 +1297,6 @@
     "nome": "Ler o Terreno",
     "caminho": "olho-agucado",
     "atributo": "percepcao",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1389,7 +1315,6 @@
     "nome": "Ouvido Absoluto",
     "caminho": "olho-agucado",
     "atributo": "percepcao",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -1406,7 +1331,6 @@
     "nome": "Visão Verdadeira",
     "caminho": "olho-agucado",
     "atributo": "percepcao",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -1426,7 +1350,6 @@
     "nome": "Clarividência",
     "caminho": "olho-agucado",
     "atributo": "percepcao",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -1446,7 +1369,6 @@
     "nome": "Olho que Tudo Vê",
     "caminho": "olho-agucado",
     "atributo": "percepcao",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -1466,7 +1388,6 @@
     "nome": "Recuperação Acelerada",
     "caminho": "cerne-vital",
     "atributo": "vigor",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -1481,7 +1402,6 @@
     "nome": "Ignorar a Dor",
     "caminho": "cerne-vital",
     "atributo": "vigor",
-    "banda": 2,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -1500,7 +1420,6 @@
     "nome": "Segundo Fôlego",
     "caminho": "cerne-vital",
     "atributo": "vigor",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1519,7 +1438,6 @@
     "nome": "Fechar Feridas",
     "caminho": "cerne-vital",
     "atributo": "vigor",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1538,7 +1456,6 @@
     "nome": "Constituição Férrea",
     "caminho": "cerne-vital",
     "atributo": "vigor",
-    "banda": 5,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -1555,7 +1472,6 @@
     "nome": "Regeneração",
     "caminho": "cerne-vital",
     "atributo": "vigor",
-    "banda": 9,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -1574,7 +1490,6 @@
     "nome": "Recompor-se",
     "caminho": "cerne-vital",
     "atributo": "vigor",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -1594,7 +1509,6 @@
     "nome": "Imortalidade Tênue",
     "caminho": "cerne-vital",
     "atributo": "vigor",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -1614,7 +1528,6 @@
     "nome": "Pisar Leve",
     "caminho": "sombra",
     "atributo": "destreza",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -1629,7 +1542,6 @@
     "nome": "Esgueirar",
     "caminho": "sombra",
     "atributo": "destreza",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1648,7 +1560,6 @@
     "nome": "Mãos Sutis",
     "caminho": "sombra",
     "atributo": "destreza",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1667,7 +1578,6 @@
     "nome": "Manto de Sombras",
     "caminho": "sombra",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1686,7 +1596,6 @@
     "nome": "Bote Silencioso",
     "caminho": "sombra",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1705,7 +1614,6 @@
     "nome": "Andar entre Olhares",
     "caminho": "sombra",
     "atributo": "destreza",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -1724,7 +1632,6 @@
     "nome": "Unir-se à Sombra",
     "caminho": "sombra",
     "atributo": "destreza",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -1744,7 +1651,6 @@
     "nome": "Inexistência",
     "caminho": "sombra",
     "atributo": "destreza",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -1764,7 +1670,6 @@
     "nome": "Postura Fluida",
     "caminho": "danca-da-lamina",
     "atributo": "destreza",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -1779,7 +1684,6 @@
     "nome": "Aparar",
     "caminho": "danca-da-lamina",
     "atributo": "destreza",
-    "banda": 3,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -1798,7 +1702,6 @@
     "nome": "Finta",
     "caminho": "danca-da-lamina",
     "atributo": "destreza",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1817,7 +1720,6 @@
     "nome": "Riposte",
     "caminho": "danca-da-lamina",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "reflexiva",
     "custo": {
       "energia": 2
@@ -1836,7 +1738,6 @@
     "nome": "Desarme",
     "caminho": "danca-da-lamina",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -1855,7 +1756,6 @@
     "nome": "Dança entre Lâminas",
     "caminho": "danca-da-lamina",
     "atributo": "destreza",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -1875,7 +1775,6 @@
     "nome": "Mil Cortes",
     "caminho": "danca-da-lamina",
     "atributo": "destreza",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -1895,7 +1794,6 @@
     "nome": "Lâmina Perfeita",
     "caminho": "danca-da-lamina",
     "atributo": "destreza",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -1915,7 +1813,6 @@
     "nome": "Fúria",
     "caminho": "sangue-fervente",
     "atributo": "forca",
-    "banda": 1,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1932,7 +1829,6 @@
     "nome": "Ignorar Ferimentos",
     "caminho": "sangue-fervente",
     "atributo": "forca",
-    "banda": 2,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -1949,7 +1845,6 @@
     "nome": "Brado de Guerra",
     "caminho": "sangue-fervente",
     "atributo": "forca",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -1968,7 +1863,6 @@
     "nome": "Sede de Sangue",
     "caminho": "sangue-fervente",
     "atributo": "forca",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -1985,7 +1879,6 @@
     "nome": "Investida Furiosa",
     "caminho": "sangue-fervente",
     "atributo": "forca",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2004,7 +1897,6 @@
     "nome": "Frenesi",
     "caminho": "sangue-fervente",
     "atributo": "forca",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -2023,7 +1915,6 @@
     "nome": "Não Sentir Dor",
     "caminho": "sangue-fervente",
     "atributo": "forca",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -2043,7 +1934,6 @@
     "nome": "Avatar da Carnificina",
     "caminho": "sangue-fervente",
     "atributo": "forca",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -2063,7 +1953,6 @@
     "nome": "Presença Imponente",
     "caminho": "lenda-viva",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -2078,7 +1967,6 @@
     "nome": "Inspirar",
     "caminho": "lenda-viva",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2097,7 +1985,6 @@
     "nome": "Discurso",
     "caminho": "lenda-viva",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2116,7 +2003,6 @@
     "nome": "Estandarte Vivo",
     "caminho": "lenda-viva",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2135,7 +2021,6 @@
     "nome": "Temor Reverente",
     "caminho": "lenda-viva",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2154,7 +2039,6 @@
     "nome": "Carisma Heroico",
     "caminho": "lenda-viva",
     "atributo": "influencia",
-    "banda": 9,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -2174,7 +2058,6 @@
     "nome": "Lenda em Vida",
     "caminho": "lenda-viva",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -2194,7 +2077,6 @@
     "nome": "Ícone",
     "caminho": "lenda-viva",
     "atributo": "influencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -2214,7 +2096,6 @@
     "nome": "Memória Eidética",
     "caminho": "mente-afiada",
     "atributo": "inteligencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -2229,7 +2110,6 @@
     "nome": "Cálculo Veloz",
     "caminho": "mente-afiada",
     "atributo": "inteligencia",
-    "banda": 2,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -2246,7 +2126,6 @@
     "nome": "Dedução",
     "caminho": "mente-afiada",
     "atributo": "inteligencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2265,7 +2144,6 @@
     "nome": "Mente Enciclopédica",
     "caminho": "mente-afiada",
     "atributo": "inteligencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2284,7 +2162,6 @@
     "nome": "Ler a Situação",
     "caminho": "mente-afiada",
     "atributo": "inteligencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2303,7 +2180,6 @@
     "nome": "Pensamento Acelerado",
     "caminho": "mente-afiada",
     "atributo": "inteligencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -2323,7 +2199,6 @@
     "nome": "Mente Palaciana",
     "caminho": "mente-afiada",
     "atributo": "inteligencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -2343,7 +2218,6 @@
     "nome": "Onisciência Momentânea",
     "caminho": "mente-afiada",
     "atributo": "inteligencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -2363,7 +2237,6 @@
     "nome": "Empatia Selvagem",
     "caminho": "vinculo-animal",
     "atributo": "percepcao",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -2378,7 +2251,6 @@
     "nome": "Acalmar Fera",
     "caminho": "vinculo-animal",
     "atributo": "percepcao",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2397,7 +2269,6 @@
     "nome": "Chamado",
     "caminho": "vinculo-animal",
     "atributo": "percepcao",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2416,7 +2287,6 @@
     "nome": "Companheiro",
     "caminho": "vinculo-animal",
     "atributo": "percepcao",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2435,7 +2305,6 @@
     "nome": "Falar com os Animais",
     "caminho": "vinculo-animal",
     "atributo": "percepcao",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2454,7 +2323,6 @@
     "nome": "Matilha",
     "caminho": "vinculo-animal",
     "atributo": "percepcao",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -2474,7 +2342,6 @@
     "nome": "Forma Bestial",
     "caminho": "vinculo-animal",
     "atributo": "percepcao",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -2494,7 +2361,6 @@
     "nome": "Senhor das Feras",
     "caminho": "vinculo-animal",
     "atributo": "percepcao",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -2514,7 +2380,6 @@
     "nome": "Rosto de Pôquer",
     "caminho": "mascara",
     "atributo": "compostura",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -2529,7 +2394,6 @@
     "nome": "Fingir",
     "caminho": "mascara",
     "atributo": "compostura",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2548,7 +2412,6 @@
     "nome": "Disfarce Rápido",
     "caminho": "mascara",
     "atributo": "compostura",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2567,7 +2430,6 @@
     "nome": "Mentira Perfeita",
     "caminho": "mascara",
     "atributo": "compostura",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2586,7 +2448,6 @@
     "nome": "Identidade Falsa",
     "caminho": "mascara",
     "atributo": "compostura",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2605,7 +2466,6 @@
     "nome": "Camaleão Social",
     "caminho": "mascara",
     "atributo": "compostura",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -2625,7 +2485,6 @@
     "nome": "Roubar Rosto",
     "caminho": "mascara",
     "atributo": "compostura",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -2645,7 +2504,6 @@
     "nome": "Mil Faces",
     "caminho": "mascara",
     "atributo": "compostura",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -2665,7 +2523,6 @@
     "nome": "Força de Carga",
     "caminho": "atlas",
     "atributo": "forca",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -2680,7 +2537,6 @@
     "nome": "Levantamento Poderoso",
     "caminho": "atlas",
     "atributo": "forca",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2699,7 +2555,6 @@
     "nome": "Arremesso",
     "caminho": "atlas",
     "atributo": "forca",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2718,7 +2573,6 @@
     "nome": "Carregar o Mundo",
     "caminho": "atlas",
     "atributo": "forca",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -2735,7 +2589,6 @@
     "nome": "Esmagamento",
     "caminho": "atlas",
     "atributo": "forca",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2754,7 +2607,6 @@
     "nome": "Arrancar",
     "caminho": "atlas",
     "atributo": "forca",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -2774,7 +2626,6 @@
     "nome": "Força Titânica",
     "caminho": "atlas",
     "atributo": "forca",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -2794,7 +2645,6 @@
     "nome": "Atlas",
     "caminho": "atlas",
     "atributo": "forca",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -2814,7 +2664,6 @@
     "nome": "Demolidor",
     "caminho": "quebra-muralhas",
     "atributo": "forca",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -2829,7 +2678,6 @@
     "nome": "Pancada Destrutiva",
     "caminho": "quebra-muralhas",
     "atributo": "forca",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2848,7 +2696,6 @@
     "nome": "Romper",
     "caminho": "quebra-muralhas",
     "atributo": "forca",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2867,7 +2714,6 @@
     "nome": "Estilhaçar",
     "caminho": "quebra-muralhas",
     "atributo": "forca",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2886,7 +2732,6 @@
     "nome": "Abrir Brecha",
     "caminho": "quebra-muralhas",
     "atributo": "forca",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -2905,7 +2750,6 @@
     "nome": "Esmaga-Pedra",
     "caminho": "quebra-muralhas",
     "atributo": "forca",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -2925,7 +2769,6 @@
     "nome": "Terremoto",
     "caminho": "quebra-muralhas",
     "atributo": "forca",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -2945,7 +2788,6 @@
     "nome": "Quebra-Muralhas",
     "caminho": "quebra-muralhas",
     "atributo": "forca",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -2965,7 +2807,6 @@
     "nome": "Pegada de Ferro",
     "caminho": "agarrao-do-urso",
     "atributo": "forca",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -2980,7 +2821,6 @@
     "nome": "Imobilizar",
     "caminho": "agarrao-do-urso",
     "atributo": "forca",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -2999,7 +2839,6 @@
     "nome": "Projeção",
     "caminho": "agarrao-do-urso",
     "atributo": "forca",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3018,7 +2857,6 @@
     "nome": "Esmagar nos Braços",
     "caminho": "agarrao-do-urso",
     "atributo": "forca",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3037,7 +2875,6 @@
     "nome": "Escudo de Carne",
     "caminho": "agarrao-do-urso",
     "atributo": "forca",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3056,7 +2893,6 @@
     "nome": "Dominar",
     "caminho": "agarrao-do-urso",
     "atributo": "forca",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -3076,7 +2912,6 @@
     "nome": "Aperto Esmagador",
     "caminho": "agarrao-do-urso",
     "atributo": "forca",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -3096,7 +2931,6 @@
     "nome": "Abraço do Titã",
     "caminho": "agarrao-do-urso",
     "atributo": "forca",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -3116,7 +2950,6 @@
     "nome": "Equilíbrio Felino",
     "caminho": "gato",
     "atributo": "destreza",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -3131,7 +2964,6 @@
     "nome": "Queda de Gato",
     "caminho": "gato",
     "atributo": "destreza",
-    "banda": 2,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -3150,7 +2982,6 @@
     "nome": "Escalada Veloz",
     "caminho": "gato",
     "atributo": "destreza",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3169,7 +3000,6 @@
     "nome": "Contorção",
     "caminho": "gato",
     "atributo": "destreza",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3188,7 +3018,6 @@
     "nome": "Salto Acrobático",
     "caminho": "gato",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3207,7 +3036,6 @@
     "nome": "Andar de Aranha",
     "caminho": "gato",
     "atributo": "destreza",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -3227,7 +3055,6 @@
     "nome": "Imponderável",
     "caminho": "gato",
     "atributo": "destreza",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -3247,7 +3074,6 @@
     "nome": "Graça Sobrenatural",
     "caminho": "gato",
     "atributo": "destreza",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -3267,7 +3093,6 @@
     "nome": "Dedos Ágeis",
     "caminho": "mao-veloz",
     "atributo": "destreza",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -3282,7 +3107,6 @@
     "nome": "Truque de Mão",
     "caminho": "mao-veloz",
     "atributo": "destreza",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3301,7 +3125,6 @@
     "nome": "Desarme Rápido",
     "caminho": "mao-veloz",
     "atributo": "destreza",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3320,7 +3143,6 @@
     "nome": "Mãos Borradas",
     "caminho": "mao-veloz",
     "atributo": "destreza",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3339,7 +3161,6 @@
     "nome": "Toque Preciso",
     "caminho": "mao-veloz",
     "atributo": "destreza",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3358,7 +3179,6 @@
     "nome": "Mil Dedos",
     "caminho": "mao-veloz",
     "atributo": "destreza",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -3378,7 +3198,6 @@
     "nome": "Mãos Impossíveis",
     "caminho": "mao-veloz",
     "atributo": "destreza",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -3398,7 +3217,6 @@
     "nome": "Mão do Prestidigitador Divino",
     "caminho": "mao-veloz",
     "atributo": "destreza",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -3418,7 +3236,6 @@
     "nome": "Fôlego Profundo",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -3433,7 +3250,6 @@
     "nome": "Segundo Vento",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3452,7 +3268,6 @@
     "nome": "Marcha Forçada",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "banda": 2,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -3469,7 +3284,6 @@
     "nome": "Incansável",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -3486,7 +3300,6 @@
     "nome": "Pulmões de Ferro",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3505,7 +3318,6 @@
     "nome": "Sem Limites",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -3525,7 +3337,6 @@
     "nome": "Vigor Inesgotável",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "banda": 11,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -3542,7 +3353,6 @@
     "nome": "Coração Eterno",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -3562,7 +3372,6 @@
     "nome": "Estômago de Ferro",
     "caminho": "sangue-imune",
     "atributo": "vigor",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -3577,7 +3386,6 @@
     "nome": "Resistir Doença",
     "caminho": "sangue-imune",
     "atributo": "vigor",
-    "banda": 2,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -3594,7 +3402,6 @@
     "nome": "Aclimatação",
     "caminho": "sangue-imune",
     "atributo": "vigor",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3613,7 +3420,6 @@
     "nome": "Sangue Limpo",
     "caminho": "sangue-imune",
     "atributo": "vigor",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3632,7 +3438,6 @@
     "nome": "Pele Resiliente",
     "caminho": "sangue-imune",
     "atributo": "vigor",
-    "banda": 5,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -3649,7 +3454,6 @@
     "nome": "Imunidade",
     "caminho": "sangue-imune",
     "atributo": "vigor",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -3669,7 +3473,6 @@
     "nome": "Corpo Inóspito",
     "caminho": "sangue-imune",
     "atributo": "vigor",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -3689,7 +3492,6 @@
     "nome": "Sangue Divino",
     "caminho": "sangue-imune",
     "atributo": "vigor",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -3709,7 +3511,6 @@
     "nome": "Aguentar Firme",
     "caminho": "carne-teimosa",
     "atributo": "vigor",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -3724,7 +3525,6 @@
     "nome": "Cerrar os Dentes",
     "caminho": "carne-teimosa",
     "atributo": "vigor",
-    "banda": 3,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -3743,7 +3543,6 @@
     "nome": "De Pé",
     "caminho": "carne-teimosa",
     "atributo": "vigor",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3762,7 +3561,6 @@
     "nome": "Teimosia",
     "caminho": "carne-teimosa",
     "atributo": "vigor",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -3779,7 +3577,6 @@
     "nome": "Não Vou Cair",
     "caminho": "carne-teimosa",
     "atributo": "vigor",
-    "banda": 5,
     "tipo": "reflexiva",
     "custo": {
       "energia": 2
@@ -3798,7 +3595,6 @@
     "nome": "Vontade de Viver",
     "caminho": "carne-teimosa",
     "atributo": "vigor",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -3818,7 +3614,6 @@
     "nome": "Último Suspiro",
     "caminho": "carne-teimosa",
     "atributo": "vigor",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -3838,7 +3633,6 @@
     "nome": "Recusa à Morte",
     "caminho": "carne-teimosa",
     "atributo": "vigor",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -3858,7 +3652,6 @@
     "nome": "Voz de Líder",
     "caminho": "estandarte",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -3873,7 +3666,6 @@
     "nome": "Coordenar",
     "caminho": "estandarte",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3892,7 +3684,6 @@
     "nome": "Reunir",
     "caminho": "estandarte",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -3911,7 +3702,6 @@
     "nome": "Formação",
     "caminho": "estandarte",
     "atributo": "influencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3930,7 +3720,6 @@
     "nome": "Grito de Guerra",
     "caminho": "estandarte",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -3949,7 +3738,6 @@
     "nome": "Maestria de Campo",
     "caminho": "estandarte",
     "atributo": "influencia",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -3969,7 +3757,6 @@
     "nome": "General",
     "caminho": "estandarte",
     "atributo": "influencia",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -3989,7 +3776,6 @@
     "nome": "Estandarte Eterno",
     "caminho": "estandarte",
     "atributo": "influencia",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -4009,7 +3795,6 @@
     "nome": "Presença Cênica",
     "caminho": "musa",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -4024,7 +3809,6 @@
     "nome": "Tocar a Alma",
     "caminho": "musa",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4043,7 +3827,6 @@
     "nome": "Distrair",
     "caminho": "musa",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4062,7 +3845,6 @@
     "nome": "Inspiração Artística",
     "caminho": "musa",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4081,7 +3863,6 @@
     "nome": "Encantar a Multidão",
     "caminho": "musa",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4100,7 +3881,6 @@
     "nome": "Obra-Prima",
     "caminho": "musa",
     "atributo": "influencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -4120,7 +3900,6 @@
     "nome": "Voz que Cura",
     "caminho": "musa",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -4140,7 +3919,6 @@
     "nome": "Canção Imortal",
     "caminho": "musa",
     "atributo": "influencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -4160,7 +3938,6 @@
     "nome": "Centelha",
     "caminho": "brasa",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -4175,7 +3952,6 @@
     "nome": "Incitar",
     "caminho": "brasa",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4194,7 +3970,6 @@
     "nome": "Inflamar",
     "caminho": "brasa",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4213,7 +3988,6 @@
     "nome": "Discurso Ardente",
     "caminho": "brasa",
     "atributo": "influencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4232,7 +4006,6 @@
     "nome": "Provocação",
     "caminho": "brasa",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4251,7 +4024,6 @@
     "nome": "Fogo nos Corações",
     "caminho": "brasa",
     "atributo": "influencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -4271,7 +4043,6 @@
     "nome": "Pavio Curto",
     "caminho": "brasa",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -4291,7 +4062,6 @@
     "nome": "Incêndio",
     "caminho": "brasa",
     "atributo": "influencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -4311,7 +4081,6 @@
     "nome": "Trama",
     "caminho": "teia",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -4326,7 +4095,6 @@
     "nome": "Plantar Ideia",
     "caminho": "teia",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4345,7 +4113,6 @@
     "nome": "Cunha",
     "caminho": "teia",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4364,7 +4131,6 @@
     "nome": "Chantagem",
     "caminho": "teia",
     "atributo": "influencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4383,7 +4149,6 @@
     "nome": "Rede de Favores",
     "caminho": "teia",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4402,7 +4167,6 @@
     "nome": "Virar o Jogo",
     "caminho": "teia",
     "atributo": "influencia",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -4422,7 +4186,6 @@
     "nome": "Mestre dos Cordéis",
     "caminho": "teia",
     "atributo": "influencia",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -4442,7 +4205,6 @@
     "nome": "Teia",
     "caminho": "teia",
     "atributo": "influencia",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -4462,7 +4224,6 @@
     "nome": "Língua de Prata",
     "caminho": "serpente-das-palavras",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -4477,7 +4238,6 @@
     "nome": "Torcer",
     "caminho": "serpente-das-palavras",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4496,7 +4256,6 @@
     "nome": "Pechinchar",
     "caminho": "serpente-das-palavras",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4515,7 +4274,6 @@
     "nome": "Contrato Capcioso",
     "caminho": "serpente-das-palavras",
     "atributo": "influencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4534,7 +4292,6 @@
     "nome": "Confundir",
     "caminho": "serpente-das-palavras",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4553,7 +4310,6 @@
     "nome": "Palavras de Veludo",
     "caminho": "serpente-das-palavras",
     "atributo": "influencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -4573,7 +4329,6 @@
     "nome": "Pacto Inquebrável",
     "caminho": "serpente-das-palavras",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -4593,7 +4348,6 @@
     "nome": "Voz da Serpente",
     "caminho": "serpente-das-palavras",
     "atributo": "influencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -4613,7 +4367,6 @@
     "nome": "Sussurro",
     "caminho": "sussurro",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -4628,7 +4381,6 @@
     "nome": "Semear Dúvida",
     "caminho": "sussurro",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4647,7 +4399,6 @@
     "nome": "Inquietar",
     "caminho": "sussurro",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4666,7 +4417,6 @@
     "nome": "Paranoia",
     "caminho": "sussurro",
     "atributo": "influencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4685,7 +4435,6 @@
     "nome": "Boato",
     "caminho": "sussurro",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4704,7 +4453,6 @@
     "nome": "Veneno na Mente",
     "caminho": "sussurro",
     "atributo": "influencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -4724,7 +4472,6 @@
     "nome": "Pesadelo Acordado",
     "caminho": "sussurro",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -4744,7 +4491,6 @@
     "nome": "Coro de Sussurros",
     "caminho": "sussurro",
     "atributo": "influencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -4764,7 +4510,6 @@
     "nome": "Sugestão",
     "caminho": "marionete",
     "atributo": "influencia",
-    "banda": 1,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4781,7 +4526,6 @@
     "nome": "Ler Desejos",
     "caminho": "marionete",
     "atributo": "influencia",
-    "banda": 2,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -4798,7 +4542,6 @@
     "nome": "Empurrão Sutil",
     "caminho": "marionete",
     "atributo": "influencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4817,7 +4560,6 @@
     "nome": "Compulsão",
     "caminho": "marionete",
     "atributo": "influencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4836,7 +4578,6 @@
     "nome": "Fios Invisíveis",
     "caminho": "marionete",
     "atributo": "influencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4855,7 +4596,6 @@
     "nome": "Titereiro",
     "caminho": "marionete",
     "atributo": "influencia",
-    "banda": 9,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -4875,7 +4615,6 @@
     "nome": "Reescrever Desejos",
     "caminho": "marionete",
     "atributo": "influencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -4895,7 +4634,6 @@
     "nome": "Marionete",
     "caminho": "marionete",
     "atributo": "influencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -4915,7 +4653,6 @@
     "nome": "Magnetismo",
     "caminho": "beleza-cativante",
     "atributo": "compostura",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -4930,7 +4667,6 @@
     "nome": "Sedução",
     "caminho": "beleza-cativante",
     "atributo": "compostura",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4949,7 +4685,6 @@
     "nome": "Desarmar com Charme",
     "caminho": "beleza-cativante",
     "atributo": "compostura",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -4968,7 +4703,6 @@
     "nome": "Encanto Irresistível",
     "caminho": "beleza-cativante",
     "atributo": "compostura",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -4987,7 +4721,6 @@
     "nome": "Olhar Cativante",
     "caminho": "beleza-cativante",
     "atributo": "compostura",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5006,7 +4739,6 @@
     "nome": "Beleza Inebriante",
     "caminho": "beleza-cativante",
     "atributo": "compostura",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -5026,7 +4758,6 @@
     "nome": "Visão Divina",
     "caminho": "beleza-cativante",
     "atributo": "compostura",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -5046,7 +4777,6 @@
     "nome": "Beleza que Move o Mundo",
     "caminho": "beleza-cativante",
     "atributo": "compostura",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -5066,7 +4796,6 @@
     "nome": "Porte",
     "caminho": "semblante",
     "atributo": "compostura",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -5081,7 +4810,6 @@
     "nome": "Olhar Severo",
     "caminho": "semblante",
     "atributo": "compostura",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5100,7 +4828,6 @@
     "nome": "Imponência",
     "caminho": "semblante",
     "atributo": "compostura",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5119,7 +4846,6 @@
     "nome": "Aura de Comando",
     "caminho": "semblante",
     "atributo": "compostura",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5138,7 +4864,6 @@
     "nome": "Encarar a Morte",
     "caminho": "semblante",
     "atributo": "compostura",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5157,7 +4882,6 @@
     "nome": "Presença Avassaladora",
     "caminho": "semblante",
     "atributo": "compostura",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -5177,7 +4901,6 @@
     "nome": "Majestade",
     "caminho": "semblante",
     "atributo": "compostura",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -5197,7 +4920,6 @@
     "nome": "Semblante de Deus",
     "caminho": "semblante",
     "atributo": "compostura",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -5217,7 +4939,6 @@
     "nome": "Disfarce",
     "caminho": "camaleao",
     "atributo": "compostura",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -5232,7 +4953,6 @@
     "nome": "Mudar de Cara",
     "caminho": "camaleao",
     "atributo": "compostura",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5251,7 +4971,6 @@
     "nome": "Misturar-se",
     "caminho": "camaleao",
     "atributo": "compostura",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5270,7 +4989,6 @@
     "nome": "Segunda Pele",
     "caminho": "camaleao",
     "atributo": "compostura",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5289,7 +5007,6 @@
     "nome": "Rosto Comum",
     "caminho": "camaleao",
     "atributo": "compostura",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5308,7 +5025,6 @@
     "nome": "Impostor",
     "caminho": "camaleao",
     "atributo": "compostura",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -5328,7 +5044,6 @@
     "nome": "Forma Fluida",
     "caminho": "camaleao",
     "atributo": "compostura",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -5348,7 +5063,6 @@
     "nome": "Mil Rostos",
     "caminho": "camaleao",
     "atributo": "compostura",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -5368,7 +5082,6 @@
     "nome": "Aura Sutil",
     "caminho": "aura",
     "atributo": "compostura",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -5383,7 +5096,6 @@
     "nome": "Irradiar Calma",
     "caminho": "aura",
     "atributo": "compostura",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5402,7 +5114,6 @@
     "nome": "Irradiar Temor",
     "caminho": "aura",
     "atributo": "compostura",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5421,7 +5132,6 @@
     "nome": "Campo Emocional",
     "caminho": "aura",
     "atributo": "compostura",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5440,7 +5150,6 @@
     "nome": "Presença Tangível",
     "caminho": "aura",
     "atributo": "compostura",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5459,7 +5168,6 @@
     "nome": "Maré Emocional",
     "caminho": "aura",
     "atributo": "compostura",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -5479,7 +5187,6 @@
     "nome": "Aura Avassaladora",
     "caminho": "aura",
     "atributo": "compostura",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -5499,7 +5206,6 @@
     "nome": "Aura Divina",
     "caminho": "aura",
     "atributo": "compostura",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -5519,7 +5225,6 @@
     "nome": "Face Neutra",
     "caminho": "mascara-impassivel",
     "atributo": "compostura",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -5534,7 +5239,6 @@
     "nome": "Esconder Sentir",
     "caminho": "mascara-impassivel",
     "atributo": "compostura",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5553,7 +5257,6 @@
     "nome": "Mentira de Olhos",
     "caminho": "mascara-impassivel",
     "atributo": "compostura",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5572,7 +5275,6 @@
     "nome": "Inescrutável",
     "caminho": "mascara-impassivel",
     "atributo": "compostura",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -5589,7 +5291,6 @@
     "nome": "Calma Absoluta",
     "caminho": "mascara-impassivel",
     "atributo": "compostura",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5608,7 +5309,6 @@
     "nome": "Véu da Mente",
     "caminho": "mascara-impassivel",
     "atributo": "compostura",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -5628,7 +5328,6 @@
     "nome": "Máscara Perfeita",
     "caminho": "mascara-impassivel",
     "atributo": "compostura",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -5648,7 +5347,6 @@
     "nome": "Vazio",
     "caminho": "mascara-impassivel",
     "atributo": "compostura",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -5668,7 +5366,6 @@
     "nome": "Vigilância",
     "caminho": "sentinela",
     "atributo": "percepcao",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -5683,7 +5380,6 @@
     "nome": "Sentir Perigo",
     "caminho": "sentinela",
     "atributo": "percepcao",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5702,7 +5398,6 @@
     "nome": "Olho Atento",
     "caminho": "sentinela",
     "atributo": "percepcao",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5721,7 +5416,6 @@
     "nome": "Nunca Desprevenido",
     "caminho": "sentinela",
     "atributo": "percepcao",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -5738,7 +5432,6 @@
     "nome": "Varredura",
     "caminho": "sentinela",
     "atributo": "percepcao",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5757,7 +5450,6 @@
     "nome": "Sexto Sentido",
     "caminho": "sentinela",
     "atributo": "percepcao",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -5777,7 +5469,6 @@
     "nome": "Olhos por Toda Parte",
     "caminho": "sentinela",
     "atributo": "percepcao",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -5797,7 +5488,6 @@
     "nome": "Guardião Incansável",
     "caminho": "sentinela",
     "atributo": "percepcao",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -5817,7 +5507,6 @@
     "nome": "Rastreador",
     "caminho": "cacador",
     "atributo": "percepcao",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -5832,7 +5521,6 @@
     "nome": "Faro",
     "caminho": "cacador",
     "atributo": "percepcao",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5851,7 +5539,6 @@
     "nome": "Ler o Rastro",
     "caminho": "cacador",
     "atributo": "percepcao",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -5870,7 +5557,6 @@
     "nome": "Trilha Fria",
     "caminho": "cacador",
     "atributo": "percepcao",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5889,7 +5575,6 @@
     "nome": "Predador",
     "caminho": "cacador",
     "atributo": "percepcao",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -5908,7 +5593,6 @@
     "nome": "Caça Implacável",
     "caminho": "cacador",
     "atributo": "percepcao",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -5928,7 +5612,6 @@
     "nome": "Sentidos de Caçada",
     "caminho": "cacador",
     "atributo": "percepcao",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -5948,7 +5631,6 @@
     "nome": "Olho do Caçador Divino",
     "caminho": "cacador",
     "atributo": "percepcao",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -5968,7 +5650,6 @@
     "nome": "Ler Pessoas",
     "caminho": "olho-da-verdade",
     "atributo": "percepcao",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -5983,7 +5664,6 @@
     "nome": "Farejar Mentira",
     "caminho": "olho-da-verdade",
     "atributo": "percepcao",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6002,7 +5682,6 @@
     "nome": "Ver Através",
     "caminho": "olho-da-verdade",
     "atributo": "percepcao",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6021,7 +5700,6 @@
     "nome": "Olho Crítico",
     "caminho": "olho-da-verdade",
     "atributo": "percepcao",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6040,7 +5718,6 @@
     "nome": "Desmascarar",
     "caminho": "olho-da-verdade",
     "atributo": "percepcao",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6059,7 +5736,6 @@
     "nome": "Verdade Nua",
     "caminho": "olho-da-verdade",
     "atributo": "percepcao",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -6079,7 +5755,6 @@
     "nome": "Olho que Não Erra",
     "caminho": "olho-da-verdade",
     "atributo": "percepcao",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -6099,7 +5774,6 @@
     "nome": "Visão da Verdade",
     "caminho": "olho-da-verdade",
     "atributo": "percepcao",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -6119,7 +5793,6 @@
     "nome": "Sensível",
     "caminho": "comunhao",
     "atributo": "percepcao",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -6134,7 +5807,6 @@
     "nome": "Ver Auras",
     "caminho": "comunhao",
     "atributo": "percepcao",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6153,7 +5825,6 @@
     "nome": "Sentir o Véu",
     "caminho": "comunhao",
     "atributo": "percepcao",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6172,7 +5843,6 @@
     "nome": "Olho Espiritual",
     "caminho": "comunhao",
     "atributo": "percepcao",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6191,7 +5861,6 @@
     "nome": "Ler o Lugar",
     "caminho": "comunhao",
     "atributo": "percepcao",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6210,7 +5879,6 @@
     "nome": "Comunhão",
     "caminho": "comunhao",
     "atributo": "percepcao",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -6230,7 +5898,6 @@
     "nome": "Olhar Além",
     "caminho": "comunhao",
     "atributo": "percepcao",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -6250,7 +5917,6 @@
     "nome": "Olho do Vidente",
     "caminho": "comunhao",
     "atributo": "percepcao",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -6270,7 +5936,6 @@
     "nome": "Vasto Saber",
     "caminho": "erudito",
     "atributo": "inteligencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -6285,7 +5950,6 @@
     "nome": "Lembrar",
     "caminho": "erudito",
     "atributo": "inteligencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6304,7 +5968,6 @@
     "nome": "Poliglota",
     "caminho": "erudito",
     "atributo": "inteligencia",
-    "banda": 3,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -6321,7 +5984,6 @@
     "nome": "Biblioteca Viva",
     "caminho": "erudito",
     "atributo": "inteligencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6340,7 +6002,6 @@
     "nome": "Decifrar",
     "caminho": "erudito",
     "atributo": "inteligencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6359,7 +6020,6 @@
     "nome": "Sábio",
     "caminho": "erudito",
     "atributo": "inteligencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -6379,7 +6039,6 @@
     "nome": "Mente Universal",
     "caminho": "erudito",
     "atributo": "inteligencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -6399,7 +6058,6 @@
     "nome": "Conhecimento Absoluto",
     "caminho": "erudito",
     "atributo": "inteligencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -6419,7 +6077,6 @@
     "nome": "Mãos Hábeis",
     "caminho": "artesao",
     "atributo": "inteligencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -6434,7 +6091,6 @@
     "nome": "Improvisar",
     "caminho": "artesao",
     "atributo": "inteligencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6453,7 +6109,6 @@
     "nome": "Olho de Artífice",
     "caminho": "artesao",
     "atributo": "inteligencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6472,7 +6127,6 @@
     "nome": "Obra Fina",
     "caminho": "artesao",
     "atributo": "inteligencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6491,7 +6145,6 @@
     "nome": "Reparo Veloz",
     "caminho": "artesao",
     "atributo": "inteligencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6510,7 +6163,6 @@
     "nome": "Mestre Artesão",
     "caminho": "artesao",
     "atributo": "inteligencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -6530,7 +6182,6 @@
     "nome": "Engenho Sobre-humano",
     "caminho": "artesao",
     "atributo": "inteligencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -6550,7 +6201,6 @@
     "nome": "Forja dos Deuses",
     "caminho": "artesao",
     "atributo": "inteligencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -6570,7 +6220,6 @@
     "nome": "Mente Tática",
     "caminho": "estrategista",
     "atributo": "inteligencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -6585,7 +6234,6 @@
     "nome": "Antecipar",
     "caminho": "estrategista",
     "atributo": "inteligencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6604,7 +6252,6 @@
     "nome": "Plano",
     "caminho": "estrategista",
     "atributo": "inteligencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6623,7 +6270,6 @@
     "nome": "Ler a Batalha",
     "caminho": "estrategista",
     "atributo": "inteligencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6642,7 +6288,6 @@
     "nome": "Emboscada",
     "caminho": "estrategista",
     "atributo": "inteligencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6661,7 +6306,6 @@
     "nome": "Grande Estrategista",
     "caminho": "estrategista",
     "atributo": "inteligencia",
-    "banda": 9,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -6681,7 +6325,6 @@
     "nome": "Xeque-Mate",
     "caminho": "estrategista",
     "atributo": "inteligencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -6701,7 +6344,6 @@
     "nome": "Mente do General Divino",
     "caminho": "estrategista",
     "atributo": "inteligencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -6721,7 +6363,6 @@
     "nome": "Olhar Investigativo",
     "caminho": "investigador",
     "atributo": "inteligencia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -6736,7 +6377,6 @@
     "nome": "Pista",
     "caminho": "investigador",
     "atributo": "inteligencia",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6755,7 +6395,6 @@
     "nome": "Conectar",
     "caminho": "investigador",
     "atributo": "inteligencia",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6774,7 +6413,6 @@
     "nome": "Reconstituir",
     "caminho": "investigador",
     "atributo": "inteligencia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6793,7 +6431,6 @@
     "nome": "Interrogar",
     "caminho": "investigador",
     "atributo": "inteligencia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6812,7 +6449,6 @@
     "nome": "Detetive",
     "caminho": "investigador",
     "atributo": "inteligencia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -6832,7 +6468,6 @@
     "nome": "Nada Escapa",
     "caminho": "investigador",
     "atributo": "inteligencia",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -6852,7 +6487,6 @@
     "nome": "A Verdade Revelada",
     "caminho": "investigador",
     "atributo": "inteligencia",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -6872,7 +6506,6 @@
     "nome": "Mente Rápida",
     "caminho": "reflexo-mental",
     "atributo": "raciocinio",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -6887,7 +6520,6 @@
     "nome": "Reação",
     "caminho": "reflexo-mental",
     "atributo": "raciocinio",
-    "banda": 3,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -6906,7 +6538,6 @@
     "nome": "Decisão Instantânea",
     "caminho": "reflexo-mental",
     "atributo": "raciocinio",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -6925,7 +6556,6 @@
     "nome": "Reflexos de Raio",
     "caminho": "reflexo-mental",
     "atributo": "raciocinio",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -6942,7 +6572,6 @@
     "nome": "Pensar e Agir",
     "caminho": "reflexo-mental",
     "atributo": "raciocinio",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -6961,7 +6590,6 @@
     "nome": "Tempo de Sobra",
     "caminho": "reflexo-mental",
     "atributo": "raciocinio",
-    "banda": 7,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -6981,7 +6609,6 @@
     "nome": "Mente Acelerada",
     "caminho": "reflexo-mental",
     "atributo": "raciocinio",
-    "banda": 10,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -7001,7 +6628,6 @@
     "nome": "Reflexo Divino",
     "caminho": "reflexo-mental",
     "atributo": "raciocinio",
-    "banda": 14,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -7021,7 +6647,6 @@
     "nome": "Jeitinho",
     "caminho": "improviso",
     "atributo": "raciocinio",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -7036,7 +6661,6 @@
     "nome": "Usar o Cenário",
     "caminho": "improviso",
     "atributo": "raciocinio",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -7055,7 +6679,6 @@
     "nome": "Virar a Mesa",
     "caminho": "improviso",
     "atributo": "raciocinio",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -7074,7 +6697,6 @@
     "nome": "Solução Genial",
     "caminho": "improviso",
     "atributo": "raciocinio",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -7093,7 +6715,6 @@
     "nome": "MacGyver",
     "caminho": "improviso",
     "atributo": "raciocinio",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -7112,7 +6733,6 @@
     "nome": "Sempre uma Saída",
     "caminho": "improviso",
     "atributo": "raciocinio",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -7132,7 +6752,6 @@
     "nome": "Improviso Magistral",
     "caminho": "improviso",
     "atributo": "raciocinio",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -7152,7 +6771,6 @@
     "nome": "Lei de Murphy Reversa",
     "caminho": "improviso",
     "atributo": "raciocinio",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -7172,7 +6790,6 @@
     "nome": "Ler o Outro",
     "caminho": "leitura-fria",
     "atributo": "raciocinio",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -7187,7 +6804,6 @@
     "nome": "Adivinhar",
     "caminho": "leitura-fria",
     "atributo": "raciocinio",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -7206,7 +6822,6 @@
     "nome": "Ler Tells",
     "caminho": "leitura-fria",
     "atributo": "raciocinio",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -7225,7 +6840,6 @@
     "nome": "Perfil",
     "caminho": "leitura-fria",
     "atributo": "raciocinio",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -7244,7 +6858,6 @@
     "nome": "Antecipar a Pessoa",
     "caminho": "leitura-fria",
     "atributo": "raciocinio",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -7263,7 +6876,6 @@
     "nome": "Mente Aberta como Livro",
     "caminho": "leitura-fria",
     "atributo": "raciocinio",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -7283,7 +6895,6 @@
     "nome": "Conhecer de Relance",
     "caminho": "leitura-fria",
     "atributo": "raciocinio",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -7303,7 +6914,6 @@
     "nome": "Leitor de Almas",
     "caminho": "leitura-fria",
     "atributo": "raciocinio",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -7323,7 +6933,6 @@
     "nome": "Calma",
     "caminho": "mente-serena",
     "atributo": "raciocinio",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -7338,7 +6947,6 @@
     "nome": "Foco",
     "caminho": "mente-serena",
     "atributo": "raciocinio",
-    "banda": 3,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -7357,7 +6965,6 @@
     "nome": "Centrar-se",
     "caminho": "mente-serena",
     "atributo": "raciocinio",
-    "banda": 2,
     "tipo": "ativa",
     "custo": {
       "energia": 1
@@ -7376,7 +6983,6 @@
     "nome": "Mente Imperturbável",
     "caminho": "mente-serena",
     "atributo": "raciocinio",
-    "banda": 4,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -7393,7 +6999,6 @@
     "nome": "Transe",
     "caminho": "mente-serena",
     "atributo": "raciocinio",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -7412,7 +7017,6 @@
     "nome": "Fortaleza Mental",
     "caminho": "mente-serena",
     "atributo": "raciocinio",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -7432,7 +7036,6 @@
     "nome": "Vazio Sereno",
     "caminho": "mente-serena",
     "atributo": "raciocinio",
-    "banda": 11,
     "tipo": "ativa",
     "custo": {
       "energia": 4,
@@ -7452,7 +7055,6 @@
     "nome": "Mente de Diamante",
     "caminho": "mente-serena",
     "atributo": "raciocinio",
-    "banda": 15,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -7472,7 +7074,6 @@
     "nome": "Farejar a Mentira",
     "caminho": "leitor-de-almas",
     "atributo": "perspicacia",
-    "banda": 2,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -7491,7 +7092,6 @@
     "nome": "Ler a Sala",
     "caminho": "leitor-de-almas",
     "atributo": "perspicacia",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -7510,7 +7110,6 @@
     "nome": "Brecha Emocional",
     "caminho": "leitor-de-almas",
     "atributo": "perspicacia",
-    "banda": 5,
     "tipo": "ativa",
     "custo": {
       "energia": 3
@@ -7529,7 +7128,6 @@
     "nome": "Antecipar o Gesto",
     "caminho": "leitor-de-almas",
     "atributo": "perspicacia",
-    "banda": 6,
     "tipo": "reflexiva",
     "custo": {
       "energia": 4,
@@ -7549,7 +7147,6 @@
     "nome": "Coração Aberto",
     "caminho": "leitor-de-almas",
     "atributo": "perspicacia",
-    "banda": 8,
     "tipo": "ativa",
     "custo": {
       "energia": 5,
@@ -7570,7 +7167,6 @@
     "nome": "Voz Calma",
     "caminho": "porte-inabalavel",
     "atributo": "compostura",
-    "banda": 2,
     "tipo": "reflexiva",
     "custo": {
       "energia": 1
@@ -7589,7 +7185,6 @@
     "nome": "Máscara Sustentada",
     "caminho": "porte-inabalavel",
     "atributo": "compostura",
-    "banda": 4,
     "tipo": "ativa",
     "custo": {
       "energia": 2
@@ -7608,7 +7203,6 @@
     "nome": "Águas Profundas",
     "caminho": "porte-inabalavel",
     "atributo": "compostura",
-    "banda": 5,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -7625,7 +7219,6 @@
     "nome": "Inabalável",
     "caminho": "porte-inabalavel",
     "atributo": "compostura",
-    "banda": 6,
     "tipo": "reflexiva",
     "custo": {
       "energia": 4,
@@ -7645,7 +7238,6 @@
     "nome": "Enigma Vivo",
     "caminho": "porte-inabalavel",
     "atributo": "compostura",
-    "banda": 8,
     "tipo": "passiva",
     "custo": {},
     "prereq": [
@@ -7663,7 +7255,6 @@
     "nome": "Olhar Perspicaz",
     "caminho": "leitor-de-almas",
     "atributo": "perspicacia",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],
@@ -7678,7 +7269,6 @@
     "nome": "Semblante Fechado",
     "caminho": "porte-inabalavel",
     "atributo": "compostura",
-    "banda": 1,
     "tipo": "passiva",
     "custo": {},
     "prereq": [],

@@ -221,7 +221,7 @@ const catalogos = {
 };
 // nome de Caminho → id (mais longos primeiro p/ "Máscara Impassível" ganhar de "Máscara")
 const CAM = catalogos.caminhos.map((c) => ({ id: c.id, nome: c.nome })).sort((a, b) => b.nome.length - a.nome.length);
-const TEC = catalogos.tecnicas.map((t) => ({ id: t.id, nome: t.nome, caminho: t.caminho?.id ?? t.caminho, banda: t.banda }));
+const TEC = catalogos.tecnicas.map((t) => ({ id: t.id, nome: t.nome, caminho: t.caminho?.id ?? t.caminho, nivel: t.nivel }));
 const ARTE_NOME2ID = Object.fromEntries(catalogos.artes.map((a) => [a.nome, a.id]));
 const ARTE_LIST = catalogos.artes.map((a) => a.nome).join('|');
 
@@ -348,7 +348,7 @@ function poderesDe(name, centelha) {
       const cam = CAM.find((c) => alvo.includes(c.nome));
       if (cam) {
         pod.caminho = cam.id;
-        for (const t of TEC) { if (t.caminho === cam.id && alvo.includes(t.nome) && Math.ceil(t.banda / 3) <= (centelha || 0)) tecSet.add(t.id); }
+        for (const t of TEC) { if (t.caminho === cam.id && alvo.includes(t.nome) && (t.nivel || 0) <= (centelha || 0)) tecSet.add(t.id); }
       }
     }
     poderes.push(pod);

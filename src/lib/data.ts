@@ -1,10 +1,17 @@
 import { getCollection } from 'astro:content';
+import regras from '../data/regras.json';
 
-/** Nome do tier por banda (15 bandas, 3 por tier de Centelha: tier = ceil(banda/3)). */
+/** Nome do tier por nível (1 a 5). */
 export const TIER_NOME = ['Tocado', 'Herói', 'Grande herói', 'Lendário', 'Semideus'];
-export const BANDA_LABEL: Record<number, string> = Object.fromEntries(
-  Array.from({ length: 15 }, (_, i) => [i + 1, TIER_NOME[Math.ceil((i + 1) / 3) - 1]])
-);
+
+/** Modificador de uma Técnica pela sua trilha de efeito e nível; null para 'estado' (capacidade sem número). */
+export function modProeza(efeito: string, nivel: number): { v: string; t: string } | null {
+  const tr = (regras as any).escalasProeza?.trilhas?.[efeito];
+  if (!tr || efeito === 'estado') return null;
+  const v = tr.valores?.[nivel - 1];
+  if (!v || v === '—') return null;
+  return { v: String(v), t: `${tr.rotulo}: ${v}${tr.unidade ? ' · ' + tr.unidade : ''}` };
+}
 
 const FEM = new Set(['Pele de Pedra', 'Dança da Lâmina', 'Voz de Mel', 'Lenda Viva', 'Mente Afiada', 'Máscara', 'Sombra', 'Teia', 'Serpente das Palavras', 'Marionete', 'Beleza Cativante', 'Aura', 'Máscara Impassível', 'Comunhão', 'Leitura Fria', 'Mente Serena', 'Musa', 'Brasa', 'Mão Veloz', 'Carne Teimosa']);
 /** "Proeza da/do X" conforme o gênero do nome. */
@@ -26,10 +33,10 @@ export async function loadData() {
   const C = Object.fromEntries(caminhos.map((c) => [c.id, c.data]));
   const T = Object.fromEntries(tecnicas.map((t) => [t.id, t.data]));
 
-  // técnicas por caminho, ordenadas por banda
+  // técnicas por caminho, ordenadas por nível
   const porCaminho: Record<string, any[]> = {};
   for (const t of tecnicas) (porCaminho[t.data.caminho.id] ??= []).push(t.data);
-  for (const k in porCaminho) porCaminho[k].sort((a, b) => a.banda - b.banda);
+  for (const k in porCaminho) porCaminho[k].sort((a, b) => a.nivel - b.nivel);
 
   // prereq reverso: o que cada técnica destrava
   const destrava: Record<string, string[]> = {};
