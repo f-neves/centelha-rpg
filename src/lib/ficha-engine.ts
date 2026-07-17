@@ -24,6 +24,8 @@ export interface FichaOpts {
   budgetValor?: number | null;
   /** Limpeza extra ao resetar (ex.: localStorage/hash). */
   aoResetar?: () => void;
+  /** Modo leitura: renderiza tudo, mas bloqueia edição (ex.: visão do mestre). */
+  readOnly?: boolean;
 }
 
 export function montarFicha(opts: FichaOpts) {
@@ -119,7 +121,7 @@ export function montarFicha(opts: FichaOpts) {
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
     SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] ??= 0; S.spec2[k] ??= 0; });
   }
-  const save = () => { try { opts.salvar(S); } catch {} };
+  const save = () => { if (opts.readOnly) return; try { opts.salvar(S); } catch {} };
 
   // ---- builders ----
   const dotsHTML = (kind: string, key: string, value: number, max: number, floor: number) => {
@@ -274,7 +276,8 @@ export function montarFicha(opts: FichaOpts) {
     fill('eq-arma', ARMA_D as any[], S.equip.arma); fill('eq-escudo', ESCUDO_D as any[], S.equip.escudo);
     const box = el('eq-armaduras');
     box.innerHTML = (ARMADURA_D as any[]).filter((a) => a.id !== 'nenhuma')
-      .map((a) => `<label class="arm-chk"><input type="checkbox" data-arm="${a.id}"${(S.equip.armaduras || []).includes(a.id) ? ' checked' : ''}/> ${a.nome}</label>`).join('');
+      .map((a) => `<label class="arm-chk"><input type="checkbox" data-arm="${a.id}"${(S.equip.armaduras || []).includes(a.id) ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''}/> ${a.nome}</label>`).join('');
+    if (opts.readOnly) { (el('eq-arma') as HTMLSelectElement).disabled = true; (el('eq-escudo') as HTMLSelectElement).disabled = true; }
     box.querySelectorAll('input[data-arm]').forEach((cb) => cb.addEventListener('change', (e) => {
       const t = e.target as HTMLInputElement; const set = new Set<string>(S.equip.armaduras || []);
       if (t.checked) set.add(t.dataset.arm!); else set.delete(t.dataset.arm!);
@@ -350,16 +353,16 @@ export function montarFicha(opts: FichaOpts) {
     const nm = t.closest<HTMLElement>('.trow .nm');
     if (nm) { openTraitModal(nm); return; }
     const dot = t.closest<HTMLElement>('.dots .dot');
-    if (dot) { if (dot.classList.contains('cap')) return; const s = dot.parentElement as HTMLElement; setDot(s.dataset.kind!, s.dataset.key!, +dot.dataset.d!); return; }
+    if (dot) { if (opts.readOnly || dot.classList.contains('cap')) return; const s = dot.parentElement as HTMLElement; setDot(s.dataset.kind!, s.dataset.key!, +dot.dataset.d!); return; }
     const rb = t.closest<HTMLElement>('.rollv');
     if (rb) { const [k, key] = rb.dataset.roll!.split(':'); const rd = (n: string) => document.querySelector<HTMLInputElement>(`[data-rd="${n}"]`);
       if (k === 'attr') { const a = rd('atr'); if (a) { a.value = String(S.attrs[key] || 0); a.dispatchEvent(new Event('input')); } }
       else { const hb = rd('hab'), es = rd('esp'); if (hb) hb.value = String(S.skills[key] || 0); if (es) es.value = String(S.spec[key] || 0); hb?.dispatchEvent(new Event('input')); }
       document.querySelector('.rolador')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     const sq = t.closest<HTMLElement>('.spec .sq');
-    if (sq && !sq.classList.contains('dis')) { setSpec((sq.parentElement as HTMLElement).dataset.spec!, +sq.dataset.d!); return; }
+    if (sq && !opts.readOnly && !sq.classList.contains('dis')) { setSpec((sq.parentElement as HTMLElement).dataset.spec!, +sq.dataset.d!); return; }
     const pill = t.closest<HTMLElement>('.tpill');
-    if (pill) { if (pill.classList.contains('locked')) return; const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
+    if (pill) { if (opts.readOnly || pill.classList.contains('locked')) return; const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
     const ct = t.closest<HTMLElement>('[data-camtog]');
     if (ct) { OPEN.cam[ct.dataset.camtog!] = !OPEN.cam[ct.dataset.camtog!]; renderCaminhos(); return; }
     const at = t.closest<HTMLElement>('[data-artetog]');
@@ -367,6 +370,7 @@ export function montarFicha(opts: FichaOpts) {
   });
 
   document.addEventListener('keydown', (e) => {
+    if (opts.readOnly) return;
     const dots = (e.target as HTMLElement).closest?.('.dots') as HTMLElement | null; if (!dots) return;
     let delta = 0;
     if (e.key === 'ArrowRight' || e.key === 'ArrowUp') delta = 1;
@@ -376,17 +380,17 @@ export function montarFicha(opts: FichaOpts) {
   });
 
   // idrow + budget
-  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { S.id[inp.dataset.id!] = inp.value; save(); }));
+  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { if (opts.readOnly) return; S.id[inp.dataset.id!] = inp.value; save(); }));
   (el('xpBudget') as HTMLInputElement).addEventListener('input', (e) => {
-    if (opts.budgetLocked) return;
+    if (opts.budgetLocked || opts.readOnly) return;
     S.budget = +(e.target as HTMLInputElement).value || 0; recompute();
   });
 
   function syncInputs() {
-    document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => (inp.value = S.id?.[inp.dataset.id!] || ''));
+    document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => { inp.value = S.id?.[inp.dataset.id!] || ''; inp.readOnly = !!opts.readOnly; });
     const b = el('xpBudget') as HTMLInputElement;
     b.value = String(S.budget ?? 1400);
-    b.disabled = !!opts.budgetLocked;
+    b.disabled = !!opts.budgetLocked || !!opts.readOnly;
     b.title = opts.budgetLocked ? 'O XP é definido pelo mestre da mesa.' : '';
   }
   function markModo() {
@@ -402,14 +406,15 @@ export function montarFicha(opts: FichaOpts) {
   function renderAll() { syncInputs(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); }
 
   // botões
-  document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => b.addEventListener('click', () => setModo(b.dataset.modo!)));
+  document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => b.addEventListener('click', () => { if (opts.readOnly) return; setModo(b.dataset.modo!); }));
   el('f-export').addEventListener('click', () => {
     const blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
     a.download = (S.id?.nome ? slug(S.id.nome) : 'ficha') + '.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   });
-  el('f-import').addEventListener('click', () => el('f-file').click());
+  el('f-import').addEventListener('click', () => { if (opts.readOnly) return; el('f-file').click(); });
   el('f-file').addEventListener('change', (e) => {
+    if (opts.readOnly) return;
     const f = (e.target as HTMLInputElement).files?.[0]; if (!f) return;
     const r = new FileReader(); r.onload = () => { try { S = JSON.parse(String(r.result)); normalize(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } catch { alert('Arquivo JSON inválido.'); } }; r.readAsText(f);
   });
@@ -417,8 +422,8 @@ export function montarFicha(opts: FichaOpts) {
   el('deriv-toggle').addEventListener('click', () => { S.derivCol = !S.derivCol; applyDerivCol(); save(); });
   let camAllOpen = false;
   el('cam-all').addEventListener('click', () => { camAllOpen = !camAllOpen; CAM_ORDER.forEach((c) => (OPEN.cam[c] = camAllOpen)); renderCaminhos(); el('cam-all').textContent = camAllOpen ? 'Recolher todos' : 'Expandir todos'; });
-  (['eq-arma', 'eq-escudo'] as const).forEach((id) => el(id).addEventListener('change', (e) => { S.equip[id.slice(3)] = (e.target as HTMLSelectElement).value; renderDerived(); renderCombate(); save(); }));
-  el('f-reset').addEventListener('click', () => { if (confirm('Limpar a ficha?')) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });
+  (['eq-arma', 'eq-escudo'] as const).forEach((id) => el(id).addEventListener('change', (e) => { if (opts.readOnly) return; S.equip[id.slice(3)] = (e.target as HTMLSelectElement).value; renderDerived(); renderCombate(); save(); }));
+  el('f-reset').addEventListener('click', () => { if (opts.readOnly) return; if (confirm('Limpar a ficha?')) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });
   el('f-link').addEventListener('click', () => {
     const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
     navigator.clipboard?.writeText(location.origin + location.pathname + '#p=' + b64);
@@ -432,6 +437,12 @@ export function montarFicha(opts: FichaOpts) {
     if (loaded && typeof loaded === 'object') { S = loaded; normalize(); } else { fresh(); }
     if (opts.budgetValor != null) S.budget = opts.budgetValor;
     renderAll();
+    if (opts.readOnly) {
+      ['f-import', 'f-reset', 'f-file'].forEach((i) => { const e = document.getElementById(i); if (e) (e as HTMLElement).style.display = 'none'; });
+      document.querySelector<HTMLElement>('.modo-toggle')?.style.setProperty('display', 'none');
+      document.querySelector<HTMLElement>('.modo-lbl')?.style.setProperty('display', 'none');
+      document.querySelectorAll<HTMLElement>('.rollv').forEach((e) => (e.style.display = 'none'));
+    }
   }
   init();
 }

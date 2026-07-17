@@ -26,12 +26,17 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         <span id="pers-mesa" class="muted"></span>
         <h1 id="pers-nome" class="cinzel">Personagem</h1>
         <span id="xp-nota" class="xp-nota"></span>
+        <div id="mestre-xp" class="mestre-xp" hidden>
+          <label>XP do personagem <input type="number" id="xp-input" min="0" /></label>
+          <button class="btn primary" id="xp-salvar">Salvar XP</button>
+          <span id="xp-salvo" class="salvo"></span>
+        </div>
       </div>
     </header>
 
     <div id="somente-leitura" class="aviso" hidden>
       <strong>Visão do mestre.</strong>
-      <p class="muted">Você vê a ficha e os arquivos deste personagem, mas quem edita é o jogador dono. O XP você ajusta na página da mesa.</p>
+      <p class="muted">Você vê a ficha e os arquivos deste personagem, mas quem edita a ficha é o jogador dono. Você define o XP acima.</p>
     </div>
 
     <div id="ficha-wrap" hidden>
@@ -106,10 +111,14 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     document.getElementById('pers-nome')!.textContent = pers.nome || 'Personagem';
 
-    // nome da mesa (se houver)
+    // nome da mesa (se houver) + saber se o espectador é o mestre da mesa
+    let ehMestre = false;
     if (pers.mesa_id) {
-      const { data: mesa } = await sb.from('mesas').select('nome').eq('id', pers.mesa_id).maybeSingle();
-      if (mesa) document.getElementById('pers-mesa')!.textContent = 'Mesa: ' + mesa.nome;
+      const { data: mesa } = await sb.from('mesas').select('nome, mestre_id').eq('id', pers.mesa_id).maybeSingle();
+      if (mesa) {
+        document.getElementById('pers-mesa')!.textContent = 'Mesa: ' + mesa.nome;
+        ehMestre = !ehDono && mesa.mestre_id === user.id;
+      }
     } else {
       document.getElementById('pers-mesa')!.textContent = 'Sem mesa (personagem avulso)';
     }
@@ -167,6 +176,28 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         salvar: (S) => salvarFicha(S),
         budgetLocked, budgetValor,
         aoResetar: () => {},
+      });
+    } else if (ehMestre) {
+      // Visão do mestre: ficha em leitura + editor de XP
+      document.getElementById('somente-leitura')!.hidden = false;
+      document.getElementById('ficha-wrap')!.hidden = false;
+      const cx = document.getElementById('mestre-xp')!; cx.hidden = false;
+      const xpInput = document.getElementById('xp-input') as HTMLInputElement;
+      xpInput.value = String(budgetValor ?? 0);
+      document.getElementById('xp-salvar')!.addEventListener('click', async () => {
+        const xp = Math.max(0, +xpInput.value || 0);
+        const { error } = await sb.from('personagem_xp').upsert(
+          { personagem_id: id, xp, definido_por: user.id, atualizado_em: new Date().toISOString() },
+          { onConflict: 'personagem_id' },
+        );
+        const st = document.getElementById('xp-salvo')!;
+        if (error) { st.textContent = 'Erro: ' + error.message; st.style.color = '#b3261e'; return; }
+        st.textContent = 'XP salvo'; st.style.color = ''; setTimeout(() => (st.textContent = ''), 1500);
+      });
+      montarFicha({
+        carregar: () => (pers.ficha && Object.keys(pers.ficha).length ? pers.ficha : null),
+        salvar: () => {},
+        readOnly: true, budgetLocked: true, budgetValor,
       });
     } else {
       document.getElementById('somente-leitura')!.hidden = false;
@@ -241,6 +272,9 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .retrato-btn { cursor: pointer; font-size: .8rem; }
   .pers-tit h1 { margin: .1rem 0; }
   .xp-nota { color: var(--muted); font-size: .9rem; }
+  .mestre-xp { display: flex; align-items: flex-end; gap: .6rem; flex-wrap: wrap; margin-top: .6rem; }
+  .mestre-xp label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); gap: .2rem; }
+  .mestre-xp input { width: 7rem; padding: .4rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
   .bloco { margin-top: 1.6rem; }
   .textos { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   @media (max-width: 760px) { .textos { grid-template-columns: 1fr; } }

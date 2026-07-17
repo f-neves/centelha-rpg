@@ -41,6 +41,17 @@ import Base from '../layouts/Base.astro';
       </div>
       <div id="personagens"></div>
     </section>
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Arquivos da mesa</h2>
+        <label class="btn primary" id="mesa-arq-lbl" hidden>Enviar arquivo
+          <input type="file" id="mesa-arq-file" hidden />
+        </label>
+      </div>
+      <p class="muted" id="mesa-arq-dica" hidden>Marque a caixa "visível" para liberar o arquivo aos jogadores. Sem marcar, só você (mestre) vê.</p>
+      <ul id="mesa-arqs" class="arqs"></ul>
+    </section>
   </div>
 </Base>
 
@@ -104,6 +115,55 @@ import Base from '../layouts/Base.astro';
       location.href = u('personagem') + '?novo=1&mesa=' + id;
     });
     await renderPersonagens(sb, ehMestre, user.id);
+
+    if (ehMestre) {
+      document.getElementById('mesa-arq-lbl')!.hidden = false;
+      document.getElementById('mesa-arq-dica')!.hidden = false;
+      (document.getElementById('mesa-arq-file') as HTMLInputElement).addEventListener('change', (e) => subirArquivoMesa(sb, user.id, (e.target as HTMLInputElement).files?.[0]));
+    }
+    await listarArquivosMesa(sb, ehMestre);
+  }
+
+  async function subirArquivoMesa(sb: any, userId: string, file?: File) {
+    if (!file) return;
+    const nomeSeguro = file.name.replace(/[^\w.\-]+/g, '_');
+    const path = `${id}/${Date.now()}-${nomeSeguro}`;
+    const { error } = await sb.storage.from('mesa').upload(path, file, { contentType: file.type });
+    if (error) return alert('Erro ao enviar: ' + error.message);
+    const { error: e2 } = await sb.from('arquivos').insert({
+      mesa_id: id, dono_id: userId, nome: file.name, storage_path: path,
+      bucket: 'mesa', tipo: file.type, categoria: 'handout-mestre', visivel_jogadores: false,
+    });
+    if (e2) return alert('Enviado, mas erro ao registrar: ' + e2.message);
+    await listarArquivosMesa(sb, true);
+  }
+
+  async function listarArquivosMesa(sb: any, ehMestre: boolean) {
+    const { data, error } = await sb.from('arquivos').select('*').eq('mesa_id', id).eq('bucket', 'mesa').order('criado_em', { ascending: false });
+    const ul = document.getElementById('mesa-arqs')!;
+    if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
+    if (!data?.length) { ul.innerHTML = `<li class="muted">${ehMestre ? 'Nenhum arquivo ainda. Envie handouts, mapas, documentos.' : 'O mestre ainda não compartilhou arquivos.'}</li>`; return; }
+    ul.innerHTML = data.map((a: any) => `<li data-arq="${a.id}" data-path="${esc(a.storage_path)}">
+      <a href="#" class="arq-abrir">${esc(a.nome)}</a>
+      <span class="muted arq-tipo">${esc((a.tipo || '').split('/')[1] || '')}</span>
+      ${ehMestre ? `<label class="arq-vis" title="Visível aos jogadores"><input type="checkbox" class="arq-vis-cb"${a.visivel_jogadores ? ' checked' : ''}/> visível</label><button class="btn arq-rm" title="Remover">✕</button>` : ''}
+    </li>`).join('');
+    ul.querySelectorAll<HTMLElement>('.arq-abrir').forEach((a) => a.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const li = a.closest('li')!; const { data: s } = await sb.storage.from('mesa').createSignedUrl(li.dataset.path!, 3600);
+      if (s?.signedUrl) window.open(s.signedUrl, '_blank');
+    }));
+    ul.querySelectorAll<HTMLInputElement>('.arq-vis-cb').forEach((cb) => cb.addEventListener('change', async () => {
+      const li = cb.closest('li')!;
+      await sb.from('arquivos').update({ visivel_jogadores: cb.checked }).eq('id', li.dataset.arq);
+    }));
+    ul.querySelectorAll<HTMLElement>('.arq-rm').forEach((b) => b.addEventListener('click', async () => {
+      const li = b.closest('li')!;
+      if (!confirm('Remover este arquivo?')) return;
+      await sb.storage.from('mesa').remove([li.dataset.path!]);
+      await sb.from('arquivos').delete().eq('id', li.dataset.arq);
+      await listarArquivosMesa(sb, true);
+    }));
   }
 
   async function renderPersonagens(sb: any, ehMestre: boolean, userId: string) {
@@ -164,6 +224,12 @@ import Base from '../layouts/Base.astro';
   .pers-card-nome { font-size: 1.1rem; font-weight: 700; }
   .pers-card-conc { color: var(--ink-soft); font-size: .9rem; font-style: italic; }
   .pers-card-dono { font-size: .8rem; }
+  .arqs { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; margin-top: .6rem; }
+  .arqs li { display: flex; align-items: center; gap: .6rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
+  .arqs .arq-abrir { flex: 1; color: var(--accent); text-decoration: none; }
+  .arqs .arq-tipo { font-size: .78rem; text-transform: uppercase; }
+  .arqs .arq-vis { display: inline-flex; align-items: center; gap: .25rem; font-size: .82rem; color: var(--ink-soft); }
+  .arqs .arq-rm { background: none; border: none; color: #b3261e; cursor: pointer; }
   .membros { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
   .membros li { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
   .papel { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; padding: .1rem .5rem; border-radius: 999px; font-weight: 700; }
