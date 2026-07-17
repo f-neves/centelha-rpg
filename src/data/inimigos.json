@@ -5287,16 +5287,16 @@
       "centelha",
       "mágico"
     ],
-    "pv": 95,
+    "pv": 78,
     "defesa": 36,
     "defesaMental": 44,
     "vontade": 12,
     "soak": {
       "impacto": 20,
-      "corte": 18,
-      "perfuracao": 18
+      "corte": 16,
+      "perfuracao": 16
     },
-    "resistPerf": 1,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 10",
     "atributos": {
       "forca": 11,
@@ -9648,7 +9648,7 @@
   },
   {
     "id": "mon-grizzly-bear",
-    "nome": "Urso Pardo",
+    "nome": "Urso Cinzento",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
@@ -10027,7 +10027,7 @@
   },
   {
     "id": "mon-cheetah",
-    "nome": "Cheetah",
+    "nome": "Guepardo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -10121,7 +10121,7 @@
   },
   {
     "id": "mon-cave-fisher",
-    "nome": "Cave Fisher",
+    "nome": "Pescador das Cavernas",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -10168,7 +10168,7 @@
   },
   {
     "id": "mon-centaur",
-    "nome": "Centaur",
+    "nome": "Centauro",
     "tipo": "soldado",
     "categoria": "Monstro",
     "ameaca": 3,
@@ -10310,7 +10310,7 @@
   },
   {
     "id": "mon-choker",
-    "nome": "Choker",
+    "nome": "Estrangulador",
     "tipo": "soldado",
     "categoria": "Aberração",
     "ameaca": 2,
@@ -10980,7 +10980,7 @@
   },
   {
     "id": "mon-ankylosaurus",
-    "nome": "Ankylosaurus",
+    "nome": "Anquilossauro",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
@@ -11403,7 +11403,7 @@
   },
   {
     "id": "mon-riding-dog",
-    "nome": "Riding Dog",
+    "nome": "Cão de Montaria",
     "tipo": "capanga",
     "categoria": "Monstro",
     "ameaca": 1,
@@ -11545,7 +11545,7 @@
   },
   {
     "id": "mon-dragon-turtle",
-    "nome": "Dragon Turtle",
+    "nome": "Tartaruga-Dragão",
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 5,
@@ -12166,7 +12166,7 @@
   },
   {
     "id": "mon-bat",
-    "nome": "Bat",
+    "nome": "Morcego",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12213,7 +12213,7 @@
   },
   {
     "id": "mon-cat",
-    "nome": "Cat",
+    "nome": "Gato",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12260,7 +12260,7 @@
   },
   {
     "id": "mon-hawk",
-    "nome": "Hawk",
+    "nome": "Falcão",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12448,7 +12448,7 @@
   },
   {
     "id": "mon-viper",
-    "nome": "Viper",
+    "nome": "Víbora",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
@@ -12589,7 +12589,7 @@
   },
   {
     "id": "mon-giant-frog",
-    "nome": "Giant Frog",
+    "nome": "Rã Gigante",
     "tipo": "soldado",
     "categoria": "Monstro",
     "ameaca": 2,
@@ -12876,7 +12876,7 @@
   },
   {
     "id": "mon-ghost",
-    "nome": "Ghost",
+    "nome": "Fantasma",
     "tipo": "elite",
     "categoria": "Morto-vivo",
     "ameaca": 4,
@@ -13356,7 +13356,7 @@
   },
   {
     "id": "mon-hell-hound",
-    "nome": "Hell Hound",
+    "nome": "Cão Infernal",
     "tipo": "soldado",
     "categoria": "Elemental",
     "ameaca": 3,
@@ -13594,7 +13594,7 @@
   },
   {
     "id": "mon-horse",
-    "nome": "Horse",
+    "nome": "Cavalo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
@@ -14928,7 +14928,7 @@
   },
   {
     "id": "mon-nightmare",
-    "nome": "Nightmare",
+    "nome": "Pesadelo",
     "tipo": "elite",
     "categoria": "Exterior",
     "ameaca": 4,
@@ -15214,7 +15214,7 @@
   },
   {
     "id": "mon-phoenix",
-    "nome": "Phoenix",
+    "nome": "Fênix",
     "tipo": "chefe",
     "categoria": "Besta mágica",
     "ameaca": 6,
@@ -15643,7 +15643,7 @@
   },
   {
     "id": "mon-sea-serpent",
-    "nome": "Sea Serpent",
+    "nome": "Serpente Marinha",
     "tipo": "chefe",
     "categoria": "Besta mágica",
     "ameaca": 5,
@@ -16781,7 +16781,7 @@
   },
   {
     "id": "mon-winter-wolf",
-    "nome": "Winter Wolf",
+    "nome": "Lobo do Inverno",
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 4,

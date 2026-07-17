@@ -83,9 +83,36 @@ function virtudesDe(tipo, categoria, ameaca, en) {
   return { compaixao: co, conviccao: cv, temperanca: te, valor: va };
 }
 
+// Descrição-flavor: o gen-bestiario grava uma linha genérica pela categoria CRUA (categoriaDe),
+// que às vezes destoa da categoria FINAL (ex.: um Construto que saiu com texto de "aberração
+// humanoide"). Aqui, quando a descrição é uma das genéricas conhecidas, trocamos pela linha da
+// categoria FINAL. Exceções por criatura (categoria certa, mas a linha genérica não cabe).
+const CAT_DESC = {
+  'Aberração': 'Coisa de forma errada, de pesadelos e profundezas.', 'Animal': 'Animal selvagem, perigo puro sem malícia.',
+  'Besta mágica': 'Fera tocada pela magia, além do reino natural.', 'Celestial': 'Servo do bem, luz encarnada em guerra contra as trevas.',
+  'Construto': 'Autômato sem vida, movido por magia alheia.', 'Dragão': 'Predador alado e mágico, orgulho e ganância feitos carne.',
+  'Elemental': 'Ser de um único elemento, sem alma mortal.', 'Fada': 'Espírito da natureza, belo e caprichoso.',
+  'Corruptor': 'Nativo dos planos infernais, feito de crueldade e corrupção.', 'Gigante': 'Colosso humanoide, força bruta em escala descomunal.',
+  'Humanoide': 'Povo civilizado ou selvagem, do tamanho de um homem.', 'Humanoide monstruoso': 'Aberração humanoide de lendas antigas.',
+  'Limo': 'Massa informe que digere tudo que toca.', 'Planta': 'Vegetal desperto, lento e implacável.',
+  'Morto-vivo': 'Um morto que não descansa, movido por magia ou ódio.', 'Outsider': 'Nativo de outro plano, alheio às leis mortais.',
+  'Demônio': 'Horror caótico do Abismo, feito de fúria e corrupção.', 'Diabo': 'Tirano leal do Inferno, calculista e cruel.',
+  'Exterior': 'Nativo de outro plano, alheio às leis mortais.', 'Espírito': 'Presença sem corpo, eco de vontade além da morte.',
+};
+const GEN_DESC = new Set([...Object.values(CAT_DESC), 'Fera tocada pela magia, além do reino natural.']);
+const DESC_OVER = {
+  'mon-mite': 'Fada mesquinha e degenerada das cavernas, covarde e vingativa.',
+  'mon-lemure': 'Alma condenada derretida na forma mais baixa do Inferno, sem mente própria.',
+  'mon-goblin': 'Humanoide pequeno e covarde, perigoso mesmo assim em bando.',
+  'mon-tiefling': 'Mortal marcado por sangue infernal, vive à margem dos povos.',
+};
+
 function build(c) {
   const h = HAB[c.id] || {}, d = DIM[c.id] || {}, l = LORE[c.id] || {}, e = ECO[c.id] || {};
   const categoria = catDe(c.id, e.tipo) || c.categoria || null;
+  let descricao = c.descricao || '';
+  if (DESC_OVER[c.id]) descricao = DESC_OVER[c.id];
+  else if (GEN_DESC.has(descricao.trim()) && CAT_DESC[categoria]) descricao = CAT_DESC[categoria];
   return {
     id: c.id,
     nome: c.nome,
@@ -93,7 +120,7 @@ function build(c) {
     categoria,
     tipo: c.tipo,
     conceito: c.conceito,
-    descricao: c.descricao || '',
+    descricao,
     tags: c.tags || [],
     ameaca: c.ameaca,
     centelha: c.centelha,

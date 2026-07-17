@@ -806,7 +806,7 @@
     ]
   },
   "mon-dire-lion-spotted-lion": {
-    "tipo": "Aberration",
+    "tipo": "Animal",
     "terreno": [
       "Plains",
       "Mountain"
@@ -1296,7 +1296,7 @@
     ]
   },
   "mon-giant-frog": {
-    "tipo": "Aberration",
+    "tipo": "Animal",
     "terreno": [
       "Swamp",
       "Water"
@@ -1655,7 +1655,7 @@
     ]
   },
   "mon-homunculus": {
-    "tipo": "Aberration",
+    "tipo": "Construct",
     "terreno": [
       "Urban",
       "Ruins",
@@ -2375,7 +2375,7 @@
     ]
   },
   "mon-riding-dog": {
-    "tipo": "Aberration",
+    "tipo": "Animal",
     "terreno": [
       "Any"
     ],
@@ -2685,7 +2685,7 @@
     ]
   },
   "mon-tiefling": {
-    "tipo": "Monitor",
+    "tipo": "Humanoid",
     "terreno": [
       "Urban",
       "Plains",

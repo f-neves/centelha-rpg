@@ -603,7 +603,7 @@
       },
       {
         "t": "Ecologia",
-        "d": "Caça em bandos organizados por florestas densas e cavernas, coordenando emboscadas com uma disciplina que surpreende quem espera fera comum. Carrega um ódio natural e antigo por cães élficos e criaturas semelhantes, instinto que nenhum estudioso soube explicar por completo."
+        "d": "Caça em bandos organizados por florestas densas e cavernas, coordenando emboscadas com uma disciplina que surpreende quem espera fera comum. Carrega um ódio natural e antigo por cães teleportadores (os blink dogs) e criaturas semelhantes, instinto que nenhum estudioso soube explicar por completo."
       },
       {
         "t": "Personalidade",
@@ -655,7 +655,7 @@
       },
       {
         "t": "No mundo de Centelha",
-        "d": "Nenhum monstro combina tanto com a Fenda quanto o bodak: dizem que é o que sobra de alguém arrastado para o plano de pesadelo e devolvido ao mundo com a Centelha torcida em algo que só sabe odiar. Os poucos sobreviventes de expedições ao White Wall descrevem exatamente essa figura de crânio de ave e garras longas antes de fugir."
+        "d": "Nenhum monstro combina tanto com a Fenda quanto o bodak: dizem que é o que sobra de alguém arrastado para o plano de pesadelo e devolvido ao mundo com a Centelha torcida em algo que só sabe odiar. Os poucos sobreviventes de expedições ao White Wall descrevem exatamente essa figura de crânio humano descarnado e garras longas antes de fugir."
       }
     ]
   },
@@ -1159,7 +1159,7 @@
     "secoes": [
       {
         "t": "Comportamento",
-        "d": "Comanda tropas com precisão militar impecável, usando frio absoluto e uma glaive perfurante para congelar a vontade de lutar do inimigo antes mesmo do combate."
+        "d": "Comanda tropas com precisão militar impecável, usando frio absoluto e uma lança perfurante para congelar a vontade de lutar do inimigo antes mesmo do combate."
       },
       {
         "t": "Sociedade",
@@ -1259,7 +1259,7 @@
     "secoes": [
       {
         "t": "Habitat",
-        "d": "O dire bat costuma se abrigar em cavernas e áreas desoladas durante o dia, saindo à noite para caçar. Sua envergadura chega a quase cinco metros."
+        "d": "O morcego atroz costuma se abrigar em cavernas e áreas desoladas durante o dia, saindo à noite para caçar. Sua envergadura chega a quase cinco metros."
       },
       {
         "t": "Comportamento",
@@ -2063,7 +2063,7 @@
     "secoes": [
       {
         "t": "Uma injustiça sem descanso",
-        "d": "Todo espectro carrega uma história não resolvida: uma traição, um assassinato, uma promessa quebrada que o prende a este mundo."
+        "d": "Toda assombração carrega uma história não resolvida: uma traição, um assassinato, uma promessa quebrada que o prende a este mundo."
       },
       {
         "t": "Ódio que corrói a alma",
@@ -2266,12 +2266,12 @@
   "mon-giant-wasp": {
     "secoes": [
       {
-        "t": "Colmeia viva",
-        "d": "Cada ninho gira em torno de uma rainha, poucas operárias e vários soldados que caçam e protegem o ninho com fúria cega."
+        "t": "Caçadora solitária",
+        "d": "Vespa do tamanho de um cão grande, caça sozinha ou em pequenos grupos, paralisando a presa com o ferrão antes de arrastá-la de volta."
       },
       {
         "t": "Berço de pesadelo",
-        "d": "Presas capturadas vivas são levadas ao ninho para alimentar as larvas, um destino que os sobreviventes preferem não descrever."
+        "d": "A presa paralisada vira incubadora viva: a vespa põe os ovos nela e as larvas a devoram por dentro ao nascer."
       }
     ]
   },
@@ -2651,7 +2651,7 @@
     "secoes": [
       {
         "t": "Comportamento",
-        "d": "Brutal e direto, ataca com força bruta e mordida venenosa, sem tática nem paciência, apenas fome de destruição."
+        "d": "Brutal e direto, ataca com força bruta e mordidas, envolto no próprio fedor nauseante, sem tática nem paciência, apenas fome de destruição."
       },
       {
         "t": "Hábitos",
@@ -3323,7 +3323,7 @@
       },
       {
         "t": "Predador de Rio e Mata",
-        "d": "Caça em bandos, à espreita nas margens de rios e no sub-bosque, onde sua pele se confunde com raízes e lama."
+        "d": "Caça sozinho, à espreita nas margens de rios e no sub-bosque, onde sua pele se confunde com raízes e lama."
       },
       {
         "t": "Companheiro Domado",
@@ -3363,7 +3363,7 @@
     "secoes": [
       {
         "t": "Comportamento",
-        "d": "Amontoado de vegetação podre e restos que ganhou vontade própria, avança devagar mas sem cansar, esmagando e envenenando o que alcança com seus braços de galhos entrelaçados."
+        "d": "Amontoado de vegetação podre e restos que ganhou vontade própria, avança devagar mas sem cansar, esmagando e sufocando o que alcança com seus braços de galhos entrelaçados."
       },
       {
         "t": "Ecologia",

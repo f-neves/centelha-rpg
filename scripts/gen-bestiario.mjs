@@ -407,6 +407,13 @@ const NOME_PT = {
   'mon-small-fire-elemental': 'Elemental do Fogo (Pequeno)', 'mon-small-water-elemental': 'Elemental da Água (Pequeno)',
   'mon-wererat-human-form': 'Homem-Rato (forma humana)', 'mon-werewolf': 'Lobisomem',
   'mon-dire-ape-gigantopithecus': 'Símio Atroz', 'mon-dire-lion-spotted-lion': 'Leão Atroz',
+  // nomes comuns em inglês traduzidos (nomes próprios de criatura seguem no original)
+  'mon-bat': 'Morcego', 'mon-cat': 'Gato', 'mon-centaur': 'Centauro', 'mon-cheetah': 'Guepardo',
+  'mon-ankylosaurus': 'Anquilossauro', 'mon-nightmare': 'Pesadelo', 'mon-phoenix': 'Fênix',
+  'mon-dragon-turtle': 'Tartaruga-Dragão', 'mon-giant-frog': 'Rã Gigante', 'mon-riding-dog': 'Cão de Montaria',
+  'mon-cave-fisher': 'Pescador das Cavernas', 'mon-choker': 'Estrangulador', 'mon-sea-serpent': 'Serpente Marinha',
+  'mon-hawk': 'Falcão', 'mon-horse': 'Cavalo', 'mon-viper': 'Víbora', 'mon-ghost': 'Fantasma',
+  'mon-winter-wolf': 'Lobo do Inverno', 'mon-hell-hound': 'Cão Infernal',
   'mon-flesh-golem': 'Golem de Carne', 'mon-giant-ant': 'Formiga Gigante', 'mon-giant-centipede': 'Centopéia Gigante',
   // remapeamentos (nome PT + inglês ajustado em habilidades.en)
   'mon-dire-bear-cave-bear': 'Urso Atroz', 'mon-dire-boar-daeodon': 'Javali Atroz',
@@ -418,7 +425,7 @@ const NOME_PT = {
   'mon-giant-mantis': 'Louva-a-Deus Gigante', 'mon-giant-moray-eel': 'Moreia Gigante',
   'mon-giant-octopus': 'Polvo Gigante', 'mon-giant-slug': 'Lesma Gigante', 'mon-giant-squid': 'Lula Gigante',
   'mon-giant-stag-beetle': 'Besouro-Veado Gigante', 'mon-giant-wasp': 'Vespa Gigante',
-  'mon-gray-ooze': 'Limo Cinzento', 'mon-grizzly-bear': 'Urso Pardo', 'mon-hyena': 'Hiena',
+  'mon-gray-ooze': 'Limo Cinzento', 'mon-grizzly-bear': 'Urso Cinzento', 'mon-hyena': 'Hiena',
   'mon-ice-golem': 'Golem de Gelo', 'mon-iron-cobra': 'Cobra de Ferro', 'mon-iron-golem': 'Golem de Ferro',
   'mon-leech-swarm': 'Enxame de Sanguessugas', 'mon-leopard': 'Leopardo', 'mon-mastodon': 'Mastodonte',
   'mon-monitor-lizard': 'Lagarto-Monitor', 'mon-monkey': 'Macaco', 'mon-ochre-jelly': 'Geleia Ocre',

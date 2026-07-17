@@ -516,7 +516,7 @@
  },
  {
   "id": "mon-ankylosaurus",
-  "nome": "Ankylosaurus",
+  "nome": "Anquilossauro",
   "nomeIngles": "Dinosaur, Ankylosaurus",
   "categoria": "Animal",
   "tipo": "fera",
@@ -938,7 +938,7 @@
   },
   "habilidades": [
    {
-    "nome": "Aura de menaça",
+    "nome": "Aura de ameaça",
     "descricao": "inimigos em 6m que falharem em Vontade ficam Abalados"
    },
    {
@@ -1711,7 +1711,7 @@
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior (demônio) Médio",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha"
@@ -1818,7 +1818,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (demônio)",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha",
@@ -1827,9 +1827,9 @@
   "ameaca": 6,
   "centelha": 8,
   "pendente": true,
-  "porte": "Enorme",
+  "porte": "Grande",
   "dimensoes": {
-   "medida": "4,3 m de altura (envergadura 9 m)",
+   "medida": "3,7 m de altura",
    "peso": "3,6 t"
   },
   "ecologia": {
@@ -1863,15 +1863,15 @@
    "valor": 6
   },
   "combate": {
-   "pv": 95,
+   "pv": 78,
    "defesa": 36,
    "defesaMental": 44,
    "absorcao": {
     "impacto": 20,
-    "corte": 18,
-    "perfuracao": 18
+    "corte": 16,
+    "perfuracao": 16
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
@@ -2101,7 +2101,7 @@
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"
@@ -2428,113 +2428,13 @@
   ]
  },
  {
-  "id": "mon-bat",
-  "nome": "Bat",
-  "nomeIngles": "Bat",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 1,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Miúdo",
-  "dimensoes": {
-   "medida": "12 centímetros de envergadura",
-   "peso": "poucos gramas"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Underground",
-    "Forest"
-   ],
-   "clima": [
-    "Temperate",
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/bat.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 0,
-   "destreza": 4,
-   "vigor": 1,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 4,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "combate": {
-   "pv": 16,
-   "defesa": 10,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 1,
-    "corte": 0,
-    "perfuracao": 0
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 4",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "0d6+2",
-     "dano": "1d6 perfConc",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Sentido de eco",
-    "descricao": "Percebe o que está por perto mesmo no escuro total ou de olhos fechados, guiando-se por vibrações no ar."
-   },
-   {
-    "nome": "Voo ágil",
-    "descricao": "Voa rápido e com curvas fechadas, difícil de acertar em pleno ar."
-   },
-   {
-    "nome": "Visão na penumbra",
-    "descricao": "Enxerga bem mesmo com pouquíssima luz."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Sombra alada",
-    "texto": "A maioria se alimenta de insetos e frutas ao anoitecer, mas dizem que ao menos uma espécie prefere sangue."
-   },
-   {
-    "titulo": "Enxame na caverna",
-    "texto": "Vive em colônias enormes, penduradas de cabeça para baixo em tetos de cavernas e ruínas esquecidas."
-   }
-  ]
- },
- {
   "id": "mon-bebilith",
   "nome": "Bebilith",
   "nomeIngles": "Bebilith",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Enorme",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"
@@ -3114,7 +3014,7 @@
    },
    {
     "titulo": "Ecologia",
-    "texto": "Caça em bandos organizados por florestas densas e cavernas, coordenando emboscadas com uma disciplina que surpreende quem espera fera comum. Carrega um ódio natural e antigo por cães élficos e criaturas semelhantes, instinto que nenhum estudioso soube explicar por completo."
+    "texto": "Caça em bandos organizados por florestas densas e cavernas, coordenando emboscadas com uma disciplina que surpreende quem espera fera comum. Carrega um ódio natural e antigo por cães teleportadores (os blink dogs) e criaturas semelhantes, instinto que nenhum estudioso soube explicar por completo."
    },
    {
     "titulo": "Personalidade",
@@ -3362,7 +3262,7 @@
    },
    {
     "titulo": "No mundo de Centelha",
-    "texto": "Nenhum monstro combina tanto com a Fenda quanto o bodak: dizem que é o que sobra de alguém arrastado para o plano de pesadelo e devolvido ao mundo com a Centelha torcida em algo que só sabe odiar. Os poucos sobreviventes de expedições ao White Wall descrevem exatamente essa figura de crânio de ave e garras longas antes de fugir."
+    "texto": "Nenhum monstro combina tanto com a Fenda quanto o bodak: dizem que é o que sobra de alguém arrastado para o plano de pesadelo e devolvido ao mundo com a Centelha torcida em algo que só sabe odiar. Os poucos sobreviventes de expedições ao White Wall descrevem exatamente essa figura de crânio humano descarnado e garras longas antes de fugir."
    }
   ]
  },
@@ -3919,7 +3819,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"
@@ -4741,6 +4641,212 @@
   ]
  },
  {
+  "id": "mon-riding-dog",
+  "nome": "Cão de Montaria",
+  "nomeIngles": "Riding Dog",
+  "categoria": "Animal",
+  "tipo": "capanga",
+  "conceito": "monstro Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "monstro",
+   "centelha"
+  ],
+  "ameaca": 1,
+  "centelha": 1,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "90 centímetros de comprimento",
+   "peso": "35 kg"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/riding-dog.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 4,
+   "destreza": 4,
+   "vigor": 4,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 1
+  },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 37,
+   "defesa": 12,
+   "defesaMental": 12,
+   "absorcao": {
+    "impacto": 5,
+    "corte": 3,
+    "perfuracao": 3
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 2",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "3d6 +2",
+     "dano": "1d6 +4 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Visão penumbra e faro",
+    "descricao": "Enxerga em pouca luz e depende do faro para rastrear."
+   },
+   {
+    "nome": "Mordida derrubante",
+    "descricao": "Morde e, no mesmo movimento, desequilibra o oponente, derrubando-o no chão."
+   },
+   {
+    "nome": "Faro rastreador",
+    "descricao": "Segue trilhas de cheiro por longas distâncias, mesmo trilhas antigas."
+   },
+   {
+    "nome": "Monta de guerra",
+    "descricao": "Consegue lutar mesmo carregando um cavaleiro nas costas, embora isso limite a ação de quem o monta."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Raças robustas",
+    "texto": "Vem de linhagens maiores e mais fortes, como huskies, mastins e wolfhounds, criadas para suportar o peso e o ritmo de longas cavalgadas."
+   },
+   {
+    "titulo": "Parceiro de estrada",
+    "texto": "Comum entre povos menores, como halflings e gnomos, que o usam como montaria confiável em vez de cavalos."
+   }
+  ]
+ },
+ {
+  "id": "mon-hell-hound",
+  "nome": "Cão Infernal",
+  "nomeIngles": "Hell Hound",
+  "categoria": "Corruptor",
+  "tipo": "soldado",
+  "conceito": "exterior (fogo) Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "tags": [
+   "elemental",
+   "centelha"
+  ],
+  "ameaca": 3,
+  "centelha": 2,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,2 a 1,5 m de altura no ombro",
+   "peso": "54 kg"
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "imagem": "bestiario/hell-hound.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 3,
+   "destreza": 3,
+   "vigor": 4,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
+  "combate": {
+   "pv": 37,
+   "defesa": 12,
+   "defesaMental": 15,
+   "absorcao": {
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +3 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Sopro de fogo",
+    "descricao": "Solta um cone de chamas a cada poucos turnos; quem se esquiva a tempo sofre apenas metade do dano."
+   },
+   {
+    "nome": "Faro apurado",
+    "descricao": "Rastreia presas pelo cheiro e enxerga no escuro sem dificuldade."
+   },
+   {
+    "nome": "Imune a fogo, vulnerável a frio",
+    "descricao": "As chamas não o ferem, mas o frio penetra fundo em seu corpo, causando dano maior que o normal."
+   },
+   {
+    "nome": "Caçador em matilha",
+    "descricao": "Move-se com passos furtivos, ideal para cercar presas em grupo antes de atacar."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Matilha infernal",
+    "texto": "Cães de pelagem em brasa que caçam em bando, cercando a presa em silêncio antes de atacar com fogo e presas afiadas."
+   },
+   {
+    "titulo": "Servos leais",
+    "texto": "Gigantes do fogo os criam como guardiões, compartilhando o mesmo gosto pela crueldade com intrusos."
+   }
+  ]
+ },
+ {
   "id": "capitao-da-guarda",
   "nome": "Capitão da Guarda",
   "nomeIngles": "Captain of the Guard",
@@ -5156,113 +5262,13 @@
   ]
  },
  {
-  "id": "mon-cat",
-  "nome": "Cat",
-  "nomeIngles": "Cat",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 1,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Miúdo",
-  "dimensoes": {
-   "medida": "45 centímetros de comprimento",
-   "peso": "4 a 7 kg"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Plains",
-    "Urban"
-   ],
-   "clima": [
-    "Temperate",
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/cat.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 1,
-   "destreza": 4,
-   "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 1
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "combate": {
-   "pv": 17,
-   "defesa": 10,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 2,
-    "corte": 1,
-    "perfuracao": 1
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "1d6",
-     "dano": "1d6 +1 perfConc",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Garras e presas",
-    "descricao": "Ataca com duas garras rápidas seguidas de uma mordida certeira."
-   },
-   {
-    "nome": "Mestra do disfarce",
-    "descricao": "Esconde-se e escala com uma facilidade que poucos animais de seu tamanho conseguem igualar."
-   },
-   {
-    "nome": "Faro e visão na penumbra",
-    "descricao": "Localiza presas pelo cheiro e enxerga bem mesmo com pouca luz."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Caçadora silenciosa",
-    "texto": "Pequena e independente, caça sozinha tanto em vilarejos quanto em campos abertos, sem se prender a dono algum."
-   },
-   {
-    "titulo": "Companhia incerta",
-    "texto": "Alguns a adotam como guardiã de celeiros; outros a temem como presságio quando cruza o caminho à noite."
-   }
-  ]
- },
- {
   "id": "mon-cauchemar",
   "nome": "Cauchemar",
   "nomeIngles": "Cauchemar",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Enorme",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"
@@ -5475,12 +5481,12 @@
   ]
  },
  {
-  "id": "mon-cave-fisher",
-  "nome": "Cave Fisher",
-  "nomeIngles": "Cave Fisher",
+  "id": "mon-horse",
+  "nome": "Cavalo",
+  "nomeIngles": "Horse",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "praga Médio",
+  "conceito": "animal Grande",
   "descricao": "Animal selvagem, perigo puro sem malícia.",
   "tags": [
    "fera"
@@ -5488,31 +5494,31 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Médio",
+  "porte": "Grande",
   "dimensoes": {
-   "medida": "1,2 m de comprimento",
-   "peso": "40 kg"
+   "medida": "1,5 a 1,8 m de altura no ombro",
+   "peso": "450 a 680 kg"
   },
   "ecologia": {
    "tipo": "Animal",
    "terreno": [
-    "Underground"
+    "Plains"
    ],
    "clima": [
     "Temperate"
    ]
   },
-  "imagem": "bestiario/cave-fisher.jpg",
+  "imagem": "bestiario/horse.jpg",
   "semImagem": false,
   "atributos": {
-   "forca": 5,
-   "destreza": 3,
-   "vigor": 5,
+   "forca": 6,
+   "destreza": 4,
+   "vigor": 6,
    "influencia": 1,
    "perspicacia": 1,
-   "compostura": 1,
-   "percepcao": 2,
-   "inteligencia": 0,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -5524,45 +5530,41 @@
    "valor": 2
   },
   "combate": {
-   "pv": 40,
-   "defesa": 8,
+   "pv": 54,
+   "defesa": 10,
    "defesaMental": 9,
    "absorcao": {
-    "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "impacto": 6,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6+2",
-     "dano": "1d6 +5 perfConc",
-     "speed": 5
+     "pool": "4d6",
+     "dano": "2d6 +6 perfConc",
+     "speed": 6
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Filamento Pegajoso",
-    "descricao": "Dispara um fio de seda grudenta a boa distância, prendendo o alvo no lugar; a vítima pode se libertar com força bruta ou destreza, mas o fio é difícil de cortar."
+    "nome": "Coice duplo",
+    "descricao": "Golpeia com os dois cascos dianteiros; sem treino de combate, o ataque conta apenas como reforço secundário."
    },
    {
-    "nome": "Puxão Certeiro",
-    "descricao": "Recolhe o fio com grande força, arrastando a presa presa para perto de si."
+    "nome": "Fôlego de estrada",
+    "descricao": "Corre por longas distâncias sem se cansar facilmente."
    },
    {
-    "nome": "Escalador Nato",
-    "descricao": "Sobe paredes de pedra com extrema facilidade, preferindo se instalar em saliências altas para caçar."
+    "nome": "Sentidos de manada",
+    "descricao": "Faro e visão na penumbra ajudam a perceber perigos à distância."
    },
    {
-    "nome": "Visão no Escuro",
-    "descricao": "Enxerga perfeitamente mesmo na escuridão total."
-   },
-   {
-    "nome": "Mente Vazia",
-    "descricao": "Imune a efeitos que dependam de mente ou raciocínio."
+    "nome": "Dócil por natureza",
+    "descricao": "Só briga de fato quando adestrado para o combate; do contrário prefere fugir."
    }
   ],
   "poderes": [],
@@ -5571,22 +5573,18 @@
   "notas": "",
   "lore": [
    {
-    "titulo": "Caçada",
-    "texto": "Predador especializado que se instala em uma saliência ou fenda de caverna, tipicamente a uma boa altura do chão; espera a presa se aproximar antes de disparar seu fio de seda com velocidade impressionante."
+    "titulo": "Companheiro de estrada",
+    "texto": "Criados para cavalgar, puxar carroças ou arar campos, os cavalos servem lado a lado com quase todos os povos do mundo."
    },
    {
-    "titulo": "Habitat",
-    "texto": "Prefere saliências que dominem pontes ou abismos, arrastando a refeição presa até sua posição elevada, onde pode comer sem ser incomodado por eventuais aliados da vítima."
-   },
-   {
-    "titulo": "Sociedade",
-    "texto": "Ossos espalhados e restos de fios abandonados são sinais claros de que uma dessas criaturas habita as redondezas; o fio colhido de um exemplar vivo é leve e resistente, servindo como corda de excelente qualidade."
+    "titulo": "Duas linhagens",
+    "texto": "Cavalos leves de montaria e cavalos pesados de tração diferem em porte e resistência, mas compartilham o mesmo temperamento dócil."
    }
   ]
  },
  {
   "id": "mon-centaur",
-  "nome": "Centaur",
+  "nome": "Centauro",
   "nomeIngles": "Centaur",
   "categoria": "Humanoide monstruoso",
   "tipo": "soldado",
@@ -5801,212 +5799,6 @@
    {
     "titulo": "Natureza",
     "texto": "A coloração das centopeias gigantes varia muito, indo de tons opacos a vermelhos e laranjas vibrantes; existem variantes bem menores e bem maiores da mesma espécie ao redor do mundo."
-   }
-  ]
- },
- {
-  "id": "mon-cheetah",
-  "nome": "Cheetah",
-  "nomeIngles": "Cheetah",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "animal Médio",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 2,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "1,4 m de comprimento",
-   "peso": "65 kg"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Plains"
-   ],
-   "clima": [
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/cheetah.png",
-  "semImagem": false,
-  "atributos": {
-   "forca": 5,
-   "destreza": 5,
-   "vigor": 4,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 1
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "combate": {
-   "pv": 37,
-   "defesa": 12,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "3d6+2",
-     "dano": "1d6 +5 perfConc",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Disparada",
-    "descricao": "Uma vez por cena, ao avançar em uma investida, consegue se mover a uma velocidade absurdamente maior que o normal."
-   },
-   {
-    "nome": "Mordida Derrubadora",
-    "descricao": "Sua mordida pode desequilibrar o alvo, derrubando-o no chão."
-   },
-   {
-    "nome": "Faro e Visão Crepuscular",
-    "descricao": "Sente o cheiro de presas a distância e enxerga bem mesmo com pouca luz."
-   },
-   {
-    "nome": "Camuflagem no Capim",
-    "descricao": "Esconde-se com facilidade excepcional em meio a vegetação alta."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Comportamento",
-    "texto": "Predador veloz e mortal, capaz de se mover com uma rapidez incrível que lhe permite alcançar presas desavisadas a centenas de passos de distância."
-   },
-   {
-    "titulo": "Caçada",
-    "texto": "Evita áreas de mata fechada e emaranhada, preferindo campos abertos, mas é mestre em se esconder entre o capim alto antes de atacar."
-   }
-  ]
- },
- {
-  "id": "mon-choker",
-  "nome": "Choker",
-  "nomeIngles": "Choker",
-  "categoria": "Aberração",
-  "tipo": "soldado",
-  "conceito": "aberração Pequeno",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
-  "tags": [
-   "aberracao",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 2,
-  "pendente": true,
-  "porte": "Pequeno",
-  "dimensoes": {
-   "medida": "1 m de altura",
-   "peso": "16 kg"
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Underground",
-    "Ruins"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/choker.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 5,
-   "destreza": 4,
-   "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 7,
-  "aparencia": 1,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 26,
-   "defesa": 14,
-   "defesaMental": 15,
-   "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "4d6 +4",
-     "dano": "1d6 +5 perfConc",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Estrangulamento",
-    "descricao": "Seus braços elásticos enroscam a garganta do alvo agarrado, impedindo que ele fale ou conjure poderes que exigem palavras de comando."
-   },
-   {
-    "nome": "Constrição",
-    "descricao": "Enquanto mantém o agarrão, aperta a vítima com força crescente, causando dano contínuo a cada instante em que ela permanece presa."
-   },
-   {
-    "nome": "Rapidez Sobrenatural",
-    "descricao": "Move-se com velocidade antinatural, agindo duas vezes em sequência dentro do mesmo turno."
-   },
-   {
-    "nome": "Visão no Escuro",
-    "descricao": "Enxerga perfeitamente na escuridão total, mesmo em túneis sem qualquer fonte de luz."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Caçador das Sombras",
-    "texto": "Vive nos limites de ruínas subterrâneas e postos abandonados, agarrando viajantes solitários com seus longos braços de borracha. Prefere isolar presas fracas antes de atacar."
-   },
-   {
-    "titulo": "Fascínio Doentio",
-    "texto": "Apesar da inteligência quase animal, guarda um fascínio estranho por objetos da civilização: anéis, broches e moedas roubadas de suas vítimas enchem seu covil."
    }
   ]
  },
@@ -6466,7 +6258,7 @@
   "categoria": "Construto",
   "tipo": "soldado",
   "conceito": "constructo Pequeno",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro"
   ],
@@ -8339,7 +8131,7 @@
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior Médio (diabo)",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "diabo",
    "centelha",
@@ -8486,7 +8278,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (diabo) Grande",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "diabo",
    "centelha"
@@ -8597,7 +8389,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (diabo)",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "diabo",
    "centelha",
@@ -8727,7 +8519,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Comanda tropas com precisão militar impecável, usando frio absoluto e uma glaive perfurante para congelar a vontade de lutar do inimigo antes mesmo do combate."
+    "texto": "Comanda tropas com precisão militar impecável, usando frio absoluto e uma lança perfurante para congelar a vontade de lutar do inimigo antes mesmo do combate."
    },
    {
     "titulo": "Sociedade",
@@ -8750,7 +8542,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (diabo)",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "diabo",
    "centelha",
@@ -8836,8 +8628,8 @@
     "descricao": "ataque extra na rodada; veneno causa dano contínuo"
    },
    {
-    "nome": "Conceder desejos e feitiços supremos",
-    "descricao": "1x por história realiza um feitiço de qualquer nível"
+    "nome": "Feitiços supremos",
+    "descricao": "1x por história lança um feitiço de qualquer nível."
    },
    {
     "nome": "Regeneração",
@@ -8929,7 +8721,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (diabo) Médio",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "diabo",
    "centelha"
@@ -9040,7 +8832,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (diabo)",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "diabo",
    "centelha",
@@ -9192,7 +8984,7 @@
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Minúsculo (diabo)",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "diabo",
    "centelha",
@@ -9605,7 +9397,7 @@
   "categoria": "Aberração",
   "tipo": "soldado",
   "conceito": "humanoide monstruoso Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
   "tags": [
    "monstro",
    "centelha",
@@ -10431,8 +10223,8 @@
   },
   "habilidades": [
    {
-    "nome": "Sopro de gás",
-    "descricao": "cone de 12m; dano e Enfraquecido se falhar em teste de Vigor, metade do dano se Esquivar"
+    "nome": "Sopro ácido",
+    "descricao": "Cone de 12m; dano de ácido, metade se Esquivar."
    },
    {
     "nome": "Enredar",
@@ -10455,8 +10247,8 @@
     "descricao": "garra, garra e mordida no mesmo turno"
    },
    {
-    "nome": "Imune a veneno",
-    "descricao": "e ao próprio gás que exala"
+    "nome": "Imune a ácido",
+    "descricao": "E ao próprio sopro corrosivo que exala."
    },
    {
     "nome": "Camuflagem na mata",
@@ -11010,125 +10802,13 @@
   ]
  },
  {
-  "id": "mon-dragon-turtle",
-  "nome": "Dragon Turtle",
-  "nomeIngles": "Dragon Turtle",
-  "categoria": "Dragão",
-  "tipo": "chefe",
-  "conceito": "dragão Enorme",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
-  "tags": [
-   "dragao",
-   "centelha"
-  ],
-  "ameaca": 5,
-  "centelha": 4,
-  "pendente": true,
-  "porte": "Enorme",
-  "dimensoes": {
-   "medida": "9 metros de comprimento",
-   "peso": "4 t"
-  },
-  "ecologia": {
-   "tipo": "Dragon",
-   "terreno": [
-    "Water",
-    "Coast"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/dragon-turtle.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 10,
-   "destreza": 2,
-   "vigor": 7,
-   "influencia": 3,
-   "perspicacia": 3,
-   "compostura": 3,
-   "percepcao": 3,
-   "inteligencia": 3,
-   "raciocinio": 3
-  },
-  "vontade": 9,
-  "aparencia": 9,
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
-   "temperanca": 3,
-   "valor": 6
-  },
-  "combate": {
-   "pv": 70,
-   "defesa": 12,
-   "defesaMental": 23,
-   "absorcao": {
-    "impacto": 11,
-    "corte": 11,
-    "perfuracao": 11
-   },
-   "resistenciaPerfuracao": 1,
-   "iniciativa": "1d6 + 4",
-   "ataques": [
-    {
-     "nome": "Garras e mordida",
-     "pool": "7d6+2 +8",
-     "dano": "3d6 +10 perfConc",
-     "speed": 7
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Sopro de vapor escaldante",
-    "descricao": "Expele uma nuvem de vapor fervente sobre uma área considerável, tanto na superfície quanto debaixo d'água; quem é atingido sofre queimaduras graves, reduzidas à metade com um teste de Vigor bem-sucedido. Não pode repetir o sopro em sequência, precisando de uma pausa antes de usá-lo de novo."
-   },
-   {
-    "nome": "Imune a fogo e a efeitos que dominam a mente",
-    "descricao": "Não sofre dano de fogo e não pode ser posta para dormir ou paralisada."
-   },
-   {
-    "nome": "Afunda embarcações",
-    "descricao": "Pode investir contra um barco ou navio para virá-lo, arrastando tripulação e carga para o fundo."
-   },
-   {
-    "nome": "Mordida e garras poderosas",
-    "descricao": "Ataca com a boca e as duas garras dianteiras, mesmo submersa."
-   },
-   {
-    "nome": "Furtividade aquática",
-    "descricao": "Move-se pela água quase sem ruído, surpreendendo embarcações antes que percebam o perigo."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Senhora dos mares",
-    "texto": "Reivindica vastos territórios oceânicos e afunda quem ousa navegar por eles sem prestar tributo."
-   },
-   {
-    "titulo": "Tesouros afundados",
-    "texto": "Guarda em seu covil os destroços e a carga valiosa de todos os navios que já capsizou."
-   },
-   {
-    "titulo": "Carapaça lendária",
-    "texto": "O casco varia de marrom ferrugem a verde-azulado com reflexos prateados, e a cabeça e a cauda mostram estrias douradas."
-   }
-  ]
- },
- {
   "id": "mon-dretch",
   "nome": "Dretch",
   "nomeIngles": "Demon, Dretch",
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Pequeno (demônio)",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha",
@@ -13354,10 +13034,6 @@
     "descricao": "Centenas de morcegos atacam como uma única massa, mordendo tudo que se move dentro do seu espaço; armas comuns de corte ou perfuração quase não causam efeito contra o enxame."
    },
    {
-    "nome": "Sangramento Contínuo",
-    "descricao": "Toda criatura ferida pelo enxame passa a sangrar, perdendo um pouco de vitalidade a cada rodada até que o ferimento seja tratado ou curado por magia."
-   },
-   {
     "nome": "Ecolocalização",
     "descricao": "Percebe presas no escuro absoluto através de vibrações no ar, dispensando completamente a visão."
    },
@@ -13590,10 +13266,6 @@
     "descricao": "A sensação de centenas de corpos mordendo ao mesmo tempo exige um teste de Compostura para manter o foco em qualquer ação delicada."
    },
    {
-    "nome": "Veneno Debilitante",
-    "descricao": "As picadas somadas injetam uma toxina que continua corroendo a agilidade da vítima por vários rounds até ser tratada."
-   },
-   {
     "nome": "Fraqueza ao Sal",
     "descricao": "Um punhado de sal lançado sobre o enxame queima dezenas de corpos de uma vez, como um banho de ácido."
    }
@@ -13726,7 +13398,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Médio (diabo)",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "diabo",
    "centelha",
@@ -14064,10 +13736,6 @@
    {
     "nome": "Feitiços arcanos",
     "descricao": "lança magias de dano e controle, mais de uma vez por cena"
-   },
-   {
-    "nome": "Rugido paralisante",
-    "descricao": "raio 9m; falha em Vontade: Abalado e perde a próxima ação"
    },
    {
     "nome": "Ver o invisível",
@@ -14499,6 +14167,110 @@
   ]
  },
  {
+  "id": "mon-choker",
+  "nome": "Estrangulador",
+  "nomeIngles": "Choker",
+  "categoria": "Aberração",
+  "tipo": "soldado",
+  "conceito": "aberração Pequeno",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+   "aberracao",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 2,
+  "pendente": true,
+  "porte": "Pequeno",
+  "dimensoes": {
+   "medida": "1 m de altura",
+   "peso": "16 kg"
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground",
+    "Ruins"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/choker.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 5,
+   "destreza": 4,
+   "vigor": 3,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 26,
+   "defesa": 14,
+   "defesaMental": 15,
+   "absorcao": {
+    "impacto": 5,
+    "corte": 3,
+    "perfuracao": 3
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "4d6 +4",
+     "dano": "1d6 +5 perfConc",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Estrangulamento",
+    "descricao": "Seus braços elásticos enroscam a garganta do alvo agarrado, impedindo que ele fale ou conjure poderes que exigem palavras de comando."
+   },
+   {
+    "nome": "Constrição",
+    "descricao": "Enquanto mantém o agarrão, aperta a vítima com força crescente, causando dano contínuo a cada instante em que ela permanece presa."
+   },
+   {
+    "nome": "Rapidez Sobrenatural",
+    "descricao": "Move-se com velocidade antinatural, agindo duas vezes em sequência dentro do mesmo turno."
+   },
+   {
+    "nome": "Visão no Escuro",
+    "descricao": "Enxerga perfeitamente na escuridão total, mesmo em túneis sem qualquer fonte de luz."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Caçador das Sombras",
+    "texto": "Vive nos limites de ruínas subterrâneas e postos abandonados, agarrando viajantes solitários com seus longos braços de borracha. Prefere isolar presas fracas antes de atacar."
+   },
+   {
+    "titulo": "Fascínio Doentio",
+    "texto": "Apesar da inteligência quase animal, guarda um fascínio estranho por objetos da civilização: anéis, broches e moedas roubadas de suas vítimas enchem seu covil."
+   }
+  ]
+ },
+ {
   "id": "mon-ettercap",
   "nome": "Ettercap",
   "nomeIngles": "Ettercap",
@@ -14721,6 +14493,218 @@
   ]
  },
  {
+  "id": "mon-hawk",
+  "nome": "Falcão",
+  "nomeIngles": "Hawk",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 1,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Miúdo",
+  "dimensoes": {
+   "medida": "50 centímetros de envergadura",
+   "peso": "1 kg"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Forest",
+    "Sky"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/hawk.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 1,
+   "destreza": 5,
+   "vigor": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 4,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 17,
+   "defesa": 12,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 2,
+    "corte": 1,
+    "perfuracao": 1
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 4",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "1d6",
+     "dano": "1d6 +1 perfConc",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Garras afiadas",
+    "descricao": "Mergulha sobre a presa e a agarra com as duas garras num só golpe certeiro."
+   },
+   {
+    "nome": "Visão de caçador",
+    "descricao": "Enxerga detalhes a distâncias enormes, quase nunca deixando de notar movimento abaixo de si."
+   },
+   {
+    "nome": "Voo veloz",
+    "descricao": "Cruza o céu com rapidez e controle, fazendo curvas fechadas em pleno voo."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Olhos do céu",
+    "texto": "Falcoeiros prezam esta ave como companheira de caça quando criada desde filhote e bem adestrada."
+   },
+   {
+    "titulo": "Mensageira das alturas",
+    "texto": "Alguns batedores treinam falcões para vigiar estradas e avisar de perigos antes que cheguem."
+   }
+  ]
+ },
+ {
+  "id": "mon-ghost",
+  "nome": "Fantasma",
+  "nomeIngles": "Ghost",
+  "categoria": "Morto-vivo",
+  "tipo": "elite",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+   "morto-vivo",
+   "centelha"
+  ],
+  "ameaca": 4,
+  "centelha": 3,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,7 m de altura",
+   "peso": "sem peso material (incorpóreo)"
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Ruins",
+    "Urban",
+    "Any"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/ghost.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 0,
+   "destreza": 3,
+   "vigor": 6,
+   "influencia": 6,
+   "perspicacia": 4,
+   "compostura": 5,
+   "percepcao": 2,
+   "inteligencia": 2,
+   "raciocinio": 2
+  },
+  "vontade": 8,
+  "aparencia": 2,
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 43,
+   "defesa": 14,
+   "defesaMental": 24,
+   "absorcao": {
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Golpe",
+     "pool": "2d6+2 +6",
+     "dano": "1d6 impacto",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Corpo Incorpóreo",
+    "descricao": "Atravessa paredes e portas como se não existissem, e a maioria das armas comuns passa através dele sem causar dano algum."
+   },
+   {
+    "nome": "Renascer da Fúria",
+    "descricao": "Mesmo destruído, sua raiva pode trazê-lo de volta à existência depois de algum tempo, a menos que a injustiça que o prende seja finalmente resolvida."
+   },
+   {
+    "nome": "Toque Corruptor",
+    "descricao": "Seu toque gélido consome a vitalidade da vítima, causando dano contínuo severo que um teste de Vigor pode reduzir pela metade."
+   },
+   {
+    "nome": "Lamento Aterrador",
+    "descricao": "Uma vez por cena, solta um gemido que gela o sangue, forçando quem ouvir a resistir com um teste de Compostura ou fugir tomado de pavor."
+   },
+   {
+    "nome": "Voo Silencioso",
+    "descricao": "Flutua pelo ar com perfeita destreza, sem fazer o menor ruído."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Uma injustiça sem descanso",
+    "texto": "Toda assombração carrega uma história não resolvida: uma traição, um assassinato, uma promessa quebrada que o prende a este mundo."
+   },
+   {
+    "titulo": "Ódio que corrói a alma",
+    "texto": "Mesmo os mais nobres em vida tendem a emergir cruéis e vingativos depois da morte, corrompidos pela própria permanência entre os vivos."
+   },
+   {
+    "titulo": "Ecos do que restou",
+    "texto": "Costuma manter cópias etéreas dos pertences que mais valorizava em vida, objetos que atravessam a matéria tão livremente quanto ele."
+   }
+  ]
+ },
+ {
   "id": "feiticeiro-menor",
   "nome": "Feiticeiro Menor",
   "nomeIngles": "Minor Sorcerer",
@@ -14831,6 +14815,118 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "É exatamente o tipo de figura que a Supressão ensinou o povo a temer: um conjurador iniciante, tocado por um poder que as igrejas ortodoxas de Calin chamam de herança da Tecelã e pregam contra."
+   }
+  ]
+ },
+ {
+  "id": "mon-phoenix",
+  "nome": "Fênix",
+  "nomeIngles": "Phoenix",
+  "categoria": "Besta mágica",
+  "tipo": "chefe",
+  "conceito": "besta mágica Imenso",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+   "besta-magica",
+   "centelha"
+  ],
+  "ameaca": 6,
+  "centelha": 5,
+  "pendente": true,
+  "porte": "Imenso",
+  "dimensoes": {
+   "medida": "envergadura de cerca de 15 m",
+   "peso": "1.000 kg"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Desert",
+    "Mountain"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/phoenix.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 11,
+   "destreza": 8,
+   "vigor": 9,
+   "influencia": 7,
+   "perspicacia": 7,
+   "compostura": 7,
+   "percepcao": 7,
+   "inteligencia": 7,
+   "raciocinio": 7
+  },
+  "vontade": 10,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
+  "combate": {
+   "pv": 85,
+   "defesa": 30,
+   "defesaMental": 34,
+   "absorcao": {
+    "impacto": 14,
+    "corte": 16,
+    "perfuracao": 16
+   },
+   "resistenciaPerfuracao": 2,
+   "iniciativa": "1d6 + 10",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "8d6 +10",
+     "dano": "3d6 +11 perfConc",
+     "speed": 7
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Sentidos apurados",
+    "descricao": "Enxerga no escuro, detecta magia e veneno à distância, tem visão em pouca luz e enxerga através de invisibilidade."
+   },
+   {
+    "nome": "Manto de chamas",
+    "descricao": "Pode incendiar as próprias penas, causando dano contínuo extra em seus golpes e queimando quem chegar perto demais sem escapar a tempo."
+   },
+   {
+    "nome": "Regeneração constante",
+    "descricao": "Cura seus próprios ferimentos continuamente, exceto os causados por frio ou pelo mal."
+   },
+   {
+    "nome": "Autorressurreição",
+    "descricao": "Se morrer, seu corpo permanece destruído só por alguns instantes antes de renascer curado das próprias cinzas, uma vez por ano; renascer assim custa parte de sua força vital."
+   },
+   {
+    "nome": "Imune ao fogo, vulnerável ao frio",
+    "descricao": "Chamas não a ferem e resiste bem à maioria das magias, mas o frio a machuca com facilidade incomum."
+   },
+   {
+    "nome": "Poderes de cura e fogo",
+    "descricao": "Domina magias de cura poderosas e comanda paredes e tempestades de fogo à vontade."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Ave de chama viva",
+    "texto": "Parece feita inteiramente de fogo, solta um grito melodioso ao alçar voo e é associada a forças do bem."
+   },
+   {
+    "titulo": "Renascida das próprias cinzas",
+    "texto": "Vive em desertos quentes e colinas isoladas, e sua lenda de morte e renascimento a torna quase sagrada entre quem a avista."
    }
   ]
  },
@@ -15054,8 +15150,8 @@
   },
   "habilidades": [
    {
-    "nome": "Incorpórea",
-    "descricao": "imune a dano físico não mágico, sofre metade do dano de armas mágicas"
+    "nome": "Difícil de acertar",
+    "descricao": "Globo de matéria translúcida do tamanho de um punho: some no ar e é quase impossível de atingir (Defesa altíssima). Feitiços de mira raramente o alcançam."
    },
    {
     "nome": "Invisibilidade natural",
@@ -15066,7 +15162,7 @@
     "descricao": "corpo a corpo; dano alto ao alvo tocado"
    },
    {
-    "nome": "Voo etéreo",
+    "nome": "Voo flutuante",
     "descricao": "desloca 12m voando, passa por frestas e grades finas"
    },
    {
@@ -15576,6 +15672,106 @@
   ]
  },
  {
+  "id": "mon-cat",
+  "nome": "Gato",
+  "nomeIngles": "Cat",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 1,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Miúdo",
+  "dimensoes": {
+   "medida": "45 centímetros de comprimento",
+   "peso": "4 a 7 kg"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Plains",
+    "Urban"
+   ],
+   "clima": [
+    "Temperate",
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/cat.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 1,
+   "destreza": 4,
+   "vigor": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 17,
+   "defesa": 10,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 2,
+    "corte": 1,
+    "perfuracao": 1
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 2",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "1d6",
+     "dano": "1d6 +1 perfConc",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Garras e presas",
+    "descricao": "Ataca com duas garras rápidas seguidas de uma mordida certeira."
+   },
+   {
+    "nome": "Mestra do disfarce",
+    "descricao": "Esconde-se e escala com uma facilidade que poucos animais de seu tamanho conseguem igualar."
+   },
+   {
+    "nome": "Faro e visão na penumbra",
+    "descricao": "Localiza presas pelo cheiro e enxerga bem mesmo com pouca luz."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Caçadora silenciosa",
+    "texto": "Pequena e independente, caça sozinha tanto em vilarejos quanto em campos abertos, sem se prender a dono algum."
+   },
+   {
+    "titulo": "Companhia incerta",
+    "texto": "Alguns a adotam como guardiã de celeiros; outros a temem como presságio quando cruza o caminho à noite."
+   }
+  ]
+ },
+ {
   "id": "mon-ochre-jelly",
   "nome": "Geleia Ocre",
   "nomeIngles": "Ochre Jelly",
@@ -15964,119 +16160,6 @@
   ]
  },
  {
-  "id": "mon-ghost",
-  "nome": "Ghost",
-  "nomeIngles": "Ghost",
-  "categoria": "Morto-vivo",
-  "tipo": "elite",
-  "conceito": "morto-vivo Médio",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
-  "tags": [
-   "morto-vivo",
-   "centelha"
-  ],
-  "ameaca": 4,
-  "centelha": 3,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "1,7 m de altura",
-   "peso": "sem peso material (incorpóreo)"
-  },
-  "ecologia": {
-   "tipo": "Undead",
-   "terreno": [
-    "Ruins",
-    "Urban",
-    "Any"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/ghost.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 0,
-   "destreza": 3,
-   "vigor": 6,
-   "influencia": 6,
-   "perspicacia": 4,
-   "compostura": 5,
-   "percepcao": 2,
-   "inteligencia": 2,
-   "raciocinio": 2
-  },
-  "vontade": 8,
-  "aparencia": 2,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 4,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 43,
-   "defesa": 14,
-   "defesaMental": 24,
-   "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Golpe",
-     "pool": "2d6+2 +6",
-     "dano": "1d6 impacto",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Corpo Incorpóreo",
-    "descricao": "Atravessa paredes e portas como se não existissem, e a maioria das armas comuns passa através dele sem causar dano algum."
-   },
-   {
-    "nome": "Renascer da Fúria",
-    "descricao": "Mesmo destruído, sua raiva pode trazê-lo de volta à existência depois de algum tempo, a menos que a injustiça que o prende seja finalmente resolvida."
-   },
-   {
-    "nome": "Toque Corruptor",
-    "descricao": "Seu toque gélido consome a vitalidade da vítima, causando dano contínuo severo que um teste de Vigor pode reduzir pela metade."
-   },
-   {
-    "nome": "Lamento Aterrador",
-    "descricao": "Uma vez por cena, solta um gemido que gela o sangue, forçando quem ouvir a resistir com um teste de Compostura ou fugir tomado de pavor."
-   },
-   {
-    "nome": "Voo Silencioso",
-    "descricao": "Flutua pelo ar com perfeita destreza, sem fazer o menor ruído."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Uma injustiça sem descanso",
-    "texto": "Todo espectro carrega uma história não resolvida: uma traição, um assassinato, uma promessa quebrada que o prende a este mundo."
-   },
-   {
-    "titulo": "Ódio que corrói a alma",
-    "texto": "Mesmo os mais nobres em vida tendem a emergir cruéis e vingativos depois da morte, corrompidos pela própria permanência entre os vivos."
-   },
-   {
-    "titulo": "Ecos do que restou",
-    "texto": "Costuma manter cópias etéreas dos pertences que mais valorizava em vida, objetos que atravessam a matéria tão livremente quanto ele."
-   }
-  ]
- },
- {
   "id": "mon-ghoul",
   "nome": "Ghoul",
   "nomeIngles": "Ghoul",
@@ -16206,111 +16289,6 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Dizem os sacerdotes de Syl que o ghoul nasce quando a Centelha de alguém se recusa a seguir aos ancestrais e se torna apenas apetite. Profanar um túmulo é um dos piores pecados contra os mortos, e é por isso que os ghouls são caçados sem piedade por guardiões de santuário."
-   }
-  ]
- },
- {
-  "id": "mon-giant-frog",
-  "nome": "Giant Frog",
-  "nomeIngles": "Giant Frog",
-  "categoria": "Aberração",
-  "tipo": "soldado",
-  "conceito": "monstro Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
-  "tags": [
-   "monstro",
-   "centelha"
-  ],
-  "ameaca": 2,
-  "centelha": 1,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "1,8 m de comprimento",
-   "peso": "90 kg"
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Swamp",
-    "Water"
-   ],
-   "clima": [
-    "Temperate",
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/giant-frog.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 4,
-   "destreza": 3,
-   "vigor": 5,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
-   "percepcao": 2,
-   "inteligencia": 0,
-   "raciocinio": 1
-  },
-  "vontade": 6,
-  "aparencia": 1,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 40,
-   "defesa": 10,
-   "defesaMental": 12,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +4 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Língua Longa",
-    "descricao": "Dispara a língua a distância três vezes maior que seu alcance normal para prender um alvo, sem causar ferimento algum no golpe."
-   },
-   {
-    "nome": "Puxão Certeiro",
-    "descricao": "Uma vez presa a vítima pela língua, pode puxá-la para perto de si com força considerável."
-   },
-   {
-    "nome": "Engole Inteiro",
-    "descricao": "Engolindo presas pequenas o bastante, causa dano contínuo de esmagamento enquanto a vítima luta para escapar de dentro dela."
-   },
-   {
-    "nome": "Nadadora Ágil",
-    "descricao": "Move-se na água com a mesma velocidade com que salta em terra firme."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Presas afiadas",
-    "texto": "Apesar da aparência cômica, sua boca esconde fileiras de dentes que rasgam com facilidade."
-   },
-   {
-    "titulo": "Companheira de caçadores",
-    "texto": "Alguns batedores de pântano domesticam filhotes de rã gigante como montaria de emboscada e guarda-costas anfíbio."
    }
   ]
  },
@@ -17310,7 +17288,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Enorme (demônio)",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha",
@@ -17573,7 +17551,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Pequeno",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Humanoide pequeno e covarde, perigoso mesmo assim em bando.",
   "tags": [
    "humanoide"
   ],
@@ -17684,7 +17662,7 @@
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Grande",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro",
    "centelha"
@@ -17789,7 +17767,7 @@
   "categoria": "Construto",
   "tipo": "elite",
   "conceito": "constructo Grande",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro",
    "centelha"
@@ -17897,7 +17875,7 @@
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Grande",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro",
    "centelha"
@@ -18006,7 +17984,7 @@
   "categoria": "Construto",
   "tipo": "elite",
   "conceito": "constructo Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro",
    "centelha"
@@ -18110,7 +18088,7 @@
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Grande",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro",
    "centelha"
@@ -18729,7 +18707,7 @@
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior Grande",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"
@@ -19045,6 +19023,108 @@
   ]
  },
  {
+  "id": "mon-cheetah",
+  "nome": "Guepardo",
+  "nomeIngles": "Cheetah",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 2,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,4 m de comprimento",
+   "peso": "65 kg"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Plains"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/cheetah.png",
+  "semImagem": false,
+  "atributos": {
+   "forca": 5,
+   "destreza": 5,
+   "vigor": 4,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 37,
+   "defesa": 12,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 4,
+    "corte": 2,
+    "perfuracao": 2
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 2",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "3d6+2",
+     "dano": "1d6 +5 perfConc",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Disparada",
+    "descricao": "Uma vez por cena, ao avançar em uma investida, consegue se mover a uma velocidade absurdamente maior que o normal."
+   },
+   {
+    "nome": "Mordida Derrubadora",
+    "descricao": "Sua mordida pode desequilibrar o alvo, derrubando-o no chão."
+   },
+   {
+    "nome": "Faro e Visão Crepuscular",
+    "descricao": "Sente o cheiro de presas a distância e enxerga bem mesmo com pouca luz."
+   },
+   {
+    "nome": "Camuflagem no Capim",
+    "descricao": "Esconde-se com facilidade excepcional em meio a vegetação alta."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Comportamento",
+    "texto": "Predador veloz e mortal, capaz de se mover com uma rapidez incrível que lhe permite alcançar presas desavisadas a centenas de passos de distância."
+   },
+   {
+    "titulo": "Caçada",
+    "texto": "Evita áreas de mata fechada e emaranhada, preferindo campos abertos, mas é mestre em se esconder entre o capim alto antes de atacar."
+   }
+  ]
+ },
+ {
   "id": "mon-harpia",
   "nome": "Harpia",
   "nomeIngles": "Harpy",
@@ -19183,215 +19263,13 @@
   ]
  },
  {
-  "id": "mon-hawk",
-  "nome": "Hawk",
-  "nomeIngles": "Hawk",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 1,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Miúdo",
-  "dimensoes": {
-   "medida": "50 centímetros de envergadura",
-   "peso": "1 kg"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Forest",
-    "Sky"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/hawk.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 1,
-   "destreza": 5,
-   "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 4,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "combate": {
-   "pv": 17,
-   "defesa": 12,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 2,
-    "corte": 1,
-    "perfuracao": 1
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 4",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "1d6",
-     "dano": "1d6 +1 perfConc",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Garras afiadas",
-    "descricao": "Mergulha sobre a presa e a agarra com as duas garras num só golpe certeiro."
-   },
-   {
-    "nome": "Visão de caçador",
-    "descricao": "Enxerga detalhes a distâncias enormes, quase nunca deixando de notar movimento abaixo de si."
-   },
-   {
-    "nome": "Voo veloz",
-    "descricao": "Cruza o céu com rapidez e controle, fazendo curvas fechadas em pleno voo."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Olhos do céu",
-    "texto": "Falcoeiros prezam esta ave como companheira de caça quando criada desde filhote e bem adestrada."
-   },
-   {
-    "titulo": "Mensageira das alturas",
-    "texto": "Alguns batedores treinam falcões para vigiar estradas e avisar de perigos antes que cheguem."
-   }
-  ]
- },
- {
-  "id": "mon-hell-hound",
-  "nome": "Hell Hound",
-  "nomeIngles": "Hell Hound",
-  "categoria": "Corruptor",
-  "tipo": "soldado",
-  "conceito": "exterior (fogo) Médio",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-   "elemental",
-   "centelha"
-  ],
-  "ameaca": 3,
-  "centelha": 2,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "1,2 a 1,5 m de altura no ombro",
-   "peso": "54 kg"
-  },
-  "ecologia": {
-   "tipo": "Fiend",
-   "terreno": [
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/hell-hound.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 3,
-   "destreza": 3,
-   "vigor": 4,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 7,
-  "aparencia": 1,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 5,
-   "temperanca": 1,
-   "valor": 5
-  },
-  "combate": {
-   "pv": 37,
-   "defesa": 12,
-   "defesaMental": 15,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +3 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Sopro de fogo",
-    "descricao": "Solta um cone de chamas a cada poucos turnos; quem se esquiva a tempo sofre apenas metade do dano."
-   },
-   {
-    "nome": "Faro apurado",
-    "descricao": "Rastreia presas pelo cheiro e enxerga no escuro sem dificuldade."
-   },
-   {
-    "nome": "Imune a fogo, vulnerável a frio",
-    "descricao": "As chamas não o ferem, mas o frio penetra fundo em seu corpo, causando dano maior que o normal."
-   },
-   {
-    "nome": "Caçador em matilha",
-    "descricao": "Move-se com passos furtivos, ideal para cercar presas em grupo antes de atacar."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Matilha infernal",
-    "texto": "Cães de pelagem em brasa que caçam em bando, cercando a presa em silêncio antes de atacar com fogo e presas afiadas."
-   },
-   {
-    "titulo": "Servos leais",
-    "texto": "Gigantes do fogo os criam como guardiões, compartilhando o mesmo gosto pela crueldade com intrusos."
-   }
-  ]
- },
- {
   "id": "mon-hezrou",
   "nome": "Hezrou",
   "nomeIngles": "Demon, Hezrou",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (demônio)",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha",
@@ -19510,7 +19388,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Brutal e direto, ataca com força bruta e mordida venenosa, sem tática nem paciência, apenas fome de destruição."
+    "texto": "Brutal e direto, ataca com força bruta e mordidas, envolto no próprio fedor nauseante, sem tática nem paciência, apenas fome de destruição."
    },
    {
     "titulo": "Hábitos",
@@ -20298,10 +20176,10 @@
   "id": "mon-homunculus",
   "nome": "Homunculus",
   "nomeIngles": "Homunculus",
-  "categoria": "Aberração",
+  "categoria": "Construto",
   "tipo": "soldado",
   "conceito": "monstro Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro",
    "centelha"
@@ -20315,7 +20193,7 @@
    "peso": "3 kg"
   },
   "ecologia": {
-   "tipo": "Aberration",
+   "tipo": "Construct",
    "terreno": [
     "Urban",
     "Ruins",
@@ -20339,11 +20217,11 @@
    "raciocinio": 2
   },
   "vontade": 6,
-  "aparencia": 1,
+  "aparencia": 4,
   "virtudes": {
    "compaixao": 0,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
@@ -20400,108 +20278,6 @@
    {
     "titulo": "Loucura da orfandade",
     "texto": "Se o criador morre, o homúnculo perde a razão e passa a atacar cegamente qualquer um que se aproxime de seu covil."
-   }
-  ]
- },
- {
-  "id": "mon-horse",
-  "nome": "Horse",
-  "nomeIngles": "Horse",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 2,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Grande",
-  "dimensoes": {
-   "medida": "1,5 a 1,8 m de altura no ombro",
-   "peso": "450 a 680 kg"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Plains"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/horse.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 6,
-   "destreza": 4,
-   "vigor": 6,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "combate": {
-   "pv": 54,
-   "defesa": 10,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "4d6",
-     "dano": "2d6 +6 perfConc",
-     "speed": 6
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Coice duplo",
-    "descricao": "Golpeia com os dois cascos dianteiros; sem treino de combate, o ataque conta apenas como reforço secundário."
-   },
-   {
-    "nome": "Fôlego de estrada",
-    "descricao": "Corre por longas distâncias sem se cansar facilmente."
-   },
-   {
-    "nome": "Sentidos de manada",
-    "descricao": "Faro e visão na penumbra ajudam a perceber perigos à distância."
-   },
-   {
-    "nome": "Dócil por natureza",
-    "descricao": "Só briga de fato quando adestrado para o combate; do contrário prefere fugir."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Companheiro de estrada",
-    "texto": "Criados para cavalgar, puxar carroças ou arar campos, os cavalos servem lado a lado com quase todos os povos do mundo."
-   },
-   {
-    "titulo": "Duas linhagens",
-    "texto": "Cavalos leves de montaria e cavalos pesados de tração diferem em porte e resistência, mas compartilham o mesmo temperamento dócil."
    }
   ]
  },
@@ -21438,7 +21214,7 @@
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"
@@ -21754,7 +21530,7 @@
    },
    {
     "titulo": "Predador de Rio e Mata",
-    "texto": "Caça em bandos, à espreita nas margens de rios e no sub-bosque, onde sua pele se confunde com raízes e lama."
+    "texto": "Caça sozinho, à espreita nas margens de rios e no sub-bosque, onde sua pele se confunde com raízes e lama."
    },
    {
     "titulo": "Companheiro Domado",
@@ -22036,10 +21812,10 @@
   "id": "mon-dire-lion-spotted-lion",
   "nome": "Leão Atroz",
   "nomeIngles": "Dire Lion",
-  "categoria": "Aberração",
+  "categoria": "Animal",
   "tipo": "elite",
   "conceito": "monstro Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
   "tags": [
    "monstro",
    "centelha"
@@ -22053,7 +21829,7 @@
    "peso": "300 kg"
   },
   "ecologia": {
-   "tipo": "Aberration",
+   "tipo": "Animal",
    "terreno": [
     "Plains",
     "Mountain"
@@ -22076,12 +21852,12 @@
    "raciocinio": 1
   },
   "vontade": 8,
-  "aparencia": 1,
+  "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 1,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 2
   },
   "combate": {
    "pv": 40,
@@ -22147,7 +21923,7 @@
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Médio (diabo)",
-  "descricao": "Tirano leal do Inferno, calculista e cruel.",
+  "descricao": "Alma condenada derretida na forma mais baixa do Inferno, sem mente própria.",
   "tags": [
    "diabo",
    "centelha"
@@ -23207,6 +22983,118 @@
   ]
  },
  {
+  "id": "mon-winter-wolf",
+  "nome": "Lobo do Inverno",
+  "nomeIngles": "Winter Wolf",
+  "categoria": "Besta mágica",
+  "tipo": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+   "besta-magica",
+   "centelha"
+  ],
+  "ameaca": 4,
+  "centelha": 3,
+  "pendente": true,
+  "porte": "Grande",
+  "dimensoes": {
+   "medida": "2,4 m de comprimento e 1,35 m de altura na cernelha",
+   "peso": "200 kg"
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Forest",
+    "Plains"
+   ],
+   "clima": [
+    "Cold"
+   ]
+  },
+  "imagem": "bestiario/winter-wolf.png",
+  "semImagem": false,
+  "atributos": {
+   "forca": 7,
+   "destreza": 3,
+   "vigor": 6,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 3,
+   "percepcao": 3,
+   "inteligencia": 2,
+   "raciocinio": 2
+  },
+  "vontade": 8,
+  "aparencia": 5,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "combate": {
+   "pv": 54,
+   "defesa": 14,
+   "defesaMental": 20,
+   "absorcao": {
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "6d6 +6",
+     "dano": "2d6 +7 perfConc",
+     "speed": 6
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Imunidade ao gelo",
+    "descricao": "Não sofre dano de frio, mas suas peles reagem mal ao fogo, sofrendo dano extra dessa fonte."
+   },
+   {
+    "nome": "Sentidos de caçador",
+    "descricao": "Enxerga no escuro, tem visão penumbra e faro apurado; fareja presas mesmo escondidas."
+   },
+   {
+    "nome": "Mordida congelante",
+    "descricao": "A mordida soma dano de frio ao dano físico e pode derrubar o alvo."
+   },
+   {
+    "nome": "Sopro gélido",
+    "descricao": "A cada poucos instantes de combate, expele um cone de vento congelante; quem é atingido sofre dano de frio pesado, reduzido pela metade com um teste de Vigor bem sucedido."
+   },
+   {
+    "nome": "Camuflagem na neve",
+    "descricao": "Movimenta-se e se esconde com facilidade muito maior sobre neve do que em outros terrenos."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Pelagem branca",
+    "texto": "Maiores e mais ferozes que os worgs comuns, trazem um sopro mortífero nascido do próprio corpo gélido."
+   },
+   {
+    "titulo": "Guardiões de gigantes",
+    "texto": "Aliam-se a gigantes das geadas e das colinas, servindo tribos inteiras como batedores e guardas."
+   },
+   {
+    "titulo": "Olhos vermelhos na neve",
+    "texto": "Um brilho quase inteligente e cruel habita o olhar desses lobos gigantes."
+   }
+  ]
+ },
+ {
   "id": "mon-giant-mantis",
   "nome": "Louva-a-Deus Gigante",
   "nomeIngles": "Giant Mantis",
@@ -24117,7 +24005,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (demônio)",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha"
@@ -24981,7 +24869,7 @@
   "categoria": "Fada",
   "tipo": "capanga",
   "conceito": "fada Pequeno",
-  "descricao": "Espírito da natureza, belo e caprichoso.",
+  "descricao": "Fada mesquinha e degenerada das cavernas, covarde e vingativa.",
   "tags": [
    "fada",
    "centelha"
@@ -25428,7 +25316,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Amontoado de vegetação podre e restos que ganhou vontade própria, avança devagar mas sem cansar, esmagando e envenenando o que alcança com seus braços de galhos entrelaçados."
+    "texto": "Amontoado de vegetação podre e restos que ganhou vontade própria, avança devagar mas sem cansar, esmagando e sufocando o que alcança com seus braços de galhos entrelaçados."
    },
    {
     "titulo": "Ecologia",
@@ -25437,6 +25325,106 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Camponeses de Mére e Syl contam que um montão tropeçante nasce quando a terra se recusa a esquecer uma morte violenta; alguns druidas e xamãs o deixam em paz, como se fosse uma forma torta e lenta de luto da própria natureza."
+   }
+  ]
+ },
+ {
+  "id": "mon-bat",
+  "nome": "Morcego",
+  "nomeIngles": "Bat",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 1,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Miúdo",
+  "dimensoes": {
+   "medida": "12 centímetros de envergadura",
+   "peso": "poucos gramas"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Underground",
+    "Forest"
+   ],
+   "clima": [
+    "Temperate",
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/bat.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 0,
+   "destreza": 4,
+   "vigor": 1,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 4,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 16,
+   "defesa": 10,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 1,
+    "corte": 0,
+    "perfuracao": 0
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 4",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "0d6+2",
+     "dano": "1d6 perfConc",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Sentido de eco",
+    "descricao": "Percebe o que está por perto mesmo no escuro total ou de olhos fechados, guiando-se por vibrações no ar."
+   },
+   {
+    "nome": "Voo ágil",
+    "descricao": "Voa rápido e com curvas fechadas, difícil de acertar em pleno ar."
+   },
+   {
+    "nome": "Visão na penumbra",
+    "descricao": "Enxerga bem mesmo com pouquíssima luz."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Sombra alada",
+    "texto": "A maioria se alimenta de insetos e frutas ao anoitecer, mas dizem que ao menos uma espécie prefere sangue."
+   },
+   {
+    "titulo": "Enxame na caverna",
+    "texto": "Vive em colônias enormes, penduradas de cabeça para baixo em tetos de cavernas e ruínas esquecidas."
    }
   ]
  },
@@ -25536,7 +25524,7 @@
   "lore": [
    {
     "titulo": "Habitat",
-    "texto": "O dire bat costuma se abrigar em cavernas e áreas desoladas durante o dia, saindo à noite para caçar. Sua envergadura chega a quase cinco metros."
+    "texto": "O morcego atroz costuma se abrigar em cavernas e áreas desoladas durante o dia, saindo à noite para caçar. Sua envergadura chega a quase cinco metros."
    },
    {
     "titulo": "Comportamento",
@@ -25913,7 +25901,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (demônio) Médio",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha"
@@ -26346,8 +26334,8 @@
     "descricao": "É imune a qualquer leitura ou intrusão mental e resiste melhor a encantos e dominações."
    },
    {
-    "nome": "Ferrão sonífero",
-    "descricao": "Seu ferrão injeta um veneno que faz a vítima cair num sono profundo por horas se ela falhar em um teste de Vigor."
+    "nome": "Ferrão peçonhento",
+    "descricao": "Seu ferrão injeta um veneno que corrói o corpo da vítima, causando dano contínuo de Vigor (Constituição) se ela falhar num teste de Vigor."
    },
    {
     "nome": "Feitiçaria treinada",
@@ -26380,7 +26368,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (demônio) Enorme",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha"
@@ -26602,7 +26590,7 @@
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior (fogo) Grande",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "elemental",
    "centelha"
@@ -26695,109 +26683,6 @@
    {
     "titulo": "Caçadores implacáveis",
     "texto": "Perseguem os inimigos de Asmodeus até os confins do Inferno e além, sem parar até completar a missão ou morrer tentando."
-   }
-  ]
- },
- {
-  "id": "mon-nightmare",
-  "nome": "Nightmare",
-  "nomeIngles": "Nightmare",
-  "categoria": "Corruptor",
-  "tipo": "elite",
-  "conceito": "exterior Grande",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-   "exterior",
-   "centelha"
-  ],
-  "ameaca": 4,
-  "centelha": 3,
-  "pendente": true,
-  "porte": "Grande",
-  "dimensoes": {
-   "medida": "2,7 m de comprimento",
-   "peso": "800 kg"
-  },
-  "ecologia": {
-   "tipo": "Fiend",
-   "terreno": [
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "imagem": "bestiario/nightmare.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 6,
-   "destreza": 4,
-   "vigor": 6,
-   "influencia": 3,
-   "perspicacia": 3,
-   "compostura": 3,
-   "percepcao": 3,
-   "inteligencia": 3,
-   "raciocinio": 3
-  },
-  "vontade": 8,
-  "aparencia": 1,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 5,
-   "temperanca": 1,
-   "valor": 5
-  },
-  "combate": {
-   "pv": 54,
-   "defesa": 16,
-   "defesaMental": 20,
-   "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 4",
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "5d6+2 +6",
-     "dano": "2d6 +6 corte",
-     "speed": 6
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Visão no escuro",
-    "descricao": "Enxerga bem mesmo sem luz alguma."
-   },
-   {
-    "nome": "Voo veloz",
-    "descricao": "Voa com grande destreza e velocidade, superando até cavalos em terra firme."
-   },
-   {
-    "nome": "Fumaça sufocante",
-    "descricao": "Exala uma nuvem de fumaça que cega e enjoa quem respirar o bastante dela, a menos que resista em um teste de Vigor."
-   },
-   {
-    "nome": "Salto entre mundos",
-    "descricao": "Uma vez por dia, pode se teleportar para outro plano de existência levando consigo um único cavaleiro."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Corcel do mal",
-    "texto": "Feito de fogo e trevas, só aceita ser montado pelos mais cruéis, agindo como parceiro voluntário na destruição, nunca como simples montaria."
-   },
-   {
-    "titulo": "Cascos de brasa",
-    "texto": "Deixa rastros de fumaça e faíscas por onde passa, e seus olhos ardem como brasas quando pressente uma alma corrompida por perto."
    }
   ]
  },
@@ -26963,7 +26848,7 @@
   "categoria": "Construto",
   "tipo": "soldado",
   "conceito": "constructo Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro",
    "centelha"
@@ -27183,7 +27068,7 @@
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "exterior Grande",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
   "tags": [
    "exterior",
    "centelha",
@@ -27917,100 +27802,91 @@
   ]
  },
  {
-  "id": "mon-phoenix",
-  "nome": "Phoenix",
-  "nomeIngles": "Phoenix",
-  "categoria": "Besta mágica",
-  "tipo": "chefe",
-  "conceito": "besta mágica Imenso",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "id": "mon-nightmare",
+  "nome": "Pesadelo",
+  "nomeIngles": "Nightmare",
+  "categoria": "Corruptor",
+  "tipo": "elite",
+  "conceito": "exterior Grande",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
-   "besta-magica",
+   "exterior",
    "centelha"
   ],
-  "ameaca": 6,
-  "centelha": 5,
+  "ameaca": 4,
+  "centelha": 3,
   "pendente": true,
-  "porte": "Imenso",
+  "porte": "Grande",
   "dimensoes": {
-   "medida": "envergadura de cerca de 15 m",
-   "peso": "1.000 kg"
+   "medida": "2,7 m de comprimento",
+   "peso": "800 kg"
   },
   "ecologia": {
-   "tipo": "Beast",
+   "tipo": "Fiend",
    "terreno": [
-    "Desert",
-    "Mountain"
+    "Any"
    ],
    "clima": [
-    "Tropical"
+    "Extraplanar"
    ]
   },
-  "imagem": "bestiario/phoenix.jpg",
+  "imagem": "bestiario/nightmare.jpg",
   "semImagem": false,
   "atributos": {
-   "forca": 11,
-   "destreza": 8,
-   "vigor": 9,
-   "influencia": 7,
-   "perspicacia": 7,
-   "compostura": 7,
-   "percepcao": 7,
-   "inteligencia": 7,
-   "raciocinio": 7
+   "forca": 6,
+   "destreza": 4,
+   "vigor": 6,
+   "influencia": 3,
+   "perspicacia": 3,
+   "compostura": 3,
+   "percepcao": 3,
+   "inteligencia": 3,
+   "raciocinio": 3
   },
-  "vontade": 10,
-  "aparencia": 5,
+  "vontade": 8,
+  "aparencia": 1,
   "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 4
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
   },
   "combate": {
-   "pv": 85,
-   "defesa": 30,
-   "defesaMental": 34,
+   "pv": 54,
+   "defesa": 16,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 14,
-    "corte": 16,
-    "perfuracao": 16
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
-   "resistenciaPerfuracao": 2,
-   "iniciativa": "1d6 + 10",
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 4",
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "8d6 +10",
-     "dano": "3d6 +11 perfConc",
-     "speed": 7
+     "nome": "Golpe planar",
+     "pool": "5d6+2 +6",
+     "dano": "2d6 +6 corte",
+     "speed": 6
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Sentidos apurados",
-    "descricao": "Enxerga no escuro, detecta magia e veneno à distância, tem visão em pouca luz e enxerga através de invisibilidade."
+    "nome": "Visão no escuro",
+    "descricao": "Enxerga bem mesmo sem luz alguma."
    },
    {
-    "nome": "Manto de chamas",
-    "descricao": "Pode incendiar as próprias penas, causando dano contínuo extra em seus golpes e queimando quem chegar perto demais sem escapar a tempo."
+    "nome": "Voo veloz",
+    "descricao": "Voa com grande destreza e velocidade, superando até cavalos em terra firme."
    },
    {
-    "nome": "Regeneração constante",
-    "descricao": "Cura seus próprios ferimentos continuamente, exceto os causados por frio ou pelo mal."
+    "nome": "Fumaça sufocante",
+    "descricao": "Exala uma nuvem de fumaça que cega e enjoa quem respirar o bastante dela, a menos que resista em um teste de Vigor."
    },
    {
-    "nome": "Autorressurreição",
-    "descricao": "Se morrer, seu corpo permanece destruído só por alguns instantes antes de renascer curado das próprias cinzas, uma vez por ano; renascer assim custa parte de sua força vital."
-   },
-   {
-    "nome": "Imune ao fogo, vulnerável ao frio",
-    "descricao": "Chamas não a ferem e resiste bem à maioria das magias, mas o frio a machuca com facilidade incomum."
-   },
-   {
-    "nome": "Poderes de cura e fogo",
-    "descricao": "Domina magias de cura poderosas e comanda paredes e tempestades de fogo à vontade."
+    "nome": "Salto entre mundos",
+    "descricao": "Uma vez por dia, pode se teleportar para outro plano de existência levando consigo um único cavaleiro."
    }
   ],
   "poderes": [],
@@ -28019,12 +27895,122 @@
   "notas": "",
   "lore": [
    {
-    "titulo": "Ave de chama viva",
-    "texto": "Parece feita inteiramente de fogo, solta um grito melodioso ao alçar voo e é associada a forças do bem."
+    "titulo": "Corcel do mal",
+    "texto": "Feito de fogo e trevas, só aceita ser montado pelos mais cruéis, agindo como parceiro voluntário na destruição, nunca como simples montaria."
    },
    {
-    "titulo": "Renascida das próprias cinzas",
-    "texto": "Vive em desertos quentes e colinas isoladas, e sua lenda de morte e renascimento a torna quase sagrada entre quem a avista."
+    "titulo": "Cascos de brasa",
+    "texto": "Deixa rastros de fumaça e faíscas por onde passa, e seus olhos ardem como brasas quando pressente uma alma corrompida por perto."
+   }
+  ]
+ },
+ {
+  "id": "mon-cave-fisher",
+  "nome": "Pescador das Cavernas",
+  "nomeIngles": "Cave Fisher",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "praga Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 2,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,2 m de comprimento",
+   "peso": "40 kg"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/cave-fisher.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 5,
+   "destreza": 3,
+   "vigor": 5,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
+   "percepcao": 2,
+   "inteligencia": 0,
+   "raciocinio": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 40,
+   "defesa": 8,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 5,
+    "corte": 2,
+    "perfuracao": 2
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "3d6+2",
+     "dano": "1d6 +5 perfConc",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Filamento Pegajoso",
+    "descricao": "Dispara um fio de seda grudenta a boa distância, prendendo o alvo no lugar; a vítima pode se libertar com força bruta ou destreza, mas o fio é difícil de cortar."
+   },
+   {
+    "nome": "Puxão Certeiro",
+    "descricao": "Recolhe o fio com grande força, arrastando a presa presa para perto de si."
+   },
+   {
+    "nome": "Escalador Nato",
+    "descricao": "Sobe paredes de pedra com extrema facilidade, preferindo se instalar em saliências altas para caçar."
+   },
+   {
+    "nome": "Visão no Escuro",
+    "descricao": "Enxerga perfeitamente mesmo na escuridão total."
+   },
+   {
+    "nome": "Mente Vazia",
+    "descricao": "Imune a efeitos que dependam de mente ou raciocínio."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Caçada",
+    "texto": "Predador especializado que se instala em uma saliência ou fenda de caverna, tipicamente a uma boa altura do chão; espera a presa se aproximar antes de disparar seu fio de seda com velocidade impressionante."
+   },
+   {
+    "titulo": "Habitat",
+    "texto": "Prefere saliências que dominem pontes ou abismos, arrastando a refeição presa até sua posição elevada, onde pode comer sem ser incomodado por eventuais aliados da vítima."
+   },
+   {
+    "titulo": "Sociedade",
+    "texto": "Ossos espalhados e restos de fios abandonados são sinais claros de que uma dessas criaturas habita as redondezas; o fio colhido de um exemplar vivo é leve e resistente, servindo como corda de excelente qualidade."
    }
   ]
  },
@@ -28825,8 +28811,8 @@
     "descricao": "Voa razoavelmente rápido, mas sem manobra alguma; prefere pousar no chão para lutar com presas que não consegue carregar pelos ares."
    },
    {
-    "nome": "Mordida de bico",
-    "descricao": "Golpeia com o bico comprido e cheio de dentes finos, perfurando com facilidade."
+    "nome": "Bicada",
+    "descricao": "Golpeia com o bico comprido e pontudo, sem dentes, perfurando pelo impacto."
    }
   ],
   "poderes": [],
@@ -28958,7 +28944,7 @@
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Minúsculo (demônio)",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha",
@@ -29237,6 +29223,111 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Para o povo comum é prova viva de que a era anterior à Supressão gerava monstros que ninguém hoje sabe explicar; camponeses erguem capelas nas encostas onde uma foi avistada, pedindo à Verdejante que mantenha a fera longe do rebanho."
+   }
+  ]
+ },
+ {
+  "id": "mon-giant-frog",
+  "nome": "Rã Gigante",
+  "nomeIngles": "Giant Frog",
+  "categoria": "Animal",
+  "tipo": "soldado",
+  "conceito": "monstro Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "monstro",
+   "centelha"
+  ],
+  "ameaca": 2,
+  "centelha": 1,
+  "pendente": true,
+  "porte": "Médio",
+  "dimensoes": {
+   "medida": "1,8 m de comprimento",
+   "peso": "90 kg"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Swamp",
+    "Water"
+   ],
+   "clima": [
+    "Temperate",
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/giant-frog.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 4,
+   "destreza": 3,
+   "vigor": 5,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
+   "percepcao": 2,
+   "inteligencia": 0,
+   "raciocinio": 1
+  },
+  "vontade": 6,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 40,
+   "defesa": 10,
+   "defesaMental": 12,
+   "absorcao": {
+    "impacto": 6,
+    "corte": 3,
+    "perfuracao": 3
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 2",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "3d6+2 +2",
+     "dano": "1d6 +4 corte",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Língua Longa",
+    "descricao": "Dispara a língua a distância três vezes maior que seu alcance normal para prender um alvo, sem causar ferimento algum no golpe."
+   },
+   {
+    "nome": "Puxão Certeiro",
+    "descricao": "Uma vez presa a vítima pela língua, pode puxá-la para perto de si com força considerável."
+   },
+   {
+    "nome": "Engole Inteiro",
+    "descricao": "Engolindo presas pequenas o bastante, causa dano contínuo de esmagamento enquanto a vítima luta para escapar de dentro dela."
+   },
+   {
+    "nome": "Nadadora Ágil",
+    "descricao": "Move-se na água com a mesma velocidade com que salta em terra firme."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Presas afiadas",
+    "texto": "Apesar da aparência cômica, sua boca esconde fileiras de dentes que rasgam com facilidade."
+   },
+   {
+    "titulo": "Companheira de caçadores",
+    "texto": "Alguns batedores de pântano domesticam filhotes de rã gigante como montaria de emboscada e guarda-costas anfíbio."
    }
   ]
  },
@@ -29831,7 +29922,7 @@
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Enorme",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
   "tags": [
    "monstro"
   ],
@@ -29932,109 +30023,6 @@
    {
     "titulo": "Símbolo de lealdade forçada",
     "texto": "A simples presença de um coletor no covil de um demônio já basta para manter súditos menores na linha, temerosos do que aguarda quem tenta desertar."
-   }
-  ]
- },
- {
-  "id": "mon-riding-dog",
-  "nome": "Riding Dog",
-  "nomeIngles": "Riding Dog",
-  "categoria": "Aberração",
-  "tipo": "capanga",
-  "conceito": "monstro Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
-  "tags": [
-   "monstro",
-   "centelha"
-  ],
-  "ameaca": 1,
-  "centelha": 1,
-  "pendente": true,
-  "porte": "Médio",
-  "dimensoes": {
-   "medida": "90 centímetros de comprimento",
-   "peso": "35 kg"
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Any"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "imagem": "bestiario/riding-dog.jpg",
-  "semImagem": false,
-  "atributos": {
-   "forca": 4,
-   "destreza": 4,
-   "vigor": 4,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 1
-  },
-  "vontade": 6,
-  "aparencia": 1,
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 37,
-   "defesa": 12,
-   "defesaMental": 12,
-   "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "3d6 +2",
-     "dano": "1d6 +4 corte",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Visão penumbra e faro",
-    "descricao": "Enxerga em pouca luz e depende do faro para rastrear."
-   },
-   {
-    "nome": "Mordida derrubante",
-    "descricao": "Morde e, no mesmo movimento, desequilibra o oponente, derrubando-o no chão."
-   },
-   {
-    "nome": "Faro rastreador",
-    "descricao": "Segue trilhas de cheiro por longas distâncias, mesmo trilhas antigas."
-   },
-   {
-    "nome": "Monta de guerra",
-    "descricao": "Consegue lutar mesmo carregando um cavaleiro nas costas, embora isso limite a ação de quem o monta."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Raças robustas",
-    "texto": "Vem de linhagens maiores e mais fortes, como huskies, mastins e wolfhounds, criadas para suportar o peso e o ritmo de longas cavalgadas."
-   },
-   {
-    "titulo": "Parceiro de estrada",
-    "texto": "Comum entre povos menores, como halflings e gnomos, que o usam como montaria confiável em vez de cavalos."
    }
   ]
  },
@@ -30979,7 +30967,7 @@
  },
  {
   "id": "mon-sea-serpent",
-  "nome": "Sea Serpent",
+  "nome": "Serpente Marinha",
   "nomeIngles": "Sea Serpent",
   "categoria": "Besta mágica",
   "tipo": "chefe",
@@ -31050,8 +31038,8 @@
   },
   "habilidades": [
    {
-    "nome": "Esquiva lendária",
-    "descricao": "Pode nadar em alta velocidade sem deixar rastro algum, tornando-se quase impossível de rastrear ou detectar por meios mágicos enquanto não quiser ser vista."
+    "nome": "Elusiva no mar",
+    "descricao": "Nada em alta velocidade e sem deixar rastro, o que a torna muito difícil de rastrear ou cercar."
    },
    {
     "nome": "Capotar embarcações",
@@ -32368,10 +32356,6 @@
     "descricao": "Enquanto presa, drena sangue continuamente a cada rodada, causando dano contínuo que só cessa quando ela se solta saciada ou é removida."
    },
    {
-    "nome": "Portadora de doença",
-    "descricao": "O contato com o sangue de tantas vítimas torna seu ataque um vetor de doenças; há chance de a mordida transmitir uma enfermidade à vítima."
-   },
-   {
     "nome": "Sentidos aguçados",
     "descricao": "Enxerga no escuro e sente o cheiro de sangue quente a distância, guiando-se até presas escondidas."
    }
@@ -32398,7 +32382,7 @@
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior Médio (demônio)",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha",
@@ -32941,6 +32925,118 @@
   ]
  },
  {
+  "id": "mon-dragon-turtle",
+  "nome": "Tartaruga-Dragão",
+  "nomeIngles": "Dragon Turtle",
+  "categoria": "Dragão",
+  "tipo": "chefe",
+  "conceito": "dragão Enorme",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+   "dragao",
+   "centelha"
+  ],
+  "ameaca": 5,
+  "centelha": 4,
+  "pendente": true,
+  "porte": "Enorme",
+  "dimensoes": {
+   "medida": "9 metros de comprimento",
+   "peso": "4 t"
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Water",
+    "Coast"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "imagem": "bestiario/dragon-turtle.jpg",
+  "semImagem": false,
+  "atributos": {
+   "forca": 10,
+   "destreza": 2,
+   "vigor": 7,
+   "influencia": 3,
+   "perspicacia": 3,
+   "compostura": 3,
+   "percepcao": 3,
+   "inteligencia": 3,
+   "raciocinio": 3
+  },
+  "vontade": 9,
+  "aparencia": 9,
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
+  },
+  "combate": {
+   "pv": 70,
+   "defesa": 12,
+   "defesaMental": 23,
+   "absorcao": {
+    "impacto": 11,
+    "corte": 11,
+    "perfuracao": 11
+   },
+   "resistenciaPerfuracao": 1,
+   "iniciativa": "1d6 + 4",
+   "ataques": [
+    {
+     "nome": "Garras e mordida",
+     "pool": "7d6+2 +8",
+     "dano": "3d6 +10 perfConc",
+     "speed": 7
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Sopro de vapor escaldante",
+    "descricao": "Expele uma nuvem de vapor fervente sobre uma área considerável, tanto na superfície quanto debaixo d'água; quem é atingido sofre queimaduras graves, reduzidas à metade com um teste de Vigor bem-sucedido. Não pode repetir o sopro em sequência, precisando de uma pausa antes de usá-lo de novo."
+   },
+   {
+    "nome": "Imune a fogo e a efeitos que dominam a mente",
+    "descricao": "Não sofre dano de fogo e não pode ser posta para dormir ou paralisada."
+   },
+   {
+    "nome": "Afunda embarcações",
+    "descricao": "Pode investir contra um barco ou navio para virá-lo, arrastando tripulação e carga para o fundo."
+   },
+   {
+    "nome": "Mordida e garras poderosas",
+    "descricao": "Ataca com a boca e as duas garras dianteiras, mesmo submersa."
+   },
+   {
+    "nome": "Furtividade aquática",
+    "descricao": "Move-se pela água quase sem ruído, surpreendendo embarcações antes que percebam o perigo."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Senhora dos mares",
+    "texto": "Reivindica vastos territórios oceânicos e afunda quem ousa navegar por eles sem prestar tributo."
+   },
+   {
+    "titulo": "Tesouros afundados",
+    "texto": "Guarda em seu covil os destroços e a carga valiosa de todos os navios que já capsizou."
+   },
+   {
+    "titulo": "Carapaça lendária",
+    "texto": "O casco varia de marrom ferrugem a verde-azulado com reflexos prateados, e a cabeça e a cauda mostram estrias douradas."
+   }
+  ]
+ },
+ {
   "id": "mon-tengu",
   "nome": "Tengu",
   "nomeIngles": "Tengu",
@@ -33052,10 +33148,10 @@
   "id": "mon-tiefling",
   "nome": "Tiefling",
   "nomeIngles": "Tiefling",
-  "categoria": "Outsider",
+  "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Mortal marcado por sangue infernal, vive à margem dos povos.",
   "tags": [
    "exterior",
    "centelha"
@@ -33069,7 +33165,7 @@
    "peso": "68 kg"
   },
   "ecologia": {
-   "tipo": "Monitor",
+   "tipo": "Humanoid",
    "terreno": [
     "Urban",
     "Plains",
@@ -33093,12 +33189,12 @@
    "raciocinio": 3
   },
   "vontade": 6,
-  "aparencia": 6,
+  "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 4,
-   "temperanca": 3,
-   "valor": 4
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
   },
   "combate": {
    "pv": 37,
@@ -34425,7 +34521,7 @@
  },
  {
   "id": "mon-grizzly-bear",
-  "nome": "Urso Pardo",
+  "nome": "Urso Cinzento",
   "nomeIngles": "Grizzly Bear",
   "categoria": "Animal",
   "tipo": "fera",
@@ -34823,7 +34919,7 @@
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Pequeno",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"
@@ -35238,12 +35334,117 @@
   "notas": "",
   "lore": [
    {
-    "titulo": "Colmeia viva",
-    "texto": "Cada ninho gira em torno de uma rainha, poucas operárias e vários soldados que caçam e protegem o ninho com fúria cega."
+    "titulo": "Caçadora solitária",
+    "texto": "Vespa do tamanho de um cão grande, caça sozinha ou em pequenos grupos, paralisando a presa com o ferrão antes de arrastá-la de volta."
    },
    {
     "titulo": "Berço de pesadelo",
-    "texto": "Presas capturadas vivas são levadas ao ninho para alimentar as larvas, um destino que os sobreviventes preferem não descrever."
+    "texto": "A presa paralisada vira incubadora viva: a vespa põe os ovos nela e as larvas a devoram por dentro ao nascer."
+   }
+  ]
+ },
+ {
+  "id": "mon-viper",
+  "nome": "Víbora",
+  "nomeIngles": "Viper",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 1,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Miúdo",
+  "dimensoes": {
+   "medida": "60 cm de comprimento",
+   "peso": "500 g"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Forest",
+    "Swamp",
+    "Plains"
+   ],
+   "clima": [
+    "Temperate",
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/viper.png",
+  "semImagem": false,
+  "atributos": {
+   "forca": 1,
+   "destreza": 5,
+   "vigor": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 0,
+   "raciocinio": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 17,
+   "defesa": 12,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 2,
+    "corte": 1,
+    "perfuracao": 1
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 2",
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "1d6",
+     "dano": "1d6 +1 perfConc",
+     "speed": 5
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Sentidos de Caçadora",
+    "descricao": "Enxerga bem no escuro parcial e sente o cheiro do sangue e do medo à distância; quase nunca é surpreendida."
+   },
+   {
+    "nome": "Trepadora e Nadadora",
+    "descricao": "Desliza por galhos, pedras e água com a mesma facilidade com que rasteja pelo chão."
+   },
+   {
+    "nome": "Presa Venenosa",
+    "descricao": "A mordida injeta um veneno que corrói aos poucos: a vítima sofre dano contínuo por vários instantes, exigindo um teste de Vigor para debelar o veneno antes que ele a esgote."
+   },
+   {
+    "nome": "Camuflagem entre Folhas",
+    "descricao": "Seu corpo fino e as escamas foscas a tornam quase invisível quando parada entre raízes e folhagem."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "",
+  "lore": [
+   {
+    "titulo": "Silêncio antes da mordida",
+    "texto": "Não caça pelo terror, mas pela paciência: a víbora espera imóvel horas a fio até que o descuido do alvo a alimente."
+   },
+   {
+    "titulo": "Presságio nas aldeias",
+    "texto": "Camponeses supersticiosos evitam matar víboras dentro de casa, temendo que o veneno derramado atraia a atenção de espíritos famintos."
    }
   ]
  },
@@ -35360,118 +35561,13 @@
   ]
  },
  {
-  "id": "mon-viper",
-  "nome": "Viper",
-  "nomeIngles": "Viper",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 1,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Miúdo",
-  "dimensoes": {
-   "medida": "60 cm de comprimento",
-   "peso": "500 g"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Forest",
-    "Swamp",
-    "Plains"
-   ],
-   "clima": [
-    "Temperate",
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/viper.png",
-  "semImagem": false,
-  "atributos": {
-   "forca": 1,
-   "destreza": 5,
-   "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 0,
-   "raciocinio": 1
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "combate": {
-   "pv": 17,
-   "defesa": 12,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 2,
-    "corte": 1,
-    "perfuracao": 1
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "1d6",
-     "dano": "1d6 +1 perfConc",
-     "speed": 5
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Sentidos de Caçadora",
-    "descricao": "Enxerga bem no escuro parcial e sente o cheiro do sangue e do medo à distância; quase nunca é surpreendida."
-   },
-   {
-    "nome": "Trepadora e Nadadora",
-    "descricao": "Desliza por galhos, pedras e água com a mesma facilidade com que rasteja pelo chão."
-   },
-   {
-    "nome": "Presa Venenosa",
-    "descricao": "A mordida injeta um veneno que corrói aos poucos: a vítima sofre dano contínuo por vários instantes, exigindo um teste de Vigor para debelar o veneno antes que ele a esgote."
-   },
-   {
-    "nome": "Camuflagem entre Folhas",
-    "descricao": "Seu corpo fino e as escamas foscas a tornam quase invisível quando parada entre raízes e folhagem."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Silêncio antes da mordida",
-    "texto": "Não caça pelo terror, mas pela paciência: a víbora espera imóvel horas a fio até que o descuido do alvo a alimente."
-   },
-   {
-    "titulo": "Presságio nas aldeias",
-    "texto": "Camponeses supersticiosos evitam matar víboras dentro de casa, temendo que o veneno derramado atraia a atenção de espíritos famintos."
-   }
-  ]
- },
- {
   "id": "mon-vrock",
   "nome": "Vrock",
   "nomeIngles": "Demon, Vrock",
   "categoria": "Corruptor",
   "tipo": "chefe",
   "conceito": "exterior Grande (demônio)",
-  "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "demonio",
    "centelha",
@@ -35740,118 +35836,6 @@
   ]
  },
  {
-  "id": "mon-winter-wolf",
-  "nome": "Winter Wolf",
-  "nomeIngles": "Winter Wolf",
-  "categoria": "Besta mágica",
-  "tipo": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-   "besta-magica",
-   "centelha"
-  ],
-  "ameaca": 4,
-  "centelha": 3,
-  "pendente": true,
-  "porte": "Grande",
-  "dimensoes": {
-   "medida": "2,4 m de comprimento e 1,35 m de altura na cernelha",
-   "peso": "200 kg"
-  },
-  "ecologia": {
-   "tipo": "Beast",
-   "terreno": [
-    "Forest",
-    "Plains"
-   ],
-   "clima": [
-    "Cold"
-   ]
-  },
-  "imagem": "bestiario/winter-wolf.png",
-  "semImagem": false,
-  "atributos": {
-   "forca": 7,
-   "destreza": 3,
-   "vigor": 6,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 3,
-   "percepcao": 3,
-   "inteligencia": 2,
-   "raciocinio": 2
-  },
-  "vontade": 8,
-  "aparencia": 5,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "combate": {
-   "pv": 54,
-   "defesa": 14,
-   "defesaMental": 20,
-   "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "6d6 +6",
-     "dano": "2d6 +7 perfConc",
-     "speed": 6
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Imunidade ao gelo",
-    "descricao": "Não sofre dano de frio, mas suas peles reagem mal ao fogo, sofrendo dano extra dessa fonte."
-   },
-   {
-    "nome": "Sentidos de caçador",
-    "descricao": "Enxerga no escuro, tem visão penumbra e faro apurado; fareja presas mesmo escondidas."
-   },
-   {
-    "nome": "Mordida congelante",
-    "descricao": "A mordida soma dano de frio ao dano físico e pode derrubar o alvo."
-   },
-   {
-    "nome": "Sopro gélido",
-    "descricao": "A cada poucos instantes de combate, expele um cone de vento congelante; quem é atingido sofre dano de frio pesado, reduzido pela metade com um teste de Vigor bem sucedido."
-   },
-   {
-    "nome": "Camuflagem na neve",
-    "descricao": "Movimenta-se e se esconde com facilidade muito maior sobre neve do que em outros terrenos."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "",
-  "lore": [
-   {
-    "titulo": "Pelagem branca",
-    "texto": "Maiores e mais ferozes que os worgs comuns, trazem um sopro mortífero nascido do próprio corpo gélido."
-   },
-   {
-    "titulo": "Guardiões de gigantes",
-    "texto": "Aliam-se a gigantes das geadas e das colinas, servindo tribos inteiras como batedores e guardas."
-   },
-   {
-    "titulo": "Olhos vermelhos na neve",
-    "texto": "Um brilho quase inteligente e cruel habita o olhar desses lobos gigantes."
-   }
-  ]
- },
- {
   "id": "mon-worg",
   "nome": "Worg",
   "nomeIngles": "Worg",
@@ -36096,7 +36080,7 @@
   "categoria": "Corruptor",
   "tipo": "elite",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"
@@ -36280,8 +36264,8 @@
     "descricao": "atravessa rocha sólida como se fosse água"
    },
    {
-    "nome": "Mordida tríplice",
-    "descricao": "três ataques de mordida na mesma rodada"
+    "nome": "Garras e mordida",
+    "descricao": "Três golpes de garra e uma mordida na mesma rodada, com a boca única e enorme."
    },
    {
     "nome": "Devorar metal e gema",
@@ -36343,7 +36327,7 @@
   "categoria": "Corruptor",
   "tipo": "soldado",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
   "tags": [
    "exterior",
    "centelha"

@@ -517,7 +517,7 @@
     "en": "Archon, Hound",
     "hab": [
       {
-        "n": "Aura de menaça",
+        "n": "Aura de ameaça",
         "d": "inimigos em 6m que falharem em Vontade ficam Abalados"
       },
       {
@@ -819,10 +819,6 @@
       {
         "n": "Enxame Voraz",
         "d": "Centenas de morcegos atacam como uma única massa, mordendo tudo que se move dentro do seu espaço; armas comuns de corte ou perfuração quase não causam efeito contra o enxame."
-      },
-      {
-        "n": "Sangramento Contínuo",
-        "d": "Toda criatura ferida pelo enxame passa a sangrar, perdendo um pouco de vitalidade a cada rodada até que o ferimento seja tratado ou curado por magia."
       },
       {
         "n": "Ecolocalização",
@@ -1630,8 +1626,8 @@
         "d": "É imune a qualquer leitura ou intrusão mental e resiste melhor a encantos e dominações."
       },
       {
-        "n": "Ferrão sonífero",
-        "d": "Seu ferrão injeta um veneno que faz a vítima cair num sono profundo por horas se ela falhar em um teste de Vigor."
+        "n": "Ferrão peçonhento",
+        "d": "Seu ferrão injeta um veneno que corrói o corpo da vítima, causando dano contínuo de Vigor (Constituição) se ela falhar num teste de Vigor."
       },
       {
         "n": "Feitiçaria treinada",
@@ -1866,8 +1862,8 @@
         "d": "ataque extra na rodada; veneno causa dano contínuo"
       },
       {
-        "n": "Conceder desejos e feitiços supremos",
-        "d": "1x por história realiza um feitiço de qualquer nível"
+        "n": "Feitiços supremos",
+        "d": "1x por história lança um feitiço de qualquer nível."
       },
       {
         "n": "Regeneração",
@@ -2386,8 +2382,8 @@
     "en": "Dragon, Adult Green",
     "hab": [
       {
-        "n": "Sopro de gás",
-        "d": "cone de 12m; dano e Enfraquecido se falhar em teste de Vigor, metade do dano se Esquivar"
+        "n": "Sopro ácido",
+        "d": "Cone de 12m; dano de ácido, metade se Esquivar."
       },
       {
         "n": "Enredar",
@@ -2410,8 +2406,8 @@
         "d": "garra, garra e mordida no mesmo turno"
       },
       {
-        "n": "Imune a veneno",
-        "d": "e ao próprio gás que exala"
+        "n": "Imune a ácido",
+        "d": "E ao próprio sopro corrosivo que exala."
       },
       {
         "n": "Camuflagem na mata",
@@ -2908,10 +2904,6 @@
         "d": "lança magias de dano e controle, mais de uma vez por cena"
       },
       {
-        "n": "Rugido paralisante",
-        "d": "raio 9m; falha em Vontade: Abalado e perde a próxima ação"
-      },
-      {
         "n": "Ver o invisível",
         "d": "enxerga criaturas ocultas ou invisíveis sem teste"
       },
@@ -3112,8 +3104,8 @@
     "en": "Will-o'-Wisp",
     "hab": [
       {
-        "n": "Incorpórea",
-        "d": "imune a dano físico não mágico, sofre metade do dano de armas mágicas"
+        "n": "Difícil de acertar",
+        "d": "Globo de matéria translúcida do tamanho de um punho: some no ar e é quase impossível de atingir (Defesa altíssima). Feitiços de mira raramente o alcançam."
       },
       {
         "n": "Invisibilidade natural",
@@ -3124,7 +3116,7 @@
         "d": "corpo a corpo; dano alto ao alvo tocado"
       },
       {
-        "n": "Voo etéreo",
+        "n": "Voo flutuante",
         "d": "desloca 12m voando, passa por frestas e grades finas"
       },
       {
@@ -4770,10 +4762,6 @@
         "d": "A sensação de centenas de corpos mordendo ao mesmo tempo exige um teste de Compostura para manter o foco em qualquer ação delicada."
       },
       {
-        "n": "Veneno Debilitante",
-        "d": "As picadas somadas injetam uma toxina que continua corroendo a agilidade da vítima por vários rounds até ser tratada."
-      },
-      {
         "n": "Fraqueza ao Sal",
         "d": "Um punhado de sal lançado sobre o enxame queima dezenas de corpos de uma vez, como um banho de ácido."
       }
@@ -5944,8 +5932,8 @@
         "d": "Voa razoavelmente rápido, mas sem manobra alguma; prefere pousar no chão para lutar com presas que não consegue carregar pelos ares."
       },
       {
-        "n": "Mordida de bico",
-        "d": "Golpeia com o bico comprido e cheio de dentes finos, perfurando com facilidade."
+        "n": "Bicada",
+        "d": "Golpeia com o bico comprido e pontudo, sem dentes, perfurando pelo impacto."
       }
     ]
   },
@@ -6345,8 +6333,8 @@
     "en": "Sea Serpent",
     "hab": [
       {
-        "n": "Esquiva lendária",
-        "d": "Pode nadar em alta velocidade sem deixar rastro algum, tornando-se quase impossível de rastrear ou detectar por meios mágicos enquanto não quiser ser vista."
+        "n": "Elusiva no mar",
+        "d": "Nada em alta velocidade e sem deixar rastro, o que a torna muito difícil de rastrear ou cercar."
       },
       {
         "n": "Capotar embarcações",
@@ -6743,10 +6731,6 @@
       {
         "n": "Sangramento",
         "d": "Enquanto presa, drena sangue continuamente a cada rodada, causando dano contínuo que só cessa quando ela se solta saciada ou é removida."
-      },
-      {
-        "n": "Portadora de doença",
-        "d": "O contato com o sangue de tantas vítimas torna seu ataque um vetor de doenças; há chance de a mordida transmitir uma enfermidade à vítima."
       },
       {
         "n": "Sentidos aguçados",
@@ -7641,8 +7625,8 @@
         "d": "atravessa rocha sólida como se fosse água"
       },
       {
-        "n": "Mordida tríplice",
-        "d": "três ataques de mordida na mesma rodada"
+        "n": "Garras e mordida",
+        "d": "Três golpes de garra e uma mordida na mesma rodada, com a boca única e enorme."
       },
       {
         "n": "Devorar metal e gema",
