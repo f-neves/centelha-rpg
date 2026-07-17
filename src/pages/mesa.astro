@@ -52,17 +52,33 @@ import Base from '../layouts/Base.astro';
       <p class="muted" id="mesa-arq-dica" hidden>Marque a caixa "visível" para liberar o arquivo aos jogadores. Sem marcar, só você (mestre) vê.</p>
       <ul id="mesa-arqs" class="arqs"></ul>
     </section>
+
+    <section class="bloco escudo">
+      <div class="bloco-cab">
+        <h2>Escudo do Mestre <small>· criaturas da campanha</small></h2>
+      </div>
+      <div id="escudo-busca-wrap" class="escudo-busca-wrap" hidden>
+        <input type="search" id="escudo-busca" placeholder="Buscar criatura no bestiário para adicionar…" autocomplete="off" />
+        <ul id="escudo-result" class="escudo-result" hidden></ul>
+      </div>
+      <div id="escudo-lista" class="escudo-lista"></div>
+    </section>
   </div>
 </Base>
 
 <script>
   import { getSupabase } from '../lib/supabase';
   import { exigirLogin, supabaseConfigurado } from '../lib/auth';
+  import monstersData from '../data/monsters.json';
 
   const base = import.meta.env.BASE_URL;
   const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
   const esc = (s: string) => (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const norm = (s: string) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const id = new URLSearchParams(location.search).get('id');
+
+  const MON: Record<string, any> = Object.fromEntries((monstersData as any[]).map((m) => [m.id, m]));
+  const MON_LIST = (monstersData as any[]).map((m) => ({ id: m.id, nome: m.nome, nomeIngles: m.nomeIngles || '', ameaca: m.ameaca }));
 
   const mostraErro = (t: string) => {
     document.getElementById('carregando')!.hidden = true;
@@ -122,6 +138,72 @@ import Base from '../layouts/Base.astro';
       (document.getElementById('mesa-arq-file') as HTMLInputElement).addEventListener('change', (e) => subirArquivoMesa(sb, user.id, (e.target as HTMLInputElement).files?.[0]));
     }
     await listarArquivosMesa(sb, ehMestre);
+
+    if (ehMestre) {
+      document.getElementById('escudo-busca-wrap')!.hidden = false;
+      const busca = document.getElementById('escudo-busca') as HTMLInputElement;
+      const res = document.getElementById('escudo-result')!;
+      busca.addEventListener('input', () => {
+        const q = norm(busca.value.trim());
+        if (q.length < 2) { res.hidden = true; return; }
+        const hits = MON_LIST.filter((m) => norm(m.nome).includes(q) || norm(m.nomeIngles).includes(q)).slice(0, 8);
+        res.innerHTML = hits.length
+          ? hits.map((m) => `<li data-mon="${m.id}">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted">(${esc(m.nomeIngles)})</span>` : ''} <span class="muted">· A${m.ameaca}</span></li>`).join('')
+          : '<li class="muted vazio">nada encontrado</li>';
+        res.hidden = false;
+        res.querySelectorAll<HTMLElement>('li[data-mon]').forEach((li) => li.addEventListener('click', () => addCriatura(sb, li.dataset.mon!)));
+      });
+      document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('#escudo-busca-wrap')) res.hidden = true; });
+    }
+    await renderEscudo(sb, ehMestre);
+  }
+
+  async function addCriatura(sb: any, monId: string) {
+    const { error } = await sb.from('mesa_criaturas').insert({ mesa_id: id, monstro_id: monId });
+    if (error && !/duplicate|unique/i.test(error.message)) return alert('Erro: ' + error.message);
+    (document.getElementById('escudo-busca') as HTMLInputElement).value = '';
+    document.getElementById('escudo-result')!.hidden = true;
+    await renderEscudo(sb, true);
+  }
+
+  async function renderEscudo(sb: any, ehMestre: boolean) {
+    const { data, error } = await sb.from('mesa_criaturas').select('*').eq('mesa_id', id)
+      .order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    const box = document.getElementById('escudo-lista')!;
+    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    if (!data?.length) {
+      box.innerHTML = ehMestre
+        ? '<p class="muted">Nenhuma criatura separada ainda. Busque acima para montar seu bestiário da campanha.</p>'
+        : '<p class="muted">O mestre ainda não separou criaturas.</p>';
+      return;
+    }
+    box.innerHTML = data.map((c: any) => {
+      const m = MON[c.monstro_id];
+      if (!m) return `<div class="cr-card"><span class="muted">Criatura removida do bestiário (${esc(c.monstro_id)})</span>${ehMestre ? ` <button class="btn cr-rm" data-cr="${c.id}">✕</button>` : ''}</div>`;
+      const cb = m.combate || {};
+      const badges = `<span class="cr-b">A${m.ameaca}</span><span class="cr-b">Centelha ${m.centelha}</span><span class="cr-b">PV ${cb.pv ?? '-'}</span><span class="cr-b">Def ${cb.defesa ?? '-'}</span>${m.porte ? `<span class="cr-b">${esc(m.porte)}</span>` : ''}`;
+      const notas = ehMestre
+        ? `<textarea class="cr-notas" data-cr="${c.id}" rows="2" placeholder="Anotações do mestre (só você vê nesta lista)">${esc(c.notas || '')}</textarea>`
+        : (c.notas ? `<p class="cr-notas-ro">${esc(c.notas)}</p>` : '');
+      return `<div class="cr-card">
+        <div class="cr-top">
+          <span class="cr-nome cinzel">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted cr-en">(${esc(m.nomeIngles)})</span>` : ''}</span>
+          ${ehMestre ? `<button class="btn cr-rm" data-cr="${c.id}" title="Remover">✕</button>` : ''}
+        </div>
+        <div class="cr-badges">${badges}</div>
+        <a class="cr-link" href="${u('bestiario')}#${m.id}">ver no bestiário ›</a>
+        ${notas}
+      </div>`;
+    }).join('');
+
+    box.querySelectorAll<HTMLElement>('.cr-rm').forEach((b) => b.addEventListener('click', async () => {
+      if (!confirm('Remover esta criatura da campanha?')) return;
+      await sb.from('mesa_criaturas').delete().eq('id', b.dataset.cr);
+      await renderEscudo(sb, true);
+    }));
+    box.querySelectorAll<HTMLTextAreaElement>('.cr-notas').forEach((ta) => {
+      let t: any; ta.addEventListener('input', () => { clearTimeout(t); t = setTimeout(async () => { await sb.from('mesa_criaturas').update({ notas: ta.value }).eq('id', ta.dataset.cr); }, 700); });
+    });
   }
 
   async function subirArquivoMesa(sb: any, userId: string, file?: File) {
@@ -237,4 +319,22 @@ import Base from '../layouts/Base.astro';
   .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
   .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
   .erro { color: #b3261e; }
+
+  .escudo-busca-wrap { position: relative; max-width: 30rem; margin: .4rem 0 1rem; }
+  .escudo-busca-wrap input { width: 100%; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
+  .escudo-result { position: absolute; z-index: 20; left: 0; right: 0; margin: .2rem 0 0; padding: 0; list-style: none; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; max-height: 16rem; overflow: auto; box-shadow: 0 6px 20px rgba(0,0,0,.15); }
+  .escudo-result li { padding: .45rem .7rem; cursor: pointer; }
+  .escudo-result li:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .escudo-result li.vazio { cursor: default; }
+  .escudo-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .cr-card { border: 1px solid var(--rule); border-radius: 10px; padding: .8rem .9rem; background: var(--panel); display: flex; flex-direction: column; gap: .4rem; }
+  .cr-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
+  .cr-nome { font-size: 1.05rem; font-weight: 700; }
+  .cr-en { font-size: .82rem; font-weight: 400; font-style: italic; }
+  .cr-badges { display: flex; flex-wrap: wrap; gap: .3rem; }
+  .cr-b { font-family: 'Cinzel'; font-size: .68rem; letter-spacing: .03em; padding: .1rem .45rem; border-radius: 999px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); }
+  .cr-link { color: var(--accent); text-decoration: none; font-size: .85rem; }
+  .cr-notas { font: inherit; font-family: 'EB Garamond'; padding: .4rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
+  .cr-notas-ro { font-size: .9rem; color: var(--ink-soft); font-style: italic; margin: 0; }
+  .cr-rm { background: none; border: none; color: #b3261e; cursor: pointer; padding: 0 .2rem; }
 </style>
