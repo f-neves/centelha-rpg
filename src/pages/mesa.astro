@@ -33,6 +33,14 @@ import Base from '../layouts/Base.astro';
       <h2>Membros</h2>
       <ul id="membros" class="membros"></ul>
     </section>
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Personagens</h2>
+        <button class="btn primary" id="btn-novo-pers">Novo personagem</button>
+      </div>
+      <div id="personagens"></div>
+    </section>
   </div>
 </Base>
 
@@ -91,6 +99,36 @@ import Base from '../layouts/Base.astro';
     }
 
     await renderMembros(sb, mesa.mestre_id);
+
+    document.getElementById('btn-novo-pers')!.addEventListener('click', () => {
+      location.href = u('personagem') + '?novo=1&mesa=' + id;
+    });
+    await renderPersonagens(sb, ehMestre, user.id);
+  }
+
+  async function renderPersonagens(sb: any, ehMestre: boolean, userId: string) {
+    const { data, error } = await sb
+      .from('personagens')
+      .select('id, nome, conceito, dono_id, imagem_path, profiles:dono_id(nome)')
+      .eq('mesa_id', id)
+      .order('atualizado_em', { ascending: false });
+    const box = document.getElementById('personagens')!;
+    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    if (!data?.length) {
+      box.innerHTML = ehMestre
+        ? '<p class="muted">Nenhum personagem nesta mesa ainda. Os jogadores criam os seus, ou crie um você mesmo.</p>'
+        : '<p class="muted">Você ainda não tem personagem nesta mesa. Clique em "Novo personagem".</p>';
+      return;
+    }
+    box.innerHTML = '<div class="pers-grid">' + data.map((p: any) => {
+      const dono = p.profiles?.nome || '(jogador)';
+      const meu = p.dono_id === userId;
+      return `<a class="pers-card" href="${u('personagem')}?id=${p.id}">
+        <span class="pers-card-nome cinzel">${esc(p.nome || 'Personagem')}</span>
+        ${p.conceito ? `<span class="pers-card-conc">${esc(p.conceito)}</span>` : ''}
+        <span class="pers-card-dono muted">${meu ? 'Seu personagem' : 'Jogador: ' + esc(dono)}</span>
+      </a>`;
+    }).join('') + '</div>';
   }
 
   async function renderMembros(sb: any, mestreId: string) {
@@ -119,6 +157,13 @@ import Base from '../layouts/Base.astro';
   .convite-linha { display: flex; align-items: center; gap: .5rem; }
   .convite code { font-size: 1.25rem; letter-spacing: .12em; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: .2rem .6rem; }
   .bloco { margin-top: 1.4rem; }
+  .bloco-cab { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .pers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: .8rem; }
+  .pers-card { display: flex; flex-direction: column; gap: .25rem; padding: .9rem 1rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
+  .pers-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .pers-card-nome { font-size: 1.1rem; font-weight: 700; }
+  .pers-card-conc { color: var(--ink-soft); font-size: .9rem; font-style: italic; }
+  .pers-card-dono { font-size: .8rem; }
   .membros { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
   .membros li { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
   .papel { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; padding: .1rem .5rem; border-radius: 999px; font-weight: 700; }

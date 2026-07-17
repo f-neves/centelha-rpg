@@ -1,0 +1,172 @@
+---
+// Esqueleto (markup + estilos) da ficha interativa, compartilhado por /ficha e /personagem.
+// O comportamento vive em src/lib/ficha-engine.ts (montarFicha).
+import RoladorDados from './RoladorDados.astro';
+---
+<div class="xpbar" id="painel">
+  <span class="big">XP: <b id="xpSpent">0</b></span>
+  <label>Orçamento <input type="number" id="xpBudget" value="1400" /></label>
+  <span class="big">Restam: <b id="xpRem" class="rem ok">1400</b></span>
+  <span class="breakdown" id="xpBreak"></span>
+  <span class="modo-wrap"><span class="modo-lbl">Modo</span>
+    <span class="modo-toggle" role="group" aria-label="Modo da ficha">
+      <button class="btn" data-modo="criacao" title="Aplica os limites de criação (Atrib 4 · Hab 3 · Centelha 2)">Criação</button>
+      <button class="btn" data-modo="evolucao" title="Libera além dos limites de criação (em jogo)">Evolução</button>
+    </span>
+  </span>
+  <span class="xp-btns">
+    <button class="btn" id="f-export">Exportar</button>
+    <button class="btn" id="f-import">Importar</button>
+    <button class="btn" id="f-print">Imprimir</button>
+    <button class="btn" id="f-link">Link</button>
+    <button class="btn" id="f-reset">Resetar</button>
+    <input type="file" id="f-file" accept="application/json,.json" hidden />
+  </span>
+</div>
+
+<div class="idrow">
+  <label>Nome<input class="txt" data-id="nome" placeholder="Seu herói" /></label>
+  <label>Conceito<input class="txt" data-id="conceito" /></label>
+  <label>Jogador<input class="txt" data-id="jogador" /></label>
+</div>
+
+<h2 class="barh">Atributos <small>(piso 1 · nível×10)</small></h2>
+<div class="cols3" id="attrs"></div>
+
+<div class="cols2">
+  <div>
+    <h2 class="barh">Centelha, Virtudes, Vontade &amp; Fôlego</h2>
+    <div id="power"></div>
+  </div>
+  <div>
+    <h2 class="barh">Derivados <small>(calculados)</small><button class="deriv-toggle" id="deriv-toggle" type="button">Expandir</button></h2>
+    <div class="panel no-gloss" id="derived"></div>
+  </div>
+</div>
+
+<h2 class="barh">Habilidades <small>(piso 0 · nível×5 · ☐ especialidade ×10)</small></h2>
+<div class="cols3" id="skills"></div>
+
+<h2 class="barh">Habilidades Secundárias <small>(nível×2 · esp. ×5)</small></h2>
+<div class="cols3" id="secondary"></div>
+
+<h2 class="barh">Proezas &amp; Técnicas <small>(custo em XP)</small></h2>
+<div class="cam-tools"><button class="btn" id="cam-all">Expandir todos</button></div>
+<div class="cols3" id="tecnicas"></div>
+
+<h2 class="barh">Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0 e Ocultismo ≥ nível)</small></h2>
+<div class="cols3" id="artes"></div>
+
+<h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Absorção)</small></h2>
+<div class="equip-row">
+  <label>Arma <select id="eq-arma"></select></label>
+  <label>Escudo <select id="eq-escudo"></select></label>
+</div>
+<div class="equip-arm">
+  <span class="equip-lbl">Armaduras <small>(empilháveis — vale a maior Absorção de cada modo; penalidades somam)</small></span>
+  <div id="eq-armaduras" class="arm-checks"></div>
+</div>
+<div class="panel" id="combate"></div>
+
+<h2 class="barh">Rolar</h2>
+<RoladorDados compact />
+
+<!-- is:global porque o conteúdo (bolinhas, cards, pílulas) é criado via JS e
+     não recebe o atributo de escopo do Astro -->
+<style is:global>
+  .xpbar { display: flex; gap: 1rem 1.2rem; flex-wrap: wrap; align-items: center; background: var(--accent); color: var(--on-accent); padding: .6rem 1rem; border-radius: 7px; margin: 1rem 0; }
+  .xpbar .big { font-family: 'Cinzel'; font-size: .95rem; } .xpbar .big b { font-size: 1.3rem; }
+  .xpbar .rem.neg { color: #ffd0cb; } .xpbar label { font-family: 'Cinzel'; font-size: .8rem; display: flex; align-items: center; gap: .4rem; }
+  .xpbar input { width: 4.5rem; text-align: center; border: none; border-radius: 4px; padding: .25rem; font-family: 'Cinzel'; }
+  .xpbar input:disabled { opacity: .8; cursor: not-allowed; }
+  .xpbar .breakdown { font-size: .78rem; opacity: .9; flex: 1 1 12rem; }
+  .xpbar .xp-btns { display: flex; gap: .4rem; margin-left: auto; }
+  .xpbar .btn { background: var(--accent-strong); color: var(--on-accent); border-color: transparent; padding: .25rem .6rem; font-size: .78rem; }
+
+  .idrow { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 1rem; margin-bottom: .4rem; }
+  .idrow label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .04em; color: var(--ink-soft); text-transform: uppercase; }
+  .idrow .txt { font-family: 'EB Garamond'; font-size: 1rem; border: none; border-bottom: 1px solid var(--rule); background: transparent; padding: .2rem; color: var(--ink); }
+  .idrow .txt:focus { outline: none; border-bottom-color: var(--accent); }
+
+  h2.barh { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 700; font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; padding: .35rem .7rem; border: none; border-radius: 3px; margin: 1.5rem 0 .7rem; }
+  h2.barh small { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: .72rem; opacity: .85; }
+  .ficha-x h3, #attrs h3, #skills h3, #secondary h3, #power h3 { font-family: 'Cinzel'; font-size: .72rem; color: var(--accent-strong); letter-spacing: .04em; text-transform: uppercase; margin: .9rem 0 .35rem; border-bottom: 1px solid var(--rule); padding-bottom: .15rem; }
+
+  .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .3rem 1.6rem; }
+  .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: .3rem 1.6rem; align-items: start; }
+  @media (max-width: 760px) { .cols3, .cols2 { grid-template-columns: 1fr; } }
+
+  .trow { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .12rem 0; }
+  .trow .nm { font-size: 1rem; cursor: help; } .trow .nm:hover { text-decoration: underline dotted var(--accent-soft); }
+  .trow .nm small { color: var(--ink-soft); font-size: .8rem; }
+  .tr-r { display: flex; align-items: center; }
+  .dots { display: inline-flex; gap: 3px; align-items: center; }
+  .dot { width: 15px; height: 15px; border: 1.5px solid var(--accent); border-radius: 50%; cursor: pointer; background: transparent; transition: background .08s; flex: 0 0 auto; }
+  .dot.on { background: var(--accent); } .dot.free { border-color: var(--gold); } .dot.on.free { background: var(--gold); }
+  .dot:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent); }
+  .dots:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .cam-tools { margin: 0 0 .5rem; }
+  .dot.cap { opacity: .25; cursor: not-allowed; border-style: dotted; } .dot.cap:hover { box-shadow: none; }
+  .rollv { background: none; border: none; cursor: pointer; font-size: .85rem; opacity: .35; margin-left: .35rem; padding: 0; line-height: 1; }
+  .rollv:hover { opacity: 1; }
+  .modo-wrap { display: inline-flex; align-items: center; gap: .35rem; }
+  .modo-lbl { font-family: 'Cinzel'; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
+  .modo-toggle { display: inline-flex; gap: 0; border: 1px solid var(--on-accent); border-radius: 5px; overflow: hidden; }
+  .modo-toggle .btn { border: none; border-radius: 0; }
+  .modo-toggle .btn.primary { background: var(--on-accent); color: var(--accent); }
+  .spec { display: flex; gap: 2px; margin-left: .6rem; }
+  .sq { width: 12px; height: 12px; border: 1.2px solid var(--ink-soft); cursor: pointer; background: transparent; flex: 0 0 auto; border-radius: 2px; }
+  .sq.on { background: var(--gold); border-color: var(--gold); } .sq.dis { opacity: .28; cursor: not-allowed; }
+  .apmod { margin-left: .5rem; font-family: 'Cinzel'; font-weight: 700; font-size: .95rem; color: var(--accent); }
+
+  #derived { border: 1px solid var(--panel-border); background: var(--panel); border-left: 4px solid var(--accent); padding: .6rem .8rem; border-radius: 3px; }
+  .derv { display: flex; justify-content: space-between; align-items: baseline; padding: .2rem 0; border-bottom: 1px dotted var(--rule); }
+  .derv .dl { font-family: 'Cinzel'; font-size: .72rem; color: var(--accent-strong); text-transform: uppercase; }
+  .derv .dv { font-family: 'Cinzel'; font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+  .derv .fm { display: block; font-size: .68rem; color: var(--ink-soft); font-style: italic; font-family: 'EB Garamond'; font-weight: 400; text-transform: none; }
+  h2.barh .deriv-toggle { float: right; font-family: 'Cinzel'; font-size: .68rem; text-transform: none; letter-spacing: 0; padding: .12rem .55rem; background: var(--accent-strong); color: var(--on-accent); border: none; border-radius: 3px; cursor: pointer; }
+  h2.barh .deriv-toggle:hover { filter: brightness(1.1); }
+  #derived.collapsed .derv-extra { display: none; }
+  @media print { h2.barh .deriv-toggle { display: none !important; } #derived.collapsed .derv-extra { display: flex !important; } }
+
+  .cam { border: 1px solid var(--panel-border); border-radius: 4px; margin-bottom: .4rem; background: var(--panel); }
+  .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: .9rem; color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .cam-nm { min-width: 0; }
+  .cam-head[data-camtog] { cursor: pointer; } .cam-head[data-camtog]:hover { background: var(--panel-2); }
+  .chev { cursor: pointer; } .chev:hover { color: var(--accent); }
+  .cam-meta { margin-left: auto; font-family: 'EB Garamond'; font-size: .8rem; color: var(--ink-soft); font-style: italic; }
+  .cam-body { padding: .4rem .7rem .6rem; border-top: 1px dotted var(--rule); }
+  .tpill { display: inline-block; margin: .2rem .3rem 0 0; padding: .2rem .6rem; border: 1px solid var(--panel-border); border-radius: 12px; font-size: .85rem; cursor: pointer; background: var(--bg); }
+  .tpill small { color: var(--ink-soft); font-size: .72rem; }
+  .tpill.on { background: var(--accent); color: var(--on-accent); border-color: transparent; } .tpill.on small { color: var(--on-accent); opacity: .85; }
+  .tpill:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .tpill.locked { opacity: .5; cursor: not-allowed; border-style: dashed; }
+  .tpill.invalid { border-color: #b3401f; box-shadow: 0 0 0 1px #b3401f inset; }
+  .fxline { font-size: .85rem; padding: .08rem 0; color: var(--ink-soft); }
+  .fxline.hi { color: var(--ink); } .fxline.hi b { color: var(--accent-strong); }
+  .techrow { margin-bottom: .5rem; }
+  .techrow .tpill { margin: 0; }
+  .tdesc { font-size: .8rem; line-height: 1.35; color: var(--ink-soft); margin: .2rem 0 0 .15rem; }
+  .tdesc strong { color: var(--accent-strong); font-weight: 600; }
+
+  .equip-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: .2rem 0 .8rem; }
+  .equip-row label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .74rem; color: var(--ink-soft); gap: .2rem; }
+  .equip-row select { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: .95rem; min-width: 10rem; }
+  .equip-arm { margin: 0 0 .8rem; }
+  .equip-lbl { display: block; font-family: 'Cinzel'; font-size: .74rem; color: var(--ink-soft); margin-bottom: .35rem; }
+  .equip-lbl small { font-weight: normal; }
+  .arm-checks { display: flex; flex-wrap: wrap; gap: .3rem .9rem; }
+  .arm-chk { display: inline-flex; align-items: center; gap: .3rem; font-family: 'EB Garamond'; font-size: .95rem; color: var(--ink); }
+  #combate .cmb { padding: .15rem 0; font-size: .95rem; } #combate .cmb b { color: var(--accent-strong); }
+
+  /* impressão: só a ficha, sem o chrome do site */
+  @media print {
+    .sidebar, .topbar, .scrim, #consulta, #otp-fab, #otp-panel, .busca-modal, .ref-pop, .xp-btns, .modo-toggle, .rollv, .rolador, .skip { display: none !important; }
+    .shell { display: block !important; } .content { padding: 0 !important; }
+    .cam-body { display: block !important; }
+    .xpbar { background: none !important; color: var(--ink) !important; border-bottom: 2px solid var(--accent); border-radius: 0; }
+    .xpbar .big b, .xpbar .rem { color: var(--accent) !important; }
+    h2.barh { background: none !important; color: var(--accent) !important; border-bottom: 1.5px solid var(--accent); border-radius: 0; }
+    a[href]::after { content: ''; }
+  }
+</style>
