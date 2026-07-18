@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Minha Conta" descricao="Gerencie sua conta: trocar senha e excluir.">
+  <h1>Minha Conta</h1>
+
+  <div id="setup" class="aviso" hidden>
+    <strong>Área de contas ainda não configurada.</strong>
+    <p class="muted">Falta ligar o Supabase. Veja <code>supabase/README.md</code>.</p>
+  </div>
+
+  <div id="carregando" class="muted">Carregando…</div>
+
+  <div id="pg" hidden>
+    <p class="muted">Conectada como <strong id="conta-email"></strong>.</p>
+
+    <section class="painel">
+      <h2>Trocar senha</h2>
+      <form id="form-senha">
+        <label>Nova senha (mín. 6)<input type="password" name="senha" minlength="6" autocomplete="new-password" required /></label>
+        <label>Repetir a nova senha<input type="password" name="senha2" minlength="6" autocomplete="new-password" required /></label>
+        <button class="btn primary" type="submit">Salvar nova senha</button>
+        <span id="msg-senha" class="msg" role="status" aria-live="polite"></span>
+      </form>
+    </section>
+
+    <section class="painel perigo-painel">
+      <h2>Excluir minha conta</h2>
+      <p class="muted">Apaga sua conta e tudo ligado a ela (personagens, participação em mesas). Se você for mestre de alguma mesa, ela também é removida. Não dá para desfazer.</p>
+      <button class="btn perigo" id="btn-excluir">Excluir minha conta</button>
+      <span id="msg-excluir" class="msg"></span>
+    </section>
+  </div>
+</Base>
+
+<script>
+  import { getSupabase } from '../lib/supabase';
+  import { exigirLogin, usuarioAtual, sair, supabaseConfigurado } from '../lib/auth';
+  const base = import.meta.env.BASE_URL;
+
+  async function main() {
+    if (!supabaseConfigurado) { document.getElementById('carregando')!.hidden = true; document.getElementById('setup')!.hidden = false; return; }
+    const user = await exigirLogin(base);
+    if (!user) return;
+    document.getElementById('carregando')!.hidden = true;
+    document.getElementById('pg')!.hidden = false;
+    document.getElementById('conta-email')!.textContent = user.email || '';
+
+    const msgSenha = document.getElementById('msg-senha')!;
+    document.getElementById('form-senha')!.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = e.target as HTMLFormElement;
+      const s1 = (f.senha as any).value, s2 = (f.senha2 as any).value;
+      if (s1 !== s2) { msgSenha.textContent = 'As senhas não conferem.'; msgSenha.className = 'msg erro'; return; }
+      msgSenha.textContent = 'Salvando…'; msgSenha.className = 'msg';
+      const { error } = await getSupabase().auth.updateUser({ password: s1 });
+      if (error) { msgSenha.textContent = 'Erro: ' + error.message; msgSenha.className = 'msg erro'; return; }
+      f.reset(); msgSenha.textContent = 'Senha alterada.'; msgSenha.className = 'msg ok';
+    });
+
+    document.getElementById('btn-excluir')!.addEventListener('click', async () => {
+      if (!confirm('Tem certeza que quer excluir sua conta? Não dá para desfazer.')) return;
+      if (!confirm('Confirme mais uma vez: excluir definitivamente sua conta e seus dados?')) return;
+      const { error } = await getSupabase().rpc('excluir_minha_conta');
+      if (error) { const m = document.getElementById('msg-excluir')!; m.textContent = 'Erro: ' + error.message; m.className = 'msg erro'; return; }
+      await sair();
+      location.href = base;
+    });
+  }
+  main();
+</script>
+
+<style>
+  .painel { border: 1px solid var(--rule); border-radius: 8px; padding: 1rem 1.2rem; background: var(--panel); max-width: 34rem; margin-top: 1.2rem; }
+  .painel h2 { margin-top: 0; }
+  form label { display: block; margin-bottom: .7rem; font-weight: 600; }
+  form input { display: block; width: 100%; margin-top: .25rem; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
+  .msg { display: inline-block; margin-left: .6rem; }
+  .msg.erro { color: #b3261e; } .msg.ok { color: var(--accent); }
+  .perigo-painel { border-color: #b3261e; }
+  .btn.perigo { border-color: #b3261e; color: #b3261e; }
+  .btn.perigo:hover { background: #b3261e; color: #fff; }
+  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
+</style>

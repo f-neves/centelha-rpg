@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Administração" largura="wide" descricao="Painel do administrador: contas.">
+  <h1>Administração</h1>
+
+  <div id="setup" class="aviso" hidden>
+    <strong>Área de contas ainda não configurada.</strong>
+    <p class="muted">Falta ligar o Supabase. Veja <code>supabase/README.md</code>.</p>
+  </div>
+
+  <div id="carregando" class="muted">Carregando…</div>
+  <div id="negado" class="aviso" hidden><strong>Acesso restrito.</strong><p class="muted">Esta área é só para administradores.</p></div>
+
+  <div id="pg" hidden>
+    <p class="muted">Todas as contas do sistema. Cuidado: excluir uma conta apaga os dados dela.</p>
+    <div class="tabela-wrap"><table id="contas-tab" class="contas-tab"></table></div>
+  </div>
+</Base>
+
+<script>
+  import { getSupabase } from '../lib/supabase';
+  import { exigirLogin, supabaseConfigurado } from '../lib/auth';
+  const base = import.meta.env.BASE_URL;
+  const esc = (s: string) => (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+
+  async function main() {
+    if (!supabaseConfigurado) { document.getElementById('carregando')!.hidden = true; document.getElementById('setup')!.hidden = false; return; }
+    const user = await exigirLogin(base);
+    if (!user) return;
+    const sb = getSupabase();
+    const { data: admin } = await sb.rpc('eh_admin');
+    document.getElementById('carregando')!.hidden = true;
+    if (!admin) { document.getElementById('negado')!.hidden = false; return; }
+    document.getElementById('pg')!.hidden = false;
+    await render(sb, user.id);
+  }
+
+  async function render(sb: any, meuId: string) {
+    const { data, error } = await sb.rpc('admin_listar_contas');
+    const tab = document.getElementById('contas-tab')!;
+    if (error) { tab.innerHTML = `<tr><td class="erro">${esc(error.message)}</td></tr>`; return; }
+    const fmt = (d: string) => { try { return new Date(d).toLocaleDateString('pt-BR'); } catch { return ''; } };
+    tab.innerHTML = `<thead><tr><th>Nome</th><th>E-mail</th><th>Criada</th><th>Admin</th><th>Ações</th></tr></thead><tbody>` +
+      (data || []).map((c: any) => `<tr data-uid="${c.id}" data-email="${esc(c.email)}">
+        <td>${esc(c.nome || '')}</td>
+        <td>${esc(c.email || '')}${c.id === meuId ? ' <span class="muted">(você)</span>' : ''}</td>
+        <td class="muted">${fmt(c.criado_em)}</td>
+        <td>${c.is_admin ? '★' : ''}</td>
+        <td class="acoes">
+          <button class="btn mini" data-act="senha">Definir senha</button>
+          <button class="btn mini perigo" data-act="excluir">Excluir</button>
+        </td>
+      </tr>`).join('') + '</tbody>';
+
+    tab.querySelectorAll<HTMLElement>('[data-act="senha"]').forEach((b) => b.addEventListener('click', async () => {
+      const tr = b.closest('tr')!; const senha = prompt(`Nova senha para ${tr.dataset.email}:`, '');
+      if (!senha) return;
+      const { error } = await sb.rpc('admin_definir_senha', { p_uid: tr.dataset.uid, p_senha: senha });
+      alert(error ? 'Erro: ' + error.message : 'Senha definida.');
+    }));
+    tab.querySelectorAll<HTMLElement>('[data-act="excluir"]').forEach((b) => b.addEventListener('click', async () => {
+      const tr = b.closest('tr')!;
+      if (!confirm(`Excluir a conta ${tr.dataset.email} e todos os dados dela?`)) return;
+      const { error } = await sb.rpc('admin_excluir_conta', { p_uid: tr.dataset.uid });
+      if (error) return alert('Erro: ' + error.message);
+      await render(sb, meuId);
+    }));
+  }
+  main();
+</script>
+
+<style is:global>
+  .tabela-wrap { overflow-x: auto; margin-top: 1rem; }
+  .contas-tab { border-collapse: collapse; width: 100%; min-width: 40rem; }
+  .contas-tab th, .contas-tab td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--rule); }
+  .contas-tab th { font-family: 'Cinzel'; font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
+  .contas-tab .acoes { display: flex; gap: .4rem; }
+  .btn.mini { padding: .15rem .5rem; font-size: .78rem; }
+  .btn.perigo { border-color: #b3261e; color: #b3261e; }
+  .btn.perigo:hover { background: #b3261e; color: #fff; }
+  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
+  .erro { color: #b3261e; }
+</style>

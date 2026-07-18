@@ -98,6 +98,12 @@ if (partes.length) crumbs.push({ label: title });
         <a href={url('mesas')} aria-current={isActive('mesas') ? 'page' : undefined}>
           <span class="num">◆</span><span>Minhas Mesas</span>
         </a>
+        <a href={url('conta')} id="conta-link" hidden aria-current={isActive('conta') ? 'page' : undefined}>
+          <span class="num">◆</span><span>Minha Conta</span>
+        </a>
+        <a href={url('admin')} id="admin-link" hidden aria-current={isActive('admin') ? 'page' : undefined}>
+          <span class="num">◆</span><span>Admin</span>
+        </a>
         <a href={url('entrar')} id="auth-link" aria-current={isActive('entrar') ? 'page' : undefined}>
           <span class="num">◆</span><span class="auth-label">Entrar</span>
         </a>
@@ -202,6 +208,14 @@ if (partes.length) crumbs.push({ label: title });
           await sair();
           location.href = import.meta.env.BASE_URL;
         });
+        const contaLink = document.getElementById('conta-link');
+        if (contaLink) contaLink.hidden = false;
+        try {
+          const { getSupabase } = await import('../lib/supabase');
+          const { data: admin } = await getSupabase().rpc('eh_admin');
+          const adminLink = document.getElementById('admin-link');
+          if (admin && adminLink) adminLink.hidden = false;
+        } catch {}
       } catch {}
     })();
   </script>
