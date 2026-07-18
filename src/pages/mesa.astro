@@ -113,6 +113,8 @@ import Base from '../layouts/Base.astro';
   const MON: Record<string, any> = Object.fromEntries((monstersData as any[]).map((m) => [m.id, m]));
   const MON_LIST = (monstersData as any[]).map((m) => ({ id: m.id, nome: m.nome, nomeIngles: m.nomeIngles || '', ameaca: m.ameaca }));
   let ESCUDO_CACHE: any[] = [];
+  const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
+  const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
 
   const mostraErro = (t: string) => {
     document.getElementById('carregando')!.hidden = true;
@@ -385,7 +387,7 @@ import Base from '../layouts/Base.astro';
     const arte = m.imagem
       ? `<figure class="arte"><img src="${u(m.imagem)}" alt="${esc(m.nome)}" /><span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${stars(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">✦ ${m.centelha}</span>` : ''}</figure>`
       : `<figure class="arte sem-arte"><span class="capitular cinzel">${esc((m.nome || '?').trim()[0])}</span><span class="arte-ameaca">${stars(m.ameaca)}</span></figure>`;
-    const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(c)}</span>`).join('')}`;
+    const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
     const porte = m.porte ? `<p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">${esc(m.porte)}</span><span class="pt-sep">·</span>${esc(m.dimensoes?.medida || '')}<span class="pt-sep">·</span>${esc(m.dimensoes?.peso || '')}</p>` : '';
     const abs = cb.absorcao ? `${cb.absorcao.impacto}/${cb.absorcao.corte}/${cb.absorcao.perfuracao}${cb.resistenciaPerfuracao ? `·N${cb.resistenciaPerfuracao}` : ''}` : '-';
     const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
