@@ -134,6 +134,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 nav.toc { margin-top: 1.2rem; }
 nav.toc .grp { font-variant: small-caps; letter-spacing: .08em; color: var(--ink-soft); font-size: .82rem; margin: 1.1rem 0 .3rem; font-family:'Cinzel'; }
 nav.toc a { display: flex; gap: .5rem; align-items: baseline; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: 4px; font-size: 1rem; }
+nav.toc a[hidden] { display: none; } /* respeita o atributo hidden (ex.: links Minha Conta/Admin revelados por JS) */
 nav.toc a:hover { background: var(--panel); }
 nav.toc a[aria-current='page'] { background: var(--accent); color: var(--on-accent); }
 nav.toc a[aria-current='page'] .num { color: var(--on-accent); }
