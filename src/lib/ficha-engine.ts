@@ -216,12 +216,17 @@ export function montarFicha(opts: FichaOpts) {
     const cs = (regras.dano as any)?.centelhaNoSoak ?? 0;
     const vig = A('vigor');
     const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), especialidade: SP('esquiva'), centelha: C }) - penFisica;
+    // Bloqueio: usa a MAIOR perícia de aparar (Armas 1M/2M, Briga, Escudos); o modificador da arma/escudo entra na aba de Combate.
+    const blkSkills = ['armas-uma-mao', 'armas-duas-maos', 'briga', 'escudos'];
+    const blkBest = blkSkills.reduce((b, s) => (SK(s) > SK(b) ? s : b), blkSkills[0]);
+    const defBlq = defesa({ destreza: A('destreza'), habilidade: SK(blkBest), especialidade: SP(blkBest), centelha: C }) - penFisica;
     const soakStr = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0)).join(' / ');
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
       r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + esp + Centelha − penalidade') +
-      r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} × 2) + Vontade + Centelha×2`) +
-      r('Defesa Social', defesaSocial({ compostura: A('compostura'), temperanca: VI('temperanca'), centelha: C }), '(Compostura + Temperança + Centelha) × 2') +
+      r('Defesa (Bloqueio)', defBlq, '(Des + maior de Armas/Briga/Escudos)×2 + esp + Centelha − penalidade') +
+      r('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C, especialidade: SP('sociabilidade') }), '(Compostura + Sociabilidade + Centelha)×2 + esp') +
+      r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C, especialidade: SP('integridade') }), `(Integridade ${integ} + Centelha)×2 + Vontade + esp`) +
       r('Absorção Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor + Centelha no Impacto; só Centelha em Corte/Perf; + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade', true) +
