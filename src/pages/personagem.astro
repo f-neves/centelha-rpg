@@ -117,7 +117,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       const { data: mesa } = await sb.from('mesas').select('nome, mestre_id').eq('id', pers.mesa_id).maybeSingle();
       if (mesa) {
         document.getElementById('pers-mesa')!.textContent = 'Mesa: ' + mesa.nome;
-        ehMestre = !ehDono && mesa.mestre_id === user.id;
+        ehMestre = mesa.mestre_id === user.id;
       }
     } else {
       document.getElementById('pers-mesa')!.textContent = 'Sem mesa (personagem avulso)';
@@ -178,10 +178,21 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         aoResetar: () => {},
       });
     } else if (ehMestre) {
-      // Visão do mestre: ficha em leitura + editor de XP
+      // Visão do mestre sobre a ficha de outro jogador: leitura
       document.getElementById('somente-leitura')!.hidden = false;
       document.getElementById('ficha-wrap')!.hidden = false;
-      const cx = document.getElementById('mestre-xp')!; cx.hidden = false;
+      montarFicha({
+        carregar: () => (pers.ficha && Object.keys(pers.ficha).length ? pers.ficha : null),
+        salvar: () => {},
+        readOnly: true, budgetLocked: true, budgetValor,
+      });
+    } else {
+      document.getElementById('somente-leitura')!.hidden = false;
+    }
+
+    // editor de XP: aparece sempre que o espectador é o mestre da mesa (inclusive no próprio personagem)
+    if (ehMestre) {
+      document.getElementById('mestre-xp')!.hidden = false;
       const xpInput = document.getElementById('xp-input') as HTMLInputElement;
       xpInput.value = String(budgetValor ?? 0);
       document.getElementById('xp-salvar')!.addEventListener('click', async () => {
@@ -192,15 +203,9 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         );
         const st = document.getElementById('xp-salvo')!;
         if (error) { st.textContent = 'Erro: ' + error.message; st.style.color = '#b3261e'; return; }
-        st.textContent = 'XP salvo'; st.style.color = ''; setTimeout(() => (st.textContent = ''), 1500);
+        st.textContent = 'XP salvo (recarregando…)'; st.style.color = '';
+        setTimeout(() => location.reload(), 700);
       });
-      montarFicha({
-        carregar: () => (pers.ficha && Object.keys(pers.ficha).length ? pers.ficha : null),
-        salvar: () => {},
-        readOnly: true, budgetLocked: true, budgetValor,
-      });
-    } else {
-      document.getElementById('somente-leitura')!.hidden = false;
     }
   }
 

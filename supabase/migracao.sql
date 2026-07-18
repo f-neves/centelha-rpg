@@ -56,7 +56,7 @@ create table if not exists public.personagens (
 create table if not exists public.personagem_xp (
   personagem_id uuid primary key references public.personagens(id) on delete cascade,
   xp            integer not null default 0,
-  definido_por  uuid references auth.users(id),
+  definido_por  uuid references auth.users(id) on delete set null,
   atualizado_em timestamptz not null default now()
 );
 

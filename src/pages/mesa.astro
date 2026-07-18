@@ -251,11 +251,12 @@ import Base from '../layouts/Base.astro';
   async function renderPersonagens(sb: any, ehMestre: boolean, userId: string) {
     const { data, error } = await sb
       .from('personagens')
-      .select('id, nome, conceito, dono_id, imagem_path, profiles:dono_id(nome)')
+      .select('id, nome, conceito, dono_id, imagem_path')
       .eq('mesa_id', id)
       .order('atualizado_em', { ascending: false });
     const box = document.getElementById('personagens')!;
     if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    const nomes = await nomesDe(sb, (data || []).map((p: any) => p.dono_id));
     if (!data?.length) {
       box.innerHTML = ehMestre
         ? '<p class="muted">Nenhum personagem nesta mesa ainda. Os jogadores criam os seus, ou crie um você mesmo.</p>'
@@ -263,7 +264,7 @@ import Base from '../layouts/Base.astro';
       return;
     }
     box.innerHTML = '<div class="pers-grid">' + data.map((p: any) => {
-      const dono = p.profiles?.nome || '(jogador)';
+      const dono = nomes[p.dono_id] || '(jogador)';
       const meu = p.dono_id === userId;
       return `<a class="pers-card" href="${u('personagem')}?id=${p.id}">
         <span class="pers-card-nome cinzel">${esc(p.nome || 'Personagem')}</span>
@@ -273,16 +274,24 @@ import Base from '../layouts/Base.astro';
     }).join('') + '</div>';
   }
 
+  async function nomesDe(sb: any, ids: string[]): Promise<Record<string, string>> {
+    const uniq = [...new Set(ids.filter(Boolean))];
+    if (!uniq.length) return {};
+    const { data } = await sb.from('profiles').select('id, nome').in('id', uniq);
+    return Object.fromEntries((data || []).map((p: any) => [p.id, p.nome]));
+  }
+
   async function renderMembros(sb: any, mestreId: string) {
     const { data, error } = await sb
       .from('mesa_membros')
-      .select('papel, user_id, profiles(nome)')
+      .select('papel, user_id')
       .eq('mesa_id', id)
       .order('entrou_em', { ascending: true });
     const ul = document.getElementById('membros')!;
     if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
+    const nomes = await nomesDe(sb, (data || []).map((m: any) => m.user_id));
     ul.innerHTML = (data || []).map((m: any) => {
-      const nome = m.profiles?.nome || '(sem nome)';
+      const nome = nomes[m.user_id] || '(sem nome)';
       const mestre = m.papel === 'mestre' || m.user_id === mestreId;
       return `<li><span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span> ${esc(nome)}</li>`;
     }).join('');
