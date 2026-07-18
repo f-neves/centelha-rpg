@@ -88,6 +88,14 @@ import Base from '../layouts/Base.astro';
       <div id="combate-area"></div>
     </section>
   </div>
+
+  <div id="card-modal" class="card-modal" hidden role="dialog" aria-modal="true">
+    <div class="card-modal-back" data-fechar></div>
+    <div class="card-modal-box">
+      <button class="card-modal-x" data-fechar aria-label="Fechar">✕</button>
+      <div id="card-modal-body"></div>
+    </div>
+  </div>
 </Base>
 
 <script>
@@ -337,6 +345,8 @@ import Base from '../layouts/Base.astro';
       if (!m) return `<div class="cr-card"><span class="muted">Criatura removida do bestiário (${esc(c.monstro_id)})</span>${ehMestre ? ` <button class="btn cr-rm" data-cr="${c.id}">✕</button>` : ''}</div>`;
       const cb = m.combate || {};
       const badges = `<span class="cr-b">A${m.ameaca}</span><span class="cr-b">Centelha ${m.centelha}</span><span class="cr-b">PV ${cb.pv ?? '-'}</span><span class="cr-b">Def ${cb.defesa ?? '-'}</span>${m.porte ? `<span class="cr-b">${esc(m.porte)}</span>` : ''}`;
+      const atk0 = (cb.ataques || [])[0];
+      const atkLinha = atk0 ? `<div class="cr-atk"><span class="cr-atk-nm">${esc(atk0.nome)}</span> ataque <b>${esc(atk0.pool)}</b> · dano <b>${esc(atk0.dano)}</b>${atk0.speed != null ? ` · Speed ${atk0.speed}` : ''}</div>` : '';
       const notas = ehMestre
         ? `<textarea class="cr-notas" data-cr="${c.id}" rows="2" placeholder="Anotações do mestre (só você vê nesta lista)">${esc(c.notas || '')}</textarea>`
         : (c.notas ? `<p class="cr-notas-ro">${esc(c.notas)}</p>` : '');
@@ -346,7 +356,8 @@ import Base from '../layouts/Base.astro';
           ${ehMestre ? `<button class="btn cr-rm" data-cr="${c.id}" title="Remover">✕</button>` : ''}
         </div>
         <div class="cr-badges">${badges}</div>
-        <a class="cr-link" href="${u('bestiario')}#${m.id}">ver no bestiário ›</a>
+        ${atkLinha}
+        <button class="cr-link cr-abrir" type="button" data-mon="${m.id}">ver card completo ›</button>
         ${notas}
       </div>`;
     }).join('');
@@ -359,7 +370,47 @@ import Base from '../layouts/Base.astro';
     box.querySelectorAll<HTMLTextAreaElement>('.cr-notas').forEach((ta) => {
       let t: any; ta.addEventListener('input', () => { clearTimeout(t); t = setTimeout(async () => { await sb.from('mesa_criaturas').update({ notas: ta.value }).eq('id', ta.dataset.cr); }, 700); });
     });
+    box.querySelectorAll<HTMLElement>('.cr-abrir').forEach((b) => b.addEventListener('click', () => abrirCard(b.dataset.mon!)));
   }
+
+  // ---- Card completo da criatura (igual ao do bestiário), em modal ----
+  const ATR: [string, string][] = [['forca', 'Força'], ['destreza', 'Destreza'], ['vigor', 'Vigor'], ['influencia', 'Influência'], ['perspicacia', 'Perspicácia'], ['compostura', 'Compostura'], ['percepcao', 'Percepção'], ['inteligencia', 'Inteligência'], ['raciocinio', 'Raciocínio']];
+  const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
+  const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : (AP_CURVA[n] ?? 0));
+  const stars = (a: number) => '★'.repeat(a) + '☆'.repeat(Math.max(0, 6 - a));
+
+  function cardHTML(m: any): string {
+    const cb = m.combate || {};
+    const en = m.nomeIngles && m.nomeIngles.toLowerCase() !== m.nome.toLowerCase() ? ` <span class="besta-nome-en">(${esc(m.nomeIngles)})</span>` : '';
+    const arte = m.imagem
+      ? `<figure class="arte"><img src="${u(m.imagem)}" alt="${esc(m.nome)}" /><span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${stars(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">✦ ${m.centelha}</span>` : ''}</figure>`
+      : `<figure class="arte sem-arte"><span class="capitular cinzel">${esc((m.nome || '?').trim()[0])}</span><span class="arte-ameaca">${stars(m.ameaca)}</span></figure>`;
+    const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(c)}</span>`).join('')}`;
+    const porte = m.porte ? `<p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">${esc(m.porte)}</span><span class="pt-sep">·</span>${esc(m.dimensoes?.medida || '')}<span class="pt-sep">·</span>${esc(m.dimensoes?.peso || '')}</p>` : '';
+    const abs = cb.absorcao ? `${cb.absorcao.impacto}/${cb.absorcao.corte}/${cb.absorcao.perfuracao}${cb.resistenciaPerfuracao ? `·N${cb.resistenciaPerfuracao}` : ''}` : '-';
+    const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
+    const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>`;
+    const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
+    const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Val ${m.virtudes.valor}</span></div></div>` : '';
+    const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${esc(a.dano)}</b> · Speed ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
+    const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
+    const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
+    const notas = m.notas ? `<h4 class="cc-h">Notas</h4><p class="ib-notas">${esc(m.notas)}</p>` : '';
+    return `<article class="besta cc-besta">${arte}<div class="besta-corpo">
+      <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
+      ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
+      ${porte}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
+      ${stats}${atrib}${tracos}${atk}${habs}${pods}${notas}
+    </div></article>`;
+  }
+
+  function abrirCard(monId: string) {
+    const m = MON[monId]; if (!m) return;
+    const dlg = document.getElementById('card-modal')!;
+    document.getElementById('card-modal-body')!.innerHTML = cardHTML(m);
+    dlg.hidden = false; document.body.style.overflow = 'hidden';
+  }
+  function fecharCard() { document.getElementById('card-modal')!.hidden = true; document.body.style.overflow = ''; }
 
   async function subirArquivoMesa(sb: any, userId: string, file?: File) {
     if (!file) return;
@@ -550,6 +601,8 @@ import Base from '../layouts/Base.astro';
   }
 
   main();
+  document.querySelectorAll('#card-modal [data-fechar]').forEach((el) => el.addEventListener('click', fecharCard));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !document.getElementById('card-modal')!.hidden) fecharCard(); });
 </script>
 
 <!-- is:global: cabeçalho e listas são preenchidos via JS -->
@@ -639,4 +692,66 @@ import Base from '../layouts/Base.astro';
   .cmb-hp { display: inline-flex; align-items: center; gap: .3rem; font-size: .9rem; }
   .cmb-act { display: inline-flex; align-items: center; gap: .3rem; }
   .cmb-act .spd { width: 3.2rem; padding: .2rem; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--ink); }
+
+  .cr-atk { font-size: .85rem; color: var(--ink-soft); }
+  .cr-atk .cr-atk-nm { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink); }
+  .cr-atk b { color: var(--accent-strong); }
+  .cr-link.cr-abrir { background: none; border: none; padding: 0; text-align: left; }
+
+  /* Modal do card completo (mesmo visual do bestiário) */
+  .card-modal { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center; padding: 1.2rem; }
+  .card-modal[hidden] { display: none; }
+  .card-modal-back { position: absolute; inset: 0; background: color-mix(in srgb, #1a120a 78%, transparent); backdrop-filter: blur(3px); }
+  .card-modal-box { position: relative; z-index: 1; max-width: 32rem; width: 100%; max-height: 88vh; overflow: auto; border-radius: 10px; }
+  .card-modal-x { position: absolute; top: .5rem; right: .5rem; z-index: 3; width: 2rem; height: 2rem; border-radius: 50%; border: none; background: color-mix(in srgb, var(--ink) 14%, transparent); color: var(--ink); font-size: 1rem; cursor: pointer; }
+
+  .card-modal .besta { display: flex; flex-direction: column; border: 1px solid var(--panel-border); border-radius: 9px; background: var(--panel); overflow: hidden; }
+  .card-modal .arte { position: relative; margin: 0; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%); border-bottom: 1px solid var(--panel-border); overflow: hidden; }
+  .card-modal .arte img { width: 100%; height: 100%; object-fit: contain; padding: .5rem .6rem .2rem; mix-blend-mode: multiply; }
+  .card-modal .capitular { font-size: 4.6rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f); }
+  .card-modal .arte-ameaca { position: absolute; left: .55rem; bottom: .45rem; color: var(--gold); letter-spacing: .08em; font-size: 1.23rem; text-shadow: 0 1px 2px rgba(0,0,0,.55); }
+  .card-modal .arte-cent { position: absolute; left: .5rem; top: .5rem; font-family: 'Cinzel'; font-size: 1.05rem; font-weight: 600; padding: .18rem .68rem; border-radius: 999px; color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000); }
+  .card-modal .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
+  .card-modal .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
+  .card-modal .besta-nome { font-size: 1.12rem; color: var(--accent); line-height: 1.15; }
+  .card-modal .besta-nome-en { font-size: .82rem; font-weight: 400; color: var(--muted); font-style: italic; }
+  .card-modal .besta-badges { display: flex; flex-wrap: wrap; gap: .3rem; margin: .3rem 0 .1rem; }
+  .card-modal .badge { font-size: .68rem; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--panel-border); background: var(--panel-2, color-mix(in srgb, var(--ink) 6%, transparent)); color: var(--ink); }
+  .card-modal .badge.cat { background: var(--accent-strong); color: var(--on-accent); border-color: transparent; }
+  .card-modal .badge.terr { background: color-mix(in srgb, #4b7a3f 20%, transparent); }
+  .card-modal .badge.clima { background: color-mix(in srgb, #8a5bbf 24%, transparent); }
+  .card-modal .besta-porte { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; margin: .35rem 0 .5rem; font-size: .84rem; color: var(--ink-soft); }
+  .card-modal .pt-lbl { font-family: 'Cinzel'; font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
+  .card-modal .pt-cat { font-family: 'Cinzel'; font-size: .74rem; color: var(--ink); }
+  .card-modal .pt-sep { color: color-mix(in srgb, var(--ink) 35%, transparent); }
+  .card-modal .besta-con { font-style: italic; margin: .3rem 0 .4rem; font-size: .9rem; }
+  .card-modal .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr)); gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
+  .card-modal .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
+  .card-modal .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; }
+  .card-modal .besta-stats dd { margin: 0; font-size: 1rem; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .card-modal .besta-atrib { margin: 0 0 .55rem; }
+  .card-modal .atr-lbl { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
+  .card-modal .atr-grid { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: .2rem .4rem; margin-top: .3rem; }
+  .card-modal .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .card-modal .atr-nm { font-family: 'Cinzel'; font-size: .66rem; color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card-modal .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; color: var(--accent-strong); }
+  .card-modal .besta-tracos { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .28rem; }
+  .card-modal .tr-linha { display: flex; gap: .4rem; }
+  .card-modal .tr { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .card-modal .tr-nm { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
+  .card-modal .tr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; color: var(--accent-strong); }
+  .card-modal .tr-mod { font-weight: 600; font-size: .72rem; color: var(--ink-soft); }
+  .card-modal .tr-virt { display: flex; align-items: baseline; gap: .45rem; padding: .1rem .4rem; }
+  .card-modal .tr-vv { font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--ink-soft); }
+  .card-modal .besta-atk { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: .9rem; display: flex; flex-direction: column; gap: .3rem; }
+  .card-modal .besta-atk li { display: flex; flex-direction: column; gap: .05rem; padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+  .card-modal .atk-nome { font-family: 'Cinzel'; font-size: .82rem; color: var(--ink); }
+  .card-modal .atk-rolls b { color: var(--accent-strong); }
+  .card-modal .atk-nota { font-size: .82rem; font-style: italic; }
+  .card-modal .cc-h { font-family: 'Cinzel'; font-size: .8rem; color: var(--accent-strong); text-transform: uppercase; letter-spacing: .04em; margin: .6rem 0 .3rem; }
+  .card-modal .ib-hab, .card-modal .ib-pod { list-style: none; padding: 0; margin: 0 0 .4rem; display: flex; flex-direction: column; gap: .35rem; font-size: .9rem; }
+  .card-modal .ib-hab li b { color: var(--accent-strong); }
+  .card-modal .ib-pod li { padding-left: .6rem; border-left: 2px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+  .card-modal .pw-alvo { color: var(--ink-soft); }
+  .card-modal .ib-notas { font-size: .9rem; font-style: italic; color: var(--ink-soft); }
 </style>
