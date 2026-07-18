@@ -222,28 +222,15 @@ export function montarFicha(opts: FichaOpts) {
     const blkBest = blkSkills.reduce((b, s) => (SK(s) > SK(b) ? s : b), blkSkills[0]);
     const defBlq = defesa({ destreza: A('destreza'), habilidade: SK(blkBest), centelha: C }) - penFisica;
     const soakStr = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0)).join(' / ');
-    // Defesas com especialidades SITUACIONAIS (lista própria por defesa, com rótulo): mostra o valor BASE + chips "+N situação".
-    const fmtDS = (e: any) => `${e.v >= 0 ? '+' : ''}${e.v} ${e.s}`;
-    const rDef = (l: string, base: number, fm: string, key: string) => {
-      const list = (S.defSpec?.[key] || []) as any[];
-      if (opts.readOnly) {
-        const inl = list.length ? ` <span class="muted">(${list.map(fmtDS).join(' · ')})</span>` : '';
-        return r(l, `${base}${inl}`, fm);
-      }
-      const chip = 'font-size:.72rem;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:10px;padding:.05rem .45rem;cursor:pointer;font-family:inherit';
-      const chips = list.map((e, i) => `<button class="dspec-chip" data-defspec-del="${key}:${i}" title="remover" style="${chip}">${fmtDS(e)} ✕</button>`).join('');
-      const add = `<button class="dspec-chip" data-defspec-add="${key}" style="${chip};color:var(--gold);border-style:dashed">+ situação</button>`;
-      return `<div class="derv"><span class="dl">${l}<span class="fm">${fm}</span></span><span class="dv">${base}</span></div>` +
-        `<div class="dspec-edit" style="display:flex;flex-wrap:wrap;gap:.3rem;margin:-.2rem 0 .5rem;padding-left:.2rem">${chips}${add}</div>`;
-    };
+    // Especialidades situacionais de defesa (S.defSpec) ficam DORMENTES por ora: sem editor na ficha.
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
-      rDef('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + Centelha − penalidade', 'esquiva') +
-      rDef('Defesa (Bloqueio)', defBlq, '(Des + maior de Armas/Briga/Escudos)×2 + Centelha − penalidade', 'bloqueio') +
-      rDef('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }), '(Compostura + Sociabilidade + Centelha)×2', 'social') +
-      rDef('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} + Centelha)×2 + Vontade`, 'mental') +
+      r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + Centelha − penalidade') +
+      r('Defesa (Bloqueio)', defBlq, '(Des + maior de Armas/Briga/Escudos)×2 + Centelha − penalidade') +
+      r('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }), '(Compostura + Sociabilidade + Centelha)×2') +
+      r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} + Centelha)×2 + Vontade`) +
       r('Absorção Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor + Centelha no Impacto; só Centelha em Corte/Perf; + armadura') +
-      r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
+      r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade', true) +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade', true) +
       r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick', true) +
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão', true) +
