@@ -47,8 +47,13 @@ if (partes.length) crumbs.push({ label: title });
   <meta property="og:image" content={ogImage} />
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary" />
-  <script is:inline define:vars={{ sw: url('sw.js') }}>
-    if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register(sw).catch(() => {}));
+  <script is:inline>
+    // PWA desativado por ora: remove qualquer service worker antigo preso (que servia
+    // JS desatualizado) e limpa os caches. Sem re-registrar (evita loop de recarga).
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister())).catch(() => {});
+      if (window.caches) caches.keys().then((ks) => ks.forEach((k) => caches.delete(k))).catch(() => {});
+    }
   </script>
   <script is:inline>
     (function () {
