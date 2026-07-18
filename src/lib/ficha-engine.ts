@@ -205,7 +205,7 @@ export function montarFicha(opts: FichaOpts) {
     };
     el('artes').innerHTML = col3(ARTE_D as any[], card);
   }
-  const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, SP = (id: string) => S.spec[id] || 0, VI = (id: string) => S.virtues[id] || 0;
+  const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   function renderDerived() {
     const virt = { compaixao: VI('compaixao'), conviccao: VI('conviccao'), temperanca: VI('temperanca'), valor: VI('valor') };
     const C = S.centelha, W = S.willpower, integ = SK('integridade');
@@ -281,12 +281,14 @@ export function montarFicha(opts: FichaOpts) {
     const modos = ((w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[]).slice().sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
     const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
     const temSec = modos.some((m) => !m.principal);
-    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, especialidade: S.spec[w.pericia] || S.spec2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqCaC || 0) - armorPen;
+    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqCaC || 0) - armorPen;
+    const blkDS = ((S.defSpec?.bloqueio || []) as any[]).map((e: any) => `${e.v >= 0 ? '+' : ''}${e.v} ${e.s}`);
     el('combate').innerHTML =
       `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${pool}</b> · dano base <b>${danoBase}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
       `<div class="cmb"><b>Modos</b> — ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −2 dano)</span>' : ''}</div>` +
       `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego (${(w.folego ?? 0) * 2} → ${(w.folego ?? 0) * 4}…) e +1 Speed.</div>` +
       (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(${w.pericia === 'escudos' ? 'Escudos' : w.nome} + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqCaC ? ` + escudo ${esc.bloqCaC}` : ''}${armorPen ? ` − armadura ${armorPen}` : ''})</span></div>`) +
+      (!dist && blkDS.length ? `<div class="cmb muted">Especialidades situacionais de bloqueio: ${blkDS.join(' · ')}.</div>` : '') +
       (esc.bloqProjetil ? `<div class="cmb muted">Escudo vs projétil: +${esc.bloqProjetil} à Defesa contra ataques à distância${esc.penalidade ? ` · −${esc.penalidade} nas outras ações físicas (não no próprio bloqueio)` : ''}.</div>` : '') +
       (w.notas ? `<div class="cmb muted">${w.notas}</div>` : '') +
       (pecas.length ? `<div class="cmb muted">Armadura: ${pecas.map((p: any) => p.nome).join(' + ')}.</div>` : '');
