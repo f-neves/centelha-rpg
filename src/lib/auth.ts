@@ -37,10 +37,10 @@ export async function cadastrar(email: string, senha: string, nome: string): Pro
   return error ? { erro: traduzErro(error.message) } : {};
 }
 
-/** Envia e-mail de redefinição de senha. */
-export async function recuperarSenha(email: string): Promise<{ erro?: string }> {
+/** Envia e-mail de redefinição de senha (com link para a página de redefinir). */
+export async function recuperarSenha(email: string, redirectTo?: string): Promise<{ erro?: string }> {
   if (!supabaseConfigurado) return { erro: 'Supabase não configurado.' };
-  const { error } = await getSupabase().auth.resetPasswordForEmail(email.trim());
+  const { error } = await getSupabase().auth.resetPasswordForEmail(email.trim(), redirectTo ? { redirectTo } : undefined);
   return error ? { erro: traduzErro(error.message) } : {};
 }
 

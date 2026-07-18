@@ -15,13 +15,10 @@ import Base from '../layouts/Base.astro';
     <p class="muted">Conectada como <strong id="conta-email"></strong>.</p>
 
     <section class="painel">
-      <h2>Trocar senha</h2>
-      <form id="form-senha">
-        <label>Nova senha (mín. 6)<input type="password" name="senha" minlength="6" autocomplete="new-password" required /></label>
-        <label>Repetir a nova senha<input type="password" name="senha2" minlength="6" autocomplete="new-password" required /></label>
-        <button class="btn primary" type="submit">Salvar nova senha</button>
-        <span id="msg-senha" class="msg" role="status" aria-live="polite"></span>
-      </form>
+      <h2>Senha</h2>
+      <p class="muted">Por segurança, a troca de senha é feita por um <strong>link de verificação</strong> enviado ao seu e-mail. Clique abaixo e siga o link que chegar em <span id="conta-email2"></span>.</p>
+      <button class="btn primary" id="btn-reset">Enviar link para redefinir senha</button>
+      <span id="msg-senha" class="msg" role="status" aria-live="polite"></span>
     </section>
 
     <section class="painel perigo-painel">
@@ -35,7 +32,7 @@ import Base from '../layouts/Base.astro';
 
 <script>
   import { getSupabase } from '../lib/supabase';
-  import { exigirLogin, usuarioAtual, sair, supabaseConfigurado } from '../lib/auth';
+  import { exigirLogin, recuperarSenha, sair, supabaseConfigurado } from '../lib/auth';
   const base = import.meta.env.BASE_URL;
 
   async function main() {
@@ -45,17 +42,15 @@ import Base from '../layouts/Base.astro';
     document.getElementById('carregando')!.hidden = true;
     document.getElementById('pg')!.hidden = false;
     document.getElementById('conta-email')!.textContent = user.email || '';
+    document.getElementById('conta-email2')!.textContent = user.email || '';
 
     const msgSenha = document.getElementById('msg-senha')!;
-    document.getElementById('form-senha')!.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const f = e.target as HTMLFormElement;
-      const s1 = (f.senha as any).value, s2 = (f.senha2 as any).value;
-      if (s1 !== s2) { msgSenha.textContent = 'As senhas não conferem.'; msgSenha.className = 'msg erro'; return; }
-      msgSenha.textContent = 'Salvando…'; msgSenha.className = 'msg';
-      const { error } = await getSupabase().auth.updateUser({ password: s1 });
-      if (error) { msgSenha.textContent = 'Erro: ' + error.message; msgSenha.className = 'msg erro'; return; }
-      f.reset(); msgSenha.textContent = 'Senha alterada.'; msgSenha.className = 'msg ok';
+    const redirectTo = `${location.origin}${base}redefinir-senha`;
+    document.getElementById('btn-reset')!.addEventListener('click', async () => {
+      msgSenha.textContent = 'Enviando…'; msgSenha.className = 'msg';
+      const { erro } = await recuperarSenha(user.email || '', redirectTo);
+      if (erro) { msgSenha.textContent = 'Erro: ' + erro; msgSenha.className = 'msg erro'; return; }
+      msgSenha.textContent = 'Link enviado. Abra seu e-mail e clique no link para definir a nova senha.'; msgSenha.className = 'msg ok';
     });
 
     document.getElementById('btn-excluir')!.addEventListener('click', async () => {

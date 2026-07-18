@@ -108,7 +108,7 @@ import Base from '../layouts/Base.astro';
   document.getElementById('btn-esqueci')!.addEventListener('click', async () => {
     const email = (document.querySelector('#form-entrar input[name=email]') as HTMLInputElement).value;
     if (!email) return setMsg('Escreva seu e-mail no campo acima primeiro.');
-    const { erro } = await recuperarSenha(email);
+    const { erro } = await recuperarSenha(email, `${location.origin}${base}redefinir-senha`);
     setMsg(erro || 'Se houver conta com esse e-mail, enviamos um link de redefinição.', !!erro);
   });
 </script>
