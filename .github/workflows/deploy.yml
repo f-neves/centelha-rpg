@@ -24,9 +24,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # As chaves do Supabase (publicas por design) precisam estar num .env para a Astro
+      # embuti-las no cliente. Defina-as em Settings > Secrets and variables > Actions > Variables.
+      - name: Gerar .env do Supabase
+        run: |
+          echo "PUBLIC_SUPABASE_URL=${{ vars.PUBLIC_SUPABASE_URL }}" >> .env
+          echo "PUBLIC_SUPABASE_ANON_KEY=${{ vars.PUBLIC_SUPABASE_ANON_KEY }}" >> .env
       # build = astro build && pagefind --site dist (gera o índice de busca dentro de dist/)
-      # As chaves do Supabase (publicas por design) sao embutidas no cliente pela Astro.
-      # Defina-as em Settings > Secrets and variables > Actions > Variables.
       - run: npm run build
         env:
           PUBLIC_SUPABASE_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
