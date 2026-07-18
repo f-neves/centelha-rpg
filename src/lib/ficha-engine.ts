@@ -104,7 +104,7 @@ export function montarFicha(opts: FichaOpts) {
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, tech: {}, arte: {}, budget: 1400, modo: 'criacao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, tech: {}, arte: {}, budget: 1400, modo: 'criacao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' }, defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -112,6 +112,7 @@ export function montarFicha(opts: FichaOpts) {
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
+    S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
     S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1400; S.modo ??= 'criacao'; S.derivCol ??= true;
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.escudo ??= 'nenhum';
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
@@ -215,18 +216,32 @@ export function montarFicha(opts: FichaOpts) {
     const penFisica = (armSt.penalidade || 0) + (escD.penalidade || 0);
     const cs = (regras.dano as any)?.centelhaNoSoak ?? 0;
     const vig = A('vigor');
-    const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), especialidade: SP('esquiva'), centelha: C }) - penFisica;
+    const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), centelha: C }) - penFisica;
     // Bloqueio: usa a MAIOR perícia de aparar (Armas 1M/2M, Briga, Escudos); o modificador da arma/escudo entra na aba de Combate.
     const blkSkills = ['armas-uma-mao', 'armas-duas-maos', 'briga', 'escudos'];
     const blkBest = blkSkills.reduce((b, s) => (SK(s) > SK(b) ? s : b), blkSkills[0]);
-    const defBlq = defesa({ destreza: A('destreza'), habilidade: SK(blkBest), especialidade: SP(blkBest), centelha: C }) - penFisica;
+    const defBlq = defesa({ destreza: A('destreza'), habilidade: SK(blkBest), centelha: C }) - penFisica;
     const soakStr = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0)).join(' / ');
+    // Defesas com especialidades SITUACIONAIS (lista própria por defesa, com rótulo): mostra o valor BASE + chips "+N situação".
+    const fmtDS = (e: any) => `${e.v >= 0 ? '+' : ''}${e.v} ${e.s}`;
+    const rDef = (l: string, base: number, fm: string, key: string) => {
+      const list = (S.defSpec?.[key] || []) as any[];
+      if (opts.readOnly) {
+        const inl = list.length ? ` <span class="muted">(${list.map(fmtDS).join(' · ')})</span>` : '';
+        return r(l, `${base}${inl}`, fm);
+      }
+      const chip = 'font-size:.72rem;border:1px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:10px;padding:.05rem .45rem;cursor:pointer;font-family:inherit';
+      const chips = list.map((e, i) => `<button class="dspec-chip" data-defspec-del="${key}:${i}" title="remover" style="${chip}">${fmtDS(e)} ✕</button>`).join('');
+      const add = `<button class="dspec-chip" data-defspec-add="${key}" style="${chip};color:var(--gold);border-style:dashed">+ situação</button>`;
+      return `<div class="derv"><span class="dl">${l}<span class="fm">${fm}</span></span><span class="dv">${base}</span></div>` +
+        `<div class="dspec-edit" style="display:flex;flex-wrap:wrap;gap:.3rem;margin:-.2rem 0 .5rem;padding-left:.2rem">${chips}${add}</div>`;
+    };
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
-      r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + esp + Centelha − penalidade') +
-      r('Defesa (Bloqueio)', defBlq, '(Des + maior de Armas/Briga/Escudos)×2 + esp + Centelha − penalidade') +
-      r('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C, especialidade: SP('sociabilidade') }), '(Compostura + Sociabilidade + Centelha)×2 + esp') +
-      r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C, especialidade: SP('integridade') }), `(Integridade ${integ} + Centelha)×2 + Vontade + esp`) +
+      rDef('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + Centelha − penalidade', 'esquiva') +
+      rDef('Defesa (Bloqueio)', defBlq, '(Des + maior de Armas/Briga/Escudos)×2 + Centelha − penalidade', 'bloqueio') +
+      rDef('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }), '(Compostura + Sociabilidade + Centelha)×2', 'social') +
+      rDef('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} + Centelha)×2 + Vontade`, 'mental') +
       r('Absorção Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor + Centelha no Impacto; só Centelha em Corte/Perf; + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade') +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade', true) +
@@ -293,6 +308,7 @@ export function montarFicha(opts: FichaOpts) {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
     (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 1, S.attrs[a.id] || 1)));
     (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || 0) * 10; });
+    ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += (e.v || 0) * 10)));
     (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
     xw = custoPontos('vontade', 1, S.willpower || 1);
     xap = custoPontos('aparencia', 1, S.aparencia || 1);
@@ -366,6 +382,20 @@ export function montarFicha(opts: FichaOpts) {
       document.querySelector('.rolador')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     const sq = t.closest<HTMLElement>('.spec .sq');
     if (sq && !opts.readOnly && !sq.classList.contains('dis')) { setSpec((sq.parentElement as HTMLElement).dataset.spec!, +sq.dataset.d!); return; }
+    const dsAdd = t.closest<HTMLElement>('[data-defspec-add]');
+    if (dsAdd && !opts.readOnly) {
+      const key = dsAdd.dataset.defspecAdd!;
+      const s = (window.prompt('Situação da especialidade (ex.: contra um grupo, vs sedução, na floresta):') || '').trim();
+      if (!s) return;
+      const v = Math.max(0, Math.min(5, parseInt(window.prompt('Bônus quando essa situação vale (1 a 5):', '2') || '0', 10) || 0));
+      if (!v) return;
+      (S.defSpec[key] ||= []).push({ s, v }); recompute(); return;
+    }
+    const dsDel = t.closest<HTMLElement>('[data-defspec-del]');
+    if (dsDel && !opts.readOnly) {
+      const [key, idx] = dsDel.dataset.defspecDel!.split(':');
+      (S.defSpec[key] || []).splice(+idx, 1); recompute(); return;
+    }
     const pill = t.closest<HTMLElement>('.tpill');
     if (pill) { if (opts.readOnly || pill.classList.contains('locked')) return; const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
     const ct = t.closest<HTMLElement>('[data-camtog]');
