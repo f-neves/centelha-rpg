@@ -32,6 +32,9 @@ export default defineConfig({
     sitemap(),
     AstroPWA({
       registerType: 'autoUpdate',
+      // Service worker "self-destroying": remove qualquer SW antigo preso e limpa os caches
+      // nos aparelhos ao abrir o site (resolve versoes velhas travadas). Sem PWA/offline por ora.
+      selfDestroying: true,
       manifest: {
         name: 'Centelha',
         short_name: 'Centelha D6',
