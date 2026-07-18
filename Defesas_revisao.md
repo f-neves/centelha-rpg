@@ -138,13 +138,28 @@ para se blindar. As regras:
 
 ---
 
-## 7. Especialidade
+## 7. Especialidade (sempre situacional)
 
-As três Defesas aceitam **Especialidade**, e ela **sempre entra no cálculo**. Antes só
-a Física tinha; agora Social e Mental também. A Especialidade representa um foco
-treinado (por exemplo, firmeza contra sedução, ou resistência a controle mental). A
-regra de quando cada Especialidade se aplica ainda será detalhada, mas o campo já
-soma nas três fórmulas.
+Toda Especialidade é **situacional**: é um foco estreito, com um **rótulo de situação**
+e um bônus, que só soma **quando o ataque cai naquela situação**. Fora dela, a defesa é
+só a fórmula base. É por isso que se chama especialidade: vale para um caso específico.
+
+Exemplos por defesa:
+- **Esquiva**: "contra um grupo", "na floresta", "vs armas de duas mãos".
+- **Bloqueio**: "aparando arma de duas mãos", "de escudo contra projétil".
+- **Social**: "vs sedução/charme", "quando tentam te ler", "inflexível no pregão".
+- **Mental**: "vs controle", "vs medo mágico", "vs ilusão", "vs leitura da mente".
+
+Regras do "quando":
+1. Foco estreito e declarado (uma situação), nunca "toda a defesa".
+2. Só soma quando o ataque casa com a situação declarada.
+3. No máximo uma por golpe (a mais específica), sem empilhar.
+
+Na ficha (implementado): cada defesa tem sua **própria lista** de especialidades
+situacionais, separada do número de especialidade das perícias (que segue valendo para
+as **rolagens** de perícia). O painel mostra o valor **base** e as situações como chips
+"+N situação"; o jogador soma a que couber na hora. Cada situação custa **valor × 10**
+de XP. As defesas não somam mais o número de especialidade da perícia-âncora no base.
 
 ---
 
