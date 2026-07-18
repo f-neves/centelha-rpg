@@ -11,7 +11,7 @@ import Base from '../layouts/Base.astro';
 
   <div id="carregando" class="muted">Carregando…</div>
 
-  <div id="conteudo" hidden>
+  <div id="mesas-conteudo" hidden>
     <div id="lista"></div>
 
     <div class="acoes-mesa">
@@ -53,7 +53,7 @@ import Base from '../layouts/Base.astro';
     const user = await exigirLogin(base);
     if (!user) return; // já redirecionou
     document.getElementById('carregando')!.hidden = true;
-    document.getElementById('conteudo')!.hidden = false;
+    document.getElementById('mesas-conteudo')!.hidden = false;
     await render();
 
     document.getElementById('form-criar')!.addEventListener('submit', async (e) => {
