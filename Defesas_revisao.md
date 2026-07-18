@@ -292,3 +292,18 @@ dado.
 - Plano técnico (seção 10) e a decisão da seção 11.
 - Ficam para depois: tabela de estados/entorpecentes (seção 9) e a regra fina de
   quando cada Especialidade se aplica (seção 7).
+
+---
+
+## 13. Roadmap de páginas (frente futura)
+
+As três Defesas já existem na mecânica e na ficha, mas ainda **não têm páginas de
+regra** que as expliquem para o leitor. Próximos passos combinados:
+
+- **Página de Combate Social**: descreve a **Defesa Social** por extenso (o que é o
+  combate social, como se ataca e se resiste, ler x mover, gastar Vontade, etc.).
+- **Defesa Mental**: achar o lugar certo para descrevê-la (uma seção de combate
+  mental, ou dentro de outra página), já que hoje ela existe só como número.
+- **Remodelar as páginas** (e, mais adiante, a **ficha**) para comportar mais
+  informação: as três defesas lado a lado, o combate social e o mental, e o que mais
+  essas frentes trouxerem. É uma reforma de layout, a planejar quando começarmos.
