@@ -34,10 +34,13 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       </div>
     </header>
 
-    <div id="somente-leitura" class="aviso" hidden>
-      <strong>Visão do mestre.</strong>
-      <p class="muted">Você vê a ficha e os arquivos deste personagem, mas quem edita a ficha é o jogador dono. Você define o XP acima.</p>
+    <div id="status-bar" class="status-bar" hidden>
+      <span id="status-selo" class="selo"></span>
+      <span id="status-txt" class="muted"></span>
+      <span id="status-acoes" class="status-acoes"></span>
     </div>
+    <div id="revisao-box" class="aviso revisao" hidden></div>
+    <div id="xp-alerta" class="aviso xp-alerta" hidden></div>
 
     <div id="ficha-wrap" hidden>
       <FichaSkeleton />
@@ -123,9 +126,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       document.getElementById('pers-mesa')!.textContent = 'Sem mesa (personagem avulso)';
     }
 
-    // retrato
+    const status = pers.status || 'rascunho';
+    const canEdit = (ehDono && status === 'rascunho') || ehMestre;
+
+    // retrato (o dono envia a imagem; o storage exige que seja o dono)
     if (pers.imagem_path) await mostrarRetrato(sb, pers.imagem_path);
-    if (ehDono) {
+    if (ehDono && status === 'rascunho') {
       document.getElementById('retrato-lbl')!.hidden = false;
       (document.getElementById('retrato-file') as HTMLInputElement).addEventListener('change', (e) => subirRetrato(sb, id!, (e.target as HTMLInputElement).files?.[0]));
     }
@@ -140,11 +146,11 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       document.getElementById('xp-nota')!.textContent = xpRow ? `XP definido pelo mestre: ${budgetValor}` : 'Aguardando o mestre definir seu XP.';
     }
 
-    // textos
+    // textos (editáveis por quem pode editar a ficha)
     (['descricao', 'historia', 'background', 'anotacoes'] as const).forEach((campo) => {
       const ta = document.querySelector<HTMLTextAreaElement>(`textarea[data-campo="${campo}"]`)!;
       ta.value = pers[campo] || '';
-      if (!ehDono) { ta.readOnly = true; return; }
+      if (!canEdit) { ta.readOnly = true; return; }
       const salvarTexto = debounce(async (valor: string) => {
         await sb.from('personagens').update({ [campo]: valor }).eq('id', id);
         const st = document.getElementById('txt-status')!; st.textContent = 'Salvo'; setTimeout(() => (st.textContent = ''), 1200);
@@ -152,45 +158,33 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       ta.addEventListener('input', () => salvarTexto(ta.value));
     });
 
-    // arquivos
+    // arquivos (o dono gerencia os próprios anexos; o mestre também vê/baixa)
     if (ehDono) {
       document.getElementById('arq-lbl')!.hidden = false;
       (document.getElementById('arq-file') as HTMLInputElement).addEventListener('change', (e) => subirArquivo(sb, id!, pers.mesa_id, user.id, (e.target as HTMLInputElement).files?.[0]));
     }
     await listarArquivos(sb, id, ehDono);
 
-    // ficha
-    if (ehDono) {
-      document.getElementById('ficha-wrap')!.hidden = false;
-      const salvarFicha = debounce(async (S: any) => {
-        await sb.from('personagens').update({
-          ficha: S,
-          nome: (S.id?.nome || pers.nome || 'Personagem'),
-          conceito: (S.id?.conceito || ''),
-          atualizado_em: new Date().toISOString(),
-        }).eq('id', id);
-        document.getElementById('pers-nome')!.textContent = S.id?.nome || pers.nome || 'Personagem';
-      }, 900);
-      montarFicha({
-        carregar: () => (pers.ficha && Object.keys(pers.ficha).length ? pers.ficha : null),
-        salvar: (S) => salvarFicha(S),
-        budgetLocked, budgetValor,
-        aoResetar: () => {},
-      });
-    } else if (ehMestre) {
-      // Visão do mestre sobre a ficha de outro jogador: leitura
-      document.getElementById('somente-leitura')!.hidden = false;
-      document.getElementById('ficha-wrap')!.hidden = false;
-      montarFicha({
-        carregar: () => (pers.ficha && Object.keys(pers.ficha).length ? pers.ficha : null),
-        salvar: () => {},
-        readOnly: true, budgetLocked: true, budgetValor,
-      });
-    } else {
-      document.getElementById('somente-leitura')!.hidden = false;
-    }
+    // ficha: editável para o dono em rascunho e para o mestre; senão leitura
+    document.getElementById('ficha-wrap')!.hidden = false;
+    const salvarFicha = debounce(async (S: any) => {
+      await sb.from('personagens').update({
+        ficha: S,
+        nome: (S.id?.nome || pers.nome || 'Personagem'),
+        conceito: (S.id?.conceito || ''),
+        atualizado_em: new Date().toISOString(),
+      }).eq('id', id);
+      document.getElementById('pers-nome')!.textContent = S.id?.nome || pers.nome || 'Personagem';
+    }, 900);
+    montarFicha({
+      carregar: () => (pers.ficha && Object.keys(pers.ficha).length ? pers.ficha : null),
+      salvar: canEdit ? (S) => salvarFicha(S) : () => {},
+      readOnly: !canEdit,
+      budgetLocked, budgetValor,
+      aoResetar: () => {},
+    });
 
-    // editor de XP: aparece sempre que o espectador é o mestre da mesa (inclusive no próprio personagem)
+    // editor de XP (mestre)
     if (ehMestre) {
       document.getElementById('mestre-xp')!.hidden = false;
       const xpInput = document.getElementById('xp-input') as HTMLInputElement;
@@ -206,6 +200,70 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         st.textContent = 'XP salvo (recarregando…)'; st.style.color = '';
         setTimeout(() => location.reload(), 700);
       });
+    }
+
+    // barra de status + aprovação + excluir
+    montarStatus(sb, id, pers, ehDono, ehMestre, status);
+
+    // aviso de XP estourado (após a ficha calcular o restante)
+    setTimeout(() => {
+      const rem = parseInt(document.getElementById('xpRem')?.textContent || '0', 10);
+      const box = document.getElementById('xp-alerta')!;
+      if (rem < 0) { box.hidden = false; box.innerHTML = `<strong>XP estourado:</strong> passou ${-rem} do orçamento (restam ${rem}). ${ehMestre ? 'Você pode aprovar mesmo assim, ajustar o XP ou devolver.' : 'Ajuste antes de enviar, ou fale com o mestre.'}`; }
+    }, 700);
+  }
+
+  const SELO: Record<string, [string, string]> = {
+    rascunho: ['Rascunho', 's-rascunho'],
+    enviado: ['Enviada para aprovação', 's-enviado'],
+    aprovado: ['Aprovada', 's-aprovado'],
+  };
+  function montarStatus(sb: any, id: string, pers: any, ehDono: boolean, ehMestre: boolean, status: string) {
+    const bar = document.getElementById('status-bar')!; bar.hidden = false;
+    const selo = document.getElementById('status-selo')!;
+    const [rot, cls] = SELO[status] || SELO.rascunho;
+    selo.textContent = rot; selo.className = 'selo ' + cls;
+    const txt = document.getElementById('status-txt')!;
+    const acoes = document.getElementById('status-acoes')!;
+    const btn = (rotulo: string, cls2 = '') => { const b = document.createElement('button'); b.className = 'btn ' + cls2; b.textContent = rotulo; acoes.appendChild(b); return b; };
+    const rpc = async (fn: string, args: any = {}) => { const { error } = await sb.rpc(fn, { p_id: id, ...args }); if (error) return alert('Erro: ' + error.message); location.reload(); };
+
+    // recado de devolução (para o dono)
+    if (ehDono && status === 'rascunho' && (pers.revisao_nota || '').trim()) {
+      const rb = document.getElementById('revisao-box')!; rb.hidden = false;
+      rb.innerHTML = `<strong>O mestre pediu ajustes:</strong> ${esc(pers.revisao_nota)}`;
+    }
+
+    if (ehMestre) txt.textContent = 'Visão do mestre: você pode editar, aprovar, devolver ou reabrir esta ficha.';
+    else if (ehDono) {
+      txt.textContent = status === 'rascunho' ? 'Você está editando. Envie para o mestre aprovar.'
+        : status === 'enviado' ? 'Enviada. Aguardando o mestre aprovar (somente leitura).'
+        : 'Aprovada e travada pelo mestre (somente leitura).';
+    }
+
+    // ações do jogador (quando não é também o mestre)
+    if (ehDono && !ehMestre) {
+      if (status === 'rascunho') btn('Enviar para aprovação', 'primary').onclick = () => rpc('enviar_ficha');
+      else if (status === 'enviado') btn('Cancelar envio').onclick = () => rpc('cancelar_envio');
+    }
+    // ações do mestre
+    if (ehMestre) {
+      if (status !== 'aprovado') btn('Aprovar', 'primary').onclick = () => {
+        const rem = parseInt(document.getElementById('xpRem')?.textContent || '0', 10);
+        if (rem < 0 && !confirm(`Atenção: XP estourado (restam ${rem}). Aprovar mesmo assim?`)) return;
+        rpc('aprovar_ficha');
+      };
+      if (status === 'enviado') btn('Devolver com recado').onclick = () => { const nota = prompt('Recado para o jogador (o que ajustar):', ''); if (nota === null) return; rpc('devolver_ficha', { p_nota: nota }); };
+      if (status === 'aprovado') btn('Reabrir para edição').onclick = () => rpc('reabrir_ficha');
+    }
+    // excluir (dono em rascunho, ou mestre)
+    if ((ehDono && status === 'rascunho') || ehMestre) {
+      btn('Excluir personagem', 'perigo').onclick = async () => {
+        if (!confirm('Excluir este personagem? Esta ação não pode ser desfeita.')) return;
+        const { error } = await sb.from('personagens').delete().eq('id', id);
+        if (error) return alert('Erro: ' + error.message);
+        location.href = pers.mesa_id ? u('mesa') + '?id=' + pers.mesa_id : u('mesas');
+      };
     }
   }
 
@@ -293,4 +351,16 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .arqs .arq-rm { background: none; border: none; color: #b3261e; cursor: pointer; }
   .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 46rem; margin-bottom: 1rem; }
   .erro { color: #b3261e; }
+
+  .status-bar { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; padding: .6rem .9rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); margin-bottom: 1rem; }
+  .status-bar .status-txt { flex: 1; min-width: 12rem; }
+  .status-acoes { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .selo { font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; padding: .18rem .6rem; border-radius: 999px; }
+  .s-rascunho { background: color-mix(in srgb, var(--ink-soft) 22%, transparent); color: var(--ink); }
+  .s-enviado { background: color-mix(in srgb, var(--gold, #b8860b) 30%, transparent); color: var(--ink); }
+  .s-aprovado { background: color-mix(in srgb, var(--accent) 26%, transparent); color: var(--ink); }
+  .btn.perigo { border-color: #b3261e; color: #b3261e; }
+  .btn.perigo:hover { background: #b3261e; color: #fff; }
+  .revisao { border-color: var(--gold, #b8860b); }
+  .xp-alerta { border-color: #b3261e; background: color-mix(in srgb, #b3261e 10%, transparent); }
 </style>

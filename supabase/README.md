@@ -15,6 +15,9 @@ Supabase pelo navegador. Passos para ligar tudo:
 2. Cole todo o conteúdo de [`migracao.sql`](./migracao.sql) e clique em **Run**.
 3. Isso cria as tabelas, as políticas de segurança (RLS), as funções e os dois buckets de arquivos
    (`personagens` e `mesa`).
+4. Em seguida, rode também [`migracao-2.sql`](./migracao-2.sql) (mesma forma): adiciona a
+   aprovação de fichas, as ferramentas do mestre (gestão da mesa, notas de sessão, handout por
+   jogador) e os encontros/rastreador de iniciativa. É idempotente (seguro re-executar).
 
 ## 3. Ajustes no painel
 

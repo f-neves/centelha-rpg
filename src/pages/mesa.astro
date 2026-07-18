@@ -23,9 +23,13 @@ import Base from '../layouts/Base.astro';
           <div class="convite-linha">
             <code id="codigo"></code>
             <button class="btn" id="btn-copiar" title="Copiar código">Copiar</button>
+            <button class="btn" id="btn-regen" title="Gerar um novo código (invalida o atual)">↻</button>
           </div>
         </div>
-        <button class="btn" id="btn-sair-mesa" hidden>Sair da mesa</button>
+        <div class="cab-btns">
+          <button class="btn" id="btn-editar-mesa" hidden>Editar mesa</button>
+          <button class="btn" id="btn-sair-mesa" hidden>Sair da mesa</button>
+        </div>
       </div>
     </header>
 
@@ -42,6 +46,11 @@ import Base from '../layouts/Base.astro';
       <div id="personagens"></div>
     </section>
 
+    <section class="bloco" id="visao-geral-sec" hidden>
+      <h2>Visão geral do grupo</h2>
+      <div id="visao-geral" class="tabela-wrap"></div>
+    </section>
+
     <section class="bloco">
       <div class="bloco-cab">
         <h2>Arquivos da mesa</h2>
@@ -51,6 +60,14 @@ import Base from '../layouts/Base.astro';
       </div>
       <p class="muted" id="mesa-arq-dica" hidden>Marque a caixa "visível" para liberar o arquivo aos jogadores. Sem marcar, só você (mestre) vê.</p>
       <ul id="mesa-arqs" class="arqs"></ul>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Notas de sessão</h2>
+        <button class="btn primary" id="nota-nova" hidden>Nova nota</button>
+      </div>
+      <div id="notas"></div>
     </section>
 
     <section class="bloco escudo">
@@ -63,6 +80,13 @@ import Base from '../layouts/Base.astro';
       </div>
       <div id="escudo-lista" class="escudo-lista"></div>
     </section>
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Combate &amp; Iniciativa <small>· ticks</small></h2>
+      </div>
+      <div id="combate-area"></div>
+    </section>
   </div>
 </Base>
 
@@ -70,6 +94,7 @@ import Base from '../layouts/Base.astro';
   import { getSupabase } from '../lib/supabase';
   import { exigirLogin, supabaseConfigurado } from '../lib/auth';
   import monstersData from '../data/monsters.json';
+  import { pv, defesa, iniciativa } from '../lib/calc';
 
   const base = import.meta.env.BASE_URL;
   const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
@@ -79,6 +104,7 @@ import Base from '../layouts/Base.astro';
 
   const MON: Record<string, any> = Object.fromEntries((monstersData as any[]).map((m) => [m.id, m]));
   const MON_LIST = (monstersData as any[]).map((m) => ({ id: m.id, nome: m.nome, nomeIngles: m.nomeIngles || '', ameaca: m.ameaca }));
+  let ESCUDO_CACHE: any[] = [];
 
   const mostraErro = (t: string) => {
     document.getElementById('carregando')!.hidden = true;
@@ -111,9 +137,27 @@ import Base from '../layouts/Base.astro';
 
     if (ehMestre) {
       const box = document.getElementById('box-convite')!; box.hidden = false;
-      document.getElementById('codigo')!.textContent = mesa.codigo_convite;
+      const codigoEl = document.getElementById('codigo')!;
+      codigoEl.textContent = mesa.codigo_convite;
       document.getElementById('btn-copiar')!.addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText(mesa.codigo_convite); (document.getElementById('btn-copiar') as HTMLButtonElement).textContent = 'Copiado!'; setTimeout(() => (document.getElementById('btn-copiar')!.textContent = 'Copiar'), 1400); } catch {}
+        try { await navigator.clipboard.writeText(codigoEl.textContent || ''); (document.getElementById('btn-copiar') as HTMLButtonElement).textContent = 'Copiado!'; setTimeout(() => (document.getElementById('btn-copiar')!.textContent = 'Copiar'), 1400); } catch {}
+      });
+      document.getElementById('btn-regen')!.addEventListener('click', async () => {
+        if (!confirm('Gerar um novo código? O código atual deixa de funcionar.')) return;
+        const { data, error } = await sb.rpc('regenerar_codigo', { p_mesa: id });
+        if (error) return alert('Erro: ' + error.message);
+        codigoEl.textContent = data;
+      });
+      const editarBtn = document.getElementById('btn-editar-mesa') as HTMLButtonElement;
+      editarBtn.hidden = false;
+      editarBtn.addEventListener('click', async () => {
+        const nome = prompt('Nome da mesa:', mesa.nome); if (nome === null) return;
+        const descricao = prompt('Descrição:', mesa.descricao || ''); if (descricao === null) return;
+        const { error } = await sb.from('mesas').update({ nome: nome.trim() || mesa.nome, descricao }).eq('id', id);
+        if (error) return alert('Erro: ' + error.message);
+        document.getElementById('nome')!.textContent = nome.trim() || mesa.nome;
+        document.getElementById('descricao')!.textContent = descricao;
+        mesa.nome = nome.trim() || mesa.nome; mesa.descricao = descricao;
       });
     } else {
       const sairBtn = document.getElementById('btn-sair-mesa')! as HTMLButtonElement;
@@ -125,19 +169,32 @@ import Base from '../layouts/Base.astro';
       });
     }
 
-    await renderMembros(sb, mesa.mestre_id);
+    await renderMembros(sb, mesa.mestre_id, ehMestre, user.id);
 
     document.getElementById('btn-novo-pers')!.addEventListener('click', () => {
       location.href = u('personagem') + '?novo=1&mesa=' + id;
     });
     await renderPersonagens(sb, ehMestre, user.id);
 
+    if (ehMestre) { document.getElementById('visao-geral-sec')!.hidden = false; await renderVisaoGeral(sb); }
+
+    if (ehMestre) {
+      const nn = document.getElementById('nota-nova')!; nn.hidden = false;
+      nn.addEventListener('click', async () => {
+        const { error } = await sb.from('mesa_notas').insert({ mesa_id: id, titulo: 'Nova nota', corpo: '', visivel_jogadores: false });
+        if (error) return alert('Erro: ' + error.message);
+        await renderNotas(sb, true);
+      });
+    }
+    await renderNotas(sb, ehMestre);
+
     if (ehMestre) {
       document.getElementById('mesa-arq-lbl')!.hidden = false;
       document.getElementById('mesa-arq-dica')!.hidden = false;
       (document.getElementById('mesa-arq-file') as HTMLInputElement).addEventListener('change', (e) => subirArquivoMesa(sb, user.id, (e.target as HTMLInputElement).files?.[0]));
     }
-    await listarArquivosMesa(sb, ehMestre);
+    const membrosJog = ehMestre ? await membrosParaHandout(sb) : [];
+    await listarArquivosMesa(sb, ehMestre, membrosJog);
 
     if (ehMestre) {
       document.getElementById('escudo-busca-wrap')!.hidden = false;
@@ -156,6 +213,103 @@ import Base from '../layouts/Base.astro';
       document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('#escudo-busca-wrap')) res.hidden = true; });
     }
     await renderEscudo(sb, ehMestre);
+    await renderIniciativa(sb, ehMestre);
+  }
+
+  const d6 = () => 1 + Math.floor(Math.random() * 6);
+  function iniDeMonstro(m: any): number {
+    const s = m?.combate?.iniciativa || '';
+    const mt = /([+-]?\s*\d+)\s*$/.exec(s.replace(/\dd6/, ''));
+    const bonus = mt ? parseInt(mt[1].replace(/\s/g, ''), 10) : 0;
+    return d6() + (isNaN(bonus) ? 0 : bonus);
+  }
+
+  async function renderIniciativa(sb: any, ehMestre: boolean) {
+    const area = document.getElementById('combate-area')!;
+    const { data: encs } = await sb.from('encontros').select('*').eq('mesa_id', id).eq('ativo', true).order('criado_em', { ascending: false }).limit(1);
+    const enc = (encs || [])[0];
+    if (!enc) {
+      area.innerHTML = ehMestre
+        ? '<p class="muted">Nenhum encontro ativo.</p><button class="btn primary" id="enc-novo">Iniciar encontro</button>'
+        : '<p class="muted">Sem combate ativo.</p>';
+      if (ehMestre) document.getElementById('enc-novo')!.addEventListener('click', async () => {
+        const nome = prompt('Nome do encontro:', 'Encontro'); if (nome === null) return;
+        const { error } = await sb.from('encontros').insert({ mesa_id: id, nome: nome.trim() || 'Encontro', ativo: true });
+        if (error) return alert('Erro: ' + error.message);
+        await renderIniciativa(sb, true);
+      });
+      return;
+    }
+
+    const { data: combs, error } = await sb.from('combatentes').select('*').eq('encontro_id', enc.id);
+    if (error) { area.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    const lista = (combs || []).slice().sort((a: any, b: any) => (a.tick - b.tick) || ((b.iniciativa || 0) - (a.iniciativa || 0)));
+    const atualId = lista.length ? lista[0].id : null;
+
+    const controles = ehMestre ? `<div class="enc-ctrl">
+      <button class="btn" id="enc-add-pcs">Adicionar PCs</button>
+      ${ESCUDO_CACHE.length ? `<span class="enc-add-cri"><select id="enc-cri-sel">${ESCUDO_CACHE.map((c: any) => `<option value="${c.monstro_id}">${esc((MON[c.monstro_id]?.nome) || c.monstro_id)}</option>`).join('')}</select><button class="btn" id="enc-add-cri-btn">+ criatura</button></span>` : ''}
+      <button class="btn" id="enc-add-custom">+ avulso</button>
+      <button class="btn perigo" id="enc-encerrar">Encerrar encontro</button>
+    </div>` : '';
+
+    const linhas = lista.map((c: any) => {
+      const atual = c.id === atualId;
+      const tipo = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? 'Criatura' : '—';
+      const mostraHp = ehMestre || c.tipo === 'pc';
+      const hp = mostraHp && c.pv_max != null ? `<span class="cmb-hp">PV ${c.pv_atual}/${c.pv_max}${ehMestre ? ` <button class="btn mini hp-menos" data-c="${c.id}">−</button><button class="btn mini hp-mais" data-c="${c.id}">＋</button>` : ''}</span>` : '';
+      const act = ehMestre ? `<span class="cmb-act"><input type="number" class="spd" data-c="${c.id}" value="5" title="Speed da ação" /><button class="btn mini agir" data-c="${c.id}" data-tick="${c.tick}">agiu</button><button class="btn mini perigo rm" data-c="${c.id}">✕</button></span>` : '';
+      return `<div class="cmb-row${atual ? ' atual' : ''}">
+        <span class="cmb-tick" title="tick da próxima ação">t${c.tick}</span>
+        <span class="cmb-nome">${esc(c.nome)} <small class="muted">${tipo} · ini ${c.iniciativa ?? 0}</small></span>
+        ${hp}${act}
+      </div>`;
+    }).join('');
+
+    area.innerHTML = `<div class="enc-cab"><strong>${esc(enc.nome)}</strong> <span class="muted">· ${lista.length} combatente(s)${atualId ? ' · agora: ' + esc(lista[0].nome) : ''}</span></div>${controles}<div class="cmb-lista">${linhas || '<p class="muted">Sem combatentes. Adicione PCs e criaturas.</p>'}</div>`;
+
+    if (!ehMestre) return;
+    const reload = () => renderIniciativa(sb, true);
+    document.getElementById('enc-encerrar')?.addEventListener('click', async () => { if (!confirm('Encerrar este encontro?')) return; await sb.from('encontros').update({ ativo: false }).eq('id', enc.id); await reload(); });
+    document.getElementById('enc-add-pcs')?.addEventListener('click', async () => {
+      const { data: pcs } = await sb.from('personagens').select('id, nome, ficha').eq('mesa_id', id);
+      const jaTem = new Set((combs || []).map((c: any) => c.personagem_id).filter(Boolean));
+      const novos = (pcs || []).filter((p: any) => !jaTem.has(p.id)).map((p: any) => {
+        const S = p.ficha || {}; const at = S.attrs || {}; const sk = S.skills || {};
+        const pvv = pv(at.vigor || 0);
+        return { encontro_id: enc.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC', pv_max: pvv, pv_atual: pvv, tick: 0, iniciativa: d6() + (at.raciocinio || 0) + (sk.prontidao || 0) };
+      });
+      if (novos.length) { const { error } = await sb.from('combatentes').insert(novos); if (error) return alert('Erro: ' + error.message); }
+      await reload();
+    });
+    document.getElementById('enc-add-cri-btn')?.addEventListener('click', async () => {
+      const mid = (document.getElementById('enc-cri-sel') as HTMLSelectElement).value; const m = MON[mid];
+      const pvv = m?.combate?.pv ?? null;
+      const { error } = await sb.from('combatentes').insert({ encontro_id: enc.id, tipo: 'criatura', monstro_id: mid, nome: m?.nome || mid, pv_max: pvv, pv_atual: pvv, tick: 0, iniciativa: iniDeMonstro(m) });
+      if (error) return alert('Erro: ' + error.message);
+      await reload();
+    });
+    document.getElementById('enc-add-custom')?.addEventListener('click', async () => {
+      const nome = prompt('Nome do combatente:', ''); if (!nome) return;
+      const pvS = prompt('PV (deixe vazio se não usar):', ''); const ini = prompt('Iniciativa:', '0');
+      const pvN = pvS && pvS.trim() ? parseInt(pvS, 10) : null;
+      const { error } = await sb.from('combatentes').insert({ encontro_id: enc.id, tipo: 'custom', nome: nome.trim(), pv_max: pvN, pv_atual: pvN, tick: 0, iniciativa: parseInt(ini || '0', 10) || 0 });
+      if (error) return alert('Erro: ' + error.message);
+      await reload();
+    });
+    area.querySelectorAll<HTMLElement>('.agir').forEach((b) => b.addEventListener('click', async () => {
+      const spd = parseInt((area.querySelector(`.spd[data-c="${b.dataset.c}"]`) as HTMLInputElement)?.value || '5', 10) || 0;
+      const novoTick = (parseInt(b.dataset.tick || '0', 10) || 0) + spd;
+      await sb.from('combatentes').update({ tick: novoTick }).eq('id', b.dataset.c);
+      await reload();
+    }));
+    const setHp = async (cid: string, delta: number) => {
+      const c = (combs || []).find((x: any) => x.id === cid); if (!c || c.pv_atual == null) return;
+      await sb.from('combatentes').update({ pv_atual: c.pv_atual + delta }).eq('id', cid); await reload();
+    };
+    area.querySelectorAll<HTMLElement>('.hp-menos').forEach((b) => b.addEventListener('click', () => setHp(b.dataset.c!, -1)));
+    area.querySelectorAll<HTMLElement>('.hp-mais').forEach((b) => b.addEventListener('click', () => setHp(b.dataset.c!, +1)));
+    area.querySelectorAll<HTMLElement>('.rm').forEach((b) => b.addEventListener('click', async () => { await sb.from('combatentes').delete().eq('id', b.dataset.c); await reload(); }));
   }
 
   async function addCriatura(sb: any, monId: string) {
@@ -171,6 +325,7 @@ import Base from '../layouts/Base.astro';
       .order('ordem', { ascending: true }).order('criado_em', { ascending: true });
     const box = document.getElementById('escudo-lista')!;
     if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    ESCUDO_CACHE = data || [];
     if (!data?.length) {
       box.innerHTML = ehMestre
         ? '<p class="muted">Nenhuma criatura separada ainda. Busque acima para montar seu bestiário da campanha.</p>'
@@ -220,16 +375,26 @@ import Base from '../layouts/Base.astro';
     await listarArquivosMesa(sb, true);
   }
 
-  async function listarArquivosMesa(sb: any, ehMestre: boolean) {
+  async function membrosParaHandout(sb: any): Promise<{ id: string; nome: string }[]> {
+    const { data } = await sb.from('mesa_membros').select('user_id, papel').eq('mesa_id', id).eq('papel', 'jogador');
+    const nomes = await nomesDe(sb, (data || []).map((m: any) => m.user_id));
+    return (data || []).map((m: any) => ({ id: m.user_id, nome: nomes[m.user_id] || '(jogador)' }));
+  }
+
+  async function listarArquivosMesa(sb: any, ehMestre: boolean, membros: { id: string; nome: string }[] = []) {
     const { data, error } = await sb.from('arquivos').select('*').eq('mesa_id', id).eq('bucket', 'mesa').order('criado_em', { ascending: false });
     const ul = document.getElementById('mesa-arqs')!;
     if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
     if (!data?.length) { ul.innerHTML = `<li class="muted">${ehMestre ? 'Nenhum arquivo ainda. Envie handouts, mapas, documentos.' : 'O mestre ainda não compartilhou arquivos.'}</li>`; return; }
-    ul.innerHTML = data.map((a: any) => `<li data-arq="${a.id}" data-path="${esc(a.storage_path)}">
-      <a href="#" class="arq-abrir">${esc(a.nome)}</a>
-      <span class="muted arq-tipo">${esc((a.tipo || '').split('/')[1] || '')}</span>
-      ${ehMestre ? `<label class="arq-vis" title="Visível aos jogadores"><input type="checkbox" class="arq-vis-cb"${a.visivel_jogadores ? ' checked' : ''}/> visível</label><button class="btn arq-rm" title="Remover">✕</button>` : ''}
-    </li>`).join('');
+    ul.innerHTML = data.map((a: any) => {
+      const alvo = a.visivel_para || [];
+      const picker = (ehMestre && membros.length) ? `<details class="arq-alvo"><summary>por jogador${alvo.length ? ` (${alvo.length})` : ''}</summary>${membros.map((m) => `<label><input type="checkbox" class="arq-alvo-cb" data-u="${m.id}"${alvo.includes(m.id) ? ' checked' : ''}/> ${esc(m.nome)}</label>`).join('')}</details>` : '';
+      return `<li data-arq="${a.id}" data-path="${esc(a.storage_path)}">
+        <a href="#" class="arq-abrir">${esc(a.nome)}</a>
+        <span class="muted arq-tipo">${esc((a.tipo || '').split('/')[1] || '')}</span>
+        ${ehMestre ? `<label class="arq-vis" title="Liberar para todos os jogadores"><input type="checkbox" class="arq-vis-cb"${a.visivel_jogadores ? ' checked' : ''}/> todos</label>${picker}<button class="btn arq-rm" title="Remover">✕</button>` : ''}
+      </li>`;
+    }).join('');
     ul.querySelectorAll<HTMLElement>('.arq-abrir').forEach((a) => a.addEventListener('click', async (e) => {
       e.preventDefault();
       const li = a.closest('li')!; const { data: s } = await sb.storage.from('mesa').createSignedUrl(li.dataset.path!, 3600);
@@ -239,24 +404,38 @@ import Base from '../layouts/Base.astro';
       const li = cb.closest('li')!;
       await sb.from('arquivos').update({ visivel_jogadores: cb.checked }).eq('id', li.dataset.arq);
     }));
+    ul.querySelectorAll<HTMLElement>('.arq-alvo').forEach((det) => det.querySelectorAll<HTMLInputElement>('.arq-alvo-cb').forEach((cb) => cb.addEventListener('change', async () => {
+      const li = cb.closest('li')!;
+      const ids = [...det.querySelectorAll<HTMLInputElement>('.arq-alvo-cb')].filter((x) => x.checked).map((x) => x.dataset.u);
+      await sb.from('arquivos').update({ visivel_para: ids }).eq('id', li.dataset.arq);
+      det.querySelector('summary')!.textContent = 'por jogador' + (ids.length ? ` (${ids.length})` : '');
+    })));
     ul.querySelectorAll<HTMLElement>('.arq-rm').forEach((b) => b.addEventListener('click', async () => {
       const li = b.closest('li')!;
       if (!confirm('Remover este arquivo?')) return;
       await sb.storage.from('mesa').remove([li.dataset.path!]);
       await sb.from('arquivos').delete().eq('id', li.dataset.arq);
-      await listarArquivosMesa(sb, true);
+      await listarArquivosMesa(sb, true, membros);
     }));
   }
 
   async function renderPersonagens(sb: any, ehMestre: boolean, userId: string) {
     const { data, error } = await sb
       .from('personagens')
-      .select('id, nome, conceito, dono_id, imagem_path')
+      .select('id, nome, conceito, dono_id, imagem_path, status')
       .eq('mesa_id', id)
       .order('atualizado_em', { ascending: false });
     const box = document.getElementById('personagens')!;
     if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
     const nomes = await nomesDe(sb, (data || []).map((p: any) => p.dono_id));
+    const SELO: Record<string, [string, string]> = { rascunho: ['Rascunho', 's-rascunho'], enviado: ['Aguardando aprovação', 's-enviado'], aprovado: ['Aprovada', 's-aprovado'] };
+    const enviadas = (data || []).filter((p: any) => p.status === 'enviado').length;
+    if (ehMestre && enviadas) {
+      const aviso = document.createElement('p');
+      aviso.className = 'enviadas-aviso';
+      aviso.textContent = `${enviadas} ficha(s) aguardando sua aprovação.`;
+      box.before(aviso);
+    }
     if (!data?.length) {
       box.innerHTML = ehMestre
         ? '<p class="muted">Nenhum personagem nesta mesa ainda. Os jogadores criam os seus, ou crie um você mesmo.</p>'
@@ -266,12 +445,67 @@ import Base from '../layouts/Base.astro';
     box.innerHTML = '<div class="pers-grid">' + data.map((p: any) => {
       const dono = nomes[p.dono_id] || '(jogador)';
       const meu = p.dono_id === userId;
+      const [rot, cls] = SELO[p.status] || SELO.rascunho;
       return `<a class="pers-card" href="${u('personagem')}?id=${p.id}">
+        <span class="selo ${cls}">${rot}</span>
         <span class="pers-card-nome cinzel">${esc(p.nome || 'Personagem')}</span>
         ${p.conceito ? `<span class="pers-card-conc">${esc(p.conceito)}</span>` : ''}
         <span class="pers-card-dono muted">${meu ? 'Seu personagem' : 'Jogador: ' + esc(dono)}</span>
       </a>`;
     }).join('') + '</div>';
+  }
+
+  async function renderNotas(sb: any, ehMestre: boolean) {
+    const { data, error } = await sb.from('mesa_notas').select('*').eq('mesa_id', id).order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    const box = document.getElementById('notas')!;
+    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    if (!data?.length) { box.innerHTML = ehMestre ? '<p class="muted">Sem notas ainda. Crie uma e marque "compartilhar" para os jogadores verem.</p>' : '<p class="muted">O mestre ainda não compartilhou notas.</p>'; return; }
+    if (!ehMestre) {
+      box.innerHTML = data.map((n: any) => `<div class="nota-ro"><h3>${esc(n.titulo || '(sem título)')}</h3><div class="nota-corpo">${esc(n.corpo || '').replace(/\n/g, '<br>')}</div></div>`).join('');
+      return;
+    }
+    box.innerHTML = data.map((n: any) => `<div class="nota" data-nota="${n.id}">
+      <input class="nota-tit" value="${esc(n.titulo || '')}" placeholder="Título" />
+      <textarea class="nota-txt" rows="4" placeholder="Anotações…">${esc(n.corpo || '')}</textarea>
+      <div class="nota-foot">
+        <label class="nota-vis"><input type="checkbox" class="nota-vis-cb"${n.visivel_jogadores ? ' checked' : ''}/> compartilhar com jogadores</label>
+        <span class="salvo nota-salvo"></span>
+        <button class="btn mini perigo nota-rm">Excluir</button>
+      </div>
+    </div>`).join('');
+    box.querySelectorAll<HTMLElement>('.nota').forEach((card) => {
+      const nid = card.dataset.nota!;
+      const tit = card.querySelector<HTMLInputElement>('.nota-tit')!;
+      const txt = card.querySelector<HTMLTextAreaElement>('.nota-txt')!;
+      const salvo = card.querySelector<HTMLElement>('.nota-salvo')!;
+      let t: any;
+      const salvar = () => { clearTimeout(t); t = setTimeout(async () => { await sb.from('mesa_notas').update({ titulo: tit.value, corpo: txt.value }).eq('id', nid); salvo.textContent = 'Salvo'; setTimeout(() => (salvo.textContent = ''), 1000); }, 700); };
+      tit.addEventListener('input', salvar); txt.addEventListener('input', salvar);
+      card.querySelector<HTMLInputElement>('.nota-vis-cb')!.addEventListener('change', async (e) => { await sb.from('mesa_notas').update({ visivel_jogadores: (e.target as HTMLInputElement).checked }).eq('id', nid); });
+      card.querySelector<HTMLElement>('.nota-rm')!.addEventListener('click', async () => { if (!confirm('Excluir esta nota?')) return; await sb.from('mesa_notas').delete().eq('id', nid); await renderNotas(sb, true); });
+    });
+  }
+
+  const SELO_R: Record<string, string> = { rascunho: 'Rascunho', enviado: 'Aguardando', aprovado: 'Aprovada' };
+  async function renderVisaoGeral(sb: any) {
+    const { data, error } = await sb.from('personagens').select('id, nome, dono_id, status, ficha').eq('mesa_id', id).order('nome', { ascending: true });
+    const box = document.getElementById('visao-geral')!;
+    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    if (!data?.length) { box.innerHTML = '<p class="muted">Sem personagens para resumir.</p>'; return; }
+    const nomes = await nomesDe(sb, data.map((p: any) => p.dono_id));
+    const linhas = data.map((p: any) => {
+      const S = p.ficha || {}; const at = S.attrs || {}; const sk = S.skills || {}; const sp = S.spec || {}; const C = S.centelha || 0;
+      const pvv = pv(at.vigor || 0);
+      const def = defesa({ destreza: at.destreza || 0, habilidade: sk.esquiva || 0, especialidade: sp.esquiva || 0, centelha: C });
+      const ini = iniciativa({ raciocinio: at.raciocinio || 0, prontidao: sk.prontidao || 0 }).str;
+      return `<tr>
+        <td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a></td>
+        <td class="muted">${esc(nomes[p.dono_id] || '')}</td>
+        <td class="num">${C}</td><td class="num">${pvv}</td><td class="num">${def}</td><td>${esc(ini)}</td>
+        <td>${SELO_R[p.status] || 'Rascunho'}</td>
+      </tr>`;
+    }).join('');
+    box.innerHTML = `<table class="vg-tab"><thead><tr><th>Personagem</th><th>Jogador</th><th>Centelha</th><th>PV</th><th>Defesa</th><th>Iniciativa</th><th>Status</th></tr></thead><tbody>${linhas}</tbody></table>`;
   }
 
   async function nomesDe(sb: any, ids: string[]): Promise<Record<string, string>> {
@@ -281,7 +515,7 @@ import Base from '../layouts/Base.astro';
     return Object.fromEntries((data || []).map((p: any) => [p.id, p.nome]));
   }
 
-  async function renderMembros(sb: any, mestreId: string) {
+  async function renderMembros(sb: any, mestreId: string, ehMestre: boolean, userId: string) {
     const { data, error } = await sb
       .from('mesa_membros')
       .select('papel, user_id')
@@ -292,9 +526,27 @@ import Base from '../layouts/Base.astro';
     const nomes = await nomesDe(sb, (data || []).map((m: any) => m.user_id));
     ul.innerHTML = (data || []).map((m: any) => {
       const nome = nomes[m.user_id] || '(sem nome)';
-      const mestre = m.papel === 'mestre' || m.user_id === mestreId;
-      return `<li><span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span> ${esc(nome)}</li>`;
+      const dono = m.user_id === mestreId; // criador da mesa (não pode ser mexido)
+      const mestre = m.papel === 'mestre' || dono;
+      const acoes = (ehMestre && !dono) ? `<span class="membro-acoes">
+        <button class="btn mini" data-act="papel" data-u="${m.user_id}" data-p="${m.papel}">${m.papel === 'mestre' ? 'Rebaixar' : 'Promover a mestre'}</button>
+        <button class="btn mini perigo" data-act="remover" data-u="${m.user_id}">Remover</button>
+      </span>` : '';
+      return `<li><span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span> <span class="membro-nome">${esc(nome)}${m.user_id === userId ? ' (você)' : ''}</span>${acoes}</li>`;
     }).join('');
+    if (!ehMestre) return;
+    ul.querySelectorAll<HTMLElement>('[data-act="papel"]').forEach((b) => b.addEventListener('click', async () => {
+      const novo = b.dataset.p === 'mestre' ? 'jogador' : 'mestre';
+      const { error } = await sb.from('mesa_membros').update({ papel: novo }).eq('mesa_id', id).eq('user_id', b.dataset.u);
+      if (error) return alert('Erro: ' + error.message);
+      await renderMembros(sb, mestreId, ehMestre, userId);
+    }));
+    ul.querySelectorAll<HTMLElement>('[data-act="remover"]').forEach((b) => b.addEventListener('click', async () => {
+      if (!confirm('Remover este membro da mesa?')) return;
+      const { error } = await sb.from('mesa_membros').delete().eq('mesa_id', id).eq('user_id', b.dataset.u);
+      if (error) return alert('Erro: ' + error.message);
+      await renderMembros(sb, mestreId, ehMestre, userId);
+    }));
   }
 
   main();
@@ -315,14 +567,42 @@ import Base from '../layouts/Base.astro';
   .pers-card-nome { font-size: 1.1rem; font-weight: 700; }
   .pers-card-conc { color: var(--ink-soft); font-size: .9rem; font-style: italic; }
   .pers-card-dono { font-size: .8rem; }
+  .selo { align-self: flex-start; font-family: 'Cinzel'; font-size: .66rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; padding: .12rem .5rem; border-radius: 999px; }
+  .s-rascunho { background: color-mix(in srgb, var(--ink-soft) 22%, transparent); color: var(--ink); }
+  .s-enviado { background: color-mix(in srgb, var(--gold, #b8860b) 30%, transparent); color: var(--ink); }
+  .s-aprovado { background: color-mix(in srgb, var(--accent) 26%, transparent); color: var(--ink); }
+  .enviadas-aviso { color: var(--ink); background: color-mix(in srgb, var(--gold, #b8860b) 18%, transparent); border: 1px solid var(--gold, #b8860b); border-radius: 6px; padding: .5rem .8rem; margin: .4rem 0 0; }
   .arqs { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; margin-top: .6rem; }
   .arqs li { display: flex; align-items: center; gap: .6rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
   .arqs .arq-abrir { flex: 1; color: var(--accent); text-decoration: none; }
   .arqs .arq-tipo { font-size: .78rem; text-transform: uppercase; }
   .arqs .arq-vis { display: inline-flex; align-items: center; gap: .25rem; font-size: .82rem; color: var(--ink-soft); }
   .arqs .arq-rm { background: none; border: none; color: #b3261e; cursor: pointer; }
+  .arq-alvo { font-size: .82rem; color: var(--ink-soft); }
+  .arq-alvo summary { cursor: pointer; }
+  .arq-alvo label { display: flex; align-items: center; gap: .3rem; padding: .15rem 0 .15rem .6rem; }
+  .cab-btns { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
+  .tabela-wrap { overflow-x: auto; margin-top: .6rem; }
+  .vg-tab { border-collapse: collapse; width: 100%; min-width: 34rem; }
+  .vg-tab th, .vg-tab td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--rule); }
+  .vg-tab th { font-family: 'Cinzel'; font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
+  .vg-tab td.num { text-align: center; font-family: 'Cinzel'; font-weight: 700; }
+  .vg-tab a { color: var(--accent); text-decoration: none; }
+  .nota { border: 1px solid var(--rule); border-radius: 8px; padding: .7rem; background: var(--panel); margin-bottom: .8rem; }
+  .nota-tit { width: 100%; font-family: 'Cinzel'; font-weight: 700; font-size: 1rem; border: none; border-bottom: 1px solid var(--rule); background: transparent; color: var(--ink); padding: .2rem 0; margin-bottom: .4rem; }
+  .nota-txt { width: 100%; font: inherit; font-family: 'EB Garamond'; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
+  .nota-foot { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; margin-top: .4rem; }
+  .nota-vis { flex: 1; font-size: .85rem; color: var(--ink-soft); display: inline-flex; gap: .3rem; align-items: center; }
+  .nota-ro { border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 6px; padding: .6rem .8rem; background: var(--panel); margin-bottom: .7rem; }
+  .nota-ro h3 { margin: 0 0 .3rem; font-family: 'Cinzel'; }
+  .nota-corpo { font-size: .95rem; }
   .membros { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
   .membros li { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
+  .membro-nome { flex: 1; }
+  .membro-acoes { display: flex; gap: .4rem; flex-wrap: wrap; }
+  .btn.mini { padding: .15rem .5rem; font-size: .78rem; }
+  .btn.perigo { border-color: #b3261e; color: #b3261e; }
+  .btn.perigo:hover { background: #b3261e; color: #fff; }
   .papel { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; padding: .1rem .5rem; border-radius: 999px; font-weight: 700; }
   .p-mestre { background: color-mix(in srgb, var(--gold, #b8860b) 25%, transparent); color: var(--ink); }
   .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
@@ -346,4 +626,17 @@ import Base from '../layouts/Base.astro';
   .cr-notas { font: inherit; font-family: 'EB Garamond'; padding: .4rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
   .cr-notas-ro { font-size: .9rem; color: var(--ink-soft); font-style: italic; margin: 0; }
   .cr-rm { background: none; border: none; color: #b3261e; cursor: pointer; padding: 0 .2rem; }
+
+  .enc-cab { margin-bottom: .6rem; }
+  .enc-ctrl { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .8rem; align-items: center; }
+  .enc-add-cri { display: inline-flex; gap: .3rem; align-items: center; }
+  .enc-add-cri select { padding: .3rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); max-width: 12rem; }
+  .cmb-lista { display: flex; flex-direction: column; gap: .3rem; }
+  .cmb-row { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; padding: .4rem .6rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); }
+  .cmb-row.atual { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+  .cmb-tick { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); min-width: 2.4rem; }
+  .cmb-nome { flex: 1; min-width: 8rem; }
+  .cmb-hp { display: inline-flex; align-items: center; gap: .3rem; font-size: .9rem; }
+  .cmb-act { display: inline-flex; align-items: center; gap: .3rem; }
+  .cmb-act .spd { width: 3.2rem; padding: .2rem; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--ink); }
 </style>
