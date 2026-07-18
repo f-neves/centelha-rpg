@@ -25,7 +25,7 @@ const S = {
     categoria: z.string().optional(),
     ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(10),
     conceito: z.string(), descricao: z.string(), tags: z.array(z.string()),
-    pv: z.number().int(), defesa: z.number().int(), defesaMental: z.union([z.number().int(), z.literal('-')]),
+    pv: z.number().int(), defesa: z.number().int(), defesaSocial: z.union([z.number().int(), z.literal('-')]), defesaMental: z.union([z.number().int(), z.literal('-')]),
     vontade: z.number().int(),
     soak: soakModos, resistPerf: z.number().int().min(0),
     iniciativa: z.string(), atributos: z.record(z.number().int()),

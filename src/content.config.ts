@@ -161,7 +161,8 @@ const inimigos = defineCollection({
     tags: z.array(z.string()),
     pv: z.number().int(),
     defesa: z.number().int(),
-    defesaMental: z.union([z.number().int(), z.literal('-')]), // "-" = sem mente (constructos)
+    defesaSocial: z.union([z.number().int(), z.literal('-')]), // "-" = Int < 2 (sem trato social ou sem mente)
+    defesaMental: z.union([z.number().int(), z.literal('-')]), // "-" = sem mente (Int 0: constructos, limos, plantas, mortos-vivos sem mente)
     vontade: z.number().int(),
     soak: soakModos, resistPerf: z.number().int().min(0),
     iniciativa: z.string(),

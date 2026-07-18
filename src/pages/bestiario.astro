@@ -148,6 +148,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
           <dl class="besta-stats">
             <div><dt>PV</dt><dd>{i.combate.pv}</dd></div>
             <div><dt>Defesa</dt><dd>{i.combate.defesa}</dd></div>
+            <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
             <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
             <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}</dd></div>
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>

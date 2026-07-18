@@ -156,8 +156,12 @@ ser como corte:
 | Inteligência | Exemplos | Defesa Social | Defesa Mental |
 |---|---|---|---|
 | **0** | objeto, planta, rocha, metal, construto, objeto desperto | **"-" (imune)** | **"-" (imune)** |
-| **1** | feras e seres bestiais/semi-inteligentes | **tem** (via Sobrevivência); ataque social é muito difícil (barreira de comunicação e mente limitada) | **tem** (sofre medo normal e mágico, controle, etc.) |
+| **1** | feras e seres bestiais/semi-inteligentes | **"-"** (no bestiário, Social vale só p/ Int 2+; uma fera não tem trato social) | **tem** (sofre medo normal e mágico, controle, etc.) |
 | **2 ou mais** | gente e seres inteligentes | **tem** (via Sociabilidade) | **tem** |
+
+Nota: a ideia de dar Social a feras (Int 1) via Sobrevivência fica como possível refinamento
+futuro. Na implementação atual, para manter simples, **Defesa Social existe só a partir de
+Inteligência 2**; feras (Int 1) recebem "-" na Social, mas mantêm a Mental (sentem medo).
 
 Regras do **"-"**:
 

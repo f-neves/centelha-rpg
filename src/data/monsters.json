@@ -52,6 +52,7 @@
   "combate": {
    "pv": 37,
    "defesa": 6,
+   "defesaSocial": 12,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 5,
@@ -165,6 +166,7 @@
   "combate": {
    "pv": 75,
    "defesa": 16,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 12,
@@ -333,6 +335,7 @@
   "combate": {
    "pv": 50,
    "defesa": 12,
+   "defesaSocial": 10,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
@@ -450,7 +453,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 7,
@@ -464,6 +467,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 8,
@@ -567,6 +571,7 @@
   "combate": {
    "pv": 70,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -672,6 +677,7 @@
   "combate": {
    "pv": 54,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 8,
@@ -781,7 +787,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -795,6 +801,7 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -919,6 +926,7 @@
   "combate": {
    "pv": 40,
    "defesa": 16,
+   "defesaSocial": 12,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 8,
@@ -1067,6 +1075,7 @@
   "combate": {
    "pv": 26,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
@@ -1175,6 +1184,7 @@
   "combate": {
    "pv": 49,
    "defesa": 22,
+   "defesaSocial": 20,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 13,
@@ -1290,6 +1300,7 @@
   "combate": {
    "pv": 31,
    "defesa": 11,
+   "defesaSocial": 4,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 4,
@@ -1397,6 +1408,7 @@
   "combate": {
    "pv": 34,
    "defesa": 21,
+   "defesaSocial": 14,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 7,
@@ -1513,6 +1525,7 @@
   "combate": {
    "pv": 43,
    "defesa": 16,
+   "defesaSocial": 14,
    "defesaMental": 21,
    "absorcao": {
     "impacto": 8,
@@ -1654,6 +1667,7 @@
   "combate": {
    "pv": 54,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -1757,6 +1771,7 @@
   "combate": {
    "pv": 43,
    "defesa": 14,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 9,
@@ -1865,6 +1880,7 @@
   "combate": {
    "pv": 78,
    "defesa": 36,
+   "defesaSocial": 32,
    "defesaMental": 44,
    "absorcao": {
     "impacto": 20,
@@ -2040,6 +2056,7 @@
   "combate": {
    "pv": 34,
    "defesa": 9,
+   "defesaSocial": 4,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
@@ -2148,6 +2165,7 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
@@ -2252,7 +2270,8 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 6,
     "corte": 3,
@@ -2357,6 +2376,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 6,
@@ -2480,6 +2500,7 @@
   "combate": {
    "pv": 80,
    "defesa": 16,
+   "defesaSocial": 14,
    "defesaMental": 23,
    "absorcao": {
     "impacto": 13,
@@ -2601,6 +2622,7 @@
   "combate": {
    "pv": 75,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 14,
    "absorcao": {
     "impacto": 9,
@@ -2720,7 +2742,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -2734,6 +2756,7 @@
   "combate": {
    "pv": 24,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -2822,7 +2845,7 @@
    "perspicacia": 2,
    "compostura": 2,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -2836,6 +2859,7 @@
   "combate": {
    "pv": 50,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -2944,6 +2968,7 @@
   "combate": {
    "pv": 54,
    "defesa": 14,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 8,
@@ -3079,6 +3104,7 @@
   "combate": {
    "pv": 54,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -3184,6 +3210,7 @@
   "combate": {
    "pv": 40,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
@@ -3320,6 +3347,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -3432,6 +3460,7 @@
   "combate": {
    "pv": 40,
    "defesa": 18,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
@@ -3543,6 +3572,7 @@
   "combate": {
    "pv": 85,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 9,
@@ -3645,6 +3675,7 @@
   "combate": {
    "pv": 37,
    "defesa": 5,
+   "defesaSocial": 4,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 6,
@@ -3754,6 +3785,7 @@
   "combate": {
    "pv": 40,
    "defesa": 16,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 7,
@@ -3865,6 +3897,7 @@
   "combate": {
    "pv": 46,
    "defesa": 20,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 11,
@@ -3978,6 +4011,7 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
@@ -4132,6 +4166,7 @@
   "combate": {
    "pv": 34,
    "defesa": 8,
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -4244,6 +4279,7 @@
   "combate": {
    "pv": 80,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 10,
@@ -4362,6 +4398,7 @@
   "combate": {
    "pv": 28,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -4466,6 +4503,7 @@
   "combate": {
    "pv": 37,
    "defesa": 20,
+   "defesaSocial": 14,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 7,
@@ -4586,6 +4624,7 @@
   "combate": {
    "pv": 31,
    "defesa": 4,
+   "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 2,
@@ -4693,6 +4732,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
@@ -4796,6 +4836,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -4898,6 +4939,7 @@
   "combate": {
    "pv": 37,
    "defesa": 13,
+   "defesaSocial": 12,
    "defesaMental": 21,
    "absorcao": {
     "impacto": 11,
@@ -4991,7 +5033,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -5005,6 +5047,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -5108,6 +5151,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -5211,6 +5255,7 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -5314,6 +5359,7 @@
   "combate": {
    "pv": 75,
    "defesa": 18,
+   "defesaSocial": 14,
    "defesaMental": 23,
    "absorcao": {
     "impacto": 12,
@@ -5418,6 +5464,7 @@
   "combate": {
    "pv": 40,
    "defesa": 11,
+   "defesaSocial": 6,
    "defesaMental": 21,
    "absorcao": {
     "impacto": 12,
@@ -5532,6 +5579,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -5636,6 +5684,7 @@
   "combate": {
    "pv": 50,
    "defesa": 14,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 7,
@@ -5734,7 +5783,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -5748,6 +5797,7 @@
   "combate": {
    "pv": 34,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -5856,6 +5906,7 @@
   "combate": {
    "pv": 54,
    "defesa": 18,
+   "defesaSocial": 10,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 9,
@@ -5960,6 +6011,7 @@
   "combate": {
    "pv": 54,
    "defesa": 6,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
@@ -6083,6 +6135,7 @@
   "combate": {
    "pv": 54,
    "defesa": 18,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 9,
@@ -6176,7 +6229,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -6190,6 +6243,7 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -6303,7 +6357,8 @@
   "combate": {
    "pv": 20,
    "defesa": 10,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 0,
     "corte": 0,
@@ -6420,6 +6475,7 @@
   "combate": {
    "pv": 24,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 4,
@@ -6540,6 +6596,7 @@
   "combate": {
    "pv": 37,
    "defesa": 13,
+   "defesaSocial": 14,
    "defesaMental": 21,
    "absorcao": {
     "impacto": 11,
@@ -6655,6 +6712,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
@@ -6778,6 +6836,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -6875,6 +6934,7 @@
   "combate": {
    "pv": 40,
    "defesa": 24,
+   "defesaSocial": 20,
    "defesaMental": 29,
    "absorcao": {
     "impacto": 9,
@@ -7031,6 +7091,7 @@
   "combate": {
    "pv": 95,
    "defesa": 22,
+   "defesaSocial": "-",
    "defesaMental": 32,
    "absorcao": {
     "impacto": 16,
@@ -7136,7 +7197,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -7150,6 +7211,7 @@
   "combate": {
    "pv": 50,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -7257,7 +7319,8 @@
   "combate": {
    "pv": 66,
    "defesa": 2,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 10,
     "corte": 7,
@@ -7370,6 +7433,7 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
+   "defesaSocial": 12,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 4,
@@ -7484,6 +7548,7 @@
   "combate": {
    "pv": 28,
    "defesa": 16,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -7592,6 +7657,7 @@
   "combate": {
    "pv": 37,
    "defesa": 16,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 6,
@@ -7705,6 +7771,7 @@
   "combate": {
    "pv": 28,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
@@ -7807,6 +7874,7 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 5,
@@ -7910,6 +7978,7 @@
   "combate": {
    "pv": 30,
    "defesa": 14,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
@@ -8022,6 +8091,7 @@
   "combate": {
    "pv": 43,
    "defesa": 22,
+   "defesaSocial": 22,
    "defesaMental": 32,
    "absorcao": {
     "impacto": 11,
@@ -8178,6 +8248,7 @@
   "combate": {
    "pv": 40,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 18,
    "absorcao": {
     "impacto": 8,
@@ -8324,6 +8395,7 @@
   "combate": {
    "pv": 70,
    "defesa": 30,
+   "defesaSocial": 24,
    "defesaMental": 34,
    "absorcao": {
     "impacto": 15,
@@ -8437,6 +8509,7 @@
   "combate": {
    "pv": 66,
    "defesa": 26,
+   "defesaSocial": 22,
    "defesaMental": 32,
    "absorcao": {
     "impacto": 14,
@@ -8589,6 +8662,7 @@
   "combate": {
    "pv": 74,
    "defesa": 40,
+   "defesaSocial": 34,
    "defesaMental": 44,
    "absorcao": {
     "impacto": 19,
@@ -8767,6 +8841,7 @@
   "combate": {
    "pv": 46,
    "defesa": 26,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 11,
@@ -8879,6 +8954,7 @@
   "combate": {
    "pv": 58,
    "defesa": 20,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 11,
@@ -9031,6 +9107,7 @@
   "combate": {
    "pv": 17,
    "defesa": 16,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 4,
@@ -9189,6 +9266,7 @@
   "combate": {
    "pv": 50,
    "defesa": 18,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
@@ -9344,6 +9422,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -9444,6 +9523,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
@@ -9592,6 +9672,7 @@
   "combate": {
    "pv": 43,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 20,
    "absorcao": {
     "impacto": 9,
@@ -9701,6 +9782,7 @@
   "combate": {
    "pv": 80,
    "defesa": 14,
+   "defesaSocial": 20,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 14,
@@ -9866,6 +9948,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": 10,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 9,
@@ -10024,6 +10107,7 @@
   "combate": {
    "pv": 85,
    "defesa": 16,
+   "defesaSocial": 26,
    "defesaMental": 37,
    "absorcao": {
     "impacto": 16,
@@ -10204,6 +10288,7 @@
   "combate": {
    "pv": 75,
    "defesa": 18,
+   "defesaSocial": 20,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 13,
@@ -10365,6 +10450,7 @@
   "combate": {
    "pv": 80,
    "defesa": 14,
+   "defesaSocial": 20,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 14,
@@ -10532,6 +10618,7 @@
   "combate": {
    "pv": 95,
    "defesa": 16,
+   "defesaSocial": 24,
    "defesaMental": 35,
    "absorcao": {
     "impacto": 17,
@@ -10701,6 +10788,7 @@
   "combate": {
    "pv": 54,
    "defesa": 16,
+   "defesaSocial": 14,
    "defesaMental": 23,
    "absorcao": {
     "impacto": 10,
@@ -10855,6 +10943,7 @@
   "combate": {
    "pv": 28,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -10987,6 +11076,7 @@
   "combate": {
    "pv": 34,
    "defesa": 18,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 6,
@@ -11136,6 +11226,7 @@
   "combate": {
    "pv": 54,
    "defesa": 16,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 9,
@@ -11247,6 +11338,7 @@
   "combate": {
    "pv": 31,
    "defesa": 12,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
@@ -11354,6 +11446,7 @@
   "combate": {
    "pv": 34,
    "defesa": 16,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 5,
@@ -11465,6 +11558,7 @@
   "combate": {
    "pv": 34,
    "defesa": 21,
+   "defesaSocial": 8,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 7,
@@ -11577,6 +11671,7 @@
   "combate": {
    "pv": 37,
    "defesa": 6,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
@@ -11685,6 +11780,7 @@
   "combate": {
    "pv": 54,
    "defesa": 18,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 9,
@@ -11835,6 +11931,7 @@
   "combate": {
    "pv": 75,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 8,
@@ -11938,6 +12035,7 @@
   "combate": {
    "pv": 26,
    "defesa": 6,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
@@ -12043,6 +12141,7 @@
   "combate": {
    "pv": 58,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 9,
@@ -12179,6 +12278,7 @@
   "combate": {
    "pv": 26,
    "defesa": 6,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
@@ -12283,6 +12383,7 @@
   "combate": {
    "pv": 26,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
@@ -12386,6 +12487,7 @@
   "combate": {
    "pv": 24,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
@@ -12474,7 +12576,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -12488,6 +12590,7 @@
   "combate": {
    "pv": 30,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -12575,7 +12678,7 @@
    "forca": 0,
    "destreza": 5,
    "vigor": 2,
-   "influencia": 1,
+   "influencia": 0,
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
@@ -12593,7 +12696,8 @@
   "combate": {
    "pv": 17,
    "defesa": 12,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 2,
     "corte": 1,
@@ -12682,7 +12786,7 @@
    "forca": 0,
    "destreza": 4,
    "vigor": 3,
-   "influencia": 1,
+   "influencia": 0,
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
@@ -12700,7 +12804,8 @@
   "combate": {
    "pv": 18,
    "defesa": 10,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 3,
     "corte": 1,
@@ -12786,7 +12891,7 @@
    "forca": 0,
    "destreza": 5,
    "vigor": 2,
-   "influencia": 1,
+   "influencia": 0,
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
@@ -12804,7 +12909,8 @@
   "combate": {
    "pv": 17,
    "defesa": 12,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 2,
     "corte": 1,
@@ -12888,7 +12994,7 @@
    "forca": 0,
    "destreza": 4,
    "vigor": 2,
-   "influencia": 1,
+   "influencia": 0,
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
@@ -12906,7 +13012,8 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 2,
     "corte": 1,
@@ -12993,7 +13100,7 @@
    "forca": 1,
    "destreza": 4,
    "vigor": 2,
-   "influencia": 1,
+   "influencia": 0,
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 4,
@@ -13011,6 +13118,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -13101,7 +13209,7 @@
    "forca": 1,
    "destreza": 4,
    "vigor": 3,
-   "influencia": 1,
+   "influencia": 0,
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 3,
@@ -13119,6 +13227,7 @@
   "combate": {
    "pv": 18,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -13213,7 +13322,7 @@
    "forca": 0,
    "destreza": 5,
    "vigor": 4,
-   "influencia": 1,
+   "influencia": 0,
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
@@ -13231,7 +13340,8 @@
   "combate": {
    "pv": 19,
    "defesa": 12,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -13323,7 +13433,7 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 2,
-   "influencia": 2,
+   "influencia": 0,
    "perspicacia": 2,
    "compostura": 2,
    "percepcao": 3,
@@ -13341,7 +13451,8 @@
   "combate": {
    "pv": 17,
    "defesa": 8,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 2,
     "corte": 1,
@@ -13445,6 +13556,7 @@
   "combate": {
    "pv": 43,
    "defesa": 26,
+   "defesaSocial": 20,
    "defesaMental": 29,
    "absorcao": {
     "impacto": 10,
@@ -13582,7 +13694,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -13596,6 +13708,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -13715,6 +13828,7 @@
   "combate": {
    "pv": 54,
    "defesa": 18,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
@@ -13868,6 +13982,7 @@
   "combate": {
    "pv": 40,
    "defesa": 18,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 8,
@@ -14014,7 +14129,8 @@
   "combate": {
    "pv": 31,
    "defesa": 10,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 2,
     "corte": 1,
@@ -14120,6 +14236,7 @@
   "combate": {
    "pv": 70,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 7,
@@ -14220,6 +14337,7 @@
   "combate": {
    "pv": 26,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
@@ -14323,6 +14441,7 @@
   "combate": {
    "pv": 40,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 7,
@@ -14430,6 +14549,7 @@
   "combate": {
    "pv": 50,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -14545,6 +14665,7 @@
   "combate": {
    "pv": 17,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -14646,6 +14767,7 @@
   "combate": {
    "pv": 43,
    "defesa": 14,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 9,
@@ -14758,6 +14880,7 @@
   "combate": {
    "pv": 31,
    "defesa": 12,
+   "defesaSocial": 6,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 3,
@@ -14872,6 +14995,7 @@
   "combate": {
    "pv": 85,
    "defesa": 30,
+   "defesaSocial": 24,
    "defesaMental": 34,
    "absorcao": {
     "impacto": 14,
@@ -14985,6 +15109,7 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
@@ -15131,6 +15256,7 @@
   "combate": {
    "pv": 17,
    "defesa": 30,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 5,
@@ -15272,7 +15398,7 @@
    "perspicacia": 2,
    "compostura": 3,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 3
   },
   "vontade": 5,
@@ -15286,6 +15412,7 @@
   "combate": {
    "pv": 40,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 5,
@@ -15390,6 +15517,7 @@
   "combate": {
    "pv": 80,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 23,
    "absorcao": {
     "impacto": 13,
@@ -15492,7 +15620,8 @@
   "combate": {
    "pv": 40,
    "defesa": 4,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 5,
     "corte": 2,
@@ -15596,6 +15725,7 @@
   "combate": {
    "pv": 40,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 6,
@@ -15725,6 +15855,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -15825,7 +15956,8 @@
   "combate": {
    "pv": 62,
    "defesa": 2,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 9,
     "corte": 7,
@@ -15933,6 +16065,7 @@
   "combate": {
    "pv": 40,
    "defesa": 26,
+   "defesaSocial": 24,
    "defesaMental": 34,
    "absorcao": {
     "impacto": 10,
@@ -16085,6 +16218,7 @@
   "combate": {
    "pv": 40,
    "defesa": 16,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 7,
@@ -16214,6 +16348,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": 10,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 5,
@@ -16345,6 +16480,7 @@
   "combate": {
    "pv": 46,
    "defesa": 18,
+   "defesaSocial": "-",
    "defesaMental": 20,
    "absorcao": {
     "impacto": 10,
@@ -16457,6 +16593,7 @@
   "combate": {
    "pv": 54,
    "defesa": 6,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
@@ -16572,6 +16709,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": 6,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
@@ -16693,6 +16831,7 @@
   "combate": {
    "pv": 80,
    "defesa": 14,
+   "defesaSocial": 14,
    "defesaMental": 21,
    "absorcao": {
     "impacto": 11,
@@ -16840,6 +16979,7 @@
   "combate": {
    "pv": 75,
    "defesa": 10,
+   "defesaSocial": 12,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 9,
@@ -16978,6 +17118,7 @@
   "combate": {
    "pv": 62,
    "defesa": 6,
+   "defesaSocial": 8,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 9,
@@ -17111,6 +17252,7 @@
   "combate": {
    "pv": 58,
    "defesa": 6,
+   "defesaSocial": 8,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 8,
@@ -17227,6 +17369,7 @@
   "combate": {
    "pv": 54,
    "defesa": 18,
+   "defesaSocial": "-",
    "defesaMental": 18,
    "absorcao": {
     "impacto": 9,
@@ -17335,6 +17478,7 @@
   "combate": {
    "pv": 85,
    "defesa": 20,
+   "defesaSocial": 22,
    "defesaMental": 32,
    "absorcao": {
     "impacto": 15,
@@ -17486,6 +17630,7 @@
   "combate": {
    "pv": 34,
    "defesa": 4,
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -17597,6 +17742,7 @@
   "combate": {
    "pv": 26,
    "defesa": 10,
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -17710,7 +17856,8 @@
   "combate": {
    "pv": 34,
    "defesa": 8,
-   "defesaMental": 15,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 3,
     "corte": 4,
@@ -17814,7 +17961,8 @@
   "combate": {
    "pv": 34,
    "defesa": 8,
-   "defesaMental": 15,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 3,
     "corte": 4,
@@ -17923,7 +18071,8 @@
   "combate": {
    "pv": 34,
    "defesa": 10,
-   "defesaMental": 18,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 4,
     "corte": 5,
@@ -18031,7 +18180,8 @@
   "combate": {
    "pv": 25,
    "defesa": 6,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 1,
     "corte": 1,
@@ -18136,7 +18286,8 @@
   "combate": {
    "pv": 34,
    "defesa": 8,
-   "defesaMental": 15,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 3,
     "corte": 4,
@@ -18239,6 +18390,7 @@
   "combate": {
    "pv": 34,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -18344,6 +18496,7 @@
   "combate": {
    "pv": 62,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 10,
@@ -18471,6 +18624,7 @@
   "combate": {
    "pv": 50,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -18581,6 +18735,7 @@
   "combate": {
    "pv": 115,
    "defesa": 20,
+   "defesaSocial": 30,
    "defesaMental": 42,
    "absorcao": {
     "impacto": 22,
@@ -18754,6 +18909,7 @@
   "combate": {
    "pv": 54,
    "defesa": 16,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 9,
@@ -18858,6 +19014,7 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
@@ -18968,6 +19125,7 @@
   "combate": {
    "pv": 34,
    "defesa": 8,
+   "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 4,
@@ -19074,6 +19232,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -19180,6 +19339,7 @@
   "combate": {
    "pv": 31,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 19,
    "absorcao": {
     "impacto": 4,
@@ -19316,6 +19476,7 @@
   "combate": {
    "pv": 66,
    "defesa": 18,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 13,
@@ -19458,6 +19619,7 @@
   "combate": {
    "pv": 75,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
@@ -19571,6 +19733,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -19673,6 +19836,7 @@
   "combate": {
    "pv": 50,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -19777,6 +19941,7 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
@@ -19888,6 +20053,7 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -19999,6 +20165,7 @@
   "combate": {
    "pv": 34,
    "defesa": 4,
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -20110,6 +20277,7 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -20227,6 +20395,7 @@
   "combate": {
    "pv": 16,
    "defesa": 12,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 2,
@@ -20334,6 +20503,7 @@
   "combate": {
    "pv": 110,
    "defesa": 28,
+   "defesaSocial": "-",
    "defesaMental": 34,
    "absorcao": {
     "impacto": 18,
@@ -20453,6 +20623,7 @@
   "combate": {
    "pv": 32,
    "defesa": 24,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 9,
@@ -20565,6 +20736,7 @@
   "combate": {
    "pv": 46,
    "defesa": 18,
+   "defesaSocial": 12,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 10,
@@ -20673,6 +20845,7 @@
   "combate": {
    "pv": 34,
    "defesa": 14,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 5,
@@ -20779,6 +20952,7 @@
   "combate": {
    "pv": 40,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -20886,6 +21060,7 @@
   "combate": {
    "pv": 54,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -20992,6 +21167,7 @@
   "combate": {
    "pv": 24,
    "defesa": 8,
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -21108,6 +21284,7 @@
   "combate": {
    "pv": 110,
    "defesa": 16,
+   "defesaSocial": 24,
    "defesaMental": 35,
    "absorcao": {
     "impacto": 19,
@@ -21261,6 +21438,7 @@
   "combate": {
    "pv": 37,
    "defesa": 18,
+   "defesaSocial": 12,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 7,
@@ -21377,6 +21555,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
@@ -21484,6 +21663,7 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -21593,6 +21773,7 @@
   "combate": {
    "pv": 54,
    "defesa": 22,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 9,
@@ -21737,6 +21918,7 @@
   "combate": {
    "pv": 50,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 5,
@@ -21862,6 +22044,7 @@
   "combate": {
    "pv": 40,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 18,
    "absorcao": {
     "impacto": 8,
@@ -21969,7 +22152,8 @@
   "combate": {
    "pv": 37,
    "defesa": 6,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -22085,6 +22269,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -22183,7 +22368,7 @@
    "perspicacia": 0,
    "compostura": 1,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -22197,6 +22382,7 @@
   "combate": {
    "pv": 70,
    "defesa": 2,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -22314,6 +22500,7 @@
   "combate": {
    "pv": 40,
    "defesa": 20,
+   "defesaSocial": 18,
    "defesaMental": 28,
    "absorcao": {
     "impacto": 10,
@@ -22478,6 +22665,7 @@
   "combate": {
    "pv": 58,
    "defesa": 18,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 10,
@@ -22591,7 +22779,8 @@
   "combate": {
    "pv": 49,
    "defesa": 2,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 9,
     "corte": 5,
@@ -22695,6 +22884,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -22808,6 +22998,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -22924,6 +23115,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -23036,6 +23228,7 @@
   "combate": {
    "pv": 54,
    "defesa": 14,
+   "defesaSocial": 12,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 9,
@@ -23132,7 +23325,7 @@
    "perspicacia": 2,
    "compostura": 3,
    "percepcao": 4,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 4
   },
   "vontade": 5,
@@ -23146,6 +23339,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
@@ -23262,6 +23456,7 @@
   "combate": {
    "pv": 31,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -23365,6 +23560,7 @@
   "combate": {
    "pv": 70,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -23472,6 +23668,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -23568,6 +23765,7 @@
   "combate": {
    "pv": 34,
    "defesa": 16,
+   "defesaSocial": 8,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 5,
@@ -23697,6 +23895,7 @@
   "combate": {
    "pv": 75,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 8,
@@ -23822,6 +24021,7 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
@@ -23944,6 +24144,7 @@
   "combate": {
    "pv": 54,
    "defesa": 20,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
@@ -24051,6 +24252,7 @@
   "combate": {
    "pv": 66,
    "defesa": 32,
+   "defesaSocial": 26,
    "defesaMental": 37,
    "absorcao": {
     "impacto": 15,
@@ -24199,6 +24401,7 @@
   "combate": {
    "pv": 75,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 8,
@@ -24305,6 +24508,7 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 7,
@@ -24441,6 +24645,7 @@
   "combate": {
    "pv": 26,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 5,
@@ -24553,6 +24758,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
@@ -24661,6 +24867,7 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
+   "defesaSocial": 8,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 6,
@@ -24785,6 +24992,7 @@
   "combate": {
    "pv": 50,
    "defesa": 6,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 6,
@@ -24915,6 +25123,7 @@
   "combate": {
    "pv": 24,
    "defesa": 10,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
@@ -25028,6 +25237,7 @@
   "combate": {
    "pv": 37,
    "defesa": 18,
+   "defesaSocial": 12,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 7,
@@ -25136,6 +25346,7 @@
   "combate": {
    "pv": 34,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
@@ -25257,6 +25468,7 @@
   "combate": {
    "pv": 54,
    "defesa": 6,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
@@ -25382,6 +25594,7 @@
   "combate": {
    "pv": 16,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 1,
@@ -25482,6 +25695,7 @@
   "combate": {
    "pv": 46,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -25571,7 +25785,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -25585,6 +25799,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -25689,6 +25904,7 @@
   "combate": {
    "pv": 37,
    "defesa": 16,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -25806,6 +26022,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 22,
    "absorcao": {
     "impacto": 7,
@@ -25947,6 +26164,7 @@
   "combate": {
    "pv": 46,
    "defesa": 18,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 10,
@@ -26057,6 +26275,7 @@
   "combate": {
    "pv": 54,
    "defesa": 16,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
@@ -26207,6 +26426,7 @@
   "combate": {
    "pv": 58,
    "defesa": 26,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 11,
@@ -26307,6 +26527,7 @@
   "combate": {
    "pv": 54,
    "defesa": 22,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 9,
@@ -26414,6 +26635,7 @@
   "combate": {
    "pv": 90,
    "defesa": 18,
+   "defesaSocial": 22,
    "defesaMental": 32,
    "absorcao": {
     "impacto": 16,
@@ -26521,6 +26743,7 @@
   "combate": {
    "pv": 90,
    "defesa": 12,
+   "defesaSocial": 20,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 15,
@@ -26636,6 +26859,7 @@
   "combate": {
    "pv": 58,
    "defesa": 18,
+   "defesaSocial": "-",
    "defesaMental": 21,
    "absorcao": {
     "impacto": 11,
@@ -26741,6 +26965,7 @@
   "combate": {
    "pv": 34,
    "defesa": 24,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 7,
@@ -26895,6 +27120,7 @@
   "combate": {
    "pv": 25,
    "defesa": 6,
+   "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
     "impacto": 2,
@@ -27003,6 +27229,7 @@
   "combate": {
    "pv": 50,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -27116,6 +27343,7 @@
   "combate": {
    "pv": 54,
    "defesa": 18,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
@@ -27286,6 +27514,7 @@
   "combate": {
    "pv": 34,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -27396,6 +27625,7 @@
   "combate": {
    "pv": 70,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -27501,6 +27731,7 @@
   "combate": {
    "pv": 46,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -27608,7 +27839,8 @@
   "combate": {
    "pv": 85,
    "defesa": 12,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -27714,6 +27946,7 @@
   "combate": {
    "pv": 54,
    "defesa": 16,
+   "defesaSocial": 12,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 9,
@@ -27854,6 +28087,7 @@
   "combate": {
    "pv": 54,
    "defesa": 16,
+   "defesaSocial": 12,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 9,
@@ -27942,7 +28176,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -27956,6 +28190,7 @@
   "combate": {
    "pv": 40,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -28068,6 +28303,7 @@
   "combate": {
    "pv": 17,
    "defesa": 22,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 5,
@@ -28219,6 +28455,7 @@
   "combate": {
    "pv": 62,
    "defesa": 24,
+   "defesaSocial": 28,
    "defesaMental": 39,
    "absorcao": {
     "impacto": 14,
@@ -28373,6 +28610,7 @@
   "combate": {
    "pv": 28,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -28472,6 +28710,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -28574,6 +28813,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -28677,6 +28917,7 @@
   "combate": {
    "pv": 18,
    "defesa": 12,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
@@ -28784,6 +29025,7 @@
   "combate": {
    "pv": 50,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
@@ -28883,7 +29125,8 @@
   "combate": {
    "pv": 80,
    "defesa": 2,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -28991,6 +29234,7 @@
   "combate": {
    "pv": 17,
    "defesa": 16,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 4,
@@ -29143,6 +29387,7 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 8,
@@ -29267,7 +29512,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 6,
@@ -29281,6 +29526,7 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 6,
@@ -29370,7 +29616,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -29384,6 +29630,7 @@
   "combate": {
    "pv": 17,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -29486,6 +29733,7 @@
   "combate": {
    "pv": 40,
    "defesa": 20,
+   "defesaSocial": 16,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 9,
@@ -29645,6 +29893,7 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -29753,6 +30002,7 @@
   "combate": {
    "pv": 24,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -29857,6 +30107,7 @@
   "combate": {
    "pv": 75,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 18,
    "absorcao": {
     "impacto": 11,
@@ -29968,6 +30219,7 @@
   "combate": {
    "pv": 45,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -30079,6 +30331,7 @@
   "combate": {
    "pv": 58,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -30186,6 +30439,7 @@
   "combate": {
    "pv": 85,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 9,
@@ -30311,6 +30565,7 @@
   "combate": {
    "pv": 70,
    "defesa": 16,
+   "defesaSocial": 16,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 14,
@@ -30424,6 +30679,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -30537,6 +30793,7 @@
   "combate": {
    "pv": 40,
    "defesa": 12,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 7,
@@ -30659,7 +30916,7 @@
    "perspicacia": 0,
    "compostura": 1,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -30673,6 +30930,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -30771,7 +31029,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 4,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 2
   },
   "vontade": 5,
@@ -30785,6 +31043,7 @@
   "combate": {
    "pv": 16,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 1,
@@ -30881,6 +31140,7 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
+   "defesaSocial": 14,
    "defesaMental": 21,
    "absorcao": {
     "impacto": 6,
@@ -31019,6 +31279,7 @@
   "combate": {
    "pv": 95,
    "defesa": 18,
+   "defesaSocial": "-",
    "defesaMental": 21,
    "absorcao": {
     "impacto": 15,
@@ -31118,7 +31379,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -31132,6 +31393,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -31236,6 +31498,7 @@
   "combate": {
    "pv": 54,
    "defesa": 14,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 9,
@@ -31344,6 +31607,7 @@
   "combate": {
    "pv": 26,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
@@ -31456,6 +31720,7 @@
   "combate": {
    "pv": 90,
    "defesa": 18,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 11,
@@ -31570,6 +31835,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -31679,6 +31945,7 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
@@ -31792,6 +32059,7 @@
   "combate": {
    "pv": 40,
    "defesa": 12,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
@@ -31904,6 +32172,7 @@
   "combate": {
    "pv": 70,
    "defesa": 32,
+   "defesaSocial": 32,
    "defesaMental": 44,
    "absorcao": {
     "impacto": 18,
@@ -32076,6 +32345,7 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
+   "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 4,
@@ -32186,6 +32456,7 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
@@ -32311,7 +32582,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 6,
@@ -32325,6 +32596,7 @@
   "combate": {
    "pv": 17,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
@@ -32429,6 +32701,7 @@
   "combate": {
    "pv": 43,
    "defesa": 18,
+   "defesaSocial": 18,
    "defesaMental": 26,
    "absorcao": {
     "impacto": 9,
@@ -32592,6 +32865,7 @@
   "combate": {
    "pv": 28,
    "defesa": 12,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
@@ -32700,6 +32974,7 @@
   "combate": {
    "pv": 115,
    "defesa": 30,
+   "defesaSocial": "-",
    "defesaMental": 36,
    "absorcao": {
     "impacto": 19,
@@ -32820,6 +33095,7 @@
   "combate": {
    "pv": 115,
    "defesa": 22,
+   "defesaSocial": "-",
    "defesaMental": 38,
    "absorcao": {
     "impacto": 23,
@@ -32978,6 +33254,7 @@
   "combate": {
    "pv": 70,
    "defesa": 12,
+   "defesaSocial": 14,
    "defesaMental": 23,
    "absorcao": {
     "impacto": 11,
@@ -33090,6 +33367,7 @@
   "combate": {
    "pv": 34,
    "defesa": 14,
+   "defesaSocial": 8,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 4,
@@ -33199,6 +33477,7 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
@@ -33302,6 +33581,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
@@ -33409,6 +33689,7 @@
   "combate": {
    "pv": 80,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 8,
@@ -33513,6 +33794,7 @@
   "combate": {
    "pv": 75,
    "defesa": 8,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 10,
@@ -33653,7 +33935,8 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
-   "defesaMental": 9,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 5,
     "corte": 2,
@@ -33763,6 +34046,7 @@
   "combate": {
    "pv": 70,
    "defesa": 4,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -33866,6 +34150,7 @@
   "combate": {
    "pv": 37,
    "defesa": 4,
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -33979,6 +34264,7 @@
   "combate": {
    "pv": 62,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
@@ -34087,7 +34373,7 @@
    "perspicacia": 1,
    "compostura": 1,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -34101,6 +34387,7 @@
   "combate": {
    "pv": 46,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -34190,7 +34477,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -34204,6 +34491,7 @@
   "combate": {
    "pv": 80,
    "defesa": 10,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 8,
@@ -34312,6 +34600,7 @@
   "combate": {
    "pv": 54,
    "defesa": 18,
+   "defesaSocial": 20,
    "defesaMental": 28,
    "absorcao": {
     "impacto": 9,
@@ -34461,6 +34750,7 @@
   "combate": {
    "pv": 58,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -34571,6 +34861,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -34675,6 +34966,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -34784,6 +35076,7 @@
   "combate": {
    "pv": 49,
    "defesa": 20,
+   "defesaSocial": 20,
    "defesaMental": 29,
    "absorcao": {
     "impacto": 12,
@@ -34966,6 +35259,7 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
@@ -35072,6 +35366,7 @@
   "combate": {
    "pv": 26,
    "defesa": 10,
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -35161,7 +35456,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 2,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 6,
@@ -35175,6 +35470,7 @@
   "combate": {
    "pv": 95,
    "defesa": 6,
+   "defesaSocial": "-",
    "defesaMental": 12,
    "absorcao": {
     "impacto": 12,
@@ -35279,7 +35575,7 @@
    "perspicacia": 2,
    "compostura": 3,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 3
   },
   "vontade": 5,
@@ -35293,6 +35589,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
+   "defesaSocial": "-",
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
@@ -35384,7 +35681,7 @@
    "perspicacia": 1,
    "compostura": 2,
    "percepcao": 3,
-   "inteligencia": 0,
+   "inteligencia": 1,
    "raciocinio": 1
   },
   "vontade": 5,
@@ -35398,6 +35695,7 @@
   "combate": {
    "pv": 17,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -35502,7 +35800,8 @@
   "combate": {
    "pv": 54,
    "defesa": 6,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -35614,6 +35913,7 @@
   "combate": {
    "pv": 66,
    "defesa": 18,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 13,
@@ -35761,6 +36061,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
@@ -35889,6 +36190,7 @@
   "combate": {
    "pv": 34,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 5,
@@ -36000,6 +36302,7 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 8,
@@ -36128,6 +36431,7 @@
   "combate": {
    "pv": 37,
    "defesa": 18,
+   "defesaSocial": 12,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 7,
@@ -36241,6 +36545,7 @@
   "combate": {
    "pv": 43,
    "defesa": 12,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 8,
@@ -36375,6 +36680,7 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
+   "defesaSocial": "-",
    "defesaMental": 17,
    "absorcao": {
     "impacto": 6,
@@ -36487,6 +36793,7 @@
   "combate": {
    "pv": 50,
    "defesa": 12,
+   "defesaSocial": 8,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
@@ -36599,7 +36906,8 @@
   "combate": {
    "pv": 31,
    "defesa": 6,
-   "defesaMental": 12,
+   "defesaSocial": "-",
+   "defesaMental": "-",
    "absorcao": {
     "impacto": 3,
     "corte": 2,

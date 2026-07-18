@@ -137,6 +137,7 @@ function build(c) {
     combate: {
       pv: c.pv,
       defesa: c.defesa,
+      defesaSocial: c.defesaSocial,
       defesaMental: c.defesaMental,
       absorcao: { impacto: c.soak.impacto, corte: c.soak.corte, perfuracao: c.soak.perfuracao },
       resistenciaPerfuracao: c.resistPerf || 0,

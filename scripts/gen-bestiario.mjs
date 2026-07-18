@@ -55,7 +55,15 @@ function stat(b) {
   const espEsq = (b.especialidades && b.especialidades.esquiva) || 0;
   const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + C * (D.defesa.centelhaMult ?? 1) - (arm.penalidade || 0);
   const integ = pe.integridade ?? b.integridade ?? 2;
-  const defesaMental = integ * D.defesaMental.mult + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + (D.defesaMental.maisCentelha ? C * (D.defesaMental.centelhaMult ?? 1) : 0);
+  const intel = at.inteligencia;
+  // Defesa Mental: barra invasão/imposição na mente. Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
+  const defesaMental = intel <= 0 ? '-'
+    : integ * D.defesaMental.mult + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + (D.defesaMental.maisCentelha ? C * (D.defesaMental.centelhaMult ?? 1) : 0);
+  // Defesa Social: escudo social geral (resiste a influência e a leitura). Só p/ Int ≥ 2 (Int < 2 = "-").
+  // Usa Sociabilidade; se o bloco não a declara, reaproveita a melhor perícia social que ele tenha.
+  const socialSkill = pe.sociabilidade ?? Math.max(0, pe.oratoria || 0, pe.manha || 0, pe.persuasao || 0, pe.lideranca || 0, pe.politica || 0);
+  const espSoc = (b.especialidades && b.especialidades.social) || 0;
+  const defesaSocial = intel >= 2 ? (at.compostura + socialSkill + C) * D.defesaSocial.mult + espSoc : '-';
   const ini = at.raciocinio + (pe.prontidao || 0);
   const ataques = (b.ataques || []).map((a) => {
     const soma = (at[a.atrib] || 0) + (pe[a.pericia] || 0);
@@ -79,7 +87,7 @@ function stat(b) {
     categoria: b.categoria || catFromTags(b.tags || []),
     ameaca: b.ameaca, centelha: C,
     conceito: b.conceito, descricao: b.descricao, tags: b.tags || [],
-    pv, defesa, defesaMental, vontade: b.vontade ?? 5,
+    pv, defesa, defesaSocial, defesaMental, vontade: b.vontade ?? 5,
     soak, resistPerf,
     iniciativa: `1d6 + ${ini}`,
     atributos: at, ataques,
@@ -357,10 +365,18 @@ function poderesDe(name, centelha) {
 }
 
 const cl = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const ANIMAL_INT_EXTRA = new Set(['mon-giant-frog']); // animais que a categoria classificou como "Monstro"
 const CONV = DATA.map((m) => {
+  const id = 'mon-' + slug(m.name);
   const at = converte(m);
   const cat = categoriaDe(m.type);
   const ameaca = ameacaDe(m.cr);
+  // Enxame = massa sem mente própria: não influencia ninguém → Influência 0.
+  const isSwarm = id.includes('swarm');
+  if (isSwarm) at.influencia = 0;
+  // Animal/besta com mente bestial: Int 0 sobe p/ 1 (sente medo, ganha Defesa Mental de fera).
+  // Não vale p/ enxame, limo, planta, constructo nem morto-vivo sem mente.
+  if (at.inteligencia === 0 && !isSwarm && (cat === 'Fera' || cat === 'Besta mágica' || ANIMAL_INT_EXTRA.has(id))) at.inteligencia = 1;
   const { poderes, tecnicas, artes } = poderesDe(m.name, m.cent);
   const tags = [...new Set([slug(cat), ...(m.cent > 0 ? ['centelha'] : []), ...(/incorpóreo/.test(m.type) ? ['incorpóreo'] : []), ...(artes.length ? ['mágico'] : [])])];
   const briga = cl(ameaca + (m.cent > 0 ? 1 : 0), 1, 5);
@@ -368,7 +384,7 @@ const CONV = DATA.map((m) => {
   if (m.sk && m.sk.length) notasPart.push(`Perícias notáveis: ${m.sk.join(', ')}.`);
   if (m.cent > 5) notasPart.push('Centelha acima do teto mortal (entidade).');
   return stat({
-    id: 'mon-' + slug(m.name),
+    id,
     nome: m.name, tipo: tipoDe(cat, ameaca), categoria: cat, ameaca, centelha: m.cent,
     conceito: m.type, descricao: CAT_DESC[cat] || '',
     tags,

@@ -242,15 +242,18 @@
       "centelhaMult": 2
     },
     "defesaMental": {
+      "nota": "Barra invasão ou imposição direta na mente (controle, ordem, medo mágico, leitura mental, ataque psíquico). (Integridade + Centelha) × 2 + Força de Vontade + Especialidade. Sem atributo por enquanto (talvez Raciocínio depois). Só existe com mente: Int 0 é imune ('-').",
       "mult": 2,
       "maisVontade": true,
       "maisCentelha": true,
-      "centelhaMult": 2
+      "centelhaMult": 2,
+      "especialidade": true
     },
     "defesaSocial": {
-      "nota": "Resiste à leitura (Perspicácia + Empatia). (Compostura + Temperança + Centelha) × 2 — tudo dentro do ×2; Temperança maxa em 5 e leva ×2 p/ casar com a Vontade ×1 da Def. Mental (ambas teto ~30).",
+      "nota": "O escudo social geral (equivale ao MDV): resiste a ser convencido/movido E a ser lido. (Compostura + Sociabilidade + Centelha) × 2 + Especialidade. Feras (Int 1) trocariam Sociabilidade por Sobrevivência, mas no bestiário Social vale só p/ Int 2+. Int 0 é imune ('-').",
       "mult": 2,
-      "tracos": ["compostura", "temperanca", "centelha"]
+      "tracos": ["compostura", "sociabilidade", "centelha"],
+      "especialidade": true
     },
     "ataque": {
       "nota": "Bônus de Centelha somado à soma do ataque (esquiva/bloqueio/mental ganham o mesmo nas defesas).",
