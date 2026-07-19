@@ -33,26 +33,26 @@ export function pv(vigor: number, porte: Porte = 'medio') {
   return t.base + vigor * t.vigorMult;
 }
 
-/** Defesa (Esquiva/Bloqueio): (Destreza + Habilidade) × 2 + Especialidade + Centelha×2. */
+/** Defesa (Esquiva/Bloqueio): (Destreza + Habilidade) × 2 + Centelha + Especialidade. */
 export function defesa(opts: { destreza: number; habilidade: number; especialidade?: number; centelha: number }) {
   const d = regras.derivados.defesa as { mult: number; centelhaMult?: number };
   return (opts.destreza + opts.habilidade) * d.mult + (opts.especialidade ?? 0) + opts.centelha * (d.centelhaMult ?? 1);
 }
 
-/** Defesa Mental: (Integridade + Centelha)×2 + Vontade + Especialidade. Barra invasão/imposição na mente. */
-export function defesaMental(opts: { integridade: number; vontade: number; centelha: number; especialidade?: number }) {
-  const d = regras.derivados.defesaMental as { mult: number; maisVontade?: boolean; maisCentelha?: boolean; centelhaMult?: number };
-  return opts.integridade * d.mult + (d.maisVontade ? opts.vontade : 0) + (d.maisCentelha ? opts.centelha * (d.centelhaMult ?? 1) : 0) + (opts.especialidade ?? 0);
+/** Defesa Mental: Raciocínio + Integridade + Vontade + Centelha + Especialidade (soma simples, sem ×2). */
+export function defesaMental(opts: { raciocinio: number; integridade: number; vontade: number; centelha: number; especialidade?: number }) {
+  const d = regras.derivados.defesaMental as { mult: number; maisRaciocinio?: boolean; maisVontade?: boolean; maisCentelha?: boolean; centelhaMult?: number };
+  return opts.integridade * d.mult + (d.maisRaciocinio ? opts.raciocinio : 0) + (d.maisVontade ? opts.vontade : 0) + (d.maisCentelha ? opts.centelha * (d.centelhaMult ?? 1) : 0) + (opts.especialidade ?? 0);
 }
 
-/** Defesa Social (escudo social geral: resiste a influência E a leitura): (Compostura + Sociabilidade + Centelha) × 2 + Especialidade. */
+/** Defesa Social (escudo social geral: resiste a influência E a leitura): (Compostura + Sociabilidade) × 2 + Centelha + Especialidade. */
 export function defesaSocial(opts: { compostura: number; sociabilidade: number; centelha: number; especialidade?: number }) {
-  const d = regras.derivados.defesaSocial as { mult: number; tracos: string[] };
-  const v: Record<string, number> = { compostura: opts.compostura, sociabilidade: opts.sociabilidade, centelha: opts.centelha };
-  return d.tracos.reduce((s, k) => s + (v[k] ?? 0), 0) * d.mult + (opts.especialidade ?? 0);
+  const d = regras.derivados.defesaSocial as { mult: number; tracos: string[]; centelhaMult?: number };
+  const v: Record<string, number> = { compostura: opts.compostura, sociabilidade: opts.sociabilidade };
+  return d.tracos.reduce((s, k) => s + (v[k] ?? 0), 0) * d.mult + opts.centelha * (d.centelhaMult ?? 0) + (opts.especialidade ?? 0);
 }
 
-/** Bônus de Centelha somado à SOMA do ataque (simétrico às defesas). */
+/** Bônus de Centelha somado à SOMA do ataque (simétrico às defesas: +1 por ponto). */
 export function ataqueCentelha(centelha: number) {
   const d = regras.derivados.ataque as { centelhaMult?: number };
   return centelha * (d?.centelhaMult ?? 0);

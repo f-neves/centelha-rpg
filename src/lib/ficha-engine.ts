@@ -217,18 +217,22 @@ export function montarFicha(opts: FichaOpts) {
     const cs = (regras.dano as any)?.centelhaNoSoak ?? 0;
     const vig = A('vigor');
     const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), centelha: C }) - penFisica;
-    // Bloqueio: usa a MAIOR perícia de aparar (Armas 1M/2M, Briga, Escudos); o modificador da arma/escudo entra na aba de Combate.
+    // Bloqueio: o JOGADOR escolhe a perícia de aparar (Armas 1M/2M, Briga, Escudos); o modificador da arma/escudo entra na aba de Combate.
     const blkSkills = ['armas-uma-mao', 'armas-duas-maos', 'briga', 'escudos'];
-    const blkBest = blkSkills.reduce((b, s) => (SK(s) > SK(b) ? s : b), blkSkills[0]);
-    const defBlq = defesa({ destreza: A('destreza'), habilidade: SK(blkBest), centelha: C }) - penFisica;
+    const blkNome: Record<string, string> = { 'armas-uma-mao': 'Armas 1 Mão', 'armas-duas-maos': 'Armas 2 Mãos', briga: 'Briga', escudos: 'Escudos' };
+    if (!blkSkills.includes(S.blkPericia)) S.blkPericia = blkSkills.reduce((b, s) => (SK(s) > SK(b) ? s : b), blkSkills[0]);
+    const defBlq = defesa({ destreza: A('destreza'), habilidade: SK(S.blkPericia), centelha: C }) - penFisica;
+    const blkSel = opts.readOnly
+      ? `${defBlq} <span class="muted">(${blkNome[S.blkPericia]})</span>`
+      : `${defBlq} <select data-blkpericia style="font-family:inherit;font-size:.72rem;margin-left:.35rem">${blkSkills.map((s) => `<option value="${s}"${s === S.blkPericia ? ' selected' : ''}>${blkNome[s]} (${SK(s)})</option>`).join('')}</select>`;
     const soakStr = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0)).join(' / ');
     // Especialidades situacionais de defesa (S.defSpec) ficam DORMENTES por ora: sem editor na ficha.
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
       r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + Centelha − penalidade') +
-      r('Defesa (Bloqueio)', defBlq, '(Des + maior de Armas/Briga/Escudos)×2 + Centelha − penalidade') +
-      r('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }), '(Compostura + Sociabilidade + Centelha)×2') +
-      r('Defesa Mental', defesaMental({ integridade: integ, vontade: W, centelha: C }), `(Integridade ${integ} + Centelha)×2 + Vontade`) +
+      r('Defesa (Bloqueio)', blkSel, '(Des + perícia de aparar)×2 + Centelha − penalidade') +
+      r('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }), '(Compostura + Sociabilidade)×2 + Centelha') +
+      r('Defesa Mental', defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C }), 'Raciocínio + Integridade + Vontade + Centelha') +
       r('Absorção Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor + Centelha no Impacto; só Centelha em Corte/Perf; + armadura') +
       r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade', true) +
       r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade', true) +
@@ -358,6 +362,11 @@ export function montarFicha(opts: FichaOpts) {
     recompute();
   }
 
+  document.addEventListener('change', (e) => {
+    if (opts.readOnly) return;
+    const sel = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-blkpericia]');
+    if (sel) { S.blkPericia = sel.value; recompute(); }
+  });
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
     const nm = t.closest<HTMLElement>('.trow .nm');

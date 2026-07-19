@@ -56,14 +56,14 @@ function stat(b) {
   const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + C * (D.defesa.centelhaMult ?? 1) - (arm.penalidade || 0);
   const integ = pe.integridade ?? b.integridade ?? 2;
   const intel = at.inteligencia;
-  // Defesa Mental: barra invasão/imposição na mente. Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
+  // Defesa Mental: Raciocínio + Integridade + Vontade + Centelha (soma simples). Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
   const defesaMental = intel <= 0 ? '-'
-    : integ * D.defesaMental.mult + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + (D.defesaMental.maisCentelha ? C * (D.defesaMental.centelhaMult ?? 1) : 0);
+    : integ * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + (D.defesaMental.maisCentelha ? C * (D.defesaMental.centelhaMult ?? 1) : 0);
   // Defesa Social: escudo social geral (resiste a influência e a leitura). Só p/ Int ≥ 2 (Int < 2 = "-").
-  // Usa Sociabilidade; se o bloco não a declara, reaproveita a melhor perícia social que ele tenha.
+  // Usa Sociabilidade; se o bloco não a declara, reaproveita a melhor perícia social que ele tenha. Centelha fica FORA do ×2.
   const socialSkill = pe.sociabilidade ?? Math.max(0, pe.oratoria || 0, pe.manha || 0, pe.persuasao || 0, pe.lideranca || 0, pe.politica || 0);
   const espSoc = (b.especialidades && b.especialidades.social) || 0;
-  const defesaSocial = intel >= 2 ? (at.compostura + socialSkill + C) * D.defesaSocial.mult + espSoc : '-';
+  const defesaSocial = intel >= 2 ? (at.compostura + socialSkill) * D.defesaSocial.mult + C * (D.defesaSocial.centelhaMult ?? 0) + espSoc : '-';
   const ini = at.raciocinio + (pe.prontidao || 0);
   const ataques = (b.ataques || []).map((a) => {
     const soma = (at[a.atrib] || 0) + (pe[a.pericia] || 0);

@@ -239,25 +239,27 @@
       "mult": 2,
       "especialidade": true,
       "maisCentelha": true,
-      "centelhaMult": 2
+      "centelhaMult": 1
     },
     "defesaMental": {
-      "nota": "Barra invasão ou imposição direta na mente (controle, ordem, medo mágico, leitura mental, ataque psíquico). (Integridade + Centelha) × 2 + Força de Vontade + Especialidade. Sem atributo por enquanto (talvez Raciocínio depois). Só existe com mente: Int 0 é imune ('-').",
-      "mult": 2,
+      "nota": "Barra invasão ou imposição direta na mente (controle, ordem, medo mágico, leitura mental, ataque psíquico). Raciocínio + Integridade + Força de Vontade + Centelha + Especialidade (soma simples, sem ×2). Só existe com mente: Int 0 é imune ('-').",
+      "mult": 1,
+      "maisRaciocinio": true,
       "maisVontade": true,
       "maisCentelha": true,
-      "centelhaMult": 2,
+      "centelhaMult": 1,
       "especialidade": true
     },
     "defesaSocial": {
-      "nota": "O escudo social geral (equivale ao MDV): resiste a ser convencido/movido E a ser lido. (Compostura + Sociabilidade + Centelha) × 2 + Especialidade. Feras (Int 1) trocariam Sociabilidade por Sobrevivência, mas no bestiário Social vale só p/ Int 2+. Int 0 é imune ('-').",
+      "nota": "O escudo social geral (equivale ao MDV): resiste a ser convencido/movido E a ser lido. (Compostura + Sociabilidade) × 2 + Centelha + Especialidade (Centelha fica FORA do ×2). Feras (Int 1) trocariam Sociabilidade por Sobrevivência, mas no bestiário Social vale só p/ Int 2+. Int 0 é imune ('-').",
       "mult": 2,
-      "tracos": ["compostura", "sociabilidade", "centelha"],
+      "tracos": ["compostura", "sociabilidade"],
+      "centelhaMult": 1,
       "especialidade": true
     },
     "ataque": {
-      "nota": "Bônus de Centelha somado à soma do ataque (esquiva/bloqueio/mental ganham o mesmo nas defesas).",
-      "centelhaMult": 2
+      "nota": "Bônus de Centelha somado à soma do ataque (as quatro defesas ganham o mesmo, +1 por ponto). Simétrico: entre Centelhas iguais cancela; favorece quem tem mais Centelha.",
+      "centelhaMult": 1
     },
     "energia": {
       "centelhaMult": 3,
