@@ -8,7 +8,7 @@ resumo: "O lado social do jogo em três marchas: a régua de disposição do dia
 O lado social do jogo tem **três marchas**, da mais leve à mais pesada:
 
 - **A régua** resolve o **dia a dia** sem rolar dado: o quanto alguém gosta de você decide o que faz quando você pede algo.
-- O **Combate Social** entra quando há **aposta alta e resistência declarada**: um duelo lance a lance, espelhado no [Combate Físico](/regras/combate), em que se desgasta a firmeza do outro até ele ceder.
+- O **Combate Social** entra quando há **aposta alta e resistência declarada**: um duelo lance a lance, espelhado no [Combate Físico](/regras/combate), em que se gasta a Força de Vontade do outro até ele ceder.
 - A **Influência Estendida** é o modo de **calma e tempo**: um cortejo longo em que você troca a sorte do dado pela média e vai empilhando gestos.
 
 Comece pela régua; as outras duas são escaladas dela.
@@ -107,28 +107,45 @@ Um ato forte fura a baseline (um elfo que salva a vida de um anão vira, sim, um
 
 ## Quando a cena vira duelo: o Combate Social
 
+Na conversa comum, a influência apenas empurra a régua (a seção anterior). A cena vira **Combate Social** quando alguém **crava os pés**: recusa-se conscientemente a ser movido, com uma aposta real na mesa (dobrar um juiz, aguentar uma sedução decisiva, não entregar o segredo sob pressão). Aí a mesma jogada de influência ganha uma camada: para **não ceder**, o alvo **queima Força de Vontade**, e segurar a linha fica mais caro quanto mais forte vem o ataque. Quando a Vontade acaba, ou deixa de valer a pena, ele **cede**.
+
+É o lado da **Defesa Social**: influência (te mover) e leitura (te ler). Ataque mágico à mente (controle, ordem, medo mágico) é [Defesa Mental](/regras/defesas), outro sistema. E **ceder é o ponto, não a alma**: perder aqui é conceder aquela discussão, sedução ou negociação, não virar fantoche.
+
 ### Iniciativa e ritmo
 
 <p class="formula">Iniciativa social = 1d6 + Perspicácia + Sociabilidade</p>
 
-Quem lê melhor a sala toma a palavra primeiro (começa no Tick 0; os demais no Tick 1, com a mesma regra de defasagem do físico). A **Speed** das abordagens (Ticks até o próximo lance): leve **5**, média **6**, pesada **7**. Uma alfinetada é rápida; orquestrar um esquema é lento.
-
-### A reserva
-
-**Força de Vontade (a reserva de recusa):** você pode **gastar 1 Força de Vontade para recusar um golpe social**, tratando aquele embate como um **erro** (dano 0), uma recusa fria e consciente ("eu simplesmente não vou"). É limitado pela sua reserva de Vontade, a mesma das Proezas e Artes, então recusar custa caro. Recusar **não** vale contra **leitura** (não dá para se recusar a ser lido); vale contra os golpes que tentam te **mover**.
-
-A cada +6 que o ataque supera a defesa, é necessário gastar +1 ponto de Força de Vontade para resistir à Influência.
+Quem lê melhor a sala toma a palavra primeiro (começa no Tick 0; os demais no Tick 1, com a mesma regra de defasagem do físico). As abordagens vêm em três pesos, e o peso dá a **Speed** (Ticks até o próximo lance): **leve 5** (uma alfinetada, um elogio), **média 6** (um argumento, uma sedução), **pesada 7** (um discurso, um esquema). Rápido arranha; lento constrói.
 
 ### O ataque social
 
 <p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Peso do argumento  + Centelha</p>
 
-A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como a arma física escolhe a perícia; o **Peso** é o "acerto" da abordagem (na tabela de abordagens). Compara-se com a **Defesa Social** do alvo:
+A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como o golpe físico escolhe a sua. O **Peso** é um bônus de **+0 a +3** que o Mestre concede conforme a abordagem é certeira: uma provocação ou um elogio acertam fácil e somam mais; um discurso longo pesa mais e soma menos. Compara-se com a **Defesa Social** do alvo (o número passivo da ficha):
 
-- **Acerta** se o Ataque **superar** a Defesa Social.
-- **Margem = [ (Ataque − Defesa Social) ÷ 6 ]** → gasto de Força de Vontade extra para resistir ou mais caminha na Régua Social.
+- **Acerta** se o Ataque **superar** a Defesa Social; empatar ou ficar abaixo, a influência ricocheteia.
+- **Margem = [ (Ataque − Defesa Social) ÷ 6 ]**: o quanto o golpe apertou.
 
-Atacar um alvo cuja Defesa Social está muito acima da sua é bater numa muralha: uma alternativa é trocar de tática.
+Bater num alvo de Defesa Social muito acima da sua é bater numa muralha; a saída é trocar de abordagem, pegá-lo desprevenido ou preparar o terreno antes.
+
+### Resistir: gastar Força de Vontade
+
+Um golpe que supera a Defesa **moveria** o alvo. Para **segurar firme**, ele gasta **Força de Vontade** naquele lance, e o custo sobe com a Margem:
+
+| Ataque supera a Defesa por | Para segurar firme, gaste | Se não segurar |
+|---|:--:|---|
+| 0–5 (Margem 0) | **1** Vontade | cede o ponto daquela cena; a régua não se move |
+| 6–11 (Margem 1) | **2** Vontade | cede, e a régua anda **1 passo** a favor do atacante |
+| 12–17 (Margem 2) | **3** Vontade | cede, e a régua anda **2 passos** |
+| cada +6 além disso | **+1** Vontade | **+1 passo** |
+
+A Vontade é a mesma reserva das Proezas e das Artes e volta devagar (descanso/cena), então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. Gastar Vontade **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**.
+
+### Ceder, ou mover a régua
+
+Quando o alvo **não** paga a Vontade, ele **cede o ponto** daquela troca: aceita o argumento, topa o pedido, dá o passo que estava sendo empurrado. Um golpe raso (Margem 0) rende só o **favor daquela cena** e a régua não muda; um golpe folgado (Margem 1 ou mais) que não é resistido também **move a régua** por aquele tanto de passos, do mesmo jeito que a conversa comum a move. Vencer feio, na base da ameaça ou da chantagem, ainda dobra o ponto, mas costuma **ferir a relação**: o alvo cede com ressentimento e pode reverter na primeira chance.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>A Dama Vesna (<strong>Defesa Social 18</strong>) resiste ao cortesão Lírio. Ele ataca com Sedução e soma <strong>25</strong>: 25 − 18 = 7, <strong>Margem 1</strong>. Para não ceder, Vesna gasta <strong>2 de Vontade</strong> (1 + Margem 1) e segura firme. No lance seguinte, Lírio soma 20 (<strong>Margem 0</strong>): custaria só 1 de Vontade, mas Vesna, já cansada do jogo, decide <strong>não gastar</strong> e cede o ponto da cena, aceita uma dança, sem que a régua se mova. Tivesse cedido ao golpe de Margem 1, a régua teria andado <strong>1 passo</strong> a favor de Lírio.</div>
 
 ---
 
@@ -170,6 +187,6 @@ Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o inter
 
 - **Régua** −5 a +5, meio Neutro largo. O nível diz o que a pessoa faz por (ou contra) você. Pedido dentro do nível: de graça; acima: mova a régua até lá.
 - **Move por:** atos (saltos fixos), conversa (Ataque vs [Defesa Social](/regras/defesas), +1 passo por 6 de folga) e gasto de crédito ao cobrar. Sair do Neutro = 3 passos; lábia sozinha para em +2. Esfria 1 passo por estação.
-- **Recusar** = −1 Vontade anula um golpe. 
-- **Iniciativa** = 1d6 + Perspicácia + Sociabilidade.
+- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social; **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
+- **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance; se não pagar, cede o ponto e a régua anda **Margem** passos. Não vale contra leitura.
 - **Influência Estendida** (calma): tome a média (3/7/10/14/17/21) + stunts (0/+1/+2/+4, teto +7/período), modo ativo (arrisca) ou passivo (seguro), leitura vs Defesa Social para saber quanto falta.
