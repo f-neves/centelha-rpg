@@ -1,6 +1,6 @@
 ---
-ordem: 15
-numeral: "XV"
+ordem: 8
+numeral: "VIII"
 titulo: "As Três Defesas"
 resumo: "As três muralhas de toda criatura — corpo, postura e mente. Qual delas um ataque testa, como decidir entre Social e Mental, e o número de cada uma."
 ---
@@ -124,4 +124,4 @@ Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da cr
 - **Centelha** = +1 em cada defesa e no ataque. **Especialidade** só vale na situação dela.
 - **Social** = te mover ou te ler. **Mental** = invadir/impor na sua mente. **Medo da cena** = Bravura.
 
-Como a Defesa Social se desgasta numa disputa longa, e como as relações do dia a dia decidem o que alguém faz por você, é assunto do próximo capítulo, [Relações Sociais](/regras/relacoes-sociais).
+Como a Defesa Social se desgasta numa disputa longa, e como as relações do dia a dia decidem o que alguém faz por você, é assunto do capítulo [Relações Sociais](/regras/relacoes-sociais).
