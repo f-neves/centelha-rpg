@@ -115,9 +115,9 @@ const armas = defineCollection({
     defesaArma: z.number().int(),
     maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
     forcaMult: z.number().optional(),
-    tipoDano: z.enum(['corte', 'projetil', 'perfConc', 'impacto']), pen: z.number().int().min(0).max(5),
+    tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
     modos: z.array(z.object({
-      tipo: z.enum(['corte', 'projetil', 'perfConc', 'impacto']),
+      tipo: z.enum(['corte', 'perfurante', 'impacto']),
       perf: z.number().int().min(0).max(5).optional(),
       principal: z.boolean(),
     })),

@@ -62,28 +62,27 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 O **Dado da Arma** é 1d6 (leve), 2d6 (média) ou 3d6 (pesada). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força** — **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
 
-### Os quatro modos de dano
+### Os três modos de dano
 
 Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um — você escolhe conforme o alvo:
 
-- **Corte** — gume deslizante (espada, machado). Letal.
-- **Projétil** — flecha, virote, dardo lançado. Letal.
-- **Perf. Concentrada** — ponta rígida com energia concentrada (estocada, adaga de rondel, bico de picareta). Letal.
+- **Cortante** — gume deslizante (espada, machado). Letal.
+- **Perfurante** — ponta ou projétil que fura: estocada, adaga de rondel, bico de picareta, flecha, virote, dardo lançado. Letal. (Não há distinção entre projétil e estocada: ambos são Perfurante.)
 - **Impacto** — maça, martelo, malho; também socos e quedas. Em regra **nocauteia** (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
 
-A **Absorção** total de um golpe é **Absorção natural + a absorção da armadura**. A armadura tem **três Absorções** — Impacto, Corte e Perfuração —, e **Projétil e Perf. Concentrada usam a mesma Absorção de Perfuração**:
+A **Absorção** total de um golpe é **Absorção natural + a absorção da armadura**. A armadura tem **três Absorções** — Impacto, Corte e Perfuração —, e o **dano Perfurante usa a Absorção de Perfuração**:
 
-- **Absorção natural:** **Vigor + Centelha** contra o **Impacto** (o corpo e a fagulha amortecem a pancada); **só a Centelha** contra os letais (Corte, Projétil, Perf.) — a carne nua não para o fio nem a ponta, apenas a dureza sobre-humana da **Centelha** o faz. Um mortal (Centelha 0) tem **0** de Absorção natural contra lâminas: depende inteiramente da armadura.
+- **Absorção natural:** **Vigor + Centelha** contra o **Impacto** (o corpo e a fagulha amortecem a pancada); **só a Centelha** contra os letais (Cortante e Perfurante) — a carne nua não para o fio nem a ponta, apenas a dureza sobre-humana da **Centelha** o faz. Um mortal (Centelha 0) tem **0** de Absorção natural contra lâminas: depende inteiramente da armadura.
 - **+ armadura:** a placa quase zera o Corte, mal segura o Impacto e tem Perfuração baixa. Empilhar peças vale a **maior Absorção de cada categoria**; ver [Armas & Armaduras](/regras/armas-e-armaduras).
 
 ### O gate de Perfuração
 
-Os modos **Projétil** e **Perf. Concentrada** têm um **Nível de Perfuração** (0–5) e enfrentam o **Nível** (Resistência à Perfuração) da armadura:
+O modo **Perfurante** tem um **Nível de Perfuração** (0–5) e enfrenta o **Nível** (Resistência à Perfuração) da armadura:
 
 - Se o Nível de Perfuração da arma for **menor** que o da armadura, o golpe **resvala — dano 0** (nem rola).
 - Se for **igual ou maior**, o gate abre: rola o dano e subtrai a **Absorção de Perfuração** (baixa — ao furar, encontra pouca proteção).
 
-**Corte e Impacto não passam pelo gate** — sempre subtraem a absorção direto. É por isso que a placa completa (Nível 3) é à prova de qualquer arma de mão (espada, flecha, lança, besta, picareta param em N0–N2), cedendo só ao Impacto, à perfuração nível 3+ (cerco, magia), Proeza ou feitiçaria. O **Nível nunca soma** ao empilhar armaduras: vale sempre o maior.
+**Cortante e Impacto não passam pelo gate** — sempre subtraem a absorção direto. É por isso que a placa completa (Nível 3) é à prova de qualquer arma de mão (espada, flecha, lança, besta, picareta param em N0–N2), cedendo só ao Impacto, à perfuração nível 3+ (cerco, magia), Proeza ou feitiçaria. O **Nível nunca soma** ao empilhar armaduras: vale sempre o maior.
 
 ### Couraça de Porte
 

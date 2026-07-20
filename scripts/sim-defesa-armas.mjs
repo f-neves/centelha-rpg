@@ -12,13 +12,13 @@ const QA_W = { 1: { b: 3, d: 2 }, 2: { b: 2, d: 4 }, 3: { b: 1, d: 6 } };
 
 // arma: classe, speed, dado, acerto, mãos, modo, perf, defArma(NOVO)
 const ARMAS = {
-  Adaga:    { cl:'leve',  spd:5, die:1, acc:2, hands:1, mode:'perfConc', perf:0, wdef:1 },
+  Adaga:    { cl:'leve',  spd:5, die:1, acc:2, hands:1, mode:'perfurante', perf:0, wdef:1 },
   EspCurta: { cl:'leve',  spd:5, die:1, acc:2, hands:1, mode:'corte',    perf:0, wdef:1 },
   EspLonga: { cl:'media', spd:6, die:2, acc:1, hands:1, mode:'corte',    perf:0, wdef:1 },
   Machado:  { cl:'media', spd:6, die:2, acc:1, hands:1, mode:'corte',    perf:0, wdef:1 },
   Maca:     { cl:'media', spd:6, die:2, acc:1, hands:1, mode:'impacto',  perf:0, wdef:1 },
-  Picareta: { cl:'media', spd:6, die:2, acc:1, hands:1, mode:'perfConc', perf:2, wdef:1 },
-  Lanca:    { cl:'haste', spd:6, die:2, acc:1, hands:2, mode:'perfConc', perf:1, wdef:2 },
+  Picareta: { cl:'media', spd:6, die:2, acc:1, hands:1, mode:'perfurante', perf:2, wdef:1 },
+  Lanca:    { cl:'haste', spd:6, die:2, acc:1, hands:2, mode:'perfurante', perf:1, wdef:2 },
   Montante: { cl:'pesada',spd:7, die:3, acc:0, hands:2, mode:'corte',    perf:1, wdef:-2 },
   Martelo:  { cl:'pesada',spd:7, die:3, acc:0, hands:2, mode:'impacto',  perf:2, wdef:-2 },
 };

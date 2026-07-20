@@ -80,8 +80,8 @@
       <div class="row"><label>Força</label><input type="range" id="aFor" min="0" max="8" value="3"><span class="val" id="aForv"></span></div>
       <div class="row"><label>Empunhadura</label><select id="aHands"><option value="1">1 mão (+Força)</option><option value="2">2 mãos (+2×Força)</option></select></div>
       <div class="row"><label>Modo de dano</label><select id="aMode">
-        <option value="corte">Corte</option><option value="impacto">Impacto</option>
-        <option value="projetil">Projétil</option><option value="perfConc">Perfurante</option></select></div>
+        <option value="corte">Cortante</option><option value="impacto">Impacto</option>
+        <option value="perfurante">Perfurante</option></select></div>
       <div class="row" id="aPerfRow"><label>Nível de Perfuração da arma</label><input type="range" id="aPerf" min="0" max="5" value="1"><span class="val" id="aPerfv"></span></div>
       <hr class="sep">
       <div class="check"><input type="checkbox" id="aSecond"><label for="aSecond">Modo secundário (−2 acerto, −2 dano)</label></div>
@@ -142,19 +142,19 @@
 // ---------- presets ----------
 const WEAPONS = [
   {n:'— manual —', cl:null},
-  {n:'Adaga',            cl:'leve',     die:1, acc:2, hands:1, mode:'perfConc', perf:0},
+  {n:'Adaga',            cl:'leve',     die:1, acc:2, hands:1, mode:'perfurante', perf:0},
   {n:'Espada Curta',     cl:'leve',     die:1, acc:2, hands:1, mode:'corte',    perf:0},
   {n:'Desarmado / Briga',cl:'leve',     die:1, acc:0, hands:1, mode:'impacto',  perf:0},
   {n:'Espada Longa',     cl:'média',    die:2, acc:1, hands:1, mode:'corte',    perf:0},
   {n:'Machado',          cl:'média',    die:2, acc:1, hands:1, mode:'corte',    perf:0},
   {n:'Maça',             cl:'média',    die:2, acc:1, hands:1, mode:'impacto',  perf:0},
-  {n:'Picareta de Guerra',cl:'média',   die:2, acc:1, hands:1, mode:'perfConc', perf:2},
-  {n:'Lança',            cl:'haste',    die:2, acc:1, hands:2, mode:'perfConc', perf:1},
+  {n:'Picareta de Guerra',cl:'média',   die:2, acc:1, hands:1, mode:'perfurante', perf:2},
+  {n:'Lança',            cl:'haste',    die:2, acc:1, hands:2, mode:'perfurante', perf:1},
   {n:'Alabarda',         cl:'haste',    die:2, acc:1, hands:2, mode:'corte',    perf:1},
   {n:'Montante',         cl:'pesada',   die:3, acc:0, hands:2, mode:'corte',    perf:1},
   {n:'Martelo de Guerra',cl:'pesada',   die:3, acc:0, hands:2, mode:'impacto',  perf:2},
-  {n:'Arco',             cl:'distância',die:2, acc:1, hands:2, mode:'projetil', perf:1},
-  {n:'Besta Pesada',     cl:'distância',die:3, acc:1, hands:2, mode:'projetil', perf:2},
+  {n:'Arco',             cl:'distância',die:2, acc:1, hands:2, mode:'perfurante', perf:1},
+  {n:'Besta Pesada',     cl:'distância',die:3, acc:1, hands:2, mode:'perfurante', perf:2},
 ];
 const ARMORS = [
   {n:'— manual —', cl:null},
@@ -171,8 +171,8 @@ const ARMORS = [
 // Quase-Acerto por classe (dado da arma) e por classe de armadura
 const QA_W = {1:{b:3,d:2}, 2:{b:2,d:4}, 3:{b:1,d:6}};
 const QA_A = {nenhuma:{b:0,r:0}, leve:{b:1,r:0}, 'média':{b:2,r:2}, pesada:{b:3,r:4}};
-const MODE_CAT = {corte:'corte', impacto:'impacto', projetil:'perfuracao', perfConc:'perfuracao'};
-const GATE_MODES = {projetil:1, perfConc:1};
+const MODE_CAT = {corte:'corte', impacto:'impacto', perfurante:'perfuracao'};
+const GATE_MODES = {perfurante:1};
 
 // ---------- mecânica de dados ----------
 const floor=Math.floor;

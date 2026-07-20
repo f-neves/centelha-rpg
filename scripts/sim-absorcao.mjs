@@ -9,7 +9,7 @@ const armas = rd('armas.json'), armaduras = rd('armaduras.json'), regras = rd('r
 const fl = Math.floor;
 const cNoSoak = regras.dano.centelhaNoSoak ?? 0;
 const danoForca = regras.derivados.danoForca; // {umaMao, duasMaos}
-const MODO_SOAK = { corte: 'corte', projetil: 'perfuracao', perfConc: 'perfuracao', impacto: 'impacto' };
+const MODO_SOAK = { corte: 'corte', perfurante: 'perfuracao', impacto: 'impacto' };
 const soakNat = (vig, cat) => (cat === 'impacto' ? vig : fl(vig / 2));
 const SCALE = +(process.argv[2] || 1); // fator aplicado aos Soaks de armadura (1 = atual)
 const ARM = Object.fromEntries(armaduras.map((a) => {
@@ -36,7 +36,7 @@ function passa(w, armId, forca) {
   const cat = MODO_SOAK[modo];
   const arm = ARM[armId];
   // gate de perfuração
-  if ((modo === 'projetil' || modo === 'perfConc') && (w.pen ?? 0) < (arm.resistPerf ?? 0)) return { dano, soak: '—', through: 0, resvala: true };
+  if (modo === 'perfurante' && (w.pen ?? 0) < (arm.resistPerf ?? 0)) return { dano, soak: '—', through: 0, resvala: true };
   const soak = soakNat(VIGOR, cat) + CENT * cNoSoak + (arm.soak[cat] ?? 0);
   return { dano, soak, through: Math.max(0, +(dano - soak).toFixed(1)), resvala: false };
 }
@@ -57,7 +57,7 @@ function tabela(forca) {
 }
 
 console.log('Soak total por modo = Soak natural (Vigor no Impacto, [Vigor/2] em Corte/Perf) + Centelha + armadura.');
-console.log('Gate: Projétil/Perf. com Nível de Perfuração < Resistência da armadura RESVALAM (dano 0).');
+console.log('Gate: Perfurante com Nível de Perfuração < Resistência da armadura RESVALA (dano 0).');
 tabela(3);
 tabela(5);
 

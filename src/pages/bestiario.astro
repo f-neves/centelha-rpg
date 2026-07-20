@@ -45,10 +45,10 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 const cap = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 // conceito sem o porte repetido (o Porte já aparece à parte), com inicial maiúscula
 const conceitoLimpo = (i: any) => cap(String(i.conceito || '').replace(new RegExp(`\\s*\\b${i.porte}\\b\\s*`, 'i'), ' ').replace(/\s+/g, ' ').trim());
-// ataque: "7d6+2 +8" → "7d6 +2 +8"; dano: tipo por extenso → sigla (I)/(C)/(P)/(Pr)
-const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfConc: '(P)', projetil: '(Pr)' };
+// ataque: "7d6+2 +8" → "7d6 +2 +8"; dano: tipo por extenso → sigla (I)/(C)/(P)
+const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
 const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
-const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfConc|projetil)\b/g, (m) => DANO_AB[m]);
+const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
 // tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
 const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || (i.tecnicas?.length) || (i.artes?.length) || i.notas);
 ---

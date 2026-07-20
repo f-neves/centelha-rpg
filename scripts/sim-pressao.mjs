@@ -13,8 +13,8 @@ const floor = Math.floor;
 // ---------- Quase-Acerto por classe ----------
 const QA_W = { 1: { b: 3, d: 2 }, 2: { b: 2, d: 4 }, 3: { b: 1, d: 6 } };
 const QA_A = { nenhuma: { b: 0, r: 0 }, leve: { b: 1, r: 0 }, media: { b: 2, r: 2 }, pesada: { b: 3, r: 4 } };
-const MODE_CAT = { corte: 'corte', impacto: 'impacto', projetil: 'perfuracao', perfConc: 'perfuracao' };
-const GATE = { projetil: 1, perfConc: 1 };
+const MODE_CAT = { corte: 'corte', impacto: 'impacto', perfurante: 'perfuracao' };
+const GATE = { perfurante: 1 };
 
 // ---------- perfis (ajuste aqui) ----------
 function heroi(centelha) {

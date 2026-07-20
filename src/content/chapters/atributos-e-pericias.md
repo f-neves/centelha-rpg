@@ -74,7 +74,7 @@ As Habilidades vão de **0 a 5** e cobrem o tronco do que um aventureiro faz. Ca
 - **Esquiva** — Desviar-se de golpes e perigos pela mobilidade; base da Defesa por Esquiva. *(Destreza)*
 - **Escudos** — Bloquear com escudo e usá-lo ofensivamente. *(Destreza/Força)*
 
-<p class="muted">As Habilidades de arma se organizam pelo <strong>punho</strong> (uma mão, duas mãos), não pelo tipo de dano: "Armas de Uma Mão" cobre tanto a espada que retalha quanto a maça que esmaga. Corte, perfuração e impacto são propriedade da <em>arma</em> — a mesma Habilidade empunha vários estilos.</p>
+<p class="muted">As Habilidades de arma se organizam pelo <strong>punho</strong> (uma mão, duas mãos), não pelo tipo de dano: "Armas de Uma Mão" cobre tanto a espada que retalha quanto a maça que esmaga. Cortante, perfurante e impacto são propriedade da <em>arma</em> — a mesma Habilidade empunha vários estilos.</p>
 
 #### Físicas
 - **Atletismo** — Correr, saltar, escalar, nadar e proeza física geral. Sustenta o Deslocamento e os Saltos. *(Força/Destreza/Vigor)*

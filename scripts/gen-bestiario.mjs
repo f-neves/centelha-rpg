@@ -138,8 +138,8 @@ const NPCS = [
     conceito: 'fogo à distância', descricao: 'Domina o campo antes do contato; recua se cercado.', tags: ['humano'],
     attrs: { forca: 2, destreza: 4, vigor: 2, percepcao: 3 }, pericias: { 'atirador': 4, esquiva: 2, prontidao: 3 }, integridade: 4, vontade: 5,
     armadura: 'couro',
-    ataques: [{ nome: 'Arco', atrib: 'destreza', pericia: 'atirador', dado: 2, distancia: true, tipo: 'projetil', acerto: 1, perf: 1, ticks: 6 }],
-    notas: 'Projétil perf. 1: fura couro e malha, mas resvala na placa (Resist. 2). Mira (+2) quando pode.' },
+    ataques: [{ nome: 'Arco', atrib: 'destreza', pericia: 'atirador', dado: 2, distancia: true, tipo: 'perfurante', acerto: 1, perf: 1, ticks: 6 }],
+    notas: 'Perfurante perf. 1: fura couro e malha, mas resvala na placa (Resist. 2). Mira (+2) quando pode.' },
 
   { id: 'bruto', nome: 'Bruto', tipo: 'soldado', ameaca: 3, centelha: 0,
     conceito: 'músculo pesado', descricao: 'Lento, mas cada golpe derruba. Mira em quebrar a guarda.', tags: ['humano'],
@@ -159,7 +159,7 @@ const NPCS = [
     conceito: 'lâmina silenciosa', descricao: 'Surge das sombras, aplica um golpe e some.', tags: ['humano', 'centelha'],
     attrs: { forca: 3, destreza: 5, vigor: 3, percepcao: 4 }, pericias: { 'armas-uma-mao': 4, furtividade: 5, esquiva: 4, prontidao: 4, manha: 3 }, integridade: 4, vontade: 6,
     armadura: 'couro',
-    ataques: [{ nome: 'Adaga (Ágil)', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 1, mao: 1, tipo: 'perfConc', acerto: 2, perf: 0, ticks: 5, notas: 'Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido' }],
+    ataques: [{ nome: 'Adaga (Ágil)', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 1, mao: 1, tipo: 'perfurante', acerto: 2, perf: 0, ticks: 5, notas: 'Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido' }],
     tecnicas: ['pisar-leve', 'esgueirar', 'bote-silencioso', 'manto-de-sombras'],
     notas: 'Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).' },
 
@@ -167,7 +167,7 @@ const NPCS = [
     conceito: 'esgrimista exímio', descricao: 'Vive do duelo: apara, finta e responde com a ripose.', tags: ['humano', 'centelha'],
     attrs: { forca: 3, destreza: 5, vigor: 3 }, pericias: { 'armas-uma-mao': 5, esquiva: 4, prontidao: 4 }, integridade: 5, vontade: 6,
     armadura: 'couro',
-    ataques: [{ nome: 'Florete (Ágil)', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 1, mao: 1, tipo: 'perfConc', acerto: 2, perf: 1, ticks: 5 }],
+    ataques: [{ nome: 'Florete (Ágil)', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 1, mao: 1, tipo: 'perfurante', acerto: 2, perf: 1, ticks: 5 }],
     tecnicas: ['postura-fluida', 'aparar', 'finta', 'riposte'],
     notas: 'Aparar: +3 na Defesa; Riposte contra-ataca ao aparar.' },
 
@@ -328,14 +328,14 @@ function ataqueDe(m, at, cat, ameaca) {
     return { nome: 'Toque dilacerante', atrib: 'influencia', pericia: 'briga', dado: 2, mao: 1, tipo: 'necrótico (vs Def. Mental)', ticks: 5, notas: 'atravessa matéria; só Arcano, Proteção ou arma encantada o ferem' };
   }
   const dado = ({ minusculo: 1, pequeno: 1, medio: 1, grande: 2, enorme: 3, imenso: 3, colossal: 4 })[m.size] || 1;
-  let nome = 'Ataque natural', tipo = 'perfConc';
+  let nome = 'Ataque natural', tipo = 'perfurante';
   if (cat === 'Gigante') { nome = 'Pancada descomunal'; tipo = 'impacto'; }
   else if (cat === 'Humanoide' || cat === 'Monstro') { nome = 'Arma'; tipo = 'corte'; }
   else if (cat === 'Morto-vivo') { nome = 'Golpe'; tipo = 'impacto'; }
   else if (cat === 'Limo') { nome = 'Pseudópode'; tipo = 'impacto'; }
-  else if (cat === 'Dragão') { nome = 'Garras e mordida'; tipo = 'perfConc'; }
+  else if (cat === 'Dragão') { nome = 'Garras e mordida'; tipo = 'perfurante'; }
   else if (['Demônio', 'Diabo', 'Celestial', 'Exterior', 'Elemental'].includes(cat)) { nome = 'Golpe planar'; tipo = 'corte'; }
-  else { nome = 'Garras e presas'; tipo = 'perfConc'; }
+  else { nome = 'Garras e presas'; tipo = 'perfurante'; }
   const ticks = dado >= 3 ? 7 : dado === 2 ? 6 : 5;
   // Ataque natural = UM membro (garra/braço/tentáculo) → Força ×1. Força ×2 exige arma com vários membros.
   return { nome, atrib: 'forca', pericia: 'briga', dado, mao: 1, tipo, acerto: 0, ticks };

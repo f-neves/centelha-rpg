@@ -10,7 +10,7 @@ Heróis aguentam o tranco. O combate não começa com a morte à espreita a cada
 Quando você sofre dano (o que sobra do golpe depois da Absorção), você o **marca** na sua folha. Ele vem em duas trilhas, que se comportam de modo diferente:
 
 - **Impacto** (contundente) — em regra só **nocauteia**: derruba, mas não mata.
-- **Letal** (corte, projétil e perfuração) — **fere de verdade**: é o que tira vidas.
+- **Letal** (cortante e perfurante) — **fere de verdade**: é o que tira vidas.
 
 A **soma das duas** trilhas é o seu dano total, e é ela que define o seu estado. A morte, porém, só olha para o Letal — como você verá.
 

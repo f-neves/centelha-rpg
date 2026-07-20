@@ -230,13 +230,13 @@
       {
         "nome": "Arco",
         "pool": "4d6 +1",
-        "dano": "2d6 projetil · perf. 1",
+        "dano": "2d6 perfurante · perf. 1",
         "ticks": 6
       }
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "Projétil perf. 1: fura couro e malha, mas resvala na placa (Resist. 2). Mira (+2) quando pode.",
+    "notas": "Perfurante perf. 1: fura couro e malha, mas resvala na placa (Resist. 2). Mira (+2) quando pode.",
     "pendente": false
   },
   {
@@ -376,7 +376,7 @@
       {
         "nome": "Adaga (Ágil)",
         "pool": "4d6+2 +4",
-        "dano": "1d6 +3 perfConc · perf. 0",
+        "dano": "1d6 +3 perfurante · perf. 0",
         "ticks": 5,
         "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
       }
@@ -431,7 +431,7 @@
       {
         "nome": "Florete (Ágil)",
         "pool": "5d6 +4",
-        "dano": "1d6 +3 perfConc · perf. 1",
+        "dano": "1d6 +3 perfurante · perf. 1",
         "ticks": 5
       }
     ],
@@ -1771,7 +1771,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6+2",
-        "dano": "1d6 +3 perfConc",
+        "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
     ],
@@ -1827,7 +1827,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6",
-        "dano": "2d6 +9 perfConc",
+        "dano": "2d6 +9 perfurante",
         "ticks": 6
       }
     ],
@@ -1875,7 +1875,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6",
-        "dano": "2d6 +9 perfConc",
+        "dano": "2d6 +9 perfurante",
         "ticks": 6
       }
     ],
@@ -1923,7 +1923,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -1985,7 +1985,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2",
-        "dano": "2d6 +8 perfConc",
+        "dano": "2d6 +8 perfurante",
         "ticks": 6
       }
     ],
@@ -2033,7 +2033,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -2081,7 +2081,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2",
-        "dano": "2d6 +8 perfConc",
+        "dano": "2d6 +8 perfurante",
         "ticks": 6
       }
     ],
@@ -2129,7 +2129,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6+2",
-        "dano": "3d6 +11 perfConc",
+        "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
     ],
@@ -2191,7 +2191,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -2239,7 +2239,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -2287,7 +2287,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -2343,7 +2343,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -2403,7 +2403,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -2459,7 +2459,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +1",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -2522,7 +2522,7 @@
       {
         "nome": "Garras e presas",
         "pool": "9d6",
-        "dano": "3d6 +13 perfConc",
+        "dano": "3d6 +13 perfurante",
         "ticks": 7
       }
     ],
@@ -2570,7 +2570,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -2619,7 +2619,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2 +1",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -2877,7 +2877,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +1",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -2926,7 +2926,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2 +1",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -2975,7 +2975,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6 +1",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -3037,7 +3037,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2 +2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -3104,7 +3104,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "5d6+2 +2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -3165,7 +3165,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6 +1",
-        "dano": "3d6 +8 perfConc",
+        "dano": "3d6 +8 perfurante",
         "ticks": 7
       }
     ],
@@ -3223,7 +3223,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -3286,7 +3286,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6+2 +2",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -3349,7 +3349,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6+2 +2",
-        "dano": "2d6 +8 perfConc",
+        "dano": "2d6 +8 perfurante",
         "ticks": 6
       }
     ],
@@ -3412,7 +3412,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -3483,7 +3483,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2 +2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -3546,7 +3546,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6 +1",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -3657,7 +3657,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2 +1",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -3719,7 +3719,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6 +1",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -3783,7 +3783,7 @@
       {
         "nome": "Garras e presas",
         "pool": "8d6 +2",
-        "dano": "3d6 +11 perfConc",
+        "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
     ],
@@ -3853,7 +3853,7 @@
       {
         "nome": "Garras e presas",
         "pool": "9d6 +1",
-        "dano": "3d6 +13 perfConc",
+        "dano": "3d6 +13 perfurante",
         "ticks": 7
       }
     ],
@@ -3902,7 +3902,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6+2 +1",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -3952,7 +3952,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6+2 +4",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -7021,7 +7021,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6 +3",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -7098,7 +7098,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2 +4",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -7179,7 +7179,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6 +2",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -7248,7 +7248,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6+2 +3",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -7322,7 +7322,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6+2 +3",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -7552,7 +7552,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +3",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -7620,7 +7620,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +3",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -7790,7 +7790,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6 +4",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -7868,7 +7868,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2 +4",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -7941,7 +7941,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6+2 +1",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -8161,7 +8161,7 @@
       {
         "nome": "Garras e presas",
         "pool": "9d6+2 +6",
-        "dano": "4d6 +14 perfConc",
+        "dano": "4d6 +14 perfurante",
         "ticks": 7
       }
     ],
@@ -8237,7 +8237,7 @@
       {
         "nome": "Garras e presas",
         "pool": "10d6+2 +9",
-        "dano": "4d6 +16 perfConc",
+        "dano": "4d6 +16 perfurante",
         "ticks": 7
       }
     ],
@@ -8318,7 +8318,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "5d6+2 +3",
-        "dano": "1d6 +6 perfConc",
+        "dano": "1d6 +6 perfurante",
         "ticks": 5
       }
     ],
@@ -8391,7 +8391,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "7d6 +4",
-        "dano": "2d6 +9 perfConc",
+        "dano": "2d6 +9 perfurante",
         "ticks": 6
       }
     ],
@@ -8468,7 +8468,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "8d6 +5",
-        "dano": "3d6 +11 perfConc",
+        "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
     ],
@@ -8552,7 +8552,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "9d6+2 +6",
-        "dano": "3d6 +14 perfConc",
+        "dano": "3d6 +14 perfurante",
         "ticks": 7
       }
     ],
@@ -8639,7 +8639,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "10d6+2 +8",
-        "dano": "4d6 +16 perfConc",
+        "dano": "4d6 +16 perfurante",
         "ticks": 7
       }
     ],
@@ -8727,7 +8727,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "6d6 +3",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -8806,7 +8806,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "8d6 +5",
-        "dano": "3d6 +11 perfConc",
+        "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
     ],
@@ -8889,7 +8889,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "7d6+2 +5",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -8968,7 +8968,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "8d6+2 +6",
-        "dano": "3d6 +12 perfConc",
+        "dano": "3d6 +12 perfurante",
         "ticks": 7
       }
     ],
@@ -9158,7 +9158,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -9206,7 +9206,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -9254,7 +9254,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -9302,7 +9302,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -9449,7 +9449,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2 +1",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -9694,7 +9694,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2 +1",
-        "dano": "1d6 +6 perfConc",
+        "dano": "1d6 +6 perfurante",
         "ticks": 5
       }
     ],
@@ -9742,7 +9742,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -9790,7 +9790,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -9838,7 +9838,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -9886,7 +9886,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6+2",
-        "dano": "2d6 +9 perfConc",
+        "dano": "2d6 +9 perfurante",
         "ticks": 6
       }
     ],
@@ -9983,7 +9983,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -10031,7 +10031,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -10128,7 +10128,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2",
-        "dano": "2d6 +8 perfConc",
+        "dano": "2d6 +8 perfurante",
         "ticks": 6
       }
     ],
@@ -10225,7 +10225,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -10273,7 +10273,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -10321,7 +10321,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -10418,7 +10418,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -10466,7 +10466,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -10515,7 +10515,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6 +2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -10564,7 +10564,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6 +3",
-        "dano": "2d6 +9 perfConc",
+        "dano": "2d6 +9 perfurante",
         "ticks": 6
       }
     ],
@@ -10613,7 +10613,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6 +3",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -10661,7 +10661,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -10709,7 +10709,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -10856,7 +10856,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6+2 +1",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -11198,7 +11198,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -11246,7 +11246,7 @@
       {
         "nome": "Garras e presas",
         "pool": "9d6+2",
-        "dano": "3d6 +14 perfConc",
+        "dano": "3d6 +14 perfurante",
         "ticks": 7
       }
     ],
@@ -11294,7 +11294,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -11342,7 +11342,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -11390,7 +11390,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -11438,7 +11438,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -11486,7 +11486,7 @@
       {
         "nome": "Garras e presas",
         "pool": "9d6",
-        "dano": "3d6 +13 perfConc",
+        "dano": "3d6 +13 perfurante",
         "ticks": 7
       }
     ],
@@ -11534,7 +11534,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6+2",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -11582,7 +11582,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6",
-        "dano": "1d6 +3 perfConc",
+        "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
     ],
@@ -11679,7 +11679,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -11727,7 +11727,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6",
-        "dano": "1d6 +3 perfConc",
+        "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
     ],
@@ -11776,7 +11776,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "7d6+2 +4",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -11825,7 +11825,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +3",
-        "dano": "2d6 +5 perfConc",
+        "dano": "2d6 +5 perfurante",
         "ticks": 6
       }
     ],
@@ -12020,7 +12020,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6+2",
-        "dano": "1d6 +3 perfConc",
+        "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
     ],
@@ -12068,7 +12068,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6",
-        "dano": "2d6 +8 perfConc",
+        "dano": "2d6 +8 perfurante",
         "ticks": 6
       }
     ],
@@ -12312,7 +12312,7 @@
       {
         "nome": "Garras e presas",
         "pool": "8d6+2",
-        "dano": "3d6 +12 perfConc",
+        "dano": "3d6 +12 perfurante",
         "ticks": 7
       }
     ],
@@ -12361,7 +12361,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6 +2",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -12409,7 +12409,7 @@
       {
         "nome": "Garras e presas",
         "pool": "0d6+2",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -12457,7 +12457,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -12505,7 +12505,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -12553,7 +12553,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -12601,7 +12601,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -12649,7 +12649,7 @@
       {
         "nome": "Garras e presas",
         "pool": "0d6+2",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -12697,7 +12697,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -12745,7 +12745,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -12793,7 +12793,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6+2",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -12890,7 +12890,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -12939,7 +12939,7 @@
       {
         "nome": "Garras e presas",
         "pool": "8d6 +4",
-        "dano": "3d6 +11 perfConc",
+        "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
     ],
@@ -13184,7 +13184,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2 +3",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -13233,7 +13233,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2 +3",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -13576,7 +13576,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "6d6 +3",
-        "dano": "1d6 +7 perfConc",
+        "dano": "1d6 +7 perfurante",
         "ticks": 5
       }
     ],
@@ -13722,7 +13722,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6",
-        "dano": "2d6 +8 perfConc",
+        "dano": "2d6 +8 perfurante",
         "ticks": 6
       }
     ],
@@ -13770,7 +13770,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6",
-        "dano": "2d6 +9 perfConc",
+        "dano": "2d6 +9 perfurante",
         "ticks": 6
       }
     ],
@@ -13867,7 +13867,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -13915,7 +13915,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6",
-        "dano": "1d6 +3 perfConc",
+        "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
     ],
@@ -13963,7 +13963,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -14011,7 +14011,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -14060,7 +14060,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6 +3",
-        "dano": "1d6 +3 perfConc",
+        "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
     ],
@@ -14254,7 +14254,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -14302,7 +14302,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -14351,7 +14351,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "9d6 +5",
-        "dano": "3d6 +13 perfConc",
+        "dano": "3d6 +13 perfurante",
         "ticks": 7
       }
     ],
@@ -14400,7 +14400,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "10d6 +5",
-        "dano": "4d6 +15 perfConc",
+        "dano": "4d6 +15 perfurante",
         "ticks": 7
       }
     ],
@@ -14449,7 +14449,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "10d6+2 +5",
-        "dano": "4d6 +16 perfConc",
+        "dano": "4d6 +16 perfurante",
         "ticks": 7
       }
     ],
@@ -14546,7 +14546,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -14594,7 +14594,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6+2",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -14740,7 +14740,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -14887,7 +14887,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6 +1",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -15034,7 +15034,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +3",
-        "dano": "2d6 +5 perfConc",
+        "dano": "2d6 +5 perfurante",
         "ticks": 6
       }
     ],
@@ -15083,7 +15083,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6 +4",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -15132,7 +15132,7 @@
       {
         "nome": "Garras e presas",
         "pool": "8d6+2 +5",
-        "dano": "3d6 +12 perfConc",
+        "dano": "3d6 +12 perfurante",
         "ticks": 7
       }
     ],
@@ -15376,7 +15376,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6+2",
-        "dano": "1d6 +3 perfConc",
+        "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
     ],
@@ -15424,7 +15424,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -15473,7 +15473,7 @@
       {
         "nome": "Garras e presas",
         "pool": "5d6 +2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -15522,7 +15522,7 @@
       {
         "nome": "Garras e presas",
         "pool": "8d6 +5",
-        "dano": "3d6 +11 perfConc",
+        "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
     ],
@@ -15571,7 +15571,7 @@
       {
         "nome": "Garras e mordida",
         "pool": "2d6 +1",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -15619,7 +15619,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -15667,7 +15667,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -15716,7 +15716,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6 +3",
-        "dano": "3d6 +9 perfConc",
+        "dano": "3d6 +9 perfurante",
         "ticks": 7
       }
     ],
@@ -15813,7 +15813,7 @@
       {
         "nome": "Garras e presas",
         "pool": "8d6 +4",
-        "dano": "2d6 +11 perfConc",
+        "dano": "2d6 +11 perfurante",
         "ticks": 6
       }
     ],
@@ -15960,7 +15960,7 @@
       {
         "nome": "Garras e presas",
         "pool": "9d6 +4",
-        "dano": "3d6 +13 perfConc",
+        "dano": "3d6 +13 perfurante",
         "ticks": 7
       }
     ],
@@ -16008,7 +16008,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -16056,7 +16056,7 @@
       {
         "nome": "Garras e presas",
         "pool": "8d6+2",
-        "dano": "3d6 +12 perfConc",
+        "dano": "3d6 +12 perfurante",
         "ticks": 7
       }
     ],
@@ -16105,7 +16105,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6+2 +2",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -16299,7 +16299,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6+2",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -16347,7 +16347,7 @@
       {
         "nome": "Garras e presas",
         "pool": "2d6",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -16395,7 +16395,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -16443,7 +16443,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -16491,7 +16491,7 @@
       {
         "nome": "Garras e presas",
         "pool": "7d6+2",
-        "dano": "3d6 +10 perfConc",
+        "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
     ],
@@ -16540,7 +16540,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2 +1",
-        "dano": "1d6 +1 perfConc",
+        "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
     ],
@@ -16784,7 +16784,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 +2 perfConc",
+        "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
     ],
@@ -16832,7 +16832,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6",
-        "dano": "1d6 +3 perfConc",
+        "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
     ],
@@ -16880,7 +16880,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -16928,7 +16928,7 @@
       {
         "nome": "Garras e presas",
         "pool": "1d6+2",
-        "dano": "1d6 perfConc",
+        "dano": "1d6 perfurante",
         "ticks": 5
       }
     ],
@@ -16976,7 +16976,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6",
-        "dano": "1d6 +4 perfConc",
+        "dano": "1d6 +4 perfurante",
         "ticks": 5
       }
     ],
@@ -17024,7 +17024,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6+2",
-        "dano": "2d6 +6 perfConc",
+        "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
@@ -17073,7 +17073,7 @@
       {
         "nome": "Garras e presas",
         "pool": "4d6 +2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],
@@ -17122,7 +17122,7 @@
       {
         "nome": "Garras e presas",
         "pool": "6d6 +3",
-        "dano": "2d6 +7 perfConc",
+        "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
     ],
@@ -17219,7 +17219,7 @@
       {
         "nome": "Garras e presas",
         "pool": "3d6+2",
-        "dano": "1d6 +5 perfConc",
+        "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
     ],

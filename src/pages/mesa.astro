@@ -107,6 +107,9 @@ import Base from '../layouts/Base.astro';
   const base = import.meta.env.BASE_URL;
   const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
   const esc = (s: string) => (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  // dano das criaturas: tipo por extenso → sigla (I)/(C)/(P), igual ao bestiário
+  const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
+  const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
   const norm = (s: string) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const id = new URLSearchParams(location.search).get('id');
 
@@ -348,7 +351,7 @@ import Base from '../layouts/Base.astro';
       const cb = m.combate || {};
       const badges = `<span class="cr-b">A${m.ameaca}</span><span class="cr-b">Centelha ${m.centelha}</span><span class="cr-b">PV ${cb.pv ?? '-'}</span><span class="cr-b">Def ${cb.defesa ?? '-'}</span>${m.porte ? `<span class="cr-b">${esc(m.porte)}</span>` : ''}`;
       const atk0 = (cb.ataques || [])[0];
-      const atkLinha = atk0 ? `<div class="cr-atk"><span class="cr-atk-nm">${esc(atk0.nome)}</span> ataque <b>${esc(atk0.pool)}</b> · dano <b>${esc(atk0.dano)}</b>${atk0.speed != null ? ` · Speed ${atk0.speed}` : ''}</div>` : '';
+      const atkLinha = atk0 ? `<div class="cr-atk"><span class="cr-atk-nm">${esc(atk0.nome)}</span> ataque <b>${esc(atk0.pool)}</b> · dano <b>${fmtDano(esc(atk0.dano))}</b>${atk0.speed != null ? ` · Speed ${atk0.speed}` : ''}</div>` : '';
       const notas = ehMestre
         ? `<textarea class="cr-notas" data-cr="${c.id}" rows="2" placeholder="Anotações do mestre (só você vê nesta lista)">${esc(c.notas || '')}</textarea>`
         : (c.notas ? `<p class="cr-notas-ro">${esc(c.notas)}</p>` : '');
@@ -394,7 +397,7 @@ import Base from '../layouts/Base.astro';
     const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>`;
     const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
     const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Val ${m.virtudes.valor}</span></div></div>` : '';
-    const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${esc(a.dano)}</b> · Speed ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
+    const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Speed ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
     const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
     const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
     const notas = m.notas ? `<h4 class="cc-h">Notas</h4><p class="ib-notas">${esc(m.notas)}</p>` : '';

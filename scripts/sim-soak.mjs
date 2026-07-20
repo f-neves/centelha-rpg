@@ -14,14 +14,14 @@ const soakNew = (V,C,mode)=> (mode==='impacto'? V : C);
 const ARM = {
   Nenhuma:{i:0,c:0,p:0,rp:0}, Malha:{i:1,c:8,p:1,rp:1}, Placa:{i:6,c:11,p:4,rp:3},
 };
-const catOf = {corte:'c', impacto:'i', perfConc:'p'};
+const catOf = {corte:'c', impacto:'i', perfurante:'p'};
 
 // armas de exemplo (dano-attr 4; 2 mãos dobra)
 const WP = {
   'Esp.Longa (corte 2d6,1m)': {die:2, mode:'corte',    add:4, perf:0},
   'Maça (impacto 2d6,1m)':    {die:2, mode:'impacto',  add:4, perf:0},
   'Martelo (impacto 3d6,2m)': {die:3, mode:'impacto',  add:8, perf:2},
-  'Lança (perf 2d6,2m)':      {die:2, mode:'perfConc', add:8, perf:1},
+  'Lança (perf 2d6,2m)':      {die:2, mode:'perfurante', add:8, perf:1},
 };
 
 const ALVOS = [
@@ -32,7 +32,7 @@ const ALVOS = [
 function dano(wp, V, C, arm, regra){
   const a=ARM[arm]; const cat=catOf[wp.mode]; const armS = cat==='i'?a.i:cat==='c'?a.c:a.p;
   // gate de perfuração
-  if((wp.mode==='perfConc')&& wp.perf < a.rp) return 0;
+  if((wp.mode==='perfurante')&& wp.perf < a.rp) return 0;
   const nat = regra==='old'? soakOld(V,C,wp.mode) : soakNew(V,C,wp.mode);
   return eHit(wp.die, wp.add - (nat+armS));
 }

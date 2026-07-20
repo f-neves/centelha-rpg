@@ -11,18 +11,18 @@ const d6 = () => 1 + Math.floor(Math.random() * 6);
 const floor = Math.floor;
 const QA_W = { 1: { b: 3, d: 2 }, 2: { b: 2, d: 4 }, 3: { b: 1, d: 6 } };
 const QA_A = { nenhuma: { b: 0, r: 0 }, leve: { b: 1, r: 0 }, media: { b: 2, r: 2 }, pesada: { b: 3, r: 4 } };
-const MODE_CAT = { corte: 'corte', impacto: 'impacto', projetil: 'perfuracao', perfConc: 'perfuracao' };
-const GATE = { projetil: 1, perfConc: 1 };
+const MODE_CAT = { corte: 'corte', impacto: 'impacto', perfurante: 'perfuracao' };
+const GATE = { perfurante: 1 };
 
 // ---- armas (damageAttr uniforme p/ isolar o desenho da arma) ----
 const ARMAS = {
-  Adaga:       { cl: 'leve',   spd: 5, die: 1, acc: 2, hands: 1, mode: 'perfConc', perf: 0 },
+  Adaga:       { cl: 'leve',   spd: 5, die: 1, acc: 2, hands: 1, mode: 'perfurante', perf: 0 },
   EspCurta:    { cl: 'leve',   spd: 5, die: 1, acc: 2, hands: 1, mode: 'corte',    perf: 0 },
   EspLonga:    { cl: 'media',  spd: 6, die: 2, acc: 1, hands: 1, mode: 'corte',    perf: 0 },
   Machado:     { cl: 'media',  spd: 6, die: 2, acc: 1, hands: 1, mode: 'corte',    perf: 0 },
   Maca:        { cl: 'media',  spd: 6, die: 2, acc: 1, hands: 1, mode: 'impacto',  perf: 0 },
-  Picareta:    { cl: 'media',  spd: 6, die: 2, acc: 1, hands: 1, mode: 'perfConc', perf: 2 },
-  Lanca:       { cl: 'haste',  spd: 6, die: 2, acc: 1, hands: 2, mode: 'perfConc', perf: 1 },
+  Picareta:    { cl: 'media',  spd: 6, die: 2, acc: 1, hands: 1, mode: 'perfurante', perf: 2 },
+  Lanca:       { cl: 'haste',  spd: 6, die: 2, acc: 1, hands: 2, mode: 'perfurante', perf: 1 },
   Montante:    { cl: 'pesada', spd: 7, die: 3, acc: 0, hands: 2, mode: 'corte',    perf: 1 },
   Martelo:     { cl: 'pesada', spd: 7, die: 3, acc: 0, hands: 2, mode: 'impacto',  perf: 2 },
 };

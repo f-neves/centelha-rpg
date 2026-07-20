@@ -84,14 +84,17 @@ export function folego(opts: { vigor: number; resistencia: number; vontade: numb
 }
 
 // ----- Dano, Soak e armadura -----
-export type Modo = 'corte' | 'projetil' | 'perfConc' | 'impacto';
+// Três modos de ataque: Cortante, Perfurante (funde projétil e estocada) e Impacto.
+export type Modo = 'corte' | 'perfurante' | 'impacto';
 export type SoakCat = 'impacto' | 'corte' | 'perfuracao';
-export const MODOS: Modo[] = ['corte', 'projetil', 'perfConc', 'impacto'];
-export const MODO_NOME: Record<Modo, string> = { corte: 'Corte', projetil: 'Projétil', perfConc: 'Perfurante', impacto: 'Impacto' };
-/** Ordem de exibição dos modos da arma: Projétil mantém a frente; depois Impacto · Corte · Perfurante. */
-export const MODO_ORDEM: Record<Modo, number> = { projetil: 0, impacto: 1, corte: 2, perfConc: 3 };
-/** Cada modo de ataque cai numa das 3 categorias de Soak da armadura (Projétil e Perf.C → Perfuração). */
-export const MODO_SOAK: Record<Modo, SoakCat> = { corte: 'corte', projetil: 'perfuracao', perfConc: 'perfuracao', impacto: 'impacto' };
+export const MODOS: Modo[] = ['corte', 'perfurante', 'impacto'];
+export const MODO_NOME: Record<Modo, string> = { corte: 'Cortante', perfurante: 'Perfurante', impacto: 'Impacto' };
+/** Sigla curta de cada modo, para blocos de combate e cards. */
+export const MODO_SIGLA: Record<Modo, string> = { corte: '(C)', perfurante: '(P)', impacto: '(I)' };
+/** Ordem de exibição dos modos da arma: Impacto · Cortante · Perfurante. */
+export const MODO_ORDEM: Record<Modo, number> = { impacto: 0, corte: 1, perfurante: 2 };
+/** Cada modo de ataque cai numa das 3 categorias de Soak da armadura (o Perfurante → Perfuração). */
+export const MODO_SOAK: Record<Modo, SoakCat> = { corte: 'corte', perfurante: 'perfuracao', impacto: 'impacto' };
 export const SOAK_CATS: SoakCat[] = ['impacto', 'corte', 'perfuracao'];
 export const SOAK_CAT_NOME: Record<SoakCat, string> = { impacto: 'Impacto', corte: 'Corte', perfuracao: 'Perfuração' };
 
@@ -120,9 +123,9 @@ export function soak(opts: { vigor: number; centelha: number; modo: Modo; armadu
   return soakNatural(opts.vigor, opts.modo) + opts.centelha * c + (opts.armaduraSoak ?? 0);
 }
 
-/** O gate de Perfuração abre? Só vale p/ projétil e perf. concentrada; corte/impacto sempre passam. */
+/** O gate de Perfuração abre? Só vale p/ o modo Perfurante; corte/impacto sempre passam. */
 export function gatePerfuracaoAbre(modo: Modo, perfArma: number, resistPerf: number) {
-  const modos = (regras.dano as { gatePerfuracao?: { modos: string[] } })?.gatePerfuracao?.modos ?? ['projetil', 'perfConc'];
+  const modos = (regras.dano as { gatePerfuracao?: { modos: string[] } })?.gatePerfuracao?.modos ?? ['perfurante'];
   if (!modos.includes(modo)) return true;
   return perfArma >= resistPerf;
 }

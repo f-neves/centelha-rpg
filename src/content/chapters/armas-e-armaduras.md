@@ -18,7 +18,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 - **Acerto** — um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)** — quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos** — uma ou duas; algumas são *Versáteis* e servem nas duas formas.
-- **Modos** — os **modos de ataque** da arma (Impacto, Corte, Perfurante, Projétil). A maioria das armas tem **mais de um**, e você escolhe por golpe conforme o alvo. Um deles é o **principal** (sem custo); os **secundários** saem com **−2 ao acerto e −2 ao dano**. Cada modo de perfuração carrega um **Nível de Perfuração**, escrito **(N0)–(N5)**. Ver *Os quatro modos de dano* em [Combate](/regras/combate).
+- **Modos** — os **modos de ataque** da arma (Impacto, Cortante, Perfurante). A maioria das armas tem **mais de um**, e você escolhe por golpe conforme o alvo. Um deles é o **principal** (sem custo); os **secundários** saem com **−2 ao acerto e −2 ao dano**. O modo **Perfurante** carrega um **Nível de Perfuração**, escrito **(N0)–(N5)**. Ver *Os três modos de dano* em [Combate](/regras/combate).
 - **Quase-Acerto** — errar por pouco ainda raspa. O valor é **fixo pela classe** (peso) da arma e da armadura; veja o capítulo [Quase-Acerto](/regras/quase-acerto).
 
 <div class="callout exemplo"><span class="lbl">Lendo uma arma</span>A <strong>Espada Longa</strong> é <em>Média · Versátil</em>: <strong>Speed 6</strong> (ataque médio), <strong>2d6</strong> de dado de dano + Força, <strong>+1</strong> no pool de ataque e <strong>+1</strong> no Bloqueio. Como é <em>Versátil</em>, dá para empunhá-la a duas mãos por <strong>+1 dado de dano</strong> e <strong>−1</strong> de Defesa da Arma — a mesma lâmina, dois estilos.</div>
@@ -81,11 +81,11 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Corte · <strong>P</strong> = Perfuração (estocada ou Projétil — usam a mesma Absorção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −2 ao dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Speed</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> vira 2 mãos por +1 dado e −1 Defesa). O <strong>Quase-Acerto</strong> sai do dado de Dano (1d6 leve, 2d6 média, 3d6 pesada) — ver <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
+<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −2 ao dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Speed</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> vira 2 mãos por +1 dado e −1 Defesa). O <strong>Quase-Acerto</strong> sai do dado de Dano (1d6 leve, 2d6 média, 3d6 pesada) — ver <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
 
 ## Armaduras
 
-A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impacto**, **Corte** e **Perfuração** (calibrados em pontos). Projétil e Perf. Concentrada usam a mesma **Absorção de Perfuração**. Repare na lógica histórica: a **placa** quase zera o **corte** (ninguém corta bom aço), mas o **impacto** atravessa o aço e quebra o corpo dentro. A **Perfuração** funciona ao contrário: é **difícil de furar** — cada armadura tem um **Nível** (Resistência à Perfuração, 0–5) que o Nível de Perfuração da arma precisa alcançar, senão o golpe **resvala** —, mas, **quando furada, absorve pouco** (a Absorção de Perfuração é baixa de propósito). A **Penalidade** incide nas ações físicas. O efeito da armadura no **Quase-Acerto** (bônus de margem + redução do raspão) é fixo pela classe — ver [Quase-Acerto](/regras/quase-acerto).
+A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impacto**, **Corte** e **Perfuração** (calibrados em pontos). O dano **Perfurante** usa a **Absorção de Perfuração**. Repare na lógica histórica: a **placa** quase zera o **corte** (ninguém corta bom aço), mas o **impacto** atravessa o aço e quebra o corpo dentro. A **Perfuração** funciona ao contrário: é **difícil de furar** — cada armadura tem um **Nível** (Resistência à Perfuração, 0–5) que o Nível de Perfuração da arma precisa alcançar, senão o golpe **resvala** —, mas, **quando furada, absorve pouco** (a Absorção de Perfuração é baixa de propósito). A **Penalidade** incide nas ações físicas. O efeito da armadura no **Quase-Acerto** (bônus de margem + redução do raspão) é fixo pela classe — ver [Quase-Acerto](/regras/quase-acerto).
 
 <div class="table-wrap">
 
@@ -128,7 +128,7 @@ O escudo não absorve: é **bônus de Defesa** (ajuda a *não* ser acertado), e 
 A pedra-papel-tesoura sai dos números acima:
 
 - **Placa completa × Corte** = 11 de Absorção: uma espada (3d6+10 no topo) faz **~7**; uma lâmina leve, quase nada. **Ninguém corta placa de leve.**
-- **Placa × Projétil/Perf. nível 0–2** (flecha, lança, adaga, besta, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão.
+- **Placa × Perfurante nível 0–2** (flecha, lança, adaga, besta, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão.
 - **Placa × Impacto** (maça, martelo) = só 6 de Absorção: o malho **passa** (a vulnerabilidade nunca resolvida — a principal via contra placa).
 - **Placa × Perfuração nível 3+** (cerco, magia, armas épicas) = o gate abre — e aí a placa só tem **4** de Absorção de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
 - Sem armadura, o **corte** brilha; a **malha** mata o corte mas cede ao impacto; cada armadura tem seu furo.

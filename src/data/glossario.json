@@ -50,20 +50,21 @@
       "soak",
       "redução de dano"
     ],
-    "definicao": "Absorção de dano. A armadura tem três Absorções — Impacto, Corte e Perfuração (Projétil e Perf. Concentrada usam a de Perfuração). Absorção total = natural (Vigor + Centelha no Impacto; só a Centelha em Corte/Perfuração) + a absorção da armadura na categoria."
+    "definicao": "Absorção de dano. A armadura tem três Absorções — Impacto, Corte e Perfuração (o dano Perfurante usa a de Perfuração). Absorção total = natural (Vigor + Centelha no Impacto; só a Centelha em Cortante/Perfurante) + a absorção da armadura na categoria."
   },
   {
     "id": "modos-de-dano",
     "termo": "Modos de dano",
     "aliases": [
+      "cortante",
       "corte",
+      "perfurante",
       "projétil",
       "perfuração concentrada",
-      "perf. concentrada",
       "impacto",
       "modo de ataque"
     ],
-    "definicao": "Os quatro modos de um golpe: Corte, Projétil, Perf. Concentrada e Impacto. Cada arma tem um modo principal (sem custo) e, às vezes, secundários (−2 acerto e −2 dano). A armadura tem três Absorções: Impacto, Corte e Perfuração (Projétil e Perf. Concentrada usam a de Perfuração)."
+    "definicao": "Os três modos de um golpe: Cortante, Perfurante e Impacto. O Perfurante funde projétil e estocada (não há distinção). Cada arma tem um modo principal (sem custo) e, às vezes, secundários (−2 acerto e −2 dano). A armadura tem três Absorções: Impacto, Corte e Perfuração (o dano Perfurante usa a de Perfuração)."
   },
   {
     "id": "penetracao",
@@ -75,7 +76,7 @@
       "r.perf",
       "gate"
     ],
-    "definicao": "Nível de Perfuração da arma (0–5) vs Resistência à Perfuração da armadura. Só vale para Projétil e Perf. Concentrada: se a Perfuração da arma for menor que a Resistência, o golpe resvala (dano 0); se for igual ou maior, o gate abre e rola-se o dano menos a absorção. Corte e Impacto não passam pelo gate."
+    "definicao": "Nível de Perfuração da arma (0–5) vs Resistência à Perfuração da armadura. Só vale para o modo Perfurante: se a Perfuração da arma for menor que a Resistência, o golpe resvala (dano 0); se for igual ou maior, o gate abre e rola-se o dano menos a absorção. Cortante e Impacto não passam pelo gate."
   },
   {
     "id": "defesa",

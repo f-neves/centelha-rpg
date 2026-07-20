@@ -299,17 +299,16 @@
     }
   },
   "dano": {
-    "nota": "Quatro MODOS de ataque (Corte, Projétil, Perf. Concentrada, Impacto). A arma escolhe o modo por golpe. A armadura tem TRÊS Absorções: Impacto, Corte e Perfuração — tanto Projétil quanto Perf. Concentrada usam a Absorção de Perfuração. A Absorção total de um golpe = Absorção natural do modo (Vigor + Centelha no Impacto; só a Centelha em Corte/Perfuração) + a absorção da armadura na categoria correspondente.",
+    "nota": "Três MODOS de ataque (Cortante, Perfurante, Impacto). A arma escolhe o modo por golpe. A armadura tem TRÊS Absorções: Impacto, Corte e Perfuração — o Perfurante usa a Absorção de Perfuração (não se distingue projétil de estocada). A Absorção total de um golpe = Absorção natural do modo (Vigor + Centelha no Impacto; só a Centelha em Cortante/Perfurante) + a absorção da armadura na categoria correspondente.",
     "modos": [
-      { "id": "corte", "nome": "Corte", "natural": "zero", "soakArmadura": "corte", "gate": false },
-      { "id": "projetil", "nome": "Projétil", "natural": "zero", "soakArmadura": "perfuracao", "gate": true },
-      { "id": "perfConc", "nome": "Perf. Concentrada", "natural": "zero", "soakArmadura": "perfuracao", "gate": true },
-      { "id": "impacto", "nome": "Impacto", "natural": "vigor", "soakArmadura": "impacto", "gate": false }
+      { "id": "corte", "nome": "Cortante", "sigla": "(C)", "natural": "zero", "soakArmadura": "corte", "gate": false },
+      { "id": "perfurante", "nome": "Perfurante", "sigla": "(P)", "natural": "zero", "soakArmadura": "perfuracao", "gate": true },
+      { "id": "impacto", "nome": "Impacto", "sigla": "(I)", "natural": "vigor", "soakArmadura": "impacto", "gate": false }
     ],
     "soakNatural": { "impacto": "vigor", "corte": "zero", "perfuracao": "zero" },
     "centelhaNoSoak": 1,
     "couracaPorte": {
-      "nota": "Couraça natural pela MASSA/pele/escamas/casco da criatura, por porte. Absorção EXTRA aplicada SÓ a Corte e Perfuração — o Impacto NÃO recebe couraça (continua sendo o abridor de lata contra massa, do mesmo modo que é a resposta contra placa). 'resistPerf' = gate natural de Perfuração: projétil/estocada com Nível de Perfuração ABAIXO dele resvala (0, nem rola). Empilha com armadura: a couraça SOMA na Absorção; o resistPerf pega o MAIOR (nunca soma). Porte lido de dimensoes-bestiario.json; Médio (humanoide padrão) e menores = 0.",
+      "nota": "Couraça natural pela MASSA/pele/escamas/casco da criatura, por porte. Absorção EXTRA aplicada SÓ a Corte e Perfuração — o Impacto NÃO recebe couraça (continua sendo o abridor de lata contra massa, do mesmo modo que é a resposta contra placa). 'resistPerf' = gate natural de Perfuração: ataque Perfurante com Nível de Perfuração ABAIXO dele resvala (0, nem rola). Empilha com armadura: a couraça SOMA na Absorção; o resistPerf pega o MAIOR (nunca soma). Porte lido de dimensoes-bestiario.json; Médio (humanoide padrão) e menores = 0.",
       "minusculo": { "couraca": 0, "resistPerf": 0 },
       "pequeno": { "couraca": 0, "resistPerf": 0 },
       "medio": { "couraca": 0, "resistPerf": 0 },
@@ -319,8 +318,8 @@
       "colossal": { "couraca": 10, "resistPerf": 3 }
     },
     "gatePerfuracao": {
-      "nota": "Só para os modos Projétil e Perf. Concentrada. Se o Nível de Perfuração da arma for MENOR que a Resistência à Perfuração (Nível) da armadura, o golpe RESVALA (dano 0, nem rola). Se for IGUAL OU MAIOR, o gate abre: rola o dano e subtrai a Absorção de Perfuração. Corte e Impacto nunca passam pelo gate.",
-      "modos": ["projetil", "perfConc"]
+      "nota": "Só para o modo Perfurante. Se o Nível de Perfuração da arma for MENOR que a Resistência à Perfuração (Nível) da armadura, o golpe RESVALA (dano 0, nem rola). Se for IGUAL OU MAIOR, o gate abre: rola o dano e subtrai a Absorção de Perfuração. Cortante e Impacto nunca passam pelo gate.",
+      "modos": ["perfurante"]
     },
     "modoSecundario": {
       "nota": "Usar um modo NÃO-principal da arma é mais difícil e sai mais fraco: −2 ao acerto E −2 ao dano. Armas com vários modos principais (ex.: Alabarda) não sofrem nada ao alternar entre eles.",
@@ -334,7 +333,7 @@
       "movimento": "No Deslocamento e nos Saltos usa-se METADE da Penalidade (arredondada para baixo): −[penalidade/2] metros nas medidas horizontais (Livre, Arranque, Corrida, Salto Horizontal) e −[penalidade/2]×10 cm no Salto Vertical (mínimo 0)."
     },
     "armaduraMult": 1.5,
-    "perfuracaoSoakNota": "A Absorção de Perfuração da armadura = metade do menor entre os antigos Projétil e Perf. Concentrada (arredonda p/ baixo): ao penetrar (gate aberto), a perfuração encontra pouca proteção. O Nível (R.Perf) é que mede a dificuldade de furar."
+    "perfuracaoSoakNota": "A Absorção de Perfuração da armadura é baixa (arredonda p/ baixo): ao penetrar (gate aberto), a perfuração encontra pouca proteção. O Nível (R.Perf) é que mede a dificuldade de furar."
   },
   "combateTatico": {
     "nota": "Modificadores situacionais aplicados ao valor PASSIVO da Defesa do alvo (+ = mais difícil de acertar, − = mais fácil). Cada ±1 ≈ ∓6% de chance perto do baseline (~42%).",
