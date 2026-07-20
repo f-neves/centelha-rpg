@@ -453,7 +453,7 @@
       "tom-de-autoridade"
     ],
     "aliases": [],
-    "texto": "Manip+Intimidação vs Def. Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
+    "texto": "Manip+Intimidação vs Defesa Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -489,7 +489,7 @@
       "ordem-curta"
     ],
     "aliases": [],
-    "texto": "Comanda um pequeno grupo de uma vez; a ordem dura a cena se não contrariar a natureza dos alvos.",
+    "texto": "Comanda um pequeno grupo de uma vez (vs Defesa Mental); a ordem dura a cena se não contrariar a natureza dos alvos.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -545,7 +545,7 @@
       "voz-de-comando"
     ],
     "aliases": [],
-    "texto": "Uma ordem que o alvo deve gastar **Vontade a cada turno** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
+    "texto": "Uma ordem (vs Defesa Mental) que o alvo deve gastar **Vontade a cada turno** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -563,7 +563,7 @@
       "submissao"
     ],
     "aliases": [],
-    "texto": "Instila terror sobrenatural; um grupo inteiro foge ou paralisa.",
+    "texto": "Instila terror sobrenatural (vs Defesa Mental); um grupo inteiro foge ou paralisa.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -582,7 +582,7 @@
       "comando-irresistivel"
     ],
     "aliases": [],
-    "texto": "Implanta uma ordem permanente que dura um dia; o alvo racionaliza obedecer.",
+    "texto": "Implanta uma ordem permanente que dura um dia (vs Defesa Mental); o alvo racionaliza obedecer.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -602,7 +602,7 @@
       "comando-irresistivel"
     ],
     "aliases": [],
-    "texto": "Estilhaça a vontade do alvo, deixando-o quebrado e dócil por um tempo.",
+    "texto": "Estilhaça a vontade do alvo (vs Defesa Mental), deixando-o quebrado e dócil por um tempo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -621,7 +621,7 @@
       "dominacao"
     ],
     "aliases": [],
-    "texto": "Sua ordem falada torna-se quase absoluta; multidões e exércitos obedecem um decreto divino. Resistir custa vários pontos de Vontade.",
+    "texto": "Sua ordem falada torna-se quase absoluta (vs Defesa Mental); multidões e exércitos obedecem um decreto divino. Resistir custa vários pontos de Vontade.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -1111,7 +1111,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Em abordagens amistosas, a Defesa Mental do alvo é −3.",
+    "texto": "Em abordagens amistosas, a Defesa Social do alvo é −3.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -1201,7 +1201,7 @@
       "carisma-magnetico"
     ],
     "aliases": [],
-    "texto": "Por uma cena, o alvo o vê como um amigo querido (vs Defesa Mental; quebra se você o trair abertamente).",
+    "texto": "Por uma cena, o alvo o vê como um amigo querido (vs Defesa Social; quebra se você o trair abertamente).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -1853,7 +1853,7 @@
       "furia"
     ],
     "aliases": [],
-    "texto": "Rugido que abala inimigos próximos (vs Defesa Mental).",
+    "texto": "Rugido que abala inimigos próximos (vs Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -2438,7 +2438,7 @@
       "fingir"
     ],
     "aliases": [],
-    "texto": "Uma mentira que resiste a escrutínio (vs Defesa Mental / Olho da Verdade).",
+    "texto": "Uma mentira que resiste a escrutínio (vs Defesa Social / Olho da Verdade).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -4319,7 +4319,7 @@
       "confundir"
     ],
     "aliases": [],
-    "texto": "convence alguém de quase qualquer coisa razoável (vs Defesa Mental).",
+    "texto": "convence alguém de quase qualquer coisa razoável (vs Defesa Social).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4425,7 +4425,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "instala suspeita corrosiva (vs Defesa Mental).",
+    "texto": "instala suspeita corrosiva (vs Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -4516,7 +4516,7 @@
     },
     "prereq": [],
     "aliases": [],
-    "texto": "planta um impulso simples que o alvo tende a seguir (vs Defesa Mental).",
+    "texto": "planta um impulso simples que o alvo tende a seguir (vs Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4568,7 +4568,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "impõe um desejo passageiro que o alvo racionaliza como seu.",
+    "texto": "impõe um desejo passageiro que o alvo racionaliza como seu (vs Defesa Mental).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -4586,7 +4586,7 @@
       "ler-desejos"
     ],
     "aliases": [],
-    "texto": "guia o comportamento do alvo sutilmente por uma cena.",
+    "texto": "guia o comportamento do alvo sutilmente por uma cena (vs Defesa Mental).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -4605,7 +4605,7 @@
       "fios-invisiveis"
     ],
     "aliases": [],
-    "texto": "controla as ações do alvo por um curto tempo (resistível com Vontade).",
+    "texto": "controla as ações do alvo por um curto tempo (vs Defesa Mental; resistível com Vontade).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4624,7 +4624,7 @@
       "titereiro"
     ],
     "aliases": [],
-    "texto": "altera o que o alvo deseja de forma duradoura.",
+    "texto": "altera o que o alvo deseja de forma duradoura (vs Defesa Mental).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4643,7 +4643,7 @@
       "reescrever-desejos"
     ],
     "aliases": [],
-    "texto": "domina um alvo por completo, corpo e vontade, como um fantoche.",
+    "texto": "domina um alvo por completo, corpo e vontade, como um fantoche (vs Defesa Mental).",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4675,7 +4675,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "desperta atração num alvo receptivo (vs Defesa Mental).",
+    "texto": "desperta atração num alvo receptivo (vs Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4872,7 +4872,7 @@
       "olhar-severo"
     ],
     "aliases": [],
-    "texto": "seu semblante inspira medo real (vs Defesa Mental).",
+    "texto": "seu semblante inspira medo real (vs Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7175,7 +7175,7 @@
       "semblante-fechado"
     ],
     "aliases": [],
-    "texto": "Ao ser alvo de intimidação ou provocação, **+3 na Defesa Mental** contra o efeito e não demonstra qualquer abalo.",
+    "texto": "Ao ser alvo de intimidação ou provocação, **+3 na Defesa Social** contra o efeito e não demonstra qualquer abalo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"

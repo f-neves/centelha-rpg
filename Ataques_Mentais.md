@@ -151,14 +151,23 @@ remove ou substitui a escolha do alvo:
 |---|---|
 | **Comando:** Ordem Curta, Voz de Comando, Comando Irresistível, Dominação, Quebrar o Espírito, Palavra de Lei, Aterrorizar (terror sobrenatural) | **Comando:** Tom de Autoridade (só baixa a Defesa), Comando Inspirador, Encarar/Submissão (duelo de vontade mundano) |
 | **Marionete:** Compulsão, Fios Invisíveis, Titereiro, Reescrever Desejos, Marionete | **Marionete:** Sugestão leve, Ler Desejos, Empurrão Sutil (insinuação que o alvo ainda processa) |
-| **Sussurro (modo mágico/psíquico):** Paranoia, Veneno na Mente, Pesadelo Acordado, Coro de Sussurros | **Sussurro (mundano):** Inquietar, Semear Dúvida, Boato, Rumor (o alvo ouve e interpreta) |
-| **Arcano:** Fascinação, Domínio, Medo mágico, Ilusão que engana a mente, Leitura de pensamento, Compulsão mágica | **Voz de Mel inteira** (charme e persuasão honesta passam pelo juízo): Primeira Impressão, Charme, Encantamento, Desarmar |
-| **Presença Aterradora (topo):** Onda de Pavor, Presença de Cataclismo (pavor que ignora o juízo) | **Presença Aterradora (base):** Olhar de Predador, Rosnado, Postura Ameaçadora (intimidação física que o alvo encara) |
+| **Arcano:** Fascinação, Domínio, Medo mágico, Ilusão que engana a mente, Leitura de pensamento, Compulsão mágica | **Sussurro inteiro** (o manipulador envenena a mente pelo ouvido, nunca a invade direto): Inquietar, Semear Dúvida, Paranoia, Boato, Veneno na Mente, Pesadelo Acordado, Coro de Sussurros |
+| | **Voz de Mel inteira** (charme e persuasão honesta passam pelo juízo): Primeira Impressão, Charme, Encantamento, Desarmar |
+| | **Medo, sedução e engano mundanos:** Brado de Guerra, Encarar a Morte, Sedução, Mentira Perfeita, Voz Calma, e a base da Presença Aterradora (intimidação física que o alvo encara) |
 
-Correções a aplicar nos textos das Técnicas (`src/data/tecnicas.json`): as entradas de **Voz de
-Mel** (Primeira Impressão, Encantamento) hoje citam "Defesa Mental" e devem citar **Defesa
-Social** (charme passa pelo juízo). As entradas de controle acima devem todas dizer
-explicitamente "**vs Defesa Mental**" no efeito.
+**Marionete cruza as muralhas de propósito:** é o arquétipo-ponte, que começa Social (Sugestão,
+Empurrão Sutil, Ler Desejos: o alvo ainda decide) e vira Mental ao capturar a vontade (Compulsão
+em diante). **Sussurro fica todo Social**: ele nunca toca a mente direto, envenena pela palavra; a
+invasão direta da mente é do Arcano.
+
+**Retag aplicado** (`src/data/tecnicas.json`, jul/2026): 22 Técnicas ajustadas. Foram para
+**Social** as de charme/leitura/intimidação mundana/sedução (Primeira Impressão, Encantamento,
+Mentira Perfeita, Brado de Guerra, Palavras de Veludo, Paranoia, Sedução, Encarar a Morte, Voz
+Calma, Sugestão). Ganharam **"vs Defesa Mental"** explícito as de controle (Ordem Curta, Voz de
+Comando, Comando Irresistível, Aterrorizar, Dominação, Quebrar o Espírito, Palavra de Lei,
+Compulsão, Fios Invisíveis, Titereiro, Reescrever Desejos, Marionete). "Defesa Mental" agora só
+aparece em Comando e Marionete (o que remove a escolha) e no Tom de Autoridade (que baixa a
+Defesa Mental como preparo do combo de dominação).
 
 ---
 
