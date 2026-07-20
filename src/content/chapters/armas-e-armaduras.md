@@ -1,6 +1,6 @@
 ---
-ordem: 10
-numeral: "X"
+ordem: 11
+numeral: "XI"
 titulo: "Armas & Armaduras"
 resumo: "Classes + Tags: a arma define o estilo, não a potência bruta."
 ---

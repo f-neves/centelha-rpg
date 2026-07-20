@@ -1,6 +1,6 @@
 ---
-ordem: 14
-numeral: "XIV"
+ordem: 15
+numeral: "XV"
 titulo: "Fôlego"
 resumo: "O corpo que cansa — módulo opcional que acrescenta gestão de cansaço ao combate, gasto em rajadas e reposto no respiro."
 ---
