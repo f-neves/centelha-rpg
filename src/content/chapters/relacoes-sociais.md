@@ -1,6 +1,6 @@
 ---
-ordem: 9
-numeral: "IX"
+ordem: 8
+numeral: "VIII"
 titulo: "Combate e Relações Sociais"
 resumo: "O lado social do jogo em três marchas: a régua de disposição do dia a dia, o duelo de vontade quando a aposta é alta (Combate Social), e o cortejo com calma (Influência Estendida)."
 ---
@@ -107,153 +107,28 @@ Um ato forte fura a baseline (um elfo que salva a vida de um anão vira, sim, um
 
 ## Quando a cena vira duelo: o Combate Social
 
-Papo trivial é uma rolagem só. Mas quando há **aposta real e resistência declarada** (uma negociação dura, um jogo de corte, uma sedução, um interrogatório, dobrar um aliado relutante), a cena vira **Combate Social**: uma disputa de vontade lance a lance, em **embates** medidos em Ticks, até a **Firmeza** de alguém chegar a zero, ponto em que essa pessoa **cede o que estava em jogo**.
-
-É todo espelhado no [Combate Físico](/regras/combate), para já nascer balanceado:
-
-| No físico | No social |
-|---|---|
-| PV | **Firmeza** |
-| Esquiva | **Defesa Social** |
-| Modos de dano | **Canais** (Razão, Coração, Brio, Ganho) |
-| Armaduras | **Armaduras sociais** |
-| Armas | **Abordagens** |
-| Ferimentos | **Abalo** |
-
-Dois limites importantes: o Combate Social é o lado da **Defesa Social** (influência e leitura); ataque mágico à mente (controle, medo mágico, ler pensamento) é [Defesa Mental](/regras/defesas), outro sistema. E **ceder é o ponto, não a alma**: vencer é ganhar aquela discussão, sedução ou negociação, não escravizar ninguém. Depois da cena, o perdedor pode se arrepender e tentar reverter.
-
-### As duas reservas
-
-**Firmeza (o "PV social")** é a reserva de aprumo antes de ceder:
-
-<p class="formula">Firmeza = 25 + Compostura × 3</p>
-
-Espelha o PV físico (25 + Vigor×3): um herói de Compostura 4 tem **Firmeza 37**. Quando chega a **0**, o personagem **cede o ponto em disputa**.
-
-**Força de Vontade (a reserva de recusa):** você pode **gastar 1 Força de Vontade para recusar um golpe social**, tratando aquele embate como um **erro** (dano 0), uma recusa fria e consciente ("eu simplesmente não vou"). É limitado pela sua reserva de Vontade, a mesma das Proezas e Artes, então recusar custa caro. Recusar **não** vale contra **leitura** (não dá para se recusar a ser lido); vale contra os golpes que tentam te **mover**.
-
 ### Iniciativa e ritmo
 
 <p class="formula">Iniciativa social = 1d6 + Perspicácia + Sociabilidade</p>
 
 Quem lê melhor a sala toma a palavra primeiro (começa no Tick 0; os demais no Tick 1, com a mesma regra de defasagem do físico). A **Speed** das abordagens (Ticks até o próximo lance): leve **5**, média **6**, pesada **7**. Uma alfinetada é rápida; orquestrar um esquema é lento.
 
+### A reserva
+
+**Força de Vontade (a reserva de recusa):** você pode **gastar 1 Força de Vontade para recusar um golpe social**, tratando aquele embate como um **erro** (dano 0), uma recusa fria e consciente ("eu simplesmente não vou"). É limitado pela sua reserva de Vontade, a mesma das Proezas e Artes, então recusar custa caro. Recusar **não** vale contra **leitura** (não dá para se recusar a ser lido); vale contra os golpes que tentam te **mover**.
+
+A cada +6 que o ataque supera a defesa, é necessário gastar +1 ponto de Força de Vontade para resistir à Influência.
+
 ### O ataque social
 
-<p class="formula">Ataque = [ (Influência + Perícia) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Peso do argumento  + Centelha</p>
+<p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Peso do argumento  + Centelha</p>
 
-A **perícia** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como a arma física escolhe a perícia; o **Peso** é o "acerto" da abordagem (na tabela de abordagens). Compara-se com a **Defesa Social** do alvo:
+A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como a arma física escolhe a perícia; o **Peso** é o "acerto" da abordagem (na tabela de abordagens). Compara-se com a **Defesa Social** do alvo:
 
 - **Acerta** se o Ataque **superar** a Defesa Social.
-- **Margem = [ (Ataque − Defesa Social) ÷ 6 ]** → dados extras de dano, igual ao físico.
+- **Margem = [ (Ataque − Defesa Social) ÷ 6 ]** → gasto de Força de Vontade extra para resistir ou mais caminha na Régua Social.
 
-Atacar um alvo cuja Defesa Social está muito acima da sua é bater numa muralha: troque de **canal** ou de tática.
-
-### A defesa e a absorção
-
-A **Defesa Social** é o número passivo, o "esquiva social", já da sua ficha: `(Compostura + Sociabilidade) × 2 + Centelha + Especialidade`. A defesa ativa é **recusar com Vontade** (acima). E a **absorção social** (o "soak"), que vem da armadura, reduz o **dano** que passou pela Defesa: não impede o acerto, amortece o baque.
-
-### O dano e os quatro canais
-
-<p class="formula">Dano bruto = Dado da abordagem + Margem + Influência   (Influência só em abordagens diretas)<br>Dano líquido = Dano bruto − Absorção social do canal   (mínimo 0)  → subtrai da Firmeza</p>
-
-- **Direta** (você mesmo pressionando, cara a cara): soma **Influência** (o peso da sua presença), como o corpo a corpo soma Força.
-- **Indireta** (um presente deixado, um boato, os amigos do alvo): soma **0** de Influência, como uma arma de arremesso. O golpe fala por si.
-
-Todo golpe entra por **um canal**, e a armadura defende **por canal**, então escolher o canal certo é a tática central:
-
-| Canal | O que é | Absorção natural (Virtude) |
-|---|---|---|
-| **Razão** | lógica, provas, argumentos, coerência | **Convicção** |
-| **Coração** | emoção: amor, pena, medo, culpa, raiva, desejo | **Temperança** |
-| **Brio** | status, vergonha, autoridade, provocação, orgulho, honra | **Valor** |
-| **Ganho** | interesse próprio, suborno, vantagem, promessa material | **Compaixão** |
-
-<p class="formula">Absorção de um canal = Virtude do canal + Centelha × 1 + armadura social no canal</p>
-
-**Compaixão é a brecha:** apelos de **pena** ("pense nos que vão sofrer") entram pelo Coração tratando a **Compaixão** do alvo como **penetração** (furam a Absorção de Temperança). Um coração generoso é armadura contra suborno (Ganho), mas porta aberta para a pena (Coração): a fraqueza que equilibra a virtude.
-
-### Armaduras sociais
-
-Posturas, vínculos e preparos que **absorvem** dano em certos canais. Como a armadura física, têm **penalidade** (fechar-se custa calor humano), e só a maior de cada canal vale (a natural das Virtudes soma por cima):
-
-| Modo de defesa | Razão | Coração | Brio | Ganho | Penalidade / nota |
-|---|:--:|:--:|:--:|:--:|---|
-| **Aberto** | 0 | 0 | 0 | 0 | Sem guarda; máxima conexão e carisma. |
-| **Cortesia formal** | 0 | 3 | 3 | 0 | −1 aos seus ataques de Coração; parece frio. |
-| **Ceticismo** | 6 | 2 | 0 | 4 | −2 para criar vínculo/confiança. |
-| **Coração comprometido** | 0 | 8 | 0 | 0 | ama outro/está de luto; −2 a ler sedução alheia. |
-| **Orgulho de casta** | 2 | 0 | 8 | 3 | −2 vs Coração (arrogância isola). |
-| **Desapego / voto** | 0 | 2 | 3 | 10 | −1 em tudo que envolva bens. |
-| **Conselheiro ao lado** | +3 | +3 | +3 | +3 | enquanto o aliado estiver presente e livre. |
-| **Posição ensaiada** | +4 no canal previsto | | | | dura uma cena; você preparou a defesa. |
-
-O **Conselheiro ao lado** é o escudo social: some no dado de todos os canais enquanto o aliado estiver presente, livre e não neutralizado (afaste ou ocupe o conselheiro e o escudo cai).
-
-### Abordagens (as armas sociais)
-
-Cada abordagem é uma "arma": tem classe (define o dado e o Quase-Acerto), canal, perícia, **Dado**, **Peso** (o acerto), alcance e Speed.
-
-| Abordagem | Classe | Canal | Perícia | Dado | Peso | Alcance | Nota |
-|---|---|---|---|:--:|:--:|---|---|
-| **Elogio / lisonja** | leve | Coração | Lábia | 1 | +3 | direta | Rápido, quase sempre pega, mal arranha. Abre conversa. |
-| **Provocação / deboche** | leve | Brio | Manha | 1 | +2 | direta | **Finta**: −3 na Defesa do alvo no seu próximo golpe. |
-| **Argumento lógico** | média | Razão | Persuasão | 2 | +1 | direta | O cavalo de batalha do debate. |
-| **Sedução** | média | Coração | Sedução | 2 | +2 | direta | Aceita **tempero** de perfume/adorno (soma Peso). |
-| **Presente / suborno** | média | Ganho | Negociação | 2 | +2 | indireta | O objeto fala (soma 0 de Influência). |
-| **Ameaça / chantagem** | média | Brio | Intimidação | 2 | +1 | direta | **Ruptura**: ignora metade da armadura, mas **fere a relação**. |
-| **Apelo à pena** | média | Coração | Persuasão | 2 | +1 | direta | Usa a **Compaixão** do alvo como Penetração. |
-| **Discurso / oração** | pesada | Razão/Brio | Oratória | 3 | 0 | direta | **Área**: atinge uma plateia inteira. |
-| **Amigos do alvo** | pesada | Brio | Liderança | 3 | 0 | indireta | Cerco: **Penetração total** (ignora a armadura pessoal). |
-| **Rumor / fofoca** | leve | Brio | Manha | 1 | +1 | indireta | **À distância**: corrói reputação ao longo de dias. |
-
-**Temperos** (melhoram golpes, não são golpes sozinhos): **perfume/adorno/boa aparência** dá **+2 de Peso** aos golpes de Coração; um **presente de cortesia** dá **+1 de Peso** ao próximo golpe de Coração ou Ganho; **cenário a favor** (seu salão, um banquete que você paga) funciona como terreno alto social.
-
-**Quase-Acerto social:** errar por pouco ainda **planta uma semente** (dano que ignora a Absorção), pela classe da abordagem: **leve** (erra por até +3 → 2 de dano), **média** (+2 → 4), **pesada** (+1 → 6). É a tarde inteira de alfinetadas que mina alguém sem um golpe cheio.
-
-### Abalo e o Cede
-
-Conforme a Firmeza cai, a pessoa fica **abalada** (gagueja, se irrita, perde a linha). Mesma tabela de faixas do físico, por % da Firmeza:
-
-| % da Firmeza | Estado | Pen. ação | Pen. Defesa |
-|---|---|:--:|:--:|
-| 76–100% | Firme | 0 | 0 |
-| 51–75% | Incomodado | −1 | 0 |
-| 26–50% | Abalado | −2 | −1 |
-| 11–25% | Vacilando | −3 | −2 |
-| 1–10% | Quebrando | −4 | −3 |
-| 0% | **Cede** | concede o ponto | — |
-
-**Cede** = o alvo concede **o ponto específico** em disputa: assina, entrega, obedece àquela ordem, acredita naquela afirmação, admite o segredo, aceita o cortejo. É a "derrota" da cena social, não posse permanente da mente.
-
-### Modificadores situacionais
-
-Espelham os do físico (teto de ±6 acumulado):
-
-- **Postura agressiva** (você se expõe): −2 à sua Defesa Social e +2 ao seu ataque até seu próximo lance.
-- **Plateia a seu favor:** −2 na Defesa do alvo. **Plateia hostil:** +2.
-- **Terreno social** (seu salão, seu protocolo): −2 na Defesa do alvo; a corte do inimigo inverte (+2).
-- **Pego desprevenido** (não esperava o assunto): −4 na Defesa no primeiro lance.
-- **Sem privacidade** (não pode ceder sem perder a face): +2 a +4 no que custaria vergonha.
-
-### Recuperação social
-
-A Firmeza volta rápido, porque abalo não é ferida de corpo:
-
-- **Recompor-se** (Speed 5, você não ataca): recupera **Compostura × 2** de Firmeza e pode trocar de postura. É o "Tomar Fôlego" social.
-- **Só defendendo** (passa o lance sem pressionar): recupera **+Compostura** de Firmeza por Tick. Atacar não recupera.
-- **Aliado que te reforça:** devolve **+Compostura do aliado** de Firmeza.
-- **Fim da cena:** havendo respiro, a Firmeza volta ao cheio. Uma derrota marcante pode deixar uma sequela narrativa a critério do Mestre, não um dano contábil.
-
-### O custo de vencer feio
-
-- **Dano à relação:** abordagens de **Ruptura** (ameaça, chantagem) e o abuso de **Amigos do alvo** vencem o ponto, mas o alvo cede com **ressentimento**: pode virar inimigo ou reverter na primeira chance. Ganhar assim é acumular dívida.
-- **Remorso:** quem cedeu pode, fora da cena, tentar desfazer (nova cena, Firmeza cheia). Ceder não é permanente.
-- **Público:** ceder em público custa **Brio** ao perdedor (perde reputação), deixando-o mais frágil nesse canal nas próximas cenas.
-
-<div class="callout exemplo"><span class="lbl">Exemplo — trocar de canal</span>Lírio quer que a Dama Vesna aceite um encontro. Ela veste <strong>Coração comprometido</strong> (ama outro): Absorção de Coração +8, Defesa Social 18, Firmeza 37. Lírio ataca com <strong>Sedução + perfume</strong>: rola 22 vs 18, mas o dano (2d6 + Influência 4 = 11) bate nos 12 de Absorção de Coração → <strong>líquido 0</strong>. A sedução ricocheteia. Ele então <strong>muda para Brio</strong> (provoca o orgulho dela, canal descoberto): dano de Brio 8 − Absorção 4 = <strong>4</strong>, Firmeza 37 → 33. Contra armadura pesada num canal, troca-se de canal.</div>
-
-<div class="callout exemplo"><span class="lbl">Exemplo — recusa e recompor</span>O mercador Talo quer que o Capitão Bran (Defesa Social 12, Firmeza 34, sem armadura de Ganho) compre caro. O <strong>suborno</strong> (indireta) causa 5 de dano: 34 → 29. Bran <strong>recusa o lance seguinte com Vontade</strong> (−1 Vontade): dano 0. Depois <strong>Recompõe-se</strong> (+Compostura×2 = +6): volta a 34. A pechincha vira queda de braço de recursos: quem tem mais Vontade e paciência ganha.</div>
+Atacar um alvo cuja Defesa Social está muito acima da sua é bater numa muralha: uma alternativa é trocar de tática.
 
 ---
 
@@ -295,7 +170,6 @@ Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o inter
 
 - **Régua** −5 a +5, meio Neutro largo. O nível diz o que a pessoa faz por (ou contra) você. Pedido dentro do nível: de graça; acima: mova a régua até lá.
 - **Move por:** atos (saltos fixos), conversa (Ataque vs [Defesa Social](/regras/defesas), +1 passo por 6 de folga) e gasto de crédito ao cobrar. Sair do Neutro = 3 passos; lábia sozinha para em +2. Esfria 1 passo por estação.
-- **Combate Social** · **Firmeza** = 25 + Compostura×3 (zerou → cede o ponto). **Ataque** = [(Influência+Perícia)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social; **Margem** = [(atk−def)/6].
-- **Dano** = Dado + Margem + Influência (só direta) − **Absorção do canal** (Virtude + Centelha + armadura). Canais: Razão·Convicção / Coração·Temperança / Brio·Valor / Ganho·Compaixão.
-- **Recusar** = −1 Vontade anula um golpe. **Recompor-se** = +Compostura×2 de Firmeza. **Iniciativa** = 1d6 + Perspicácia + Sociabilidade.
+- **Recusar** = −1 Vontade anula um golpe. 
+- **Iniciativa** = 1d6 + Perspicácia + Sociabilidade.
 - **Influência Estendida** (calma): tome a média (3/7/10/14/17/21) + stunts (0/+1/+2/+4, teto +7/período), modo ativo (arrisca) ou passivo (seguro), leitura vs Defesa Social para saber quanto falta.
