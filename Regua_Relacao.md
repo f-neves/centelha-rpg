@@ -113,11 +113,12 @@ saco de moedas.
 Uma conversa que tenta mover alguém usa a **fórmula do Combate Social** (Ataque Social vs
 Defesa Social, ver `Combate_Social.md` §4 e §5):
 
-> **Ataque Social** = [(Influência + Perícia) ÷ 2]d6 (+2 se ímpar) + Peso do argumento + Centelha×2
-> **Defesa Social** = (Compostura + Sociabilidade + Centelha) × 2 + Especialidade
+> **Ataque Social** = [(Influência + Perícia) ÷ 2]d6 (+2 se ímpar) + Peso do argumento + Centelha
+> **Defesa Social** = (Compostura + Sociabilidade) × 2 + Centelha + Especialidade
 
-- **Sucesso** (Ataque > Defesa): a régua sobe **+1 passo**, mais **+1 passo a cada 6 de
-  folga** (`[(Ataque − Defesa) ÷ 6]`), idêntico à Margem do combate.
+- **A régua sobe +1 passo a cada 6 de folga** (`[(Ataque − Defesa) ÷ 6]`). Um **sucesso raso**
+  (folga 0 a 5) rende o **favor momentâneo daquela cena**, mas **não move a régua**: subir o
+  vínculo custa esforço, não uma frase feliz.
 - A conversa **refina** o vínculo (de amigo a leal); os **atos** é que costumam criar o
   vínculo inicial (romper o Neutro, seção 5).
 
@@ -137,9 +138,9 @@ régua é o sistema principal; não é preciso um combate inteiro para um pedido
 
 1. O Mestre define o **nível exigido** pelo pedido (tabela da seção 3).
 2. Role **Ataque Social vs Defesa Social** do alvo.
-3. **Sucesso:** a régua sobe +1 passo (+1 por 6 de folga). Se **alcançar o nível exigido**,
-   o pedido é **concedido**. Se subir mas não chegar, o pedido **não** sai agora, mas o
-   vínculo melhorou de verdade (progresso persistente).
+3. **Sucesso:** a régua sobe +1 passo **a cada 6 de folga** (um sucesso raso só concede o favor
+   momentâneo, sem mover o vínculo). Se **alcançar o nível exigido**, o pedido é **concedido**.
+   Se subir mas não chegar, o pedido **não** sai agora, mas o vínculo melhorou (progresso persistente).
 4. **Falha:** a régua não sobe; insistir demais pode custar **−1 passo** (irritação).
 
 Os **modificadores situacionais** do Combate Social (§10: plateia, terreno social, pego
@@ -161,7 +162,10 @@ vez). A conversa refina depois.
 ## 6. Decaimento
 
 Relação sem manutenção esfria. Sem contato, favores ou atos por uma **estação/arco**, a
-régua **escorrega 1 passo** em direção à **baseline daquele par** (seção 7), e **para lá**.
+régua **escorrega 1 passo** em direção à **baseline daquele par** (seção 7), e **para lá**. O
+intervalo **escala com a longevidade da raça** (um elfo mede em estações o que um humano mede em
+semanas) e com as Virtudes: a **Compaixão** do cortejador acelera o aquecimento, e a **Convicção**
+do alvo o torna mais lento de mover.
 
 - Um vínculo construído acima da baseline (ex.: um Apreço +2 entre desconhecidos, baseline 0)
   escorrega de volta ao Neutro se abandonado.
@@ -304,3 +308,38 @@ pedidos vai corroendo a Aliança. Favor é capital: constrói-se com atos, gasta
   empilha com Proezas/Centelha. As Proezas sociais futuras agirão nas rolagens que a movem.
 - Fora de escopo da v1: **rastrear o estado vivo por par** numa campanha (fica com o Mestre,
   no papel); publicar no site só as **regras + baselines**.
+
+---
+
+## 13. Refinamentos: ataques pontuais, o teto de vidro e o favor alugado
+
+### Pontual x duradouro
+
+Um **ataque social** (Influência + Perícia vs Defesa Social) muda comportamento de imediato ou a
+longo prazo:
+
+- **Pontual** (liberar a passagem, um desconto, um beijo, vender mais caro): uma jogada só. O que
+  o sucesso rende depende da disposição: **Neutro** rende um **pequeno favor momentâneo**;
+  **Desfavor** talvez precise de mais jogadas ou de suborno; **Favor** pode nem exigir jogada, e
+  se rolar e passar, rende um **favor maior**.
+- **Duradouro** (mudar uma crença, fazer se apaixonar, desconto em tudo): exige **sucessos
+  constantes** que movem a régua até o alvo ficar Favorável o bastante para a atitude virar
+  permanente. Corre pelo **modo ativo** (jogadas + stunts, arriscado: falha por 6+ retrocede) ou
+  **passivo** (média + stunts, seguro e lento) da **Influência Estendida** (`Combate_Social.md` §15).
+
+### O teto de vidro (±2)
+
+Ataques e stunts sozinhos levam a régua só até **+2 (Apreço)** ou **−2 (Desafeto)**. Subir a
+**+3/+4/+5** (alguém arriscar a vida por você) exige um **vínculo** de verdade: o alvo formar uma
+**Intimacy/lealdade** por você, ou você se amarrar a uma Intimacy dele, nascida de **marco
+narrativo** (uma provação juntos, um ato que te torna parte da vida dele), não de contar sucessos.
+O mesmo vale para os degraus fundos do Desfavor: virar inimigo mortal pede uma ferida real, não
+grosseria acumulada.
+
+### Favor alugado
+
+Suborno, propina, presentes caros e chantagem **sobem a régua rápido**, mas são **condicionais**:
+no instante em que o elemento é retirado, a régua **volta quase na hora**. Enquanto você paga a
+mesada o alvo é Favorável; suspensa, ele pode virar **Neutro ou até Desfavorável** (o ressentimento
+de quem foi cortado). Lealdade comprada não é lealdade: só o vínculo de verdade (o teto de vidro)
+fica quando o dinheiro some.

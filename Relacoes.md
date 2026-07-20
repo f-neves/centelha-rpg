@@ -80,15 +80,27 @@ um saco de moedas.
 ### Conversa refina
 
 Uma boa conversa também move a régua. Ela usa a mesma jogada do combate social (o seu
-**Ataque Social** contra a **Defesa Social** da pessoa): cada sucesso sobe **1 passo**, e
-mais **1 passo a cada 6 pontos** de folga na jogada. Mas repare: conversa **afina** o vínculo
-(de amigo a leal); são os **atos** que costumam criá-lo do zero.
+**Ataque Social** contra a **Defesa Social** da pessoa): a régua sobe **1 passo a cada 6 pontos**
+de folga na jogada. Um sucesso apertado rende o **favor daquela cena**, mas não vira amizade:
+subir o vínculo custa esforço. E repare: conversa **afina** o laço (de amigo a leal); são os
+**atos** que costumam criá-lo do zero.
+
+Para um cortejo longo e sem pressa há um **modo estendido**: em vez de rolar, você toma o
+resultado médio e vai **empilhando gestos (stunts)** ao longo do tempo, de forma ativa (arriscada)
+ou passiva (segura e lenta). Veja a *Influência Estendida* no capítulo de Combate Social.
 
 ### Favor gasta crédito
 
 Cobrar um favor grande **consome** o carinho que você juntou. Quando a pessoa concede algo
 que estava no limite do nível dela, a régua **desce um passo**. Favor é capital: junta-se com
 atos, gasta-se ao cobrar. (Cortesias e trocas justas não custam nada.)
+
+### Favor comprado é alugado
+
+Suborno, presentes caros e mesada sobem a régua depressa, mas são **alugados**: no instante em
+que o dinheiro para, a régua **volta quase na hora**, e quem foi cortado pode até ficar
+**Desfavorável** por ressentimento. Lealdade comprada não é lealdade, só o vínculo de verdade
+fica quando o ouro some.
 
 ---
 
@@ -102,6 +114,11 @@ Isso modela uma verdade simples: **o difícil é deixar de ser um estranho.** Um
 por melhor que seja, raramente tira alguém do Neutro. Um **ato** tira: um "serviço grande"
 (+2) já leva quase todo o caminho; "salvar a vida" (+3) rompe de uma vez. Depois disso, o
 papo faz o resto.
+
+Há um segundo teto, no alto: lábia e presentes levam alguém só até **+2 (Apreço)**. Para que
+uma pessoa **arrisque a vida por você** (+3 e acima) é preciso um **vínculo** de verdade, um laço
+que nasce de histórias vividas juntos, não de favores contados. Amizade profunda e lealdade se
+conquistam na aventura, não na conversa.
 
 ---
 

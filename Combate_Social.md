@@ -76,12 +76,12 @@ pesada **7**. Uma alfinetada é rápida; montar um caso ou orquestrar um esquema
 
 ## 4. O ataque social
 
-> **Ataque = [ (Influência + Perícia) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Peso do argumento  + Centelha × 2**
+> **Ataque = [ (Influência + Perícia) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Peso do argumento  + Centelha**
 
 - **Perícia**: a da abordagem usada (Persuasão, Oratória, Sedução, Lábia, Manha,
   Negociação, Intimidação, Liderança, Etiqueta), como a arma física escolhe a perícia.
 - **Peso do argumento**: o "acerto" da abordagem (campo na tabela de armas).
-- **Centelha × 2**: o mesmo bônus de Centelha que o ataque físico ganha.
+- **Centelha**: +1 por ponto, o mesmo bônus que o ataque físico ganha (simétrico com a defesa).
 
 Compara-se com a **Defesa Social** do alvo (número passivo).
 
@@ -97,7 +97,7 @@ Compara-se com a **Defesa Social** do alvo (número passivo).
 
 ### Defesa Social (o número passivo, o "esquiva social")
 
-> **Defesa Social = (Compostura + Sociabilidade + Centelha) × 2 + Especialidade situacional**
+> **Defesa Social = (Compostura + Sociabilidade) × 2 + Centelha + Especialidade situacional**
 
 É o valor que o atacante precisa superar. Já existe na ficha e no bestiário. Herói
 típico (Compostura 4, Sociabilidade 4, Centelha 2) = **Defesa Social 20**, na faixa da
@@ -374,11 +374,91 @@ ataque frontal batia em muralha. É o "cerco" do combate social: lento, indireto
 
 ---
 
-## 15. Folha de referência (resumo)
+## 15. Regra opcional: Influência Estendida (a média e os stunts)
+
+Modo opcional para influência **sem pressão** (downtime, cortejo, negociação longa, um golpe
+montado com calma). O Mestre libera quando o personagem **não está sob pressão e tem tempo**
+para agir, ou numa passagem de tempo. Numa cena tensa ao vivo, volta o combate normal, com dados.
+
+Aqui você **não aposta no dado**: toma o resultado confiável e o empilha com **stunts** até
+furar a **Defesa Social** do alvo. É o "tomar a média" do Centelha.
+
+### Tomar a média
+
+Em vez de rolar o pool do Ataque Social, use a **média** dos dados (arredonda para baixo). Os
+bônus fixos (o +2 de soma ímpar, o Peso, a Centelha, os stunts) continuam somando.
+
+| Dados | 1d6 | 2d6 | 3d6 | 4d6 | 5d6 | 6d6 |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|
+| **Média** | 3 | 7 | 10 | 14 | 17 | 21 |
+
+### Dois modos: ativo e passivo
+
+A influência estendida corre por um dos dois modos, no **mesmo intervalo de tempo**:
+
+- **Ativo (o carisma):** você **rola de verdade** a cada interação. Sucesso **avança** a régua;
+  **falha por 6+ retrocede 1 passo**; falha rasa não mexe. Menos preparo, mais risco: sobe
+  rápido, mas pode cair.
+- **Passivo (o cortejo):** você toma a **média + stunts acumulados**, sem rolar a influência.
+  Mais preparo, mais tempo, mais presentes e cuidado. Seguro (nunca retrocede), porém lento. O
+  alvo vai caindo na teia.
+
+### Stunts
+
+Cada stunt (presente, elogio, favor, suborno, chantagem, um gesto atencioso) soma na média
+conforme o seu **nível**, definido pela **qualidade da descrição** e pelo **alinhamento com as
+Intimacies/motivação do alvo**:
+
+| Nível | Soma | Quando |
+|:---:|:---:|---|
+| **0** | +0 | Mal descrito, ou algo que o alvo não gosta/não quer (um pente para um careca). |
+| **1** | +1 | Descrito e que ajuda de alguma forma. |
+| **2** | +2 | Boa descrição e/ou bem do interesse do alvo. |
+| **3** | +4 | Descrição incrível e/ou muito alinhado às Intimacies/motivação do alvo. |
+
+O salto para +4 no nível 3 é de propósito: a excelência paga dobrado.
+
+**Contra Stunt:** um gesto que **desagrada** subtrai na mesma escala (vacilo leve −1, desagrado
+claro −2, ofensa grave −4, e o Mestre pode virar Desfavor na régua).
+
+**Trava anti-abuso:** no máximo **um stunt de cada nível por período** (teto de **+7**:
+0+1+2+4). Stunts repetidos caem de nível, e um alvo que percebe o interesse óbvio fica
+desconfiado (o Mestre **sobe a Defesa Social** dele). Número alto exige **variedade e
+qualidade**, não quantidade.
+
+### A leitura ("já é o suficiente?")
+
+Opcional, e **exige acesso ao alvo** (sem interagir nem observar, não há como ler). Você **rola
+de verdade** Perspicácia + Empatia contra a **Defesa Social** do alvo:
+
+- **Sucesso:** você sabe **se já passou ou não** da Defesa.
+- **A cada 6 de folga** na leitura, descobre **+1 ponto** do que ainda falta, até o valor exato.
+  Uma leitura brilhante te diz quantos stunts faltam; uma apertada só diz "ainda não".
+
+A assimetria é o charme: a sua **influência é confiável** (média), mas **saber se pegou é
+incerto** (você rola a leitura). Ler mal faz você parar cedo (e falhar) ou gastar stunts à toa.
+
+### Tempo e ritmo
+
+Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada). O intervalo-base **escala
+com a longevidade da raça** (um elfo corteja em estações onde um humano leva semanas), a
+**Compaixão** do cortejador **acelera** e a **Convicção** do alvo o **enrijece**.
+
+### O gancho com a Régua de Relação
+
+Furar a Defesa Social concede o pedido; furar **por 6+** concede um favor maior **e** rende
+passos na régua (`Regua_Relacao.md`). Mas vale o **teto de vidro**: ataques e stunts sozinhos
+levam a régua só até **±2**; subir a +3/+4/+5 (arriscar a vida por você) exige um **vínculo**
+de verdade (uma Intimacy, uma lealdade), de marco narrativo, não de contar stunts. E **favor
+comprado é alugado**: suborno e chantagem sobem rápido, mas caem quando o dinheiro para.
+
+---
+
+## 16. Folha de referência (resumo)
 
 - **Firmeza (PV social)** = 25 + Compostura×3. Zerou → **cede o ponto**.
-- **Defesa Social** = (Compostura + Sociabilidade + Centelha)×2 + esp.
-- **Ataque** = [(Influência+Perícia)/2]d6 (+2 ímpar) + Peso + Centelha×2. Acerta se > Defesa. **Margem** = [(atk−def)/6].
+- **Defesa Social** = (Compostura + Sociabilidade)×2 + Centelha + esp.
+- **Ataque** = [(Influência+Perícia)/2]d6 (+2 ímpar) + Peso + Centelha. Acerta se > Defesa. **Margem** = [(atk−def)/6].
 - **Dano** = Dado + Margem + Influência (só direta) − Absorção do canal.
 - **Absorção do canal** = Virtude (Razão·Convicção / Coração·Temperança / Brio·Valor / Ganho·Compaixão) + Centelha×1 + armadura social.
 - **Recusar** = −1 Vontade anula um golpe. **Recompor-se** = +Compostura×2 de Firmeza.
@@ -387,7 +467,7 @@ ataque frontal batia em muralha. É o "cerco" do combate social: lento, indireto
 
 ---
 
-## 16. Decisões que tomei e possíveis ajustes
+## 17. Decisões que tomei e possíveis ajustes
 
 - **Firmeza = Compostura×3 (sem somar Vontade)**: mantém o teto na régua do PV. Vontade
   ficou como reserva de **recusa**, não como parte do pool (evita Firmeza inflada). Se
