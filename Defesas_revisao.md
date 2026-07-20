@@ -88,22 +88,22 @@ Todos os casos que discutimos, já decididos:
 ## 5. As fórmulas das três Defesas
 
 Todas as Defesas são **valores passivos** (um número fixo que o atacante precisa
-superar), e todas somam a Centelha ×2 e a Especialidade.
+superar), e todas somam a Centelha (×1) e a Especialidade.
 
 ### Defesa Física
 
 Você tem duas variantes e usa a que couber na situação (na ficha mostramos as duas):
 
-- **Esquiva** = ( Destreza + Esquiva + Centelha ) × 2 + Especialidade
-- **Bloqueio** = ( Destreza + [maior perícia de bloqueio] + Centelha ) × 2 + Especialidade + modificador da arma/escudo
+- **Esquiva** = (Destreza + Esquiva) × 2 + Centelha + Especialidade
+- **Bloqueio** = (Destreza + [perícia de bloqueio]) × 2 + Centelha + Especialidade + modificador da arma/escudo
 
-A "maior perícia de bloqueio" na ficha é a **maior entre Armas de Uma Mão, Armas de
+A "perícia de bloqueio" é **o que o jogador decidir usar entre Armas de Uma Mão, Armas de
 Duas Mãos, Briga e Escudos**. O modificador da arma/escudo (a defesa que aquela arma
 concede) entra depois, em jogo, conforme o que você estiver empunhando.
 
 ### Defesa Social
 
-- **Defesa Social** = ( Compostura + Sociabilidade + Centelha ) × 2 + Especialidade
+- **Defesa Social** = (Compostura + Sociabilidade) × 2 + Centelha + Especialidade
 
 Em **feras** (seres bestiais, Inteligência 1), troca-se **Sociabilidade por
 Sobrevivência** (ou outra perícia relevante), porque um bicho não tem trato social,
@@ -111,17 +111,15 @@ mas tem instinto.
 
 ### Defesa Mental
 
-- **Defesa Mental** = ( Integridade + Centelha ) × 2 + Força de Vontade + Especialidade
+- **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + Centelha + Especialidade
 
-A Mental **não usa atributo** por enquanto (talvez Raciocínio no futuro), mas mantém
-a **Força de Vontade** como o segundo pilar, no lugar do atributo. A Integridade é a
-perícia homônima (firmeza interior).
+A Mental usa Raciocínio, Integridade e a Força de Vontade como pilares (soma simples,
+sem o ×2 das outras duas).
 
 ### Observação sobre a Centelha
 
-Somar `Centelha` dentro do `× 2` dá exatamente o mesmo que somar `Centelha × 2` por
-fora. Escrevemos com a Centelha dentro do parêntese só porque fica mais legível. O
-resultado numérico é idêntico ao que o sistema já calcula hoje.
+Somar `Centelha` no ataque e na defesa anula a vantagem que iguais teriam, favorecendo
+quem tem uma Centelha maior do que a do oponente.
 
 ---
 
@@ -194,8 +192,8 @@ Regras do **"-"**:
 Substâncias e condições mexem nas Defesas de forma variada, como **modificadores
 temporários por cima** do valor base. Exemplos do que queremos modelar mais tarde:
 
-- **Cocaína**: aumenta Física e Mental, diminui Social.
 - **Álcool**: diminui as três.
+- **Cocaína**: aumenta Física e Mental, diminui Social.
 - **LSD**: aumenta Mental, diminui as outras.
 
 Isto é uma frente futura (uma tabela de estados), não faz parte da mudança atual.
@@ -207,8 +205,7 @@ Isto é uma frente futura (uma tabela de estados), não faz parte da mudança at
 ### 10.1 Ficha e cálculos (`src/lib/calc.ts`, `src/pages/ficha.astro`)
 
 1. **Defesa Social**: trocar a Virtude **Temperança** pela perícia **Sociabilidade**
-   na fórmula, e somar **Especialidade**. Passa a valer `(Compostura + Sociabilidade
-   + Centelha) × 2 + Especialidade`.
+   na fórmula, e somar **Especialidade**. Passa a valer `(Compostura + Sociabilidade) × 2 + Centelha + Especialidade`.
 2. **Defesa Mental**: somar **Especialidade** (o resto da fórmula já bate).
 3. **Defesa Física (Bloqueio)**: na ficha, usar a **maior** entre Armas de Uma Mão,
    Armas de Duas Mãos, Briga e Escudos como a perícia de bloqueio. (O modificador da
@@ -229,10 +226,10 @@ gerador, e depois rodar `node scripts/gen-bestiario.mjs && node scripts/gen-mons
 
 Mudanças no gerador:
 
-1. **Defesa Mental**: manter a fórmula atual `(Integridade + Centelha) × 2 + Vontade`
+1. **Defesa Mental**: manter a fórmula atual `Raciocínio + Integridade + Vontade + Centelha`
    (ela já é a nova Mental). Só existe para seres com mente (Inteligência 1 ou mais);
    Inteligência 0 recebe **"-"**.
-2. **Defesa Social (nova)**: calcular `(Compostura + Sociabilidade + Centelha) × 2`,
+2. **Defesa Social (nova)**: calcular `(Compostura + Sociabilidade) × 2 + Centelha`,
    **só para Inteligência 2 ou mais**. Feras (Inteligência 1) usam Sobrevivência no
    lugar de Sociabilidade. Inteligência 0 recebe **"-"**.
    - Detalhe a resolver: hoje os NPCs não têm uma perícia `sociabilidade` na build.
