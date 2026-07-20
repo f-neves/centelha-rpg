@@ -54,7 +54,7 @@
     { "nivel": 10, "rotulo": "Extraordinário (+4)", "texto": "Beleza quase sobrenatural; para conversas num salão." }
   ],
   "aparencia": {
-    "nota": "Traço próprio 1–10 (não é atributo), piso 1 grátis, custo ×2 por ponto. Modificador DIRECIONAL somado FLAT à jogada social — à parte do teto ±6 dos modificadores situacionais. + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
+    "nota": "Traço próprio 1 a 10 (não é atributo), piso 1 grátis, custo ×2 por ponto. Bônus DIRECIONAL somado FLAT: é o bônus social GERAL, entra em TODA jogada social (incluindo o Combate Social), separado da pilha situacional dos Antecedentes (que só move a Régua de Relação, teto +6). + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). ALÉM do social: aparência muito alta é MEMORÁVEL e atrapalha passar despercebido (penalidade em furtividade urbana, seguir alguém, se misturar à multidão); o Mestre pode aplicar o mesmo a uma deformidade marcante, também inesquecível. A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
     "piso": 1,
     "min": 1,
     "max": 10,

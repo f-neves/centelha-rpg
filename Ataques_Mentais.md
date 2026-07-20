@@ -67,7 +67,13 @@ social qualquer.
 
 ---
 
-## 3. Gastar Força de Vontade: a defesa ativa
+## 3. As três camadas de defesa
+
+Uma mente não fica indefesa só porque a muralha passiva é menor. Contra o controle há **três
+camadas**, pensadas juntas: nenhuma sozinha basta, as três somadas seguram. É por isso que o
+domínio pode ser decisivo nos tiers altos sem quebrar o jogo.
+
+### Camada 1 · Força de Vontade (a blindagem pessoal)
 
 Além do número passivo, o alvo pode **queimar Força de Vontade** para se proteger. É a válvula
 que impede que uma mente seja simplesmente atropelada por uma boa rolagem. A Vontade é a mesma
@@ -92,6 +98,35 @@ resistir, o que drena a reserva do alvo até ele ceder ou o efeito passar.
 > cabeça (algo tentou entrar por fora do seu juízo e você trancou a porta). A moeda é a mesma
 > ("eu não"), o alvo é diferente. Contra **leitura** (mental ou social) não dá para se recusar:
 > só o número da Defesa protege.
+
+### Camada 2 · Reforço por Proezas e Feitiçarias
+
+Quem espera briga na mente **investe** em muralha. Proezas de Mente (mente serena, reflexo
+mental, compostura de ferro) e Artes de Proteção **erguem a Defesa Mental**, dão imunidades a
+tipos de ataque ou **blindam aliados**. É o análogo mental da armadura: não é grátis, é escolha
+de construção. Um grupo que caça um dominador leva junto quem sabe blindar cabeça.
+
+### Camada 3 · O grupo
+
+O personagem **não é esperado enfrentar tudo sozinho**. Se um aliado cai sob controle, o resto do
+grupo se reorganiza e derruba a **fonte**: quase todo controle **cai quando quem controla cai**
+(morre, some da vista ou perde a concentração). Por isso o domínio forte é perigoso mas não é o
+fim da luta: ele tira uma peça do tabuleiro por um tempo, e o time responde. Esse é o freio que
+torna aceitável o controle ser decisivo nos tiers altos.
+
+### A consequência · a inimizade ao despertar
+
+Controlar alguém **cobra um preço**, como a Ruptura no combate social. Ao sair do efeito, se o
+alvo **percebe** que foi controlado, a relação despenca: salto direto para o **Desfavor** da
+Régua de Relação (Rancor ou pior), e um inimigo nasce na hora. Mas nem todo controle é percebido:
+
+- **Controle sutil** (uma ideia plantada, um empurrão numa decisão, uma paranoia que o alvo acha
+  que é dele) pode **passar despercebido**: sem percepção, sem inimizade. É por isso que é a
+  ferramenta preferida do manipulador fino.
+- **Controle evidente** (virar fantoche, ser forçado a atacar um amigo, obedecer contra a própria
+  natureza) o alvo **sente na pele**: gera inimigo imediato e costuma deixar sequela.
+
+O Mestre pode pedir um teste de Perspicácia do alvo para decidir se ele percebe a mão que o moveu.
 
 ---
 

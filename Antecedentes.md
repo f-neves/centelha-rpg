@@ -37,16 +37,32 @@ São três reputações distintas no mesmo personagem, cada uma com o seu valor 
 pessoa é medianamente conhecida como guarda-costas, bastante famosa como cantor, e tem uma fama
 pequena de ser confiável. Cada instância é comprada e sobe por conta própria.
 
+### Antecedentes como bônus na jogada (o modelo social)
+
+Um Antecedente pode **somar um bônus** a uma jogada, mas com regra clara, para o social não
+inflar:
+
+- **Aparência** é o bônus social **geral**: entra em **toda** jogada social (incluindo o Combate
+  Social), sempre que a aparência importa, para o bem ou para o mal. É um traço, não um
+  situacional.
+- **Stunt normal** (a descrição cinematográfica, +2 / +1d6 / +2d6) entra em **qualquer** jogada,
+  social ou não, pela qualidade da descrição.
+- **Bônus situacionais de Antecedente** (Reputação em contexto, um Contato bem posto, uma Posição
+  que pesa ali) **só entram nas jogadas que movem a Régua de Relação** (construir ou mover um
+  vínculo). Eles **não** turbinam um ataque no Combate Social nem uma perícia solta. Esses
+  situacionais **somam entre si até um teto de +6**, espelhando o teto dos modificadores de
+  combate.
+
+Ou seja: um Antecedente acelera **construir a relação**, não ganhar o duelo social do momento.
+
 ### Custo e a economia
 
-- **Na criação:** o Mestre dá um **pool grátis de pontos de Antecedente** para distribuir (padrão
-  sugerido: **7 pontos**, mais para uma campanha de gente estabelecida, menos para uma de
-  desgraçados começando do zero). Isso garante que todo personagem tenha raízes no mundo sem ter
-  que roubar XP do combate.
-- **Com XP, em jogo:** subir ou comprar um Antecedente custa **×3 por ponto** (o custo do
-  próximo ponto é o novo valor × 3: sair de 2 para 3 custa 9 XP). Fica entre a perícia secundária
-  (×2) e a primária (×5): Antecedente é poder de campanha, não de dado, e não deve competir de
-  igual para igual com atributo (×10) nem Centelha (×15).
+- **Tudo por XP.** Antecedente é comprado e elevado com XP como o resto da ficha, a **×3 por
+  ponto** (o custo do próximo ponto é o novo valor × 3: sair de 2 para 3 custa 9 XP). Fica entre
+  a perícia secundária (×2) e a primária (×5): é poder de campanha, não de dado, e não compete de
+  igual para igual com atributo (×10) nem Centelha (×15). Na criação, saem do mesmo orçamento de
+  XP do resto do personagem. *(Um orçamento separado só para Antecedentes fica como opção futura,
+  para quem não quiser que eles disputem XP com combate.)*
 - **São voláteis de propósito.** Diferente de um atributo, um Antecedente **pode subir e cair na
   ficção**: o mentor morre, a fortuna queima num naufrágio, a reputação de herói vira infâmia
   depois de um escândalo. Quando a história tira um Antecedente de você, o XP investido volta como
@@ -198,10 +214,12 @@ Reputação 1 (Confiável)**. A de guarda-costas ajuda a ser contratado e a inti
 a passar despercebido; a de cantor abre salões e atrapalha a ser levado a sério numa briga; a de
 confiável ajuda em tudo que dependa de palavra.
 
-**Amarra com:** um **modificador flat às jogadas sociais de abertura** no contexto relevante, no
-mesmo espírito da curva de Aparência (o valor entra quando a fama pesa, para o bem ou para o mal).
-Alimenta Proezas como Lenda Viva e Presença Aterradora. Uma boa reputação também **acelera romper
-o Neutro** na Régua com quem já ouviu falar bem de você.
+**Amarra com:** um **bônus situacional às jogadas que movem a Régua de Relação**, no contexto em
+que a fama pesa (ver "Antecedentes como bônus na jogada"): entra quando quem você aborda conhece
+aquela reputação, some com outros situacionais até +6, e **não** buffa o Combate Social nem
+perícias soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de
+você; uma temível ajuda a coagir e atrapalha a passar despercebido. Alimenta Proezas como Lenda
+Viva e Presença Aterradora.
 
 ### 8. Relíquia · Nomeado (teto 3 na criação)
 
@@ -332,8 +350,10 @@ resolve uma cena e acaba. O XP volta como crédito quando a dívida é cobrada.
 - **Escala 1 a 5.** **Únicos** (um valor): Recursos, Posição, Refúgio, Fé, Linhagem. **Nomeados**
   (várias instâncias, cada uma 1 a 5): Aliados, Contatos, Séquito, Mentor, Reputação, Relíquia,
   Aliado Animal, Segredo, Dívida.
-- **Criação:** pool grátis (padrão 7 pontos, o Mestre calibra). **Em jogo:** ×3 por ponto de XP.
-  Teto 3 na criação para Recursos e Relíquia.
+- **Custo:** tudo por XP, **×3 por ponto**, na criação e em jogo (mesmo orçamento do resto). Teto
+  3 na criação para Recursos e Relíquia.
+- **Bônus na jogada:** Aparência é geral (toda jogada social); stunt normal em qualquer jogada;
+  bônus situacionais de Antecedente só movem a Régua de Relação, somando até +6.
 - **Voláteis:** sobem e caem na ficção; XP perdido volta como crédito.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na **Régua de Relação** e podem
   esfriar se maltratadas. **Reputação** dá modificador social direcional. **Segredo** e **Dívida**
