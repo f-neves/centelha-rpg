@@ -85,7 +85,7 @@
       "esquiva",
       "bloqueio"
     ],
-    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + Especialidade + Centelha×2."
+    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + Especialidade + Centelha×2. Vem por Esquiva ou por Bloqueio (arma/escudo). Contra projéteis rápidos (flecha, virote, bala de funda, dardo) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
   },
   {
     "id": "defesa-mental",

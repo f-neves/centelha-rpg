@@ -117,9 +117,20 @@ Sua Defesa pode vir de duas fontes, e você usa **a melhor** delas contra cada g
 - **Esquiva** — com a habilidade Esquiva, mais a mobilidade do terreno. Some sai da frente.
 - **Bloqueio** — com a habilidade da própria arma ou Escudos, mais a **Defesa da Arma** e o escudo. Apara o golpe.
 
-A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** — o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**. Quem usa **uma só mão** pode ocupar a outra para defender: um **escudo** (+3 a +4) ou uma **arma de parada na mão inábil** (+1) eleva o Bloqueio. É a troca central da empunhadura — **mais dano e alcance com as duas mãos, ou mais guarda com uma mão livre.**
+A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra para defender: um **escudo** (+2 a +4) ou uma **arma de parada na mão inábil** (+1) eleva o Bloqueio. É a troca central da empunhadura: **mais dano e alcance com as duas mãos, ou mais guarda com uma mão livre.**
 
-Mas **nem tudo se bloqueia ou se esquiva** — uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída.
+### Projéteis rápidos: só Esquiva ou escudo
+
+Contra um **projétil rápido** (flecha, virote, bala de funda, dardo, adaga pequena de arremesso, sopro de zarabatana), **ninguém apara com a arma ou com a mão**: vem depressa demais. As saídas são duas:
+
+- **Esquivar**, sempre.
+- **Bloquear**, só com um **escudo hábil** e se você estiver **apto** a manejá-lo.
+
+Um escudo é **hábil** quando cobre pelo menos **30% do seu corpo** (um escudo médio para uma criatura Média): o broquel e o targe são pequenos demais e não valem; do escudo redondo para cima, sim. Estar **apto** exige estar consciente, não ser pego de surpresa, ter o braço do escudo livre e ter **espaço para manobrá-lo** (não vale encurralado ou no meio de galhos). Sem escudo hábil (ou sem estar apto), contra o projétil rápido resta só a Esquiva.
+
+Já as armas de arremesso **lentas** (a lança ou o machado lançado, o pilum, o bumerangue, uma pedra grande) são pesadas e visíveis: essas você **bloqueia normalmente**, com arma, escudo ou mão, como no corpo a corpo.
+
+Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída.
 
 ## Movimento: Deslocamento, Corrida e Salto
 

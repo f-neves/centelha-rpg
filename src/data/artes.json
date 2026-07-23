@@ -15,34 +15,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Labareda",
-        "efeito": "jato de fogo em linha (2d6)",
+        "nome": "Chama Aderente",
+        "efeito": "dardo de fogo mais forte (1d6) que gruda e queima por alguns instantes; acende à distância",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Bola de Fogo",
-        "efeito": "explosão em área (3d6); parede de chamas",
+        "nome": "Labareda",
+        "efeito": "jato de fogo em linha (2d6)",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Tempestade Ígnea",
-        "efeito": "área grande, dano contínuo; imune a fogo",
+        "nome": "Bola de Fogo",
+        "efeito": "explosão em área (3d6); parede de chamas",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Tempestade Ígnea",
+        "efeito": "área grande, dano contínuo; imune a fogo",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Cataclismo",
         "efeito": "mar de fogo; coluna/elemental de chamas",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -65,34 +73,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Rajada Gélida",
-        "efeito": "cone de frio (2d6), desacelera",
+        "nome": "Mordida do Frio",
+        "efeito": "dardo gélido (1d6) que enregela o membro atingido e reduz a ação do alvo; congela poças",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Prisão de Gelo",
-        "efeito": "aprisiona um alvo; muralha de gelo",
+        "nome": "Rajada Gélida",
+        "efeito": "cone de frio (2d6), desacelera",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Nevasca",
-        "efeito": "tempestade gélida em área",
+        "nome": "Prisão de Gelo",
+        "efeito": "aprisiona um alvo; muralha de gelo",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Nevasca",
+        "efeito": "tempestade gélida em área",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Inverno Eterno",
         "efeito": "congela uma grande área; imobiliza um campo",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -115,34 +131,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Relâmpago",
-        "efeito": "raio em linha (2d6)",
+        "nome": "Descarga",
+        "efeito": "choque (1d6) que salta para um segundo alvo próximo; atordoa quem veste metal",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Corrente",
-        "efeito": "salta entre vários alvos (3d6 dividido)",
+        "nome": "Relâmpago",
+        "efeito": "raio em linha (2d6)",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Tempestade",
-        "efeito": "relâmpagos do céu numa área",
+        "nome": "Corrente",
+        "efeito": "salta entre vários alvos (3d6 dividido)",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Tempestade",
+        "efeito": "relâmpagos do céu numa área",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Fúria de Zeus",
         "efeito": "descarga cataclísmica",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -165,34 +189,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Onda",
-        "efeito": "empurra/derruba; cria névoa",
+        "nome": "Corrente",
+        "efeito": "jato forte que empurra e apaga; molda a água em formas úteis (corda, ponte rasa)",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Respirar Água",
-        "efeito": "respira submerso; controla correntes",
+        "nome": "Onda",
+        "efeito": "empurra/derruba; cria névoa",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Maremoto",
-        "efeito": "grande onda; afoga uma área",
+        "nome": "Respirar Água",
+        "efeito": "respira submerso; controla correntes",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Maremoto",
+        "efeito": "grande onda; afoga uma área",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Senhor dos Mares",
         "efeito": "comanda rios e mares",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -215,34 +247,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Vendaval",
-        "efeito": "desvia projéteis; rajada cortante (2d6)",
+        "nome": "Lufada Cortante",
+        "efeito": "rajada que derruba um alvo leve e desvia um projétil contra você",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Sustentar",
-        "efeito": "plana e levita por curtos períodos",
+        "nome": "Vendaval",
+        "efeito": "desvia projéteis; rajada cortante (2d6)",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Ciclone",
-        "efeito": "tornado que ergue e arremessa",
+        "nome": "Sustentar",
+        "efeito": "plana e levita por curtos períodos",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Ciclone",
+        "efeito": "tornado que ergue e arremessa",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Senhor dos Céus",
         "efeito": "voa; comanda tempestades de vento",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -265,34 +305,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Muralha de Pedra",
-        "efeito": "ergue barreiras; abre o chão",
+        "nome": "Punho de Pedra",
+        "efeito": "arremessa uma pedra maior (1d6) ou ergue um pequeno anteparo de terra",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Terremoto Local",
-        "efeito": "sacode e fende o solo",
+        "nome": "Muralha de Pedra",
+        "efeito": "ergue barreiras; abre o chão",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Moldar Metal",
-        "efeito": "dobra e molda metal",
+        "nome": "Terremoto Local",
+        "efeito": "sacode e fende o solo",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Moldar Metal",
+        "efeito": "dobra e molda metal",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Senhor da Terra",
         "efeito": "remodela o terreno",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -315,34 +363,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Fechar Feridas",
-        "efeito": "cura Letal moderado; suspende a dor",
+        "nome": "Restaurar",
+        "efeito": "cura dano leve a moderado e neutraliza um veneno fraco no corpo",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Restaurar",
-        "efeito": "ferimentos graves, doenças, venenos",
+        "nome": "Fechar Feridas",
+        "efeito": "cura Letal moderado; suspende a dor",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Regenerar",
-        "efeito": "recompõe membros; doenças mortais",
+        "nome": "Restaurar",
+        "efeito": "ferimentos graves, doenças, venenos",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Regenerar",
+        "efeito": "recompõe membros; doenças mortais",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Sopro de Vida",
         "efeito": "traz o recém-morto; expurga quase tudo",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -365,34 +421,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Despertar",
-        "efeito": "anima plantas para enredar",
+        "nome": "Brotar",
+        "efeito": "faz plantas crescerem depressa (cobertura, trepadeira que prende) e cura um pouco mais",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Moldar Carne",
-        "efeito": "altera corpos vivos",
+        "nome": "Despertar",
+        "efeito": "anima plantas para enredar",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Florescer",
-        "efeito": "transforma um ermo em floresta",
+        "nome": "Moldar Carne",
+        "efeito": "altera corpos vivos",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Florescer",
+        "efeito": "transforma um ermo em floresta",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Dádiva da Vida",
         "efeito": "cura em massa; vida exuberante",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -415,34 +479,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Enfraquecer",
-        "efeito": "adoece o alvo; fala com mortos recentes",
+        "nome": "Definhar",
+        "efeito": "toque que enfraquece o alvo por uma cena (−1) e dreno maior (1d6 + cura você)",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Erguer Morto",
-        "efeito": "anima um cadáver; aura de medo",
+        "nome": "Enfraquecer",
+        "efeito": "adoece o alvo; fala com mortos recentes",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Praga",
-        "efeito": "doença e murchez numa área",
+        "nome": "Erguer Morto",
+        "efeito": "anima um cadáver; aura de medo",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Praga",
+        "efeito": "doença e murchez numa área",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Ceifador",
         "efeito": "ceifa a vida; ergue uma legião",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -465,34 +537,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Encanto",
-        "efeito": "o alvo o vê como amigo",
+        "nome": "Simpatia",
+        "efeito": "o alvo baixa a guarda e o trata com boa vontade por um tempo (vs Defesa Mental)",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Comando",
-        "efeito": "ordem resistível só com Vontade",
+        "nome": "Encanto",
+        "efeito": "o alvo o vê como amigo",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Ilusão Plena",
-        "efeito": "ilusões convincentes ou domínio",
+        "nome": "Comando",
+        "efeito": "ordem resistível só com Vontade",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Ilusão Plena",
+        "efeito": "ilusões convincentes ou domínio",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Reescrever a Mente",
         "efeito": "altera memórias e lealdades",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -515,34 +595,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Vidência",
-        "efeito": "vê eventos distantes",
+        "nome": "Vislumbre",
+        "efeito": "sente intenção e mentira com clareza; um flash do passado recente de um objeto",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Ler o Destino",
-        "efeito": "vislumbra futuros prováveis",
+        "nome": "Vidência",
+        "efeito": "vê eventos distantes",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Olho Distante",
-        "efeito": "observa lugar conhecido em tempo real",
+        "nome": "Ler o Destino",
+        "efeito": "vislumbra futuros prováveis",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Olho Distante",
+        "efeito": "observa lugar conhecido em tempo real",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Oráculo",
         "efeito": "responde sobre passado e futuro",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -565,34 +653,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Sorte & Azar",
-        "efeito": "+1d6 a um aliado ou −1d6 a um inimigo",
+        "nome": "Mão do Destino",
+        "efeito": "re-role um dado seu, ou force o inimigo a re-rolar um bom resultado",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Destino Torto",
-        "efeito": "força repetir uma rolagem",
+        "nome": "Sorte & Azar",
+        "efeito": "+1d6 a um aliado ou −1d6 a um inimigo",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Maré da Sorte",
-        "efeito": "coincidências favoráveis por uma cena",
+        "nome": "Destino Torto",
+        "efeito": "força repetir uma rolagem",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Maré da Sorte",
+        "efeito": "coincidências favoráveis por uma cena",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Senhor do Acaso",
         "efeito": "torna o quase-impossível certo",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -615,34 +711,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Passo Brusco",
-        "efeito": "teletransporte curto visível",
+        "nome": "Chamado Breve",
+        "efeito": "traz um objeto à vista para a mão; move objetos médios com a mente",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Convocar",
-        "efeito": "traz objeto distante; fenda curta",
+        "nome": "Passo Brusco",
+        "efeito": "teletransporte curto visível",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Portal",
-        "efeito": "entre dois lugares próximos",
+        "nome": "Convocar",
+        "efeito": "traz objeto distante; fenda curta",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Portal",
+        "efeito": "entre dois lugares próximos",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Dobrar o Espaço",
         "efeito": "teletransporte longo de grupo",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -665,34 +769,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Telecinese",
-        "efeito": "move e arremessa objetos pesados",
+        "nome": "Repelir",
+        "efeito": "empurrão forte que derruba e afasta; sustenta um escudo de força por mais tempo",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Escudo de Força",
-        "efeito": "barreira; impacto cinético (3d6)",
+        "nome": "Telecinese",
+        "efeito": "move e arremessa objetos pesados",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Esmagar",
-        "efeito": "comprime alvo/objeto",
+        "nome": "Escudo de Força",
+        "efeito": "barreira; impacto cinético (3d6)",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Esmagar",
+        "efeito": "comprime alvo/objeto",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Dominar Forças",
         "efeito": "manipula gravidade e cinética",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -715,34 +827,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Transmutar",
-        "efeito": "converte material em semelhante",
+        "nome": "Remendar",
+        "efeito": "conserta ou danifica um objeto pequeno; endurece ou amolece uma superfície",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Moldar",
-        "efeito": "reformula objetos; cria itens simples",
+        "nome": "Transmutar",
+        "efeito": "converte material em semelhante",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Criar Substância",
-        "efeito": "conjura matéria",
+        "nome": "Moldar",
+        "efeito": "reformula objetos; cria itens simples",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Criar Substância",
+        "efeito": "conjura matéria",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Alquimia Suprema",
         "efeito": "transmuta qualquer matéria",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -765,34 +885,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Instante",
-        "efeito": "ação extra; congela objeto por segundos",
+        "nome": "Lapso",
+        "efeito": "apressa você ou um aliado por um instante, ou retarda um alvo",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Bolha Temporal",
-        "efeito": "acelera/retarda área pequena",
+        "nome": "Instante",
+        "efeito": "ação extra; congela objeto por segundos",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Reverter",
-        "efeito": "desfaz alguns segundos",
+        "nome": "Bolha Temporal",
+        "efeito": "acelera/retarda área pequena",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Reverter",
+        "efeito": "desfaz alguns segundos",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Senhor do Tempo",
         "efeito": "para o tempo brevemente",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -815,34 +943,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Pacto Menor",
-        "efeito": "invoca espírito/elemental menor",
+        "nome": "Aplacar",
+        "efeito": "acalma ou afugenta um espírito fraco; pede-lhe um pequeno favor",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Vincular",
-        "efeito": "liga espírito a objeto; bane fracos",
+        "nome": "Pacto Menor",
+        "efeito": "invoca espírito/elemental menor",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Invocar",
-        "efeito": "chama espírito poderoso como aliado",
+        "nome": "Vincular",
+        "efeito": "liga espírito a objeto; bane fracos",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Invocar",
+        "efeito": "chama espírito poderoso como aliado",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Senhor dos Espíritos",
         "efeito": "comanda hostes; abre portas",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],
@@ -865,34 +1001,42 @@
       },
       {
         "nivel": 2,
-        "nome": "Barreira",
-        "efeito": "campo protetor contra ataques",
+        "nome": "Anteparo",
+        "efeito": "escudo pessoal que absorve um golpe e dissipa magia de baixo nível ao redor",
         "custo": {
           "mana": 2
         }
       },
       {
         "nivel": 3,
-        "nome": "Refúgio",
-        "efeito": "área segura que repele ameaças",
+        "nome": "Barreira",
+        "efeito": "campo protetor contra ataques",
         "custo": {
           "mana": 3
         }
       },
       {
         "nivel": 4,
-        "nome": "Dissipar",
-        "efeito": "anula/enfraquece magias",
+        "nome": "Refúgio",
+        "efeito": "área segura que repele ameaças",
         "custo": {
           "mana": 4
         }
       },
       {
         "nivel": 5,
+        "nome": "Dissipar",
+        "efeito": "anula/enfraquece magias",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
         "nome": "Santuário",
         "efeito": "protege um local; barreira quase impenetrável",
         "custo": {
-          "mana": 5
+          "mana": 6
         }
       }
     ],

@@ -107,19 +107,21 @@ A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impac
 
 ## Escudos
 
-O escudo não absorve: é **bônus de Defesa** (ajuda a *não* ser acertado), e só quando usado. Tem **dois valores** conforme o ataque — **CaC** (corpo a corpo) e **Projétil**. A **Penalidade** incide nas outras ações físicas (esquiva etc.), **nunca** no bloqueio do próprio escudo. É o antiprojétil onde o escudo humilha a armadura.
+O escudo não absorve: é **bônus de Defesa** (ajuda a *não* ser acertado), e só quando usado. Cada escudo tem **um valor de Defesa** que entra no seu **Bloqueio**, como a Defesa de uma arma. A **Penalidade** incide nas outras ações físicas (esquiva etc.), **nunca** no bloqueio do próprio escudo.
+
+Contra **projéteis rápidos** (flecha, virote, bala de funda, dardo), o escudo é a *única* forma de bloquear: veja *Projéteis rápidos: só Esquiva ou escudo* em [Combate](/regras/combate). Só bloqueia quem tem um escudo **hábil** (cobre ≥30% do corpo, do redondo para cima num usuário Médio) e está **apto** a manejá-lo; sem isso, resta a Esquiva. O broquel e o targe são pequenos demais para isso; o **pavês** é o extremo oposto, a parede portátil do besteiro.
 
 <div class="table-wrap">
 
-| Escudo | Bloq. CaC | Bloq. Projétil | Penalidade | Estilo |
+| Escudo | Defesa | vs Projétil rápido | Penalidade | Estilo |
 |---|:---:|:---:|:---:|---|
-| Broquel | +3 | +1 | 0 | puro uso ativo; péssimo contra flecha |
-| Targe / rodela | +3 | +2 | −1 | duelista, cobertura limitada |
-| Escudo redondo | +4 | +3 | −1 | o melhor todo-terreno barato |
-| Heater | +4 | +4 | −2 | cobre o tronco, a pé ou a cavalo |
-| Kite normando | +4 | +4 | −2 | muita cobertura, pesado |
-| Scutum | +4 | +4 | −3 | brilha em formação (testudo) |
-| Pavês | +3 | +5 | −4 | parede portátil do besteiro (antiprojétil) |
+| Broquel | +2 | não | 0 | puro uso ativo; ineficaz contra projéteis |
+| Targe / rodela | +3 | não | −1 | duelista, cobertura limitada; ineficaz contra projéteis |
+| Escudo redondo | +4 | bloqueia | −1 | o melhor todo-terreno barato |
+| Heater | +4 | bloqueia | −2 | cobre o tronco, a pé ou a cavalo |
+| Kite normando | +4 | bloqueia | −2 | muita cobertura, pesado |
+| Scutum | +4 | bloqueia | −3 | brilha em formação (testudo) |
+| Pavês | +3 | bloqueia (+3) | −4 | parede portátil do besteiro: +3 na Defesa contra projéteis |
 
 </div>
 

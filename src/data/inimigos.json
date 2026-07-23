@@ -495,7 +495,7 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Mana = Centelha×2 + Vontade = 8. Nível 2 (Labareda, 2d6) custa 2 Mana.",
@@ -711,7 +711,7 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.",
@@ -767,11 +767,11 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "forcas",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.",
@@ -1641,15 +1641,15 @@
     "artes": [
       {
         "id": "vento",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "raio",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "adivinhacao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Prontidão 4, Conhecimentos 2.",
@@ -2754,7 +2754,7 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Oratória 2, Furtividade 2.",
@@ -3045,7 +3045,7 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Prontidão 3, Furtividade 1.",
@@ -3231,7 +3231,7 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 2, Prontidão 3.",
@@ -3294,7 +3294,7 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Prontidão 2.",
@@ -3357,7 +3357,7 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Prontidão 4.",
@@ -3491,7 +3491,7 @@
     "artes": [
       {
         "id": "espirito",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 3.",
@@ -3793,7 +3793,7 @@
     "artes": [
       {
         "id": "vida",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Persuasão 2, Sobrevivência 3.",
@@ -3960,19 +3960,19 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 3
-      },
-      {
-        "id": "agua",
-        "nivel": 3
-      },
-      {
-        "id": "fascinacao",
         "nivel": 4
       },
       {
+        "id": "agua",
+        "nivel": 4
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 5
+      },
+      {
         "id": "adivinhacao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Conhecimentos 4, Ocultismo 3, Percepção 3.",
@@ -4215,7 +4215,7 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
@@ -4284,7 +4284,7 @@
       },
       {
         "id": "espirito",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 4.",
@@ -4353,7 +4353,7 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 3, Prontidão 2.",
@@ -4418,11 +4418,11 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "espirito",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 4, Persuasão 3, Prontidão 3.",
@@ -4493,11 +4493,11 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "espirito",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Furtividade 4, Prontidão 3.",
@@ -4566,7 +4566,7 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Prontidão 3.",
@@ -4635,7 +4635,7 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Prontidão 3, Furtividade 2.",
@@ -4700,15 +4700,15 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "vento",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "espirito",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "morte",
@@ -4799,11 +4799,11 @@
     "artes": [
       {
         "id": "protecao",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 5, Conhecimentos 5, Prontidão 3.",
@@ -4878,7 +4878,7 @@
     "artes": [
       {
         "id": "vento",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "fascinacao",
@@ -4953,7 +4953,7 @@
       },
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 4, Manha 2.",
@@ -5030,15 +5030,15 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "conjuracao",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Persuasão 4, Manha 4, Empatia 3.",
@@ -5119,11 +5119,11 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "espirito",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Prontidão 4, Atletismo 3.",
@@ -5192,11 +5192,11 @@
     "artes": [
       {
         "id": "vento",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "espirito",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Prontidão 4, Atletismo 3.",
@@ -5265,11 +5265,11 @@
     "artes": [
       {
         "id": "fortuna",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "conjuracao",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 4, Persuasão 4, Prontidão 4.",
@@ -5413,11 +5413,11 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 5
+        "nivel": 6
       },
       {
         "id": "conjuracao",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Prontidão 5, Liderança 5. Centelha acima do teto mortal (entidade).",
@@ -5571,7 +5571,7 @@
       },
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 4, Manha 3.",
@@ -5651,11 +5651,11 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "conjuracao",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Armas 3, Prontidão 3.",
@@ -5729,11 +5729,11 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "conjuracao",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Atirador 4, Persuasão 3, Prontidão 4.",
@@ -5813,11 +5813,11 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "gelo",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "fascinacao",
@@ -5896,11 +5896,11 @@
     "artes": [
       {
         "id": "gelo",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "protecao",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Armas 5, Ocultismo 4, Liderança 4.",
@@ -5975,19 +5975,19 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "adivinhacao",
-        "nivel": 2
-      },
-      {
-        "id": "materia",
         "nivel": 3
       },
       {
-        "id": "protecao",
+        "id": "materia",
         "nivel": 4
+      },
+      {
+        "id": "protecao",
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Manha 5, Furtividade 4, Persuasão 3.",
@@ -6062,15 +6062,15 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "espirito",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "fogo",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
@@ -6156,11 +6156,11 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "conjuracao",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "adivinhacao",
@@ -6239,15 +6239,15 @@
     "artes": [
       {
         "id": "raio",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "fascinacao",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
@@ -6324,11 +6324,11 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "protecao",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Persuasão 4, Prontidão 5. Centelha acima do teto mortal (entidade).",
@@ -6403,15 +6403,15 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 5
+        "nivel": 6
       },
       {
         "id": "espirito",
-        "nivel": 5
+        "nivel": 6
       },
       {
         "id": "cura",
-        "nivel": 5
+        "nivel": 6
       }
     ],
     "notas": "Perícias notáveis: Armas 5, Ocultismo 5, Oratória 5, Prontidão 5. Centelha acima do teto mortal (entidade).",
@@ -6491,11 +6491,11 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "adivinhacao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
@@ -6575,11 +6575,11 @@
     "artes": [
       {
         "id": "espirito",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "raio",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
@@ -6653,11 +6653,11 @@
     "artes": [
       {
         "id": "agua",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "fascinacao",
@@ -6665,7 +6665,7 @@
       },
       {
         "id": "vento",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
@@ -6740,11 +6740,11 @@
     "artes": [
       {
         "id": "fortuna",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "fogo",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ofícios 4, Manha 3, Prontidão 3.",
@@ -6821,7 +6821,7 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Ofícios 3, Armas 2.",
@@ -6892,7 +6892,7 @@
     "artes": [
       {
         "id": "terra",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Atletismo 2.",
@@ -6961,7 +6961,7 @@
     "artes": [
       {
         "id": "terra",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Prontidão 3, Furtividade 2.",
@@ -7029,15 +7029,15 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "conjuracao",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Persuasão 3, Furtividade 3, Sobrevivência 3.",
@@ -7108,11 +7108,11 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "agua",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 3, Furtividade 4, Persuasão 3.",
@@ -7187,7 +7187,7 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Oratória 3, Persuasão 4, Furtividade 2.",
@@ -7256,7 +7256,7 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 5, Ocultismo 2.",
@@ -7338,7 +7338,7 @@
       },
       {
         "id": "vento",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Furtividade 5, Prontidão 3.",
@@ -7413,7 +7413,7 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 3, Atirador 2, Manha 2.",
@@ -7481,7 +7481,7 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "adivinhacao",
@@ -7630,11 +7630,11 @@
     "artes": [
       {
         "id": "cura",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "conjuracao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Sobrevivência 4, Prontidão 3.",
@@ -7711,7 +7711,7 @@
     "artes": [
       {
         "id": "vento",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "fascinacao",
@@ -7719,11 +7719,11 @@
       },
       {
         "id": "materia",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "gelo",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 3, Manha 3, Persuasão 3.",
@@ -7798,11 +7798,11 @@
     "artes": [
       {
         "id": "forcas",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "adivinhacao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
@@ -7876,7 +7876,7 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
@@ -8018,11 +8018,11 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "fascinacao",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Manha 4, Furtividade 3, Ocultismo 2.",
@@ -8091,11 +8091,11 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "fascinacao",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 3, Manha 3, Furtividade 2.",
@@ -8171,7 +8171,7 @@
     "artes": [
       {
         "id": "agua",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
@@ -8247,11 +8247,11 @@
     "artes": [
       {
         "id": "protecao",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Prontidão 4. Centelha acima do teto mortal (entidade).",
@@ -8326,11 +8326,11 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Prontidão 3, Atletismo 2, Manha 2.",
@@ -8401,7 +8401,7 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
@@ -8476,11 +8476,11 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
@@ -8560,15 +8560,15 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 5
+        "nivel": 6
       },
       {
         "id": "morte",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "fascinacao",
-        "nivel": 4
+        "nivel": 5
       }
     ],
     "notas": "Perícias notáveis: Prontidão 5, Ocultismo 5, Persuasão 5, Conhecimentos 4. Centelha acima do teto mortal (entidade).",
@@ -8647,15 +8647,15 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 5
+        "nivel": 6
       },
       {
         "id": "tempo",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "morte",
-        "nivel": 5
+        "nivel": 6
       }
     ],
     "notas": "Perícias notáveis: Prontidão 6, Ocultismo 6, Persuasão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
@@ -8735,11 +8735,11 @@
     "artes": [
       {
         "id": "gelo",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Prontidão 3, Furtividade 3.",
@@ -8814,15 +8814,15 @@
     "artes": [
       {
         "id": "raio",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "fascinacao",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Furtividade 4, Prontidão 4, Manha 4.",
@@ -8897,11 +8897,11 @@
     "artes": [
       {
         "id": "agua",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "vida",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Manha 4, Persuasão 4, Furtividade 3.",
@@ -8976,19 +8976,19 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "fascinacao",
-        "nivel": 3
-      },
-      {
-        "id": "protecao",
         "nivel": 4
       },
       {
+        "id": "protecao",
+        "nivel": 5
+      },
+      {
         "id": "materia",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",

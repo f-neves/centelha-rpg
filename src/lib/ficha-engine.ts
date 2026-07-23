@@ -201,7 +201,7 @@ export function montarFicha(opts: FichaOpts) {
     const card = (a: any) => {
       const lvl = S.arte[a.id] || 0, cost = custoArte(lvl), open = OPEN.arte[a.id];
       const fx = a.niveis.map((n: any) => `<div class="fxline${n.nivel <= lvl ? ' hi' : ''}">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('');
-      return `<div class="cam"><div class="cam-head"><span class="chev" data-artetog="${a.id}">${open ? '▾' : '▸'} ${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 5, 0)}<span class="cam-meta">${lvl ? `nível ${lvl} · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${fx}</div></div>`;
+      return `<div class="cam"><div class="cam-head"><span class="chev" data-artetog="${a.id}">${open ? '▾' : '▸'} ${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}<span class="cam-meta">${lvl ? `nível ${lvl} · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${fx}</div></div>`;
     };
     el('artes').innerHTML = col3(ARTE_D as any[], card);
   }
@@ -257,7 +257,7 @@ export function montarFicha(opts: FichaOpts) {
   }
   function renderCombate() {
     const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];
-    const esc = ESCUDO[S.equip?.escudo || 'nenhum'] || { bloqCaC: 0, bloqProjetil: 0, penalidade: 0 };
+    const esc = ESCUDO[S.equip?.escudo || 'nenhum'] || { bloqCaC: 0, habilProjetil: false, penalidade: 0 };
     const C = S.centelha || 0, forca = S.attrs.forca || 0;
     const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
     const armorPen = empilharArmaduras(pecas).penalidade || 0;
@@ -280,7 +280,7 @@ export function montarFicha(opts: FichaOpts) {
       `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego (${(w.folego ?? 0) * 2} → ${(w.folego ?? 0) * 4}…) e +1 Speed.</div>` +
       (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(${w.pericia === 'escudos' ? 'Escudos' : w.nome} + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqCaC ? ` + escudo ${esc.bloqCaC}` : ''}${armorPen ? ` − armadura ${armorPen}` : ''})</span></div>`) +
       (!dist && blkDS.length ? `<div class="cmb muted">Especialidades situacionais de bloqueio: ${blkDS.join(' · ')}.</div>` : '') +
-      (esc.bloqProjetil ? `<div class="cmb muted">Escudo vs projétil: +${esc.bloqProjetil} à Defesa contra ataques à distância${esc.penalidade ? ` · −${esc.penalidade} nas outras ações físicas (não no próprio bloqueio)` : ''}.</div>` : '') +
+      (esc.bloqCaC ? `<div class="cmb muted">Projétil rápido (flecha, virote, bala de funda, dardo): ${esc.habilProjetil ? 'este escudo é hábil, dá para Bloquear se você estiver apto a manejá-lo (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.${esc.penalidade ? ` Penalidade −${esc.penalidade} nas outras ações físicas (não no próprio bloqueio).` : ''}</div>` : '') +
       (w.notas ? `<div class="cmb muted">${w.notas}</div>` : '') +
       (pecas.length ? `<div class="cmb muted">Armadura: ${pecas.map((p: any) => p.nome).join(' + ')}.</div>` : '');
   }

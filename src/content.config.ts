@@ -83,13 +83,13 @@ const artes = defineCollection({
     niveis: z
       .array(
         z.object({
-          nivel: z.number().int().min(1).max(5),
+          nivel: z.number().int().min(1).max(6),
           nome: z.string(),
           efeito: z.string(),
-          custo: z.object({ mana: z.number().int().min(1).max(5) }),
+          custo: z.object({ mana: z.number().int().min(1).max(6) }),
         }),
       )
-      .length(5),
+      .min(5).max(6),
     aliases: z.array(z.string()),
     pendente: z.boolean(),
   }),
@@ -142,7 +142,7 @@ const escudos = defineCollection({
   loader: file('src/data/escudos.json'),
   schema: z.object({
     id: z.string(), nome: z.string(),
-    bloqCaC: z.number().int(), bloqProjetil: z.number().int(), penalidade: z.number().int(),
+    bloqCaC: z.number().int(), habilProjetil: z.boolean(), penalidade: z.number().int(),
     acesso: z.number().int().optional(), notas: z.string(),
   }),
 });
@@ -169,7 +169,7 @@ const inimigos = defineCollection({
     atributos: z.record(z.number().int()),
     ataques: z.array(z.object({ nome: z.string(), pool: z.string(), dano: z.string(), ticks: z.number().int(), notas: z.string().optional() })),
     tecnicas: z.array(reference('tecnicas')),
-    artes: z.array(z.object({ id: reference('artes'), nivel: z.number().int().min(1).max(5) })),
+    artes: z.array(z.object({ id: reference('artes'), nivel: z.number().int().min(1).max(6) })),
     poderes: z.array(z.object({
       efeito: z.string(),
       tipo: z.enum(['proeza', 'feiticaria', 'natural']),

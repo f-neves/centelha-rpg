@@ -65,11 +65,11 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
   </div>
 
   <h2>Escudos</h2>
-  <p class="muted">Escudo é <strong>bônus de Defesa</strong> (ajuda a não ser acertado), não absorção. Dois valores conforme o ataque: <strong>CaC</strong> (corpo a corpo) e <strong>Projétil</strong>. A <strong>Penalidade</strong> incide nas outras ações físicas (esquiva etc.), nunca no bloqueio do próprio escudo.</p>
+  <p class="muted">Escudo é <strong>bônus de Defesa</strong> (ajuda a não ser acertado), não absorção: some ao seu <strong>Bloqueio</strong>, como a Defesa de uma arma. Contra <strong>projéteis rápidos</strong> (flecha, virote, bala de funda, dardo) ele é a <em>única</em> forma de bloquear: só quem tem um escudo <strong>hábil</strong> (cobre ≥30% do corpo, do redondo para cima num usuário Médio) e está <strong>apto</strong> a manejá-lo bloqueia; sem isso, resta a Esquiva. A <strong>Penalidade</strong> incide nas outras ações físicas (esquiva etc.), nunca no bloqueio do próprio escudo.</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Escudo</th><th class="c">Bloq. CaC</th><th class="c">Bloq. Projétil</th><th class="c">Penalidade</th><th>Notas</th></tr></thead>
-      <tbody>{escudos.filter((s) => s.bloqCaC > 0 || s.bloqProjetil > 0).map((s) => <tr><th>{s.nome}</th><td class="c">+{s.bloqCaC}</td><td class="c">+{s.bloqProjetil}</td><td class="c">{s.penalidade ? `−${s.penalidade}` : '0'}</td><td class="muted">{s.notas}</td></tr>)}</tbody>
+      <thead><tr><th>Escudo</th><th class="c">Defesa</th><th class="c">vs Projétil rápido</th><th class="c">Penalidade</th><th>Estilo</th></tr></thead>
+      <tbody>{escudos.filter((s) => s.bloqCaC > 0).map((s) => <tr><th>{s.nome}</th><td class="c">+{s.bloqCaC}</td><td class="c">{s.habilProjetil ? 'bloqueia' : '—'}</td><td class="c">{s.penalidade ? `−${s.penalidade}` : '0'}</td><td class="muted">{s.notas}</td></tr>)}</tbody>
     </table>
   </div>
 </Base>

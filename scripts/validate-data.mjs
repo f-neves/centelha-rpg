@@ -18,7 +18,7 @@ const S = {
   virtudes: z.object({ id: z.string(), nome: z.string(), resiste: z.string(), descricao: z.string(), niveis: z.array(z.object({ nivel: z.number().int(), texto: z.string() })).optional() }),
   caminhos: z.object({ id: z.string(), nome: z.string(), trilha: z.enum(['corpo', 'voz', 'mente']), atributo: z.string(), habilidade_ancora: z.string().optional(), descricao: z.string() }),
   tecnicas: z.object({ id: z.string(), nome: z.string(), caminho: z.string(), atributo: z.string(), nivel: z.number().int().min(1).max(6), efeito: z.enum(['bonus', 'soak', 'dano', 'penetracao', 'carga', 'salto', 'velocidade', 'tamanho', 'estado']), tipo: z.enum(['passiva', 'ativa', 'reflexiva']), custo, prereq: z.array(z.string()), aliases: z.array(z.string()), texto: z.string(), pendente: z.boolean() }),
-  artes: z.object({ id: z.string(), nome: z.string(), categoria: z.enum(['elemental', 'universal']), atributo_conjuracao: z.string(), niveis: z.array(z.object({ nivel: z.number().int().min(1).max(5), nome: z.string(), efeito: z.string(), custo: z.object({ mana: z.number().int().min(1).max(5) }) })).length(5), aliases: z.array(z.string()), pendente: z.boolean() }),
+  artes: z.object({ id: z.string(), nome: z.string(), categoria: z.enum(['elemental', 'universal']), atributo_conjuracao: z.string(), niveis: z.array(z.object({ nivel: z.number().int().min(1).max(6), nome: z.string(), efeito: z.string(), custo: z.object({ mana: z.number().int().min(1).max(6) }) })).min(5).max(6), aliases: z.array(z.string()), pendente: z.boolean() }),
   glossario: z.object({ id: z.string(), termo: z.string(), aliases: z.array(z.string()), definicao: z.string() }),
   inimigos: z.object({
     id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
@@ -43,7 +43,7 @@ const S = {
     tags: z.array(z.string()), notas: z.string(),
   }),
   armaduras: z.object({ id: z.string(), nome: z.string(), classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: soakModos, resistPerf: z.number().int().min(0), penalidade: z.number().int().min(0), acesso: z.number().int().optional(), notas: z.string() }),
-  escudos: z.object({ id: z.string(), nome: z.string(), bloqCaC: z.number().int(), bloqProjetil: z.number().int(), penalidade: z.number().int(), acesso: z.number().int().optional(), notas: z.string() }),
+  escudos: z.object({ id: z.string(), nome: z.string(), bloqCaC: z.number().int(), habilProjetil: z.boolean(), penalidade: z.number().int(), acesso: z.number().int().optional(), notas: z.string() }),
 };
 
 const data = {};

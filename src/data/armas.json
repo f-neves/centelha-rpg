@@ -92,7 +92,7 @@
     "dado": 2, "acerto": 1, "defesaArma": 0, "maos": 2, "ticks": 6, "folego": 20,
     "tipoDano": "perfurante", "pen": 1,
     "modos": [ { "tipo": "perfurante", "perf": 1, "principal": true } ],
-    "tags": [ "munição", "distância" ],
+    "tags": [ "munição", "distância", "projétil veloz" ],
     "notas": "Precisão à distância; gasta munição. Perfura couro e malha (N1), resvala na placa."
   },
   {
@@ -100,7 +100,7 @@
     "dado": 3, "acerto": 1, "defesaArma": 0, "maos": 2, "ticks": 6, "folego": 20,
     "tipoDano": "perfurante", "pen": 2,
     "modos": [ { "tipo": "perfurante", "perf": 2, "principal": true } ],
-    "tags": [ "munição", "recarga", "distância" ],
+    "tags": [ "munição", "recarga", "distância", "projétil veloz" ],
     "notas": "O virote (N2) fura até a placa; recarga lenta. A resposta de longe contra cavaleiro."
   },
   {
@@ -108,7 +108,7 @@
     "dado": 1, "acerto": 2, "defesaArma": 0, "maos": 1, "ticks": 4, "folego": 12,
     "tipoDano": "perfurante", "pen": 1,
     "modos": [ { "tipo": "perfurante", "perf": 1, "principal": true } ],
-    "tags": [ "ágil", "arremessável", "munição" ],
+    "tags": [ "ágil", "arremessável", "munição", "projétil veloz" ],
     "notas": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto."
   },
   {
@@ -132,15 +132,15 @@
     "dado": 1, "acerto": 1, "defesaArma": 0, "maos": 1, "ticks": 6, "folego": 12,
     "tipoDano": "impacto", "pen": 0,
     "modos": [ { "tipo": "impacto", "principal": true } ],
-    "tags": [ "munição", "arremessável" ],
-    "notas": "Lança pedras a grande distância; barata e silenciosa. Dano de Impacto (quebra ossos sob a armadura) — não passa pelo gate de perfuração."
+    "tags": [ "munição", "arremessável", "projétil veloz" ],
+    "notas": "Lança pedras a grande distância; barata e silenciosa. Dano de Impacto (quebra ossos sob a armadura), não passa pelo gate de perfuração."
   },
   {
     "id": "dardos", "nome": "Dardos", "classe": "arremesso", "atrib": "destreza", "pericia": "arremesso",
     "dado": 1, "acerto": 2, "defesaArma": 0, "maos": 1, "ticks": 4, "folego": 12,
     "tipoDano": "perfurante", "pen": 1,
     "modos": [ { "tipo": "perfurante", "perf": 1, "principal": true } ],
-    "tags": [ "ágil", "arremessável", "munição" ],
+    "tags": [ "ágil", "arremessável", "munição", "projétil veloz" ],
     "notas": "Pequenos e velozes, lançados em sequência; precisos de perto. Carregados às dezenas."
   },
   {

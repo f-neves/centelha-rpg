@@ -1,10 +1,10 @@
 [
-  { "id": "nenhum", "nome": "Nenhum", "bloqCaC": 0, "bloqProjetil": 0, "penalidade": 0, "acesso": 10, "notas": "Mãos livres." },
-  { "id": "broquel", "nome": "Broquel (buckler)", "bloqCaC": 3, "bloqProjetil": 1, "penalidade": 0, "acesso": 9, "notas": "Minúsculo, na mão longe do corpo. Todo o valor vem do uso ativo: desviar o golpe e proteger a mão da espada. Péssimo contra flecha. Barato e onipresente." },
-  { "id": "targe", "nome": "Targe / rodela", "bloqCaC": 3, "bloqProjetil": 2, "penalidade": 1, "acesso": 7, "notas": "Pequeno, preso ao antebraço, às vezes com espigão. Bom duelista, cobertura limitada." },
-  { "id": "redondo", "nome": "Escudo redondo", "bloqCaC": 4, "bloqProjetil": 3, "penalidade": 1, "acesso": 8, "notas": "Médio, versátil, usado de forma agressiva (soco com o umbo, prende a arma inimiga). O melhor todo-terreno barato." },
-  { "id": "heater", "nome": "Heater (escudo de cavaleiro)", "bloqCaC": 4, "bloqProjetil": 4, "penalidade": 2, "acesso": 6, "notas": "Preso por alças, cobre o tronco. Cobertura passiva a pé e a cavalo." },
-  { "id": "kite", "nome": "Kite normando", "bloqCaC": 4, "bloqProjetil": 4, "penalidade": 2, "acesso": 5, "notas": "Grande, afunilado para cobrir a perna na montaria. Muita cobertura, pesado." },
-  { "id": "scutum", "nome": "Scutum romano", "bloqCaC": 4, "bloqProjetil": 4, "penalidade": 3, "acesso": 3, "notas": "Retangular curvo, de madeira laminada. Cobre o corpo e multiplica em formação (testudo). Pesado para uso individual." },
-  { "id": "paves", "nome": "Pavês (pavise)", "bloqCaC": 3, "bloqProjetil": 5, "penalidade": 4, "acesso": 5, "notas": "Parede portátil do besteiro. Plantado, é cobertura quase total contra projétil. Não serve para duelar." }
+  { "id": "nenhum", "nome": "Nenhum", "bloqCaC": 0, "habilProjetil": false, "penalidade": 0, "acesso": 10, "notas": "Mãos livres." },
+  { "id": "broquel", "nome": "Broquel (buckler)", "bloqCaC": 2, "habilProjetil": false, "penalidade": 0, "acesso": 9, "notas": "Minúsculo, na mão longe do corpo. Todo o valor vem do uso ativo: desviar o golpe e proteger a mão da espada. Ineficaz contra projéteis rápidos. Barato e onipresente." },
+  { "id": "targe", "nome": "Targe / rodela", "bloqCaC": 3, "habilProjetil": false, "penalidade": 1, "acesso": 7, "notas": "Pequeno, preso ao antebraço, às vezes com espigão. Bom duelista, mas cobertura limitada: ineficaz contra projéteis rápidos." },
+  { "id": "redondo", "nome": "Escudo redondo", "bloqCaC": 4, "habilProjetil": true, "penalidade": 1, "acesso": 8, "notas": "Médio, versátil, usado de forma agressiva (soco com o umbo, prende a arma inimiga). O melhor todo-terreno barato; cobre o bastante para aparar projéteis rápidos." },
+  { "id": "heater", "nome": "Heater (escudo de cavaleiro)", "bloqCaC": 4, "habilProjetil": true, "penalidade": 2, "acesso": 6, "notas": "Preso por alças, cobre o tronco. Cobertura passiva a pé e a cavalo; hábil contra projéteis rápidos." },
+  { "id": "kite", "nome": "Kite normando", "bloqCaC": 4, "habilProjetil": true, "penalidade": 2, "acesso": 5, "notas": "Grande, afunilado para cobrir a perna na montaria. Muita cobertura, pesado; hábil contra projéteis rápidos." },
+  { "id": "scutum", "nome": "Scutum romano", "bloqCaC": 4, "habilProjetil": true, "penalidade": 3, "acesso": 3, "notas": "Retangular curvo, de madeira laminada. Cobre o corpo e multiplica em formação (testudo). Pesado para uso individual; hábil contra projéteis rápidos." },
+  { "id": "paves", "nome": "Pavês (pavise)", "bloqCaC": 3, "habilProjetil": true, "penalidade": 4, "acesso": 5, "notas": "Parede portátil do besteiro (antiprojétil): +3 na Defesa contra projéteis rápidos. Plantado, é cobertura quase total. Não serve para duelar." }
 ]
