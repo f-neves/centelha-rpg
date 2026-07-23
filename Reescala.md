@@ -158,9 +158,14 @@ Defesa (reintroduzir o `−⌊soma/4⌋` ou baixar o mult) numa passada à parte
     os valores antigos: se regerar do zero, reaplicar o +1 nos ≥2.
   - [x] **Kael migrado** — Centelha 2→3 (Herói); `test-kael.mjs` atualizado (Defesa 17, Def.M 13,
     Energia 27, Mana 13, Salto V256/HP5/HC14). Build verde.
-  - [ ] **Redesenhar as 3 fichas de exemplo** (Kael/Sora/Veil no cap. de Criação): custos, tiers e
-    derivados mudaram; hoje marcadas com callout "Em recalibração".
-  - [ ] **Criar as Proezas/Feitiçarias do tier Desperto** (nível 2, hoje vazio) e afinar os valores
-    provisórios das trilhas no N2.
-  - [ ] **Alinhar gating das Artes** (ainda 1–5) à Centelha 6, se forem renumeradas como as Proezas.
-  - [ ] Varrer menções de escala restantes em `combate.md`/`arcano`.
+  - [x] **Artes alinhadas à Centelha 6** — renumeradas 2→3…5→6 (refs do bestiário ajustadas) e o
+    tier **Desperto (nível 2)** preenchido nas 18 Artes; schemas até 6; ficha arte2 até 6.
+  - [x] **Proezas do tier Desperto** — 50 Técnicas de nível 2 (uma por subcaminho), ponte N1→N3,
+    com pré-req num N1 do próprio subcaminho. Nível 2 deixou de ser vazio.
+  - [x] **4 fichas de exemplo redesenhadas** (Kael/Sora/Veil/Bram): Centelha reclassificada
+    (Kael/Sora 3, Veil 4, Bram 1), tetos 5/4 e pico 6/5, orçamentos 1700/2200/2900, derivados
+    conferidos por função de custo real. Passo-a-passo do capítulo de Criação atualizado.
+  - [ ] (opcional) Afinar os valores provisórios do Desperto nas trilhas quando quiser calibrar o tier.
+  - [ ] (opcional) Varrer menções de escala remanescentes em `combate.md`/`arcano`.
+
+**Reescala essencialmente COMPLETA:** as Fases 1–6 estão feitas; restam só afinamentos opcionais.
