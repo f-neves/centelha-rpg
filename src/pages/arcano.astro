@@ -12,7 +12,7 @@ const Arte = (a: any) => a;
   <h1>O Arcano</h1>
   <p class="lead">A feitiçaria é a quarta trilha das Proezas — e a única que de fato <em>quebra</em> as regras do mundo. Ela se aprende em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um.</p>
 
-  <p>Cada <strong>Arte</strong> tem <strong>5 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia, e o nível <em>N</em> exige <strong>Ocultismo ≥ N</strong> — é a habilidade que mede a profundidade. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana = nível do efeito</strong>. Dentro do seu nível, você improvisa efeitos compatíveis.</p>
+  <p>Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia, e o nível <em>N</em> exige <strong>Ocultismo ≥ N</strong> — é a habilidade que mede a profundidade. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana = nível do efeito</strong>. Dentro do seu nível, você improvisa efeitos compatíveis.</p>
 
   <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong> — rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1–2, <strong>6</strong> no 3, <strong>7</strong> nos 4–5), mais o Mana. &nbsp; <strong>Ritual</strong> — lento, fora de combate: metade do Mana <em>e</em> alcança escalas que nenhum Feitiço atinge.</div>
 
@@ -51,13 +51,13 @@ const Arte = (a: any) => a;
 
     <h2>Conjuração composta</h2>
     <p>Você pode trançar <strong>várias Artes numa única conjuração</strong> — o mesmo idioma dos combos de Técnica. Junte K Artes e pague a <strong>soma dos Manas + uma sobretaxa progressiva de +(k−1)</strong> (a 2ª Arte +1, a 3ª +2…). É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem a escada dele.</p>
-    <p class="formula">Fogo (Labareda, nível 2) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 2 + 1 + <strong>1</strong> de sobretaxa = <strong>4</strong>, numa conjuração só.</p>
+    <p class="formula">Fogo (Labareda, nível 3) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 3 + 1 + <strong>1</strong> de sobretaxa = <strong>5</strong>, numa conjuração só.</p>
 
     <h2>Rituais: a alta magia</h2>
     <p>Com tempo e sossego, a feitiçaria deixa de ser dardo e vira obra. O Ritual roda como <strong>ação estendida</strong> (Dificuldade + Intervalo + Acúmulo de sucessos ao longo de minutos ou horas) e dá <strong>duas dádivas</strong>:</p>
     <ul>
       <li><strong>Economia</strong> — paga <strong>metade do Mana</strong> (arredondado para cima).</li>
-      <li><strong>Escala</strong> — empurra os mostradores <em>muito</em> além do que um Feitiço comporta: cobrir uma vila, durar até a próxima lua, lavrar uma maldição permanente. O efeito-<em>base</em> ainda não passa do nível de Arte que você domina — um mestre de Fogo nível 2 incendeia um casarão inteiro, mas não invoca o Cataclismo do nível 5.</li>
+      <li><strong>Escala</strong> — empurra os mostradores <em>muito</em> além do que um Feitiço comporta: cobrir uma vila, durar até a próxima lua, lavrar uma maldição permanente. O efeito-<em>base</em> ainda não passa do nível de Arte que você domina — um mestre de Fogo nível 3 incendeia um casarão inteiro, mas não invoca o Cataclismo do nível 6.</li>
     </ul>
     <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e dados ao Acúmulo. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
   </section>

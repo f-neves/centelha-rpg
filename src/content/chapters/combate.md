@@ -227,7 +227,7 @@ As Técnicas das Proezas entram na luta por **dois mostradores independentes**: 
 | **Passiva** | 0 | Sempre ligada. Não custa nada, não ocupa a sua vez. |
 | **Reflexiva** | 0 | Dispara *fora da sua vez*, em reação (aparar, esquivar, contra-atacar). Paga Energia; **só 1 por gatilho**. |
 | **Ativa suplementar** | +0 | Turbina uma ação que você já vai fazer (*"seu golpe ganha +2d6"*). Dobra junto com o ataque; você só paga a Energia. |
-| **Ativa independente** | própria | A Técnica **é** a ação (um deslocamento, um grito em área). Custa Speed pelo nível: **5** (níveis 1–2), **6** (nível 3), **7** (níveis 4–5). |
+| **Ativa independente** | própria | A Técnica **é** a ação (um deslocamento, um grito em área). Custa Speed pelo nível: **5** (níveis 1–3), **6** (nível 4), **7** (níveis 5–6). |
 
 ### Combos: concentrar num golpe só
 

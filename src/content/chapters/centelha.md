@@ -64,7 +64,7 @@ Quando uma Técnica melhora uma **tarefa** (esquivar, agarrar, mirar, resistir a
 
 Mas nem toda melhora é um bônus de rolagem. Erguer peso não é o mesmo que mirar melhor, e pular longe não é o mesmo que resistir a veneno. Por isso cada **tipo** de efeito tem sua própria escala por nível:
 
-O nível 2 (Desperto) foi inserido pela nova régua; os valores desse degrau são provisórios (entre o 1 e o 3) até as Proezas do tier serem desenhadas.
+O nível 2 (Desperto) é o meio-degrau entre o Tocado (1) e o Herói (3): os valores interpolam entre os dois. Onde a trilha é discreta (dados de dano, tamanho), o Desperto repete o valor do Tocado e a Técnica carrega um efeito extra como degrau (um golpe do Desperto soma +1d6 mais um raspão).
 
 | Trilha | O que cresce | N1 | N2 | N3 | N4 | N5 | N6 |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|
