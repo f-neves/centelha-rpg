@@ -9,28 +9,30 @@ Atributos e Habilidades dizem o que o corpo e a mente **conseguem fazer**. Este 
 
 ## A Aparência
 
-A **Aparência** não é um Atributo — é um traço próprio, de **1 a 10** (como a Força de Vontade), que mede o impacto físico que você causa nos outros. Importa porque entra **direto nas jogadas sociais**: some um modificador (a tabela abaixo) sempre que a aparência for relevante.
+A **Aparência** não é um Atributo — é um traço próprio, de **1 a 12** (como a Força de Vontade), que mede o impacto físico que você causa nos outros. Importa porque entra **direto nas jogadas sociais**: some um modificador (a tabela abaixo) sempre que a aparência for relevante.
 
 E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele — o belo tem **−** ao intimidar, o feio tem **+**; e quem é marcante demais sofre ao tentar passar despercebido. A **Compostura** define o quanto dessa aparência você consegue mascarar.
 
 | Nível | | Modificador |
 |:---:|---|:---:|
 | 1 | Deformado | −4 |
-| 2 | Muito feio | −2 |
-| 3 | Feio | −1 |
+| 2 | Repulsivo | −3 |
+| 3 | Muito feio | −2 |
+| 4 | Feio | −1 |
 | 5 | Comum | 0 |
-| 5 | Comum | 0 |
-| 6 | Comum | 0* |
-| 7 | Bonito | +1 |
-| 8 | Beleza | +2 |
-| 9 | Beleza universal | +3 |
-| 10 | Extraordinário | +4 |
+| 6 | Comum | 0 |
+| 7 | Comum | 0* |
+| 8 | Bonito | +1 |
+| 9 | Beleza | +2 |
+| 10 | Beleza universal | +3 |
+| 11 | Extraordinário | +4 |
+| 12 | Ápice | +5 |
 
 <p class="muted">* - Pode receber bônus situacionais de acordo com a descrição da aparência.</p>
 
 ## As Quatro Virtudes
 
-As Virtudes são **o que move o personagem por dentro**. Cada uma vai de 1 a 5 e descreve tanto o que te impulsiona quanto aquilo a que você resiste.
+As Virtudes são **o que move o personagem por dentro**. Cada uma vai de 1 a 6 e descreve tanto o que te impulsiona quanto aquilo a que você resiste.
 
 | Virtude | Governa | Resiste a… |
 |---|---|---|

@@ -17,7 +17,7 @@ Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão n
 2. **Orçamento.** Combine com o Mestre: **1400** (iniciante), **1800** (veterano) ou **2400** (herói). Todo o resto sai desse bolo de XP.
 3. **Atributos.** Suba do piso 1. Teto **4** na criação, com **um único** atributo em **5** (o seu pico).
 4. **Habilidades e Especialidades.** Teto **3**, com **uma única** primária em **4** (o pico de perícia). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
-5. **Virtudes.** As quatro, de 1 a 5 — elas também alimentam a Energia.
+5. **Virtudes.** As quatro, de 1 a 6, elas também alimentam a Energia.
 6. **Força de Vontade e Aparência.** Suba a Vontade do piso 1 (um herói costuma levá-la a 5+); escolha a Aparência (1–10, normal por volta de 4–6).
 7. **Centelha.** Teto **2** na criação. É cara (×15) e define o seu tier — a maioria começa em 1; quem quer um herói de saga já compra 2.
 8. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte.

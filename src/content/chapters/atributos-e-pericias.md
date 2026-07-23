@@ -55,15 +55,15 @@ A tríade social forma um loop tático, espelhando o combate: um age, o outro re
 
 ### Acima de 5
 
-A faixa **1–5 é a régua mortal**: o **5** é o ápice que um ser humano já alcançou. Valores de **6 a 10** são **sobre-humanos** — força que dobra portões de ferro, sentidos que leem uma cidade num relance — e só se abrem pela **Centelha**, o traço de tier de poder. *Como* a Centelha eleva esse teto é assunto do [capítulo da Centelha](/regras/centelha).
+A faixa **1–6 é a régua mortal**: o **6** é o ápice que um ser humano já alcançou. Valores de **7 a 12** são **sobre-humanos** (força que dobra portões de ferro, sentidos que leem uma cidade num relance) e só se abrem pela **Centelha**, o traço de tier de poder. *Como* a Centelha eleva esse teto é assunto do [capítulo da Centelha](/regras/centelha).
 
 ## A Aparência
 
-A **Aparência** não é um Atributo — é um traço próprio (de **1 a 10**) que mede o impacto físico que você causa nos outros e pesa, de forma direcional, nas jogadas sociais. Ela ganhou capítulo próprio: veja [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).
+A **Aparência** não é um Atributo — é um traço próprio (de **1 a 12**) que mede o impacto físico que você causa nos outros e pesa, de forma direcional, nas jogadas sociais. Ela ganhou capítulo próprio: veja [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).
 
 ## As Vinte e Oito Habilidades Primárias
 
-As Habilidades vão de **0 a 5** e cobrem o tronco do que um aventureiro faz. Cada uma **pareia com um ou mais Atributos** conforme o uso — a mesma Investigação é *Percepção* para achar pistas, *Raciocínio* para deduzir na hora e *Inteligência* para reconstituir o que houve. São 28, em quatro grupos de sete.
+As Habilidades vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. Cada uma **pareia com um ou mais Atributos** conforme o uso — a mesma Investigação é *Percepção* para achar pistas, *Raciocínio* para deduzir na hora e *Inteligência* para reconstituir o que houve. São 28, em quatro grupos de sete.
 
 #### Combate
 - **Briga** — Combate corpo a corpo desarmado: socos, agarrões, projeções. *(Força/Destreza)*

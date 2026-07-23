@@ -1,65 +1,362 @@
 {
   "escalaHabilidade": [
-    { "nivel": 0, "rotulo": "Leigo", "texto": "Sem treino: só o talento bruto do Atributo, e mal. Erra o que um treinado acerta." },
-    { "nivel": 1, "rotulo": "Iniciado", "texto": "Noções básicas; o aprendiz. Resolve o trivial com sorte." },
-    { "nivel": 2, "rotulo": "Competente", "texto": "O profissional comum da área; faz bem o cotidiano." },
-    { "nivel": 3, "rotulo": "Profissional", "texto": "Confiável e respeitado; vence a maioria dos desafios médios sem suar." },
-    { "nivel": 4, "rotulo": "Perito", "texto": "Referência regional; resolve o que trava os outros." },
-    { "nivel": 5, "rotulo": "Mestre", "texto": "Um dos melhores que existem; faz o que poucos sequer sonham." }
+    {
+      "nivel": 0,
+      "rotulo": "Leigo",
+      "texto": "Sem treino: só o talento bruto do Atributo, e mal. Erra o que um treinado acerta."
+    },
+    {
+      "nivel": 1,
+      "rotulo": "Iniciado",
+      "texto": "Noções básicas; o aprendiz. Resolve o trivial com sorte."
+    },
+    {
+      "nivel": 2,
+      "rotulo": "Competente",
+      "texto": "O profissional comum da área; faz bem o cotidiano."
+    },
+    {
+      "nivel": 3,
+      "rotulo": "Profissional",
+      "texto": "Confiável e respeitado; vence a maioria dos desafios médios sem suar."
+    },
+    {
+      "nivel": 4,
+      "rotulo": "Perito",
+      "texto": "Referência regional; resolve o que trava os outros."
+    },
+    {
+      "nivel": 5,
+      "rotulo": "Mestre",
+      "texto": "Um dos melhores que existem; faz o que poucos sequer sonham."
+    },
+    {
+      "nivel": 6,
+      "rotulo": "Lendário",
+      "texto": "O ápice absoluto do ofício; um nome que entra para a história da arte. Faz o que os próprios Mestres consideram impossível."
+    }
   ],
   "escalaCentelha": [
-    { "nivel": 0, "rotulo": "Mortal", "texto": "Pessoa comum, cerca de 95% da população. Sem acesso a Proezas ou Artes; vive do que treinou." },
-    { "nivel": 1, "rotulo": "Tocado", "texto": "A fagulha acendeu: refino sobre-humano, ainda dentro do possível. Proezas de nível 1; ganha Energia e Mana." },
-    { "nivel": 2, "rotulo": "Herói", "texto": "Façanhas sobre-humanas que assombram mortais. Proezas até o nível 2." },
-    { "nivel": 3, "rotulo": "Grande herói", "texto": "Feitos conhecidos em muitos lugares; começa a quebrar as leis da física. Proezas até o nível 3." },
-    { "nivel": 4, "rotulo": "Lendário", "texto": "Há lendas sobre ele; mudou o rumo de nações. Proezas até o nível 4." },
-    { "nivel": 5, "rotulo": "Semideus", "texto": "Material de fábula, venerado como divindade. Proezas até o nível 5 (teto)." }
+    {
+      "nivel": 0,
+      "rotulo": "Mortal",
+      "texto": "Pessoa comum, cerca de 95% da população. Sem acesso a Proezas ou Artes; vive do que treinou."
+    },
+    {
+      "nivel": 1,
+      "rotulo": "Tocado",
+      "texto": "A fagulha acendeu: refino sobre-humano, ainda dentro do possível. Proezas de nível 1; ganha Energia e Mana."
+    },
+    {
+      "nivel": 2,
+      "rotulo": "Desperto",
+      "texto": "A Centelha firma-se: o que era lampejo vira força consciente. Um degrau acima do Tocado, ainda no limiar do herói. Proezas até o nível 2."
+    },
+    {
+      "nivel": 3,
+      "rotulo": "Herói",
+      "texto": "Façanhas sobre-humanas que assombram mortais. Proezas até o nível 3."
+    },
+    {
+      "nivel": 4,
+      "rotulo": "Grande herói",
+      "texto": "Feitos conhecidos em muitos lugares; começa a quebrar as leis da física. Proezas até o nível 4."
+    },
+    {
+      "nivel": 5,
+      "rotulo": "Lendário",
+      "texto": "Há lendas sobre ele; mudou o rumo de nações. Proezas até o nível 5."
+    },
+    {
+      "nivel": 6,
+      "rotulo": "Semideus",
+      "texto": "Material de fábula, venerado como divindade. Proezas até o nível 6 (teto)."
+    }
   ],
   "escalasProeza": {
-    "nota": "Cada Técnica cresce conforme seu nível (1 a 5). O TIPO de melhora define a trilha e a escala. A maioria das Técnicas é 'estado' (uma capacidade, sem número). Os valores abaixo somam por cima do +2/ponto de Centelha que já pesa em ataque e nas 4 defesas.",
+    "nota": "Cada Técnica cresce conforme seu nível (1 a 6). O TIPO de melhora define a trilha e a escala. A maioria das Técnicas é 'estado' (uma capacidade, sem número). Os valores abaixo somam por cima do +2/ponto de Centelha que já pesa em ataque e nas 4 defesas.",
     "trilhas": {
-      "bonus": { "rotulo": "Bônus", "unidade": "+ à rolagem ou ao valor passivo", "valores": ["+3", "+6", "+9", "+12", "+15"], "uso": "perícia, ataque, defesa, resistir, disputa, penalidade ao alvo, Iniciativa, redução de Ticks" },
-      "soak": { "rotulo": "Absorção", "unidade": "+ Soak", "valores": ["+2", "+4", "+6", "+9", "+12"], "uso": "reduzir o dano recebido" },
-      "dano": { "rotulo": "Dano", "unidade": "+ dados de dano", "valores": ["+1d6", "+2d6", "+3d6", "+4d6", "+6d6"], "uso": "golpe mais forte" },
-      "penetracao": { "rotulo": "Penetração", "unidade": "Soak ignorado", "valores": ["2", "4", "6", "toda a armadura", "armadura + Soak natural"], "uso": "furar a defesa do alvo" },
-      "carga": { "rotulo": "Carga", "unidade": "× capacidade de erguer/carregar", "valores": ["×2", "×4", "×10", "×30", "×100"], "uso": "levantar, carregar, arremessar peso", "anchor": ["uma pessoa/porta", "carroça/cavalo", "~1 t: viga/pedra de cerco", "~5-10 t: estátua/parede", "dezenas de t: torre/navio"] },
-      "salto": { "rotulo": "Salto", "unidade": "× distância/altura de salto", "valores": ["×2", "×4", "×8", "×20", "×50"], "uso": "pular longe/alto, cair sem dano", "anchor": ["telhado/fosso", "de telhado a telhado", "cruza um rio", "some da vista", "de montanha a montanha"] },
-      "velocidade": { "rotulo": "Velocidade", "unidade": "× deslocamento", "valores": ["×1,5", "×2", "×3", "×5", "×10"], "uso": "correr, mover-se", "anchor": ["mais rápido que a corrida", "atleta de elite dobrado", "supera um cavalo a galope", "um borrão", "quase teleporte"] },
-      "tamanho": { "rotulo": "Tamanho", "unidade": "porte que consegue afetar", "valores": ["seu porte", "+1 categoria", "+2 categorias", "+3 categorias", "qualquer porte"], "uso": "agarrar, bloquear, dominar criatura maior" },
-      "estado": { "rotulo": "Estado", "unidade": "capacidade sem número", "valores": ["—", "—", "—", "—", "—"], "uso": "destrava uma capacidade, sentido, imunidade, voo, invisibilidade, controle ou efeito qualitativo. É a MAIORIA das Técnicas.", "nota": "em disputa resolve pela subtração: o efeito só cede a quem traz poder (nível/atributo) efetivamente maior." }
+      "bonus": {
+        "rotulo": "Bônus",
+        "unidade": "+ à rolagem ou ao valor passivo",
+        "valores": [
+          "+3",
+          "+4",
+          "+6",
+          "+9",
+          "+12",
+          "+15"
+        ],
+        "uso": "perícia, ataque, defesa, resistir, disputa, penalidade ao alvo, Iniciativa, redução de Ticks"
+      },
+      "soak": {
+        "rotulo": "Absorção",
+        "unidade": "+ Soak",
+        "valores": [
+          "+2",
+          "+3",
+          "+4",
+          "+6",
+          "+9",
+          "+12"
+        ],
+        "uso": "reduzir o dano recebido"
+      },
+      "dano": {
+        "rotulo": "Dano",
+        "unidade": "+ dados de dano",
+        "valores": [
+          "+1d6",
+          "+1d6",
+          "+2d6",
+          "+3d6",
+          "+4d6",
+          "+6d6"
+        ],
+        "uso": "golpe mais forte"
+      },
+      "penetracao": {
+        "rotulo": "Penetração",
+        "unidade": "Soak ignorado",
+        "valores": [
+          "2",
+          "3",
+          "4",
+          "6",
+          "toda a armadura",
+          "armadura + Soak natural"
+        ],
+        "uso": "furar a defesa do alvo"
+      },
+      "carga": {
+        "rotulo": "Carga",
+        "unidade": "× capacidade de erguer/carregar",
+        "valores": [
+          "×2",
+          "×3",
+          "×4",
+          "×10",
+          "×30",
+          "×100"
+        ],
+        "uso": "levantar, carregar, arremessar peso",
+        "anchor": [
+          "uma pessoa/porta",
+          "duas pessoas/portão",
+          "carroça/cavalo",
+          "~1 t: viga/pedra de cerco",
+          "~5-10 t: estátua/parede",
+          "dezenas de t: torre/navio"
+        ]
+      },
+      "salto": {
+        "rotulo": "Salto",
+        "unidade": "× distância/altura de salto",
+        "valores": [
+          "×2",
+          "×3",
+          "×4",
+          "×8",
+          "×20",
+          "×50"
+        ],
+        "uso": "pular longe/alto, cair sem dano",
+        "anchor": [
+          "telhado/fosso",
+          "muro alto/ravina",
+          "de telhado a telhado",
+          "cruza um rio",
+          "some da vista",
+          "de montanha a montanha"
+        ]
+      },
+      "velocidade": {
+        "rotulo": "Velocidade",
+        "unidade": "× deslocamento",
+        "valores": [
+          "×1,5",
+          "×1,75",
+          "×2",
+          "×3",
+          "×5",
+          "×10"
+        ],
+        "uso": "correr, mover-se",
+        "anchor": [
+          "mais rápido que a corrida",
+          "bem acima do atleta",
+          "atleta de elite dobrado",
+          "supera um cavalo a galope",
+          "um borrão",
+          "quase teleporte"
+        ]
+      },
+      "tamanho": {
+        "rotulo": "Tamanho",
+        "unidade": "porte que consegue afetar",
+        "valores": [
+          "seu porte",
+          "seu porte",
+          "+1 categoria",
+          "+2 categorias",
+          "+3 categorias",
+          "qualquer porte"
+        ],
+        "uso": "agarrar, bloquear, dominar criatura maior"
+      },
+      "estado": {
+        "rotulo": "Estado",
+        "unidade": "capacidade sem número",
+        "valores": [
+          "—",
+          "—",
+          "—",
+          "—",
+          "—",
+          "—"
+        ],
+        "uso": "destrava uma capacidade, sentido, imunidade, voo, invisibilidade, controle ou efeito qualitativo. É a MAIORIA das Técnicas.",
+        "nota": "em disputa resolve pela subtração: o efeito só cede a quem traz poder (nível/atributo) efetivamente maior."
+      }
     },
     "mostradores": {
       "nota": "Dials secundários que uma Técnica pode escalar por cima do efeito principal, na mesma lógica do improviso do Arcano.",
-      "alcance": ["3 m", "8 m", "20 m", "50 m", "150 m"],
-      "alvos": ["1", "3", "10", "50", "300+"],
-      "duracao": ["1 ação", "1 turno", "1 cena", "horas", "1 dia ou mais"]
-    }
+      "alcance": [
+        "3 m",
+        "5 m",
+        "8 m",
+        "20 m",
+        "50 m",
+        "150 m"
+      ],
+      "alvos": [
+        "1",
+        "2",
+        "3",
+        "10",
+        "50",
+        "300+"
+      ],
+      "duracao": [
+        "1 ação",
+        "1 turno",
+        "1 cena",
+        "várias cenas",
+        "horas",
+        "1 dia ou mais"
+      ]
+    },
+    "notaDesperto": "O nível 2 (Desperto) foi inserido pela reescala D6; os valores desse degrau são provisórios (interpolados entre 1 e 3) até o conteúdo do tier ser desenhado."
   },
   "escalaVontade": [
-    { "nivel": 1, "rotulo": "Frágil", "texto": "Vontade fraca: cede fácil ao medo, à manipulação e ao cansaço. O piso de quem nada investe." },
-    { "nivel": 5, "rotulo": "Heroica", "texto": "Reserva sólida de um herói. Gasta-se para potencializar ações, resistir a medo/manipulação e conjurar." },
-    { "nivel": 7, "rotulo": "Férrea", "texto": "Determinação acima do comum; raramente se esgota numa cena." },
-    { "nivel": 9, "rotulo": "Lendária", "texto": "Vontade que dobra o destino; um poço fundo de combustível heroico." }
+    {
+      "nivel": 1,
+      "rotulo": "Frágil",
+      "texto": "Vontade fraca: cede fácil ao medo, à manipulação e ao cansaço. O piso de quem nada investe."
+    },
+    {
+      "nivel": 5,
+      "rotulo": "Heroica",
+      "texto": "Reserva sólida de um herói. Gasta-se para potencializar ações, resistir a medo/manipulação e conjurar."
+    },
+    {
+      "nivel": 7,
+      "rotulo": "Férrea",
+      "texto": "Determinação acima do comum; raramente se esgota numa cena."
+    },
+    {
+      "nivel": 9,
+      "rotulo": "Lendária",
+      "texto": "Vontade que dobra o destino; um poço fundo de combustível heroico."
+    },
+    {
+      "nivel": 12,
+      "rotulo": "Titânica",
+      "texto": "Vontade no teto humano: um poço quase inesgotável de combustível heroico."
+    }
   ],
   "escalaAparencia": [
-    { "nivel": 1, "rotulo": "Deformado (−4)", "texto": "Repulsivo ou desfigurado; o piso (grátis). −4 nas jogadas sociais alinhadas, mas +4 ao INTIMIDAR." },
-    { "nivel": 2, "rotulo": "Muito feio (−2)", "texto": "Destoa na multidão pela falta de graça." },
-    { "nivel": 3, "rotulo": "Feio (−1)", "texto": "Pouco atraente, sem chamar atenção pelo bem." },
-    { "nivel": 4, "rotulo": "Comum", "texto": "Aparência mediana — sem bônus nem ônus." },
-    { "nivel": 5, "rotulo": "Comum", "texto": "Aparência mediana — sem bônus nem ônus." },
-    { "nivel": 6, "rotulo": "Comum (situacional)", "texto": "No teto do normal; o Mestre pode dar +1 em contexto favorável." },
-    { "nivel": 7, "rotulo": "Bonito (+1)", "texto": "Atraente; chama olhares." },
-    { "nivel": 8, "rotulo": "Beleza (+2)", "texto": "Beleza marcante; abre portas." },
-    { "nivel": 9, "rotulo": "Beleza universal (+3)", "texto": "Quem o vê não esquece." },
-    { "nivel": 10, "rotulo": "Extraordinário (+4)", "texto": "Beleza quase sobrenatural; para conversas num salão." }
+    {
+      "nivel": 1,
+      "rotulo": "Deformado (−4)",
+      "texto": "Repulsivo ou desfigurado; o piso (grátis). −4 nas jogadas sociais alinhadas, mas +4 ao INTIMIDAR."
+    },
+    {
+      "nivel": 2,
+      "rotulo": "Repulsivo (−3)",
+      "texto": "Causa desconforto imediato em quem olha."
+    },
+    {
+      "nivel": 3,
+      "rotulo": "Muito feio (−2)",
+      "texto": "Destoa na multidão pela falta de graça."
+    },
+    {
+      "nivel": 4,
+      "rotulo": "Feio (−1)",
+      "texto": "Pouco atraente, sem chamar atenção pelo bem."
+    },
+    {
+      "nivel": 5,
+      "rotulo": "Comum",
+      "texto": "Aparência mediana, sem bônus nem ônus."
+    },
+    {
+      "nivel": 6,
+      "rotulo": "Comum",
+      "texto": "Aparência mediana, sem bônus nem ônus."
+    },
+    {
+      "nivel": 7,
+      "rotulo": "Comum (situacional)",
+      "texto": "No teto do normal; o Mestre pode dar +1 em contexto favorável."
+    },
+    {
+      "nivel": 8,
+      "rotulo": "Bonito (+1)",
+      "texto": "Atraente; chama olhares."
+    },
+    {
+      "nivel": 9,
+      "rotulo": "Beleza (+2)",
+      "texto": "Beleza marcante; abre portas."
+    },
+    {
+      "nivel": 10,
+      "rotulo": "Beleza universal (+3)",
+      "texto": "Quem o vê não esquece."
+    },
+    {
+      "nivel": 11,
+      "rotulo": "Extraordinário (+4)",
+      "texto": "Beleza quase sobrenatural; para conversas num salão."
+    },
+    {
+      "nivel": 12,
+      "rotulo": "Ápice (+5)",
+      "texto": "O auge do que um rosto humano alcança; presença de tirar o fôlego."
+    }
   ],
   "aparencia": {
     "nota": "Traço próprio 1 a 10 (não é atributo), piso 1 grátis, custo ×2 por ponto. Bônus DIRECIONAL somado FLAT: é o bônus social GERAL, entra em TODA jogada social (incluindo o Combate Social), separado da pilha situacional dos Antecedentes (que só move a Régua de Relação, teto +6). + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). ALÉM do social: aparência muito alta é MEMORÁVEL e atrapalha passar despercebido (penalidade em furtividade urbana, seguir alguém, se misturar à multidão); o Mestre pode aplicar o mesmo a uma deformidade marcante, também inesquecível. A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
     "piso": 1,
     "min": 1,
-    "max": 10,
+    "max": 12,
     "custoMult": 2,
-    "curva": { "1": -4, "2": -2, "3": -1, "4": 0, "5": 0, "6": 0, "7": 1, "8": 2, "9": 3, "10": 4 }
+    "curva": {
+      "1": -4,
+      "2": -3,
+      "3": -2,
+      "4": -1,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 1,
+      "9": 2,
+      "10": 3,
+      "11": 4,
+      "12": 5
+    }
   },
   "pisos": {
     "atributo": 1,
@@ -71,17 +368,17 @@
     "aparencia": 1
   },
   "limitesCriacao": {
-    "atributo": 4,
-    "habilidade": 3,
-    "centelha": 2,
-    "picoAtributo": 5,
-    "picoHabilidade": 4,
+    "atributo": 5,
+    "habilidade": 4,
+    "centelha": 3,
+    "picoAtributo": 6,
+    "picoHabilidade": 5,
     "picoQuantidade": 1,
-    "notaPico": "Na criação permite-se UM atributo em 5 e UMA habilidade primária em 4 — o talento superlativo do herói."
+    "notaPico": "Na criação permite-se UM atributo em 6 e UMA habilidade primária em 5 — o talento superlativo do herói."
   },
-  "orcamentoPadrao": 1400,
-  "orcamentoVeterano": 1800,
-  "orcamentoHeroico": 2400,
+  "orcamentoPadrao": 1700,
+  "orcamentoVeterano": 2200,
+  "orcamentoHeroico": 2900,
   "progressaoPorSessao": [
     10,
     20
@@ -156,18 +453,18 @@
     },
     {
       "dif": 20,
-      "desafio": "Limite humano",
-      "aaltura": "10 — mestre"
+      "desafio": "Muito difícil",
+      "aaltura": "10 · mestre"
     },
     {
       "dif": 25,
-      "desafio": "Excepcional",
-      "aaltura": "raros humanos"
+      "desafio": "Limite humano",
+      "aaltura": "12 · pico humano"
     },
     {
       "dif": 30,
       "desafio": "Sobre-humano",
-      "aaltura": "requer Centelha / Proezas"
+      "aaltura": "requer Centelha ou Proezas"
     }
   ],
   "ferimentos": [
@@ -220,13 +517,34 @@
       "base": 25,
       "vigorMult": 3,
       "porte": {
-        "minusculo": { "base": 15, "vigorMult": 1 },
-        "pequeno": { "base": 20, "vigorMult": 2 },
-        "medio": { "base": 25, "vigorMult": 3 },
-        "grande": { "base": 30, "vigorMult": 4 },
-        "enorme": { "base": 35, "vigorMult": 5 },
-        "imenso": { "base": 40, "vigorMult": 5 },
-        "colossal": { "base": 45, "vigorMult": 5 }
+        "minusculo": {
+          "base": 15,
+          "vigorMult": 1
+        },
+        "pequeno": {
+          "base": 20,
+          "vigorMult": 2
+        },
+        "medio": {
+          "base": 25,
+          "vigorMult": 3
+        },
+        "grande": {
+          "base": 30,
+          "vigorMult": 4
+        },
+        "enorme": {
+          "base": 35,
+          "vigorMult": 5
+        },
+        "imenso": {
+          "base": 40,
+          "vigorMult": 5
+        },
+        "colossal": {
+          "base": 45,
+          "vigorMult": 5
+        }
       }
     },
     "danoForca": {
@@ -253,7 +571,10 @@
     "defesaSocial": {
       "nota": "O escudo social geral (equivale ao MDV): resiste a ser convencido/movido E a ser lido. (Compostura + Sociabilidade) × 2 + Centelha + Especialidade (Centelha fica FORA do ×2). Feras (Int 1) trocariam Sociabilidade por Sobrevivência, mas no bestiário Social vale só p/ Int 2+. Int 0 é imune ('-').",
       "mult": 2,
-      "tracos": ["compostura", "sociabilidade"],
+      "tracos": [
+        "compostura",
+        "sociabilidade"
+      ],
       "centelhaMult": 1,
       "especialidade": true
     },
@@ -290,36 +611,107 @@
     },
     "deslocamento": {
       "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação. Corrida (Speed 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). Salto (Speed 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
-      "arranque": { "forca": 0.5, "atletismo": 0.5, "destreza": 1 },
-      "corrida": { "destreza": 1.5, "atletismo": 1 },
-      "normal": { "destreza": 0.5, "atletismo": 0.5 },
-      "saltoVertical": { "forca": 20, "atletismo": 10, "destreza": 4, "centelha": 50 },
-      "saltoHorizontalParado": { "forca": 0.5, "atletismo": 0.5, "centelha": 0.5 },
-      "saltoHorizontalCorrendo": { "destreza": 1.5, "atletismo": 1.5, "centelha": 1 }
+      "arranque": {
+        "forca": 0.5,
+        "atletismo": 0.5,
+        "destreza": 1
+      },
+      "corrida": {
+        "destreza": 1.5,
+        "atletismo": 1
+      },
+      "normal": {
+        "destreza": 0.5,
+        "atletismo": 0.5
+      },
+      "saltoVertical": {
+        "forca": 20,
+        "atletismo": 10,
+        "destreza": 4,
+        "centelha": 50
+      },
+      "saltoHorizontalParado": {
+        "forca": 0.5,
+        "atletismo": 0.5,
+        "centelha": 0.5
+      },
+      "saltoHorizontalCorrendo": {
+        "destreza": 1.5,
+        "atletismo": 1.5,
+        "centelha": 1
+      }
     }
   },
   "dano": {
     "nota": "Três MODOS de ataque (Cortante, Perfurante, Impacto). A arma escolhe o modo por golpe. A armadura tem TRÊS Absorções: Impacto, Corte e Perfuração — o Perfurante usa a Absorção de Perfuração (não se distingue projétil de estocada). A Absorção total de um golpe = Absorção natural do modo (Vigor + Centelha no Impacto; só a Centelha em Cortante/Perfurante) + a absorção da armadura na categoria correspondente.",
     "modos": [
-      { "id": "corte", "nome": "Cortante", "sigla": "(C)", "natural": "zero", "soakArmadura": "corte", "gate": false },
-      { "id": "perfurante", "nome": "Perfurante", "sigla": "(P)", "natural": "zero", "soakArmadura": "perfuracao", "gate": true },
-      { "id": "impacto", "nome": "Impacto", "sigla": "(I)", "natural": "vigor", "soakArmadura": "impacto", "gate": false }
+      {
+        "id": "corte",
+        "nome": "Cortante",
+        "sigla": "(C)",
+        "natural": "zero",
+        "soakArmadura": "corte",
+        "gate": false
+      },
+      {
+        "id": "perfurante",
+        "nome": "Perfurante",
+        "sigla": "(P)",
+        "natural": "zero",
+        "soakArmadura": "perfuracao",
+        "gate": true
+      },
+      {
+        "id": "impacto",
+        "nome": "Impacto",
+        "sigla": "(I)",
+        "natural": "vigor",
+        "soakArmadura": "impacto",
+        "gate": false
+      }
     ],
-    "soakNatural": { "impacto": "vigor", "corte": "zero", "perfuracao": "zero" },
+    "soakNatural": {
+      "impacto": "vigor",
+      "corte": "zero",
+      "perfuracao": "zero"
+    },
     "centelhaNoSoak": 1,
     "couracaPorte": {
       "nota": "Couraça natural pela MASSA/pele/escamas/casco da criatura, por porte. Absorção EXTRA aplicada SÓ a Corte e Perfuração — o Impacto NÃO recebe couraça (continua sendo o abridor de lata contra massa, do mesmo modo que é a resposta contra placa). 'resistPerf' = gate natural de Perfuração: ataque Perfurante com Nível de Perfuração ABAIXO dele resvala (0, nem rola). Empilha com armadura: a couraça SOMA na Absorção; o resistPerf pega o MAIOR (nunca soma). Porte lido de dimensoes-bestiario.json; Médio (humanoide padrão) e menores = 0.",
-      "minusculo": { "couraca": 0, "resistPerf": 0 },
-      "pequeno": { "couraca": 0, "resistPerf": 0 },
-      "medio": { "couraca": 0, "resistPerf": 0 },
-      "grande": { "couraca": 2, "resistPerf": 0 },
-      "enorme": { "couraca": 4, "resistPerf": 1 },
-      "imenso": { "couraca": 7, "resistPerf": 2 },
-      "colossal": { "couraca": 10, "resistPerf": 3 }
+      "minusculo": {
+        "couraca": 0,
+        "resistPerf": 0
+      },
+      "pequeno": {
+        "couraca": 0,
+        "resistPerf": 0
+      },
+      "medio": {
+        "couraca": 0,
+        "resistPerf": 0
+      },
+      "grande": {
+        "couraca": 2,
+        "resistPerf": 0
+      },
+      "enorme": {
+        "couraca": 4,
+        "resistPerf": 1
+      },
+      "imenso": {
+        "couraca": 7,
+        "resistPerf": 2
+      },
+      "colossal": {
+        "couraca": 10,
+        "resistPerf": 3
+      }
     },
     "gatePerfuracao": {
       "nota": "Só para o modo Perfurante. Se o Nível de Perfuração da arma for MENOR que a Resistência à Perfuração (Nível) da armadura, o golpe RESVALA (dano 0, nem rola). Se for IGUAL OU MAIOR, o gate abre: rola o dano e subtrai a Absorção de Perfuração. Cortante e Impacto nunca passam pelo gate.",
-      "modos": ["perfurante"]
+      "modos": [
+        "perfurante"
+      ]
     },
     "modoSecundario": {
       "nota": "Usar um modo NÃO-principal da arma é mais difícil e sai mais fraco: −2 ao acerto E −2 ao dano. Armas com vários modos principais (ex.: Alabarda) não sofrem nada ao alternar entre eles.",
@@ -329,7 +721,10 @@
     "empilhamento": "Absorção de cada categoria (Impacto/Corte/Perfuração) = MAIOR valor entre as peças; a Absorção natural soma por cima. Resistência à Perfuração (Nível) = sempre o MAIOR, NUNCA soma (vale também para Proezas de pele dura). Penalidade = SOMA das peças.",
     "penalidade": {
       "nota": "Valor único por armadura (geral: leve −1, média −2, pesada −3; pode variar por peça). Incide em qualquer ação física, incluindo Ataque, Esquiva, Bloqueio, Deslocamento e Salto. Para Furtividade e atividades delicadas, a Penalidade DOBRA.",
-      "leve": 1, "media": 2, "pesada": 3, "furtividadeDobra": true,
+      "leve": 1,
+      "media": 2,
+      "pesada": 3,
+      "furtividadeDobra": true,
       "movimento": "No Deslocamento e nos Saltos usa-se METADE da Penalidade (arredondada para baixo): −[penalidade/2] metros nas medidas horizontais (Livre, Arranque, Corrida, Salto Horizontal) e −[penalidade/2]×10 cm no Salto Vertical (mínimo 0)."
     },
     "armaduraMult": 1.5,
@@ -339,17 +734,72 @@
     "nota": "Modificadores situacionais aplicados ao valor PASSIVO da Defesa do alvo (+ = mais difícil de acertar, − = mais fácil). Cada ±1 ≈ ∓6% de chance perto do baseline (~42%).",
     "modificadorCap": 6,
     "modificadores": [
-      { "nome": "Cobertura parcial", "valor": 2, "alvo": "defesa", "nota": "parapeito, batente, aliado à frente" },
-      { "nome": "Cobertura pesada", "valor": 4, "alvo": "defesa", "nota": "só cabeça/braço expostos, seteira (cobertura total não pode ser alvejada)" },
-      { "nome": "Defesa total", "valor": 4, "alvo": "defesa", "nota": "abre mão do ataque na rodada para se proteger" },
-      { "nome": "Alvo pequeno/errático à distância", "valor": 2, "alvo": "defesa", "nota": "esquiva em zigue-zague, alvo menor" },
-      { "nome": "Terreno alto", "valor": -2, "alvo": "defesa", "nota": "atacante em posição superior" },
-      { "nome": "Mirar", "valor": -2, "alvo": "defesa", "nota": "gasta uma ação preparando o golpe" },
-      { "nome": "Alvo prono — corpo a corpo", "valor": -2, "alvo": "defesa", "nota": "caído é fácil de alcançar de perto" },
-      { "nome": "Alvo prono — à distância", "valor": 2, "alvo": "defesa", "nota": "deitado é um alvo menor de longe" },
-      { "nome": "Flanco ou pelas costas", "valor": -2, "alvo": "defesa", "nota": "não pode usar a melhor defesa contra você" },
-      { "nome": "Surpreso, cego ou imobilizado", "valor": -4, "alvo": "defesa", "nota": "praticamente sem esquiva ativa" },
-      { "nome": "Postura agressiva", "valor": -2, "alvo": "defesa-propria", "nota": "−2 à sua própria Defesa e +2 ao seu ataque até a próxima ação" }
+      {
+        "nome": "Cobertura parcial",
+        "valor": 2,
+        "alvo": "defesa",
+        "nota": "parapeito, batente, aliado à frente"
+      },
+      {
+        "nome": "Cobertura pesada",
+        "valor": 4,
+        "alvo": "defesa",
+        "nota": "só cabeça/braço expostos, seteira (cobertura total não pode ser alvejada)"
+      },
+      {
+        "nome": "Defesa total",
+        "valor": 4,
+        "alvo": "defesa",
+        "nota": "abre mão do ataque na rodada para se proteger"
+      },
+      {
+        "nome": "Alvo pequeno/errático à distância",
+        "valor": 2,
+        "alvo": "defesa",
+        "nota": "esquiva em zigue-zague, alvo menor"
+      },
+      {
+        "nome": "Terreno alto",
+        "valor": -2,
+        "alvo": "defesa",
+        "nota": "atacante em posição superior"
+      },
+      {
+        "nome": "Mirar",
+        "valor": -2,
+        "alvo": "defesa",
+        "nota": "gasta uma ação preparando o golpe"
+      },
+      {
+        "nome": "Alvo prono — corpo a corpo",
+        "valor": -2,
+        "alvo": "defesa",
+        "nota": "caído é fácil de alcançar de perto"
+      },
+      {
+        "nome": "Alvo prono — à distância",
+        "valor": 2,
+        "alvo": "defesa",
+        "nota": "deitado é um alvo menor de longe"
+      },
+      {
+        "nome": "Flanco ou pelas costas",
+        "valor": -2,
+        "alvo": "defesa",
+        "nota": "não pode usar a melhor defesa contra você"
+      },
+      {
+        "nome": "Surpreso, cego ou imobilizado",
+        "valor": -4,
+        "alvo": "defesa",
+        "nota": "praticamente sem esquiva ativa"
+      },
+      {
+        "nome": "Postura agressiva",
+        "valor": -2,
+        "alvo": "defesa-propria",
+        "nota": "−2 à sua própria Defesa e +2 ao seu ataque até a próxima ação"
+      }
     ]
   },
   "sangramento": {
@@ -359,23 +809,52 @@
     "tag": "Sangramento",
     "valorTagMax": 3,
     "teto": 5,
-    "estabilizar": { "pericia": "Medicina", "dif": 10, "alternativa": "Vigor + Convicção (em si mesmo)" }
+    "estabilizar": {
+      "pericia": "Medicina",
+      "dif": 10,
+      "alternativa": "Vigor + Convicção (em si mesmo)"
+    }
   },
   "quaseAcerto": {
     "margem": "Bônus QA da arma + Bônus QA da armadura do alvo",
     "dano": "Dano QA da arma − Redução QA da armadura do alvo (mínimo 0)",
     "ignoraSoak": true,
-    "pesoPorDado": { "1": "leve", "2": "media", "3": "pesada" },
+    "pesoPorDado": {
+      "1": "leve",
+      "2": "media",
+      "3": "pesada"
+    },
     "porClasseArma": {
-      "leve": { "bonus": 3, "dano": 2 },
-      "media": { "bonus": 2, "dano": 4 },
-      "pesada": { "bonus": 1, "dano": 6 }
+      "leve": {
+        "bonus": 3,
+        "dano": 2
+      },
+      "media": {
+        "bonus": 2,
+        "dano": 4
+      },
+      "pesada": {
+        "bonus": 1,
+        "dano": 6
+      }
     },
     "porClasseArmadura": {
-      "nenhuma": { "bonus": 0, "reducao": 0 },
-      "leve": { "bonus": 1, "reducao": 0 },
-      "media": { "bonus": 2, "reducao": 4 },
-      "pesada": { "bonus": 3, "reducao": 6 }
+      "nenhuma": {
+        "bonus": 0,
+        "reducao": 0
+      },
+      "leve": {
+        "bonus": 1,
+        "reducao": 0
+      },
+      "media": {
+        "bonus": 2,
+        "reducao": 4
+      },
+      "pesada": {
+        "bonus": 3,
+        "reducao": 6
+      }
     },
     "nota": "Errar por ≤ margem é um raspão (não passa pela Absorção normal). Valores FIXOS por classe: a classe da arma sai do dado (1d6 leve, 2d6 média, 3d6 pesada). A armadura SOMA seu Bônus QA à margem (o alvo blindado é maior e mais lento, então é raspado com mais frequência) e abate o dano do raspão com a Redução. Leve nica muito e raso; pesada nica raro e fundo; a placa é nicada o tempo todo, mas a redução come quase tudo. Pode receber modificadores situacionais, de encantamento, de Proeza e de magia (ver cap. Quase-Acerto)."
   },
@@ -384,11 +863,26 @@
     "magnitude": {
       "formula": "Magnitude = [log2(membros)] — cada degrau exige cerca do dobro de gente",
       "tabela": [
-        { "membros": "2–3", "magnitude": 1 },
-        { "membros": "4–7", "magnitude": 2 },
-        { "membros": "8–15", "magnitude": 3 },
-        { "membros": "16–31", "magnitude": 4 },
-        { "membros": "32–63", "magnitude": 5 }
+        {
+          "membros": "2–3",
+          "magnitude": 1
+        },
+        {
+          "membros": "4–7",
+          "magnitude": 2
+        },
+        {
+          "membros": "8–15",
+          "magnitude": 3
+        },
+        {
+          "membros": "16–31",
+          "magnitude": 4
+        },
+        {
+          "membros": "32–63",
+          "magnitude": 5
+        }
       ]
     },
     "ataque": "O esquadrão faz UM ataque por inimigo engajado, até Magnitude + 1 ataques (teto de frente de combate). Contra um alvo só os golpes concentram numa única rolagem; contra vários, espalham-se um por inimigo. Cada ataque rola o pool de um capanga + Magnitude d6 no ACERTO e + Magnitude d6 no DANO (o enxame que conecta cai todo em cima). Sem penalidade de guarda extra da Pressão — a ameaça já é a chuva de dados.",
@@ -398,7 +892,11 @@
     "defesaNota": "Defesa do esquadrão = a de um capanga −2 (aglomerado, alvo fácil).",
     "pv": {
       "nota": "PV do esquadrão = nº de membros × PV-de-horda do capanga. Na horda o capanga PERDE o piso heroico de 25 da fórmula de PV (esse piso vale só para PCs e NPCs nomeados).",
-      "porTier": { "comum": 5, "treinado": 10, "elite": 15 }
+      "porTier": {
+        "comum": 5,
+        "treinado": 10,
+        "elite": 15
+      }
     },
     "baixas": "O dano que você causa acumula no PV do esquadrão; cada vez que o total passa o PV-de-horda de um capanga, cai 1 membro (um golpe pesado derruba vários de uma vez). Conforme os membros caem, a Magnitude desce em degraus. Ataques em ÁREA batem direto no PV do esquadrão.",
     "fim": "Em Magnitude 0 (1 membro) o último capanga volta a ser um NPC comum.",
@@ -411,9 +909,18 @@
     "reflexivaPorGatilho": 1,
     "suplementarTicks": 0,
     "ticksIndependente": [
-      { "nivel": "1–2", "ticks": 5 },
-      { "nivel": "3", "ticks": 6 },
-      { "nivel": "4–5", "ticks": 7 }
+      {
+        "nivel": "1–2",
+        "ticks": 5
+      },
+      {
+        "nivel": "3",
+        "ticks": 6
+      },
+      {
+        "nivel": "4–5",
+        "ticks": 7
+      }
     ],
     "combo": {
       "regra": "Numa única ação você empilha quantas Técnicas suplementares quiser, mas cada acréscimo encarece: a k-ésima Técnica somada à ação custa +(k−1) de Energia de sobretaxa (2ª +1, 3ª +2, 4ª +3…).",
@@ -425,7 +932,10 @@
       "regra": "Postura sustentada: paga a Energia uma vez e dura a cena. Mantém até Centelha posturas ao mesmo tempo; abandonar é livre.",
       "simultaneasMax": "Centelha"
     },
-    "vontade": { "nivel4": 1, "nivel5": 2 }
+    "vontade": {
+      "nivel4": 1,
+      "nivel5": 2
+    }
   },
   "empilhamentoProezas": {
     "nota": "Limites de acúmulo dos bônus de Proezas, para o número não quebrar o combate calibrado.",
@@ -437,25 +947,60 @@
   "arcano": {
     "nota": "Detalhamento do uso das Artes: improviso por mostradores, conjuração composta (espelha o combo) e Rituais. Mana = nível do efeito; conjura Ocultismo + Atributo.",
     "feiticoTicks": [
-      { "nivel": "1–2", "ticks": 5 },
-      { "nivel": "3", "ticks": 6 },
-      { "nivel": "4–5", "ticks": 7 }
+      {
+        "nivel": "1–2",
+        "ticks": 5
+      },
+      {
+        "nivel": "3",
+        "ticks": 6
+      },
+      {
+        "nivel": "4–5",
+        "ticks": 7
+      }
     ],
     "resistencia": {
       "rolagem": "Ocultismo + Atributo de conjuração da Arte",
       "tipos": [
-        { "efeito": "Dano e projéteis", "resiste": "Defesa (Esquiva) para acertar; depois o dano é reduzido pela Absorção", "ex": "dardo de fogo, raio, lança de gelo" },
-        { "efeito": "Corpo e veneno", "resiste": "Vigor + Convicção (resistência de fortitude)", "ex": "transmutação, doença, frio que enrijece, paralisia física" },
-        { "efeito": "Mente e alma", "resiste": "Defesa Mental (passiva) — a conjuração precisa superá-la", "ex": "medo, fascínio, ilusão, domínio" },
-        { "efeito": "Aprisionamento e contato", "resiste": "Defesa (Esquiva) para prender; escapar depois com Força ou Atletismo vs o nível efetivo do efeito", "ex": "correntes, lama, agarrão telecinético" },
-        { "efeito": "Em aliados, objetos ou cenário", "resiste": "sem resistência (efeito automático)", "ex": "cura, escudo, muralha, luz" }
+        {
+          "efeito": "Dano e projéteis",
+          "resiste": "Defesa (Esquiva) para acertar; depois o dano é reduzido pela Absorção",
+          "ex": "dardo de fogo, raio, lança de gelo"
+        },
+        {
+          "efeito": "Corpo e veneno",
+          "resiste": "Vigor + Convicção (resistência de fortitude)",
+          "ex": "transmutação, doença, frio que enrijece, paralisia física"
+        },
+        {
+          "efeito": "Mente e alma",
+          "resiste": "Defesa Mental (passiva) — a conjuração precisa superá-la",
+          "ex": "medo, fascínio, ilusão, domínio"
+        },
+        {
+          "efeito": "Aprisionamento e contato",
+          "resiste": "Defesa (Esquiva) para prender; escapar depois com Força ou Atletismo vs o nível efetivo do efeito",
+          "ex": "correntes, lama, agarrão telecinético"
+        },
+        {
+          "efeito": "Em aliados, objetos ou cenário",
+          "resiste": "sem resistência (efeito automático)",
+          "ex": "cura, escudo, muralha, luz"
+        }
       ],
       "armadura": "A Absorção de armadura conta normalmente contra dano mágico, salvo efeitos cujo texto diga que furam ou ignoram armadura.",
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {
       "regra": "O efeito impresso é o GABARITO daquele nível. Rearranjar mostradores de igual passo é livre (encolher um para esticar outro). Cada passo ACIMA do gabarito num mostrador conta como +1 nível efetivo: +1 Mana e exige Ocultismo ≥ nível efetivo (a Centelha só precisa estar acesa, > 0).",
-      "mostradores": ["alcance", "área", "alvos", "duração", "potência"],
+      "mostradores": [
+        "alcance",
+        "área",
+        "alvos",
+        "duração",
+        "potência"
+      ],
       "tetoFeitico": "nível efetivo ≤ Ocultismo (basta Centelha > 0)"
     },
     "composta": {

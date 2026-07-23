@@ -62,7 +62,7 @@ const tecnicas = defineCollection({
     nome: z.string(),
     caminho: reference('caminhos'),
     atributo: reference('atributos'),
-    nivel: z.number().int().min(1).max(5),
+    nivel: z.number().int().min(1).max(6),
     efeito: z.enum(['bonus', 'soak', 'dano', 'penetracao', 'carga', 'salto', 'velocidade', 'tamanho', 'estado']),
     tipo: z.enum(['passiva', 'ativa', 'reflexiva']),
     custo,

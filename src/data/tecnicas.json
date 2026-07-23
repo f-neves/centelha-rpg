@@ -20,7 +20,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 1
+      "energia": 2
     },
     "prereq": [
       "passo-veloz"
@@ -28,7 +28,7 @@
     "aliases": [],
     "texto": "Quadruplica distância/altura de um salto; ignora terreno difícil; aterrissa de pé.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "salto"
   },
   {
@@ -56,7 +56,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "salto-do-grilo"
@@ -64,7 +64,7 @@
     "aliases": [],
     "texto": "Enquanto se mover, corre por paredes, tetos e sobre a água por um turno.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -80,7 +80,7 @@
     "aliases": [],
     "texto": "Move-se em silêncio e sem deixar rastro; superfícies frágeis (gelo fino, galhos) o suportam.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -90,7 +90,7 @@
     "atributo": "destreza",
     "tipo": "reflexiva",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "reflexos-de-vento"
@@ -98,7 +98,7 @@
     "aliases": [],
     "texto": "",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -108,7 +108,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "salto-do-grilo",
@@ -117,7 +117,7 @@
     "aliases": [],
     "texto": "Investida que cruza a distância e **derruba** o alvo (Força+Corrida vs Defesa; recuo + prono).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -127,7 +127,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "corrida-vertical"
@@ -135,7 +135,7 @@
     "aliases": [],
     "texto": "Numa ação, percorre distâncias enormes (~×3 o normal); supera cavalos a galope e flechas em velocidade de viagem.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "velocidade"
   },
   {
@@ -145,7 +145,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "corrida-vertical",
@@ -154,7 +154,7 @@
     "aliases": [],
     "texto": "Vira um borrão: **−9** a disparos contra você; pode cruzar um campo de batalha num único Tick.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "bonus"
   },
   {
@@ -164,7 +164,7 @@
     "atributo": "destreza",
     "tipo": "reflexiva",
     "custo": {
-      "energia": 4
+      "energia": 5
     },
     "prereq": [
       "borrao"
@@ -172,7 +172,7 @@
     "aliases": [],
     "texto": "1×/turno, faça um **ataque extra** a custo de Ticks reduzido — golpe antes que percebam.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -182,7 +182,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 4
+      "energia": 5
     },
     "prereq": [
       "mil-passos"
@@ -190,7 +190,7 @@
     "aliases": [],
     "texto": "Move-se em linha reta como um piscar, **atravessando** obstáculos e oponentes no caminho.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -200,7 +200,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 5
+      "energia": 6
     },
     "prereq": [
       "borrao",
@@ -209,7 +209,7 @@
     "aliases": [],
     "texto": "Você **voa**, ágil como uma andorinha.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -219,7 +219,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 1
     },
     "prereq": [
@@ -229,7 +229,7 @@
     "aliases": [],
     "texto": "O tempo parece congelar: **aja uma vez extra** na linha de Ticks neste intervalo.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -287,7 +287,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "golpe-pesado"
@@ -295,7 +295,7 @@
     "aliases": [],
     "texto": "Arremessa o alvo (knockback) e o **atordoa** (perde Ticks) se ele falhar num teste de Vigor.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -305,7 +305,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "quebrar-guarda"
@@ -313,7 +313,7 @@
     "aliases": [],
     "texto": "O golpe ignora 4 de Absorção de Impacto da armadura do alvo.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "penetracao"
   },
   {
@@ -323,7 +323,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "soco-trovejante",
@@ -332,7 +332,7 @@
     "aliases": [],
     "texto": "Avança e desfere um golpe que derruba e empurra; some a distância percorrida ao impacto.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -342,7 +342,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "soco-trovejante"
@@ -350,7 +350,7 @@
     "aliases": [],
     "texto": "**+3d6** de dano num único golpe colossal.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "dano"
   },
   {
@@ -366,7 +366,7 @@
     "aliases": [],
     "texto": "Suas mãos quebram pedra e metal; ataques ignoram 6 de Absorção de armaduras mundanas (não a Absorção natural do alvo).",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "penetracao"
   },
   {
@@ -376,7 +376,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 4
+      "energia": 5
     },
     "prereq": [
       "punho-que-parte-pedra"
@@ -384,7 +384,7 @@
     "aliases": [],
     "texto": "Destrói estruturas, portões e muralhas com um golpe.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -394,7 +394,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 4
+      "energia": 5
     },
     "prereq": [
       "golpe-do-tita",
@@ -403,7 +403,7 @@
     "aliases": [],
     "texto": "O soco projeta uma onda que atinge todos numa linha/área à frente.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -413,7 +413,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 1
     },
     "prereq": [
@@ -423,7 +423,7 @@
     "aliases": [],
     "texto": "Racha o chão num raio enorme; devasta a área e remodela o terreno.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -483,7 +483,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "ordem-curta"
@@ -491,7 +491,7 @@
     "aliases": [],
     "texto": "Comanda um pequeno grupo de uma vez (vs Defesa Mental); a ordem dura a cena se não contrariar a natureza dos alvos.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -501,7 +501,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "encarar"
@@ -509,7 +509,7 @@
     "aliases": [],
     "texto": "Num confronto, quebra a coragem do alvo: ele se encolhe, foge ou se rende (vontade forte gasta Vontade para resistir).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -519,7 +519,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "voz-de-comando",
@@ -528,7 +528,7 @@
     "aliases": [],
     "texto": "Ordens que também encorajam: aliados obedecem de bom grado e ganham **+6** na ação ordenada.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -538,7 +538,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3,
+      "energia": 4,
       "vontade": 1
     },
     "prereq": [
@@ -547,7 +547,7 @@
     "aliases": [],
     "texto": "Uma ordem (vs Defesa Mental) que o alvo deve gastar **Vontade a cada turno** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -557,7 +557,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "submissao"
@@ -565,7 +565,7 @@
     "aliases": [],
     "texto": "Instila terror sobrenatural (vs Defesa Mental); um grupo inteiro foge ou paralisa.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -575,7 +575,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -584,7 +584,7 @@
     "aliases": [],
     "texto": "Implanta uma ordem permanente que dura um dia (vs Defesa Mental); o alvo racionaliza obedecer.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -594,7 +594,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -604,7 +604,7 @@
     "aliases": [],
     "texto": "Estilhaça a vontade do alvo (vs Defesa Mental), deixando-o quebrado e dócil por um tempo.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -614,7 +614,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -623,7 +623,7 @@
     "aliases": [],
     "texto": "Sua ordem falada torna-se quase absoluta (vs Defesa Mental); multidões e exércitos obedecem um decreto divino. Resistir custa vários pontos de Vontade.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -689,7 +689,7 @@
     "aliases": [],
     "texto": "**+6 na Iniciativa**; 1×/cena, refaça uma rolagem de Defesa.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -699,7 +699,7 @@
     "atributo": "raciocinio",
     "tipo": "reflexiva",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "instinto-de-sobrevivencia"
@@ -707,7 +707,7 @@
     "aliases": [],
     "texto": "Defende-se normalmente contra um ataque que não poderia ver (pelas costas, oculto).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -717,7 +717,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "faro-para-mentiras"
@@ -725,7 +725,7 @@
     "aliases": [],
     "texto": "Antes de agir, vislumbra a consequência imediata provável (\"se eu fizer X, o que acontece?\").",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -735,7 +735,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "ler-o-momento"
@@ -743,7 +743,7 @@
     "aliases": [],
     "texto": "Um lampejo de um futuro próximo possível (próximos minutos); o Mestre dá uma premonição útil.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -753,7 +753,7 @@
     "atributo": "raciocinio",
     "tipo": "reflexiva",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "pressentir-o-golpe",
@@ -762,7 +762,7 @@
     "aliases": [],
     "texto": "Você se esquiva como quem já sabia: **anula** um ataque, agindo pela previsão.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -772,7 +772,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -781,7 +781,7 @@
     "aliases": [],
     "texto": "1×/cena, **refaça qualquer rolagem** (sua ou que o afete), declarando \"eu previ isto\".",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -791,7 +791,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 4
+      "energia": 5
     },
     "prereq": [
       "vislumbre"
@@ -799,7 +799,7 @@
     "aliases": [],
     "texto": "Percebe os \"fios\" do destino: intenções e ações prováveis de uma pessoa, ou os eventos que se aproximam de um lugar.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -809,7 +809,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -819,7 +819,7 @@
     "aliases": [],
     "texto": "Verdadeira precognição: faça ao Mestre uma pergunta significativa sobre o futuro e receba uma resposta enigmática, porém verdadeira — ou reescreva um resultado uma vez.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -877,7 +877,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "pele-curtida"
@@ -885,7 +885,7 @@
     "aliases": [],
     "texto": "+4 de Soak (todos os tipos) e reduz as penalidades de ferimento em 1.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "soak"
   },
   {
@@ -901,7 +901,7 @@
     "aliases": [],
     "texto": "Dano de Impacto nunca te mata, só nocauteia; +1 ao limiar de morte.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -911,7 +911,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "pele-de-pedra"
@@ -919,7 +919,7 @@
     "aliases": [],
     "texto": "A pele apara golpes mundanos que não a penetram; imune a cortes leves.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -929,7 +929,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -938,7 +938,7 @@
     "aliases": [],
     "texto": "Imune a dano não-mágico por um turno.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -948,7 +948,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -957,7 +957,7 @@
     "aliases": [],
     "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes letais.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -1015,7 +1015,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "mira-firme"
@@ -1023,7 +1023,7 @@
     "aliases": [],
     "texto": "+4 de Penetração e +1d6 de dano num disparo cuidadoso.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "penetracao"
   },
   {
@@ -1033,7 +1033,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "tiro-rapido"
@@ -1041,7 +1041,7 @@
     "aliases": [],
     "texto": "Dispara em 2 alvos próximos com penalidade reduzida.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1051,7 +1051,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "olho-de-alcance",
@@ -1060,7 +1060,7 @@
     "aliases": [],
     "texto": "Acerta a distâncias extremas, contorna cobertura parcial e mira pontos vitais (ignora a penalidade de cobertura do alvo).",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -1070,7 +1070,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -1079,7 +1079,7 @@
     "aliases": [],
     "texto": "O disparo curva e persegue o alvo, ignorando cobertura.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -1089,7 +1089,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -1099,7 +1099,7 @@
     "aliases": [],
     "texto": "Um disparo vira uma saraivada que cobre uma área inteira.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -1159,7 +1159,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "charme"
@@ -1167,7 +1167,7 @@
     "aliases": [],
     "texto": "Prende a atenção de uma plateia; aliados inspirados ganham +6 nas ações por uma cena.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -1177,7 +1177,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "palavra-calmante"
@@ -1185,7 +1185,7 @@
     "aliases": [],
     "texto": "Convence alguém a baixar a guarda ou a arma; suspende a hostilidade do momento.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1195,7 +1195,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "carisma-magnetico"
@@ -1203,7 +1203,7 @@
     "aliases": [],
     "texto": "Por uma cena, o alvo o vê como um amigo querido (vs Defesa Social; quebra se você o trair abertamente).",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -1213,7 +1213,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -1222,7 +1222,7 @@
     "aliases": [],
     "texto": "Altera de forma duradoura a disposição e a lealdade de alguém.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -1232,7 +1232,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -1241,7 +1241,7 @@
     "aliases": [],
     "texto": "Um discurso comove uma cidade inteira a seguir a sua causa.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -1299,7 +1299,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "olhar-do-cacador"
@@ -1307,7 +1307,7 @@
     "aliases": [],
     "texto": "Num relance, percebe rotas, armadilhas e fraquezas estruturais.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1323,7 +1323,7 @@
     "aliases": [],
     "texto": "Ouve sussurros distantes, batimentos e sons através de paredes finas.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1333,7 +1333,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "visao-na-penumbra",
@@ -1342,7 +1342,7 @@
     "aliases": [],
     "texto": "Vê o invisível, ilusões e disfarces; a escuridão perfeita não o cega.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -1352,7 +1352,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -1361,7 +1361,7 @@
     "aliases": [],
     "texto": "Percebe à distância um local que conhece.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -1371,7 +1371,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -1380,7 +1380,7 @@
     "aliases": [],
     "texto": "Visão de raio-x e percepção a quilômetros; nada se esconde de você.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -1440,7 +1440,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "segundo-folego"
@@ -1448,7 +1448,7 @@
     "aliases": [],
     "texto": "Estanca sangramentos e cura dano Letal leve em minutos.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1464,7 +1464,7 @@
     "aliases": [],
     "texto": "+6 para resistir a venenos e doenças.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -1474,7 +1474,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "fechar-feridas"
@@ -1482,7 +1482,7 @@
     "aliases": [],
     "texto": "Recupera PV igual ao seu Vigor no início de cada turno.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -1492,7 +1492,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -1501,7 +1501,7 @@
     "aliases": [],
     "texto": "Fecha ferimentos graves, recoloca ossos e cicatriza cortes profundos em segundos.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -1511,7 +1511,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -1520,7 +1520,7 @@
     "aliases": [],
     "texto": "Volta de golpes que matariam e regenera membros; só a destruição total o mata.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -1580,7 +1580,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "esgueirar"
@@ -1588,7 +1588,7 @@
     "aliases": [],
     "texto": "Nas sombras, torna-se quase invisível enquanto se move devagar.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1598,7 +1598,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "esgueirar"
@@ -1606,7 +1606,7 @@
     "aliases": [],
     "texto": "Ataque furtivo contra alvo desavisado: +2d6 de dano (o alvo desavisado já sofre a penalidade de Defesa por surpresa).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "dano"
   },
   {
@@ -1616,7 +1616,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "manto-de-sombras"
@@ -1624,7 +1624,7 @@
     "aliases": [],
     "texto": "Move-se à vista sem ser notado, desde que ninguém o encare diretamente.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -1634,7 +1634,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -1643,7 +1643,7 @@
     "aliases": [],
     "texto": "Funde-se às sombras: invisível, e capaz de atravessá-las por curtas distâncias.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -1653,7 +1653,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -1662,7 +1662,7 @@
     "aliases": [],
     "texto": "Apaga sua presença: invisível, inaudível e indetectável por meios mundanos.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -1722,7 +1722,7 @@
     "atributo": "destreza",
     "tipo": "reflexiva",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "aparar"
@@ -1730,7 +1730,7 @@
     "aliases": [],
     "texto": "Ao aparar com sucesso, contra-ataca imediatamente.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1740,7 +1740,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "finta"
@@ -1748,7 +1748,7 @@
     "aliases": [],
     "texto": "Tenta arrancar a arma do oponente (Destreza+Corte vs Defesa).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1758,7 +1758,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "riposte",
@@ -1767,7 +1767,7 @@
     "aliases": [],
     "texto": "Não sofre desgaste de defesa contra vários atacantes por uma rodada.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -1777,7 +1777,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -1786,7 +1786,7 @@
     "aliases": [],
     "texto": "Vários ataques num só gesto, cada um a custo reduzido.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -1796,7 +1796,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -1805,7 +1805,7 @@
     "aliases": [],
     "texto": "Cada ataque acha um ponto vital e cada defesa é impecável.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -1871,7 +1871,7 @@
     "aliases": [],
     "texto": "Cada inimigo derrubado prolonga a fúria e devolve um pouco de Energia.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -1881,7 +1881,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "brado-de-guerra"
@@ -1889,7 +1889,7 @@
     "aliases": [],
     "texto": "Avança e ataca com +2d6 de dano por knockback.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "dano"
   },
   {
@@ -1899,7 +1899,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "sede-de-sangue"
@@ -1907,7 +1907,7 @@
     "aliases": [],
     "texto": "Ataca repetidamente sem as penalidades de múltiplos ataques por uma rodada.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -1917,7 +1917,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -1926,7 +1926,7 @@
     "aliases": [],
     "texto": "Em fúria, continua lutando mesmo abaixo de 0 PV até o fim da cena.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -1936,7 +1936,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -1945,7 +1945,7 @@
     "aliases": [],
     "texto": "Uma tempestade de violência: dano massivo, imune a medo, quase imparável.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -2005,7 +2005,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "inspirar"
@@ -2013,7 +2013,7 @@
     "aliases": [],
     "texto": "Enquanto visível, aliados resistem melhor a medo e desânimo.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2023,7 +2023,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "discurso"
@@ -2031,7 +2031,7 @@
     "aliases": [],
     "texto": "Sua presença faz inimigos comuns hesitarem em atacá-lo.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2041,7 +2041,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "estandarte-vivo",
@@ -2050,7 +2050,7 @@
     "aliases": [],
     "texto": "Inspira uma multidão ou exército a agir como um só.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -2060,7 +2060,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -2069,7 +2069,7 @@
     "aliases": [],
     "texto": "Histórias suas o precedem; estranhos já o admiram ou temem.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -2079,7 +2079,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -2088,7 +2088,7 @@
     "aliases": [],
     "texto": "Torna-se um símbolo: multidões o seguem, dispostas a tudo pela sua causa.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -2146,7 +2146,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "calculo-veloz"
@@ -2154,7 +2154,7 @@
     "aliases": [],
     "texto": "Saiba um fato relevante sobre quase qualquer assunto.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2164,7 +2164,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "deducao"
@@ -2172,7 +2172,7 @@
     "aliases": [],
     "texto": "Analisa um ambiente ou grupo e identifica dinâmica, ameaças e oportunidades.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2182,7 +2182,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "mente-enciclopedica",
@@ -2191,7 +2191,7 @@
     "aliases": [],
     "texto": "Pensa muitas vezes mais rápido; planeja em segundos, ganha ações mentais extras.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -2201,7 +2201,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -2210,7 +2210,7 @@
     "aliases": [],
     "texto": "Resolve problemas imensos; prevê cadeias de eventos e enigmas \"impossíveis\".",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -2220,7 +2220,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -2229,7 +2229,7 @@
     "aliases": [],
     "texto": "Por um instante, compreende um sistema inteiro — uma cidade, uma conspiração, uma máquina — como se o estudasse por anos.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -2289,7 +2289,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "acalmar-fera"
@@ -2297,7 +2297,7 @@
     "aliases": [],
     "texto": "Vincula-se a um animal que o acompanha e obedece comandos simples.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2307,7 +2307,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "chamado"
@@ -2315,7 +2315,7 @@
     "aliases": [],
     "texto": "Comunica-se com bestas em conceitos simples.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2325,7 +2325,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "companheiro",
@@ -2334,7 +2334,7 @@
     "aliases": [],
     "texto": "Comanda um grupo de animais como aliados coordenados.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -2344,7 +2344,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -2353,7 +2353,7 @@
     "aliases": [],
     "texto": "Assume traços de um animal — sentidos, garras, velocidade — ou parte de sua forma.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -2363,7 +2363,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -2372,7 +2372,7 @@
     "aliases": [],
     "texto": "Convoca e comanda a vida selvagem de toda uma região; transforma-se plenamente em grandes bestas.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -2432,7 +2432,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "fingir"
@@ -2440,7 +2440,7 @@
     "aliases": [],
     "texto": "Uma mentira que resiste a escrutínio (vs Defesa Social / Olho da Verdade).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2450,7 +2450,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "disfarce-rapido"
@@ -2458,7 +2458,7 @@
     "aliases": [],
     "texto": "Sustenta uma persona inteira de forma crível por uma cena.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2468,7 +2468,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "mentira-perfeita",
@@ -2477,7 +2477,7 @@
     "aliases": [],
     "texto": "Mistura-se a qualquer grupo como se pertencesse a ele.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -2487,7 +2487,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -2496,7 +2496,7 @@
     "aliases": [],
     "texto": "Imita uma pessoa específica de forma convincente (voz, trejeitos, detalhes).",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -2506,7 +2506,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -2515,7 +2515,7 @@
     "aliases": [],
     "texto": "Torna-se indistinguível de quem quiser; nem os íntimos percebem a troca.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -2539,7 +2539,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 1
+      "energia": 2
     },
     "prereq": [
       "forca-de-carga"
@@ -2547,7 +2547,7 @@
     "aliases": [],
     "texto": "ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "carga"
   },
   {
@@ -2581,7 +2581,7 @@
     "aliases": [],
     "texto": "sustenta pesos imensos por longos períodos (~×4 o normal).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "carga"
   },
   {
@@ -2591,7 +2591,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "levantamento-poderoso"
@@ -2599,7 +2599,7 @@
     "aliases": [],
     "texto": "agarra e esmaga um objeto ou membro.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2609,7 +2609,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "levantamento-poderoso",
@@ -2618,7 +2618,7 @@
     "aliases": [],
     "texto": "arranca árvores, postes e portões para usar como arma.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -2628,7 +2628,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -2637,7 +2637,7 @@
     "aliases": [],
     "texto": "ergue carroças, estátuas e pedras de tonelada (~×30 o normal).",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "carga"
   },
   {
@@ -2647,7 +2647,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -2656,7 +2656,7 @@
     "aliases": [],
     "texto": "sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco).",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "carga"
   },
   {
@@ -2716,7 +2716,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "demolidor"
@@ -2724,7 +2724,7 @@
     "aliases": [],
     "texto": "quebra escudos e armas inferiores ao bloquear.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2734,7 +2734,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "pancada-destrutiva"
@@ -2742,7 +2742,7 @@
     "aliases": [],
     "texto": "derruba uma parede fraca num golpe.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2752,7 +2752,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "estilhacar",
@@ -2761,7 +2761,7 @@
     "aliases": [],
     "texto": "rompe pedra e portões reforçados.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -2771,7 +2771,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -2780,7 +2780,7 @@
     "aliases": [],
     "texto": "bate o chão, abre fendas e derruba quem está perto.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -2790,7 +2790,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -2799,7 +2799,7 @@
     "aliases": [],
     "texto": "derruba muralhas e torres; abre caminho por qualquer fortificação.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -2859,7 +2859,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "pegada-de-ferro"
@@ -2867,7 +2867,7 @@
     "aliases": [],
     "texto": "dano contínuo a quem está agarrado.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2877,7 +2877,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "imobilizar"
@@ -2885,7 +2885,7 @@
     "aliases": [],
     "texto": "usa o agarrado como escudo.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -2895,7 +2895,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "esmagar-nos-bracos",
@@ -2904,7 +2904,7 @@
     "aliases": [],
     "texto": "controla o corpo do oponente (sufoca, quebra membros).",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -2914,7 +2914,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -2923,7 +2923,7 @@
     "aliases": [],
     "texto": "esmaga ossos e armaduras no abraço; parte armas e escudos.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -2933,7 +2933,7 @@
     "atributo": "forca",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -2942,7 +2942,7 @@
     "aliases": [],
     "texto": "agarra e esmaga criaturas de qualquer porte; nada escapa.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "tamanho"
   },
   {
@@ -3002,7 +3002,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "equilibrio-felino"
@@ -3010,7 +3010,7 @@
     "aliases": [],
     "texto": "passa por aberturas mínimas, escapa de amarras e grades.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3020,7 +3020,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "queda-de-gato"
@@ -3028,7 +3028,7 @@
     "aliases": [],
     "texto": "piruetas que reposicionam e desviam.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3038,7 +3038,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "escalada-veloz",
@@ -3047,7 +3047,7 @@
     "aliases": [],
     "texto": "escala qualquer superfície, até de cabeça para baixo.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -3057,7 +3057,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -3066,7 +3066,7 @@
     "aliases": [],
     "texto": "equilibra-se sobre cordas, lâminas e fios; pousa sem peso.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -3076,7 +3076,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -3085,7 +3085,7 @@
     "aliases": [],
     "texto": "move-se por qualquer terreno como se a gravidade não o tocasse.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -3145,7 +3145,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "dedos-ageis"
@@ -3153,7 +3153,7 @@
     "aliases": [],
     "texto": "manipula vários objetos rápido demais para acompanhar.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3163,7 +3163,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "truque-de-mao"
@@ -3171,7 +3171,7 @@
     "aliases": [],
     "texto": "desarma armadilhas e abre qualquer fechadura mundana num instante.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3181,7 +3181,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "maos-borradas",
@@ -3190,7 +3190,7 @@
     "aliases": [],
     "texto": "várias ações manuais finas numa única ação.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -3200,7 +3200,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -3209,7 +3209,7 @@
     "aliases": [],
     "texto": "proezas que desafiam a física (pegar flechas no ar, refazer um mecanismo num piscar).",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -3219,7 +3219,7 @@
     "atributo": "destreza",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -3228,7 +3228,7 @@
     "aliases": [],
     "texto": "manipula tudo ao alcance das mãos com velocidade sobre-humana absoluta.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -3292,7 +3292,7 @@
     "aliases": [],
     "texto": "Ignora a penalidade de **−1d6** do cansaço: age sem perda mesmo abaixo de 25% do Fôlego.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3302,7 +3302,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "segundo-vento"
@@ -3310,7 +3310,7 @@
     "aliases": [],
     "texto": "**Postura:** enquanto sustentada, cada golpe custa o Fôlego de **uma classe mais leve** (pesado→médio, médio→leve). Também prende a respiração por minutos: resiste a fumaça e gases.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3320,7 +3320,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "incansavel",
@@ -3329,7 +3329,7 @@
     "aliases": [],
     "texto": "**Postura:** enquanto sustentada, o **Esforço custa um grau de duplicação a menos** — o +1d6 sai pelo custo normal do golpe; o +2d6 dobra só uma vez. Age no auge por horas.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -3345,7 +3345,7 @@
     "aliases": [],
     "texto": "Sua reserva **nunca para de se renovar**: você recupera Vigor de Fôlego por Tick **mesmo enquanto ataca ou corre**. Na prática, golpes leves passam a se pagar sozinhos e só os pesados e o Esforço ainda drenam. Dispensa sono e comida por longos períodos.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -3355,7 +3355,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -3364,7 +3364,7 @@
     "aliases": [],
     "texto": "Por uma cena, seu **Fôlego não diminui**: ataque, force o golpe e corra à vontade sem gastar nada. O coração que não para.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -3422,7 +3422,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "estomago-de-ferro"
@@ -3430,7 +3430,7 @@
     "aliases": [],
     "texto": "neutraliza um veneno já no corpo; expele toxinas.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3446,7 +3446,7 @@
     "aliases": [],
     "texto": "suporta temperaturas e ambientes que matariam outros.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3456,7 +3456,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "sangue-limpo",
@@ -3465,7 +3465,7 @@
     "aliases": [],
     "texto": "imune a venenos e doenças mundanos.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -3475,7 +3475,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -3484,7 +3484,7 @@
     "aliases": [],
     "texto": "sobrevive em ambientes letais (sem ar, submerso, veneno no ar) por um tempo.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -3494,7 +3494,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -3503,7 +3503,7 @@
     "aliases": [],
     "texto": "imune a quase todo veneno, doença e ambiente; o corpo rejeita a corrupção.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -3569,7 +3569,7 @@
     "aliases": [],
     "texto": "reduz todas as penalidades de ferimento em 1.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3579,7 +3579,7 @@
     "atributo": "vigor",
     "tipo": "reflexiva",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "cerrar-os-dentes"
@@ -3587,7 +3587,7 @@
     "aliases": [],
     "texto": "ao chegar a 0 PV, fica de pé por mais um turno.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3597,7 +3597,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "teimosia",
@@ -3606,7 +3606,7 @@
     "aliases": [],
     "texto": "age normalmente mesmo gravemente ferido por uma cena.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -3616,7 +3616,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -3625,7 +3625,7 @@
     "aliases": [],
     "texto": "no limiar da morte, realiza uma última ação heroica plena.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -3635,7 +3635,7 @@
     "atributo": "vigor",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -3644,7 +3644,7 @@
     "aliases": [],
     "texto": "adia a própria morte por pura vontade até terminar o que precisa.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -3704,7 +3704,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "voz-de-lider"
@@ -3712,7 +3712,7 @@
     "aliases": [],
     "texto": "aliados coordenados ganham +6 de Defesa e de ataque juntos.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -3722,7 +3722,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "reunir"
@@ -3730,7 +3730,7 @@
     "aliases": [],
     "texto": "inspira investida (+2d6 de dano num avanço).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "dano"
   },
   {
@@ -3740,7 +3740,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "formacao",
@@ -3749,7 +3749,7 @@
     "aliases": [],
     "texto": "comanda um grupo como uma unidade; concede ações coordenadas.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -3759,7 +3759,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -3768,7 +3768,7 @@
     "aliases": [],
     "texto": "dirige uma tropa com eficiência sobre-humana; reverte uma derrota iminente.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -3778,7 +3778,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -3787,7 +3787,7 @@
     "aliases": [],
     "texto": "torna-se o símbolo da batalha; um exército luta como um só corpo enquanto você estiver de pé.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -3847,7 +3847,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "tocar-a-alma"
@@ -3855,7 +3855,7 @@
     "aliases": [],
     "texto": "dá aos ouvintes um bônus duradouro (coragem/foco) por uma cena.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3865,7 +3865,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "distrair"
@@ -3873,7 +3873,7 @@
     "aliases": [],
     "texto": "a plateia fica absorta enquanto você se apresenta.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -3883,7 +3883,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "inspiracao-artistica",
@@ -3892,7 +3892,7 @@
     "aliases": [],
     "texto": "performance que comove e muda atitudes.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -3902,7 +3902,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -3911,7 +3911,7 @@
     "aliases": [],
     "texto": "a arte restaura o espírito — remove trauma, medo, desespero.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -3921,7 +3921,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -3930,7 +3930,7 @@
     "aliases": [],
     "texto": "move massas às lágrimas ou à fúria; ecoa e inspira por gerações.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -3990,7 +3990,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "centelha"
@@ -3998,7 +3998,7 @@
     "aliases": [],
     "texto": "arrebata uma multidão para uma causa por uma cena.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4008,7 +4008,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "incitar"
@@ -4016,7 +4016,7 @@
     "aliases": [],
     "texto": "força um inimigo a agir por impulso.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4026,7 +4026,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "discurso-ardente",
@@ -4035,7 +4035,7 @@
     "aliases": [],
     "texto": "inflama uma multidão à revolta ou ao fervor.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -4045,7 +4045,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -4054,7 +4054,7 @@
     "aliases": [],
     "texto": "incendeia paixões a ponto de mover cidades (motim, levante).",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -4064,7 +4064,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -4073,7 +4073,7 @@
     "aliases": [],
     "texto": "suas palavras espalham um fervor que consome reinos; uma fagulha vira revolução.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -4133,7 +4133,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "trama"
@@ -4141,7 +4141,7 @@
     "aliases": [],
     "texto": "usa uma alavanca para dobrar a vontade de alguém.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4151,7 +4151,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "plantar-ideia"
@@ -4159,7 +4159,7 @@
     "aliases": [],
     "texto": "cultiva uma teia de contatos e dívidas.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4169,7 +4169,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "chantagem",
@@ -4178,7 +4178,7 @@
     "aliases": [],
     "texto": "vira facções e pessoas umas contra as outras numa cena.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -4188,7 +4188,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -4197,7 +4197,7 @@
     "aliases": [],
     "texto": "orquestra intrigas de longo alcance; manipula uma corte nos bastidores.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -4207,7 +4207,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -4216,7 +4216,7 @@
     "aliases": [],
     "texto": "nada acontece numa região sem ser parte do seu plano; reis dançam sem saber.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -4276,7 +4276,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "lingua-de-prata"
@@ -4284,7 +4284,7 @@
     "aliases": [],
     "texto": "fecha acordos com armadilhas que o alvo não percebe.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4294,7 +4294,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "torcer"
@@ -4302,7 +4302,7 @@
     "aliases": [],
     "texto": "emaranha o alvo em lógica até ele concordar.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4312,7 +4312,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "contrato-capcioso",
@@ -4321,7 +4321,7 @@
     "aliases": [],
     "texto": "convence alguém de quase qualquer coisa razoável (vs Defesa Social).",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -4331,7 +4331,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -4340,7 +4340,7 @@
     "aliases": [],
     "texto": "sela acordos que o alvo se sente compelido a cumprir.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -4350,7 +4350,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -4359,7 +4359,7 @@
     "aliases": [],
     "texto": "dobra até os céticos; faz o mal parecer bem e a mentira, verdade.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -4419,7 +4419,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "sussurro"
@@ -4427,7 +4427,7 @@
     "aliases": [],
     "texto": "instala suspeita corrosiva (vs Defesa Social).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4437,7 +4437,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "semear-duvida"
@@ -4445,7 +4445,7 @@
     "aliases": [],
     "texto": "espalha um rumor que mina reputações.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4455,7 +4455,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "paranoia",
@@ -4464,7 +4464,7 @@
     "aliases": [],
     "texto": "corrói a confiança e a sanidade de um alvo ao longo da cena.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -4474,7 +4474,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -4483,7 +4483,7 @@
     "aliases": [],
     "texto": "assombra o alvo com medos e visões; quebra a compostura dele.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -4493,7 +4493,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -4502,7 +4502,7 @@
     "aliases": [],
     "texto": "semeia pânico e desconfiança numa multidão; vira aliados em inimigos.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -4562,7 +4562,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "sugestao"
@@ -4570,7 +4570,7 @@
     "aliases": [],
     "texto": "impõe um desejo passageiro que o alvo racionaliza como seu (vs Defesa Mental).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4580,7 +4580,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "ler-desejos"
@@ -4588,7 +4588,7 @@
     "aliases": [],
     "texto": "guia o comportamento do alvo sutilmente por uma cena (vs Defesa Mental).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4598,7 +4598,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "compulsao",
@@ -4607,7 +4607,7 @@
     "aliases": [],
     "texto": "controla as ações do alvo por um curto tempo (vs Defesa Mental; resistível com Vontade).",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -4617,7 +4617,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -4626,7 +4626,7 @@
     "aliases": [],
     "texto": "altera o que o alvo deseja de forma duradoura (vs Defesa Mental).",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -4636,7 +4636,7 @@
     "atributo": "influencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -4645,7 +4645,7 @@
     "aliases": [],
     "texto": "domina um alvo por completo, corpo e vontade, como um fantoche (vs Defesa Mental).",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -4705,7 +4705,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "magnetismo"
@@ -4713,7 +4713,7 @@
     "aliases": [],
     "texto": "cativa uma sala inteira; todos querem sua atenção.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4723,7 +4723,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "seducao"
@@ -4731,7 +4731,7 @@
     "aliases": [],
     "texto": "prende o alvo num momento de fascínio.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4741,7 +4741,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "encanto-irresistivel",
@@ -4750,7 +4750,7 @@
     "aliases": [],
     "texto": "o alvo, encantado, cede a pedidos razoáveis.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -4760,7 +4760,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -4769,7 +4769,7 @@
     "aliases": [],
     "texto": "inspira devoção quase religiosa; multidões se rendem ao seu charme.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -4779,7 +4779,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -4788,7 +4788,7 @@
     "aliases": [],
     "texto": "incomparável; quem o vê faria qualquer coisa por um sorriso seu.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -4848,7 +4848,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "porte"
@@ -4856,7 +4856,7 @@
     "aliases": [],
     "texto": "subordinados e fracos obedecem instintivamente sua presença.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4866,7 +4866,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "olhar-severo"
@@ -4874,7 +4874,7 @@
     "aliases": [],
     "texto": "seu semblante inspira medo real (vs Defesa Social).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -4884,7 +4884,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "aura-de-comando",
@@ -4893,7 +4893,7 @@
     "aliases": [],
     "texto": "inimigos comuns congelam ou fogem diante de você.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -4903,7 +4903,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -4912,7 +4912,7 @@
     "aliases": [],
     "texto": "irradia autoridade divina; multidões se ajoelham ou tremem.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -4922,7 +4922,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -4931,7 +4931,7 @@
     "aliases": [],
     "texto": "sua mera presença impõe reverência ou terror absolutos.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -4991,7 +4991,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "disfarce"
@@ -4999,7 +4999,7 @@
     "aliases": [],
     "texto": "muda a própria aparência física por uma cena, sem adereços.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5009,7 +5009,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "misturar-se"
@@ -5017,7 +5017,7 @@
     "aliases": [],
     "texto": "torna-se esquecível; testemunhas não conseguem descrevê-lo.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5027,7 +5027,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "segunda-pele",
@@ -5036,7 +5036,7 @@
     "aliases": [],
     "texto": "imita a aparência de uma pessoa específica de forma convincente.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -5046,7 +5046,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -5055,7 +5055,7 @@
     "aliases": [],
     "texto": "altera o corpo livremente — altura, idade, feições — à vontade.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -5065,7 +5065,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -5074,7 +5074,7 @@
     "aliases": [],
     "texto": "assume qualquer aparência humana perfeitamente; ninguém jamais o reconhece.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -5134,7 +5134,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "aura-sutil"
@@ -5142,7 +5142,7 @@
     "aliases": [],
     "texto": "impõe uma emoção a todos numa área por um tempo.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5152,7 +5152,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "irradiar-calma"
@@ -5160,7 +5160,7 @@
     "aliases": [],
     "texto": "a aura afeta até os resistentes.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5170,7 +5170,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "campo-emocional",
@@ -5179,7 +5179,7 @@
     "aliases": [],
     "texto": "domina o clima emocional de uma multidão.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -5189,7 +5189,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -5198,7 +5198,7 @@
     "aliases": [],
     "texto": "a emoção irradiada torna-se quase irresistível numa grande área.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -5208,7 +5208,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -5217,7 +5217,7 @@
     "aliases": [],
     "texto": "sua presença banha uma região inteira na emoção que escolher.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -5283,7 +5283,7 @@
     "aliases": [],
     "texto": "ninguém lê suas intenções; imune a leitura corporal mundana.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5293,7 +5293,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "esconder-sentir"
@@ -5301,7 +5301,7 @@
     "aliases": [],
     "texto": "mantém compostura perfeita sob tortura, terror ou provocação.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5311,7 +5311,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "inescrutavel",
@@ -5320,7 +5320,7 @@
     "aliases": [],
     "texto": "esconde pensamentos e intenções até de poderes que leem a mente.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -5330,7 +5330,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -5339,7 +5339,7 @@
     "aliases": [],
     "texto": "finge qualquer estado interior de forma indetectável, mesmo para semideuses.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -5349,7 +5349,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -5358,7 +5358,7 @@
     "aliases": [],
     "texto": "torna-se ilegível e impenetrável; nem a magia mais sutil decifra o que você sente ou trama.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -5424,7 +5424,7 @@
     "aliases": [],
     "texto": "age normalmente em emboscadas; não pode ser pego de surpresa.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5434,7 +5434,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "olho-atento"
@@ -5442,7 +5442,7 @@
     "aliases": [],
     "texto": "num relance, mapeia ameaças, saídas e vantagens.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5452,7 +5452,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "nunca-desprevenido",
@@ -5461,7 +5461,7 @@
     "aliases": [],
     "texto": "sente intenções hostis antes que ocorram; reage a ataques invisíveis.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -5471,7 +5471,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -5480,7 +5480,7 @@
     "aliases": [],
     "texto": "percebe tudo numa grande área ao mesmo tempo.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -5490,7 +5490,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -5499,7 +5499,7 @@
     "aliases": [],
     "texto": "vigilância perfeita e constante; nada o pega desprevenido, nem o sobrenatural.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -5559,7 +5559,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "rastreador"
@@ -5567,7 +5567,7 @@
     "aliases": [],
     "texto": "segue rastros antigos ou apagados.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5577,7 +5577,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "faro"
@@ -5585,7 +5585,7 @@
     "aliases": [],
     "texto": "aproxima-se da presa sem ser notado; conhece seus hábitos.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5595,7 +5595,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "trilha-fria",
@@ -5604,7 +5604,7 @@
     "aliases": [],
     "texto": "persegue um alvo por qualquer terreno, dias a fio.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -5614,7 +5614,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -5623,7 +5623,7 @@
     "aliases": [],
     "texto": "localiza uma presa específica à distância; sente sua presença.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -5633,7 +5633,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -5642,7 +5642,7 @@
     "aliases": [],
     "texto": "nada que você caça escapa, onde quer que se esconda.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -5702,7 +5702,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "ler-pessoas"
@@ -5710,7 +5710,7 @@
     "aliases": [],
     "texto": "percebe falsificações e segundas intenções.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5720,7 +5720,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "ver-atraves"
@@ -5728,7 +5728,7 @@
     "aliases": [],
     "texto": "revela um disfarce ou mentira mundana (vs Camaleão/Máscara).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5738,7 +5738,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "olho-critico",
@@ -5747,7 +5747,7 @@
     "aliases": [],
     "texto": "vê através de ilusões e enganos, inclusive alguns mágicos.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -5757,7 +5757,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -5766,7 +5766,7 @@
     "aliases": [],
     "texto": "nenhuma mentira ou disfarce o engana.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -5776,7 +5776,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -5785,7 +5785,7 @@
     "aliases": [],
     "texto": "percebe a verdade absoluta de uma pessoa ou situação.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -5845,7 +5845,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "sensivel"
@@ -5853,7 +5853,7 @@
     "aliases": [],
     "texto": "vê espíritos, encantamentos ativos e marcas mágicas.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5863,7 +5863,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "sentir-o-veu"
@@ -5871,7 +5871,7 @@
     "aliases": [],
     "texto": "percebe o que aconteceu num local.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -5881,7 +5881,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "olho-espiritual",
@@ -5890,7 +5890,7 @@
     "aliases": [],
     "texto": "comunica-se com espíritos e percebe o mundo invisível.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -5900,7 +5900,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -5909,7 +5909,7 @@
     "aliases": [],
     "texto": "enxerga planos sobrepostos ao mundo; lê a teia de essência.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -5919,7 +5919,7 @@
     "atributo": "percepcao",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -5928,7 +5928,7 @@
     "aliases": [],
     "texto": "percebe a verdadeira natureza espiritual de tudo; nada do oculto lhe é velado.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -5986,7 +5986,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "vasto-saber"
@@ -5994,7 +5994,7 @@
     "aliases": [],
     "texto": "conhecimento profundo em muitas áreas.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6004,7 +6004,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "poliglota"
@@ -6012,7 +6012,7 @@
     "aliases": [],
     "texto": "lê escritas antigas, cifras e línguas mortas.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6022,7 +6022,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "biblioteca-viva",
@@ -6031,7 +6031,7 @@
     "aliases": [],
     "texto": "domina saberes raros; conecta conhecimentos distantes.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -6041,7 +6041,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -6050,7 +6050,7 @@
     "aliases": [],
     "texto": "sabe quase tudo que a civilização registrou.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -6060,7 +6060,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -6069,7 +6069,7 @@
     "aliases": [],
     "texto": "qualquer saber humano está ao seu alcance; lê qualquer língua na hora.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -6129,7 +6129,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "maos-habeis"
@@ -6137,7 +6137,7 @@
     "aliases": [],
     "texto": "cria itens de qualidade excepcional.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6147,7 +6147,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "improvisar"
@@ -6155,7 +6155,7 @@
     "aliases": [],
     "texto": "conserta ou monta algo complexo numa fração do tempo.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6165,7 +6165,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "obra-fina",
@@ -6174,7 +6174,7 @@
     "aliases": [],
     "texto": "cria obras-primas que parecem impossíveis.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -6184,7 +6184,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -6193,7 +6193,7 @@
     "aliases": [],
     "texto": "constrói máquinas e autômatos além da técnica de sua era.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -6203,7 +6203,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -6212,7 +6212,7 @@
     "aliases": [],
     "texto": "cria artefatos lendários e maravilhas que desafiam o possível.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -6272,7 +6272,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "mente-tatica"
@@ -6280,7 +6280,7 @@
     "aliases": [],
     "texto": "identifica o ponto fraco de uma força e o momento de agir.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6290,7 +6290,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "plano"
@@ -6298,7 +6298,7 @@
     "aliases": [],
     "texto": "prepara armadilhas e posições de grande vantagem inicial.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6308,7 +6308,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "ler-a-batalha",
@@ -6317,7 +6317,7 @@
     "aliases": [],
     "texto": "orquestra uma batalha para virar o jogo.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -6327,7 +6327,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -6336,7 +6336,7 @@
     "aliases": [],
     "texto": "prevê e contrapõe os planos do inimigo passos à frente.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -6346,7 +6346,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -6355,7 +6355,7 @@
     "aliases": [],
     "texto": "conduz guerras como um jogo já vencido.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -6415,7 +6415,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "olhar-investigativo"
@@ -6423,7 +6423,7 @@
     "aliases": [],
     "texto": "reconstrói o que houve num local pelos vestígios.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6433,7 +6433,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "conectar"
@@ -6441,7 +6441,7 @@
     "aliases": [],
     "texto": "extrai a verdade lendo reações e inconsistências.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6451,7 +6451,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "reconstituir",
@@ -6460,7 +6460,7 @@
     "aliases": [],
     "texto": "resolve um mistério complexo juntando as peças.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -6470,7 +6470,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -6479,7 +6479,7 @@
     "aliases": [],
     "texto": "percebe o detalhe crucial que ninguém viu; desvenda conspirações.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -6489,7 +6489,7 @@
     "atributo": "inteligencia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -6498,7 +6498,7 @@
     "aliases": [],
     "texto": "de pistas mínimas, reconstrói a verdade completa de qualquer evento.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -6564,7 +6564,7 @@
     "aliases": [],
     "texto": "age sempre entre os primeiros.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6574,7 +6574,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "reacao"
@@ -6582,7 +6582,7 @@
     "aliases": [],
     "texto": "realiza uma ação mental e uma física quase simultâneas.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6592,7 +6592,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "reflexos-de-raio",
@@ -6601,7 +6601,7 @@
     "aliases": [],
     "texto": "o caos parece em câmera lenta; planeja no meio da ação.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -6611,7 +6611,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -6620,7 +6620,7 @@
     "aliases": [],
     "texto": "reage tão rápido que age várias vezes enquanto outros pensam.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -6630,7 +6630,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -6639,7 +6639,7 @@
     "aliases": [],
     "texto": "reage ao instantâneo; nada o pega despreparado.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -6699,7 +6699,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "jeitinho"
@@ -6707,7 +6707,7 @@
     "aliases": [],
     "texto": "resolve um problema de um jeito que ninguém esperava.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6717,7 +6717,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "usar-o-cenario"
@@ -6725,7 +6725,7 @@
     "aliases": [],
     "texto": "monta um dispositivo improvisado funcional na hora.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6735,7 +6735,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "solucao-genial",
@@ -6744,7 +6744,7 @@
     "aliases": [],
     "texto": "encontra escapatória até nas situações mais fechadas.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -6754,7 +6754,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -6763,7 +6763,7 @@
     "aliases": [],
     "texto": "vira qualquer cenário a seu favor com engenhosidade quase mágica.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -6773,7 +6773,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -6782,7 +6782,7 @@
     "aliases": [],
     "texto": "o improvável dá certo nas suas mãos; transforma o caos em plano.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -6842,7 +6842,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "ler-o-outro"
@@ -6850,7 +6850,7 @@
     "aliases": [],
     "texto": "monta um perfil preciso após breve contato.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6860,7 +6860,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "ler-tells"
@@ -6868,7 +6868,7 @@
     "aliases": [],
     "texto": "prevê como o alvo reagirá a uma situação.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -6878,7 +6878,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "perfil",
@@ -6887,7 +6887,7 @@
     "aliases": [],
     "texto": "lê alguém tão bem que prevê escolhas e descobre segredos.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -6897,7 +6897,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -6906,7 +6906,7 @@
     "aliases": [],
     "texto": "num olhar, sabe quem é, o que quer e como agirá.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -6916,7 +6916,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -6925,7 +6925,7 @@
     "aliases": [],
     "texto": "compreende qualquer pessoa por completo num instante.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -6991,7 +6991,7 @@
     "aliases": [],
     "texto": "+6 para resistir a manipulação, medo e efeitos mentais.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -7001,7 +7001,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "centrar-se"
@@ -7009,7 +7009,7 @@
     "aliases": [],
     "texto": "entra em meditação profunda (clareza, recuperação).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -7019,7 +7019,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "mente-imperturbavel",
@@ -7028,7 +7028,7 @@
     "aliases": [],
     "texto": "blindagem contra intrusões e domínios mentais (vs Fascinação/Marionete).",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -7038,7 +7038,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -7047,7 +7047,7 @@
     "aliases": [],
     "texto": "mente intransponível; imune a quase toda influência mental e ilusão.",
     "pendente": false,
-    "nivel": 4,
+    "nivel": 5,
     "efeito": "estado"
   },
   {
@@ -7057,7 +7057,7 @@
     "atributo": "raciocinio",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 2
     },
     "prereq": [
@@ -7066,7 +7066,7 @@
     "aliases": [],
     "texto": "paz e clareza absolutas; nada perturba, engana ou domina a sua mente.",
     "pendente": false,
-    "nivel": 5,
+    "nivel": 6,
     "efeito": "estado"
   },
   {
@@ -7094,7 +7094,7 @@
     "atributo": "perspicacia",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "olhar-perspicaz"
@@ -7102,7 +7102,7 @@
     "aliases": [],
     "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+6** nas jogadas sociais que explorem o que captou.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -7112,7 +7112,7 @@
     "atributo": "perspicacia",
     "tipo": "ativa",
     "custo": {
-      "energia": 3
+      "energia": 4
     },
     "prereq": [
       "farejar-a-mentira"
@@ -7120,7 +7120,7 @@
     "aliases": [],
     "texto": "Lê o que o alvo mais teme ou deseja; a próxima jogada de **Influência** alinhada a isso ganha **+3 graus de Margem** (ou +6 na soma).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -7130,7 +7130,7 @@
     "atributo": "perspicacia",
     "tipo": "reflexiva",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -7139,7 +7139,7 @@
     "aliases": [],
     "texto": "Lê microssinais e antevê a ação do alvo: **+6 na Defesa** contra ele, ou sabe qual manobra social ele tentará antes que role.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -7149,7 +7149,7 @@
     "atributo": "perspicacia",
     "tipo": "ativa",
     "custo": {
-      "energia": 5,
+      "energia": 6,
       "vontade": 1
     },
     "prereq": [
@@ -7159,7 +7159,7 @@
     "aliases": [],
     "texto": "Por uma cena, lê intenções como livro aberto: nenhuma mentira ou disfarce social passa sem que você role para perceber, e sente as **motivações reais** de quem o encara.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {
@@ -7187,7 +7187,7 @@
     "atributo": "compostura",
     "tipo": "ativa",
     "custo": {
-      "energia": 2
+      "energia": 3
     },
     "prereq": [
       "semblante-fechado"
@@ -7195,7 +7195,7 @@
     "aliases": [],
     "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+6** para enganar sobre quem você é (soma à Compostura vs Perspicácia).",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -7211,7 +7211,7 @@
     "aliases": [],
     "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−6**.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "bonus"
   },
   {
@@ -7221,7 +7221,7 @@
     "atributo": "compostura",
     "tipo": "reflexiva",
     "custo": {
-      "energia": 4,
+      "energia": 5,
       "vontade": 1
     },
     "prereq": [
@@ -7230,7 +7230,7 @@
     "aliases": [],
     "texto": "Ignora uma penalidade social ou de medo por rodada; provocações e Influência que **dependam de te abalar** falham se não superarem sua Compostura por 6+.",
     "pendente": false,
-    "nivel": 2,
+    "nivel": 3,
     "efeito": "estado"
   },
   {
@@ -7247,7 +7247,7 @@
     "aliases": [],
     "texto": "Você é fundamentalmente ilegível: leitura social e adivinhação mundana sobre suas intenções falham salvo Margem alta, e mantém quantas personas quiser sem esforço.",
     "pendente": false,
-    "nivel": 3,
+    "nivel": 4,
     "efeito": "estado"
   },
   {

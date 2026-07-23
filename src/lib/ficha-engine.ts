@@ -51,7 +51,7 @@ export function montarFicha(opts: FichaOpts) {
   const TRACO_DESC: Record<string, string> = {
     centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana.',
     willpower: 'Reserva de determinação (piso 1). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
-    aparencia: 'Traço próprio (1–10, piso 1, ×2). Modificador direcional na jogada social: ajuda alinhado (seduzir/impressionar), atrapalha invertido (intimidar). A Compostura mascara parte dele.',
+    aparencia: 'Traço próprio (1–12, piso 1, ×2). Modificador direcional na jogada social: ajuda alinhado (seduzir/impressionar), atrapalha invertido (intimidar). A Compostura mascara parte dele.',
   };
   function openTraitModal(nm: HTMLElement) {
     const dots = nm.closest('.trow')?.querySelector('.dots') as HTMLElement | null; if (!dots) return;
@@ -85,8 +85,8 @@ export function montarFicha(opts: FichaOpts) {
   const centReq = (b: number) => b;
   function capFor(kind: string, key?: string): number {
     if (kind === 'arte2') return (S.centelha || 0) > 0 ? (S.skills?.ocultismo || 0) : 0;
-    const full: Record<string, number> = { attr: 5, skill: 5, skill2: 5, virtue: 5, centelha: 5, willpower: 10, aparencia: 10 };
-    if (S.modo === 'evolucao') return full[kind] ?? 5;
+    const full: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12 };
+    if (S.modo === 'evolucao') return full[kind] ?? 6;
     if (kind === 'attr' || kind === 'skill') {
       const base = kind === 'attr' ? CREA.atributo : CREA.habilidade;
       const pico = (kind === 'attr' ? CREA.picoAtributo : CREA.picoHabilidade) ?? base;
@@ -96,8 +96,8 @@ export function montarFicha(opts: FichaOpts) {
       for (const k in store) { if (k !== key && (store[k] || 0) > base) { outroPico = true; break; } }
       return outroPico ? base : pico;
     }
-    const crea: Record<string, number> = { skill2: CREA.habilidade, virtue: 5, centelha: CREA.centelha, willpower: 10, aparencia: 10 };
-    return crea[kind] ?? 5;
+    const crea: Record<string, number> = { skill2: CREA.habilidade, virtue: 6, centelha: CREA.centelha, willpower: 12, aparencia: 12 };
+    return crea[kind] ?? 6;
   }
 
   // ---- estado ----
@@ -137,7 +137,7 @@ export function montarFicha(opts: FichaOpts) {
   };
   const specHTML = (key: string, value: number, maxAllowed: number) => {
     let h = `<span class="spec" data-spec="${key}">`;
-    for (let d = 1; d <= 5; d++) h += `<span class="sq${d <= value ? ' on' : ''}${d > maxAllowed ? ' dis' : ''}" data-d="${d}"></span>`;
+    for (let d = 1; d <= 6; d++) h += `<span class="sq${d <= value ? ' on' : ''}${d > maxAllowed ? ' dis' : ''}" data-d="${d}"></span>`;
     return h + '</span>';
   };
   const trow = (nm: string, right: string) => `<div class="trow"><span class="nm">${nm}</span><span class="tr-r">${right}</span></div>`;
@@ -148,17 +148,17 @@ export function montarFicha(opts: FichaOpts) {
     const groups: Record<string, any[]> = { Físicos: [], Sociais: [], Mentais: [] };
     (ATTRS_D as any[]).forEach((a) => groups[ATTR_GRP[a.grupo]].push(a));
     el('attrs').innerHTML = ['Físicos', 'Sociais', 'Mentais'].map((g) =>
-      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 5, 1) + rollBtn('attr', a.id))).join('')}</div>`).join('');
+      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 6, 1) + rollBtn('attr', a.id))).join('')}</div>`).join('');
   }
   function renderPower() {
-    let h = trow('<b>Centelha</b> <small>(0–5)</small>', dotsHTML('centelha', 'centelha', S.centelha, 5, 0));
+    let h = trow('<b>Centelha</b> <small>(0–6)</small>', dotsHTML('centelha', 'centelha', S.centelha, 6, 0));
     h += '<h3>Virtudes</h3>';
-    (VIRT_D as any[]).forEach((v) => (h += trow(v.nome, dotsHTML('virtue', v.id, S.virtues[v.id], 5, 1))));
+    (VIRT_D as any[]).forEach((v) => (h += trow(v.nome, dotsHTML('virtue', v.id, S.virtues[v.id], 6, 1))));
     h += '<h3>Força de Vontade <small>(piso 1 · ×2)</small></h3>';
-    h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 10, 1));
-    h += '<h3>Aparência <small>(1–10 · piso 1 · ×2)</small></h3>';
+    h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 12, 1));
+    h += '<h3>Aparência <small>(1–12 · piso 1 · ×2)</small></h3>';
     const am = aparenciaMod(S.aparencia);
-    h += trow(`Aparência <span class="apmod" title="Bônus/Penalidade na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`, dotsHTML('aparencia', 'aparencia', S.aparencia, 10, 1));
+    h += trow(`Aparência <span class="apmod" title="Bônus/Penalidade na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`, dotsHTML('aparencia', 'aparencia', S.aparencia, 12, 1));
     el('power').innerHTML = h;
   }
   function renderSkills() {
@@ -167,14 +167,14 @@ export function montarFicha(opts: FichaOpts) {
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' })));
     const cols = [['Combate', 'Físicas'], ['Sociais'], ['Saber']];
     el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 5, 0) + specHTML(s.id, S.spec[s.id] || 0, S.skills[s.id] || 0) + rollBtn('skill', s.id))).join('') : '').join('') + '</div>').join('');
+      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specHTML(s.id, S.spec[s.id] || 0, S.skills[s.id] || 0) + rollBtn('skill', s.id))).join('') : '').join('') + '</div>').join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' })));
     const cols = [['Corpo', 'Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
     el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 5, 0) + specHTML('2_' + k, S.spec2[k] || 0, S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
+      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specHTML('2_' + k, S.spec2[k] || 0, S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
   }
   function renderCaminhos() {
     const card = (cam: string) => {

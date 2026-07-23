@@ -79,16 +79,25 @@ O combate **entre pares** é imune à reescala (ataque e defesa saem do mesmo At
 O que precisa de mão são os números **absolutos**, que ficam relativamente mais fracos com pools
 maiores (até 6d6, média 21 contra 17,5):
 
-- **Dificuldade:** proposta **×1,2** → **6 / 12 / 18 / 24 / 30 / 36** (Fácil/Média/Difícil/Limite
-  humano/Excepcional/Sobre-humano), re-derivando as chances-alvo por simulação.
-- **Armas, armaduras, stunts, modificadores situacionais, Quase-Acerto, Penetração:** decidir por
-  peça se sobem junto ou se aceitamos que o "talento bruto" ganhou peso. Proposta inicial: manter
-  como está e reavaliar após a simulação de durabilidade (o dano por Força já sobe com o teto).
-- **Orçamentos e curva de XP:** maxar um atributo passa de 150 para 210 XP; revisar
-  `orcamentoPadrao/Veterano/Heroico` e o ritmo por sessão para a criação não empobrecer.
+- **Dificuldade (RESOLVIDO):** sob "estender o teto", o mundo comum não muda, então a régua
+  **mantém os valores 5 / 10 / 15 / 20 / 25 / 30**; só o **topo** se re-descreve, porque o pico
+  humano subiu de soma 10 para **soma 12** (6d6). Verificado por simulação: Dif 20 = "Muito
+  difícil" (mestre, soma 10, ~22%); Dif 25 = "Limite humano" (pico soma 12, ~14%); Dif 30 =
+  "Sobre-humano" (~1%, exige Centelha). Nada de ×1,2: aquilo valeria para um "esticão", não para a
+  extensão de teto escolhida.
+- **Armas, armaduras, stunts, modificadores situacionais, Quase-Acerto, Penetração:** mantidos
+  como estão nesta rodada; o dano por Força já sobe com o teto. Reavaliar se a mesa achar que o
+  stat cru pesou demais.
+- **Orçamentos e curva de XP (provisório):** maxar um atributo passa de 150 para 210 XP;
+  `orcamentoPadrao/Veterano/Heroico` subiram para **1700 / 2200 / 2900** (provisório, afinar com o
+  jogo). `limitesCriacao` agora **atributo 5 / habilidade 4 / centelha 3 / pico 6 / 5**.
 
-Tudo isso será **re-simulado** (durabilidade, taxa de acerto, curva de XP) antes de travar, e o
-`test-kael` (trava de regressão no build) atualizado junto.
+**Observação de balanceamento (expert):** a fórmula de Defesa **atual** do `calc.ts` é `(Des+per)×2
++ Centelha` (SEM o `−⌊soma/4⌋` do doc antigo), então o combate entre iguais já era defensivo e
+fica mais no topo: ~37% de acerto em soma 6, ~28% em soma 12. A reescala estende o topo até soma 12
+(28%). A durabilidade do pilar segue (pico Vig 6, PV 43, cai em ~4,3 golpes que conectam), mas
+lutas no topo têm muitas erradas. Não é bug da reescala; se incomodar, revisitar a fórmula de
+Defesa (reintroduzir o `−⌊soma/4⌋` ou baixar o mult) numa passada à parte.
 
 ---
 
@@ -128,9 +137,22 @@ Tudo isso será **re-simulado** (durabilidade, taxa de acerto, curva de XP) ante
 ## Estado
 
 - [x] Firmeza removida do inventário; fluxograma corrigido.
-- [ ] Fase 1 · réguas e textos
-- [ ] Fase 2 · números fixos
-- [ ] Fase 3 · Proezas renumeradas
-- [ ] Fase 4 · fórmulas/derivados
-- [ ] Fase 5 · re-simulação + test-kael
-- [ ] Fase 6 · conteúdo (bestiário, Kael) — rodada seguinte
+- [x] **Fase 1 · réguas e textos** — `escalaCentelha` (0–6 + Desperto), `escalaHabilidade` (+6),
+  `escalaAparencia` (1–12), `escalaVontade` (+12), níveis 6 de atributos e virtudes. Capítulos
+  `centelha.md` (tiers, tabelas, prosa), `atributos-e-pericias.md`, `aparencia-virtudes-vontade.md`
+  (curva 1–12), `criacao-de-personagem.md` alinhados.
+- [x] **Fase 2 · números fixos** — dificuldade re-descrita (topo), `limitesCriacao` (5/4/3, pico
+  6/5), orçamentos (1700/2200/2900), `escalasProeza` trilhas+mostradores com 6 entradas (Desperto
+  provisório), `aparencia.curva` 1–12.
+- [x] **Fase 3 · Proezas renumeradas** — 264 Técnicas: `nivel` 2→3…5→6, mesmo delta no
+  `custo.energia`. Nível 2 (Desperto) fica vazio. Schemas (`validate-data.mjs` e `content.config.ts`)
+  subiram para max 6.
+- [x] **Fase 4 · fórmulas/derivados** — `ficha-engine.ts` (bolinhas até 6/12, caps de criação e
+  evolução, especialidade até 6, labels). `calc.ts` não muda (fórmulas agnósticas de escala).
+- [x] **Fase 5 · re-simulação** — dificuldade e durabilidade validadas; `test-kael` verde (Kael
+  intocado, por Q4). Build completo verde.
+- [ ] **Fase 6 · conteúdo (rodada seguinte)** — migrar bestiário (300+) e Kael (Centelha 2→3);
+  criar Proezas/Feitiçarias do tier **Desperto** (nível 2, hoje vazio); afinar valores provisórios
+  do Desperto nas trilhas; alinhar gating das Artes (ainda 1–5) à Centelha 6; varrer os exemplos
+  detalhados dos capítulos (Kael/Sora/Veil, custos) e demais menções de escala em
+  `combate.md`/`criacao`/`arcano`.

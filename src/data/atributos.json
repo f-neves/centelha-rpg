@@ -1,65 +1,290 @@
 [
-  { "id": "forca", "nome": "Força", "grupo": "fisico", "descricao": "Poder físico bruto — erguer, golpear, quebrar, dobrar o ferro. Soma ao dano corpo-a-corpo e define o quanto você carrega e arromba.", "niveis": [
-    { "nivel": 1, "texto": "Franzino: mal carrega o próprio peso; perde quedas de braço para quase todos." },
-    { "nivel": 2, "texto": "Comum: a força de uma pessoa média, sem treino." },
-    { "nivel": 3, "texto": "Forte: atlético e treinado; arromba uma porta com esforço." },
-    { "nivel": 4, "texto": "Muito forte: atleta de força; carrega outra pessoa correndo." },
-    { "nivel": 5, "texto": "Pico humano: dos mais fortes que já viveram; dobra barras de ferro." }
-  ] },
-  { "id": "destreza", "nome": "Destreza", "grupo": "fisico", "descricao": "Agilidade, precisão e coordenação fina. Base da maioria dos ataques e da Defesa por Esquiva.", "niveis": [
-    { "nivel": 1, "texto": "Desajeitado: tropeça, derruba coisas, mãos lentas." },
-    { "nivel": 2, "texto": "Comum: coordenação normal do dia a dia." },
-    { "nivel": 3, "texto": "Ágil: reflexos rápidos e mãos firmes; bom em esportes." },
-    { "nivel": 4, "texto": "Muito ágil: acrobata, batedor de carteira, espadachim fino." },
-    { "nivel": 5, "texto": "Pico humano: precisão e velocidade no limite do que um corpo alcança." }
-  ] },
-  { "id": "vigor", "nome": "Vigor", "grupo": "fisico", "descricao": "Resistência, fôlego e saúde — o quanto o corpo aguenta. Define Pontos de Vida e Soak natural.", "niveis": [
-    { "nivel": 1, "texto": "Doentio: cansa rápido; uma gripe o derruba." },
-    { "nivel": 2, "texto": "Comum: saúde mediana." },
-    { "nivel": 3, "texto": "Resistente: aguenta esforço e dor bem acima da média." },
-    { "nivel": 4, "texto": "Muito resistente: corre maratonas, ignora o frio, custa a cair." },
-    { "nivel": 5, "texto": "Pico humano: constituição de ferro; sobrevive ao que mataria quase todos." }
-  ] },
-  { "id": "influencia", "nome": "Influência", "grupo": "social", "descricao": "A capacidade de agir sobre os pensamentos e as ações alheias — persuadir, comandar, inspirar, seduzir ou coagir. O atributo ofensivo do social (resistido pela Defesa Mental).", "niveis": [
-    { "nivel": 1, "texto": "Inábil: suas palavras caem no vazio; ninguém se move por você." },
-    { "nivel": 2, "texto": "Comum: convence o trivial, no tom certo." },
-    { "nivel": 3, "texto": "Persuasivo: conduz a conversa e move quem está em cima do muro." },
-    { "nivel": 4, "texto": "Dominante: dobra vontades, comanda salas, acende multidões." },
-    { "nivel": 5, "texto": "Irresistível: poucos resistem ao que você quer que pensem ou façam." }
-  ] },
-  { "id": "perspicacia", "nome": "Perspicácia", "grupo": "social", "descricao": "A leitura do outro — emoções, intenções, sinceridade, o clima de uma sala. O sensor social (rola com a habilidade Empatia; oposto à Compostura do alvo).", "niveis": [
-    { "nivel": 1, "texto": "Cego social: não percebe o óbvio nas pessoas; é enganado fácil." },
-    { "nivel": 2, "texto": "Comum: lê emoções evidentes." },
-    { "nivel": 3, "texto": "Perspicaz: fareja mentiras pequenas e o humor da roda." },
-    { "nivel": 4, "texto": "Argúcia: enxerga intenções escondidas e o que não foi dito." },
-    { "nivel": 5, "texto": "Leitor de almas: quase nada nas pessoas lhe escapa." }
-  ] },
-  { "id": "compostura", "nome": "Compostura", "grupo": "social", "descricao": "O controle da própria apresentação — maneirismos, trejeitos e a máscara que você mostra. Esconde intenções e fragilidade; sustenta a Defesa Social (vs leitura) e o raio de quanto da própria Aparência se mascara.", "niveis": [
-    { "nivel": 1, "texto": "Transparente: tudo o que sente aparece; é um livro aberto." },
-    { "nivel": 2, "texto": "Comum: disfarça o trivial." },
-    { "nivel": 3, "texto": "Controlado: mantém a pose e esconde o que quer." },
-    { "nivel": 4, "texto": "Insondável: mostra e oculta à vontade; difícil de ler." },
-    { "nivel": 5, "texto": "Máscara perfeita: ninguém atravessa a fachada que você escolhe." }
-  ] },
-  { "id": "percepcao", "nome": "Percepção", "grupo": "mental", "descricao": "O quanto você nota do mundo à sua volta — sentidos, atenção e instinto para o que está fora do lugar.", "niveis": [
-    { "nivel": 1, "texto": "Distraído: não vê o óbvio; pego de surpresa sempre." },
-    { "nivel": 2, "texto": "Comum: nota o que salta aos olhos." },
-    { "nivel": 3, "texto": "Observador: capta detalhes e mentiras pequenas." },
-    { "nivel": 4, "texto": "Aguçado: percebe o quase-imperceptível; difícil de enganar." },
-    { "nivel": 5, "texto": "Nada lhe escapa: lê uma sala num relance, sente o perigo no ar." }
-  ] },
-  { "id": "inteligencia", "nome": "Inteligência", "grupo": "mental", "descricao": "Saber, raciocínio estruturado, memória e criação — o conhecimento acumulado e a capacidade de aplicá-lo.", "niveis": [
-    { "nivel": 1, "texto": "Simplório: dificuldade com abstrações e planos." },
-    { "nivel": 2, "texto": "Comum: senso prático mediano." },
-    { "nivel": 3, "texto": "Culto/esperto: bem informado, deduz e planeja bem." },
-    { "nivel": 4, "texto": "Brilhante: erudito; resolve problemas que travam os outros." },
-    { "nivel": 5, "texto": "Gênio: mente de era; enxerga padrões invisíveis para o resto." }
-  ] },
-  { "id": "raciocinio", "nome": "Raciocínio", "grupo": "mental", "descricao": "Agilidade mental: reagir, improvisar e pensar sob pressão. Base da Iniciativa.", "niveis": [
-    { "nivel": 1, "texto": "Lento: demora a reagir; congela na crise." },
-    { "nivel": 2, "texto": "Comum: reage no tempo normal." },
-    { "nivel": 3, "texto": "Rápido: pensa de pé, improvisa bem." },
-    { "nivel": 4, "texto": "Afiadíssimo: age antes dos outros perceberem." },
-    { "nivel": 5, "texto": "Relâmpago: decide perfeito no meio do caos, num piscar." }
-  ] }
+  {
+    "id": "forca",
+    "nome": "Força",
+    "grupo": "fisico",
+    "descricao": "Poder físico bruto — erguer, golpear, quebrar, dobrar o ferro. Soma ao dano corpo-a-corpo e define o quanto você carrega e arromba.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Franzino: mal carrega o próprio peso; perde quedas de braço para quase todos."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: a força de uma pessoa média, sem treino."
+      },
+      {
+        "nivel": 3,
+        "texto": "Forte: atlético e treinado; arromba uma porta com esforço."
+      },
+      {
+        "nivel": 4,
+        "texto": "Muito forte: atleta de força; carrega outra pessoa correndo."
+      },
+      {
+        "nivel": 5,
+        "texto": "Pico humano: dos mais fortes que já viveram; dobra barras de ferro."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: força que entra para as histórias; arranca portas dos gonzos."
+      }
+    ]
+  },
+  {
+    "id": "destreza",
+    "nome": "Destreza",
+    "grupo": "fisico",
+    "descricao": "Agilidade, precisão e coordenação fina. Base da maioria dos ataques e da Defesa por Esquiva.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Desajeitado: tropeça, derruba coisas, mãos lentas."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: coordenação normal do dia a dia."
+      },
+      {
+        "nivel": 3,
+        "texto": "Ágil: reflexos rápidos e mãos firmes; bom em esportes."
+      },
+      {
+        "nivel": 4,
+        "texto": "Muito ágil: acrobata, batedor de carteira, espadachim fino."
+      },
+      {
+        "nivel": 5,
+        "texto": "Pico humano: precisão e velocidade no limite do que um corpo alcança."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: precisão e velocidade que parecem impossíveis sem serem mágicas."
+      }
+    ]
+  },
+  {
+    "id": "vigor",
+    "nome": "Vigor",
+    "grupo": "fisico",
+    "descricao": "Resistência, fôlego e saúde — o quanto o corpo aguenta. Define Pontos de Vida e Soak natural.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Doentio: cansa rápido; uma gripe o derruba."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: saúde mediana."
+      },
+      {
+        "nivel": 3,
+        "texto": "Resistente: aguenta esforço e dor bem acima da média."
+      },
+      {
+        "nivel": 4,
+        "texto": "Muito resistente: corre maratonas, ignora o frio, custa a cair."
+      },
+      {
+        "nivel": 5,
+        "texto": "Pico humano: constituição de ferro; sobrevive ao que mataria quase todos."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: resistência lendária; encara o que mataria os mais fortes."
+      }
+    ]
+  },
+  {
+    "id": "influencia",
+    "nome": "Influência",
+    "grupo": "social",
+    "descricao": "A capacidade de agir sobre os pensamentos e as ações alheias — persuadir, comandar, inspirar, seduzir ou coagir. O atributo ofensivo do social (resistido pela Defesa Mental).",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Inábil: suas palavras caem no vazio; ninguém se move por você."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: convence o trivial, no tom certo."
+      },
+      {
+        "nivel": 3,
+        "texto": "Persuasivo: conduz a conversa e move quem está em cima do muro."
+      },
+      {
+        "nivel": 4,
+        "texto": "Dominante: dobra vontades, comanda salas, acende multidões."
+      },
+      {
+        "nivel": 5,
+        "texto": "Irresistível: poucos resistem ao que você quer que pensem ou façam."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: presença que dobra quase qualquer vontade humana."
+      }
+    ]
+  },
+  {
+    "id": "perspicacia",
+    "nome": "Perspicácia",
+    "grupo": "social",
+    "descricao": "A leitura do outro — emoções, intenções, sinceridade, o clima de uma sala. O sensor social (rola com a habilidade Empatia; oposto à Compostura do alvo).",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Cego social: não percebe o óbvio nas pessoas; é enganado fácil."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: lê emoções evidentes."
+      },
+      {
+        "nivel": 3,
+        "texto": "Perspicaz: fareja mentiras pequenas e o humor da roda."
+      },
+      {
+        "nivel": 4,
+        "texto": "Argúcia: enxerga intenções escondidas e o que não foi dito."
+      },
+      {
+        "nivel": 5,
+        "texto": "Leitor de almas: quase nada nas pessoas lhe escapa."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: lê as pessoas como quem lê em voz alta; nada humano lhe escapa."
+      }
+    ]
+  },
+  {
+    "id": "compostura",
+    "nome": "Compostura",
+    "grupo": "social",
+    "descricao": "O controle da própria apresentação — maneirismos, trejeitos e a máscara que você mostra. Esconde intenções e fragilidade; sustenta a Defesa Social (vs leitura) e o raio de quanto da própria Aparência se mascara.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Transparente: tudo o que sente aparece; é um livro aberto."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: disfarça o trivial."
+      },
+      {
+        "nivel": 3,
+        "texto": "Controlado: mantém a pose e esconde o que quer."
+      },
+      {
+        "nivel": 4,
+        "texto": "Insondável: mostra e oculta à vontade; difícil de ler."
+      },
+      {
+        "nivel": 5,
+        "texto": "Máscara perfeita: ninguém atravessa a fachada que você escolhe."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: máscara impenetrável; nem o mais arguto a atravessa."
+      }
+    ]
+  },
+  {
+    "id": "percepcao",
+    "nome": "Percepção",
+    "grupo": "mental",
+    "descricao": "O quanto você nota do mundo à sua volta — sentidos, atenção e instinto para o que está fora do lugar.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Distraído: não vê o óbvio; pego de surpresa sempre."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: nota o que salta aos olhos."
+      },
+      {
+        "nivel": 3,
+        "texto": "Observador: capta detalhes e mentiras pequenas."
+      },
+      {
+        "nivel": 4,
+        "texto": "Aguçado: percebe o quase-imperceptível; difícil de enganar."
+      },
+      {
+        "nivel": 5,
+        "texto": "Nada lhe escapa: lê uma sala num relance, sente o perigo no ar."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: sentidos no limite do humano; percebe o quase-nada."
+      }
+    ]
+  },
+  {
+    "id": "inteligencia",
+    "nome": "Inteligência",
+    "grupo": "mental",
+    "descricao": "Saber, raciocínio estruturado, memória e criação — o conhecimento acumulado e a capacidade de aplicá-lo.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Simplório: dificuldade com abstrações e planos."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: senso prático mediano."
+      },
+      {
+        "nivel": 3,
+        "texto": "Culto/esperto: bem informado, deduz e planeja bem."
+      },
+      {
+        "nivel": 4,
+        "texto": "Brilhante: erudito; resolve problemas que travam os outros."
+      },
+      {
+        "nivel": 5,
+        "texto": "Gênio: mente de era; enxerga padrões invisíveis para o resto."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: mente que redefine o que se julga possível saber."
+      }
+    ]
+  },
+  {
+    "id": "raciocinio",
+    "nome": "Raciocínio",
+    "grupo": "mental",
+    "descricao": "Agilidade mental: reagir, improvisar e pensar sob pressão. Base da Iniciativa.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Lento: demora a reagir; congela na crise."
+      },
+      {
+        "nivel": 2,
+        "texto": "Comum: reage no tempo normal."
+      },
+      {
+        "nivel": 3,
+        "texto": "Rápido: pensa de pé, improvisa bem."
+      },
+      {
+        "nivel": 4,
+        "texto": "Afiadíssimo: age antes dos outros perceberem."
+      },
+      {
+        "nivel": 5,
+        "texto": "Relâmpago: decide perfeito no meio do caos, num piscar."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice absoluto: pensa e decide num átimo mesmo no caos total."
+      }
+    ]
+  }
 ]
