@@ -26,6 +26,7 @@ export const NAV = [
   { slug: 'arcano', titulo: 'O Arcano', numeral: 'XIV' },
   { slug: 'regras/folego', titulo: 'Fôlego', numeral: 'XV' },
   { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'XVI' },
+  { slug: 'regras/qual-sistema', titulo: 'Qual Sistema Eu Uso?', numeral: 'XVII' },
 ];
 
 export const FERRAMENTAS = [

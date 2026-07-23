@@ -5,6 +5,23 @@ import AstroPWA from '@vite-pwa/astro';
 
 const BASE = '/centelha-rpg';
 
+// Converte blocos ```mermaid``` em <pre class="mermaid">…</pre> ANTES do shiki, para o realce de
+// código não estragar a sintaxe do diagrama. O mermaid.run() (no cliente) lê o textContent, então
+// escapamos &<> para o navegador devolver o texto exato.
+function remarkMermaid() {
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const walk = (node) => {
+    if (node.type === 'code' && node.lang === 'mermaid') {
+      node.type = 'html';
+      node.value = `<pre class="mermaid">${esc(node.value)}</pre>`;
+      node.lang = undefined;
+      node.meta = undefined;
+    }
+    (node.children || []).forEach(walk);
+  };
+  return (tree) => walk(tree);
+}
+
 // Prefixa o base do site em links root-relativos da prosa (markdown) → sem 404 no Pages.
 function rehypeBaseLinks() {
   const walk = (node) => {
@@ -26,6 +43,7 @@ export default defineConfig({
   build: { format: 'directory' },
   markdown: {
     shikiConfig: { theme: 'css-variables' },
+    remarkPlugins: [remarkMermaid],
     rehypePlugins: [rehypeBaseLinks],
   },
   integrations: [

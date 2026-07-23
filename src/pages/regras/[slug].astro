@@ -95,3 +95,21 @@ const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regr
   }
   ordenarTabelas();
 </script>
+
+<!-- Diagramas mermaid: renderiza só nas páginas que têm <pre class="mermaid"> (o pacote carrega sob demanda). -->
+<script>
+  async function renderMermaid() {
+    const blocos = document.querySelectorAll<HTMLElement>('pre.mermaid');
+    if (!blocos.length) return;
+    const { default: mermaid } = await import('mermaid');
+    const escuro = matchMedia('(prefers-color-scheme: dark)').matches;
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: escuro ? 'dark' : 'neutral',
+      fontFamily: 'inherit',
+    });
+    await mermaid.run({ nodes: Array.from(blocos) });
+  }
+  renderMermaid();
+</script>
