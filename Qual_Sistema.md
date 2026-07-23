@@ -37,7 +37,7 @@ flowchart TD
   B -->|"NÃO: entra direto na mente, contorna o juízo (ordem obedecida sozinha, emoção ou visão plantada, ler pensamento, controle)"| M["MENTAL — rola vs Defesa Mental"]
   S --> S2{"É o dia a dia ou uma cena decisiva?"}
   S2 -->|"Dia a dia: um pedido, um favor, construir um vínculo"| Regua["Régua de Relação (ver fluxo)"]
-  S2 -->|"Cena tensa: dobrar alguém agora, custe o que custar"| CS["Combate Social por Firmeza"]
+  S2 -->|"Cena tensa: dobrar alguém agora, custe o que custar"| CS["Combate Social (gastar Vontade para não ceder)"]
   M --> M2["Alvo pode gastar Vontade para blindar: pontual (nega um golpe) ou por cena/dia"]
   M --> M3["Ao sair de um controle percebido, nasce inimizade (salto no Desfavor da Régua)"]
 ```
@@ -62,8 +62,9 @@ flowchart TD
 
 ## Régua de Relação ou Combate Social?
 
-A Régua é o **default** do social. O Combate Social por Firmeza é a exceção, reservado às cenas
-grandes. Na dúvida, é Régua.
+A Régua é o **default** do social. O Combate Social é a exceção, reservado às cenas grandes. Na
+dúvida, é Régua. Ele **não** tem PV social nem dano: é a mesma jogada de influência, e resistir é
+gastar Força de Vontade.
 
 ```mermaid
 flowchart TD
@@ -71,7 +72,7 @@ flowchart TD
   R1 -->|"Sim (está dentro do que a disposição já dá)"| RFree["Concedido, sem rolar"]
   R1 -->|"Não, quero mais do que a relação dá"| R2{"Tem aposta alta E resistência declarada?"}
   R2 -->|"Não: um pedido, um favor, um papo, uma sedução comum"| RJ["Jogada única: Ataque Social vs Defesa Social move a Régua (+1 por sucesso, +1 a cada 6 de folga)"]
-  R2 -->|"Sim: um julgamento, uma sedução decisiva, quebrar um inimigo"| RC["Combate Social: trocas até a Firmeza zerar (o alvo Cede). Um Cede move a Régua vários passos"]
+  R2 -->|"Sim: um julgamento, uma sedução decisiva, quebrar um inimigo"| RC["Combate Social: a mesma jogada de influência; para não ceder, o alvo gasta Força de Vontade (1 + Margem) por lance. Sem Vontade, cede e a régua anda"]
 ```
 
 ---
@@ -108,9 +109,22 @@ flowchart TD
 - **Ação comum:** Atributo + Perícia vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite
   humano). Supera o alvo = sucesso; cada 6 acima = +1 Margem.
 - **Social x Mental:** passa pelo juízo = Social; contorna o juízo = Mental.
-- **Régua x Combate Social:** dia a dia = Régua (jogada única); cena grande e tensa = Firmeza.
+- **Régua x Combate Social:** dia a dia = Régua (jogada única); cena tensa = Combate Social
+  (gastar Força de Vontade, 1 + Margem, para não ceder). Sem PV social nem dano.
 - **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura (Valor).
 - **Defesa física:** desviou = Esquiva; aparou = Bloqueio (usa a maior).
 - **Percepção x Perspicácia:** o mundo = Percepção; as pessoas = Perspicácia.
 - **Blindar a mente:** gastar Força de Vontade (pontual ou por cena/dia). Contra **leitura** não
   dá para se recusar: só o número da Defesa protege.
+
+---
+
+## Para futuras alterações
+
+- **Reescala D6 (0–6 e 0–12):** em andamento. Plano de execução, mapa antes/depois e a lista de
+  implementações futuras (Proezas/Feitiçarias do tier Desperto, re-ancoragem das dificuldades,
+  migração do bestiário) estão em `Reescala.md`. Quando as escalas mudarem, os números citados
+  neste fluxograma (Dificuldade 5/10/15/20, Defesa ×2, etc.) precisam ser revisados por lá.
+- **Combate Social:** a versão canônica é a simplificada do site (`relacoes-sociais.md`), sem
+  Firmeza/PV social. O doc de trabalho antigo `Combate_Social.md` (com Firmeza/canais) está
+  **obsoleto**; não usar.
