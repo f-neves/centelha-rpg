@@ -7277,5 +7277,883 @@
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
+  },
+  {
+    "id": "prensa-crescente",
+    "nome": "Prensa Crescente",
+    "caminho": "agarrao-do-urso",
+    "atributo": "forca",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "pegada-de-ferro"
+    ],
+    "aliases": [],
+    "texto": "Enquanto segura o alvo, começa a comprimir: dano leve por rodada e o preso age com −1 até se soltar.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "erguer-o-enorme",
+    "nome": "Erguer o Enorme",
+    "caminho": "atlas",
+    "atributo": "forca",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "forca-de-carga"
+    ],
+    "aliases": [],
+    "texto": "Levanta acima da cabeça, por um instante, o que precisaria de duas pessoas; capacidade de carga ×3.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "carga"
+  },
+  {
+    "id": "pancada-atordoante",
+    "nome": "Pancada Atordoante",
+    "caminho": "punho-de-ferro",
+    "atributo": "forca",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "golpe-pesado"
+    ],
+    "aliases": [],
+    "texto": "Concentra o golpe num só ponto: +1d6 de dano e o alvo cambaleia, agindo com −2 na ação seguinte.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "dano"
+  },
+  {
+    "id": "golpe-que-vaza",
+    "nome": "Golpe que Vaza",
+    "caminho": "quebra-muralhas",
+    "atributo": "forca",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "demolidor"
+    ],
+    "aliases": [],
+    "texto": "O baque atravessa a guarda: Penetração 3, amassa o elmo e racha o escudo de madeira.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "penetracao"
+  },
+  {
+    "id": "furia-redobrada",
+    "nome": "Fúria Redobrada",
+    "caminho": "sangue-fervente",
+    "atributo": "forca",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "furia"
+    ],
+    "aliases": [],
+    "texto": "Em fúria, ignora mais um nível de penalidade de ferimento; a dor vira combustível em vez de freio.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "segurar-o-baque",
+    "nome": "Segurar o Baque",
+    "caminho": "carne-teimosa",
+    "atributo": "vigor",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "aguentar-firme"
+    ],
+    "aliases": [],
+    "texto": "Quando cairia a um estado de ferimento pior, resiste por uma rodada e segue de pé como se não fosse.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "estancar",
+    "nome": "Estancar",
+    "caminho": "cerne-vital",
+    "atributo": "vigor",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "recuperacao-acelerada"
+    ],
+    "aliases": [],
+    "texto": "Fecha um sangramento e recupera um punhado de PV numa ação; a carne já responde depressa.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "folego-de-sobra",
+    "nome": "Fôlego de Sobra",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "folego-profundo"
+    ],
+    "aliases": [],
+    "texto": "Ignora a penalidade de cansaço: corre, marcha e luta bem além do que derrubaria outro.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "couro-endurecido",
+    "nome": "Couro Endurecido",
+    "caminho": "pele-de-pedra",
+    "atributo": "vigor",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "pele-curtida"
+    ],
+    "aliases": [],
+    "texto": "A pele curte-se: +3 de Absorção contra Impacto e +2 contra Corte, sem pesar no movimento.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "soak"
+  },
+  {
+    "id": "purgar-o-veneno",
+    "nome": "Purgar o Veneno",
+    "caminho": "sangue-imune",
+    "atributo": "vigor",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "estomago-de-ferro"
+    ],
+    "aliases": [],
+    "texto": "Neutraliza um veneno ou toxina já no corpo e aguenta um ambiente hostil (frio, calor, ar rarefeito) por um tempo.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "aparar-e-responder",
+    "nome": "Aparar e Responder",
+    "caminho": "danca-da-lamina",
+    "atributo": "destreza",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "postura-fluida"
+    ],
+    "aliases": [],
+    "texto": "Ao aparar um golpe com sucesso, devolve na hora uma estocada rápida (contra-ataque leve).",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "corpo-de-gato",
+    "nome": "Corpo de Gato",
+    "caminho": "gato",
+    "atributo": "destreza",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "equilibrio-felino"
+    ],
+    "aliases": [],
+    "texto": "Passa por vãos mínimos, escapa de amarras e cai de pé de qualquer altura mundana, sem se ferir.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "maos-rapidas-demais",
+    "nome": "Mãos Rápidas Demais",
+    "caminho": "mao-veloz",
+    "atributo": "destreza",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "dedos-ageis"
+    ],
+    "aliases": [],
+    "texto": "Manipula vários objetos pequenos num átimo: furta, planta ou troca algo sem que o olho acompanhe.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "tiro-certeiro",
+    "nome": "Tiro Certeiro",
+    "caminho": "olho-de-aguia",
+    "atributo": "destreza",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "mira-firme"
+    ],
+    "aliases": [],
+    "texto": "Mira num ponto fraco antes de soltar: +1d6 de dano e +1 de Penetração no disparo.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "dano"
+  },
+  {
+    "id": "bote-da-sombra",
+    "nome": "Bote da Sombra",
+    "caminho": "sombra",
+    "atributo": "destreza",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "pisar-leve"
+    ],
+    "aliases": [],
+    "texto": "Contra um alvo desavisado, o primeiro golpe some da guarda dele e soma +1d6.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "dano"
+  },
+  {
+    "id": "esquiva-de-vento",
+    "nome": "Esquiva de Vento",
+    "caminho": "vento",
+    "atributo": "destreza",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "passo-veloz"
+    ],
+    "aliases": [],
+    "texto": "Ao ver um ataque que te visa, +4 na Defesa contra ele: um passo lateral que confunde a mira.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
+    "id": "atear-o-animo",
+    "nome": "Atear o Ânimo",
+    "caminho": "brasa",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "centelha"
+    ],
+    "aliases": [],
+    "texto": "Inflama um pequeno grupo a agir por impulso; a plateia esquenta e se move na direção que você acende.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "ordem-que-pesa",
+    "nome": "Ordem que Pesa",
+    "caminho": "comando",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "tom-de-autoridade"
+    ],
+    "aliases": [],
+    "texto": "Uma ordem curta que o alvo obedece por reflexo (vs Defesa Mental); resistir custa Força de Vontade.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "formar-fileira",
+    "nome": "Formar Fileira",
+    "caminho": "estandarte",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "voz-de-lider"
+    ],
+    "aliases": [],
+    "texto": "Aliados que o seguem fecham formação: +2 de Defesa e coordenação enquanto o ouvem e o veem.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "farol-de-coragem",
+    "nome": "Farol de Coragem",
+    "caminho": "lenda-viva",
+    "atributo": "influencia",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "presenca-imponente"
+    ],
+    "aliases": [],
+    "texto": "Enquanto visível, aliados próximos resistem melhor ao medo e ao desânimo; sua presença sustenta a linha.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "impulso-plantado",
+    "nome": "Impulso Plantado",
+    "caminho": "marionete",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "sugestao"
+    ],
+    "aliases": [],
+    "texto": "Implanta um desejo passageiro que o alvo racionaliza como seu (vs Defesa Mental).",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "prender-a-plateia",
+    "nome": "Prender a Plateia",
+    "caminho": "musa",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "presenca-cenica"
+    ],
+    "aliases": [],
+    "texto": "A apresentação absorve a atenção de todos: ninguém desvia o olhar enquanto você se apresenta.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "torcer-o-acordo",
+    "nome": "Torcer o Acordo",
+    "caminho": "serpente-das-palavras",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "lingua-de-prata"
+    ],
+    "aliases": [],
+    "texto": "Fecha um trato com uma armadilha na letra que o alvo não percebe na hora.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "semear-suspeita",
+    "nome": "Semear Suspeita",
+    "caminho": "sussurro",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "sussurro"
+    ],
+    "aliases": [],
+    "texto": "Uma insinuação bem posta deixa o alvo desconfiado de alguém em quem confiava (vs Defesa Social).",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "alavanca",
+    "nome": "Alavanca",
+    "caminho": "teia",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "trama"
+    ],
+    "aliases": [],
+    "texto": "Descobre e usa uma fraqueza social para dobrar a vontade de alguém (uma chantagem branda).",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "palavra-que-acalma",
+    "nome": "Palavra que Acalma",
+    "caminho": "voz-de-mel",
+    "atributo": "influencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "primeira-impressao"
+    ],
+    "aliases": [],
+    "texto": "Baixa a hostilidade de uma pessoa ou grupo ainda não violento; suspende o conflito do momento.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "irradiar-emocao",
+    "nome": "Irradiar Emoção",
+    "caminho": "aura",
+    "atributo": "compostura",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "aura-sutil"
+    ],
+    "aliases": [],
+    "texto": "Projeta uma emoção escolhida (calma ou temor) sobre quem está por perto, por uma cena.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "olhar-que-prende",
+    "nome": "Olhar que Prende",
+    "caminho": "beleza-cativante",
+    "atributo": "compostura",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "magnetismo"
+    ],
+    "aliases": [],
+    "texto": "Cativa um alvo receptivo: baixa a guarda dele e prende a atenção nele em você (vs Defesa Social).",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "sumir-na-multidao",
+    "nome": "Sumir na Multidão",
+    "caminho": "camaleao",
+    "atributo": "compostura",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "disfarce"
+    ],
+    "aliases": [],
+    "texto": "Muda postura, voz e trejeitos a ponto de passar por gente comum daquele meio, sem levantar suspeita.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "mentira-solida",
+    "nome": "Mentira Sólida",
+    "caminho": "mascara",
+    "atributo": "compostura",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "rosto-de-poquer"
+    ],
+    "aliases": [],
+    "texto": "Sustenta uma mentira que resiste a um escrutínio comum (vs Defesa Social / leitura).",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "rosto-de-pedra",
+    "nome": "Rosto de Pedra",
+    "caminho": "mascara-impassivel",
+    "atributo": "compostura",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "face-neutra"
+    ],
+    "aliases": [],
+    "texto": "Nada do que sente vaza: leituras da sua emoção ou intenção falham por padrão contra você.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "fundo-calmo",
+    "nome": "Fundo Calmo",
+    "caminho": "porte-inabalavel",
+    "atributo": "compostura",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "voz-calma"
+    ],
+    "aliases": [],
+    "texto": "Contra intimidação ou provocação, +4 na Defesa Social e você não demonstra o menor abalo.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
+    "id": "olhar-que-cala",
+    "nome": "Olhar que Cala",
+    "caminho": "semblante",
+    "atributo": "compostura",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "porte"
+    ],
+    "aliases": [],
+    "texto": "Um olhar que faz o alvo hesitar ou recuar e impõe silêncio numa roda barulhenta.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "obra-bem-feita",
+    "nome": "Obra Bem-Feita",
+    "caminho": "artesao",
+    "atributo": "inteligencia",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "maos-habeis"
+    ],
+    "aliases": [],
+    "texto": "+4 em qualquer ofício ou reparo; enxerga a solução técnica que trava os outros.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
+    "id": "saber-a-fundo",
+    "nome": "Saber a Fundo",
+    "caminho": "erudito",
+    "atributo": "inteligencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "vasto-saber"
+    ],
+    "aliases": [],
+    "texto": "Recorda ou deduz um dado preciso sobre história, povos, criaturas ou lugares.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "ler-a-manobra",
+    "nome": "Ler a Manobra",
+    "caminho": "estrategista",
+    "atributo": "inteligencia",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "mente-tatica"
+    ],
+    "aliases": [],
+    "texto": "Antevê o próximo movimento do inimigo: +4 para reagir ou reposicionar um aliado a tempo.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
+    "id": "reconstituir-a-cena",
+    "nome": "Reconstituir a Cena",
+    "caminho": "investigador",
+    "atributo": "inteligencia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "olhar-investigativo"
+    ],
+    "aliases": [],
+    "texto": "A partir das pistas, remonta com boa precisão o que aconteceu ali e em que ordem.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "calculo-relampago",
+    "nome": "Cálculo Relâmpago",
+    "caminho": "mente-afiada",
+    "atributo": "inteligencia",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "memoria-eidetica"
+    ],
+    "aliases": [],
+    "texto": "+4 em deduções, contas e memória sob pressão; conecta fatos soltos num instante.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
+    "id": "reviravolta",
+    "nome": "Reviravolta",
+    "caminho": "improviso",
+    "atributo": "raciocinio",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "jeitinho"
+    ],
+    "aliases": [],
+    "texto": "Usa o cenário a favor num átimo: transforma o que está à mão numa vantagem tática inesperada.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "tracar-o-perfil",
+    "nome": "Traçar o Perfil",
+    "caminho": "leitura-fria",
+    "atributo": "raciocinio",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "ler-o-outro"
+    ],
+    "aliases": [],
+    "texto": "Numa breve conversa, deduz origem, humor e ponto fraco do alvo.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "quietude",
+    "nome": "Quietude",
+    "caminho": "mente-serena",
+    "atributo": "raciocinio",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "calma"
+    ],
+    "aliases": [],
+    "texto": "Afasta medo, dor e distração por uma cena; a cabeça fica limpa mesmo no caos.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "faro-do-perigo",
+    "nome": "Faro do Perigo",
+    "caminho": "pressagio",
+    "atributo": "raciocinio",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "pressentimento"
+    ],
+    "aliases": [],
+    "texto": "Um lampejo do perigo iminente: +4 na Defesa contra um ataque que você não teria como ver.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
+    "id": "duplo-tempo",
+    "nome": "Duplo Tempo",
+    "caminho": "reflexo-mental",
+    "atributo": "raciocinio",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "mente-rapida"
+    ],
+    "aliases": [],
+    "texto": "Resolve uma tarefa mental e uma física quase ao mesmo tempo, sem perder o momento de nenhuma.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "trilha-certa",
+    "nome": "Trilha Certa",
+    "caminho": "cacador",
+    "atributo": "percepcao",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "rastreador"
+    ],
+    "aliases": [],
+    "texto": "+4 para rastrear e seguir; lê num relance a idade de um rastro e a pressa de quem o deixou.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
+    "id": "tocar-o-veu",
+    "nome": "Tocar o Véu",
+    "caminho": "comunhao",
+    "atributo": "percepcao",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "sensivel"
+    ],
+    "aliases": [],
+    "texto": "Percebe espíritos, auras e resíduos de magia à volta, e sente o humor de um lugar.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "percepcao-agucada",
+    "nome": "Percepção Aguçada",
+    "caminho": "olho-agucado",
+    "atributo": "percepcao",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "sentidos-apurados"
+    ],
+    "aliases": [],
+    "texto": "+4 em Percepção: capta o quase-imperceptível, um som fraco, um cheiro, um detalhe fora do lugar.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
+    "id": "farejar-a-farsa",
+    "nome": "Farejar a Farsa",
+    "caminho": "olho-da-verdade",
+    "atributo": "percepcao",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "ler-pessoas"
+    ],
+    "aliases": [],
+    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (vs Defesa Social).",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "sempre-alerta",
+    "nome": "Sempre Alerta",
+    "caminho": "sentinela",
+    "atributo": "percepcao",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "vigilancia"
+    ],
+    "aliases": [],
+    "texto": "Não é pego de surpresa: sente o perigo antes de vê-lo e reage a tempo de não ser flanqueado.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "domar-o-instinto",
+    "nome": "Domar o Instinto",
+    "caminho": "vinculo-animal",
+    "atributo": "percepcao",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "empatia-selvagem"
+    ],
+    "aliases": [],
+    "texto": "Tranquiliza ou afasta um animal hostil e ganha a confiança de um bicho comum em pouco tempo.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "tomar-o-pulso",
+    "nome": "Tomar o Pulso",
+    "caminho": "leitor-de-almas",
+    "atributo": "perspicacia",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "farejar-a-mentira"
+    ],
+    "aliases": [],
+    "texto": "Uma ação para sentir as tensões, alianças e o humor dominante de um ambiente social.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
   }
 ]
