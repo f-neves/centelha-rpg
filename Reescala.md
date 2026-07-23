@@ -165,7 +165,12 @@ Defesa (reintroduzir o `−⌊soma/4⌋` ou baixar o mult) numa passada à parte
   - [x] **4 fichas de exemplo redesenhadas** (Kael/Sora/Veil/Bram): Centelha reclassificada
     (Kael/Sora 3, Veil 4, Bram 1), tetos 5/4 e pico 6/5, orçamentos 1700/2200/2900, derivados
     conferidos por função de custo real. Passo-a-passo do capítulo de Criação atualizado.
-  - [ ] (opcional) Afinar os valores provisórios do Desperto nas trilhas quando quiser calibrar o tier.
-  - [ ] (opcional) Varrer menções de escala remanescentes em `combate.md`/`arcano`.
+  - [x] **Valores do Desperto calibrados** — revisados os que as 50 Técnicas usam (bônus +4,
+    Absorção +3, Penetração 3, carga ×3): interpolações sólidas, marcadas como finais; `notaDesperto`
+    documenta a convenção dos trilhos discretos (dados/tamanho repetem o Tocado + um efeito extra).
+  - [x] **Escala varrida em `combate.md`/`arcano`** — e, de quebra, os mapeamentos que faltavam:
+    `economiaPoderes.ticksIndependente`, `arcano.feiticoTicks` (Speed por nível: 1–3=5, 4=6, 5–6=7)
+    e `economiaPoderes.vontade` (extra nos níveis 5/6); Arcano passou a dizer "6 níveis" e os
+    exemplos (Labareda nível 3, Cataclismo nível 6) foram renumerados.
 
-**Reescala essencialmente COMPLETA:** as Fases 1–6 estão feitas; restam só afinamentos opcionais.
+**Reescala COMPLETA (Fases 1–6 + afinamentos).** Nada pendente.
