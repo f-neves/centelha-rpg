@@ -75,7 +75,9 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 
 ## Três exemplos, um por orçamento
 
-Os três personagens abaixo mostram o que cada patamar entrega — **Kael** no iniciante (1400), **Sora** no veterano (1800) e **Veil** no herói (2400). Repare onde o XP vai: como os tetos de criação seguram os traços (4/3, mais o pico), boa parte do bolo se converte em **largura** — mais Proezas, Técnicas, habilidades e especialidades. É o toolbox que carrega a profundidade.
+Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no herói. Repare onde o XP vai: como os tetos de criação seguram os traços (5/4, mais o pico), boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, habilidades e especialidades). É o toolbox que carrega a profundidade.
+
+<div class="callout regra"><span class="lbl">Em recalibração</span>As três fichas de exemplo abaixo ainda foram montadas na <strong>régua antiga</strong> (Centelha 0–5, tetos 4/3, orçamentos 1400/1800/2400). Com a nova régua D6 (0–6 e 0–12, Centelha reclassificada com o Desperto, tetos 5/4, orçamentos 1700/2200/2900), os custos, os tiers e os derivados mudam: elas serão <strong>redesenhadas</strong> numa próxima passada. Trate os números abaixo como ilustração do <em>método</em>, não como valores exatos da régua atual.</div>
 
 ### Kael, o Batedor — Iniciante (Centelha 2)
 

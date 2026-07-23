@@ -6,9 +6,9 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const r = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/regras.json'), 'utf8'));
 const D = r.derivados, fl = Math.floor;
 
-// Kael, o Batedor (Centelha 2, ~1000 XP — exemplo iniciante)
+// Kael, o Batedor (Centelha 3 na nova régua, ~1000 XP; exemplo iniciante)
 const at = { forca: 3, vigor: 4, destreza: 4, raciocinio: 3 };
-const esquiva = 3, espEsq = 0, prontidao = 3, cent = 2, vont = 7, integridade = 0, atletismo = 3;
+const esquiva = 3, espEsq = 0, prontidao = 3, cent = 3, vont = 7, integridade = 0, atletismo = 3;
 const V = { compaixao: 2, conviccao: 3, temperanca: 2, valor: 4 };
 
 const pv = D.pv.base + at.vigor * D.pv.vigorMult;
@@ -23,7 +23,7 @@ const dz = D.deslocamento, traits = { forca: at.forca, destreza: at.destreza, at
 const dc = (c) => Math.round(Object.entries(c).reduce((s, [k, v]) => s + (traits[k] || 0) * v, 0));
 const desl = { arr: dc(dz.arranque), cor: dc(dz.corrida), nor: dc(dz.normal), sv: dc(dz.saltoVertical), shp: dc(dz.saltoHorizontalParado), shc: dc(dz.saltoHorizontalCorrendo) };
 
-const esperado = { pv: 37, defesa: 16, defM: 12, energia: 24, mana: 11, folego: 44, ini: 6, deslArr: 7, deslCor: 9, deslNor: 4, saltoV: 206, saltoHP: 4, saltoHC: 13 };
+const esperado = { pv: 37, defesa: 17, defM: 13, energia: 27, mana: 13, folego: 44, ini: 6, deslArr: 7, deslCor: 9, deslNor: 4, saltoV: 256, saltoHP: 5, saltoHC: 14 };
 const got = { pv, defesa, defM, energia, mana, folego, ini, deslArr: desl.arr, deslCor: desl.cor, deslNor: desl.nor, saltoV: desl.sv, saltoHP: desl.shp, saltoHC: desl.shc };
 const erros = Object.keys(esperado).filter((k) => got[k] !== esperado[k]);
 if (erros.length) {
@@ -31,4 +31,4 @@ if (erros.length) {
   for (const k of erros) console.error(`  ${k}: esperado ${esperado[k]}, obtido ${got[k]}`);
   process.exit(1);
 }
-console.log('✓ Regressão Kael OK — PV 37 · Defesa 16 · Def. Mental 12 · Energia 24 · Mana 11 · Fôlego 44 · Iniciativa 1d6+6 · Arranque 7/Corrida 9 m·s · Livre 4 m · Salto V206/HP4/HC13.');
+console.log('✓ Regressão Kael OK · PV 37 · Defesa 17 · Def. Mental 13 · Energia 27 · Mana 13 · Fôlego 44 · Iniciativa 1d6+6 · Arranque 7/Corrida 9 m·s · Livre 4 m · Salto V256/HP5/HC14.');

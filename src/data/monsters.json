@@ -125,7 +125,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -165,20 +165,20 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 12,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 13,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 12,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 13,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6+2 +4",
+     "pool": "7d6+2 +5",
      "dano": "3d6 +10 perfurante",
      "speed": 7
     }
@@ -425,7 +425,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -466,20 +466,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 12,
+   "defesaMental": 13,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -636,7 +636,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -676,20 +676,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -885,7 +885,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -925,20 +925,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 13,
-   "defesaSocial": 9,
-   "defesaMental": 18,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +3",
+     "pool": "4d6+2 +4",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -1034,7 +1034,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -1074,20 +1074,20 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "1d6+2 +2",
+     "pool": "1d6+2 +3",
      "dano": "1d6 corte",
      "speed": 5
     }
@@ -1143,7 +1143,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -1183,20 +1183,20 @@
   },
   "combate": {
    "pv": 49,
-   "defesa": 17,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 18,
+   "defesaSocial": 16,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 13,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 14,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +5",
+     "pool": "5d6+2 +6",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -1368,7 +1368,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
@@ -1407,20 +1407,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 19,
-   "defesaSocial": 12,
-   "defesaMental": 14,
+   "defesa": 20,
+   "defesaSocial": 13,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 7,
-    "corte": 7,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 8,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Adaga (Ágil)",
-     "pool": "4d6+2 +4",
+     "pool": "4d6+2 +5",
      "dano": "1d6 +3 perfurante · perf. 0",
      "speed": 5,
      "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
@@ -1484,7 +1484,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -1524,20 +1524,20 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 14,
-   "defesaSocial": 12,
-   "defesaMental": 18,
+   "defesa": 15,
+   "defesaSocial": 13,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "2d6 necrótico (vs Def. Mental)",
      "speed": 5,
      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -1731,7 +1731,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -1770,20 +1770,20 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 11,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 12,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -1840,7 +1840,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 8,
+  "centelha": 9,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -1879,20 +1879,20 @@
   },
   "combate": {
    "pv": 78,
-   "defesa": 28,
-   "defesaSocial": 24,
-   "defesaMental": 35,
+   "defesa": 29,
+   "defesaSocial": 25,
+   "defesaMental": 36,
    "absorcao": {
-    "impacto": 20,
-    "corte": 16,
-    "perfuracao": 16
+    "impacto": 21,
+    "corte": 17,
+    "perfuracao": 17
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +8",
+     "pool": "8d6 +9",
      "dano": "2d6 +11 corte",
      "speed": 6
     }
@@ -2124,7 +2124,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -2164,20 +2164,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 13,
+   "defesaSocial": 11,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +2",
+     "pool": "4d6+2 +3",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -2335,7 +2335,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -2375,20 +2375,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "1d6 +5 perfurante",
      "speed": 5
     }
@@ -2460,7 +2460,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -2499,20 +2499,20 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 13,
+   "defesaSocial": 11,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 13,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 14,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +4",
+     "pool": "8d6 +5",
      "dano": "3d6 +11 corte",
      "speed": 7
     }
@@ -2928,7 +2928,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -2967,20 +2967,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 14,
+   "defesa": 13,
+   "defesaSocial": 7,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -3169,7 +3169,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -3209,20 +3209,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 13,
+   "defesa": 14,
    "defesaSocial": "-",
-   "defesaMental": 17,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "4d6+2 +3",
+     "pool": "4d6+2 +4",
      "dano": "1d6 +4 impacto",
      "speed": 5
     }
@@ -3306,7 +3306,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -3346,20 +3346,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 6,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 7,
+   "defesaSocial": 7,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -3419,7 +3419,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -3459,20 +3459,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 16,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -3744,7 +3744,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -3784,20 +3784,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 16,
+   "defesa": 15,
+   "defesaSocial": 11,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6+2 +2",
+     "pool": "4d6+2 +3",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -3857,7 +3857,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -3896,20 +3896,20 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 17,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 12,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +4",
+     "pool": "5d6+2 +5",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -3970,7 +3970,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -4010,20 +4010,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 11,
-   "defesaSocial": 11,
-   "defesaMental": 18,
+   "defesa": 12,
+   "defesaSocial": 12,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -4462,7 +4462,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
@@ -4502,20 +4502,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 18,
-   "defesaSocial": 12,
-   "defesaMental": 18,
+   "defesa": 19,
+   "defesaSocial": 13,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 7,
-    "corte": 12,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 13,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Espada longa (golpe duplo)",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +4 corte",
      "speed": 6,
      "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
@@ -4796,7 +4796,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -4835,20 +4835,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 10,
+   "defesa": 11,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -5319,7 +5319,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -5358,20 +5358,20 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 20,
+   "defesa": 15,
+   "defesaSocial": 11,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 12,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 13,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +4",
+     "pool": "8d6 +5",
      "dano": "3d6 +11 corte",
      "speed": 7
     }
@@ -5643,7 +5643,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -5683,20 +5683,20 @@
   },
   "combate": {
    "pv": 50,
-   "defesa": 12,
-   "defesaSocial": 8,
-   "defesaMental": 15,
+   "defesa": 13,
+   "defesaSocial": 9,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 7,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 8,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6+2 +2",
+     "pool": "4d6+2 +3",
      "dano": "2d6 +5 corte",
      "speed": 6
     }
@@ -5865,7 +5865,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -5905,20 +5905,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 7,
-   "defesaMental": 16,
+   "defesa": 16,
+   "defesaSocial": 8,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6 +3",
+     "pool": "7d6 +4",
      "dano": "2d6 +9 perfurante",
      "speed": 6
     }
@@ -6095,7 +6095,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -6134,20 +6134,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 16,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -6434,7 +6434,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -6474,20 +6474,20 @@
   },
   "combate": {
    "pv": 24,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 4,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 5,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +2",
+     "pool": "2d6+2 +3",
      "dano": "1d6 +1 perfurante",
      "speed": 5
     }
@@ -6893,7 +6893,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -6933,20 +6933,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 20,
-   "defesaSocial": 16,
-   "defesaMental": 24,
+   "defesa": 21,
+   "defesaSocial": 17,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
+     "pool": "4d6+2 +5",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -7051,7 +7051,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
@@ -7090,20 +7090,20 @@
   },
   "combate": {
    "pv": 95,
-   "defesa": 17,
+   "defesa": 18,
    "defesaSocial": "-",
-   "defesaMental": 24,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 16,
-    "corte": 17,
-    "perfuracao": 17
+    "impacto": 17,
+    "corte": 18,
+    "perfuracao": 18
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "9d6 +5",
+     "pool": "9d6 +6",
      "dano": "3d6 +13 perfurante",
      "speed": 7
     }
@@ -7507,7 +7507,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -7547,20 +7547,20 @@
   },
   "combate": {
    "pv": 28,
-   "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 15,
+   "defesaSocial": 7,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "2d6+2 +2",
+     "pool": "2d6+2 +3",
      "dano": "1d6 +2 corte",
      "speed": 5
     }
@@ -7616,7 +7616,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -7656,20 +7656,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 14,
+   "defesa": 15,
+   "defesaSocial": 9,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -7938,7 +7938,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -7977,20 +7977,20 @@
   },
   "combate": {
    "pv": 30,
-   "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 13,
+   "defesaSocial": 7,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6 +2",
+     "pool": "3d6 +3",
      "dano": "1d6 +2 corte",
      "speed": 5
     }
@@ -8051,7 +8051,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -8090,20 +8090,20 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 17,
-   "defesaSocial": 17,
-   "defesaMental": 26,
+   "defesa": 18,
+   "defesaSocial": 18,
+   "defesaMental": 27,
    "absorcao": {
-    "impacto": 11,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 12,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +5",
+     "pool": "6d6+2 +6",
      "dano": "1d6 +8 corte",
      "speed": 5
     }
@@ -8208,7 +8208,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -8247,20 +8247,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 13,
+   "defesa": 14,
    "defesaSocial": "-",
-   "defesaMental": 15,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +3",
+     "pool": "4d6+2 +4",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -8355,7 +8355,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -8394,20 +8394,20 @@
   },
   "combate": {
    "pv": 70,
-   "defesa": 25,
-   "defesaSocial": 19,
-   "defesaMental": 27,
+   "defesa": 26,
+   "defesaSocial": 20,
+   "defesaMental": 28,
    "absorcao": {
-    "impacto": 15,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 16,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +5",
+     "pool": "7d6+2 +6",
      "dano": "2d6 +10 corte",
      "speed": 6
     }
@@ -8468,7 +8468,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -8508,20 +8508,20 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 21,
-   "defesaSocial": 17,
-   "defesaMental": 27,
+   "defesa": 22,
+   "defesaSocial": 18,
+   "defesaMental": 28,
    "absorcao": {
-    "impacto": 14,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 15,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +5",
+     "pool": "7d6 +6",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -8622,7 +8622,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 8,
+  "centelha": 9,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -8661,20 +8661,20 @@
   },
   "combate": {
    "pv": 74,
-   "defesa": 32,
-   "defesaSocial": 26,
-   "defesaMental": 37,
+   "defesa": 33,
+   "defesaSocial": 27,
+   "defesaMental": 38,
    "absorcao": {
-    "impacto": 19,
-    "corte": 15,
-    "perfuracao": 15
+    "impacto": 20,
+    "corte": 16,
+    "perfuracao": 16
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 13",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +8",
+     "pool": "8d6+2 +9",
      "dano": "2d6 +12 corte",
      "speed": 6
     }
@@ -8801,7 +8801,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -8840,20 +8840,20 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 22,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 23,
+   "defesaSocial": 15,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 12,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "1d6 +7 corte",
      "speed": 5
     }
@@ -8914,7 +8914,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -8953,20 +8953,20 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 17,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 12,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +4",
+     "pool": "6d6+2 +5",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -9067,7 +9067,7 @@
    "mágico"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
@@ -9106,20 +9106,20 @@
   },
   "combate": {
    "pv": 17,
-   "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 15,
+   "defesa": 15,
+   "defesaSocial": 9,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 4,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 5,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
+     "pool": "2d6+2 +3",
      "dano": "1d6 +2 corte",
      "speed": 5
     }
@@ -9225,7 +9225,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -9265,20 +9265,20 @@
   },
   "combate": {
    "pv": 50,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 16,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
      "speed": 6
     }
@@ -9483,7 +9483,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -9522,20 +9522,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 10,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 11,
+   "defesaSocial": 11,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -9631,7 +9631,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -9671,20 +9671,20 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 7,
+   "defesa": 8,
    "defesaSocial": "-",
-   "defesaMental": 16,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "1d6 +7 perfurante",
      "speed": 5
     }
@@ -9741,7 +9741,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -9781,20 +9781,20 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 9,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 10,
+   "defesaSocial": 16,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 14,
-    "corte": 13,
-    "perfuracao": 13
+    "impacto": 15,
+    "corte": 14,
+    "perfuracao": 14
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6 +5",
+     "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -9907,7 +9907,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -9947,20 +9947,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 7,
-   "defesaSocial": 7,
-   "defesaMental": 15,
+   "defesa": 8,
+   "defesaSocial": 8,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -10065,7 +10065,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -10106,20 +10106,20 @@
   },
   "combate": {
    "pv": 85,
-   "defesa": 10,
-   "defesaSocial": 20,
-   "defesaMental": 31,
+   "defesa": 11,
+   "defesaSocial": 21,
+   "defesaMental": 32,
    "absorcao": {
-    "impacto": 16,
-    "corte": 15,
-    "perfuracao": 15
+    "impacto": 17,
+    "corte": 16,
+    "perfuracao": 16
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6+2 +6",
+     "pool": "8d6+2 +7",
      "dano": "3d6 +12 perfurante",
      "speed": 7
     }
@@ -10246,7 +10246,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -10287,20 +10287,20 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 13,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 14,
+   "defesaSocial": 16,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 13,
-    "corte": 13,
-    "perfuracao": 13
+    "impacto": 14,
+    "corte": 14,
+    "perfuracao": 14
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6+2 +5",
+     "pool": "7d6+2 +6",
      "dano": "3d6 +10 perfurante",
      "speed": 7
     }
@@ -10409,7 +10409,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -10449,20 +10449,20 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 9,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 10,
+   "defesaSocial": 16,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 14,
-    "corte": 13,
-    "perfuracao": 13
+    "impacto": 15,
+    "corte": 14,
+    "perfuracao": 14
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6 +5",
+     "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -10576,7 +10576,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
@@ -10617,20 +10617,20 @@
   },
   "combate": {
    "pv": 95,
-   "defesa": 10,
-   "defesaSocial": 18,
-   "defesaMental": 29,
+   "defesa": 11,
+   "defesaSocial": 19,
+   "defesaMental": 30,
    "absorcao": {
-    "impacto": 17,
-    "corte": 18,
-    "perfuracao": 18
+    "impacto": 18,
+    "corte": 19,
+    "perfuracao": 19
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "9d6+2 +6",
+     "pool": "9d6+2 +7",
      "dano": "3d6 +14 perfurante",
      "speed": 7
     }
@@ -10747,7 +10747,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -10787,20 +10787,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 13,
+   "defesaSocial": 11,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6 +4",
+     "pool": "7d6 +5",
      "dano": "2d6 +9 perfurante",
      "speed": 6
     }
@@ -10903,7 +10903,7 @@
    "mágico"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -10942,20 +10942,20 @@
   },
   "combate": {
    "pv": 28,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6 +2",
+     "pool": "3d6 +3",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -11036,7 +11036,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -11075,20 +11075,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 20,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6 +3",
+     "pool": "3d6 +4",
      "dano": "1d6 +2 perfurante",
      "speed": 5
     }
@@ -11186,7 +11186,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -11225,20 +11225,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +5 perfurante",
      "speed": 6
     }
@@ -11406,7 +11406,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -11445,20 +11445,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 15,
+   "defesaSocial": 11,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -11518,7 +11518,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
@@ -11557,20 +11557,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 19,
-   "defesaSocial": 6,
-   "defesaMental": 15,
+   "defesa": 20,
+   "defesaSocial": 7,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 7,
-    "corte": 7,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 8,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Florete (Ágil)",
-     "pool": "5d6 +4",
+     "pool": "5d6 +5",
      "dano": "1d6 +3 perfurante · perf. 1",
      "speed": 5
     }
@@ -11740,7 +11740,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -11779,20 +11779,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 16,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +3",
+     "pool": "6d6+2 +4",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -12100,7 +12100,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -12140,20 +12140,20 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 9,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 10,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +2",
+     "pool": "7d6 +3",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -13516,7 +13516,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -13555,20 +13555,20 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 22,
-   "defesaSocial": 16,
-   "defesaMental": 24,
+   "defesa": 23,
+   "defesaSocial": 17,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 11,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +4",
+     "pool": "5d6+2 +5",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -13787,7 +13787,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -13827,20 +13827,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 15,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -13941,7 +13941,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -13981,20 +13981,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 20,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 necrótico (vs Def. Mental)",
      "speed": 5,
      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -14296,7 +14296,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -14336,20 +14336,20 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "1d6 +5 perfurante",
      "speed": 5
     }
@@ -14401,7 +14401,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -14440,20 +14440,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "1d6 +4 perfurante",
      "speed": 5
     }
@@ -14725,7 +14725,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -14766,20 +14766,20 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 11,
-   "defesaSocial": 13,
-   "defesaMental": 18,
+   "defesa": 12,
+   "defesaSocial": 14,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "2d6+2 +3",
+     "pool": "2d6+2 +4",
      "dano": "1d6 impacto",
      "speed": 5
     }
@@ -14954,7 +14954,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
@@ -14994,20 +14994,20 @@
   },
   "combate": {
    "pv": 85,
-   "defesa": 25,
-   "defesaSocial": 19,
-   "defesaMental": 29,
+   "defesa": 26,
+   "defesaSocial": 20,
+   "defesaMental": 30,
    "absorcao": {
-    "impacto": 14,
-    "corte": 16,
-    "perfuracao": 16
+    "impacto": 15,
+    "corte": 17,
+    "perfuracao": 17
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +5",
+     "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -15068,7 +15068,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -15108,20 +15108,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 7,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 8,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 perfurante",
      "speed": 5
     }
@@ -15216,7 +15216,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
@@ -15255,20 +15255,20 @@
   },
   "combate": {
    "pv": 17,
-   "defesa": 27,
-   "defesaSocial": 11,
-   "defesaMental": 20,
+   "defesa": 28,
+   "defesaSocial": 12,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 5,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 6,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +3",
+     "pool": "2d6+2 +4",
      "dano": "1d6 perfurante",
      "speed": 5
     }
@@ -15476,7 +15476,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -15516,20 +15516,20 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": "-",
-   "defesaMental": 18,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 13,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 14,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +4",
+     "pool": "8d6 +5",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -16025,7 +16025,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -16064,20 +16064,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 21,
-   "defesaSocial": 19,
-   "defesaMental": 28,
+   "defesa": 22,
+   "defesaSocial": 20,
+   "defesaMental": 29,
    "absorcao": {
-    "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 11,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +5",
+     "pool": "5d6+2 +6",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -16177,7 +16177,7 @@
    "mágico"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -16217,20 +16217,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 15,
+   "defesaSocial": 11,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "1d6 +5 impacto",
      "speed": 5
     }
@@ -16440,7 +16440,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -16479,20 +16479,20 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 15,
+   "defesa": 16,
    "defesaSocial": "-",
-   "defesaMental": 16,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 10,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6+2 +3",
+     "pool": "3d6+2 +4",
      "dano": "1d6 +2 perfurante",
      "speed": 5
     }
@@ -16790,7 +16790,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -16830,20 +16830,20 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 19,
+   "defesa": 13,
+   "defesaSocial": 13,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 11,
-    "corte": 10,
-    "perfuracao": 10
+    "impacto": 12,
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "9d6 +2",
+     "pool": "9d6 +3",
      "dano": "3d6 +13 impacto",
      "speed": 7
     }
@@ -17328,7 +17328,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -17368,20 +17368,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 15,
+   "defesa": 16,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -17438,7 +17438,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -17477,20 +17477,20 @@
   },
   "combate": {
    "pv": 85,
-   "defesa": 15,
-   "defesaSocial": 17,
-   "defesaMental": 26,
+   "defesa": 16,
+   "defesaSocial": 18,
+   "defesaMental": 27,
    "absorcao": {
-    "impacto": 15,
-    "corte": 14,
-    "perfuracao": 14
+    "impacto": 16,
+    "corte": 15,
+    "perfuracao": 15
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +5",
+     "pool": "8d6+2 +6",
      "dano": "3d6 +12 corte",
      "speed": 7
     }
@@ -17814,7 +17814,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -17855,20 +17855,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 3,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 4,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "6d6+2 +2",
+     "pool": "6d6+2 +3",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -17920,7 +17920,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -17960,20 +17960,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 3,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 4,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "6d6 +2",
+     "pool": "6d6 +3",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -18029,7 +18029,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -18070,20 +18070,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 7,
+   "defesa": 8,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 4,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 5,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "8d6 +3",
+     "pool": "8d6 +4",
      "dano": "2d6 +11 corte",
      "speed": 6
     }
@@ -18244,7 +18244,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -18285,20 +18285,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 3,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 4,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "7d6+2 +2",
+     "pool": "7d6+2 +3",
      "dano": "2d6 +10 corte",
      "speed": 6
     }
@@ -18455,7 +18455,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -18495,20 +18495,20 @@
   },
   "combate": {
    "pv": 62,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 10,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 11,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6+2 +2",
+     "pool": "6d6+2 +3",
      "dano": "2d6 +8 perfurante",
      "speed": 6
     }
@@ -18693,7 +18693,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 8,
+  "centelha": 9,
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
@@ -18734,20 +18734,20 @@
   },
   "combate": {
    "pv": 115,
-   "defesa": 12,
-   "defesaSocial": 22,
-   "defesaMental": 34,
+   "defesa": 13,
+   "defesaSocial": 23,
+   "defesaMental": 35,
    "absorcao": {
-    "impacto": 22,
-    "corte": 25,
-    "perfuracao": 25
+    "impacto": 23,
+    "corte": 26,
+    "perfuracao": 26
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 11",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6+2 +8",
+     "pool": "10d6+2 +9",
      "dano": "4d6 +16 perfurante",
      "speed": 7
     }
@@ -18868,7 +18868,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -18908,20 +18908,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +3",
+     "pool": "6d6+2 +4",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -19297,7 +19297,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -19338,20 +19338,20 @@
   },
   "combate": {
    "pv": 31,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 15,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 4,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 5,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -19436,7 +19436,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -19475,20 +19475,20 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 15,
+   "defesaSocial": 15,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 13,
-    "corte": 10,
-    "perfuracao": 10
+    "impacto": 14,
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +4",
+     "pool": "7d6 +5",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -20237,7 +20237,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -20276,20 +20276,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 14,
+   "defesa": 13,
+   "defesaSocial": 7,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6 +2",
+     "pool": "3d6 +3",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -20463,7 +20463,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
@@ -20502,20 +20502,20 @@
   },
   "combate": {
    "pv": 110,
-   "defesa": 23,
+   "defesa": 24,
    "defesaSocial": "-",
-   "defesaMental": 25,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 18,
-    "corte": 21,
-    "perfuracao": 21
+    "impacto": 19,
+    "corte": 22,
+    "perfuracao": 22
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6 +5",
+     "pool": "10d6 +6",
      "dano": "4d6 +15 perfurante",
      "speed": 7
     }
@@ -20583,7 +20583,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -20622,20 +20622,20 @@
   },
   "combate": {
    "pv": 32,
-   "defesa": 21,
-   "defesaSocial": 11,
-   "defesaMental": 18,
+   "defesa": 22,
+   "defesaSocial": 12,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +3",
+     "pool": "4d6 +4",
      "dano": "1d6 +3 perfurante",
      "speed": 5
     }
@@ -20695,7 +20695,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -20735,20 +20735,20 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 18,
+   "defesa": 16,
+   "defesaSocial": 10,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 10,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -20804,7 +20804,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -20844,20 +20844,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 13,
+   "defesaSocial": 11,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +2",
+     "pool": "4d6+2 +3",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -21244,7 +21244,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
@@ -21283,20 +21283,20 @@
   },
   "combate": {
    "pv": 110,
-   "defesa": 10,
-   "defesaSocial": 18,
-   "defesaMental": 29,
+   "defesa": 11,
+   "defesaSocial": 19,
+   "defesaMental": 30,
    "absorcao": {
-    "impacto": 19,
-    "corte": 22,
-    "perfuracao": 22
+    "impacto": 20,
+    "corte": 23,
+    "perfuracao": 23
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "9d6+2 +6",
+     "pool": "9d6+2 +7",
      "dano": "4d6 +14 perfurante",
      "speed": 7
     }
@@ -21397,7 +21397,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -21437,20 +21437,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 17,
+   "defesa": 16,
+   "defesaSocial": 10,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +3",
+     "pool": "4d6+2 +4",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -21732,7 +21732,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -21772,20 +21772,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 19,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 20,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
      "speed": 6
     }
@@ -22003,7 +22003,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -22043,20 +22043,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 13,
+   "defesa": 14,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "6d6+2 +3",
+     "pool": "6d6+2 +4",
      "dano": "1d6 +8 corte",
      "speed": 5
     }
@@ -22459,7 +22459,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -22499,20 +22499,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 24,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 11,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "3d6+2 +5",
+     "pool": "3d6+2 +6",
      "dano": "1d6 +2 impacto",
      "speed": 5
     }
@@ -22624,7 +22624,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -22664,20 +22664,20 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 20,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 10,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 11,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -22843,7 +22843,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -22883,20 +22883,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 11,
+   "defesaSocial": 7,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -23187,7 +23187,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -23227,20 +23227,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -23725,7 +23725,7 @@
    "arcano"
   ],
   "ameaca": 6,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": false,
   "porte": "Médio",
   "dimensoes": {
@@ -23764,20 +23764,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 17,
+   "defesa": 15,
+   "defesaSocial": 7,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Bola de fogo (Fogo 3)",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "3d6 fogo (área)",
      "speed": 6,
      "notas": "3 Mana; explosão em área"
@@ -24104,7 +24104,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -24143,20 +24143,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 17,
+   "defesaSocial": 15,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +4",
+     "pool": "6d6+2 +5",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -24212,7 +24212,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -24251,20 +24251,20 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 26,
-   "defesaSocial": 20,
-   "defesaMental": 29,
+   "defesa": 27,
+   "defesaSocial": 21,
+   "defesaMental": 30,
    "absorcao": {
-    "impacto": 15,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 16,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +6",
+     "pool": "7d6+2 +7",
      "dano": "2d6 +10 corte",
      "speed": 6
     }
@@ -24466,7 +24466,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -24507,20 +24507,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 16,
+   "defesa": 13,
+   "defesaSocial": 11,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +2 corte",
      "speed": 5
     }
@@ -24605,7 +24605,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -24644,20 +24644,20 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -25195,7 +25195,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -25236,20 +25236,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 16,
+   "defesaSocial": 10,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 impacto",
      "speed": 5
     }
@@ -25863,7 +25863,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -25903,20 +25903,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -25981,7 +25981,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -26021,20 +26021,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 7,
+   "defesa": 8,
    "defesaSocial": "-",
-   "defesaMental": 17,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "1d6 +7 impacto",
      "speed": 5
     }
@@ -26124,7 +26124,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -26163,20 +26163,20 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 10,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "1d6 +7 corte",
      "speed": 5
     }
@@ -26233,7 +26233,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -26274,20 +26274,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 12,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 13,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +4",
+     "pool": "5d6+2 +5",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -26385,7 +26385,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -26425,20 +26425,20 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 22,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 23,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 12,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -26486,7 +26486,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -26526,20 +26526,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 19,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 20,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +5 perfurante",
      "speed": 6
     }
@@ -26595,7 +26595,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -26634,20 +26634,20 @@
   },
   "combate": {
    "pv": 90,
-   "defesa": 13,
-   "defesaSocial": 17,
-   "defesaMental": 28,
+   "defesa": 14,
+   "defesaSocial": 18,
+   "defesaMental": 29,
    "absorcao": {
-    "impacto": 16,
-    "corte": 14,
-    "perfuracao": 14
+    "impacto": 17,
+    "corte": 15,
+    "perfuracao": 15
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +5",
+     "pool": "8d6+2 +6",
      "dano": "3d6 +12 corte",
      "speed": 7
     }
@@ -26703,7 +26703,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
@@ -26742,20 +26742,20 @@
   },
   "combate": {
    "pv": 90,
-   "defesa": 7,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 8,
+   "defesaSocial": 16,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 15,
-    "corte": 17,
-    "perfuracao": 17
+    "impacto": 16,
+    "corte": 18,
+    "perfuracao": 18
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6+2 +5",
+     "pool": "8d6+2 +6",
      "dano": "3d6 +12 perfurante",
      "speed": 7
     }
@@ -26819,7 +26819,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -26858,20 +26858,20 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 17,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 12,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +4",
+     "pool": "7d6 +5",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -26924,7 +26924,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -26964,20 +26964,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 20,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 21,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6+2 +4",
+     "pool": "3d6+2 +5",
      "dano": "1d6 +2 perfurante",
      "speed": 5
     }
@@ -27302,7 +27302,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -27342,20 +27342,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 15,
+   "defesaSocial": 15,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -27689,7 +27689,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -27730,20 +27730,20 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 6,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 7,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -27904,7 +27904,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -27945,20 +27945,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 9,
-   "defesaMental": 17,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -28047,7 +28047,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -28086,20 +28086,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 9,
-   "defesaMental": 17,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
      "speed": 6
     }
@@ -28263,7 +28263,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
@@ -28302,20 +28302,20 @@
   },
   "combate": {
    "pv": 17,
-   "defesa": 19,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 20,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 5,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 6,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +3",
+     "pool": "2d6+2 +4",
      "dano": "1d6 +1 perfurante",
      "speed": 5
     }
@@ -28415,7 +28415,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -28454,20 +28454,20 @@
   },
   "combate": {
    "pv": 62,
-   "defesa": 18,
-   "defesaSocial": 22,
-   "defesaMental": 32,
+   "defesa": 19,
+   "defesaSocial": 23,
+   "defesaMental": 33,
    "absorcao": {
-    "impacto": 14,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 15,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 11",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +6",
+     "pool": "7d6 +7",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -29194,7 +29194,7 @@
    "mágico"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
@@ -29233,20 +29233,20 @@
   },
   "combate": {
    "pv": 17,
-   "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 15,
+   "defesa": 15,
+   "defesaSocial": 9,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 4,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 5,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
+     "pool": "2d6+2 +3",
      "dano": "1d6 +2 corte",
      "speed": 5
     }
@@ -29347,7 +29347,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -29386,20 +29386,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 10,
+   "defesa": 11,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -29691,7 +29691,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -29732,20 +29732,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 16,
-   "defesaSocial": 12,
-   "defesaMental": 20,
+   "defesa": 17,
+   "defesaSocial": 13,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
+     "pool": "4d6+2 +5",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -30066,7 +30066,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -30106,20 +30106,20 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 11,
+   "defesa": 12,
    "defesaSocial": "-",
-   "defesaMental": 15,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 11,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 12,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6 +3",
+     "pool": "7d6 +4",
      "dano": "3d6 +9 perfurante",
      "speed": 7
     }
@@ -30523,7 +30523,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -30564,20 +30564,20 @@
   },
   "combate": {
    "pv": 70,
-   "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 13,
+   "defesaSocial": 13,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 14,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 15,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +4",
+     "pool": "8d6 +5",
      "dano": "2d6 +11 perfurante",
      "speed": 6
     }
@@ -30637,7 +30637,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -30678,20 +30678,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 15,
+   "defesa": 11,
+   "defesaSocial": 7,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -30752,7 +30752,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -30792,20 +30792,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 10,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 11,
+   "defesaSocial": 11,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -31100,7 +31100,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -31139,20 +31139,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 17,
+   "defesa": 13,
+   "defesaSocial": 13,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "1d6 +4 perfurante",
      "speed": 5
     }
@@ -31238,7 +31238,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Imenso",
   "dimensoes": {
@@ -31278,20 +31278,20 @@
   },
   "combate": {
    "pv": 95,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 16,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 15,
-    "corte": 16,
-    "perfuracao": 16
+    "impacto": 16,
+    "corte": 17,
+    "perfuracao": 17
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "9d6 +4",
+     "pool": "9d6 +5",
      "dano": "3d6 +13 perfurante",
      "speed": 7
     }
@@ -31457,7 +31457,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -31497,20 +31497,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 12,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -31566,7 +31566,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -31606,20 +31606,20 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +2",
+     "pool": "2d6+2 +3",
      "dano": "1d6 +2 perfurante",
      "speed": 5
     }
@@ -31903,7 +31903,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -31944,20 +31944,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 11,
+   "defesaSocial": 7,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "1d6 +5 impacto",
      "speed": 5
     }
@@ -32017,7 +32017,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -32058,20 +32058,20 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 11,
+   "defesaSocial": 7,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -32132,7 +32132,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 8,
+  "centelha": 9,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -32171,20 +32171,20 @@
   },
   "combate": {
    "pv": 70,
-   "defesa": 24,
-   "defesaSocial": 24,
-   "defesaMental": 36,
+   "defesa": 25,
+   "defesaSocial": 25,
+   "defesaMental": 37,
    "absorcao": {
-    "impacto": 18,
-    "corte": 15,
-    "perfuracao": 15
+    "impacto": 19,
+    "corte": 16,
+    "perfuracao": 16
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 12",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +8",
+     "pool": "7d6+2 +9",
      "dano": "2d6 +10 corte",
      "speed": 6
     }
@@ -32415,7 +32415,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -32455,20 +32455,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": "-",
-   "defesaMental": 15,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "2d6 necrótico (vs Def. Mental)",
      "speed": 5,
      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -32661,7 +32661,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -32700,20 +32700,20 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 15,
-   "defesaSocial": 15,
-   "defesaMental": 22,
+   "defesa": 16,
+   "defesaSocial": 16,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6 +3",
+     "pool": "4d6 +4",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -32933,7 +32933,7 @@
    "centelha"
   ],
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
@@ -32973,20 +32973,20 @@
   },
   "combate": {
    "pv": 115,
-   "defesa": 25,
+   "defesa": 26,
    "defesaSocial": "-",
-   "defesaMental": 28,
+   "defesaMental": 29,
    "absorcao": {
-    "impacto": 19,
-    "corte": 22,
-    "perfuracao": 22
+    "impacto": 20,
+    "corte": 23,
+    "perfuracao": 23
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6+2 +5",
+     "pool": "10d6+2 +6",
      "dano": "4d6 +16 perfurante",
      "speed": 7
     }
@@ -33055,7 +33055,7 @@
    "mágico"
   ],
   "ameaca": 6,
-  "centelha": 9,
+  "centelha": 10,
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
@@ -33094,20 +33094,20 @@
   },
   "combate": {
    "pv": 115,
-   "defesa": 13,
+   "defesa": 14,
    "defesaSocial": "-",
-   "defesaMental": 27,
+   "defesaMental": 28,
    "absorcao": {
-    "impacto": 23,
-    "corte": 26,
-    "perfuracao": 26
+    "impacto": 24,
+    "corte": 27,
+    "perfuracao": 27
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "10d6+2 +9",
+     "pool": "10d6+2 +10",
      "dano": "4d6 +16 perfurante",
      "speed": 7
     }
@@ -33213,7 +33213,7 @@
    "centelha"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -33253,20 +33253,20 @@
   },
   "combate": {
    "pv": 70,
-   "defesa": 8,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 9,
+   "defesaSocial": 11,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 11,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 12,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6+2 +4",
+     "pool": "7d6+2 +5",
      "dano": "3d6 +10 perfurante",
      "speed": 7
     }
@@ -33754,7 +33754,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -33793,20 +33793,20 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 6,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 7,
+   "defesaSocial": 11,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 10,
-    "corte": 10,
-    "perfuracao": 10
+    "impacto": 11,
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +2",
+     "pool": "8d6 +3",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -34560,7 +34560,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -34599,20 +34599,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 17,
-   "defesaMental": 23,
+   "defesa": 16,
+   "defesaSocial": 18,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -35035,7 +35035,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -35075,20 +35075,20 @@
   },
   "combate": {
    "pv": 49,
-   "defesa": 16,
-   "defesaSocial": 16,
-   "defesaMental": 23,
+   "defesa": 17,
+   "defesaSocial": 17,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 12,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 13,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "5d6 +4",
+     "pool": "5d6 +5",
      "dano": "1d6 +5 impacto",
      "speed": 5
     }
@@ -35218,7 +35218,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
@@ -35258,20 +35258,20 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 10,
+   "defesa": 11,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
+     "pool": "2d6+2 +3",
      "dano": "1d6 +2 corte",
      "speed": 5
     }
@@ -35873,7 +35873,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -35912,20 +35912,20 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 15,
+   "defesaSocial": 15,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 13,
-    "corte": 10,
-    "perfuracao": 10
+    "impacto": 14,
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -36020,7 +36020,7 @@
    "mágico"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -36060,20 +36060,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 10,
-   "defesaSocial": 10,
-   "defesaMental": 16,
+   "defesa": 11,
+   "defesaSocial": 11,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +3 impacto",
      "speed": 5
     }
@@ -36149,7 +36149,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -36189,20 +36189,20 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +2",
+     "pool": "4d6 +3",
      "dano": "1d6 +5 perfurante",
      "speed": 5
     }
@@ -36262,7 +36262,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -36301,20 +36301,20 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 10,
+   "defesa": 11,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -36389,7 +36389,7 @@
    "centelha"
   ],
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -36430,20 +36430,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 18,
+   "defesa": 16,
+   "defesaSocial": 10,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -36504,7 +36504,7 @@
    "mágico"
   ],
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -36544,20 +36544,20 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 11,
+   "defesaSocial": 7,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -36638,7 +36638,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -36679,20 +36679,20 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +2",
+     "pool": "4d6+2 +3",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -36752,7 +36752,7 @@
    "centelha"
   ],
   "ameaca": 3,
-  "centelha": 2,
+  "centelha": 3,
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
@@ -36792,20 +36792,20 @@
   },
   "combate": {
    "pv": 50,
-   "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 11,
+   "defesaSocial": 7,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 7,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 8,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "2d6 +6 corte",
      "speed": 6
     }

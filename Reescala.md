@@ -151,8 +151,16 @@ Defesa (reintroduzir o `−⌊soma/4⌋` ou baixar o mult) numa passada à parte
   evolução, especialidade até 6, labels). `calc.ts` não muda (fórmulas agnósticas de escala).
 - [x] **Fase 5 · re-simulação** — dificuldade e durabilidade validadas; `test-kael` verde (Kael
   intocado, por Q4). Build completo verde.
-- [ ] **Fase 6 · conteúdo (rodada seguinte)** — migrar bestiário (300+) e Kael (Centelha 2→3);
-  criar Proezas/Feitiçarias do tier **Desperto** (nível 2, hoje vazio); afinar valores provisórios
-  do Desperto nas trilhas; alinhar gating das Artes (ainda 1–5) à Centelha 6; varrer os exemplos
-  detalhados dos capítulos (Kael/Sora/Veil, custos) e demais menções de escala em
-  `combate.md`/`criacao`/`arcano`.
+- [~] **Fase 6 · conteúdo** (em andamento):
+  - [x] **Bestiário migrado** — 148 criaturas com Centelha ≥2 bumpadas +1 (delta linear direto em
+    `inimigos.json`: +1 em defesa/defM/defSocial/cada soak e no acerto do pool); `monsters.json`
+    regenerado. A fonte `gen-bestiario.mjs` (17 builds inline + `conversao-monstros.html`) ainda tem
+    os valores antigos: se regerar do zero, reaplicar o +1 nos ≥2.
+  - [x] **Kael migrado** — Centelha 2→3 (Herói); `test-kael.mjs` atualizado (Defesa 17, Def.M 13,
+    Energia 27, Mana 13, Salto V256/HP5/HC14). Build verde.
+  - [ ] **Redesenhar as 3 fichas de exemplo** (Kael/Sora/Veil no cap. de Criação): custos, tiers e
+    derivados mudaram; hoje marcadas com callout "Em recalibração".
+  - [ ] **Criar as Proezas/Feitiçarias do tier Desperto** (nível 2, hoje vazio) e afinar os valores
+    provisórios das trilhas no N2.
+  - [ ] **Alinhar gating das Artes** (ainda 1–5) à Centelha 6, se forem renumeradas como as Proezas.
+  - [ ] Varrer menções de escala restantes em `combate.md`/`arcano`.
