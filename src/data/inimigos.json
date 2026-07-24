@@ -556,7 +556,7 @@
   },
   {
     "id": "campeao",
-    "nome": "Campeão (semideus menor)",
+    "nome": "Campeão (herói inimigo)",
     "tipo": "chefe",
     "categoria": "Humano",
     "ameaca": 6,
@@ -605,7 +605,7 @@
       "soco-trovejante"
     ],
     "artes": [],
-    "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de banda 1–2.",
+    "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de nível 1 a 3.",
     "pendente": false
   },
   {

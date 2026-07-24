@@ -186,13 +186,13 @@ const NPCS = [
     tecnicas: ['pele-curtida', 'aguentar-o-tranco', 'tensionar'],
     notas: 'Placa + Pele de Pedra: Soak altíssimo contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.' },
 
-  { id: 'campeao', nome: 'Campeão (semideus menor)', tipo: 'chefe', ameaca: 6, centelha: 2,
+  { id: 'campeao', nome: 'Campeão (herói inimigo)', tipo: 'chefe', ameaca: 6, centelha: 2,
     conceito: 'herói inimigo', descricao: 'Um adversário à altura dos PJs: rápido, forte e com Técnicas de herói.', tags: ['humano', 'centelha'],
     attrs: { forca: 4, destreza: 5, vigor: 4, influencia: 4 }, pericias: { 'armas-uma-mao': 5, esquiva: 4, escudos: 3, prontidao: 5, intimidacao: 4, oratoria: 3 }, integridade: 6, vontade: 8,
     armadura: 'malha',
     ataques: [{ nome: 'Espada longa (golpe duplo)', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 2, mao: 1, tipo: 'corte', acerto: 1, ticks: 6, notas: 'Pode dividir em 2 ataques (−1d6/−2d6)' }],
     tecnicas: ['golpe-pesado', 'quebrar-guarda', 'soco-trovejante'],
-    notas: 'Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de banda 1–2.' },
+    notas: 'Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de nível 1 a 3.' },
 
   { id: 'comandante', nome: 'Comandante Tocado', tipo: 'elite', ameaca: 5, centelha: 1,
     conceito: 'líder de guerra', descricao: 'Inspira tropas e quebra a moral inimiga; luta bem, mas comanda melhor.', tags: ['humano', 'centelha'],

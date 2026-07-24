@@ -4451,7 +4451,7 @@
  },
  {
   "id": "campeao",
-  "nome": "Campeão (semideus menor)",
+  "nome": "Campeão (herói inimigo)",
   "nomeIngles": "Champion (Minor Demigod)",
   "categoria": "Humanoide",
   "tipo": "chefe",
@@ -4529,7 +4529,7 @@
    },
    {
     "nome": "Técnica de herói",
-    "descricao": "pode gastar Energia em Técnicas de banda 1 ou 2 em combate"
+    "descricao": "pode gastar Energia em Técnicas de nível 1 a 3 em combate"
    },
    {
     "nome": "Velocidade sobre-humana",
@@ -4555,7 +4555,7 @@
    "soco-trovejante"
   ],
   "artes": [],
-  "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de banda 1–2.",
+  "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de nível 1 a 3.",
   "lore": [
    {
     "titulo": "Comportamento",
@@ -4567,7 +4567,7 @@
    },
    {
     "titulo": "No mundo de Centelha",
-    "texto": "É um semideus menor, alguém que ascendeu na escala da Centelha o bastante para manifestar Técnicas de herói, algo raríssimo em Uldun e que marca seu portador para sempre aos olhos do povo e das igrejas supressoras."
+    "texto": "É um herói de verdade, alguém que ascendeu na escala da Centelha o bastante para manifestar Técnicas de herói, algo raríssimo em Uldun e que marca seu portador para sempre aos olhos do povo e das igrejas supressoras."
    }
   ]
  },
