@@ -9,7 +9,7 @@ Quando o resultado de uma ação é incerto, o jogo a resolve somando um **Atrib
 
 ## Os Nove Atributos
 
-Os Atributos são a matéria-prima do personagem — o que o corpo, o trato social e a mente conseguem fazer. São nove, em três tríades, e para um humano comum variam de **1 a 5**.
+Os Atributos são a matéria-prima do personagem — o que o corpo, o trato social e a mente conseguem fazer. São nove, em três tríades, e para um humano comum variam de **1 a 6**.
 
 | Nível | O que significa |
 |:---:|---|

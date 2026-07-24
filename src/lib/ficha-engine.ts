@@ -385,7 +385,7 @@ export function montarFicha(opts: FichaOpts) {
       const key = dsAdd.dataset.defspecAdd!;
       const s = (window.prompt('Situação da especialidade (ex.: contra um grupo, vs sedução, na floresta):') || '').trim();
       if (!s) return;
-      const v = Math.max(0, Math.min(5, parseInt(window.prompt('Bônus quando essa situação vale (1 a 5):', '2') || '0', 10) || 0));
+      const v = Math.max(0, Math.min(6, parseInt(window.prompt('Bônus quando essa situação vale (1 a 6):', '2') || '0', 10) || 0));
       if (!v) return;
       (S.defSpec[key] ||= []).push({ s, v }); recompute(); return;
     }

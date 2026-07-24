@@ -51,11 +51,11 @@ const { caminho } = Astro.props;
   if (grid && svg && det) {
     const cam = grid.dataset.caminho!;
     const mine = ALL.filter((t) => t.caminho === cam);
-    const TIER_NOME = ['Tocado', 'Herói', 'Grande herói', 'Lendário', 'Semideus'];
+    const TIER_NOME = ['Tocado', 'Desperto', 'Herói', 'Grande herói', 'Lendário', 'Semideus'];
     const LABEL = (b) => TIER_NOME[b - 1];
     const nodeEls: Record<string, HTMLElement> = {};
 
-    for (let b = 1; b <= 5; b++) {
+    for (let b = 1; b <= 6; b++) {
       const lista = mine.filter((t) => t.nivel === b);
       if (!lista.length) continue;
       const row = document.createElement('div'); row.className = 'arv-row';

@@ -1,8 +1,8 @@
 import { getCollection } from 'astro:content';
 import regras from '../data/regras.json';
 
-/** Nome do tier por nível (1 a 5). */
-export const TIER_NOME = ['Tocado', 'Herói', 'Grande herói', 'Lendário', 'Semideus'];
+/** Nome do tier por nível (1 a 6). */
+export const TIER_NOME = ['Tocado', 'Desperto', 'Herói', 'Grande herói', 'Lendário', 'Semideus'];
 
 /** Modificador de uma Técnica pela sua trilha de efeito e nível; null para 'estado' (capacidade sem número). */
 export function modProeza(efeito: string, nivel: number): { v: string; t: string } | null {
