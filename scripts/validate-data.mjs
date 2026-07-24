@@ -20,6 +20,7 @@ const S = {
   tecnicas: z.object({ id: z.string(), nome: z.string(), caminho: z.string(), atributo: z.string(), nivel: z.number().int().min(1).max(6), efeito: z.enum(['bonus', 'soak', 'dano', 'penetracao', 'carga', 'salto', 'velocidade', 'tamanho', 'estado']), tipo: z.enum(['passiva', 'ativa', 'reflexiva']), custo, prereq: z.array(z.string()), aliases: z.array(z.string()), texto: z.string(), pendente: z.boolean() }),
   artes: z.object({ id: z.string(), nome: z.string(), categoria: z.enum(['elemental', 'universal']), atributo_conjuracao: z.string(), niveis: z.array(z.object({ nivel: z.number().int().min(1).max(6), nome: z.string(), efeito: z.string(), custo: z.object({ mana: z.number().int().min(1).max(6) }) })).min(5).max(6), aliases: z.array(z.string()), pendente: z.boolean() }),
   glossario: z.object({ id: z.string(), termo: z.string(), aliases: z.array(z.string()), definicao: z.string() }),
+  racas: z.object({ id: z.string(), nome: z.string(), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()) }),
   inimigos: z.object({
     id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
     categoria: z.string().optional(),

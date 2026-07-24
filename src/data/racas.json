@@ -1,0 +1,99 @@
+[
+  {
+    "id": "humano",
+    "nome": "Humano",
+    "custo": 0,
+    "atributos": {},
+    "aparenciaMod": 0,
+    "aparenciaUniversal": false,
+    "descricao": "Versáteis e adaptáveis, sem extremos raciais. Sem inimizades naturais: partem do Neutro com todos os povos.",
+    "tracos": [
+      "Sem inimizades naturais: transita e negocia entre os povos onde outros não conseguem (baseline 0 na Régua de Relação com todos)."
+    ]
+  },
+  {
+    "id": "anao",
+    "nome": "Anão",
+    "custo": 30,
+    "atributos": { "vigor": 1, "perspicacia": -1 },
+    "aparenciaMod": 0,
+    "aparenciaUniversal": false,
+    "descricao": "Baixos e corpulentos, de vida longa (300+ anos). Mestres dos ofícios de pedra e metal.",
+    "tracos": [
+      "Resistência a venenos: +1d6 em testes de resistência a venenos.",
+      "Visão no escuro (sem distinguir cores; leva um tempo para adaptar).",
+      "Mestre dos ofícios: +1d6 em qualquer Ofício em que já tenha pontos.",
+      "Baixa estatura: metade do deslocamento de um humano."
+    ]
+  },
+  {
+    "id": "elfo",
+    "nome": "Elfo",
+    "custo": 50,
+    "atributos": { "destreza": 1, "vigor": -1 },
+    "aparenciaMod": 0,
+    "aparenciaUniversal": true,
+    "descricao": "Esguios e graciosos, ligados à natureza, de vida muito longa (600+ anos).",
+    "tracos": [
+      "Aparência Universal: descendentes das fadas, não sofrem penalidade de Aparência ao lidar com outros povos.",
+      "Sentidos naturais aguçados: em ambiente natural, concentrando-se um turno, +1d6 em Percepção (visão/audição) e enxerga o dobro, por uma cena.",
+      "Resiliência Mental: controle mental contra o elfo tem +4 de dificuldade, ou o elfo recebe +1d6 para resistir."
+    ]
+  },
+  {
+    "id": "gnomo",
+    "nome": "Gnomo",
+    "custo": 40,
+    "atributos": { "vigor": 1, "forca": -1 },
+    "aparenciaMod": 0,
+    "aparenciaUniversal": false,
+    "descricao": "Pequenos e resistentes, engenhosos e ilusionistas, de vida longa (400+ anos).",
+    "tracos": [
+      "Feitiçaria ilusória: +2 para criar e detectar feitiçarias de ilusão.",
+      "Empatia com animais: +2 ao lidar com animais.",
+      "Visão no escuro (sem distinguir cores).",
+      "Baixa estatura: metade do deslocamento de um humano."
+    ]
+  },
+  {
+    "id": "halfling",
+    "nome": "Halfling",
+    "custo": 30,
+    "atributos": { "destreza": 1, "forca": -1 },
+    "aparenciaMod": 0,
+    "aparenciaUniversal": false,
+    "descricao": "Pequenos e ágeis, atléticos apesar do porte, de vida longa (300+ anos).",
+    "tracos": [
+      "Atletas: +1d6 em Atletismo e habilidades secundárias correlatas.",
+      "Baixa estatura: metade do deslocamento de um humano."
+    ]
+  },
+  {
+    "id": "meio-elfo",
+    "nome": "Meio-Elfo",
+    "custo": 20,
+    "atributos": {},
+    "aparenciaMod": 0,
+    "aparenciaUniversal": true,
+    "descricao": "Filhos de humano e elfa, mais élficos na aparência; inférteis. Vivem até 200 anos.",
+    "tracos": [
+      "Aparência Universal: herda o fascínio élfico; não sofre penalidade de Aparência entre povos.",
+      "Resiliência Mental (menor): +2 para resistir a controle mental."
+    ]
+  },
+  {
+    "id": "orc",
+    "nome": "Orc",
+    "custo": 40,
+    "atributos": { "forca": 1, "vigor": 1, "perspicacia": -1, "compostura": -1, "inteligencia": -1 },
+    "aparenciaMod": -1,
+    "aparenciaUniversal": false,
+    "descricao": "Altos e truculentos, de herança metamorfa e constituição física superior; vida curta (60 anos).",
+    "tracos": [
+      "Vitalidade: +Vigor de PV extra.",
+      "Frenesi: pode entrar em fúria (só ações físicas, mais intimidar como reflexo); não sofre penalidade de dano, e intimidar em frenesi soma +2d6.",
+      "Visão noturna: enxerga sem penalidade na penumbra (não na escuridão total).",
+      "Aparência bruta: a Aparência efetiva de um Orc é 1 a menos do valor que ele pagou (já embutido na ficha)."
+    ]
+  }
+]

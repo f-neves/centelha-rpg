@@ -28,7 +28,9 @@ import RoladorDados from './RoladorDados.astro';
   <label>Nome<input class="txt" data-id="nome" placeholder="Seu herói" /></label>
   <label>Conceito<input class="txt" data-id="conceito" /></label>
   <label>Jogador<input class="txt" data-id="jogador" /></label>
+  <label>Raça<select class="racasel" id="raca-sel"></select></label>
 </div>
+<div class="raca-info" id="raca-info"></div>
 
 <h2 class="barh">Atributos <small>(piso 1 · nível×10)</small></h2>
 <div class="cols3" id="attrs"></div>
@@ -83,7 +85,12 @@ import RoladorDados from './RoladorDados.astro';
   .xpbar .xp-btns { display: flex; gap: .4rem; margin-left: auto; }
   .xpbar .btn { background: var(--accent-strong); color: var(--on-accent); border-color: transparent; padding: .25rem .6rem; font-size: .78rem; }
 
-  .idrow { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 1rem; margin-bottom: .4rem; }
+  .idrow { display: grid; grid-template-columns: 2fr 2fr 1fr 1.4fr; gap: 1rem; margin-bottom: .4rem; }
+  @media (max-width: 640px) { .idrow { grid-template-columns: 1fr 1fr; } }
+  .idrow select.racasel { font-family: 'EB Garamond'; font-size: 1rem; border: none; border-bottom: 1px solid var(--rule); background: transparent; padding: .2rem; color: var(--ink); }
+  .raca-info { font-size: .82rem; color: var(--ink-soft); margin: 0 0 .6rem; line-height: 1.4; }
+  .raca-info b { color: var(--accent-strong); font-family: 'Cinzel'; font-weight: 600; }
+  .raca-info .mods { font-family: 'Cinzel'; }
   .idrow label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .04em; color: var(--ink-soft); text-transform: uppercase; }
   .idrow .txt { font-family: 'EB Garamond'; font-size: 1rem; border: none; border-bottom: 1px solid var(--rule); background: transparent; padding: .2rem; color: var(--ink); }
   .idrow .txt:focus { outline: none; border-bottom-color: var(--accent); }

@@ -12,6 +12,7 @@ import ARTE_D from '../data/artes.json';
 import ARMA_D from '../data/armas.json';
 import ARMADURA_D from '../data/armaduras.json';
 import ESCUDO_D from '../data/escudos.json';
+import RACA_D from '../data/racas.json';
 
 export interface FichaOpts {
   /** Carrega o estado inicial (objeto S) ou null para começar do zero. Pode ser assíncrono. */
@@ -32,6 +33,9 @@ export function montarFicha(opts: FichaOpts) {
   const ARMA: Record<string, any> = Object.fromEntries((ARMA_D as any[]).map((w) => [w.id, w]));
   const ARMADURA: Record<string, any> = Object.fromEntries((ARMADURA_D as any[]).map((a) => [a.id, a]));
   const ESCUDO: Record<string, any> = Object.fromEntries((ESCUDO_D as any[]).map((s) => [s.id, s]));
+  const RACA: Record<string, any> = Object.fromEntries((RACA_D as any[]).map((r) => [r.id, r]));
+  const racApMod = () => (RACA[S?.raca]?.aparenciaMod || 0);
+  const apEfetiva = (v: number) => Math.max(1, Math.min(12, (v || 1) + racApMod()));
   const el = (id: string) => document.getElementById(id)!;
   const slug = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
@@ -83,18 +87,20 @@ export function montarFicha(opts: FichaOpts) {
   };
   const CREA = (regras as any).limitesCriacao as { atributo: number; habilidade: number; centelha: number; picoAtributo?: number; picoHabilidade?: number };
   const centReq = (b: number) => b;
+  function racialAttr(key?: string): number { return key ? (RACA[S.raca]?.atributos?.[key] || 0) : 0; }
   function capFor(kind: string, key?: string): number {
     if (kind === 'arte2') return (S.centelha || 0) > 0 ? (S.skills?.ocultismo || 0) : 0;
+    const rac = kind === 'attr' ? racialAttr(key) : 0;
     const full: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12 };
-    if (S.modo === 'evolucao') return full[kind] ?? 6;
+    if (S.modo === 'evolucao') return (full[kind] ?? 6) + rac;
     if (kind === 'attr' || kind === 'skill') {
       const base = kind === 'attr' ? CREA.atributo : CREA.habilidade;
       const pico = (kind === 'attr' ? CREA.picoAtributo : CREA.picoHabilidade) ?? base;
-      if (pico <= base) return base;
+      if (pico <= base) return base + rac;
       const store: Record<string, number> = kind === 'attr' ? S.attrs : S.skills;
       let outroPico = false;
       for (const k in store) { if (k !== key && (store[k] || 0) > base) { outroPico = true; break; } }
-      return outroPico ? base : pico;
+      return (outroPico ? base : pico) + rac;
     }
     const crea: Record<string, number> = { skill2: CREA.habilidade, virtue: 6, centelha: CREA.centelha, willpower: 12, aparencia: 12 };
     return crea[kind] ?? 6;
@@ -104,7 +110,7 @@ export function montarFicha(opts: FichaOpts) {
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, tech: {}, arte: {}, budget: 1400, modo: 'criacao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' }, defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1400, modo: 'criacao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' }, defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -113,7 +119,7 @@ export function montarFicha(opts: FichaOpts) {
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
     S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
-    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.budget ??= 1400; S.modo ??= 'criacao'; S.derivCol ??= true;
+    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1400; S.modo ??= 'criacao'; S.derivCol ??= true;
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.escudo ??= 'nenhum';
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
@@ -157,7 +163,7 @@ export function montarFicha(opts: FichaOpts) {
     h += '<h3>Força de Vontade <small>(piso 1 · ×2)</small></h3>';
     h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 12, 1));
     h += '<h3>Aparência <small>(1–12 · piso 1 · ×2)</small></h3>';
-    const am = aparenciaMod(S.aparencia);
+    const am = aparenciaMod(apEfetiva(S.aparencia));
     h += trow(`Aparência <span class="apmod" title="Bônus/Penalidade na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`, dotsHTML('aparencia', 'aparencia', S.aparencia, 12, 1));
     el('power').innerHTML = h;
   }
@@ -309,10 +315,11 @@ export function montarFicha(opts: FichaOpts) {
     SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || 0) * 5; });
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += TECNIV[id] * 10; });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
-    const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar;
+    const xr = RACA[S.raca]?.custo || 0;
+    const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar + xr;
     el('xpSpent').textContent = String(total);
     const rem = (S.budget || 0) - total, re = el('xpRem'); re.textContent = String(rem); re.className = 'rem ' + (rem < 0 ? 'neg' : 'ok');
-    el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '');
+    el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '') + (xr ? ` · Raça ${xr}` : '');
     renderDerived(); renderCombate(); save();
   }
 
@@ -344,7 +351,7 @@ export function montarFicha(opts: FichaOpts) {
     else if (kind === 'aparencia') S.aparencia = nv;
     else if (kind === 'arte2') { S.arte[key] = nv; renderArtes(); }
     if (['attr', 'virtue', 'centelha', 'willpower', 'aparencia'].includes(kind)) refreshDots(kind, key);
-    if (kind === 'aparencia') { const m = aparenciaMod(nv); const sp = document.querySelector('.apmod'); if (sp) sp.textContent = (m >= 0 ? '+' : '') + m; }
+    if (kind === 'aparencia') { const m = aparenciaMod(apEfetiva(nv)); const sp = document.querySelector('.apmod'); if (sp) sp.textContent = (m >= 0 ? '+' : '') + m; }
     if (kind === 'attr' && S.modo === 'criacao') refreshCaps('attr');
     recompute();
   }
@@ -435,8 +442,19 @@ export function montarFicha(opts: FichaOpts) {
     SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] = Math.min(S.skills2[k] || 0, capFor('skill2', k)); if ((S.spec2[k] || 0) > S.skills2[k]) S.spec2[k] = S.skills2[k]; });
     S.centelha = Math.min(S.centelha || 0, capFor('centelha'));
   }
+  function renderRaca() {
+    const sel = el('raca-sel') as HTMLSelectElement;
+    if (!sel.options.length) sel.innerHTML = (RACA_D as any[]).map((r) => `<option value="${r.id}">${r.nome}</option>`).join('');
+    sel.value = S.raca; sel.disabled = !!opts.readOnly;
+    const r = RACA[S.raca] || {}; const AN: Record<string, string> = Object.fromEntries((ATTRS_D as any[]).map((a) => [a.id, a.nome]));
+    const mods = Object.entries(r.atributos || {}).map(([k, v]) => `${(v as number) > 0 ? '+' : ''}${v} ${AN[k] || k} <small>(máx ${6 + (v as number)})</small>`);
+    if (r.aparenciaMod) mods.push(`Aparência ${r.aparenciaMod > 0 ? '+' : ''}${r.aparenciaMod}`);
+    const custo = r.custo ? `<b>${r.custo} XP</b> · ` : '';
+    const modStr = mods.length ? `<span class="mods">${mods.join(' · ')}</span>. ` : '';
+    el('raca-info').innerHTML = r.descricao ? `${custo}${modStr}${r.descricao}${(r.tracos || []).length ? ' <em>' + (r.tracos as string[]).join(' ') + '</em>' : ''}` : '';
+  }
   function setModo(m: string) { S.modo = m; if (m === 'criacao') clampToMode(); renderAll(); }
-  function renderAll() { syncInputs(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); }
+  function renderAll() { syncInputs(); renderRaca(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); }
 
   // botões
   document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => b.addEventListener('click', () => { if (opts.readOnly) return; setModo(b.dataset.modo!); }));
@@ -456,6 +474,7 @@ export function montarFicha(opts: FichaOpts) {
   let camAllOpen = false;
   el('cam-all').addEventListener('click', () => { camAllOpen = !camAllOpen; CAM_ORDER.forEach((c) => (OPEN.cam[c] = camAllOpen)); renderCaminhos(); el('cam-all').textContent = camAllOpen ? 'Recolher todos' : 'Expandir todos'; });
   (['eq-arma', 'eq-escudo'] as const).forEach((id) => el(id).addEventListener('change', (e) => { if (opts.readOnly) return; S.equip[id.slice(3)] = (e.target as HTMLSelectElement).value; renderDerived(); renderCombate(); save(); }));
+  el('raca-sel').addEventListener('change', (e) => { if (opts.readOnly) return; S.raca = (e.target as HTMLSelectElement).value; (ATTRS_D as any[]).forEach((a) => { const c = capFor('attr', a.id); if ((S.attrs[a.id] || 1) > c) S.attrs[a.id] = c; }); renderAttrs(); renderPower(); renderRaca(); recompute(); save(); });
   el('f-reset').addEventListener('click', () => { if (opts.readOnly) return; if (confirm('Limpar a ficha?')) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });
   el('f-link').addEventListener('click', () => {
     const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
