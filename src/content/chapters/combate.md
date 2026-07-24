@@ -172,7 +172,7 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 | Cobertura parcial (parapeito, aliado à frente) | **+2** |
 | Cobertura pesada (só cabeça/braço expostos, seteira) | **+4** |
 | Postura defensiva total (abre mão do ataque) | **+4** |
-| Alvo pequeno ou errático, à distância | **+2** |
+| Alvo errático (movimento imprevisível), à distância | **+2** |
 | Atacante em terreno alto | **−2** |
 | Mirar (gasta uma ação preparando o golpe) | **−2** |
 | Alvo prono — atacado **corpo a corpo** | **−2** |
@@ -183,6 +183,21 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 <p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. O empilhamento de modificadores numa mesma Defesa é limitado a <strong>±6</strong> — nenhuma soma de vantagens transforma o golpe em acerto (ou erro) automático.</p>
 
 <p class="formula">Cobertura total — sem nenhuma linha de visão — não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
+
+### Porte: o grande é fácil de acertar, o pequeno é difícil
+
+O tamanho conta na **jogada de acerto** dos **ataques físicos** (corpo a corpo e à distância): quanto **maior** o alvo em relação a quem o ataca, mais fácil cravar o golpe; quanto **menor**, mais difícil. Vale a diferença de **categorias de porte** (Minúsculo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal):
+
+| Diferença de porte (alvo − atacante) | Ao acerto |
+|---|:---:|
+| Alvo **1** categoria maior | **+3** |
+| Alvo **2** categorias maiores | **+6** |
+| Alvo **3** categorias maiores | **+9** |
+| Alvo **4** ou mais categorias maiores | **+12** (teto) |
+
+**Simétrico:** atacar um alvo **menor** subtrai o mesmo valor. Um colosso tem **−12** para acertar um humano (Médio); o rato tem **+12** para acertar o colosso. A diferença conta **até 4 categorias**, então um Pequeno e um Médio acertam um Colossal com a mesma facilidade.
+
+Isso é **só no acerto**: não muda a Defesa passiva do alvo, **não entra no teto de ±6** dos modificadores de posição acima, e não se aplica a ataques Sociais ou Mentais. E não deixa o gigante indefeso: a **Couraça de Porte** (ver *Dano e Armadura*) devora o dano de quem é menor, então acertá-lo é fácil, mas feri-lo de verdade não é.
 
 ### Pressão: muitos contra um
 

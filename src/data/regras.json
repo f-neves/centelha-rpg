@@ -753,10 +753,10 @@
         "nota": "abre mão do ataque na rodada para se proteger"
       },
       {
-        "nome": "Alvo pequeno/errático à distância",
+        "nome": "Alvo errático à distância",
         "valor": 2,
         "alvo": "defesa",
-        "nota": "esquiva em zigue-zague, alvo menor"
+        "nota": "movimento imprevisível, zigue-zague (o tamanho do alvo agora está em porteAcerto)"
       },
       {
         "nome": "Terreno alto",
@@ -801,6 +801,12 @@
         "nota": "−2 à sua própria Defesa e +2 ao seu ataque até a próxima ação"
       }
     ]
+  },
+  "porteAcerto": {
+    "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS (corpo a corpo e à distância), pela diferença de porte entre atacante e alvo. Só no acerto: NÃO altera a Defesa passiva do alvo, NÃO entra no teto ±6 dos modificadores situacionais e NÃO vale p/ ataques Sociais ou Mentais. Relativo e simétrico: acertar alvo MAIOR soma o valor; acertar alvo MENOR subtrai o mesmo valor. Conta a diferença de categorias na ordem dos portes, com teto de 4 categorias (diferenças maiores contam como 4). Bichos Enormes+ compensam a facilidade de acerto com a Couraça de Porte, que corta o dano de quem é menor.",
+    "ordem": ["minusculo", "pequeno", "medio", "grande", "enorme", "imenso", "colossal"],
+    "porDiferenca": [0, 3, 6, 9, 12],
+    "capCategorias": 4
   },
   "sangramento": {
     "nota": "No início de cada rodada do personagem ele sofre N de dano Letal (já ignora a Absorção). Lento de propósito: dá tempo de estabilizar.",

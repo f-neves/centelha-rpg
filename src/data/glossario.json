@@ -216,5 +216,14 @@
       "percepção passiva"
     ],
     "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 + Especialidade + Centelha×2 do outro serve de alvo. Como Especialidade e Centelha são raras, na prática a maioria é só (Atributo + Habilidade) × 2."
+  },
+  {
+    "id": "porte",
+    "termo": "Porte",
+    "aliases": [
+      "tamanho",
+      "categoria de tamanho"
+    ],
+    "definicao": "Categoria de tamanho da criatura (Minúsculo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal). Na jogada de acerto de ataques físicos, a diferença de porte soma ao atacar um alvo maior e subtrai ao atacar um menor: +3/+6/+9/+12 por 1/2/3/4+ categorias (simétrico, teto de 4 categorias, só no acerto). Portes Grandes+ ganham Couraça de Porte (Absorção natural) e, dos Enormes, Resistência à Perfuração natural."
   }
 ]
