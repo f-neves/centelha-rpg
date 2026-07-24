@@ -882,6 +882,10 @@
         {
           "membros": "32–63",
           "magnitude": 5
+        },
+        {
+          "membros": "64–127",
+          "magnitude": 6
         }
       ]
     },

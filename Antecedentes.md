@@ -14,19 +14,19 @@ todos reconhecem mas ninguém teme. Os dois podem ter a mesma ficha de combate.
 
 ## Como funcionam
 
-### A escala é 1 a 5
+### A escala é 1 a 6
 
 Como tudo no Centelha (atributos, perícias, Virtudes, Centelha, níveis de Proeza), os
-Antecedentes vão de **1 a 5**. Cinco é o teto do que um personagem carrega naquela frente, não
-o teto do mundo: um Recursos 5 é uma fortuna de nobre, não o tesouro de um rei; um Aliado 5 é
-uma figura de peso, não um deus.
+Antecedentes vão de **1 a 6**. Seis é o teto do que um personagem carrega naquela frente, não
+o teto do mundo: um Recursos 6 é uma fortuna de reino, não o tesouro de todos os reis; um Aliado
+6 é um dos maiores poderes vivos, não um deus.
 
 ### Dois formatos: Único e Nomeado
 
 - **Antecedente Único**: você tem **um valor** dele. Recursos, Posição, Refúgio, Fé, Linhagem.
   "Recursos 3" é uma coisa só.
 - **Antecedente Nomeado**: você compra **instâncias nomeadas e separadas**, e pode ter
-  **várias** no mesmo personagem, cada uma com o seu próprio valor de 1 a 5. Aliados, Contatos,
+  **várias** no mesmo personagem, cada uma com o seu próprio valor de 1 a 6. Aliados, Contatos,
   Séquito, Mentor, Reputação, Relíquia, Familiar, Segredo, Dívida.
 
 O exemplo que resume o formato Nomeado, usando Reputação:
@@ -95,6 +95,7 @@ pedir favor. Cobre dinheiro vivo, propriedades, crédito e padrão de vida.
 | **3** | **Próspero.** Mercador estabelecido, cavaleiro com terras pequenas: criados, montaria, armadura de qualidade, crédito na cidade. |
 | **4** | **Rico.** Casa senhorial, vários empregados, luxo real; banca uma expedição, compra silêncio, empresta alto. |
 | **5** | **Fortuna de nobre.** Terras, títulos de crédito, uma pequena guarnição paga; move economias locais, financia guerras pequenas. |
+| **6** | **Fortuna de reino.** Frotas, domínios e tesouros que movem economias inteiras; financia exércitos e compra a lealdade de cidades. |
 
 **Amarra com:** o custo dos itens e equipamentos; o "favor alugado" da Régua de Relação (suborno
 e mesada saem daqui, e param quando o dinheiro para). Recursos não compra lealdade de verdade,
@@ -113,6 +114,7 @@ Poucos indivíduos capazes e leais que agem **por você** de coração, não por
 | **3** | Uma figura de peso local: um capitão da guarda, um nobre menor, um feiticeiro de Centelha 1 a 2. |
 | **4** | Poder regional: um comandante, um magistrado, um herói de Centelha alta que atende ao seu chamado. |
 | **5** | Uma figura de peso no mundo: um general, um arquimago, um senhor de terras que arrisca muito por você. |
+| **6** | Um dos maiores poderes vivos: um rei, um arquimago lendário, uma figura que move o mundo por você. |
 
 **Amarra com:** cada aliado **nasce em Aliança (+3) ou Devoção (+4) na Régua de Relação** e tem
 ficha própria (some Centelha e perícia conforme o nível). Não é "+N em algo", é um NPC. Se você
@@ -131,6 +133,7 @@ pequenos favores, não sacrifício. Cada rede é nomeada pelo meio que cobre.
 | **3** | Presença firme em toda uma cidade ou ofício: pouca coisa acontece ali sem você ouvir. |
 | **4** | Tentáculos numa região inteira: informação e acesso em várias cidades daquele meio. |
 | **5** | Uma teia que cruza reinos naquele meio: mercadores, espiões ou o clero te passam recados a distância. |
+| **6** | Uma teia que cobre o mundo conhecido naquele meio: onde quer que você chegue, alguém já o espera. |
 
 Exemplo de múltiplas instâncias: **Contatos 3 (submundo do porto) · Contatos 1 (guarda da
 cidade)**.
@@ -151,6 +154,7 @@ marujos, uma tropa. Diferente de Aliados (poucos e leais) e de Contatos (informa
 | **3** | Uma tropa (8 a 15): uma guarda, uma tripulação. | Magnitude 3 |
 | **4** | Uma companhia (16 a 31): um pelotão, uma casa de criados grande. | Magnitude 4 |
 | **5** | Um contingente (32 a 63): uma pequena hoste. | Magnitude 5 |
+| **6** | Uma pequena hoste (64 a 127): quase um exército. | Magnitude 6 |
 
 **Amarra com:** as **regras de Horda** já existentes: o nível é a Magnitude do esquadrão em
 combate. A qualidade (comum, treinado, elite) é separada do número e sai do Mestre ou de mais
@@ -169,6 +173,7 @@ própria agenda. O nível mede o poder e a disposição do mentor.
 | **3** | Uma autoridade no ofício: acesso a saber e recursos raros, proteção que pesa numa região. |
 | **4** | Um dos grandes de uma tradição: ensina Proezas ou Artes que quase ninguém tem; a palavra dele move gente poderosa. |
 | **5** | Uma lenda viva: um dos maiores do mundo naquilo. Ser aluno dele já é um escudo e uma marca. |
+| **6** | Uma figura de poder mítico: o maior do mundo naquilo; o nome dele abre ou fecha qualquer porta. |
 
 **Amarra com:** fonte ficcional de Proezas e Artes raras (o Mestre pode exigir um Mentor para
 liberar certas trilhas); gancho de trama garantido (o mentor sempre cobra). Régua alta com um NPC
@@ -187,6 +192,7 @@ dá comando legítimo, acesso institucional e proteção da lei. Cada instituiç
 | **3** | Autoridade de peso: comandante, magistrado, cavaleiro com terras, cônego. |
 | **4** | Alto posto: general, conselheiro real, líder de guilda regional, barão. |
 | **5** | Topo institucional: marechal, ministro, grão-mestre, alto nobre com voz no reino. |
+| **6** | O ápice do poder: rei, grão-mestre supremo, sumo-sacerdote; sua palavra é lei numa nação inteira. |
 
 Exemplo: **Posição 3 (Exército real) · Posição 1 (Guilda dos Mercadores)**.
 
@@ -208,6 +214,7 @@ forte.
 | **3** | Nome que corre a região: viajantes e forasteiros já ouviram falar. |
 | **4** | Fama que cruza reinos: a sua história chega antes de você a lugares onde você nunca pôs o pé. |
 | **5** | Lenda em vida: quase todos, em toda parte, conhecem o seu nome e o que ele carrega. |
+| **6** | Mito universal: o seu nome cruzou o mundo e as eras; pouquíssimos nunca ouviram falar de você. |
 
 Exemplo (as três do enunciado): **Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) ·
 Reputação 1 (Confiável)**. A de guarda-costas ajuda a ser contratado e a intimidar, mas atrapalha
@@ -234,6 +241,7 @@ sobrenatural. Cada relíquia é nomeada; o nível mede a potência.
 | **3** | Um artefato de nome: efeito forte, cobiçado, reconhecível. Teto do que se começa tendo. |
 | **4** | Uma relíquia de lenda: rivaliza com uma Proeza de tier médio; gente mata por ela. |
 | **5** | Um tesouro do mundo: poder de semideus preso num objeto; a sua existência é um evento. |
+| **6** | Uma relíquia única e divina: rivaliza com uma Proeza de tier alto; nações guerreiam por ela. |
 
 **Amarra com:** equipamento e Arcano. Uma Relíquia pode conceder uma Arte ou uma Proeza que o
 portador não teria, dentro do nível. **Pode ser roubada ou quebrada** (é volátil por natureza):
@@ -252,6 +260,7 @@ defesa e recursos do lugar.
 | **3** | Uma base sólida: uma torre pequena, uma forja completa, um esconderijo defensável com criados. |
 | **4** | Um reduto: um solar murado, um laboratório raro, uma fortaleza pequena. |
 | **5** | Um bastião: um castelo, um santuário de poder, um lugar que é conhecido e temido. |
+| **6** | Uma cidadela lendária: uma fortaleza ou santuário conhecido no mundo todo, quase inexpugnável. |
 
 **Amarra com:** ações estendidas (Craft, Ritual, cura, planejamento) ganham bônus e tempo
 protegido em casa; "terreno social" quando você recebe alguém no seu território.
@@ -268,6 +277,7 @@ familiar. Diferente do Séquito (gente), é uma criatura vinculada. O nível med
 | **3** | Uma fera notável: um lobo enorme, um grande felino, um animal com um toque de magia. |
 | **4** | Uma besta de lenda: uma criatura mágica leal, forte o bastante para virar uma luta. |
 | **5** | Um companheiro mítico: um espírito, uma fera colossal, algo que assombra quem vê. |
+| **6** | Uma besta divina: uma criatura de lenda, única no mundo, capaz de virar uma guerra sozinha. |
 
 **Amarra com:** o Bestiário (a criatura tem stat block por nível) e a Proeza Vínculo Animal, que
 aprofunda o laço.
@@ -286,6 +296,7 @@ de quem ou do que ele atinge.
 | **3** | Um segredo perigoso: derruba um nobre, uma guilda; um conhecimento que muitos matariam para ter. |
 | **4** | Um segredo que abala uma região: a mentira de uma casa poderosa, um saber proibido de verdade. |
 | **5** | Um segredo que muda o mundo: a fraqueza de um rei, a origem de uma guerra, algo que reescreve a história. |
+| **6** | O segredo definitivo: a fraqueza de um deus, a verdade que derruba impérios; guardá-lo é carregar o destino de muitos. |
 
 **Amarra com:** o Combate Social (munição para as abordagens de Ruptura, Chantagem e Ameaça) e a
 Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou
@@ -304,6 +315,7 @@ salário nem amizade. O nível mede tamanho e devoção.
 | **3** | Uma comunidade devota ou um posto real numa ordem: recursos, mão de obra crente, alcance. |
 | **4** | Um movimento: fiéis em várias cidades, uma ordem que responde ao seu chamado. |
 | **5** | Uma força de fé: uma seita ou culto amplo que faria quase tudo por você ou pela causa. |
+| **6** | Uma religião de massa: milhares de devotos em muitos povos, movidos pela sua palavra ou pela causa. |
 
 **Amarra com:** a Régua de forma coletiva (a fé é uma disposição de muitos de uma vez);
 recuperação de Vontade em terreno sagrado; ganchos de trama religiosa e de lore.
@@ -321,6 +333,7 @@ Linhagem é **quem são os seus** e o que isso significa no mundo.
 | **3** | Uma linhagem de renome: portas se abrem (e inimigos herdados aparecem) pelo seu sobrenome. |
 | **4** | Uma grande casa ou uma ascendência rara: o seu sangue é história viva. |
 | **5** | Uma linhagem lendária: descender de quem você descende é, por si só, um fato que move o mundo. |
+| **6** | Sangue mítico: descendência de heróis fundadores ou de um ser divino; o seu sangue é história do mundo. |
 
 **Amarra com:** as baselines de povo da Régua de Relação (o seu sangue muda onde as relações
 começam); ganchos de lore, dívidas e ódios herdados. Linhagem é tão gancho quanto benefício:
@@ -339,6 +352,7 @@ Cada dívida é nomeada por quem deve. O nível mede o tamanho do que pode ser c
 | **3** | Um favor caro de alguém influente: esconder você da lei, testemunhar, abrir uma porta fechada. |
 | **4** | Um favor que custa à pessoa: ela arrisca a posição ou os bens por você, uma vez. |
 | **5** | Um favor que quase a arruína: ela paga um preço alto, uma única vez, e a dívida está quitada. |
+| **6** | Um favor que a arruína: ela dá tudo o que tem por você, uma única vez, e fica em ruínas. |
 
 **Amarra com:** a Régua (é um pico de capital que você gasta de uma vez, sem construir vínculo);
 resolve uma cena e acaba. O XP volta como crédito quando a dívida é cobrada.
@@ -347,8 +361,8 @@ resolve uma cena e acaba. O XP volta como crédito quando a dívida é cobrada.
 
 ## Folha de referência
 
-- **Escala 1 a 5.** **Únicos** (um valor): Recursos, Posição, Refúgio, Fé, Linhagem. **Nomeados**
-  (várias instâncias, cada uma 1 a 5): Aliados, Contatos, Séquito, Mentor, Reputação, Relíquia,
+- **Escala 1 a 6.** **Únicos** (um valor): Recursos, Posição, Refúgio, Fé, Linhagem. **Nomeados**
+  (várias instâncias, cada uma 1 a 6): Aliados, Contatos, Séquito, Mentor, Reputação, Relíquia,
   Aliado Animal, Segredo, Dívida.
 - **Custo:** tudo por XP, **×3 por ponto**, na criação e em jogo (mesmo orçamento do resto). Teto
   3 na criação para Recursos e Relíquia.
