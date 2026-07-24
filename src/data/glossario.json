@@ -76,7 +76,7 @@
       "r.perf",
       "gate"
     ],
-    "definicao": "Nível de Perfuração da arma (0–5) vs Resistência à Perfuração da armadura. Só vale para o modo Perfurante: se a Perfuração da arma for menor que a Resistência, o golpe resvala (dano 0); se for igual ou maior, o gate abre e rola-se o dano menos a absorção. Cortante e Impacto não passam pelo gate."
+    "definicao": "Nível de Perfuração da arma (0–3) vs Resistência à Perfuração da armadura. Só vale para o modo Perfurante: se a Perfuração da arma for menor que a Resistência, o golpe resvala (dano 0); se for igual ou maior, o gate abre e rola-se o dano menos a absorção. Cortante e Impacto não passam pelo gate."
   },
   {
     "id": "defesa",

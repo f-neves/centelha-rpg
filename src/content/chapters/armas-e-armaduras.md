@@ -85,7 +85,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 ## Armaduras
 
-A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impacto**, **Corte** e **Perfuração** (calibrados em pontos). O dano **Perfurante** usa a **Absorção de Perfuração**. Repare na lógica histórica: a **placa** quase zera o **corte** (ninguém corta bom aço), mas o **impacto** atravessa o aço e quebra o corpo dentro. A **Perfuração** funciona ao contrário: é **difícil de furar** — cada armadura tem um **Nível** (Resistência à Perfuração, 0–5) que o Nível de Perfuração da arma precisa alcançar, senão o golpe **resvala** —, mas, **quando furada, absorve pouco** (a Absorção de Perfuração é baixa de propósito). A **Penalidade** incide nas ações físicas. O efeito da armadura no **Quase-Acerto** (bônus de margem + redução do raspão) é fixo pela classe — ver [Quase-Acerto](/regras/quase-acerto).
+A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impacto**, **Corte** e **Perfuração** (calibrados em pontos). O dano **Perfurante** usa a **Absorção de Perfuração**. Repare na lógica histórica: a **placa** quase zera o **corte** (ninguém corta bom aço), mas o **impacto** atravessa o aço e quebra o corpo dentro. A **Perfuração** funciona ao contrário: é **difícil de furar** — cada armadura tem um **Nível** (Resistência à Perfuração, 0–3) que o Nível de Perfuração da arma precisa alcançar, senão o golpe **resvala** —, mas, **quando furada, absorve pouco** (a Absorção de Perfuração é baixa de propósito). A **Penalidade** incide nas ações físicas. O efeito da armadura no **Quase-Acerto** (bônus de margem + redução do raspão) é fixo pela classe — ver [Quase-Acerto](/regras/quase-acerto).
 
 <div class="table-wrap">
 

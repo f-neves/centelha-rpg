@@ -77,7 +77,7 @@ A **Absorção** total de um golpe é **Absorção natural + a absorção da arm
 
 ### O gate de Perfuração
 
-O modo **Perfurante** tem um **Nível de Perfuração** (0–5) e enfrenta o **Nível** (Resistência à Perfuração) da armadura:
+O modo **Perfurante** tem um **Nível de Perfuração** (0–3) e enfrenta o **Nível** (Resistência à Perfuração) da armadura:
 
 - Se o Nível de Perfuração da arma for **menor** que o da armadura, o golpe **resvala — dano 0** (nem rola).
 - Se for **igual ou maior**, o gate abre: rola o dano e subtrai a **Absorção de Perfuração** (baixa — ao furar, encontra pouca proteção).
