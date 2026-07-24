@@ -33,13 +33,13 @@ A régua é **direcional**: mede o que **A sente por B**, e o inverso pode ser d
 
 ## 2. A régua e a ladder de conduta
 
-A régua vai de **−5 a +5**, com uma **banda neutra de 5 casas** no meio. São **15 posições**
-de trilha, mas **11 degraus de conduta** (o Neutro ocupa 5 casas):
+A régua vai de **−6 a +6**, com uma **banda neutra de 5 casas** no meio. São **17 posições**
+de trilha, mas **13 degraus de conduta** (o Neutro ocupa 5 casas):
 
 ```
-DESFAVORECIMENTO          NEUTRO           FAVORECIMENTO
- -5  -4  -3  -2  -1    0  0 [0] 0  0    +1  +2  +3  +4  +5
-                          ^centro
+DESFAVORECIMENTO                NEUTRO            FAVORECIMENTO
+ -6  -5  -4  -3  -2  -1    0  0 [0] 0  0    +1  +2  +3  +4  +5  +6
+                                 ^centro
 ```
 
 Cada degrau tem uma **conduta** (o que a pessoa efetivamente faz), no espírito do campo
@@ -47,6 +47,7 @@ Cada degrau tem uma **conduta** (o que a pessoa efetivamente faz), no espírito 
 
 | Nível | Rótulo | Conduta |
 |---:|---|---|
+| **+6** | Consagração | Entrega tudo, e a si mesmo, sem você pedir: você vem antes da própria vida e de todo o resto. |
 | **+5** | Lealdade | Enfrenta perigo real e paga preços altos por você, sem cobrar. |
 | **+4** | Devoção | Abre mão de bens, tempo e conforto próprios pelo seu bem. |
 | **+3** | Aliança | Faz favores caros e se expõe moderadamente para ajudar. |
@@ -58,6 +59,7 @@ Cada degrau tem uma **conduta** (o que a pessoa efetivamente faz), no espírito 
 | **−3** | Rancor | Investe algum esforço em pequenas tramas contra você. |
 | **−4** | Hostilidade | Gasta tempo e bens para atrapalhar você ativamente. |
 | **−5** | Inimizade | Investe dinheiro e tempo em planos longos para te arruinar. |
+| **−6** | Nêmesis | Faz da sua ruína o propósito da vida: sacrifica bens, aliados e a si mesmo para te ver cair. |
 
 O **Neutro é o estado natural** da maioria das relações: as pessoas precisam de motivos
 (feitos, convivência, influência) para sair dele em qualquer direção.
@@ -77,6 +79,7 @@ e compara com a disposição:
 | **+3 · Aliança** | Te esconder da lei por uma noite, testemunhar a seu favor, um empréstimo alto, aceitar um prejuízo moderado. |
 | **+4 · Devoção** | Mentir à autoridade por você, abrir mão de algo importante, encarar perigo real. |
 | **+5 · Lealdade** | Arriscar a vida ou a ruína, lutar por você contra o próprio interesse. |
+| **+6 · Consagração** | Dar a vida por você sem hesitar, trair tudo e todos por você; não há limite ao que faz. |
 
 Do lado negativo, a disposição diz **quanto a pessoa atrapalha**: em −1 ela apenas não
 ajuda; em −3 gasta esforço em pequenas tramas; em −5 monta planos longos para te arruinar.
@@ -94,7 +97,7 @@ Três motores movem a régua, sempre em **passos** na trilha de 15 casas:
 ### (a) Feitos (saltos fixos)
 
 O que mais move uma relação são **atos**, não conversa. Cada feito empurra um número fixo
-de passos, respeitando o teto ±5 e a baseline do par (seção 6/7):
+de passos, respeitando o teto ±6 e a baseline do par (seção 6/7):
 
 | Feito a favor | Passos | Feito contra | Passos |
 |---|:---:|---|:---:|
@@ -280,7 +283,7 @@ pedidos vai corroendo a Aliança. Favor é capital: constrói-se com atos, gasta
 
 ## 11. Folha de referência
 
-- **Régua** −5..+5, banda neutra de **5 casas** (15 posições). Ladder de conduta na seção 2.
+- **Régua** −6..+6, banda neutra de **5 casas** (17 posições). Ladder de conduta na seção 2.
 - **Disposição + limiar:** pedido no nível ou abaixo = de graça; acima = mover a régua.
 - **Move-se por:** feitos (saltos fixos), cena social (Ataque vs Defesa, +1/sucesso, +1 por 6
   de folga), gastar capital ao cobrar favores.
@@ -295,7 +298,7 @@ pedidos vai corroendo a Aliança. Favor é capital: constrói-se com atos, gasta
 ## 12. Decisões que tomei e ajustes possíveis
 
 - **Banda neutra de 5** (o seu formato original e do seu exemplo). Alternativa se a mesa achar
-  lento demais sair do Neutro: **banda de 3** (rompe em 2 passos), mantendo o máximo ±5.
+  lento demais sair do Neutro: **banda de 3** (rompe em 2 passos), mantendo o máximo ±6.
 - **Decaimento rumo à baseline do par** (preserva a tensão anão×elfo: um vínculo abandonado
   volta ao repouso racial, não ao zero genérico). Alternativa: decair sempre ao **neutro mais
   próximo** (a sua fala original), o que faz a prejuízo racial esvair com o tempo.

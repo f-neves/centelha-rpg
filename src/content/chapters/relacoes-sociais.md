@@ -15,10 +15,11 @@ Comece pela régua; as outras duas são escaladas dela.
 
 ## A régua
 
-A relação de alguém com você vai de **−5 a +5**, com um **meio neutro largo**. A parte de cima é **Favorecimento** (a pessoa gosta de você e ajuda); a de baixo é **Desfavorecimento** (a pessoa te quer mal). No meio fica o **Neutro**, o estado natural da esmagadora maioria das relações: ninguém é seu amigo nem seu inimigo até ter um motivo.
+A relação de alguém com você vai de **−6 a +6**, com um **meio neutro largo**. A parte de cima é **Favorecimento** (a pessoa gosta de você e ajuda); a de baixo é **Desfavorecimento** (a pessoa te quer mal). No meio fica o **Neutro**, o estado natural da esmagadora maioria das relações: ninguém é seu amigo nem seu inimigo até ter um motivo.
 
 | Nível | Nome | O que a pessoa faz |
 |---:|---|---|
+| **+6** | Consagração | Entrega tudo, e a si mesmo, sem você pedir: você vem antes da própria vida e de todo o resto. |
 | **+5** | Lealdade | Enfrenta perigo real e paga preços altos por você, sem cobrar. |
 | **+4** | Devoção | Abre mão de bens, tempo e conforto pelo seu bem. |
 | **+3** | Aliança | Faz favores caros e se expõe um pouco para te ajudar. |
@@ -30,6 +31,7 @@ A relação de alguém com você vai de **−5 a +5**, com um **meio neutro larg
 | **−3** | Rancor | Gasta algum esforço em pequenas tramas contra você. |
 | **−4** | Hostilidade | Gasta tempo e bens para te atrapalhar ativamente. |
 | **−5** | Inimizade | Investe dinheiro e tempo em planos longos para te arruinar. |
+| **−6** | Nêmesis | Faz da sua ruína o propósito da vida: sacrifica bens, aliados e a si mesmo para te ver cair. |
 
 A régua é **direcional**: ela mede o que **a outra pessoa sente por você**. O que você sente por ela pode ser bem diferente.
 
@@ -45,6 +47,7 @@ Antes de qualquer rolagem, o Mestre olha o que você quer e compara com o nível
 | **+3 Aliança** | Te esconder da lei, testemunhar a seu favor, um empréstimo alto. |
 | **+4 Devoção** | Mentir à autoridade por você, abrir mão de algo importante. |
 | **+5 Lealdade** | Arriscar a vida ou a ruína ao seu lado. |
+| **+6 Consagração** | Dar a vida por você sem hesitar, trair tudo e todos por você; não há limite ao que faz. |
 
 - **Pedido dentro do nível (ou abaixo):** concedido, sem rolar.
 - **Pedido acima do nível:** você precisa **mover a régua** até lá (a seguir).
@@ -185,7 +188,7 @@ Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o inter
 
 ## Folha de referência
 
-- **Régua** −5 a +5, meio Neutro largo. O nível diz o que a pessoa faz por (ou contra) você. Pedido dentro do nível: de graça; acima: mova a régua até lá.
+- **Régua** −6 a +6, meio Neutro largo. O nível diz o que a pessoa faz por (ou contra) você. Pedido dentro do nível: de graça; acima: mova a régua até lá.
 - **Move por:** atos (saltos fixos), conversa (Ataque vs [Defesa Social](/regras/defesas), +1 passo por 6 de folga) e gasto de crédito ao cobrar. Sair do Neutro = 3 passos; lábia sozinha para em +2. Esfria 1 passo por estação.
 - **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social; **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance; se não pagar, cede o ponto e a régua anda **Margem** passos. Não vale contra leitura.
