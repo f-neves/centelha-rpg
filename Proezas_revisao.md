@@ -5,12 +5,15 @@ Documento de trabalho da revisão das Proezas. Não é a versão final nem entra
 ## Princípios travados
 
 - **Proeza = arquétipo.** Cada Proeza é um tipo lendário de pessoa que aquele atributo produz (o Colosso, o Detetive, o Aterrador), e as Técnicas dentro dela são os feitos-assinatura dessa figura. Não é uma gaveta de perícia, é um personagem que dá pra imaginar.
-- **Cinco níveis, não quinze bandas.** A banda saiu. Cada Proeza tem 5 níveis, e o nível N exige Centelha ≥ N (1 para 1). Os níveis são os tiers que já estão escritos em `centelha.md`:
+- **Seis níveis, não quinze bandas.** A banda saiu. Cada Proeza tem 6 níveis (a reescala D6 inseriu o **Desperto** no N2), e o nível N exige Centelha ≥ N (1 para 1). Os níveis são os tiers que já estão escritos em `centelha.md`:
   - **N1 · Tocado** · o ápice do humanamente possível; vantagem sutil, nunca prodígio.
-  - **N2 · Herói** · o sobre-humano de verdade começa e assombra quem vê.
-  - **N3 · Grande herói** · quebra as leis da física; técnicas indecifráveis de fora.
-  - **N4 · Lendário** · dobra o mundo; muda o rumo de nações.
-  - **N5 · Semideus** · vira fábula; a passagem dele marca a paisagem.
+  - **N2 · Desperto** · a fagulha se firma; um degrau acima do Tocado, ainda no limiar do herói.
+  - **N3 · Herói** · o sobre-humano de verdade começa e assombra quem vê.
+  - **N4 · Grande herói** · quebra as leis da física; técnicas indecifráveis de fora.
+  - **N5 · Lendário** · dobra o mundo; muda o rumo de nações.
+  - **N6 · Semideus** · vira fábula; a passagem dele marca a paisagem.
+
+> **Nota (reescala D6):** os detalhamentos por Proeza mais abaixo neste doc ainda usam a numeração **antiga de 5 níveis** (onde N2 = Herói). Na régua atual, cada um subiu +1 a partir do N2, e o slot N2 passou a ser o Desperto. O conteúdo canônico está nos dados (`tecnicas.json`), já renumerado.
 - **Funil.** Cada Proeza é larga embaixo e estreita em cima: pelo menos 5 Técnicas no N1, afunilando até pelo menos 2 no N5.
 - **Pele: específico embaixo, universal em cima.** No degrau baixo a Técnica vale pra uma cor só (um material, uma emoção, um sentido); subindo, generaliza. Embaixo a pele é escolha travada (funciona como especialização); no topo é livre.
 - **Temas compartilhados, abordagens distintas.** Um mesmo efeito (medo, prever o inimigo, cura) é alcançável por vários atributos, cada um com mecânica e sabor próprios. Ninguém tem monopólio de um tema.
