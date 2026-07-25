@@ -244,6 +244,20 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       }).eq('id', id);
       document.getElementById('pers-nome')!.textContent = S.id?.nome || pers.nome || 'Personagem';
     }, 900);
+    // Campos de identidade da ficha da mesa (ordem clássica). Reconstruído ANTES de montarFicha
+    // para o motor ligar cada .txt por data-id (salva em S.id) e o #raca-sel por id.
+    // 1ª linha: Nome · Título · Jogador · Raça — 2ª linha: Altura · Peso · Idade · Conceito.
+    const idrowEl = document.querySelector('.idrow');
+    if (idrowEl) idrowEl.innerHTML =
+      '<label>Nome<input class="txt" data-id="nome" placeholder="Seu herói" /></label>'
+      + '<label>Título<input class="txt" data-id="titulo" placeholder="ex.: o Bravo" /></label>'
+      + '<label>Jogador<input class="txt" data-id="jogador" /></label>'
+      + '<label>Raça<select class="racasel" id="raca-sel"></select></label>'
+      + '<label>Altura<input class="txt" data-id="altura" placeholder="ex.: 1,85 m" /></label>'
+      + '<label>Peso<input class="txt" data-id="peso" placeholder="ex.: 90 kg" /></label>'
+      + '<label>Idade<input class="txt" data-id="idade" placeholder="ex.: 24 anos" /></label>'
+      + '<label>Conceito<input class="txt" data-id="conceito" placeholder="ex.: Paladino" /></label>';
+
     montarFicha({
       carregar: () => (pers.ficha && Object.keys(pers.ficha).length ? pers.ficha : null),
       salvar: canEdit ? (S) => salvarFicha(S) : () => {},
@@ -432,7 +446,14 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .retrato-frame.ajustando { cursor: grab; box-shadow: 0 0 0 2px var(--accent); }
   .retrato-frame.ajustando:active { cursor: grabbing; }
   .retrato-frame.ajustando img { transition: none; }
-  .retrato-range { width: 172px; accent-color: var(--accent); cursor: pointer; }
+  .retrato-range { -webkit-appearance: none; appearance: none; width: 172px; height: 16px; background: transparent; cursor: pointer; margin: 0; }
+  .retrato-range::-webkit-slider-runnable-track { height: 3px; border-radius: 3px; background: color-mix(in srgb, var(--accent) 40%, var(--rule)); }
+  .retrato-range::-moz-range-track { height: 3px; border-radius: 3px; background: color-mix(in srgb, var(--accent) 40%, var(--rule)); }
+  .retrato-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; margin-top: -5.5px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 1px 3px rgba(0,0,0,.35); }
+  .retrato-range::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 1px 3px rgba(0,0,0,.35); }
+  .retrato-range:focus-visible { outline: none; }
+  .retrato-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
+  .retrato-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
   .retrato-acoes { display: flex; flex-direction: column; gap: .35rem; width: 172px; }
   .retrato-btn, .retrato-del { cursor: pointer; font-size: .78rem; text-align: center; justify-content: center; }
   .retrato-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 2rem; background: color-mix(in srgb, #000 80%, transparent); cursor: zoom-out; }
@@ -443,8 +464,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .pers-ident h1 { margin: .05rem 0 .2rem; }
   .pers-mesa { font-style: italic; font-size: .9rem; }
   .ident-slot { margin-top: .2rem; }
-  .ident-slot .idrow { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .5rem 1rem; margin: 0 0 .4rem; }
-  .ident-slot .raca-info { margin: 0; }
+  .ident-slot .idrow { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem 1rem; margin: 0; }
+  @media (max-width: 720px) { .ident-slot .idrow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .xp-linha { margin-top: auto; padding-top: .3rem; }
   .xp-nota { color: var(--muted); font-size: .9rem; }
   .mestre-xp { display: flex; align-items: flex-end; gap: .6rem; flex-wrap: wrap; margin-top: .4rem; }
