@@ -92,14 +92,14 @@ A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impac
 | Armadura | Classe | Impacto | Corte | Perfuração (Nível) | Penalidade |
 |---|:---:|:---:|:---:|:---:|:---:|
 | Nenhuma | — | 0 | 0 | 0 / N 0 | 0 |
-| Gambeson | leve | 3 | 6 | 1 / N 0 | −1 |
-| Couro endurecido | leve | 2 | 4 | 1 / N 1 | −1 |
-| Cota de malha | média | 1 | 8 | 1 / N 1 | −2 |
-| Brigandina | média | 4 | 8 | 3 / N 1 | −2 |
-| Lamelar | média | 3 | 8 | 3 / N 1 | −2 |
-| Placa de transição | pesada | 4 | 10 | 3 / N 2 | −3 |
-| Placa de munição | pesada | 4 | 9 | 4 / N 2 | −3 |
-| Placa completa | pesada | 6 | 11 | 4 / N 3 | −3 |
+| Gambeson | leve | 3 | 4 | 1 / N 0 | −1 |
+| Couro endurecido | leve | 2 | 2 | 1 / N 1 | −1 |
+| Cota de malha | média | 1 | 6 | 1 / N 1 | −2 |
+| Brigandina | média | 4 | 6 | 3 / N 1 | −2 |
+| Lamelar | média | 3 | 6 | 3 / N 1 | −2 |
+| Placa de transição | pesada | 4 | 8 | 3 / N 2 | −3 |
+| Placa de munição | pesada | 4 | 7 | 4 / N 2 | −3 |
+| Placa completa | pesada | 6 | 9 | 4 / N 3 | −3 |
 
 </div>
 
@@ -115,12 +115,12 @@ Contra **projéteis rápidos** (flecha, virote, bala de funda, dardo), o escudo 
 
 | Escudo | Defesa | vs Projétil rápido | Penalidade | Estilo |
 |---|:---:|:---:|:---:|---|
-| Broquel | +2 | não | 0 | puro uso ativo; ineficaz contra projéteis |
-| Targe / rodela | +3 | não | −1 | duelista, cobertura limitada; ineficaz contra projéteis |
-| Escudo redondo | +4 | bloqueia | −1 | o melhor todo-terreno barato |
-| Heater | +4 | bloqueia | −2 | cobre o tronco, a pé ou a cavalo |
-| Kite normando | +4 | bloqueia | −2 | muita cobertura, pesado |
-| Scutum | +4 | bloqueia | −3 | brilha em formação (testudo) |
+| Broquel | +1 | não | 0 | puro uso ativo; ineficaz contra projéteis |
+| Targe / rodela | +1 | não | 0 | duelista, cobertura limitada; ineficaz contra projéteis |
+| Escudo redondo | +2 | bloqueia | −1 | o melhor todo-terreno barato |
+| Heater | +3 | bloqueia | −2 | cobre o tronco, a pé ou a cavalo |
+| Kite normando | +3 | bloqueia | −2 | muita cobertura, pesado |
+| Scutum | +3 | bloqueia | −3 | brilha em formação (testudo) |
 | Pavês | +3 | bloqueia (+3) | −4 | parede portátil do besteiro: +3 na Defesa contra projéteis |
 
 </div>
