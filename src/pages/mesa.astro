@@ -133,6 +133,35 @@ import Base from '../layouts/Base.astro';
       </div>
     </form>
   </dialog>
+
+  <dialog id="edit-dlg" class="acao-dlg edit-dlg">
+    <form method="dialog" class="acao-form">
+      <h3 id="edit-titulo" class="cinzel">Editar combatente</h3>
+      <label>Nome
+        <input type="text" id="edit-nome" placeholder="nome do combatente" />
+      </label>
+      <div class="edit-grid">
+        <label>PV máximo <input type="number" id="edit-pvmax" min="0" /></label>
+        <label>PV atual <input type="number" id="edit-pvat" min="0" /></label>
+        <label>Iniciativa <input type="number" id="edit-ini" /></label>
+      </div>
+      <label>Ataque <input type="text" id="edit-atq" placeholder="ex.: 4d6+2 +1" /></label>
+      <label>Dano <input type="text" id="edit-dano" placeholder="ex.: 3d6 +2 (C)" /></label>
+      <div class="edit-grid">
+        <label>Defesa física <input type="number" id="edit-def" /></label>
+        <label>Resist. Perf. (Nível) <input type="number" id="edit-rperf" min="0" /></label>
+      </div>
+      <div class="edit-grid">
+        <label>Abs. Impacto <input type="number" id="edit-abs-i" min="0" /></label>
+        <label>Abs. Corte <input type="number" id="edit-abs-c" min="0" /></label>
+        <label>Abs. Perfuração <input type="number" id="edit-abs-p" min="0" /></label>
+      </div>
+      <div class="acao-btns">
+        <button type="button" class="btn" id="edit-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="edit-salvar">Salvar</button>
+      </div>
+    </form>
+  </dialog>
 </Base>
 
 <script>
@@ -323,27 +352,42 @@ import Base from '../layouts/Base.astro';
     const atualId = lista.length ? lista[0].id : null;
 
     // Resumo de combate (Ataque/Dano/Defesa/Absorção) por combatente, keyed por id.
-    // PCs: da ficha (o mestre lê todas; o jogador só a própria, via RLS). Criaturas: do bestiário.
+    // Base: PCs da ficha (o mestre lê todas; o jogador só a própria, via RLS) e criaturas do
+    // bestiário. Sobre a base entram os ajustes que o mestre salvou em `c.dados` (por instância).
     const RESUMO: Record<string, any> = {};
     const pcIds = [...new Set((combs || []).filter((c: any) => c.tipo === 'pc' && c.personagem_id).map((c: any) => c.personagem_id))];
+    let byPid: Record<string, any> = {};
     if (pcIds.length) {
       const { data: fichas } = await sb.from('personagens').select('id, ficha').in('id', pcIds);
-      const byPid: Record<string, any> = Object.fromEntries((fichas || []).map((f: any) => [f.id, f.ficha]));
-      for (const c of (combs || [])) {
-        if (c.tipo === 'pc' && byPid[c.personagem_id]) { try { RESUMO[c.id] = resumoCombatePC(byPid[c.personagem_id]); } catch {} }
-      }
+      byPid = Object.fromEntries((fichas || []).map((f: any) => [f.id, f.ficha]));
     }
-    for (const c of (combs || [])) {
+    const baseResumo = (c: any) => {
+      if (c.tipo === 'pc' && byPid[c.personagem_id]) { try { return resumoCombatePC(byPid[c.personagem_id]); } catch { return null; } }
       if (c.tipo === 'criatura') {
         const cb = MON[c.monstro_id]?.combate || {};
         const a0 = (cb.ataques || [])[0];
         const ab = cb.absorcao;
-        RESUMO[c.id] = {
+        return {
           arma: a0?.nome || '', ataque: a0?.pool || '', dano: a0 ? fmtDano(a0.dano) : '', defesa: cb.defesa ?? null,
           soak: ab ? { impacto: ab.impacto || 0, corte: ab.corte || 0, perfuracao: ab.perfuracao || 0 } : { impacto: 0, corte: 0, perfuracao: 0 },
           resistPerf: cb.resistenciaPerfuracao || 0,
         };
       }
+      return null;
+    };
+    for (const c of (combs || [])) {
+      const base = baseResumo(c);
+      const ov = (c.dados && typeof c.dados === 'object') ? c.dados : {};
+      if (!base && !Object.keys(ov).length) continue; // avulso sem ajustes: sem stats
+      const bs = base?.soak || {}; const os = ov.soak || {};
+      RESUMO[c.id] = {
+        arma: ov.arma ?? base?.arma ?? '',
+        ataque: ov.ataque ?? base?.ataque ?? '',
+        dano: ov.dano ?? base?.dano ?? '',
+        defesa: ov.defesa ?? base?.defesa ?? null,
+        soak: { impacto: os.impacto ?? bs.impacto ?? 0, corte: os.corte ?? bs.corte ?? 0, perfuracao: os.perfuracao ?? bs.perfuracao ?? 0 },
+        resistPerf: ov.resistPerf ?? base?.resistPerf ?? 0,
+      };
     }
 
     const controles = ehMestre ? `<div class="enc-ctrl">
@@ -374,7 +418,7 @@ import Base from '../layouts/Base.astro';
           <span class="hp-fb" data-c="${c.id}"></span>
         </span>` : ''}
       </div>` : '';
-      const act = ehMestre ? `<span class="cmb-act"><input type="number" class="spd" data-c="${c.id}" value="5" title="Speed da ação" /><button class="btn mini agir" data-c="${c.id}" data-tick="${c.tick}">agiu</button><button class="btn mini perigo rm" data-c="${c.id}">✕</button></span>` : '';
+      const act = ehMestre ? `<span class="cmb-act"><input type="number" class="spd" data-c="${c.id}" value="5" title="Speed da ação" /><button class="btn mini agir" data-c="${c.id}" data-tick="${c.tick}">agiu</button><button class="btn mini editc" data-c="${c.id}" title="Editar dados">✎</button><button class="btn mini perigo rm" data-c="${c.id}">✕</button></span>` : '';
       return `<div class="cmb-row${atual ? ' atual' : ''}">
         <span class="cmb-tick" title="tick da próxima ação">t${c.tick}</span>
         <div class="cmb-main">
@@ -453,22 +497,13 @@ import Base from '../layouts/Base.astro';
       }
       await reload();
     });
-    document.getElementById('enc-add-cri-btn')?.addEventListener('click', async () => {
+    document.getElementById('enc-add-cri-btn')?.addEventListener('click', () => {
       const mid = (document.getElementById('enc-cri-sel') as HTMLSelectElement).value; const m = MON[mid];
       const pvv = m?.combate?.pv ?? null;
-      const { error } = await sb.from('combatentes').insert({ encontro_id: enc.id, tipo: 'criatura', monstro_id: mid, nome: m?.nome || mid, pv_max: pvv, pv_atual: pvv, tick: 0, iniciativa: iniDeMonstro(m) });
-      if (error) return alert('Erro: ' + error.message);
-      await logAcao(`${m?.nome || mid} entrou (criatura).`);
-      await reload();
+      abrirEditar({ tipo: 'criatura', monstro_id: mid, nome: m?.nome || mid, pv_max: pvv, pv_atual: pvv, iniciativa: iniDeMonstro(m) }, baseResumo({ tipo: 'criatura', monstro_id: mid }));
     });
-    document.getElementById('enc-add-custom')?.addEventListener('click', async () => {
-      const nome = prompt('Nome do combatente:', ''); if (!nome) return;
-      const pvS = prompt('PV (deixe vazio se não usar):', ''); const ini = prompt('Iniciativa:', '0');
-      const pvN = pvS && pvS.trim() ? parseInt(pvS, 10) : null;
-      const { error } = await sb.from('combatentes').insert({ encontro_id: enc.id, tipo: 'custom', nome: nome.trim(), pv_max: pvN, pv_atual: pvN, tick: 0, iniciativa: parseInt(ini || '0', 10) || 0 });
-      if (error) return alert('Erro: ' + error.message);
-      await logAcao(`${nome.trim()} entrou.`);
-      await reload();
+    document.getElementById('enc-add-custom')?.addEventListener('click', () => {
+      abrirEditar({ tipo: 'custom', nome: '', pv_max: null, pv_atual: null, iniciativa: 0 }, {});
     });
     const dlg = document.getElementById('acao-dlg') as HTMLDialogElement;
     const abrirAcao = (cid: string, tickAtual: number) => {
@@ -528,6 +563,63 @@ import Base from '../layouts/Base.astro';
       dlg.showModal();
     };
     area.querySelectorAll<HTMLElement>('.agir').forEach((b) => b.addEventListener('click', () => abrirAcao(b.dataset.c!, parseInt(b.dataset.tick || '0', 10) || 0)));
+
+    // ---- Editar dados do combatente (novo ao adicionar, ou existente) ----
+    const editDlg = document.getElementById('edit-dlg') as HTMLDialogElement;
+    const gv = (id: string) => document.getElementById(id) as HTMLInputElement;
+    const abrirEditar = (row: any, resumo: any) => {
+      const r = resumo || {}; const sk = r.soak || {};
+      (document.getElementById('edit-titulo') as HTMLElement).textContent = row.id ? `Editar ${row.nome || 'combatente'}` : (row.tipo === 'criatura' ? `Adicionar ${row.nome || 'criatura'}` : 'Novo combatente avulso');
+      gv('edit-nome').value = row.nome || '';
+      gv('edit-pvmax').value = row.pv_max != null ? String(row.pv_max) : '';
+      gv('edit-pvat').value = row.pv_atual != null ? String(row.pv_atual) : '';
+      gv('edit-ini').value = row.iniciativa != null ? String(row.iniciativa) : '0';
+      gv('edit-atq').value = r.ataque || '';
+      gv('edit-dano').value = r.dano || '';
+      gv('edit-def').value = r.defesa != null ? String(r.defesa) : '';
+      gv('edit-rperf').value = r.resistPerf ? String(r.resistPerf) : '';
+      gv('edit-abs-i').value = sk.impacto != null ? String(sk.impacto) : '';
+      gv('edit-abs-c').value = sk.corte != null ? String(sk.corte) : '';
+      gv('edit-abs-p').value = sk.perfuracao != null ? String(sk.perfuracao) : '';
+      (document.getElementById('edit-cancelar') as HTMLElement).onclick = () => editDlg.close();
+      (document.getElementById('edit-salvar') as HTMLElement).onclick = async () => {
+        const numOrNull = (v: string) => { const n = parseInt(v, 10); return v.trim() === '' || isNaN(n) ? null : n; };
+        const num0 = (v: string) => { const n = parseInt(v, 10); return isNaN(n) ? 0 : n; };
+        const nome = gv('edit-nome').value.trim() || row.nome || 'Combatente';
+        const pvmax = numOrNull(gv('edit-pvmax').value);
+        let pvat = numOrNull(gv('edit-pvat').value);
+        if (pvat == null && pvmax != null) pvat = pvmax;
+        if (pvat != null && pvmax != null) pvat = Math.min(pvat, pvmax);
+        const ini = num0(gv('edit-ini').value);
+        const dados = {
+          ataque: gv('edit-atq').value.trim(), dano: gv('edit-dano').value.trim(),
+          defesa: numOrNull(gv('edit-def').value), resistPerf: num0(gv('edit-rperf').value),
+          soak: { impacto: num0(gv('edit-abs-i').value), corte: num0(gv('edit-abs-c').value), perfuracao: num0(gv('edit-abs-p').value) },
+        };
+        const cols: any = { nome, pv_max: pvmax, pv_atual: pvat, iniciativa: ini };
+        editDlg.close();
+        const semColuna = (e: any) => e && /dados/i.test(e.message || '');
+        if (row.id) {
+          let { error } = await sb.from('combatentes').update({ ...cols, dados }).eq('id', row.id);
+          if (semColuna(error)) ({ error } = await sb.from('combatentes').update(cols).eq('id', row.id));
+          if (error) return alert('Erro: ' + error.message);
+          await logAcao(`${nome}: dados editados pelo mestre.`);
+        } else {
+          const ins: any = { encontro_id: enc.id, tipo: row.tipo || 'custom', tick: 0, ...cols, dados };
+          if (row.monstro_id) ins.monstro_id = row.monstro_id;
+          let { error } = await sb.from('combatentes').insert(ins);
+          if (semColuna(error)) { delete ins.dados; ({ error } = await sb.from('combatentes').insert(ins)); }
+          if (error) return alert('Erro: ' + error.message);
+          await logAcao(`${nome} entrou${row.tipo === 'criatura' ? ' (criatura)' : ''}.`);
+        }
+        await reload();
+      };
+      editDlg.showModal();
+    };
+    area.querySelectorAll<HTMLElement>('.editc').forEach((b) => b.addEventListener('click', () => {
+      const c = (combs || []).find((x: any) => x.id === b.dataset.c); if (c) abrirEditar(c, RESUMO[c.id]);
+    }));
+
     // Atualiza a barra em-lugar (anima largura/cor), sem re-renderizar a lista toda.
     const atualizarBarra = (cid: string, c: any) => {
       const bar = area.querySelector<HTMLElement>(`.hpbar[data-c="${cid}"]`); if (!bar) return;
@@ -1015,6 +1107,11 @@ import Base from '../layouts/Base.astro';
   .acao-dano-row { display: flex; gap: .6rem; }
   .acao-dano-row label { flex: 1; }
   .acao-btns { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .3rem; }
+  .edit-dlg { max-width: 30rem; }
+  .edit-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
+  .edit-grid label { min-width: 0; }
+  .cmb-act .editc { border-color: var(--accent); color: var(--accent); }
+  .cmb-act .editc:hover { background: color-mix(in srgb, var(--accent) 18%, transparent); }
 
   .cr-atk { font-size: .85rem; color: var(--ink-soft); }
   .cr-atk .cr-atk-nm { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink); }
