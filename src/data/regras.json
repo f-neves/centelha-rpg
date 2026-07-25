@@ -400,7 +400,7 @@
     "especialidadePrimaria": {
       "tipo": "flat",
       "valor": 10,
-      "limite": "Especialidade nomeada: cada Habilidade admite até [nível/2] especialidades diferentes, cada uma até nível [nível/2]. Bônus situacional (só no escopo nomeado, o Mestre julga), não soma em toda rolagem."
+      "limite": "Especialidade nomeada: cada Habilidade abre até [nível/2] níveis no total (um quadrado por nível), distribuídos em escopos nomeados diferentes ou concentrados num só. Bônus situacional (só no escopo nomeado, o Mestre julga), não soma em toda rolagem."
     },
     "especialidadeSecundaria": {
       "tipo": "flat",

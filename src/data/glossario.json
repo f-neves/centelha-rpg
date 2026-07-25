@@ -152,7 +152,7 @@
     "aliases": [
       "especialização"
     ],
-    "definicao": "Treino focado num escopo estreito e NOMEADO de uma Habilidade (ex.: 'espada longa', 'nas sombras'). Cada Habilidade admite até [nível ÷ 2] Especialidades diferentes, cada uma até nível [nível ÷ 2] (Habilidade 5: até duas, cada uma até 2; Habilidade 1: nenhuma). Vale só quando o escopo se aplica (o Mestre julga), não em toda rolagem: por nível, role +1d6 e descarte o menor; em valores fixos, +1 por nível. Custa 10 XP por nível na primária, 5 na secundária."
+    "definicao": "Treino focado num escopo estreito e NOMEADO de uma Habilidade (ex.: 'espada longa', 'nas sombras'). Cada Habilidade abre até [nível ÷ 2] níveis de Especialidade no total (um quadrado por nível; Habilidade 5: 2; Habilidade 1: nenhuma), que você distribui em especialidades diferentes ou concentra num nome só. Vale só quando o escopo se aplica (o Mestre julga), não em toda rolagem: por nível com aquele nome, role +1d6 e descarte o menor; em valores fixos, +1 por nível. Custa 10 XP por nível na primária, 5 na secundária."
   },
   {
     "id": "banda",

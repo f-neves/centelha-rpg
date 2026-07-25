@@ -117,22 +117,22 @@ Cada Especialidade aponta para **um recorte único e estreito** da Habilidade-m�
 
 ### Quantas, e até quanto
 
-Cada **2 níveis** de Habilidade abrem **1 nível de Especialidade** naquela perícia. Ou seja, uma Habilidade de nível N comporta até **[N ÷ 2]** Especialidades **diferentes**, cada uma podendo chegar a até **[N ÷ 2]** níveis:
+Cada **2 níveis** de Habilidade abrem **1 nível de Especialidade** naquela perícia: uma Habilidade de nível N tem até **[N ÷ 2]** níveis de Especialidade no total (na ficha, um quadrado ao lado da perícia por nível disponível).
 
-- Habilidade 1: nenhuma (a primeira só abre em nível 2).
-- Habilidade 2 ou 3: uma Especialidade, até nível 1.
-- Habilidade 4 ou 5: até duas Especialidades, cada uma até nível 2.
-- Habilidade 6 ou 7: até três Especialidades, cada uma até nível 3.
+- Habilidade 1: nenhum (o primeiro só abre em nível 2).
+- Habilidade 2 ou 3: 1 nível.
+- Habilidade 4 ou 5: 2 níveis.
+- Habilidade 6: 3 níveis.
 
-Assim, quem tem **Armas de Uma Mão 7** pode manter três focos distintos (por exemplo "espadas", "escudos" e "machados"), cada um até nível 3. Na prática, pelo custo em XP a maioria concentra **uma** Especialidade por Habilidade; ter várias é opção de quem levou a perícia alto. Cada Especialidade pertence **àquela Habilidade**: a de Furtividade não ajuda em Atletismo.
+Cada nível é um **escopo nomeado**. Você distribui esses níveis como quiser: em **especialidades diferentes** (cada quadrado um foco, por exemplo "espadas", "escudos" e "machados") ou **concentrados** num só (repetindo o mesmo nome para aprofundá-lo, por exemplo dois níveis em "espada longa"). Na ficha, clicar (ou passar o mouse) num quadrado abre um pequeno painel para escrever o nome de cada nível. Cada Especialidade pertence **àquela Habilidade**: a de Furtividade não ajuda em Atletismo.
 
 ### Como funciona na mesa
 
-O bônus é **situacional**: o Mestre julga se o escopo nomeado se aplica à ação. Quando se aplica, para cada nível dessa Especialidade role **+1d6 e descarte o menor** dado do pool. Em valores fixos (como uma Defesa), cada nível vale **+1**. Fora do escopo, a Especialidade não faz nada, e por isso a ficha **não a soma automaticamente** no rolador.
+O bônus é **situacional**: o Mestre julga se o escopo nomeado se aplica à ação. Quando se aplica, para cada nível com aquele nome role **+1d6 e descarte o menor** dado do pool. Em valores fixos (como uma Defesa), cada nível vale **+1**. Fora do escopo, a Especialidade não faz nada, e por isso a ficha **não a soma automaticamente** no rolador.
 
 Cada nível custa **10 XP** numa Habilidade primária e **5 XP** numa secundária.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Você tem Armas de Uma Mão 5 e a Especialidade "espada longa" em nível 2. Num duelo de espada longa (base 3d6+2), o escopo vale: você rola 5d6+2 e descarta os dois dados mais baixos. Contra um oponente de lança, o escopo não vale e você rola só os 3d6+2.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Você tem Armas de Uma Mão 5 (2 níveis de Especialidade) e escreveu "espada longa" nos dois. Num duelo de espada longa (base 3d6+2), o escopo vale duplo: você rola 5d6+2 e descarta os dois dados mais baixos. Contra um oponente de lança, o escopo não vale e você rola só os 3d6+2.</div>
 
 ## Stunts — recompensa à ousadia
 

@@ -110,7 +110,7 @@ export function montarFicha(opts: FichaOpts) {
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1400, modo: 'evolucao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' }, defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1400, modo: 'evolucao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' }, bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -118,12 +118,19 @@ export function montarFicha(opts: FichaOpts) {
   }
   // Especialidades: lista nomeada [{s, v}]. Teto por Habilidade = [nível/2] especialidades, cada uma até [nível/2].
   // Também converte o formato antigo (número solto) e reaplica os tetos a cada carga.
-  function clampSpecs(arr: any, skill: number) {
+  function mkBolsas() { return [{ nome: 'Mochila', texto: '' }, { nome: 'Equipamentos', texto: '' }, { nome: 'Carroça', texto: '' }]; }
+  // Especialidade = lista de nomes, um por NÍVEL (quadrado). Teto [nível/2] níveis por perícia.
+  // Converte os formatos antigos: número solto e lista [{s, v}] (achatando v em v nomes).
+  function clampSpecs(arr: any, skill: number): string[] {
     const cap = Math.floor((skill || 0) / 2);
-    const list = Array.isArray(arr)
-      ? arr.map((e: any) => ({ s: String(e?.s ?? ''), v: Math.max(0, Math.min(cap, e?.v || 0)) }))
-      : (typeof arr === 'number' && arr > 0 ? [{ s: '', v: Math.min(cap, arr) }] : []);
-    return list.filter((e: any) => e.v > 0).slice(0, cap);
+    const names: string[] = [];
+    if (Array.isArray(arr)) {
+      for (const e of arr) {
+        if (typeof e === 'string') names.push(e);
+        else if (e && typeof e === 'object') { const v = Math.max(1, e.v || 1); for (let i = 0; i < v; i++) names.push(String(e.s ?? '')); }
+      }
+    } else if (typeof arr === 'number' && arr > 0) { for (let i = 0; i < arr; i++) names.push(''); }
+    return names.slice(0, cap).map((s) => String(s ?? ''));
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
@@ -136,6 +143,7 @@ export function montarFicha(opts: FichaOpts) {
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.escudo ??= 'nenhum';
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
+    S.bolsas = (Array.isArray(S.bolsas) && S.bolsas.length) ? S.bolsas.map((b: any) => ({ nome: String(b?.nome ?? ''), texto: String(b?.texto ?? '') })) : mkBolsas();
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id] || 0); });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
@@ -155,17 +163,42 @@ export function montarFicha(opts: FichaOpts) {
     return h + '</span>';
   };
   const escapeHtml = (s: string) => String(s).replace(/[&<>"]/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' } as Record<string, string>)[c]));
-  // Lista de especialidades nomeadas de uma Habilidade (scope 'p' = primária, 's' = secundária).
-  const specLine = (scope: string, key: string, arr: any[], skill: number) => {
+  // Quadrados de especialidade, um por nível, ao lado da Habilidade (scope 'p' primária, 's' secundária).
+  // Cada quadrado aceso é uma especialidade nomeada; o nome sai no tooltip e no modal flutuante.
+  const specSquares = (scope: string, key: string, arr: string[], skill: number) => {
     arr = arr || [];
     const cap = Math.floor((skill || 0) / 2);
-    if (!(arr.length || (cap > 0 && !opts.readOnly))) return '';
-    const items = arr.map((e: any, i: number) =>
-      `<span class="specitem"${opts.readOnly ? '' : ` data-spec-edit="${scope}:${key}:${i}" title="Clique para editar"`}>${escapeHtml(e.s || '(sem nome)')} <b>${e.v}</b>${opts.readOnly ? '' : `<button class="spec-x" data-spec-del="${scope}:${key}:${i}" aria-label="Remover">×</button>`}</span>`).join('');
-    const add = (!opts.readOnly && cap > 0 && arr.length < cap)
-      ? `<button class="spec-add" data-spec-add="${scope}:${key}" title="Até ${cap} especialidades, cada uma até nível ${cap}">+ especialidade</button>` : '';
-    return `<div class="specrow"><span class="spec-lbl">Especialidades</span>${items}${add}</div>`;
+    if (cap <= 0 && arr.length === 0) return '';
+    let sq = '';
+    for (let d = 1; d <= Math.max(cap, arr.length); d++) {
+      const on = d <= arr.length;
+      const nm = on ? (arr[d - 1] || '(sem nome)') : '';
+      sq += `<span class="sq${on ? ' on' : ''}" data-spec="${scope}:${key}" data-d="${d}"${on ? ` title="${escapeHtml(nm)}"` : ''}></span>`;
+    }
+    return `<span class="spec" title="Especialidades (clique ou passe o mouse para nomear)">${sq}</span>`;
   };
+  const specArr = (scope: string, key: string): string[] => scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
+  const specSkill = (scope: string, key: string) => scope === 'p' ? (S.skills[key] || 0) : (S.skills2[key] || 0);
+  const specRerender = (scope: string) => { scope === 'p' ? renderSkills() : renderSecondary(); };
+  // Modal flutuante para nomear as especialidades de uma perícia (um campo por nível).
+  let specPop: HTMLElement | null = null, specPopFor = '';
+  function closeSpecPop() { if (specPop) specPop.style.display = 'none'; const was = specPopFor; specPopFor = ''; if (was) specRerender(was.split(':')[0]); }
+  function openSpecPop(scope: string, key: string) {
+    if (opts.readOnly) return;
+    const arr = specArr(scope, key); if (!arr.length) { closeSpecPop(); return; }
+    const anchor = document.querySelector<HTMLElement>(`.sq[data-spec="${scope}:${key}"]`); if (!anchor) return;
+    const nome = anchor.closest('.trow')?.querySelector('.nm')?.textContent?.trim() || 'Habilidade';
+    if (!specPop) { specPop = document.createElement('div'); specPop.className = 'specpop'; document.body.appendChild(specPop); }
+    specPop.style.display = 'block'; specPopFor = scope + ':' + key;
+    specPop.innerHTML = `<div class="specpop-h">Especialidades — ${escapeHtml(nome)}</div>`
+      + arr.map((nm, i) => `<label class="specpop-row"><span>Nível ${i + 1}</span><input data-spname="${i}" value="${escapeHtml(nm)}" placeholder="ex.: espada longa" /></label>`).join('')
+      + `<div class="specpop-f"><button class="btn" data-specpop-close type="button">Fechar</button></div>`;
+    const r = anchor.getBoundingClientRect(), w = 250;
+    specPop.style.left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - w - 8)) + 'px';
+    specPop.style.top = (window.scrollY + r.bottom + 6) + 'px';
+    specPop.querySelectorAll<HTMLInputElement>('input[data-spname]').forEach((inp) => inp.addEventListener('input', () => { arr[+inp.dataset.spname!] = inp.value; save(); }));
+    (specPop.querySelector('input[data-spname]') as HTMLInputElement | null)?.focus();
+  }
   const trow = (nm: string, right: string) => `<div class="trow"><span class="nm">${nm}</span><span class="tr-r">${right}</span></div>`;
   const rollBtn = (k: string, key: string) => `<button class="rollv" data-roll="${k}:${key}" title="Enviar ao rolador" aria-label="Rolar">🎲</button>`;
 
@@ -193,14 +226,14 @@ export function montarFicha(opts: FichaOpts) {
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' })));
     const cols = [['Combate', 'Físicas'], ['Sociais'], ['Saber']];
     el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + rollBtn('skill', s.id)) + specLine('p', s.id, S.spec[s.id] || [], S.skills[s.id] || 0)).join('') : '').join('') + '</div>').join('');
+      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specSquares('p', s.id, S.spec[s.id] || [], S.skills[s.id] || 0) + rollBtn('skill', s.id))).join('') : '').join('') + '</div>').join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' })));
     const cols = [['Corpo', 'Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
     el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0)) + specLine('s', k, S.spec2[k] || [], S.skills2[k] || 0); }).join('')).join('') + '</div>').join('');
+      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specSquares('s', k, S.spec2[k] || [], S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
   }
   function renderCaminhos() {
     const card = (cam: string) => {
@@ -316,17 +349,20 @@ export function montarFicha(opts: FichaOpts) {
       if (t.checked) set.add(t.dataset.arm!); else set.delete(t.dataset.arm!);
       S.equip.armaduras = [...set]; renderDerived(); renderCombate(); save();
     }));
+    const ro = opts.readOnly ? ' disabled' : '';
+    el('eq-bolsas').innerHTML = (S.bolsas || []).map((b: any, i: number) =>
+      `<div class="bolsa"><input class="bolsa-nome" data-bolsa-nome="${i}" value="${escapeHtml(b.nome)}" aria-label="Nome do campo de equipamento"${ro} /><textarea class="bolsa-txt" data-bolsa-txt="${i}" rows="3" placeholder="O que carrega aqui…"${ro}>${escapeHtml(b.texto)}</textarea></div>`).join('');
   }
   function recompute() {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
     (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 1, S.attrs[a.id] || 1)));
-    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || []).reduce((a: number, e: any) => a + (e.v || 0), 0) * 10; });
+    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || []).length * 10; });
     ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += (e.v || 0) * 10)));
     (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
     xw = custoPontos('vontade', 1, S.willpower || 1);
     xap = custoPontos('aparencia', 1, S.aparencia || 1);
     xc = custoPontos('centelha', 0, S.centelha || 0);
-    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || []).reduce((a: number, e: any) => a + (e.v || 0), 0) * 5; });
+    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || []).length * 5; });
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += TECNIV[id] * 10; });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
     const xr = RACA[S.raca]?.custo || 0;
@@ -377,8 +413,17 @@ export function montarFicha(opts: FichaOpts) {
     applyVal(kind, key, valOf(kind, key) + delta);
     (document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`) as HTMLElement)?.focus();
   }
+  document.addEventListener('mouseover', (e) => {
+    if (opts.readOnly) return;
+    const sqOn = (e.target as HTMLElement).closest<HTMLElement>('.spec .sq.on'); if (!sqOn) return;
+    if (specPopFor === sqOn.dataset.spec) return;
+    const [scope, key] = sqOn.dataset.spec!.split(':'); openSpecPop(scope, key);
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSpecPop(); });
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
+    if (t.closest('[data-specpop-close]')) { closeSpecPop(); return; }
+    if (specPopFor && !t.closest('.specpop') && !t.closest('.spec .sq')) closeSpecPop();
     const nm = t.closest<HTMLElement>('.trow .nm');
     if (nm) { openTraitModal(nm); return; }
     const dot = t.closest<HTMLElement>('.dots .dot');
@@ -388,27 +433,17 @@ export function montarFicha(opts: FichaOpts) {
       if (k === 'attr') { const a = rd('atr'); if (a) { a.value = String(S.attrs[key] || 0); a.dispatchEvent(new Event('input')); } }
       else { const hb = rd('hab'), es = rd('esp'); if (hb) hb.value = String(S.skills[key] || 0); if (es) es.value = '0'; hb?.dispatchEvent(new Event('input')); }
       document.querySelector('.rolador')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-    // especialidades nomeadas (scope 'p' = primária, 's' = secundária)
-    const specArr = (scope: string, key: string) => scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
-    const specSkill = (scope: string, key: string) => scope === 'p' ? (S.skills[key] || 0) : (S.skills2[key] || 0);
-    const specRerender = (scope: string) => scope === 'p' ? renderSkills() : renderSecondary();
-    const spDel = t.closest<HTMLElement>('[data-spec-del]');
-    if (spDel && !opts.readOnly) { const [scope, key, idx] = spDel.dataset.specDel!.split(':'); specArr(scope, key).splice(+idx, 1); specRerender(scope); recompute(); return; }
-    const spEdit = t.closest<HTMLElement>('[data-spec-edit]');
-    if (spEdit && !opts.readOnly) {
-      const [scope, key, idx] = spEdit.dataset.specEdit!.split(':'); const cur = specArr(scope, key)[+idx]; if (!cur) return;
-      const cap = Math.floor(specSkill(scope, key) / 2);
-      const s = (window.prompt('Especialidade (escopo estreito, ex.: espada longa, nas sombras, duelo):', cur.s || '') || '').trim(); if (!s) return;
-      const v = Math.max(1, Math.min(cap, parseInt(window.prompt(`Nível (1 a ${cap}):`, String(cur.v)) || String(cur.v), 10) || cur.v));
-      cur.s = s; cur.v = v; specRerender(scope); recompute(); return;
-    }
-    const spAdd = t.closest<HTMLElement>('[data-spec-add]');
-    if (spAdd && !opts.readOnly) {
-      const [scope, key] = spAdd.dataset.specAdd!.split(':'); const cap = Math.floor(specSkill(scope, key) / 2); const arr = specArr(scope, key);
-      if (cap <= 0 || arr.length >= cap) return;
-      const s = (window.prompt('Especialidade (escopo estreito, ex.: espada longa, nas sombras, duelo):') || '').trim(); if (!s) return;
-      const v = Math.max(1, Math.min(cap, parseInt(window.prompt(`Nível (1 a ${cap}):`, '1') || '1', 10) || 1));
-      arr.push({ s, v }); specRerender(scope); recompute(); return;
+    // especialidades: cada quadrado é um nível nomeado (scope 'p' primária, 's' secundária)
+    const sqEl = t.closest<HTMLElement>('.spec .sq');
+    if (sqEl && !opts.readOnly) {
+      const [scope, key] = sqEl.dataset.spec!.split(':'); const d = +sqEl.dataset.d!;
+      const cap = Math.floor(specSkill(scope, key) / 2); const arr = specArr(scope, key);
+      let n = arr.length === d ? d - 1 : d; n = Math.max(0, Math.min(cap, n));
+      while (arr.length < n) arr.push('');
+      arr.length = n;
+      specRerender(scope); recompute();
+      if (n > 0) openSpecPop(scope, key); else closeSpecPop();
+      return;
     }
     const dsAdd = t.closest<HTMLElement>('[data-defspec-add]');
     if (dsAdd && !opts.readOnly) {
@@ -497,6 +532,12 @@ export function montarFicha(opts: FichaOpts) {
   let camAllOpen = false;
   el('cam-all').addEventListener('click', () => { camAllOpen = !camAllOpen; CAM_ORDER.forEach((c) => (OPEN.cam[c] = camAllOpen)); renderCaminhos(); el('cam-all').textContent = camAllOpen ? 'Recolher todos' : 'Expandir todos'; });
   (['eq-arma', 'eq-escudo'] as const).forEach((id) => el(id).addEventListener('change', (e) => { if (opts.readOnly) return; S.equip[id.slice(3)] = (e.target as HTMLSelectElement).value; renderDerived(); renderCombate(); save(); }));
+  el('eq-bolsas').addEventListener('input', (e) => {
+    if (opts.readOnly) return;
+    const t = e.target as HTMLElement;
+    const ni = t.getAttribute('data-bolsa-nome'); if (ni != null) { S.bolsas[+ni].nome = (t as HTMLInputElement).value; save(); return; }
+    const ti = t.getAttribute('data-bolsa-txt'); if (ti != null) { S.bolsas[+ti].texto = (t as HTMLTextAreaElement).value; save(); return; }
+  });
   el('raca-sel').addEventListener('change', (e) => { if (opts.readOnly) return; S.raca = (e.target as HTMLSelectElement).value; (ATTRS_D as any[]).forEach((a) => { const c = capFor('attr', a.id); if ((S.attrs[a.id] || 1) > c) S.attrs[a.id] = c; }); renderAttrs(); renderPower(); renderRaca(); recompute(); save(); });
   el('f-reset').addEventListener('click', () => { if (opts.readOnly) return; if (confirm('Limpar a ficha?')) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });
   el('f-link').addEventListener('click', () => {
