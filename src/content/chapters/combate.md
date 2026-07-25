@@ -115,7 +115,7 @@ Errar por pouco ainda raspa o alvo. Como o **Quase-Acerto** funciona em detalhe 
 Sua Defesa pode vir de duas fontes, e você usa **a melhor** delas contra cada golpe:
 
 - **Esquiva** — com a habilidade Esquiva, mais a mobilidade do terreno. Some sai da frente.
-- **Bloqueio** — com a habilidade da própria arma ou Escudos, mais a **Defesa da Arma** e o escudo. Apara o golpe.
+- **Bloqueio** — com a Habilidade **Bloqueio** (a mesma para qualquer arma, escudo ou mão), mais a **Defesa da Arma** e o escudo. Apara o golpe.
 
 A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra para defender: um **escudo** (+2 a +4) ou uma **arma de parada na mão inábil** (+1) eleva o Bloqueio. É a troca central da empunhadura: **mais dano e alcance com as duas mãos, ou mais guarda com uma mão livre.**
 

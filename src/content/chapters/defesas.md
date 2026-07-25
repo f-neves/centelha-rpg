@@ -64,9 +64,9 @@ Um ponto de **[Centelha](/regras/centelha)** soma **+1** a cada uma das defesas 
 Você tem duas maneiras de se defender e usa a que couber. Na ficha as duas aparecem:
 
 - **Esquiva** = ( Destreza + Esquiva ) × 2 + Centelha + Especialidade
-- **Bloqueio** = ( Destreza + perícia de aparar ) × 2 + Centelha + Especialidade + defesa da arma/escudo
+- **Bloqueio** = ( Destreza + Bloqueio ) × 2 + Centelha + Especialidade + defesa da arma/escudo
 
-A **perícia de aparar** é a que **você escolher** entre Armas de Uma Mão, Armas de Duas Mãos, Briga e Escudos, conforme o que estiver empunhando. A defesa que a arma ou o escudo concede entra por cima, em jogo.
+**Bloqueio** é uma Habilidade única: apara ataques com escudo, arma ou o próprio corpo, seja lá o que estiver empunhando. A defesa que a arma ou o escudo concede entra por cima, em jogo.
 
 ### Defesa Social
 
@@ -118,7 +118,7 @@ Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da cr
 ## Folha de referência
 
 - **Física · Esquiva** = (Des + Esquiva)×2 + Centelha + Esp.
-- **Física · Bloqueio** = (Des + perícia que você escolher)×2 + Centelha + Esp + defesa da arma.
+- **Física · Bloqueio** = (Des + Bloqueio)×2 + Centelha + Esp + defesa da arma.
 - **Social** = (Compostura + Sociabilidade)×2 + Centelha + Esp. Feras usam Sobrevivência.
 - **Mental** = Raciocínio + Integridade + Força de Vontade + Centelha + Esp (soma simples).
 - **Centelha** = +1 em cada defesa e no ataque. **Especialidade** só vale na situação dela.

@@ -29,7 +29,7 @@ Essa régua é geral: um **3** em Força é "forte"; um **3** em Inteligência �
 
 ### Físicos — o corpo
 
-**Força** — Poder físico bruto: erguer, golpear, quebrar, dobrar o ferro. Soma ao dano corpo-a-corpo e define o quanto você carrega e arromba. *Principais Habilidades:* Armas de Uma Mão, Armas de Duas Mãos, Briga, Arremesso, Escudos, Atletismo.
+**Força** — Poder físico bruto: erguer, golpear, quebrar, dobrar o ferro. Soma ao dano corpo-a-corpo e define o quanto você carrega e arromba. *Principais Habilidades:* Armas de Uma Mão, Armas de Duas Mãos, Briga, Arremesso, Bloqueio, Atletismo.
 
 **Destreza** — Agilidade, precisão e coordenação fina. É a base da maioria dos ataques e da Defesa por Esquiva. *Principais Habilidades:* Esquiva, Furtividade, Prestidigitação, Atirador, Atletismo, Ofícios Gerais — e a *finesse* nas armas.
 
@@ -71,8 +71,8 @@ As Habilidades vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. Ca
 - **Armas de Duas Mãos** — Montantes, martelos, lanças e alabardas: alcance, potência e ruptura. *(Força/Destreza)*
 - **Arremesso** — Lançar armas e objetos: adagas, azagaias, machados de arremesso. *(Destreza/Força)*
 - **Atirador** — Arcos e bestas; o tiro mirado, conduzido sobretudo pela Percepção. *(Percepção/Destreza)*
+- **Bloqueio** — Aparar ataques com escudo, arma ou o próprio corpo; base da Defesa por Bloqueio, seja lá o que estiver empunhando. *(Destreza/Força)*
 - **Esquiva** — Desviar-se de golpes e perigos pela mobilidade; base da Defesa por Esquiva. *(Destreza)*
-- **Escudos** — Bloquear com escudo e usá-lo ofensivamente. *(Destreza/Força)*
 
 <p class="muted">As Habilidades de arma se organizam pelo <strong>punho</strong> (uma mão, duas mãos), não pelo tipo de dano: "Armas de Uma Mão" cobre tanto a espada que retalha quanto a maça que esmaga. Cortante, perfurante e impacto são propriedade da <em>arma</em> — a mesma Habilidade empunha vários estilos.</p>
 

@@ -119,6 +119,10 @@ export function montarFicha(opts: FichaOpts) {
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
     S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
+    // Migração: a Habilidade "Escudos" virou "Bloqueio" (id escudos -> bloqueio); carrega pontos e especialidade antigos.
+    if (S.skills.escudos != null && S.skills.bloqueio == null) S.skills.bloqueio = S.skills.escudos;
+    if (S.spec.escudos != null && S.spec.bloqueio == null) S.spec.bloqueio = S.spec.escudos;
+    delete S.skills.escudos; delete S.spec.escudos; delete S.blkPericia;
     S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1400; S.modo ??= 'evolucao'; S.derivCol ??= true;
     S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.escudo ??= 'nenhum';
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
@@ -223,20 +227,14 @@ export function montarFicha(opts: FichaOpts) {
     const cs = (regras.dano as any)?.centelhaNoSoak ?? 0;
     const vig = A('vigor');
     const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), centelha: C }) - penFisica;
-    // Bloqueio: o JOGADOR escolhe a perícia de aparar (Armas 1M/2M, Briga, Escudos); o modificador da arma/escudo entra na aba de Combate.
-    const blkSkills = ['armas-uma-mao', 'armas-duas-maos', 'briga', 'escudos'];
-    const blkNome: Record<string, string> = { 'armas-uma-mao': 'Armas 1 Mão', 'armas-duas-maos': 'Armas 2 Mãos', briga: 'Briga', escudos: 'Escudos' };
-    if (!blkSkills.includes(S.blkPericia)) S.blkPericia = blkSkills.reduce((b, s) => (SK(s) > SK(b) ? s : b), blkSkills[0]);
-    const defBlq = defesa({ destreza: A('destreza'), habilidade: SK(S.blkPericia), centelha: C }) - penFisica;
-    const blkSel = opts.readOnly
-      ? `${defBlq} <span class="muted">(${blkNome[S.blkPericia]})</span>`
-      : `${defBlq} <select data-blkpericia style="font-family:inherit;font-size:.72rem;margin-left:.35rem">${blkSkills.map((s) => `<option value="${s}"${s === S.blkPericia ? ' selected' : ''}>${blkNome[s]} (${SK(s)})</option>`).join('')}</select>`;
+    // Bloqueio: sempre pela Habilidade Bloqueio (independe da arma/escudo). O modificador de Def. da arma/escudo equipados entra na aba de Combate.
+    const defBlq = defesa({ destreza: A('destreza'), habilidade: SK('bloqueio'), centelha: C }) - penFisica;
     const soakStr = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0)).join(' / ');
     // Especialidades situacionais de defesa (S.defSpec) ficam DORMENTES por ora: sem editor na ficha.
     el('derived').innerHTML =
       r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
       r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + Centelha − penalidade') +
-      r('Defesa (Bloqueio)', blkSel, '(Des + perícia de aparar)×2 + Centelha − penalidade') +
+      r('Defesa (Bloqueio)', defBlq, '(Des + Bloqueio)×2 + Centelha − penalidade') +
       r('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }), '(Compostura + Sociabilidade)×2 + Centelha') +
       r('Defesa Mental', defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C }), 'Raciocínio + Integridade + Vontade + Centelha') +
       r('Absorção Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor + Centelha no Impacto; só Centelha em Corte/Perf; + armadura') +
@@ -278,13 +276,13 @@ export function montarFicha(opts: FichaOpts) {
     const modos = ((w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[]).slice().sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
     const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
     const temSec = modos.some((m) => !m.principal);
-    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills[w.pericia] || S.skills2[w.pericia] || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqCaC || 0) - armorPen;
+    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills.bloqueio || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqCaC || 0) - armorPen;
     const blkDS = ((S.defSpec?.bloqueio || []) as any[]).map((e: any) => `${e.v >= 0 ? '+' : ''}${e.v} ${e.s}`);
     el('combate').innerHTML =
       `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${pool}</b> · dano base <b>${danoBase}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
       `<div class="cmb"><b>Modos</b> — ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>` +
       `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego (${(w.folego ?? 0) * 2} → ${(w.folego ?? 0) * 4}…) e +1 Speed.</div>` +
-      (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(${w.pericia === 'escudos' ? 'Escudos' : w.nome} + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqCaC ? ` + escudo ${esc.bloqCaC}` : ''}${armorPen ? ` − armadura ${armorPen}` : ''})</span></div>`) +
+      (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">((Des + Bloqueio)×2 + Centelha + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqCaC ? ` + escudo ${esc.bloqCaC}` : ''}${armorPen ? ` − armadura ${armorPen}` : ''})</span></div>`) +
       (!dist && blkDS.length ? `<div class="cmb muted">Especialidades situacionais de bloqueio: ${blkDS.join(' · ')}.</div>` : '') +
       (esc.bloqCaC ? `<div class="cmb muted">Projétil rápido (flecha, virote, bala de funda, dardo): ${esc.habilProjetil ? 'este escudo é hábil, dá para Bloquear se você estiver apto a manejá-lo (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.${esc.penalidade ? ` Penalidade −${esc.penalidade} nas outras ações físicas (não no próprio bloqueio).` : ''}</div>` : '') +
       (w.notas ? `<div class="cmb muted">${w.notas}</div>` : '') +
@@ -369,11 +367,6 @@ export function montarFicha(opts: FichaOpts) {
     recompute();
   }
 
-  document.addEventListener('change', (e) => {
-    if (opts.readOnly) return;
-    const sel = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-blkpericia]');
-    if (sel) { S.blkPericia = sel.value; recompute(); }
-  });
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
     const nm = t.closest<HTMLElement>('.trow .nm');

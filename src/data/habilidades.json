@@ -59,14 +59,14 @@
     "descricao": "Desviar-se de golpes e perigos pela mobilidade."
   },
   {
-    "id": "escudos",
-    "nome": "Escudos",
+    "id": "bloqueio",
+    "nome": "Bloqueio",
     "grupo": "combate",
     "atributos": [
       "destreza",
       "forca"
     ],
-    "descricao": "Bloquear com escudo e usá-lo ofensivamente."
+    "descricao": "Aparar ataques, seja com escudo, arma ou o próprio corpo. É a perícia que sustenta a Defesa por Bloqueio, independentemente do que se tem em mãos."
   },
   {
     "id": "atletismo",
