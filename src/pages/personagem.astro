@@ -16,11 +16,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     <header class="pers-cab">
       <div class="retrato">
-        <button type="button" class="retrato-zoom" id="retrato-zoom" title="Ampliar" hidden>
+        <div class="retrato-frame" id="retrato-frame" title="Clique para ampliar" hidden>
           <img id="retrato-img" alt="Retrato do personagem" />
-        </button>
-        <div id="retrato-vazio" class="retrato-vazio">Sem imagem</div>
+        </div>
+        <input type="range" class="retrato-range" id="retrato-range" min="1" max="3" step="0.05" value="1" title="Zoom no card" hidden />
         <div class="retrato-acoes">
+          <button type="button" class="btn retrato-ajustar" id="retrato-ajustar" hidden>Ajustar enquadramento</button>
           <label class="btn retrato-btn" id="retrato-lbl" hidden><span id="retrato-lbl-txt">Enviar imagem</span>
             <input type="file" id="retrato-file" accept="image/*" hidden />
           </label>
@@ -139,25 +140,67 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const status = pers.status || 'rascunho';
     const canEdit = (ehDono && status === 'rascunho') || ehMestre;
 
-    // retrato (o dono envia a imagem; o storage exige que seja o dono)
+    // ---- Retrato: exibição, enquadramento (pan/zoom só no card) e lightbox ----
     const podeRetrato = ehDono && status === 'rascunho';
     let retratoPath: string | null = pers.imagem_path || null;
-    if (retratoPath) await mostrarRetrato(sb, retratoPath, podeRetrato);
+    const FW = 172, FH = 208;
+    const posPadrao = () => ({ x: 50, y: 50, z: 1 });
+    let pos = (pers.imagem_pos && typeof pers.imagem_pos === 'object')
+      ? { x: pers.imagem_pos.x ?? 50, y: pers.imagem_pos.y ?? 50, z: pers.imagem_pos.z ?? 1 } : posPadrao();
+    const imgEl = document.getElementById('retrato-img') as HTMLImageElement;
+    const frameEl = document.getElementById('retrato-frame')!;
+    const rangeEl = document.getElementById('retrato-range') as HTMLInputElement;
+    const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+    const aplicarPos = () => {
+      imgEl.style.objectPosition = `${pos.x}% ${pos.y}%`;
+      imgEl.style.transformOrigin = `${pos.x}% ${pos.y}%`;
+      imgEl.style.transform = `scale(${pos.z})`;
+      rangeEl.value = String(pos.z);
+    };
+    const salvarPos = debounce(async () => { try { await sb.from('personagens').update({ imagem_pos: pos }).eq('id', id); } catch {} }, 500);
+
+    if (retratoPath) { await mostrarRetrato(sb, retratoPath, podeRetrato); aplicarPos(); }
     else estadoRetrato(false, podeRetrato);
+
     if (podeRetrato) {
       (document.getElementById('retrato-file') as HTMLInputElement).addEventListener('change', async (e) => {
         const novo = await subirRetrato(sb, id!, (e.target as HTMLInputElement).files?.[0]);
-        if (novo) retratoPath = novo;
+        if (novo) { retratoPath = novo; pos = posPadrao(); aplicarPos(); salvarPos(); }
       });
       document.getElementById('retrato-del')!.addEventListener('click', async () => {
         if (!retratoPath || !confirm('Excluir a imagem do personagem? Você poderá enviar outra.')) return;
         await excluirRetrato(sb, id!, retratoPath, podeRetrato);
         retratoPath = null;
       });
+      // modo de ajuste: arrastar posiciona, slider dá zoom — só muda o card
+      let ajuste = false, arrastando = false, lx = 0, ly = 0;
+      const ajustarBtn = document.getElementById('retrato-ajustar')!;
+      ajustarBtn.addEventListener('click', () => {
+        ajuste = !ajuste;
+        frameEl.classList.toggle('ajustando', ajuste);
+        rangeEl.hidden = !ajuste;
+        ajustarBtn.textContent = ajuste ? 'Concluir ajuste' : 'Ajustar enquadramento';
+      });
+      frameEl.addEventListener('pointerdown', (e) => {
+        if (!ajuste) return; const pe = e as PointerEvent; arrastando = true;
+        frameEl.setPointerCapture?.(pe.pointerId); lx = pe.clientX; ly = pe.clientY;
+      });
+      frameEl.addEventListener('pointermove', (e) => {
+        if (!ajuste || !arrastando) return; const pe = e as PointerEvent;
+        const dx = pe.clientX - lx, dy = pe.clientY - ly; lx = pe.clientX; ly = pe.clientY;
+        pos.x = clamp(pos.x - (dx / (FW * pos.z)) * 100, 0, 100);
+        pos.y = clamp(pos.y - (dy / (FH * pos.z)) * 100, 0, 100);
+        aplicarPos();
+      });
+      const soltar = () => { if (arrastando) { arrastando = false; salvarPos(); } };
+      frameEl.addEventListener('pointerup', soltar);
+      frameEl.addEventListener('pointercancel', soltar);
+      rangeEl.addEventListener('input', () => { pos.z = parseFloat(rangeEl.value) || 1; aplicarPos(); salvarPos(); });
     }
-    // ampliar imagem (lightbox)
+
+    // ampliar imagem (lightbox) — mostra a imagem inteira, sem o enquadramento do card
     const lb = document.getElementById('retrato-lb')!;
-    document.getElementById('retrato-zoom')!.addEventListener('click', () => { lb.hidden = false; document.body.style.overflow = 'hidden'; });
+    frameEl.addEventListener('click', () => { if (frameEl.classList.contains('ajustando')) return; lb.hidden = false; document.body.style.overflow = 'hidden'; });
     lb.addEventListener('click', () => { lb.hidden = true; document.body.style.overflow = ''; });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) { lb.hidden = true; document.body.style.overflow = ''; } });
 
@@ -213,9 +256,10 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     // O motor liga tudo por seletores globais, então mover os nós não quebra os bindings.
     const identSlot = document.getElementById('ident-slot');
     const idrow = document.querySelector('.idrow');
-    const racaInfo = document.getElementById('raca-info');
     if (identSlot && idrow) identSlot.appendChild(idrow);
-    if (identSlot && racaInfo) identSlot.appendChild(racaInfo);
+    // A descrição da raça não entra na ficha da mesa; mantém o elemento (o motor escreve nele).
+    const racaInfo = document.getElementById('raca-info');
+    if (racaInfo) racaInfo.style.display = 'none';
 
     // editor de XP (mestre)
     if (ehMestre) {
@@ -301,10 +345,11 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   }
 
   function estadoRetrato(temImg: boolean, pode: boolean) {
-    (document.getElementById('retrato-zoom') as HTMLElement).hidden = !temImg;
-    document.getElementById('retrato-vazio')!.hidden = temImg;
+    document.getElementById('retrato-frame')!.hidden = !temImg;
     document.getElementById('retrato-lbl')!.hidden = !pode;
     document.getElementById('retrato-del')!.hidden = !(pode && temImg);
+    document.getElementById('retrato-ajustar')!.hidden = !(pode && temImg);
+    if (!(pode && temImg)) document.getElementById('retrato-range')!.hidden = true;
     const lblTxt = document.getElementById('retrato-lbl-txt');
     if (lblTxt) lblTxt.textContent = temImg ? 'Trocar imagem' : 'Enviar imagem';
   }
@@ -381,10 +426,13 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .voltar a { color: var(--accent); text-decoration: none; }
   .pers-cab { display: flex; gap: 1.2rem; align-items: stretch; flex-wrap: wrap; margin-bottom: 1rem; }
   .retrato { display: flex; flex-direction: column; gap: .5rem; align-items: center; flex: 0 0 auto; }
-  .retrato-zoom { padding: 0; border: none; background: none; cursor: zoom-in; line-height: 0; border-radius: 10px; }
-  .retrato-zoom img { width: 172px; height: 208px; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); display: block; transition: filter .15s; }
-  .retrato-zoom:hover img { filter: brightness(1.06); }
-  .retrato-vazio { width: 172px; height: 208px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--rule); border-radius: 10px; color: var(--muted); font-size: .85rem; }
+  .retrato-frame { width: 172px; height: 208px; border-radius: 10px; border: 1px solid var(--rule); overflow: hidden; cursor: zoom-in; background: var(--panel); }
+  .retrato-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform-origin: 50% 50%; display: block; user-select: none; -webkit-user-drag: none; transition: filter .15s; }
+  .retrato-frame:hover img { filter: brightness(1.05); }
+  .retrato-frame.ajustando { cursor: grab; box-shadow: 0 0 0 2px var(--accent); }
+  .retrato-frame.ajustando:active { cursor: grabbing; }
+  .retrato-frame.ajustando img { transition: none; }
+  .retrato-range { width: 172px; accent-color: var(--accent); cursor: pointer; }
   .retrato-acoes { display: flex; flex-direction: column; gap: .35rem; width: 172px; }
   .retrato-btn, .retrato-del { cursor: pointer; font-size: .78rem; text-align: center; justify-content: center; }
   .retrato-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 2rem; background: color-mix(in srgb, #000 80%, transparent); cursor: zoom-out; }

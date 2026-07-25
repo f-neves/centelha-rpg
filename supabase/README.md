@@ -22,9 +22,13 @@ Supabase pelo navegador. Passos para ligar tudo:
    excluir a própria conta) e o painel de administrador (ver todas as contas, excluir e definir
    senhas). Para tornar uma conta administradora, rode no SQL Editor (troque o e-mail):
    `insert into public.admins (user_id) select id from auth.users where email = 'ADMIN@EXEMPLO.COM' on conflict do nothing;`
-6. Rode por fim [`migracao-4.sql`](./migracao-4.sql): adiciona a coluna `log` (jsonb) aos
+6. Rode [`migracao-4.sql`](./migracao-4.sql): adiciona a coluna `log` (jsonb) aos
    encontros, para o log de ações do rastreador de combate (fica salvo ao encerrar o encontro).
    É idempotente.
+7. Rode [`migracao-5.sql`](./migracao-5.sql): adiciona a coluna `dados` (jsonb) aos combatentes,
+   para o mestre editar as estatísticas de cada combatente no rastreador. Idempotente.
+8. Rode por fim [`migracao-6.sql`](./migracao-6.sql): adiciona a coluna `imagem_pos` (jsonb) aos
+   personagens, para o enquadramento do retrato no card (pan/zoom). Idempotente.
 
 ## 3. Ajustes no painel
 
