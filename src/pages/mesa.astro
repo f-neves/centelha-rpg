@@ -112,6 +112,18 @@ import Base from '../layouts/Base.astro';
       <label id="acao-outro-wrap">Descrição
         <input type="text" id="acao-outro" placeholder="descreva…" />
       </label>
+      <div id="acao-dano-wrap" class="acao-dano-row">
+        <label>Dano (bruto rolado)
+          <input type="number" id="acao-dano" min="0" placeholder="0 = sem dano" />
+        </label>
+        <label>Tipo de dano
+          <select id="acao-dano-tipo">
+            <option value="impacto">Impacto</option>
+            <option value="corte">Cortante</option>
+            <option value="perfurante">Perfurante</option>
+          </select>
+        </label>
+      </div>
       <label>Speed (Ticks até a próxima ação)
         <input type="number" id="acao-speed" min="0" value="5" />
       </label>
@@ -468,17 +480,23 @@ import Base from '../layouts/Base.astro';
       const alvoWrap = document.getElementById('acao-alvo-wrap') as HTMLElement;
       const outroWrap = document.getElementById('acao-outro-wrap') as HTMLElement;
       const outroInp = document.getElementById('acao-outro') as HTMLInputElement;
+      const danoWrap = document.getElementById('acao-dano-wrap') as HTMLElement;
+      const danoInp = document.getElementById('acao-dano') as HTMLInputElement;
+      const danoTipoSel = document.getElementById('acao-dano-tipo') as HTMLSelectElement;
       const spdInp = document.getElementById('acao-speed') as HTMLInputElement;
+      // Alvos com barra de vida (dá para aplicar dano); "Outro" para alvo fora da lista.
       tipoSel.value = 'ataque';
       alvoSel.innerHTML = (lista as any[]).filter((x) => x.id !== cid).map((x) => `<option value="${x.id}">${esc(x.nome)}</option>`).join('') + '<option value="__outro__">Outro (digitar)…</option>';
-      outroInp.value = '';
+      outroInp.value = ''; danoInp.value = '';
       spdInp.value = String(spdRow);
+      const alvoListado = () => tipoSel.value === 'ataque' && alvoSel.value !== '__outro__';
       const sync = () => {
         const atk = tipoSel.value === 'ataque';
         alvoWrap.style.display = atk ? '' : 'none';
-        const precisaOutro = !atk || alvoSel.value === '__outro__';
-        outroWrap.style.display = precisaOutro ? '' : 'none';
+        outroWrap.style.display = (!atk || alvoSel.value === '__outro__') ? '' : 'none';
         outroInp.placeholder = atk ? 'nome do alvo / detalhe' : 'descreva a ação (opcional)';
+        // Dano só quando o alvo é um combatente da lista (tem barra p/ aplicar).
+        danoWrap.style.display = alvoListado() ? 'flex' : 'none';
       };
       tipoSel.onchange = sync; alvoSel.onchange = sync; sync();
       (document.getElementById('acao-cancelar') as HTMLElement).onclick = () => dlg.close();
@@ -486,18 +504,26 @@ import Base from '../layouts/Base.astro';
         const spd = Math.max(0, parseInt(spdInp.value || '0', 10) || 0);
         const novoTick = tickAtual + spd;
         const atk = tipoSel.value === 'ataque';
-        let txt: string;
-        if (atk) {
-          const alvoNome = alvoSel.value === '__outro__' ? (outroInp.value.trim() || 'alvo indefinido') : ((lista as any[]).find((x) => x.id === alvoSel.value)?.nome || 'alvo');
-          txt = `${ator.nome} atacou ${alvoNome}`;
-        } else {
-          const desc = outroInp.value.trim();
-          txt = desc ? `${ator.nome}: ${desc}` : `${ator.nome} agiu`;
-        }
+        const alvoC = (atk && alvoSel.value !== '__outro__') ? (combs || []).find((x: any) => x.id === alvoSel.value) : null;
+        const alvoNome = atk ? (alvoSel.value === '__outro__' ? (outroInp.value.trim() || 'alvo indefinido') : (alvoC?.nome || 'alvo')) : '';
+        const txt = atk ? `${ator.nome} atacou ${alvoNome}` : (outroInp.value.trim() ? `${ator.nome}: ${outroInp.value.trim()}` : `${ator.nome} agiu`);
+        const bruto = Math.max(0, parseInt(danoInp.value || '0', 10) || 0);
+        const aplica = !!alvoC && alvoC.pv_max != null && bruto > 0;
         dlg.close();
         await sb.from('combatentes').update({ tick: novoTick }).eq('id', cid);
         await logAcao(`${txt} · tick ${tickAtual} → ${novoTick} (Speed ${spd}).`);
-        await reload();
+        if (aplica) {
+          const dmgTipo = danoTipoSel.value;
+          const soak = RESUMO[alvoC.id]?.soak?.[CAT_SOAK[dmgTipo]] ?? 0;
+          const liquido = Math.max(0, bruto - soak);
+          await aplicarHp(alvoC.id, -liquido);
+          feedback(alvoC.id, soak > 0 ? `−${liquido} (${bruto} − ${soak} abs)` : `−${liquido}`);
+          const est = tierDe(alvoC.pv_atual, alvoC.pv_max).estado;
+          await logAcao(`${alvoNome} sofreu ${liquido} de dano (${TIPO_LBL[dmgTipo]})${soak > 0 ? ` [${bruto} − ${soak} abs]` : ''} · ${alvoC.pv_atual}/${alvoC.pv_max} (${est}).`);
+          setTimeout(reload, 700); // deixa a animação da barra do alvo rodar antes de reordenar
+        } else {
+          await reload();
+        }
       };
       dlg.showModal();
     };
@@ -986,6 +1012,8 @@ import Base from '../layouts/Base.astro';
   .acao-form h3 { margin: 0; color: var(--accent-strong); font-size: 1.05rem; }
   .acao-form label { display: flex; flex-direction: column; gap: .25rem; font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
   .acao-form select, .acao-form input { padding: .42rem .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; font-size: .95rem; text-transform: none; letter-spacing: normal; }
+  .acao-dano-row { display: flex; gap: .6rem; }
+  .acao-dano-row label { flex: 1; }
   .acao-btns { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .3rem; }
 
   .cr-atk { font-size: .85rem; color: var(--ink-soft); }
