@@ -130,6 +130,17 @@ Um escudo é **hábil** quando cobre pelo menos **30% do seu corpo** (um escudo 
 
 Já as armas de arremesso **lentas** (a lança ou o machado lançado, o pilum, o bumerangue, uma pedra grande) são pesadas e visíveis: essas você **bloqueia normalmente**, com arma, escudo ou mão, como no corpo a corpo.
 
+### Força e porte: quando a guarda não segura
+
+Aparar exige **força e tamanho para bancar o impacto**. Num golpe **corpo a corpo**, se o atacante te atropela demais, a rota de **Bloqueio some** e resta só a Esquiva:
+
+- **Porte:** você não bloqueia um atacante **2 ou mais categorias de porte maior** que você. Um Médio ainda segura um Grande (ogro) com esforço, mas não um Enorme+: um humano não apara a clava de um gigante.
+- **Força:** mesmo do mesmo tamanho, você não bloqueia quem tem **Força pelo menos o dobro da sua e ao menos +4 acima** (o brutamontes que arranca a arma da sua mão no impacto).
+
+A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe o teto de porte em uma categoria** (com Centelha 2 já se apara um Enorme; um semideus segura um titã). E se a **sua Centelha for igual ou maior que a do atacante**, a regra de Força é ignorada: poder equipara poder.
+
+**Escudo grande escora:** plantar um escudo de tronco (heater, kite, scutum ou pavês) deixa você aguentar **uma categoria de porte acima** do seu limite, porque você escora a massa com o corpo todo em vez de aparar no braço.
+
 Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída.
 
 ## Movimento: Deslocamento, Corrida e Salto

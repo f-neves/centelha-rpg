@@ -224,6 +224,6 @@
       "tamanho",
       "categoria de tamanho"
     ],
-    "definicao": "Categoria de tamanho da criatura (Minúsculo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal). Na jogada de acerto de ataques físicos, a diferença de porte soma ao atacar um alvo maior e subtrai ao atacar um menor: +3/+6/+9/+12 por 1/2/3/4+ categorias (simétrico, teto de 4 categorias, só no acerto). Portes Grandes+ ganham Couraça de Porte (Absorção natural) e, dos Enormes, Resistência à Perfuração natural."
+    "definicao": "Categoria de tamanho da criatura (Minúsculo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal). Na jogada de acerto de ataques físicos, a diferença de porte soma ao atacar um alvo maior e subtrai ao atacar um menor: +3/+6/+9/+12 por 1/2/3/4+ categorias (simétrico, teto de 4 categorias, só no acerto). No corpo a corpo, também limita o Bloqueio: não se apara atacante 2+ categorias maior (cada Centelha do defensor sobe o teto; escudo grande plantado dá +1) nem quem tem Força ≥ 2× a sua e +4 acima; nesses casos resta a Esquiva. Portes Grandes+ ganham Couraça de Porte (Absorção natural) e, dos Enormes, Resistência à Perfuração natural."
   }
 ]

@@ -808,6 +808,16 @@
     "porDiferenca": [0, 3, 6, 9, 12],
     "capCategorias": 4
   },
+  "bloqueioLimite": {
+    "nota": "Limite físico do Bloqueio no CORPO A CORPO: quem é muito atropelado em porte ou Força não consegue interpor a guarda e só pode Esquivar. Não vale à distância (lá vale a regra de projéteis). Só trava a rota de Bloqueio; a Esquiva continua sempre. porteMaxDiferenca = maior diferença de porte (atacante − defensor) ainda bloqueável (1 = segura até 1 categoria maior; 2+ trava). centelhaSobePorte = cada ponto de Centelha do defensor soma a esse teto. escudoGrandeBonusPorte = plantar um escudo grande (escudosGrandes) soma +1 ao teto. Força: trava se a Força do atacante for >= forcaRatio × a do defensor E >= defensor + forcaGapMin. centelhaIgnoraForca = se a Centelha do defensor >= a do atacante, a regra de Força é ignorada.",
+    "porteMaxDiferenca": 1,
+    "centelhaSobePorte": 1,
+    "escudoGrandeBonusPorte": 1,
+    "escudosGrandes": ["heater", "kite", "scutum", "paves"],
+    "forcaRatio": 2,
+    "forcaGapMin": 4,
+    "centelhaIgnoraForca": true
+  },
   "sangramento": {
     "nota": "No início de cada rodada do personagem ele sofre N de dano Letal (já ignora a Absorção). Lento de propósito: dá tempo de estabilizar.",
     "gatilhoEstado": "Grave",
