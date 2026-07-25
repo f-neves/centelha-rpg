@@ -64,7 +64,7 @@
       "impacto",
       "modo de ataque"
     ],
-    "definicao": "Os três modos de um golpe: Cortante, Perfurante e Impacto. O Perfurante funde projétil e estocada (não há distinção). Cada arma tem um modo principal (sem custo) e, às vezes, secundários (−2 acerto e −2 dano). A armadura tem três Absorções: Impacto, Corte e Perfuração (o dano Perfurante usa a de Perfuração)."
+    "definicao": "Os três modos de um golpe: Cortante, Perfurante e Impacto. O Perfurante funde projétil e estocada (não há distinção). Cada arma tem um modo principal (sem custo) e, às vezes, secundários (−2 acerto e −1d6 de dano). A armadura tem três Absorções: Impacto, Corte e Perfuração (o dano Perfurante usa a de Perfuração)."
   },
   {
     "id": "penetracao",

@@ -714,9 +714,9 @@
       ]
     },
     "modoSecundario": {
-      "nota": "Usar um modo NÃO-principal da arma é mais difícil e sai mais fraco: −2 ao acerto E −2 ao dano. Armas com vários modos principais (ex.: Alabarda) não sofrem nada ao alternar entre eles.",
+      "nota": "Usar um modo NÃO-principal da arma é mais difícil e sai mais fraco: −2 ao acerto E −1d6 no dano. Armas com vários modos principais (ex.: Alabarda) não sofrem nada ao alternar entre eles.",
       "acerto": -2,
-      "dano": -2
+      "dano": "-1d6"
     },
     "empilhamento": "Absorção de cada categoria (Impacto/Corte/Perfuração) = MAIOR valor entre as peças; a Absorção natural soma por cima. Resistência à Perfuração (Nível) = sempre o MAIOR, NUNCA soma (vale também para Proezas de pele dura). Penalidade = SOMA das peças.",
     "penalidade": {

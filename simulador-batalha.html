@@ -84,7 +84,7 @@
         <option value="perfurante">Perfurante</option></select></div>
       <div class="row" id="aPerfRow"><label>Nível de Perfuração da arma</label><input type="range" id="aPerf" min="0" max="5" value="1"><span class="val" id="aPerfv"></span></div>
       <hr class="sep">
-      <div class="check"><input type="checkbox" id="aSecond"><label for="aSecond">Modo secundário (−2 acerto, −2 dano)</label></div>
+      <div class="check"><input type="checkbox" id="aSecond"><label for="aSecond">Modo secundário (−2 acerto, −1d6 dano)</label></div>
       <div class="check"><input type="checkbox" id="aAggr"><label for="aAggr">Postura agressiva (+2 acerto, −2 Defesa própria)</label></div>
       <div class="row"><label>Penalidade (−Xd6: multiataque/ferimento)</label><input type="range" id="aPen" min="0" max="4" value="0"><span class="val" id="aPenv"></span></div>
       <div class="row"><label>Bônus fixo (±)</label><input type="range" id="aB" min="-5" max="5" value="0"><span class="val" id="aBv"></span></div>
@@ -259,14 +259,15 @@ function update(){
   const armSoak = cat==='impacto'?si : cat==='corte'?sc : sp;
   const soakTotal = soakNat + dC*1 + armSoak;
   const gateClosed = GATE_MODES[mode] && (perf < rp);
-  const dmgAdd = forca*(hands===2?2:1) - soakTotal + (second?-2:0);
+  const dmgAdd = forca*(hands===2?2:1) - soakTotal;
+  const secDie = second?1:0; // modo secundário: −1d6 no dano
 
   // agregação
   const dmg={}; let hit=0,graze=0,miss=0; const marg={0:0,1:0,2:0,3:0};
   let minT=Infinity,maxT=-Infinity,meanT=0;
   for(const s in pmf){const p=pmf[s];const t=(+s)+attackFlat; meanT+=t*p; if(t<minT)minT=t; if(t>maxT)maxT=t;
     if(t>effDef){hit+=p; const m=floor((t-effDef)/6); marg[Math.min(3,m)]+=p;
-      if(gateClosed){addPt(dmg,0,p);} else {const dice=die+m; const dp=pmfNd6(dice);
+      if(gateClosed){addPt(dmg,0,p);} else {const dice=Math.max(1,die+m-secDie); const dp=pmfNd6(dice);
         for(const d in dp){addPt(dmg, Math.max(0,(+d)+dmgAdd), dp[d]*p);}}
     } else if(t>=effDef-qaMargin){graze+=p; addPt(dmg, grazeDmg, p);}
     else {miss+=p; addPt(dmg,0,p);}
@@ -276,7 +277,7 @@ function update(){
   const pZero = dmg[0]||0;
   let hitMean=0; if(hit>0){ // dano médio quando acerta cheio
     let acc2=0; for(const s in pmf){const t=(+s)+attackFlat; if(t>effDef){const m=floor((t-effDef)/6);
-      if(gateClosed){} else {const dice=die+m;const dp=pmfNd6(dice);for(const d in dp)acc2+=Math.max(0,(+d)+dmgAdd)*dp[d]*pmf[s];}}}
+      if(gateClosed){} else {const dice=Math.max(1,die+m-secDie);const dp=pmfNd6(dice);for(const d in dp)acc2+=Math.max(0,(+d)+dmgAdd)*dp[d]*pmf[s];}}}
     hitMean=acc2/hit;
   }
 
