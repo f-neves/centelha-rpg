@@ -4,5 +4,7 @@
   },
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
-  }
+  },
+  "workbench.colorTheme": "Aura Dark",
+  "editor.semanticHighlighting.enabled": true
 }
