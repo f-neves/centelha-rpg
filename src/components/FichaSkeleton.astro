@@ -122,8 +122,12 @@ import RoladorDados from './RoladorDados.astro';
   .modo-toggle { display: inline-flex; gap: 0; border: 1px solid var(--on-accent); border-radius: 5px; overflow: hidden; }
   .modo-toggle .btn { border: none; border-radius: 0; }
   .modo-toggle .btn.primary { background: var(--on-accent); color: var(--accent); }
-  .spec { display: inline-flex; gap: 2px; margin-left: .5rem; align-items: center; }
-  .sq { width: 12px; height: 12px; border: 1.2px solid var(--ink-soft); cursor: pointer; background: transparent; flex: 0 0 auto; border-radius: 2px; }
+  .specbtn { background: none; border: none; cursor: pointer; font-size: .8rem; opacity: .4; margin-left: .35rem; padding: 0; line-height: 1; color: var(--gold); }
+  .specbtn:hover, .specbtn.has { opacity: 1; }
+  .specpop-sq { display: flex; gap: 4px; margin-bottom: .55rem; }
+  .specpop-empty { font-size: .82rem; color: var(--ink-soft); font-style: italic; margin-bottom: .4rem; }
+  .specpop-h small { font-family: 'EB Garamond'; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--ink-soft); }
+  .sq { width: 14px; height: 14px; border: 1.2px solid var(--ink-soft); cursor: pointer; background: transparent; flex: 0 0 auto; border-radius: 2px; }
   .sq.on { background: var(--gold); border-color: var(--gold); }
   .sq:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 35%, transparent); }
   .specpop { position: absolute; z-index: 60; width: 250px; background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; box-shadow: 0 6px 20px var(--shadow); padding: .6rem .7rem; }

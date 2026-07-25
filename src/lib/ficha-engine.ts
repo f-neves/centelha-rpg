@@ -163,19 +163,11 @@ export function montarFicha(opts: FichaOpts) {
     return h + '</span>';
   };
   const escapeHtml = (s: string) => String(s).replace(/[&<>"]/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' } as Record<string, string>)[c]));
-  // Quadrados de especialidade, um por nível, ao lado da Habilidade (scope 'p' primária, 's' secundária).
-  // Cada quadrado aceso é uma especialidade nomeada; o nome sai no tooltip e no modal flutuante.
-  const specSquares = (scope: string, key: string, arr: string[], skill: number) => {
-    arr = arr || [];
-    const cap = Math.floor((skill || 0) / 2);
-    if (cap <= 0 && arr.length === 0) return '';
-    let sq = '';
-    for (let d = 1; d <= Math.max(cap, arr.length); d++) {
-      const on = d <= arr.length;
-      const nm = on ? (arr[d - 1] || '(sem nome)') : '';
-      sq += `<span class="sq${on ? ' on' : ''}" data-spec="${scope}:${key}" data-d="${d}"${on ? ` title="${escapeHtml(nm)}"` : ''}></span>`;
-    }
-    return `<span class="spec" title="Especialidades (clique ou passe o mouse para nomear)">${sq}</span>`;
+  // Botão de especialidade ao lado da Habilidade (só quando cabe: nível >= 2, cap [nível/2] >= 1).
+  // Abre o modal flutuante, onde ficam os quadradinhos (níveis) e os campos de nome.
+  const specBtn = (scope: string, key: string, skill: number, count: number) => {
+    if (Math.floor((skill || 0) / 2) <= 0) return '';
+    return `<button class="specbtn${count ? ' has' : ''}" data-specbtn="${scope}:${key}" title="Especialidades${count ? ` (${count})` : ''}" aria-label="Especialidades">✦</button>`;
   };
   const specArr = (scope: string, key: string): string[] => scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
   const specSkill = (scope: string, key: string) => scope === 'p' ? (S.skills[key] || 0) : (S.skills2[key] || 0);
@@ -185,19 +177,34 @@ export function montarFicha(opts: FichaOpts) {
   function closeSpecPop() { if (specPop) specPop.style.display = 'none'; const was = specPopFor; specPopFor = ''; if (was) specRerender(was.split(':')[0]); }
   function openSpecPop(scope: string, key: string) {
     if (opts.readOnly) return;
-    const arr = specArr(scope, key); if (!arr.length) { closeSpecPop(); return; }
-    const anchor = document.querySelector<HTMLElement>(`.sq[data-spec="${scope}:${key}"]`); if (!anchor) return;
+    const cap = Math.floor(specSkill(scope, key) / 2); if (cap <= 0) return;
+    const arr = specArr(scope, key);
+    const anchor = document.querySelector<HTMLElement>(`[data-specbtn="${scope}:${key}"]`); if (!anchor) return;
     const nome = anchor.closest('.trow')?.querySelector('.nm')?.textContent?.trim() || 'Habilidade';
     if (!specPop) { specPop = document.createElement('div'); specPop.className = 'specpop'; document.body.appendChild(specPop); }
     specPop.style.display = 'block'; specPopFor = scope + ':' + key;
-    specPop.innerHTML = `<div class="specpop-h">Especialidades — ${escapeHtml(nome)}</div>`
-      + arr.map((nm, i) => `<label class="specpop-row"><span>Nível ${i + 1}</span><input data-spname="${i}" value="${escapeHtml(nm)}" placeholder="ex.: espada longa" /></label>`).join('')
-      + `<div class="specpop-f"><button class="btn" data-specpop-close type="button">Fechar</button></div>`;
+    const paint = () => {
+      let sq = '';
+      for (let d = 1; d <= cap; d++) sq += `<span class="sq${d <= arr.length ? ' on' : ''}" data-sppop-sq="${d}" title="Nível ${d}"></span>`;
+      specPop!.innerHTML = `<div class="specpop-h">Especialidades — ${escapeHtml(nome)} <small>(até ${cap})</small></div>`
+        + `<div class="specpop-sq" title="Clique para definir quantos níveis de especialidade">${sq}</div>`
+        + (arr.length
+          ? arr.map((nm, i) => `<label class="specpop-row"><span>Nível ${i + 1}</span><input data-spname="${i}" value="${escapeHtml(nm)}" placeholder="ex.: espada longa" /></label>`).join('')
+          : `<div class="specpop-empty">Clique um quadrado para abrir níveis e nomeá-los.</div>`)
+        + `<div class="specpop-f"><button class="btn" data-specpop-close type="button">Fechar</button></div>`;
+      specPop!.querySelectorAll<HTMLElement>('[data-sppop-sq]').forEach((s) => s.addEventListener('click', () => {
+        const d = +s.dataset.sppopSq!;
+        let n = arr.length === d ? d - 1 : d; n = Math.max(0, Math.min(cap, n));
+        while (arr.length < n) arr.push('');
+        arr.length = n; paint(); recompute();
+      }));
+      specPop!.querySelectorAll<HTMLInputElement>('input[data-spname]').forEach((inp) => inp.addEventListener('input', () => { arr[+inp.dataset.spname!] = inp.value; save(); }));
+      (specPop!.querySelector('input[data-spname]') as HTMLInputElement | null)?.focus();
+    };
+    paint();
     const r = anchor.getBoundingClientRect(), w = 250;
     specPop.style.left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - w - 8)) + 'px';
     specPop.style.top = (window.scrollY + r.bottom + 6) + 'px';
-    specPop.querySelectorAll<HTMLInputElement>('input[data-spname]').forEach((inp) => inp.addEventListener('input', () => { arr[+inp.dataset.spname!] = inp.value; save(); }));
-    (specPop.querySelector('input[data-spname]') as HTMLInputElement | null)?.focus();
   }
   const trow = (nm: string, right: string) => `<div class="trow"><span class="nm">${nm}</span><span class="tr-r">${right}</span></div>`;
   const rollBtn = (k: string, key: string) => `<button class="rollv" data-roll="${k}:${key}" title="Enviar ao rolador" aria-label="Rolar">🎲</button>`;
@@ -226,14 +233,14 @@ export function montarFicha(opts: FichaOpts) {
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' })));
     const cols = [['Combate', 'Físicas'], ['Sociais'], ['Saber']];
     el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specSquares('p', s.id, S.spec[s.id] || [], S.skills[s.id] || 0) + rollBtn('skill', s.id))).join('') : '').join('') + '</div>').join('');
+      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specBtn('p', s.id, S.skills[s.id] || 0, (S.spec[s.id] || []).length))).join('') : '').join('') + '</div>').join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' })));
     const cols = [['Corpo', 'Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
     el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specSquares('s', k, S.spec2[k] || [], S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
+      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specBtn('s', k, S.skills2[k] || 0, (S.spec2[k] || []).length)); }).join('')).join('') + '</div>').join('');
   }
   function renderCaminhos() {
     const card = (cam: string) => {
@@ -413,12 +420,6 @@ export function montarFicha(opts: FichaOpts) {
     applyVal(kind, key, valOf(kind, key) + delta);
     (document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`) as HTMLElement)?.focus();
   }
-  document.addEventListener('mouseover', (e) => {
-    if (opts.readOnly) return;
-    const sqOn = (e.target as HTMLElement).closest<HTMLElement>('.spec .sq.on'); if (!sqOn) return;
-    if (specPopFor === sqOn.dataset.spec) return;
-    const [scope, key] = sqOn.dataset.spec!.split(':'); openSpecPop(scope, key);
-  });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSpecPop(); });
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
@@ -433,18 +434,9 @@ export function montarFicha(opts: FichaOpts) {
       if (k === 'attr') { const a = rd('atr'); if (a) { a.value = String(S.attrs[key] || 0); a.dispatchEvent(new Event('input')); } }
       else { const hb = rd('hab'), es = rd('esp'); if (hb) hb.value = String(S.skills[key] || 0); if (es) es.value = '0'; hb?.dispatchEvent(new Event('input')); }
       document.querySelector('.rolador')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-    // especialidades: cada quadrado é um nível nomeado (scope 'p' primária, 's' secundária)
-    const sqEl = t.closest<HTMLElement>('.spec .sq');
-    if (sqEl && !opts.readOnly) {
-      const [scope, key] = sqEl.dataset.spec!.split(':'); const d = +sqEl.dataset.d!;
-      const cap = Math.floor(specSkill(scope, key) / 2); const arr = specArr(scope, key);
-      let n = arr.length === d ? d - 1 : d; n = Math.max(0, Math.min(cap, n));
-      while (arr.length < n) arr.push('');
-      arr.length = n;
-      specRerender(scope); recompute();
-      if (n > 0) openSpecPop(scope, key); else closeSpecPop();
-      return;
-    }
+    // especialidades: o botão abre o modal (scope 'p' primária, 's' secundária)
+    const spBtn = t.closest<HTMLElement>('[data-specbtn]');
+    if (spBtn && !opts.readOnly) { const [scope, key] = spBtn.dataset.specbtn!.split(':'); openSpecPop(scope, key); return; }
     const dsAdd = t.closest<HTMLElement>('[data-defspec-add]');
     if (dsAdd && !opts.readOnly) {
       const key = dsAdd.dataset.defspecAdd!;

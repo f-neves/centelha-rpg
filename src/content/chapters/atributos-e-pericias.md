@@ -117,14 +117,14 @@ Cada Especialidade aponta para **um recorte único e estreito** da Habilidade-m�
 
 ### Quantas, e até quanto
 
-Cada **2 níveis** de Habilidade abrem **1 nível de Especialidade** naquela perícia: uma Habilidade de nível N tem até **[N ÷ 2]** níveis de Especialidade no total (na ficha, um quadrado ao lado da perícia por nível disponível).
+Cada **2 níveis** de Habilidade abrem **1 nível de Especialidade** naquela perícia: uma Habilidade de nível N tem até **[N ÷ 2]** níveis de Especialidade no total (na ficha, o botão **✦** ao lado da perícia, habilitado a partir do nível 2, abre um painel com os quadradinhos de nível).
 
 - Habilidade 1: nenhum (o primeiro só abre em nível 2).
 - Habilidade 2 ou 3: 1 nível.
 - Habilidade 4 ou 5: 2 níveis.
 - Habilidade 6: 3 níveis.
 
-Cada nível é um **escopo nomeado**. Você distribui esses níveis como quiser: em **especialidades diferentes** (cada quadrado um foco, por exemplo "espadas", "escudos" e "machados") ou **concentrados** num só (repetindo o mesmo nome para aprofundá-lo, por exemplo dois níveis em "espada longa"). Na ficha, clicar (ou passar o mouse) num quadrado abre um pequeno painel para escrever o nome de cada nível. Cada Especialidade pertence **àquela Habilidade**: a de Furtividade não ajuda em Atletismo.
+Cada nível é um **escopo nomeado**. Você distribui esses níveis como quiser: em **especialidades diferentes** (cada quadrado um foco, por exemplo "espadas", "escudos" e "machados") ou **concentrados** num só (repetindo o mesmo nome para aprofundá-lo, por exemplo dois níveis em "espada longa"). No painel, clique nos quadradinhos para definir quantos níveis e escreva o nome de cada um. Cada Especialidade pertence **àquela Habilidade**: a de Furtividade não ajuda em Atletismo.
 
 ### Como funciona na mesa
 
