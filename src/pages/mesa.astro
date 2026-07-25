@@ -102,6 +102,8 @@ import Base from '../layouts/Base.astro';
   import { getSupabase } from '../lib/supabase';
   import { exigirLogin, supabaseConfigurado } from '../lib/auth';
   import monstersData from '../data/monsters.json';
+  import tecnicasData from '../data/tecnicas.json';
+  import artesData from '../data/artes.json';
   import { pv, defesa, iniciativa, regras } from '../lib/calc';
   import { resumoCombatePC } from '../lib/combate-resumo';
 
@@ -136,6 +138,8 @@ import Base from '../layouts/Base.astro';
   };
 
   const MON: Record<string, any> = Object.fromEntries((monstersData as any[]).map((m) => [m.id, m]));
+  const TEC: Record<string, any> = Object.fromEntries((tecnicasData as any[]).map((t) => [t.id, t]));
+  const ARTE_NOME: Record<string, string> = Object.fromEntries((artesData as any[]).map((a) => [a.id, a.nome]));
   const MON_LIST = (monstersData as any[]).map((m) => ({ id: m.id, nome: m.nome, nomeIngles: m.nomeIngles || '', ameaca: m.ameaca }));
   let ESCUDO_CACHE: any[] = [];
   const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
@@ -564,12 +568,16 @@ import Base from '../layouts/Base.astro';
     const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Speed ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
     const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
     const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
+    const refTec = (m.tecnicas || []).length ? `<p class="ib-ref"><b>Técnicas:</b> ${m.tecnicas.map((t: string) => `<a href="${u('caminhos/' + (TEC[t]?.caminho || ''))}#${t}">${esc(TEC[t]?.nome || t)}</a>`).join(' · ')}</p>` : '';
+    const refArte = (m.artes || []).length ? `<p class="ib-ref"><b>Artes:</b> ${m.artes.map((a: any) => `<a href="${u('arcano')}#${a.id}">${esc(ARTE_NOME[a.id] || a.id)}</a> ${a.nivel}`).join(' · ')}</p>` : '';
+    const refs = (refTec || refArte) ? `<h4 class="cc-h">Técnicas &amp; Artes</h4>${refTec}${refArte}` : '';
     const notas = m.notas ? `<h4 class="cc-h">Notas</h4><p class="ib-notas">${esc(m.notas)}</p>` : '';
+    const lore = (m.lore || []).length ? `<h4 class="cc-h">Informações</h4>${m.lore.map((s: any) => `<div class="ib-lore"><h5>${esc(s.titulo)}</h5><p>${esc(s.texto)}</p></div>`).join('')}` : '';
     return `<article class="besta cc-besta">${arte}<div class="besta-corpo">
       <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
       ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
       ${porte}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
-      ${stats}${atrib}${tracos}${atk}${habs}${pods}${notas}
+      ${stats}${atrib}${tracos}${atk}${habs}${pods}${refs}${notas}${lore}
     </div></article>`;
   }
 
@@ -970,5 +978,12 @@ import Base from '../layouts/Base.astro';
   .card-modal .ib-hab li b { color: var(--accent-strong); }
   .card-modal .ib-pod li { padding-left: .6rem; border-left: 2px solid color-mix(in srgb, var(--accent) 40%, transparent); }
   .card-modal .pw-alvo { color: var(--ink-soft); }
+  .card-modal .ib-ref { font-size: .88rem; margin: 0 0 .3rem; }
+  .card-modal .ib-ref b { color: var(--accent-strong); }
+  .card-modal .ib-ref a { color: var(--accent); text-decoration: none; }
+  .card-modal .ib-ref a:hover { text-decoration: underline; }
+  .card-modal .ib-lore { margin: 0 0 .4rem; }
+  .card-modal .ib-lore h5 { margin: .35rem 0 .05rem; font-family: 'Cinzel'; font-size: .76rem; color: var(--ink); letter-spacing: .02em; }
+  .card-modal .ib-lore p { margin: 0; font-size: .9rem; }
   .card-modal .ib-notas { font-size: .9rem; font-style: italic; color: var(--ink-soft); }
 </style>
