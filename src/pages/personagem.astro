@@ -69,10 +69,17 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     </section>
 
     <section class="bloco">
-      <h2 class="barh">Arquivos <small>(imagens, PDFs, documentos)</small></h2>
-      <label class="btn" id="arq-lbl" hidden>Enviar arquivo
-        <input type="file" id="arq-file" hidden />
-      </label>
+      <h2 class="barh">Arquivos <small>(imagens, PDFs, documentos, links)</small></h2>
+      <div class="arq-tools" id="arq-tools" hidden>
+        <label class="btn" id="arq-lbl">Enviar arquivo
+          <input type="file" id="arq-file" hidden />
+        </label>
+        <span class="arq-link-row">
+          <input type="url" id="arq-link-url" placeholder="Colar link (https://…)" />
+          <input type="text" id="arq-link-nome" placeholder="Nome (opcional)" />
+          <button class="btn" id="arq-link-add" type="button">+ link</button>
+        </span>
+      </div>
       <ul id="arqs" class="arqs"></ul>
     </section>
   </div>
@@ -226,10 +233,11 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       ta.addEventListener('input', () => salvarTexto(ta.value));
     });
 
-    // arquivos (o dono gerencia os próprios anexos; o mestre também vê/baixa)
+    // arquivos (o dono gerencia os próprios anexos e links; o mestre também vê/baixa)
     if (ehDono) {
-      document.getElementById('arq-lbl')!.hidden = false;
+      document.getElementById('arq-tools')!.hidden = false;
       (document.getElementById('arq-file') as HTMLInputElement).addEventListener('change', (e) => subirArquivo(sb, id!, pers.mesa_id, user.id, (e.target as HTMLInputElement).files?.[0]));
+      document.getElementById('arq-link-add')!.addEventListener('click', () => subirLink(sb, id!, pers.mesa_id, user.id));
     }
     await listarArquivos(sb, id, ehDono);
 
@@ -407,16 +415,39 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     if (e2) return alert('Enviado, mas erro ao registrar: ' + e2.message);
     await listarArquivos(sb, id, true);
   }
+  function linkSeguro(u: string) { return /^https?:\/\//i.test((u || '').trim()) ? u.trim() : ''; }
+  async function subirLink(sb: any, id: string, mesaId: string | null, userId: string) {
+    const urlEl = document.getElementById('arq-link-url') as HTMLInputElement;
+    const nomeEl = document.getElementById('arq-link-nome') as HTMLInputElement;
+    const url = linkSeguro(urlEl.value);
+    if (!url) { alert('Cole um link válido começando com http:// ou https://'); return; }
+    const nome = (nomeEl.value || '').trim() || url;
+    const { error } = await sb.from('arquivos').insert({
+      mesa_id: mesaId, personagem_id: id, dono_id: userId, nome, url, tipo: 'link', categoria: 'link-jogador',
+    });
+    if (error) return alert('Erro ao adicionar link: ' + error.message);
+    urlEl.value = ''; nomeEl.value = '';
+    await listarArquivos(sb, id, true);
+  }
   async function listarArquivos(sb: any, id: string, ehDono: boolean) {
     const { data, error } = await sb.from('arquivos').select('*').eq('personagem_id', id).order('criado_em', { ascending: false });
     const ul = document.getElementById('arqs')!;
     if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
     if (!data?.length) { ul.innerHTML = '<li class="muted">Nenhum arquivo ainda.</li>'; return; }
-    ul.innerHTML = data.map((a: any) => `<li data-arq="${a.id}" data-path="${esc(a.storage_path)}" data-bucket="${esc(a.bucket || BUCKET)}">
-      <a href="#" class="arq-abrir">${esc(a.nome)}</a>
-      <span class="muted arq-tipo">${esc((a.tipo || '').split('/')[1] || '')}</span>
-      ${ehDono ? '<button class="btn arq-rm" title="Remover">✕</button>' : ''}
-    </li>`).join('');
+    ul.innerHTML = data.map((a: any) => {
+      const rm = ehDono ? '<button class="btn arq-rm" title="Remover">✕</button>' : '';
+      if (a.url) {
+        const href = linkSeguro(a.url);
+        return `<li data-arq="${a.id}" data-link="1">
+          <a href="${esc(href)}" class="arq-link" target="_blank" rel="noopener noreferrer">${esc(a.nome)}</a>
+          <span class="muted arq-tipo">link</span>${rm}
+        </li>`;
+      }
+      return `<li data-arq="${a.id}" data-path="${esc(a.storage_path)}" data-bucket="${esc(a.bucket || BUCKET)}">
+        <a href="#" class="arq-abrir">${esc(a.nome)}</a>
+        <span class="muted arq-tipo">${esc((a.tipo || '').split('/')[1] || '')}</span>${rm}
+      </li>`;
+    }).join('');
     ul.querySelectorAll<HTMLElement>('.arq-abrir').forEach((a) => a.addEventListener('click', async (e) => {
       e.preventDefault();
       const li = a.closest('li')!; const { data: s } = await sb.storage.from(li.dataset.bucket!).createSignedUrl(li.dataset.path!, 3600);
@@ -424,8 +455,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     }));
     ul.querySelectorAll<HTMLElement>('.arq-rm').forEach((b) => b.addEventListener('click', async () => {
       const li = b.closest('li')!;
-      if (!confirm('Remover este arquivo?')) return;
-      await sb.storage.from(li.dataset.bucket!).remove([li.dataset.path!]);
+      if (!confirm('Remover este item?')) return;
+      if (!li.dataset.link) await sb.storage.from(li.dataset.bucket!).remove([li.dataset.path!]);
       await sb.from('arquivos').delete().eq('id', li.dataset.arq);
       await listarArquivos(sb, id, true);
     }));
@@ -477,9 +508,15 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .textos label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .04em; color: var(--ink-soft); text-transform: uppercase; gap: .3rem; }
   .textos textarea { font: inherit; font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0; padding: .6rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
   .salvo { color: var(--accent); font-size: .8rem; }
+  .arq-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; }
+  .arq-link-row { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+  .arq-link-row input { font: inherit; font-family: 'EB Garamond'; font-size: .95rem; color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 6px; padding: .35rem .5rem; }
+  .arq-link-row #arq-link-url { min-width: 15rem; }
+  .arq-link-row #arq-link-nome { min-width: 9rem; }
   .arqs { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; margin-top: .6rem; }
   .arqs li { display: flex; align-items: center; gap: .6rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
-  .arqs .arq-abrir { flex: 1; color: var(--accent); text-decoration: none; }
+  .arqs .arq-abrir, .arqs .arq-link { flex: 1; color: var(--accent); text-decoration: none; word-break: break-word; }
+  .arqs .arq-link:hover { text-decoration: underline; }
   .arqs .arq-tipo { font-size: .78rem; text-transform: uppercase; }
   .arqs .arq-rm { background: none; border: none; color: #b3261e; cursor: pointer; }
   .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 46rem; margin-bottom: 1rem; }
