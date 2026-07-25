@@ -120,18 +120,22 @@ export function montarFicha(opts: FichaOpts) {
   // Também converte o formato antigo (número solto) e reaplica os tetos a cada carga.
   function mkBolsas() { return [{ nome: 'Mochila', texto: '' }, { nome: 'Equipamentos', texto: '' }, { nome: 'Carroça', texto: '' }]; }
   function mkConjuntos() { return [{ habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' }, ativo: true }]; }
-  // Especialidade = lista de nomes, um por NÍVEL (quadrado). Teto [nível/2] níveis por perícia.
-  // Converte os formatos antigos: número solto e lista [{s, v}] (achatando v em v nomes).
-  function clampSpecs(arr: any, skill: number): string[] {
+  // Especialidade = lista de especialidades NOMEADAS [{s, v}], cada uma com um nível v.
+  // Teto por perícia: até [nível/2] especialidades, cada uma até [nível/2] níveis.
+  // Converte formatos antigos: número solto e lista de nomes por nível (string[]).
+  function clampSpecs(arr: any, skill: number): { s: string; v: number }[] {
     const cap = Math.floor((skill || 0) / 2);
-    const names: string[] = [];
+    let list: { s: string; v: number }[] = [];
     if (Array.isArray(arr)) {
-      for (const e of arr) {
-        if (typeof e === 'string') names.push(e);
-        else if (e && typeof e === 'object') { const v = Math.max(1, e.v || 1); for (let i = 0; i < v; i++) names.push(String(e.s ?? '')); }
+      if (arr.length && typeof arr[0] === 'string') {
+        const m = new Map<string, number>();
+        for (const s of arr) { const k = String(s ?? ''); m.set(k, (m.get(k) || 0) + 1); }
+        list = [...m].map(([s, v]) => ({ s, v }));
+      } else {
+        list = arr.map((e: any) => (e && typeof e === 'object') ? { s: String(e.s ?? ''), v: e.v || 0 } : { s: '', v: 0 });
       }
-    } else if (typeof arr === 'number' && arr > 0) { for (let i = 0; i < arr; i++) names.push(''); }
-    return names.slice(0, cap).map((s) => String(s ?? ''));
+    } else if (typeof arr === 'number' && arr > 0) { list = [{ s: '', v: arr }]; }
+    return list.map((e) => ({ s: e.s, v: Math.max(0, Math.min(cap, e.v)) })).filter((e) => e.v > 0).slice(0, cap);
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
@@ -176,15 +180,24 @@ export function montarFicha(opts: FichaOpts) {
   // Botão de especialidade ao lado da Habilidade (só quando cabe: nível >= 2, cap [nível/2] >= 1).
   // Abre o modal flutuante, onde ficam os quadradinhos (níveis) e os campos de nome.
   const specBtn = (scope: string, key: string, skill: number, count: number) => {
-    if (Math.floor((skill || 0) / 2) <= 0) return '';
-    return `<button class="specbtn${count ? ' has' : ''}" data-specbtn="${scope}:${key}" title="Especialidades${count ? ` (${count})` : ''}" aria-label="Especialidades">✦</button>`;
+    const dis = Math.floor((skill || 0) / 2) <= 0;
+    return `<button class="specbtn${count ? ' has' : ''}" data-specbtn="${scope}:${key}"${dis ? ' disabled' : ''} title="${dis ? 'Especialidades (requer nível 2+)' : `Especialidades${count ? ` (${count})` : ''}`}" aria-label="Especialidades">✦</button>`;
   };
+  const specCount = (arr: any[]) => (arr || []).reduce((a: number, e: any) => a + (e.v || 0), 0);
   const specArr = (scope: string, key: string): string[] => scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
   const specSkill = (scope: string, key: string) => scope === 'p' ? (S.skills[key] || 0) : (S.skills2[key] || 0);
   const specRerender = (scope: string) => { scope === 'p' ? renderSkills() : renderSecondary(); };
   // Modal flutuante para nomear as especialidades de uma perícia (um campo por nível).
   let specPop: HTMLElement | null = null, specPopFor = '';
-  function closeSpecPop() { if (specPop) specPop.style.display = 'none'; const was = specPopFor; specPopFor = ''; if (was) specRerender(was.split(':')[0]); }
+  function closeSpecPop() {
+    if (specPop) specPop.style.display = 'none';
+    const was = specPopFor; specPopFor = '';
+    if (!was) return;
+    const [scope, key] = was.split(':');
+    const arr = scope === 'p' ? S.spec[key] : S.spec2[key];
+    if (Array.isArray(arr)) { const p = arr.filter((e: any) => e.v > 0); if (scope === 'p') S.spec[key] = p; else S.spec2[key] = p; }
+    specRerender(scope); recompute();
+  }
   function openSpecPop(scope: string, key: string) {
     if (opts.readOnly) return;
     const cap = Math.floor(specSkill(scope, key) / 2); if (cap <= 0) return;
@@ -193,26 +206,28 @@ export function montarFicha(opts: FichaOpts) {
     const nome = anchor.closest('.trow')?.querySelector('.nm')?.textContent?.trim() || 'Habilidade';
     if (!specPop) { specPop = document.createElement('div'); specPop.className = 'specpop'; document.body.appendChild(specPop); }
     specPop.style.display = 'block'; specPopFor = scope + ':' + key;
-    const paint = () => {
-      let sq = '';
-      for (let d = 1; d <= cap; d++) sq += `<span class="sq${d <= arr.length ? ' on' : ''}" data-sppop-sq="${d}" title="Nível ${d}"></span>`;
-      specPop!.innerHTML = `<div class="specpop-h">Especialidades — ${escapeHtml(nome)} <small>(até ${cap})</small></div>`
-        + `<div class="specpop-sq" title="Clique para definir quantos níveis de especialidade">${sq}</div>`
-        + (arr.length
-          ? arr.map((nm, i) => `<label class="specpop-row"><span>Nível ${i + 1}</span><input data-spname="${i}" value="${escapeHtml(nm)}" placeholder="ex.: espada longa" /></label>`).join('')
-          : `<div class="specpop-empty">Clique um quadrado para abrir níveis e nomeá-los.</div>`)
-        + `<div class="specpop-f"><button class="btn" data-specpop-close type="button">Fechar</button></div>`;
-      specPop!.querySelectorAll<HTMLElement>('[data-sppop-sq]').forEach((s) => s.addEventListener('click', () => {
-        const d = +s.dataset.sppopSq!;
-        let n = arr.length === d ? d - 1 : d; n = Math.max(0, Math.min(cap, n));
-        while (arr.length < n) arr.push('');
-        arr.length = n; paint(); recompute();
+    const paint = (focusIdx = -1) => {
+      if (!arr.length) arr.push({ s: '', v: 0 });
+      const linhas = arr.map((e: any, i: number) => {
+        let sq = '';
+        for (let d = 1; d <= 3; d++) sq += `<span class="sq${d <= e.v ? ' on' : ''}${d > cap ? ' dis' : ''}" data-spsq="${i}:${d}" title="Nível ${d}"></span>`;
+        return `<div class="specpop-row"><input data-spname="${i}" value="${escapeHtml(e.s)}" placeholder="nome da especialidade" /><span class="specpop-sq">${sq}</span><button class="spec-x" data-sprm="${i}" title="Remover" aria-label="Remover">×</button></div>`;
+      }).join('');
+      const add = arr.length < cap ? `<button class="spec-add" data-spadd type="button">+ Nova Especialidade</button>` : '';
+      specPop!.innerHTML = `<div class="specpop-h">Especialidades — ${escapeHtml(nome)} <small>(até ${cap} · nível até ${cap})</small></div>${linhas}${add}<div class="specpop-f"><button class="btn" data-specpop-close type="button">Fechar</button></div>`;
+      specPop!.querySelectorAll<HTMLElement>('[data-spsq]').forEach((s) => s.addEventListener('click', () => {
+        if (s.classList.contains('dis')) return;
+        const [i, d] = s.dataset.spsq!.split(':').map(Number);
+        arr[i].v = arr[i].v === d ? d - 1 : Math.min(cap, d);
+        paint(); recompute();
       }));
-      specPop!.querySelectorAll<HTMLInputElement>('input[data-spname]').forEach((inp) => inp.addEventListener('input', () => { arr[+inp.dataset.spname!] = inp.value; save(); }));
-      (specPop!.querySelector('input[data-spname]') as HTMLInputElement | null)?.focus();
+      specPop!.querySelectorAll<HTMLInputElement>('input[data-spname]').forEach((inp) => inp.addEventListener('input', () => { arr[+inp.dataset.spname!].s = inp.value; save(); }));
+      specPop!.querySelectorAll<HTMLElement>('[data-sprm]').forEach((b) => b.addEventListener('click', () => { arr.splice(+b.dataset.sprm!, 1); paint(arr.length - 1); recompute(); }));
+      const addBtn = specPop!.querySelector<HTMLElement>('[data-spadd]'); if (addBtn) addBtn.addEventListener('click', () => { if (arr.length < cap) { arr.push({ s: '', v: 0 }); paint(arr.length - 1); } });
+      if (focusIdx >= 0) (specPop!.querySelectorAll('input[data-spname]')[focusIdx] as HTMLInputElement | null)?.focus();
     };
-    paint();
-    const r = anchor.getBoundingClientRect(), w = 250;
+    paint(0);
+    const r = anchor.getBoundingClientRect(), w = 260;
     specPop.style.left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - w - 8)) + 'px';
     specPop.style.top = (window.scrollY + r.bottom + 6) + 'px';
   }
@@ -243,14 +258,14 @@ export function montarFicha(opts: FichaOpts) {
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' })));
     const cols = [['Combate', 'Físicas'], ['Sociais'], ['Saber']];
     el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specBtn('p', s.id, S.skills[s.id] || 0, (S.spec[s.id] || []).length))).join('') : '').join('') + '</div>').join('');
+      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specBtn('p', s.id, S.skills[s.id] || 0, specCount(S.spec[s.id])))).join('') : '').join('') + '</div>').join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' })));
     const cols = [['Corpo', 'Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
     el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specBtn('s', k, S.skills2[k] || 0, (S.spec2[k] || []).length)); }).join('')).join('') + '</div>').join('');
+      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specBtn('s', k, S.skills2[k] || 0, specCount(S.spec2[k]))); }).join('')).join('') + '</div>').join('');
   }
   function renderCaminhos() {
     const card = (cam: string) => {
@@ -430,13 +445,13 @@ export function montarFicha(opts: FichaOpts) {
   function recompute() {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
     (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 1, S.attrs[a.id] || 1)));
-    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || []).length * 10; });
+    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += specCount(S.spec[h.id]) * 10; });
     ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += (e.v || 0) * 10)));
     (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
     xw = custoPontos('vontade', 1, S.willpower || 1);
     xap = custoPontos('aparencia', 1, S.aparencia || 1);
     xc = custoPontos('centelha', 0, S.centelha || 0);
-    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || []).length * 5; });
+    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + specCount(S.spec2[k]) * 5; });
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += TECNIV[id] * 10; });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
     const xr = RACA[S.raca]?.custo || 0;

@@ -21,7 +21,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 - **Modos** — os **modos de ataque** da arma (Impacto, Cortante, Perfurante). A maioria das armas tem **mais de um**, e você escolhe por golpe conforme o alvo. Um deles é o **principal** (sem custo); os **secundários** saem com **−2 ao acerto e −1d6 no dano**. O modo **Perfurante** carrega um **Nível de Perfuração**, escrito **(N0)–(N5)**. Ver *Os três modos de dano* em [Combate](/regras/combate).
 - **Quase-Acerto** — errar por pouco ainda raspa. O valor é **fixo pela classe** (peso) da arma e da armadura; veja o capítulo [Quase-Acerto](/regras/quase-acerto).
 
-<div class="callout exemplo"><span class="lbl">Lendo uma arma</span>A <strong>Espada Longa</strong> é <em>Média · Versátil</em>: <strong>Speed 6</strong> (ataque médio), <strong>2d6</strong> de dado de dano + Força, <strong>+1</strong> no pool de ataque e <strong>+1</strong> no Bloqueio. Como é <em>Versátil</em>, dá para empunhá-la a duas mãos por <strong>+1 dado de dano</strong> e <strong>−1</strong> de Defesa da Arma — a mesma lâmina, dois estilos.</div>
+<div class="callout exemplo"><span class="lbl">Lendo uma arma</span>A <strong>Espada Longa</strong> é <em>Média · Versátil</em>: <strong>Speed 6</strong> (ataque médio), <strong>2d6</strong> de dado de dano + Força, <strong>+1</strong> no pool de ataque e <strong>+1</strong> no Bloqueio. Como é <em>Versátil</em>, empunhada a duas mãos ela soma <strong>Força×2</strong> no dano (em vez de Força×1), a mesma lâmina em dois estilos.</div>
 
 <p class="muted">Escolha pela <strong>fantasia</strong> — o duelista veloz, o brutamontes de montante, o lanceiro que controla a distância —, não pelo número "mais forte". Cada classe vence umas situações e perde outras; não existe a arma ótima.</p>
 
@@ -46,7 +46,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 - **Alcance** — ataca a uma casa de distância; bônus contra quem se aproxima, penalidade colado.
 - **Ágil** — usa Destreza no dano; +1 na Defesa da Arma.
-- **Versátil** — 1 ou 2 mãos (em 2 mãos: +1 dado, −1 Defesa da Arma).
+- **Versátil** — 1 ou 2 mãos: com uma mão soma Força no dano; com as duas, Força×2.
 - **Sangramento** — um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
 - **Arremessável · Munição · Pesada** — lançar; gastar munição; usar Força total e −1 em ações ágeis.
 - **Imobiliza** — não causa dano: um acerto deixa o alvo **Imobilizado** até escapar (Força ou Atletismo vs o lançamento).
