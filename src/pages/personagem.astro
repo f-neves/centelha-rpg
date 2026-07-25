@@ -16,23 +16,33 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     <header class="pers-cab">
       <div class="retrato">
-        <img id="retrato-img" alt="Retrato do personagem" hidden />
+        <button type="button" class="retrato-zoom" id="retrato-zoom" title="Ampliar" hidden>
+          <img id="retrato-img" alt="Retrato do personagem" />
+        </button>
         <div id="retrato-vazio" class="retrato-vazio">Sem imagem</div>
-        <label class="btn retrato-btn" id="retrato-lbl" hidden>Trocar imagem
-          <input type="file" id="retrato-file" accept="image/*" hidden />
-        </label>
+        <div class="retrato-acoes">
+          <label class="btn retrato-btn" id="retrato-lbl" hidden><span id="retrato-lbl-txt">Enviar imagem</span>
+            <input type="file" id="retrato-file" accept="image/*" hidden />
+          </label>
+          <button type="button" class="btn perigo retrato-del" id="retrato-del" hidden>Excluir imagem</button>
+        </div>
       </div>
-      <div class="pers-tit">
-        <span id="pers-mesa" class="muted"></span>
+      <div class="pers-ident">
+        <span id="pers-mesa" class="muted pers-mesa"></span>
         <h1 id="pers-nome" class="cinzel">Personagem</h1>
-        <span id="xp-nota" class="xp-nota"></span>
-        <div id="mestre-xp" class="mestre-xp" hidden>
-          <label>XP do personagem <input type="number" id="xp-input" min="0" /></label>
-          <button class="btn primary" id="xp-salvar">Salvar XP</button>
-          <span id="xp-salvo" class="salvo"></span>
+        <div class="ident-slot" id="ident-slot"></div>
+        <div class="xp-linha">
+          <span id="xp-nota" class="xp-nota"></span>
+          <div id="mestre-xp" class="mestre-xp" hidden>
+            <label>XP do personagem <input type="number" id="xp-input" min="0" /></label>
+            <button class="btn primary" id="xp-salvar">Salvar XP</button>
+            <span id="xp-salvo" class="salvo"></span>
+          </div>
         </div>
       </div>
     </header>
+
+    <div class="retrato-lb" id="retrato-lb" hidden><img id="retrato-lb-img" alt="Retrato ampliado" /></div>
 
     <div id="status-bar" class="status-bar" hidden>
       <span id="status-selo" class="selo"></span>
@@ -130,11 +140,26 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const canEdit = (ehDono && status === 'rascunho') || ehMestre;
 
     // retrato (o dono envia a imagem; o storage exige que seja o dono)
-    if (pers.imagem_path) await mostrarRetrato(sb, pers.imagem_path);
-    if (ehDono && status === 'rascunho') {
-      document.getElementById('retrato-lbl')!.hidden = false;
-      (document.getElementById('retrato-file') as HTMLInputElement).addEventListener('change', (e) => subirRetrato(sb, id!, (e.target as HTMLInputElement).files?.[0]));
+    const podeRetrato = ehDono && status === 'rascunho';
+    let retratoPath: string | null = pers.imagem_path || null;
+    if (retratoPath) await mostrarRetrato(sb, retratoPath, podeRetrato);
+    else estadoRetrato(false, podeRetrato);
+    if (podeRetrato) {
+      (document.getElementById('retrato-file') as HTMLInputElement).addEventListener('change', async (e) => {
+        const novo = await subirRetrato(sb, id!, (e.target as HTMLInputElement).files?.[0]);
+        if (novo) retratoPath = novo;
+      });
+      document.getElementById('retrato-del')!.addEventListener('click', async () => {
+        if (!retratoPath || !confirm('Excluir a imagem do personagem? Você poderá enviar outra.')) return;
+        await excluirRetrato(sb, id!, retratoPath, podeRetrato);
+        retratoPath = null;
+      });
     }
+    // ampliar imagem (lightbox)
+    const lb = document.getElementById('retrato-lb')!;
+    document.getElementById('retrato-zoom')!.addEventListener('click', () => { lb.hidden = false; document.body.style.overflow = 'hidden'; });
+    lb.addEventListener('click', () => { lb.hidden = true; document.body.style.overflow = ''; });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) { lb.hidden = true; document.body.style.overflow = ''; } });
 
     // XP: se estiver em mesa, o mestre define (input travado); senão o jogador escolhe.
     let budgetValor: number | null = null;
@@ -183,6 +208,14 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       budgetLocked, budgetValor,
       aoResetar: () => {},
     });
+
+    // Layout clássico: sobe os campos de identidade (Nome/Conceito/Jogador/Raça) para o cabeçalho.
+    // O motor liga tudo por seletores globais, então mover os nós não quebra os bindings.
+    const identSlot = document.getElementById('ident-slot');
+    const idrow = document.querySelector('.idrow');
+    const racaInfo = document.getElementById('raca-info');
+    if (identSlot && idrow) identSlot.appendChild(idrow);
+    if (identSlot && racaInfo) identSlot.appendChild(racaInfo);
 
     // editor de XP (mestre)
     if (ehMestre) {
@@ -267,21 +300,39 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     }
   }
 
-  async function mostrarRetrato(sb: any, path: string) {
+  function estadoRetrato(temImg: boolean, pode: boolean) {
+    (document.getElementById('retrato-zoom') as HTMLElement).hidden = !temImg;
+    document.getElementById('retrato-vazio')!.hidden = temImg;
+    document.getElementById('retrato-lbl')!.hidden = !pode;
+    document.getElementById('retrato-del')!.hidden = !(pode && temImg);
+    const lblTxt = document.getElementById('retrato-lbl-txt');
+    if (lblTxt) lblTxt.textContent = temImg ? 'Trocar imagem' : 'Enviar imagem';
+  }
+  async function mostrarRetrato(sb: any, path: string, pode: boolean) {
     const { data } = await sb.storage.from(BUCKET).createSignedUrl(path, 3600);
     if (!data?.signedUrl) return;
-    const img = document.getElementById('retrato-img') as HTMLImageElement;
-    img.src = data.signedUrl; img.hidden = false;
-    document.getElementById('retrato-vazio')!.hidden = true;
+    (document.getElementById('retrato-img') as HTMLImageElement).src = data.signedUrl;
+    (document.getElementById('retrato-lb-img') as HTMLImageElement).src = data.signedUrl;
+    estadoRetrato(true, pode);
   }
-  async function subirRetrato(sb: any, id: string, file?: File) {
-    if (!file) return;
+  async function subirRetrato(sb: any, id: string, file?: File): Promise<string | null> {
+    if (!file) return null;
     const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
     const path = `${id}/retrato-${Date.now()}.${ext}`;
     const { error } = await sb.storage.from(BUCKET).upload(path, file, { upsert: true, contentType: file.type });
-    if (error) return alert('Erro ao enviar imagem: ' + error.message);
+    if (error) { alert('Erro ao enviar imagem: ' + error.message); return null; }
     await sb.from('personagens').update({ imagem_path: path }).eq('id', id);
-    await mostrarRetrato(sb, path);
+    await mostrarRetrato(sb, path, true);
+    return path;
+  }
+  async function excluirRetrato(sb: any, id: string, path: string, pode: boolean) {
+    const { error } = await sb.storage.from(BUCKET).remove([path]);
+    if (error) { alert('Erro ao excluir imagem: ' + error.message); return; }
+    await sb.from('personagens').update({ imagem_path: null }).eq('id', id);
+    (document.getElementById('retrato-img') as HTMLImageElement).src = '';
+    (document.getElementById('retrato-lb-img') as HTMLImageElement).src = '';
+    (document.getElementById('retrato-file') as HTMLInputElement).value = '';
+    estadoRetrato(false, pode);
   }
 
   async function subirArquivo(sb: any, id: string, mesaId: string | null, userId: string, file?: File) {
@@ -328,14 +379,27 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 <style is:global>
   .voltar { margin: 0 0 .6rem; }
   .voltar a { color: var(--accent); text-decoration: none; }
-  .pers-cab { display: flex; gap: 1.2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1rem; }
-  .retrato { display: flex; flex-direction: column; gap: .5rem; align-items: center; }
-  .retrato img { width: 160px; height: 160px; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); }
-  .retrato-vazio { width: 160px; height: 160px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--rule); border-radius: 10px; color: var(--muted); font-size: .85rem; }
-  .retrato-btn { cursor: pointer; font-size: .8rem; }
-  .pers-tit h1 { margin: .1rem 0; }
+  .pers-cab { display: flex; gap: 1.2rem; align-items: stretch; flex-wrap: wrap; margin-bottom: 1rem; }
+  .retrato { display: flex; flex-direction: column; gap: .5rem; align-items: center; flex: 0 0 auto; }
+  .retrato-zoom { padding: 0; border: none; background: none; cursor: zoom-in; line-height: 0; border-radius: 10px; }
+  .retrato-zoom img { width: 172px; height: 208px; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); display: block; transition: filter .15s; }
+  .retrato-zoom:hover img { filter: brightness(1.06); }
+  .retrato-vazio { width: 172px; height: 208px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--rule); border-radius: 10px; color: var(--muted); font-size: .85rem; }
+  .retrato-acoes { display: flex; flex-direction: column; gap: .35rem; width: 172px; }
+  .retrato-btn, .retrato-del { cursor: pointer; font-size: .78rem; text-align: center; justify-content: center; }
+  .retrato-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 2rem; background: color-mix(in srgb, #000 80%, transparent); cursor: zoom-out; }
+  .retrato-lb[hidden] { display: none; }
+  .retrato-lb img { max-width: 92vw; max-height: 88vh; border-radius: 8px; box-shadow: 0 12px 44px rgba(0,0,0,.5); }
+
+  .pers-ident { flex: 1 1 20rem; min-width: 16rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); padding: .8rem 1rem 1rem; }
+  .pers-ident h1 { margin: .05rem 0 .2rem; }
+  .pers-mesa { font-style: italic; font-size: .9rem; }
+  .ident-slot { margin-top: .2rem; }
+  .ident-slot .idrow { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .5rem 1rem; margin: 0 0 .4rem; }
+  .ident-slot .raca-info { margin: 0; }
+  .xp-linha { margin-top: auto; padding-top: .3rem; }
   .xp-nota { color: var(--muted); font-size: .9rem; }
-  .mestre-xp { display: flex; align-items: flex-end; gap: .6rem; flex-wrap: wrap; margin-top: .6rem; }
+  .mestre-xp { display: flex; align-items: flex-end; gap: .6rem; flex-wrap: wrap; margin-top: .4rem; }
   .mestre-xp label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); gap: .2rem; }
   .mestre-xp input { width: 7rem; padding: .4rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
   .bloco { margin-top: 1.6rem; }
