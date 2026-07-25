@@ -28,13 +28,13 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
   <h2>Armas</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dado</th><th class="c">Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th class="c">Fôlego</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Speed</th><th class="c">Fôlego</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
       <tbody>
         {armas.map((a) => (
           <tr data-arma data-classe={a.classe} data-tags={a.tags.join(' ')} data-txt={(a.nome + ' ' + a.tags.join(' ') + ' ' + a.notas).toLowerCase()}>
             <th>{a.nome}</th>
             <td>{CLASSE[a.classe]}</td>
-            <td class="c">{a.dado}d6</td>
+            <td class="c">{a.dado}d6{a.danoBonus ? (a.danoBonus > 0 ? `+${a.danoBonus}` : `−${Math.abs(a.danoBonus)}`) : ''}</td>
             <td class="c">{a.acerto >= 0 ? '+' : ''}{a.acerto}</td>
             <td class="c">{a.defesaArma >= 0 ? '+' : ''}{a.defesaArma}</td>
             <td class="c">{a.maos}</td>

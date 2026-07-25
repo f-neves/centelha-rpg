@@ -111,7 +111,7 @@ const armas = defineCollection({
     id: z.string(), nome: z.string(),
     classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
     atrib: reference('atributos'), pericia: reference('habilidades'),
-    dado: z.number().int().min(1).max(3), acerto: z.number().int(),
+    dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
     defesaArma: z.number().int(),
     maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
     forcaMult: z.number().optional(),

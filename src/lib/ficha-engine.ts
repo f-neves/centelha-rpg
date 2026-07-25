@@ -320,13 +320,14 @@ export function montarFicha(opts: FichaOpts) {
     const flat = (atk.acerto || 0) + ataqueCentelha(C) - armorPen;
     const dist = (atk.tags || []).includes('distância');
     const fm = regras.derivados.danoForca as any;
+    const db = atk.danoBonus || 0;
     const versoes: { rot: string; ap: number }[] = [];
     if (!dist && itVers(habil)) {
-      versoes.push({ rot: '1 mão', ap: forca * (atk.forcaMult ?? fm.umaMao) });
-      versoes.push({ rot: '2 mãos', ap: forca * fm.duasMaos });
+      versoes.push({ rot: '1 mão', ap: db + forca * (atk.forcaMult ?? fm.umaMao) });
+      versoes.push({ rot: '2 mãos', ap: db + forca * fm.duasMaos });
     } else {
       const mult = dist ? 1 : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
-      versoes.push({ rot: '', ap: forca * mult });
+      versoes.push({ rot: '', ap: db + forca * mult });
     }
     return { habil, inabil, atk, dados, bonus, flat, dist, versoes, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
   }
@@ -341,7 +342,7 @@ export function montarFicha(opts: FichaOpts) {
     el('eq-conjuntos').innerHTML = (S.conjuntos || []).map((cj: any, i: number) => {
       const c = calcConj(cj); const trava = it2H(c.habil);
       const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
-      const dano = c.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' +' + v.ap : ''}`).join(' · ');
+      const dano = c.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
       const custom = (hand: 'habil' | 'inabil') => cj[hand]?.ref === 'c' ? `<input class="conj-nome" data-conj-nome="${i}:${hand}" value="${escapeHtml(cj[hand].nome || '')}" placeholder="nome do item"${ro ? ' disabled' : ''} />` : '';
       return `<div class="conjunto${cj.ativo ? ' ativo' : ''}">
         <div class="conj-top"><label class="conj-uso"><input type="radio" name="conj-ativo" data-conj-uso="${i}"${cj.ativo ? ' checked' : ''}${ro ? ' disabled' : ''}/> em uso</label>${(S.conjuntos.length > 1 && !ro) ? `<button class="conj-rm" data-conj-rm="${i}" title="Remover" aria-label="Remover">×</button>` : ''}</div>
@@ -408,7 +409,7 @@ export function montarFicha(opts: FichaOpts) {
     const act = calcConj(conjAtivo());
     const w = act.atk, C = S.centelha || 0, armorPen = act.armorPen;
     const atk = `${act.dados}d6${act.bonus ? '+2' : ''}${act.flat ? ' ' + sgn(act.flat) : ''}`;
-    const dano = act.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${w.dado}d6${v.ap ? ' +' + v.ap : ''}`).join(' · ');
+    const dano = act.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${w.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
     const modos = ((w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[]).slice().sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
     const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
     const temSec = modos.some((m) => !m.principal);
