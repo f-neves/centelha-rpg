@@ -30,6 +30,7 @@ export const NAV = [
 ];
 
 export const FERRAMENTAS = [
+  { slug: 'mestre', titulo: 'Área do Mestre' },
   { slug: 'ficha', titulo: 'Ficha de Personagem' },
   { slug: 'bestiario', titulo: 'Bestiário & NPCs' },
   { slug: 'equipamentos', titulo: 'Equipamentos' },

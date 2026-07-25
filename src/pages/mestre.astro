@@ -1,0 +1,239 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+
+// ===== Probabilidades (calculadas no build) =====
+function distN(n: number): number[] {
+  let d = [1];
+  for (let i = 0; i < n; i++) {
+    const nd = new Array(d.length + 6).fill(0);
+    for (let a = 0; a < d.length; a++) for (let f = 1; f <= 6; f++) nd[a + f] += d[a] / 6;
+    d = nd;
+  }
+  return d;
+}
+function totais(soma: number): [number, number][] {
+  const n = Math.floor(soma / 2), flat = soma % 2 ? 2 : 0;
+  const d = distN(n); const o: [number, number][] = [];
+  for (let s = 0; s < d.length; s++) if (d[s] > 0) o.push([s + flat, d[s]]);
+  return o;
+}
+const pGE = (soma: number, X: number) => totais(soma).reduce((p, [v, pr]) => p + (v >= X ? pr : 0), 0);
+const pSucesso = (soma: number, D: number) => totais(soma).reduce((p, [v, pr]) => p + (v > D ? pr : 0), 0);
+const dadosStr = (soma: number) => { const n = Math.floor(soma / 2), flat = soma % 2 ? 2 : 0; return `${n}d6${flat ? ' +' + flat : ''}`; };
+const minMax = (soma: number): [number, number] => { const t = totais(soma); return [t[0][0], t[t.length - 1][0]]; };
+// Regra A: número cuja % (arredondada) fica mais perto do alvo; empate → menor X (maior chance)
+function alvo(soma: number, a: number) {
+  const [lo, hi] = minMax(soma); let best: { X: number; p: number; diff: number } | null = null;
+  for (let X = lo; X <= hi; X++) { const p = Math.round(pGE(soma, X) * 100); const diff = Math.abs(p - a * 100); if (best === null || diff < best.diff) best = { X, p, diff }; }
+  return best!;
+}
+
+const somas = Array.from({ length: 15 }, (_, i) => i + 2); // 2..16
+const probRows = somas.map((s) => ({ soma: s, dados: dadosStr(s), a80: alvo(s, 0.8), a50: alvo(s, 0.5), a25: alvo(s, 0.25) }));
+
+// Régua Fácil (×4/3) · Média (×5/3) · Difícil (×2)
+const reguaRows = somas.map((s) => {
+  const f = Math.round(s * 4 / 3), m = Math.round(s * 5 / 3), d = s * 2;
+  return { soma: s, dados: dadosStr(s), f: { D: f, p: Math.round(pSucesso(s, f) * 100) }, m: { D: m, p: Math.round(pSucesso(s, m) * 100) }, d: { D: d, p: Math.round(pSucesso(s, d) * 100) } };
+});
+
+// Heatmap Soma × Dificuldade 2..30
+const difs = Array.from({ length: 29 }, (_, i) => i + 2); // 2..30
+const cor = (pct: number) => `hsl(${Math.round(pct * 1.2)} 82% 56%)`;
+const heatRows = somas.map((s) => ({ soma: s, dados: dadosStr(s), cells: difs.map((D) => { const p = Math.round(pSucesso(s, D) * 100); return { p, cor: cor(p) }; }) }));
+const legenda = Array.from({ length: 21 }, (_, i) => cor(i * 5));
+
+// Degraus de dificuldade (âncoras; o Mestre pode usar qualquer número)
+const degraus = [
+  { dif: '3', nome: 'Trivial', soma: '~2', desc: 'Quase ninguém falha. Só se rola sob pressão: pressa, escuro, ferido, alguém observando.' },
+  { dif: '5', nome: 'Fácil', soma: '3', desc: 'Rotina para quem tem algum jeito; cara-ou-coroa para o destreinado. Rola-se sob risco ou plateia.' },
+  { dif: '10', nome: 'Média', soma: '6', desc: 'O padrão do "incerto e importa". Cara-ou-coroa para o praticante; o perito resolve com folga; o leigo não alcança.' },
+  { dif: '15', nome: 'Difícil', soma: '9', desc: 'Exige perícia de verdade. Cara-ou-coroa para o perito; o praticante quase nunca; a referência domina.' },
+  { dif: '20', nome: 'Muito difícil', soma: '12', desc: 'Limite humano: a façanha que vira causo. Cara-ou-coroa para o grande mestre; a referência arrisca.' },
+  { dif: '25', nome: 'Excepcional', soma: '~15', desc: 'Pouquíssimos alcançam, e mesmo eles falham mais que acertam. Pede Margem acumulada, Virtude canalizada ou Centelha.' },
+  { dif: '30+', nome: 'Sobre-humano', soma: '~18', desc: 'Fora do que o corpo ou a mente comuns fazem. Requer Centelha, Proezas ou Arcano.' },
+];
+
+// Exemplos: tarefas físicas e de perícia
+const exFisicas = [
+  ['Pular um muro na cintura', 'Atletismo', 3, 'Só sob pressão/perseguição'],
+  ['Pular um muro no ombro (~1,4 m)', 'Atletismo', 8, 'Com impulso'],
+  ['Pular um muro alto (~2 m)', 'Atletismo', 13, 'Precisa de corrida e boa forma'],
+  ['Escalar parede rústica (muitos apoios)', 'Atletismo', 8, ''],
+  ['Escalar parede de pedra comum', 'Atletismo', 12, 'Juntas e saliências'],
+  ['Escalar muralha bem-feita', 'Atletismo', 18, 'Poucas fendas'],
+  ['Escalar superfície lisa/molhada', 'Atletismo', 24, 'Quase sem apoio; feito de perito'],
+  ['Cavalgar tranquilo numa estrada', 'Cavalgar', 5, 'Normalmente sem rolagem'],
+  ['Galopar em terreno difícil / saltar obstáculo', 'Cavalgar', 10, ''],
+  ['Cavalgar em combate / montaria assustada', 'Cavalgar', 15, ''],
+  ['Disfarce: não ser reconhecido de relance', 'Disfarce', 8, 'Na multidão'],
+  ['Disfarce: enganar quem te conhece de vista', 'Disfarce', 14, ''],
+  ['Disfarce: passar-se por pessoa específica', 'Disfarce', 20, 'Diante de quem convive com ela'],
+  ['Bater carteira de alvo distraído/bêbado', 'Ladinagem', 8, 'Ou vs Percepção passiva'],
+  ['Bater carteira de transeunte atento', 'Ladinagem', 12, ''],
+  ['Bater carteira de guarda alerta', 'Ladinagem', 16, ''],
+];
+
+// Exemplos: situações sociais comuns
+const exSociais = [
+  ['Convencer guarda entediado a deixar entrar', 'Persuasão/Lábia', 10, 'Sem ordem específica'],
+  ['Convencer guarda cumpridor', 'Persuasão', 15, 'Tem instrução'],
+  ['Convencer guarda leal (ordem de barrar)', 'Persuasão', 20, 'Ou sobe a Combate Social'],
+  ['Pedir pequeno desconto', 'Negociação', 8, 'Comerciante simpático'],
+  ['Pedir desconto considerável', 'Negociação', 14, ''],
+  ['Negociar estadia (quarto por favor/história)', 'Negociação/Lábia', 10, ''],
+  ['Estadia de graça por uns dias', 'Lábia', 15, ''],
+  ['Intimidar capanga isolado e hesitante', 'Intimidação', 8, ''],
+  ['Intimidar soldado comum', 'Intimidação', 12, 'vs Defesa Mental do alvo'],
+  ['Intimidar veterano endurecido', 'Intimidação', 16, ''],
+  ['Intimidar fanático/sem medo', 'Intimidação', 20, ''],
+  ['Seduzir alguém já receptivo', 'Sedução', 5, 'Aparência entra na jogada'],
+  ['Seduzir um estranho neutro', 'Sedução', 12, ''],
+  ['Seduzir alguém comprometido/desinteressado', 'Sedução', 18, ''],
+  ['Cantar sem desafinar numa taverna', 'Canto/Performance', 5, ''],
+  ['Emocionar a plateia de um salão', 'Performance', 12, ''],
+  ['Recital que silencia uma corte', 'Performance', 18, ''],
+];
+---
+<Base title="Área do Mestre" largura="wide" descricao="Ferramentas do Mestre: probabilidades das jogadas, escolha de Dificuldade e exemplos de tarefas.">
+  <h1>Área do Mestre</h1>
+  <p class="lead">Ferramentas de arbitragem: as <strong>probabilidades</strong> reais das jogadas, como <strong>escolher a Dificuldade</strong> de forma consciente e uma lista de <strong>tarefas de exemplo</strong> já tabeladas. Tudo segue a regra do jogo: o pool é <strong>[(Atributo + Habilidade) ÷ 2]d6</strong> (+2 se a soma for ímpar), e há <strong>sucesso quando o total supera</strong> o alvo (total &gt; Dificuldade; empate perde).</p>
+
+  <h2 class="barh">Probabilidades das jogadas</h2>
+  <p>Para cada <strong>Soma</strong> (Atributo + Habilidade), o valor que você atinge <strong>com cerca de 80%, 50% e 25%</strong> de chance, e a porcentagem real. Leia como "tenho X% de tirar <em>pelo menos</em> este número".</p>
+  <div class="tab-wrap">
+    <table class="prob">
+      <thead><tr><th>Soma</th><th>Dados</th><th>≈80%</th><th>≈50%</th><th>≈25%</th></tr></thead>
+      <tbody>
+        {probRows.map((r) => (
+          <tr>
+            <td class="c">{r.soma}</td><td class="c dados">{r.dados}</td>
+            <td class="c"><b>{r.a80.X}</b> <span class="pc">({r.a80.p}%)</span></td>
+            <td class="c"><b>{r.a50.X}</b> <span class="pc">({r.a50.p}%)</span></td>
+            <td class="c"><b>{r.a25.X}</b> <span class="pc">({r.a25.p}%)</span></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="barh">Mapa de sucesso <small>· Soma × Dificuldade</small></h2>
+  <p>A chance de <strong>ter sucesso</strong> (total &gt; Dificuldade) cruzando quem rola (linha) com a Dificuldade (coluna). <span class="verde">Verde</span> = provável, <span class="vermelho">vermelho</span> = improvável.</p>
+  <div class="legend"><span class="cap">0%</span><span class="grad">{legenda.map((c) => (<span style={`background:${c}`}></span>))}</span><span class="cap">100%</span></div>
+  <div class="tab-wrap heat-wrap">
+    <table class="heat">
+      <thead><tr><th class="lbl">Soma</th><th class="lbl d">Dados</th>{difs.map((D) => (<th>{D}</th>))}</tr></thead>
+      <tbody>
+        {heatRows.map((r) => (
+          <tr>
+            <th class="lbl">{r.soma}</th><th class="lbl d">{r.dados}</th>
+            {r.cells.map((cell) => (<td style={`background:${cell.cor}`}>{cell.p}</td>))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="barh">Escolhendo a Dificuldade</h2>
+  <p>Regra de bolso: uma jogada é <strong>cara-ou-coroa (~50%)</strong> quando a Dificuldade vale cerca de <strong>Soma × 5/3</strong> (ou Soma ≈ 0,6 × Dif). Daí saem três degraus a partir da Soma que você julga "à altura" da tarefa:</p>
+  <ul class="mult">
+    <li><b>Fácil</b> (~75%): Dif ≈ Soma × <b>4/3</b></li>
+    <li><b>Média</b> (~50%): Dif ≈ Soma × <b>5/3</b></li>
+    <li><b>Difícil</b> (~25%): Dif = Soma × <b>2</b></li>
+  </ul>
+  <div class="tab-wrap">
+    <table class="prob">
+      <thead><tr><th>Soma</th><th>Dados</th><th>Fácil (×4/3)</th><th>Média (×5/3)</th><th>Difícil (×2)</th></tr></thead>
+      <tbody>
+        {reguaRows.map((r) => (
+          <tr>
+            <td class="c">{r.soma}</td><td class="c dados">{r.dados}</td>
+            <td class="c">Dif <b>{r.f.D}</b> <span class="pc">({r.f.p}%)</span></td>
+            <td class="c">Dif <b>{r.m.D}</b> <span class="pc">({r.m.p}%)</span></td>
+            <td class="c">Dif <b>{r.d.D}</b> <span class="pc">({r.d.p}%)</span></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">Cada <b>+3</b> na Dificuldade corta ~1 tier de quem consegue; cada <b>+5</b>, ~1 tier e meio. Circunstâncias entram como <b>±2/±4</b> na Dificuldade (ferramenta certa, apoio, terreno e tempo abaixam; pressa, distração e condições ruins sobem).</p>
+
+  <h3 class="sub">Os degraus, em palavras</h3>
+  <div class="tab-wrap">
+    <table class="deg">
+      <thead><tr><th>Dif</th><th>Nome</th><th>Cara-ou-coroa p/ Soma</th><th>O que significa</th></tr></thead>
+      <tbody>
+        {degraus.map((g) => (
+          <tr><td class="c"><b>{g.dif}</b></td><td class="nome">{g.nome}</td><td class="c">{g.soma}</td><td>{g.desc}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="barh">Dificuldades de exemplo</h2>
+  <h3 class="sub">Tarefas físicas e de perícia</h3>
+  <div class="tab-wrap">
+    <table class="ex">
+      <thead><tr><th>Tarefa</th><th>Perícia</th><th>Dif</th><th>Observação</th></tr></thead>
+      <tbody>
+        {exFisicas.map((e) => (
+          <tr><td>{e[0]}</td><td class="per">{e[1]}</td><td class="c dif">{e[2]}</td><td class="obs">{e[3]}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub">Situações sociais comuns</h3>
+  <div class="tab-wrap">
+    <table class="ex">
+      <thead><tr><th>Situação</th><th>Perícia</th><th>Dif</th><th>Observação</th></tr></thead>
+      <tbody>
+        {exSociais.map((e) => (
+          <tr><td>{e[0]}</td><td class="per">{e[1]}</td><td class="c dif">{e[2]}</td><td class="obs">{e[3]}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">As Dificuldades sociais são o <b>atalho rápido</b> (uma jogada resolve). Para vínculos que <b>persistem</b> (virar aliado, apaixonar, quebrar um inimigo), roteie pela <a href={url('regras/relacoes-sociais')}>Régua de Relação / Combate Social</a>: a Dif vira a Defesa Social do alvo e o resultado move a régua. A <b>Aparência</b> modifica seduzir/impressionar/intimidar, e cada <b>Margem</b> (6 acima do alvo) melhora o efeito. Veja também <a href={url('regras/coracao-do-sistema')}>O Coração do Sistema</a>.</p>
+</Base>
+
+<style>
+  .lead { font-size: 1.05rem; color: var(--ink-soft); }
+  h2.barh { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; padding: .4rem .8rem; border-radius: 4px; margin: 2rem 0 .7rem; }
+  h2.barh small { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .85; }
+  h3.sub { font-family: 'Cinzel'; font-size: .95rem; color: var(--accent-strong); margin: 1.4rem 0 .5rem; }
+  .tab-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; margin: .3rem 0 1rem; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th, td { padding: .4rem .6rem; text-align: left; border-bottom: 1px solid var(--rule); }
+  thead th { font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--on-accent); background: var(--accent); position: sticky; top: 0; }
+  td.c, th.c { text-align: center; }
+  .prob td.dados, .heat .d { color: var(--ink-soft); font-size: .82rem; }
+  .prob b { color: var(--accent-strong); font-size: 1.05rem; }
+  .prob .pc { color: var(--ink-soft); font-size: .82rem; }
+  .deg .nome { font-family: 'Cinzel'; color: var(--accent-strong); font-weight: 600; }
+  .mult { margin: .3rem 0 1rem; padding-left: 1.2rem; }
+  .mult b { color: var(--accent-strong); }
+
+  /* Heatmap */
+  .heat { font-size: .78rem; }
+  .heat th, .heat td { padding: .3rem .35rem; text-align: center; border: 1px solid rgba(0,0,0,.08); white-space: nowrap; }
+  .heat thead th { background: var(--accent); color: var(--on-accent); }
+  .heat th.lbl { position: sticky; left: 0; z-index: 2; background: var(--panel); color: var(--ink); font-family: 'Cinzel'; font-weight: 700; }
+  .heat thead th.lbl { background: var(--accent); color: var(--on-accent); z-index: 3; }
+  .heat th.lbl.d { left: 2.4rem; font-weight: 500; font-size: .72rem; color: var(--ink-soft); }
+  .heat thead th.lbl.d { color: var(--on-accent); }
+  .heat tbody td { color: #111; font-weight: 600; }
+  .heat tbody tr:hover td { outline: 1px solid rgba(0,0,0,.4); outline-offset: -1px; }
+
+  .legend { display: flex; align-items: center; gap: .6rem; margin: .2rem 0 .6rem; }
+  .legend .cap { font-family: 'Cinzel'; font-size: .7rem; color: var(--ink-soft); }
+  .legend .grad { display: inline-flex; height: 13px; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  .legend .grad span { width: 11px; height: 100%; }
+  .verde { color: hsl(120 60% 38%); font-weight: 700; }
+  .vermelho { color: hsl(0 65% 48%); font-weight: 700; }
+
+  .ex td.per { color: var(--ink-soft); font-size: .88rem; white-space: nowrap; }
+  .ex td.dif { font-family: 'Cinzel'; font-weight: 700; color: var(--accent-strong); }
+  .ex td.obs { color: var(--ink-soft); font-size: .88rem; font-style: italic; }
+</style>
