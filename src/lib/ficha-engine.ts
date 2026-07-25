@@ -204,7 +204,12 @@ export function montarFicha(opts: FichaOpts) {
     const arr = specArr(scope, key);
     const anchor = document.querySelector<HTMLElement>(`[data-specbtn="${scope}:${key}"]`); if (!anchor) return;
     const nome = anchor.closest('.trow')?.querySelector('.nm')?.textContent?.trim() || 'Habilidade';
-    if (!specPop) { specPop = document.createElement('div'); specPop.className = 'specpop'; document.body.appendChild(specPop); }
+    if (!specPop) {
+      specPop = document.createElement('div'); specPop.className = 'specpop'; document.body.appendChild(specPop);
+      // cliques dentro do popover não sobem até o handler de documento (senão o repaint
+      // detacha o alvo e o fecha-ao-clicar-fora acha que foi clique de fora); fechar só aqui ou por clique externo
+      specPop.addEventListener('click', (e) => { e.stopPropagation(); if ((e.target as HTMLElement).closest('[data-specpop-close]')) closeSpecPop(); });
+    }
     specPop.style.display = 'block'; specPopFor = scope + ':' + key;
     const paint = (focusIdx = -1) => {
       if (!arr.length) arr.push({ s: '', v: 0 });
