@@ -88,7 +88,7 @@
     "notas": "Esmaga placas (Impacto, principal); o bico do reverso (N2) fura quando precisa. O fim da era do escudo."
   },
   {
-    "id": "arco", "nome": "Arco", "classe": "distancia", "atrib": "destreza", "pericia": "atirador",
+    "id": "arco", "nome": "Arco", "classe": "distancia", "atrib": "percepcao", "pericia": "atirador",
     "dado": 2, "acerto": 1, "defesaArma": 0, "maos": 2, "ticks": 6, "folego": 20,
     "tipoDano": "perfurante", "pen": 1,
     "modos": [ { "tipo": "perfurante", "perf": 1, "principal": true } ],
@@ -96,7 +96,7 @@
     "notas": "Precisão à distância; gasta munição. Perfura couro e malha (N1), resvala na placa."
   },
   {
-    "id": "besta-pesada", "nome": "Besta Pesada", "classe": "distancia", "atrib": "destreza", "pericia": "atirador",
+    "id": "besta-pesada", "nome": "Besta Pesada", "classe": "distancia", "atrib": "percepcao", "pericia": "atirador",
     "dado": 3, "acerto": 1, "defesaArma": 0, "maos": 2, "ticks": 6, "folego": 20,
     "tipoDano": "perfurante", "pen": 2,
     "modos": [ { "tipo": "perfurante", "perf": 2, "principal": true } ],

@@ -21,16 +21,32 @@ export interface ResumoCombate {
   resistPerf: number; // Resistência a Perfuração (Nível) da armadura
 }
 
+const refArma = (slot: any) => { const r = slot?.ref || 'nada'; return r.startsWith('a:') ? ARMA[r.slice(2)] : null; };
+const refDef = (slot: any) => { const r = slot?.ref || 'nada'; if (r.startsWith('a:')) return ARMA[r.slice(2)]?.defesaArma || 0; if (r.startsWith('e:')) return ESCUDO[r.slice(2)]?.bloqCaC || 0; return 0; };
+const refPen = (slot: any) => { const r = slot?.ref || 'nada'; return r.startsWith('e:') ? (ESCUDO[r.slice(2)]?.penalidade || 0) : 0; };
+
 /** Calcula Ataque, Dano e Defesa física de um PC a partir da ficha (S). */
 export function resumoCombatePC(S: any): ResumoCombate {
   const attrs = S?.attrs || {}, skills = S?.skills || {}, skills2 = S?.skills2 || {};
   const C = S?.centelha || 0, forca = attrs.forca || 0;
-  const w = ARMA[S?.equip?.arma || 'desarmado'] || ARMA['desarmado'];
-  const escD = ESCUDO[S?.equip?.escudo || 'nenhum'] || { penalidade: 0 };
+  // conjunto em uso (novo modelo) com fallback para o modelo antigo (equip.arma/escudo).
+  const cj = Array.isArray(S?.conjuntos) && S.conjuntos.length ? (S.conjuntos.find((c: any) => c.ativo) || S.conjuntos[0]) : null;
+  let w: any, escPen = 0, inabilVazio = true;
+  if (cj) {
+    w = refArma(cj.habil) || ARMA['desarmado'];
+    const habil2H = refArma(cj.habil)?.maos === 2;
+    const inabil = habil2H ? null : cj.inabil;
+    inabilVazio = !inabil || (inabil.ref || 'nada') === 'nada';
+    escPen = refPen(cj.habil) + (inabil ? refPen(inabil) : 0);
+  } else {
+    w = ARMA[S?.equip?.arma || 'desarmado'] || ARMA['desarmado'];
+    const e = ESCUDO[S?.equip?.escudo || 'nenhum'] || { penalidade: 0 };
+    escPen = e.penalidade || 0; inabilVazio = !S?.equip?.escudo || S.equip.escudo === 'nenhum';
+  }
   const pecas = (S?.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
   const armSt = empilharArmaduras(pecas);
   const armorPen = armSt.penalidade || 0;
-  const penFisica = armorPen + (escD.penalidade || 0);
+  const penFisica = armorPen + escPen;
 
   // Ataque: [(Atrib + Perícia) / 2]d6 (+2 se ímpar) + acerto da arma + Centelha − armadura
   const soma = (attrs[w.atrib] || 0) + (skills[w.pericia] || skills2[w.pericia] || 0);
@@ -39,10 +55,12 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
   const ataque = `${dados}d6${bonus ? '+2' : ''}${flat ? ` ${sgn(flat)}` : ''}`;
 
-  // Dano base: dado da arma + Força (nada à distância) e a sigla do modo principal
+  // Dano base: dado da arma + Força e a sigla do modo principal. À distância soma Força×1 (por ora).
   const dist = (w.tags || []).includes('distância');
   const fm = regras.derivados.danoForca as { umaMao: number; duasMaos: number };
-  const forcaAp = dist ? 0 : forca * (w.forcaMult ?? (w.maos === 2 ? fm.duasMaos : fm.umaMao));
+  const versatil = (w.tags || []).includes('versátil');
+  const mult = dist ? 1 : (w.maos === 2 ? (w.forcaMult ?? fm.duasMaos) : (versatil && inabilVazio ? fm.duasMaos : (w.forcaMult ?? fm.umaMao)));
+  const forcaAp = forca * mult;
   const modos = ((w.modos ?? [{ tipo: w.tipoDano, principal: true }]) as any[]).slice()
     .sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
   const sigla = MODO_SIGLA[(modos[0]?.tipo) as keyof typeof MODO_SIGLA] || '';

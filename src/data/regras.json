@@ -549,7 +549,7 @@
       }
     },
     "danoForca": {
-      "nota": "Multiplicador da Força somada ao dano por nº de mãos. À distância = 0.",
+      "nota": "Multiplicador da Força somada ao dano por nº de mãos: 1 mão ×1, 2 mãos ×2 (armas versáteis empunhadas com as duas mãos também ×2). À distância soma Força ×1 (limites de arco a definir). Arcos e bestas miram pela Percepção.",
       "umaMao": 1,
       "duasMaos": 2
     },

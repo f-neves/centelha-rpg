@@ -110,7 +110,7 @@ export function montarFicha(opts: FichaOpts) {
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1400, modo: 'evolucao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' }, bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1400, modo: 'evolucao', equip: { armaduras: [] }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -119,6 +119,7 @@ export function montarFicha(opts: FichaOpts) {
   // Especialidades: lista nomeada [{s, v}]. Teto por Habilidade = [nível/2] especialidades, cada uma até [nível/2].
   // Também converte o formato antigo (número solto) e reaplica os tetos a cada carga.
   function mkBolsas() { return [{ nome: 'Mochila', texto: '' }, { nome: 'Equipamentos', texto: '' }, { nome: 'Carroça', texto: '' }]; }
+  function mkConjuntos() { return [{ habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' }, ativo: true }]; }
   // Especialidade = lista de nomes, um por NÍVEL (quadrado). Teto [nível/2] níveis por perícia.
   // Converte os formatos antigos: número solto e lista [{s, v}] (achatando v em v nomes).
   function clampSpecs(arr: any, skill: number): string[] {
@@ -140,9 +141,18 @@ export function montarFicha(opts: FichaOpts) {
     if (S.spec.escudos != null && S.spec.bloqueio == null) S.spec.bloqueio = S.spec.escudos;
     delete S.skills.escudos; delete S.spec.escudos; delete S.blkPericia;
     S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1400; S.modo ??= 'evolucao'; S.derivCol ??= true;
-    S.equip ??= {}; S.equip.arma ??= 'desarmado'; S.equip.escudo ??= 'nenhum';
+    S.equip ??= {};
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
+    // Migração: Arma/Escudo únicos viram um conjunto (mão hábil/inábil).
+    if (!Array.isArray(S.conjuntos) || !S.conjuntos.length) {
+      const arma = S.equip.arma && S.equip.arma !== 'desarmado' ? `a:${S.equip.arma}` : 'a:desarmado';
+      const esc = S.equip.escudo && S.equip.escudo !== 'nenhum' ? `e:${S.equip.escudo}` : 'nada';
+      S.conjuntos = [{ habil: { ref: arma }, inabil: { ref: esc }, ativo: true }];
+    }
+    delete S.equip.arma; delete S.equip.escudo;
+    S.conjuntos = S.conjuntos.map((c: any) => ({ habil: { ref: String(c?.habil?.ref || 'a:desarmado'), nome: c?.habil?.nome }, inabil: { ref: String(c?.inabil?.ref || 'nada'), nome: c?.inabil?.nome }, ativo: !!c?.ativo }));
+    if (!S.conjuntos.some((c: any) => c.ativo)) S.conjuntos[0].ativo = true;
     S.bolsas = (Array.isArray(S.bolsas) && S.bolsas.length) ? S.bolsas.map((b: any) => ({ nome: String(b?.nome ?? ''), texto: String(b?.texto ?? '') })) : mkBolsas();
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id] || 0); });
@@ -272,85 +282,142 @@ export function montarFicha(opts: FichaOpts) {
     el('artes').innerHTML = col3(ARTE_D as any[], card);
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
+  // ===== Equipamento: conjuntos de armas (mão hábil / inábil) =====
+  const IMPROV = { nome: 'Improvisado', dado: 1, acerto: 0, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
+  function itemDe(slot: any) {
+    const ref = (slot && slot.ref) || 'nada';
+    if (ref === 'c') { const w = { ...IMPROV, nome: (slot && slot.nome) || 'Improvisado' }; return { kind: 'custom', nome: w.nome, def: 0, pen: 0, w }; }
+    if (ref.startsWith('e:')) { const s = ESCUDO[ref.slice(2)]; if (s) return { kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, habilProjetil: !!s.habilProjetil }; }
+    if (ref.startsWith('a:')) { const w = ARMA[ref.slice(2)]; if (w) return { kind: 'arma', nome: w.nome, def: w.defesaArma || 0, pen: 0, w }; }
+    return { kind: 'nada', nome: '—', def: 0, pen: 0 };
+  }
+  const it2H = (it: any) => (it.kind === 'arma' || it.kind === 'custom') && it.w.maos === 2;
+  const itVers = (it: any) => (it.kind === 'arma' || it.kind === 'custom') && (it.w.tags || []).includes('versátil');
+  function conjAtivo() { const cs = (S.conjuntos || []); return cs.find((c: any) => c.ativo) || cs[0] || { habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' } }; }
+  function calcConj(cj: any) {
+    const C = S.centelha || 0, forca = A('forca');
+    const armorPen = empilharArmaduras((S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean)).penalidade || 0;
+    const habil = itemDe(cj.habil);
+    const inabil = it2H(habil) ? { kind: 'nada', nome: '—', def: 0, pen: 0 } : itemDe(cj.inabil);
+    const atk = (habil.kind === 'arma' || habil.kind === 'custom') ? habil.w : ARMA['desarmado'];
+    const soma = (S.attrs[atk.atrib] || 0) + (S.skills[atk.pericia] || S.skills2[atk.pericia] || 0);
+    const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
+    const flat = (atk.acerto || 0) + ataqueCentelha(C) - armorPen;
+    const dist = (atk.tags || []).includes('distância');
+    const fm = regras.derivados.danoForca as any;
+    const versoes: { rot: string; ap: number }[] = [];
+    if (!dist && itVers(habil)) {
+      versoes.push({ rot: '1 mão', ap: forca * (atk.forcaMult ?? fm.umaMao) });
+      versoes.push({ rot: '2 mãos', ap: forca * fm.duasMaos });
+    } else {
+      const mult = dist ? 1 : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
+      versoes.push({ rot: '', ap: forca * mult });
+    }
+    return { habil, inabil, atk, dados, bonus, flat, dist, versoes, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
+  }
+  const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
+  function optsItens(sel: string) {
+    const armas = (ARMA_D as any[]).map((w) => `<option value="a:${w.id}"${sel === 'a:' + w.id ? ' selected' : ''}>${w.nome}</option>`).join('');
+    const escudos = (ESCUDO_D as any[]).filter((s) => s.id !== 'nenhum').map((s) => `<option value="e:${s.id}"${sel === 'e:' + s.id ? ' selected' : ''}>Escudo: ${s.nome}</option>`).join('');
+    return `<optgroup label="Armas">${armas}</optgroup><optgroup label="Escudos">${escudos}</optgroup><option value="nada"${sel === 'nada' ? ' selected' : ''}>Nada</option><option value="c"${sel === 'c' ? ' selected' : ''}>Personalizado…</option>`;
+  }
+  function renderConjuntos() {
+    const ro = !!opts.readOnly;
+    el('eq-conjuntos').innerHTML = (S.conjuntos || []).map((cj: any, i: number) => {
+      const c = calcConj(cj); const trava = it2H(c.habil);
+      const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
+      const dano = c.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' +' + v.ap : ''}`).join(' · ');
+      const custom = (hand: 'habil' | 'inabil') => cj[hand]?.ref === 'c' ? `<input class="conj-nome" data-conj-nome="${i}:${hand}" value="${escapeHtml(cj[hand].nome || '')}" placeholder="nome do item"${ro ? ' disabled' : ''} />` : '';
+      return `<div class="conjunto${cj.ativo ? ' ativo' : ''}">
+        <div class="conj-top"><label class="conj-uso"><input type="radio" name="conj-ativo" data-conj-uso="${i}"${cj.ativo ? ' checked' : ''}${ro ? ' disabled' : ''}/> em uso</label>${(S.conjuntos.length > 1 && !ro) ? `<button class="conj-rm" data-conj-rm="${i}" title="Remover" aria-label="Remover">×</button>` : ''}</div>
+        <div class="conj-hands">
+          <label>Mão hábil<select data-conj-sel="${i}:habil"${ro ? ' disabled' : ''}>${optsItens(cj.habil?.ref || 'a:desarmado')}</select>${custom('habil')}</label>
+          <label>Mão inábil<select data-conj-sel="${i}:inabil"${(ro || trava) ? ' disabled' : ''}>${optsItens(trava ? 'nada' : (cj.inabil?.ref || 'nada'))}</select>${trava ? '' : custom('inabil')}</label>
+        </div>
+        <div class="conj-stats"><b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}</div>
+      </div>`;
+    }).join('');
+  }
   function renderDerived() {
     const virt = { compaixao: VI('compaixao'), conviccao: VI('conviccao'), temperanca: VI('temperanca'), valor: VI('valor') };
+    const virtSum = virt.compaixao + virt.conviccao + virt.temperanca + virt.valor;
     const C = S.centelha, W = S.willpower, integ = SK('integridade');
-    const r = (l: string, v: any, fm: string, extra = false) => `<div class="derv${extra ? ' derv-extra' : ''}"><span class="dl">${l}<span class="fm">${fm}</span></span><span class="dv">${v}</span></div>`;
+    const r = (l: string, v: any, calc: string, extra = false) => `<div class="derv${extra ? ' derv-extra' : ''}"><span class="dl">${l}</span><span class="dv" data-calc="${escapeHtml(calc)}">${v}</span></div>`;
     const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
     const armSt = empilharArmaduras(pecas);
-    const escD = ESCUDO[S.equip?.escudo || 'nenhum'] || { penalidade: 0 };
-    const penFisica = (armSt.penalidade || 0) + (escD.penalidade || 0);
+    const act = calcConj(conjAtivo());
+    const armPen = armSt.penalidade || 0, penEsc = act.penSum || 0;
+    const penFisica = armPen + penEsc; // Esquiva e deslocamento sofrem armadura + escudo(s)
     const cs = (regras.dano as any)?.centelhaNoSoak ?? 0;
-    const vig = A('vigor');
-    const defEsq = defesa({ destreza: A('destreza'), habilidade: SK('esquiva'), centelha: C }) - penFisica;
-    // Bloqueio: sempre pela Habilidade Bloqueio (independe da arma/escudo). O modificador de Def. da arma/escudo equipados entra na aba de Combate.
-    const defBlq = defesa({ destreza: A('destreza'), habilidade: SK('bloqueio'), centelha: C }) - penFisica;
-    const soakStr = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0)).join(' / ');
-    // Especialidades situacionais de defesa (S.defSpec) ficam DORMENTES por ora: sem editor na ficha.
+    const vig = A('vigor'), dex = A('destreza');
+    const defEsq = defesa({ destreza: dex, habilidade: SK('esquiva'), centelha: C }) - penFisica;
+    // Bloqueio soma a Defesa das armas/escudos do conjunto EM USO. O escudo não penaliza o próprio Bloqueio.
+    const defBlq = defesa({ destreza: dex, habilidade: SK('bloqueio'), centelha: C }) + (act.defSum || 0) - armPen;
+    const pvv = pv(vig), en = energia({ centelha: C, virtudes: virt, vontade: W }), mn = mana({ centelha: C, vontade: W });
+    const fo = folego({ vigor: vig, resistencia: SK('resistencia'), vontade: W });
+    const soc = defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C });
+    const men = defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C });
+    const soaks = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0));
+    const pArm = armPen ? ` − ${armPen} (Armadura)` : '';
+    const pEsc = penEsc ? ` − ${penEsc} (Escudo)` : '';
+    const defParts = [act.habil, act.inabil].filter((it: any) => it.def).map((it: any) => ` ${it.def >= 0 ? '+' : '−'} ${Math.abs(it.def)} (${it.nome})`).join('');
+    const soakCalc = `Impacto ${soaks[0]} = Vigor ${vig} + Centelha ${C}${armSt.soak.impacto ? ` + ${armSt.soak.impacto} (armadura)` : ''} · Corte ${soaks[1]} e Perfuração ${soaks[2]} = Centelha ${C}${(armSt.soak.corte || armSt.soak.perfuracao) ? ' + armadura' : ''}${armSt.resistPerf ? ` · Resist. Perfuração Nível ${armSt.resistPerf}` : ''}`;
     el('derived').innerHTML =
-      r('Pontos de Vida', pv(A('vigor')), '25 + Vigor×3') +
-      r('Defesa (Esquiva)', defEsq, '(Des + Esquiva)×2 + Centelha − penalidade') +
-      r('Defesa (Bloqueio)', defBlq, '(Des + Bloqueio)×2 + Centelha − penalidade') +
-      r('Defesa Social', defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }), '(Compostura + Sociabilidade)×2 + Centelha') +
-      r('Defesa Mental', defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C }), 'Raciocínio + Integridade + Vontade + Centelha') +
-      r('Absorção Imp/Cor/Perf', `${soakStr}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, 'Vigor + Centelha no Impacto; só Centelha em Corte/Perf; + armadura') +
-      r('Energia', energia({ centelha: C, virtudes: virt, vontade: W }), 'Centelha×3 + Virtudes + Vontade', true) +
-      r('Mana', mana({ centelha: C, vontade: W }), 'Centelha×2 + Vontade', true) +
-      r('Fôlego', folego({ vigor: A('vigor'), resistencia: SK('resistencia'), vontade: W }), '10 + Vigor×5 + Resistência×4 + Vontade×2 · recupera Vigor/Tick', true) +
-      r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, '+ Raciocínio + Prontidão', true) +
-      (() => { const dz = deslocamento({ forca: A('forca'), destreza: A('destreza'), atletismo: SK('atletismo'), centelha: C });
+      r('Pontos de Vida', pvv, `25 + Vigor ${vig}×3 = ${pvv}`) +
+      r('Defesa (Esquiva)', defEsq, `(Destreza ${dex} + Esquiva ${SK('esquiva')})×2 + Centelha ${C}${pArm}${pEsc} = ${defEsq}`) +
+      r('Defesa (Bloqueio)', defBlq, `(Destreza ${dex} + Bloqueio ${SK('bloqueio')})×2 + Centelha ${C}${defParts}${pArm} = ${defBlq}`) +
+      r('Defesa Social', soc, `(Compostura ${A('compostura')} + Sociabilidade ${SK('sociabilidade')})×2 + Centelha ${C} = ${soc}`) +
+      r('Defesa Mental', men, `Raciocínio ${A('raciocinio')} + Integridade ${integ} + Vontade ${W} + Centelha ${C} = ${men}`) +
+      r('Absorção Imp/Cor/Perf', `${soaks.join(' / ')}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, soakCalc) +
+      r('Energia', en, `Centelha ${C}×3 + Virtudes ${virtSum} + Vontade ${W} = ${en}`, true) +
+      r('Mana', mn, `Centelha ${C}×2 + Vontade ${W} = ${mn}`, true) +
+      r('Fôlego', fo, `10 + Vigor ${vig}×5 + Resistência ${SK('resistencia')}×4 + Vontade ${W}×2 = ${fo} · recupera Vigor/Tick`, true) +
+      r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, `1d6 + Raciocínio ${A('raciocinio')} + Prontidão ${SK('prontidao')}`, true) +
+      (() => { const dz = deslocamento({ forca: A('forca'), destreza: dex, atletismo: SK('atletismo'), centelha: C });
         const penMov = Math.floor(penFisica / 2);
         const mp = (v: number) => Math.max(0, v - penMov);
         const cmp = (v: number) => Math.max(0, v - penMov * 10);
         const ps = penMov ? ` − ½ penalidade (${penMov})` : '';
-        const psv = penMov ? ` − ½ penalidade×10` : '';
-        return r('Deslocamento livre', `${mp(dz.normal)} m`, `(Des + Atletismo) ÷ 2 · distância na ação${ps}`, true) +
-          r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `(Força + Atletismo) ÷ 2 + Destreza · Ticks 1–3${ps}`, true) +
-          r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `Destreza × 1,5 + Atletismo · Tick 4+${ps}`, true) +
-          r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força×20 + Atletismo×10 + Des×4 + Centelha×50${psv}`, true) +
-          r('Salto Horiz. Parado', `${mp(dz.saltoHorizontalParado)} m`, `(Força + Atletismo + Centelha) ÷ 2${ps}`, true) +
-          r('Salto Horiz. Correndo', `${mp(dz.saltoHorizontalCorrendo)} m`, `Vel. de Corrida + Atletismo ÷ 2 + Centelha${ps}`, true); })();
+        return r('Deslocamento livre', `${mp(dz.normal)} m`, `(Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 2${ps} = ${mp(dz.normal)} m na ação`, true) +
+          r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')}) ÷ 2 + Destreza ${dex} · Ticks 1–3${ps}`, true) +
+          r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `Destreza ${dex} × 1,5 + Atletismo ${SK('atletismo')} · Tick 4+${ps}`, true) +
+          r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força ${A('forca')}×20 + Atletismo ${SK('atletismo')}×10 + Destreza ${dex}×4 + Centelha ${C}×50`, true) +
+          r('Salto Horiz. Parado', `${mp(dz.saltoHorizontalParado)} m`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')} + Centelha ${C}) ÷ 2${ps}`, true) +
+          r('Salto Horiz. Correndo', `${mp(dz.saltoHorizontalCorrendo)} m`, `Vel. de Corrida + Atletismo ${SK('atletismo')} ÷ 2 + Centelha ${C}${ps}`, true); })();
   }
   function applyDerivCol() {
     el('derived').classList.toggle('collapsed', !!S.derivCol);
     el('deriv-toggle').textContent = S.derivCol ? 'Expandir' : 'Contrair';
   }
   function renderCombate() {
-    const w = ARMA[S.equip?.arma || 'desarmado'] || ARMA['desarmado'];
-    const esc = ESCUDO[S.equip?.escudo || 'nenhum'] || { bloqCaC: 0, habilProjetil: false, penalidade: 0 };
-    const C = S.centelha || 0, forca = S.attrs.forca || 0;
-    const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
-    const armorPen = empilharArmaduras(pecas).penalidade || 0;
-    const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
-    const soma = (S.attrs[w.atrib] || 0) + (S.skills[w.pericia] || S.skills2[w.pericia] || 0);
-    const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
-    const flat = (w.acerto || 0) + ataqueCentelha(C) - armorPen;
-    const pool = `${dados}d6${bonus ? '+2' : ''}${flat ? ` ${sgn(flat)}` : ''}`;
-    const dist = w.tags.includes('distância');
-    const fm = regras.derivados.danoForca; const forcaAp = dist ? 0 : forca * ((w as any).forcaMult ?? (w.maos === 2 ? fm.duasMaos : fm.umaMao));
-    const danoBase = `${w.dado}d6${forcaAp ? ` +${forcaAp}` : ''}`;
+    const act = calcConj(conjAtivo());
+    const w = act.atk, C = S.centelha || 0, armorPen = act.armorPen;
+    const atk = `${act.dados}d6${act.bonus ? '+2' : ''}${act.flat ? ' ' + sgn(act.flat) : ''}`;
+    const dano = act.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${w.dado}d6${v.ap ? ' +' + v.ap : ''}`).join(' · ');
     const modos = ((w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[]).slice().sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
     const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
     const temSec = modos.some((m) => !m.principal);
-    const blk = defesa({ destreza: S.attrs.destreza || 0, habilidade: S.skills.bloqueio || 0, centelha: C }) + (w.defesaArma || 0) + (esc.bloqCaC || 0) - armorPen;
-    const blkDS = ((S.defSpec?.bloqueio || []) as any[]).map((e: any) => `${e.v >= 0 ? '+' : ''}${e.v} ${e.s}`);
+    const blk = defesa({ destreza: A('destreza'), habilidade: SK('bloqueio'), centelha: C }) + (act.defSum || 0) - armorPen;
+    const nomeSet = `${act.habil.nome}${act.inabil.kind !== 'nada' ? ` + ${act.inabil.nome}` : ''}`;
+    const escudos = [act.habil, act.inabil].filter((it: any) => it.kind === 'escudo');
+    const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
     el('combate').innerHTML =
-      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${pool}</b> · dano base <b>${danoBase}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
+      `<div class="cmb"><b>Conjunto em uso</b> — ${nomeSet}</div>` +
+      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${atk}</b> · dano <b>${dano}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
       `<div class="cmb"><b>Modos</b> — ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>` +
-      `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego (${(w.folego ?? 0) * 2} → ${(w.folego ?? 0) * 4}…) e +1 Speed.</div>` +
-      (dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">((Des + Bloqueio)×2 + Centelha + Def. Arma ${w.defesaArma >= 0 ? '+' : ''}${w.defesaArma}${esc.bloqCaC ? ` + escudo ${esc.bloqCaC}` : ''}${armorPen ? ` − armadura ${armorPen}` : ''})</span></div>`) +
-      (!dist && blkDS.length ? `<div class="cmb muted">Especialidades situacionais de bloqueio: ${blkDS.join(' · ')}.</div>` : '') +
-      (esc.bloqCaC ? `<div class="cmb muted">Projétil rápido (flecha, virote, bala de funda, dardo): ${esc.habilProjetil ? 'este escudo é hábil, dá para Bloquear se você estiver apto a manejá-lo (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.${esc.penalidade ? ` Penalidade −${esc.penalidade} nas outras ações físicas (não no próprio bloqueio).` : ''}</div>` : '') +
+      `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego e +1 Speed.</div>` +
+      (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
+      (escudos.length
+        ? `<div class="cmb muted">Projétil rápido: ${escudos.some((e: any) => e.habilProjetil) ? 'você tem escudo hábil, dá para Bloquear se estiver apto (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.</div>`
+        : `<div class="cmb muted">Projétil rápido (flecha, virote, bala de funda): sem escudo hábil, só Esquiva.</div>`) +
       (w.notas ? `<div class="cmb muted">${w.notas}</div>` : '') +
       (pecas.length ? `<div class="cmb muted">Armadura: ${pecas.map((p: any) => p.nome).join(' + ')}.</div>` : '');
   }
   function populateEquip() {
-    const fill = (id: string, list: any[], sel: string) => { const s = el(id) as HTMLSelectElement; s.innerHTML = list.map((o) => `<option value="${o.id}">${o.nome}</option>`).join(''); s.value = sel; };
-    fill('eq-arma', ARMA_D as any[], S.equip.arma); fill('eq-escudo', ESCUDO_D as any[], S.equip.escudo);
+    renderConjuntos();
     const box = el('eq-armaduras');
     box.innerHTML = (ARMADURA_D as any[]).filter((a) => a.id !== 'nenhuma')
       .map((a) => `<label class="arm-chk"><input type="checkbox" data-arm="${a.id}"${(S.equip.armaduras || []).includes(a.id) ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''}/> ${a.nome}</label>`).join('');
-    if (opts.readOnly) { (el('eq-arma') as HTMLSelectElement).disabled = true; (el('eq-escudo') as HTMLSelectElement).disabled = true; }
     box.querySelectorAll('input[data-arm]').forEach((cb) => cb.addEventListener('change', (e) => {
       const t = e.target as HTMLInputElement; const set = new Set<string>(S.equip.armaduras || []);
       if (t.checked) set.add(t.dataset.arm!); else set.delete(t.dataset.arm!);
@@ -523,7 +590,42 @@ export function montarFicha(opts: FichaOpts) {
   el('deriv-toggle').addEventListener('click', () => { S.derivCol = !S.derivCol; applyDerivCol(); save(); });
   let camAllOpen = false;
   el('cam-all').addEventListener('click', () => { camAllOpen = !camAllOpen; CAM_ORDER.forEach((c) => (OPEN.cam[c] = camAllOpen)); renderCaminhos(); el('cam-all').textContent = camAllOpen ? 'Recolher todos' : 'Expandir todos'; });
-  (['eq-arma', 'eq-escudo'] as const).forEach((id) => el(id).addEventListener('change', (e) => { if (opts.readOnly) return; S.equip[id.slice(3)] = (e.target as HTMLSelectElement).value; renderDerived(); renderCombate(); save(); }));
+  el('eq-conjuntos').addEventListener('change', (e) => {
+    if (opts.readOnly) return;
+    const sel = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-conj-sel]');
+    if (sel) {
+      const [i, hand] = sel.dataset.conjSel!.split(':'); const cj = S.conjuntos[+i]; const val = sel.value;
+      const w = val.startsWith('a:') ? ARMA[val.slice(2)] : null;
+      if (hand === 'inabil' && w && w.maos === 2) { cj.habil = { ref: val }; cj.inabil = { ref: 'nada' }; }
+      else { cj[hand] = { ref: val, nome: val === 'c' ? (cj[hand]?.nome || '') : undefined }; if (hand === 'habil' && w && w.maos === 2) cj.inabil = { ref: 'nada' }; }
+      renderConjuntos(); renderDerived(); renderCombate(); save(); return;
+    }
+    const uso = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-uso]');
+    if (uso) { const i = +uso.dataset.conjUso!; S.conjuntos.forEach((c: any, j: number) => (c.ativo = j === i)); renderConjuntos(); renderDerived(); renderCombate(); save(); }
+  });
+  el('eq-conjuntos').addEventListener('input', (e) => {
+    if (opts.readOnly) return;
+    const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-nome]');
+    if (inp) { const [i, hand] = inp.dataset.conjNome!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' }).nome = inp.value; renderCombate(); save(); }
+  });
+  el('eq-conjuntos').addEventListener('click', (e) => {
+    if (opts.readOnly) return;
+    const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-conj-rm]');
+    if (rm) { S.conjuntos.splice(+rm.dataset.conjRm!, 1); if (!S.conjuntos.some((c: any) => c.ativo)) S.conjuntos[0].ativo = true; renderConjuntos(); renderDerived(); renderCombate(); save(); }
+  });
+  el('add-conjunto').addEventListener('click', () => { if (opts.readOnly) return; S.conjuntos.push({ habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' }, ativo: false }); renderConjuntos(); save(); });
+  // popover de cálculo ao passar o mouse nos Derivados
+  let calcPop: HTMLElement | null = null;
+  document.addEventListener('mouseover', (e) => {
+    const d = (e.target as HTMLElement).closest<HTMLElement>('[data-calc]'); if (!d) return;
+    const txt = d.getAttribute('data-calc'); if (!txt) return;
+    if (!calcPop) { calcPop = document.createElement('div'); calcPop.className = 'calcpop'; document.body.appendChild(calcPop); }
+    calcPop.textContent = txt; calcPop.style.display = 'block';
+    const r = d.getBoundingClientRect();
+    calcPop.style.left = Math.max(8, Math.min(window.scrollX + r.left - 120, window.scrollX + document.documentElement.clientWidth - 288)) + 'px';
+    calcPop.style.top = (window.scrollY + r.bottom + 4) + 'px';
+  });
+  document.addEventListener('mouseout', (e) => { if ((e.target as HTMLElement).closest('[data-calc]') && calcPop) calcPop.style.display = 'none'; });
   el('eq-bolsas').addEventListener('input', (e) => {
     if (opts.readOnly) return;
     const t = e.target as HTMLElement;
