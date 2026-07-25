@@ -96,6 +96,31 @@ import Base from '../layouts/Base.astro';
       <div id="card-modal-body"></div>
     </div>
   </div>
+
+  <dialog id="acao-dlg" class="acao-dlg">
+    <form method="dialog" class="acao-form">
+      <h3 id="acao-titulo" class="cinzel">Ação</h3>
+      <label>Tipo de ação
+        <select id="acao-tipo">
+          <option value="ataque">Ataque</option>
+          <option value="acao">Outra ação</option>
+        </select>
+      </label>
+      <label id="acao-alvo-wrap">Alvo
+        <select id="acao-alvo"></select>
+      </label>
+      <label id="acao-outro-wrap">Descrição
+        <input type="text" id="acao-outro" placeholder="descreva…" />
+      </label>
+      <label>Speed (Ticks até a próxima ação)
+        <input type="number" id="acao-speed" min="0" value="5" />
+      </label>
+      <div class="acao-btns">
+        <button type="button" class="btn" id="acao-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="acao-confirmar">Confirmar</button>
+      </div>
+    </form>
+  </dialog>
 </Base>
 
 <script>
@@ -433,14 +458,50 @@ import Base from '../layouts/Base.astro';
       await logAcao(`${nome.trim()} entrou.`);
       await reload();
     });
-    area.querySelectorAll<HTMLElement>('.agir').forEach((b) => b.addEventListener('click', async () => {
-      const cid = b.dataset.c!;
-      const spd = parseInt((area.querySelector(`.spd[data-c="${cid}"]`) as HTMLInputElement)?.value || '5', 10) || 0;
-      const antigo = parseInt(b.dataset.tick || '0', 10) || 0; const novoTick = antigo + spd;
-      await sb.from('combatentes').update({ tick: novoTick }).eq('id', cid);
-      await logAcao(`${nomeC(cid)} agiu · tick ${antigo} → ${novoTick} (Speed ${spd}).`);
-      await reload();
-    }));
+    const dlg = document.getElementById('acao-dlg') as HTMLDialogElement;
+    const abrirAcao = (cid: string, tickAtual: number) => {
+      const ator = (lista as any[]).find((x) => x.id === cid); if (!ator) return;
+      const spdRow = parseInt((area.querySelector(`.spd[data-c="${cid}"]`) as HTMLInputElement)?.value || '5', 10) || 5;
+      (document.getElementById('acao-titulo') as HTMLElement).textContent = `Ação de ${ator.nome}`;
+      const tipoSel = document.getElementById('acao-tipo') as HTMLSelectElement;
+      const alvoSel = document.getElementById('acao-alvo') as HTMLSelectElement;
+      const alvoWrap = document.getElementById('acao-alvo-wrap') as HTMLElement;
+      const outroWrap = document.getElementById('acao-outro-wrap') as HTMLElement;
+      const outroInp = document.getElementById('acao-outro') as HTMLInputElement;
+      const spdInp = document.getElementById('acao-speed') as HTMLInputElement;
+      tipoSel.value = 'ataque';
+      alvoSel.innerHTML = (lista as any[]).filter((x) => x.id !== cid).map((x) => `<option value="${x.id}">${esc(x.nome)}</option>`).join('') + '<option value="__outro__">Outro (digitar)…</option>';
+      outroInp.value = '';
+      spdInp.value = String(spdRow);
+      const sync = () => {
+        const atk = tipoSel.value === 'ataque';
+        alvoWrap.style.display = atk ? '' : 'none';
+        const precisaOutro = !atk || alvoSel.value === '__outro__';
+        outroWrap.style.display = precisaOutro ? '' : 'none';
+        outroInp.placeholder = atk ? 'nome do alvo / detalhe' : 'descreva a ação (opcional)';
+      };
+      tipoSel.onchange = sync; alvoSel.onchange = sync; sync();
+      (document.getElementById('acao-cancelar') as HTMLElement).onclick = () => dlg.close();
+      (document.getElementById('acao-confirmar') as HTMLElement).onclick = async () => {
+        const spd = Math.max(0, parseInt(spdInp.value || '0', 10) || 0);
+        const novoTick = tickAtual + spd;
+        const atk = tipoSel.value === 'ataque';
+        let txt: string;
+        if (atk) {
+          const alvoNome = alvoSel.value === '__outro__' ? (outroInp.value.trim() || 'alvo indefinido') : ((lista as any[]).find((x) => x.id === alvoSel.value)?.nome || 'alvo');
+          txt = `${ator.nome} atacou ${alvoNome}`;
+        } else {
+          const desc = outroInp.value.trim();
+          txt = desc ? `${ator.nome}: ${desc}` : `${ator.nome} agiu`;
+        }
+        dlg.close();
+        await sb.from('combatentes').update({ tick: novoTick }).eq('id', cid);
+        await logAcao(`${txt} · tick ${tickAtual} → ${novoTick} (Speed ${spd}).`);
+        await reload();
+      };
+      dlg.showModal();
+    };
+    area.querySelectorAll<HTMLElement>('.agir').forEach((b) => b.addEventListener('click', () => abrirAcao(b.dataset.c!, parseInt(b.dataset.tick || '0', 10) || 0)));
     // Atualiza a barra em-lugar (anima largura/cor), sem re-renderizar a lista toda.
     const atualizarBarra = (cid: string, c: any) => {
       const bar = area.querySelector<HTMLElement>(`.hpbar[data-c="${cid}"]`); if (!bar) return;
@@ -917,6 +978,15 @@ import Base from '../layouts/Base.astro';
   .log-linha:hover .log-edit, .log-linha:hover .log-del { opacity: 1; }
   .log-edit { color: var(--accent); }
   .log-del { color: #b3261e; }
+
+  /* Diálogo de ação (Agir) */
+  .acao-dlg { border: 1px solid var(--rule); border-radius: 10px; padding: 0; background: var(--panel); color: var(--ink); max-width: 24rem; width: 92%; box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+  .acao-dlg::backdrop { background: color-mix(in srgb, #1a120a 62%, transparent); backdrop-filter: blur(2px); }
+  .acao-form { display: flex; flex-direction: column; gap: .7rem; padding: 1.1rem 1.2rem 1.2rem; }
+  .acao-form h3 { margin: 0; color: var(--accent-strong); font-size: 1.05rem; }
+  .acao-form label { display: flex; flex-direction: column; gap: .25rem; font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
+  .acao-form select, .acao-form input { padding: .42rem .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; font-size: .95rem; text-transform: none; letter-spacing: normal; }
+  .acao-btns { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .3rem; }
 
   .cr-atk { font-size: .85rem; color: var(--ink-soft); }
   .cr-atk .cr-atk-nm { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink); }
