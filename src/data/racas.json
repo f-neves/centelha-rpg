@@ -82,18 +82,18 @@
     ]
   },
   {
-    "id": "orc",
-    "nome": "Orc",
+    "id": "meio-orc",
+    "nome": "Meio-Orc",
     "custo": 40,
-    "atributos": { "forca": 1, "vigor": 1, "perspicacia": -1, "compostura": -1, "inteligencia": -1 },
-    "aparenciaMod": -1,
+    "atributos": { "forca": 1, "vigor": 1, "compostura": -1, "inteligencia": -1 },
+    "aparenciaMod": 0,
     "aparenciaUniversal": false,
-    "descricao": "Altos e truculentos, de herança metamorfa e constituição física superior; vida curta (60 anos).",
+    "descricao": "Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Robustos e brutos, mas menos bestiais que um orc puro (que vive na lore como criatura, não como raça jogável). Vida curta, cerca de 60 anos.",
     "tracos": [
       "Vitalidade: +Vigor de PV extra.",
-      "Frenesi: pode entrar em fúria (só ações físicas, mais intimidar como reflexo); não sofre penalidade de dano, e intimidar em frenesi soma +2d6.",
-      "Visão noturna: enxerga sem penalidade na penumbra (não na escuridão total).",
-      "Aparência bruta: a Aparência efetiva de um Orc é 1 a menos do valor que ele pagou (já embutido na ficha)."
+      "Frenesi contido: pode entrar em fúria (só ações físicas, mais intimidar como reflexo, sem penalidade de dano); menos intenso e mais controlável que o de um orc puro.",
+      "Visão noturna: enxerga sem penalidade na penumbra, não na escuridão total.",
+      "Sangue partido: criado entre dois mundos, não carrega as inimizades naturais de um povo; parte do Neutro na Régua de Relação, como o humano."
     ]
   }
 ]
