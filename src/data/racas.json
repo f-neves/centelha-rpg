@@ -82,6 +82,21 @@
     ]
   },
   {
+    "id": "orc",
+    "nome": "Orc",
+    "custo": 40,
+    "atributos": { "forca": 1, "vigor": 1, "perspicacia": -1, "compostura": -1, "inteligencia": -1 },
+    "aparenciaMod": -1,
+    "aparenciaUniversal": false,
+    "descricao": "Altos, truculentos e de herança metamorfa, com constituição física superior a qualquer outra raça mediana; feições rudes e vida curta (60 anos). Mais bestial e menos temperado que o meio-orc.",
+    "tracos": [
+      "Vitalidade: +Vigor de PV extra.",
+      "Frenesi: pode entrar em fúria (só ações físicas, mais intimidar como reflexo, ignorando as penalidades de ferimento); ao intimidar nesse estado, +2d6 na parada.",
+      "Visão noturna: enxerga sem penalidade na penumbra, não na escuridão total.",
+      "Aparência bruta: a Aparência efetiva de um Orc é 1 a menos do valor pago (já embutido na ficha)."
+    ]
+  },
+  {
     "id": "meio-orc",
     "nome": "Meio-Orc",
     "custo": 40,

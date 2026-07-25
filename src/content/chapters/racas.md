@@ -36,6 +36,7 @@ Em regra, o humano é o **baseline neutro**:
 | Elfo | 50 | Destreza | Vigor | esguio |
 | Meio-Elfo | 20 | — | — | médio-alto |
 | Meio-Orc | 40 | Força, Vigor | Compostura, Inteligência | alto, robusto |
+| Orc | 40 | Força, Vigor | Perspicácia, Compostura, Inteligência | alto, robusto, rude |
 
 </div>
 
@@ -105,7 +106,19 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 - **Visão Noturna** — enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
 - **Sangue partido** — criado entre dois mundos, não carrega inimizades naturais de povo: parte do **Neutro** na Régua de Relação, como o humano.
 
-<p class="muted">Os <strong>orcs puros</strong> existem no mundo, mas como criaturas da lore, não como raça jogável — são mais bestiais que o meio-orc: mais fortes, mais selvagens e de aparência e juízo ainda mais rudes.</p>
+<p class="muted">O <strong>meio-orc</strong> é o sangue orc temperado pela metade humana; o <strong>orc puro</strong> (a seguir) é a mesma herança sem esse freio — mais penalizado no trato social e na aparência.</p>
+
+### Orc
+
+Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos. Medem **1,80–2,30 m** e pesam **80–140 kg**. Maturidade por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
+
+- **Custo de XP:** 40
+- **+1 teto de Força e de Vigor** (ambos até 7) — criaturas poderosas e truculentas.
+- **−1 teto de Perspicácia, Compostura e Inteligência** (máx 5) — a força não vem acompanhada de tato social nem de lógica fina.
+- **Aparência rebaixada** — a Aparência do orc vale **1 a menos** que o nível pago (paga Aparência 7, vale 6).
+- **Vitalidade** — couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
+- **Frenesi** — pode entrar em fúria como certas feras. No frenesi só realiza **ações físicas** (mais **Intimidar**, que vira ação reflexa) e **ignora as penalidades de ferimento**. Ao intimidar nesse estado, recebe **+2 dados** na parada.
+- **Visão Noturna** — enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
 
 ## Envelhecimento
 
@@ -122,6 +135,7 @@ A herança também define **quanto tempo** o corpo dura. Ao cruzar cada marco, o
 | Elfo | 20 | 85 | 170 | 250 |
 | Meio-Elfo | 15 | 55 | 85 | 110 |
 | Meio-Orc | 14 | 30 | 45 | 60 |
+| Orc | 14 | 30 | 45 | 60 |
 
 </div>
 

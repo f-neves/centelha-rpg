@@ -185,15 +185,16 @@ Cada par de povos tem uma **linha de base direcional**: onde a relação **come�
 desconhecido daquele povo, e o **ponto de repouso** para onde decai. A ausência de entrada =
 **0 (Neutro)**.
 
-| De \ Para | Humano | Anão | Gnomo | Halfling | Elfo | Meio-Elfo | Orc |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Humano** | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Anão** | 0 | 0 | 0 | 0 | **−2** | 0 | 0 |
-| **Gnomo** | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Halfling** | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Elfo** | 0 | **−2** | 0 | 0 | 0 | **−1** | 0 |
-| **Meio-Elfo** | 0 | 0 | 0 | 0 | −1 | 0 | 0 |
-| **Orc** | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| De \ Para | Humano | Anão | Gnomo | Halfling | Elfo | Meio-Elfo | Orc | Meio-Orc |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Humano** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **Anão** | 0 | 0 | 0 | 0 | **−2** | 0 | 0 | 0 |
+| **Gnomo** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **Halfling** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **Elfo** | 0 | **−2** | 0 | 0 | 0 | **−1** | 0 | 0 |
+| **Meio-Elfo** | 0 | 0 | 0 | 0 | −1 | 0 | 0 | 0 |
+| **Orc** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **Meio-Orc** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 Firme na lore:
 - **Anão ↔ Elfo = −2 (mútuo).** A "inimizade eterna" que hoje ninguém lembra a origem
