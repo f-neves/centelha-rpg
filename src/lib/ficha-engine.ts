@@ -112,9 +112,18 @@ export function montarFicha(opts: FichaOpts) {
   function fresh() {
     S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1400, modo: 'evolucao', equip: { arma: 'desarmado', armaduras: [], escudo: 'nenhum' }, defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
-    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = 0; });
+    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
-    SECONDARY.forEach(([n]) => { S.skills2[slug(n)] = 0; S.spec2[slug(n)] = 0; });
+    SECONDARY.forEach(([n]) => { S.skills2[slug(n)] = 0; S.spec2[slug(n)] = []; });
+  }
+  // Especialidades: lista nomeada [{s, v}]. Teto por Habilidade = [nível/2] especialidades, cada uma até [nível/2].
+  // Também converte o formato antigo (número solto) e reaplica os tetos a cada carga.
+  function clampSpecs(arr: any, skill: number) {
+    const cap = Math.floor((skill || 0) / 2);
+    const list = Array.isArray(arr)
+      ? arr.map((e: any) => ({ s: String(e?.s ?? ''), v: Math.max(0, Math.min(cap, e?.v || 0)) }))
+      : (typeof arr === 'number' && arr > 0 ? [{ s: '', v: Math.min(cap, arr) }] : []);
+    return list.filter((e: any) => e.v > 0).slice(0, cap);
   }
   function normalize() {
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
@@ -128,9 +137,9 @@ export function montarFicha(opts: FichaOpts) {
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
-    (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] ??= 0; });
+    (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id] || 0); });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
-    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] ??= 0; S.spec2[k] ??= 0; });
+    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] ??= 0; S.spec2[k] = clampSpecs(S.spec2[k], S.skills2[k] || 0); });
   }
   const save = () => { if (opts.readOnly) return; try { opts.salvar(S); } catch {} };
 
@@ -145,10 +154,17 @@ export function montarFicha(opts: FichaOpts) {
     }
     return h + '</span>';
   };
-  const specHTML = (key: string, value: number, maxAllowed: number) => {
-    let h = `<span class="spec" data-spec="${key}">`;
-    for (let d = 1; d <= 6; d++) h += `<span class="sq${d <= value ? ' on' : ''}${d > maxAllowed ? ' dis' : ''}" data-d="${d}"></span>`;
-    return h + '</span>';
+  const escapeHtml = (s: string) => String(s).replace(/[&<>"]/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' } as Record<string, string>)[c]));
+  // Lista de especialidades nomeadas de uma Habilidade (scope 'p' = primária, 's' = secundária).
+  const specLine = (scope: string, key: string, arr: any[], skill: number) => {
+    arr = arr || [];
+    const cap = Math.floor((skill || 0) / 2);
+    if (!(arr.length || (cap > 0 && !opts.readOnly))) return '';
+    const items = arr.map((e: any, i: number) =>
+      `<span class="specitem"${opts.readOnly ? '' : ` data-spec-edit="${scope}:${key}:${i}" title="Clique para editar"`}>${escapeHtml(e.s || '(sem nome)')} <b>${e.v}</b>${opts.readOnly ? '' : `<button class="spec-x" data-spec-del="${scope}:${key}:${i}" aria-label="Remover">×</button>`}</span>`).join('');
+    const add = (!opts.readOnly && cap > 0 && arr.length < cap)
+      ? `<button class="spec-add" data-spec-add="${scope}:${key}" title="Até ${cap} especialidades, cada uma até nível ${cap}">+ especialidade</button>` : '';
+    return `<div class="specrow"><span class="spec-lbl">Especialidades</span>${items}${add}</div>`;
   };
   const trow = (nm: string, right: string) => `<div class="trow"><span class="nm">${nm}</span><span class="tr-r">${right}</span></div>`;
   const rollBtn = (k: string, key: string) => `<button class="rollv" data-roll="${k}:${key}" title="Enviar ao rolador" aria-label="Rolar">🎲</button>`;
@@ -177,14 +193,14 @@ export function montarFicha(opts: FichaOpts) {
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' })));
     const cols = [['Combate', 'Físicas'], ['Sociais'], ['Saber']];
     el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specHTML(s.id, S.spec[s.id] || 0, S.skills[s.id] || 0) + rollBtn('skill', s.id))).join('') : '').join('') + '</div>').join('');
+      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + rollBtn('skill', s.id)) + specLine('p', s.id, S.spec[s.id] || [], S.skills[s.id] || 0)).join('') : '').join('') + '</div>').join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' })));
     const cols = [['Corpo', 'Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
     el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specHTML('2_' + k, S.spec2[k] || 0, S.skills2[k] || 0)); }).join('')).join('') + '</div>').join('');
+      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0)) + specLine('s', k, S.spec2[k] || [], S.skills2[k] || 0); }).join('')).join('') + '</div>').join('');
   }
   function renderCaminhos() {
     const card = (cam: string) => {
@@ -304,13 +320,13 @@ export function montarFicha(opts: FichaOpts) {
   function recompute() {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
     (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 1, S.attrs[a.id] || 1)));
-    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || 0) * 10; });
+    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += (S.spec[h.id] || []).reduce((a: number, e: any) => a + (e.v || 0), 0) * 10; });
     ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += (e.v || 0) * 10)));
     (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
     xw = custoPontos('vontade', 1, S.willpower || 1);
     xap = custoPontos('aparencia', 1, S.aparencia || 1);
     xc = custoPontos('centelha', 0, S.centelha || 0);
-    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || 0) * 5; });
+    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + (S.spec2[k] || []).reduce((a: number, e: any) => a + (e.v || 0), 0) * 5; });
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += TECNIV[id] * 10; });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
     const xr = RACA[S.raca]?.custo || 0;
@@ -341,8 +357,8 @@ export function montarFicha(opts: FichaOpts) {
   function applyVal(kind: string, key: string, nv: number) {
     const floor = floorOf[kind]; nv = Math.max(floor, Math.min(nv, capFor(kind, key)));
     if (kind === 'attr') S.attrs[key] = nv;
-    else if (kind === 'skill') { S.skills[key] = nv; if ((S.spec[key] || 0) > nv) S.spec[key] = nv; renderSkills(); if (key === 'ocultismo') renderArtes(); }
-    else if (kind === 'skill2') { S.skills2[key] = nv; if ((S.spec2[key] || 0) > nv) S.spec2[key] = nv; renderSecondary(); }
+    else if (kind === 'skill') { S.skills[key] = nv; S.spec[key] = clampSpecs(S.spec[key], nv); renderSkills(); if (key === 'ocultismo') renderArtes(); }
+    else if (kind === 'skill2') { S.skills2[key] = nv; S.spec2[key] = clampSpecs(S.spec2[key], nv); renderSecondary(); }
     else if (kind === 'virtue') S.virtues[key] = nv;
     else if (kind === 'centelha') { S.centelha = nv; renderCaminhos(); renderArtes(); }
     else if (kind === 'willpower') S.willpower = nv;
@@ -361,12 +377,6 @@ export function montarFicha(opts: FichaOpts) {
     applyVal(kind, key, valOf(kind, key) + delta);
     (document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`) as HTMLElement)?.focus();
   }
-  function setSpec(specKey: string, d: number) {
-    if (specKey.startsWith('2_')) { const sl = specKey.slice(2); let nv = (S.spec2[sl] || 0) === d ? d - 1 : d; nv = Math.max(0, Math.min(nv, S.skills2[sl] || 0)); S.spec2[sl] = nv; renderSecondary(); }
-    else { let nv = (S.spec[specKey] || 0) === d ? d - 1 : d; nv = Math.max(0, Math.min(nv, S.skills[specKey] || 0)); S.spec[specKey] = nv; renderSkills(); }
-    recompute();
-  }
-
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
     const nm = t.closest<HTMLElement>('.trow .nm');
@@ -376,10 +386,30 @@ export function montarFicha(opts: FichaOpts) {
     const rb = t.closest<HTMLElement>('.rollv');
     if (rb) { const [k, key] = rb.dataset.roll!.split(':'); const rd = (n: string) => document.querySelector<HTMLInputElement>(`[data-rd="${n}"]`);
       if (k === 'attr') { const a = rd('atr'); if (a) { a.value = String(S.attrs[key] || 0); a.dispatchEvent(new Event('input')); } }
-      else { const hb = rd('hab'), es = rd('esp'); if (hb) hb.value = String(S.skills[key] || 0); if (es) es.value = String(S.spec[key] || 0); hb?.dispatchEvent(new Event('input')); }
+      else { const hb = rd('hab'), es = rd('esp'); if (hb) hb.value = String(S.skills[key] || 0); if (es) es.value = '0'; hb?.dispatchEvent(new Event('input')); }
       document.querySelector('.rolador')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-    const sq = t.closest<HTMLElement>('.spec .sq');
-    if (sq && !opts.readOnly && !sq.classList.contains('dis')) { setSpec((sq.parentElement as HTMLElement).dataset.spec!, +sq.dataset.d!); return; }
+    // especialidades nomeadas (scope 'p' = primária, 's' = secundária)
+    const specArr = (scope: string, key: string) => scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
+    const specSkill = (scope: string, key: string) => scope === 'p' ? (S.skills[key] || 0) : (S.skills2[key] || 0);
+    const specRerender = (scope: string) => scope === 'p' ? renderSkills() : renderSecondary();
+    const spDel = t.closest<HTMLElement>('[data-spec-del]');
+    if (spDel && !opts.readOnly) { const [scope, key, idx] = spDel.dataset.specDel!.split(':'); specArr(scope, key).splice(+idx, 1); specRerender(scope); recompute(); return; }
+    const spEdit = t.closest<HTMLElement>('[data-spec-edit]');
+    if (spEdit && !opts.readOnly) {
+      const [scope, key, idx] = spEdit.dataset.specEdit!.split(':'); const cur = specArr(scope, key)[+idx]; if (!cur) return;
+      const cap = Math.floor(specSkill(scope, key) / 2);
+      const s = (window.prompt('Especialidade (escopo estreito, ex.: espada longa, nas sombras, duelo):', cur.s || '') || '').trim(); if (!s) return;
+      const v = Math.max(1, Math.min(cap, parseInt(window.prompt(`Nível (1 a ${cap}):`, String(cur.v)) || String(cur.v), 10) || cur.v));
+      cur.s = s; cur.v = v; specRerender(scope); recompute(); return;
+    }
+    const spAdd = t.closest<HTMLElement>('[data-spec-add]');
+    if (spAdd && !opts.readOnly) {
+      const [scope, key] = spAdd.dataset.specAdd!.split(':'); const cap = Math.floor(specSkill(scope, key) / 2); const arr = specArr(scope, key);
+      if (cap <= 0 || arr.length >= cap) return;
+      const s = (window.prompt('Especialidade (escopo estreito, ex.: espada longa, nas sombras, duelo):') || '').trim(); if (!s) return;
+      const v = Math.max(1, Math.min(cap, parseInt(window.prompt(`Nível (1 a ${cap}):`, '1') || '1', 10) || 1));
+      arr.push({ s, v }); specRerender(scope); recompute(); return;
+    }
     const dsAdd = t.closest<HTMLElement>('[data-defspec-add]');
     if (dsAdd && !opts.readOnly) {
       const key = dsAdd.dataset.defspecAdd!;
@@ -431,8 +461,8 @@ export function montarFicha(opts: FichaOpts) {
   }
   function clampToMode() {
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = Math.min(S.attrs[a.id] || 1, capFor('attr', a.id))));
-    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = Math.min(S.skills[h.id] || 0, capFor('skill', h.id)); if ((S.spec[h.id] || 0) > S.skills[h.id]) S.spec[h.id] = S.skills[h.id]; });
-    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] = Math.min(S.skills2[k] || 0, capFor('skill2', k)); if ((S.spec2[k] || 0) > S.skills2[k]) S.spec2[k] = S.skills2[k]; });
+    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = Math.min(S.skills[h.id] || 0, capFor('skill', h.id)); S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id]); });
+    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] = Math.min(S.skills2[k] || 0, capFor('skill2', k)); S.spec2[k] = clampSpecs(S.spec2[k], S.skills2[k]); });
     S.centelha = Math.min(S.centelha || 0, capFor('centelha'));
   }
   function renderRaca() {
