@@ -104,7 +104,7 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 - **Vitalidade** — couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
 - **Frenesi contido** — pode entrar em fúria (só **ações físicas**, mais **Intimidar** como reflexo, **ignorando as penalidades de ferimento**), mas de forma menos intensa e mais controlável que a de um orc puro.
 - **Visão Noturna** — enxerga sem penalidade sob **penumbra**, mas não na escuridão completa.
-- **Sangue partido** — criado entre dois mundos, não carrega inimizades naturais de povo: parte do **Neutro** na Régua de Relação, como o humano.
+- **Sangue partido** — criado entre dois mundos, o meio-orc **não carrega inimizades naturais** de povo: ele parte do **Neutro** com os outros. O inverso, porém, pesa um pouco: os demais povos o recebem no **Neutro baixo** (borda inferior da banda neutra, a um passo da Antipatia) na Régua de Relação. Não é hostilidade, é a reserva que o sangue orc desperta; orcs e outros meio-orcs não têm essa reserva.
 
 <p class="muted">O <strong>meio-orc</strong> é o sangue orc temperado pela metade humana; o <strong>orc puro</strong> (a seguir) é a mesma herança sem esse freio — mais penalizado no trato social e na aparência.</p>
 

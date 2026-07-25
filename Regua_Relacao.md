@@ -187,14 +187,16 @@ desconhecido daquele povo, e o **ponto de repouso** para onde decai. A ausência
 
 | De \ Para | Humano | Anão | Gnomo | Halfling | Elfo | Meio-Elfo | Orc | Meio-Orc |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Humano** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Anão** | 0 | 0 | 0 | 0 | **−2** | 0 | 0 | 0 |
-| **Gnomo** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Halfling** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Elfo** | 0 | **−2** | 0 | 0 | 0 | **−1** | 0 | 0 |
-| **Meio-Elfo** | 0 | 0 | 0 | 0 | −1 | 0 | 0 | 0 |
+| **Humano** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | **0⁻** |
+| **Anão** | 0 | 0 | 0 | 0 | **−2** | 0 | 0 | **0⁻** |
+| **Gnomo** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | **0⁻** |
+| **Halfling** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | **0⁻** |
+| **Elfo** | 0 | **−2** | 0 | 0 | 0 | **−1** | 0 | **0⁻** |
+| **Meio-Elfo** | 0 | 0 | 0 | 0 | −1 | 0 | 0 | **0⁻** |
 | **Orc** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | **Meio-Orc** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+<p class="muted"><strong>0⁻ (Neutro baixo):</strong> a relação repousa na <strong>borda inferior</strong> da banda neutra, não no centro. A conduta ainda é <strong>Neutra</strong> (não há desfavor automático: cortesia e trocas justas normais), mas o ponto de repouso fica a um <strong>único passo</strong> da Antipatia (−1). Na prática: um meio-orc entra na sala sem hostilidade, mas com menos margem que os outros povos, e uma única ofensa leve já basta para escorregar para o Desfavor. É a desconfiança de fundo que o sangue orc carrega, sem ser preconceito declarado.</p>
 
 Firme na lore:
 - **Anão ↔ Elfo = −2 (mútuo).** A "inimizade eterna" que hoje ninguém lembra a origem
@@ -204,6 +206,10 @@ Firme na lore:
   negocia entre os povos.
 - **Elfo → Meio-Elfo = −1.** A soberba élfica desdenha o sangue misturado; o Meio-Elfo
   devolve parte da mágoa.
+- **Todos → Meio-Orc = 0⁻ (Neutro baixo).** Nem todo meio-orc é recebido com desfavor, mas
+  o sangue orc pesa: a relação parte da borda inferior do Neutro, a um passo da Antipatia.
+  Não é hostilidade, é reserva. O **Orc** puro e o próprio **Meio-Orc** não têm essa reserva
+  entre si nem consigo (0, sangue reconhecido).
 
 As demais células estão em 0 por ora. Sugestões a definir com a lore (deixei fora até você
 confirmar): alguma tensão herdada da Grande Guerra envolvendo Orcs, ou uma afinidade
@@ -291,7 +297,8 @@ pedidos vai corroendo a Aliança. Favor é capital: constrói-se com atos, gasta
 - **Romper o Neutro** = 3 passos do centro; depois cada nível = 1 passo. Atos rompem; conversa
   refina.
 - **Decai** 1 passo/estação rumo à **baseline do par**, e para lá.
-- **Baselines:** Anão↔Elfo −2; Humano 0 com todos; Elfo→Meio-Elfo −1; o resto 0.
+- **Baselines:** Anão↔Elfo −2; Humano 0 com todos; Elfo→Meio-Elfo −1; todos→Meio-Orc 0⁻
+  (Neutro baixo, a um passo da Antipatia); o resto 0.
 - **Combate Social** fica para cenas grandes; um "Cede" vira vários passos de régua.
 
 ---
