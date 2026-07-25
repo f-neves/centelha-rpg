@@ -224,12 +224,13 @@ export function montarFicha(opts: FichaOpts) {
       specPop!.querySelectorAll<HTMLInputElement>('input[data-spname]').forEach((inp) => inp.addEventListener('input', () => { arr[+inp.dataset.spname!].s = inp.value; save(); }));
       specPop!.querySelectorAll<HTMLElement>('[data-sprm]').forEach((b) => b.addEventListener('click', () => { arr.splice(+b.dataset.sprm!, 1); paint(arr.length - 1); recompute(); }));
       const addBtn = specPop!.querySelector<HTMLElement>('[data-spadd]'); if (addBtn) addBtn.addEventListener('click', () => { if (arr.length < cap) { arr.push({ s: '', v: 0 }); paint(arr.length - 1); } });
-      if (focusIdx >= 0) (specPop!.querySelectorAll('input[data-spname]')[focusIdx] as HTMLInputElement | null)?.focus();
+      if (focusIdx >= 0) (specPop!.querySelectorAll('input[data-spname]')[focusIdx] as HTMLInputElement | null)?.focus({ preventScroll: true });
     };
-    paint(0);
+    // posiciona ANTES de pintar/focar (senão o foco rola a página até o popover ainda sem posição)
     const r = anchor.getBoundingClientRect(), w = 260;
     specPop.style.left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - w - 8)) + 'px';
     specPop.style.top = (window.scrollY + r.bottom + 6) + 'px';
+    paint(0);
   }
   const trow = (nm: string, right: string) => `<div class="trow"><span class="nm">${nm}</span><span class="tr-r">${right}</span></div>`;
   const rollBtn = (k: string, key: string) => `<button class="rollv" data-roll="${k}:${key}" title="Enviar ao rolador" aria-label="Rolar">🎲</button>`;
