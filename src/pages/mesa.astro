@@ -102,7 +102,8 @@ import Base from '../layouts/Base.astro';
   import { getSupabase } from '../lib/supabase';
   import { exigirLogin, supabaseConfigurado } from '../lib/auth';
   import monstersData from '../data/monsters.json';
-  import { pv, defesa, iniciativa } from '../lib/calc';
+  import { pv, defesa, iniciativa, regras } from '../lib/calc';
+  import { resumoCombatePC } from '../lib/combate-resumo';
 
   const base = import.meta.env.BASE_URL;
   const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
@@ -112,6 +113,27 @@ import Base from '../layouts/Base.astro';
   const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
   const norm = (s: string) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const id = new URLSearchParams(location.search).get('id');
+
+  // Faixas de ferimento (mesmas de regras.json): definem cor da barra e estado.
+  const FERIMENTOS = regras.ferimentos as { minPct: number; maxPct: number; estado: string; penAcao: number | null; penDefesa: number | null }[];
+  const tierDe = (cur: number, max: number) => {
+    if (!max || max <= 0) return FERIMENTOS[0];
+    if (cur <= 0) return FERIMENTOS[FERIMENTOS.length - 1];
+    const pct = Math.max(1, Math.floor((cur / max) * 100));
+    return FERIMENTOS.find((f) => pct >= f.minPct && pct <= f.maxPct) || FERIMENTOS[FERIMENTOS.length - 1];
+  };
+  const tierCls = (estado: string) => 't-' + norm(estado).replace(/\s+/g, '-');
+  const pctDe = (cur: number, max: number) => (max && max > 0 ? Math.max(0, Math.min(100, (cur / max) * 100)) : 0);
+  const penTexto = (t: { penAcao: number | null; penDefesa: number | null }) =>
+    t.penAcao == null ? 'fora de combate' : (t.penAcao || t.penDefesa) ? `ação ${t.penAcao} · defesa ${t.penDefesa}` : 'sem penalidade';
+  // Barra de vida com estado e cor por faixa de ferimento.
+  const hpBarHTML = (c: any) => {
+    const t = tierDe(c.pv_atual, c.pv_max);
+    return `<div class="hpbar ${tierCls(t.estado)}" data-c="${c.id}" title="${esc(penTexto(t))}">
+      <div class="hpbar-fill" style="width:${pctDe(c.pv_atual, c.pv_max)}%"></div>
+      <span class="hpbar-txt"><span class="hp-cur">${c.pv_atual}</span><span class="hp-sep">/</span><span class="hp-max">${c.pv_max}</span> <span class="hp-est">· ${esc(t.estado)}</span></span>
+    </div>`;
+  };
 
   const MON: Record<string, any> = Object.fromEntries((monstersData as any[]).map((m) => [m.id, m]));
   const MON_LIST = (monstersData as any[]).map((m) => ({ id: m.id, nome: m.nome, nomeIngles: m.nomeIngles || '', ameaca: m.ameaca }));
@@ -259,6 +281,30 @@ import Base from '../layouts/Base.astro';
     const lista = (combs || []).slice().sort((a: any, b: any) => (a.tick - b.tick) || ((b.iniciativa || 0) - (a.iniciativa || 0)));
     const atualId = lista.length ? lista[0].id : null;
 
+    // Resumo de combate (Ataque/Dano/Defesa/Absorção) por combatente, keyed por id.
+    // PCs: da ficha (o mestre lê todas; o jogador só a própria, via RLS). Criaturas: do bestiário.
+    const RESUMO: Record<string, any> = {};
+    const pcIds = [...new Set((combs || []).filter((c: any) => c.tipo === 'pc' && c.personagem_id).map((c: any) => c.personagem_id))];
+    if (pcIds.length) {
+      const { data: fichas } = await sb.from('personagens').select('id, ficha').in('id', pcIds);
+      const byPid: Record<string, any> = Object.fromEntries((fichas || []).map((f: any) => [f.id, f.ficha]));
+      for (const c of (combs || [])) {
+        if (c.tipo === 'pc' && byPid[c.personagem_id]) { try { RESUMO[c.id] = resumoCombatePC(byPid[c.personagem_id]); } catch {} }
+      }
+    }
+    for (const c of (combs || [])) {
+      if (c.tipo === 'criatura') {
+        const cb = MON[c.monstro_id]?.combate || {};
+        const a0 = (cb.ataques || [])[0];
+        const ab = cb.absorcao;
+        RESUMO[c.id] = {
+          arma: a0?.nome || '', ataque: a0?.pool || '', dano: a0 ? fmtDano(a0.dano) : '', defesa: cb.defesa ?? null,
+          soak: ab ? { impacto: ab.impacto || 0, corte: ab.corte || 0, perfuracao: ab.perfuracao || 0 } : { impacto: 0, corte: 0, perfuracao: 0 },
+          resistPerf: cb.resistenciaPerfuracao || 0,
+        };
+      }
+    }
+
     const controles = ehMestre ? `<div class="enc-ctrl">
       <button class="btn" id="enc-add-pcs">Adicionar PCs</button>
       ${ESCUDO_CACHE.length ? `<span class="enc-add-cri"><select id="enc-cri-sel">${ESCUDO_CACHE.map((c: any) => `<option value="${c.monstro_id}">${esc((MON[c.monstro_id]?.nome) || c.monstro_id)}</option>`).join('')}</select><button class="btn" id="enc-add-cri-btn">+ criatura</button></span>` : ''}
@@ -269,13 +315,32 @@ import Base from '../layouts/Base.astro';
     const linhas = lista.map((c: any) => {
       const atual = c.id === atualId;
       const tipo = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? 'Criatura' : '—';
-      const mostraHp = ehMestre || c.tipo === 'pc';
-      const hp = mostraHp && c.pv_max != null ? `<span class="cmb-hp">PV ${c.pv_atual}/${c.pv_max}${ehMestre ? ` <button class="btn mini hp-menos" data-c="${c.id}">−</button><button class="btn mini hp-mais" data-c="${c.id}">＋</button>` : ''}</span>` : '';
+      const mostra = ehMestre || c.tipo === 'pc';
+      const rz = RESUMO[c.id];
+      const stats = (mostra && rz && (rz.ataque || rz.dano || rz.defesa != null)) ? `<div class="cmb-stats">
+        ${rz.ataque ? `<span class="cst"><span class="cst-l">Atq</span> ${esc(rz.ataque)}</span>` : ''}
+        ${rz.dano ? `<span class="cst"><span class="cst-l">Dano</span> ${esc(rz.dano)}</span>` : ''}
+        ${rz.defesa != null ? `<span class="cst"><span class="cst-l">Def</span> ${rz.defesa}</span>` : ''}
+      </div>` : '';
+      const hp = mostra && c.pv_max != null ? `<div class="cmb-hp-linha">
+        ${hpBarHTML(c)}
+        ${ehMestre ? `<span class="cmb-hpctrl">
+          <input type="number" class="hp-amt" data-c="${c.id}" min="1" value="5" title="Quantidade de PV" aria-label="Quantidade" />
+          <select class="hp-tipo" data-c="${c.id}" title="Tipo de dano (define a Absorção que abate)"><option value="impacto">Impacto</option><option value="corte">Cortante</option><option value="perfurante">Perfurante</option></select>
+          <button class="btn mini hp-dano" data-c="${c.id}" title="Aplicar dano (abate a Absorção do tipo)">− dano</button>
+          <button class="btn mini hp-cura" data-c="${c.id}" title="Curar">＋ cura</button>
+          <span class="hp-fb" data-c="${c.id}"></span>
+        </span>` : ''}
+      </div>` : '';
       const act = ehMestre ? `<span class="cmb-act"><input type="number" class="spd" data-c="${c.id}" value="5" title="Speed da ação" /><button class="btn mini agir" data-c="${c.id}" data-tick="${c.tick}">agiu</button><button class="btn mini perigo rm" data-c="${c.id}">✕</button></span>` : '';
       return `<div class="cmb-row${atual ? ' atual' : ''}">
         <span class="cmb-tick" title="tick da próxima ação">t${c.tick}</span>
-        <span class="cmb-nome">${esc(c.nome)} <small class="muted">${tipo} · ini ${c.iniciativa ?? 0}</small></span>
-        ${hp}${act}
+        <div class="cmb-main">
+          <div class="cmb-nome">${esc(c.nome)} <small class="muted">${tipo} · ini ${c.iniciativa ?? 0}</small></div>
+          ${stats}
+          ${hp}
+        </div>
+        ${act}
       </div>`;
     }).join('');
 
@@ -316,12 +381,44 @@ import Base from '../layouts/Base.astro';
       await sb.from('combatentes').update({ tick: novoTick }).eq('id', b.dataset.c);
       await reload();
     }));
-    const setHp = async (cid: string, delta: number) => {
-      const c = (combs || []).find((x: any) => x.id === cid); if (!c || c.pv_atual == null) return;
-      await sb.from('combatentes').update({ pv_atual: c.pv_atual + delta }).eq('id', cid); await reload();
+    // Atualiza a barra em-lugar (anima largura/cor), sem re-renderizar a lista toda.
+    const atualizarBarra = (cid: string, c: any) => {
+      const bar = area.querySelector<HTMLElement>(`.hpbar[data-c="${cid}"]`); if (!bar) return;
+      const t = tierDe(c.pv_atual, c.pv_max);
+      (bar.querySelector('.hpbar-fill') as HTMLElement).style.width = pctDe(c.pv_atual, c.pv_max) + '%';
+      bar.className = 'hpbar ' + tierCls(t.estado);
+      bar.title = penTexto(t);
+      (bar.querySelector('.hp-cur') as HTMLElement).textContent = String(c.pv_atual);
+      (bar.querySelector('.hp-est') as HTMLElement).textContent = '· ' + t.estado;
     };
-    area.querySelectorAll<HTMLElement>('.hp-menos').forEach((b) => b.addEventListener('click', () => setHp(b.dataset.c!, -1)));
-    area.querySelectorAll<HTMLElement>('.hp-mais').forEach((b) => b.addEventListener('click', () => setHp(b.dataset.c!, +1)));
+    const aplicarHp = async (cid: string, delta: number) => {
+      const c = (combs || []).find((x: any) => x.id === cid); if (!c || c.pv_atual == null || c.pv_max == null) return;
+      const novo = Math.max(0, Math.min(c.pv_max, c.pv_atual + delta));
+      if (novo === c.pv_atual) return;
+      c.pv_atual = novo;
+      atualizarBarra(cid, c);
+      await sb.from('combatentes').update({ pv_atual: novo }).eq('id', cid);
+    };
+    const amt = (cid: string) => Math.max(1, parseInt((area.querySelector(`.hp-amt[data-c="${cid}"]`) as HTMLInputElement)?.value || '1', 10) || 1);
+    const feedback = (cid: string, txt: string) => {
+      const fb = area.querySelector<HTMLElement>(`.hp-fb[data-c="${cid}"]`); if (!fb) return;
+      fb.textContent = txt; fb.classList.add('mostra');
+      setTimeout(() => { fb.classList.remove('mostra'); }, 2600);
+    };
+    const CAT_SOAK: Record<string, string> = { impacto: 'impacto', corte: 'corte', perfurante: 'perfuracao' };
+    area.querySelectorAll<HTMLElement>('.hp-dano').forEach((b) => b.addEventListener('click', () => {
+      const cid = b.dataset.c!;
+      const bruto = amt(cid);
+      const tipo = (area.querySelector(`.hp-tipo[data-c="${cid}"]`) as HTMLSelectElement)?.value || 'impacto';
+      const soak = RESUMO[cid]?.soak?.[CAT_SOAK[tipo]] ?? 0;
+      const liquido = Math.max(0, bruto - soak);
+      aplicarHp(cid, -liquido);
+      feedback(cid, soak > 0 ? `−${liquido} (${bruto} − ${soak} abs)` : `−${liquido}`);
+    }));
+    area.querySelectorAll<HTMLElement>('.hp-cura').forEach((b) => b.addEventListener('click', () => {
+      const cid = b.dataset.c!; const q = amt(cid);
+      aplicarHp(cid, +q); feedback(cid, `+${q}`);
+    }));
     area.querySelectorAll<HTMLElement>('.rm').forEach((b) => b.addEventListener('click', async () => { await sb.from('combatentes').delete().eq('id', b.dataset.c); await reload(); }));
   }
 
@@ -689,14 +786,44 @@ import Base from '../layouts/Base.astro';
   .enc-ctrl { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .8rem; align-items: center; }
   .enc-add-cri { display: inline-flex; gap: .3rem; align-items: center; }
   .enc-add-cri select { padding: .3rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); max-width: 12rem; }
-  .cmb-lista { display: flex; flex-direction: column; gap: .3rem; }
-  .cmb-row { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; padding: .4rem .6rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); }
+  .cmb-lista { display: flex; flex-direction: column; gap: .4rem; }
+  .cmb-row { display: flex; align-items: flex-start; gap: .7rem; padding: .5rem .6rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); }
   .cmb-row.atual { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
-  .cmb-tick { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); min-width: 2.4rem; }
-  .cmb-nome { flex: 1; min-width: 8rem; }
-  .cmb-hp { display: inline-flex; align-items: center; gap: .3rem; font-size: .9rem; }
-  .cmb-act { display: inline-flex; align-items: center; gap: .3rem; }
+  .cmb-tick { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); min-width: 2.4rem; padding-top: .1rem; }
+  .cmb-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .35rem; }
+  .cmb-nome { min-width: 8rem; }
+  .cmb-act { display: inline-flex; align-items: center; gap: .3rem; flex-shrink: 0; }
   .cmb-act .spd { width: 3.2rem; padding: .2rem; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--ink); }
+
+  /* Linha de stats (Ataque / Dano / Defesa física) */
+  .cmb-stats { display: flex; flex-wrap: wrap; gap: .3rem .7rem; font-size: .82rem; color: var(--ink-soft); }
+  .cmb-stats .cst { white-space: nowrap; }
+  .cmb-stats .cst-l { font-family: 'Cinzel'; font-size: .64rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); margin-right: .15rem; }
+
+  /* Barra de vida */
+  .cmb-hp-linha { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .hpbar { position: relative; flex: 1; min-width: 9rem; max-width: 22rem; height: 1.25rem; border-radius: 999px; overflow: hidden; background: color-mix(in srgb, var(--ink) 12%, transparent); border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+  .hpbar-fill { height: 100%; width: 100%; border-radius: inherit; transition: width .55s cubic-bezier(.22,.61,.36,1), background-color .55s ease, background-image .55s ease; }
+  .hpbar-txt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: .74rem; font-weight: 700; font-variant-numeric: tabular-nums; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.55); letter-spacing: .01em; }
+  .hpbar-txt .hp-sep { opacity: .8; margin: 0 .05rem; }
+  .hpbar-txt .hp-est { font-weight: 600; opacity: .95; margin-left: .25rem; }
+  .hpbar.t-saudavel  .hpbar-fill { background: linear-gradient(90deg, #2e9a44, #43b85c); }
+  .hpbar.t-machucado .hpbar-fill { background: linear-gradient(90deg, #7fa61c, #a9c22b); }
+  .hpbar.t-ferido    .hpbar-fill { background: linear-gradient(90deg, #d08c12, #e6a91d); }
+  .hpbar.t-grave     .hpbar-fill { background: linear-gradient(90deg, #d5661a, #e8791f); }
+  .hpbar.t-critico   .hpbar-fill { background: linear-gradient(90deg, #b02a20, #cf3327); }
+  .hpbar.t-caido     .hpbar-fill { background: linear-gradient(90deg, #4a4a4a, #6a6a6a); }
+
+  /* Controles de dano/cura */
+  .cmb-hpctrl { display: inline-flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+  .cmb-hpctrl .hp-amt { width: 3.4rem; padding: .2rem; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--ink); }
+  .cmb-hpctrl .hp-tipo { padding: .2rem; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--ink); font: inherit; font-size: .78rem; }
+  .cmb-hpctrl .hp-dano { border-color: #b3261e; color: #b3261e; }
+  .cmb-hpctrl .hp-dano:hover { background: #b3261e; color: #fff; }
+  .cmb-hpctrl .hp-cura { border-color: #2e9a44; color: #2e9a44; }
+  .cmb-hpctrl .hp-cura:hover { background: #2e9a44; color: #fff; }
+  .hp-fb { font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent-strong); opacity: 0; transform: translateY(.2rem); transition: opacity .2s, transform .2s; }
+  .hp-fb.mostra { opacity: 1; transform: translateY(0); }
 
   .cr-atk { font-size: .85rem; color: var(--ink-soft); }
   .cr-atk .cr-atk-nm { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink); }
