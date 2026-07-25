@@ -1039,7 +1039,7 @@ import Base from '../layouts/Base.astro';
   .enc-cab { margin-bottom: .6rem; }
   .enc-ctrl { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .8rem; align-items: center; }
   .enc-add-cri { display: inline-flex; gap: .3rem; align-items: center; }
-  .enc-add-cri select { padding: .3rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); max-width: 12rem; }
+  .enc-add-cri select { max-width: 12rem; }
   .cmb-lista { display: flex; flex-direction: column; gap: .4rem; }
   .cmb-row { display: flex; align-items: flex-start; gap: .7rem; padding: .5rem .6rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); }
   .cmb-row.atual { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
@@ -1103,7 +1103,8 @@ import Base from '../layouts/Base.astro';
   .acao-form { display: flex; flex-direction: column; gap: .7rem; padding: 1.1rem 1.2rem 1.2rem; }
   .acao-form h3 { margin: 0; color: var(--accent-strong); font-size: 1.05rem; }
   .acao-form label { display: flex; flex-direction: column; gap: .25rem; font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
-  .acao-form select, .acao-form input { padding: .42rem .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; font-size: .95rem; text-transform: none; letter-spacing: normal; }
+  .acao-form input { padding: .42rem .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; font-size: .95rem; text-transform: none; letter-spacing: normal; }
+  .acao-form select { font-size: .95rem; text-transform: none; letter-spacing: normal; }
   .acao-dano-row { display: flex; gap: .6rem; }
   .acao-dano-row label { flex: 1; }
   .acao-btns { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .3rem; }
