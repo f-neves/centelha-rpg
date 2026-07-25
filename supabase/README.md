@@ -18,10 +18,13 @@ Supabase pelo navegador. Passos para ligar tudo:
 4. Em seguida, rode também [`migracao-2.sql`](./migracao-2.sql) (mesma forma): adiciona a
    aprovação de fichas, as ferramentas do mestre (gestão da mesa, notas de sessão, handout por
    jogador) e os encontros/rastreador de iniciativa. É idempotente (seguro re-executar).
-5. Rode por fim [`migracao-3.sql`](./migracao-3.sql): adiciona a área de conta (trocar senha /
+5. Rode [`migracao-3.sql`](./migracao-3.sql): adiciona a área de conta (trocar senha /
    excluir a própria conta) e o painel de administrador (ver todas as contas, excluir e definir
    senhas). Para tornar uma conta administradora, rode no SQL Editor (troque o e-mail):
    `insert into public.admins (user_id) select id from auth.users where email = 'ADMIN@EXEMPLO.COM' on conflict do nothing;`
+6. Rode por fim [`migracao-4.sql`](./migracao-4.sql): adiciona a coluna `log` (jsonb) aos
+   encontros, para o log de ações do rastreador de combate (fica salvo ao encerrar o encontro).
+   É idempotente.
 
 ## 3. Ajustes no painel
 

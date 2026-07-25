@@ -317,10 +317,11 @@ import Base from '../layouts/Base.astro';
       const tipo = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? 'Criatura' : '—';
       const mostra = ehMestre || c.tipo === 'pc';
       const rz = RESUMO[c.id];
-      const stats = (mostra && rz && (rz.ataque || rz.dano || rz.defesa != null)) ? `<div class="cmb-stats">
+      const stats = (mostra && rz && (rz.ataque || rz.dano || rz.defesa != null || rz.soak)) ? `<div class="cmb-stats">
         ${rz.ataque ? `<span class="cst"><span class="cst-l">Atq</span> ${esc(rz.ataque)}</span>` : ''}
         ${rz.dano ? `<span class="cst"><span class="cst-l">Dano</span> ${esc(rz.dano)}</span>` : ''}
         ${rz.defesa != null ? `<span class="cst"><span class="cst-l">Def</span> ${rz.defesa}</span>` : ''}
+        ${rz.soak ? `<span class="cst"><span class="cst-l">Abs</span> I ${rz.soak.impacto} / C ${rz.soak.corte} / P ${rz.soak.perfuracao}${rz.resistPerf ? ` · N${rz.resistPerf}` : ''}</span>` : ''}
       </div>` : '';
       const hp = mostra && c.pv_max != null ? `<div class="cmb-hp-linha">
         ${hpBarHTML(c)}
@@ -344,11 +345,59 @@ import Base from '../layouts/Base.astro';
       </div>`;
     }).join('');
 
-    area.innerHTML = `<div class="enc-cab"><strong>${esc(enc.nome)}</strong> <span class="muted">· ${lista.length} combatente(s)${atualId ? ' · agora: ' + esc(lista[0].nome) : ''}</span></div>${controles}<div class="cmb-lista">${linhas || '<p class="muted">Sem combatentes. Adicione PCs e criaturas.</p>'}</div>`;
+    const logWrap = ehMestre ? `<div class="combate-log-wrap">
+      <div class="log-cab"><h3>Log de ações</h3><span class="log-add"><input type="text" id="log-nota" placeholder="Registrar uma nota…" /><button class="btn mini" id="log-nota-btn">+ nota</button></span></div>
+      <div id="combate-log" class="combate-log"></div>
+    </div>` : '';
+    area.innerHTML = `<div class="enc-cab"><strong>${esc(enc.nome)}</strong> <span class="muted">· ${lista.length} combatente(s)${atualId ? ' · agora: ' + esc(lista[0].nome) : ''}</span></div>${controles}<div class="cmb-lista">${linhas || '<p class="muted">Sem combatentes. Adicione PCs e criaturas.</p>'}</div>${logWrap}`;
 
     if (!ehMestre) return;
     const reload = () => renderIniciativa(sb, true);
-    document.getElementById('enc-encerrar')?.addEventListener('click', async () => { if (!confirm('Encerrar este encontro?')) return; await sb.from('encontros').update({ ativo: false }).eq('id', enc.id); await reload(); });
+
+    // ---- Log de ações do encontro (persistido em encontros.log) ----
+    let LOG: any[] = Array.isArray((enc as any).log) ? (enc as any).log.slice() : [];
+    const novoId = () => (self.crypto?.randomUUID?.() || `l${Date.now()}${Math.floor(Math.random() * 1e6)}`);
+    const persistLog = async () => { try { await sb.from('encontros').update({ log: LOG }).eq('id', enc.id); } catch {} };
+    const fmtHora = (ts: string) => { try { return new Date(ts).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); } catch { return ''; } };
+    const nomeC = (cid: string) => (combs || []).find((x: any) => x.id === cid)?.nome || 'combatente';
+    const renderLog = () => {
+      const box = document.getElementById('combate-log'); if (!box) return;
+      if (!LOG.length) { box.innerHTML = '<p class="muted log-vazio">Sem ações registradas ainda.</p>'; return; }
+      box.innerHTML = LOG.slice().reverse().map((e: any) => `<div class="log-linha" data-log="${e.id}">
+        <span class="log-hora">${fmtHora(e.ts)}</span>
+        <span class="log-txt" data-log="${e.id}">${esc(e.txt)}</span>
+        <button class="log-edit" data-log="${e.id}" title="Editar">✎</button>
+        <button class="log-del" data-log="${e.id}" title="Excluir">✕</button>
+      </div>`).join('');
+      box.querySelectorAll<HTMLElement>('.log-del').forEach((b) => b.addEventListener('click', async () => { LOG = LOG.filter((e: any) => e.id !== b.dataset.log); renderLog(); await persistLog(); }));
+      box.querySelectorAll<HTMLElement>('.log-edit').forEach((b) => b.addEventListener('click', () => {
+        const span = box.querySelector<HTMLElement>(`.log-txt[data-log="${b.dataset.log}"]`); if (!span) return;
+        const e = LOG.find((x: any) => x.id === b.dataset.log); if (!e) return;
+        const inp = document.createElement('input'); inp.type = 'text'; inp.className = 'log-inp'; inp.value = e.txt;
+        span.replaceWith(inp); inp.focus(); inp.select();
+        const salvar = async () => { e.txt = inp.value; renderLog(); await persistLog(); };
+        inp.addEventListener('blur', salvar);
+        inp.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') { ev.preventDefault(); inp.blur(); } else if (ev.key === 'Escape') { renderLog(); } });
+      }));
+    };
+    const logAcao = async (txt: string) => {
+      LOG.push({ id: novoId(), ts: new Date().toISOString(), txt });
+      if (LOG.length > 300) LOG = LOG.slice(-300);
+      renderLog(); await persistLog();
+    };
+    renderLog();
+    document.getElementById('log-nota-btn')?.addEventListener('click', async () => {
+      const inp = document.getElementById('log-nota') as HTMLInputElement; const v = (inp?.value || '').trim();
+      if (!v) return; inp.value = ''; await logAcao(v);
+    });
+    document.getElementById('log-nota')?.addEventListener('keydown', (ev) => { if ((ev as KeyboardEvent).key === 'Enter') { ev.preventDefault(); (document.getElementById('log-nota-btn') as HTMLElement)?.click(); } });
+
+    document.getElementById('enc-encerrar')?.addEventListener('click', async () => {
+      if (!confirm('Encerrar este encontro? O log de ações fica salvo neste encontro.')) return;
+      await logAcao('Encontro encerrado.');
+      await sb.from('encontros').update({ ativo: false }).eq('id', enc.id);
+      await reload();
+    });
     document.getElementById('enc-add-pcs')?.addEventListener('click', async () => {
       const { data: pcs } = await sb.from('personagens').select('id, nome, ficha').eq('mesa_id', id);
       const jaTem = new Set((combs || []).map((c: any) => c.personagem_id).filter(Boolean));
@@ -357,7 +406,10 @@ import Base from '../layouts/Base.astro';
         const pvv = pv(at.vigor || 0);
         return { encontro_id: enc.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC', pv_max: pvv, pv_atual: pvv, tick: 0, iniciativa: d6() + (at.raciocinio || 0) + (sk.prontidao || 0) };
       });
-      if (novos.length) { const { error } = await sb.from('combatentes').insert(novos); if (error) return alert('Erro: ' + error.message); }
+      if (novos.length) {
+        const { error } = await sb.from('combatentes').insert(novos); if (error) return alert('Erro: ' + error.message);
+        for (const n of novos) await logAcao(`${n.nome} entrou no combate (ini ${n.iniciativa}).`);
+      }
       await reload();
     });
     document.getElementById('enc-add-cri-btn')?.addEventListener('click', async () => {
@@ -365,6 +417,7 @@ import Base from '../layouts/Base.astro';
       const pvv = m?.combate?.pv ?? null;
       const { error } = await sb.from('combatentes').insert({ encontro_id: enc.id, tipo: 'criatura', monstro_id: mid, nome: m?.nome || mid, pv_max: pvv, pv_atual: pvv, tick: 0, iniciativa: iniDeMonstro(m) });
       if (error) return alert('Erro: ' + error.message);
+      await logAcao(`${m?.nome || mid} entrou (criatura).`);
       await reload();
     });
     document.getElementById('enc-add-custom')?.addEventListener('click', async () => {
@@ -373,12 +426,15 @@ import Base from '../layouts/Base.astro';
       const pvN = pvS && pvS.trim() ? parseInt(pvS, 10) : null;
       const { error } = await sb.from('combatentes').insert({ encontro_id: enc.id, tipo: 'custom', nome: nome.trim(), pv_max: pvN, pv_atual: pvN, tick: 0, iniciativa: parseInt(ini || '0', 10) || 0 });
       if (error) return alert('Erro: ' + error.message);
+      await logAcao(`${nome.trim()} entrou.`);
       await reload();
     });
     area.querySelectorAll<HTMLElement>('.agir').forEach((b) => b.addEventListener('click', async () => {
-      const spd = parseInt((area.querySelector(`.spd[data-c="${b.dataset.c}"]`) as HTMLInputElement)?.value || '5', 10) || 0;
-      const novoTick = (parseInt(b.dataset.tick || '0', 10) || 0) + spd;
-      await sb.from('combatentes').update({ tick: novoTick }).eq('id', b.dataset.c);
+      const cid = b.dataset.c!;
+      const spd = parseInt((area.querySelector(`.spd[data-c="${cid}"]`) as HTMLInputElement)?.value || '5', 10) || 0;
+      const antigo = parseInt(b.dataset.tick || '0', 10) || 0; const novoTick = antigo + spd;
+      await sb.from('combatentes').update({ tick: novoTick }).eq('id', cid);
+      await logAcao(`${nomeC(cid)} agiu · tick ${antigo} → ${novoTick} (Speed ${spd}).`);
       await reload();
     }));
     // Atualiza a barra em-lugar (anima largura/cor), sem re-renderizar a lista toda.
@@ -406,20 +462,31 @@ import Base from '../layouts/Base.astro';
       setTimeout(() => { fb.classList.remove('mostra'); }, 2600);
     };
     const CAT_SOAK: Record<string, string> = { impacto: 'impacto', corte: 'corte', perfurante: 'perfuracao' };
-    area.querySelectorAll<HTMLElement>('.hp-dano').forEach((b) => b.addEventListener('click', () => {
+    const TIPO_LBL: Record<string, string> = { impacto: 'Impacto', corte: 'Cortante', perfurante: 'Perfurante' };
+    area.querySelectorAll<HTMLElement>('.hp-dano').forEach((b) => b.addEventListener('click', async () => {
       const cid = b.dataset.c!;
       const bruto = amt(cid);
       const tipo = (area.querySelector(`.hp-tipo[data-c="${cid}"]`) as HTMLSelectElement)?.value || 'impacto';
       const soak = RESUMO[cid]?.soak?.[CAT_SOAK[tipo]] ?? 0;
       const liquido = Math.max(0, bruto - soak);
-      aplicarHp(cid, -liquido);
+      await aplicarHp(cid, -liquido);
       feedback(cid, soak > 0 ? `−${liquido} (${bruto} − ${soak} abs)` : `−${liquido}`);
+      const c = (combs || []).find((x: any) => x.id === cid);
+      const est = c ? tierDe(c.pv_atual, c.pv_max).estado : '';
+      await logAcao(`${nomeC(cid)} sofreu ${liquido} de dano (${TIPO_LBL[tipo]})${soak > 0 ? ` [${bruto} − ${soak} abs]` : ''}${c ? ` · ${c.pv_atual}/${c.pv_max} (${est})` : ''}.`);
     }));
-    area.querySelectorAll<HTMLElement>('.hp-cura').forEach((b) => b.addEventListener('click', () => {
+    area.querySelectorAll<HTMLElement>('.hp-cura').forEach((b) => b.addEventListener('click', async () => {
       const cid = b.dataset.c!; const q = amt(cid);
-      aplicarHp(cid, +q); feedback(cid, `+${q}`);
+      await aplicarHp(cid, +q); feedback(cid, `+${q}`);
+      const c = (combs || []).find((x: any) => x.id === cid);
+      await logAcao(`${nomeC(cid)} recuperou ${q}${c ? ` · ${c.pv_atual}/${c.pv_max}` : ''}.`);
     }));
-    area.querySelectorAll<HTMLElement>('.rm').forEach((b) => b.addEventListener('click', async () => { await sb.from('combatentes').delete().eq('id', b.dataset.c); await reload(); }));
+    area.querySelectorAll<HTMLElement>('.rm').forEach((b) => b.addEventListener('click', async () => {
+      const cid = b.dataset.c!; const nm = nomeC(cid);
+      await sb.from('combatentes').delete().eq('id', cid);
+      await logAcao(`${nm} saiu do combate.`);
+      await reload();
+    }));
   }
 
   async function addCriatura(sb: any, monId: string) {
@@ -802,7 +869,7 @@ import Base from '../layouts/Base.astro';
 
   /* Barra de vida */
   .cmb-hp-linha { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
-  .hpbar { position: relative; flex: 1; min-width: 9rem; max-width: 22rem; height: 1.25rem; border-radius: 999px; overflow: hidden; background: color-mix(in srgb, var(--ink) 12%, transparent); border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+  .hpbar { position: relative; flex: 0 0 auto; width: 16rem; max-width: 100%; height: 1.25rem; border-radius: 999px; overflow: hidden; background: color-mix(in srgb, var(--ink) 12%, transparent); border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
   .hpbar-fill { height: 100%; width: 100%; border-radius: inherit; transition: width .55s cubic-bezier(.22,.61,.36,1), background-color .55s ease, background-image .55s ease; }
   .hpbar-txt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: .74rem; font-weight: 700; font-variant-numeric: tabular-nums; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.55); letter-spacing: .01em; }
   .hpbar-txt .hp-sep { opacity: .8; margin: 0 .05rem; }
@@ -824,6 +891,24 @@ import Base from '../layouts/Base.astro';
   .cmb-hpctrl .hp-cura:hover { background: #2e9a44; color: #fff; }
   .hp-fb { font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent-strong); opacity: 0; transform: translateY(.2rem); transition: opacity .2s, transform .2s; }
   .hp-fb.mostra { opacity: 1; transform: translateY(0); }
+
+  /* Log de ações do combate */
+  .combate-log-wrap { margin-top: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); padding: .6rem .8rem; }
+  .log-cab { display: flex; align-items: center; justify-content: space-between; gap: .6rem; flex-wrap: wrap; margin-bottom: .4rem; }
+  .log-cab h3 { margin: 0; font-family: 'Cinzel'; font-size: .9rem; color: var(--accent-strong); }
+  .log-add { display: inline-flex; gap: .3rem; align-items: center; }
+  .log-add input { padding: .25rem .4rem; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--ink); font: inherit; font-size: .82rem; min-width: 12rem; }
+  .combate-log { display: flex; flex-direction: column; gap: .1rem; max-height: 16rem; overflow-y: auto; }
+  .log-vazio { margin: .2rem 0; font-size: .85rem; }
+  .log-linha { display: flex; align-items: center; gap: .5rem; padding: .22rem .2rem; border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent); font-size: .86rem; }
+  .log-linha:last-child { border-bottom: none; }
+  .log-hora { font-variant-numeric: tabular-nums; font-size: .72rem; color: var(--ink-soft); flex-shrink: 0; min-width: 2.6rem; }
+  .log-txt { flex: 1; min-width: 0; }
+  .log-inp { flex: 1; min-width: 0; font: inherit; font-size: .86rem; padding: .1rem .3rem; border: 1px solid var(--accent); border-radius: 4px; background: var(--bg); color: var(--ink); }
+  .log-edit, .log-del { background: none; border: none; cursor: pointer; padding: 0 .2rem; font-size: .82rem; line-height: 1; opacity: .55; transition: opacity .15s; flex-shrink: 0; }
+  .log-linha:hover .log-edit, .log-linha:hover .log-del { opacity: 1; }
+  .log-edit { color: var(--accent); }
+  .log-del { color: #b3261e; }
 
   .cr-atk { font-size: .85rem; color: var(--ink-soft); }
   .cr-atk .cr-atk-nm { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink); }
