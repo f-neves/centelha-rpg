@@ -154,7 +154,7 @@ export function montarFicha(opts: FichaOpts) {
     const groups: Record<string, any[]> = { Físicos: [], Sociais: [], Mentais: [] };
     (ATTRS_D as any[]).forEach((a) => groups[ATTR_GRP[a.grupo]].push(a));
     el('attrs').innerHTML = ['Físicos', 'Sociais', 'Mentais'].map((g) =>
-      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 6, 1) + rollBtn('attr', a.id))).join('')}</div>`).join('');
+      `<div><h3>${g}</h3>${groups[g].map((a) => trow(a.nome, dotsHTML('attr', a.id, S.attrs[a.id], 7, 1) + rollBtn('attr', a.id))).join('')}</div>`).join('');
   }
   function renderPower() {
     let h = trow('<b>Centelha</b> <small>(0–6)</small>', dotsHTML('centelha', 'centelha', S.centelha, 6, 0));
