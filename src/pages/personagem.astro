@@ -90,6 +90,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   import { montarFicha } from '../lib/ficha-engine';
   import { exigirLogin, supabaseConfigurado } from '../lib/auth';
   import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../lib/ui-dialog';
+  import { atualizarUltimoCrumb, definirCrumbs } from '../lib/crumbs';
 
   const base = import.meta.env.BASE_URL;
   const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
@@ -135,14 +136,21 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     // nome da mesa (se houver) + saber se o espectador é o mestre da mesa
     let ehMestre = false;
+    const nomePers = pers.nome || 'Personagem';
     if (pers.mesa_id) {
       const { data: mesa } = await sb.from('mesas').select('nome, mestre_id').eq('id', pers.mesa_id).maybeSingle();
       if (mesa) {
         document.getElementById('pers-mesa')!.textContent = 'Mesa: ' + mesa.nome;
         ehMestre = mesa.mestre_id === user.id;
+        definirCrumbs([
+          { label: 'Minhas Mesas', href: u('mesas') },
+          { label: mesa.nome, href: u('mesa') + '?id=' + pers.mesa_id },
+          { label: nomePers },
+        ]);
       }
     } else {
       document.getElementById('pers-mesa')!.textContent = 'Sem mesa (personagem avulso)';
+      definirCrumbs([{ label: 'Minhas Mesas', href: u('mesas') }, { label: nomePers }]);
     }
 
     const status = pers.status || 'rascunho';
@@ -251,7 +259,9 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         conceito: (S.id?.conceito || ''),
         atualizado_em: new Date().toISOString(),
       }).eq('id', id);
-      document.getElementById('pers-nome')!.textContent = S.id?.nome || pers.nome || 'Personagem';
+      const nomeAtual = S.id?.nome || pers.nome || 'Personagem';
+      document.getElementById('pers-nome')!.textContent = nomeAtual;
+      atualizarUltimoCrumb(nomeAtual);
     }, 900);
     // Campos de identidade da ficha da mesa (ordem clássica). Reconstruído ANTES de montarFicha
     // para o motor ligar cada .txt por data-id (salva em S.id) e o #raca-sel por id.

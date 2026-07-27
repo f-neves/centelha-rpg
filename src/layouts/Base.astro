@@ -21,10 +21,15 @@ const fullTitle = title === 'Início' ? 'Centelha' : `${title} — Centelha`;
 const ogUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
 const ogImage = Astro.site ? new URL(url('icon-512.png'), Astro.site).href : url('icon-512.png');
 
-// breadcrumbs automáticos
+// Trilha de navegação. O que dá para saber no build sai daqui; as páginas da
+// área de jogo (mesa, personagem) completam a trilha por JS com os nomes reais
+// vindos do Supabase, via lib/crumbs.ts.
 const baseNoSlash = url('').replace(/\/$/, '');
 const partes = here.slice(baseNoSlash.length).split('/').filter(Boolean);
 const crumbs: { label: string; href?: string }[] = [{ label: 'Início', href: url('') }];
+// seção do menu lateral (não tem página própria, então entra como texto)
+if (partes[0] === 'regras') crumbs.push({ label: 'Regras' });
+else if (FERRAMENTAS.some((f) => f.slug === partes[0])) crumbs.push({ label: 'Ferramentas' });
 if (partes[0] === 'caminhos' && partes[1]) crumbs.push({ label: 'As Proezas', href: url('caminhos') });
 if (partes.length) crumbs.push({ label: title });
 ---
