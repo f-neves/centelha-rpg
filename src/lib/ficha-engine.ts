@@ -186,6 +186,10 @@ export function montarFicha(opts: FichaOpts) {
     return `<button class="specbtn${count ? ' has' : ''}" data-specbtn="${scope}:${key}"${dis ? ' disabled' : ''} title="${dis ? 'Especialidades (requer nível 2+)' : `Especialidades${count ? ` (${count})` : ''}`}" aria-label="Especialidades">✦</button>`;
   };
   const specCount = (arr: any[]) => (arr || []).reduce((a: number, e: any) => a + (e.v || 0), 0);
+  // Custo de especialidade: progressivo por nível de CADA especialidade — nível×base (10/20/30… com base 10).
+  // Total de uma especialidade de nível v = base·(1+2+…+v) = base·v·(v+1)/2. Somado sobre as especialidades da perícia.
+  const triCost = (v: number, base: number) => base * v * (v + 1) / 2;
+  const specCostSum = (arr: any[], base: number) => (arr || []).reduce((a: number, e: any) => a + triCost(e.v || 0, base), 0);
   const specArr = (scope: string, key: string): string[] => scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
   const specSkill = (scope: string, key: string) => scope === 'p' ? (S.skills[key] || 0) : (S.skills2[key] || 0);
   const specRerender = (scope: string) => { scope === 'p' ? renderSkills() : renderSecondary(); };
@@ -502,13 +506,13 @@ export function montarFicha(opts: FichaOpts) {
   function recompute() {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
     (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 1, S.attrs[a.id] || 1)));
-    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += specCount(S.spec[h.id]) * 10; });
-    ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += (e.v || 0) * 10)));
+    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += specCostSum(S.spec[h.id], 10); });
+    ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += triCost(e.v || 0, 10))));
     (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
     xw = custoPontos('vontade', 1, S.willpower || 1);
     xap = custoPontos('aparencia', 1, S.aparencia || 1);
     xc = custoPontos('centelha', 0, S.centelha || 0);
-    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + specCount(S.spec2[k]) * 5; });
+    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + specCostSum(S.spec2[k], 5); });
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += TECNIV[id] * 10; });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
     const xr = RACA[S.raca]?.custo || 0;

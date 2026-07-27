@@ -42,7 +42,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Atributo | novo × 10 | 2→3 = 30 · 3→4 = 40 |
 | Habilidade primária | novo × 5 | 0→1 = 5 · 2→3 = 15 |
 | Habilidade secundária | novo × 2 | 0→1 = 2 · 2→3 = 6 |
-| Especialidade (prim. / sec.) | 10 / 5 por nível | até [nível ÷ 2] níveis por perícia, cada nível é um escopo nomeado |
+| Especialidade (prim. / sec.) | nível × 10 / nível × 5 | progressivo por nível de cada especialidade (prim. 10 · 20 · 30… ; sec. 5 · 10 · 15…). Até [nível ÷ 2] níveis por perícia, cada nível é um escopo nomeado |
 | Virtude | novo × 5 | 1→2 = 10 · 2→3 = 15 |
 | Força de Vontade | novo × 2 | 1→2 = 4 · 5→6 = 12 |
 | Aparência | novo × 2 | 1→2 = 4 · 7→8 = 16 |
