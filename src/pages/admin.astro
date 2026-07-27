@@ -21,6 +21,7 @@ import Base from '../layouts/Base.astro';
 <script>
   import { getSupabase } from '../lib/supabase';
   import { exigirLogin, supabaseConfigurado } from '../lib/auth';
+  import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../lib/ui-dialog';
   const base = import.meta.env.BASE_URL;
   const esc = (s: string) => (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 
@@ -54,16 +55,23 @@ import Base from '../layouts/Base.astro';
       </tr>`).join('') + '</tbody>';
 
     tab.querySelectorAll<HTMLElement>('[data-act="senha"]').forEach((b) => b.addEventListener('click', async () => {
-      const tr = b.closest('tr')!; const senha = prompt(`Nova senha para ${tr.dataset.email}:`, '');
+      const tr = b.closest('tr')!;
+      const senha = await uiPerguntar('Nova senha', '', {
+        titulo: 'Definir senha',
+        msg: `Conta: ${tr.dataset.email}`,
+        dica: 'A senha entra em vigor no próximo login da conta.',
+        obrigatorio: true,
+      });
       if (!senha) return;
       const { error } = await sb.rpc('admin_definir_senha', { p_uid: tr.dataset.uid, p_senha: senha });
-      alert(error ? 'Erro: ' + error.message : 'Senha definida.');
+      if (error) return uiErro('Erro: ' + error.message);
+      await uiAviso('Senha definida.');
     }));
     tab.querySelectorAll<HTMLElement>('[data-act="excluir"]').forEach((b) => b.addEventListener('click', async () => {
       const tr = b.closest('tr')!;
-      if (!confirm(`Excluir a conta ${tr.dataset.email} e todos os dados dela?`)) return;
+      if (!await uiConfirmar(`Excluir a conta ${tr.dataset.email} e todos os dados dela?`, { titulo: 'Excluir conta', ok: 'Excluir', perigo: true })) return;
       const { error } = await sb.rpc('admin_excluir_conta', { p_uid: tr.dataset.uid });
-      if (error) return alert('Erro: ' + error.message);
+      if (error) return uiErro('Erro: ' + error.message);
       await render(sb, meuId);
     }));
   }

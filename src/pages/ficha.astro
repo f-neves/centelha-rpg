@@ -11,6 +11,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   import { montarFicha } from '../lib/ficha-engine';
   import { getSupabase, supabaseConfigurado } from '../lib/supabase';
   import { url } from '../lib/site';
+  import { uiAviso, uiConfirmar, uiErro, uiEscolher } from '../lib/ui-dialog';
   const KEY = 'centelha:ficha';
   montarFicha({
     carregar: () => {
@@ -31,7 +32,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       b.className = 'btn'; b.type = 'button'; b.textContent = 'Enviar p/ mesa';
       b.title = 'Copiar esta ficha para uma das suas mesas';
       btns.insertBefore(b, btns.firstChild);
-      b.addEventListener('click', () => enviarParaMesa().catch((e) => alert('Erro: ' + (e?.message || e))));
+      b.addEventListener('click', () => enviarParaMesa().catch((e) => uiErro('Erro: ' + (e?.message || e))));
     }
   }
 
@@ -39,23 +40,23 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const sb = getSupabase();
     const { data: { user } } = await sb.auth.getUser();
     if (!user) {
-      if (confirm('Você precisa entrar para enviar a ficha a uma mesa. Ir para o login?')) location.href = url('entrar');
+      if (await uiConfirmar('Você precisa entrar para enviar a ficha a uma mesa. Ir para o login?', { titulo: 'Entrar', ok: 'Ir para o login' })) location.href = url('entrar');
       return;
     }
     let ficha: any = null;
     try { ficha = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch {}
-    if (!ficha) { alert('Nenhuma ficha salva para enviar.'); return; }
+    if (!ficha) { await uiAviso('Nenhuma ficha salva para enviar.'); return; }
 
     const { data: membros, error } = await sb
       .from('mesa_membros')
       .select('mesa_id, papel, mesas(nome)')
       .eq('user_id', user.id);
-    if (error) { alert('Erro ao buscar suas mesas: ' + error.message); return; }
+    if (error) { await uiErro('Erro ao buscar suas mesas: ' + error.message); return; }
     const mesas = (membros || [])
       .map((m: any) => ({ id: m.mesa_id, nome: m.mesas?.nome || 'Mesa', papel: m.papel }))
       .sort((a: any, b: any) => a.nome.localeCompare(b.nome, 'pt'));
     if (!mesas.length) {
-      if (confirm('Você ainda não participa de nenhuma mesa. Ir para Mesas para criar ou entrar em uma?')) location.href = url('mesas');
+      if (await uiConfirmar('Você ainda não participa de nenhuma mesa. Ir para Mesas para criar ou entrar em uma?', { titulo: 'Sem mesas', ok: 'Ir para Mesas' })) location.href = url('mesas');
       return;
     }
 
@@ -67,36 +68,15 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       .insert({ dono_id: user.id, mesa_id: mesaId, nome, ficha })
       .select('id')
       .single();
-    if (e2) { alert('Não foi possível enviar: ' + e2.message); return; }
+    if (e2) { await uiErro('Não foi possível enviar: ' + e2.message); return; }
     location.href = url('personagem') + '?id=' + nova.id;
   }
 
   function pedirMesa(mesas: { id: string; nome: string; papel: string }[]): Promise<string | null> {
-    return new Promise((resolve) => {
-      const dlg = document.createElement('dialog');
-      dlg.className = 'mesa-dlg';
-      dlg.innerHTML = `
-        <h3>Enviar ficha para uma mesa</h3>
-        <p class="mm">Cria uma cópia do personagem na mesa escolhida. A ficha local continua aqui, intacta.</p>
-        <div class="mesa-list">${mesas.map((m) => `<button class="btn mesa-op" data-id="${m.id}">${m.nome} <small>(${m.papel})</small></button>`).join('')}</div>
-        <div class="mesa-foot"><button class="btn cancel" type="button">Cancelar</button></div>`;
-      document.body.appendChild(dlg);
-      const done = (v: string | null) => { resolve(v); dlg.close(); dlg.remove(); };
-      dlg.querySelectorAll('.mesa-op').forEach((op) => op.addEventListener('click', () => done((op as HTMLElement).dataset.id!)));
-      dlg.querySelector('.cancel')!.addEventListener('click', () => done(null));
-      dlg.addEventListener('cancel', () => done(null));
-      dlg.showModal();
-    });
+    return uiEscolher(
+      'Enviar ficha para uma mesa',
+      mesas.map((m) => ({ valor: m.id, rotulo: m.nome, nota: `(${m.papel})` })),
+      { msg: 'Cria uma cópia do personagem na mesa escolhida. A ficha local continua aqui, intacta.' },
+    );
   }
 </script>
-
-<style is:global>
-  .mesa-dlg { border: 1px solid var(--panel-border); border-radius: 8px; padding: 1.2rem 1.4rem; max-width: 26rem; background: var(--panel); color: var(--ink); box-shadow: 0 8px 40px rgba(0,0,0,.3); }
-  .mesa-dlg::backdrop { background: rgba(0,0,0,.45); }
-  .mesa-dlg h3 { font-family: 'Cinzel'; color: var(--accent-strong); margin: 0 0 .3rem; }
-  .mesa-dlg .mm { font-size: .85rem; color: var(--ink-soft); margin: 0 0 .8rem; }
-  .mesa-dlg .mesa-list { display: flex; flex-direction: column; gap: .4rem; }
-  .mesa-dlg .mesa-op { text-align: left; }
-  .mesa-dlg .mesa-op small { opacity: .7; }
-  .mesa-dlg .mesa-foot { margin-top: 1rem; text-align: right; }
-</style>

@@ -172,6 +172,7 @@ import Base from '../layouts/Base.astro';
   import artesData from '../data/artes.json';
   import { pv, defesa, iniciativa, regras } from '../lib/calc';
   import { resumoCombatePC } from '../lib/combate-resumo';
+  import { uiConfirmar, uiErro, uiFormulario, uiPerguntar } from '../lib/ui-dialog';
 
   const base = import.meta.env.BASE_URL;
   const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
@@ -248,27 +249,32 @@ import Base from '../layouts/Base.astro';
         try { await navigator.clipboard.writeText(codigoEl.textContent || ''); (document.getElementById('btn-copiar') as HTMLButtonElement).textContent = 'Copiado!'; setTimeout(() => (document.getElementById('btn-copiar')!.textContent = 'Copiar'), 1400); } catch {}
       });
       document.getElementById('btn-regen')!.addEventListener('click', async () => {
-        if (!confirm('Gerar um novo código? O código atual deixa de funcionar.')) return;
+        if (!await uiConfirmar('Gerar um novo código? O código atual deixa de funcionar.', { titulo: 'Novo código de convite', ok: 'Gerar novo' })) return;
         const { data, error } = await sb.rpc('regenerar_codigo', { p_mesa: id });
-        if (error) return alert('Erro: ' + error.message);
+        if (error) return uiErro('Erro: ' + error.message);
         codigoEl.textContent = data;
       });
       const editarBtn = document.getElementById('btn-editar-mesa') as HTMLButtonElement;
       editarBtn.hidden = false;
       editarBtn.addEventListener('click', async () => {
-        const nome = prompt('Nome da mesa:', mesa.nome); if (nome === null) return;
-        const descricao = prompt('Descrição:', mesa.descricao || ''); if (descricao === null) return;
-        const { error } = await sb.from('mesas').update({ nome: nome.trim() || mesa.nome, descricao }).eq('id', id);
-        if (error) return alert('Erro: ' + error.message);
-        document.getElementById('nome')!.textContent = nome.trim() || mesa.nome;
+        const v = await uiFormulario('Editar mesa', [
+          { nome: 'nome', rotulo: 'Nome da mesa', valor: mesa.nome, obrigatorio: true },
+          { nome: 'descricao', rotulo: 'Descrição', valor: mesa.descricao || '', tipo: 'longo', placeholder: 'Cenário, tom, horário das sessões…' },
+        ]);
+        if (!v) return;
+        const nome = v.nome.trim() || mesa.nome;
+        const descricao = v.descricao;
+        const { error } = await sb.from('mesas').update({ nome, descricao }).eq('id', id);
+        if (error) return uiErro('Erro: ' + error.message);
+        document.getElementById('nome')!.textContent = nome;
         document.getElementById('descricao')!.textContent = descricao;
-        mesa.nome = nome.trim() || mesa.nome; mesa.descricao = descricao;
+        mesa.nome = nome; mesa.descricao = descricao;
       });
     } else {
       const sairBtn = document.getElementById('btn-sair-mesa')! as HTMLButtonElement;
       sairBtn.hidden = false;
       sairBtn.addEventListener('click', async () => {
-        if (!confirm('Sair desta mesa? Seus personagens deixam de ficar ligados a ela.')) return;
+        if (!await uiConfirmar('Sair desta mesa? Seus personagens deixam de ficar ligados a ela.', { titulo: 'Sair da mesa', ok: 'Sair', perigo: true })) return;
         await sb.from('mesa_membros').delete().eq('mesa_id', id).eq('user_id', user.id);
         location.href = u('mesas');
       });
@@ -287,7 +293,7 @@ import Base from '../layouts/Base.astro';
       const nn = document.getElementById('nota-nova')!; nn.hidden = false;
       nn.addEventListener('click', async () => {
         const { error } = await sb.from('mesa_notas').insert({ mesa_id: id, titulo: 'Nova nota', corpo: '', visivel_jogadores: false });
-        if (error) return alert('Erro: ' + error.message);
+        if (error) return uiErro('Erro: ' + error.message);
         await renderNotas(sb, true);
       });
     }
@@ -338,9 +344,10 @@ import Base from '../layouts/Base.astro';
         ? '<p class="muted">Nenhum encontro ativo.</p><button class="btn primary" id="enc-novo">Iniciar encontro</button>'
         : '<p class="muted">Sem combate ativo.</p>';
       if (ehMestre) document.getElementById('enc-novo')!.addEventListener('click', async () => {
-        const nome = prompt('Nome do encontro:', 'Encontro'); if (nome === null) return;
+        const nome = await uiPerguntar('Nome do encontro', 'Encontro', { titulo: 'Iniciar encontro', ok: 'Iniciar' });
+        if (nome === null) return;
         const { error } = await sb.from('encontros').insert({ mesa_id: id, nome: nome.trim() || 'Encontro', ativo: true });
-        if (error) return alert('Erro: ' + error.message);
+        if (error) return uiErro('Erro: ' + error.message);
         await renderIniciativa(sb, true);
       });
       return;
@@ -478,7 +485,7 @@ import Base from '../layouts/Base.astro';
     document.getElementById('log-nota')?.addEventListener('keydown', (ev) => { if ((ev as KeyboardEvent).key === 'Enter') { ev.preventDefault(); (document.getElementById('log-nota-btn') as HTMLElement)?.click(); } });
 
     document.getElementById('enc-encerrar')?.addEventListener('click', async () => {
-      if (!confirm('Encerrar este encontro? O log de ações fica salvo neste encontro.')) return;
+      if (!await uiConfirmar('Encerrar este encontro? O log de ações fica salvo neste encontro.', { titulo: 'Encerrar encontro', ok: 'Encerrar' })) return;
       await logAcao('Encontro encerrado.');
       await sb.from('encontros').update({ ativo: false }).eq('id', enc.id);
       await reload();
@@ -492,7 +499,7 @@ import Base from '../layouts/Base.astro';
         return { encontro_id: enc.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC', pv_max: pvv, pv_atual: pvv, tick: 0, iniciativa: d6() + (at.raciocinio || 0) + (sk.prontidao || 0) };
       });
       if (novos.length) {
-        const { error } = await sb.from('combatentes').insert(novos); if (error) return alert('Erro: ' + error.message);
+        const { error } = await sb.from('combatentes').insert(novos); if (error) return uiErro('Erro: ' + error.message);
         for (const n of novos) await logAcao(`${n.nome} entrou no combate (ini ${n.iniciativa}).`);
       }
       await reload();
@@ -602,14 +609,14 @@ import Base from '../layouts/Base.astro';
         if (row.id) {
           let { error } = await sb.from('combatentes').update({ ...cols, dados }).eq('id', row.id);
           if (semColuna(error)) ({ error } = await sb.from('combatentes').update(cols).eq('id', row.id));
-          if (error) return alert('Erro: ' + error.message);
+          if (error) return uiErro('Erro: ' + error.message);
           await logAcao(`${nome}: dados editados pelo mestre.`);
         } else {
           const ins: any = { encontro_id: enc.id, tipo: row.tipo || 'custom', tick: 0, ...cols, dados };
           if (row.monstro_id) ins.monstro_id = row.monstro_id;
           let { error } = await sb.from('combatentes').insert(ins);
           if (semColuna(error)) { delete ins.dados; ({ error } = await sb.from('combatentes').insert(ins)); }
-          if (error) return alert('Erro: ' + error.message);
+          if (error) return uiErro('Erro: ' + error.message);
           await logAcao(`${nome} entrou${row.tipo === 'criatura' ? ' (criatura)' : ''}.`);
         }
         await reload();
@@ -674,7 +681,7 @@ import Base from '../layouts/Base.astro';
 
   async function addCriatura(sb: any, monId: string) {
     const { error } = await sb.from('mesa_criaturas').insert({ mesa_id: id, monstro_id: monId });
-    if (error && !/duplicate|unique/i.test(error.message)) return alert('Erro: ' + error.message);
+    if (error && !/duplicate|unique/i.test(error.message)) return uiErro('Erro: ' + error.message);
     (document.getElementById('escudo-busca') as HTMLInputElement).value = '';
     document.getElementById('escudo-result')!.hidden = true;
     await renderEscudo(sb, true);
@@ -715,7 +722,7 @@ import Base from '../layouts/Base.astro';
     }).join('');
 
     box.querySelectorAll<HTMLElement>('.cr-rm').forEach((b) => b.addEventListener('click', async () => {
-      if (!confirm('Remover esta criatura da campanha?')) return;
+      if (!await uiConfirmar('Remover esta criatura da campanha?', { titulo: 'Remover criatura', ok: 'Remover', perigo: true })) return;
       await sb.from('mesa_criaturas').delete().eq('id', b.dataset.cr);
       await renderEscudo(sb, true);
     }));
@@ -773,12 +780,12 @@ import Base from '../layouts/Base.astro';
     const nomeSeguro = file.name.replace(/[^\w.\-]+/g, '_');
     const path = `${id}/${Date.now()}-${nomeSeguro}`;
     const { error } = await sb.storage.from('mesa').upload(path, file, { contentType: file.type });
-    if (error) return alert('Erro ao enviar: ' + error.message);
+    if (error) return uiErro('Erro ao enviar: ' + error.message);
     const { error: e2 } = await sb.from('arquivos').insert({
       mesa_id: id, dono_id: userId, nome: file.name, storage_path: path,
       bucket: 'mesa', tipo: file.type, categoria: 'handout-mestre', visivel_jogadores: false,
     });
-    if (e2) return alert('Enviado, mas erro ao registrar: ' + e2.message);
+    if (e2) return uiErro('Enviado, mas erro ao registrar: ' + e2.message);
     await listarArquivosMesa(sb, true);
   }
 
@@ -819,7 +826,7 @@ import Base from '../layouts/Base.astro';
     })));
     ul.querySelectorAll<HTMLElement>('.arq-rm').forEach((b) => b.addEventListener('click', async () => {
       const li = b.closest('li')!;
-      if (!confirm('Remover este arquivo?')) return;
+      if (!await uiConfirmar('Remover este arquivo? Ele sai da mesa para todo mundo.', { titulo: 'Remover arquivo', ok: 'Remover', perigo: true })) return;
       await sb.storage.from('mesa').remove([li.dataset.path!]);
       await sb.from('arquivos').delete().eq('id', li.dataset.arq);
       await listarArquivosMesa(sb, true, membros);
@@ -889,7 +896,7 @@ import Base from '../layouts/Base.astro';
       const salvar = () => { clearTimeout(t); t = setTimeout(async () => { await sb.from('mesa_notas').update({ titulo: tit.value, corpo: txt.value }).eq('id', nid); salvo.textContent = 'Salvo'; setTimeout(() => (salvo.textContent = ''), 1000); }, 700); };
       tit.addEventListener('input', salvar); txt.addEventListener('input', salvar);
       card.querySelector<HTMLInputElement>('.nota-vis-cb')!.addEventListener('change', async (e) => { await sb.from('mesa_notas').update({ visivel_jogadores: (e.target as HTMLInputElement).checked }).eq('id', nid); });
-      card.querySelector<HTMLElement>('.nota-rm')!.addEventListener('click', async () => { if (!confirm('Excluir esta nota?')) return; await sb.from('mesa_notas').delete().eq('id', nid); await renderNotas(sb, true); });
+      card.querySelector<HTMLElement>('.nota-rm')!.addEventListener('click', async () => { if (!await uiConfirmar('Excluir esta nota?', { titulo: 'Excluir nota', ok: 'Excluir', perigo: true })) return; await sb.from('mesa_notas').delete().eq('id', nid); await renderNotas(sb, true); });
     });
   }
 
@@ -945,13 +952,13 @@ import Base from '../layouts/Base.astro';
     ul.querySelectorAll<HTMLElement>('[data-act="papel"]').forEach((b) => b.addEventListener('click', async () => {
       const novo = b.dataset.p === 'mestre' ? 'jogador' : 'mestre';
       const { error } = await sb.from('mesa_membros').update({ papel: novo }).eq('mesa_id', id).eq('user_id', b.dataset.u);
-      if (error) return alert('Erro: ' + error.message);
+      if (error) return uiErro('Erro: ' + error.message);
       await renderMembros(sb, mestreId, ehMestre, userId);
     }));
     ul.querySelectorAll<HTMLElement>('[data-act="remover"]').forEach((b) => b.addEventListener('click', async () => {
-      if (!confirm('Remover este membro da mesa?')) return;
+      if (!await uiConfirmar('Remover este membro da mesa?', { titulo: 'Remover membro', ok: 'Remover', perigo: true })) return;
       const { error } = await sb.from('mesa_membros').delete().eq('mesa_id', id).eq('user_id', b.dataset.u);
-      if (error) return alert('Erro: ' + error.message);
+      if (error) return uiErro('Erro: ' + error.message);
       await renderMembros(sb, mestreId, ehMestre, userId);
     }));
   }

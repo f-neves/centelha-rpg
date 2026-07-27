@@ -33,6 +33,7 @@ import Base from '../layouts/Base.astro';
 <script>
   import { getSupabase } from '../lib/supabase';
   import { exigirLogin, recuperarSenha, sair, supabaseConfigurado } from '../lib/auth';
+  import { uiConfirmar } from '../lib/ui-dialog';
   const base = import.meta.env.BASE_URL;
 
   async function main() {
@@ -54,8 +55,8 @@ import Base from '../layouts/Base.astro';
     });
 
     document.getElementById('btn-excluir')!.addEventListener('click', async () => {
-      if (!confirm('Tem certeza que quer excluir sua conta? Não dá para desfazer.')) return;
-      if (!confirm('Confirme mais uma vez: excluir definitivamente sua conta e seus dados?')) return;
+      if (!await uiConfirmar('Tem certeza que quer excluir sua conta? Não dá para desfazer.', { titulo: 'Excluir conta', ok: 'Quero excluir', perigo: true })) return;
+      if (!await uiConfirmar('Confirme mais uma vez: excluir definitivamente sua conta e seus dados?', { titulo: 'Última confirmação', ok: 'Excluir definitivamente', perigo: true })) return;
       const { error } = await getSupabase().rpc('excluir_minha_conta');
       if (error) { const m = document.getElementById('msg-excluir')!; m.textContent = 'Erro: ' + error.message; m.className = 'msg erro'; return; }
       await sair();

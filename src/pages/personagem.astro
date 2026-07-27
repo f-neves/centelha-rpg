@@ -89,6 +89,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   import { getSupabase } from '../lib/supabase';
   import { montarFicha } from '../lib/ficha-engine';
   import { exigirLogin, supabaseConfigurado } from '../lib/auth';
+  import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../lib/ui-dialog';
 
   const base = import.meta.env.BASE_URL;
   const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
@@ -175,7 +176,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         if (novo) { retratoPath = novo; pos = posPadrao(); aplicarPos(); salvarPos(); }
       });
       document.getElementById('retrato-del')!.addEventListener('click', async () => {
-        if (!retratoPath || !confirm('Excluir a imagem do personagem? Você poderá enviar outra.')) return;
+        if (!retratoPath || !await uiConfirmar('Excluir a imagem do personagem? Você poderá enviar outra.', { titulo: 'Excluir imagem', ok: 'Excluir', perigo: true })) return;
         await excluirRetrato(sb, id!, retratoPath, podeRetrato);
         retratoPath = null;
       });
@@ -325,7 +326,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const txt = document.getElementById('status-txt')!;
     const acoes = document.getElementById('status-acoes')!;
     const btn = (rotulo: string, cls2 = '') => { const b = document.createElement('button'); b.className = 'btn ' + cls2; b.textContent = rotulo; acoes.appendChild(b); return b; };
-    const rpc = async (fn: string, args: any = {}) => { const { error } = await sb.rpc(fn, { p_id: id, ...args }); if (error) return alert('Erro: ' + error.message); location.reload(); };
+    const rpc = async (fn: string, args: any = {}) => { const { error } = await sb.rpc(fn, { p_id: id, ...args }); if (error) return uiErro('Erro: ' + error.message); location.reload(); };
 
     // recado de devolução (para o dono)
     if (ehDono && status === 'rascunho' && (pers.revisao_nota || '').trim()) {
@@ -347,20 +348,28 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     }
     // ações do mestre
     if (ehMestre) {
-      if (status !== 'aprovado') btn('Aprovar', 'primary').onclick = () => {
+      if (status !== 'aprovado') btn('Aprovar', 'primary').onclick = async () => {
         const rem = parseInt(document.getElementById('xpRem')?.textContent || '0', 10);
-        if (rem < 0 && !confirm(`Atenção: XP estourado (restam ${rem}). Aprovar mesmo assim?`)) return;
+        if (rem < 0 && !await uiConfirmar(`Atenção: XP estourado (restam ${rem}). Aprovar mesmo assim?`, { titulo: 'Aprovar ficha', ok: 'Aprovar assim mesmo' })) return;
         rpc('aprovar_ficha');
       };
-      if (status === 'enviado') btn('Devolver com recado').onclick = () => { const nota = prompt('Recado para o jogador (o que ajustar):', ''); if (nota === null) return; rpc('devolver_ficha', { p_nota: nota }); };
+      if (status === 'enviado') btn('Devolver com recado').onclick = async () => {
+        const nota = await uiPerguntar('Recado para o jogador', '', {
+          titulo: 'Devolver ficha',
+          msg: 'A ficha volta a rascunho e o jogador vê o recado no topo da página.',
+          placeholder: 'O que precisa ser ajustado…', longo: true, ok: 'Devolver',
+        });
+        if (nota === null) return;
+        rpc('devolver_ficha', { p_nota: nota });
+      };
       if (status === 'aprovado') btn('Reabrir para edição').onclick = () => rpc('reabrir_ficha');
     }
     // excluir (dono em rascunho, ou mestre)
     if ((ehDono && status === 'rascunho') || ehMestre) {
       btn('Excluir personagem', 'perigo').onclick = async () => {
-        if (!confirm('Excluir este personagem? Esta ação não pode ser desfeita.')) return;
+        if (!await uiConfirmar('Excluir este personagem? Esta ação não pode ser desfeita.', { titulo: 'Excluir personagem', ok: 'Excluir', perigo: true })) return;
         const { error } = await sb.from('personagens').delete().eq('id', id);
-        if (error) return alert('Erro: ' + error.message);
+        if (error) return uiErro('Erro: ' + error.message);
         location.href = pers.mesa_id ? u('mesa') + '?id=' + pers.mesa_id : u('mesas');
       };
     }
@@ -387,14 +396,14 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
     const path = `${id}/retrato-${Date.now()}.${ext}`;
     const { error } = await sb.storage.from(BUCKET).upload(path, file, { upsert: true, contentType: file.type });
-    if (error) { alert('Erro ao enviar imagem: ' + error.message); return null; }
+    if (error) { await uiErro('Erro ao enviar imagem: ' + error.message); return null; }
     await sb.from('personagens').update({ imagem_path: path }).eq('id', id);
     await mostrarRetrato(sb, path, true);
     return path;
   }
   async function excluirRetrato(sb: any, id: string, path: string, pode: boolean) {
     const { error } = await sb.storage.from(BUCKET).remove([path]);
-    if (error) { alert('Erro ao excluir imagem: ' + error.message); return; }
+    if (error) { await uiErro('Erro ao excluir imagem: ' + error.message); return; }
     await sb.from('personagens').update({ imagem_path: null }).eq('id', id);
     (document.getElementById('retrato-img') as HTMLImageElement).src = '';
     (document.getElementById('retrato-lb-img') as HTMLImageElement).src = '';
@@ -407,12 +416,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const nomeSeguro = file.name.replace(/[^\w.\-]+/g, '_');
     const path = `${id}/anexo-${Date.now()}-${nomeSeguro}`;
     const { error } = await sb.storage.from(BUCKET).upload(path, file, { contentType: file.type });
-    if (error) return alert('Erro ao enviar arquivo: ' + error.message);
+    if (error) return uiErro('Erro ao enviar arquivo: ' + error.message);
     const { error: e2 } = await sb.from('arquivos').insert({
       mesa_id: mesaId, personagem_id: id, dono_id: userId, nome: file.name,
       storage_path: path, bucket: BUCKET, tipo: file.type, categoria: 'anexo-jogador',
     });
-    if (e2) return alert('Enviado, mas erro ao registrar: ' + e2.message);
+    if (e2) return uiErro('Enviado, mas erro ao registrar: ' + e2.message);
     await listarArquivos(sb, id, true);
   }
   function linkSeguro(u: string) { return /^https?:\/\//i.test((u || '').trim()) ? u.trim() : ''; }
@@ -420,12 +429,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const urlEl = document.getElementById('arq-link-url') as HTMLInputElement;
     const nomeEl = document.getElementById('arq-link-nome') as HTMLInputElement;
     const url = linkSeguro(urlEl.value);
-    if (!url) { alert('Cole um link válido começando com http:// ou https://'); return; }
+    if (!url) { await uiAviso('Cole um link válido começando com http:// ou https://', { titulo: 'Link inválido' }); return; }
     const nome = (nomeEl.value || '').trim() || url;
     const { error } = await sb.from('arquivos').insert({
       mesa_id: mesaId, personagem_id: id, dono_id: userId, nome, url, tipo: 'link', categoria: 'link-jogador',
     });
-    if (error) return alert('Erro ao adicionar link: ' + error.message);
+    if (error) return uiErro('Erro ao adicionar link: ' + error.message);
     urlEl.value = ''; nomeEl.value = '';
     await listarArquivos(sb, id, true);
   }
@@ -455,7 +464,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     }));
     ul.querySelectorAll<HTMLElement>('.arq-rm').forEach((b) => b.addEventListener('click', async () => {
       const li = b.closest('li')!;
-      if (!confirm('Remover este item?')) return;
+      if (!await uiConfirmar('Remover este item?', { titulo: 'Remover', ok: 'Remover', perigo: true })) return;
       if (!li.dataset.link) await sb.storage.from(li.dataset.bucket!).remove([li.dataset.path!]);
       await sb.from('arquivos').delete().eq('id', li.dataset.arq);
       await listarArquivos(sb, id, true);
