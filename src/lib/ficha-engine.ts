@@ -335,16 +335,36 @@ export function montarFicha(opts: FichaOpts) {
     const fm = regras.derivados.danoForca as any;
     const db = atk.danoBonus || 0;
     const capF = atk.forcaCap != null ? Math.min(forca, atk.forcaCap) : forca;
+    const inabilArmaOcupada = (inabil.kind === 'arma' || inabil.kind === 'custom');
     const versoes: { rot: string; ap: number }[] = [];
     if (!dist && itVers(habil)) {
-      versoes.push({ rot: '1 mão', ap: db + forca * (atk.forcaMult ?? fm.umaMao) });
-      versoes.push({ rot: '2 mãos', ap: db + forca * fm.duasMaos });
+      // Com arma na outra mão, a versátil só pode ser usada a uma mão (sem a versão de 2 mãos).
+      if (inabilArmaOcupada) versoes.push({ rot: '', ap: db + forca * (atk.forcaMult ?? fm.umaMao) });
+      else {
+        versoes.push({ rot: '1 mão', ap: db + forca * (atk.forcaMult ?? fm.umaMao) });
+        versoes.push({ rot: '2 mãos', ap: db + forca * fm.duasMaos });
+      }
     } else {
       const mult = dist ? (atk.forcaMult ?? 1) : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
       versoes.push({ rot: '', ap: db + capF * mult });
     }
     const reqForca = (atk.forcaMin && forca < atk.forcaMin) ? atk.forcaMin : 0;
-    return { habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
+    // Empunhadura dupla: se a mão inábil também é arma, ela rende um 2º ataque (hábil −1d6, inábil −2d6).
+    const inabilArma = (inabil.kind === 'arma' || inabil.kind === 'custom') ? inabil.w : null;
+    let dupla: any = null;
+    if (inabilArma) {
+      const somaI = (S.attrs[inabilArma.atrib] || 0) + (S.skills[inabilArma.pericia] || S.skills2[inabilArma.pericia] || 0);
+      const distI = (inabilArma.tags || []).includes('distância');
+      const capFI = inabilArma.forcaCap != null ? Math.min(forca, inabilArma.forcaCap) : forca;
+      const multI = distI ? (inabilArma.forcaMult ?? 1) : (inabilArma.forcaMult ?? fm.umaMao);
+      dupla = {
+        habilAp: versoes[0].ap,
+        inabilDados: Math.floor(somaI / 2), inabilBonus: somaI % 2 === 1 ? 2 : 0,
+        inabilFlat: (inabilArma.acerto || 0) + ataqueCentelha(C) - armorPen,
+        inabilDado: inabilArma.dado, inabilAp: (inabilArma.danoBonus || 0) + capFI * multI,
+      };
+    }
+    return { habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
   }
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
   function optsItens(sel: string) {
@@ -358,6 +378,10 @@ export function montarFicha(opts: FichaOpts) {
       const c = calcConj(cj); const trava = it2H(c.habil);
       const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
       const dano = c.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
+      const p0 = (n: number) => Math.max(0, n);
+      const pool = (d: number, b: number, f: number) => `${p0(d)}d6${b ? '+2' : ''}${f ? ' ' + sgn(f) : ''}`;
+      const dm = (dado: number, ap: number) => `${dado}d6${ap ? ' ' + sgn(ap) : ''}`;
+      const dupla = c.dupla ? `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −2d6: ${pool(c.dupla.inabilDados - 2, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno</span></div>` : '';
       const custom = (hand: 'habil' | 'inabil') => {
         const s = cj[hand];
         if (s?.ref !== 'c') return '';
@@ -378,6 +402,7 @@ export function montarFicha(opts: FichaOpts) {
           <label>Mão inábil<select data-conj-sel="${i}:inabil"${(ro || trava) ? ' disabled' : ''}>${optsItens(trava ? 'nada' : (cj.inabil?.ref || 'nada'))}</select>${trava ? '' : custom('inabil')}</label>
         </div>
         <div class="conj-stats"><b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}${c.reqForca ? ` · <span class="conj-req">requer Força ${c.reqForca}</span>` : ''}</div>
+        ${dupla}
       </div>`;
     }).join('');
   }

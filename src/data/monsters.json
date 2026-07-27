@@ -4514,11 +4514,11 @@
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
-     "nome": "Espada longa (golpe duplo)",
+     "nome": "Duas lâminas (empunhadura dupla)",
      "pool": "5d6 +4",
      "dano": "2d6 +4 corte",
      "speed": 6,
-     "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
+     "notas": "Empunhadura dupla: um ataque por mão na ação (hábil −1d6, inábil −2d6); a guarda cai −4 até o próximo turno."
     }
    ]
   },

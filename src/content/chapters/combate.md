@@ -56,6 +56,20 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 <p class="muted">A <strong>Centelha</strong> soma <strong>+2 por ponto</strong> dos dois lados — ao ataque e a todas as defesas. Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda.</p>
 
+### Empunhadura dupla: um ataque por mão
+
+Via de regra, **cada ação rende um só ataque** — uma arma, um golpe. Ninguém divide a ação em vários golpes com uma arma na mão (mais ataques numa ação vêm só de **duas armas** ou de uma Técnica que os conceda). A exceção é lutar com **uma arma em cada mão**: aí você pode desferir **um ataque por mão** na mesma ação (mesma Speed). Não é obrigatório abrir os dois — se preferir, faça só o golpe da mão hábil, normal, sem penalidade.
+
+Ao desferir os dois golpes:
+
+- a **mão hábil** ataca a **−1d6** e a **mão inábil** a **−2d6** (coordenar dois gumes tira precisão; a mão fraca tira mais);
+- cada golpe rola o próprio acerto e o próprio dano, com a arma daquela mão (a Força soma uma vez em cada);
+- podem cair no **mesmo alvo** ou em **alvos diferentes**, um por mão.
+
+O preço não está tanto nos dados — pela régua da Margem, um golpe que **encosta** já rende quase todo o dano —, e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até seu próximo turno. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo — o que custa é ficar aberto, não largar a guarda da arma.
+
+Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **escudo** na mão inábil troca o golpe extra por Bloqueio. É a terceira via da empunhadura, ao lado do dano concentrado das duas mãos e da muralha do escudo: **tempo e pressão**, dois golpes por vez ao custo da própria guarda.
+
 ## Dano e Armadura
 
 <p class="formula">Dano = (Dado da Arma + Margem) + Força − Absorção</p>
@@ -117,7 +131,7 @@ Sua Defesa pode vir de duas fontes, e você usa **a melhor** delas contra cada g
 - **Esquiva** — com a habilidade Esquiva, mais a mobilidade do terreno. Some sai da frente.
 - **Bloqueio** — com a Habilidade **Bloqueio** (a mesma para qualquer arma, escudo ou mão), mais a **Defesa da Arma** e o escudo. Apara o golpe.
 
-A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra para defender: um **escudo** (+1 a +3) ou uma **arma de parada na mão inábil** (+1) eleva o Bloqueio. É a troca central da empunhadura: **mais dano e alcance com as duas mãos, ou mais guarda com uma mão livre.**
+A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra: um **escudo** (+1 a +3) ou uma **arma na mão inábil** (+1) eleva o Bloqueio. E a arma da mão inábil não só defende — ela rende um **segundo ataque** na ação (ver *Empunhadura dupla*), e o Bloqueio dela continua valendo mesmo quando você golpeia com ela. É a troca central da empunhadura: **dano concentrado e alcance com as duas mãos, a muralha do escudo, ou dois golpes por vez com uma arma em cada mão.**
 
 ### Projéteis rápidos: só Esquiva ou escudo
 
@@ -212,14 +226,9 @@ Isso é **só no acerto**: não muda a Defesa passiva do alvo, **não entra no t
 
 ### Pressão: muitos contra um
 
-Você pode dividir sua ação em vários golpes, ao custo de precisão; e cada inimigo extra desgasta sua guarda.
+Cada inimigo extra desgasta a sua guarda, e cada golpe que **você** desfere também.
 
-| Nº de ataques | Penalidade |
-|---|---|
-| 2 ataques | 1º −1d6, 2º −2d6 |
-| 3 ataques | 1º −2d6, 2º −3d6, 3º −4d6 |
-
-<div class="callout regra"><span class="lbl">Guarda sob pressão</span>Cada ataque que você <strong>faz ou recebe</strong> reduz sua <strong>Esquiva e Bloqueio em −2</strong>, e o efeito <strong>acumula até a sua próxima ação</strong> — quando você age, a guarda se refaz e o acúmulo zera. <strong>Sem teto:</strong> ninguém desvia de uma dúzia de golpes. Atacar te expõe; ser cercado te expõe muito mais. Um único oponente brilhante resiste a alguns fracos — mas a maré da multidão acaba furando qualquer guarda.</div>
+<div class="callout regra"><span class="lbl">Guarda sob pressão</span>Cada ataque que você <strong>faz ou recebe</strong> reduz sua <strong>Esquiva e Bloqueio em −2</strong>, e o efeito <strong>acumula até a sua próxima ação</strong> — quando você age, a guarda se refaz e o acúmulo zera. <strong>Sem teto:</strong> ninguém desvia de uma dúzia de golpes. Atacar te expõe (e atacar com as <strong>duas mãos</strong>, o dobro); ser cercado te expõe muito mais. Um único oponente brilhante resiste a alguns fracos — mas a maré da multidão acaba furando qualquer guarda.</div>
 
 A posição fecha o cerco: quem ataca pelo **flanco ou pelas costas** ganha o **−2 na Defesa** do alvo, porque ele não pode voltar a melhor guarda contra todos ao mesmo tempo. Dois inimigos coordenados — um prendendo a frente, outro contornando — combinam a penalidade de pressão com a de flanco: é assim que o número vira vantagem tática, e não só mais dados.
 

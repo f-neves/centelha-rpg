@@ -127,16 +127,18 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
   Imenso; heróis (montante, Proeza, Impacto) ainda arranham; Colossal exige Centelha/magia.
   Documentado no cap. Combate ("Couraça de Porte"). Commit da couraça abaixo.
 
-## Design a decidir — Ataques múltiplos e mão inábil (2026-07-26)
+## Ataques múltiplos e mão inábil (RESOLVIDO 2026-07-26)
 
-- **Revisar a regra de ataques múltiplos.** Hoje "atacar várias vezes" é só a linha do
-  tempo de **Ticks/Speed**: cada golpe custa Speed e o próximo sai quando o relógio volta
-  para você; não existe uma regra de "dividir o pool" para dois ataques numa ação. Rever se
-  vai continuar assim (só Ticks), ou se entra uma regra explícita (ex.: um ataque extra por
-  custo de pool/Fôlego, ou por Técnica), e como isso conversa com criaturas de muitos membros
-  (que já "atacam várias vezes" em vez de somar Força).
-- **Mão inábil vira segundo ataque (aprovado).** Hoje a arma da mão inábil (empunhadura dupla)
-  só soma **+1 no Bloqueio** (Defesa), não ataca. Decisão: **pode virar um segundo ataque**.
-  Integrar com a regra de ataques múltiplos acima quando ela for fechada (penalidade do golpe
-  inábil, custo de Ticks/pool, interação com a Defesa que a arma dava). Implementar na ficha
-  (conjunto mão hábil/inábil) só depois de travar a regra.
+- ✅ **Regra geral de ataques múltiplos removida.** Acabou a "Rajada" (dividir a ação em 2–3
+  golpes com uma arma só, −1d6/−2d6 etc.). Agora **uma arma = um ataque por ação**. Mais de um
+  ataque numa ação vem só de **empunhadura dupla** ou de uma Técnica que o conceda (ex.: Borrão).
+- ✅ **Mão inábil vira 2º ataque (empunhadura dupla).** Com uma arma em cada mão: **um ataque por
+  mão** na ação (mesma Speed), opcional. Penalidades: **hábil −1d6, inábil −2d6**. Cada golpe rola
+  seu próprio acerto/dano (Força ×1 em cada); podem mirar alvos diferentes. A **Defesa das armas
+  continua valendo** para aparar mesmo tendo atacado; o custo é a **Guarda sob pressão** (cada
+  ataque = −2 Esquiva/Bloqueio até o próximo turno, logo duas mãos = −4). Arma de 2 mãos trava a
+  inábil; escudo na inábil = defesa em vez de 2º ataque. Gancho futuro: Proeza/Técnica "ambidestro"
+  reduzindo a penalidade da inábil. Implementado em combate.md (nova seção "Empunhadura dupla"),
+  no parágrafo da Defesa da Arma, na ficha (conjunto mostra linha "Ataque duplo") e no chefe
+  "herói inimigo" de inimigos.json. Detalhe da régua: como cada 6 acima da Defesa = 1 Margem = 1d6,
+  a penalidade em d6 pesa mais no **acerto** do que no dano.
