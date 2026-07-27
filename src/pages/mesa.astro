@@ -43,6 +43,14 @@ import Base from '../layouts/Base.astro';
         <h2>Personagens</h2>
         <button class="btn primary" id="btn-novo-pers">Novo personagem</button>
       </div>
+      <div id="xp-inicial-box" class="xp-inicial" hidden>
+        <label for="xp-inicial">XP inicial das fichas</label>
+        <input type="number" id="xp-inicial" min="0" step="10" />
+        <button class="btn" id="xp-inicial-salvar">Salvar</button>
+        <span class="salvo" id="xp-inicial-salvo"></span>
+        <p class="muted xp-inicial-dica">Orçamento com que os jogadores montam a ficha nesta mesa.
+          Vale para quem ainda não tem XP próprio; se você definir o XP de um personagem na página dele, o individual manda.</p>
+      </div>
       <div id="personagens"></div>
     </section>
 
@@ -288,6 +296,25 @@ import Base from '../layouts/Base.astro';
     document.getElementById('btn-novo-pers')!.addEventListener('click', () => {
       location.href = u('personagem') + '?novo=1&mesa=' + id;
     });
+
+    // XP inicial da mesa: orçamento das fichas que ainda não têm XP individual.
+    if (ehMestre) {
+      document.getElementById('xp-inicial-box')!.hidden = false;
+      const xpIni = document.getElementById('xp-inicial') as HTMLInputElement;
+      const salvo = document.getElementById('xp-inicial-salvo')!;
+      xpIni.value = String(mesa.xp_inicial ?? 0);
+      document.getElementById('xp-inicial-salvar')!.addEventListener('click', async () => {
+        const xp = Math.max(0, +xpIni.value || 0);
+        const { error } = await sb.from('mesas').update({ xp_inicial: xp }).eq('id', id);
+        if (error) {
+          return uiErro(/xp_inicial/i.test(error.message)
+            ? 'A coluna xp_inicial ainda não existe no banco. Rode supabase/migracao-8.sql no SQL Editor.'
+            : 'Erro: ' + error.message);
+        }
+        mesa.xp_inicial = xp; xpIni.value = String(xp);
+        salvo.textContent = 'Salvo'; setTimeout(() => (salvo.textContent = ''), 1400);
+      });
+    }
     await renderPersonagens(sb, ehMestre, user.id);
 
     if (ehMestre) { document.getElementById('visao-geral-sec')!.hidden = false; await renderVisaoGeral(sb); }
@@ -980,6 +1007,13 @@ import Base from '../layouts/Base.astro';
   .convite code { font-size: 1.25rem; letter-spacing: .12em; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: .2rem .6rem; }
   .bloco { margin-top: 1.4rem; }
   .bloco-cab { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .xp-inicial { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-top: .8rem;
+    padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); }
+  .xp-inicial label { font-family: 'Cinzel'; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
+  .xp-inicial input { width: 6.5rem; font: inherit; color: var(--ink); background: var(--bg);
+    border: 1px solid var(--panel-border); border-radius: 6px; padding: .3rem .5rem; }
+  .xp-inicial .salvo { font-size: .85rem; color: var(--accent); }
+  .xp-inicial-dica { flex-basis: 100%; margin: .1rem 0 0; font-size: .85rem; }
   .pers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: .8rem; }
   .pers-card { display: flex; flex-direction: column; gap: .25rem; padding: .9rem 1rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
   .pers-card:hover { border-color: var(--accent); transform: translateY(-2px); }

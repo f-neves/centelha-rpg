@@ -136,9 +136,11 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     // nome da mesa (se houver) + saber se o espectador é o mestre da mesa
     let ehMestre = false;
+    let mesaRow: any = null;
     const nomePers = pers.nome || 'Personagem';
     if (pers.mesa_id) {
-      const { data: mesa } = await sb.from('mesas').select('nome, mestre_id').eq('id', pers.mesa_id).maybeSingle();
+      const { data: mesa } = await sb.from('mesas').select('*').eq('id', pers.mesa_id).maybeSingle();
+      mesaRow = mesa;
       if (mesa) {
         document.getElementById('pers-mesa')!.textContent = 'Mesa: ' + mesa.nome;
         ehMestre = mesa.mestre_id === user.id;
@@ -221,13 +223,19 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) { lb.hidden = true; document.body.style.overflow = ''; } });
 
     // XP: se estiver em mesa, o mestre define (input travado); senão o jogador escolhe.
+    // Sem XP individual, vale o XP inicial que o mestre definiu na mesa.
     let budgetValor: number | null = null;
     let budgetLocked = false;
     if (pers.mesa_id) {
       budgetLocked = true;
       const { data: xpRow } = await sb.from('personagem_xp').select('xp').eq('personagem_id', id).maybeSingle();
-      budgetValor = xpRow?.xp ?? 0;
-      document.getElementById('xp-nota')!.textContent = xpRow ? `XP definido pelo mestre: ${budgetValor}` : 'Aguardando o mestre definir seu XP.';
+      const xpInicial = Number(mesaRow?.xp_inicial ?? 0) || 0;
+      budgetValor = xpRow?.xp ?? xpInicial;
+      document.getElementById('xp-nota')!.textContent = xpRow
+        ? `XP definido pelo mestre: ${budgetValor}`
+        : xpInicial
+          ? `XP inicial da mesa: ${xpInicial}`
+          : 'Aguardando o mestre definir seu XP.';
     }
 
     // textos (editáveis por quem pode editar a ficha)

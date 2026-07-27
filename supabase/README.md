@@ -27,8 +27,13 @@ Supabase pelo navegador. Passos para ligar tudo:
    É idempotente.
 7. Rode [`migracao-5.sql`](./migracao-5.sql): adiciona a coluna `dados` (jsonb) aos combatentes,
    para o mestre editar as estatísticas de cada combatente no rastreador. Idempotente.
-8. Rode por fim [`migracao-6.sql`](./migracao-6.sql): adiciona a coluna `imagem_pos` (jsonb) aos
+8. Rode [`migracao-6.sql`](./migracao-6.sql): adiciona a coluna `imagem_pos` (jsonb) aos
    personagens, para o enquadramento do retrato no card (pan/zoom). Idempotente.
+9. Rode [`migracao-7.sql`](./migracao-7.sql): permite que um "arquivo" seja um link externo
+   (coluna `url`, `storage_path` deixa de ser obrigatório). Idempotente.
+10. Rode por fim [`migracao-8.sql`](./migracao-8.sql): adiciona a coluna `xp_inicial` às mesas,
+    o XP com que as fichas da mesa começam (o XP individual, quando o mestre define, manda).
+    Idempotente.
 
 ## 3. Ajustes no painel
 
