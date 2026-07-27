@@ -6,6 +6,14 @@
 
 ## Divergências de mecânica
 
+- ✅ **Defesa Social alinhada (RESOLVIDO 2026-07-27).** O motor e o cap. Defesas já usavam
+  `(Compostura + Sociabilidade) × 2 + Especialidade + Centelha`; três trechos de prosa antiga
+  ainda diziam "Temperança". Decisão: canonizar **Sociabilidade** (mínimo de mudança, sem mexer no
+  motor). Corrigidos `criacao-de-personagem.md` (tabela), `aparencia-virtudes-vontade.md` (frase da
+  Def. Mental) e `glossario.json`. Como a Temperança deixou de sustentar a Def. Social, o pilar
+  **"Sustentar"** das Virtudes saiu (agora **duas frentes**: Resistir + Transcender) — o que reforça a
+  pendência do **papel mecânico das Virtudes** (ver "Economia de XP e balanço" / memória).
+
 - ✅ **Iniciativa do Kael (RESOLVIDO).** A fórmula é `1d6 + Raciocínio + Prontidão`.
   A divergência antiga ("doc dizia 1d6+6, mas o Kael Centelha 1 com Prontidão 2
   dava +5") **deixou de existir**: o Kael foi rebalanceado para **Centelha 2**

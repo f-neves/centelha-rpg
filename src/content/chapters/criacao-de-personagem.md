@@ -67,7 +67,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 | Pontos de Vida | 25 + (Vigor × 3) |
 | Defesa | (Destreza + Habilidade) × 2 + Especialidade + Centelha |
 | Defesa Mental | Integridade + Raciocínio + Vontade + Centelha |
-| Defesa Social | (Compostura + Temperança + Centelha) × 2 |
+| Defesa Social | (Compostura + Sociabilidade) × 2 + Especialidade + Centelha |
 | Energia | (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 [arredonda p/ baixo] + Centelha × 2 |
 | Mana | (Centelha × 2) + Força de Vontade |
 | Fôlego | 10 + (Vigor × 5) + (Resistência × 4) + (Vontade × 2) |

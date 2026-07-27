@@ -41,10 +41,9 @@ As Virtudes são **o que move o personagem por dentro**. Cada uma vai de 1 a 6 e
 | **Temperança** | disciplina e autocontrole | a tentação e a provocação |
 | **Bravura** | coragem diante do perigo | o medo e a intimidação |
 
-As Virtudes não são só interpretação — elas têm peso mecânico em três frentes:
+As Virtudes não são só interpretação, elas têm peso mecânico em duas frentes:
 
 - **Resistir.** Para aguentar uma pressão da alma, role a Virtude apropriada **somada a um Atributo**: medo = Bravura + Vigor; provocação = Temperança + Raciocínio; suportar a tortura = Convicção + Vigor.
-- **Sustentar.** A **Temperança** sustenta a sua **Defesa Social** (a frieza que não deixa te lerem).
 - **Transcender.** O Canalizar, abaixo.
 
 <div class="callout regra"><span class="lbl">Canalizar Virtude</span>Uma vez por cena, por Virtude, numa ação coerente com ela, some o valor da Virtude à sua soma base — a rolagem passa a ser <strong>Atributo + Habilidade + Virtude</strong>. O herói que age movido por suas paixões transcende. (Sem risco nem contrapartida: aqui a Virtude é só impulso.)</div>
@@ -65,4 +64,4 @@ A **Defesa Mental** é o muro passivo que convencimentos, intimidações e poder
 
 <p class="formula">Defesa Mental = Integridade + Raciocínio + Força de Vontade + Centelha</p>
 
-<p class="muted">Uma Integridade baixa derruba a Defesa Mental — quem está quebrado por dentro é mais fácil de dobrar. (A sua irmã social, a <strong>Defesa Social</strong>, protege contra quem tenta te <em>ler</em>, e vem da Compostura + Temperança + Centelha.)</p>
+<p class="muted">Uma Integridade baixa derruba a Defesa Mental — quem está quebrado por dentro é mais fácil de dobrar. (A sua irmã social, a <strong>Defesa Social</strong>, protege contra quem tenta te <em>ler</em>, e vem da Compostura + Sociabilidade + Centelha.)</p>
