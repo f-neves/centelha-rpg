@@ -142,3 +142,21 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
   no parágrafo da Defesa da Arma, na ficha (conjunto mostra linha "Ataque duplo") e no chefe
   "herói inimigo" de inimigos.json. Detalhe da régua: como cada 6 acima da Defesa = 1 Margem = 1d6,
   a penalidade em d6 pesa mais no **acerto** do que no dano.
+
+## Arcano / Feitiçaria (2026-07-27)
+
+- ✅ **Trava de nível por Ocultismo REMOVIDA.** Antes: Arte de nível N exigia Ocultismo ≥ N, e o
+  nível efetivo de um Feitiço era limitado pelo Ocultismo. Agora: basta **Centelha > 0** para tocar
+  a magia; a profundidade (nível da Arte) se compra com XP; o teto do nível efetivo num Feitiço é o
+  **nível de Arte que você conhece**. Ocultismo continua sendo a **perícia de conjuração** (rola
+  Ocultismo + Atributo), só não é mais gate. Mexido em: `ficha-engine.ts` (capFor 'arte2'),
+  `arcano.astro`, `regras.json` (blocos de improviso/tetoFeitico), `criacao-de-personagem.md`
+  (exemplos, inclusive a seção "mortal-tocado") e `atributos-e-pericias.md`.
+- ⏳ **A DECIDIR: melhorar a relação Feitiçaria x Ocultismo.** Hoje Ocultismo é só a perícia de
+  rolagem, sem requisito de acesso. Rever se e como Ocultismo (ou outra coisa) volta a condicionar
+  o aprendizado, junto do item abaixo.
+- ⏳ **CRIAR: Trilhas de Feitiçaria.** Detalhar **como a feitiçaria é ensinada pelo mundo** e os
+  **requisitos de cada tipo de trilha** (ex.: linhagem/sangue, pacto, estudo acadêmico, iniciação
+  em ordem, dom natural do Desperto...). Cada trilha define pré-requisitos próprios para aprender e
+  aprofundar Artes (substituindo a antiga trava única de Ocultismo). Rever os exemplos do
+  "mortal-tocado" à luz das trilhas quando existirem.

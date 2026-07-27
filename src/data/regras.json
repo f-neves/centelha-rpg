@@ -1014,7 +1014,7 @@
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {
-      "regra": "O efeito impresso é o GABARITO daquele nível. Rearranjar mostradores de igual passo é livre (encolher um para esticar outro). Cada passo ACIMA do gabarito num mostrador conta como +1 nível efetivo: +1 Mana e exige Ocultismo ≥ nível efetivo (a Centelha só precisa estar acesa, > 0).",
+      "regra": "O efeito impresso é o GABARITO daquele nível. Rearranjar mostradores de igual passo é livre (encolher um para esticar outro). Cada passo ACIMA do gabarito num mostrador conta como +1 nível efetivo: +1 Mana (a Centelha só precisa estar acesa, > 0). A trava de nível por Ocultismo foi removida; a relação Feitiçaria x Ocultismo será refeita nas Trilhas de Feitiçaria.",
       "mostradores": [
         "alcance",
         "área",
@@ -1022,7 +1022,7 @@
         "duração",
         "potência"
       ],
-      "tetoFeitico": "nível efetivo ≤ Ocultismo (basta Centelha > 0)"
+      "tetoFeitico": "nível efetivo ≤ nível de Arte que você conhece (basta Centelha > 0)"
     },
     "composta": {
       "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos Manas + sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior nível.",

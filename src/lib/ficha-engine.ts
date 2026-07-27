@@ -89,7 +89,9 @@ export function montarFicha(opts: FichaOpts) {
   const centReq = (b: number) => b;
   function racialAttr(key?: string): number { return key ? (RACA[S.raca]?.atributos?.[key] || 0) : 0; }
   function capFor(kind: string, key?: string): number {
-    if (kind === 'arte2') return (S.centelha || 0) > 0 ? (S.skills?.ocultismo || 0) : 0;
+    // Feitiçaria: a trava de nível por Ocultismo foi removida. Basta Centelha > 0 para tocar a magia;
+    // a profundidade (nível da Arte) é comprada com XP. (Relação com Ocultismo será refeita nas Trilhas de Feitiçaria.)
+    if (kind === 'arte2') return (S.centelha || 0) > 0 ? 6 : 0;
     const rac = kind === 'attr' ? racialAttr(key) : 0;
     const full: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12 };
     if (S.modo === 'evolucao') return (full[kind] ?? 6) + rac;
@@ -537,7 +539,7 @@ export function montarFicha(opts: FichaOpts) {
   function applyVal(kind: string, key: string, nv: number) {
     const floor = floorOf[kind]; nv = Math.max(floor, Math.min(nv, capFor(kind, key)));
     if (kind === 'attr') S.attrs[key] = nv;
-    else if (kind === 'skill') { S.skills[key] = nv; S.spec[key] = clampSpecs(S.spec[key], nv); renderSkills(); if (key === 'ocultismo') renderArtes(); }
+    else if (kind === 'skill') { S.skills[key] = nv; S.spec[key] = clampSpecs(S.spec[key], nv); renderSkills(); }
     else if (kind === 'skill2') { S.skills2[key] = nv; S.spec2[key] = clampSpecs(S.spec2[key], nv); renderSecondary(); }
     else if (kind === 'virtue') S.virtues[key] = nv;
     else if (kind === 'centelha') { S.centelha = nv; renderCaminhos(); renderArtes(); }

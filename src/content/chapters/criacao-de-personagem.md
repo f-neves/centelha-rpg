@@ -50,7 +50,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Técnica de Proeza | cresce com o poder | nível 1 ≈ 5–15 · nível 3 ≈ 35–45 · nível 5 ≈ 65–75 |
 | Nível de Arte (Arcano) | nível × 10 | nível 1 = 10 · nível 3 = 30 |
 
-<p class="muted">A Centelha cara reflete a raridade: alcançar Centelha 3 custa 90 XP acumulados; a Centelha 5, 225 — o trabalho de uma vida. Técnica de nível <em>N</em> exige Centelha ≥ N; Arte de nível <em>N</em> exige Centelha &gt; 0 (qualquer fagulha) e Ocultismo ≥ N.</p>
+<p class="muted">A Centelha cara reflete a raridade: alcançar Centelha 3 custa 90 XP acumulados; a Centelha 5, 225 — o trabalho de uma vida. Técnica de nível <em>N</em> exige Centelha ≥ N; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha), e a profundidade se compra com XP.</p>
 
 <div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha não se compra em massa: ela só sobe com <strong>permissão do Mestre</strong>, num marco de história ou feito maior. O XP paga o custo (× 15), mas o salto de tier — de herói a semideus — é uma conquista narrativa, não uma transação de balcão.</div>
 
@@ -129,15 +129,15 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Técnicas | 33, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 850 |
 | **Total** | | **2892** |
 
-<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 18 · Def. Social 16 · Energia 34 · Mana 16 · Iniciativa 1d6+6. Sobram 8 XP. Tece Feitiço e lâmina no mesmo turno; o Ocultismo 5 já daria conta de Artes de nível 5, mas ele preferiu largura a profundidade.</p>
+<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 18 · Def. Social 16 · Energia 34 · Mana 16 · Iniciativa 1d6+6. Sobram 8 XP. Tece Feitiço e lâmina no mesmo turno; com o XP investido poderia ter mergulhado numa Arte de nível 5, mas preferiu largura a profundidade.</p>
 
 ## O mortal-tocado: magia como estudo, não como tier
 
-Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte de nível N basta **Centelha maior que 0** (uma fagulha qualquer) e **Ocultismo ≥ N**. A Centelha é só o interruptor; quem mede a *profundidade* da magia é o Ocultismo. Isso abre um arquétipo que os exemplos anteriores escondem — o feiticeiro **mortal-tocado**, que estudou fundo o que quase não tem por natureza.
+Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte basta **Centelha maior que 0** (uma fagulha qualquer) — a Centelha é só o interruptor, não a medida da profundidade. A profundidade (o nível da Arte) vem do estudo, comprada com XP. Isso abre um arquétipo que os exemplos anteriores escondem — o feiticeiro **mortal-tocado**, que estudou fundo o que quase não tem por natureza.
 
 ### Bram, o Erudito-tocado · Veterano (Centelha 1)
 
-Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe fazer com ela humilha conjuradores de tier maior. Conjura Artes de **nível 5** com Centelha **1**: a mesma profundidade que Veil, um Grande herói de Centelha 4, alcança, porque quem mede a magia é o **Ocultismo** (5 nos dois), não a Centelha. O que os separa é o combustível.
+Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe fazer com ela humilha conjuradores de tier maior. Conjura Artes de **nível 5** com Centelha **1**: a mesma profundidade que Veil, um Grande herói de Centelha 4, alcança, porque a profundidade vem do estudo (ele conjura com **Ocultismo 5**), não da Centelha. O que os separa é o combustível.
 
 | Compra | Detalhe | XP |
 |---|---|:---:|

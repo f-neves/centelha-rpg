@@ -97,7 +97,7 @@ As Habilidades vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. Ca
 #### Saber
 - **Investigação** — Achar pistas, deduzir na hora e reconstituir o que houve. A mais mental-completa. *(Percepção/Raciocínio/Inteligência)*
 - **Conhecimentos Gerais** — Saber acadêmico amplo: história, geografia, lore, teoria. *(Inteligência)*
-- **Ocultismo** — O sobrenatural, a feitiçaria e seus símbolos; exigida pelo Arcano. *(Inteligência/Percepção)*
+- **Ocultismo** — O sobrenatural, a feitiçaria e seus símbolos; a perícia que se rola para conjurar (Ocultismo + Atributo). *(Inteligência/Percepção)*
 - **Medicina** — Tratar feridas, doenças e venenos. *(Inteligência/Percepção)*
 - **Burocracia** — Navegar instituições, leis, registros e logística. *(Inteligência/Raciocínio)*
 - **Sobrevivência** — Caçar, rastrear, orientar-se e durar no ermo. *(Percepção/Inteligência/Vigor)*
