@@ -7,7 +7,7 @@ const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
 const Arte = (a: any) => a;
 ---
-<Base title="O Arcano" largura="wide" descricao="As 18 Artes da feitiçaria, do dardo de fogo ao senhor do tempo.">
+<Base title="O Arcano" largura="wide" descricao="As 21 Artes da feitiçaria, do dardo de fogo ao senhor do tempo.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XIV</p>
   <h1>O Arcano</h1>
   <p class="lead">A feitiçaria é a quarta trilha das Proezas — e a única que de fato <em>quebra</em> as regras do mundo. Ela se aprende em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um.</p>
@@ -62,7 +62,7 @@ const Arte = (a: any) => a;
     <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e dados ao Acúmulo. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
   </section>
 
-  {[['As Seis Artes Elementais', elem], ['As Doze Artes Universais', univ]].map(([titulo, lista]) => (
+  {[['As Seis Artes Elementais', elem], ['As Quinze Artes Universais', univ]].map(([titulo, lista]) => (
     <section>
       <h2 style="text-align:center;border:none">{titulo}</h2>
       <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))">

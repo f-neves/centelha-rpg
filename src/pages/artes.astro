@@ -5,9 +5,9 @@ import { loadData } from '../lib/data';
 const d = await loadData();
 const artes = [...d.artes].sort((a, b) => a.categoria.localeCompare(b.categoria) || a.nome.localeCompare(b.nome));
 ---
-<Base title="Artes do Arcano" largura="wide" descricao="Filtre as 18 Artes por categoria e nível.">
+<Base title="Artes do Arcano" largura="wide" descricao="Filtre as 21 Artes por categoria e nível.">
   <h1>Artes do Arcano</h1>
-  <p class="lead">As 18 linhas de feitiçaria. Filtre por categoria ou busque por efeito. O capítulo completo está em <a href={url('arcano')}>O Arcano</a>.</p>
+  <p class="lead">As 21 linhas de feitiçaria. Filtre por categoria ou busque por efeito. O capítulo completo está em <a href={url('arcano')}>O Arcano</a>.</p>
 
   <div class="filtros panel">
     <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>

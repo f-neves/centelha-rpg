@@ -1042,5 +1042,179 @@
     ],
     "aliases": [],
     "pendente": false
+  },
+  {
+    "id": "ofuscacao",
+    "nome": "Ofuscação",
+    "categoria": "universal",
+    "atributo_conjuracao": "perspicacia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Olhar Escorregadio",
+        "efeito": "o olhar dos outros passa por você; some no meio de qualquer gente enquanto não fizer nada notável",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Máscara",
+        "efeito": "rosto, voz e roupas viram outros aos olhos de quem vê; o toque denuncia (vs Defesa Mental)",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Manto",
+        "efeito": "some da vista mesmo andando e agindo devagar; atacar quebra o manto",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Manto Alheio",
+        "efeito": "esconde também companheiros, montarias e carga ao seu lado",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Ausência",
+        "efeito": "some para todos os sentidos: som, cheiro, rastro e calor; nem magia de busca o acha",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
+        "nome": "Nunca Estive Aqui",
+        "efeito": "a cena inteira o ignora, mesmo enquanto age; quem o viu duvida da própria memória",
+        "custo": {
+          "mana": 6
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "natureza",
+    "nome": "Natureza",
+    "categoria": "universal",
+    "atributo_conjuracao": "percepcao",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Passo Leve",
+        "efeito": "não deixa rastro; mato, brejo e neve não o atrasam nem o denunciam",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Faro Mudo",
+        "efeito": "os bichos não o sentem: cheiro, som e presença passam batidos, e nada foge da sua chegada",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Manto de Folhas",
+        "efeito": "mescla-se ao terreno, parado ou em marcha lenta; a paisagem se fecha em volta de você",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Chamado",
+        "efeito": "chama os animais da região e pede um favor simples: guiar, vigiar, atrasar quem vem atrás",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Voz da Mata",
+        "efeito": "fala com feras e árvores antigas; a mata abre caminho ao grupo e fecha atrás dele",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
+        "nome": "Senhor do Ermo",
+        "efeito": "a região inteira o esconde, o avisa e obedece: nada que ande por ela passa sem você saber",
+        "custo": {
+          "mana": 6
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "metamorfose",
+    "nome": "Metamorfose",
+    "categoria": "universal",
+    "atributo_conjuracao": "vigor",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Garra e Presa",
+        "efeito": "muda uma parte do corpo: garras (arma natural), presas, olhos de bicho, faro apurado",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Couro e Guelra",
+        "efeito": "adapta o corpo ao meio: couro grosso (Absorção), guelras, patas de escalar, calor ou frio não o abatem",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Forma Bestial",
+        "efeito": "vira por inteiro um animal do seu porte ou menor, com os sentidos e o deslocamento dele",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Carne de Elemento",
+        "efeito": "parte do corpo vira elemento (névoa, água, brasa, pedra): golpes atravessam ou queimam quem o segura",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Forma Elemental",
+        "efeito": "o corpo todo vira elemento: passa por frestas, escorre, arma comum não o fere",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
+        "nome": "Mil Formas",
+        "efeito": "troca de forma à vontade e sustenta a mudança por horas, inclusive fera de guerra muito maior ou enxame",
+        "custo": {
+          "mana": 6
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
   }
 ]
