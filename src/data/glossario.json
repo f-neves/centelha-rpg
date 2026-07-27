@@ -93,7 +93,7 @@
     "aliases": [
       "resistência mental"
     ],
-    "definicao": "Muro passivo contra manipulação e poderes mentais: (Integridade × 2) + Vontade + Centelha."
+    "definicao": "Muro passivo contra manipulação e poderes mentais: Integridade + Raciocínio + Vontade + Centelha."
   },
   {
     "id": "defesa-social",
@@ -128,7 +128,7 @@
     "aliases": [
       "reserva de técnicas"
     ],
-    "definicao": "Combustível das Proezas mundanos: (Centelha × 3) + soma das Virtudes + Vontade."
+    "definicao": "Combustível das Proezas mundanas: (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 [arredonda p/ baixo] + Centelha × 2."
   },
   {
     "id": "mana",

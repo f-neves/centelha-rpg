@@ -17,7 +17,7 @@ Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão n
 2. **Orçamento.** Combine com o Mestre: **1700** (iniciante), **2200** (veterano) ou **2900** (herói). Todo o resto sai desse bolo de XP.
 3. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico).
 4. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de perícia). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
-5. **Virtudes.** As quatro, de 1 a 6, elas também alimentam a Energia.
+5. **Virtudes.** As quatro, de 1 a 6.
 6. **Força de Vontade e Aparência.** Suba a Vontade do piso 1 (um herói costuma levá-la a 5+); escolha a Aparência (1–12, normal por volta de 5–7).
 7. **Centelha.** Teto **3** na criação. É cara (×15) e define o seu tier: a maioria começa em 1, quem quer um herói de saga já compra 3 (Herói).
 8. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte.
@@ -66,9 +66,9 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 |---|---|
 | Pontos de Vida | 25 + (Vigor × 3) |
 | Defesa | (Destreza + Habilidade) × 2 + Especialidade + Centelha |
-| Defesa Mental | (Integridade × 2) + Vontade + Centelha |
+| Defesa Mental | Integridade + Raciocínio + Vontade + Centelha |
 | Defesa Social | (Compostura + Temperança + Centelha) × 2 |
-| Energia | (Centelha × 3) + soma das 4 Virtudes + Força de Vontade |
+| Energia | (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 [arredonda p/ baixo] + Centelha × 2 |
 | Mana | (Centelha × 2) + Força de Vontade |
 | Fôlego | 10 + (Vigor × 5) + (Resistência × 4) + (Vontade × 2) |
 | Iniciativa | 1d6 + Raciocínio + Prontidão |

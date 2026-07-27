@@ -64,11 +64,11 @@ export function aparenciaMod(nivel: number) {
   return a.curva[String(nivel)] ?? 0;
 }
 
-/** Energia: (Centelha×3) + soma das Virtudes + Vontade. */
-export function energia(opts: { centelha: number; virtudes: Virtudes; vontade: number }) {
-  const d = regras.derivados.energia;
-  const somaV = opts.virtudes.compaixao + opts.virtudes.conviccao + opts.virtudes.temperanca + opts.virtudes.valor;
-  return opts.centelha * d.centelhaMult + (d.maisSomaVirtudes ? somaV : 0) + (d.maisVontade ? opts.vontade : 0);
+/** Energia: (Vigor + Compostura + Raciocínio + Vontade) / 2 [floor] + Centelha×2. */
+export function energia(opts: { vigor: number; compostura: number; raciocinio: number; vontade: number; centelha: number }) {
+  const d = regras.derivados.energia as { divisor: number; centelhaMult: number; maisVontade?: boolean };
+  const base = opts.vigor + opts.compostura + opts.raciocinio + (d.maisVontade ? opts.vontade : 0);
+  return Math.floor(base / d.divisor) + opts.centelha * d.centelhaMult;
 }
 
 /** Mana: (Centelha×2) + Vontade. */

@@ -584,9 +584,11 @@
       "centelhaMult": 1
     },
     "energia": {
-      "centelhaMult": 3,
-      "maisSomaVirtudes": true,
-      "maisVontade": true
+      "nota": "(Vigor + Compostura + Raciocínio + Vontade) / 2 [arredonda para baixo] + Centelha × 2.",
+      "atributos": ["vigor", "compostura", "raciocinio"],
+      "maisVontade": true,
+      "divisor": 2,
+      "centelhaMult": 2
     },
     "mana": {
       "centelhaMult": 2,

@@ -453,7 +453,7 @@ export function montarFicha(opts: FichaOpts) {
     const defEsq = defesa({ destreza: dex, habilidade: SK('esquiva'), centelha: C }) - penFisica;
     // Bloqueio soma a Defesa das armas/escudos do conjunto EM USO. O escudo não penaliza o próprio Bloqueio.
     const defBlq = defesa({ destreza: dex, habilidade: SK('bloqueio'), centelha: C }) + (act.defSum || 0) - armPen;
-    const pvv = pv(vig), en = energia({ centelha: C, virtudes: virt, vontade: W }), mn = mana({ centelha: C, vontade: W });
+    const pvv = pv(vig), en = energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }), mn = mana({ centelha: C, vontade: W });
     const fo = folego({ vigor: vig, resistencia: SK('resistencia'), vontade: W });
     const soc = defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C });
     const men = defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C });
@@ -469,7 +469,7 @@ export function montarFicha(opts: FichaOpts) {
       r('Defesa Social', soc, `(Compostura ${A('compostura')} + Sociabilidade ${SK('sociabilidade')})×2 + Centelha ${C} = ${soc}`) +
       r('Defesa Mental', men, `Raciocínio ${A('raciocinio')} + Integridade ${integ} + Vontade ${W} + Centelha ${C} = ${men}`) +
       r('Absorção Imp/Cor/Perf', `${soaks.join(' / ')}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, soakCalc) +
-      r('Energia', en, `Centelha ${C}×3 + Virtudes ${virtSum} + Vontade ${W} = ${en}`, true) +
+      r('Energia', en, `(Vigor ${vig} + Compostura ${A('compostura')} + Raciocínio ${A('raciocinio')} + Vontade ${W})÷2 + Centelha ${C}×2 = ${en}`, true) +
       r('Mana', mn, `Centelha ${C}×2 + Vontade ${W} = ${mn}`, true) +
       r('Fôlego', fo, `10 + Vigor ${vig}×5 + Resistência ${SK('resistencia')}×4 + Vontade ${W}×2 = ${fo} · recupera Vigor/Tick`, true) +
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, `1d6 + Raciocínio ${A('raciocinio')} + Prontidão ${SK('prontidao')}`, true) +
