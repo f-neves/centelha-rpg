@@ -160,3 +160,18 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
   em ordem, dom natural do Desperto...). Cada trilha define pré-requisitos próprios para aprender e
   aprofundar Artes (substituindo a antiga trava única de Ocultismo). Rever os exemplos do
   "mortal-tocado" à luz das trilhas quando existirem.
+
+## Economia de XP e balanço (2026-07-27)
+
+- ⏳ **RECALCULAR CUSTO DE XP.** A leva de mudanças recentes mexeu bastante na economia e pede
+  uma revisão dos custos em XP (atributos, perícias, especialidades, Técnicas, Artes) e dos
+  orçamentos dos exemplos. O que mudou e motiva o recálculo:
+  - **Perícias primárias 28 → 24** (4 grupos de 6): Armas de Uma/Duas Mãos fundidas em "Armas";
+    Liderança/Medicina(→Cura)/Energia Espiritual viraram secundárias (custo menor).
+  - **Especialidade** passou a custar **progressivo por nível** (nível×10 / ×5), não mais 10/5 fixos.
+  - **Energia** caiu quase à metade (ex.: Kael 27 → 14) com a nova fórmula sem Virtudes → rever se os
+    **custos de Técnica em Energia** reescalam (mesmo item da memória formulas-derivados-2026-07).
+  - **Feitiçaria** perdeu a trava por Ocultismo: profundidade de Arte agora é só XP (Centelha > 0) →
+    conferir se o custo de Arte (nível×10) ainda equilibra sem o gate.
+  - Rever os **totais de XP dos exemplos** de criacao-de-personagem.md (Kael 1700, Sora, Bram…), que
+    ficaram levemente defasados após mover perícias primárias→secundárias.
