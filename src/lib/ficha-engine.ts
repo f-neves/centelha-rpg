@@ -439,8 +439,6 @@ export function montarFicha(opts: FichaOpts) {
     }).join('');
   }
   function renderDerived() {
-    const virt = { compaixao: VI('compaixao'), conviccao: VI('conviccao'), temperanca: VI('temperanca'), valor: VI('valor') };
-    const virtSum = virt.compaixao + virt.conviccao + virt.temperanca + virt.valor;
     const C = S.centelha, W = S.willpower, integ = SK('integridade');
     const r = (l: string, v: any, calc: string, extra = false) => `<div class="derv${extra ? ' derv-extra' : ''}"><span class="dl">${l}</span><span class="dv" data-calc="${escapeHtml(calc)}">${v}</span></div>`;
     const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);

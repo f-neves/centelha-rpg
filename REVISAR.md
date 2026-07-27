@@ -169,6 +169,17 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
   aprofundar Artes (substituindo a antiga trava única de Ocultismo). Rever os exemplos do
   "mortal-tocado" à luz das trilhas quando existirem.
 
+## Papel das Virtudes (RESOLVIDO 2026-07-27)
+
+- ✅ **Virtudes = régua moral.** Depois que a nova Energia tirou as Virtudes de todo pool, ficou a dúvida
+  do que elas fazem. Decisão: elas seguem em **três frentes** — **Resistir** (Virtude + Atributo vs medo/
+  provocação/tortura/crueldade), **Transcender/Canalizar** (1×/cena, soma o valor à rolagem) e **Conduta**
+  (nova): as Virtudes são a régua moral (condutas por nível já em `virtudes.json`); **agir fiel à régua num
+  momento que custa** devolve **1 de Força de Vontade** (ou outro alívio, a critério do Mestre). Corta dos
+  dois lados (Virtude alta e baixa); teimar contra a régua sob pressão pode custar Vontade. Não voltaram a
+  alimentar pool. Feito em `aparencia-virtudes-vontade.md` (3 frentes + callout "A régua moral" + linha de
+  recuperação de Vontade) e removido o código morto `virtSum`/`virt` do `ficha-engine.ts`.
+
 ## Economia de XP e balanço (2026-07-27)
 
 - ✅ **CUSTOS DE XP RECALIBRADOS (2026-07-27, commit a seguir).** Ferramenta de calibração:
