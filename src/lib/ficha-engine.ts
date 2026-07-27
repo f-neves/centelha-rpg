@@ -304,10 +304,17 @@ export function montarFicha(opts: FichaOpts) {
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   // ===== Equipamento: conjuntos de armas (mão hábil / inábil) =====
-  const IMPROV = { nome: 'Improvisado', dado: 1, acerto: 0, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
+  const IMPROV = { nome: 'Improvisado', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
+  const clampImprov = (v: any, lo: number, hi: number, dflt: number) => { const n = Number(v); return Number.isFinite(n) ? Math.max(lo, Math.min(hi, Math.round(n))) : dflt; };
   function itemDe(slot: any) {
     const ref = (slot && slot.ref) || 'nada';
-    if (ref === 'c') { const w = { ...IMPROV, nome: (slot && slot.nome) || 'Improvisado' }; return { kind: 'custom', nome: w.nome, def: 0, pen: 0, w }; }
+    if (ref === 'c') {
+      const w = { ...IMPROV, nome: (slot && slot.nome) || 'Improvisado',
+        dado: clampImprov(slot?.dado, 1, 2, IMPROV.dado),
+        danoBonus: clampImprov(slot?.danoBonus, -2, 2, IMPROV.danoBonus),
+        acerto: clampImprov(slot?.acerto, -6, 6, IMPROV.acerto) };
+      return { kind: 'custom', nome: w.nome, def: 0, pen: 0, w };
+    }
     if (ref.startsWith('e:')) { const s = ESCUDO[ref.slice(2)]; if (s) return { kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, habilProjetil: !!s.habilProjetil }; }
     if (ref.startsWith('a:')) { const w = ARMA[ref.slice(2)]; if (w) return { kind: 'arma', nome: w.nome, def: w.defesaArma || 0, pen: 0, w }; }
     return { kind: 'nada', nome: '—', def: 0, pen: 0 };
@@ -327,15 +334,17 @@ export function montarFicha(opts: FichaOpts) {
     const dist = (atk.tags || []).includes('distância');
     const fm = regras.derivados.danoForca as any;
     const db = atk.danoBonus || 0;
+    const capF = atk.forcaCap != null ? Math.min(forca, atk.forcaCap) : forca;
     const versoes: { rot: string; ap: number }[] = [];
     if (!dist && itVers(habil)) {
       versoes.push({ rot: '1 mão', ap: db + forca * (atk.forcaMult ?? fm.umaMao) });
       versoes.push({ rot: '2 mãos', ap: db + forca * fm.duasMaos });
     } else {
-      const mult = dist ? 1 : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
-      versoes.push({ rot: '', ap: db + forca * mult });
+      const mult = dist ? (atk.forcaMult ?? 1) : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
+      versoes.push({ rot: '', ap: db + capF * mult });
     }
-    return { habil, inabil, atk, dados, bonus, flat, dist, versoes, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
+    const reqForca = (atk.forcaMin && forca < atk.forcaMin) ? atk.forcaMin : 0;
+    return { habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
   }
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
   function optsItens(sel: string) {
@@ -349,14 +358,26 @@ export function montarFicha(opts: FichaOpts) {
       const c = calcConj(cj); const trava = it2H(c.habil);
       const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
       const dano = c.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
-      const custom = (hand: 'habil' | 'inabil') => cj[hand]?.ref === 'c' ? `<input class="conj-nome" data-conj-nome="${i}:${hand}" value="${escapeHtml(cj[hand].nome || '')}" placeholder="nome do item"${ro ? ' disabled' : ''} />` : '';
+      const custom = (hand: 'habil' | 'inabil') => {
+        const s = cj[hand];
+        if (s?.ref !== 'c') return '';
+        const d = (dv: any, def: number) => (dv ?? def);
+        const dis = ro ? ' disabled' : '';
+        return `<input class="conj-nome" data-conj-nome="${i}:${hand}" value="${escapeHtml(s.nome || '')}" placeholder="nome do item"${dis} />
+          <div class="conj-improv">
+            <label>Dado<select data-conj-improv="${i}:${hand}:dado"${dis}><option value="1"${d(s.dado,1)==1?' selected':''}>1d6</option><option value="2"${d(s.dado,1)==2?' selected':''}>2d6</option></select></label>
+            <label>Bônus<select data-conj-improv="${i}:${hand}:danoBonus"${dis}>${[-2,-1,0,1,2].map(v=>`<option value="${v}"${d(s.danoBonus,0)==v?' selected':''}>${v>=0?'+'+v:'−'+Math.abs(v)}</option>`).join('')}</select></label>
+            <label>Acerto<input type="number" data-conj-improv="${i}:${hand}:acerto" value="${d(s.acerto,-2)}" min="-6" max="6" step="1"${dis} /></label>
+          </div>
+          <span class="conj-improv-nota muted">Frágil: costuma quebrar no 1º ou 2º golpe.</span>`;
+      };
       return `<div class="conjunto${cj.ativo ? ' ativo' : ''}">
         <div class="conj-top"><label class="conj-uso"><input type="radio" name="conj-ativo" data-conj-uso="${i}"${cj.ativo ? ' checked' : ''}${ro ? ' disabled' : ''}/> em uso</label>${(S.conjuntos.length > 1 && !ro) ? `<button class="conj-rm" data-conj-rm="${i}" title="Remover" aria-label="Remover">×</button>` : ''}</div>
         <div class="conj-hands">
           <label>Mão hábil<select data-conj-sel="${i}:habil"${ro ? ' disabled' : ''}>${optsItens(cj.habil?.ref || 'a:desarmado')}</select>${custom('habil')}</label>
           <label>Mão inábil<select data-conj-sel="${i}:inabil"${(ro || trava) ? ' disabled' : ''}>${optsItens(trava ? 'nada' : (cj.inabil?.ref || 'nada'))}</select>${trava ? '' : custom('inabil')}</label>
         </div>
-        <div class="conj-stats"><b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}</div>
+        <div class="conj-stats"><b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}${c.reqForca ? ` · <span class="conj-req">requer Força ${c.reqForca}</span>` : ''}</div>
       </div>`;
     }).join('');
   }
@@ -623,12 +644,20 @@ export function montarFicha(opts: FichaOpts) {
       renderConjuntos(); renderDerived(); renderCombate(); save(); return;
     }
     const uso = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-uso]');
-    if (uso) { const i = +uso.dataset.conjUso!; S.conjuntos.forEach((c: any, j: number) => (c.ativo = j === i)); renderConjuntos(); renderDerived(); renderCombate(); save(); }
+    if (uso) { const i = +uso.dataset.conjUso!; S.conjuntos.forEach((c: any, j: number) => (c.ativo = j === i)); renderConjuntos(); renderDerived(); renderCombate(); save(); return; }
+    const imp = (e.target as HTMLSelectElement).closest<HTMLSelectElement>('select[data-conj-improv]');
+    if (imp) {
+      const [i, hand, campo] = imp.dataset.conjImprov!.split(':');
+      (S.conjuntos[+i][hand] ||= { ref: 'c' })[campo] = Number(imp.value);
+      renderConjuntos(); renderDerived(); renderCombate(); save();
+    }
   });
   el('eq-conjuntos').addEventListener('input', (e) => {
     if (opts.readOnly) return;
     const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-nome]');
-    if (inp) { const [i, hand] = inp.dataset.conjNome!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' }).nome = inp.value; renderCombate(); save(); }
+    if (inp) { const [i, hand] = inp.dataset.conjNome!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' }).nome = inp.value; renderCombate(); save(); return; }
+    const imp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-improv]');
+    if (imp) { const [i, hand, campo] = imp.dataset.conjImprov!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' })[campo] = Number(imp.value); renderDerived(); renderCombate(); save(); }
   });
   el('eq-conjuntos').addEventListener('click', (e) => {
     if (opts.readOnly) return;

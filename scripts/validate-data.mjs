@@ -39,6 +39,8 @@ const S = {
     id: z.string(), nome: z.string(), classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
     atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
     defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
+    forcaMult: z.number().optional(), forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
+    alcance: z.enum(['curto', 'medio', 'longo']).optional(),
     tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
     modos: z.array(z.object({ tipo: z.enum(['corte', 'perfurante', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
     tags: z.array(z.string()), notas: z.string(),

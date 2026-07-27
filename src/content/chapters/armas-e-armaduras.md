@@ -14,7 +14,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele entra no [Combate](/regras/combate):
 
 - **Speed** — quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
-- **Dano** — o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste **1d6+2**, distância/arremesso **1d6 a 1d6+2**.
+- **Dano** — o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste **1d6+2**, arremesso **1d6 a 1d6+2**. **Arcos** somam Força (curto até +3, longo inteira, composto ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
 - **Acerto** — um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)** — quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos** — uma ou duas; algumas são *Versáteis* e servem nas duas formas.
@@ -37,7 +37,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 | Média | 6 | 1d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
 | Pesada | 7 | 2d6 | +0 | −2 | 2 | dano que vence armadura — mas lenta e te expõe, com guarda baixa |
 | Haste | 6 | 1d6+2 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
-| Distância | 6 | 1d6 a 1d6+2 | +1 | — | 2 | domina antes do contato; depende de munição |
+| Distância | 6–7 | 1d6 (+Força) / 1d6+2 a +8 | +1 | — | 2 | domina antes do contato; arco soma Força, besta vem embutida; depende de munição |
 | Arremesso | 4–6 | 1d6 a 1d6+2 | +1 | — | 1 | lançar com a mão: alcance curto, uma mão, projétil recuperável |
 
 </div>
@@ -68,8 +68,12 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 | Alabarda | Haste | ★C · ★P(N1) · ★I | 6 | 1d6+2 | +1 | +2 | 2 | Alcance, pesada (lenta). Três modos principais num cabo; cobre tudo |
 | Montante | Pesada | ★C · P(N1) · I | 7 | 2d6 | +0 | −2 | 2 | Espadão; dano alto, guarda baixa — te expõe entre os golpes |
 | Martelo de Guerra | Pesada | ★I · P(N2) | 7 | 2d6 | +0 | −2 | 2 | Esmaga placas; o bico fura quando precisa. Pouca defesa |
-| Arco | Distância | ★P(N1) | 6 | 1d6+1 | +1 | 0 | 2 | Munição, distância. Mira pela Percepção; soma Força; resvala na placa |
-| Besta Pesada | Distância | ★P(N2) | 6 | 1d6+2 | +1 | 0 | 2 | Munição, recarga, distância. Mira pela Percepção; o virote fura até a placa |
+| Arco Curto | Distância | ★P(N1) | 6 | 1d6 | +1 | 0 | 2 | Munição, distância. Alcance curto; soma Força **até +3**; resvala na placa |
+| Arco Longo | Distância | ★P(N1) | 6 | 1d6 | +1 | 0 | 2 | Munição, distância. Alcance longo; soma **Força inteira**; resvala na placa |
+| Arco Composto | Distância | ★P(N1) | 6 | 1d6 | +1 | 0 | 2 | Munição, distância, **caro**. Alcance longo; **requer Força 4**, soma **Força×2**; resvala na placa |
+| Besta Pequena | Distância | ★P(N1) | 6 | 1d6+2 | +1 | 0 | 2 | Munição, recarga, distância. Não usa Força (mecanismo); alcance médio |
+| Besta Média | Distância | ★P(N2) | 6 | 1d6+4 | +1 | 0 | 2 | Munição, recarga, distância. Não usa Força; o virote (N2) fura até a malha, resvala na placa |
+| Besta Grande | Distância | ★P(N3) | 7 | 1d6+8 | +1 | 0 | 2 | Munição, recarga, pesada. Arbalesta; o virote pesado (N3) **fura a placa completa** |
 | Adaga de Arremesso | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 0 | 1 | Ágil, munição. Facas às dezenas |
 | Machado de Arremesso | Arremesso | ★C · I | 5 | 1d6+2 | +1 | 0 | 1 | Gira no ar; golpe forte e curto |
 | Azagaia | Arremesso | ★P(N1) | 5 | 1d6+1 | +1 | 0 | 1 | Javelina: fura à distância ou na estocada em punho |
@@ -130,9 +134,9 @@ Contra **projéteis rápidos** (flecha, virote, bala de funda, dardo), o escudo 
 A pedra-papel-tesoura sai dos números acima:
 
 - **Placa completa × Corte** = 11 de Absorção: uma espada (3d6+10 no topo) faz **~7**; uma lâmina leve, quase nada. **Ninguém corta placa de leve.**
-- **Placa × Perfurante nível 0–2** (flecha, lança, adaga, besta, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão.
-- **Placa × Impacto** (maça, martelo) = só 6 de Absorção: o malho **passa** (a vulnerabilidade nunca resolvida — a principal via contra placa).
-- **Placa × Perfuração nível 3+** (cerco, magia, armas épicas) = o gate abre — e aí a placa só tem **4** de Absorção de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
+- **Placa × Perfurante nível 0–2** (flecha, arco, lança, adaga, besta leve/média, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão.
+- **Placa × Impacto** (maça, martelo) = só 6 de Absorção: o malho **passa** (a vulnerabilidade nunca resolvida, a principal via contra placa).
+- **Placa × Perfuração nível 3+** (besta grande/arbalesta, cerco, magia, armas épicas) = o gate abre, e aí a placa só tem **4** de Absorção de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
 - Sem armadura, o **corte** brilha; a **malha** mata o corte mas cede ao impacto; cada armadura tem seu furo.
 
 <div class="callout"><span class="lbl">Como derrotar cada armadura</span>O cavaleiro de placas é quase intocável por gume, flecha e estocada, mas um camponês com um malho (Impacto) ainda o amassa — e três deles o derrubam pela lentidão. Contra o topo da placa, o caminho é Impacto, Perfuração nível 3+ (cerco/magia), Proeza ou feitiçaria.</div>

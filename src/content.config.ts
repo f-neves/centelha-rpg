@@ -115,6 +115,8 @@ const armas = defineCollection({
     defesaArma: z.number().int(),
     maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
     forcaMult: z.number().optional(),
+    forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
+    alcance: z.enum(['curto', 'medio', 'longo']).optional(),
     tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
     modos: z.array(z.object({
       tipo: z.enum(['corte', 'perfurante', 'impacto']),

@@ -331,8 +331,8 @@
     "danoBonus": 0
   },
   {
-    "id": "arco",
-    "nome": "Arco",
+    "id": "arco-curto",
+    "nome": "Arco Curto",
     "classe": "distancia",
     "atrib": "percepcao",
     "pericia": "atirador",
@@ -342,6 +342,9 @@
     "maos": 2,
     "ticks": 6,
     "folego": 20,
+    "forcaMult": 1,
+    "forcaCap": 3,
+    "alcance": "curto",
     "tipoDano": "perfurante",
     "pen": 1,
     "modos": [
@@ -356,12 +359,12 @@
       "distância",
       "projétil veloz"
     ],
-    "notas": "Precisão à distância; gasta munição. Perfura couro e malha (N1), resvala na placa.",
-    "danoBonus": 1
+    "notas": "Pequeno e fácil de guardar; alcance curto. Soma Força até +3 (a haste curta não aguenta mais tração). Perfura couro e malha (N1), resvala na placa.",
+    "danoBonus": 0
   },
   {
-    "id": "besta-pesada",
-    "nome": "Besta Pesada",
+    "id": "arco-longo",
+    "nome": "Arco Longo",
     "classe": "distancia",
     "atrib": "percepcao",
     "pericia": "atirador",
@@ -371,6 +374,104 @@
     "maos": 2,
     "ticks": 6,
     "folego": 20,
+    "forcaMult": 1,
+    "alcance": "longo",
+    "tipoDano": "perfurante",
+    "pen": 1,
+    "modos": [
+      {
+        "tipo": "perfurante",
+        "perf": 1,
+        "principal": true
+      }
+    ],
+    "tags": [
+      "munição",
+      "distância",
+      "projétil veloz"
+    ],
+    "notas": "Grande, de alcance longo. Soma a Força inteira ao dano. Perfura couro e malha (N1), resvala na placa.",
+    "danoBonus": 0
+  },
+  {
+    "id": "arco-composto",
+    "nome": "Arco Composto",
+    "classe": "distancia",
+    "atrib": "percepcao",
+    "pericia": "atirador",
+    "dado": 1,
+    "acerto": 1,
+    "defesaArma": 0,
+    "maos": 2,
+    "ticks": 6,
+    "folego": 20,
+    "forcaMult": 2,
+    "forcaMin": 4,
+    "alcance": "longo",
+    "tipoDano": "perfurante",
+    "pen": 1,
+    "modos": [
+      {
+        "tipo": "perfurante",
+        "perf": 1,
+        "principal": true
+      }
+    ],
+    "tags": [
+      "munição",
+      "distância",
+      "projétil veloz",
+      "caro"
+    ],
+    "notas": "Laminado de chifre e tendão: exige Força 4 para armar, e soma Força×2 ao dano. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
+    "danoBonus": 0
+  },
+  {
+    "id": "besta-pequena",
+    "nome": "Besta Pequena",
+    "classe": "distancia",
+    "atrib": "percepcao",
+    "pericia": "atirador",
+    "dado": 1,
+    "acerto": 1,
+    "defesaArma": 0,
+    "maos": 2,
+    "ticks": 6,
+    "folego": 20,
+    "forcaMult": 0,
+    "alcance": "medio",
+    "tipoDano": "perfurante",
+    "pen": 1,
+    "modos": [
+      {
+        "tipo": "perfurante",
+        "perf": 1,
+        "principal": true
+      }
+    ],
+    "tags": [
+      "munição",
+      "recarga",
+      "distância",
+      "projétil veloz"
+    ],
+    "notas": "Mira e dispara sem Força (mecanismo faz a tração); requer recarga. Alcance médio. Perfura couro e malha (N1).",
+    "danoBonus": 2
+  },
+  {
+    "id": "besta-media",
+    "nome": "Besta Média",
+    "classe": "distancia",
+    "atrib": "percepcao",
+    "pericia": "atirador",
+    "dado": 1,
+    "acerto": 1,
+    "defesaArma": 0,
+    "maos": 2,
+    "ticks": 6,
+    "folego": 20,
+    "forcaMult": 0,
+    "alcance": "longo",
     "tipoDano": "perfurante",
     "pen": 2,
     "modos": [
@@ -386,8 +487,41 @@
       "distância",
       "projétil veloz"
     ],
-    "notas": "O virote (N2) fura até a placa; recarga lenta. A resposta de longe contra cavaleiro.",
-    "danoBonus": 2
+    "notas": "O virote (N2) fura a malha e resvala só na placa; recarga lenta. Alcance longo. A resposta de longe contra cavaleiro.",
+    "danoBonus": 4
+  },
+  {
+    "id": "besta-grande",
+    "nome": "Besta Grande",
+    "classe": "distancia",
+    "atrib": "percepcao",
+    "pericia": "atirador",
+    "dado": 1,
+    "acerto": 1,
+    "defesaArma": 0,
+    "maos": 2,
+    "ticks": 7,
+    "folego": 20,
+    "forcaMult": 0,
+    "alcance": "longo",
+    "tipoDano": "perfurante",
+    "pen": 3,
+    "modos": [
+      {
+        "tipo": "perfurante",
+        "perf": 3,
+        "principal": true
+      }
+    ],
+    "tags": [
+      "munição",
+      "recarga",
+      "distância",
+      "projétil veloz",
+      "pesada"
+    ],
+    "notas": "Arbalesta de manivela: o virote pesado (N3) fura até a placa completa. Recarga muito lenta, alcance longo. A arma que encerrou a era do cavaleiro.",
+    "danoBonus": 8
   },
   {
     "id": "adaga-de-arremesso",

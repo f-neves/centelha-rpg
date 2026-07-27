@@ -59,8 +59,9 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const dist = (w.tags || []).includes('distância');
   const fm = regras.derivados.danoForca as { umaMao: number; duasMaos: number };
   const versatil = (w.tags || []).includes('versátil');
-  const mult = dist ? 1 : (w.maos === 2 ? (w.forcaMult ?? fm.duasMaos) : (versatil && inabilVazio ? fm.duasMaos : (w.forcaMult ?? fm.umaMao)));
-  const forcaAp = (w.danoBonus || 0) + forca * mult;
+  const capF = w.forcaCap != null ? Math.min(forca, w.forcaCap) : forca;
+  const mult = dist ? (w.forcaMult ?? 1) : (w.maos === 2 ? (w.forcaMult ?? fm.duasMaos) : (versatil && inabilVazio ? fm.duasMaos : (w.forcaMult ?? fm.umaMao)));
+  const forcaAp = (w.danoBonus || 0) + capF * mult;
   const modos = ((w.modos ?? [{ tipo: w.tipoDano, principal: true }]) as any[]).slice()
     .sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
   const sigla = MODO_SIGLA[(modos[0]?.tipo) as keyof typeof MODO_SIGLA] || '';

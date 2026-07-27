@@ -197,6 +197,11 @@ import RoladorDados from './RoladorDados.astro';
   .conj-nome { margin-top: .25rem; font-family: 'EB Garamond'; font-size: .92rem; color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 5px; padding: .25rem .4rem; }
   .conj-stats { margin-top: .45rem; font-size: .92rem; color: var(--ink); }
   .conj-stats b { color: var(--accent-strong); font-family: 'Cinzel'; font-size: .78rem; }
+  .conj-req { color: #b3401f; font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; letter-spacing: .03em; }
+  .conj-improv { display: flex; gap: .5rem; margin-top: .3rem; flex-wrap: wrap; }
+  .conj-improv label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: .62rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .03em; gap: .15rem; }
+  .conj-improv select, .conj-improv input { font-family: 'EB Garamond'; font-size: .88rem; color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 5px; padding: .2rem .35rem; width: 4.2rem; }
+  .conj-improv-nota { display: block; margin-top: .25rem; font-size: .78rem; font-style: italic; }
   #add-conjunto { margin-bottom: .8rem; }
   .calcpop { position: absolute; z-index: 60; max-width: 280px; background: var(--panel); color: var(--ink); border: 1px solid var(--accent); border-radius: 6px; padding: .45rem .6rem; box-shadow: 0 4px 14px var(--shadow); font-size: .84rem; line-height: 1.4; font-family: 'EB Garamond'; }
   .derv .dv[data-calc] { cursor: help; border-bottom: 1px dotted var(--accent-soft); }

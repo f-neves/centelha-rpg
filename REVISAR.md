@@ -126,3 +126,17 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
   (`COURACA_OVERRIDE`, hoje só o Roc). Efeito: soldado/arqueiro comum cravam 0 a partir de
   Imenso; heróis (montante, Proeza, Impacto) ainda arranham; Colossal exige Centelha/magia.
   Documentado no cap. Combate ("Couraça de Porte"). Commit da couraça abaixo.
+
+## Design a decidir — Ataques múltiplos e mão inábil (2026-07-26)
+
+- **Revisar a regra de ataques múltiplos.** Hoje "atacar várias vezes" é só a linha do
+  tempo de **Ticks/Speed**: cada golpe custa Speed e o próximo sai quando o relógio volta
+  para você; não existe uma regra de "dividir o pool" para dois ataques numa ação. Rever se
+  vai continuar assim (só Ticks), ou se entra uma regra explícita (ex.: um ataque extra por
+  custo de pool/Fôlego, ou por Técnica), e como isso conversa com criaturas de muitos membros
+  (que já "atacam várias vezes" em vez de somar Força).
+- **Mão inábil vira segundo ataque (aprovado).** Hoje a arma da mão inábil (empunhadura dupla)
+  só soma **+1 no Bloqueio** (Defesa), não ataca. Decisão: **pode virar um segundo ataque**.
+  Integrar com a regra de ataques múltiplos acima quando ela for fechada (penalidade do golpe
+  inábil, custo de Ticks/pool, interação com a Defesa que a arma dava). Implementar na ficha
+  (conjunto mão hábil/inábil) só depois de travar a regra.
