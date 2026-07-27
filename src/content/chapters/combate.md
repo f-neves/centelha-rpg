@@ -62,7 +62,7 @@ Via de regra, **cada ação rende um só ataque** — uma arma, um golpe. Ningu�
 
 Ao desferir os dois golpes:
 
-- a **mão hábil** ataca a **−1d6** e a **mão inábil** a **−2d6** (coordenar dois gumes tira precisão; a mão fraca tira mais);
+- a **mão hábil** ataca a **−1d6** e a **mão inábil** a **−2d6** (coordenar dois gumes tira precisão; a mão fraca tira mais). A Técnica **Ambidestria** (Dança da Lâmina) apaga o dado extra da mão fraca: com ela, a inábil também sai a −1d6;
 - cada golpe rola o próprio acerto e o próprio dano, com a arma daquela mão (a Força soma uma vez em cada);
 - podem cair no **mesmo alvo** ou em **alvos diferentes**, um por mão.
 

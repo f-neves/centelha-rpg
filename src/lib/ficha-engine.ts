@@ -357,11 +357,13 @@ export function montarFicha(opts: FichaOpts) {
       const distI = (inabilArma.tags || []).includes('distância');
       const capFI = inabilArma.forcaCap != null ? Math.min(forca, inabilArma.forcaCap) : forca;
       const multI = distI ? (inabilArma.forcaMult ?? 1) : (inabilArma.forcaMult ?? fm.umaMao);
+      const ambi = !!(S.tech && S.tech['ambidestria']);
       dupla = {
         habilAp: versoes[0].ap,
         inabilDados: Math.floor(somaI / 2), inabilBonus: somaI % 2 === 1 ? 2 : 0,
         inabilFlat: (inabilArma.acerto || 0) + ataqueCentelha(C) - armorPen,
         inabilDado: inabilArma.dado, inabilAp: (inabilArma.danoBonus || 0) + capFI * multI,
+        inabilPen: ambi ? 1 : 2, ambi,
       };
     }
     return { habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
@@ -381,7 +383,7 @@ export function montarFicha(opts: FichaOpts) {
       const p0 = (n: number) => Math.max(0, n);
       const pool = (d: number, b: number, f: number) => `${p0(d)}d6${b ? '+2' : ''}${f ? ' ' + sgn(f) : ''}`;
       const dm = (dado: number, ap: number) => `${dado}d6${ap ? ' ' + sgn(ap) : ''}`;
-      const dupla = c.dupla ? `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −2d6: ${pool(c.dupla.inabilDados - 2, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno</span></div>` : '';
+      const dupla = c.dupla ? `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −${c.dupla.inabilPen}d6: ${pool(c.dupla.inabilDados - c.dupla.inabilPen, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno${c.dupla.ambi ? ' · Ambidestria' : ''}</span></div>` : '';
       const custom = (hand: 'habil' | 'inabil') => {
         const s = cj[hand];
         if (s?.ref !== 'c') return '';
@@ -512,7 +514,7 @@ export function montarFicha(opts: FichaOpts) {
     el('xpSpent').textContent = String(total);
     const rem = (S.budget || 0) - total, re = el('xpRem'); re.textContent = String(rem); re.className = 'rem ' + (rem < 0 ? 'neg' : 'ok');
     el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '') + (xr ? ` · Raça ${xr}` : '');
-    renderDerived(); renderCombate(); save();
+    renderConjuntos(); renderDerived(); renderCombate(); save();
   }
 
   // ---- interações ----

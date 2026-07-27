@@ -7471,6 +7471,25 @@
     "efeito": "estado"
   },
   {
+    "id": "ambidestria",
+    "nome": "Ambidestria",
+    "caminho": "danca-da-lamina",
+    "atributo": "destreza",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "postura-fluida"
+    ],
+    "aliases": [
+      "duas lâminas",
+      "mão trocada"
+    ],
+    "texto": "Suas duas mãos golpeiam como uma só. Na empunhadura dupla, o ataque da mão inábil deixa de sofrer o dado extra: em vez de −2d6, sai a −1d6, igual à mão hábil. A guarda ainda cai por cada golpe (dois ataques = −4 até seu turno); o que a Ambidestria apaga é a desvantagem da mão fraca, não a exposição.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "bonus"
+  },
+  {
     "id": "corpo-de-gato",
     "nome": "Corpo de Gato",
     "caminho": "gato",
