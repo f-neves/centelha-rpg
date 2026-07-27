@@ -103,7 +103,7 @@ A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impac
 | Lamelar | média | 3 | 6 | 3 / N 1 | −2 |
 | Placa de transição | pesada | 4 | 8 | 3 / N 2 | −3 |
 | Placa de munição | pesada | 4 | 7 | 4 / N 2 | −3 |
-| Placa completa | pesada | 6 | 9 | 4 / N 3 | −3 |
+| Placa completa | pesada | 4 | 8 | 4 / N 3 | −3 |
 
 </div>
 
@@ -133,9 +133,9 @@ Contra **projéteis rápidos** (flecha, virote, bala de funda, dardo), o escudo 
 
 A pedra-papel-tesoura sai dos números acima:
 
-- **Placa completa × Corte** = 11 de Absorção: uma espada (3d6+10 no topo) faz **~7**; uma lâmina leve, quase nada. **Ninguém corta placa de leve.**
-- **Placa × Perfurante nível 0–2** (flecha, arco, lança, adaga, besta leve/média, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão.
-- **Placa × Impacto** (maça, martelo) = só 6 de Absorção: o malho **passa** (a vulnerabilidade nunca resolvida, a principal via contra placa).
+- **Placa completa × Corte** = 8 de Absorção (10 no cavaleiro, com o corpo): uma espada de topo abre poucos pontos; uma lâmina leve, quase nada. **Ninguém corta placa de leve** — mas um golpe forte ainda arranha.
+- **Placa × Perfurante nível 0–2** (flecha, arco, lança, adaga, besta leve/média, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão perfurante.
+- **Placa × Impacto** (maça, martelo) = só 4 de Absorção: o malho **passa** (a vulnerabilidade nunca resolvida, a principal via contra placa; a maça é o abre-lata de uma mão, o martelo de duas).
 - **Placa × Perfuração nível 3+** (besta grande/arbalesta, cerco, magia, armas épicas) = o gate abre, e aí a placa só tem **4** de Absorção de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
 - Sem armadura, o **corte** brilha; a **malha** mata o corte mas cede ao impacto; cada armadura tem seu furo.
 
