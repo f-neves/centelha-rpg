@@ -85,9 +85,9 @@
     </div>
     <div class="panel grp">
       <h3>Traços</h3>
-      <div class="row"><span class="nm">Centelha <span class="muted">(0–6)</span></span><input type="number" id="t-centelha" min="0" max="6" value="0"><span class="xp" id="xp-centelha">0</span></div>
-      <div class="row"><span class="nm">Força de Vontade <span class="muted">(1–12)</span></span><input type="number" id="t-vontade" min="1" max="12" value="1"><span class="xp" id="xp-vontade">0</span></div>
-      <div class="row"><span class="nm">Aparência <span class="muted">(1–12)</span></span><input type="number" id="t-aparencia" min="1" max="12" value="1"><span class="xp" id="xp-aparencia">0</span></div>
+      <div class="row"><span class="nm">Centelha <span class="muted">(0–6)</span></span><input type="number" id="t-centelha" min="0" value="0"><span class="xp" id="xp-centelha">0</span></div>
+      <div class="row"><span class="nm">Força de Vontade <span class="muted">(1–12)</span></span><input type="number" id="t-vontade" min="1" value="1"><span class="xp" id="xp-vontade">0</span></div>
+      <div class="row"><span class="nm">Aparência <span class="muted">(1–12)</span></span><input type="number" id="t-aparencia" min="1" value="1"><span class="xp" id="xp-aparencia">0</span></div>
       <h3 style="margin-top:.6rem">Virtudes <span class="muted" style="font-weight:400">(1–6)</span></h3>
       <div id="virtues"></div>
       <h3 style="margin-top:.6rem">Raça</h3>
@@ -165,8 +165,8 @@ function save(){ localStorage.setItem('ficha-xp', JSON.stringify(S)); }
 function load(){ try{ return JSON.parse(localStorage.getItem('ficha-xp')||'null'); }catch(e){ return null; } }
 
 // ---- render estrutura estática ----
-function num(val, min, max, on){ const i=document.createElement('input'); i.type='number'; i.min=min; i.max=max; i.value=val;
-  i.addEventListener('input',()=>{ let v=parseInt(i.value); if(isNaN(v)) v=min; v=Math.max(min,Math.min(max,v)); on(v); }); return i; }
+function num(val, min, max, on){ const i=document.createElement('input'); i.type='number'; i.min=min; i.value=val;
+  i.addEventListener('input',()=>{ let v=parseInt(i.value); if(isNaN(v)) v=min; v=Math.max(min,v); on(v); }); return i; }
 
 function buildCostTable(){
   const tb=$('#cost-table'); tb.innerHTML='';
@@ -280,7 +280,7 @@ $('#t-vontade').value=S.vontade; $('#t-vontade').addEventListener('input',e=>{ S
 $('#t-aparencia').value=S.aparencia; $('#t-aparencia').addEventListener('input',e=>{ S.aparencia=clamp(e.target,1,12); recompute(); save(); });
 $('#budget').value=S.budget; $('#budget').addEventListener('input',e=>{ S.budget=parseInt(e.target.value)||0; recompute(); save(); });
 $('#reset-costs').addEventListener('click',()=>{ S.costs={...DEFAULT_COSTS}; buildCostTable(); recompute(); save(); });
-function clamp(el,min,max){ let v=parseInt(el.value); if(isNaN(v))v=min; v=Math.max(min,Math.min(max,v)); el.value=v; return v; }
+function clamp(el,min,max){ let v=parseInt(el.value); if(isNaN(v))v=min; v=Math.max(min,v); el.value=v; return v; }
 recompute();
 </script>
 </body>
