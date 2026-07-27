@@ -42,15 +42,15 @@ Cada ação tem uma **Speed** — quantos Ticks ela custa antes de você poder a
 
 ## O ataque: acertar e a Margem
 
-Para atacar, monte o pool de **Atributo da arma + Habilidade**, some o **Acerto da Arma**, aplique Especialidade, Stunts e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
+Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Especialidade, Stunts e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
 
-<p class="formula">Ataque = (Atributo da arma + Habilidade + Especialidade) + Arma + Centelha×2</p>
+<p class="formula">Ataque = (Atributo + Habilidade)/2 + Especialidade + Arma + Centelha</p>
 
-<p class="muted">O <strong>Atributo da arma</strong> é a Destreza na maioria das armas, mas a Força nos golpes brutais (e a Percepção no tiro com arco) — cada arma diz qual usa.</p>
+<p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca — normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, sempre Destreza; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
 
 A Defesa é um valor **fixo** e **passivo** — o alvo não rola para se defender:
 
-<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha×2</p>
+<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha</p>
 
 Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha **1 Margem**, e cada Margem vira **+1d6 de dano**. Um acerto raspando arranha; um acerto folgado despedaça.
 

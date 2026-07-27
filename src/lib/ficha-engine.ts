@@ -13,6 +13,7 @@ import ARMA_D from '../data/armas.json';
 import ARMADURA_D from '../data/armaduras.json';
 import ESCUDO_D from '../data/escudos.json';
 import RACA_D from '../data/racas.json';
+import { uiConfirmar, uiErro, uiFormulario } from './ui-dialog';
 
 export interface FichaOpts {
   /** Carrega o estado inicial (objeto S) ou null para começar do zero. Pode ser assíncrono. */
@@ -325,6 +326,13 @@ export function montarFicha(opts: FichaOpts) {
     el('artes').innerHTML = col3(ARTE_D as any[], card);
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
+  // Atributo do ACERTO por perícia: tiro = Percepção; arremesso = Destreza; corpo a corpo (armas/punhos) = o maior entre Destreza e Força.
+  const ataqueAtrib = (w: any): number => {
+    const per = w?.pericia;
+    if (per === 'atirador') return A('percepcao');
+    if (per === 'arremesso') return A('destreza');
+    return Math.max(A('destreza'), A('forca'));
+  };
   // ===== Equipamento: conjuntos de armas (mão hábil / inábil) =====
   const IMPROV = { nome: 'Improvisado', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
   const clampImprov = (v: any, lo: number, hi: number, dflt: number) => { const n = Number(v); return Number.isFinite(n) ? Math.max(lo, Math.min(hi, Math.round(n))) : dflt; };
@@ -350,7 +358,7 @@ export function montarFicha(opts: FichaOpts) {
     const habil = itemDe(cj.habil);
     const inabil = it2H(habil) ? { kind: 'nada', nome: '—', def: 0, pen: 0 } : itemDe(cj.inabil);
     const atk = (habil.kind === 'arma' || habil.kind === 'custom') ? habil.w : ARMA['desarmado'];
-    const soma = (S.attrs[atk.atrib] || 0) + (S.skills[atk.pericia] || S.skills2[atk.pericia] || 0);
+    const soma = ataqueAtrib(atk) + (S.skills[atk.pericia] || S.skills2[atk.pericia] || 0);
     const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
     const flat = (atk.acerto || 0) + ataqueCentelha(C) - armorPen;
     const dist = (atk.tags || []).includes('distância');
@@ -375,7 +383,7 @@ export function montarFicha(opts: FichaOpts) {
     const inabilArma = (inabil.kind === 'arma' || inabil.kind === 'custom') ? inabil.w : null;
     let dupla: any = null;
     if (inabilArma) {
-      const somaI = (S.attrs[inabilArma.atrib] || 0) + (S.skills[inabilArma.pericia] || S.skills2[inabilArma.pericia] || 0);
+      const somaI = ataqueAtrib(inabilArma) + (S.skills[inabilArma.pericia] || S.skills2[inabilArma.pericia] || 0);
       const distI = (inabilArma.tags || []).includes('distância');
       const capFI = inabilArma.forcaCap != null ? Math.min(forca, inabilArma.forcaCap) : forca;
       const multI = distI ? (inabilArma.forcaMult ?? 1) : (inabilArma.forcaMult ?? fm.umaMao);
@@ -599,11 +607,18 @@ export function montarFicha(opts: FichaOpts) {
     const dsAdd = t.closest<HTMLElement>('[data-defspec-add]');
     if (dsAdd && !opts.readOnly) {
       const key = dsAdd.dataset.defspecAdd!;
-      const s = (window.prompt('Situação da especialidade (ex.: contra um grupo, vs sedução, na floresta):') || '').trim();
-      if (!s) return;
-      const v = Math.max(0, Math.min(6, parseInt(window.prompt('Bônus quando essa situação vale (1 a 6):', '2') || '0', 10) || 0));
-      if (!v) return;
-      (S.defSpec[key] ||= []).push({ s, v }); recompute(); return;
+      void (async () => {
+        const r = await uiFormulario('Especialidade situacional', [
+          { nome: 's', rotulo: 'Situação', placeholder: 'contra um grupo, vs sedução, na floresta…', obrigatorio: true },
+          { nome: 'v', rotulo: 'Bônus', valor: 2, tipo: 'numero', min: 1, max: 6, dica: 'De 1 a 6, vale só quando a situação acontece.' },
+        ], { ok: 'Adicionar' });
+        if (!r) return;
+        const s = r.s.trim();
+        const v = Math.max(0, Math.min(6, parseInt(r.v, 10) || 0));
+        if (!s || !v) return;
+        (S.defSpec[key] ||= []).push({ s, v }); recompute();
+      })();
+      return;
     }
     const dsDel = t.closest<HTMLElement>('[data-defspec-del]');
     if (dsDel && !opts.readOnly) {
@@ -676,7 +691,7 @@ export function montarFicha(opts: FichaOpts) {
   el('f-file').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     const f = (e.target as HTMLInputElement).files?.[0]; if (!f) return;
-    const r = new FileReader(); r.onload = () => { try { S = JSON.parse(String(r.result)); normalize(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } catch { alert('Arquivo JSON inválido.'); } }; r.readAsText(f);
+    const r = new FileReader(); r.onload = () => { try { S = JSON.parse(String(r.result)); normalize(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } catch { void uiErro('Arquivo JSON inválido.'); } }; r.readAsText(f);
   });
   el('f-print').addEventListener('click', () => window.print());
   el('deriv-toggle').addEventListener('click', () => { S.derivCol = !S.derivCol; applyDerivCol(); save(); });
@@ -746,7 +761,7 @@ export function montarFicha(opts: FichaOpts) {
     const ti = t.getAttribute('data-bolsa-txt'); if (ti != null) { S.bolsas[+ti].texto = (t as HTMLTextAreaElement).value; save(); return; }
   });
   el('raca-sel').addEventListener('change', (e) => { if (opts.readOnly) return; S.raca = (e.target as HTMLSelectElement).value; (ATTRS_D as any[]).forEach((a) => { const c = capFor('attr', a.id); if ((S.attrs[a.id] || 1) > c) S.attrs[a.id] = c; }); renderAttrs(); renderPower(); renderRaca(); recompute(); save(); });
-  el('f-reset').addEventListener('click', () => { if (opts.readOnly) return; if (confirm('Limpar a ficha?')) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });
+  el('f-reset').addEventListener('click', async () => { if (opts.readOnly) return; if (await uiConfirmar('Limpar a ficha? Tudo o que está preenchido se perde.', { titulo: 'Limpar ficha', ok: 'Limpar', perigo: true })) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });
   el('f-link').addEventListener('click', () => {
     const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
     navigator.clipboard?.writeText(location.origin + location.pathname + '#p=' + b64);

@@ -49,7 +49,11 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const penFisica = armorPen + escPen;
 
   // Ataque: [(Atrib + Perícia) / 2]d6 (+2 se ímpar) + acerto da arma + Centelha − armadura
-  const soma = (attrs[w.atrib] || 0) + (skills[w.pericia] || skills2[w.pericia] || 0);
+  // Atributo do acerto por perícia: tiro = Percepção; arremesso = Destreza; corpo a corpo = maior(Destreza, Força).
+  const atribAcerto = w.pericia === 'atirador' ? (attrs.percepcao || 0)
+    : w.pericia === 'arremesso' ? (attrs.destreza || 0)
+    : Math.max(attrs.destreza || 0, attrs.forca || 0);
+  const soma = atribAcerto + (skills[w.pericia] || skills2[w.pericia] || 0);
   const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
   const flat = (w.acerto || 0) + ataqueCentelha(C) - armorPen;
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
