@@ -140,7 +140,7 @@ export function montarFicha(opts: FichaOpts) {
     return list.map((e) => ({ s: e.s, v: Math.max(0, Math.min(cap, e.v)) })).filter((e) => e.v > 0).slice(0, cap);
   }
   function normalize() {
-    S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {};
+    S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {}; S.secCol ??= {};
     S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
     // Migração: a Habilidade "Escudos" virou "Bloqueio" (id escudos -> bloqueio); carrega pontos e especialidade antigos.
     if (S.skills.escudos != null && S.skills.bloqueio == null) S.skills.bloqueio = S.skills.escudos;
@@ -643,7 +643,7 @@ export function montarFicha(opts: FichaOpts) {
     el('raca-info').innerHTML = r.descricao ? `${custo}${modStr}${r.descricao}${(r.tracos || []).length ? ' <em>' + (r.tracos as string[]).join(' ') + '</em>' : ''}` : '';
   }
   function setModo(m: string) { S.modo = m; if (m === 'criacao') clampToMode(); renderAll(); }
-  function renderAll() { syncInputs(); renderRaca(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); }
+  function renderAll() { syncInputs(); renderRaca(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); applySecCol(); }
 
   // botões
   document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => b.addEventListener('click', () => { if (opts.readOnly) return; setModo(b.dataset.modo!); }));
@@ -662,6 +662,19 @@ export function montarFicha(opts: FichaOpts) {
   el('deriv-toggle').addEventListener('click', () => { S.derivCol = !S.derivCol; applyDerivCol(); save(); });
   let camAllOpen = false;
   el('cam-all').addEventListener('click', () => { camAllOpen = !camAllOpen; CAM_ORDER.forEach((c) => (OPEN.cam[c] = camAllOpen)); renderCaminhos(); el('cam-all').textContent = camAllOpen ? 'Recolher todos' : 'Expandir todos'; });
+  // Seções recolhíveis (Habilidades, Secundárias, Proezas & Técnicas, Arcano — Artes). Padrão: abertas.
+  function applySecCol() {
+    if (!S) return;
+    document.querySelectorAll<HTMLElement>('h2.barh-tog').forEach((h) => {
+      const sec = h.dataset.sec!; const body = document.getElementById('sec-' + sec);
+      const col = !!(S.secCol && S.secCol[sec]);
+      if (body) body.classList.toggle('sec-hidden', col);
+      const car = h.querySelector('.sec-caret'); if (car) car.textContent = col ? '▸' : '▾';
+    });
+  }
+  document.querySelectorAll<HTMLElement>('h2.barh-tog').forEach((h) => h.addEventListener('click', () => {
+    const sec = h.dataset.sec!; (S.secCol ||= {}); S.secCol[sec] = !S.secCol[sec]; applySecCol(); if (!opts.readOnly) save();
+  }));
   el('eq-conjuntos').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     const sel = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-conj-sel]');
