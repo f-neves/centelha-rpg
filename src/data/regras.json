@@ -549,7 +549,7 @@
       }
     },
     "danoForca": {
-      "nota": "Multiplicador da Força somada ao dano por nº de mãos: 1 mão ×1, 2 mãos ×2 (armas versáteis empunhadas com as duas mãos também ×2). À distância o multiplicador vem da arma (forcaMult): arco curto ×1 com teto forcaCap 3, arco longo ×1, arco composto ×2 com forcaMin 4; bestas ×0 (não usam Força, bônus embutido em danoBonus). Arcos e bestas miram pela Percepção.",
+      "nota": "Multiplicador da Força somada ao dano por nº de mãos: 1 mão ×1, 2 mãos ×2 (armas versáteis empunhadas com as duas mãos também ×2). À distância o multiplicador vem da arma (forcaMult): arco curto ×1 com teto forcaCap 3, arco longo ×1, arco composto ×2 com forcaMin 4; bestas ×0 (não usam Força, bônus embutido em danoBonus; Pen pequena N1, média N1, grande N2). Arcos e bestas miram pela Percepção.",
       "umaMao": 1,
       "duasMaos": 2
     },

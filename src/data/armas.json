@@ -473,11 +473,11 @@
     "forcaMult": 0,
     "alcance": "longo",
     "tipoDano": "perfurante",
-    "pen": 2,
+    "pen": 1,
     "modos": [
       {
         "tipo": "perfurante",
-        "perf": 2,
+        "perf": 1,
         "principal": true
       }
     ],
@@ -487,7 +487,7 @@
       "distância",
       "projétil veloz"
     ],
-    "notas": "O virote (N2) fura a malha e resvala só na placa; recarga lenta. Alcance longo. A resposta de longe contra cavaleiro.",
+    "notas": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta. Alcance longo. A resposta de longe contra tropa e cavalo.",
     "danoBonus": 4
   },
   {
@@ -505,11 +505,11 @@
     "forcaMult": 0,
     "alcance": "longo",
     "tipoDano": "perfurante",
-    "pen": 3,
+    "pen": 2,
     "modos": [
       {
         "tipo": "perfurante",
-        "perf": 3,
+        "perf": 2,
         "principal": true
       }
     ],
@@ -520,7 +520,7 @@
       "projétil veloz",
       "pesada"
     ],
-    "notas": "Arbalesta de manivela: o virote pesado (N3) fura até a placa completa. Recarga muito lenta, alcance longo. A arma que encerrou a era do cavaleiro.",
+    "notas": "Arbalesta de manivela: o virote pesado (N2) fura malha e brigandina, mas ainda resvala na placa completa (N3). Recarga muito lenta, alcance longo; o dano bruto derruba homem e cavalo.",
     "danoBonus": 8
   },
   {

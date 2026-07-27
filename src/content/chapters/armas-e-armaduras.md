@@ -72,8 +72,8 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 | Arco Longo | Distância | ★P(N1) | 6 | 1d6 | +1 | 0 | 2 | Munição, distância. Alcance longo; soma **Força inteira**; resvala na placa |
 | Arco Composto | Distância | ★P(N1) | 6 | 1d6 | +1 | 0 | 2 | Munição, distância, **caro**. Alcance longo; **requer Força 4**, soma **Força×2**; resvala na placa |
 | Besta Pequena | Distância | ★P(N1) | 6 | 1d6+2 | +1 | 0 | 2 | Munição, recarga, distância. Não usa Força (mecanismo); alcance médio |
-| Besta Média | Distância | ★P(N2) | 6 | 1d6+4 | +1 | 0 | 2 | Munição, recarga, distância. Não usa Força; o virote (N2) fura até a malha, resvala na placa |
-| Besta Grande | Distância | ★P(N3) | 7 | 1d6+8 | +1 | 0 | 2 | Munição, recarga, pesada. Arbalesta; o virote pesado (N3) **fura a placa completa** |
+| Besta Média | Distância | ★P(N1) | 6 | 1d6+4 | +1 | 0 | 2 | Munição, recarga, distância. Não usa Força; o virote (N1) fura couro e malha, resvala na placa |
+| Besta Grande | Distância | ★P(N2) | 7 | 1d6+8 | +1 | 0 | 2 | Munição, recarga, pesada. Arbalesta; o virote pesado (N2) fura brigandina; dano bruto altíssimo, mas resvala na placa |
 | Adaga de Arremesso | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 0 | 1 | Ágil, munição. Facas às dezenas |
 | Machado de Arremesso | Arremesso | ★C · I | 5 | 1d6+2 | +1 | 0 | 1 | Gira no ar; golpe forte e curto |
 | Azagaia | Arremesso | ★P(N1) | 5 | 1d6+1 | +1 | 0 | 1 | Javelina: fura à distância ou na estocada em punho |
@@ -134,9 +134,9 @@ Contra **projéteis rápidos** (flecha, virote, bala de funda, dardo), o escudo 
 A pedra-papel-tesoura sai dos números acima:
 
 - **Placa completa × Corte** = 8 de Absorção (10 no cavaleiro, com o corpo): uma espada de topo abre poucos pontos; uma lâmina leve, quase nada. **Ninguém corta placa de leve** — mas um golpe forte ainda arranha.
-- **Placa × Perfurante nível 0–2** (flecha, arco, lança, adaga, besta leve/média, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão perfurante.
+- **Placa × Perfurante nível 0–2** (flecha, arco, lança, adaga, qualquer besta, picareta) = **resvala**: o Nível 3 não é vencido. A placa completa é à prova de qualquer arma de mão ou de tiro perfurante.
 - **Placa × Impacto** (maça, martelo) = só 4 de Absorção: o malho **passa** (a vulnerabilidade nunca resolvida, a principal via contra placa; a maça é o abre-lata de uma mão, o martelo de duas).
-- **Placa × Perfuração nível 3+** (besta grande/arbalesta, cerco, magia, armas épicas) = o gate abre, e aí a placa só tem **4** de Absorção de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
+- **Placa × Perfuração nível 3+** (cerco, aríete, magia, armas épicas, Proeza) = o gate abre, e aí a placa só tem **4** de Absorção de Perfuração: dificílimo de furar, mas quando fura, fura fundo.
 - Sem armadura, o **corte** brilha; a **malha** mata o corte mas cede ao impacto; cada armadura tem seu furo.
 
 <div class="callout"><span class="lbl">Como derrotar cada armadura</span>O cavaleiro de placas é quase intocável por gume, flecha e estocada, mas um camponês com um malho (Impacto) ainda o amassa — e três deles o derrubam pela lentidão. Contra o topo da placa, o caminho é Impacto, Perfuração nível 3+ (cerco/magia), Proeza ou feitiçaria.</div>
