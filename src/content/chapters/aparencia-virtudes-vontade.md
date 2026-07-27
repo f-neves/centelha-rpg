@@ -63,6 +63,6 @@ Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na *
 
 A **Defesa Mental** é o muro passivo que convencimentos, intimidações e poderes mentais precisam superar:
 
-<p class="formula">Defesa Mental = (Integridade × 2) + Força de Vontade + Centelha×2</p>
+<p class="formula">Defesa Mental = (Integridade × 2) + Força de Vontade + Centelha</p>
 
 <p class="muted">Uma Integridade baixa derruba a Defesa Mental — quem está quebrado por dentro é mais fácil de dobrar. (A sua irmã social, a <strong>Defesa Social</strong>, protege contra quem tenta te <em>ler</em>, e vem da Compostura + Temperança + Centelha.)</p>

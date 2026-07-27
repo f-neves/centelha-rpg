@@ -85,7 +85,7 @@
       "esquiva",
       "bloqueio"
     ],
-    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + Especialidade + Centelha×2. Vem por Esquiva ou por Bloqueio (arma/escudo). Contra projéteis rápidos (flecha, virote, bala de funda, dardo) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
+    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + Especialidade + Centelha. Vem por Esquiva ou por Bloqueio (arma/escudo). Contra projéteis rápidos (flecha, virote, bala de funda, dardo) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
   },
   {
     "id": "defesa-mental",
@@ -93,7 +93,7 @@
     "aliases": [
       "resistência mental"
     ],
-    "definicao": "Muro passivo contra manipulação e poderes mentais: (Integridade × 2) + Vontade + Centelha×2."
+    "definicao": "Muro passivo contra manipulação e poderes mentais: (Integridade × 2) + Vontade + Centelha."
   },
   {
     "id": "defesa-social",
@@ -215,7 +215,7 @@
       "passiva",
       "percepção passiva"
     ],
-    "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 + Especialidade + Centelha×2 do outro serve de alvo. Como Especialidade e Centelha são raras, na prática a maioria é só (Atributo + Habilidade) × 2."
+    "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 + Especialidade + Centelha do outro serve de alvo. Como Especialidade e Centelha são raras, na prática a maioria é só (Atributo + Habilidade) × 2."
   },
   {
     "id": "porte",
