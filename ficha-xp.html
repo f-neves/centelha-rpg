@@ -73,7 +73,7 @@
     </table>
     <div class="tools">
       <button class="ghost" id="reset-costs">Restaurar custos padrão</button>
-      <span class="muted" style="font-size:.82rem">Padrão atual do jogo: Atributo 10 · Prim 5 · Sec 2 · Esp 10/5 · Virtude 5 · Vontade 2 · Aparência 2 · Centelha 15 · Técnica 10 · Arte 10</span>
+      <span class="muted" style="font-size:.82rem">Padrão do laboratório: Atributo 8 · Prim 4 · Sec 2 · Esp 8/4 · Virtude 3 · Vontade 2 · Aparência 2 · Centelha 10 · Proeza 10 · Arte 10</span>
     </div>
   </div>
 
@@ -98,12 +98,12 @@
   <h2>Habilidades primárias <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(0–6 · nível × custo prim.)</span></h2>
   <div class="cols" id="skills"></div>
 
-  <h2>Secundárias, Especialidades, Técnicas, Artes <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(quantas em cada nível)</span></h2>
+  <h2>Secundárias, Especialidades, Proezas, Artes <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(quantas em cada nível)</span></h2>
   <div class="cols">
     <div class="panel grp"><h3>Habilidades secundárias</h3><div id="g-sec"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp" id="xp-sec">0</span></div></div>
     <div class="panel grp"><h3>Especialidades primárias</h3><div id="g-espp"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp" id="xp-espp">0</span></div></div>
     <div class="panel grp"><h3>Especialidades secundárias</h3><div id="g-esps"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp" id="xp-esps">0</span></div></div>
-    <div class="panel grp"><h3>Técnicas <span class="muted" style="font-weight:400">(nível × custo)</span></h3><div id="g-tec"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp" id="xp-tec">0</span></div></div>
+    <div class="panel grp"><h3>Proezas <span class="muted" style="font-weight:400">(nível × custo)</span></h3><div id="g-tec"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp" id="xp-tec">0</span></div></div>
     <div class="panel grp"><h3>Artes <span class="muted" style="font-weight:400">(nível × custo, somado 1..N)</span></h3><div id="g-arte"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp" id="xp-arte">0</span></div></div>
   </div>
 
@@ -128,7 +128,7 @@ const SKILLS = [
 ];
 const VIRTUES = [{id:'compaixao',n:'Compaixão'},{id:'conviccao',n:'Convicção'},{id:'temperanca',n:'Temperança'},{id:'valor',n:'Bravura'}];
 const RACES = [['humano','Humano',0],['anao','Anão',30],['elfo','Elfo',50],['gnomo','Gnomo',40],['halfling','Halfling',30],['meio-elfo','Meio-Elfo',20],['orc','Orc',40],['meio-orc','Meio-Orc',40]];
-const DEFAULT_COSTS = { atributo:10, habPrim:5, habSec:2, espPrim:10, espSec:5, virtude:5, vontade:2, aparencia:2, centelha:15, tecnica:10, arte:10 };
+const DEFAULT_COSTS = { atributo:8, habPrim:4, habSec:2, espPrim:8, espSec:4, virtude:3, vontade:2, aparencia:2, centelha:10, tecnica:10, arte:10 };
 const COST_ROWS = [
   {key:'atributo', label:'Atributo', desc:'nível × custo, somado do piso 1 até o nível'},
   {key:'habPrim', label:'Habilidade primária', desc:'nível × custo, somado do piso 0'},
@@ -139,7 +139,7 @@ const COST_ROWS = [
   {key:'vontade', label:'Força de Vontade', desc:'nível × custo, somado do piso 1'},
   {key:'aparencia', label:'Aparência', desc:'nível × custo, somado do piso 1'},
   {key:'centelha', label:'Centelha', desc:'nível × custo, somado do piso 0'},
-  {key:'tecnica', label:'Técnica', desc:'nível × custo, por Técnica (não soma)'},
+  {key:'tecnica', label:'Proeza', desc:'nível × custo, por Proeza (não soma)'},
   {key:'arte', label:'Arte', desc:'nível × custo, somado 1..nível, por Arte'},
 ];
 
@@ -265,7 +265,7 @@ function recompute(){
   $('#total').textContent=total;
   const rem=(S.budget||0)-total; const re=$('#rem'); re.textContent=rem; re.className='big rem '+(rem<0?'neg':'ok');
   $('#break').innerHTML =
-    'Atrib <b>'+attr+'</b> · Prim <b>'+hp+'</b> · Sec <b>'+sec+'</b> · Esp <b>'+(espp+esps)+'</b> · Téc <b>'+tec+'</b> · Arte <b>'+arte+'</b> · Virt <b>'+virt+'</b> · Vont <b>'+vont+'</b> · Apar <b>'+apar+'</b> · Cent <b>'+cent+'</b> · Raça <b>'+raca+'</b>';
+    'Atrib <b>'+attr+'</b> · Prim <b>'+hp+'</b> · Sec <b>'+sec+'</b> · Esp <b>'+(espp+esps)+'</b> · Proeza <b>'+tec+'</b> · Arte <b>'+arte+'</b> · Virt <b>'+virt+'</b> · Vont <b>'+vont+'</b> · Apar <b>'+apar+'</b> · Cent <b>'+cent+'</b> · Raça <b>'+raca+'</b>';
 }
 
 // ---- init ----
