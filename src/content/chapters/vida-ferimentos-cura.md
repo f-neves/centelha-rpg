@@ -62,7 +62,7 @@ Há duas formas de começar a sangrar:
 
 Sangramentos não se somam livremente: vale o **maior**, e cada fonte adicional acrescenta apenas +1 (teto **5**).
 
-<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Medicina vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Convicção vs Dif 10</strong>. Qualquer cura de PV — descanso, Medicina ou magia — também o estanca.</div>
+<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Convicção vs Dif 10</strong>. Qualquer cura de PV — descanso, Cura ou magia — também o estanca.</div>
 
 <p class="muted">Um aliado <strong>Caído</strong> que ainda sangra continua acumulando dano Letal rumo à morte: alguém precisa chegar até ele. É a hora em que parar para estabilizar o companheiro pesa tanto quanto desferir mais um golpe.</p>
 
@@ -77,4 +77,4 @@ Você recupera o equivalente ao seu Vigor em PV a cada intervalo — tão mais l
 | Grave (25–50%) | a cada 5 dias |
 | Crítico (<25%) | por semana |
 
-<p class="muted">Dano de Impacto sara muito mais rápido que o Letal; a Medicina e a magia aceleram a cura.</p>
+<p class="muted">Dano de Impacto sara muito mais rápido que o Letal; a Cura e a magia aceleram a cura.</p>

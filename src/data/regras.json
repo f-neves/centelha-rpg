@@ -827,7 +827,7 @@
     "valorTagMax": 3,
     "teto": 5,
     "estabilizar": {
-      "pericia": "Medicina",
+      "pericia": "Cura",
       "dif": 10,
       "alternativa": "Vigor + Convicção (em si mesmo)"
     }

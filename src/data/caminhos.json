@@ -20,7 +20,7 @@
     "nome": "Quebra-Muralhas",
     "trilha": "corpo",
     "atributo": "forca",
-    "habilidade_ancora": "Armas de Duas Mãos",
+    "habilidade_ancora": "Armas",
     "descricao": "destruir estruturas e defesas"
   },
   {
@@ -76,7 +76,7 @@
     "nome": "Dança da Lâmina",
     "trilha": "corpo",
     "atributo": "destreza",
-    "habilidade_ancora": "Armas de Uma Mão",
+    "habilidade_ancora": "Armas",
     "descricao": "a esgrima que vira arte"
   },
   {

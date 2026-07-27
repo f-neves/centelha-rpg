@@ -43,12 +43,12 @@ export function montarFicha(opts: FichaOpts) {
   const HAB_GRP: Record<string, string> = { combate: 'Combate', fisica: 'Físicas', social: 'Sociais', saber: 'Saber', tecnica: 'Técnicas' };
   const SECONDARY: [string, string][] = [
     ['Halterofilismo', 'Corpo'], ['Natação', 'Corpo'], ['Ginástica', 'Corpo'], ['Equilíbrio', 'Corpo'], ['Malabarismo', 'Corpo'], ['Escalada', 'Corpo'],
-    ['Etiqueta', 'Sociais'], ['Negociação', 'Sociais'], ['Lábia', 'Sociais'], ['Intimidação', 'Sociais'], ['Atuação', 'Sociais'], ['Sedução', 'Sociais'], ['Disfarce', 'Sociais'], ['Interrogatório', 'Sociais'],
-    ['Ciências', 'Conhecimento'], ['Comércio', 'Conhecimento'], ['Herbologia', 'Conhecimento'], ['História', 'Conhecimento'], ['Religião', 'Conhecimento'], ['Heráldica', 'Conhecimento'], ['Astronomia', 'Conhecimento'], ['Geografia', 'Conhecimento'], ['Alquimia', 'Conhecimento'], ['Arquitetura', 'Conhecimento'], ['Direito', 'Conhecimento'], ['Bestiário', 'Conhecimento'], ['Estratégia', 'Conhecimento'], ['Genealogia', 'Conhecimento'], ['Folclore', 'Conhecimento'],
+    ['Liderança', 'Sociais'], ['Etiqueta', 'Sociais'], ['Negociação', 'Sociais'], ['Lábia', 'Sociais'], ['Intimidação', 'Sociais'], ['Atuação', 'Sociais'], ['Sedução', 'Sociais'], ['Disfarce', 'Sociais'], ['Interrogatório', 'Sociais'],
+    ['Cura', 'Conhecimento'], ['Ciências', 'Conhecimento'], ['Comércio', 'Conhecimento'], ['Herbologia', 'Conhecimento'], ['História', 'Conhecimento'], ['Religião', 'Conhecimento'], ['Heráldica', 'Conhecimento'], ['Astronomia', 'Conhecimento'], ['Geografia', 'Conhecimento'], ['Alquimia', 'Conhecimento'], ['Arquitetura', 'Conhecimento'], ['Direito', 'Conhecimento'], ['Bestiário', 'Conhecimento'], ['Estratégia', 'Conhecimento'], ['Genealogia', 'Conhecimento'], ['Folclore', 'Conhecimento'],
     ['Cavalgar', 'Ofício'], ['Ferraria', 'Ofício'], ['Carpintaria', 'Ofício'], ['Costura', 'Ofício'], ['Culinária', 'Ofício'], ['Joalheria', 'Ofício'], ['Couraria', 'Ofício'], ['Alvenaria', 'Ofício'], ['Mineração', 'Ofício'], ['Pesca', 'Ofício'], ['Agricultura', 'Ofício'], ['Navegação', 'Ofício'], ['Marcenaria', 'Ofício'], ['Armadureiro', 'Ofício'], ['Armeiro', 'Ofício'], ['Escrivania', 'Ofício'], ['Cartografia', 'Ofício'], ['Veterinário', 'Ofício'], ['Adestramento', 'Ofício'],
     ['Performance', 'Expressão'], ['Tocar Instrumento', 'Expressão'], ['Canto', 'Expressão'], ['Dança', 'Expressão'], ['Poesia', 'Expressão'], ['Pintura', 'Expressão'], ['Escultura', 'Expressão'], ['Caligrafia', 'Expressão'], ['Contação de Histórias', 'Expressão'],
     ['Ladinagem', 'Subterfúgio'], ['Jogos', 'Subterfúgio'], ['Falsificação', 'Subterfúgio'], ['Abrir Fechaduras', 'Subterfúgio'], ['Contrabando', 'Subterfúgio'], ['Apostar', 'Subterfúgio'], ['Roubo', 'Subterfúgio'], ['Ocultação', 'Subterfúgio'], ['Vigilância Urbana', 'Subterfúgio'],
-    ['Meditação', 'Interior'], ['Ritualismo', 'Interior'], ['Autocontrole', 'Interior'], ['Concentração', 'Interior'], ['Leitura Corporal', 'Interior'], ['Interpretação de Sonhos', 'Interior'],
+    ['Energia Espiritual', 'Interior'], ['Meditação', 'Interior'], ['Ritualismo', 'Interior'], ['Autocontrole', 'Interior'], ['Concentração', 'Interior'], ['Leitura Corporal', 'Interior'], ['Interpretação de Sonhos', 'Interior'],
   ];
 
   const SEC_NOME: Record<string, string> = Object.fromEntries(SECONDARY.map(([n]) => [slug(n), n]));
@@ -146,6 +146,22 @@ export function montarFicha(opts: FichaOpts) {
     if (S.skills.escudos != null && S.skills.bloqueio == null) S.skills.bloqueio = S.skills.escudos;
     if (S.spec.escudos != null && S.spec.bloqueio == null) S.spec.bloqueio = S.spec.escudos;
     delete S.skills.escudos; delete S.spec.escudos; delete S.blkPericia;
+    // Migração: Armas de Uma Mão + Armas de Duas Mãos fundiram em "Armas" (fica o maior nível; junta as especialidades).
+    if (S.skills['armas-uma-mao'] != null || S.skills['armas-duas-maos'] != null) {
+      S.skills.armas = Math.max(S.skills.armas || 0, S.skills['armas-uma-mao'] || 0, S.skills['armas-duas-maos'] || 0);
+      const sp = [...(S.spec.armas || []), ...(S.spec['armas-uma-mao'] || []), ...(S.spec['armas-duas-maos'] || [])];
+      if (sp.length) S.spec.armas = sp;
+      delete S.skills['armas-uma-mao']; delete S.skills['armas-duas-maos'];
+      delete S.spec['armas-uma-mao']; delete S.spec['armas-duas-maos'];
+    }
+    // Migração: perícias primárias que viraram secundárias (Liderança→Sociais, Medicina→Cura, Energia Espiritual→Interior).
+    for (const [prim, sec] of [['lideranca', 'lideranca'], ['medicina', 'cura'], ['energia-espiritual', 'energia-espiritual']]) {
+      if (S.skills[prim] != null) {
+        if (S.skills2[sec] == null) S.skills2[sec] = S.skills[prim];
+        if ((S.spec[prim] || []).length && !(S.spec2[sec] || []).length) S.spec2[sec] = S.spec[prim];
+        delete S.skills[prim]; delete S.spec[prim];
+      }
+    }
     S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1400; S.modo ??= 'evolucao'; S.derivCol ??= true;
     S.equip ??= {};
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];

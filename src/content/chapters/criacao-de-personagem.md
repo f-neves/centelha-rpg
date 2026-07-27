@@ -84,7 +84,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Percepção 6 (pico) · Destreza, Vigor 4 · Força, Raciocínio 3 · Inteligência, Influência, Perspicácia, Compostura 2 | 560 |
-| Habilidades | Furtividade 5 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Medicina 1 | 260 |
+| Habilidades | Furtividade 5 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Cura 1 (secundária) | 260 |
 | Secundárias | três em 2 (Rastreio, Escalada, Falcoaria) | 18 |
 | Especialidades | Furtividade, Atirador, Sobrevivência | 30 |
 | Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 90 |
@@ -101,9 +101,9 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Destreza 6 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 690 |
-| Habilidades | Armas de Uma Mão 5 (pico) · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Liderança, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 350 |
+| Habilidades | Armas 5 (pico) · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Manha, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 350 |
 | Secundárias | seis (duas em 3, quatro em 2: Estratégia, Cavalgar, Jogos de Guerra…) | 48 |
-| Especialidades | cinco (Armas de Uma Mão, Integridade, Liderança…) | 50 |
+| Especialidades | cinco (Armas, Integridade, Liderança…) | 50 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
 | Força de Vontade | 1 → 8 | 70 |
 | Aparência | 1 → 5 (comum) | 28 |
@@ -142,7 +142,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Atributos | Inteligência 6 (pico) · Influência, Percepção 4 · Raciocínio, Vigor, Destreza, Perspicácia 3 · Força, Compostura 2 | 620 |
-| Habilidades | Ocultismo 5 (pico) · Conhecimentos, Investigação, Esquiva, Prontidão 3 · Medicina, Resistência, Furtividade, Sociabilidade, Ciências 2 · Persuasão 1 | 275 |
+| Habilidades | Ocultismo 5 (pico) · Conhecimentos, Investigação, Esquiva, Prontidão 3 · Cura, Resistência, Furtividade, Sociabilidade, Ciências 2 · Persuasão 1 | 275 |
 | Secundárias | oito (Astronomia, Alquimia, Heráldica, Caligrafia, História, Botânica…) | 66 |
 | Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos…) | 60 |
 | Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 105 |

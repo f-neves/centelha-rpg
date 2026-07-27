@@ -10,24 +10,14 @@
     "descricao": "Combate corpo-a-corpo desarmado: socos, agarrões, projeções."
   },
   {
-    "id": "armas-uma-mao",
-    "nome": "Armas de Uma Mão",
+    "id": "armas",
+    "nome": "Armas",
     "grupo": "combate",
     "atributos": [
       "destreza",
       "forca"
     ],
-    "descricao": "Lâminas, maças e machados de uma mão — esgrima e golpe, da finesse (Destreza) à potência (Força). O tipo de dano vem da arma, não da habilidade."
-  },
-  {
-    "id": "armas-duas-maos",
-    "nome": "Armas de Duas Mãos",
-    "grupo": "combate",
-    "atributos": [
-      "forca",
-      "destreza"
-    ],
-    "descricao": "Montantes, martelos, lanças e alabardas — armas grandes de duas mãos: alcance, potência e ruptura."
+    "descricao": "Combate corpo a corpo com qualquer arma branca — lâminas, machados, maças, lanças, martelos, montantes, de uma ou duas mãos. Da finesse (Destreza) à potência (Força); a empunhadura e o tipo de dano vêm da arma, não da habilidade."
   },
   {
     "id": "arremesso",
@@ -120,15 +110,6 @@
     "descricao": "Firmeza moral e compostura; resistir a manipulação e poderes mentais (sustenta a Defesa Mental). Tronco na Força de Vontade, com pés no Vigor (físico) e na Inteligência/Raciocínio (mental)."
   },
   {
-    "id": "energia-espiritual",
-    "nome": "Energia Espiritual",
-    "grupo": "fisica",
-    "atributos": [
-      "vontade"
-    ],
-    "descricao": "A reserva e o controle da energia interior — alimenta a Mana (e, talvez, a Energia). O treino do espírito que move o poder."
-  },
-  {
     "id": "prestidigitacao",
     "nome": "Prestidigitação",
     "grupo": "fisica",
@@ -188,16 +169,6 @@
     "descricao": "Esperteza de rua, blefe e malandragem — influência social, sacada rápida (Raciocínio) e faro de rua (Percepção)."
   },
   {
-    "id": "lideranca",
-    "nome": "Liderança",
-    "grupo": "social",
-    "atributos": [
-      "influencia",
-      "inteligencia"
-    ],
-    "descricao": "Inspirar, comandar e coordenar um grupo."
-  },
-  {
     "id": "politica",
     "nome": "Política",
     "grupo": "social",
@@ -237,16 +208,6 @@
       "percepcao"
     ],
     "descricao": "O sobrenatural, a feitiçaria e seus símbolos."
-  },
-  {
-    "id": "medicina",
-    "nome": "Medicina",
-    "grupo": "saber",
-    "atributos": [
-      "inteligencia",
-      "percepcao"
-    ],
-    "descricao": "Tratar feridas, doenças e venenos."
   },
   {
     "id": "burocracia",
