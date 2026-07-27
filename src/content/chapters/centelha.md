@@ -79,4 +79,4 @@ O nível 2 (Desperto) é o meio-degrau entre o Tocado (1) e o Herói (3): os val
 
 A **maioria** das Técnicas, porém, não tem número nenhum: são **estados e capacidades** (ver no escuro, ficar invisível, imune a veneno, voar, controlar uma besta). O nível dessas é a régua de quão absoluto o efeito é: em disputa, só cede a quem traz poder efetivamente maior. Alcance, área, número de alvos e duração são **dials** que uma Técnica pode esticar por cima do efeito principal, na mesma lógica do improviso do Arcano.
 
-<div class="callout regra"><span class="lbl">O Portão da Centelha</span>A Centelha sobe <strong>só com permissão do Mestre</strong>, num marco de história ou feito maior. O XP paga o custo (caro: ×15 por ponto), mas o <strong>salto de tier é narrativo</strong>: poder não se compra em massa, conquista-se na história.</div>
+<div class="callout regra"><span class="lbl">O Portão da Centelha</span>A Centelha sobe <strong>só com permissão do Mestre</strong>, num marco de história ou feito maior. O XP paga o custo (caro: ×10 por ponto), mas o <strong>salto de tier é narrativo</strong>: poder não se compra em massa, conquista-se na história.</div>

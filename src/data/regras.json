@@ -383,32 +383,34 @@
     10,
     20
   ],
-  "centelhaGate": "A Centelha só aumenta com permissão do Mestre, num marco de história ou feito maior. O XP paga o custo (×15), mas o salto de tier é narrativo — não se compra em massa.",
+  "centelhaGate": "A Centelha só aumenta com permissão do Mestre, num marco de história ou feito maior. O XP paga o custo (×10), mas o salto de tier é narrativo — não se compra em massa.",
   "xp": {
     "atributo": {
       "tipo": "mult",
-      "valor": 10
+      "valor": 8
     },
     "habilidadePrimaria": {
       "tipo": "mult",
-      "valor": 5
+      "valor": 4
     },
     "habilidadeSecundaria": {
       "tipo": "mult",
       "valor": 2
     },
     "especialidadePrimaria": {
-      "tipo": "flat",
-      "valor": 10,
+      "tipo": "progressivo",
+      "valor": 8,
+      "nota": "Custo PROGRESSIVO por nível de cada especialidade: base × [nível×(nível+1)/2] (8·16·24…). A ficha usa esta base (não o step flat).",
       "limite": "Especialidade nomeada: cada Habilidade abre até [nível/2] níveis no total (um quadrado por nível), distribuídos em escopos nomeados diferentes ou concentrados num só. Bônus situacional (só no escopo nomeado, o Mestre julga), não soma em toda rolagem."
     },
     "especialidadeSecundaria": {
-      "tipo": "flat",
-      "valor": 5
+      "tipo": "progressivo",
+      "valor": 4,
+      "nota": "Progressivo por nível: base × [nível×(nível+1)/2] (4·8·12…)."
     },
     "virtude": {
       "tipo": "mult",
-      "valor": 5
+      "valor": 3
     },
     "vontade": {
       "tipo": "mult",
@@ -420,7 +422,7 @@
     },
     "centelha": {
       "tipo": "mult",
-      "valor": 15
+      "valor": 10
     },
     "tecnica": {
       "tipo": "porNivel",

@@ -163,15 +163,13 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
 
 ## Economia de XP e balanço (2026-07-27)
 
-- ⏳ **RECALCULAR CUSTO DE XP.** A leva de mudanças recentes mexeu bastante na economia e pede
-  uma revisão dos custos em XP (atributos, perícias, especialidades, Técnicas, Artes) e dos
-  orçamentos dos exemplos. O que mudou e motiva o recálculo:
-  - **Perícias primárias 28 → 24** (4 grupos de 6): Armas de Uma/Duas Mãos fundidas em "Armas";
-    Liderança/Medicina(→Cura)/Energia Espiritual viraram secundárias (custo menor).
-  - **Especialidade** passou a custar **progressivo por nível** (nível×10 / ×5), não mais 10/5 fixos.
-  - **Energia** caiu quase à metade (ex.: Kael 27 → 14) com a nova fórmula sem Virtudes → rever se os
-    **custos de Técnica em Energia** reescalam (mesmo item da memória formulas-derivados-2026-07).
-  - **Feitiçaria** perdeu a trava por Ocultismo: profundidade de Arte agora é só XP (Centelha > 0) →
-    conferir se o custo de Arte (nível×10) ainda equilibra sem o gate.
-  - Rever os **totais de XP dos exemplos** de criacao-de-personagem.md (Kael 1700, Sora, Bram…), que
-    ficaram levemente defasados após mover perícias primárias→secundárias.
+- ✅ **CUSTOS DE XP RECALIBRADOS (2026-07-27, commit a seguir).** Ferramenta de calibração:
+  `ficha-xp.html` (laboratório standalone na raiz, tabela de custos editável + point-buy ao vivo).
+  Novos custos oficializados no `regras.json` (bloco `xp`): **Atributo 10→8 · Habilidade primária
+  5→4 · Especialidade primária base 10→8 · Especialidade secundária base 5→4 · Virtude 5→3 ·
+  Centelha 15→10**. Inalterados: Secundária ×2, Vontade ×2, Aparência ×2, Técnica/Proeza ×10, Arte
+  ×10. A ficha lê a base de especialidade do regras.json (antes 10/5 fixos no código). Exemplos de
+  criação (Kael/Sora/Veil/Bram) recalculados (escala por categoria) e a Energia dos derivados
+  atualizada. Docs alinhados: criacao-de-personagem, centelha, racas, FichaSkeleton, glossário via
+  regras. **A rever ainda:** se o custo de Técnica/Arte (mantidos em ×10) precisa mexer, e se os
+  orçamentos dos tiers descem junto (os exemplos ficaram bem mais baratos: Kael 1700→1464 etc.).

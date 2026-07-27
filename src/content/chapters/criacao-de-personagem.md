@@ -19,7 +19,7 @@ Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão n
 4. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de perícia). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 5. **Virtudes.** As quatro, de 1 a 6.
 6. **Força de Vontade e Aparência.** Suba a Vontade do piso 1 (um herói costuma levá-la a 5+); escolha a Aparência (1–12, normal por volta de 5–7).
-7. **Centelha.** Teto **3** na criação. É cara (×15) e define o seu tier: a maioria começa em 1, quem quer um herói de saga já compra 3 (Herói).
+7. **Centelha.** Teto **3** na criação. É cara (×10) e define o seu tier: a maioria começa em 1, quem quer um herói de saga já compra 3 (Herói).
 8. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte.
 9. **Derivados.** PV, Defesas, Energia/Mana, Fôlego e Iniciativa saem de fórmulas — confira na tabela mais abaixo, ou deixe a Ficha calcular.
 
@@ -39,20 +39,20 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 | Traço | Custo do próximo ponto | Exemplos |
 |---|---|---|
-| Atributo | novo × 10 | 2→3 = 30 · 3→4 = 40 |
-| Habilidade primária | novo × 5 | 0→1 = 5 · 2→3 = 15 |
+| Atributo | novo × 8 | 2→3 = 24 · 3→4 = 32 |
+| Habilidade primária | novo × 4 | 0→1 = 4 · 2→3 = 12 |
 | Habilidade secundária | novo × 2 | 0→1 = 2 · 2→3 = 6 |
-| Especialidade (prim. / sec.) | nível × 10 / nível × 5 | progressivo por nível de cada especialidade (prim. 10 · 20 · 30… ; sec. 5 · 10 · 15…). Até [nível ÷ 2] níveis por perícia, cada nível é um escopo nomeado |
-| Virtude | novo × 5 | 1→2 = 10 · 2→3 = 15 |
+| Especialidade (prim. / sec.) | nível × 8 / nível × 4 | progressivo por nível de cada especialidade (prim. 8 · 16 · 24… ; sec. 4 · 8 · 12…). Até [nível ÷ 2] níveis por perícia, cada nível é um escopo nomeado |
+| Virtude | novo × 3 | 1→2 = 6 · 2→3 = 9 |
 | Força de Vontade | novo × 2 | 1→2 = 4 · 5→6 = 12 |
 | Aparência | novo × 2 | 1→2 = 4 · 7→8 = 16 |
-| Centelha | novo × 15 | 0→1 = 15 · 2→3 = 45 |
+| Centelha | novo × 10 | 0→1 = 10 · 2→3 = 30 |
 | Técnica de Proeza | cresce com o poder | nível 1 ≈ 5–15 · nível 3 ≈ 35–45 · nível 5 ≈ 65–75 |
 | Nível de Arte (Arcano) | nível × 10 | nível 1 = 10 · nível 3 = 30 |
 
-<p class="muted">A Centelha cara reflete a raridade: alcançar Centelha 3 custa 90 XP acumulados; a Centelha 5, 225 — o trabalho de uma vida. Técnica de nível <em>N</em> exige Centelha ≥ N; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha), e a profundidade se compra com XP.</p>
+<p class="muted">A Centelha cara reflete a raridade: alcançar Centelha 3 custa 60 XP acumulados; a Centelha 5, 150 — o trabalho de uma vida. Técnica de nível <em>N</em> exige Centelha ≥ N; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha), e a profundidade se compra com XP.</p>
 
-<div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha não se compra em massa: ela só sobe com <strong>permissão do Mestre</strong>, num marco de história ou feito maior. O XP paga o custo (× 15), mas o salto de tier — de herói a semideus — é uma conquista narrativa, não uma transação de balcão.</div>
+<div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha não se compra em massa: ela só sobe com <strong>permissão do Mestre</strong>, num marco de história ou feito maior. O XP paga o custo (× 10), mas o salto de tier — de herói a semideus — é uma conquista narrativa, não uma transação de balcão.</div>
 
 ## Limites na criação
 
@@ -83,53 +83,53 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Percepção 6 (pico) · Destreza, Vigor 4 · Força, Raciocínio 3 · Inteligência, Influência, Perspicácia, Compostura 2 | 560 |
-| Habilidades | Furtividade 5 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Cura 1 (secundária) | 260 |
+| Atributos | Percepção 6 (pico) · Destreza, Vigor 4 · Força, Raciocínio 3 · Inteligência, Influência, Perspicácia, Compostura 2 | 448 |
+| Habilidades | Furtividade 5 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Cura 1 (secundária) | 208 |
 | Secundárias | três em 2 (Rastreio, Escalada, Falcoaria) | 18 |
-| Especialidades | Furtividade, Atirador, Sobrevivência | 30 |
-| Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 90 |
+| Especialidades | Furtividade, Atirador, Sobrevivência | 24 |
+| Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 54 |
 | Força de Vontade | 1 → 7 | 54 |
 | Aparência | 1 → 4 (comum) | 18 |
-| Centelha | 0 → 3 (Herói) | 90 |
+| Centelha | 0 → 3 (Herói) | 60 |
 | Técnicas | 26, de Olho de Águia, Sombra e Vento (níveis 1 a 3, já com o Desperto) | 580 |
-| **Total** | | **1700** |
+| **Total** | | **1464** |
 
-<p class="muted">Derivados: PV 37 · Defesa 17 · Def. Mental 13 · Def. Social 7 · Energia 27 · Mana 13 · Iniciativa 1d6+6. Fecha no orçamento. Mira firme à distância e some na sombra entre os tiros; guarda social baixa, porque não é o forte dele.</p>
+<p class="muted">Derivados: PV 37 · Defesa 17 · Def. Mental 13 · Def. Social 7 · Energia 14 · Mana 13 · Iniciativa 1d6+6. Fecha no orçamento. Mira firme à distância e some na sombra entre os tiros; guarda social baixa, porque não é o forte dele.</p>
 
 ### Sora, a Capitã · Veterana (Centelha 3)
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Destreza 6 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 690 |
-| Habilidades | Armas 5 (pico) · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Manha, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 350 |
+| Atributos | Destreza 6 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 552 |
+| Habilidades | Armas 5 (pico) · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Manha, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 280 |
 | Secundárias | seis (duas em 3, quatro em 2: Estratégia, Cavalgar, Jogos de Guerra…) | 48 |
-| Especialidades | cinco (Armas, Integridade, Liderança…) | 50 |
-| Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 140 |
+| Especialidades | cinco (Armas, Integridade, Liderança…) | 40 |
+| Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 84 |
 | Força de Vontade | 1 → 8 | 70 |
 | Aparência | 1 → 5 (comum) | 28 |
-| Centelha | 0 → 3 (Herói) | 90 |
+| Centelha | 0 → 3 (Herói) | 60 |
 | Técnicas | 32, de Comando, Pele de Pedra e Dança da Lâmina (níveis 1 a 3) | 730 |
-| **Total** | | **2196** |
+| **Total** | | **1892** |
 
-<p class="muted">Derivados: PV 37 · Defesa 21 · Def. Mental 17 · Def. Social 15 · Energia 31 · Mana 14 · Iniciativa 1d6+6. Sobram 4 XP. Uma líder de tropa que combina posturas defensivas, golpes precisos e uma guarda social sólida.</p>
+<p class="muted">Derivados: PV 37 · Defesa 21 · Def. Mental 17 · Def. Social 15 · Energia 15 · Mana 14 · Iniciativa 1d6+6. Fecha no orçamento. Uma líder de tropa que combina posturas defensivas, golpes precisos e uma guarda social sólida.</p>
 
 ### Veil, o Feiticeiro-guerreiro · Herói (Centelha 4)
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Inteligência 6 (pico) · Força, Destreza, Vigor 4 · Percepção, Raciocínio, Influência, Perspicácia, Compostura 3 | 720 |
-| Habilidades | Ocultismo 5 (pico) · oito em 3 (Esquiva, Prontidão, Integridade, Conhecimentos…) · três em 2 | 360 |
+| Atributos | Inteligência 6 (pico) · Força, Destreza, Vigor 4 · Percepção, Raciocínio, Influência, Perspicácia, Compostura 3 | 576 |
+| Habilidades | Ocultismo 5 (pico) · oito em 3 (Esquiva, Prontidão, Integridade, Conhecimentos…) · três em 2 | 288 |
 | Secundárias | seis (três em 3, três em 2) | 54 |
-| Especialidades | cinco (Ocultismo, Fogo…) | 50 |
-| Virtudes | Convicção 4 · Temperança 4 · Bravura 3 · Compaixão 3 | 140 |
+| Especialidades | cinco (Ocultismo, Fogo…) | 40 |
+| Virtudes | Convicção 4 · Temperança 4 · Bravura 3 · Compaixão 3 | 84 |
 | Força de Vontade | 1 → 8 | 70 |
 | Aparência | 1 → 4 (comum) | 18 |
-| Centelha | 0 → 4 (Grande herói) | 150 |
+| Centelha | 0 → 4 (Grande herói) | 100 |
 | Artes | seis: Fogo e Forças no nível 4 · Cura, Raio, Proteção e Fortuna no 3 | 480 |
 | Técnicas | 33, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 850 |
-| **Total** | | **2892** |
+| **Total** | | **2560** |
 
-<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 18 · Def. Social 16 · Energia 34 · Mana 16 · Iniciativa 1d6+6. Sobram 8 XP. Tece Feitiço e lâmina no mesmo turno; com o XP investido poderia ter mergulhado numa Arte de nível 5, mas preferiu largura a profundidade.</p>
+<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 18 · Def. Social 16 · Energia 17 · Mana 16 · Iniciativa 1d6+6. Fecha no orçamento. Tece Feitiço e lâmina no mesmo turno; com o XP investido poderia ter mergulhado numa Arte de nível 5, mas preferiu largura a profundidade.</p>
 
 ## O mortal-tocado: magia como estudo, não como tier
 
@@ -141,16 +141,16 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
-| Atributos | Inteligência 6 (pico) · Influência, Percepção 4 · Raciocínio, Vigor, Destreza, Perspicácia 3 · Força, Compostura 2 | 620 |
-| Habilidades | Ocultismo 5 (pico) · Conhecimentos, Investigação, Esquiva, Prontidão 3 · Cura, Resistência, Furtividade, Sociabilidade, Ciências 2 · Persuasão 1 | 275 |
+| Atributos | Inteligência 6 (pico) · Influência, Percepção 4 · Raciocínio, Vigor, Destreza, Perspicácia 3 · Força, Compostura 2 | 496 |
+| Habilidades | Ocultismo 5 (pico) · Conhecimentos, Investigação, Esquiva, Prontidão 3 · Cura, Resistência, Furtividade, Sociabilidade, Ciências 2 · Persuasão 1 | 220 |
 | Secundárias | oito (Astronomia, Alquimia, Heráldica, Caligrafia, História, Botânica…) | 66 |
-| Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos…) | 60 |
-| Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 105 |
+| Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos…) | 48 |
+| Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 63 |
 | Força de Vontade | 1 → 9 | 88 |
 | Aparência | 1 → 4 (comum) | 18 |
-| Centelha | 0 → 1 (Tocado) | 15 |
+| Centelha | 0 → 1 (Tocado) | 10 |
 | Artes | sete: Adivinhação, Forças, Proteção, Cura e Fogo no **nível 5** · Fascinação e mais uma no 3 | 870 |
 | Técnicas | 8, de Mente Afiada e Erudito (nível 1) | 80 |
-| **Total** | | **2197** |
+| **Total** | | **1959** |
 
-<p class="muted">Derivados: PV 34 · Defesa 13 · Def. Mental 13 · Def. Social 9 · Energia 24 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Sobram 3 XP. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong>: ele conhece magia tão funda quanto Veil, mas o tanque o obriga a poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível: o feiticeiro de torre, não o de campo.</p>
+<p class="muted">Derivados: PV 34 · Defesa 13 · Def. Mental 13 · Def. Social 9 · Energia 10 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Fecha no orçamento. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong>: ele conhece magia tão funda quanto Veil, mas o tanque o obriga a poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível: o feiticeiro de torre, não o de campo.</p>
