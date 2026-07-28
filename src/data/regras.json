@@ -1014,7 +1014,7 @@
           "ex": "cura, escudo, muralha, luz"
         }
       ],
-      "armadura": "A Absorção de armadura conta normalmente contra dano mágico, salvo efeitos cujo texto diga que furam ou ignoram armadura.",
+      "armadura": "Armadura só protege contra dano FÍSICO. O que decide não é a aparência do efeito, é se ele deixou matéria no mundo: fenômeno puro (fogo, raio, o gelo que evapora ao acertar) é absorvido só pela Centelha; matéria conjurada (a lança de gelo que se pega) ou matéria pré-existente (o cascalho do chão, a água do rio) entra nas trilhas normais, no modo que o formato pedir (lança = Perfuração, pedra = Impacto).",
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {

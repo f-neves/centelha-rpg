@@ -1,0 +1,301 @@
+# O Arcano (documento-base da revisão)
+
+Este documento fecha o desenho da **feitiçaria** do Centelha: o que ela é no mundo,
+como se organiza em Artes e Efeitos, e como cada peça funciona na mesa. Serve de base
+para reescrever o capítulo XIV, criar o arquivo de dados dos Efeitos e ajustar
+`regras.json` e o bestiário.
+
+Referência de origem: os **Paths** do livro *Sorcerer* (magia linear, com efeitos
+escritos por nível), adaptados à régua de 6 níveis do Centelha. O lore de apoio está
+em `lore/Lore_Centelha.md`.
+
+O que ainda depende de decisão está na seção **Pendências**, no fim, com a proposta
+de partida de cada uma.
+
+---
+
+## 1. Vocabulário: uma palavra por conceito
+
+| Palavra | O que é |
+|---|---|
+| **Arcano** | O campo e o capítulo. O fenômeno inteiro. |
+| **Arte** | Cada linha comprável (Fogo, Cura, Sombra). É o Path do *Sorcerer*. |
+| **Feitiçaria** | O ofício, a prática de quem estuda. É como o mundo fala. |
+| **Feitiço** | Uma conjuração concreta, rápida. |
+| **Efeito** | O resultado específico comprado dentro de uma Arte. |
+| **Ritual** | O modo lento de conjurar (ver Pendência 3). |
+| **Magia** | Palavra frouxa do povo: cobre item, criatura, milagre e feitiço. Não é termo técnico. |
+
+---
+
+## 2. O que a feitiçaria é
+
+A **Proeza vem de dentro**: é o corpo, a voz e a mente do indivíduo levados além do que
+a espécie alcança. O **Arcano vem de fora**: é o ambiente obedecendo a quem sabe pedir
+na língua certa.
+
+Todo ser vivo carrega um estilhaço da Primeira Luz. A Centelha é o que dá ao feiticeiro
+autoridade sobre o ambiente, mas sozinha não faz nada: é ferramenta, não instrução. O que
+transforma Centelha em fogo é o **conhecimento**, as técnicas e fórmulas que descrevem
+como o mundo se dobra para produzir aquele efeito. O feiticeiro não impõe vontade ao
+mundo; ele conhece o caminho pelo qual o mundo já pode ir, e o percorre.
+
+Por isso a feitiçaria se aprende, se anota, se ensina e se rouba. E por isso ela pôde ser
+**perdida**: quando o colapso queimou as bibliotecas e a supressão fez as sociedades
+odiarem o estudo, o que se perdeu não foi a Centelha do mundo, foi a instrução. As Proezas
+atravessaram o colapso porque moram no corpo de quem as tem. A magia quase morreu porque
+morava em livros e em escolas.
+
+Dois desdobramentos que valem para a mesa:
+
+- **Grimório é tesouro.** Achar um livro da era perdida vale tanto quanto achar ouro,
+  porque XP paga o treino, não o acesso.
+- **A mesma coisa por caminhos diferentes.** O nevoeiro do colégio e o nevoeiro que a xamã
+  aprendeu com a avó produzem a mesma neblina por fórmulas distintas, e nenhum dos dois
+  está errado. É o payoff do "sem verdade única" do lore.
+
+---
+
+## 3. A estrutura: Arte, gabarito e Efeito
+
+**A Arte dá o elemento em estado bruto**, no tamanho do nível. Fogo 1 acende e apaga uma
+tocha, arremessa um dardo, põe fogo na arma por um instante, aquece o corpo no frio. Fogo 2
+faz o mesmo em escala maior: fogueira pequena, dardo que queima por mais de um turno, fogo
+na arma pela cena.
+
+**O Efeito dá forma, nome e comportamento.** Muro, aura, neblina, arma conjurada, metal
+incandescente, círculo de invocação.
+
+> **Régua de corte:** se o efeito precisa de um substantivo próprio para ser descrito,
+> é Efeito. "Fogo" é Arte. "Muro" é Efeito. Subir a Arte não substitui o Efeito, porque
+> muro não é fogo maior: é fogo com forma.
+
+Consequência desejada: **dois feiticeiros de Fogo 3 são personagens diferentes**, porque o
+repertório de Efeitos de cada um conta onde ele estudou.
+
+### O mesmo Efeito em Artes diferentes
+
+O Efeito descreve **o resultado**; cada Arte que o comporta descreve **o sabor e o efeito
+colateral**. Neblina por Água é nuvem densa que encharca e abafa som; por Gelo é nevoeiro
+que morde de frio; por Terra é poeira que engasga.
+
+Regras: se o feiticeiro já conhece o Efeito por uma Arte, **não paga XP de novo** para
+usá-lo por outra, apenas treino. Mas precisa **ter cada Arte no nível do Efeito** para
+usá-lo por ela.
+
+---
+
+## 4. Absorção: o que a armadura para
+
+> **Teste de mesa:** se o golpe deixou matéria no mundo, a armadura conta. Se não sobra
+> nada no chão, só a Centelha absorve.
+
+Três casos:
+
+1. **Fenômeno puro.** O elemento agindo como energia e se desfazendo no instante. Baforada
+   de fogo, descarga de raio, o ataque de gelo com cara de lança que evapora ao acertar.
+   Armadura não protege.
+2. **Matéria conjurada.** A Arte fabricou um objeto real, que existe antes e depois do
+   golpe e pode ser empunhado, largado ou entregue a outra pessoa. Trilhas normais, e o modo
+   sai do formato: lança é Perfuração, marreta de pedra é Impacto.
+3. **Matéria pré-existente.** A Arte moveu o que já estava lá: o cascalho do chão, a água do
+   rio, a telha do teto. Trilhas normais.
+
+**Conjurar matéria é uma escolha com dois lados.** Você fica absorvível e em troca ganha o
+objeto de verdade: corta, esmaga ou perfura conforme a forma, pode ser passado a um aliado,
+e abre efeitos secundários como sangramento.
+
+Correção pendente no dado: `regras.json → arcano.resistencia.armadura` ainda diz que a
+Absorção de armadura conta normalmente contra dano mágico. **Armaduras só protegem contra
+dano físico.**
+
+---
+
+## 5. Mostradores
+
+Cada Arte tem cinco mostradores, mas **nem sempre os mesmos cinco**. Os que não fazem
+sentido são substituídos, e a substituição é fixa e escrita na Arte.
+
+Base das Artes elementais, por nível 1 a 6:
+
+| Mostrador | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| Alcance | toque | 5 m | 20 m | 50 m | 150 m | 500 m |
+| Área | 0,25 m² | 1 m² | 5 m² | 15 m² | 50 m² | 150 m² |
+| Alvos | 1 | 2 | 4 | 10 | 20 | 50 |
+| Dano | 1d6 por nível (ver seção 6) | | | | | |
+| Duração | ver abaixo | | | | | |
+
+**Duração corre em duas réguas.** Efeito agudo (dano, força bruta, controle direto) anda em
+turnos e cenas. Efeito brando (aquecer o corpo, camuflagem, sorte, proteção) anda em minutos,
+horas e dias. Quanto mais extremo o efeito, menor a escala de tempo.
+
+Substituições por Arte (aprovado):
+
+- **Cura** perde Área e ganha **Gravidade** (arranhão, ferimento sério, membro inutilizado,
+  morte recente).
+- **Fascinação e Ofuscação** trocam Potência por **Profundidade** (impulso, convicção,
+  lealdade, memória) e Área por **Plateia** (quantos olhos são enganados de uma vez).
+- **Adivinhação e Fortuna** trocam Alcance por **Distância no tempo** e Potência por
+  **Nitidez**.
+- **Conjuração e Espírito** trocam Potência por **Porte do que se chama** e Duração por
+  **Firmeza do vínculo**.
+- **Metamorfose** troca Área por **Quanto do corpo** e mantém Duração como o mostrador caro.
+- **Natureza** mantém Área, que fica grande cedo (o efeito é sobre terreno), com Potência
+  baixa em troca.
+
+### Os mostradores dentro de um Efeito
+
+Cada Efeito **traz os próprios mostradores escritos**, no espírito dos charms de Exalted, para
+não sobrar dúvida na mesa. Nem todo Efeito usa os cinco: a Neblina, por exemplo, tem Alcance
+(distância até onde ela nasce), Área e Duração, e não tem Dano nem Alvos.
+
+Um Efeito **pode passar do gabarito do nível dele em um mostrador** quando fizer sentido: a
+Neblina é nível 1 e mesmo assim cobre área maior que a de um efeito comum de nível 1. É
+justamente isso que a torna um Efeito e não improviso.
+
+Parâmetros secundários também vêm escritos no Efeito quando existirem: volume no lugar de
+área, comprimento no lugar de área, dano diferente do básico, veneno, dano incapacitante,
+penalidades impostas, visibilidade, dificuldade de travessia, e o que mais o Efeito exigir.
+
+---
+
+## 6. Dano, empurrão e tempo
+
+### Dano por Arte
+
+| Arte | Dano | Absorção | Marca |
+|---|---|---|---|
+| Fogo | 1d6 por nível | só Centelha | queima continuada |
+| Raio | 1d6 por nível | só Centelha | rápido e preciso |
+| Terra | **2d6 por nível** | Impacto, normal | empurra; pedra grande dói mesmo |
+| Água | 1d6 por nível, Impacto | Impacto, normal | empurra; a menos letal |
+| Gelo | 1d6 por nível | depende: fenômeno não, matéria sim | prender e retardar |
+| Ar | **sem dano direto** | n/a | empurrar, derrubar, desarmar, negar projéteis |
+| Luz | 1d6 por nível, **agravado**, e **só** contra quem tem fraqueza | ignora resistência | cegar e revelar |
+| Sombra | **sem dano direto**; os Efeitos dela ferem (Impacto que **ignora armadura**) | ignora armadura | esconder, agarrar, sufocar, amedrontar |
+
+Referência para calibragem: as armas dão de 1 a 3 dados por peso mais o fixo da Força. Um
+montante com Força 4 fica em 3d6+8. Um alvo de Vigor 4 e Centelha 3 absorve 7 de Impacto sem
+armadura e 11 com placa completa, contra 3 de qualquer dano de energia.
+
+### Empurrão
+
+Terra, Água e Ar empurram. Proposta em discussão (ver Pendência 2):
+
+> Metros = [valor de empurrão − (Força + Atletismo do alvo)] ÷ 4, mínimo zero. Empurrão de
+> 3 metros ou mais também derruba. Havendo obstáculo duro no caminho, o alvo para nele e
+> sofre 1d6 de Impacto a cada 3 metros que faltavam.
+
+Valor de empurrão: **dano bruto** para Terra, **metade do dano bruto** para Água, **nível × 6**
+para Ar, que não tem dano para usar de base.
+
+### Tempo de conjuração
+
+> Ticks = 4 + nível do Efeito + 1 para cada degrau que qualquer mostrador passa do nível dele.
+
+A Neblina de nível 1 com área dois degraus acima gasta 4 + 1 + 2 = 7 Ticks. O mesmo número
+que justifica o Efeito ser especial é o que ele paga em tempo. O feitiço genérico continua na
+escada atual (5 Ticks nos níveis 1 a 3, 6 no 4, 7 nos 5 e 6): o genérico é o improviso
+pequeno, o Efeito é a obra ensaiada.
+
+---
+
+## 7. Custos
+
+| Coisa | XP |
+|---|---|
+| Nível de Arte | 10 × nível (por degrau) |
+| Efeito | 2 × nível |
+| Subir um Efeito escalonável | a diferença: 2 × novo − 2 × antigo |
+| Efeito já conhecido, usado por outra Arte sua | zero, só treino |
+
+O nível do Efeito sai do **tamanho e da potência**: nuvem de poeira 1, tremor que derruba 2,
+arma elemental que dura a cena 2, terremoto que abre a terra 4, onda que arrasta 4. Congelar
+um volume de água pode ser qualquer nível, conforme o volume.
+
+**Mana = nível do Efeito.** Só se compra Efeito até o nível que se tem na Arte. **Não há teto
+de quantidade**: o limite é o XP que o jogador quer investir.
+
+Efeito escalonável (vibração, tremor, terremoto; ou cura de corte pequeno, médio, grande,
+amputação) não se compra duas vezes: ao alcançar o nível maior, paga só a diferença.
+
+---
+
+## 8. Dano agravado
+
+Conceito novo, criado para o Luz e para o que vier depois.
+
+> Dano agravado não é absorvido por nada, nem armadura nem Absorção natural, e não fecha com
+> descanso nem com a perícia Cura. Só sara com tempo longo (semanas) ou com a Arte de Cura.
+> Contra criaturas que ignoram ou reduzem dano comum, o agravado passa direto.
+
+---
+
+## 9. Fraquezas e resistências (bestiário)
+
+Não é coisa comum: a maioria das criaturas não tem nenhuma. Mas o sobrenatural tem, e o
+material de que a criatura é feita também manda.
+
+- **Por natureza sobrenatural:** vampiro com sol, prata e fogo; lobisomem com prata; demônio
+  com o sagrado; anjo com o profano.
+- **Por material:** criatura de folha, madeira, palha ou gelo tem fraqueza a fogo; criatura de
+  fogo ou de terra tem fraqueza a água; criatura de metal ou pedra tem resistência a fogo.
+
+Campo novo no bestiário, a criar: `fraquezas` e `resistencias`, listas de palavras-chave
+(`luz`, `sagrado`, `profano`, `fogo`, `agua`, `prata`, `sol`). O bestiário tem 308 criaturas,
+das quais 32 são Corruptor e 15 Morto-vivo, ou seja, o alvo natural do Luz é cerca de 15% do
+livro. Luz é Arte de especialista: contra o resto ela vale por cegar e revelar.
+
+Falta definir o que fraqueza e resistência fazem **em número** para os outros elementos (o Luz
+já está definido: agravado, ignora resistência). Ver Pendência 4.
+
+---
+
+## 10. Pendências
+
+**1. Esticar o mesmo Efeito pagando mais tempo e mais Mana.** O autor quer poder produzir um
+resultado maior do mesmo Efeito investindo mais tempo de conjuração e mais Mana, sem comprar
+outro Efeito. Ponto de partida: cada degrau a mais num mostrador custa +1 Mana e +2 Ticks, com
+teto no nível de Arte que o personagem tem. Falta decidir se o teto é esse, se vale para
+qualquer mostrador e se o Ritual escapa do teto.
+
+**2. Empurrão.** A fórmula da seção 6 é proposta, não decisão. Discutir a divisão por 4, o
+limiar de derrubada e o valor de empurrão do Ar.
+
+**3. Rituais.** Hoje o capítulo define Ritual como o modo lento, fora de combate, com metade do
+Mana e escala maior. Na conversa apareceu também o uso de "Ritual" para efeito duradouro ou
+passivo (arma flamejante pela cena, vento que derruba flechas). São coisas diferentes e não
+podem dividir o nome. Proposta de partida: **duração é só um mostrador**, então efeito
+duradouro é Efeito com duração alta, e **Ritual volta a ser só o modo de conjurar** (lento,
+fora de combate, metade do Mana, escala grande), com alguns Efeitos existindo apenas nesse
+modo, como o círculo de invocação.
+
+**4. Números de fraqueza e resistência.** Definir o efeito mecânico para os elementos que não
+sejam Luz: fraqueza vira dano agravado, dano dobrado ou dado extra? Resistência reduz pela
+metade, aplica Absorção onde não haveria, ou anula?
+
+**5. Trilhas de ensino.** Como a feitiçaria é ensinada, e o que cada trilha abre. Proposta de
+partida: universidade (as regiões blindadas da supressão, estudo formal, exige Ocultismo alto e
+acesso a livros), linhagem (um mestre por vez, oral e secreta: xamã, vidente, cigano,
+ocultista), culto ou pacto (a Arte vem do laço com deus, espírito ou ancestral) e autodidata
+(decifrou um grimório sozinho, barato em contato social e caro em lacunas). Cada trilha diria
+quais Artes são fáceis de achar e quais são quase impossíveis sem a porta certa.
+
+**6. Metal.** Arte elemental desenhada e **engavetada** por ora: mexe no equipamento próprio e
+alheio (afia, enferruja, aquece a armadura no corpo, arranca a arma da mão, reduz Absorção),
+com gancho forte na "magia de ofício" dos anões.
+
+---
+
+## 11. Próximos passos
+
+1. Fechar as pendências 1 a 4.
+2. Reescrever o capítulo XIV com a abertura para jogador iniciante (seções 2 a 4 deste
+   documento em prosa).
+3. Criar `src/data/efeitos.json` no mesmo formato das Artes, com os mostradores escritos por
+   Efeito, e ligar na ficha e na página do Arcano.
+4. Corrigir `regras.json`: armadura só protege contra dano físico; incluir dano agravado,
+   empurrão e a fórmula de Ticks dos Efeitos.
+5. Adicionar `fraquezas` e `resistencias` ao bestiário e preencher.
+6. Escrever Luz e Sombra em `artes.json` (6 níveis cada, no formato atual).
