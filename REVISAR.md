@@ -163,11 +163,16 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
 - ⏳ **A DECIDIR: melhorar a relação Feitiçaria x Ocultismo.** Hoje Ocultismo é só a perícia de
   rolagem, sem requisito de acesso. Rever se e como Ocultismo (ou outra coisa) volta a condicionar
   o aprendizado, junto do item abaixo.
-- ⏳ **CRIAR: Trilhas de Feitiçaria.** Detalhar **como a feitiçaria é ensinada pelo mundo** e os
-  **requisitos de cada tipo de trilha** (ex.: linhagem/sangue, pacto, estudo acadêmico, iniciação
-  em ordem, dom natural do Desperto...). Cada trilha define pré-requisitos próprios para aprender e
-  aprofundar Artes (substituindo a antiga trava única de Ocultismo). Rever os exemplos do
-  "mortal-tocado" à luz das trilhas quando existirem.
+- 🚧 **Trilhas de Feitiçaria — framework rascunhado (2026-07-28).** Doc de trabalho
+  **`Trilhas_Feiticaria.md`** (raiz). Modelo: Trilha = **caminho de aprendizado de uma Arte**, peso
+  mecânico **não impeditivo**, relação **muitos-para-muitos** (Arte↔Trilha), cada Trilha pede **treino
+  em perícias/virtudes** + **custos de ficção**. **6 Tradições:** Erudição · Sangue/Antecedente · Pacto ·
+  Iniciação · Marcial · Xamânica/Totêmica. Não muda conjuração (Ocultismo+Atributo), XP/nível nem o
+  portão da Centelha; Ocultismo deixa de ser trava universal e vira o treino típico da Erudição.
+  **Decisões pendentes (seção 6 do doc):** conjuração por Tradição?, nível do treino (escala c/ nível da
+  Arte?), escopo do catálogo (21 Artes agora ou depois), onde mora no site (`trilhas.json` + Arcano?),
+  criar perícias Meditação/Ciências. Ao travar: portar ao site e revisar o "mortal-tocado" (Bram =
+  Erudição). Fecha de tabela a relação Feitiçaria×Ocultismo.
 
 ## Papel das Virtudes (RESOLVIDO 2026-07-27)
 
