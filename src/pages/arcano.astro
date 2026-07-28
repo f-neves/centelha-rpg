@@ -2,7 +2,29 @@
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
+import regras from '../data/regras.json';
 const d = await loadData();
+const G = (regras as any).arcano.improviso.graus;
+const ESTICAR = (regras as any).arcano.esticar;
+// linhas da tabela de graus (0 a 6), na ordem em que aparecem na página
+const LINHAS_GRAU: [string, string[]][] = [
+  ['Alcance', G.alcance],
+  ['Área', G.area],
+  ['Alvos', G.alvos],
+  ['Dano', G.dano],
+  ['Duração aguda', G.duracaoAguda],
+  ['Duração branda', G.duracaoBranda],
+];
+// exemplos de quantos pontos cada feiticeiro tem: [Arte, Centelha]
+const EX_PONTOS: [number, number, string][] = [
+  [1, 1, 'dardo de 1d6 a 5 m; ou 1d6 em dois alvos, por toque'],
+  [3, 3, '3d6 a 50 m num alvo; ou 3d6 a 20 m em quatro alvos'],
+  [6, 3, '6d6 a 500 m; ou 4d6 a 150 m durando uma cena'],
+  [6, 6, '6d6 a 500 m em quatro alvos'],
+];
+const esticarRapido = [0, 1, 2, 3].map((n) => ({
+  n, mana: 2 ** (n + 1) - 1, speed: n + 1,
+}));
 const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
 const Arte = (a: any) => a;
@@ -12,9 +34,9 @@ const Arte = (a: any) => a;
   <h1>O Arcano</h1>
   <p class="lead">A feitiçaria é a quarta trilha das Proezas — e a única que de fato <em>quebra</em> as regras do mundo. Ela se aprende em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um.</p>
 
-  <p>Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana = nível do efeito</strong>. Dentro do seu nível, você improvisa efeitos compatíveis.</p>
+  <p>Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana</strong>. Dentro do seu nível, você monta o efeito girando os mostradores.</p>
 
-  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong> — rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1–2, <strong>6</strong> no 3, <strong>7</strong> nos 4–5), mais o Mana. &nbsp; <strong>Ritual</strong> — lento, fora de combate: metade do Mana <em>e</em> alcança escalas que nenhum Feitiço atinge.</div>
+  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. &nbsp; <strong>Ritual</strong>, lento, fora de combate: troca Mana por tempo e Força de Vontade, e alcança escalas que nenhum Feitiço atinge.</div>
 
   <section class="arcano-regras">
     <h2>Conjurar e resistir</h2>
@@ -33,33 +55,97 @@ const Arte = (a: any) => a;
     </div>
     <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais.</p>
 
-    <h2>Improviso: os mostradores</h2>
-    <p>O efeito impresso de cada nível é apenas o <strong>gabarito</strong> — a forma típica daquele patamar. Dentro do seu nível você molda a magia girando cinco <strong>mostradores</strong>:</p>
+    <h2>Os mostradores</h2>
+    <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração girando os mostradores. Todo mostrador começa no <strong>grau 0</strong>, que é de graça e é o mínimo de qualquer feitiço: toque, um alvo, instantâneo, sem dano. Subir um grau custa <strong>1 ponto</strong>.</p>
     <div class="table-wrap">
-      <table>
-        <thead><tr><th>Mostrador</th><th>Do mínimo…</th><th>…ao máximo</th></tr></thead>
+      <table class="graus-tab">
+        <thead><tr><th>Mostrador</th><th>0 <span class="muted">grátis</span></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
         <tbody>
-          <tr><td><strong>Alcance</strong></td><td>toque</td><td>curto → médio (à vista) → longo</td></tr>
-          <tr><td><strong>Área</strong></td><td>um alvo</td><td>pequena → uma sala → um campo</td></tr>
-          <tr><td><strong>Alvos</strong></td><td>1</td><td>poucos → um grupo → uma multidão</td></tr>
-          <tr><td><strong>Duração</strong></td><td>instantâneo</td><td>rodadas → a cena → horas → permanente</td></tr>
-          <tr><td><strong>Potência</strong></td><td>mínima</td><td>o dano/intensidade do gabarito → além</td></tr>
+          {LINHAS_GRAU.map(([nome, vals]) => (
+            <tr><td><strong>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
+          ))}
         </tbody>
       </table>
     </div>
-    <p><strong>Rearranjar é livre:</strong> encolha um mostrador para esticar outro de igual passo (mirre a área para dobrar o alcance) sem mudar o custo. <strong>Ultrapassar o gabarito</strong> custa: cada passo a mais num mostrador conta como <strong>+1 nível efetivo</strong> — mais <strong>+1 Mana</strong> (a Centelha só precisa estar acesa). Num Feitiço, o nível efetivo nunca passa do <strong>nível que você tem na Arte</strong>.</p>
+    <p class="muted">{G.notaDuracao} {G.notaDano}</p>
+
+    <h2>Quantos pontos você tem</h2>
+    <div class="callout regra"><span class="lbl">A conta</span>
+      <strong>Pontos = (nível da Arte × 2) + Centelha.</strong> Nenhum mostrador passa do <strong>nível da Arte</strong>, e o <strong>Mana gasto é o maior grau usado</strong>. Não se rola nada para distribuir: a rolagem de <strong>Ocultismo + Atributo</strong> serve para acertar e vencer a resistência. Em resumo: <em>Ocultismo acerta, Arte e Centelha modelam.</em>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Feiticeiro</th><th>Pontos</th><th>Teto por mostrador</th><th>Exemplos de alocação</th></tr></thead>
+        <tbody>
+          {EX_PONTOS.map(([arte, centelha, ex]) => (
+            <tr>
+              <td>Arte {arte}, Centelha {centelha}</td>
+              <td class="num">{arte * 2 + centelha}</td>
+              <td class="num">{arte}</td>
+              <td>{ex}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>Repare que os pontos nunca dão para levar tudo ao máximo: com a Arte no 6 e Centelha 6 são 18 pontos, e três mostradores no grau 6 já custariam 18 sozinhos. <strong>Toda conjuração é uma escolha</strong>, do primeiro nível ao último. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
+
+    <h2>Passar do seu limite</h2>
+    <p>Dá para conjurar acima do grau que a sua Arte alcança, e até acima do seu próprio nível de Arte. Custa caro, e você escolhe se paga em <strong>Mana</strong> ou em <strong>tempo</strong>.</p>
+
+    <h3>Pela força: o modo rápido</h3>
+    <p>Cada grau a mais <strong>dobra o custo acumulado de Mana</strong> e <strong>soma outra vez o tempo base</strong>.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Graus acima</th><th>Mana</th><th>Speed</th><th>Exemplo: Gelo 2 (2 de Mana, Speed 5)</th></tr></thead>
+        <tbody>
+          {esticarRapido.map((e) => (
+            <tr>
+              <td class="num">{e.n}</td>
+              <td class="num">×{e.mana}</td>
+              <td class="num">×{e.speed}</td>
+              <td>dardo de {e.n + 2}d6 · {e.mana * 2} de Mana · Speed {e.speed * 5}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">A exponencial é o freio: um efeito de base 4 já custa 12 de Mana para subir um grau só. E forçar nunca compensa contra quem estudou: sair de Fogo 1 para um dardo de 4d6 custa 15 de Mana e Speed 20, contra 4 de Mana e Speed 6 de quem tem Fogo 4.</p>
+
+    <h3>Pela paciência: o modo lento</h3>
+    <p>Com tempo e sossego, o mesmo salto sai muito mais barato em Mana, e caro em relógio. Cada grau custa <strong>+1 vez o Mana base</strong>, <strong>1 de Força de Vontade</strong>, e sobe um passo na escada de tempo.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Graus acima</th><th>Mana</th><th>Vontade</th><th>Tempo</th></tr></thead>
+        <tbody>
+          {ESTICAR.lento.escadaTempo.map((t: string, i: number) => (
+            <tr><td class="num">{i}</td><td class="num">×{i + 1}</td><td class="num">{i}</td><td>{t}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">A escada acaba em dois dias, então o teto natural é <strong>cinco graus acima</strong>. Quem tem a Arte no nível 1 e quer o equivalente ao nível 5 passa <strong>24 horas conjurando</strong>. O modo lento só serve para o que fica de pé (muro, neblina, arma encantada, círculo de invocação): ninguém prepara um dardo por dez minutos para arremessar.</p>
 
     <h2>Conjuração composta</h2>
     <p>Você pode trançar <strong>várias Artes numa única conjuração</strong> — o mesmo idioma dos combos de Técnica. Junte K Artes e pague a <strong>soma dos Manas + uma sobretaxa progressiva de +(k−1)</strong> (a 2ª Arte +1, a 3ª +2…). É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem a escada dele.</p>
     <p class="formula">Fogo (Labareda, nível 3) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 3 + 1 + <strong>1</strong> de sobretaxa = <strong>5</strong>, numa conjuração só.</p>
 
-    <h2>Rituais: a alta magia</h2>
-    <p>Com tempo e sossego, a feitiçaria deixa de ser dardo e vira obra. O Ritual roda como <strong>ação estendida</strong> (Dificuldade + Intervalo + Acúmulo de sucessos ao longo de minutos ou horas) e dá <strong>duas dádivas</strong>:</p>
-    <ul>
-      <li><strong>Economia</strong> — paga <strong>metade do Mana</strong> (arredondado para cima).</li>
-      <li><strong>Escala</strong> — empurra os mostradores <em>muito</em> além do que um Feitiço comporta: cobrir uma vila, durar até a próxima lua, lavrar uma maldição permanente. O efeito-<em>base</em> ainda não passa do nível de Arte que você domina — um mestre de Fogo nível 3 incendeia um casarão inteiro, mas não invoca o Cataclismo do nível 6.</li>
-    </ul>
-    <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e dados ao Acúmulo. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
+    <h2>Rituais</h2>
+    <p><strong>Ritual é o nome do modo lento</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é um Ritual: é um feitiço com o mostrador de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, e o que ele compra é escala: cobrir uma vila, durar até a próxima lua, lavrar uma maldição.</p>
+    <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e Vontade. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
+
+    <div class="callout revisao"><span class="lbl">Em revisão</span>
+      Esta parte do capítulo está sendo reescrita. Ainda falta definir:
+      <ul>
+        <li>Guardar um feitiço pronto para soltar depois (a ideia atual é penalizar o Raciocínio enquanto ele estiver comitado).</li>
+        <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo.</li>
+        <li>O que <strong>fraqueza</strong> e <strong>resistência</strong> fazem em número para os elementos que não são Luz, e o preenchimento disso no bestiário.</li>
+        <li>As <strong>6 trilhas de ensino</strong> da feitiçaria.</li>
+        <li>Se os mostradores das Proezas e os do Arcano continuam em escalas diferentes ou se unificam.</li>
+        <li>As Artes de <strong>Luz</strong> e <strong>Sombra</strong>, já desenhadas, ainda não escritas aqui.</li>
+        <li>Reescrever os seis níveis de cada Arte como exemplos de alocação, já que a mecânica agora vem dos mostradores.</li>
+      </ul>
+    </div>
   </section>
 
   {[['As Seis Artes Elementais', elem], ['As Quinze Artes Universais', univ]].map(([titulo, lista]) => (
@@ -86,6 +172,11 @@ const Arte = (a: any) => a;
 </Base>
 
 <style>
+  .graus-tab { font-size: .88rem; }
+  .graus-tab td, .graus-tab th { white-space: nowrap; }
+  .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
+  .callout.revisao ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+  .callout.revisao li { margin-bottom: .2rem; }
   .arte-head { display: flex; align-items: center; gap: .5rem; }
   .arte-nome { color: var(--accent); font-size: 1.15rem; flex: 1; }
   .arte-conj { font-size: .82rem; font-style: italic; margin-bottom: .4rem; }

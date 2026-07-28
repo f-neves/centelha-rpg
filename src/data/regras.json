@@ -1018,23 +1018,56 @@
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {
-      "regra": "O efeito impresso é o GABARITO daquele nível. Rearranjar mostradores de igual passo é livre (encolher um para esticar outro). Cada passo ACIMA do gabarito num mostrador conta como +1 nível efetivo: +1 Mana (a Centelha só precisa estar acesa, > 0). A trava de nível por Ocultismo foi removida; a relação Feitiçaria x Ocultismo será refeita nas Trilhas de Feitiçaria.",
-      "mostradores": [
-        "alcance",
-        "área",
-        "alvos",
-        "duração",
-        "potência"
-      ],
-      "tetoFeitico": "nível efetivo ≤ nível de Arte que você conhece (basta Centelha > 0)"
+      "regra": "O efeito genérico da Arte se monta distribuindo PONTOS pelos mostradores. Todo mostrador começa no grau 0 (grátis) e custa 1 ponto por grau, linear. Nenhum mostrador passa do nível da Arte; para passar, ver `esticar`. O Mana gasto é o MAIOR grau usado. Não há rolagem para distribuir: a rolagem (Ocultismo + Atributo) é só para acertar/vencer a resistência. Efeito COMPRADO já vem com os mostradores impressos e não se distribui nada nele.",
+      "pontos": "(nível da Arte × 2) + Centelha",
+      "custoPorGrau": 1,
+      "tetoPorMostrador": "nível da Arte",
+      "mana": "o maior grau usado na conjuração",
+      "graus": {
+        "nota": "Grau 0 é o mínimo grátis de todo feitiço: toque, um alvo, instantâneo, sem dano.",
+        "alcance": ["toque", "5 m", "20 m", "50 m", "150 m", "500 m", "1,5 km"],
+        "area": ["um alvo · 0,25 m²", "1 m²", "5 m²", "15 m²", "50 m²", "150 m²", "500 m²"],
+        "alvos": ["1", "2", "4", "10", "20", "50", "150"],
+        "dano": ["nenhum", "1d6", "2d6", "3d6", "4d6", "5d6", "6d6"],
+        "duracaoAguda": ["instantâneo", "1 turno", "3 turnos", "1 cena", "10 minutos", "1 hora", "6 horas"],
+        "duracaoBranda": ["instantâneo", "1 cena", "1 hora", "6 horas", "1 dia", "1 semana", "1 mês"],
+        "notaDano": "Terra dobra o dado: cada grau de dano dela vale 2d6. Ar e Sombra não têm mostrador de dano.",
+        "notaDuracao": "A régua aguda vale para dano e controle direto; a branda para proteção, camuflagem e efeitos suaves."
+      }
+    },
+    "esticar": {
+      "nota": "Passar do que está impresso, ou do próprio nível de Arte. Duas vias, à escolha do feiticeiro.",
+      "rapido": {
+        "regra": "Cada grau acima dobra o custo acumulado de Mana e soma outra vez o tempo base.",
+        "mana": "base × (2^(n+1) − 1)",
+        "speed": "base × (n + 1)",
+        "exemplo": "Gelo 2: dardo de 2d6 por 2 de Mana e 5 de Speed; 3d6 por 6 e 10; 4d6 por 14 e 15."
+      },
+      "lento": {
+        "regra": "Troca Mana por tempo: cada grau acima custa +1 vez o Mana base (linear), 1 de Força de Vontade, e sobe um passo na escada de tempo.",
+        "mana": "base × (n + 1)",
+        "vontade": "1 por grau",
+        "escadaTempo": ["Speed base em Ticks", "6 minutos", "60 minutos", "6 horas", "24 horas", "2 dias"],
+        "teto": "+5 graus (a escada de tempo acaba em 2 dias)",
+        "uso": "só faz sentido para o que fica de pé (muro, neblina, arma encantada, círculo); ninguém prepara um dardo por dez minutos."
+      }
+    },
+    "efeitos": {
+      "nota": "Efeito é o resultado específico comprado dentro de uma Arte (o Special Effect do Sorcerer). A Arte dá o elemento em estado bruto; o Efeito dá forma, nome e comportamento. Régua: se precisa de um substantivo próprio para ser descrito, é Efeito.",
+      "xp": "2 × nível do Efeito",
+      "upgrade": "efeito escalonável paga só a diferença: 2 × novo − 2 × antigo",
+      "outraArte": "Efeito que você já sabe e que cabe em outra Arte sua não custa XP, só treino; mas é preciso ter cada Arte no nível do Efeito",
+      "compra": "só até o nível que você tem na Arte; sem teto de quantidade",
+      "ticks": "4 + nível do Efeito + 1 por grau que qualquer mostrador passe do nível dele"
     },
     "composta": {
       "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos Manas + sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior nível.",
       "sobretaxaPorK": "(k−1)"
     },
     "ritual": {
-      "manaMetade": "metade do Mana (arredonda para cima)",
-      "escala": "empurra os mostradores muito além do limite de um Feitiço (grande área, duração longa ou permanente, efeitos impossíveis em combate) — mas o efeito-base não ultrapassa o nível de Arte que você conhece.",
+      "definicao": "Ritual é o MODO LENTO de conjurar (ver `esticar.lento`): troca Mana por tempo e Força de Vontade. Efeito duradouro não é Ritual: duração é só um mostrador.",
+      "manaMetade": "REVISAR: a regra antiga de metade do Mana é substituída pelo custo linear do modo lento.",
+      "escala": "empurra os mostradores muito além do limite de um Feitiço (grande área, duração longa ou permanente, efeitos impossíveis em combate), inclusive acima do nível de Arte que você conhece.",
       "acao": "estendida (Dif + Intervalo + Acúmulo)",
       "cooperacao": "vários feiticeiros que conheçam a Arte somam Mana e dados na ação estendida",
       "backlash": false

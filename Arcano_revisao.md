@@ -399,12 +399,23 @@ com gancho forte na "magia de ofício" dos anões.
 
 ## 11. Próximos passos
 
-1. Fechar as pendências 1 a 4.
-2. Reescrever o capítulo XIV com a abertura para jogador iniciante (seções 2 a 4 deste
-   documento em prosa).
-3. Criar `src/data/efeitos.json` no mesmo formato das Artes, com os mostradores escritos por
-   Efeito, e ligar na ficha e na página do Arcano.
-4. Corrigir `regras.json`: armadura só protege contra dano físico; incluir dano agravado,
-   empurrão e a fórmula de Ticks dos Efeitos.
-5. Adicionar `fraquezas` e `resistencias` ao bestiário e preencher.
-6. Escrever Luz e Sombra em `artes.json` (6 níveis cada, no formato atual).
+**Feito**
+
+- `regras.json → arcano`: armadura só contra dano físico; graus 0 a 6 dos mostradores; pontos
+  de distribuição; esticar rápido e lento; bloco `efeitos` (XP, upgrade, Ticks); Ritual
+  redefinido como o modo lento.
+- Capítulo XIV (`/arcano`): tabelas de mostradores, pontos, esticar rápido e esticar lento,
+  puxadas de `regras.json`, mais um bloco "Em revisão" com o que falta definir.
+
+**A fazer**
+
+1. Fechar as pendências da seção 10.
+2. Reescrever a abertura do capítulo para jogador iniciante (seções 2 a 4 deste documento em
+   prosa).
+3. Criar `src/data/efeitos.json` no formato das Artes, com os mostradores escritos por Efeito,
+   e ligar na ficha e na página do Arcano.
+4. Incluir em `regras.json` o dano agravado e a regra de empurrão, quando fechar.
+5. Adicionar `fraquezas` e `resistencias` ao bestiário e preencher (depende da pendência 4).
+6. Escrever Luz e Sombra em `artes.json`.
+7. Reescrever os seis níveis das 21 Artes como exemplos de alocação, já que a mecânica passou
+   para os mostradores.
