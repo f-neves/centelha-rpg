@@ -1052,6 +1052,24 @@
         "uso": "só faz sentido para o que fica de pé (muro, neblina, arma encantada, círculo); ninguém prepara um dardo por dez minutos."
       }
     },
+    "guardar": {
+      "nota": "Conjurar agora e soltar depois. O feitiço fica COMITADO: o Mana já foi pago e a atenção do feiticeiro fica presa nele.",
+      "penalidadePassiva": "Raciocínio conta como um nível mais baixo em tudo que é calculado (Iniciativa, Defesa Mental e afins)",
+      "penalidadeAtiva": "−1d6 em qualquer rolagem que use Raciocínio",
+      "duracao": "enquanto o feitiço estiver guardado; soltá-lo ou desfazê-lo devolve o Raciocínio",
+      "aRevisar": "se a penalidade acumula por feitiço guardado, e se há teto de quantos dá para carregar"
+    },
+    "fraquezas": {
+      "nota": "Fraqueza e resistência não são comuns: a maioria das criaturas não tem nenhuma. Aparecem no sobrenatural (vampiro com sol, prata e fogo; lobisomem com prata; demônio com o sagrado; anjo com o profano) e no material de que a criatura é feita (folha, madeira, palha e gelo temem fogo; criatura de fogo ou de terra teme água; metal e pedra resistem ao fogo).",
+      "fraqueza": [
+        "o dano ignora TODA a Absorção, natural e de armadura",
+        "o dano é agravado: não fecha com descanso nem com a perícia Cura, só com tratamento específico ou a Arte de Cura",
+        "aparar de mãos nuas fere: quem tenta bloquear o golpe com o corpo sofre o dano do mesmo jeito"
+      ],
+      "exemplo": "Um elemental de madeira que tenta aparar uma lâmina feita inteira de fogo leva o dano cheio, sem absorver nada, e a queimadura não fecha sozinha.",
+      "resistencia": "A DEFINIR: proposta é o dano daquele elemento cair pela metade e nunca ser agravado.",
+      "campoBestiario": "criar `fraquezas` e `resistencias` na criatura, como listas de palavras-chave (luz, sagrado, profano, fogo, agua, prata, sol)"
+    },
     "efeitos": {
       "nota": "Efeito é o resultado específico comprado dentro de uma Arte (o Special Effect do Sorcerer). A Arte dá o elemento em estado bruto; o Efeito dá forma, nome e comportamento. Régua: se precisa de um substantivo próprio para ser descrito, é Efeito.",
       "xp": "2 × nível do Efeito",

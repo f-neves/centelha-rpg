@@ -107,7 +107,7 @@ flowchart TD
 - **Rola dado?** Só com oposição ou risco. Trivial, não. Pedido dentro do nível da relação, não.
 - **Ação comum:** Atributo + Perícia vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). Supera o alvo = sucesso; cada 6 acima = +1 Margem.
 - **Social x Mental:** passa pelo juízo = Social; contorna o juízo = Mental. (Ver [As Três Defesas](/regras/defesas).)
-- **Régua x Combate Social:** dia a dia = Régua (jogada única); cena grande e tensa = Combate Social (gastar Vontade para não ceder). (Ver [Combate e Relações Sociais](/regras/relacoes-sociais).)
+- **Régua x Combate Social:** dia a dia = Régua (jogada única); cena grande e tensa = Combate Social (gastar Vontade para não ceder). (Ver [Relações Sociais](/regras/relacoes-sociais).)
 - **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura (Valor).
 - **Defesa física:** desviou = Esquiva; aparou = Bloqueio (usa a maior).
 - **Percepção x Perspicácia:** o mundo = Percepção; as pessoas = Perspicácia.

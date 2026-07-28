@@ -348,6 +348,122 @@
     "pendente": false
   },
   {
+    "id": "luz",
+    "nome": "Luz",
+    "categoria": "elemental",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Clarão",
+        "efeito": "acende luz firme onde quiser; um lampejo que ofusca por um instante",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Ofuscar",
+        "efeito": "o feixe cega um alvo por alguns turnos; a luz denuncia quem se esconde por perto",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Feixe Ardente",
+        "efeito": "raio que queima o que teme a luz; revela o oculto e o disfarçado ao redor",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Aurora",
+        "efeito": "clarão que cega um grupo inteiro e desfaz camuflagem e invisibilidade na área",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Luz Inclemente",
+        "efeito": "nenhuma ocultação funciona na cena, e o que teme a luz queima enquanto ela durar",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
+        "nome": "Dia Artificial",
+        "efeito": "um segundo sol sobre a região: não há sombra onde se esconder, e nada das trevas resiste",
+        "custo": {
+          "mana": 6
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
+    "id": "sombra",
+    "nome": "Sombra",
+    "categoria": "elemental",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Penumbra",
+        "efeito": "apaga luz fraca e adensa a sombra ao redor; esconder-se nela fica fácil",
+        "custo": {
+          "mana": 1
+        }
+      },
+      {
+        "nivel": 2,
+        "nome": "Manto de Treva",
+        "efeito": "a escuridão se cola a você e a quem está junto, e vai junto quando anda",
+        "custo": {
+          "mana": 2
+        }
+      },
+      {
+        "nivel": 3,
+        "nome": "Mão de Sombra",
+        "efeito": "a treva ganha peso: empurra, segura, apaga som e assusta quem está dentro",
+        "custo": {
+          "mana": 3
+        }
+      },
+      {
+        "nivel": 4,
+        "nome": "Escuridão Viva",
+        "efeito": "engole uma área inteira; lá dentro ninguém vê, ninguém é visto e o ar pesa",
+        "custo": {
+          "mana": 4
+        }
+      },
+      {
+        "nivel": 5,
+        "nome": "Forma de Treva",
+        "efeito": "você mesmo vira sombra: passa por frestas, escorre, arma comum não o fere",
+        "custo": {
+          "mana": 5
+        }
+      },
+      {
+        "nivel": 6,
+        "nome": "Abismo",
+        "efeito": "a treva traga o que toca; a região vira uma boca escura da qual se sai perdido",
+        "custo": {
+          "mana": 6
+        }
+      }
+    ],
+    "aliases": [],
+    "pendente": false
+  },
+  {
     "id": "cura",
     "nome": "Cura",
     "categoria": "universal",

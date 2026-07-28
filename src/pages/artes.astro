@@ -29,9 +29,10 @@ const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
 const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase();
 ---
-<Base title="As Artes" largura="wide" descricao="As 21 Artes da feitiçaria em detalhe: efeitos, mostradores, regras e exemplos.">
+<Base title="As Artes" largura="wide" descricao="As 23 Artes da feitiçaria em detalhe: efeitos, mostradores, regras e exemplos.">
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV</p>
   <h1>As Artes</h1>
-  <p class="lead">As 21 linhas de feitiçaria em detalhe. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os mostradores. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
+  <p class="lead">As {d.artes.length} linhas de feitiçaria em detalhe. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os mostradores. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 
   <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. &nbsp; <strong>Ritual</strong>, lento, fora de combate: troca Mana por tempo e Força de Vontade, e alcança escalas que nenhum Feitiço atinge.</div>
 
@@ -136,22 +137,36 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     <p><strong>Ritual é o nome do modo lento</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é um Ritual: é um feitiço com o mostrador de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, e o que ele compra é escala: cobrir uma vila, durar até a próxima lua, lavrar uma maldição.</p>
     <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e Vontade. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
 
+    <h2>Guardar um feitiço</h2>
+    <p>Dá para conjurar agora e soltar depois. O Mana é pago na hora de guardar, e o feitiço fica <strong>comitado</strong>: parte da cabeça do feiticeiro continua segurando aquilo o tempo todo. Enquanto estiver guardado, o <strong>Raciocínio</strong> paga a conta.</p>
+    <div class="callout regra"><span class="lbl">O preço da espera</span>
+      <strong>Passivo:</strong> o Raciocínio conta como <strong>um nível mais baixo</strong> em tudo que é calculado com ele (Iniciativa, Defesa Mental e afins). &nbsp; <strong>Ativo:</strong> <strong>−1d6</strong> em qualquer rolagem que use Raciocínio. Soltar o feitiço, ou desfazê-lo, devolve o Raciocínio na hora.
+    </div>
+
+    <h2>Fraqueza e resistência</h2>
+    <p>Quase nenhuma criatura tem uma. Elas aparecem no sobrenatural (o vampiro e o sol, a prata e o lobisomem, o demônio e o sagrado, o anjo e o profano) e no material de que a criatura é feita: o que é de folha, madeira, palha ou gelo teme o fogo; o que é de fogo ou de terra teme a água; o que é de metal ou pedra resiste ao fogo.</p>
+    <p>Acertar a fraqueza de alguém não é um bônus qualquer, é outra categoria de golpe:</p>
+    <ul class="fraq">
+      <li>O dano <strong>ignora toda a Absorção</strong>, natural e de armadura.</li>
+      <li>O dano é <strong>agravado</strong>: não fecha com descanso nem com a perícia Cura, só com tratamento específico ou com a Arte de Cura.</li>
+      <li><strong>Aparar de mãos nuas fere</strong>: quem tenta bloquear o golpe com o corpo sofre o dano do mesmo jeito.</li>
+    </ul>
+    <p class="formula">Um elemental de madeira que tenta aparar uma lâmina feita inteira de fogo leva o dano cheio, sem absorver nada, e a queimadura não fecha sozinha.</p>
+
     <div class="callout revisao"><span class="lbl">Em revisão</span>
       Esta parte do capítulo está sendo reescrita. Ainda falta definir:
       <ul>
         <li>Como as Artes rolam de vez (o acerto pela perícia Acerto Arcano e a conjuração por Tradição), e a ligação de cada Arte com suas Trilhas.</li>
-        <li>Guardar um feitiço pronto para soltar depois (a ideia atual é penalizar o Raciocínio enquanto ele estiver comitado).</li>
-        <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo.</li>
-        <li>O que <strong>fraqueza</strong> e <strong>resistência</strong> fazem em número para os elementos que não são Luz, e o preenchimento disso no bestiário.</li>
+        <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo. A resistência deve depender de Força, Peso e Equilíbrio do alvo.</li>
+        <li>O que a <strong>resistência</strong> faz em número (a fraqueza já está resolvida acima), e o preenchimento das duas no bestiário.</li>
+        <li>Se a penalidade de guardar feitiço acumula por feitiço, e se há teto de quantos dá para carregar.</li>
         <li>Se os mostradores das Proezas e os do Arcano continuam em escalas diferentes ou se unificam.</li>
-        <li>As Artes de <strong>Luz</strong> e <strong>Sombra</strong>, já desenhadas, ainda não escritas aqui.</li>
-        <li>Reescrever os seis níveis de cada Arte como exemplos de alocação, já que a mecânica agora vem dos mostradores.</li>
       </ul>
     </div>
   </section>
 
   <section class="arcano-regras">
-    <h2>As 21 Artes</h2>
+    <h2>As {d.artes.length} Artes</h2>
     <p>Os seis níveis de cada Arte, abaixo, são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos mostradores, acima.</p>
     <div class="filtros panel">
       <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
@@ -163,7 +178,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     </div>
   </section>
 
-  {[['As Seis Artes Elementais', elem], ['As Quinze Artes Universais', univ]].map(([titulo, lista]) => (
+  {[['Artes Elementais', elem], ['Artes Universais', univ]].map(([titulo, lista]) => (
     <section class="arte-sec">
       <h2 style="text-align:center;border:none">{titulo}</h2>
       <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))">
@@ -194,6 +209,8 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
   .callout.revisao ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .callout.revisao li { margin-bottom: .2rem; }
+  .fraq { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
+  .fraq li { margin-bottom: .25rem; line-height: 1.5; }
   .arte-head { display: flex; align-items: center; gap: .5rem; }
   .arte-nome { color: var(--accent); font-size: 1.15rem; flex: 1; }
   .arte-conj { font-size: .82rem; font-style: italic; margin-bottom: .4rem; }
