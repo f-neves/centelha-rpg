@@ -36,7 +36,7 @@ export const GET: APIRoute = async () => {
     items.push({ id: t.id, tipo: 'técnica', nome: t.nome, url: url('caminhos/' + t.caminho.id) + '#' + t.id, resumo: short(`Nível ${t.nivel} · ${custoTagTecnica(t)} — ${t.texto.replace(/\*\*/g, '')}`), caminho: t.caminho.id, termos: [t.nome], autolink: false });
 
   for (const a of d.artes)
-    items.push({ id: a.id, tipo: 'arte', nome: a.nome, url: url('arcano') + '#' + a.id, resumo: short(`${a.categoria} · conjura com ${d.A[a.atributo_conjuracao.id].nome} — ${a.niveis.map((n: any) => n.nome).join(', ')}`), termos: [a.nome], autolink: multipalavra(a.nome) });
+    items.push({ id: a.id, tipo: 'arte', nome: a.nome, url: url('artes') + '#' + a.id, resumo: short(`${a.categoria} · conjura com ${d.A[a.atributo_conjuracao.id].nome} · ${a.niveis.map((n: any) => n.nome).join(', ')}`), termos: [a.nome], autolink: multipalavra(a.nome) });
 
   return new Response(JSON.stringify(items), { headers: { 'content-type': 'application/json; charset=utf-8' } });
 };

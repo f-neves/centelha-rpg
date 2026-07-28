@@ -2,152 +2,52 @@
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
-import regras from '../data/regras.json';
 const d = await loadData();
-const G = (regras as any).arcano.improviso.graus;
-const ESTICAR = (regras as any).arcano.esticar;
-// linhas da tabela de graus (0 a 6), na ordem em que aparecem na página
-const LINHAS_GRAU: [string, string[]][] = [
-  ['Alcance', G.alcance],
-  ['Área', G.area],
-  ['Alvos', G.alvos],
-  ['Dano', G.dano],
-  ['Duração aguda', G.duracaoAguda],
-  ['Duração branda', G.duracaoBranda],
-];
-// exemplos de quantos pontos cada feiticeiro tem: [Arte, Centelha]
-const EX_PONTOS: [number, number, string][] = [
-  [1, 1, 'dardo de 1d6 a 5 m; ou 1d6 em dois alvos, por toque'],
-  [3, 3, '3d6 a 50 m num alvo; ou 3d6 a 20 m em quatro alvos'],
-  [6, 3, '6d6 a 500 m; ou 4d6 a 150 m durando uma cena'],
-  [6, 6, '6d6 a 500 m em quatro alvos'],
-];
-const esticarRapido = [0, 1, 2, 3].map((n) => ({
-  n, mana: 2 ** (n + 1) - 1, speed: n + 1,
-}));
 const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
-const Arte = (a: any) => a;
+// resumo de uma linha por Arte (a descrição completa mora em As Artes)
+const RESUMO: Record<string, string> = {
+  fogo: 'Chama e calor, do dardo flamejante à tempestade ígnea.',
+  gelo: 'Frio que fere e prende, da lasca de gelo à era glacial.',
+  raio: 'Relâmpago e trovão: choque, velocidade e faísca.',
+  agua: 'A onda e a corrente: moldar, empurrar, afogar.',
+  vento: 'O ar que empurra, corta e ergue do chão.',
+  terra: 'Pedra e solo: muralha, moldar a rocha, abrir o tremor.',
+  cura: 'Fechar feridas e estancar o mal do corpo.',
+  vida: 'Vigor e crescimento, o sopro que anima.',
+  morte: 'Definhar e necrose: o toque que apaga a vida.',
+  fascinacao: 'Encantar a mente: seduzir, acalmar, comandar o olhar.',
+  adivinhacao: 'Ler o oculto, o distante e o que ainda virá.',
+  fortuna: 'Torcer a sorte, semear o azar e o acaso.',
+  conjuracao: 'Chamar do nada: invocar servos, erguer o que não há.',
+  forcas: 'Telecinesia e gravidade: mover e prender à distância.',
+  materia: 'Transmutar e moldar a substância das coisas.',
+  tempo: 'Apressar, retardar e roubar instantes.',
+  espirito: 'Tocar a alma, os mortos e o mundo dos espíritos.',
+  protecao: 'Escudos e selos: aparar o golpe e a magia.',
+  ofuscacao: 'Ilusão e ocultamento: enganar os sentidos.',
+  natureza: 'Plantas e feras: o verde e o bicho que obedecem.',
+  metamorfose: 'Mudar a forma, do próprio corpo ao alheio.',
+};
 ---
-<Base title="O Arcano" largura="wide" descricao="As 21 Artes da feitiçaria, do dardo de fogo ao senhor do tempo.">
+<Base title="O Arcano" descricao="O que é a feitiçaria, os nomes que recebe, as Trilhas de ensino e um resumo das 21 Artes.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XIV</p>
   <h1>O Arcano</h1>
-  <p class="lead">A feitiçaria é a quarta trilha das Proezas — e a única que de fato <em>quebra</em> as regras do mundo. Ela se aprende em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um.</p>
-
-  <p>Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Conjurar rola <strong>Ocultismo + Atributo</strong> e gasta <strong>Mana</strong>. Dentro do seu nível, você monta o efeito girando os mostradores.</p>
-
-  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. &nbsp; <strong>Ritual</strong>, lento, fora de combate: troca Mana por tempo e Força de Vontade, e alcança escalas que nenhum Feitiço atinge.</div>
+  <p class="lead">A feitiçaria é a quarta trilha das Proezas, a única que de fato <em>quebra</em> as regras do mundo. Ela se pratica em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um. Este capítulo é o panorama; as regras completas, os efeitos e a descrição de cada Arte estão em <a href={url('artes')}>As Artes</a>.</p>
 
   <section class="arcano-regras">
-    <h2>Conjurar e resistir</h2>
-    <p>Toda conjuração rola <strong>Ocultismo + Atributo</strong> da Arte. O que o alvo opõe depende da <em>natureza</em> do efeito — magia que voa se esquiva, magia que invade o corpo se aguenta, magia que toca a mente se enfrenta com a alma:</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Natureza do efeito</th><th>Como o alvo resiste</th><th>Exemplos</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Dano e projéteis</strong></td><td><strong>Defesa</strong> (Esquiva) para acertar; depois o dano − <strong>Absorção</strong></td><td>dardo de fogo, raio, lança de gelo</td></tr>
-          <tr><td><strong>Corpo e veneno</strong></td><td><strong>Vigor + Convicção</strong> (fortitude)</td><td>transmutação, doença, frio que enrijece, paralisia</td></tr>
-          <tr><td><strong>Mente e alma</strong></td><td><strong>Defesa Mental</strong> (passiva)</td><td>medo, fascínio, ilusão, domínio</td></tr>
-          <tr><td><strong>Aprisionamento e contato</strong></td><td><strong>Defesa</strong> para prender; escapar com <strong>Força/Atletismo</strong> vs o nível</td><td>correntes, lama, agarrão telecinético</td></tr>
-          <tr><td><strong>Em aliado, objeto ou cenário</strong></td><td>sem resistência</td><td>cura, escudo, muralha, luz</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais.</p>
-
-    <h2>Os mostradores</h2>
-    <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração girando os mostradores. Todo mostrador começa no <strong>grau 0</strong>, que é de graça e é o mínimo de qualquer feitiço: toque, um alvo, instantâneo, sem dano. Subir um grau custa <strong>1 ponto</strong>.</p>
-    <div class="table-wrap">
-      <table class="graus-tab">
-        <thead><tr><th>Mostrador</th><th>0 <span class="muted">grátis</span></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
-        <tbody>
-          {LINHAS_GRAU.map(([nome, vals]) => (
-            <tr><td><strong>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p class="muted">{G.notaDuracao} {G.notaDano}</p>
-
-    <h2>Quantos pontos você tem</h2>
-    <div class="callout regra"><span class="lbl">A conta</span>
-      <strong>Pontos = (nível da Arte × 2) + Centelha.</strong> Nenhum mostrador passa do <strong>nível da Arte</strong>, e o <strong>Mana gasto é o maior grau usado</strong>. Não se rola nada para distribuir: a rolagem de <strong>Ocultismo + Atributo</strong> serve para acertar e vencer a resistência. Em resumo: <em>Ocultismo acerta, Arte e Centelha modelam.</em>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Feiticeiro</th><th>Pontos</th><th>Teto por mostrador</th><th>Exemplos de alocação</th></tr></thead>
-        <tbody>
-          {EX_PONTOS.map(([arte, centelha, ex]) => (
-            <tr>
-              <td>Arte {arte}, Centelha {centelha}</td>
-              <td class="num">{arte * 2 + centelha}</td>
-              <td class="num">{arte}</td>
-              <td>{ex}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p>Repare que os pontos nunca dão para levar tudo ao máximo: com a Arte no 6 e Centelha 6 são 18 pontos, e três mostradores no grau 6 já custariam 18 sozinhos. <strong>Toda conjuração é uma escolha</strong>, do primeiro nível ao último. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
-
-    <h2>Passar do seu limite</h2>
-    <p>Dá para conjurar acima do grau que a sua Arte alcança, e até acima do seu próprio nível de Arte. Custa caro, e você escolhe se paga em <strong>Mana</strong> ou em <strong>tempo</strong>.</p>
-
-    <h3>Pela força: o modo rápido</h3>
-    <p>Cada grau a mais <strong>dobra o custo acumulado de Mana</strong> e <strong>soma outra vez o tempo base</strong>.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Graus acima</th><th>Mana</th><th>Speed</th><th>Exemplo: Gelo 2 (2 de Mana, Speed 5)</th></tr></thead>
-        <tbody>
-          {esticarRapido.map((e) => (
-            <tr>
-              <td class="num">{e.n}</td>
-              <td class="num">×{e.mana}</td>
-              <td class="num">×{e.speed}</td>
-              <td>dardo de {e.n + 2}d6 · {e.mana * 2} de Mana · Speed {e.speed * 5}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p class="muted">A exponencial é o freio: um efeito de base 4 já custa 12 de Mana para subir um grau só. E forçar nunca compensa contra quem estudou: sair de Fogo 1 para um dardo de 4d6 custa 15 de Mana e Speed 20, contra 4 de Mana e Speed 6 de quem tem Fogo 4.</p>
-
-    <h3>Pela paciência: o modo lento</h3>
-    <p>Com tempo e sossego, o mesmo salto sai muito mais barato em Mana, e caro em relógio. Cada grau custa <strong>+1 vez o Mana base</strong>, <strong>1 de Força de Vontade</strong>, e sobe um passo na escada de tempo.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Graus acima</th><th>Mana</th><th>Vontade</th><th>Tempo</th></tr></thead>
-        <tbody>
-          {ESTICAR.lento.escadaTempo.map((t: string, i: number) => (
-            <tr><td class="num">{i}</td><td class="num">×{i + 1}</td><td class="num">{i}</td><td>{t}</td></tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p class="muted">A escada acaba em dois dias, então o teto natural é <strong>cinco graus acima</strong>. Quem tem a Arte no nível 1 e quer o equivalente ao nível 5 passa <strong>24 horas conjurando</strong>. O modo lento só serve para o que fica de pé (muro, neblina, arma encantada, círculo de invocação): ninguém prepara um dardo por dez minutos para arremessar.</p>
-
-    <h2>Conjuração composta</h2>
-    <p>Você pode trançar <strong>várias Artes numa única conjuração</strong> — o mesmo idioma dos combos de Técnica. Junte K Artes e pague a <strong>soma dos Manas + uma sobretaxa progressiva de +(k−1)</strong> (a 2ª Arte +1, a 3ª +2…). É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem a escada dele.</p>
-    <p class="formula">Fogo (Labareda, nível 3) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 3 + 1 + <strong>1</strong> de sobretaxa = <strong>5</strong>, numa conjuração só.</p>
-
-    <h2>Rituais</h2>
-    <p><strong>Ritual é o nome do modo lento</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é um Ritual: é um feitiço com o mostrador de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, e o que ele compra é escala: cobrir uma vila, durar até a próxima lua, lavrar uma maldição.</p>
-    <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e Vontade. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
-
-    <div class="callout revisao"><span class="lbl">Em revisão</span>
-      Esta parte do capítulo está sendo reescrita. Ainda falta definir:
-      <ul>
-        <li>Guardar um feitiço pronto para soltar depois (a ideia atual é penalizar o Raciocínio enquanto ele estiver comitado).</li>
-        <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo.</li>
-        <li>O que <strong>fraqueza</strong> e <strong>resistência</strong> fazem em número para os elementos que não são Luz, e o preenchimento disso no bestiário.</li>
-        <li>Se os mostradores das Proezas e os do Arcano continuam em escalas diferentes ou se unificam.</li>
-        <li>As Artes de <strong>Luz</strong> e <strong>Sombra</strong>, já desenhadas, ainda não escritas aqui.</li>
-        <li>Reescrever os seis níveis de cada Arte como exemplos de alocação, já que a mecânica agora vem dos mostradores.</li>
-      </ul>
-    </div>
+    <h2>Os muitos nomes</h2>
+    <p>O que aqui se chama <strong>feitiçaria</strong> tem muitos nomes, e a maioria não é gentil. Num mundo que aprendeu a temer a magia, dar-lhe um nome já é tomar partido.</p>
+    <ul class="nomes">
+      <li><strong>Feitiçaria</strong> é o termo comum, quase sempre dito baixo.</li>
+      <li><strong>O Arcano</strong> é como a chamam os que a estudam: fria, formal, coisa de gabinete e biblioteca.</li>
+      <li><strong>Magia</strong> é a palavra larga, que cobre também as forças, os artefatos, os itens encantados e a velha taumaturgia.</li>
+      <li><strong>As Artes</strong> é como os próprios praticantes chamam seus domínios: não se diz "lanço magia", e sim "conheço o Fogo", "sigo a Cura".</li>
+      <li><strong>Os nomes do medo</strong>: bruxaria, malefício, o dom amaldiçoado, o pacto. As ortodoxias que pregam contra a magia acusam-na de conluio com o baixo, e um feiticeiro descoberto raramente é chamado de sábio.</li>
+    </ul>
   </section>
 
-  <section class="arcano-regras">
+  <section class="arcano-regras" id="trilhas">
     <h2>As Trilhas de Feitiçaria</h2>
     <p>Ter a fagulha (Centelha) deixa você <strong>tocar</strong> a magia, mas ninguém nasce sabendo <strong>moldá-la</strong>. Uma <strong>Trilha</strong> é o caminho pelo qual alguém aprendeu uma Arte: quem ensinou, que treino exigiu, que preço cobrou. A mesma Arte (comandar a pedra, digamos) pode ser alcançada por Trilhas bem diferentes: um druida e um monge chegam a ela por estradas distintas. Aprender uma Arte é <strong>percorrer uma de suas Trilhas</strong>, e cada uma pede um treino e cobra um preço.</p>
     <p class="muted">Cada Trilha nasce dentro de uma das seis <strong>Tradições</strong> abaixo, o método de ensino do mundo por trás dela. A ligação de cada Arte com suas Trilhas, e os números de treino, ficam para um próximo passo.</p>
@@ -185,47 +85,36 @@ const Arte = (a: any) => a;
     </div>
   </section>
 
-  {[['As Seis Artes Elementais', elem], ['As Quinze Artes Universais', univ]].map(([titulo, lista]) => (
-    <section>
-      <h2 style="text-align:center;border:none">{titulo}</h2>
-      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))">
-        {(lista as any[]).map((a) => (
-          <div class="panel arte" id={a.id} data-permalink>
-            <div class="arte-head">
-              <span class="cinzel arte-nome">{a.nome}</span>
-              <button class="bm" data-bm={`arte:${a.id}`} title="Marcar" aria-label={`Marcar ${a.nome}`}>☆</button>
-            </div>
-            <div class="muted arte-conj">conjura com {d.A[a.atributo_conjuracao.id].nome}</div>
-            <ol class="niveis">
-              {a.niveis.map((n: any) => (
-                <li><span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong> — {n.efeito} <span class="muted">({n.custo.mana} Mana)</span></li>
-              ))}
-            </ol>
-          </div>
-        ))}
+  <section class="arcano-regras">
+    <h2>As Artes, em resumo</h2>
+    <p>São 21 linhas de feitiçaria: seis <strong>elementais</strong> (os elementos crus do mundo) e quinze <strong>universais</strong> (tudo o mais que a magia toca). Aqui vai o que cada uma faz em uma linha. A descrição completa, os efeitos por nível, as tabelas e as regras estão em <a href={url('artes')}>As Artes</a>.</p>
+    {[['Elementais', elem], ['Universais', univ]].map(([titulo, lista]) => (
+      <div class="resumo-bloco">
+        <h3>{titulo}</h3>
+        <ul class="resumo-artes">
+          {(lista as any[]).map((a) => (
+            <li>
+              <a href={url('artes') + '#' + a.id} class="ra-nome">{a.nome}</a>
+              <span class="muted">{RESUMO[a.id] || a.niveis.map((n: any) => n.nome).join(' · ')}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
-  ))}
+    ))}
+  </section>
 </Base>
 
 <style>
+  .nomes { margin: .6rem 0 0; padding-left: 1.1rem; }
+  .nomes li { margin-bottom: .35rem; line-height: 1.5; }
   .trilhas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1rem; margin-top: 1rem; }
   .trilha h3 { margin: 0 0 .5rem; color: var(--accent); font-size: 1.1rem; }
   .trilha .tl-tag { font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: normal; }
   .trilha p { font-size: .92rem; line-height: 1.5; margin: 0 0 .5rem; }
   .trilha .tl-ex { font-size: .86rem; color: var(--muted, #888); margin-bottom: 0; }
-  .graus-tab { font-size: .88rem; }
-  .graus-tab td, .graus-tab th { white-space: nowrap; }
-  .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
-  .callout.revisao ul { margin: .4rem 0 0; padding-left: 1.1rem; }
-  .callout.revisao li { margin-bottom: .2rem; }
-  .arte-head { display: flex; align-items: center; gap: .5rem; }
-  .arte-nome { color: var(--accent); font-size: 1.15rem; flex: 1; }
-  .arte-conj { font-size: .82rem; font-style: italic; margin-bottom: .4rem; }
-  .niveis { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
-  .niveis li { margin-bottom: .3rem; line-height: 1.4; }
-  .niveis .lvl { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%;
-    background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .72rem; }
-  .bm { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--gold); }
-  .bm[aria-pressed='true'] { color: var(--accent); }
+  .resumo-bloco { margin-top: 1rem; }
+  .resumo-artes { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr)); gap: .35rem 1.2rem; }
+  .resumo-artes li { line-height: 1.4; font-size: .92rem; }
+  .resumo-artes .ra-nome { font-family: 'Cinzel'; color: var(--accent); text-decoration: none; margin-right: .4rem; }
+  .resumo-artes .ra-nome:hover { text-decoration: underline; }
 </style>

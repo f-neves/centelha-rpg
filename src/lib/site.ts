@@ -36,7 +36,7 @@ export const FERRAMENTAS = [
   { slug: 'equipamentos', titulo: 'Equipamentos' },
   { slug: 'rolador', titulo: 'Rolador de Dados' },
   { slug: 'tecnicas', titulo: 'Técnicas (filtros)' },
-  { slug: 'artes', titulo: 'Artes do Arcano' },
+  { slug: 'artes', titulo: 'As Artes' },
   { slug: 'arvore', titulo: 'Árvores de Técnicas' },
   { slug: 'glossario', titulo: 'Glossário' },
   { slug: 'marcadores', titulo: 'Meus Marcadores' },
