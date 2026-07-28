@@ -158,6 +158,38 @@ Parâmetros secundários também vêm escritos no Efeito quando existirem: volum
 área, comprimento no lugar de área, dano diferente do básico, veneno, dano incapacitante,
 penalidades impostas, visibilidade, dificuldade de travessia, e o que mais o Efeito exigir.
 
+### 5.1. Quantos degraus o feiticeiro distribui (PROPOSTA, pendência 1)
+
+Em *Sorcerer* isso sai de uma rolagem. Aqui não: o valor é fixo e conhecido antes de conjurar.
+
+> **Pontos = nível da Arte + Atributo de conjuração.** Cada mostrador começa no degrau 1 e
+> custa **1 ponto por degrau acima do primeiro**. Nenhum mostrador passa do **nível da Arte**
+> (para isso existe o esticar, seções 6.5 e 6.6). O **Mana é o maior degrau usado**.
+
+Divisão de trabalho: **Ocultismo acerta, Arte e Atributo modelam.** A rolagem continua sendo
+Ocultismo + Atributo contra a resistência; os pontos só dizem que forma o feitiço tem.
+
+Isso vale para o **efeito genérico da Arte** (o improviso: o dardo, acender, aquecer, empurrar).
+O **Efeito comprado já vem com os mostradores impressos** e não se distribui nada nele.
+
+Exemplos, com Fogo 3 e Inteligência 3 (6 pontos, teto 3 por mostrador):
+
+- Dardo típico: alcance 3 (2 pontos, 20 m) e dano 3 (2 pontos, 3d6). Sobram 2 pontos para
+  alvos 3 (quatro alvos) ou para duração.
+- Fogueira que dura: área 3 (2), duração 3 (2), alcance 2 (1). Dano nenhum. Sobra 1.
+- Tudo num alvo só: dano 3 (2) e o resto no chão, com alcance 1 (toque). Custa 3 de Mana pelo
+  maior degrau usado.
+
+Propriedades que caem bem: no nível 1 tudo custa zero, então magia pequena é trivial e não pede
+conta; no topo, nem o mestre maximiza tudo (Arte 6 com Atributo 6 dá 12 pontos, e três
+mostradores no 6 já custariam 15), então toda conjuração continua sendo uma escolha; e o
+Atributo de cada Arte ganha um trabalho concreto, o que separa o feiticeiro de Inteligência do
+de Influência ou de Vigor.
+
+Alternativa considerada: trocar o Atributo por **Ocultismo** na conta dos pontos, o que combina
+com a premissa de que feitiçaria é conhecimento. Descartada por ora porque concentraria tudo
+numa perícia só e apagaria a variedade de Atributos entre as Artes.
+
 ---
 
 ## 6. Dano, empurrão e tempo
@@ -235,6 +267,35 @@ dardo de 4d6 custa 15 de Mana e 20 de Speed, contra 4 de Mana e 6 de Speed de qu
 
 ---
 
+## 6.6. Esticar o Efeito com tempo (modo lento)
+
+A segunda via: em vez de pagar a exponencial de Mana, o feiticeiro paga **tempo e Vontade**.
+É o modo do Ritual.
+
+> Cada degrau acima do impresso custa **+1 vez o Mana base** (linear), **1 de Força de Vontade**,
+> e sobe um passo na escada de tempo.
+
+**Escada de tempo:** Speed base em Ticks · 6 minutos · 60 minutos · 6 horas · 24 horas · 2 dias.
+
+| Degraus | Mana | Vontade | Tempo (partindo de 6 Ticks) |
+|---|---|---|---|
+| 0 | ×1 | 0 | 6 Ticks |
+| 1 | ×2 | 1 | 6 minutos |
+| 2 | ×3 | 2 | 60 minutos |
+| 3 | ×4 | 3 | 6 horas |
+| 4 | ×5 | 4 | 24 horas |
+| 5 | ×6 | 5 | 2 dias |
+
+O tempo é o freio, e ele cresce muito mais rápido que o custo. Alguém com a Arte no nível 1
+querendo o equivalente ao nível 5 fica **24 horas conjurando o mesmo efeito**, o que é
+inviável na prática sem uma boa razão de história.
+
+A escada acaba em 2 dias, então o **teto natural é +5 degraus**. O modo lento serve para o que
+fica de pé (muro, neblina, arma encantada, círculo); ninguém prepara um dardo por dez minutos
+para arremessar, então ele não invade o combate sozinho.
+
+---
+
 ## 7. Custos
 
 | Coisa | XP |
@@ -288,15 +349,15 @@ já está definido: agravado, ignora resistência). Ver Pendência 4.
 
 ## 10. Pendências
 
-**1. Modo lento: trocar Mana por tempo.** O modo rápido (seção 6.5) já está fechado. Falta a
-segunda via: esticar gastando **tempo** em vez de Mana, com o Speed medido em minutos ou horas
-no lugar de Ticks. Precisa de um limite próprio, e crescente. Proposta de partida: cada degrau
-custa **+1 vez o Mana base** (linear, não dobrando) mais **1 de Vontade**, e sobe um passo na
-escada de tempo (Ticks · 1 minuto · 10 minutos · 1 hora · 6 horas · 1 dia), com teto de degraus
-igual ao **Ocultismo**. Em aberto: se o teto é Ocultismo ou Centelha; se o modo lento vale só
-para Efeitos que duram (muro, neblina, encantar arma) ou se também dá para **preparar e guardar**
-um efeito instantâneo para soltar depois, o que seria outra mecânica, com limite de quantos e por
-quanto tempo ficam guardados.
+**1. Distribuição dos mostradores sem rolagem.** Em *Sorcerer* o feiticeiro paga 1 de Vontade,
+rola, e distribui os sucessos entre dano, área, alcance e duração. Aqui não haverá rolagem para
+isso: a quantidade de pontos a distribuir deve sair do **nível da Arte mais alguma coisa**,
+provavelmente o **Atributo de conjuração**. Ver a proposta na seção 5.1.
+
+**1b. Guardar um feitiço (parado).** Preparar um efeito e soltar depois é outra mecânica, a
+desenhar noutro momento. Ideia levantada: "comitar" o feitiço impõe penalidade de 1d6 nos testes
+de Raciocínio enquanto estiver guardado, e para efeitos passivos conta o Raciocínio como um nível
+mais baixo.
 
 **2. Empurrão.** A fórmula da seção 6 é proposta, não decisão. Discutir a divisão por 4, o
 limiar de derrubada e o valor de empurrão do Ar.
