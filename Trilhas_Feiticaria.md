@@ -26,12 +26,12 @@ Arte oferece mais de uma Trilha, ninguém fica trancado fora da magia — há se
 cumpre ou pode buscar. A Trilha troca a **trava única** (Ocultismo) por um **feixe de portões temáticos
 e mais macios**.
 
-**[PROPOSTA] O que NÃO muda com as Trilhas:**
-- A **conjuração** segue **Ocultismo + Atributo** para todos (a Trilha governa como você *aprende*, não
-  como *lança*). *Ver decisão em aberto nº 1 — pode ser que tradições como a Marcial conjurem com outra
-  perícia.*
-- O **custo em XP** de comprar/subir uma Arte é o mesmo (×10 por nível), qualquer que seja a Trilha.
-- **Centelha > 0** continua o único portão **universal**.
+**O que muda e o que fica:**
+- **[TRAVADO]** A **conjuração muda por Tradição** (não é mais Ocultismo para todos): cada Tradição molda
+  a magia com a sua perícia. Além disso, entra a nova perícia **Acerto Arcano** para *mirar* efeitos
+  mágicos. Como funciona: seção **"Jogadas das Artes"** abaixo.
+- **[TRAVADO]** O **custo em XP** de comprar/subir uma Arte é o mesmo (×10 por nível), qualquer Trilha.
+- **[TRAVADO]** **Centelha > 0** continua o único portão **universal**.
 
 ## 2. As seis Tradições (o "método de ensino")
 
@@ -55,6 +55,46 @@ Decidir se vira secundária.*
 - **Iniciação** = você **pertence** a uma fé/ordem e **sobe por devoção**; a ordem te ensina os graus.
 - **Xamânica** = **comunhão** com espíritos **difusos** (ancestrais, natureza, totem), animista, sem
   patrono único nem ordem organizada.
+
+## 2b. Jogadas das Artes (proposta — decisão nº 1 + nº 5)
+
+Toda Arte que precisa **vencer um alvo** faz uma jogada de **Atributo + perícia**. A perícia depende do
+que o efeito *faz*. Duas famílias:
+
+**A. Efeito MIRADO** (você joga / atira / manipula algo contra o alvo): dardo de fogo, raio, lança de
+gelo, jato, agarrão telecinético. Rola **Acerto Arcano** + **Percepção** (à distância, mira) ou
+**Destreza** (perto, manipulação fina). É o "ataque" da magia, gêmeo de Atirador/Arremesso, e **não muda
+com a Tradição** (mirar uma labareda é mirar uma labareda). O alvo opõe **Defesa (Esquiva)**; depois
+dano − Absorção. *Ex.: rajada de fogo = **Percepção + Acerto Arcano** vs a Defesa dos alvos.*
+
+**B. Efeito MOLDADO** (invade o corpo/mente ou molda o mundo): transmutação, veneno, medo, ilusão,
+domínio, muralha, cura, escudo. Rola a **perícia de conjuração da sua Tradição** + o Atributo temático.
+É aqui que **"a conjuração muda por Tradição"** vive. Resistência conforme a natureza (Vigor+Convicção,
+Defesa Mental) ou sem resistência (aliado/objeto/cenário).
+
+**Acerto Arcano** [TRAVADO, perícia a criar]: perícia usada com **Percepção ou Destreza** para
+**Atirar / Arremessar / Manipular** efeitos mágicos. É o "acerto" de toda magia mirada, em qualquer
+Tradição.
+
+**Perícia de conjuração por Tradição** (efeitos moldados) [PROPOSTA]:
+
+| Tradição | Conjura efeitos moldados com |
+|---|---|
+| **Erudição** | **Ocultismo** |
+| **Sangue / Antecedente** | **Integridade** (autoconhecimento / instinto; bestas usam o próprio Atributo, sem perícia) |
+| **Marcial** | **Briga** (ou Integridade) |
+| **Xamânica / Totêmica** | **Sobrevivência** |
+| **Pacto** | **Ocultismo** (conhecer/invocar a entidade) — ou um traço de vínculo |
+| **Iniciação** | um traço de **Fé/Devoção** — *não existe ainda; ver aberto* |
+
+**[EM ABERTO] Onde o Acerto Arcano mora na estrutura de perícias.** Só há 24 primárias (4 grupos × 6).
+Candidatos: **(a)** uma perícia **mágica** fora do 4×6, um trilho só de quem tem Centelha (gêmea de
+Atirador); **(b)** entrar no grupo Combate (viraria 7). *Recomendo (a).*
+
+**[EM ABERTO] Como se determinam de vez as jogadas das Artes** (você marcou isto na decisão nº 1). O
+esquema A/B acima é a proposta; falta decidir os casos de fronteira: um efeito mirado que também invade
+(uma flecha de gelo que congela por dentro) rola uma vez (Acerto Arcano) ou duas? *Recomendo uma só: o
+Acerto Arcano acerta, a Margem decide a intensidade do efeito secundário, sem 2ª rolagem.*
 
 ## 3. Anatomia de uma Trilha (o registro)
 
@@ -88,35 +128,66 @@ poder num momento crítico. *Rápido e barato de aprender, caro de manter.*
 perícia; **voto e devoção** à ordem. Custo: abdicações, obediência aos graus. *A Arte vem em degraus
 que só a ordem libera, a cada prova de fé.*
 
+## 4b. Mapa exemplo: a Arte da TERRA × suas Trilhas (decisão nº 3)
+
+Isto é **uma** linha do catálogo completo, para você ver o que quero dizer com "mapear as 21 Artes ×
+Trilhas". Cada Arte listaria as Trilhas que a abrem. O **treino** traz o nível pedido em **cada perícia**,
+e esse nível **escala leve com o nível N de Terra que se quer aprender** — e **nem toda perícia no mesmo
+passo** (decisão nº 2). Notação: `Resistência ⌈N/2⌉` = para aprender Terra até o nível N, tenha
+Resistência ao menos ⌈N/2⌉.
+
+**ARTE: TERRA** · efeitos moldados (muralha, moldar rocha) conjuram com a perícia da Tradição; jatos de
+cascalho **miram com Acerto Arcano**.
+
+| Trilha | Tradição | Treino (escala com o nível N) | Custos de ficção | Também abre |
+|---|---|---|---|---|
+| **A Terra pela Mão do Druida** | Sangue/Antec. | Resistência ⌈N/2⌉ · Integridade ⌈N/3⌉ | laço com o ciclo natural | Natureza, Água |
+| **A Terra pela Disciplina do Monge** | Marcial | Briga ⌈N/2⌉ · Integridade ⌈N/2⌉ · Temperança ⌈N/3⌉ | disciplina monástica | Forças, Metamorfose |
+| **A Cátedra da Pedra** | Erudição | Ocultismo ⌈N/2⌉ · Conhec. Gerais ⌈N/3⌉ | universidade blindada + tempo | Matéria, Fogo |
+| **O Totem da Montanha** | Xamânica | Sobrevivência ⌈N/2⌉ · Temperança ⌈N/3⌉ | ritos e tabus do totem | Vento |
+
+Leitura: a mesma Arte (Terra) tem **4 portas**. Um Monge com Briga 3 / Integridade 3 alcança Terra até o
+nível ~5 por essa Trilha; um Erudito chega pela Cátedra, com Ocultismo. E cada Trilha **encurta o caminho
+para Artes vizinhas** ("Também abre"), porque uma Trilha serve mais de uma Arte. Multiplicado por 21
+Artes, o catálogo vira uma frente própria de conteúdo (ver decisão nº 3).
+
 ## 5. Como "não impeditivo" funciona (proposta a validar)
 
 **[PROPOSTA]**
-1. Para **aprender** uma Arte (nível 1) por uma Trilha, cumpra o **treino** dela (as perícias/virtudes
-   no nível sugerido) e os **custos de ficção**. Isso se resolve na **ficção / downtime**, não numa
-   rolagem.
+1. Para **aprender** uma Arte **até o nível N** por uma Trilha, cumpra o **treino** dela e os **custos
+   de ficção**. O treino **escala leve com N** e **cada perícia tem seu próprio patamar** (decisão nº 2):
+   nem toda perícia da Trilha precisa estar no nível da Arte. Notação `Perícia ⌈N/2⌉`, `Perícia ⌈N/3⌉`
+   etc. — uma pesa mais, outra é só um alicerce. Resolve-se na **ficção / downtime**, não numa rolagem.
 2. Como cada Arte tem **várias Trilhas**, você escolhe a que **alcança**; se não cumpre nenhuma ainda,
    a mais barata vira sua **meta de treino**. É esse leque que torna o sistema "não impeditivo".
-3. **Aprofundar** (subir de nível) segue a **mesma Trilha** (ou outra que aquela Arte permita), e pode
-   pedir mais treino conforme sobe (decisão nº 2).
+3. **Aprofundar** (subir N) segue a **mesma Trilha** (ou outra que aquela Arte permita) e pede mais
+   treino conforme sobe — os patamares ⌈N/2⌉/⌈N/3⌉ crescem com N.
 4. **Bestas mágicas** (Sangue via instinto) e portadores de **Pacto/Iniciação** pagam **menos em
    perícia** e **mais em ficção** (afinidade inata / coleira / voto): o preço muda de moeda, não some.
 
-## 6. Em aberto (preciso do seu martelo)
+## 6. Decisões (2026-07-28)
 
-1. **Conjuração:** continua **Ocultismo + Atributo** para todas as Tradições, ou algumas conjuram com
-   perícia própria (ex.: Marcial com **Briga**, Iniciação com um traço de fé)? *Recomendo manter
-   Ocultismo+Atributo por ora e tratar Trilha só como aprendizado.*
-2. **Nível do treino:** o treino exige a perícia **> 0** (só ter treinado), um **patamar fixo** baixo,
-   ou um nível que **escala** com o nível da Arte (ex.: perícia ≥ ⌈nível da Arte ÷ 2⌉)? *Recomendo o
-   escalonamento leve: torna Artes fundas um investimento de verdade sem travar a entrada.*
-3. **Escopo do catálogo:** o mapa completo (todas as 21 Artes × suas Trilhas) é um trabalhão (como foi
-   o bestiário). Fazemos agora, ou fixamos o framework + um punhado de Trilhas-exemplo e deixamos o
-   catálogo para uma frente própria?
-4. **Onde mora no site:** seção nova na página do **Arcano**, **capítulo** próprio, e/ou um
-   **`trilhas.json`** estruturado (como `artes.json`) para renderizar por Arte. *Recomendo `trilhas.json`
-   + um bloco na página do Arcano, listando, sob cada Arte, as Trilhas que a abrem.*
-5. **"Meditação" / "Ciências":** viram **perícias secundárias** novas, ou continuam cobertas por
-   Integridade+Temperança e Conhecimentos Gerais?
+**Resolvidas:**
+1. ✅ **Conjuração muda por Tradição** (não é mais Ocultismo para todos). Modelo na seção "Jogadas das
+   Artes". *Como as jogadas se resolvem de vez segue em aberto (fronteiras) — ver lá.*
+2. ✅ **Treino escala leve com o nível da Arte**, e **cada perícia com seu próprio patamar** (não precisam
+   todas no nível da Arte). Notação ⌈N/2⌉, ⌈N/3⌉.
+3. ✅ **Só um exemplo de mapa por ora** (seção "4b. Terra × Trilhas"). O catálogo completo das 21 Artes
+   fica como **frente própria** (trabalho grande, tipo o bestiário).
+4. ✅ **Onde mora:** `trilhas.json` estruturado + bloco na página do **Arcano**, listando sob cada Arte
+   as Trilhas que a abrem.
+5. ✅ **Nova perícia: Acerto Arcano** — usada com **Percepção ou Destreza** para **Atirar/Arremessar/
+   Manipular** efeitos mágicos (rajada de fogo = Percepção + Acerto Arcano vs Defesa). "Meditação/
+   Ciências" **não** viram perícia (cobertas por Integridade+Temperança e Conhecimentos Gerais).
+
+**Ainda em aberto (para fechar antes de portar ao site):**
+- **A. Jogadas das Artes, casos de fronteira** (decisão nº 1 continua): o esquema **Mirado (Acerto Arcano
+  + Perc/Des)** vs **Moldado (perícia da Tradição)** está proposto; falta bater o martelo nele e nos
+  híbridos (uma só rolagem, recomendo). Ver "Jogadas das Artes".
+- **B. Perícia de conjuração de cada Tradição** — a tabela [PROPOSTA] em "Jogadas das Artes" precisa de
+  aval; e a **Iniciação** provavelmente pede um traço de **Fé/Devoção** que não existe (criar?).
+- **C. Onde Acerto Arcano mora** na estrutura (fora do 4×6, como perícia mágica própria — recomendo — ou
+  no grupo Combate virando 7).
 
 ## 7. Ganchos com o resto do sistema
 
