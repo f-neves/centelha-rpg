@@ -87,6 +87,7 @@ const artes = defineCollection({
           nome: z.string(),
           efeito: z.string(),
           custo: z.object({ mana: z.number().int().min(1).max(6) }),
+          exemplos: z.array(z.string()).optional(),
         }),
       )
       .min(5).max(6),

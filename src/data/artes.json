@@ -11,7 +11,13 @@
         "efeito": "acende/apaga fogo; dardo flamejante (1d6)",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "acender ou apagar uma tocha com a mão",
+          "dardo flamejante de 1d6 num alvo a 5 m",
+          "fogo na lâmina por um golpe só",
+          "esquentar o corpo numa noite fria"
+        ]
       },
       {
         "nivel": 2,
@@ -19,7 +25,13 @@
         "efeito": "dardo de fogo mais forte (1d6) que gruda e queima por alguns instantes; acende à distância",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "acender ou apagar uma fogueira pequena",
+          "dardo que gruda e queima por mais de um turno",
+          "fogo na arma pela cena inteira",
+          "aguentar frio intenso sem tremer"
+        ]
       },
       {
         "nivel": 3,
@@ -27,7 +39,12 @@
         "efeito": "jato de fogo em linha (2d6)",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "jato de fogo em linha, 3d6",
+          "incendiar uma porta ou um monte de palha a 50 m",
+          "sustentar uma parede baixa de chamas por alguns turnos"
+        ]
       },
       {
         "nivel": 4,
@@ -35,7 +52,12 @@
         "efeito": "explosão em área (3d6); parede de chamas",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "explosão que pega quatro inimigos juntos",
+          "parede de chamas fechando um corredor",
+          "deixar uma grade de metal em brasa"
+        ]
       },
       {
         "nivel": 5,
@@ -43,7 +65,12 @@
         "efeito": "área grande, dano contínuo; imune a fogo",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "área grande queimando pela cena inteira",
+          "não sentir o próprio fogo nem o alheio por um tempo",
+          "incendiar um telhado de longe"
+        ]
       },
       {
         "nivel": 6,
@@ -51,7 +78,12 @@
         "efeito": "mar de fogo; coluna/elemental de chamas",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "mar de fogo cobrindo um campo",
+          "coluna de chamas com forma de gente",
+          "pôr fogo num casario inteiro de uma vez"
+        ]
       }
     ],
     "aliases": [],
@@ -69,7 +101,12 @@
         "efeito": "resfria, congela água rasa; dardo (1d6)",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "resfriar uma jarra, congelar uma poça rasa",
+          "lasca de gelo de 1d6 a 5 m",
+          "gelar a lâmina para o próximo golpe"
+        ]
       },
       {
         "nivel": 2,
@@ -77,7 +114,12 @@
         "efeito": "dardo gélido (1d6) que enregela o membro atingido e reduz a ação do alvo; congela poças",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "dardo gélido que enregela o braço e atrapalha o alvo",
+          "congelar um balde ou uma poça funda",
+          "aguentar calor forte sem se abater"
+        ]
       },
       {
         "nivel": 3,
@@ -85,7 +127,12 @@
         "efeito": "cone de frio (2d6), desacelera",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "cone de frio de 3d6 que ainda desacelera",
+          "cobrir o chão de gelo escorregadio",
+          "congelar uma fechadura até ficar quebradiça"
+        ]
       },
       {
         "nivel": 4,
@@ -93,7 +140,12 @@
         "efeito": "aprisiona um alvo; muralha de gelo",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "prender um alvo num bloco até ele se soltar",
+          "muralha de gelo fechando a passagem",
+          "endurecer um rio raso para atravessar a pé"
+        ]
       },
       {
         "nivel": 5,
@@ -101,7 +153,11 @@
         "efeito": "tempestade gélida em área",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "nevasca sobre uma praça, cegando e mordendo",
+          "manter um salão em frio de matar pela cena"
+        ]
       },
       {
         "nivel": 6,
@@ -109,7 +165,12 @@
         "efeito": "congela uma grande área; imobiliza um campo",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "congelar um vale inteiro",
+          "imobilizar uma tropa no lugar",
+          "fazer o inverno durar dias na região"
+        ]
       }
     ],
     "aliases": [],
@@ -127,7 +188,12 @@
         "efeito": "choque que atordoa; dardo (1d6)",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "choque que atordoa quem você toca",
+          "faísca de 1d6 a 5 m",
+          "acender uma fagulha à distância"
+        ]
       },
       {
         "nivel": 2,
@@ -135,7 +201,12 @@
         "efeito": "choque (1d6) que salta para um segundo alvo próximo; atordoa quem veste metal",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "descarga que salta para um segundo alvo perto",
+          "derrubar quem veste metal",
+          "estourar um fecho de metal"
+        ]
       },
       {
         "nivel": 3,
@@ -143,7 +214,12 @@
         "efeito": "raio em linha (2d6)",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "relâmpago em linha de 3d6",
+          "queimar um mecanismo à distância",
+          "atordoar dois inimigos de uma vez"
+        ]
       },
       {
         "nivel": 4,
@@ -151,7 +227,11 @@
         "efeito": "salta entre vários alvos (3d6 dividido)",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "corrente que salta entre quatro alvos",
+          "sobrecarregar tudo que é de metal numa sala"
+        ]
       },
       {
         "nivel": 5,
@@ -159,7 +239,11 @@
         "efeito": "relâmpagos do céu numa área",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "relâmpagos caindo do céu numa área pela cena",
+          "derrubar um mastro ou uma torre de longe"
+        ]
       },
       {
         "nivel": 6,
@@ -167,7 +251,11 @@
         "efeito": "descarga cataclísmica",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "descarga que parte a pedra e cega quem vê",
+          "tempestade elétrica sobre a região"
+        ]
       }
     ],
     "aliases": [],
@@ -185,7 +273,12 @@
         "efeito": "move e molda água; jato sob pressão",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "mover e moldar a água que já está por perto",
+          "jato sob pressão de 1d6 de Impacto",
+          "molhar e apagar uma tocha"
+        ]
       },
       {
         "nivel": 2,
@@ -193,7 +286,12 @@
         "efeito": "jato forte que empurra e apaga; molda a água em formas úteis (corda, ponte rasa)",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "jato forte que empurra o alvo para trás",
+          "moldar a água em corda, ponte rasa ou vasilha",
+          "apagar uma fogueira inteira"
+        ]
       },
       {
         "nivel": 3,
@@ -201,7 +299,12 @@
         "efeito": "empurra/derruba; cria névoa",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "onda que derruba e arrasta",
+          "levantar névoa de uma superfície molhada",
+          "empurrar um bote contra a corrente"
+        ]
       },
       {
         "nivel": 4,
@@ -209,7 +312,12 @@
         "efeito": "respira submerso; controla correntes",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "respirar submerso pela cena",
+          "comandar a correnteza de um rio pequeno",
+          "manter dez pessoas secas debaixo de chuva"
+        ]
       },
       {
         "nivel": 5,
@@ -217,7 +325,12 @@
         "efeito": "grande onda; afoga uma área",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "maremoto que engole uma rua",
+          "afogar uma área baixa",
+          "sustentar um barco contra a tempestade"
+        ]
       },
       {
         "nivel": 6,
@@ -225,7 +338,11 @@
         "efeito": "comanda rios e mares",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "comandar o curso de um rio",
+          "abrir caminho no mar por um tempo"
+        ]
       }
     ],
     "aliases": [],
@@ -243,7 +360,12 @@
         "efeito": "rajadas que empurram, apagam, carregam som",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "rajada que empurra e apaga chamas pequenas",
+          "carregar um som ou um cheiro para longe",
+          "manter a poeira longe do rosto"
+        ]
       },
       {
         "nivel": 2,
@@ -251,7 +373,12 @@
         "efeito": "rajada que derruba um alvo leve e desvia um projétil contra você",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "lufada que derruba quem é leve",
+          "desviar um projétil que vinha em você",
+          "abrir uma porta de longe"
+        ]
       },
       {
         "nivel": 3,
@@ -259,7 +386,12 @@
         "efeito": "desvia projéteis; rajada cortante (2d6)",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "vendaval que atrapalha todo tiro na área",
+          "empurrar um grupo para trás",
+          "levantar poeira e cegar"
+        ]
       },
       {
         "nivel": 4,
@@ -267,7 +399,12 @@
         "efeito": "plana e levita por curtos períodos",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "planar e amortecer quedas pela cena",
+          "sustentar uma pessoa no ar",
+          "arrancar um telhado"
+        ]
       },
       {
         "nivel": 5,
@@ -275,7 +412,11 @@
         "efeito": "tornado que ergue e arremessa",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "tornado que ergue e arremessa",
+          "fechar um vale ao vento por horas"
+        ]
       },
       {
         "nivel": 6,
@@ -283,7 +424,11 @@
         "efeito": "voa; comanda tempestades de vento",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "voar por conta própria",
+          "comandar a tempestade sobre a região"
+        ]
       }
     ],
     "aliases": [],
@@ -301,7 +446,12 @@
         "efeito": "molda terra/pedra; arremessa pedras (1d6)",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "moldar terra e pedra com as mãos",
+          "arremessar uma pedra, 2d6 de Impacto",
+          "endurecer o chão sob os pés"
+        ]
       },
       {
         "nivel": 2,
@@ -309,7 +459,12 @@
         "efeito": "arremessa uma pedra maior (1d6) ou ergue um pequeno anteparo de terra",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "pedra maior que ainda empurra o alvo",
+          "anteparo de terra para se abrigar",
+          "abrir um buraco raso"
+        ]
       },
       {
         "nivel": 3,
@@ -317,7 +472,12 @@
         "efeito": "ergue barreiras; abre o chão",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "muralha de pedra fechando a passagem",
+          "tremor que derruba quem está de pé",
+          "abrir uma fenda estreita no chão"
+        ]
       },
       {
         "nivel": 4,
@@ -325,7 +485,12 @@
         "efeito": "sacode e fende o solo",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "terremoto pequeno que abre a terra sob um grupo",
+          "coluna que sustenta um teto prestes a cair",
+          "endurecer a pedra até ficar dura como aço"
+        ]
       },
       {
         "nivel": 5,
@@ -333,7 +498,11 @@
         "efeito": "dobra e molda metal",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "derrubar a parede de uma fortaleza",
+          "abrir um fosso em volta de si"
+        ]
       },
       {
         "nivel": 6,
@@ -341,7 +510,11 @@
         "efeito": "remodela o terreno",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "rasgar o chão de um vale",
+          "fazer a montanha responder"
+        ]
       }
     ],
     "aliases": [],
@@ -359,7 +532,12 @@
         "efeito": "acende luz firme onde quiser; um lampejo que ofusca por um instante",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "luz de tocha na ponta do dedo pela cena",
+          "lampejo na cara de quem está ao seu lado",
+          "iluminar uma fechadura no escuro"
+        ]
       },
       {
         "nivel": 2,
@@ -367,7 +545,12 @@
         "efeito": "o feixe cega um alvo por alguns turnos; a luz denuncia quem se esconde por perto",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "cegar o arqueiro que mira em você",
+          "mostrar a sala inteira por um instante",
+          "facho que segue um alvo pela cena"
+        ]
       },
       {
         "nivel": 3,
@@ -375,7 +558,12 @@
         "efeito": "raio que queima o que teme a luz; revela o oculto e o disfarçado ao redor",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "queimar o morto-vivo que agarra o aliado",
+          "varrer um corredor e achar o que está invisível",
+          "lâmina de luz para cortar treva"
+        ]
       },
       {
         "nivel": 4,
@@ -383,7 +571,12 @@
         "efeito": "clarão que cega um grupo inteiro e desfaz camuflagem e invisibilidade na área",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "cegar a linha de frente inimiga",
+          "revelar todos os disfarçados de uma praça",
+          "apagar a Sombra de outro feiticeiro"
+        ]
       },
       {
         "nivel": 5,
@@ -391,7 +584,11 @@
         "efeito": "nenhuma ocultação funciona na cena, e o que teme a luz queima enquanto ela durar",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "nenhum assassino consegue se esconder na sala",
+          "queimadura contínua no demônio enquanto ele ficar perto"
+        ]
       },
       {
         "nivel": 6,
@@ -399,7 +596,11 @@
         "efeito": "um segundo sol sobre a região: não há sombra onde se esconder, e nada das trevas resiste",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "transformar a noite em dia sobre o acampamento",
+          "negar a treva a um exército de mortos"
+        ]
       }
     ],
     "aliases": [],
@@ -417,7 +618,12 @@
         "efeito": "apaga luz fraca e adensa a sombra ao redor; esconder-se nela fica fácil",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "apagar a vela do quarto ao lado",
+          "esconder a mão que pega a chave",
+          "cobrir uma marca no chão"
+        ]
       },
       {
         "nivel": 2,
@@ -425,7 +631,12 @@
         "efeito": "a escuridão se cola a você e a quem está junto, e vai junto quando anda",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "atravessar um pátio iluminado sob o manto",
+          "cobrir dois companheiros na mesma treva",
+          "esconder um corpo até de manhã"
+        ]
       },
       {
         "nivel": 3,
@@ -433,7 +644,12 @@
         "efeito": "a treva ganha peso: empurra, segura, apaga som e assusta quem está dentro",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "segurar o braço de quem ia gritar",
+          "abafar o barulho de uma porta arrombada",
+          "empurrar alguém escada abaixo sem tocar"
+        ]
       },
       {
         "nivel": 4,
@@ -441,7 +657,12 @@
         "efeito": "engole uma área inteira; lá dentro ninguém vê, ninguém é visto e o ar pesa",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "apagar uma sala inteira no meio da luta",
+          "roubar a visão do arqueiro na torre",
+          "engolir o som de uma briga na rua"
+        ]
       },
       {
         "nivel": 5,
@@ -449,7 +670,11 @@
         "efeito": "você mesmo vira sombra: passa por frestas, escorre, arma comum não o fere",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "passar por baixo de uma porta trancada",
+          "levar uma flechada sem sentir"
+        ]
       },
       {
         "nivel": 6,
@@ -457,7 +682,11 @@
         "efeito": "a treva traga o que toca; a região vira uma boca escura da qual se sai perdido",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "tragar uma carroça inteira",
+          "fazer um beco deixar de ter saída"
+        ]
       }
     ],
     "aliases": [],
@@ -475,7 +704,12 @@
         "efeito": "estanca sangramento, cura dano leve",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "fechar cortes e arranhões pelo toque",
+          "estancar um sangramento",
+          "tirar a dor de alguém por uma cena"
+        ]
       },
       {
         "nivel": 2,
@@ -483,7 +717,12 @@
         "efeito": "cura dano leve a moderado e neutraliza um veneno fraco no corpo",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "emendar um ferimento sério",
+          "baixar uma febre",
+          "parar um sangramento grave"
+        ]
       },
       {
         "nivel": 3,
@@ -491,7 +730,12 @@
         "efeito": "cura Letal moderado; suspende a dor",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "fechar ferida grave e pôr o ferido de pé",
+          "cuidar de dois feridos numa passada",
+          "neutralizar um veneno comum"
+        ]
       },
       {
         "nivel": 4,
@@ -499,7 +743,12 @@
         "efeito": "ferimentos graves, doenças, venenos",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "religar um membro quase perdido",
+          "acordar quem está caído e inconsciente",
+          "limpar uma doença séria"
+        ]
       },
       {
         "nivel": 5,
@@ -507,7 +756,12 @@
         "efeito": "recompõe membros; doenças mortais",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "refazer um membro perdido",
+          "curar dano agravado, que não fecha sozinho",
+          "pôr um grupo inteiro de pé"
+        ]
       },
       {
         "nivel": 6,
@@ -515,7 +769,11 @@
         "efeito": "traz o recém-morto; expurga quase tudo",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "chamar de volta quem morreu há pouco",
+          "desfazer uma mutilação antiga"
+        ]
       }
     ],
     "aliases": [],
@@ -533,7 +791,12 @@
         "efeito": "faz plantas crescerem; cura leve",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "firmar um pulso fraco",
+          "acelerar um broto",
+          "devolver fôlego a quem está exausto"
+        ]
       },
       {
         "nivel": 2,
@@ -541,7 +804,11 @@
         "efeito": "faz plantas crescerem depressa (cobertura, trepadeira que prende) e cura um pouco mais",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "fazer a semente virar planta na hora",
+          "sustentar alguém um dia sem comer nem beber"
+        ]
       },
       {
         "nivel": 3,
@@ -549,7 +816,11 @@
         "efeito": "anima plantas para enredar",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "vigor emprestado que dura a cena",
+          "fazer um pomar florescer fora de época"
+        ]
       },
       {
         "nivel": 4,
@@ -557,7 +828,11 @@
         "efeito": "altera corpos vivos",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "acelerar a cura natural de um grupo por dias",
+          "devolver juventude a um animal velho"
+        ]
       },
       {
         "nivel": 5,
@@ -565,7 +840,11 @@
         "efeito": "transforma um ermo em floresta",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "fazer mata crescer onde havia pedra",
+          "dar vida a um corpo simples"
+        ]
       },
       {
         "nivel": 6,
@@ -573,7 +852,11 @@
         "efeito": "cura em massa; vida exuberante",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "semear vida num deserto",
+          "animar o que nunca viveu"
+        ]
       }
     ],
     "aliases": [],
@@ -591,7 +874,11 @@
         "efeito": "decomposição; dreno (1d6 + cura você)",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "apodrecer fruta e pano pelo toque",
+          "tirar o vigor de quem você toca"
+        ]
       },
       {
         "nivel": 2,
@@ -599,7 +886,11 @@
         "efeito": "toque que enfraquece o alvo por uma cena (−1) e dreno maior (1d6 + cura você)",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "definhar um membro e enfraquecer o golpe",
+          "matar as plantas em volta"
+        ]
       },
       {
         "nivel": 3,
@@ -607,7 +898,11 @@
         "efeito": "adoece o alvo; fala com mortos recentes",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "necrose que abre no corpo, 3d6",
+          "roubar a força de um alvo pela cena"
+        ]
       },
       {
         "nivel": 4,
@@ -615,7 +910,11 @@
         "efeito": "anima um cadáver; aura de medo",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "apagar a vida de vários seres pequenos",
+          "praga que consome uma plantação"
+        ]
       },
       {
         "nivel": 5,
@@ -623,7 +922,11 @@
         "efeito": "doença e murchez numa área",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "apodrecer um homem forte em minutos",
+          "matar tudo que é vivo numa área pequena"
+        ]
       },
       {
         "nivel": 6,
@@ -631,7 +934,11 @@
         "efeito": "ceifa a vida; ergue uma legião",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "o toque que apaga a vida de uma vez",
+          "lavrar uma terra morta que fica assim"
+        ]
       }
     ],
     "aliases": [],
@@ -649,7 +956,11 @@
         "efeito": "impulso sutil; distrai",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "um impulso sutil",
+          "distrair o guarda por um instante"
+        ]
       },
       {
         "nivel": 2,
@@ -657,7 +968,11 @@
         "efeito": "o alvo baixa a guarda e o trata com boa vontade por um tempo (vs Defesa Mental)",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "baixar a guarda do alvo e ganhar boa vontade pela cena",
+          "acalmar quem está prestes a gritar"
+        ]
       },
       {
         "nivel": 3,
@@ -665,7 +980,11 @@
         "efeito": "o alvo o vê como amigo",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "o alvo o vê como amigo antigo",
+          "acalmar uma sala inteira"
+        ]
       },
       {
         "nivel": 4,
@@ -673,7 +992,11 @@
         "efeito": "ordem resistível só com Vontade",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "uma ordem que só a Vontade resiste",
+          "calar uma multidão"
+        ]
       },
       {
         "nivel": 5,
@@ -681,7 +1004,11 @@
         "efeito": "ilusões convincentes ou domínio",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "ilusão convincente para muita gente",
+          "dominar alguém pela cena"
+        ]
       },
       {
         "nivel": 6,
@@ -689,7 +1016,11 @@
         "efeito": "altera memórias e lealdades",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "reescrever memória e lealdade",
+          "virar uma cidade a seu favor"
+        ]
       }
     ],
     "aliases": [],
@@ -707,7 +1038,11 @@
         "efeito": "sente perigo e mentiras",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "pressentir perigo próximo",
+          "saber se alguém está mentindo"
+        ]
       },
       {
         "nivel": 2,
@@ -715,7 +1050,11 @@
         "efeito": "sente intenção e mentira com clareza; um flash do passado recente de um objeto",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "ver o que está atrás da porta",
+          "ler a última hora de um objeto"
+        ]
       },
       {
         "nivel": 3,
@@ -723,7 +1062,11 @@
         "efeito": "vê eventos distantes",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "ver um lugar distante pelos olhos da mente",
+          "achar quem se esconde"
+        ]
       },
       {
         "nivel": 4,
@@ -731,7 +1074,11 @@
         "efeito": "vislumbra futuros prováveis",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "ver dias à frente, em imagens soltas",
+          "saber o nome verdadeiro de algo"
+        ]
       },
       {
         "nivel": 5,
@@ -739,7 +1086,11 @@
         "efeito": "observa lugar conhecido em tempo real",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "fazer uma pergunta ao mundo e receber resposta",
+          "rever um acontecimento antigo inteiro"
+        ]
       },
       {
         "nivel": 6,
@@ -747,7 +1098,11 @@
         "efeito": "responde sobre passado e futuro",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "enxergar o que ainda não foi decidido",
+          "ler o destino de uma pessoa"
+        ]
       }
     ],
     "aliases": [],
@@ -765,7 +1120,10 @@
         "efeito": "re-role um dado ou imponha −1",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "um empurrãozinho de sorte na própria rolagem"
+        ]
       },
       {
         "nivel": 2,
@@ -773,7 +1131,10 @@
         "efeito": "re-role um dado seu, ou force o inimigo a re-rolar um bom resultado",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "azar pequeno no inimigo: a corda arrebenta, o pé escorrega"
+        ]
       },
       {
         "nivel": 3,
@@ -781,7 +1142,11 @@
         "efeito": "+1d6 a um aliado ou −1d6 a um inimigo",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "virar uma disputa importante",
+          "achar o que estava perdido"
+        ]
       },
       {
         "nivel": 4,
@@ -789,7 +1154,11 @@
         "efeito": "força repetir uma rolagem",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "sorte que dura a cena inteira",
+          "o acaso arranja a saída"
+        ]
       },
       {
         "nivel": 5,
@@ -797,7 +1166,10 @@
         "efeito": "coincidências favoráveis por uma cena",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "maldição de azar que segue a pessoa por dias"
+        ]
       },
       {
         "nivel": 6,
@@ -805,7 +1177,10 @@
         "efeito": "torna o quase-impossível certo",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "torcer o acaso de uma batalha inteira"
+        ]
       }
     ],
     "aliases": [],
@@ -823,7 +1198,11 @@
         "efeito": "move objetos pequenos",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "chamar um objeto simples e pequeno",
+          "fazer surgir uma corda ou uma tocha"
+        ]
       },
       {
         "nivel": 2,
@@ -831,7 +1210,10 @@
         "efeito": "traz um objeto à vista para a mão; move objetos médios com a mente",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "conjurar ferramenta ou arma simples pela cena"
+        ]
       },
       {
         "nivel": 3,
@@ -839,7 +1221,10 @@
         "efeito": "teletransporte curto visível",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "invocar um servo menor que obedece por um tempo"
+        ]
       },
       {
         "nivel": 4,
@@ -847,7 +1232,11 @@
         "efeito": "traz objeto distante; fenda curta",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "erguer o que não existia: ponte, muro, escada",
+          "conjurar arma de guerra que dura a luta"
+        ]
       },
       {
         "nivel": 5,
@@ -855,7 +1244,10 @@
         "efeito": "entre dois lugares próximos",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "invocar aliado poderoso por uma cena"
+        ]
       },
       {
         "nivel": 6,
@@ -863,7 +1255,10 @@
         "efeito": "teletransporte longo de grupo",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "fazer surgir o que só existia na ideia"
+        ]
       }
     ],
     "aliases": [],
@@ -881,7 +1276,11 @@
         "efeito": "empurra/segura; escudo breve",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "mover um objeto leve à distância",
+          "segurar uma porta que se fecha"
+        ]
       },
       {
         "nivel": 2,
@@ -889,7 +1288,11 @@
         "efeito": "empurrão forte que derruba e afasta; sustenta um escudo de força por mais tempo",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "empurrar ou puxar uma pessoa",
+          "desarmar alguém de longe"
+        ]
       },
       {
         "nivel": 3,
@@ -897,7 +1300,11 @@
         "efeito": "move e arremessa objetos pesados",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "prender um alvo no lugar com a mão invisível",
+          "erguer o próprio peso do chão"
+        ]
       },
       {
         "nivel": 4,
@@ -905,7 +1312,11 @@
         "efeito": "barreira; impacto cinético (3d6)",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "erguer uma carroça",
+          "pesar sobre um grupo e derrubá-lo"
+        ]
       },
       {
         "nivel": 5,
@@ -913,7 +1324,11 @@
         "efeito": "comprime alvo/objeto",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "dobrar a gravidade de uma área",
+          "voar por telecinesia"
+        ]
       },
       {
         "nivel": 6,
@@ -921,7 +1336,10 @@
         "efeito": "manipula gravidade e cinética",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "mover o que uma vila inteira não moveria"
+        ]
       }
     ],
     "aliases": [],
@@ -939,7 +1357,10 @@
         "efeito": "cor, textura, temperatura",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "mudar cor, textura e temperatura de um objeto"
+        ]
       },
       {
         "nivel": 2,
@@ -947,7 +1368,11 @@
         "efeito": "conserta ou danifica um objeto pequeno; endurece ou amolece uma superfície",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "amolecer metal, endurecer pano",
+          "abrir um cadeado por dentro"
+        ]
       },
       {
         "nivel": 3,
@@ -955,7 +1380,11 @@
         "efeito": "converte material em semelhante",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "transmutar um material em outro parecido",
+          "fazer a corda virar corrente"
+        ]
       },
       {
         "nivel": 4,
@@ -963,7 +1392,10 @@
         "efeito": "reformula objetos; cria itens simples",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "transformar pedra em água, madeira em vidro"
+        ]
       },
       {
         "nivel": 5,
@@ -971,7 +1403,10 @@
         "efeito": "conjura matéria",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "refazer um objeto inteiro em outra coisa"
+        ]
       },
       {
         "nivel": 6,
@@ -979,7 +1414,10 @@
         "efeito": "transmuta qualquer matéria",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "mudar a substância de tudo numa área"
+        ]
       }
     ],
     "aliases": [],
@@ -997,7 +1435,10 @@
         "efeito": "acelera ou atrasa um alvo",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "apressar ou atrasar o próprio gesto por um instante"
+        ]
       },
       {
         "nivel": 2,
@@ -1005,7 +1446,11 @@
         "efeito": "apressa você ou um aliado por um instante, ou retarda um alvo",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "dar a si mesmo meio segundo a mais",
+          "atrasar a ação de um alvo"
+        ]
       },
       {
         "nivel": 3,
@@ -1013,7 +1458,11 @@
         "efeito": "ação extra; congela objeto por segundos",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "acelerar um aliado pela cena",
+          "retardar um inimigo"
+        ]
       },
       {
         "nivel": 4,
@@ -1021,7 +1470,11 @@
         "efeito": "acelera/retarda área pequena",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "parar um objeto no ar",
+          "esticar um minuto de trabalho em dez"
+        ]
       },
       {
         "nivel": 5,
@@ -1029,7 +1482,10 @@
         "efeito": "desfaz alguns segundos",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "parar a cena por alguns segundos"
+        ]
       },
       {
         "nivel": 6,
@@ -1037,7 +1493,10 @@
         "efeito": "para o tempo brevemente",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "voltar um instante que já passou"
+        ]
       }
     ],
     "aliases": [],
@@ -1055,7 +1514,10 @@
         "efeito": "percebe e fala com espíritos",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "perceber e falar com os espíritos por perto"
+        ]
       },
       {
         "nivel": 2,
@@ -1063,7 +1525,11 @@
         "efeito": "acalma ou afugenta um espírito fraco; pede-lhe um pequeno favor",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "acalmar ou afugentar um espírito fraco",
+          "pedir a ele um favor pequeno"
+        ]
       },
       {
         "nivel": 3,
@@ -1071,7 +1537,10 @@
         "efeito": "invoca espírito/elemental menor",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "invocar um espírito ou elemental menor"
+        ]
       },
       {
         "nivel": 4,
@@ -1079,7 +1548,11 @@
         "efeito": "liga espírito a objeto; bane fracos",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "ligar um espírito a um objeto",
+          "banir os fracos de um lugar"
+        ]
       },
       {
         "nivel": 5,
@@ -1087,7 +1560,10 @@
         "efeito": "chama espírito poderoso como aliado",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "chamar um espírito poderoso como aliado"
+        ]
       },
       {
         "nivel": 6,
@@ -1095,7 +1571,11 @@
         "efeito": "comanda hostes; abre portas",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "comandar hostes",
+          "abrir a porta entre os mundos"
+        ]
       }
     ],
     "aliases": [],
@@ -1113,7 +1593,11 @@
         "efeito": "ward pessoal; dissipa magia fraca",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "aparar um golpe pequeno",
+          "escudo que segura uma flecha"
+        ]
       },
       {
         "nivel": 2,
@@ -1121,7 +1605,10 @@
         "efeito": "escudo pessoal que absorve um golpe e dissipa magia de baixo nível ao redor",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "escudo que dura a cena contra o que é comum"
+        ]
       },
       {
         "nivel": 3,
@@ -1129,7 +1616,10 @@
         "efeito": "campo protetor contra ataques",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "barreira que fecha uma porta a quem não foi convidado"
+        ]
       },
       {
         "nivel": 4,
@@ -1137,7 +1627,10 @@
         "efeito": "área segura que repele ameaças",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "proteger um grupo de um elemento pela cena"
+        ]
       },
       {
         "nivel": 5,
@@ -1145,7 +1638,10 @@
         "efeito": "anula/enfraquece magias",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "dissipar ou enfraquecer magia alheia"
+        ]
       },
       {
         "nivel": 6,
@@ -1153,7 +1649,10 @@
         "efeito": "protege um local; barreira quase impenetrável",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "santuário sobre um lugar, quase impenetrável"
+        ]
       }
     ],
     "aliases": [],
@@ -1171,7 +1670,11 @@
         "efeito": "o olhar dos outros passa por você; some no meio de qualquer gente enquanto não fizer nada notável",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "o olhar dos outros escorrega de você",
+          "passar por um portão sem ser notado"
+        ]
       },
       {
         "nivel": 2,
@@ -1179,7 +1682,10 @@
         "efeito": "rosto, voz e roupas viram outros aos olhos de quem vê; o toque denuncia (vs Defesa Mental)",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "mudar rosto, voz e roupa aos olhos de quem vê"
+        ]
       },
       {
         "nivel": 3,
@@ -1187,7 +1693,10 @@
         "efeito": "some da vista mesmo andando e agindo devagar; atacar quebra o manto",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "sumir da vista mesmo andando devagar"
+        ]
       },
       {
         "nivel": 4,
@@ -1195,7 +1704,10 @@
         "efeito": "esconde também companheiros, montarias e carga ao seu lado",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "esconder o grupo inteiro, montaria e carga"
+        ]
       },
       {
         "nivel": 5,
@@ -1203,7 +1715,10 @@
         "efeito": "some para todos os sentidos: som, cheiro, rastro e calor; nem magia de busca o acha",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "sumir para todos os sentidos, não só a vista"
+        ]
       },
       {
         "nivel": 6,
@@ -1211,7 +1726,10 @@
         "efeito": "a cena inteira o ignora, mesmo enquanto age; quem o viu duvida da própria memória",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "a cena inteira o ignora, mesmo enquanto age"
+        ]
       }
     ],
     "aliases": [],
@@ -1229,7 +1747,11 @@
         "efeito": "não deixa rastro; mato, brejo e neve não o atrasam nem o denunciam",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "não deixar rastro",
+          "atravessar o mato sem denunciar"
+        ]
       },
       {
         "nivel": 2,
@@ -1237,7 +1759,10 @@
         "efeito": "os bichos não o sentem: cheiro, som e presença passam batidos, e nada foge da sua chegada",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "os bichos não o sentem chegar"
+        ]
       },
       {
         "nivel": 3,
@@ -1245,7 +1770,10 @@
         "efeito": "mescla-se ao terreno, parado ou em marcha lenta; a paisagem se fecha em volta de você",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "mesclar-se ao terreno, parado ou em marcha lenta"
+        ]
       },
       {
         "nivel": 4,
@@ -1253,7 +1781,10 @@
         "efeito": "chama os animais da região e pede um favor simples: guiar, vigiar, atrasar quem vem atrás",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "chamar os animais da região e pedir um favor simples"
+        ]
       },
       {
         "nivel": 5,
@@ -1261,7 +1792,11 @@
         "efeito": "fala com feras e árvores antigas; a mata abre caminho ao grupo e fecha atrás dele",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "falar com feras e árvores antigas",
+          "a mata abre caminho ao grupo"
+        ]
       },
       {
         "nivel": 6,
@@ -1269,7 +1804,10 @@
         "efeito": "a região inteira o esconde, o avisa e obedece: nada que ande por ela passa sem você saber",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "a região inteira esconde, avisa e obedece"
+        ]
       }
     ],
     "aliases": [],
@@ -1287,7 +1825,11 @@
         "efeito": "muda uma parte do corpo: garras (arma natural), presas, olhos de bicho, faro apurado",
         "custo": {
           "mana": 1
-        }
+        },
+        "exemplos": [
+          "garras e presas",
+          "olhos de bicho e faro apurado"
+        ]
       },
       {
         "nivel": 2,
@@ -1295,7 +1837,11 @@
         "efeito": "adapta o corpo ao meio: couro grosso (Absorção), guelras, patas de escalar, calor ou frio não o abatem",
         "custo": {
           "mana": 2
-        }
+        },
+        "exemplos": [
+          "couro grosso que absorve",
+          "guelras ou patas de escalar"
+        ]
       },
       {
         "nivel": 3,
@@ -1303,7 +1849,10 @@
         "efeito": "vira por inteiro um animal do seu porte ou menor, com os sentidos e o deslocamento dele",
         "custo": {
           "mana": 3
-        }
+        },
+        "exemplos": [
+          "virar por inteiro um animal do seu porte ou menor"
+        ]
       },
       {
         "nivel": 4,
@@ -1311,7 +1860,10 @@
         "efeito": "parte do corpo vira elemento (névoa, água, brasa, pedra): golpes atravessam ou queimam quem o segura",
         "custo": {
           "mana": 4
-        }
+        },
+        "exemplos": [
+          "parte do corpo vira névoa, água, brasa ou pedra"
+        ]
       },
       {
         "nivel": 5,
@@ -1319,7 +1871,10 @@
         "efeito": "o corpo todo vira elemento: passa por frestas, escorre, arma comum não o fere",
         "custo": {
           "mana": 5
-        }
+        },
+        "exemplos": [
+          "o corpo todo vira elemento: passa por frestas"
+        ]
       },
       {
         "nivel": 6,
@@ -1327,7 +1882,11 @@
         "efeito": "troca de forma à vontade e sustenta a mudança por horas, inclusive fera de guerra muito maior ou enxame",
         "custo": {
           "mana": 6
-        }
+        },
+        "exemplos": [
+          "trocar de forma à vontade por horas",
+          "virar fera de guerra ou enxame"
+        ]
       }
     ],
     "aliases": [],

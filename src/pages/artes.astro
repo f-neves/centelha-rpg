@@ -167,7 +167,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 
   <section class="arcano-regras">
     <h2>As {d.artes.length} Artes</h2>
-    <p>Os seis níveis de cada Arte, abaixo, são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos mostradores, acima.</p>
+    <p>Os seis níveis de cada Arte, abaixo, são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos mostradores, acima. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
     <div class="filtros panel">
       <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
       <fieldset style="display:inline-block;border:1px solid var(--panel-border);border-radius:5px;padding:.3rem .6rem;margin-left:.6rem">
@@ -191,7 +191,10 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
             <div class="muted arte-conj">conjura com {d.A[a.atributo_conjuracao.id].nome}</div>
             <ol class="niveis">
               {a.niveis.map((n: any) => (
-                <li><span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong>: {n.efeito} <span class="muted">({n.custo.mana} Mana)</span></li>
+                <li>
+                  <span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong>: {n.efeito} <span class="muted">({n.custo.mana} Mana)</span>
+                  {n.exemplos?.length ? <ul class="nv-ex">{n.exemplos.map((e: string) => <li>{e}</li>)}</ul> : null}
+                </li>
               ))}
             </ol>
           </div>
@@ -215,7 +218,10 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   .arte-nome { color: var(--accent); font-size: 1.15rem; flex: 1; }
   .arte-conj { font-size: .82rem; font-style: italic; margin-bottom: .4rem; }
   .niveis { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
-  .niveis li { margin-bottom: .3rem; line-height: 1.4; }
+  .niveis > li { margin-bottom: .5rem; line-height: 1.4; }
+  .nv-ex { list-style: none; margin: .2rem 0 0 1.8rem; padding: 0; font-size: .85rem; color: var(--ink-soft); }
+  .nv-ex li { position: relative; padding-left: .8rem; line-height: 1.35; margin-bottom: .1rem; }
+  .nv-ex li::before { content: '·'; position: absolute; left: .15rem; color: var(--accent); }
   .niveis .lvl { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%;
     background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .72rem; }
   .bm { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--gold); }
