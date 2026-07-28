@@ -116,19 +116,30 @@ dano físico.**
 Cada Arte tem cinco mostradores, mas **nem sempre os mesmos cinco**. Os que não fazem
 sentido são substituídos, e a substituição é fixa e escrita na Arte.
 
-Base das Artes elementais, por nível 1 a 6:
+**Todo mostrador começa no grau 0, que é grátis**: alcance de toque, área de um alvo médio
+(0,25 m²), um alvo, duração instantânea e dano nenhum. Comprar o grau 1 é que tira o efeito
+do mínimo.
 
-| Mostrador | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
-| Alcance | toque | 5 m | 20 m | 50 m | 150 m | 500 m |
-| Área | 0,25 m² | 1 m² | 5 m² | 15 m² | 50 m² | 150 m² |
-| Alvos | 1 | 2 | 4 | 10 | 20 | 50 |
-| Dano | 1d6 por nível (ver seção 6) | | | | | |
-| Duração | ver abaixo | | | | | |
+| Mostrador | 0 (grátis) | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|---|
+| Alcance | toque | 5 m | 20 m | 50 m | 150 m | 500 m | 1,5 km |
+| Área | um alvo · 0,25 m² | 1 m² | 5 m² | 15 m² | 50 m² | 150 m² | 500 m² |
+| Alvos | 1 | 2 | 4 | 10 | 20 | 50 | 150 |
+| Dano | nenhum | 1d6 | 2d6 | 3d6 | 4d6 | 5d6 | 6d6 |
+| Duração aguda | instantâneo | 1 turno | 3 turnos | 1 cena | 10 min | 1 hora | 6 horas |
+| Duração branda | instantâneo | 1 cena | 1 hora | 6 horas | 1 dia | 1 semana | 1 mês |
 
-**Duração corre em duas réguas.** Efeito agudo (dano, força bruta, controle direto) anda em
-turnos e cenas. Efeito brando (aquecer o corpo, camuflagem, sorte, proteção) anda em minutos,
-horas e dias. Quanto mais extremo o efeito, menor a escala de tempo.
+Passo médio: cerca de ×3 em alcance, ×3,5 em área, ×2,3 em alvos, e linear no dano. Terra dobra
+o dado, então cada grau de dano dela vale 2d6.
+
+**Duração corre em duas réguas.** A aguda vale para dano, força bruta e controle direto. A branda
+vale para proteção, camuflagem, aquecer o corpo, sorte. Quanto mais extremo o efeito, menor a
+escala de tempo.
+
+> **Pendência:** as Proezas já têm mostradores próprios em `regras.json` e eles não batem com
+> estes (alcance 3, 5, 8, 20, 50, 150 m; alvos 1, 2, 3, 10, 50, 300+; duração 1 ação, 1 turno,
+> 1 cena, várias cenas, horas, 1 dia ou mais). Decidir se as duas escalas convivem de propósito
+> (a Proeza é o corpo, o Arcano é o ambiente) ou se devem ser unificadas.
 
 Substituições por Arte (aprovado):
 
@@ -158,37 +169,42 @@ Parâmetros secundários também vêm escritos no Efeito quando existirem: volum
 área, comprimento no lugar de área, dano diferente do básico, veneno, dano incapacitante,
 penalidades impostas, visibilidade, dificuldade de travessia, e o que mais o Efeito exigir.
 
-### 5.1. Quantos degraus o feiticeiro distribui (PROPOSTA, pendência 1)
+### 5.1. Quantos degraus o feiticeiro distribui
 
-Em *Sorcerer* isso sai de uma rolagem. Aqui não: o valor é fixo e conhecido antes de conjurar.
+Em *Sorcerer* isso sai de uma rolagem de sucessos. Aqui não: o valor é fixo e conhecido antes
+de conjurar.
 
-> **Pontos = nível da Arte + Atributo de conjuração.** Cada mostrador começa no degrau 1 e
-> custa **1 ponto por degrau acima do primeiro**. Nenhum mostrador passa do **nível da Arte**
-> (para isso existe o esticar, seções 6.5 e 6.6). O **Mana é o maior degrau usado**.
+> **Pontos = (nível da Arte × 2) + Centelha.** Cada mostrador começa no grau 0, que é grátis, e
+> custa **1 ponto por grau**, linear. Nenhum mostrador passa do **nível da Arte** (para isso
+> existe o esticar, seções 6.5 e 6.6). O **Mana é o maior grau usado**.
 
-Divisão de trabalho: **Ocultismo acerta, Arte e Atributo modelam.** A rolagem continua sendo
+Divisão de trabalho: **Ocultismo acerta, Arte e Centelha modelam.** A rolagem continua sendo
 Ocultismo + Atributo contra a resistência; os pontos só dizem que forma o feitiço tem.
 
-Isso vale para o **efeito genérico da Arte** (o improviso: o dardo, acender, aquecer, empurrar).
-O **Efeito comprado já vem com os mostradores impressos** e não se distribui nada nele.
+Vale para o **efeito genérico da Arte** (o improviso: o dardo, acender, aquecer, empurrar). O
+**Efeito comprado já vem com os mostradores impressos** e não se distribui nada nele.
 
-Exemplos, com Fogo 3 e Inteligência 3 (6 pontos, teto 3 por mostrador):
+| Feiticeiro | Pontos | Teto | Exemplos de alocação |
+|---|---|---|---|
+| Fogo 1, Centelha 1 | 3 | 1 | 1d6 a 5 m; ou 1d6 em dois alvos, por toque |
+| Fogo 3, Centelha 3 | 9 | 3 | 3d6 a 50 m num alvo; ou 3d6 a 20 m em quatro alvos |
+| Fogo 6, Centelha 3 | 15 | 6 | 6d6 a 500 m; ou 4d6 a 150 m por uma cena |
+| Fogo 6, Centelha 6 | 18 | 6 | 6d6 a 500 m em quatro alvos |
+| Fogo 1, Centelha 6 | 8 | 1 | nada além do grau 1: sobra ponto sem onde gastar |
 
-- Dardo típico: alcance 3 (2 pontos, 20 m) e dano 3 (2 pontos, 3d6). Sobram 2 pontos para
-  alvos 3 (quatro alvos) ou para duração.
-- Fogueira que dura: área 3 (2), duração 3 (2), alcance 2 (1). Dano nenhum. Sobra 1.
-- Tudo num alvo só: dano 3 (2) e o resto no chão, com alcance 1 (toque). Custa 3 de Mana pelo
-  maior degrau usado.
+Propriedades que sustentam a escolha da fórmula: o grau 0 é grátis, então magia pequena não pede
+conta nenhuma na mesa; a proporção entre pontos e teto fica estável em toda a escala (dá para
+levar ao máximo cerca de três dos cinco mostradores, tanto no nível 1 quanto no 6), então
+conjurar continua sendo escolha até o fim; e o peso duplo da Arte evita o caso em que Arte baixa
+com Atributo alto rende mais que Arte alta com Atributo baixo.
 
-Propriedades que caem bem: no nível 1 tudo custa zero, então magia pequena é trivial e não pede
-conta; no topo, nem o mestre maximiza tudo (Arte 6 com Atributo 6 dá 12 pontos, e três
-mostradores no 6 já custariam 15), então toda conjuração continua sendo uma escolha; e o
-Atributo de cada Arte ganha um trabalho concreto, o que separa o feiticeiro de Inteligência do
-de Influência ou de Vigor.
+Descartadas: **Arte + Atributo** (favorecia Arte baixa com Atributo alto) e **Arte + Ocultismo**
+(concentraria tudo numa perícia só e apagaria a variedade de Atributos entre as Artes).
 
-Alternativa considerada: trocar o Atributo por **Ocultismo** na conta dos pontos, o que combina
-com a premissa de que feitiçaria é conhecimento. Descartada por ora porque concentraria tudo
-numa perícia só e apagaria a variedade de Atributos entre as Artes.
+**Consequência editorial:** os seis níveis escritos de cada Arte em `artes.json` deixam de ser a
+regra e passam a ser **exemplo de alocação típica** daquele patamar. Hoje aqueles textos sugerem
+que o nível 3 entrega alcance, área e dano de nível 3 ao mesmo tempo, e com esta conta não
+entrega.
 
 ---
 
@@ -349,12 +365,7 @@ já está definido: agravado, ignora resistência). Ver Pendência 4.
 
 ## 10. Pendências
 
-**1. Distribuição dos mostradores sem rolagem.** Em *Sorcerer* o feiticeiro paga 1 de Vontade,
-rola, e distribui os sucessos entre dano, área, alcance e duração. Aqui não haverá rolagem para
-isso: a quantidade de pontos a distribuir deve sair do **nível da Arte mais alguma coisa**,
-provavelmente o **Atributo de conjuração**. Ver a proposta na seção 5.1.
-
-**1b. Guardar um feitiço (parado).** Preparar um efeito e soltar depois é outra mecânica, a
+**1. Guardar um feitiço (parado).** Preparar um efeito e soltar depois é outra mecânica, a
 desenhar noutro momento. Ideia levantada: "comitar" o feitiço impõe penalidade de 1d6 nos testes
 de Raciocínio enquanto estiver guardado, e para efeitos passivos conta o Raciocínio como um nível
 mais baixo.
@@ -362,13 +373,16 @@ mais baixo.
 **2. Empurrão.** A fórmula da seção 6 é proposta, não decisão. Discutir a divisão por 4, o
 limiar de derrubada e o valor de empurrão do Ar.
 
-**3. Rituais.** Hoje o capítulo define Ritual como o modo lento, fora de combate, com metade do
-Mana e escala maior. Na conversa apareceu também o uso de "Ritual" para efeito duradouro ou
-passivo (arma flamejante pela cena, vento que derruba flechas). São coisas diferentes e não
-podem dividir o nome. Proposta de partida: **duração é só um mostrador**, então efeito
-duradouro é Efeito com duração alta, e **Ritual volta a ser só o modo de conjurar** (lento,
-fora de combate, metade do Mana, escala grande), com alguns Efeitos existindo apenas nesse
-modo, como o círculo de invocação.
+**3. Rituais.** Encaminhado pela seção 6.6: **Ritual é o modo lento de conjurar**, que troca
+Mana por tempo e Vontade. Efeito duradouro não é Ritual, é Efeito com duração alta, porque
+duração é só um mostrador. Falta decidir duas coisas: se a regra antiga de "metade do Mana no
+Ritual" morre de vez (a proposta atual já é mais generosa que ela) e se algum Efeito só existe
+no modo lento, como o círculo de invocação.
+
+**3b. Duas escalas de mostradores no sistema.** As Proezas têm mostradores próprios em
+`regras.json` que não batem com os do Arcano (alcance 3, 5, 8, 20, 50, 150 m; alvos 1, 2, 3, 10,
+50, 300+; duração 1 ação, 1 turno, 1 cena, várias cenas, horas, 1 dia ou mais). Decidir se
+convivem de propósito ou se unificam.
 
 **4. Números de fraqueza e resistência.** Definir o efeito mecânico para os elementos que não
 sejam Luz: fraqueza vira dano agravado, dano dobrado ou dado extra? Resistência reduz pela
