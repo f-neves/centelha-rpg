@@ -255,7 +255,7 @@ Na prática, um lutador resistente abre caminho por ~**20 Comuns**, ~**8 Treinad
 
 ## Técnicas em combate: tempo e combos
 
-As Técnicas das Proezas entram na luta por **dois mostradores independentes**: a **Energia** é o combustível da *cena* (quanto você ainda tem no tanque); os **Ticks** são o custo do *momento* (quanto tempo o poder rouba da sua linha do tempo). Decidir entre os dois — "gasto tempo agora ou guardo o tanque?" — é metade da tática.
+As Técnicas das Proezas entram na luta por **dois medidores independentes**: a **Energia** é o combustível da *cena* (quanto você ainda tem no tanque); os **Ticks** são o custo do *momento* (quanto tempo o poder rouba da sua linha do tempo). Decidir entre os dois — "gasto tempo agora ou guardo o tanque?" — é metade da tática.
 
 | Tipo de Técnica | Ticks | Como entra |
 |---|:---:|---|

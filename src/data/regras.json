@@ -219,8 +219,8 @@
         "nota": "em disputa resolve pela subtração: o efeito só cede a quem traz poder (nível/atributo) efetivamente maior."
       }
     },
-    "mostradores": {
-      "nota": "Dials secundários que uma Técnica pode escalar por cima do efeito principal, na mesma lógica do improviso do Arcano.",
+    "parametros": {
+      "nota": "Parâmetros secundários que uma Técnica pode escalar por cima do efeito principal, na mesma lógica do improviso do Arcano. As escalas SÃO diferentes das do Arcano de propósito: a Proeza é o corpo, o Arcano é o ambiente.",
       "alcance": [
         "3 m",
         "5 m",
@@ -970,7 +970,7 @@
     "bypassArmadura": "Ignorar a Absorção de armadura (ex.: Punho que Parte Pedra, Esmagar) afeta só a parte da ARMADURA; a Absorção natural do alvo (Vigor no Impacto, Centelha) continua valendo."
   },
   "arcano": {
-    "nota": "Detalhamento do uso das Artes: improviso por mostradores, conjuração composta (espelha o combo) e Rituais. Mana = nível do efeito; conjura Ocultismo + Atributo.",
+    "nota": "Detalhamento do uso das Artes: improviso por parâmetros, conjuração composta (espelha o combo) e Rituais. Mana = nível do efeito; conjura Ocultismo + Atributo.",
     "feiticoTicks": [
       {
         "nivel": "1–3",
@@ -1018,10 +1018,10 @@
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {
-      "regra": "O efeito genérico da Arte se monta distribuindo PONTOS pelos mostradores. Todo mostrador começa no grau 0 (grátis) e custa 1 ponto por grau, linear. Nenhum mostrador passa do nível da Arte; para passar, ver `esticar`. O Mana gasto é o MAIOR grau usado. Não há rolagem para distribuir: a rolagem (Ocultismo + Atributo) é só para acertar/vencer a resistência. Efeito COMPRADO já vem com os mostradores impressos e não se distribui nada nele.",
+      "regra": "O efeito genérico da Arte se monta distribuindo PONTOS pelos parâmetros. Todo parâmetro começa no grau 0 (grátis) e custa 1 ponto por grau, linear. Nenhum parâmetro passa do nível da Arte; para passar, ver `esticar`. O Mana gasto é o MAIOR grau usado. Não há rolagem para distribuir: a rolagem (Ocultismo + Atributo) é só para acertar/vencer a resistência. Efeito COMPRADO já vem com os parâmetros impressos e não se distribui nada nele.",
       "pontos": "(nível da Arte × 2) + Centelha",
       "custoPorGrau": 1,
-      "tetoPorMostrador": "nível da Arte",
+      "tetoPorParametro": "nível da Arte",
       "mana": "o maior grau usado na conjuração",
       "graus": {
         "nota": "Grau 0 é o mínimo grátis de todo feitiço: toque, um alvo, instantâneo, sem dano.",
@@ -1031,7 +1031,7 @@
         "dano": ["nenhum", "1d6", "2d6", "3d6", "4d6", "5d6", "6d6"],
         "duracaoAguda": ["instantâneo", "1 turno", "3 turnos", "1 cena", "10 minutos", "1 hora", "6 horas"],
         "duracaoBranda": ["instantâneo", "1 cena", "1 hora", "6 horas", "1 dia", "1 semana", "1 mês"],
-        "notaDano": "Terra dobra o dado: cada grau de dano dela vale 2d6. Ar e Sombra não têm mostrador de dano.",
+        "notaDano": "Terra dobra o dado: cada grau de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
         "notaDuracao": "A régua aguda vale para dano e controle direto; a branda para proteção, camuflagem e efeitos suaves."
       }
     },
@@ -1076,16 +1076,16 @@
       "upgrade": "efeito escalonável paga só a diferença: 2 × novo − 2 × antigo",
       "outraArte": "Efeito que você já sabe e que cabe em outra Arte sua não custa XP, só treino; mas é preciso ter cada Arte no nível do Efeito",
       "compra": "só até o nível que você tem na Arte; sem teto de quantidade",
-      "ticks": "4 + nível do Efeito + 1 por grau que qualquer mostrador passe do nível dele"
+      "ticks": "4 + nível do Efeito + 1 por grau que qualquer parâmetro passe do nível dele"
     },
     "composta": {
       "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos Manas + sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior nível.",
       "sobretaxaPorK": "(k−1)"
     },
     "ritual": {
-      "definicao": "Ritual é o MODO LENTO de conjurar (ver `esticar.lento`): troca Mana por tempo e Força de Vontade. Efeito duradouro não é Ritual: duração é só um mostrador.",
+      "definicao": "Ritual é o MODO LENTO de conjurar (ver `esticar.lento`): troca Mana por tempo e Força de Vontade. Efeito duradouro não é Ritual: duração é só um parâmetro.",
       "manaMetade": "REVISAR: a regra antiga de metade do Mana é substituída pelo custo linear do modo lento.",
-      "escala": "empurra os mostradores muito além do limite de um Feitiço (grande área, duração longa ou permanente, efeitos impossíveis em combate), inclusive acima do nível de Arte que você conhece.",
+      "escala": "empurra os parâmetros muito além do limite de um Feitiço (grande área, duração longa ou permanente, efeitos impossíveis em combate), inclusive acima do nível de Arte que você conhece.",
       "acao": "estendida (Dif + Intervalo + Acúmulo)",
       "cooperacao": "vários feiticeiros que conheçam a Arte somam Mana e dados na ação estendida",
       "backlash": false

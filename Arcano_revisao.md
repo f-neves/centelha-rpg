@@ -111,16 +111,16 @@ dano físico.**
 
 ---
 
-## 5. Mostradores
+## 5. Parâmetros
 
-Cada Arte tem cinco mostradores, mas **nem sempre os mesmos cinco**. Os que não fazem
+Cada Arte tem cinco parâmetros, mas **nem sempre os mesmos cinco**. Os que não fazem
 sentido são substituídos, e a substituição é fixa e escrita na Arte.
 
-**Todo mostrador começa no grau 0, que é grátis**: alcance de toque, área de um alvo médio
+**Todo parâmetro começa no grau 0, que é grátis**: alcance de toque, área de um alvo médio
 (0,25 m²), um alvo, duração instantânea e dano nenhum. Comprar o grau 1 é que tira o efeito
 do mínimo.
 
-| Mostrador | 0 (grátis) | 1 | 2 | 3 | 4 | 5 | 6 |
+| Parâmetro | 0 (grátis) | 1 | 2 | 3 | 4 | 5 | 6 |
 |---|---|---|---|---|---|---|---|
 | Alcance | toque | 5 m | 20 m | 50 m | 150 m | 500 m | 1,5 km |
 | Área | um alvo · 0,25 m² | 1 m² | 5 m² | 15 m² | 50 m² | 150 m² | 500 m² |
@@ -136,10 +136,10 @@ o dado, então cada grau de dano dela vale 2d6.
 vale para proteção, camuflagem, aquecer o corpo, sorte. Quanto mais extremo o efeito, menor a
 escala de tempo.
 
-> **Pendência:** as Proezas já têm mostradores próprios em `regras.json` e eles não batem com
-> estes (alcance 3, 5, 8, 20, 50, 150 m; alvos 1, 2, 3, 10, 50, 300+; duração 1 ação, 1 turno,
-> 1 cena, várias cenas, horas, 1 dia ou mais). Decidir se as duas escalas convivem de propósito
-> (a Proeza é o corpo, o Arcano é o ambiente) ou se devem ser unificadas.
+> **Nota:** as Proezas têm parâmetros próprios em `regras.json` (alcance 3, 5, 8, 20, 50, 150 m;
+> alvos 1, 2, 3, 10, 50, 300+; duração 1 ação, 1 turno, 1 cena, várias cenas, horas, 1 dia ou
+> mais), com escalas diferentes destas **de propósito**: a Proeza é o corpo, o Arcano é o
+> ambiente.
 
 Substituições por Arte (aprovado):
 
@@ -151,17 +151,17 @@ Substituições por Arte (aprovado):
   **Nitidez**.
 - **Conjuração e Espírito** trocam Potência por **Porte do que se chama** e Duração por
   **Firmeza do vínculo**.
-- **Metamorfose** troca Área por **Quanto do corpo** e mantém Duração como o mostrador caro.
+- **Metamorfose** troca Área por **Quanto do corpo** e mantém Duração como o parâmetro caro.
 - **Natureza** mantém Área, que fica grande cedo (o efeito é sobre terreno), com Potência
   baixa em troca.
 
-### Os mostradores dentro de um Efeito
+### Os parâmetros dentro de um Efeito
 
-Cada Efeito **traz os próprios mostradores escritos**, no espírito dos charms de Exalted, para
+Cada Efeito **traz os próprios parâmetros escritos**, no espírito dos charms de Exalted, para
 não sobrar dúvida na mesa. Nem todo Efeito usa os cinco: a Neblina, por exemplo, tem Alcance
 (distância até onde ela nasce), Área e Duração, e não tem Dano nem Alvos.
 
-Um Efeito **pode passar do gabarito do nível dele em um mostrador** quando fizer sentido: a
+Um Efeito **pode passar do gabarito do nível dele em um parâmetro** quando fizer sentido: a
 Neblina é nível 1 e mesmo assim cobre área maior que a de um efeito comum de nível 1. É
 justamente isso que a torna um Efeito e não improviso.
 
@@ -174,15 +174,15 @@ penalidades impostas, visibilidade, dificuldade de travessia, e o que mais o Efe
 Em *Sorcerer* isso sai de uma rolagem de sucessos. Aqui não: o valor é fixo e conhecido antes
 de conjurar.
 
-> **Pontos = (nível da Arte × 2) + Centelha.** Cada mostrador começa no grau 0, que é grátis, e
-> custa **1 ponto por grau**, linear. Nenhum mostrador passa do **nível da Arte** (para isso
+> **Pontos = (nível da Arte × 2) + Centelha.** Cada parâmetro começa no grau 0, que é grátis, e
+> custa **1 ponto por grau**, linear. Nenhum parâmetro passa do **nível da Arte** (para isso
 > existe o esticar, seções 6.5 e 6.6). O **Mana é o maior grau usado**.
 
 Divisão de trabalho: **Ocultismo acerta, Arte e Centelha modelam.** A rolagem continua sendo
 Ocultismo + Atributo contra a resistência; os pontos só dizem que forma o feitiço tem.
 
 Vale para o **efeito genérico da Arte** (o improviso: o dardo, acender, aquecer, empurrar). O
-**Efeito comprado já vem com os mostradores impressos** e não se distribui nada nele.
+**Efeito comprado já vem com os parâmetros impressos** e não se distribui nada nele.
 
 | Feiticeiro | Pontos | Teto | Exemplos de alocação |
 |---|---|---|---|
@@ -194,7 +194,7 @@ Vale para o **efeito genérico da Arte** (o improviso: o dardo, acender, aquecer
 
 Propriedades que sustentam a escolha da fórmula: o grau 0 é grátis, então magia pequena não pede
 conta nenhuma na mesa; a proporção entre pontos e teto fica estável em toda a escala (dá para
-levar ao máximo cerca de três dos cinco mostradores, tanto no nível 1 quanto no 6), então
+levar ao máximo cerca de três dos cinco parâmetros, tanto no nível 1 quanto no 6), então
 conjurar continua sendo escolha até o fim; e o peso duplo da Arte evita o caso em que Arte baixa
 com Atributo alto rende mais que Arte alta com Atributo baixo.
 
@@ -240,7 +240,7 @@ para Ar, que não tem dano para usar de base.
 
 ### Tempo de conjuração
 
-> Ticks = 4 + nível do Efeito + 1 para cada degrau que qualquer mostrador passa do nível dele.
+> Ticks = 4 + nível do Efeito + 1 para cada degrau que qualquer parâmetro passa do nível dele.
 
 A Neblina de nível 1 com área dois degraus acima gasta 4 + 1 + 2 = 7 Ticks. O mesmo número
 que justifica o Efeito ser especial é o que ele paga em tempo. O feitiço genérico continua na
@@ -371,18 +371,20 @@ de Raciocínio enquanto estiver guardado, e para efeitos passivos conta o Racioc
 mais baixo.
 
 **2. Empurrão.** A fórmula da seção 6 é proposta, não decisão. Discutir a divisão por 4, o
-limiar de derrubada e o valor de empurrão do Ar.
+limiar de derrubada e o valor de empurrão do Ar. **Direção travada:** a resistência do alvo sai
+da **Força** somada ao **maior entre Equilíbrio e Atletismo** (Equilíbrio é secundária, do grupo
+Corpo). Falta o **peso**, que existe em toda criatura mas ainda não é um valor da ficha: decidir
+se ele sai do porte, se vira traço próprio, ou se entra por outra via.
 
 **3. Rituais.** Encaminhado pela seção 6.6: **Ritual é o modo lento de conjurar**, que troca
 Mana por tempo e Vontade. Efeito duradouro não é Ritual, é Efeito com duração alta, porque
-duração é só um mostrador. Falta decidir duas coisas: se a regra antiga de "metade do Mana no
+duração é só um parâmetro. Falta decidir duas coisas: se a regra antiga de "metade do Mana no
 Ritual" morre de vez (a proposta atual já é mais generosa que ela) e se algum Efeito só existe
 no modo lento, como o círculo de invocação.
 
-**3b. Duas escalas de mostradores no sistema.** As Proezas têm mostradores próprios em
-`regras.json` que não batem com os do Arcano (alcance 3, 5, 8, 20, 50, 150 m; alvos 1, 2, 3, 10,
-50, 300+; duração 1 ação, 1 turno, 1 cena, várias cenas, horas, 1 dia ou mais). Decidir se
-convivem de propósito ou se unificam.
+**3b. Duas escalas de parâmetros no sistema.** RESOLVIDO: as escalas das Proezas e as do Arcano
+**são diferentes de propósito**. A Proeza é o corpo, o Arcano é o ambiente, e cada um tem o seu
+alcance natural. Nada a unificar.
 
 **4. Números de fraqueza e resistência.** Definir o efeito mecânico para os elementos que não
 sejam Luz: fraqueza vira dano agravado, dano dobrado ou dado extra? Resistência reduz pela
@@ -401,10 +403,10 @@ com gancho forte na "magia de ofício" dos anões.
 
 **Feito**
 
-- `regras.json → arcano`: armadura só contra dano físico; graus 0 a 6 dos mostradores; pontos
+- `regras.json → arcano`: armadura só contra dano físico; graus 0 a 6 dos parâmetros; pontos
   de distribuição; esticar rápido e lento; bloco `efeitos` (XP, upgrade, Ticks); Ritual
   redefinido como o modo lento.
-- Capítulo XIV (`/arcano`): tabelas de mostradores, pontos, esticar rápido e esticar lento,
+- Capítulo XIV (`/arcano`): tabelas de parâmetros, pontos, esticar rápido e esticar lento,
   puxadas de `regras.json`, mais um bloco "Em revisão" com o que falta definir.
 
 **A fazer**
@@ -412,10 +414,10 @@ com gancho forte na "magia de ofício" dos anões.
 1. Fechar as pendências da seção 10.
 2. Reescrever a abertura do capítulo para jogador iniciante (seções 2 a 4 deste documento em
    prosa).
-3. Criar `src/data/efeitos.json` no formato das Artes, com os mostradores escritos por Efeito,
+3. Criar `src/data/efeitos.json` no formato das Artes, com os parâmetros escritos por Efeito,
    e ligar na ficha e na página do Arcano.
 4. Incluir em `regras.json` o dano agravado e a regra de empurrão, quando fechar.
 5. Adicionar `fraquezas` e `resistencias` ao bestiário e preencher (depende da pendência 4).
 6. Escrever Luz e Sombra em `artes.json`.
 7. Reescrever os seis níveis das 21 Artes como exemplos de alocação, já que a mecânica passou
-   para os mostradores.
+   para os parâmetros.

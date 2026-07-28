@@ -29,10 +29,10 @@ const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
 const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase();
 ---
-<Base title="As Artes" largura="wide" descricao="As 23 Artes da feitiçaria em detalhe: efeitos, mostradores, regras e exemplos.">
+<Base title="As Artes" largura="wide" descricao="As 23 Artes da feitiçaria em detalhe: efeitos, parâmetros, regras e exemplos.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV</p>
   <h1>As Artes</h1>
-  <p class="lead">As {d.artes.length} linhas de feitiçaria em detalhe. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os mostradores. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
+  <p class="lead">As {d.artes.length} linhas de feitiçaria em detalhe. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 
   <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. &nbsp; <strong>Ritual</strong>, lento, fora de combate: troca Mana por tempo e Força de Vontade, e alcança escalas que nenhum Feitiço atinge.</div>
 
@@ -58,11 +58,11 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     </div>
     <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais.</p>
 
-    <h2>Os mostradores</h2>
-    <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração girando os mostradores. Todo mostrador começa no <strong>grau 0</strong>, que é de graça e é o mínimo de qualquer feitiço: toque, um alvo, instantâneo, sem dano. Subir um grau custa <strong>1 ponto</strong>.</p>
+    <h2>Os parâmetros</h2>
+    <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração girando os parâmetros. Todo parâmetro começa no <strong>grau 0</strong>, que é de graça e é o mínimo de qualquer feitiço: toque, um alvo, instantâneo, sem dano. Subir um grau custa <strong>1 ponto</strong>.</p>
     <div class="table-wrap">
       <table class="graus-tab">
-        <thead><tr><th>Mostrador</th><th>0 <span class="muted">grátis</span></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+        <thead><tr><th>Parâmetro</th><th>0 <span class="muted">grátis</span></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
         <tbody>
           {LINHAS_GRAU.map(([nome, vals]) => (
             <tr><td><strong>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
@@ -74,11 +74,11 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 
     <h2>Quantos pontos você tem</h2>
     <div class="callout regra"><span class="lbl">A conta</span>
-      <strong>Pontos = (nível da Arte × 2) + Centelha.</strong> Nenhum mostrador passa do <strong>nível da Arte</strong>, e o <strong>Mana gasto é o maior grau usado</strong>. Não se rola nada para distribuir: a rolagem de conjuração serve para acertar e vencer a resistência.
+      <strong>Pontos = (nível da Arte × 2) + Centelha.</strong> Nenhum parâmetro passa do <strong>nível da Arte</strong>, e o <strong>Mana gasto é o maior grau usado</strong>. Não se rola nada para distribuir: a rolagem de conjuração serve para acertar e vencer a resistência.
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Feiticeiro</th><th>Pontos</th><th>Teto por mostrador</th><th>Exemplos de alocação</th></tr></thead>
+        <thead><tr><th>Feiticeiro</th><th>Pontos</th><th>Teto por parâmetro</th><th>Exemplos de alocação</th></tr></thead>
         <tbody>
           {EX_PONTOS.map(([arte, centelha, ex]) => (
             <tr>
@@ -91,7 +91,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
         </tbody>
       </table>
     </div>
-    <p>Repare que os pontos nunca dão para levar tudo ao máximo: com a Arte no 6 e Centelha 6 são 18 pontos, e três mostradores no grau 6 já custariam 18 sozinhos. <strong>Toda conjuração é uma escolha</strong>, do primeiro nível ao último. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
+    <p>Repare que os pontos nunca dão para levar tudo ao máximo: com a Arte no 6 e Centelha 6 são 18 pontos, e três parâmetros no grau 6 já custariam 18 sozinhos. <strong>Toda conjuração é uma escolha</strong>, do primeiro nível ao último. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
 
     <h2>Passar do seu limite</h2>
     <p>Dá para conjurar acima do grau que a sua Arte alcança, e até acima do seu próprio nível de Arte. Custa caro, e você escolhe se paga em <strong>Mana</strong> ou em <strong>tempo</strong>.</p>
@@ -134,7 +134,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     <p class="formula">Fogo (Labareda, nível 3) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 3 + 1 + <strong>1</strong> de sobretaxa = <strong>5</strong>, numa conjuração só.</p>
 
     <h2>Rituais</h2>
-    <p><strong>Ritual é o nome do modo lento</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é um Ritual: é um feitiço com o mostrador de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, e o que ele compra é escala: cobrir uma vila, durar até a próxima lua, lavrar uma maldição.</p>
+    <p><strong>Ritual é o nome do modo lento</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é um Ritual: é um feitiço com o parâmetro de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, e o que ele compra é escala: cobrir uma vila, durar até a próxima lua, lavrar uma maldição.</p>
     <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e Vontade. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
 
     <h2>Guardar um feitiço</h2>
@@ -157,17 +157,16 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
       Esta parte do capítulo está sendo reescrita. Ainda falta definir:
       <ul>
         <li>Como as Artes rolam de vez (o acerto pela perícia Acerto Arcano e a conjuração por Tradição), e a ligação de cada Arte com suas Trilhas.</li>
-        <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo. A resistência deve depender de Força, Peso e Equilíbrio do alvo.</li>
+        <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo. A resistência sai da <strong>Força</strong> mais o maior entre <strong>Equilíbrio</strong> e <strong>Atletismo</strong>, e ainda falta resolver o peso do alvo, que hoje não é um valor da ficha.</li>
         <li>O que a <strong>resistência</strong> faz em número (a fraqueza já está resolvida acima), e o preenchimento das duas no bestiário.</li>
         <li>Se a penalidade de guardar feitiço acumula por feitiço, e se há teto de quantos dá para carregar.</li>
-        <li>Se os mostradores das Proezas e os do Arcano continuam em escalas diferentes ou se unificam.</li>
       </ul>
     </div>
   </section>
 
   <section class="arcano-regras">
     <h2>As {d.artes.length} Artes</h2>
-    <p>Os seis níveis de cada Arte, abaixo, são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos mostradores, acima. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
+    <p>Os seis níveis de cada Arte, abaixo, são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos parâmetros, acima. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
     <div class="filtros panel">
       <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
       <fieldset style="display:inline-block;border:1px solid var(--panel-border);border-radius:5px;padding:.3rem .6rem;margin-left:.6rem">
