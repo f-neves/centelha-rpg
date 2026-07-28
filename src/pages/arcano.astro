@@ -140,11 +140,48 @@ const Arte = (a: any) => a;
         <li>Guardar um feitiço pronto para soltar depois (a ideia atual é penalizar o Raciocínio enquanto ele estiver comitado).</li>
         <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo.</li>
         <li>O que <strong>fraqueza</strong> e <strong>resistência</strong> fazem em número para os elementos que não são Luz, e o preenchimento disso no bestiário.</li>
-        <li>As <strong>6 trilhas de ensino</strong> da feitiçaria.</li>
         <li>Se os mostradores das Proezas e os do Arcano continuam em escalas diferentes ou se unificam.</li>
         <li>As Artes de <strong>Luz</strong> e <strong>Sombra</strong>, já desenhadas, ainda não escritas aqui.</li>
         <li>Reescrever os seis níveis de cada Arte como exemplos de alocação, já que a mecânica agora vem dos mostradores.</li>
       </ul>
+    </div>
+  </section>
+
+  <section class="arcano-regras">
+    <h2>As Trilhas de Feitiçaria</h2>
+    <p>Ter a fagulha (Centelha) deixa você <strong>tocar</strong> a magia, mas ninguém nasce sabendo <strong>moldá-la</strong>. Uma <strong>Trilha</strong> é o caminho pelo qual alguém aprendeu uma Arte: quem ensinou, que treino exigiu, que preço cobrou. A mesma Arte (comandar a pedra, digamos) pode ser alcançada por Trilhas bem diferentes: um druida e um monge chegam a ela por estradas distintas. Aprender uma Arte é <strong>percorrer uma de suas Trilhas</strong>, e cada uma pede um treino e cobra um preço.</p>
+    <p class="muted">Cada Trilha nasce dentro de uma das seis <strong>Tradições</strong> abaixo, o método de ensino do mundo por trás dela. A ligação de cada Arte com suas Trilhas, e os números de treino, ficam para um próximo passo.</p>
+    <div class="trilhas-grid">
+      <div class="panel trilha">
+        <h3>Erudição <span class="tl-tag">o estudo</span></h3>
+        <p>A magia tratada como <strong>ciência</strong>, aprendida em universidades e centros de pesquisa escondidos: por livros, fórmulas e experimentos. O erudito encara uma labareda como um fenômeno a dissecar, não como uma fúria a sentir. É a via mais lenta de começar (exige Ocultismo, saberes largos, tempo e um mestre ou biblioteca), mas a mais ampla: em tese, aprende qualquer Arte, porque tudo é conhecível.</p>
+        <p class="tl-ex"><em>Exemplo:</em> um magus de academia de Centelha mínima que, só com estudo, conjura Artes tão fundas quanto as de um grande herói.</p>
+      </div>
+      <div class="panel trilha">
+        <h3>Sangue / Antecedente <span class="tl-tag">a herança</span></h3>
+        <p>A fagulha desperta cedo e a Arte vem quase <strong>de dentro</strong>, carregada no sangue ou na origem. Em seres pensantes ainda exige treino, mas do corpo e da alma (resistir, se manter inteiro, dominar-se), não de livros: você aprende a <strong>ser</strong> a Arte antes de lançá-la. Em bestas mágicas é puro instinto, sem treino. É a via mais comum das criaturas mágicas.</p>
+        <p class="tl-ex"><em>Exemplo:</em> uma moça de linhagem antiga que, desde criança, acalma tempestades sem nunca abrir um grimório.</p>
+      </div>
+      <div class="panel trilha">
+        <h3>Pacto <span class="tl-tag">o poder emprestado</span></h3>
+        <p>Você não <strong>aprende</strong> a Arte: você a <strong>toma emprestada</strong> de uma entidade (um deus menor, um espírito, um ser de outro plano). É a via que menos exige em perícia (basta alcançar a entidade e selar a barganha), mas vem com uma <strong>coleira</strong>: deveres, tributos, favores cobrados e o risco de o patrono negar o poder na hora pior.</p>
+        <p class="tl-ex"><em>Exemplo:</em> um soldado que barganha com um espírito do fogo pela força de queimar, e agora deve uma oferenda antes de cada batalha.</p>
+      </div>
+      <div class="panel trilha">
+        <h3>Iniciação <span class="tl-tag">os graus</span></h3>
+        <p>Ligada a uma <strong>fé, um patrono ou uma ordem</strong>. A Arte vem em graus guardados que a ordem libera à medida que você prova devoção. Pouca perícia bruta, mas muito voto, obediência e abdicação: você sobe pelos degraus de um templo ou ordem secreta, e cada grau destrava uma Arte mais funda. Quem controla o acesso é a ordem, não você.</p>
+        <p class="tl-ex"><em>Exemplo:</em> um acólito da Ordem da Lua que só recebe o dom de prever o amanhã após anos de serviço e renúncias juradas.</p>
+      </div>
+      <div class="panel trilha">
+        <h3>Marcial <span class="tl-tag">a disciplina</span></h3>
+        <p>A Arte alcançada por <strong>treino árduo, estudo e elevação espiritual</strong>, ao modo dos monastérios (mas não só por monges). O corpo e a vontade são lapidados até a magia fluir do domínio de si. Tende a Artes de combate ou do cotidiano.</p>
+        <p class="tl-ex"><em>Exemplo:</em> um monge que, após décadas de disciplina, move a pedra com um gesto: a mesma Arte de um druida, alcançada por dominar a si mesmo.</p>
+      </div>
+      <div class="panel trilha">
+        <h3>Xamânica / Totêmica <span class="tl-tag">a comunhão</span></h3>
+        <p>Comunhão com <strong>espíritos difusos</strong>: ancestrais, totens, forças da natureza. A via de orcs, goblins e muitos povos selvagens. Diferente do Pacto, não há patrono único nem ordem organizada: você comunga com uma teia de espíritos, honrando ritos e tabus, e eles emprestam sua força.</p>
+        <p class="tl-ex"><em>Exemplo:</em> um xamã goblin que fala com o totem da montanha e guarda os tabus dos ancestrais, nunca desferindo o primeiro golpe num bosque sagrado.</p>
+      </div>
     </div>
   </section>
 
@@ -172,6 +209,11 @@ const Arte = (a: any) => a;
 </Base>
 
 <style>
+  .trilhas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .trilha h3 { margin: 0 0 .5rem; color: var(--accent); font-size: 1.1rem; }
+  .trilha .tl-tag { font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: normal; }
+  .trilha p { font-size: .92rem; line-height: 1.5; margin: 0 0 .5rem; }
+  .trilha .tl-ex { font-size: .86rem; color: var(--muted, #888); margin-bottom: 0; }
   .graus-tab { font-size: .88rem; }
   .graus-tab td, .graus-tab th { white-space: nowrap; }
   .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
