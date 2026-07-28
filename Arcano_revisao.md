@@ -199,6 +199,40 @@ que justifica o Efeito ser especial é o que ele paga em tempo. O feitiço gené
 escada atual (5 Ticks nos níveis 1 a 3, 6 no 4, 7 nos 5 e 6): o genérico é o improviso
 pequeno, o Efeito é a obra ensaiada.
 
+**Isso é o desenho do Efeito**, o que vem impresso nele. Forçar além do impresso, na hora da
+conjuração, é outra coisa: ver a seção seguinte.
+
+---
+
+## 6.5. Esticar o Efeito na hora (modo rápido)
+
+Vale tanto para o efeito genérico da Arte quanto para um Efeito comprado. Cada degrau acima
+do que você tem impresso **dobra o custo acumulado de Mana e soma outra vez o tempo base**.
+
+> **Mana total = base × (2^(n+1) − 1)** · **Speed total = base × (n + 1)**, com n = degraus acima.
+
+| Degraus | Mana | Speed |
+|---|---|---|
+| 0 | ×1 | ×1 |
+| 1 | ×3 | ×2 |
+| 2 | ×7 | ×3 |
+| 3 | ×15 | ×4 |
+
+Exemplos. Um feiticeiro com Gelo 2 arremessa o dardo de 2d6 por 2 de Mana e 5 de Speed. Para
+3d6 paga 6 de Mana e 10 de Speed; para 4d6, 14 de Mana e 15 de Speed. Um Muro de Gelo de nível
+2 (base 2 de Mana, Speed 6) sobe uma categoria de tamanho por 6 de Mana e 12 de Speed, e duas
+categorias por 14 de Mana e 18 de Speed.
+
+**Com isso dá para conjurar acima do próprio nível de Arte.** A regra antiga, que travava o
+nível efetivo no nível da Arte, morre (pendência de reescrita em `regras.json → arcano.improviso`
+e no capítulo).
+
+O freio é a exponencial contra o tamanho da reserva. Mana é Centelha × 2 mais Vontade, ou seja,
+cerca de 13 num feiticeiro de Centelha 3 e cerca de 24 no topo absoluto. Efeito pequeno estica
+longe, efeito grande quase não estica: um Efeito de base 4 já custa 12 de Mana para subir um
+único degrau. E esticar nunca compensa contra quem tem a Arte no nível: sair de Fogo 1 para um
+dardo de 4d6 custa 15 de Mana e 20 de Speed, contra 4 de Mana e 6 de Speed de quem tem Fogo 4.
+
 ---
 
 ## 7. Custos
@@ -254,11 +288,15 @@ já está definido: agravado, ignora resistência). Ver Pendência 4.
 
 ## 10. Pendências
 
-**1. Esticar o mesmo Efeito pagando mais tempo e mais Mana.** O autor quer poder produzir um
-resultado maior do mesmo Efeito investindo mais tempo de conjuração e mais Mana, sem comprar
-outro Efeito. Ponto de partida: cada degrau a mais num mostrador custa +1 Mana e +2 Ticks, com
-teto no nível de Arte que o personagem tem. Falta decidir se o teto é esse, se vale para
-qualquer mostrador e se o Ritual escapa do teto.
+**1. Modo lento: trocar Mana por tempo.** O modo rápido (seção 6.5) já está fechado. Falta a
+segunda via: esticar gastando **tempo** em vez de Mana, com o Speed medido em minutos ou horas
+no lugar de Ticks. Precisa de um limite próprio, e crescente. Proposta de partida: cada degrau
+custa **+1 vez o Mana base** (linear, não dobrando) mais **1 de Vontade**, e sobe um passo na
+escada de tempo (Ticks · 1 minuto · 10 minutos · 1 hora · 6 horas · 1 dia), com teto de degraus
+igual ao **Ocultismo**. Em aberto: se o teto é Ocultismo ou Centelha; se o modo lento vale só
+para Efeitos que duram (muro, neblina, encantar arma) ou se também dá para **preparar e guardar**
+um efeito instantâneo para soltar depois, o que seria outra mecânica, com limite de quantos e por
+quanto tempo ficam guardados.
 
 **2. Empurrão.** A fórmula da seção 6 é proposta, não decisão. Discutir a divisão por 4, o
 limiar de derrubada e o valor de empurrão do Ar.
@@ -275,12 +313,8 @@ modo, como o círculo de invocação.
 sejam Luz: fraqueza vira dano agravado, dano dobrado ou dado extra? Resistência reduz pela
 metade, aplica Absorção onde não haveria, ou anula?
 
-**5. Trilhas de ensino.** Como a feitiçaria é ensinada, e o que cada trilha abre. Proposta de
-partida: universidade (as regiões blindadas da supressão, estudo formal, exige Ocultismo alto e
-acesso a livros), linhagem (um mestre por vez, oral e secreta: xamã, vidente, cigano,
-ocultista), culto ou pacto (a Arte vem do laço com deus, espírito ou ancestral) e autodidata
-(decifrou um grimório sozinho, barato em contato social e caro em lacunas). Cada trilha diria
-quais Artes são fáceis de achar e quais são quase impossíveis sem a porta certa.
+**5. Trilhas de ensino.** Serão **6 trilhas**, e o desenho está sendo feito pelo autor em outra
+frente. Nada a decidir aqui; quando fechar, entra neste documento e no capítulo.
 
 **6. Metal.** Arte elemental desenhada e **engavetada** por ora: mexe no equipamento próprio e
 alheio (afia, enferruja, aquece a armadura no corpo, arranca a arma da mão, reduz Absorção),
