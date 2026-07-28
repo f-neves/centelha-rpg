@@ -60,7 +60,7 @@
 
   <div class="totalbar">
     <div><span class="lab">Total XP</span><span class="big" id="total">0</span></div>
-    <div><span class="lab">Orçamento</span><input type="number" id="budget" value="1700" step="10" style="width:6rem" /></div>
+    <div><span class="lab">Orçamento</span><input type="number" id="budget" value="1500" step="10" style="width:6rem" /></div>
     <div><span class="lab">Restante</span><span class="big rem" id="rem">0</span></div>
     <div class="break" id="break"></div>
   </div>
@@ -107,7 +107,7 @@
     <div class="panel grp"><h3>Artes <span class="muted" style="font-weight:400">(nível × custo, somado 1..N)</span></h3><div id="g-arte"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp" id="xp-arte">0</span></div></div>
   </div>
 
-  <p class="sub" style="margin-top:1.4rem">Referência de orçamento: iniciante ~1000 · veterano ~1400 · herói ~1700 (exemplos do capítulo de criação). Este laboratório não substitui a ficha oficial — serve só para calibrar custos.</p>
+  <p class="sub" style="margin-top:1.4rem">Referência de orçamento: iniciante 1500 · veterano 2000 · herói 2600 (exemplos do capítulo de criação). Este laboratório não substitui a ficha oficial — serve só para calibrar custos.</p>
 </div>
 
 <script>
@@ -150,7 +150,7 @@ const arteTotal = (level, valor) => { let c=0; for(let n=1;n<=level;n++) c+=n*va
 
 // ---- estado ----
 const S = load() || {
-  costs:{...DEFAULT_COSTS}, budget:1700,
+  costs:{...DEFAULT_COSTS}, budget:1500,
   attrs:Object.fromEntries(ATTRS.map(a=>[a.id,1])),
   skills:{}, // slug -> level
   centelha:0, vontade:1, aparencia:1,

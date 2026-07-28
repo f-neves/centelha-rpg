@@ -376,9 +376,9 @@
     "picoQuantidade": 1,
     "notaPico": "Na criação permite-se UM atributo em 6 e UMA habilidade primária em 5 — o talento superlativo do herói."
   },
-  "orcamentoPadrao": 1700,
-  "orcamentoVeterano": 2200,
-  "orcamentoHeroico": 2900,
+  "orcamentoPadrao": 1500,
+  "orcamentoVeterano": 2000,
+  "orcamentoHeroico": 2600,
   "progressaoPorSessao": [
     10,
     20

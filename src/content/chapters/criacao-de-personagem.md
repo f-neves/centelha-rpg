@@ -14,7 +14,7 @@ Um personagem é construído gastando **Experiência** (XP) a partir de valores-
 Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão nas seções abaixo, e a [Ficha](/ficha) faz as contas por você.
 
 1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas") — ela guia todas as escolhas seguintes.
-2. **Orçamento.** Combine com o Mestre: **1700** (iniciante), **2200** (veterano) ou **2900** (herói). Todo o resto sai desse bolo de XP.
+2. **Orçamento.** Combine com o Mestre: **1500** (iniciante), **2000** (veterano) ou **2600** (herói). Todo o resto sai desse bolo de XP.
 3. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico).
 4. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de perícia). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 5. **Virtudes.** As quatro, de 1 a 6.
@@ -29,7 +29,7 @@ Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão n
 
 Tudo começa no mínimo e é comprado dali: **Atributos 1** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 1** · **Aparência 1** · **Centelha 0** · qualquer **Proeza 0**.
 
-A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial padrão: **1700 XP** (iniciante), **2200** (veterano) ou **2900** (herói). Com 1700 XP, um personagem já chega como Centelha 3 (Herói), com um atributo no pico de criação e um arsenal de Técnicas.
+A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Comprar **Centelha 1** é o que torna alguém especial. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (herói). Com 1500 XP, um personagem já chega como Centelha 3 (Herói), com um atributo no pico de criação e um arsenal de Técnicas.
 
 > **Pisos e custos (fechados).** **Atributos e Força de Vontade começam em 1** (antes 2 e 5); a **Aparência** saiu dos Atributos e virou trilha própria (1–12, custo ×2). Por isso, e pela régua D6 (0–6 e 0–12), os orçamentos foram recalibrados. Os quatro exemplos abaixo já usam a tríade social nova (Influência · Perspicácia · Compostura) e estão **recusteados pela tabela final** (totais conferidos pela função de custo real).
 
@@ -85,14 +85,14 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 |---|---|:---:|
 | Atributos | Percepção 6 (pico) · Destreza, Vigor 4 · Força, Raciocínio 3 · Inteligência, Influência, Perspicácia, Compostura 2 | 448 |
 | Habilidades | Furtividade 5 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Cura 1 (secundária) | 208 |
-| Secundárias | três em 2 (Rastreio, Escalada, Falcoaria) | 18 |
+| Secundárias | quatro em 2 (Rastreio, Escalada, Falcoaria, Armadilhas) | 24 |
 | Especialidades | Furtividade, Atirador, Sobrevivência | 24 |
 | Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 54 |
 | Força de Vontade | 1 → 7 | 54 |
 | Aparência | 1 → 4 (comum) | 18 |
 | Centelha | 0 → 3 (Herói) | 60 |
-| Técnicas | 26, de Olho de Águia, Sombra e Vento (níveis 1 a 3, já com o Desperto) | 580 |
-| **Total** | | **1464** |
+| Técnicas | 29, de Olho de Águia, Sombra e Vento (níveis 1 a 3, já com o Desperto) | 610 |
+| **Total** | | **1500** |
 
 <p class="muted">Derivados: PV 37 · Defesa 17 · Def. Mental 13 · Def. Social 7 · Energia 14 · Mana 13 · Iniciativa 1d6+6. Fecha no orçamento. Mira firme à distância e some na sombra entre os tiros; guarda social baixa, porque não é o forte dele.</p>
 
@@ -102,14 +102,14 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 |---|---|:---:|
 | Atributos | Destreza 6 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 552 |
 | Habilidades | Armas 5 (pico) · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Manha, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 280 |
-| Secundárias | seis (duas em 3, quatro em 2: Estratégia, Cavalgar, Jogos de Guerra…) | 48 |
+| Secundárias | sete (duas em 3, cinco em 2: Estratégia, Cavalgar, Jogos de Guerra…) | 56 |
 | Especialidades | cinco (Armas, Integridade, Liderança…) | 40 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 84 |
 | Força de Vontade | 1 → 8 | 70 |
 | Aparência | 1 → 5 (comum) | 28 |
 | Centelha | 0 → 3 (Herói) | 60 |
-| Técnicas | 32, de Comando, Pele de Pedra e Dança da Lâmina (níveis 1 a 3) | 730 |
-| **Total** | | **1892** |
+| Técnicas | 35, de Comando, Pele de Pedra e Dança da Lâmina (níveis 1 a 3) | 830 |
+| **Total** | | **2000** |
 
 <p class="muted">Derivados: PV 37 · Defesa 21 · Def. Mental 17 · Def. Social 15 · Energia 15 · Mana 14 · Iniciativa 1d6+6. Fecha no orçamento. Uma líder de tropa que combina posturas defensivas, golpes precisos e uma guarda social sólida.</p>
 
@@ -126,8 +126,8 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Aparência | 1 → 4 (comum) | 18 |
 | Centelha | 0 → 4 (Grande herói) | 100 |
 | Artes | seis: Fogo e Forças no nível 4 · Cura, Raio, Proteção e Fortuna no 3 | 480 |
-| Técnicas | 33, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 850 |
-| **Total** | | **2560** |
+| Técnicas | 34, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 890 |
+| **Total** | | **2600** |
 
 <p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 18 · Def. Social 16 · Energia 17 · Mana 16 · Iniciativa 1d6+6. Fecha no orçamento. Tece Feitiço e lâmina no mesmo turno; com o XP investido poderia ter mergulhado numa Arte de nível 5, mas preferiu largura a profundidade.</p>
 
@@ -150,7 +150,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Aparência | 1 → 4 (comum) | 18 |
 | Centelha | 0 → 1 (Tocado) | 10 |
 | Artes | sete: Adivinhação, Forças, Proteção, Cura e Fogo no **nível 5** · Fascinação e mais uma no 3 | 870 |
-| Técnicas | 8, de Mente Afiada e Erudito (nível 1) | 80 |
-| **Total** | | **1959** |
+| Técnicas | 12, de Mente Afiada e Erudito (nível 1) | 120 |
+| **Total** | | **1999** |
 
 <p class="muted">Derivados: PV 34 · Defesa 13 · Def. Mental 13 · Def. Social 9 · Energia 10 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Fecha no orçamento. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong>: ele conhece magia tão funda quanto Veil, mas o tanque o obriga a poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível: o feiticeiro de torre, não o de campo.</p>

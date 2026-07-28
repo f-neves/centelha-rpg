@@ -113,7 +113,7 @@ export function montarFicha(opts: FichaOpts) {
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1400, modo: 'evolucao', equip: { armaduras: [] }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [] }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -163,7 +163,7 @@ export function montarFicha(opts: FichaOpts) {
         delete S.skills[prim]; delete S.spec[prim];
       }
     }
-    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1400; S.modo ??= 'evolucao'; S.derivCol ??= true;
+    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.modo ??= 'evolucao'; S.derivCol ??= true;
     S.equip ??= {};
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;

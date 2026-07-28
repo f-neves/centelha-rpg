@@ -192,3 +192,12 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
   atualizada. Docs alinhados: criacao-de-personagem, centelha, racas, FichaSkeleton, glossário via
   regras. **A rever ainda:** se o custo de Técnica/Arte (mantidos em ×10) precisa mexer, e se os
   orçamentos dos tiers descem junto (os exemplos ficaram bem mais baratos: Kael 1700→1464 etc.).
+- ✅ **ORÇAMENTOS DOS TIERS ESCALADOS (2026-07-28).** Decisão: **preservar o poder de cada tier** (o corte
+  de custos é só troca de moeda, não muda o poder) e **manter Técnica/Arte em ×10** (largura segue sendo o
+  gasto "caro"). Novos tetos redondos, cada um fazendo o exemplo-benchmark voltar a fechar: **Iniciante
+  1700→1500 · Veterano 2200→2000 · Herói 2900→2600.** Fonte de verdade `regras.json`
+  (`orcamentoPadrao/Veterano/Heroico`). Exemplos re-preenchidos em largura (Técnicas/secundárias) para
+  fechar no teto novo: Kael 1500, Sora 2000, Veil 2600, Bram 1999 (mortal-tocado, veterano). Atualizados
+  também: criacao-de-personagem (2 linhas de orçamento + 4 tabelas), racas.md ("1500–2600"),
+  `ficha-xp.html` (default e nota de referência, que estava com números velhos ~1000/1400/1700),
+  `FichaSkeleton.astro` e `ficha-engine.ts` (default de ficha nova 1400→1500). Técnica/Arte seguem ×10.

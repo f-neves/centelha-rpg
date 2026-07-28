@@ -9,7 +9,7 @@ Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo
 
 <div class="callout regra"><span class="lbl">Como ler um traço racial</span>Um <strong>+1 de teto</strong> num Atributo significa que ele pode chegar a <strong>7</strong> — um ponto acima do teto humano de 6. Um <strong>−1 de teto</strong> trava o Atributo em <strong>5</strong>. Não é bônus grátis: você ainda compra cada ponto com XP (Atributo = novo × 8); a raça só <strong>move o limite</strong> de onde dá para chegar.</div>
 
-<div class="callout"><span class="lbl">Provisório</span>Os <strong>custos de XP</strong> das raças são uma primeira passada, recusteada da tabela antiga para a economia atual (orçamentos de 1700–2900). Tratam-se de números a calibrar conforme o peso real de cada herança na mesa.</div>
+<div class="callout"><span class="lbl">Provisório</span>Os <strong>custos de XP</strong> das raças são uma primeira passada, recusteada da tabela antiga para a economia atual (orçamentos de 1500–2600). Tratam-se de números a calibrar conforme o peso real de cada herança na mesa.</div>
 
 ## O Humano — a régua do mundo
 
