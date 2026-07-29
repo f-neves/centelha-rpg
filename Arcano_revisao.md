@@ -365,10 +365,16 @@ já está definido: agravado, ignora resistência). Ver Pendência 4.
 
 ## 10. Pendências
 
-**1. Guardar um feitiço (parado).** Preparar um efeito e soltar depois é outra mecânica, a
-desenhar noutro momento. Ideia levantada: "comitar" o feitiço impõe penalidade de 1d6 nos testes
-de Raciocínio enquanto estiver guardado, e para efeitos passivos conta o Raciocínio como um nível
-mais baixo.
+> **Para retomar:** esta seção é o ponto de partida de qualquer próxima conversa sobre o Arcano.
+> Tudo o que está acima dela já foi decidido e já está no site e em `regras.json`. O que está
+> aqui, não. A lista curta que aparece no fim do capítulo XV (`/artes`, bloco "Em revisão") é um
+> resumo desta seção.
+
+**1. Guardar um feitiço: o que falta.** A regra base **já está fechada e no site**: o Mana é pago
+na hora, o feitiço fica comitado, e enquanto isso o Raciocínio conta um nível abaixo nos valores
+calculados e dá −1d6 nas rolagens; soltar ou desfazer devolve na hora. Falta decidir: **a
+penalidade acumula** por feitiço guardado (dois feitiços, Raciocínio dois níveis abaixo)? Há
+**teto** de quantos dá para carregar? E o feitiço guardado **vence** com o tempo?
 
 **2. Empurrão.** A fórmula da seção 6 é proposta, não decisão. Discutir a divisão por 4, o
 limiar de derrubada e o valor de empurrão do Ar. **Direção travada:** a resistência do alvo sai
@@ -386,38 +392,61 @@ no modo lento, como o círculo de invocação.
 **são diferentes de propósito**. A Proeza é o corpo, o Arcano é o ambiente, e cada um tem o seu
 alcance natural. Nada a unificar.
 
-**4. Números de fraqueza e resistência.** Definir o efeito mecânico para os elementos que não
-sejam Luz: fraqueza vira dano agravado, dano dobrado ou dado extra? Resistência reduz pela
-metade, aplica Absorção onde não haveria, ou anula?
+**4. Resistência: o número.** A **fraqueza já está fechada e no site** (ignora toda a Absorção,
+o dano é agravado, e aparar de mãos nuas fere quem apara). Falta o outro lado: **o que a
+resistência faz**? Corta o dano pela metade, aplica Absorção onde não haveria, ou anula de vez? E
+ela também protege do agravado? Proposta de partida: **metade do dano e nunca agravado**.
+Enquanto isso não fechar, não dá para preencher o bestiário, porque o campo não teria significado.
 
-**5. Trilhas de ensino.** Serão **6 trilhas**, e o desenho está sendo feito pelo autor em outra
-frente. Nada a decidir aqui; quando fechar, entra neste documento e no capítulo.
+**4b. Preencher o bestiário.** Depende da 4. Criar `fraquezas` e `resistencias` na criatura, como
+listas de palavras-chave (`luz`, `sagrado`, `profano`, `fogo`, `agua`, `prata`, `sol`). O
+preenchimento inicial sai por regra (Morto-vivo e Corruptor recebem `luz` e `sagrado`; Planta
+recebe `fogo`; Elemental e Construto saem pelo material) e depois se curam as exceções à mão. Para
+dimensionar: das 308 criaturas, 32 são Corruptor e 15 Morto-vivo, ou seja, o alvo natural do Luz é
+cerca de 15% do bestiário.
 
-**6. Metal.** Arte elemental desenhada e **engavetada** por ora: mexe no equipamento próprio e
+**5. Rolagem das Artes.** Está sendo desenhado na frente das Trilhas, não aqui, mas afeta este
+documento: a conjuração deixa de ser Ocultismo para todos e passa a variar por **Tradição**, e há
+uma perícia nova, **Acerto Arcano**, para os efeitos mirados. Quando fechar, as seções 3 e 4 daqui
+precisam de revisão, porque hoje dizem "Ocultismo + Atributo".
+
+**6. Trilhas de ensino.** Serão **6 Tradições**, já escritas no capítulo XIV. O que falta é o mapa
+**Arte × Trilha** e os números de treino. Frente própria, não se decide aqui.
+
+**7. Metal.** Arte elemental desenhada e **engavetada** por ora: mexe no equipamento próprio e
 alheio (afia, enferruja, aquece a armadura no corpo, arranca a arma da mão, reduz Absorção),
-com gancho forte na "magia de ofício" dos anões.
+com gancho forte na "magia de ofício" dos anões. É só retomar o desenho quando quiser.
+
+**8. Peso, para o empurrão.** Não existe como valor de ficha. Sugestão registrada: tirar do
+**porte** (a tabela em `regras.json` já escala PV e multiplicador de Vigor de minúsculo a
+colossal), e deixar ajuste manual para quem quiser destacar (o anão baixo e denso, o elfo leve).
 
 ---
 
 ## 11. Próximos passos
 
-**Feito**
+**Feito** (tudo já no site e commitado)
 
-- `regras.json → arcano`: armadura só contra dano físico; graus 0 a 6 dos parâmetros; pontos
-  de distribuição; esticar rápido e lento; bloco `efeitos` (XP, upgrade, Ticks); Ritual
-  redefinido como o modo lento.
-- Capítulo XIV (`/arcano`): tabelas de parâmetros, pontos, esticar rápido e esticar lento,
-  puxadas de `regras.json`, mais um bloco "Em revisão" com o que falta definir.
+- `regras.json → arcano`: armadura só contra dano físico; graus 0 a 6 dos parâmetros; pontos de
+  distribuição; esticar rápido e lento; bloco `efeitos` (XP, upgrade, Ticks); `guardar`;
+  `fraquezas`; Ritual redefinido como o modo lento.
+- Capítulo XV (`/artes`): tabelas de parâmetros, pontos, esticar rápido e lento, guardar feitiço e
+  fraqueza, todas puxadas de `regras.json`, mais o bloco "Em revisão".
+- `artes.json`: **Luz** e **Sombra** como elementais (23 Artes, 8 elementais) e **exemplos por
+  nível** em todas elas (283 exemplos), num campo `exemplos` novo e opcional.
+- "Mostradores" virou **Parâmetros** em todo o sistema, e as escalas de Proeza e Arcano ficam
+  diferentes de propósito.
 
 **A fazer**
 
 1. Fechar as pendências da seção 10.
 2. Reescrever a abertura do capítulo para jogador iniciante (seções 2 a 4 deste documento em
-   prosa).
-3. Criar `src/data/efeitos.json` no formato das Artes, com os parâmetros escritos por Efeito,
-   e ligar na ficha e na página do Arcano.
-4. Incluir em `regras.json` o dano agravado e a regra de empurrão, quando fechar.
-5. Adicionar `fraquezas` e `resistencias` ao bestiário e preencher (depende da pendência 4).
-6. Escrever Luz e Sombra em `artes.json`.
-7. Reescrever os seis níveis das 21 Artes como exemplos de alocação, já que a mecânica passou
-   para os parâmetros.
+   prosa). O capítulo XIV já tem "Os muitos nomes" e as Trilhas; falta o "o que é a feitiçaria"
+   escrito para quem nunca jogou.
+3. Criar `src/data/efeitos.json` no formato das Artes, com os parâmetros escritos por Efeito, e
+   ligar na ficha e na página das Artes. É o maior item que sobrou: hoje o Efeito existe como
+   regra, mas não há nenhum Efeito escrito.
+4. Incluir em `regras.json` a regra de empurrão e a de dano agravado como bloco próprio, quando
+   fecharem.
+5. Preencher `fraquezas` e `resistencias` no bestiário (depende da pendência 4).
+6. Revisar as seções 3 e 4 deste documento quando a rolagem por Tradição fechar.
