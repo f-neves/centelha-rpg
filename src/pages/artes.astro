@@ -7,30 +7,32 @@ const d = await loadData();
 const G = (regras as any).arcano.improviso.graus;
 const ESTICAR = (regras as any).arcano.esticar;
 // linhas da tabela de graus (0 a 6), na ordem em que aparecem na página
-const LINHAS_GRAU: [string, string[], string][] = [
-  ['Alcance', G.alcance, '1'],
-  ['Área', G.area, '1'],
-  ['Alvos', G.alvos, '1'],
-  ['Dano', G.dano, '2'],
-  ['Duração breve', G.duracaoBreve, '1'],
-  ['Duração longa', G.duracaoLonga, '1'],
+const LINHAS_GRAU: [string, string[]][] = [
+  ['Alcance', G.alcance],
+  ['Área', G.area],
+  ['Alvos', G.alvos],
+  ['Dano', G.dano],
+  ['Duração breve', G.duracaoBreve],
+  ['Duração longa', G.duracaoLonga],
 ];
+const RITUAL = (regras as any).arcano.ritual;
+const RECUP = (regras as any).arcano.recuperacaoMana;
 // conjurações de exemplo: [descrição, contas, total]
 const EX_CONTA: [string, string, number][] = [
-  ['Dardo: Alcance 3 (15 m) + Dano 2 (2d6) + Duração 3 (1 minuto)', '3 + 2×2 + 3', 10],
-  ['Toque ardente: Dano 1 (1d6) + Alcance 1 (toque)', '1×2 + 1', 3],
-  ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3×2 + 3 + 2', 11],
+  ['Dardo: Alcance 3 (15 m) + Dano 2 (2d6) + Duração 3 (1 minuto)', '3 + 2 + 3', 8],
+  ['Toque ardente: Dano 1 (1d6) + Alcance 1 (toque)', '1 + 1', 2],
+  ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3 + 3 + 2', 8],
 ];
 const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
 const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase();
 ---
-<Base title="As Artes" largura="wide" descricao="As 23 Artes da feitiçaria em detalhe: efeitos, parâmetros, regras e exemplos.">
+<Base title="As Artes" largura="wide" descricao="As 24 Artes da feitiçaria em detalhe: efeitos, parâmetros, regras e exemplos.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV</p>
   <h1>As Artes</h1>
   <p class="lead">As {d.artes.length} linhas de feitiçaria em detalhe. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 
-  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. &nbsp; <strong>Ritual</strong>, lento, fora de combate: troca Mana por tempo e Força de Vontade, e alcança escalas que nenhum Feitiço atinge.</div>
+  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. &nbsp; <strong>Ritual</strong>, estendido: o cast passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
 
   <section class="arcano-regras">
     <h2>Como se aprende uma Arte</h2>
@@ -59,14 +61,10 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     <p class="muted">A tabela abaixo vale para as <strong>Artes elementais</strong>. As demais Artes têm parâmetros próprios, definidos caso a caso.</p>
     <div class="table-wrap">
       <table class="graus-tab">
-        <thead><tr><th>Parâmetro</th><th>Custo</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+        <thead><tr><th>Parâmetro</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
         <tbody>
-          {LINHAS_GRAU.map(([nome, vals, custo]) => (
-            <tr>
-              <td><strong>{nome}</strong></td>
-              <td class="num">{custo} pt<span class="muted">/nível</span></td>
-              {vals.map((v) => <td>{v}</td>)}
-            </tr>
+          {LINHAS_GRAU.map(([nome, vals]) => (
+            <tr><td><strong>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
           ))}
         </tbody>
       </table>
@@ -75,7 +73,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 
     <h2>O que custa, e o desconto da Centelha</h2>
     <div class="callout regra"><span class="lbl">A conta</span>
-      Some os níveis investidos: <strong>1 ponto por nível</strong> em tudo, menos o <strong>dano, que custa 2</strong>. Do total, subtraia a sua <strong>Centelha</strong>. O que sobrar é o custo em <strong>Mana</strong>, um por um. Se o total couber dentro da Centelha, o efeito é <strong>grátis e ilimitado</strong>.
+      Some os níveis investidos: <strong>1 ponto por nível</strong>, igual em todos os parâmetros. Do total, subtraia a sua <strong>Centelha</strong>. O que sobrar é o custo em <strong>Mana</strong>, um por um. Se o total couber dentro da Centelha, o efeito é <strong>grátis e ilimitado</strong>.
     </div>
     <div class="table-wrap">
       <table>
@@ -107,7 +105,10 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
         </tbody>
       </table>
     </div>
-    <p class="formula">Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = 2 + 4 + 2 = <strong>8 pontos</strong>. Puxando para Área 3, um nível acima: 3×2 + 4 + 2 = <strong>12</strong>. Para Área 4, dois acima: 4×3 + 4 + 2 = <strong>18</strong>.</p>
+    <p class="formula">Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = <strong>6 pontos</strong>, Speed 5. Puxando para Área 3, um nível acima: 3×2 + 2 + 2 = <strong>10 pontos</strong>, Speed 10. Para Área 4, dois acima: 4×3 + 2 + 2 = <strong>16 pontos</strong>, Speed 15.</p>
+    <div class="callout regra"><span class="lbl">Você decide no fim</span>
+      Não é preciso anunciar de saída até onde vai. No <strong>tick final de cada Speed</strong> você escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Numa ação de Speed 5, você decide no tick 5; se esticar, decide de novo no 10, e outra vez no 15. Quem interromper você no meio leva a conjuração junto.
+    </div>
     <p class="muted">O preço sobe rápido de propósito: forçar o limite é recurso de momento decisivo, não atalho para o estudo. E o desconto da Centelha continua valendo sobre o total.</p>
 
     <h2>Conjuração composta</h2>
@@ -115,8 +116,30 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     <p class="formula">Fogo (Labareda, nível 3) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 3 + 1 + <strong>1</strong> de sobretaxa = <strong>5</strong>, numa conjuração só.</p>
 
     <h2>Rituais</h2>
-    <p><strong>Ritual é o nome do modo lento</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é um Ritual: é um feitiço com o parâmetro de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, e o que ele compra é escala: cobrir uma vila, durar até a próxima lua, lavrar uma maldição.</p>
-    <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e Vontade. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
+    <p><strong>Ritual é a conjuração estendida</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é Ritual: é um feitiço com o parâmetro de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, subindo esta escada:</p>
+    <p class="formula">{RITUAL.escalaTempo.join(' · ')}</p>
+    <p>Subir a escada compra uma de duas coisas, e você escolhe qual em cada conjuração.</p>
+
+    <h3>Mais barato</h3>
+    <p>Cada grau de tempo acima do normal <strong>soma outra vez o desconto de Centelha</strong>: um grau dá Centelha × 2, dois graus dão Centelha × 3.</p>
+    <p class="formula">{RITUAL.modoDesconto.exemplo}</p>
+
+    <h3>Mais alto</h3>
+    <p>Cada grau de tempo acima permite usar parâmetros <strong>um nível acima do seu nível de Arte</strong>, custando <strong>1 de Força de Vontade por grau</strong>. Aqui o Mana é o normal: você não paga o multiplicador do esticar, como se tivesse mesmo aquele nível de Arte.</p>
+    <p class="formula">{RITUAL.modoAcima.exemplo}</p>
+
+    <div class="callout regra"><span class="lbl">Ritual não é discreto</span>
+      Nada disso é silencioso. Ritual tem luz, som e às vezes cheiro, e chama atenção de longe. Quem conjura por uma hora num lugar habitado está anunciando o que faz, e isso é parte do preço.
+    </div>
+    <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e Força de Vontade. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
+
+    <h2>Quando o Mana volta</h2>
+    <p>A reserva <strong>não</strong> volta por cena: quem se esvazia numa luta precisa de horas, não de um respiro. Você recupera <strong>{RECUP.normal}</strong>, e <strong>{RECUP.descanso}</strong>.</p>
+    <p class="muted">É o que separa a economia do Arcano da das Proezas: a Energia é o combustível da cena, o Mana é o combustível do dia. Quem investe na Arte <a href={url('artes') + '#manipulacao-mana'}>Manipulação de Mana</a> aumenta as duas coisas, a reserva e a velocidade com que ela volta.</p>
+
+    <div class="callout regra"><span class="lbl">O lugar do feiticeiro</span>
+      Feitiçaria não é build barata nem para personagem iniciante: no começo as conjurações são escassas, como as do mago nos primeiros níveis de outros sistemas. O feiticeiro do Centelha precisa de um <strong>papel secundário</strong>, e não necessariamente de combate: quando o Mana acaba, é dele que você vive.
+    </div>
 
     <h2>Guardar um feitiço</h2>
     <p>Dá para conjurar agora e soltar depois. O Mana é pago na hora de guardar, e o feitiço fica <strong>comitado</strong>: parte da cabeça do feiticeiro continua segurando aquilo o tempo todo. Enquanto estiver guardado, o <strong>Raciocínio</strong> paga a conta.</p>
@@ -173,7 +196,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
             <ol class="niveis">
               {a.niveis.map((n: any) => (
                 <li>
-                  <span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong>: {n.efeito} <span class="muted">({n.custo.mana} Mana)</span>
+                  <span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong>: {n.efeito}{n.custo?.mana ? <span class="muted"> ({n.custo.mana} Mana)</span> : null}
                   {n.exemplos?.length ? <ul class="nv-ex">{n.exemplos.map((e: string) => <li>{e}</li>)}</ul> : null}
                 </li>
               ))}

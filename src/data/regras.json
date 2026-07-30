@@ -1041,11 +1041,10 @@
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {
-      "regra": "O efeito da Arte se monta investindo PONTOS nos parâmetros. Cada parâmetro custa 1 ponto por nível, LINEAR, exceto o dano, que custa 2 pontos por nível. O nível de Centelha é desconto no total; o que sobra vira o custo em Mana (1 ponto = 1 Mana). Se o total ficar dentro da Centelha, o efeito é GRÁTIS e ilimitado. Não há rolagem para distribuir: a rolagem é só para acertar e vencer a resistência.",
+      "regra": "O efeito da Arte se monta investindo PONTOS nos parâmetros. Todo parâmetro custa 1 ponto por nível, linear. O nível de Centelha é desconto no total; o que sobra vira o custo em Mana (1 ponto = 1 Mana). Se o total couber dentro da Centelha, o efeito é GRÁTIS e ilimitado. Não há rolagem para distribuir: a rolagem é só para acertar e vencer a resistência.",
       "pontos": "invista quantos quiser: 1 ponto = 1 Mana. A Centelha desconta do total.",
       "custoPorNivel": {
-        "padrao": 1,
-        "dano": 2
+        "padrao": 1
       },
       "desconto": "nível de Centelha, por conjuração",
       "mana": "total de pontos − Centelha (mínimo 0; zero = grátis e ilimitado)",
@@ -1101,18 +1100,20 @@
           "1 semana",
           "1 mês"
         ],
-        "notaDano": "Dano custa 2 pontos por nível. Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
+        "notaDano": "Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
         "notaArea": "A área pode ser moldada em linha reta, círculo ou leque.",
         "notaAlcance": "O efeito comum precisa de pelo menos Alcance 1 (toque). Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano."
       },
       "exemplos": [
-        "Alcance 3 (15 m) + Dano 2 (2d6) + Duração 3 (1 minuto) = 3 + 4 + 3 = 10 pontos. Com Centelha 2, custa 8 de Mana.",
-        "Dano 1 + Alcance 1 = 2 + 1 = 3 pontos. Com Centelha 3, sai de graça e pode ser repetido à vontade."
+        "Alcance 3 (15 m) + Dano 2 (2d6) + Duração 3 (1 minuto) = 3 + 2 + 3 = 8 pontos. Com Centelha 2, custa 6 de Mana.",
+        "Dano 1 + Alcance 1 = 1 + 1 = 2 pontos. Com Centelha 2 ou mais, sai de graça e pode ser repetido à vontade."
       ]
     },
     "esticar": {
-      "nota": "Passar do nível da Arte num parâmetro. Investir mais Mana NÃO fura o teto sozinho: quem tem Fogo 3 pode levar todos os parâmetros até o 3 pagando o normal, mas para alcançar o 4 tem de esticar.",
-      "regra": "Um parâmetro N níveis ACIMA do nível da Arte custa (nível do parâmetro) × (N + 1) pontos, e a ação multiplica o Speed por (N + 1).",
+      "nota": "Passar do nível da Arte num parâmetro. Investir mais Mana NÃO fura o teto sozinho: quem tem Fogo 3 leva tudo até o 3 pagando o normal, mas para alcançar o 4 tem de esticar.",
+      "custo": "Um parâmetro N níveis ACIMA do nível da Arte custa (nível do parâmetro) × (N + 1) pontos.",
+      "speed": "CADA nível acima soma outra vez o Speed da ação, somando entre todos os parâmetros esticados. Speed 5 vira 10 com um nível acima, 15 com dois.",
+      "decisaoTardia": "O feiticeiro NÃO decide de saída até onde vai. No tick final de cada Speed ele escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Se segurar, decide de novo no fim do Speed seguinte. Uma ação de Speed 5 decide no tick 5; se esticar, decide de novo no 10, e assim por diante.",
       "tabela": [
         {
           "acima": 0,
@@ -1135,9 +1136,8 @@
           "speed": "×4"
         }
       ],
-      "exemplo": "Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = 2 + 4 + 2 = 8 pontos. Trocando para Área 3 (um acima): 3×2 + 4 + 2 = 12. Para Área 4 (dois acima): 4×3 + 4 + 2 = 18.",
-      "desconto": "a Centelha desconta do total, como em qualquer conjuração",
-      "aRevisar": "Falta decidir: como o multiplicador se combina com o custo dobrado do dano; se o Speed multiplica pelo maior excesso ou por cada parâmetro esticado; se há teto de quantos níveis acima; e se o modo lento (trocar Mana por tempo e Força de Vontade) sobrevive a esta regra."
+      "exemplo": "Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = 6 pontos, Speed 5. Puxando para Área 3, um acima: 3×2 + 2 + 2 = 10 pontos, Speed 10. Para Área 4, dois acima: 4×3 + 2 + 2 = 16 pontos, Speed 15.",
+      "desconto": "a Centelha desconta do total, como em qualquer conjuração"
     },
     "guardar": {
       "nota": "Conjurar agora e soltar depois. O feitiço fica COMITADO: o Mana já foi pago e a atenção do feiticeiro fica presa nele.",
@@ -1177,12 +1177,33 @@
       "sobretaxaPorK": "(k−1)"
     },
     "ritual": {
-      "definicao": "Ritual é o MODO LENTO de conjurar (ver `esticar.lento`): troca Mana por tempo e Força de Vontade. Efeito duradouro não é Ritual: duração é só um parâmetro.",
-      "manaMetade": "REVISAR: a regra antiga de metade do Mana é substituída pelo custo linear do modo lento.",
-      "escala": "empurra os parâmetros muito além do limite de um Feitiço (grande área, duração longa ou permanente, efeitos impossíveis em combate), inclusive acima do nível de Arte que você conhece.",
-      "acao": "estendida (Dif + Intervalo + Acúmulo)",
-      "cooperacao": "vários feiticeiros que conheçam a Arte somam Mana e dados na ação estendida",
+      "definicao": "Ritual é a conjuração ESTENDIDA: em vez de Ticks, o cast passa a levar minutos ou horas. Vale a pena por dois motivos, à escolha do feiticeiro em cada conjuração.",
+      "escalaTempo": [
+        "Ticks (Speed normal)",
+        "1 minuto",
+        "6 minutos",
+        "60 minutos",
+        "6 horas",
+        "24 horas"
+      ],
+      "modoDesconto": {
+        "regra": "Cada grau de tempo acima do normal soma outra vez o desconto de Centelha. Um grau acima = Centelha × 2 de desconto; dois graus = Centelha × 3; e assim por diante.",
+        "exemplo": "Arte 3, Centelha 2, esticando de Ticks para 6 minutos (dois graus): desconto de Centelha × 3 = 6. Alcance 2 + Dano 3 + Duração 2 = 7 pontos − 6 = 1 de Mana."
+      },
+      "modoAcima": {
+        "regra": "Cada grau de tempo acima permite usar parâmetros um nível acima do seu nível de Arte, ao custo de 1 de Força de Vontade por grau. O Mana é o normal, como se você tivesse aquele nível de Arte: não paga o multiplicador do esticar.",
+        "exemplo": "Arte 3, Centelha 2, esticando de Ticks para 6 minutos (dois graus, 2 de Força de Vontade): a conjuração alcança o nível 5. Alcance 5 + Dano 3 + Duração 4 = 12 pontos − 2 de Centelha = 10 de Mana."
+      },
+      "discricao": "Ritual NÃO é silencioso: tem efeito visual e sonoro, às vezes até cheiro. Chama atenção, e isso é parte do custo.",
+      "cooperacao": "vários feiticeiros que conheçam a Arte somam Mana e Força de Vontade",
       "backlash": false
-    }
+    },
+    "recuperacaoMana": {
+      "normal": "Centelha por hora",
+      "descanso": "2 × Centelha por hora em meditação, descanso completo ou sono profundo",
+      "nota": "A reserva não volta por cena: o feiticeiro que se esvazia numa luta precisa de horas, não de um respiro. É o que separa a economia do Arcano da economia das Proezas (a Energia, essa sim, é o combustível da cena).",
+      "arteManipulacao": "A Arte Manipulação de Mana soma +1 por nível dela a cada 2 horas, e o dobro em descanso."
+    },
+    "papelDoFeiticeiro": "Feitiçaria não é build barata nem para personagem iniciante: nos primeiros níveis as conjurações são escassas, como o mago de D&D. No Centelha o feiticeiro precisa de um papel secundário, e não necessariamente de combate. Quando o Mana acaba, ele depende de outros recursos para ser útil."
   }
 }

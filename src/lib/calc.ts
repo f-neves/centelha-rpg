@@ -72,9 +72,13 @@ export function energia(opts: { vigor: number; compostura: number; raciocinio: n
 }
 
 /** Mana: (Centelha×2) + Vontade. */
-export function mana(opts: { centelha: number; vontade: number }) {
+/** Bônus de reserva por nível da Arte Manipulação de Mana. */
+export const MANA_ARTE_BONUS = [0, 1, 2, 3, 5, 8, 12];
+
+export function mana(opts: { centelha: number; vontade: number; manipulacao?: number }) {
   const d = regras.derivados.mana;
-  return opts.centelha * d.centelhaMult + (d.maisVontade ? opts.vontade : 0);
+  const arte = MANA_ARTE_BONUS[Math.max(0, Math.min(6, opts.manipulacao || 0))] || 0;
+  return opts.centelha * d.centelhaMult + (d.maisVontade ? opts.vontade : 0) + arte;
 }
 
 /** Fôlego: reserva física p/ ações comuns. base + Vigor×5 + Resistência×4 + Vontade×2. */

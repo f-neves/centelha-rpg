@@ -1891,5 +1891,71 @@
     ],
     "aliases": [],
     "pendente": false
+  },
+  {
+    "id": "manipulacao-mana",
+    "nome": "Manipulação de Mana",
+    "categoria": "universal",
+    "atributo_conjuracao": "inteligencia",
+    "niveis": [
+      {
+        "nivel": 1,
+        "nome": "Reserva I",
+        "efeito": "passiva: +1 de Mana na reserva, e +1 de Mana a cada 2 horas de recuperação (o dobro em meditação, descanso completo ou sono profundo)",
+        "exemplos": [
+          "reserva 1 pontos maior do que a de quem não tem a Arte",
+          "1 de Mana extra a cada 2 h, 2 se estiver descansando de verdade"
+        ]
+      },
+      {
+        "nivel": 2,
+        "nome": "Reserva II",
+        "efeito": "passiva: +2 de Mana na reserva, e +2 de Mana a cada 2 horas de recuperação (o dobro em meditação, descanso completo ou sono profundo)",
+        "exemplos": [
+          "reserva 2 pontos maior do que a de quem não tem a Arte",
+          "2 de Mana extra a cada 2 h, 4 se estiver descansando de verdade"
+        ]
+      },
+      {
+        "nivel": 3,
+        "nome": "Reserva III",
+        "efeito": "passiva: +3 de Mana na reserva, e +3 de Mana a cada 2 horas de recuperação (o dobro em meditação, descanso completo ou sono profundo)",
+        "exemplos": [
+          "reserva 3 pontos maior do que a de quem não tem a Arte",
+          "3 de Mana extra a cada 2 h, 6 se estiver descansando de verdade"
+        ]
+      },
+      {
+        "nivel": 4,
+        "nome": "Reserva IV",
+        "efeito": "passiva: +5 de Mana na reserva, e +4 de Mana a cada 2 horas de recuperação (o dobro em meditação, descanso completo ou sono profundo)",
+        "exemplos": [
+          "reserva 5 pontos maior do que a de quem não tem a Arte",
+          "4 de Mana extra a cada 2 h, 8 se estiver descansando de verdade"
+        ]
+      },
+      {
+        "nivel": 5,
+        "nome": "Reserva V",
+        "efeito": "passiva: +8 de Mana na reserva, e +5 de Mana a cada 2 horas de recuperação (o dobro em meditação, descanso completo ou sono profundo)",
+        "exemplos": [
+          "reserva 8 pontos maior do que a de quem não tem a Arte",
+          "5 de Mana extra a cada 2 h, 10 se estiver descansando de verdade"
+        ]
+      },
+      {
+        "nivel": 6,
+        "nome": "Reserva VI",
+        "efeito": "passiva: +12 de Mana na reserva, e +6 de Mana a cada 2 horas de recuperação (o dobro em meditação, descanso completo ou sono profundo)",
+        "exemplos": [
+          "reserva 12 pontos maior do que a de quem não tem a Arte",
+          "6 de Mana extra a cada 2 h, 12 se estiver descansando de verdade"
+        ]
+      }
+    ],
+    "aliases": [
+      "Mana Manipulation"
+    ],
+    "pendente": false
   }
 ]
