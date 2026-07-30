@@ -511,6 +511,38 @@ export function montarFicha(opts: FichaOpts) {
       (w.notas ? `<div class="cmb muted">${w.notas}</div>` : '') +
       (pecas.length ? `<div class="cmb muted">Armadura: ${pecas.map((p: any) => p.nome).join(' + ')}.</div>` : '');
   }
+  function renderForca() {
+    const box = el('forca-arremesso'); if (!box) return;
+    const F = (regras as any).forca; if (!F) { box.innerHTML = ''; return; }
+    const forca = A('forca'), atl = SK('atletismo'), halt = S.skills2['halterofilismo'] || 0, arr = SK('arremesso');
+    const clampFA = (v: number) => Math.max(2, Math.min(24, v));
+    const fah = clampFA(2 * forca + atl + halt), faa = clampFA(2 * forca + atl + arr);
+    const [leve, medio, maxKg] = F.levantamento[fah] as number[];
+    const dmax = F.arremessoDistMax1kg[faa] as number;
+    const lnM = Math.log(maxKg);
+    const dist = (w: number) => w <= 1 ? dmax : w >= maxKg ? 0 : dmax * (1 - Math.log(w) / lnM);
+    const r1 = (n: number) => n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10);
+    // gráfico Peso × Distância (eixo X linear em kg, de 1 ao máximo que ergue)
+    const W = 580, H = 210, ml = 38, mr = 14, mt = 12, mb = 26;
+    const pw = W - ml - mr, ph = H - mt - mb, xB = ml, yB = mt + ph, xR = ml + pw;
+    const xpos = (w: number) => xB + (maxKg > 1 ? (w - 1) / (maxKg - 1) : 0) * pw;
+    const ypos = (d: number) => yB - (dmax > 0 ? d / dmax : 0) * ph;
+    const N = 80; const seq: string[] = [];
+    for (let i = 0; i <= N; i++) { const w = 1 + (maxKg - 1) * i / N; seq.push(`${xpos(w).toFixed(1)},${ypos(dist(w)).toFixed(1)}`); }
+    const pts = seq.join(' ');
+    const area = `M${xB},${yB} L${seq.join(' L')} L${xR},${yB} Z`;
+    let xticks = '';
+    for (let i = 0; i <= 4; i++) { const w = 1 + (maxKg - 1) * i / 4; const x = xpos(w); xticks += `<line class="grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${yB}"/><text x="${x.toFixed(1)}" y="${yB + 15}" text-anchor="middle">${Math.round(w)}</text>`; }
+    let yticks = '';
+    [0, dmax / 2, dmax].forEach((d) => { const y = ypos(d); yticks += `<line class="grid" x1="${xB}" y1="${y.toFixed(1)}" x2="${xR}" y2="${y.toFixed(1)}"/><text x="${xB - 5}" y="${(y + 3).toFixed(1)}" text-anchor="end">${r1(d)}</text>`; });
+    const svg = `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Peso por distância de arremesso"><text x="${xB - 33}" y="${mt + 8}" class="axlbl">m</text><text x="${xR}" y="${yB + 15}" text-anchor="end" class="axlbl">kg →</text>${yticks}${xticks}<path class="area" d="${area}"/><polyline class="curve" points="${pts}"/><line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/><line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/></svg>`;
+    const tw = [1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
+    tw.push(maxKg);
+    const rows = tw.map((w) => `<tr><td>${w}${w === maxKg ? ' <span class="muted">(máx)</span>' : ''}</td><td>${r1(dist(w))}</td></tr>`).join('');
+    const table = `<table class="fa-tbl"><thead><tr><th>Peso (kg)</th><th>Arremesso (m)</th></tr></thead><tbody>${rows}</tbody></table>`;
+    const head = `<div class="fa-head"><b>Levantamento</b> · FAH ${fah} = Força ${forca}×2 + Atletismo ${atl} + Halterofilismo ${halt}<div class="fa-tiers"><span>Leve <b>${leve} kg</b></span><span>Médio <b>${medio} kg</b></span><span>Máximo <b>${maxKg} kg</b></span></div><b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg voa ${dmax} m; o peso máximo (${maxKg} kg), 0 m. Sem impulso nem giro.</span></div>`;
+    box.innerHTML = `<div class="fa-wrap">${head}<div class="fa-row">${svg}${table}</div></div>`;
+  }
   function populateEquip() {
     renderConjuntos();
     const box = el('eq-armaduras');
@@ -543,7 +575,7 @@ export function montarFicha(opts: FichaOpts) {
     el('xpSpent').textContent = String(total);
     const rem = (S.budget || 0) - total, re = el('xpRem'); re.textContent = String(rem); re.className = 'rem ' + (rem < 0 ? 'neg' : 'ok');
     el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '') + (xr ? ` · Raça ${xr}` : '');
-    renderConjuntos(); renderDerived(); renderCombate(); save();
+    renderConjuntos(); renderDerived(); renderCombate(); renderForca(); save();
   }
 
   // ---- interações ----

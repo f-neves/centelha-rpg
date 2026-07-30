@@ -379,6 +379,23 @@
   "orcamentoPadrao": 1500,
   "orcamentoVeterano": 2000,
   "orcamentoHeroico": 2600,
+  "forca": {
+    "notaLevantamento": "FAH = (Força × 2) + Atletismo + Halterofilismo, de 2 a 24. Define o peso que se ergue: Leve (carrega e ainda corre/salta/luta), Médio (ergue com esforço, devagar, penalidade), Máximo (limite absoluto, ergue por instantes, não se desloca com ele). Valores-base em kg, antes de Proeza Carga (×2…×100) e Centelha.",
+    "notaArremesso": "FAA = (Força × 2) + Atletismo + Arremesso, de 2 a 24 (Halterofilismo NÃO entra). 'distMax1kg' é o alcance de um arremesso normal (sem impulso nem giro) de 1 kg. A distância cai com o peso: Distância = distMax1kg × (1 − ln(peso) ÷ ln(pesoMáximo)). No peso máximo que a pessoa ergue, distância 0 m; no mínimo (1 kg), distância máxima.",
+    "levantamento": {
+      "2": [5, 10, 15], "3": [7, 14, 20], "4": [9, 18, 27], "5": [12, 24, 35],
+      "6": [15, 30, 45], "7": [18, 36, 55], "8": [22, 44, 65], "9": [26, 52, 78],
+      "10": [30, 60, 90], "11": [36, 72, 108], "12": [42, 84, 125], "13": [48, 96, 145],
+      "14": [56, 112, 168], "15": [64, 128, 190], "16": [72, 144, 215], "17": [82, 164, 245],
+      "18": [93, 186, 280], "19": [105, 210, 315], "20": [118, 236, 355], "21": [132, 264, 395],
+      "22": [147, 294, 440], "23": [160, 320, 480], "24": [175, 350, 525]
+    },
+    "arremessoDistMax1kg": {
+      "2": 4, "3": 5, "4": 6, "5": 8, "6": 10, "7": 12, "8": 14, "9": 16, "10": 19,
+      "11": 22, "12": 25, "13": 28, "14": 32, "15": 36, "16": 40, "17": 44, "18": 48,
+      "19": 52, "20": 56, "21": 60, "22": 64, "23": 68, "24": 72
+    }
+  },
   "progressaoPorSessao": [
     10,
     20

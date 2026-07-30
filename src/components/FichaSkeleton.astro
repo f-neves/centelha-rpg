@@ -71,6 +71,9 @@ import RoladorDados from './RoladorDados.astro';
 <div class="equip-bolsas" id="eq-bolsas"></div>
 <div class="panel" id="combate"></div>
 
+<h2 class="barh">Força &amp; Arremesso <small>(levantamento e alcance de arremesso · não custa XP)</small></h2>
+<div class="panel" id="forca-arremesso"></div>
+
 <h2 class="barh">Rolar</h2>
 <RoladorDados compact />
 
@@ -183,6 +186,23 @@ import RoladorDados from './RoladorDados.astro';
   .equip-arm { margin: 0 0 .8rem; }
   .equip-lbl { display: block; font-family: 'Cinzel'; font-size: .74rem; color: var(--ink-soft); margin-bottom: .35rem; }
   .equip-lbl small { font-weight: normal; }
+
+  .fa-wrap { display: flex; flex-direction: column; gap: .6rem; }
+  .fa-head { font-size: .9rem; line-height: 1.55; }
+  .fa-head b { color: var(--accent-strong); font-family: 'Cinzel'; }
+  .fa-tiers { display: flex; gap: .5rem 1.4rem; flex-wrap: wrap; margin: .25rem 0 .5rem; }
+  .fa-tiers span { font-size: .9rem; } .fa-tiers span b { font-family: 'Cinzel'; color: var(--accent-strong); }
+  .fa-row { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-start; }
+  .fa-chart { flex: 1 1 22rem; width: 100%; max-width: 40rem; height: auto; }
+  .fa-chart .axis { stroke: var(--rule); stroke-width: 1; }
+  .fa-chart .grid { stroke: var(--rule); stroke-width: .5; opacity: .45; }
+  .fa-chart .curve { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .fa-chart .area { fill: var(--accent); opacity: .1; }
+  .fa-chart text { fill: var(--ink-soft); font-size: 10px; font-family: 'EB Garamond'; }
+  .fa-chart .axlbl { font-family: 'Cinzel'; font-size: 9px; }
+  .fa-tbl { border-collapse: collapse; font-size: .84rem; }
+  .fa-tbl th, .fa-tbl td { border: 1px solid var(--rule); padding: .15rem .55rem; text-align: center; }
+  .fa-tbl th { font-family: 'Cinzel'; font-size: .72rem; color: var(--ink-soft); font-weight: 700; }
   .arm-checks { display: flex; flex-wrap: wrap; gap: .3rem .9rem; }
   .arm-chk { display: inline-flex; align-items: center; gap: .3rem; font-family: 'EB Garamond'; font-size: .95rem; color: var(--ink); }
   .equip-bolsas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .6rem .9rem; margin: 0 0 .8rem; }
