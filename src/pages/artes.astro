@@ -21,9 +21,6 @@ const EX_CONTA: [string, string, number][] = [
   ['Toque ardente: Dano 1 (1d6) + Alcance 1 (toque)', '1×2 + 1', 3],
   ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3×2 + 3 + 2', 11],
 ];
-const esticarRapido = [0, 1, 2, 3].map((n) => ({
-  n, mana: 2 ** (n + 1) - 1, speed: n + 1,
-}));
 const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
 const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase();
@@ -99,43 +96,19 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     <p>O desconto muda o jeito de jogar conforme a Centelha sobe: o mesmo dardo que era caro no começo vira troco, e lá pelo fim os truques pequenos deixam de ter custo nenhum. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
 
     <h2>Passar do seu limite</h2>
-    <div class="callout revisao"><span class="lbl">Em revisão</span>
-      As duas vias abaixo foram desenhadas para o modelo de pontos anterior. Com a conta nova (1 ponto = 1 Mana, Centelha como desconto), passar do limite talvez já esteja coberto por simplesmente investir mais pontos. Fica aqui até a decisão.
-    </div>
-    <p>Dá para conjurar acima do grau que a sua Arte alcança, e até acima do seu próprio nível de Arte. Custa caro, e você escolhe se paga em <strong>Mana</strong> ou em <strong>tempo</strong>.</p>
-
-    <h3>Pela força: o modo rápido</h3>
-    <p>Cada grau a mais <strong>dobra o custo acumulado de Mana</strong> e <strong>soma outra vez o tempo base</strong>.</p>
+    <p>Investir mais Mana não fura o teto sozinho: quem tem Fogo 3 leva todos os parâmetros até o nível 3 pagando o preço normal, mas para alcançar o <strong>4</strong> precisa esticar. Cada nível acima do seu nível de Arte <strong>encarece o parâmetro</strong> e <strong>alonga a ação</strong>.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Graus acima</th><th>Mana</th><th>Speed</th><th>Exemplo: Gelo 2 (2 de Mana, Speed 5)</th></tr></thead>
+        <thead><tr><th>Níveis acima</th><th>Custo do parâmetro</th><th>Speed</th></tr></thead>
         <tbody>
-          {esticarRapido.map((e) => (
-            <tr>
-              <td class="num">{e.n}</td>
-              <td class="num">×{e.mana}</td>
-              <td class="num">×{e.speed}</td>
-              <td>dardo de {e.n + 2}d6 · {e.mana * 2} de Mana · Speed {e.speed * 5}</td>
-            </tr>
+          {ESTICAR.tabela.map((e: any) => (
+            <tr><td class="num">{e.acima}</td><td>{e.custo}</td><td class="num">{e.speed}</td></tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p class="muted">A exponencial é o freio: um efeito de base 4 já custa 12 de Mana para subir um grau só. E forçar nunca compensa contra quem estudou: sair de Fogo 1 para um dardo de 4d6 custa 15 de Mana e Speed 20, contra 4 de Mana e Speed 6 de quem tem Fogo 4.</p>
-
-    <h3>Pela paciência: o modo lento</h3>
-    <p>Com tempo e sossego, o mesmo salto sai muito mais barato em Mana, e caro em relógio. Cada grau custa <strong>+1 vez o Mana base</strong>, <strong>1 de Força de Vontade</strong>, e sobe um passo na escada de tempo.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Graus acima</th><th>Mana</th><th>Vontade</th><th>Tempo</th></tr></thead>
-        <tbody>
-          {ESTICAR.lento.escadaTempo.map((t: string, i: number) => (
-            <tr><td class="num">{i}</td><td class="num">×{i + 1}</td><td class="num">{i}</td><td>{t}</td></tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p class="muted">A escada acaba em dois dias, então o teto natural é <strong>cinco graus acima</strong>. Quem tem a Arte no nível 1 e quer o equivalente ao nível 5 passa <strong>24 horas conjurando</strong>. O modo lento só serve para o que fica de pé (muro, neblina, arma encantada, círculo de invocação): ninguém prepara um dardo por dez minutos para arremessar.</p>
+    <p class="formula">Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = 2 + 4 + 2 = <strong>8 pontos</strong>. Puxando para Área 3, um nível acima: 3×2 + 4 + 2 = <strong>12</strong>. Para Área 4, dois acima: 4×3 + 4 + 2 = <strong>18</strong>.</p>
+    <p class="muted">O preço sobe rápido de propósito: forçar o limite é recurso de momento decisivo, não atalho para o estudo. E o desconto da Centelha continua valendo sobre o total.</p>
 
     <h2>Conjuração composta</h2>
     <p>Você pode trançar <strong>várias Artes numa única conjuração</strong>, o mesmo idioma dos combos de Técnica. Junte K Artes e pague a <strong>soma dos Manas + uma sobretaxa progressiva de +(k−1)</strong> (a 2ª Arte +1, a 3ª +2…). É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem a escada dele.</p>

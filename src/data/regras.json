@@ -1111,28 +1111,33 @@
       ]
     },
     "esticar": {
-      "nota": "EM REVISÃO: estas duas vias foram desenhadas para o modelo antigo de pontos (Arte × 2 + Centelha). Com o custo novo (1 ponto = 1 Mana, Centelha como desconto), passar do limite pode já estar coberto por investir mais pontos. Rever antes de publicar.",
-      "rapido": {
-        "regra": "Cada grau acima dobra o custo acumulado de Mana e soma outra vez o tempo base.",
-        "mana": "base × (2^(n+1) − 1)",
-        "speed": "base × (n + 1)",
-        "exemplo": "Gelo 2: dardo de 2d6 por 2 de Mana e 5 de Speed; 3d6 por 6 e 10; 4d6 por 14 e 15."
-      },
-      "lento": {
-        "regra": "Troca Mana por tempo: cada grau acima custa +1 vez o Mana base (linear), 1 de Força de Vontade, e sobe um passo na escada de tempo.",
-        "mana": "base × (n + 1)",
-        "vontade": "1 por grau",
-        "escadaTempo": [
-          "Speed base em Ticks",
-          "6 minutos",
-          "60 minutos",
-          "6 horas",
-          "24 horas",
-          "2 dias"
-        ],
-        "teto": "+5 graus (a escada de tempo acaba em 2 dias)",
-        "uso": "só faz sentido para o que fica de pé (muro, neblina, arma encantada, círculo); ninguém prepara um dardo por dez minutos."
-      }
+      "nota": "Passar do nível da Arte num parâmetro. Investir mais Mana NÃO fura o teto sozinho: quem tem Fogo 3 pode levar todos os parâmetros até o 3 pagando o normal, mas para alcançar o 4 tem de esticar.",
+      "regra": "Um parâmetro N níveis ACIMA do nível da Arte custa (nível do parâmetro) × (N + 1) pontos, e a ação multiplica o Speed por (N + 1).",
+      "tabela": [
+        {
+          "acima": 0,
+          "custo": "nível × 1",
+          "speed": "×1"
+        },
+        {
+          "acima": 1,
+          "custo": "nível × 2",
+          "speed": "×2"
+        },
+        {
+          "acima": 2,
+          "custo": "nível × 3",
+          "speed": "×3"
+        },
+        {
+          "acima": 3,
+          "custo": "nível × 4",
+          "speed": "×4"
+        }
+      ],
+      "exemplo": "Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = 2 + 4 + 2 = 8 pontos. Trocando para Área 3 (um acima): 3×2 + 4 + 2 = 12. Para Área 4 (dois acima): 4×3 + 4 + 2 = 18.",
+      "desconto": "a Centelha desconta do total, como em qualquer conjuração",
+      "aRevisar": "Falta decidir: como o multiplicador se combina com o custo dobrado do dano; se o Speed multiplica pelo maior excesso ou por cada parâmetro esticado; se há teto de quantos níveis acima; e se o modo lento (trocar Mana por tempo e Força de Vontade) sobrevive a esta regra."
     },
     "guardar": {
       "nota": "Conjurar agora e soltar depois. O feitiço fica COMITADO: o Mana já foi pago e a atenção do feiticeiro fica presa nele.",
