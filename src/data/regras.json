@@ -1052,7 +1052,7 @@
       "tetoPorParametro": "nível da Arte (Efeitos Especiais podem passar disso, ver `efeitos`)",
       "escopo": "Os valores abaixo valem para as Artes ELEMENTAIS. As demais Artes têm parâmetros próprios, definidos caso a caso.",
       "graus": {
-        "nota": "Níveis 1 a 6. Não há grau 0: o nível 1 já é o mínimo investido.",
+        "nota": "Níveis 1 a 6. Você só paga os parâmetros que USA: o padrão grátis de qualquer feitiço é um alvo, instantâneo e sem área. O Alcance é a exceção: todo efeito comum precisa de pelo menos Alcance 1 (toque).",
         "alcance": [
           "toque",
           "5 m",
