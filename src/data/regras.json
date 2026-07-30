@@ -587,7 +587,11 @@
     },
     "energia": {
       "nota": "(Vigor + Compostura + Raciocínio + Vontade) / 2 [arredonda para baixo] + Centelha × 2.",
-      "atributos": ["vigor", "compostura", "raciocinio"],
+      "atributos": [
+        "vigor",
+        "compostura",
+        "raciocinio"
+      ],
       "maisVontade": true,
       "divisor": 2,
       "centelhaMult": 2
@@ -809,8 +813,22 @@
   },
   "porteAcerto": {
     "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS (corpo a corpo e à distância), pela diferença de porte entre atacante e alvo. Só no acerto: NÃO altera a Defesa passiva do alvo, NÃO entra no teto ±6 dos modificadores situacionais e NÃO vale p/ ataques Sociais ou Mentais. Relativo e simétrico: acertar alvo MAIOR soma o valor; acertar alvo MENOR subtrai o mesmo valor. Conta a diferença de categorias na ordem dos portes, com teto de 4 categorias (diferenças maiores contam como 4). Bichos Enormes+ compensam a facilidade de acerto com a Couraça de Porte, que corta o dano de quem é menor.",
-    "ordem": ["minusculo", "pequeno", "medio", "grande", "enorme", "imenso", "colossal"],
-    "porDiferenca": [0, 3, 6, 9, 12],
+    "ordem": [
+      "minusculo",
+      "pequeno",
+      "medio",
+      "grande",
+      "enorme",
+      "imenso",
+      "colossal"
+    ],
+    "porDiferenca": [
+      0,
+      3,
+      6,
+      9,
+      12
+    ],
     "capCategorias": 4
   },
   "bloqueioLimite": {
@@ -818,7 +836,12 @@
     "porteMaxDiferenca": 1,
     "centelhaSobePorte": 1,
     "escudoGrandeBonusPorte": 1,
-    "escudosGrandes": ["heater", "kite", "scutum", "paves"],
+    "escudosGrandes": [
+      "heater",
+      "kite",
+      "scutum",
+      "paves"
+    ],
     "forcaRatio": 2,
     "forcaGapMin": 4,
     "centelhaIgnoraForca": true
@@ -1018,25 +1041,77 @@
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {
-      "regra": "O efeito genérico da Arte se monta distribuindo PONTOS pelos parâmetros. Todo parâmetro começa no grau 0 (grátis) e custa 1 ponto por grau, linear. Nenhum parâmetro passa do nível da Arte; para passar, ver `esticar`. O Mana gasto é o MAIOR grau usado. Não há rolagem para distribuir: a rolagem (Ocultismo + Atributo) é só para acertar/vencer a resistência. Efeito COMPRADO já vem com os parâmetros impressos e não se distribui nada nele.",
-      "pontos": "(nível da Arte × 2) + Centelha",
-      "custoPorGrau": 1,
-      "tetoPorParametro": "nível da Arte",
-      "mana": "o maior grau usado na conjuração",
+      "regra": "O efeito da Arte se monta investindo PONTOS nos parâmetros. Cada parâmetro custa 1 ponto por nível, LINEAR, exceto o dano, que custa 2 pontos por nível. O nível de Centelha é desconto no total; o que sobra vira o custo em Mana (1 ponto = 1 Mana). Se o total ficar dentro da Centelha, o efeito é GRÁTIS e ilimitado. Não há rolagem para distribuir: a rolagem é só para acertar e vencer a resistência.",
+      "pontos": "invista quantos quiser: 1 ponto = 1 Mana. A Centelha desconta do total.",
+      "custoPorNivel": {
+        "padrao": 1,
+        "dano": 2
+      },
+      "desconto": "nível de Centelha, por conjuração",
+      "mana": "total de pontos − Centelha (mínimo 0; zero = grátis e ilimitado)",
+      "tetoPorParametro": "nível da Arte (Efeitos Especiais podem passar disso, ver `efeitos`)",
+      "escopo": "Os valores abaixo valem para as Artes ELEMENTAIS. As demais Artes têm parâmetros próprios, definidos caso a caso.",
       "graus": {
-        "nota": "Grau 0 é o mínimo grátis de todo feitiço: toque, um alvo, instantâneo, sem dano.",
-        "alcance": ["toque", "5 m", "20 m", "50 m", "150 m", "500 m", "1,5 km"],
-        "area": ["um alvo · 0,25 m²", "1 m²", "5 m²", "15 m²", "50 m²", "150 m²", "500 m²"],
-        "alvos": ["1", "2", "4", "10", "20", "50", "150"],
-        "dano": ["nenhum", "1d6", "2d6", "3d6", "4d6", "5d6", "6d6"],
-        "duracaoAguda": ["instantâneo", "1 turno", "3 turnos", "1 cena", "10 minutos", "1 hora", "6 horas"],
-        "duracaoBranda": ["instantâneo", "1 cena", "1 hora", "6 horas", "1 dia", "1 semana", "1 mês"],
-        "notaDano": "Terra dobra o dado: cada grau de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
-        "notaDuracao": "A régua aguda vale para dano e controle direto; a branda para proteção, camuflagem e efeitos suaves."
-      }
+        "nota": "Níveis 1 a 6. Não há grau 0: o nível 1 já é o mínimo investido.",
+        "alcance": [
+          "toque",
+          "5 m",
+          "15 m",
+          "50 m",
+          "100 m",
+          "200 m"
+        ],
+        "area": [
+          "0,5 × 0,5 m",
+          "1 × 1 m",
+          "2 × 2 m",
+          "4 × 4 m",
+          "6 × 6 m",
+          "8 × 8 m"
+        ],
+        "alvos": [
+          "1",
+          "2",
+          "3",
+          "5",
+          "7",
+          "10"
+        ],
+        "dano": [
+          "1d6",
+          "2d6",
+          "3d6",
+          "4d6",
+          "5d6",
+          "6d6"
+        ],
+        "duracaoBreve": [
+          "1 turno",
+          "5 turnos",
+          "1 minuto",
+          "5 minutos",
+          "30 minutos",
+          "1 hora"
+        ],
+        "duracaoLonga": [
+          "10 minutos",
+          "1 hora",
+          "6 horas",
+          "1 dia",
+          "1 semana",
+          "1 mês"
+        ],
+        "notaDano": "Dano custa 2 pontos por nível. Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
+        "notaArea": "A área pode ser moldada em linha reta, círculo ou leque.",
+        "notaAlcance": "O efeito comum precisa de pelo menos Alcance 1 (toque). Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano."
+      },
+      "exemplos": [
+        "Alcance 3 (15 m) + Dano 2 (2d6) + Duração 3 (1 minuto) = 3 + 4 + 3 = 10 pontos. Com Centelha 2, custa 8 de Mana.",
+        "Dano 1 + Alcance 1 = 2 + 1 = 3 pontos. Com Centelha 3, sai de graça e pode ser repetido à vontade."
+      ]
     },
     "esticar": {
-      "nota": "Passar do que está impresso, ou do próprio nível de Arte. Duas vias, à escolha do feiticeiro.",
+      "nota": "EM REVISÃO: estas duas vias foram desenhadas para o modelo antigo de pontos (Arte × 2 + Centelha). Com o custo novo (1 ponto = 1 Mana, Centelha como desconto), passar do limite pode já estar coberto por investir mais pontos. Rever antes de publicar.",
       "rapido": {
         "regra": "Cada grau acima dobra o custo acumulado de Mana e soma outra vez o tempo base.",
         "mana": "base × (2^(n+1) − 1)",
@@ -1047,7 +1122,14 @@
         "regra": "Troca Mana por tempo: cada grau acima custa +1 vez o Mana base (linear), 1 de Força de Vontade, e sobe um passo na escada de tempo.",
         "mana": "base × (n + 1)",
         "vontade": "1 por grau",
-        "escadaTempo": ["Speed base em Ticks", "6 minutos", "60 minutos", "6 horas", "24 horas", "2 dias"],
+        "escadaTempo": [
+          "Speed base em Ticks",
+          "6 minutos",
+          "60 minutos",
+          "6 horas",
+          "24 horas",
+          "2 dias"
+        ],
         "teto": "+5 graus (a escada de tempo acaba em 2 dias)",
         "uso": "só faz sentido para o que fica de pé (muro, neblina, arma encantada, círculo); ninguém prepara um dardo por dez minutos."
       }
@@ -1076,7 +1158,14 @@
       "upgrade": "efeito escalonável paga só a diferença: 2 × novo − 2 × antigo",
       "outraArte": "Efeito que você já sabe e que cabe em outra Arte sua não custa XP, só treino; mas é preciso ter cada Arte no nível do Efeito",
       "compra": "só até o nível que você tem na Arte; sem teto de quantidade",
-      "ticks": "4 + nível do Efeito + 1 por grau que qualquer parâmetro passe do nível dele"
+      "ticks": "4 + nível do Efeito + 1 por grau que qualquer parâmetro passe do nível dele",
+      "custo": "nível do Efeito + a soma dos parâmetros usados; a Centelha desconta do total, como em qualquer conjuração",
+      "acimaDaArte": "Alguns Efeitos Especiais têm parâmetros acima do nível da Arte, normalmente por serem mais específicos (a Neblina começa um nível acima em Área, trocando m² por m³).",
+      "exemplos": [
+        "Neblina (Efeito 1) + Alcance 2 (5 m) + Volume 3 (4×4×4) + Duração 2 (5 turnos) = 1 + 2 + 3 + 2 = 8 pontos.",
+        "Neblina (Efeito 1) + Alcance 1 (toque) + Volume 2 (2×2×2) + Duração 1 (1 turno) = 1 + 1 + 2 + 1 = 5 pontos.",
+        "Terremoto (Efeito 2) + Alcance 1 (toque) + Área 3 (4×4) = 2 + 1 + 3 = 6 pontos."
+      ]
     },
     "composta": {
       "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos Manas + sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior nível.",

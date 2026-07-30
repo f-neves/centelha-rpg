@@ -7,20 +7,19 @@ const d = await loadData();
 const G = (regras as any).arcano.improviso.graus;
 const ESTICAR = (regras as any).arcano.esticar;
 // linhas da tabela de graus (0 a 6), na ordem em que aparecem na página
-const LINHAS_GRAU: [string, string[]][] = [
-  ['Alcance', G.alcance],
-  ['Área', G.area],
-  ['Alvos', G.alvos],
-  ['Dano', G.dano],
-  ['Duração aguda', G.duracaoAguda],
-  ['Duração branda', G.duracaoBranda],
+const LINHAS_GRAU: [string, string[], string][] = [
+  ['Alcance', G.alcance, '1'],
+  ['Área', G.area, '1'],
+  ['Alvos', G.alvos, '1'],
+  ['Dano', G.dano, '2'],
+  ['Duração breve', G.duracaoBreve, '1'],
+  ['Duração longa', G.duracaoLonga, '1'],
 ];
-// exemplos de quantos pontos cada feiticeiro tem: [Arte, Centelha]
-const EX_PONTOS: [number, number, string][] = [
-  [1, 1, 'dardo de 1d6 a 5 m; ou 1d6 em dois alvos, por toque'],
-  [3, 3, '3d6 a 50 m num alvo; ou 3d6 a 20 m em quatro alvos'],
-  [6, 3, '6d6 a 500 m; ou 4d6 a 150 m durando uma cena'],
-  [6, 6, '6d6 a 500 m em quatro alvos'],
+// conjurações de exemplo: [descrição, contas, total]
+const EX_CONTA: [string, string, number][] = [
+  ['Dardo: Alcance 3 (15 m) + Dano 2 (2d6) + Duração 3 (1 minuto)', '3 + 2×2 + 3', 10],
+  ['Toque ardente: Dano 1 (1d6) + Alcance 1 (toque)', '1×2 + 1', 3],
+  ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3×2 + 3 + 2', 11],
 ];
 const esticarRapido = [0, 1, 2, 3].map((n) => ({
   n, mana: 2 ** (n + 1) - 1, speed: n + 1,
@@ -59,41 +58,50 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais.</p>
 
     <h2>Os parâmetros</h2>
-    <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração girando os parâmetros. Todo parâmetro começa no <strong>grau 0</strong>, que é de graça e é o mínimo de qualquer feitiço: toque, um alvo, instantâneo, sem dano. Subir um grau custa <strong>1 ponto</strong>.</p>
+    <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração investindo pontos nos parâmetros. Nenhum parâmetro passa do <strong>nível da Arte</strong> que você tem.</p>
+    <p class="muted">A tabela abaixo vale para as <strong>Artes elementais</strong>. As demais Artes têm parâmetros próprios, definidos caso a caso.</p>
     <div class="table-wrap">
       <table class="graus-tab">
-        <thead><tr><th>Parâmetro</th><th>0 <span class="muted">grátis</span></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+        <thead><tr><th>Parâmetro</th><th>Custo</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
         <tbody>
-          {LINHAS_GRAU.map(([nome, vals]) => (
-            <tr><td><strong>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p class="muted">{G.notaDuracao} {G.notaDano}</p>
-
-    <h2>Quantos pontos você tem</h2>
-    <div class="callout regra"><span class="lbl">A conta</span>
-      <strong>Pontos = (nível da Arte × 2) + Centelha.</strong> Nenhum parâmetro passa do <strong>nível da Arte</strong>, e o <strong>Mana gasto é o maior grau usado</strong>. Não se rola nada para distribuir: a rolagem de conjuração serve para acertar e vencer a resistência.
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Feiticeiro</th><th>Pontos</th><th>Teto por parâmetro</th><th>Exemplos de alocação</th></tr></thead>
-        <tbody>
-          {EX_PONTOS.map(([arte, centelha, ex]) => (
+          {LINHAS_GRAU.map(([nome, vals, custo]) => (
             <tr>
-              <td>Arte {arte}, Centelha {centelha}</td>
-              <td class="num">{arte * 2 + centelha}</td>
-              <td class="num">{arte}</td>
-              <td>{ex}</td>
+              <td><strong>{nome}</strong></td>
+              <td class="num">{custo} pt<span class="muted">/nível</span></td>
+              {vals.map((v) => <td>{v}</td>)}
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p>Repare que os pontos nunca dão para levar tudo ao máximo: com a Arte no 6 e Centelha 6 são 18 pontos, e três parâmetros no grau 6 já custariam 18 sozinhos. <strong>Toda conjuração é uma escolha</strong>, do primeiro nível ao último. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
+    <p class="muted">{G.notaArea} {G.notaAlcance}</p>
+
+    <h2>O que custa, e o desconto da Centelha</h2>
+    <div class="callout regra"><span class="lbl">A conta</span>
+      Some os níveis investidos: <strong>1 ponto por nível</strong> em tudo, menos o <strong>dano, que custa 2</strong>. Do total, subtraia a sua <strong>Centelha</strong>. O que sobrar é o custo em <strong>Mana</strong>, um por um. Se o total couber dentro da Centelha, o efeito é <strong>grátis e ilimitado</strong>.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Conjuração</th><th>Conta</th><th>Pontos</th><th>Mana com Centelha 2</th><th>com Centelha 4</th></tr></thead>
+        <tbody>
+          {EX_CONTA.map(([desc, conta, total]) => (
+            <tr>
+              <td>{desc}</td>
+              <td class="muted">{conta}</td>
+              <td class="num">{total}</td>
+              <td class="num">{Math.max(0, total - 2) || 'grátis'}</td>
+              <td class="num">{Math.max(0, total - 4) || 'grátis'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>O desconto muda o jeito de jogar conforme a Centelha sobe: o mesmo dardo que era caro no começo vira troco, e lá pelo fim os truques pequenos deixam de ter custo nenhum. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
 
     <h2>Passar do seu limite</h2>
+    <div class="callout revisao"><span class="lbl">Em revisão</span>
+      As duas vias abaixo foram desenhadas para o modelo de pontos anterior. Com a conta nova (1 ponto = 1 Mana, Centelha como desconto), passar do limite talvez já esteja coberto por simplesmente investir mais pontos. Fica aqui até a decisão.
+    </div>
     <p>Dá para conjurar acima do grau que a sua Arte alcança, e até acima do seu próprio nível de Arte. Custa caro, e você escolhe se paga em <strong>Mana</strong> ou em <strong>tempo</strong>.</p>
 
     <h3>Pela força: o modo rápido</h3>
