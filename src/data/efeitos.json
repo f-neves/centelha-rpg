@@ -188,9 +188,19 @@
     ],
     "parametros": [
       {
-        "nome": "Alcance",
-        "tipo": "fixo",
-        "valor": "o próprio corpo e um passo em volta"
+        "nome": "Volume",
+        "tipo": "substitui",
+        "substitui": "area",
+        "unidade": "m de raio",
+        "escala": [
+          "0,5 m",
+          "1 m",
+          "2 m",
+          "4 m",
+          "6 m",
+          "8 m"
+        ],
+        "nota": "esfera com você no centro; o raio é o lado do quadrado da Área daquele nível"
       },
       {
         "nome": "Dano",
@@ -202,9 +212,9 @@
         "regua": "breve"
       }
     ],
-    "efeito": "O elemento envolve você. Quem encosta, agarra ou ataca no corpo a corpo sofre o dano, sem precisar de rolagem sua.",
+    "efeito": "O elemento envolve você numa esfera. Quem entra nela, encosta, agarra ou ataca no corpo a corpo sofre o dano, sem precisar de rolagem sua. Não tem Alcance: é sempre em volta do próprio conjurador.",
     "exemplos": [
-      "Efeito 2 + Dano 1 (1d6) + Duração 3 (1 minuto) = 6 pontos"
+      "Efeito 2 + Volume 2 (1 m de raio) + Dano 1 (1d6) + Duração 3 (1 minuto) = 8 pontos"
     ]
   },
   {
@@ -683,7 +693,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Derruba quem estiver dentro da área. A partir do nível 4 o chão se abre, e quem cai vai para dentro da fenda.",
+    "efeito": "O chão sacode e derruba quem estiver dentro da área. Não abre o solo: para isso existe a Fenda.",
     "exemplos": [
       "Efeito 2 + Alcance 1 (toque) + Área 3 (4x4) = 6 pontos"
     ]
@@ -856,7 +866,7 @@
     ],
     "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar o que teme a luz, enquanto durar.",
     "exemplos": [
-      "Efeito 4 + Alcance 3 (15 m) + Área 5 (6x6 m) + Dano 2 + Duração 3 (1 minuto) = 17 pontos"
+      "Efeito 4 + Alcance 3 (15 m) + Área 4 (4x4 m) + Dano 2 (2d6) + Duração 3 (1 minuto) = 16 pontos"
     ]
   },
   {
@@ -981,6 +991,49 @@
     "efeito": "Entra numa sombra e sai por outra dentro do alcance. Precisa haver sombra dos dois lados, e você chega sem saber o que o espera.",
     "exemplos": [
       "Efeito 4 + Alcance 4 (50 m) + Alvos 1 = 9 pontos"
+    ]
+  },
+  {
+    "id": "fenda",
+    "nome": "Fenda",
+    "nivel": 4,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "terra",
+        "sabor": "o solo racha e engole"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Área",
+        "tipo": "substitui",
+        "substitui": "area",
+        "unidade": "m",
+        "escala": [
+          "1x1",
+          "2x2",
+          "4x4",
+          "6x6",
+          "8x8",
+          "10x10"
+        ],
+        "nota": "começa um nível acima da Área; molda em círculo em volta de você ou em linha de pelo menos 1 m de largura"
+      },
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque: exige uma batida no chão"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair; o que estava construído em cima racha junto. Com Duração alta, a fenda continua aberta depois da luta.",
+    "exemplos": [
+      "Efeito 4 + Alcance 1 (toque) + Área 3 (4x4) + Duração 1 (10 minutos) = 9 pontos"
     ]
   }
 ]

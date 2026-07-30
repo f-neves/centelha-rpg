@@ -23,6 +23,13 @@ const EX_CONTA: [string, string, number][] = [
   ['Toque ardente: Dano 1 (1d6) + Alcance 1 (toque)', '1 + 1', 2],
   ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3 + 3 + 2', 8],
 ];
+const idDe = (x: any) => (typeof x === 'string' ? x : x?.id);
+// Efeitos agrupados por Arte e ordenados por nível: um Efeito compartilhado aparece
+// sob cada Arte que o comporta, com o sabor daquela Arte.
+const efeitosPorArte = (arteId: string) => d.efeitos
+  .filter((e: any) => e.artes.some((x: any) => idDe(x.id) === arteId))
+  .map((e: any) => ({ ...e, sabor: e.artes.find((x: any) => idDe(x.id) === arteId)?.sabor }))
+  .sort((a: any, b: any) => a.nivel - b.nivel || a.nome.localeCompare(b.nome, 'pt'));
 const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
 const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase();
@@ -174,34 +181,40 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     <h2>Os Efeitos Especiais</h2>
     <p>A Arte dá o elemento em estado bruto; o <strong>Efeito</strong> dá forma, nome e comportamento. A régua é simples: <em>se precisa de um substantivo próprio para ser descrito, é Efeito.</em> Fogo é Arte, muro é Efeito, e subir a Arte nunca substitui o Efeito, porque muro não é fogo maior, é fogo com forma.</p>
     <p>Cada Efeito custa <strong>2 × o nível dele</strong> em XP, e só se compra até o nível que você tem na Arte. Na hora de conjurar, o custo é <strong>o nível do Efeito mais os parâmetros usados</strong>, com o desconto da Centelha por cima. O <strong>mesmo Efeito serve a várias Artes</strong>, mudando o sabor e o efeito colateral, e quem já o conhece por uma Arte não paga XP de novo pela outra: precisa só ter a segunda Arte no nível dele.</p>
-    <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(22rem,1fr))">
-      {d.efeitos.map((e: any) => (
-        <div class="panel efeito" id={'ef-' + e.id} data-permalink>
-          <div class="ef-head">
-            <span class="cinzel ef-nome">{e.nome}</span>
-            <span class="ef-nivel" title="nível do Efeito">{e.nivel}</span>
-          </div>
-          <div class="ef-artes">{e.artes.map((x: any) => {
-            const aid = typeof x.id === 'string' ? x.id : x.id?.id;
-            return <span class="ef-arte"><a href={'#' + aid}>{d.artes.find((a: any) => a.id === aid)?.nome || aid}</a> <span class="muted">{x.sabor}</span></span>;
-          })}</div>
-          <p class="ef-txt">{e.efeito}</p>
-          <ul class="ef-par">
-            {e.parametros.map((p: any) => (
-              <li>
-                <strong>{p.nome}</strong>
-                {p.tipo === 'fixo' && <span> fixo: {p.valor}</span>}
-                {p.tipo === 'padrao' && <span class="muted"> normal{p.regua ? `, régua ${p.regua}` : ''}</span>}
-                {p.tipo === 'substitui' && <span class="muted"> no lugar de {p.substitui}, em {p.unidade}: {p.escala.join(' · ')}</span>}
-                {p.nota && <span class="muted"> ({p.nota})</span>}
-              </li>
-            ))}
-          </ul>
-          {e.notas && <p class="muted ef-nota">{e.notas}</p>}
-          {e.exemplos.map((x: string) => <p class="formula ef-ex">{x}</p>)}
+    <p class="muted">Um Efeito compartilhado aparece sob cada Arte que o comporta, com o sabor daquela Arte. Dentro de cada Arte, os menores vêm primeiro.</p>
+    {elem.map((arte: any) => (
+      <div class="ef-bloco">
+        <h3 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h3>
+        <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(21rem,1fr))">
+          {efeitosPorArte(arte.id).map((e: any) => (
+            <div class="panel efeito" id={'ef-' + arte.id + '-' + e.id}>
+              <div class="ef-head">
+                <span class="cinzel ef-nome">{e.nome}</span>
+                <span class="ef-nivel" title={`exige ${arte.nome} ${e.nivel} · custa ${e.nivel * 2} de XP`}>{e.nivel}</span>
+              </div>
+              <p class="ef-sabor">{e.sabor}</p>
+              <p class="ef-txt">{e.efeito}</p>
+              <ul class="ef-par">
+                {e.parametros.map((p: any) => (
+                  <li>
+                    <strong>{p.nome}</strong>
+                    {p.tipo === 'fixo' && <span> fixo: {p.valor}</span>}
+                    {p.tipo === 'padrao' && <span class="muted"> à escolha{p.regua ? `, régua ${p.regua}` : ''}</span>}
+                    {p.tipo === 'substitui' && <span class="muted"> no lugar de {p.substitui}, em {p.unidade}: {p.escala.join(' · ')}</span>}
+                    {p.nota && <span class="muted"> ({p.nota})</span>}
+                  </li>
+                ))}
+              </ul>
+              {e.notas && <p class="muted ef-nota">{e.notas}</p>}
+              {e.exemplos.map((x: string) => <p class="formula ef-ex">{x}</p>)}
+              {e.artes.length > 1 && (
+                <p class="muted ef-tb">Também em {e.artes.filter((x: any) => idDe(x.id) !== arte.id).map((x: any) => d.artes.find((a: any) => a.id === idDe(x.id))?.nome).join(', ')}</p>
+              )}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
     <p class="muted">Estes são os Efeitos das Artes elementais. Os das demais Artes vêm depois, caso a caso.</p>
   </section>
 
@@ -257,9 +270,12 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   .ef-nome { color: var(--accent); font-size: 1.1rem; flex: 1; }
   .ef-nivel { display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%;
     background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .75rem; }
-  .ef-artes { display: flex; flex-wrap: wrap; gap: .2rem .6rem; font-size: .82rem; }
-  .ef-arte a { color: var(--accent); text-decoration: none; font-family: 'Cinzel'; font-size: .78rem; }
-  .ef-arte a:hover { text-decoration: underline; }
+  .ef-bloco { margin-top: 1.4rem; }
+  .ef-bloco-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: 1.15rem; margin: 0 0 .5rem;
+    border-bottom: 1px solid var(--rule); padding-bottom: .2rem; }
+  .ef-bloco-tit .muted { font-size: .75rem; font-weight: normal; }
+  .ef-sabor { font-size: .85rem; font-style: italic; color: var(--ink-soft); margin: 0; }
+  .ef-tb { font-size: .78rem; margin: .2rem 0 0; }
   .ef-txt { margin: .2rem 0; font-size: .92rem; line-height: 1.45; }
   .ef-par { list-style: none; margin: 0; padding: 0; font-size: .84rem; line-height: 1.4; }
   .ef-par li { margin-bottom: .1rem; }

@@ -59,7 +59,8 @@ import RoladorDados from './RoladorDados.astro';
 </div>
 
 <h2 class="barh barh-tog" data-sec="artes"><span class="sec-caret">▾</span> Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0)</small></h2>
-<div class="sec-body" id="sec-artes"><div class="cols3" id="artes"></div></div>
+<div class="sec-body" id="sec-artes"><div class="cols3" id="artes"></div>
+      <div class="ef-esp" id="efeitos-esp"></div></div>
 
 <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Absorção)</small></h2>
 <div id="eq-conjuntos"></div>
@@ -160,6 +161,23 @@ import RoladorDados from './RoladorDados.astro';
   #derived.collapsed .derv-extra { display: none; }
   @media print { h2.barh .deriv-toggle { display: none !important; } #derived.collapsed .derv-extra { display: flex !important; } }
 
+  /* Efeitos Especiais das Artes: lista abaixo das Artes, só o que o personagem alcança */
+  .ef-esp { margin-top: .8rem; }
+  .ef-esp-head { display: flex; align-items: baseline; gap: .6rem; font-family: 'Cinzel'; font-size: .85rem;
+    color: var(--accent-strong); border-bottom: 1px solid var(--rule); padding-bottom: .2rem; margin-bottom: .35rem; }
+  .ef-esp-head .muted { margin-left: auto; font-family: 'EB Garamond'; font-size: .78rem; font-style: italic; }
+  .ef-esp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr)); gap: .2rem .8rem; }
+  .ef-item { display: flex; align-items: center; gap: .4rem; padding: .2rem .3rem; border-radius: 4px;
+    font-size: .84rem; cursor: pointer; }
+  .ef-item:hover { background: var(--panel-2); }
+  .ef-item.on { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .ef-i-nv { display: inline-grid; place-items: center; width: 1.15rem; height: 1.15rem; border-radius: 50%;
+    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .65rem; flex: none; }
+  .ef-i-nm { font-weight: 600; }
+  .ef-i-ar { font-size: .76rem; }
+  .ef-i-par { font-size: .72rem; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ef-i-xp { font-family: 'Cinzel'; font-size: .72rem; color: var(--ink-soft); flex: none; }
+  .ef-vazio { font-size: .82rem; padding: .4rem 0; }
   .cam { border: 1px solid var(--panel-border); border-radius: 4px; margin-bottom: .4rem; background: var(--panel); }
   .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: .9rem; color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
   .cam-nm { min-width: 0; }
@@ -193,13 +211,17 @@ import RoladorDados from './RoladorDados.astro';
   .fa-tiers { display: flex; gap: .5rem 1.4rem; flex-wrap: wrap; margin: .25rem 0 .5rem; }
   .fa-tiers span { font-size: .9rem; } .fa-tiers span b { font-family: 'Cinzel'; color: var(--accent-strong); }
   .fa-row { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-start; }
-  .fa-chart { flex: 1 1 22rem; width: 100%; max-width: 40rem; height: auto; }
+  .fa-chartwrap { position: relative; flex: 1 1 22rem; width: 100%; max-width: 40rem; }
+  .fa-chart { display: block; width: 100%; height: auto; }
   .fa-chart .axis { stroke: var(--rule); stroke-width: 1; }
   .fa-chart .grid { stroke: var(--rule); stroke-width: .5; opacity: .45; }
   .fa-chart .curve { fill: none; stroke: var(--accent); stroke-width: 2; }
   .fa-chart .area { fill: var(--accent); opacity: .1; }
   .fa-chart text { fill: var(--ink-soft); font-size: 10px; font-family: 'EB Garamond'; }
   .fa-chart .axlbl { font-family: 'Cinzel'; font-size: 9px; }
+  .fa-chart .fa-vline { stroke: var(--accent-strong); stroke-width: 1; stroke-dasharray: 3 3; opacity: .7; }
+  .fa-chart .fa-dot { fill: var(--accent-strong); stroke: var(--paper, #fff); stroke-width: 1.5; }
+  .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -140%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: #fff; font-family: 'Cinzel'; font-size: .72rem; padding: .12rem .4rem; border-radius: 3px; box-shadow: 0 1px 4px rgba(0,0,0,.3); }
   .fa-tbl { border-collapse: collapse; font-size: .84rem; }
   .fa-tbl th, .fa-tbl td { border: 1px solid var(--rule); padding: .15rem .55rem; text-align: center; }
   .fa-tbl th { font-family: 'Cinzel'; font-size: .72rem; color: var(--ink-soft); font-weight: 700; }

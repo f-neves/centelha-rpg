@@ -9,6 +9,7 @@ import VIRT_D from '../data/virtudes.json';
 import CAM_D from '../data/caminhos.json';
 import TEC_D from '../data/tecnicas.json';
 import ARTE_D from '../data/artes.json';
+import EFEITO_D from '../data/efeitos.json';
 import ARMA_D from '../data/armas.json';
 import ARMADURA_D from '../data/armaduras.json';
 import ESCUDO_D from '../data/escudos.json';
@@ -113,7 +114,7 @@ export function montarFicha(opts: FichaOpts) {
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [] }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [] }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
@@ -141,7 +142,7 @@ export function montarFicha(opts: FichaOpts) {
     return list.map((e) => ({ s: e.s, v: Math.max(0, Math.min(cap, e.v)) })).filter((e) => e.v > 0).slice(0, cap);
   }
   function normalize() {
-    S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {}; S.secCol ??= {};
+    S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {}; S.efeito ??= {}; S.secCol ??= {};
     S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
     // Migração: a Habilidade "Escudos" virou "Bloqueio" (id escudos -> bloqueio); carrega pontos e especialidade antigos.
     if (S.skills.escudos != null && S.skills.bloqueio == null) S.skills.bloqueio = S.skills.escudos;
@@ -324,6 +325,35 @@ export function montarFicha(opts: FichaOpts) {
       return `<div class="cam"><div class="cam-head"><span class="chev" data-artetog="${a.id}">${open ? '▾' : '▸'} ${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}<span class="cam-meta">${lvl ? `nível ${lvl} · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${fx}</div></div>`;
     };
     el('artes').innerHTML = col3(ARTE_D as any[], card);
+    renderEfeitos();
+  }
+  // Efeitos Especiais: só aparecem os que o personagem alcança, ou seja, aqueles
+  // cujo nível é menor ou igual ao nível dele em pelo menos uma das Artes que os comportam.
+  const idRef = (x: any) => (typeof x === 'string' ? x : x?.id);
+  function renderEfeitos() {
+    const box = document.getElementById('efeitos-esp');
+    if (!box) return;
+    const disp = (EFEITO_D as any[])
+      .map((e) => ({ e, artes: e.artes.map((x: any) => idRef(x.id)).filter((id: string) => (S.arte[id] || 0) >= e.nivel) }))
+      .filter((x) => x.artes.length)
+      .sort((a, b) => a.e.nivel - b.e.nivel || a.e.nome.localeCompare(b.e.nome, 'pt'));
+    if (!disp.length) {
+      box.innerHTML = '<div class="ef-vazio muted">Os Efeitos Especiais aparecem aqui quando você tiver uma Arte no nível que cada um exige.</div>';
+      return;
+    }
+    const nomeArte = (id: string) => (ARTE_D as any[]).find((a) => a.id === id)?.nome || id;
+    const linhas = disp.map(({ e, artes }) => {
+      const on = !!S.efeito[e.id];
+      const par = e.parametros.map((p: any) => (p.tipo === 'fixo' ? `${p.nome}: ${p.valor}` : p.nome)).join(' · ');
+      return `<label class="ef-item${on ? ' on' : ''}"><input type="checkbox" data-efeito="${e.id}"${on ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''} />
+        <span class="ef-i-nv">${e.nivel}</span>
+        <span class="ef-i-nm">${e.nome}</span>
+        <span class="ef-i-ar muted">${artes.map(nomeArte).join(', ')}</span>
+        <span class="ef-i-par muted">${par}</span>
+        <span class="ef-i-xp">${e.nivel * 2} XP</span></label>`;
+    }).join('');
+    const gastos = (EFEITO_D as any[]).filter((e) => S.efeito[e.id]).reduce((s, e) => s + e.nivel * 2, 0);
+    box.innerHTML = `<div class="ef-esp-head"><b>Efeitos Especiais</b><span class="muted">${gastos ? `${gastos} XP` : 'nenhum comprado'}</span></div><div class="ef-esp-list">${linhas}</div>`;
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   // Atributo do ACERTO por perícia: tiro = Percepção; arremesso = Destreza; corpo a corpo (armas/punhos) = o maior entre Destreza e Força.
@@ -521,27 +551,50 @@ export function montarFicha(opts: FichaOpts) {
     const dmax = F.arremessoDistMax1kg[faa] as number;
     const lnM = Math.log(maxKg);
     const dist = (w: number) => w <= 1 ? dmax : w >= maxKg ? 0 : dmax * (1 - Math.log(w) / lnM);
+    const peso = (d: number) => d <= 0 ? maxKg : d >= dmax ? 1 : Math.pow(maxKg, 1 - d / dmax);
     const r1 = (n: number) => n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10);
-    // gráfico Peso × Distância (eixo X linear em kg, de 1 ao máximo que ergue)
-    const W = 580, H = 210, ml = 38, mr = 14, mt = 12, mb = 26;
+    // gráfico Peso × Distância (eixo X = distância em m; eixo Y = peso em kg)
+    const W = 580, H = 210, ml = 44, mr = 14, mt = 12, mb = 26;
     const pw = W - ml - mr, ph = H - mt - mb, xB = ml, yB = mt + ph, xR = ml + pw;
-    const xpos = (w: number) => xB + (maxKg > 1 ? (w - 1) / (maxKg - 1) : 0) * pw;
-    const ypos = (d: number) => yB - (dmax > 0 ? d / dmax : 0) * ph;
+    const xpos = (d: number) => xB + (dmax > 0 ? d / dmax : 0) * pw;
+    const ypos = (w: number) => yB - (maxKg > 0 ? w / maxKg : 0) * ph;
     const N = 80; const seq: string[] = [];
-    for (let i = 0; i <= N; i++) { const w = 1 + (maxKg - 1) * i / N; seq.push(`${xpos(w).toFixed(1)},${ypos(dist(w)).toFixed(1)}`); }
+    for (let i = 0; i <= N; i++) { const d = dmax * i / N; seq.push(`${xpos(d).toFixed(1)},${ypos(peso(d)).toFixed(1)}`); }
     const pts = seq.join(' ');
     const area = `M${xB},${yB} L${seq.join(' L')} L${xR},${yB} Z`;
     let xticks = '';
-    for (let i = 0; i <= 4; i++) { const w = 1 + (maxKg - 1) * i / 4; const x = xpos(w); xticks += `<line class="grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${yB}"/><text x="${x.toFixed(1)}" y="${yB + 15}" text-anchor="middle">${Math.round(w)}</text>`; }
+    for (let i = 0; i <= 4; i++) { const d = dmax * i / 4; const x = xpos(d); xticks += `<line class="grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${yB}"/><text x="${x.toFixed(1)}" y="${yB + 15}" text-anchor="middle">${r1(d)}</text>`; }
     let yticks = '';
-    [0, dmax / 2, dmax].forEach((d) => { const y = ypos(d); yticks += `<line class="grid" x1="${xB}" y1="${y.toFixed(1)}" x2="${xR}" y2="${y.toFixed(1)}"/><text x="${xB - 5}" y="${(y + 3).toFixed(1)}" text-anchor="end">${r1(d)}</text>`; });
-    const svg = `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Peso por distância de arremesso"><text x="${xB - 33}" y="${mt + 8}" class="axlbl">m</text><text x="${xR}" y="${yB + 15}" text-anchor="end" class="axlbl">kg →</text>${yticks}${xticks}<path class="area" d="${area}"/><polyline class="curve" points="${pts}"/><line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/><line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/></svg>`;
+    [0, maxKg / 2, maxKg].forEach((w) => { const y = ypos(w); yticks += `<line class="grid" x1="${xB}" y1="${y.toFixed(1)}" x2="${xR}" y2="${y.toFixed(1)}"/><text x="${xB - 5}" y="${(y + 3).toFixed(1)}" text-anchor="end">${Math.round(w)}</text>`; });
+    const svg = `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Peso por distância de arremesso"><text x="${xB - 6}" y="${mt + 8}" text-anchor="end" class="axlbl">kg</text><text x="${xR}" y="${yB + 15}" text-anchor="end" class="axlbl">m →</text>${yticks}${xticks}<path class="area" d="${area}"/><polyline class="curve" points="${pts}"/><line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/><line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/><rect class="fa-capture" x="${xB}" y="${mt}" width="${pw}" height="${ph}" fill="transparent"/><g class="fa-hover" style="display:none; pointer-events:none"><line class="fa-vline" y1="${mt}" y2="${yB}"/><circle class="fa-dot" r="4"/></g></svg>`;
     const tw = [1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
     tw.push(maxKg);
     const rows = tw.map((w) => `<tr><td>${w}${w === maxKg ? ' <span class="muted">(máx)</span>' : ''}</td><td>${r1(dist(w))}</td></tr>`).join('');
     const table = `<table class="fa-tbl"><thead><tr><th>Peso (kg)</th><th>Arremesso (m)</th></tr></thead><tbody>${rows}</tbody></table>`;
     const head = `<div class="fa-head"><b>Levantamento</b> · FAH ${fah} = Força ${forca}×2 + Atletismo ${atl} + Halterofilismo ${halt}<div class="fa-tiers"><span>Leve <b>${leve} kg</b></span><span>Médio <b>${medio} kg</b></span><span>Máximo <b>${maxKg} kg</b></span></div><b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg voa ${dmax} m; o peso máximo (${maxKg} kg), 0 m. Sem impulso nem giro.</span></div>`;
-    box.innerHTML = `<div class="fa-wrap">${head}<div class="fa-row">${svg}${table}</div></div>`;
+    box.innerHTML = `<div class="fa-wrap">${head}<div class="fa-row"><div class="fa-chartwrap">${svg}<div class="fa-tip" style="display:none"></div></div>${table}</div></div>`;
+    // hover: mostra Peso × Distância sob o cursor
+    const svgEl = box.querySelector('svg.fa-chart') as any;
+    const tip = box.querySelector('.fa-tip') as any;
+    const hov = box.querySelector('.fa-hover') as any;
+    const vline = box.querySelector('.fa-vline') as any;
+    const dot = box.querySelector('.fa-dot') as any;
+    if (svgEl && tip && hov && vline && dot) {
+      svgEl.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = svgEl.getBoundingClientRect();
+        let d = ((e.clientX - rect.left) / rect.width * W - xB) / pw * dmax;
+        d = Math.max(0, Math.min(dmax, d));
+        const w = peso(d), cx = xpos(d), cy = ypos(w);
+        hov.style.display = '';
+        vline.setAttribute('x1', String(cx)); vline.setAttribute('x2', String(cx));
+        dot.setAttribute('cx', String(cx)); dot.setAttribute('cy', String(cy));
+        tip.style.display = '';
+        tip.textContent = `${r1(w)} kg · ${r1(d)} m`;
+        tip.style.left = (cx / W * rect.width) + 'px';
+        tip.style.top = (cy / H * rect.height) + 'px';
+      });
+      svgEl.addEventListener('mouseleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
+    }
   }
   function populateEquip() {
     renderConjuntos();
@@ -570,6 +623,7 @@ export function montarFicha(opts: FichaOpts) {
     SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + specCostSum(S.spec2[k], espSecBase); });
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += TECNIV[id] * 10; });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
+    (EFEITO_D as any[]).forEach((e) => { if (S.efeito[e.id]) xar += e.nivel * 2; });
     const xr = RACA[S.raca]?.custo || 0;
     const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar + xr;
     el('xpSpent').textContent = String(total);
@@ -662,6 +716,8 @@ export function montarFicha(opts: FichaOpts) {
     if (ct) { OPEN.cam[ct.dataset.camtog!] = !OPEN.cam[ct.dataset.camtog!]; renderCaminhos(); return; }
     const at = t.closest<HTMLElement>('[data-artetog]');
     if (at) { OPEN.arte[at.dataset.artetog!] = !OPEN.arte[at.dataset.artetog!]; renderArtes(); return; }
+    const ef = t.closest<HTMLInputElement>('[data-efeito]');
+    if (ef) { if (opts.readOnly) return; const id = ef.dataset.efeito!; S.efeito[id] = !S.efeito[id]; renderEfeitos(); recompute(); return; }
   });
 
   document.addEventListener('keydown', (e) => {
