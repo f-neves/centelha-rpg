@@ -116,7 +116,6 @@ const efeitos = defineCollection({
     })).min(1),
     efeito: z.string(),
     notas: z.string().optional(),
-    exemplos: z.array(z.string()),
   }),
 });
 

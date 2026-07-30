@@ -24,6 +24,8 @@ const EX_CONTA: [string, string, number][] = [
   ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3 + 3 + 2', 8],
 ];
 const idDe = (x: any) => (typeof x === 'string' ? x : x?.id);
+// nomes de exibição dos parâmetros que um Efeito pode substituir
+const NOME_PAR: Record<string, string> = { alcance: 'Alcance', area: 'Área', alvos: 'Alvos', dano: 'Dano', duracao: 'Duração' };
 // Efeitos agrupados por Arte e ordenados por nível: um Efeito compartilhado aparece
 // sob cada Arte que o comporta, com o sabor daquela Arte.
 const efeitosPorArte = (arteId: string) => d.efeitos
@@ -200,13 +202,17 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
                     <strong>{p.nome}</strong>
                     {p.tipo === 'fixo' && <span> fixo: {p.valor}</span>}
                     {p.tipo === 'padrao' && <span class="muted"> à escolha{p.regua ? `, régua ${p.regua}` : ''}</span>}
-                    {p.tipo === 'substitui' && <span class="muted"> no lugar de {p.substitui}, em {p.unidade}: {p.escala.join(' · ')}</span>}
+                    {p.tipo === 'substitui' && (
+                      <span class="muted">
+                        {p.nome.toLowerCase() !== NOME_PAR[p.substitui]?.toLowerCase() ? ` no lugar de ${NOME_PAR[p.substitui] || p.substitui},` : ''}
+                        {' '}em {p.unidade}: {p.escala.join(' · ')}
+                      </span>
+                    )}
                     {p.nota && <span class="muted"> ({p.nota})</span>}
                   </li>
                 ))}
               </ul>
               {e.notas && <p class="muted ef-nota">{e.notas}</p>}
-              {e.exemplos.map((x: string) => <p class="formula ef-ex">{x}</p>)}
               {e.artes.length > 1 && (
                 <p class="muted ef-tb">Também em {e.artes.filter((x: any) => idDe(x.id) !== arte.id).map((x: any) => d.artes.find((a: any) => a.id === idDe(x.id))?.nome).join(', ')}</p>
               )}
@@ -280,7 +286,6 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   .ef-par { list-style: none; margin: 0; padding: 0; font-size: .84rem; line-height: 1.4; }
   .ef-par li { margin-bottom: .1rem; }
   .ef-nota { font-size: .82rem; margin: .1rem 0; }
-  .ef-ex { font-size: .82rem; margin: .2rem 0 0; }
   .fraq { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
   .fraq li { margin-bottom: .25rem; line-height: 1.5; }
   .arte-head { display: flex; align-items: center; gap: .5rem; }

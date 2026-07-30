@@ -28,7 +28,7 @@ const S = {
       unidade: z.string().optional(), escala: z.array(z.string()).optional(),
       valor: z.string().optional(), nota: z.string().optional(),
     })).min(1),
-    efeito: z.string(), notas: z.string().optional(), exemplos: z.array(z.string()),
+    efeito: z.string(), notas: z.string().optional(),
   }),
   glossario: z.object({ id: z.string(), termo: z.string(), aliases: z.array(z.string()), definicao: z.string() }),
   racas: z.object({ id: z.string(), nome: z.string(), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()) }),

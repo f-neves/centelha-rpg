@@ -44,11 +44,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Enche o volume de névoa: quem está dentro não enxerga, e quem olha de fora não vê o que acontece lá.",
-    "exemplos": [
-      "Efeito 1 + Alcance 2 (5 m) + Volume 3 (4x4x4) + Duração 2 (5 turnos) = 8 pontos",
-      "Efeito 1 + Alcance 1 (toque) + Volume 2 (2x2x2) + Duração 1 (1 turno) = 5 pontos"
-    ]
+    "efeito": "Enche o volume de névoa: quem está dentro não enxerga, e quem olha de fora não vê o que acontece lá."
   },
   {
     "id": "arma-elemental",
@@ -81,11 +77,21 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "toque: a arma na sua mão ou na de um aliado"
+        "valor": "toque no objeto"
       },
       {
         "nome": "Dano",
-        "tipo": "padrao"
+        "tipo": "substitui",
+        "substitui": "dano",
+        "unidade": "pontos somados ao dano da arma",
+        "escala": [
+          "+2",
+          "+4",
+          "+6",
+          "+8",
+          "+10",
+          "+12"
+        ]
       },
       {
         "nome": "Duração",
@@ -93,10 +99,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Reveste uma arma empunhada com o elemento. O dano soma ao golpe normal e segue as regras do elemento para absorção.",
-    "exemplos": [
-      "Efeito 2 + Alcance 1 + Dano 2 (2d6) + Duração 4 (5 minutos) = 9 pontos"
-    ]
+    "efeito": "Reveste uma arma empunhada com o elemento. Soma +2 por nível de dano ao dano da arma. Esse dano é do elemento e só pode ser absorvido com a resistência adequada."
   },
   {
     "id": "muro",
@@ -154,10 +157,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Ergue uma barreira. Terra e gelo bloqueiam de verdade; fogo, luz e sombra atrapalham e ferem quem insiste em passar.",
-    "exemplos": [
-      "Efeito 3 + Alcance 2 (5 m) + Comprimento 3 (8 m) + Duração 3 (1 minuto) = 11 pontos"
-    ]
+    "efeito": "Ergue uma barreira. Terra e gelo bloqueiam de verdade; fogo, luz e sombra atrapalham e ferem quem insiste em passar."
   },
   {
     "id": "aura",
@@ -188,19 +188,24 @@
     ],
     "parametros": [
       {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "centralizado no personagem"
+      },
+      {
         "nome": "Volume",
         "tipo": "substitui",
         "substitui": "area",
         "unidade": "m de raio",
         "escala": [
-          "0,5 m",
           "1 m",
           "2 m",
+          "3 m",
           "4 m",
-          "6 m",
-          "8 m"
+          "5 m",
+          "6 m"
         ],
-        "nota": "esfera com você no centro; o raio é o lado do quadrado da Área daquele nível"
+        "nota": "esfera com você no centro, 1 metro de raio por nível"
       },
       {
         "nome": "Dano",
@@ -212,10 +217,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "O elemento envolve você numa esfera. Quem entra nela, encosta, agarra ou ataca no corpo a corpo sofre o dano, sem precisar de rolagem sua. Não tem Alcance: é sempre em volta do próprio conjurador.",
-    "exemplos": [
-      "Efeito 2 + Volume 2 (1 m de raio) + Dano 1 (1d6) + Duração 3 (1 minuto) = 8 pontos"
-    ]
+    "efeito": "O elemento envolve você numa esfera. Quem entra nela, encosta, agarra ou ataca no corpo a corpo sofre o dano ou o efeito do elemento (se houver)."
   },
   {
     "id": "prisao",
@@ -255,10 +257,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Prende o alvo no lugar. Escapar exige Força ou Atletismo contra o nível do efeito, e cada tentativa gasta a ação.",
-    "exemplos": [
-      "Efeito 3 + Alcance 3 (15 m) + Alvos 1 + Duração 3 (1 minuto) = 9 pontos"
-    ]
+    "efeito": "Prende o alvo no lugar. Escapar exige Força ou Atletismo contra o nível do efeito, e cada tentativa gasta a ação."
   },
   {
     "id": "empurrao-elemental",
@@ -294,10 +293,7 @@
       }
     ],
     "efeito": "Arremessa quem está na área. A resistência sai da Força mais o maior entre Equilíbrio e Atletismo; bater em obstáculo duro machuca.",
-    "notas": "A fórmula do empurrão ainda está em revisão.",
-    "exemplos": [
-      "Efeito 1 + Alcance 2 (5 m) + Área 3 (2x2 m) = 6 pontos"
-    ]
+    "notas": "A fórmula do empurrão ainda está em revisão."
   },
   {
     "id": "chao-traicoeiro",
@@ -333,10 +329,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "O piso deixa de cooperar: correr exige teste, e quem falha cai. Na areia movediça, quem cai afunda a cada turno.",
-    "exemplos": [
-      "Efeito 1 + Alcance 2 (5 m) + Área 4 (4x4 m) + Duração 1 (10 minutos) = 8 pontos"
-    ]
+    "efeito": "O piso deixa de cooperar: correr exige teste, e quem falha cai. Na areia movediça, quem cai afunda a cada turno."
   },
   {
     "id": "arma-conjurada",
@@ -369,10 +362,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Por ser matéria, a armadura absorve normalmente, no modo do formato, e ela abre efeitos secundários como sangramento.",
-    "exemplos": [
-      "Efeito 2 + Dano 3 (3d6) + Duração 4 (5 minutos) = 10 pontos"
-    ]
+    "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Por ser matéria, a armadura absorve normalmente, no modo do formato, e ela abre efeitos secundários como sangramento."
   },
   {
     "id": "metal-incandescente",
@@ -404,10 +394,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Aquece o metal à distância. Quem veste armadura de metal se queima e sofre penalidade enquanto durar; quem empunha arma de metal larga ou aguenta o dano.",
-    "exemplos": [
-      "Efeito 2 + Alcance 3 (15 m) + Alvos 2 + Duração 2 (5 turnos) = 9 pontos"
-    ]
+    "efeito": "Aquece o metal à distância. Quem veste armadura de metal se queima e sofre penalidade enquanto durar; quem empunha arma de metal larga ou aguenta o dano."
   },
   {
     "id": "brasa-retardada",
@@ -439,10 +426,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa o efeito preso num ponto, disparando quando alguém passa, toca, ou ao fim de um tempo combinado. É a armadilha do feiticeiro.",
-    "exemplos": [
-      "Efeito 3 + Alcance 2 (5 m) + Área 2 (1x1 m) + Dano 3 (3d6) + Duração 2 (1 hora) = 12 pontos"
-    ]
+    "efeito": "Deixa o efeito preso num ponto, disparando quando alguém passa, toca, ou ao fim de um tempo combinado. É a armadilha do feiticeiro."
   },
   {
     "id": "corrente",
@@ -469,10 +453,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "O raio salta de um alvo ao seguinte, desde que estejam a poucos passos um do outro. Cada salto vale um alvo no parâmetro.",
-    "exemplos": [
-      "Efeito 3 + Alcance 3 (15 m) + Alvos 3 + Dano 2 (2d6) = 11 pontos"
-    ]
+    "efeito": "O raio salta de um alvo ao seguinte, desde que estejam a poucos passos um do outro. Cada salto vale um alvo no parâmetro."
   },
   {
     "id": "passo-relampago",
@@ -491,10 +472,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Você percorre a distância como raio e reaparece no destino, atravessando o que estiver no caminho. Precisa de linha de visão.",
-    "exemplos": [
-      "Efeito 4 + Alcance 4 (50 m) = 8 pontos"
-    ]
+    "efeito": "Você percorre a distância como raio e reaparece no destino, atravessando o que estiver no caminho. Precisa de linha de visão."
   },
   {
     "id": "onda",
@@ -521,10 +499,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Arrasta para longe todos que estiverem na área. Exige um corpo de água por perto: rio, lago, chuva forte, cisterna.",
-    "exemplos": [
-      "Efeito 4 + Alcance 3 (15 m) + Área 4 (4x4 m) = 11 pontos"
-    ]
+    "efeito": "Arrasta para longe todos que estiverem na área. Exige um corpo de água por perto: rio, lago, chuva forte, cisterna."
   },
   {
     "id": "bolha-de-ar",
@@ -556,10 +531,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Respirar embaixo de água, na fumaça ou no gás. Não protege do dano, só do sufocamento.",
-    "exemplos": [
-      "Efeito 2 + Alcance 1 (toque) + Alvos 3 + Duração 2 (1 hora) = 8 pontos"
-    ]
+    "efeito": "Respirar embaixo de água, na fumaça ou no gás. Não protege do dano, só do sufocamento."
   },
   {
     "id": "escudo-de-vento",
@@ -588,10 +560,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Flechas, virotes e dardos erram enquanto o vento durar. Não segura o que é pesado nem o corpo a corpo.",
-    "exemplos": [
-      "Efeito 2 + Alvos 1 + Duração 4 (5 minutos) = 7 pontos"
-    ]
+    "efeito": "Flechas, virotes e dardos erram enquanto o vento durar. Não segura o que é pesado nem o corpo a corpo."
   },
   {
     "id": "salto-do-vento",
@@ -619,10 +588,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Sobe alto, plana um trecho e cai sem se machucar. Com Duração alta vira voo curto e desajeitado.",
-    "exemplos": [
-      "Efeito 2 + Alcance 3 (15 m de altura) + Duração 2 (5 turnos) = 7 pontos"
-    ]
+    "efeito": "Sobe alto, plana um trecho e cai sem se machucar. Com Duração alta vira voo curto e desajeitado."
   },
   {
     "id": "sussurro-distante",
@@ -650,10 +616,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Sua voz chega ao ouvido de quem você escolher, sem que ninguém no caminho escute. Não traz resposta de volta.",
-    "exemplos": [
-      "Efeito 1 + Alcance 4 (100 m) + Alvos 1 + Duração 1 = 7 pontos"
-    ]
+    "efeito": "Sua voz chega ao ouvido de quem você escolher, sem que ninguém no caminho escute. Não traz resposta de volta."
   },
   {
     "id": "terremoto",
@@ -693,10 +656,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "O chão sacode e derruba quem estiver dentro da área. Não abre o solo: para isso existe a Fenda.",
-    "exemplos": [
-      "Efeito 2 + Alcance 1 (toque) + Área 3 (4x4) = 6 pontos"
-    ]
+    "efeito": "O chão sacode e derruba quem estiver dentro da área. Não abre o solo: para isso existe a Fenda."
   },
   {
     "id": "pele-de-pedra",
@@ -729,10 +689,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Soma Absorção contra dano físico enquanto durar. Pesa: quem está coberto perde um pouco de velocidade.",
-    "exemplos": [
-      "Efeito 3 + Alvos 1 + Duração 4 (5 minutos) = 8 pontos"
-    ]
+    "efeito": "Soma Absorção contra dano físico enquanto durar. Pesa: quem está coberto perde um pouco de velocidade."
   },
   {
     "id": "lascas",
@@ -763,10 +720,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Espalha estilhaços num leque à sua frente. É matéria de verdade, então a armadura absorve normalmente, como perfuração.",
-    "exemplos": [
-      "Efeito 1 + Alcance 2 (5 m) + Área 3 (2x2 m) + Dano 2 (2d6) = 8 pontos"
-    ]
+    "efeito": "Espalha estilhaços num leque à sua frente. É matéria de verdade, então a armadura absorve normalmente, como perfuração."
   },
   {
     "id": "clarao",
@@ -798,10 +752,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Cega quem estiver olhando na direção. Quem fecha os olhos a tempo resiste com Vigor mais Convicção.",
-    "exemplos": [
-      "Efeito 2 + Alcance 3 (15 m) + Área 3 (2x2 m) + Duração 1 (1 turno) = 9 pontos"
-    ]
+    "efeito": "Cega quem estiver olhando na direção. Quem fecha os olhos a tempo resiste com Vigor mais Convicção."
   },
   {
     "id": "facho-revelador",
@@ -829,10 +780,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Desfaz camuflagem, disfarce e invisibilidade dentro da área, inclusive os que vêm de outra Arte. Contra Ofuscação e Sombra é disputa direta de nível.",
-    "exemplos": [
-      "Efeito 2 + Alcance 3 (15 m) + Área 4 (4x4 m) + Duração 2 (5 turnos) = 11 pontos"
-    ]
+    "efeito": "Desfaz camuflagem, disfarce e invisibilidade dentro da área, inclusive os que vêm de outra Arte. Contra Ofuscação e Sombra é disputa direta de nível."
   },
   {
     "id": "aurora",
@@ -864,10 +812,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar o que teme a luz, enquanto durar.",
-    "exemplos": [
-      "Efeito 4 + Alcance 3 (15 m) + Área 4 (4x4 m) + Dano 2 (2d6) + Duração 3 (1 minuto) = 16 pontos"
-    ]
+    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar o que teme a luz, enquanto durar."
   },
   {
     "id": "bracos-do-abismo",
@@ -899,10 +844,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A sombra ganha corpo e agarra. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir.",
-    "exemplos": [
-      "Efeito 2 + Alcance 3 (15 m) + Alvos 2 + Dano 1 + Duração 2 (5 turnos) = 10 pontos"
-    ]
+    "efeito": "A sombra ganha corpo e agarra. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir."
   },
   {
     "id": "manto-de-treva",
@@ -931,10 +873,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "A treva acompanha quem a veste e esconde. Não funciona sob luz forte, e um Facho Revelador a desfaz.",
-    "exemplos": [
-      "Efeito 1 + Alvos 2 + Duração 2 (1 hora) = 5 pontos"
-    ]
+    "efeito": "A treva acompanha quem a veste e esconde. Não funciona sob luz forte, e um Facho Revelador a desfaz."
   },
   {
     "id": "mordaca",
@@ -962,10 +901,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Nenhum som sai da área: nem grito, nem porta arrombada, nem conjuração falada. Quem está dentro ouve normalmente.",
-    "exemplos": [
-      "Efeito 2 + Alcance 2 (5 m) + Área 4 (4x4 m) + Duração 3 (1 minuto) = 11 pontos"
-    ]
+    "efeito": "Nenhum som sai da área: nem grito, nem porta arrombada, nem conjuração falada. Quem está dentro ouve normalmente."
   },
   {
     "id": "passo-entre-sombras",
@@ -988,10 +924,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Entra numa sombra e sai por outra dentro do alcance. Precisa haver sombra dos dois lados, e você chega sem saber o que o espera.",
-    "exemplos": [
-      "Efeito 4 + Alcance 4 (50 m) + Alvos 1 = 9 pontos"
-    ]
+    "efeito": "Entra numa sombra e sai por outra dentro do alcance. Precisa haver sombra dos dois lados, e você chega sem saber o que o espera."
   },
   {
     "id": "fenda",
@@ -1031,9 +964,6 @@
         "regua": "longa"
       }
     ],
-    "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair; o que estava construído em cima racha junto. Com Duração alta, a fenda continua aberta depois da luta.",
-    "exemplos": [
-      "Efeito 4 + Alcance 1 (toque) + Área 3 (4x4) + Duração 1 (10 minutos) = 9 pontos"
-    ]
+    "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair; o que estava construído em cima racha junto. Com Duração alta, a fenda continua aberta depois da luta."
   }
 ]
