@@ -1,0 +1,986 @@
+[
+  {
+    "id": "neblina",
+    "nome": "Neblina",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "agua",
+        "sabor": "nuvem densa que encharca e abafa o som"
+      },
+      {
+        "id": "gelo",
+        "sabor": "nevoeiro gélido que morde de frio"
+      },
+      {
+        "id": "terra",
+        "sabor": "poeira em suspensão que engasga"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Volume",
+        "tipo": "substitui",
+        "substitui": "area",
+        "unidade": "m³",
+        "escala": [
+          "1x1x1",
+          "2x2x2",
+          "4x4x4",
+          "6x6x6",
+          "8x8x8",
+          "10x10x10"
+        ],
+        "nota": "começa um nível acima da Área; molda em esfera, semiesfera, paralelepípedo ou cilindro"
+      },
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Enche o volume de névoa: quem está dentro não enxerga, e quem olha de fora não vê o que acontece lá.",
+    "exemplos": [
+      "Efeito 1 + Alcance 2 (5 m) + Volume 3 (4x4x4) + Duração 2 (5 turnos) = 8 pontos",
+      "Efeito 1 + Alcance 1 (toque) + Volume 2 (2x2x2) + Duração 1 (1 turno) = 5 pontos"
+    ]
+  },
+  {
+    "id": "arma-elemental",
+    "nome": "Arma Elemental",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fogo",
+        "sabor": "a lâmina pega fogo"
+      },
+      {
+        "id": "gelo",
+        "sabor": "a lâmina ganha gume de gelo e enregela"
+      },
+      {
+        "id": "raio",
+        "sabor": "a arma estala e atordoa"
+      },
+      {
+        "id": "terra",
+        "sabor": "a arma ganha peso de pedra"
+      },
+      {
+        "id": "luz",
+        "sabor": "a lâmina brilha e fere o que teme a luz"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque: a arma na sua mão ou na de um aliado"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Reveste uma arma empunhada com o elemento. O dano soma ao golpe normal e segue as regras do elemento para absorção.",
+    "exemplos": [
+      "Efeito 2 + Alcance 1 + Dano 2 (2d6) + Duração 4 (5 minutos) = 9 pontos"
+    ]
+  },
+  {
+    "id": "muro",
+    "nome": "Muro",
+    "nivel": 3,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fogo",
+        "sabor": "parede de chamas que queima quem atravessa"
+      },
+      {
+        "id": "gelo",
+        "sabor": "parede de gelo que também tapa a visão"
+      },
+      {
+        "id": "terra",
+        "sabor": "muralha de pedra, sólida e opaca"
+      },
+      {
+        "id": "luz",
+        "sabor": "parede de luz que cega quem encara"
+      },
+      {
+        "id": "sombra",
+        "sabor": "cortina de treva que apaga o que está atrás"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Comprimento",
+        "tipo": "substitui",
+        "substitui": "area",
+        "unidade": "m de parede, 2 m de altura",
+        "escala": [
+          "2 m",
+          "4 m",
+          "8 m",
+          "15 m",
+          "25 m",
+          "40 m"
+        ]
+      },
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Ergue uma barreira. Terra e gelo bloqueiam de verdade; fogo, luz e sombra atrapalham e ferem quem insiste em passar.",
+    "exemplos": [
+      "Efeito 3 + Alcance 2 (5 m) + Comprimento 3 (8 m) + Duração 3 (1 minuto) = 11 pontos"
+    ]
+  },
+  {
+    "id": "aura",
+    "nome": "Aura",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fogo",
+        "sabor": "calor que chamusca quem se aproxima"
+      },
+      {
+        "id": "gelo",
+        "sabor": "frio que enrijece quem encosta"
+      },
+      {
+        "id": "raio",
+        "sabor": "estática que morde quem toca"
+      },
+      {
+        "id": "luz",
+        "sabor": "brilho que fere o que teme a luz"
+      },
+      {
+        "id": "sombra",
+        "sabor": "treva que rouba o calor de quem chega perto"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "o próprio corpo e um passo em volta"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "O elemento envolve você. Quem encosta, agarra ou ataca no corpo a corpo sofre o dano, sem precisar de rolagem sua.",
+    "exemplos": [
+      "Efeito 2 + Dano 1 (1d6) + Duração 3 (1 minuto) = 6 pontos"
+    ]
+  },
+  {
+    "id": "prisao",
+    "nome": "Prisão",
+    "nivel": 3,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "gelo",
+        "sabor": "o bloco fecha em volta"
+      },
+      {
+        "id": "terra",
+        "sabor": "a pedra sobe e prende os pés"
+      },
+      {
+        "id": "agua",
+        "sabor": "a água endurece em algema"
+      },
+      {
+        "id": "sombra",
+        "sabor": "a treva ganha peso e segura"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Prende o alvo no lugar. Escapar exige Força ou Atletismo contra o nível do efeito, e cada tentativa gasta a ação.",
+    "exemplos": [
+      "Efeito 3 + Alcance 3 (15 m) + Alvos 1 + Duração 3 (1 minuto) = 9 pontos"
+    ]
+  },
+  {
+    "id": "empurrao-elemental",
+    "nome": "Empurrão",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vento",
+        "sabor": "a rajada joga para longe"
+      },
+      {
+        "id": "agua",
+        "sabor": "a corrente arrasta"
+      },
+      {
+        "id": "terra",
+        "sabor": "o chão se levanta e cospe"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Arremessa quem está na área. A resistência sai da Força mais o maior entre Equilíbrio e Atletismo; bater em obstáculo duro machuca.",
+    "notas": "A fórmula do empurrão ainda está em revisão.",
+    "exemplos": [
+      "Efeito 1 + Alcance 2 (5 m) + Área 3 (2x2 m) = 6 pontos"
+    ]
+  },
+  {
+    "id": "chao-traicoeiro",
+    "nome": "Chão Traiçoeiro",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "gelo",
+        "sabor": "placa de gelo lisa"
+      },
+      {
+        "id": "agua",
+        "sabor": "lâmina de água escorregadia"
+      },
+      {
+        "id": "terra",
+        "sabor": "areia movediça que engole devagar"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "O piso deixa de cooperar: correr exige teste, e quem falha cai. Na areia movediça, quem cai afunda a cada turno.",
+    "exemplos": [
+      "Efeito 1 + Alcance 2 (5 m) + Área 4 (4x4 m) + Duração 1 (10 minutos) = 8 pontos"
+    ]
+  },
+  {
+    "id": "arma-conjurada",
+    "nome": "Arma Conjurada",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "gelo",
+        "sabor": "lança, machado ou lâmina de gelo maciço"
+      },
+      {
+        "id": "terra",
+        "sabor": "marreta ou lasca de pedra"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque: a arma nasce na sua mão"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Por ser matéria, a armadura absorve normalmente, no modo do formato, e ela abre efeitos secundários como sangramento.",
+    "exemplos": [
+      "Efeito 2 + Dano 3 (3d6) + Duração 4 (5 minutos) = 10 pontos"
+    ]
+  },
+  {
+    "id": "metal-incandescente",
+    "nome": "Metal Incandescente",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fogo",
+        "sabor": "o metal fica em brasa"
+      },
+      {
+        "id": "raio",
+        "sabor": "o metal esquenta e choca"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Aquece o metal à distância. Quem veste armadura de metal se queima e sofre penalidade enquanto durar; quem empunha arma de metal larga ou aguenta o dano.",
+    "exemplos": [
+      "Efeito 2 + Alcance 3 (15 m) + Alvos 2 + Duração 2 (5 turnos) = 9 pontos"
+    ]
+  },
+  {
+    "id": "brasa-retardada",
+    "nome": "Brasa Retardada",
+    "nivel": 3,
+    "escalonavel": false,
+    "artes": [
+      {
+        "id": "fogo",
+        "sabor": "a chama fica dormindo até o gatilho"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Deixa o efeito preso num ponto, disparando quando alguém passa, toca, ou ao fim de um tempo combinado. É a armadilha do feiticeiro.",
+    "exemplos": [
+      "Efeito 3 + Alcance 2 (5 m) + Área 2 (1x1 m) + Dano 3 (3d6) + Duração 2 (1 hora) = 12 pontos"
+    ]
+  },
+  {
+    "id": "corrente",
+    "nome": "Corrente",
+    "nivel": 3,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "raio",
+        "sabor": "o relâmpago salta de corpo em corpo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "O raio salta de um alvo ao seguinte, desde que estejam a poucos passos um do outro. Cada salto vale um alvo no parâmetro.",
+    "exemplos": [
+      "Efeito 3 + Alcance 3 (15 m) + Alvos 3 + Dano 2 (2d6) = 11 pontos"
+    ]
+  },
+  {
+    "id": "passo-relampago",
+    "nome": "Passo do Relâmpago",
+    "nivel": 4,
+    "escalonavel": false,
+    "artes": [
+      {
+        "id": "raio",
+        "sabor": "você vira a descarga e reaparece no fim dela"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Você percorre a distância como raio e reaparece no destino, atravessando o que estiver no caminho. Precisa de linha de visão.",
+    "exemplos": [
+      "Efeito 4 + Alcance 4 (50 m) = 8 pontos"
+    ]
+  },
+  {
+    "id": "onda",
+    "nome": "Onda",
+    "nivel": 4,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "agua",
+        "sabor": "a massa de água se levanta e varre"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Arrasta para longe todos que estiverem na área. Exige um corpo de água por perto: rio, lago, chuva forte, cisterna.",
+    "exemplos": [
+      "Efeito 4 + Alcance 3 (15 m) + Área 4 (4x4 m) = 11 pontos"
+    ]
+  },
+  {
+    "id": "bolha-de-ar",
+    "nome": "Bolha de Ar",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "agua",
+        "sabor": "a água se afasta e abre um bolsão"
+      },
+      {
+        "id": "vento",
+        "sabor": "o ar limpo fica preso em volta do rosto"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Respirar embaixo de água, na fumaça ou no gás. Não protege do dano, só do sufocamento.",
+    "exemplos": [
+      "Efeito 2 + Alcance 1 (toque) + Alvos 3 + Duração 2 (1 hora) = 8 pontos"
+    ]
+  },
+  {
+    "id": "escudo-de-vento",
+    "nome": "Escudo de Vento",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vento",
+        "sabor": "a rajada sustentada desvia o que voa"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "o próprio corpo e quem estiver colado"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Flechas, virotes e dardos erram enquanto o vento durar. Não segura o que é pesado nem o corpo a corpo.",
+    "exemplos": [
+      "Efeito 2 + Alvos 1 + Duração 4 (5 minutos) = 7 pontos"
+    ]
+  },
+  {
+    "id": "salto-do-vento",
+    "nome": "Salto do Vento",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vento",
+        "sabor": "o ar empurra para cima e segura na descida"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Sobe alto, plana um trecho e cai sem se machucar. Com Duração alta vira voo curto e desajeitado.",
+    "exemplos": [
+      "Efeito 2 + Alcance 3 (15 m de altura) + Duração 2 (5 turnos) = 7 pontos"
+    ]
+  },
+  {
+    "id": "sussurro-distante",
+    "nome": "Sussurro Distante",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vento",
+        "sabor": "o ar carrega a voz até um ouvido só"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Sua voz chega ao ouvido de quem você escolher, sem que ninguém no caminho escute. Não traz resposta de volta.",
+    "exemplos": [
+      "Efeito 1 + Alcance 4 (100 m) + Alvos 1 + Duração 1 = 7 pontos"
+    ]
+  },
+  {
+    "id": "terremoto",
+    "nome": "Terremoto",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "terra",
+        "sabor": "o chão sacode e se abre"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Área",
+        "tipo": "substitui",
+        "substitui": "area",
+        "unidade": "m",
+        "escala": [
+          "1x1",
+          "2x2",
+          "4x4",
+          "6x6",
+          "8x8",
+          "10x10"
+        ],
+        "nota": "começa um nível acima da Área; molda em círculo em volta de você ou em linha de pelo menos 1 m de largura"
+      },
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque: exige uma batida no chão"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Derruba quem estiver dentro da área. A partir do nível 4 o chão se abre, e quem cai vai para dentro da fenda.",
+    "exemplos": [
+      "Efeito 2 + Alcance 1 (toque) + Área 3 (4x4) = 6 pontos"
+    ]
+  },
+  {
+    "id": "pele-de-pedra",
+    "nome": "Pele de Pedra",
+    "nivel": 3,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "terra",
+        "sabor": "a pele endurece em casca de rocha"
+      },
+      {
+        "id": "gelo",
+        "sabor": "uma casca de gelo cobre o corpo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Soma Absorção contra dano físico enquanto durar. Pesa: quem está coberto perde um pouco de velocidade.",
+    "exemplos": [
+      "Efeito 3 + Alvos 1 + Duração 4 (5 minutos) = 8 pontos"
+    ]
+  },
+  {
+    "id": "lascas",
+    "nome": "Lascas",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "terra",
+        "sabor": "estilhaços de pedra em leque"
+      },
+      {
+        "id": "gelo",
+        "sabor": "agulhas de gelo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Espalha estilhaços num leque à sua frente. É matéria de verdade, então a armadura absorve normalmente, como perfuração.",
+    "exemplos": [
+      "Efeito 1 + Alcance 2 (5 m) + Área 3 (2x2 m) + Dano 2 (2d6) = 8 pontos"
+    ]
+  },
+  {
+    "id": "clarao",
+    "nome": "Clarão Cegante",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "luz",
+        "sabor": "a luz estoura de uma vez"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Cega quem estiver olhando na direção. Quem fecha os olhos a tempo resiste com Vigor mais Convicção.",
+    "exemplos": [
+      "Efeito 2 + Alcance 3 (15 m) + Área 3 (2x2 m) + Duração 1 (1 turno) = 9 pontos"
+    ]
+  },
+  {
+    "id": "facho-revelador",
+    "nome": "Facho Revelador",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "luz",
+        "sabor": "a luz não deixa nada se esconder"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Desfaz camuflagem, disfarce e invisibilidade dentro da área, inclusive os que vêm de outra Arte. Contra Ofuscação e Sombra é disputa direta de nível.",
+    "exemplos": [
+      "Efeito 2 + Alcance 3 (15 m) + Área 4 (4x4 m) + Duração 2 (5 turnos) = 11 pontos"
+    ]
+  },
+  {
+    "id": "aurora",
+    "nome": "Aurora",
+    "nivel": 4,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "luz",
+        "sabor": "um amanhecer inteiro de uma vez"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar o que teme a luz, enquanto durar.",
+    "exemplos": [
+      "Efeito 4 + Alcance 3 (15 m) + Área 5 (6x6 m) + Dano 2 + Duração 3 (1 minuto) = 17 pontos"
+    ]
+  },
+  {
+    "id": "bracos-do-abismo",
+    "nome": "Braços do Abismo",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "sombra",
+        "sabor": "tentáculos de treva sobem do chão"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "A sombra ganha corpo e agarra. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir.",
+    "exemplos": [
+      "Efeito 2 + Alcance 3 (15 m) + Alvos 2 + Dano 1 + Duração 2 (5 turnos) = 10 pontos"
+    ]
+  },
+  {
+    "id": "manto-de-treva",
+    "nome": "Manto de Treva",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "sombra",
+        "sabor": "a escuridão se cola em você"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "A treva acompanha quem a veste e esconde. Não funciona sob luz forte, e um Facho Revelador a desfaz.",
+    "exemplos": [
+      "Efeito 1 + Alvos 2 + Duração 2 (1 hora) = 5 pontos"
+    ]
+  },
+  {
+    "id": "mordaca",
+    "nome": "Mordaça de Treva",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "sombra",
+        "sabor": "a treva engole o som"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Nenhum som sai da área: nem grito, nem porta arrombada, nem conjuração falada. Quem está dentro ouve normalmente.",
+    "exemplos": [
+      "Efeito 2 + Alcance 2 (5 m) + Área 4 (4x4 m) + Duração 3 (1 minuto) = 11 pontos"
+    ]
+  },
+  {
+    "id": "passo-entre-sombras",
+    "nome": "Passo entre Sombras",
+    "nivel": 4,
+    "escalonavel": false,
+    "artes": [
+      {
+        "id": "sombra",
+        "sabor": "entra numa sombra e sai de outra"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Entra numa sombra e sai por outra dentro do alcance. Precisa haver sombra dos dois lados, e você chega sem saber o que o espera.",
+    "exemplos": [
+      "Efeito 4 + Alcance 4 (50 m) + Alvos 1 = 9 pontos"
+    ]
+  }
+]

@@ -169,6 +169,41 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     </div>
   </section>
 
+  <section class="arcano-regras" id="efeitos">
+    <h2>Os Efeitos Especiais</h2>
+    <p>A Arte dá o elemento em estado bruto; o <strong>Efeito</strong> dá forma, nome e comportamento. A régua é simples: <em>se precisa de um substantivo próprio para ser descrito, é Efeito.</em> Fogo é Arte, muro é Efeito, e subir a Arte nunca substitui o Efeito, porque muro não é fogo maior, é fogo com forma.</p>
+    <p>Cada Efeito custa <strong>2 × o nível dele</strong> em XP, e só se compra até o nível que você tem na Arte. Na hora de conjurar, o custo é <strong>o nível do Efeito mais os parâmetros usados</strong>, com o desconto da Centelha por cima. O <strong>mesmo Efeito serve a várias Artes</strong>, mudando o sabor e o efeito colateral, e quem já o conhece por uma Arte não paga XP de novo pela outra: precisa só ter a segunda Arte no nível dele.</p>
+    <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(22rem,1fr))">
+      {d.efeitos.map((e: any) => (
+        <div class="panel efeito" id={'ef-' + e.id} data-permalink>
+          <div class="ef-head">
+            <span class="cinzel ef-nome">{e.nome}</span>
+            <span class="ef-nivel" title="nível do Efeito">{e.nivel}</span>
+          </div>
+          <div class="ef-artes">{e.artes.map((x: any) => {
+            const aid = typeof x.id === 'string' ? x.id : x.id?.id;
+            return <span class="ef-arte"><a href={'#' + aid}>{d.artes.find((a: any) => a.id === aid)?.nome || aid}</a> <span class="muted">{x.sabor}</span></span>;
+          })}</div>
+          <p class="ef-txt">{e.efeito}</p>
+          <ul class="ef-par">
+            {e.parametros.map((p: any) => (
+              <li>
+                <strong>{p.nome}</strong>
+                {p.tipo === 'fixo' && <span> fixo: {p.valor}</span>}
+                {p.tipo === 'padrao' && <span class="muted"> normal{p.regua ? `, régua ${p.regua}` : ''}</span>}
+                {p.tipo === 'substitui' && <span class="muted"> no lugar de {p.substitui}, em {p.unidade}: {p.escala.join(' · ')}</span>}
+                {p.nota && <span class="muted"> ({p.nota})</span>}
+              </li>
+            ))}
+          </ul>
+          {e.notas && <p class="muted ef-nota">{e.notas}</p>}
+          {e.exemplos.map((x: string) => <p class="formula ef-ex">{x}</p>)}
+        </div>
+      ))}
+    </div>
+    <p class="muted">Estes são os Efeitos das Artes elementais. Os das demais Artes vêm depois, caso a caso.</p>
+  </section>
+
   <section class="arcano-regras">
     <h2>As {d.artes.length} Artes</h2>
     <p>Os seis níveis de cada Arte, abaixo, são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos parâmetros, acima. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
@@ -216,6 +251,19 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
   .callout.revisao ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .callout.revisao li { margin-bottom: .2rem; }
+  .efeito { display: flex; flex-direction: column; gap: .35rem; }
+  .ef-head { display: flex; align-items: center; gap: .5rem; }
+  .ef-nome { color: var(--accent); font-size: 1.1rem; flex: 1; }
+  .ef-nivel { display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%;
+    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .75rem; }
+  .ef-artes { display: flex; flex-wrap: wrap; gap: .2rem .6rem; font-size: .82rem; }
+  .ef-arte a { color: var(--accent); text-decoration: none; font-family: 'Cinzel'; font-size: .78rem; }
+  .ef-arte a:hover { text-decoration: underline; }
+  .ef-txt { margin: .2rem 0; font-size: .92rem; line-height: 1.45; }
+  .ef-par { list-style: none; margin: 0; padding: 0; font-size: .84rem; line-height: 1.4; }
+  .ef-par li { margin-bottom: .1rem; }
+  .ef-nota { font-size: .82rem; margin: .1rem 0; }
+  .ef-ex { font-size: .82rem; margin: .2rem 0 0; }
   .fraq { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
   .fraq li { margin-bottom: .25rem; line-height: 1.5; }
   .arte-head { display: flex; align-items: center; gap: .5rem; }

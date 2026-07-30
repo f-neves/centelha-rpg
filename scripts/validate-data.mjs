@@ -19,6 +19,17 @@ const S = {
   caminhos: z.object({ id: z.string(), nome: z.string(), trilha: z.enum(['corpo', 'voz', 'mente']), atributo: z.string(), habilidade_ancora: z.string().optional(), descricao: z.string() }),
   tecnicas: z.object({ id: z.string(), nome: z.string(), caminho: z.string(), atributo: z.string(), nivel: z.number().int().min(1).max(6), efeito: z.enum(['bonus', 'soak', 'dano', 'penetracao', 'carga', 'salto', 'velocidade', 'tamanho', 'estado']), tipo: z.enum(['passiva', 'ativa', 'reflexiva']), custo, prereq: z.array(z.string()), aliases: z.array(z.string()), texto: z.string(), pendente: z.boolean() }),
   artes: z.object({ id: z.string(), nome: z.string(), categoria: z.enum(['elemental', 'universal']), atributo_conjuracao: z.string(), niveis: z.array(z.object({ nivel: z.number().int().min(1).max(6), nome: z.string(), efeito: z.string(), custo: z.object({ mana: z.number().int().min(1).max(6) }).optional(), exemplos: z.array(z.string()).optional() })).min(5).max(6), aliases: z.array(z.string()), pendente: z.boolean() }),
+  efeitos: z.object({
+    id: z.string(), nome: z.string(), nivel: z.number().int().min(1).max(6), escalonavel: z.boolean(),
+    artes: z.array(z.object({ id: z.string(), sabor: z.string() })).min(1),
+    parametros: z.array(z.object({
+      nome: z.string(), tipo: z.enum(['padrao', 'substitui', 'fixo']),
+      regua: z.enum(['breve', 'longa']).optional(), substitui: z.string().optional(),
+      unidade: z.string().optional(), escala: z.array(z.string()).optional(),
+      valor: z.string().optional(), nota: z.string().optional(),
+    })).min(1),
+    efeito: z.string(), notas: z.string().optional(), exemplos: z.array(z.string()),
+  }),
   glossario: z.object({ id: z.string(), termo: z.string(), aliases: z.array(z.string()), definicao: z.string() }),
   racas: z.object({ id: z.string(), nome: z.string(), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()) }),
   inimigos: z.object({
@@ -73,6 +84,7 @@ for (const t of data.tecnicas || []) {
 }
 for (const a of data.artes || []) if (!A.has(a.atributo_conjuracao)) fail(`arte "${a.id}": atributo_conjuracao inexistente "${a.atributo_conjuracao}"`);
 const ART = setOf('artes'), H = setOf('habilidades');
+for (const e of data.efeitos || []) for (const x of e.artes) if (!ART.has(x.id)) fail(`efeito "${e.id}": arte inexistente "${x.id}"`);
 for (const i of data.inimigos || []) {
   for (const t of i.tecnicas) if (!T.has(t)) fail(`inimigo "${i.id}": técnica inexistente "${t}"`);
   for (const a of i.artes) if (!ART.has(a.id)) fail(`inimigo "${i.id}": arte inexistente "${a.id}"`);
@@ -88,4 +100,4 @@ if (erros.length) {
   console.error('');
   process.exit(1);
 }
-console.log(`✓ Dados válidos: ${data.tecnicas.length} técnicas, ${data.caminhos.length} caminhos, ${data.artes.length} artes — referências íntegras.`);
+console.log(`✓ Dados válidos: ${data.tecnicas.length} técnicas, ${data.caminhos.length} caminhos, ${data.artes.length} artes, ${data.efeitos.length} efeitos — referências íntegras.`);

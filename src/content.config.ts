@@ -96,6 +96,30 @@ const artes = defineCollection({
   }),
 });
 
+const efeitos = defineCollection({
+  loader: file('src/data/efeitos.json'),
+  schema: z.object({
+    id: z.string(),
+    nome: z.string(),
+    nivel: z.number().int().min(1).max(6),
+    escalonavel: z.boolean(),
+    artes: z.array(z.object({ id: reference('artes'), sabor: z.string() })).min(1),
+    parametros: z.array(z.object({
+      nome: z.string(),
+      tipo: z.enum(['padrao', 'substitui', 'fixo']),
+      regua: z.enum(['breve', 'longa']).optional(),
+      substitui: z.string().optional(),
+      unidade: z.string().optional(),
+      escala: z.array(z.string()).optional(),
+      valor: z.string().optional(),
+      nota: z.string().optional(),
+    })).min(1),
+    efeito: z.string(),
+    notas: z.string().optional(),
+    exemplos: z.array(z.string()),
+  }),
+});
+
 const glossario = defineCollection({
   loader: file('src/data/glossario.json'),
   schema: z.object({
@@ -202,6 +226,7 @@ export const collections = {
   caminhos,
   tecnicas,
   artes,
+  efeitos,
   glossario,
   inimigos,
   armas,
