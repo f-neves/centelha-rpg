@@ -3944,6 +3944,11 @@
         "tipo": "padrao"
       },
       {
+        "nome": "Ganho",
+        "tipo": "fixo",
+        "valor": "−2 Ticks por nível para um, +2 por nível para o outro"
+      },
+      {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"

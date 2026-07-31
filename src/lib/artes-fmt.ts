@@ -32,6 +32,8 @@ export const valorPar = (p: any) => {
   if (p.tipo === 'fixo') return p.valor;
   if (p.tipo === 'substitui') return p.nota || `${p.escala.join(' · ')}${p.unidade ? ` (${p.unidade})` : ''}`;
   if (p.regua) return p.regua === 'longa' ? 'Longa' : 'Breve';
-  if (/^(dano|cura)/.test(p.nome.toLowerCase())) return '1d6 por nível';
+  // a Cura tem régua e preço próprios (2 de Mana por nível), então não segue o dano
+  if (p.nome.toLowerCase().startsWith('cura')) return '2 · 1d6 · 1d6+2 · 2d6 · 2d6+2 · 3d6 (2 de Mana por nível)';
+  if (p.nome.toLowerCase().startsWith('dano')) return '1d6 por nível';
   return 'normal';
 };
