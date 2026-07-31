@@ -12,7 +12,15 @@ const efeitosPorArte = (arteId: string) => d.efeitos
   .filter((e: any) => e.artes.some((x: any) => idDe(x.id) === arteId))
   .map((e: any) => ({ ...e, sabor: e.artes.find((x: any) => idDe(x.id) === arteId)?.sabor }))
   .sort((a: any, b: any) => a.nivel - b.nivel || a.nome.localeCompare(b.nome, 'pt'));
-const elem = d.artes.filter((a) => a.categoria === 'elemental');
+// as Artes entram na ordem do livro, elementais primeiro; quem não tem Efeito fica de fora
+const comEfeitos = (cat: string) => d.artes.filter((a: any) => a.categoria === cat && efeitosPorArte(a.id).length);
+const elem = comEfeitos('elemental');
+const univ = comEfeitos('universal');
+const semEfeitos = d.artes.filter((a: any) => !efeitosPorArte(a.id).length);
+const BLOCOS: [string, string, any[]][] = [
+  ['Artes Elementais', 'Fogo, gelo, raio, água, vento, terra, luz e sombra: o que o mundo já tem, moldado.', elem],
+  ['Artes Universais', 'As linhas que não pegam um elemento e sim um princípio: a vida, a morte, a mente, o espaço, o tempo.', univ],
+];
 ---
 <Base title="Efeitos Especiais" largura="wide" descricao="Os Efeitos Especiais das Artes elementais: o que cada um faz, o que custa e quais parâmetros o jogador escolhe na hora de conjurar.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV · <a href={url('artes/regras')}>As Artes</a></p>
@@ -25,14 +33,18 @@ const elem = d.artes.filter((a) => a.categoria === 'elemental');
   <p class="muted">Um Efeito compartilhado aparece sob cada Arte que o comporta, com o sabor daquela Arte. Dentro de cada Arte, os menores vêm primeiro. Os parâmetros marcados como <strong>normal</strong> são os que você escolhe na hora, até o nível da Arte.</p>
 
   <nav class="ef-indice" data-pagefind-ignore>
-    {elem.map((a: any) => (
-      <a href={'#ef-' + a.id}>{a.nome} <span class="muted">{efeitosPorArte(a.id).length}</span></a>
+    {[...elem, ...univ].map((a: any) => (
+      <a href={'#ef-' + a.id} class={a.categoria}>{a.nome} <span class="muted">{efeitosPorArte(a.id).length}</span></a>
     ))}
   </nav>
 
-  {elem.map((arte: any) => (
+  {BLOCOS.map(([titulo, chamada, lista]) => (
+  <section class="ef-grupo">
+    <h2 class="ef-grupo-tit">{titulo}</h2>
+    <p class="muted ef-grupo-sub">{chamada}</p>
+  {lista.map((arte: any) => (
     <div class="ef-bloco" id={'ef-' + arte.id}>
-      <h2 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h2>
+      <h3 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h3>
       <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(27rem,1fr))">
         {efeitosPorArte(arte.id).map((e: any) => (
           <div class="panel efeito" id={'ef-' + arte.id + '-' + e.id}>
@@ -63,7 +75,11 @@ const elem = d.artes.filter((a) => a.categoria === 'elemental');
       </div>
     </div>
   ))}
-  <p class="muted">Estes são os Efeitos das Artes elementais. Os das demais Artes vêm depois, caso a caso.</p>
+  </section>
+  ))}
+  {semEfeitos.length > 0 && (
+    <p class="muted">Sem Efeitos por enquanto: {semEfeitos.map((a: any) => a.nome).join(', ')}.</p>
+  )}
 
   <nav class="artes-nav" data-pagefind-ignore>
     <a class="btn" href={url('artes/regras')}>← Regras das Artes</a>
@@ -98,4 +114,8 @@ const elem = d.artes.filter((a) => a.categoria === 'elemental');
   .ef-indice a:hover { border-color: var(--accent); }
   .ef-indice .muted { font-style: normal; font-size: .78rem; }
   .ef-bloco-tit { scroll-margin-top: 1rem; }
+  .ef-grupo { margin-top: 2rem; }
+  .ef-grupo-tit { text-align: center; border: none; margin-bottom: .1rem; }
+  .ef-grupo-sub { text-align: center; margin: 0 0 .4rem; }
+  .ef-indice a.universal { color: var(--gold); }
 </style>

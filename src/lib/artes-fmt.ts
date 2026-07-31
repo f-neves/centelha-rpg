@@ -18,7 +18,7 @@ export const formaDe = (nome: string) => {
 const RANK: Record<string, number> = {
   alcance: 0, alvos: 1,
   área: 2, area: 2, volume: 2, comprimento: 2, altura: 2, raio: 2, profundidade: 2,
-  dano: 3, duração: 4, duracao: 4, ataque: 5, jogada: 5, dificuldade: 6,
+  dano: 3, cura: 3, duração: 4, duracao: 4, ataque: 5, jogada: 5, dificuldade: 6,
 };
 const rank = (p: any) => RANK[p.nome.toLowerCase().split(' ')[0]] ?? RANK[(p.substitui || '').toLowerCase()] ?? 9;
 export const ordemPar = (ps: any[]) =>
@@ -29,6 +29,6 @@ export const valorPar = (p: any) => {
   if (p.tipo === 'fixo') return p.valor;
   if (p.tipo === 'substitui') return p.nota || `${p.escala.join(' · ')}${p.unidade ? ` (${p.unidade})` : ''}`;
   if (p.regua) return p.regua === 'longa' ? 'Longa' : 'Breve';
-  if (p.nome.toLowerCase().startsWith('dano')) return '1d6 por nível';
+  if (/^(dano|cura)/.test(p.nome.toLowerCase())) return '1d6 por nível';
   return 'normal';
 };
