@@ -2715,5 +2715,685 @@
       }
     ],
     "efeito": "Ganha asas que sustentam o seu peso. Voa no lugar de correr, com a mesma distância do seu deslocamento, e mais alto quanto maior o nível. Carga pesada corta o voo, e cair enquanto elas somem é problema seu."
+  },
+  {
+    "id": "chuva-de-fogo",
+    "nome": "Chuva de Fogo",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fogo",
+        "sabor": "o céu despeja fogo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "O fogo cai sobre a área e continua caindo: o dano volta a cada turno enquanto durar, e o que é combustível pega e segue queimando depois que a magia acaba. Não separa amigo de inimigo."
+  },
+  {
+    "id": "inverno",
+    "nome": "Inverno",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "gelo",
+        "sabor": "a estação muda de lado"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto perde Fôlego turno após turno. A região demora a esquecer que você passou por ali."
+  },
+  {
+    "id": "tempestade",
+    "nome": "Tempestade",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "raio",
+        "sabor": "o céu fecha e escolhe alvos"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Ataque",
+        "tipo": "fixo",
+        "valor": "Percepção + Acerto Arcano"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
+      }
+    ],
+    "efeito": "Chama a tempestade. A cada turno um raio cai onde você apontar dentro da área, sem gastar a sua ação, e quem veste metal atrai o próximo."
+  },
+  {
+    "id": "maremoto",
+    "nome": "Maremoto",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "agua",
+        "sabor": "a parede de água atravessa tudo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Força + Atletismo",
+        "nota": "quem está na área rola para não ser levado"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "Uma parede de água varre a área e leva embora o que não estiver preso ao chão. Quem falha é arrastado até a borda, e o que estava solto no caminho vira projétil."
+  },
+  {
+    "id": "vendaval",
+    "nome": "Vendaval",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vento",
+        "sabor": "ninguém fica de pé"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Força + Atletismo",
+        "nota": "o alvo rola a cada turno para se manter de pé"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
+      }
+    ],
+    "efeito": "O vento fecha em volta de você. Ninguém anda contra ele, nada voa em linha reta e nenhum projétil atravessa a área enquanto durar. Quem falha vai ao chão e rola."
+  },
+  {
+    "id": "erguer-a-montanha",
+    "nome": "Erguer a Montanha",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "terra",
+        "sabor": "a pedra sobe do fundo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "fixo",
+        "valor": "permanente"
+      }
+    ],
+    "efeito": "Levanta do chão uma formação de pedra do tamanho de uma colina pequena, ou derruba uma que já estava lá. O terreno muda de verdade e continua mudado: quem passar por ali daqui a um ano vai ver a sua obra."
+  },
+  {
+    "id": "dia",
+    "nome": "Dia",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "luz",
+        "sabor": "o sol nasce fora de hora"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Faz o meio-dia dentro da área, seja qual for a hora. Não existe sombra ali, nada se esconde e nenhuma treva conjurada resiste. Quem tem fraqueza a luz ou ao sagrado queima como se estivesse a céu aberto."
+  },
+  {
+    "id": "noite",
+    "nome": "Noite",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "sombra",
+        "sabor": "a luz simplesmente deixa de existir"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Apaga toda a luz da área, mágica ou não: tocha, sol, feitiço. Ninguém enxerga nada lá dentro, exceto você e quem você escolher ao conjurar."
+  },
+  {
+    "id": "maos-sobre-a-multidao",
+    "nome": "Mãos sobre a Multidão",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "cura",
+        "sabor": "a cura não escolhe quem merece"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Cura",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara."
+  },
+  {
+    "id": "coracao-verde",
+    "nome": "Coração Verde",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vida",
+        "sabor": "a mata acorda e escolhe um lado"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "O lugar vira mata viva e do seu lado: raiz que agarra o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar."
+  },
+  {
+    "id": "legiao",
+    "nome": "Legião",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "morte",
+        "sabor": "todos os mortos daqui se levantam"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Ergue de uma vez todos os cadáveres da área. Obedecem ordens simples, não pensam e caem de novo no fim da duração. Fazer isso em público é declarar ao mundo o que você é."
+  },
+  {
+    "id": "reescrever",
+    "nome": "Reescrever",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fascinacao",
+        "sabor": "a lembrança passa a ser outra"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "Defesa Mental do alvo"
+      }
+    ],
+    "efeito": "Troca uma memória ou uma lealdade do alvo, e a troca fica. Ele monta sozinho a explicação para o que mudou e defende a versão nova como se fosse dele. Desfazer exige esta mesma Arte no mesmo nível."
+  },
+  {
+    "id": "oraculo",
+    "nome": "Oráculo",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "adivinhacao",
+        "sabor": "a pergunta encontra resposta"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "em você"
+      }
+    ],
+    "efeito": "Uma pergunta sobre o passado ou o futuro, respondida com o que existe de mais próximo da verdade. O futuro vem como tendência, não como certeza, e a resposta é curta, literal e às vezes cruel."
+  },
+  {
+    "id": "isso-vai-dar-certo",
+    "nome": "Isso Vai Dar Certo",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fortuna",
+        "sabor": "o improvável acontece"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Uma vez, o que era quase impossível simplesmente acontece: o salto alcança, a flecha encontra a fresta, a corda aguenta. Só vale para o que tinha alguma chance, por menor que fosse, e o Mestre é quem diz se tinha."
+  },
+  {
+    "id": "portal",
+    "nome": "Portal",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "conjuracao",
+        "sabor": "dois lugares conhecidos se encostam"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Abre uma porta entre onde você está e um lugar que você conhece de verdade. O grupo atravessa a pé, com carga e montaria, enquanto ela durar. Quem estiver no meio quando fechar fica do lado em que estava a maior parte do corpo."
+  },
+  {
+    "id": "onde-e-embaixo",
+    "nome": "Onde é Embaixo",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "forcas",
+        "sabor": "o chão troca de lugar"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Força + Atletismo",
+        "nota": "o alvo rola para não despencar"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "Você escolhe para que lado a área cai. Quem está dentro despenca na direção nova, e o que não estava preso vai junto. Voltar ao normal derruba tudo de volta."
+  },
+  {
+    "id": "transmutar",
+    "nome": "Transmutar",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "materia",
+        "sabor": "a matéria aceita ser outra coisa"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "fixo",
+        "valor": "permanente"
+      }
+    ],
+    "efeito": "Converte qualquer material em qualquer outro: pedra em ouro, ferro em vidro, água em óleo. A mudança fica. O que era vivo não entra nisso, e o que era mágico resiste pelo nível de quem o fez."
+  },
+  {
+    "id": "parar",
+    "nome": "Parar",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "tempo",
+        "sabor": "tudo fica onde está"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "em você"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "fixo",
+        "valor": "alguns Ticks"
+      }
+    ],
+    "efeito": "O tempo para para todo mundo menos você, por alguns Ticks. Você anda, tira, coloca e sai; o que você tocar volta a andar junto com o resto. O corpo cobra depois, e cobra caro."
+  },
+  {
+    "id": "hoste",
+    "nome": "Hoste",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "espirito",
+        "sabor": "a porta abre e eles vêm em muitos"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Chama de uma vez todos os espíritos que aquele lugar guarda, e eles vêm com o que sentem: raiva, luto, fome. Você aponta a direção, não escolhe cada um, e depois é preciso mandá-los de volta."
+  },
+  {
+    "id": "santuario",
+    "nome": "Santuário",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "protecao",
+        "sabor": "o lugar passa a ser inviolável"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Consagra um lugar. Nada entra sem permissão, magia alheia se desfaz na borda e quem for expulso não acha o caminho de volta. Dura dias, e cai se você mesmo quebrar a regra que estabeleceu."
+  },
+  {
+    "id": "ninguem-passou-por-aqui",
+    "nome": "Ninguém Passou por Aqui",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "ofuscacao",
+        "sabor": "a passagem inteira é apagada"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Apaga a passagem do seu grupo: pegada, cheiro, porta aberta, corpo caído e a lembrança de quem viu. Quem esteve presente jura que a sala estava vazia e briga com quem disser o contrário."
+  },
+  {
+    "id": "a-mata-levanta",
+    "nome": "A Mata Levanta",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "natureza",
+        "sabor": "a região inteira vira inimiga"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "A região se volta contra quem você apontar: bicho ataca, cipó agarra, o caminho se fecha, o rio muda de humor. Não é comando, é a mata concordando com você."
+  },
+  {
+    "id": "fera-de-guerra",
+    "nome": "Fera de Guerra",
+    "nivel": 6,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "metamorfose",
+        "sabor": "o corpo cresce muito além do que era"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "em você"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Vira uma criatura muito maior do que você: urso de guerra, serpente de rio, ave de rapina do tamanho de um cavalo. Ganha o porte, a força e o alcance dela, e perde as mãos, a fala e o que elas fazem."
   }
 ]
