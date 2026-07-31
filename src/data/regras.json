@@ -1399,6 +1399,7 @@
         ]
       },
       "semArea": "A cura comum não tem Área: ela vai a alvos escolhidos, um por um, nunca a todos que estiverem num pedaço de chão. Curar em área existe, mas só através de um Efeito Especial feito para isso.",
+      "outrasArtes": "A Cura é a Arte de curar, e nenhuma outra a alcança. Toda Arte que cura sem ser ela cura MENOS, ou cobra alguma restrição a mais: menos PV pelo mesmo Mana, só certos tipos de dano, exigência de tempo ou de contato. O custo em Mana, porém, é o mesmo: cura é sempre 2 por nível, em qualquer Arte. A Vida, por exemplo, não fecha ferimento: apressa o corpo a fechá-lo sozinho, e só alcança dano Letal a partir do nível 3.",
       "divide": "Em mais de um alvo, o valor curado é DIVIDIDO entre eles: 2d6 em três pessoas é a rolagem inteira repartida em três, não 2d6 para cada uma. Comprar Alvos compra ação, não quantidade de cura.",
       "nota": "O desconto da Centelha continua valendo sobre o total, e no modo Ritual ele é multiplicado pelo tempo gasto: é assim que o curandeiro trata os feridos depois da luta quase de graça, mesmo tendo pouco Mana para gastar durante ela."
     },

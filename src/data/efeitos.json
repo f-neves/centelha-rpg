@@ -357,7 +357,8 @@
     "parametros": [
       {
         "nome": "Alcance",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "toque"
       },
       {
         "nome": "Área",
@@ -367,9 +368,21 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "longa"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Destreza + Atletismo ou Equilíbrio",
+        "nota": "de quem tenta andar"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 2",
+        "nota": "dobra para quem corre, cavalga ou luta"
       }
     ],
-    "efeito": "O piso deixa de cooperar: correr exige teste, e quem falha cai. Na areia movediça, quem cai afunda a cada turno."
+    "efeito": "O piso deixa de cooperar. Andar exige teste, e quem falha cai; correr, cavalgar ou lutar em cima dobra a dificuldade. Na areia movediça, quem cai afunda a cada turno."
   },
   {
     "id": "arma-conjurada",
@@ -3861,5 +3874,41 @@
       }
     ],
     "efeito": "Uma ilusão completa e com som, cheiro e movimento, que reage ao que acontece em volta. Quem duvida e testa fura a mentira, mas atravessar com a mão é preciso querer."
+  },
+  {
+    "id": "acelerar-a-cura",
+    "nome": "Acelerar a Cura",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vida",
+        "sabor": "o corpo sara no seu próprio ritmo, só que mais depressa"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Cura",
+        "tipo": "fixo",
+        "valor": "1 PV por nível",
+        "nota": "2 de Mana por nível, como toda cura"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Com Vida 1 ou 2 só acelera o que o corpo já sabe curar depressa, ou seja, dano de Impacto e ferimentos não letais. Curar dano Letal por esta via exige Vida 3.",
+    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível em vez da régua dela."
   }
 ]
