@@ -227,10 +227,10 @@ Artes, o catálogo vira uma frente própria de conteúdo (ver decisão nº 3).
    Manipular** efeitos mágicos (rajada de fogo = Percepção + Acerto Arcano vs Defesa). "Meditação/
    Ciências" **não** viram perícia (cobertas por Integridade+Temperança e Conhecimentos Gerais).
 
-**C. Acerto Arcano como perícia** ✅ **é habilidade SECUNDÁRIA**, provavelmente no grupo **Corpo** ou
-**Interior**. *Nota: os grupos primários hoje são combate / física / social / saber; as secundárias
-penduram num grupo. Preciso confirmar a que grupo "Corpo"/"Interior" correspondem antes de fiar a perícia
-na ficha (a criação da secundária fica pendente disso + do fechamento das "Jogadas das Artes").*
+**C. Acerto Arcano como perícia** ✅ **RESOLVIDO (2026-07-30)**: é **Habilidade Secundária do grupo
+Conhecimento**, ao lado de Alquimia e Arquitetura, já criada e visível na ficha (5 XP por nível, com
+Especialidade como toda secundária). Usada com **Percepção ou Destreza** nos efeitos mirados. Some
+daqui a dúvida do grupo "Corpo"/"Interior".
 
 **Ainda em aberto (para fechar antes de portar a MECÂNICA ao site):**
 - **A. Jogadas das Artes, casos de fronteira** (decisão nº 1 continua): o esquema **Mirado (Acerto Arcano
@@ -238,7 +238,7 @@ na ficha (a criação da secundária fica pendente disso + do fechamento das "Jo
   híbridos (uma só rolagem, recomendo). Ver "Jogadas das Artes".
 - **B. Perícia de conjuração de cada Tradição**: a tabela [PROPOSTA] em "Jogadas das Artes" precisa de
   aval; e a **Iniciação** provavelmente pede um traço de **Fé/Devoção** que não existe (criar?).
-- **C'. Grupo do Acerto Arcano**: confirmar **Corpo** ou **Interior** (e a que grupo primário isso mapeia).
+- ~~**C'. Grupo do Acerto Arcano**~~ **fechado**: Secundária de **Conhecimento**, já na ficha.
 
 ## 7. Ganchos com o resto do sistema
 

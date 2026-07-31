@@ -3,6 +3,9 @@
 > Origem: gerado por `migrate-to-json.mjs`. Cada item aqui ou foi redigido
 > provisoriamente, ou divergia da fonte e pedia decisão humana. Itens já
 > resolvidos ficam marcados ✅ como registro histórico.
+>
+> **Este doc é o registro histórico.** O que está **aberto hoje**, em todas as frentes, mora em
+> **`Pendencias.md`** (raiz).
 
 ## Divergências de mecânica
 

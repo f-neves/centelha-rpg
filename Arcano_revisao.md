@@ -404,8 +404,9 @@ mato vivo), Metamorfose (ossos, pele, penas, garras). Ver Pendência 9.
 
 > **Para retomar:** esta seção é o ponto de partida de qualquer próxima conversa sobre o Arcano.
 > Tudo o que está acima dela já foi decidido e já está no site e em `regras.json`. O que está
-> aqui, não. A lista curta que aparece no fim do capítulo XV (`/artes`, bloco "Em revisão") é um
-> resumo desta seção.
+> aqui, não. A lista curta que aparece no fim do capítulo XV (`/artes/regras`, bloco "Em revisão")
+> é um resumo desta seção, e o **`Pendencias.md`** na raiz junta estas pendências às das outras
+> frentes (bestiário, Trilhas, Proezas, social, lore).
 
 **1. Guardar um feitiço: o que falta.** A regra base **já está fechada e no site**: o Mana é pago
 na hora, o feitiço fica comitado, e enquanto isso o Raciocínio conta um nível abaixo nos valores
@@ -431,8 +432,10 @@ no modo lento, como o círculo de invocação.
 alcance natural. Nada a unificar.
 
 **4. Resistência: o número. RESOLVIDO.** O dano daquele tipo cai pela **metade, arredondando
-para cima**, e nunca é agravado. Vale **antes da Absorção**: corta pela metade e só então desconta
-armadura e couro. Resistência e fraqueza se anulam quando a mesma criatura tem as duas.
+para cima**, e nunca é agravado. **A ordem importa:** primeiro a **armadura** absorve, depois a
+resistência corta pela metade o que sobrou, e só então entra a **Absorção natural** da criatura.
+A flecha atravessa o couro do mesmo jeito em qualquer um; o que muda é o que o corpo do vampiro
+faz com o que passou. Resistência e fraqueza se anulam quando a mesma criatura tem as duas.
 Exemplos travados: objeto e estrutura, morto-vivo, esqueleto e planta resistem a **Perfuração**;
 criatura de água ou de terra resiste a **fogo**; criatura de metal ou pedra também.
 
@@ -441,10 +444,12 @@ como listas de palavras-chave. O preenchimento inicial sai por regra (Morto-vivo
 recebem luz e sagrado, Planta recebe fogo, Elemental e Construto saem pelo material) e depois se
 curam as exceções à mão. Das 308 criaturas, 32 são Corruptor e 15 Morto-vivo.
 
-**5. Rolagem das Artes.** *(o Acerto Arcano já existe: perícia **secundária de Saber**, em Percepção e Inteligência.)* Está sendo desenhado na frente das Trilhas, não aqui, mas afeta este
-documento: a conjuração deixa de ser Ocultismo para todos e passa a variar por **Tradição**, e há
-uma perícia nova, **Acerto Arcano**, para os efeitos mirados. Quando fechar, as seções 3 e 4 daqui
-precisam de revisão, porque hoje dizem "Ocultismo + Atributo".
+**5. Rolagem das Artes.** *(o **Acerto Arcano** já existe e já está na ficha: **Habilidade
+Secundária do grupo Conhecimento**, ao lado de Alquimia e Arquitetura, usada com Percepção ou
+Destreza nos efeitos mirados.)* O resto está sendo desenhado na frente das Trilhas, não aqui, mas
+afeta este documento: a conjuração deixa de ser Ocultismo para todos e passa a variar por
+**Tradição**. Quando fechar, as seções 3 e 4 daqui precisam de revisão, porque hoje dizem
+"Ocultismo + Atributo".
 
 **6. Trilhas de ensino.** Serão **6 Tradições**, já escritas no capítulo XIV. O que falta é o mapa
 **Arte × Trilha** e os números de treino. Frente própria, não se decide aqui.
@@ -494,10 +499,12 @@ Luz não têm nada de nível 1. Frente de revisão do autor.
 2. Reescrever a abertura do capítulo para jogador iniciante (seções 2 a 4 deste documento em
    prosa). O capítulo XIV já tem "Os muitos nomes" e as Trilhas; falta o "o que é a feitiçaria"
    escrito para quem nunca jogou.
-3. Criar `src/data/efeitos.json` no formato das Artes, com os parâmetros escritos por Efeito, e
-   ligar na ficha e na página das Artes. É o maior item que sobrou: hoje o Efeito existe como
-   regra, mas não há nenhum Efeito escrito.
+3. ~~Criar `src/data/efeitos.json`~~ **FEITO**: 139 Efeitos escritos, ligados na ficha e na
+   página `/artes/efeitos`, com a economia própria da Cura (2 de Mana por nível) fechada.
 4. Incluir em `regras.json` a regra de empurrão e a de dano agravado como bloco próprio, quando
    fecharem.
-5. Preencher `fraquezas` e `resistencias` no bestiário (depende da pendência 4).
+5. Preencher `fraquezas` e `resistencias` no bestiário. **Destravado** (a pendência 4 fechou):
+   é o maior item pronto para executar hoje.
 6. Revisar as seções 3 e 4 deste documento quando a rolagem por Tradição fechar.
+7. Portar ao site o que já está escrito e parado em doc: **Antecedentes** (14, com XP ×3) e
+   **Ataques Mentais** (o capítulo; a Defesa Mental já está no motor).
