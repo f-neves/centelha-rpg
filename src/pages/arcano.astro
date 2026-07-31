@@ -96,7 +96,7 @@ const RESUMO: Record<string, string> = {
         <ul class="resumo-artes">
           {(lista as any[]).map((a) => (
             <li>
-              <a href={url('artes') + '#' + a.id} class="ra-nome">{a.nome}</a>
+              <a href={url('artes/catalogo') + '#' + a.id} class="ra-nome">{a.nome}</a>
               <span class="muted">{RESUMO[a.id] || a.niveis.map((n: any) => n.nome).join(' · ')}</span>
             </li>
           ))}

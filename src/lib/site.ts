@@ -24,7 +24,14 @@ export const NAV = [
   { slug: 'regras/custo-de-servico-e-itens', titulo: 'Custo de Serviço & Itens', numeral: 'XII' },
   { slug: 'caminhos', titulo: 'As Proezas', numeral: 'XIII' },
   { slug: 'arcano', titulo: 'O Arcano', numeral: 'XIV' },
-  { slug: 'artes', titulo: 'As Artes', numeral: 'XV' },
+  {
+    slug: 'artes', titulo: 'As Artes', numeral: 'XV',
+    // sub-páginas do capítulo: aparecem indentadas sob ele na barra lateral
+    sub: [
+      { slug: 'artes/efeitos', titulo: 'Efeitos Especiais' },
+      { slug: 'artes/catalogo', titulo: 'As 24 Artes' },
+    ],
+  },
   { slug: 'regras/folego', titulo: 'Fôlego', numeral: 'XVI' },
   { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'XVII' },
   { slug: 'regras/qual-sistema', titulo: 'Qual Sistema Eu Uso?', numeral: 'XVIII' },

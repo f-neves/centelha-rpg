@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import { url } from '../../lib/site';
+import { loadData } from '../../lib/data';
+const d = await loadData();
+const elem = d.artes.filter((a) => a.categoria === 'elemental');
+const univ = d.artes.filter((a) => a.categoria === 'universal');
+const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase();
+---
+<Base title={`As ${d.artes.length} Artes`} largura="wide" descricao="O catálogo das Artes da feitiçaria: os seis níveis de cada uma, com exemplos do que aquele patamar alcança.">
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV · <a href={url('artes')}>As Artes</a></p>
+  <h1>As {d.artes.length} Artes</h1>
+  <p class="lead">Os seis níveis de cada Arte são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos <a href={url('artes') + '#parametros'}>parâmetros</a>. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
+
+  <div class="filtros panel">
+    <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
+    <fieldset style="display:inline-block;border:1px solid var(--panel-border);border-radius:5px;padding:.3rem .6rem;margin-left:.6rem">
+      <legend style="font-family:Cinzel;font-size:.72rem">Categoria</legend>
+      <label class="chk"><input type="checkbox" data-fa="cat" value="elemental" />elemental</label>
+      <label class="chk"><input type="checkbox" data-fa="cat" value="universal" />universal</label>
+    </fieldset>
+  </div>
+
+  {[['Artes Elementais', elem], ['Artes Universais', univ]].map(([titulo, lista]) => (
+    <section class="arte-sec">
+      <h2 style="text-align:center;border:none">{titulo}</h2>
+      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))">
+        {(lista as any[]).map((a) => (
+          <div class="panel arte" id={a.id} data-permalink data-cat={a.categoria} data-txt={txtDe(a)}>
+            <div class="arte-head">
+              <span class="cinzel arte-nome">{a.nome}</span>
+              <button class="bm" data-bm={`arte:${a.id}`} title="Marcar" aria-label={`Marcar ${a.nome}`}>☆</button>
+            </div>
+            <div class="muted arte-conj">conjura com {d.A[a.atributo_conjuracao.id].nome}</div>
+            <ol class="niveis">
+              {a.niveis.map((n: any) => (
+                <li>
+                  <span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong>: {n.efeito}{n.custo?.mana ? <span class="muted"> ({n.custo.mana} Mana)</span> : null}
+                  {n.exemplos?.length ? <ul class="nv-ex">{n.exemplos.map((e: string) => <li>{e}</li>)}</ul> : null}
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <nav class="artes-nav" data-pagefind-ignore>
+    <a class="btn" href={url('artes/efeitos')}>← Efeitos Especiais</a>
+    <a class="btn" href={url('artes')}>Regras das Artes</a>
+  </nav>
+</Base>
+
+<style>
+  .filtros { margin: .6rem 0; }
+  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; }
+  .arte-head { display: flex; align-items: center; gap: .5rem; }
+  .arte-nome { color: var(--accent); font-size: 1.15rem; flex: 1; }
+  .arte-conj { font-size: .82rem; font-style: italic; margin-bottom: .4rem; }
+  .niveis { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+  .niveis > li { margin-bottom: .5rem; line-height: 1.4; }
+  .nv-ex { list-style: none; margin: .2rem 0 0 1.8rem; padding: 0; font-size: .85rem; color: var(--ink-soft); }
+  .nv-ex li { position: relative; padding-left: .8rem; line-height: 1.35; margin-bottom: .1rem; }
+  .nv-ex li::before { content: '·'; position: absolute; left: .15rem; color: var(--accent); }
+  .niveis .lvl { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%;
+    background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .72rem; }
+  .bm { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--gold); }
+  .bm[aria-pressed='true'] { color: var(--accent); }
+  .artes-nav { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; margin: 2rem 0 .5rem; }
+</style>
+
+<script>
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.arte[data-cat]'));
+  const secs = Array.from(document.querySelectorAll<HTMLElement>('.arte-sec'));
+  const q = () => (document.querySelector('[data-fa="q"]') as HTMLInputElement).value.trim().toLowerCase();
+  const cats = () => Array.from(document.querySelectorAll<HTMLInputElement>('[data-fa="cat"]:checked')).map((c) => c.value);
+  const apply = () => {
+    const t = q(), c = cats();
+    for (const el of cards) el.style.display = (!c.length || c.includes(el.dataset.cat!)) && (!t || el.dataset.txt!.includes(t)) ? '' : 'none';
+    for (const s of secs) s.style.display = Array.from(s.querySelectorAll<HTMLElement>('.arte[data-cat]')).some((el) => el.style.display !== 'none') ? '' : 'none';
+  };
+  document.querySelectorAll('[data-fa]').forEach((e) => e.addEventListener('input', apply));
+  apply();
+</script>

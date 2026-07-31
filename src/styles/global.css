@@ -142,6 +142,10 @@ nav.toc a:hover { background: var(--panel); }
 nav.toc a[aria-current='page'] { background: var(--accent); color: var(--on-accent); }
 nav.toc a[aria-current='page'] .num { color: var(--on-accent); }
 nav.toc a .num { color: var(--accent); font-family: 'Cinzel'; font-size: .8rem; min-width: 2.1rem; }
+/* sub-páginas de um capítulo: recuadas e um pouco menores que o capítulo-pai */
+nav.toc a.subcap { padding-left: 2.6rem; font-size: .9rem; color: var(--ink-soft); }
+nav.toc a.subcap .num { min-width: 0; margin-left: -.9rem; }
+nav.toc a.subcap[aria-current='page'] { color: var(--on-accent); }
 
 /* ---------- componentes ---------- */
 .panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; padding: 1rem 1.1rem; box-shadow: 0 1px 2px var(--shadow); }

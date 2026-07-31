@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import FormasPop from '../components/FormasPop.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
+import { formaDe } from '../lib/artes-fmt';
 import regras from '../data/regras.json';
 const d = await loadData();
 const G = (regras as any).arcano.improviso.graus;
@@ -25,44 +26,22 @@ const EX_CONTA: [string, string, number][] = [
   ['Toque ardente: Dano 1 (1d6) + Alcance 1 (toque)', '1 + 1', 2],
   ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3 + 3 + 2', 8],
 ];
-const idDe = (x: any) => (typeof x === 'string' ? x : x?.id);
-// rótulos que ganham o cartão de formas ao passar o mouse
-const formaDe = (nome: string) => {
-  const n = nome.toLowerCase();
-  if (n.startsWith('volume')) return 'volume';
-  if (n.startsWith('área') || n.startsWith('area')) return 'area';
-  return undefined;
-};
-// nomes de exibição dos parâmetros que um Efeito pode substituir
-const NOME_PAR: Record<string, string> = { alcance: 'Alcance', area: 'Área', alvos: 'Alvos', dano: 'Dano', duracao: 'Duração' };
-// os parâmetros saem sempre na mesma ordem: Alcance, Alvos, Área (e as medidas que a
-// substituem), Dano, Duração e, por último, a jogada de Ataque.
-const RANK_PAR: Record<string, number> = { alcance: 0, alvos: 1, área: 2, area: 2, volume: 2, comprimento: 2, altura: 2, raio: 2, dano: 3, duração: 4, duracao: 4, ataque: 5 };
-const rankPar = (p: any) => RANK_PAR[p.nome.toLowerCase().split(' ')[0]] ?? RANK_PAR[(p.substitui || '').toLowerCase()] ?? 9;
-const ordemPar = (ps: any[]) => ps.map((p, i) => [p, i] as [any, number]).sort((a, b) => rankPar(a[0]) - rankPar(b[0]) || a[1] - b[1]).map(([p]) => p);
-// o valor curto de cada parâmetro: o que é fixo, a régua da duração, a nota de quem
-// substitui outro parâmetro, e o padrão para o resto.
-const valorPar = (p: any) => {
-  if (p.tipo === 'fixo') return p.valor;
-  if (p.tipo === 'substitui') return p.nota || `${p.escala.join(' · ')}${p.unidade ? ` (${p.unidade})` : ''}`;
-  if (p.regua) return p.regua === 'longa' ? 'Longa' : 'Breve';
-  if (p.nome.toLowerCase().startsWith('dano')) return '1d6 por nível';
-  return 'normal';
-};
-// Efeitos agrupados por Arte e ordenados por nível: um Efeito compartilhado aparece
-// sob cada Arte que o comporta, com o sabor daquela Arte.
-const efeitosPorArte = (arteId: string) => d.efeitos
-  .filter((e: any) => e.artes.some((x: any) => idDe(x.id) === arteId))
-  .map((e: any) => ({ ...e, sabor: e.artes.find((x: any) => idDe(x.id) === arteId)?.sabor }))
-  .sort((a: any, b: any) => a.nivel - b.nivel || a.nome.localeCompare(b.nome, 'pt'));
-const elem = d.artes.filter((a) => a.categoria === 'elemental');
-const univ = d.artes.filter((a) => a.categoria === 'universal');
-const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase();
 ---
 <Base title="As Artes" largura="wide" descricao="As 24 Artes da feitiçaria em detalhe: efeitos, parâmetros, regras e exemplos.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV</p>
   <h1>As Artes</h1>
-  <p class="lead">As {d.artes.length} linhas de feitiçaria em detalhe. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
+  <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
+
+  <nav class="artes-nav artes-nav-topo" data-pagefind-ignore>
+    <a class="cap-card" href={url('artes/efeitos')}>
+      <span class="cc-tit">Efeitos Especiais</span>
+      <span class="cc-sub">Os {d.efeitos.length} efeitos com nome próprio, agrupados por Arte: o que fazem, o que custam em XP e quais parâmetros você escolhe no cast.</span>
+    </a>
+    <a class="cap-card" href={url('artes/catalogo')}>
+      <span class="cc-tit">As {d.artes.length} Artes</span>
+      <span class="cc-sub">O catálogo: os seis níveis de cada Arte, com exemplos do que aquele patamar alcança.</span>
+    </a>
+  </nav>
 
   <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. &nbsp; <strong>Ritual</strong>, estendido: o cast passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
 
@@ -88,7 +67,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     </div>
     <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais.</p>
 
-    <h2>Os parâmetros</h2>
+    <h2 id="parametros">Os parâmetros</h2>
     <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração investindo pontos nos parâmetros. Nenhum parâmetro passa do <strong>nível da Arte</strong> que você tem, e <strong>você só paga o que usa</strong>: um alvo, instantâneo e sem área é o padrão, e sai de graça. O Alcance é a exceção, porque todo efeito comum precisa de pelo menos o toque.</p>
     <p class="muted">A tabela abaixo vale para as <strong>Artes elementais</strong>. As demais Artes têm parâmetros próprios, definidos caso a caso.</p>
     <div class="table-wrap">
@@ -103,7 +82,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     </div>
     <p class="muted">{G.notaArea} {G.notaAlcance}</p>
 
-    <h2>O que custa, e o desconto da Centelha</h2>
+    <h2 id="custo">O que custa, e o desconto da Centelha</h2>
     <div class="callout regra"><span class="lbl">A conta</span>
       Some os níveis investidos: <strong>1 ponto por nível</strong>, igual em todos os parâmetros. Do total, subtraia a sua <strong>Centelha</strong>. O que sobrar é o custo em <strong>Mana</strong>, um por um. Se o total couber dentro da Centelha, o efeito é <strong>grátis e ilimitado</strong>.
     </div>
@@ -198,7 +177,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 
     <h2>Quando o Mana volta</h2>
     <p>A reserva <strong>não</strong> volta por cena: quem se esvazia numa luta precisa de horas, não de um respiro. Você recupera <strong>{RECUP.normal}</strong>, e <strong>{RECUP.descanso}</strong>.</p>
-    <p class="muted">É o que separa a economia do Arcano da das Proezas: a Energia é o combustível da cena, o Mana é o combustível do dia. Quem investe na Arte <a href={url('artes') + '#manipulacao-mana'}>Manipulação de Mana</a> aumenta as duas coisas, a reserva e a velocidade com que ela volta.</p>
+    <p class="muted">É o que separa a economia do Arcano da das Proezas: a Energia é o combustível da cena, o Mana é o combustível do dia. Quem investe na Arte <a href={url('artes/catalogo') + '#manipulacao-mana'}>Manipulação de Mana</a> aumenta as duas coisas, a reserva e a velocidade com que ela volta.</p>
 
     <div class="callout regra"><span class="lbl">O lugar do feiticeiro</span>
       Feitiçaria não é build barata nem para personagem iniciante: no começo as conjurações são escassas, como as do mago nos primeiros níveis de outros sistemas. O feiticeiro do Centelha precisa de um <strong>papel secundário</strong>, e não necessariamente de combate: quando o Mana acaba, é dele que você vive.
@@ -234,112 +213,19 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     </div>
   </section>
 
-  <section class="arcano-regras" id="efeitos">
-    <h2>Os Efeitos Especiais</h2>
-    <p>A Arte dá o elemento em estado bruto; o <strong>Efeito</strong> dá forma, nome e comportamento. A régua é simples: <em>se precisa de um substantivo próprio para ser descrito, é Efeito.</em> Fogo é Arte, muro é Efeito, e subir a Arte nunca substitui o Efeito, porque muro não é fogo maior, é fogo com forma.</p>
-    <p>Cada Efeito custa <strong>2 × o nível dele</strong> em XP, e só se compra até o nível que você tem na Arte. Na hora de conjurar, o custo é <strong>o nível do Efeito mais os parâmetros usados</strong>, com o desconto da Centelha por cima. O <strong>mesmo Efeito serve a várias Artes</strong>, mudando o sabor e o efeito colateral, e quem já o conhece por uma Arte não paga XP de novo pela outra: precisa só ter a segunda Arte no nível dele.</p>
-    <p class="muted">Um Efeito compartilhado aparece sob cada Arte que o comporta, com o sabor daquela Arte. Dentro de cada Arte, os menores vêm primeiro.</p>
-    {elem.map((arte: any) => (
-      <div class="ef-bloco">
-        <h3 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h3>
-        <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(27rem,1fr))">
-          {efeitosPorArte(arte.id).map((e: any) => (
-            <div class="panel efeito" id={'ef-' + arte.id + '-' + e.id}>
-              <div class="ef-head">
-                <span class="cinzel ef-nome">{e.nome}</span>
-                <span class="ef-nivel" title={`exige ${arte.nome} ${e.nivel} · custa ${e.nivel * 2} de XP`}>{e.nivel}</span>
-              </div>
-              <p class="ef-sabor">{e.sabor}</p>
-              <p class="ef-txt">{e.efeito}</p>
-              <ul class="ef-par">
-                {ordemPar(e.parametros).map((p: any) => (
-                  <li>
-                    <span class="ef-p-n" data-formas={formaDe(p.nome)} tabindex={formaDe(p.nome) ? 0 : undefined}>{p.nome}:</span>
-                    <span class="ef-p-v">
-                      {valorPar(p)}
-                      {p.tipo === 'substitui' && p.nota && <span class="ef-p-esc muted">{p.escala.join(' · ')}{p.unidade ? ` (${p.unidade})` : ''}</span>}
-                      {p.tipo !== 'substitui' && p.nota && <span class="ef-p-esc muted">{p.nota}</span>}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              {e.notas && <p class="muted ef-nota">{e.notas}</p>}
-              {e.artes.length > 1 && (
-                <p class="muted ef-tb">Também em {e.artes.filter((x: any) => idDe(x.id) !== arte.id).map((x: any) => d.artes.find((a: any) => a.id === idDe(x.id))?.nome).join(', ')}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    ))}
-    <p class="muted">Estes são os Efeitos das Artes elementais. Os das demais Artes vêm depois, caso a caso.</p>
-  </section>
-
-  <section class="arcano-regras">
-    <h2>As {d.artes.length} Artes</h2>
-    <p>Os seis níveis de cada Arte, abaixo, são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos parâmetros, acima. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
-    <div class="filtros panel">
-      <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
-      <fieldset style="display:inline-block;border:1px solid var(--panel-border);border-radius:5px;padding:.3rem .6rem;margin-left:.6rem">
-        <legend style="font-family:Cinzel;font-size:.72rem">Categoria</legend>
-        <label class="chk"><input type="checkbox" data-fa="cat" value="elemental" />elemental</label>
-        <label class="chk"><input type="checkbox" data-fa="cat" value="universal" />universal</label>
-      </fieldset>
-    </div>
-  </section>
-
-  {[['Artes Elementais', elem], ['Artes Universais', univ]].map(([titulo, lista]) => (
-    <section class="arte-sec">
-      <h2 style="text-align:center;border:none">{titulo}</h2>
-      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))">
-        {(lista as any[]).map((a) => (
-          <div class="panel arte" id={a.id} data-permalink data-cat={a.categoria} data-txt={txtDe(a)}>
-            <div class="arte-head">
-              <span class="cinzel arte-nome">{a.nome}</span>
-              <button class="bm" data-bm={`arte:${a.id}`} title="Marcar" aria-label={`Marcar ${a.nome}`}>☆</button>
-            </div>
-            <div class="muted arte-conj">conjura com {d.A[a.atributo_conjuracao.id].nome}</div>
-            <ol class="niveis">
-              {a.niveis.map((n: any) => (
-                <li>
-                  <span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong>: {n.efeito}{n.custo?.mana ? <span class="muted"> ({n.custo.mana} Mana)</span> : null}
-                  {n.exemplos?.length ? <ul class="nv-ex">{n.exemplos.map((e: string) => <li>{e}</li>)}</ul> : null}
-                </li>
-              ))}
-            </ol>
-          </div>
-        ))}
-      </div>
-    </section>
-  ))}
+  <nav class="artes-nav" data-pagefind-ignore>
+    <a class="btn" href={url('artes/efeitos')}>Efeitos Especiais →</a>
+    <a class="btn" href={url('artes/catalogo')}>As {d.artes.length} Artes →</a>
+  </nav>
   <FormasPop />
 </Base>
 
 <style>
-  .filtros { margin: .6rem 0; }
-  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; }
   .graus-tab { font-size: .88rem; }
   .graus-tab td, .graus-tab th { white-space: nowrap; }
   .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
   .callout.revisao ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .callout.revisao li { margin-bottom: .2rem; }
-  .efeito { display: flex; flex-direction: column; gap: .4rem; font-size: 1.18rem; line-height: 1.45; }
-  .ef-head { display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--rule); padding-bottom: .35rem; }
-  .ef-nome { color: var(--accent); font-size: 1.3rem; flex: 1; }
-  .ef-nivel { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%;
-    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .85rem; flex: none; }
-  .ef-bloco { margin-top: 1.4rem; }
-  .ef-bloco-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: 1.15rem; margin: 0 0 .5rem;
-    border-bottom: 1px solid var(--rule); padding-bottom: .2rem; }
-  .ef-bloco-tit .muted { font-size: .75rem; font-weight: normal; }
-  .ef-sabor { color: var(--ink-soft); margin: 0; }
-  .ef-txt { margin: 0; }
-  .ef-par { list-style: none; margin: .1rem 0 0; padding: .4rem 0 0; border-top: 1px solid var(--rule); }
-  .ef-par li { display: grid; grid-template-columns: minmax(5rem, auto) 1fr; gap: 0 .5rem; margin-bottom: .2rem; }
-  .ef-p-n { font-weight: 600; }
-  .ef-p-esc { display: block; font-size: .82em; }
-  .ef-nota, .ef-tb { font-size: .85em; margin: .1rem 0 0; }
-  .efeito .muted { font-style: normal; }
   /* a tabela de abundância é de frases, não de números: as células quebram linha */
   .ab-tab { font-size: .86rem; table-layout: fixed; }
   .ab-tab th:first-child, .ab-tab td:first-child { width: 6.5rem; }
@@ -348,30 +234,11 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   .focos li { margin-bottom: .25rem; line-height: 1.5; }
   .fraq { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
   .fraq li { margin-bottom: .25rem; line-height: 1.5; }
-  .arte-head { display: flex; align-items: center; gap: .5rem; }
-  .arte-nome { color: var(--accent); font-size: 1.15rem; flex: 1; }
-  .arte-conj { font-size: .82rem; font-style: italic; margin-bottom: .4rem; }
-  .niveis { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
-  .niveis > li { margin-bottom: .5rem; line-height: 1.4; }
-  .nv-ex { list-style: none; margin: .2rem 0 0 1.8rem; padding: 0; font-size: .85rem; color: var(--ink-soft); }
-  .nv-ex li { position: relative; padding-left: .8rem; line-height: 1.35; margin-bottom: .1rem; }
-  .nv-ex li::before { content: '·'; position: absolute; left: .15rem; color: var(--accent); }
-  .niveis .lvl { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%;
-    background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .72rem; }
-  .bm { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--gold); }
-  .bm[aria-pressed='true'] { color: var(--accent); }
+  .artes-nav { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; margin: 2rem 0 .5rem; }
+  .artes-nav-topo { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); margin: 1rem 0 1.2rem; }
+  .cap-card { display: block; padding: .7rem .9rem; border: 1px solid var(--panel-border); border-radius: 6px;
+    background: var(--panel); text-decoration: none; color: inherit; transition: border-color .12s, transform .12s; }
+  .cap-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .cc-tit { display: block; font-family: 'Cinzel'; color: var(--accent); font-size: 1.05rem; }
+  .cc-sub { display: block; font-size: .86rem; color: var(--ink-soft); line-height: 1.4; margin-top: .15rem; }
 </style>
-
-<script>
-  const cards = Array.from(document.querySelectorAll<HTMLElement>('.arte[data-cat]'));
-  const secs = Array.from(document.querySelectorAll<HTMLElement>('.arte-sec'));
-  const q = () => (document.querySelector('[data-fa="q"]') as HTMLInputElement).value.trim().toLowerCase();
-  const cats = () => Array.from(document.querySelectorAll<HTMLInputElement>('[data-fa="cat"]:checked')).map((c) => c.value);
-  const apply = () => {
-    const t = q(), c = cats();
-    for (const el of cards) el.style.display = (!c.length || c.includes(el.dataset.cat!)) && (!t || el.dataset.txt!.includes(t)) ? '' : 'none';
-    for (const s of secs) s.style.display = Array.from(s.querySelectorAll<HTMLElement>('.arte[data-cat]')).some((el) => el.style.display !== 'none') ? '' : 'none';
-  };
-  document.querySelectorAll('[data-fa]').forEach((e) => e.addEventListener('input', apply));
-  apply();
-</script>

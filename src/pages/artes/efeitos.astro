@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import FormasPop from '../../components/FormasPop.astro';
+import { url } from '../../lib/site';
+import { loadData } from '../../lib/data';
+import { idDe, formaDe, ordemPar, valorPar } from '../../lib/artes-fmt';
+const d = await loadData();
+// Efeitos agrupados por Arte e ordenados por nível: um Efeito compartilhado aparece
+// sob cada Arte que o comporta, com o sabor daquela Arte.
+const efeitosPorArte = (arteId: string) => d.efeitos
+  .filter((e: any) => e.artes.some((x: any) => idDe(x.id) === arteId))
+  .map((e: any) => ({ ...e, sabor: e.artes.find((x: any) => idDe(x.id) === arteId)?.sabor }))
+  .sort((a: any, b: any) => a.nivel - b.nivel || a.nome.localeCompare(b.nome, 'pt'));
+const elem = d.artes.filter((a) => a.categoria === 'elemental');
+---
+<Base title="Efeitos Especiais" largura="wide" descricao="Os Efeitos Especiais das Artes elementais: o que cada um faz, o que custa e quais parâmetros o jogador escolhe na hora de conjurar.">
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV · <a href={url('artes')}>As Artes</a></p>
+  <h1>Os Efeitos Especiais</h1>
+  <p class="lead">A Arte dá o elemento em estado bruto; o <strong>Efeito</strong> dá forma, nome e comportamento. A régua é simples: <em>se precisa de um substantivo próprio para ser descrito, é Efeito.</em> Fogo é Arte, muro é Efeito, e subir a Arte nunca substitui o Efeito, porque muro não é fogo maior, é fogo com forma.</p>
+
+  <div class="callout regra"><span class="lbl">O que custa</span>
+    Cada Efeito custa <strong>2 × o nível dele</strong> em XP, e só se compra até o nível que você tem na Arte. Na hora de conjurar, o custo é <strong>o nível do Efeito mais os parâmetros usados</strong>, com o <a href={url('artes') + '#custo'}>desconto da Centelha</a> por cima. O <strong>mesmo Efeito serve a várias Artes</strong>, mudando o sabor e o efeito colateral, e quem já o conhece por uma Arte não paga XP de novo pela outra: precisa só ter a segunda Arte no nível dele.
+  </div>
+  <p class="muted">Um Efeito compartilhado aparece sob cada Arte que o comporta, com o sabor daquela Arte. Dentro de cada Arte, os menores vêm primeiro. Os parâmetros marcados como <strong>normal</strong> são os que você escolhe na hora, até o nível da Arte.</p>
+
+  <nav class="ef-indice" data-pagefind-ignore>
+    {elem.map((a: any) => (
+      <a href={'#ef-' + a.id}>{a.nome} <span class="muted">{efeitosPorArte(a.id).length}</span></a>
+    ))}
+  </nav>
+
+  {elem.map((arte: any) => (
+    <div class="ef-bloco" id={'ef-' + arte.id}>
+      <h2 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h2>
+      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(27rem,1fr))">
+        {efeitosPorArte(arte.id).map((e: any) => (
+          <div class="panel efeito" id={'ef-' + arte.id + '-' + e.id}>
+            <div class="ef-head">
+              <span class="cinzel ef-nome">{e.nome}</span>
+              <span class="ef-nivel" title={`exige ${arte.nome} ${e.nivel} · custa ${e.nivel * 2} de XP`}>{e.nivel}</span>
+            </div>
+            <p class="ef-sabor">{e.sabor}</p>
+            <p class="ef-txt">{e.efeito}</p>
+            <ul class="ef-par">
+              {ordemPar(e.parametros).map((p: any) => (
+                <li>
+                  <span class="ef-p-n" data-formas={formaDe(p.nome)} tabindex={formaDe(p.nome) ? 0 : undefined}>{p.nome}:</span>
+                  <span class="ef-p-v">
+                    {valorPar(p)}
+                    {p.tipo === 'substitui' && p.nota && <span class="ef-p-esc muted">{p.escala.join(' · ')}{p.unidade ? ` (${p.unidade})` : ''}</span>}
+                    {p.tipo !== 'substitui' && p.nota && <span class="ef-p-esc muted">{p.nota}</span>}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            {e.notas && <p class="muted ef-nota">{e.notas}</p>}
+            {e.artes.length > 1 && (
+              <p class="muted ef-tb">Também em {e.artes.filter((x: any) => idDe(x.id) !== arte.id).map((x: any) => d.artes.find((a: any) => a.id === idDe(x.id))?.nome).join(', ')}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+  <p class="muted">Estes são os Efeitos das Artes elementais. Os das demais Artes vêm depois, caso a caso.</p>
+
+  <nav class="artes-nav" data-pagefind-ignore>
+    <a class="btn" href={url('artes')}>← Regras das Artes</a>
+    <a class="btn" href={url('artes/catalogo')}>As {d.artes.length} Artes →</a>
+  </nav>
+  <FormasPop />
+</Base>
+
+<style>
+  .efeito { display: flex; flex-direction: column; gap: .4rem; font-size: 1.18rem; line-height: 1.45; }
+  .ef-head { display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--rule); padding-bottom: .35rem; }
+  .ef-nome { color: var(--accent); font-size: 1.3rem; flex: 1; }
+  .ef-nivel { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%;
+    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .85rem; flex: none; }
+  .ef-bloco { margin-top: 1.4rem; }
+  .ef-bloco-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: 1.15rem; margin: 0 0 .5rem;
+    border-bottom: 1px solid var(--rule); padding-bottom: .2rem; }
+  .ef-bloco-tit .muted { font-size: .75rem; font-weight: normal; }
+  .ef-sabor { color: var(--ink-soft); margin: 0; }
+  .ef-txt { margin: 0; }
+  .ef-par { list-style: none; margin: .1rem 0 0; padding: .4rem 0 0; border-top: 1px solid var(--rule); }
+  .ef-par li { display: grid; grid-template-columns: minmax(5rem, auto) 1fr; gap: 0 .5rem; margin-bottom: .2rem; }
+  .ef-p-n { font-weight: 600; }
+  .ef-p-esc { display: block; font-size: .82em; }
+  .ef-nota, .ef-tb { font-size: .85em; margin: .1rem 0 0; }
+  .efeito .muted { font-style: normal; }
+  .artes-nav { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; margin: 2rem 0 .5rem; }
+  .ef-indice { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: .8rem 0 1.2rem; }
+  .ef-indice a { font-family: 'Cinzel'; font-size: .85rem; text-decoration: none; color: var(--accent);
+    border: 1px solid var(--panel-border); border-radius: 999px; padding: .15rem .7rem; background: var(--panel); }
+  .ef-indice a:hover { border-color: var(--accent); }
+  .ef-indice .muted { font-style: normal; font-size: .78rem; }
+  .ef-bloco-tit { scroll-margin-top: 1rem; }
+</style>
