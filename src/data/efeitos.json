@@ -20,6 +20,10 @@
     ],
     "parametros": [
       {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
         "nome": "Volume",
         "tipo": "substitui",
         "substitui": "area",
@@ -33,10 +37,6 @@
           "10x10x10"
         ],
         "nota": "começa um nível acima da Área; molda em esfera, semiesfera, paralelepípedo ou cilindro"
-      },
-      {
-        "nome": "Alcance",
-        "tipo": "padrao"
       },
       {
         "nome": "Duração",
@@ -62,7 +62,7 @@
       },
       {
         "id": "raio",
-        "sabor": "a arma estala e atordoa"
+        "sabor": "a arma emite o elemento ao seu redor"
       },
       {
         "id": "terra",
@@ -100,7 +100,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Reveste uma arma empunhada com o elemento. Soma +2 por nível de dano ao dano da arma. Esse dano é do elemento e só pode ser absorvido com a resistência adequada."
+    "efeito": "Reveste uma arma empunhada com o elemento. Soma +2 de dano por nível ao dano da arma. Esse dano é do elemento e só pode ser absorvido com a resistência adequada."
   },
   {
     "id": "muro",
@@ -127,14 +127,26 @@
       {
         "id": "sombra",
         "sabor": "cortina de treva que apaga o que está atrás"
+      },
+      {
+        "id": "agua",
+        "sabor": "a parede de água empurra quem tenta passar"
+      },
+      {
+        "id": "vento",
+        "sabor": "a rajada em pé atrapalha e corta"
       }
     ],
     "parametros": [
       {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
         "nome": "Comprimento",
         "tipo": "substitui",
         "substitui": "area",
-        "unidade": "m de parede, 2 m de altura",
+        "unidade": "m de parede",
         "escala": [
           "2 m",
           "4 m",
@@ -145,20 +157,22 @@
         ]
       },
       {
-        "nome": "Alcance",
+        "nome": "Altura",
+        "tipo": "fixo",
+        "valor": "2 m",
+        "nota": "ao remodelar, o teto é o nível da Arte em metros"
+      },
+      {
+        "nome": "Dano",
         "tipo": "padrao"
       },
       {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
-      },
-      {
-        "nome": "Dano",
-        "tipo": "padrao"
       }
     ],
-    "efeito": "Ergue uma barreira. Terra e gelo bloqueiam de verdade; fogo, luz e sombra atrapalham e ferem quem insiste em passar."
+    "efeito": "Ergue uma barreira numa superfície firme, ou no elemento correspondente. Terra e gelo bloqueiam a passagem; fogo, água e ar atrapalham e ferem quem insiste em passar; luz e sombra apenas tapam a visão. Dá para mudar o formato da barreira respeitando a área e a altura máxima. As barreiras de terra e de gelo aceitam inclinação de até 45°, e a curvatura máxima de qualquer barreira é um semicírculo."
   },
   {
     "id": "aura",
@@ -285,11 +299,11 @@
         "tipo": "padrao"
       },
       {
-        "nome": "Área",
+        "nome": "Alvos",
         "tipo": "padrao"
       },
       {
-        "nome": "Alvos",
+        "nome": "Área",
         "tipo": "padrao"
       }
     ],
@@ -377,7 +391,7 @@
       },
       {
         "id": "raio",
-        "sabor": "o metal esquenta e choca"
+        "sabor": "o metal esquenta e arde"
       }
     ],
     "parametros": [
@@ -389,7 +403,7 @@
         "nome": "Dano",
         "tipo": "substitui",
         "substitui": "dano",
-        "unidade": "pontos",
+        "unidade": "pontos de Mana",
         "escala": [
           "—",
           "1d6",
@@ -398,7 +412,7 @@
           "2d6",
           "3d6"
         ],
-        "nota": "1d6 a cada 2 pontos"
+        "nota": "1d6 a cada 2 pontos de Mana"
       },
       {
         "nome": "Duração",
@@ -414,9 +428,14 @@
           "6 turnos"
         ],
         "nota": "1 turno a cada ponto"
+      },
+      {
+        "nome": "Ataque",
+        "tipo": "fixo",
+        "valor": "Percepção + Acerto Arcano"
       }
     ],
-    "efeito": "Aquece o metal à distância. Quem veste armadura de metal se queima e sofre penalidade enquanto durar; quem empunha arma de metal larga ou aguenta o dano."
+    "efeito": "Envia um ataque elemental que aquece o metal que acerta, mesmo se o ataque for bloqueado. Quem veste armadura, ou empunha uma arma, de metal se queima e sofre penalidade igual à quantidade de dados de dano jogados enquanto o efeito durar e estiver vestindo ou segurando o objeto."
   },
   {
     "id": "brasa-retardada",
@@ -513,11 +532,11 @@
         "tipo": "padrao"
       },
       {
-        "nome": "Área",
+        "nome": "Alvos",
         "tipo": "padrao"
       },
       {
-        "nome": "Alvos",
+        "nome": "Área",
         "tipo": "padrao"
       }
     ],
@@ -653,6 +672,11 @@
     ],
     "parametros": [
       {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque: exige uma batida no chão"
+      },
+      {
         "nome": "Área",
         "tipo": "substitui",
         "substitui": "area",
@@ -666,11 +690,6 @@
           "10x10"
         ],
         "nota": "começa um nível acima da Área; molda em círculo em volta de você ou em linha de pelo menos 1 m de largura"
-      },
-      {
-        "nome": "Alcance",
-        "tipo": "fixo",
-        "valor": "toque: exige uma batida no chão"
       },
       {
         "nome": "Duração",
@@ -761,11 +780,11 @@
         "tipo": "padrao"
       },
       {
-        "nome": "Área",
+        "nome": "Alvos",
         "tipo": "padrao"
       },
       {
-        "nome": "Alvos",
+        "nome": "Área",
         "tipo": "padrao"
       },
       {
@@ -961,6 +980,11 @@
     ],
     "parametros": [
       {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque: exige uma batida no chão"
+      },
+      {
         "nome": "Área",
         "tipo": "substitui",
         "substitui": "area",
@@ -974,11 +998,6 @@
           "10x10"
         ],
         "nota": "começa um nível acima da Área; molda em círculo em volta de você ou em linha de pelo menos 1 m de largura"
-      },
-      {
-        "nome": "Alcance",
-        "tipo": "fixo",
-        "valor": "toque: exige uma batida no chão"
       },
       {
         "nome": "Duração",
@@ -996,7 +1015,7 @@
     "artes": [
       {
         "id": "raio",
-        "sabor": "o choque tranca os músculos"
+        "sabor": "o choque enrijece os músculos"
       }
     ],
     "parametros": [
@@ -1017,9 +1036,14 @@
           "2 turnos",
           "3 turnos"
         ],
-        "nota": "1 turno a cada 2 pontos"
+        "nota": "1 turno a cada 2 pontos de Mana"
+      },
+      {
+        "nome": "Ataque",
+        "tipo": "fixo",
+        "valor": "Percepção + Acerto Arcano"
       }
     ],
-    "efeito": "O choque atravessa o alvo e tranca os músculos: enquanto durar, ele não age. Não causa dano; o alvo aguenta com Vigor + Convicção."
+    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo recebe 2 × (nível da Arte) de penalidade. Não causa dano."
   }
 ]
