@@ -386,13 +386,34 @@
         "tipo": "padrao"
       },
       {
-        "nome": "Alvos",
-        "tipo": "padrao"
+        "nome": "Dano",
+        "tipo": "substitui",
+        "substitui": "dano",
+        "unidade": "pontos",
+        "escala": [
+          "—",
+          "1d6",
+          "1d6",
+          "2d6",
+          "2d6",
+          "3d6"
+        ],
+        "nota": "1d6 a cada 2 pontos"
       },
       {
         "nome": "Duração",
-        "tipo": "padrao",
-        "regua": "breve"
+        "tipo": "substitui",
+        "substitui": "duracao",
+        "unidade": "turnos",
+        "escala": [
+          "1 turno",
+          "2 turnos",
+          "3 turnos",
+          "4 turnos",
+          "5 turnos",
+          "6 turnos"
+        ],
+        "nota": "1 turno a cada ponto"
       }
     ],
     "efeito": "Aquece o metal à distância. Quem veste armadura de metal se queima e sofre penalidade enquanto durar; quem empunha arma de metal larga ou aguenta o dano."
@@ -966,5 +987,39 @@
       }
     ],
     "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair; o que estava construído em cima racha junto. Com Duração alta, a fenda continua aberta depois da luta."
+  },
+  {
+    "id": "paralisia",
+    "nome": "Paralisia",
+    "nivel": 3,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "raio",
+        "sabor": "o choque tranca os músculos"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "substitui",
+        "substitui": "duracao",
+        "unidade": "turnos",
+        "escala": [
+          "—",
+          "1 turno",
+          "1 turno",
+          "2 turnos",
+          "2 turnos",
+          "3 turnos"
+        ],
+        "nota": "1 turno a cada 2 pontos"
+      }
+    ],
+    "efeito": "O choque atravessa o alvo e tranca os músculos: enquanto durar, ele não age. Não causa dano; o alvo aguenta com Vigor + Convicção."
   }
 ]
