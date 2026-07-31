@@ -159,8 +159,7 @@
       {
         "nome": "Altura",
         "tipo": "fixo",
-        "valor": "2 m",
-        "nota": "ao remodelar, o teto é o nível da Arte em metros"
+        "valor": "2 m de padrão; o topo nunca passa do nível da Arte, em metros"
       },
       {
         "nome": "Dano",
@@ -172,7 +171,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Ergue uma barreira numa superfície firme, ou no elemento correspondente. Terra e gelo bloqueiam a passagem; fogo, água e ar atrapalham e ferem quem insiste em passar; luz e sombra apenas tapam a visão. Dá para mudar o formato da barreira respeitando a área e a altura máxima. As barreiras de terra e de gelo aceitam inclinação de até 45°, e a curvatura máxima de qualquer barreira é um semicírculo."
+    "efeito": "Ergue uma barreira numa superfície firme, ou no elemento correspondente. Terra e gelo bloqueiam a passagem; fogo, água e ar atrapalham e ferem quem insiste em passar; luz e sombra apenas tapam a visão. Dá para moldar a área da barreira em vários formatos, inclusive esticar de comprimento ou levantar mais alto, desde que o topo nunca passe do nível da Arte, em metros. As barreiras de terra e de gelo aceitam inclinação de até 45°, e a curvatura máxima de qualquer barreira é um semicírculo."
   },
   {
     "id": "aura",
