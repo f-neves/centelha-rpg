@@ -1116,11 +1116,13 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1 por nível"
       },
       {
         "nome": "Cura",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1 PV por turno"
       },
       {
         "nome": "Duração",
@@ -1128,7 +1130,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada turno enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele.",
+    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada turno enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Não é uma cura muito eficiente, mas impede que o alvo piore.",
     "notas": "Serve no meio da luta, quando não há tempo de parar para curar direito."
   },
   {
@@ -1149,12 +1151,9 @@
         "valor": "toque"
       },
       {
-        "nome": "Alvos",
-        "tipo": "padrao"
-      },
-      {
         "nome": "Cura",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "transfere 3 de dano por nível"
       }
     ],
     "efeito": "O ferimento sai do alvo e entra em você, do jeito que estava. Não é cura: é mudança de dono. Você não pode transferir para um terceiro, e o que chegou em você cura pelas vias normais."
@@ -1173,7 +1172,8 @@
     "parametros": [
       {
         "nome": "Alcance",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
       },
       {
         "nome": "Área",
@@ -1182,7 +1182,8 @@
       {
         "nome": "Duração",
         "tipo": "padrao",
-        "regua": "breve"
+        "regua": "longa",
+        "nota": "exige concentração o tempo todo"
       }
     ],
     "efeito": "Dentro da área a dor cessa e nada piora: sangramentos param, venenos e doenças ficam suspensos, e quem está caindo não morre enquanto durar. Nada disso cura; só congela o quadro até alguém tratar de verdade."
@@ -1206,11 +1207,13 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1"
       },
       {
         "nome": "Cura",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1 PV por ponto"
       },
       {
         "nome": "Duração",
@@ -1218,7 +1221,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa a cura presa no alvo, dormindo. Ela dispara sozinha quando ele cair, sem gastar a sua ação e sem exigir que você esteja perto. Um alvo carrega uma cura guardada por vez."
+    "efeito": "Deixa a cura presa no alvo, dormindo, sem gastar a sua ação depois e sem exigir que você esteja perto. Quem decide a hora é o alvo, e ela dispara sozinha se ele cair incapacitado. Um alvo carrega uma cura guardada por vez."
   },
   {
     "id": "sarcal",
@@ -3716,11 +3719,13 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1"
       },
       {
         "nome": "Cura",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1d6 por nível, até o máximo do membro recuperado"
       }
     ],
     "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa."
