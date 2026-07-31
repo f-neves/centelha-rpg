@@ -245,7 +245,7 @@
       },
       {
         "id": "terra",
-        "sabor": "a pedra sobe e prende os pés"
+        "sabor": "a pedra sobe e prende as pernas"
       },
       {
         "id": "agua",
@@ -269,9 +269,19 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
+      },
+      {
+        "nome": "Ataque",
+        "tipo": "fixo",
+        "valor": "Percepção + Acerto Arcano"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível) × 4"
       }
     ],
-    "efeito": "Prende o alvo no lugar. Escapar exige Força ou Atletismo contra o nível do efeito, e cada tentativa gasta a ação."
+    "efeito": "O ataque com o elemento prende o alvo no lugar. Exige jogada do conjurador; o ataque é imbloqueável, mas pode ser esquivado. Escapar exige Força + Atletismo contra o nível do efeito, e cada tentativa gasta a ação."
   },
   {
     "id": "empurrao-elemental",
@@ -974,37 +984,44 @@
     "artes": [
       {
         "id": "terra",
-        "sabor": "o solo racha e engole"
+        "sabor": "o solo racha e engole os inimigos"
       }
     ],
     "parametros": [
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "toque: exige uma batida no chão"
+        "valor": "toque (requer uma batida no chão)"
       },
       {
         "nome": "Área",
-        "tipo": "substitui",
-        "substitui": "area",
-        "unidade": "m",
-        "escala": [
-          "1x1",
-          "2x2",
-          "4x4",
-          "6x6",
-          "8x8",
-          "10x10"
-        ],
-        "nota": "começa um nível acima da Área; molda em círculo em volta de você ou em linha de pelo menos 1 m de largura"
+        "tipo": "padrao",
+        "nota": "ou segue em linha, de pelo menos 1 metro de largura, até o alvo"
+      },
+      {
+        "nome": "Profundidade",
+        "tipo": "fixo",
+        "valor": "1 metro por ponto de Mana"
       },
       {
         "nome": "Duração",
-        "tipo": "padrao",
-        "regua": "longa"
+        "tipo": "fixo",
+        "valor": "permanente"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Destreza ou Raciocínio + Atletismo ou Equilíbrio",
+        "nota": "quem está na área rola para não cair"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível) × 5"
       }
     ],
-    "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair; o que estava construído em cima racha junto. Com Duração alta, a fenda continua aberta depois da luta."
+    "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair, e o que estava construído em cima racha junto. Só funciona em terreno feito predominantemente de terra ou de pedra.",
+    "notas": "A cada 5 pontos abaixo da Dificuldade, o alvo cai 1 metro, até o limite da Profundidade."
   },
   {
     "id": "paralisia",

@@ -13,8 +13,13 @@ export const formaDe = (nome: string) => {
 };
 
 // Os parâmetros saem sempre na mesma ordem: Alcance, Alvos, Área (e as medidas que a
-// substituem), Dano, Duração e, por último, a jogada de Ataque.
-const RANK: Record<string, number> = { alcance: 0, alvos: 1, área: 2, area: 2, volume: 2, comprimento: 2, altura: 2, raio: 2, dano: 3, duração: 4, duracao: 4, ataque: 5 };
+// acompanham ou substituem), Dano, Duração, a jogada (de quem ataca ou de quem sofre)
+// e a Dificuldade dela.
+const RANK: Record<string, number> = {
+  alcance: 0, alvos: 1,
+  área: 2, area: 2, volume: 2, comprimento: 2, altura: 2, raio: 2, profundidade: 2,
+  dano: 3, duração: 4, duracao: 4, ataque: 5, jogada: 5, dificuldade: 6,
+};
 const rank = (p: any) => RANK[p.nome.toLowerCase().split(' ')[0]] ?? RANK[(p.substitui || '').toLowerCase()] ?? 9;
 export const ordemPar = (ps: any[]) =>
   ps.map((p, i) => [p, i] as [any, number]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map(([p]) => p);
