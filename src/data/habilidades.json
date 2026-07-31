@@ -210,6 +210,17 @@
     "descricao": "O sobrenatural, a feitiçaria e seus símbolos."
   },
   {
+    "id": "acerto-arcano",
+    "nome": "Acerto Arcano",
+    "grupo": "saber",
+    "atributos": [
+      "percepcao",
+      "inteligencia"
+    ],
+    "secundaria": true,
+    "descricao": "Mirar com magia: pôr o efeito exatamente onde ele precisa cair. É a perícia dos feitiços que voam, agarram e marcam alvo, e some quando o efeito é em você, num aliado ou no cenário."
+  },
+  {
     "id": "burocracia",
     "nome": "Burocracia",
     "grupo": "saber",

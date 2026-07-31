@@ -413,11 +413,12 @@ calculados e dá −1d6 nas rolagens; soltar ou desfazer devolve na hora. Falta 
 penalidade acumula** por feitiço guardado (dois feitiços, Raciocínio dois níveis abaixo)? Há
 **teto** de quantos dá para carregar? E o feitiço guardado **vence** com o tempo?
 
-**2. Empurrão.** A fórmula da seção 6 é proposta, não decisão. Discutir a divisão por 4, o
-limiar de derrubada e o valor de empurrão do Ar. **Direção travada:** a resistência do alvo sai
-da **Força** somada ao **maior entre Equilíbrio e Atletismo** (Equilíbrio é secundária, do grupo
-Corpo). Falta o **peso**, que existe em toda criatura mas ainda não é um valor da ficha: decidir
-se ele sai do porte, se vira traço próprio, ou se entra por outra via.
+**2. Empurrão. RESOLVIDO.** Virou **Efeito Especial de nível 3** em Terra, Gelo, Água e Ar (e
+em Forças, que já empurra por natureza). O que decide é o **peso do alvo**, lido nas tabelas de
+Força que já existem: a Arte entra no lugar dos músculos com **FAH = (nível da Arte) × 5** no
+levantamento (diz se o alvo sai do lugar) e **FAA = (nível da Arte + Acerto Arcano) × 2** no
+arremesso (diz a que distância ele vai). Bater em obstáculo duro machuca como a queda equivalente.
+A fórmula antiga da seção 6 morreu, e com ela a pendência do peso (era a 8).
 
 **3. Rituais.** Encaminhado pela seção 6.6: **Ritual é o modo lento de conjurar**, que troca
 Mana por tempo e Vontade. Efeito duradouro não é Ritual, é Efeito com duração alta, porque
@@ -429,20 +430,18 @@ no modo lento, como o círculo de invocação.
 **são diferentes de propósito**. A Proeza é o corpo, o Arcano é o ambiente, e cada um tem o seu
 alcance natural. Nada a unificar.
 
-**4. Resistência: o número.** A **fraqueza já está fechada e no site** (ignora toda a Absorção,
-o dano é agravado, e aparar de mãos nuas fere quem apara). Falta o outro lado: **o que a
-resistência faz**? Corta o dano pela metade, aplica Absorção onde não haveria, ou anula de vez? E
-ela também protege do agravado? Proposta de partida: **metade do dano e nunca agravado**.
-Enquanto isso não fechar, não dá para preencher o bestiário, porque o campo não teria significado.
+**4. Resistência: o número. RESOLVIDO.** O dano daquele tipo cai pela **metade, arredondando
+para cima**, e nunca é agravado. Vale **antes da Absorção**: corta pela metade e só então desconta
+armadura e couro. Resistência e fraqueza se anulam quando a mesma criatura tem as duas.
+Exemplos travados: objeto e estrutura, morto-vivo, esqueleto e planta resistem a **Perfuração**;
+criatura de água ou de terra resiste a **fogo**; criatura de metal ou pedra também.
 
-**4b. Preencher o bestiário.** Depende da 4. Criar `fraquezas` e `resistencias` na criatura, como
-listas de palavras-chave (`luz`, `sagrado`, `profano`, `fogo`, `agua`, `prata`, `sol`). O
-preenchimento inicial sai por regra (Morto-vivo e Corruptor recebem `luz` e `sagrado`; Planta
-recebe `fogo`; Elemental e Construto saem pelo material) e depois se curam as exceções à mão. Para
-dimensionar: das 308 criaturas, 32 são Corruptor e 15 Morto-vivo, ou seja, o alvo natural do Luz é
-cerca de 15% do bestiário.
+**4b. Preencher o bestiário.** Agora destravado. Criar `fraquezas` e `resistencias` na criatura,
+como listas de palavras-chave. O preenchimento inicial sai por regra (Morto-vivo e Corruptor
+recebem luz e sagrado, Planta recebe fogo, Elemental e Construto saem pelo material) e depois se
+curam as exceções à mão. Das 308 criaturas, 32 são Corruptor e 15 Morto-vivo.
 
-**5. Rolagem das Artes.** Está sendo desenhado na frente das Trilhas, não aqui, mas afeta este
+**5. Rolagem das Artes.** *(o Acerto Arcano já existe: perícia **secundária de Saber**, em Percepção e Inteligência.)* Está sendo desenhado na frente das Trilhas, não aqui, mas afeta este
 documento: a conjuração deixa de ser Ocultismo para todos e passa a variar por **Tradição**, e há
 uma perícia nova, **Acerto Arcano**, para os efeitos mirados. Quando fechar, as seções 3 e 4 daqui
 precisam de revisão, porque hoje dizem "Ocultismo + Atributo".
@@ -454,9 +453,8 @@ precisam de revisão, porque hoje dizem "Ocultismo + Atributo".
 alheio (afia, enferruja, aquece a armadura no corpo, arranca a arma da mão, reduz Absorção),
 com gancho forte na "magia de ofício" dos anões. É só retomar o desenho quando quiser.
 
-**8. Peso, para o empurrão.** Não existe como valor de ficha. Sugestão registrada: tirar do
-**porte** (a tabela em `regras.json` já escala PV e multiplicador de Vigor de minúsculo a
-colossal), e deixar ajuste manual para quem quiser destacar (o anão baixo e denso, o elfo leve).
+**8. Peso, para o empurrão. RESOLVIDO pela 2.** Não virou traço de ficha: o empurrão passou a
+ler o peso pelas tabelas de Força que já existiam, e a Arte entra no lugar do músculo.
 
 **9. Focos das Artes não elementais.** O rascunho da seção 9.5 já está no site, mas falta fechar:
 quais Artes entram além das sete rascunhadas, e **como se mede a abundância de um foco** que não é
@@ -464,6 +462,15 @@ elemento (um baralho de tarô não tem "volume" como um rio tem).
 
 **10. O desconto da fonte pode passar de +1?** Hoje é fixo. Fica registrado que alguma condição
 especial (lugar sagrado do elemento, estação do ano, um pacto) poderia aumentá-lo.
+
+**11. Clarão Cegante: sem Dificuldade, por ora.** Ficou sem rolagem: quem está na área e olhando
+sofre a Penalidade. Se um dia precisar de resistência, o lugar é aqui.
+
+**12. O campo `escalonavel`.** Órfão desde que os níveis dos Efeitos viraram fixos. Ou vira
+`sucede` (comprar a Fenda por cima do Terremoto pagando a diferença), ou some do schema.
+
+**13. Efeitos elementais sem número.** Treze ainda estão só com parâmetros padrão, e Fogo, Raio e
+Luz não têm nada de nível 1. Frente de revisão do autor.
 
 ---
 

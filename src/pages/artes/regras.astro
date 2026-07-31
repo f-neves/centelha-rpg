@@ -21,6 +21,7 @@ const LINHAS_GRAU: [string, string[]][] = [
 const RITUAL = (regras as any).arcano.ritual;
 const FONTE = (regras as any).arcano.fonteElemental;
 const CURA = (regras as any).arcano.cura;
+const FRAQ = (regras as any).arcano.fraquezas;
 const RECUP = (regras as any).arcano.recuperacaoMana;
 // conjurações de exemplo: [descrição, contas, total]
 const EX_CONTA: [string, string, number][] = [
@@ -222,6 +223,14 @@ const EX_CONTA: [string, string, number][] = [
     </ul>
     <p class="formula">Um elemental de madeira que tenta aparar uma lâmina feita inteira de fogo leva o dano cheio, sem absorver nada, e a queimadura não fecha sozinha.</p>
 
+    <p>A <strong>resistência</strong> é o avesso disso, e é bem mais comum:</p>
+    <div class="callout regra"><span class="lbl">O que a resistência faz</span>
+      {FRAQ.resistencia}
+    </div>
+    <ul class="fraq">
+      {FRAQ.resistenciaExemplos.map((x: string) => <li>{x}</li>)}
+    </ul>
+
     <div class="callout revisao"><span class="lbl">Em revisão</span>
       Esta parte do capítulo está sendo reescrita. Ainda falta definir:
       <ul>
@@ -229,8 +238,9 @@ const EX_CONTA: [string, string, number][] = [
         <li>Revisar a <strong>primeira leva</strong> de Efeitos das Artes não elementais: os números e os limites de cada um ainda não passaram por mesa.</li>
         <li>Como o Efeito Especial entra no <strong>bestiário</strong> (na ficha ele já tem lugar).</li>
         {FONTE.pendencias.map((p: string) => <li>{p}</li>)}
-        <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo. A resistência sai da <strong>Força</strong> mais o maior entre <strong>Equilíbrio</strong> e <strong>Atletismo</strong>, e ainda falta resolver o peso do alvo, que hoje não é um valor da ficha.</li>
-        <li>O que a <strong>resistência</strong> faz em número (a fraqueza já está resolvida acima), e o preenchimento das duas no bestiário.</li>
+        <li>Preencher <strong>fraquezas</strong> e <strong>resistências</strong> nas 308 criaturas do bestiário; a regra das duas já está fechada acima.</li>
+        <li>Se o campo <strong>escalonavel</strong> dos Efeitos vira "sucede" (pagar só a diferença de um Efeito para o irmão maior) ou some de vez.</li>
+        <li>Treze Efeitos <strong>elementais</strong> ainda estão sem número, e Fogo, Raio e Luz não têm nenhum de nível 1.</li>
         <li>Se a penalidade de guardar feitiço acumula por feitiço, e se há teto de quantos dá para carregar.</li>
       </ul>
     </div>

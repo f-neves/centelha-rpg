@@ -294,12 +294,16 @@
   {
     "id": "empurrao-elemental",
     "nome": "Empurrão",
-    "nivel": 1,
+    "nivel": 3,
     "escalonavel": true,
     "artes": [
       {
         "id": "vento",
         "sabor": "a rajada joga para longe"
+      },
+      {
+        "id": "gelo",
+        "sabor": "a placa de gelo desliza e leva junto"
       },
       {
         "id": "agua",
@@ -326,10 +330,21 @@
       {
         "nome": "Área",
         "tipo": "padrao"
+      },
+      {
+        "nome": "FAH",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5",
+        "nota": "entra na tabela de levantamento e diz o peso que a Arte move"
+      },
+      {
+        "nome": "FAA",
+        "tipo": "fixo",
+        "valor": "(nível da Arte + Acerto Arcano) × 2",
+        "nota": "entra na tabela de arremesso e diz a distância"
       }
     ],
-    "efeito": "Arremessa quem está na área. A resistência sai da Força mais o maior entre Equilíbrio e Atletismo; bater em obstáculo duro machuca.",
-    "notas": "A fórmula do empurrão ainda está em revisão."
+    "efeito": "Empurra ou arremessa o alvo, e o que decide é o PESO dele. A Arte entra no lugar dos músculos nas tabelas de Força: o que ela consegue erguer diz se o alvo sai do lugar, e o que ela consegue arremessar diz a que distância ele vai. Bater em obstáculo duro machuca como uma queda daquela distância."
   },
   {
     "id": "chao-traicoeiro",

@@ -1172,7 +1172,14 @@
         "aparar de mãos nuas fere: quem tenta bloquear o golpe com o corpo sofre o dano do mesmo jeito"
       ],
       "exemplo": "Um elemental de madeira que tenta aparar uma lâmina feita inteira de fogo leva o dano cheio, sem absorver nada, e a queimadura não fecha sozinha.",
-      "resistencia": "A DEFINIR: proposta é o dano daquele elemento cair pela metade e nunca ser agravado.",
+      "resistencia": "O dano daquele tipo cai pela METADE, arredondando para cima, e nunca é agravado. Vale antes da Absorção: primeiro corta pela metade, depois desconta o que a armadura e o couro seguram. Resistência é o avesso da fraqueza, e as duas se anulam quando a mesma criatura tem as duas.",
+      "resistenciaExemplos": [
+        "Objeto e estrutura resistem a PERFURAÇÃO: furar uma porta não a derruba.",
+        "Morto-vivo e esqueleto resistem a Perfuração: não há órgão para a lâmina achar.",
+        "Planta e criatura de madeira resistem a Perfuração pelo mesmo motivo, e temem fogo.",
+        "Criatura de água ou de terra resiste a fogo.",
+        "Criatura de metal ou de pedra resiste a fogo."
+      ],
       "campoBestiario": "criar `fraquezas` e `resistencias` na criatura, como listas de palavras-chave (luz, sagrado, profano, fogo, agua, prata, sol)"
     },
     "efeitos": {
