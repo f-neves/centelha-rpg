@@ -25,22 +25,25 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   {[['Artes Elementais', elem], ['Artes Universais', univ]].map(([titulo, lista]) => (
     <section class="arte-sec">
       <h2 style="text-align:center;border:none">{titulo}</h2>
-      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(20rem,1fr))">
+      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(27rem,1fr))">
         {(lista as any[]).map((a) => (
           <div class="panel arte" id={a.id} data-permalink data-cat={a.categoria} data-txt={txtDe(a)}>
             <div class="arte-head">
               <span class="cinzel arte-nome">{a.nome}</span>
               <button class="bm" data-bm={`arte:${a.id}`} title="Marcar" aria-label={`Marcar ${a.nome}`}>☆</button>
             </div>
-            <div class="muted arte-conj">conjura com {d.A[a.atributo_conjuracao.id].nome}</div>
-            <ol class="niveis">
+            <p class="arte-conj">conjura com {d.A[a.atributo_conjuracao.id].nome}</p>
+            <ul class="niveis">
               {a.niveis.map((n: any) => (
                 <li>
-                  <span class="lvl">{n.nivel}</span> <strong>{n.nome}</strong>: {n.efeito}{n.custo?.mana ? <span class="muted"> ({n.custo.mana} Mana)</span> : null}
-                  {n.exemplos?.length ? <ul class="nv-ex">{n.exemplos.map((e: string) => <li>{e}</li>)}</ul> : null}
+                  <span class="lvl">{n.nivel}</span>
+                  <span class="nv-corpo">
+                    <strong>{n.nome}</strong>: {n.efeito}{n.custo?.mana ? <span class="muted"> ({n.custo.mana} Mana)</span> : null}
+                    {n.exemplos?.length ? <span class="nv-ex muted">{n.exemplos.map((e: string) => <span>{e}</span>)}</span> : null}
+                  </span>
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
         ))}
       </div>
@@ -57,16 +60,20 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 <style>
   .filtros { margin: .6rem 0; }
   .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; }
-  .arte-head { display: flex; align-items: center; gap: .5rem; }
-  .arte-nome { color: var(--accent); font-size: 1.15rem; flex: 1; }
-  .arte-conj { font-size: .82rem; font-style: italic; margin-bottom: .4rem; }
-  .niveis { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
-  .niveis > li { margin-bottom: .5rem; line-height: 1.4; }
-  .nv-ex { list-style: none; margin: .2rem 0 0 1.8rem; padding: 0; font-size: .85rem; color: var(--ink-soft); }
-  .nv-ex li { position: relative; padding-left: .8rem; line-height: 1.35; margin-bottom: .1rem; }
-  .nv-ex li::before { content: '·'; position: absolute; left: .15rem; color: var(--accent); }
-  .niveis .lvl { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%;
-    background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: .72rem; }
+  /* mesmo desenho dos cartões de Efeito Especial: corpo em 1.18rem, sem itálico,
+     cabeçalho separado por filete e a lista com a bolinha do nível na coluna da esquerda */
+  .arte { display: flex; flex-direction: column; gap: .4rem; font-size: 1.18rem; line-height: 1.45; }
+  .arte-head { display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--rule); padding-bottom: .35rem; }
+  .arte-nome { color: var(--accent); font-size: 1.3rem; flex: 1; }
+  .arte-conj { color: var(--ink-soft); margin: 0; }
+  .arte .muted { font-style: normal; }
+  .niveis { list-style: none; margin: .1rem 0 0; padding: .4rem 0 0; border-top: 1px solid var(--rule); }
+  .niveis > li { display: grid; grid-template-columns: 1.6rem 1fr; gap: 0 .5rem; margin-bottom: .35rem; }
+  .niveis .lvl { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%;
+    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .85rem; }
+  .nv-ex { display: block; font-size: .82em; margin-top: .1rem; }
+  .nv-ex span { display: block; position: relative; padding-left: .8rem; }
+  .nv-ex span::before { content: '·'; position: absolute; left: .15rem; color: var(--accent); }
   .bm { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--gold); }
   .bm[aria-pressed='true'] { color: var(--accent); }
   .artes-nav { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; margin: 2rem 0 .5rem; }
