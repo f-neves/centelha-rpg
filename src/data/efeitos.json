@@ -208,7 +208,7 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "centralizado no personagem"
+        "valor": "centralizado no conjurador"
       },
       {
         "nome": "Volume",
@@ -811,7 +811,7 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "centralizado no personagem"
+        "valor": "centralizado no conjurador"
       },
       {
         "nome": "Área",
@@ -844,7 +844,8 @@
     "parametros": [
       {
         "nome": "Alcance",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
       },
       {
         "nome": "Área",
@@ -852,11 +853,11 @@
       },
       {
         "nome": "Duração",
-        "tipo": "padrao",
-        "regua": "breve"
+        "tipo": "fixo",
+        "valor": "instantânea"
       }
     ],
-    "efeito": "Desfaz camuflagem, disfarce e invisibilidade dentro da área, inclusive os que vêm de outra Arte. Contra Ofuscação e Sombra é disputa direta de nível."
+    "efeito": "Desfaz camuflagem, disfarce e invisibilidade dentro da área, inclusive os que vêm de outra Arte. Contra Ofuscação e Sombra é disputa direta de nível: revela o que for de Arte de nível igual ou inferior ao seu."
   },
   {
     "id": "aurora",
