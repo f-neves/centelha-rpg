@@ -1245,7 +1245,9 @@
       },
       {
         "nome": "Dano",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1d6 por nível",
+        "nota": "só em quem atravessa, uma vez por turno"
       },
       {
         "nome": "Duração",
@@ -1253,7 +1255,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Levanta uma moita fechada de espinhos: cobertura para quem se agacha, terreno ruim para quem atravessa, e dano em quem insiste em passar por dentro. Cortar caminho é possível, mas custa tempo."
+    "efeito": "Levanta uma moita fechada de espinhos. Quem se agacha atrás dela ganha cobertura; quem atravessa anda na metade da velocidade e se fere no caminho. Abrir uma passagem limpa é possível, mas custa uma ação e uma lâmina."
   },
   {
     "id": "semente-adormecida",
@@ -1277,15 +1279,28 @@
       },
       {
         "nome": "Dano",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1d6 por nível"
       },
       {
         "nome": "Duração",
         "tipo": "padrao",
-        "regua": "longa"
+        "regua": "longa",
+        "nota": "o tempo que a semente espera, não o do efeito"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Percepção + Prontidão",
+        "nota": "para notar a armadilha antes de pisar nela"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Planta o efeito num ponto e ele dorme até alguém passar, tocar ou até o prazo combinado. É a armadilha do jardineiro: cresce de uma vez, agarra e fere."
+    "efeito": "Planta o efeito num ponto e ele dorme até alguém pisar, tocar, ou até a hora combinada. Cresce de uma vez, agarra quem estiver em cima e fere. É a armadilha do jardineiro: enquanto espera, é só uma semente no chão."
   },
   {
     "id": "enxerto",
@@ -1306,15 +1321,28 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1"
       },
       {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "longa"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vigor + Convicção",
+        "nota": "só quando o alvo não quer o enxerto"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Empresta ao corpo do alvo um traço vivo que ele não tinha: guelras, olhos de coruja, um couro mais grosso, um dedo a mais. Um traço por conjuração, e o corpo o rejeita quando a duração acaba."
+    "efeito": "Empresta ao corpo do alvo um traço vivo que ele não tinha: guelras, olhos de coruja, couro mais grosso, um dedo a mais. Um traço por conjuração, e o corpo o rejeita quando a duração acaba. Em quem não quer, é ataque, e o corpo luta contra.",
+    "notas": "O traço vale +1 por nível no que ele faz: Absorção do couro, distância que o olho enxerga, tempo que a guelra aguenta."
   },
   {
     "id": "podridao",
@@ -3034,9 +3062,26 @@
         "tipo": "padrao"
       },
       {
+        "nome": "Dano",
+        "tipo": "fixo",
+        "valor": "1d6 por nível",
+        "nota": "em quem a mata agarrar no turno"
+      },
+      {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "longa"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Força + Atletismo",
+        "nota": "para se soltar do que agarrou"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
       }
     ],
     "efeito": "O lugar vira mata viva e do seu lado: raiz que agarra o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar."
