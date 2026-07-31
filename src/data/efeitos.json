@@ -278,10 +278,10 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível) × 4"
+        "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "O ataque com o elemento prende o alvo no lugar. Exige jogada do conjurador; o ataque é imbloqueável, mas pode ser esquivado. Escapar exige Força + Atletismo contra o nível do efeito, e cada tentativa gasta a ação."
+    "efeito": "O ataque com o elemento prende o alvo no lugar. Exige jogada do conjurador; o ataque é imbloqueável, mas pode ser esquivado. Escapar exige Força + Atletismo contra a Dificuldade, e cada tentativa gasta a ação. Quando a duração acaba, a matéria deixa de ser mágica e solta o alvo, mesmo que tenha sido erguida com terra de verdade."
   },
   {
     "id": "empurrao-elemental",
@@ -1017,7 +1017,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível) × 5"
+        "valor": "(nível da Arte) × 5"
       }
     ],
     "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair, e o que estava construído em cima racha junto. Só funciona em terreno feito predominantemente de terra ou de pedra.",

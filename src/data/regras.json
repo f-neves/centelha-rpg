@@ -1229,7 +1229,8 @@
       "consumo": "O desconto cobra a fonte, e o consumo é proporcional ao nível usado: um efeito de nível 1 tirado de um barril leva só parte da água, e o barril ainda serve depois. Gastar a fonte não é opcional; é o que impede repetir o mesmo truque no mesmo lugar a noite inteira.",
       "permanencia": {
         "comMateria": "Elementos que têm corpo (terra, água, gelo) continuam no mundo quando a magia acaba, mas voltam ao estado natural: a parede de água desaba e molha o chão, a parede de terra vira um monte de terra empilhada. Se a água não escorreu nem se espalhou, dá para usá-la de novo como fonte.",
-        "semMateria": "Elementos sem corpo (fogo, raio, luz, sombra) simplesmente somem no fim da duração, como qualquer conjuração."
+        "excecao": "O Efeito manda mais que a fonte: quando ele diz que solta, solta. A Prisão erguida com terra de verdade abre e libera o alvo no fim da duração, porque prender é o que a magia estava fazendo; o que fica de pé é a matéria que ninguém precisa segurar, como um muro ou uma fenda.",
+      "semMateria": "Elementos sem corpo (fogo, raio, luz, sombra) simplesmente somem no fim da duração, como qualquer conjuração."
       },
       "ritual": {
         "texto": "O +1 entra antes da multiplicação do Ritual, então um ritual longo à beira do rio rende bem mais do que o mesmo ritual num quarto seco.",
