@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import FormasPop from '../components/FormasPop.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
 import regras from '../data/regras.json';
@@ -24,6 +25,13 @@ const EX_CONTA: [string, string, number][] = [
   ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3 + 3 + 2', 8],
 ];
 const idDe = (x: any) => (typeof x === 'string' ? x : x?.id);
+// rótulos que ganham o cartão de formas ao passar o mouse
+const formaDe = (nome: string) => {
+  const n = nome.toLowerCase();
+  if (n.startsWith('volume')) return 'volume';
+  if (n.startsWith('área') || n.startsWith('area')) return 'area';
+  return undefined;
+};
 // nomes de exibição dos parâmetros que um Efeito pode substituir
 const NOME_PAR: Record<string, string> = { alcance: 'Alcance', area: 'Área', alvos: 'Alvos', dano: 'Dano', duracao: 'Duração' };
 // os parâmetros saem sempre na mesma ordem: primeiro onde chega, depois o que atinge,
@@ -89,7 +97,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
         <thead><tr><th>Parâmetro</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
         <tbody>
           {LINHAS_GRAU.map(([nome, vals]) => (
-            <tr><td><strong>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
+            <tr><td><strong data-formas={formaDe(nome)} tabindex={formaDe(nome) ? 0 : undefined}>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
           ))}
         </tbody>
       </table>
@@ -215,7 +223,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
               <ul class="ef-par">
                 {ordemPar(e.parametros).map((p: any) => (
                   <li>
-                    <span class="ef-p-n">{p.nome}:</span>
+                    <span class="ef-p-n" data-formas={formaDe(p.nome)} tabindex={formaDe(p.nome) ? 0 : undefined}>{p.nome}:</span>
                     <span class="ef-p-v">
                       {valorPar(p)}
                       {p.tipo === 'substitui' && p.nota && <span class="ef-p-esc muted">{p.escala.join(' · ')}{p.unidade ? ` (${p.unidade})` : ''}</span>}
@@ -273,6 +281,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
       </div>
     </section>
   ))}
+  <FormasPop />
 </Base>
 
 <style>

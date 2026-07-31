@@ -2,6 +2,7 @@
 // Esqueleto (markup + estilos) da ficha interativa, compartilhado por /ficha e /personagem.
 // O comportamento vive em src/lib/ficha-engine.ts (montarFicha).
 import RoladorDados from './RoladorDados.astro';
+import FormasPop from './FormasPop.astro';
 ---
 <div class="xpbar" id="painel">
   <span class="big">XP: <b id="xpSpent">0</b></span>
@@ -77,6 +78,7 @@ import RoladorDados from './RoladorDados.astro';
 
 <h2 class="barh">Rolar</h2>
 <RoladorDados compact />
+<FormasPop />
 
 <!-- is:global porque o conteúdo (bolinhas, cards, pílulas) é criado via JS e
      não recebe o atributo de escopo do Astro -->

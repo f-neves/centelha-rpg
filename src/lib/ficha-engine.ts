@@ -344,8 +344,13 @@ export function montarFicha(opts: FichaOpts) {
     const nomeArte = (id: string) => (ARTE_D as any[]).find((a) => a.id === id)?.nome || id;
     const linhas = disp.map(({ e, artes }) => {
       const on = !!S.efeito[e.id];
+      // Área e Volume abrem o cartão de formas ao passar o mouse (ver FormasPop)
+      const rot = (n: string) => {
+        const f = n.toLowerCase().startsWith('volume') ? 'volume' : /^(á|a)rea/.test(n.toLowerCase()) ? 'area' : '';
+        return f ? `<span data-formas="${f}" tabindex="0">${n}</span>` : n;
+      };
       const par = e.parametros
-        .map((p: any) => (p.tipo === 'fixo' ? `${p.nome}: ${p.valor}` : p.regua ? `${p.nome}: ${p.regua === 'longa' ? 'Longa' : 'Breve'}` : p.nome))
+        .map((p: any) => (p.tipo === 'fixo' ? `${rot(p.nome)}: ${p.valor}` : p.regua ? `${rot(p.nome)}: ${p.regua === 'longa' ? 'Longa' : 'Breve'}` : rot(p.nome)))
         .join(' · ');
       return `<label class="ef-item${on ? ' on' : ''}"><input type="checkbox" data-efeito="${e.id}"${on ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''} />
         <span class="ef-i-nv">${e.nivel}</span>
