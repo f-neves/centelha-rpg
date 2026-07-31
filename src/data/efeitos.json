@@ -1526,6 +1526,11 @@
         "regua": "breve"
       },
       {
+        "nome": "Bônus",
+        "tipo": "fixo",
+        "valor": "+1d6 por nível nas rolagens sociais com o alvo"
+      },
+      {
         "nome": "Dificuldade",
         "tipo": "fixo",
         "valor": "Defesa Mental do alvo"
@@ -1599,6 +1604,11 @@
         "nome": "Dificuldade",
         "tipo": "fixo",
         "valor": "Defesa Mental do alvo"
+      },
+      {
+        "nome": "Penalidade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) para quem aguentar e ficar"
       }
     ],
     "efeito": "Planta terror puro. Quem falha foge do jeito que der, e quem resiste ainda luta abalado. O medo é do lugar, não de você: quem correu não sabe dizer de que fugiu."
@@ -1874,6 +1884,11 @@
         "tipo": "padrao"
       },
       {
+        "nome": "Força",
+        "tipo": "fixo",
+        "valor": "conta como Força 1 por nível, só para empurrar, puxar e segurar"
+      },
+      {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
@@ -1980,6 +1995,11 @@
       {
         "nome": "Alvos",
         "tipo": "padrao"
+      },
+      {
+        "nome": "Absorção",
+        "tipo": "fixo",
+        "valor": "+1 por nível, contra tudo o que vem de fora"
       },
       {
         "nome": "Duração",
@@ -2106,7 +2126,8 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Comprime o alvo de todos os lados de uma vez. O dano volta a cada turno enquanto durar, e quem está sendo esmagado não fala, não conjura e mal se mexe. Contra objeto, amassa e arrebenta."
+    "efeito": "Comprime o alvo de todos os lados de uma vez. O dano volta a cada turno enquanto durar, e quem está sendo esmagado não fala, não conjura e mal se mexe. Contra objeto, amassa e arrebenta.",
+    "notas": "Contra objeto não há jogada: amassa, entorta e arrebenta o que couber na mão fechada da magia."
   },
   {
     "id": "remendo",
@@ -2178,6 +2199,11 @@
         "tipo": "padrao"
       },
       {
+        "nome": "Penalidade",
+        "tipo": "fixo",
+        "valor": "−1 de Absorção ou de dano por nível"
+      },
+      {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
@@ -2228,6 +2254,11 @@
       {
         "nome": "Alvos",
         "tipo": "padrao"
+      },
+      {
+        "nome": "Penalidade",
+        "tipo": "fixo",
+        "valor": "+2 Ticks por nível em cada ação do alvo"
       },
       {
         "nome": "Duração",
@@ -2291,6 +2322,11 @@
       {
         "nome": "Área",
         "tipo": "padrao"
+      },
+      {
+        "nome": "Efeito",
+        "tipo": "fixo",
+        "valor": "o tempo lá dentro corre ao dobro ou à metade, e você escolhe qual ao conjurar"
       },
       {
         "nome": "Duração",
@@ -2371,6 +2407,11 @@
       {
         "nome": "Alcance",
         "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "fixo",
+        "valor": "1 espírito por 2 níveis"
       },
       {
         "nome": "Duração",
@@ -2461,6 +2502,11 @@
         "tipo": "padrao"
       },
       {
+        "nome": "Absorve",
+        "tipo": "fixo",
+        "valor": "um efeito arcano de nível igual ou menor ao investido"
+      },
+      {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "longa"
@@ -2493,6 +2539,17 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "longa"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vontade + Convicção",
+        "nota": "para a criatura forçar a linha"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
       }
     ],
     "efeito": "Um círculo desenhado que uma categoria de criatura não atravessa: mortos-vivos, espíritos, feras, corruptores. Você escolhe a categoria ao traçar. Quebrar a linha desfaz tudo, e quem está dentro pode quebrá-la por descuido."
@@ -2550,6 +2607,11 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "Defesa Mental do alvo"
       }
     ],
     "efeito": "Quem olha para você vê, registra e esquece. Descrever o seu rosto depois fica impossível, e o retrato falado nunca fecha. Não esconde nada: só apaga a lembrança de ter visto."
@@ -2609,6 +2671,11 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "Defesa Mental do alvo"
       }
     ],
     "efeito": "Some com um objeto aos olhos dos outros, na sua mão ou na de quem você tocar: a arma no cinto, o livro debaixo do braço, o corpo no carrinho. Quem esbarrar sente, e quem procurar com a mão acha."
@@ -2667,6 +2734,17 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "longa"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Percepção + Sobrevivência",
+        "nota": "de quem persegue"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
       }
     ],
     "efeito": "A vegetação abre para o seu grupo e fecha logo atrás: pegada some, galho volta ao lugar, quem persegue perde o rastro e o tempo. Não funciona onde não há mato."
@@ -2689,7 +2767,8 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1 bicho por vez, trocável durante a duração"
       },
       {
         "nome": "Duração",
@@ -2715,6 +2794,11 @@
         "nome": "Alcance",
         "tipo": "fixo",
         "valor": "em você"
+      },
+      {
+        "nome": "Bônus",
+        "tipo": "fixo",
+        "valor": "+1d6 por nível nas rolagens daquele sentido"
       },
       {
         "nome": "Duração",
@@ -2765,6 +2849,11 @@
         "nome": "Alcance",
         "tipo": "fixo",
         "valor": "em você"
+      },
+      {
+        "nome": "Voo",
+        "tipo": "fixo",
+        "valor": "o seu deslocamento normal no ar, e mais alto a cada nível"
       },
       {
         "nome": "Duração",
@@ -3888,6 +3977,12 @@
         "regua": "breve"
       },
       {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Percepção + Prontidão",
+        "nota": "para desconfiar sem tocar"
+      },
+      {
         "nome": "Dificuldade",
         "tipo": "fixo",
         "valor": "Defesa Mental do alvo"
@@ -4056,5 +4151,501 @@
     ],
     "efeito": "Uma doença cai sobre a área e fica. Quem falha adoece e piora dia após dia, a plantação murcha e o gado morre. Não é conjuração de combate: é o que se faz a uma cidade que fechou os portões para você.",
     "notas": "Cura, tratamento e tempo vencem a praga em quem sobreviver. O lugar leva mais tempo."
+  },
+  {
+    "id": "encruzilhada",
+    "nome": "Encruzilhada",
+    "nivel": 4,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "adivinhacao",
+        "sabor": "os caminhos se abrem antes do passo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "fixo",
+        "valor": "1 escolha, sua ou de quem você tocar"
+      },
+      {
+        "nome": "Visão",
+        "tipo": "fixo",
+        "valor": "1 futuro provável por nível"
+      }
+    ],
+    "efeito": "Você põe uma decisão na mesa e vê para onde cada caminho tende. Não são cenas fechadas: são inclinações, e mudam se alguém agir sabendo delas. Ver o próprio futuro cansa, e repetir na mesma cena não mostra nada de novo."
+  },
+  {
+    "id": "olho-distante",
+    "nome": "Olho Distante",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "adivinhacao",
+        "sabor": "você olha de onde não está"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "qualquer lugar que você conheça de verdade"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "fixo",
+        "valor": "1 lugar"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Abre um olho num lugar que você conhece e assiste ao que acontece lá agora, em tempo real. Não ouve, não toca e não é visto, mas quem tiver Ver o Fio percebe que está sendo observado."
+  },
+  {
+    "id": "destino-torto",
+    "nome": "Destino Torto",
+    "nivel": 4,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fortuna",
+        "sabor": "o bom resultado não fica de pé"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "Defesa Mental do alvo"
+      }
+    ],
+    "efeito": "Força um alvo a repetir uma rolagem que já tinha dado certo, e vale o segundo resultado. Uma vez por alvo por cena: o destino aceita ser torcido, não amassado."
+  },
+  {
+    "id": "mare-da-sorte",
+    "nome": "Maré da Sorte",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fortuna",
+        "sabor": "tudo conspira a favor por um tempo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Bônus",
+        "tipo": "fixo",
+        "valor": "+1d6 por nível, uma vez por turno, na rolagem que o alvo escolher"
+      }
+    ],
+    "efeito": "A sorte fica do lado de quem você marcou enquanto durar: a corda aparece, o guarda olha para o outro lado, o dado vira. Não é bônus constante, é uma coincidência por turno."
+  },
+  {
+    "id": "convocar",
+    "nome": "Convocar",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "conjuracao",
+        "sabor": "o que está longe chega"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "qualquer distância, desde que você conheça o objeto"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "fixo",
+        "valor": "1 objeto"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vontade + Ocultismo",
+        "nota": "de quem estiver segurando o objeto"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "Traz para a sua mão um objeto que é seu, ou que você já teve nas mãos e conhece bem, esteja onde estiver. Se alguém o estiver segurando, é disputa. Não funciona com criatura viva."
+  },
+  {
+    "id": "escudo-de-forca",
+    "nome": "Escudo de Força",
+    "nivel": 4,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "forcas",
+        "sabor": "a parede invisível não deixa passar"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Resistência",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5 de dano até ceder"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Uma parede de força pura, do tamanho da Área, que não deixa passar nada físico nos dois sentidos. Aguenta o dano marcado e depois estoura. Ar passa; flecha, lâmina e corpo, não."
+  },
+  {
+    "id": "transmutar-semelhante",
+    "nome": "Transmutar Semelhante",
+    "nivel": 3,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "materia",
+        "sabor": "a matéria vira sua prima"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Converte um material em outro parecido: pedra em barro, ferro em bronze, madeira em osso, pano em couro. Nada de saltar de reino (mineral não vira vivo), e o que era mágico resiste."
+  },
+  {
+    "id": "criar-substancia",
+    "nome": "Criar Substância",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "materia",
+        "sabor": "a matéria aparece do nada"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Quantidade",
+        "tipo": "fixo",
+        "valor": "o que caberia num barril, por nível"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Conjura matéria bruta de verdade: pedra, água, ferro, óleo, sal. Sai onde você mandar, inclusive em cima de alguém. Comida feita assim enche a barriga mas não sustenta por muitos dias."
+  },
+  {
+    "id": "lapso",
+    "nome": "Lapso",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "tempo",
+        "sabor": "um instante a mais para quem precisa"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Ganho",
+        "tipo": "fixo",
+        "valor": "−2 Ticks por nível na próxima ação do alvo"
+      }
+    ],
+    "efeito": "Apressa um aliado por um instante: a próxima ação dele sai mais cedo. Não dá ação extra, só adianta a que já vinha."
+  },
+  {
+    "id": "invocar",
+    "nome": "Invocar",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "espirito",
+        "sabor": "algo grande atende, e cobra"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "fixo",
+        "valor": "1 espírito poderoso"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vontade + Ocultismo",
+        "nota": "para o espírito aceitar o acordo"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "Chama um espírito poderoso como aliado, não como servo. Ele vem, escuta e negocia: quer nome, oferenda ou promessa. Quebrar o combinado com um desses é o começo de uma história ruim."
+  },
+  {
+    "id": "barreira",
+    "nome": "Barreira",
+    "nivel": 3,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "protecao",
+        "sabor": "o campo se fecha em volta"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Absorção",
+        "tipo": "fixo",
+        "valor": "+2 por nível contra tudo o que vier de fora"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Um campo protetor cobrindo a área. Quem está dentro soma a Absorção contra qualquer ataque vindo de fora, físico ou arcano. Quem está dentro e ataca alguém de dentro não ganha nada."
+  },
+  {
+    "id": "manto-alheio",
+    "nome": "Manto Alheio",
+    "nivel": 4,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "ofuscacao",
+        "sabor": "o que some leva junto o que é seu"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "em você e em quem estiver ao seu lado"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "Defesa Mental do alvo"
+      }
+    ],
+    "efeito": "O que esconde você esconde também companheiros, montaria e carga, desde que fiquem ao seu lado e andem no seu passo. Quem se afasta reaparece, e reaparecer no meio da guarda é problema dele."
+  },
+  {
+    "id": "ausencia",
+    "nome": "Ausência",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "ofuscacao",
+        "sabor": "não há o que perceber"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "em você"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "Defesa Mental do alvo"
+      }
+    ],
+    "efeito": "Some para todos os sentidos, não só para a vista: som, cheiro, calor, rastro, o ar que você desloca. Nem cão nem magia de busca o encontra. Tocar em alguém ainda denuncia."
+  },
+  {
+    "id": "chamado",
+    "nome": "Chamado",
+    "nivel": 4,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "natureza",
+        "sabor": "os bichos vêm porque querem"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "fixo",
+        "valor": "1 bando ou 1 bicho grande por nível"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Chama os animais da região e pede um favor simples: guiar, vigiar, atrasar quem vem atrás, carregar. Eles não lutam por você, e o que for pedido além do que um bicho faria por conta própria é recusado."
+  },
+  {
+    "id": "voz-da-mata",
+    "nome": "Voz da Mata",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "natureza",
+        "sabor": "a mata escuta e responde"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "a região em volta"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      }
+    ],
+    "efeito": "Fala com feras e com árvores antigas, e elas falam de volta, no tempo delas. A mata abre caminho para o seu grupo e fecha atrás dele, e o que ela viu nos últimos dias ela conta."
+  },
+  {
+    "id": "semear-o-ermo",
+    "nome": "Semear o Ermo",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vida",
+        "sabor": "onde não crescia nada, cresce tudo"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao",
+        "nota": "um nível acima da Área, porque é terreno e não alvo"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "fixo",
+        "valor": "permanente"
+      }
+    ],
+    "efeito": "Transforma um ermo em mata: capim onde havia areia, árvore onde havia pedra, água onde o chão estava seco. Leva dias para fechar, não um instante, e fica. O que nasce dali em diante é vida comum, e morre se ninguém cuidar.",
+    "notas": "É o Efeito que muda um lugar no mapa, não uma cena. O Mestre decide quanto tempo a mata leva para valer como mata."
   }
 ]
