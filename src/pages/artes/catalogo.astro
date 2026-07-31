@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { url } from '../../lib/site';
+import VoltarAoTopo from '../../components/VoltarAoTopo.astro';
 import { loadData } from '../../lib/data';
 const d = await loadData();
 const elem = d.artes.filter((a) => a.categoria === 'elemental');
@@ -8,9 +9,9 @@ const univ = d.artes.filter((a) => a.categoria === 'universal');
 const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' + n.efeito).join(' ')).toLowerCase();
 ---
 <Base title={`As ${d.artes.length} Artes`} largura="wide" descricao="O catálogo das Artes da feitiçaria: os seis níveis de cada uma, com exemplos do que aquele patamar alcança.">
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV · <a href={url('artes')}>As Artes</a></p>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV · <a href={url('artes/regras')}>As Artes</a></p>
   <h1>As {d.artes.length} Artes</h1>
-  <p class="lead">Os seis níveis de cada Arte são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos <a href={url('artes') + '#parametros'}>parâmetros</a>. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
+  <p class="lead">Os seis níveis de cada Arte são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos <a href={url('artes/regras') + '#parametros'}>parâmetros</a>. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
 
   <div class="filtros panel">
     <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
@@ -48,8 +49,9 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 
   <nav class="artes-nav" data-pagefind-ignore>
     <a class="btn" href={url('artes/efeitos')}>← Efeitos Especiais</a>
-    <a class="btn" href={url('artes')}>Regras das Artes</a>
+    <a class="btn" href={url('artes/regras')}>Regras das Artes</a>
   </nav>
+  <VoltarAoTopo />
 </Base>
 
 <style>

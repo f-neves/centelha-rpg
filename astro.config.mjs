@@ -40,6 +40,9 @@ export default defineConfig({
   site: 'https://f-neves.github.io',
   base: BASE + '/',
   trailingSlash: 'ignore',
+  // O capítulo XV virou três páginas; quem tinha /artes salvo cai na primeira delas.
+  // (o destino leva o base na mão: o Astro não o prefixa no valor do redirect)
+  redirects: { '/artes': BASE + '/artes/regras' },
   build: { format: 'directory' },
   markdown: {
     shikiConfig: { theme: 'css-variables' },

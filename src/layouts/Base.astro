@@ -31,7 +31,7 @@ const crumbs: { label: string; href?: string }[] = [{ label: 'Início', href: ur
 if (partes[0] === 'regras') crumbs.push({ label: 'Regras' });
 else if (FERRAMENTAS.some((f) => f.slug === partes[0])) crumbs.push({ label: 'Ferramentas' });
 if (partes[0] === 'caminhos' && partes[1]) crumbs.push({ label: 'As Proezas', href: url('caminhos') });
-if (partes[0] === 'artes' && partes[1]) crumbs.push({ label: 'As Artes', href: url('artes') });
+if (partes[0] === 'artes' && partes[1]) crumbs.push({ label: 'As Artes', href: url('artes/regras') });
 if (partes.length) crumbs.push({ label: title });
 ---
 <!doctype html>
@@ -95,11 +95,12 @@ if (partes.length) crumbs.push({ label: title });
         <div class="grp">Regras</div>
         {NAV.map((n) => (
           <>
-            <a href={url(n.slug)} aria-current={isActive(n.slug) ? 'page' : undefined}>
+            {/* dentro do capítulo quem marca a página atual é a sub-página, não o capítulo */}
+            <a href={url(n.slug)} aria-current={isActive(n.slug) && partes[0] !== (n as any).secao ? 'page' : undefined}>
               {n.numeral && <span class="num">{n.numeral}</span>}
               <span>{n.titulo}</span>
             </a>
-            {(n as any).sub?.map((s: any) => (
+            {partes[0] === (n as any).secao && (n as any).sub?.map((s: any) => (
               <a class="subcap" href={url(s.slug)} aria-current={isActive(s.slug) ? 'page' : undefined}>
                 <span class="num">·</span><span>{s.titulo}</span>
               </a>

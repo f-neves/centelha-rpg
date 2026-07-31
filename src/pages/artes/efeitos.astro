@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FormasPop from '../../components/FormasPop.astro';
+import VoltarAoTopo from '../../components/VoltarAoTopo.astro';
 import { url } from '../../lib/site';
 import { loadData } from '../../lib/data';
 import { idDe, formaDe, ordemPar, valorPar } from '../../lib/artes-fmt';
@@ -14,12 +15,12 @@ const efeitosPorArte = (arteId: string) => d.efeitos
 const elem = d.artes.filter((a) => a.categoria === 'elemental');
 ---
 <Base title="Efeitos Especiais" largura="wide" descricao="Os Efeitos Especiais das Artes elementais: o que cada um faz, o que custa e quais parâmetros o jogador escolhe na hora de conjurar.">
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV · <a href={url('artes')}>As Artes</a></p>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV · <a href={url('artes/regras')}>As Artes</a></p>
   <h1>Os Efeitos Especiais</h1>
   <p class="lead">A Arte dá o elemento em estado bruto; o <strong>Efeito</strong> dá forma, nome e comportamento. A régua é simples: <em>se precisa de um substantivo próprio para ser descrito, é Efeito.</em> Fogo é Arte, muro é Efeito, e subir a Arte nunca substitui o Efeito, porque muro não é fogo maior, é fogo com forma.</p>
 
   <div class="callout regra"><span class="lbl">O que custa</span>
-    Cada Efeito custa <strong>2 × o nível dele</strong> em XP, e só se compra até o nível que você tem na Arte. Na hora de conjurar, o custo é <strong>o nível do Efeito mais os parâmetros usados</strong>, com o <a href={url('artes') + '#custo'}>desconto da Centelha</a> por cima. O <strong>mesmo Efeito serve a várias Artes</strong>, mudando o sabor e o efeito colateral, e quem já o conhece por uma Arte não paga XP de novo pela outra: precisa só ter a segunda Arte no nível dele.
+    Cada Efeito custa <strong>2 × o nível dele</strong> em XP, e só se compra até o nível que você tem na Arte. Na hora de conjurar, o custo é <strong>o nível do Efeito mais os parâmetros usados</strong>, com o <a href={url('artes/regras') + '#custo'}>desconto da Centelha</a> por cima. O <strong>mesmo Efeito serve a várias Artes</strong>, mudando o sabor e o efeito colateral, e quem já o conhece por uma Arte não paga XP de novo pela outra: precisa só ter a segunda Arte no nível dele.
   </div>
   <p class="muted">Um Efeito compartilhado aparece sob cada Arte que o comporta, com o sabor daquela Arte. Dentro de cada Arte, os menores vêm primeiro. Os parâmetros marcados como <strong>normal</strong> são os que você escolhe na hora, até o nível da Arte.</p>
 
@@ -65,10 +66,11 @@ const elem = d.artes.filter((a) => a.categoria === 'elemental');
   <p class="muted">Estes são os Efeitos das Artes elementais. Os das demais Artes vêm depois, caso a caso.</p>
 
   <nav class="artes-nav" data-pagefind-ignore>
-    <a class="btn" href={url('artes')}>← Regras das Artes</a>
+    <a class="btn" href={url('artes/regras')}>← Regras das Artes</a>
     <a class="btn" href={url('artes/catalogo')}>As {d.artes.length} Artes →</a>
   </nav>
   <FormasPop />
+  <VoltarAoTopo />
 </Base>
 
 <style>

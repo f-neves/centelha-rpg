@@ -1,10 +1,11 @@
 ---
-import Base from '../layouts/Base.astro';
-import FormasPop from '../components/FormasPop.astro';
-import { url } from '../lib/site';
-import { loadData } from '../lib/data';
-import { formaDe } from '../lib/artes-fmt';
-import regras from '../data/regras.json';
+import Base from '../../layouts/Base.astro';
+import FormasPop from '../../components/FormasPop.astro';
+import VoltarAoTopo from '../../components/VoltarAoTopo.astro';
+import { url } from '../../lib/site';
+import { loadData } from '../../lib/data';
+import { formaDe } from '../../lib/artes-fmt';
+import regras from '../../data/regras.json';
 const d = await loadData();
 const G = (regras as any).arcano.improviso.graus;
 const ESTICAR = (regras as any).arcano.esticar;
@@ -27,9 +28,9 @@ const EX_CONTA: [string, string, number][] = [
   ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3 + 3 + 2', 8],
 ];
 ---
-<Base title="As Artes" largura="wide" descricao="As 24 Artes da feitiçaria em detalhe: efeitos, parâmetros, regras e exemplos.">
+<Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV</p>
-  <h1>As Artes</h1>
+  <h1>Regras das Artes</h1>
   <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 
   <nav class="artes-nav artes-nav-topo" data-pagefind-ignore>
@@ -218,6 +219,7 @@ const EX_CONTA: [string, string, number][] = [
     <a class="btn" href={url('artes/catalogo')}>As {d.artes.length} Artes →</a>
   </nav>
   <FormasPop />
+  <VoltarAoTopo />
 </Base>
 
 <style>

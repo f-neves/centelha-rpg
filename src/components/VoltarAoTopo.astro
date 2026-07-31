@@ -1,0 +1,32 @@
+---
+// Botão flutuante que volta ao topo. Aparece depois de duas telas de rolagem e
+// fica no canto oposto ao "Nesta página" (que mora no canto de baixo à esquerda).
+---
+<button class="topo-btn" id="topo-btn" type="button" hidden aria-label="Voltar ao topo da página" title="Voltar ao topo">↑ Topo</button>
+
+<style is:global>
+  .topo-btn {
+    position: fixed; right: .8rem; bottom: .8rem; z-index: 54;
+    font-family: 'Cinzel'; font-size: .8rem; letter-spacing: .04em;
+    padding: .4rem .8rem; border-radius: 999px; cursor: pointer;
+    background: var(--panel); color: var(--ink); border: 1px solid var(--panel-border);
+    box-shadow: 0 2px 10px var(--shadow); opacity: .92;
+  }
+  .topo-btn:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+  .topo-btn[hidden] { display: none; }
+  @media print { .topo-btn { display: none !important; } }
+</style>
+
+<script>
+  const btn = document.getElementById('topo-btn') as HTMLButtonElement | null;
+  if (btn) {
+    const limiar = () => window.innerHeight * 2;
+    const ver = () => { btn.hidden = window.scrollY < limiar(); };
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', location.pathname + location.search);
+    });
+    window.addEventListener('scroll', ver, { passive: true });
+    ver();
+  }
+</script>

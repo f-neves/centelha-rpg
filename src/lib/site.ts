@@ -25,9 +25,11 @@ export const NAV = [
   { slug: 'caminhos', titulo: 'As Proezas', numeral: 'XIII' },
   { slug: 'arcano', titulo: 'O Arcano', numeral: 'XIV' },
   {
-    slug: 'artes', titulo: 'As Artes', numeral: 'XV',
-    // sub-páginas do capítulo: aparecem indentadas sob ele na barra lateral
+    // O capítulo XV são três páginas. O link do capítulo abre a primeira delas, e as
+    // três só aparecem na barra lateral enquanto se está dentro do capítulo.
+    slug: 'artes/regras', titulo: 'As Artes', numeral: 'XV', secao: 'artes',
     sub: [
+      { slug: 'artes/regras', titulo: 'Regras' },
       { slug: 'artes/efeitos', titulo: 'Efeitos Especiais' },
       { slug: 'artes/catalogo', titulo: 'As 24 Artes' },
     ],
