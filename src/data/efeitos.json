@@ -3395,5 +3395,420 @@
       }
     ],
     "efeito": "Vira uma criatura muito maior do que você: urso de guerra, serpente de rio, ave de rapina do tamanho de um cavalo. Ganha o porte, a força e o alcance dela, e perde as mãos, a fala e o que elas fazem."
+  },
+  {
+    "id": "fogo-que-nao-apaga",
+    "nome": "Fogo que Não Apaga",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fogo",
+        "sabor": "a chama recusa morrer"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Ataque",
+        "tipo": "fixo",
+        "valor": "Percepção + Acerto Arcano"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
+      }
+    ],
+    "efeito": "O fogo gruda e continua queimando: o dano volta a cada turno e não sai com água, areia nem rolando no chão. Só acaba quando a duração acaba, ou quando alguém desfaz a magia."
+  },
+  {
+    "id": "sopro-do-norte",
+    "nome": "Sopro do Norte",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "gelo",
+        "sabor": "o frio vem em muralha"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vigor + Convicção",
+        "nota": "o alvo rola para aguentar"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
+      }
+    ],
+    "efeito": "Um cone de frio que arranca o calor de tudo o que pega. Quem falha fica enregelado e age devagar enquanto durar, e o chão atrás vira gelo escorregadio."
+  },
+  {
+    "id": "ceu-aberto",
+    "nome": "Céu Aberto",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "raio",
+        "sabor": "um raio só, do alto"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Ataque",
+        "tipo": "fixo",
+        "valor": "Percepção + Acerto Arcano"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "Chama um único raio do céu sobre o alvo. É o maior dano concentrado que a Arte alcança, precisa de céu por cima e avisa a todo mundo, pelo som e pela luz, exatamente onde você está."
+  },
+  {
+    "id": "afogar",
+    "nome": "Afogar",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "agua",
+        "sabor": "a água acha o caminho para dentro"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vigor + Convicção",
+        "nota": "o alvo rola para aguentar"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e perde Fôlego a cada turno enquanto durar, mesmo em terra seca. Quem estiver ao lado pode gastar uma ação para virá-lo e drenar."
+  },
+  {
+    "id": "tromba",
+    "nome": "Tromba",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "vento",
+        "sabor": "a coluna de vento levanta e joga"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Força + Atletismo",
+        "nota": "o alvo rola para não ser sugado"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "Uma coluna de vento anda pela área e leva junto quem falhar: sobe, gira e cai onde a tromba quiser. O que não estiver preso ao chão vai junto, e o que era leve vira projétil."
+  },
+  {
+    "id": "engolir",
+    "nome": "Engolir",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "terra",
+        "sabor": "o chão abre a boca"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Destreza + Atletismo",
+        "nota": "o alvo rola para sair a tempo"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "O chão amolece sob os pés do alvo e endurece por cima dele. Quem falha fica soterrado até o peito, ou inteiro se falhar feio, e sair de lá exige Força contra a Dificuldade a cada ação."
+  },
+  {
+    "id": "julgamento",
+    "nome": "Julgamento",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "luz",
+        "sabor": "a luz cobra o que o alvo é"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Ataque",
+        "tipo": "fixo",
+        "valor": "Percepção + Acerto Arcano"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
+      }
+    ],
+    "efeito": "Uma coluna de luz cai sobre o alvo. Contra quem tem fraqueza a luz ou ao sagrado o dano é agravado e ignora toda a Absorção; contra o resto, cega e derruba, mas fere pouco."
+  },
+  {
+    "id": "devorar-a-luz",
+    "nome": "Devorar a Luz",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "sombra",
+        "sabor": "a treva come o que ilumina"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "centralizado no conjurador"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado."
+  },
+  {
+    "id": "refazer-o-corpo",
+    "nome": "Refazer o Corpo",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "cura",
+        "sabor": "o corpo volta ao que era"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Cura",
+        "tipo": "padrao"
+      }
+    ],
+    "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa."
+  },
+  {
+    "id": "dobrar-o-corpo",
+    "nome": "Dobrar o Corpo",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "metamorfose",
+        "sabor": "a carne aceita qualquer forma"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "em você"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Passa por qualquer fresta por onde caiba a sua cabeça, escorrega de agarrões e amarras, e cai de qualquer altura sem quebrar nada. O corpo continua seu; só deixa de ter forma fixa."
+  },
+  {
+    "id": "emprestar-o-tempo",
+    "nome": "Emprestar o Tempo",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "tempo",
+        "sabor": "o tempo de um vale pelo do outro"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Tira Ticks de um alvo e dá a outro: um age mais devagar exatamente na medida em que o outro acelera. Os dois precisam estar à vista, e o que perdeu tempo sabe quem tirou."
+  },
+  {
+    "id": "imagem-viva",
+    "nome": "Imagem Viva",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fascinacao",
+        "sabor": "o que não existe se comporta como se existisse"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "Defesa Mental do alvo"
+      }
+    ],
+    "efeito": "Uma ilusão completa e com som, cheiro e movimento, que reage ao que acontece em volta. Quem duvida e testa fura a mentira, mas atravessar com a mão é preciso querer."
   }
 ]
