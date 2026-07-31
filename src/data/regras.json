@@ -1221,6 +1221,151 @@
       "nota": "A reserva não volta por cena: o feiticeiro que se esvazia numa luta precisa de horas, não de um respiro. É o que separa a economia do Arcano da economia das Proezas (a Energia, essa sim, é o combustível da cena).",
       "arteManipulacao": "A Arte Manipulação de Mana soma +1 por nível dela a cada 2 horas, e o dobro em descanso."
     },
+    "fonteElemental": {
+      "nome": "A fonte do elemento",
+      "desconto": 1,
+      "resumo": "Quem conjura com o elemento ao alcance da mão não tira o efeito do nada: molda o que já está ali. Isso vale +1 de desconto, somado ao da Centelha, e muda a natureza do feitiço, que passa a ser manipulação.",
+      "requisito": "A fonte precisa ser farta o bastante para bancar o MAIOR parâmetro investido, não o nível do Efeito. Um Muro com Comprimento 4 exige terra de abundância 4, mesmo que os outros parâmetros fiquem no 1.",
+      "consumo": "O desconto cobra a fonte, e o consumo é proporcional ao nível usado: um efeito de nível 1 tirado de um barril leva só parte da água, e o barril ainda serve depois. Gastar a fonte não é opcional; é o que impede repetir o mesmo truque no mesmo lugar a noite inteira.",
+      "permanencia": {
+        "comMateria": "Elementos que têm corpo (terra, água, gelo) continuam no mundo quando a magia acaba, mas voltam ao estado natural: a parede de água desaba e molha o chão, a parede de terra vira um monte de terra empilhada. Se a água não escorreu nem se espalhou, dá para usá-la de novo como fonte.",
+        "semMateria": "Elementos sem corpo (fogo, raio, luz, sombra) simplesmente somem no fim da duração, como qualquer conjuração."
+      },
+      "ritual": {
+        "texto": "O +1 entra antes da multiplicação do Ritual, então um ritual longo à beira do rio rende bem mais do que o mesmo ritual num quarto seco.",
+        "contrapartida": "Em troca, o Ritual devora a fonte muito além do normal, e sugar tudo o que um lugar tem de um elemento raramente passa despercebido: o poço seca, o bosque murcha, a fogueira sagrada apaga. Efeitos colaterais indesejados são a regra, não a exceção."
+      },
+      "zeraCusto": "O desconto da fonte pode zerar o custo e deixar o efeito grátis e ilimitado. Não há nada de errado nisso: o mesmo efeito que fica grátis com Centelha 3 mais a fonte já ficaria grátis com Centelha 4 sem fonte nenhuma.",
+      "penalidade": "A falta do elemento não penaliza. Perder o desconto já é o preço de lutar longe da sua fonte, e só um motivo específico da cena (fogo debaixo d’água, por exemplo) justifica cobrar mais.",
+      "notaAr": "O ar é o elemento mais abundante que existe, então o Vento tem desconto em quase todo lugar até o nível 3. Do 4 em diante é preciso vento de verdade: campo aberto com rajada constante, alto de uma torre, ventania, tempestade. A vantagem geral do Vento é proposital, porque é o elemento menos letal e o que causa menos dano.",
+      "abundancia": [
+        {
+          "arte": "fogo",
+          "niveis": [
+            "tocha acesa",
+            "fogueira",
+            "lareira grande, carroça em chamas",
+            "casa em chamas",
+            "quarteirão ou floresta em chamas",
+            "incêndio sem fim, rio de lava"
+          ]
+        },
+        {
+          "arte": "gelo",
+          "niveis": [
+            "balde de gelo, poça congelada",
+            "chão coberto de neve",
+            "lago congelado, neve caindo",
+            "campo de neve, geleira pequena",
+            "nevasca, encosta glacial",
+            "geleira, mar congelado"
+          ]
+        },
+        {
+          "arte": "raio",
+          "niveis": [
+            "ar seco e carregado, faísca de metal",
+            "trovoada ao longe",
+            "tempestade sobre a cabeça",
+            "tempestade elétrica forte",
+            "tempestade em mar aberto ou no alto da montanha",
+            "tempestade que se conta em canção"
+          ]
+        },
+        {
+          "arte": "agua",
+          "niveis": [
+            "alguns litros: odre, balde, poça",
+            "barril, poço, bebedouro",
+            "riacho, cisterna, chuva forte",
+            "rio, açude, temporal",
+            "rio caudaloso, lago",
+            "mar, cachoeira"
+          ]
+        },
+        {
+          "arte": "vento",
+          "niveis": [
+            "o ar de qualquer lugar",
+            "o ar de qualquer lugar",
+            "o ar de qualquer lugar",
+            "vento constante: campo aberto, alto de torre",
+            "ventania, tempestade, penhasco",
+            "vendaval, topo de montanha, mar aberto"
+          ]
+        },
+        {
+          "arte": "terra",
+          "niveis": [
+            "um saco de terra",
+            "chão de terra batida, horta",
+            "campo aberto, estrada de terra",
+            "encosta, pedreira",
+            "rocha viva, montanha",
+            "caverna funda, raiz da montanha"
+          ]
+        },
+        {
+          "arte": "luz",
+          "niveis": [
+            "tocha ou lampião aceso",
+            "sala bem iluminada",
+            "céu aberto em dia nublado",
+            "dia claro de sol",
+            "sol a pino",
+            "sol a pino no deserto ou sobre a neve"
+          ]
+        },
+        {
+          "arte": "sombra",
+          "niveis": [
+            "canto escuro, sombra de um beco",
+            "quarto sem janela, noite de lua cheia",
+            "porão, mata fechada de dia",
+            "noite sem lua",
+            "caverna, cripta",
+            "escuro absoluto, subterrâneo fundo"
+          ]
+        }
+      ],
+      "focos": {
+        "texto": "As Artes que não têm elemento no mundo podem ter o equivalente: um foco material que ancora o trabalho e rende o mesmo +1. A régua é a mesma das elementais, ou seja, o foco precisa ser bom o bastante para o maior parâmetro investido, e o trabalho gasta o foco. O que segue é o rascunho a fechar.",
+        "lista": [
+          {
+            "arte": "cura",
+            "foco": "ervas, unguentos, kit de primeiros socorros, poções, água limpa e ataduras, um leito de verdade em vez do chão"
+          },
+          {
+            "arte": "ofuscacao",
+            "foco": "sombra e penumbra para os efeitos que se escondem nelas, além de multidão, disfarce e roupa que ajude a passar despercebido"
+          },
+          {
+            "arte": "adivinhacao",
+            "foco": "baralho de tarô, runas, ossos lançados, espelho, bacia de água parada, entranhas"
+          },
+          {
+            "arte": "fortuna",
+            "foco": "objetos de sorte, amuleto de estimação, dados, moeda gasta de tanto ser esfregada"
+          },
+          {
+            "arte": "protecao",
+            "foco": "símbolos sagrados, círculos desenhados, sal, talismãs, relicários"
+          },
+          {
+            "arte": "natureza",
+            "foco": "folhas, plantas, ervas, sementes, e o próprio mato vivo em volta"
+          },
+          {
+            "arte": "metamorfose",
+            "foco": "ossos, pele, penas, garras e outras partes do animal em que se quer virar"
+          }
+        ]
+      },
+      "pendencias": [
+        "Fechar os focos das Artes não elementais: quais Artes entram além das sete rascunhadas, e como se mede a abundância de um foco que não é elemento.",
+        "Se o desconto pode um dia passar de +1 sob alguma condição especial (lugar sagrado do elemento, estação do ano, um pacto)."
+      ]
+    },
     "papelDoFeiticeiro": "Feitiçaria não é build barata nem para personagem iniciante: nos primeiros níveis as conjurações são escassas, como o mago de D&D. No Centelha o feiticeiro precisa de um papel secundário, e não necessariamente de combate. Quando o Mana acaba, ele depende de outros recursos para ser útil."
   }
 }

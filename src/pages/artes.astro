@@ -17,6 +17,7 @@ const LINHAS_GRAU: [string, string[]][] = [
   ['Duração longa', G.duracaoLonga],
 ];
 const RITUAL = (regras as any).arcano.ritual;
+const FONTE = (regras as any).arcano.fonteElemental;
 const RECUP = (regras as any).arcano.recuperacaoMana;
 // conjurações de exemplo: [descrição, contas, total]
 const EX_CONTA: [string, string, number][] = [
@@ -124,6 +125,37 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     </div>
     <p>O desconto muda o jeito de jogar conforme a Centelha sobe: o mesmo dardo que era caro no começo vira troco, e lá pelo fim os truques pequenos deixam de ter custo nenhum. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
 
+    <h2 id="fonte">A fonte do elemento</h2>
+    <p>{FONTE.resumo}</p>
+    <div class="callout regra"><span class="lbl">Mais um de desconto</span>
+      Conjurar a partir de uma fonte do elemento vale <strong>+{FONTE.desconto}</strong>, somado à sua Centelha, na hora de calcular o Mana. {FONTE.requisito}
+    </div>
+    <p><strong>A fonte se gasta.</strong> {FONTE.consumo}</p>
+    <p><strong>O que fica no mundo.</strong> {FONTE.permanencia.comMateria} {FONTE.permanencia.semMateria}</p>
+    <div class="table-wrap">
+      <table class="ab-tab">
+        <thead><tr><th>Elemento</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+        <tbody>
+          {FONTE.abundancia.map((a: any) => (
+            <tr>
+              <td><strong>{d.artes.find((x: any) => x.id === a.arte)?.nome || a.arte}</strong></td>
+              {a.niveis.map((n: string) => <td class="ab-cel">{n}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">{FONTE.notaAr}</p>
+    <p><strong>No Ritual.</strong> {FONTE.ritual.texto} {FONTE.ritual.contrapartida}</p>
+    <p class="muted">{FONTE.zeraCusto} {FONTE.penalidade}</p>
+    <h3>Focos das Artes que não têm elemento</h3>
+    <p>{FONTE.focos.texto}</p>
+    <ul class="focos">
+      {FONTE.focos.lista.map((f: any) => (
+        <li><strong>{d.artes.find((x: any) => x.id === f.arte)?.nome || f.arte}</strong>: {f.foco}</li>
+      ))}
+    </ul>
+
     <h2>Passar do seu limite</h2>
     <p>Investir mais Mana não fura o teto sozinho: quem tem Fogo 3 leva todos os parâmetros até o nível 3 pagando o preço normal, mas para alcançar o <strong>4</strong> precisa esticar. Cada nível acima do seu nível de Arte <strong>encarece o parâmetro</strong> e <strong>alonga a ação</strong>.</p>
     <div class="table-wrap">
@@ -193,7 +225,8 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
       <ul>
         <li>Como as Artes rolam de vez (o acerto pela perícia Acerto Arcano e a conjuração por Tradição), e a ligação de cada Arte com suas Trilhas.</li>
         <li>Os Efeitos das Artes <strong>não elementais</strong>, que serão feitos caso a caso.</li>
-        <li>Como o Efeito Especial entra na <strong>ficha</strong> e no bestiário (hoje ele existe no capítulo, mas não há onde marcá-lo).</li>
+        <li>Como o Efeito Especial entra no <strong>bestiário</strong> (na ficha ele já tem lugar).</li>
+        {FONTE.pendencias.map((p: string) => <li>{p}</li>)}
         <li>A regra de <strong>empurrão</strong> de Terra, Água e Ar, e a de colisão contra obstáculo. A resistência sai da <strong>Força</strong> mais o maior entre <strong>Equilíbrio</strong> e <strong>Atletismo</strong>, e ainda falta resolver o peso do alvo, que hoje não é um valor da ficha.</li>
         <li>O que a <strong>resistência</strong> faz em número (a fraqueza já está resolvida acima), e o preenchimento das duas no bestiário.</li>
         <li>Se a penalidade de guardar feitiço acumula por feitiço, e se há teto de quantos dá para carregar.</li>
@@ -307,6 +340,12 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   .ef-p-esc { display: block; font-size: .82em; }
   .ef-nota, .ef-tb { font-size: .85em; margin: .1rem 0 0; }
   .efeito .muted { font-style: normal; }
+  /* a tabela de abundância é de frases, não de números: as células quebram linha */
+  .ab-tab { font-size: .86rem; table-layout: fixed; }
+  .ab-tab th:first-child, .ab-tab td:first-child { width: 6.5rem; }
+  .ab-cel { line-height: 1.35; }
+  .focos { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
+  .focos li { margin-bottom: .25rem; line-height: 1.5; }
   .fraq { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
   .fraq li { margin-bottom: .25rem; line-height: 1.5; }
   .arte-head { display: flex; align-items: center; gap: .5rem; }

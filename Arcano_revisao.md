@@ -363,6 +363,43 @@ já está definido: agravado, ignora resistência). Ver Pendência 4.
 
 ---
 
+## 9.5. A fonte do elemento
+
+**Decidido e no site** (`regras.json → arcano.fonteElemental`, capítulo XV, seção "A fonte do
+elemento").
+
+Conjurar a partir de uma fonte do elemento vale **+1 de desconto**, somado à Centelha. É desconto
+fixo na regra básica; alguma condição especial pode aumentá-lo no futuro, mas não hoje.
+
+- **Requisito.** A fonte precisa bancar o **maior parâmetro investido**, não o nível do Efeito.
+  Muro com Comprimento 4 exige terra de abundância 4, mesmo com o resto no 1.
+- **Consumo obrigatório, mas proporcional.** Efeito de nível 1 num barril leva só parte da água.
+  É o que impede repetir o truque no mesmo lugar a noite inteira.
+- **Permanência.** O feitiço deixa de ser conjuração e vira **manipulação**. Elemento com corpo
+  (terra, água, gelo) fica no mundo e volta ao estado natural quando a magia acaba: a parede de
+  água desaba e molha o chão, a de terra vira monte de terra. Se a água não escorreu, serve de
+  fonte de novo. Elemento sem corpo (fogo, raio, luz, sombra) some no fim da duração.
+- **Ritual.** O +1 entra **antes** da multiplicação, e em troca o consumo é muito maior que o
+  normal, com efeitos colaterais indesejados como regra (o poço seca, o bosque murcha).
+- **Pode zerar o custo.** O mesmo efeito que fica grátis com Centelha 3 mais fonte já ficaria
+  grátis com Centelha 4 sem fonte nenhuma.
+- **Sem penalidade pela falta.** Perder o desconto já é o preço; só um motivo específico da cena
+  cobra mais.
+- **Ar.** Abundante até o nível 3 em qualquer lugar; do 4 em diante exige vento de verdade. A
+  vantagem geral do Vento é proposital, porque é o elemento menos letal.
+
+A **régua de abundância** tem 6 degraus para cada um dos 8 elementais, com as âncoras baixas
+definidas em conversa: fogo 1 é **tocha** (não vela), água 1 são **alguns litros**, terra 1 é
+**um saco de terra**.
+
+Para as Artes sem elemento no mundo, o equivalente é um **foco material**, com a mesma régua.
+Rascunho registrado: Cura (ervas, kit, poções, leito de verdade), Ofuscação (sombra e penumbra,
+multidão, disfarce), Adivinhação (tarô, runas, ossos, espelho), Fortuna (objetos de sorte,
+amuleto, dados), Proteção (símbolos sagrados, círculos, sal), Natureza (folhas, ervas, sementes,
+mato vivo), Metamorfose (ossos, pele, penas, garras). Ver Pendência 9.
+
+---
+
 ## 10. Pendências
 
 > **Para retomar:** esta seção é o ponto de partida de qualquer próxima conversa sobre o Arcano.
@@ -420,6 +457,13 @@ com gancho forte na "magia de ofício" dos anões. É só retomar o desenho quan
 **8. Peso, para o empurrão.** Não existe como valor de ficha. Sugestão registrada: tirar do
 **porte** (a tabela em `regras.json` já escala PV e multiplicador de Vigor de minúsculo a
 colossal), e deixar ajuste manual para quem quiser destacar (o anão baixo e denso, o elfo leve).
+
+**9. Focos das Artes não elementais.** O rascunho da seção 9.5 já está no site, mas falta fechar:
+quais Artes entram além das sete rascunhadas, e **como se mede a abundância de um foco** que não é
+elemento (um baralho de tarô não tem "volume" como um rio tem).
+
+**10. O desconto da fonte pode passar de +1?** Hoje é fixo. Fica registrado que alguma condição
+especial (lugar sagrado do elemento, estação do ano, um pacto) poderia aumentá-lo.
 
 ---
 
