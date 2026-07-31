@@ -810,11 +810,8 @@
     "parametros": [
       {
         "nome": "Alcance",
-        "tipo": "padrao"
-      },
-      {
-        "nome": "Alvos",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "centralizado no personagem"
       },
       {
         "nome": "Área",
@@ -824,9 +821,14 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
+      },
+      {
+        "nome": "Penalidade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte)"
       }
     ],
-    "efeito": "Cega quem estiver olhando na direção. Quem fecha os olhos a tempo resiste com Vigor mais Convicção."
+    "efeito": "Emite uma luz forte numa área. Quem estiver dentro dela e olhando na direção sofre a Penalidade enquanto durar."
   },
   {
     "id": "facho-revelador",

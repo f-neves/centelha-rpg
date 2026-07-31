@@ -18,7 +18,7 @@ export const formaDe = (nome: string) => {
 const RANK: Record<string, number> = {
   alcance: 0, alvos: 1,
   área: 2, area: 2, volume: 2, comprimento: 2, altura: 2, raio: 2, profundidade: 2,
-  dano: 3, cura: 3, duração: 4, duracao: 4, ataque: 5, jogada: 5, dificuldade: 6,
+  dano: 3, cura: 3, duração: 4, duracao: 4, ataque: 5, jogada: 5, dificuldade: 6, penalidade: 7,
 };
 const rank = (p: any) => RANK[p.nome.toLowerCase().split(' ')[0]] ?? RANK[(p.substitui || '').toLowerCase()] ?? 9;
 export const ordemPar = (ps: any[]) =>
