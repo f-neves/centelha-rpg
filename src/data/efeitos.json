@@ -1378,12 +1378,18 @@
         "tipo": "padrao"
       },
       {
+        "nome": "Dano",
+        "tipo": "fixo",
+        "valor": "1d6 por nível",
+        "nota": "só contra objeto de matéria morta"
+      },
+      {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
       }
     ],
-    "efeito": "Apodrece o que um dia foi vivo e agora não é: comida, corda, couro, madeira, pano, a haste de uma lança. Não toca metal nem pedra, e não fere criatura viva."
+    "efeito": "Apodrece o que um dia foi vivo e agora não é: comida, corda, couro, madeira, pano, a haste de uma lança, a armadura de couro no corpo de alguém. Não toca metal nem pedra, e não fere criatura viva."
   },
   {
     "id": "marca-do-fim",
@@ -1476,15 +1482,23 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "padrao"
+        "tipo": "fixo",
+        "valor": "1 cadáver por nível"
       },
       {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "longa"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vontade + Ocultismo",
+        "nota": "para o servo obedecer ordem complicada"
       }
     ],
-    "efeito": "Ergue um cadáver como servo. Ele obedece ordens simples e diretas, não pensa e não improvisa, e cai de novo quando a duração acaba. Fazer isso em praça pública é assunto da Lei."
+    "efeito": "Ergue um cadáver como servo. Ele obedece ordens simples e diretas, não pensa e não improvisa, e cai de novo quando a duração acaba. Fazer isso em praça pública é assunto da Lei.",
+    "notas": "O servo age com metade dos Atributos físicos que o corpo tinha em vida e nenhum dos mentais."
   },
   {
     "id": "boa-impressao",
@@ -3120,12 +3134,18 @@
         "tipo": "padrao"
       },
       {
+        "nome": "Alvos",
+        "tipo": "fixo",
+        "valor": "todos os cadáveres da área, até 3 por nível"
+      },
+      {
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "longa"
       }
     ],
-    "efeito": "Ergue de uma vez todos os cadáveres da área. Obedecem ordens simples, não pensam e caem de novo no fim da duração. Fazer isso em público é declarar ao mundo o que você é."
+    "efeito": "Ergue de uma vez todos os cadáveres da área. Obedecem ordens simples, não pensam e caem de novo no fim da duração. Fazer isso em público é declarar ao mundo o que você é.",
+    "notas": "Cada um deles é um Servo de Ossos: metade dos Atributos físicos que tinha em vida, ordens simples e nada de improviso."
   },
   {
     "id": "reescrever",
@@ -3910,5 +3930,131 @@
     ],
     "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Com Vida 1 ou 2 só acelera o que o corpo já sabe curar depressa, ou seja, dano de Impacto e ferimentos não letais. Curar dano Letal por esta via exige Vida 3.",
     "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível em vez da régua dela."
+  },
+  {
+    "id": "dreno",
+    "nome": "Dreno",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "morte",
+        "sabor": "o que sai de um entra no outro"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Cura",
+        "tipo": "fixo",
+        "valor": "1 PV a cada 2 de dano que passar",
+        "nota": "2 de Mana por nível, como toda cura"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vigor + Convicção",
+        "nota": "o alvo rola para aguentar"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
+      }
+    ],
+    "efeito": "Puxa a vida do alvo para dentro de você. O dano é do tipo que a armadura não para, porque não é golpe: é a vida indo embora. O que você recupera é metade do que passou, arredondado para baixo, e nunca passa do seu máximo.",
+    "notas": "Cura mais barata que a da Arte de Cura só na aparência: você precisa acertar, precisa tocar, e o alvo pode aguentar."
+  },
+  {
+    "id": "definhar",
+    "nome": "Definhar",
+    "nivel": 2,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "morte",
+        "sabor": "o corpo desiste antes da hora"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Alvos",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vigor + Convicção",
+        "nota": "o alvo rola para aguentar"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 4"
+      }
+    ],
+    "efeito": "O alvo enfraquece: Força e Vigor contam um nível abaixo por nível investido, com tudo o que isso arrasta atrás (dano, carga, PV, Absorção natural). Não fere; só tira o que sustenta."
+  },
+  {
+    "id": "praga",
+    "nome": "Praga",
+    "nivel": 5,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "morte",
+        "sabor": "a doença chega antes do exército"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Área",
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "fixo",
+        "valor": "1d6 por nível, uma vez por dia"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "longa"
+      },
+      {
+        "nome": "Jogada",
+        "tipo": "fixo",
+        "valor": "Vigor + Convicção",
+        "nota": "o alvo rola para aguentar"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(nível da Arte) × 5"
+      }
+    ],
+    "efeito": "Uma doença cai sobre a área e fica. Quem falha adoece e piora dia após dia, a plantação murcha e o gado morre. Não é conjuração de combate: é o que se faz a uma cidade que fechou os portões para você.",
+    "notas": "Cura, tratamento e tempo vencem a praga em quem sobreviver. O lugar leva mais tempo."
   }
 ]
