@@ -380,20 +380,179 @@
   "orcamentoVeterano": 2000,
   "orcamentoHeroico": 2600,
   "forca": {
-    "notaLevantamento": "FAH = (Força × 2) + Atletismo + Halterofilismo, de 2 a 24. Define o peso que se ergue: Leve (carrega e ainda corre/salta/luta), Médio (ergue com esforço, devagar, penalidade), Máximo (limite absoluto, ergue por instantes, não se desloca com ele). Valores-base em kg, antes de Proeza Carga (×2…×100) e Centelha.",
+    "notaLevantamento": "FAH = (Força × 2) + Atletismo + Halterofilismo, de 2 a 24 para quem usa músculo. A tabela vai até 30 porque o Efeito de Empurrão usa (nível da Arte) × 5 no lugar do FAH, e a Arte 6 chega a 30. Define o peso que se ergue: Leve (carrega e ainda corre/salta/luta), Médio (ergue com esforço, devagar, penalidade), Máximo (limite absoluto, ergue por instantes, não se desloca com ele). Valores-base em kg, antes de Proeza Carga (×2…×100) e Centelha.",
     "notaArremesso": "FAA = (Força × 2) + Atletismo + Arremesso, de 2 a 24 (Halterofilismo NÃO entra). 'distMax1kg' é o alcance de um arremesso normal (sem impulso nem giro) de 1 kg. A distância cai com o peso: Distância = distMax1kg × (1 − ln(peso) ÷ ln(pesoMáximo)). No peso máximo que a pessoa ergue, distância 0 m; no mínimo (1 kg), distância máxima.",
     "levantamento": {
-      "2": [5, 10, 15], "3": [7, 14, 20], "4": [9, 18, 27], "5": [12, 24, 35],
-      "6": [15, 30, 45], "7": [18, 36, 55], "8": [22, 44, 65], "9": [26, 52, 78],
-      "10": [30, 60, 90], "11": [36, 72, 108], "12": [42, 84, 125], "13": [48, 96, 145],
-      "14": [56, 112, 168], "15": [64, 128, 190], "16": [72, 144, 215], "17": [82, 164, 245],
-      "18": [93, 186, 280], "19": [105, 210, 315], "20": [118, 236, 355], "21": [132, 264, 395],
-      "22": [147, 294, 440], "23": [160, 320, 480], "24": [175, 350, 525]
+      "2": [
+        5,
+        10,
+        15
+      ],
+      "3": [
+        7,
+        14,
+        20
+      ],
+      "4": [
+        9,
+        18,
+        27
+      ],
+      "5": [
+        12,
+        24,
+        35
+      ],
+      "6": [
+        15,
+        30,
+        45
+      ],
+      "7": [
+        18,
+        36,
+        55
+      ],
+      "8": [
+        22,
+        44,
+        65
+      ],
+      "9": [
+        26,
+        52,
+        78
+      ],
+      "10": [
+        30,
+        60,
+        90
+      ],
+      "11": [
+        36,
+        72,
+        108
+      ],
+      "12": [
+        42,
+        84,
+        125
+      ],
+      "13": [
+        48,
+        96,
+        145
+      ],
+      "14": [
+        56,
+        112,
+        168
+      ],
+      "15": [
+        64,
+        128,
+        190
+      ],
+      "16": [
+        72,
+        144,
+        215
+      ],
+      "17": [
+        82,
+        164,
+        245
+      ],
+      "18": [
+        93,
+        186,
+        280
+      ],
+      "19": [
+        105,
+        210,
+        315
+      ],
+      "20": [
+        118,
+        236,
+        355
+      ],
+      "21": [
+        132,
+        264,
+        395
+      ],
+      "22": [
+        147,
+        294,
+        440
+      ],
+      "23": [
+        160,
+        320,
+        480
+      ],
+      "24": [
+        175,
+        350,
+        525
+      ],
+      "25": [
+        195,
+        390,
+        585
+      ],
+      "26": [
+        215,
+        430,
+        645
+      ],
+      "27": [
+        235,
+        470,
+        705
+      ],
+      "28": [
+        260,
+        520,
+        780
+      ],
+      "29": [
+        285,
+        570,
+        855
+      ],
+      "30": [
+        315,
+        630,
+        945
+      ]
     },
     "arremessoDistMax1kg": {
-      "2": 4, "3": 5, "4": 6, "5": 8, "6": 10, "7": 12, "8": 14, "9": 16, "10": 19,
-      "11": 22, "12": 25, "13": 28, "14": 32, "15": 36, "16": 40, "17": 44, "18": 48,
-      "19": 52, "20": 56, "21": 60, "22": 64, "23": 68, "24": 72
+      "2": 4,
+      "3": 5,
+      "4": 6,
+      "5": 8,
+      "6": 10,
+      "7": 12,
+      "8": 14,
+      "9": 16,
+      "10": 19,
+      "11": 22,
+      "12": 25,
+      "13": 28,
+      "14": 32,
+      "15": 36,
+      "16": 40,
+      "17": 44,
+      "18": 48,
+      "19": 52,
+      "20": 56,
+      "21": 60,
+      "22": 64,
+      "23": 68,
+      "24": 72
     }
   },
   "progressaoPorSessao": [
@@ -1172,7 +1331,7 @@
         "aparar de mãos nuas fere: quem tenta bloquear o golpe com o corpo sofre o dano do mesmo jeito"
       ],
       "exemplo": "Um elemental de madeira que tenta aparar uma lâmina feita inteira de fogo leva o dano cheio, sem absorver nada, e a queimadura não fecha sozinha.",
-      "resistencia": "O dano daquele tipo cai pela METADE, arredondando para cima, e nunca é agravado. Vale antes da Absorção: primeiro corta pela metade, depois desconta o que a armadura e o couro seguram. Resistência é o avesso da fraqueza, e as duas se anulam quando a mesma criatura tem as duas.",
+      "resistencia": "O dano daquele tipo cai pela METADE, arredondando para cima, e nunca é agravado. A ordem importa: primeiro a ARMADURA absorve, depois a resistência corta o que sobrou pela metade, e só então entra a Absorção NATURAL da criatura. A flecha atravessa o couro do mesmo jeito em qualquer um; o que muda é o que o corpo do vampiro faz com o que passou. Resistência é o avesso da fraqueza, e as duas se anulam quando a mesma criatura tem as duas.",
       "resistenciaExemplos": [
         "Objeto e estrutura resistem a PERFURAÇÃO: furar uma porta não a derruba.",
         "Morto-vivo e esqueleto resistem a Perfuração: não há órgão para a lâmina achar.",
@@ -1238,7 +1397,7 @@
       "permanencia": {
         "comMateria": "Elementos que têm corpo (terra, água, gelo) continuam no mundo quando a magia acaba, mas voltam ao estado natural: a parede de água desaba e molha o chão, a parede de terra vira um monte de terra empilhada. Se a água não escorreu nem se espalhou, dá para usá-la de novo como fonte.",
         "excecao": "O Efeito manda mais que a fonte: quando ele diz que solta, solta. A Prisão erguida com terra de verdade abre e libera o alvo no fim da duração, porque prender é o que a magia estava fazendo; o que fica de pé é a matéria que ninguém precisa segurar, como um muro ou uma fenda.",
-      "semMateria": "Elementos sem corpo (fogo, raio, luz, sombra) simplesmente somem no fim da duração, como qualquer conjuração."
+        "semMateria": "Elementos sem corpo (fogo, raio, luz, sombra) simplesmente somem no fim da duração, como qualquer conjuração."
       },
       "ritual": {
         "texto": "O +1 entra antes da multiplicação do Ritual, então um ritual longo à beira do rio rende bem mais do que o mesmo ritual num quarto seco.",
