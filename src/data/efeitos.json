@@ -3010,7 +3010,8 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara."
+    "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
+    "notas": "É a exceção que a Cura não tem: curar em Área. O valor continua sendo dividido entre todos os que estiverem dentro."
   },
   {
     "id": "coracao-verde",

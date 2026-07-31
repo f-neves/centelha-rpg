@@ -1061,7 +1061,8 @@
       "regra": "O efeito da Arte se monta investindo PONTOS nos parâmetros. Todo parâmetro custa 1 ponto por nível, linear. O nível de Centelha é desconto no total; o que sobra vira o custo em Mana (1 ponto = 1 Mana). Se o total couber dentro da Centelha, o efeito é GRÁTIS e ilimitado. Não há rolagem para distribuir: a rolagem é só para acertar e vencer a resistência.",
       "pontos": "invista quantos quiser: 1 ponto = 1 Mana. A Centelha desconta do total.",
       "custoPorNivel": {
-        "padrao": 1
+        "padrao": 1,
+        "cura": 2
       },
       "desconto": "nível de Centelha, por conjuração",
       "mana": "total de pontos − Centelha (mínimo 0; zero = grátis e ilimitado)",
@@ -1366,6 +1367,40 @@
         "Fechar os focos das Artes não elementais: quais Artes entram além das sete rascunhadas, e como se mede a abundância de um foco que não é elemento.",
         "Se o desconto pode um dia passar de +1 sob alguma condição especial (lugar sagrado do elemento, estação do ano, um pacto)."
       ]
+    },
+    "cura": {
+      "nome": "A economia da Cura",
+      "custoPorNivel": 2,
+      "resumo": "A Cura não segue a régua comum. Cada nível de parâmetro custa 2 de Mana em vez de 1, o que ela devolve não é 1d6 por nível, e o alcance é curto. Curar no meio da luta tem de doer no bolso: o lugar natural da Cura é depois da briga, com tempo, não no lugar do escudo.",
+      "graus": {
+        "alcance": [
+          "toque",
+          "1 m",
+          "4 m",
+          "8 m",
+          "12 m",
+          "16 m"
+        ],
+        "alvos": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "cura": [
+          "2",
+          "1d6",
+          "1d6+2",
+          "2d6",
+          "2d6+2",
+          "3d6"
+        ]
+      },
+      "semArea": "A cura comum não tem Área: ela vai a alvos escolhidos, um por um, nunca a todos que estiverem num pedaço de chão. Curar em área existe, mas só através de um Efeito Especial feito para isso.",
+      "divide": "Em mais de um alvo, o valor curado é DIVIDIDO entre eles: 2d6 em três pessoas é a rolagem inteira repartida em três, não 2d6 para cada uma. Comprar Alvos compra ação, não quantidade de cura.",
+      "nota": "O desconto da Centelha continua valendo sobre o total, e no modo Ritual ele é multiplicado pelo tempo gasto: é assim que o curandeiro trata os feridos depois da luta quase de graça, mesmo tendo pouco Mana para gastar durante ela."
     },
     "papelDoFeiticeiro": "Feitiçaria não é build barata nem para personagem iniciante: nos primeiros níveis as conjurações são escassas, como o mago de D&D. No Centelha o feiticeiro precisa de um papel secundário, e não necessariamente de combate. Quando o Mana acaba, ele depende de outros recursos para ser útil."
   }

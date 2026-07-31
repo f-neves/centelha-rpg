@@ -20,6 +20,7 @@ const LINHAS_GRAU: [string, string[]][] = [
 ];
 const RITUAL = (regras as any).arcano.ritual;
 const FONTE = (regras as any).arcano.fonteElemental;
+const CURA = (regras as any).arcano.cura;
 const RECUP = (regras as any).arcano.recuperacaoMana;
 // conjurações de exemplo: [descrição, contas, total]
 const EX_CONTA: [string, string, number][] = [
@@ -136,6 +137,25 @@ const EX_CONTA: [string, string, number][] = [
         <li><strong>{d.artes.find((x: any) => x.id === f.arte)?.nome || f.arte}</strong>: {f.foco}</li>
       ))}
     </ul>
+
+    <h2 id="cura">A economia da Cura</h2>
+    <p>{CURA.resumo}</p>
+    <div class="table-wrap">
+      <table class="graus-tab">
+        <thead><tr><th>Parâmetro</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+        <tbody>
+          {([['Alcance', CURA.graus.alcance], ['Alvos', CURA.graus.alvos], ['Cura', CURA.graus.cura]] as [string, string[]][]).map(([nome, vals]) => (
+            <tr><td><strong>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="callout regra"><span class="lbl">Dobro do preço</span>
+      Cada nível de parâmetro da Cura custa <strong>{CURA.custoPorNivel} de Mana</strong>, não 1. Um toque que devolve 2d6 é Cura 4 mais Alcance 1: <strong>10 de Mana</strong> antes do desconto da Centelha.
+    </div>
+    <p><strong>Sem área.</strong> {CURA.semArea}</p>
+    <p><strong>Dividida entre os alvos.</strong> {CURA.divide}</p>
+    <p class="muted">{CURA.nota}</p>
 
     <h2>Passar do seu limite</h2>
     <p>Investir mais Mana não fura o teto sozinho: quem tem Fogo 3 leva todos os parâmetros até o nível 3 pagando o preço normal, mas para alcançar o <strong>4</strong> precisa esticar. Cada nível acima do seu nível de Arte <strong>encarece o parâmetro</strong> e <strong>alonga a ação</strong>.</p>
