@@ -14,12 +14,20 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   <p class="lead">Os seis níveis de cada Arte são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos <a href={url('artes/regras') + '#parametros'}>parâmetros</a>. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
 
   <div class="filtros panel">
-    <label style="font-family:Cinzel;font-size:.78rem;color:var(--ink-soft)">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
-    <fieldset style="display:inline-block;border:1px solid var(--panel-border);border-radius:5px;padding:.3rem .6rem;margin-left:.6rem">
-      <legend style="font-family:Cinzel;font-size:.72rem">Categoria</legend>
-      <label class="chk"><input type="checkbox" data-fa="cat" value="elemental" />elemental</label>
-      <label class="chk"><input type="checkbox" data-fa="cat" value="universal" />universal</label>
-    </fieldset>
+    <div class="f-linha">
+      <label class="f-busca">Buscar <input type="search" data-fa="q" placeholder="fogo, cura, sorte…" /></label>
+      <button class="btn" type="button" id="limpar-filtros">Limpar</button>
+    </div>
+    {[['Elementais', elem], ['Universais', univ]].map(([titulo, lista]) => (
+      <div class="f-grupo">
+        <button class="f-tit" type="button" data-grupo={titulo}>{titulo}</button>
+        <div class="f-chips">
+          {(lista as any[]).map((a) => (
+            <label class="f-chip"><input type="checkbox" data-fa="arte" value={a.id} />{a.nome}</label>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 
   {[['Artes Elementais', elem], ['Artes Universais', univ]].map(([titulo, lista]) => (
@@ -32,7 +40,6 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
               <span class="cinzel arte-nome">{a.nome}</span>
               <button class="bm" data-bm={`arte:${a.id}`} title="Marcar" aria-label={`Marcar ${a.nome}`}>☆</button>
             </div>
-            <p class="arte-conj">conjura com {d.A[a.atributo_conjuracao.id].nome}</p>
             <ul class="niveis">
               {a.niveis.map((n: any) => (
                 <li>
@@ -58,8 +65,20 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 </Base>
 
 <style>
-  .filtros { margin: .6rem 0; }
-  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; }
+  .filtros { margin: .6rem 0; display: flex; flex-direction: column; gap: .5rem; }
+  .f-linha { display: flex; align-items: center; gap: .6rem; }
+  .f-busca { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink-soft); flex: 1; }
+  .f-busca input { min-width: 12rem; }
+  .f-grupo { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
+  .f-tit { font-family: 'Cinzel'; font-size: .74rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--ink-soft); background: none; border: none; cursor: pointer; padding: 0; width: 6rem; text-align: left; }
+  .f-tit:hover { color: var(--accent); }
+  .f-chips { display: flex; flex-wrap: wrap; gap: .3rem .35rem; flex: 1; }
+  .f-chip { font-size: .84rem; border: 1px solid var(--panel-border); border-radius: 999px;
+    padding: .1rem .6rem; cursor: pointer; user-select: none; background: var(--bg); }
+  .f-chip:hover { border-color: var(--accent); }
+  .f-chip.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .f-chip input { position: absolute; opacity: 0; width: 0; height: 0; }
   /* mesmo desenho dos cartões de Efeito Especial: corpo em 1.18rem, sem itálico,
      cabeçalho separado por filete e a lista com a bolinha do nível na coluna da esquerda */
   .arte { display: flex; flex-direction: column; gap: .4rem; font-size: 1.18rem; line-height: 1.45; }
@@ -82,13 +101,27 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 <script>
   const cards = Array.from(document.querySelectorAll<HTMLElement>('.arte[data-cat]'));
   const secs = Array.from(document.querySelectorAll<HTMLElement>('.arte-sec'));
+  const caixas = () => Array.from(document.querySelectorAll<HTMLInputElement>('[data-fa="arte"]'));
   const q = () => (document.querySelector('[data-fa="q"]') as HTMLInputElement).value.trim().toLowerCase();
-  const cats = () => Array.from(document.querySelectorAll<HTMLInputElement>('[data-fa="cat"]:checked')).map((c) => c.value);
+  const escolhidas = () => caixas().filter((c) => c.checked).map((c) => c.value);
   const apply = () => {
-    const t = q(), c = cats();
-    for (const el of cards) el.style.display = (!c.length || c.includes(el.dataset.cat!)) && (!t || el.dataset.txt!.includes(t)) ? '' : 'none';
+    const t = q(), ids = escolhidas();
+    for (const el of cards) el.style.display = (!ids.length || ids.includes(el.id)) && (!t || el.dataset.txt!.includes(t)) ? '' : 'none';
     for (const s of secs) s.style.display = Array.from(s.querySelectorAll<HTMLElement>('.arte[data-cat]')).some((el) => el.style.display !== 'none') ? '' : 'none';
+    for (const c of caixas()) c.closest('.f-chip')!.classList.toggle('on', c.checked);
   };
   document.querySelectorAll('[data-fa]').forEach((e) => e.addEventListener('input', apply));
+  // o título do grupo marca ou desmarca o grupo inteiro
+  document.querySelectorAll<HTMLButtonElement>('.f-tit').forEach((b) => b.addEventListener('click', () => {
+    const cx = Array.from(b.parentElement!.querySelectorAll<HTMLInputElement>('[data-fa="arte"]'));
+    const marcar = cx.some((c) => !c.checked);
+    cx.forEach((c) => { c.checked = marcar; });
+    apply();
+  }));
+  document.getElementById('limpar-filtros')!.addEventListener('click', () => {
+    caixas().forEach((c) => { c.checked = false; });
+    (document.querySelector('[data-fa="q"]') as HTMLInputElement).value = '';
+    apply();
+  });
   apply();
 </script>
