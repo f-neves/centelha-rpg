@@ -344,7 +344,9 @@ export function montarFicha(opts: FichaOpts) {
     const nomeArte = (id: string) => (ARTE_D as any[]).find((a) => a.id === id)?.nome || id;
     const linhas = disp.map(({ e, artes }) => {
       const on = !!S.efeito[e.id];
-      const par = e.parametros.map((p: any) => (p.tipo === 'fixo' ? `${p.nome}: ${p.valor}` : p.nome)).join(' · ');
+      const par = e.parametros
+        .map((p: any) => (p.tipo === 'fixo' ? `${p.nome}: ${p.valor}` : p.regua ? `${p.nome}: ${p.regua === 'longa' ? 'Longa' : 'Breve'}` : p.nome))
+        .join(' · ');
       return `<label class="ef-item${on ? ' on' : ''}"><input type="checkbox" data-efeito="${e.id}"${on ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''} />
         <span class="ef-i-nv">${e.nivel}</span>
         <span class="ef-i-nm">${e.nome}</span>

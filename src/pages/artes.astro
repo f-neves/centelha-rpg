@@ -26,6 +26,22 @@ const EX_CONTA: [string, string, number][] = [
 const idDe = (x: any) => (typeof x === 'string' ? x : x?.id);
 // nomes de exibição dos parâmetros que um Efeito pode substituir
 const NOME_PAR: Record<string, string> = { alcance: 'Alcance', area: 'Área', alvos: 'Alvos', dano: 'Dano', duracao: 'Duração' };
+// os parâmetros saem sempre na mesma ordem: primeiro onde chega, depois o que atinge,
+// depois o quanto machuca e por fim quanto tempo dura.
+const RANK_PAR = (p: any) => {
+  const n = (p.substitui || p.nome).toLowerCase();
+  return ['alcance', 'área', 'area', 'alvos', 'dano', 'duração'].findIndex((x) => n.startsWith(x) || p.nome.toLowerCase().startsWith(x));
+};
+const ordemPar = (ps: any[]) => [...ps].sort((a, b) => ((RANK_PAR(a) + 9) % 9) - ((RANK_PAR(b) + 9) % 9));
+// o valor curto de cada parâmetro: o que é fixo, a régua da duração, a nota de quem
+// substitui outro parâmetro, e o padrão para o resto.
+const valorPar = (p: any) => {
+  if (p.tipo === 'fixo') return p.valor;
+  if (p.tipo === 'substitui') return p.nota || `${p.escala.join(' · ')}${p.unidade ? ` (${p.unidade})` : ''}`;
+  if (p.regua) return p.regua === 'longa' ? 'Longa' : 'Breve';
+  if (p.nome.toLowerCase().startsWith('dano')) return '1d6 por nível';
+  return 'à escolha';
+};
 // Efeitos agrupados por Arte e ordenados por nível: um Efeito compartilhado aparece
 // sob cada Arte que o comporta, com o sabor daquela Arte.
 const efeitosPorArte = (arteId: string) => d.efeitos
@@ -187,7 +203,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
     {elem.map((arte: any) => (
       <div class="ef-bloco">
         <h3 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h3>
-        <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(21rem,1fr))">
+        <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(27rem,1fr))">
           {efeitosPorArte(arte.id).map((e: any) => (
             <div class="panel efeito" id={'ef-' + arte.id + '-' + e.id}>
               <div class="ef-head">
@@ -197,18 +213,14 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
               <p class="ef-sabor">{e.sabor}</p>
               <p class="ef-txt">{e.efeito}</p>
               <ul class="ef-par">
-                {e.parametros.map((p: any) => (
+                {ordemPar(e.parametros).map((p: any) => (
                   <li>
-                    <strong>{p.nome}</strong>
-                    {p.tipo === 'fixo' && <span> fixo: {p.valor}</span>}
-                    {p.tipo === 'padrao' && <span class="muted"> à escolha{p.regua ? `, régua ${p.regua}` : ''}</span>}
-                    {p.tipo === 'substitui' && (
-                      <span class="muted">
-                        {p.nome.toLowerCase() !== NOME_PAR[p.substitui]?.toLowerCase() ? ` no lugar de ${NOME_PAR[p.substitui] || p.substitui},` : ''}
-                        {' '}em {p.unidade}: {p.escala.join(' · ')}
-                      </span>
-                    )}
-                    {p.nota && <span class="muted"> ({p.nota})</span>}
+                    <span class="ef-p-n">{p.nome}:</span>
+                    <span class="ef-p-v">
+                      {valorPar(p)}
+                      {p.tipo === 'substitui' && p.nota && <span class="ef-p-esc muted">{p.escala.join(' · ')}{p.unidade ? ` (${p.unidade})` : ''}</span>}
+                      {p.tipo !== 'substitui' && p.nota && <span class="ef-p-esc muted">{p.nota}</span>}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -271,21 +283,23 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
   .callout.revisao ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .callout.revisao li { margin-bottom: .2rem; }
-  .efeito { display: flex; flex-direction: column; gap: .35rem; }
-  .ef-head { display: flex; align-items: center; gap: .5rem; }
-  .ef-nome { color: var(--accent); font-size: 1.1rem; flex: 1; }
-  .ef-nivel { display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%;
-    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .75rem; }
+  .efeito { display: flex; flex-direction: column; gap: .4rem; font-size: 1.18rem; line-height: 1.45; }
+  .ef-head { display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--rule); padding-bottom: .35rem; }
+  .ef-nome { color: var(--accent); font-size: 1.3rem; flex: 1; }
+  .ef-nivel { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%;
+    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .85rem; flex: none; }
   .ef-bloco { margin-top: 1.4rem; }
   .ef-bloco-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: 1.15rem; margin: 0 0 .5rem;
     border-bottom: 1px solid var(--rule); padding-bottom: .2rem; }
   .ef-bloco-tit .muted { font-size: .75rem; font-weight: normal; }
-  .ef-sabor { font-size: .85rem; font-style: italic; color: var(--ink-soft); margin: 0; }
-  .ef-tb { font-size: .78rem; margin: .2rem 0 0; }
-  .ef-txt { margin: .2rem 0; font-size: .92rem; line-height: 1.45; }
-  .ef-par { list-style: none; margin: 0; padding: 0; font-size: .84rem; line-height: 1.4; }
-  .ef-par li { margin-bottom: .1rem; }
-  .ef-nota { font-size: .82rem; margin: .1rem 0; }
+  .ef-sabor { color: var(--ink-soft); margin: 0; }
+  .ef-txt { margin: 0; }
+  .ef-par { list-style: none; margin: .1rem 0 0; padding: .4rem 0 0; border-top: 1px solid var(--rule); }
+  .ef-par li { display: grid; grid-template-columns: minmax(5rem, auto) 1fr; gap: 0 .5rem; margin-bottom: .2rem; }
+  .ef-p-n { font-weight: 600; }
+  .ef-p-esc { display: block; font-size: .82em; }
+  .ef-nota, .ef-tb { font-size: .85em; margin: .1rem 0 0; }
+  .efeito .muted { font-style: normal; }
   .fraq { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
   .fraq li { margin-bottom: .25rem; line-height: 1.5; }
   .arte-head { display: flex; align-items: center; gap: .5rem; }
