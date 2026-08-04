@@ -93,11 +93,13 @@
   <p class="sub">
     <b>Antigo:</b> cada nível custa <code>nível × custo</code>.
     <b>Novo:</b> cada nível custa <code>base + (nível × multiplicador)</code>.
-    Os valores carregados são a <b>proposta completa</b>: forma <code>r = base ÷ mult = 2</code> na maioria
-    das trilhas, com pesos <b>2,5 : 1 : 0,5</b> entre Atributo, Primária e Secundária.
+    O <b>Atributo</b> usa <b>base 5 + 5 × nível</b> (15·20·25·30·35 do nv 2 ao 6), forma <code>r = 1</code>.
+    Como as Habilidades usam <code>r = 2</code>, a razão Atributo ÷ Primária <b>não fica constante</b>:
+    sobe de 1,88 no nível 2 para 2,19 no nível 6. Primária e Secundária seguem <code>r = 2</code>,
+    com a Secundária em metade exata da Primária.
     <b>Vontade e Aparência</b> agora partem do <b>piso 0</b> e usam <code>r = 7</code>, porque a régua delas tem
     12 degraus e o mesmo <code>r</code> produz uma escada muito mais íngreme numa régua longa.
-    A <b>Proeza</b> segue multiplicador puro (custo = <b>15 × nível</b>, por Proeza), calibrada pela
+    A <b>Proeza</b> usa <b>base 5 + 5 × nível</b> (10·15·20·25·30·35), por Proeza, aferida contra a
     <b>curva de acúmulo ao longo da campanha</b>, não por fatia do orçamento de criação.
     A <b>Centelha</b> passou a ser <b>grátis</b>: quem dá o tier é o Mestre, não o XP.
     Tudo editável e salvo no navegador.
@@ -214,7 +216,7 @@ const RACES = [['humano','Humano',0],['anao','Anão',30],['elfo','Elfo',50],['gn
 // Vontade e Aparência agora têm PISO 0 (antes 1). Proeza fica inalterada: sendo traço plano,
 // o custo dela já é linear no nível e não sofre o problema que o modelo afim corrige.
 const DEFAULT_COSTS = {
-  atributo:{old:8,  base:10, mult:5},
+  atributo:{old:8,  base:5,  mult:5},
   habPrim: {old:4,  base:4,  mult:2},
   habSec:  {old:2,  base:2,  mult:1},
   espPrim: {old:8,  base:8,  mult:4},
@@ -223,7 +225,7 @@ const DEFAULT_COSTS = {
   vontade: {old:2,  base:7,  mult:1},
   aparencia:{old:2, base:7,  mult:1},
   centelha:{old:10, base:0,  mult:0},
-  tecnica: {old:10, base:0,  mult:15},
+  tecnica: {old:10, base:5,  mult:5},
   arte:    {old:10, base:10, mult:5},
 };
 // floor = último nível já pago de graça (o traço começa aqui)
@@ -281,7 +283,7 @@ function totalNew(level, key){
 }
 
 // ---- estado ----
-const COSTS_VERSION = 5;   // bump = recarrega os custos padrão sem apagar a ficha
+const COSTS_VERSION = 6;   // bump = recarrega os custos padrão sem apagar a ficha
 
 // Curva-alvo de acúmulo de Proezas ao longo da campanha (min · típico · máx).
 // As Proezas NÃO são uma fatia do orçamento de criação: elas se acumulam por tier de Centelha.
