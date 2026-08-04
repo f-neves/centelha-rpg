@@ -295,3 +295,11 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
 
 /* pagefind UI mínima */
 :root { --pagefind-ui-primary: var(--accent); --pagefind-ui-text: var(--ink); --pagefind-ui-background: var(--panel); --pagefind-ui-border: var(--panel-border); --pagefind-ui-tag: var(--bg-soft); }
+
+/* Retrato do personagem — moldura única, usada na ficha (/personagem) e nos cards
+   de Mesas / Fichas. O enquadramento que o jogador salva (imagem_pos) é calibrado
+   nesta caixa, então as duas telas precisam da MESMA regra: mudar aqui muda nos dois.
+   O jogador aplica x/y em object-position + transform-origin e z em scale(). */
+.retrato-frame { width: 172px; height: 208px; border-radius: 10px; border: 1px solid var(--rule); overflow: hidden; background: var(--panel); }
+.retrato-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform-origin: 50% 50%; display: block; user-select: none; -webkit-user-drag: none; transition: filter .15s; }
+.retrato-frame:hover img { filter: brightness(1.05); }

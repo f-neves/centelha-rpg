@@ -129,14 +129,17 @@ import Base from '../layouts/Base.astro';
     box.innerHTML = '<div class="pers-grid">' + pers.map((p: any) => {
       const nome = (p.nome || '').trim() || 'Sem nome';
       const src = urls[p.id];
-      const pos = p.imagem_pos && typeof p.imagem_pos === 'object' ? p.imagem_pos : null;
-      const estilo = pos ? ` style="object-position:${pos.x ?? 50}% ${pos.y ?? 50}%;transform:scale(${pos.z ?? 1})"` : '';
+      // mesmo enquadramento salvo na ficha: x/y vão em object-position E transform-origin,
+      // z em scale() — é exatamente o que aplicarPos() faz em /personagem.
+      const q = p.imagem_pos && typeof p.imagem_pos === 'object' ? p.imagem_pos : null;
+      const x = q?.x ?? 50, y = q?.y ?? 50, z = q?.z ?? 1;
+      const estilo = ` style="object-position:${x}% ${y}%;transform-origin:${x}% ${y}%;transform:scale(${z})"`;
       const arte = src
-        ? `<img class="pc-img" src="${esc(src)}" alt=""${estilo} loading="lazy" />`
+        ? `<img src="${esc(src)}" alt=""${estilo} loading="lazy" />`
         : '<span class="pc-vazio" aria-hidden="true">◈</span>';
       const onde = p.mesa?.nome ? esc(p.mesa.nome) : 'Ficha avulsa';
       return `<a class="pers-card" href="${u('personagem')}?id=${p.id}">
-        <span class="pc-frame">${arte}</span>
+        <span class="retrato-frame pc-frame">${arte}</span>
         <span class="pc-nome cinzel">${esc(nome)}</span>
         ${p.conceito ? `<span class="pc-conceito">${esc(p.conceito)}</span>` : ''}
         <span class="pc-onde">${onde}</span>
@@ -175,11 +178,13 @@ import Base from '../layouts/Base.astro';
   .secao-fichas { margin-bottom: 2rem; }
   .secao-mesas h2 { margin-bottom: .8rem; }
   .secao-fichas #lista-pers { margin-top: .9rem; }
-  .pers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; }
+  /* colunas do tamanho da moldura (172px) + o respiro do card */
+  .pers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; }
   .pers-card { display: flex; flex-direction: column; gap: .3rem; padding: .7rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
   .pers-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .pc-frame { display: block; overflow: hidden; border-radius: 7px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ink) 7%, transparent); aspect-ratio: 172 / 208; display: grid; place-items: center; }
-  .pc-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* .retrato-frame vem de styles/global.css — a mesma moldura da ficha. Aqui só centraliza
+     e mostra o placeholder de quem ainda não tem retrato. */
+  .pc-frame { align-self: center; display: grid; place-items: center; }
   .pc-vazio { font-size: 2.4rem; color: var(--muted); opacity: .5; }
   .pc-nome { font-size: 1.05rem; font-weight: 700; line-height: 1.2; margin-top: .15rem; }
   .pc-conceito { font-size: .85rem; color: var(--muted); }
