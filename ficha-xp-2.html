@@ -97,8 +97,8 @@
     das trilhas, com pesos <b>2,5 : 1 : 0,5</b> entre Atributo, Primária e Secundária.
     <b>Vontade e Aparência</b> agora partem do <b>piso 0</b> e usam <code>r = 7</code>, porque a régua delas tem
     12 degraus e o mesmo <code>r</code> produz uma escada muito mais íngreme numa régua longa.
-    A <b>Proeza</b> segue multiplicador puro (custo = <b>35 × nível</b>, por Proeza), calibrado pelo padrão
-    de compra alvo: ~3 Proezas no Centelha 1, ~6-7 no Centelha 2, ~7-8 no Centelha 3.
+    A <b>Proeza</b> segue multiplicador puro (custo = <b>15 × nível</b>, por Proeza), calibrada pela
+    <b>curva de acúmulo ao longo da campanha</b>, não por fatia do orçamento de criação.
     A <b>Centelha</b> passou a ser <b>grátis</b>: quem dá o tier é o Mestre, não o XP.
     Tudo editável e salvo no navegador.
   </p>
@@ -146,6 +146,13 @@
 
   <h2>Tabelas comparativas · custo do nível e acumulado</h2>
   <div class="cmp" id="cmp"></div>
+
+  <h2>Proezas · curva de acúmulo pela campanha</h2>
+  <div class="panel scroll">
+    <table id="proeza-table"></table>
+    <p style="margin:.6rem 0 .2rem;font-size:.9rem" id="proeza-check"></p>
+    <p class="desc" style="margin:.3rem 0 0">Proezas não são fatia do orçamento de criação: elas se <b>acumulam por tier de Centelha</b>. O custo é <b>multiplicador × nível</b>, por Proeza, sem acumular os níveis abaixo. A coluna <b>incremento</b> é o que o Mestre precisa premiar em Proezas durante aquele tier.</p>
+  </div>
 
   <h2>Ficha (point-buy)</h2>
   <div class="cols">
@@ -216,7 +223,7 @@ const DEFAULT_COSTS = {
   vontade: {old:2,  base:7,  mult:1},
   aparencia:{old:2, base:7,  mult:1},
   centelha:{old:10, base:0,  mult:0},
-  tecnica: {old:10, base:0,  mult:35},
+  tecnica: {old:10, base:0,  mult:15},
   arte:    {old:10, base:10, mult:5},
 };
 // floor = último nível já pago de graça (o traço começa aqui)
@@ -274,7 +281,16 @@ function totalNew(level, key){
 }
 
 // ---- estado ----
-const COSTS_VERSION = 4;   // bump = recarrega os custos padrão sem apagar a ficha
+const COSTS_VERSION = 5;   // bump = recarrega os custos padrão sem apagar a ficha
+
+// Curva-alvo de acúmulo de Proezas ao longo da campanha (min · típico · máx).
+// As Proezas NÃO são uma fatia do orçamento de criação: elas se acumulam por tier de Centelha.
+const PROEZAS_CURVA = [
+  {est:'Inicial · Centelha 1',        n:{1:[2,3,4]}},
+  {est:'Ao alcançar Centelha 2',      n:{1:[6,7,8]}},
+  {est:'Quase alcançando Centelha 3', n:{1:[9,10,11], 2:[2,3,4]}},
+  {est:'Quase alcançando Centelha 4', n:{1:[11,12,13], 2:[5,6,7], 3:[2,3,4]}},
+];
 const S = load() || {
   costs:clone(DEFAULT_COSTS), budget:1500, cv:COSTS_VERSION,
   attrs:Object.fromEntries(ATTRS.map(a=>[a.id,1])),
@@ -396,6 +412,36 @@ function renderRatios(){
     txt += '<br><span class="muted">Atributo além do teto humano (acumulado desde 1) · '+extra.join(' · ')+'</span>';
   }
   cn.innerHTML = txt;
+}
+
+function renderProezas(){
+  const t=$('#proeza-table'); if(!t) return;
+  const pz=v=>totalNew(v,'tecnica');
+  const faixa=a=>a[0]===a[2]?String(a[1]):a[0]+'–'+a[2];
+  let body='', antes=null;
+  PROEZAS_CURVA.forEach(({est,n})=>{
+    const qtd=Object.values(n).reduce((s,a)=>s+a[1],0);
+    const niv=Object.entries(n).reduce((s,[lv,a])=>s+a[1]*(+lv),0);
+    const cst=Object.entries(n).reduce((s,[lv,a])=>s+a[1]*pz(+lv),0);
+    const inc=antes==null? cst : cst-antes; antes=cst;
+    body+='<tr><td>'+est+'</td>'
+       + [1,2,3].map(lv=>'<td>'+(n[lv]?faixa(n[lv]):'—')+'</td>').join('')
+       + '<td>'+qtd+'</td><td>'+niv+'</td><td class="col-n">'+fmt(cst)+'</td>'
+       + '<td class="muted">'+(inc===cst?'':'+')+fmt(inc)+'</td></tr>';
+  });
+  t.innerHTML='<thead><tr><th>Estágio</th><th>nv 1</th><th>nv 2</th><th>nv 3</th>'
+    + '<th>Proezas</th><th>soma dos níveis</th><th>custo acum.</th><th>incremento</th></tr></thead>'
+    + '<tbody>'+body+'</tbody>';
+
+  const ck=$('#proeza-check'); if(!ck) return;
+  const p1=pz(1), h2=totalNew(2,'habPrim'), ok=p1>=h2;
+  const gastos=Object.entries(PROEZAS_CURVA[3].n).map(([lv,a])=>'nv'+lv+' '+fmt(a[1]*pz(+lv)));
+  ck.innerHTML = 'Restrição: <b>Proeza nv1</b> = <span class="'+(ok?'hit':'miss')+'">'+fmt(p1)+(ok?' ✓':' ✗')
+    + '</span> deve ser ≥ <b>Habilidade primária nv2</b> = '+fmt(h2)
+    + '<br><span class="muted">Gasto por faixa no estágio final · '+gastos.join(' · ')
+    + ' <span class="'+(Math.max(...Object.entries(PROEZAS_CURVA[3].n).map(([lv,a])=>a[1]*pz(+lv)))
+       <= 1.6*Math.min(...Object.entries(PROEZAS_CURVA[3].n).map(([lv,a])=>a[1]*pz(+lv)))?'hit':'miss')+'">'
+    + '(equilibrado entre as faixas)</span></span>';
 }
 
 function buildCmp(){
@@ -533,7 +579,7 @@ function recompute(){
   ].join(' · ') + ' <span class="muted">(antigo/novo)</span>';
 }
 
-function refresh(){ renderLadders(); renderRatios(); renderCmp(); recompute(); save(); }
+function refresh(){ renderLadders(); renderRatios(); renderProezas(); renderCmp(); recompute(); save(); }
 
 // ---- init ----
 buildCostTable(); buildPresets(); buildCmp(); buildAttrs(); buildVirtues(); buildRaces(); buildSkills();
