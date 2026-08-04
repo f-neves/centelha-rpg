@@ -3,6 +3,170 @@
 > Análise de 2026-08-03. Compara o modelo em vigor (`nível × custo`) com o modelo proposto
 > (`base + nível × multiplicador`), medido contra a matemática real dos dados do Centelha.
 > Laboratório interativo: `ficha-xp-2.html`.
+>
+> **Leia a seção 0 primeiro.** Ela decide o *método* sem depender de nenhum valor.
+> As seções 1 a 7 comparam os valores concretos que estavam sobre a mesa.
+
+---
+
+## 0. Escolha do método, livre de escala
+
+Multiplicar **todos** os custos do jogo por um fator λ não muda nada: é o mesmo jogo com o
+orçamento renomeado. Logo, um modelo de custo só existe **a menos de escala**, e comparar
+métodos exige olhar a *forma* da escada, não os números.
+
+Normalizando pelo primeiro ponto comprado:
+
+| Método | Preço do nível `v` | Forma normalizada | Parâmetros de forma |
+|---|---|---|---|
+| Multiplicativo | `K·v` | `v` | **zero** |
+| Afim | `B + M·v` | `r + v`, com `r = B/M` | **um** (`r`) |
+
+Consequências imediatas:
+
+1. **`(4, 2)`, `(8, 4)` e `(2, 1)` são o mesmo jogo.** Só `r = B/M` importa para a forma; o
+   valor absoluto é câmbio. Isso separa a decisão em duas, independentes:
+   **(i) escolher `r`** (que ficha o sistema produz) e **(ii) escolher a escala**
+   (quantos XP custa um dot, e portanto o tamanho dos orçamentos).
+2. **O multiplicativo é o afim com `r = 0`.** Não são métodos rivais: é a mesma família, e o
+   multiplicativo está na fronteira dela. Ótimos raramente ficam na fronteira.
+3. `r → ∞` é o custo plano (todo dot pelo mesmo preço). A família cobre todo o espectro.
+
+### As duas grandezas que definem a ficha
+
+- **Ψ** = quantas perícias **novas no nível 1** custam o mesmo que **uma perícia levada ao 6**.
+- **δ = Ψ / 6** = a **sobretaxa da profundidade**. `δ = 1,00` significa que um dot custa o
+  mesmo em qualquer lugar da ficha; `δ = 3,50` significa que o dot do topo custa 3,5 dots da base.
+
+| `r` | último ÷ primeiro | Ψ | **δ** | Ficha que sai |
+|---|---|---|---|---|
+| **0 (multiplicativo)** | 6,00× | 21,0 | **3,50** | pico trava em 5, cauda enorme de níveis 1 |
+| 1 | 3,50× | 13,5 | 2,25 | pico 6 raro, corpo no 3-4 |
+| **1,5** | 3,00× | 12,0 | **2,00** | 2-3 picos no 6, corpo no 4, cauda no 1-2 |
+| **2** | 2,67× | 11,0 | **1,83** | 3 picos no 6, corpo no 4-5, cauda no 2 |
+| **3** | 2,25× | 9,8 | **1,63** | 4 picos no 6, corpo no 5, cauda no 2 |
+| 4 | 2,00× | 9,0 | 1,50 | 10 traços no 6, começa a achatar por cima |
+| ∞ (plano) | 1,00× | 6,0 | 1,00 | 15+ traços no 6, sem economia |
+
+### O achado que decide o método
+
+Fórmulas fechadas, com piso `f` e teto `N`:
+
+```
+Multiplicativo:  δ = (N + f + 1) / (2(f + 1))          <- só a GEOMETRIA da régua
+Afim:            δ = (r + (N + f + 1)/2) / (r + f + 1)  <- r é LIVRE
+
+Para um δ alvo:  r = [ (N + f + 1)/2 − δ(f + 1) ] / (δ − 1)
+```
+
+No método multiplicativo, **δ não é escolhido: é herdado de onde o piso e o teto caíram**.
+Hoje, no Centelha:
+
+| Traço | piso | teto | δ imposto |
+|---|---|---|---|
+| Habilidade primária e secundária | 0 | 6 | **3,50** |
+| Centelha, Arte | 0 | 6 | **3,50** |
+| Vontade, Aparência | 1 | 12 | **3,50** |
+| Atributo, Virtude | 1 | 6 | **2,00** |
+
+O jogo roda hoje com **duas sobretaxas diferentes**, e qual traço recebe qual foi decidido
+apenas por o piso ser 0 ou 1. Ninguém escolheu isso. Pior: fica **75% mais caro** se
+especializar numa Habilidade do que num Atributo, quando o Atributo é o que serve várias
+perícias de uma vez e deveria ser a compra mais contida das duas. E quando a régua mudou de
+0-5 para 0-6 (Reescala), δ subiu de 3,00 para 3,50 sem que a decisão passasse por ninguém.
+
+**É isto que decide o método.** Não é que o afim seja "mais barato" (isso é escala, e escala
+é ajustável nos dois). É que o multiplicativo tem **zero graus de liberdade** sobre a única
+propriedade que realmente molda a ficha, e o valor que ele força (3,50) está muito acima de
+qualquer razão de valor mecânico defensável.
+
+### O que cada `r` produz na ficha (simulação livre de escala)
+
+24 domínios de importância decrescente, compra gulosa (melhor valor por XP), teto 6,
+orçamento normalizado para que **o primeiro ponto custe igual em todos os métodos**:
+
+| `r` | perfil (níveis, ordenado) | dots | domínios | pico |
+|---|---|---|---|---|
+| **0 (mult.)** | `5554333333111111` | 44 | 17 | **5** |
+| 1 | `6666444433111111` | 53 | 17 | 6 |
+| 1,5 | `6666444444222211` | 59 | 17 | 6 |
+| 2 | `6666544444222222` | 63 | 17 | 6 |
+| 3 | `6666555555222222` | 68 | 17 | 6 |
+| 4 | `6666666666221111` | 69 | 17 | 6 |
+| ∞ | `6666666666666664` | 100 | 17 | 6 |
+
+Duas leituras, ambas importantes:
+
+**(a) O método multiplicativo nunca produz um traço no máximo.** O pico trava em 5. O nível 6
+existe na ficha e na tabela de Dificuldade, mas não existe na economia. Isso não é opinião:
+é o que a compra ótima faz.
+
+**(b) O número de domínios abertos é idêntico (17) em todos os `r`.** Este é o ponto
+contraintuitivo: **`r` não troca largura por profundidade.** Mantendo o preço de entrada
+fixo, `r` compra altura de graça. A troca só aparece quando você mexe *também* na escala:
+pela normalização oposta (fixando o custo de levar um traço ao 6), a largura desaba de 17
+domínios para 5 conforme `r` sobe.
+
+Ou seja, o par de decisões é ortogonal de verdade:
+**`r` decide o formato da ficha; a escala decide se esse formato é pago em largura ou em orçamento.**
+
+### O caso do Atributo
+
+Quantas Habilidades de nível 1 custa o enésimo ponto de Atributo (peso do Atributo = 2× o da
+Habilidade, mesma forma `r` nos dois):
+
+| ponto | `r=0` | `r=1,5` | `r=2` | `r=3` | plano |
+|---|---|---|---|---|---|
+| 2º | 4,0 | 2,8 | 2,7 | 2,5 | 2,0 |
+| 4º | 8,0 | 4,4 | 4,0 | 3,5 | 2,0 |
+| 5º | **10,0** | 5,2 | 4,7 | 4,0 | 2,0 |
+| 6º | **12,0** | 6,0 | 5,3 | 4,5 | 2,0 |
+
+### Que δ o Centelha deveria ter
+
+`δ` deve ser **maior que 1**, porque um traço alto vale mais que a soma dos seus dots:
+
+- só um pool alto **alcança** o topo da régua. Dois pools de 6 nunca tiram 21 em 3d6; um pool
+  de 12 tira. Dificuldade 20+ é inacessível por largura, em qualquer quantidade;
+- a **Margem** (cada 6 acima do alvo) compõe com concentração, não com espalhamento;
+- vários portões abrem por **nível**, não por total de dots (Técnica nível N exige Centelha ≥ N;
+  especialidades limitadas a `[nível ÷ 2]`);
+- em rolagem oposta, só o melhor pool conta;
+- com `δ = 1` o jogador informado sempre especializa, e domínio de sistema vira o diferencial.
+
+E deve ser **bem menor que 3,5**, porque:
+
+- 3,5 não é preço, é proibição: ninguém paga, então o topo da régua de Dificuldade
+  (Mestre, Herói, Semideus) vira decoração;
+- o teto 0-6, os tetos de criação (4/3, com um pico em 5/4) e os portões narrativos já
+  limitam. A curva de custo é o **quarto** freio empilhado no mesmo eixo, e o único que
+  também distorce o resto da economia;
+- todo otimizador converge para a mesma ficha larga e rasa: a tabela de preços escreve o
+  personagem no lugar do conceito.
+
+**Recomendação de método: afim, com `δ` entre 1,75 e 2,00.**
+
+Para traços de piso 0 e teto 6, isso é `r` entre **1,5 e 2,33**, ou seja, **base entre 1,5× e
+2,3× o multiplicador**. A intuição do exemplo (base 4, multiplicador 2, ou seja `r = 2`,
+`δ = 1,83`) cai exatamente no meio da faixa. Base 4 com multiplicador 1 (`r = 4`, `δ = 1,50`)
+já é o lado achatado do aceitável, e a simulação mostra o começo do achatamento por cima
+(10 traços no 6).
+
+### Detalhe de execução: `r` não é um número só
+
+Como `δ` depende do piso e do teto, impor uma sobretaxa **uniforme** exige `r` diferente por
+família de traço:
+
+| δ alvo | Habilidades, Centelha, Arte (piso 0, teto 6) | Atributos, Virtudes (piso 1, teto 6) | Vontade, Aparência (piso 1, teto 12) |
+|---|---|---|---|
+| 2,00 | r = 1,50 | r = 0 (já está em 2,00) | r = 3,00 |
+| **1,75** | **r = 2,33** | **r = 0,67** | **r = 4,67** |
+| 1,50 | r = 4,00 | r = 2,00 | r = 8,00 |
+
+Fica em aberto uma decisão de design que hoje está sendo tomada por acidente: **o Atributo
+deve ter sobretaxa maior ou menor que a Habilidade?** Como um ponto de Atributo serve várias
+perícias, o argumento é que ele deveria ser a compra *mais* contida, ou seja `δ_atributo >
+δ_habilidade`. O sistema atual faz o contrário (2,00 contra 3,50).
 
 ---
 
