@@ -75,6 +75,16 @@
   .legend{ display:flex; gap:1rem; flex-wrap:wrap; font-size:.82rem; margin:.2rem 0 1rem; }
   .legend i{ font-style:normal; display:inline-block; width:.7rem; height:.7rem; border-radius:2px; margin-right:.3rem; }
   .scroll{ overflow-x:auto; }
+  .tag{ font-family:'Cinzel',Georgia,serif; font-size:.56rem; text-transform:uppercase; letter-spacing:.06em;
+    padding:.1rem .35rem; border-radius:3px; vertical-align:.12em; }
+  .tag.ok{ background:var(--ok); color:#fff; }
+  .tag.wip{ background:transparent; color:var(--ink-soft); border:1px solid var(--border); }
+  .shape{ font-size:.8rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .shape b{ color:var(--new); font-weight:700; }
+  #ratio-table th, #ratio-table td{ text-align:center; font-variant-numeric:tabular-nums; font-size:.86rem; }
+  #ratio-table td:first-child, #ratio-table th:first-child{ text-align:left; }
+  .hit{ color:var(--ok); font-weight:700; }
+  .miss{ color:var(--neg); font-weight:700; }
 </style>
 </head>
 <body>
@@ -83,9 +93,11 @@
   <p class="sub">
     <b>Antigo:</b> cada nível custa <code>nível × custo</code>.
     <b>Novo:</b> cada nível custa <code>base + (nível × multiplicador)</code>.
-    Exemplos travados no padrão: Habilidade (base 4, mult 1) sai 5·6·7·8·9·10 do nível 1 ao 6;
-    Atributo (base 8, mult 2) sai 12·14·16·18·20 do nível 2 ao 6.
-    Tudo editável e salvo no navegador.
+    Os valores já carregados são a <b>proposta</b>: forma <code>r = base ÷ mult = 2</code> nas três trilhas
+    fechadas, com pesos <b>2,5 : 1 : 0,5</b>.
+    Atributo <b>20·25·30·35·40</b> (nv 2 a 6) · Primária <b>6·8·10·12·14·16</b> · Secundária <b>3·4·5·6·7·8</b>.
+    As demais trilhas estão marcadas como <span class="tag wip">provisório</span>: aplicam a mesma forma,
+    mas ainda não foram decididas. Tudo editável e salvo no navegador.
   </p>
   <div class="legend">
     <span><i style="background:var(--old)"></i>coluna antiga</span>
@@ -110,14 +122,22 @@
         <th style="color:var(--old)">Custo antigo</th>
         <th style="color:var(--new)">Base</th>
         <th style="color:var(--new)">Mult.</th>
+        <th>Forma</th>
         <th>Escada por nível (antigo · novo)</th>
       </tr></thead>
       <tbody id="cost-table"></tbody>
     </table>
     <div class="tools">
+      <select id="preset"></select>
       <button class="ghost" id="reset-costs">Restaurar padrão</button>
-      <span class="muted" style="font-size:.8rem">Padrão antigo: Atributo 8 · Prim 4 · Sec 2 · Esp 8/4 · Virtude 3 · Vontade 2 · Aparência 2 · Centelha 10 · Proeza 10 · Arte 10</span>
+      <span class="muted" style="font-size:.8rem"><b>r</b> = base ÷ mult (a forma da escada) · <b>δ</b> = sobretaxa da profundidade (1,00 = um ponto custa o mesmo em qualquer nível)</span>
     </div>
+  </div>
+
+  <h2>Conferência das razões entre trilhas</h2>
+  <div class="panel scroll">
+    <table id="ratio-table"></table>
+    <p class="desc" style="margin:.5rem 0 0">Alvo da proposta: <b>Atributo ÷ Primária = 2,50</b> e <b>Secundária ÷ Primária = 0,50</b> em todos os níveis. Só ficam constantes quando as três trilhas têm o mesmo <b>r</b>.</p>
   </div>
 
   <h2>Tabelas comparativas · custo do nível e acumulado</h2>
@@ -178,35 +198,59 @@ const VIRTUES = [{id:'compaixao',n:'Compaixão'},{id:'conviccao',n:'Convicção'
 const RACES = [['humano','Humano',0],['anao','Anão',30],['elfo','Elfo',50],['gnomo','Gnomo',40],['halfling','Halfling',30],['meio-elfo','Meio-Elfo',20],['orc','Orc',40],['meio-orc','Meio-Orc',40]];
 
 // custo antigo (nível × custo) + parâmetros novos (base + nível × mult)
+// Os três primeiros são a PROPOSTA FECHADA: forma r = base/mult = 2 nas três trilhas,
+// pesos 2,5 : 1 : 0,5 (Atributo : Primária : Secundária).
+// Os demais são PROVISÓRIOS: aplicam a mesma forma r=2, mas ainda não foram decididos.
 const DEFAULT_COSTS = {
-  atributo:{old:8, base:8, mult:2},
-  habPrim: {old:4, base:4, mult:1},
-  habSec:  {old:2, base:2, mult:1},
-  espPrim: {old:8, base:8, mult:2},
-  espSec:  {old:4, base:4, mult:1},
-  virtude: {old:3, base:3, mult:1},
-  vontade: {old:2, base:2, mult:1},
-  aparencia:{old:2, base:2, mult:1},
-  centelha:{old:10, base:10, mult:3},
-  tecnica: {old:10, base:10, mult:3},
-  arte:    {old:10, base:10, mult:3},
+  atributo:{old:8,  base:10, mult:5},
+  habPrim: {old:4,  base:4,  mult:2},
+  habSec:  {old:2,  base:2,  mult:1},
+  espPrim: {old:8,  base:8,  mult:4},
+  espSec:  {old:4,  base:4,  mult:2},
+  virtude: {old:3,  base:4,  mult:2},
+  vontade: {old:2,  base:2,  mult:1},
+  aparencia:{old:2, base:2,  mult:1},
+  centelha:{old:10, base:10, mult:5},
+  tecnica: {old:10, base:6,  mult:9},
+  arte:    {old:10, base:10, mult:5},
 };
 // floor = último nível já pago de graça (o traço começa aqui)
 // mode: 'acum' soma do floor+1 até o nível · 'flat' cobra só o preço do nível
 const COST_ROWS = [
-  {key:'atributo',  label:'Atributo',                  floor:1, max:6,  mode:'acum'},
-  {key:'habPrim',   label:'Habilidade primária',       floor:0, max:6,  mode:'acum'},
-  {key:'habSec',    label:'Habilidade secundária',     floor:0, max:6,  mode:'acum'},
-  {key:'espPrim',   label:'Especialidade primária',    floor:0, max:3,  mode:'acum'},
-  {key:'espSec',    label:'Especialidade secundária',  floor:0, max:3,  mode:'acum'},
-  {key:'virtude',   label:'Virtude',                   floor:1, max:6,  mode:'acum'},
-  {key:'vontade',   label:'Força de Vontade',          floor:1, max:12, mode:'acum'},
-  {key:'aparencia', label:'Aparência',                 floor:1, max:12, mode:'acum'},
-  {key:'centelha',  label:'Centelha',                  floor:0, max:6,  mode:'acum'},
-  {key:'tecnica',   label:'Proeza',                    floor:0, max:6,  mode:'flat'},
-  {key:'arte',      label:'Arte',                      floor:0, max:6,  mode:'acum'},
+  {key:'atributo',  label:'Atributo',                  floor:1, max:6,  mode:'acum', st:'ok'},
+  {key:'habPrim',   label:'Habilidade primária',       floor:0, max:6,  mode:'acum', st:'ok'},
+  {key:'habSec',    label:'Habilidade secundária',     floor:0, max:6,  mode:'acum', st:'ok'},
+  {key:'espPrim',   label:'Especialidade primária',    floor:0, max:3,  mode:'acum', st:'wip'},
+  {key:'espSec',    label:'Especialidade secundária',  floor:0, max:3,  mode:'acum', st:'wip'},
+  {key:'virtude',   label:'Virtude',                   floor:1, max:6,  mode:'acum', st:'wip'},
+  {key:'vontade',   label:'Força de Vontade',          floor:1, max:12, mode:'acum', st:'wip'},
+  {key:'aparencia', label:'Aparência',                 floor:1, max:12, mode:'acum', st:'wip'},
+  {key:'centelha',  label:'Centelha',                  floor:0, max:6,  mode:'acum', st:'wip'},
+  {key:'tecnica',   label:'Proeza',                    floor:0, max:6,  mode:'flat', st:'wip'},
+  {key:'arte',      label:'Arte',                      floor:0, max:6,  mode:'acum', st:'wip'},
 ];
 const ROW = Object.fromEntries(COST_ROWS.map(r=>[r.key,r]));
+
+// presets das variantes discutidas (só mexem nas três trilhas fechadas)
+const PRESETS = {
+  proposta: {lab:'Proposta · Atrib 2,5× · Sec metade',
+             v:{atributo:[10,5], habPrim:[4,2], habSec:[2,1]}},
+  peso2:    {lab:'Variante · Atributo 2,0×',
+             v:{atributo:[8,4],  habPrim:[4,2], habSec:[2,1]}},
+  secmeio:  {lab:'Variante · Secundária meio-termo',
+             v:{atributo:[10,5], habPrim:[4,2], habSec:[1,2]}},
+  antigo:   {lab:'Modelo antigo (r=0, multiplicativo)',
+             v:{atributo:[0,8],  habPrim:[0,4], habSec:[0,2]}},
+};
+
+// sobretaxa da profundidade: delta = (r + (N+f+1)/2) / (r + f + 1), com r = base/mult
+function delta(key){
+  const r=ROW[key], c=S.costs[key];
+  if(r.mode==='flat') return null;
+  if(!c.mult) return 1;                       // custo plano
+  const rr=c.base/c.mult;
+  return (rr + (r.max + r.floor + 1)/2) / (rr + r.floor + 1);
+}
 
 // ---- fórmulas ----
 // preço de UM nível
@@ -225,8 +269,9 @@ function totalNew(level, key){
 }
 
 // ---- estado ----
+const COSTS_VERSION = 2;   // bump = recarrega os custos padrão sem apagar a ficha
 const S = load() || {
-  costs:clone(DEFAULT_COSTS), budget:1500,
+  costs:clone(DEFAULT_COSTS), budget:1500, cv:COSTS_VERSION,
   attrs:Object.fromEntries(ATTRS.map(a=>[a.id,1])),
   skills:{},
   centelha:0, vontade:1, aparencia:1,
@@ -234,6 +279,7 @@ const S = load() || {
   raca:'humano',
   sec:[0,0,0,0,0,0], espp:[0,0,0], esps:[0,0,0], tec:[0,0,0,0,0,0], arte:[0,0,0,0,0,0],
 };
+if(S.cv !== COSTS_VERSION){ S.costs = clone(DEFAULT_COSTS); S.cv = COSTS_VERSION; }
 S.costs = S.costs || {};
 Object.keys(DEFAULT_COSTS).forEach(k=>{ S.costs[k] = {...DEFAULT_COSTS[k], ...(S.costs[k]||{})}; });
 S.skills = S.skills || {};
@@ -244,9 +290,11 @@ function save(){ localStorage.setItem('ficha-xp-2', JSON.stringify(S)); }
 function load(){ try{ return JSON.parse(localStorage.getItem('ficha-xp-2')||'null'); }catch(e){ return null; } }
 
 // ---- helpers de DOM ----
-function num(val, min, max, on){
+function num(val, min, max, on, frac){
   const i=document.createElement('input'); i.type='number'; i.min=min; if(max!=null)i.max=max; i.value=val;
-  i.addEventListener('input',()=>{ let v=parseInt(i.value); if(isNaN(v)) v=min; v=Math.max(min,v); if(max!=null)v=Math.min(max,v); on(v); });
+  if(frac) i.step='0.5';
+  i.addEventListener('input',()=>{ let v=frac?parseFloat(i.value):parseInt(i.value);
+    if(isNaN(v)) v=min; v=Math.max(min,v); if(max!=null)v=Math.min(max,v); on(v); });
   return i;
 }
 function span(cls, id){ const s=document.createElement('span'); s.className=cls; if(id)s.id=id; return s; }
@@ -256,26 +304,72 @@ function buildCostTable(){
   COST_ROWS.forEach(r=>{
     const c=S.costs[r.key];
     const tr=document.createElement('tr');
-    const td1=document.createElement('td'); td1.innerHTML='<b>'+r.label+'</b><br><span class="desc">'+
+    const badge = r.st==='ok' ? '<span class="tag ok">fechado</span>' : '<span class="tag wip">provisório</span>';
+    const td1=document.createElement('td'); td1.innerHTML='<b>'+r.label+'</b> '+badge+'<br><span class="desc">'+
       (r.mode==='flat'?'preço do nível, não acumula':'acumula do nível '+(r.floor+1)+' em diante')+'</span>';
     const td2=document.createElement('td');
     const i1=num(c.old,0,999,v=>{ c.old=v; refresh(); }); i1.className='cost c-old'; td2.appendChild(i1);
     const td3=document.createElement('td');
-    const i2=num(c.base,0,999,v=>{ c.base=v; refresh(); }); i2.className='cost c-new'; td3.appendChild(i2);
+    const i2=num(c.base,0,999,v=>{ c.base=v; refresh(); },true); i2.className='cost c-new'; td3.appendChild(i2);
     const td4=document.createElement('td');
-    const i3=num(c.mult,0,999,v=>{ c.mult=v; refresh(); }); i3.className='cost c-new'; td4.appendChild(i3);
+    const i3=num(c.mult,0,999,v=>{ c.mult=v; refresh(); },true); i3.className='cost c-new'; td4.appendChild(i3);
+    const td6=document.createElement('td'); td6.className='shape'; td6.id='shape-'+r.key;
     const td5=document.createElement('td'); td5.className='ladder'; td5.id='ladder-'+r.key;
-    tr.append(td1,td2,td3,td4,td5); tb.appendChild(tr);
+    tr.append(td1,td2,td3,td4,td6,td5); tb.appendChild(tr);
   });
 }
+const fmt = x => Number.isInteger(x) ? String(x) : x.toFixed(1).replace('.',',');
 function renderLadders(){
   COST_ROWS.forEach(r=>{
     const c=S.costs[r.key];
     const o=[], n=[];
     for(let v=r.floor+1; v<=r.max; v++){ o.push(priceOld(v,c)); n.push(priceNew(v,c)); }
-    const el=$('#ladder-'+r.key); if(!el) return;
-    el.innerHTML = '<span class="o">'+o.join(' · ')+'</span><br><span class="n"><b>'+n.join(' · ')+'</b></span>';
+    const el=$('#ladder-'+r.key);
+    if(el) el.innerHTML = '<span class="o">'+o.map(fmt).join(' · ')+'</span><br>'
+                        + '<span class="n"><b>'+n.map(fmt).join(' · ')+'</b></span>';
+    const sh=$('#shape-'+r.key); if(!sh) return;
+    const rr = c.mult ? (c.base/c.mult) : Infinity;
+    const d  = delta(r.key);
+    sh.innerHTML = '<b>r ' + (isFinite(rr)? fmt(Math.round(rr*100)/100) : '∞') + '</b><br>'
+                 + '<span class="muted">' + (d==null ? 'δ —' : 'δ '+d.toFixed(2).replace('.',',')) + '</span>';
   });
+}
+
+function buildPresets(){
+  const sel=$('#preset'); sel.innerHTML='';
+  const o0=document.createElement('option'); o0.value=''; o0.textContent='— aplicar variante —'; sel.appendChild(o0);
+  Object.entries(PRESETS).forEach(([k,p])=>{ const o=document.createElement('option'); o.value=k; o.textContent=p.lab; sel.appendChild(o); });
+  sel.addEventListener('change',()=>{
+    const p=PRESETS[sel.value]; if(!p) return;
+    Object.entries(p.v).forEach(([k,[b,m]])=>{ S.costs[k].base=b; S.costs[k].mult=m; });
+    buildCostTable(); refresh(); sel.value='';
+  });
+}
+
+function renderRatios(){
+  const t=$('#ratio-table'); if(!t) return;
+  const A=S.costs.atributo, H=S.costs.habPrim, Sc=S.costs.habSec;
+  const pv=(c,v)=>c.base+c.mult*v;
+  const head='<thead><tr><th>Trilha</th>'+[1,2,3,4,5,6].map(v=>'<th>nv '+v+'</th>').join('')+'<th>constante?</th></tr></thead>';
+  const rowsRaw=[
+    ['Atributo · preço do nível',   v=> v<2? null : pv(A,v), null],
+    ['Primária · preço do nível',   v=> pv(H,v),             null],
+    ['Secundária · preço do nível', v=> pv(Sc,v),            null],
+  ];
+  let body='';
+  rowsRaw.forEach(([lab,f])=>{
+    body+='<tr><td>'+lab+'</td>'+[1,2,3,4,5,6].map(v=>{const x=f(v); return '<td>'+(x==null?'—':fmt(x))+'</td>';}).join('')+'<td class="muted">—</td></tr>';
+  });
+  [['Atributo ÷ Primária', v=> v<2? null : pv(A,v)/pv(H,v)],
+   ['Secundária ÷ Primária', v=> pv(Sc,v)/pv(H,v)]].forEach(([lab,f])=>{
+    const vals=[1,2,3,4,5,6].map(f).filter(x=>x!=null && isFinite(x));
+    const konst = vals.length>1 && (Math.max(...vals)-Math.min(...vals) < 0.005);
+    body+='<tr><td><b>'+lab+'</b></td>'+[1,2,3,4,5,6].map(v=>{
+      const x=f(v); if(x==null||!isFinite(x)) return '<td>—</td>';
+      return '<td class="'+(konst?'hit':'miss')+'">'+x.toFixed(2).replace('.',',')+'</td>';
+    }).join('')+'<td class="'+(konst?'hit':'miss')+'">'+(konst?'✓ sim':'✗ varia')+'</td></tr>';
+  });
+  t.innerHTML=head+'<tbody>'+body+'</tbody>';
 }
 
 function buildCmp(){
@@ -413,10 +507,10 @@ function recompute(){
   ].join(' · ') + ' <span class="muted">(antigo/novo)</span>';
 }
 
-function refresh(){ renderLadders(); renderCmp(); recompute(); save(); }
+function refresh(){ renderLadders(); renderRatios(); renderCmp(); recompute(); save(); }
 
 // ---- init ----
-buildCostTable(); buildCmp(); buildAttrs(); buildVirtues(); buildRaces(); buildSkills();
+buildCostTable(); buildPresets(); buildCmp(); buildAttrs(); buildVirtues(); buildRaces(); buildSkills();
 buildLevelGrid('#g-sec', S.sec, 6);
 buildLevelGrid('#g-espp', S.espp, 3);
 buildLevelGrid('#g-esps', S.esps, 3);
