@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Centelha · Custo de XP · Antigo × Novo</title>
+<style>
+  :root{
+    --bg:#f4ecd8; --panel:#fbf6ea; --ink:#2e2620; --ink-soft:#6b5d4a; --accent:#7a5230;
+    --accent-strong:#8a3b1f; --border:#d8c6a4; --ok:#2f6b3a; --neg:#b3401f; --hl:#efe2c4;
+    --old:#6b5d4a; --new:#1f5f7a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#1c1813; --panel:#26201a; --ink:#e9ded0; --ink-soft:#b3a488; --accent:#c9975f;
+      --accent-strong:#e0803f; --border:#463a2c; --ok:#7cc48a; --neg:#e8926f; --hl:#332a20;
+      --old:#b3a488; --new:#7fc4dd; }
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'EB Garamond',Georgia,serif;
+    font-size:16px; line-height:1.4; padding:1.2rem clamp(.6rem,3vw,2rem) 4rem; }
+  h1{ font-family:'Cinzel',Georgia,serif; font-size:1.5rem; color:var(--accent-strong); margin:.2rem 0 .1rem; letter-spacing:.04em; }
+  h2{ font-family:'Cinzel',Georgia,serif; font-size:.82rem; text-transform:uppercase; letter-spacing:.08em;
+    color:#fff; background:var(--accent); padding:.35rem .7rem; border-radius:4px; margin:1.6rem 0 .7rem; }
+  .sub{ color:var(--ink-soft); font-size:.9rem; margin:.1rem 0 1rem; }
+  .wrap{ max-width:1280px; margin:0 auto; }
+  .panel{ background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:.8rem 1rem; }
+  table{ border-collapse:collapse; width:100%; }
+  th,td{ text-align:left; padding:.26rem .5rem; border-bottom:1px solid var(--border); font-size:.9rem; }
+  th{ font-family:'Cinzel',Georgia,serif; font-size:.66rem; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); }
+  input[type=number]{ width:4rem; font:inherit; font-size:.9rem; text-align:center; color:var(--ink);
+    background:var(--bg); border:1px solid var(--border); border-radius:5px; padding:.16rem .28rem; }
+  input.cost{ width:3.6rem; font-weight:700; }
+  input.c-old{ color:var(--old); }
+  input.c-new{ color:var(--new); }
+  select{ font:inherit; color:var(--ink); background:var(--bg); border:1px solid var(--border); border-radius:5px; padding:.2rem .4rem; }
+  .cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:.8rem 1.4rem; }
+  .grp h3{ font-family:'Cinzel',Georgia,serif; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--accent); margin:.4rem 0 .2rem; border-bottom:1px solid var(--border); padding-bottom:.15rem; }
+  .row{ display:flex; align-items:center; gap:.4rem; padding:.12rem 0; }
+  .row .nm{ flex:1; }
+  .xp{ font-size:.8rem; min-width:3rem; text-align:right; font-variant-numeric:tabular-nums; }
+  .xp.o{ color:var(--old); }
+  .xp.n{ color:var(--new); font-weight:600; }
+  .hdrxp{ display:flex; gap:.4rem; justify-content:flex-end; font-family:'Cinzel',Georgia,serif;
+    font-size:.6rem; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); }
+  .hdrxp span{ min-width:3rem; text-align:right; }
+  .lvlgrid{ width:auto; }
+  .lvlgrid th, .lvlgrid td{ text-align:center; padding:.18rem .32rem; }
+  .desc{ color:var(--ink-soft); font-size:.8rem; }
+  .muted{ color:var(--ink-soft); }
+  .tools{ display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; margin:.6rem 0 0; }
+  button{ font:inherit; font-size:.85rem; cursor:pointer; background:var(--accent); color:#fff; border:none;
+    border-radius:5px; padding:.35rem .8rem; font-family:'Cinzel',Georgia,serif; letter-spacing:.03em; }
+  button.ghost{ background:transparent; color:var(--accent-strong); border:1px solid var(--border); }
+  .totalbar{ position:sticky; top:0; z-index:5; background:var(--panel); border:1px solid var(--accent);
+    border-radius:8px; padding:.6rem 1rem; margin:0 0 1rem; display:flex; flex-wrap:wrap; align-items:center;
+    gap:.6rem 1.4rem; box-shadow:0 3px 10px rgba(0,0,0,.12); }
+  .totalbar .big{ font-family:'Cinzel',Georgia,serif; font-size:1.3rem; }
+  .totalbar .big.o{ color:var(--old); }
+  .totalbar .big.n{ color:var(--new); }
+  .totalbar .lab{ font-family:'Cinzel',Georgia,serif; font-size:.64rem; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--ink-soft); display:block; }
+  .rem.ok{ color:var(--ok); } .rem.neg{ color:var(--neg); }
+  .break{ font-size:.8rem; color:var(--ink-soft); flex-basis:100%; }
+  .break b{ color:var(--ink); font-weight:400; }
+  .delta.pos{ color:var(--neg); } .delta.negd{ color:var(--ok); }
+  .ladder{ font-size:.78rem; color:var(--ink-soft); font-variant-numeric:tabular-nums; }
+  .ladder b{ font-weight:600; }
+  .ladder .o{ color:var(--old); } .ladder .n{ color:var(--new); }
+  .cmp{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.8rem 1rem; }
+  .cmp table th, .cmp table td{ text-align:right; padding:.16rem .34rem; font-size:.82rem; font-variant-numeric:tabular-nums; }
+  .cmp table th:first-child, .cmp table td:first-child{ text-align:left; }
+  .cmp .col-o{ color:var(--old); }
+  .cmp .col-n{ color:var(--new); font-weight:600; }
+  .legend{ display:flex; gap:1rem; flex-wrap:wrap; font-size:.82rem; margin:.2rem 0 1rem; }
+  .legend i{ font-style:normal; display:inline-block; width:.7rem; height:.7rem; border-radius:2px; margin-right:.3rem; }
+  .scroll{ overflow-x:auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Custo de XP · modelo antigo × modelo novo</h1>
+  <p class="sub">
+    <b>Antigo:</b> cada nível custa <code>nível × custo</code>.
+    <b>Novo:</b> cada nível custa <code>base + (nível × multiplicador)</code>.
+    Exemplos travados no padrão: Habilidade (base 4, mult 1) sai 5·6·7·8·9·10 do nível 1 ao 6;
+    Atributo (base 8, mult 2) sai 12·14·16·18·20 do nível 2 ao 6.
+    Tudo editável e salvo no navegador.
+  </p>
+  <div class="legend">
+    <span><i style="background:var(--old)"></i>coluna antiga</span>
+    <span><i style="background:var(--new)"></i>coluna nova</span>
+  </div>
+
+  <div class="totalbar">
+    <div><span class="lab">Total antigo</span><span class="big o" id="total-o">0</span></div>
+    <div><span class="lab">Total novo</span><span class="big n" id="total-n">0</span></div>
+    <div><span class="lab">Diferença</span><span class="big" id="delta">0</span></div>
+    <div><span class="lab">Orçamento</span><input type="number" id="budget" value="1500" step="10" style="width:6rem" /></div>
+    <div><span class="lab">Sobra antigo</span><span class="big rem" id="rem-o">0</span></div>
+    <div><span class="lab">Sobra novo</span><span class="big rem" id="rem-n">0</span></div>
+    <div class="break" id="break"></div>
+  </div>
+
+  <h2>Parâmetros de custo <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(editável)</span></h2>
+  <div class="panel scroll">
+    <table>
+      <thead><tr>
+        <th>Traço</th>
+        <th style="color:var(--old)">Custo antigo</th>
+        <th style="color:var(--new)">Base</th>
+        <th style="color:var(--new)">Mult.</th>
+        <th>Escada por nível (antigo · novo)</th>
+      </tr></thead>
+      <tbody id="cost-table"></tbody>
+    </table>
+    <div class="tools">
+      <button class="ghost" id="reset-costs">Restaurar padrão</button>
+      <span class="muted" style="font-size:.8rem">Padrão antigo: Atributo 8 · Prim 4 · Sec 2 · Esp 8/4 · Virtude 3 · Vontade 2 · Aparência 2 · Centelha 10 · Proeza 10 · Arte 10</span>
+    </div>
+  </div>
+
+  <h2>Tabelas comparativas · custo do nível e acumulado</h2>
+  <div class="cmp" id="cmp"></div>
+
+  <h2>Ficha (point-buy)</h2>
+  <div class="cols">
+    <div class="panel grp">
+      <h3>Atributos <span class="muted" style="font-weight:400">(1–6)</span></h3>
+      <div class="row"><span class="nm"></span><span style="width:4rem"></span><span class="hdrxp"><span>antigo</span><span>novo</span></span></div>
+      <div id="attrs"></div>
+    </div>
+    <div class="panel grp">
+      <h3>Traços</h3>
+      <div class="row"><span class="nm"></span><span style="width:4rem"></span><span class="hdrxp"><span>antigo</span><span>novo</span></span></div>
+      <div class="row"><span class="nm">Centelha <span class="muted">(0–6)</span></span><input type="number" id="t-centelha" min="0" value="0"><span class="xp o" id="xpo-centelha">0</span><span class="xp n" id="xpn-centelha">0</span></div>
+      <div class="row"><span class="nm">Força de Vontade <span class="muted">(1–12)</span></span><input type="number" id="t-vontade" min="1" value="1"><span class="xp o" id="xpo-vontade">0</span><span class="xp n" id="xpn-vontade">0</span></div>
+      <div class="row"><span class="nm">Aparência <span class="muted">(1–12)</span></span><input type="number" id="t-aparencia" min="1" value="1"><span class="xp o" id="xpo-aparencia">0</span><span class="xp n" id="xpn-aparencia">0</span></div>
+      <h3 style="margin-top:.6rem">Virtudes <span class="muted" style="font-weight:400">(1–6)</span></h3>
+      <div id="virtues"></div>
+      <h3 style="margin-top:.6rem">Raça</h3>
+      <div class="row"><select id="raca"></select><span class="xp o" id="xpo-raca">0</span><span class="xp n" id="xpn-raca">0</span></div>
+    </div>
+  </div>
+
+  <h2>Habilidades primárias <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(0–6)</span></h2>
+  <div class="cols" id="skills"></div>
+
+  <h2>Secundárias, Especialidades, Proezas, Artes <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(quantas em cada nível)</span></h2>
+  <div class="cols">
+    <div class="panel grp"><h3>Habilidades secundárias</h3><div id="g-sec"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-sec">0</span><span class="xp n" id="xpn-sec">0</span></div></div>
+    <div class="panel grp"><h3>Especialidades primárias</h3><div id="g-espp"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-espp">0</span><span class="xp n" id="xpn-espp">0</span></div></div>
+    <div class="panel grp"><h3>Especialidades secundárias</h3><div id="g-esps"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-esps">0</span><span class="xp n" id="xpn-esps">0</span></div></div>
+    <div class="panel grp"><h3>Proezas <span class="muted" style="font-weight:400">(preço do nível, não acumula)</span></h3><div id="g-tec"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-tec">0</span><span class="xp n" id="xpn-tec">0</span></div></div>
+    <div class="panel grp"><h3>Artes <span class="muted" style="font-weight:400">(acumula 1..N)</span></h3><div id="g-arte"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-arte">0</span><span class="xp n" id="xpn-arte">0</span></div></div>
+  </div>
+
+  <p class="sub" style="margin-top:1.4rem">Referência de orçamento: iniciante 1500 · veterano 2000 · herói 2600. Laboratório de calibragem, não substitui a ficha oficial.</p>
+</div>
+
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const slug = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
+const ATTRS = [
+  {id:'forca',n:'Força',g:'Físico'},{id:'destreza',n:'Destreza',g:'Físico'},{id:'vigor',n:'Vigor',g:'Físico'},
+  {id:'influencia',n:'Influência',g:'Social'},{id:'perspicacia',n:'Perspicácia',g:'Social'},{id:'compostura',n:'Compostura',g:'Social'},
+  {id:'percepcao',n:'Percepção',g:'Mental'},{id:'inteligencia',n:'Inteligência',g:'Mental'},{id:'raciocinio',n:'Raciocínio',g:'Mental'}
+];
+const SKILLS = [
+  {g:'Combate', list:['Armas','Briga','Arremesso','Atirador','Bloqueio','Esquiva']},
+  {g:'Físicas', list:['Atletismo','Furtividade','Prestidigitação','Prontidão','Resistência','Integridade']},
+  {g:'Sociais', list:['Persuasão','Oratória','Sociabilidade','Empatia','Manha','Política']},
+  {g:'Saber', list:['Investigação','Conhecimentos Gerais','Ocultismo','Burocracia','Sobrevivência','Ofícios Gerais']},
+];
+const VIRTUES = [{id:'compaixao',n:'Compaixão'},{id:'conviccao',n:'Convicção'},{id:'temperanca',n:'Temperança'},{id:'valor',n:'Bravura'}];
+const RACES = [['humano','Humano',0],['anao','Anão',30],['elfo','Elfo',50],['gnomo','Gnomo',40],['halfling','Halfling',30],['meio-elfo','Meio-Elfo',20],['orc','Orc',40],['meio-orc','Meio-Orc',40]];
+
+// custo antigo (nível × custo) + parâmetros novos (base + nível × mult)
+const DEFAULT_COSTS = {
+  atributo:{old:8, base:8, mult:2},
+  habPrim: {old:4, base:4, mult:1},
+  habSec:  {old:2, base:2, mult:1},
+  espPrim: {old:8, base:8, mult:2},
+  espSec:  {old:4, base:4, mult:1},
+  virtude: {old:3, base:3, mult:1},
+  vontade: {old:2, base:2, mult:1},
+  aparencia:{old:2, base:2, mult:1},
+  centelha:{old:10, base:10, mult:3},
+  tecnica: {old:10, base:10, mult:3},
+  arte:    {old:10, base:10, mult:3},
+};
+// floor = último nível já pago de graça (o traço começa aqui)
+// mode: 'acum' soma do floor+1 até o nível · 'flat' cobra só o preço do nível
+const COST_ROWS = [
+  {key:'atributo',  label:'Atributo',                  floor:1, max:6,  mode:'acum'},
+  {key:'habPrim',   label:'Habilidade primária',       floor:0, max:6,  mode:'acum'},
+  {key:'habSec',    label:'Habilidade secundária',     floor:0, max:6,  mode:'acum'},
+  {key:'espPrim',   label:'Especialidade primária',    floor:0, max:3,  mode:'acum'},
+  {key:'espSec',    label:'Especialidade secundária',  floor:0, max:3,  mode:'acum'},
+  {key:'virtude',   label:'Virtude',                   floor:1, max:6,  mode:'acum'},
+  {key:'vontade',   label:'Força de Vontade',          floor:1, max:12, mode:'acum'},
+  {key:'aparencia', label:'Aparência',                 floor:1, max:12, mode:'acum'},
+  {key:'centelha',  label:'Centelha',                  floor:0, max:6,  mode:'acum'},
+  {key:'tecnica',   label:'Proeza',                    floor:0, max:6,  mode:'flat'},
+  {key:'arte',      label:'Arte',                      floor:0, max:6,  mode:'acum'},
+];
+const ROW = Object.fromEntries(COST_ROWS.map(r=>[r.key,r]));
+
+// ---- fórmulas ----
+// preço de UM nível
+const priceOld = (lvl, c) => lvl * c.old;
+const priceNew = (lvl, c) => c.base + lvl * c.mult;
+// total até o nível
+function totalOld(level, key){
+  const r=ROW[key], c=S.costs[key];
+  if(r.mode==='flat') return level>r.floor ? priceOld(level,c) : 0;
+  let t=0; for(let v=r.floor+1; v<=level; v++) t+=priceOld(v,c); return t;
+}
+function totalNew(level, key){
+  const r=ROW[key], c=S.costs[key];
+  if(r.mode==='flat') return level>r.floor ? priceNew(level,c) : 0;
+  let t=0; for(let v=r.floor+1; v<=level; v++) t+=priceNew(v,c); return t;
+}
+
+// ---- estado ----
+const S = load() || {
+  costs:clone(DEFAULT_COSTS), budget:1500,
+  attrs:Object.fromEntries(ATTRS.map(a=>[a.id,1])),
+  skills:{},
+  centelha:0, vontade:1, aparencia:1,
+  virtues:Object.fromEntries(VIRTUES.map(v=>[v.id,1])),
+  raca:'humano',
+  sec:[0,0,0,0,0,0], espp:[0,0,0], esps:[0,0,0], tec:[0,0,0,0,0,0], arte:[0,0,0,0,0,0],
+};
+S.costs = S.costs || {};
+Object.keys(DEFAULT_COSTS).forEach(k=>{ S.costs[k] = {...DEFAULT_COSTS[k], ...(S.costs[k]||{})}; });
+S.skills = S.skills || {};
+SKILLS.forEach(gr=>gr.list.forEach(n=>{ const k=slug(n); if(S.skills[k]==null) S.skills[k]=0; }));
+
+function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function save(){ localStorage.setItem('ficha-xp-2', JSON.stringify(S)); }
+function load(){ try{ return JSON.parse(localStorage.getItem('ficha-xp-2')||'null'); }catch(e){ return null; } }
+
+// ---- helpers de DOM ----
+function num(val, min, max, on){
+  const i=document.createElement('input'); i.type='number'; i.min=min; if(max!=null)i.max=max; i.value=val;
+  i.addEventListener('input',()=>{ let v=parseInt(i.value); if(isNaN(v)) v=min; v=Math.max(min,v); if(max!=null)v=Math.min(max,v); on(v); });
+  return i;
+}
+function span(cls, id){ const s=document.createElement('span'); s.className=cls; if(id)s.id=id; return s; }
+
+function buildCostTable(){
+  const tb=$('#cost-table'); tb.innerHTML='';
+  COST_ROWS.forEach(r=>{
+    const c=S.costs[r.key];
+    const tr=document.createElement('tr');
+    const td1=document.createElement('td'); td1.innerHTML='<b>'+r.label+'</b><br><span class="desc">'+
+      (r.mode==='flat'?'preço do nível, não acumula':'acumula do nível '+(r.floor+1)+' em diante')+'</span>';
+    const td2=document.createElement('td');
+    const i1=num(c.old,0,999,v=>{ c.old=v; refresh(); }); i1.className='cost c-old'; td2.appendChild(i1);
+    const td3=document.createElement('td');
+    const i2=num(c.base,0,999,v=>{ c.base=v; refresh(); }); i2.className='cost c-new'; td3.appendChild(i2);
+    const td4=document.createElement('td');
+    const i3=num(c.mult,0,999,v=>{ c.mult=v; refresh(); }); i3.className='cost c-new'; td4.appendChild(i3);
+    const td5=document.createElement('td'); td5.className='ladder'; td5.id='ladder-'+r.key;
+    tr.append(td1,td2,td3,td4,td5); tb.appendChild(tr);
+  });
+}
+function renderLadders(){
+  COST_ROWS.forEach(r=>{
+    const c=S.costs[r.key];
+    const o=[], n=[];
+    for(let v=r.floor+1; v<=r.max; v++){ o.push(priceOld(v,c)); n.push(priceNew(v,c)); }
+    const el=$('#ladder-'+r.key); if(!el) return;
+    el.innerHTML = '<span class="o">'+o.join(' · ')+'</span><br><span class="n"><b>'+n.join(' · ')+'</b></span>';
+  });
+}
+
+function buildCmp(){
+  const box=$('#cmp'); box.innerHTML='';
+  COST_ROWS.forEach(r=>{
+    const p=document.createElement('div'); p.className='panel';
+    const h=document.createElement('h3'); h.style.cssText='font-family:Cinzel,Georgia,serif;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:.1rem 0 .3rem;';
+    h.textContent=r.label; p.appendChild(h);
+    const t=document.createElement('table');
+    t.innerHTML='<thead><tr><th>Nv</th><th class="col-o">ant.</th><th class="col-o">acum</th>'
+      +'<th class="col-n">novo</th><th class="col-n">acum</th><th>Δ</th></tr></thead><tbody id="cmpb-'+r.key+'"></tbody>';
+    p.appendChild(t); box.appendChild(p);
+  });
+}
+function renderCmp(){
+  COST_ROWS.forEach(r=>{
+    const c=S.costs[r.key];
+    const tb=$('#cmpb-'+r.key); if(!tb) return;
+    let html='';
+    for(let v=r.floor+1; v<=r.max; v++){
+      const po=priceOld(v,c), pn=priceNew(v,c);
+      const ao=totalOld(v,r.key), an=totalNew(v,r.key);
+      const d=an-ao;
+      html+='<tr><td>'+v+'</td><td class="col-o">'+po+'</td><td class="col-o">'+ao+'</td>'
+        +'<td class="col-n">'+pn+'</td><td class="col-n">'+an+'</td>'
+        +'<td class="'+(d>0?'delta pos':d<0?'delta negd':'muted')+'">'+(d>0?'+':'')+d+'</td></tr>';
+    }
+    tb.innerHTML=html;
+  });
+}
+
+function buildAttrs(){
+  const box=$('#attrs'); box.innerHTML='';
+  ['Físico','Social','Mental'].forEach(g=>{
+    ATTRS.filter(a=>a.g===g).forEach(a=>{
+      const row=document.createElement('div'); row.className='row';
+      const nm=span('nm'); nm.textContent=a.n;
+      const inp=num(S.attrs[a.id],1,6,v=>{ S.attrs[a.id]=v; refresh(); });
+      row.append(nm,inp,span('xp o','xpo-attr-'+a.id),span('xp n','xpn-attr-'+a.id));
+      box.appendChild(row);
+    });
+  });
+}
+function buildVirtues(){
+  const box=$('#virtues'); box.innerHTML='';
+  VIRTUES.forEach(v=>{
+    const row=document.createElement('div'); row.className='row';
+    const nm=span('nm'); nm.textContent=v.n;
+    const inp=num(S.virtues[v.id],1,6,x=>{ S.virtues[v.id]=x; refresh(); });
+    row.append(nm,inp,span('xp o','xpo-virt-'+v.id),span('xp n','xpn-virt-'+v.id));
+    box.appendChild(row);
+  });
+}
+function buildRaces(){
+  const sel=$('#raca'); sel.innerHTML='';
+  RACES.forEach(([id,n,c])=>{ const o=document.createElement('option'); o.value=id; o.textContent=n+' ('+c+' XP)'; if(id===S.raca)o.selected=true; sel.appendChild(o); });
+  sel.addEventListener('change',()=>{ S.raca=sel.value; refresh(); });
+}
+function buildSkills(){
+  const box=$('#skills'); box.innerHTML='';
+  SKILLS.forEach(gr=>{
+    const p=document.createElement('div'); p.className='panel grp';
+    const h=document.createElement('h3'); h.textContent=gr.g; p.appendChild(h);
+    const hd=document.createElement('div'); hd.className='row';
+    hd.innerHTML='<span class="nm"></span><span style="width:4rem"></span><span class="hdrxp"><span>antigo</span><span>novo</span></span>';
+    p.appendChild(hd);
+    gr.list.forEach(n=>{
+      const k=slug(n);
+      const row=document.createElement('div'); row.className='row';
+      const nm=span('nm'); nm.textContent=n;
+      const inp=num(S.skills[k],0,6,v=>{ S.skills[k]=v; refresh(); });
+      row.append(nm,inp,span('xp o','xpo-sk-'+k),span('xp n','xpn-sk-'+k));
+      p.appendChild(row);
+    });
+    box.appendChild(p);
+  });
+}
+function buildLevelGrid(containerId, arr, maxLvl){
+  const box=$(containerId); box.innerHTML='';
+  const tbl=document.createElement('table'); tbl.className='lvlgrid';
+  const thead=document.createElement('tr'); thead.innerHTML='<th>nível</th>'+Array.from({length:maxLvl},(_,i)=>'<th>'+(i+1)+'</th>').join('');
+  const trow=document.createElement('tr'); const tdl=document.createElement('td'); tdl.innerHTML='<span class="muted">qtd</span>'; trow.appendChild(tdl);
+  for(let L=1; L<=maxLvl; L++){
+    const td=document.createElement('td');
+    const inp=num(arr[L-1]||0,0,99,v=>{ arr[L-1]=v; refresh(); });
+    inp.style.width='2.9rem'; td.appendChild(inp); trow.appendChild(td);
+  }
+  tbl.append(thead,trow); box.appendChild(tbl);
+}
+
+// ---- cálculo ----
+function put(id, val){ const el=$(id); if(el) el.textContent=val; }
+
+function recompute(){
+  let aO=0,aN=0;
+  ATTRS.forEach(a=>{ const L=S.attrs[a.id]; const o=totalOld(L,'atributo'), n=totalNew(L,'atributo');
+    aO+=o; aN+=n; put('#xpo-attr-'+a.id,o); put('#xpn-attr-'+a.id,n); });
+
+  let hO=0,hN=0;
+  SKILLS.forEach(gr=>gr.list.forEach(x=>{ const k=slug(x); const L=S.skills[k]||0;
+    const o=totalOld(L,'habPrim'), n=totalNew(L,'habPrim');
+    hO+=o; hN+=n; put('#xpo-sk-'+k, o||''); put('#xpn-sk-'+k, n||''); }));
+
+  const bucket=(arr,key)=>{ let o=0,n=0; arr.forEach((q,i)=>{ o+=q*totalOld(i+1,key); n+=q*totalNew(i+1,key); }); return [o,n]; };
+  const [secO,secN]=bucket(S.sec,'habSec');   put('#xpo-sec',secO);  put('#xpn-sec',secN);
+  const [epO,epN]=bucket(S.espp,'espPrim');   put('#xpo-espp',epO);  put('#xpn-espp',epN);
+  const [esO,esN]=bucket(S.esps,'espSec');    put('#xpo-esps',esO);  put('#xpn-esps',esN);
+  const [tcO,tcN]=bucket(S.tec,'tecnica');    put('#xpo-tec',tcO);   put('#xpn-tec',tcN);
+  const [arO,arN]=bucket(S.arte,'arte');      put('#xpo-arte',arO);  put('#xpn-arte',arN);
+
+  let vO=0,vN=0;
+  VIRTUES.forEach(v=>{ const L=S.virtues[v.id]; const o=totalOld(L,'virtude'), n=totalNew(L,'virtude');
+    vO+=o; vN+=n; put('#xpo-virt-'+v.id,o); put('#xpn-virt-'+v.id,n); });
+
+  const wO=totalOld(S.vontade,'vontade'),  wN=totalNew(S.vontade,'vontade');   put('#xpo-vontade',wO);  put('#xpn-vontade',wN);
+  const pO=totalOld(S.aparencia,'aparencia'), pN=totalNew(S.aparencia,'aparencia'); put('#xpo-aparencia',pO); put('#xpn-aparencia',pN);
+  const cO=totalOld(S.centelha,'centelha'), cN=totalNew(S.centelha,'centelha'); put('#xpo-centelha',cO); put('#xpn-centelha',cN);
+  const raca=(RACES.find(r=>r[0]===S.raca)||[,,0])[2]; put('#xpo-raca',raca); put('#xpn-raca',raca);
+
+  const totO=aO+hO+secO+epO+esO+tcO+arO+vO+wO+pO+cO+raca;
+  const totN=aN+hN+secN+epN+esN+tcN+arN+vN+wN+pN+cN+raca;
+  put('#total-o',totO); put('#total-n',totN);
+  const d=totN-totO; const de=$('#delta');
+  de.textContent=(d>0?'+':'')+d; de.className='big '+(d>0?'delta pos':d<0?'delta negd':'muted');
+
+  const b=S.budget||0;
+  const ro=$('#rem-o'); ro.textContent=b-totO; ro.className='big rem '+((b-totO)<0?'neg':'ok');
+  const rn=$('#rem-n'); rn.textContent=b-totN; rn.className='big rem '+((b-totN)<0?'neg':'ok');
+
+  const cell=(l,o,n)=>l+' <b>'+o+'</b>/<b>'+n+'</b>';
+  $('#break').innerHTML = [
+    cell('Atrib',aO,aN), cell('Prim',hO,hN), cell('Sec',secO,secN), cell('Esp',epO+esO,epN+esN),
+    cell('Proeza',tcO,tcN), cell('Arte',arO,arN), cell('Virt',vO,vN), cell('Vont',wO,wN),
+    cell('Apar',pO,pN), cell('Cent',cO,cN), 'Raça <b>'+raca+'</b>'
+  ].join(' · ') + ' <span class="muted">(antigo/novo)</span>';
+}
+
+function refresh(){ renderLadders(); renderCmp(); recompute(); save(); }
+
+// ---- init ----
+buildCostTable(); buildCmp(); buildAttrs(); buildVirtues(); buildRaces(); buildSkills();
+buildLevelGrid('#g-sec', S.sec, 6);
+buildLevelGrid('#g-espp', S.espp, 3);
+buildLevelGrid('#g-esps', S.esps, 3);
+buildLevelGrid('#g-tec', S.tec, 6);
+buildLevelGrid('#g-arte', S.arte, 6);
+$('#t-centelha').value=S.centelha;   $('#t-centelha').addEventListener('input',e=>{ S.centelha=clamp(e.target,0,6); refresh(); });
+$('#t-vontade').value=S.vontade;     $('#t-vontade').addEventListener('input',e=>{ S.vontade=clamp(e.target,1,12); refresh(); });
+$('#t-aparencia').value=S.aparencia; $('#t-aparencia').addEventListener('input',e=>{ S.aparencia=clamp(e.target,1,12); refresh(); });
+$('#budget').value=S.budget;         $('#budget').addEventListener('input',e=>{ S.budget=parseInt(e.target.value)||0; refresh(); });
+$('#reset-costs').addEventListener('click',()=>{ S.costs=clone(DEFAULT_COSTS); buildCostTable(); refresh(); });
+function clamp(el,min,max){ let v=parseInt(el.value); if(isNaN(v))v=min; v=Math.max(min,Math.min(max,v)); el.value=v; return v; }
+refresh();
+</script>
+</body>
+</html>
