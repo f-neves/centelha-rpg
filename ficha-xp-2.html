@@ -93,11 +93,13 @@
   <p class="sub">
     <b>Antigo:</b> cada nível custa <code>nível × custo</code>.
     <b>Novo:</b> cada nível custa <code>base + (nível × multiplicador)</code>.
-    Os valores já carregados são a <b>proposta</b>: forma <code>r = base ÷ mult = 2</code> nas três trilhas
-    fechadas, com pesos <b>2,5 : 1 : 0,5</b>.
-    Atributo <b>20·25·30·35·40</b> (nv 2 a 6) · Primária <b>6·8·10·12·14·16</b> · Secundária <b>3·4·5·6·7·8</b>.
-    As demais trilhas estão marcadas como <span class="tag wip">provisório</span>: aplicam a mesma forma,
-    mas ainda não foram decididas. Tudo editável e salvo no navegador.
+    Os valores carregados são a <b>proposta completa</b>: forma <code>r = base ÷ mult = 2</code> na maioria
+    das trilhas, com pesos <b>2,5 : 1 : 0,5</b> entre Atributo, Primária e Secundária.
+    <b>Vontade e Aparência</b> agora partem do <b>piso 0</b> e usam <code>r = 7</code>, porque a régua delas tem
+    12 degraus e o mesmo <code>r</code> produz uma escada muito mais íngreme numa régua longa.
+    A <b>Proeza</b> segue <span class="tag wip">em aberto</span>: por ser traço plano, o custo dela já é linear
+    no nível e não sofre o problema que o modelo afim corrige, então ficou inalterada.
+    Tudo editável e salvo no navegador.
   </p>
   <div class="legend">
     <span><i style="background:var(--old)"></i>coluna antiga</span>
@@ -137,7 +139,8 @@
   <h2>Conferência das razões entre trilhas</h2>
   <div class="panel scroll">
     <table id="ratio-table"></table>
-    <p class="desc" style="margin:.5rem 0 0">Alvo da proposta: <b>Atributo ÷ Primária = 2,50</b> e <b>Secundária ÷ Primária = 0,50</b> em todos os níveis. Só ficam constantes quando as três trilhas têm o mesmo <b>r</b>.</p>
+    <p style="margin:.6rem 0 .2rem;font-size:.9rem" id="constraints"></p>
+    <p class="desc" style="margin:.3rem 0 0">Alvos: <b>Atributo ÷ Primária = 2,50</b> e <b>Secundária ÷ Primária = 0,50</b> em todos os níveis (só ficam constantes se as três trilhas tiverem o mesmo <b>r</b>), e <b>Vontade e Aparência cheias devem custar mais que um Atributo cheio</b>.</p>
   </div>
 
   <h2>Tabelas comparativas · custo do nível e acumulado</h2>
@@ -154,8 +157,8 @@
       <h3>Traços</h3>
       <div class="row"><span class="nm"></span><span style="width:4rem"></span><span class="hdrxp"><span>antigo</span><span>novo</span></span></div>
       <div class="row"><span class="nm">Centelha <span class="muted">(0–6)</span></span><input type="number" id="t-centelha" min="0" value="0"><span class="xp o" id="xpo-centelha">0</span><span class="xp n" id="xpn-centelha">0</span></div>
-      <div class="row"><span class="nm">Força de Vontade <span class="muted">(1–12)</span></span><input type="number" id="t-vontade" min="1" value="1"><span class="xp o" id="xpo-vontade">0</span><span class="xp n" id="xpn-vontade">0</span></div>
-      <div class="row"><span class="nm">Aparência <span class="muted">(1–12)</span></span><input type="number" id="t-aparencia" min="1" value="1"><span class="xp o" id="xpo-aparencia">0</span><span class="xp n" id="xpn-aparencia">0</span></div>
+      <div class="row"><span class="nm">Força de Vontade <span class="muted">(0–12)</span></span><input type="number" id="t-vontade" min="0" value="0"><span class="xp o" id="xpo-vontade">0</span><span class="xp n" id="xpn-vontade">0</span></div>
+      <div class="row"><span class="nm">Aparência <span class="muted">(0–12)</span></span><input type="number" id="t-aparencia" min="0" value="0"><span class="xp o" id="xpo-aparencia">0</span><span class="xp n" id="xpn-aparencia">0</span></div>
       <h3 style="margin-top:.6rem">Virtudes <span class="muted" style="font-weight:400">(1–6)</span></h3>
       <div id="virtues"></div>
       <h3 style="margin-top:.6rem">Raça</h3>
@@ -198,9 +201,10 @@ const VIRTUES = [{id:'compaixao',n:'Compaixão'},{id:'conviccao',n:'Convicção'
 const RACES = [['humano','Humano',0],['anao','Anão',30],['elfo','Elfo',50],['gnomo','Gnomo',40],['halfling','Halfling',30],['meio-elfo','Meio-Elfo',20],['orc','Orc',40],['meio-orc','Meio-Orc',40]];
 
 // custo antigo (nível × custo) + parâmetros novos (base + nível × mult)
-// Os três primeiros são a PROPOSTA FECHADA: forma r = base/mult = 2 nas três trilhas,
-// pesos 2,5 : 1 : 0,5 (Atributo : Primária : Secundária).
-// Os demais são PROVISÓRIOS: aplicam a mesma forma r=2, mas ainda não foram decididos.
+// Forma r = base/mult = 2 na maior parte das trilhas; Vontade/Aparência usam r=7 porque a
+// régua delas tem 12 degraus (o mesmo r produz uma escada muito mais íngreme numa régua longa).
+// Vontade e Aparência agora têm PISO 0 (antes 1). Proeza fica inalterada: sendo traço plano,
+// o custo dela já é linear no nível e não sofre o problema que o modelo afim corrige.
 const DEFAULT_COSTS = {
   atributo:{old:8,  base:10, mult:5},
   habPrim: {old:4,  base:4,  mult:2},
@@ -208,10 +212,10 @@ const DEFAULT_COSTS = {
   espPrim: {old:8,  base:8,  mult:4},
   espSec:  {old:4,  base:4,  mult:2},
   virtude: {old:3,  base:4,  mult:2},
-  vontade: {old:2,  base:2,  mult:1},
-  aparencia:{old:2, base:2,  mult:1},
+  vontade: {old:2,  base:7,  mult:1},
+  aparencia:{old:2, base:7,  mult:1},
   centelha:{old:10, base:10, mult:5},
-  tecnica: {old:10, base:6,  mult:9},
+  tecnica: {old:10, base:0,  mult:10},
   arte:    {old:10, base:10, mult:5},
 };
 // floor = último nível já pago de graça (o traço começa aqui)
@@ -220,14 +224,14 @@ const COST_ROWS = [
   {key:'atributo',  label:'Atributo',                  floor:1, max:6,  mode:'acum', st:'ok'},
   {key:'habPrim',   label:'Habilidade primária',       floor:0, max:6,  mode:'acum', st:'ok'},
   {key:'habSec',    label:'Habilidade secundária',     floor:0, max:6,  mode:'acum', st:'ok'},
-  {key:'espPrim',   label:'Especialidade primária',    floor:0, max:3,  mode:'acum', st:'wip'},
-  {key:'espSec',    label:'Especialidade secundária',  floor:0, max:3,  mode:'acum', st:'wip'},
-  {key:'virtude',   label:'Virtude',                   floor:1, max:6,  mode:'acum', st:'wip'},
-  {key:'vontade',   label:'Força de Vontade',          floor:1, max:12, mode:'acum', st:'wip'},
-  {key:'aparencia', label:'Aparência',                 floor:1, max:12, mode:'acum', st:'wip'},
-  {key:'centelha',  label:'Centelha',                  floor:0, max:6,  mode:'acum', st:'wip'},
+  {key:'espPrim',   label:'Especialidade primária',    floor:0, max:3,  mode:'acum', st:'ok'},
+  {key:'espSec',    label:'Especialidade secundária',  floor:0, max:3,  mode:'acum', st:'ok'},
+  {key:'virtude',   label:'Virtude',                   floor:1, max:6,  mode:'acum', st:'ok'},
+  {key:'vontade',   label:'Força de Vontade',          floor:0, max:12, mode:'acum', st:'ok'},
+  {key:'aparencia', label:'Aparência',                 floor:0, max:12, mode:'acum', st:'ok'},
+  {key:'centelha',  label:'Centelha',                  floor:0, max:6,  mode:'acum', st:'ok'},
   {key:'tecnica',   label:'Proeza',                    floor:0, max:6,  mode:'flat', st:'wip'},
-  {key:'arte',      label:'Arte',                      floor:0, max:6,  mode:'acum', st:'wip'},
+  {key:'arte',      label:'Arte',                      floor:0, max:6,  mode:'acum', st:'ok'},
 ];
 const ROW = Object.fromEntries(COST_ROWS.map(r=>[r.key,r]));
 
@@ -269,12 +273,12 @@ function totalNew(level, key){
 }
 
 // ---- estado ----
-const COSTS_VERSION = 2;   // bump = recarrega os custos padrão sem apagar a ficha
+const COSTS_VERSION = 3;   // bump = recarrega os custos padrão sem apagar a ficha
 const S = load() || {
   costs:clone(DEFAULT_COSTS), budget:1500, cv:COSTS_VERSION,
   attrs:Object.fromEntries(ATTRS.map(a=>[a.id,1])),
   skills:{},
-  centelha:0, vontade:1, aparencia:1,
+  centelha:0, vontade:0, aparencia:0,
   virtues:Object.fromEntries(VIRTUES.map(v=>[v.id,1])),
   raca:'humano',
   sec:[0,0,0,0,0,0], espp:[0,0,0], esps:[0,0,0], tec:[0,0,0,0,0,0], arte:[0,0,0,0,0,0],
@@ -370,6 +374,16 @@ function renderRatios(){
     }).join('')+'<td class="'+(konst?'hit':'miss')+'">'+(konst?'✓ sim':'✗ varia')+'</td></tr>';
   });
   t.innerHTML=head+'<tbody>'+body+'</tbody>';
+
+  const cn=$('#constraints'); if(!cn) return;
+  const atr=totalNew(ROW.atributo.max,'atributo');
+  const von=totalNew(ROW.vontade.max,'vontade');
+  const apa=totalNew(ROW.aparencia.max,'aparencia');
+  const mark=(x)=> '<span class="'+(x>atr?'hit':'miss')+'">'+fmt(x)+(x>atr?' ✓':' ✗')+'</span>';
+  cn.innerHTML = 'Trilha cheia: <b>Atributo 1→'+ROW.atributo.max+'</b> = '+fmt(atr)
+    + ' · <b>Vontade 0→'+ROW.vontade.max+'</b> = '+mark(von)
+    + ' · <b>Aparência 0→'+ROW.aparencia.max+'</b> = '+mark(apa)
+    + ' <span class="muted">(as duas precisam superar o Atributo)</span>';
 }
 
 function buildCmp(){
@@ -517,8 +531,8 @@ buildLevelGrid('#g-esps', S.esps, 3);
 buildLevelGrid('#g-tec', S.tec, 6);
 buildLevelGrid('#g-arte', S.arte, 6);
 $('#t-centelha').value=S.centelha;   $('#t-centelha').addEventListener('input',e=>{ S.centelha=clamp(e.target,0,6); refresh(); });
-$('#t-vontade').value=S.vontade;     $('#t-vontade').addEventListener('input',e=>{ S.vontade=clamp(e.target,1,12); refresh(); });
-$('#t-aparencia').value=S.aparencia; $('#t-aparencia').addEventListener('input',e=>{ S.aparencia=clamp(e.target,1,12); refresh(); });
+$('#t-vontade').value=S.vontade;     $('#t-vontade').addEventListener('input',e=>{ S.vontade=clamp(e.target,0,12); refresh(); });
+$('#t-aparencia').value=S.aparencia; $('#t-aparencia').addEventListener('input',e=>{ S.aparencia=clamp(e.target,0,12); refresh(); });
 $('#budget').value=S.budget;         $('#budget').addEventListener('input',e=>{ S.budget=parseInt(e.target.value)||0; refresh(); });
 $('#reset-costs').addEventListener('click',()=>{ S.costs=clone(DEFAULT_COSTS); buildCostTable(); refresh(); });
 function clamp(el,min,max){ let v=parseInt(el.value); if(isNaN(v))v=min; v=Math.max(min,Math.min(max,v)); el.value=v; return v; }
