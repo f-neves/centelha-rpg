@@ -542,6 +542,95 @@ Se a opção **A** for mantida como está, três consertos são obrigatórios:
 
 ---
 
+## 8. Proposta concreta: Atributos, Primárias e Secundárias
+
+Fechada a forma (afim) na seção 0, restam duas decisões **independentes** por trilha:
+o **peso** (quanto ela custa em relação às outras, um fator vertical) e a **forma `r`**
+(quão íngreme é a escada). A proposta abaixo usa `r = 2` nas três trilhas, e portanto
+as três têm exatamente o mesmo formato de escada, mudando só o peso.
+
+| Trilha | piso | B | M | `r` | Preço de cada nível | Acumulado |
+|---|---|---|---|---|---|---|
+| **Atributo** | 1 | **10** | **5** | 2 | (nv 2-6) 20 · 25 · 30 · 35 · 40 | 20 · 45 · 75 · 110 · 150 |
+| **Habilidade primária** | 0 | **4** | **2** | 2 | 6 · 8 · 10 · 12 · 14 · 16 | 6 · 14 · 24 · 36 · 50 · 66 |
+| **Habilidade secundária** | 0 | **2** | **1** | 2 | 3 · 4 · 5 · 6 · 7 · 8 | 3 · 7 · 12 · 18 · 25 · 33 |
+
+Razões exatas, em **todos** os níveis: Atributo = **2,5 ×** Primária · Secundária = **0,50 ×** Primária.
+
+### Por que peso 2,5 no Atributo, e não 2,0
+
+- São **24 primárias para 9 Atributos**: cada Atributo serve, em média, **2,67 perícias**.
+  O peso 2,0 já cobra menos do que a largura que o Atributo entrega.
+- O Atributo ainda alimenta os **derivados** (PV, Defesa, Energia, Fôlego, Iniciativa, Mana),
+  valor que a Habilidade não tem.
+- O piso 1 é **grátis**, e isso dilui a razão. Com peso 2,0, o total de um Atributo (1→6)
+  sai 120 contra 66 de uma Primária, ou seja **1,82 ×**, abaixo do dobro pedido. Com peso 2,5
+  o total vai a 150 contra 66, **2,27 ×**, que é o dobro pedido já descontado o nível grátis.
+
+### Impacto no orçamento: praticamente nulo
+
+| Perfil de ficha | Hoje | Peso 2,0 | **Peso 2,5** |
+|---|---|---|---|
+| largo e raso (níveis 2-3) | 396 | 402 (102%) | 453 (114%) |
+| **típico** (pico 6, corpo 3-4) | 736 | 656 (89%) | **755 (103%)** |
+| fundo (vários 5-6) | 1252 | 1042 (83%) | 1203 (96%) |
+
+O bloco Atributos + Primárias fica em **103% do custo atual** num personagem típico.
+Ou seja: **os orçamentos 1500 / 2000 / 2600 continuam válidos** e nada mais precisa ser
+recusteado (Proezas, Artes, Centelha, Virtudes, raças, bestiário). O que muda não é quanto
+a ficha custa, é **o formato dela**: a entrada fica um pouco mais cara, o meio da régua fica
+igual, e o topo fica acessível.
+
+Comparação nível a nível com o que existe hoje:
+
+| | nv1 | nv2 | nv3 | nv4 | nv5 | nv6 |
+|---|---|---|---|---|---|---|
+| Atributo hoje | — | 16 | 40 | 72 | 112 | 160 |
+| **Atributo proposto** | — | 20 | 45 | **75** | **110** | 150 |
+| Primária hoje | 4 | 12 | 24 | 40 | 60 | 84 |
+| **Primária proposta** | 6 | 14 | **24** | 36 | 50 | 66 |
+
+Os níveis 3 a 5, onde vive a maior parte dos dots, praticamente não se mexem. Toda a
+mudança se concentra nas pontas, que é exatamente onde ela devia estar.
+
+Teto da ficha (9 Atributos + 24 Primárias, tudo no 6): 3456 hoje, **2934** na proposta.
+O orçamento de herói passa a cobrir 89% do teto em vez de 75%, ainda com folga.
+
+### Secundárias: o preço está certo, o problema é a regra
+
+Metade exata da Primária é o preço correto e o mais fácil de explicar na mesa. Mas o
+capítulo `atributos-e-pericias.md` define as Secundárias com **três propriedades ao mesmo
+tempo** que não fecham juntas:
+
+1. são **ilimitadas** em número;
+2. podem ser **tão amplas quanto um campo inteiro** (Ferraria, Direito, Astronomia, Sedução);
+3. custam **metade**.
+
+Duas quaisquer dessas são saudáveis. As três juntas abrem a porta para nomear uma Secundária
+larga o bastante para cobrir o núcleo do personagem e comprar a competência principal com
+50% de desconto: uma Secundária no 6 custa **33**, contra **66** de uma Primária no 6, e as
+duas entregam os mesmos +6 de pool.
+
+Isso **não se conserta com preço**, se conserta com escopo. Três saídas, em ordem de preferência:
+
+- **Teto menor.** Secundária vai até **4**. Um campo de nicho pode te deixar muito bom, não
+  lendário; o degrau de maestria pertence às Primárias. Torna o meio-preço seguro por
+  construção e não exige mudar custo nenhum.
+- **Disciplina de escopo.** Uma Secundária não pode sobrepor o núcleo de uma Primária;
+  se sobrepõe, é Especialidade, não Secundária.
+- **Freio pelo preço** (se não quiser mexer na regra): `B = 1, M = 2` → 3 · 5 · 7 · 9 · 11 · 13,
+  acumulado 3 · 8 · 15 · 24 · 35 · 48. A entrada continua sendo metade da Primária (3 contra 6),
+  mas dominar sai a 73% dela em vez de 50%. Barato para pincelar, caro para virar carreira.
+  O custo dessa opção é que ela deixa de ser "metade", que era a regra simples.
+
+### Nota sobre a sobretaxa (δ)
+
+Com `r = 2`: δ = **1,83** para Primária e Secundária, **1,50** para Atributo. O Atributo sai
+mais achatado porque o piso 1 grátis já fez metade do trabalho. Isso é aceitável: a contenção
+do Atributo vem do **peso 2,5×**, que é a ferramenta certa para isso, não da curvatura.
+
+---
+
 ## 7. Pendências que isto abre
 
 - [ ] **[DECIDIR]** Qual calibragem: A (barata, reconverte tudo), B (meio-termo) ou C (neutra).
