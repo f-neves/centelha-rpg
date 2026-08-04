@@ -97,8 +97,8 @@
     Como as Habilidades usam <code>r = 2</code>, a razão Atributo ÷ Primária <b>não fica constante</b>:
     sobe de 1,88 no nível 2 para 2,19 no nível 6. Primária e Secundária seguem <code>r = 2</code>,
     com a Secundária em metade exata da Primária.
-    <b>Vontade e Aparência</b> agora partem do <b>piso 0</b> e usam <code>r = 7</code>, porque a régua delas tem
-    12 degraus e o mesmo <code>r</code> produz uma escada muito mais íngreme numa régua longa.
+    <b>Vontade e Aparência</b> ficam no multiplicador puro (<b>2 × nível</b>), a única mudança sendo o
+    <b>piso 0</b> no lugar do 1. As duas colunas coincidem nessas linhas: o custo por nível não mudou.
     A <b>Proeza</b> usa <b>base 5 + 5 × nível</b> (10·15·20·25·30·35), por Proeza, aferida contra a
     <b>curva de acúmulo ao longo da campanha</b>, não por fatia do orçamento de criação.
     A <b>Centelha</b> passou a ser <b>grátis</b>: quem dá o tier é o Mestre, não o XP.
@@ -222,8 +222,8 @@ const DEFAULT_COSTS = {
   espPrim: {old:8,  base:8,  mult:4},
   espSec:  {old:4,  base:4,  mult:2},
   virtude: {old:3,  base:4,  mult:2},
-  vontade: {old:2,  base:7,  mult:1},
-  aparencia:{old:2, base:7,  mult:1},
+  vontade: {old:2,  base:0,  mult:2},
+  aparencia:{old:2, base:0,  mult:2},
   centelha:{old:10, base:0,  mult:0},
   tecnica: {old:10, base:5,  mult:5},
   arte:    {old:10, base:10, mult:5},
@@ -283,7 +283,7 @@ function totalNew(level, key){
 }
 
 // ---- estado ----
-const COSTS_VERSION = 6;   // bump = recarrega os custos padrão sem apagar a ficha
+const COSTS_VERSION = 7;   // bump = recarrega os custos padrão sem apagar a ficha
 
 // Curva-alvo de acúmulo de Proezas ao longo da campanha (min · típico · máx).
 // As Proezas NÃO são uma fatia do orçamento de criação: elas se acumulam por tier de Centelha.
