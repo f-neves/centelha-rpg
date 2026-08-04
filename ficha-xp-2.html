@@ -101,7 +101,7 @@
     <b>piso 0</b> no lugar do 1. As duas colunas coincidem nessas linhas: o custo por nível não mudou.
     A <b>Proeza</b> usa <b>base 5 + 5 × nível</b> (10·15·20·25·30·35), por Proeza, aferida contra a
     <b>curva de acúmulo ao longo da campanha</b>, não por fatia do orçamento de criação.
-    A <b>Centelha</b> passou a ser <b>grátis</b>: quem dá o tier é o Mestre, não o XP.
+    Os <b>Efeitos de Arte</b> custam <b>4 × nível</b>, por Efeito, sem acumular: nível 2 não exige ter o nível 1. A <b>Centelha</b> é <b>grátis</b>: quem dá o tier é o Mestre, não o XP.
     Tudo editável e salvo no navegador.
   </p>
   <div class="legend">
@@ -179,13 +179,14 @@
   <h2>Habilidades primárias <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(0–6)</span></h2>
   <div class="cols" id="skills"></div>
 
-  <h2>Secundárias, Especialidades, Proezas, Artes <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(quantas em cada nível)</span></h2>
+  <h2>Secundárias, Especialidades, Proezas, Artes, Efeitos <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;opacity:.8">(quantas em cada nível)</span></h2>
   <div class="cols">
     <div class="panel grp"><h3>Habilidades secundárias</h3><div id="g-sec"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-sec">0</span><span class="xp n" id="xpn-sec">0</span></div></div>
     <div class="panel grp"><h3>Especialidades primárias</h3><div id="g-espp"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-espp">0</span><span class="xp n" id="xpn-espp">0</span></div></div>
     <div class="panel grp"><h3>Especialidades secundárias</h3><div id="g-esps"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-esps">0</span><span class="xp n" id="xpn-esps">0</span></div></div>
     <div class="panel grp"><h3>Proezas <span class="muted" style="font-weight:400">(preço do nível, não acumula)</span></h3><div id="g-tec"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-tec">0</span><span class="xp n" id="xpn-tec">0</span></div></div>
     <div class="panel grp"><h3>Artes <span class="muted" style="font-weight:400">(acumula 1..N)</span></h3><div id="g-arte"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-arte">0</span><span class="xp n" id="xpn-arte">0</span></div></div>
+    <div class="panel grp"><h3>Efeitos de Arte <span class="muted" style="font-weight:400">(preço do nível, não acumula)</span></h3><div id="g-efeito"></div><div class="row"><span class="nm muted">subtotal</span><span class="xp o" id="xpo-efeito">0</span><span class="xp n" id="xpn-efeito">0</span></div></div>
   </div>
 
   <p class="sub" style="margin-top:1.4rem">Referência de orçamento: iniciante 1500 · veterano 2000 · herói 2600. Laboratório de calibragem, não substitui a ficha oficial.</p>
@@ -227,6 +228,7 @@ const DEFAULT_COSTS = {
   centelha:{old:10, base:0,  mult:0},
   tecnica: {old:10, base:5,  mult:5},
   arte:    {old:10, base:10, mult:5},
+  efeito:  {old:2,  base:0,  mult:4},
 };
 // floor = último nível já pago de graça (o traço começa aqui)
 // mode: 'acum' soma do floor+1 até o nível · 'flat' cobra só o preço do nível
@@ -242,6 +244,7 @@ const COST_ROWS = [
   {key:'centelha',  label:'Centelha <span class="muted">(dada pelo Mestre)</span>', floor:0, max:6, mode:'acum', st:'ok'},
   {key:'tecnica',   label:'Proeza <span class="muted">(por Proeza, nível ≤ Centelha)</span>', floor:0, max:6, mode:'flat', st:'ok'},
   {key:'arte',      label:'Arte',                      floor:0, max:6,  mode:'acum', st:'ok'},
+  {key:'efeito',    label:'Efeito de Arte <span class="muted">(por Efeito, nível ≤ nível da Arte)</span>', floor:0, max:6, mode:'flat', st:'ok'},
 ];
 const ROW = Object.fromEntries(COST_ROWS.map(r=>[r.key,r]));
 
@@ -283,7 +286,7 @@ function totalNew(level, key){
 }
 
 // ---- estado ----
-const COSTS_VERSION = 7;   // bump = recarrega os custos padrão sem apagar a ficha
+const COSTS_VERSION = 8;   // bump = recarrega os custos padrão sem apagar a ficha
 
 // Curva-alvo de acúmulo de Proezas ao longo da campanha (min · típico · máx).
 // As Proezas NÃO são uma fatia do orçamento de criação: elas se acumulam por tier de Centelha.
@@ -301,11 +304,13 @@ const S = load() || {
   virtues:Object.fromEntries(VIRTUES.map(v=>[v.id,1])),
   raca:'humano',
   sec:[0,0,0,0,0,0], espp:[0,0,0], esps:[0,0,0], tec:[0,0,0,0,0,0], arte:[0,0,0,0,0,0],
+  efeito:[0,0,0,0,0,0],
 };
 if(S.cv !== COSTS_VERSION){ S.costs = clone(DEFAULT_COSTS); S.cv = COSTS_VERSION; }
 S.costs = S.costs || {};
 Object.keys(DEFAULT_COSTS).forEach(k=>{ S.costs[k] = {...DEFAULT_COSTS[k], ...(S.costs[k]||{})}; });
 S.skills = S.skills || {};
+if(!Array.isArray(S.efeito)) S.efeito=[0,0,0,0,0,0];   // trilha adicionada depois
 SKILLS.forEach(gr=>gr.list.forEach(n=>{ const k=slug(n); if(S.skills[k]==null) S.skills[k]=0; }));
 
 function clone(o){ return JSON.parse(JSON.stringify(o)); }
@@ -553,6 +558,7 @@ function recompute(){
   const [esO,esN]=bucket(S.esps,'espSec');    put('#xpo-esps',esO);  put('#xpn-esps',esN);
   const [tcO,tcN]=bucket(S.tec,'tecnica');    put('#xpo-tec',tcO);   put('#xpn-tec',tcN);
   const [arO,arN]=bucket(S.arte,'arte');      put('#xpo-arte',arO);  put('#xpn-arte',arN);
+  const [efO,efN]=bucket(S.efeito,'efeito');  put('#xpo-efeito',efO);put('#xpn-efeito',efN);
 
   let vO=0,vN=0;
   VIRTUES.forEach(v=>{ const L=S.virtues[v.id]; const o=totalOld(L,'virtude'), n=totalNew(L,'virtude');
@@ -563,8 +569,8 @@ function recompute(){
   const cO=totalOld(S.centelha,'centelha'), cN=totalNew(S.centelha,'centelha'); put('#xpo-centelha',cO); put('#xpn-centelha',cN);
   const raca=(RACES.find(r=>r[0]===S.raca)||[,,0])[2]; put('#xpo-raca',raca); put('#xpn-raca',raca);
 
-  const totO=aO+hO+secO+epO+esO+tcO+arO+vO+wO+pO+cO+raca;
-  const totN=aN+hN+secN+epN+esN+tcN+arN+vN+wN+pN+cN+raca;
+  const totO=aO+hO+secO+epO+esO+tcO+arO+efO+vO+wO+pO+cO+raca;
+  const totN=aN+hN+secN+epN+esN+tcN+arN+efN+vN+wN+pN+cN+raca;
   put('#total-o',totO); put('#total-n',totN);
   const d=totN-totO; const de=$('#delta');
   de.textContent=(d>0?'+':'')+d; de.className='big '+(d>0?'delta pos':d<0?'delta negd':'muted');
@@ -576,7 +582,7 @@ function recompute(){
   const cell=(l,o,n)=>l+' <b>'+o+'</b>/<b>'+n+'</b>';
   $('#break').innerHTML = [
     cell('Atrib',aO,aN), cell('Prim',hO,hN), cell('Sec',secO,secN), cell('Esp',epO+esO,epN+esN),
-    cell('Proeza',tcO,tcN), cell('Arte',arO,arN), cell('Virt',vO,vN), cell('Vont',wO,wN),
+    cell('Proeza',tcO,tcN), cell('Arte',arO,arN), cell('Efeito',efO,efN), cell('Virt',vO,vN), cell('Vont',wO,wN),
     cell('Apar',pO,pN), cell('Cent',cO,cN), 'Raça <b>'+raca+'</b>'
   ].join(' · ') + ' <span class="muted">(antigo/novo)</span>';
 }
@@ -590,6 +596,7 @@ buildLevelGrid('#g-espp', S.espp, 3);
 buildLevelGrid('#g-esps', S.esps, 3);
 buildLevelGrid('#g-tec', S.tec, 6);
 buildLevelGrid('#g-arte', S.arte, 6);
+buildLevelGrid('#g-efeito', S.efeito, 6);
 $('#t-centelha').value=S.centelha;   $('#t-centelha').addEventListener('input',e=>{ S.centelha=clamp(e.target,0,6); refresh(); });
 $('#t-vontade').value=S.vontade;     $('#t-vontade').addEventListener('input',e=>{ S.vontade=clamp(e.target,0,12); refresh(); });
 $('#t-aparencia').value=S.aparencia; $('#t-aparencia').addEventListener('input',e=>{ S.aparencia=clamp(e.target,0,12); refresh(); });
