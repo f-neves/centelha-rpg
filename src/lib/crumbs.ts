@@ -2,7 +2,7 @@
 // só sabem onde estão depois de carregar os dados do Supabase, então completam
 // os crumbs por aqui. O nível "Início" entra sempre; passe só o resto.
 //
-//   definirCrumbs([{ label: 'Minhas Mesas', href: u('mesas') }, { label: mesa.nome }]);
+//   definirCrumbs([{ label: 'Mesas / Fichas', href: u('mesas') }, { label: mesa.nome }]);
 //
 // A marcação é a mesma do layout (Base.astro), para o visual bater.
 import { url } from './site';

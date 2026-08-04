@@ -130,7 +130,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     // voltar
     const linkMesa = document.getElementById('link-mesa') as HTMLAnchorElement;
     if (pers.mesa_id) { linkMesa.href = u('mesa') + '?id=' + pers.mesa_id; linkMesa.textContent = '‹ voltar à mesa'; }
-    else { linkMesa.href = u('mesas'); linkMesa.textContent = '‹ minhas mesas'; }
+    else { linkMesa.href = u('mesas'); linkMesa.textContent = '‹ mesas / fichas'; }
 
     document.getElementById('pers-nome')!.textContent = pers.nome || 'Personagem';
 
@@ -145,14 +145,14 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         document.getElementById('pers-mesa')!.textContent = 'Mesa: ' + mesa.nome;
         ehMestre = mesa.mestre_id === user.id;
         definirCrumbs([
-          { label: 'Minhas Mesas', href: u('mesas') },
+          { label: 'Mesas / Fichas', href: u('mesas') },
           { label: mesa.nome, href: u('mesa') + '?id=' + pers.mesa_id },
           { label: nomePers },
         ]);
       }
     } else {
       document.getElementById('pers-mesa')!.textContent = 'Sem mesa (personagem avulso)';
-      definirCrumbs([{ label: 'Minhas Mesas', href: u('mesas') }, { label: nomePers }]);
+      definirCrumbs([{ label: 'Mesas / Fichas', href: u('mesas') }, { label: nomePers }]);
     }
 
     const status = pers.status || 'rascunho';

@@ -1,8 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Minhas Mesas" descricao="Suas mesas como mestre e como jogador.">
-  <h1>Minhas Mesas</h1>
+<Base title="Mesas / Fichas" descricao="Suas mesas como mestre e como jogador, e suas fichas de personagem.">
+  <h1>Mesas / Fichas</h1>
 
   <div id="setup" class="aviso" hidden>
     <strong>Área de contas ainda não configurada.</strong>
@@ -12,7 +12,18 @@ import Base from '../layouts/Base.astro';
   <div id="carregando" class="muted">Carregando…</div>
 
   <div id="mesas-conteudo" hidden>
-    <div id="lista"></div>
+    <section class="secao-fichas">
+      <div class="secao-cab">
+        <h2>Personagens</h2>
+        <button class="btn primary" id="novo-pers" type="button">+ Novo Personagem</button>
+      </div>
+      <div id="lista-pers"></div>
+    </section>
+
+    <section class="secao-mesas">
+      <h2>Mesas</h2>
+      <div id="lista"></div>
+    </section>
 
     <div class="acoes-mesa">
       <form id="form-criar" class="painel">
@@ -54,7 +65,18 @@ import Base from '../layouts/Base.astro';
     if (!user) return; // já redirecionou
     document.getElementById('carregando')!.hidden = true;
     document.getElementById('mesas-conteudo')!.hidden = false;
-    await render();
+    await Promise.all([render(), renderPersonagens(user.id)]);
+
+    document.getElementById('novo-pers')!.addEventListener('click', async () => {
+      setMsg('Criando personagem…', false);
+      const { data, error } = await getSupabase()
+        .from('personagens')
+        .insert({ dono_id: user.id, mesa_id: null, nome: 'Novo personagem' })
+        .select('id')
+        .single();
+      if (error) return setMsg('Não deu para criar o personagem: ' + error.message);
+      location.href = u('personagem') + '?id=' + data.id;
+    });
 
     document.getElementById('form-criar')!.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -79,6 +101,49 @@ import Base from '../layouts/Base.astro';
     });
   }
 
+  // Cards dos personagens do usuário: retrato (quando já escolhido) e nome.
+  async function renderPersonagens(userId: string) {
+    const sb = getSupabase();
+    const box = document.getElementById('lista-pers')!;
+    // só as fichas DO usuário: como mestre ele também enxerga as dos jogadores, e essas
+    // pertencem à mesa, não a esta lista.
+    const { data, error } = await sb
+      .from('personagens')
+      .select('id, nome, conceito, imagem_path, imagem_pos, mesa_id, mesa:mesas(nome)')
+      .eq('dono_id', userId)
+      .order('atualizado_em', { ascending: false });
+    if (error) { box.innerHTML = `<p class="erro">Erro ao carregar personagens: ${esc(error.message)}</p>`; return; }
+    const pers = data || [];
+    if (!pers.length) {
+      box.innerHTML = '<p class="muted">Nenhum personagem ainda. Crie um em <strong>Novo Personagem</strong>, ou monte a ficha em Ferramentas › Ficha de Personagem e use <strong>Salvar ficha</strong>.</p>';
+      return;
+    }
+    // uma URL assinada por retrato (a bucket é privada)
+    const comImg = pers.filter((p: any) => p.imagem_path);
+    const urls: Record<string, string> = {};
+    if (comImg.length) {
+      const { data: assinadas } = await sb.storage.from('personagens')
+        .createSignedUrls(comImg.map((p: any) => p.imagem_path), 3600);
+      (assinadas || []).forEach((a: any, i: number) => { if (a?.signedUrl) urls[comImg[i].id] = a.signedUrl; });
+    }
+    box.innerHTML = '<div class="pers-grid">' + pers.map((p: any) => {
+      const nome = (p.nome || '').trim() || 'Sem nome';
+      const src = urls[p.id];
+      const pos = p.imagem_pos && typeof p.imagem_pos === 'object' ? p.imagem_pos : null;
+      const estilo = pos ? ` style="object-position:${pos.x ?? 50}% ${pos.y ?? 50}%;transform:scale(${pos.z ?? 1})"` : '';
+      const arte = src
+        ? `<img class="pc-img" src="${esc(src)}" alt=""${estilo} loading="lazy" />`
+        : '<span class="pc-vazio" aria-hidden="true">◈</span>';
+      const onde = p.mesa?.nome ? esc(p.mesa.nome) : 'Ficha avulsa';
+      return `<a class="pers-card" href="${u('personagem')}?id=${p.id}">
+        <span class="pc-frame">${arte}</span>
+        <span class="pc-nome cinzel">${esc(nome)}</span>
+        ${p.conceito ? `<span class="pc-conceito">${esc(p.conceito)}</span>` : ''}
+        <span class="pc-onde">${onde}</span>
+      </a>`;
+    }).join('') + '</div>';
+  }
+
   async function render() {
     const { data, error } = await getSupabase()
       .from('mesa_membros')
@@ -88,6 +153,7 @@ import Base from '../layouts/Base.astro';
     if (error) { lista.innerHTML = `<p class="erro">Erro ao carregar: ${esc(error.message)}</p>`; return; }
     const linhas = (data || []).filter((r: any) => r.mesa);
     if (!linhas.length) { lista.innerHTML = '<p class="muted">Você ainda não está em nenhuma mesa. Crie uma ou entre com um código abaixo.</p>'; return; }
+    lista.classList.add('tem-mesas');
     lista.innerHTML = '<div class="mesa-grid">' + linhas.map((r: any) => {
       const m = r.mesa; const mestre = r.papel === 'mestre';
       return `<a class="mesa-card" href="${u('mesa')}?id=${m.id}">
@@ -104,6 +170,20 @@ import Base from '../layouts/Base.astro';
 
 <!-- is:global: a lista de mesas é criada via JS -->
 <style is:global>
+  .secao-cab { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .secao-cab h2, .secao-mesas h2 { margin: 0; }
+  .secao-fichas { margin-bottom: 2rem; }
+  .secao-mesas h2 { margin-bottom: .8rem; }
+  .secao-fichas #lista-pers { margin-top: .9rem; }
+  .pers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; }
+  .pers-card { display: flex; flex-direction: column; gap: .3rem; padding: .7rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
+  .pers-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .pc-frame { display: block; overflow: hidden; border-radius: 7px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--ink) 7%, transparent); aspect-ratio: 172 / 208; display: grid; place-items: center; }
+  .pc-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pc-vazio { font-size: 2.4rem; color: var(--muted); opacity: .5; }
+  .pc-nome { font-size: 1.05rem; font-weight: 700; line-height: 1.2; margin-top: .15rem; }
+  .pc-conceito { font-size: .85rem; color: var(--muted); }
+  .pc-onde { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
   .acoes-mesa { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
   @media (max-width: 640px) { .acoes-mesa { grid-template-columns: 1fr; } }
   .painel { border: 1px solid var(--rule); border-radius: 8px; padding: 1rem; background: var(--panel); }

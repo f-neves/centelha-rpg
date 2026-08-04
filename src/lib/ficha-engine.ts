@@ -114,10 +114,11 @@ export function montarFicha(opts: FichaOpts) {
   let S: any;
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: 1, aparencia: 1, centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [] }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
-    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = 1));
-    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = 0; S.spec[h.id] = []; });
-    (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = 1));
+    // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [] }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoXp('atributo')));
+    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
+    (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
     SECONDARY.forEach(([n]) => { S.skills2[slug(n)] = 0; S.spec2[slug(n)] = []; });
   }
   // Especialidades: lista nomeada [{s, v}]. Teto por Habilidade = [nível/2] especialidades, cada uma até [nível/2].

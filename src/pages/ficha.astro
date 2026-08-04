@@ -24,27 +24,80 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     aoResetar: () => { try { localStorage.removeItem(KEY); } catch {}; location.hash = ''; },
   });
 
-  // ---- Enviar a ficha para uma mesa (cria um personagem no Supabase) ----
+  // Id do personagem que esta ficha local já gerou, para "Salvar ficha" atualizar
+  // o mesmo registro em vez de criar um novo a cada clique.
+  const KEY_PERS = 'centelha:ficha:personagem-id';
+
+  // ---- Botões de conta: "Salvar ficha" e "Enviar p/ mesa" ----
   if (supabaseConfigurado) {
     const btns = document.querySelector('.xp-btns');
     if (btns) {
-      const b = document.createElement('button');
-      b.className = 'btn'; b.type = 'button'; b.textContent = 'Enviar p/ mesa';
-      b.title = 'Copiar esta ficha para uma das suas mesas';
-      btns.insertBefore(b, btns.firstChild);
-      b.addEventListener('click', () => enviarParaMesa().catch((e) => uiErro('Erro: ' + (e?.message || e))));
+      const enviar = document.createElement('button');
+      enviar.className = 'btn'; enviar.type = 'button'; enviar.textContent = 'Enviar p/ mesa';
+      enviar.title = 'Copiar esta ficha para uma das suas mesas';
+      btns.insertBefore(enviar, btns.firstChild);
+      enviar.addEventListener('click', () => enviarParaMesa().catch((e) => uiErro('Erro: ' + (e?.message || e))));
+
+      const salvar = document.createElement('button');
+      salvar.className = 'btn'; salvar.type = 'button'; salvar.textContent = 'Salvar ficha';
+      salvar.title = 'Guardar esta ficha em Mesas / Fichas para editar depois';
+      btns.insertBefore(salvar, enviar);   // antes de "Enviar p/ mesa"
+      salvar.addEventListener('click', () => salvarFicha().catch((e) => uiErro('Erro: ' + (e?.message || e))));
     }
+  }
+
+  function lerFichaLocal(): any | null {
+    try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { return null; }
+  }
+  async function exigirUsuario(acao: string) {
+    const { data: { user } } = await getSupabase().auth.getUser();
+    if (user) return user;
+    if (await uiConfirmar(`Você precisa entrar na sua conta para ${acao}. Ir para o login?`, { titulo: 'Entrar', ok: 'Ir para o login' })) location.href = url('entrar');
+    return null;
+  }
+
+  // Guarda a ficha como personagem avulso (sem mesa). Reeditável em Mesas / Fichas.
+  async function salvarFicha() {
+    const sb = getSupabase();
+    const user = await exigirUsuario('salvar a ficha');
+    if (!user) return;
+    const ficha = lerFichaLocal();
+    if (!ficha) { await uiAviso('Nenhuma ficha para salvar.'); return; }
+    const nome = (ficha.id?.nome || '').trim() || 'Personagem';
+    const conceito = (ficha.id?.conceito || '').trim();
+
+    const idSalvo = localStorage.getItem(KEY_PERS);
+    if (idSalvo) {
+      // confere se o registro ainda existe e é do usuário antes de atualizar
+      const { data: atual } = await sb.from('personagens').select('id, nome, mesa_id').eq('id', idSalvo).maybeSingle();
+      if (atual) {
+        const alvo = atual.mesa_id ? `"${atual.nome}" (já enviada para uma mesa)` : `"${atual.nome}"`;
+        const escolha = await uiEscolher('Salvar ficha', [
+          { valor: 'atualizar', rotulo: 'Atualizar a ficha salva', nota: alvo },
+          { valor: 'nova', rotulo: 'Salvar como um novo personagem' },
+        ], { msg: 'Esta ficha já foi salva antes. O que você quer fazer?' });
+        if (!escolha) return;
+        if (escolha === 'atualizar') {
+          const { error } = await sb.from('personagens').update({ nome, conceito, ficha, atualizado_em: new Date().toISOString() }).eq('id', idSalvo);
+          if (error) { await uiErro('Não foi possível salvar: ' + error.message); return; }
+          if (await uiConfirmar(`Ficha "${nome}" atualizada. Abrir em Mesas / Fichas?`, { titulo: 'Salva', ok: 'Abrir' })) location.href = url('personagem') + '?id=' + idSalvo;
+          return;
+        }
+      }
+    }
+    const { data: nova, error } = await sb.from('personagens')
+      .insert({ dono_id: user.id, mesa_id: null, nome, conceito, ficha })
+      .select('id').single();
+    if (error) { await uiErro('Não foi possível salvar: ' + error.message); return; }
+    try { localStorage.setItem(KEY_PERS, nova.id); } catch {}
+    if (await uiConfirmar(`Ficha "${nome}" salva em Mesas / Fichas. Abrir agora para pôr imagem e cabeçalho?`, { titulo: 'Salva', ok: 'Abrir' })) location.href = url('personagem') + '?id=' + nova.id;
   }
 
   async function enviarParaMesa() {
     const sb = getSupabase();
-    const { data: { user } } = await sb.auth.getUser();
-    if (!user) {
-      if (await uiConfirmar('Você precisa entrar para enviar a ficha a uma mesa. Ir para o login?', { titulo: 'Entrar', ok: 'Ir para o login' })) location.href = url('entrar');
-      return;
-    }
-    let ficha: any = null;
-    try { ficha = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch {}
+    const user = await exigirUsuario('enviar a ficha a uma mesa');
+    if (!user) return;
+    const ficha = lerFichaLocal();
     if (!ficha) { await uiAviso('Nenhuma ficha salva para enviar.'); return; }
 
     const { data: membros, error } = await sb
@@ -63,9 +116,10 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const mesaId = await pedirMesa(mesas);
     if (!mesaId) return;
     const nome = (ficha.id?.nome || '').trim() || 'Personagem';
+    const conceito = (ficha.id?.conceito || '').trim();
     const { data: nova, error: e2 } = await sb
       .from('personagens')
-      .insert({ dono_id: user.id, mesa_id: mesaId, nome, ficha })
+      .insert({ dono_id: user.id, mesa_id: mesaId, nome, conceito, ficha })
       .select('id')
       .single();
     if (e2) { await uiErro('Não foi possível enviar: ' + e2.message); return; }

@@ -246,7 +246,7 @@ import Base from '../layouts/Base.astro';
     document.getElementById('mesa')!.hidden = false;
     document.getElementById('nome')!.textContent = mesa.nome;
     document.getElementById('descricao')!.textContent = mesa.descricao || '';
-    definirCrumbs([{ label: 'Minhas Mesas', href: u('mesas') }, { label: mesa.nome }]);
+    definirCrumbs([{ label: 'Mesas / Fichas', href: u('mesas') }, { label: mesa.nome }]);
     const papel = document.getElementById('papel')!;
     papel.textContent = ehMestre ? 'Mestre' : 'Jogador';
     papel.classList.add(ehMestre ? 'p-mestre' : 'p-jogador');
