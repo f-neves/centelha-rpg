@@ -150,7 +150,7 @@
   <h2>Ficha (point-buy)</h2>
   <div class="cols">
     <div class="panel grp">
-      <h3>Atributos <span class="muted" style="font-weight:400">(1–6)</span></h3>
+      <h3>Atributos <span class="muted" style="font-weight:400">(1–12 · acima do 6 exige Centelha)</span></h3>
       <div class="row"><span class="nm"></span><span style="width:4rem"></span><span class="hdrxp"><span>antigo</span><span>novo</span></span></div>
       <div id="attrs"></div>
     </div>
@@ -222,7 +222,7 @@ const DEFAULT_COSTS = {
 // floor = último nível já pago de graça (o traço começa aqui)
 // mode: 'acum' soma do floor+1 até o nível · 'flat' cobra só o preço do nível
 const COST_ROWS = [
-  {key:'atributo',  label:'Atributo',                  floor:1, max:6,  mode:'acum', st:'ok'},
+  {key:'atributo',  label:'Atributo <span class="muted">(acima do 6 exige Centelha)</span>', floor:1, max:12, mode:'acum', st:'ok', humano:6},
   {key:'habPrim',   label:'Habilidade primária',       floor:0, max:6,  mode:'acum', st:'ok'},
   {key:'habSec',    label:'Habilidade secundária',     floor:0, max:6,  mode:'acum', st:'ok'},
   {key:'espPrim',   label:'Especialidade primária',    floor:0, max:3,  mode:'acum', st:'ok'},
@@ -329,9 +329,13 @@ function renderLadders(){
     const c=S.costs[r.key];
     const o=[], n=[];
     for(let v=r.floor+1; v<=r.max; v++){ o.push(priceOld(v,c)); n.push(priceNew(v,c)); }
+    // "‖" marca onde acaba a faixa humana, quando a régua vai além dela
+    const join = arr => { const a=arr.map(fmt);
+      if(r.humano && r.humano<r.max) a.splice(r.humano-r.floor, 0, '‖');
+      return a.join(' · ').replace(/· ‖ ·/,'‖'); };
     const el=$('#ladder-'+r.key);
-    if(el) el.innerHTML = '<span class="o">'+o.map(fmt).join(' · ')+'</span><br>'
-                        + '<span class="n"><b>'+n.map(fmt).join(' · ')+'</b></span>';
+    if(el) el.innerHTML = '<span class="o">'+join(o)+'</span><br>'
+                        + '<span class="n"><b>'+join(n)+'</b></span>';
     const sh=$('#shape-'+r.key); if(!sh) return;
     if(!c.base && !c.mult){ sh.innerHTML='<b class="hit">grátis</b>'; return; }
     const rr = c.mult ? (c.base/c.mult) : Infinity;
@@ -378,14 +382,20 @@ function renderRatios(){
   t.innerHTML=head+'<tbody>'+body+'</tbody>';
 
   const cn=$('#constraints'); if(!cn) return;
-  const atr=totalNew(ROW.atributo.max,'atributo');
+  const teto=ROW.atributo.humano||ROW.atributo.max;      // a restrição mede o teto HUMANO
+  const atr=totalNew(teto,'atributo');
   const von=totalNew(ROW.vontade.max,'vontade');
   const apa=totalNew(ROW.aparencia.max,'aparencia');
   const mark=(x)=> '<span class="'+(x>atr?'hit':'miss')+'">'+fmt(x)+(x>atr?' ✓':' ✗')+'</span>';
-  cn.innerHTML = 'Trilha cheia: <b>Atributo 1→'+ROW.atributo.max+'</b> = '+fmt(atr)
+  let txt = 'Trilha cheia: <b>Atributo 1→'+teto+'</b> = '+fmt(atr)
     + ' · <b>Vontade 0→'+ROW.vontade.max+'</b> = '+mark(von)
     + ' · <b>Aparência 0→'+ROW.aparencia.max+'</b> = '+mark(apa)
-    + ' <span class="muted">(as duas precisam superar o Atributo)</span>';
+    + ' <span class="muted">(as duas precisam superar o Atributo no teto humano)</span>';
+  if(ROW.atributo.max>teto){
+    const extra=[]; for(let v=teto+1; v<=ROW.atributo.max; v++) extra.push(v+': '+fmt(totalNew(v,'atributo')));
+    txt += '<br><span class="muted">Atributo além do teto humano (acumulado desde 1) · '+extra.join(' · ')+'</span>';
+  }
+  cn.innerHTML = txt;
 }
 
 function buildCmp(){
@@ -423,7 +433,7 @@ function buildAttrs(){
     ATTRS.filter(a=>a.g===g).forEach(a=>{
       const row=document.createElement('div'); row.className='row';
       const nm=span('nm'); nm.textContent=a.n;
-      const inp=num(S.attrs[a.id],1,6,v=>{ S.attrs[a.id]=v; refresh(); });
+      const inp=num(S.attrs[a.id],1,ROW.atributo.max,v=>{ S.attrs[a.id]=v; refresh(); });
       row.append(nm,inp,span('xp o','xpo-attr-'+a.id),span('xp n','xpn-attr-'+a.id));
       box.appendChild(row);
     });
