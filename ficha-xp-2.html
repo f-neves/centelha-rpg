@@ -97,8 +97,9 @@
     das trilhas, com pesos <b>2,5 : 1 : 0,5</b> entre Atributo, Primária e Secundária.
     <b>Vontade e Aparência</b> agora partem do <b>piso 0</b> e usam <code>r = 7</code>, porque a régua delas tem
     12 degraus e o mesmo <code>r</code> produz uma escada muito mais íngreme numa régua longa.
-    A <b>Proeza</b> segue <span class="tag wip">em aberto</span>: por ser traço plano, o custo dela já é linear
-    no nível e não sofre o problema que o modelo afim corrige, então ficou inalterada.
+    A <b>Proeza</b> segue multiplicador puro (custo = <b>35 × nível</b>, por Proeza), calibrado pelo padrão
+    de compra alvo: ~3 Proezas no Centelha 1, ~6-7 no Centelha 2, ~7-8 no Centelha 3.
+    A <b>Centelha</b> passou a ser <b>grátis</b>: quem dá o tier é o Mestre, não o XP.
     Tudo editável e salvo no navegador.
   </p>
   <div class="legend">
@@ -214,8 +215,8 @@ const DEFAULT_COSTS = {
   virtude: {old:3,  base:4,  mult:2},
   vontade: {old:2,  base:7,  mult:1},
   aparencia:{old:2, base:7,  mult:1},
-  centelha:{old:10, base:10, mult:5},
-  tecnica: {old:10, base:0,  mult:10},
+  centelha:{old:10, base:0,  mult:0},
+  tecnica: {old:10, base:0,  mult:35},
   arte:    {old:10, base:10, mult:5},
 };
 // floor = último nível já pago de graça (o traço começa aqui)
@@ -229,8 +230,8 @@ const COST_ROWS = [
   {key:'virtude',   label:'Virtude',                   floor:1, max:6,  mode:'acum', st:'ok'},
   {key:'vontade',   label:'Força de Vontade',          floor:0, max:12, mode:'acum', st:'ok'},
   {key:'aparencia', label:'Aparência',                 floor:0, max:12, mode:'acum', st:'ok'},
-  {key:'centelha',  label:'Centelha',                  floor:0, max:6,  mode:'acum', st:'ok'},
-  {key:'tecnica',   label:'Proeza',                    floor:0, max:6,  mode:'flat', st:'wip'},
+  {key:'centelha',  label:'Centelha <span class="muted">(dada pelo Mestre)</span>', floor:0, max:6, mode:'acum', st:'ok'},
+  {key:'tecnica',   label:'Proeza <span class="muted">(por Proeza, nível ≤ Centelha)</span>', floor:0, max:6, mode:'flat', st:'ok'},
   {key:'arte',      label:'Arte',                      floor:0, max:6,  mode:'acum', st:'ok'},
 ];
 const ROW = Object.fromEntries(COST_ROWS.map(r=>[r.key,r]));
@@ -273,7 +274,7 @@ function totalNew(level, key){
 }
 
 // ---- estado ----
-const COSTS_VERSION = 3;   // bump = recarrega os custos padrão sem apagar a ficha
+const COSTS_VERSION = 4;   // bump = recarrega os custos padrão sem apagar a ficha
 const S = load() || {
   costs:clone(DEFAULT_COSTS), budget:1500, cv:COSTS_VERSION,
   attrs:Object.fromEntries(ATTRS.map(a=>[a.id,1])),
@@ -332,6 +333,7 @@ function renderLadders(){
     if(el) el.innerHTML = '<span class="o">'+o.map(fmt).join(' · ')+'</span><br>'
                         + '<span class="n"><b>'+n.map(fmt).join(' · ')+'</b></span>';
     const sh=$('#shape-'+r.key); if(!sh) return;
+    if(!c.base && !c.mult){ sh.innerHTML='<b class="hit">grátis</b>'; return; }
     const rr = c.mult ? (c.base/c.mult) : Infinity;
     const d  = delta(r.key);
     sh.innerHTML = '<b>r ' + (isFinite(rr)? fmt(Math.round(rr*100)/100) : '∞') + '</b><br>'
@@ -391,7 +393,7 @@ function buildCmp(){
   COST_ROWS.forEach(r=>{
     const p=document.createElement('div'); p.className='panel';
     const h=document.createElement('h3'); h.style.cssText='font-family:Cinzel,Georgia,serif;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:.1rem 0 .3rem;';
-    h.textContent=r.label; p.appendChild(h);
+    h.innerHTML=r.label; p.appendChild(h);
     const t=document.createElement('table');
     t.innerHTML='<thead><tr><th>Nv</th><th class="col-o">ant.</th><th class="col-o">acum</th>'
       +'<th class="col-n">novo</th><th class="col-n">acum</th><th>Δ</th></tr></thead><tbody id="cmpb-'+r.key+'"></tbody>';

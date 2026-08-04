@@ -631,6 +631,103 @@ do Atributo vem do **peso 2,5×**, que é a ferramenta certa para isso, não da 
 
 ---
 
+## 9. Trilhas restantes: Vontade, Aparência, Especialidades, Centelha, Proeza
+
+### Tabela final
+
+| Trilha | piso | teto | B | M | `r` | Preço de cada nível | Acumulado |
+|---|---|---|---|---|---|---|---|
+| Atributo | 1 | 6 | 10 | 5 | 2 | 20·25·30·35·40 | 20·45·75·110·150 |
+| Habilidade primária | 0 | 6 | 4 | 2 | 2 | 6·8·10·12·14·16 | 6·14·24·36·50·66 |
+| Habilidade secundária | 0 | 6 | 2 | 1 | 2 | 3·4·5·6·7·8 | 3·7·12·18·25·33 |
+| Especialidade primária | 0 | 3 | 8 | 4 | 2 | 12·16·20 | 12·28·**48** |
+| Especialidade secundária | 0 | 3 | 4 | 2 | 2 | 6·8·10 | 6·14·**24** |
+| Virtude | 1 | 6 | 4 | 2 | 2 | 8·10·12·14·16 | 8·18·30·44·**60** |
+| **Força de Vontade** | **0** | 12 | 7 | 1 | 7 | 8·9·10…19 | …**162** |
+| **Aparência** | **0** | 12 | 7 | 1 | 7 | 8·9·10…19 | …**162** |
+| **Centelha** | 0 | 6 | — | — | — | **grátis** (dada pelo Mestre) | — |
+| **Proeza** (por Proeza) | 0 | 6 | 0 | 35 | 0 | 35·70·105·140·175·210 | não acumula |
+| Arte (por Arte) | 0 | 6 | 10 | 5 | 2 | 15·20·25·30·35·40 | 15·35·**60**·90·125·165 |
+
+Em negrito, os pontos idênticos ao custo atual: tetos de Especialidade e Virtude, e Arte 3.
+
+### Vontade e Aparência: por que `r = 7`
+
+Com piso 0 e teto 12 a régua tem 12 degraus, e **o mesmo `r` produz uma escada muito mais
+íngreme numa régua longa**: `δ = (r + 6,5)/(r + 1)`. Com `r = 2`, δ daria 2,83, bem acima do
+1,83 das perícias, e o topo da Vontade voltaria a ser inalcançável. Para trazer δ à faixa boa
+numa régua de 12 degraus, `r` precisa ir para perto de 7.
+
+Candidatas inteiras, contra a restrição de superar um Atributo cheio (150):
+
+| B · M | total 0→12 | vs Atributo | δ |
+|---|---|---|---|
+| 5 · 1 | 138 | 0,92× | 1,92 |
+| 6 · 1 | 150 | 1,00× (empata) | 1,79 |
+| **7 · 1** | **162** | **1,08×** | **1,69** |
+| 8 · 1 | 174 | 1,16× | 1,61 |
+| 10 · 1 | 198 | 1,32× | 1,50 |
+| 4 · 2 | 204 | 1,36× | 2,83 |
+
+### Proeza: calibrada pelo padrão de compra, não por fórmula
+
+O padrão-alvo, traduzido em números:
+
+| Tier | Proezas | soma dos níveis | nível médio |
+|---|---|---|---|
+| Centelha 1 | 3,0 | 3,0 | 1,00 |
+| Centelha 2 | 6,5 | 9,5 | 1,46 |
+| Centelha 3 | 7,5 | 13,5 | 1,80 |
+
+**Fica no multiplicador puro (`B = 0`), e a razão é estrutural:** o portão da Centelha já
+policia a profundidade (nível N exige Centelha ≥ N), então a curva de custo não precisa fazer
+esse trabalho. O que sobraria para a base fazer é **taxar quantidade**, e isso vai contra o
+alvo, que pede 7-8 Proezas. Com `B = 0`, o nível vira moeda limpa: você paga pela soma dos
+níveis, não importa como estão distribuídos.
+
+A escala sai do orçamento. Numa ficha Centelha 3 de 1500 XP, o resto da proposta consome
+~1000 XP, sobrando ~500 para Proezas:
+
+| M | custo do padrão C3 | % de 1500 | cabe? |
+|---|---|---|---|
+| 10 (atual) | 135 | 9% | sobra 362 |
+| 25 | 338 | 23% | sobra 160 |
+| 30 | 405 | 27% | sobra 92 |
+| **35** | **473** | **32%** | **sobra 25** |
+| 45 | 608 | 41% | estoura 110 |
+
+`M = 35` é o encaixe. Confere também com a âncora do Centelha 4: um ponto de Atributo acima do
+6 custa 45 a 60 XP, e um nível de Proeza custa 35, então as duas compras disputam de verdade.
+
+**O preço não garante a contagem.** Com 500 XP disponíveis e Proezas a 35, nada impede um
+Centelha 1 de comprar 14 Proezas de nível 1 em vez de 3. Se você quer a contagem garantida,
+isso é **regra, não preço**: um teto de quantidade por tier (`Proezas ≤ 2 × Centelha + 1` dá
+3 · 5 · 7, perto do seu alvo) faz o trabalho que a tabela de custo não faz.
+
+### Centelha grátis
+
+Recomendo tirar o custo de XP. O motivo não é orçamentário (Centelha 3 libera só 60 XP, 4% de
+1500): é que a regra atual se contradiz. O `centelhaGate` diz que o salto de tier é uma
+conquista narrativa concedida pelo Mestre, mas o XP ainda cobra por ele, o que cria a situação
+ruim de o Mestre conceder o marco e o jogador responder que não tem XP. Um traço dado pelo
+Mestre não deve passar pela carteira do jogador.
+
+### Atributo acima do 6
+
+Se o Centelha 4 abrir Atributos além do 6, o modelo afim já entrega preços sãos, e bem mais
+acessíveis que o multiplicativo:
+
+| nível | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---|---|---|---|---|---|
+| preço do nível (novo) | 45 | 50 | 55 | 60 | 65 | 70 |
+| preço do nível (hoje) | 56 | 64 | 72 | 80 | 88 | 96 |
+| acumulado (novo) | 195 | 245 | 300 | 360 | 425 | 495 |
+| acumulado (hoje) | 216 | 280 | 352 | 432 | 520 | 616 |
+
+Nada precisa mudar na fórmula: é só levantar o teto. A escada continua `10 + 5 × nível`.
+
+---
+
 ## 7. Pendências que isto abre
 
 - [ ] **[DECIDIR]** Qual calibragem: A (barata, reconverte tudo), B (meio-termo) ou C (neutra).
