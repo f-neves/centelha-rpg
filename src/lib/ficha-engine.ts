@@ -343,7 +343,10 @@ export function montarFicha(opts: FichaOpts) {
       return;
     }
     const nomeArte = (id: string) => (ARTE_D as any[]).find((a) => a.id === id)?.nome || id;
-    const linhas = disp.map(({ e, artes }) => {
+    // Um Efeito pode caber em várias Artes: ele aparece no grupo de CADA Arte que o
+    // comporta. A compra é uma só (mesmo id), então marcar num grupo marca em todos —
+    // o clique redesenha a lista inteira e o XP é somado uma vez, sobre EFEITO_D.
+    const item = ({ e, artes }: any, arteAtual: string) => {
       const on = !!S.efeito[e.id];
       // Área e Volume abrem o cartão de formas ao passar o mouse (ver FormasPop)
       const rot = (n: string) => {
@@ -353,15 +356,37 @@ export function montarFicha(opts: FichaOpts) {
       const par = e.parametros
         .map((p: any) => (p.tipo === 'fixo' ? `${rot(p.nome)}: ${p.valor}` : p.regua ? `${rot(p.nome)}: ${p.regua === 'longa' ? 'Longa' : 'Breve'}` : rot(p.nome)))
         .join(' · ');
+      const outras = artes.filter((id: string) => id !== arteAtual).map(nomeArte);
+      const compart = outras.length
+        ? `<span class="ef-i-ar muted" title="O mesmo Efeito também cabe nestas Artes suas; paga-se uma vez só">também em ${outras.join(', ')}</span>`
+        : '';
       return `<label class="ef-item${on ? ' on' : ''}"><input type="checkbox" data-efeito="${e.id}"${on ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''} />
         <span class="ef-i-nv">${e.nivel}</span>
         <span class="ef-i-nm">${e.nome}</span>
-        <span class="ef-i-ar muted">${artes.map(nomeArte).join(', ')}</span>
+        ${compart}
         <span class="ef-i-par muted">${par}</span>
         <span class="ef-i-xp">${custoEfeito(e.nivel)} XP</span></label>`;
+    };
+    // um grupo por Arte, na ordem do catálogo; só as Artes que têm Efeitos alcançáveis
+    const grupos = (ARTE_D as any[])
+      .map((a) => ({
+        arte: a,
+        itens: disp
+          .filter((x) => x.artes.includes(a.id))
+          .sort((p, q) => p.e.nivel - q.e.nivel || p.e.nome.localeCompare(q.e.nome, 'pt')),
+      }))
+      .filter((g) => g.itens.length);
+    const blocos = grupos.map((g) => {
+      const comprados = g.itens.filter((x) => S.efeito[x.e.id]).length;
+      return `<div class="ef-grupo">
+        <div class="ef-g-head"><span class="ef-g-nm">${g.arte.nome}</span>
+          <span class="ef-g-nv">nível ${S.arte[g.arte.id] || 0}</span>
+          <span class="ef-g-qtd muted">${comprados ? `${comprados} de ${g.itens.length}` : `${g.itens.length} disponíveis`}</span></div>
+        <div class="ef-esp-list">${g.itens.map((x) => item(x, g.arte.id)).join('')}</div>
+      </div>`;
     }).join('');
     const gastos = (EFEITO_D as any[]).filter((e) => S.efeito[e.id]).reduce((s, e) => s + custoEfeito(e.nivel), 0);
-    box.innerHTML = `<div class="ef-esp-head"><b>Efeitos Especiais</b><span class="muted">${gastos ? `${gastos} XP` : 'nenhum comprado'}</span></div><div class="ef-esp-list">${linhas}</div>`;
+    box.innerHTML = `<div class="ef-esp-head"><b>Efeitos Especiais</b><span class="muted">${gastos ? `${gastos} XP` : 'nenhum comprado'}</span></div>${blocos}`;
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   // Atributo do ACERTO por perícia: tiro = Percepção; arremesso = Destreza; corpo a corpo (armas/punhos) = o maior entre Destreza e Força.
