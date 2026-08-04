@@ -2,7 +2,7 @@
 // Renderiza bolinhas/cards/derivados no esqueleto (FichaSkeleton.astro) e calcula XP ao vivo.
 // A persistência e o orçamento são configuráveis via opts, para servir tanto a /ficha
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
-import { custoPontos, custoTecnica, custoArte, pv, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
+import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
 import VIRT_D from '../data/virtudes.json';
@@ -56,8 +56,8 @@ export function montarFicha(opts: FichaOpts) {
   const SEC_NOME: Record<string, string> = Object.fromEntries(SECONDARY.map(([n]) => [slug(n), n]));
   const TRACO_DESC: Record<string, string> = {
     centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana.',
-    willpower: 'Reserva de determinação (piso 1). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
-    aparencia: 'Traço próprio (1–12, piso 1, ×2). Modificador direcional na jogada social: ajuda alinhado (seduzir/impressionar), atrapalha invertido (intimidar). A Compostura mascara parte dele.',
+    willpower: 'Reserva de determinação (0–12, piso 0, custo ×2 por nível). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
+    aparencia: 'Traço próprio (0–12, piso 0, custo ×2 por nível). Modificador direcional na jogada social: ajuda alinhado (seduzir/impressionar), atrapalha invertido (intimidar). A Compostura mascara parte dele.',
   };
   function openTraitModal(nm: HTMLElement) {
     const dots = nm.closest('.trow')?.querySelector('.dots') as HTMLElement | null; if (!dots) return;
@@ -164,7 +164,7 @@ export function montarFicha(opts: FichaOpts) {
         delete S.skills[prim]; delete S.spec[prim];
       }
     }
-    S.willpower ??= 1; S.aparencia ??= 1; S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.modo ??= 'evolucao'; S.derivCol ??= true;
+    S.willpower ??= pisoXp('vontade'); S.aparencia ??= pisoXp('aparencia'); S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.modo ??= 'evolucao'; S.derivCol ??= true;
     S.equip ??= {};
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
@@ -204,10 +204,10 @@ export function montarFicha(opts: FichaOpts) {
     return `<button class="specbtn${count ? ' has' : ''}" data-specbtn="${scope}:${key}"${dis ? ' disabled' : ''} title="${dis ? 'Especialidades (requer nível 2+)' : `Especialidades${count ? ` (${count})` : ''}`}" aria-label="Especialidades">✦</button>`;
   };
   const specCount = (arr: any[]) => (arr || []).reduce((a: number, e: any) => a + (e.v || 0), 0);
-  // Custo de especialidade: progressivo por nível de CADA especialidade — nível×base (10/20/30… com base 10).
-  // Total de uma especialidade de nível v = base·(1+2+…+v) = base·v·(v+1)/2. Somado sobre as especialidades da perícia.
-  const triCost = (v: number, base: number) => base * v * (v + 1) / 2;
-  const specCostSum = (arr: any[], base: number) => (arr || []).reduce((a: number, e: any) => a + triCost(e.v || 0, base), 0);
+  // Custo de especialidade: acumulativo por nível de CADA especialidade, pela curva afim de regras.json
+  // (primária 12·28·48, secundária 6·14·24). Somado sobre as especialidades da perícia.
+  const triCost = (v: number, sec = false) => custoEspecialidade(v, sec);
+  const specCostSum = (arr: any[], sec = false) => (arr || []).reduce((a: number, e: any) => a + triCost(e.v || 0, sec), 0);
   const specArr = (scope: string, key: string): string[] => scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
   const specSkill = (scope: string, key: string) => scope === 'p' ? (S.skills[key] || 0) : (S.skills2[key] || 0);
   const specRerender = (scope: string) => { scope === 'p' ? renderSkills() : renderSecondary(); };
@@ -275,11 +275,11 @@ export function montarFicha(opts: FichaOpts) {
     let h = trow('<b>Centelha</b> <small>(0–6)</small>', dotsHTML('centelha', 'centelha', S.centelha, 6, 0));
     h += '<h3>Virtudes</h3>';
     (VIRT_D as any[]).forEach((v) => (h += trow(v.nome, dotsHTML('virtue', v.id, S.virtues[v.id], 6, 1))));
-    h += '<h3>Força de Vontade <small>(piso 1 · ×2)</small></h3>';
-    h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 12, 1));
-    h += '<h3>Aparência <small>(1–12 · piso 1 · ×2)</small></h3>';
+    h += '<h3>Força de Vontade <small>(0–12 · piso 0 · ×2)</small></h3>';
+    h += trow('Vontade', dotsHTML('willpower', 'willpower', S.willpower, 12, pisoXp('vontade')));
+    h += '<h3>Aparência <small>(0–12 · piso 0 · ×2)</small></h3>';
     const am = aparenciaMod(apEfetiva(S.aparencia));
-    h += trow(`Aparência <span class="apmod" title="Bônus/Penalidade na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`, dotsHTML('aparencia', 'aparencia', S.aparencia, 12, 1));
+    h += trow(`Aparência <span class="apmod" title="Bônus/Penalidade na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`, dotsHTML('aparencia', 'aparencia', S.aparencia, 12, pisoXp('aparencia')));
     el('power').innerHTML = h;
   }
   function renderSkills() {
@@ -301,7 +301,7 @@ export function montarFicha(opts: FichaOpts) {
     const card = (cam: string) => {
       const techs = CAMTREE[cam] || [];
       const sel = techs.filter(([id]) => S.tech[id]);
-      const cost = sel.reduce((s, [, , b]) => s + b * 10, 0);
+      const cost = sel.reduce((s, [, , b]) => s + custoTecnica(b), 0);
       const open = OPEN.cam[cam];
       const rows = techs.map(([id, nome, b]) => {
         const owned = !!S.tech[id];
@@ -312,7 +312,7 @@ export function montarFicha(opts: FichaOpts) {
         const reasons: string[] = []; if (!centOk) reasons.push('Centelha ' + centReq(b)); if (miss.length) reasons.push('pré: ' + miss.map((p) => TECNOME[p]).join(', '));
         const title = reasons.length ? ` title="Requer ${reasons.join(' · ').replace(/"/g, '')}"` : '';
         const desc = TECTEXT[id] ? `<div class="tdesc">${mdBold(TECTEXT[id])}</div>` : '';
-        return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>N${b} · ${b * 10}</small></span>${desc}</div>`;
+        return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>N${b} · ${custoTecnica(b)}</small></span>${desc}</div>`;
       }).join('');
       return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Proeza ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
     };
@@ -357,9 +357,9 @@ export function montarFicha(opts: FichaOpts) {
         <span class="ef-i-nm">${e.nome}</span>
         <span class="ef-i-ar muted">${artes.map(nomeArte).join(', ')}</span>
         <span class="ef-i-par muted">${par}</span>
-        <span class="ef-i-xp">${e.nivel * 2} XP</span></label>`;
+        <span class="ef-i-xp">${custoEfeito(e.nivel)} XP</span></label>`;
     }).join('');
-    const gastos = (EFEITO_D as any[]).filter((e) => S.efeito[e.id]).reduce((s, e) => s + e.nivel * 2, 0);
+    const gastos = (EFEITO_D as any[]).filter((e) => S.efeito[e.id]).reduce((s, e) => s + custoEfeito(e.nivel), 0);
     box.innerHTML = `<div class="ef-esp-head"><b>Efeitos Especiais</b><span class="muted">${gastos ? `${gastos} XP` : 'nenhum comprado'}</span></div><div class="ef-esp-list">${linhas}</div>`;
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
@@ -618,29 +618,33 @@ export function montarFicha(opts: FichaOpts) {
       `<div class="bolsa"><input class="bolsa-nome" data-bolsa-nome="${i}" value="${escapeHtml(b.nome)}" aria-label="Nome do campo de equipamento"${ro} /><textarea class="bolsa-txt" data-bolsa-txt="${i}" rows="3" placeholder="O que carrega aqui…"${ro}>${escapeHtml(b.texto)}</textarea></div>`).join('');
   }
   function recompute() {
-    let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0;
-    const espPrimBase = (regras.xp as any).especialidadePrimaria.valor, espSecBase = (regras.xp as any).especialidadeSecundaria.valor;
-    (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', 1, S.attrs[a.id] || 1)));
-    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', 0, S.skills[h.id] || 0); xsp += specCostSum(S.spec[h.id], espPrimBase); });
-    ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += triCost(e.v || 0, espPrimBase))));
-    (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', 1, S.virtues[v.id] || 1)));
-    xw = custoPontos('vontade', 1, S.willpower || 1);
-    xap = custoPontos('aparencia', 1, S.aparencia || 1);
-    xc = custoPontos('centelha', 0, S.centelha || 0);
-    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', 0, S.skills2[k] || 0) + specCostSum(S.spec2[k], espSecBase); });
-    Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += TECNIV[id] * 10; });
+    let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0, xef = 0;
+    (ATTRS_D as any[]).forEach((a) => (xa += custoPontos('atributo', undefined, S.attrs[a.id] ?? 1)));
+    (HAB_D as any[]).filter((h) => !h.secundaria).forEach((h) => { xs += custoPontos('habilidadePrimaria', undefined, S.skills[h.id] || 0); xsp += specCostSum(S.spec[h.id]); });
+    ['esquiva', 'bloqueio', 'social', 'mental'].forEach((k) => ((S.defSpec?.[k] || []) as any[]).forEach((e) => (xsp += triCost(e.v || 0))));
+    (VIRT_D as any[]).forEach((v) => (xv += custoPontos('virtude', undefined, S.virtues[v.id] ?? 1)));
+    xw = custoPontos('vontade', undefined, S.willpower ?? 0);
+    xap = custoPontos('aparencia', undefined, S.aparencia ?? 0);
+    xc = custoPontos('centelha', undefined, S.centelha || 0);   // grátis: sempre 0, mantido p/ a barra
+    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', undefined, S.skills2[k] || 0) + specCostSum(S.spec2[k], true); });
+    Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += custoTecnica(TECNIV[id]); });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
-    (EFEITO_D as any[]).forEach((e) => { if (S.efeito[e.id]) xar += e.nivel * 2; });
+    (EFEITO_D as any[]).forEach((e) => { if (S.efeito[e.id]) xef += custoEfeito(e.nivel); });
     const xr = RACA[S.raca]?.custo || 0;
-    const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar + xr;
+    const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar + xef + xr;
     el('xpSpent').textContent = String(total);
     const rem = (S.budget || 0) - total, re = el('xpRem'); re.textContent = String(rem); re.className = 'rem ' + (rem < 0 ? 'neg' : 'ok');
-    el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap} · Centelha ${xc}` + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Técnicas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '') + (xr ? ` · Raça ${xr}` : '');
+    el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap}` + (xc ? ` · Centelha ${xc}` : '') + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Proezas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '') + (xef ? ` · Efeitos ${xef}` : '') + (xr ? ` · Raça ${xr}` : '');
     renderConjuntos(); renderDerived(); renderCombate(); renderForca(); save();
   }
 
   // ---- interações ----
-  const floorOf: Record<string, number> = { attr: 1, skill: 0, skill2: 0, virtue: 1, centelha: 0, willpower: 1, aparencia: 1, arte2: 0 };
+  // pisos vindos de regras.json (Vontade e Aparência desceram de 1 para 0)
+  const floorOf: Record<string, number> = {
+    attr: pisoXp('atributo'), skill: pisoXp('habilidadePrimaria'), skill2: pisoXp('habilidadeSecundaria'),
+    virtue: pisoXp('virtude'), centelha: pisoXp('centelha'), willpower: pisoXp('vontade'),
+    aparencia: pisoXp('aparencia'), arte2: pisoXp('arte'),
+  };
   const valOf = (k: string, key: string) => ({ attr: S.attrs[key], skill: S.skills[key], skill2: S.skills2[key] || 0, virtue: S.virtues[key], centelha: S.centelha, willpower: S.willpower, aparencia: S.aparencia, arte2: S.arte[key] || 0 } as any)[k] || 0;
   function refreshDots(kind: string, key: string) {
     const span = document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`); if (!span) return;

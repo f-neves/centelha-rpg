@@ -155,27 +155,41 @@ export function deslocamento(traits: { forca?: number; destreza?: number; atleti
 }
 
 // ----- XP -----
-function step(spec: { tipo: string; valor: number }, novoValor: number, banda = 0) {
-  if (spec.tipo === 'mult') return novoValor * spec.valor;
-  if (spec.tipo === 'flat') return spec.valor;
-  if (spec.tipo === 'porBanda') return banda * spec.valor;
-  if (spec.tipo === 'porNivel') return novoValor * spec.valor;
-  return 0;
+// Modelo AFIM: o preço de UM nível é `base + mult × nível`. O `tipo` diz como somar:
+//   'acum'   soma os preços do piso+1 até o nível  (Atributos, Habilidades, Virtudes, Artes…)
+//   'flat'   cobra só o preço do nível pedido      (Proezas e Efeitos: comprar o N2 não exige o N1)
+//   'gratis' não custa XP                          (Centelha: o tier vem do Mestre)
+// Todos os números vivem em regras.json → xp. Nada de constante solta aqui.
+export type XpChave = Exclude<keyof typeof regras.xp, 'modelo'>;
+interface XpSpec { tipo: 'acum' | 'flat' | 'gratis'; base: number; mult: number; piso: number }
+const xpSpec = (chave: XpChave) => (regras.xp as any)[chave] as XpSpec;
+
+/** Nível que já vem pago (1 em Atributos e Virtudes, 0 no resto). */
+export function pisoXp(chave: XpChave) { return xpSpec(chave).piso ?? 0; }
+
+/** Preço de UM nível isolado, já respeitando o piso e o tipo 'gratis'. */
+export function precoNivel(chave: XpChave, nivel: number) {
+  const s = xpSpec(chave);
+  if (s.tipo === 'gratis' || nivel <= (s.piso ?? 0)) return 0;
+  return s.base + s.mult * nivel;
 }
 
-/** Custo total para subir um traço-de-pontos do piso F até o valor V. */
-export function custoPontos(chave: keyof typeof regras.xp, de: number, ate: number) {
-  const spec = regras.xp[chave] as { tipo: string; valor: number };
+/** Custo total para levar um traço do piso até o valor. */
+export function custoPontos(chave: XpChave, de = pisoXp(chave), ate = 0) {
+  const s = xpSpec(chave);
+  if (s.tipo === 'gratis') return 0;
+  if (s.tipo === 'flat') return ate > de ? precoNivel(chave, ate) : 0;
   let c = 0;
-  for (let v = de + 1; v <= ate; v++) c += step(spec, v);
+  for (let v = de + 1; v <= ate; v++) c += precoNivel(chave, v);
   return c;
 }
-export function custoTecnica(nivel: number) {
-  return step(regras.xp.tecnica as any, nivel);
-}
-export function custoArte(nivel: number) {
-  // arte = nível × valor; total p/ chegar ao nível N = soma 1..N
-  let c = 0;
-  for (let n = 1; n <= nivel; n++) c += step(regras.xp.arte as any, n);
-  return c;
-}
+
+/** Proeza: preço do nível, sem acumular. Subir de nível paga só a diferença. */
+export const custoTecnica = (nivel: number) => custoPontos('tecnica', undefined, nivel);
+/** Arte: acumulativo, por Arte. */
+export const custoArte = (nivel: number) => custoPontos('arte', undefined, nivel);
+/** Efeito Especial de uma Arte: preço do nível, sem acumular. */
+export const custoEfeito = (nivel: number) => custoPontos('efeito', undefined, nivel);
+/** Especialidade nomeada: acumulativo, uma trilha por escopo. */
+export const custoEspecialidade = (nivel: number, secundaria = false) =>
+  custoPontos(secundaria ? 'especialidadeSecundaria' : 'especialidadePrimaria', undefined, nivel);

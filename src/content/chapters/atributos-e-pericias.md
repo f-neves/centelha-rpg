@@ -103,7 +103,7 @@ As Habilidades vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. Ca
 
 ## Habilidades Secundárias
 
-As 28 primárias cobrem o tronco. Tudo que for **mais específico** — um ofício, um campo de saber, um truque de nicho — entra como **Habilidade Secundária**: elas são **ilimitadas** em número, criadas conforme a história pede, e **mais baratas** (custam metade na evolução). Existem para você ser **tão específico quanto precisar** e para cobrir o que nenhuma primária cobre.
+As 24 primárias cobrem o tronco. Tudo que for **mais específico** — um ofício, um campo de saber, um truque de nicho — entra como **Habilidade Secundária**: elas são **ilimitadas** em número, criadas conforme a história pede, e **mais baratas** (custam metade na evolução). Existem para você ser **tão específico quanto precisar** e para cobrir o que nenhuma primária cobre.
 
 Uma Secundária pode ser tão ampla quanto um campo inteiro (Ferraria, Herbologia, Direito, Astronomia, Cavalgar, Etiqueta, Falsificação, Sedução…). É isso que a separa da Especialidade — que é só um recorte *dentro* de uma primária.
 
@@ -128,7 +128,7 @@ Cada nível é um **escopo nomeado**. Você distribui esses níveis como quiser:
 
 O bônus é **situacional**: o Mestre julga se o escopo nomeado se aplica à ação. Quando se aplica, para cada nível com aquele nome role **+1d6 e descarte o menor** dado do pool. Em valores fixos (como uma Defesa), cada nível vale **+1**. Fora do escopo, a Especialidade não faz nada, e por isso a ficha **não a soma automaticamente** no rolador.
 
-Cada nível custa **10 XP** numa Habilidade primária e **5 XP** numa secundária.
+Cada nível custa **8 + (nível × 4)** numa Habilidade primária (12 · 16 · 20) e metade disso numa secundária (6 · 8 · 10), acumulando os níveis abaixo.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Você tem Armas 5 (2 níveis de Especialidade) e escreveu "espada longa" nos dois. Num duelo de espada longa (base 3d6+2), o escopo vale duplo: você rola 5d6+2 e descarta os dois dados mais baixos. Contra um oponente de lança, o escopo não vale e você rola só os 3d6+2.</div>
 

@@ -338,13 +338,14 @@
     }
   ],
   "aparencia": {
-    "nota": "Traço próprio 1 a 12 (não é atributo), piso 1 grátis, custo ×2 por ponto. Bônus DIRECIONAL somado FLAT: é o bônus social GERAL, entra em TODA jogada social (incluindo o Combate Social), separado da pilha situacional dos Antecedentes (que só move a Régua de Relação, teto +6). + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). ALÉM do social: aparência muito alta é MEMORÁVEL e atrapalha passar despercebido (penalidade em furtividade urbana, seguir alguém, se misturar à multidão); o Mestre pode aplicar o mesmo a uma deformidade marcante, também inesquecível. A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
+    "nota": "Traço próprio 0 a 12 (não é atributo), piso 0, custo ×2 por ponto (ver xp.aparencia). Bônus DIRECIONAL somado FLAT: é o bônus social GERAL, entra em TODA jogada social (incluindo o Combate Social), separado da pilha situacional dos Antecedentes (que só move a Régua de Relação, teto +6). + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). ALÉM do social: aparência muito alta é MEMORÁVEL e atrapalha passar despercebido (penalidade em furtividade urbana, seguir alguém, se misturar à multidão); o Mestre pode aplicar o mesmo a uma deformidade marcante, também inesquecível. A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
     "piso": 1,
     "min": 1,
     "max": 12,
     "custoMult": 2,
     "curva": {
-      "1": -4,
+      "0": -5,
+        "1": -4,
       "2": -3,
       "3": -2,
       "4": -1,
@@ -561,52 +562,91 @@
   ],
   "centelhaGate": "A Centelha só aumenta com permissão do Mestre, num marco de história ou feito maior. O XP paga o custo (×10), mas o salto de tier é narrativo — não se compra em massa.",
   "xp": {
+    "modelo": "O preço de UM nível é (base + mult × nível). O tipo diz como somar: 'acum' soma os preços do piso+1 até o nível; 'flat' cobra só o preço do nível pedido, sem os de baixo; 'gratis' não custa XP.",
     "atributo": {
-      "tipo": "mult",
-      "valor": 8
+      "tipo": "acum",
+      "base": 5,
+      "mult": 5,
+      "piso": 1,
+      "nota": "15·20·25·30·35 do nível 2 ao 6 · acumulado 15·35·60·90·125. Acima do 6 a escada continua (40·45·50…), se o Mestre abrir."
     },
     "habilidadePrimaria": {
-      "tipo": "mult",
-      "valor": 4
+      "tipo": "acum",
+      "base": 4,
+      "mult": 2,
+      "piso": 0,
+      "nota": "6·8·10·12·14·16 · acumulado 6·14·24·36·50·66."
     },
     "habilidadeSecundaria": {
-      "tipo": "mult",
-      "valor": 2
+      "tipo": "acum",
+      "base": 2,
+      "mult": 1,
+      "piso": 0,
+      "nota": "Metade exata da primária em todos os níveis: 3·4·5·6·7·8 · acumulado 3·7·12·18·25·33."
     },
     "especialidadePrimaria": {
-      "tipo": "progressivo",
-      "valor": 8,
-      "nota": "Custo PROGRESSIVO por nível de cada especialidade: base × [nível×(nível+1)/2] (8·16·24…). A ficha usa esta base (não o step flat).",
+      "tipo": "acum",
+      "base": 8,
+      "mult": 4,
+      "piso": 0,
+      "nota": "O dobro da habilidade de mesmo nível: 12·16·20 · acumulado 12·28·48.",
       "limite": "Especialidade nomeada: cada Habilidade abre até [nível/2] níveis no total (um quadrado por nível), distribuídos em escopos nomeados diferentes ou concentrados num só. Bônus situacional (só no escopo nomeado, o Mestre julga), não soma em toda rolagem."
     },
     "especialidadeSecundaria": {
-      "tipo": "progressivo",
-      "valor": 4,
-      "nota": "Progressivo por nível: base × [nível×(nível+1)/2] (4·8·12…)."
+      "tipo": "acum",
+      "base": 4,
+      "mult": 2,
+      "piso": 0,
+      "nota": "Metade da especialidade primária: 6·8·10 · acumulado 6·14·24."
     },
     "virtude": {
-      "tipo": "mult",
-      "valor": 3
+      "tipo": "acum",
+      "base": 4,
+      "mult": 2,
+      "piso": 1,
+      "nota": "8·10·12·14·16 do nível 2 ao 6 · acumulado 8·18·30·44·60."
     },
     "vontade": {
-      "tipo": "mult",
-      "valor": 2
+      "tipo": "acum",
+      "base": 0,
+      "mult": 2,
+      "piso": 0,
+      "nota": "Multiplicador puro (2 × nível). O piso desceu de 1 para 0: o nível 1 passou a ser comprado."
     },
     "aparencia": {
-      "tipo": "mult",
-      "valor": 2
+      "tipo": "acum",
+      "base": 0,
+      "mult": 2,
+      "piso": 0,
+      "nota": "Mesma trilha da Vontade. Piso 0, régua 0–12, modificador −5 a +5."
     },
     "centelha": {
-      "tipo": "mult",
-      "valor": 10
+      "tipo": "gratis",
+      "base": 0,
+      "mult": 0,
+      "piso": 0,
+      "nota": "Não custa XP. O tier de Centelha é concedido pelo Mestre num marco de história (ver centelhaGate); cobrar XP por ele criava a situação de o Mestre conceder o marco e o jogador não poder pagá-lo."
     },
     "tecnica": {
-      "tipo": "porNivel",
-      "valor": 10
+      "tipo": "flat",
+      "base": 5,
+      "mult": 5,
+      "piso": 0,
+      "nota": "Por Proeza, sem acumular: 10·15·20·25·30·35. Subir uma Proeza de nível paga só a diferença. O nível N exige Centelha ≥ N, e é esse portão que limita a profundidade."
     },
     "arte": {
-      "tipo": "porNivel",
-      "valor": 10
+      "tipo": "acum",
+      "base": 10,
+      "mult": 5,
+      "piso": 0,
+      "nota": "Por Arte: 15·20·25·30·35·40 · acumulado 15·35·60·90·125·165."
+    },
+    "efeito": {
+      "tipo": "flat",
+      "base": 0,
+      "mult": 4,
+      "piso": 0,
+      "nota": "Efeito Especial dentro de uma Arte: 4 × nível, por Efeito, sem acumular. Não é preciso comprar o Efeito de nível 1 para comprar o de nível 2. Só até o nível que você tem na Arte."
     }
   },
   "dadoArmaPorPeso": {
@@ -1343,8 +1383,8 @@
     },
     "efeitos": {
       "nota": "Efeito é o resultado específico comprado dentro de uma Arte (o Special Effect do Sorcerer). A Arte dá o elemento em estado bruto; o Efeito dá forma, nome e comportamento. Régua: se precisa de um substantivo próprio para ser descrito, é Efeito.",
-      "xp": "2 × nível do Efeito",
-      "upgrade": "efeito escalonável paga só a diferença: 2 × novo − 2 × antigo",
+      "xp": "4 × nível do Efeito (ver xp.efeito). Não acumula: comprar o Efeito de nível 2 não exige ter o de nível 1.",
+      "upgrade": "efeito escalonável paga só a diferença: 4 × novo − 4 × antigo",
       "outraArte": "Efeito que você já sabe e que cabe em outra Arte sua não custa XP, só treino; mas é preciso ter cada Arte no nível do Efeito",
       "compra": "só até o nível que você tem na Arte; sem teto de quantidade",
       "ticks": "4 + nível do Efeito + 1 por grau que qualquer parâmetro passe do nível dele",
