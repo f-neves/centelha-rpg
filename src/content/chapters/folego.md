@@ -48,7 +48,7 @@ Como atacar não recupera, uma **sequência** de golpes drena rápido. Do cheio,
 
 A tática nasce daí: **ninguém ataca a luta inteira**. Você pressiona em rajada e depois **recua para respirar** — defendendo, reposicionando ou Tomando Fôlego. A **arma leve** rende mais golpes seguidos e volta mais rápido; a **pesada** bate forte mas esgota em dois golpes. Quem tem **Vigor e Resistência altos** respira mais rápido e aguenta rajadas maiores.
 
-<div class="callout regra"><span class="lbl">Tomar Fôlego</span>Gaste uma ação completa (<strong>Speed 5</strong>) só defendendo e esquivando, sem se mover além do básico, e <strong>recupere metade do Fôlego máximo</strong> de uma vez — o "recuar e respirar". Restaura cerca de uma rajada inteira.</div>
+<div class="callout regra"><span class="lbl">Tomar Fôlego</span>Gaste uma ação completa (<strong>Velocidade 5</strong>) só defendendo e esquivando, sem se mover além do básico, e <strong>recupere metade do Fôlego máximo</strong> de uma vez — o "recuar e respirar". Restaura cerca de uma rajada inteira.</div>
 
 ## Quando o tanque aperta
 
@@ -58,6 +58,6 @@ A tática nasce daí: **ninguém ataca a luta inteira**. Você pressiona em raja
 
 ## Esforço: forçar o golpe
 
-Qualquer ataque pode ser **forçado**: gaste Fôlego extra para somar dados ao ataque. Cada **+1d6 dobra o custo de Fôlego do golpe e soma +1 à Speed** (mais lento, mais exposto): +1d6 = ×2 e Speed +1; +2d6 = ×4 e Speed +2; e assim por diante. **Não há teto** — a própria duplicação é o limite: forçar muito esgota o Fôlego num átimo.
+Qualquer ataque pode ser **forçado**: gaste Fôlego extra para somar dados ao ataque. Cada **+1d6 dobra o custo de Fôlego do golpe e soma +1 à Velocidade** (mais lento, mais exposto): +1d6 = ×2 e Velocidade +1; +2d6 = ×4 e Velocidade +2; e assim por diante. **Não há teto** — a própria duplicação é o limite: forçar muito esgota o Fôlego num átimo.
 
 É a manobra para dois momentos: **furar uma defesa alta** (os dados extras ajudam a superá-la) ou **encerrar rápido** um inimigo frágil (mais Margem = mais dano). É a alavanca de "dar tudo" disponível a *qualquer um*, mesmo o mortal sem Centelha — mas o preço cresce rápido: forçar a arma **leve** ainda cabe (um leve +1d6 custa 30 de Fôlego — mais da metade da reserva de um herói, e você fica ofegante); forçar a **pesada** é proibitivo (um pesado +1d6 custa 76 — mais do que o Fôlego total de quase qualquer um; só um lutador de reserva descomunal ergue um golpe desses).

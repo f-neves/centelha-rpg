@@ -817,7 +817,7 @@
       "maisVontade": true
     },
     "folego": {
-      "nota": "Reserva física p/ ações comuns (atacar, correr, saltar, carregar). Você recupera +Vigor de Fôlego por Tick SEMPRE QUE NÃO está numa ação que gaste Fôlego — defender, recuar e parar recuperam; atacar e correr gastam e NÃO recuperam. Cada golpe custa o Fôlego (cheio) da arma (campo 'folego' em armas.json: leve 15, médio 24, pesado 38); como atacar não recupera, uma sequência de golpes drena rápido e força um respiro. Tomar Fôlego (ação Speed 5, só defendendo) = +metade do máximo. <25% do pool = −1d6 em ações físicas; 0 = exausto (só defende ou Toma Fôlego). Base por raça (humano = 10).",
+      "nota": "Reserva física p/ ações comuns (atacar, correr, saltar, carregar). Você recupera +Vigor de Fôlego por Tick SEMPRE QUE NÃO está numa ação que gaste Fôlego — defender, recuar e parar recuperam; atacar e correr gastam e NÃO recuperam. Cada golpe custa o Fôlego (cheio) da arma (campo 'folego' em armas.json: leve 15, médio 24, pesado 38); como atacar não recupera, uma sequência de golpes drena rápido e força um respiro. Tomar Fôlego (ação Velocidade 5, só defendendo) = +metade do máximo. <25% do pool = −1d6 em ações físicas; 0 = exausto (só defende ou Toma Fôlego). Base por raça (humano = 10).",
       "base": 10,
       "vigorMult": 5,
       "resistenciaMult": 4,
@@ -835,7 +835,7 @@
       "gapPorPenalidade": 6
     },
     "deslocamento": {
-      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação. Corrida (Speed 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). Salto (Speed 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
+      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação. Corrida (Velocidade 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). Salto (Velocidade 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
       "arranque": {
         "forca": 0.5,
         "atletismo": 0.5,
@@ -1329,8 +1329,8 @@
     "esticar": {
       "nota": "Passar do nível da Arte num parâmetro. Investir mais Mana NÃO fura o teto sozinho: quem tem Fogo 3 leva tudo até o 3 pagando o normal, mas para alcançar o 4 tem de esticar.",
       "custo": "Um parâmetro N níveis ACIMA do nível da Arte custa (nível do parâmetro) × (N + 1) pontos.",
-      "speed": "CADA nível acima soma outra vez o Speed da ação, somando entre todos os parâmetros esticados. Speed 5 vira 10 com um nível acima, 15 com dois.",
-      "decisaoTardia": "O feiticeiro NÃO decide de saída até onde vai. No tick final de cada Speed ele escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Se segurar, decide de novo no fim do Speed seguinte. Uma ação de Speed 5 decide no tick 5; se esticar, decide de novo no 10, e assim por diante.",
+      "speed": "CADA nível acima soma outra vez a Velocidade da ação, somando entre todos os parâmetros esticados. Velocidade 5 vira 10 com um nível acima, 15 com dois.",
+      "decisaoTardia": "O feiticeiro NÃO decide de saída até onde vai. No tick final de cada Velocidade ele escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Se segurar, decide de novo no fim da Velocidade seguinte. Uma ação de Velocidade 5 decide no tick 5; se esticar, decide de novo no 10, e assim por diante.",
       "tabela": [
         {
           "acima": 0,
@@ -1353,7 +1353,7 @@
           "speed": "×4"
         }
       ],
-      "exemplo": "Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = 6 pontos, Speed 5. Puxando para Área 3, um acima: 3×2 + 2 + 2 = 10 pontos, Speed 10. Para Área 4, dois acima: 4×3 + 2 + 2 = 16 pontos, Speed 15.",
+      "exemplo": "Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = 6 pontos, Velocidade 5. Puxando para Área 3, um acima: 3×2 + 2 + 2 = 10 pontos, Velocidade 10. Para Área 4, dois acima: 4×3 + 2 + 2 = 16 pontos, Velocidade 15.",
       "desconto": "a Centelha desconta do total, como em qualquer conjuração"
     },
     "guardar": {
@@ -1403,7 +1403,7 @@
     "ritual": {
       "definicao": "Ritual é a conjuração ESTENDIDA: em vez de Ticks, o cast passa a levar minutos ou horas. Vale a pena por dois motivos, à escolha do feiticeiro em cada conjuração.",
       "escalaTempo": [
-        "Ticks (Speed normal)",
+        "Ticks (Velocidade normal)",
         "1 minuto",
         "6 minutos",
         "60 minutos",

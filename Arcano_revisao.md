@@ -257,19 +257,19 @@ conjuração, é outra coisa: ver a seção seguinte.
 Vale tanto para o efeito genérico da Arte quanto para um Efeito comprado. Cada degrau acima
 do que você tem impresso **dobra o custo acumulado de Mana e soma outra vez o tempo base**.
 
-> **Mana total = base × (2^(n+1) − 1)** · **Speed total = base × (n + 1)**, com n = degraus acima.
+> **Mana total = base × (2^(n+1) − 1)** · **Velocidade total = base × (n + 1)**, com n = degraus acima.
 
-| Degraus | Mana | Speed |
+| Degraus | Mana | Velocidade |
 |---|---|---|
 | 0 | ×1 | ×1 |
 | 1 | ×3 | ×2 |
 | 2 | ×7 | ×3 |
 | 3 | ×15 | ×4 |
 
-Exemplos. Um feiticeiro com Gelo 2 arremessa o dardo de 2d6 por 2 de Mana e 5 de Speed. Para
-3d6 paga 6 de Mana e 10 de Speed; para 4d6, 14 de Mana e 15 de Speed. Um Muro de Gelo de nível
-2 (base 2 de Mana, Speed 6) sobe uma categoria de tamanho por 6 de Mana e 12 de Speed, e duas
-categorias por 14 de Mana e 18 de Speed.
+Exemplos. Um feiticeiro com Gelo 2 arremessa o dardo de 2d6 por 2 de Mana e 5 de Velocidade. Para
+3d6 paga 6 de Mana e 10 de Velocidade; para 4d6, 14 de Mana e 15 de Velocidade. Um Muro de Gelo de nível
+2 (base 2 de Mana, Velocidade 6) sobe uma categoria de tamanho por 6 de Mana e 12 de Velocidade, e duas
+categorias por 14 de Mana e 18 de Velocidade.
 
 **Com isso dá para conjurar acima do próprio nível de Arte.** A regra antiga, que travava o
 nível efetivo no nível da Arte, morre (pendência de reescrita em `regras.json → arcano.improviso`
@@ -279,7 +279,7 @@ O freio é a exponencial contra o tamanho da reserva. Mana é Centelha × 2 mais
 cerca de 13 num feiticeiro de Centelha 3 e cerca de 24 no topo absoluto. Efeito pequeno estica
 longe, efeito grande quase não estica: um Efeito de base 4 já custa 12 de Mana para subir um
 único degrau. E esticar nunca compensa contra quem tem a Arte no nível: sair de Fogo 1 para um
-dardo de 4d6 custa 15 de Mana e 20 de Speed, contra 4 de Mana e 6 de Speed de quem tem Fogo 4.
+dardo de 4d6 custa 15 de Mana e 20 de Velocidade, contra 4 de Mana e 6 de Velocidade de quem tem Fogo 4.
 
 ---
 
@@ -291,7 +291,7 @@ A segunda via: em vez de pagar a exponencial de Mana, o feiticeiro paga **tempo 
 > Cada degrau acima do impresso custa **+1 vez o Mana base** (linear), **1 de Força de Vontade**,
 > e sobe um passo na escada de tempo.
 
-**Escada de tempo:** Speed base em Ticks · 6 minutos · 60 minutos · 6 horas · 24 horas · 2 dias.
+**Escada de tempo:** Velocidade base em Ticks · 6 minutos · 60 minutos · 6 horas · 24 horas · 2 dias.
 
 | Degraus | Mana | Vontade | Tempo (partindo de 6 Ticks) |
 |---|---|---|---|

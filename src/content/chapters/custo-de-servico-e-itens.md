@@ -86,7 +86,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | −1 de Dano | −1 |
 | −2 de Acerto | −1 |
 | −1 de Bloqueio | −1 |
-| +1 de Speed (mais lenta) | −2 |
+| +1 de Velocidade (mais lenta) | −2 |
 | −1 nível de Rest. Perfuração | −2 |
 | −1 de Absorção | −1 |
 | +1 de Penalidade | −2 |
@@ -120,7 +120,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 </div>
 
 
-<p class="muted">Não há como deixar a arma <strong>mais rápida</strong> (−1 de Speed) só com melhoria de qualidade. Melhorar a qualidade também pode, a critério do Narrador, <strong>reduzir o peso</strong>, <strong>aumentar o alcance/distância</strong>, <strong>baixar o custo de Fôlego</strong> e afins — cada um equivale a uma melhoria de +1.</p>
+<p class="muted">Não há como deixar a arma <strong>mais rápida</strong> (−1 de Velocidade) só com melhoria de qualidade. Melhorar a qualidade também pode, a critério do Narrador, <strong>reduzir o peso</strong>, <strong>aumentar o alcance/distância</strong>, <strong>baixar o custo de Fôlego</strong> e afins — cada um equivale a uma melhoria de +1.</p>
 
 <div class="callout exemplo"><span class="lbl">Machado (base 30 pp)</span>Um <strong>Machado Péssimo</strong> sai por menos de <strong>15 pp</strong>; <strong>Ruim</strong> por até <strong>15 pp</strong>; <strong>Bom</strong> por ao menos <strong>45 pp</strong>; <strong>Ótimo</strong> por ao menos <strong>90 pp</strong>; <strong>Relíquia</strong> por ao menos <strong>150 pp</strong>. Um Machado <strong>Bom</strong> (+1) pode vir com <strong>+1 de Dano</strong> ou <strong>+2 de Acerto</strong>; um <em>Ótimo</em> (+2) com <strong>+1 de Dano</strong> e <strong>+2 de Acerto</strong> ou <strong>+1 nível de Penetração</strong> </div>
 

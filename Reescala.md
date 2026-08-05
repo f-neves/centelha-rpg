@@ -169,7 +169,7 @@ Defesa (reintroduzir o `−⌊soma/4⌋` ou baixar o mult) numa passada à parte
     Absorção +3, Penetração 3, carga ×3): interpolações sólidas, marcadas como finais; `notaDesperto`
     documenta a convenção dos trilhos discretos (dados/tamanho repetem o Tocado + um efeito extra).
   - [x] **Escala varrida em `combate.md`/`arcano`** — e, de quebra, os mapeamentos que faltavam:
-    `economiaPoderes.ticksIndependente`, `arcano.feiticoTicks` (Speed por nível: 1–3=5, 4=6, 5–6=7)
+    `economiaPoderes.ticksIndependente`, `arcano.feiticoTicks` (Velocidade por nível: 1–3=5, 4=6, 5–6=7)
     e `economiaPoderes.vontade` (extra nos níveis 5/6); Arcano passou a dizer "6 níveis" e os
     exemplos (Labareda nível 3, Cataclismo nível 6) foram renumerados.
 

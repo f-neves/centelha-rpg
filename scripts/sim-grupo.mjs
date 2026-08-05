@@ -64,11 +64,11 @@ function golpe(att, def, cfg, { flank = 0, extraDice = 0, atkHP, defHP } = {}) {
 }
 
 // um combate grupo(nGrp × Clo) × 1 chefe(Chi). retorna true se o GRUPO vence.
-function combate(grpProto, chefeProto, cfg, { nGrp = 3, flankOn = true, bossCombo = 0, bossTargets = 1, bossSpeedMult = 1 } = {}) {
+function combate(grpProto, chefeProto, cfg, { nGrp = 3, flankOn = true, bossCombo = 0, bossTargets = 1, bossVelocidadeMult = 1 } = {}) {
   const grp = Array.from({ length: nGrp }, () => ({ b: grpProto, hp: pvMax(grpProto), next: 0 }));
   const chefe = { b: chefeProto, hp: pvMax(chefeProto), next: 0 };
   const wGrp = ARMAS[grpProto.arma].ticks;
-  const wChefe = Math.max(2, ce(ARMAS[chefeProto.arma].ticks / bossSpeedMult));
+  const wChefe = Math.max(2, ce(ARMAS[chefeProto.arma].ticks / bossVelocidadeMult));
   let t = 0;
   while (chefe.hp > 0 && grp.some((g) => g.hp > 0) && t < 800) {
     // próximo a agir

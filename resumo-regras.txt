@@ -107,7 +107,7 @@ a obra fica pronta.
 ========================================================
 
 O combate corre numa linha do tempo de TICKS, não em turnos
-rígidos. Cada ação custa um tempo (a Speed da ação) e você
+rígidos. Cada ação custa um tempo (a Velocidade da ação) e você
 só volta a jogar quando esses Ticks passarem.
 
 

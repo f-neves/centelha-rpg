@@ -144,7 +144,7 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
   golpes com uma arma só, −1d6/−2d6 etc.). Agora **uma arma = um ataque por ação**. Mais de um
   ataque numa ação vem só de **empunhadura dupla** ou de uma Técnica que o conceda (ex.: Borrão).
 - ✅ **Mão inábil vira 2º ataque (empunhadura dupla).** Com uma arma em cada mão: **um ataque por
-  mão** na ação (mesma Speed), opcional. Penalidades: **hábil −1d6, inábil −2d6**. Cada golpe rola
+  mão** na ação (mesma Velocidade), opcional. Penalidades: **hábil −1d6, inábil −2d6**. Cada golpe rola
   seu próprio acerto/dano (Força ×1 em cada); podem mirar alvos diferentes. A **Defesa das armas
   continua valendo** para aparar mesmo tendo atacado; o custo é a **Guarda sob pressão** (cada
   ataque = −2 Esquiva/Bloqueio até o próximo turno, logo duas mãos = −4). Arma de 2 mãos trava a

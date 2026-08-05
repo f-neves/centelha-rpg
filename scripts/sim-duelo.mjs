@@ -1,4 +1,4 @@
-// sim-duelo.mjs — balanceamento 1v1 numa LINHA DE TICKS (a Speed da arma importa:
+// sim-duelo.mjs — balanceamento 1v1 numa LINHA DE TICKS (a Velocidade da arma importa:
 // arma leve age mais vezes que pesada). Penalidade de guarda P=2 por ataque feito/recebido,
 // zera na própria ação. Sem Fôlego. Mede win% e tempo (ticks) até a morte.
 // Baterias: (A) degraus de nível, (B) round-robin de armas, (C) arma×armadura (TTK),

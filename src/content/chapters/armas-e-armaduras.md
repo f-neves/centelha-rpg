@@ -13,7 +13,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 
 Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele entra no [Combate](/regras/combate):
 
-- **Speed** — quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
+- **Velocidade** — quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
 - **Dano** — o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste **1d6+2**, arremesso **1d6 a 1d6+2**. **Arcos** somam Força (curto até +3, longo inteira, composto ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
 - **Acerto** — um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)** — quanto a arma acrescenta ao seu **Bloqueio**.
@@ -21,17 +21,17 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 - **Modos** — os **modos de ataque** da arma (Impacto, Cortante, Perfurante). A maioria das armas tem **mais de um**, e você escolhe por golpe conforme o alvo. Um deles é o **principal** (sem custo); os **secundários** saem com **−2 ao acerto e −1d6 no dano**. O modo **Perfurante** carrega um **Nível de Perfuração**, escrito **(N0)–(N5)**. Ver *Os três modos de dano* em [Combate](/regras/combate).
 - **Quase-Acerto** — errar por pouco ainda raspa. O valor é **fixo pela classe** (peso) da arma e da armadura; veja o capítulo [Quase-Acerto](/regras/quase-acerto).
 
-<div class="callout exemplo"><span class="lbl">Lendo uma arma</span>A <strong>Espada Longa</strong> é <em>Média · Versátil</em>: <strong>Speed 6</strong> (ataque médio), <strong>1d6</strong> de dado de dano + Força, <strong>+1</strong> no pool de ataque e <strong>+1</strong> no Bloqueio. Como é <em>Versátil</em>, empunhada a duas mãos ela soma <strong>Força×2</strong> no dano (em vez de Força×1), a mesma lâmina em dois estilos.</div>
+<div class="callout exemplo"><span class="lbl">Lendo uma arma</span>A <strong>Espada Longa</strong> é <em>Média · Versátil</em>: <strong>Velocidade 6</strong> (ataque médio), <strong>1d6</strong> de dado de dano + Força, <strong>+1</strong> no pool de ataque e <strong>+1</strong> no Bloqueio. Como é <em>Versátil</em>, empunhada a duas mãos ela soma <strong>Força×2</strong> no dano (em vez de Força×1), a mesma lâmina em dois estilos.</div>
 
 <p class="muted">Escolha pela <strong>fantasia</strong> — o duelista veloz, o brutamontes de montante, o lanceiro que controla a distância —, não pelo número "mais forte". Cada classe vence umas situações e perde outras; não existe a arma ótima.</p>
 
 ## Classes de Arma
 
-<p class="muted">Esta tabela é um <strong>guia geral por peso</strong> — a média de cada classe. Use-a como <strong>referência para inventar armas novas</strong>; cada <em>arma de exemplo</em> (abaixo) traz os seus próprios números, que podem variar dentro da classe (duas armas da mesma classe podem diferir em Speed, Acerto ou Defesa).</p>
+<p class="muted">Esta tabela é um <strong>guia geral por peso</strong> — a média de cada classe. Use-a como <strong>referência para inventar armas novas</strong>; cada <em>arma de exemplo</em> (abaixo) traz os seus próprios números, que podem variar dentro da classe (duas armas da mesma classe podem diferir em Velocidade, Acerto ou Defesa).</p>
 
 <div class="table-wrap">
 
-| Classe | Speed | Dano | Acerto | Def. | Mãos | Estilo |
+| Classe | Velocidade | Dano | Acerto | Def. | Mãos | Estilo |
 |---|:---:|:---:|:---:|:---:|:---:|---|
 | Leve | 5 | 1d6−2 | +2 | +1 | 1 | tempo, precisão e defesa; habilita Técnicas ágeis |
 | Média | 6 | 1d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
@@ -55,7 +55,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 <div class="table-wrap">
 
-| Arma | Classe | Modos | Speed | Dano | Acerto | Defesa | Mãos | Destaque |
+| Arma | Classe | Modos | Velocidade | Dano | Acerto | Defesa | Mãos | Destaque |
 |---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
 | Adaga | Leve | ★P(N0) · C | 5 | 1d6−2 | +2 | +1 | 1 | Ágil, arremessável. Rápida e precisa; só fura pele (mira na fresta) |
 | Espada Curta | Leve | ★C · P(N1) | 5 | 1d6−2 | +2 | +1 | 1 | Veloz e defensiva |
@@ -85,7 +85,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Speed</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma — ver <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
+<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma — ver <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
 
 ## Armaduras
 

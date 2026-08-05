@@ -3,11 +3,11 @@
     "id": "ticks",
     "termo": "Ticks",
     "aliases": [
-      "speed",
+      "velocidade",
       "tempo de ação",
       "linha do tempo"
     ],
-    "definicao": "Unidade de tempo do combate. Cada ação custa um número de Ticks (a Speed); depois de agir, você só joga de novo quando eles passam."
+    "definicao": "Unidade de tempo do combate. Cada ação custa um número de Ticks (a Velocidade); depois de agir, você só joga de novo quando eles passam."
   },
   {
     "id": "iniciativa",

@@ -180,7 +180,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
           <ul class="besta-atk">
             {i.combate.ataques.map((a: any) => (
-              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b> · Dano <b>{fmtDano(a.dano)}</b> · Speed {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b> · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
             ))}
           </ul>
 

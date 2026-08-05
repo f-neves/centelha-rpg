@@ -698,7 +698,7 @@ Reaproveita os 48 subcaminhos atuais (Punho de Ferro desceu a Técnica dentro de
 - **FEITO · banda→nível 1-5:** gating, exibição, filtros, árvore, ficha, glossário, capítulos. `nivel` (ceil(banda/3)) em todas as Técnicas + schema. Build verde.
 - **FEITO · Fase 1 (custo):** XP de Técnica = **nível × 10** (spec `porNivel`), removida a banda do cálculo de custo. Kael verde.
 - **FEITO · Fase 2 (trilhas):** `escalasProeza` no regras.json + campo `efeito` nas 410 Técnicas (classificadas) + tabela no centelha.md.
-- **A FAZER · Fase 3 (migração pesada):** remover a banda de vez (Speed independente por nível em vez de banda; apagar o campo `banda` e do schema); e SURFAR o modificador de cada Técnica na UI (mostrar o valor da trilha ao lado da Técnica).
+- **A FAZER · Fase 3 (migração pesada):** remover a banda de vez (Velocidade independente por nível em vez de banda; apagar o campo `banda` e do schema); e SURFAR o modificador de cada Técnica na UI (mostrar o valor da trilha ao lado da Técnica).
 
 ## Pendências abertas
 

@@ -5,14 +5,14 @@ titulo: "Combate Físico"
 resumo: "Como uma luta funciona: a linha do tempo, o ataque, o dano, a defesa, o movimento, a vantagem tática e as Técnicas."
 ---
 
-O combate não corre em turnos rígidos: corre numa **linha do tempo de Ticks** (cada um ≈ **1 segundo**). Cada ação custa um tempo — a sua **Speed** — e, depois de agir, você só volta a jogar quando esses Ticks passarem. Escolher *quando* agir vale tanto quanto *como*.
+O combate não corre em turnos rígidos: corre numa **linha do tempo de Ticks** (cada um ≈ **1 segundo**). Cada ação custa um tempo — a sua **Velocidade** — e, depois de agir, você só volta a jogar quando esses Ticks passarem. Escolher *quando* agir vale tanto quanto *como*.
 
 ## Como uma luta acontece
 
 Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 
 1. **Role a Iniciativa** (1d6 + Raciocínio + Prontidão) — ela diz quem age primeiro na linha de Ticks.
-2. **Na sua vez, escolha uma ação.** Cada ação custa um tempo (a **Speed**); após agir, você só volta quando esses Ticks passarem.
+2. **Na sua vez, escolha uma ação.** Cada ação custa um tempo (a **Velocidade**); após agir, você só volta quando esses Ticks passarem.
 3. **Para acertar, role seu pool de ataque** e compare com a **Defesa** do alvo — um número fixo. Se o total **superar** a Defesa, você acerta (empate erra).
 4. **Quanto melhor o acerto, mais forte o golpe:** a cada **6 pontos acima da Defesa**, o dano ganha **+1d6** — isso se chama **Margem**.
 5. **O dano, menos a Absorção** (a absorção do alvo), vira ferimento.
@@ -22,13 +22,13 @@ Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 
 No osso, é só isso. O resto do capítulo são as camadas que dão profundidade tática: **quando** agir, **como** se mover, **usar a posição** e **desencadear Técnicas**.
 
-## A linha do tempo: Ticks, Speed e Iniciativa
+## A linha do tempo: Ticks, Velocidade e Iniciativa
 
 No início, cada um rola a **Iniciativa = 1d6 + Raciocínio + Prontidão**. Quem tirar o maior valor começa no **Tick 0**; todos os demais começam no **Tick 1**. A partir daí, a distância pesa: a cada **6 pontos** abaixo da maior iniciativa, o retardatário **começa 1 Tick mais tarde** e **perde 1d6 na primeira ação** (pego no contrapé). A penalidade é [(maior − sua) ÷ 6], em Ticks e em dados. (Empate na maior iniciativa: começa quem tiver o maior Raciocínio; persistindo, decidam no 1d6.)
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>A maior iniciativa da cena foi <strong>14</strong>. Quem tirou de <strong>9 a 13</strong> (1–5 atrás) começa no Tick 1, sem perda. Quem tirou de <strong>3 a 8</strong> (6–11 atrás) começa no <strong>Tick 2</strong> e <strong>perde 1d6</strong> na primeira ação. Quem tirou <strong>1 ou 2</strong> (12–13 atrás) começa no <strong>Tick 3</strong> e <strong>perde 2d6</strong>. A perda vale só para a <em>primeira</em> ação — depois, todos jogam em pé de igualdade na linha de Ticks.</div>
 
-Cada ação tem uma **Speed** — quantos Ticks ela custa antes de você poder agir de novo:
+Cada ação tem uma **Velocidade** — quantos Ticks ela custa antes de você poder agir de novo:
 
 | Ticks | Tipo de ação | Exemplos |
 |:---:|---|---|
@@ -58,7 +58,7 @@ Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha *
 
 ### Empunhadura dupla: um ataque por mão
 
-Via de regra, **cada ação rende um só ataque** — uma arma, um golpe. Ninguém divide a ação em vários golpes com uma arma na mão (mais ataques numa ação vêm só de **duas armas** ou de uma Técnica que os conceda). A exceção é lutar com **uma arma em cada mão**: aí você pode desferir **um ataque por mão** na mesma ação (mesma Speed). Não é obrigatório abrir os dois — se preferir, faça só o golpe da mão hábil, normal, sem penalidade.
+Via de regra, **cada ação rende um só ataque** — uma arma, um golpe. Ninguém divide a ação em vários golpes com uma arma na mão (mais ataques numa ação vêm só de **duas armas** ou de uma Técnica que os conceda). A exceção é lutar com **uma arma em cada mão**: aí você pode desferir **um ataque por mão** na mesma ação (mesma Velocidade). Não é obrigatório abrir os dois — se preferir, faça só o golpe da mão hábil, normal, sem penalidade.
 
 Ao desferir os dois golpes:
 
@@ -163,9 +163,9 @@ O **Deslocamento livre** é a distância que você desliza **de graça durante o
 
 <p class="formula">Deslocamento livre (m) = (Destreza + Atletismo) ÷ 2</p>
 
-Para ir além, gaste a vez numa **ação de movimento** — Corrida ou Salto, ambas **Speed 3**.
+Para ir além, gaste a vez numa **ação de movimento** — Corrida ou Salto, ambas **Velocidade 3**.
 
-### Corrida (Speed 3)
+### Corrida (Velocidade 3)
 
 Interrompível a **qualquer Tick** — você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo); do **4º Tick em diante**, à **Velocidade de Corrida** (o ritmo sustentado). Cada valor é em metros por Tick.
 
@@ -174,7 +174,7 @@ Interrompível a **qualquer Tick** — você decide quando parar. A largada acel
 | **Arranque** | Ticks 1–3 | (Força + Atletismo) ÷ 2 + Destreza |
 | **Corrida** | Tick 4 em diante | Destreza × 1,5 + Atletismo |
 
-### Salto (Speed 3)
+### Salto (Velocidade 3)
 
 Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três alcances, conforme a direção e o impulso:
 
@@ -262,7 +262,7 @@ As Técnicas das Proezas entram na luta por **dois medidores independentes**: a 
 | **Passiva** | 0 | Sempre ligada. Não custa nada, não ocupa a sua vez. |
 | **Reflexiva** | 0 | Dispara *fora da sua vez*, em reação (aparar, esquivar, contra-atacar). Paga Energia; **só 1 por gatilho**. |
 | **Ativa suplementar** | +0 | Turbina uma ação que você já vai fazer (*"seu golpe ganha +2d6"*). Dobra junto com o ataque; você só paga a Energia. |
-| **Ativa independente** | própria | A Técnica **é** a ação (um deslocamento, um grito em área). Custa Speed pelo nível: **5** (níveis 1–3), **6** (nível 4), **7** (níveis 5–6). |
+| **Ativa independente** | própria | A Técnica **é** a ação (um deslocamento, um grito em área). Custa Velocidade pelo nível: **5** (níveis 1–3), **6** (nível 4), **7** (níveis 5–6). |
 
 ### Combos: concentrar num golpe só
 

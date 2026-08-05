@@ -163,7 +163,7 @@ const EX_CONTA: [string, string, number][] = [
     <p>Investir mais Mana não fura o teto sozinho: quem tem Fogo 3 leva todos os parâmetros até o nível 3 pagando o preço normal, mas para alcançar o <strong>4</strong> precisa esticar. Cada nível acima do seu nível de Arte <strong>encarece o parâmetro</strong> e <strong>alonga a ação</strong>.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Níveis acima</th><th>Custo do parâmetro</th><th>Speed</th></tr></thead>
+        <thead><tr><th>Níveis acima</th><th>Custo do parâmetro</th><th>Velocidade</th></tr></thead>
         <tbody>
           {ESTICAR.tabela.map((e: any) => (
             <tr><td class="num">{e.acima}</td><td>{e.custo}</td><td class="num">{e.speed}</td></tr>
@@ -171,9 +171,9 @@ const EX_CONTA: [string, string, number][] = [
         </tbody>
       </table>
     </div>
-    <p class="formula">Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = <strong>6 pontos</strong>, Speed 5. Puxando para Área 3, um nível acima: 3×2 + 2 + 2 = <strong>10 pontos</strong>, Speed 10. Para Área 4, dois acima: 4×3 + 2 + 2 = <strong>16 pontos</strong>, Speed 15.</p>
+    <p class="formula">Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = <strong>6 pontos</strong>, Velocidade 5. Puxando para Área 3, um nível acima: 3×2 + 2 + 2 = <strong>10 pontos</strong>, Velocidade 10. Para Área 4, dois acima: 4×3 + 2 + 2 = <strong>16 pontos</strong>, Velocidade 15.</p>
     <div class="callout regra"><span class="lbl">Você decide no fim</span>
-      Não é preciso anunciar de saída até onde vai. No <strong>tick final de cada Speed</strong> você escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Numa ação de Speed 5, você decide no tick 5; se esticar, decide de novo no 10, e outra vez no 15. Quem interromper você no meio leva a conjuração junto.
+      Não é preciso anunciar de saída até onde vai. No <strong>tick final de cada Velocidade</strong> você escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Numa ação de Velocidade 5, você decide no tick 5; se esticar, decide de novo no 10, e outra vez no 15. Quem interromper você no meio leva a conjuração junto.
     </div>
     <p class="muted">O preço sobe rápido de propósito: forçar o limite é recurso de momento decisivo, não atalho para o estudo. E o desconto da Centelha continua valendo sobre o total.</p>
 

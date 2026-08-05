@@ -10,10 +10,13 @@ import CAM_D from '../data/caminhos.json';
 import TEC_D from '../data/tecnicas.json';
 import ARTE_D from '../data/artes.json';
 import EFEITO_D from '../data/efeitos.json';
-import ARMA_D from '../data/armas.json';
-import ARMADURA_D from '../data/armaduras.json';
-import ESCUDO_D from '../data/escudos.json';
 import RACA_D from '../data/racas.json';
+import {
+  ARMA, ARMADURA, ESCUDO, ARMAS, ARMADURAS, ESCUDOS,
+  CAMPOS_ARMA, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
+  armaComMod, armaduraComMod, escudoComMod, armadurasDe, baseCampo, valorCampo, temMod,
+  danoStr, statsArma, statsArmadura, statsEscudo, sinalNum,
+} from './equip';
 import { uiConfirmar, uiErro, uiFormulario } from './ui-dialog';
 
 export interface FichaOpts {
@@ -32,9 +35,6 @@ export interface FichaOpts {
 }
 
 export function montarFicha(opts: FichaOpts) {
-  const ARMA: Record<string, any> = Object.fromEntries((ARMA_D as any[]).map((w) => [w.id, w]));
-  const ARMADURA: Record<string, any> = Object.fromEntries((ARMADURA_D as any[]).map((a) => [a.id, a]));
-  const ESCUDO: Record<string, any> = Object.fromEntries((ESCUDO_D as any[]).map((s) => [s.id, s]));
   const RACA: Record<string, any> = Object.fromEntries((RACA_D as any[]).map((r) => [r.id, r]));
   const racApMod = () => (RACA[S?.raca]?.aparenciaMod || 0);
   const apEfetiva = (v: number) => Math.max(1, Math.min(12, (v || 1) + racApMod()));
@@ -115,7 +115,7 @@ export function montarFicha(opts: FichaOpts) {
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [] }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [], armMod: {} }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoXp('atributo')));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
@@ -124,6 +124,19 @@ export function montarFicha(opts: FichaOpts) {
   // Especialidades: lista nomeada [{s, v}]. Teto por Habilidade = [nível/2] especialidades, cada uma até [nível/2].
   // Também converte o formato antigo (número solto) e reaplica os tetos a cada carga.
   function mkBolsas() { return [{ nome: 'Mochila', texto: '' }, { nome: 'Equipamentos', texto: '' }, { nome: 'Carroça', texto: '' }]; }
+  // Normaliza um slot de mão preservando o que o jogador ajustou: o nome e os números
+  // do item improvisado e o `mod` (a variação de qualidade da peça de catálogo).
+  function normSlot(s: any, dflt: string) {
+    const o: any = { ref: String(s?.ref || dflt) };
+    if (s?.nome != null) o.nome = String(s.nome);
+    for (const k of ['dado', 'danoBonus', 'acerto']) if (Number.isFinite(Number(s?.[k]))) o[k] = Number(s[k]);
+    if (s?.mod && typeof s.mod === 'object') {
+      const m: Record<string, number> = {};
+      for (const [k, v] of Object.entries(s.mod)) if (Number.isFinite(Number(v))) m[k] = Number(v);
+      if (Object.keys(m).length) o.mod = m;
+    }
+    return o;
+  }
   function mkConjuntos() { return [{ habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' }, ativo: true }]; }
   // Especialidade = lista de especialidades NOMEADAS [{s, v}], cada uma com um nível v.
   // Teto por perícia: até [nível/2] especialidades, cada uma até [nível/2] níveis.
@@ -176,7 +189,8 @@ export function montarFicha(opts: FichaOpts) {
       S.conjuntos = [{ habil: { ref: arma }, inabil: { ref: esc }, ativo: true }];
     }
     delete S.equip.arma; delete S.equip.escudo;
-    S.conjuntos = S.conjuntos.map((c: any) => ({ habil: { ref: String(c?.habil?.ref || 'a:desarmado'), nome: c?.habil?.nome }, inabil: { ref: String(c?.inabil?.ref || 'nada'), nome: c?.inabil?.nome }, ativo: !!c?.ativo }));
+    if (!S.equip.armMod || typeof S.equip.armMod !== 'object') S.equip.armMod = {};
+    S.conjuntos = S.conjuntos.map((c: any) => ({ habil: normSlot(c?.habil, 'a:desarmado'), inabil: normSlot(c?.inabil, 'nada'), ativo: !!c?.ativo }));
     if (!S.conjuntos.some((c: any) => c.ativo)) S.conjuntos[0].ativo = true;
     S.bolsas = (Array.isArray(S.bolsas) && S.bolsas.length) ? S.bolsas.map((b: any) => ({ nome: String(b?.nome ?? ''), texto: String(b?.texto ?? '') })) : mkBolsas();
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
@@ -408,16 +422,24 @@ export function montarFicha(opts: FichaOpts) {
         acerto: clampImprov(slot?.acerto, -6, 6, IMPROV.acerto) };
       return { kind: 'custom', nome: w.nome, def: 0, pen: 0, w };
     }
-    if (ref.startsWith('e:')) { const s = ESCUDO[ref.slice(2)]; if (s) return { kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, habilProjetil: !!s.habilProjetil }; }
-    if (ref.startsWith('a:')) { const w = ARMA[ref.slice(2)]; if (w) return { kind: 'arma', nome: w.nome, def: w.defesaArma || 0, pen: 0, w }; }
+    if (ref.startsWith('e:')) {
+      const base = ESCUDO[ref.slice(2)];
+      if (base) { const s = escudoComMod(base, slot?.mod); return { kind: 'escudo', nome: base.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, habilProjetil: !!s.habilProjetil, base, s }; }
+    }
+    if (ref.startsWith('a:')) {
+      const base = ARMA[ref.slice(2)];
+      if (base) { const w = armaComMod(base, slot?.mod); return { kind: 'arma', nome: base.nome, def: w.defesaArma || 0, pen: 0, w, base }; }
+    }
     return { kind: 'nada', nome: '—', def: 0, pen: 0 };
   }
+  /** Peças de armadura vestidas, já com os ajustes do jogador. */
+  const pecasArmadura = () => armadurasDe(S);
   const it2H = (it: any) => (it.kind === 'arma' || it.kind === 'custom') && it.w.maos === 2;
   const itVers = (it: any) => (it.kind === 'arma' || it.kind === 'custom') && (it.w.tags || []).includes('versátil');
   function conjAtivo() { const cs = (S.conjuntos || []); return cs.find((c: any) => c.ativo) || cs[0] || { habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' } }; }
   function calcConj(cj: any) {
     const C = S.centelha || 0, forca = A('forca');
-    const armorPen = empilharArmaduras((S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean)).penalidade || 0;
+    const armorPen = empilharArmaduras(pecasArmadura()).penalidade || 0;
     const habil = itemDe(cj.habil);
     const inabil = it2H(habil) ? { kind: 'nada', nome: '—', def: 0, pen: 0 } : itemDe(cj.inabil);
     const atk = (habil.kind === 'arma' || habil.kind === 'custom') ? habil.w : ARMA['desarmado'];
@@ -462,21 +484,57 @@ export function montarFicha(opts: FichaOpts) {
     return { habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
   }
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
+  // Cada arma da lista já mostra os próprios números: Velocidade / Acerto / Dano / Defesa.
   function optsItens(sel: string) {
-    const armas = (ARMA_D as any[]).map((w) => `<option value="a:${w.id}"${sel === 'a:' + w.id ? ' selected' : ''}>${w.nome}</option>`).join('');
-    const escudos = (ESCUDO_D as any[]).filter((s) => s.id !== 'nenhum').map((s) => `<option value="e:${s.id}"${sel === 'e:' + s.id ? ' selected' : ''}>Escudo: ${s.nome}</option>`).join('');
-    return `<optgroup label="Armas">${armas}</optgroup><optgroup label="Escudos">${escudos}</optgroup><option value="nada"${sel === 'nada' ? ' selected' : ''}>Nada</option><option value="c"${sel === 'c' ? ' selected' : ''}>Personalizado…</option>`;
+    const armas = ARMAS.map((w) => `<option value="a:${w.id}"${sel === 'a:' + w.id ? ' selected' : ''}>${w.nome}: ${statsArma(w)}</option>`).join('');
+    const escudos = ESCUDOS.filter((s) => s.id !== 'nenhum').map((s) => `<option value="e:${s.id}"${sel === 'e:' + s.id ? ' selected' : ''}>${s.nome}: ${statsEscudo(s)}</option>`).join('');
+    return `<optgroup label="Armas (Vel/Acerto/Dano/Defesa)">${armas}</optgroup><optgroup label="Escudos">${escudos}</optgroup><option value="nada"${sel === 'nada' ? ' selected' : ''}>Nada</option><option value="c"${sel === 'c' ? ' selected' : ''}>Personalizado…</option>`;
+  }
+
+  // ===== Ajuste de peça: os números do catálogo viram editáveis =====
+  // Serve para a variação de qualidade (uma Espada Longa Ótima, um gambeson puído):
+  // a peça continua sendo a do catálogo, só com os valores trocados na ficha.
+  const modAberto = new Set<string>();   // painéis abertos, por chave ("0:habil", "arm:couro")
+  function campoMod(chave: string, c: CampoEquip, base: any, mod: any, ro: boolean) {
+    const v = valorCampo(base, mod, c), orig = baseCampo(base, c);
+    return `<label class="eqm-c${v !== orig ? ' dif' : ''}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
+      `<input type="number" data-eqm="${chave}:${c.k}" value="${v}" min="${c.min}" max="${c.max}" step="1"${ro ? ' disabled' : ''} title="catálogo: ${c.sinal ? sgn(orig) : orig}" /></label>`;
+  }
+  function painelMod(chave: string, base: any, mod: any, campos: CampoEquip[], ro: boolean) {
+    return `<div class="eq-mod" data-eq-pan="${chave}"${modAberto.has(chave) ? '' : ' hidden'}>${campos.map((c) => campoMod(chave, c, base, mod, ro)).join('')}` +
+      `${ro ? '' : `<button type="button" class="eqm-reset" data-eqm-reset="${chave}">restaurar</button>`}</div>`;
+  }
+  const numsItem = (it: any) => (it.kind === 'arma' ? statsArma(it.w) : it.kind === 'escudo' ? statsEscudo(it.s) : '');
+  const camposItem = (it: any) => (it.kind === 'arma' ? CAMPOS_ARMA : CAMPOS_ESCUDO);
+  /** Linha de números da peça escolhida, com o botão que abre os campos editáveis. */
+  function linhaItem(i: number, hand: 'habil' | 'inabil', it: any, mod: any, ro: boolean) {
+    if (it.kind !== 'arma' && it.kind !== 'escudo') return '';
+    const chave = `${i}:${hand}`, campos = camposItem(it);
+    const dica = it.kind === 'arma' ? 'Velocidade / Acerto / Dano / Defesa' : 'Defesa · Penalidade';
+    return `<div class="eq-it${temMod(it.base, mod, campos) ? ' ajustado' : ''}" data-eq-it="${chave}">
+        <span class="eq-nums" data-eq-nums="${chave}" title="${dica}">${numsItem(it)}</span>
+        <span class="eq-flag" title="Valores trocados em relação ao catálogo">ajustado</span>
+        <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎</button>
+      </div>${painelMod(chave, it.base, mod, campos, ro)}`;
+  }
+  function statsConj(c: any, trava: boolean) {
+    const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
+    const dano = c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
+    return `<b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}` +
+      `${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}` +
+      `${c.reqForca ? ` · <span class="conj-req">requer Força ${c.reqForca}</span>` : ''}`;
+  }
+  function duplaConj(c: any) {
+    if (!c.dupla) return '';
+    const p0 = (n: number) => Math.max(0, n);
+    const pool = (d: number, b: number, f: number) => `${p0(d)}d6${b ? '+2' : ''}${f ? ' ' + sgn(f) : ''}`;
+    const dm = (dado: number, ap: number) => `${dado}d6${ap ? ' ' + sgn(ap) : ''}`;
+    return `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −${c.dupla.inabilPen}d6: ${pool(c.dupla.inabilDados - c.dupla.inabilPen, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno${c.dupla.ambi ? ' · Ambidestria' : ''}</span></div>`;
   }
   function renderConjuntos() {
     const ro = !!opts.readOnly;
     el('eq-conjuntos').innerHTML = (S.conjuntos || []).map((cj: any, i: number) => {
       const c = calcConj(cj); const trava = it2H(c.habil);
-      const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
-      const dano = c.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
-      const p0 = (n: number) => Math.max(0, n);
-      const pool = (d: number, b: number, f: number) => `${p0(d)}d6${b ? '+2' : ''}${f ? ' ' + sgn(f) : ''}`;
-      const dm = (dado: number, ap: number) => `${dado}d6${ap ? ' ' + sgn(ap) : ''}`;
-      const dupla = c.dupla ? `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −${c.dupla.inabilPen}d6: ${pool(c.dupla.inabilDados - c.dupla.inabilPen, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno${c.dupla.ambi ? ' · Ambidestria' : ''}</span></div>` : '';
       const custom = (hand: 'habil' | 'inabil') => {
         const s = cj[hand];
         if (s?.ref !== 'c') return '';
@@ -490,21 +548,44 @@ export function montarFicha(opts: FichaOpts) {
           </div>
           <span class="conj-improv-nota muted">Frágil: costuma quebrar no 1º ou 2º golpe.</span>`;
       };
-      return `<div class="conjunto${cj.ativo ? ' ativo' : ''}">
+      const mao = (hand: 'habil' | 'inabil') => {
+        const rot = hand === 'habil' ? 'Mão hábil' : 'Mão inábil';
+        const travada = hand === 'inabil' && trava;
+        const sel = hand === 'habil' ? (cj.habil?.ref || 'a:desarmado') : (travada ? 'nada' : (cj.inabil?.ref || 'nada'));
+        const it = hand === 'habil' ? c.habil : c.inabil;
+        return `<div class="conj-mao">
+          <label>${rot}<select data-conj-sel="${i}:${hand}"${(ro || travada) ? ' disabled' : ''}>${optsItens(sel)}</select></label>
+          ${travada ? '' : custom(hand)}
+          ${travada ? '' : linhaItem(i, hand, it, cj[hand]?.mod, ro)}
+        </div>`;
+      };
+      return `<div class="conjunto${cj.ativo ? ' ativo' : ''}" data-conj="${i}">
         <div class="conj-top"><label class="conj-uso"><input type="radio" name="conj-ativo" data-conj-uso="${i}"${cj.ativo ? ' checked' : ''}${ro ? ' disabled' : ''}/> em uso</label>${(S.conjuntos.length > 1 && !ro) ? `<button class="conj-rm" data-conj-rm="${i}" title="Remover" aria-label="Remover">×</button>` : ''}</div>
-        <div class="conj-hands">
-          <label>Mão hábil<select data-conj-sel="${i}:habil"${ro ? ' disabled' : ''}>${optsItens(cj.habil?.ref || 'a:desarmado')}</select>${custom('habil')}</label>
-          <label>Mão inábil<select data-conj-sel="${i}:inabil"${(ro || trava) ? ' disabled' : ''}>${optsItens(trava ? 'nada' : (cj.inabil?.ref || 'nada'))}</select>${trava ? '' : custom('inabil')}</label>
-        </div>
-        <div class="conj-stats"><b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}${c.reqForca ? ` · <span class="conj-req">requer Força ${c.reqForca}</span>` : ''}</div>
-        ${dupla}
+        <div class="conj-hands">${mao('habil')}${mao('inabil')}</div>
+        <div class="conj-stats">${statsConj(c, trava)}</div>
+        <div class="conj-dupla-wrap">${duplaConj(c)}</div>
       </div>`;
     }).join('');
+  }
+  /** Atualiza só os números de um conjunto, sem refazer o HTML (não rouba o foco de quem digita). */
+  function refreshConj(i: number) {
+    const root = el('eq-conjuntos').querySelector<HTMLElement>(`[data-conj="${i}"]`);
+    if (!root || !S.conjuntos[i]) return;
+    const c = calcConj(S.conjuntos[i]), trava = it2H(c.habil);
+    const st = root.querySelector('.conj-stats'); if (st) st.innerHTML = statsConj(c, trava);
+    const dp = root.querySelector('.conj-dupla-wrap'); if (dp) dp.innerHTML = duplaConj(c);
+    (['habil', 'inabil'] as const).forEach((hand) => {
+      const it = hand === 'habil' ? c.habil : c.inabil;
+      const nums = root.querySelector(`[data-eq-nums="${i}:${hand}"]`);
+      if (nums) nums.textContent = numsItem(it);
+      const box = root.querySelector(`[data-eq-it="${i}:${hand}"]`);
+      if (box && (it.kind === 'arma' || it.kind === 'escudo')) box.classList.toggle('ajustado', temMod(it.base, S.conjuntos[i][hand]?.mod, camposItem(it)));
+    });
   }
   function renderDerived() {
     const C = S.centelha, W = S.willpower, integ = SK('integridade');
     const r = (l: string, v: any, calc: string, extra = false) => `<div class="derv${extra ? ' derv-extra' : ''}"><span class="dl">${l}</span><span class="dv" data-calc="${escapeHtml(calc)}">${v}</span></div>`;
-    const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
+    const pecas = pecasArmadura();
     const armSt = empilharArmaduras(pecas);
     const act = calcConj(conjAtivo());
     const armPen = armSt.penalidade || 0, penEsc = act.penSum || 0;
@@ -561,12 +642,12 @@ export function montarFicha(opts: FichaOpts) {
     const blk = defesa({ destreza: A('destreza'), habilidade: SK('bloqueio'), centelha: C }) + (act.defSum || 0) - armorPen;
     const nomeSet = `${act.habil.nome}${act.inabil.kind !== 'nada' ? ` + ${act.inabil.nome}` : ''}`;
     const escudos = [act.habil, act.inabil].filter((it: any) => it.kind === 'escudo');
-    const pecas = (S.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
+    const pecas = pecasArmadura();
     el('combate').innerHTML =
       `<div class="cmb"><b>Conjunto em uso</b> — ${nomeSet}</div>` +
-      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${atk}</b> · dano <b>${dano}</b> · Speed ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
+      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks} · Fôlego ${w.folego ?? 0}</div>` +
       `<div class="cmb"><b>Modos</b> — ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>` +
-      `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego e +1 Speed.</div>` +
+      `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego e +1 Velocidade.</div>` +
       (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
       (escudos.length
         ? `<div class="cmb muted">Projétil rápido: ${escudos.some((e: any) => e.habilProjetil) ? 'você tem escudo hábil, dá para Bloquear se estiver apto (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.</div>`
@@ -629,16 +710,42 @@ export function montarFicha(opts: FichaOpts) {
       svgEl.addEventListener('mouseleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
     }
   }
-  function populateEquip() {
-    renderConjuntos();
+  // Armaduras em lista, com as mesmas colunas da tabela de Armaduras em Equipamentos.
+  function renderArmaduras() {
+    const ro = !!opts.readOnly;
     const box = el('eq-armaduras');
-    box.innerHTML = (ARMADURA_D as any[]).filter((a) => a.id !== 'nenhuma')
-      .map((a) => `<label class="arm-chk"><input type="checkbox" data-arm="${a.id}"${(S.equip.armaduras || []).includes(a.id) ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''}/> ${a.nome}</label>`).join('');
+    const mods = S.equip.armMod || {};
+    box.innerHTML = ARMADURAS.filter((a) => a.id !== 'nenhuma').map((base) => {
+      const vestida = (S.equip.armaduras || []).includes(base.id);
+      const mod = mods[base.id], chave = `arm:${base.id}`;
+      return `<div class="arm-item${vestida ? ' vestida' : ''}${temMod(base, mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-item="${base.id}">
+        <label class="arm-chk"><input type="checkbox" data-arm="${base.id}"${vestida ? ' checked' : ''}${ro ? ' disabled' : ''}/> <span class="arm-nm">${base.nome}</span></label>
+        <span class="arm-nums" data-arm-nums="${base.id}" title="Absorção de Impacto · Corte · Perfuração (Nível de Resistência) · Penalidade">${statsArmadura(armaduraComMod(base, mod))}</span>
+        <span class="eq-flag" title="Valores trocados em relação ao catálogo">ajustada</span>
+        <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta armadura" aria-expanded="${modAberto.has(chave)}">✎</button>
+        ${painelMod(chave, base, mod, CAMPOS_ARMADURA, ro)}
+      </div>`;
+    }).join('');
     box.querySelectorAll('input[data-arm]').forEach((cb) => cb.addEventListener('change', (e) => {
       const t = e.target as HTMLInputElement; const set = new Set<string>(S.equip.armaduras || []);
       if (t.checked) set.add(t.dataset.arm!); else set.delete(t.dataset.arm!);
-      S.equip.armaduras = [...set]; renderDerived(); renderCombate(); save();
+      S.equip.armaduras = [...set];
+      const item = t.closest('.arm-item'); if (item) item.classList.toggle('vestida', t.checked);
+      renderDerived(); renderCombate(); save();
     }));
+  }
+  /** Atualiza só a linha de números de uma armadura (sem refazer o HTML). */
+  function refreshArm(id: string) {
+    const base = ARMADURA[id]; if (!base) return;
+    const mod = (S.equip.armMod || {})[id];
+    const nums = el('eq-armaduras').querySelector(`[data-arm-nums="${id}"]`);
+    if (nums) nums.textContent = statsArmadura(armaduraComMod(base, mod));
+    const item = el('eq-armaduras').querySelector(`[data-arm-item="${id}"]`);
+    if (item) item.classList.toggle('ajustado', temMod(base, mod, CAMPOS_ARMADURA));
+  }
+  function populateEquip() {
+    renderConjuntos();
+    renderArmaduras();
     const ro = opts.readOnly ? ' disabled' : '';
     el('eq-bolsas').innerHTML = (S.bolsas || []).map((b: any, i: number) =>
       `<div class="bolsa"><input class="bolsa-nome" data-bolsa-nome="${i}" value="${escapeHtml(b.nome)}" aria-label="Nome do campo de equipamento"${ro} /><textarea class="bolsa-txt" data-bolsa-txt="${i}" rows="3" placeholder="O que carrega aqui…"${ro}>${escapeHtml(b.texto)}</textarea></div>`).join('');
@@ -858,8 +965,75 @@ export function montarFicha(opts: FichaOpts) {
     const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-nome]');
     if (inp) { const [i, hand] = inp.dataset.conjNome!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' }).nome = inp.value; renderCombate(); save(); return; }
     const imp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-improv]');
-    if (imp) { const [i, hand, campo] = imp.dataset.conjImprov!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' })[campo] = Number(imp.value); renderDerived(); renderCombate(); save(); }
+    if (imp) { const [i, hand, campo] = imp.dataset.conjImprov!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' })[campo] = Number(imp.value); refreshConj(+i); renderDerived(); renderCombate(); save(); }
   });
+  // ---- Ajuste de peça: os valores do catálogo, editáveis por peça escolhida ----
+  function alvoMod(chave: string) {
+    const [a, b] = chave.split(':');
+    if (a === 'arm') {
+      const base = ARMADURA[b]; if (!base) return null;
+      return {
+        base, campos: CAMPOS_ARMADURA,
+        mod: () => (S.equip.armMod || {})[b],
+        escreve: (k: string, v: number | null) => {
+          const m = ((S.equip.armMod ||= {})[b] ||= {});
+          if (v == null) delete m[k]; else m[k] = v;
+          if (!Object.keys(m).length) delete S.equip.armMod[b];
+        },
+        limpa: () => { delete (S.equip.armMod || {})[b]; },
+        redesenha: () => refreshArm(b),
+      };
+    }
+    const i = Number(a), hand = b as 'habil' | 'inabil';
+    const cj = S.conjuntos?.[i]; if (!cj || !cj[hand]) return null;
+    const it = itemDe(cj[hand]);
+    if (it.kind !== 'arma' && it.kind !== 'escudo') return null;
+    return {
+      base: it.base, campos: camposItem(it),
+      mod: () => cj[hand].mod,
+      escreve: (k: string, v: number | null) => {
+        const m = (cj[hand].mod ||= {});
+        if (v == null) delete m[k]; else m[k] = v;
+        if (!Object.keys(m).length) delete cj[hand].mod;
+      },
+      limpa: () => { delete cj[hand].mod; },
+      redesenha: () => refreshConj(i),
+    };
+  }
+  function ligarAjustes(box: HTMLElement) {
+    box.addEventListener('click', (e) => {
+      const tog = (e.target as HTMLElement).closest<HTMLElement>('[data-eqm-tog]');
+      if (tog) {
+        const chave = tog.dataset.eqmTog!, abrir = !modAberto.has(chave);
+        if (abrir) modAberto.add(chave); else modAberto.delete(chave);
+        const pan = box.querySelector<HTMLElement>(`[data-eq-pan="${chave}"]`);
+        if (pan) pan.hidden = !abrir;
+        tog.setAttribute('aria-expanded', String(abrir));
+        return;
+      }
+      if (opts.readOnly) return;
+      const rst = (e.target as HTMLElement).closest<HTMLElement>('[data-eqm-reset]');
+      if (rst) {
+        const alvo = alvoMod(rst.dataset.eqmReset!); if (!alvo) return;
+        alvo.limpa(); populateEquip(); renderDerived(); renderCombate(); save();
+      }
+    });
+    box.addEventListener('input', (e) => {
+      if (opts.readOnly) return;
+      const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-eqm]');
+      if (!inp) return;
+      const partes = inp.dataset.eqm!.split(':'), k = partes.pop()!;
+      const alvo = alvoMod(partes.join(':')); if (!alvo) return;
+      const campo = alvo.campos.find((c) => c.k === k); if (!campo) return;
+      const bruto = inp.value.trim();
+      alvo.escreve(k, bruto === '' ? null : Math.max(campo.min, Math.min(campo.max, Math.round(Number(bruto) || 0))));
+      const lab = inp.closest('.eqm-c');
+      if (lab) lab.classList.toggle('dif', valorCampo(alvo.base, alvo.mod(), campo) !== baseCampo(alvo.base, campo));
+      alvo.redesenha(); renderDerived(); renderCombate(); save();
+    });
+  }
+  ligarAjustes(el('eq-conjuntos'));
+  ligarAjustes(el('eq-armaduras'));
   el('eq-conjuntos').addEventListener('click', (e) => {
     if (opts.readOnly) return;
     const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-conj-rm]');

@@ -132,7 +132,7 @@ import Base from '../layouts/Base.astro';
           </select>
         </label>
       </div>
-      <label>Speed (Ticks até a próxima ação)
+      <label>Velocidade (Ticks até a próxima ação)
         <input type="number" id="acao-speed" min="0" value="5" />
       </label>
       <div class="acao-btns">
@@ -455,7 +455,7 @@ import Base from '../layouts/Base.astro';
           <span class="hp-fb" data-c="${c.id}"></span>
         </span>` : ''}
       </div>` : '';
-      const act = ehMestre ? `<span class="cmb-act"><input type="number" class="spd" data-c="${c.id}" value="5" title="Speed da ação" /><button class="btn mini agir" data-c="${c.id}" data-tick="${c.tick}">agiu</button><button class="btn mini editc" data-c="${c.id}" title="Editar dados">✎</button><button class="btn mini perigo rm" data-c="${c.id}">✕</button></span>` : '';
+      const act = ehMestre ? `<span class="cmb-act"><input type="number" class="spd" data-c="${c.id}" value="5" title="Velocidade da ação" /><button class="btn mini agir" data-c="${c.id}" data-tick="${c.tick}">agiu</button><button class="btn mini editc" data-c="${c.id}" title="Editar dados">✎</button><button class="btn mini perigo rm" data-c="${c.id}">✕</button></span>` : '';
       return `<div class="cmb-row${atual ? ' atual' : ''}">
         <span class="cmb-tick" title="tick da próxima ação">t${c.tick}</span>
         <div class="cmb-main">
@@ -583,7 +583,7 @@ import Base from '../layouts/Base.astro';
         const aplica = !!alvoC && alvoC.pv_max != null && bruto > 0;
         dlg.close();
         await sb.from('combatentes').update({ tick: novoTick }).eq('id', cid);
-        await logAcao(`${txt} · tick ${tickAtual} → ${novoTick} (Speed ${spd}).`);
+        await logAcao(`${txt} · tick ${tickAtual} → ${novoTick} (Velocidade ${spd}).`);
         if (aplica) {
           const dmgTipo = danoTipoSel.value;
           const soak = RESUMO[alvoC.id]?.soak?.[CAT_SOAK[dmgTipo]] ?? 0;
@@ -735,7 +735,7 @@ import Base from '../layouts/Base.astro';
       const cb = m.combate || {};
       const badges = `<span class="cr-b">A${m.ameaca}</span><span class="cr-b">Centelha ${m.centelha}</span><span class="cr-b">PV ${cb.pv ?? '-'}</span><span class="cr-b">Def ${cb.defesa ?? '-'}</span>${m.porte ? `<span class="cr-b">${esc(m.porte)}</span>` : ''}`;
       const atk0 = (cb.ataques || [])[0];
-      const atkLinha = atk0 ? `<div class="cr-atk"><span class="cr-atk-nm">${esc(atk0.nome)}</span> ataque <b>${esc(atk0.pool)}</b> · dano <b>${fmtDano(esc(atk0.dano))}</b>${atk0.speed != null ? ` · Speed ${atk0.speed}` : ''}</div>` : '';
+      const atkLinha = atk0 ? `<div class="cr-atk"><span class="cr-atk-nm">${esc(atk0.nome)}</span> ataque <b>${esc(atk0.pool)}</b> · dano <b>${fmtDano(esc(atk0.dano))}</b>${atk0.speed != null ? ` · Velocidade ${atk0.speed}` : ''}</div>` : '';
       const notas = ehMestre
         ? `<textarea class="cr-notas" data-cr="${c.id}" rows="2" placeholder="Anotações do mestre (só você vê nesta lista)">${esc(c.notas || '')}</textarea>`
         : (c.notas ? `<p class="cr-notas-ro">${esc(c.notas)}</p>` : '');
@@ -781,7 +781,7 @@ import Base from '../layouts/Base.astro';
     const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>`;
     const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
     const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Val ${m.virtudes.valor}</span></div></div>` : '';
-    const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Speed ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
+    const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
     const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
     const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
     const refTec = (m.tecnicas || []).length ? `<p class="ib-ref"><b>Técnicas:</b> ${m.tecnicas.map((t: string) => `<a href="${u('caminhos/' + (TEC[t]?.caminho || ''))}#${t}">${esc(TEC[t]?.nome || t)}</a>`).join(' · ')}</p>` : '';

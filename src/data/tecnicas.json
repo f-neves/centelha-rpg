@@ -3258,7 +3258,7 @@
       "folego-profundo"
     ],
     "aliases": [],
-    "texto": "Uma vez por cena, recupere **metade do Fôlego máximo** numa ação **rápida (Speed 1)** — o respiro que quase não custa tempo.",
+    "texto": "Uma vez por cena, recupere **metade do Fôlego máximo** numa ação **rápida (Velocidade 1)** — o respiro que quase não custa tempo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"

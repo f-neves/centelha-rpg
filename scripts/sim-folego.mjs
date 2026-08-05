@@ -4,18 +4,18 @@
 //   pool      = 10 (base humana) + Vigor×5 + Resistência×4 + Vontade×2
 //   recupera  = +Vigor de Fôlego POR TICK, o tempo todo (inclusive lutando)
 //   golpe     = gasta o Fôlego BRUTO da arma (15 leve / 24 médio / 35 pesado …)
-//   LÍQUIDO   = bruto − Vigor×Speed  ← "o que pesa de fato" (def. do próprio livro)
-//   Tomar Fôlego = ação Speed 5 (só defende) → recupera METADE do máximo de uma vez
+//   LÍQUIDO   = bruto − Vigor×Velocidade  ← "o que pesa de fato" (def. do próprio livro)
+//   Tomar Fôlego = ação Velocidade 5 (só defende) → recupera METADE do máximo de uma vez
 //   defender  = não custa Fôlego
 //   < 25% pool = −1d6 em toda ação física
 //   0 (exausto) = só pode defender / Tomar Fôlego
-//   Esforço   = cada +1d6 DOBRA o bruto e +1 Speed (×2/×4/×8…, Speed +1/+2/+3) — sem teto
+//   Esforço   = cada +1d6 DOBRA o bruto e +1 Velocidade (×2/×4/×8…, Velocidade +1/+2/+3) — sem teto
 //
 // MODELO DE CONTABILIDADE (decisão de modelagem, alinhada ao livro):
 //   cada golpe aplica o LÍQUIDO como um delta único, limitado a [0, máx].
 //   - líquido negativo (regenera) → sobe, sem ultrapassar o máx (não se "banca" descanso);
 //   - líquido positivo (drena)   → desce; se zerar, fica exausto.
-//   É o que o jogador calcula na mesa ("−bruto, +Vigor×Speed durante o golpe").
+//   É o que o jogador calcula na mesa ("−bruto, +Vigor×Velocidade durante o golpe").
 //   O Fôlego é determinístico (não há dado), então os blocos são EXATOS, não Monte Carlo.
 //
 //   node scripts/sim-folego.mjs
@@ -65,7 +65,7 @@ for (const b of BUILDS) {
 
 // ============================ B — LÍQUIDO POR GOLPE ============================
 console.log('\n' + '='.repeat(74));
-console.log('B) LÍQUIDO POR GOLPE = bruto − Vigor×Speed   (negativo = REGENERA lutando)');
+console.log('B) LÍQUIDO POR GOLPE = bruto − Vigor×Velocidade   (negativo = REGENERA lutando)');
 console.log('='.repeat(74));
 const vigs = [2, 3, 4, 5];
 console.log(pad('classe', 18) + vigs.map((v) => padc('Vig' + v, 8)).join(''));
@@ -117,7 +117,7 @@ for (const b of BUILDS) {
 
 // ============================ E — ESFORÇO ============================
 console.log('\n' + '='.repeat(74));
-console.log('E) ESFORÇO (Vigor 4): cada +1d6 dobra o bruto e +1 Speed. bruto / LÍQUIDO / cabe?');
+console.log('E) ESFORÇO (Vigor 4): cada +1d6 dobra o bruto e +1 Velocidade. bruto / LÍQUIDO / cabe?');
 const heroi = BUILDS.find((b) => b.nome.startsWith('Herói'));
 const ph = pool(heroi.vig, heroi.res, heroi.vont);
 console.log(`   pool de referência = Herói V4 R3 Vo7 = ${ph}.  "cabe?" = líquido ≤ pool cheio`);
@@ -169,7 +169,7 @@ console.log('\nAlvo do design: leve sustenta; pesado ~6 do cheio; Esforço-pesad
 // ============================ G — MODELO A vs MODELO B ============================
 // A (atual): recupera +Vigor/Tick O TEMPO TODO (inclusive durante o golpe) → custa o LÍQUIDO.
 // B (novo) : recupera +Vigor/Tick SÓ quando NÃO ataca               → o golpe custa o BRUTO.
-// Em ambos: Tomar Fôlego (Speed 5) = +50% do máx. Defender/parado recupera +Vigor/Tick (igual).
+// Em ambos: Tomar Fôlego (Velocidade 5) = +50% do máx. Defender/parado recupera +Vigor/Tick (igual).
 // A ÚNICA diferença: os Ticks DO PRÓPRIO GOLPE recuperam (A) ou não (B).
 const COMP = [['leve', 15, 5], ['média', 24, 6], ['pesada', 38, 7]];
 
@@ -200,7 +200,7 @@ function uptimeSust(model, b, g, s) {
   return s / (s + kRest);
 }
 
-// ritmo com a política "ataca / Tomar Fôlego (Speed 5, +50%)"
+// ritmo com a política "ataca / Tomar Fôlego (Velocidade 5, +50%)"
 function ritmoM(model, b, g, s, janela = 300) {
   const max = pool(b.vig, b.res, b.vont);
   const step = model === 'A' ? strikeA : strikeB;
@@ -221,7 +221,7 @@ console.log('='.repeat(74));
 
 console.log('\n— G1. RAJADA do cheio (atacando direto, sem descanso): golpes até <25% → exausto —');
 for (const [cn, g, s] of COMP) {
-  console.log(`\n  arma ${cn} (bruto ${g}/Speed ${s})`);
+  console.log(`\n  arma ${cn} (bruto ${g}/Velocidade ${s})`);
   console.log('  ' + pad('build', 22) + padc('Modelo A', 16) + padc('Modelo B', 16));
   for (const b of BUILDS) {
     const a = rajadaM('A', b, g, s), bb = rajadaM('B', b, g, s);
@@ -232,7 +232,7 @@ for (const [cn, g, s] of COMP) {
 
 console.log('\n— G2. UPTIME SUSTENTÁVEL (% do tempo atacando, descansando o mínimo entre golpes) —');
 for (const [cn, g, s] of COMP) {
-  console.log(`\n  arma ${cn} (bruto ${g}/Speed ${s})`);
+  console.log(`\n  arma ${cn} (bruto ${g}/Velocidade ${s})`);
   console.log('  ' + pad('build', 22) + padc('Modelo A', 12) + padc('Modelo B', 12));
   for (const b of BUILDS) {
     const ua = uptimeSust('A', b, g, s), ub = uptimeSust('B', b, g, s);
@@ -242,7 +242,7 @@ for (const [cn, g, s] of COMP) {
 
 console.log('\n— G3. RITMO real (política atacar / Tomar Fôlego +50%): rajada média e % atacando —');
 for (const [cn, g, s] of COMP) {
-  console.log(`\n  arma ${cn} (bruto ${g}/Speed ${s})`);
+  console.log(`\n  arma ${cn} (bruto ${g}/Velocidade ${s})`);
   console.log('  ' + pad('build', 22) + padc('A: rajada/uptime', 20) + padc('B: rajada/uptime', 20));
   for (const b of BUILDS) {
     const ra = ritmoM('A', b, g, s), rb = ritmoM('B', b, g, s);
@@ -269,7 +269,7 @@ console.log('='.repeat(74));
 
 console.log('\n— H1. UPTIME SUSTENTÁVEL por arma e build —');
 for (const arma of ['leve', 'média', 'pesada']) {
-  console.log(`\n  arma ${arma} (Speed ${SPEED[arma]}; custo A/Bpuro=${VARIANTES['A (ref.)'].custo[arma]}, Bsuav=${VARIANTES['B-suaviz.'].custo[arma]})`);
+  console.log(`\n  arma ${arma} (Velocidade ${SPEED[arma]}; custo A/Bpuro=${VARIANTES['A (ref.)'].custo[arma]}, Bsuav=${VARIANTES['B-suaviz.'].custo[arma]})`);
   console.log('  ' + pad('build', 22) + Object.keys(VARIANTES).map((v) => padc(v, 12)).join(''));
   for (const b of BUILDS) {
     const cells = Object.values(VARIANTES).map((V) => padc((uptimeSust(V.model, b, V.custo[arma], SPEED[arma]) * 100).toFixed(0) + '%', 12));

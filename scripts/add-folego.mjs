@@ -1,6 +1,6 @@
 // add-folego.mjs — grava o custo BRUTO de Fôlego por golpe de cada arma em armas.json.
 // Modelo: você recupera +Vigor de Fôlego por Tick (contínuo); o golpe gasta este bruto,
-// então o LÍQUIDO = bruto − Vigor×Speed (golpe leve se paga / regenera; pesado drena).
+// então o LÍQUIDO = bruto − Vigor×Velocidade (golpe leve se paga / regenera; pesado drena).
 //   leve 15 · média/haste 24 · distância 20 · pesada 38 · arremesso 12 (dado<2) ou 20 · tag "pesada" +8.
 // uso: node scripts/add-folego.mjs
 import fs from 'node:fs';

@@ -3,13 +3,7 @@
 // mesma matemática de ficha-engine (renderCombate/renderDerived), sem tocar no DOM.
 // Serve ao rastreador de combate da mesa, que só tem a ficha crua do personagem.
 import { defesa, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA } from './calc';
-import ARMA_D from '../data/armas.json';
-import ARMADURA_D from '../data/armaduras.json';
-import ESCUDO_D from '../data/escudos.json';
-
-const ARMA: Record<string, any> = Object.fromEntries((ARMA_D as any[]).map((w) => [w.id, w]));
-const ARMADURA: Record<string, any> = Object.fromEntries((ARMADURA_D as any[]).map((a) => [a.id, a]));
-const ESCUDO: Record<string, any> = Object.fromEntries((ESCUDO_D as any[]).map((s) => [s.id, s]));
+import { ARMA, ESCUDO, armaDoSlot, escudoDoSlot, armadurasDe } from './equip';
 
 export interface Soak { impacto: number; corte: number; perfuracao: number; }
 export interface ResumoCombate {
@@ -21,9 +15,10 @@ export interface ResumoCombate {
   resistPerf: number; // Resistência a Perfuração (Nível) da armadura
 }
 
-const refArma = (slot: any) => { const r = slot?.ref || 'nada'; return r.startsWith('a:') ? ARMA[r.slice(2)] : null; };
-const refDef = (slot: any) => { const r = slot?.ref || 'nada'; if (r.startsWith('a:')) return ARMA[r.slice(2)]?.defesaArma || 0; if (r.startsWith('e:')) return ESCUDO[r.slice(2)]?.bloqCaC || 0; return 0; };
-const refPen = (slot: any) => { const r = slot?.ref || 'nada'; return r.startsWith('e:') ? (ESCUDO[r.slice(2)]?.penalidade || 0) : 0; };
+// As peças saem de equip.ts já com os ajustes que o jogador fez na ficha
+// (variação de qualidade), então a mesa e a ficha mostram o mesmo número.
+const refArma = (slot: any) => armaDoSlot(slot);
+const refPen = (slot: any) => escudoDoSlot(slot)?.penalidade || 0;
 
 /** Calcula Ataque, Dano e Defesa física de um PC a partir da ficha (S). */
 export function resumoCombatePC(S: any): ResumoCombate {
@@ -43,8 +38,7 @@ export function resumoCombatePC(S: any): ResumoCombate {
     const e = ESCUDO[S?.equip?.escudo || 'nenhum'] || { penalidade: 0 };
     escPen = e.penalidade || 0; inabilVazio = !S?.equip?.escudo || S.equip.escudo === 'nenhum';
   }
-  const pecas = (S?.equip?.armaduras || []).map((id: string) => ARMADURA[id]).filter(Boolean);
-  const armSt = empilharArmaduras(pecas);
+  const armSt = empilharArmaduras(armadurasDe(S));
   const armorPen = armSt.penalidade || 0;
   const penFisica = armorPen + escPen;
 

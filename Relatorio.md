@@ -162,7 +162,7 @@ O pedra-papel-tesoura funciona lindamente: contra placa, a pesada domina (abrido
 leve fica inútil, exatamente o desenho. 🟢
 
 **O furo:** a arma leve é a **pior em dano em toda situação**, e o que deveria compensar (ela
-age mais vezes, Speed 5 contra 7) só vira vantagem de verdade quando existe o que fazer com o
+age mais vezes, Velocidade 5 contra 7) só vira vantagem de verdade quando existe o que fazer com o
 tempo extra: encadear Técnicas, aplicar status, interromper, reposicionar. **No tier mortal
 (Centelha 0 a 1), sem Proezas, a arma leve não tem esse payoff e simplesmente é fraca.** Um
 jogador novato que pega uma adaga "porque combina com o personagem" vai reparar que bate menos e

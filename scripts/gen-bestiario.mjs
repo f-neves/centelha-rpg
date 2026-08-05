@@ -146,7 +146,7 @@ const NPCS = [
     attrs: { forca: 5, destreza: 2, vigor: 4 }, pericias: { 'armas-duas-maos': 3, esquiva: 1, resistencia: 3 }, integridade: 4, vontade: 5,
     armadura: 'couro',
     ataques: [{ nome: 'Martelo de guerra', atrib: 'forca', pericia: 'armas-duas-maos', dado: 3, mao: 2, tipo: 'impacto', acerto: 0, ticks: 7, notas: 'Impacto: a armadura quase não absorve (anti-placa)' }],
-    notas: 'Speed 7 (age pouco). Cerque-o e explore a lentidão.' },
+    notas: 'Velocidade 7 (age pouco). Cerque-o e explore a lentidão.' },
 
   { id: 'capitao-da-guarda', nome: 'Capitão da Guarda', tipo: 'elite', ameaca: 4, centelha: 1,
     conceito: 'comandante mortal', descricao: 'Líder competente; coordena subordinados e segura a linha.', tags: ['humano'],

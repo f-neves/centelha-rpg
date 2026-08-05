@@ -69,7 +69,7 @@ um segundo. O motor de Ticks é o mesmo do físico.
 Quem lê melhor a sala e tem mais desenvoltura toma a palavra primeiro (começa no Tick 0;
 os demais no Tick 1, com a mesma regra de defasagem do físico).
 
-**Speed das abordagens** (quantos Ticks até o próximo lance): leve **5**, média **6**,
+**Velocidade das abordagens** (quantos Ticks até o próximo lance): leve **5**, média **6**,
 pesada **7**. Uma alfinetada é rápida; montar um caso ou orquestrar um esquema é lento.
 
 ---
@@ -174,10 +174,10 @@ escudo cai). A **Posição ensaiada** é a cobertura preparada: só vale no cana
 ## 8. Armas sociais (abordagens)
 
 Cada abordagem é uma "arma": tem classe (define o dado e o Quase-Acerto), canal, perícia,
-**Dado**, **Peso** (o acerto), alcance (direta/indireta) e Speed. Perfumes e presentes
+**Dado**, **Peso** (o acerto), alcance (direta/indireta) e Velocidade. Perfumes e presentes
 entram como **itens/temperos** (fim da tabela).
 
-| Abordagem | Classe | Canal | Perícia | Dado | Peso | Alcance | Speed | Nota |
+| Abordagem | Classe | Canal | Perícia | Dado | Peso | Alcance | Velocidade | Nota |
 |---|---|---|---|---:|---:|---|---:|---|
 | **Elogio / lisonja** | leve | Coração | Lábia | 1 | +3 | direta | 5 | Rápido, quase sempre pega, mal arranha. Abre conversa. |
 | **Provocação / deboche** | leve | Brio | Manha | 1 | +2 | direta | 5 | Tag **Finta**: −3 na Defesa Social do alvo no seu próximo golpe. |
@@ -261,7 +261,7 @@ ou ao ataque:
 
 A Firmeza volta rápido, porque abalo social não é ferida de corpo:
 
-- **Recompor-se** (ação Speed 5, você **não ataca** nesse embate, só se defende e
+- **Recompor-se** (ação Velocidade 5, você **não ataca** nesse embate, só se defende e
   respira): recupera **+Compostura × 2** de Firmeza e pode trocar de armadura/postura.
   É o "Tomar Fôlego" social.
 - **Só defendendo** (você passa o lance sem pressionar, apenas aparando): recupera
@@ -369,7 +369,7 @@ Iselda usa **Amigos do alvo** (arma de cerco, indireta, pesada): mobiliza a irm�
 velho mestre-de-armas de Ruvic para pressioná-lo no mesmo canal Brio. Pool de Liderança,
 **Penetração total**: ignora a armadura social **pessoal** de Ruvic (o orgulho não protege
 contra quem ele respeita). Dano de Brio agora só enfrenta a Absorção natural (Valor +
-Centelha), não os +8 de casta. Leva Ticks (Speed 7) para orquestrar, mas fura onde o
+Centelha), não os +8 de casta. Leva Ticks (Velocidade 7) para orquestrar, mas fura onde o
 ataque frontal batia em muralha. É o "cerco" do combate social: lento, indireto, decisivo.
 
 ---
@@ -462,7 +462,7 @@ comprado é alugado**: suborno e chantagem sobem rápido, mas caem quando o dinh
 - **Dano** = Dado + Margem + Influência (só direta) − Absorção do canal.
 - **Absorção do canal** = Virtude (Razão·Convicção / Coração·Temperança / Brio·Valor / Ganho·Compaixão) + Centelha×1 + armadura social.
 - **Recusar** = −1 Vontade anula um golpe. **Recompor-se** = +Compostura×2 de Firmeza.
-- **Iniciativa** = 1d6 + Perspicácia + Sociabilidade. **Speed**: leve 5 / média 6 / pesada 7.
+- **Iniciativa** = 1d6 + Perspicácia + Sociabilidade. **Velocidade**: leve 5 / média 6 / pesada 7.
 - **Abalo** por % de Firmeza (mesma tabela do físico). **QA** semeia dúvida.
 
 ---

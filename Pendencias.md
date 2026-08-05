@@ -78,7 +78,7 @@ Detalhe em `Trilhas_Feiticaria.md` §6. As seis Tradições já estão descritas
 
 Detalhe em `Proezas_revisao.md`.
 
-- [ ] **D1 · [FAZER] Fase 3 da migração.** Matar a **banda** de vez (Speed independente por nível,
+- [ ] **D1 · [FAZER] Fase 3 da migração.** Matar a **banda** de vez (Velocidade independente por nível,
   apagar o campo `banda` e tirar do schema) e **surfar o modificador da trilha na UI**, mostrando o
   valor ao lado da Técnica.
 - [ ] **D2 · [DECIDIR] Números por Técnica contra a régua.** O texto de cada Técnica ainda traz o
