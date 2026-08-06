@@ -22,6 +22,14 @@ export type ConfigSite = {
   fonteCorpo?: number;
   /** entrelinha do corpo */
   entrelinha?: number;
+  /** texto corrido justificado (com hifenização); no celular segue à esquerda */
+  justificar?: boolean;
+  /** margem lateral da área de conteúdo, em rem (só acima de 900px) */
+  margem?: number;
+  /** a coluna de texto fica centrada na página ou encostada à esquerda */
+  alinha?: 'centro' | 'esquerda';
+  /** estilo da barra de rolagem (janela e sidebar) */
+  barra?: 'nativa' | 'fina' | 'editorial' | 'dourada' | 'teal';
 };
 
 export const CONFIG_PADRAO: Required<Omit<ConfigSite, 'tema'>> = {
@@ -31,6 +39,10 @@ export const CONFIG_PADRAO: Required<Omit<ConfigSite, 'tema'>> = {
   largFicha: 60,
   fonteCorpo: 18.9,
   entrelinha: 1.62,
+  justificar: false,
+  margem: 3,
+  alinha: 'centro',
+  barra: 'nativa',
 };
 
 export const CONFIG_KEY = 'centelha:config';
@@ -60,9 +72,19 @@ export function aplicarConfig(cfg: ConfigSite) {
   põe('--cfg-larg-ficha', cfg.largFicha === 0 ? '200rem' : cfg.largFicha ? cfg.largFicha + 'rem' : null);
   põe('--fs-corpo', cfg.fonteCorpo ? (cfg.fonteCorpo / 16) + 'rem' : null);
   põe('--cfg-entrelinha', cfg.entrelinha ? String(cfg.entrelinha) : null);
+  põe('--cfg-margem', cfg.margem == null ? null : cfg.margem + 'rem');
 
   if (cfg.colunas === 2) de.dataset.colunas = '2';
   else delete de.dataset.colunas;
+
+  if (cfg.justificar) de.dataset.justif = '1';
+  else delete de.dataset.justif;
+
+  if (cfg.alinha === 'esquerda') de.dataset.alinha = 'esq';
+  else delete de.dataset.alinha;
+
+  if (cfg.barra && cfg.barra !== 'nativa') de.dataset.barra = cfg.barra;
+  else delete de.dataset.barra;
 
   if (cfg.tema) {
     de.dataset.theme = cfg.tema;

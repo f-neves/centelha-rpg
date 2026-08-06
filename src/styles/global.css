@@ -197,6 +197,25 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 .prose { max-width: var(--cfg-larg-texto, 36rem); margin-inline: auto; }
 .wide { max-width: 60rem; margin-inline: auto; }
 
+/* ---------- margem, alinhamento e justificação (em /configuracoes) ----------
+   A margem lateral só vale no desktop: no celular o .content tem 1rem fixo, que é o
+   mínimo para o texto não encostar na moldura da tela. */
+@media (min-width: 901px) {
+  .content { padding-inline: var(--cfg-margem, clamp(1rem, 4vw, 3rem)); }
+}
+/* coluna encostada à esquerda em vez de centrada na página */
+html[data-alinha='esq'] .prose { margin-inline: 0 auto; }
+@media (min-width: 1100px) {
+  /* centrar a tabela sobre uma coluna que não está no centro deixaria a tabela flutuando
+     fora do eixo do texto: com a coluna à esquerda, a tabela cresce para a direita. */
+  html[data-alinha='esq'] .prose > .table-wrap,
+  html[data-alinha='esq'] .prose > .cat-grid { margin-inline: 0; }
+}
+/* justificação: só com hifenização, senão a coluna estreita abre rios de espaço entre
+   palavras. O lang="pt-BR" do <html> é o que permite o hífen correto em português. */
+html[data-justif='1'] .prose p,
+html[data-justif='1'] .prose li { text-align: justify; hyphens: auto; }
+
 /* Tabelas e catálogos podem exceder a medida do texto e ficar centralizados sobre ela, como
    num livro: a coluna de leitura continua estreita, o material tabular usa a página.
    Só acima de 1100px, onde há gutter de sobra; a conta garante que nunca passe do conteúdo. */
@@ -228,6 +247,60 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 /* largura da Ficha de Personagem (em /configuracoes): a Ficha e o /personagem são os
    únicos artigos que carregam a barra de abas, daí o :has() */
 article.wide:has(.ftab-bar) { max-width: var(--cfg-larg-ficha, 60rem); }
+
+/* ---------- barra de rolagem (opcional, em /configuracoes) ----------
+   Vale para a janela, para a sidebar e para qualquer contêiner que role (tabelas largas,
+   listas da área logada). Sem escolha, fica a barra nativa do sistema.
+
+   Duas gramáticas porque os navegadores não concordam: o Chromium desenha pelos
+   pseudo-elementos ::-webkit-scrollbar, o Firefox pelas propriedades padrão
+   scrollbar-width/scrollbar-color. E o Chromium DESLIGA os pseudo-elementos se
+   scrollbar-color estiver presente, por isso o @supports isola um do outro.
+   As cores saem todas dos tokens do tema, então cada barra acompanha Clássico,
+   Escuro e Legível sem regra própria. */
+html[data-barra] {
+  --sb-larg: 10px;
+  --sb-trilha: transparent;
+  --sb-polegar: var(--rule);
+  --sb-polegar-hov: var(--accent-soft);
+  --sb-raio: 99px;
+  --sb-folga: 3px;   /* borda transparente: afina o polegar sem afinar a área de clique */
+  --sb-filete: none;
+  --sb-ff: auto;     /* scrollbar-width do Firefox */
+}
+html[data-barra='fina'] { --sb-ff: thin; }
+html[data-barra='editorial'] {
+  --sb-larg: 14px; --sb-trilha: var(--bg); --sb-polegar: var(--accent-strong);
+  --sb-polegar-hov: var(--accent-soft); --sb-folga: 4px; --sb-filete: inset 1px 0 0 var(--rule);
+}
+html[data-barra='dourada'] {
+  --sb-larg: 13px; --sb-trilha: var(--bg); --sb-polegar: var(--gold); --sb-polegar-hov: var(--accent-soft);
+  --sb-raio: 2px; --sb-filete: inset 1px 0 0 var(--rule), inset -1px 0 0 var(--rule);
+}
+html[data-barra='teal'] {
+  --sb-larg: 12px; --sb-polegar: var(--accent-soft); --sb-polegar-hov: var(--accent); --sb-folga: 2px;
+}
+
+html[data-barra]::-webkit-scrollbar,
+html[data-barra] ::-webkit-scrollbar { width: var(--sb-larg); height: var(--sb-larg); }
+html[data-barra]::-webkit-scrollbar-track,
+html[data-barra] ::-webkit-scrollbar-track { background: var(--sb-trilha); box-shadow: var(--sb-filete); }
+html[data-barra]::-webkit-scrollbar-thumb,
+html[data-barra] ::-webkit-scrollbar-thumb {
+  background: var(--sb-polegar); border-radius: var(--sb-raio);
+  border: var(--sb-folga) solid transparent; background-clip: content-box;
+}
+html[data-barra]::-webkit-scrollbar-thumb:hover,
+html[data-barra] ::-webkit-scrollbar-thumb:hover { background: var(--sb-polegar-hov); background-clip: content-box; }
+html[data-barra]::-webkit-scrollbar-corner,
+html[data-barra] ::-webkit-scrollbar-corner { background: var(--sb-trilha); }
+
+@supports not selector(::-webkit-scrollbar) {
+  html[data-barra], html[data-barra] * {
+    scrollbar-width: var(--sb-ff);
+    scrollbar-color: var(--sb-polegar) var(--sb-trilha);
+  }
+}
 
 /* topbar (mobile) */
 .topbar { display: none; }
@@ -416,6 +489,11 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
   .content { padding: 1rem 1rem 5.5rem; }
   .prose { max-width: 100%; }
   .prose p { text-align: left; }
+  /* a justificação escolhida em /configuracoes vale só no desktop: numa coluna de celular
+     ela abre buracos entre as palavras. Precisa repetir o seletor porque o do modo
+     justificado tem especificidade maior que a regra acima. */
+  html[data-justif='1'] .prose p,
+  html[data-justif='1'] .prose li { text-align: left; hyphens: manual; }
 }
 
 /* ---------- alvos de toque (mobile) ----------

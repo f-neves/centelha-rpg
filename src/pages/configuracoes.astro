@@ -30,6 +30,38 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <section class="cfg-sec">
+    <h2>Alinhamento da coluna</h2>
+    <p class="muted">Onde a coluna de leitura se apoia dentro da página. Centrada é o padrão de livro; encostada à esquerda deixa a mancha sempre à mesma distância do menu, o que ajuda quem lê em tela larga e não quer mover os olhos de um lado para o outro ao trocar de página.</p>
+    <div class="btn-row" data-presets="alinha" data-tipo="texto">
+      <button class="btn" data-v="centro">Centralizada</button>
+      <button class="btn" data-v="esquerda">À esquerda</button>
+    </div>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Margem lateral</h2>
+    <p class="muted">O respiro entre a coluna e as bordas da área de conteúdo. No celular fica sempre em 1rem, que é o mínimo para o texto não encostar na moldura da tela.</p>
+    <div class="btn-row" data-presets="margem">
+      <button class="btn" data-v="0">Sem margem</button>
+      <button class="btn" data-v="3">Padrão <small>3rem</small></button>
+      <button class="btn" data-v="6">Ampla <small>6rem</small></button>
+    </div>
+    <label class="cfg-range">Ajuste fino
+      <input type="range" data-cfg="margem" min="0" max="10" step="0.5" />
+      <output data-out="margem"></output>
+    </label>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Justificação</h2>
+    <p class="muted">Texto justificado alinha as duas laterais, com hifenização em português para não abrir buracos entre as palavras. Vale só no desktop: numa coluna de celular a justificação estraga o espacejamento.</p>
+    <div class="btn-row" data-presets="justificar" data-tipo="texto">
+      <button class="btn" data-v="false">Alinhado à esquerda</button>
+      <button class="btn" data-v="true">Justificado</button>
+    </div>
+  </section>
+
+  <section class="cfg-sec">
     <h2>Colunas de texto</h2>
     <p class="muted">Duas colunas lado a lado, como a página de um livro. Só em telas largas (acima de 1100px); no celular é sempre uma. Tabelas, callouts e fórmulas atravessam as duas.</p>
     <div class="btn-row" data-presets="colunas">
@@ -100,6 +132,24 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <section class="cfg-sec">
+    <h2>Barra de rolagem</h2>
+    <p class="muted">Vale para a barra da janela e para a do menu lateral. As cores saem da paleta do tema em uso, então cada estilo acompanha Clássico, Escuro e Legível. Role a caixa abaixo para ver a escolha.</p>
+    <div class="btn-row" data-presets="barra" data-tipo="texto">
+      <button class="btn" data-v="nativa">Nativa <small>do sistema</small></button>
+      <button class="btn" data-v="fina">Fina <small>discreta</small></button>
+      <button class="btn" data-v="editorial">Editorial <small>trilha marcada</small></button>
+      <button class="btn" data-v="dourada">Dourada <small>lombada</small></button>
+      <button class="btn" data-v="teal">Teal <small>cor do site</small></button>
+    </div>
+    <div class="cfg-rolagem">
+      <p>Um ataque compara o total de dados do agressor contra a Defesa apropriada: Física, Social ou Mental, escolhida pelo <em>como</em> da ação.</p>
+      <p>A Centelha entra em toda Defesa com peso um. Não há multiplicador oculto em lugar nenhum da conta.</p>
+      <p>Projéteis rápidos só admitem Esquiva, ou o uso de um escudo hábil que cubra ao menos trinta por cento do corpo.</p>
+      <p>Armas de duas mãos concedem um único ataque. A empunhadura dupla concede um por mão.</p>
+    </div>
+  </section>
+
+  <section class="cfg-sec">
     <h2>Guardar &amp; restaurar</h2>
     <p id="cfg-conta" class="muted"></p>
     <div class="btn-row">
@@ -118,8 +168,11 @@ import Base from '../layouts/Base.astro';
   const conta = document.getElementById('cfg-conta')!;
   const debounce = (fn: () => void, ms: number) => { let t: any; return () => { clearTimeout(t); t = setTimeout(fn, ms); }; };
 
-  const efetivo = (k: keyof typeof CONFIG_PADRAO): number =>
-    (cfg[k] as number | undefined) ?? CONFIG_PADRAO[k];
+  const efetivo = (k: keyof typeof CONFIG_PADRAO): any => cfg[k] ?? CONFIG_PADRAO[k];
+
+  // nem toda preferência é número: alinhamento e barra são palavras, justificar é sim/não
+  const leBotao = (k: string, raw: string): any =>
+    k === 'justificar' ? raw === 'true' : k === 'alinha' || k === 'barra' ? raw : Number(raw);
 
   // caracteres por linha estimados: medido no site, a EB Garamond rende ~0,423×corpo por
   // caractere (36rem ÷ 18,9px deram 72 cpl reais)
@@ -132,7 +185,9 @@ import Base from '../layouts/Base.astro';
       const k = g.dataset.presets as keyof ConfigSite;
       const v = k === 'tema' ? undefined : efetivo(k as any);
       g.querySelectorAll<HTMLButtonElement>('button[data-v]').forEach((b) => {
-        b.classList.toggle('primary', Number(b.dataset.v) === v);
+        const aceso = leBotao(k, b.dataset.v!) === v;
+        b.classList.toggle('primary', aceso);
+        b.setAttribute('aria-pressed', String(aceso));
       });
     });
     // sliders e saídas
@@ -146,6 +201,7 @@ import Base from '../layouts/Base.astro';
       largFicha: (v) => (efetivo('largFicha') === 0 ? 'tela toda' : `${v}rem`),
       fonteCorpo: (v) => `${String(v).replace('.', ',')}px`,
       entrelinha: (v) => String(v).replace('.', ','),
+      margem: (v) => (v === 0 ? 'sem margem' : `${String(v).replace('.', ',')}rem`),
     };
     document.querySelectorAll<HTMLElement>('output[data-out]').forEach((o) => {
       const k = o.dataset.out as keyof typeof CONFIG_PADRAO;
@@ -176,7 +232,7 @@ import Base from '../layouts/Base.astro';
   document.querySelectorAll<HTMLElement>('[data-presets]').forEach((g) => {
     const k = g.dataset.presets as keyof ConfigSite;
     g.querySelectorAll<HTMLButtonElement>('button[data-v]').forEach((b) =>
-      b.addEventListener('click', () => muda({ [k]: Number(b.dataset.v) } as ConfigSite)));
+      b.addEventListener('click', () => muda({ [k]: leBotao(k, b.dataset.v!) } as ConfigSite)));
   });
   // sliders
   document.querySelectorAll<HTMLInputElement>('input[data-cfg]').forEach((i) =>
@@ -216,4 +272,9 @@ import Base from '../layouts/Base.astro';
   .cfg-range { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .8rem; margin-top: .6rem; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); }
   .cfg-range input[type='range'] { flex: 1 1 12rem; max-width: 22rem; min-width: 0; accent-color: var(--accent); min-height: 44px; }
   .cfg-range output { font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); }
+  /* caixa de prova da barra de rolagem: overflow-y fixo em scroll para a barra existir
+     mesmo antes de o leitor rolar, senão não há o que comparar entre os estilos */
+  .cfg-rolagem { height: 11rem; overflow-y: scroll; margin-top: .9rem; padding: .7rem 1rem;
+    background: var(--bg-soft); border: 1.5px solid var(--rule); border-radius: var(--r-md); }
+  .cfg-rolagem p { margin: 0 0 .7em; }
 </style>

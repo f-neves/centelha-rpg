@@ -80,7 +80,11 @@ if (partes.length) crumbs.push({ label: title });
         else if (c.largFicha) st.setProperty('--cfg-larg-ficha', c.largFicha + 'rem');
         if (c.fonteCorpo) st.setProperty('--fs-corpo', (c.fonteCorpo / 16) + 'rem');
         if (c.entrelinha) st.setProperty('--cfg-entrelinha', String(c.entrelinha));
+        if (c.margem != null) st.setProperty('--cfg-margem', c.margem + 'rem');
         if (c.colunas === 2) de.dataset.colunas = '2';
+        if (c.justificar) de.dataset.justif = '1';
+        if (c.alinha === 'esquerda') de.dataset.alinha = 'esq';
+        if (c.barra && c.barra !== 'nativa') de.dataset.barra = c.barra;
       } catch (e) { document.documentElement.dataset.theme = document.documentElement.dataset.theme || 'classico'; }
     })();
   </script>
