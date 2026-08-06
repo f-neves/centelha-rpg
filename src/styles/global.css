@@ -18,7 +18,11 @@
   --accent-strong: #0B3B47; /* petróleo escuro */
   --accent-soft: #2E8C86;   /* teal médio */
   --link: var(--accent-strong); /* hiperlink: igual ao accent-strong */
-  --on-accent: #f6efda;
+  /* Texto sobre --accent (teal vivo). O creme #f6efda rendia 2,1:1 aqui; o petróleo da
+     própria paleta sobe para ~4,8:1 sem introduzir cor nova. */
+  --on-accent: #0B3B47;
+  /* Texto sobre --accent-strong (petróleo escuro), que é o par oposto: aí o creme é o certo. */
+  --on-accent-strong: #f6efda;
   --rule: #cdbd92;
   --gold: #b08d3a;
   --perigo: #a02017;      /* texto/borda de acao destrutiva */
@@ -45,6 +49,7 @@
   --accent-soft: #4fb3ac;   /* teal médio */
   --link: var(--accent-strong); /* hiperlink: igual ao accent-strong */
   --on-accent: #11151f;
+  --on-accent-strong: #11151f; /* --accent-strong aqui é teal pálido: pede texto escuro também */
   --rule: #39414f;
   --gold: #d9b85f;
   /* o vermelho do tema claro rendia 2,4:1 sobre o painel escuro, justamente nos botoes
@@ -73,6 +78,7 @@
   --accent-soft: #14756d;   /* teal médio-escuro */
   --link: var(--accent-strong); /* hiperlink: igual ao accent-strong */
   --on-accent: #ffffff;
+  --on-accent-strong: #ffffff;
   --rule: #b3b3b3;
   --gold: #7a5e16;
   --perigo: #8c1b13;
@@ -191,20 +197,27 @@ nav.toc a.subcap[aria-current='page'] { color: var(--on-accent); }
   padding: .6rem .8rem; margin: 1em 0; font-size: .98rem; }
 
 table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .98rem; }
-thead th { background: var(--accent-strong); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: center; vertical-align: middle; padding: .5rem .6rem; }
-thead th a, thead th a:hover { color: var(--on-accent); text-decoration: underline; }
+thead th { background: var(--accent-strong); color: var(--on-accent-strong); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: center; vertical-align: middle; padding: .5rem .6rem; }
+thead th a, thead th a:hover { color: var(--on-accent-strong); text-decoration: underline; }
 
 /* Superfícies pintadas de accent: qualquer link, referência ou âncora dentro delas herda a cor
    de contraste. Sem isto, .ref mantinha `color: var(--accent)` e ficava teal sobre teal (1,0:1,
    literalmente invisível) nos cabeçalhos de tabela, na barra de XP e nas barras de seção. */
-thead th .ref, thead th .anchor,
-tbody th .ref, tbody th .anchor,
+/* fundo --accent (teal vivo) */
 .barh a, .barh .ref, .barh .anchor,
 .xpbar a, .xpbar .ref, .xpbar .anchor {
   color: var(--on-accent);
   text-decoration-color: color-mix(in srgb, var(--on-accent) 55%, transparent);
 }
-thead th .ref:hover, tbody th .ref:hover, .barh .ref:hover, .xpbar .ref:hover { color: var(--on-accent); opacity: .82; }
+/* fundo --accent-strong (petróleo): o par de contraste é outro.
+   Só thead th: o tbody th não tem fundo pintado, e aplicar a cor de contraste ali
+   deixava o link creme sobre pergaminho (1,1:1). */
+thead th .ref, thead th .anchor {
+  color: var(--on-accent-strong);
+  text-decoration-color: color-mix(in srgb, var(--on-accent-strong) 55%, transparent);
+}
+.barh .ref:hover, .xpbar .ref:hover { color: var(--on-accent); opacity: .82; }
+thead th .ref:hover { color: var(--on-accent-strong); opacity: .82; }
 tbody td, tbody th { padding: .42rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: middle; text-align: center; }
 td.c, th.c { text-align: center; }
 tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong); font-size: .9rem; }
