@@ -51,8 +51,8 @@ const BLOCOS: [string, string, any[]][] = [
     <h2 class="ef-grupo-tit">{titulo}</h2>
     <p class="muted ef-grupo-sub">{chamada}</p>
   {lista.map((arte: any) => (
-    <div class="ef-bloco" id={'ef-' + arte.id}>
-      <h3 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h3>
+    <details class="ef-bloco" id={'ef-' + arte.id}>
+      <summary class="ef-bloco-sum"><h3 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h3></summary>
       <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(min(var(--card-min-lg),100%),1fr))">
         {efeitosPorArte(arte.id).map((e: any) => (
           <div class="panel efeito" id={'ef-' + arte.id + '-' + e.id}>
@@ -81,7 +81,7 @@ const BLOCOS: [string, string, any[]][] = [
           </div>
         ))}
       </div>
-    </div>
+    </details>
   ))}
   </section>
   ))}
@@ -112,14 +112,28 @@ const BLOCOS: [string, string, any[]][] = [
       for (const p of pilulas) p.classList.toggle('fora', !p.classList.contains(cat));
     };
     for (const a of abas) a.addEventListener('click', () => trocar(a.dataset.aba!));
+
+    // Blocos de Arte colapsaveis: fechados no celular (a página tinha 39 telas de
+    // rolagem), abertos no desktop. Pílula ou âncora abrem o bloco antes de rolar.
+    const blocos = Array.from(document.querySelectorAll<HTMLDetailsElement>('details.ef-bloco'));
+    const abertoPadrao = matchMedia('(min-width: 901px)').matches;
+    blocos.forEach((b) => { b.open = abertoPadrao; });
+    const abrirBloco = (el: HTMLElement | null) => {
+      const b = el?.closest<HTMLDetailsElement>('details.ef-bloco');
+      if (b) b.open = true;
+    };
+
     // clicar numa Arte do outro grupo troca de aba antes de pular para ela
-    for (const p of pilulas) p.addEventListener('click', () => trocar(p.classList.contains('universal') ? 'universal' : 'elemental'));
+    for (const p of pilulas) p.addEventListener('click', () => {
+      trocar(p.classList.contains('universal') ? 'universal' : 'elemental');
+      try { abrirBloco(document.querySelector<HTMLElement>(p.hash)); } catch {}
+    });
     // link vindo de fora com âncora de um Efeito escondido também abre a aba certa
     const abrirPelaAncora = () => {
       let alvo: HTMLElement | null = null;
       try { alvo = location.hash ? document.querySelector<HTMLElement>(location.hash) : null; } catch { return; }
       const grupo = alvo?.closest<HTMLElement>('.ef-grupo');
-      if (grupo?.dataset.cat) { trocar(grupo.dataset.cat); alvo!.scrollIntoView({ block: 'start' }); }
+      if (grupo?.dataset.cat) { trocar(grupo.dataset.cat); abrirBloco(alvo); alvo!.scrollIntoView({ block: 'start' }); }
     };
     trocar('elemental');
     abrirPelaAncora();
@@ -134,8 +148,12 @@ const BLOCOS: [string, string, any[]][] = [
   .ef-nivel { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%;
     background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: var(--fs-rotulo); flex: none; }
   .ef-bloco { margin-top: 1.4rem; }
+  .ef-bloco-sum { cursor: pointer; list-style: none; user-select: none; min-height: 44px; display: flex; align-items: center; }
+  .ef-bloco-sum::-webkit-details-marker { display: none; }
+  .ef-bloco-sum::before { content: '▸'; color: var(--accent-texto); font-size: var(--fs-rotulo); margin-right: .45rem; transition: transform .12s; }
+  .ef-bloco[open] > .ef-bloco-sum::before { transform: rotate(90deg); }
   .ef-bloco-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-corpo); margin: 0 0 .5rem;
-    border-bottom: 1px solid var(--rule); padding-bottom: .2rem; }
+    border-bottom: 1px solid var(--rule); padding-bottom: .2rem; flex: 1; }
   .ef-bloco-tit .muted { font-size: var(--fs-micro); font-weight: normal; }
   .ef-sabor { color: var(--ink-soft); margin: 0; }
   .ef-txt { margin: 0; }

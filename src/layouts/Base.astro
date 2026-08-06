@@ -213,6 +213,21 @@ if (partes.length) crumbs.push({ label: title });
     window.addEventListener('hashchange', flash);
     setTimeout(flash, 120);
 
+    // sombra de rolagem nos contêineres que rolam na horizontal (tabelas largas, árvore):
+    // sem ela, no celular não há nenhuma pista de que existe conteúdo à direita
+    document.querySelectorAll<HTMLElement>('.table-wrap, .tab-wrap, .tabela-wrap, .arv-wrap').forEach((el) => {
+      const upd = () => {
+        const max = el.scrollWidth - el.clientWidth;
+        el.classList.toggle('tem-rolagem', max > 2);
+        el.style.setProperty('--sx', el.scrollLeft + 'px');
+        el.style.setProperty('--s-esq', el.scrollLeft > 2 ? '1' : '0');
+        el.style.setProperty('--s-dir', el.scrollLeft < max - 2 ? '1' : '0');
+      };
+      el.addEventListener('scroll', upd, { passive: true });
+      new ResizeObserver(upd).observe(el);
+      upd();
+    });
+
     // estado de login no menu (carrega o cliente Supabase sob demanda p/ não pesar as páginas)
     (async () => {
       const link = document.getElementById('auth-link');

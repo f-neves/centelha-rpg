@@ -4,6 +4,14 @@ import { url } from '../lib/site';
 import { loadData, custoTagTecnica, modProeza } from '../lib/data';
 const d = await loadData();
 const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeCompare(d.C[b.caminho.id].nome) || a.nivel - b.nivel);
+// Agrupadas por Proeza em <details>: a lista chapada media 72.647px de altura no celular
+// (86 telas de rolagem). Fechados, os 50 grupos cabem em 3 ou 4 telas.
+const grupos: { cam: any; itens: typeof techs }[] = [];
+for (const t of techs) {
+  const ult = grupos[grupos.length - 1];
+  if (!ult || ult.cam.id !== t.caminho.id) grupos.push({ cam: d.C[t.caminho.id], itens: [t] });
+  else ult.itens.push(t);
+}
 ---
 <Base title="Técnicas" largura="wide" descricao="Todas as Técnicas das Proezas, com filtros por atributo, caminho, nível, tipo e custo.">
   <h1>Técnicas</h1>
@@ -24,17 +32,25 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
   </div>
 
   <div class="tec-list">
-    {techs.map((t) => (
-      <a class="tec-row" href={url(`caminhos/${t.caminho.id}`) + '#' + t.id}
-         data-atributo={t.atributo.id} data-caminho={t.caminho.id} data-nivel={t.nivel} data-tipo={t.tipo}
-         data-nome={t.nome.toLowerCase()} data-texto={t.texto.toLowerCase()}>
-        <span class="tr-nome cinzel">{t.nome}</span>
-        <span class="tr-cam muted">{d.C[t.caminho.id].nome}</span>
-        <span class="badge banda">N{t.nivel}</span>
-        <span class={`badge ${t.tipo}`}>{custoTagTecnica(t)}</span>
-        {(() => { const m = modProeza(t.efeito, t.nivel); return m ? <span class="badge mod" title={m.t}>{m.v}</span> : null; })()}
-        <span class="tr-eff" set:html={t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')} />
-      </a>
+    {grupos.map((g) => (
+      <details class="tec-grupo" data-grupo={g.cam.id}>
+        <summary class="tg-sum">
+          <span class="cinzel tg-nome">{g.cam.nome}</span>
+          <span class="tg-count muted">{g.itens.length} Técnicas</span>
+        </summary>
+        {g.itens.map((t) => (
+          <a class="tec-row" href={url(`caminhos/${t.caminho.id}`) + '#' + t.id}
+             data-atributo={t.atributo.id} data-caminho={t.caminho.id} data-nivel={t.nivel} data-tipo={t.tipo}
+             data-nome={t.nome.toLowerCase()} data-texto={t.texto.toLowerCase()}>
+            <span class="tr-nome cinzel">{t.nome}</span>
+            <span class="tr-cam muted">{d.C[t.caminho.id].nome}</span>
+            <span class="badge banda">N{t.nivel}</span>
+            <span class={`badge ${t.tipo}`}>{custoTagTecnica(t)}</span>
+            {(() => { const m = modProeza(t.efeito, t.nivel); return m ? <span class="badge mod" title={m.t}>{m.v}</span> : null; })()}
+            <span class="tr-eff" set:html={t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')} />
+          </a>
+        ))}
+      </details>
     ))}
   </div>
 </Base>
@@ -47,14 +63,35 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
   .filtros select { min-width: 9rem; font-size: var(--fs-aux); }
   .filtros fieldset { border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .3rem .6rem; }
   .filtros legend { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); padding: 0 .3rem; }
-  .chk { flex-direction: row !important; align-items: center; gap: .25rem; display: inline-flex; margin-right: .5rem; }
+  .chk { flex-direction: row !important; align-items: center; gap: .25rem; display: inline-flex !important; width: auto; margin-right: .5rem; }
+  /* o min-width de 9rem do .filtros input inflava o CHECKBOX para 144px, empurrando o
+     rótulo para a borda e empilhando um por linha */
+  .chk input { min-width: 0; width: auto; }
+  .filtros fieldset { display: flex; flex-wrap: wrap; align-items: center; }
   .tec-list { display: flex; flex-direction: column; }
-  .tec-row { display: grid; grid-template-columns: minmax(9rem, 1.2fr) minmax(7rem, 1fr) auto auto; gap: .5rem .7rem;
-    align-items: baseline; padding: .55rem .2rem; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; }
+  .tec-grupo { border-bottom: 1px solid var(--rule); }
+  .tg-sum { display: flex; align-items: center; gap: .7rem; min-height: 44px; padding: .3rem .2rem;
+    cursor: pointer; list-style: none; user-select: none; }
+  .tg-sum::-webkit-details-marker { display: none; }
+  .tg-sum::before { content: '▸'; color: var(--accent-texto); font-size: var(--fs-micro); transition: transform .12s; }
+  .tec-grupo[open] > .tg-sum::before { transform: rotate(90deg); }
+  .tg-sum:hover { background: var(--panel-2); }
+  .tg-nome { color: var(--accent-texto); font-size: var(--fs-aux); }
+  .tg-count { font-size: var(--fs-micro); margin-left: auto; }
+  .tec-row { display: grid; grid-template-columns: minmax(9rem, 1.2fr) auto auto; gap: .5rem .7rem;
+    align-items: baseline; padding: .55rem .2rem .55rem 1.2rem; border-top: 1px solid var(--rule); text-decoration: none; color: inherit; }
   .tec-row:hover { background: var(--panel-2); }
   .tr-nome { color: var(--accent-texto); }
+  /* o nome da Proeza saiu da linha: o grupo já o carrega no summary */
+  .tr-cam { display: none; }
   .tr-eff { grid-column: 1 / -1; font-size: var(--fs-rotulo); color: var(--ink-soft); }
-  @media (max-width: 640px) { .tec-row { grid-template-columns: 1fr auto; } .tr-cam { grid-column: 1; } }
+  /* flex com quebra: na grade rígida os badges ("5 Energia +1 Vontade") estouravam 14px
+     a linha nas telas estreitas */
+  @media (max-width: 640px) {
+    .tec-row { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; }
+    .tr-nome { flex: 1 1 100%; }
+    .tr-eff { flex: 1 1 100%; }
+  }
 </style>
 
 <script>
@@ -66,9 +103,17 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
   const sel = (s: string) => (document.querySelector(`[data-f="${s}"]`) as HTMLSelectElement)?.value;
   const checked = (s: string) => get(s).filter((c) => c.checked).map((c) => c.value);
 
+  // Grupos por Proeza: fechados no celular (a lista chapada tinha 86 telas), abertos no
+  // desktop. Com qualquer filtro ativo, o grupo com resultado abre sozinho, senão o
+  // resultado ficaria escondido atrás do summary.
+  const grupos = Array.from(document.querySelectorAll<HTMLDetailsElement>('.tec-grupo'));
+  const abertoPadrao = matchMedia('(min-width: 901px)').matches;
+  grupos.forEach((g) => { g.open = abertoPadrao; });
+
   function apply() {
     const text = q(), atr = sel('atributo'), cam = sel('caminho');
     const niveis = checked('nivel'), tipos = checked('tipo');
+    const filtrando = !!(text || atr || cam || niveis.length || tipos.length);
     let n = 0;
     for (const r of rows) {
       const ok =
@@ -81,6 +126,14 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
       if (ok) n++;
     }
     countEl.textContent = `${n} Técnica${n === 1 ? '' : 's'}`;
+    for (const g of grupos) {
+      const rs = Array.from(g.querySelectorAll<HTMLElement>('.tec-row'));
+      const vis = rs.filter((r) => r.style.display !== 'none').length;
+      g.hidden = vis === 0;
+      const c = g.querySelector<HTMLElement>('.tg-count');
+      if (c) c.textContent = vis < rs.length ? `${vis} de ${rs.length}` : `${rs.length} Técnicas`;
+      g.open = filtrando ? true : abertoPadrao;
+    }
   }
   // caminho restringe ao atributo escolhido
   const camSel = document.querySelector<HTMLSelectElement>('[data-f="caminho"]');

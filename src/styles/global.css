@@ -279,6 +279,20 @@ tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong);
 tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, transparent); }
 .table-wrap { overflow-x: auto; }
 
+/* Sombra de rolagem: numa tela de 390px o leitor via metade da tabela sem nenhuma pista
+   de que havia mais à direita (/mestre esconde 614px, /equipamentos 567px). O JS do Base
+   marca .tem-rolagem e mantém --sx sincronizado com o scrollLeft, porque um ::after
+   absoluto dentro do contêiner rolaria junto com o conteúdo. */
+.table-wrap, .tab-wrap, .tabela-wrap, .arv-wrap { position: relative; }
+.tem-rolagem::before, .tem-rolagem::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 16px; pointer-events: none; z-index: 3;
+  transition: opacity .12s;
+}
+.tem-rolagem::before { left: var(--sx, 0px); opacity: var(--s-esq, 0);
+  background: linear-gradient(90deg, var(--shadow), transparent); }
+.tem-rolagem::after { left: calc(var(--sx, 0px) + 100% - 16px); opacity: var(--s-dir, 0);
+  background: linear-gradient(270deg, var(--shadow), transparent); }
+
 /* catálogos lado a lado: duas colunas de tabelas que empilham no mobile */
 .cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.6rem; align-items: start; }
 .cat-grid > * { min-width: 0; }
