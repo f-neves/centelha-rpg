@@ -262,9 +262,25 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
   .besta-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1.15rem; }
 
+  /* Três colunas em tela larga. O que travava em duas não era a grade: era o artigo,
+     preso em 60rem, que não crescia nem a 2560px. Acima de 1400px o painel de filtros e
+     a lista saem dessa medida (o mesmo recurso das tabelas de capítulo) e a grade fixa
+     em três. O min() garante que nunca passem da área de conteúdo, com ou sem o menu
+     recolhido; o teto de 100rem impede que num monitor muito largo o card vire um
+     retângulo grande demais para a ilustração 4:3. */
+  @media (min-width: 1400px) {
+    .filtros, .besta-list {
+      --larg-bestia: min(100rem, calc(100vw - 23rem));
+      width: var(--larg-bestia);
+      margin-inline: calc((100% - var(--larg-bestia)) / 2);
+    }
+    .besta-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
   /* --- Card como entrada de bestiário --- */
   .besta {
     display: flex; flex-direction: column;
+    container-type: inline-size;  /* o card responde ao próprio tamanho (ver .atr-full) */
     border: 1px solid var(--panel-border); border-radius: var(--r-lg); background: var(--panel);
     overflow: hidden; scroll-margin-top: 4rem;
     box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 8%, transparent);
@@ -327,8 +343,11 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .badge.clima { background: color-mix(in srgb, #8a5bbf 24%, var(--panel-2)); color: var(--ink); border-color: color-mix(in srgb, #8a5bbf 44%, var(--panel-border)); }
   .badge.sem-img { background: color-mix(in srgb, #b5613a 22%, var(--panel-2)); color: var(--ink); border-color: color-mix(in srgb, #b5613a 44%, var(--panel-border)); }
 
-  .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr)); gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
-  .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
+  /* 5,2rem é o piso: o rótulo mais longo ("Absorção") mede 79px, e com 4,4rem a coluna
+     fechava em 72px — o rótulo vazava dos dois lados e encostava no vizinho, saindo
+     "ABSORÇÃOINICIATIVA". Com este mínimo a grade prefere menos colunas a espremê-las. */
+  .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(5.2rem, 1fr)); gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
+  .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; min-width: 0; }
   .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; }
   .besta-stats dd { margin: 0; font-size: var(--fs-aux); font-variant-numeric: tabular-nums; font-weight: 600; }
 
@@ -342,8 +361,10 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .atr-ab { text-transform: uppercase; letter-spacing: .02em; }
   .atr-full { display: none; font-size: var(--fs-micro); letter-spacing: 0; }
   .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
-  /* nome por extenso em telas maiores */
-  @media (min-width: 720px) {
+  /* Nome por extenso quando o CARD comporta, não quando a janela comporta: com três
+     colunas o card encolhe para ~332px numa tela de 1400px, e "Percepção · Raciocínio ·
+     Compostura" por extenso estourava a grade em 22px. O card é o contêiner de consulta. */
+  @container (min-width: 22.5rem) {
     .atr-ab { display: none; }
     .atr-full { display: inline; }
   }
