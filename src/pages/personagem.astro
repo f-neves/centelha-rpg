@@ -495,7 +495,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 <!-- is:global: cabeçalho, listas e ficha são preenchidos via JS -->
 <style is:global>
   .voltar { margin: 0 0 .6rem; }
-  .voltar a { color: var(--accent); text-decoration: none; }
+  .voltar a { color: var(--accent-texto); text-decoration: none; }
   .pers-cab { display: flex; gap: 1.2rem; align-items: stretch; flex-wrap: wrap; margin-bottom: 1rem; }
   .retrato { display: flex; flex-direction: column; gap: .5rem; align-items: center; flex: 0 0 auto; }
   /* a moldura em si mora em styles/global.css (compartilhada com os cards de Mesas / Fichas);
@@ -534,7 +534,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   @media (max-width: 760px) { .textos { grid-template-columns: 1fr; } }
   .textos label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .04em; color: var(--ink-soft); text-transform: uppercase; gap: .3rem; }
   .textos textarea { font: inherit; font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0; padding: .6rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
-  .salvo { color: var(--accent); font-size: var(--fs-micro); }
+  .salvo { color: var(--accent-texto); font-size: var(--fs-micro); }
   .arq-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; }
   .arq-link-row { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
   .arq-link-row input { font: inherit; font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 6px; padding: .35rem .5rem; }
@@ -542,7 +542,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .arq-link-row #arq-link-nome { min-width: 9rem; }
   .arqs { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; margin-top: .6rem; }
   .arqs li { display: flex; align-items: center; gap: .6rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
-  .arqs .arq-abrir, .arqs .arq-link { flex: 1; color: var(--accent); text-decoration: none; word-break: break-word; }
+  .arqs .arq-abrir, .arqs .arq-link { flex: 1; color: var(--accent-texto); text-decoration: none; word-break: break-word; }
   .arqs .arq-link:hover { text-decoration: underline; }
   .arqs .arq-tipo { font-size: var(--fs-micro); text-transform: uppercase; }
   .arqs .arq-rm { background: none; border: none; color: var(--perigo); cursor: pointer; }

@@ -130,7 +130,7 @@ const BLOCOS: [string, string, any[]][] = [
 <style>
   .efeito { display: flex; flex-direction: column; gap: .4rem; font-size: var(--fs-corpo); line-height: 1.45; }
   .ef-head { display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--rule); padding-bottom: .35rem; }
-  .ef-nome { color: var(--accent); font-size: var(--fs-h3); flex: 1; }
+  .ef-nome { color: var(--accent-texto); font-size: var(--fs-h3); flex: 1; }
   .ef-nivel { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%;
     background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: var(--fs-rotulo); flex: none; }
   .ef-bloco { margin-top: 1.4rem; }
@@ -147,7 +147,7 @@ const BLOCOS: [string, string, any[]][] = [
   .efeito .muted { font-style: normal; }
   .artes-nav { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; margin: 2rem 0 .5rem; }
   .ef-indice { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: .8rem 0 1.2rem; }
-  .ef-indice a { font-family: 'Cinzel'; font-size: var(--fs-rotulo); text-decoration: none; color: var(--accent);
+  .ef-indice a { font-family: 'Cinzel'; font-size: var(--fs-rotulo); text-decoration: none; color: var(--accent-texto);
     border: 1px solid var(--panel-border); border-radius: 999px; padding: .15rem .7rem; background: var(--panel); }
   .ef-indice a:hover { border-color: var(--accent); }
   .ef-indice .muted { font-style: normal; font-size: var(--fs-micro); }
@@ -161,7 +161,7 @@ const BLOCOS: [string, string, any[]][] = [
   .ef-aba { font-family: 'Cinzel'; font-size: var(--fs-rotulo); letter-spacing: .03em; cursor: pointer;
     background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
     padding: .45rem .9rem; color: var(--ink-soft); }
-  .ef-aba:hover { color: var(--accent); }
+  .ef-aba:hover { color: var(--accent-texto); }
   .ef-aba[aria-selected='true'] { color: var(--accent-strong); border-bottom-color: var(--accent); }
   .ef-aba .muted { font-style: normal; font-size: var(--fs-micro); }
   .ef-indice a.fora { opacity: .5; }

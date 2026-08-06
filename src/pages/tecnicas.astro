@@ -52,7 +52,7 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
   .tec-row { display: grid; grid-template-columns: minmax(9rem, 1.2fr) minmax(7rem, 1fr) auto auto; gap: .5rem .7rem;
     align-items: baseline; padding: .55rem .2rem; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; }
   .tec-row:hover { background: var(--panel-2); }
-  .tr-nome { color: var(--accent); }
+  .tr-nome { color: var(--accent-texto); }
   .tr-eff { grid-column: 1 / -1; font-size: var(--fs-rotulo); color: var(--ink-soft); }
   @media (max-width: 640px) { .tec-row { grid-template-columns: 1fr auto; } .tr-cam { grid-column: 1; } }
 </style>

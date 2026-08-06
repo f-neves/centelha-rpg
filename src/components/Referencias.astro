@@ -264,20 +264,20 @@
 
 <!-- is:global porque os elementos (auto-links, hovercard, consulta, modal) são criados via JS -->
 <style is:global>
-  .ref { color: var(--accent); text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: .15em; cursor: pointer; }
+  .ref { color: var(--accent-texto); text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: .15em; cursor: pointer; }
   .ref:hover { color: var(--accent-strong); }
   .ref-pop { position: absolute; z-index: 60; max-width: 24rem; background: var(--panel); color: var(--ink);
     border: 1px solid var(--accent); border-radius: 7px; padding: .55rem .7rem; box-shadow: 0 6px 20px var(--shadow);
     font-size: var(--fs-rotulo); line-height: 1.4; font-style: normal; pointer-events: auto; }
   .ref-tipo { display: inline-block; font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .08em; text-transform: uppercase;
     background: var(--accent); color: var(--on-accent); border-radius: 999px; padding: .05rem .5rem; margin-right: .4rem; vertical-align: middle; }
-  .ref-pop b { font-family: 'Cinzel'; color: var(--accent); font-size: var(--fs-aux); }
+  .ref-pop b { font-family: 'Cinzel'; color: var(--accent-texto); font-size: var(--fs-aux); }
   .ref-pop .ref-resumo { display: block; margin: .25rem 0 .35rem; color: var(--ink); }
   .ref-pop .ref-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-  .ref-pop .ref-go { font-size: var(--fs-micro); color: var(--accent); font-style: italic; text-decoration: none; }
+  .ref-pop .ref-go { font-size: var(--fs-micro); color: var(--accent-texto); font-style: italic; text-decoration: none; }
   .ref-pop .ref-pin { font-family: 'Cinzel'; font-size: var(--fs-micro); cursor: pointer; border: 1px solid var(--panel-border);
     background: var(--panel-2); color: var(--ink-soft); border-radius: 5px; padding: .12rem .45rem; }
-  .ref-pop .ref-pin:hover { border-color: var(--accent); color: var(--accent); }
+  .ref-pop .ref-pin:hover { border-color: var(--accent); color: var(--accent-texto); }
   .ref-pop .ref-pin kbd { font-family: monospace; font-size: .7em; border: 1px solid var(--panel-border); border-radius: 3px; padding: 0 .25em; margin-left: .15em; }
 
   /* realce de entidades fixadas no texto */
@@ -290,11 +290,11 @@
   #consulta .cs-head { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center;
     background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .4rem .7rem; }
   #consulta .cs-clear { background: none; border: 1px solid var(--on-accent); color: var(--on-accent); border-radius: 4px; font-size: var(--fs-micro); cursor: pointer; padding: .05rem .4rem; font-family: 'Cinzel'; }
-  #consulta .cs-n { background: var(--on-accent); color: var(--accent); border-radius: 999px; font-size: var(--fs-micro); padding: 0 .4rem; margin-left: .2rem; }
+  #consulta .cs-n { background: var(--on-accent); color: var(--accent-texto); border-radius: 999px; font-size: var(--fs-micro); padding: 0 .4rem; margin-left: .2rem; }
   #consulta .cs-filter { width: calc(100% - 1.4rem); margin: .5rem .7rem 0; padding: .3rem .45rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: var(--fs-rotulo); }
   #consulta .cs-card { padding: .5rem .7rem; border-bottom: 1px solid var(--rule); position: relative; }
   #consulta .cs-card a { text-decoration: none; }
-  #consulta .cs-card b { font-family: 'Cinzel'; color: var(--accent); }
+  #consulta .cs-card b { font-family: 'Cinzel'; color: var(--accent-texto); }
   #consulta .cs-resumo { display: block; font-size: var(--fs-micro); color: var(--ink-soft); margin-top: .2rem; }
   #consulta .cs-x { position: absolute; top: .35rem; right: .4rem; background: none; border: none; color: var(--ink-soft); cursor: pointer; font-size: var(--fs-micro); }
   @media (max-width: 620px) { #consulta { right: .4rem; left: .4rem; width: auto; } }
@@ -306,7 +306,7 @@
   .ref-modal::backdrop { background: rgba(0,0,0,.5); }
   .ref-modal-x { position: absolute; top: .5rem; right: .6rem; background: none; border: none; font-size: var(--fs-corpo); color: var(--ink-soft); cursor: pointer; }
   .rm-head { display: flex; align-items: center; gap: .5rem; margin-bottom: .4rem; }
-  .rm-head b { font-family: 'Cinzel'; color: var(--accent); font-size: var(--fs-h3); }
+  .rm-head b { font-family: 'Cinzel'; color: var(--accent-texto); font-size: var(--fs-h3); }
   .rm-desc { margin: 0 0 .7rem; }
   .rm-niveis { border-top: 1px solid var(--rule); padding-top: .5rem; }
   .rm-lv { display: flex; gap: .6rem; align-items: baseline; padding: .22rem 0; font-size: var(--fs-aux); line-height: 1.4; }
@@ -314,11 +314,11 @@
   .rm-lv b { color: var(--accent-strong); font-family: 'Cinzel'; font-size: var(--fs-rotulo); }
   .rm-conduta { display: block; margin-top: .15rem; font-size: var(--fs-rotulo); color: var(--ink-soft); font-style: italic; line-height: 1.35; }
   .rm-conduta b { font-family: 'Cinzel'; font-style: normal; color: var(--gold); font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; }
-  .rm-go { display: inline-block; margin-top: .8rem; font-style: italic; color: var(--accent); text-decoration: none; }
+  .rm-go { display: inline-block; margin-top: .8rem; font-style: italic; color: var(--accent-texto); text-decoration: none; }
   .ref-modal.wide { width: min(58rem, 95vw); }
   .rm-compare { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: .4rem; }
   .rm-col { flex: 0 0 16rem; border: 1px solid var(--panel-border); border-radius: 8px; padding: .7rem .8rem; background: var(--panel-2); }
-  .rm-col .rm-cnome { display: block; font-family: 'Cinzel'; color: var(--accent); font-size: var(--fs-aux); margin: .3rem 0; }
+  .rm-col .rm-cnome { display: block; font-family: 'Cinzel'; color: var(--accent-texto); font-size: var(--fs-aux); margin: .3rem 0; }
   .rm-col .rm-cdesc { font-size: var(--fs-rotulo); margin: 0 0 .5rem; }
-  .cs-comparar { background: var(--on-accent); color: var(--accent); border: none; border-radius: 4px; font-size: var(--fs-micro); cursor: pointer; padding: .05rem .5rem; font-family: 'Cinzel'; margin-right: .3rem; }
+  .cs-comparar { background: var(--on-accent); color: var(--accent-texto); border: none; border-radius: 4px; font-size: var(--fs-micro); cursor: pointer; padding: .05rem .5rem; font-family: 'Cinzel'; margin-right: .3rem; }
 </style>

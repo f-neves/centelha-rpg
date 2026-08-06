@@ -27,7 +27,7 @@ const { caminho } = Astro.props;
   .arv-node.chain { box-shadow: 0 0 0 2px var(--gold); }
   .arv-detalhe { margin-top: 1rem; position: relative; padding-right: 2.2rem; }
   .arv-detalhe .x { position: absolute; top: .5rem; right: .6rem; cursor: pointer; border: none; background: none; color: var(--ink-soft); font-size: var(--fs-h3); line-height: 1; }
-  .arv-detalhe .x:hover { color: var(--accent); }
+  .arv-detalhe .x:hover { color: var(--accent-texto); }
 </style>
 
 <script>
@@ -127,7 +127,7 @@ const { caminho } = Astro.props;
       det.hidden = false;
       det.innerHTML =
         `<button class="x" aria-label="Fechar">✕</button>` +
-        `<div class="cinzel" style="color:var(--accent);font-size: var(--fs-corpo)">${t.nome}</div>` +
+        `<div class="cinzel" style="color: var(--accent-texto);font-size: var(--fs-corpo)">${t.nome}</div>` +
         `<div style="margin:.2rem 0"><span class="badge banda">Nível ${t.nivel}</span> ${(() => { const m = modOf(t.efeito, t.nivel); return m ? `<span class="badge mod" title="${m.t}">${m.v}</span> ` : ''; })()}<span class="badge ${t.tipo}">${fmtCusto(t) || t.tipo}</span>${t.pendente ? ' <span class="badge pendente">Rascunho</span>' : ''}</div>` +
         `<p>${t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</p>` + requer + unlocks +
         `<hr><p class="tec-meta"><strong>Planejador:</strong> a cadeia completa de pré-requisitos custa <strong>${xp} XP</strong> em Técnicas (${chain.size} no total).</p>` +

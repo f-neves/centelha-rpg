@@ -17,6 +17,10 @@
   --accent: #00BAB4;        /* teal */
   --accent-strong: #0B3B47; /* petróleo escuro */
   --accent-soft: #2E8C86;   /* teal médio */
+  /* O teal vivo #00BAB4 e uma cor de PREENCHIMENTO: como texto sobre o pergaminho rende
+     1,8 a 2,2:1. Este token e o accent seguro para texto (~4,6:1); o --accent segue
+     pintando fundos (barras, botoes, item ativo do menu). */
+  --accent-texto: #2E8C86;
   --link: var(--accent-strong); /* hiperlink: igual ao accent-strong */
   /* Texto sobre --accent (teal vivo). O creme #f6efda rendia 2,1:1 aqui; o petróleo da
      própria paleta sobe para ~4,8:1 sem introduzir cor nova. */
@@ -47,6 +51,7 @@
   --accent: #3fc9c2;        /* teal (claro p/ fundo escuro) */
   --accent-strong: #8fe3dd; /* teal pálido */
   --accent-soft: #4fb3ac;   /* teal médio */
+  --accent-texto: #3fc9c2;  /* no escuro o proprio accent ja e legivel como texto */
   --link: var(--accent-strong); /* hiperlink: igual ao accent-strong */
   --on-accent: #11151f;
   --on-accent-strong: #11151f; /* --accent-strong aqui é teal pálido: pede texto escuro também */
@@ -76,6 +81,7 @@
   --accent: #0e5a55;        /* teal escuro (alto contraste) */
   --accent-strong: #083f3b; /* petróleo escuro */
   --accent-soft: #14756d;   /* teal médio-escuro */
+  --accent-texto: #0e5a55;  /* no legivel o proprio accent ja e de alto contraste */
   --link: var(--accent-strong); /* hiperlink: igual ao accent-strong */
   --on-accent: #ffffff;
   --on-accent-strong: #ffffff;
@@ -140,7 +146,7 @@ body {
 [data-theme='legivel'] { --fs-corpo: 1.22rem; }
 [data-theme='legivel'] body { line-height: 1.7; }
 
-h1, h2, h3, h4, .cinzel { font-family: 'Cinzel', Georgia, serif; line-height: 1.18; color: var(--accent); }
+h1, h2, h3, h4, .cinzel { font-family: 'Cinzel', Georgia, serif; line-height: 1.18; color: var(--accent-texto); }
 h1 { font-size: var(--fs-h1); margin: 0 0 .5em; }
 h2 { font-size: var(--fs-h2); margin: 1.6em 0 .4em; padding-bottom: .2em; border-bottom: 1.5px solid var(--rule); }
 h3 { font-size: var(--fs-h3); margin: 1.3em 0 .3em; color: var(--accent-strong); }
@@ -200,7 +206,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 }
 
 /* ---------- nav ---------- */
-.brand { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); font-size: var(--fs-h3); text-decoration: none; display: block; line-height: 1.1; }
+.brand { font-family: 'Cinzel'; font-weight: 700; color: var(--accent-texto); font-size: var(--fs-h3); text-decoration: none; display: block; line-height: 1.1; }
 .brand .d6 { color: var(--accent-strong); }
 .brand small { display:block; font-family:'EB Garamond'; font-style:italic; font-weight:400; font-size:var(--fs-micro); color: var(--ink-soft); letter-spacing:0; }
 nav.toc { margin-top: 1.2rem; }
@@ -210,7 +216,7 @@ nav.toc a[hidden] { display: none; } /* respeita o atributo hidden (ex.: links M
 nav.toc a:hover { background: var(--panel); }
 nav.toc a[aria-current='page'] { background: var(--accent); color: var(--on-accent); }
 nav.toc a[aria-current='page'] .num { color: var(--on-accent); }
-nav.toc a .num { color: var(--accent); font-family: 'Cinzel'; font-size: var(--fs-micro); min-width: 2.1rem; }
+nav.toc a .num { color: var(--accent-texto); font-family: 'Cinzel'; font-size: var(--fs-micro); min-width: 2.1rem; }
 /* sub-páginas de um capítulo: recuadas e um pouco menores que o capítulo-pai */
 nav.toc a.subcap { padding-left: 2.6rem; font-size: var(--fs-rotulo); color: var(--ink-soft); }
 nav.toc a.subcap .num { min-width: 0; margin-left: -.9rem; }
@@ -221,7 +227,7 @@ nav.toc a.subcap[aria-current='page'] { color: var(--on-accent); }
 .callout { background: var(--panel); border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: 4px; padding: .8rem 1rem; margin: 1em 0; }
 .callout.exemplo { border-left-color: var(--accent-soft); font-style: italic; }
 .callout.regra { border-left-color: var(--gold); }
-.callout .lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .25rem; }
+.callout .lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-texto); display: block; margin-bottom: .25rem; }
 .callout.regra .lbl { color: var(--gold); }
 
 .formula { display: block; text-align: center; font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong);
@@ -233,7 +239,7 @@ thead th { background: var(--accent-strong); color: var(--on-accent-strong); fon
 thead th a, thead th a:hover { color: var(--on-accent-strong); text-decoration: underline; }
 
 /* Superfícies pintadas de accent: qualquer link, referência ou âncora dentro delas herda a cor
-   de contraste. Sem isto, .ref mantinha `color: var(--accent)` e ficava teal sobre teal (1,0:1,
+   de contraste. Sem isto, .ref mantinha `color: var(--accent-texto)` e ficava teal sobre teal (1,0:1,
    literalmente invisível) nos cabeçalhos de tabela, na barra de XP e nas barras de seção. */
 /* fundo --accent (teal vivo) */
 .barh a, .barh .ref, .barh .anchor,
@@ -267,7 +273,7 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 .badge.banda { background: var(--accent); color: var(--on-accent); border-color: transparent; }
 .badge.mod { border-color: var(--gold); color: var(--gold); font-weight: 600; }
 .badge.passiva { border-color: var(--gold); color: var(--gold); }
-.badge.ativa { border-color: var(--accent-soft); color: var(--accent); }
+.badge.ativa { border-color: var(--accent-soft); color: var(--accent-texto); }
 .badge.reflexiva { border-color: var(--accent-strong); color: var(--accent-strong); }
 .badge.pendente { background: #8a2b14; color: #fff; border-color: transparent; }
 
@@ -276,12 +282,12 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 .gloss-pop { position: absolute; z-index: 50; max-width: 22rem; background: var(--panel); color: var(--ink);
   border: 1px solid var(--accent); border-radius: 6px; padding: .6rem .75rem; box-shadow: 0 4px 14px var(--shadow);
   font-size: var(--fs-aux); font-style: normal; line-height: 1.45; }
-.gloss-pop b { font-family: 'Cinzel'; color: var(--accent); display: block; margin-bottom: .15rem; font-size: var(--fs-rotulo); }
+.gloss-pop b { font-family: 'Cinzel'; color: var(--accent-texto); display: block; margin-bottom: .15rem; font-size: var(--fs-rotulo); }
 
 /* botões */
 .btn { font-family: 'Cinzel'; font-size: var(--fs-rotulo); cursor: pointer; border: 1px solid var(--panel-border);
   background: var(--panel); color: var(--ink); padding: .45rem .9rem; border-radius: 5px; }
-.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn:hover { border-color: var(--accent); color: var(--accent-texto); }
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; }
 .btn-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
 
@@ -306,7 +312,7 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
 
 /* breadcrumbs */
 .crumbs { font-size: var(--fs-rotulo); color: var(--ink-soft); margin: 0 0 1rem; font-family: 'Cinzel'; letter-spacing: .02em; }
-.crumbs a { color: var(--accent); text-decoration: none; }
+.crumbs a { color: var(--accent-texto); text-decoration: none; }
 .crumbs a:hover { text-decoration: underline; }
 .crumbs .crumb-sep { margin: 0 .45rem; color: var(--rule); }
 .crumbs [aria-current='page'] { color: var(--ink); }
@@ -330,7 +336,7 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 .tag-orn { color: var(--gold); letter-spacing: .3em; text-align: center; }
 .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .8rem; }
 .lead { font-size: 1.12em; }
-.lead::first-letter { font-family: 'Cinzel'; font-weight: 900; float: left; font-size: 3.1em; line-height: .8; padding: .05em .12em 0 0; color: var(--accent); }
+.lead::first-letter { font-family: 'Cinzel'; font-weight: 900; float: left; font-size: 3.1em; line-height: .8; padding: .05em .12em 0 0; color: var(--accent-texto); }
 
 /* ---------- responsivo ---------- */
 .drawer-toggle, .drawer-close, .scrim { display: none; }
@@ -363,7 +369,7 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 .ui-dlg.perigo .ui-dlg-tit { color: var(--perigo); }
 .ui-dlg-x { background: none; border: 0; padding: .15rem .35rem; border-radius: 4px; cursor: pointer;
   color: var(--ink-soft); font-size: var(--fs-rotulo); line-height: 1; }
-.ui-dlg-x:hover { color: var(--accent); background: var(--bg-soft); }
+.ui-dlg-x:hover { color: var(--accent-texto); background: var(--bg-soft); }
 .ui-dlg-corpo { padding: .7rem 1.1rem 0; }
 .ui-dlg-msg { margin: 0 0 .9rem; line-height: 1.45; }
 .ui-dlg-campo { display: block; margin-bottom: .85rem; }

@@ -27,7 +27,7 @@ const capitulos = NAV.filter((n) => n.numeral);
   <section style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem">
     {[['Proezas', nCam], ['Técnicas', nTec], ['Artes', nArt]].map(([k, v]) => (
       <div class="panel" style="text-align:center;min-width:8rem">
-        <div class="cinzel" style="font-size:2rem;color:var(--accent)">{v}</div>
+        <div class="cinzel" style="font-size:2rem;color: var(--accent-texto)">{v}</div>
         <div class="muted">{k}</div>
       </div>
     ))}
@@ -37,7 +37,7 @@ const capitulos = NAV.filter((n) => n.numeral);
   <div class="grid-cards">
     {capitulos.map((c) => (
       <a class="panel" href={url(c.slug)} style="text-decoration:none;color:inherit;display:block">
-        <div class="cinzel" style="color:var(--accent);font-size: var(--fs-micro)">Capítulo {c.numeral}</div>
+        <div class="cinzel" style="color: var(--accent-texto);font-size: var(--fs-micro)">Capítulo {c.numeral}</div>
         <div class="cinzel" style="font-size: var(--fs-corpo);margin-top:.2rem">{c.titulo}</div>
       </a>
     ))}
@@ -47,7 +47,7 @@ const capitulos = NAV.filter((n) => n.numeral);
   <div class="grid-cards">
     {FERRAMENTAS.map((f) => (
       <a class="panel" href={url(f.slug)} style="text-decoration:none;color:inherit;display:block">
-        <div class="cinzel" style="font-size: var(--fs-aux);color:var(--accent)">{f.titulo}</div>
+        <div class="cinzel" style="font-size: var(--fs-aux);color: var(--accent-texto)">{f.titulo}</div>
       </a>
     ))}
   </div>

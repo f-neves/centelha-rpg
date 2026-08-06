@@ -1012,7 +1012,7 @@ import Base from '../layouts/Base.astro';
   .xp-inicial label { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
   .xp-inicial input { width: 6.5rem; font: inherit; color: var(--ink); background: var(--bg);
     border: 1px solid var(--panel-border); border-radius: 6px; padding: .3rem .5rem; }
-  .xp-inicial .salvo { font-size: var(--fs-rotulo); color: var(--accent); }
+  .xp-inicial .salvo { font-size: var(--fs-rotulo); color: var(--accent-texto); }
   .xp-inicial-dica { flex-basis: 100%; margin: .1rem 0 0; font-size: var(--fs-rotulo); }
   .pers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: .8rem; }
   .pers-card { display: flex; flex-direction: column; gap: .25rem; padding: .9rem 1rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
@@ -1027,7 +1027,7 @@ import Base from '../layouts/Base.astro';
   .enviadas-aviso { color: var(--ink); background: color-mix(in srgb, var(--gold, #b8860b) 18%, transparent); border: 1px solid var(--gold, #b8860b); border-radius: 6px; padding: .5rem .8rem; margin: .4rem 0 0; }
   .arqs { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; margin-top: .6rem; }
   .arqs li { display: flex; align-items: center; gap: .6rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
-  .arqs .arq-abrir { flex: 1; color: var(--accent); text-decoration: none; }
+  .arqs .arq-abrir { flex: 1; color: var(--accent-texto); text-decoration: none; }
   .arqs .arq-tipo { font-size: var(--fs-micro); text-transform: uppercase; }
   .arqs .arq-vis { display: inline-flex; align-items: center; gap: .25rem; font-size: var(--fs-micro); color: var(--ink-soft); }
   .arqs .arq-rm { background: none; border: none; color: var(--perigo); cursor: pointer; }
@@ -1040,7 +1040,7 @@ import Base from '../layouts/Base.astro';
   .vg-tab th, .vg-tab td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--rule); }
   .vg-tab th { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
   .vg-tab td.num { text-align: center; font-family: 'Cinzel'; font-weight: 700; }
-  .vg-tab a { color: var(--accent); text-decoration: none; }
+  .vg-tab a { color: var(--accent-texto); text-decoration: none; }
   .nota { border: 1px solid var(--rule); border-radius: 8px; padding: .7rem; background: var(--panel); margin-bottom: .8rem; }
   .nota-tit { width: 100%; font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); border: none; border-bottom: 1px solid var(--rule); background: transparent; color: var(--ink); padding: .2rem 0; margin-bottom: .4rem; }
   .nota-txt { width: 100%; font: inherit; font-family: 'EB Garamond'; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
@@ -1075,7 +1075,7 @@ import Base from '../layouts/Base.astro';
   .cr-en { font-size: var(--fs-micro); font-weight: 400; font-style: italic; }
   .cr-badges { display: flex; flex-wrap: wrap; gap: .3rem; }
   .cr-b { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .03em; padding: .1rem .45rem; border-radius: 999px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); }
-  .cr-link { color: var(--accent); text-decoration: none; font-size: var(--fs-rotulo); }
+  .cr-link { color: var(--accent-texto); text-decoration: none; font-size: var(--fs-rotulo); }
   .cr-notas { font: inherit; font-family: 'EB Garamond'; padding: .4rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
   .cr-notas-ro { font-size: var(--fs-rotulo); color: var(--ink-soft); font-style: italic; margin: 0; }
   .cr-rm { background: none; border: none; color: var(--perigo); cursor: pointer; padding: 0 .2rem; }
@@ -1087,7 +1087,7 @@ import Base from '../layouts/Base.astro';
   .cmb-lista { display: flex; flex-direction: column; gap: .4rem; }
   .cmb-row { display: flex; align-items: flex-start; gap: .7rem; padding: .5rem .6rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); }
   .cmb-row.atual { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
-  .cmb-tick { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); min-width: 2.4rem; padding-top: .1rem; }
+  .cmb-tick { font-family: 'Cinzel'; font-weight: 700; color: var(--accent-texto); min-width: 2.4rem; padding-top: .1rem; }
   .cmb-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .35rem; }
   .cmb-nome { min-width: 8rem; }
   .cmb-act { display: inline-flex; align-items: center; gap: .3rem; flex-shrink: 0; }
@@ -1138,7 +1138,7 @@ import Base from '../layouts/Base.astro';
   .log-inp { flex: 1; min-width: 0; font: inherit; font-size: var(--fs-rotulo); padding: .1rem .3rem; border: 1px solid var(--accent); border-radius: 4px; background: var(--bg); color: var(--ink); }
   .log-edit, .log-del { background: none; border: none; cursor: pointer; padding: 0 .2rem; font-size: var(--fs-micro); line-height: 1; opacity: .55; transition: opacity .15s; flex-shrink: 0; }
   .log-linha:hover .log-edit, .log-linha:hover .log-del { opacity: 1; }
-  .log-edit { color: var(--accent); }
+  .log-edit { color: var(--accent-texto); }
   .log-del { color: var(--perigo); }
 
   /* Diálogo de ação (Agir) */
@@ -1155,7 +1155,7 @@ import Base from '../layouts/Base.astro';
   .edit-dlg { max-width: 30rem; }
   .edit-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
   .edit-grid label { min-width: 0; }
-  .cmb-act .editc { border-color: var(--accent); color: var(--accent); }
+  .cmb-act .editc { border-color: var(--accent); color: var(--accent-texto); }
   .cmb-act .editc:hover { background: color-mix(in srgb, var(--accent) 18%, transparent); }
 
   .cr-atk { font-size: var(--fs-rotulo); color: var(--ink-soft); }
@@ -1178,7 +1178,7 @@ import Base from '../layouts/Base.astro';
   .card-modal .arte-cent { position: absolute; left: .5rem; top: .5rem; font-family: 'Cinzel'; font-size: var(--fs-aux); font-weight: 600; padding: .18rem .68rem; border-radius: 999px; color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000); }
   .card-modal .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
   .card-modal .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
-  .card-modal .besta-nome { font-size: var(--fs-corpo); color: var(--accent); line-height: 1.15; }
+  .card-modal .besta-nome { font-size: var(--fs-corpo); color: var(--accent-texto); line-height: 1.15; }
   .card-modal .besta-nome-en { font-size: var(--fs-micro); font-weight: 400; color: var(--muted); font-style: italic; }
   .card-modal .besta-badges { display: flex; flex-wrap: wrap; gap: .3rem; margin: .3rem 0 .1rem; }
   .card-modal .badge { font-size: var(--fs-micro); padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--panel-border); background: var(--panel-2, color-mix(in srgb, var(--ink) 6%, transparent)); color: var(--ink); }
@@ -1220,7 +1220,7 @@ import Base from '../layouts/Base.astro';
   .card-modal .pw-alvo { color: var(--ink-soft); }
   .card-modal .ib-ref { font-size: var(--fs-rotulo); margin: 0 0 .3rem; }
   .card-modal .ib-ref b { color: var(--accent-strong); }
-  .card-modal .ib-ref a { color: var(--accent); text-decoration: none; }
+  .card-modal .ib-ref a { color: var(--accent-texto); text-decoration: none; }
   .card-modal .ib-ref a:hover { text-decoration: underline; }
   .card-modal .ib-lore { margin: 0 0 .4rem; }
   .card-modal .ib-lore h5 { margin: .35rem 0 .05rem; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); letter-spacing: .02em; }
