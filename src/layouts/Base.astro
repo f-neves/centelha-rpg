@@ -78,6 +78,10 @@ if (partes.length) crumbs.push({ label: title });
   <div class="topbar" data-pagefind-ignore>
     <button class="btn drawer-toggle" aria-label="Abrir navegação" aria-expanded="false">☰ Menu</button>
     <a class="brand" href={url('')}>Centelha <span class="d6">D6</span></a>
+    {/* A busca é a função mais usada de um livro de regras em mesa, e estava escondida
+        dentro da gaveta. O .busca-abrir é ligado por querySelectorAll no Busca.astro,
+        então este segundo botão abre o mesmo modal sem código novo. */}
+    <button class="btn busca-abrir topbar-busca" aria-label="Buscar no livro">🔍</button>
   </div>
 
   <div class="shell">

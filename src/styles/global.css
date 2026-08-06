@@ -356,6 +356,44 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
   .prose p { text-align: left; }
 }
 
+/* ---------- alvos de toque (mobile) ----------
+   Nenhum controle do celular chegava aos 44px recomendados: o menu tinha 36px de altura,
+   a marca 18px, o FAB 35px, a trilha de navegação 19px.
+
+   Links inline no meio de uma frase ficam de fora DE PROPÓSITO: o WCAG 2.2 (2.5.8) isenta
+   alvos inline em texto corrido, e inflá-los criaria áreas de toque sobrepostas entre
+   linhas vizinhas, o que erra mais do que acerta. O que vale é o controle autônomo. */
+@media (max-width: 900px) {
+  .topbar { padding: .35rem .6rem; gap: .5rem; }
+  /* gap entre os itens flex: sem ele o espaço entre "Centelha" e "D6" colapsa */
+  .topbar .btn, .topbar .brand {
+    min-height: 44px; display: inline-flex; align-items: center; gap: .35ch;
+  }
+  /* a busca fica na direita, ao alcance do polegar */
+  .topbar-busca { margin-left: auto; min-width: 44px; justify-content: center; font-size: 1.15rem; }
+
+  /* .mini fica de fora: são os controles densos de /mesa e /admin, que viram grade se
+     esticados. Sem mudança de display aqui: uma regra display sobreporia o display:none
+     de botões escondidos (o "» Menu" do desktop apareceu no celular por causa disso);
+     <button> já centraliza o conteúdo sozinho, min-height basta. */
+  .btn:not(.mini) { min-height: 44px; }
+
+  .crumbs a, .crumbs [aria-current='page'] { display: inline-flex; align-items: center; min-height: 44px; }
+  #otp-fab { min-height: 44px; }
+  #otp-panel a { min-height: 44px; display: flex; align-items: center; }
+  nav.toc a { min-height: 44px; align-items: center; }
+
+  /* âncora de permalink: no desktop ela só aparece no hover; no celular está sempre visível */
+  .anchor { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; opacity: 1; }
+
+  /* cabeçalho de tabela que ordena ao toque */
+  th.ord { padding-block: .8rem; }
+
+  input:not([type='checkbox']):not([type='radio']), select, textarea { min-height: 44px; }
+  /* checkboxes de filtro: quem recebe o toque é o <label> inteiro, não a caixinha */
+  label.chk { min-height: 44px; display: inline-flex; align-items: center; }
+}
+
 /* ---------- diálogos (avisos, confirmações, perguntas) — lib/ui-dialog.ts ---------- */
 .ui-dlg {
   width: min(30rem, 92vw); padding: 0; border: 1px solid var(--panel-border); border-top: 3px solid var(--accent);

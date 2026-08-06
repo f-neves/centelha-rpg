@@ -39,5 +39,7 @@ const mod = modProeza(t.efeito, t.nivel);
   .tec-eff { margin: .25rem 0 .2rem; }
   .tec-meta { font-size: var(--fs-rotulo); color: var(--ink-soft); margin: .1rem 0; }
   .bm { background: none; border: none; cursor: pointer; font-size: var(--fs-corpo); color: var(--gold); margin-left: auto; line-height: 1; }
+  /* o marcador tinha 27x21px de área de toque */
+  @media (max-width: 900px) { .bm { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; } }
   .bm[aria-pressed='true'] { color: var(--accent-texto); }
 </style>
