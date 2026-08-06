@@ -35,7 +35,9 @@ if (partes[0] === 'artes' && partes[1]) crumbs.push({ label: 'As Artes', href: u
 if (partes.length) crumbs.push({ label: title });
 ---
 <!doctype html>
-<html lang="pt-BR">
+<!-- data-theme já no HTML para o tema escuro valer mesmo sem JavaScript; o script do
+     <head> troca em seguida se o leitor tiver escolhido outro -->
+<html lang="pt-BR" data-theme="escuro">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -64,8 +66,8 @@ if (partes.length) crumbs.push({ label: title });
   <script is:inline>
     (function () {
       try {
-        var t = localStorage.getItem('tema');
-        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'escuro' : 'classico';
+        // o padrão do site é o tema escuro; quem já escolheu outro mantém o seu
+        var t = localStorage.getItem('tema') || 'escuro';
         document.documentElement.dataset.theme = t;
         if (localStorage.getItem('sidebar') === 'collapsed') document.documentElement.classList.add('sidebar-collapsed');
         // preferências de diagramação (/configuracoes) aplicadas ANTES da primeira pintura,
@@ -74,7 +76,7 @@ if (partes.length) crumbs.push({ label: title });
         var c = JSON.parse(localStorage.getItem('centelha:config') || '{}') || {};
         var de = document.documentElement, st = de.style;
         if (c.largTexto) st.setProperty('--cfg-larg-texto', c.largTexto + 'rem');
-        if (c.largTabela === 0) st.setProperty('--cfg-larg-tabela', 'var(--cfg-larg-texto, 36rem)');
+        if (c.largTabela === 0) st.setProperty('--cfg-larg-tabela', 'var(--cfg-larg-texto, 46rem)');
         else if (c.largTabela) st.setProperty('--cfg-larg-tabela', c.largTabela + 'rem');
         if (c.largFicha === 0) st.setProperty('--cfg-larg-ficha', '200rem');
         else if (c.largFicha) st.setProperty('--cfg-larg-ficha', c.largFicha + 'rem');
@@ -82,9 +84,9 @@ if (partes.length) crumbs.push({ label: title });
         if (c.entrelinha) st.setProperty('--cfg-entrelinha', String(c.entrelinha));
         if (c.margem != null) st.setProperty('--cfg-margem', c.margem + 'rem');
         if (c.colunas === 2) de.dataset.colunas = '2';
-        if (c.justificar) de.dataset.justif = '1';
-        if (c.alinha === 'esquerda') de.dataset.alinha = 'esq';
-        if (c.barra && c.barra !== 'nativa') de.dataset.barra = c.barra;
+        if (c.justificar === false) de.dataset.justif = '0';
+        if (c.alinha === 'centro') de.dataset.alinha = 'centro';
+        if (c.barra && c.barra !== 'fina') de.dataset.barra = c.barra;
       } catch (e) { document.documentElement.dataset.theme = document.documentElement.dataset.theme || 'classico'; }
     })();
   </script>
@@ -149,8 +151,10 @@ if (partes.length) crumbs.push({ label: title });
         </a>
       </nav>
 
-      {/* o tema mudou-se para /configuracoes, junto com as preferências de diagramação */}
-      <nav class="toc" aria-label="Preferências" style="margin-top:1.4rem">
+      {/* A diagramação do site é decidida uma vez, pelo administrador, e vale para todos:
+          por isso o grupo inteiro nasce escondido e só o admin o vê (o script do rodapé
+          acende). Os jogadores recebem o resultado, não os controles. */}
+      <nav class="toc" aria-label="Preferências" id="prefs-nav" hidden style="margin-top:1.4rem">
         <div class="grp">Preferências</div>
         <a href={url('configuracoes')} aria-current={isActive('configuracoes') ? 'page' : undefined}>
           <span class="num">⚙</span><span>Configurações</span>
@@ -263,10 +267,13 @@ if (partes.length) crumbs.push({ label: title });
         const contaLink = document.getElementById('conta-link');
         if (contaLink) contaLink.hidden = false;
         try {
-          const { getSupabase } = await import('../lib/supabase');
-          const { data: admin } = await getSupabase().rpc('eh_admin');
-          const adminLink = document.getElementById('admin-link');
-          if (admin && adminLink) adminLink.hidden = false;
+          const { ehAdmin } = await import('../lib/auth');
+          if (await ehAdmin()) {
+            const adminLink = document.getElementById('admin-link');
+            if (adminLink) adminLink.hidden = false;
+            const prefs = document.getElementById('prefs-nav');
+            if (prefs) prefs.hidden = false;
+          }
         } catch {}
       } catch {}
     })();

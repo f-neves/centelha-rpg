@@ -32,17 +32,20 @@ export type ConfigSite = {
   barra?: 'nativa' | 'fina' | 'editorial' | 'dourada' | 'teal';
 };
 
-export const CONFIG_PADRAO: Required<Omit<ConfigSite, 'tema'>> = {
-  largTexto: 36,
+/** Padrões DO SITE. Os mesmos valores estão nos fallbacks do global.css, para valerem
+ *  também sem JavaScript; aqui eles servem para a página acender o preset certo. */
+export const CONFIG_PADRAO: Required<ConfigSite> = {
+  tema: 'escuro',
+  largTexto: 46,
   colunas: 1,
-  largTabela: 48,
+  largTabela: 0,        // igual ao texto
   largFicha: 60,
-  fonteCorpo: 18.9,
+  fonteCorpo: 21,
   entrelinha: 1.62,
-  justificar: false,
+  justificar: true,
   margem: 3,
-  alinha: 'centro',
-  barra: 'nativa',
+  alinha: 'esquerda',
+  barra: 'fina',
 };
 
 export const CONFIG_KEY = 'centelha:config';
@@ -67,7 +70,7 @@ export function aplicarConfig(cfg: ConfigSite) {
 
   põe('--cfg-larg-texto', cfg.largTexto ? cfg.largTexto + 'rem' : null);
   põe('--cfg-larg-tabela', cfg.largTabela === 0
-    ? 'var(--cfg-larg-texto, 36rem)'                       // "igual ao texto"
+    ? 'var(--cfg-larg-texto, 46rem)'                       // "igual ao texto"
     : cfg.largTabela ? cfg.largTabela + 'rem' : null);
   põe('--cfg-larg-ficha', cfg.largFicha === 0 ? '200rem' : cfg.largFicha ? cfg.largFicha + 'rem' : null);
   põe('--fs-corpo', cfg.fonteCorpo ? (cfg.fonteCorpo / 16) + 'rem' : null);
@@ -77,13 +80,14 @@ export function aplicarConfig(cfg: ConfigSite) {
   if (cfg.colunas === 2) de.dataset.colunas = '2';
   else delete de.dataset.colunas;
 
-  if (cfg.justificar) de.dataset.justif = '1';
+  // os data-attributes marcam quem SAIU do padrão do site; ausência = padrão
+  if (cfg.justificar === false) de.dataset.justif = '0';
   else delete de.dataset.justif;
 
-  if (cfg.alinha === 'esquerda') de.dataset.alinha = 'esq';
+  if (cfg.alinha === 'centro') de.dataset.alinha = 'centro';
   else delete de.dataset.alinha;
 
-  if (cfg.barra && cfg.barra !== 'nativa') de.dataset.barra = cfg.barra;
+  if (cfg.barra && cfg.barra !== 'fina') de.dataset.barra = cfg.barra;
   else delete de.dataset.barra;
 
   if (cfg.tema) {

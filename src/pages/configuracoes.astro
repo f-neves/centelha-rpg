@@ -1,9 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Configurações" descricao="Ajuste a diagramação do livro ao seu gosto: tema, largura da coluna, número de colunas, tabelas, fonte e entrelinha.">
+<Base title="Configurações" descricao="Diagramação do livro: tema, largura da coluna, colunas, tabelas, fonte e entrelinha. Restrito ao administrador.">
   <h1>Configurações</h1>
-  <p class="lead">Ajustes de leitura deste site. Valem na hora, ficam guardados <strong>neste aparelho</strong> e, se você estiver logado, acompanham a sua conta nos outros. Esta própria página obedece aos ajustes: mexa e veja o texto reagir.</p>
+
+  <p id="cfg-portao" class="callout">Verificando o acesso…</p>
+
+  <div id="cfg-conteudo" hidden>
+  <p class="lead">Diagramação do livro. Os ajustes valem na hora, ficam guardados <strong>neste aparelho</strong> e acompanham a sua conta nos outros. Esta própria página obedece a eles: mexa e veja o texto reagir. Para virarem o padrão de todos os leitores, use o <strong>Copiar JSON</strong> no fim da página.</p>
 
   <section class="cfg-sec">
     <h2>Tema</h2>
@@ -158,6 +162,7 @@ import Base from '../layouts/Base.astro';
       <span id="cfg-status" class="muted" role="status" aria-live="polite"></span>
     </div>
   </section>
+  </div>
 </Base>
 
 <script>
@@ -174,9 +179,9 @@ import Base from '../layouts/Base.astro';
   const leBotao = (k: string, raw: string): any =>
     k === 'justificar' ? raw === 'true' : k === 'alinha' || k === 'barra' ? raw : Number(raw);
 
-  // caracteres por linha estimados: medido no site, a EB Garamond rende ~0,423×corpo por
-  // caractere (36rem ÷ 18,9px deram 72 cpl reais)
-  const cpl = () => Math.round((efetivo('largTexto') * 16) / (efetivo('fonteCorpo') * 0.423));
+  // caracteres por linha: a EB Garamond rende ~0,449×corpo por caractere, calibrado
+  // contando as caixas de linha renderizadas de 52 parágrafos (46rem a 21px = 78 cpl)
+  const cpl = () => Math.round((efetivo('largTexto') * 16) / (efetivo('fonteCorpo') * 0.449));
 
   function pinta() {
     aplicarConfig(cfg);
@@ -242,25 +247,41 @@ import Base from '../layouts/Base.astro';
     b.addEventListener('click', () => muda({ tema: b.dataset.tema as ConfigSite['tema'] })));
 
   document.getElementById('cfg-reset')!.addEventListener('click', () => {
-    const tema = cfg.tema; // restaurar diagramação não mexe no tema escolhido
-    cfg = tema ? { tema } : {};
+    // devolve TUDO ao padrão do site, o tema junto: ele passou a fazer parte do padrão
+    cfg = {};
+    try { localStorage.removeItem('tema'); } catch { /* modo privado */ }
+    document.documentElement.dataset.theme = CONFIG_PADRAO.tema;
     gravarCache(cfg); pinta(); sobe();
   });
   document.getElementById('cfg-json')!.addEventListener('click', () => {
-    const completo = { tema: document.documentElement.dataset.theme, ...CONFIG_PADRAO, ...cfg };
+    const completo = { ...CONFIG_PADRAO, tema: document.documentElement.dataset.theme, ...cfg };
     navigator.clipboard?.writeText(JSON.stringify(completo, null, 2));
     status.textContent = 'JSON copiado.';
     setTimeout(() => { status.textContent = ''; }, 2000);
   });
 
-  // estado da conta + sincronização inicial
+  // portão de administrador: a diagramação é decidida uma vez e vale para todos, então
+  // os controles só aparecem para o dono do site. É portão de interface, não de
+  // segurança (o site é estático); não há segredo aqui, só preferências de leitura.
   (async () => {
+    const portao = document.getElementById('cfg-portao')!;
+    const conteudo = document.getElementById('cfg-conteudo')!;
+    const { ehAdmin, usuarioAtual } = await import('../lib/auth');
+    if (!(await ehAdmin())) {
+      const logado = await usuarioAtual();
+      portao.innerHTML = logado
+        ? 'Esta página é do administrador do site. A diagramação do livro (largura da coluna, tema, tipografia) é definida uma vez e vale para todos os leitores.'
+        : 'Esta página é do administrador do site. Se é você, <a href="' + import.meta.env.BASE_URL + 'entrar/">entre na sua conta</a>.';
+      return;
+    }
+    portao.hidden = true;
+    conteudo.hidden = false;
+    pinta();
     const daConta = await sincronizarDaConta();
     if (daConta) { cfg = daConta; conta.textContent = 'Estas preferências estão sincronizadas com a sua conta.'; }
-    else conta.textContent = 'Sem login (ou sem a coluna de config no banco): as preferências ficam só neste aparelho.';
+    else conta.textContent = 'Sem a coluna de config no banco (migração 9): as preferências ficam só neste aparelho.';
     pinta();
   })();
-  pinta();
 </script>
 
 <style>

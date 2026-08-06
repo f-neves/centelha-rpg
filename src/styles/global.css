@@ -127,7 +127,7 @@
   --fs-h1: 2.1rem;      /* 33,6px */
   --fs-h2: 1.5rem;      /* 24px   */
   --fs-h3: 1.2rem;      /* 19,2px */
-  --fs-corpo: 1.18rem;  /* 18,9px */
+  --fs-corpo: 1.3125rem;/* 21px — padrão do site; ajustável em /configuracoes */
   --fs-aux: 1rem;       /* 16px   */
   --fs-rotulo: .875rem; /* 14px   */
   --fs-micro: .78rem;   /* 12,5px — piso */
@@ -160,7 +160,9 @@ body {
 }
 /* o tema Legível sobe o corpo pelo token, não por regra à parte, para a escala inteira
    acompanhar em vez de criar mais um degrau solto. */
-[data-theme='legivel'] { --fs-corpo: 1.22rem; --lh-tema: 1.7; }
+/* precisa acompanhar o corpo padrão de 21px: um tema chamado Legível não pode render
+   texto MENOR que os outros. A entrelinha mais aberta é o que o distingue. */
+[data-theme='legivel'] { --fs-corpo: 1.3125rem; --lh-tema: 1.7; }
 
 h1, h2, h3, h4, .cinzel { font-family: 'Cinzel', Georgia, serif; line-height: 1.18; color: var(--accent-texto); }
 h1 { font-size: var(--fs-h1); margin: 0 0 .5em; }
@@ -191,41 +193,47 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 /* O padding-bottom precisa acomodar o FAB "Nesta página", que é fixo no canto inferior:
    sem folga ele fica permanentemente sobre a última linha do texto. */
 .content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 6rem; overflow-wrap: break-word; }
-/* 36rem ≈ 72 caracteres por linha, dentro da faixa confortável (45-75). A 70rem o texto
-   corrido chegava a 142 caracteres por linha, medidos nas caixas de linha renderizadas.
-   O leitor pode mudar em /configuracoes (--cfg-larg-texto). */
-.prose { max-width: var(--cfg-larg-texto, 36rem); margin-inline: auto; }
+/* A 70rem o texto corrido chegava a 142 caracteres por linha, medidos nas caixas de linha
+   renderizadas. O padrão do site é 46rem, que com o corpo de 21px mede 78 caracteres por
+   linha (média de 52 parágrafos em três capítulos, contados por caixa de linha) — três
+   acima do teto confortável de 75, e bem longe do ponto em que o olho perde a linha ao
+   voltar. Para entrar na faixa bastaria 44rem. O admin ajusta em /configuracoes. */
+.prose { max-width: var(--cfg-larg-texto, 46rem); margin-inline: 0 auto; }
 .wide { max-width: 60rem; margin-inline: auto; }
 
-/* ---------- margem, alinhamento e justificação (em /configuracoes) ----------
-   A margem lateral só vale no desktop: no celular o .content tem 1rem fixo, que é o
+/* ---------- margem, alinhamento e justificação ----------
+   Os padrões do site estão nas regras base (coluna à esquerda, texto justificado); os
+   data-attributes marcam só quem SAIU do padrão em /configuracoes.
+   A margem lateral vale só no desktop: no celular o .content tem 1rem fixo, que é o
    mínimo para o texto não encostar na moldura da tela. */
 @media (min-width: 901px) {
-  .content { padding-inline: var(--cfg-margem, clamp(1rem, 4vw, 3rem)); }
+  .content { padding-inline: var(--cfg-margem, 3rem); }
 }
-/* coluna encostada à esquerda em vez de centrada na página */
-html[data-alinha='esq'] .prose { margin-inline: 0 auto; }
+/* coluna centrada na página em vez de encostada à esquerda */
+html[data-alinha='centro'] .prose { margin-inline: auto; }
 @media (min-width: 1100px) {
   /* centrar a tabela sobre uma coluna que não está no centro deixaria a tabela flutuando
      fora do eixo do texto: com a coluna à esquerda, a tabela cresce para a direita. */
-  html[data-alinha='esq'] .prose > .table-wrap,
-  html[data-alinha='esq'] .prose > .cat-grid { margin-inline: 0; }
+  .prose > .table-wrap, .prose > .cat-grid { margin-inline: 0; }
+  html[data-alinha='centro'] .prose > .table-wrap,
+  html[data-alinha='centro'] .prose > .cat-grid { margin-inline: calc((100% - var(--larg)) / 2); }
 }
 /* justificação: só com hifenização, senão a coluna estreita abre rios de espaço entre
    palavras. O lang="pt-BR" do <html> é o que permite o hífen correto em português. */
-html[data-justif='1'] .prose p,
-html[data-justif='1'] .prose li { text-align: justify; hyphens: auto; }
+.prose p, .prose li { text-align: justify; hyphens: auto; }
+html[data-justif='0'] .prose p,
+html[data-justif='0'] .prose li { text-align: left; hyphens: manual; }
 
 /* Tabelas e catálogos podem exceder a medida do texto e ficar centralizados sobre ela, como
    num livro: a coluna de leitura continua estreita, o material tabular usa a página.
    Só acima de 1100px, onde há gutter de sobra; a conta garante que nunca passe do conteúdo. */
 @media (min-width: 1100px) {
   .prose > .table-wrap, .prose > .cat-grid {
-    /* o teto de 48rem é configurável em /configuracoes; o calc() garante que nunca
-       passa da área de conteúdo, seja qual for o valor escolhido */
-    --larg: min(var(--cfg-larg-tabela, 48rem), calc(100vw - 24rem));
+    /* por padrão a tabela tem a largura do texto; o admin pode soltá-la em
+       /configuracoes. O calc() garante que nunca passa da área de conteúdo,
+       seja qual for o valor escolhido. */
+    --larg: min(var(--cfg-larg-tabela, var(--cfg-larg-texto, 46rem)), calc(100vw - 24rem));
     width: var(--larg);
-    margin-inline: calc((100% - var(--larg)) / 2);
   }
 }
 
@@ -236,7 +244,7 @@ html[data-justif='1'] .prose li { text-align: justify; hyphens: auto; }
    Página que ficar ruim no modo pode sair pontualmente com class="sem-colunas". */
 @media (min-width: 1100px) {
   html[data-colunas='2'] .prose:not(.sem-colunas) {
-    max-width: calc(var(--cfg-larg-texto, 36rem) * 2 + 2.6rem);
+    max-width: calc(var(--cfg-larg-texto, 46rem) * 2 + 2.6rem);
     columns: 2; column-gap: 2.6rem;
   }
   html[data-colunas='2'] .prose:not(.sem-colunas) > :is(h1, h2, .lead, .table-wrap, .cat-grid, .callout, .formula, pre, .mermaid, .tag-orn, .cinzel, nav, hr) {
@@ -248,9 +256,10 @@ html[data-justif='1'] .prose li { text-align: justify; hyphens: auto; }
    únicos artigos que carregam a barra de abas, daí o :has() */
 article.wide:has(.ftab-bar) { max-width: var(--cfg-larg-ficha, 60rem); }
 
-/* ---------- barra de rolagem (opcional, em /configuracoes) ----------
+/* ---------- barra de rolagem ----------
    Vale para a janela, para a sidebar e para qualquer contêiner que role (tabelas largas,
-   listas da área logada). Sem escolha, fica a barra nativa do sistema.
+   listas da área logada). O padrão do site é a fina; `data-barra='nativa'` devolve a do
+   sistema, e os outros valores trocam o estilo (escolha em /configuracoes).
 
    Duas gramáticas porque os navegadores não concordam: o Chromium desenha pelos
    pseudo-elementos ::-webkit-scrollbar, o Firefox pelas propriedades padrão
@@ -258,7 +267,7 @@ article.wide:has(.ftab-bar) { max-width: var(--cfg-larg-ficha, 60rem); }
    scrollbar-color estiver presente, por isso o @supports isola um do outro.
    As cores saem todas dos tokens do tema, então cada barra acompanha Clássico,
    Escuro e Legível sem regra própria. */
-html[data-barra] {
+html {
   --sb-larg: 10px;
   --sb-trilha: transparent;
   --sb-polegar: var(--rule);
@@ -268,7 +277,7 @@ html[data-barra] {
   --sb-filete: none;
   --sb-ff: auto;     /* scrollbar-width do Firefox */
 }
-html[data-barra='fina'] { --sb-ff: thin; }
+html:not([data-barra]), html[data-barra='fina'] { --sb-ff: thin; }
 html[data-barra='editorial'] {
   --sb-larg: 14px; --sb-trilha: var(--bg); --sb-polegar: var(--accent-strong);
   --sb-polegar-hov: var(--accent-soft); --sb-folga: 4px; --sb-filete: inset 1px 0 0 var(--rule);
@@ -281,22 +290,22 @@ html[data-barra='teal'] {
   --sb-larg: 12px; --sb-polegar: var(--accent-soft); --sb-polegar-hov: var(--accent); --sb-folga: 2px;
 }
 
-html[data-barra]::-webkit-scrollbar,
-html[data-barra] ::-webkit-scrollbar { width: var(--sb-larg); height: var(--sb-larg); }
-html[data-barra]::-webkit-scrollbar-track,
-html[data-barra] ::-webkit-scrollbar-track { background: var(--sb-trilha); box-shadow: var(--sb-filete); }
-html[data-barra]::-webkit-scrollbar-thumb,
-html[data-barra] ::-webkit-scrollbar-thumb {
+html:not([data-barra='nativa'])::-webkit-scrollbar,
+html:not([data-barra='nativa']) ::-webkit-scrollbar { width: var(--sb-larg); height: var(--sb-larg); }
+html:not([data-barra='nativa'])::-webkit-scrollbar-track,
+html:not([data-barra='nativa']) ::-webkit-scrollbar-track { background: var(--sb-trilha); box-shadow: var(--sb-filete); }
+html:not([data-barra='nativa'])::-webkit-scrollbar-thumb,
+html:not([data-barra='nativa']) ::-webkit-scrollbar-thumb {
   background: var(--sb-polegar); border-radius: var(--sb-raio);
   border: var(--sb-folga) solid transparent; background-clip: content-box;
 }
-html[data-barra]::-webkit-scrollbar-thumb:hover,
-html[data-barra] ::-webkit-scrollbar-thumb:hover { background: var(--sb-polegar-hov); background-clip: content-box; }
-html[data-barra]::-webkit-scrollbar-corner,
-html[data-barra] ::-webkit-scrollbar-corner { background: var(--sb-trilha); }
+html:not([data-barra='nativa'])::-webkit-scrollbar-thumb:hover,
+html:not([data-barra='nativa']) ::-webkit-scrollbar-thumb:hover { background: var(--sb-polegar-hov); background-clip: content-box; }
+html:not([data-barra='nativa'])::-webkit-scrollbar-corner,
+html:not([data-barra='nativa']) ::-webkit-scrollbar-corner { background: var(--sb-trilha); }
 
 @supports not selector(::-webkit-scrollbar) {
-  html[data-barra], html[data-barra] * {
+  html:not([data-barra='nativa']), html:not([data-barra='nativa']) * {
     scrollbar-width: var(--sb-ff);
     scrollbar-color: var(--sb-polegar) var(--sb-trilha);
   }
@@ -488,12 +497,9 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
   .drawer-close { display: inline-flex; position: absolute; top: .6rem; right: .6rem; }
   .content { padding: 1rem 1rem 5.5rem; }
   .prose { max-width: 100%; }
-  .prose p { text-align: left; }
-  /* a justificação escolhida em /configuracoes vale só no desktop: numa coluna de celular
-     ela abre buracos entre as palavras. Precisa repetir o seletor porque o do modo
-     justificado tem especificidade maior que a regra acima. */
-  html[data-justif='1'] .prose p,
-  html[data-justif='1'] .prose li { text-align: left; hyphens: manual; }
+  /* a justificação vale só no desktop: numa coluna de celular ela abre buracos entre as
+     palavras. Vem depois da regra base, com a mesma especificidade, e por isso vence. */
+  .prose p, .prose li { text-align: left; hyphens: manual; }
 }
 
 /* ---------- alvos de toque (mobile) ----------

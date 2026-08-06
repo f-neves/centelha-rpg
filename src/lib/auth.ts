@@ -11,6 +11,28 @@ export async function usuarioAtual(): Promise<User | null> {
   return data.user ?? null;
 }
 
+/** E-mail do administrador do site. Vale como critério ao lado da tabela `admins`. */
+export const EMAIL_ADMIN = 'neves.mecanica@gmail.com';
+
+/**
+ * Se o usuário logado é o administrador. Aceita duas provas: o e-mail do dono do site e
+ * a função eh_admin() do banco (tabela `admins`), para não depender de uma só.
+ *
+ * ATENÇÃO: isto é um portão de INTERFACE, não de segurança. O site é estático, então o
+ * HTML da página existe na URL para quem a digitar. Serve para tirar a página do caminho
+ * dos jogadores, não para guardar segredo (não há segredo nenhum ali: são preferências
+ * de leitura). O que precisa de segurança de verdade continua nas policies do Supabase.
+ */
+export async function ehAdmin(): Promise<boolean> {
+  const u = await usuarioAtual();
+  if (!u) return false;
+  if (u.email?.toLowerCase() === EMAIL_ADMIN) return true;
+  try {
+    const { data } = await getSupabase().rpc('eh_admin');
+    return data === true;
+  } catch { return false; }
+}
+
 /** Nome de exibição do usuário logado (da tabela profiles), ou ''. */
 export async function perfilNome(): Promise<string> {
   const u = await usuarioAtual();
