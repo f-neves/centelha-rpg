@@ -131,8 +131,21 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 /* O padding-bottom precisa acomodar o FAB "Nesta página", que é fixo no canto inferior:
    sem folga ele fica permanentemente sobre a última linha do texto. */
 .content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 6rem; overflow-wrap: break-word; }
-.prose { max-width: 70rem; margin-inline: auto; }
+/* 36rem ≈ 72 caracteres por linha, dentro da faixa confortável (45-75). A 70rem o texto
+   corrido chegava a 142 caracteres por linha, medidos nas caixas de linha renderizadas. */
+.prose { max-width: 36rem; margin-inline: auto; }
 .wide { max-width: 60rem; margin-inline: auto; }
+
+/* Tabelas e catálogos podem exceder a medida do texto e ficar centralizados sobre ela, como
+   num livro: a coluna de leitura continua estreita, o material tabular usa a página.
+   Só acima de 1100px, onde há gutter de sobra; a conta garante que nunca passe do conteúdo. */
+@media (min-width: 1100px) {
+  .prose > .table-wrap, .prose > .cat-grid {
+    --larg: min(48rem, calc(100vw - 24rem));
+    width: var(--larg);
+    margin-inline: calc((100% - var(--larg)) / 2);
+  }
+}
 
 /* topbar (mobile) */
 .topbar { display: none; }
