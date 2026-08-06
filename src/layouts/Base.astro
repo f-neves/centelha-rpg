@@ -68,7 +68,20 @@ if (partes.length) crumbs.push({ label: title });
         if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'escuro' : 'classico';
         document.documentElement.dataset.theme = t;
         if (localStorage.getItem('sidebar') === 'collapsed') document.documentElement.classList.add('sidebar-collapsed');
-      } catch (e) { document.documentElement.dataset.theme = 'classico'; }
+        // preferências de diagramação (/configuracoes) aplicadas ANTES da primeira pintura,
+        // senão a página abre no padrão e "pula" para a config do leitor.
+        // Espelha aplicarConfig() de lib/config-site.ts — mudar lá, mudar aqui.
+        var c = JSON.parse(localStorage.getItem('centelha:config') || '{}') || {};
+        var de = document.documentElement, st = de.style;
+        if (c.largTexto) st.setProperty('--cfg-larg-texto', c.largTexto + 'rem');
+        if (c.largTabela === 0) st.setProperty('--cfg-larg-tabela', 'var(--cfg-larg-texto, 36rem)');
+        else if (c.largTabela) st.setProperty('--cfg-larg-tabela', c.largTabela + 'rem');
+        if (c.largFicha === 0) st.setProperty('--cfg-larg-ficha', '200rem');
+        else if (c.largFicha) st.setProperty('--cfg-larg-ficha', c.largFicha + 'rem');
+        if (c.fonteCorpo) st.setProperty('--fs-corpo', (c.fonteCorpo / 16) + 'rem');
+        if (c.entrelinha) st.setProperty('--cfg-entrelinha', String(c.entrelinha));
+        if (c.colunas === 2) de.dataset.colunas = '2';
+      } catch (e) { document.documentElement.dataset.theme = document.documentElement.dataset.theme || 'classico'; }
     })();
   </script>
 </head>
@@ -132,12 +145,13 @@ if (partes.length) crumbs.push({ label: title });
         </a>
       </nav>
 
-      <div class="grp" style="margin-top:1.4rem">Aparência</div>
-      <div class="btn-row" id="tema-ctl">
-        <button class="btn" data-tema="classico" title="Tema clássico (pergaminho)">Clássico</button>
-        <button class="btn" data-tema="escuro" title="Tema escuro">Escuro</button>
-        <button class="btn" data-tema="legivel" title="Alto contraste">Legível</button>
-      </div>
+      {/* o tema mudou-se para /configuracoes, junto com as preferências de diagramação */}
+      <nav class="toc" aria-label="Preferências" style="margin-top:1.4rem">
+        <div class="grp">Preferências</div>
+        <a href={url('configuracoes')} aria-current={isActive('configuracoes') ? 'page' : undefined}>
+          <span class="num">⚙</span><span>Configurações</span>
+        </a>
+      </nav>
     </aside>
 
     <main class="content" id="conteudo" data-pagefind-body>
@@ -178,14 +192,7 @@ if (partes.length) crumbs.push({ label: title });
     document.getElementById('sidebar-collapse')?.addEventListener('click', () => setSidebar(true));
     document.getElementById('sidebar-expand')?.addEventListener('click', () => setSidebar(false));
 
-    // tema
-    const setTema = (t: string) => { document.documentElement.dataset.theme = t; try { localStorage.setItem('tema', t); } catch {} markTema(t); };
-    const markTema = (t: string) => document.querySelectorAll('#tema-ctl .btn').forEach((b) => {
-      const on = (b as HTMLElement).dataset.tema === t;
-      b.classList.toggle('primary', on); b.setAttribute('aria-pressed', String(on));
-    });
-    document.querySelectorAll('#tema-ctl .btn').forEach((b) => b.addEventListener('click', () => setTema((b as HTMLElement).dataset.tema!)));
-    markTema(document.documentElement.dataset.theme || 'classico');
+    // (os botões de tema moraram aqui; hoje vivem em /configuracoes)
 
     // permalink "copiar link" em títulos e em blocos com id (data-permalink)
     const copy = (hash: string) => {
@@ -238,6 +245,9 @@ if (partes.length) crumbs.push({ label: title });
         if (!supabaseConfigurado) return;
         const user = await usuarioAtual();
         if (!user) return;
+        // preferências de diagramação salvas na conta: baixa e aplica (o cache local já
+        // pintou a página; isto só corrige diferenças vindas de outro aparelho)
+        import('../lib/config-site').then((m) => m.sincronizarDaConta()).catch(() => {});
         const nome = await perfilNome();
         label.textContent = 'Sair' + (nome ? ' · ' + nome : '');
         link.setAttribute('href', '#');

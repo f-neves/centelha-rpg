@@ -1,0 +1,219 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Configurações" descricao="Ajuste a diagramação do livro ao seu gosto: tema, largura da coluna, número de colunas, tabelas, fonte e entrelinha.">
+  <h1>Configurações</h1>
+  <p class="lead">Ajustes de leitura deste site. Valem na hora, ficam guardados <strong>neste aparelho</strong> e, se você estiver logado, acompanham a sua conta nos outros. Esta própria página obedece aos ajustes: mexa e veja o texto reagir.</p>
+
+  <section class="cfg-sec">
+    <h2>Tema</h2>
+    <div class="btn-row" id="cfg-tema">
+      <button class="btn" data-tema="classico" title="Pergaminho e safira">Clássico</button>
+      <button class="btn" data-tema="escuro" title="Tema escuro">Escuro</button>
+      <button class="btn" data-tema="legivel" title="Alto contraste">Legível</button>
+    </div>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Largura do texto</h2>
+    <p class="muted">A medida da coluna de leitura. A faixa confortável fica entre 45 e 75 caracteres por linha; acima disso o olho perde a linha ao voltar. No modo de 2 colunas, este valor vale para <strong>cada</strong> coluna.</p>
+    <div class="btn-row" data-presets="largTexto">
+      <button class="btn" data-v="36">Estreita <small>36rem</small></button>
+      <button class="btn" data-v="46">Média <small>46rem</small></button>
+      <button class="btn" data-v="60">Larga <small>60rem</small></button>
+      <button class="btn" data-v="70">Clássica <small>70rem</small></button>
+    </div>
+    <label class="cfg-range">Ajuste fino
+      <input type="range" data-cfg="largTexto" min="30" max="75" step="1" />
+      <output data-out="largTexto"></output>
+    </label>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Colunas de texto</h2>
+    <p class="muted">Duas colunas lado a lado, como a página de um livro. Só em telas largas (acima de 1100px); no celular é sempre uma. Tabelas, callouts e fórmulas atravessam as duas.</p>
+    <div class="btn-row" data-presets="colunas">
+      <button class="btn" data-v="1">1 coluna</button>
+      <button class="btn" data-v="2">2 colunas</button>
+    </div>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Largura máxima das tabelas</h2>
+    <p class="muted">As tabelas dos capítulos podem exceder a coluna de texto, centralizadas sobre ela (o padrão de livro). Aqui se define o teto. As tabelas das ferramentas (Área do Mestre, Equipamentos) não mudam.</p>
+    <div class="btn-row" data-presets="largTabela">
+      <button class="btn" data-v="0">Igual ao texto</button>
+      <button class="btn" data-v="48">Padrão <small>48rem</small></button>
+      <button class="btn" data-v="60">Larga <small>60rem</small></button>
+    </div>
+    <label class="cfg-range">Ajuste fino
+      <input type="range" data-cfg="largTabela" min="36" max="64" step="1" />
+      <output data-out="largTabela"></output>
+    </label>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Arma de exemplo</th><th>Velocidade</th><th>Dano</th><th>Acerto</th><th>Defesa</th><th>Mãos</th></tr></thead>
+      <tbody>
+        <tr><td>Espada longa</td><td>6</td><td>1d6</td><td>+1</td><td>+1</td><td>1</td></tr>
+        <tr><td>Montante</td><td>7</td><td>2d6</td><td>0</td><td>−1</td><td>2</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Largura da Ficha de Personagem</h2>
+    <p class="muted">Vale para a Ficha e para a página do personagem salvo.</p>
+    <div class="btn-row" data-presets="largFicha">
+      <button class="btn" data-v="60">Padrão <small>60rem</small></button>
+      <button class="btn" data-v="72">Larga <small>72rem</small></button>
+      <button class="btn" data-v="0">Tela toda</button>
+    </div>
+    <label class="cfg-range">Ajuste fino
+      <input type="range" data-cfg="largFicha" min="54" max="90" step="1" />
+      <output data-out="largFicha"></output>
+    </label>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Fonte do corpo</h2>
+    <div class="btn-row" data-presets="fonteCorpo">
+      <button class="btn" data-v="17">Pequena <small>17px</small></button>
+      <button class="btn" data-v="18.9">Padrão <small>18,9px</small></button>
+      <button class="btn" data-v="21">Grande <small>21px</small></button>
+    </div>
+    <label class="cfg-range">Ajuste fino
+      <input type="range" data-cfg="fonteCorpo" min="16" max="22" step="0.5" />
+      <output data-out="fonteCorpo"></output>
+    </label>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Entrelinha</h2>
+    <div class="btn-row" data-presets="entrelinha">
+      <button class="btn" data-v="1.45">Compacta <small>1,45</small></button>
+      <button class="btn" data-v="1.62">Padrão <small>1,62</small></button>
+      <button class="btn" data-v="1.8">Arejada <small>1,8</small></button>
+    </div>
+    <label class="cfg-range">Ajuste fino
+      <input type="range" data-cfg="entrelinha" min="1.3" max="2" step="0.05" />
+      <output data-out="entrelinha"></output>
+    </label>
+  </section>
+
+  <section class="cfg-sec">
+    <h2>Guardar &amp; restaurar</h2>
+    <p id="cfg-conta" class="muted"></p>
+    <div class="btn-row">
+      <button class="btn" id="cfg-reset">Restaurar padrão</button>
+      <button class="btn" id="cfg-json" title="Copia os valores atuais, para virarem o padrão do site no futuro">Copiar JSON</button>
+      <span id="cfg-status" class="muted" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { CONFIG_PADRAO, aplicarConfig, gravarCache, lerCache, salvarNaConta, sincronizarDaConta, type ConfigSite } from '../lib/config-site';
+
+  let cfg: ConfigSite = { ...lerCache() };
+  const status = document.getElementById('cfg-status')!;
+  const conta = document.getElementById('cfg-conta')!;
+  const debounce = (fn: () => void, ms: number) => { let t: any; return () => { clearTimeout(t); t = setTimeout(fn, ms); }; };
+
+  const efetivo = (k: keyof typeof CONFIG_PADRAO): number =>
+    (cfg[k] as number | undefined) ?? CONFIG_PADRAO[k];
+
+  // caracteres por linha estimados: medido no site, a EB Garamond rende ~0,423×corpo por
+  // caractere (36rem ÷ 18,9px deram 72 cpl reais)
+  const cpl = () => Math.round((efetivo('largTexto') * 16) / (efetivo('fonteCorpo') * 0.423));
+
+  function pinta() {
+    aplicarConfig(cfg);
+    // presets acesos quando o valor bate
+    document.querySelectorAll<HTMLElement>('[data-presets]').forEach((g) => {
+      const k = g.dataset.presets as keyof ConfigSite;
+      const v = k === 'tema' ? undefined : efetivo(k as any);
+      g.querySelectorAll<HTMLButtonElement>('button[data-v]').forEach((b) => {
+        b.classList.toggle('primary', Number(b.dataset.v) === v);
+      });
+    });
+    // sliders e saídas
+    document.querySelectorAll<HTMLInputElement>('input[data-cfg]').forEach((i) => {
+      const k = i.dataset.cfg as keyof typeof CONFIG_PADRAO;
+      i.value = String(efetivo(k));
+    });
+    const fmt: Record<string, (v: number) => string> = {
+      largTexto: (v) => `${v}rem · ~${cpl()} caracteres por linha`,
+      largTabela: (v) => (efetivo('largTabela') === 0 ? 'igual ao texto' : `${v}rem`),
+      largFicha: (v) => (efetivo('largFicha') === 0 ? 'tela toda' : `${v}rem`),
+      fonteCorpo: (v) => `${String(v).replace('.', ',')}px`,
+      entrelinha: (v) => String(v).replace('.', ','),
+    };
+    document.querySelectorAll<HTMLElement>('output[data-out]').forEach((o) => {
+      const k = o.dataset.out as keyof typeof CONFIG_PADRAO;
+      o.textContent = fmt[k](efetivo(k));
+    });
+    // tema
+    const t = document.documentElement.dataset.theme;
+    document.querySelectorAll<HTMLButtonElement>('#cfg-tema .btn').forEach((b) => {
+      b.classList.toggle('primary', b.dataset.tema === t);
+      b.setAttribute('aria-pressed', String(b.dataset.tema === t));
+    });
+  }
+
+  const sobe = debounce(async () => {
+    const ok = await salvarNaConta(cfg);
+    status.textContent = ok ? 'Salvo na sua conta.' : 'Salvo neste aparelho.';
+    setTimeout(() => { status.textContent = ''; }, 2500);
+  }, 800);
+
+  function muda(parcial: ConfigSite) {
+    cfg = { ...cfg, ...parcial };
+    gravarCache(cfg);
+    pinta();
+    sobe();
+  }
+
+  // presets
+  document.querySelectorAll<HTMLElement>('[data-presets]').forEach((g) => {
+    const k = g.dataset.presets as keyof ConfigSite;
+    g.querySelectorAll<HTMLButtonElement>('button[data-v]').forEach((b) =>
+      b.addEventListener('click', () => muda({ [k]: Number(b.dataset.v) } as ConfigSite)));
+  });
+  // sliders
+  document.querySelectorAll<HTMLInputElement>('input[data-cfg]').forEach((i) =>
+    i.addEventListener('input', () => muda({ [i.dataset.cfg!]: Number(i.value) } as ConfigSite)));
+  // tema
+  document.querySelectorAll<HTMLButtonElement>('#cfg-tema .btn').forEach((b) =>
+    b.addEventListener('click', () => muda({ tema: b.dataset.tema as ConfigSite['tema'] })));
+
+  document.getElementById('cfg-reset')!.addEventListener('click', () => {
+    const tema = cfg.tema; // restaurar diagramação não mexe no tema escolhido
+    cfg = tema ? { tema } : {};
+    gravarCache(cfg); pinta(); sobe();
+  });
+  document.getElementById('cfg-json')!.addEventListener('click', () => {
+    const completo = { tema: document.documentElement.dataset.theme, ...CONFIG_PADRAO, ...cfg };
+    navigator.clipboard?.writeText(JSON.stringify(completo, null, 2));
+    status.textContent = 'JSON copiado.';
+    setTimeout(() => { status.textContent = ''; }, 2000);
+  });
+
+  // estado da conta + sincronização inicial
+  (async () => {
+    const daConta = await sincronizarDaConta();
+    if (daConta) { cfg = daConta; conta.textContent = 'Estas preferências estão sincronizadas com a sua conta.'; }
+    else conta.textContent = 'Sem login (ou sem a coluna de config no banco): as preferências ficam só neste aparelho.';
+    pinta();
+  })();
+  pinta();
+</script>
+
+<style>
+  .cfg-sec { margin-top: 1.6rem; }
+  .cfg-sec h2 { margin-top: 0; }
+  .btn small { display: block; font-family: 'EB Garamond'; font-size: var(--fs-micro); opacity: .75; text-transform: none; letter-spacing: 0; }
+  /* flex-wrap: no celular a saída ("~72 caracteres por linha") não cabe ao lado do
+     slider e estourava a página em 23px; quebrando, ela desce para a linha de baixo */
+  .cfg-range { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .8rem; margin-top: .6rem; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .cfg-range input[type='range'] { flex: 1 1 12rem; max-width: 22rem; min-width: 0; accent-color: var(--accent); min-height: 44px; }
+  .cfg-range output { font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); }
+</style>

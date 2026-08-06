@@ -155,13 +155,12 @@ body {
   color: var(--ink);
   font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
   font-size: var(--fs-corpo);
-  line-height: 1.62;
+  line-height: var(--cfg-entrelinha, var(--lh-tema, 1.62));
   -webkit-text-size-adjust: 100%;
 }
 /* o tema Legível sobe o corpo pelo token, não por regra à parte, para a escala inteira
    acompanhar em vez de criar mais um degrau solto. */
-[data-theme='legivel'] { --fs-corpo: 1.22rem; }
-[data-theme='legivel'] body { line-height: 1.7; }
+[data-theme='legivel'] { --fs-corpo: 1.22rem; --lh-tema: 1.7; }
 
 h1, h2, h3, h4, .cinzel { font-family: 'Cinzel', Georgia, serif; line-height: 1.18; color: var(--accent-texto); }
 h1 { font-size: var(--fs-h1); margin: 0 0 .5em; }
@@ -193,8 +192,9 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
    sem folga ele fica permanentemente sobre a última linha do texto. */
 .content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 6rem; overflow-wrap: break-word; }
 /* 36rem ≈ 72 caracteres por linha, dentro da faixa confortável (45-75). A 70rem o texto
-   corrido chegava a 142 caracteres por linha, medidos nas caixas de linha renderizadas. */
-.prose { max-width: 36rem; margin-inline: auto; }
+   corrido chegava a 142 caracteres por linha, medidos nas caixas de linha renderizadas.
+   O leitor pode mudar em /configuracoes (--cfg-larg-texto). */
+.prose { max-width: var(--cfg-larg-texto, 36rem); margin-inline: auto; }
 .wide { max-width: 60rem; margin-inline: auto; }
 
 /* Tabelas e catálogos podem exceder a medida do texto e ficar centralizados sobre ela, como
@@ -202,11 +202,32 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
    Só acima de 1100px, onde há gutter de sobra; a conta garante que nunca passe do conteúdo. */
 @media (min-width: 1100px) {
   .prose > .table-wrap, .prose > .cat-grid {
-    --larg: min(48rem, calc(100vw - 24rem));
+    /* o teto de 48rem é configurável em /configuracoes; o calc() garante que nunca
+       passa da área de conteúdo, seja qual for o valor escolhido */
+    --larg: min(var(--cfg-larg-tabela, 48rem), calc(100vw - 24rem));
     width: var(--larg);
     margin-inline: calc((100% - var(--larg)) / 2);
   }
 }
+
+/* ---------- 2 colunas (opcional, em /configuracoes) ----------
+   Texto corrido em duas colunas acima de 1100px, como a página de um livro: a "largura do
+   texto" escolhida vira a largura de CADA coluna. Tabelas, callouts, fórmulas, títulos e
+   a abertura atravessam as duas (column-span), que é como um livro de RPG diagrama.
+   Página que ficar ruim no modo pode sair pontualmente com class="sem-colunas". */
+@media (min-width: 1100px) {
+  html[data-colunas='2'] .prose:not(.sem-colunas) {
+    max-width: calc(var(--cfg-larg-texto, 36rem) * 2 + 2.6rem);
+    columns: 2; column-gap: 2.6rem;
+  }
+  html[data-colunas='2'] .prose:not(.sem-colunas) > :is(h1, h2, .lead, .table-wrap, .cat-grid, .callout, .formula, pre, .mermaid, .tag-orn, .cinzel, nav, hr) {
+    column-span: all;
+  }
+}
+
+/* largura da Ficha de Personagem (em /configuracoes): a Ficha e o /personagem são os
+   únicos artigos que carregam a barra de abas, daí o :has() */
+article.wide:has(.ftab-bar) { max-width: var(--cfg-larg-ficha, 60rem); }
 
 /* topbar (mobile) */
 .topbar { display: none; }
