@@ -25,6 +25,22 @@ import FormasPop from './FormasPop.astro';
   </span>
 </div>
 
+{/* No celular a Ficha vira um painel de abas: os vitais ficam sempre à vista, uma seção
+    por vez, ações na barra inferior. No desktop os invólucros .ftab têm display: contents
+    e NADA muda. A ficha inteira media ~11.700px (14 telas) numa coluna só. */}
+<div class="fdeck">
+  <div id="fvitais" aria-label="Derivados vitais"></div>
+  <nav class="ftab-bar" role="tablist" aria-label="Seções da ficha">
+    <button type="button" role="tab" data-ftab="perfil" aria-selected="true">Perfil</button>
+    <button type="button" role="tab" data-ftab="atrib" aria-selected="false">Atrib</button>
+    <button type="button" role="tab" data-ftab="hab" aria-selected="false">Hab</button>
+    <button type="button" role="tab" data-ftab="proezas" aria-selected="false">Proezas</button>
+    <button type="button" role="tab" data-ftab="equip" aria-selected="false">Equip</button>
+    <button type="button" role="tab" data-ftab="rolar" aria-selected="false">Rolar</button>
+  </nav>
+</div>
+
+<div class="ftab" data-ftab="perfil">
 <div class="idrow">
   <label>Nome<input class="txt" data-id="nome" placeholder="Seu herói" /></label>
   <label>Conceito<input class="txt" data-id="conceito" /></label>
@@ -32,10 +48,14 @@ import FormasPop from './FormasPop.astro';
   <label>Raça<select class="racasel" id="raca-sel"></select></label>
 </div>
 <div class="raca-info" id="raca-info"></div>
+</div>
 
+<div class="ftab" data-ftab="atrib">
 <h2 class="barh">Atributos <small>(piso 1 · 5 + nível×5: 15/20/25/30/35)</small></h2>
 <div class="cols3" id="attrs"></div>
+</div>
 
+<div class="ftab" data-ftab="perfil">
 <div class="cols2">
   <div>
     <h2 class="barh">Centelha, Virtudes, Vontade &amp; Fôlego</h2>
@@ -46,13 +66,17 @@ import FormasPop from './FormasPop.astro';
     <div class="panel no-gloss" id="derived"></div>
   </div>
 </div>
+</div>
 
+<div class="ftab" data-ftab="hab">
 <h2 class="barh barh-tog" data-sec="skills"><span class="sec-caret">▾</span> Habilidades <small>(piso 0 · 4 + nível×2: 6/8/10/12/14/16 · especialidade 8 + nível×4: 12/16/20 · até [nível÷2] por perícia)</small></h2>
 <div class="sec-body" id="sec-skills"><div class="cols3" id="skills"></div></div>
 
 <h2 class="barh barh-tog" data-sec="secondary"><span class="sec-caret">▾</span> Habilidades Secundárias <small>(metade da primária: 3/4/5/6/7/8 · esp. 6/8/10 · até [nível÷2])</small></h2>
 <div class="sec-body" id="sec-secondary"><div class="cols3" id="secondary"></div></div>
+</div>
 
+<div class="ftab" data-ftab="proezas">
 <h2 class="barh barh-tog" data-sec="tecnicas"><span class="sec-caret">▾</span> Proezas &amp; Técnicas <small>(custo em XP)</small></h2>
 <div class="sec-body" id="sec-tecnicas">
   <div class="cam-tools"><button class="btn" id="cam-all">Expandir todos</button></div>
@@ -62,7 +86,9 @@ import FormasPop from './FormasPop.astro';
 <h2 class="barh barh-tog" data-sec="artes"><span class="sec-caret">▾</span> Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0)</small></h2>
 <div class="sec-body" id="sec-artes"><div class="cols3" id="artes"></div>
       <div class="ef-esp" id="efeitos-esp"></div></div>
+</div>
 
+<div class="ftab" data-ftab="equip">
 <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Absorção)</small></h2>
 <p class="equip-nota muted">Na lista de armas, os números são <strong>Velocidade / Acerto / Dano / Defesa</strong>. O <strong>✎</strong> ao lado da peça escolhida abre os valores para edição, para quando o item for de qualidade melhor ou pior que a do catálogo.</p>
 <div id="eq-conjuntos"></div>
@@ -76,10 +102,94 @@ import FormasPop from './FormasPop.astro';
 
 <h2 class="barh">Força &amp; Arremesso <small>(levantamento e alcance de arremesso · não custa XP)</small></h2>
 <div class="panel" id="forca-arremesso"></div>
+</div>
 
+<div class="ftab" data-ftab="rolar">
 <h2 class="barh">Rolar</h2>
 <RoladorDados compact />
+</div>
+
+<div class="fx-bar" data-pagefind-ignore>
+  <span id="fx-xp"></span>
+  <button class="btn primary" id="fx-salvar" type="button" hidden>Salvar</button>
+  <button class="btn" id="fx-mais" type="button" aria-expanded="false" aria-label="Mais ações">⋯</button>
+</div>
+
 <FormasPop />
+
+<script>
+  // Abas da ficha no celular. No desktop este script só garante que tudo fica visível.
+  const bar = document.querySelector<HTMLElement>('.ftab-bar');
+  if (bar) {
+    const mq = matchMedia('(max-width: 900px)');
+    const botoes = Array.from(bar.querySelectorAll<HTMLButtonElement>('button[data-ftab]'));
+    const paineis = Array.from(document.querySelectorAll<HTMLElement>('.ftab'));
+    let ativa = 'perfil';
+    const aplicar = () => {
+      const mob = mq.matches;
+      document.body.classList.toggle('ficha-abas', mob);
+      if (!mob) document.body.classList.remove('fx-aberto');
+      paineis.forEach((t) => t.classList.toggle('on', !mob || t.dataset.ftab === ativa));
+      botoes.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.ftab === ativa)));
+    };
+    botoes.forEach((b) => b.addEventListener('click', () => { ativa = b.dataset.ftab!; aplicar(); }));
+    mq.addEventListener('change', aplicar);
+    aplicar();
+
+    // vitais sempre à vista: espelham PV / Defesa / Energia / Mana do #derived,
+    // que o engine re-renderiza inteiro a cada mudança (daí o MutationObserver)
+    const vit = document.getElementById('fvitais');
+    const derived = document.getElementById('derived');
+    const updVitais = () => {
+      if (!vit || !derived) return;
+      const pega = (rx: RegExp) => {
+        for (const d of derived.querySelectorAll('.derv')) {
+          if (rx.test(d.querySelector('.dl')?.textContent || '')) return d.querySelector('.dv')?.textContent || '—';
+        }
+        return '—';
+      };
+      vit.innerHTML = [
+        ['PV', pega(/pontos de vida/i)], ['Def', pega(/defesa \(esquiva\)/i)],
+        ['En', pega(/^energia/i)], ['Mana', pega(/^mana/i)],
+      ].map(([k, v]) => `<span><b>${k}</b>${v}</span>`).join('');
+    };
+    if (derived) { new MutationObserver(updVitais).observe(derived, { childList: true, subtree: true }); updVitais(); }
+
+    // barra inferior: saldo de XP espelhado + Salvar (quando a página injeta o botão real) + ⋯
+    const fxXp = document.getElementById('fx-xp');
+    const xpRem = document.getElementById('xpRem');
+    const updXp = () => {
+      if (!fxXp || !xpRem) return;
+      fxXp.textContent = `Restam ${xpRem.textContent} XP`;
+      fxXp.classList.toggle('neg', xpRem.classList.contains('neg'));
+    };
+    if (xpRem) { new MutationObserver(updXp).observe(xpRem, { childList: true, characterData: true, subtree: true }); updXp(); }
+
+    const fxSalvar = document.getElementById('fx-salvar') as HTMLButtonElement | null;
+    const realSalvar = () => Array.from(document.querySelectorAll<HTMLButtonElement>('.xp-btns .btn'))
+      .find((b) => /salvar/i.test(b.textContent || ''));
+    const updSalvar = () => { if (fxSalvar) fxSalvar.hidden = !realSalvar(); };
+    fxSalvar?.addEventListener('click', () => realSalvar()?.click());
+    const xpBtns = document.querySelector('.xp-btns');
+    if (xpBtns) { new MutationObserver(updSalvar).observe(xpBtns, { childList: true }); updSalvar(); }
+
+    // ⋯ abre a barra de XP (orçamento, modo, exportar…) como folha sobre a barra inferior
+    const fxMais = document.getElementById('fx-mais');
+    fxMais?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const aberto = document.body.classList.toggle('fx-aberto');
+      fxMais.setAttribute('aria-expanded', String(aberto));
+    });
+    document.addEventListener('click', (e) => {
+      if (!document.body.classList.contains('fx-aberto')) return;
+      const painel = document.getElementById('painel');
+      if (painel && e.target instanceof Node && !painel.contains(e.target)) {
+        document.body.classList.remove('fx-aberto');
+        fxMais?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
 
 <!-- is:global porque o conteúdo (bolinhas, cards, pílulas) é criado via JS e
      não recebe o atributo de escopo do Astro -->
@@ -299,8 +409,59 @@ import FormasPop from './FormasPop.astro';
   .derv .dv[data-calc] { cursor: help; border-bottom: 1px dotted var(--accent-soft); }
   #combate .cmb { padding: .15rem 0; font-size: var(--fs-aux); } #combate .cmb b { color: var(--accent-strong); }
 
-  /* impressão: só a ficha, sem o chrome do site */
+  /* ---------- celular: abas + vitais + barra inferior ----------
+     No desktop nada disto existe: .ftab vira display:contents (caixa transparente) e
+     .fdeck/.fx-bar somem. A classe body.ficha-abas é posta pelo script só no celular. */
+  .ftab { display: contents; }
+  .fdeck, .fx-bar { display: none; }
+  @media (max-width: 900px) {
+    body.ficha-abas .fdeck { display: block; position: sticky; top: 3.55rem; z-index: 25;
+      background: var(--bg); border-bottom: 1px solid var(--rule); margin: 0 -1rem; padding: .15rem 1rem 0; }
+    #fvitais { display: flex; gap: .9rem; padding: .25rem .1rem; font-family: 'Cinzel';
+      font-size: var(--fs-micro); color: var(--ink-soft); overflow-x: auto; white-space: nowrap; }
+    #fvitais b { color: var(--accent-texto); margin-right: .25rem; }
+    .ftab-bar { display: flex; overflow-x: auto; }
+    .ftab-bar button { flex: 1 0 auto; min-height: 44px; background: none; border: none;
+      border-bottom: 3px solid transparent; color: var(--ink); font-family: 'Cinzel';
+      font-size: var(--fs-micro); padding: .25rem .55rem; cursor: pointer; }
+    .ftab-bar button[aria-selected='true'] { color: var(--accent-texto); border-bottom-color: var(--accent); }
+
+    body.ficha-abas .ftab { display: none; }
+    body.ficha-abas .ftab.on { display: block; }
+
+    /* a barra de XP sai do fluxo e vira a folha de ações atrás do ⋯ */
+    body.ficha-abas .xpbar { display: none; }
+    body.ficha-abas.fx-aberto .xpbar { display: flex; position: fixed; left: .5rem; right: .5rem;
+      bottom: 4.4rem; z-index: 65; box-shadow: 0 12px 40px var(--shadow); max-height: 70vh; overflow-y: auto; margin: 0; }
+
+    body.ficha-abas .fx-bar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      align-items: center; gap: .6rem; padding: .4rem .8rem calc(.4rem + env(safe-area-inset-bottom));
+      background: var(--panel); border-top: 1px solid var(--rule); }
+    #fx-xp { font-family: 'Cinzel'; font-size: var(--fs-rotulo); }
+    #fx-xp.neg { color: var(--perigo); }
+    #fx-salvar { margin-left: auto; }
+    #fx-salvar[hidden] { display: none; }
+    body.ficha-abas .fx-bar #fx-mais { margin-left: 0; min-width: 44px; }
+    body.ficha-abas .fx-bar #fx-salvar[hidden] ~ #fx-mais { margin-left: auto; }
+    body.ficha-abas .content { padding-bottom: 7.5rem; }
+    /* o sumário flutuante vira redundância com as abas */
+    body.ficha-abas #otp-fab, body.ficha-abas #otp-panel { display: none; }
+
+    /* linhas de toque: 48px por atributo/perícia, dado de 44px à direita */
+    body.ficha-abas .trow { min-height: 48px; align-items: center; }
+    body.ficha-abas .trow .rollv { min-width: 44px; min-height: 44px; }
+    body.ficha-abas .trow .specbtn { min-width: 36px; min-height: 44px; }
+    /* parâmetros do efeito em até 2 linhas em vez de truncados numa só */
+    body.ficha-abas .ef-i-par { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    /* identidade em coluna única */
+    body.ficha-abas .idrow { grid-template-columns: 1fr; }
+  }
+
+  /* impressão: só a ficha, sem o chrome do site. As abas do celular não valem no papel:
+     a página impressa pode ter menos de 900px e esconderia as seções não-ativas. */
   @media print {
+    .ftab { display: contents !important; }
+    .fdeck, .fx-bar { display: none !important; }
     .sidebar, .topbar, .scrim, #consulta, #otp-fab, #otp-panel, .busca-modal, .ref-pop, .xp-btns, .modo-toggle, .rollv, .rolador, .skip { display: none !important; }
     .shell { display: block !important; } .content { padding: 0 !important; }
     .cam-body { display: block !important; }
