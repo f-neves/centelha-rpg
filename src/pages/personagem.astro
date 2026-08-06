@@ -505,8 +505,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .retrato-frame.ajustando:active { cursor: grabbing; }
   .retrato-frame.ajustando img { transition: none; }
   .retrato-range { -webkit-appearance: none; appearance: none; width: 172px; height: 16px; background: transparent; cursor: pointer; margin: 0; }
-  .retrato-range::-webkit-slider-runnable-track { height: 3px; border-radius: 3px; background: color-mix(in srgb, var(--accent) 40%, var(--rule)); }
-  .retrato-range::-moz-range-track { height: 3px; border-radius: 3px; background: color-mix(in srgb, var(--accent) 40%, var(--rule)); }
+  .retrato-range::-webkit-slider-runnable-track { height: 3px; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 40%, var(--rule)); }
+  .retrato-range::-moz-range-track { height: 3px; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 40%, var(--rule)); }
   .retrato-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; margin-top: -5.5px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 1px 3px rgba(0,0,0,.35); }
   .retrato-range::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 1px 3px rgba(0,0,0,.35); }
   .retrato-range:focus-visible { outline: none; }
@@ -516,9 +516,9 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .retrato-btn, .retrato-del { cursor: pointer; font-size: var(--fs-micro); text-align: center; justify-content: center; }
   .retrato-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 2rem; background: color-mix(in srgb, #000 80%, transparent); cursor: zoom-out; }
   .retrato-lb[hidden] { display: none; }
-  .retrato-lb img { max-width: 92vw; max-height: 88vh; border-radius: 8px; box-shadow: 0 12px 44px rgba(0,0,0,.5); }
+  .retrato-lb img { max-width: 92vw; max-height: 88vh; border-radius: var(--r-lg); box-shadow: 0 12px 44px rgba(0,0,0,.5); }
 
-  .pers-ident { flex: 1 1 20rem; min-width: 16rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); padding: .8rem 1rem 1rem; }
+  .pers-ident { flex: 1 1 20rem; min-width: 16rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .8rem 1rem 1rem; }
   .pers-ident h1 { margin: .05rem 0 .2rem; }
   .pers-mesa { font-style: italic; font-size: var(--fs-rotulo); }
   .ident-slot { margin-top: .2rem; }
@@ -528,16 +528,16 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .xp-nota { color: var(--muted); font-size: var(--fs-rotulo); }
   .mestre-xp { display: flex; align-items: flex-end; gap: .6rem; flex-wrap: wrap; margin-top: .4rem; }
   .mestre-xp label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); gap: .2rem; }
-  .mestre-xp input { width: 7rem; padding: .4rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
+  .mestre-xp input { width: 7rem; padding: .4rem; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--bg); color: var(--ink); font: inherit; }
   .bloco { margin-top: 1.6rem; }
   .textos { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   @media (max-width: 760px) { .textos { grid-template-columns: 1fr; } }
   .textos label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .04em; color: var(--ink-soft); text-transform: uppercase; gap: .3rem; }
-  .textos textarea { font: inherit; font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0; padding: .6rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
+  .textos textarea { font: inherit; font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0; padding: .6rem; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--bg); color: var(--ink); resize: vertical; }
   .salvo { color: var(--accent-texto); font-size: var(--fs-micro); }
   .arq-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; }
   .arq-link-row { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
-  .arq-link-row input { font: inherit; font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 6px; padding: .35rem .5rem; }
+  .arq-link-row input { font: inherit; font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .35rem .5rem; }
   .arq-link-row #arq-link-url { min-width: 15rem; }
   .arq-link-row #arq-link-nome { min-width: 9rem; }
   .arqs { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; margin-top: .6rem; }
@@ -546,10 +546,10 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .arqs .arq-link:hover { text-decoration: underline; }
   .arqs .arq-tipo { font-size: var(--fs-micro); text-transform: uppercase; }
   .arqs .arq-rm { background: none; border: none; color: var(--perigo); cursor: pointer; }
-  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 46rem; margin-bottom: 1rem; }
+  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: var(--r-lg); padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 46rem; margin-bottom: 1rem; }
   .erro { color: var(--perigo); }
 
-  .status-bar { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; padding: .6rem .9rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); margin-bottom: 1rem; }
+  .status-bar { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; padding: .6rem .9rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); margin-bottom: 1rem; }
   .status-bar .status-txt { flex: 1; min-width: 12rem; }
   .status-acoes { display: flex; gap: .5rem; flex-wrap: wrap; }
   .selo { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .05em; font-weight: 700; padding: .18rem .6rem; border-radius: 999px; }

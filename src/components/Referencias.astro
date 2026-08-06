@@ -267,7 +267,7 @@
   .ref { color: var(--accent-texto); text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: .15em; cursor: pointer; }
   .ref:hover { color: var(--accent-strong); }
   .ref-pop { position: absolute; z-index: 60; max-width: 24rem; background: var(--panel); color: var(--ink);
-    border: 1px solid var(--accent); border-radius: 7px; padding: .55rem .7rem; box-shadow: 0 6px 20px var(--shadow);
+    border: 1px solid var(--accent); border-radius: var(--r-md); padding: var(--pad-1) var(--pad-2); box-shadow: 0 6px 20px var(--shadow);
     font-size: var(--fs-rotulo); line-height: 1.4; font-style: normal; pointer-events: auto; }
   .ref-tipo { display: inline-block; font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .08em; text-transform: uppercase;
     background: var(--accent); color: var(--on-accent); border-radius: 999px; padding: .05rem .5rem; margin-right: .4rem; vertical-align: middle; }
@@ -276,22 +276,22 @@
   .ref-pop .ref-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
   .ref-pop .ref-go { font-size: var(--fs-micro); color: var(--accent-texto); font-style: italic; text-decoration: none; }
   .ref-pop .ref-pin { font-family: 'Cinzel'; font-size: var(--fs-micro); cursor: pointer; border: 1px solid var(--panel-border);
-    background: var(--panel-2); color: var(--ink-soft); border-radius: 5px; padding: .12rem .45rem; }
+    background: var(--panel-2); color: var(--ink-soft); border-radius: var(--r-sm); padding: .12rem .45rem; }
   .ref-pop .ref-pin:hover { border-color: var(--accent); color: var(--accent-texto); }
-  .ref-pop .ref-pin kbd { font-family: monospace; font-size: .7em; border: 1px solid var(--panel-border); border-radius: 3px; padding: 0 .25em; margin-left: .15em; }
+  .ref-pop .ref-pin kbd { font-family: monospace; font-size: .7em; border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: 0 .25em; margin-left: .15em; }
 
   /* realce de entidades fixadas no texto */
-  .ref-pinned { background: color-mix(in srgb, var(--gold) 24%, transparent); border-radius: 3px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent); }
+  .ref-pinned { background: color-mix(in srgb, var(--gold) 24%, transparent); border-radius: var(--r-sm); box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent); }
   .arv-node.ref-pinned { background: color-mix(in srgb, var(--gold) 20%, var(--panel)); box-shadow: 0 0 0 2px var(--gold); }
 
   /* painel de consulta (fixados) */
   #consulta { position: fixed; right: .8rem; bottom: .8rem; z-index: 55; width: min(20rem, 90vw); max-height: 60vh; overflow-y: auto;
-    background: var(--panel); border: 1px solid var(--accent); border-radius: 9px; box-shadow: 0 8px 28px var(--shadow); }
+    background: var(--panel); border: 1px solid var(--accent); border-radius: var(--r-lg); box-shadow: 0 8px 28px var(--shadow); }
   #consulta .cs-head { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center;
     background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .4rem .7rem; }
-  #consulta .cs-clear { background: none; border: 1px solid var(--on-accent); color: var(--on-accent); border-radius: 4px; font-size: var(--fs-micro); cursor: pointer; padding: .05rem .4rem; font-family: 'Cinzel'; }
+  #consulta .cs-clear { background: none; border: 1px solid var(--on-accent); color: var(--on-accent); border-radius: var(--r-sm); font-size: var(--fs-micro); cursor: pointer; padding: .05rem .4rem; font-family: 'Cinzel'; }
   #consulta .cs-n { background: var(--on-accent); color: var(--accent-texto); border-radius: 999px; font-size: var(--fs-micro); padding: 0 .4rem; margin-left: .2rem; }
-  #consulta .cs-filter { width: calc(100% - 1.4rem); margin: .5rem .7rem 0; padding: .3rem .45rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: var(--fs-rotulo); }
+  #consulta .cs-filter { width: calc(100% - 1.4rem); margin: .5rem .7rem 0; padding: .3rem .45rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-size: var(--fs-rotulo); }
   #consulta .cs-card { padding: .5rem .7rem; border-bottom: 1px solid var(--rule); position: relative; }
   #consulta .cs-card a { text-decoration: none; }
   #consulta .cs-card b { font-family: 'Cinzel'; color: var(--accent-texto); }
@@ -300,7 +300,7 @@
   @media (max-width: 620px) { #consulta { right: .4rem; left: .4rem; width: auto; } }
 
   /* modal local — position:fixed centralizado para o showModal() NÃO rolar a página até o diálogo */
-  .ref-modal { width: min(34rem, 92vw); border: 1px solid var(--accent); border-radius: 10px; padding: 1.1rem 1.2rem 1.3rem;
+  .ref-modal { width: min(34rem, 92vw); border: 1px solid var(--accent); border-radius: var(--r-lg); padding: 1.1rem 1.2rem 1.3rem;
     background: var(--panel); color: var(--ink); box-shadow: 0 14px 50px var(--shadow);
     position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; max-height: 85vh; overflow: auto; }
   .ref-modal::backdrop { background: rgba(0,0,0,.5); }
@@ -317,8 +317,8 @@
   .rm-go { display: inline-block; margin-top: .8rem; font-style: italic; color: var(--accent-texto); text-decoration: none; }
   .ref-modal.wide { width: min(58rem, 95vw); }
   .rm-compare { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: .4rem; }
-  .rm-col { flex: 0 0 16rem; border: 1px solid var(--panel-border); border-radius: 8px; padding: .7rem .8rem; background: var(--panel-2); }
+  .rm-col { flex: 0 0 16rem; border: 1px solid var(--panel-border); border-radius: var(--r-lg); padding: .7rem .8rem; background: var(--panel-2); }
   .rm-col .rm-cnome { display: block; font-family: 'Cinzel'; color: var(--accent-texto); font-size: var(--fs-aux); margin: .3rem 0; }
   .rm-col .rm-cdesc { font-size: var(--fs-rotulo); margin: 0 0 .5rem; }
-  .cs-comparar { background: var(--on-accent); color: var(--accent-texto); border: none; border-radius: 4px; font-size: var(--fs-micro); cursor: pointer; padding: .05rem .5rem; font-family: 'Cinzel'; margin-right: .3rem; }
+  .cs-comparar { background: var(--on-accent); color: var(--accent-texto); border: none; border-radius: var(--r-sm); font-size: var(--fs-micro); cursor: pointer; padding: .05rem .5rem; font-family: 'Cinzel'; margin-right: .3rem; }
 </style>

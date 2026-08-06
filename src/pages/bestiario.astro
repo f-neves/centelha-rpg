@@ -246,17 +246,17 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 <style>
   .filtros { margin: 1rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: flex-end; }
   .filtros > label { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); display: flex; flex-direction: column; gap: .25rem; }
-  .filtros input[type='search'] { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-family: 'EB Garamond'; font-size: var(--fs-aux); }
+  .filtros input[type='search'] { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-family: 'EB Garamond'; font-size: var(--fs-aux); }
   .filtros .busca input { min-width: 13rem; }
   .filtros select { min-width: 11rem; font-size: var(--fs-aux); }
-  .filtros fieldset { border: 1px solid var(--panel-border); border-radius: 5px; padding: .3rem .6rem; max-width: 100%; }
+  .filtros fieldset { border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .3rem .6rem; max-width: 100%; }
   .filtros legend { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); }
   .cats { display: flex; flex-wrap: wrap; gap: .1rem .4rem; }
   .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .4rem; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); }
   .bf-count { width: 100%; margin: 0; }
 
   .ord-row { display: flex; gap: .3rem; align-items: stretch; }
-  #ord-dir { padding: 0 .55rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--accent-strong); cursor: pointer; font-size: var(--fs-aux); line-height: 1; display: flex; align-items: center; transition: background .15s, border-color .15s; }
+  #ord-dir { padding: 0 .55rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--bg); color: var(--accent-strong); cursor: pointer; font-size: var(--fs-aux); line-height: 1; display: flex; align-items: center; transition: background .15s, border-color .15s; }
   #ord-dir:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--bg)); }
   #ord-dir .ord-arw { font-weight: 700; }
 
@@ -265,7 +265,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   /* --- Card como entrada de bestiário --- */
   .besta {
     display: flex; flex-direction: column;
-    border: 1px solid var(--panel-border); border-radius: 9px; background: var(--panel);
+    border: 1px solid var(--panel-border); border-radius: var(--r-lg); background: var(--panel);
     overflow: hidden; scroll-margin-top: 4rem;
     box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 8%, transparent);
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
@@ -337,7 +337,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .atr-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
   /* colunas: Físico | Social | Mental (ordem de coluna, não de linha) */
   .atr-grid { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: .2rem .4rem; margin-top: .3rem; }
-  .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
   .atr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .atr-ab { text-transform: uppercase; letter-spacing: .02em; }
   .atr-full { display: none; font-size: var(--fs-micro); letter-spacing: 0; }
@@ -351,7 +351,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   /* Traços derivados (Vontade · Aparência · Virtudes) */
   .besta-tracos { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .28rem; }
   .tr-linha { display: flex; gap: .4rem; }
-  .tr { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .tr { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
   .tr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
   .tr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
   .tr-mod { font-weight: 600; font-size: var(--fs-micro); color: var(--ink-soft); }
@@ -369,7 +369,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .besta-info {
     flex: 1 1 8rem; display: inline-flex; align-items: center; gap: .35rem; justify-content: center;
     padding: .4rem .6rem; border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--panel-border));
-    border-radius: 6px; background: color-mix(in srgb, var(--accent) 7%, transparent);
+    border-radius: var(--r-md); background: color-mix(in srgb, var(--accent) 7%, transparent);
     color: var(--accent-strong); font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .02em;
     cursor: pointer; transition: background .15s, border-color .15s;
   }
@@ -383,7 +383,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .lightbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: color-mix(in srgb, #1a120a 82%, transparent); backdrop-filter: blur(3px); animation: lb-in .18s ease; }
   .lightbox[hidden] { display: none; }
   .lightbox figure { margin: 0; max-width: min(680px, 92vw); max-height: 88vh; display: flex; flex-direction: column; align-items: center; gap: .6rem; }
-  .lightbox img { max-width: 100%; max-height: 78vh; object-fit: contain; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); border-radius: 8px; padding: 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+  .lightbox img { max-width: 100%; max-height: 78vh; object-fit: contain; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); border-radius: var(--r-lg); padding: 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
   .lb-cap, #lb-cap { color: #f3e8cf; font-size: var(--fs-h3); letter-spacing: .02em; }
   .lb-fechar { position: absolute; top: 1rem; right: 1.2rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: none; background: rgba(255,255,255,.12); color: #fff; font-size: var(--fs-h3); cursor: pointer; transition: background .15s; }
   .lb-fechar:hover { background: rgba(255,255,255,.25); }
@@ -415,13 +415,13 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     position: relative; width: min(560px, 94vw); max-height: 88vh; overflow-y: auto;
     background: var(--panel); color: var(--ink);
     border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--panel-border));
-    border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    border-radius: var(--r-lg); box-shadow: 0 20px 60px rgba(0,0,0,.5);
     padding: 1.3rem 1.4rem 1.5rem;
   }
   .infobox .ib-fechar { position: absolute; top: .6rem; right: .6rem; width: 2rem; height: 2rem; border-radius: 50%; border: none; background: color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); font-size: var(--fs-aux); cursor: pointer; transition: background .15s; }
   .infobox .ib-fechar:hover { background: color-mix(in srgb, var(--ink) 22%, transparent); }
   .infobox .ib-head { display: flex; gap: .9rem; align-items: center; margin-bottom: .9rem; padding-right: 1.6rem; border-bottom: 1px dotted var(--rule); padding-bottom: .8rem; }
-  .infobox .ib-art { width: 84px; height: 84px; object-fit: contain; border-radius: 8px; padding: .3rem; flex: 0 0 auto; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); mix-blend-mode: multiply; }
+  .infobox .ib-art { width: 84px; height: 84px; object-fit: contain; border-radius: var(--r-lg); padding: .3rem; flex: 0 0 auto; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); mix-blend-mode: multiply; }
   .infobox .ib-art[hidden] { display: none; }
   .infobox .ib-head-txt { min-width: 0; }
   .infobox #ib-nome { margin: 0; font-size: var(--fs-h2); color: var(--accent-texto); line-height: 1.1; }
@@ -438,7 +438,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .infobox .ib-pod { list-style: none; padding: 0; margin: .35rem 0 0; font-size: var(--fs-rotulo); display: flex; flex-direction: column; gap: .22rem; }
   .infobox .ib-pod li { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem; }
   .infobox .ib-pod .pw-arw { color: var(--ink-soft); }
-  .infobox .ib-pod .pw-alvo { font-weight: 600; padding: .05rem .5rem; border-radius: 10px; font-size: var(--fs-micro); }
+  .infobox .ib-pod .pw-alvo { font-weight: 600; padding: .05rem .5rem; border-radius: var(--r-lg); font-size: var(--fs-micro); }
   .infobox .ib-pod .pw-proeza .pw-alvo, .infobox .pw-proeza .pw-alvo { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent-strong); }
   .infobox .pw-feiticaria .pw-alvo { background: color-mix(in srgb, var(--gold) 26%, transparent); color: var(--ink); }
   .infobox .pw-natural .pw-alvo { background: var(--bg-soft); color: var(--ink-soft); font-weight: 500; }

@@ -21,11 +21,11 @@ const { compact = false } = Astro.props;
 <style is:global>
   .rolador .rd-fields { display: flex; gap: .7rem; flex-wrap: wrap; }
   .rolador label { display: flex; flex-direction: column; font-size: var(--fs-micro); color: var(--ink-soft); font-family: 'Cinzel'; gap: .2rem; }
-  .rolador input { width: 5.5rem; padding: .35rem .4rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: var(--fs-aux); }
+  .rolador input { width: 5.5rem; padding: .35rem .4rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-size: var(--fs-aux); }
   .rd-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
   .rd-out { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--rule); }
   .rd-dice { display: flex; gap: .3rem; flex-wrap: wrap; align-items: center; margin: .4rem 0; }
-  .die { width: 2rem; height: 2rem; display: grid; place-items: center; border: 1.5px solid var(--accent); border-radius: 6px; font-family: 'Cinzel'; font-weight: 700; background: var(--panel-2); }
+  .die { width: 2rem; height: 2rem; display: grid; place-items: center; border: 1.5px solid var(--accent); border-radius: var(--r-md); font-family: 'Cinzel'; font-weight: 700; background: var(--panel-2); }
   .die.dropped { opacity: .35; border-color: var(--rule); text-decoration: line-through; }
   .die.bonus { border-color: var(--gold); }
   .rd-dice .sep { color: var(--ink-soft); font-family: 'Cinzel'; }

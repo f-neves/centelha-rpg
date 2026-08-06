@@ -106,6 +106,23 @@
    O piso é 12,5px, e vale principalmente para a Cinzel: ela é uma capitular romana,
    desenhada para títulos, e fechava as versaletes abaixo disso. Havia 1.337 ocorrências
    de texto em 11,5px, algumas em 9px. */
+/* ---------- Espaçamento, raio e grade ----------
+   Antes: 11 raios de borda diferentes (2 a 12px) e um padding por componente
+   (.panel 1/1.1 · .callout .8/1 · .ui-dlg .85/1.1 · .ref-pop .55/.7), então as
+   bordas de componentes vizinhos nunca se alinhavam. Três degraus de cada bastam. */
+:root {
+  --r-sm: 4px;   /* controles: botões, badges, inputs */
+  --r-md: 6px;   /* caixas pequenas: callouts, selects, popovers */
+  --r-lg: 9px;   /* superfícies: painéis, diálogos, cards */
+  --pad-1: .55rem;  /* popover */
+  --pad-2: .85rem;  /* callout, corpo de diálogo */
+  --pad-3: 1.05rem; /* painel, card */
+  /* mínimos das grades de card (sempre com min(x,100%) para não estourar o celular) */
+  --card-min-sm: 15rem;
+  --card-min-md: 22rem;
+  --card-min-lg: 27rem;
+}
+
 :root {
   --fs-h1: 2.1rem;      /* 33,6px */
   --fs-h2: 1.5rem;      /* 24px   */
@@ -158,7 +175,7 @@ strong { color: var(--accent-strong); }
 em { color: var(--ink-soft); }
 hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: var(--r-sm); }
 
 /* skip link */
 .skip { position: absolute; left: -9999px; top: 0; background: var(--accent); color: var(--on-accent); padding: .5em 1em; z-index: 100; }
@@ -211,7 +228,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 .brand small { display:block; font-family:'EB Garamond'; font-style:italic; font-weight:400; font-size:var(--fs-micro); color: var(--ink-soft); letter-spacing:0; }
 nav.toc { margin-top: 1.2rem; }
 nav.toc .grp { font-variant: small-caps; letter-spacing: .08em; color: var(--ink-soft); font-size: var(--fs-rotulo); margin: 1.1rem 0 .3rem; font-family:'Cinzel'; }
-nav.toc a { display: flex; gap: .5rem; align-items: baseline; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: 4px; font-size: var(--fs-aux); }
+nav.toc a { display: flex; gap: .5rem; align-items: baseline; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: var(--r-sm); font-size: var(--fs-aux); }
 nav.toc a[hidden] { display: none; } /* respeita o atributo hidden (ex.: links Minha Conta/Admin revelados por JS) */
 nav.toc a:hover { background: var(--panel); }
 nav.toc a[aria-current='page'] { background: var(--accent); color: var(--on-accent); }
@@ -223,15 +240,15 @@ nav.toc a.subcap .num { min-width: 0; margin-left: -.9rem; }
 nav.toc a.subcap[aria-current='page'] { color: var(--on-accent); }
 
 /* ---------- componentes ---------- */
-.panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; padding: 1rem 1.1rem; box-shadow: 0 1px 2px var(--shadow); }
-.callout { background: var(--panel); border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: 4px; padding: .8rem 1rem; margin: 1em 0; }
+.panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--r-lg); padding: var(--pad-2) var(--pad-3); box-shadow: 0 1px 2px var(--shadow); }
+.callout { background: var(--panel); border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: var(--r-md); padding: var(--pad-2) var(--pad-3); margin: 1em 0; }
 .callout.exemplo { border-left-color: var(--accent-soft); font-style: italic; }
 .callout.regra { border-left-color: var(--gold); }
 .callout .lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-texto); display: block; margin-bottom: .25rem; }
 .callout.regra .lbl { color: var(--gold); }
 
 .formula { display: block; text-align: center; font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong);
-  background: color-mix(in srgb, var(--accent) 9%, transparent); border: 1px solid var(--rule); border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 9%, transparent); border: 1px solid var(--rule); border-radius: var(--r-sm);
   padding: .6rem .8rem; margin: 1em 0; font-size: var(--fs-aux); }
 
 table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: var(--fs-aux); }
@@ -280,13 +297,13 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 /* glossário tooltip */
 .gloss { border-bottom: 1.5px dotted var(--accent-soft); cursor: help; }
 .gloss-pop { position: absolute; z-index: 50; max-width: 22rem; background: var(--panel); color: var(--ink);
-  border: 1px solid var(--accent); border-radius: 6px; padding: .6rem .75rem; box-shadow: 0 4px 14px var(--shadow);
+  border: 1px solid var(--accent); border-radius: var(--r-md); padding: var(--pad-1) var(--pad-2); box-shadow: 0 4px 14px var(--shadow);
   font-size: var(--fs-aux); font-style: normal; line-height: 1.45; }
 .gloss-pop b { font-family: 'Cinzel'; color: var(--accent-texto); display: block; margin-bottom: .15rem; font-size: var(--fs-rotulo); }
 
 /* botões */
 .btn { font-family: 'Cinzel'; font-size: var(--fs-rotulo); cursor: pointer; border: 1px solid var(--panel-border);
-  background: var(--panel); color: var(--ink); padding: .45rem .9rem; border-radius: 5px; }
+  background: var(--panel); color: var(--ink); padding: .45rem .9rem; border-radius: var(--r-sm); }
 .btn:hover { border-color: var(--accent); color: var(--accent-texto); }
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; }
 .btn-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
@@ -296,7 +313,7 @@ select {
   font-family: 'EB Garamond', Georgia, serif; font-size: var(--fs-aux); line-height: 1.3; color: var(--ink);
   background-color: var(--panel); background-image: var(--select-arrow);
   background-repeat: no-repeat; background-position: right .65rem center; background-size: .7rem;
-  border: 1px solid var(--panel-border); border-radius: 6px; padding: .4rem 1.9rem .4rem .7rem;
+  border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .4rem 1.9rem .4rem .7rem;
   cursor: pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none;
   box-shadow: 0 1px 2px var(--shadow); transition: border-color .12s, box-shadow .12s;
 }
@@ -319,8 +336,18 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
 
 /* realce ao chegar por permalink */
 @keyframes target-flash { 0% { background: color-mix(in srgb, var(--gold) 45%, transparent); } 100% { background: transparent; } }
-.target-flash { animation: target-flash 1.8s ease-out; border-radius: 4px; }
+.target-flash { animation: target-flash 1.8s ease-out; border-radius: var(--r-sm); }
 @media (prefers-reduced-motion: reduce) { .target-flash { animation: none; } }
+
+/* ---------- barra de seção (páginas-ferramenta) ----------
+   A segunda gramática de h2 do site, DELIBERADA: o h2 editorial (Cinzel + filete) marca
+   capítulos de leitura; esta barra preenchida marca seções de página densa de ferramenta
+   (Ficha, /personagem, /mestre). Era definida duas vezes (FichaSkeleton e mestre.astro),
+   com paddings e margens divergentes; agora é uma só. */
+h2.barh { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 700;
+  font-size: var(--fs-rotulo); letter-spacing: .06em; text-transform: uppercase;
+  padding: .35rem .7rem; border: none; border-radius: var(--r-sm); margin: 1.5rem 0 .7rem; }
+h2.barh small { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: var(--fs-micro); opacity: .85; }
 
 /* utilidades */
 /* .muted marca texto SECUNDÁRIO (nota, rótulo, valor auxiliar) e por isso é só cor.
@@ -334,7 +361,7 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
    e devolve a ênfase aninhada (em <em>, <cite>, legendas e apartes). */
 em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: normal; }
 .tag-orn { color: var(--gold); letter-spacing: .3em; text-align: center; }
-.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .8rem; }
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min-sm), 100%), 1fr)); gap: .8rem; }
 .lead { font-size: 1.12em; }
 .lead::first-letter { font-family: 'Cinzel'; font-weight: 900; float: left; font-size: 3.1em; line-height: .8; padding: .05em .12em 0 0; color: var(--accent-texto); }
 
@@ -397,7 +424,7 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 /* ---------- diálogos (avisos, confirmações, perguntas) — lib/ui-dialog.ts ---------- */
 .ui-dlg {
   width: min(30rem, 92vw); padding: 0; border: 1px solid var(--panel-border); border-top: 3px solid var(--accent);
-  border-radius: 8px; background: var(--panel); color: var(--ink);
+  border-radius: var(--r-lg); background: var(--panel); color: var(--ink);
   box-shadow: 0 14px 44px var(--shadow); font-family: 'EB Garamond', Georgia, serif;
 }
 .ui-dlg::backdrop { background: rgba(0,0,0,.5); }
@@ -405,7 +432,7 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 .ui-dlg-head { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .85rem 1.1rem .1rem; }
 .ui-dlg-tit { font-family: 'Cinzel'; font-weight: 600; font-size: var(--fs-h3); color: var(--accent-strong); margin: 0; }
 .ui-dlg.perigo .ui-dlg-tit { color: var(--perigo); }
-.ui-dlg-x { background: none; border: 0; padding: .15rem .35rem; border-radius: 4px; cursor: pointer;
+.ui-dlg-x { background: none; border: 0; padding: .15rem .35rem; border-radius: var(--r-sm); cursor: pointer;
   color: var(--ink-soft); font-size: var(--fs-rotulo); line-height: 1; }
 .ui-dlg-x:hover { color: var(--accent-texto); background: var(--bg-soft); }
 .ui-dlg-corpo { padding: .7rem 1.1rem 0; }
@@ -415,7 +442,7 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
   text-transform: uppercase; color: var(--ink-soft); margin-bottom: .25rem; }
 .ui-dlg-campo input, .ui-dlg-campo textarea {
   width: 100%; font: inherit; color: var(--ink); background: var(--bg);
-  border: 1px solid var(--panel-border); border-radius: 6px; padding: .45rem .6rem;
+  border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .45rem .6rem;
 }
 .ui-dlg-campo textarea { resize: vertical; min-height: 5rem; line-height: 1.4; }
 .ui-dlg-campo input:focus, .ui-dlg-campo textarea:focus {
@@ -441,6 +468,6 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
    de Mesas / Fichas. O enquadramento que o jogador salva (imagem_pos) é calibrado
    nesta caixa, então as duas telas precisam da MESMA regra: mudar aqui muda nos dois.
    O jogador aplica x/y em object-position + transform-origin e z em scale(). */
-.retrato-frame { width: 172px; height: 208px; border-radius: 10px; border: 1px solid var(--rule); overflow: hidden; background: var(--panel); }
+.retrato-frame { width: 172px; height: 208px; border-radius: var(--r-lg); border: 1px solid var(--rule); overflow: hidden; background: var(--panel); }
 .retrato-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform-origin: 50% 50%; display: block; user-select: none; -webkit-user-drag: none; transition: filter .15s; }
 .retrato-frame:hover img { filter: brightness(1.05); }

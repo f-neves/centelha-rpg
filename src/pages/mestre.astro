@@ -200,10 +200,9 @@ const exSociais = [
 
 <style>
   .lead { font-size: var(--fs-aux); color: var(--ink-soft); }
-  h2.barh { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-rotulo); letter-spacing: .06em; text-transform: uppercase; padding: .4rem .8rem; border-radius: 4px; margin: 2rem 0 .7rem; }
-  h2.barh small { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .85; }
+  /* h2.barh vem do global.css: definição única da barra de seção das páginas-ferramenta */
   h3.sub { font-family: 'Cinzel'; font-size: var(--fs-aux); color: var(--accent-strong); margin: 1.4rem 0 .5rem; }
-  .tab-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; margin: .3rem 0 1rem; }
+  .tab-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: var(--r-lg); margin: .3rem 0 1rem; }
   table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
   th, td { padding: .4rem .6rem; text-align: left; border-bottom: 1px solid var(--rule); }
   thead th { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--on-accent); background: var(--accent); position: sticky; top: 0; }
@@ -228,7 +227,7 @@ const exSociais = [
 
   .legend { display: flex; align-items: center; gap: .6rem; margin: .2rem 0 .6rem; }
   .legend .cap { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); }
-  .legend .grad { display: inline-flex; height: 13px; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  .legend .grad { display: inline-flex; height: 13px; border: 1px solid var(--rule); border-radius: var(--r-sm); overflow: hidden; }
   .legend .grad span { width: 11px; height: 100%; }
   .verde { color: hsl(120 60% 38%); font-weight: 700; }
   .vermelho { color: hsl(0 65% 48%); font-weight: 700; }

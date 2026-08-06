@@ -76,8 +76,8 @@
   #otp-fab.otp-oculto { transform: translateY(140%); opacity: 0; pointer-events: none; }
   @media (prefers-reduced-motion: reduce) { #otp-fab { transition: none; } }
   #otp-panel { position: fixed; left: .8rem; bottom: 3rem; z-index: 54; width: min(17rem, 80vw); max-height: 60vh; overflow-y: auto;
-    background: var(--panel); border: 1px solid var(--accent); border-radius: 9px; box-shadow: 0 8px 28px var(--shadow); padding: .5rem; }
-  #otp-panel a { display: block; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: 5px; font-size: var(--fs-rotulo); border-left: 2px solid transparent; }
+    background: var(--panel); border: 1px solid var(--accent); border-radius: var(--r-lg); box-shadow: 0 8px 28px var(--shadow); padding: .5rem; }
+  #otp-panel a { display: block; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: var(--r-sm); font-size: var(--fs-rotulo); border-left: 2px solid transparent; }
   #otp-panel a:hover { background: var(--panel-2); }
   #otp-panel a.otp-h3 { padding-left: 1.3rem; font-size: var(--fs-rotulo); color: var(--ink-soft); }
   #otp-panel a.active { border-left-color: var(--accent); color: var(--accent-texto); font-weight: 600; background: color-mix(in srgb, var(--accent) 8%, transparent); }

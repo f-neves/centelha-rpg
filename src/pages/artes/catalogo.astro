@@ -33,7 +33,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
   {[['Artes Elementais', elem], ['Artes Universais', univ]].map(([titulo, lista]) => (
     <section class="arte-sec">
       <h2 style="text-align:center;border:none">{titulo}</h2>
-      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(min(27rem,100%),1fr))">
+      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(min(var(--card-min-lg),100%),1fr))">
         {(lista as any[]).map((a) => (
           <div class="panel arte" id={a.id} data-permalink data-cat={a.categoria} data-txt={txtDe(a)}>
             <div class="arte-head">

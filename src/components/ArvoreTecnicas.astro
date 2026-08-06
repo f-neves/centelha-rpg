@@ -22,7 +22,7 @@ const { caminho } = Astro.props;
   /* nós da árvore tinham 62x31px; no celular viram alvo de toque de verdade */
   @media (max-width: 900px) { .arv-node { min-height: 44px; } }
   .arv-node { font-family: 'Cinzel'; font-size: var(--fs-micro); cursor: pointer; border: 1.5px solid var(--panel-border); background: var(--panel);
-    color: var(--ink); padding: .35rem .6rem; border-radius: 6px; white-space: nowrap; }
+    color: var(--ink); padding: .35rem .6rem; border-radius: var(--r-md); white-space: nowrap; }
   .arv-node:hover { border-color: var(--accent); }
   .arv-node[data-tipo='passiva'] { border-style: dashed; }
   .arv-node[aria-pressed='true'] { background: var(--accent); color: var(--on-accent); border-color: transparent; }

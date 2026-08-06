@@ -53,7 +53,7 @@ const BLOCOS: [string, string, any[]][] = [
   {lista.map((arte: any) => (
     <div class="ef-bloco" id={'ef-' + arte.id}>
       <h3 class="ef-bloco-tit">{arte.nome} <span class="muted">{efeitosPorArte(arte.id).length} Efeitos</span></h3>
-      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(min(27rem,100%),1fr))">
+      <div class="grid-cards" style="grid-template-columns:repeat(auto-fill,minmax(min(var(--card-min-lg),100%),1fr))">
         {efeitosPorArte(arte.id).map((e: any) => (
           <div class="panel efeito" id={'ef-' + arte.id + '-' + e.id}>
             <div class="ef-head">

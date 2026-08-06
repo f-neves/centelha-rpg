@@ -119,18 +119,18 @@ import Base from '../layouts/Base.astro';
      E o estado ativo vinha de .primary, que só existe no CSS como .btn.primary, então
      as duas abas ficavam idênticas. O aria-selected já está no markup e é a fonte certa. */
   .tab { padding: .5rem 1rem; border: 1px solid var(--rule); background: var(--panel); color: var(--ink);
-    font-family: 'Cinzel'; font-size: var(--fs-rotulo); border-radius: 6px 6px 0 0; cursor: pointer; }
+    font-family: 'Cinzel'; font-size: var(--fs-rotulo); border-radius: var(--r-md) 6px 0 0; cursor: pointer; }
   .tab:hover { border-color: var(--accent); color: var(--accent-texto); }
   /* --accent-strong (e não --accent) porque o par creme-sobre-teal-vivo do tema Clássico
      rende só 2,1:1; este é o mesmo par já usado nos cabeçalhos de tabela e passa nos três temas. */
   .tab[aria-selected='true'] { background: var(--accent-strong); color: var(--on-accent-strong); border-color: transparent; }
-  .painel { border: 1px solid var(--rule); border-radius: 8px; padding: 1rem; max-width: 26rem; background: var(--panel); }
+  .painel { border: 1px solid var(--rule); border-radius: var(--r-lg); padding: 1rem; max-width: 26rem; background: var(--panel); }
   form.painel label { display: block; margin-bottom: .7rem; font-weight: 600; }
-  form.painel input { display: block; width: 100%; margin-top: .25rem; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
+  form.painel input { display: block; width: 100%; margin-top: .25rem; padding: .5rem; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--bg); color: var(--ink); font: inherit; }
   .btn-row { display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; margin-top: .4rem; }
   .btn.linkish { background: none; border: none; color: var(--accent-texto); cursor: pointer; padding: .3rem; }
   .auth-msg { margin-top: .8rem; max-width: 26rem; }
   .auth-msg.erro { color: var(--perigo); }
   .auth-msg.ok { color: var(--accent-strong, var(--accent)); }
-  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
+  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: var(--r-lg); padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
 </style>

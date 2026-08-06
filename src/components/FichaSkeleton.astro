@@ -84,10 +84,10 @@ import FormasPop from './FormasPop.astro';
 <!-- is:global porque o conteúdo (bolinhas, cards, pílulas) é criado via JS e
      não recebe o atributo de escopo do Astro -->
 <style is:global>
-  .xpbar { display: flex; gap: 1rem 1.2rem; flex-wrap: wrap; align-items: center; background: var(--accent); color: var(--on-accent); padding: .6rem 1rem; border-radius: 7px; margin: 1rem 0; }
+  .xpbar { display: flex; gap: 1rem 1.2rem; flex-wrap: wrap; align-items: center; background: var(--accent); color: var(--on-accent); padding: .6rem 1rem; border-radius: var(--r-md); margin: 1rem 0; }
   .xpbar .big { font-family: 'Cinzel'; font-size: var(--fs-aux); } .xpbar .big b { font-size: var(--fs-h3); }
   .xpbar .rem.neg { color: #ffd0cb; } .xpbar label { font-family: 'Cinzel'; font-size: var(--fs-micro); display: flex; align-items: center; gap: .4rem; }
-  .xpbar input { width: 4.5rem; text-align: center; border: none; border-radius: 4px; padding: .25rem; font-family: 'Cinzel'; }
+  .xpbar input { width: 4.5rem; text-align: center; border: none; border-radius: var(--r-sm); padding: .25rem; font-family: 'Cinzel'; }
   .xpbar input:disabled { opacity: .8; cursor: not-allowed; }
   .xpbar .breakdown { font-size: var(--fs-micro); opacity: .9; flex: 1 1 12rem; }
   /* flex-wrap é obrigatório: sem ele os 7 botões formam uma fila de 574px que estoura a
@@ -109,10 +109,7 @@ import FormasPop from './FormasPop.astro';
   .idrow .txt { font-family: 'EB Garamond'; font-size: var(--fs-aux); border: none; border-bottom: 1px solid var(--rule); background: transparent; padding: .2rem; color: var(--ink); }
   .idrow .txt:focus { outline: none; border-bottom-color: var(--accent); }
 
-  /* a barra fica no degrau de rótulo e o seu <small> no micro: com os dois no mesmo
-     degrau a hierarquia entre o título da seção e a sua nota desaparecia. */
-  h2.barh { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-rotulo); letter-spacing: .06em; text-transform: uppercase; padding: .35rem .7rem; border: none; border-radius: 3px; margin: 1.5rem 0 .7rem; }
-  h2.barh small { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: var(--fs-micro); opacity: .85; }
+  /* h2.barh vem do global.css: definição única da barra de seção das páginas-ferramenta */
   h2.barh.barh-tog { cursor: pointer; user-select: none; }
   h2.barh.barh-tog .sec-caret { display: inline-block; width: 1em; font-size: .85em; }
   .sec-body.sec-hidden { display: none; }
@@ -131,43 +128,43 @@ import FormasPop from './FormasPop.astro';
   .dot { width: 15px; height: 15px; border: 1.5px solid var(--accent); border-radius: 50%; cursor: pointer; background: transparent; transition: background .08s; flex: 0 0 auto; }
   .dot.on { background: var(--accent); } .dot.free { border-color: var(--gold); } .dot.on.free { background: var(--gold); }
   .dot:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent); }
-  .dots:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .dots:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--r-sm); }
   .cam-tools { margin: 0 0 .5rem; }
   .dot.cap { opacity: .25; cursor: not-allowed; border-style: dotted; } .dot.cap:hover { box-shadow: none; }
   .rollv { background: none; border: none; cursor: pointer; font-size: var(--fs-rotulo); opacity: .35; margin-left: .35rem; padding: 0; line-height: 1; }
   .rollv:hover { opacity: 1; }
   .modo-wrap { display: inline-flex; align-items: center; gap: .35rem; }
   .modo-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
-  .modo-toggle { display: inline-flex; gap: 0; border: 1px solid var(--on-accent); border-radius: 5px; overflow: hidden; }
+  .modo-toggle { display: inline-flex; gap: 0; border: 1px solid var(--on-accent); border-radius: var(--r-sm); overflow: hidden; }
   .modo-toggle .btn { border: none; border-radius: 0; }
   .modo-toggle .btn.primary { background: var(--on-accent); color: var(--accent-texto); }
   .specbtn { background: none; border: none; cursor: pointer; font-size: var(--fs-micro); opacity: .4; margin-left: .35rem; padding: 0; line-height: 1; color: var(--gold); }
   .specbtn:hover, .specbtn.has { opacity: 1; }
   .specpop-h small { font-family: 'EB Garamond'; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--ink-soft); }
-  .sq { width: 14px; height: 14px; border: 1.2px solid var(--ink-soft); cursor: pointer; background: transparent; flex: 0 0 auto; border-radius: 2px; }
+  .sq { width: 14px; height: 14px; border: 1.2px solid var(--ink-soft); cursor: pointer; background: transparent; flex: 0 0 auto; border-radius: var(--r-sm); }
   .sq.on { background: var(--gold); border-color: var(--gold); }
   .sq:not(.dis):hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 35%, transparent); }
   .sq.dis { opacity: .25; cursor: not-allowed; }
-  .specpop { position: absolute; z-index: 60; width: 260px; background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; box-shadow: 0 6px 20px var(--shadow); padding: .6rem .7rem; }
+  .specpop { position: absolute; z-index: 60; width: 260px; background: var(--panel); border: 1px solid var(--accent); border-radius: var(--r-lg); box-shadow: 0 6px 20px var(--shadow); padding: .6rem .7rem; }
   .specpop-h { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--accent-strong); margin-bottom: .5rem; }
   .specpop-row { display: flex; align-items: center; gap: .4rem; margin-bottom: .35rem; }
-  .specpop-row input { flex: 1; min-width: 0; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 5px; padding: .25rem .4rem; }
+  .specpop-row input { flex: 1; min-width: 0; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .25rem .4rem; }
   .specpop-row input:focus { outline: none; border-color: var(--accent); }
   .specpop-row .specpop-sq { display: inline-flex; gap: 3px; flex: 0 0 auto; }
   .specpop-row .spec-x { border: none; background: none; color: var(--ink-soft); cursor: pointer; font-size: var(--fs-aux); line-height: 1; padding: 0 .1rem; }
   .specpop-row .spec-x:hover { color: #b3401f; }
-  .spec-add { display: block; width: 100%; font-family: 'Cinzel'; font-size: var(--fs-micro); cursor: pointer; background: none; color: var(--accent-strong); border: 1px dashed var(--panel-border); border-radius: 6px; padding: .25rem; margin: .1rem 0 .4rem; }
+  .spec-add { display: block; width: 100%; font-family: 'Cinzel'; font-size: var(--fs-micro); cursor: pointer; background: none; color: var(--accent-strong); border: 1px dashed var(--panel-border); border-radius: var(--r-md); padding: .25rem; margin: .1rem 0 .4rem; }
   .spec-add:hover { border-color: var(--accent); color: var(--accent-texto); }
   .specpop-f { text-align: right; margin-top: .2rem; }
   .specpop-f .btn { padding: .2rem .7rem; font-size: var(--fs-micro); }
   .apmod { margin-left: .5rem; font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-texto); }
 
-  #derived { border: 1px solid var(--panel-border); background: var(--panel); border-left: 4px solid var(--accent); padding: .6rem .8rem; border-radius: 3px; }
+  #derived { border: 1px solid var(--panel-border); background: var(--panel); border-left: 4px solid var(--accent); padding: .6rem .8rem; border-radius: var(--r-sm); }
   .derv { display: flex; justify-content: space-between; align-items: baseline; padding: .2rem 0; border-bottom: 1px dotted var(--rule); }
   .derv .dl { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong); text-transform: uppercase; }
   .derv .dv { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-corpo); color: var(--accent-texto); }
   .derv .fm { display: block; font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; font-family: 'EB Garamond'; font-weight: 400; text-transform: none; }
-  h2.barh .deriv-toggle { float: right; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: none; letter-spacing: 0; padding: .12rem .55rem; background: var(--accent-strong); color: var(--on-accent-strong); border: none; border-radius: 3px; cursor: pointer; }
+  h2.barh .deriv-toggle { float: right; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: none; letter-spacing: 0; padding: .12rem .55rem; background: var(--accent-strong); color: var(--on-accent-strong); border: none; border-radius: var(--r-sm); cursor: pointer; }
   h2.barh .deriv-toggle:hover { filter: brightness(1.1); }
   #derived.collapsed .derv-extra { display: none; }
   @media print { h2.barh .deriv-toggle { display: none !important; } #derived.collapsed .derv-extra { display: flex !important; } }
@@ -185,7 +182,7 @@ import FormasPop from './FormasPop.astro';
   .ef-g-nm { text-transform: uppercase; letter-spacing: .05em; }
   .ef-g-nv { font-family: 'EB Garamond'; font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
   .ef-g-qtd { margin-left: auto; font-family: 'EB Garamond'; font-size: var(--fs-micro); font-style: italic; }
-  .ef-item { display: flex; align-items: center; gap: .4rem; padding: .2rem .3rem; border-radius: 4px;
+  .ef-item { display: flex; align-items: center; gap: .4rem; padding: .2rem .3rem; border-radius: var(--r-sm);
     font-size: var(--fs-rotulo); cursor: pointer; }
   .ef-item:hover { background: var(--panel-2); }
   .ef-item.on { background: color-mix(in srgb, var(--accent) 12%, transparent); }
@@ -196,14 +193,14 @@ import FormasPop from './FormasPop.astro';
   .ef-i-par { font-size: var(--fs-micro); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ef-i-xp { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); flex: none; }
   .ef-vazio { font-size: var(--fs-micro); padding: .4rem 0; }
-  .cam { border: 1px solid var(--panel-border); border-radius: 4px; margin-bottom: .4rem; background: var(--panel); }
+  .cam { border: 1px solid var(--panel-border); border-radius: var(--r-sm); margin-bottom: .4rem; background: var(--panel); }
   .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
   .cam-nm { min-width: 0; }
   .cam-head[data-camtog] { cursor: pointer; } .cam-head[data-camtog]:hover { background: var(--panel-2); }
   .chev { cursor: pointer; } .chev:hover { color: var(--accent-texto); }
   .cam-meta { margin-left: auto; font-family: 'EB Garamond'; font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
   .cam-body { padding: .4rem .7rem .6rem; border-top: 1px dotted var(--rule); }
-  .tpill { display: inline-block; margin: .2rem .3rem 0 0; padding: .2rem .6rem; border: 1px solid var(--panel-border); border-radius: 12px; font-size: var(--fs-rotulo); cursor: pointer; background: var(--bg); }
+  .tpill { display: inline-block; margin: .2rem .3rem 0 0; padding: .2rem .6rem; border: 1px solid var(--panel-border); border-radius: var(--r-lg); font-size: var(--fs-rotulo); cursor: pointer; background: var(--bg); }
   .tpill small { color: var(--ink-soft); font-size: var(--fs-micro); }
   .tpill.on { background: var(--accent); color: var(--on-accent); border-color: transparent; } .tpill.on small { color: var(--on-accent); opacity: .85; }
   .tpill:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
@@ -240,14 +237,14 @@ import FormasPop from './FormasPop.astro';
   .fa-chart .axlbl { font-family: 'Cinzel'; font-size: 9px; }
   .fa-chart .fa-vline { stroke: var(--accent-strong); stroke-width: 1; stroke-dasharray: 3 3; opacity: .7; }
   .fa-chart .fa-dot { fill: var(--accent-strong); stroke: var(--paper, #fff); stroke-width: 1.5; }
-  .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -140%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: #fff; font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .12rem .4rem; border-radius: 3px; box-shadow: 0 1px 4px rgba(0,0,0,.3); }
+  .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -140%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: #fff; font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .12rem .4rem; border-radius: var(--r-sm); box-shadow: 0 1px 4px rgba(0,0,0,.3); }
   .fa-tbl { border-collapse: collapse; font-size: var(--fs-rotulo); }
   .fa-tbl th, .fa-tbl td { border: 1px solid var(--rule); padding: .15rem .55rem; text-align: center; }
   .fa-tbl th { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); font-weight: 700; }
   /* o thead herda o fundo --accent-strong da regra global; com --ink-soft dava 1,5:1 */
   .fa-tbl thead th { color: var(--on-accent-strong); }
   .arm-checks { display: grid; gap: .1rem; }
-  .arm-item { display: grid; grid-template-columns: 14rem 1fr auto auto; align-items: center; gap: .1rem 1.1rem; padding: .18rem .4rem; border-radius: 5px; }
+  .arm-item { display: grid; grid-template-columns: 14rem 1fr auto auto; align-items: center; gap: .1rem 1.1rem; padding: .18rem .4rem; border-radius: var(--r-sm); }
   .arm-item:nth-of-type(odd) { background: color-mix(in srgb, var(--ink) 4%, transparent); }
   .arm-item.vestida { background: color-mix(in srgb, var(--accent) 12%, transparent); }
   .arm-chk { display: inline-flex; align-items: center; gap: .3rem; font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); }
@@ -263,21 +260,21 @@ import FormasPop from './FormasPop.astro';
   .eq-ed { margin-left: auto; background: none; border: none; color: var(--accent-strong); cursor: pointer; font-size: var(--fs-rotulo); line-height: 1; padding: 0 .15rem; }
   .eq-ed:hover { color: var(--accent-texto); }
   .eq-mod[hidden] { display: none; }   /* o display abaixo venceria o atributo hidden */
-  .eq-mod { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .4rem; margin: .3rem 0 .15rem; padding: .35rem .45rem; border: 1px dashed var(--panel-border); border-radius: 5px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .eq-mod { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .4rem; margin: .3rem 0 .15rem; padding: .35rem .45rem; border: 1px dashed var(--panel-border); border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
   .eqm-c { display: flex; flex-direction: column; gap: .1rem; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
-  .eqm-c input { width: 3.6rem; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 5px; padding: .15rem .3rem; }
+  .eqm-c input { width: 3.6rem; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .15rem .3rem; }
   .eqm-c.dif span { color: var(--accent-strong); }
   .eqm-c.dif input { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent); }
-  .eqm-reset { margin-left: auto; background: none; border: 1px solid var(--panel-border); border-radius: 5px; color: var(--ink-soft); font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; padding: .22rem .5rem; cursor: pointer; }
+  .eqm-reset { margin-left: auto; background: none; border: 1px solid var(--panel-border); border-radius: var(--r-sm); color: var(--ink-soft); font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; padding: .22rem .5rem; cursor: pointer; }
   .eqm-reset:hover { border-color: var(--accent); color: var(--accent-strong); }
   .equip-bolsas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .6rem .9rem; margin: 0 0 .8rem; }
   @media (max-width: 700px) { .equip-bolsas { grid-template-columns: 1fr; } }
   .bolsa { display: flex; flex-direction: column; gap: .25rem; }
   .bolsa-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .03em; color: var(--accent-strong); background: transparent; border: none; border-bottom: 1px solid var(--rule); padding: .1rem .1rem .2rem; text-transform: uppercase; }
   .bolsa-nome:focus { outline: none; border-bottom-color: var(--accent); }
-  .bolsa-txt { font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; padding: .4rem .5rem; resize: vertical; min-height: 4.5rem; }
+  .bolsa-txt { font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .4rem .5rem; resize: vertical; min-height: 4.5rem; }
   .bolsa-txt:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
-  .conjunto { border: 1px solid var(--panel-border); border-radius: 6px; padding: .5rem .6rem; margin-bottom: .5rem; background: var(--panel); }
+  .conjunto { border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .5rem .6rem; margin-bottom: .5rem; background: var(--panel); }
   .conjunto.ativo { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
   .conj-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .35rem; }
   .conj-uso { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong); display: inline-flex; align-items: center; gap: .3rem; text-transform: uppercase; letter-spacing: .03em; }
@@ -286,7 +283,7 @@ import FormasPop from './FormasPop.astro';
   @media (max-width: 560px) { .conj-hands { grid-template-columns: 1fr; } }
   .conj-mao { display: flex; flex-direction: column; min-width: 0; }
   .conj-mao > label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); text-transform: uppercase; letter-spacing: .03em; gap: .2rem; }
-  .conj-nome { margin-top: .25rem; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 5px; padding: .25rem .4rem; }
+  .conj-nome { margin-top: .25rem; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .25rem .4rem; }
   .conj-stats { margin-top: .45rem; font-size: var(--fs-rotulo); color: var(--ink); }
   .conj-stats b { color: var(--accent-strong); font-family: 'Cinzel'; font-size: var(--fs-micro); }
   .conj-req { color: #b3401f; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; }
@@ -294,10 +291,10 @@ import FormasPop from './FormasPop.astro';
   .conj-dupla b { color: var(--accent-strong); font-family: 'Cinzel'; font-size: var(--fs-micro); margin-right: .2rem; }
   .conj-improv { display: flex; gap: .5rem; margin-top: .3rem; flex-wrap: wrap; }
   .conj-improv label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); text-transform: uppercase; letter-spacing: .03em; gap: .15rem; }
-  .conj-improv select, .conj-improv input { font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: 5px; padding: .2rem .35rem; width: 4.2rem; }
+  .conj-improv select, .conj-improv input { font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .2rem .35rem; width: 4.2rem; }
   .conj-improv-nota { display: block; margin-top: .25rem; font-size: var(--fs-micro); font-style: italic; }
   #add-conjunto { margin-bottom: .8rem; }
-  .calcpop { position: absolute; z-index: 60; max-width: 280px; background: var(--panel); color: var(--ink); border: 1px solid var(--accent); border-radius: 6px; padding: .45rem .6rem; box-shadow: 0 4px 14px var(--shadow); font-size: var(--fs-rotulo); line-height: 1.4; font-family: 'EB Garamond'; }
+  .calcpop { position: absolute; z-index: 60; max-width: 280px; background: var(--panel); color: var(--ink); border: 1px solid var(--accent); border-radius: var(--r-md); padding: .45rem .6rem; box-shadow: 0 4px 14px var(--shadow); font-size: var(--fs-rotulo); line-height: 1.4; font-family: 'EB Garamond'; }
   .derv .dv[data-calc] { cursor: help; border-bottom: 1px dotted var(--accent-soft); }
   #combate .cmb { padding: .15rem 0; font-size: var(--fs-aux); } #combate .cmb b { color: var(--accent-strong); }
 
