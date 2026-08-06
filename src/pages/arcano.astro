@@ -109,13 +109,13 @@ const RESUMO: Record<string, string> = {
 <style>
   .nomes { margin: .6rem 0 0; padding-left: 1.1rem; }
   .nomes li { margin-bottom: .35rem; line-height: 1.5; }
-  .trilhas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .trilhas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr)); gap: 1rem; margin-top: 1rem; }
   .trilha h3 { margin: 0 0 .5rem; color: var(--accent); font-size: 1.1rem; }
   .trilha .tl-tag { font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: normal; }
   .trilha p { font-size: .92rem; line-height: 1.5; margin: 0 0 .5rem; }
   .trilha .tl-ex { font-size: .86rem; color: var(--muted, #888); margin-bottom: 0; }
   .resumo-bloco { margin-top: 1rem; }
-  .resumo-artes { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr)); gap: .35rem 1.2rem; }
+  .resumo-artes { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr)); gap: .35rem 1.2rem; }
   .resumo-artes li { line-height: 1.4; font-size: .92rem; }
   .resumo-artes .ra-nome { font-family: 'Cinzel'; color: var(--accent); text-decoration: none; margin-right: .4rem; }
   .resumo-artes .ra-nome:hover { text-decoration: underline; }

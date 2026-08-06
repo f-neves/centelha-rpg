@@ -90,10 +90,16 @@ import FormasPop from './FormasPop.astro';
   .xpbar input { width: 4.5rem; text-align: center; border: none; border-radius: 4px; padding: .25rem; font-family: 'Cinzel'; }
   .xpbar input:disabled { opacity: .8; cursor: not-allowed; }
   .xpbar .breakdown { font-size: .78rem; opacity: .9; flex: 1 1 12rem; }
-  .xpbar .xp-btns { display: flex; gap: .4rem; margin-left: auto; }
+  /* flex-wrap é obrigatório: sem ele os 7 botões formam uma fila de 574px que estoura a
+     viewport do celular e põe a Ficha inteira para rolar na horizontal. */
+  .xpbar .xp-btns { display: flex; flex-wrap: wrap; gap: .4rem; margin-left: auto; min-width: 0; }
+  @media (max-width: 900px) { .xpbar .xp-btns { margin-left: 0; width: 100%; } }
   .xpbar .btn { background: var(--accent-strong); color: var(--on-accent); border-color: transparent; padding: .25rem .6rem; font-size: .78rem; }
 
   .idrow { display: grid; grid-template-columns: 2fr 2fr 1fr 1.4fr; gap: 1rem; margin-bottom: .4rem; }
+  /* min-width: 0 — itens de grade não encolhem abaixo do tamanho intrínseco por padrão, e o
+     <select> de Raça vazava a coluna nas telas estreitas. */
+  .idrow > * { min-width: 0; }
   @media (max-width: 640px) { .idrow { grid-template-columns: 1fr 1fr; } }
   .idrow select.racasel { width: 100%; margin-top: .15rem; }
   .raca-info { font-size: .82rem; color: var(--ink-soft); margin: 0 0 .6rem; line-height: 1.4; }

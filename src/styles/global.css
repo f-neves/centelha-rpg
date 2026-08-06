@@ -112,7 +112,9 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
   border-right: 1.5px solid var(--rule); background: var(--bg-soft);
   padding: 1.2rem 1rem 3rem; position: sticky; top: 0; height: 100vh; overflow-y: auto;
 }
-.content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 5rem; }
+/* overflow-wrap: quebra apenas o que não caberia de jeito nenhum — trechos longos sem espaço
+   (ex.: "(Influência/Compostura/Raciocínio/Percepção)") empurravam a página inteira no celular. */
+.content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 5rem; overflow-wrap: break-word; }
 .prose { max-width: 70rem; margin-inline: auto; }
 .wide { max-width: 60rem; margin-inline: auto; }
 

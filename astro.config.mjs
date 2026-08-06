@@ -22,6 +22,31 @@ function remarkMermaid() {
   return (tree) => walk(tree);
 }
 
+// Envolve toda <table> da prosa num <div class="table-wrap"> (que tem overflow-x: auto).
+// Sem isso, a largura intrínseca da tabela empurra o documento inteiro e o celular ganha
+// rolagem horizontal. Antes o wrapper era escrito à mão em cada .md — e faltava em vários.
+// Pula quem já está envolvido, para os wrappers manuais existentes não duplicarem.
+function rehypeTableWrap() {
+  const ehWrap = (n) =>
+    n && n.type === 'element' && n.tagName === 'div'
+    && String(n.properties?.className || '').includes('table-wrap');
+  const walk = (node) => {
+    const filhos = node.children || [];
+    for (let i = 0; i < filhos.length; i++) {
+      const f = filhos[i];
+      if (f.type === 'element' && f.tagName === 'table' && !ehWrap(node)) {
+        filhos[i] = {
+          type: 'element', tagName: 'div',
+          properties: { className: ['table-wrap'] },
+          children: [f],
+        };
+      }
+      walk(filhos[i]);
+    }
+  };
+  return (tree) => walk(tree);
+}
+
 // Prefixa o base do site em links root-relativos da prosa (markdown) → sem 404 no Pages.
 function rehypeBaseLinks() {
   const walk = (node) => {
@@ -47,7 +72,7 @@ export default defineConfig({
   markdown: {
     shikiConfig: { theme: 'css-variables' },
     remarkPlugins: [remarkMermaid],
-    rehypePlugins: [rehypeBaseLinks],
+    rehypePlugins: [rehypeBaseLinks, rehypeTableWrap],
   },
   integrations: [
     sitemap(),
