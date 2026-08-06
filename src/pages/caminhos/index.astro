@@ -6,7 +6,7 @@ import Icone from '../../components/Icone.astro';
 const d = await loadData();
 ---
 <Base title="As Proezas" largura="wide" descricao="Os 48 Proezas de Técnicas, do mundano ao divino.">
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XIII</p>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo XIII</p>
   <h1>As Proezas</h1>
   <p class="lead">Tudo o que um personagem aprende de extraordinário — uma manobra marcial, um dom social, um sentido sobre-humano — é uma <a href={url('glossario') + '#tecnica'} class="no-gloss">Técnica</a> de um <strong>Proeza</strong>. Cada Proeza é uma árvore temática que cresce do mundano ao divino, e só floresce em quem tem <strong>Centelha</strong>.</p>
 
@@ -36,7 +36,7 @@ const d = await loadData();
 
 <style>
   .cam-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: .25rem; }
-  .cam-nome { color: var(--accent); font-size: 1.1rem; }
-  .cam-desc { font-size: .88rem; line-height: 1.4; flex: 1; }
-  .cam-meta { font-family: 'Cinzel'; font-size: .75rem; color: var(--gold); }
+  .cam-nome { color: var(--accent); font-size: var(--fs-corpo); }
+  .cam-desc { font-size: var(--fs-rotulo); line-height: 1.4; flex: 1; }
+  .cam-meta { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--gold); }
 </style>

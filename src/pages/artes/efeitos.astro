@@ -23,7 +23,7 @@ const BLOCOS: [string, string, any[]][] = [
 ];
 ---
 <Base title="Efeitos Especiais" largura="wide" descricao="Os Efeitos Especiais das Artes elementais: o que cada um faz, o que custa e quais parâmetros o jogador escolhe na hora de conjurar.">
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV · <a href={url('artes/regras')}>As Artes</a></p>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo XV · <a href={url('artes/regras')}>As Artes</a></p>
   <h1>Os Efeitos Especiais</h1>
   <p class="lead">A Arte dá o elemento em estado bruto; o <strong>Efeito</strong> dá forma, nome e comportamento. A régua é simples: <em>se precisa de um substantivo próprio para ser descrito, é Efeito.</em> Fogo é Arte, muro é Efeito, e subir a Arte nunca substitui o Efeito, porque muro não é fogo maior, é fogo com forma.</p>
 
@@ -128,15 +128,15 @@ const BLOCOS: [string, string, any[]][] = [
 </script>
 
 <style>
-  .efeito { display: flex; flex-direction: column; gap: .4rem; font-size: 1.18rem; line-height: 1.45; }
+  .efeito { display: flex; flex-direction: column; gap: .4rem; font-size: var(--fs-corpo); line-height: 1.45; }
   .ef-head { display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--rule); padding-bottom: .35rem; }
-  .ef-nome { color: var(--accent); font-size: 1.3rem; flex: 1; }
+  .ef-nome { color: var(--accent); font-size: var(--fs-h3); flex: 1; }
   .ef-nivel { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%;
-    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: .85rem; flex: none; }
+    background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: var(--fs-rotulo); flex: none; }
   .ef-bloco { margin-top: 1.4rem; }
-  .ef-bloco-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: 1.15rem; margin: 0 0 .5rem;
+  .ef-bloco-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-corpo); margin: 0 0 .5rem;
     border-bottom: 1px solid var(--rule); padding-bottom: .2rem; }
-  .ef-bloco-tit .muted { font-size: .75rem; font-weight: normal; }
+  .ef-bloco-tit .muted { font-size: var(--fs-micro); font-weight: normal; }
   .ef-sabor { color: var(--ink-soft); margin: 0; }
   .ef-txt { margin: 0; }
   .ef-par { list-style: none; margin: .1rem 0 0; padding: .4rem 0 0; border-top: 1px solid var(--rule); }
@@ -147,10 +147,10 @@ const BLOCOS: [string, string, any[]][] = [
   .efeito .muted { font-style: normal; }
   .artes-nav { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; margin: 2rem 0 .5rem; }
   .ef-indice { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: .8rem 0 1.2rem; }
-  .ef-indice a { font-family: 'Cinzel'; font-size: .85rem; text-decoration: none; color: var(--accent);
+  .ef-indice a { font-family: 'Cinzel'; font-size: var(--fs-rotulo); text-decoration: none; color: var(--accent);
     border: 1px solid var(--panel-border); border-radius: 999px; padding: .15rem .7rem; background: var(--panel); }
   .ef-indice a:hover { border-color: var(--accent); }
-  .ef-indice .muted { font-style: normal; font-size: .78rem; }
+  .ef-indice .muted { font-style: normal; font-size: var(--fs-micro); }
   .ef-bloco-tit { scroll-margin-top: 1rem; }
   .ef-grupo { margin-top: 2rem; }
   .ef-grupo-tit { text-align: center; border: none; margin-bottom: .1rem; }
@@ -158,11 +158,11 @@ const BLOCOS: [string, string, any[]][] = [
   .ef-indice a.universal { color: var(--gold); }
   /* abas: só aparecem com JS, e aí escondem o título repetido de cada grupo */
   .ef-abas { display: flex; gap: .3rem; border-bottom: 1px solid var(--rule); margin: 0 0 1rem; }
-  .ef-aba { font-family: 'Cinzel'; font-size: .92rem; letter-spacing: .03em; cursor: pointer;
+  .ef-aba { font-family: 'Cinzel'; font-size: var(--fs-rotulo); letter-spacing: .03em; cursor: pointer;
     background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
     padding: .45rem .9rem; color: var(--ink-soft); }
   .ef-aba:hover { color: var(--accent); }
   .ef-aba[aria-selected='true'] { color: var(--accent-strong); border-bottom-color: var(--accent); }
-  .ef-aba .muted { font-style: normal; font-size: .78rem; }
+  .ef-aba .muted { font-style: normal; font-size: var(--fs-micro); }
   .ef-indice a.fora { opacity: .5; }
 </style>

@@ -199,41 +199,41 @@ const exSociais = [
 </Base>
 
 <style>
-  .lead { font-size: 1.05rem; color: var(--ink-soft); }
-  h2.barh { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; padding: .4rem .8rem; border-radius: 4px; margin: 2rem 0 .7rem; }
+  .lead { font-size: var(--fs-aux); color: var(--ink-soft); }
+  h2.barh { background: var(--accent); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-rotulo); letter-spacing: .06em; text-transform: uppercase; padding: .4rem .8rem; border-radius: 4px; margin: 2rem 0 .7rem; }
   h2.barh small { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .85; }
-  h3.sub { font-family: 'Cinzel'; font-size: .95rem; color: var(--accent-strong); margin: 1.4rem 0 .5rem; }
+  h3.sub { font-family: 'Cinzel'; font-size: var(--fs-aux); color: var(--accent-strong); margin: 1.4rem 0 .5rem; }
   .tab-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; margin: .3rem 0 1rem; }
   table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
   th, td { padding: .4rem .6rem; text-align: left; border-bottom: 1px solid var(--rule); }
-  thead th { font-family: 'Cinzel'; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--on-accent); background: var(--accent); position: sticky; top: 0; }
+  thead th { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--on-accent); background: var(--accent); position: sticky; top: 0; }
   td.c, th.c { text-align: center; }
-  .prob td.dados, .heat .d { color: var(--ink-soft); font-size: .82rem; }
-  .prob b { color: var(--accent-strong); font-size: 1.05rem; }
-  .prob .pc { color: var(--ink-soft); font-size: .82rem; }
+  .prob td.dados, .heat .d { color: var(--ink-soft); font-size: var(--fs-micro); }
+  .prob b { color: var(--accent-strong); font-size: var(--fs-aux); }
+  .prob .pc { color: var(--ink-soft); font-size: var(--fs-micro); }
   .deg .nome { font-family: 'Cinzel'; color: var(--accent-strong); font-weight: 600; }
   .mult { margin: .3rem 0 1rem; padding-left: 1.2rem; }
   .mult b { color: var(--accent-strong); }
 
   /* Heatmap */
-  .heat { font-size: .78rem; }
+  .heat { font-size: var(--fs-micro); }
   .heat th, .heat td { padding: .3rem .35rem; text-align: center; border: 1px solid rgba(0,0,0,.08); white-space: nowrap; }
   .heat thead th { background: var(--accent); color: var(--on-accent); }
   .heat th.lbl { position: sticky; left: 0; z-index: 2; background: var(--panel); color: var(--ink); font-family: 'Cinzel'; font-weight: 700; }
   .heat thead th.lbl { background: var(--accent); color: var(--on-accent); z-index: 3; }
-  .heat th.lbl.d { left: 2.4rem; font-weight: 500; font-size: .72rem; color: var(--ink-soft); }
+  .heat th.lbl.d { left: 2.4rem; font-weight: 500; font-size: var(--fs-micro); color: var(--ink-soft); }
   .heat thead th.lbl.d { color: var(--on-accent); }
   .heat tbody td { color: #111; font-weight: 600; }
   .heat tbody tr:hover td { outline: 1px solid rgba(0,0,0,.4); outline-offset: -1px; }
 
   .legend { display: flex; align-items: center; gap: .6rem; margin: .2rem 0 .6rem; }
-  .legend .cap { font-family: 'Cinzel'; font-size: .7rem; color: var(--ink-soft); }
+  .legend .cap { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); }
   .legend .grad { display: inline-flex; height: 13px; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
   .legend .grad span { width: 11px; height: 100%; }
   .verde { color: hsl(120 60% 38%); font-weight: 700; }
   .vermelho { color: hsl(0 65% 48%); font-weight: 700; }
 
-  .ex td.per { color: var(--ink-soft); font-size: .88rem; white-space: nowrap; }
+  .ex td.per { color: var(--ink-soft); font-size: var(--fs-rotulo); white-space: nowrap; }
   .ex td.dif { font-family: 'Cinzel'; font-weight: 700; color: var(--accent-strong); }
-  .ex td.obs { color: var(--ink-soft); font-size: .88rem; font-style: italic; }
+  .ex td.obs { color: var(--ink-soft); font-size: var(--fs-rotulo); font-style: italic; }
 </style>

@@ -4,7 +4,7 @@ const { caminho } = Astro.props;
 ---
 <section class="arvore" aria-label="Árvore de Técnicas">
   <h2>Árvore de Técnicas</h2>
-  <p class="muted" style="margin-top:-.3rem;font-size:.9rem">Cada linha é uma faixa de poder. As setas seguem os pré-requisitos. Clique num nó para ver o efeito e a cadeia de XP até ele.</p>
+  <p class="muted" style="margin-top:-.3rem;font-size: var(--fs-rotulo)">Cada linha é uma faixa de poder. As setas seguem os pré-requisitos. Clique num nó para ver o efeito e a cadeia de XP até ele.</p>
   <div class="arv-wrap">
     <svg class="arv-edges" aria-hidden="true"></svg>
     <div class="arv-grid" data-caminho={caminho}></div>
@@ -18,15 +18,15 @@ const { caminho } = Astro.props;
   .arv-edges { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   .arv-grid { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.1rem; min-width: max-content; }
   .arv-row { display: flex; gap: .6rem; align-items: center; }
-  .arv-rowlbl { font-family: 'Cinzel'; font-size: .7rem; color: var(--gold); width: 5.5rem; flex: 0 0 5.5rem; text-transform: uppercase; letter-spacing: .05em; }
-  .arv-node { font-family: 'Cinzel'; font-size: .82rem; cursor: pointer; border: 1.5px solid var(--panel-border); background: var(--panel);
+  .arv-rowlbl { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--gold); width: 5.5rem; flex: 0 0 5.5rem; text-transform: uppercase; letter-spacing: .05em; }
+  .arv-node { font-family: 'Cinzel'; font-size: var(--fs-micro); cursor: pointer; border: 1.5px solid var(--panel-border); background: var(--panel);
     color: var(--ink); padding: .35rem .6rem; border-radius: 6px; white-space: nowrap; }
   .arv-node:hover { border-color: var(--accent); }
   .arv-node[data-tipo='passiva'] { border-style: dashed; }
   .arv-node[aria-pressed='true'] { background: var(--accent); color: var(--on-accent); border-color: transparent; }
   .arv-node.chain { box-shadow: 0 0 0 2px var(--gold); }
   .arv-detalhe { margin-top: 1rem; position: relative; padding-right: 2.2rem; }
-  .arv-detalhe .x { position: absolute; top: .5rem; right: .6rem; cursor: pointer; border: none; background: none; color: var(--ink-soft); font-size: 1.2rem; line-height: 1; }
+  .arv-detalhe .x { position: absolute; top: .5rem; right: .6rem; cursor: pointer; border: none; background: none; color: var(--ink-soft); font-size: var(--fs-h3); line-height: 1; }
   .arv-detalhe .x:hover { color: var(--accent); }
 </style>
 
@@ -127,7 +127,7 @@ const { caminho } = Astro.props;
       det.hidden = false;
       det.innerHTML =
         `<button class="x" aria-label="Fechar">✕</button>` +
-        `<div class="cinzel" style="color:var(--accent);font-size:1.1rem">${t.nome}</div>` +
+        `<div class="cinzel" style="color:var(--accent);font-size: var(--fs-corpo)">${t.nome}</div>` +
         `<div style="margin:.2rem 0"><span class="badge banda">Nível ${t.nivel}</span> ${(() => { const m = modOf(t.efeito, t.nivel); return m ? `<span class="badge mod" title="${m.t}">${m.v}</span> ` : ''; })()}<span class="badge ${t.tipo}">${fmtCusto(t) || t.tipo}</span>${t.pendente ? ' <span class="badge pendente">Rascunho</span>' : ''}</div>` +
         `<p>${t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</p>` + requer + unlocks +
         `<hr><p class="tec-meta"><strong>Planejador:</strong> a cadeia completa de pré-requisitos custa <strong>${xp} XP</strong> em Técnicas (${chain.size} no total).</p>` +

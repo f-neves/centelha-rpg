@@ -33,7 +33,7 @@ const RESUMO: Record<string, string> = {
 };
 ---
 <Base title="O Arcano" descricao="O que é a feitiçaria, os nomes que recebe, as Trilhas de ensino e um resumo das 24 Artes.">
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XIV</p>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo XIV</p>
   <h1>O Arcano</h1>
   <p class="lead">A feitiçaria é a quarta trilha das Proezas, a única que de fato <em>quebra</em> as regras do mundo. Ela se pratica em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um. Este capítulo é o panorama; as regras completas, os efeitos e a descrição de cada Arte estão em <a href={url('artes')}>As Artes</a>.</p>
 
@@ -110,14 +110,14 @@ const RESUMO: Record<string, string> = {
   .nomes { margin: .6rem 0 0; padding-left: 1.1rem; }
   .nomes li { margin-bottom: .35rem; line-height: 1.5; }
   .trilhas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr)); gap: 1rem; margin-top: 1rem; }
-  .trilha h3 { margin: 0 0 .5rem; color: var(--accent); font-size: 1.1rem; }
-  .trilha .tl-tag { font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: normal; }
-  .trilha p { font-size: .92rem; line-height: 1.5; margin: 0 0 .5rem; }
+  .trilha h3 { margin: 0 0 .5rem; color: var(--accent); font-size: var(--fs-corpo); }
+  .trilha .tl-tag { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: normal; }
+  .trilha p { font-size: var(--fs-rotulo); line-height: 1.5; margin: 0 0 .5rem; }
   /* --muted nao existe como token: caia no #888 cravado, que rende 4,5:1 no limite. */
-  .trilha .tl-ex { font-size: .86rem; color: var(--ink-soft); margin-bottom: 0; }
+  .trilha .tl-ex { font-size: var(--fs-rotulo); color: var(--ink-soft); margin-bottom: 0; }
   .resumo-bloco { margin-top: 1rem; }
   .resumo-artes { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr)); gap: .35rem 1.2rem; }
-  .resumo-artes li { line-height: 1.4; font-size: .92rem; }
+  .resumo-artes li { line-height: 1.4; font-size: var(--fs-rotulo); }
   .resumo-artes .ra-nome { font-family: 'Cinzel'; color: var(--accent); text-decoration: none; margin-right: .4rem; }
   .resumo-artes .ra-nome:hover { text-decoration: underline; }
 </style>

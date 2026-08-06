@@ -119,7 +119,7 @@ import Base from '../layouts/Base.astro';
      E o estado ativo vinha de .primary, que só existe no CSS como .btn.primary, então
      as duas abas ficavam idênticas. O aria-selected já está no markup e é a fonte certa. */
   .tab { padding: .5rem 1rem; border: 1px solid var(--rule); background: var(--panel); color: var(--ink);
-    font-family: 'Cinzel'; font-size: .9rem; border-radius: 6px 6px 0 0; cursor: pointer; }
+    font-family: 'Cinzel'; font-size: var(--fs-rotulo); border-radius: 6px 6px 0 0; cursor: pointer; }
   .tab:hover { border-color: var(--accent); color: var(--accent); }
   /* --accent-strong (e não --accent) porque o par creme-sobre-teal-vivo do tema Clássico
      rende só 2,1:1; este é o mesmo par já usado nos cabeçalhos de tabela e passa nos três temas. */

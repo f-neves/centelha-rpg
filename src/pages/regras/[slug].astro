@@ -16,7 +16,7 @@ const { Content } = await render(entry);
 const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regras/${e.id}`);
 ---
 <Base title={entry.data.titulo} descricao={entry.data.resumo}>
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">
     Capítulo {entry.data.numeral}
   </p>
   <h1>{entry.data.titulo}</h1>

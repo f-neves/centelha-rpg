@@ -31,7 +31,7 @@ const EX_CONTA: [string, string, number][] = [
 ];
 ---
 <Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
-  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size:.78rem;margin:0">Capítulo XV</p>
+  <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo XV</p>
   <h1>Regras das Artes</h1>
   <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: basta <strong>Centelha &gt; 0</strong> (qualquer fagulha) para tocar a magia; a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Trilhas de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 
@@ -255,13 +255,13 @@ const EX_CONTA: [string, string, number][] = [
 </Base>
 
 <style>
-  .graus-tab { font-size: .88rem; }
+  .graus-tab { font-size: var(--fs-rotulo); }
   .graus-tab td, .graus-tab th { white-space: nowrap; }
   .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
   .callout.revisao ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .callout.revisao li { margin-bottom: .2rem; }
   /* a tabela de abundância é de frases, não de números: as células quebram linha */
-  .ab-tab { font-size: .86rem; table-layout: fixed; }
+  .ab-tab { font-size: var(--fs-rotulo); table-layout: fixed; }
   .ab-tab th:first-child, .ab-tab td:first-child { width: 6.5rem; }
   .ab-cel { line-height: 1.35; }
   .focos { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
@@ -273,6 +273,6 @@ const EX_CONTA: [string, string, number][] = [
   .cap-card { display: block; padding: .7rem .9rem; border: 1px solid var(--panel-border); border-radius: 6px;
     background: var(--panel); text-decoration: none; color: inherit; transition: border-color .12s, transform .12s; }
   .cap-card:hover { border-color: var(--accent); transform: translateY(-1px); }
-  .cc-tit { display: block; font-family: 'Cinzel'; color: var(--accent); font-size: 1.05rem; }
-  .cc-sub { display: block; font-size: .86rem; color: var(--ink-soft); line-height: 1.4; margin-top: .15rem; }
+  .cc-tit { display: block; font-family: 'Cinzel'; color: var(--accent); font-size: var(--fs-aux); }
+  .cc-sub { display: block; font-size: var(--fs-rotulo); color: var(--ink-soft); line-height: 1.4; margin-top: .15rem; }
 </style>

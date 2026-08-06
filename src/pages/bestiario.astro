@@ -245,18 +245,18 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
 <style>
   .filtros { margin: 1rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: flex-end; }
-  .filtros > label { font-family: 'Cinzel'; font-size: .78rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: .25rem; }
-  .filtros input[type='search'] { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-family: 'EB Garamond'; font-size: .95rem; }
+  .filtros > label { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); display: flex; flex-direction: column; gap: .25rem; }
+  .filtros input[type='search'] { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-family: 'EB Garamond'; font-size: var(--fs-aux); }
   .filtros .busca input { min-width: 13rem; }
-  .filtros select { min-width: 11rem; font-size: .95rem; }
+  .filtros select { min-width: 11rem; font-size: var(--fs-aux); }
   .filtros fieldset { border: 1px solid var(--panel-border); border-radius: 5px; padding: .3rem .6rem; max-width: 100%; }
-  .filtros legend { font-family: 'Cinzel'; font-size: .72rem; color: var(--ink-soft); }
+  .filtros legend { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); }
   .cats { display: flex; flex-wrap: wrap; gap: .1rem .4rem; }
-  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .4rem; font-family: 'EB Garamond'; font-size: .92rem; }
+  .chk { display: inline-flex; align-items: center; gap: .25rem; margin-right: .4rem; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); }
   .bf-count { width: 100%; margin: 0; }
 
   .ord-row { display: flex; gap: .3rem; align-items: stretch; }
-  #ord-dir { padding: 0 .55rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--accent-strong); cursor: pointer; font-size: 1rem; line-height: 1; display: flex; align-items: center; transition: background .15s, border-color .15s; }
+  #ord-dir { padding: 0 .55rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--accent-strong); cursor: pointer; font-size: var(--fs-aux); line-height: 1; display: flex; align-items: center; transition: background .15s, border-color .15s; }
   #ord-dir:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--bg)); }
   #ord-dir .ord-arw { font-weight: 700; }
 
@@ -299,12 +299,12 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   }
   .arte-ameaca {
     position: absolute; left: .55rem; bottom: .45rem; z-index: 2;
-    color: var(--gold); letter-spacing: .08em; font-size: 1.23rem;
+    color: var(--gold); letter-spacing: .08em; font-size: var(--fs-h3);
     text-shadow: 0 1px 2px rgba(0,0,0,.55); filter: drop-shadow(0 0 1px rgba(0,0,0,.4));
   }
   .arte-cent {
     position: absolute; left: .5rem; top: .5rem; z-index: 2;
-    font-family: 'Cinzel'; font-size: 1.05rem; font-weight: 600; letter-spacing: .03em;
+    font-family: 'Cinzel'; font-size: var(--fs-aux); font-weight: 600; letter-spacing: .03em;
     padding: .18rem .68rem; border-radius: 999px;
     color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000);
     box-shadow: 0 2px 5px rgba(0,0,0,.4);
@@ -312,13 +312,13 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
   .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
   .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
-  .besta-nome { font-size: 1.12rem; color: var(--accent); line-height: 1.15; }
-  .besta-nome-en { font-size: .82rem; font-weight: 400; color: var(--muted); font-style: italic; }
+  .besta-nome { font-size: var(--fs-corpo); color: var(--accent); line-height: 1.15; }
+  .besta-nome-en { font-size: var(--fs-micro); font-weight: 400; color: var(--muted); font-style: italic; }
   .badge.cat { background: var(--accent-strong); color: var(--on-accent-strong); }
-  .besta-con { font-style: italic; margin: .3rem 0 .4rem; font-size: .9rem; }
-  .besta-porte { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; margin: 0 0 .5rem; font-size: .84rem; color: var(--ink-soft); }
-  .pt-lbl { font-family: 'Cinzel'; font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
-  .pt-cat { font-family: 'Cinzel'; font-size: .74rem; color: var(--ink); }
+  .besta-con { font-style: italic; margin: .3rem 0 .4rem; font-size: var(--fs-rotulo); }
+  .besta-porte { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; margin: 0 0 .5rem; font-size: var(--fs-rotulo); color: var(--ink-soft); }
+  .pt-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
+  .pt-cat { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
   .pt-sep { color: color-mix(in srgb, var(--ink) 35%, transparent); }
 
   /* Badges numa linha abaixo do nome: terreno verde-terra, clima roxo (contraste) */
@@ -329,19 +329,19 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
   .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr)); gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
   .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
-  .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: .6rem; text-transform: uppercase; letter-spacing: .04em; }
-  .besta-stats dd { margin: 0; font-size: 1rem; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; }
+  .besta-stats dd { margin: 0; font-size: var(--fs-aux); font-variant-numeric: tabular-nums; font-weight: 600; }
 
   /* Atributos */
   .besta-atrib { margin: 0 0 .55rem; }
-  .atr-lbl { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
+  .atr-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
   /* colunas: Físico | Social | Mental (ordem de coluna, não de linha) */
   .atr-grid { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: .2rem .4rem; margin-top: .3rem; }
   .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
-  .atr-nm { font-family: 'Cinzel'; font-size: .68rem; color: var(--ink-soft); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .atr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .atr-ab { text-transform: uppercase; letter-spacing: .02em; }
-  .atr-full { display: none; font-size: .64rem; letter-spacing: 0; }
-  .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; color: var(--accent-strong); }
+  .atr-full { display: none; font-size: var(--fs-micro); letter-spacing: 0; }
+  .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
   /* nome por extenso em telas maiores */
   @media (min-width: 720px) {
     .atr-ab { display: none; }
@@ -352,31 +352,31 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .besta-tracos { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .28rem; }
   .tr-linha { display: flex; gap: .4rem; }
   .tr { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: 4px; background: color-mix(in srgb, var(--accent) 6%, transparent); }
-  .tr-nm { font-family: 'Cinzel'; font-size: .68rem; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
-  .tr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; color: var(--accent-strong); }
-  .tr-mod { font-weight: 600; font-size: .72rem; color: var(--ink-soft); }
+  .tr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
+  .tr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
+  .tr-mod { font-weight: 600; font-size: var(--fs-micro); color: var(--ink-soft); }
   .tr-virt { display: flex; align-items: baseline; gap: .45rem; padding: .1rem .4rem; }
-  .tr-vv { font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--ink-soft); }
+  .tr-vv { font-variant-numeric: tabular-nums; font-size: var(--fs-micro); color: var(--ink-soft); }
 
   /* Habilidades */
-  .besta-atk { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: .9rem; display: flex; flex-direction: column; gap: .3rem; }
+  .besta-atk { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: var(--fs-rotulo); display: flex; flex-direction: column; gap: .3rem; }
   .besta-atk li { display: flex; flex-direction: column; gap: .05rem; padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
-  .atk-nome { font-family: 'Cinzel'; font-size: .82rem; color: var(--ink); }
+  .atk-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
   .atk-rolls b { color: var(--accent-strong); }
-  .atk-nota { font-size: .82rem; font-style: italic; }
+  .atk-nota { font-size: var(--fs-micro); font-style: italic; }
 
   .besta-foot { margin-top: auto; padding-top: .6rem; display: flex; flex-wrap: wrap; gap: .5rem; }
   .besta-info {
     flex: 1 1 8rem; display: inline-flex; align-items: center; gap: .35rem; justify-content: center;
     padding: .4rem .6rem; border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--panel-border));
     border-radius: 6px; background: color-mix(in srgb, var(--accent) 7%, transparent);
-    color: var(--accent-strong); font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .02em;
+    color: var(--accent-strong); font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .02em;
     cursor: pointer; transition: background .15s, border-color .15s;
   }
   .besta-mech { background: color-mix(in srgb, var(--gold) 12%, transparent); border-color: color-mix(in srgb, var(--gold) 45%, var(--panel-border)); color: var(--ink); }
   .besta-mech:hover { background: color-mix(in srgb, var(--gold) 24%, transparent); border-color: var(--gold); }
   .besta-info:hover { background: color-mix(in srgb, var(--accent) 16%, transparent); border-color: var(--accent); }
-  .besta-info .i-ic { font-size: .95rem; line-height: 1; }
+  .besta-info .i-ic { font-size: var(--fs-aux); line-height: 1; }
   .lore-tpl { display: none; }
 
   /* --- Lightbox --- */
@@ -384,8 +384,8 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .lightbox[hidden] { display: none; }
   .lightbox figure { margin: 0; max-width: min(680px, 92vw); max-height: 88vh; display: flex; flex-direction: column; align-items: center; gap: .6rem; }
   .lightbox img { max-width: 100%; max-height: 78vh; object-fit: contain; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); border-radius: 8px; padding: 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
-  .lb-cap, #lb-cap { color: #f3e8cf; font-size: 1.25rem; letter-spacing: .02em; }
-  .lb-fechar { position: absolute; top: 1rem; right: 1.2rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: none; background: rgba(255,255,255,.12); color: #fff; font-size: 1.2rem; cursor: pointer; transition: background .15s; }
+  .lb-cap, #lb-cap { color: #f3e8cf; font-size: var(--fs-h3); letter-spacing: .02em; }
+  .lb-fechar { position: absolute; top: 1rem; right: 1.2rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: none; background: rgba(255,255,255,.12); color: #fff; font-size: var(--fs-h3); cursor: pointer; transition: background .15s; }
   .lb-fechar:hover { background: rgba(255,255,255,.25); }
   @keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
 
@@ -395,7 +395,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     width: 2.9rem; height: 2.9rem; border-radius: 50%;
     border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--panel-border));
     background: var(--accent-strong); color: var(--on-accent-strong);
-    font-size: 1.3rem; line-height: 1; cursor: pointer;
+    font-size: var(--fs-h3); line-height: 1; cursor: pointer;
     box-shadow: 0 4px 14px color-mix(in srgb, var(--ink) 28%, transparent);
     display: flex; align-items: center; justify-content: center;
     opacity: 0; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, background .15s;
@@ -418,33 +418,33 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.5);
     padding: 1.3rem 1.4rem 1.5rem;
   }
-  .infobox .ib-fechar { position: absolute; top: .6rem; right: .6rem; width: 2rem; height: 2rem; border-radius: 50%; border: none; background: color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); font-size: 1rem; cursor: pointer; transition: background .15s; }
+  .infobox .ib-fechar { position: absolute; top: .6rem; right: .6rem; width: 2rem; height: 2rem; border-radius: 50%; border: none; background: color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); font-size: var(--fs-aux); cursor: pointer; transition: background .15s; }
   .infobox .ib-fechar:hover { background: color-mix(in srgb, var(--ink) 22%, transparent); }
   .infobox .ib-head { display: flex; gap: .9rem; align-items: center; margin-bottom: .9rem; padding-right: 1.6rem; border-bottom: 1px dotted var(--rule); padding-bottom: .8rem; }
   .infobox .ib-art { width: 84px; height: 84px; object-fit: contain; border-radius: 8px; padding: .3rem; flex: 0 0 auto; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); mix-blend-mode: multiply; }
   .infobox .ib-art[hidden] { display: none; }
   .infobox .ib-head-txt { min-width: 0; }
-  .infobox #ib-nome { margin: 0; font-size: 1.5rem; color: var(--accent); line-height: 1.1; }
-  .infobox .ib-sub { margin: .25rem 0 0; font-size: .82rem; color: var(--ink-soft); font-style: italic; }
-  .infobox .ib-body h4 { font-family: 'Cinzel'; font-size: .82rem; letter-spacing: .02em; color: var(--accent-strong); margin: .95rem 0 .2rem; }
+  .infobox #ib-nome { margin: 0; font-size: var(--fs-h2); color: var(--accent); line-height: 1.1; }
+  .infobox .ib-sub { margin: .25rem 0 0; font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
+  .infobox .ib-body h4 { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .02em; color: var(--accent-strong); margin: .95rem 0 .2rem; }
   .infobox .ib-body h4:first-child { margin-top: 0; }
-  .infobox .ib-body p { margin: .2rem 0 0; font-size: .96rem; line-height: 1.5; color: var(--ink); }
-  .infobox .ib-sub-lbl { font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0; color: var(--ink-soft); font-size: .78rem; }
+  .infobox .ib-body p { margin: .2rem 0 0; font-size: var(--fs-aux); line-height: 1.5; color: var(--ink); }
+  .infobox .ib-sub-lbl { font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0; color: var(--ink-soft); font-size: var(--fs-micro); }
   /* Habilidades / Poderes / Técnicas dentro do card flutuante */
-  .infobox .ib-hab { list-style: none; padding: 0; margin: .35rem 0 0; font-size: .92rem; display: flex; flex-direction: column; gap: .32rem; }
+  .infobox .ib-hab { list-style: none; padding: 0; margin: .35rem 0 0; font-size: var(--fs-rotulo); display: flex; flex-direction: column; gap: .32rem; }
   .infobox .ib-hab li { padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--gold) 55%, transparent); line-height: 1.4; color: var(--ink-soft); }
-  .infobox .ib-hab li b { font-family: 'Cinzel'; font-size: .84rem; font-weight: 600; color: var(--ink); }
+  .infobox .ib-hab li b { font-family: 'Cinzel'; font-size: var(--fs-rotulo); font-weight: 600; color: var(--ink); }
   .infobox .ib-hab li b::after { content: ': '; color: var(--ink-soft); font-family: 'EB Garamond'; font-weight: 400; }
-  .infobox .ib-pod { list-style: none; padding: 0; margin: .35rem 0 0; font-size: .9rem; display: flex; flex-direction: column; gap: .22rem; }
+  .infobox .ib-pod { list-style: none; padding: 0; margin: .35rem 0 0; font-size: var(--fs-rotulo); display: flex; flex-direction: column; gap: .22rem; }
   .infobox .ib-pod li { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem; }
   .infobox .ib-pod .pw-arw { color: var(--ink-soft); }
-  .infobox .ib-pod .pw-alvo { font-weight: 600; padding: .05rem .5rem; border-radius: 10px; font-size: .82rem; }
+  .infobox .ib-pod .pw-alvo { font-weight: 600; padding: .05rem .5rem; border-radius: 10px; font-size: var(--fs-micro); }
   .infobox .ib-pod .pw-proeza .pw-alvo, .infobox .pw-proeza .pw-alvo { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent-strong); }
   .infobox .pw-feiticaria .pw-alvo { background: color-mix(in srgb, var(--gold) 26%, transparent); color: var(--ink); }
   .infobox .pw-natural .pw-alvo { background: var(--bg-soft); color: var(--ink-soft); font-weight: 500; }
-  .infobox .ib-ref { font-size: .92rem; margin: .3rem 0 0; }
-  .infobox .ib-ref b { font-family: 'Cinzel'; font-size: .74rem; color: var(--accent-strong); }
-  .infobox .ib-notas { font-size: .88rem; color: var(--ink-soft); font-style: italic; margin: .4rem 0 0; }
+  .infobox .ib-ref { font-size: var(--fs-rotulo); margin: .3rem 0 0; }
+  .infobox .ib-ref b { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong); }
+  .infobox .ib-notas { font-size: var(--fs-rotulo); color: var(--ink-soft); font-style: italic; margin: .4rem 0 0; }
   .infobox .ib-body a { color: var(--accent-strong); }
   @keyframes ib-fade { from { opacity: 0; } to { opacity: 1; } }
   @media (prefers-reduced-motion: reduce) { .infobox { animation: none; } }

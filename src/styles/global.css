@@ -91,6 +91,35 @@
   --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23083f3b' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
+/* ---------- Escala tipográfica ----------
+   Sete degraus, atribuídos por PAPEL e não por tamanho avulso. Antes havia 44 tamanhos
+   distintos em uso (de 9px a 64px), com valores fracionários herdados de em sobre em
+   (15,68 · 15,48 · 15,10 · 14,08 · 13,76 …) que ninguém escolheu: foram calculados por
+   acidente. E a escala era idêntica no desktop e no celular, sem nada se adaptar.
+
+   O piso é 12,5px, e vale principalmente para a Cinzel: ela é uma capitular romana,
+   desenhada para títulos, e fechava as versaletes abaixo disso. Havia 1.337 ocorrências
+   de texto em 11,5px, algumas em 9px. */
+:root {
+  --fs-h1: 2.1rem;      /* 33,6px */
+  --fs-h2: 1.5rem;      /* 24px   */
+  --fs-h3: 1.2rem;      /* 19,2px */
+  --fs-corpo: 1.18rem;  /* 18,9px */
+  --fs-aux: 1rem;       /* 16px   */
+  --fs-rotulo: .875rem; /* 14px   */
+  --fs-micro: .78rem;   /* 12,5px — piso */
+}
+/* No celular os títulos encolhem (um h1 de 33,6px consome a largura toda e quebra em duas
+   linhas), e o micro cresce meio ponto, porque 12,5px numa tela de 390px é apertado. */
+@media (max-width: 900px) {
+  :root {
+    --fs-h1: 1.75rem;    /* 28px */
+    --fs-h2: 1.31rem;    /* 21px */
+    --fs-h3: 1.125rem;   /* 18px */
+    --fs-micro: .8125rem;/* 13px */
+  }
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -102,17 +131,20 @@ body {
   background-size: var(--tex-size);
   color: var(--ink);
   font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
-  font-size: 1.18rem;
+  font-size: var(--fs-corpo);
   line-height: 1.62;
   -webkit-text-size-adjust: 100%;
 }
-[data-theme='legivel'] body { font-size: 1.22rem; line-height: 1.7; }
+/* o tema Legível sobe o corpo pelo token, não por regra à parte, para a escala inteira
+   acompanhar em vez de criar mais um degrau solto. */
+[data-theme='legivel'] { --fs-corpo: 1.22rem; }
+[data-theme='legivel'] body { line-height: 1.7; }
 
 h1, h2, h3, h4, .cinzel { font-family: 'Cinzel', Georgia, serif; line-height: 1.18; color: var(--accent); }
-h1 { font-size: 2.1rem; margin: 0 0 .5em; }
-h2 { font-size: 1.5rem; margin: 1.6em 0 .4em; padding-bottom: .2em; border-bottom: 1.5px solid var(--rule); }
-h3 { font-size: 1.2rem; margin: 1.3em 0 .3em; color: var(--accent-strong); }
-h4 { font-size: 1.02rem; margin: 1.1em 0 .3em; color: var(--accent-strong); font-variant: small-caps; letter-spacing: .04em; }
+h1 { font-size: var(--fs-h1); margin: 0 0 .5em; }
+h2 { font-size: var(--fs-h2); margin: 1.6em 0 .4em; padding-bottom: .2em; border-bottom: 1.5px solid var(--rule); }
+h3 { font-size: var(--fs-h3); margin: 1.3em 0 .3em; color: var(--accent-strong); }
+h4 { font-size: var(--fs-aux); margin: 1.1em 0 .3em; color: var(--accent-strong); font-variant: small-caps; letter-spacing: .04em; }
 p { margin: 0 0 .8em; }
 a { color: var(--link); text-underline-offset: .15em; }
 a:hover { color: var(--accent-strong); }
@@ -168,19 +200,19 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 }
 
 /* ---------- nav ---------- */
-.brand { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); font-size: 1.25rem; text-decoration: none; display: block; line-height: 1.1; }
+.brand { font-family: 'Cinzel'; font-weight: 700; color: var(--accent); font-size: var(--fs-h3); text-decoration: none; display: block; line-height: 1.1; }
 .brand .d6 { color: var(--accent-strong); }
-.brand small { display:block; font-family:'EB Garamond'; font-style:italic; font-weight:400; font-size:.78rem; color: var(--ink-soft); letter-spacing:0; }
+.brand small { display:block; font-family:'EB Garamond'; font-style:italic; font-weight:400; font-size:var(--fs-micro); color: var(--ink-soft); letter-spacing:0; }
 nav.toc { margin-top: 1.2rem; }
-nav.toc .grp { font-variant: small-caps; letter-spacing: .08em; color: var(--ink-soft); font-size: .82rem; margin: 1.1rem 0 .3rem; font-family:'Cinzel'; }
-nav.toc a { display: flex; gap: .5rem; align-items: baseline; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: 4px; font-size: 1rem; }
+nav.toc .grp { font-variant: small-caps; letter-spacing: .08em; color: var(--ink-soft); font-size: var(--fs-rotulo); margin: 1.1rem 0 .3rem; font-family:'Cinzel'; }
+nav.toc a { display: flex; gap: .5rem; align-items: baseline; text-decoration: none; color: var(--ink); padding: .28rem .5rem; border-radius: 4px; font-size: var(--fs-aux); }
 nav.toc a[hidden] { display: none; } /* respeita o atributo hidden (ex.: links Minha Conta/Admin revelados por JS) */
 nav.toc a:hover { background: var(--panel); }
 nav.toc a[aria-current='page'] { background: var(--accent); color: var(--on-accent); }
 nav.toc a[aria-current='page'] .num { color: var(--on-accent); }
-nav.toc a .num { color: var(--accent); font-family: 'Cinzel'; font-size: .8rem; min-width: 2.1rem; }
+nav.toc a .num { color: var(--accent); font-family: 'Cinzel'; font-size: var(--fs-micro); min-width: 2.1rem; }
 /* sub-páginas de um capítulo: recuadas e um pouco menores que o capítulo-pai */
-nav.toc a.subcap { padding-left: 2.6rem; font-size: .9rem; color: var(--ink-soft); }
+nav.toc a.subcap { padding-left: 2.6rem; font-size: var(--fs-rotulo); color: var(--ink-soft); }
 nav.toc a.subcap .num { min-width: 0; margin-left: -.9rem; }
 nav.toc a.subcap[aria-current='page'] { color: var(--on-accent); }
 
@@ -189,15 +221,15 @@ nav.toc a.subcap[aria-current='page'] { color: var(--on-accent); }
 .callout { background: var(--panel); border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: 4px; padding: .8rem 1rem; margin: 1em 0; }
 .callout.exemplo { border-left-color: var(--accent-soft); font-style: italic; }
 .callout.regra { border-left-color: var(--gold); }
-.callout .lbl { font-family: 'Cinzel'; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .25rem; }
+.callout .lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .25rem; }
 .callout.regra .lbl { color: var(--gold); }
 
 .formula { display: block; text-align: center; font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong);
   background: color-mix(in srgb, var(--accent) 9%, transparent); border: 1px solid var(--rule); border-radius: 4px;
-  padding: .6rem .8rem; margin: 1em 0; font-size: .98rem; }
+  padding: .6rem .8rem; margin: 1em 0; font-size: var(--fs-aux); }
 
-table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .98rem; }
-thead th { background: var(--accent-strong); color: var(--on-accent-strong); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: center; vertical-align: middle; padding: .5rem .6rem; }
+table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: var(--fs-aux); }
+thead th { background: var(--accent-strong); color: var(--on-accent-strong); font-family: 'Cinzel'; font-weight: 600; font-size: var(--fs-rotulo); text-align: center; vertical-align: middle; padding: .5rem .6rem; }
 thead th a, thead th a:hover { color: var(--on-accent-strong); text-decoration: underline; }
 
 /* Superfícies pintadas de accent: qualquer link, referência ou âncora dentro delas herda a cor
@@ -220,7 +252,7 @@ thead th .ref, thead th .anchor {
 thead th .ref:hover { color: var(--on-accent-strong); opacity: .82; }
 tbody td, tbody th { padding: .42rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: middle; text-align: center; }
 td.c, th.c { text-align: center; }
-tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong); font-size: .9rem; }
+tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong); font-size: var(--fs-rotulo); }
 tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, transparent); }
 .table-wrap { overflow-x: auto; }
 
@@ -231,7 +263,7 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 @media (max-width: 720px) { .cat-grid { grid-template-columns: 1fr; } }
 
 /* badges */
-.badge { display: inline-block; font-size: .72rem; font-family: 'Cinzel'; letter-spacing: .03em; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--panel-border); color: var(--ink-soft); background: var(--panel-2); white-space: nowrap; }
+.badge { display: inline-block; font-size: var(--fs-micro); font-family: 'Cinzel'; letter-spacing: .03em; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--panel-border); color: var(--ink-soft); background: var(--panel-2); white-space: nowrap; }
 .badge.banda { background: var(--accent); color: var(--on-accent); border-color: transparent; }
 .badge.mod { border-color: var(--gold); color: var(--gold); font-weight: 600; }
 .badge.passiva { border-color: var(--gold); color: var(--gold); }
@@ -243,11 +275,11 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 .gloss { border-bottom: 1.5px dotted var(--accent-soft); cursor: help; }
 .gloss-pop { position: absolute; z-index: 50; max-width: 22rem; background: var(--panel); color: var(--ink);
   border: 1px solid var(--accent); border-radius: 6px; padding: .6rem .75rem; box-shadow: 0 4px 14px var(--shadow);
-  font-size: .92rem; font-style: normal; line-height: 1.45; }
-.gloss-pop b { font-family: 'Cinzel'; color: var(--accent); display: block; margin-bottom: .15rem; font-size: .85rem; }
+  font-size: var(--fs-aux); font-style: normal; line-height: 1.45; }
+.gloss-pop b { font-family: 'Cinzel'; color: var(--accent); display: block; margin-bottom: .15rem; font-size: var(--fs-rotulo); }
 
 /* botões */
-.btn { font-family: 'Cinzel'; font-size: .9rem; cursor: pointer; border: 1px solid var(--panel-border);
+.btn { font-family: 'Cinzel'; font-size: var(--fs-rotulo); cursor: pointer; border: 1px solid var(--panel-border);
   background: var(--panel); color: var(--ink); padding: .45rem .9rem; border-radius: 5px; }
 .btn:hover { border-color: var(--accent); color: var(--accent); }
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; }
@@ -255,7 +287,7 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
 
 /* caixas de seleção — aparência unificada em todo o site */
 select {
-  font-family: 'EB Garamond', Georgia, serif; font-size: 1rem; line-height: 1.3; color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif; font-size: var(--fs-aux); line-height: 1.3; color: var(--ink);
   background-color: var(--panel); background-image: var(--select-arrow);
   background-repeat: no-repeat; background-position: right .65rem center; background-size: .7rem;
   border: 1px solid var(--panel-border); border-radius: 6px; padding: .4rem 1.9rem .4rem .7rem;
@@ -273,7 +305,7 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
 :hover > .anchor, .anchor:focus { opacity: 1; }
 
 /* breadcrumbs */
-.crumbs { font-size: .82rem; color: var(--ink-soft); margin: 0 0 1rem; font-family: 'Cinzel'; letter-spacing: .02em; }
+.crumbs { font-size: var(--fs-rotulo); color: var(--ink-soft); margin: 0 0 1rem; font-family: 'Cinzel'; letter-spacing: .02em; }
 .crumbs a { color: var(--accent); text-decoration: none; }
 .crumbs a:hover { text-decoration: underline; }
 .crumbs .crumb-sep { margin: 0 .45rem; color: var(--rule); }
@@ -327,15 +359,15 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 .ui-dlg::backdrop { background: rgba(0,0,0,.5); }
 .ui-dlg.perigo { border-top-color: var(--perigo); }
 .ui-dlg-head { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .85rem 1.1rem .1rem; }
-.ui-dlg-tit { font-family: 'Cinzel'; font-weight: 600; font-size: 1.05rem; color: var(--accent-strong); margin: 0; }
+.ui-dlg-tit { font-family: 'Cinzel'; font-weight: 600; font-size: var(--fs-h3); color: var(--accent-strong); margin: 0; }
 .ui-dlg.perigo .ui-dlg-tit { color: var(--perigo); }
 .ui-dlg-x { background: none; border: 0; padding: .15rem .35rem; border-radius: 4px; cursor: pointer;
-  color: var(--ink-soft); font-size: .95rem; line-height: 1; }
+  color: var(--ink-soft); font-size: var(--fs-rotulo); line-height: 1; }
 .ui-dlg-x:hover { color: var(--accent); background: var(--bg-soft); }
 .ui-dlg-corpo { padding: .7rem 1.1rem 0; }
 .ui-dlg-msg { margin: 0 0 .9rem; line-height: 1.45; }
 .ui-dlg-campo { display: block; margin-bottom: .85rem; }
-.ui-dlg-rot { display: block; font-family: 'Cinzel'; font-size: .72rem; letter-spacing: .06em;
+.ui-dlg-rot { display: block; font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .06em;
   text-transform: uppercase; color: var(--ink-soft); margin-bottom: .25rem; }
 .ui-dlg-campo input, .ui-dlg-campo textarea {
   width: 100%; font: inherit; color: var(--ink); background: var(--bg);
@@ -346,7 +378,7 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
   outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 28%, transparent);
 }
 .ui-dlg-campo .invalido { border-color: var(--perigo); }
-.ui-dlg-dica { display: block; font-size: .82rem; color: var(--ink-soft); margin-top: .25rem; }
+.ui-dlg-dica { display: block; font-size: var(--fs-rotulo); color: var(--ink-soft); margin-top: .25rem; }
 .ui-dlg-ops { display: flex; flex-direction: column; gap: .4rem; margin-bottom: .3rem; }
 .ui-dlg-ops .btn { text-align: left; }
 .ui-dlg-ops .btn small { opacity: .7; }

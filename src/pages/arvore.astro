@@ -14,7 +14,7 @@ const d = await loadData();
         {Object.entries(porAttr).flatMap(([, lista]) => (lista as any[])).map((c: any) => (
           <a class="panel" href={url(`caminhos/${c.id}`)} style="text-decoration:none;color:inherit">
             <div class="cinzel" style="color:var(--accent)">{c.nome}</div>
-            <div class="muted" style="font-size:.82rem">{d.A[c.atributo.id].nome} · {d.porCaminho[c.id]?.length ?? 0} Técnicas</div>
+            <div class="muted" style="font-size: var(--fs-micro)">{d.A[c.atributo.id].nome} · {d.porCaminho[c.id]?.length ?? 0} Técnicas</div>
           </a>
         ))}
       </div>

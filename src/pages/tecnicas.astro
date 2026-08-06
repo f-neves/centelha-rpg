@@ -42,18 +42,18 @@ const techs = [...d.tecnicas].sort((a, b) => (d.C[a.caminho.id].nome).localeComp
 <style>
   .filtros { margin: 1rem 0 1.4rem; }
   .f-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; margin-bottom: .6rem; }
-  .filtros label { display: flex; flex-direction: column; font-size: .78rem; font-family: 'Cinzel'; color: var(--ink-soft); gap: .2rem; }
-  .filtros input { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: .95rem; min-width: 9rem; }
-  .filtros select { min-width: 9rem; font-size: .95rem; }
+  .filtros label { display: flex; flex-direction: column; font-size: var(--fs-micro); font-family: 'Cinzel'; color: var(--ink-soft); gap: .2rem; }
+  .filtros input { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: 4px; background: var(--bg); color: var(--ink); font-size: var(--fs-aux); min-width: 9rem; }
+  .filtros select { min-width: 9rem; font-size: var(--fs-aux); }
   .filtros fieldset { border: 1px solid var(--panel-border); border-radius: 5px; padding: .3rem .6rem; }
-  .filtros legend { font-family: 'Cinzel'; font-size: .72rem; color: var(--ink-soft); padding: 0 .3rem; }
+  .filtros legend { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); padding: 0 .3rem; }
   .chk { flex-direction: row !important; align-items: center; gap: .25rem; display: inline-flex; margin-right: .5rem; }
   .tec-list { display: flex; flex-direction: column; }
   .tec-row { display: grid; grid-template-columns: minmax(9rem, 1.2fr) minmax(7rem, 1fr) auto auto; gap: .5rem .7rem;
     align-items: baseline; padding: .55rem .2rem; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; }
   .tec-row:hover { background: var(--panel-2); }
   .tr-nome { color: var(--accent); }
-  .tr-eff { grid-column: 1 / -1; font-size: .92rem; color: var(--ink-soft); }
+  .tr-eff { grid-column: 1 / -1; font-size: var(--fs-rotulo); color: var(--ink-soft); }
   @media (max-width: 640px) { .tec-row { grid-template-columns: 1fr auto; } .tr-cam { grid-column: 1; } }
 </style>
 

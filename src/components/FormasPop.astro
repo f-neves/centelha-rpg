@@ -45,16 +45,16 @@
   .formas-pop {
     position: absolute; z-index: 90; max-width: min(35rem, 92vw); padding: .6rem .75rem;
     background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, .28); font-size: .9rem; line-height: 1.4;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .28); font-size: var(--fs-rotulo); line-height: 1.4;
     animation: formas-entra .12s ease-out;
   }
   @keyframes formas-entra { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
-  .formas-pop .formas-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: .85rem;
+  .formas-pop .formas-tit { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-rotulo);
     letter-spacing: .04em; text-transform: uppercase; display: block; margin-bottom: .15rem; }
-  .formas-pop .formas-nota { display: block; color: var(--ink-soft); font-size: .82rem; margin-bottom: .5rem; }
+  .formas-pop .formas-nota { display: block; color: var(--ink-soft); font-size: var(--fs-micro); margin-bottom: .5rem; }
   .formas-pop .formas-grade { display: flex; flex-wrap: wrap; gap: .5rem .7rem; }
   .formas-pop figure { margin: 0; width: 5.2rem; text-align: center; }
-  .formas-pop figcaption { font-size: .72rem; color: var(--ink-soft); margin-top: .1rem; }
+  .formas-pop figcaption { font-size: var(--fs-micro); color: var(--ink-soft); margin-top: .1rem; }
   .formas-pop svg { width: 100%; height: 3.2rem; display: block;
     fill: color-mix(in srgb, var(--accent) 16%, transparent);
     stroke: var(--accent-strong); stroke-width: 1.6; stroke-linejoin: round; }
