@@ -272,7 +272,16 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
 @media (prefers-reduced-motion: reduce) { .target-flash { animation: none; } }
 
 /* utilidades */
-.muted { color: var(--ink-soft); font-style: italic; }
+/* .muted marca texto SECUNDÁRIO (nota, rótulo, valor auxiliar) e por isso é só cor.
+   Antes também forçava itálico, o que fazia o itálico significar quatro coisas ao mesmo
+   tempo (ênfase, texto auxiliar, bloco de exemplo, descrição de card) em 191 usos. Pior:
+   as notas dos capítulos são parágrafos italicizados com <em> dentro, e o <em> não
+   aparecia. Quem quiser a voz de aparte usa .muted-em. */
+.muted { color: var(--ink-soft); }
+.muted-em { color: var(--ink-soft); font-style: italic; }
+/* itálico dentro de itálico volta ao romano, que é a convenção tipográfica correta
+   e devolve a ênfase aninhada (em <em>, <cite>, legendas e apartes). */
+em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: normal; }
 .tag-orn { color: var(--gold); letter-spacing: .3em; text-align: center; }
 .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .8rem; }
 .lead { font-size: 1.12em; }

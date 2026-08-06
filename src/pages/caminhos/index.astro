@@ -23,7 +23,7 @@ const d = await loadData();
             {lista.map((c: any) => (
               <a class="panel cam-card" href={url(`caminhos/${c.id}`)}>
                 <div class="cinzel cam-nome">{c.nome}</div>
-                <div class="muted cam-desc">{c.descricao}</div>
+                <div class="muted-em cam-desc">{c.descricao}</div>
                 <div class="cam-meta">{d.porCaminho[c.id]?.length ?? 0} Técnicas</div>
               </a>
             ))}
