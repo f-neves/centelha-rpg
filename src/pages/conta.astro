@@ -72,9 +72,9 @@ import Base from '../layouts/Base.astro';
   form label { display: block; margin-bottom: .7rem; font-weight: 600; }
   form input { display: block; width: 100%; margin-top: .25rem; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
   .msg { display: inline-block; margin-left: .6rem; }
-  .msg.erro { color: #b3261e; } .msg.ok { color: var(--accent); }
-  .perigo-painel { border-color: #b3261e; }
-  .btn.perigo { border-color: #b3261e; color: #b3261e; }
-  .btn.perigo:hover { background: #b3261e; color: #fff; }
+  .msg.erro { color: var(--perigo); } .msg.ok { color: var(--accent); }
+  .perigo-painel { border-color: var(--perigo); }
+  .btn.perigo { border-color: var(--perigo); color: var(--perigo); }
+  .btn.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
   .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
 </style>

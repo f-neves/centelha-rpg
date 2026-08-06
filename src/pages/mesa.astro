@@ -1030,7 +1030,7 @@ import Base from '../layouts/Base.astro';
   .arqs .arq-abrir { flex: 1; color: var(--accent); text-decoration: none; }
   .arqs .arq-tipo { font-size: .78rem; text-transform: uppercase; }
   .arqs .arq-vis { display: inline-flex; align-items: center; gap: .25rem; font-size: .82rem; color: var(--ink-soft); }
-  .arqs .arq-rm { background: none; border: none; color: #b3261e; cursor: pointer; }
+  .arqs .arq-rm { background: none; border: none; color: var(--perigo); cursor: pointer; }
   .arq-alvo { font-size: .82rem; color: var(--ink-soft); }
   .arq-alvo summary { cursor: pointer; }
   .arq-alvo label { display: flex; align-items: center; gap: .3rem; padding: .15rem 0 .15rem .6rem; }
@@ -1054,13 +1054,13 @@ import Base from '../layouts/Base.astro';
   .membro-nome { flex: 1; }
   .membro-acoes { display: flex; gap: .4rem; flex-wrap: wrap; }
   .btn.mini { padding: .15rem .5rem; font-size: .78rem; }
-  .btn.perigo { border-color: #b3261e; color: #b3261e; }
-  .btn.perigo:hover { background: #b3261e; color: #fff; }
+  .btn.perigo { border-color: var(--perigo); color: var(--perigo); }
+  .btn.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
   .papel { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; padding: .1rem .5rem; border-radius: 999px; font-weight: 700; }
   .p-mestre { background: color-mix(in srgb, var(--gold, #b8860b) 25%, transparent); color: var(--ink); }
   .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
   .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: 8px; padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
-  .erro { color: #b3261e; }
+  .erro { color: var(--perigo); }
 
   .escudo-busca-wrap { position: relative; max-width: 30rem; margin: .4rem 0 1rem; }
   .escudo-busca-wrap input { width: 100%; padding: .5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
@@ -1078,7 +1078,7 @@ import Base from '../layouts/Base.astro';
   .cr-link { color: var(--accent); text-decoration: none; font-size: .85rem; }
   .cr-notas { font: inherit; font-family: 'EB Garamond'; padding: .4rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); resize: vertical; }
   .cr-notas-ro { font-size: .9rem; color: var(--ink-soft); font-style: italic; margin: 0; }
-  .cr-rm { background: none; border: none; color: #b3261e; cursor: pointer; padding: 0 .2rem; }
+  .cr-rm { background: none; border: none; color: var(--perigo); cursor: pointer; padding: 0 .2rem; }
 
   .enc-cab { margin-bottom: .6rem; }
   .enc-ctrl { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .8rem; align-items: center; }
@@ -1105,7 +1105,7 @@ import Base from '../layouts/Base.astro';
   .hpbar-txt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: .74rem; font-weight: 700; font-variant-numeric: tabular-nums; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.55); letter-spacing: .01em; }
   .hpbar-txt .hp-sep { opacity: .8; margin: 0 .05rem; }
   .hpbar-txt .hp-est { font-weight: 600; opacity: .95; margin-left: .25rem; }
-  .hpbar.t-saudavel  .hpbar-fill { background: linear-gradient(90deg, #2e9a44, #43b85c); }
+  .hpbar.t-saudavel  .hpbar-fill { background: linear-gradient(90deg, var(--ok), #43b85c); }
   .hpbar.t-machucado .hpbar-fill { background: linear-gradient(90deg, #7fa61c, #a9c22b); }
   .hpbar.t-ferido    .hpbar-fill { background: linear-gradient(90deg, #d08c12, #e6a91d); }
   .hpbar.t-grave     .hpbar-fill { background: linear-gradient(90deg, #d5661a, #e8791f); }
@@ -1116,10 +1116,10 @@ import Base from '../layouts/Base.astro';
   .cmb-hpctrl { display: inline-flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
   .cmb-hpctrl .hp-amt { width: 3.4rem; padding: .2rem; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--ink); }
   .cmb-hpctrl .hp-tipo { padding: .2rem; border: 1px solid var(--rule); border-radius: 5px; background: var(--bg); color: var(--ink); font: inherit; font-size: .78rem; }
-  .cmb-hpctrl .hp-dano { border-color: #b3261e; color: #b3261e; }
-  .cmb-hpctrl .hp-dano:hover { background: #b3261e; color: #fff; }
-  .cmb-hpctrl .hp-cura { border-color: #2e9a44; color: #2e9a44; }
-  .cmb-hpctrl .hp-cura:hover { background: #2e9a44; color: #fff; }
+  .cmb-hpctrl .hp-dano { border-color: var(--perigo); color: var(--perigo); }
+  .cmb-hpctrl .hp-dano:hover { background: var(--perigo-bg); color: var(--on-perigo); }
+  .cmb-hpctrl .hp-cura { border-color: var(--ok); color: var(--ok); }
+  .cmb-hpctrl .hp-cura:hover { background: var(--ok); color: #fff; }
   .hp-fb { font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent-strong); opacity: 0; transform: translateY(.2rem); transition: opacity .2s, transform .2s; }
   .hp-fb.mostra { opacity: 1; transform: translateY(0); }
 
@@ -1139,7 +1139,7 @@ import Base from '../layouts/Base.astro';
   .log-edit, .log-del { background: none; border: none; cursor: pointer; padding: 0 .2rem; font-size: .82rem; line-height: 1; opacity: .55; transition: opacity .15s; flex-shrink: 0; }
   .log-linha:hover .log-edit, .log-linha:hover .log-del { opacity: 1; }
   .log-edit { color: var(--accent); }
-  .log-del { color: #b3261e; }
+  .log-del { color: var(--perigo); }
 
   /* Diálogo de ação (Agir) */
   .acao-dlg { border: 1px solid var(--rule); border-radius: 10px; padding: 0; background: var(--panel); color: var(--ink); max-width: 24rem; width: 92%; box-shadow: 0 12px 40px rgba(0,0,0,.3); }

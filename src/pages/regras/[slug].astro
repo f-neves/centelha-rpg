@@ -98,18 +98,57 @@ const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regr
 
 <!-- Diagramas mermaid: renderiza só nas páginas que têm <pre class="mermaid"> (o pacote carrega sob demanda). -->
 <script>
+  // O tema do diagrama vem do tema DO SITE (data-theme), não do sistema operacional.
+  // Com prefers-color-scheme, quem estava num SO claro e escolhia "Escuro" recebia
+  // caixas brancas com texto preto sobre a página escura (contraste 1,2:1).
   async function renderMermaid() {
     const blocos = document.querySelectorAll<HTMLElement>('pre.mermaid');
     if (!blocos.length) return;
     const { default: mermaid } = await import('mermaid');
-    const escuro = matchMedia('(prefers-color-scheme: dark)').matches;
-    mermaid.initialize({
-      startOnLoad: false,
-      securityLevel: 'strict',
-      theme: escuro ? 'dark' : 'neutral',
-      fontFamily: 'inherit',
+
+    // guarda o código-fonte: o mermaid.run() substitui o conteúdo por SVG, e para
+    // re-renderizar ao trocar de tema é preciso devolver o texto original.
+    blocos.forEach((b) => { if (!b.dataset.src) b.dataset.src = b.textContent || ''; });
+
+    const css = getComputedStyle(document.documentElement);
+    const tk = (n: string) => css.getPropertyValue(n).trim();
+
+    const desenhar = async () => {
+      const tema = document.documentElement.dataset.theme || 'classico';
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'strict',
+        theme: tema === 'escuro' ? 'dark' : 'neutral',
+        fontFamily: "'EB Garamond', Georgia, serif",
+        // os diagramas passam a falar a paleta do Centelha em vez do cinza genérico
+        themeVariables: {
+          background: tk('--bg'),
+          primaryColor: tk('--panel'),
+          primaryTextColor: tk('--ink'),
+          primaryBorderColor: tk('--accent'),
+          secondaryColor: tk('--panel-2'),
+          tertiaryColor: tk('--bg-soft'),
+          lineColor: tk('--accent-soft'),
+          textColor: tk('--ink'),
+          mainBkg: tk('--panel'),
+          nodeBorder: tk('--accent'),
+          clusterBkg: tk('--bg-soft'),
+          edgeLabelBackground: tk('--bg-soft'),
+        },
+      });
+      blocos.forEach((b) => {
+        b.textContent = b.dataset.src || '';
+        b.removeAttribute('data-processed');
+      });
+      await mermaid.run({ nodes: Array.from(blocos) });
+    };
+
+    await desenhar();
+
+    // redesenha quando o tema muda (os botões da barra lateral mexem em data-theme)
+    new MutationObserver(desenhar).observe(document.documentElement, {
+      attributes: true, attributeFilter: ['data-theme'],
     });
-    await mermaid.run({ nodes: Array.from(blocos) });
   }
   renderMermaid();
 </script>

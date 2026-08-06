@@ -21,6 +21,10 @@
   --on-accent: #f6efda;
   --rule: #cdbd92;
   --gold: #b08d3a;
+  --perigo: #a02017;      /* texto/borda de acao destrutiva */
+  --perigo-bg: var(--perigo);   /* mesma acao, preenchida */
+  --on-perigo: #ffffff;
+  --ok: #1d6f33;
   --shadow: rgba(60,45,15,.12);
   --tex: var(--fiber);
   --tex-size: 150px 150px;
@@ -43,6 +47,12 @@
   --on-accent: #11151f;
   --rule: #39414f;
   --gold: #d9b85f;
+  /* o vermelho do tema claro rendia 2,4:1 sobre o painel escuro, justamente nos botoes
+     de excluir. Este vermelho claro le como perigo e passa AA com folga (7,9:1). */
+  --perigo: #ff9b91;
+  --perigo-bg: #c1352c;
+  --on-perigo: #ffffff;
+  --ok: #6fdc92;
   --shadow: rgba(0,0,0,.4);
   --tex: none;
   --tex-size: auto;
@@ -65,6 +75,10 @@
   --on-accent: #ffffff;
   --rule: #b3b3b3;
   --gold: #7a5e16;
+  --perigo: #8c1b13;
+  --perigo-bg: #8c1b13;
+  --on-perigo: #ffffff;
+  --ok: #14601f;
   --shadow: rgba(0,0,0,.18);
   --tex: none;
   --tex-size: auto;
@@ -164,6 +178,18 @@ nav.toc a.subcap[aria-current='page'] { color: var(--on-accent); }
 table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .98rem; }
 thead th { background: var(--accent-strong); color: var(--on-accent); font-family: 'Cinzel'; font-weight: 600; font-size: .85rem; text-align: center; vertical-align: middle; padding: .5rem .6rem; }
 thead th a, thead th a:hover { color: var(--on-accent); text-decoration: underline; }
+
+/* Superfícies pintadas de accent: qualquer link, referência ou âncora dentro delas herda a cor
+   de contraste. Sem isto, .ref mantinha `color: var(--accent)` e ficava teal sobre teal (1,0:1,
+   literalmente invisível) nos cabeçalhos de tabela, na barra de XP e nas barras de seção. */
+thead th .ref, thead th .anchor,
+tbody th .ref, tbody th .anchor,
+.barh a, .barh .ref, .barh .anchor,
+.xpbar a, .xpbar .ref, .xpbar .anchor {
+  color: var(--on-accent);
+  text-decoration-color: color-mix(in srgb, var(--on-accent) 55%, transparent);
+}
+thead th .ref:hover, tbody th .ref:hover, .barh .ref:hover, .xpbar .ref:hover { color: var(--on-accent); opacity: .82; }
 tbody td, tbody th { padding: .42rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: middle; text-align: center; }
 td.c, th.c { text-align: center; }
 tbody th { font-family: 'Cinzel'; font-weight: 600; color: var(--accent-strong); font-size: .9rem; }
@@ -262,10 +288,10 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
   box-shadow: 0 14px 44px var(--shadow); font-family: 'EB Garamond', Georgia, serif;
 }
 .ui-dlg::backdrop { background: rgba(0,0,0,.5); }
-.ui-dlg.perigo { border-top-color: #b3261e; }
+.ui-dlg.perigo { border-top-color: var(--perigo); }
 .ui-dlg-head { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .85rem 1.1rem .1rem; }
 .ui-dlg-tit { font-family: 'Cinzel'; font-weight: 600; font-size: 1.05rem; color: var(--accent-strong); margin: 0; }
-.ui-dlg.perigo .ui-dlg-tit { color: #b3261e; }
+.ui-dlg.perigo .ui-dlg-tit { color: var(--perigo); }
 .ui-dlg-x { background: none; border: 0; padding: .15rem .35rem; border-radius: 4px; cursor: pointer;
   color: var(--ink-soft); font-size: .95rem; line-height: 1; }
 .ui-dlg-x:hover { color: var(--accent); background: var(--bg-soft); }
@@ -282,14 +308,14 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
 .ui-dlg-campo input:focus, .ui-dlg-campo textarea:focus {
   outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 28%, transparent);
 }
-.ui-dlg-campo .invalido { border-color: #b3261e; }
+.ui-dlg-campo .invalido { border-color: var(--perigo); }
 .ui-dlg-dica { display: block; font-size: .82rem; color: var(--ink-soft); margin-top: .25rem; }
 .ui-dlg-ops { display: flex; flex-direction: column; gap: .4rem; margin-bottom: .3rem; }
 .ui-dlg-ops .btn { text-align: left; }
 .ui-dlg-ops .btn small { opacity: .7; }
 .ui-dlg-pe { display: flex; justify-content: flex-end; gap: .5rem; padding: .9rem 1.1rem 1rem; }
-.ui-dlg .btn.perigo { border-color: #b3261e; color: #b3261e; background: var(--panel); }
-.ui-dlg .btn.perigo:hover { background: #b3261e; color: #fff; }
+.ui-dlg .btn.perigo { border-color: var(--perigo); color: var(--perigo); background: var(--panel); }
+.ui-dlg .btn.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
 @media (prefers-reduced-motion: no-preference) {
   .ui-dlg[open] { animation: ui-dlg-entra .16s ease-out; }
 }
