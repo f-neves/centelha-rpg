@@ -174,7 +174,8 @@ import FormasPop from './FormasPop.astro';
   .ef-esp-head { display: flex; align-items: baseline; gap: .6rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo);
     color: var(--accent-strong); border-bottom: 1px solid var(--rule); padding-bottom: .2rem; margin-bottom: .35rem; }
   .ef-esp-head .muted { margin-left: auto; font-family: 'EB Garamond'; font-size: var(--fs-micro); font-style: italic; }
-  .ef-esp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr)); gap: .2rem .8rem; }
+  /* min(x,100%): sem isso o minimo de 24rem (384px) estoura o conteiner de 328px do celular */
+  .ef-esp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min-md), 100%), 1fr)); gap: .2rem .8rem; }
   /* um bloco por Arte: os Efeitos de Cura ficam juntos, os de Proteção juntos, etc. */
   .ef-grupo { margin: .55rem 0 .1rem; }
   .ef-g-head { display: flex; align-items: baseline; gap: .5rem; font-family: 'Cinzel'; font-size: var(--fs-micro);

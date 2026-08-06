@@ -19,8 +19,13 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         <div class="retrato-frame" id="retrato-frame" title="Clique para ampliar" hidden>
           <img id="retrato-img" alt="Retrato do personagem" />
         </div>
+        <!-- No celular as 3 ações de imagem ficam atrás deste lápis: a primeira tela era
+             retrato + três botões de largura total (edição de foto ACIMA da ficha), com a
+             ação destrutiva no mesmo peso das outras. -->
+        <button type="button" class="btn retrato-menu-tog" id="retrato-menu-tog"
+          aria-expanded="false" aria-controls="retrato-acoes" aria-label="Editar imagem">✎</button>
         <input type="range" class="retrato-range" id="retrato-range" min="1" max="3" step="0.05" value="1" title="Zoom no card" hidden />
-        <div class="retrato-acoes">
+        <div class="retrato-acoes" id="retrato-acoes">
           <button type="button" class="btn retrato-ajustar" id="retrato-ajustar" hidden>Ajustar enquadramento</button>
           <label class="btn retrato-btn" id="retrato-lbl" hidden><span id="retrato-lbl-txt">Enviar imagem</span>
             <input type="file" id="retrato-file" accept="image/*" hidden />
@@ -179,6 +184,24 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     if (retratoPath) { await mostrarRetrato(sb, retratoPath, podeRetrato); aplicarPos(); }
     else estadoRetrato(false, podeRetrato);
+
+    // lápis do celular: abre e fecha o menu de ações da imagem
+    {
+      const tog = document.getElementById('retrato-menu-tog')!;
+      const box = tog.closest('.retrato')!;
+      tog.hidden = !podeRetrato;
+      tog.addEventListener('click', () => {
+        const aberto = box.classList.toggle('menu-aberto');
+        tog.setAttribute('aria-expanded', String(aberto));
+      });
+      // fecha ao tocar fora ou ao escolher uma ação
+      document.addEventListener('click', (e) => {
+        if (!box.contains(e.target as Node)) { box.classList.remove('menu-aberto'); tog.setAttribute('aria-expanded', 'false'); }
+      });
+      document.getElementById('retrato-acoes')!.addEventListener('click', () => {
+        box.classList.remove('menu-aberto'); tog.setAttribute('aria-expanded', 'false');
+      });
+    }
 
     if (podeRetrato) {
       (document.getElementById('retrato-file') as HTMLInputElement).addEventListener('change', async (e) => {
@@ -520,6 +543,25 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
   .pers-ident { flex: 1 1 20rem; min-width: 16rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .8rem 1rem 1rem; }
   .pers-ident h1 { margin: .05rem 0 .2rem; }
+  /* o lápis só existe no celular; no desktop as ações seguem visíveis como sempre */
+  .retrato-menu-tog { display: none; }
+  @media (max-width: 900px) {
+    /* cabeçalho compacto: retrato de 96px AO LADO do nome, em vez de uma tela inteira de
+       retrato + botões antes da ficha */
+    .pers-cab { display: grid; grid-template-columns: 96px 1fr; gap: .8rem; align-items: start; }
+    .retrato { position: relative; }
+    .retrato .retrato-frame { width: 96px; height: 116px; }  /* mesma proporção da moldura de 172x208 */
+    .retrato-range { width: 96px; }
+    .retrato-menu-tog { display: inline-flex; align-items: center; justify-content: center;
+      position: absolute; right: -10px; top: -10px; min-width: 44px; min-height: 44px;
+      padding: 0; border-radius: 50%; background: var(--panel); box-shadow: 0 2px 8px var(--shadow); }
+    .retrato-acoes { display: none; width: auto; }
+    .retrato.menu-aberto .retrato-acoes { display: flex; position: absolute; z-index: 5; top: 38px; right: -10px;
+      background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--r-md);
+      padding: var(--pad-1); box-shadow: 0 8px 24px var(--shadow); min-width: 12.5rem; }
+    .pers-ident { min-width: 0; }
+  }
+
   .pers-mesa { font-style: italic; font-size: var(--fs-rotulo); }
   .ident-slot { margin-top: .2rem; }
   .ident-slot .idrow { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem 1rem; margin: 0; }
