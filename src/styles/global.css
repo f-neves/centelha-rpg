@@ -128,7 +128,9 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 1.5em 0; }
 }
 /* overflow-wrap: quebra apenas o que não caberia de jeito nenhum — trechos longos sem espaço
    (ex.: "(Influência/Compostura/Raciocínio/Percepção)") empurravam a página inteira no celular. */
-.content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 5rem; overflow-wrap: break-word; }
+/* O padding-bottom precisa acomodar o FAB "Nesta página", que é fixo no canto inferior:
+   sem folga ele fica permanentemente sobre a última linha do texto. */
+.content { min-width: 0; padding: 1.6rem clamp(1rem, 4vw, 3rem) 6rem; overflow-wrap: break-word; }
 .prose { max-width: 70rem; margin-inline: auto; }
 .wide { max-width: 60rem; margin-inline: auto; }
 
@@ -276,7 +278,7 @@ select option:checked { background: var(--accent); color: var(--on-accent); }
   body.drawer-open .sidebar { transform: translateX(0); }
   body.drawer-open .scrim { display: block; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 35; }
   .drawer-close { display: inline-flex; position: absolute; top: .6rem; right: .6rem; }
-  .content { padding: 1rem 1rem 4rem; }
+  .content { padding: 1rem 1rem 5.5rem; }
   .prose { max-width: 100%; }
   .prose p { text-align: left; }
 }
