@@ -46,11 +46,11 @@ export function montarFicha(opts: FichaOpts) {
   const SECONDARY: [string, string][] = [
     ['Halterofilismo', 'Corpo'], ['Natação', 'Corpo'], ['Ginástica', 'Corpo'], ['Equilíbrio', 'Corpo'], ['Malabarismo', 'Corpo'], ['Escalada', 'Corpo'],
     ['Liderança', 'Sociais'], ['Etiqueta', 'Sociais'], ['Negociação', 'Sociais'], ['Lábia', 'Sociais'], ['Intimidação', 'Sociais'], ['Atuação', 'Sociais'], ['Sedução', 'Sociais'], ['Disfarce', 'Sociais'], ['Interrogatório', 'Sociais'],
-    ['Acerto Arcano', 'Conhecimento'], ['Cura', 'Conhecimento'], ['Ciências', 'Conhecimento'], ['Comércio', 'Conhecimento'], ['Herbologia', 'Conhecimento'], ['História', 'Conhecimento'], ['Religião', 'Conhecimento'], ['Heráldica', 'Conhecimento'], ['Astronomia', 'Conhecimento'], ['Geografia', 'Conhecimento'], ['Alquimia', 'Conhecimento'], ['Arquitetura', 'Conhecimento'], ['Direito', 'Conhecimento'], ['Bestiário', 'Conhecimento'], ['Estratégia', 'Conhecimento'], ['Genealogia', 'Conhecimento'], ['Folclore', 'Conhecimento'],
+    ['Acerto Arcano', 'Conhecimento'], ['Ritualismo', 'Conhecimento'], ['Cura', 'Conhecimento'], ['Ciências', 'Conhecimento'], ['Comércio', 'Conhecimento'], ['Herbologia', 'Conhecimento'], ['História', 'Conhecimento'], ['Religião', 'Conhecimento'], ['Heráldica', 'Conhecimento'], ['Astronomia', 'Conhecimento'], ['Geografia', 'Conhecimento'], ['Alquimia', 'Conhecimento'], ['Arquitetura', 'Conhecimento'], ['Direito', 'Conhecimento'], ['Bestiário', 'Conhecimento'], ['Estratégia', 'Conhecimento'], ['Genealogia', 'Conhecimento'], ['Folclore', 'Conhecimento'],
     ['Cavalgar', 'Ofício'], ['Ferraria', 'Ofício'], ['Carpintaria', 'Ofício'], ['Costura', 'Ofício'], ['Culinária', 'Ofício'], ['Joalheria', 'Ofício'], ['Couraria', 'Ofício'], ['Alvenaria', 'Ofício'], ['Mineração', 'Ofício'], ['Pesca', 'Ofício'], ['Agricultura', 'Ofício'], ['Navegação', 'Ofício'], ['Marcenaria', 'Ofício'], ['Armadureiro', 'Ofício'], ['Armeiro', 'Ofício'], ['Escrivania', 'Ofício'], ['Cartografia', 'Ofício'], ['Veterinário', 'Ofício'], ['Adestramento', 'Ofício'],
     ['Performance', 'Expressão'], ['Tocar Instrumento', 'Expressão'], ['Canto', 'Expressão'], ['Dança', 'Expressão'], ['Poesia', 'Expressão'], ['Pintura', 'Expressão'], ['Escultura', 'Expressão'], ['Caligrafia', 'Expressão'], ['Contação de Histórias', 'Expressão'],
     ['Ladinagem', 'Subterfúgio'], ['Jogos', 'Subterfúgio'], ['Falsificação', 'Subterfúgio'], ['Abrir Fechaduras', 'Subterfúgio'], ['Contrabando', 'Subterfúgio'], ['Apostar', 'Subterfúgio'], ['Roubo', 'Subterfúgio'], ['Ocultação', 'Subterfúgio'], ['Vigilância Urbana', 'Subterfúgio'],
-    ['Energia Espiritual', 'Interior'], ['Meditação', 'Interior'], ['Ritualismo', 'Interior'], ['Autocontrole', 'Interior'], ['Concentração', 'Interior'], ['Leitura Corporal', 'Interior'], ['Interpretação de Sonhos', 'Interior'],
+    ['Energia Espiritual', 'Interior'], ['Meditação', 'Interior'], ['Autocontrole', 'Interior'], ['Concentração', 'Interior'], ['Leitura Corporal', 'Interior'], ['Interpretação de Sonhos', 'Interior'],
   ];
 
   const SEC_NOME: Record<string, string> = Object.fromEntries(SECONDARY.map(([n]) => [slug(n), n]));
@@ -297,20 +297,27 @@ export function montarFicha(opts: FichaOpts) {
     h += trow(`Aparência <span class="apmod" title="Bônus/Penalidade na jogada social alinhada">${am >= 0 ? '+' : ''}${am}</span>`, dotsHTML('aparencia', 'aparencia', S.aparencia, 12, pisoXp('aparencia')));
     el('power').innerHTML = h;
   }
+  // Cada grupo ocupa a largura toda, com o título por cima e as habilidades em três
+  // colunas. A ordem alfabética DESCE cada coluna (Armas · Arremesso | Atirador ·
+  // Bloqueio | Briga · Esquiva), e não atravessa a linha: por isso as linhas são fixas
+  // e o preenchimento é por coluna. Com contagem não divisível por 3 sobra na última.
+  const grupoHTML = (titulo: string, linhas: string[]) =>
+    `<section class="hgrupo"><h3>${titulo}</h3><div class="hgrid" style="--linhas:${Math.max(1, Math.ceil(linhas.length / 3))}">${linhas.join('')}</div></section>`;
+
   function renderSkills() {
     const groups: Record<string, any[]> = { Combate: [], Físicas: [], Sociais: [], Saber: [], Técnicas: [] };
     (HAB_D as any[]).filter((s) => !s.secundaria).forEach((s) => groups[HAB_GRP[s.grupo]].push(s));
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' })));
-    const cols = [['Combate', 'Físicas'], ['Sociais'], ['Saber']];
-    el('skills').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      (groups[g] || []).length ? `<h3>${g}</h3>` + groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specBtn('p', s.id, S.skills[s.id] || 0, specCount(S.spec[s.id])))).join('') : '').join('') + '</div>').join('');
+    const ordem = ['Combate', 'Físicas', 'Sociais', 'Saber', 'Técnicas'];
+    el('skills').innerHTML = ordem.filter((g) => (groups[g] || []).length).map((g) =>
+      grupoHTML(g, groups[g].map((s) => trow(s.nome, dotsHTML('skill', s.id, S.skills[s.id], 6, 0) + specBtn('p', s.id, S.skills[s.id] || 0, specCount(S.spec[s.id])))))).join('');
   }
   function renderSecondary() {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' })));
-    const cols = [['Corpo', 'Sociais', 'Conhecimento'], ['Ofício'], ['Expressão', 'Subterfúgio', 'Interior']];
-    el('secondary').innerHTML = cols.map((col) => '<div>' + col.map((g) =>
-      `<h3>${g}</h3>` + (groups[g] || []).map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specBtn('s', k, S.skills2[k] || 0, specCount(S.spec2[k]))); }).join('')).join('') + '</div>').join('');
+    const ordem = ['Corpo', 'Sociais', 'Conhecimento', 'Ofício', 'Expressão', 'Subterfúgio', 'Interior'];
+    el('secondary').innerHTML = ordem.filter((g) => (groups[g] || []).length).map((g) =>
+      grupoHTML(g, groups[g].map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specBtn('s', k, S.skills2[k] || 0, specCount(S.spec2[k]))); }))).join('');
   }
   function renderCaminhos() {
     const card = (cam: string) => {

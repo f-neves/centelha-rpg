@@ -70,10 +70,10 @@ import FormasPop from './FormasPop.astro';
 
 <div class="ftab" data-ftab="hab">
 <h2 class="barh barh-tog" data-sec="skills"><span class="sec-caret">▾</span> Habilidades <small>(piso 0 · 4 + nível×2: 6/8/10/12/14/16 · especialidade 8 + nível×4: 12/16/20 · até [nível÷2] por perícia)</small></h2>
-<div class="sec-body" id="sec-skills"><div class="cols3" id="skills"></div></div>
+<div class="sec-body" id="sec-skills"><div class="hgrupos" id="skills"></div></div>
 
 <h2 class="barh barh-tog" data-sec="secondary"><span class="sec-caret">▾</span> Habilidades Secundárias <small>(metade da primária: 3/4/5/6/7/8 · esp. 6/8/10 · até [nível÷2])</small></h2>
-<div class="sec-body" id="sec-secondary"><div class="cols3" id="secondary"></div></div>
+<div class="sec-body" id="sec-secondary"><div class="hgrupos" id="secondary"></div></div>
 </div>
 
 <div class="ftab" data-ftab="proezas">
@@ -229,6 +229,14 @@ import FormasPop from './FormasPop.astro';
   .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .3rem 1.6rem; }
   .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: .3rem 1.6rem; align-items: start; }
   @media (max-width: 760px) { .cols3, .cols2 { grid-template-columns: 1fr; } }
+
+  /* Habilidades: cada grupo pega a largura toda e se abre em três colunas próprias, em
+     vez de os grupos disputarem três colunas fixas. O `grid-auto-flow: column` sobre um
+     número fixo de linhas (--linhas, calculado no render) é o que faz a ordem alfabética
+     DESCER cada coluna em vez de atravessar a linha. */
+  .hgrupo { break-inside: avoid; }
+  .hgrid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(var(--linhas, 1), auto); gap: .3rem 1.6rem; }
+  @media (max-width: 760px) { .hgrid { grid-auto-flow: row; grid-template-rows: none; } }
 
   .trow { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .12rem 0; }
   .trow .nm { font-size: var(--fs-aux); cursor: help; } .trow .nm:hover { text-decoration: underline dotted var(--accent-soft); }
