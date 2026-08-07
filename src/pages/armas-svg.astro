@@ -1,0 +1,109 @@
+---
+// Bancada das armas desenhadas por código (src/lib/arma-svg.ts).
+// Serve para ver as nove lado a lado e mexer nos parâmetros ao vivo, antes de
+// decidir se elas substituem o recorte do atlas na ficha.
+import Base from '../layouts/Base.astro';
+import { ARMAS_SVG, desenhaArma, PALETA_PADRAO } from '../lib/arma-svg';
+
+const pecas = Object.entries(ARMAS_SVG);
+---
+<Base title="Armas desenhadas em SVG" descricao="Bancada das armas feitas por código: mesma gravura, mas com forma e cor abertas para mexer.">
+  <h1>Armas desenhadas em SVG</h1>
+  <p class="lead">
+    Nenhuma imagem aqui: cada arma é montada de <strong>pomo + cabo + guarda + lâmina</strong>
+    (ou <strong>haste + cabeça</strong>, no machado e na picareta), e cada parte é um desenho
+    feito por número. Mexa nos controles e todas mudam juntas.
+  </p>
+
+  <div class="sv-controles" id="controles">
+    <label>Aço <input type="color" data-cor="aco" value={PALETA_PADRAO.aco} /></label>
+    <label>Sombra <input type="color" data-cor="acoSombra" value={PALETA_PADRAO.acoSombra} /></label>
+    <label>Cabo <input type="color" data-cor="cabo" value={PALETA_PADRAO.cabo} /></label>
+    <label>Ouro <input type="color" data-cor="ouro" value={PALETA_PADRAO.ouro} /></label>
+    <label>Traço <input type="color" data-cor="traco" value={PALETA_PADRAO.traco} /></label>
+    <label class="sv-range">Espessura do traço
+      <input type="range" id="sv-traco" min="0" max="2.5" step="0.1" value="1.1" />
+    </label>
+    <label class="sv-range">Tamanho
+      <input type="range" id="sv-tam" min="8" max="26" step="1" value="15" />
+    </label>
+    <button type="button" class="btn" id="sv-reset">Restaurar</button>
+  </div>
+
+  <div class="sv-grade" id="grade">
+    {pecas.map(([id, arma]) => (
+      <figure class="sv-peca" data-id={id}>
+        <div class="sv-quadro" set:html={desenhaArma(arma)} />
+        <figcaption>{arma.nome}<small>{id}</small></figcaption>
+      </figure>
+    ))}
+  </div>
+
+  <h2>O que dá para trocar</h2>
+  <p>Cada peça é um objeto. A Espada Longa, por exemplo, é isto:</p>
+  <pre class="sv-code"><code>{`{
+  pomo:   'gota',                    // esfera | roda | gota | nenhum
+  cabo:   { comprimento: 60, largura: 10 },
+  guarda: { tipo: 'cruz', largura: 74 },   // cruz | disco | aneis | nenhuma
+  lamina: { tipo: 'reta', comprimento: 265, largura: 22 },
+}`}</code></pre>
+  <p class="muted">
+    Trocar <code>lamina.tipo</code> para <code>'serrilhada'</code> dá outra arma sem desenhar nada novo.
+    A paleta entra como variável CSS, então dá para tingir por peça, por tema do site ou por
+    qualidade do item (uma espada élfica em aço azulado, uma enferrujada em marrom).
+  </p>
+
+  <style is:global>
+    .sv-controles { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: center;
+      background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--r-lg);
+      padding: .8rem 1rem; margin: 1.2rem 0 1.6rem; }
+    .sv-controles label { display: flex; align-items: center; gap: .4rem; font-family: 'Cinzel';
+      font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); }
+    .sv-controles input[type=color] { width: 2.2rem; height: 1.7rem; padding: 0; border: 1px solid var(--panel-border);
+      border-radius: var(--r-sm); background: none; cursor: pointer; }
+    .sv-controles .sv-range { flex-direction: column; align-items: flex-start; gap: .1rem; }
+    .sv-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 1rem; }
+    .sv-peca { margin: 0; background: var(--panel); border: 1px solid var(--panel-border);
+      border-radius: var(--r-lg); padding: .6rem; text-align: center; }
+    .sv-quadro { display: grid; place-items: center; }
+    .sv-peca figcaption { font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); margin-top: .3rem; }
+    .sv-peca figcaption small { display: block; font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
+    /* o tamanho vem de uma variável, então o range mexe em todas de uma vez */
+    .arma-svg { height: var(--sv-altura, 15rem); width: auto; display: block; }
+    .arma-svg path, .arma-svg circle, .arma-svg ellipse, .arma-svg rect {
+      stroke-width: calc(var(--sv-traco, 1) * 1.1px); }
+    .sv-code { background: var(--bg-soft); border: 1px solid var(--panel-border); border-radius: var(--r-md);
+      padding: .8rem 1rem; overflow-x: auto; font-size: var(--fs-rotulo); }
+  </style>
+
+  <script>
+    const grade = document.getElementById('grade')!;
+    const controles = document.getElementById('controles')!;
+    // as variáveis moram na grade inteira: uma mudança, todas as peças seguem
+    const aplicar = (nome: string, valor: string) => grade.style.setProperty(nome, valor);
+    const MAPA: Record<string, string[]> = {
+      aco: ['--aco'], acoSombra: ['--aco-sombra'], cabo: ['--cabo'], ouro: ['--ouro'], traco: ['--traco'],
+    };
+    controles.addEventListener('input', (e) => {
+      const alvo = e.target as HTMLInputElement;
+      if (alvo.dataset.cor) {
+        for (const v of MAPA[alvo.dataset.cor] || []) aplicar(v, alvo.value);
+        // o cabo escuro acompanha o cabo, senão as voltas do couro somem
+        if (alvo.dataset.cor === 'cabo') aplicar('--cabo-escuro', escurece(alvo.value, 0.55));
+        if (alvo.dataset.cor === 'ouro') aplicar('--ouro-escuro', escurece(alvo.value, 0.65));
+      }
+      if (alvo.id === 'sv-traco') aplicar('--sv-traco', alvo.value);
+      if (alvo.id === 'sv-tam') aplicar('--sv-altura', alvo.value + 'rem');
+    });
+    document.getElementById('sv-reset')!.addEventListener('click', () => {
+      grade.removeAttribute('style');
+      controles.querySelectorAll('input').forEach((i) => { (i as HTMLInputElement).value = (i as HTMLInputElement).defaultValue; });
+    });
+    /** Escurece um #rrggbb por um fator, para os tons de apoio acompanharem. */
+    function escurece(hex: string, f: number): string {
+      const m = hex.replace('#', '');
+      const v = [0, 2, 4].map((i) => Math.round(parseInt(m.slice(i, i + 2), 16) * f));
+      return '#' + v.map((x) => x.toString(16).padStart(2, '0')).join('');
+    }
+  </script>
+</Base>
