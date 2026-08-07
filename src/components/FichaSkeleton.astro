@@ -635,6 +635,9 @@ import '../styles/arte-equip.css';
   .ui-dlg.eq-catalogo .ui-dlg-nada { grid-column: 1 / -1; }
   .ui-dlg.eq-catalogo .ui-dlg-op { display: flex; flex-direction: column; gap: .4rem; align-items: stretch;
     padding: .5rem; height: 100%; text-align: left; background: var(--panel); }
+  /* o `display` acima vence o [hidden] { display: none } do navegador, e sem esta
+     linha o filtro marcava as peças como escondidas mas elas seguiam na tela */
+  .ui-dlg.eq-catalogo .ui-dlg-op[hidden] { display: none; }
   .ui-dlg.eq-catalogo .ui-dlg-op:hover, .ui-dlg.eq-catalogo .ui-dlg-op:focus-visible {
     background: var(--bg-soft); border-color: var(--accent); }
   /* a arte do catálogo é a mesma do card, num quadro menor */

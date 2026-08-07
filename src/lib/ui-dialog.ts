@@ -62,6 +62,15 @@ const esc = (s: unknown) =>
 
 const linhas = (s: string) => esc(s).replace(/\n/g, '<br>');
 
+/**
+ * Texto pronto para comparar na busca: sem maiúscula e sem acento.
+ *
+ * Sem tirar o acento, procurar "maca" não acha "Maça" e "lanca" não acha
+ * "Lança" — e ninguém digita acento numa caixa de busca com pressa.
+ */
+const normaliza = (s: unknown) =>
+  String(s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
 function campoHTML(c: Campo, i: number): string {
   const id = `uidlg-c${i}`;
   const val = c.valor == null ? '' : String(c.valor);
@@ -86,9 +95,13 @@ function opcoesHTML(opcoes: Opcao[]): string {
       grupoAtual = o.grupo;
       if (grupoAtual) saida.push(`<h3 class="ui-dlg-grupo">${esc(grupoAtual)}</h3>`);
     }
-    const chave = `${o.rotulo} ${o.nota || ''} ${o.busca || ''} ${o.grupo || ''}`.toLowerCase();
-    saida.push(`<button type="button" class="btn ui-dlg-op" data-v="${esc(o.valor)}"`
-      + ` data-busca="${esc(chave)}">`
+    // dois campos de busca: o nome vale mais que o resto, e a busca usa isso
+    const nome = normaliza(o.rotulo);
+    const resto = normaliza(`${o.nota || ''} ${o.busca || ''} ${o.grupo || ''}`);
+    // opção sem grupo é uma ação ("criar o meu"), não item de catálogo: o filtro
+    // não a esconde, senão quem procurou e não achou fica sem saída
+    saida.push(`<button type="button" class="btn ui-dlg-op${o.grupo ? '' : ' ui-dlg-op-solta'}" data-v="${esc(o.valor)}"`
+      + ` data-nome="${esc(nome)}" data-busca="${esc(`${nome} ${resto}`)}">`
       + (o.html ?? `${esc(o.rotulo)}${o.nota ? ` <small>${esc(o.nota)}</small>` : ''}`)
       + '</button>');
   }
@@ -110,7 +123,8 @@ function montar(cfg: Cfg): Promise<Resultado> {
         <div class="ui-dlg-corpo">
           ${cfg.msg ? `<p class="ui-dlg-msg">${linhas(cfg.msg)}</p>` : ''}
           ${campos.map(campoHTML).join('')}
-          ${opcoes.length && cfg.filtro ? `<input type="search" class="ui-dlg-filtro" placeholder="${esc(cfg.filtro)}" aria-label="${esc(cfg.filtro)}" />` : ''}
+          ${opcoes.length && cfg.filtro ? `<input type="search" class="ui-dlg-filtro" placeholder="${esc(cfg.filtro)}" aria-label="${esc(cfg.filtro)}" />
+          <p class="ui-dlg-aviso" hidden></p>` : ''}
           ${opcoes.length ? `<div class="ui-dlg-ops">${opcoesHTML(opcoes)}</div>` : ''}
           ${opcoes.length && cfg.filtro ? '<p class="ui-dlg-nada" hidden>Nada com esse nome.</p>' : ''}
         </div>
@@ -157,24 +171,65 @@ function montar(cfg: Cfg): Promise<Resultado> {
     dlg.querySelectorAll<HTMLElement>('.ui-dlg-op').forEach((b) =>
       b.addEventListener('click', () => fechar({ ok: true, valores: {}, opcao: b.dataset.v! })));
 
-    // Filtro da lista: esconde o que não casa e, junto, o cabeçalho do grupo que
-    // ficou sem nenhuma opção — senão sobra um título solto no vazio.
+    // Filtro da lista. Três regras que fazem a diferença numa lista de catálogo:
+    //
+    //   1. o NOME manda. Quem digita "malha" quer a Cota de malha, não as três
+    //      peças cuja descrição menciona malha. Só quando nome nenhum casa é que
+    //      a descrição entra, e aí a lista avisa que mudou de critério.
+    //   2. cada palavra conta separada, então "longa espada" acha Espada Longa.
+    //   3. o cabeçalho do grupo que ficou vazio some junto, senão sobra um
+    //      título solto no nada.
     const filtro = dlg.querySelector<HTMLInputElement>('.ui-dlg-filtro');
     if (filtro) {
       const nada = dlg.querySelector<HTMLElement>('.ui-dlg-nada');
       const itens = [...dlg.querySelectorAll<HTMLElement>('.ui-dlg-ops > *')];
-      filtro.addEventListener('input', () => {
-        const q = filtro.value.trim().toLowerCase();
-        let visiveis = 0, grupo: HTMLElement | null = null, noGrupo = 0;
+      const ops = itens.filter((i) => i.classList.contains('ui-dlg-op'));
+      const soltas = ops.filter((o) => o.classList.contains('ui-dlg-op-solta'));
+      const catalogo = ops.filter((o) => !o.classList.contains('ui-dlg-op-solta'));
+      const casaTudo = (campo: string, termos: string[]) => termos.every((t) => campo.includes(t));
+
+      const aplicar = () => {
+        const termos = normaliza(filtro.value).split(/\s+/).filter(Boolean);
+        const porNome = termos.length
+          ? catalogo.filter((o) => casaTudo(o.dataset.nome || '', termos))
+          : catalogo;
+        // sem nada no nome, vale a descrição — melhor que devolver lista vazia
+        const casaram = porNome.length || !termos.length
+          ? porNome
+          : catalogo.filter((o) => casaTudo(o.dataset.busca || '', termos));
+        const achados = new Set([...soltas, ...casaram]);
+        const soDescricao = termos.length > 0 && porNome.length === 0 && casaram.length > 0;
+
+        let grupo: HTMLElement | null = null, noGrupo = 0;
         const fechaGrupo = () => { if (grupo) grupo.hidden = noGrupo === 0; };
         for (const it of itens) {
           if (it.classList.contains('ui-dlg-grupo')) { fechaGrupo(); grupo = it; noGrupo = 0; continue; }
-          const casa = !q || (it.dataset.busca || '').includes(q);
-          it.hidden = !casa;
-          if (casa) { visiveis++; noGrupo++; }
+          it.hidden = !achados.has(it);
+          if (!it.hidden) noGrupo++;
         }
         fechaGrupo();
-        if (nada) nada.hidden = visiveis > 0;
+        // o "nada" olha só o catálogo: a ação de criar o seu item sempre fica
+        if (nada) nada.hidden = casaram.length > 0 || !termos.length;
+        const aviso = dlg.querySelector<HTMLElement>('.ui-dlg-aviso');
+        if (aviso) {
+          aviso.hidden = !soDescricao;
+          aviso.textContent = soDescricao ? 'Nenhum nome com isso. Estes citam na descrição:' : '';
+        }
+      };
+
+      filtro.addEventListener('input', aplicar);
+      // Enter escolhia nada e ainda fechava o diálogo (o <form> é method="dialog"):
+      // agora leva a primeira da lista, que é o que se espera de uma busca.
+      filtro.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          // a primeira do CATÁLOGO, e só com busca escrita: senão o Enter cairia
+          // sempre na ação de criar item, que é a primeira da lista
+          if (filtro.value.trim()) catalogo.find((o) => !o.hidden)?.click();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          ops.find((o) => !o.hidden)?.focus();
+        }
       });
     }
     dlg.addEventListener('click', (e) => { if (e.target === dlg) fechar(null); });

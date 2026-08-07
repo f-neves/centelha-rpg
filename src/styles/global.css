@@ -592,6 +592,9 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
   font-family: 'EB Garamond', Georgia, serif; font-size: 1em; }
 .ui-dlg-filtro:focus { outline: none; border-color: var(--accent); }
 .ui-dlg-nada { margin: .3rem 0 0; color: var(--ink-soft); font-style: italic; }
+/* aviso de que a busca desistiu do nome e caiu na descrição */
+.ui-dlg-aviso { margin: -.2rem 0 .5rem; color: var(--ink-soft); font-style: italic;
+  font-size: var(--fs-rotulo); }
 .ui-dlg-pe { display: flex; justify-content: flex-end; gap: .5rem; padding: .9rem 1.1rem 1rem; }
 .ui-dlg .btn.perigo { border-color: var(--perigo); color: var(--perigo); background: var(--panel); }
 .ui-dlg .btn.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
