@@ -3,6 +3,9 @@
 // O comportamento vive em src/lib/ficha-engine.ts (montarFicha).
 import RoladorDados from './RoladorDados.astro';
 import FormasPop from './FormasPop.astro';
+// Arte padrão das peças de equipamento: um atlas por categoria, cada peça
+// recortando o seu quadro. Gerado por scripts/gen-arte-equip.mjs.
+import '../styles/arte-equip.css';
 ---
 <div class="xpbar" id="painel">
   <span class="big">XP: <b id="xpSpent">0</b></span>
@@ -439,13 +442,16 @@ import FormasPop from './FormasPop.astro';
     border: 1px solid var(--panel-border); border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
   .eq-peca.em-uso, .eq-peca.vestida { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-soft); }
   .eq-peca-corpo { display: flex; flex-direction: column; gap: .35rem; padding: .5rem .6rem .6rem; flex: 1; }
-  .eq-peca-nome { font-family: 'EB Garamond'; font-size: var(--fs-aux); font-weight: 600; color: var(--ink); }
+  /* nome e etiquetas na mesma linha; se não couberem, as etiquetas descem inteiras */
+  .eq-peca-cab { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .2rem .4rem; }
+  .eq-peca-nome { font-family: 'EB Garamond'; font-size: var(--fs-aux); font-weight: 600; color: var(--ink); min-width: 0; }
   .eq-uso-flag { margin-left: .35rem; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
     letter-spacing: .04em; color: var(--accent-texto); border: 1px solid var(--accent-soft); border-radius: 999px; padding: 0 .35rem; }
   /* ajustar e descartar dividem a mesma linha, no rodapé do card */
   .eq-acoes { display: flex; align-items: center; justify-content: space-between; gap: .4rem; }
-  .eq-rm { background: none; border: 1px solid transparent; border-radius: var(--r-sm);
-    color: var(--perigo); cursor: pointer; font-size: var(--fs-aux); line-height: 1; padding: .15rem .45rem; }
+  .eq-rm { background: none; border: 1px solid transparent; border-radius: var(--r-sm); color: var(--perigo);
+    cursor: pointer; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em;
+    line-height: 1; padding: .2rem .45rem; white-space: nowrap; }
   .eq-rm:hover { background: var(--perigo-bg); border-color: var(--perigo-bg); color: var(--on-perigo); }
   .eq-vestir { margin-top: auto; background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm);
     color: var(--ink-soft); font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em;
@@ -524,6 +530,11 @@ import FormasPop from './FormasPop.astro';
     border: none; border-radius: var(--r-sm); cursor: pointer; font-size: var(--fs-rotulo); line-height: 1; }
   .eq-img-troca { right: 2.4rem; color: var(--accent-texto); }
   .eq-img-rm { right: .3rem; color: var(--perigo); }
+  /* Na arte do sistema não há o que tirar (ela é o padrão da peça), então o ✎
+     fica sozinho e ocupa o canto que seria do ×. O ✎ só aparece no hover para
+     não sujar a gravura. */
+  .eq-img.arte .eq-img-troca { right: .3rem; opacity: 0; transition: opacity .12s; }
+  .eq-img.arte:hover .eq-img-troca, .eq-img.arte:focus-within .eq-img-troca { opacity: 1; }
   .eq-img-troca:hover { background: var(--accent); color: var(--on-accent); }
   .eq-img-rm:hover { background: var(--perigo-bg); color: var(--on-perigo); }
 
