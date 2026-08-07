@@ -90,10 +90,18 @@ import FormasPop from './FormasPop.astro';
 
 <div class="ftab" data-ftab="equip">
 <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Absorção)</small></h2>
-<p class="equip-nota muted">Cada mão escolhe uma arma do catálogo; só um <strong>conjunto</strong> fica em uso por vez. Nas armaduras, o botão <strong>Vestir</strong> é o que faz a peça contar, e várias podem estar vestidas ao mesmo tempo. O <strong>✎ ajustar</strong> abre os números para quando o item for melhor ou pior que o do catálogo, e o quadro de imagem aceita uma foto sua (é preciso estar logado). Os ajustes e a imagem ficam guardados por arma, então voltar a uma que você já tinha usado traz tudo de volta.</p>
-<div class="eq-bloco-tit">Conjuntos de armas <small>só um fica em uso por vez</small></div>
-<div id="eq-conjuntos"></div>
-<button class="btn" id="add-conjunto" type="button">+ conjunto de armas</button>
+<p class="equip-nota muted">Cada arma traz <strong>guardada · mão hábil · mão inábil</strong>, e é isso que o Acerto e o Dano leem. Empunhar na hábil desequipa a arma que estava lá; uma arma de <strong>duas mãos</strong> desequipa as duas. Uma arma <strong>versátil</strong> sozinha é segura com as duas mãos e soma a <strong>Força em dobro</strong>; com escudo ou outra arma na outra mão, soma simples. Nas armaduras, o botão <strong>Vestir</strong> é o que faz a peça contar, e várias podem estar vestidas ao mesmo tempo. O <strong>✎ ajustar</strong> abre os números para quando o item for melhor ou pior que o do catálogo, e o quadro de imagem aceita uma foto sua (é preciso estar logado).</p>
+<div class="eq-bloco-tit">Armas do personagem <small>marque como cada uma está sendo empunhada</small></div>
+<div id="eq-arsenal" class="eq-pecas"></div>
+
+{/* Os conjuntos continuam sendo o lugar onde as mãos ficam guardadas (e o que o
+    rastreador de combate da mesa lê), mas quem decide é o marcador de cada arma:
+    o bloco está escondido, não removido, para poder voltar sem migração. */}
+<div id="eq-conj-bloco" hidden>
+  <div class="eq-bloco-tit">Conjuntos de armas <small>só um fica em uso por vez</small></div>
+  <div id="eq-conjuntos"></div>
+  <button class="btn" id="add-conjunto" type="button">+ conjunto de armas</button>
+</div>
 
 <div class="eq-bloco-tit">Armaduras <small>vestidas destacadas · empilháveis</small></div>
 <div class="eq-arm-grid">
@@ -422,6 +430,18 @@ import FormasPop from './FormasPop.astro';
   .eq-n i { font-style: normal; opacity: .65; font-size: var(--fs-micro); margin-left: .15rem; }
   .eq-n.def { color: var(--ink); }
   .eq-n.pen { color: var(--perigo); }
+  /* marcador de uso: três opções por arma (guardada / mão hábil / mão inábil) */
+  .eq-uso { display: flex; gap: .2rem; }
+  .eq-uso-op { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; gap: .25rem;
+    background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .25rem .15rem;
+    font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .02em;
+    color: var(--ink-soft); cursor: pointer; text-align: center; line-height: 1.15; min-height: 34px; }
+  .eq-uso-op:hover { border-color: var(--accent); color: var(--accent-texto); }
+  .eq-uso-op input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .eq-uso-op.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 700; }
+  /* arma de duas mãos não oferece a mão inábil */
+  .eq-uso-op.off { opacity: .35; cursor: not-allowed; }
+  .eq-uso-op.off:hover { border-color: var(--panel-border); color: var(--ink-soft); }
   .eq-tags { display: flex; flex-wrap: wrap; gap: .25rem; }
   .eq-tag { font-family: 'EB Garamond'; font-size: var(--fs-micro); color: var(--gold);
     border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius: 999px; padding: 0 .4rem; }
@@ -547,6 +567,8 @@ import FormasPop from './FormasPop.astro';
     body.ficha-abas .trow { min-height: 48px; align-items: center; }
     body.ficha-abas .trow .rollv { min-width: 44px; min-height: 44px; }
     body.ficha-abas .trow .specbtn { min-width: 36px; min-height: 44px; }
+    /* marcador de uso e botão de vestir: 34px é confortável no mouse, não no polegar */
+    body.ficha-abas .eq-uso-op, body.ficha-abas .eq-vestir { min-height: 44px; }
     /* parâmetros do efeito em até 2 linhas em vez de truncados numa só */
     body.ficha-abas .ef-i-par { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
     /* identidade em coluna única */
