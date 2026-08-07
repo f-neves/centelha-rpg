@@ -703,9 +703,9 @@ export function montarFicha(opts: FichaOpts) {
         <select data-ars-add><option value="">escolher do catálogo…</option>${optsItens('', true)}</select>
       </label>
     </div>`;
-    const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armas.' : 'Nenhuma arma ainda: escolha uma no catálogo abaixo.'}</p>`;
-    el('eq-arsenal').innerHTML = cards;
-    el('eq-arsenal-add').innerHTML = (cards ? '' : vazio) + adicionar;
+    const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armas.' : 'Nenhuma arma ainda: escolha uma no catálogo.'}</p>`;
+    el('eq-arsenal').innerHTML = cards || vazio;
+    el('eq-arsenal-add').innerHTML = adicionar;
   }
   /** Descarta peças que ninguém usa e que não guardam nada do jogador (sem imagem nem ajuste). */
   function limparArsenal() {
@@ -964,9 +964,9 @@ export function montarFicha(opts: FichaOpts) {
         <select data-arm-add><option value="">escolher do catálogo…</option>${ARMADURAS.filter((a) => a.id !== 'nenhuma').map((a) => `<option value="${a.id}">${a.nome}: ${statsArmadura(a)}</option>`).join('')}</select>
       </label>
     </div>`;
-    const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armaduras.' : 'Nenhuma armadura ainda: escolha uma no catálogo abaixo.'}</p>`;
-    el('eq-armaduras').innerHTML = cards;
-    el('eq-armaduras-add').innerHTML = (cards ? '' : vazio) + adicionar;
+    const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armaduras.' : 'Nenhuma armadura ainda: escolha uma no catálogo.'}</p>`;
+    el('eq-armaduras').innerHTML = cards || vazio;
+    el('eq-armaduras-add').innerHTML = adicionar;
     renderAbsorcao();
   }
   /** Painel de Absorção combinada: o efeito de vestir e tirar peças, ao lado das peças. */

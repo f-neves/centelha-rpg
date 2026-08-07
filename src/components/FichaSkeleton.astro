@@ -95,8 +95,8 @@ import FormasPop from './FormasPop.astro';
 {/* o seletor de "adicionar" fica FORA da grade: como as linhas são todas do mesmo
     tamanho (grid-auto-rows: 1fr), dentro dela ele virava uma linha vazia da altura de
     um card inteiro e empurrava o resto da página */}
-<div id="eq-arsenal" class="eq-pecas"></div>
 <div id="eq-arsenal-add"></div>
+<div id="eq-arsenal" class="eq-pecas"></div>
 
 {/* Os conjuntos continuam sendo o lugar onde as mãos ficam guardadas (e o que o
     rastreador de combate da mesa lê), mas quem decide é o marcador de cada arma:
@@ -109,10 +109,12 @@ import FormasPop from './FormasPop.astro';
 
 <div class="eq-bloco-tit">Armaduras <small>vestidas destacadas · empilháveis</small></div>
 <div class="eq-arm-grid">
-  <div class="eq-abs" id="eq-absorcao"></div>
+  <div class="eq-arm-lado">
+    <div class="eq-abs" id="eq-absorcao"></div>
+    <div id="eq-armaduras-add"></div>
+  </div>
   <div class="eq-arm-col">
     <div id="eq-armaduras" class="eq-pecas"></div>
-    <div id="eq-armaduras-add"></div>
   </div>
 </div>
 <div class="equip-bolsas" id="eq-bolsas"></div>
@@ -454,7 +456,9 @@ import FormasPop from './FormasPop.astro';
     border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .2rem .35rem; min-width: 0; }
   .eq-vazio { grid-column: 1 / -1; margin: 0; }
   .eq-add { margin-top: .7rem; }
-  .eq-arm-col { min-width: 0; }
+  /* o seletor das armas vem ANTES da grade, então o respiro vai embaixo dele */
+  #eq-arsenal-add .eq-add { margin: 0 0 .8rem; }
+  .eq-arm-col, .eq-arm-lado { min-width: 0; }
   .eq-add label { display: flex; flex-direction: column; gap: .2rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
     text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); min-width: 0; }
   /* um <select> reserva a largura da MAIOR opção, e as do catálogo são longas
