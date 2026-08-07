@@ -756,6 +756,30 @@ export function montarFicha(opts: FichaOpts) {
     <span class="eq-n def"><b>Defesa</b>${sgn(s.bloqCaC || 0)}</span>
     <span class="eq-n pen"><b>Penalid.</b>${s.penalidade ? '−' + s.penalidade : '0'}</span>
     ${s.habilProjetil ? '<span class="eq-n"><b>Projétil</b>hábil</span>' : ''}</div>`;
+  const statsBlocosArmadura = (a: any) => `<div class="eq-nums">
+    <span class="eq-n"><b>Imp</b>${a.soak.impacto}</span>
+    <span class="eq-n"><b>Cor</b>${a.soak.corte}</span>
+    <span class="eq-n"><b>Perf</b>${a.soak.perfuracao}<i>N${a.resistPerf || 0}</i></span>
+    <span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span></div>`;
+
+  /**
+   * Card de uma peça no catálogo do diálogo de adicionar. É o card da ficha sem
+   * os controles: a mesma arte, os mesmos blocos de número, mais as notas do
+   * catálogo — que na ficha não cabem, mas aqui são o que ajuda a escolher.
+   */
+  function cardCatalogo(o: { id: string; nome: string; classe: string; nums: string; notas?: string; tags?: string[] }) {
+    const arte = o.id
+      ? `<span class="eq-img ${o.classe} arte eqp-arte"><span class="eq-arte arte-${escapeHtml(o.id)}"></span></span>`
+      : `<span class="eq-img ${o.classe} eqp-arte eqp-sem-arte"><span class="eq-img-ph"><b>＋</b>seu item</span></span>`;
+    return `${arte}
+      <span class="eqp-corpo">
+        <span class="eq-peca-cab"><span class="eq-peca-nome">${escapeHtml(o.nome)}</span>
+          ${(o.tags || []).length ? `<span class="eq-tags">${o.tags!.map((t) => `<span class="eq-tag">${escapeHtml(t)}</span>`).join('')}</span>` : ''}
+        </span>
+        ${o.nums}
+        ${o.notas ? `<span class="eqp-nota">${escapeHtml(o.notas)}</span>` : ''}
+      </span>`;
+  }
 
   // ===== Ajuste de peça: os números do catálogo viram editáveis =====
   // Serve para a variação de qualidade (uma Espada Longa Ótima, um gambeson puído):
@@ -1252,12 +1276,22 @@ export function montarFicha(opts: FichaOpts) {
     // O personalizado vem primeiro, sem grupo: é a opção que não se procura no
     // catálogo, então não faz sentido enterrá-la no fim da lista.
     const escolha = await uiEscolher('Adicionar item', [
-      { valor: 'c', rotulo: 'Item personalizado…', nota: 'nome e números seus' },
-      ...ARMAS.map((w) => ({ valor: `a:${w.id}`, rotulo: w.nome, nota: statsArma(w),
-        grupo: 'Armas (Vel · Acerto · Dano · Defesa)', busca: (w.tags || []).join(' ') })),
+      { valor: 'c', rotulo: 'Item personalizado', nota: 'nome e números seus',
+        html: cardCatalogo({ id: '', nome: 'Item personalizado', classe: 'arma',
+          nums: '', notas: 'Peça fora do catálogo: você dá o nome e ajusta os números.' }) },
+      ...ARMAS.map((w) => ({
+        valor: `a:${w.id}`, rotulo: w.nome, nota: statsArma(w),
+        grupo: 'Armas', busca: `${(w.tags || []).join(' ')} ${w.notas || ''}`,
+        html: cardCatalogo({ id: w.id, nome: w.nome, classe: 'arma',
+          nums: statsBlocos(w), notas: w.notas, tags: w.tags }),
+      })),
       ...ESCUDOS.filter((s) => s.id !== 'nenhum').map((s) => ({
-        valor: `e:${s.id}`, rotulo: s.nome, nota: statsEscudo(s), grupo: 'Escudos' })),
-    ], { filtro: 'Procurar arma ou escudo…' });
+        valor: `e:${s.id}`, rotulo: s.nome, nota: statsEscudo(s),
+        grupo: 'Escudos', busca: s.notas || '',
+        html: cardCatalogo({ id: s.id, nome: s.nome, classe: 'escudo',
+          nums: statsBlocosEscudo(s), notas: s.notas }),
+      })),
+    ], { filtro: 'Procurar arma ou escudo…', classe: 'eq-catalogo' });
     if (!escolha) return;
     const uid = novoUid();
     (S.arsenal ||= []).push(escolha === 'c'
@@ -1366,11 +1400,16 @@ export function montarFicha(opts: FichaOpts) {
     if (opts.readOnly) return;
     if (!(e.target as HTMLElement).closest('[data-arm-add]')) return;
     const escolha = await uiEscolher('Adicionar item', [
-      { valor: ID_ARMADURA_LIVRE, rotulo: 'Armadura personalizada…', nota: 'nome e números seus' },
+      { valor: ID_ARMADURA_LIVRE, rotulo: 'Armadura personalizada', nota: 'nome e números seus',
+        html: cardCatalogo({ id: '', nome: 'Armadura personalizada', classe: 'armadura',
+          nums: '', notas: 'Peça fora do catálogo: você dá o nome e ajusta os números.' }) },
       ...ARMADURAS.filter((a) => a.id !== 'nenhuma').map((a) => ({
         valor: a.id, rotulo: a.nome, nota: statsArmadura(a),
-        grupo: 'Armaduras (Imp · Cor · Perf · Pen)' })),
-    ], { filtro: 'Procurar armadura…' });
+        grupo: 'Armaduras', busca: a.notas || '',
+        html: cardCatalogo({ id: a.id, nome: a.nome, classe: 'armadura',
+          nums: statsBlocosArmadura(a), notas: a.notas }),
+      })),
+    ], { filtro: 'Procurar armadura…', classe: 'eq-catalogo' });
     if (!escolha) return;
     const uid = novoUid();
     (S.equip.armaduras ||= []).push({ uid, base: escolha, vestida: true });

@@ -28,6 +28,13 @@ export interface Opcao {
   grupo?: string;
   /** Texto extra que a busca considera, além do rótulo e da nota. */
   busca?: string;
+  /**
+   * Conteúdo pronto da opção, no lugar de rótulo + nota. Vai para o DOM sem
+   * escape: quem monta é responsável por escapar o que vem de fora. Serve para
+   * a opção que precisa ser mais que uma linha de texto — o catálogo de
+   * equipamento, por exemplo, mostra a arte e os números da peça.
+   */
+  html?: string;
 }
 
 interface Cfg {
@@ -40,6 +47,8 @@ interface Cfg {
   perigo?: boolean;
   /** Campo de filtro no topo da lista. O texto é o placeholder. */
   filtro?: string;
+  /** Classe extra no <dialog>, para quem precisa de outra largura ou layout. */
+  classe?: string;
 }
 
 interface Resultado {
@@ -79,8 +88,9 @@ function opcoesHTML(opcoes: Opcao[]): string {
     }
     const chave = `${o.rotulo} ${o.nota || ''} ${o.busca || ''} ${o.grupo || ''}`.toLowerCase();
     saida.push(`<button type="button" class="btn ui-dlg-op" data-v="${esc(o.valor)}"`
-      + ` data-busca="${esc(chave)}">${esc(o.rotulo)}`
-      + `${o.nota ? ` <small>${esc(o.nota)}</small>` : ''}</button>`);
+      + ` data-busca="${esc(chave)}">`
+      + (o.html ?? `${esc(o.rotulo)}${o.nota ? ` <small>${esc(o.nota)}</small>` : ''}`)
+      + '</button>');
   }
   return saida.join('');
 }
@@ -90,7 +100,7 @@ function montar(cfg: Cfg): Promise<Resultado> {
     const campos = cfg.campos || [];
     const opcoes = cfg.opcoes || [];
     const dlg = document.createElement('dialog');
-    dlg.className = 'ui-dlg' + (cfg.perigo ? ' perigo' : '');
+    dlg.className = 'ui-dlg' + (cfg.perigo ? ' perigo' : '') + (cfg.classe ? ' ' + cfg.classe : '');
     dlg.innerHTML = `
       <form method="dialog" class="ui-dlg-form">
         <div class="ui-dlg-head">
@@ -247,8 +257,10 @@ export async function uiFormulario(
 export async function uiEscolher(
   titulo: string,
   opcoes: Opcao[],
-  opts: { msg?: string; filtro?: string } = {},
+  opts: { msg?: string; filtro?: string; classe?: string } = {},
 ): Promise<string | null> {
-  const r = await montar({ titulo, msg: opts.msg, opcoes, ok: null, filtro: opts.filtro });
+  const r = await montar({
+    titulo, msg: opts.msg, opcoes, ok: null, filtro: opts.filtro, classe: opts.classe,
+  });
   return r.opcao ?? null;
 }

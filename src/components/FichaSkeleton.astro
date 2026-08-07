@@ -623,6 +623,40 @@ import '../styles/arte-equip.css';
   /* Item personalizado no card do arsenal: só o nome e o recado. Os números saem
      pelo "ajustar", como em qualquer outra peça. */
   .eq-improv-nota { display: block; font-size: var(--fs-micro); font-style: italic; }
+
+  /* ---- catálogo de "adicionar item" (diálogo, lib/ui-dialog.ts) ----
+     O card aqui é o da ficha sem os controles: mesma arte, mesmos blocos de
+     número, mais as notas do catálogo. Vive no global porque o <dialog> nasce
+     preso ao <body>, fora da árvore deste componente. */
+  .ui-dlg.eq-catalogo { width: min(64rem, 94vw); }
+  .ui-dlg.eq-catalogo .ui-dlg-ops { display: grid; gap: .6rem; max-height: min(62vh, 34rem);
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+  .ui-dlg.eq-catalogo .ui-dlg-grupo { grid-column: 1 / -1; }
+  .ui-dlg.eq-catalogo .ui-dlg-nada { grid-column: 1 / -1; }
+  .ui-dlg.eq-catalogo .ui-dlg-op { display: flex; flex-direction: column; gap: .4rem; align-items: stretch;
+    padding: .5rem; height: 100%; text-align: left; background: var(--panel); }
+  .ui-dlg.eq-catalogo .ui-dlg-op:hover, .ui-dlg.eq-catalogo .ui-dlg-op:focus-visible {
+    background: var(--bg-soft); border-color: var(--accent); }
+  /* a arte do catálogo é a mesma do card, num quadro menor */
+  .eqp-arte.eq-img { height: 7rem; border-bottom: 0; background: none; cursor: inherit; border-radius: var(--r-sm); }
+  .eqp-arte.eq-img.arma { --arte-w: 56px; }
+  .eqp-arte.eq-img.escudo { --arte-w: 112px; }
+  .eqp-arte.eq-img.armadura { --arte-w: 75px; }
+  .eqp-sem-arte { background: var(--bg-soft); border: 1px dashed var(--panel-border); }
+  .eqp-corpo { display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
+  .eqp-corpo .eq-nums { margin: 0; }
+  /* o card é um <button>, que herda Cinzel em versalete: nome e nota são texto
+     de leitura e voltam para a fonte do corpo */
+  .ui-dlg.eq-catalogo .eq-peca-nome, .eqp-nota { font-family: 'EB Garamond', Georgia, serif;
+    text-transform: none; font-variant: normal; letter-spacing: normal; }
+  /* a nota do catálogo é longa; três linhas bastam para escolher */
+  .eqp-nota { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  /* "seu item" ocupa a linha inteira e fica deitado: é uma escolha de outra
+     natureza, e assim não deixa um vão ao lado no começo da grade */
+  .ui-dlg.eq-catalogo .ui-dlg-op:first-child { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: .8rem; }
+  .ui-dlg.eq-catalogo .ui-dlg-op:first-child .eqp-arte { width: 7rem; flex: none; height: 5rem; }
+  .ui-dlg.eq-catalogo .ui-dlg-op:first-child .eqp-nota { -webkit-line-clamp: 2; }
   #add-conjunto { margin-bottom: .8rem; }
   .calcpop { position: absolute; z-index: 60; max-width: 280px; background: var(--panel); color: var(--ink); border: 1px solid var(--accent); border-radius: var(--r-md); padding: .45rem .6rem; box-shadow: 0 4px 14px var(--shadow); font-size: var(--fs-rotulo); line-height: 1.4; font-family: 'EB Garamond'; }
   .derv .dv[data-calc] { cursor: help; border-bottom: 1px dotted var(--accent-soft); }
