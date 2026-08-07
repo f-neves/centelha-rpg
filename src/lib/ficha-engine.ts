@@ -572,14 +572,24 @@ export function montarFicha(opts: FichaOpts) {
       </div>
       <span class="eq-improv-nota muted">Frágil: costuma quebrar no 1º ou 2º golpe.</span>`;
   }
-  /** Espaço da imagem. Sem imagem mostra o convite; com imagem, ela mesma como fundo. */
-  function imgSlot(chave: string, url: string | undefined, classe: string, ro: boolean) {
-    const est = url ? ` style="background-image:url('${escapeHtml(url)}')"` : '';
-    if (ro) return `<span class="eq-img ${classe}${url ? ' tem' : ''}"${est} aria-hidden="${url ? 'false' : 'true'}"></span>`;
-    return `<label class="eq-img ${classe}${url ? ' tem' : ''}"${est} title="${url ? 'Trocar a imagem' : 'Escolher uma imagem'}">
+  /**
+   * Espaço da imagem. Vazio, o quadro inteiro é o seletor de arquivo. Com imagem, o
+   * quadro passa a AMPLIAR (como a arte do bestiário) e a troca vai para o ✎ do canto,
+   * senão não haveria como ver a arte inteira sem abrir o seletor por engano.
+   */
+  function imgSlot(chave: string, url: string | undefined, classe: string, ro: boolean, nome = '') {
+    if (url) {
+      const est = ` style="background-image:url('${escapeHtml(url)}')"`;
+      return `<div class="eq-img ${classe} tem"${est}>
+        <button type="button" class="eq-img-zoom" data-eq-zoom="${escapeHtml(url)}" data-eq-zoom-nome="${escapeHtml(nome)}" title="Ampliar" aria-label="Ampliar a imagem de ${escapeHtml(nome)}"></button>
+        ${ro ? '' : `<label class="eq-img-troca" title="Trocar a imagem"><input type="file" accept="image/*" data-eq-img="${chave}" hidden /><span aria-hidden="true">✎</span><span class="sr-only">Trocar a imagem</span></label>
+        <button type="button" class="eq-img-rm" data-eq-img-rm="${chave}" title="Tirar a imagem" aria-label="Tirar a imagem">×</button>`}
+      </div>`;
+    }
+    if (ro) return `<span class="eq-img ${classe}" aria-hidden="true"></span>`;
+    return `<label class="eq-img ${classe}" title="Escolher uma imagem">
       <input type="file" accept="image/*" data-eq-img="${chave}" hidden />
       <span class="eq-img-ph"><b>＋</b>imagem</span>
-      ${url ? `<button type="button" class="eq-img-rm" data-eq-img-rm="${chave}" title="Tirar a imagem" aria-label="Tirar a imagem">×</button>` : ''}
     </label>`;
   }
   /**
@@ -650,8 +660,7 @@ export function montarFicha(opts: FichaOpts) {
           <input type="radio" name="uso-${p.uid}" data-uso="${p.uid}:${v}"${papel === v ? ' checked' : ''}${(ro || off) ? ' disabled' : ''} />
           <span>${rot}</span></label>`;
       return `<div class="eq-peca${papel !== 'nada' ? ' em-uso' : ''}${ajustada ? ' ajustado' : ''}" data-ars="${p.uid}">
-        ${ro ? '' : `<button type="button" class="eq-rm" data-ars-rm="${p.uid}" title="Descartar esta peça" aria-label="Descartar">×</button>`}
-        ${imgSlot(chave, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', ro)}
+        ${imgSlot(chave, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', ro, nomePeca(p))}
         <div class="eq-peca-corpo">
           <div class="eq-peca-nome">${escapeHtml(nomePeca(p))}</div>
           ${it.kind === 'arma' ? statsBlocos(it.w) : it.kind === 'escudo' ? statsBlocosEscudo(it.s) : ''}
@@ -660,7 +669,10 @@ export function montarFicha(opts: FichaOpts) {
           <div class="eq-uso" role="radiogroup" aria-label="Como ${escapeHtml(nomePeca(p))} está empunhada">
             ${marca('nada', 'guardada')}${marca('habil', 'mão hábil')}${marca('inabil', 'mão inábil', duasMaos)}
           </div>
-          ${campos && !ro ? `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>` : ''}
+          ${ro ? '' : `<div class="eq-acoes">
+            ${campos ? `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>` : '<span></span>'}
+            <button type="button" class="eq-rm" data-ars-rm="${p.uid}" title="Descartar esta peça" aria-label="Descartar ${escapeHtml(nomePeca(p))}">×</button>
+          </div>`}
         </div>
         ${campos ? painelMod(chave, it.base, p.mod, campos, ro) : ''}
       </div>`;
@@ -906,8 +918,7 @@ export function montarFicha(opts: FichaOpts) {
       const base = ARMADURA[p.base]; if (!base) return '';
       const chave = `arm:${p.uid}`, a = armaduraComMod(base, p.mod);
       return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${temMod(base, p.mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}">
-        ${ro ? '' : `<button type="button" class="eq-rm" data-arm-rm="${p.uid}" title="Descartar esta peça" aria-label="Descartar">×</button>`}
-        ${imgSlot(chave, p.img, 'armadura', ro)}
+        ${imgSlot(chave, p.img, 'armadura', ro, p.nome || base.nome)}
         <div class="eq-peca-corpo">
           ${ro ? `<div class="eq-peca-nome">${escapeHtml(p.nome || base.nome)}</div>`
                : `<input class="eq-nome-in" data-arm-nome="${p.uid}" value="${escapeHtml(p.nome || '')}" placeholder="${escapeHtml(base.nome)}" aria-label="Nome desta peça" />`}
@@ -917,7 +928,10 @@ export function montarFicha(opts: FichaOpts) {
             <span class="eq-n"><b>Perf</b>${a.soak.perfuracao}<i>N${a.resistPerf || 0}</i></span>
             <span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span>
           </div>
-          ${ro ? '' : `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>`}
+          ${ro ? '' : `<div class="eq-acoes">
+            <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>
+            <button type="button" class="eq-rm" data-arm-rm="${p.uid}" title="Descartar esta peça" aria-label="Descartar ${escapeHtml(p.nome || base.nome)}">×</button>
+          </div>`}
           <button type="button" class="eq-vestir${p.vestida ? ' on' : ''}" data-arm-vestir="${p.uid}"${ro ? ' disabled' : ''}>${p.vestida ? '✓ Vestida' : 'Vestir'}</button>
         </div>
         ${painelMod(chave, base, p.mod, CAMPOS_ARMADURA, ro)}
