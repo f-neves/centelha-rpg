@@ -47,8 +47,22 @@ const LADO_ICONE = 512;
 const PECAS = [
   // armas
   { id: 'adaga', met: 'dagger', exige: /dagger|dirk|poniard/i, icone: 'lorc/plain-dagger' },
-  { id: 'espada-curta', met: 'short sword', exige: /sword|sabre|saber|falchion/i, icone: 'skoll/gladius' },
-  { id: 'espada-longa', met: 'sword', exige: /sword/i, icone: 'lorc/broadsword' },
+  {
+    id: 'espada-curta', met: 'short sword', objeto: 23367,
+    exige: /sword|sabre|saber|falchion/i,
+    veta: /daish|katana|wakizashi|tant[oō]|mounting/i,
+    cultura: /german|italian|french|europe|british|english|spanish|swiss|flemish/i,
+    icone: 'skoll/gladius',
+  },
+  // a espada do sistema é a europeia medieval. Sem filtro de era e de cultura, o
+  // museu devolvia ora uma lâmina da Idade do Bronze, ora um par de katanas: o
+  // acervo dele é pesado em arma japonesa.
+  {
+    id: 'espada-longa', met: 'sword', exige: /sword/i,
+    veta: /B\.?C\.?E?\b|bronze age|daish|katana|wakizashi|tant[oō]|mounting/i,
+    cultura: /german|italian|french|europe|british|english|spanish|swiss|flemish/i,
+    icone: 'lorc/broadsword',
+  },
   { id: 'machado', met: 'axe', exige: /\baxe\b/i, icone: 'lorc/battle-axe' },
   { id: 'espada-serrilhada', met: 'flamberge', exige: /sword|flamberge|rapier/i, icone: 'lorc/croc-sword' },
   { id: 'maca', met: 'mace', exige: /\bmace\b/i, icone: 'delapouite/flanged-mace' },
@@ -59,7 +73,8 @@ const PECAS = [
   // o museu cataloga "War Hammer", em duas palavras: buscar "warhammer" dava zero
   { id: 'martelo-de-guerra', met: 'hammer', exige: /hammer/i, veta: /armorer|engraving|tools/i, icone: 'delapouite/warhammer' },
   { id: 'arco-curto', met: 'bow', exige: /\bbow\b/i, veta: /crossbow|bowl/i, icone: 'lorc/pocket-bow' },
-  { id: 'arco-longo', met: 'bow', pula: 1, exige: /\bbow\b/i, veta: /crossbow|bowl/i, icone: 'delapouite/bow-arrow' },
+  // "bow case" e "quiver" casam com a busca de arco e não mostram arco nenhum
+  { id: 'arco-longo', met: 'bow', pula: 1, exige: /\bbow\b/i, veta: /crossbow|bowl|case|quiver|holster|string/i, icone: 'delapouite/bow-arrow' },
   { id: 'arco-composto', met: 'composite bow', exige: /\bbow\b/i, veta: /crossbow|bowl/i, icone: 'delapouite/bow-string' },
   { id: 'besta-pequena', met: 'crossbow', exige: /crossbow/i, icone: 'carl-olsen/crossbow' },
   { id: 'besta-media', met: 'crossbow', pula: 1, exige: /crossbow/i, icone: 'carl-olsen/crossbow' },
@@ -75,17 +90,17 @@ const PECAS = [
   // armaduras
   { id: 'gambeson', met: 'gambeson', exige: /gambeson|doublet|jack\b/i, icone: 'lorc/armor-vest' },
   { id: 'couro', met: 'leather armor', exige: /leather/i, icone: 'delapouite/leather-armor' },
-  { id: 'malha', met: 'mail shirt', exige: /mail|hauberk/i, icone: 'willdabeast/chain-mail' },
+  { id: 'malha', met: 'mail shirt', objeto: 702478, exige: /mail|hauberk/i, icone: 'willdabeast/chain-mail' },
   { id: 'brigandina', met: 'brigandine', exige: /brigandine/i, icone: 'lorc/scale-mail' },
-  { id: 'lamelar', met: 'lamellar armor', exige: /lamellar/i, icone: 'lorc/lamellar' },
+  { id: 'lamelar', met: 'lamellar armor', objeto: 26612, exige: /lamellar/i, icone: 'lorc/lamellar' },
   { id: 'placa-transicao', met: 'cuirass', exige: /cuirass|breastplate/i, icone: 'lorc/layered-armor' },
   // "armor" no MET traz a armadura inteira montada; o veto tira o que é fantasia
   // de teatro, peça solta, elmo avulso e armadura oriental (outra silhueta).
   { id: 'placa-municao', met: 'armor', pula: 2, exige: /armor/i, veta: /costume|parts|element|fragment|helmet|saddle|gusoku|turban|dhal|horse/i, icone: 'delapouite/chest-armor' },
   { id: 'placa-completa', met: 'armor', exige: /armor/i, veta: /costume|parts|element|fragment|helmet|saddle|gusoku|turban|dhal|horse/i, icone: 'lorc/breastplate' },
   // escudos
-  { id: 'broquel', met: 'buckler', exige: /buckler/i, icone: 'delapouite/attached-shield' },
-  { id: 'targe', met: 'targe', exige: /targe|rondache|shield/i, icone: 'willdabeast/round-shield' },
+  { id: 'broquel', met: 'buckler', objeto: 24897, exige: /buckler/i, icone: 'delapouite/attached-shield' },
+  { id: 'targe', met: 'targe', objeto: 27889, exige: /targe|rondache|shield/i, icone: 'willdabeast/round-shield' },
   { id: 'redondo', met: 'round shield', exige: /shield|rondache/i, icone: 'delapouite/viking-shield' },
   { id: 'heater', met: 'heater shield', exige: /shield/i, icone: 'delapouite/templar-shield' },
   { id: 'kite', met: 'kite shield', exige: /shield/i, icone: 'lorc/bordered-shield' },
@@ -161,7 +176,9 @@ async function conferePng(caminho) {
   let opacosNaBorda = 0, naBorda = 0;
   for (let x = 0; x < w; x++) { naBorda += 2; if (alfa(x, 0) > 24) opacosNaBorda++; if (alfa(x, h - 1) > 24) opacosNaBorda++; }
   for (let y = 0; y < h; y++) { naBorda += 2; if (alfa(0, y) > 24) opacosNaBorda++; if (alfa(w - 1, y) > 24) opacosNaBorda++; }
-  if (opacosNaBorda / naBorda > 0.03) return { ok: false, motivo: 'moldura opaca (fundo sobrando)' };
+  // limite folgado de propósito: quem julga fundo sobrando é o teste de halo do
+  // recortador, que sabe distinguir sobra de fundo de peça encostando na borda.
+  if (opacosNaBorda / naBorda > 0.12) return { ok: false, motivo: 'moldura opaca (fundo sobrando)' };
   let transparentes = 0;
   for (let i = c - 1; i < data.length; i += c) if (data[i] < 16) transparentes++;
   const frac = transparentes / (w * h);
@@ -181,6 +198,15 @@ const marcaUsado = (id) => {
 };
 
 async function tentarMuseu(peca) {
+  // `objeto` fixa a peça do museu escolhida a dedo e conferida a olho. Sem isso
+  // cada rodada sorteia de novo entre os candidatos e troca um acerto por um
+  // quase-acerto: a cota de malha já virou casaco de couro assim.
+  if (peca.objeto) {
+    const escolha = await usarObjeto(peca, peca.objeto);
+    if (escolha) return escolha;
+    console.log(`  (o objeto fixado ${peca.objeto} não serviu; caindo na busca)`);
+  }
+
   const url = `${MET}/search?departmentId=${DEPTO_ARMAS}&hasImages=true&q=`
     + encodeURIComponent(peca.met);
   const busca = await json(url);   // se o museu falhar, quem chamou tem de saber
@@ -198,43 +224,58 @@ async function tentarMuseu(peca) {
 
     // o assunto tem de bater com a peça, senão vem acessório ou coisa alheia
     const texto = `${obj.title || ''} ${obj.objectName || ''}`;
+    // a data entra só no veto, que é onde ela serve: barrar peça de outra era
+    const textoVeto = `${texto} ${obj.objectDate || ''}`;
     if (peca.exige && !peca.exige.test(texto)) continue;
-    if (VETO.test(texto) || (peca.veta && peca.veta.test(texto))) continue;
+    if (VETO.test(textoVeto) || (peca.veta && peca.veta.test(textoVeto))) continue;
+    if (peca.cultura && !peca.cultura.test(`${obj.culture || ''} ${obj.country || ''} ${obj.title || ''}`)) continue;
 
     // `pula` afasta as peças que dividem a mesma busca (as três bestas), para
     // não saírem trigêmeas mesmo sendo registros diferentes
     if (aprovados++ < (peca.pula || 0)) continue;
 
-    const fonte = obj.primaryImageSmall || obj.primaryImage;
-    if (!fonte) continue;
+    if (!(obj.primaryImageSmall || obj.primaryImage)) continue;
 
     tentativas++;
-    const bruta = resolve(TEMP, `${peca.id}.jpg`);
-    const destino = resolve(PASTA, `${peca.id}.png`);
-    try { await baixar(fonte, bruta); } catch { continue; }
-
-    let laudo;
-    try {
-      const saida = execFileSync('python', [resolve(raiz, 'scripts/recorta_fundo.py'), bruta, destino],
-        { encoding: 'utf8' });
-      laudo = JSON.parse(saida.trim().split('\n').pop());
-    } catch (e) { laudo = { ok: false, erro: String(e.message).slice(0, 60) }; }
-    try { unlinkSync(bruta); } catch { /* já foi */ }
-
-    if (!laudo.ok) continue;
-    const conf = await conferePng(destino);
-    if (!conf.ok) { try { unlinkSync(destino); } catch {} continue; }
-
-    marcaUsado(id);
-    return {
-      fonte: 'MET',
-      credito: `${obj.title} (${obj.objectDate || 's/d'}), ${obj.culture || obj.country || 'The Met'}`,
-      link: obj.objectURL,
-      licenca: 'CC0 (domínio público)',
-      detalhe: `recorte: ${conf.transparente} transparente, ${conf.tamanho}`,
-    };
+    const escolha = await usarObjeto(peca, id, obj);
+    if (escolha) return escolha;
   }
   return null;
+}
+
+/** Baixa a foto do objeto, recorta e guarda. Devolve o crédito, ou nada se falhar. */
+async function usarObjeto(peca, id, jaLido) {
+  let obj = jaLido;
+  if (!obj) {
+    try { obj = await json(`${MET}/objects/${id}`); } catch { return null; }
+  }
+  const fonte = obj.primaryImageSmall || obj.primaryImage;
+  if (!fonte) return null;
+
+  const bruta = resolve(TEMP, `${peca.id}.jpg`);
+  const destino = resolve(PASTA, `${peca.id}.png`);
+  try { await baixar(fonte, bruta); } catch { return null; }
+
+  let laudo;
+  try {
+    const saida = execFileSync('python', [resolve(raiz, 'scripts/recorta_fundo.py'), bruta, destino],
+      { encoding: 'utf8' });
+    laudo = JSON.parse(saida.trim().split('\n').pop());
+  } catch (e) { laudo = { ok: false, erro: String(e.message).slice(0, 60) }; }
+  try { unlinkSync(bruta); } catch { /* já foi */ }
+
+  if (!laudo.ok) return null;
+  const conf = await conferePng(destino);
+  if (!conf.ok) { try { unlinkSync(destino); } catch {} return null; }
+
+  marcaUsado(id);
+  return {
+    fonte: 'MET',
+    credito: `${obj.title} (${obj.objectDate || 's/d'}), ${obj.culture || obj.country || 'The Met'}`,
+    link: obj.objectURL,
+    licenca: 'CC0 (domínio público)',
+    detalhe: `recorte: ${conf.transparente} transparente, ${conf.tamanho}`,
+  };
 }
 
 // -------------------------------------------------------------- ícone SVG
@@ -297,7 +338,15 @@ for (const peca of alvo) {
   }
 }
 
-writeFileSync(resolve(TEMP, 'relatorio.json'), JSON.stringify(relatorio, null, 2));
+// O relatório acumula: o acervo costuma ser remendado peça a peça, e refazer uma
+// arma não pode apagar o crédito das outras 39.
+const ARQ_RELATORIO = resolve(TEMP, 'relatorio.json');
+const antigo = existsSync(ARQ_RELATORIO) ? JSON.parse(readFileSync(ARQ_RELATORIO, 'utf8')) : [];
+const juntos = new Map(antigo.map((r) => [r.id, r]));
+for (const r of relatorio) if (r.fonte !== 'existente' || !juntos.has(r.id)) juntos.set(r.id, r);
+const ordem = new Map(PECAS.map((p, i) => [p.id, i]));
+const final = [...juntos.values()].sort((a, b) => ordem.get(a.id) - ordem.get(b.id));
+writeFileSync(ARQ_RELATORIO, JSON.stringify(final, null, 2));
 
 const conta = (f) => relatorio.filter((r) => r.fonte === f).length;
 console.log('');
