@@ -498,11 +498,16 @@ export function montarFicha(opts: FichaOpts) {
   function itemDe(slot: any) {
     const ref = (slot && slot.ref) || 'nada';
     if (ref === 'c') {
-      const w = { ...IMPROV, nome: (slot && slot.nome) || 'Improvisado',
+      // O item personalizado passou a usar o mesmo "ajustar" das peças de catálogo,
+      // em vez de três campos próprios. A base continua sendo o que a peça guardou
+      // (fichas antigas não perdem nada); o `mod` entra por cima, como em qualquer
+      // outra peça, e com ele vêm Velocidade e Defesa, que antes não dava para mexer.
+      const base = { ...IMPROV, nome: (slot && slot.nome) || 'Improvisado',
         dado: clampImprov(slot?.dado, 1, 2, IMPROV.dado),
         danoBonus: clampImprov(slot?.danoBonus, -2, 2, IMPROV.danoBonus),
         acerto: clampImprov(slot?.acerto, -6, 6, IMPROV.acerto) };
-      return { kind: 'custom', nome: w.nome, def: 0, pen: 0, w };
+      const w = armaComMod(base, slot?.mod);
+      return { kind: 'custom', nome: w.nome, def: w.defesaArma || 0, pen: 0, w, base };
     }
     if (ref.startsWith('e:')) {
       const base = ESCUDO[ref.slice(2)];
@@ -581,17 +586,16 @@ export function montarFicha(opts: FichaOpts) {
   // Os conjuntos de mãos escolhem daqui, não do catálogo inteiro. É o que faz a imagem
   // pertencer à peça: a mesma espada usada em dois conjuntos mostra a mesma foto.
   const nomePeca = (p: any) => p.nome || itemDe(p).nome;
-  /** Item improvisado: não tem catálogo, então nome e números são digitados na própria peça. */
+  /**
+   * Item personalizado: não tem catálogo, então o nome é digitado na peça. Os
+   * números ficam no "ajustar", o mesmo das outras peças — antes eram três campos
+   * próprios aqui (Dado, Bônus, Acerto), que davam menos controle e ainda deixavam
+   * a peça sem como mexer em Velocidade e Defesa.
+   */
   function improvisado(p: any, ro: boolean) {
-    const dis = ro ? ' disabled' : '';
-    const d = (v: any, def: number) => (v ?? def);
-    return `<input class="eq-nome-in" data-ars-nome="${p.uid}" value="${escapeHtml(p.nome || '')}" placeholder="nome do item"${dis} aria-label="Nome do item improvisado" />
-      <div class="eq-improv">
-        <label>Dado<select data-ars-improv="${p.uid}:dado"${dis}>${[1, 2].map((v) => `<option value="${v}"${d(p.dado, 1) == v ? ' selected' : ''}>${v}d6</option>`).join('')}</select></label>
-        <label>Bônus<select data-ars-improv="${p.uid}:danoBonus"${dis}>${[-2, -1, 0, 1, 2].map((v) => `<option value="${v}"${d(p.danoBonus, 0) == v ? ' selected' : ''}>${v >= 0 ? '+' + v : '−' + Math.abs(v)}</option>`).join('')}</select></label>
-        <label>Acerto<input type="number" data-ars-improv="${p.uid}:acerto" value="${d(p.acerto, -2)}" min="-6" max="6" step="1"${dis} /></label>
-      </div>
-      <span class="eq-improv-nota muted">Frágil: costuma quebrar no 1º ou 2º golpe.</span>`;
+    return `<input class="eq-nome-in" data-ars-nome="${p.uid}" value="${escapeHtml(p.nome || '')}"
+      placeholder="nome do item"${ro ? ' disabled' : ''} aria-label="Nome do item personalizado" />
+      <span class="eq-improv-nota muted">Peça fora do catálogo: os números saem do ajuste.</span>`;
   }
   /**
    * O id de catálogo da peça, que é o que dá nome à classe da arte do sistema
@@ -601,7 +605,10 @@ export function montarFicha(opts: FichaOpts) {
   function idDeArte(p: any): string {
     const ref = p && p.ref;
     if (typeof ref === 'string' && (ref.startsWith('a:') || ref.startsWith('e:'))) return ref.slice(2);
-    return (p && p.base) || '';
+    const base = (p && p.base) || '';
+    // peça personalizada não tem gravura: devolver o id dela deixaria o quadro
+    // vazio, sem nem o convite para o jogador pôr uma imagem sua
+    return base === ID_ARMADURA_LIVRE ? '' : base;
   }
   /**
    * Espaço da imagem. São três estados, nesta ordem de preferência:
@@ -700,7 +707,7 @@ export function montarFicha(opts: FichaOpts) {
     const cards = (S.arsenal || []).map((p: any) => {
       const it = itemDe(p), chave = `ars:${p.uid}`;
       const papel = papelDaPeca(p.uid), duasMaos = ehDuasMaos(p);
-      const campos = (it.kind === 'arma' || it.kind === 'escudo') ? camposItem(it) : null;
+      const campos = it.kind === 'nada' ? null : camposItem(it);
       const ajustada = campos ? temMod(it.base, p.mod, campos) : false;
       const marca = (v: 'nada' | 'habil' | 'inabil', rot: string, off = false) =>
         `<label class="eq-uso-op${papel === v ? ' on' : ''}${off ? ' off' : ''}">
@@ -713,7 +720,7 @@ export function montarFicha(opts: FichaOpts) {
             <div class="eq-peca-nome">${escapeHtml(nomePeca(p))}</div>
             ${(it.w?.tags || []).length ? `<div class="eq-tags">${it.w.tags.map((t: string) => `<span class="eq-tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
           </div>
-          ${it.kind === 'arma' ? statsBlocos(it.w) : it.kind === 'escudo' ? statsBlocosEscudo(it.s) : ''}
+          ${it.kind === 'escudo' ? statsBlocosEscudo(it.s) : it.w ? statsBlocos(it.w) : ''}
           ${p.ref === 'c' ? improvisado(p, ro) : ''}
           <div class="eq-uso" role="radiogroup" aria-label="Como ${escapeHtml(nomePeca(p))} está empunhada">
             ${marca('nada', 'guardada')}${marca('habil', 'mão hábil')}${marca('inabil', 'mão inábil', duasMaos)}
@@ -763,7 +770,8 @@ export function montarFicha(opts: FichaOpts) {
     return `<div class="eq-mod" data-eq-pan="${chave}"${modAberto.has(chave) ? '' : ' hidden'}>${campos.map((c) => campoMod(chave, c, base, mod, ro)).join('')}` +
       `${ro ? '' : `<button type="button" class="eqm-reset" data-eqm-reset="${chave}">restaurar</button>`}</div>`;
   }
-  const camposItem = (it: any) => (it.kind === 'arma' ? CAMPOS_ARMA : CAMPOS_ESCUDO);
+  // o item personalizado é uma arma para todos os efeitos: mesmos campos ajustáveis
+  const camposItem = (it: any) => (it.kind === 'escudo' ? CAMPOS_ESCUDO : CAMPOS_ARMA);
   function statsConj(c: any, trava: boolean) {
     const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
     const dano = c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
@@ -1267,12 +1275,6 @@ export function montarFicha(opts: FichaOpts) {
       const [uid, papel] = uso.dataset.uso!.split(':');
       marcarUso(uid, papel as any); redesenhaArmas(); return;
     }
-    const imp = alvo.closest<HTMLSelectElement>('select[data-ars-improv]');
-    if (imp) {
-      const [uid, campo] = (imp.dataset.arsImprov || '').split(':');
-      const p = pecaArsenal(uid); if (!p) return;
-      p[campo] = Number(imp.value); sincronizarSlots(); redesenhaArmas();
-    }
   });
   el('eq-arsenal').addEventListener('click', async (e) => {
     if (opts.readOnly) return;
@@ -1298,13 +1300,6 @@ export function montarFicha(opts: FichaOpts) {
       const card = nm.closest('.eq-peca'); const t = card?.querySelector('.eq-peca-nome');
       if (t) t.textContent = nomePeca(p);
       renderConjuntos(); renderCombate(); save(); return;
-    }
-    const imp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-ars-improv]');
-    if (imp) {
-      const [uid, campo] = (imp.dataset.arsImprov || '').split(':');
-      const p = pecaArsenal(uid); if (!p) return;
-      p[campo] = Number(imp.value); sincronizarSlots();
-      renderConjuntos(); renderDerived(); renderCombate(); save();
     }
   });
   // ---- Imagem das peças (arsenal e armaduras usam o mesmo par de eventos) ----
