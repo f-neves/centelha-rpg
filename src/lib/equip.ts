@@ -17,6 +17,33 @@ export const ARMA: Record<string, any> = Object.fromEntries(ARMAS.map((w) => [w.
 export const ARMADURA: Record<string, any> = Object.fromEntries(ARMADURAS.map((a) => [a.id, a]));
 export const ESCUDO: Record<string, any> = Object.fromEntries(ESCUDOS.map((s) => [s.id, s]));
 
+/**
+ * Armadura fora do catálogo, para a peça que o jogador inventa (a couraça do
+ * ferreiro da vila, o casaco reforçado do mestre). Nasce zerada: quem dá os
+ * números é o "ajustar" do card, pelo mesmo caminho que ajusta qualquer outra.
+ *
+ * Vive aqui, e não na ficha, porque `armadurasDe` é lido também pelo rastreador
+ * de combate da mesa: se a base só existisse na tela da ficha, a peça sumiria da
+ * Absorção do outro lado.
+ */
+export const ID_ARMADURA_LIVRE = 'c';
+export const ARMADURA_LIVRE = {
+  id: ID_ARMADURA_LIVRE,
+  nome: 'Armadura personalizada',
+  classe: 'nenhuma',
+  soak: { impacto: 0, corte: 0, perfuracao: 0 },
+  resistPerf: 0,
+  penalidade: 0,
+  acesso: 10,
+  notas: 'Peça fora do catálogo: vale o que estiver no ajuste.',
+};
+
+/** A base de uma peça de armadura: do catálogo, ou a peça livre. */
+export function baseArmadura(id: string | undefined | null): any {
+  if (id === ID_ARMADURA_LIVRE) return ARMADURA_LIVRE;
+  return id ? ARMADURA[id] : undefined;
+}
+
 /** Um campo editável de uma peça: onde mora, como se chama e o intervalo aceito. */
 export interface CampoEquip { k: string; rot: string; min: number; max: number; sinal?: boolean; }
 
@@ -112,7 +139,7 @@ export function armadurasDe(S: any) {
     .map((p: any) => {
       if (typeof p === 'string') { const b = ARMADURA[p]; return b ? armaduraComMod(b, mods[p]) : null; }
       if (!p || p.vestida === false) return null;
-      const b = ARMADURA[p.base]; if (!b) return null;
+      const b = baseArmadura(p.base); if (!b) return null;
       const a = armaduraComMod(b, p.mod);
       return p.nome ? { ...a, nome: p.nome } : a;
     })

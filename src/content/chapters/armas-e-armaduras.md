@@ -53,7 +53,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 ## Armas de Exemplo
 
-<div class="table-wrap">
+<div class="table-wrap sem-ultima-coluna">
 
 | Arma | Classe | Modos | Velocidade | Dano | Acerto | Defesa | Mãos | Destaque |
 |---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|

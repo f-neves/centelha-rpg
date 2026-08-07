@@ -12,12 +12,12 @@ import ARTE_D from '../data/artes.json';
 import EFEITO_D from '../data/efeitos.json';
 import RACA_D from '../data/racas.json';
 import {
-  ARMA, ARMADURA, ESCUDO, ARMAS, ARMADURAS, ESCUDOS,
+  ARMA, ARMADURA, ESCUDO, ARMAS, ARMADURAS, ESCUDOS, ID_ARMADURA_LIVRE, baseArmadura,
   CAMPOS_ARMA, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
   armaComMod, armaduraComMod, escudoComMod, armadurasDe, baseCampo, valorCampo, temMod,
   danoStr, statsArma, statsArmadura, statsEscudo, sinalNum,
 } from './equip';
-import { uiConfirmar, uiErro, uiFormulario } from './ui-dialog';
+import { uiConfirmar, uiErro, uiEscolher, uiFormulario } from './ui-dialog';
 
 export interface FichaOpts {
   /** Carrega o estado inicial (objeto S) ou null para começar do zero. Pode ser assíncrono. */
@@ -244,7 +244,7 @@ export function montarFicha(opts: FichaOpts) {
       ? { uid: novoUid(), base: p, mod: modsAntigos[p] ? { ...modsAntigos[p] } : undefined, vestida: true }
       : { uid: p?.uid || novoUid(), base: p?.base, nome: p?.nome || undefined, mod: p?.mod || undefined,
           img: p?.img || undefined, vestida: p?.vestida !== false })
-    ).filter((p: any) => ARMADURA[p.base]);
+    ).filter((p: any) => baseArmadura(p.base));
     delete S.equip.armMod;
 
     // Arsenal: as armas e escudos que o personagem possui. Nasce do que já estava nos
@@ -727,9 +727,7 @@ export function montarFicha(opts: FichaOpts) {
       </div>`;
     }).join('');
     const adicionar = ro ? '' : `<div class="eq-add">
-      <label>Adicionar arma ou escudo
-        <select data-ars-add><option value="">escolher do catálogo…</option>${optsItens('', true)}</select>
-      </label>
+      <button type="button" class="btn eq-add-btn" data-ars-add>＋ Adicionar item</button>
     </div>`;
     const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armas.' : 'Nenhuma arma ainda: escolha uma no catálogo.'}</p>`;
     el('eq-arsenal').innerHTML = cards || vazio;
@@ -965,7 +963,7 @@ export function montarFicha(opts: FichaOpts) {
   function renderArmaduras() {
     const ro = !!opts.readOnly;
     const cards = (S.equip.armaduras || []).map((p: any) => {
-      const base = ARMADURA[p.base]; if (!base) return '';
+      const base = baseArmadura(p.base); if (!base) return '';
       const chave = `arm:${p.uid}`, a = armaduraComMod(base, p.mod);
       return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${temMod(base, p.mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}">
         ${imgSlot(chave, p.img, 'armadura', ro, p.nome || base.nome, idDeArte(p))}
@@ -988,9 +986,7 @@ export function montarFicha(opts: FichaOpts) {
       </div>`;
     }).join('');
     const adicionar = ro ? '' : `<div class="eq-add">
-      <label>Adicionar armadura
-        <select data-arm-add><option value="">escolher do catálogo…</option>${ARMADURAS.filter((a) => a.id !== 'nenhuma').map((a) => `<option value="${a.id}">${a.nome}: ${statsArmadura(a)}</option>`).join('')}</select>
-      </label>
+      <button type="button" class="btn eq-add-btn" data-arm-add>＋ Adicionar item</button>
     </div>`;
     const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armaduras.' : 'Nenhuma armadura ainda: escolha uma no catálogo.'}</p>`;
     el('eq-armaduras').innerHTML = cards || vazio;
@@ -1014,7 +1010,7 @@ export function montarFicha(opts: FichaOpts) {
   }
   /** Atualiza só os números de uma peça de armadura (sem refazer o HTML). */
   function refreshArm(uid: string) {
-    const p = pecaArm(uid); const base = p && ARMADURA[p.base]; if (!p || !base) return;
+    const p = pecaArm(uid); const base = p && baseArmadura(p.base); if (!p || !base) return;
     const a = armaduraComMod(base, p.mod);
     const nums = el('eq-armaduras').querySelector(`[data-arm-nums="${uid}"]`);
     if (nums) nums.innerHTML = `<span class="eq-n"><b>Imp</b>${a.soak.impacto}</span><span class="eq-n"><b>Cor</b>${a.soak.corte}</span>` +
@@ -1242,14 +1238,26 @@ export function montarFicha(opts: FichaOpts) {
   }));
   // ---- Arsenal: adicionar, marcar o uso, descartar, improvisado ----
   const redesenhaArmas = () => { renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); save(); };
-  el('eq-arsenal-add').addEventListener('change', (e) => {
+  el('eq-arsenal-add').addEventListener('click', async (e) => {
     if (opts.readOnly) return;
-    const add = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-ars-add]');
-    if (!add || !add.value) return;
-    (S.arsenal ||= []).push(add.value === 'c'
-      ? { uid: novoUid(), ref: 'c', nome: '', dado: 1, danoBonus: 0, acerto: -2 }
-      : { uid: novoUid(), ref: add.value });
-    add.value = ''; redesenhaArmas();
+    if (!(e.target as HTMLElement).closest('[data-ars-add]')) return;
+    // O personalizado vem primeiro, sem grupo: é a opção que não se procura no
+    // catálogo, então não faz sentido enterrá-la no fim da lista.
+    const escolha = await uiEscolher('Adicionar item', [
+      { valor: 'c', rotulo: 'Item personalizado…', nota: 'nome e números seus' },
+      ...ARMAS.map((w) => ({ valor: `a:${w.id}`, rotulo: w.nome, nota: statsArma(w),
+        grupo: 'Armas (Vel · Acerto · Dano · Defesa)', busca: (w.tags || []).join(' ') })),
+      ...ESCUDOS.filter((s) => s.id !== 'nenhum').map((s) => ({
+        valor: `e:${s.id}`, rotulo: s.nome, nota: statsEscudo(s), grupo: 'Escudos' })),
+    ], { filtro: 'Procurar arma ou escudo…' });
+    if (!escolha) return;
+    const uid = novoUid();
+    (S.arsenal ||= []).push(escolha === 'c'
+      ? { uid, ref: 'c', nome: '', dado: 1, danoBonus: 0, acerto: -2 }
+      : { uid, ref: escolha });
+    // peça personalizada já nasce com o ajuste aberto: sem os números ela não serve
+    if (escolha === 'c') modAberto.add(`ars:${uid}`);
+    redesenhaArmas();
   });
   el('eq-arsenal').addEventListener('change', (e) => {
     if (opts.readOnly) return;
@@ -1359,12 +1367,21 @@ export function montarFicha(opts: FichaOpts) {
     if (uso) { const i = +uso.dataset.conjUso!; S.conjuntos.forEach((c: any, j: number) => (c.ativo = j === i)); renderConjuntos(); renderDerived(); renderCombate(); save(); }
   });
   // ---- Armaduras: adicionar, descartar, renomear, vestir ----
-  el('eq-armaduras-add').addEventListener('change', (e) => {
+  el('eq-armaduras-add').addEventListener('click', async (e) => {
     if (opts.readOnly) return;
-    const add = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-arm-add]');
-    if (!add || !add.value) return;
-    (S.equip.armaduras ||= []).push({ uid: novoUid(), base: add.value, vestida: true });
-    add.value = ''; renderArmaduras(); renderDerived(); renderCombate(); save();
+    if (!(e.target as HTMLElement).closest('[data-arm-add]')) return;
+    const escolha = await uiEscolher('Adicionar item', [
+      { valor: ID_ARMADURA_LIVRE, rotulo: 'Armadura personalizada…', nota: 'nome e números seus' },
+      ...ARMADURAS.filter((a) => a.id !== 'nenhuma').map((a) => ({
+        valor: a.id, rotulo: a.nome, nota: statsArmadura(a),
+        grupo: 'Armaduras (Imp · Cor · Perf · Pen)' })),
+    ], { filtro: 'Procurar armadura…' });
+    if (!escolha) return;
+    const uid = novoUid();
+    (S.equip.armaduras ||= []).push({ uid, base: escolha, vestida: true });
+    // peça personalizada já nasce com o ajuste aberto: ela vem zerada
+    if (escolha === ID_ARMADURA_LIVRE) modAberto.add(`arm:${uid}`);
+    renderArmaduras(); renderDerived(); renderCombate(); save();
   });
   el('eq-armaduras').addEventListener('input', (e) => {
     if (opts.readOnly) return;
@@ -1385,7 +1402,7 @@ export function montarFicha(opts: FichaOpts) {
     if (!rm) return;
     const p = pecaArm(rm.dataset.armRm!); if (!p) return;
     const ok = await uiConfirmar(
-      `Descartar ${p.nome || ARMADURA[p.base]?.nome || 'esta armadura'}?`,
+      `Descartar ${p.nome || baseArmadura(p.base)?.nome || 'esta armadura'}?`,
       { titulo: 'Descartar peça', ok: 'Descartar', perigo: true },
     );
     if (!ok) return;
@@ -1411,7 +1428,7 @@ export function montarFicha(opts: FichaOpts) {
       redesenha,
     });
     if (a === 'arm') {
-      const p = pecaArm(uid); const base = p && ARMADURA[p.base]; if (!p || !base) return null;
+      const p = pecaArm(uid); const base = p && baseArmadura(p.base); if (!p || !base) return null;
       return guarda(p, base, CAMPOS_ARMADURA, () => refreshArm(uid));
     }
     if (a === 'ars') {

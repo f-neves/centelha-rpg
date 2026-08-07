@@ -237,6 +237,14 @@ html[data-justif='0'] .prose li { text-align: left; hyphens: manual; }
   }
 }
 
+/* Coluna final oculta: o texto continua no HTML, então a busca do site (que lê o
+   HTML gerado, não a tela) continua achando; some só da tabela. É o caso do
+   "Destaque" das Armas de Exemplo, prosa dentro de uma tabela de números.
+   display:none tira do leitor de tela também: se um dia a informação precisar
+   voltar a ser lida, o certo é movê-la para fora da tabela, não desocultar. */
+.sem-ultima-coluna th:last-child,
+.sem-ultima-coluna td:last-child { display: none; }
+
 /* ---------- 2 colunas (opcional, em /configuracoes) ----------
    Texto corrido em duas colunas acima de 1100px, como a página de um livro: a "largura do
    texto" escolhida vira a largura de CADA coluna. Tabelas, callouts, fórmulas, títulos e
@@ -569,9 +577,21 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 }
 .ui-dlg-campo .invalido { border-color: var(--perigo); }
 .ui-dlg-dica { display: block; font-size: var(--fs-rotulo); color: var(--ink-soft); margin-top: .25rem; }
-.ui-dlg-ops { display: flex; flex-direction: column; gap: .4rem; margin-bottom: .3rem; }
+/* A lista rola sozinha: um catálogo de 30 itens não cabe na tela, e deixar o
+   diálogo inteiro crescer empurraria o rodapé para fora. O filtro fica parado
+   em cima, fora da área que rola. */
+.ui-dlg-ops { display: flex; flex-direction: column; gap: .4rem; margin-bottom: .3rem;
+  max-height: min(52vh, 26rem); overflow-y: auto; }
 .ui-dlg-ops .btn { text-align: left; }
 .ui-dlg-ops .btn small { opacity: .7; }
+.ui-dlg-grupo { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+  letter-spacing: .08em; color: var(--ink-soft); margin: .6rem 0 .1rem; font-weight: 600; }
+.ui-dlg-grupo:first-child { margin-top: 0; }
+.ui-dlg-filtro { width: 100%; margin-bottom: .6rem; padding: .45rem .6rem; border-radius: var(--r-sm);
+  border: 1px solid var(--panel-border); background: var(--bg); color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif; font-size: 1em; }
+.ui-dlg-filtro:focus { outline: none; border-color: var(--accent); }
+.ui-dlg-nada { margin: .3rem 0 0; color: var(--ink-soft); font-style: italic; }
 .ui-dlg-pe { display: flex; justify-content: flex-end; gap: .5rem; padding: .9rem 1.1rem 1rem; }
 .ui-dlg .btn.perigo { border-color: var(--perigo); color: var(--perigo); background: var(--panel); }
 .ui-dlg .btn.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }

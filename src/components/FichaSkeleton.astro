@@ -465,12 +465,13 @@ import '../styles/arte-equip.css';
   /* o seletor das armas vem ANTES da grade, então o respiro vai embaixo dele */
   #eq-arsenal-add .eq-add { margin: 0 0 .8rem; }
   .eq-arm-col, .eq-arm-lado { min-width: 0; }
-  .eq-add label { display: flex; flex-direction: column; gap: .2rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
-    text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); min-width: 0; }
-  /* um <select> reserva a largura da MAIOR opção, e as do catálogo são longas
-     ("Placa de transição: Imp 4 · Cor 8 · Perf 3 (N2) · Pen −3"): sem este teto ele
-     empurrava a grade inteira 51px para fora da tela no celular. */
-  .eq-add select, .conj-esc select { width: 100%; min-width: 0; max-width: 100%; }
+  /* Adicionar peça é um botão que abre o catálogo em diálogo. Era um <select>, que
+     reservava a largura da MAIOR opção ("Placa de transição: Imp 4 · Cor 8 · Perf 3
+     (N2) · Pen −3") e empurrava a grade para fora da tela no celular. */
+  .eq-add-btn { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .06em; padding: .5rem .9rem; }
+  /* o mesmo teto continua valendo para os seletores de mão, que seguem sendo <select> */
+  .conj-esc select { width: 100%; min-width: 0; max-width: 100%; }
 
   /* números da peça em blocos, no lugar da linha "5/+2/1d6/+1" */
   .eq-nums { display: flex; flex-wrap: wrap; gap: .25rem; }

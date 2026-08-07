@@ -24,6 +24,10 @@ export interface Opcao {
   valor: string;
   rotulo: string;
   nota?: string;
+  /** Cabeçalho sob o qual a opção aparece. Opções sem grupo vêm antes de todos. */
+  grupo?: string;
+  /** Texto extra que a busca considera, além do rótulo e da nota. */
+  busca?: string;
 }
 
 interface Cfg {
@@ -34,6 +38,8 @@ interface Cfg {
   ok?: string | null;       // null = sem botão de confirmar
   cancelar?: string | null; // null = sem botão de cancelar
   perigo?: boolean;
+  /** Campo de filtro no topo da lista. O texto é o placeholder. */
+  filtro?: string;
 }
 
 interface Resultado {
@@ -62,6 +68,23 @@ function campoHTML(c: Campo, i: number): string {
   </label>`;
 }
 
+/** Botões das opções, com um cabeçalho a cada troca de grupo. */
+function opcoesHTML(opcoes: Opcao[]): string {
+  let grupoAtual: string | undefined;
+  const saida: string[] = [];
+  for (const o of opcoes) {
+    if (o.grupo !== grupoAtual) {
+      grupoAtual = o.grupo;
+      if (grupoAtual) saida.push(`<h3 class="ui-dlg-grupo">${esc(grupoAtual)}</h3>`);
+    }
+    const chave = `${o.rotulo} ${o.nota || ''} ${o.busca || ''} ${o.grupo || ''}`.toLowerCase();
+    saida.push(`<button type="button" class="btn ui-dlg-op" data-v="${esc(o.valor)}"`
+      + ` data-busca="${esc(chave)}">${esc(o.rotulo)}`
+      + `${o.nota ? ` <small>${esc(o.nota)}</small>` : ''}</button>`);
+  }
+  return saida.join('');
+}
+
 function montar(cfg: Cfg): Promise<Resultado> {
   return new Promise((resolve) => {
     const campos = cfg.campos || [];
@@ -77,7 +100,9 @@ function montar(cfg: Cfg): Promise<Resultado> {
         <div class="ui-dlg-corpo">
           ${cfg.msg ? `<p class="ui-dlg-msg">${linhas(cfg.msg)}</p>` : ''}
           ${campos.map(campoHTML).join('')}
-          ${opcoes.length ? `<div class="ui-dlg-ops">${opcoes.map((o) => `<button type="button" class="btn ui-dlg-op" data-v="${esc(o.valor)}">${esc(o.rotulo)}${o.nota ? ` <small>${esc(o.nota)}</small>` : ''}</button>`).join('')}</div>` : ''}
+          ${opcoes.length && cfg.filtro ? `<input type="search" class="ui-dlg-filtro" placeholder="${esc(cfg.filtro)}" aria-label="${esc(cfg.filtro)}" />` : ''}
+          ${opcoes.length ? `<div class="ui-dlg-ops">${opcoesHTML(opcoes)}</div>` : ''}
+          ${opcoes.length && cfg.filtro ? '<p class="ui-dlg-nada" hidden>Nada com esse nome.</p>' : ''}
         </div>
         <div class="ui-dlg-pe">
           ${cfg.cancelar === null ? '' : `<button type="button" class="btn ui-dlg-cancelar">${esc(cfg.cancelar || 'Cancelar')}</button>`}
@@ -121,6 +146,27 @@ function montar(cfg: Cfg): Promise<Resultado> {
     dlg.querySelector('.ui-dlg-cancelar')?.addEventListener('click', () => fechar(null));
     dlg.querySelectorAll<HTMLElement>('.ui-dlg-op').forEach((b) =>
       b.addEventListener('click', () => fechar({ ok: true, valores: {}, opcao: b.dataset.v! })));
+
+    // Filtro da lista: esconde o que não casa e, junto, o cabeçalho do grupo que
+    // ficou sem nenhuma opção — senão sobra um título solto no vazio.
+    const filtro = dlg.querySelector<HTMLInputElement>('.ui-dlg-filtro');
+    if (filtro) {
+      const nada = dlg.querySelector<HTMLElement>('.ui-dlg-nada');
+      const itens = [...dlg.querySelectorAll<HTMLElement>('.ui-dlg-ops > *')];
+      filtro.addEventListener('input', () => {
+        const q = filtro.value.trim().toLowerCase();
+        let visiveis = 0, grupo: HTMLElement | null = null, noGrupo = 0;
+        const fechaGrupo = () => { if (grupo) grupo.hidden = noGrupo === 0; };
+        for (const it of itens) {
+          if (it.classList.contains('ui-dlg-grupo')) { fechaGrupo(); grupo = it; noGrupo = 0; continue; }
+          const casa = !q || (it.dataset.busca || '').includes(q);
+          it.hidden = !casa;
+          if (casa) { visiveis++; noGrupo++; }
+        }
+        fechaGrupo();
+        if (nada) nada.hidden = visiveis > 0;
+      });
+    }
     dlg.addEventListener('click', (e) => { if (e.target === dlg) fechar(null); });
     dlg.addEventListener('cancel', () => { saida = null; }); // Esc
     dlg.addEventListener('close', () => {
@@ -201,8 +247,8 @@ export async function uiFormulario(
 export async function uiEscolher(
   titulo: string,
   opcoes: Opcao[],
-  opts: { msg?: string } = {},
+  opts: { msg?: string; filtro?: string } = {},
 ): Promise<string | null> {
-  const r = await montar({ titulo, msg: opts.msg, opcoes, ok: null });
+  const r = await montar({ titulo, msg: opts.msg, opcoes, ok: null, filtro: opts.filtro });
   return r.opcao ?? null;
 }

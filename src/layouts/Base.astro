@@ -87,6 +87,26 @@ if (partes.length) crumbs.push({ label: title });
         if (c.justificar === false) de.dataset.justif = '0';
         if (c.alinha === 'centro') de.dataset.alinha = 'centro';
         if (c.barra && c.barra !== 'fina') de.dataset.barra = c.barra;
+        // paleta editada em /configuracoes: uma folha por tema, antes da primeira pintura,
+        // senão a página abre nas cores de fábrica e troca de cor na cara do leitor.
+        // Espelha cssDasCores() de lib/cores-site.ts — mudar lá, mudar aqui.
+        if (c.cores) {
+          var css = '', seta = { classico: 'accent-strong', escuro: 'accent', legivel: 'accent-strong' };
+          ['classico', 'escuro', 'legivel'].forEach(function (tm) {
+            var m = c.cores[tm]; if (!m) return;
+            var l = [];
+            for (var k in m) if (/^[a-z0-9-]+$/.test(k) && /^#[0-9a-f]{6}$/i.test(m[k])) l.push('--' + k + ':' + m[k]);
+            if (!l.length) return;
+            var s = m[seta[tm]];
+            if (s && /^#[0-9a-f]{6}$/i.test(s)) l.push("--select-arrow:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='" + encodeURIComponent(s) + "' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")");
+            css += "html[data-theme='" + tm + "']{" + l.join(';') + '}\n';
+          });
+          if (css) {
+            var tag = document.createElement('style');
+            tag.id = 'cfg-cores'; tag.textContent = css;
+            document.head.appendChild(tag);
+          }
+        }
       } catch (e) { document.documentElement.dataset.theme = document.documentElement.dataset.theme || 'classico'; }
     })();
   </script>

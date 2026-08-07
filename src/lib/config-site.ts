@@ -8,6 +8,8 @@
 // O usuário pretende usar estes valores para calibrar o PADRÃO futuro do site: o botão
 // "Copiar JSON" da página exporta o estado para virar default depois.
 
+import { aplicarCores, type CoresConfig } from './cores-site';
+
 export type ConfigSite = {
   tema?: 'classico' | 'escuro' | 'legivel';
   /** largura da coluna de texto, em rem (no modo 2 colunas é a largura de CADA coluna) */
@@ -30,6 +32,8 @@ export type ConfigSite = {
   alinha?: 'centro' | 'esquerda';
   /** estilo da barra de rolagem (janela e sidebar) */
   barra?: 'nativa' | 'fina' | 'editorial' | 'dourada' | 'teal';
+  /** cores fora do padrão, por tema: { escuro: { ink: '#e9e5d7' } }. Ver lib/cores-site.ts */
+  cores?: CoresConfig;
 };
 
 /** Padrões DO SITE. Os mesmos valores estão nos fallbacks do global.css, para valerem
@@ -46,6 +50,7 @@ export const CONFIG_PADRAO: Required<ConfigSite> = {
   margem: 3,
   alinha: 'esquerda',
   barra: 'fina',
+  cores: {},           // nenhuma cor fora do que o global.css já define
 };
 
 export const CONFIG_KEY = 'centelha:config';
@@ -89,6 +94,10 @@ export function aplicarConfig(cfg: ConfigSite) {
 
   if (cfg.barra && cfg.barra !== 'fina') de.dataset.barra = cfg.barra;
   else delete de.dataset.barra;
+
+  // a paleta não cabe em variáveis inline no <html>: ela é por tema, e o leitor troca
+  // de tema pelo cabeçalho sem passar por aqui. Vai numa folha de estilo injetada.
+  aplicarCores(cfg.cores);
 
   if (cfg.tema) {
     de.dataset.theme = cfg.tema;
