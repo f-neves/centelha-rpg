@@ -90,12 +90,18 @@ import FormasPop from './FormasPop.astro';
 
 <div class="ftab" data-ftab="equip">
 <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Absorção)</small></h2>
-<p class="equip-nota muted">Na lista de armas, os números são <strong>Velocidade / Acerto / Dano / Defesa</strong>. O <strong>✎</strong> ao lado da peça escolhida abre os valores para edição, para quando o item for de qualidade melhor ou pior que a do catálogo.</p>
+<p class="equip-nota muted">O personagem <strong>possui</strong> peças e <strong>usa</strong> algumas: as armas ficam no arsenal e os conjuntos escolhem entre elas; as armaduras ficam na grade e o botão <strong>Vestir</strong> é o que as faz contar. Cada peça tem identidade própria, então duas cotas de malha de qualidades diferentes são duas peças. O <strong>✎ ajustar</strong> abre os números para quando o item for melhor ou pior que o do catálogo, e o quadro de imagem aceita uma foto sua (é preciso estar logado).</p>
+<div class="eq-bloco-tit">Armas do personagem</div>
+<div id="eq-arsenal" class="eq-pecas"></div>
+
+<div class="eq-bloco-tit">Conjuntos de armas <small>só um fica em uso por vez</small></div>
 <div id="eq-conjuntos"></div>
 <button class="btn" id="add-conjunto" type="button">+ conjunto de armas</button>
-<div class="equip-arm">
-  <span class="equip-lbl">Armaduras <small>(Impacto · Corte · Perfuração (Nível) · Penalidade · empilháveis: vale a maior Absorção de cada modo, penalidades somam)</small></span>
-  <div id="eq-armaduras" class="arm-checks"></div>
+
+<div class="eq-bloco-tit">Armaduras <small>vestidas destacadas · empilháveis</small></div>
+<div class="eq-arm-grid">
+  <div class="eq-abs" id="eq-absorcao"></div>
+  <div id="eq-armaduras" class="eq-pecas"></div>
 </div>
 <div class="equip-bolsas" id="eq-bolsas"></div>
 <div class="panel" id="combate"></div>
@@ -374,21 +380,88 @@ import FormasPop from './FormasPop.astro';
   .fa-tbl th { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); font-weight: 700; }
   /* o thead herda o fundo --accent-strong da regra global; com --ink-soft dava 1,5:1 */
   .fa-tbl thead th { color: var(--on-accent-strong); }
-  .arm-checks { display: grid; gap: .1rem; }
-  .arm-item { display: grid; grid-template-columns: 14rem 1fr auto auto; align-items: center; gap: .1rem 1.1rem; padding: .18rem .4rem; border-radius: var(--r-sm); }
-  .arm-item:nth-of-type(odd) { background: color-mix(in srgb, var(--ink) 4%, transparent); }
-  .arm-item.vestida { background: color-mix(in srgb, var(--accent) 12%, transparent); }
-  .arm-chk { display: inline-flex; align-items: center; gap: .3rem; font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); }
-  .arm-item.vestida .arm-nm { font-weight: 700; }
-  .arm-nums { font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink-soft); justify-self: start; white-space: nowrap; }
-  .arm-item .eq-mod { grid-column: 1 / -1; }
-  @media (max-width: 560px) { .arm-item { grid-template-columns: 1fr auto; } .arm-nums { grid-column: 1 / -1; } }
-  /* linha de números da peça escolhida (arma/escudo) + painel de ajuste */
-  .eq-it { display: flex; align-items: center; gap: .35rem; margin-top: .25rem; }
-  .eq-nums { font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); }
+  /* ---------- Equipamento em peças (arsenal e armaduras) ----------
+     O personagem POSSUI peças e usa algumas: cada peça é um card com imagem própria,
+     números e o botão que a coloca em uso (vestir, ou escolher na mão). */
+  .eq-bloco-tit { display: flex; align-items: center; gap: .6rem; margin: 1.1rem 0 .5rem;
+    font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .1em; color: var(--accent-texto); }
+  .eq-bloco-tit small { font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0; color: var(--ink-soft); }
+  .eq-bloco-tit::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--rule), transparent); }
+
+  .eq-pecas { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr)); gap: .7rem; align-items: start; }
+  .eq-peca { position: relative; display: flex; flex-direction: column; min-width: 0;
+    border: 1px solid var(--panel-border); border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
+  .eq-peca.em-uso, .eq-peca.vestida { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-soft); }
+  .eq-peca-corpo { display: flex; flex-direction: column; gap: .35rem; padding: .5rem .6rem .6rem; flex: 1; }
+  .eq-peca-nome { font-family: 'EB Garamond'; font-size: var(--fs-aux); font-weight: 600; color: var(--ink); }
+  .eq-uso-flag { margin-left: .35rem; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .04em; color: var(--accent-texto); border: 1px solid var(--accent-soft); border-radius: 999px; padding: 0 .35rem; }
+  .eq-rm { position: absolute; top: .3rem; right: .3rem; z-index: 2; background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border: none; border-radius: var(--r-sm); color: var(--perigo); cursor: pointer; font-size: var(--fs-aux); line-height: 1; padding: .1rem .3rem; }
+  .eq-rm:hover { background: var(--perigo-bg); color: var(--on-perigo); }
+  .eq-vestir { margin-top: auto; background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm);
+    color: var(--ink-soft); font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em;
+    padding: .35rem; cursor: pointer; min-height: 34px; }
+  .eq-vestir:hover { border-color: var(--accent); color: var(--accent-texto); }
+  .eq-vestir.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 700; }
+  .eq-nome-in { font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); background: var(--bg);
+    border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .2rem .35rem; min-width: 0; }
+  .eq-vazio { grid-column: 1 / -1; margin: 0; }
+  .eq-add { grid-column: 1 / -1; }
+  .eq-add label { display: flex; flex-direction: column; gap: .2rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
+    text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); min-width: 0; }
+  /* um <select> reserva a largura da MAIOR opção, e as do catálogo são longas
+     ("Placa de transição: Imp 4 · Cor 8 · Perf 3 (N2) · Pen −3"): sem este teto ele
+     empurrava a grade inteira 51px para fora da tela no celular. */
+  .eq-add select, .conj-esc select { width: 100%; min-width: 0; max-width: 100%; }
+
+  /* números da peça em blocos, no lugar da linha "5/+2/1d6/+1" */
+  .eq-nums { display: flex; flex-wrap: wrap; gap: .25rem; }
+  .eq-n { flex: 1 1 3.2rem; min-width: 0; text-align: center; background: var(--bg); border: 1px solid var(--panel-border);
+    border-radius: var(--r-sm); padding: .2rem .1rem; font-family: 'EB Garamond'; font-size: var(--fs-rotulo);
+    font-weight: 700; color: var(--accent-texto); font-variant-numeric: tabular-nums; }
+  .eq-n b { display: block; font-family: 'Cinzel'; font-size: var(--fs-micro); font-weight: 600; text-transform: uppercase;
+    letter-spacing: .04em; color: var(--ink-soft); }
+  .eq-n i { font-style: normal; opacity: .65; font-size: var(--fs-micro); margin-left: .15rem; }
+  .eq-n.def { color: var(--ink); }
+  .eq-n.pen { color: var(--perigo); }
+  .eq-tags { display: flex; flex-wrap: wrap; gap: .25rem; }
+  .eq-tag { font-family: 'EB Garamond'; font-size: var(--fs-micro); color: var(--gold);
+    border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius: 999px; padding: 0 .4rem; }
+
+  /* espaço da imagem: convite quando vazio, a própria arte quando preenchido */
+  .eq-img { position: relative; display: grid; place-items: center; background: var(--bg-soft) center/cover no-repeat;
+    border-bottom: 1px solid var(--panel-border); color: var(--ink-soft); cursor: pointer; overflow: hidden; }
+  .eq-img.arma, .eq-img.escudo { height: 8rem; }
+  .eq-img.armadura { height: 9rem; }
+  span.eq-img { cursor: default; }
+  .eq-img:hover { color: var(--accent-texto); }
+  .eq-img-ph { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .06em; text-align: center; }
+  .eq-img-ph b { display: block; font-size: var(--fs-h3); font-weight: 600; }
+  .eq-img.tem .eq-img-ph { display: none; }
+  .eq-img-rm { position: absolute; bottom: .25rem; right: .25rem; background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border: none; border-radius: var(--r-sm); color: var(--perigo); cursor: pointer; font-size: var(--fs-rotulo); line-height: 1; padding: .05rem .3rem; }
+
+  /* armaduras: painel de absorção ao lado das peças */
+  .eq-arm-grid { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: .8rem; align-items: start; }
+  @media (max-width: 760px) { .eq-arm-grid { grid-template-columns: minmax(0, 1fr); } }
+  .eq-abs { border: 1px solid var(--accent-soft); border-radius: var(--r-lg); background: var(--panel); padding: .6rem .7rem; }
+  .eq-abs h4 { margin: 0 0 .5rem; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .08em; color: var(--accent-texto); }
+  .abs-t { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .3rem;
+    background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .3rem .45rem; }
+  .abs-l { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
+  .abs-l i { display: block; font-style: normal; font-size: var(--fs-micro); opacity: .7; letter-spacing: 0; text-transform: none; }
+  .abs-v { font-family: 'EB Garamond'; font-size: var(--fs-h3); font-weight: 700; color: var(--accent-texto); font-variant-numeric: tabular-nums; }
+  .abs-t.pen { border-color: color-mix(in srgb, var(--perigo) 45%, transparent); }
+  .abs-t.pen .abs-v { color: var(--perigo); }
+  .abs-nota { margin: .4rem 0 0; font-size: var(--fs-micro); }
+
+  /* painel de ajuste dos números (compartilhado por arsenal e armaduras) */
   .eq-flag { display: none; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); border: 1px solid var(--accent-soft); border-radius: 999px; padding: 0 .35rem; white-space: nowrap; }
-  .eq-it.ajustado .eq-flag, .arm-item.ajustado .eq-flag { display: inline-block; }
-  .eq-ed { margin-left: auto; background: none; border: none; color: var(--accent-strong); cursor: pointer; font-size: var(--fs-rotulo); line-height: 1; padding: 0 .15rem; }
+  .eq-peca.ajustado .eq-flag { display: inline-block; }
+  .eq-peca .eq-mod { margin: 0 .6rem .6rem; }
+  .eq-ed { background: none; border: none; color: var(--accent-strong); cursor: pointer; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; line-height: 1; padding: .15rem; text-align: left; }
   .eq-ed:hover { color: var(--accent-texto); }
   .eq-mod[hidden] { display: none; }   /* o display abaixo venceria o atributo hidden */
   .eq-mod { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .4rem; margin: .3rem 0 .15rem; padding: .35rem .45rem; border: 1px dashed var(--panel-border); border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
@@ -412,9 +485,15 @@ import FormasPop from './FormasPop.astro';
   .conj-rm { background: none; border: none; color: #b3401f; cursor: pointer; font-size: var(--fs-aux); line-height: 1; }
   .conj-hands { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
   @media (max-width: 560px) { .conj-hands { grid-template-columns: 1fr; } }
-  .conj-mao { display: flex; flex-direction: column; min-width: 0; }
-  .conj-mao > label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); text-transform: uppercase; letter-spacing: .03em; gap: .2rem; }
-  .conj-nome { margin-top: .25rem; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink); background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .25rem .4rem; }
+  .conj-mao { display: flex; flex-direction: column; gap: .35rem; min-width: 0;
+    background: var(--bg); border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .45rem .5rem; }
+  .conj-mao-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+  .conj-peca { display: flex; gap: .5rem; min-width: 0; }
+  .conj-peca .eq-img { flex: none; width: 4.5rem; height: 5.5rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); }
+  .conj-peca-corpo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .3rem; }
+  .conj-vazia { font-family: 'EB Garamond'; font-size: var(--fs-rotulo); font-style: italic; color: var(--ink-soft); padding: 1.1rem .2rem; text-align: center; }
+  .conj-esc select { width: 100%; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .conj-stats { margin-top: .45rem; font-size: var(--fs-rotulo); color: var(--ink); }
   .conj-stats b { color: var(--accent-strong); font-family: 'Cinzel'; font-size: var(--fs-micro); }
   .conj-req { color: #b3401f; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; }

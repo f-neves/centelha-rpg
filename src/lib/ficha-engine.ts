@@ -115,7 +115,7 @@ export function montarFicha(opts: FichaOpts) {
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [], armMod: {} }, conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoXp('atributo')));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
@@ -138,6 +138,31 @@ export function montarFicha(opts: FichaOpts) {
     return o;
   }
   function mkConjuntos() { return [{ habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' }, ativo: true }]; }
+
+  // ---- posse de equipamento (arsenal de armas e peças de armadura) ----
+  const novoUid = () => 'p' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-3);
+  /** Duas peças são a mesma coisa se têm o mesmo item, os mesmos ajustes e o mesmo nome. */
+  const assinaturaPeca = (p: any) =>
+    [p?.ref, p?.nome || '', JSON.stringify(p?.mod || null), p?.dado ?? '', p?.danoBonus ?? '', p?.acerto ?? ''].join('|');
+  const pecaArsenal = (uid: string) => (S.arsenal || []).find((p: any) => p.uid === uid) || null;
+  /**
+   * Copia os dados da peça do arsenal para dentro do slot da mão.
+   *
+   * O slot guarda `ref`/`mod`/`nome` além do `uid` de propósito: quem lê a ficha de fora
+   * (o rastreador de combate da mesa, via armaDoSlot em equip.ts) só entende esse
+   * formato, e não pode depender do arsenal. O arsenal é a fonte, o slot é a cópia, e
+   * esta função é o único lugar que as reconcilia.
+   */
+  function sincronizarSlots() {
+    (S.conjuntos || []).forEach((cj: any) => (['habil', 'inabil'] as const).forEach((hand) => {
+      const s = cj[hand]; if (!s?.uid) return;
+      const p = pecaArsenal(s.uid);
+      if (!p) { cj[hand] = { ref: hand === 'habil' ? 'a:desarmado' : 'nada' }; return; }
+      cj[hand] = { uid: p.uid, ref: p.ref, ...(p.nome != null ? { nome: p.nome } : {}), ...(p.mod ? { mod: p.mod } : {}),
+        ...(p.dado != null ? { dado: p.dado } : {}), ...(p.danoBonus != null ? { danoBonus: p.danoBonus } : {}),
+        ...(p.acerto != null ? { acerto: p.acerto } : {}) };
+    }));
+  }
   // Especialidade = lista de especialidades NOMEADAS [{s, v}], cada uma com um nível v.
   // Teto por perícia: até [nível/2] especialidades, cada uma até [nível/2] níveis.
   // Converte formatos antigos: número solto e lista de nomes por nível (string[]).
@@ -189,9 +214,33 @@ export function montarFicha(opts: FichaOpts) {
       S.conjuntos = [{ habil: { ref: arma }, inabil: { ref: esc }, ativo: true }];
     }
     delete S.equip.arma; delete S.equip.escudo;
-    if (!S.equip.armMod || typeof S.equip.armMod !== 'object') S.equip.armMod = {};
-    S.conjuntos = S.conjuntos.map((c: any) => ({ habil: normSlot(c?.habil, 'a:desarmado'), inabil: normSlot(c?.inabil, 'nada'), ativo: !!c?.ativo }));
+    S.conjuntos = S.conjuntos.map((c: any) => ({ habil: normSlot(c?.habil, 'a:desarmado'), inabil: normSlot(c?.inabil, 'nada'), ativo: !!c?.ativo, uidH: c?.uidH, uidI: c?.uidI }));
     if (!S.conjuntos.some((c: any) => c.ativo)) S.conjuntos[0].ativo = true;
+
+    // ---- Modelo de POSSE: o personagem tem peças, e usa algumas ----
+    // Armadura deixa de ser "um id do catálogo marcado" e passa a ser uma peça própria,
+    // com identidade (duas cotas de malha de qualidades diferentes são duas peças), nome
+    // editável e imagem. O `armMod`, que era um mapa id→ajustes, entra em cada peça.
+    const modsAntigos = (S.equip.armMod && typeof S.equip.armMod === 'object') ? S.equip.armMod : {};
+    S.equip.armaduras = S.equip.armaduras.map((p: any) => (typeof p === 'string'
+      ? { uid: novoUid(), base: p, mod: modsAntigos[p] ? { ...modsAntigos[p] } : undefined, vestida: true }
+      : { uid: p?.uid || novoUid(), base: p?.base, nome: p?.nome || undefined, mod: p?.mod || undefined,
+          img: p?.img || undefined, vestida: p?.vestida !== false })
+    ).filter((p: any) => ARMADURA[p.base]);
+    delete S.equip.armMod;
+
+    // Arsenal: as armas e escudos que o personagem possui. Nasce do que já estava nos
+    // conjuntos, então nenhuma ficha perde a arma que tinha escolhido.
+    S.arsenal = Array.isArray(S.arsenal) ? S.arsenal.filter((p: any) => p && p.ref).map((p: any) => ({ ...p, uid: p.uid || novoUid() })) : [];
+    S.conjuntos.forEach((cj: any) => (['habil', 'inabil'] as const).forEach((hand) => {
+      const s = cj[hand];
+      if (!s || s.ref === 'nada' || s.ref === 'a:desarmado') return;
+      const achado = S.arsenal.find((p: any) => assinaturaPeca(p) === assinaturaPeca(s));
+      if (achado) { s.uid = achado.uid; return; }
+      const nova = { uid: novoUid(), ref: s.ref, nome: s.nome, mod: s.mod, dado: s.dado, danoBonus: s.danoBonus, acerto: s.acerto };
+      S.arsenal.push(nova); s.uid = nova.uid;
+    }));
+    sincronizarSlots();
     S.bolsas = (Array.isArray(S.bolsas) && S.bolsas.length) ? S.bolsas.map((b: any) => ({ nome: String(b?.nome ?? ''), texto: String(b?.texto ?? '') })) : mkBolsas();
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id] || 0); });
@@ -503,6 +552,77 @@ export function montarFicha(opts: FichaOpts) {
     return `<optgroup label="Armas (Vel/Acerto/Dano/Defesa)">${armas}</optgroup><optgroup label="Escudos">${escudos}</optgroup><option value="nada"${sel === 'nada' ? ' selected' : ''}>Nada</option><option value="c"${sel === 'c' ? ' selected' : ''}>Personalizado…</option>`;
   }
 
+  // ===== Arsenal: as armas e escudos que o personagem POSSUI =====
+  // Os conjuntos de mãos escolhem daqui, não do catálogo inteiro. É o que faz a imagem
+  // pertencer à peça: a mesma espada usada em dois conjuntos mostra a mesma foto.
+  const nomePeca = (p: any) => p.nome || itemDe(p).nome;
+  /** Item improvisado: não tem catálogo, então nome e números são digitados na própria peça. */
+  function improvisado(p: any, ro: boolean) {
+    const dis = ro ? ' disabled' : '';
+    const d = (v: any, def: number) => (v ?? def);
+    return `<input class="eq-nome-in" data-ars-nome="${p.uid}" value="${escapeHtml(p.nome || '')}" placeholder="nome do item"${dis} aria-label="Nome do item improvisado" />
+      <div class="eq-improv">
+        <label>Dado<select data-ars-improv="${p.uid}:dado"${dis}>${[1, 2].map((v) => `<option value="${v}"${d(p.dado, 1) == v ? ' selected' : ''}>${v}d6</option>`).join('')}</select></label>
+        <label>Bônus<select data-ars-improv="${p.uid}:danoBonus"${dis}>${[-2, -1, 0, 1, 2].map((v) => `<option value="${v}"${d(p.danoBonus, 0) == v ? ' selected' : ''}>${v >= 0 ? '+' + v : '−' + Math.abs(v)}</option>`).join('')}</select></label>
+        <label>Acerto<input type="number" data-ars-improv="${p.uid}:acerto" value="${d(p.acerto, -2)}" min="-6" max="6" step="1"${dis} /></label>
+      </div>
+      <span class="eq-improv-nota muted">Frágil: costuma quebrar no 1º ou 2º golpe.</span>`;
+  }
+  /** Espaço da imagem. Sem imagem mostra o convite; com imagem, ela mesma como fundo. */
+  function imgSlot(chave: string, url: string | undefined, classe: string, ro: boolean) {
+    const est = url ? ` style="background-image:url('${escapeHtml(url)}')"` : '';
+    if (ro) return `<span class="eq-img ${classe}${url ? ' tem' : ''}"${est} aria-hidden="${url ? 'false' : 'true'}"></span>`;
+    return `<label class="eq-img ${classe}${url ? ' tem' : ''}"${est} title="${url ? 'Trocar a imagem' : 'Escolher uma imagem'}">
+      <input type="file" accept="image/*" data-eq-img="${chave}" hidden />
+      <span class="eq-img-ph"><b>＋</b>imagem</span>
+      ${url ? `<button type="button" class="eq-img-rm" data-eq-img-rm="${chave}" title="Tirar a imagem" aria-label="Tirar a imagem">×</button>` : ''}
+    </label>`;
+  }
+  function renderArsenal() {
+    const ro = !!opts.readOnly;
+    const cards = (S.arsenal || []).map((p: any) => {
+      const it = itemDe(p), chave = `ars:${p.uid}`;
+      const emUso = (S.conjuntos || []).some((cj: any) => cj.habil?.uid === p.uid || cj.inabil?.uid === p.uid);
+      const campos = it.kind === 'arma' ? CAMPOS_ARMA : it.kind === 'escudo' ? CAMPOS_ESCUDO : null;
+      const ajustada = campos ? temMod(it.base, p.mod, campos) : false;
+      return `<div class="eq-peca${emUso ? ' em-uso' : ''}${ajustada ? ' ajustado' : ''}" data-ars="${p.uid}">
+        ${ro ? '' : `<button type="button" class="eq-rm" data-ars-rm="${p.uid}" title="Descartar esta peça" aria-label="Descartar">×</button>`}
+        ${imgSlot(chave, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', ro)}
+        <div class="eq-peca-corpo">
+          <div class="eq-peca-nome">${escapeHtml(nomePeca(p))}${emUso ? '<span class="eq-uso-flag" title="Está em um conjunto">em uso</span>' : ''}</div>
+          ${it.kind === 'arma' ? statsBlocos(it.w) : it.kind === 'escudo' ? statsBlocosEscudo(it.s) : ''}
+          ${(it.w?.tags || []).length ? `<div class="eq-tags">${it.w.tags.map((t: string) => `<span class="eq-tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+          ${p.ref === 'c' ? improvisado(p, ro) : ''}
+          ${campos && !ro ? `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>` : ''}
+        </div>
+        ${campos ? painelMod(chave, it.base, p.mod, campos, ro) : ''}
+      </div>`;
+    }).join('');
+    const adicionar = ro ? '' : `<div class="eq-add">
+      <label>Adicionar arma ou escudo
+        <select data-ars-add><option value="">escolher do catálogo…</option>${optsItens('')}</select>
+      </label>
+    </div>`;
+    const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armas.' : 'Nenhuma arma ainda: escolha uma no catálogo abaixo.'}</p>`;
+    el('eq-arsenal').innerHTML = (cards || vazio) + adicionar;
+  }
+  /** Os quatro números da arma como blocos, no lugar da linha "5/+2/1d6/+1". */
+  const statsBlocos = (w: any) => `<div class="eq-nums">
+    <span class="eq-n"><b>Veloc.</b>${w.ticks}</span>
+    <span class="eq-n"><b>Acerto</b>${sgn(w.acerto || 0)}</span>
+    <span class="eq-n"><b>Dano</b>${danoStr(w)}</span>
+    <span class="eq-n def"><b>Defesa</b>${sgn(w.defesaArma || 0)}</span></div>`;
+  const statsBlocosEscudo = (s: any) => `<div class="eq-nums">
+    <span class="eq-n def"><b>Defesa</b>${sgn(s.bloqCaC || 0)}</span>
+    <span class="eq-n pen"><b>Penalid.</b>${s.penalidade ? '−' + s.penalidade : '0'}</span>
+    ${s.habilProjetil ? '<span class="eq-n"><b>Projétil</b>hábil</span>' : ''}</div>`;
+  /** Opções de um seletor de mão: só o que o personagem possui. */
+  const optsArsenal = (selUid?: string) => (S.arsenal || []).map((p: any) => {
+    const it = itemDe(p);
+    const nums = it.kind === 'arma' ? statsArma(it.w) : it.kind === 'escudo' ? statsEscudo(it.s) : '';
+    return `<option value="${p.uid}"${selUid === p.uid ? ' selected' : ''}>${escapeHtml(nomePeca(p))}${nums ? ': ' + nums : ''}</option>`;
+  }).join('');
+
   // ===== Ajuste de peça: os números do catálogo viram editáveis =====
   // Serve para a variação de qualidade (uma Espada Longa Ótima, um gambeson puído):
   // a peça continua sendo a do catálogo, só com os valores trocados na ficha.
@@ -516,19 +636,7 @@ export function montarFicha(opts: FichaOpts) {
     return `<div class="eq-mod" data-eq-pan="${chave}"${modAberto.has(chave) ? '' : ' hidden'}>${campos.map((c) => campoMod(chave, c, base, mod, ro)).join('')}` +
       `${ro ? '' : `<button type="button" class="eqm-reset" data-eqm-reset="${chave}">restaurar</button>`}</div>`;
   }
-  const numsItem = (it: any) => (it.kind === 'arma' ? statsArma(it.w) : it.kind === 'escudo' ? statsEscudo(it.s) : '');
   const camposItem = (it: any) => (it.kind === 'arma' ? CAMPOS_ARMA : CAMPOS_ESCUDO);
-  /** Linha de números da peça escolhida, com o botão que abre os campos editáveis. */
-  function linhaItem(i: number, hand: 'habil' | 'inabil', it: any, mod: any, ro: boolean) {
-    if (it.kind !== 'arma' && it.kind !== 'escudo') return '';
-    const chave = `${i}:${hand}`, campos = camposItem(it);
-    const dica = it.kind === 'arma' ? 'Velocidade / Acerto / Dano / Defesa' : 'Defesa · Penalidade';
-    return `<div class="eq-it${temMod(it.base, mod, campos) ? ' ajustado' : ''}" data-eq-it="${chave}">
-        <span class="eq-nums" data-eq-nums="${chave}" title="${dica}">${numsItem(it)}</span>
-        <span class="eq-flag" title="Valores trocados em relação ao catálogo">ajustado</span>
-        <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎</button>
-      </div>${painelMod(chave, it.base, mod, campos, ro)}`;
-  }
   function statsConj(c: any, trava: boolean) {
     const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
     const dano = c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
@@ -547,28 +655,29 @@ export function montarFicha(opts: FichaOpts) {
     const ro = !!opts.readOnly;
     el('eq-conjuntos').innerHTML = (S.conjuntos || []).map((cj: any, i: number) => {
       const c = calcConj(cj); const trava = it2H(c.habil);
-      const custom = (hand: 'habil' | 'inabil') => {
-        const s = cj[hand];
-        if (s?.ref !== 'c') return '';
-        const d = (dv: any, def: number) => (dv ?? def);
-        const dis = ro ? ' disabled' : '';
-        return `<input class="conj-nome" data-conj-nome="${i}:${hand}" value="${escapeHtml(s.nome || '')}" placeholder="nome do item"${dis} />
-          <div class="conj-improv">
-            <label>Dado<select data-conj-improv="${i}:${hand}:dado"${dis}><option value="1"${d(s.dado,1)==1?' selected':''}>1d6</option><option value="2"${d(s.dado,1)==2?' selected':''}>2d6</option></select></label>
-            <label>Bônus<select data-conj-improv="${i}:${hand}:danoBonus"${dis}>${[-2,-1,0,1,2].map(v=>`<option value="${v}"${d(s.danoBonus,0)==v?' selected':''}>${v>=0?'+'+v:'−'+Math.abs(v)}</option>`).join('')}</select></label>
-            <label>Acerto<input type="number" data-conj-improv="${i}:${hand}:acerto" value="${d(s.acerto,-2)}" min="-6" max="6" step="1"${dis} /></label>
-          </div>
-          <span class="conj-improv-nota muted">Frágil: costuma quebrar no 1º ou 2º golpe.</span>`;
-      };
       const mao = (hand: 'habil' | 'inabil') => {
         const rot = hand === 'habil' ? 'Mão hábil' : 'Mão inábil';
         const travada = hand === 'inabil' && trava;
-        const sel = hand === 'habil' ? (cj.habil?.ref || 'a:desarmado') : (travada ? 'nada' : (cj.inabil?.ref || 'nada'));
         const it = hand === 'habil' ? c.habil : c.inabil;
+        const p = travada ? null : (cj[hand]?.uid ? pecaArsenal(cj[hand].uid) : null);
+        const vazioRot = hand === 'habil' ? '— desarmado (briga) —' : '— mão livre —';
+        const corpo = travada
+          ? '<div class="conj-vazia">Ocupada: a arma da mão hábil usa as duas</div>'
+          : p
+            ? `<div class="conj-peca">
+                 ${imgSlot(`ars:${p.uid}`, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', true)}
+                 <div class="conj-peca-corpo">
+                   <div class="eq-peca-nome">${escapeHtml(nomePeca(p))}</div>
+                   ${it.kind === 'arma' ? statsBlocos(it.w) : it.kind === 'escudo' ? statsBlocosEscudo(it.s) : ''}
+                 </div>
+               </div>`
+            : `<div class="conj-vazia">${hand === 'habil' ? 'Desarmado: ataca de briga' : 'Mão livre'}</div>`;
         return `<div class="conj-mao">
-          <label>${rot}<select data-conj-sel="${i}:${hand}"${(ro || travada) ? ' disabled' : ''}>${optsItens(sel)}</select></label>
-          ${travada ? '' : custom(hand)}
-          ${travada ? '' : linhaItem(i, hand, it, cj[hand]?.mod, ro)}
+          <div class="conj-mao-rot">${rot}</div>
+          ${corpo}
+          <label class="conj-esc"><span class="sr-only">${rot}</span><select data-conj-sel="${i}:${hand}"${(ro || travada) ? ' disabled' : ''}>
+            <option value="nada"${!p ? ' selected' : ''}>${vazioRot}</option>${optsArsenal(p?.uid)}
+          </select></label>
         </div>`;
       };
       return `<div class="conjunto${cj.ativo ? ' ativo' : ''}" data-conj="${i}">
@@ -579,20 +688,13 @@ export function montarFicha(opts: FichaOpts) {
       </div>`;
     }).join('');
   }
-  /** Atualiza só os números de um conjunto, sem refazer o HTML (não rouba o foco de quem digita). */
+  /** Atualiza só os totais de um conjunto, sem refazer o HTML (não rouba o foco de quem digita). */
   function refreshConj(i: number) {
     const root = el('eq-conjuntos').querySelector<HTMLElement>(`[data-conj="${i}"]`);
     if (!root || !S.conjuntos[i]) return;
     const c = calcConj(S.conjuntos[i]), trava = it2H(c.habil);
     const st = root.querySelector('.conj-stats'); if (st) st.innerHTML = statsConj(c, trava);
     const dp = root.querySelector('.conj-dupla-wrap'); if (dp) dp.innerHTML = duplaConj(c);
-    (['habil', 'inabil'] as const).forEach((hand) => {
-      const it = hand === 'habil' ? c.habil : c.inabil;
-      const nums = root.querySelector(`[data-eq-nums="${i}:${hand}"]`);
-      if (nums) nums.textContent = numsItem(it);
-      const box = root.querySelector(`[data-eq-it="${i}:${hand}"]`);
-      if (box && (it.kind === 'arma' || it.kind === 'escudo')) box.classList.toggle('ajustado', temMod(it.base, S.conjuntos[i][hand]?.mod, camposItem(it)));
-    });
   }
   function renderDerived() {
     const C = S.centelha, W = S.willpower, integ = SK('integridade');
@@ -722,40 +824,70 @@ export function montarFicha(opts: FichaOpts) {
       svgEl.addEventListener('mouseleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
     }
   }
-  // Armaduras em lista, com as mesmas colunas da tabela de Armaduras em Equipamentos.
+  // Armaduras: as peças que o personagem POSSUI, cada uma com imagem e números próprios.
+  // Vestir é o que faz a peça contar; várias podem estar vestidas ao mesmo tempo (vale a
+  // maior Absorção de cada modo, e as penalidades somam).
+  const pecaArm = (uid: string) => (S.equip.armaduras || []).find((p: any) => p.uid === uid) || null;
   function renderArmaduras() {
     const ro = !!opts.readOnly;
-    const box = el('eq-armaduras');
-    const mods = S.equip.armMod || {};
-    box.innerHTML = ARMADURAS.filter((a) => a.id !== 'nenhuma').map((base) => {
-      const vestida = (S.equip.armaduras || []).includes(base.id);
-      const mod = mods[base.id], chave = `arm:${base.id}`;
-      return `<div class="arm-item${vestida ? ' vestida' : ''}${temMod(base, mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-item="${base.id}">
-        <label class="arm-chk"><input type="checkbox" data-arm="${base.id}"${vestida ? ' checked' : ''}${ro ? ' disabled' : ''}/> <span class="arm-nm">${base.nome}</span></label>
-        <span class="arm-nums" data-arm-nums="${base.id}" title="Absorção de Impacto · Corte · Perfuração (Nível de Resistência) · Penalidade">${statsArmadura(armaduraComMod(base, mod))}</span>
-        <span class="eq-flag" title="Valores trocados em relação ao catálogo">ajustada</span>
-        <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta armadura" aria-expanded="${modAberto.has(chave)}">✎</button>
-        ${painelMod(chave, base, mod, CAMPOS_ARMADURA, ro)}
+    const cards = (S.equip.armaduras || []).map((p: any) => {
+      const base = ARMADURA[p.base]; if (!base) return '';
+      const chave = `arm:${p.uid}`, a = armaduraComMod(base, p.mod);
+      return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${temMod(base, p.mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}">
+        ${ro ? '' : `<button type="button" class="eq-rm" data-arm-rm="${p.uid}" title="Descartar esta peça" aria-label="Descartar">×</button>`}
+        ${imgSlot(chave, p.img, 'armadura', ro)}
+        <div class="eq-peca-corpo">
+          ${ro ? `<div class="eq-peca-nome">${escapeHtml(p.nome || base.nome)}</div>`
+               : `<input class="eq-nome-in" data-arm-nome="${p.uid}" value="${escapeHtml(p.nome || '')}" placeholder="${escapeHtml(base.nome)}" aria-label="Nome desta peça" />`}
+          <div class="eq-nums" data-arm-nums="${p.uid}">
+            <span class="eq-n"><b>Imp</b>${a.soak.impacto}</span>
+            <span class="eq-n"><b>Cor</b>${a.soak.corte}</span>
+            <span class="eq-n"><b>Perf</b>${a.soak.perfuracao}<i>N${a.resistPerf || 0}</i></span>
+            <span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span>
+          </div>
+          ${ro ? '' : `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>`}
+          <button type="button" class="eq-vestir${p.vestida ? ' on' : ''}" data-arm-vestir="${p.uid}"${ro ? ' disabled' : ''}>${p.vestida ? '✓ Vestida' : 'Vestir'}</button>
+        </div>
+        ${painelMod(chave, base, p.mod, CAMPOS_ARMADURA, ro)}
       </div>`;
     }).join('');
-    box.querySelectorAll('input[data-arm]').forEach((cb) => cb.addEventListener('change', (e) => {
-      const t = e.target as HTMLInputElement; const set = new Set<string>(S.equip.armaduras || []);
-      if (t.checked) set.add(t.dataset.arm!); else set.delete(t.dataset.arm!);
-      S.equip.armaduras = [...set];
-      const item = t.closest('.arm-item'); if (item) item.classList.toggle('vestida', t.checked);
-      renderDerived(); renderCombate(); save();
-    }));
+    const adicionar = ro ? '' : `<div class="eq-add">
+      <label>Adicionar armadura
+        <select data-arm-add><option value="">escolher do catálogo…</option>${ARMADURAS.filter((a) => a.id !== 'nenhuma').map((a) => `<option value="${a.id}">${a.nome}: ${statsArmadura(a)}</option>`).join('')}</select>
+      </label>
+    </div>`;
+    const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armaduras.' : 'Nenhuma armadura ainda: escolha uma no catálogo abaixo.'}</p>`;
+    el('eq-armaduras').innerHTML = (cards || vazio) + adicionar;
+    renderAbsorcao();
   }
-  /** Atualiza só a linha de números de uma armadura (sem refazer o HTML). */
-  function refreshArm(id: string) {
-    const base = ARMADURA[id]; if (!base) return;
-    const mod = (S.equip.armMod || {})[id];
-    const nums = el('eq-armaduras').querySelector(`[data-arm-nums="${id}"]`);
-    if (nums) nums.textContent = statsArmadura(armaduraComMod(base, mod));
-    const item = el('eq-armaduras').querySelector(`[data-arm-item="${id}"]`);
-    if (item) item.classList.toggle('ajustado', temMod(base, mod, CAMPOS_ARMADURA));
+  /** Painel de Absorção combinada: o efeito de vestir e tirar peças, ao lado das peças. */
+  function renderAbsorcao() {
+    const box = document.getElementById('eq-absorcao'); if (!box) return;
+    const pecas = pecasArmadura();
+    // empilharArmaduras devolve { soak: {impacto, corte, perfuracao}, resistPerf, penalidade }
+    const st = empilharArmaduras(pecas);
+    const nPerf = st.resistPerf || 0;
+    const t = (rot: string, val: any, sub = '', cls = '') =>
+      `<div class="abs-t${cls ? ' ' + cls : ''}"><span class="abs-l">${rot}${sub ? `<i>${sub}</i>` : ''}</span><span class="abs-v">${val}</span></div>`;
+    box.innerHTML = `<h4>Absorção combinada</h4>` +
+      t('Impacto', st.soak.impacto || 0) + t('Corte', st.soak.corte || 0) +
+      t('Perfuração', st.soak.perfuracao || 0, nPerf ? `Nível N${nPerf}` : '') +
+      t('Penalidade', st.penalidade ? '−' + st.penalidade : '0', '', 'pen') +
+      `<p class="abs-nota muted">${pecas.length ? `${pecas.length} peça${pecas.length > 1 ? 's' : ''} vestida${pecas.length > 1 ? 's' : ''}: vale a maior Absorção de cada modo, as penalidades somam.` : 'Nada vestido.'}</p>`;
+  }
+  /** Atualiza só os números de uma peça de armadura (sem refazer o HTML). */
+  function refreshArm(uid: string) {
+    const p = pecaArm(uid); const base = p && ARMADURA[p.base]; if (!p || !base) return;
+    const a = armaduraComMod(base, p.mod);
+    const nums = el('eq-armaduras').querySelector(`[data-arm-nums="${uid}"]`);
+    if (nums) nums.innerHTML = `<span class="eq-n"><b>Imp</b>${a.soak.impacto}</span><span class="eq-n"><b>Cor</b>${a.soak.corte}</span>` +
+      `<span class="eq-n"><b>Perf</b>${a.soak.perfuracao}<i>N${a.resistPerf || 0}</i></span><span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span>`;
+    const item = el('eq-armaduras').querySelector(`[data-arm-peca="${uid}"]`);
+    if (item) item.classList.toggle('ajustado', temMod(base, p.mod, CAMPOS_ARMADURA));
+    renderAbsorcao();
   }
   function populateEquip() {
+    renderArsenal();
     renderConjuntos();
     renderArmaduras();
     const ro = opts.readOnly ? ' disabled' : '';
@@ -953,64 +1085,178 @@ export function montarFicha(opts: FichaOpts) {
   document.querySelectorAll<HTMLElement>('h2.barh-tog').forEach((h) => h.addEventListener('click', () => {
     const sec = h.dataset.sec!; (S.secCol ||= {}); S.secCol[sec] = !S.secCol[sec]; applySecCol(); if (!opts.readOnly) save();
   }));
+  // ---- Arsenal: adicionar, descartar, renomear, ajustar improvisado ----
+  const redesenhaEquip = () => { renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); save(); };
+  el('eq-arsenal').addEventListener('change', (e) => {
+    if (opts.readOnly) return;
+    const add = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-ars-add]');
+    if (add && add.value) {
+      const ref = add.value;
+      (S.arsenal ||= []).push(ref === 'c' ? { uid: novoUid(), ref, nome: '', dado: 1, danoBonus: 0, acerto: -2 } : { uid: novoUid(), ref });
+      add.value = ''; redesenhaEquip(); return;
+    }
+    const imp = (e.target as HTMLElement).closest<HTMLElement>('[data-ars-improv]');
+    if (imp) {
+      const [uid, campo] = (imp.dataset.arsImprov || '').split(':');
+      const p = pecaArsenal(uid); if (!p) return;
+      p[campo] = Number((imp as HTMLInputElement).value);
+      sincronizarSlots(); redesenhaEquip();
+    }
+  });
+  el('eq-arsenal').addEventListener('input', (e) => {
+    if (opts.readOnly) return;
+    const nm = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-ars-nome]');
+    if (nm) {
+      const p = pecaArsenal(nm.dataset.arsNome!); if (!p) return;
+      p.nome = nm.value; sincronizarSlots();
+      const card = nm.closest('.eq-peca'); const t = card?.querySelector('.eq-peca-nome');
+      if (t) t.textContent = nomePeca(p);
+      renderConjuntos(); renderCombate(); save(); return;
+    }
+    const imp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-ars-improv]');
+    if (imp) {
+      const [uid, campo] = (imp.dataset.arsImprov || '').split(':');
+      const p = pecaArsenal(uid); if (!p) return;
+      p[campo] = Number(imp.value); sincronizarSlots();
+      renderConjuntos(); renderDerived(); renderCombate(); save();
+    }
+  });
+  // ---- Imagem das peças (arsenal e armaduras usam o mesmo par de eventos) ----
+  // A chave do espaço é "ars:<uid>" ou "arm:<uid>", a mesma do painel de ajuste.
+  const pecaPorChave = (chave: string) => {
+    const [tipo, uid] = chave.split(':');
+    return tipo === 'arm' ? pecaArm(uid) : pecaArsenal(uid);
+  };
+  async function trocarImagem(chave: string, file: File) {
+    const p = pecaPorChave(chave); if (!p) return;
+    const { subirImagemItem } = await import('./imagens-item');
+    const r = await subirImagemItem(file, p.uid);
+    if (r.erro) { void uiErro(r.erro); return; }
+    p.img = r.url;
+    renderArsenal(); renderArmaduras(); renderConjuntos(); save();
+  }
+  async function tirarImagem(chave: string) {
+    const p = pecaPorChave(chave); if (!p || !p.img) return;
+    const url = p.img; p.img = undefined;
+    renderArsenal(); renderArmaduras(); renderConjuntos(); save();
+    const { apagarImagemItem } = await import('./imagens-item');
+    void apagarImagemItem(url);
+  }
+  (['eq-arsenal', 'eq-armaduras'] as const).forEach((id) => {
+    el(id).addEventListener('change', (e) => {
+      if (opts.readOnly) return;
+      const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-eq-img]');
+      const f = inp?.files?.[0];
+      if (inp && f) { void trocarImagem(inp.dataset.eqImg!, f); inp.value = ''; }
+    });
+    el(id).addEventListener('click', (e) => {
+      if (opts.readOnly) return;
+      const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-eq-img-rm]');
+      if (!rm) return;
+      e.preventDefault(); e.stopPropagation();   // o botão vive dentro do <label> do arquivo
+      void tirarImagem(rm.dataset.eqImgRm!);
+    });
+  });
+
+  el('eq-arsenal').addEventListener('click', async (e) => {
+    if (opts.readOnly) return;
+    const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-ars-rm]');
+    if (!rm) return;
+    const uid = rm.dataset.arsRm!, p = pecaArsenal(uid); if (!p) return;
+    const usada = (S.conjuntos || []).filter((cj: any) => cj.habil?.uid === uid || cj.inabil?.uid === uid).length;
+    const ok = await uiConfirmar({
+      titulo: 'Descartar peça',
+      texto: `Descartar ${nomePeca(p)}?` + (usada ? ` Ela está em ${usada} conjunto${usada > 1 ? 's' : ''}, que ${usada > 1 ? 'ficam' : 'fica'} com a mão livre.` : ''),
+      confirmar: 'Descartar', perigo: true,
+    });
+    if (!ok) return;
+    S.arsenal = S.arsenal.filter((x: any) => x.uid !== uid);
+    sincronizarSlots(); redesenhaEquip();
+  });
+
   el('eq-conjuntos').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     const sel = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-conj-sel]');
     if (sel) {
       const [i, hand] = sel.dataset.conjSel!.split(':'); const cj = S.conjuntos[+i]; const val = sel.value;
-      const w = val.startsWith('a:') ? ARMA[val.slice(2)] : null;
-      if (hand === 'inabil' && w && w.maos === 2) { cj.habil = { ref: val }; cj.inabil = { ref: 'nada' }; }
-      else { cj[hand] = { ref: val, nome: val === 'c' ? (cj[hand]?.nome || '') : undefined }; if (hand === 'habil' && w && w.maos === 2) cj.inabil = { ref: 'nada' }; }
-      renderConjuntos(); renderDerived(); renderCombate(); save(); return;
+      // o seletor agora entrega o uid de uma peça do arsenal (ou "nada")
+      if (val === 'nada') cj[hand] = { ref: hand === 'habil' ? 'a:desarmado' : 'nada' };
+      else {
+        const p = pecaArsenal(val); if (!p) return;
+        const outra = hand === 'habil' ? 'inabil' : 'habil';
+        // uma peça é um objeto só: se já estava na outra mão deste conjunto, sai de lá
+        if (cj[outra]?.uid === p.uid) cj[outra] = { ref: outra === 'habil' ? 'a:desarmado' : 'nada' };
+        cj[hand] = { uid: p.uid, ref: p.ref };
+        const w = p.ref.startsWith('a:') ? ARMA[p.ref.slice(2)] : null;
+        // arma de duas mãos ocupa as duas: sobe para a hábil e libera a inábil
+        if (w && w.maos === 2) { if (hand === 'inabil') cj.habil = { uid: p.uid, ref: p.ref }; cj.inabil = { ref: 'nada' }; }
+      }
+      sincronizarSlots(); renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); save(); return;
     }
     const uso = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-uso]');
-    if (uso) { const i = +uso.dataset.conjUso!; S.conjuntos.forEach((c: any, j: number) => (c.ativo = j === i)); renderConjuntos(); renderDerived(); renderCombate(); save(); return; }
-    const imp = (e.target as HTMLSelectElement).closest<HTMLSelectElement>('select[data-conj-improv]');
-    if (imp) {
-      const [i, hand, campo] = imp.dataset.conjImprov!.split(':');
-      (S.conjuntos[+i][hand] ||= { ref: 'c' })[campo] = Number(imp.value);
-      renderConjuntos(); renderDerived(); renderCombate(); save();
-    }
+    if (uso) { const i = +uso.dataset.conjUso!; S.conjuntos.forEach((c: any, j: number) => (c.ativo = j === i)); renderConjuntos(); renderDerived(); renderCombate(); save(); }
   });
-  el('eq-conjuntos').addEventListener('input', (e) => {
+  // ---- Armaduras: adicionar, descartar, renomear, vestir ----
+  el('eq-armaduras').addEventListener('change', (e) => {
     if (opts.readOnly) return;
-    const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-nome]');
-    if (inp) { const [i, hand] = inp.dataset.conjNome!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' }).nome = inp.value; renderCombate(); save(); return; }
-    const imp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-improv]');
-    if (imp) { const [i, hand, campo] = imp.dataset.conjImprov!.split(':'); (S.conjuntos[+i][hand] ||= { ref: 'c' })[campo] = Number(imp.value); refreshConj(+i); renderDerived(); renderCombate(); save(); }
-  });
-  // ---- Ajuste de peça: os valores do catálogo, editáveis por peça escolhida ----
-  function alvoMod(chave: string) {
-    const [a, b] = chave.split(':');
-    if (a === 'arm') {
-      const base = ARMADURA[b]; if (!base) return null;
-      return {
-        base, campos: CAMPOS_ARMADURA,
-        mod: () => (S.equip.armMod || {})[b],
-        escreve: (k: string, v: number | null) => {
-          const m = ((S.equip.armMod ||= {})[b] ||= {});
-          if (v == null) delete m[k]; else m[k] = v;
-          if (!Object.keys(m).length) delete S.equip.armMod[b];
-        },
-        limpa: () => { delete (S.equip.armMod || {})[b]; },
-        redesenha: () => refreshArm(b),
-      };
+    const add = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-arm-add]');
+    if (add && add.value) {
+      (S.equip.armaduras ||= []).push({ uid: novoUid(), base: add.value, vestida: true });
+      add.value = ''; renderArmaduras(); renderDerived(); renderCombate(); save();
     }
-    const i = Number(a), hand = b as 'habil' | 'inabil';
-    const cj = S.conjuntos?.[i]; if (!cj || !cj[hand]) return null;
-    const it = itemDe(cj[hand]);
-    if (it.kind !== 'arma' && it.kind !== 'escudo') return null;
-    return {
-      base: it.base, campos: camposItem(it),
-      mod: () => cj[hand].mod,
+  });
+  el('eq-armaduras').addEventListener('input', (e) => {
+    if (opts.readOnly) return;
+    const nm = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-arm-nome]');
+    if (!nm) return;
+    const p = pecaArm(nm.dataset.armNome!); if (!p) return;
+    p.nome = nm.value.trim() || undefined; save();
+  });
+  el('eq-armaduras').addEventListener('click', async (e) => {
+    if (opts.readOnly) return;
+    const vest = (e.target as HTMLElement).closest<HTMLElement>('[data-arm-vestir]');
+    if (vest) {
+      const p = pecaArm(vest.dataset.armVestir!); if (!p) return;
+      p.vestida = !p.vestida;
+      renderArmaduras(); renderDerived(); renderCombate(); save(); return;
+    }
+    const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-arm-rm]');
+    if (!rm) return;
+    const p = pecaArm(rm.dataset.armRm!); if (!p) return;
+    const ok = await uiConfirmar({ titulo: 'Descartar peça', texto: `Descartar ${p.nome || ARMADURA[p.base]?.nome || 'esta armadura'}?`, confirmar: 'Descartar', perigo: true });
+    if (!ok) return;
+    S.equip.armaduras = S.equip.armaduras.filter((x: any) => x.uid !== p.uid);
+    renderArmaduras(); renderDerived(); renderCombate(); save();
+  });
+  // ---- Ajuste de peça: os valores do catálogo, editáveis por peça POSSUÍDA ----
+  // A chave é "arm:<uid>" (peça de armadura) ou "ars:<uid>" (arma ou escudo do arsenal).
+  // O ajuste mora na peça, não no slot da mão: assim a mesma espada em dois conjuntos
+  // carrega os mesmos números, que é o ponto de a peça ter identidade própria.
+  function alvoMod(chave: string) {
+    const [a, uid] = chave.split(':');
+    const guarda = (p: any, base: any, campos: CampoEquip[], redesenha: () => void) => ({
+      base, campos,
+      mod: () => p.mod,
       escreve: (k: string, v: number | null) => {
-        const m = (cj[hand].mod ||= {});
+        const m = (p.mod ||= {});
         if (v == null) delete m[k]; else m[k] = v;
-        if (!Object.keys(m).length) delete cj[hand].mod;
+        if (!Object.keys(m).length) delete p.mod;
+        sincronizarSlots();
       },
-      limpa: () => { delete cj[hand].mod; },
-      redesenha: () => refreshConj(i),
-    };
+      limpa: () => { delete p.mod; sincronizarSlots(); },
+      redesenha,
+    });
+    if (a === 'arm') {
+      const p = pecaArm(uid); const base = p && ARMADURA[p.base]; if (!p || !base) return null;
+      return guarda(p, base, CAMPOS_ARMADURA, () => refreshArm(uid));
+    }
+    if (a === 'ars') {
+      const p = pecaArsenal(uid); if (!p) return null;
+      const it = itemDe(p);
+      if (it.kind !== 'arma' && it.kind !== 'escudo') return null;
+      return guarda(p, it.base, camposItem(it), () => { renderArsenal(); renderConjuntos(); });
+    }
+    return null;
   }
   function ligarAjustes(box: HTMLElement) {
     box.addEventListener('click', (e) => {
@@ -1044,7 +1290,7 @@ export function montarFicha(opts: FichaOpts) {
       alvo.redesenha(); renderDerived(); renderCombate(); save();
     });
   }
-  ligarAjustes(el('eq-conjuntos'));
+  ligarAjustes(el('eq-arsenal'));
   ligarAjustes(el('eq-armaduras'));
   el('eq-conjuntos').addEventListener('click', (e) => {
     if (opts.readOnly) return;

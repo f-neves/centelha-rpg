@@ -97,13 +97,26 @@ export function escudoDoSlot(slot: any) {
   const b = ESCUDO[ref.slice(2)];
   return b ? escudoComMod(b, slot?.mod) : null;
 }
-/** Peças de armadura vestidas (já ajustadas), na ordem do catálogo. */
+/**
+ * Peças de armadura VESTIDAS, já ajustadas.
+ *
+ * Aceita os dois formatos, porque o rastreador de combate da mesa lê fichas gravadas
+ * antes da mudança e elas continuam válidas:
+ *   antigo: equip.armaduras = ['gambeson', 'cota-de-malha']  (ids do catálogo, todas vestidas)
+ *   novo:   equip.armaduras = [{ uid, base, nome?, mod?, img?, vestida }]  (o que o personagem POSSUI)
+ */
 export function armadurasDe(S: any) {
+  const lista = S?.equip?.armaduras || [];
   const mods = S?.equip?.armMod || {};
-  return (S?.equip?.armaduras || [])
-    .map((id: string) => ARMADURA[id])
-    .filter(Boolean)
-    .map((a: any) => armaduraComMod(a, mods[a.id]));
+  return lista
+    .map((p: any) => {
+      if (typeof p === 'string') { const b = ARMADURA[p]; return b ? armaduraComMod(b, mods[p]) : null; }
+      if (!p || p.vestida === false) return null;
+      const b = ARMADURA[p.base]; if (!b) return null;
+      const a = armaduraComMod(b, p.mod);
+      return p.nome ? { ...a, nome: p.nome } : a;
+    })
+    .filter(Boolean);
 }
 
 export const sinalNum = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
