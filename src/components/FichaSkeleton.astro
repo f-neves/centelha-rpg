@@ -233,10 +233,22 @@ import FormasPop from './FormasPop.astro';
   /* Habilidades: cada grupo pega a largura toda e se abre em três colunas próprias, em
      vez de os grupos disputarem três colunas fixas. O `grid-auto-flow: column` sobre um
      número fixo de linhas (--linhas, calculado no render) é o que faz a ordem alfabética
-     DESCER cada coluna em vez de atravessar a linha. */
+     DESCER cada coluna em vez de atravessar a linha.
+
+     O grid-auto-columns é o que mantém as três do mesmo tamanho: sem ele as colunas são
+     implícitas e ficam `auto`, isto é, cada uma cresce até o nome mais longo que calhou
+     nela (Conhecimentos Gerais alargava a primeira, Prestidigitação a segunda), e a
+     largura mudava de grupo para grupo, de 270 a 342px. */
   .hgrupo { break-inside: avoid; }
-  .hgrid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(var(--linhas, 1), auto); gap: .3rem 1.6rem; }
-  @media (max-width: 760px) { .hgrid { grid-auto-flow: row; grid-template-rows: none; } }
+  .hgrid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(var(--l3, 1), auto);
+    grid-auto-columns: minmax(0, 1fr); gap: .3rem 1.6rem; }
+  /* Três degraus, porque a linha "nome + pontos + especialidade" tem largura mínima real:
+     abaixo de ~290px por coluna ela dobra de altura e empurra a página. Entre 901 e
+     1279px a Ficha já voltou ao modo desktop mas só tem ~590px de conteúdo, e ali três
+     colunas geravam 134px de rolagem horizontal. Abaixo de 900px a Ficha vira painel de
+     abas e a coluna única é a leitura certa. */
+  @media (max-width: 1279px) { .hgrid { grid-template-rows: repeat(var(--l2, 1), auto); } }
+  @media (max-width: 900px) { .hgrid { grid-auto-flow: row; grid-template-rows: none; } }
 
   .trow { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .12rem 0; }
   .trow .nm { font-size: var(--fs-aux); cursor: help; } .trow .nm:hover { text-decoration: underline dotted var(--accent-soft); }

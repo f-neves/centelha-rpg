@@ -301,8 +301,13 @@ export function montarFicha(opts: FichaOpts) {
   // colunas. A ordem alfabética DESCE cada coluna (Armas · Arremesso | Atirador ·
   // Bloqueio | Briga · Esquiva), e não atravessa a linha: por isso as linhas são fixas
   // e o preenchimento é por coluna. Com contagem não divisível por 3 sobra na última.
-  const grupoHTML = (titulo: string, linhas: string[]) =>
-    `<section class="hgrupo"><h3>${titulo}</h3><div class="hgrid" style="--linhas:${Math.max(1, Math.ceil(linhas.length / 3))}">${linhas.join('')}</div></section>`;
+  // --l3 e --l2: quantas linhas o grupo ocupa em três e em duas colunas. Vão os dois
+  // porque a contagem de linhas é o que define o número de colunas nesta técnica, e o
+  // CSS sozinho não sabe dividir a quantidade de itens.
+  const grupoHTML = (titulo: string, linhas: string[]) => {
+    const n = Math.max(1, linhas.length);
+    return `<section class="hgrupo"><h3>${titulo}</h3><div class="hgrid" style="--l3:${Math.ceil(n / 3)};--l2:${Math.ceil(n / 2)}">${linhas.join('')}</div></section>`;
+  };
 
   function renderSkills() {
     const groups: Record<string, any[]> = { Combate: [], Físicas: [], Sociais: [], Saber: [], Técnicas: [] };
