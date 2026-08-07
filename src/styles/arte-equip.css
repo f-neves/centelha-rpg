@@ -1,0 +1,65 @@
+/* Arte de armas, armaduras e escudos. GERADO por scripts/gen-arte-equip.mjs
+   a partir de scripts/folhas-ia.json e das folhas retificadas. Não editar:
+   mexer no plano, rodar o retificador e gerar de novo. */
+
+/* O quadro se vira sozinho com a largura que o card der. */
+.eq-arte { display: block; width: min(100%, var(--arte-w));
+  aspect-ratio: var(--arte-ar); background-repeat: no-repeat; }
+
+/* Quanto a peça pode ocupar em cada lugar da ficha. */
+.eq-img.arma { --arte-ar: 320 / 640; --arte-w: 160px; }
+.eq-img.armadura { --arte-ar: 448 / 672; --arte-w: 320px; }
+.eq-img.escudo { --arte-ar: 512 / 512; --arte-w: 320px; }
+/* espelho pequeno do conjunto de mãos */
+.conj-peca .eq-img.arma { --arte-w: 44px; }
+.conj-peca .eq-img.escudo { --arte-w: 88px; }
+
+/* Lâminas e machados: 9 peças, grade 3×3, célula 320×640px */
+.arte-adaga { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 0% 0%; }
+.arte-adaga-de-arremesso { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 50% 0%; }
+.arte-espada-curta { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 100% 0%; }
+.arte-espada-longa { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 0% 50%; }
+.arte-espada-serrilhada { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 50% 50%; }
+.arte-montante { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 100% 50%; }
+.arte-machado { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 0% 100%; }
+.arte-machado-de-arremesso { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 50% 100%; }
+.arte-picareta-de-guerra { background-image: url('../assets/equipamento/laminas.webp'); background-size: 300% 300%; background-position: 100% 100%; }
+
+/* Impacto, haste e arremesso: 8 peças, grade 4×2, célula 320×640px */
+.arte-maca { background-image: url('../assets/equipamento/haste.webp'); background-size: 400% 200%; background-position: 0% 0%; }
+.arte-martelo-de-guerra { background-image: url('../assets/equipamento/haste.webp'); background-size: 400% 200%; background-position: 33.3333% 0%; }
+.arte-lanca { background-image: url('../assets/equipamento/haste.webp'); background-size: 400% 200%; background-position: 66.6667% 0%; }
+.arte-alabarda { background-image: url('../assets/equipamento/haste.webp'); background-size: 400% 200%; background-position: 100% 0%; }
+.arte-azagaia { background-image: url('../assets/equipamento/haste.webp'); background-size: 400% 200%; background-position: 0% 100%; }
+.arte-pilum { background-image: url('../assets/equipamento/haste.webp'); background-size: 400% 200%; background-position: 33.3333% 100%; }
+.arte-funda { background-image: url('../assets/equipamento/haste.webp'); background-size: 400% 200%; background-position: 66.6667% 100%; }
+.arte-dardos { background-image: url('../assets/equipamento/haste.webp'); background-size: 400% 200%; background-position: 100% 100%; }
+
+/* Armas de distância: 8 peças, grade 4×2, célula 320×640px */
+.arte-arco-curto { background-image: url('../assets/equipamento/distancia.webp'); background-size: 400% 200%; background-position: 0% 0%; }
+.arte-arco-longo { background-image: url('../assets/equipamento/distancia.webp'); background-size: 400% 200%; background-position: 33.3333% 0%; }
+.arte-arco-composto { background-image: url('../assets/equipamento/distancia.webp'); background-size: 400% 200%; background-position: 66.6667% 0%; }
+.arte-besta-pequena { background-image: url('../assets/equipamento/distancia.webp'); background-size: 400% 200%; background-position: 100% 0%; }
+.arte-besta-media { background-image: url('../assets/equipamento/distancia.webp'); background-size: 400% 200%; background-position: 0% 100%; }
+.arte-besta-grande { background-image: url('../assets/equipamento/distancia.webp'); background-size: 400% 200%; background-position: 33.3333% 100%; }
+.arte-bumerangue { background-image: url('../assets/equipamento/distancia.webp'); background-size: 400% 200%; background-position: 66.6667% 100%; }
+.arte-rede { background-image: url('../assets/equipamento/distancia.webp'); background-size: 400% 200%; background-position: 100% 100%; }
+
+/* Armaduras: 8 peças, grade 4×2, célula 448×672px */
+.arte-gambeson { background-image: url('../assets/equipamento/armaduras.webp'); background-size: 400% 200%; background-position: 0% 0%; }
+.arte-couro { background-image: url('../assets/equipamento/armaduras.webp'); background-size: 400% 200%; background-position: 33.3333% 0%; }
+.arte-malha { background-image: url('../assets/equipamento/armaduras.webp'); background-size: 400% 200%; background-position: 66.6667% 0%; }
+.arte-brigandina { background-image: url('../assets/equipamento/armaduras.webp'); background-size: 400% 200%; background-position: 100% 0%; }
+.arte-lamelar { background-image: url('../assets/equipamento/armaduras.webp'); background-size: 400% 200%; background-position: 0% 100%; }
+.arte-placa-transicao { background-image: url('../assets/equipamento/armaduras.webp'); background-size: 400% 200%; background-position: 33.3333% 100%; }
+.arte-placa-municao { background-image: url('../assets/equipamento/armaduras.webp'); background-size: 400% 200%; background-position: 66.6667% 100%; }
+.arte-placa-completa { background-image: url('../assets/equipamento/armaduras.webp'); background-size: 400% 200%; background-position: 100% 100%; }
+
+/* Escudos: 7 peças, grade 4×2, célula 512×512px */
+.arte-broquel { background-image: url('../assets/equipamento/escudos.webp'); background-size: 400% 200%; background-position: 0% 0%; }
+.arte-targe { background-image: url('../assets/equipamento/escudos.webp'); background-size: 400% 200%; background-position: 33.3333% 0%; }
+.arte-redondo { background-image: url('../assets/equipamento/escudos.webp'); background-size: 400% 200%; background-position: 66.6667% 0%; }
+.arte-heater { background-image: url('../assets/equipamento/escudos.webp'); background-size: 400% 200%; background-position: 100% 0%; }
+.arte-kite { background-image: url('../assets/equipamento/escudos.webp'); background-size: 400% 200%; background-position: 0% 100%; }
+.arte-scutum { background-image: url('../assets/equipamento/escudos.webp'); background-size: 400% 200%; background-position: 33.3333% 100%; }
+.arte-paves { background-image: url('../assets/equipamento/escudos.webp'); background-size: 400% 200%; background-position: 66.6667% 100%; }

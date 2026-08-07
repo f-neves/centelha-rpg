@@ -68,7 +68,8 @@
           "desc": "a horseman's war pick: long curved steel spike opposite a small square hammer face, steel haft with a disc guard"
         }
       ],
-      "altura_tela": 320
+      "altura_tela": 320,
+      "classe": "arma"
     },
     {
       "id": "haste",
@@ -123,7 +124,8 @@
           "desc": "three weighted throwing darts in a tight group, heavy iron heads, slim shafts, fletched tails"
         }
       ],
-      "altura_tela": 320
+      "altura_tela": 320,
+      "classe": "arma"
     },
     {
       "id": "distancia",
@@ -178,7 +180,8 @@
           "desc": "a fighting net: knotted mesh gathered and hanging loose, small lead weights strung around its rim, a gathering cord"
         }
       ],
-      "altura_tela": 320
+      "altura_tela": 320,
+      "classe": "arma"
     },
     {
       "id": "armaduras",
@@ -233,7 +236,8 @@
           "desc": "a full plate harness: complete articulated white armour head to foot, visored armet, fluted breastplate, pauldrons, couters, cuisses, sabatons"
         }
       ],
-      "altura_tela": 480
+      "altura_tela": 480,
+      "classe": "armadura"
     },
     {
       "id": "escudos",
@@ -283,7 +287,8 @@
           "desc": "a pavise: tall rectangular archer's shield, a vertical ridge running down its centre, painted face, flat top and bottom"
         }
       ],
-      "altura_tela": 320
+      "altura_tela": 320,
+      "classe": "escudo"
     }
   ]
 }
