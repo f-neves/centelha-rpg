@@ -61,6 +61,52 @@ def faixas(perfil, limiar):
     return saida
 
 
+def corta_em_grupos(valores, quantos):
+    """Separa valores em `quantos` grupos, cortando nos maiores vazios.
+
+    Serve para descobrir onde ficam as colunas (e as linhas) da folha a partir do
+    centro dos objetos, sem supor que a IA dividiu a imagem em partes iguais."""
+    if quantos <= 1 or len(valores) <= 1:
+        return [min(valores) - 1] if valores else []
+    ordenados = sorted(valores)
+    vaos = sorted(range(len(ordenados) - 1),
+                  key=lambda i: ordenados[i + 1] - ordenados[i], reverse=True)
+    cortes = sorted(vaos[:quantos - 1])
+    return [(ordenados[i] + ordenados[i + 1]) / 2 for i in cortes]
+
+
+def agrupa_por_celula(caixas, cols, lins):
+    """Junta os objetos soltos na célula da grade a que pertencem.
+
+    Uma peça do sistema nem sempre é um desenho só: a funda saiu como bolsa mais
+    corda, os dardos como três dardos separados. Contar objeto daria 10 onde a
+    folha tem 8. Então descubro a grade pelos centros e ajunto o que cair no
+    mesmo quadro."""
+    centros_x = [(c[0] + c[2]) / 2 for c in caixas]
+    centros_y = [(c[1] + c[3]) / 2 for c in caixas]
+    limites_x = corta_em_grupos(centros_x, cols)
+    limites_y = corta_em_grupos(centros_y, lins)
+
+    def indice(v, limites):
+        i = 0
+        for lim in limites:
+            if v > lim:
+                i += 1
+        return i
+
+    celulas = {}
+    for caixa, cx, cy in zip(caixas, centros_x, centros_y):
+        chave = (indice(cy, limites_y), indice(cx, limites_x))
+        if chave in celulas:
+            a, b, c, d = celulas[chave]
+            celulas[chave] = (min(a, caixa[0]), min(b, caixa[1]),
+                              max(c, caixa[2]), max(d, caixa[3]))
+        else:
+            celulas[chave] = tuple(caixa)
+    # ordem de leitura: linha de cima para baixo, coluna da esquerda para a direita
+    return [celulas[k] for k in sorted(celulas)], celulas
+
+
 def acha_pecas(mascara, esperadas):
     """Separa as peças pelos corredores de fundo: primeiro as linhas, depois as
     colunas dentro de cada linha. Aceita grade torta, desde que os corredores
@@ -84,26 +130,32 @@ def acha_pecas(mascara, esperadas):
     return caixas
 
 
-def alfa_por_cor(bloco, cor_fundo):
-    """Alfa a partir da distância até a cor do fundo, com rampa nas bordas."""
-    d = np.sqrt(((bloco.astype(np.float32) - cor_fundo) ** 2).sum(axis=2))
-    return np.clip((d - TOL_FUNDO) / (TOL_DURO - TOL_FUNDO), 0, 1)
+def separa_do_fundo(bloco, cor_fundo):
+    """Devolve (cor da peça, alfa) desfazendo a mistura com o fundo.
 
+    O gerador entrega a peça já misturada ao magenta em toda borda e em todo
+    traço fino: o pixel de uma malha de rede é meia tinta e meio fundo. Tratar
+    isso como opaco pinta a rede de roxo, que foi o que aconteceu na primeira
+    versão daqui (41% dos pixels da rede com cast de magenta).
 
-def tira_verde_do_fundo(rgb, cor_fundo):
-    """Tira o eco da cor do fundo que fica na franja da peça.
+    Então a conta é a da chave de cor: o que se vê é `obs = a·peça + (1−a)·fundo`.
+    A distância até o fundo, normalizada pela distância típica da tinta, dá o `a`;
+    com ele em mãos, inverter a mistura devolve a cor real da peça."""
+    obs = bloco.astype(np.float32)
+    d = np.sqrt(((obs - cor_fundo) ** 2).sum(axis=2))
 
-    A borda da peça sai misturada com o fundo pela suavização do gerador, e a
-    peça acaba com um contorno rosado que aparece feio sobre o fundo do site.
-    Puxo o canal exagerado de volta para a média dos outros dois."""
-    saida = rgb.astype(np.float32)
-    dominante = int(np.argmax(cor_fundo))          # magenta domina R e B
-    canais = [c for c in range(3) if c != dominante]
-    for c in ([0, 2] if cor_fundo[0] > 100 and cor_fundo[2] > 100 else [dominante]):
-        outros = [k for k in range(3) if k != c]
-        teto = saida[:, :, outros].mean(axis=2)
-        saida[:, :, c] = np.minimum(saida[:, :, c], teto + 12)
-    return np.clip(saida, 0, 255).astype(np.uint8)
+    # referência: o quanto a tinta desta peça se afasta do fundo. Sai do miolo,
+    # onde não há mistura nenhuma, e não de um número fixo.
+    miolo = d > max(d.max() * 0.7, TOL_DURO)
+    d_tinta = float(np.median(d[miolo])) if miolo.any() else max(d.max(), 1.0)
+
+    alfa = np.clip(d / (d_tinta * 0.85), 0, 1)
+    alfa[d < TOL_FUNDO] = 0            # ruído de compressão no fundo não vira peça
+
+    # inverte a mistura. O piso no divisor evita estourar onde quase não há peça.
+    a = np.maximum(alfa, 0.22)[:, :, None]
+    peca = (obs - (1 - a) * cor_fundo) / a
+    return np.clip(peca, 0, 255).astype(np.uint8), alfa
 
 
 def encaixa(peca, celula):
@@ -136,14 +188,17 @@ def retificar(folha_id, caminho_imagem, aplicar=False):
     dist = np.sqrt(((a.astype(np.float32) - cor_fundo) ** 2).sum(axis=2))
     mascara = dist > TOL_FUNDO
 
-    caixas = acha_pecas(mascara, len(ids))
+    objetos = acha_pecas(mascara, len(ids))
+    caixas, celulas = agrupa_por_celula(objetos, cols, lins)
     if len(caixas) != len(ids):
+        ocupadas = sorted(celulas)
         print(json.dumps({
             "ok": False,
-            "motivo": f"achei {len(caixas)} peças, a folha '{folha_id}' pede {len(ids)}",
-            "dica": "duas peças encostaram uma na outra, ou o fundo não ficou chapado. "
-                    "Sai mais barato gerar a folha de novo do que remendar.",
-            "caixas": [[int(v) for v in c] for c in caixas],
+            "motivo": f"achei {len(caixas)} quadros ocupados, a folha '{folha_id}' pede {len(ids)}",
+            "dica": "peças de células vizinhas encostaram, ou a grade saiu torta demais "
+                    "para ser lida. Sai mais barato gerar a folha de novo do que remendar.",
+            "objetos_soltos": len(objetos),
+            "celulas_ocupadas": [[int(l), int(c)] for l, c in ocupadas],
             "cor_fundo": [int(v) for v in cor_fundo],
         }, ensure_ascii=False))
         return False
@@ -156,8 +211,7 @@ def retificar(folha_id, caminho_imagem, aplicar=False):
     for i, (caixa, peca_id) in enumerate(zip(caixas, ids)):
         x0, y0, x1, y1 = caixa
         bloco = a[y0:y1, x0:x1]
-        alfa = alfa_por_cor(bloco, cor_fundo)
-        rgb = tira_verde_do_fundo(bloco, cor_fundo)
+        rgb, alfa = separa_do_fundo(bloco, cor_fundo)
         recorte = Image.fromarray(np.dstack([rgb, (alfa * 255).astype(np.uint8)]), "RGBA")
         caixa_apertada = recorte.getbbox()
         if caixa_apertada:
@@ -172,15 +226,23 @@ def retificar(folha_id, caminho_imagem, aplicar=False):
                      "x": col * cw, "y": lin * ch, "largura": cw, "altura": ch})
 
     atlas.save(saida / f"{folha_id}.png")
-    # o webp é o que vai para o site: atlas grande em png pesa demais
-    atlas.save(saida / f"{folha_id}.webp", quality=88, method=6)
+    # o webp é o que vai para o site: atlas grande em png pesa demais. 80 é onde
+    # a gravura para de ganhar nitidez visível e o arquivo ainda cai bem.
+    atlas.save(saida / f"{folha_id}.webp", quality=80, method=6)
 
-    # o site mostra a metade do atlas (a célula é o dobro, para tela retina)
-    css = [f"/* Folha {folha_id}: {len(ids)} peças, célula {cw//2}×{ch//2}px na tela */",
+    # A escala vem da altura do quadro na ficha, não de um divisor fixo: as células
+    # não têm todas a mesma densidade, porque cada uma foi limitada ao que a arte
+    # gerada aguentava sem ser ampliada à força.
+    alvo = folha.get("altura_tela", ch // 2)
+    escala = alvo / ch
+    px = lambda v: f"{round(v * escala, 2):g}"
+    css = [f"/* Folha {folha_id}: {len(ids)} peças. Célula {cw}×{ch}px no arquivo,",
+           f"   exibida a {px(cw)}×{px(ch)}px ({ch / alvo:.2f}× de densidade). */",
            f".eq-folha-{folha_id} {{ background-image: url('{folha_id}.webp');",
-           f"  background-size: {cw * cols // 2}px {ch * lins // 2}px; background-repeat: no-repeat; }}"]
+           f"  background-size: {px(cw * cols)}px {px(ch * lins)}px;",
+           f"  background-repeat: no-repeat; width: {px(cw)}px; height: {px(ch)}px; }}"]
     for m in mapa:
-        css.append(f".eq-{m['id']} {{ background-position: -{m['x']//2}px -{m['y']//2}px; }}")
+        css.append(f".eq-{m['id']} {{ background-position: -{px(m['x'])}px -{px(m['y'])}px; }}")
     (saida / f"{folha_id}.css").write_text("\n".join(css) + "\n", encoding="utf8")
     (saida / f"{folha_id}.json").write_text(json.dumps({
         "folha": folha_id, "colunas": cols, "linhas": lins,

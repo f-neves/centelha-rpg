@@ -26,12 +26,49 @@ const museu = relatorio.filter((r) => r.fonte === 'MET');
 const icones = relatorio.filter((r) => r.fonte === 'ícone');
 const faltando = relatorio.filter((r) => r.fonte !== 'MET' && r.fonte !== 'ícone');
 
+// Quando a arte de IA é instalada, o acervo de museu vai para acervo-museu/ e
+// deixa de ser o que a pasta principal mostra. O crédito tem de dizer isso, ou
+// atribui a peça errada à fonte errada.
+const trocado = existsSync(resolve(PASTA, 'acervo-museu'));
+const planoIA = resolve(raiz, 'scripts/folhas-ia.json');
+const folhas = existsSync(planoIA) && existsSync(resolve(PASTA, 'folhas'))
+  ? JSON.parse(readFileSync(planoIA, 'utf8')).folhas.filter(
+      (f) => existsSync(resolve(PASTA, 'folhas', f.id)))
+  : [];
+
 const out = [];
 out.push('# Créditos das imagens');
 out.push('');
 out.push('Gerado por `scripts/gen-creditos-equip.mjs`. Não editar à mão.');
 out.push('');
+
+if (folhas.length) {
+  const nIA = folhas.reduce((s, f) => s + f.pecas.length, 0);
+  out.push('## Arte em uso na pasta principal · gerada por IA');
+  out.push('');
+  out.push(`${nIA} peças em estilo de gravura, geradas por IA a partir dos prompts de`);
+  out.push('`prompts-ia.md` e endireitadas por `scripts/retificar_folha.py`. Não há');
+  out.push('terceiro a creditar: nenhuma obra alheia foi copiada. As folhas cruas ficam');
+  out.push('em `folhas/<folha>/bruta.png`, junto do atlas e do mapa de células.');
+  out.push('');
+  out.push('| Folha | Peças | Atlas |');
+  out.push('| --- | --- | --- |');
+  for (const f of folhas) {
+    out.push(`| \`${f.id}\` · ${f.titulo} | ${f.pecas.map((p) => p.nome).join(', ')} `
+      + `| \`folhas/${f.id}/${f.id}.webp\` |`);
+  }
+  out.push('');
+}
+
+out.push(trocado
+  ? `## Acervo anterior, guardado em \`acervo-museu/\``
+  : '## Acervo em uso');
+out.push('');
 out.push(`${relatorio.length} peças: ${museu.length} de foto de museu, ${icones.length} de ícone.`);
+if (trocado) {
+  out.push('Saiu da pasta principal quando a arte de IA entrou, mas continua aqui:');
+  out.push('a exigência de atribuição do game-icons.net vale enquanto os arquivos existirem.');
+}
 out.push('');
 out.push('## Se estas imagens forem para o site');
 out.push('');

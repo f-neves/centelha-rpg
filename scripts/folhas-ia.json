@@ -1,5 +1,5 @@
 {
-  "_nota": "Plano das folhas de arte gerada por IA. Fonte única do gerador de prompts (gen-prompts-folhas.mjs) e do retificador (retificar_folha.py). A célula é o tamanho FINAL do quadro no atlas, em pixels, já no dobro do tamanho de tela: a ficha mostra arma e escudo a 20rem (320px) e armadura a 30rem (480px), e o dobro cobre tela retina. `desc` é a descrição visual que vai no prompt, em inglês, porque é a língua em que os geradores erram menos.",
+  "_nota": "Plano das folhas de arte gerada por IA. Fonte única do gerador de prompts (gen-prompts-folhas.mjs) e do retificador (retificar_folha.py). A célula é o tamanho FINAL do quadro no atlas, em pixels. A ficha mostra arma e escudo a 20rem (320px) e armadura a 30rem (480px); a célula fica acima disso para cobrir tela retina, mas limitada ao que a arte gerada aguenta: ampliar a peça além de ~1,3× só inventa pixel e engorda o arquivo. Por isso a armadura tem célula de 448×672 e não 640×960: a folha gerada entrega ~280×442 por armadura. `desc` é a descrição visual que vai no prompt, em inglês, porque é a língua em que os geradores erram menos.",
   "estilo": {
     "nome": "gravura medieval",
     "prompt": "16th-century European copperplate engraving; fine burin lines, dense cross-hatching and stipple for shading; monochrome sepia ink on plain ground; crisp contours, no colour wash; the precise draughtsmanship of an armourer's pattern book",
@@ -15,95 +15,275 @@
       "titulo": "Lâminas e machados",
       "colunas": 3,
       "linhas": 3,
-      "celula": [320, 640],
+      "celula": [
+        320,
+        640
+      ],
       "proporcao": "1:2 (retrato)",
       "orientacao": "Every object stands upright and vertical, point or blade uppermost, seen from the side, its full length visible.",
       "pecas": [
-        { "id": "adaga", "nome": "Adaga", "desc": "a rondel dagger: straight narrow stiff blade, plain disc pommel and disc guard, ribbed grip" },
-        { "id": "adaga-de-arremesso", "nome": "Adaga de Arremesso", "desc": "three slender throwing knives fanned in a tight group, plain flat leaf blades, no crossguard, bare tang grips" },
-        { "id": "espada-curta", "nome": "Espada Curta", "desc": "an arming sword: short straight double-edged blade, cruciform crossguard, wheel pommel, wire-wrapped grip" },
-        { "id": "espada-longa", "nome": "Espada Longa", "desc": "a hand-and-a-half longsword: long straight double-edged blade with a fuller, cruciform crossguard, scent-stopper pommel, long grip for two hands" },
-        { "id": "espada-serrilhada", "nome": "Espada Serrilhada", "desc": "a two-handed sword whose blade carries a row of saw teeth along one edge, the other edge plain, simple cruciform hilt" },
-        { "id": "montante", "nome": "Montante", "desc": "a montante greatsword: very long broad blade, long unsharpened ricasso with parrying lugs and side rings, long two-hand grip, heavy pommel" },
-        { "id": "machado", "nome": "Machado", "desc": "a one-handed war axe: broad bearded crescent blade on a straight wooden haft, iron langets down the shaft" },
-        { "id": "machado-de-arremesso", "nome": "Machado de Arremesso", "desc": "a pair of light throwing axes crossed at the haft, small wedge blades, short plain wooden handles" },
-        { "id": "picareta-de-guerra", "nome": "Picareta de Guerra", "desc": "a horseman's war pick: long curved steel spike opposite a small square hammer face, steel haft with a disc guard" }
-      ]
+        {
+          "id": "adaga",
+          "nome": "Adaga",
+          "desc": "a rondel dagger: straight narrow stiff blade, plain disc pommel and disc guard, ribbed grip"
+        },
+        {
+          "id": "adaga-de-arremesso",
+          "nome": "Adaga de Arremesso",
+          "desc": "three slender throwing knives fanned in a tight group, plain flat leaf blades, no crossguard, bare tang grips"
+        },
+        {
+          "id": "espada-curta",
+          "nome": "Espada Curta",
+          "desc": "an arming sword: short straight double-edged blade, cruciform crossguard, wheel pommel, wire-wrapped grip"
+        },
+        {
+          "id": "espada-longa",
+          "nome": "Espada Longa",
+          "desc": "a hand-and-a-half longsword: long straight double-edged blade with a fuller, cruciform crossguard, scent-stopper pommel, long grip for two hands"
+        },
+        {
+          "id": "espada-serrilhada",
+          "nome": "Espada Serrilhada",
+          "desc": "a two-handed sword whose blade carries a row of saw teeth along one edge, the other edge plain, simple cruciform hilt"
+        },
+        {
+          "id": "montante",
+          "nome": "Montante",
+          "desc": "a montante greatsword: very long broad blade, long unsharpened ricasso with parrying lugs and side rings, long two-hand grip, heavy pommel"
+        },
+        {
+          "id": "machado",
+          "nome": "Machado",
+          "desc": "a one-handed war axe: broad bearded crescent blade on a straight wooden haft, iron langets down the shaft"
+        },
+        {
+          "id": "machado-de-arremesso",
+          "nome": "Machado de Arremesso",
+          "desc": "a pair of light throwing axes crossed at the haft, small wedge blades, short plain wooden handles"
+        },
+        {
+          "id": "picareta-de-guerra",
+          "nome": "Picareta de Guerra",
+          "desc": "a horseman's war pick: long curved steel spike opposite a small square hammer face, steel haft with a disc guard"
+        }
+      ],
+      "altura_tela": 320
     },
     {
       "id": "haste",
       "titulo": "Impacto, haste e arremesso",
       "colunas": 4,
       "linhas": 2,
-      "celula": [320, 640],
+      "celula": [
+        320,
+        640
+      ],
       "proporcao": "1:1 (quadrada)",
       "orientacao": "Every object stands upright and vertical, head uppermost, seen from the side, its full length visible; long shafted weapons run the full height of their cell.",
       "pecas": [
-        { "id": "maca", "nome": "Maça", "desc": "a flanged mace: six vertical steel flanges around the head, plain tapering steel haft, ribbed grip" },
-        { "id": "martelo-de-guerra", "nome": "Martelo de Guerra", "desc": "a two-handed war hammer: square serrated hammer face opposite a long curved beak, long steel haft with langets" },
-        { "id": "lanca", "nome": "Lança", "desc": "an infantry spear: long plain ash shaft, narrow leaf-shaped steel head with a socket and side lugs" },
-        { "id": "alabarda", "nome": "Alabarda", "desc": "a halberd: broad axe blade on one side, back spike on the other, long thrusting spike on top, long shaft with langets" },
-        { "id": "azagaia", "nome": "Azagaia", "desc": "a javelin: slim light shaft, small narrow socketed steel head, a light throwing spear" },
-        { "id": "pilum", "nome": "Pilum", "desc": "a Roman pilum: long thin soft-iron shank ending in a small pyramidal point, socketed into a thick wooden shaft" },
-        { "id": "funda", "nome": "Funda", "desc": "a shepherd's sling: leather pouch cradling one round stone, two long braided cords hanging, one with a finger loop" },
-        { "id": "dardos", "nome": "Dardos", "desc": "three weighted throwing darts in a tight group, heavy iron heads, slim shafts, fletched tails" }
-      ]
+        {
+          "id": "maca",
+          "nome": "Maça",
+          "desc": "a flanged mace: six vertical steel flanges around the head, plain tapering steel haft, ribbed grip"
+        },
+        {
+          "id": "martelo-de-guerra",
+          "nome": "Martelo de Guerra",
+          "desc": "a two-handed war hammer: square serrated hammer face opposite a long curved beak, long steel haft with langets"
+        },
+        {
+          "id": "lanca",
+          "nome": "Lança",
+          "desc": "an infantry spear: long plain ash shaft, narrow leaf-shaped steel head with a socket and side lugs"
+        },
+        {
+          "id": "alabarda",
+          "nome": "Alabarda",
+          "desc": "a halberd: broad axe blade on one side, back spike on the other, long thrusting spike on top, long shaft with langets"
+        },
+        {
+          "id": "azagaia",
+          "nome": "Azagaia",
+          "desc": "a javelin: slim light shaft, small narrow socketed steel head, a light throwing spear"
+        },
+        {
+          "id": "pilum",
+          "nome": "Pilum",
+          "desc": "a Roman pilum: long thin soft-iron shank ending in a small pyramidal point, socketed into a thick wooden shaft"
+        },
+        {
+          "id": "funda",
+          "nome": "Funda",
+          "desc": "a shepherd's sling: leather pouch cradling one round stone, two long braided cords hanging, one with a finger loop"
+        },
+        {
+          "id": "dardos",
+          "nome": "Dardos",
+          "desc": "three weighted throwing darts in a tight group, heavy iron heads, slim shafts, fletched tails"
+        }
+      ],
+      "altura_tela": 320
     },
     {
       "id": "distancia",
       "titulo": "Armas de distância",
       "colunas": 4,
       "linhas": 2,
-      "celula": [320, 640],
+      "celula": [
+        320,
+        640
+      ],
       "proporcao": "1:1 (quadrada)",
       "orientacao": "Bows stand upright and vertical, strung, seen from the side. Crossbows stand on end, tiller vertical and prod horizontal at the top, so the whole weapon fits a tall narrow cell.",
       "pecas": [
-        { "id": "arco-curto", "nome": "Arco Curto", "desc": "a short bow, strung: single gently curved wooden stave, plain nocks, a short hunting bow" },
-        { "id": "arco-longo", "nome": "Arco Longo", "desc": "an English longbow, strung: very tall plain yew stave, D-section, tapering to horn nocks, taller than a man" },
-        { "id": "arco-composto", "nome": "Arco Composto", "desc": "a composite recurve bow, strung: sharply recurved tips, laminated horn and sinew belly, bound grip" },
-        { "id": "besta-pequena", "nome": "Besta Pequena", "desc": "a small crossbow: short steel prod, plain slender wooden tiller, simple nut lock and trigger bar" },
-        { "id": "besta-media", "nome": "Besta Média", "desc": "a crossbow with an iron spanning stirrup at the front, steel prod bound with cord, stout wooden tiller, nut lock" },
-        { "id": "besta-grande", "nome": "Besta Grande", "desc": "a heavy siege crossbow: thick steel prod, long heavy tiller, a cranequin rack-and-pinion winder hooked to the string" },
-        { "id": "bumerangue", "nome": "Bumerangue", "desc": "a curved hardwood throwing stick, one sharp angle at the elbow, flat aerofoil arms with carved grooves" },
-        { "id": "rede", "nome": "Rede", "desc": "a fighting net: knotted mesh gathered and hanging loose, small lead weights strung around its rim, a gathering cord" }
-      ]
+        {
+          "id": "arco-curto",
+          "nome": "Arco Curto",
+          "desc": "a short bow, strung: single gently curved wooden stave, plain nocks, a short hunting bow"
+        },
+        {
+          "id": "arco-longo",
+          "nome": "Arco Longo",
+          "desc": "an English longbow, strung: very tall plain yew stave, D-section, tapering to horn nocks, taller than a man"
+        },
+        {
+          "id": "arco-composto",
+          "nome": "Arco Composto",
+          "desc": "a composite recurve bow, strung: sharply recurved tips, laminated horn and sinew belly, bound grip"
+        },
+        {
+          "id": "besta-pequena",
+          "nome": "Besta Pequena",
+          "desc": "a small crossbow: short steel prod, plain slender wooden tiller, simple nut lock and trigger bar"
+        },
+        {
+          "id": "besta-media",
+          "nome": "Besta Média",
+          "desc": "a crossbow with an iron spanning stirrup at the front, steel prod bound with cord, stout wooden tiller, nut lock"
+        },
+        {
+          "id": "besta-grande",
+          "nome": "Besta Grande",
+          "desc": "a heavy siege crossbow: thick steel prod, long heavy tiller, a cranequin rack-and-pinion winder hooked to the string"
+        },
+        {
+          "id": "bumerangue",
+          "nome": "Bumerangue",
+          "desc": "a curved hardwood throwing stick, one sharp angle at the elbow, flat aerofoil arms with carved grooves"
+        },
+        {
+          "id": "rede",
+          "nome": "Rede",
+          "desc": "a fighting net: knotted mesh gathered and hanging loose, small lead weights strung around its rim, a gathering cord"
+        }
+      ],
+      "altura_tela": 320
     },
     {
       "id": "armaduras",
       "titulo": "Armaduras",
       "colunas": 4,
       "linhas": 2,
-      "celula": [640, 960],
+      "celula": [
+        448,
+        672
+      ],
       "proporcao": "4:3 (paisagem)",
       "orientacao": "Every armour is shown empty and worn by nobody, standing upright and facing the viewer straight on, complete from neck to hem, as it would be laid out in an armourer's plate.",
       "pecas": [
-        { "id": "gambeson", "nome": "Gambeson", "desc": "a padded gambeson: quilted linen coat, deep vertical stitched channels, long sleeves, thigh length, laced at the front" },
-        { "id": "couro", "nome": "Couro endurecido", "desc": "a hardened leather cuirass: moulded boiled-leather breast, buckled straps at the sides and shoulders, scalloped hem" },
-        { "id": "malha", "nome": "Cota de malha", "desc": "a mail hauberk: riveted iron rings throughout, knee length, elbow-length sleeves, slit at the hem, integral coif collar" },
-        { "id": "brigandina", "nome": "Brigandina", "desc": "a brigandine: cloth-covered coat of plates, rows of domed rivet heads in a regular pattern, buckled down the front, short skirt" },
-        { "id": "lamelar", "nome": "Lamelar", "desc": "a lamellar armour: hundreds of small rectangular plates laced in overlapping horizontal rows, square shoulder flaps, thigh-length skirt" },
-        { "id": "placa-transicao", "nome": "Placa de transição", "desc": "a transitional armour: mail hauberk worn under early rigid steel plates at chest, shoulders, arms and legs, with a coat of plates over it" },
-        { "id": "placa-municao", "nome": "Placa de munição", "desc": "a munition armour: plain undecorated steel breastplate with tassets and simple pauldrons, rough hammered finish, mass-produced infantry harness" },
-        { "id": "placa-completa", "nome": "Placa completa", "desc": "a full plate harness: complete articulated white armour head to foot, visored armet, fluted breastplate, pauldrons, couters, cuisses, sabatons" }
-      ]
+        {
+          "id": "gambeson",
+          "nome": "Gambeson",
+          "desc": "a padded gambeson: quilted linen coat, deep vertical stitched channels, long sleeves, thigh length, laced at the front"
+        },
+        {
+          "id": "couro",
+          "nome": "Couro endurecido",
+          "desc": "a hardened leather cuirass: moulded boiled-leather breast, buckled straps at the sides and shoulders, scalloped hem"
+        },
+        {
+          "id": "malha",
+          "nome": "Cota de malha",
+          "desc": "a mail hauberk: riveted iron rings throughout, knee length, elbow-length sleeves, slit at the hem, integral coif collar"
+        },
+        {
+          "id": "brigandina",
+          "nome": "Brigandina",
+          "desc": "a brigandine: cloth-covered coat of plates, rows of domed rivet heads in a regular pattern, buckled down the front, short skirt"
+        },
+        {
+          "id": "lamelar",
+          "nome": "Lamelar",
+          "desc": "a lamellar armour: hundreds of small rectangular plates laced in overlapping horizontal rows, square shoulder flaps, thigh-length skirt"
+        },
+        {
+          "id": "placa-transicao",
+          "nome": "Placa de transição",
+          "desc": "a transitional armour: mail hauberk worn under early rigid steel plates at chest, shoulders, arms and legs, with a coat of plates over it"
+        },
+        {
+          "id": "placa-municao",
+          "nome": "Placa de munição",
+          "desc": "a munition armour: plain undecorated steel breastplate with tassets and simple pauldrons, rough hammered finish, mass-produced infantry harness"
+        },
+        {
+          "id": "placa-completa",
+          "nome": "Placa completa",
+          "desc": "a full plate harness: complete articulated white armour head to foot, visored armet, fluted breastplate, pauldrons, couters, cuisses, sabatons"
+        }
+      ],
+      "altura_tela": 480
     },
     {
       "id": "escudos",
       "titulo": "Escudos",
       "colunas": 4,
       "linhas": 2,
-      "celula": [640, 640],
+      "celula": [
+        512,
+        512
+      ],
       "proporcao": "2:1 (paisagem)",
       "orientacao": "Every shield is seen straight on from the front, flat to the viewer, its whole outline visible and centred.",
       "pecas": [
-        { "id": "broquel", "nome": "Broquel", "desc": "a buckler: small round steel hand shield, deep central boss, plain rim, a single bar grip behind the boss" },
-        { "id": "targe", "nome": "Targe", "desc": "a wooden targe: slightly convex board, painted heraldic face, a lance notch cut into its upper right edge" },
-        { "id": "redondo", "nome": "Escudo redondo", "desc": "a round shield: planked wooden disc, iron boss at the centre, rawhide binding around the rim, radial painted field" },
-        { "id": "heater", "nome": "Heater", "desc": "a heater shield: flat top, straight sides tapering to a point at the bottom, gently curved face, plain heraldic field" },
-        { "id": "kite", "nome": "Kite normando", "desc": "a Norman kite shield: rounded at the top, long body tapering to a point at the bottom, riveted rim, plain field" },
-        { "id": "scutum", "nome": "Scutum romano", "desc": "a Roman scutum: large rectangular shield curved into a half cylinder, laminated plywood, metal boss at the centre, bound edges" },
-        { "id": "paves", "nome": "Pavês", "desc": "a pavise: tall rectangular archer's shield, a vertical ridge running down its centre, painted face, flat top and bottom" }
-      ]
+        {
+          "id": "broquel",
+          "nome": "Broquel",
+          "desc": "a buckler: small round steel hand shield, deep central boss, plain rim, a single bar grip behind the boss"
+        },
+        {
+          "id": "targe",
+          "nome": "Targe",
+          "desc": "a wooden targe: slightly convex board, painted heraldic face, a lance notch cut into its upper right edge"
+        },
+        {
+          "id": "redondo",
+          "nome": "Escudo redondo",
+          "desc": "a round shield: planked wooden disc, iron boss at the centre, rawhide binding around the rim, radial painted field"
+        },
+        {
+          "id": "heater",
+          "nome": "Heater",
+          "desc": "a heater shield: flat top, straight sides tapering to a point at the bottom, gently curved face, plain heraldic field"
+        },
+        {
+          "id": "kite",
+          "nome": "Kite normando",
+          "desc": "a Norman kite shield: rounded at the top, long body tapering to a point at the bottom, riveted rim, plain field"
+        },
+        {
+          "id": "scutum",
+          "nome": "Scutum romano",
+          "desc": "a Roman scutum: large rectangular shield curved into a half cylinder, laminated plywood, metal boss at the centre, bound edges"
+        },
+        {
+          "id": "paves",
+          "nome": "Pavês",
+          "desc": "a pavise: tall rectangular archer's shield, a vertical ridge running down its centre, painted face, flat top and bottom"
+        }
+      ],
+      "altura_tela": 320
     }
   ]
 }
