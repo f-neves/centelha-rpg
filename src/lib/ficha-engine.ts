@@ -546,10 +546,13 @@ export function montarFicha(opts: FichaOpts) {
   }
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
   // Cada arma da lista já mostra os próprios números: Velocidade / Acerto / Dano / Defesa.
-  function optsItens(sel: string) {
+  function optsItens(sel: string, semVazio = false) {
     const armas = ARMAS.map((w) => `<option value="a:${w.id}"${sel === 'a:' + w.id ? ' selected' : ''}>${w.nome}: ${statsArma(w)}</option>`).join('');
     const escudos = ESCUDOS.filter((s) => s.id !== 'nenhum').map((s) => `<option value="e:${s.id}"${sel === 'e:' + s.id ? ' selected' : ''}>${s.nome}: ${statsEscudo(s)}</option>`).join('');
-    return `<optgroup label="Armas (Vel/Acerto/Dano/Defesa)">${armas}</optgroup><optgroup label="Escudos">${escudos}</optgroup><option value="nada"${sel === 'nada' ? ' selected' : ''}>Nada</option><option value="c"${sel === 'c' ? ' selected' : ''}>Personalizado…</option>`;
+    // `semVazio`: a mão já traz a própria opção de vazio ("desarmado" ou "mão livre"),
+    // então pedir a lista sem o "Nada" evita duas opções com o mesmo valor.
+    const vazio = semVazio ? '' : `<option value="nada"${sel === 'nada' ? ' selected' : ''}>Nada</option>`;
+    return `<optgroup label="Armas (Vel/Acerto/Dano/Defesa)">${armas}</optgroup><optgroup label="Escudos">${escudos}</optgroup>${vazio}<option value="c"${sel === 'c' ? ' selected' : ''}>Personalizado…</option>`;
   }
 
   // ===== Arsenal: as armas e escudos que o personagem POSSUI =====
@@ -578,33 +581,28 @@ export function montarFicha(opts: FichaOpts) {
       ${url ? `<button type="button" class="eq-img-rm" data-eq-img-rm="${chave}" title="Tirar a imagem" aria-label="Tirar a imagem">×</button>` : ''}
     </label>`;
   }
-  function renderArsenal() {
-    const ro = !!opts.readOnly;
-    const cards = (S.arsenal || []).map((p: any) => {
-      const it = itemDe(p), chave = `ars:${p.uid}`;
-      const emUso = (S.conjuntos || []).some((cj: any) => cj.habil?.uid === p.uid || cj.inabil?.uid === p.uid);
-      const campos = it.kind === 'arma' ? CAMPOS_ARMA : it.kind === 'escudo' ? CAMPOS_ESCUDO : null;
-      const ajustada = campos ? temMod(it.base, p.mod, campos) : false;
-      return `<div class="eq-peca${emUso ? ' em-uso' : ''}${ajustada ? ' ajustado' : ''}" data-ars="${p.uid}">
-        ${ro ? '' : `<button type="button" class="eq-rm" data-ars-rm="${p.uid}" title="Descartar esta peça" aria-label="Descartar">×</button>`}
-        ${imgSlot(chave, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', ro)}
-        <div class="eq-peca-corpo">
-          <div class="eq-peca-nome">${escapeHtml(nomePeca(p))}${emUso ? '<span class="eq-uso-flag" title="Está em um conjunto">em uso</span>' : ''}</div>
-          ${it.kind === 'arma' ? statsBlocos(it.w) : it.kind === 'escudo' ? statsBlocosEscudo(it.s) : ''}
-          ${(it.w?.tags || []).length ? `<div class="eq-tags">${it.w.tags.map((t: string) => `<span class="eq-tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
-          ${p.ref === 'c' ? improvisado(p, ro) : ''}
-          ${campos && !ro ? `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>` : ''}
-        </div>
-        ${campos ? painelMod(chave, it.base, p.mod, campos, ro) : ''}
-      </div>`;
-    }).join('');
-    const adicionar = ro ? '' : `<div class="eq-add">
-      <label>Adicionar arma ou escudo
-        <select data-ars-add><option value="">escolher do catálogo…</option>${optsItens('')}</select>
-      </label>
-    </div>`;
-    const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armas.' : 'Nenhuma arma ainda: escolha uma no catálogo abaixo.'}</p>`;
-    el('eq-arsenal').innerHTML = (cards || vazio) + adicionar;
+  /**
+   * A peça do arsenal correspondente a um item do catálogo, criada na hora se ainda não
+   * existir. O arsenal continua sendo onde moram imagem e ajustes, mas deixou de ter
+   * bloco próprio na tela: quem o alimenta é o seletor de cada mão. Uma peça por item de
+   * catálogo, de propósito, para a mesma espada em dois conjuntos ter a mesma foto.
+   * Item improvisado é sempre uma peça nova, porque é um objeto de ocasião.
+   */
+  function pecaPara(ref: string) {
+    S.arsenal ||= [];
+    if (ref === 'c') {
+      const nova = { uid: novoUid(), ref: 'c', nome: '', dado: 1, danoBonus: 0, acerto: -2 };
+      S.arsenal.push(nova); return nova;
+    }
+    let p = S.arsenal.find((x: any) => x.ref === ref);
+    if (!p) { p = { uid: novoUid(), ref }; S.arsenal.push(p); }
+    return p;
+  }
+  /** Descarta peças que ninguém usa e que não guardam nada do jogador (sem imagem nem ajuste). */
+  function limparArsenal() {
+    const usados = new Set<string>();
+    (S.conjuntos || []).forEach((cj: any) => { if (cj.habil?.uid) usados.add(cj.habil.uid); if (cj.inabil?.uid) usados.add(cj.inabil.uid); });
+    S.arsenal = (S.arsenal || []).filter((p: any) => usados.has(p.uid) || p.img || p.mod || (p.ref === 'c' && p.nome));
   }
   /** Os quatro números da arma como blocos, no lugar da linha "5/+2/1d6/+1". */
   const statsBlocos = (w: any) => `<div class="eq-nums">
@@ -616,12 +614,6 @@ export function montarFicha(opts: FichaOpts) {
     <span class="eq-n def"><b>Defesa</b>${sgn(s.bloqCaC || 0)}</span>
     <span class="eq-n pen"><b>Penalid.</b>${s.penalidade ? '−' + s.penalidade : '0'}</span>
     ${s.habilProjetil ? '<span class="eq-n"><b>Projétil</b>hábil</span>' : ''}</div>`;
-  /** Opções de um seletor de mão: só o que o personagem possui. */
-  const optsArsenal = (selUid?: string) => (S.arsenal || []).map((p: any) => {
-    const it = itemDe(p);
-    const nums = it.kind === 'arma' ? statsArma(it.w) : it.kind === 'escudo' ? statsEscudo(it.s) : '';
-    return `<option value="${p.uid}"${selUid === p.uid ? ' selected' : ''}>${escapeHtml(nomePeca(p))}${nums ? ': ' + nums : ''}</option>`;
-  }).join('');
 
   // ===== Ajuste de peça: os números do catálogo viram editáveis =====
   // Serve para a variação de qualidade (uma Espada Longa Ótima, um gambeson puído):
@@ -661,22 +653,32 @@ export function montarFicha(opts: FichaOpts) {
         const it = hand === 'habil' ? c.habil : c.inabil;
         const p = travada ? null : (cj[hand]?.uid ? pecaArsenal(cj[hand].uid) : null);
         const vazioRot = hand === 'habil' ? '— desarmado (briga) —' : '— mão livre —';
+        const chave = p ? `ars:${p.uid}` : '';
+        const campos = (it.kind === 'arma' || it.kind === 'escudo') ? camposItem(it) : null;
+        const ajustada = p && campos ? temMod(it.base, p.mod, campos) : false;
         const corpo = travada
           ? '<div class="conj-vazia">Ocupada: a arma da mão hábil usa as duas</div>'
           : p
-            ? `<div class="conj-peca">
-                 ${imgSlot(`ars:${p.uid}`, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', true)}
+            ? `<div class="conj-peca${ajustada ? ' ajustado' : ''}">
+                 ${imgSlot(chave, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', ro)}
                  <div class="conj-peca-corpo">
                    <div class="eq-peca-nome">${escapeHtml(nomePeca(p))}</div>
                    ${it.kind === 'arma' ? statsBlocos(it.w) : it.kind === 'escudo' ? statsBlocosEscudo(it.s) : ''}
+                   ${(it.w?.tags || []).length ? `<div class="eq-tags">${it.w.tags.map((t: string) => `<span class="eq-tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+                   ${p.ref === 'c' ? improvisado(p, ro) : ''}
+                   ${campos && !ro ? `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>` : ''}
                  </div>
-               </div>`
+               </div>
+               ${campos ? painelMod(chave, it.base, p.mod, campos, ro) : ''}`
             : `<div class="conj-vazia">${hand === 'habil' ? 'Desarmado: ataca de briga' : 'Mão livre'}</div>`;
+        // o seletor volta a oferecer o CATÁLOGO: sem o bloco do arsenal, é por aqui que
+        // uma arma entra na ficha. A peça correspondente é criada (ou reaproveitada) na hora.
+        const sel = travada ? 'nada' : (p ? p.ref : 'nada');
         return `<div class="conj-mao">
           <div class="conj-mao-rot">${rot}</div>
           ${corpo}
           <label class="conj-esc"><span class="sr-only">${rot}</span><select data-conj-sel="${i}:${hand}"${(ro || travada) ? ' disabled' : ''}>
-            <option value="nada"${!p ? ' selected' : ''}>${vazioRot}</option>${optsArsenal(p?.uid)}
+            <option value="nada"${sel === 'nada' ? ' selected' : ''}>${vazioRot}</option>${optsItens(sel, true)}
           </select></label>
         </div>`;
       };
@@ -887,7 +889,6 @@ export function montarFicha(opts: FichaOpts) {
     renderAbsorcao();
   }
   function populateEquip() {
-    renderArsenal();
     renderConjuntos();
     renderArmaduras();
     const ro = opts.readOnly ? ' disabled' : '';
@@ -1085,25 +1086,17 @@ export function montarFicha(opts: FichaOpts) {
   document.querySelectorAll<HTMLElement>('h2.barh-tog').forEach((h) => h.addEventListener('click', () => {
     const sec = h.dataset.sec!; (S.secCol ||= {}); S.secCol[sec] = !S.secCol[sec]; applySecCol(); if (!opts.readOnly) save();
   }));
-  // ---- Arsenal: adicionar, descartar, renomear, ajustar improvisado ----
-  const redesenhaEquip = () => { renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); save(); };
-  el('eq-arsenal').addEventListener('change', (e) => {
+  // ---- Item improvisado (nome e números vivem na peça, dentro do painel da mão) ----
+  el('eq-conjuntos').addEventListener('change', (e) => {
     if (opts.readOnly) return;
-    const add = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-ars-add]');
-    if (add && add.value) {
-      const ref = add.value;
-      (S.arsenal ||= []).push(ref === 'c' ? { uid: novoUid(), ref, nome: '', dado: 1, danoBonus: 0, acerto: -2 } : { uid: novoUid(), ref });
-      add.value = ''; redesenhaEquip(); return;
-    }
-    const imp = (e.target as HTMLElement).closest<HTMLElement>('[data-ars-improv]');
-    if (imp) {
-      const [uid, campo] = (imp.dataset.arsImprov || '').split(':');
-      const p = pecaArsenal(uid); if (!p) return;
-      p[campo] = Number((imp as HTMLInputElement).value);
-      sincronizarSlots(); redesenhaEquip();
-    }
+    const imp = (e.target as HTMLElement).closest<HTMLElement>('select[data-ars-improv]');
+    if (!imp) return;
+    const [uid, campo] = (imp.dataset.arsImprov || '').split(':');
+    const p = pecaArsenal(uid); if (!p) return;
+    p[campo] = Number((imp as HTMLSelectElement).value);
+    sincronizarSlots(); renderConjuntos(); renderDerived(); renderCombate(); save();
   });
-  el('eq-arsenal').addEventListener('input', (e) => {
+  el('eq-conjuntos').addEventListener('input', (e) => {
     if (opts.readOnly) return;
     const nm = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-ars-nome]');
     if (nm) {
@@ -1133,16 +1126,16 @@ export function montarFicha(opts: FichaOpts) {
     const r = await subirImagemItem(file, p.uid);
     if (r.erro) { void uiErro(r.erro); return; }
     p.img = r.url;
-    renderArsenal(); renderArmaduras(); renderConjuntos(); save();
+    renderArmaduras(); renderConjuntos(); save();
   }
   async function tirarImagem(chave: string) {
     const p = pecaPorChave(chave); if (!p || !p.img) return;
     const url = p.img; p.img = undefined;
-    renderArsenal(); renderArmaduras(); renderConjuntos(); save();
+    renderArmaduras(); renderConjuntos(); save();
     const { apagarImagemItem } = await import('./imagens-item');
     void apagarImagemItem(url);
   }
-  (['eq-arsenal', 'eq-armaduras'] as const).forEach((id) => {
+  (['eq-conjuntos', 'eq-armaduras'] as const).forEach((id) => {
     el(id).addEventListener('change', (e) => {
       if (opts.readOnly) return;
       const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-eq-img]');
@@ -1158,31 +1151,15 @@ export function montarFicha(opts: FichaOpts) {
     });
   });
 
-  el('eq-arsenal').addEventListener('click', async (e) => {
-    if (opts.readOnly) return;
-    const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-ars-rm]');
-    if (!rm) return;
-    const uid = rm.dataset.arsRm!, p = pecaArsenal(uid); if (!p) return;
-    const usada = (S.conjuntos || []).filter((cj: any) => cj.habil?.uid === uid || cj.inabil?.uid === uid).length;
-    const ok = await uiConfirmar({
-      titulo: 'Descartar peça',
-      texto: `Descartar ${nomePeca(p)}?` + (usada ? ` Ela está em ${usada} conjunto${usada > 1 ? 's' : ''}, que ${usada > 1 ? 'ficam' : 'fica'} com a mão livre.` : ''),
-      confirmar: 'Descartar', perigo: true,
-    });
-    if (!ok) return;
-    S.arsenal = S.arsenal.filter((x: any) => x.uid !== uid);
-    sincronizarSlots(); redesenhaEquip();
-  });
-
   el('eq-conjuntos').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     const sel = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-conj-sel]');
     if (sel) {
       const [i, hand] = sel.dataset.conjSel!.split(':'); const cj = S.conjuntos[+i]; const val = sel.value;
-      // o seletor agora entrega o uid de uma peça do arsenal (ou "nada")
+      // o seletor entrega uma referência do CATÁLOGO (ou "nada")
       if (val === 'nada') cj[hand] = { ref: hand === 'habil' ? 'a:desarmado' : 'nada' };
       else {
-        const p = pecaArsenal(val); if (!p) return;
+        const p = pecaPara(val);
         const outra = hand === 'habil' ? 'inabil' : 'habil';
         // uma peça é um objeto só: se já estava na outra mão deste conjunto, sai de lá
         if (cj[outra]?.uid === p.uid) cj[outra] = { ref: outra === 'habil' ? 'a:desarmado' : 'nada' };
@@ -1191,7 +1168,7 @@ export function montarFicha(opts: FichaOpts) {
         // arma de duas mãos ocupa as duas: sobe para a hábil e libera a inábil
         if (w && w.maos === 2) { if (hand === 'inabil') cj.habil = { uid: p.uid, ref: p.ref }; cj.inabil = { ref: 'nada' }; }
       }
-      sincronizarSlots(); renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); save(); return;
+      limparArsenal(); sincronizarSlots(); renderConjuntos(); renderDerived(); renderCombate(); save(); return;
     }
     const uso = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-conj-uso]');
     if (uso) { const i = +uso.dataset.conjUso!; S.conjuntos.forEach((c: any, j: number) => (c.ativo = j === i)); renderConjuntos(); renderDerived(); renderCombate(); save(); }
@@ -1254,7 +1231,7 @@ export function montarFicha(opts: FichaOpts) {
       const p = pecaArsenal(uid); if (!p) return null;
       const it = itemDe(p);
       if (it.kind !== 'arma' && it.kind !== 'escudo') return null;
-      return guarda(p, it.base, camposItem(it), () => { renderArsenal(); renderConjuntos(); });
+      return guarda(p, it.base, camposItem(it), () => renderConjuntos());
     }
     return null;
   }
@@ -1290,7 +1267,7 @@ export function montarFicha(opts: FichaOpts) {
       alvo.redesenha(); renderDerived(); renderCombate(); save();
     });
   }
-  ligarAjustes(el('eq-arsenal'));
+  ligarAjustes(el('eq-conjuntos'));
   ligarAjustes(el('eq-armaduras'));
   el('eq-conjuntos').addEventListener('click', (e) => {
     if (opts.readOnly) return;
