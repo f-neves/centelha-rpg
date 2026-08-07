@@ -123,7 +123,25 @@ export function montarFicha(opts: FichaOpts) {
   }
   // Especialidades: lista nomeada [{s, v}]. Teto por Habilidade = [nível/2] especialidades, cada uma até [nível/2].
   // Também converte o formato antigo (número solto) e reaplica os tetos a cada carga.
-  function mkBolsas() { return [{ nome: 'Mochila', texto: '' }, { nome: 'Equipamentos', texto: '' }, { nome: 'Carroça', texto: '' }]; }
+  const LINHAS_BOLSA = 6;   // cada tabela nasce com seis linhas em branco
+  const linhaBolsa = () => ({ item: '', peso: '', preco: '' });
+  const mkItens = () => Array.from({ length: LINHAS_BOLSA }, linhaBolsa);
+  function mkBolsas() {
+    return [{ nome: 'Mochila', itens: mkItens() }, { nome: 'Equipamentos', itens: mkItens() }, { nome: 'Baú', itens: mkItens() }];
+  }
+  /**
+   * Normaliza uma bolsa e migra o formato antigo (um `texto` corrido) para a tabela:
+   * cada linha escrita vira um item, com Peso e Preço em branco. Assim ninguém perde o
+   * que já tinha anotado. "Carroça" virou "Baú"; quem tiver renomeado mantém o seu nome.
+   */
+  function normBolsa(b: any, padrao: string) {
+    const nome = String(b?.nome ?? padrao) === 'Carroça' ? 'Baú' : String(b?.nome ?? padrao);
+    let itens: any[] = Array.isArray(b?.itens)
+      ? b.itens.map((l: any) => ({ item: String(l?.item ?? ''), peso: String(l?.peso ?? ''), preco: String(l?.preco ?? '') }))
+      : String(b?.texto ?? '').split(/\r?\n/).map((l) => l.trim()).filter(Boolean).map((l) => ({ item: l, peso: '', preco: '' }));
+    while (itens.length < LINHAS_BOLSA) itens.push(linhaBolsa());
+    return { nome, itens };
+  }
   // Normaliza um slot de mão preservando o que o jogador ajustou: o nome e os números
   // do item improvisado e o `mod` (a variação de qualidade da peça de catálogo).
   function normSlot(s: any, dflt: string) {
@@ -241,7 +259,10 @@ export function montarFicha(opts: FichaOpts) {
       S.arsenal.push(nova); s.uid = nova.uid;
     }));
     sincronizarSlots();
-    S.bolsas = (Array.isArray(S.bolsas) && S.bolsas.length) ? S.bolsas.map((b: any) => ({ nome: String(b?.nome ?? ''), texto: String(b?.texto ?? '') })) : mkBolsas();
+    const nomesBolsa = ['Mochila', 'Equipamentos', 'Baú'];
+    S.bolsas = (Array.isArray(S.bolsas) && S.bolsas.length)
+      ? S.bolsas.map((b: any, i: number) => normBolsa(b, nomesBolsa[i] || 'Bolsa'))
+      : mkBolsas();
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id] || 0); });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
@@ -978,9 +999,27 @@ export function montarFicha(opts: FichaOpts) {
     renderArsenal();
     renderConjuntos();
     renderArmaduras();
-    const ro = opts.readOnly ? ' disabled' : '';
-    el('eq-bolsas').innerHTML = (S.bolsas || []).map((b: any, i: number) =>
-      `<div class="bolsa"><input class="bolsa-nome" data-bolsa-nome="${i}" value="${escapeHtml(b.nome)}" aria-label="Nome do campo de equipamento"${ro} /><textarea class="bolsa-txt" data-bolsa-txt="${i}" rows="3" placeholder="O que carrega aqui…"${ro}>${escapeHtml(b.texto)}</textarea></div>`).join('');
+    renderBolsas();
+  }
+  /** Cada bolsa é uma tabela Item / Peso / Preço, com linhas que se acrescentam e removem. */
+  function renderBolsas() {
+    const ro = !!opts.readOnly, dis = ro ? ' disabled' : '';
+    el('eq-bolsas').innerHTML = (S.bolsas || []).map((b: any, i: number) => {
+      const linhas = (b.itens || []).map((l: any, j: number) => `<tr>
+        <td><input value="${escapeHtml(l.item)}" data-bolsa="${i}:${j}:item" placeholder="—" aria-label="Item"${dis} /></td>
+        <td><input value="${escapeHtml(l.peso)}" data-bolsa="${i}:${j}:peso" inputmode="decimal" aria-label="Peso"${dis} /></td>
+        <td><input value="${escapeHtml(l.preco)}" data-bolsa="${i}:${j}:preco" inputmode="decimal" aria-label="Preço"${dis} /></td>
+        ${ro ? '' : `<td class="bl-x"><button type="button" data-bolsa-rm="${i}:${j}" title="Remover esta linha" aria-label="Remover a linha ${j + 1}">×</button></td>`}
+      </tr>`).join('');
+      return `<div class="bolsa">
+        <input class="bolsa-nome" data-bolsa-nome="${i}" value="${escapeHtml(b.nome)}" aria-label="Nome do campo de equipamento"${dis} />
+        <table class="bolsa-tbl">
+          <thead><tr><th>Item</th><th>Peso</th><th>Preço</th>${ro ? '' : '<th><span class="sr-only">Remover</span></th>'}</tr></thead>
+          <tbody>${linhas}</tbody>
+        </table>
+        ${ro ? '' : `<button type="button" class="bolsa-add" data-bolsa-add="${i}">+ linha</button>`}
+      </div>`;
+    }).join('');
   }
   function recompute() {
     let xa = 0, xs = 0, xsp = 0, xv = 0, xw = 0, xap = 0, xc = 0, x2 = 0, xt = 0, xar = 0, xef = 0;
@@ -1409,9 +1448,29 @@ export function montarFicha(opts: FichaOpts) {
   document.addEventListener('mouseout', (e) => { if ((e.target as HTMLElement).closest('[data-calc]') && calcPop) calcPop.style.display = 'none'; });
   el('eq-bolsas').addEventListener('input', (e) => {
     if (opts.readOnly) return;
-    const t = e.target as HTMLElement;
-    const ni = t.getAttribute('data-bolsa-nome'); if (ni != null) { S.bolsas[+ni].nome = (t as HTMLInputElement).value; save(); return; }
-    const ti = t.getAttribute('data-bolsa-txt'); if (ti != null) { S.bolsas[+ti].texto = (t as HTMLTextAreaElement).value; save(); return; }
+    const t = e.target as HTMLInputElement;
+    const ni = t.getAttribute('data-bolsa-nome');
+    if (ni != null) { S.bolsas[+ni].nome = t.value; save(); return; }
+    const cel = t.getAttribute('data-bolsa');
+    if (cel != null) {
+      const [i, j, campo] = cel.split(':');
+      const linha = S.bolsas?.[+i]?.itens?.[+j]; if (!linha) return;
+      linha[campo] = t.value; save();   // sem redesenhar: o campo em edição não pode perder o foco
+    }
+  });
+  el('eq-bolsas').addEventListener('click', (e) => {
+    if (opts.readOnly) return;
+    const alvo = e.target as HTMLElement;
+    const add = alvo.closest<HTMLElement>('[data-bolsa-add]');
+    if (add) { (S.bolsas[+add.dataset.bolsaAdd!].itens ||= []).push(linhaBolsa()); renderBolsas(); save(); return; }
+    const rm = alvo.closest<HTMLElement>('[data-bolsa-rm]');
+    if (rm) {
+      const [i, j] = rm.dataset.bolsaRm!.split(':').map(Number);
+      const b = S.bolsas?.[i]; if (!b) return;
+      b.itens.splice(j, 1);
+      if (!b.itens.length) b.itens.push(linhaBolsa());   // a tabela nunca fica sem nenhuma linha
+      renderBolsas(); save();
+    }
   });
   el('raca-sel').addEventListener('change', (e) => { if (opts.readOnly) return; S.raca = (e.target as HTMLSelectElement).value; (ATTRS_D as any[]).forEach((a) => { const c = capFor('attr', a.id); if ((S.attrs[a.id] || 1) > c) S.attrs[a.id] = c; }); renderAttrs(); renderPower(); renderRaca(); recompute(); save(); });
   el('f-reset').addEventListener('click', async () => { if (opts.readOnly) return; if (await uiConfirmar('Limpar a ficha? Tudo o que está preenchido se perde.', { titulo: 'Limpar ficha', ok: 'Limpar', perigo: true })) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });

@@ -488,9 +488,13 @@ import FormasPop from './FormasPop.astro';
   .eq-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center;
     padding: 1.5rem; background: color-mix(in srgb, #10161a 84%, transparent); backdrop-filter: blur(3px); }
   .eq-lb[hidden] { display: none; }
-  .eq-lb figure { margin: 0; max-width: min(680px, 92vw); max-height: 88vh; display: flex; flex-direction: column;
+  .eq-lb figure { margin: 0; width: min(680px, 92vw); max-height: 88vh; display: flex; flex-direction: column;
     align-items: center; gap: .6rem; }
-  .eq-lb img { max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: var(--r-lg);
+  /* A moldura tem tamanho fixo e a imagem se ajusta dentro dela: `scale-down` encolhe o
+     que for grande demais e deixa o que for pequeno no tamanho natural, centrado, com a
+     moldura preenchendo o resto. Sem isso o modal encolhia até a imagem, e uma arte de
+     60x80 abria numa caixinha de 79x99. */
+  .eq-lb img { width: 100%; height: min(78vh, 40rem); object-fit: scale-down; border-radius: var(--r-lg);
     background: var(--panel); padding: .6rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
   .eq-lb figcaption { color: #f3e8cf; font-size: var(--fs-h3); letter-spacing: .02em; }
   .eq-lb-fechar { position: absolute; top: 1rem; right: 1.2rem; width: 2.6rem; height: 2.6rem; border-radius: 50%;
@@ -553,8 +557,28 @@ import FormasPop from './FormasPop.astro';
   .bolsa { display: flex; flex-direction: column; gap: .25rem; }
   .bolsa-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .03em; color: var(--accent-strong); background: transparent; border: none; border-bottom: 1px solid var(--rule); padding: .1rem .1rem .2rem; text-transform: uppercase; }
   .bolsa-nome:focus { outline: none; border-bottom-color: var(--accent); }
-  .bolsa-txt { font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .4rem .5rem; resize: vertical; min-height: 4.5rem; }
-  .bolsa-txt:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+  /* cada bolsa é uma tabela Item / Peso / Preço */
+  .bolsa-tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  /* o thead herda o fundo --accent-strong da regra global de tabelas; com --ink-soft por
+     cima dava 1,07:1 no Legível e 1,5:1 no Clássico. O par certo desse fundo é o
+     --on-accent-strong, o mesmo que a auditoria já usou em .fa-tbl. */
+  .bolsa-tbl th { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em;
+    color: var(--on-accent-strong); font-weight: 600; text-align: left; padding: .18rem .35rem; }
+  .bolsa-tbl th:nth-child(2), .bolsa-tbl th:nth-child(3) { width: 4.2rem; }
+  .bolsa-tbl th:nth-child(4) { width: 1.7rem; }
+  .bolsa-tbl td { padding: .1rem .1rem 0 0; }
+  .bolsa-tbl td:last-child { padding-right: 0; }
+  .bolsa-tbl input { width: 100%; min-width: 0; font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--ink);
+    background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .22rem .35rem; }
+  .bolsa-tbl input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .bolsa-tbl td:nth-child(2) input, .bolsa-tbl td:nth-child(3) input { text-align: right; font-variant-numeric: tabular-nums; }
+  .bl-x button { width: 100%; background: none; border: none; color: var(--ink-soft); cursor: pointer;
+    font-size: var(--fs-rotulo); line-height: 1; padding: .2rem 0; border-radius: var(--r-sm); }
+  .bl-x button:hover { color: var(--on-perigo); background: var(--perigo-bg); }
+  .bolsa-add { align-self: flex-start; margin-top: .3rem; background: none; border: 1px dashed var(--panel-border);
+    border-radius: var(--r-sm); color: var(--accent-texto); cursor: pointer; font-family: 'Cinzel';
+    font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; padding: .25rem .6rem; }
+  .bolsa-add:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
   .conjunto { border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .5rem .6rem; margin-bottom: .5rem; background: var(--panel); }
   .conjunto.ativo { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
   .conj-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .35rem; }
