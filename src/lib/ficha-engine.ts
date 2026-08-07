@@ -683,7 +683,8 @@ export function montarFicha(opts: FichaOpts) {
       </label>
     </div>`;
     const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armas.' : 'Nenhuma arma ainda: escolha uma no catálogo abaixo.'}</p>`;
-    el('eq-arsenal').innerHTML = (cards || vazio) + adicionar;
+    el('eq-arsenal').innerHTML = cards;
+    el('eq-arsenal-add').innerHTML = (cards ? '' : vazio) + adicionar;
   }
   /** Descarta peças que ninguém usa e que não guardam nada do jogador (sem imagem nem ajuste). */
   function limparArsenal() {
@@ -943,7 +944,8 @@ export function montarFicha(opts: FichaOpts) {
       </label>
     </div>`;
     const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armaduras.' : 'Nenhuma armadura ainda: escolha uma no catálogo abaixo.'}</p>`;
-    el('eq-armaduras').innerHTML = (cards || vazio) + adicionar;
+    el('eq-armaduras').innerHTML = cards;
+    el('eq-armaduras-add').innerHTML = (cards ? '' : vazio) + adicionar;
     renderAbsorcao();
   }
   /** Painel de Absorção combinada: o efeito de vestir e tirar peças, ao lado das peças. */
@@ -1173,16 +1175,18 @@ export function montarFicha(opts: FichaOpts) {
   }));
   // ---- Arsenal: adicionar, marcar o uso, descartar, improvisado ----
   const redesenhaArmas = () => { renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); save(); };
+  el('eq-arsenal-add').addEventListener('change', (e) => {
+    if (opts.readOnly) return;
+    const add = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-ars-add]');
+    if (!add || !add.value) return;
+    (S.arsenal ||= []).push(add.value === 'c'
+      ? { uid: novoUid(), ref: 'c', nome: '', dado: 1, danoBonus: 0, acerto: -2 }
+      : { uid: novoUid(), ref: add.value });
+    add.value = ''; redesenhaArmas();
+  });
   el('eq-arsenal').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     const alvo = e.target as HTMLElement;
-    const add = alvo.closest<HTMLSelectElement>('select[data-ars-add]');
-    if (add && add.value) {
-      (S.arsenal ||= []).push(add.value === 'c'
-        ? { uid: novoUid(), ref: 'c', nome: '', dado: 1, danoBonus: 0, acerto: -2 }
-        : { uid: novoUid(), ref: add.value });
-      add.value = ''; redesenhaArmas(); return;
-    }
     const uso = alvo.closest<HTMLInputElement>('input[data-uso]');
     if (uso) {
       const [uid, papel] = uso.dataset.uso!.split(':');
@@ -1201,11 +1205,10 @@ export function montarFicha(opts: FichaOpts) {
     if (!rm) return;
     const uid = rm.dataset.arsRm!, p = pecaArsenal(uid); if (!p) return;
     const papel = papelDaPeca(uid);
-    const ok = await uiConfirmar({
-      titulo: 'Descartar peça',
-      texto: `Descartar ${nomePeca(p)}?` + (papel !== 'nada' ? ' Ela está empunhada, e a mão fica livre.' : ''),
-      confirmar: 'Descartar', perigo: true,
-    });
+    const ok = await uiConfirmar(
+      `Descartar ${nomePeca(p)}?` + (papel !== 'nada' ? ' Ela está empunhada, e a mão fica livre.' : ''),
+      { titulo: 'Descartar peça', ok: 'Descartar', perigo: true },
+    );
     if (!ok) return;
     marcarUso(uid, 'nada');
     S.arsenal = S.arsenal.filter((x: any) => x.uid !== uid);
@@ -1289,13 +1292,12 @@ export function montarFicha(opts: FichaOpts) {
     if (uso) { const i = +uso.dataset.conjUso!; S.conjuntos.forEach((c: any, j: number) => (c.ativo = j === i)); renderConjuntos(); renderDerived(); renderCombate(); save(); }
   });
   // ---- Armaduras: adicionar, descartar, renomear, vestir ----
-  el('eq-armaduras').addEventListener('change', (e) => {
+  el('eq-armaduras-add').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     const add = (e.target as HTMLElement).closest<HTMLSelectElement>('select[data-arm-add]');
-    if (add && add.value) {
-      (S.equip.armaduras ||= []).push({ uid: novoUid(), base: add.value, vestida: true });
-      add.value = ''; renderArmaduras(); renderDerived(); renderCombate(); save();
-    }
+    if (!add || !add.value) return;
+    (S.equip.armaduras ||= []).push({ uid: novoUid(), base: add.value, vestida: true });
+    add.value = ''; renderArmaduras(); renderDerived(); renderCombate(); save();
   });
   el('eq-armaduras').addEventListener('input', (e) => {
     if (opts.readOnly) return;
@@ -1315,7 +1317,10 @@ export function montarFicha(opts: FichaOpts) {
     const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-arm-rm]');
     if (!rm) return;
     const p = pecaArm(rm.dataset.armRm!); if (!p) return;
-    const ok = await uiConfirmar({ titulo: 'Descartar peça', texto: `Descartar ${p.nome || ARMADURA[p.base]?.nome || 'esta armadura'}?`, confirmar: 'Descartar', perigo: true });
+    const ok = await uiConfirmar(
+      `Descartar ${p.nome || ARMADURA[p.base]?.nome || 'esta armadura'}?`,
+      { titulo: 'Descartar peça', ok: 'Descartar', perigo: true },
+    );
     if (!ok) return;
     S.equip.armaduras = S.equip.armaduras.filter((x: any) => x.uid !== p.uid);
     renderArmaduras(); renderDerived(); renderCombate(); save();

@@ -92,7 +92,11 @@ import FormasPop from './FormasPop.astro';
 <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Absorção)</small></h2>
 <p class="equip-nota muted">Cada arma traz <strong>guardada · mão hábil · mão inábil</strong>, e é isso que o Acerto e o Dano leem. Empunhar na hábil desequipa a arma que estava lá; uma arma de <strong>duas mãos</strong> desequipa as duas. Uma arma <strong>versátil</strong> sozinha é segura com as duas mãos e soma a <strong>Força em dobro</strong>; com escudo ou outra arma na outra mão, soma simples. Nas armaduras, o botão <strong>Vestir</strong> é o que faz a peça contar, e várias podem estar vestidas ao mesmo tempo. O <strong>✎ ajustar</strong> abre os números para quando o item for melhor ou pior que o do catálogo, e o quadro de imagem aceita uma foto sua (é preciso estar logado).</p>
 <div class="eq-bloco-tit">Armas do personagem <small>marque como cada uma está sendo empunhada</small></div>
+{/* o seletor de "adicionar" fica FORA da grade: como as linhas são todas do mesmo
+    tamanho (grid-auto-rows: 1fr), dentro dela ele virava uma linha vazia da altura de
+    um card inteiro e empurrava o resto da página */}
 <div id="eq-arsenal" class="eq-pecas"></div>
+<div id="eq-arsenal-add"></div>
 
 {/* Os conjuntos continuam sendo o lugar onde as mãos ficam guardadas (e o que o
     rastreador de combate da mesa lê), mas quem decide é o marcador de cada arma:
@@ -106,7 +110,10 @@ import FormasPop from './FormasPop.astro';
 <div class="eq-bloco-tit">Armaduras <small>vestidas destacadas · empilháveis</small></div>
 <div class="eq-arm-grid">
   <div class="eq-abs" id="eq-absorcao"></div>
-  <div id="eq-armaduras" class="eq-pecas"></div>
+  <div class="eq-arm-col">
+    <div id="eq-armaduras" class="eq-pecas"></div>
+    <div id="eq-armaduras-add"></div>
+  </div>
 </div>
 <div class="equip-bolsas" id="eq-bolsas"></div>
 <div class="panel" id="combate"></div>
@@ -446,7 +453,8 @@ import FormasPop from './FormasPop.astro';
   .eq-nome-in { font-family: 'EB Garamond'; font-size: var(--fs-aux); color: var(--ink); background: var(--bg);
     border: 1px solid var(--panel-border); border-radius: var(--r-sm); padding: .2rem .35rem; min-width: 0; }
   .eq-vazio { grid-column: 1 / -1; margin: 0; }
-  .eq-add { grid-column: 1 / -1; }
+  .eq-add { margin-top: .7rem; }
+  .eq-arm-col { min-width: 0; }
   .eq-add label { display: flex; flex-direction: column; gap: .2rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
     text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); min-width: 0; }
   /* um <select> reserva a largura da MAIOR opção, e as do catálogo são longas
