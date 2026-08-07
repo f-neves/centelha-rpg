@@ -176,17 +176,26 @@ def retificar(folha_id, caminho_imagem, aplicar=False):
     cw, ch = folha["celula"]
     ids = [p["id"] for p in folha["pecas"]]
 
-    im = Image.open(caminho_imagem).convert("RGB")
-    a = np.asarray(im)
+    bruta = Image.open(caminho_imagem)
+    rgba = np.asarray(bruta.convert("RGBA"))
 
-    # a cor do fundo vem da moldura da folha, não do prompt: se o gerador
-    # entregou um magenta torto, é o dele que vale.
-    moldura = np.concatenate([a[:4].reshape(-1, 3), a[-4:].reshape(-1, 3),
-                              a[:, :4].reshape(-1, 3), a[:, -4:].reshape(-1, 3)])
-    cor_fundo = np.median(moldura, axis=0).astype(np.float32)
-
-    dist = np.sqrt(((a.astype(np.float32) - cor_fundo) ** 2).sum(axis=2))
-    mascara = dist > TOL_FUNDO
+    # Dois caminhos. Se a folha JÁ vem com transparência (alguém tirou o fundo
+    # antes, num editor ou noutra ferramenta), o alfa dela é a palavra final:
+    # separar por cor de novo só teria como piorar. Sem alfa, vale a chave de
+    # cor sobre o fundo chapado que o prompt pediu.
+    pronta = (rgba[:, :, 3] < 16).mean() > 0.05
+    cor_fundo = None
+    if pronta:
+        mascara = rgba[:, :, 3] > 64
+    else:
+        a = rgba[:, :, :3]
+        # a cor do fundo vem da moldura da folha, não do prompt: se o gerador
+        # entregou um magenta torto, é o dele que vale.
+        moldura = np.concatenate([a[:4].reshape(-1, 3), a[-4:].reshape(-1, 3),
+                                  a[:, :4].reshape(-1, 3), a[:, -4:].reshape(-1, 3)])
+        cor_fundo = np.median(moldura, axis=0).astype(np.float32)
+        dist = np.sqrt(((a.astype(np.float32) - cor_fundo) ** 2).sum(axis=2))
+        mascara = dist > TOL_FUNDO
 
     objetos = acha_pecas(mascara, len(ids))
     caixas, celulas = agrupa_por_celula(objetos, cols, lins)
@@ -199,7 +208,8 @@ def retificar(folha_id, caminho_imagem, aplicar=False):
                     "para ser lida. Sai mais barato gerar a folha de novo do que remendar.",
             "objetos_soltos": len(objetos),
             "celulas_ocupadas": [[int(l), int(c)] for l, c in ocupadas],
-            "cor_fundo": [int(v) for v in cor_fundo],
+            "fonte": "alfa da própria folha" if pronta else "chave de cor",
+            "cor_fundo": None if cor_fundo is None else [int(v) for v in cor_fundo],
         }, ensure_ascii=False))
         return False
 
@@ -210,9 +220,11 @@ def retificar(folha_id, caminho_imagem, aplicar=False):
 
     for i, (caixa, peca_id) in enumerate(zip(caixas, ids)):
         x0, y0, x1, y1 = caixa
-        bloco = a[y0:y1, x0:x1]
-        rgb, alfa = separa_do_fundo(bloco, cor_fundo)
-        recorte = Image.fromarray(np.dstack([rgb, (alfa * 255).astype(np.uint8)]), "RGBA")
+        if pronta:
+            recorte = Image.fromarray(rgba[y0:y1, x0:x1].copy(), "RGBA")
+        else:
+            rgb, alfa = separa_do_fundo(rgba[y0:y1, x0:x1, :3], cor_fundo)
+            recorte = Image.fromarray(np.dstack([rgb, (alfa * 255).astype(np.uint8)]), "RGBA")
         caixa_apertada = recorte.getbbox()
         if caixa_apertada:
             recorte = recorte.crop(caixa_apertada)
@@ -254,12 +266,17 @@ def retificar(folha_id, caminho_imagem, aplicar=False):
         antigo.mkdir(exist_ok=True)
         for peca_id in ids:
             atual = PASTA / f"{peca_id}.png"
-            if atual.exists():
-                shutil.move(str(atual), str(antigo / f"{peca_id}.png"))
+            guardado = antigo / f"{peca_id}.png"
+            # o backup é do acervo ORIGINAL (museu e ícone). Numa segunda rodada
+            # de arte, sobrescrevê-lo trocaria o original pela arte anterior e o
+            # acervo de verdade se perderia.
+            if atual.exists() and not guardado.exists():
+                shutil.move(str(atual), str(guardado))
             shutil.copy(str(saida / "pecas" / f"{peca_id}.png"), str(atual))
 
     print(json.dumps({
         "ok": True, "folha": folha_id, "pecas": len(ids),
+        "fonte": "alfa da própria folha" if pronta else "chave de cor",
         "atlas": f"{cw * cols}×{ch * lins}",
         "png_kb": round((saida / f"{folha_id}.png").stat().st_size / 1024),
         "webp_kb": round((saida / f"{folha_id}.webp").stat().st_size / 1024),
