@@ -560,6 +560,19 @@ import '../styles/arte-equip.css';
   .tpill.invalid { border-color: #b3401f; box-shadow: 0 0 0 1px #b3401f inset; }
   .fxline { font-size: var(--fs-rotulo); padding: .08rem 0; color: var(--ink-soft); }
   .fxline.hi { color: var(--ink); } .fxline.hi b { color: var(--accent-strong); }
+  /* Arcano: os níveis da Arte vêm num cartão que abre ao passar o mouse pelo cabeçalho
+     (ou ao tabular até as bolinhas). São 24 Artes de 6 níveis cada: abrir umas quantas
+     embaixo do cabeçalho empurrava a lista inteira para baixo. */
+  .arte-head { cursor: help; } .arte-head:hover { background: var(--panel-2); }
+  .arte-pop { position: absolute; z-index: 90; width: min(30rem, 92vw); padding: .55rem .75rem .6rem;
+    background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r-md);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .28); line-height: 1.4; animation: arte-pop-entra .12s ease-out; }
+  @keyframes arte-pop-entra { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+  .arte-pop-tit { display: flex; align-items: baseline; gap: .5rem; font-family: 'Cinzel'; color: var(--accent-strong);
+    font-size: var(--fs-rotulo); letter-spacing: .04em; text-transform: uppercase;
+    border-bottom: 1px dotted var(--rule); padding-bottom: .25rem; margin-bottom: .3rem; }
+  .arte-pop-tit small { margin-left: auto; text-transform: none; letter-spacing: 0; color: var(--ink-soft); font-size: var(--fs-micro); }
+  .arte-print { display: none; }
   .techrow { margin-bottom: .5rem; }
   .techrow .tpill { margin: 0; }
   .tdesc { font-size: var(--fs-micro); line-height: 1.35; color: var(--ink-soft); margin: .2rem 0 0 .15rem; }
@@ -1071,6 +1084,9 @@ import '../styles/arte-equip.css';
     .sidebar, .topbar, .scrim, #consulta, #otp-fab, #otp-panel, .busca-modal, .ref-pop, .xp-btns, .rollv, .rolador, .skip { display: none !important; }
     .shell { display: block !important; } .content { padding: 0 !important; }
     .cam-body { display: block !important; }
+    /* o cartão de hover não existe no papel: cada Arte imprime os níveis alcançados */
+    .arte-pop { display: none !important; }
+    .arte-print { display: block; padding: .3rem .7rem .5rem; border-top: 1px dotted var(--rule); }
     .xpbar { background: none !important; color: var(--ink) !important; border-bottom: 2px solid var(--accent); border-radius: 0; }
     .xpbar .big b, .xpbar .rem { color: var(--accent-texto) !important; }
     h2.barh { background: none !important; color: var(--accent-texto) !important; border-bottom: 1.5px solid var(--accent); border-radius: 0; }

@@ -90,6 +90,19 @@ async function main() {
     check(descs > 0, `expanded Caminho shows technique descriptions (got ${descs})`);
     await p.screenshot({ path: `${SHOTS}/ficha.png` });
 
+    // 3b) os níveis da Arte vêm num cartão de hover, não abrem embaixo do cabeçalho
+    await p.evaluate(() => document.querySelector('#artes .arte-head .dots .dot[data-d="2"]')?.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    await (await p.$('#artes .arte-head')).hover();
+    await new Promise((r) => setTimeout(r, 250));
+    const arte = await p.evaluate(() => {
+      const el = document.querySelector('.arte-pop');
+      return el && { linhas: el.querySelectorAll('.fxline').length, hi: el.querySelectorAll('.fxline.hi').length };
+    });
+    check(!!arte && arte.linhas === 6, `hover na Arte abre o cartão com os 6 níveis (got ${arte?.linhas})`);
+    check(!!arte && arte.hi === 2, `o cartão marca os níveis alcançados (got ${arte?.hi})`);
+    await p.screenshot({ path: `${SHOTS}/ficha-arte.png` });
+    await p.keyboard.press('Escape');
+
     // 4) ref-modal opens centered without scrolling the page
     await p.evaluate(() => { const n = document.querySelectorAll('.trow .nm'); n[Math.min(n.length - 1, 40)]?.scrollIntoView({ block: 'center' }); });
     await new Promise((r) => setTimeout(r, 150));

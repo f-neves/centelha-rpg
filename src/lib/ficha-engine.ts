@@ -107,7 +107,7 @@ export function montarFicha(opts: FichaOpts) {
 
   // ---- estado ----
   let S: any;
-  const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
+  const OPEN = { cam: {} as Record<string, boolean> };
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
     S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
@@ -417,13 +417,65 @@ export function montarFicha(opts: FichaOpts) {
     el('tecnicas').innerHTML = grupos.filter((g) => g.ids.length).map((g) =>
       `<section class="camgrupo"><h3>${g.nome}</h3><div class="cols3">${col3(g.ids, card)}</div></section>`).join('');
   }
+  // Os níveis de cada Arte não abrem mais embaixo do cabeçalho: vêm num cartão que
+  // aparece ao passar o mouse (ou ao tabular até as bolinhas). São 24 Artes de 6 níveis
+  // cada, e abrir umas quantas empurrava a lista inteira para baixo.
+  const arteFx = (a: any, lvl: number) =>
+    a.niveis.map((n: any) => `<div class="fxline${n.nivel <= lvl ? ' hi' : ''}">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('');
+  // No papel não existe hover. Cada Arte que o personagem tem imprime os níveis que ele
+  // alcançou (os outros não fazem falta na mesa); Arte em zero não imprime nada.
+  const artePrint = (a: any, lvl: number) =>
+    !lvl ? '' : `<div class="arte-print">${a.niveis.filter((n: any) => n.nivel <= lvl)
+      .map((n: any) => `<div class="fxline hi">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('')}</div>`;
+  // Um cartão por vez, preso ao documento, como o das formas (FormasPop.astro). No toque
+  // não há hover: tocar no cabeçalho prende o cartão, tocar de novo (ou fora dele) fecha.
+  let artePop: HTMLDivElement | null = null, arteAtivo: string | null = null, artePreso = false, arteTimer = 0;
+  function fecharArtePop() { artePop?.remove(); artePop = null; arteAtivo = null; artePreso = false; }
+  const agendarArtePop = () => { if (artePreso) return; clearTimeout(arteTimer); arteTimer = window.setTimeout(fecharArtePop, 200); };
+  const cancelarArtePop = () => clearTimeout(arteTimer);
+  const conteudoArtePop = (a: any) => {
+    const lvl = S.arte[a.id] || 0;
+    return `<span class="arte-pop-tit">${a.nome}<small>${lvl ? `nível ${lvl}` : 'nenhum nível'}</small></span>${arteFx(a, lvl)}`;
+  };
+  function posicionarArtePop(head: HTMLElement) {
+    if (!artePop) return;
+    const r = head.getBoundingClientRect();
+    artePop.style.left = '0px';
+    artePop.style.top = window.scrollY + r.bottom + 6 + 'px';
+    const max = window.scrollX + document.documentElement.clientWidth - artePop.offsetWidth - 10;
+    artePop.style.left = Math.max(8, Math.min(window.scrollX + r.left, max)) + 'px';
+  }
+  function abrirArtePop(head: HTMLElement) {
+    const id = head.dataset.artepop!;
+    if (artePop && arteAtivo === id) return;
+    fecharArtePop();
+    const a = (ARTE_D as any[]).find((x) => x.id === id); if (!a) return;
+    arteAtivo = id;
+    artePop = document.createElement('div');
+    artePop.className = 'arte-pop';
+    artePop.innerHTML = conteudoArtePop(a);
+    artePop.addEventListener('mouseenter', cancelarArtePop);
+    artePop.addEventListener('mouseleave', agendarArtePop);
+    document.body.append(artePop);
+    posicionarArtePop(head);
+  }
+  // Mexer nas bolinhas redesenha a lista inteira e joga fora o cabeçalho onde o cartão
+  // estava ancorado: religa no cabeçalho novo e atualiza os níveis marcados.
+  function religarArtePop() {
+    if (!arteAtivo) return;
+    const head = document.querySelector<HTMLElement>(`.arte-head[data-artepop="${arteAtivo}"]`);
+    const a = (ARTE_D as any[]).find((x) => x.id === arteAtivo);
+    if (!artePop || !head || !a) { fecharArtePop(); return; }
+    artePop.innerHTML = conteudoArtePop(a);
+    posicionarArtePop(head);
+  }
   function renderArtes() {
     const card = (a: any) => {
-      const lvl = S.arte[a.id] || 0, open = OPEN.arte[a.id];
-      const fx = a.niveis.map((n: any) => `<div class="fxline${n.nivel <= lvl ? ' hi' : ''}">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('');
-      return `<div class="cam"><div class="cam-head"><span class="chev" data-artetog="${a.id}">${open ? '▾' : '▸'} ${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}</div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${fx}</div></div>`;
+      const lvl = S.arte[a.id] || 0;
+      return `<div class="cam"><div class="cam-head arte-head" data-artepop="${a.id}"><span class="cam-nm">${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}</div>${artePrint(a, lvl)}</div>`;
     };
     el('artes').innerHTML = col3(ARTE_D as any[], card);
+    religarArtePop();
     renderEfeitos();
   }
   // Efeitos Especiais: só aparecem os que o personagem alcança, ou seja, aqueles
@@ -1544,11 +1596,22 @@ export function montarFicha(opts: FichaOpts) {
     applyVal(kind, key, valOf(kind, key) + delta);
     (document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`) as HTMLElement)?.focus();
   }
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSpecPop(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeSpecPop(); fecharArtePop(); } });
+  // O cartão dos níveis abre no mouse e no foco: tabular até as bolinhas da Arte também
+  // mostra o que ela faz, sem precisar de mouse.
+  const achaArte = (t: EventTarget | null) => (t as HTMLElement)?.closest?.('.arte-head') as HTMLElement | null;
+  document.addEventListener('mouseover', (e) => { const h = achaArte(e.target); if (h) { cancelarArtePop(); abrirArtePop(h); } });
+  document.addEventListener('mouseout', (e) => { if (achaArte(e.target)) agendarArtePop(); });
+  document.addEventListener('focusin', (e) => { const h = achaArte(e.target); if (h) { cancelarArtePop(); abrirArtePop(h); } });
+  document.addEventListener('focusout', (e) => { if (achaArte(e.target)) agendarArtePop(); });
+  // Rolar a página não fecha o cartão: ele é posicionado em coordenadas do documento,
+  // então acompanha o cabeçalho. Fechar no scroll matava o cartão que o próprio
+  // navegador tinha acabado de abrir ao trazer a Arte para a tela.
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
     if (t.closest('[data-specpop-close]')) { closeSpecPop(); return; }
     if (specPopFor && !t.closest('.specpop') && !t.closest('.spec .sq')) closeSpecPop();
+    if (artePreso && !t.closest('.arte-head') && !t.closest('.arte-pop')) fecharArtePop();
     const nm = t.closest<HTMLElement>('.trow .nm');
     if (nm) { openTraitModal(nm); return; }
     const dot = t.closest<HTMLElement>('.dots .dot');
@@ -1586,8 +1649,12 @@ export function montarFicha(opts: FichaOpts) {
     if (pill) { if (opts.readOnly || pill.classList.contains('locked')) return; const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
     const ct = t.closest<HTMLElement>('[data-camtog]');
     if (ct) { OPEN.cam[ct.dataset.camtog!] = !OPEN.cam[ct.dataset.camtog!]; renderCaminhos(); return; }
-    const at = t.closest<HTMLElement>('[data-artetog]');
-    if (at) { OPEN.arte[at.dataset.artetog!] = !OPEN.arte[at.dataset.artetog!]; renderArtes(); return; }
+    const ah = t.closest<HTMLElement>('.arte-head');
+    if (ah) {
+      if (artePreso && arteAtivo === ah.dataset.artepop) fecharArtePop();
+      else { abrirArtePop(ah); artePreso = true; }
+      return;
+    }
     const ef = t.closest<HTMLInputElement>('[data-efeito]');
     if (ef) { if (opts.readOnly) return; const id = ef.dataset.efeito!; S.efeito[id] = !S.efeito[id]; renderEfeitos(); recompute(); return; }
   });
