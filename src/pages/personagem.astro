@@ -546,9 +546,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .retrato-frame.ajustando .retrato-barra { opacity: 1; pointer-events: auto; }
   /* sem mouse não há hover: no toque a faixa fica sempre à mão */
   @media (hover: none) { .retrato-barra { opacity: 1; pointer-events: auto; } }
-  /* Lado a lado enquanto couber; num quadro estreito (foto em pé) eles empilham
-     em vez de partir "enquadramento" no meio da palavra. */
-  .retrato-dupla { display: flex; flex-wrap: wrap; gap: .35rem; width: 100%; }
+  /* Sempre lado a lado, com metade da largura cada. */
+  .retrato-dupla { display: flex; gap: .35rem; width: 100%; }
   .retrato-ajuste { display: none; width: 100%; align-items: center; gap: .5rem; }
   .retrato-frame.ajustando .retrato-dupla { display: none; }
   .retrato-frame.ajustando .retrato-ajuste { display: flex; }
@@ -556,10 +555,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   /* Os botões são os `.btn` do site; aqui só ganham meia largura cada, o rótulo
      miúdo que cabe num quadro estreito e o fundo mais opaco, que é o que os
      separa da foto por baixo. */
-  .retrato-bt { flex: 1 1 8.5rem; min-width: 0; padding: .35rem .4rem;
+  /* Lado a lado num quadro estreito sobra pouca largura por botão: fonte miúda
+     para "enquadramento" caber numa linha e a quebra cair no espaço, e não no
+     meio da palavra. */
+  .retrato-bt { flex: 1 1 0; min-width: 0; padding: .3rem .35rem;
     background: color-mix(in srgb, var(--panel) 88%, transparent); backdrop-filter: blur(3px);
-    font-size: var(--fs-micro); line-height: 1.2; text-align: center;
-    overflow-wrap: break-word; }
+    font-size: .55rem; line-height: 1.25; text-align: center; overflow-wrap: break-word; }
   .retrato-ajuste .retrato-bt { flex: 0 0 auto; }
   .retrato-bt.perigo { color: var(--perigo); border-color: color-mix(in srgb, var(--perigo) 55%, transparent); }
   .retrato-bt.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); border-color: var(--perigo); }
@@ -585,7 +586,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
      coluna estreita, e nada depende do layout — logo, nada vaza e nada
      realimenta. A altura continua sendo a do cabeçalho, e o `contain` mostra a
      foto inteira dentro dela. */
-  .pers-cab .retrato { align-self: stretch; max-height: 34rem;
+  .pers-cab .retrato { align-self: stretch;
     width: clamp(9rem, calc(var(--retrato-ar, .827) * 22rem), 38%); }
   /* `position: relative` é o que ancora a faixa de ações DENTRO do quadro; a regra
      de global.css não tem, e sem isto a faixa se prendia ao ancestral posicionado
@@ -594,12 +595,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
      escreve --retrato-ar), então ela aparece inteira, sem tarja nem corte. A
      razão vem do arquivo, não do layout: é um número constante, e por isso não
      realimenta a largura. Sem foto, vale a moldura clássica de 215×260. */
-  /* O quadro toma a razão da FOTO e a largura da coluna, então a foto o preenche
-     sem tarja. O `max-height: 100%` é o teto do cabeçalho: numa coluna larga demais
-     para a altura disponível, o quadro para de crescer e aí sim sobra tarja nas
-     laterais — pouca, porque a razão continua sendo a da foto. */
-  .pers-cab .retrato-frame { position: relative; flex: 0 1 auto; min-height: 0; width: 100%;
-    height: auto; max-height: 100%; aspect-ratio: var(--retrato-ar, .827); }
+  /* O quadro preenche a coluna inteira, que estica junto com o cabeçalho: dá
+     exatamente a altura do painel de identificação ao lado. A largura da coluna
+     vem da razão da foto, então a moldura chega perto do formato dela; o que
+     sobrar aparece como tarja, porque o `contain` mantém a foto inteira. */
+  .pers-cab .retrato-frame { position: relative; flex: 1; min-height: 0; width: 100%;
+    height: auto; aspect-ratio: auto; }
   /* A foto sai do fluxo. Com ela dentro, a largura `auto` do quadro pegava o
      tamanho NATURAL da imagem em vez da razão: uma foto de 600px de largura
      esticava o retrato para 600px, que por sua vez espremia a coluna do lado, que
