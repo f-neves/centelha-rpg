@@ -577,6 +577,13 @@ import '../styles/arte-equip.css';
   .fa-tiers span { font-size: var(--fs-rotulo); } .fa-tiers span b { font-family: 'Cinzel'; color: var(--accent-strong); }
   .fa-row { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-start; }
   .fa-chartwrap { position: relative; flex: 1 1 22rem; width: 100%; max-width: 40rem; }
+  /* No desktop os dois ficam lado a lado em proporção fixa (70/30), descontando o gap;
+     no celular continuam empilhados pelo flex-wrap. */
+  @media (min-width: 901px) {
+    .fa-row { flex-wrap: nowrap; }
+    .fa-row .fa-chartwrap { flex: 0 0 calc(70% - .6rem); max-width: calc(70% - .6rem); min-width: 0; }
+    .fa-row .fa-tbl { flex: 0 0 calc(30% - .6rem); width: calc(30% - .6rem); min-width: 0; }
+  }
   .fa-chart { display: block; width: 100%; height: auto; }
   .fa-chart .axis { stroke: var(--rule); stroke-width: 1; }
   .fa-chart .grid { stroke: var(--rule); stroke-width: .5; opacity: .45; }
