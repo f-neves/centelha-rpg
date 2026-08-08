@@ -803,8 +803,17 @@ import '../styles/arte-equip.css';
     body.ficha-abas .eq-uso-op, body.ficha-abas .eq-vestir { min-height: 44px; }
     /* parâmetros do efeito em até 2 linhas em vez de truncados numa só */
     body.ficha-abas .ef-i-par { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-    /* identidade em coluna única */
-    body.ficha-abas .idrow { grid-template-columns: 1fr; }
+    /* Identidade em coluna única e no mesmo passo do resto: o rótulo sai de cima do
+       campo e vai para o lado, numa faixa fixa, o que alinha os quatro campos pela
+       mesma vertical e derruba a altura de ~62px por campo para 24px. O rótulo é o
+       texto solto dentro do <label>: numa grade ele vira item anônimo e ocupa a
+       primeira coluna sozinho, sem precisar de <span>. */
+    body.ficha-abas .idrow { grid-template-columns: 1fr; gap: .3rem; }
+    body.ficha-abas .idrow label {
+      display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); align-items: center;
+      gap: .5rem; height: 1.5rem; line-height: 1.5rem; }
+    body.ficha-abas .idrow :is(.txt, select.racasel) {
+      height: 1.5rem; margin-top: 0; padding: 0 .2rem; line-height: 1.5rem; }
   }
 
   /* impressão: só a ficha, sem o chrome do site. As abas do celular não valem no papel:

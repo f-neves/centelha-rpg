@@ -890,13 +890,29 @@ import Base from '../layouts/Base.astro';
       const dono = nomes[p.dono_id] || '(jogador)';
       const meu = p.dono_id === userId;
       const [rot, cls] = SELO[p.status] || SELO.rascunho;
-      return `<a class="pers-card" href="${u('personagem')}?id=${p.id}">
-        <span class="selo ${cls}">${rot}</span>
-        <span class="pers-card-nome cinzel">${esc(p.nome || 'Personagem')}</span>
-        ${p.conceito ? `<span class="pers-card-conc">${esc(p.conceito)}</span>` : ''}
-        <span class="pers-card-dono muted">${meu ? 'Seu personagem' : 'Jogador: ' + esc(dono)}</span>
-      </a>`;
+      // O botão fica FORA do <a>: âncora não aceita botão dentro, e clicar em
+      // excluir não pode navegar para a ficha por acidente.
+      return `<div class="pers-card-box">
+        <a class="pers-card" href="${u('personagem')}?id=${p.id}">
+          <span class="selo ${cls}">${rot}</span>
+          <span class="pers-card-nome cinzel">${esc(p.nome || 'Personagem')}</span>
+          ${p.conceito ? `<span class="pers-card-conc">${esc(p.conceito)}</span>` : ''}
+          <span class="pers-card-dono muted">${meu ? 'Seu personagem' : 'Jogador: ' + esc(dono)}</span>
+        </a>
+        ${ehMestre ? `<button type="button" class="btn mini perigo pers-rm" data-pers="${p.id}"
+          data-nome="${esc(p.nome || 'Personagem')}" title="Excluir este personagem">Excluir</button>` : ''}
+      </div>`;
     }).join('') + '</div>';
+    // Excluir personagem é do mestre, e mora aqui: na ficha ele dividia espaço
+    // com as ações de aprovação, que são de outra natureza.
+    box.querySelectorAll<HTMLElement>('.pers-rm').forEach((b) => b.addEventListener('click', async () => {
+      const nome = b.dataset.nome || 'este personagem';
+      if (!await uiConfirmar(`Excluir ${nome}? A ficha do jogador some junto, e isto não pode ser desfeito.`,
+        { titulo: 'Excluir personagem', ok: 'Excluir', perigo: true })) return;
+      const { error } = await sb.from('personagens').delete().eq('id', b.dataset.pers);
+      if (error) return uiErro('Erro: ' + error.message);
+      await renderPersonagens(sb, ehMestre, userId);
+    }));
   }
 
   async function renderNotas(sb: any, ehMestre: boolean) {
@@ -1015,6 +1031,10 @@ import Base from '../layouts/Base.astro';
   .xp-inicial .salvo { font-size: var(--fs-rotulo); color: var(--accent-texto); }
   .xp-inicial-dica { flex-basis: 100%; margin: .1rem 0 0; font-size: var(--fs-rotulo); }
   .pers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: .8rem; }
+  /* o card e o excluir do mestre: a caixa empilha os dois e é ela que entra na grade */
+  .pers-card-box { display: flex; flex-direction: column; gap: .35rem; }
+  .pers-card-box .pers-card { flex: 1; }
+  .pers-card-box .pers-rm { align-self: flex-end; }
   .pers-card { display: flex; flex-direction: column; gap: .25rem; padding: .9rem 1rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
   .pers-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .pers-card-nome { font-size: var(--fs-corpo); font-weight: 700; }
