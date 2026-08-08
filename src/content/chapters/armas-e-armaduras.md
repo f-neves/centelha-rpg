@@ -37,8 +37,8 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 | Média | 6 | 1d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
 | Pesada | 7 | 2d6 | +0 | −2 | 2 | dano que vence armadura — mas lenta e te expõe, com guarda baixa |
 | Haste | 6 | 1d6+2 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
-| Distância | 6–7 | 1d6 (+Força) / 1d6+2 a +8 | +1 | — | 2 | domina antes do contato; arco soma Força, besta vem embutida; depende de munição |
-| Arremesso | 4–6 | 1d6 a 1d6+2 | +1 | — | 1 | lançar com a mão: alcance curto, uma mão, projétil recuperável |
+| Distância | 6–7 | 1d6−1 a 1d6+2 (+Força) / 1d6+2 a +8 | +0 a +1 | — | 2 | domina antes do contato; arco soma Força, besta vem embutida; depende de munição. Alcance de 100 a 300 m |
+| Arremesso | 4–6 | 1d6−2 a 1d6+2 | +0 a +2 | — | 1 | lançar com a mão: uma mão, projétil recuperável, alcance de 5 a 200 m conforme o objeto |
 
 </div>
 

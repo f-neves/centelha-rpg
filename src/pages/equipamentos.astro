@@ -14,6 +14,19 @@ const modoStr = (m: any) => `${MODO[m.tipo]}${m.perf != null ? ` (N${m.perf})` :
 const ordem = ['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso'];
 armas.sort((a, b) => ordem.indexOf(a.classe) - ordem.indexOf(b.classe) || a.nome.localeCompare(b.nome));
 const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
+// Duas tabelas, porque as colunas divergem: quem atira não guarda, e no lugar da
+// Defesa entra a Distância. As de Arremesso vão com as de Distância: também
+// atacam de longe, e é a distância que interessa comparar entre elas.
+const aDistancia = (a: any) => a.classe === 'distancia' || a.classe === 'arremesso';
+const corpoACorpo = armas.filter((a) => !aDistancia(a));
+const distancia = armas.filter(aDistancia).sort((a, b) => (b.distMax ?? 0) - (a.distMax ?? 0));
+const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
+const dano = (a: any) => `${a.dado}d6${a.danoBonus ? (a.danoBonus > 0 ? `+${a.danoBonus}` : `−${Math.abs(a.danoBonus)}`) : ''}`;
+const modosDe = (a: any) => modosOrd(a.modos ?? [{ tipo: a.tipoDano, perf: a.pen, principal: true }]).map(modoStr).join(' · ');
+const linhaDados = (a: any) => ({
+  'data-arma': true, 'data-classe': a.classe, 'data-tags': a.tags.join(' '),
+  'data-txt': (a.nome + ' ' + a.tags.join(' ') + ' ' + a.notas).toLowerCase(),
+});
 ---
 <Base title="Equipamentos" largura="wide" descricao="Catálogo filtrável de armas, armaduras e escudos — com dano, Absorção e os trade-offs.">
   <h1>Equipamentos</h1>
@@ -25,22 +38,23 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
     <fieldset><legend>Tag</legend>{allTags.map((t) => <label class="chk"><input type="checkbox" data-ef="tag" value={t} />{t}</label>)}</fieldset>
   </div>
 
-  <h2>Armas</h2>
+  <section data-bloco>
+  <h2>Armas Corpo a Corpo</h2>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Velocidade</th><th class="c">Fôlego</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
       <tbody>
-        {armas.map((a) => (
-          <tr data-arma data-classe={a.classe} data-tags={a.tags.join(' ')} data-txt={(a.nome + ' ' + a.tags.join(' ') + ' ' + a.notas).toLowerCase()}>
+        {corpoACorpo.map((a) => (
+          <tr {...linhaDados(a)}>
             <th>{a.nome}</th>
             <td>{CLASSE[a.classe]}</td>
-            <td class="c">{a.dado}d6{a.danoBonus ? (a.danoBonus > 0 ? `+${a.danoBonus}` : `−${Math.abs(a.danoBonus)}`) : ''}</td>
-            <td class="c">{a.acerto >= 0 ? '+' : ''}{a.acerto}</td>
-            <td class="c">{a.defesaArma >= 0 ? '+' : ''}{a.defesaArma}</td>
+            <td class="c">{dano(a)}</td>
+            <td class="c">{sgn(a.acerto)}</td>
+            <td class="c">{sgn(a.defesaArma)}</td>
             <td class="c">{a.maos}</td>
             <td class="c">{a.ticks}</td>
             <td class="c">{a.folego}</td>
-            <td>{modosOrd(a.modos ?? [{ tipo: a.tipoDano, perf: a.pen, principal: true }]).map(modoStr).join(' · ')}</td>
+            <td>{modosDe(a)}</td>
             <td>{habs[(a.pericia as any).id] ?? (a.pericia as any).id}</td>
             <td class="muted">{a.tags.join(', ')}</td>
           </tr>
@@ -48,6 +62,35 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
       </tbody>
     </table>
   </div>
+
+  </section>
+
+  <section data-bloco>
+  <h2>Armas à Distância</h2>
+  <p class="muted">No lugar da Defesa entra a <strong>Distância</strong>, o alcance máximo: arma de projétil não guarda, então não acrescenta nada ao Bloqueio. É o <em>tiro extremo</em>, e não a distância em que se acerta com facilidade. Nas de <strong>Arremesso</strong> o número é um teto do objeto: o braço também limita, e vale o menor entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Distância</th><th class="c">Mãos</th><th class="c">Velocidade</th><th class="c">Fôlego</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
+      <tbody>
+        {distancia.map((a) => (
+          <tr {...linhaDados(a)}>
+            <th>{a.nome}</th>
+            <td>{CLASSE[a.classe]}</td>
+            <td class="c">{dano(a)}</td>
+            <td class="c">{sgn(a.acerto)}</td>
+            <td class="c">{a.distMax ? `${a.distMax} m` : '—'}</td>
+            <td class="c">{a.maos}</td>
+            <td class="c">{a.ticks}</td>
+            <td class="c">{a.folego}</td>
+            <td>{modosDe(a)}</td>
+            <td>{habs[(a.pericia as any).id] ?? (a.pericia as any).id}</td>
+            <td class="muted">{a.tags.join(', ')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  </section>
   <p class="muted ef-count"></p>
   <p class="muted">A coluna <strong>Modos</strong> lista os modos de ataque da arma; <code>*</code> = modo secundário (−2 ao acerto e −1d6 no dano). <em>(N0)–(N5)</em> = Nível de Perfuração da arma (só o modo Perfurante passa pelo gate da armadura).</p>
 
@@ -96,6 +139,12 @@ const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
         (!tags.length || tags.some((t) => r.dataset.tags!.split(' ').includes(t))) &&
         (!text || r.dataset.txt!.includes(text));
       r.style.display = ok ? '' : 'none'; if (ok) n++;
+    }
+    // filtrar por classe esvazia uma das tabelas: some com ela e com o título,
+    // senão fica um cabeçalho anunciando uma lista que não existe
+    for (const bloco of document.querySelectorAll<HTMLElement>('[data-bloco]')) {
+      const vivas = Array.from(bloco.querySelectorAll<HTMLElement>('tr[data-arma]')).some((r) => r.style.display !== 'none');
+      bloco.hidden = !vivas;
     }
     count.textContent = `${n} arma${n === 1 ? '' : 's'}`;
   }

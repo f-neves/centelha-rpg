@@ -529,7 +529,14 @@ import '../styles/arte-equip.css';
      transform (escala + deslocamento) e a própria foto serve de prévia viva
      enquanto se mexe na barra de zoom. Escala 1 = a foto INTEIRA na moldura,
      que é onde toda imagem nova começa. */
-  .eq-foto { width: 100%; height: 100%; object-fit: contain; -webkit-user-drag: none; user-select: none;
+  /* A foto é posicionada, e não item da grade do quadro. O quadro é
+     `place-items: center`, e nele a linha tem altura automática: um `height: 100%`
+     ali vira circular (a linha mede o conteúdo, o conteúdo mede a linha) e o
+     navegador cai na altura natural da imagem. Com uma foto alta a caixa do
+     <img> passava de 320 para 776px, o `contain` não tinha o que fazer e o
+     quadro cortava a diferença. Com `inset: 0` a caixa é a moldura, exata. */
+  .eq-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+    -webkit-user-drag: none; user-select: none;
     transform: scale(var(--z, 1)) translate(var(--tx, 0px), var(--ty, 0px)); }
   /* com o ajuste aberto, o quadro vira enquadramento: arrastar desloca a foto */
   .eq-img.enq { cursor: grab; touch-action: none; box-shadow: inset 0 0 0 2px var(--accent); }
