@@ -19,6 +19,19 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <section class="cfg-sec">
+    <h2>Fundo do site</h2>
+    <p class="muted">O <strong>Fundo Arcano</strong>: brumas de teal e ouro, brasas subindo devagar e o círculo de invocação ao pé da página. É decoração, então o texto vem primeiro: onde ele aparece, a área de leitura ganha uma superfície mais calma por cima. O tema <strong>Legível</strong> não o mostra em nenhum caso, porque existe para o contraste máximo.</p>
+    <div class="btn-row" data-presets="fundo" data-tipo="texto">
+      <button class="btn" data-v="site">Site inteiro</button>
+      <button class="btn" data-v="ficha">Apenas na Ficha</button>
+    </div>
+    <label class="cfg-range">Intensidade
+      <input type="range" data-cfg="decoForca" min="0" max="1.4" step="0.05" />
+      <output data-out="decoForca"></output>
+    </label>
+  </section>
+
+  <section class="cfg-sec">
     <h2>Largura do texto</h2>
     <p class="muted">A medida da coluna de leitura. A faixa confortável fica entre 45 e 75 caracteres por linha; acima disso o olho perde a linha ao voltar. No modo de 2 colunas, este valor vale para <strong>cada</strong> coluna.</p>
     <div class="btn-row" data-presets="largTexto">
@@ -194,7 +207,9 @@ import Base from '../layouts/Base.astro';
 
   // nem toda preferência é número: alinhamento e barra são palavras, justificar é sim/não
   const leBotao = (k: string, raw: string): any =>
-    k === 'justificar' ? raw === 'true' : k === 'alinha' || k === 'barra' ? raw : Number(raw);
+    k === 'justificar' ? raw === 'true'
+      : k === 'alinha' || k === 'barra' || k === 'fundo' ? raw
+      : Number(raw);
 
   // caracteres por linha: a EB Garamond rende ~0,449×corpo por caractere, calibrado
   // contando as caixas de linha renderizadas de 52 parágrafos (46rem a 21px = 78 cpl)
@@ -224,6 +239,7 @@ import Base from '../layouts/Base.astro';
       fonteCorpo: (v) => `${String(v).replace('.', ',')}px`,
       entrelinha: (v) => String(v).replace('.', ','),
       margem: (v) => (v === 0 ? 'sem margem' : `${String(v).replace('.', ',')}rem`),
+      decoForca: (v) => (v === 0 ? 'sem fundo' : `${Math.round(v * 100)}%`),
     };
     document.querySelectorAll<HTMLElement>('output[data-out]').forEach((o) => {
       const k = o.dataset.out as keyof typeof CONFIG_PADRAO;

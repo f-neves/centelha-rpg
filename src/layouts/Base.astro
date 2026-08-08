@@ -17,6 +17,10 @@ const { title, descricao = 'Centelha — sistema de RPG de mesa em d6, do mortal
 
 const here = Astro.url.pathname.replace(/\/+$/, '');
 const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
+// As duas páginas de ficha: a avulsa (/ficha) e a ligada à conta (/personagem).
+// A marca sai daqui, por rota, e não de front-matter ou de detecção no cliente:
+// é o único lugar por onde as duas passam, e vale já na primeira pintura.
+const ehFicha = ['ficha', 'personagem'].some((s) => here === url(s).replace(/\/+$/, ''));
 const fullTitle = title === 'Início' ? 'Centelha' : `${title} — Centelha`;
 const ogUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
 const ogImage = Astro.site ? new URL(url('icon-512.png'), Astro.site).href : url('icon-512.png');
@@ -84,6 +88,10 @@ if (partes.length) crumbs.push({ label: title });
         if (c.entrelinha) st.setProperty('--cfg-entrelinha', String(c.entrelinha));
         if (c.margem != null) st.setProperty('--cfg-margem', c.margem + 'rem');
         if (c.colunas === 2) de.dataset.colunas = '2';
+        // fundo decorativo: no <html>, e não no <body>, porque aqui o body ainda
+        // não existe. Sem atributo vale "site", o padrão.
+        de.dataset.fundo = c.fundo === 'ficha' ? 'ficha' : 'site';
+        if (c.decoForca != null) st.setProperty('--deco-strength', String(c.decoForca));
         if (c.justificar === false) de.dataset.justif = '0';
         if (c.alinha === 'centro') de.dataset.alinha = 'centro';
         if (c.barra && c.barra !== 'fina') de.dataset.barra = c.barra;
@@ -111,7 +119,26 @@ if (partes.length) crumbs.push({ label: title });
     })();
   </script>
 </head>
-<body>
+<body class={ehFicha ? 'page-ficha' : undefined}>
+  {/* Fundo Arcano: camadas decorativas, fixas atrás de tudo (z-index -1) e fora do
+      alcance do ponteiro. Entram uma vez só, aqui no layout, porque toda página do
+      site passa por ele. Quem liga e desliga é o html[data-fundo], escrito pelo
+      script do <head> antes da primeira pintura. */}
+  <div class="fundo-arcano" aria-hidden="true">
+    <div class="fa-glow"></div>
+    <div class="fa-ring"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor">
+      <circle cx="100" cy="100" r="94" stroke-width="1" stroke-dasharray="30 10 6 10"/>
+      <circle cx="100" cy="100" r="70" stroke-width=".8" stroke-dasharray="4 8"/>
+      <g stroke-width="1.2" stroke-linecap="round">
+        <path d="M100 6 v14 M100 180 v14 M6 100 h14 M180 100 h14"/>
+        <path d="M29 29 l10 10 M171 29 l-10 10 M29 171 l10 -10 M171 171 l-10 -10"/>
+        <path d="M100 30 l6 10 -12 0 z" fill="currentColor" stroke="none" opacity=".6"/>
+      </g></svg></div>
+    <div class="fa-embers2"></div>
+    <div class="fa-embers"></div>
+    <div class="fa-grain"></div>
+  </div>
+
   <a href="#conteudo" class="skip">Pular para o conteúdo</a>
 
   <div class="topbar" data-pagefind-ignore>

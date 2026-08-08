@@ -613,3 +613,102 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 .retrato-frame { width: 172px; height: 208px; border-radius: var(--r-lg); border: 1px solid var(--rule); overflow: hidden; background: var(--panel); }
 .retrato-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform-origin: 50% 50%; display: block; user-select: none; -webkit-user-drag: none; transition: filter .15s; }
 .retrato-frame:hover img { filter: brightness(1.05); }
+
+/* ===================================================================
+   Fundo Arcano — camadas decorativas atrás do site inteiro
+   ===================================================================
+   O markup mora em layouts/Base.astro (uma vez, em toda página). Quem liga é o
+   html[data-fundo], escrito pelo script inline do <head> antes da primeira
+   pintura. Tudo em tokens do site: o único valor cru é o preto da vinheta, que
+   é sombra e não cor de tema.
+
+   Nomes: o desenho falava em --ground/--ground-2/--border; aqui os equivalentes
+   são --bg, --bg-soft e --panel-border. Os valores não mudaram. */
+:root { --deco-strength: 1; }
+
+.fundo-arcano { position: fixed; inset: 0; z-index: -1; pointer-events: none; display: none; }
+.fundo-arcano > * { position: absolute; inset: 0; }
+
+/* Site inteiro (padrão) ou só na ficha. Sem atributo = site inteiro, para o
+   fundo aparecer mesmo se o script do <head> não rodar. */
+html[data-fundo="site"] .fundo-arcano,
+html:not([data-fundo]) .fundo-arcano { display: block; }
+html[data-fundo="ficha"] body.page-ficha .fundo-arcano { display: block; }
+
+/* O Legível existe para contraste máximo: brasas e vinheta trabalham contra ele. */
+html[data-theme='legivel'] .fundo-arcano { display: none; }
+
+/* O body pinta --bg e a textura de pergaminho do tema clássico. Só sai da frente
+   onde o fundo decorativo está de fato ligado, senão o clássico perderia a
+   textura em todas as páginas. */
+html[data-fundo="site"]:not([data-theme='legivel']) body,
+html:not([data-fundo]):not([data-theme='legivel']) body,
+html[data-fundo="ficha"]:not([data-theme='legivel']) body.page-ficha { background: transparent; }
+html:not([data-theme='legivel']) { background: var(--bg); }
+
+.fa-glow { background:
+  radial-gradient(1500px 1000px at 60% 2%,  color-mix(in srgb, var(--accent) calc(20% * var(--deco-strength)), transparent), transparent 56%),
+  radial-gradient(900px 620px at 24% 0%,    color-mix(in srgb, var(--accent) calc(12% * var(--deco-strength)), transparent), transparent 54%),
+  radial-gradient(1600px 1150px at 50% 114%, color-mix(in srgb, var(--gold)  calc(28% * var(--deco-strength)), transparent), transparent 64%),
+  radial-gradient(760px 600px at 30% 100%,  color-mix(in srgb, var(--gold)   calc(18% * var(--deco-strength)), transparent), transparent 58%),
+  radial-gradient(150% 150% at 50% 52%, transparent 56%, rgba(0,0,0,.5)); }
+
+.fa-embers, .fa-embers2 { background-repeat: repeat; }
+.fa-embers { opacity: calc(var(--deco-strength) * .95); background-size: 260px 260px;
+  background-image:
+   radial-gradient(2.4px 2.4px at 50px 230px, var(--gold), transparent 3.4px),
+   radial-gradient(1.8px 1.8px at 150px 200px, var(--gold), transparent 2.6px),
+   radial-gradient(2px 2px at 210px 150px, var(--accent-strong), transparent 3px),
+   radial-gradient(1.6px 1.6px at 100px 110px, var(--gold), transparent 2.4px),
+   radial-gradient(1.6px 1.6px at 230px 60px, var(--gold), transparent 2.4px);
+  animation: fa-rise2 30s linear infinite; }
+.fa-embers2 { opacity: calc(var(--deco-strength) * .5); background-size: 320px 320px;
+  background-image:
+   radial-gradient(9px 9px at 90px 360px, color-mix(in srgb, var(--gold) 40%, transparent), transparent 70%),
+   radial-gradient(7px 7px at 300px 280px, color-mix(in srgb, var(--gold) 34%, transparent), transparent 70%),
+   radial-gradient(8px 8px at 200px 120px, color-mix(in srgb, var(--accent) 26%, transparent), transparent 72%);
+  animation: fa-rise 58s linear infinite; }
+@keyframes fa-rise { to { background-position: 0 -320px; } }
+@keyframes fa-rise2 { to { background-position: 0 -260px; } }
+
+.fa-ring { display: grid; place-items: end center; }
+.fa-ring svg { width: min(96vw, 880px); height: min(96vw, 880px); color: var(--gold);
+  opacity: calc(var(--deco-strength) * .18); transform: translateY(12%); }
+
+.fa-grain { mix-blend-mode: overlay; opacity: calc(var(--deco-strength) * .16);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+@media (prefers-reduced-motion: reduce) { .fa-embers, .fa-embers2 { animation: none; } }
+
+/* Superfície calma atrás do conteúdo. No desenho era .md-content (MkDocs); aqui o
+   container equivalente é o main.content, que já traz o respiro. Obrigatória
+   sempre que o fundo está ligado: sem ela as páginas densas de texto ficam sobre
+   as brasas. Só entra quando há fundo, para não virar caixa à toa. */
+html[data-fundo="site"]:not([data-theme='legivel']) .content,
+html:not([data-fundo]):not([data-theme='legivel']) .content,
+html[data-fundo="ficha"]:not([data-theme='legivel']) body.page-ficha .content {
+  background: color-mix(in srgb, var(--bg) 88%, transparent); border-radius: 12px; }
+
+/* ---- Moldura ornamentada da Ficha ---- */
+.sheet-frame { position: relative; border-radius: 16px; padding: 6px;
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent) inset,
+              0 0 42px color-mix(in srgb, var(--gold) calc(16% * var(--deco-strength)), transparent); }
+.sheet-frame::before { content: ""; position: absolute; inset: 5px; border-radius: 11px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); pointer-events: none; }
+.sheet-frame .corner { position: absolute; width: 58px; height: 58px; color: var(--gold);
+  opacity: calc(.35 + var(--deco-strength) * .55); }
+.sheet-frame .corner.tl { top: -3px; left: -3px; }
+.sheet-frame .corner.tr { top: -3px; right: -3px; transform: scaleX(-1); }
+.sheet-frame .corner.bl { bottom: -3px; left: -3px; transform: scaleY(-1); }
+.sheet-frame .corner.br { bottom: -3px; right: -3px; transform: scale(-1, -1); }
+/* no celular a filigrana ocupa canto demais numa tela de 360px */
+@media (max-width: 560px) { .sheet-frame .corner { width: 38px; height: 38px; } }
+
+/* O clássico pinta a fibra de pergaminho no body, e o body sai da frente quando o
+   fundo está ligado. A textura muda de lugar em vez de sumir: vai para a própria
+   superfície de leitura, que é onde ela sempre importou. */
+html[data-theme='classico'][data-fundo="site"] .content,
+html[data-theme='classico']:not([data-fundo]) .content,
+html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .content {
+  background-image: var(--tex); background-size: var(--tex-size); }

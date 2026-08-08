@@ -1,0 +1,26 @@
+---
+/**
+ * Moldura ornamentada da Ficha: a borda dupla (dourado por fora, teal por dentro)
+ * mais uma filigrana em cada canto. O desenho do canto é um só, virado por CSS
+ * (scaleX / scaleY / scale(-1,-1)), então o arquivo carrega um traçado e não quatro.
+ *
+ * Existe como componente porque as duas fichas do site a usam: a avulsa (/ficha) e
+ * a da conta (/personagem).
+ */
+---
+<div class="sheet-frame">
+  {['tl', 'tr', 'bl', 'br'].map((c) => (
+    <svg class={`corner ${c}`} viewBox="0 0 58 58" fill="none" stroke="currentColor" aria-hidden="true">
+      {/* volta principal, do canto para dentro */}
+      <path d="M2 22 C2 10 10 2 22 2" stroke-width="1.4" stroke-linecap="round" />
+      <path d="M7 26 C7 16 16 7 26 7" stroke-width=".8" stroke-linecap="round" opacity=".75" />
+      {/* gavinhas que fecham o desenho nas duas pontas */}
+      <path d="M22 2 c7 0 11 3 13 7 M2 22 c0 7 3 11 7 13" stroke-width=".8" stroke-linecap="round" opacity=".6" />
+      {/* botão central e as duas sementes, o miolo da filigrana */}
+      <circle cx="12" cy="12" r="2.6" stroke-width="1" />
+      <circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none" />
+      <path d="M20 12 h6 M12 20 v6" stroke-width=".8" stroke-linecap="round" opacity=".7" />
+    </svg>
+  ))}
+  <slot />
+</div>

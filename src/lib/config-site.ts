@@ -32,6 +32,10 @@ export type ConfigSite = {
   alinha?: 'centro' | 'esquerda';
   /** estilo da barra de rolagem (janela e sidebar) */
   barra?: 'nativa' | 'fina' | 'editorial' | 'dourada' | 'teal';
+  /** onde o Fundo Arcano aparece: no site inteiro ou só nas páginas de ficha */
+  fundo?: 'site' | 'ficha';
+  /** intensidade do fundo decorativo (--deco-strength); 1 = como foi desenhado */
+  decoForca?: number;
   /** cores fora do padrão, por tema: { escuro: { ink: '#e9e5d7' } }. Ver lib/cores-site.ts */
   cores?: CoresConfig;
 };
@@ -50,6 +54,8 @@ export const CONFIG_PADRAO: Required<ConfigSite> = {
   margem: 3,
   alinha: 'esquerda',
   barra: 'fina',
+  fundo: 'site',
+  decoForca: 1,
   cores: {},           // nenhuma cor fora do que o global.css já define
 };
 
@@ -81,6 +87,12 @@ export function aplicarConfig(cfg: ConfigSite) {
   põe('--fs-corpo', cfg.fonteCorpo ? (cfg.fonteCorpo / 16) + 'rem' : null);
   põe('--cfg-entrelinha', cfg.entrelinha ? String(cfg.entrelinha) : null);
   põe('--cfg-margem', cfg.margem == null ? null : cfg.margem + 'rem');
+  põe('--deco-strength', cfg.decoForca == null ? null : String(cfg.decoForca));
+
+  // O fundo decorativo é a única marca que o site sempre escreve, inclusive no
+  // padrão: o CSS trata "sem atributo" como site inteiro, mas deixar o valor
+  // explícito é o que faz o controle da página acender o botão certo.
+  de.dataset.fundo = cfg.fundo === 'ficha' ? 'ficha' : 'site';
 
   if (cfg.colunas === 2) de.dataset.colunas = '2';
   else delete de.dataset.colunas;
