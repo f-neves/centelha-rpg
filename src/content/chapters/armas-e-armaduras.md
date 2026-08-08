@@ -53,6 +53,8 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 ## Armas de Exemplo
 
+### Armas Corpo a Corpo
+
 <div class="table-wrap sem-ultima-coluna">
 
 | Arma | Classe | Modos | Velocidade | Dano | Acerto | Defesa | Mãos | Destaque |
@@ -66,26 +68,37 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 | Picareta de Guerra | Média | ★P(N2) · I | 6 | 1d6 | +1 | +1 | 1 | O bico vence a placa pelo ponto |
 | Lança | Haste | ★P(N1) | 6 | 1d6+2 | +1 | +2 | 2 | Alcance, arremessável. Estocada que controla a distância; resvala na placa |
 | Alabarda | Haste | ★C · ★P(N1) · ★I | 6 | 1d6+2 | +1 | +2 | 2 | Alcance, pesada (lenta). Três modos principais num cabo; cobre tudo |
-| Montante | Pesada | ★C · P(N1) · I | 7 | 2d6 | +0 | −2 | 2 | Espadão; dano alto, guarda baixa — te expõe entre os golpes |
+| Montante | Pesada | ★C · P(N1) · I | 7 | 2d6 | +0 | −2 | 2 | Espadão; dano alto, guarda baixa, te expõe entre os golpes |
 | Martelo de Guerra | Pesada | ★I · P(N2) | 7 | 2d6 | +0 | −2 | 2 | Esmaga placas; o bico fura quando precisa. Pouca defesa |
-| Arco Curto | Distância | ★P(N1) | 6 | 1d6 | +1 | 0 | 2 | Munição, distância. Alcance curto; soma Força **até +3**; resvala na placa |
-| Arco Longo | Distância | ★P(N1) | 6 | 1d6 | +1 | 0 | 2 | Munição, distância. Alcance longo; soma **Força inteira**; resvala na placa |
-| Arco Composto | Distância | ★P(N1) | 6 | 1d6 | +1 | 0 | 2 | Munição, distância, **caro**. Alcance longo; **requer Força 4**, soma **Força×2**; resvala na placa |
-| Besta Pequena | Distância | ★P(N1) | 6 | 1d6+2 | +1 | 0 | 2 | Munição, recarga, distância. Não usa Força (mecanismo); alcance médio |
-| Besta Média | Distância | ★P(N1) | 6 | 1d6+4 | +1 | 0 | 2 | Munição, recarga, distância. Não usa Força; o virote (N1) fura couro e malha, resvala na placa |
-| Besta Grande | Distância | ★P(N2) | 7 | 1d6+8 | +1 | 0 | 2 | Munição, recarga, pesada. Arbalesta; o virote pesado (N2) fura brigandina; dano bruto altíssimo, mas resvala na placa |
-| Adaga de Arremesso | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 0 | 1 | Ágil, munição. Facas às dezenas |
-| Machado de Arremesso | Arremesso | ★C · I | 5 | 1d6+2 | +1 | 0 | 1 | Gira no ar; golpe forte e curto |
-| Azagaia | Arremesso | ★P(N1) | 5 | 1d6+1 | +1 | 0 | 1 | Javelina: fura à distância ou na estocada em punho |
-| Funda | Arremesso | ★I | 6 | 1d6 | +1 | 0 | 1 | Munição. Pedras a longa distância; Impacto (sem gate) |
-| Dardos | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 0 | 1 | Ágil, munição. Velozes em sequência |
-| Bumerangue | Arremesso | ★I | 5 | 1d6 | +1 | 0 | 1 | Atinge em curva e volta à mão se erra |
-| Rede | Arremesso | ★I | 5 | 1d6 | +0 | 0 | 1 | Imobiliza. Prende o alvo em vez de ferir |
-| Pilum | Arremesso | ★P(N2) | 5 | 1d6+2 | +1 | 0 | 1 | Anti-escudo: fura placa e entorta ao cravar |
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma — ver <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
+### Armas à Distância
+
+<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Distância</strong>: o alcance máximo do disparo ou do arremesso, em metros. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio. Os valores são o <em>tiro extremo</em>, não a distância em que se acerta com facilidade; para mirar bem, conte com algo em torno de metade. Nas armas de <strong>Arremesso</strong> o número é um teto do objeto, não uma promessa: o braço também limita, e vale <em>o menor</em> entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso (o bloco <em>Força &amp; Arremesso</em> da ficha faz essa conta). Um arco não tem essa segunda trava, porque quem lança a flecha é o arco.</p>
+
+<div class="table-wrap sem-ultima-coluna">
+
+| Arma | Classe | Modos | Velocidade | Dano | Acerto | Distância | Mãos | Destaque |
+|---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
+| Arco Curto | Distância | ★P(N1) | 6 | 1d6−1 | +1 | 120 m | 2 | Munição. Soma Força **até +3**; resvala na placa |
+| Arco Longo | Distância | ★P(N1) | 6 | 1d6 | +0 | 250 m | 2 | Munição. Soma **Força inteira**; resvala na placa |
+| Arco Composto | Distância | ★P(N1) | 6 | 1d6+2 | +0 | 300 m | 2 | Munição, **caro**. **Requer Força 4**, soma **Força×2**; resvala na placa |
+| Besta Pequena | Distância | ★P(N1) | 6 | 1d6+2 | +1 | 100 m | 2 | Munição, recarga. Não usa Força (mecanismo) |
+| Besta Média | Distância | ★P(N1) | 6 | 1d6+4 | +1 | 200 m | 2 | Munição, recarga. Não usa Força; o virote (N1) fura couro e malha, resvala na placa |
+| Besta Grande | Distância | ★P(N2) | 7 | 1d6+8 | +1 | 300 m | 2 | Munição, recarga, pesada. Arbalesta; o virote pesado (N2) fura brigandina; dano bruto altíssimo, mas resvala na placa |
+| Funda | Arremesso | ★I | 6 | 1d6 | +1 | 200 m | 1 | Munição. Pedras a longa distância; Impacto (sem gate) |
+| Bumerangue | Arremesso | ★I | 5 | 1d6 | +1 | 50 m | 1 | Atinge em curva e volta à mão se erra |
+| Azagaia | Arremesso | ★P(N1) | 5 | 1d6+1 | +1 | 40 m | 1 | Javelina: fura à distância ou na estocada em punho |
+| Dardos | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 30 m | 1 | Ágil, munição. Velozes em sequência |
+| Pilum | Arremesso | ★P(N2) | 5 | 1d6+2 | +1 | 25 m | 1 | Anti-escudo: fura placa e entorta ao cravar |
+| Machado de Arremesso | Arremesso | ★C · I | 5 | 1d6+2 | +1 | 12 m | 1 | Gira no ar; golpe forte e curto |
+| Adaga de Arremesso | Arremesso | ★P(N0) | 5 | 1d6−2 | +1 | 10 m | 1 | Ágil, munição. Facas às dezenas; só fura pele |
+| Rede | Arremesso | ★I | 5 | 1d6 | +0 | 5 m | 1 | Imobiliza. Prende o alvo em vez de ferir |
+
+</div>
+
+<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N5)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Distância</strong> = alcance máximo · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma; ver o <a href="/regras/quase-acerto">capítulo próprio</a>.</p>
 
 ## Armaduras
 

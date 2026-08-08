@@ -360,7 +360,8 @@
       "projétil veloz"
     ],
     "notas": "Pequeno e fácil de guardar; alcance curto. Soma Força até +3 (a haste curta não aguenta mais tração). Perfura couro e malha (N1), resvala na placa.",
-    "danoBonus": 0
+    "danoBonus": -1,
+    "distMax": 120
   },
   {
     "id": "arco-longo",
@@ -369,7 +370,7 @@
     "atrib": "percepcao",
     "pericia": "atirador",
     "dado": 1,
-    "acerto": 1,
+    "acerto": 0,
     "defesaArma": 0,
     "maos": 2,
     "ticks": 6,
@@ -391,7 +392,8 @@
       "projétil veloz"
     ],
     "notas": "Grande, de alcance longo. Soma a Força inteira ao dano. Perfura couro e malha (N1), resvala na placa.",
-    "danoBonus": 0
+    "danoBonus": 0,
+    "distMax": 250
   },
   {
     "id": "arco-composto",
@@ -400,7 +402,7 @@
     "atrib": "percepcao",
     "pericia": "atirador",
     "dado": 1,
-    "acerto": 1,
+    "acerto": 0,
     "defesaArma": 0,
     "maos": 2,
     "ticks": 6,
@@ -424,7 +426,8 @@
       "caro"
     ],
     "notas": "Laminado de chifre e tendão: exige Força 4 para armar, e soma Força×2 ao dano. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
-    "danoBonus": 0
+    "danoBonus": 2,
+    "distMax": 300
   },
   {
     "id": "besta-pequena",
@@ -456,7 +459,8 @@
       "projétil veloz"
     ],
     "notas": "Mira e dispara sem Força (mecanismo faz a tração); requer recarga. Alcance médio. Perfura couro e malha (N1).",
-    "danoBonus": 2
+    "danoBonus": 2,
+    "distMax": 100
   },
   {
     "id": "besta-media",
@@ -488,7 +492,8 @@
       "projétil veloz"
     ],
     "notas": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta. Alcance longo. A resposta de longe contra tropa e cavalo.",
-    "danoBonus": 4
+    "danoBonus": 4,
+    "distMax": 200
   },
   {
     "id": "besta-grande",
@@ -521,7 +526,8 @@
       "pesada"
     ],
     "notas": "Arbalesta de manivela: o virote pesado (N2) fura malha e brigandina, mas ainda resvala na placa completa (N3). Recarga muito lenta, alcance longo; o dano bruto derruba homem e cavalo.",
-    "danoBonus": 8
+    "danoBonus": 8,
+    "distMax": 300
   },
   {
     "id": "adaga-de-arremesso",
@@ -530,17 +536,17 @@
     "atrib": "destreza",
     "pericia": "arremesso",
     "dado": 1,
-    "acerto": 2,
+    "acerto": 1,
     "defesaArma": 0,
     "maos": 1,
-    "ticks": 4,
+    "ticks": 5,
     "folego": 12,
     "tipoDano": "perfurante",
-    "pen": 1,
+    "pen": 0,
     "modos": [
       {
         "tipo": "perfurante",
-        "perf": 1,
+        "perf": 0,
         "principal": true
       }
     ],
@@ -551,7 +557,8 @@
       "projétil veloz"
     ],
     "notas": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto.",
-    "danoBonus": 0
+    "danoBonus": -2,
+    "distMax": 10
   },
   {
     "id": "machado-de-arremesso",
@@ -581,7 +588,8 @@
       "arremessável"
     ],
     "notas": "Machado curto e pesado que gira no ar; golpe forte de curto alcance. Recuperável.",
-    "danoBonus": 2
+    "danoBonus": 2,
+    "distMax": 12
   },
   {
     "id": "azagaia",
@@ -608,7 +616,8 @@
       "arremessável"
     ],
     "notas": "Dardo de arremesso (javelina): fura à distância (N1) e ainda serve de lança curta na mão (estocada N1).",
-    "danoBonus": 1
+    "danoBonus": 1,
+    "distMax": 40
   },
   {
     "id": "funda",
@@ -636,7 +645,8 @@
       "projétil veloz"
     ],
     "notas": "Lança pedras a grande distância; barata e silenciosa. Dano de Impacto (quebra ossos sob a armadura), não passa pelo gate de perfuração.",
-    "danoBonus": 0
+    "danoBonus": 0,
+    "distMax": 200
   },
   {
     "id": "dardos",
@@ -666,7 +676,8 @@
       "projétil veloz"
     ],
     "notas": "Pequenos e velozes, lançados em sequência; precisos de perto. Carregados às dezenas.",
-    "danoBonus": 0
+    "danoBonus": 0,
+    "distMax": 30
   },
   {
     "id": "bumerangue",
@@ -692,7 +703,8 @@
       "arremessável"
     ],
     "notas": "Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição. Dano de Impacto.",
-    "danoBonus": 0
+    "danoBonus": 0,
+    "distMax": 50
   },
   {
     "id": "rede",
@@ -719,7 +731,8 @@
       "imobiliza"
     ],
     "notas": "Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento).",
-    "danoBonus": 0
+    "danoBonus": 0,
+    "distMax": 5
   },
   {
     "id": "pilum",
@@ -746,7 +759,8 @@
       "arremessável"
     ],
     "notas": "Dardo pesado anti-escudo: fura placa (N2) e entorta ao cravar, inutilizando o escudo atingido.",
-    "danoBonus": 2
+    "danoBonus": 2,
+    "distMax": 25
   },
   {
     "id": "desarmado",

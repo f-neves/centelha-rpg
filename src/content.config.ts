@@ -141,6 +141,8 @@ const armas = defineCollection({
     forcaMult: z.number().optional(),
     forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
     alcance: z.enum(['curto', 'medio', 'longo']).optional(),
+    // distância máxima da arma, em metros. Só as de Distância e Arremesso têm.
+    distMax: z.number().int().positive().optional(),
     tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
     modos: z.array(z.object({
       tipo: z.enum(['corte', 'perfurante', 'impacto']),
