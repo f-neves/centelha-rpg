@@ -559,13 +559,17 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
      miúdo que cabe num quadro estreito e o fundo mais opaco, que é o que os
      separa da foto por baixo. */
   /* Herdam o `.btn` do site na cor e na fonte; aqui perdem o canto redondo e a
-     borda solta, porque juntos formam uma faixa só. Num quadro estreito sobra
-     pouca largura por botão: a fonte miúda é o que faz "enquadramento" caber numa
-     linha e a quebra cair no espaço, e não no meio da palavra. */
-  .retrato-bt { flex: 1 1 0; min-width: 0; padding: .2rem .35rem; border-radius: 0;
+     borda solta, porque juntos formam uma faixa só.
+     O tamanho do texto acompanha a largura do quadro (`cqi` = 1% dela). Um valor
+     fixo não serve: com "enquadramento" numa metade de quadro estreito ele sobra
+     e a palavra parte no meio; num quadro largo, o mesmo valor fica miúdo à toa.
+     Os 4,6% saem da conta de quando a palavra encosta na borda, e o teto impede
+     que fique maior que a letra do resto da ficha. */
+  .retrato-bt { flex: 1 1 0; min-width: 0; padding: .2rem; border-radius: 0;
     border: none; border-top: 1px solid var(--panel-border);
     background: color-mix(in srgb, var(--panel) 88%, transparent); backdrop-filter: blur(3px);
-    font-size: .55rem; line-height: 1.25; text-align: center; overflow-wrap: break-word; }
+    font-size: clamp(.6rem, 4.6cqi, var(--fs-rotulo)); line-height: 1.25; text-align: center;
+    overflow-wrap: break-word; }
   .retrato-dupla .retrato-bt + .retrato-bt { border-left: 1px solid var(--panel-border); }
   /* no ajuste o Concluir volta a ser um botão solto, ao lado da barra de zoom */
   .retrato-ajuste .retrato-bt { flex: 0 0 auto; padding: .25rem .6rem; background: var(--panel);
@@ -608,7 +612,10 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
      vem da razão da foto, então a moldura chega perto do formato dela; o que
      sobrar aparece como tarja, porque o `contain` mantém a foto inteira. */
   .pers-cab .retrato-frame { position: relative; flex: 1; min-height: 0; width: 100%;
-    height: auto; aspect-ratio: auto; }
+    height: auto; aspect-ratio: auto;
+    /* vira referência de tamanho para a faixa: o texto dos botões acompanha a
+       largura do quadro em vez de ter um valor fixo que ora sobra, ora falta */
+    container-type: inline-size; }
   /* A foto sai do fluxo. Com ela dentro, a largura `auto` do quadro pegava o
      tamanho NATURAL da imagem em vez da razão: uma foto de 600px de largura
      esticava o retrato para 600px, que por sua vez espremia a coluna do lado, que
@@ -650,9 +657,13 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     .ident-slot .idrow { grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-template-rows: repeat(4, auto); grid-auto-flow: column; gap: .5rem .8rem; }
   }
-  .xp-linha { margin-top: auto; padding-top: .3rem; }
-  .xp-nota { color: var(--muted); font-size: var(--fs-rotulo); }
-  .mestre-xp { display: flex; align-items: flex-end; gap: .6rem; flex-wrap: wrap; margin-top: .4rem; }
+  /* O XP do mestre e as ações da ficha lado a lado, na mesma linha; o recado do
+     XP fica numa linha só dele, acima dos dois. */
+  .xp-linha { margin-top: auto; padding-top: .3rem;
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: .5rem .8rem; }
+  .xp-nota { flex: 1 0 100%; color: var(--muted); font-size: var(--fs-rotulo); }
+  .xp-nota:empty { display: none; }
+  .mestre-xp { display: flex; align-items: flex-end; gap: .6rem; flex-wrap: wrap; }
   .mestre-xp label { display: flex; flex-direction: column; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); gap: .2rem; }
   .mestre-xp input { width: 7rem; padding: .4rem; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--bg); color: var(--ink); font: inherit; }
   .bloco { margin-top: 1.6rem; }
@@ -676,7 +687,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .erro { color: var(--perigo); }
 
   /* As ações da ficha (enviar, aprovar, devolver, reabrir) na linha do XP */
-  .status-acoes { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .4rem; }
+  .status-acoes { display: flex; gap: .5rem; flex-wrap: wrap; align-items: flex-end; }
   .status-acoes:empty { display: none; }
   .btn.perigo { border-color: var(--perigo); color: var(--perigo); }
   .btn.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
