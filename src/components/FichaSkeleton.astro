@@ -7,25 +7,28 @@ import FormasPop from './FormasPop.astro';
 // recortando o seu quadro. Gerado por scripts/gen-arte-equip.mjs.
 import '../styles/arte-equip.css';
 ---
+{/* Três faixas em vez de uma fila só: os números à esquerda, os botões à direita e o
+    detalhamento do gasto na linha de baixo, atravessando a barra. Antes era um flex
+    plano em que o detalhamento (que cresce com o que foi comprado) empurrava os botões
+    e a barra remontava sozinha a cada compra. A ordem dos números segue a conta:
+    orçamento, quanto saiu, quanto sobra. */}
 <div class="xpbar" id="painel">
-  <span class="big">XP: <b id="xpSpent">0</b></span>
-  <label>Orçamento <input type="number" id="xpBudget" value="1500" /></label>
-  <span class="big">Restam: <b id="xpRem" class="rem ok">1500</b></span>
-  <span class="breakdown" id="xpBreak"></span>
-  <span class="modo-wrap"><span class="modo-lbl">Modo</span>
-    <span class="modo-toggle" role="group" aria-label="Modo da ficha">
-      <button class="btn" data-modo="criacao" title="Aplica os limites de criação (Atrib 4 · Hab 3 · Centelha 2)">Criação</button>
-      <button class="btn" data-modo="evolucao" title="Libera além dos limites de criação (em jogo)">Evolução</button>
-    </span>
-  </span>
+  <div class="xp-nums">
+    <label>Orçamento <input type="number" id="xpBudget" value="1500" /></label>
+    <span class="big">Gasto: <b id="xpSpent">0</b></span>
+    <span class="big">Restam: <b id="xpRem" class="rem ok">1500</b></span>
+  </div>
   <span class="xp-btns">
     <button class="btn" id="f-export">Exportar</button>
     <button class="btn" id="f-import">Importar</button>
-    <button class="btn" id="f-print">Imprimir</button>
-    <button class="btn" id="f-link">Link</button>
+    {/* Imprimir e Link continuam montados (o resto do código fala com eles), só não
+        aparecem na barra. Voltar é tirar o hidden. */}
+    <button class="btn" id="f-print" hidden>Imprimir</button>
+    <button class="btn" id="f-link" hidden>Link</button>
     <button class="btn" id="f-reset">Resetar</button>
     <input type="file" id="f-file" accept="application/json,.json" hidden />
   </span>
+  <span class="breakdown" id="xpBreak"></span>
 </div>
 
 {/* No celular a Ficha vira um painel de abas: os vitais ficam sempre à vista, uma seção
@@ -271,16 +274,29 @@ import '../styles/arte-equip.css';
 <!-- is:global porque o conteúdo (bolinhas, cards, pílulas) é criado via JS e
      não recebe o atributo de escopo do Astro -->
 <style is:global>
-  .xpbar { display: flex; gap: 1rem 1.2rem; flex-wrap: wrap; align-items: center; background: var(--accent); color: var(--on-accent); padding: .6rem 1rem; border-radius: var(--r-md); margin: 1rem 0; }
-  .xpbar .big { font-family: 'Cinzel'; font-size: var(--fs-aux); } .xpbar .big b { font-size: var(--fs-h3); }
+  /* números | botões · e o detalhamento ocupando a linha inteira embaixo */
+  .xpbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .45rem 1.2rem;
+    align-items: center; background: var(--accent); color: var(--on-accent);
+    padding: .6rem 1rem; border-radius: var(--r-md); margin: 1rem 0; }
+  .xpbar .xp-nums { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem 1.2rem; min-width: 0; }
+  .xpbar .big { font-family: 'Cinzel'; font-size: var(--fs-aux); white-space: nowrap; }
+  .xpbar .big b { font-size: var(--fs-h3); }
   .xpbar .rem.neg { color: #ffd0cb; } .xpbar label { font-family: 'Cinzel'; font-size: var(--fs-micro); display: flex; align-items: center; gap: .4rem; }
   .xpbar input { width: 4.5rem; text-align: center; border: none; border-radius: var(--r-sm); padding: .25rem; font-family: 'Cinzel'; }
   .xpbar input:disabled { opacity: .8; cursor: not-allowed; }
-  .xpbar .breakdown { font-size: var(--fs-micro); opacity: .9; flex: 1 1 12rem; }
-  /* flex-wrap é obrigatório: sem ele os 7 botões formam uma fila de 574px que estoura a
-     viewport do celular e põe a Ficha inteira para rolar na horizontal. */
-  .xpbar .xp-btns { display: flex; flex-wrap: wrap; gap: .4rem; margin-left: auto; min-width: 0; }
-  @media (max-width: 900px) { .xpbar .xp-btns { margin-left: 0; width: 100%; } }
+  /* o detalhamento atravessa as duas colunas: é o texto que mais varia de tamanho, e
+     na mesma linha dos números ele empurrava os botões a cada compra */
+  .xpbar .breakdown { grid-column: 1 / -1; font-size: var(--fs-micro); opacity: .9; min-width: 0; }
+  .xpbar .breakdown:empty { display: none; }
+  /* flex-wrap é obrigatório: sem ele a fila de botões estoura a viewport do celular e
+     põe a Ficha inteira para rolar na horizontal. */
+  .xpbar .xp-btns { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .4rem; min-width: 0; }
+  /* no celular tudo vira uma coluna: números, botões (largura toda) e o detalhamento */
+  @media (max-width: 640px) {
+    .xpbar { grid-template-columns: minmax(0, 1fr); }
+    .xpbar .xp-btns { justify-content: flex-start; }
+    .xpbar .xp-btns .btn { flex: 1 1 auto; }
+  }
   .xpbar .btn { background: var(--accent-strong); color: var(--on-accent-strong); border-color: transparent; padding: .25rem .6rem; font-size: var(--fs-micro); }
 
   .idrow { display: grid; grid-template-columns: 2fr 2fr 1fr 1.4fr; gap: 1rem; margin-bottom: .4rem; }
@@ -340,11 +356,6 @@ import '../styles/arte-equip.css';
   .dot.cap { opacity: .25; cursor: not-allowed; border-style: dotted; } .dot.cap:hover { box-shadow: none; }
   .rollv { background: none; border: none; cursor: pointer; font-size: var(--fs-rotulo); opacity: .35; margin-left: .35rem; padding: 0; line-height: 1; }
   .rollv:hover { opacity: 1; }
-  .modo-wrap { display: inline-flex; align-items: center; gap: .35rem; }
-  .modo-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
-  .modo-toggle { display: inline-flex; gap: 0; border: 1px solid var(--on-accent); border-radius: var(--r-sm); overflow: hidden; }
-  .modo-toggle .btn { border: none; border-radius: 0; }
-  .modo-toggle .btn.primary { background: var(--on-accent); color: var(--accent-texto); }
   .specbtn { background: none; border: none; cursor: pointer; font-size: var(--fs-micro); opacity: .4; margin-left: .35rem; padding: 0; line-height: 1; color: var(--gold); }
   .specbtn:hover, .specbtn.has { opacity: 1; }
   .specpop-h small { font-family: 'EB Garamond'; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--ink-soft); }
@@ -773,7 +784,9 @@ import '../styles/arte-equip.css';
 
     /* a barra de XP sai do fluxo e vira a folha de ações atrás do ⋯ */
     body.ficha-abas .xpbar { display: none; }
-    body.ficha-abas.fx-aberto .xpbar { display: flex; position: fixed; left: .5rem; right: .5rem;
+    /* grid e não flex: a barra é uma grade (números | botões, detalhamento embaixo), e
+       um display: flex aqui desmontava a grade e punha as três partes lado a lado */
+    body.ficha-abas.fx-aberto .xpbar { display: grid; position: fixed; left: .5rem; right: .5rem;
       bottom: 4.4rem; z-index: 65; box-shadow: 0 12px 40px var(--shadow); max-height: 70vh; overflow-y: auto; margin: 0; }
 
     body.ficha-abas .fx-bar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
@@ -850,7 +863,7 @@ import '../styles/arte-equip.css';
   @media print {
     .ftab { display: contents !important; }
     .fdeck, .fx-bar { display: none !important; }
-    .sidebar, .topbar, .scrim, #consulta, #otp-fab, #otp-panel, .busca-modal, .ref-pop, .xp-btns, .modo-toggle, .rollv, .rolador, .skip { display: none !important; }
+    .sidebar, .topbar, .scrim, #consulta, #otp-fab, #otp-panel, .busca-modal, .ref-pop, .xp-btns, .rollv, .rolador, .skip { display: none !important; }
     .shell { display: block !important; } .content { padding: 0 !important; }
     .cam-body { display: block !important; }
     .xpbar { background: none !important; color: var(--ink) !important; border-bottom: 2px solid var(--accent); border-radius: 0; }

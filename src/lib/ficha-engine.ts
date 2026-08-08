@@ -87,27 +87,21 @@ export function montarFicha(opts: FichaOpts) {
     return [items.slice(0, n), items.slice(n, 2 * n), items.slice(2 * n)]
       .map((c) => '<div>' + c.map(render).join('') + '</div>').join('');
   };
-  const CREA = (regras as any).limitesCriacao as { atributo: number; habilidade: number; centelha: number; picoAtributo?: number; picoHabilidade?: number };
   const centReq = (b: number) => b;
   function racialAttr(key?: string): number { return key ? (RACA[S.raca]?.atributos?.[key] || 0) : 0; }
+  /**
+   * O teto de cada trilha. Não há mais modo de Criação: o que segura a ficha é o
+   * ORÇAMENTO de XP, não uma trava por cima do que se pode marcar. Sobra só o teto da
+   * régua (0–6, ou 0–12 em Vontade e Aparência) e o da raça, que é traço da raça e não
+   * limite de criação.
+   */
   function capFor(kind: string, key?: string): number {
     // Feitiçaria: a trava de nível por Ocultismo foi removida. Basta Centelha > 0 para tocar a magia;
     // a profundidade (nível da Arte) é comprada com XP. (Relação com Ocultismo será refeita nas Trilhas de Feitiçaria.)
     if (kind === 'arte2') return (S.centelha || 0) > 0 ? 6 : 0;
     const rac = kind === 'attr' ? racialAttr(key) : 0;
-    const full: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12 };
-    if (S.modo === 'evolucao') return (full[kind] ?? 6) + rac;
-    if (kind === 'attr' || kind === 'skill') {
-      const base = kind === 'attr' ? CREA.atributo : CREA.habilidade;
-      const pico = (kind === 'attr' ? CREA.picoAtributo : CREA.picoHabilidade) ?? base;
-      if (pico <= base) return base + rac;
-      const store: Record<string, number> = kind === 'attr' ? S.attrs : S.skills;
-      let outroPico = false;
-      for (const k in store) { if (k !== key && (store[k] || 0) > base) { outroPico = true; break; } }
-      return (outroPico ? base : pico) + rac;
-    }
-    const crea: Record<string, number> = { skill2: CREA.habilidade, virtue: 6, centelha: CREA.centelha, willpower: 12, aparencia: 12 };
-    return crea[kind] ?? 6;
+    const teto: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12 };
+    return (teto[kind] ?? 6) + rac;
   }
 
   // ---- estado ----
@@ -115,7 +109,7 @@ export function montarFicha(opts: FichaOpts) {
   const OPEN = { cam: {} as Record<string, boolean>, arte: {} as Record<string, boolean> };
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, modo: 'evolucao', equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoXp('atributo')));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
@@ -221,7 +215,7 @@ export function montarFicha(opts: FichaOpts) {
         delete S.skills[prim]; delete S.spec[prim];
       }
     }
-    S.willpower ??= pisoXp('vontade'); S.aparencia ??= pisoXp('aparencia'); S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.modo ??= 'evolucao'; S.derivCol ??= true;
+    S.willpower ??= pisoXp('vontade'); S.aparencia ??= pisoXp('aparencia'); S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.derivCol ??= true; delete S.modo;   // o modo Criacao/Evolucao foi removido
     S.equip ??= {};
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
@@ -1036,11 +1030,18 @@ export function montarFicha(opts: FichaOpts) {
     S.arsenal = (S.arsenal || []).filter((p: any) => usados.has(p.uid) || p.img || p.mod || (ehLivre(p) && p.nome));
   }
   /** Os quatro números da arma como blocos, no lugar da linha "5/+2/1d6/+1". */
+  /**
+   * Os quatro números da arma. Na arma de longe o último bloco é a Distância, e
+   * não a Defesa: quem atira não guarda com o arco, e o que interessa ali é até
+   * onde o tiro chega.
+   */
   const statsBlocos = (w: any) => `<div class="eq-nums">
     <span class="eq-n"><b>Veloc.</b>${w.ticks}</span>
     <span class="eq-n"><b>Acerto</b>${sgn(w.acerto || 0)}</span>
     <span class="eq-n"><b>Dano</b>${danoStr(w)}</span>
-    <span class="eq-n def"><b>Defesa</b>${sgn(w.defesaArma || 0)}</span></div>`;
+    ${w.distMax
+      ? `<span class="eq-n"><b>Distância</b>${w.distMax} m</span>`
+      : `<span class="eq-n def"><b>Defesa</b>${sgn(w.defesaArma || 0)}</span>`}</div>`;
   const statsBlocosEscudo = (s: any) => `<div class="eq-nums">
     <span class="eq-n def"><b>Defesa</b>${sgn(s.bloqCaC || 0)}</span>
     <span class="eq-n pen"><b>Penalid.</b>${s.penalidade ? '−' + s.penalidade : '0'}</span>
@@ -1454,7 +1455,6 @@ export function montarFicha(opts: FichaOpts) {
     else if (kind === 'arte2') { S.arte[key] = nv; renderArtes(); }
     if (['attr', 'virtue', 'centelha', 'willpower', 'aparencia'].includes(kind)) refreshDots(kind, key);
     if (kind === 'aparencia') { const m = aparenciaMod(apEfetiva(nv)); const sp = document.querySelector('.apmod'); if (sp) sp.textContent = (m >= 0 ? '+' : '') + m; }
-    if (kind === 'attr' && S.modo === 'criacao') refreshCaps('attr');
     recompute();
   }
   function setDot(kind: string, key: string, d: number) {
@@ -1537,15 +1537,6 @@ export function montarFicha(opts: FichaOpts) {
     b.disabled = !!opts.budgetLocked || !!opts.readOnly;
     b.title = opts.budgetLocked ? 'O XP é definido pelo mestre da mesa.' : '';
   }
-  function markModo() {
-    document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => { const on = b.dataset.modo === (S.modo || 'criacao'); b.classList.toggle('primary', on); b.setAttribute('aria-pressed', String(on)); });
-  }
-  function clampToMode() {
-    (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = Math.min(S.attrs[a.id] || 1, capFor('attr', a.id))));
-    (HAB_D as any[]).forEach((h) => { S.skills[h.id] = Math.min(S.skills[h.id] || 0, capFor('skill', h.id)); S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id]); });
-    SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] = Math.min(S.skills2[k] || 0, capFor('skill2', k)); S.spec2[k] = clampSpecs(S.spec2[k], S.skills2[k]); });
-    S.centelha = Math.min(S.centelha || 0, capFor('centelha'));
-  }
   function renderRaca() {
     const sel = el('raca-sel') as HTMLSelectElement;
     if (!sel.options.length) sel.innerHTML = (RACA_D as any[]).map((r) => `<option value="${r.id}">${r.nome}</option>`).join('');
@@ -1557,11 +1548,9 @@ export function montarFicha(opts: FichaOpts) {
     const modStr = mods.length ? `<span class="mods">${mods.join(' · ')}</span>. ` : '';
     el('raca-info').innerHTML = r.descricao ? `${custo}${modStr}${r.descricao}${(r.tracos || []).length ? ' <em>' + (r.tracos as string[]).join(' ') + '</em>' : ''}` : '';
   }
-  function setModo(m: string) { S.modo = m; if (m === 'criacao') clampToMode(); renderAll(); }
-  function renderAll() { syncInputs(); renderRaca(); markModo(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); applySecCol(); }
+  function renderAll() { syncInputs(); renderRaca(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); applySecCol(); }
 
   // botões
-  document.querySelectorAll<HTMLElement>('.modo-toggle .btn').forEach((b) => b.addEventListener('click', () => { if (opts.readOnly) return; setModo(b.dataset.modo!); }));
   el('f-export').addEventListener('click', () => {
     const blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
@@ -2025,8 +2014,6 @@ export function montarFicha(opts: FichaOpts) {
     renderAll();
     if (opts.readOnly) {
       ['f-import', 'f-reset', 'f-file'].forEach((i) => { const e = document.getElementById(i); if (e) (e as HTMLElement).style.display = 'none'; });
-      document.querySelector<HTMLElement>('.modo-toggle')?.style.setProperty('display', 'none');
-      document.querySelector<HTMLElement>('.modo-lbl')?.style.setProperty('display', 'none');
       document.querySelectorAll<HTMLElement>('.rollv').forEach((e) => (e.style.display = 'none'));
     }
   }
