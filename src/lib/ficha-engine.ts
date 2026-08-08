@@ -1381,12 +1381,27 @@ export function montarFicha(opts: FichaOpts) {
     // proporção direta que derrubou a tentativa anterior de log. Leve, Média e Máxima
     // saem com a mesma largura (cada uma dobra a anterior); a Mínima é larga porque vai
     // de zero a P/8, que em log são muitas dobras.
-    const wMin = 0.05;
-    const lnW0 = Math.log(wMin), spanX = Math.log(maxKg) - lnW0;
-    const xposW = (w: number) => xB + ((Math.log(Math.max(wMin, w)) - lnW0) / spanX) * pw;
-    const wAtX = (x: number) => Math.exp(lnW0 + ((x - xB) / pw) * spanX);
-    const xt = [0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 25, 50, 100, 250, 500, 1000].filter((w) => w > wMin && w < maxKg / 1.25);
-    xt.unshift(wMin); xt.push(maxKg);
+    // Abaixo de 1 kg, porém, não há nada para consultar: é só a subida até o pico, e em
+    // log puro esse trecho comia um terço do quadro. Ele fica comprimido nos primeiros
+    // 5% da largura (ainda em log, para a subida sair curva e não em bico) e os 95%
+    // restantes ficam com o que se usa de fato, de 1 kg ao peso máximo.
+    const wMin = 0.05, fSub = 0.05;
+    const lnW0 = Math.log(wMin), lnSub = -lnW0, spanX = Math.log(maxKg);
+    const xposW = (w: number) => {
+      const v = Math.max(wMin, w);
+      return v <= 1
+        ? xB + ((Math.log(v) - lnW0) / lnSub) * fSub * pw
+        : xB + (fSub + (Math.log(v) / spanX) * (1 - fSub)) * pw;
+    };
+    const wAtX = (x: number) => {
+      const f = (x - xB) / pw;
+      return f <= fSub
+        ? Math.exp(lnW0 + (f / fSub) * lnSub)
+        : Math.exp(((f - fSub) / (1 - fSub)) * spanX);
+    };
+    // sem marcas abaixo de 1 kg: naquela faixa comprimida não cabe rótulo nenhum
+    const xt = [2, 5, 10, 25, 50, 100, 250, 500, 1000].filter((w) => w < maxKg / 1.25);
+    xt.unshift(1); xt.push(maxKg);
     const tw = [1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
     tw.push(maxKg);
     // Correr antes de soltar rende +1/3 e o giro no lugar metade disso, mas só quem corre
@@ -1434,17 +1449,18 @@ export function montarFicha(opts: FichaOpts) {
       curH = H;
       const ph = H - mt - mb, yB = mt + ph;
       const ypos = (d: number) => yB - (yMax > 0 ? d / yMax : 0) * ph;
-      // amostragem uniforme no próprio eixo, que é log: assim a subida abaixo de 1 kg
-      // recebe tantos pontos quanto a descida, e nenhuma das duas fica facetada
+      // amostragem uniforme em pixels do eixo: como ele é log dos dois lados do pico,
+      // isso dá um ponto a cada ~2,6 px em qualquer trecho, e o 1 kg (5% da largura)
+      // cai exatamente numa amostra, então o pico sai em bico e não arredondado
       const N = 200;
-      const amostras = Array.from({ length: N + 1 }, (_, i) => Math.exp(lnW0 + (spanX * i) / N));
+      const amostras = Array.from({ length: N + 1 }, (_, i) => wAtX(xB + (pw * i) / N));
       const traco = (f: (w: number) => number) =>
         amostras.map((w) => `${xposW(w).toFixed(1)},${ypos(f(w)).toFixed(1)}`).join(' ');
       const seq = traco(dist);
       const area = `M${xB},${yB} L${seq.split(' ').join(' L')} L${xR},${yB} Z`;
       const fmtW = (w: number) => (w >= 10 ? String(Math.round(w)) : String(Math.round(w * 100) / 100)).replace('.', ',');
       const xticks = xt.map((w, i) => {
-        const x = xposW(w), anc = i === 0 ? 'start' : i === xt.length - 1 ? 'end' : 'middle';
+        const x = xposW(w), anc = i === xt.length - 1 ? 'end' : 'middle';
         return `<line class="grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${yB}"/><text x="${x.toFixed(1)}" y="${yB + 14}" text-anchor="${anc}">${fmtW(w)}</text>`;
       }).join('');
       const yticks = yt.map((d) => {
@@ -1465,10 +1481,10 @@ export function montarFicha(opts: FichaOpts) {
       // à esquerda), senão colidem com o maior número de cada eixo
       const titles = `<text class="axlbl" x="${(xB + xR) / 2}" y="${H - 4}" text-anchor="middle">Peso (kg)</text>`
         + `<text class="axlbl" transform="rotate(-90 11 ${mt + ph / 2})" x="11" y="${mt + ph / 2}" text-anchor="middle">Arremesso (m)</text>`;
-      // legenda encostada na esquerda, onde as curvas ainda estão rentes ao chão; à
-      // direita ela bateria nos rótulos das faixas de carga
+      // legenda no canto inferior esquerdo, dentro da área sombreada: com o pico colado
+      // na esquerda o alto ficou ocupado, e à direita ela bateria nos rótulos das faixas
       const leg = [['corrida', 'Corrida'], ['giro', 'Giro'], ['', 'Parado']].map(([cls, nome], i) => {
-        const y = mt + 24 + i * 13, x = xB + 10;
+        const y = yB - 42 + i * 13, x = xB + 10;
         return `<line class="curve ${cls} fa-legln" x1="${x}" y1="${y}" x2="${x + 18}" y2="${y}"/>`
           + `<text class="fa-leglbl" x="${x + 24}" y="${y + 3.5}">${nome}</text>`;
       }).join('');
@@ -1504,10 +1520,10 @@ export function montarFicha(opts: FichaOpts) {
       const cw = wrap.clientWidth, th = tbl.offsetHeight;
       if (!cw || !th) return;
       const lado = wrap.getBoundingClientRect().right <= tbl.getBoundingClientRect().left + 1;
-      const alvo = lado ? Math.round((W * th) / cw) : 210;
+      const alvo = lado ? Math.round((W * th) / cw) : 252;
       if (Math.abs(alvo - curH) > 2 && alvo > 120 && alvo < 900) paint(alvo);
     };
-    paint(210);
+    paint(252);
     fit();
     // um observador só por caixa: a cada render o .fa-row é outro nó, então religa
     (box as any)._faFit = fit;
