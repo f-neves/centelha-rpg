@@ -392,8 +392,6 @@ export function montarFicha(opts: FichaOpts) {
   function renderCaminhos() {
     const card = (cam: string) => {
       const techs = CAMTREE[cam] || [];
-      const sel = techs.filter(([id]) => S.tech[id]);
-      const cost = sel.reduce((s, [, , b]) => s + custoTecnica(b), 0);
       const open = OPEN.cam[cam];
       const rows = techs.map(([id, nome, b]) => {
         const owned = !!S.tech[id];
@@ -406,7 +404,7 @@ export function montarFicha(opts: FichaOpts) {
         const desc = TECTEXT[id] ? `<div class="tdesc">${mdBold(TECTEXT[id])}</div>` : '';
         return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>N${b} · ${custoTecnica(b)}</small></span>${desc}</div>`;
       }).join('');
-      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
+      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">${CAM_NOME[cam]}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
     };
     // As Proezas ficam agrupadas pelo Atributo que cada uma puxa (campo `atributo` de
     // caminhos.json), na mesma ordem em que os Atributos aparecem na ficha. Cada grupo
@@ -421,9 +419,9 @@ export function montarFicha(opts: FichaOpts) {
   }
   function renderArtes() {
     const card = (a: any) => {
-      const lvl = S.arte[a.id] || 0, cost = custoArte(lvl), open = OPEN.arte[a.id];
+      const lvl = S.arte[a.id] || 0, open = OPEN.arte[a.id];
       const fx = a.niveis.map((n: any) => `<div class="fxline${n.nivel <= lvl ? ' hi' : ''}">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('');
-      return `<div class="cam"><div class="cam-head"><span class="chev" data-artetog="${a.id}">${open ? '▾' : '▸'} ${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}<span class="cam-meta">${lvl ? `nível ${lvl} · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${fx}</div></div>`;
+      return `<div class="cam"><div class="cam-head"><span class="chev" data-artetog="${a.id}">${open ? '▾' : '▸'} ${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}</div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${fx}</div></div>`;
     };
     el('artes').innerHTML = col3(ARTE_D as any[], card);
     renderEfeitos();
