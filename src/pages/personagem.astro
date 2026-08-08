@@ -18,14 +18,24 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       <div class="retrato">
         <div class="retrato-frame" id="retrato-frame" title="Clique para ampliar" hidden>
           <img id="retrato-img" alt="Retrato do personagem" />
+          <!-- As ações da imagem vivem SOBRE ela, no rodapé do quadro. No modo de
+               ajuste a mesma faixa vira a barra de zoom, e assim o quadro não muda
+               de tamanho ao entrar e sair do enquadramento. -->
+          <div class="retrato-barra" id="retrato-barra" hidden>
+            <div class="retrato-dupla">
+              <button type="button" class="retrato-bt" id="retrato-ajustar">Ajustar enquadramento</button>
+              <button type="button" class="retrato-bt perigo" id="retrato-del">Excluir imagem</button>
+            </div>
+            <div class="retrato-ajuste">
+              <input type="range" class="retrato-range" id="retrato-range" min="1" max="3" step="0.05" value="1" aria-label="Zoom da imagem" />
+              <button type="button" class="retrato-bt" id="retrato-concluir">Concluir</button>
+            </div>
+          </div>
         </div>
-        <input type="range" class="retrato-range" id="retrato-range" min="1" max="3" step="0.05" value="1" title="Zoom no card" hidden />
         <div class="retrato-acoes" id="retrato-acoes">
-          <button type="button" class="btn retrato-ajustar" id="retrato-ajustar" hidden>Ajustar enquadramento</button>
           <label class="btn retrato-btn" id="retrato-lbl" hidden>Enviar imagem
             <input type="file" id="retrato-file" accept="image/*" hidden />
           </label>
-          <button type="button" class="btn perigo retrato-del" id="retrato-del" hidden>Excluir imagem</button>
         </div>
       </div>
       <div class="pers-ident">
@@ -52,6 +62,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       <FichaSkeleton />
     </div>
 
+    {/* No celular esta seção é a aba "História" da ficha: o invólucro leva a classe
+        .ftab, que é o que o painel de abas do FichaSkeleton procura no documento
+        inteiro (os estilos dele são globais). É invólucro e não a própria <section>
+        porque no desktop .ftab vira display:contents, e a caixa da seção some junto
+        com a margem dela. */}
+    <div class="ftab" data-ftab="historia">
     <section class="bloco">
       <h2 class="barh">Descrição, História, Background &amp; Anotações</h2>
       <div class="textos">
@@ -62,6 +78,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       </div>
       <span id="txt-status" class="salvo"></span>
     </section>
+    </div>
 
     <section class="bloco">
       <h2 class="barh">Arquivos <small>(imagens, PDFs, documentos, links)</small></h2>
@@ -156,7 +173,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     // ---- Retrato: exibição, enquadramento (pan/zoom só no card) e lightbox ----
     const podeRetrato = ehDono && status === 'rascunho';
     let retratoPath: string | null = pers.imagem_path || null;
-    const FW = 215, FH = 260;   // a moldura do cabeçalho, 25% maior que a padrão
+    // A moldura não tem mais tamanho fixo (acompanha a altura do cabeçalho), então
+    // o arrasto mede o quadro na hora em vez de confiar numa constante.
     const posPadrao = () => ({ x: 50, y: 50, z: 1 });
     let pos = (pers.imagem_pos && typeof pers.imagem_pos === 'object')
       ? { x: pers.imagem_pos.x ?? 50, y: pers.imagem_pos.y ?? 50, z: pers.imagem_pos.z ?? 1 } : posPadrao();
@@ -185,24 +203,24 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         await excluirRetrato(sb, id!, retratoPath, podeRetrato);
         retratoPath = null;
       });
-      // modo de ajuste: arrastar posiciona, slider dá zoom — só muda o card
+      // modo de ajuste: arrastar posiciona, a barra dá zoom — só muda o card
       let ajuste = false, arrastando = false, lx = 0, ly = 0;
-      const ajustarBtn = document.getElementById('retrato-ajustar')!;
-      ajustarBtn.addEventListener('click', () => {
-        ajuste = !ajuste;
-        frameEl.classList.toggle('ajustando', ajuste);
-        rangeEl.hidden = !ajuste;
-        ajustarBtn.textContent = ajuste ? 'Concluir ajuste' : 'Ajustar enquadramento';
-      });
+      const modo = (v: boolean) => { ajuste = v; frameEl.classList.toggle('ajustando', v); };
+      document.getElementById('retrato-ajustar')!.addEventListener('click', () => modo(true));
+      document.getElementById('retrato-concluir')!.addEventListener('click', () => modo(false));
       frameEl.addEventListener('pointerdown', (e) => {
-        if (!ajuste) return; const pe = e as PointerEvent; arrastando = true;
+        // a faixa de ações é dela mesma: apertar um botão não arrasta a foto
+        if (!ajuste || (e.target as HTMLElement).closest('.retrato-barra')) return;
+        const pe = e as PointerEvent; arrastando = true;
         frameEl.setPointerCapture?.(pe.pointerId); lx = pe.clientX; ly = pe.clientY;
       });
       frameEl.addEventListener('pointermove', (e) => {
         if (!ajuste || !arrastando) return; const pe = e as PointerEvent;
         const dx = pe.clientX - lx, dy = pe.clientY - ly; lx = pe.clientX; ly = pe.clientY;
-        pos.x = clamp(pos.x - (dx / (FW * pos.z)) * 100, 0, 100);
-        pos.y = clamp(pos.y - (dy / (FH * pos.z)) * 100, 0, 100);
+        // o quadro muda de tamanho com a página: mede na hora
+        const r = frameEl.getBoundingClientRect();
+        pos.x = clamp(pos.x - (dx / (r.width * pos.z)) * 100, 0, 100);
+        pos.y = clamp(pos.y - (dy / (r.height * pos.z)) * 100, 0, 100);
         aplicarPos();
       });
       const soltar = () => { if (arrastando) { arrastando = false; salvarPos(); } };
@@ -213,7 +231,11 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     // ampliar imagem (lightbox) — mostra a imagem inteira, sem o enquadramento do card
     const lb = document.getElementById('retrato-lb')!;
-    frameEl.addEventListener('click', () => { if (frameEl.classList.contains('ajustando')) return; lb.hidden = false; document.body.style.overflow = 'hidden'; });
+    frameEl.addEventListener('click', (e) => {
+      // clicar num botão da faixa não pode abrir a ampliação por tabela
+      if (frameEl.classList.contains('ajustando') || (e.target as HTMLElement).closest('.retrato-barra')) return;
+      lb.hidden = false; document.body.style.overflow = 'hidden';
+    });
     lb.addEventListener('click', () => { lb.hidden = true; document.body.style.overflow = ''; });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) { lb.hidden = true; document.body.style.overflow = ''; } });
 
@@ -361,14 +383,19 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   }
 
   function estadoRetrato(temImg: boolean, pode: boolean) {
-    document.getElementById('retrato-frame')!.hidden = !temImg;
+    const frame = document.getElementById('retrato-frame')!;
+    frame.hidden = !temImg;
     // O botão só existe para PÔR a primeira imagem. Trocar sai de cena: com uma
     // imagem no lugar, as ações são enquadrar e excluir, e quem quiser outra
     // exclui esta e envia a nova.
-    document.getElementById('retrato-lbl')!.hidden = !pode || temImg;
-    document.getElementById('retrato-del')!.hidden = !(pode && temImg);
-    document.getElementById('retrato-ajustar')!.hidden = !(pode && temImg);
-    if (!(pode && temImg)) document.getElementById('retrato-range')!.hidden = true;
+    const mostrarEnviar = pode && !temImg;
+    document.getElementById('retrato-lbl')!.hidden = !mostrarEnviar;
+    // some com a caixa junto, e não só com o botão: vazia ela ainda cobrava o
+    // espaçamento da coluna, e o quadro ficava 8px menor que o cabeçalho
+    document.getElementById('retrato-acoes')!.hidden = !mostrarEnviar;
+    // a faixa de ações fica sobre a imagem, e só para quem pode editar
+    document.getElementById('retrato-barra')!.hidden = !(pode && temImg);
+    if (!(pode && temImg)) frame.classList.remove('ajustando');
   }
   async function mostrarRetrato(sb: any, path: string, pode: boolean) {
     const { data } = await sb.storage.from(BUCKET).createSignedUrl(path, 3600);
@@ -480,19 +507,58 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .retrato-range:focus-visible { outline: none; }
   .retrato-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
   .retrato-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
-  .retrato-acoes { display: flex; flex-direction: column; gap: .35rem; width: 172px; }
-  .retrato-btn, .retrato-del { cursor: pointer; font-size: var(--fs-micro); text-align: center; justify-content: center; }
+  .retrato-acoes { display: flex; flex-direction: column; gap: .35rem; width: 100%; }
+  .retrato-acoes:empty { display: none; }
+  .retrato-btn { cursor: pointer; font-size: var(--fs-micro); text-align: center; justify-content: center; }
+
+  /* ---- faixa de ações SOBRE a imagem ----
+     Ocupa os 20% de baixo do quadro, e os dois botões dividem a largura ao meio.
+     No modo de ajuste a mesma faixa vira a barra de zoom mais o Concluir: assim o
+     quadro não muda de tamanho ao entrar e sair do enquadramento, que era o que
+     aconteceria com a barra morando abaixo dele. */
+  .retrato-barra { position: absolute; left: 0; right: 0; bottom: 0; height: 20%; z-index: 3;
+    display: flex; align-items: stretch; }
+  .retrato-barra[hidden] { display: none; }
+  .retrato-dupla { display: flex; width: 100%; }
+  .retrato-ajuste { display: none; width: 100%; align-items: center; gap: .6rem; padding: 0 .7rem;
+    background: color-mix(in srgb, var(--bg) 82%, transparent); border-top: 1px solid var(--panel-border); }
+  .retrato-frame.ajustando .retrato-dupla { display: none; }
+  .retrato-frame.ajustando .retrato-ajuste { display: flex; }
+  .retrato-ajuste .retrato-range { flex: 1; width: auto; min-width: 0; }
+  .retrato-ajuste .retrato-bt { flex: 0 0 auto; padding: 0 .7rem; border: 1px solid var(--panel-border);
+    border-radius: var(--r-sm); background: var(--panel); min-height: 2rem; }
+  /* O quadro é estreito (a largura vem da altura do cabeçalho), então o rótulo
+     inteiro tem de caber em meia largura: sem espaçamento entre letras, fonte
+     pequena e quebra em duas linhas. */
+  .retrato-bt { flex: 1 1 0; min-width: 0; display: grid; place-items: center; padding: 0 .3rem;
+    background: color-mix(in srgb, var(--bg) 64%, transparent); backdrop-filter: blur(3px); color: var(--ink);
+    border: none; border-top: 1px solid var(--panel-border); cursor: pointer;
+    font-family: 'Cinzel'; font-size: .62rem; text-transform: uppercase; letter-spacing: 0;
+    line-height: 1.2; text-align: center; overflow-wrap: break-word; hyphens: auto; }
+  .retrato-dupla .retrato-bt + .retrato-bt { border-left: 1px solid var(--panel-border); }
+  .retrato-bt:hover { background: var(--accent); color: var(--on-accent); }
+  .retrato-bt.perigo { color: var(--perigo); }
+  .retrato-bt.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
   .retrato-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 2rem; background: color-mix(in srgb, #000 80%, transparent); cursor: zoom-out; }
   .retrato-lb[hidden] { display: none; }
   .retrato-lb img { max-width: 92vw; max-height: 88vh; border-radius: var(--r-lg); box-shadow: 0 12px 44px rgba(0,0,0,.5); }
 
   /* A moldura padrão (172×208) mora em global.css e é a mesma dos cards de
-     Mesas / Fichas. Aqui ela cresce 25%, e só aqui: no cabeçalho do personagem
-     o retrato é o assunto, não uma miniatura de lista. Vale nas duas telas: no
-     celular o retrato ganhou a linha inteira, e 215px cabem até num aparelho
-     estreito. */
-  .pers-cab .retrato-frame { width: 215px; height: 260px; }
-  .pers-cab .retrato-range, .pers-cab .retrato-acoes { width: 215px; }
+     Mesas / Fichas. Aqui ela é outra coisa: toma toda a altura do cabeçalho, e a
+     largura sai da proporção. Quem passa a mandar na altura é o painel de
+     identificação ao lado, já que as ações da imagem saíram de baixo do retrato
+     e foram para dentro dele. */
+  .pers-cab .retrato { align-self: stretch; }
+  /* `position: relative` é o que ancora a faixa de ações DENTRO do quadro; a regra
+     de global.css não tem, e sem isto a faixa se prendia ao ancestral posicionado
+     mais próximo e saía com a largura da página. */
+  .pers-cab .retrato-frame { position: relative; flex: 1; min-height: 15rem; max-height: 34rem;
+    height: auto; width: auto; aspect-ratio: 215 / 260; }
+  /* A foto sai do fluxo. Com ela dentro, a largura `auto` do quadro pegava o
+     tamanho NATURAL da imagem em vez da razão: uma foto de 600px de largura
+     esticava o retrato para 600px, que por sua vez espremia a coluna do lado, que
+     ficava mais alta, que crescia o retrato de novo. */
+  .pers-cab .retrato-frame img { position: absolute; inset: 0; width: 100%; height: 100%; }
   /* O retrato ficou 2,7rem mais largo; a identificação devolve os mesmos 2,7rem
      na base e no mínimo. Sem isso o cabeçalho quebraria em duas linhas numa tela
      mais larga do que antes, e aí ele cresceria em altura em vez de manter. */
@@ -504,9 +570,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
      — junto com o balão que escapava pela lateral: ancorado em `right: -10px` a
      partir de uma coluna de 96px, ele começava fora da margem esquerda. */
   @media (max-width: 900px) {
-    /* uma coluna: retrato em cima, identificação embaixo */
+    /* uma coluna: retrato em cima, identificação embaixo. Aqui não há nada ao
+       lado para igualar a altura, então quem manda é a largura da tela e a
+       altura sai da proporção. */
     .pers-cab { display: flex; flex-direction: column; gap: .8rem; align-items: stretch; }
     .retrato { position: relative; }
+    .pers-cab .retrato-frame { flex: none; width: 100%; height: auto; aspect-ratio: 215 / 260; }
     .pers-ident { min-width: 0; }
   }
 

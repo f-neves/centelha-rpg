@@ -40,6 +40,10 @@ import '../styles/arte-equip.css';
     <button type="button" role="tab" data-ftab="proezas" aria-selected="false">Proezas</button>
     <button type="button" role="tab" data-ftab="artes" aria-selected="false">Artes</button>
     <button type="button" role="tab" data-ftab="equip" aria-selected="false">Equip</button>
+    <button type="button" role="tab" data-ftab="mochila" aria-selected="false">Mochila</button>
+    {/* o painel de História mora na página do personagem salvo, não aqui: em /ficha
+        este botão não tem para onde levar e some sozinho (ver o init das abas). */}
+    <button type="button" role="tab" data-ftab="historia" aria-selected="false">História</button>
     <button type="button" role="tab" data-ftab="rolar" aria-selected="false">Rolar</button>
   </nav>
 </div>
@@ -126,14 +130,22 @@ import '../styles/arte-equip.css';
     <div id="eq-armaduras" class="eq-pecas"></div>
   </div>
 </div>
-<div class="equip-bolsas" id="eq-bolsas"></div>
 <div class="panel" id="combate"></div>
-
-<h2 class="barh">Força &amp; Arremesso <small>(levantamento e alcance de arremesso · não custa XP)</small></h2>
-<div class="panel" id="forca-arremesso"></div>
 </div>
 
+{/* As bolsas viram aba própria: o que se consulta em mesa é arma e armadura, e as
+    três tabelas de carga ficavam empurrando o resumo de combate para longe. */}
+<div class="ftab" data-ftab="mochila">
+<h2 class="barh">Mochila &amp; Bagagem <small>(o que o personagem carrega · não custa XP)</small></h2>
+<div class="equip-bolsas" id="eq-bolsas"></div>
+</div>
+
+{/* Força &amp; Arremesso é uma tabela de consulta que se usa no momento de rolar, e não
+    ao montar o equipamento: mudou de aba junto com o rolador. */}
 <div class="ftab" data-ftab="rolar">
+<h2 class="barh">Força &amp; Arremesso <small>(levantamento e alcance de arremesso · não custa XP)</small></h2>
+<div class="panel" id="forca-arremesso"></div>
+
 <h2 class="barh">Rolar</h2>
 <RoladorDados compact />
 </div>
@@ -180,8 +192,13 @@ import '../styles/arte-equip.css';
   const bar = document.querySelector<HTMLElement>('.ftab-bar');
   if (bar) {
     const mq = matchMedia('(max-width: 900px)');
-    const botoes = Array.from(bar.querySelectorAll<HTMLButtonElement>('button[data-ftab]'));
     const paineis = Array.from(document.querySelectorAll<HTMLElement>('.ftab'));
+    // Nem toda página monta todos os painéis: /personagem tem História, /ficha não.
+    // O botão sem painel sairia levando a uma aba em branco, então sai da barra.
+    const temPainel = new Set(paineis.map((t) => t.dataset.ftab));
+    bar.querySelectorAll<HTMLButtonElement>('button[data-ftab]')
+      .forEach((b) => { if (!temPainel.has(b.dataset.ftab!)) b.remove(); });
+    const botoes = Array.from(bar.querySelectorAll<HTMLButtonElement>('button[data-ftab]'));
     // a aba que abre é a primeira da barra, seja qual for: assim reordenar os botões
     // basta, sem um nome de aba escrito à parte que sai de sincronia com a ordem
     let ativa = botoes[0]?.dataset.ftab || 'atrib';
