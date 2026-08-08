@@ -646,11 +646,23 @@ export function montarFicha(opts: FichaOpts) {
     const uidsNaTela = () => cards().map((c) => c.getAttribute(attr)!);
     const suave = !matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /** Anima os cards da posição velha para a nova, para a troca ser vista (FLIP). */
+    /**
+     * Anima os cards da posição velha para a nova, para a troca ser vista (FLIP),
+     * e TRANCA a decisão enquanto eles voam.
+     *
+     * A trava é o que impede a peça de ir e voltar: um card em pleno voo mente
+     * sobre onde está. `getBoundingClientRect` devolve a posição animada, e
+     * `elementFromPoint` acha quem está passando por cima do ponteiro, não quem
+     * mora ali. Medindo no meio do voo, a troca recém-feita era logo desfeita, e
+     * o par ficava batendo de um lado para o outro.
+     */
+    const DUR = 150;
+    let travaAte = 0;
     const comAnimacao = (mudanca: () => void) => {
       if (!suave) { mudanca(); return; }
       const antes = new Map(cards().map((c) => [c, c.getBoundingClientRect()]));
       mudanca();
+      let voou = false;
       for (const c of cards()) {
         const a = antes.get(c);
         if (!a) continue;
@@ -658,8 +670,10 @@ export function montarFicha(opts: FichaOpts) {
         const dx = a.left - d.left, dy = a.top - d.top;
         if (!dx && !dy) continue;
         c.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: 'none' }],
-          { duration: 170, easing: 'ease-out' });
+          { duration: DUR, easing: 'ease-out' });
+        voou = true;
       }
+      if (voou) travaAte = performance.now() + DUR;
     };
 
     cont.addEventListener('pointerdown', (e) => {
@@ -684,6 +698,7 @@ export function montarFicha(opts: FichaOpts) {
 
       const comecar = () => {
         arrastando = true;
+        travaAte = 0;
         // o mouse já pode ter começado a pintar texto no caminho até o limiar
         getSelection()?.removeAllRanges();
         const r = card.getBoundingClientRect();
@@ -710,6 +725,7 @@ export function montarFicha(opts: FichaOpts) {
 
       /** Onde a vaga cai, olhando quem está sob o ponteiro. */
       const acomoda = () => {
+        if (performance.now() < travaAte) return;   // cards no ar: ninguém mede nada
         const sob = document.elementFromPoint(ponteiro.x, ponteiro.y);
         const alvo = sob && (sob as HTMLElement).closest<HTMLElement>(`[${attr}]`);
         if (!alvo || alvo === card || alvo.parentElement !== cont) return;
@@ -745,12 +761,13 @@ export function montarFicha(opts: FichaOpts) {
         const h = window.innerHeight;
         const d = ponteiro.y < MARGEM ? -VEL * (1 - ponteiro.y / MARGEM)
           : ponteiro.y > h - MARGEM ? VEL * (1 - (h - ponteiro.y) / MARGEM) : 0;
-        if (!d) return;
-        const y = window.scrollY;
-        window.scrollBy(0, d);
         // o fantasma é `fixed` e segue o ponteiro; quem muda com a rolagem é
         // apenas o vizinho que está por baixo
-        if (window.scrollY !== y) acomoda();
+        if (d) window.scrollBy(0, d);
+        // rever a cada quadro, e não só quando o ponteiro anda: a decisão fica
+        // trancada enquanto os cards voam, e é aqui que ela volta a acontecer
+        // com o ponteiro parado
+        acomoda();
       };
 
       const mover = (ev: PointerEvent) => {
