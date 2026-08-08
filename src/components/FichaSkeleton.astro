@@ -624,16 +624,27 @@ import '../styles/arte-equip.css';
      pelo "ajustar", como em qualquer outra peça. */
   .eq-improv-nota { display: block; font-size: var(--fs-micro); font-style: italic; }
 
-  /* ---- reordenar peças: alça de arrasto ---- */
+  /* ---- reordenar peças: arrasta o card inteiro ----
+     Pega em qualquer ponto do card; nos controles o toque continua sendo deles.
+     A alça ⠿ fica por dois motivos: anuncia que a peça se move, e é um <button>,
+     então o teclado alcança e as setas movem uma casa. */
+  .eq-peca { cursor: grab; }
+  .eq-peca input, .eq-peca select, .eq-peca textarea { cursor: auto; }
   .eq-mover { background: none; border: 1px solid transparent; border-radius: var(--r-sm);
     color: var(--ink-soft); cursor: grab; font-size: var(--fs-aux); line-height: 1;
     padding: .2rem .4rem; margin-right: auto; touch-action: none; }
   .eq-mover:hover, .eq-mover:focus-visible { color: var(--accent-texto); border-color: var(--panel-border); }
-  .eq-mover:active { cursor: grabbing; }
-  /* o card em movimento sobe e fica translúcido, para se ver a vaga por baixo */
-  .eq-peca.arrastando { opacity: .55; transform: scale(.97); box-shadow: 0 8px 22px var(--shadow);
-    outline: 2px dashed var(--accent); outline-offset: 2px; }
-  /* o dedo arrasta a alça; sem isto o navegador rola a página no lugar */
+  /* durante o arrasto o cursor é o mesmo em toda a página, e o texto não é pintado */
+  body.eq-arrastando { user-select: none; -webkit-user-select: none; cursor: grabbing; }
+  body.eq-arrastando .eq-peca, body.eq-arrastando .eq-peca * { cursor: grabbing; }
+  /* a vaga que o card deixou: é ela que anda na grade e mostra onde a peça vai cair.
+     Sem transform aqui, que é o que anima a troca dos vizinhos (FLIP no engine). */
+  .eq-peca.arrastando { opacity: .28; outline: 2px dashed var(--accent); outline-offset: -2px; }
+  /* o clone que voa sob o ponteiro */
+  .eq-fantasma { position: fixed; left: 0; top: 0; z-index: 70; pointer-events: none;
+    transform-origin: top left; will-change: transform; border-color: var(--accent);
+    box-shadow: 0 14px 34px var(--shadow); }
+  /* o dedo arrasta o card; sem isto o navegador rola a página no lugar */
   .eq-pecas { touch-action: pan-y; }
 
   /* ---- catálogo de "adicionar item" (diálogo, lib/ui-dialog.ts) ----

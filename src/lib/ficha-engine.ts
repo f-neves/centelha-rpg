@@ -603,59 +603,200 @@ export function montarFicha(opts: FichaOpts) {
    * para quem não pode (ou não quer) arrastar.
    */
   function alcaOrdem(uid: string, nome: string) {
-    return `<button type="button" class="eq-mover" data-mover="${uid}" title="Arraste para reordenar (ou use as setas)"`
+    return `<button type="button" class="eq-mover" data-mover="${uid}" title="Arraste o card para reordenar (ou use as setas)"`
       + ` aria-label="Mover ${escapeHtml(nome)} na ordem"><span aria-hidden="true">⠿</span></button>`;
+  }
+
+  /** Onde o toque é do próprio elemento (digitar, escolher, apertar) e não do arrasto. */
+  const CONTROLES = 'input, select, textarea, a, label, [contenteditable]';
+
+  /**
+   * Copia o que o clone não traz: cloneNode leva o atributo `value`, não o valor
+   * que o jogador digitou depois. Sem isto o card voador nasce com os campos em
+   * branco no meio do arrasto.
+   */
+  function copiaValores(de: HTMLElement, para: HTMLElement) {
+    const orig = de.querySelectorAll<HTMLInputElement>('input, select, textarea');
+    const copia = para.querySelectorAll<HTMLInputElement>('input, select, textarea');
+    orig.forEach((campo, i) => {
+      const c = copia[i];
+      if (!c) return;
+      c.value = campo.value;
+      if (campo.type === 'checkbox' || campo.type === 'radio') c.checked = campo.checked;
+    });
   }
 
   /**
    * Reordenar por arrasto, servindo mouse, caneta e toque com um código só
    * (eventos de ponteiro; o arrastar-e-soltar do HTML não pega em toque).
    *
-   * Enquanto arrasta, o card trocado é movido no PRÓPRIO DOM assim que o ponteiro
-   * cruza o meio de um vizinho. Sai de graça a prévia do resultado: a grade
-   * reflui sozinha e não é preciso calcular posição de nada. No fim, a ordem
-   * nova é lida do DOM e devolvida em uids.
+   * Pega em QUALQUER ponto do card, menos nos controles. Para o clique comum não
+   * virar arrasto sem querer, o arrasto só nasce depois de um limiar: no mouse,
+   * uns pixels de caminho; no toque, um segurar parado (assim o dedo continua
+   * rolando a página normalmente).
+   *
+   * Enquanto arrasta há duas peças na tela: um CLONE voando sob o ponteiro e o
+   * card original virado vaga, que anda no DOM assim que o ponteiro cruza o meio
+   * de um vizinho. A vaga é a prévia do resultado, e a grade reflui sozinha. No
+   * fim, a ordem nova é lida do DOM e devolvida em uids.
    */
   function ativarArrasto(idCont: string, attr: string, aplicar: (uids: string[]) => void) {
     const cont = el(idCont);
     const cards = () => [...cont.querySelectorAll<HTMLElement>(`[${attr}]`)];
     const uidsNaTela = () => cards().map((c) => c.getAttribute(attr)!);
+    const suave = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /** Anima os cards da posição velha para a nova, para a troca ser vista (FLIP). */
+    const comAnimacao = (mudanca: () => void) => {
+      if (!suave) { mudanca(); return; }
+      const antes = new Map(cards().map((c) => [c, c.getBoundingClientRect()]));
+      mudanca();
+      for (const c of cards()) {
+        const a = antes.get(c);
+        if (!a) continue;
+        const d = c.getBoundingClientRect();
+        const dx = a.left - d.left, dy = a.top - d.top;
+        if (!dx && !dy) continue;
+        c.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: 'none' }],
+          { duration: 170, easing: 'ease-out' });
+      }
+    };
 
     cont.addEventListener('pointerdown', (e) => {
-      if (opts.readOnly) return;
-      const alca = (e.target as HTMLElement).closest<HTMLElement>('.eq-mover');
-      if (!alca) return;
-      const card = alca.closest<HTMLElement>(`[${attr}]`);
-      if (!card) return;
-      e.preventDefault();
-      card.classList.add('arrastando');
-      // sem isto o card sob o dedo seria sempre o próprio, e elementFromPoint
-      // nunca enxergaria o vizinho por baixo
-      card.style.pointerEvents = 'none';
+      if (opts.readOnly || e.button > 0) return;
+      const onde = e.target as HTMLElement;
+      const card = onde.closest<HTMLElement>(`[${attr}]`);
+      if (!card || card.parentElement !== cont) return;
+      const naAlca = !!onde.closest('.eq-mover');
+      if (!naAlca && onde.closest(`${CONTROLES}, button`)) return;
 
-      const mover = (ev: PointerEvent) => {
-        const sob = document.elementFromPoint(ev.clientX, ev.clientY);
+      const toque = e.pointerType === 'touch';
+      const x0 = e.clientX, y0 = e.clientY;
+      let ponteiro = { x: x0, y: y0 };
+      let arrastando = false;
+      let espera = 0;
+      let laco = 0;
+      let fantasma: HTMLElement | null = null;
+      let dx = 0, dy = 0;
+
+      /** Enquanto arrasta, o dedo é do arrasto: o navegador não rola a página. */
+      const barra = (ev: Event) => ev.preventDefault();
+
+      const comecar = () => {
+        arrastando = true;
+        // o mouse já pode ter começado a pintar texto no caminho até o limiar
+        getSelection()?.removeAllRanges();
+        const r = card.getBoundingClientRect();
+        dx = ponteiro.x - r.left;
+        dy = ponteiro.y - r.top;
+        fantasma = card.cloneNode(true) as HTMLElement;
+        copiaValores(card, fantasma);
+        // clone inerte: sem id repetido na página e fora do alcance do leitor de tela
+        fantasma.querySelectorAll('[id]').forEach((n) => n.removeAttribute('id'));
+        fantasma.setAttribute('aria-hidden', 'true');
+        fantasma.classList.add('eq-fantasma');
+        fantasma.style.width = `${r.width}px`;
+        fantasma.style.height = `${r.height}px`;
+        fantasma.style.transform = `translate(${r.left}px, ${r.top}px)`;
+        document.body.appendChild(fantasma);
+        card.classList.add('arrastando');
+        // sem isto o card sob o ponteiro seria sempre o próprio, e elementFromPoint
+        // nunca enxergaria o vizinho por baixo
+        card.style.pointerEvents = 'none';
+        document.body.classList.add('eq-arrastando');
+        document.addEventListener('touchmove', barra, { passive: false });
+        laco = requestAnimationFrame(quadro);
+      };
+
+      /** Onde a vaga cai, olhando quem está sob o ponteiro. */
+      const acomoda = () => {
+        const sob = document.elementFromPoint(ponteiro.x, ponteiro.y);
         const alvo = sob && (sob as HTMLElement).closest<HTMLElement>(`[${attr}]`);
         if (!alvo || alvo === card || alvo.parentElement !== cont) return;
         const r = alvo.getBoundingClientRect();
-        // compara com o meio do vizinho, no eixo em que a grade está de fato
-        const antes = cards().indexOf(alvo) < cards().indexOf(card);
-        const passou = antes
-          ? (ev.clientY < r.top + r.height / 2 || ev.clientX < r.left + r.width / 2)
-          : (ev.clientY > r.top + r.height / 2 || ev.clientX > r.left + r.width / 2);
-        if (passou) cont.insertBefore(card, antes ? alvo : alvo.nextSibling);
+        const rc = card.getBoundingClientRect();
+        const lista = cards();
+        const antes = lista.indexOf(alvo) < lista.indexOf(card);
+        // Um eixo só, e é a geometria que diz qual: dois cards que se sobrepõem
+        // na vertical estão lado a lado (compara o X); senão, um está sobre o
+        // outro (compara o Y). Testar os dois eixos juntos fazia a peça ir e
+        // voltar sem sair do lugar quando a grade tinha uma coluna só.
+        const juntos = Math.min(r.bottom, rc.bottom) - Math.max(r.top, rc.top);
+        const mesmaLinha = juntos > Math.min(r.height, rc.height) / 2;
+        // Entrar uma faixa adentro do vizinho basta. Era o meio dele, e no
+        // celular o card tem meia tela de altura: com uma coluna só, o meio do
+        // vizinho de baixo ficava fora do alcance do dedo. A faixa é menor que a
+        // metade, e é essa folga que segura o vaivém.
+        const fy = Math.min(r.height / 2, 64), fx = Math.min(r.width / 2, 64);
+        const passou = mesmaLinha
+          ? (antes ? ponteiro.x < r.right - fx : ponteiro.x > r.left + fx)
+          : (antes ? ponteiro.y < r.bottom - fy : ponteiro.y > r.top + fy);
+        if (passou) comAnimacao(() => cont.insertBefore(card, antes ? alvo : alvo.nextSibling));
       };
+
+      /**
+       * Perto da borda a tela anda sozinha: no celular o card ocupa quase tudo e
+       * o vizinho de destino costuma estar fora da vista.
+       */
+      const MARGEM = 80, VEL = 16;
+      const quadro = () => {
+        if (!arrastando) return;
+        laco = requestAnimationFrame(quadro);
+        const h = window.innerHeight;
+        const d = ponteiro.y < MARGEM ? -VEL * (1 - ponteiro.y / MARGEM)
+          : ponteiro.y > h - MARGEM ? VEL * (1 - (h - ponteiro.y) / MARGEM) : 0;
+        if (!d) return;
+        const y = window.scrollY;
+        window.scrollBy(0, d);
+        // o fantasma é `fixed` e segue o ponteiro; quem muda com a rolagem é
+        // apenas o vizinho que está por baixo
+        if (window.scrollY !== y) acomoda();
+      };
+
+      const mover = (ev: PointerEvent) => {
+        ponteiro = { x: ev.clientX, y: ev.clientY };
+        if (!arrastando) {
+          if (Math.hypot(ev.clientX - x0, ev.clientY - y0) < (toque ? 10 : 5)) return;
+          // dedo andando antes da espera acabar: é rolagem, não arrasto
+          if (toque && !naAlca) { soltar(); return; }
+          comecar();
+        }
+        ev.preventDefault();
+        fantasma!.style.transform = `translate(${ev.clientX - dx}px, ${ev.clientY - dy}px)`;
+        acomoda();
+      };
+
       const soltar = () => {
         window.removeEventListener('pointermove', mover);
         window.removeEventListener('pointerup', soltar);
         window.removeEventListener('pointercancel', soltar);
+        document.removeEventListener('touchmove', barra);
+        clearTimeout(espera);
+        cancelAnimationFrame(laco);
+        if (!arrastando) return;
+        arrastando = false;
         card.classList.remove('arrastando');
         card.style.pointerEvents = '';
+        document.body.classList.remove('eq-arrastando');
+        // o clone pousa na vaga antes de sumir: mostra onde a peça foi parar
+        const fim = card.getBoundingClientRect();
+        const f = fantasma!;
+        f.animate([{ transform: f.style.transform, opacity: '1' },
+          { transform: `translate(${fim.left}px, ${fim.top}px)`, opacity: '0' }],
+          { duration: suave ? 170 : 0, easing: 'ease-out' }).onfinish = () => f.remove();
         aplicar(uidsNaTela());
+        // o arrasto que termina em cima de um botão não pode apertá-lo
+        const engole = (ce: Event) => { ce.stopPropagation(); ce.preventDefault(); };
+        window.addEventListener('click', engole, true);
+        setTimeout(() => window.removeEventListener('click', engole, true), 60);
       };
-      // Na JANELA, e não na alça. A alça vive dentro do card que acabou de
-      // receber `pointer-events: none`, e assim ela deixa de receber o
-      // `pointerup`: o arrasto reordenava a tela e nunca gravava nada.
+
+      // No toque fora da alça, o arrasto pede um segurar parado: é o que separa
+      // "quero mover este card" de "quero rolar a lista".
+      if (toque && !naAlca) espera = window.setTimeout(comecar, 320);
+      // Na JANELA, e não no card. O card acabou de receber `pointer-events: none`,
+      // e assim ele deixa de receber o `pointerup`: o arrasto reordenava a tela e
+      // nunca gravava nada.
       window.addEventListener('pointermove', mover);
       window.addEventListener('pointerup', soltar);
       window.addEventListener('pointercancel', soltar);
