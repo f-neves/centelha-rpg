@@ -19,11 +19,6 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         <div class="retrato-frame" id="retrato-frame" title="Clique para ampliar" hidden>
           <img id="retrato-img" alt="Retrato do personagem" />
         </div>
-        <!-- No celular as 3 ações de imagem ficam atrás deste lápis: a primeira tela era
-             retrato + três botões de largura total (edição de foto ACIMA da ficha), com a
-             ação destrutiva no mesmo peso das outras. -->
-        <button type="button" class="btn retrato-menu-tog" id="retrato-menu-tog"
-          aria-expanded="false" aria-controls="retrato-acoes" aria-label="Editar imagem">✎</button>
         <input type="range" class="retrato-range" id="retrato-range" min="1" max="3" step="0.05" value="1" title="Zoom no card" hidden />
         <div class="retrato-acoes" id="retrato-acoes">
           <button type="button" class="btn retrato-ajustar" id="retrato-ajustar" hidden>Ajustar enquadramento</button>
@@ -184,24 +179,6 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     if (retratoPath) { await mostrarRetrato(sb, retratoPath, podeRetrato); aplicarPos(); }
     else estadoRetrato(false, podeRetrato);
-
-    // lápis do celular: abre e fecha o menu de ações da imagem
-    {
-      const tog = document.getElementById('retrato-menu-tog')!;
-      const box = tog.closest('.retrato')!;
-      tog.hidden = !podeRetrato;
-      tog.addEventListener('click', () => {
-        const aberto = box.classList.toggle('menu-aberto');
-        tog.setAttribute('aria-expanded', String(aberto));
-      });
-      // fecha ao tocar fora ou ao escolher uma ação
-      document.addEventListener('click', (e) => {
-        if (!box.contains(e.target as Node)) { box.classList.remove('menu-aberto'); tog.setAttribute('aria-expanded', 'false'); }
-      });
-      document.getElementById('retrato-acoes')!.addEventListener('click', () => {
-        box.classList.remove('menu-aberto'); tog.setAttribute('aria-expanded', 'false');
-      });
-    }
 
     if (podeRetrato) {
       (document.getElementById('retrato-file') as HTMLInputElement).addEventListener('change', async (e) => {
@@ -544,42 +521,40 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
   /* A moldura padrão (172×208) mora em global.css e é a mesma dos cards de
      Mesas / Fichas. Aqui ela cresce 25%, e só aqui: no cabeçalho do personagem
-     o retrato é o assunto, não uma miniatura de lista.
-     Dentro de uma media query de propósito: abaixo de 900px o cabeçalho vira
-     compacto (moldura de 96px), e uma regra solta com estas duas classes venceria
-     a de lá por especificidade e esticaria o retrato do celular. */
-  @media (min-width: 901px) {
-    .pers-cab .retrato-frame { width: 215px; height: 260px; }
-    .pers-cab .retrato-range, .pers-cab .retrato-acoes { width: 215px; }
-  }
+     o retrato é o assunto, não uma miniatura de lista. Vale nas duas telas: no
+     celular o retrato ganhou a linha inteira, e 215px cabem até num aparelho
+     estreito. */
+  .pers-cab .retrato-frame { width: 215px; height: 260px; }
+  .pers-cab .retrato-range, .pers-cab .retrato-acoes { width: 215px; }
   /* O retrato ficou 2,7rem mais largo; a identificação devolve os mesmos 2,7rem
      na base e no mínimo. Sem isso o cabeçalho quebraria em duas linhas numa tela
      mais larga do que antes, e aí ele cresceria em altura em vez de manter. */
   .pers-ident { flex: 1 1 17.3rem; min-width: 13.3rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .8rem 1rem 1rem; }
   .pers-ident h1 { margin: .05rem 0 .2rem; }
-  /* o lápis só existe no celular; no desktop as ações seguem visíveis como sempre */
-  .retrato-menu-tog { display: none; }
+  /* Havia um lápis que abria um menu flutuante com as ações da imagem, e ele
+     existia porque o retrato era uma miniatura de 96px ao lado do nome. Com o
+     retrato numa linha só para ele, as ações cabem embaixo e o menu saiu de cena
+     — junto com o balão que escapava pela lateral: ancorado em `right: -10px` a
+     partir de uma coluna de 96px, ele começava fora da margem esquerda. */
   @media (max-width: 900px) {
-    /* cabeçalho compacto: retrato de 96px AO LADO do nome, em vez de uma tela inteira de
-       retrato + botões antes da ficha */
-    .pers-cab { display: grid; grid-template-columns: 96px 1fr; gap: .8rem; align-items: start; }
+    /* uma coluna: retrato em cima, identificação embaixo */
+    .pers-cab { display: flex; flex-direction: column; gap: .8rem; align-items: stretch; }
     .retrato { position: relative; }
-    .retrato .retrato-frame { width: 96px; height: 116px; }  /* mesma proporção da moldura de 172x208 */
-    .retrato-range { width: 96px; }
-    .retrato-menu-tog { display: inline-flex; align-items: center; justify-content: center;
-      position: absolute; right: -10px; top: -10px; min-width: 44px; min-height: 44px;
-      padding: 0; border-radius: 50%; background: var(--panel); box-shadow: 0 2px 8px var(--shadow); }
-    .retrato-acoes { display: none; width: auto; }
-    .retrato.menu-aberto .retrato-acoes { display: flex; position: absolute; z-index: 5; top: 38px; right: -10px;
-      background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--r-md);
-      padding: var(--pad-1); box-shadow: 0 8px 24px var(--shadow); min-width: 12.5rem; }
     .pers-ident { min-width: 0; }
   }
 
   .pers-mesa { font-style: italic; font-size: var(--fs-rotulo); }
   .ident-slot { margin-top: .2rem; }
   .ident-slot .idrow { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem 1rem; margin: 0; }
-  @media (max-width: 720px) { .ident-slot .idrow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  /* No celular os oito campos viram duas colunas, e a leitura desce em vez de
+     atravessar: Nome · Título · Jogador · Raça numa, Altura · Peso · Idade ·
+     Conceito na outra. Daí o `grid-auto-flow: column` com quatro linhas fixas —
+     em duas colunas normais a ordem sairia aos pares (Nome/Título, Jogador/Raça),
+     misturando quem é a pessoa com quanto ela mede. */
+  @media (max-width: 720px) {
+    .ident-slot .idrow { grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(4, auto); grid-auto-flow: column; gap: .5rem .8rem; }
+  }
   .xp-linha { margin-top: auto; padding-top: .3rem; }
   .xp-nota { color: var(--muted); font-size: var(--fs-rotulo); }
   .mestre-xp { display: flex; align-items: flex-end; gap: .6rem; flex-wrap: wrap; margin-top: .4rem; }
