@@ -37,7 +37,7 @@ export interface Paleta {
 }
 
 export const PALETA_PADRAO: Required<Paleta> = {
-  aco: '#d5dbe1', acoLuz: '#ffffff', acoSombra: '#5d6873',
+  aco: '#dde2e7', acoLuz: '#ffffff', acoSombra: '#39434d',
   cabo: '#8c4b3f', caboEscuro: '#4a2620',
   ouro: '#d9b64a', ouroEscuro: '#8a6a15',
   traco: '#1b1e21',
@@ -65,6 +65,8 @@ export interface Arma {
    */
   cabeca?: { tipo?: TipoCabeca; escala?: number; desloc?: number };
   haste?: { comprimento?: number; largura?: number; ponteira?: boolean; anel?: boolean };
+  /** Vira a peça de ponta-cabeça: as facas de arremesso se desenham com a lâmina para cima. */
+  virar?: boolean;
   /** Repete a peça inteira: 3 facas em leque, 2 machados cruzados. */
   repetir?: {
     vezes: number; giro: number; passo: number; separado?: number; pivo?: number;
@@ -84,7 +86,13 @@ const n = (v: number) => Math.round(v * 100) / 100;
 let seq = 0;
 
 /** Espessuras do traço, em uma escada só, para o desenho inteiro falar a mesma língua. */
-const TRACO = { contorno: 1.5, interno: 0.9, fino: 0.5 };
+const TRACO = {
+  contorno: 1.5, interno: 0.9, fino: 0.5,
+  // A hachura tem de sobreviver à redução. Com 0,5 de espessura e 2 de passo ela
+  // dava linha e vão de menos de 2px na tela, e o olho fundia tudo num cinza:
+  // parecia gradiente, não buril. O que faz ler como traço é o VÃO entre linhas.
+  hachura: 0.8,
+};
 
 // ----------------------------------------------------------------- hachura
 
@@ -97,7 +105,7 @@ const TRACO = { contorno: 1.5, interno: 0.9, fino: 0.5 };
  */
 function hachura(
   clip: string, x0: number, x1: number, y0: number, y1: number,
-  densidade: (t: number) => number, cor = 'var(--aco-sombra)', passo = 1.6,
+  densidade: (t: number) => number, cor = 'var(--aco-sombra)', passo = 2.4,
 ): string {
   const linhas: string[] = [];
   let i = 0;
@@ -111,7 +119,7 @@ function hachura(
     const r = Math.sin(++i * 12.9898) * 43758.5453;
     const jitter = r - Math.floor(r);                    // 0..1, sempre o mesmo
     linhas.push(`<path d="M${n(x)} ${n(y0 + jitter * 3)} L${n(x)} ${n(y1 - jitter * 5)}" stroke="${cor}" `
-      + `stroke-width="${n(TRACO.fino * (0.75 + jitter * 0.7))}" opacity="${n(op * (0.75 + jitter * 0.5))}"/>`);
+      + `stroke-width="${n(TRACO.hachura * (0.75 + jitter * 0.7))}" opacity="${n(op * (0.75 + jitter * 0.5))}"/>`);
   }
   return `<g clip-path="url(#${clip})">${linhas.join('')}</g>`;
 }
@@ -120,9 +128,9 @@ function hachura(
 function hachuraDiagonal(clip: string, x0: number, x1: number, y0: number, y1: number, op = 0.3): string {
   const linhas: string[] = [];
   const span = (x1 - x0) + (y1 - y0);
-  for (let d = 0; d < span; d += 3.4) {
+  for (let d = 0; d < span; d += 4.2) {
     linhas.push(`<path d="M${n(x0 + d)} ${n(y0)} L${n(x0 + d - (y1 - y0))} ${n(y1)}" `
-      + `stroke="var(--aco-sombra)" stroke-width="${TRACO.fino}" opacity="${op}"/>`);
+      + `stroke="var(--aco-sombra)" stroke-width="${TRACO.hachura}" opacity="${op}"/>`);
   }
   return `<g clip-path="url(#${clip})">${linhas.join('')}</g>`;
 }
@@ -141,7 +149,7 @@ function cabo(topo: number, comp: number, larg: number, madeira: boolean, id: st
     `<path d="${forma}" fill="var(--cabo)"/>`,
     // volume: a lateral esquerda recolhe, a direita pega luz
     hachura(clip, EIXO - b, EIXO + b, topo - 1, base + 1,
-      (x) => (x < 0.3 ? 0.5 - x : x > 0.78 ? 0.18 : 0.05), 'var(--cabo-escuro)', 1.3),
+      (x) => (x < 0.3 ? 0.5 - x : x > 0.78 ? 0.18 : 0.05), 'var(--cabo-escuro)', 2),
   ];
   if (madeira) {
     for (let i = -2; i <= 2; i++) {
@@ -164,7 +172,24 @@ function cabo(topo: number, comp: number, larg: number, madeira: boolean, id: st
     }
   }
   partes.push(`<path d="${forma}" fill="none" stroke="var(--traco)" stroke-width="${TRACO.contorno}" stroke-linejoin="round"/>`);
+  if (!madeira) {
+    // As virolas: aros de metal que prendem o couro nas duas pontas. São pequenas,
+    // mas é o que separa "cabo enrolado" de "pedaço de pau pintado" — o original
+    // tem uma em cima, sob o pomo, e outra em baixo, contra a guarda.
+    partes.push(virola(topo - 0.5, t * 2.35, larg * 0.28));
+    partes.push(virola(base - larg * 0.3, b * 2.35, larg * 0.3));
+  }
   return partes.join('');
+}
+
+/** Aro de metal que arremata o cabo. */
+function virola(y: number, larguraTotal: number, alt: number): string {
+  const b = larguraTotal / 2;
+  const forma = `M${n(EIXO - b)} ${n(y)} L${n(EIXO + b)} ${n(y)} L${n(EIXO + b)} ${n(y + alt)} L${n(EIXO - b)} ${n(y + alt)} Z`;
+  return `<path d="${forma}" fill="var(--ouro)"/>`
+    + `<path d="M${n(EIXO - b)} ${n(y + alt * 0.68)} L${n(EIXO + b)} ${n(y + alt * 0.68)}" stroke="var(--ouro-escuro)" stroke-width="${TRACO.interno}"/>`
+    + `<path d="M${n(EIXO - b)} ${n(y + alt * 0.26)} L${n(EIXO + b)} ${n(y + alt * 0.26)}" stroke="#fff" stroke-width="${TRACO.fino}" opacity=".5"/>`
+    + `<path d="${forma}" fill="none" stroke="var(--traco)" stroke-width="${TRACO.contorno}" stroke-linejoin="round"/>`;
 }
 
 /** Peça de ouro: gradiente quente, vinco escuro e um ponto de luz. */
@@ -208,7 +233,7 @@ function pomo(tipo: TipoPomo, base: number, larg: number, id: string): string {
 function guarda(tipo: TipoGuarda, y: number, larg: number, id: string): string {
   if (tipo === 'nenhuma') return '';
   if (tipo === 'disco') {
-    const rx = larg / 2, ry = larg * 0.17;
+    const rx = larg / 2, ry = larg * 0.24;
     return `<ellipse cx="${n(EIXO)}" cy="${n(y)}" rx="${n(rx)}" ry="${n(ry)}" fill="url(#${id}-ouro)"/>`
       + `<ellipse cx="${n(EIXO)}" cy="${n(y)}" rx="${n(rx * 0.62)}" ry="${n(ry * 0.5)}" fill="none" stroke="var(--ouro-escuro)" stroke-width="${TRACO.interno}" opacity=".8"/>`
       + `<ellipse cx="${n(EIXO)}" cy="${n(y)}" rx="${n(rx)}" ry="${n(ry)}" fill="none" stroke="var(--traco)" stroke-width="${TRACO.contorno}"/>`
@@ -241,24 +266,28 @@ function lamina(tipo: TipoLamina, topo: number, comp: number, larg: number, full
   let contorno: string;
 
   if (tipo === 'folha') {
-    contorno = `M${n(EIXO)} ${n(topo)} C${n(EIXO + b * 1.15)} ${n(topo + comp * 0.18)} `
-      + `${n(EIXO + b)} ${n(topo + comp * 0.55)} ${n(EIXO)} ${n(ponta)} `
-      + `C${n(EIXO - b)} ${n(topo + comp * 0.55)} ${n(EIXO - b * 1.15)} ${n(topo + comp * 0.18)} ${n(EIXO)} ${n(topo)} Z`;
+    // Ombro reto no encontro com o cabo. Nascendo num ponto, como antes, a lâmina
+    // encostava no punho por um pixel só e o cabo parecia solto no ar.
+    const om = b * 0.42;
+    contorno = `M${n(EIXO - om)} ${n(topo)} L${n(EIXO + om)} ${n(topo)} `
+      + `C${n(EIXO + b * 1.1)} ${n(topo + comp * 0.2)} `
+      + `${n(EIXO + b * 0.95)} ${n(topo + comp * 0.58)} ${n(EIXO)} ${n(ponta)} `
+      + `C${n(EIXO - b * 0.95)} ${n(topo + comp * 0.58)} ${n(EIXO - b * 1.1)} ${n(topo + comp * 0.2)} ${n(EIXO - om)} ${n(topo)} Z`;
   } else if (tipo === 'afilada') {
     contorno = `M${n(EIXO - b)} ${n(topo)} L${n(EIXO + b)} ${n(topo)} `
       + `L${n(EIXO + b * 0.18)} ${n(ponta - comp * 0.06)} L${n(EIXO)} ${n(ponta)} `
       + `L${n(EIXO - b * 0.18)} ${n(ponta - comp * 0.06)} Z`;
   } else if (tipo === 'serrilhada') {
     const dentes: string[] = [];
-    const nD = 11, ini = topo + comp * 0.14, fim = ponta - comp * 0.16;
+    const nD = 15, ini = topo + comp * 0.34, fim = ponta - comp * 0.14;
     for (let i = 0; i < nD; i++) {
       const y0 = ini + ((fim - ini) / nD) * i;
       const y1 = ini + ((fim - ini) / nD) * (i + 1);
-      dentes.push(`L${n(EIXO + b * 1.02)} ${n(y0)} L${n(EIXO + b * 0.42)} ${n(y1)}`);
+      dentes.push(`L${n(EIXO + b * 1.02)} ${n(y0)} L${n(EIXO + b * 0.46)} ${n(y1)}`);
     }
-    contorno = `M${n(EIXO - b)} ${n(topo)} L${n(EIXO + b * 0.42)} ${n(topo)} `
-      + dentes.join(' ') + ` L${n(EIXO + b * 0.5)} ${n(ponta - comp * 0.02)} `
-      + `L${n(EIXO - b * 0.35)} ${n(ponta)} L${n(EIXO - b)} ${n(ponta - comp * 0.06)} Z`;
+    contorno = `M${n(EIXO - b)} ${n(topo)} L${n(EIXO + b)} ${n(topo)} L${n(EIXO + b)} ${n(ini)} `
+      + dentes.join(' ') + ` L${n(EIXO + b * 0.72)} ${n(fim + comp * 0.04)} `
+      + `L${n(EIXO)} ${n(ponta)} L${n(EIXO - b)} ${n(ponta - comp * 0.16)} Z`;
   } else {
     const yT = topo + comp * 0.82;
     contorno = `M${n(EIXO - b)} ${n(ombro)} L${n(EIXO + b)} ${n(ombro)} `
@@ -278,7 +307,10 @@ function lamina(tipo: TipoLamina, topo: number, comp: number, larg: number, full
     + `</g>`,
     // hachura: densa junto ao gume esquerdo, rala no meio, média à direita
     hachura(clip, EIXO - b, EIXO + b, topo - 2, ponta + 2,
-      (t) => (t < 0.22 ? 0.55 - t * 1.2 : t > 0.84 ? 0.42 : t > 0.6 ? 0.16 : 0.04)),
+            // O original tem três zonas bem separadas: hachura densa no terço da
+      // sombra, MIOLO LIMPO e uma tira escura rente ao outro fio. Hachura fraca
+      // espalhada por tudo, como estava, só suja a lâmina inteira.
+      (t) => (t < 0.5 ? 0.9 - t * 1.3 : t > 0.88 ? 0.55 : 0.07), 'var(--aco-sombra)', 3),
   ];
   if (fuller) {
     // O vinco central. Escavado, ele nasce no ombro e MORRE antes da ponta, e as
@@ -397,7 +429,10 @@ function corpoArma(a: Arma, id: string): string {
   const caboComp = c.comprimento ?? 62, caboLarg = c.largura ?? 11;
   const guardaLarg = g.largura ?? 62;
   const lamComp = l.comprimento ?? 250, lamLarg = l.largura ?? 20;
-  const topoCabo = 26;
+  // O cabo começa abaixo do pomo, que é desenhado para cima a partir dali. Com
+  // pomo grande e topo fixo, ele saía pela borda de cima do quadro.
+  const rPomo = (a.pomo ?? 'esfera') === 'nenhum' ? 0 : caboLarg * 0.66;
+  const topoCabo = 10 + rPomo * (a.pomo === 'gota' ? 2.4 : 1.9);
   const yGuarda = topoCabo + caboComp;
   return pomo(a.pomo ?? 'esfera', topoCabo, caboLarg, id)
     + cabo(topoCabo, caboComp, caboLarg, !!c.madeira, id)
@@ -444,6 +479,7 @@ const defs = (id: string) => `<defs>`
 export function desenhaArma(a: Arma, opts: { classe?: string } = {}): string {
   const id = `w${++seq}`;
   let corpo = corpoArma(a, id);
+  if (a.virar) corpo = `<g transform="translate(0 ${ALTURA}) scale(1 -1)">${corpo}</g>`;
   if (a.repetir) {
     const { vezes, giro, passo, separado = 0, pivo = ALTURA * 0.45, espelhar } = a.repetir;
     const copias: string[] = [];
@@ -463,42 +499,45 @@ export function desenhaArma(a: Arma, opts: { classe?: string } = {}): string {
 // ------------------------------------------------------- as 9 da folha
 
 export const ARMAS_SVG: Record<string, Arma> = {
+  // As proporções vêm da medição das peças originais: guarda a 28–35% da altura,
+  // lâmina ocupando 61–68%, base da lâmina entre 28% e 39% da largura da guarda.
   adaga: {
     nome: 'Adaga', pomo: 'esfera',
-    cabo: { comprimento: 54, largura: 10 },
-    guarda: { tipo: 'disco', largura: 52 },
-    lamina: { tipo: 'afilada', comprimento: 190, largura: 30, fuller: false },
+    cabo: { comprimento: 108, largura: 24 },
+    guarda: { tipo: 'disco', largura: 78 },
+    lamina: { tipo: 'afilada', comprimento: 272, largura: 42, fuller: false },
   },
   'adaga-de-arremesso': {
     nome: 'Adagas de arremesso', pomo: 'nenhum',
-    cabo: { comprimento: 74, largura: 9 },
+    cabo: { comprimento: 108, largura: 16 },
     guarda: { tipo: 'nenhuma' },
-    lamina: { tipo: 'folha', comprimento: 215, largura: 34, fuller: false },
-    repetir: { vezes: 3, giro: 7, passo: 20, separado: 6, pivo: 330 },
+    lamina: { tipo: 'folha', comprimento: 300, largura: 40, fuller: false },
+    virar: true,
+    repetir: { vezes: 3, giro: 7, passo: 22, separado: 8, pivo: 60 },
   },
   'espada-curta': {
     nome: 'Espada Curta', pomo: 'roda',
-    cabo: { comprimento: 48, largura: 10 },
-    guarda: { tipo: 'cruz', largura: 66 },
-    lamina: { tipo: 'reta', comprimento: 205, largura: 24 },
+    cabo: { comprimento: 92, largura: 20 },
+    guarda: { tipo: 'cruz', largura: 96 },
+    lamina: { tipo: 'reta', comprimento: 288, largura: 32 },
   },
   'espada-longa': {
     nome: 'Espada Longa', pomo: 'gota',
-    cabo: { comprimento: 60, largura: 10 },
-    guarda: { tipo: 'cruz', largura: 74 },
-    lamina: { tipo: 'reta', comprimento: 265, largura: 22 },
+    cabo: { comprimento: 86, largura: 19 },
+    guarda: { tipo: 'cruz', largura: 104 },
+    lamina: { tipo: 'reta', comprimento: 300, largura: 30 },
   },
   'espada-serrilhada': {
     nome: 'Espada Serrilhada', pomo: 'esfera',
-    cabo: { comprimento: 54, largura: 10 },
-    guarda: { tipo: 'cruz', largura: 62 },
-    lamina: { tipo: 'serrilhada', comprimento: 250, largura: 26, fuller: false },
+    cabo: { comprimento: 92, largura: 20 },
+    guarda: { tipo: 'cruz', largura: 94 },
+    lamina: { tipo: 'serrilhada', comprimento: 292, largura: 36, fuller: false },
   },
   montante: {
     nome: 'Montante', pomo: 'esfera',
-    cabo: { comprimento: 72, largura: 11 },
-    guarda: { tipo: 'aneis', largura: 82 },
-    lamina: { tipo: 'reta', comprimento: 262, largura: 27 },
+    cabo: { comprimento: 104, largura: 21 },
+    guarda: { tipo: 'aneis', largura: 106 },
+    lamina: { tipo: 'reta', comprimento: 282, largura: 34 },
   },
   machado: {
     nome: 'Machado',
