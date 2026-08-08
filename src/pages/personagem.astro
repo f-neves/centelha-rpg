@@ -27,7 +27,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
         <input type="range" class="retrato-range" id="retrato-range" min="1" max="3" step="0.05" value="1" title="Zoom no card" hidden />
         <div class="retrato-acoes" id="retrato-acoes">
           <button type="button" class="btn retrato-ajustar" id="retrato-ajustar" hidden>Ajustar enquadramento</button>
-          <label class="btn retrato-btn" id="retrato-lbl" hidden><span id="retrato-lbl-txt">Enviar imagem</span>
+          <label class="btn retrato-btn" id="retrato-lbl" hidden>Enviar imagem
             <input type="file" id="retrato-file" accept="image/*" hidden />
           </label>
           <button type="button" class="btn perigo retrato-del" id="retrato-del" hidden>Excluir imagem</button>
@@ -166,7 +166,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     // ---- Retrato: exibição, enquadramento (pan/zoom só no card) e lightbox ----
     const podeRetrato = ehDono && status === 'rascunho';
     let retratoPath: string | null = pers.imagem_path || null;
-    const FW = 172, FH = 208;
+    const FW = 215, FH = 260;   // a moldura do cabeçalho, 25% maior que a padrão
     const posPadrao = () => ({ x: 50, y: 50, z: 1 });
     let pos = (pers.imagem_pos && typeof pers.imagem_pos === 'object')
       ? { x: pers.imagem_pos.x ?? 50, y: pers.imagem_pos.y ?? 50, z: pers.imagem_pos.z ?? 1 } : posPadrao();
@@ -418,12 +418,13 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
   function estadoRetrato(temImg: boolean, pode: boolean) {
     document.getElementById('retrato-frame')!.hidden = !temImg;
-    document.getElementById('retrato-lbl')!.hidden = !pode;
+    // O botão só existe para PÔR a primeira imagem. Trocar sai de cena: com uma
+    // imagem no lugar, as ações são enquadrar e excluir, e quem quiser outra
+    // exclui esta e envia a nova.
+    document.getElementById('retrato-lbl')!.hidden = !pode || temImg;
     document.getElementById('retrato-del')!.hidden = !(pode && temImg);
     document.getElementById('retrato-ajustar')!.hidden = !(pode && temImg);
     if (!(pode && temImg)) document.getElementById('retrato-range')!.hidden = true;
-    const lblTxt = document.getElementById('retrato-lbl-txt');
-    if (lblTxt) lblTxt.textContent = temImg ? 'Trocar imagem' : 'Enviar imagem';
   }
   async function mostrarRetrato(sb: any, path: string, pode: boolean) {
     const { data } = await sb.storage.from(BUCKET).createSignedUrl(path, 3600);
@@ -541,7 +542,20 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .retrato-lb[hidden] { display: none; }
   .retrato-lb img { max-width: 92vw; max-height: 88vh; border-radius: var(--r-lg); box-shadow: 0 12px 44px rgba(0,0,0,.5); }
 
-  .pers-ident { flex: 1 1 20rem; min-width: 16rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .8rem 1rem 1rem; }
+  /* A moldura padrão (172×208) mora em global.css e é a mesma dos cards de
+     Mesas / Fichas. Aqui ela cresce 25%, e só aqui: no cabeçalho do personagem
+     o retrato é o assunto, não uma miniatura de lista.
+     Dentro de uma media query de propósito: abaixo de 900px o cabeçalho vira
+     compacto (moldura de 96px), e uma regra solta com estas duas classes venceria
+     a de lá por especificidade e esticaria o retrato do celular. */
+  @media (min-width: 901px) {
+    .pers-cab .retrato-frame { width: 215px; height: 260px; }
+    .pers-cab .retrato-range, .pers-cab .retrato-acoes { width: 215px; }
+  }
+  /* O retrato ficou 2,7rem mais largo; a identificação devolve os mesmos 2,7rem
+     na base e no mínimo. Sem isso o cabeçalho quebraria em duas linhas numa tela
+     mais larga do que antes, e aí ele cresceria em altura em vez de manter. */
+  .pers-ident { flex: 1 1 17.3rem; min-width: 13.3rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .8rem 1rem 1rem; }
   .pers-ident h1 { margin: .05rem 0 .2rem; }
   /* o lápis só existe no celular; no desktop as ações seguem visíveis como sempre */
   .retrato-menu-tog { display: none; }
