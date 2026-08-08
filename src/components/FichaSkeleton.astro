@@ -94,7 +94,9 @@ import '../styles/arte-equip.css';
 <h2 class="barh barh-tog" data-sec="skills"><span class="sec-caret">▾</span> Habilidades <small>(piso 0 · 4 + nível×2: 6/8/10/12/14/16 · especialidade 8 + nível×4: 12/16/20 · até [nível÷2] por perícia)</small></h2>
 <div class="sec-body" id="sec-skills"><div class="hgrupos" id="skills"></div></div>
 
-<h2 class="barh barh-tog" data-sec="secondary"><span class="sec-caret">▾</span> Habilidades Secundárias <small>(metade da primária: 3/4/5/6/7/8 · esp. 6/8/10 · até [nível÷2])</small></h2>
+{/* No celular a seção se chama só "Secundárias": ao lado de "Habilidades" logo acima,
+    o "Habilidades" repetido no título comia a largura sem dizer nada de novo. */}
+<h2 class="barh barh-tog" data-sec="secondary"><span class="sec-caret">▾</span> <span class="so-desktop">Habilidades </span>Secundárias <small>(metade da primária: 3/4/5/6/7/8 · esp. 6/8/10 · até [nível÷2])</small></h2>
 <div class="sec-body" id="sec-secondary"><div class="hgrupos" id="secondary"></div></div>
 </div>
 
@@ -959,6 +961,16 @@ import '../styles/arte-equip.css';
 
     body.ficha-abas .ftab { display: none; }
     body.ficha-abas .ftab.on { display: block; }
+
+    /* As barras que abrem e fecham traziam a conta do custo em XP no <small>:
+       "piso 0 · 4 + nível×2: 6/8/10/12/14/16 · especialidade 8 + nível×4…". Numa
+       tela de 360px isso vira quatro linhas de fórmula antes da primeira perícia,
+       e é consulta de quem está montando, não de quem está jogando. A conta
+       continua no desktop e no texto das Regras. */
+    body.ficha-abas h2.barh.barh-tog small { display: none; }
+    /* e "Habilidades Secundárias" fica só "Secundárias": o rótulo repetido logo
+       abaixo de "Habilidades" gastava a largura sem separar uma da outra */
+    body.ficha-abas .so-desktop { display: none; }
 
     /* a barra de XP sai do fluxo e vira a folha de ações atrás do ⋯ */
     body.ficha-abas .xpbar { display: none; }

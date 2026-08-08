@@ -254,7 +254,9 @@ if (partes.length) crumbs.push({ label: title });
       const u = location.origin + location.pathname + '#' + hash;
       navigator.clipboard?.writeText(u);
     };
-    document.querySelectorAll('main h2[id], main h3[id], main [data-permalink][id]').forEach((el) => {
+    // As barras que abrem e fecham uma seção (h2.barh-tog, na Ficha) ficam de fora: o
+    // clique ali já é o de recolher a seção, e o 🔗 no fim do título disputava esse alvo.
+    document.querySelectorAll('main h2[id]:not(.barh-tog), main h3[id], main [data-permalink][id]').forEach((el) => {
       const a = document.createElement('a');
       a.className = 'anchor'; a.href = '#' + el.id; a.title = 'Copiar link'; a.setAttribute('aria-label', 'Copiar link para esta seção');
       a.textContent = '🔗';
