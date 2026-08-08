@@ -1270,31 +1270,45 @@ export function montarFicha(opts: FichaOpts) {
     const [leve, medio, maxKg] = F.levantamento[fah] as number[];
     const dmax = F.arremessoDistMax1kg[faa] as number;
     const lnM = Math.log(maxKg);
-    const dist = (w: number) => w <= 1 ? dmax : w >= maxKg ? 0 : dmax * (1 - Math.log(w) / lnM);
+    // Abaixo de 1 kg nada voa mais longe: o que falta é massa para carregar o impulso,
+    // então a distância sobe de 0 m (peso nenhum) até o alcance máximo em 1 kg, numa
+    // curva suave (3w²−2w³). De 1 kg ao peso máximo vale a regra, que decai com o log.
+    const dist = (w: number) => w <= 0 ? 0
+      : w < 1 ? dmax * (3 * w * w - 2 * w * w * w)
+      : w >= maxKg ? 0 : dmax * (1 - Math.log(w) / lnM);
     const r1 = (n: number) => n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10);
     // Gráfico Arremesso × Peso. O eixo X é o peso porque é ele que o jogador tem em mãos
     // ("esta pedra tem 8 kg, vai até onde?"), e a distância é a resposta, no Y. Na mesma
-    // ordem de leitura da tabela ao lado. O X é logarítmico: o peso vai de 1 kg (o mínimo,
-    // nada voa mais longe que isso) até centenas, e num eixo linear tudo que se arremessa
-    // de verdade ficaria espremido no primeiro centímetro do gráfico.
+    // ordem de leitura da tabela ao lado. Escala linear nos dois eixos: em log a curva
+    // vira uma reta e quem não repara nos números do eixo lê como proporção direta.
     const W = 580, ml = 42, mr = 16, mt = 14, mb = 34;
     const xB = ml, xR = W - mr, pw = xR - xB;
-    // arredonda para o "número redondo" mais próximo em escala log (1, 2, 3, 5 × 10^n)
-    const niceKg = (v: number) => {
-      const p = Math.pow(10, Math.floor(Math.log10(v))), m = v / p;
-      return [1, 2, 3, 5, 10].reduce((a, b) => (Math.abs(Math.log(b / m)) < Math.abs(Math.log(a / m)) ? b : a)) * p;
-    };
-    const xt = [1];
-    for (let i = 1; i < 5; i++) { const v = niceKg(Math.exp(lnM * i / 5)); if (v > xt[xt.length - 1] && v < maxKg) xt.push(v); }
+    // faixas de levantamento: Leve até o peso leve, Máximo nos últimos 15% do peso,
+    // Médio no que sobra no meio
+    const iniMax = maxKg * 0.85;
+    const bandas = [
+      { de: 0, ate: leve, nome: 'Leve', op: '.05' },
+      { de: leve, ate: iniMax, nome: 'Médio', op: '.1' },
+      { de: iniMax, ate: maxKg, nome: 'Máximo', op: '.17' },
+    ];
+    // marcas de peso: o menor passo redondo (1, 2, 2.5 ou 5 × 10ⁿ) que cabe em 5
+    // intervalos, e o peso máximo sempre rotulado no fim, mesmo fora do passo
+    const passo = (() => {
+      const alvo = maxKg / 5;
+      for (let e = 0; e < 8; e++) for (const m of [1, 2, 2.5, 5]) { const p = m * Math.pow(10, e); if (p >= alvo) return p; }
+      return alvo;
+    })();
+    const xt: number[] = [];
+    for (let v = 0; v <= maxKg - passo * 0.35; v += passo) xt.push(Math.round(v * 100) / 100);
     xt.push(maxKg);
     const yt = [0, dmax / 3, (2 * dmax) / 3, dmax];
-    const xposW = (w: number) => xB + (Math.log(Math.max(1, w)) / lnM) * pw;
-    const wAtX = (x: number) => Math.exp((lnM * (x - xB)) / pw);
+    const xposW = (w: number) => xB + (w / maxKg) * pw;
+    const wAtX = (x: number) => ((x - xB) / pw) * maxKg;
     const tw = [1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
     tw.push(maxKg);
     const rows = tw.map((w) => `<tr><td>${w}</td><td>${r1(dist(w))}</td></tr>`).join('');
     const table = `<table class="fa-tbl"><thead><tr><th>Peso (kg)</th><th>Arremesso (m)</th></tr></thead><tbody>${rows}</tbody></table>`;
-    const head = `<div class="fa-head"><b>Levantamento</b> · FAH ${fah} = Força ${forca}×2 + Atletismo ${atl} + Halterofilismo ${halt}<div class="fa-tiers"><span>Leve <b>${leve} kg</b></span><span>Médio <b>${medio} kg</b></span><span>Máximo <b>${maxKg} kg</b></span></div><b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg (o mínimo) voa ${dmax} m; o peso máximo (${maxKg} kg), 0 m. Sem impulso nem giro.</span></div>`;
+    const head = `<div class="fa-head"><b>Levantamento</b> · FAH ${fah} = Força ${forca}×2 + Atletismo ${atl} + Halterofilismo ${halt}<div class="fa-tiers"><span>Leve <b>${leve} kg</b></span><span>Médio <b>${medio} kg</b></span><span>Máximo <b>${maxKg} kg</b></span></div><b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg voa ${dmax} m, o mais longe que se alcança: abaixo disso falta massa para levar o impulso, e o peso máximo (${maxKg} kg) não sai do lugar. Sem impulso nem giro.</span></div>`;
     box.innerHTML = `<div class="fa-wrap">${head}<div class="fa-row"><div class="fa-chartwrap"></div>${table}</div></div>`;
     const wrap = box.querySelector('.fa-chartwrap') as any;
     const tbl = box.querySelector('.fa-tbl') as any;
@@ -1306,8 +1320,12 @@ export function montarFicha(opts: FichaOpts) {
       curH = H;
       const ph = H - mt - mb, yB = mt + ph;
       const ypos = (d: number) => yB - (dmax > 0 ? d / dmax : 0) * ph;
-      const N = 60; const seq: string[] = [];
-      for (let i = 0; i <= N; i++) { const w = Math.exp((lnM * i) / N); seq.push(`${xposW(w).toFixed(1)},${ypos(dist(w)).toFixed(1)}`); }
+      // amostragem em duas partes: a subida até 1 kg (estreita mas curva) e o resto,
+      // com os pontos adensados perto de 1 kg, onde a curva vira
+      const seq: string[] = [];
+      const ponto = (w: number) => seq.push(`${xposW(w).toFixed(1)},${ypos(dist(w)).toFixed(1)}`);
+      for (let i = 0; i <= 12; i++) ponto(i / 12);
+      for (let i = 1; i <= 80; i++) ponto(Math.exp((lnM * i) / 80));
       const area = `M${xB},${yB} L${seq.join(' L')} L${xR},${yB} Z`;
       const xticks = xt.map((w, i) => {
         const x = xposW(w), anc = i === 0 ? 'start' : i === xt.length - 1 ? 'end' : 'middle';
@@ -1317,11 +1335,19 @@ export function montarFicha(opts: FichaOpts) {
         const y = ypos(d);
         return `<line class="grid" x1="${xB}" y1="${y.toFixed(1)}" x2="${xR}" y2="${y.toFixed(1)}"/><text x="${xB - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end">${r1(d)}</text>`;
       }).join('');
+      // faixas de levantamento ao fundo, cada uma mais densa que a anterior, com o nome
+      // no alto; a separação entre elas ganha um tracejado
+      const faixas = bandas.map((b) => {
+        const x1 = xposW(b.de), x2 = xposW(b.ate), meio = (x1 + x2) / 2;
+        return `<rect class="fa-band" x="${x1.toFixed(1)}" y="${mt}" width="${(x2 - x1).toFixed(1)}" height="${ph}" opacity="${b.op}"/>`
+          + (b.de > 0 ? `<line class="fa-bandsep" x1="${x1.toFixed(1)}" y1="${mt}" x2="${x1.toFixed(1)}" y2="${yB}"/>` : '')
+          + `<text class="fa-bandlbl" x="${meio.toFixed(1)}" y="${mt + 11}" text-anchor="middle">${b.nome}</text>`;
+      }).join('');
       // os rótulos de unidade ficam fora da área de plotagem (título embaixo e girado
       // à esquerda), senão colidem com o maior número de cada eixo
       const titles = `<text class="axlbl" x="${(xB + xR) / 2}" y="${H - 4}" text-anchor="middle">Peso (kg)</text>`
         + `<text class="axlbl" transform="rotate(-90 11 ${mt + ph / 2})" x="11" y="${mt + ph / 2}" text-anchor="middle">Arremesso (m)</text>`;
-      wrap.innerHTML = `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distância de arremesso por peso">${yticks}${xticks}<path class="area" d="${area}"/><polyline class="curve" points="${seq.join(' ')}"/><line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/><line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>${titles}<rect class="fa-capture" x="${xB}" y="${mt}" width="${pw}" height="${ph}" fill="transparent"/><g class="fa-hover" style="display:none; pointer-events:none"><line class="fa-vline" y1="${mt}" y2="${yB}"/><circle class="fa-dot" r="4"/></g></svg><div class="fa-tip" style="display:none"></div>`;
+      wrap.innerHTML = `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distância de arremesso por peso">${faixas}${yticks}${xticks}<path class="area" d="${area}"/><polyline class="curve" points="${seq.join(' ')}"/><line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/><line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>${titles}<rect class="fa-capture" x="${xB}" y="${mt}" width="${pw}" height="${ph}" fill="transparent"/><g class="fa-hover" style="display:none; pointer-events:none"><line class="fa-vline" y1="${mt}" y2="${yB}"/><circle class="fa-dot" r="4"/></g></svg><div class="fa-tip" style="display:none"></div>`;
       const svgEl = wrap.querySelector('svg.fa-chart') as any;
       const tip = wrap.querySelector('.fa-tip') as any;
       const hov = wrap.querySelector('.fa-hover') as any;
@@ -1331,7 +1357,7 @@ export function montarFicha(opts: FichaOpts) {
       // hover: mostra Peso × Distância sob o cursor
       svgEl.addEventListener('mousemove', (e: MouseEvent) => {
         const rect = svgEl.getBoundingClientRect();
-        const w = Math.max(1, Math.min(maxKg, wAtX(((e.clientX - rect.left) / rect.width) * W)));
+        const w = Math.max(0, Math.min(maxKg, wAtX(((e.clientX - rect.left) / rect.width) * W)));
         const d = dist(w), cx = xposW(w), cy = ypos(d);
         hov.style.display = '';
         vline.setAttribute('x1', String(cx)); vline.setAttribute('x2', String(cx));

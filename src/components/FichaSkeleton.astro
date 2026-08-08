@@ -591,6 +591,10 @@ import '../styles/arte-equip.css';
   .fa-chart .area { fill: var(--accent); opacity: .1; }
   .fa-chart text { fill: var(--ink-soft); font-size: 10px; font-family: 'EB Garamond'; }
   .fa-chart .axlbl { font-family: 'Cinzel'; font-size: 9px; }
+  /* faixas de levantamento (Leve · Médio · Máximo) ao fundo do gráfico */
+  .fa-chart .fa-band { fill: var(--accent-strong); }
+  .fa-chart .fa-bandsep { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 2 4; opacity: .55; }
+  .fa-chart .fa-bandlbl { fill: var(--ink-soft); font-family: 'Cinzel'; font-size: 9px; letter-spacing: .06em; }
   .fa-chart .fa-vline { stroke: var(--accent-strong); stroke-width: 1; stroke-dasharray: 3 3; opacity: .7; }
   .fa-chart .fa-dot { fill: var(--accent-strong); stroke: var(--paper, #fff); stroke-width: 1.5; }
   .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -140%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: #fff; font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .12rem .4rem; border-radius: var(--r-sm); box-shadow: 0 1px 4px rgba(0,0,0,.3); }
