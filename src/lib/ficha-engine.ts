@@ -1328,7 +1328,7 @@ export function montarFicha(opts: FichaOpts) {
     const dist = (w: number) => w <= 0 ? 0
       : w < 1 ? dmax * (3 * w * w - 2 * w * w * w)
       : w >= maxKg ? 0 : dmax * (1 - Math.log(w) / lnM);
-    const r1 = (n: number) => n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10);
+    const r1 = (n: number) => (n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10)).replace('.', ',');
     // Gráfico Arremesso × Peso. O eixo X é o peso porque é ele que o jogador tem em mãos
     // ("esta pedra tem 8 kg, vai até onde?"), e a distância é a resposta, no Y. Na mesma
     // ordem de leitura da tabela ao lado. Escala linear nos dois eixos: em log a curva
@@ -1358,9 +1358,16 @@ export function montarFicha(opts: FichaOpts) {
     const wAtX = (x: number) => ((x - xB) / pw) * maxKg;
     const tw = [1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
     tw.push(maxKg);
-    const rows = tw.map((w) => `<tr><td>${w}</td><td>${r1(dist(w))}</td></tr>`).join('');
-    const table = `<table class="fa-tbl"><thead><tr><th>Peso (kg)</th><th>Arremesso (m)</th></tr></thead><tbody>${rows}</tbody></table>`;
-    const head = `<div class="fa-head"><b>Levantamento</b> · FAH ${fah} = Força ${forca}×2 + Atletismo ${atl} + Halterofilismo ${halt}<div class="fa-tiers"><span>Leve <b>${leve} kg</b></span><span>Médio <b>${medio} kg</b></span><span>Máximo <b>${maxKg} kg</b></span></div><b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg voa ${dmax} m, o mais longe que se alcança: abaixo disso falta massa para levar o impulso, e o peso máximo (${maxKg} kg) não sai do lugar. Sem impulso nem giro.</span></div>`;
+    // Correr ou girar antes de soltar é o corpo inteiro entrando no arremesso, e entra
+    // como acréscimo sobre o valor parado: a corrida a plena velocidade rende +1/3 e o
+    // giro no lugar rende metade disso, +1/6.
+    const M_GIRO = 1 + 1 / 6, M_CORRIDA = 1 + 1 / 3;
+    const rows = tw.map((w) => {
+      const d = dist(w);
+      return `<tr><td>${w}</td><td>${r1(d)}</td><td>${r1(d * M_GIRO)}</td><td>${r1(d * M_CORRIDA)}</td></tr>`;
+    }).join('');
+    const table = `<table class="fa-tbl"><thead><tr><th rowspan="2">Peso (kg)</th><th colspan="3">Arremesso (m)</th></tr><tr><th>Parado</th><th>Giro</th><th>Corrida</th></tr></thead><tbody>${rows}</tbody></table>`;
+    const head = `<div class="fa-head"><b>Levantamento</b> · FAH ${fah} = Força ${forca}×2 + Atletismo ${atl} + Halterofilismo ${halt}<div class="fa-tiers"><span>Leve <b>${leve} kg</b></span><span>Médio <b>${medio} kg</b></span><span>Máximo <b>${maxKg} kg</b></span></div><b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg voa ${dmax} m, o mais longe que se alcança: abaixo disso falta massa para levar o impulso, e o peso máximo (${maxKg} kg) não sai do lugar. O gráfico é o arremesso parado; girar no lugar rende +1/6 e a corrida a plena velocidade, +1/3.</span></div>`;
     box.innerHTML = `<div class="fa-wrap">${head}<div class="fa-row"><div class="fa-chartwrap"></div>${table}</div></div>`;
     const wrap = box.querySelector('.fa-chartwrap') as any;
     const tbl = box.querySelector('.fa-tbl') as any;
