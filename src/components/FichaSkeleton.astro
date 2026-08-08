@@ -34,8 +34,8 @@ import '../styles/arte-equip.css';
 <div class="fdeck">
   <div id="fvitais" aria-label="Derivados vitais"></div>
   <nav class="ftab-bar" role="tablist" aria-label="Seções da ficha">
-    <button type="button" role="tab" data-ftab="perfil" aria-selected="true">Perfil</button>
-    <button type="button" role="tab" data-ftab="atrib" aria-selected="false">Atrib</button>
+    <button type="button" role="tab" data-ftab="atrib" aria-selected="true">Atrib</button>
+    <button type="button" role="tab" data-ftab="perfil" aria-selected="false">Perfil</button>
     <button type="button" role="tab" data-ftab="hab" aria-selected="false">Hab</button>
     <button type="button" role="tab" data-ftab="proezas" aria-selected="false">Proezas</button>
     <button type="button" role="tab" data-ftab="equip" aria-selected="false">Equip</button>
@@ -176,7 +176,9 @@ import '../styles/arte-equip.css';
     const mq = matchMedia('(max-width: 900px)');
     const botoes = Array.from(bar.querySelectorAll<HTMLButtonElement>('button[data-ftab]'));
     const paineis = Array.from(document.querySelectorAll<HTMLElement>('.ftab'));
-    let ativa = 'perfil';
+    // a aba que abre é a primeira da barra, seja qual for: assim reordenar os botões
+    // basta, sem um nome de aba escrito à parte que sai de sincronia com a ordem
+    let ativa = botoes[0]?.dataset.ftab || 'atrib';
     const aplicar = () => {
       const mob = mq.matches;
       document.body.classList.toggle('ficha-abas', mob);
@@ -764,10 +766,33 @@ import '../styles/arte-equip.css';
     /* o sumário flutuante vira redundância com as abas */
     body.ficha-abas #otp-fab, body.ficha-abas #otp-panel { display: none; }
 
-    /* linhas de toque: 48px por atributo/perícia, dado de 44px à direita */
+    /* linhas de toque: 48px por linha, dado de 44px à direita */
     body.ficha-abas .trow { min-height: 48px; align-items: center; }
     body.ficha-abas .trow .rollv { min-width: 44px; min-height: 44px; }
     body.ficha-abas .trow .specbtn { min-width: 36px; min-height: 44px; }
+
+    /* Atributos e Habilidades em passo de 1,5rem: a linha tem 1,5rem de altura e nada
+       entre uma e outra, então o passo é exatamente 1,5rem. As três listas são longas
+       (10 atributos, 24 perícias primárias, 27 secundárias) e a régua de 48px fazia
+       cada uma virar várias telas de rolagem.
+
+       Os botões da direita perdem o piso de 44px junto, senão eles é que mandariam na
+       altura e a linha não fecharia em 1,5rem. É uma troca consciente: o alvo de toque
+       encolhe. Ver o que ficou medido no comentário de cada regra. */
+    /* a entrelinha entra junto: com a do corpo (1,62) o nome sozinho mede 25,9px e
+       seguraria a linha acima de 1,5rem, por mais que o min-height diga o contrário */
+    body.ficha-abas :is(#attrs, #skills, #secondary) .trow {
+      min-height: 1.5rem; height: 1.5rem; line-height: 1.5rem; padding: 0; }
+    body.ficha-abas :is(#attrs, #skills, #secondary) .hgrid { row-gap: 0; }
+    body.ficha-abas :is(#attrs, #skills, #secondary) .trow :is(.rollv, .specbtn) {
+      min-width: 24px; min-height: 24px; }        /* mínimo de alvo da WCAG 2.5.8 */
+    /* O ponto continua com 15px de círculo, mas o alvo de toque ocupa a altura inteira
+       da linha por um pseudo-elemento. Só na vertical: na horizontal os pontos têm 3px
+       entre si, e esticar o alvo faria o alvo de um invadir o do vizinho, que numa
+       régua de pontos é pior do que um alvo pequeno (marca o número errado). */
+    body.ficha-abas :is(#attrs, #skills, #secondary) .dot { position: relative; }
+    body.ficha-abas :is(#attrs, #skills, #secondary) .dot::after {
+      content: ''; position: absolute; left: 0; right: 0; top: -4.5px; bottom: -4.5px; }
     /* marcador de uso e botão de vestir: 34px é confortável no mouse, não no polegar */
     body.ficha-abas .eq-uso-op, body.ficha-abas .eq-vestir { min-height: 44px; }
     /* parâmetros do efeito em até 2 linhas em vez de truncados numa só */
