@@ -38,6 +38,7 @@ import '../styles/arte-equip.css';
     <button type="button" role="tab" data-ftab="perfil" aria-selected="false">Perfil</button>
     <button type="button" role="tab" data-ftab="hab" aria-selected="false">Hab</button>
     <button type="button" role="tab" data-ftab="proezas" aria-selected="false">Proezas</button>
+    <button type="button" role="tab" data-ftab="artes" aria-selected="false">Artes</button>
     <button type="button" role="tab" data-ftab="equip" aria-selected="false">Equip</button>
     <button type="button" role="tab" data-ftab="rolar" aria-selected="false">Rolar</button>
   </nav>
@@ -85,7 +86,12 @@ import '../styles/arte-equip.css';
   <div class="cam-tools"><button class="btn" id="cam-all">Expandir todos</button></div>
   <div class="cols3" id="tecnicas"></div>
 </div>
+</div>
 
+{/* O Arcano é aba própria no celular: são 23 Artes mais os Efeitos Especiais, e
+    empilhado embaixo das Proezas ficava longe demais de quem só quer as Artes.
+    No desktop as duas seções continuam uma sob a outra, como sempre. */}
+<div class="ftab" data-ftab="artes">
 <h2 class="barh barh-tog" data-sec="artes"><span class="sec-caret">▾</span> Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0)</small></h2>
 <div class="sec-body" id="sec-artes"><div class="cols3" id="artes"></div>
       <div class="ef-esp" id="efeitos-esp"></div></div>
@@ -809,11 +815,17 @@ import '../styles/arte-equip.css';
        texto solto dentro do <label>: numa grade ele vira item anônimo e ocupa a
        primeira coluna sozinho, sem precisar de <span>. */
     body.ficha-abas .idrow { grid-template-columns: 1fr; gap: .3rem; }
+    /* 5,5rem e nowrap na faixa do rótulo: "Conceito" mede 75px em Cinzel versalete e
+       numa faixa mais estreita quebrava em duas linhas, empurrando o campo para baixo
+       e fazendo a linha invadir a de baixo. "Jogador", com 71px, passava raspando. */
     body.ficha-abas .idrow label {
-      display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); align-items: center;
-      gap: .5rem; height: 1.5rem; line-height: 1.5rem; }
+      display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); align-items: center;
+      gap: .5rem; height: 1.5rem; line-height: 1.5rem; white-space: nowrap; }
+    /* o min-height vem junto: o global.css dá 44px a todo input/select no celular, e
+       min-height ganha de height. Sem derrubá-lo o campo continuava em 44px e vazava
+       para fora do rótulo de 24px. */
     body.ficha-abas .idrow :is(.txt, select.racasel) {
-      height: 1.5rem; margin-top: 0; padding: 0 .2rem; line-height: 1.5rem; }
+      min-height: 1.5rem; height: 1.5rem; margin-top: 0; padding: 0 .2rem; line-height: 1.5rem; }
   }
 
   /* impressão: só a ficha, sem o chrome do site. As abas do celular não valem no papel:
