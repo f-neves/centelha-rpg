@@ -833,37 +833,41 @@ import '../styles/arte-equip.css';
     #fvitais { display: flex; gap: .9rem; padding: .25rem .1rem; font-family: 'Cinzel';
       font-size: var(--fs-micro); color: var(--ink-soft); overflow-x: auto; white-space: nowrap; }
     #fvitais b { color: var(--accent-texto); margin-right: .25rem; }
-    /* Barra de abas: pílulas numa trilha rolável.
-       São nove abas em 360px de tela, então a fila não cabe e rola de lado. Três coisas
-       resolvem o que a rolagem cria de problema:
-       · a aba em uso é uma pílula PREENCHIDA, e não um sublinhado. Sublinhado de 3px
-         some quando a aba está meio fora da trilha; a pílula se reconhece pelo bloco de
-         cor mesmo cortada pela metade;
-       · as pontas desbotam (mask) só do lado em que ainda há aba escondida, e é isso que
-         avisa que dá para arrastar. Sem isso a fila parecia terminar na borda da tela;
-       · o encaixe (scroll-snap) impede parar com uma pílula pela metade. */
-    .ftab-bar { display: flex; gap: .3rem; overflow-x: auto; padding: .3rem .1rem .45rem;
-      scroll-snap-type: x proximity; scrollbar-width: none; -ms-overflow-style: none;
-      overscroll-behavior-x: contain; }
-    .ftab-bar::-webkit-scrollbar { display: none; }
-    /* a máscara é aplicada por lado, conforme o script vê que ainda há trilha */
-    .ftab-bar.mais-esq { -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.2rem);
-      mask-image: linear-gradient(90deg, transparent, #000 2.2rem); }
-    .ftab-bar.mais-dir { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.2rem), transparent);
-      mask-image: linear-gradient(90deg, #000 calc(100% - 2.2rem), transparent); }
-    .ftab-bar.mais-esq.mais-dir {
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.2rem, #000 calc(100% - 2.2rem), transparent);
-      mask-image: linear-gradient(90deg, transparent, #000 2.2rem, #000 calc(100% - 2.2rem), transparent); }
+    /* Barra de abas: as nove sempre à vista, e um marcador que anda.
+       Nada rola e nada fica escondido: a fila quebra em duas linhas e o leitor vê o
+       índice inteiro da ficha de uma vez. O que muda de lugar é um único marcador
+       (a fita), que desliza da aba antiga até a nova em duas dimensões, porque a
+       quebra em linhas faz a viagem ser diagonal quando se pula da primeira linha
+       para a segunda. É o movimento que diz para onde você foi, e por isso ele é a
+       única coisa animada aqui: os rótulos ficam parados. */
+    .ftab-bar { display: flex; flex-wrap: wrap; gap: .25rem; position: relative;
+      padding: .35rem .1rem .5rem; }
+    /* a fita: vive atrás dos rótulos e é posicionada pelo script */
+    .ftab-fita { position: absolute; left: 0; top: 0; z-index: 0; border-radius: 999px;
+      background: var(--accent); box-shadow: 0 2px 0 0 var(--gold);
+      transition: transform .26s cubic-bezier(.34, 1.1, .5, 1), width .26s cubic-bezier(.34, 1.1, .5, 1),
+                  height .26s cubic-bezier(.34, 1.1, .5, 1); pointer-events: none; }
+    .ftab-fita[hidden] { display: none; }
+    .ftab-bar button { position: relative; z-index: 1; flex: 1 0 auto; min-height: 36px;
+      background: none; border: 0; border-radius: 999px; color: var(--ink-soft);
+      font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .05em;
+      padding: .3rem .7rem; cursor: pointer; white-space: nowrap;
+      transition: color .18s ease; }
+    .ftab-bar button:hover { color: var(--accent-texto); }
+    .ftab-bar button[aria-selected='true'] { color: var(--on-accent); font-weight: 700; }
 
-    .ftab-bar button { flex: 0 0 auto; scroll-snap-align: center; min-height: 38px;
-      background: none; border: 1px solid var(--rule); border-radius: 999px;
-      color: var(--ink-soft); font-family: 'Cinzel'; font-size: var(--fs-micro);
-      letter-spacing: .04em; padding: .3rem .8rem; cursor: pointer; white-space: nowrap;
-      transition: background .12s, color .12s, border-color .12s; }
-    .ftab-bar button:hover { border-color: var(--accent-soft); color: var(--accent-texto); }
-    .ftab-bar button[aria-selected='true'] { background: var(--accent); border-color: var(--accent);
-      color: var(--on-accent); font-weight: 700; }
-    @media (prefers-reduced-motion: reduce) { .ftab-bar button { transition: none; } }
+    /* Troca de painel: o novo entra pelo lado de onde veio. Avançar na fila traz o
+       painel da direita; voltar, da esquerda. São 14px de deslocamento, menos que o
+       respiro lateral do conteúdo (16px), então nada transborda durante o movimento. */
+    @keyframes ftab-ent-dir { from { opacity: 0; transform: translateX(14px); } }
+    @keyframes ftab-ent-esq { from { opacity: 0; transform: translateX(-14px); } }
+    body.ficha-abas .ftab.on { animation: ftab-ent-dir .22s ease-out both; }
+    body.ficha-abas.volta .ftab.on { animation-name: ftab-ent-esq; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ftab-fita, .ftab-bar button { transition: none; }
+      body.ficha-abas .ftab.on { animation: none; }
+    }
 
     body.ficha-abas .ftab { display: none; }
     body.ficha-abas .ftab.on { display: block; }
