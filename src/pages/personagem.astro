@@ -536,9 +536,10 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
      quadro não muda de tamanho ao entrar e sair do enquadramento, que era o que
      aconteceria com a barra morando abaixo dele.
      Só aparece no hover: a foto é o assunto, e os controles são visita. */
-  .retrato-barra { position: absolute; left: 0; right: 0; bottom: 0; min-height: 20%; z-index: 3;
-    display: flex; align-items: center; gap: .4rem; padding: .3rem .45rem;
-    background: linear-gradient(to top, color-mix(in srgb, var(--bg) 88%, transparent), transparent);
+  /* A faixa é exatamente os 20% de baixo da imagem, sem respiro: os dois botões
+     a ladrilham, metade da largura para cada um e encostados. */
+  .retrato-barra { position: absolute; left: 0; right: 0; bottom: 0; height: 20%; z-index: 3;
+    display: flex; align-items: stretch; gap: 0; padding: 0;
     opacity: 0; transition: opacity .14s; pointer-events: none; }
   .retrato-barra[hidden] { display: none; }
   .retrato-frame:hover .retrato-barra,
@@ -546,22 +547,29 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   .retrato-frame.ajustando .retrato-barra { opacity: 1; pointer-events: auto; }
   /* sem mouse não há hover: no toque a faixa fica sempre à mão */
   @media (hover: none) { .retrato-barra { opacity: 1; pointer-events: auto; } }
-  /* Sempre lado a lado, com metade da largura cada. */
-  .retrato-dupla { display: flex; gap: .35rem; width: 100%; }
-  .retrato-ajuste { display: none; width: 100%; align-items: center; gap: .5rem; }
+  /* Sempre lado a lado, com metade da largura cada e sem folga entre eles. */
+  .retrato-dupla { display: flex; gap: 0; width: 100%; }
+  .retrato-ajuste { display: none; width: 100%; align-items: center; gap: .5rem; padding: 0 .5rem;
+    background: color-mix(in srgb, var(--panel) 88%, transparent); backdrop-filter: blur(3px);
+    border-top: 1px solid var(--panel-border); }
   .retrato-frame.ajustando .retrato-dupla { display: none; }
   .retrato-frame.ajustando .retrato-ajuste { display: flex; }
   .retrato-ajuste .retrato-range { flex: 1; width: auto; min-width: 0; }
   /* Os botões são os `.btn` do site; aqui só ganham meia largura cada, o rótulo
      miúdo que cabe num quadro estreito e o fundo mais opaco, que é o que os
      separa da foto por baixo. */
-  /* Lado a lado num quadro estreito sobra pouca largura por botão: fonte miúda
-     para "enquadramento" caber numa linha e a quebra cair no espaço, e não no
-     meio da palavra. */
-  .retrato-bt { flex: 1 1 0; min-width: 0; padding: .3rem .35rem;
+  /* Herdam o `.btn` do site na cor e na fonte; aqui perdem o canto redondo e a
+     borda solta, porque juntos formam uma faixa só. Num quadro estreito sobra
+     pouca largura por botão: a fonte miúda é o que faz "enquadramento" caber numa
+     linha e a quebra cair no espaço, e não no meio da palavra. */
+  .retrato-bt { flex: 1 1 0; min-width: 0; padding: .2rem .35rem; border-radius: 0;
+    border: none; border-top: 1px solid var(--panel-border);
     background: color-mix(in srgb, var(--panel) 88%, transparent); backdrop-filter: blur(3px);
     font-size: .55rem; line-height: 1.25; text-align: center; overflow-wrap: break-word; }
-  .retrato-ajuste .retrato-bt { flex: 0 0 auto; }
+  .retrato-dupla .retrato-bt + .retrato-bt { border-left: 1px solid var(--panel-border); }
+  /* no ajuste o Concluir volta a ser um botão solto, ao lado da barra de zoom */
+  .retrato-ajuste .retrato-bt { flex: 0 0 auto; padding: .25rem .6rem; background: var(--panel);
+    border: 1px solid var(--panel-border); border-radius: var(--r-sm); font-size: var(--fs-micro); }
   .retrato-bt.perigo { color: var(--perigo); border-color: color-mix(in srgb, var(--perigo) 55%, transparent); }
   .retrato-bt.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); border-color: var(--perigo); }
   .retrato-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 2rem; background: color-mix(in srgb, #000 80%, transparent); cursor: zoom-out; }
