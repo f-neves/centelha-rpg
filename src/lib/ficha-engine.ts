@@ -11,6 +11,8 @@ import TEC_D from '../data/tecnicas.json';
 import ARTE_D from '../data/artes.json';
 import EFEITO_D from '../data/efeitos.json';
 import RACA_D from '../data/racas.json';
+// a mesma formatação de parâmetros do capítulo XV, para a ficha não inventar outra
+import { ordemPar, valorPar, formaDe, rank, PAR_FORMA } from './artes-fmt';
 import {
   ARMA, ARMADURA, ESCUDO, ARMAS, ARMADURAS, ESCUDOS, ID_ARMADURA_LIVRE, baseArmadura,
   CAMPOS_ARMA, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
@@ -427,47 +429,51 @@ export function montarFicha(opts: FichaOpts) {
   const artePrint = (a: any, lvl: number) =>
     !lvl ? '' : `<div class="arte-print">${a.niveis.filter((n: any) => n.nivel <= lvl)
       .map((n: any) => `<div class="fxline hi">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('')}</div>`;
-  // Um cartão por vez, preso ao documento, como o das formas (FormasPop.astro). No toque
-  // não há hover: tocar no cabeçalho prende o cartão, tocar de novo (ou fora dele) fecha.
-  let artePop: HTMLDivElement | null = null, arteAtivo: string | null = null, artePreso = false, arteTimer = 0;
-  function fecharArtePop() { artePop?.remove(); artePop = null; arteAtivo = null; artePreso = false; }
-  const agendarArtePop = () => { if (artePreso) return; clearTimeout(arteTimer); arteTimer = window.setTimeout(fecharArtePop, 200); };
-  const cancelarArtePop = () => clearTimeout(arteTimer);
+  // ---- Cartão flutuante: níveis da Arte, detalhe do Efeito ----
+  // Um por vez, preso ao documento e ancorado em quem o abriu, como o das formas
+  // (FormasPop.astro). No toque não há hover: tocar prende o cartão, tocar de novo,
+  // tocar fora ou Escape fecha. `fonte` guarda como reencontrar a âncora e como
+  // reconstruir o conteúdo, porque redesenhar a lista joga fora os dois.
+  let pop: HTMLDivElement | null = null, popKey: string | null = null, popPreso = false, popTimer = 0;
+  let popFonte: { sel: string; html: () => string } | null = null;
+  function fecharPop() { pop?.remove(); pop = null; popKey = null; popPreso = false; popFonte = null; }
+  const agendarPop = () => { if (popPreso) return; clearTimeout(popTimer); popTimer = window.setTimeout(fecharPop, 200); };
+  const cancelarPop = () => clearTimeout(popTimer);
+  function posicionarPop(anchor: HTMLElement) {
+    if (!pop) return;
+    const r = anchor.getBoundingClientRect();
+    pop.style.left = '0px';
+    pop.style.top = window.scrollY + r.bottom + 6 + 'px';
+    const max = window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 10;
+    pop.style.left = Math.max(8, Math.min(window.scrollX + r.left, max)) + 'px';
+  }
+  function abrirPop(anchor: HTMLElement, key: string, classe: string, sel: string, html: () => string) {
+    if (pop && popKey === key) return;
+    fecharPop();
+    popKey = key; popFonte = { sel, html };
+    pop = document.createElement('div');
+    pop.className = 'ficha-pop ' + classe;
+    pop.innerHTML = html();
+    pop.addEventListener('mouseenter', cancelarPop);
+    pop.addEventListener('mouseleave', agendarPop);
+    document.body.append(pop);
+    posicionarPop(anchor);
+  }
+  function religarPop() {
+    if (!pop || !popFonte) return;
+    const anchor = document.querySelector<HTMLElement>(popFonte.sel);
+    if (!anchor) { fecharPop(); return; }
+    pop.innerHTML = popFonte.html();
+    posicionarPop(anchor);
+  }
   const conteudoArtePop = (a: any) => {
     const lvl = S.arte[a.id] || 0;
-    return `<span class="arte-pop-tit">${a.nome}<small>${lvl ? `nível ${lvl}` : 'nenhum nível'}</small></span>${arteFx(a, lvl)}`;
+    return `<span class="ficha-pop-tit">${a.nome}<small>${lvl ? `nível ${lvl}` : 'nenhum nível'}</small></span>${arteFx(a, lvl)}`;
   };
-  function posicionarArtePop(head: HTMLElement) {
-    if (!artePop) return;
-    const r = head.getBoundingClientRect();
-    artePop.style.left = '0px';
-    artePop.style.top = window.scrollY + r.bottom + 6 + 'px';
-    const max = window.scrollX + document.documentElement.clientWidth - artePop.offsetWidth - 10;
-    artePop.style.left = Math.max(8, Math.min(window.scrollX + r.left, max)) + 'px';
-  }
   function abrirArtePop(head: HTMLElement) {
     const id = head.dataset.artepop!;
-    if (artePop && arteAtivo === id) return;
-    fecharArtePop();
     const a = (ARTE_D as any[]).find((x) => x.id === id); if (!a) return;
-    arteAtivo = id;
-    artePop = document.createElement('div');
-    artePop.className = 'arte-pop';
-    artePop.innerHTML = conteudoArtePop(a);
-    artePop.addEventListener('mouseenter', cancelarArtePop);
-    artePop.addEventListener('mouseleave', agendarArtePop);
-    document.body.append(artePop);
-    posicionarArtePop(head);
-  }
-  // Mexer nas bolinhas redesenha a lista inteira e joga fora o cabeçalho onde o cartão
-  // estava ancorado: religa no cabeçalho novo e atualiza os níveis marcados.
-  function religarArtePop() {
-    if (!arteAtivo) return;
-    const head = document.querySelector<HTMLElement>(`.arte-head[data-artepop="${arteAtivo}"]`);
-    const a = (ARTE_D as any[]).find((x) => x.id === arteAtivo);
-    if (!artePop || !head || !a) { fecharArtePop(); return; }
-    artePop.innerHTML = conteudoArtePop(a);
-    posicionarArtePop(head);
+    abrirPop(head, 'arte:' + id, 'arte-pop', `.arte-head[data-artepop="${id}"]`, () => conteudoArtePop(a));
   }
   function renderArtes() {
     const card = (a: any) => {
@@ -475,68 +481,88 @@ export function montarFicha(opts: FichaOpts) {
       return `<div class="cam"><div class="cam-head arte-head" data-artepop="${a.id}"><span class="cam-nm">${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}</div>${artePrint(a, lvl)}</div>`;
     };
     el('artes').innerHTML = col3(ARTE_D as any[], card);
-    religarArtePop();
+    religarPop();
     renderEfeitos();
   }
   // Efeitos Especiais: só aparecem os que o personagem alcança, ou seja, aqueles
   // cujo nível é menor ou igual ao nível dele em pelo menos uma das Artes que os comportam.
   const idRef = (x: any) => (typeof x === 'string' ? x : x?.id);
+  const nomeArte = (id: string) => (ARTE_D as any[]).find((a) => a.id === id)?.nome || id;
+  // Área e Volume abrem o cartão de formas ao passar o mouse (ver FormasPop)
+  const rotPar = (n: string) => {
+    const f = formaDe(n);
+    return f ? `<span data-formas="${f}" tabindex="0">${n}</span>` : n;
+  };
+  // As Artes que comportam o Efeito E em que o personagem já tem o nível dele.
+  const artesDe = (e: any) => e.artes.filter((x: any) => (S.arte[idRef(x.id)] || 0) >= e.nivel);
+  // No cartãozinho ficam os parâmetros de forma (alcance, área, dano, duração), no osso:
+  // nome e valor curto, sem a escala. Jogada e Dificuldade entram só pelo nome, porque
+  // com os valores tomavam duas linhas por cartão; o cartão de hover diz quais são.
+  const parCurto = (e: any) => ordemPar(e.parametros)
+    .map((p: any) => (rank(p) > PAR_FORMA ? rotPar(p.nome)
+      : p.tipo === 'fixo' ? `${rotPar(p.nome)}: ${p.valor}`
+      : p.regua ? `${rotPar(p.nome)}: ${p.regua === 'longa' ? 'Longa' : 'Breve'}`
+      : rotPar(p.nome)))
+    .join(' · ');
+  // O cartão de hover é onde cabe o resto: o que o Efeito faz, o sabor que cada Arte
+  // dele dá (é o que separa a Neblina de Água da Neblina de Terra) e a escala de cada
+  // parâmetro. Nada disso cabia na linha de uma lista.
+  const conteudoEfeitoPop = (e: any) => {
+    const sabores = artesDe(e).filter((x: any) => x.sabor)
+      .map((x: any) => `<div class="ef-pop-sab"><b>${nomeArte(idRef(x.id))}:</b> ${x.sabor}</div>`).join('');
+    const pars = ordemPar(e.parametros).map((p: any) => {
+      const nota = p.tipo === 'substitui'
+        ? (p.nota ? `<small>${p.escala.join(' · ')}${p.unidade ? ` (${p.unidade})` : ''}</small>` : '')
+        : (p.nota ? `<small>${p.nota}</small>` : '');
+      return `<div class="ef-pop-p"><b>${rotPar(p.nome)}:</b> ${valorPar(p)}${nota}</div>`;
+    }).join('');
+    const cab = `nível ${e.nivel} · ${custoEfeito(e.nivel)} XP${S.efeito[e.id] ? ' · comprado' : ''}`;
+    return `<span class="ficha-pop-tit">${e.nome}<small>${cab}</small></span>
+      <div class="ef-pop-tx">${e.efeito}</div>${sabores}${pars}${e.notas ? `<div class="ef-pop-nota muted">${e.notas}</div>` : ''}`;
+  };
+  // O gatilho é o nome, mas quem ancora é o cartão inteiro: abrindo embaixo do nome, o
+  // detalhe cobria justamente o cartão que a pessoa estava lendo.
+  function abrirEfeitoPop(alvo: HTMLElement) {
+    const id = alvo.dataset.efpop || alvo.dataset.efbuy!;
+    const e = (EFEITO_D as any[]).find((x) => x.id === id); if (!e) return;
+    const sel = `.ef-card[data-efbuy="${id}"]`;
+    abrirPop(alvo.closest<HTMLElement>('.ef-card') || alvo, 'efeito:' + id, 'efeito-pop', sel, () => conteudoEfeitoPop(e));
+  }
   function renderEfeitos() {
     const box = document.getElementById('efeitos-esp');
     if (!box) return;
     const disp = (EFEITO_D as any[])
-      .map((e) => ({ e, artes: e.artes.map((x: any) => idRef(x.id)).filter((id: string) => (S.arte[id] || 0) >= e.nivel) }))
-      .filter((x) => x.artes.length)
-      .sort((a, b) => a.e.nivel - b.e.nivel || a.e.nome.localeCompare(b.e.nome, 'pt'));
+      .filter((e) => artesDe(e).length)
+      .sort((a, b) => a.nivel - b.nivel || a.nome.localeCompare(b.nome, 'pt'));
     if (!disp.length) {
       box.innerHTML = '<div class="ef-vazio muted">Os Efeitos Especiais aparecem aqui quando você tiver uma Arte no nível que cada um exige.</div>';
+      religarPop();
       return;
     }
-    const nomeArte = (id: string) => (ARTE_D as any[]).find((a) => a.id === id)?.nome || id;
-    // Um Efeito pode caber em várias Artes: ele aparece no grupo de CADA Arte que o
-    // comporta. A compra é uma só (mesmo id), então marcar num grupo marca em todos —
-    // o clique redesenha a lista inteira e o XP é somado uma vez, sobre EFEITO_D.
-    const item = ({ e, artes }: any, arteAtual: string) => {
+    // Um Efeito pode caber em várias Artes, mas a compra é uma só (mesmo id): ele aparece
+    // uma vez, com as Artes suas que o comportam listadas no próprio cartão. Antes vinha
+    // repetido num grupo por Arte, e metade da lista era a mesma coisa dita de novo.
+    const card = (e: any) => {
       const on = !!S.efeito[e.id];
-      // Área e Volume abrem o cartão de formas ao passar o mouse (ver FormasPop)
-      const rot = (n: string) => {
-        const f = n.toLowerCase().startsWith('volume') ? 'volume' : /^(á|a)rea/.test(n.toLowerCase()) ? 'area' : '';
-        return f ? `<span data-formas="${f}" tabindex="0">${n}</span>` : n;
-      };
-      const par = e.parametros
-        .map((p: any) => (p.tipo === 'fixo' ? `${rot(p.nome)}: ${p.valor}` : p.regua ? `${rot(p.nome)}: ${p.regua === 'longa' ? 'Longa' : 'Breve'}` : rot(p.nome)))
-        .join(' · ');
-      const outras = artes.filter((id: string) => id !== arteAtual).map(nomeArte);
-      const compart = outras.length
-        ? `<span class="ef-i-ar muted" title="O mesmo Efeito também cabe nestas Artes suas; paga-se uma vez só">também em ${outras.join(', ')}</span>`
-        : '';
-      return `<label class="ef-item${on ? ' on' : ''}"><input type="checkbox" data-efeito="${e.id}"${on ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''} />
-        <span class="ef-i-nv">${e.nivel}</span>
-        <span class="ef-i-nm">${e.nome}</span>
-        ${compart}
-        <span class="ef-i-par muted">${par}</span>
-        <span class="ef-i-xp">${custoEfeito(e.nivel)} XP</span></label>`;
-    };
-    // um grupo por Arte, na ordem do catálogo; só as Artes que têm Efeitos alcançáveis
-    const grupos = (ARTE_D as any[])
-      .map((a) => ({
-        arte: a,
-        itens: disp
-          .filter((x) => x.artes.includes(a.id))
-          .sort((p, q) => p.e.nivel - q.e.nivel || p.e.nome.localeCompare(q.e.nome, 'pt')),
-      }))
-      .filter((g) => g.itens.length);
-    const blocos = grupos.map((g) => {
-      const comprados = g.itens.filter((x) => S.efeito[x.e.id]).length;
-      return `<div class="ef-grupo">
-        <div class="ef-g-head"><span class="ef-g-nm">${g.arte.nome}</span>
-          <span class="ef-g-nv">nível ${S.arte[g.arte.id] || 0}</span>
-          <span class="ef-g-qtd muted">${comprados ? `${comprados} de ${g.itens.length}` : `${g.itens.length} disponíveis`}</span></div>
-        <div class="ef-esp-list">${g.itens.map((x) => item(x, g.arte.id)).join('')}</div>
+      const artes = artesDe(e).map((x: any) => nomeArte(idRef(x.id))).join(' · ');
+      return `<div class="ef-card${on ? ' on' : ''}" data-efbuy="${e.id}">
+        <div class="ef-c-top">
+          <input type="checkbox" data-efeito="${e.id}"${on ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''} aria-label="${e.nome}" />
+          <span class="ef-c-nm" data-efpop="${e.id}">${e.nome}</span>
+          <span class="ef-i-nv" title="exige a Arte no nível ${e.nivel}">${e.nivel}</span>
+          <span class="ef-c-xp">${custoEfeito(e.nivel)} XP</span>
+        </div>
+        <div class="ef-c-ar">${artes}</div>
+        <div class="ef-c-tx">${e.efeito}</div>
+        <div class="ef-c-par muted">${parCurto(e)}</div>
       </div>`;
-    }).join('');
-    const gastos = (EFEITO_D as any[]).filter((e) => S.efeito[e.id]).reduce((s, e) => s + custoEfeito(e.nivel), 0);
-    box.innerHTML = `<div class="ef-esp-head"><b>Efeitos Especiais</b><span class="muted">${gastos ? `${gastos} XP` : 'nenhum comprado'}</span></div>${blocos}`;
+    };
+    const comprados = (EFEITO_D as any[]).filter((e) => S.efeito[e.id]);
+    const gastos = comprados.reduce((s, e) => s + custoEfeito(e.nivel), 0);
+    const conta = `${disp.length} ao alcance${comprados.length ? ` · ${comprados.length} comprado${comprados.length > 1 ? 's' : ''} · ${gastos} XP` : ' · nenhum comprado'}`;
+    box.innerHTML = `<div class="ef-esp-head"><b>Efeitos Especiais</b><span class="muted">${conta}</span></div>
+      <div class="ef-esp-list">${disp.map(card).join('')}</div>`;
+    religarPop();
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   // Atributo do ACERTO por perícia: tiro = Percepção; arremesso = Destreza; corpo a corpo (armas/punhos) = o maior entre Destreza e Força.
@@ -1646,22 +1672,27 @@ export function montarFicha(opts: FichaOpts) {
     applyVal(kind, key, valOf(kind, key) + delta);
     (document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`) as HTMLElement)?.focus();
   }
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeSpecPop(); fecharArtePop(); } });
-  // O cartão dos níveis abre no mouse e no foco: tabular até as bolinhas da Arte também
-  // mostra o que ela faz, sem precisar de mouse.
-  const achaArte = (t: EventTarget | null) => (t as HTMLElement)?.closest?.('.arte-head') as HTMLElement | null;
-  document.addEventListener('mouseover', (e) => { const h = achaArte(e.target); if (h) { cancelarArtePop(); abrirArtePop(h); } });
-  document.addEventListener('mouseout', (e) => { if (achaArte(e.target)) agendarArtePop(); });
-  document.addEventListener('focusin', (e) => { const h = achaArte(e.target); if (h) { cancelarArtePop(); abrirArtePop(h); } });
-  document.addEventListener('focusout', (e) => { if (achaArte(e.target)) agendarArtePop(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeSpecPop(); fecharPop(); } });
+  // O cartão abre no mouse e no foco. No mouse a âncora é estreita de propósito (o
+  // cabeçalho da Arte, o nome do Efeito): varrer a grade de Efeitos com o ponteiro não
+  // pode ficar abrindo cartão em cima de cartão. No foco vale o cartão inteiro, para
+  // quem chega tabulando na caixinha de compra e não tem onde mais parar.
+  const abreDaqui = (elx: HTMLElement) => (elx.dataset.efpop || elx.dataset.efbuy ? abrirEfeitoPop(elx) : abrirArtePop(elx));
+  const chaveDe = (elx: HTMLElement) => (elx.dataset.efpop || elx.dataset.efbuy ? 'efeito:' : 'arte:') + (elx.dataset.efpop || elx.dataset.efbuy || elx.dataset.artepop);
+  const achaMouse = (t: EventTarget | null) => (t as HTMLElement)?.closest?.('.arte-head, [data-efpop]') as HTMLElement | null;
+  const achaFoco = (t: EventTarget | null) => (t as HTMLElement)?.closest?.('.arte-head, .ef-card') as HTMLElement | null;
+  document.addEventListener('mouseover', (e) => { const h = achaMouse(e.target); if (h) { cancelarPop(); abreDaqui(h); } });
+  document.addEventListener('mouseout', (e) => { if (achaMouse(e.target)) agendarPop(); });
+  document.addEventListener('focusin', (e) => { const h = achaFoco(e.target); if (h) { cancelarPop(); abreDaqui(h); } });
+  document.addEventListener('focusout', (e) => { if (achaFoco(e.target)) agendarPop(); });
   // Rolar a página não fecha o cartão: ele é posicionado em coordenadas do documento,
-  // então acompanha o cabeçalho. Fechar no scroll matava o cartão que o próprio
+  // então acompanha a âncora. Fechar no scroll matava o cartão que o próprio
   // navegador tinha acabado de abrir ao trazer a Arte para a tela.
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
     if (t.closest('[data-specpop-close]')) { closeSpecPop(); return; }
     if (specPopFor && !t.closest('.specpop') && !t.closest('.spec .sq')) closeSpecPop();
-    if (artePreso && !t.closest('.arte-head') && !t.closest('.arte-pop')) fecharArtePop();
+    if (popPreso && !t.closest('.arte-head, [data-efpop]') && !t.closest('.ficha-pop')) fecharPop();
     const nm = t.closest<HTMLElement>('.trow .nm');
     if (nm) { openTraitModal(nm); return; }
     const dot = t.closest<HTMLElement>('.dots .dot');
@@ -1699,14 +1730,22 @@ export function montarFicha(opts: FichaOpts) {
     if (pill) { if (opts.readOnly || pill.classList.contains('locked')) return; const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
     const ct = t.closest<HTMLElement>('[data-camtog]');
     if (ct) { OPEN.cam[ct.dataset.camtog!] = !OPEN.cam[ct.dataset.camtog!]; renderCaminhos(); return; }
-    const ah = t.closest<HTMLElement>('.arte-head');
-    if (ah) {
-      if (artePreso && arteAtivo === ah.dataset.artepop) fecharArtePop();
-      else { abrirArtePop(ah); artePreso = true; }
+    // No toque não há hover: clicar no cabeçalho da Arte ou no nome do Efeito prende o
+    // cartão. Vem antes da compra de propósito, senão clicar no nome comprava o Efeito.
+    const anc = t.closest<HTMLElement>('.arte-head, [data-efpop]');
+    if (anc) {
+      if (popPreso && popKey === chaveDe(anc)) fecharPop();
+      else { abreDaqui(anc); popPreso = true; }
       return;
     }
-    const ef = t.closest<HTMLInputElement>('[data-efeito]');
-    if (ef) { if (opts.readOnly) return; const id = ef.dataset.efeito!; S.efeito[id] = !S.efeito[id]; renderEfeitos(); recompute(); return; }
+    // A caixinha e o resto do cartão fazem a mesma coisa: comprar. O alvo é o cartão
+    // inteiro para não obrigar ninguém a mirar num quadradinho.
+    const ef = t.closest<HTMLElement>('[data-efeito], [data-efbuy]');
+    if (ef) {
+      if (opts.readOnly) return;
+      const id = ef.dataset.efeito || ef.dataset.efbuy!;
+      S.efeito[id] = !S.efeito[id]; renderEfeitos(); recompute(); return;
+    }
   });
 
   document.addEventListener('keydown', (e) => {

@@ -519,26 +519,36 @@ import '../styles/arte-equip.css';
   .ef-esp-head { display: flex; align-items: baseline; gap: .6rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo);
     color: var(--accent-strong); border-bottom: 1px solid var(--rule); padding-bottom: .2rem; margin-bottom: .35rem; }
   .ef-esp-head .muted { margin-left: auto; font-family: 'EB Garamond'; font-size: var(--fs-micro); font-style: italic; }
-  /* min(x,100%): sem isso o minimo de 24rem (384px) estoura o conteiner de 328px do celular */
-  .ef-esp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min-md), 100%), 1fr)); gap: .2rem .8rem; }
-  /* um bloco por Arte: os Efeitos de Cura ficam juntos, os de Proteção juntos, etc. */
-  .ef-grupo { margin: .55rem 0 .1rem; }
-  .ef-g-head { display: flex; align-items: baseline; gap: .5rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
-    color: var(--accent-texto); border-bottom: 1px dotted var(--rule); padding-bottom: .12rem; margin-bottom: .2rem; }
-  .ef-g-nm { text-transform: uppercase; letter-spacing: .05em; }
-  .ef-g-nv { font-family: 'EB Garamond'; font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
-  .ef-g-qtd { margin-left: auto; font-family: 'EB Garamond'; font-size: var(--fs-micro); font-style: italic; }
-  .ef-item { display: flex; align-items: center; gap: .4rem; padding: .2rem .3rem; border-radius: var(--r-sm);
-    font-size: var(--fs-rotulo); cursor: pointer; }
-  .ef-item:hover { background: var(--panel-2); }
-  .ef-item.on { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  /* Cada Efeito é um cartão, uma vez só, mesmo cabendo em várias Artes. Duas colunas na
+     ficha (24rem de mínimo); min(x,100%) porque 24rem estoura o conteiner de 328px do celular. */
+  .ef-esp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr)); gap: .45rem; }
+  .ef-card { border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--panel);
+    padding: .35rem .5rem .4rem; display: flex; flex-direction: column; gap: .12rem; cursor: pointer; break-inside: avoid; }
+  .ef-card:hover { background: var(--panel-2); }
+  /* na ficha só de leitura (/personagem do jogador na mesa) o cartão não compra nada */
+  .ef-card:has(input:disabled) { cursor: default; }
+  .ef-card.on { background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--panel-border)); }
+  .ef-c-top { display: flex; align-items: center; gap: .4rem; font-size: var(--fs-rotulo); }
+  .ef-c-nm { font-weight: 600; cursor: help; text-decoration: underline dotted var(--accent); text-underline-offset: .18em; }
   .ef-i-nv { display: inline-grid; place-items: center; width: 1.15rem; height: 1.15rem; border-radius: 50%;
     background: var(--gold); color: var(--on-accent); font-family: 'Cinzel'; font-size: var(--fs-micro); flex: none; }
-  .ef-i-nm { font-weight: 600; }
-  .ef-i-ar { font-size: var(--fs-micro); }
-  .ef-i-par { font-size: var(--fs-micro); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .ef-i-xp { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); flex: none; }
+  .ef-c-xp { margin-left: auto; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); flex: none; }
+  .ef-c-ar { font-size: var(--fs-micro); color: var(--accent-texto); }
+  /* o que o Efeito faz, cortado em duas linhas; o cartão de hover traz o texto inteiro */
+  .ef-c-tx { font-size: var(--fs-micro); color: var(--ink); line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .ef-c-par { font-size: var(--fs-micro); line-height: 1.35; }
   .ef-vazio { font-size: var(--fs-micro); padding: .4rem 0; }
+  /* detalhe do Efeito no cartão flutuante: texto inteiro, o sabor de cada Arte e a escala */
+  .ef-pop-tx { margin-bottom: .35rem; }
+  .ef-pop-sab { font-size: var(--fs-micro); color: var(--ink-soft); padding: .04rem 0; }
+  .ef-pop-sab b { color: var(--accent-texto); font-weight: 600; }
+  .ef-pop-p { font-size: var(--fs-micro); padding: .04rem 0; border-top: 1px dotted var(--rule); }
+  .ef-pop-p:first-of-type { margin-top: .35rem; }
+  .ef-pop-p b { color: var(--accent-strong); font-weight: 600; }
+  .ef-pop-p small { display: block; color: var(--ink-soft); }
+  .ef-pop-nota { font-size: var(--fs-micro); margin-top: .35rem; font-style: italic; }
   /* Um grupo de Proezas por Atributo. O primeiro encosta na barra de ferramentas,
      por isso perde a folga de cima que separa um grupo do outro. */
   .camgrupo { break-inside: avoid; }
@@ -564,14 +574,15 @@ import '../styles/arte-equip.css';
      (ou ao tabular até as bolinhas). São 24 Artes de 6 níveis cada: abrir umas quantas
      embaixo do cabeçalho empurrava a lista inteira para baixo. */
   .arte-head { cursor: help; } .arte-head:hover { background: var(--panel-2); }
-  .arte-pop { position: absolute; z-index: 90; width: min(30rem, 92vw); padding: .55rem .75rem .6rem;
-    background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r-md);
+  .ficha-pop { position: absolute; z-index: 90; width: min(30rem, 92vw); padding: .55rem .75rem .6rem;
+    background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r-md); font-size: var(--fs-rotulo);
     box-shadow: 0 10px 28px rgba(0, 0, 0, .28); line-height: 1.4; animation: arte-pop-entra .12s ease-out; }
+  .ficha-pop.efeito-pop { width: min(32rem, 92vw); }
   @keyframes arte-pop-entra { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
-  .arte-pop-tit { display: flex; align-items: baseline; gap: .5rem; font-family: 'Cinzel'; color: var(--accent-strong);
+  .ficha-pop-tit { display: flex; align-items: baseline; gap: .5rem; font-family: 'Cinzel'; color: var(--accent-strong);
     font-size: var(--fs-rotulo); letter-spacing: .04em; text-transform: uppercase;
     border-bottom: 1px dotted var(--rule); padding-bottom: .25rem; margin-bottom: .3rem; }
-  .arte-pop-tit small { margin-left: auto; text-transform: none; letter-spacing: 0; color: var(--ink-soft); font-size: var(--fs-micro); }
+  .ficha-pop-tit small { margin-left: auto; text-transform: none; letter-spacing: 0; color: var(--ink-soft); font-size: var(--fs-micro); }
   .arte-print { display: none; }
   .techrow { margin-bottom: .5rem; }
   .techrow .tpill { margin: 0; }
@@ -1062,8 +1073,9 @@ import '../styles/arte-equip.css';
     body.ficha-abas #derived .derv .dv { font-size: var(--fs-aux); }
     /* marcador de uso e botão de vestir: 34px é confortável no mouse, não no polegar */
     body.ficha-abas .eq-uso-op, body.ficha-abas .eq-vestir { min-height: 44px; }
-    /* parâmetros do efeito em até 2 linhas em vez de truncados numa só */
-    body.ficha-abas .ef-i-par { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    /* no polegar a caixinha de compra precisa de alvo, e o cartão inteiro também compra */
+    body.ficha-abas .ef-card { padding: .45rem .55rem .5rem; }
+    body.ficha-abas .ef-card input[type="checkbox"] { width: 1.1rem; height: 1.1rem; }
     /* Identidade em coluna única e no mesmo passo do resto: o rótulo sai de cima do
        campo e vai para o lado, numa faixa fixa, o que alinha os quatro campos pela
        mesma vertical e derruba a altura de ~62px por campo para 24px. O rótulo é o
@@ -1091,9 +1103,14 @@ import '../styles/arte-equip.css';
     .sidebar, .topbar, .scrim, #consulta, #otp-fab, #otp-panel, .busca-modal, .ref-pop, .xp-btns, .rollv, .rolador, .skip { display: none !important; }
     .shell { display: block !important; } .content { padding: 0 !important; }
     .cam-body { display: block !important; }
-    /* o cartão de hover não existe no papel: cada Arte imprime os níveis alcançados */
-    .arte-pop { display: none !important; }
+    /* o cartão de hover não existe no papel: cada Arte imprime os níveis alcançados,
+       e dos Efeitos ficam só os comprados (o catálogo do que dava para comprar não
+       serve na mesa e custaria umas quantas páginas) */
+    .ficha-pop { display: none !important; }
     .arte-print { display: block; padding: .3rem .7rem .5rem; border-top: 1px dotted var(--rule); }
+    .ef-card:not(.on) { display: none; }
+    .ef-card.on { break-inside: avoid; }
+    .ef-card input[type="checkbox"] { display: none; }
     .xpbar { background: none !important; color: var(--ink) !important; border-bottom: 2px solid var(--accent); border-radius: 0; }
     .xpbar .big b, .xpbar .rem { color: var(--accent-texto) !important; }
     h2.barh { background: none !important; color: var(--accent-texto) !important; border-bottom: 1.5px solid var(--accent); border-radius: 0; }

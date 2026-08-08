@@ -23,7 +23,9 @@ const RANK: Record<string, number> = {
   ganho: 3, voo: 3, visão: 3, força: 3, efeito: 3, fah: 3, faa: 3,
   duração: 4, duracao: 4, ataque: 5, jogada: 5, dificuldade: 6, penalidade: 7,
 };
-const rank = (p: any) => RANK[p.nome.toLowerCase().split(' ')[0]] ?? RANK[(p.substitui || '').toLowerCase()] ?? 9;
+export const rank = (p: any) => RANK[p.nome.toLowerCase().split(' ')[0]] ?? RANK[(p.substitui || '').toLowerCase()] ?? 9;
+/** Até a Duração o parâmetro diz a FORMA do efeito; daí para frente é a execução (jogada, dificuldade). */
+export const PAR_FORMA = 4;
 export const ordemPar = (ps: any[]) =>
   ps.map((p, i) => [p, i] as [any, number]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map(([p]) => p);
 

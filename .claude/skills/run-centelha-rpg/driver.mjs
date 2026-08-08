@@ -103,6 +103,18 @@ async function main() {
     await p.screenshot({ path: `${SHOTS}/ficha-arte.png` });
     await p.keyboard.press('Escape');
 
+    // 3c) Efeitos Especiais: um cartão por Efeito (sem repetir em cada Arte) e o detalhe no hover
+    const efIds = await p.evaluate(() => [...document.querySelectorAll('.ef-card')].map((c) => c.dataset.efbuy));
+    check(efIds.length > 0 && efIds.length === new Set(efIds).size, `cada Efeito aparece uma vez so (${efIds.length} cartoes, ${new Set(efIds).size} ids)`);
+    await (await p.$('.ef-c-nm')).hover();
+    await new Promise((r) => setTimeout(r, 250));
+    const efPop = await p.evaluate(() => {
+      const el = document.querySelector('.efeito-pop');
+      return el && { tx: !!el.querySelector('.ef-pop-tx')?.textContent?.trim(), par: el.querySelectorAll('.ef-pop-p').length };
+    });
+    check(!!efPop && efPop.tx && efPop.par > 0, `hover no Efeito abre o detalhe (${efPop?.par} parametros)`);
+    await p.keyboard.press('Escape');
+
     // 4) ref-modal opens centered without scrolling the page
     await p.evaluate(() => { const n = document.querySelectorAll('.trow .nm'); n[Math.min(n.length - 1, 40)]?.scrollIntoView({ block: 'center' }); });
     await new Promise((r) => setTimeout(r, 150));
