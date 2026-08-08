@@ -228,7 +228,8 @@ import '../styles/arte-equip.css';
     fita.hidden = true;
     bar.prepend(fita);
 
-    /** Põe a fita sobre a aba em uso. Em duas linhas a viagem é diagonal, daí o translate em x e y. */
+    /** Põe a fita sobre a aba em uso. O offset é medido dentro da trilha, então vale
+     *  igual com a barra rolada: a fita rola junto com os rótulos. */
     const moverFita = () => {
       const b = botoes.find((x) => x.dataset.ftab === ativa);
       if (!b || !mq.matches) { fita.hidden = true; return; }
@@ -237,9 +238,25 @@ import '../styles/arte-equip.css';
       fita.style.height = b.offsetHeight + 'px';
       fita.style.transform = `translate(${b.offsetLeft}px, ${b.offsetTop}px)`;
     };
-    addEventListener('resize', moverFita);
+    /** Traz a aba escolhida para o meio da trilha: nesta largura ela pode nascer fora da tela. */
+    const centrar = (suave = true) => {
+      const b = botoes.find((x) => x.dataset.ftab === ativa);
+      if (!b) return;
+      const max = bar.scrollWidth - bar.clientWidth;
+      const x = Math.max(0, Math.min(b.offsetLeft - (bar.clientWidth - b.offsetWidth) / 2, max));
+      const anima = suave && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+      bar.scrollTo({ left: x, behavior: anima ? 'smooth' : 'auto' });
+    };
+    /** Desbota a ponta só do lado em que ainda sobra trilha. */
+    const marcarPontas = () => {
+      const max = bar.scrollWidth - bar.clientWidth;
+      bar.classList.toggle('mais-esq', bar.scrollLeft > 4);
+      bar.classList.toggle('mais-dir', bar.scrollLeft < max - 4);
+    };
+    bar.addEventListener('scroll', marcarPontas, { passive: true });
+    addEventListener('resize', () => { moverFita(); marcarPontas(); });
     // a fita nasce no lugar certo só depois que a Cinzel carrega e os rótulos assentam
-    (document as any).fonts?.ready?.then(moverFita);
+    (document as any).fonts?.ready?.then(() => { moverFita(); marcarPontas(); });
 
     const aplicar = () => {
       const mob = mq.matches;
@@ -252,6 +269,7 @@ import '../styles/arte-equip.css';
         b.tabIndex = on ? 0 : -1;          // tabIndex itinerante: Tab entra na barra uma vez só
       });
       moverFita();
+      if (mob) { centrar(); marcarPontas(); }
     };
     const irPara = (b: HTMLButtonElement, focar = false) => {
       // o painel entra pelo lado de onde veio: para frente na fila, entra da direita
@@ -277,8 +295,8 @@ import '../styles/arte-equip.css';
     });
     mq.addEventListener('change', aplicar);
     aplicar();
-    // a primeira posição da fita espera o layout existir (a barra nasce com largura 0)
-    requestAnimationFrame(moverFita);
+    // a primeira medida espera o layout existir (a barra nasce com largura 0)
+    requestAnimationFrame(() => { moverFita(); if (mq.matches) { centrar(false); marcarPontas(); } });
 
     // vitais sempre à vista: espelham PV / Defesa / Energia / Mana do #derived,
     // que o engine re-renderiza inteiro a cada mudança (daí o MutationObserver)
@@ -837,25 +855,34 @@ import '../styles/arte-equip.css';
     #fvitais { display: flex; gap: .9rem; padding: .25rem .1rem; font-family: 'Cinzel';
       font-size: var(--fs-micro); color: var(--ink-soft); overflow-x: auto; white-space: nowrap; }
     #fvitais b { color: var(--accent-texto); margin-right: .25rem; }
-    /* Barra de abas: as nove sempre à vista, e um marcador que anda.
-       Nada rola e nada fica escondido: a fila quebra em duas linhas e o leitor vê o
-       índice inteiro da ficha de uma vez. O que muda de lugar é um único marcador
-       (a fita), que desliza da aba antiga até a nova em duas dimensões, porque a
-       quebra em linhas faz a viagem ser diagonal quando se pula da primeira linha
-       para a segunda. É o movimento que diz para onde você foi, e por isso ele é a
-       única coisa animada aqui: os rótulos ficam parados. */
-    .ftab-bar { display: flex; flex-wrap: wrap; gap: .25rem; position: relative;
-      padding: .35rem .1rem .5rem; }
+    /* Barra de abas: uma linha só, que rola, com um marcador que anda.
+       Os rótulos ficam parados e quietos; o que muda de lugar é a fita, que desliza da
+       aba antiga até a nova mudando de largura no caminho. É o movimento que diz para
+       onde você foi, e por isso é a única coisa animada aqui.
+       Como a fila não cabe em 360px, duas coisas cuidam do que a rolagem esconde: a
+       aba escolhida se traz para o meio da trilha, e a ponta desbota do lado em que
+       ainda há aba, que é o que avisa que dá para arrastar. */
+    .ftab-bar { display: flex; gap: .25rem; position: relative; padding: .35rem .1rem .5rem;
+      overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+      -ms-overflow-style: none; overscroll-behavior-x: contain; }
+    .ftab-bar::-webkit-scrollbar { display: none; }
+    .ftab-bar.mais-esq { -webkit-mask-image: linear-gradient(90deg, transparent, #000 2rem);
+      mask-image: linear-gradient(90deg, transparent, #000 2rem); }
+    .ftab-bar.mais-dir { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2rem), transparent);
+      mask-image: linear-gradient(90deg, #000 calc(100% - 2rem), transparent); }
+    .ftab-bar.mais-esq.mais-dir {
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 2rem), transparent); }
     /* a fita: vive atrás dos rótulos e é posicionada pelo script */
-    .ftab-fita { position: absolute; left: 0; top: 0; z-index: 0; border-radius: 999px;
+    .ftab-fita { position: absolute; left: 0; top: 0; z-index: 0; border-radius: var(--r-sm);
       background: var(--accent); box-shadow: 0 2px 0 0 var(--gold);
       transition: transform .26s cubic-bezier(.34, 1.1, .5, 1), width .26s cubic-bezier(.34, 1.1, .5, 1),
                   height .26s cubic-bezier(.34, 1.1, .5, 1); pointer-events: none; }
     .ftab-fita[hidden] { display: none; }
-    .ftab-bar button { position: relative; z-index: 1; flex: 1 0 auto; min-height: 36px;
-      background: none; border: 0; border-radius: 999px; color: var(--ink-soft);
-      font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .05em;
-      padding: .3rem .7rem; cursor: pointer; white-space: nowrap;
+    .ftab-bar button { position: relative; z-index: 1; flex: 0 0 auto; scroll-snap-align: center;
+      min-height: 36px; background: none; border: 0; border-radius: var(--r-sm);
+      color: var(--ink-soft); font-family: 'Cinzel'; font-size: var(--fs-micro);
+      letter-spacing: .05em; padding: .3rem .7rem; cursor: pointer; white-space: nowrap;
       transition: color .18s ease; }
     .ftab-bar button:hover { color: var(--accent-texto); }
     .ftab-bar button[aria-selected='true'] { color: var(--on-accent); font-weight: 700; }
