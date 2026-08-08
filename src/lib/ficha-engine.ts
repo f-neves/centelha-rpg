@@ -493,16 +493,29 @@ export function montarFicha(opts: FichaOpts) {
     return Math.max(A('destreza'), A('forca'));
   };
   // ===== Equipamento: conjuntos de armas (mão hábil / inábil) =====
-  const IMPROV = { nome: 'Improvisado', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
+  const IMPROV = { nome: 'Arma personalizada', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
+  // Peça fora do catálogo, nos dois lados do arsenal. São duas porque uma arma e
+  // um escudo não têm os mesmos números: a arma pede Velocidade/Acerto/Dano/Defesa,
+  // o escudo pede Defesa/Penalidade. Uma opção só obrigava o escudo a nascer arma
+  // e a ter os campos errados no ajuste.
+  const ESCUDO_LIVRE = { nome: 'Escudo personalizado', bloqCaC: 0, penalidade: 0, habilProjetil: false };
+  const REF_ARMA_LIVRE = 'c', REF_ESCUDO_LIVRE = 'ce';
+  const refLivre = (ref: any) => ref === REF_ARMA_LIVRE || ref === REF_ESCUDO_LIVRE;
+  const ehLivre = (p: any) => refLivre(p && p.ref);
   const clampImprov = (v: any, lo: number, hi: number, dflt: number) => { const n = Number(v); return Number.isFinite(n) ? Math.max(lo, Math.min(hi, Math.round(n))) : dflt; };
   function itemDe(slot: any) {
     const ref = (slot && slot.ref) || 'nada';
+    if (ref === REF_ESCUDO_LIVRE) {
+      const base = { ...ESCUDO_LIVRE, nome: (slot && slot.nome) || ESCUDO_LIVRE.nome };
+      const s = escudoComMod(base, slot?.mod);
+      return { kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, habilProjetil: !!s.habilProjetil, base, s };
+    }
     if (ref === 'c') {
       // O item personalizado passou a usar o mesmo "ajustar" das peças de catálogo,
       // em vez de três campos próprios. A base continua sendo o que a peça guardou
       // (fichas antigas não perdem nada); o `mod` entra por cima, como em qualquer
       // outra peça, e com ele vêm Velocidade e Defesa, que antes não dava para mexer.
-      const base = { ...IMPROV, nome: (slot && slot.nome) || 'Improvisado',
+      const base = { ...IMPROV, nome: (slot && slot.nome) || IMPROV.nome,
         dado: clampImprov(slot?.dado, 1, 2, IMPROV.dado),
         danoBonus: clampImprov(slot?.danoBonus, -2, 2, IMPROV.danoBonus),
         acerto: clampImprov(slot?.acerto, -6, 6, IMPROV.acerto) };
@@ -579,7 +592,9 @@ export function montarFicha(opts: FichaOpts) {
     // `semVazio`: a mão já traz a própria opção de vazio ("desarmado" ou "mão livre"),
     // então pedir a lista sem o "Nada" evita duas opções com o mesmo valor.
     const vazio = semVazio ? '' : `<option value="nada"${sel === 'nada' ? ' selected' : ''}>Nada</option>`;
-    return `<optgroup label="Armas (Vel/Acerto/Dano/Defesa)">${armas}</optgroup><optgroup label="Escudos">${escudos}</optgroup>${vazio}<option value="c"${sel === 'c' ? ' selected' : ''}>Personalizado…</option>`;
+    return `<optgroup label="Armas (Vel/Acerto/Dano/Defesa)">${armas}</optgroup><optgroup label="Escudos">${escudos}</optgroup>${vazio}` +
+      `<option value="${REF_ARMA_LIVRE}"${sel === REF_ARMA_LIVRE ? ' selected' : ''}>Arma personalizada…</option>` +
+      `<option value="${REF_ESCUDO_LIVRE}"${sel === REF_ESCUDO_LIVRE ? ' selected' : ''}>Escudo personalizado…</option>`;
   }
 
   // ===== Arsenal: as armas e escudos que o personagem POSSUI =====
@@ -592,19 +607,28 @@ export function montarFicha(opts: FichaOpts) {
    * próprios aqui (Dado, Bônus, Acerto), que davam menos controle e ainda deixavam
    * a peça sem como mexer em Velocidade e Defesa.
    */
-  function improvisado(p: any, ro: boolean) {
-    return `<input class="eq-nome-in" data-ars-nome="${p.uid}" value="${escapeHtml(p.nome || '')}"
-      placeholder="nome do item"${ro ? ' disabled' : ''} aria-label="Nome do item personalizado" />
-      <span class="eq-improv-nota muted">Peça fora do catálogo: os números saem do ajuste.</span>`;
+  function improvisado(_p: any, ro: boolean) {
+    return `<span class="eq-improv-nota muted">Peça fora do catálogo: ${ro ? 'nome e números são do jogador' : 'o nome e os números saem do ✎ ajustar'}.</span>`;
   }
   /**
-   * Alça de arrastar de um card, com o mesmo desenho no arsenal e nas armaduras.
-   * É um <button> de propósito: assim o teclado alcança, e as setas movem a peça
-   * para quem não pode (ou não quer) arrastar.
+   * Campo de nome, que vive DENTRO do painel de ajuste. Renomear é ajustar: é o
+   * que separa uma Espada Longa Ótima da Espada Longa do catálogo, e é o único
+   * jeito de batizar uma peça personalizada. Na face do card o nome é texto, e
+   * assim o card inteiro continua servindo de alça para reordenar.
    */
-  function alcaOrdem(uid: string, nome: string) {
-    return `<button type="button" class="eq-mover" data-mover="${uid}" title="Arraste o card para reordenar (ou use as setas)"`
-      + ` aria-label="Mover ${escapeHtml(nome)} na ordem"><span aria-hidden="true">⠿</span></button>`;
+  /**
+   * Atributos que fazem do card uma peça movível. O card inteiro é a alça do
+   * arrasto, e o `tabindex` é o que mantém o caminho do teclado agora que a alça
+   * ⠿ saiu: com o card em foco, as setas movem uma casa.
+   */
+  function ordenavel(ro: boolean, nome: string) {
+    return ro ? '' : ` tabindex="0" title="Arraste para reordenar (ou use as setas com o card em foco)"`
+      + ` aria-label="${escapeHtml(nome)}: arraste ou use as setas para mudar a ordem"`;
+  }
+  function campoNome(attr: string, uid: string, valor: string, ph: string, ro: boolean) {
+    return `<label class="eqm-c eqm-nome"><span>Nome</span>
+      <input type="text" class="eq-nome-in" data-${attr}="${uid}" value="${escapeHtml(valor)}"
+        placeholder="${escapeHtml(ph)}"${ro ? ' disabled' : ''} aria-label="Nome desta peça" /></label>`;
   }
 
   /** Onde o toque é do próprio elemento (digitar, escolher, apertar) e não do arrasto. */
@@ -681,8 +705,8 @@ export function montarFicha(opts: FichaOpts) {
       const onde = e.target as HTMLElement;
       const card = onde.closest<HTMLElement>(`[${attr}]`);
       if (!card || card.parentElement !== cont) return;
-      const naAlca = !!onde.closest('.eq-mover');
-      if (!naAlca && onde.closest(`${CONTROLES}, button`)) return;
+      // a imagem em enquadramento é do outro arrasto: ali o ponteiro desloca a foto
+      if (onde.closest(`${CONTROLES}, button, .eq-img.enq`)) return;
 
       const toque = e.pointerType === 'touch';
       const x0 = e.clientX, y0 = e.clientY;
@@ -775,7 +799,7 @@ export function montarFicha(opts: FichaOpts) {
         if (!arrastando) {
           if (Math.hypot(ev.clientX - x0, ev.clientY - y0) < (toque ? 10 : 5)) return;
           // dedo andando antes da espera acabar: é rolagem, não arrasto
-          if (toque && !naAlca) { soltar(); return; }
+          if (toque) { soltar(); return; }
           comecar();
         }
         ev.preventDefault();
@@ -808,9 +832,9 @@ export function montarFicha(opts: FichaOpts) {
         setTimeout(() => window.removeEventListener('click', engole, true), 60);
       };
 
-      // No toque fora da alça, o arrasto pede um segurar parado: é o que separa
-      // "quero mover este card" de "quero rolar a lista".
-      if (toque && !naAlca) espera = window.setTimeout(comecar, 320);
+      // No toque, o arrasto pede um segurar parado: é o que separa "quero mover
+      // este card" de "quero rolar a lista".
+      if (toque) espera = window.setTimeout(comecar, 320);
       // Na JANELA, e não no card. O card acabou de receber `pointer-events: none`,
       // e assim ele deixa de receber o `pointerup`: o arrasto reordenava a tela e
       // nunca gravava nada.
@@ -819,23 +843,26 @@ export function montarFicha(opts: FichaOpts) {
       window.addEventListener('pointercancel', soltar);
     });
 
-    // teclado: as setas movem uma casa, para quem não arrasta
+    // Teclado: as setas movem uma casa, para quem não arrasta. O alvo é o CARD,
+    // que ganhou tabindex justamente por isto — a alça ⠿ saiu da tela e levaria o
+    // teclado junto se o card não fosse alcançável.
     cont.addEventListener('keydown', (e) => {
       if (opts.readOnly) return;
-      const alca = (e.target as HTMLElement).closest<HTMLElement>('.eq-mover');
-      if (!alca) return;
+      const card = e.target as HTMLElement;
+      if (!card.hasAttribute?.(attr)) return;
       const passo = e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1
         : e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : 0;
       if (!passo) return;
       e.preventDefault();
+      const uid = card.getAttribute(attr)!;
       const uids = uidsNaTela();
-      const i = uids.indexOf(alca.dataset.mover!);
+      const i = uids.indexOf(uid);
       const j = i + passo;
       if (i < 0 || j < 0 || j >= uids.length) return;
       [uids[i], uids[j]] = [uids[j], uids[i]];
       aplicar(uids);
-      // o card foi redesenhado: devolve o foco à alça da mesma peça
-      requestAnimationFrame(() => cont.querySelector<HTMLElement>(`.eq-mover[data-mover="${alca.dataset.mover}"]`)?.focus());
+      // o card foi redesenhado: devolve o foco à mesma peça
+      requestAnimationFrame(() => cont.querySelector<HTMLElement>(`[${attr}="${uid}"]`)?.focus());
     });
   }
 
@@ -874,13 +901,19 @@ export function montarFicha(opts: FichaOpts) {
    * A arte do sistema não abre no zoom de propósito: quem manda nela é o CSS
    * (`.arte-<id>` recorta o atlas), e o zoom trabalha com uma URL de imagem só.
    */
-  function imgSlot(chave: string, url: string | undefined, classe: string, ro: boolean, nome = '', arte = '') {
+  function imgSlot(chave: string, url: string | undefined, classe: string, ro: boolean, nome = '', arte = '', enq?: any) {
     if (url) {
-      const est = ` style="background-image:url('${escapeHtml(url)}')"`;
-      return `<div class="eq-img ${classe} tem"${est}>
+      // A foto é um <img> e não um fundo: assim o enquadramento é um `transform`
+      // (uma escala e um deslocamento), e o mesmo elemento serve de prévia viva
+      // enquanto o jogador mexe na barra de zoom.
+      const emEnq = !ro && modAberto.has(chave);
+      const z = Math.max(1, Math.min(ZOOM_MAX, Number(enq?.z) || 1));
+      return `<div class="eq-img ${classe} tem${emEnq ? ' enq' : ''}" data-eq-quadro="${chave}">
+        <img class="eq-foto" src="${escapeHtml(url)}" alt="" draggable="false" data-eq-foto="${chave}" style="--z:${z}" />
         <button type="button" class="eq-img-zoom" data-eq-zoom="${escapeHtml(url)}" data-eq-zoom-nome="${escapeHtml(nome)}" title="Ampliar" aria-label="Ampliar a imagem de ${escapeHtml(nome)}"></button>
         ${ro ? '' : `<label class="eq-img-troca" title="Trocar a imagem"><input type="file" accept="image/*" data-eq-img="${chave}" hidden /><span aria-hidden="true">✎</span><span class="sr-only">Trocar a imagem</span></label>
         <button type="button" class="eq-img-rm" data-eq-img-rm="${chave}" title="Tirar a imagem" aria-label="Tirar a imagem">×</button>`}
+        ${ro ? '' : '<span class="eq-enq-dica" aria-hidden="true">arraste para deslocar</span>'}
       </div>`;
     }
     if (arte) {
@@ -906,8 +939,9 @@ export function montarFicha(opts: FichaOpts) {
    */
   function pecaPara(ref: string) {
     S.arsenal ||= [];
-    if (ref === 'c') {
-      const nova = { uid: novoUid(), ref: 'c', nome: '', dado: 1, danoBonus: 0, acerto: -2 };
+    if (refLivre(ref)) {
+      const nova: any = { uid: novoUid(), ref, nome: '' };
+      if (ref === REF_ARMA_LIVRE) Object.assign(nova, { dado: 1, danoBonus: 0, acerto: -2 });
       S.arsenal.push(nova); return nova;
     }
     let p = S.arsenal.find((x: any) => x.ref === ref);
@@ -964,25 +998,27 @@ export function montarFicha(opts: FichaOpts) {
         `<label class="eq-uso-op${papel === v ? ' on' : ''}${off ? ' off' : ''}">
           <input type="radio" name="uso-${p.uid}" data-uso="${p.uid}:${v}"${papel === v ? ' checked' : ''}${(ro || off) ? ' disabled' : ''} />
           <span>${rot}</span></label>`;
-      return `<div class="eq-peca${papel !== 'nada' ? ' em-uso' : ''}${ajustada ? ' ajustado' : ''}" data-ars="${p.uid}">
-        ${imgSlot(chave, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', ro, nomePeca(p), idDeArte(p))}
+      return `<div class="eq-peca${papel !== 'nada' ? ' em-uso' : ''}${ajustada ? ' ajustado' : ''}" data-ars="${p.uid}"${ordenavel(ro, nomePeca(p))}>
+        ${imgSlot(chave, p.img, it.kind === 'escudo' ? 'escudo' : 'arma', ro, nomePeca(p), idDeArte(p), p.enq)}
         <div class="eq-peca-corpo">
           <div class="eq-peca-cab">
             <div class="eq-peca-nome">${escapeHtml(nomePeca(p))}</div>
             ${(it.w?.tags || []).length ? `<div class="eq-tags">${it.w.tags.map((t: string) => `<span class="eq-tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
           </div>
           ${it.kind === 'escudo' ? statsBlocosEscudo(it.s) : it.w ? statsBlocos(it.w) : ''}
-          ${p.ref === 'c' ? improvisado(p, ro) : ''}
+          ${ehLivre(p) ? improvisado(p, ro) : ''}
           <div class="eq-uso" role="radiogroup" aria-label="Como ${escapeHtml(nomePeca(p))} está empunhada">
             ${marca('nada', 'guardada')}${marca('habil', 'mão hábil')}${marca('inabil', 'mão inábil', duasMaos)}
           </div>
           ${ro ? '' : `<div class="eq-acoes">
-            ${alcaOrdem(p.uid, nomePeca(p))}
-            ${campos ? `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>` : '<span></span>'}
+            ${campos ? `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar nome, valores e imagem desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>` : '<span></span>'}
             <button type="button" class="eq-rm" data-ars-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(nomePeca(p))}">Excluir</button>
           </div>`}
         </div>
-        ${campos ? painelMod(chave, it.base, p.mod, campos, ro) : ''}
+        ${campos ? painelMod(chave, it.base, p.mod, campos, ro, {
+          nome: ehLivre(p) ? campoNome('ars-nome', p.uid, p.nome || '', it.base.nome, ro) : '',
+          img: p.img, enq: p.enq,
+        }) : ''}
       </div>`;
     }).join('');
     const adicionar = ro ? '' : `<div class="eq-add">
@@ -991,12 +1027,13 @@ export function montarFicha(opts: FichaOpts) {
     const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armas.' : 'Nenhuma arma ainda: escolha uma no catálogo.'}</p>`;
     el('eq-arsenal').innerHTML = cards || vazio;
     el('eq-arsenal-add').innerHTML = adicionar;
+    queueMicrotask(enquadraTodas);
   }
   /** Descarta peças que ninguém usa e que não guardam nada do jogador (sem imagem nem ajuste). */
   function limparArsenal() {
     const usados = new Set<string>();
     (S.conjuntos || []).forEach((cj: any) => { if (cj.habil?.uid) usados.add(cj.habil.uid); if (cj.inabil?.uid) usados.add(cj.inabil.uid); });
-    S.arsenal = (S.arsenal || []).filter((p: any) => usados.has(p.uid) || p.img || p.mod || (p.ref === 'c' && p.nome));
+    S.arsenal = (S.arsenal || []).filter((p: any) => usados.has(p.uid) || p.img || p.mod || (ehLivre(p) && p.nome));
   }
   /** Os quatro números da arma como blocos, no lugar da linha "5/+2/1d6/+1". */
   const statsBlocos = (w: any) => `<div class="eq-nums">
@@ -1042,9 +1079,39 @@ export function montarFicha(opts: FichaOpts) {
     return `<label class="eqm-c${v !== orig ? ' dif' : ''}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
       `<input type="number" data-eqm="${chave}:${c.k}" value="${v}" min="${c.min}" max="${c.max}" step="1"${ro ? ' disabled' : ''} title="catálogo: ${c.sinal ? sgn(orig) : orig}" /></label>`;
   }
-  function painelMod(chave: string, base: any, mod: any, campos: CampoEquip[], ro: boolean) {
-    return `<div class="eq-mod" data-eq-pan="${chave}"${modAberto.has(chave) ? '' : ' hidden'}>${campos.map((c) => campoMod(chave, c, base, mod, ro)).join('')}` +
-      `${ro ? '' : `<button type="button" class="eqm-reset" data-eqm-reset="${chave}">restaurar</button>`}</div>`;
+  /**
+   * Enquadramento da foto do jogador: uma barra de zoom e o arrasto na própria
+   * imagem. A escala 1 é a foto INTEIRA dentro da moldura, e é onde toda imagem
+   * nova começa; daí para cima ela preenche o quadro e sobra o que deslocar.
+   */
+  const ZOOM_MAX = 4;
+  function blocoEnquadra(chave: string, url: string | undefined, enq: any, ro: boolean) {
+    if (ro) return '';
+    if (!url) {
+      return `<label class="eqm-enq eqm-enq-vazio"><span>Imagem</span>
+        <input type="file" accept="image/*" data-eq-img="${chave}" hidden />
+        <span class="eqm-enq-bt">escolher uma imagem…</span></label>`;
+    }
+    const z = Math.max(1, Math.min(ZOOM_MAX, Number(enq?.z) || 1));
+    // rótulo em cima e controles embaixo: numa coluna só o card tem uns 15rem, e
+    // tudo na mesma linha jogava o "reenquadrar" para fora
+    return `<div class="eqm-enq">
+      <span class="eqm-enq-rot">Enquadramento</span>
+      <div class="eqm-enq-linha">
+        <input type="range" data-enq-z="${chave}" min="100" max="${ZOOM_MAX * 100}" step="5" value="${Math.round(z * 100)}"
+          aria-label="Zoom da imagem" />
+        <output class="eqm-enq-v" data-enq-v="${chave}">${Math.round(z * 100)}%</output>
+        <button type="button" class="eqm-reset" data-enq-reset="${chave}">reenquadrar</button>
+      </div>
+    </div>`;
+  }
+  function painelMod(chave: string, base: any, mod: any, campos: CampoEquip[], ro: boolean,
+                     extra: { nome?: string; img?: string; enq?: any } = {}) {
+    return `<div class="eq-mod" data-eq-pan="${chave}"${modAberto.has(chave) ? '' : ' hidden'}>` +
+      `${extra.nome || ''}` +
+      `${campos.map((c) => campoMod(chave, c, base, mod, ro)).join('')}` +
+      `${ro ? '' : `<button type="button" class="eqm-reset" data-eqm-reset="${chave}">restaurar</button>`}` +
+      `${blocoEnquadra(chave, extra.img, extra.enq, ro)}</div>`;
   }
   // o item personalizado é uma arma para todos os efeitos: mesmos campos ajustáveis
   const camposItem = (it: any) => (it.kind === 'escudo' ? CAMPOS_ESCUDO : CAMPOS_ARMA);
@@ -1249,11 +1316,10 @@ export function montarFicha(opts: FichaOpts) {
     const cards = (S.equip.armaduras || []).map((p: any) => {
       const base = baseArmadura(p.base); if (!base) return '';
       const chave = `arm:${p.uid}`, a = armaduraComMod(base, p.mod);
-      return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${temMod(base, p.mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}">
-        ${imgSlot(chave, p.img, 'armadura', ro, p.nome || base.nome, idDeArte(p))}
+      return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${temMod(base, p.mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}"${ordenavel(ro, p.nome || base.nome)}>
+        ${imgSlot(chave, p.img, 'armadura', ro, p.nome || base.nome, idDeArte(p), p.enq)}
         <div class="eq-peca-corpo">
-          ${ro ? `<div class="eq-peca-nome">${escapeHtml(p.nome || base.nome)}</div>`
-               : `<input class="eq-nome-in" data-arm-nome="${p.uid}" value="${escapeHtml(p.nome || '')}" placeholder="${escapeHtml(base.nome)}" aria-label="Nome desta peça" />`}
+          <div class="eq-peca-nome">${escapeHtml(p.nome || base.nome)}</div>
           <div class="eq-nums" data-arm-nums="${p.uid}">
             <span class="eq-n"><b>Imp</b>${a.soak.impacto}</span>
             <span class="eq-n"><b>Cor</b>${a.soak.corte}</span>
@@ -1261,13 +1327,15 @@ export function montarFicha(opts: FichaOpts) {
             <span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span>
           </div>
           ${ro ? '' : `<div class="eq-acoes">
-            ${alcaOrdem(p.uid, p.nome || base.nome)}
-            <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>
+            <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar nome, valores e imagem desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>
             <button type="button" class="eq-rm" data-arm-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(p.nome || base.nome)}">Excluir</button>
           </div>`}
           <button type="button" class="eq-vestir${p.vestida ? ' on' : ''}" data-arm-vestir="${p.uid}"${ro ? ' disabled' : ''}>${p.vestida ? '✓ Vestida' : 'Vestir'}</button>
         </div>
-        ${painelMod(chave, base, p.mod, CAMPOS_ARMADURA, ro)}
+        ${painelMod(chave, base, p.mod, CAMPOS_ARMADURA, ro, {
+          nome: campoNome('arm-nome', p.uid, p.nome || '', base.nome, ro),
+          img: p.img, enq: p.enq,
+        })}
       </div>`;
     }).join('');
     const adicionar = ro ? '' : `<div class="eq-add">
@@ -1276,6 +1344,7 @@ export function montarFicha(opts: FichaOpts) {
     const vazio = `<p class="muted eq-vazio">${ro ? 'Sem armaduras.' : 'Nenhuma armadura ainda: escolha uma no catálogo.'}</p>`;
     el('eq-armaduras').innerHTML = cards || vazio;
     el('eq-armaduras-add').innerHTML = adicionar;
+    queueMicrotask(enquadraTodas);
     renderAbsorcao();
   }
   /** Painel de Absorção combinada: o efeito de vestir e tirar peças, ao lado das peças. */
@@ -1541,9 +1610,12 @@ export function montarFicha(opts: FichaOpts) {
     // O personalizado vem primeiro, sem grupo: é a opção que não se procura no
     // catálogo, então não faz sentido enterrá-la no fim da lista.
     const escolha = await uiEscolher('Adicionar item', [
-      { valor: 'c', rotulo: 'Item personalizado', nota: 'nome e números seus',
-        html: cardCatalogo({ id: '', nome: 'Item personalizado', classe: 'arma',
-          nums: '', notas: 'Peça fora do catálogo: você dá o nome e ajusta os números.' }) },
+      { valor: REF_ARMA_LIVRE, rotulo: 'Arma personalizada', nota: 'nome e números seus',
+        html: cardCatalogo({ id: '', nome: 'Arma personalizada', classe: 'arma',
+          nums: '', notas: 'Fora do catálogo: você dá o nome e ajusta Velocidade, Acerto, Dano e Defesa.' }) },
+      { valor: REF_ESCUDO_LIVRE, rotulo: 'Escudo personalizado', nota: 'nome e números seus',
+        html: cardCatalogo({ id: '', nome: 'Escudo personalizado', classe: 'escudo',
+          nums: '', notas: 'Fora do catálogo: você dá o nome e ajusta Defesa e Penalidade.' }) },
       ...ARMAS.map((w) => ({
         valor: `a:${w.id}`, rotulo: w.nome, nota: statsArma(w),
         grupo: 'Armas', busca: `${(w.tags || []).join(' ')} ${w.notas || ''}`,
@@ -1559,12 +1631,14 @@ export function montarFicha(opts: FichaOpts) {
     ], { filtro: 'Procurar arma ou escudo…', classe: 'eq-catalogo' });
     if (!escolha) return;
     const uid = novoUid();
-    (S.arsenal ||= []).push(escolha === 'c'
-      ? { uid, ref: 'c', nome: '', dado: 1, danoBonus: 0, acerto: -2 }
-      : { uid, ref: escolha });
-    // peça personalizada já nasce com o ajuste aberto: sem os números ela não serve
-    if (escolha === 'c') modAberto.add(`ars:${uid}`);
+    (S.arsenal ||= []).push(escolha === REF_ARMA_LIVRE
+      ? { uid, ref: escolha, nome: '', dado: 1, danoBonus: 0, acerto: -2 }
+      : escolha === REF_ESCUDO_LIVRE ? { uid, ref: escolha, nome: '' } : { uid, ref: escolha });
+    // peça personalizada já nasce com o ajuste aberto: é lá que estão o nome e os
+    // números, e sem eles ela não serve para nada
+    if (refLivre(escolha)) modAberto.add(`ars:${uid}`);
     redesenhaArmas();
+    if (refLivre(escolha)) el('eq-arsenal').querySelector<HTMLInputElement>(`input[data-ars-nome="${uid}"]`)?.focus();
   });
   el('eq-arsenal').addEventListener('change', (e) => {
     if (opts.readOnly) return;
@@ -1613,16 +1687,63 @@ export function montarFicha(opts: FichaOpts) {
     const r = await subirImagemItem(file, p.uid);
     if (r.erro) { void uiErro(r.erro); return; }
     p.img = r.url;
+    // imagem nova começa enquadrada: o zoom e o deslocamento da anterior não
+    // dizem nada sobre esta, e herdá-los mostraria um pedaço qualquer dela
+    delete p.enq;
     renderArsenal(); renderArmaduras(); renderConjuntos(); save();
   }
   async function tirarImagem(chave: string) {
     const p = pecaPorChave(chave); if (!p || !p.img) return;
-    const url = p.img; p.img = undefined;
+    const url = p.img; p.img = undefined; delete p.enq;
     renderArsenal(); renderArmaduras(); renderConjuntos(); save();
     const { apagarImagemItem } = await import('./imagens-item');
     void apagarImagemItem(url);
   }
+
+  // ---- Enquadramento da foto: uma escala e um deslocamento, guardados na peça ----
+  // `z` é a escala (1 = a foto inteira dentro da moldura) e `px`/`py` vão de −1 a 1:
+  // a FRAÇÃO do deslocamento possível, não pixels. Guardada assim, a foto nunca sai
+  // da moldura ao mudar o zoom, e o mesmo enquadramento serve em qualquer tamanho de
+  // tela (o card é bem mais estreito no celular).
+  const enqDe = (p: any) => ({
+    z: Math.max(1, Math.min(ZOOM_MAX, Number(p?.enq?.z) || 1)),
+    px: Math.max(-1, Math.min(1, Number(p?.enq?.px) || 0)),
+    py: Math.max(-1, Math.min(1, Number(p?.enq?.py) || 0)),
+  });
+  /** Aplica o enquadramento e devolve quanto ainda dá para deslocar, em pixels. */
+  function enquadraFoto(img: HTMLImageElement) {
+    const p = pecaPorChave(img.dataset.eqFoto || ''); if (!p) return null;
+    const { z, px, py } = enqDe(p);
+    const cx = img.parentElement!.getBoundingClientRect();
+    const nw = img.naturalWidth, nh = img.naturalHeight;
+    img.style.setProperty('--z', String(z));
+    if (!nw || !nh || !cx.width) return null;
+    // `object-fit: contain`: o desenho cabe inteiro, e é daí que a escala parte
+    const k = Math.min(cx.width / nw, cx.height / nh);
+    // o translate acontece DENTRO da escala, então o limite é dividido por z
+    const maxX = Math.max(0, (nw * k * z - cx.width) / 2) / z;
+    const maxY = Math.max(0, (nh * k * z - cx.height) / 2) / z;
+    img.style.setProperty('--tx', `${px * maxX}px`);
+    img.style.setProperty('--ty', `${py * maxY}px`);
+    // sem sobra não há o que deslocar, e a dica não deve convidar para nada
+    img.parentElement!.classList.toggle('desloca', maxX > 0.5 || maxY > 0.5);
+    return { maxX, maxY };
+  }
+  const fotosDe = (box: HTMLElement) => [...box.querySelectorAll<HTMLImageElement>('.eq-foto')];
+  function enquadraTodas() {
+    (['eq-arsenal', 'eq-armaduras'] as const).forEach((id) => {
+      const box = document.getElementById(id); if (!box) return;
+      // a imagem que ainda não carregou não tem tamanho natural: quem a enquadra
+      // é o ouvinte de `load` abaixo
+      fotosDe(box).forEach((img) => { if (img.complete) enquadraFoto(img); });
+    });
+  }
   (['eq-arsenal', 'eq-armaduras'] as const).forEach((id) => {
+    // `load` não sobe na árvore: só se pega na captura
+    el(id).addEventListener('load', (e) => {
+      const img = e.target as HTMLImageElement;
+      if (img.classList?.contains('eq-foto')) enquadraFoto(img);
+    }, true);
     el(id).addEventListener('change', (e) => {
       if (opts.readOnly) return;
       const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-eq-img]');
@@ -1631,10 +1752,66 @@ export function montarFicha(opts: FichaOpts) {
     });
     el(id).addEventListener('click', (e) => {
       if (opts.readOnly) return;
+      const zerar = (e.target as HTMLElement).closest<HTMLElement>('[data-enq-reset]');
+      if (zerar) {
+        const chave = zerar.dataset.enqReset!, p = pecaPorChave(chave);
+        if (p) { delete p.enq; save(); }
+        const box = el(id);
+        const faixa = box.querySelector<HTMLInputElement>(`input[data-enq-z="${chave}"]`);
+        if (faixa) faixa.value = '100';
+        const v = box.querySelector(`[data-enq-v="${chave}"]`); if (v) v.textContent = '100%';
+        const img = box.querySelector<HTMLImageElement>(`.eq-foto[data-eq-foto="${chave}"]`);
+        if (img) enquadraFoto(img);
+        return;
+      }
       const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-eq-img-rm]');
       if (!rm) return;
       e.preventDefault(); e.stopPropagation();   // o botão vive dentro do <label> do arquivo
       void tirarImagem(rm.dataset.eqImgRm!);
+    });
+    // barra de zoom: mexe na foto na hora, que é a prévia
+    el(id).addEventListener('input', (e) => {
+      if (opts.readOnly) return;
+      const faixa = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-enq-z]');
+      if (!faixa) return;
+      const chave = faixa.dataset.enqZ!, p = pecaPorChave(chave); if (!p) return;
+      const z = Math.max(1, Math.min(ZOOM_MAX, Number(faixa.value) / 100));
+      p.enq = { ...enqDe(p), z };
+      if (z === 1) delete p.enq;    // enquadrada de novo: não guarda o que é padrão
+      const v = el(id).querySelector(`[data-enq-v="${chave}"]`);
+      if (v) v.textContent = `${Math.round(z * 100)}%`;
+      const img = el(id).querySelector<HTMLImageElement>(`.eq-foto[data-eq-foto="${chave}"]`);
+      if (img) enquadraFoto(img);
+      save();
+    });
+    // arrastar a própria foto para deslocá-la, enquanto o ajuste está aberto
+    el(id).addEventListener('pointerdown', (e) => {
+      if (opts.readOnly) return;
+      const quadro = (e.target as HTMLElement).closest<HTMLElement>('.eq-img.enq');
+      if (!quadro) return;
+      const img = quadro.querySelector<HTMLImageElement>('.eq-foto'); if (!img) return;
+      const p = pecaPorChave(quadro.dataset.eqQuadro!); if (!p) return;
+      const lim = enquadraFoto(img); if (!lim || (!lim.maxX && !lim.maxY)) return;
+      e.preventDefault();
+      const ini = enqDe(p), x0 = e.clientX, y0 = e.clientY;
+      quadro.classList.add('puxando');
+      const mover = (ev: PointerEvent) => {
+        // o ponteiro anda na tela; a foto anda dentro da escala, daí o z
+        const px = lim.maxX ? ini.px + (ev.clientX - x0) / ini.z / lim.maxX : 0;
+        const py = lim.maxY ? ini.py + (ev.clientY - y0) / ini.z / lim.maxY : 0;
+        p.enq = { z: ini.z, px: Math.max(-1, Math.min(1, px)), py: Math.max(-1, Math.min(1, py)) };
+        enquadraFoto(img);
+      };
+      const soltar = () => {
+        window.removeEventListener('pointermove', mover);
+        window.removeEventListener('pointerup', soltar);
+        window.removeEventListener('pointercancel', soltar);
+        quadro.classList.remove('puxando');
+        save();
+      };
+      window.addEventListener('pointermove', mover);
+      window.addEventListener('pointerup', soltar);
+      window.addEventListener('pointercancel', soltar);
     });
   });
 
@@ -1687,7 +1864,12 @@ export function montarFicha(opts: FichaOpts) {
     const nm = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-arm-nome]');
     if (!nm) return;
     const p = pecaArm(nm.dataset.armNome!); if (!p) return;
-    p.nome = nm.value.trim() || undefined; save();
+    p.nome = nm.value.trim() || undefined;
+    // o nome agora é texto na face do card: atualiza sem redesenhar, senão o
+    // campo perderia o foco a cada tecla
+    const t = nm.closest('.eq-peca')?.querySelector('.eq-peca-nome');
+    if (t) t.textContent = p.nome || baseArmadura(p.base)?.nome || '';
+    save();
   });
   el('eq-armaduras').addEventListener('click', async (e) => {
     if (opts.readOnly) return;
@@ -1733,7 +1915,9 @@ export function montarFicha(opts: FichaOpts) {
     if (a === 'ars') {
       const p = pecaArsenal(uid); if (!p) return null;
       const it = itemDe(p);
-      if (it.kind !== 'arma' && it.kind !== 'escudo') return null;
+      // 'custom' entra aqui junto com 'arma' e 'escudo': a peça personalizada é
+      // justamente a que só tem números porque alguém os ajustou
+      if (it.kind === 'nada') return null;
       return guarda(p, it.base, camposItem(it), () => { renderArsenal(); renderConjuntos(); });
     }
     return null;
@@ -1747,6 +1931,10 @@ export function montarFicha(opts: FichaOpts) {
         const pan = box.querySelector<HTMLElement>(`[data-eq-pan="${chave}"]`);
         if (pan) pan.hidden = !abrir;
         tog.setAttribute('aria-expanded', String(abrir));
+        // com o ajuste aberto, a foto entra em enquadramento: ali o arrasto
+        // desloca a imagem em vez de reordenar o card
+        const quadro = box.querySelector<HTMLElement>(`[data-eq-quadro="${chave}"]`);
+        if (quadro) quadro.classList.toggle('enq', abrir && !opts.readOnly);
         return;
       }
       if (opts.readOnly) return;

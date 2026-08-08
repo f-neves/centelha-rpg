@@ -524,6 +524,20 @@ import '../styles/arte-equip.css';
   .eq-img:hover { color: var(--accent-texto); }
   .eq-img-ph { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .06em; text-align: center; }
   .eq-img-ph b { display: block; font-size: var(--fs-h3); font-weight: 600; }
+  /* A foto do jogador é um <img> e não um fundo: assim o enquadramento é um
+     transform (escala + deslocamento) e a própria foto serve de prévia viva
+     enquanto se mexe na barra de zoom. Escala 1 = a foto INTEIRA na moldura,
+     que é onde toda imagem nova começa. */
+  .eq-foto { width: 100%; height: 100%; object-fit: contain; -webkit-user-drag: none; user-select: none;
+    transform: scale(var(--z, 1)) translate(var(--tx, 0px), var(--ty, 0px)); }
+  /* com o ajuste aberto, o quadro vira enquadramento: arrastar desloca a foto */
+  .eq-img.enq { cursor: grab; touch-action: none; box-shadow: inset 0 0 0 2px var(--accent); }
+  .eq-img.enq.puxando { cursor: grabbing; }
+  .eq-img.enq .eq-img-zoom { pointer-events: none; }
+  .eq-enq-dica { display: none; position: absolute; left: 50%; top: .35rem; transform: translateX(-50%); z-index: 2;
+    background: color-mix(in srgb, var(--bg) 85%, transparent); border-radius: 999px; padding: .1rem .5rem;
+    font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .05em; color: var(--accent-texto); }
+  .eq-img.enq.desloca .eq-enq-dica { display: block; }
   /* com imagem, o quadro inteiro amplia; trocar e tirar ficam nos cantos */
   .eq-img-zoom { position: absolute; inset: 0; background: none; border: none; cursor: zoom-in; }
   .eq-img-troca, .eq-img-rm { position: absolute; bottom: .3rem; z-index: 2; display: grid; place-items: center;
@@ -568,6 +582,19 @@ import '../styles/arte-equip.css';
   .eqm-c.dif input { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent); }
   .eqm-reset { margin-left: auto; background: none; border: 1px solid var(--panel-border); border-radius: var(--r-sm); color: var(--ink-soft); font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; padding: .22rem .5rem; cursor: pointer; }
   .eqm-reset:hover { border-color: var(--accent); color: var(--accent-strong); }
+  /* Nome e enquadramento ocupam a linha inteira do painel: são de outra natureza
+     que os campos numéricos, que vivem lado a lado. */
+  .eqm-nome, .eqm-enq { flex: 1 0 100%; }
+  .eqm-nome input { width: 100%; }
+  .eqm-enq { display: flex; flex-direction: column; gap: .15rem; }
+  .eqm-enq-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
+  /* o "reenquadrar" desce sozinho quando não cabe ao lado da barra */
+  .eqm-enq-linha { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .4rem; min-width: 0; }
+  .eqm-enq-linha input[type=range] { flex: 1; min-width: 3rem; accent-color: var(--accent); }
+  .eqm-enq-v { font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--accent-texto); font-variant-numeric: tabular-nums; min-width: 3ch; }
+  .eqm-enq-vazio { cursor: pointer; }
+  .eqm-enq-bt { border: 1px dashed var(--panel-border); border-radius: var(--r-sm); padding: .2rem .5rem; color: var(--accent-strong); }
+  .eqm-enq-vazio:hover .eqm-enq-bt { border-color: var(--accent); }
   .equip-bolsas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .6rem .9rem; margin: 0 0 .8rem; }
   @media (max-width: 700px) { .equip-bolsas { grid-template-columns: 1fr; } }
   .bolsa { display: flex; flex-direction: column; gap: .25rem; }
@@ -626,14 +653,10 @@ import '../styles/arte-equip.css';
 
   /* ---- reordenar peças: arrasta o card inteiro ----
      Pega em qualquer ponto do card; nos controles o toque continua sendo deles.
-     A alça ⠿ fica por dois motivos: anuncia que a peça se move, e é um <button>,
-     então o teclado alcança e as setas movem uma casa. */
+     Não há mais alça: o card é focável, e com ele em foco as setas movem uma casa. */
   .eq-peca { cursor: grab; }
   .eq-peca input, .eq-peca select, .eq-peca textarea { cursor: auto; }
-  .eq-mover { background: none; border: 1px solid transparent; border-radius: var(--r-sm);
-    color: var(--ink-soft); cursor: grab; font-size: var(--fs-aux); line-height: 1;
-    padding: .2rem .4rem; margin-right: auto; touch-action: none; }
-  .eq-mover:hover, .eq-mover:focus-visible { color: var(--accent-texto); border-color: var(--panel-border); }
+  .eq-peca:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   /* durante o arrasto o cursor é o mesmo em toda a página, e o texto não é pintado */
   body.eq-arrastando { user-select: none; -webkit-user-select: none; cursor: grabbing; }
   body.eq-arrastando .eq-peca, body.eq-arrastando .eq-peca * { cursor: grabbing; }

@@ -103,16 +103,16 @@ normalmente 2 colunas. Poucas armas tem as 3.
 3. TABELA PRINCIPAL DE ARMADURAS
 ----------------------------------------------------------------
 
-| Armadura                       | Corte | Projetil | Perf.Conc | Impacto | Resist.Perf | Acesso |
+| Armadura                     | Corte | Projetil | Perf.Conc | Impacto | Resist.Perf | Acesso |
 |--------------------------------|-------|----------|-----------|---------|-------------|--------|
-| Gambeson (acolchoado)          |   6   |    3     |     2     |    4    |      0      |   9    |
+| Gambeson (acolchoado)        |   6   |    3     |     2     |    4    |      0      |   9    |
 | Couro endurecido (cuir bouilli)|   4   |    2     |     2     |    3    |      1      |   8    |
-| Cota de malha (sem acolchoado) |   8   |    4     |     3     |    2    |      1      |   4    |
-| Malha + gambeson               |   9   |    5     |     4     |    4    |      1      |   3    |
-| Brigandina / coat of plates    |   8   |    6     |     5     |    5    |      1      |   6    |
-| Lamelar (bizantino/estepe)     |   7   |    6     |     5     |    4    |      1      |   3 *  |
-| Placa de transicao (sec. XIV)  |   9   |    7     |     6     |    5    |      2      |   2    |
-| Placa completa (sec. XV)       |  10   |    8     |     9     |  6 a 7  |      2      |   1    |
+| Cota de malha (sem acolchoado)|   8   |    4     |     3     |    2    |      1      |   4    |
+| Malha + gambeson             |   9   |    5     |     4     |    4    |      1      |   3    |
+| Brigandina / coat of plates  |   8   |    6     |     5     |    5    |      1      |   6    |
+| Lamelar (bizantino/estepe)   |   7   |    6     |     5     |    4    |      1      |   3 *  |
+| Placa de transicao (sec. XIV)|   9   |    7     |     6     |    5    |      2      |   2    |
+| Placa completa (sec. XV)     |  10   |    8     |     9     |  6 a 7  |      2      |   1    |
 
 NOTAS DE LEITURA DA TABELA:
 
@@ -233,10 +233,10 @@ ANCORA: Defesa de escudo 10 = intransponivel, como uma parede.
 | Escudo                       | Bloq. CaC | Bloq. Projetil | Penalidade | Acesso |
 |------------------------------|-----------|----------------|------------|--------|
 | Broquel (buckler)            |     5     |       2        |     0      |   9    |
-| Targe / rodela (no antebraco)|     6     |       4        |     1      |   7    |
-| Escudo redondo (umbo central)|     7     |       6        |     2      |   8    |
+| Targe (no antebraco)         |     6     |       4        |     1      |   7    |
+| Hoplon (umbo central)        |     7     |       6        |     2      |   8    |
 | Heater (cavaleiro, alca)     |     7     |       7        |     3      |   6    |
-| Kite normando (cavalaria)    |     7     |       8        |     4      |   5    |
+| Kite (cavalaria)             |     7     |       8        |     4      |   5    |
 | Scutum romano *              |     8     |       8        |     5      |   3    |
 | Pave (pavise) *              |     5     |      10        |     8      |   5    |
 
@@ -259,19 +259,19 @@ BROQUEL (BUCKLER)
   mao da espada (esgrima de espada e broquel). Pessimo contra flecha,
   nao da onde se esconder. Barato e onipresente.
 
-TARGE / RODELA
+TARGE
   Pequeno, preso ao antebraco, as vezes com espigao para atacar. Bom
   duelista, cobertura limitada.
 
-ESCUDO REDONDO (UMBO CENTRAL)
+HOPLON (UMBO CENTRAL)
   Medio, versatil, usado de forma agressiva (soco com o umbo, prender a
   arma inimiga). O melhor todo-terreno barato.
 
-HEATER (ESCUDO DE CAVALEIRO)
+HEATER
   Preso por alcas (enarmes), cobre o tronco. Da cobertura passiva
   enquanto livra menos o braco. Usado a pe e a cavalo.
 
-KITE NORMANDO
+KITE
   Grande, afunilado para cobrir a perna na montaria. Muita cobertura,
   pesado.
 

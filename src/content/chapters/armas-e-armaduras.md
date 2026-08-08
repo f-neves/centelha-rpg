@@ -120,10 +120,10 @@ Contra **projéteis rápidos** (flecha, virote, bala de funda, dardo), o escudo 
 | Escudo | Defesa | vs Projétil rápido | Penalidade | Estilo |
 |---|:---:|:---:|:---:|---|
 | Broquel | +1 | não | 0 | puro uso ativo; ineficaz contra projéteis |
-| Targe / rodela | +1 | não | 0 | duelista, cobertura limitada; ineficaz contra projéteis |
-| Escudo redondo | +2 | bloqueia | −1 | o melhor todo-terreno barato |
+| Targe | +1 | não | 0 | duelista, cobertura limitada; ineficaz contra projéteis |
+| Hoplon | +2 | bloqueia | −1 | o melhor todo-terreno barato |
 | Heater | +3 | bloqueia | −2 | cobre o tronco, a pé ou a cavalo |
-| Kite normando | +3 | bloqueia | −2 | muita cobertura, pesado |
+| Kite | +3 | bloqueia | −2 | muita cobertura, pesado |
 | Scutum | +3 | bloqueia | −3 | brilha em formação (testudo) |
 | Pavês | +3 | bloqueia (+3) | −4 | parede portátil do besteiro: +3 na Defesa contra projéteis |
 
