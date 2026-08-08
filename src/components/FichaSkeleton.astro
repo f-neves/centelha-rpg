@@ -205,16 +205,76 @@ import '../styles/arte-equip.css';
     // a aba que abre é a primeira da barra, seja qual for: assim reordenar os botões
     // basta, sem um nome de aba escrito à parte que sai de sincronia com a ordem
     let ativa = botoes[0]?.dataset.ftab || 'atrib';
-    const aplicar = () => {
+
+    // ARIA de tablist: o papel já estava declarado, faltava a ligação entre botão e
+    // painel e o teclado. Uma aba pode ter mais de um painel (Perfil tem dois blocos),
+    // por isso aria-controls recebe uma lista.
+    botoes.forEach((b, i) => {
+      const nome = b.dataset.ftab!;
+      b.id ||= `ftab-bt-${nome}`;
+      const meus = paineis.filter((t) => t.dataset.ftab === nome);
+      meus.forEach((t, j) => {
+        t.id ||= `ftab-p-${nome}${j ? '-' + j : ''}`;
+        t.setAttribute('role', 'tabpanel');
+        t.setAttribute('aria-labelledby', b.id);
+      });
+      if (meus.length) b.setAttribute('aria-controls', meus.map((t) => t.id).join(' '));
+      b.tabIndex = i === 0 ? 0 : -1;
+    });
+
+    /** Traz a aba em uso para o centro da trilha: com nove abas ela nasce fora da tela. */
+    const centrar = (b: HTMLButtonElement, suave = true) => {
+      const alvo = b.offsetLeft - (bar.clientWidth - b.offsetWidth) / 2;
+      const max = bar.scrollWidth - bar.clientWidth;
+      const x = Math.max(0, Math.min(alvo, max));
+      const anima = suave && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+      bar.scrollTo({ left: x, behavior: anima ? 'smooth' : 'auto' });
+    };
+    /** Desbota a ponta só do lado em que ainda sobra trilha. */
+    const marcarPontas = () => {
+      const max = bar.scrollWidth - bar.clientWidth;
+      bar.classList.toggle('mais-esq', bar.scrollLeft > 4);
+      bar.classList.toggle('mais-dir', bar.scrollLeft < max - 4);
+    };
+    bar.addEventListener('scroll', marcarPontas, { passive: true });
+    addEventListener('resize', marcarPontas);
+
+    const aplicar = (rolar = false) => {
       const mob = mq.matches;
       document.body.classList.toggle('ficha-abas', mob);
       if (!mob) document.body.classList.remove('fx-aberto');
       paineis.forEach((t) => t.classList.toggle('on', !mob || t.dataset.ftab === ativa));
-      botoes.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.ftab === ativa)));
+      botoes.forEach((b) => {
+        const on = b.dataset.ftab === ativa;
+        b.setAttribute('aria-selected', String(on));
+        b.tabIndex = on ? 0 : -1;          // tabIndex itinerante: Tab entra na barra uma vez só
+      });
+      if (mob) {
+        marcarPontas();
+        if (rolar) { const b = botoes.find((x) => x.dataset.ftab === ativa); if (b) centrar(b); }
+      }
     };
-    botoes.forEach((b) => b.addEventListener('click', () => { ativa = b.dataset.ftab!; aplicar(); }));
-    mq.addEventListener('change', aplicar);
+    const irPara = (b: HTMLButtonElement, focar = false) => {
+      ativa = b.dataset.ftab!; aplicar(true);
+      if (focar) b.focus();
+    };
+    botoes.forEach((b) => b.addEventListener('click', () => irPara(b)));
+    // setas, Home e End percorrem as abas, como manda o padrão de tablist
+    bar.addEventListener('keydown', (e) => {
+      const i = botoes.findIndex((b) => b.dataset.ftab === ativa);
+      const salto: Record<string, number> = { ArrowRight: 1, ArrowLeft: -1 };
+      let alvo = -1;
+      if (e.key in salto) alvo = (i + salto[e.key] + botoes.length) % botoes.length;
+      else if (e.key === 'Home') alvo = 0;
+      else if (e.key === 'End') alvo = botoes.length - 1;
+      if (alvo < 0) return;
+      e.preventDefault();
+      irPara(botoes[alvo], true);
+    });
+    mq.addEventListener('change', () => aplicar(true));
     aplicar();
+    // a primeira centragem espera o layout existir (a barra nasce com largura 0)
+    requestAnimationFrame(() => { if (mq.matches) { marcarPontas(); const b = botoes.find((x) => x.dataset.ftab === ativa); if (b) centrar(b, false); } });
 
     // vitais sempre à vista: espelham PV / Defesa / Energia / Mana do #derived,
     // que o engine re-renderiza inteiro a cada mudança (daí o MutationObserver)
@@ -773,11 +833,37 @@ import '../styles/arte-equip.css';
     #fvitais { display: flex; gap: .9rem; padding: .25rem .1rem; font-family: 'Cinzel';
       font-size: var(--fs-micro); color: var(--ink-soft); overflow-x: auto; white-space: nowrap; }
     #fvitais b { color: var(--accent-texto); margin-right: .25rem; }
-    .ftab-bar { display: flex; overflow-x: auto; }
-    .ftab-bar button { flex: 1 0 auto; min-height: 44px; background: none; border: none;
-      border-bottom: 3px solid transparent; color: var(--ink); font-family: 'Cinzel';
-      font-size: var(--fs-micro); padding: .25rem .55rem; cursor: pointer; }
-    .ftab-bar button[aria-selected='true'] { color: var(--accent-texto); border-bottom-color: var(--accent); }
+    /* Barra de abas: pílulas numa trilha rolável.
+       São nove abas em 360px de tela, então a fila não cabe e rola de lado. Três coisas
+       resolvem o que a rolagem cria de problema:
+       · a aba em uso é uma pílula PREENCHIDA, e não um sublinhado. Sublinhado de 3px
+         some quando a aba está meio fora da trilha; a pílula se reconhece pelo bloco de
+         cor mesmo cortada pela metade;
+       · as pontas desbotam (mask) só do lado em que ainda há aba escondida, e é isso que
+         avisa que dá para arrastar. Sem isso a fila parecia terminar na borda da tela;
+       · o encaixe (scroll-snap) impede parar com uma pílula pela metade. */
+    .ftab-bar { display: flex; gap: .3rem; overflow-x: auto; padding: .3rem .1rem .45rem;
+      scroll-snap-type: x proximity; scrollbar-width: none; -ms-overflow-style: none;
+      overscroll-behavior-x: contain; }
+    .ftab-bar::-webkit-scrollbar { display: none; }
+    /* a máscara é aplicada por lado, conforme o script vê que ainda há trilha */
+    .ftab-bar.mais-esq { -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.2rem);
+      mask-image: linear-gradient(90deg, transparent, #000 2.2rem); }
+    .ftab-bar.mais-dir { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.2rem), transparent);
+      mask-image: linear-gradient(90deg, #000 calc(100% - 2.2rem), transparent); }
+    .ftab-bar.mais-esq.mais-dir {
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.2rem, #000 calc(100% - 2.2rem), transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 2.2rem, #000 calc(100% - 2.2rem), transparent); }
+
+    .ftab-bar button { flex: 0 0 auto; scroll-snap-align: center; min-height: 38px;
+      background: none; border: 1px solid var(--rule); border-radius: 999px;
+      color: var(--ink-soft); font-family: 'Cinzel'; font-size: var(--fs-micro);
+      letter-spacing: .04em; padding: .3rem .8rem; cursor: pointer; white-space: nowrap;
+      transition: background .12s, color .12s, border-color .12s; }
+    .ftab-bar button:hover { border-color: var(--accent-soft); color: var(--accent-texto); }
+    .ftab-bar button[aria-selected='true'] { background: var(--accent); border-color: var(--accent);
+      color: var(--on-accent); font-weight: 700; }
+    @media (prefers-reduced-motion: reduce) { .ftab-bar button { transition: none; } }
 
     body.ficha-abas .ftab { display: none; }
     body.ficha-abas .ftab.on { display: block; }
