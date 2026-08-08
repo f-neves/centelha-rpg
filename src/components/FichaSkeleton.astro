@@ -518,8 +518,9 @@ import '../styles/arte-equip.css';
   /* espaço da imagem: convite quando vazio, a própria arte quando preenchido */
   .eq-img { position: relative; display: grid; place-items: center; background: var(--bg-soft) center/cover no-repeat;
     border-bottom: 1px solid var(--panel-border); color: var(--ink-soft); cursor: pointer; overflow: hidden; }
-  .eq-img.arma, .eq-img.escudo { height: 20rem; }
-  .eq-img.armadura { height: 30rem; }
+  /* Um quadro só para todas as peças, e a imagem cabe inteira nele: a armadura
+     tinha 30rem e fazia um card de altura diferente dos outros na mesma grade. */
+  .eq-img.arma, .eq-img.escudo, .eq-img.armadura { height: 20rem; }
   span.eq-img, div.eq-img { cursor: default; }
   .eq-img:hover { color: var(--accent-texto); }
   .eq-img-ph { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .06em; text-align: center; }
@@ -678,6 +679,13 @@ import '../styles/arte-equip.css';
   .ui-dlg.eq-catalogo .ui-dlg-ops { display: grid; gap: .6rem; max-height: min(62vh, 34rem);
     grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
   .ui-dlg.eq-catalogo .ui-dlg-grupo { grid-column: 1 / -1; }
+  /* as peças fora do catálogo ficam numa linha só, dividindo a largura em partes
+     iguais: soltas na grade elas cairiam em células estreitas, do tamanho de um
+     item qualquer, e são a escolha que abre o caminho de fazer o seu */
+  .ui-dlg.eq-catalogo .ui-dlg-soltas { grid-column: 1 / -1; display: grid; gap: .6rem;
+    grid-template-columns: 1fr 1fr; }
+  /* no celular a metade não cabe: aí elas se empilham */
+  @media (max-width: 520px) { .ui-dlg.eq-catalogo .ui-dlg-soltas { grid-template-columns: 1fr; } }
   .ui-dlg.eq-catalogo .ui-dlg-nada { grid-column: 1 / -1; }
   .ui-dlg.eq-catalogo .ui-dlg-op { display: flex; flex-direction: column; gap: .4rem; align-items: stretch;
     padding: .5rem; height: 100%; text-align: left; background: var(--panel); }
@@ -701,11 +709,11 @@ import '../styles/arte-equip.css';
   /* a nota do catálogo é longa; três linhas bastam para escolher */
   .eqp-nota { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.35;
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  /* "seu item" ocupa a linha inteira e fica deitado: é uma escolha de outra
-     natureza, e assim não deixa um vão ao lado no começo da grade */
-  .ui-dlg.eq-catalogo .ui-dlg-op:first-child { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: .8rem; }
-  .ui-dlg.eq-catalogo .ui-dlg-op:first-child .eqp-arte { width: 7rem; flex: none; height: 5rem; }
-  .ui-dlg.eq-catalogo .ui-dlg-op:first-child .eqp-nota { -webkit-line-clamp: 2; }
+  /* as peças fora do catálogo ficam deitadas, com a arte ao lado do texto: são
+     escolhas de outra natureza, e a linha só delas não deixa vão na grade */
+  .ui-dlg.eq-catalogo .ui-dlg-soltas .ui-dlg-op { flex-direction: row; align-items: center; gap: .8rem; }
+  .ui-dlg.eq-catalogo .ui-dlg-soltas .eqp-arte { width: 7rem; flex: none; height: 5rem; }
+  .ui-dlg.eq-catalogo .ui-dlg-soltas .eqp-nota { -webkit-line-clamp: 2; }
   #add-conjunto { margin-bottom: .8rem; }
   .calcpop { position: absolute; z-index: 60; max-width: 280px; background: var(--panel); color: var(--ink); border: 1px solid var(--accent); border-radius: var(--r-md); padding: .45rem .6rem; box-shadow: 0 4px 14px var(--shadow); font-size: var(--fs-rotulo); line-height: 1.4; font-family: 'EB Garamond'; }
   .derv .dv[data-calc] { cursor: help; border-bottom: 1px dotted var(--accent-soft); }

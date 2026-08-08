@@ -8,7 +8,7 @@
 
 /* Quanto a peça pode ocupar em cada lugar da ficha. */
 .eq-img.arma { --arte-ar: 320 / 640; --arte-w: 160px; }
-.eq-img.armadura { --arte-ar: 448 / 672; --arte-w: 320px; }
+.eq-img.armadura { --arte-ar: 448 / 672; --arte-w: 213px; }
 .eq-img.escudo { --arte-ar: 512 / 512; --arte-w: 320px; }
 /* espelho pequeno do conjunto de mãos */
 .conj-peca .eq-img.arma { --arte-w: 44px; }

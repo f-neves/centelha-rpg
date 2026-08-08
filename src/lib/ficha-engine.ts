@@ -1326,11 +1326,11 @@ export function montarFicha(opts: FichaOpts) {
             <span class="eq-n"><b>Perf</b>${a.soak.perfuracao}<i>N${a.resistPerf || 0}</i></span>
             <span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span>
           </div>
+          <button type="button" class="eq-vestir${p.vestida ? ' on' : ''}" data-arm-vestir="${p.uid}"${ro ? ' disabled' : ''}>${p.vestida ? '✓ Vestida' : 'Vestir'}</button>
           ${ro ? '' : `<div class="eq-acoes">
             <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar nome, valores e imagem desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>
             <button type="button" class="eq-rm" data-arm-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(p.nome || base.nome)}">Excluir</button>
           </div>`}
-          <button type="button" class="eq-vestir${p.vestida ? ' on' : ''}" data-arm-vestir="${p.uid}"${ro ? ' disabled' : ''}>${p.vestida ? '✓ Vestida' : 'Vestir'}</button>
         </div>
         ${painelMod(chave, base, p.mod, CAMPOS_ARMADURA, ro, {
           nome: campoNome('arm-nome', p.uid, p.nome || '', base.nome, ro),
@@ -1720,9 +1720,13 @@ export function montarFicha(opts: FichaOpts) {
     if (!nw || !nh || !cx.width) return null;
     // `object-fit: contain`: o desenho cabe inteiro, e é daí que a escala parte
     const k = Math.min(cx.width / nw, cx.height / nh);
-    // o translate acontece DENTRO da escala, então o limite é dividido por z
-    const maxX = Math.max(0, (nw * k * z - cx.width) / 2) / z;
-    const maxY = Math.max(0, (nh * k * z - cx.height) / 2) / z;
+    // A folga é o MÓDULO da diferença entre o desenho e a moldura, e não só o
+    // que passa dela: cabendo inteiro, o que sobra são as tarjas, e deslocar ali
+    // é escolher se a peça encosta em cima, embaixo ou no meio. Sem o módulo, no
+    // zoom 100% (que é onde toda imagem começa) o arrasto não fazia nada.
+    // O translate acontece DENTRO da escala, então o limite é dividido por z.
+    const maxX = Math.abs(nw * k * z - cx.width) / 2 / z;
+    const maxY = Math.abs(nh * k * z - cx.height) / 2 / z;
     img.style.setProperty('--tx', `${px * maxX}px`);
     img.style.setProperty('--ty', `${py * maxY}px`);
     // sem sobra não há o que deslocar, e a dica não deve convidar para nada

@@ -86,11 +86,22 @@ function campoHTML(c: Campo, i: number): string {
   </label>`;
 }
 
-/** Botões das opções, com um cabeçalho a cada troca de grupo. */
+/**
+ * Botões das opções, com um cabeçalho a cada troca de grupo.
+ *
+ * As opções SEM grupo (as ações do tipo "criar o meu") saem juntas num bloco
+ * próprio, antes do catálogo. É o bloco que dá a elas uma linha só para si, com
+ * as ações dividindo a largura em partes iguais: na grade do catálogo cada uma
+ * cairia numa célula estreita, do tamanho de um item qualquer.
+ */
 function opcoesHTML(opcoes: Opcao[]): string {
   let grupoAtual: string | undefined;
   const saida: string[] = [];
+  const soltas = opcoes.filter((o) => !o.grupo);
+  if (soltas.length > 1) saida.push('<div class="ui-dlg-soltas">');
+  let fechou = soltas.length <= 1;
   for (const o of opcoes) {
+    if (!fechou && o.grupo) { saida.push('</div>'); fechou = true; }
     if (o.grupo !== grupoAtual) {
       grupoAtual = o.grupo;
       if (grupoAtual) saida.push(`<h3 class="ui-dlg-grupo">${esc(grupoAtual)}</h3>`);
@@ -105,6 +116,7 @@ function opcoesHTML(opcoes: Opcao[]): string {
       + (o.html ?? `${esc(o.rotulo)}${o.nota ? ` <small>${esc(o.nota)}</small>` : ''}`)
       + '</button>');
   }
+  if (!fechou) saida.push('</div>');
   return saida.join('');
 }
 
@@ -182,8 +194,11 @@ function montar(cfg: Cfg): Promise<Resultado> {
     const filtro = dlg.querySelector<HTMLInputElement>('.ui-dlg-filtro');
     if (filtro) {
       const nada = dlg.querySelector<HTMLElement>('.ui-dlg-nada');
-      const itens = [...dlg.querySelectorAll<HTMLElement>('.ui-dlg-ops > *')];
-      const ops = itens.filter((i) => i.classList.contains('ui-dlg-op'));
+      // os itens da grade são os filhos diretos (é neles que o filtro mexe); as
+      // opções soltas podem estar um nível abaixo, dentro do bloco delas
+      const itens = [...dlg.querySelectorAll<HTMLElement>('.ui-dlg-ops > *')]
+        .filter((i) => !i.classList.contains('ui-dlg-soltas'));
+      const ops = [...dlg.querySelectorAll<HTMLElement>('.ui-dlg-op')];
       const soltas = ops.filter((o) => o.classList.contains('ui-dlg-op-solta'));
       const catalogo = ops.filter((o) => !o.classList.contains('ui-dlg-op-solta'));
       const casaTudo = (campo: string, termos: string[]) => termos.every((t) => campo.includes(t));

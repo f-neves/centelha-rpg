@@ -30,8 +30,8 @@ const DESTINO_IMG = resolve(raiz, 'src/assets/equipamento');
 const DESTINO_CSS = resolve(raiz, 'src/styles/arte-equip.css');
 
 // altura, em px, do quadro da arte em cada lugar da ficha. Vem do FichaSkeleton:
-// .eq-img.arma/.escudo = 20rem, .eq-img.armadura = 30rem, e o espelho pequeno do
-// conjunto de mãos (.conj-peca .eq-img) = 5.5rem.
+// .eq-img.arma/.escudo/.armadura = 20rem (um quadro só para todas as peças), e o
+// espelho pequeno do conjunto de mãos (.conj-peca .eq-img) = 5.5rem.
 const ALTURA_PEQUENA = 88;
 
 const pct = (n) => `${+n.toFixed(4)}%`;
