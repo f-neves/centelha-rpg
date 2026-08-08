@@ -771,28 +771,34 @@ import '../styles/arte-equip.css';
     body.ficha-abas .trow .rollv { min-width: 44px; min-height: 44px; }
     body.ficha-abas .trow .specbtn { min-width: 36px; min-height: 44px; }
 
-    /* Atributos e Habilidades em passo de 1,5rem: a linha tem 1,5rem de altura e nada
-       entre uma e outra, então o passo é exatamente 1,5rem. As três listas são longas
-       (10 atributos, 24 perícias primárias, 27 secundárias) e a régua de 48px fazia
-       cada uma virar várias telas de rolagem.
+    /* Listas em passo de 1,5rem: a linha tem 1,5rem de altura e nada entre uma e
+       outra, então o passo é exatamente 1,5rem. São listas longas (10 atributos,
+       24 perícias primárias, 27 secundárias, 6 de poder, 17 derivados) e a régua de
+       48px fazia cada uma virar várias telas de rolagem.
 
        Os botões da direita perdem o piso de 44px junto, senão eles é que mandariam na
        altura e a linha não fecharia em 1,5rem. É uma troca consciente: o alvo de toque
        encolhe. Ver o que ficou medido no comentário de cada regra. */
     /* a entrelinha entra junto: com a do corpo (1,62) o nome sozinho mede 25,9px e
        seguraria a linha acima de 1,5rem, por mais que o min-height diga o contrário */
-    body.ficha-abas :is(#attrs, #skills, #secondary) .trow {
+    body.ficha-abas :is(#attrs, #skills, #secondary, #power) .trow {
       min-height: 1.5rem; height: 1.5rem; line-height: 1.5rem; padding: 0; }
     body.ficha-abas :is(#attrs, #skills, #secondary) .hgrid { row-gap: 0; }
-    body.ficha-abas :is(#attrs, #skills, #secondary) .trow :is(.rollv, .specbtn) {
+    body.ficha-abas :is(#attrs, #skills, #secondary, #power) .trow :is(.rollv, .specbtn) {
       min-width: 24px; min-height: 24px; }        /* mínimo de alvo da WCAG 2.5.8 */
     /* O ponto continua com 15px de círculo, mas o alvo de toque ocupa a altura inteira
        da linha por um pseudo-elemento. Só na vertical: na horizontal os pontos têm 3px
        entre si, e esticar o alvo faria o alvo de um invadir o do vizinho, que numa
        régua de pontos é pior do que um alvo pequeno (marca o número errado). */
-    body.ficha-abas :is(#attrs, #skills, #secondary) .dot { position: relative; }
-    body.ficha-abas :is(#attrs, #skills, #secondary) .dot::after {
+    body.ficha-abas :is(#attrs, #skills, #secondary, #power) .dot { position: relative; }
+    body.ficha-abas :is(#attrs, #skills, #secondary, #power) .dot::after {
       content: ''; position: absolute; left: 0; right: 0; top: -4.5px; bottom: -4.5px; }
+    /* Derivados: mesma régua. O valor é o único texto grande da linha (--fs-corpo, 21px)
+       e num passo de 24px ele encosta em cima e embaixo, então desce para o tamanho
+       auxiliar; continua sendo o maior e o mais forte da linha, que é o que importa. */
+    body.ficha-abas #derived .derv {
+      height: 1.5rem; line-height: 1.5rem; padding: 0; align-items: center; }
+    body.ficha-abas #derived .derv .dv { font-size: var(--fs-aux); }
     /* marcador de uso e botão de vestir: 34px é confortável no mouse, não no polegar */
     body.ficha-abas .eq-uso-op, body.ficha-abas .eq-vestir { min-height: 44px; }
     /* parâmetros do efeito em até 2 linhas em vez de truncados numa só */
