@@ -692,6 +692,12 @@ import MolduraFicha from '../components/MolduraFicha.astro';
      deixaria uns 80px para "O Anjo Verde" */
   .pers-ident .ident-slot .idrow label { display: block; height: auto;
     line-height: 1.3; white-space: normal; }
+  /* O `display: block` acima cobra este: como item de uma coluna flex o <input>
+     esticava sozinho até a largura do rótulo, e num bloco ele volta ao tamanho
+     natural do campo de texto (uns 177px). Em telas de 901px a 1100px, onde as
+     quatro colunas do cabeçalho ficam estreitas, ele saía 37px por fora da
+     página e ela passava a rolar de lado. */
+  .pers-ident .ident-slot .idrow :is(input, select) { width: 100%; }
   /* No celular os oito campos viram duas colunas, e a leitura desce em vez de
      atravessar: Nome · Título · Jogador · Raça numa, Altura · Peso · Idade ·
      Conceito na outra. Daí o `grid-auto-flow: column` com quatro linhas fixas —

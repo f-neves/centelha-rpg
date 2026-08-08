@@ -401,9 +401,26 @@ import '../styles/arte-equip.css';
   @media print { .sec-body.sec-hidden { display: block !important; } h2.barh.barh-tog .sec-caret { display: none; } }
   .ficha-x h3, #attrs h3, #skills h3, #secondary h3, #power h3 { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong); letter-spacing: .04em; text-transform: uppercase; margin: .9rem 0 .35rem; border-bottom: 1px solid var(--rule); padding-bottom: .15rem; }
 
-  .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .3rem 1.6rem; }
-  .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: .3rem 1.6rem; align-items: start; }
-  @media (max-width: 760px) { .cols3, .cols2 { grid-template-columns: 1fr; } }
+  /* `minmax(0, 1fr)` e não `1fr`: um `1fr` cru vale `minmax(auto, 1fr)`, e o
+     `auto` é o min-content da coluna. Um grupo de atributos mede 206px de
+     min-content (o nome mais sete bolinhas mais o dado), então três deles se
+     recusavam a caber em menos de 669px e a grade transbordava a moldura em vez
+     de espremer as colunas. Era o que acontecia entre 901px e ~1050px de tela,
+     onde a coluna de navegação já existe mas o conteúdo ficou estreito: a
+     terceira coluna saía 73px por fora do filete e a página inteira passava a
+     rolar de lado. */
+  .cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .3rem 1.6rem; }
+  .cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .3rem 1.6rem; align-items: start; }
+  /* Faixa de duas colunas. Acima de 900px a ficha sai do modo de abas e a coluna
+     de navegação volta, e é justamente aí que a grade fica mais estreita: 499px
+     em 901px de tela, contra 854px em 900px. O grupo mais largo dos atributos
+     (Mentais: Percepção, Inteligência, Raciocínio, mais sete bolinhas e o dado)
+     mede 232px, então três colunas pedem 232×3 + 25,6×2 = 747px, e a grade só
+     chega lá perto de 1200px de tela. Até lá, duas. */
+  @media (min-width: 901px) and (max-width: 1200px) { .cols3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  /* Uma coluna no celular. O corte casa com o modo de abas (body.ficha-abas), em
+     vez dos 760px de antes, que deixavam três colunas apertadas em 768px. */
+  @media (max-width: 900px) { .cols3, .cols2 { grid-template-columns: minmax(0, 1fr); } }
 
   /* Habilidades: cada grupo pega a largura toda e se abre em três colunas próprias, em
      vez de os grupos disputarem três colunas fixas. O `grid-auto-flow: column` sobre um
@@ -721,8 +738,13 @@ import '../styles/arte-equip.css';
   .eqm-enq-vazio { cursor: pointer; }
   .eqm-enq-bt { border: 1px dashed var(--panel-border); border-radius: var(--r-sm); padding: .2rem .5rem; color: var(--accent-strong); }
   .eqm-enq-vazio:hover .eqm-enq-bt { border-color: var(--accent); }
-  .equip-bolsas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .6rem .9rem; margin: 0 0 .8rem; }
-  @media (max-width: 700px) { .equip-bolsas { grid-template-columns: 1fr; } }
+  .equip-bolsas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem .9rem; margin: 0 0 .8rem; }
+  /* Mesma história dos atributos, com outros números: uma bolsa mede 173px de
+     min-content (a tabela tem Peso, Preço e o botão de remover em largura fixa),
+     e três delas não cabiam nos 499px de grade que sobram em 901px de tela. A
+     tabela saía 40px por fora da moldura. */
+  @media (min-width: 901px) and (max-width: 1000px) { .equip-bolsas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 700px) { .equip-bolsas { grid-template-columns: minmax(0, 1fr); } }
   .bolsa { display: flex; flex-direction: column; gap: .25rem; }
   .bolsa-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .03em; color: var(--accent-strong); background: transparent; border: none; border-bottom: 1px solid var(--rule); padding: .1rem .1rem .2rem; text-transform: uppercase; }
   .bolsa-nome:focus { outline: none; border-bottom-color: var(--accent); }
@@ -850,8 +872,13 @@ import '../styles/arte-equip.css';
   .ftab { display: contents; }
   .fdeck, .fx-bar { display: none; }
   @media (max-width: 900px) {
+    /* Sem margem negativa: ela nasceu para o deck sangrar até a borda do
+       main.content, e hoje a ficha mora dentro da moldura ornamentada. Os -1rem
+       passavam 9px por fora dela dos dois lados, e o fundo do deck apagava o
+       filete dourado bem no canto onde a filigrana começa. Colada ao conteúdo
+       ela cobre tudo o que passa por baixo: nada mais sangra aqui dentro. */
     body.ficha-abas .fdeck { display: block; position: sticky; top: 3.55rem; z-index: 25;
-      background: var(--bg); border-bottom: 1px solid var(--rule); margin: 0 -1rem; padding: .15rem 1rem 0; }
+      background: var(--bg); border-bottom: 1px solid var(--rule); margin: 0; padding: .15rem 0 0; }
     #fvitais { display: flex; gap: .9rem; padding: .25rem .1rem; font-family: 'Cinzel';
       font-size: var(--fs-micro); color: var(--ink-soft); overflow-x: auto; white-space: nowrap; }
     #fvitais b { color: var(--accent-texto); margin-right: .25rem; }

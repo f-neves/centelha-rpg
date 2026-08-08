@@ -690,7 +690,13 @@ html[data-fundo="ficha"]:not([data-theme='legivel']) body.page-ficha .content {
   background: color-mix(in srgb, var(--bg) 88%, transparent); border-radius: 12px; }
 
 /* ---- Moldura ornamentada da Ficha ---- */
-.sheet-frame { position: relative; border-radius: 16px; padding: 6px;
+/* O respiro é uma variável porque não é só padding: a barra grudenta das abas
+   (.fdeck) precisa saber onde a moldura termina para não vazar por cima dela.
+   O valor sai da conta do desenho: a linha interna do ::before mora a 5px da
+   borda, então o que sobra entre a linha e o texto é `respiro − 5px`. Com 6px,
+   que era o valor antigo, sobrava 1px e a palavra encostava no filete. */
+.sheet-frame { --moldura-respiro: clamp(.7rem, 1.1vw, 1rem);
+  position: relative; border-radius: 16px; padding: var(--moldura-respiro);
   border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent) inset,
               0 0 42px color-mix(in srgb, var(--gold) calc(16% * var(--deco-strength)), transparent); }
