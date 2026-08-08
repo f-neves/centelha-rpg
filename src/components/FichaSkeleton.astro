@@ -594,7 +594,9 @@ import '../styles/arte-equip.css';
   .fa-chart .fa-vline { stroke: var(--accent-strong); stroke-width: 1; stroke-dasharray: 3 3; opacity: .7; }
   .fa-chart .fa-dot { fill: var(--accent-strong); stroke: var(--paper, #fff); stroke-width: 1.5; }
   .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -140%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: #fff; font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .12rem .4rem; border-radius: var(--r-sm); box-shadow: 0 1px 4px rgba(0,0,0,.3); }
-  .fa-tbl { border-collapse: collapse; font-size: var(--fs-rotulo); }
+  /* margin: 0 anula o `table { margin: 1em 0 }` global, que desalinhava o topo da
+     tabela em relação ao do gráfico ao lado */
+  .fa-tbl { border-collapse: collapse; font-size: var(--fs-rotulo); margin: 0; }
   .fa-tbl th, .fa-tbl td { border: 1px solid var(--rule); padding: .15rem .55rem; text-align: center; }
   .fa-tbl th { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); font-weight: 700; }
   /* o thead herda o fundo --accent-strong da regra global; com --ink-soft dava 1,5:1 */
