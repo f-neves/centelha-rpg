@@ -1426,7 +1426,7 @@
       "normal": "Centelha por hora",
       "descanso": "2 × Centelha por hora em meditação, descanso completo ou sono profundo",
       "nota": "A reserva não volta por cena: o feiticeiro que se esvazia numa luta precisa de horas, não de um respiro. É o que separa a economia do Arcano da economia das Proezas (a Energia, essa sim, é o combustível da cena).",
-      "arteManipulacao": "A Arte Manipulação de Mana soma +1 por nível dela a cada 2 horas, e o dobro em descanso."
+      "arteManipulacao": "A Arte Mana soma +1 por nível dela a cada 2 horas, e o dobro em descanso."
     },
     "fonteElemental": {
       "nome": "A fonte do elemento",

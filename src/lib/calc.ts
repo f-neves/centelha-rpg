@@ -72,7 +72,7 @@ export function energia(opts: { vigor: number; compostura: number; raciocinio: n
 }
 
 /** Mana: (Centelha×2) + Vontade. */
-/** Bônus de reserva por nível da Arte Manipulação de Mana. */
+/** Bônus de reserva por nível da Arte Mana. */
 export const MANA_ARTE_BONUS = [0, 1, 2, 3, 5, 8, 12];
 
 export function mana(opts: { centelha: number; vontade: number; manipulacao?: number }) {

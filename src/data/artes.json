@@ -1894,7 +1894,7 @@
   },
   {
     "id": "manipulacao-mana",
-    "nome": "Manipulação de Mana",
+    "nome": "Mana",
     "categoria": "universal",
     "atributo_conjuracao": "inteligencia",
     "niveis": [
@@ -1954,7 +1954,8 @@
       }
     ],
     "aliases": [
-      "Mana Manipulation"
+      "Mana Manipulation",
+      "Manipulação de Mana"
     ],
     "pendente": false
   }

@@ -546,6 +546,9 @@ import '../styles/arte-equip.css';
   .cam { border: 1px solid var(--panel-border); border-radius: var(--r-sm); margin-bottom: .4rem; background: var(--panel); }
   .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
   .cam-nm { min-width: 0; }
+  /* as bolinhas da Arte vão para a ponta direita do cabeçalho, como nos Atributos e
+     nas Habilidades, e não coladas no nome */
+  .cam-head .dots { margin-left: auto; }
   .cam-head[data-camtog] { cursor: pointer; } .cam-head[data-camtog]:hover { background: var(--panel-2); }
   .chev { cursor: pointer; } .chev:hover { color: var(--accent-texto); }
   .cam-body { padding: .4rem .7rem .6rem; border-top: 1px dotted var(--rule); }
