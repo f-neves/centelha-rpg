@@ -222,24 +222,26 @@ import '../styles/arte-equip.css';
       b.tabIndex = i === 0 ? 0 : -1;
     });
 
-    /** Traz a aba em uso para o centro da trilha: com nove abas ela nasce fora da tela. */
-    const centrar = (b: HTMLButtonElement, suave = true) => {
-      const alvo = b.offsetLeft - (bar.clientWidth - b.offsetWidth) / 2;
-      const max = bar.scrollWidth - bar.clientWidth;
-      const x = Math.max(0, Math.min(alvo, max));
-      const anima = suave && !matchMedia('(prefers-reduced-motion: reduce)').matches;
-      bar.scrollTo({ left: x, behavior: anima ? 'smooth' : 'auto' });
-    };
-    /** Desbota a ponta só do lado em que ainda sobra trilha. */
-    const marcarPontas = () => {
-      const max = bar.scrollWidth - bar.clientWidth;
-      bar.classList.toggle('mais-esq', bar.scrollLeft > 4);
-      bar.classList.toggle('mais-dir', bar.scrollLeft < max - 4);
-    };
-    bar.addEventListener('scroll', marcarPontas, { passive: true });
-    addEventListener('resize', marcarPontas);
+    // a fita é criada aqui e não no markup: sem script ela não teria o que marcar
+    const fita = document.createElement('span');
+    fita.className = 'ftab-fita';
+    fita.hidden = true;
+    bar.prepend(fita);
 
-    const aplicar = (rolar = false) => {
+    /** Põe a fita sobre a aba em uso. Em duas linhas a viagem é diagonal, daí o translate em x e y. */
+    const moverFita = () => {
+      const b = botoes.find((x) => x.dataset.ftab === ativa);
+      if (!b || !mq.matches) { fita.hidden = true; return; }
+      fita.hidden = false;
+      fita.style.width = b.offsetWidth + 'px';
+      fita.style.height = b.offsetHeight + 'px';
+      fita.style.transform = `translate(${b.offsetLeft}px, ${b.offsetTop}px)`;
+    };
+    addEventListener('resize', moverFita);
+    // a fita nasce no lugar certo só depois que a Cinzel carrega e os rótulos assentam
+    (document as any).fonts?.ready?.then(moverFita);
+
+    const aplicar = () => {
       const mob = mq.matches;
       document.body.classList.toggle('ficha-abas', mob);
       if (!mob) document.body.classList.remove('fx-aberto');
@@ -249,13 +251,15 @@ import '../styles/arte-equip.css';
         b.setAttribute('aria-selected', String(on));
         b.tabIndex = on ? 0 : -1;          // tabIndex itinerante: Tab entra na barra uma vez só
       });
-      if (mob) {
-        marcarPontas();
-        if (rolar) { const b = botoes.find((x) => x.dataset.ftab === ativa); if (b) centrar(b); }
-      }
+      moverFita();
     };
     const irPara = (b: HTMLButtonElement, focar = false) => {
-      ativa = b.dataset.ftab!; aplicar(true);
+      // o painel entra pelo lado de onde veio: para frente na fila, entra da direita
+      const de = botoes.findIndex((x) => x.dataset.ftab === ativa);
+      const para = botoes.indexOf(b);
+      document.body.classList.toggle('volta', para < de);
+      ativa = b.dataset.ftab!;
+      aplicar();
       if (focar) b.focus();
     };
     botoes.forEach((b) => b.addEventListener('click', () => irPara(b)));
@@ -271,10 +275,10 @@ import '../styles/arte-equip.css';
       e.preventDefault();
       irPara(botoes[alvo], true);
     });
-    mq.addEventListener('change', () => aplicar(true));
+    mq.addEventListener('change', aplicar);
     aplicar();
-    // a primeira centragem espera o layout existir (a barra nasce com largura 0)
-    requestAnimationFrame(() => { if (mq.matches) { marcarPontas(); const b = botoes.find((x) => x.dataset.ftab === ativa); if (b) centrar(b, false); } });
+    // a primeira posição da fita espera o layout existir (a barra nasce com largura 0)
+    requestAnimationFrame(moverFita);
 
     // vitais sempre à vista: espelham PV / Defesa / Energia / Mana do #derived,
     // que o engine re-renderiza inteiro a cada mudança (daí o MutationObserver)
