@@ -598,6 +598,99 @@ export function montarFicha(opts: FichaOpts) {
       <span class="eq-improv-nota muted">Peça fora do catálogo: os números saem do ajuste.</span>`;
   }
   /**
+   * Alça de arrastar de um card, com o mesmo desenho no arsenal e nas armaduras.
+   * É um <button> de propósito: assim o teclado alcança, e as setas movem a peça
+   * para quem não pode (ou não quer) arrastar.
+   */
+  function alcaOrdem(uid: string, nome: string) {
+    return `<button type="button" class="eq-mover" data-mover="${uid}" title="Arraste para reordenar (ou use as setas)"`
+      + ` aria-label="Mover ${escapeHtml(nome)} na ordem"><span aria-hidden="true">⠿</span></button>`;
+  }
+
+  /**
+   * Reordenar por arrasto, servindo mouse, caneta e toque com um código só
+   * (eventos de ponteiro; o arrastar-e-soltar do HTML não pega em toque).
+   *
+   * Enquanto arrasta, o card trocado é movido no PRÓPRIO DOM assim que o ponteiro
+   * cruza o meio de um vizinho. Sai de graça a prévia do resultado: a grade
+   * reflui sozinha e não é preciso calcular posição de nada. No fim, a ordem
+   * nova é lida do DOM e devolvida em uids.
+   */
+  function ativarArrasto(idCont: string, attr: string, aplicar: (uids: string[]) => void) {
+    const cont = el(idCont);
+    const cards = () => [...cont.querySelectorAll<HTMLElement>(`[${attr}]`)];
+    const uidsNaTela = () => cards().map((c) => c.getAttribute(attr)!);
+
+    cont.addEventListener('pointerdown', (e) => {
+      if (opts.readOnly) return;
+      const alca = (e.target as HTMLElement).closest<HTMLElement>('.eq-mover');
+      if (!alca) return;
+      const card = alca.closest<HTMLElement>(`[${attr}]`);
+      if (!card) return;
+      e.preventDefault();
+      card.classList.add('arrastando');
+      // sem isto o card sob o dedo seria sempre o próprio, e elementFromPoint
+      // nunca enxergaria o vizinho por baixo
+      card.style.pointerEvents = 'none';
+
+      const mover = (ev: PointerEvent) => {
+        const sob = document.elementFromPoint(ev.clientX, ev.clientY);
+        const alvo = sob && (sob as HTMLElement).closest<HTMLElement>(`[${attr}]`);
+        if (!alvo || alvo === card || alvo.parentElement !== cont) return;
+        const r = alvo.getBoundingClientRect();
+        // compara com o meio do vizinho, no eixo em que a grade está de fato
+        const antes = cards().indexOf(alvo) < cards().indexOf(card);
+        const passou = antes
+          ? (ev.clientY < r.top + r.height / 2 || ev.clientX < r.left + r.width / 2)
+          : (ev.clientY > r.top + r.height / 2 || ev.clientX > r.left + r.width / 2);
+        if (passou) cont.insertBefore(card, antes ? alvo : alvo.nextSibling);
+      };
+      const soltar = () => {
+        window.removeEventListener('pointermove', mover);
+        window.removeEventListener('pointerup', soltar);
+        window.removeEventListener('pointercancel', soltar);
+        card.classList.remove('arrastando');
+        card.style.pointerEvents = '';
+        aplicar(uidsNaTela());
+      };
+      // Na JANELA, e não na alça. A alça vive dentro do card que acabou de
+      // receber `pointer-events: none`, e assim ela deixa de receber o
+      // `pointerup`: o arrasto reordenava a tela e nunca gravava nada.
+      window.addEventListener('pointermove', mover);
+      window.addEventListener('pointerup', soltar);
+      window.addEventListener('pointercancel', soltar);
+    });
+
+    // teclado: as setas movem uma casa, para quem não arrasta
+    cont.addEventListener('keydown', (e) => {
+      if (opts.readOnly) return;
+      const alca = (e.target as HTMLElement).closest<HTMLElement>('.eq-mover');
+      if (!alca) return;
+      const passo = e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1
+        : e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : 0;
+      if (!passo) return;
+      e.preventDefault();
+      const uids = uidsNaTela();
+      const i = uids.indexOf(alca.dataset.mover!);
+      const j = i + passo;
+      if (i < 0 || j < 0 || j >= uids.length) return;
+      [uids[i], uids[j]] = [uids[j], uids[i]];
+      aplicar(uids);
+      // o card foi redesenhado: devolve o foco à alça da mesma peça
+      requestAnimationFrame(() => cont.querySelector<HTMLElement>(`.eq-mover[data-mover="${alca.dataset.mover}"]`)?.focus());
+    });
+  }
+
+  /** Põe a lista na ordem dos uids que vieram da tela. */
+  function reordenar<T extends { uid: string }>(lista: T[], uids: string[]): T[] {
+    const porUid = new Map(lista.map((p) => [p.uid, p]));
+    const nova = uids.map((u) => porUid.get(u)).filter(Boolean) as T[];
+    // o que a tela não mostrava (peça filtrada, por exemplo) fica no fim, não some
+    for (const p of lista) if (!uids.includes(p.uid)) nova.push(p);
+    return nova;
+  }
+
+  /**
    * O id de catálogo da peça, que é o que dá nome à classe da arte do sistema
    * (`.arte-espada-longa`). Arma e escudo guardam em `ref` com prefixo; armadura
    * guarda em `base`. Item improvisado não tem arte: é objeto de ocasião.
@@ -726,6 +819,7 @@ export function montarFicha(opts: FichaOpts) {
             ${marca('nada', 'guardada')}${marca('habil', 'mão hábil')}${marca('inabil', 'mão inábil', duasMaos)}
           </div>
           ${ro ? '' : `<div class="eq-acoes">
+            ${alcaOrdem(p.uid, nomePeca(p))}
             ${campos ? `<button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>` : '<span></span>'}
             <button type="button" class="eq-rm" data-ars-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(nomePeca(p))}">Excluir</button>
           </div>`}
@@ -1009,6 +1103,7 @@ export function montarFicha(opts: FichaOpts) {
             <span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span>
           </div>
           ${ro ? '' : `<div class="eq-acoes">
+            ${alcaOrdem(p.uid, p.nome || base.nome)}
             <button type="button" class="eq-ed" data-eqm-tog="${chave}" title="Ajustar os valores desta peça" aria-expanded="${modAberto.has(chave)}">✎ ajustar</button>
             <button type="button" class="eq-rm" data-arm-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(p.nome || base.nome)}">Excluir</button>
           </div>`}
@@ -1270,6 +1365,18 @@ export function montarFicha(opts: FichaOpts) {
   }));
   // ---- Arsenal: adicionar, marcar o uso, descartar, improvisado ----
   const redesenhaArmas = () => { renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); save(); };
+
+  // ---- Ordem das peças: arrastar pela alça, ou mover pelas setas ----
+  // Guardar a ordem é guardar a ordem do ARRAY: quem lê a ficha (a mesa, o
+  // rastreador) recebe as peças na sequência que o jogador escolheu.
+  ativarArrasto('eq-arsenal', 'data-ars', (uids) => {
+    S.arsenal = reordenar(S.arsenal || [], uids);
+    redesenhaArmas();
+  });
+  ativarArrasto('eq-armaduras', 'data-arm-peca', (uids) => {
+    S.equip.armaduras = reordenar(S.equip.armaduras || [], uids);
+    renderArmaduras(); save();
+  });
   el('eq-arsenal-add').addEventListener('click', async (e) => {
     if (opts.readOnly) return;
     if (!(e.target as HTMLElement).closest('[data-ars-add]')) return;
