@@ -23,12 +23,12 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
                de tamanho ao entrar e sair do enquadramento. -->
           <div class="retrato-barra" id="retrato-barra" hidden>
             <div class="retrato-dupla">
-              <button type="button" class="retrato-bt" id="retrato-ajustar">Ajustar enquadramento</button>
-              <button type="button" class="retrato-bt perigo" id="retrato-del">Excluir imagem</button>
+              <button type="button" class="btn retrato-bt" id="retrato-ajustar">Ajustar enquadramento</button>
+              <button type="button" class="btn retrato-bt perigo" id="retrato-del">Excluir imagem</button>
             </div>
             <div class="retrato-ajuste">
               <input type="range" class="retrato-range" id="retrato-range" min="1" max="3" step="0.05" value="1" aria-label="Zoom da imagem" />
-              <button type="button" class="retrato-bt" id="retrato-concluir">Concluir</button>
+              <button type="button" class="btn retrato-bt" id="retrato-concluir">Concluir</button>
             </div>
           </div>
         </div>
@@ -182,6 +182,20 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     const frameEl = document.getElementById('retrato-frame')!;
     const rangeEl = document.getElementById('retrato-range') as HTMLInputElement;
     const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+    /**
+     * O quadro toma a proporção da própria foto, e assim ela aparece inteira: sem
+     * corte e sem tarja. A razão vem do ARQUIVO (naturalWidth/Height), que é um
+     * número fixo, e não do layout — se viesse do layout, o retrato mais largo
+     * espremeria a coluna do lado, que ficaria mais alta, que cresceria o retrato.
+     * Limitada entre 1:2 e 7:5 para uma foto muito deitada não engolir a página;
+     * passando disso ela sobra em tarja, que é o mal menor.
+     */
+    const razaoDaFoto = () => {
+      const w = imgEl.naturalWidth, h = imgEl.naturalHeight;
+      if (!w || !h) return;
+      frameEl.style.setProperty('--retrato-ar', String(clamp(w / h, 0.5, 1.4)));
+    };
+    imgEl.addEventListener('load', razaoDaFoto);
     const aplicarPos = () => {
       imgEl.style.objectPosition = `${pos.x}% ${pos.y}%`;
       imgEl.style.transformOrigin = `${pos.x}% ${pos.y}%`;
@@ -396,6 +410,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     // a faixa de ações fica sobre a imagem, e só para quem pode editar
     document.getElementById('retrato-barra')!.hidden = !(pode && temImg);
     if (!(pode && temImg)) frame.classList.remove('ajustando');
+    // sem foto não há razão a seguir: volta para a moldura clássica
+    if (!temImg) frame.style.removeProperty('--retrato-ar');
   }
   async function mostrarRetrato(sb: any, path: string, pode: boolean) {
     const { data } = await sb.storage.from(BUCKET).createSignedUrl(path, 3600);
@@ -515,30 +531,33 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
      Ocupa os 20% de baixo do quadro, e os dois botões dividem a largura ao meio.
      No modo de ajuste a mesma faixa vira a barra de zoom mais o Concluir: assim o
      quadro não muda de tamanho ao entrar e sair do enquadramento, que era o que
-     aconteceria com a barra morando abaixo dele. */
+     aconteceria com a barra morando abaixo dele.
+     Só aparece no hover: a foto é o assunto, e os controles são visita. */
   .retrato-barra { position: absolute; left: 0; right: 0; bottom: 0; height: 20%; z-index: 3;
-    display: flex; align-items: stretch; }
+    display: flex; align-items: center; gap: .4rem; padding: 0 .45rem;
+    background: linear-gradient(to top, color-mix(in srgb, var(--bg) 88%, transparent), transparent);
+    opacity: 0; transition: opacity .14s; pointer-events: none; }
   .retrato-barra[hidden] { display: none; }
-  .retrato-dupla { display: flex; width: 100%; }
-  .retrato-ajuste { display: none; width: 100%; align-items: center; gap: .6rem; padding: 0 .7rem;
-    background: color-mix(in srgb, var(--bg) 82%, transparent); border-top: 1px solid var(--panel-border); }
+  .retrato-frame:hover .retrato-barra,
+  .retrato-frame:focus-within .retrato-barra,
+  .retrato-frame.ajustando .retrato-barra { opacity: 1; pointer-events: auto; }
+  /* sem mouse não há hover: no toque a faixa fica sempre à mão */
+  @media (hover: none) { .retrato-barra { opacity: 1; pointer-events: auto; } }
+  .retrato-dupla { display: flex; gap: .4rem; width: 100%; }
+  .retrato-ajuste { display: none; width: 100%; align-items: center; gap: .5rem; }
   .retrato-frame.ajustando .retrato-dupla { display: none; }
   .retrato-frame.ajustando .retrato-ajuste { display: flex; }
   .retrato-ajuste .retrato-range { flex: 1; width: auto; min-width: 0; }
-  .retrato-ajuste .retrato-bt { flex: 0 0 auto; padding: 0 .7rem; border: 1px solid var(--panel-border);
-    border-radius: var(--r-sm); background: var(--panel); min-height: 2rem; }
-  /* O quadro é estreito (a largura vem da altura do cabeçalho), então o rótulo
-     inteiro tem de caber em meia largura: sem espaçamento entre letras, fonte
-     pequena e quebra em duas linhas. */
-  .retrato-bt { flex: 1 1 0; min-width: 0; display: grid; place-items: center; padding: 0 .3rem;
-    background: color-mix(in srgb, var(--bg) 64%, transparent); backdrop-filter: blur(3px); color: var(--ink);
-    border: none; border-top: 1px solid var(--panel-border); cursor: pointer;
-    font-family: 'Cinzel'; font-size: .62rem; text-transform: uppercase; letter-spacing: 0;
-    line-height: 1.2; text-align: center; overflow-wrap: break-word; hyphens: auto; }
-  .retrato-dupla .retrato-bt + .retrato-bt { border-left: 1px solid var(--panel-border); }
-  .retrato-bt:hover { background: var(--accent); color: var(--on-accent); }
-  .retrato-bt.perigo { color: var(--perigo); }
-  .retrato-bt.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
+  /* Os botões são os `.btn` do site; aqui só ganham meia largura cada, o rótulo
+     miúdo que cabe num quadro estreito e o fundo mais opaco, que é o que os
+     separa da foto por baixo. */
+  .retrato-bt { flex: 1 1 0; min-width: 0; padding: .35rem .4rem;
+    background: color-mix(in srgb, var(--panel) 88%, transparent); backdrop-filter: blur(3px);
+    font-size: var(--fs-micro); line-height: 1.2; text-align: center;
+    overflow-wrap: break-word; hyphens: auto; }
+  .retrato-ajuste .retrato-bt { flex: 0 0 auto; }
+  .retrato-bt.perigo { color: var(--perigo); border-color: color-mix(in srgb, var(--perigo) 55%, transparent); }
+  .retrato-bt.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); border-color: var(--perigo); }
   .retrato-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 2rem; background: color-mix(in srgb, #000 80%, transparent); cursor: zoom-out; }
   .retrato-lb[hidden] { display: none; }
   .retrato-lb img { max-width: 92vw; max-height: 88vh; border-radius: var(--r-lg); box-shadow: 0 12px 44px rgba(0,0,0,.5); }
@@ -552,17 +571,22 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   /* `position: relative` é o que ancora a faixa de ações DENTRO do quadro; a regra
      de global.css não tem, e sem isto a faixa se prendia ao ancestral posicionado
      mais próximo e saía com a largura da página. */
+  /* O quadro toma a proporção da FOTO (o script lê o tamanho natural dela e
+     escreve --retrato-ar), então ela aparece inteira, sem tarja nem corte. A
+     razão vem do arquivo, não do layout: é um número constante, e por isso não
+     realimenta a largura. Sem foto, vale a moldura clássica de 215×260. */
   .pers-cab .retrato-frame { position: relative; flex: 1; min-height: 15rem; max-height: 34rem;
-    height: auto; width: auto; aspect-ratio: 215 / 260; }
+    height: auto; width: auto; aspect-ratio: var(--retrato-ar, 215 / 260); }
   /* A foto sai do fluxo. Com ela dentro, a largura `auto` do quadro pegava o
      tamanho NATURAL da imagem em vez da razão: uma foto de 600px de largura
      esticava o retrato para 600px, que por sua vez espremia a coluna do lado, que
      ficava mais alta, que crescia o retrato de novo. */
-  .pers-cab .retrato-frame img { position: absolute; inset: 0; width: 100%; height: 100%; }
-  /* O retrato ficou 2,7rem mais largo; a identificação devolve os mesmos 2,7rem
-     na base e no mínimo. Sem isso o cabeçalho quebraria em duas linhas numa tela
-     mais larga do que antes, e aí ele cresceria em altura em vez de manter. */
-  .pers-ident { flex: 1 1 17.3rem; min-width: 13.3rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .8rem 1rem 1rem; }
+  .pers-cab .retrato-frame img { position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: contain; }
+  /* A identificação cede a largura que o retrato pedir: agora ele é tão largo
+     quanto a foto precisa para caber inteira, e uma foto deitada ocupa bem mais
+     que os 215px de antes. */
+  .pers-ident { flex: 1 1 12rem; min-width: 11rem; display: flex; flex-direction: column; gap: .4rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .8rem 1rem 1rem; }
   .pers-ident h1 { margin: .05rem 0 .2rem; }
   /* Havia um lápis que abria um menu flutuante com as ações da imagem, e ele
      existia porque o retrato era uma miniatura de 96px ao lado do nome. Com o
@@ -575,7 +599,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
        altura sai da proporção. */
     .pers-cab { display: flex; flex-direction: column; gap: .8rem; align-items: stretch; }
     .retrato { position: relative; }
-    .pers-cab .retrato-frame { flex: none; width: 100%; height: auto; aspect-ratio: 215 / 260; }
+    .pers-cab .retrato-frame { flex: none; width: 100%; height: auto; max-height: none;
+      aspect-ratio: var(--retrato-ar, 215 / 260); }
     .pers-ident { min-width: 0; }
   }
 
