@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import FichaSkeleton from '../components/FichaSkeleton.astro';
-import MolduraFicha from '../components/MolduraFicha.astro';
 ---
 <Base title="Personagem" largura="wide" descricao="Ficha do personagem ligada à sua conta.">
   <div id="setup" class="aviso" hidden>
@@ -67,42 +66,49 @@ import MolduraFicha from '../components/MolduraFicha.astro';
 
     <div id="revisao-box" class="aviso revisao" hidden></div>
 
+    {/* Estas duas seções entram pelo <slot /> do esqueleto, que as põe dentro da
+        SEGUNDA folha da ficha, ao lado de Equipamento, Mochila e Rolar. Antes ficavam
+        soltas depois da moldura.
+
+        No celular as duas são a aba "História": o invólucro leva a classe .ftab, que é
+        o que o painel de abas procura no documento inteiro (os estilos dele são
+        globais). É invólucro e não a própria <section> porque no desktop .ftab vira
+        display: contents, e a caixa da seção some junto com a margem dela. */}
     <div id="ficha-wrap" hidden>
-      <MolduraFicha><FichaSkeleton /></MolduraFicha>
-    </div>
+      <FichaSkeleton>
+        <div class="ftab" data-ftab="historia">
+        <section class="bloco">
+          <h2 class="barh">Descrição, História, Background &amp; Anotações</h2>
+          <div class="textos">
+            <label>Descrição<textarea data-campo="descricao" rows="4" placeholder="Aparência, personalidade, traços marcantes…"></textarea></label>
+            <label>História<textarea data-campo="historia" rows="6" placeholder="De onde vem, o que viveu…"></textarea></label>
+            <label>Background<textarea data-campo="background" rows="5" placeholder="Origem, laços, motivações…"></textarea></label>
+            <label>Anotações<textarea data-campo="anotacoes" rows="5" placeholder="Notas livres do jogador…"></textarea></label>
+          </div>
+          <span id="txt-status" class="salvo"></span>
+        </section>
+        </div>
 
-    {/* No celular esta seção é a aba "História" da ficha: o invólucro leva a classe
-        .ftab, que é o que o painel de abas do FichaSkeleton procura no documento
-        inteiro (os estilos dele são globais). É invólucro e não a própria <section>
-        porque no desktop .ftab vira display:contents, e a caixa da seção some junto
-        com a margem dela. */}
-    <div class="ftab" data-ftab="historia">
-    <section class="bloco">
-      <h2 class="barh">Descrição, História, Background &amp; Anotações</h2>
-      <div class="textos">
-        <label>Descrição<textarea data-campo="descricao" rows="4" placeholder="Aparência, personalidade, traços marcantes…"></textarea></label>
-        <label>História<textarea data-campo="historia" rows="6" placeholder="De onde vem, o que viveu…"></textarea></label>
-        <label>Background<textarea data-campo="background" rows="5" placeholder="Origem, laços, motivações…"></textarea></label>
-        <label>Anotações<textarea data-campo="anotacoes" rows="5" placeholder="Notas livres do jogador…"></textarea></label>
-      </div>
-      <span id="txt-status" class="salvo"></span>
-    </section>
+        {/* Arquivos também vira painel da aba História. Sem isto ela seria a única
+            seção sem .ftab, e no celular aparecia embaixo de TODAS as abas. */}
+        <div class="ftab" data-ftab="historia">
+        <section class="bloco">
+          <h2 class="barh">Arquivos <small>(imagens, PDFs, documentos, links)</small></h2>
+          <div class="arq-tools" id="arq-tools" hidden>
+            <label class="btn" id="arq-lbl">Enviar arquivo
+              <input type="file" id="arq-file" hidden />
+            </label>
+            <span class="arq-link-row">
+              <input type="url" id="arq-link-url" placeholder="Colar link (https://…)" />
+              <input type="text" id="arq-link-nome" placeholder="Nome (opcional)" />
+              <button class="btn" id="arq-link-add" type="button">+ link</button>
+            </span>
+          </div>
+          <ul id="arqs" class="arqs"></ul>
+        </section>
+        </div>
+      </FichaSkeleton>
     </div>
-
-    <section class="bloco">
-      <h2 class="barh">Arquivos <small>(imagens, PDFs, documentos, links)</small></h2>
-      <div class="arq-tools" id="arq-tools" hidden>
-        <label class="btn" id="arq-lbl">Enviar arquivo
-          <input type="file" id="arq-file" hidden />
-        </label>
-        <span class="arq-link-row">
-          <input type="url" id="arq-link-url" placeholder="Colar link (https://…)" />
-          <input type="text" id="arq-link-nome" placeholder="Nome (opcional)" />
-          <button class="btn" id="arq-link-add" type="button">+ link</button>
-        </span>
-      </div>
-      <ul id="arqs" class="arqs"></ul>
-    </section>
   </div>
 </Base>
 

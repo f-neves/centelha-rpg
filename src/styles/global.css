@@ -710,6 +710,18 @@ html[data-fundo="ficha"]:not([data-theme='legivel']) body.page-ficha .content {
 .sheet-frame .corner.br { bottom: -3px; right: -3px; transform: scale(-1, -1); }
 /* no celular a filigrana ocupa canto demais numa tela de 360px */
 @media (max-width: 560px) { .sheet-frame .corner { width: 38px; height: 38px; } }
+/* A Ficha são duas folhas, e uma encostada na outra não leria como duas. */
+.sheet-frame + .sheet-frame { margin-top: 1.4rem; }
+/* No celular só uma aba aparece por vez, então a folha que não tem a aba em uso não
+   tem o que emoldurar: perde borda, filete, filigrana e respiro, e some do desenho.
+   Não é display: none porque a barra de XP mora na primeira folha e vira a folha
+   fixa do botão ⋯: escondida por um ancestral, ela não abriria. Quem põe e tira a
+   classe é o script das abas, em FichaSkeleton. */
+/* `border: 0` e não uma borda transparente: com 1px de cada lado a folha vazia
+   ainda media 2px de altura e cobrava o espaço. */
+.sheet-frame.moldura-vazia { border: 0; padding: 0; margin-top: 0; box-shadow: none; }
+.sheet-frame.moldura-vazia::before,
+.sheet-frame.moldura-vazia > .corner { display: none; }
 
 /* O clássico pinta a fibra de pergaminho no body, e o body sai da frente quando o
    fundo está ligado. A textura muda de lugar em vez de sumir: vai para a própria

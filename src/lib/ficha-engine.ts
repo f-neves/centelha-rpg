@@ -74,6 +74,7 @@ export function montarFicha(opts: FichaOpts) {
   }
   const CAM_ORDER = (CAM_D as any[]).map((c) => c.id);
   const CAM_NOME: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.nome]));
+  const CAM_ATR: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.atributo]));
   const CAMTREE: Record<string, [string, string, number][]> = {};
   for (const t of TEC_D as any[]) (CAMTREE[t.caminho] ??= []).push([t.id, t.nome, t.nivel]);
   for (const k in CAMTREE) CAMTREE[k].sort((a, b) => a[2] - b[2]);
@@ -405,9 +406,18 @@ export function montarFicha(opts: FichaOpts) {
         const desc = TECTEXT[id] ? `<div class="tdesc">${mdBold(TECTEXT[id])}</div>` : '';
         return `<div class="techrow"><span class="${cls}" data-tech="${id}"${title}>${!owned && !ok ? '🔒 ' : ''}${nome} <small>N${b} · ${custoTecnica(b)}</small></span>${desc}</div>`;
       }).join('');
-      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">Proeza ${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
+      return `<div class="cam"><div class="cam-head" data-camtog="${cam}"><span class="chev">${open ? '▾' : '▸'}</span><span class="cam-nm">${CAM_NOME[cam]}</span><span class="cam-meta">${sel.length ? `${sel.length} téc · ${cost} XP` : '—'}</span></div><div class="cam-body" style="display:${open ? 'block' : 'none'}">${rows}</div></div>`;
     };
-    el('tecnicas').innerHTML = col3(CAM_ORDER, card);
+    // As Proezas ficam agrupadas pelo Atributo que cada uma puxa (campo `atributo` de
+    // caminhos.json), na mesma ordem em que os Atributos aparecem na ficha. Cada grupo
+    // pega a largura toda e abre em três colunas próprias, como os grupos de Habilidades.
+    // Uma Proeza cujo atributo não bata com nenhum da lista não some: cai num grupo final.
+    const grupos = (ATTRS_D as any[]).map((a) => ({ nome: a.nome, ids: CAM_ORDER.filter((id) => CAM_ATR[id] === a.id) }));
+    const conhecidos = new Set((ATTRS_D as any[]).map((a) => a.id));
+    const soltas = CAM_ORDER.filter((id) => !conhecidos.has(CAM_ATR[id]));
+    if (soltas.length) grupos.push({ nome: 'Outras', ids: soltas });
+    el('tecnicas').innerHTML = grupos.filter((g) => g.ids.length).map((g) =>
+      `<section class="camgrupo"><h3>${g.nome}</h3><div class="cols3">${col3(g.ids, card)}</div></section>`).join('');
   }
   function renderArtes() {
     const card = (a: any) => {

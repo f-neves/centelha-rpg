@@ -73,17 +73,19 @@ async function main() {
 
     // 3) the interactive character sheet
     await p.goto(url + '/ficha', { waitUntil: 'networkidle0', timeout: 60000 });
-    await p.waitForSelector('#tecnicas > div', { timeout: 15000 });
+    await p.waitForSelector('#tecnicas .camgrupo', { timeout: 15000 });
     // set Centelha 2 and expand the first Caminho
     await p.evaluate(() => {
       document.querySelector('.dots[data-kind="centelha"] .dot[data-d="2"]')?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       document.querySelector('#tecnicas .cam-head[data-camtog]')?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     await new Promise((r) => setTimeout(r, 300));
-    const cols = await p.evaluate(() => document.querySelectorAll('#tecnicas > div').length);
+    // As Proezas vêm agrupadas por Atributo: cada grupo é uma seção com título e
+    // três colunas próprias, então o que se checa é "todo grupo tem 3 colunas".
+    const grupos = await p.evaluate(() => [...document.querySelectorAll('#tecnicas .camgrupo')].map((s) => s.querySelectorAll(':scope > .cols3 > div').length));
     const colsArtes = await p.evaluate(() => document.querySelectorAll('#artes > div').length);
     const descs = await p.evaluate(() => document.querySelectorAll('#tecnicas .cam-body[style*="block"] .tdesc').length);
-    check(cols === 3, `Caminhos render in 3 columns (got ${cols})`);
+    check(grupos.length > 0 && grupos.every((c) => c === 3), `Proezas grouped by attribute, 3 columns each (${grupos.length} groups: ${grupos.join(',')})`);
     check(colsArtes === 3, `Artes render in 3 columns (got ${colsArtes})`);
     check(descs > 0, `expanded Caminho shows technique descriptions (got ${descs})`);
     await p.screenshot({ path: `${SHOTS}/ficha.png` });

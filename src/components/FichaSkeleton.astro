@@ -3,10 +3,41 @@
 // O comportamento vive em src/lib/ficha-engine.ts (montarFicha).
 import RoladorDados from './RoladorDados.astro';
 import FormasPop from './FormasPop.astro';
+import MolduraFicha from './MolduraFicha.astro';
 // Arte padrão das peças de equipamento: um atlas por categoria, cada peça
 // recortando o seu quadro. Gerado por scripts/gen-arte-equip.mjs.
 import '../styles/arte-equip.css';
 ---
+{/* No celular a Ficha vira um painel de abas: os vitais ficam sempre à vista, uma seção
+    por vez, ações na barra inferior. No desktop os invólucros .ftab têm display: contents
+    e NADA muda. A ficha inteira media ~11.700px (14 telas) numa coluna só.
+
+    O deck mora FORA das duas molduras, e vem antes da barra de XP no documento por
+    causa disto: no celular só uma moldura aparece por vez (a que tem a aba em uso), e
+    se o deck vivesse dentro de uma delas ele ficaria dentro do quadro em umas abas e
+    fora em outras. No desktop ele é display: none, então a posição no documento não
+    muda nada por lá. */}
+<div class="fdeck">
+  <div id="fvitais" aria-label="Derivados vitais"></div>
+  <nav class="ftab-bar" role="tablist" aria-label="Seções da ficha">
+    <button type="button" role="tab" data-ftab="atrib" aria-selected="true">Atrib</button>
+    <button type="button" role="tab" data-ftab="perfil" aria-selected="false">Perfil</button>
+    <button type="button" role="tab" data-ftab="hab" aria-selected="false">Hab</button>
+    <button type="button" role="tab" data-ftab="proezas" aria-selected="false">Proezas</button>
+    <button type="button" role="tab" data-ftab="artes" aria-selected="false">Artes</button>
+    <button type="button" role="tab" data-ftab="equip" aria-selected="false">Equip</button>
+    <button type="button" role="tab" data-ftab="mochila" aria-selected="false">Mochila</button>
+    {/* o painel de História mora na página do personagem salvo, não aqui: em /ficha
+        este botão não tem para onde levar e some sozinho (ver o init das abas). */}
+    <button type="button" role="tab" data-ftab="historia" aria-selected="false">História</button>
+    <button type="button" role="tab" data-ftab="rolar" aria-selected="false">Rolar</button>
+  </nav>
+</div>
+
+{/* ---- Primeira folha: quem o personagem é ----
+    Da barra de XP até as Artes. O corte é depois do Arcano porque daí em diante o
+    assunto muda: o que vem é o que ele carrega e o que se faz com a ficha na mesa. */}
+<MolduraFicha>
 {/* Três faixas em vez de uma fila só: os números à esquerda, os botões à direita e o
     detalhamento do gasto na linha de baixo, atravessando a barra. Antes era um flex
     plano em que o detalhamento (que cresce com o que foi comprado) empurrava os botões
@@ -29,26 +60,6 @@ import '../styles/arte-equip.css';
     <input type="file" id="f-file" accept="application/json,.json" hidden />
   </span>
   <span class="breakdown" id="xpBreak"></span>
-</div>
-
-{/* No celular a Ficha vira um painel de abas: os vitais ficam sempre à vista, uma seção
-    por vez, ações na barra inferior. No desktop os invólucros .ftab têm display: contents
-    e NADA muda. A ficha inteira media ~11.700px (14 telas) numa coluna só. */}
-<div class="fdeck">
-  <div id="fvitais" aria-label="Derivados vitais"></div>
-  <nav class="ftab-bar" role="tablist" aria-label="Seções da ficha">
-    <button type="button" role="tab" data-ftab="atrib" aria-selected="true">Atrib</button>
-    <button type="button" role="tab" data-ftab="perfil" aria-selected="false">Perfil</button>
-    <button type="button" role="tab" data-ftab="hab" aria-selected="false">Hab</button>
-    <button type="button" role="tab" data-ftab="proezas" aria-selected="false">Proezas</button>
-    <button type="button" role="tab" data-ftab="artes" aria-selected="false">Artes</button>
-    <button type="button" role="tab" data-ftab="equip" aria-selected="false">Equip</button>
-    <button type="button" role="tab" data-ftab="mochila" aria-selected="false">Mochila</button>
-    {/* o painel de História mora na página do personagem salvo, não aqui: em /ficha
-        este botão não tem para onde levar e some sozinho (ver o init das abas). */}
-    <button type="button" role="tab" data-ftab="historia" aria-selected="false">História</button>
-    <button type="button" role="tab" data-ftab="rolar" aria-selected="false">Rolar</button>
-  </nav>
 </div>
 
 <div class="ftab" data-ftab="perfil">
@@ -91,7 +102,7 @@ import '../styles/arte-equip.css';
 <h2 class="barh barh-tog" data-sec="tecnicas"><span class="sec-caret">▾</span> Proezas &amp; Técnicas <small>(custo em XP)</small></h2>
 <div class="sec-body" id="sec-tecnicas">
   <div class="cam-tools"><button class="btn" id="cam-all">Expandir todos</button></div>
-  <div class="cols3" id="tecnicas"></div>
+  <div id="tecnicas"></div>
 </div>
 </div>
 
@@ -103,7 +114,14 @@ import '../styles/arte-equip.css';
 <div class="sec-body" id="sec-artes"><div class="cols3" id="artes"></div>
       <div class="ef-esp" id="efeitos-esp"></div></div>
 </div>
+</MolduraFicha>
 
+{/* ---- Segunda folha: o que ele carrega e o que se faz com ele ----
+    Equipamento, Mochila, Força & Arremesso e Rolar. O <slot /> no fim é por onde
+    /personagem acrescenta Descrição/História/Background/Anotações e Arquivos, que só
+    existem na ficha ligada à conta: assim as duas entram nesta folha em vez de virarem
+    blocos soltos depois dela. */}
+<MolduraFicha>
 <div class="ftab" data-ftab="equip">
 <h2 class="barh">Equipamento <small>(não custa XP · ajusta ataque, Defesa e Absorção)</small></h2>
 <p class="equip-nota muted">Cada arma traz <strong>guardada · mão hábil · mão inábil</strong>, e é isso que o Acerto e o Dano leem. Empunhar na hábil desequipa a arma que estava lá; uma arma de <strong>duas mãos</strong> desequipa as duas. Uma arma <strong>versátil</strong> sozinha é segura com as duas mãos e soma a <strong>Força em dobro</strong>; com escudo ou outra arma na outra mão, soma simples. Nas armaduras, o botão <strong>Vestir</strong> é o que faz a peça contar, e várias podem estar vestidas ao mesmo tempo. O <strong>✎ ajustar</strong> abre os números para quando o item for melhor ou pior que o do catálogo, e o quadro de imagem aceita uma foto sua (é preciso estar logado).</p>
@@ -152,7 +170,11 @@ import '../styles/arte-equip.css';
 <h2 class="barh">Rolar</h2>
 <RoladorDados compact />
 </div>
+<slot />
+</MolduraFicha>
 
+{/* Daqui para baixo é sobreposição: barra fixa do celular, ampliação de arte e o
+    popover de formas. Nenhuma pertence a uma folha. */}
 <div class="fx-bar" data-pagefind-ignore>
   <span id="fx-xp"></span>
   <button class="btn primary" id="fx-salvar" type="button" hidden>Salvar</button>
@@ -258,11 +280,15 @@ import '../styles/arte-equip.css';
     // a fita nasce no lugar certo só depois que a Cinzel carrega e os rótulos assentam
     (document as any).fonts?.ready?.then(() => { moverFita(); marcarPontas(); });
 
+    // As duas folhas da ficha. No celular, a que não contém a aba em uso fica sem
+    // nada para emoldurar, e some do desenho (ver .moldura-vazia em global.css).
+    const folhas = Array.from(document.querySelectorAll<HTMLElement>('.sheet-frame'));
     const aplicar = () => {
       const mob = mq.matches;
       document.body.classList.toggle('ficha-abas', mob);
       if (!mob) document.body.classList.remove('fx-aberto');
       paineis.forEach((t) => t.classList.toggle('on', !mob || t.dataset.ftab === ativa));
+      folhas.forEach((f) => f.classList.toggle('moldura-vazia', mob && !f.querySelector('.ftab.on')));
       botoes.forEach((b) => {
         const on = b.dataset.ftab === ativa;
         b.setAttribute('aria-selected', String(on));
@@ -399,7 +425,7 @@ import '../styles/arte-equip.css';
   h2.barh.barh-tog .sec-caret { display: inline-block; width: 1em; font-size: .85em; }
   .sec-body.sec-hidden { display: none; }
   @media print { .sec-body.sec-hidden { display: block !important; } h2.barh.barh-tog .sec-caret { display: none; } }
-  .ficha-x h3, #attrs h3, #skills h3, #secondary h3, #power h3 { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong); letter-spacing: .04em; text-transform: uppercase; margin: .9rem 0 .35rem; border-bottom: 1px solid var(--rule); padding-bottom: .15rem; }
+  .ficha-x h3, #attrs h3, #skills h3, #secondary h3, #power h3, #tecnicas h3 { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong); letter-spacing: .04em; text-transform: uppercase; margin: .9rem 0 .35rem; border-bottom: 1px solid var(--rule); padding-bottom: .15rem; }
 
   /* `minmax(0, 1fr)` e não `1fr`: um `1fr` cru vale `minmax(auto, 1fr)`, e o
      `auto` é o min-content da coluna. Um grupo de atributos mede 206px de
@@ -511,6 +537,10 @@ import '../styles/arte-equip.css';
   .ef-i-par { font-size: var(--fs-micro); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ef-i-xp { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); flex: none; }
   .ef-vazio { font-size: var(--fs-micro); padding: .4rem 0; }
+  /* Um grupo de Proezas por Atributo. O primeiro encosta na barra de ferramentas,
+     por isso perde a folga de cima que separa um grupo do outro. */
+  .camgrupo { break-inside: avoid; }
+  .camgrupo:first-child h3 { margin-top: .2rem; }
   .cam { border: 1px solid var(--panel-border); border-radius: var(--r-sm); margin-bottom: .4rem; background: var(--panel); }
   .cam-head { padding: .4rem .7rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
   .cam-nm { min-width: 0; }

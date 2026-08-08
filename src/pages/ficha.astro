@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import FichaSkeleton from '../components/FichaSkeleton.astro';
-import MolduraFicha from '../components/MolduraFicha.astro';
 ---
 <Base title="Ficha de Personagem" largura="wide" descricao="Monte um personagem com XP ao vivo: atributos, habilidades, secundárias, Técnicas e Artes — tudo por bolinhas, com os derivados calculados.">
   <h1>Ficha de Personagem</h1>
-  <MolduraFicha><FichaSkeleton /></MolduraFicha>
+  {/* a moldura mora dentro do esqueleto: são duas folhas, e o corte fica depois do
+      Arcano, no meio dele */}
+  <FichaSkeleton />
 </Base>
 
 <script>
