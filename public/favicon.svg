@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Centelha"><title>Centelha</title><rect width="1024" height="1024" fill="#15171c"/><g fill="#d9b85f"><polygon points="512.00,412.00 613.04,237.00 512.00,62.00 410.96,237.00"/><polygon points="598.60,462.00 800.68,462.00 901.71,287.00 699.64,287.00"/><polygon points="598.60,562.00 699.64,737.00 901.71,737.00 800.68,562.00"/><polygon points="512.00,612.00 410.96,787.00 512.00,962.00 613.04,787.00"/><polygon points="425.40,562.00 223.32,562.00 122.29,737.00 324.36,737.00"/><polygon points="425.40,462.00 324.36,287.00 122.29,287.00 223.32,462.00"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Centelha">
+<title>Centelha</title>
+<defs><clipPath id="tile"><rect x="16" y="16" width="992" height="992" rx="196"/></clipPath></defs>
+<g clip-path="url(#tile)">
+  <rect width="1024" height="1024" fill="#15171c"/>
+  <g fill="#d9b85f"><polygon points="512.00,492.00 607.26,327.00 512.00,162.00 416.74,327.00"/><polygon points="529.32,502.00 719.85,502.00 815.11,337.00 624.58,337.00"/><polygon points="529.32,522.00 624.58,687.00 815.11,687.00 719.85,522.00"/><polygon points="512.00,532.00 416.74,697.00 512.00,862.00 607.26,697.00"/><polygon points="494.68,522.00 304.15,522.00 208.89,687.00 399.42,687.00"/><polygon points="494.68,502.00 399.42,337.00 208.89,337.00 304.15,502.00"/></g>
+</g>
+<rect x="48.0" y="48.0" width="928" height="928" rx="164.0" fill="none" stroke="#3fc9c2" stroke-width="64"/>
+</svg>

@@ -50,15 +50,23 @@ if (partes.length) crumbs.push({ label: title });
   <title>{fullTitle}</title>
   <meta name="description" content={descricao} />
   {/* Duas marcas de propósito, cada uma no tamanho em que funciona. Na ABA vai a
-      faísca sozinha, sangrando no quadro: o d6 com as cinco pintas empastava a
-      16px, que é onde a aba de fato renderiza, e até a versão emoldurada perdia
-      espaço com a moldura. O .ico é a reserva (navegador antigo, atalho do
-      Windows, leitor que só entende ico), rasterizado do mesmo SVG em 16, 32 e
-      48 para os dois não divergirem; quem entende SVG pega o SVG. Como o site
-      mora num subcaminho, o /favicon.ico automático da raiz não existe, daí o
-      link explícito. */}
-  <link rel="icon" href={url('favicon.ico')} sizes="32x32" />
+      faísca emoldurada (favicon_kit_centelha): o d6 com as cinco pintas empastava
+      a 16px, que é onde a aba de fato renderiza.
+
+      Quatro declarações porque cada navegador escolhe por um critério: quem
+      entende SVG pega o SVG (escala e pesa 924B), quem não entende cai nos PNGs
+      de 16 e 32, e o .ico cobre o resto (navegador antigo, atalho do Windows,
+      leitor que só fala ico) com rasters próprios de 16, 32 e 48. Todos saem do
+      mesmo desenho, então não divergem.
+
+      Os caminhos passam pelo url() e não são absolutos como no kit: o site mora
+      em /centelha-rpg/, então /favicon.ico apontaria para a raiz do domínio, que
+      não existe. Pela mesma razão o .ico precisa de link explícito, já que o
+      pedido automático do navegador vai na raiz. */}
+  <link rel="icon" href={url('favicon.ico')} sizes="any" />
   <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+  <link rel="icon" href={url('favicon-32.png')} type="image/png" sizes="32x32" />
+  <link rel="icon" href={url('favicon-16.png')} type="image/png" sizes="16x16" />
   <link rel="manifest" href={url('manifest.webmanifest')} />
   {/* No APP (tela de início do iOS, como no Android pelo manifest) vai o d6
       completo: ali ele aparece grande e o detalhe rende. */}
