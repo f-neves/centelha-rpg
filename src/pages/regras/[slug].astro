@@ -1,8 +1,16 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import OrnCentelha from '../../components/OrnCentelha.astro';
+import OrnCentelha, { type OrnV } from '../../components/OrnCentelha.astro';
 import { url } from '../../lib/site';
+
+/* Este template serve todos os capítulos, então a variante do ornamento de
+   abertura vem por slug. Capítulo que não estiver aqui fica no v1. */
+const ORN: Record<string, OrnV> = {
+  'coracao-do-sistema': 6,
+  'atributos-e-pericias': 7,
+  'vida-ferimentos-cura': 8,
+};
 
 export async function getStaticPaths() {
   const caps = (await getCollection('chapters')).sort((a, b) => a.data.ordem - b.data.ordem);
@@ -21,11 +29,7 @@ const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regr
     Capítulo {entry.data.numeral}
   </p>
   <h1>{entry.data.titulo}</h1>
-  {/* Este template serve todos os capítulos, daí a variante vir por slug: Coração
-      do Sistema está testando a roseta de pontas finas, o resto segue no padrão. */}
-  <p class="tag-orn" style="text-align:left">
-    <OrnCentelha v={entry.id === 'coracao-do-sistema' ? 6 : 1} />
-  </p>
+  <p class="tag-orn" style="text-align:left"><OrnCentelha v={ORN[entry.id] ?? 1} /></p>
   <Content />
 
   <nav class="cap-nav" aria-label="Navegação entre capítulos">

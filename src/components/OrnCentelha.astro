@@ -2,21 +2,27 @@
 /* Ornamento da Centelha: seis losangos em roseta, o ícone do sistema.
    Substitui o antigo glifo ❖ (U+2756).
 
-   Cinco variantes, que mudam só o vão entre os losangos (o miolo aperta ou abre).
-   Todas dividem a MESMA caixa externa (122,29→901,71 por 62→962), então a
-   calibragem de tamanho vale igual para todas; o que muda é a mancha. Da mais
-   cheia para a mais vazada:
+   Oito variantes em duas séries. TODAS dividem a mesma caixa externa
+   (122,29→901,71 por 62→962), então a calibragem de tamanho lá embaixo vale
+   igual para todas; o que muda de uma para a outra é só a mancha.
+
+   Série cheia · seis losangos, o vão do miolo abrindo passo a passo:
      v1 · losangos se tocando, preenche 45,7% da caixa
      v3 · vão estreito,        preenche 41,5%
      v2 · vão médio,           preenche 37,6%
      v4 · vão largo,           preenche 33,8%
-     v5 · vão máximo,          preenche 30,2% (a mais leve dessa série)
+     v5 · vão máximo,          preenche 30,2%
 
-   A v6 sai dessa série: não é um passo de vão, é outra geometria. O par vertical
-   vira um losango estreito e os quatro braços viram paralelogramos inclinados,
-   puxando o desenho para uma estrela de pontas finas. Preenche 20,3% da caixa,
-   bem menos que qualquer uma das cinco, então no mesmo tamanho ela lê bem mais
-   leve ao lado das outras.
+   Série de pontas finas ("curta60") · outra geometria: o par vertical vira um
+   losango estreito e os quatro braços viram paralelogramos inclinados, puxando
+   o desenho de roseta para estrela. O vão também abre passo a passo:
+     v8 · vão estreito, preenche 27,4% da caixa
+     v7 · vão médio,    preenche 24,9%
+     v6 · vão largo,    preenche 20,3% (a mais leve de todas)
+
+   Vale saber que as duas séries não se encontram: a mais cheia das estrelas
+   (27,4%) ainda é mais leve que a mais vazada das rosetas (30,2%), então
+   misturar as duas numa mesma linha sempre vai render contraste de peso.
 
    Calibragem de tamanho: medido no navegador, a 100px de fonte o ❖ marca uma
    caixa de tinta de 74×73px, indo de −2px (abaixo da linha de base) a +71px. O
@@ -27,7 +33,8 @@
    rente ao desenho para que essas medidas sejam de tinta mesmo, sem margem morta.
 
    Herda currentColor, então segue a cor de quem o contém (em .tag-orn, o --gold). */
-interface Props { v?: 1 | 2 | 3 | 4 | 5 | 6; class?: string; alt?: string }
+export type OrnV = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+interface Props { v?: OrnV; class?: string; alt?: string }
 const { v = 1, class: cls, alt } = Astro.props;
 
 const VARIANTES: Record<number, string[]> = {
@@ -78,6 +85,22 @@ const VARIANTES: Record<number, string[]> = {
     '512.00,592.00 447.91,777.00 512.00,962.00 576.09,777.00',
     '442.72,552.00 250.46,589.00 122.29,737.00 314.55,700.00',
     '442.72,472.00 314.55,324.00 122.29,287.00 250.46,435.00',
+  ],
+  7: [
+    '512.00,472.00 583.01,267.00 512.00,62.00 440.99,267.00',
+    '546.64,492.00 759.68,451.00 901.71,287.00 688.67,328.00',
+    '546.64,532.00 688.67,696.00 901.71,737.00 759.68,573.00',
+    '512.00,552.00 440.99,757.00 512.00,962.00 583.01,757.00',
+    '477.36,532.00 264.32,573.00 122.29,737.00 335.33,696.00',
+    '477.36,492.00 335.33,328.00 122.29,287.00 264.32,451.00',
+  ],
+  8: [
+    '512.00,492.00 586.48,277.00 512.00,62.00 437.52,277.00',
+    '529.32,502.00 752.76,459.00 901.71,287.00 678.28,330.00',
+    '529.32,522.00 678.28,694.00 901.71,737.00 752.76,565.00',
+    '512.00,532.00 437.52,747.00 512.00,962.00 586.48,747.00',
+    '494.68,522.00 271.24,565.00 122.29,737.00 345.72,694.00',
+    '494.68,502.00 345.72,330.00 122.29,287.00 271.24,459.00',
   ],
 };
 const pontos = VARIANTES[v] ?? VARIANTES[1];
