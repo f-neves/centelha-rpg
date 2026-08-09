@@ -114,7 +114,8 @@
     <div class="pgrp">
       <b>Modelo de distância</b>
       <div class="radios">
-        <label><input type="radio" name="modelo" value="ln" checked>logarítmico (atual)</label>
+        <label><input type="radio" name="modelo" value="fisico" checked>físico</label>
+        <label><input type="radio" name="modelo" value="ln">logarítmico (atual)</label>
         <label><input type="radio" name="modelo" value="dobra">queda por dobra</label>
       </div>
       <div class="fld" data-only="dobra"><label for="q">sobra a cada dobra de peso</label>
@@ -123,14 +124,26 @@
       <div class="fld" data-only="dobra"><label for="pexp">dureza da parede em P</label>
         <input type="range" id="pexp" min="0.2" max="3" step="0.1" value="1">
         <span class="val" id="pexp_v">1,0</span></div>
+      <div class="fld" data-only="fisico"><label for="m0">massa efetiva do braço (kg)</label>
+        <input type="range" id="m0" min="0.2" max="3" step="0.05" value="1">
+        <span class="val" id="m0_v">1,00</span></div>
+      <div class="fld" data-only="fisico"><label for="fexp">dureza da parede em P</label>
+        <input type="range" id="fexp" min="0.5" max="4" step="0.1" value="2">
+        <span class="val" id="fexp_v">2,0</span></div>
+      <div class="warn" data-only="fisico">alcance = R₀ · m₀/(peso + m₀) · (1 − peso/P)^n. O termo do meio é técnica, o último é força.</div>
     </div>
 
     <div class="pgrp">
       <b>Base do arremesso (1 kg, parado)</b>
-      <div class="radios">
+      <div class="radios" data-only="tabelado">
         <label><input type="radio" name="basemodo" value="tabela" checked>tabela atual</label>
-        <label><input type="radio" name="basemodo" value="anc">ancorada no dardo</label>
+        <label><input type="radio" name="basemodo" value="anc">ancorada</label>
       </div>
+      <div class="warn" data-only="fisico">No modelo físico a base sai de R₀, não da tabela.</div>
+      <div class="fld" data-only="fisico"><label for="r0">R₀ no FAA 24 (m)</label>
+        <input type="number" id="r0" min="20" max="400" step="1" value="136"></div>
+      <div class="fld" data-only="fisico"><label for="r0exp">expoente do FAA</label>
+        <input type="number" id="r0exp" min="0.2" max="2.5" step="0.01" value="0.70"></div>
       <div class="fld" data-only="anc"><label for="banc">metros no FAA 22</label>
         <input type="number" id="banc" min="5" max="120" step="0.5" value="37.5"></div>
       <div class="fld" data-only="anc"><label for="bexp">expoente do FAA</label>
@@ -161,8 +174,9 @@ const BASE_TBL = {2:4,3:5,4:6,5:8,6:10,7:12,8:14,9:16,10:19,11:22,12:25,13:28,14
                   15:36,16:40,17:44,18:48,19:52,20:56,21:60,22:64,23:68,24:72};
 const P_HOJE = {2:15,3:20,4:27,5:35,6:45,7:55,8:65,9:78,10:90,11:108,12:125,13:145,14:168,
                 15:190,16:215,17:245,18:280,19:315,20:355,21:395,22:440,23:480,24:525};
-const M = { kgFAH:22, modelo:'ln', baseModo:'tabela', banc:37.5, bexp:0.828,
-            q:0.70, pexp:1, vexp:1.5, corrida:0.333, giro:0.167, escala:true };
+const M = { kgFAH:22, modelo:'fisico', baseModo:'tabela', banc:37.5, bexp:0.828,
+            q:0.70, pexp:1, m0:1, fexp:2, r0:136, r0exp:0.70,
+            vexp:1.5, corrida:0.333, giro:0.167, escala:true };
 
 const FICHAS = [
   { id:'A', nome:'Homem comum',  cor:'var(--s1)', forca:2, atletismo:1, arremesso:0, halterofilismo:0 },
@@ -177,9 +191,15 @@ const pmax = (f) => M.kgFAH * fah(f);
 const base = (f) => M.baseModo === 'tabela' ? BASE_TBL[faa(f)]
                                             : M.banc * Math.pow(faa(f)/22, M.bexp);
 
+const R0 = (f) => M.r0 * Math.pow(faa(f)/24, M.r0exp);
+
 function dist(w, f){
   const b = base(f), P = pmax(f);
   if (w <= 0) return 0;
+  if (M.modelo === 'fisico'){
+    if (w >= P) return 0;
+    return R0(f) * (M.m0/(w + M.m0)) * Math.pow(1 - w/P, M.fexp);
+  }
   if (M.modelo === 'ln'){
     if (w < 1) return b * (3*w*w - 2*w*w*w);
     if (w >= P) return 0;
@@ -231,7 +251,7 @@ const xB=ml, xR=W-mr, yT=mt, yB=H-mb, pw=xR-xB, ph=yB-yT;
 const WMIN = 0.05;
 
 function pesosTabela(P){
-  const l = [0.1, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000].filter((w) => w < P);
+  const l = [0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000].filter((w) => w < P);
   l.push(Math.round(P));
   return l;
 }
@@ -244,7 +264,8 @@ function pintaFicha(f, yMaxComum, pMaxComum){
   document.getElementById('d'+f.id).innerHTML =
       `FAH <b>${FAH}</b> · peso máximo <b>${kg(P)}</b> `
     + `<span class="old">(tabela de hoje: ${P_HOJE[FAH]} kg)</span><br>`
-    + `FAA <b>${FAA}</b> · base do arremesso <b>${n1(base(f))} m</b> para 1 kg, parado`
+    + `FAA <b>${FAA}</b> · 1 kg parado vai a <b>${n1(dist(1, f))} m</b>`
+    + (M.modelo === 'fisico' ? ` <span class="old">(braço solta a ${n1(Math.sqrt(R0(f)*9.81))} m/s)</span>` : '')
     + `<div class="tiers">${bandas.map((b) =>
         `<div class="tier"><b>${b.nome}</b><em>até ${kg(b.ate)}</em><em>corre a ${pc(vel(b.ate, f))}</em></div>`).join('')}</div>`;
 
@@ -326,7 +347,7 @@ function pintaFicha(f, yMaxComum, pMaxComum){
 
 function pinta(){
   const Ps  = FICHAS.map(pmax);
-  const pico = (f) => Math.max(...pesosTabela(pmax(f)).map((w) => dCorr(w, f)), dCorr(1, f));
+  const pico = (f) => Math.max(...pesosTabela(pmax(f)).map((w) => dCorr(w, f)), dCorr(WMIN, f), dCorr(1, f));
   const yCada = FICHAS.map(pico);
   const yCom  = teto(Math.max(...yCada));
   const pCom  = Math.max(...Ps);
@@ -343,7 +364,10 @@ function pinta(){
     + `A tabela de hoje diz 35 kg e 525 kg.`;
   document.querySelectorAll('[data-only]').forEach((el) => {
     const alvo = el.dataset.only;
-    el.style.display = (alvo === 'dobra' && M.modelo === 'dobra') || (alvo === 'anc' && M.baseModo === 'anc') ? '' : 'none';
+    const on = alvo === 'anc'      ? (M.baseModo === 'anc' && M.modelo !== 'fisico')
+             : alvo === 'tabelado' ? M.modelo !== 'fisico'
+             : alvo === M.modelo;
+    el.style.display = on ? '' : 'none';
   });
 }
 
@@ -365,9 +389,13 @@ const liga = (id, chave, fmt) => {
 liga('kgfah','kgFAH', (v) => v);
 liga('q','q',        (v) => Math.round(v*100)+'%');
 liga('pexp','pexp',  (v) => v.toFixed(1).replace('.',','));
+liga('m0','m0',      (v) => v.toFixed(2).replace('.',','));
+liga('fexp','fexp',  (v) => v.toFixed(1).replace('.',','));
 liga('vexp','vexp',  (v) => v.toFixed(2).replace('.',','));
 liga('corr','corrida',(v) => '+'+Math.round(v*100)+'%');
 liga('giro','giro',  (v) => '+'+Math.round(v*100)+'%');
+document.getElementById('r0').addEventListener('input', (e) => { M.r0 = +e.target.value; pinta(); });
+document.getElementById('r0exp').addEventListener('input', (e) => { M.r0exp = +e.target.value; pinta(); });
 document.getElementById('banc').addEventListener('input', (e) => { M.banc = +e.target.value; pinta(); });
 document.getElementById('bexp').addEventListener('input', (e) => { M.bexp = +e.target.value; pinta(); });
 document.getElementById('escala').addEventListener('change', (e) => { M.escala = e.target.checked; pinta(); });
