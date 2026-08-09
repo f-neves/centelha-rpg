@@ -51,6 +51,29 @@
   .chk input{accent-color:var(--s1)}
   .warn{font-size:.74rem;color:var(--muted);line-height:1.45}
 
+  /* ---- painel de comparação das fórmulas ---- */
+  .cmp{margin-bottom:18px}
+  .cmp h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+          font-weight:650;margin:0 0 8px}
+  .cmp .cols{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px}
+  @media (max-width:1050px){ .cmp .cols{grid-template-columns:1fr} }
+  .cmp table{margin:0}
+  .cmp td, .cmp th{padding:4px 8px}
+  .cmp tr.sel td{background:var(--sunk);font-weight:600}
+  .cmp tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--s1)}
+  .bom{color:var(--s3);font-weight:600}
+  .ruim{color:var(--s2);font-weight:600}
+  .escada{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+  .escada b{display:inline-flex;flex-direction:column;align-items:center;gap:1px;
+            background:var(--sunk);border-radius:5px;padding:3px 7px;font-size:.72rem;
+            font-weight:600;font-variant-numeric:tabular-nums;min-width:44px}
+  .escada b i{font-style:normal;font-weight:400;font-size:.63rem;color:var(--muted)}
+  .escada b.marco{background:var(--s1);color:#fff}
+  .escada b.marco i{color:rgba(255,255,255,.8)}
+  .mtz td.h{color:var(--muted);font-weight:600;font-variant-numeric:normal}
+  .mtz td{padding:3px 6px;font-size:.74rem}
+  .nota{font-size:.74rem;color:var(--muted);line-height:1.5;margin-top:10px}
+
   /* ---- as duas fichas ---- */
   .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:1050px){ .duo{grid-template-columns:1fr} }
@@ -181,6 +204,8 @@
     </div>
   </div>
 
+  <div class="card cmp" id="cmp"></div>
+
   <div class="duo" id="duo"></div>
 </div>
 
@@ -202,29 +227,39 @@ const FICHAS = [
 
 // ---------------------------------------------------------------- o modelo
 const cl = (v) => Math.max(2, Math.min(24, v));
-// FAH mínimo de cada fórmula, para saber onde a escala começa
-const fahMin = () => M.fahf === '3f' ? 3 : 2;
-const fah = (f) => {
-  const v = M.fahf === '3f'   ? 3*f.forca + f.halterofilismo
-          : M.fahf === '2f'   ? 2*f.forca + f.halterofilismo
-          :                     2*f.forca + f.atletismo + f.halterofilismo;
-  return Math.max(fahMin(), Math.min(24, v));
+
+// As três fórmulas de FAH. `pf` é o peso da Força; `atl` diz se o Atletismo entra.
+const FAHDEF = {
+  '3f':    { nome: '3×Força + Halt',       pf: 3, atl: false },
+  '2f':    { nome: '2×Força + Halt',       pf: 2, atl: false },
+  'atual': { nome: '2×Força + Atl + Halt', pf: 2, atl: true  },
 };
-const faa = (f) => cl(2*f.forca + f.atletismo + f.arremesso);
-// O homem comum é Força 2, Halterofilismo 0 (Atletismo 1 na fórmula antiga)
-const fahComum = () => M.fahf === '3f' ? 6 : M.fahf === '2f' ? 4 : 5;
-// Piso = Força 1 sem perícia; topo = tudo no 6. As duas pontas ficam presas,
-// então trocar a fórmula muda só como a escada entre elas é dividida.
-const fahTopo = () => M.fahf === 'atual' ? 24 : M.fahf === '3f' ? 24 : 18;
-const passoP = () => Math.pow(M.ptopo/M.ppiso, 1/(fahTopo() - fahMin()));
-// Lei de potência: P = piso × (FAH/FAHmin)^b, com b saindo das duas pontas.
-// O meio (homem comum) NÃO é ajustado, ele cai onde cai, e é justamente isso
-// que revela se a fórmula do FAH é coerente com as três âncoras.
-const expP = () => Math.log(M.ptopo/M.ppiso) / Math.log(fahTopo()/fahMin());
-const pPorFah = (fh) => M.pforma === 'lin' ? M.kgFAH * fh
-  : M.pforma === 'geo' ? M.ppiso * Math.pow(passoP(), fh - fahMin())
-  : M.ppiso * Math.pow(fh/fahMin(), expP());
-const pmax = (f) => pPorFah(fah(f));
+// Piso = Força 1 sem perícia nenhuma; topo = tudo no 6; comum = Força 2 (Atletismo 1
+// quando a fórmula o usa). As duas pontas ficam presas, então trocar a fórmula muda
+// só como a escada entre elas é repartida.
+const dMin   = (k) => FAHDEF[k].pf;
+const dTopo  = (k) => FAHDEF[k].pf * 6 + 6 + (FAHDEF[k].atl ? 6 : 0);
+const dComum = (k) => FAHDEF[k].pf * 2 + (FAHDEF[k].atl ? 1 : 0);
+const dFah   = (k, F, H, A) => Math.max(dMin(k), Math.min(dTopo(k),
+                 FAHDEF[k].pf * F + H + (FAHDEF[k].atl ? A : 0)));
+// Lei de potência: P = piso × (FAH/FAHmin)^b, com b saindo SÓ das duas pontas.
+// O meio não é ajustado, cai onde cai, e é isso que revela se a fórmula do FAH
+// é coerente com as três âncoras ao mesmo tempo.
+const dExp = (k) => Math.log(M.ptopo/M.ppiso) / Math.log(dTopo(k)/dMin(k));
+const dP = (k, fh) => {
+  if (M.pforma === 'lin') return M.kgFAH * fh;
+  const lo = dMin(k), hi = dTopo(k);
+  if (M.pforma === 'geo') return M.ppiso * Math.pow(M.ptopo/M.ppiso, (fh-lo)/(hi-lo));
+  return M.ppiso * Math.pow(fh/lo, dExp(k));
+};
+
+const fahMin   = () => dMin(M.fahf);
+const fahTopo  = () => dTopo(M.fahf);
+const fahComum = () => dComum(M.fahf);
+const fah      = (f) => dFah(M.fahf, f.forca, f.halterofilismo, f.atletismo);
+const pPorFah  = (fh) => dP(M.fahf, fh);
+const faa      = (f) => cl(2*f.forca + f.atletismo + f.arremesso);
+const pmax     = (f) => pPorFah(fah(f));
 const base = (f) => M.baseModo === 'tabela' ? BASE_TBL[faa(f)]
                                             : M.banc * Math.pow(faa(f)/22, M.bexp);
 
@@ -382,6 +417,76 @@ function pintaFicha(f, yMaxComum, pMaxComum){
   }).join('');
 }
 
+// ---------------------------------------------------------------- comparação
+const arred = (v) => v < 50 ? Math.round(v) : v < 100 ? Math.round(v/2)*2
+  : v < 200 ? Math.round(v/5)*5 : v < 500 ? Math.round(v/10)*10 : Math.round(v/25)*25;
+const vg = (v, d = 2) => v.toFixed(d).replace('.', ',');
+
+function pintaCmp(){
+  const chaves = ['3f', '2f', 'atual'];
+  const linhas = chaves.map((k) => {
+    const lo = dMin(k), hi = dTopo(k), C = dComum(k), deg = hi - lo;
+    const comum = dP(k, C), err = comum/M.palvo - 1;
+    // se a tabela fosse quebrada em dois trechos para bater nas TRÊS âncoras,
+    // este é o tamanho do bico entre os dois regimes
+    const kb = Math.pow(M.palvo/M.ppiso, 1/(C - lo));
+    const ka = Math.pow(M.ptopo/M.palvo, 1/(hi - C));
+    const cls = Math.abs(err) <= 0.05 ? 'bom' : Math.abs(err) <= 0.10 ? '' : 'ruim';
+    const dHalt = dP(k, C+1)/comum - 1, dForca = dP(k, C + FAHDEF[k].pf)/comum - 1;
+    return `<tr class="${k === M.fahf ? 'sel' : ''}">
+      <td>${FAHDEF[k].nome}</td>
+      <td>${lo} a ${hi}</td><td>${deg}</td>
+      <td>${Math.round(6/deg*100)}%</td>
+      <td class="${cls}">${vg(comum, 1)} kg</td>
+      <td class="${cls}">${err >= 0 ? '+' : ''}${vg(err*100, 1)}%</td>
+      <td>${vg(kb/ka)}×</td>
+      <td>+${Math.round(dHalt*100)}%</td><td>+${Math.round(dForca*100)}%</td></tr>`;
+  }).join('');
+
+  const k = M.fahf, lo = dMin(k), hi = dTopo(k), C = dComum(k);
+  const escada = Array.from({length: hi - lo + 1}, (_, i) => lo + i).map((fh) => {
+    const marco = fh === lo || fh === C || fh === hi;
+    return `<b class="${marco ? 'marco' : ''}">${arred(dP(k, fh))}<i>FAH ${fh}</i></b>`;
+  }).join('');
+
+  const mtz = `<table class="mtz"><tbody>`
+    + `<tr><td class="h"></td>${[0,1,2,3,4,5,6].map((h) => `<td class="h">H ${h}</td>`).join('')}</tr>`
+    + [1,2,3,4,5,6].map((F) => `<tr><td class="h">Força ${F}</td>`
+        + [0,1,2,3,4,5,6].map((H) => {
+            const v = arred(dP(k, dFah(k, F, H, 0)));
+            const dest = (F === 1 && H === 0) || (F === 2 && H === 0) || (F === 6 && H === 6);
+            return `<td${dest ? ' style="font-weight:700"' : ''}>${v}</td>`;
+          }).join('') + `</tr>`).join('')
+    + `</tbody></table>`;
+
+  document.getElementById('cmp').innerHTML = `
+    <h3>Como cada fórmula reparte a escada entre as âncoras</h3>
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th>fórmula</th><th>FAH</th><th>degraus</th><th>fatia do Halt</th>
+        <th>homem comum</th><th>erro vs alvo</th><th>bico se partida</th>
+        <th>+1 Halt</th><th>+1 Força</th></tr></thead>
+      <tbody>${linhas}</tbody></table></div>
+    <p class="nota">O expoente sai só do piso e do topo, então a coluna do <b>homem comum</b> é
+      resultado, não entrada: o erro dela mede se as três âncoras cabem numa curva só. A coluna
+      do <b>bico</b> é a alternativa: se você quebrar a tabela em dois trechos para bater nas três
+      na marra, é o quanto o degrau de baixo é maior que o de cima. Quanto menor, mais lisa a escada.
+      As duas últimas colunas são medidas no homem comum, onde a curva é mais íngreme.</p>
+
+    <div class="cols" style="margin-top:18px">
+      <div>
+        <h3>A escada de ${FAHDEF[k].nome}</h3>
+        <div class="escada">${escada}</div>
+      </div>
+      <div>
+        <h3>Força × Halterofilismo, em kg</h3>
+        ${mtz}
+        <p class="nota">${FAHDEF[k].atl ? 'Atletismo fixado em 0 nesta matriz. ' : ''}Em negrito as
+          três âncoras. A linha <b>Força 1</b> é o caso que separa as fórmulas: é o franzino que
+          treinou técnica, e a vida real põe ele perto de 45 kg com Halterofilismo 3.</p>
+      </div>
+    </div>`;
+}
+
 function pinta(){
   const Ps  = FICHAS.map(pmax);
   const pico = (f) => Math.max(...pesosTabela(pmax(f)).map((w) => dCorr(w, f)), dCorr(WMIN, f), dCorr(1, f));
@@ -391,6 +496,7 @@ function pinta(){
   FICHAS.forEach((f, i) => pintaFicha(f,
       M.escala ? yCom : teto(yCada[i]),
       M.escala ? pCom : pmax(f)));
+  pintaCmp();
   // pontinhos
   document.querySelectorAll('.dots').forEach((d) => {
     const f = FICHAS.find((z) => z.id === d.dataset.ficha), v = f[d.dataset.k];
@@ -404,7 +510,7 @@ function pinta(){
   document.getElementById('pnota').innerHTML =
       `Escada de <b>${deg}</b> degraus, ${Math.round(pF(fahMin()))} a ${Math.round(pF(fahTopo()))} kg. `
     + `Halterofilismo pega <b>${Math.round(6/deg*100)}%</b> deles.<br>`
-    + (M.pforma === 'pot' ? `Expoente <b>${expP().toFixed(3).replace('.',',')}</b>, achado só pelas pontas. ` : '')
+    + (M.pforma === 'pot' ? `Expoente <b>${dExp(M.fahf).toFixed(3).replace('.',',')}</b>, achado só pelas pontas. ` : '')
     + `Homem comum (Força 2, Halt 0) = FAH ${C} cai em <b${dentro(Math.abs(erroMeio), 0, 0.06)}>`
     + `${Math.round(pF(C))} kg</b> <span class="old">(alvo ${M.palvo}, erro ${(erroMeio*100).toFixed(1).replace('.',',')}%)</span><br>`
     + `+1 Halterofilismo vale <b>+${Math.round(passo1(C)*100)}%</b> e +1 Força vale `
