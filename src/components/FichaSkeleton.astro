@@ -613,7 +613,16 @@ import '../styles/arte-equip.css';
     .fa-row .fa-chartwrap { flex: 0 0 calc(63% - .6rem); max-width: calc(63% - .6rem); min-width: 0; }
     .fa-row .fa-tbl { flex: 0 0 calc(37% - .6rem); width: calc(37% - .6rem); min-width: 0; }
   }
-  .fa-chart { display: block; width: 100%; height: auto; }
+  /* No celular não há hover: estes botões dizem qual curva o toque lê e desenham ela por
+     cima das outras. No desktop ficam escondidos, porque o hover já lê as três de uma vez. */
+  .fa-curvas { display: none; gap: .3rem; flex-wrap: wrap; margin: 0 0 .15rem; }
+  @media (max-width: 900px) { .fa-curvas { display: flex; } }
+  .fa-curvas button { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .04em;
+    color: var(--ink-soft); background: transparent; border: 1px solid var(--rule);
+    border-radius: var(--r-sm); padding: .25rem .7rem; cursor: pointer; }
+  .fa-curvas button[aria-pressed="true"] { background: var(--accent-strong); color: var(--on-accent-strong); border-color: var(--accent-strong); }
+  /* pan-y: o arrasto na horizontal lê o gráfico, o na vertical continua rolando a página */
+  .fa-chart { display: block; width: 100%; height: auto; touch-action: pan-y; }
   .fa-chart .axis { stroke: var(--rule); stroke-width: 1; }
   .fa-chart .grid { stroke: var(--rule); stroke-width: .5; opacity: .45; }
   .fa-chart .curve { fill: none; stroke: var(--accent); stroke-width: 2; }
@@ -621,6 +630,9 @@ import '../styles/arte-equip.css';
      curva com um acréscimo, e cores diferentes sugeririam grandezas diferentes */
   .fa-chart .curve.giro { stroke-width: 1.25; stroke-dasharray: 5 3; opacity: .8; }
   .fa-chart .curve.corrida { stroke-width: 1.25; stroke-dasharray: 1.5 2.5; opacity: .65; }
+  /* a curva escolhida nos botões engrossa junto com o traço da legenda */
+  .fa-chart[data-sel="giro"] .curve.giro,
+  .fa-chart[data-sel="corrida"] .curve.corrida { stroke-width: 2; opacity: 1; }
   .fa-chart .fa-legln { stroke-linecap: round; }
   .fa-chart .fa-leglbl { fill: var(--ink-soft); font-size: 9px; }
   .fa-chart .area { fill: var(--accent); opacity: .1; }
@@ -632,7 +644,14 @@ import '../styles/arte-equip.css';
   .fa-chart .fa-bandlbl { fill: var(--ink-soft); font-family: 'Cinzel'; font-size: 9px; letter-spacing: .06em; }
   .fa-chart .fa-vline { stroke: var(--accent-strong); stroke-width: 1; stroke-dasharray: 3 3; opacity: .7; }
   .fa-chart .fa-dot { fill: var(--accent-strong); stroke: var(--paper, #fff); stroke-width: 1.5; }
-  .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -140%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: #fff; font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .12rem .4rem; border-radius: var(--r-sm); box-shadow: 0 1px 4px rgba(0,0,0,.3); }
+  .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -125%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: #fff; font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .18rem .45rem; border-radius: var(--r-sm); box-shadow: 0 1px 4px rgba(0,0,0,.3); text-align: center; line-height: 1.35; }
+  /* das três distâncias no balão, a curva escolhida vem sublinhada */
+  .fa-chartwrap .fa-tip .sel { text-decoration: underline; text-underline-offset: 2px; }
+  /* no celular o gráfico é baixo e o balão flutuante cobriria quase tudo: a leitura vira
+     uma faixa embaixo dele, e no gráfico ficam só a vertical e os três pontos */
+  @media (max-width: 900px) {
+    .fa-chartwrap .fa-tip { position: static; transform: none; white-space: normal; margin: .4rem 0 0; }
+  }
   /* margin: 0 anula o `table { margin: 1em 0 }` global, que desalinhava o topo da
      tabela em relação ao do gráfico ao lado */
   .fa-tbl { border-collapse: collapse; font-size: var(--fs-rotulo); margin: 0; }

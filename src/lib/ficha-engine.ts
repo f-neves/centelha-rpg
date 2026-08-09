@@ -1410,6 +1410,13 @@ export function montarFicha(opts: FichaOpts) {
     // máximo, sem degrau nenhum no caminho.
     const dGiro = (w: number) => dist(w) * (1 + vel(w) / 6);
     const dCorrida = (w: number) => dist(w) * (1 + vel(w) / 3);
+    // as três curvas em um lugar só: desenho, legenda, pontos do cursor e balão saem
+    // todos daqui, na ordem em que se leem (a de cima primeiro)
+    const defs = [
+      { k: 'corrida', cls: 'curve corrida', nome: 'Corrida', f: dCorrida },
+      { k: 'giro', cls: 'curve giro', nome: 'Giro', f: dGiro },
+      { k: 'parado', cls: 'curve', nome: 'Parado', f: dist },
+    ];
     // Teto do eixo Y: sobe até a corrida (senão a curva de cima sai do quadro) e arredonda
     // para cima até um número redondo — inteiro abaixo de 10, múltiplo de 5 abaixo de 100,
     // de 10 abaixo de 500, de 50 acima disso. Sempre para cima, nunca para o mais próximo,
@@ -1438,10 +1445,34 @@ export function montarFicha(opts: FichaOpts) {
       + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(vel(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(vel(cLeve) * 100)}%</i></span>`
       + `<span>Média <b>${kg(cMedia)}</b> <i>só anda, ${Math.round(vel(cMedia) * 100)}%</i></span><span>Máxima <b>${kg(maxKg)}</b> <i>ergue, não desloca</i></span></div>`
       + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg voa ${dmax} m, o mais longe que se alcança: abaixo disso falta massa para levar o impulso, e o peso máximo (${maxKg} kg) não sai do lugar. Correr acrescenta até <b>+1/3</b> e girar no lugar até <b>+1/6</b>, e os dois encolhem junto com a velocidade que se alcança carregando o objeto, até as três curvas virarem uma só no peso máximo.</span></div>`;
-    box.innerHTML = `<div class="fa-wrap">${head}<div class="fa-row"><div class="fa-chartwrap"></div>${table}</div></div>`;
+    // No celular não existe hover: sem estes botões o toque só conseguiria ler a curva
+    // que estivesse desenhada por cima. Eles escolhem qual delas o toque lê.
+    const botoes = `<div class="fa-curvas" role="group" aria-label="Curva em destaque">`
+      + defs.map((d) => `<button type="button" data-fa-curva="${d.k}" aria-pressed="false">${d.nome}</button>`).join('') + `</div>`;
+    box.innerHTML = `<div class="fa-wrap">${head}${botoes}<div class="fa-row"><div class="fa-chartwrap"></div>${table}</div></div>`;
     const wrap = box.querySelector('.fa-chartwrap') as any;
     const tbl = box.querySelector('.fa-tbl') as any;
     if (!wrap || !tbl) return;
+
+    // curva em destaque: no desktop é sempre a Corrida (o hover já lê as três de uma
+    // vez); no celular é a que os botões escolherem. Sobrevive ao redesenho.
+    let sel: string = (box as any)._faSel || 'corrida';
+    let ultW: number | null = null;
+    let mostraW: ((w: number) => void) | null = null;
+    const aplicaSel = () => {
+      (box as any)._faSel = sel;
+      box.querySelectorAll('[data-fa-curva]').forEach((b: any) =>
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-fa-curva') === sel)));
+      const svgEl = wrap.querySelector('svg.fa-chart');
+      if (!svgEl) return;
+      svgEl.setAttribute('data-sel', sel);
+      // desenhada por último é desenhada por cima
+      const g = svgEl.querySelector('.fa-curvas-g'), node = g && g.querySelector(`[data-c="${sel}"]`);
+      if (g && node) g.appendChild(node);
+      if (ultW != null) mostraW?.(ultW);
+    };
+    box.querySelectorAll('[data-fa-curva]').forEach((b: any) =>
+      b.addEventListener('click', () => { sel = b.getAttribute('data-fa-curva'); aplicaSel(); }));
 
     let curH = 0;
     // desenha o gráfico com a altura de viewBox pedida e religa o hover
@@ -1481,37 +1512,69 @@ export function montarFicha(opts: FichaOpts) {
       // à esquerda), senão colidem com o maior número de cada eixo
       const titles = `<text class="axlbl" x="${(xB + xR) / 2}" y="${H - 4}" text-anchor="middle">Peso (kg)</text>`
         + `<text class="axlbl" transform="rotate(-90 11 ${mt + ph / 2})" x="11" y="${mt + ph / 2}" text-anchor="middle">Arremesso (m)</text>`;
-      // legenda no canto inferior esquerdo, dentro da área sombreada: com o pico colado
-      // na esquerda o alto ficou ocupado, e à direita ela bateria nos rótulos das faixas
-      const leg = [['corrida', 'Corrida'], ['giro', 'Giro'], ['', 'Parado']].map(([cls, nome], i) => {
-        const y = yB - 42 + i * 13, x = xB + 10;
-        return `<line class="curve ${cls} fa-legln" x1="${x}" y1="${y}" x2="${x + 18}" y2="${y}"/>`
-          + `<text class="fa-leglbl" x="${x + 24}" y="${y + 3.5}">${nome}</text>`;
+      // legenda no rodapé, afastada 10% da esquerda: encostada na borda ela caía em cima
+      // da subida quase vertical até 1 kg, que agora ocupa os primeiros 5% da largura
+      const leg = defs.map((d, i) => {
+        const y = yB - 42 + i * 13, x = xB + pw * 0.1;
+        return `<line class="${d.cls} fa-legln" x1="${x.toFixed(1)}" y1="${y}" x2="${(x + 18).toFixed(1)}" y2="${y}"/>`
+          + `<text class="fa-leglbl" x="${(x + 24).toFixed(1)}" y="${y + 3.5}">${d.nome}</text>`;
       }).join('');
-      wrap.innerHTML = `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distância de arremesso por peso, parado, girando e correndo">${faixas}${yticks}${xticks}<path class="area" d="${area}"/>`
-        + `<polyline class="curve corrida" points="${traco(dCorrida)}"/><polyline class="curve giro" points="${traco(dGiro)}"/><polyline class="curve" points="${seq}"/>${leg}`
-        + `<line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/><line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>${titles}<rect class="fa-capture" x="${xB}" y="${mt}" width="${pw}" height="${ph}" fill="transparent"/><g class="fa-hover" style="display:none; pointer-events:none"><line class="fa-vline" y1="${mt}" y2="${yB}"/><circle class="fa-dot" r="4"/></g></svg><div class="fa-tip" style="display:none"></div>`;
+      // a curva em destaque vai por último para ficar por cima das outras
+      const curvas = [...defs].sort((a, b) => Number(a.k === sel) - Number(b.k === sel))
+        .map((d) => `<polyline class="${d.cls}" data-c="${d.k}" points="${traco(d.f)}"/>`).join('');
+      // um ponto por curva na mesma vertical: uma passada só lê as três
+      const pontos = defs.map((d) => `<circle class="fa-dot" data-c="${d.k}" r="3"/>`).join('');
+      wrap.innerHTML = `<svg class="fa-chart" data-sel="${sel}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distância de arremesso por peso, parado, girando e correndo">${faixas}${yticks}${xticks}<path class="area" d="${area}"/>`
+        + `<g class="fa-curvas-g">${curvas}</g>${leg}`
+        + `<line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/><line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>${titles}<rect class="fa-capture" x="${xB}" y="${mt}" width="${pw}" height="${ph}" fill="transparent"/><g class="fa-hover" style="display:none; pointer-events:none"><line class="fa-vline" y1="${mt}" y2="${yB}"/>${pontos}</g></svg><div class="fa-tip" style="display:none"></div>`;
       const svgEl = wrap.querySelector('svg.fa-chart') as any;
       const tip = wrap.querySelector('.fa-tip') as any;
       const hov = wrap.querySelector('.fa-hover') as any;
       const vline = wrap.querySelector('.fa-vline') as any;
-      const dot = wrap.querySelector('.fa-dot') as any;
-      if (!svgEl || !tip || !hov || !vline || !dot) return;
-      // hover: mostra Peso × Distância sob o cursor
-      svgEl.addEventListener('mousemove', (e: MouseEvent) => {
+      if (!svgEl || !tip || !hov || !vline) return;
+      // Cursor: a vertical marca o peso, cada curva ganha o seu ponto e o balão lista as
+      // três distâncias. A curva em destaque fica com o ponto maior e ancora o balão.
+      mostraW = (w: number) => {
         const rect = svgEl.getBoundingClientRect();
-        const w = Math.max(0, Math.min(maxKg, wAtX(((e.clientX - rect.left) / rect.width) * W)));
-        const d = dist(w), cx = xposW(w), cy = ypos(dCorrida(w));
+        const cx = xposW(w);
         hov.style.display = '';
         vline.setAttribute('x1', String(cx)); vline.setAttribute('x2', String(cx));
-        dot.setAttribute('cx', String(cx)); dot.setAttribute('cy', String(cy));
-        tip.style.display = '';
+        let cySel = ypos(dCorrida(w));
+        for (const d of defs) {
+          const p = hov.querySelector(`.fa-dot[data-c="${d.k}"]`);
+          if (!p) continue;
+          const cy = ypos(d.f(w));
+          p.setAttribute('cx', cx.toFixed(1)); p.setAttribute('cy', cy.toFixed(1));
+          p.setAttribute('r', d.k === sel ? '5' : '3');
+          if (d.k === sel) cySel = cy;
+        }
         const faixa = bandas.find((b) => w <= b.ate) || bandas[bandas.length - 1];
-        tip.textContent = `${r1(w)} kg · carga ${faixa.nome} · ${r1(d)} / ${r1(dGiro(w))} / ${r1(dCorrida(w))} m`;
-        tip.style.left = (cx / W) * rect.width + 'px';
-        tip.style.top = (cy / H) * rect.height + 'px';
+        tip.innerHTML = `${r1(w)} kg · carga ${faixa.nome}<br>`
+          + defs.map((d) => `<span${d.k === sel ? ' class="sel"' : ''}>${d.nome} ${r1(d.f(w))}</span>`).join(' · ') + ' m';
+        tip.style.display = '';
+        // o balão não pode sangrar para fora do quadro nas pontas do eixo
+        const px = (cx / W) * rect.width, meia = tip.offsetWidth / 2;
+        tip.style.left = Math.max(meia, Math.min(rect.width - meia, px)) + 'px';
+        tip.style.top = (cySel / H) * rect.height + 'px';
+      };
+      const lePonteiro = (clientX: number) => {
+        const rect = svgEl.getBoundingClientRect();
+        ultW = Math.max(0, Math.min(maxKg, wAtX(((clientX - rect.left) / rect.width) * W)));
+        mostraW?.(ultW);
+      };
+      // pointer no lugar de mouse para o toque também valer; no dedo a leitura fica na
+      // tela depois de soltar, senão sumiria junto com o toque
+      svgEl.addEventListener('pointermove', (e: any) => lePonteiro(e.clientX));
+      svgEl.addEventListener('pointerdown', (e: any) => {
+        // só o dedo captura: arrastar sem soltar continua lendo mesmo saindo do quadro
+        if (e.pointerType !== 'mouse') { try { svgEl.setPointerCapture(e.pointerId); } catch {} }
+        lePonteiro(e.clientX);
       });
-      svgEl.addEventListener('mouseleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
+      svgEl.addEventListener('pointerleave', (e: any) => {
+        if (e.pointerType !== 'mouse') return;
+        ultW = null; hov.style.display = 'none'; tip.style.display = 'none';
+      });
+      if (ultW != null) mostraW(ultW);
     };
 
     // lado a lado (desktop), o gráfico fica com a altura exata da tabela: como o SVG é
@@ -1524,6 +1587,7 @@ export function montarFicha(opts: FichaOpts) {
       if (Math.abs(alvo - curH) > 2 && alvo > 120 && alvo < 900) paint(alvo);
     };
     paint(252);
+    aplicaSel();
     fit();
     // um observador só por caixa: a cada render o .fa-row é outro nó, então religa
     (box as any)._faFit = fit;
