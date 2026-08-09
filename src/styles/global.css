@@ -639,11 +639,26 @@ html:not([data-fundo]):not([data-theme='legivel']) body,
 html[data-fundo="ficha"]:not([data-theme='legivel']) body.page-ficha { background: transparent; }
 html:not([data-theme='legivel']) { background: var(--bg); }
 
-/* Aqui existia uma "superfície calma" atrás do conteúdo: o .content ganhava
-   `color-mix(in srgb, var(--bg) 88%, transparent)`, um véu que abafava o fundo
-   em 88% na área de leitura. Saiu a pedido: com o selo novo, era justamente o
-   miolo do desenho que ficava escondido. O texto agora lê direto sobre o fundo,
-   então quem regula a legibilidade é o --deco-strength em /configuracoes. */
+/* Véu de leitura: a superfície que abafa o fundo onde há texto. Dois pesos, e a
+   diferença é proposital. Na leitura comum ele é leve, para o selo e as brasas
+   continuarem aparecendo (o valor antigo, 88%, escondia justamente o miolo do
+   desenho). Na Ficha ele é pesado, porque ali a página é um formulário denso de
+   números e campos, e fundo atrás de número é ruído, não atmosfera.
+
+   Na Ficha o véu mora na FOLHA (.sheet-frame) e não no .content. Se ficasse nos
+   dois eles se multiplicariam: 72% sob 92% dariam 97,8% de opacidade atrás da
+   folha, mais abafado que qualquer um dos dois sozinho. */
+:root { --veu-pagina: 72%; --veu-ficha: 92%; }
+
+html[data-fundo="site"]:not([data-theme='legivel']) body:not(.page-ficha) .content,
+html:not([data-fundo]):not([data-theme='legivel']) body:not(.page-ficha) .content {
+  background: color-mix(in srgb, var(--bg) var(--veu-pagina), transparent);
+  border-radius: 12px; }
+
+html[data-fundo="site"]:not([data-theme='legivel']) body.page-ficha .sheet-frame,
+html:not([data-fundo]):not([data-theme='legivel']) body.page-ficha .sheet-frame,
+html[data-fundo="ficha"]:not([data-theme='legivel']) body.page-ficha .sheet-frame {
+  background: color-mix(in srgb, var(--bg) var(--veu-ficha), transparent); }
 
 /* ---- Moldura ornamentada da Ficha ---- */
 /* O respiro é uma variável porque não é só padding: a barra grudenta das abas
@@ -681,8 +696,12 @@ html:not([data-theme='legivel']) { background: var(--bg); }
 
 /* O clássico pinta a fibra de pergaminho no body, e o body sai da frente quando o
    fundo está ligado. A textura muda de lugar em vez de sumir: vai para a própria
-   superfície de leitura, que é onde ela sempre importou. */
-html[data-theme='classico'][data-fundo="site"] .content,
-html[data-theme='classico']:not([data-fundo]) .content,
-html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .content {
+   superfície de leitura, que é onde ela sempre importou. Na Ficha essa superfície
+   é a folha, e não o .content, que ali está transparente de propósito para não
+   somar véu com a folha. */
+html[data-theme='classico'][data-fundo="site"] body:not(.page-ficha) .content,
+html[data-theme='classico']:not([data-fundo]) body:not(.page-ficha) .content,
+html[data-theme='classico'][data-fundo="site"] body.page-ficha .sheet-frame,
+html[data-theme='classico']:not([data-fundo]) body.page-ficha .sheet-frame,
+html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   background-image: var(--tex); background-size: var(--tex-size); }
