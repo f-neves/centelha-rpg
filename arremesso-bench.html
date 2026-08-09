@@ -114,11 +114,10 @@
         <label><input type="radio" name="pforma" value="geo" checked>P geométrica</label>
         <label><input type="radio" name="pforma" value="lin">P linear</label>
       </div>
-      <div class="fld" data-only="geo"><label for="pk">crescimento por ponto de FAH</label>
-        <input type="range" id="pk" min="1.03" max="1.25" step="0.001" value="1.091">
-        <span class="val" id="pk_v">+9,1%</span></div>
-      <div class="fld" data-only="geo"><label for="pcomum">homem comum ergue (kg)</label>
-        <input type="number" id="pcomum" min="40" max="300" step="5" value="105"></div>
+      <div class="fld" data-only="geo"><label for="ppiso">piso · Força 1, Halt 0 (kg)</label>
+        <input type="number" id="ppiso" min="20" max="200" step="5" value="80"></div>
+      <div class="fld" data-only="geo"><label for="ptopo">topo · Força 6, Halt 6 (kg)</label>
+        <input type="number" id="ptopo" min="150" max="1500" step="10" value="500"></div>
       <div class="fld" data-only="lin"><label for="kgfah">kg por ponto de FAH</label>
         <input type="range" id="kgfah" min="4" max="40" step="1" value="22">
         <span class="val" id="kgfah_v">22</span></div>
@@ -188,7 +187,7 @@ const BASE_TBL = {2:4,3:5,4:6,5:8,6:10,7:12,8:14,9:16,10:19,11:22,12:25,13:28,14
                   15:36,16:40,17:44,18:48,19:52,20:56,21:60,22:64,23:68,24:72};
 const P_HOJE = {2:15,3:20,4:27,5:35,6:45,7:55,8:65,9:78,10:90,11:108,12:125,13:145,14:168,
                 15:190,16:215,17:245,18:280,19:315,20:355,21:395,22:440,23:480,24:525};
-const M = { kgFAH:22, fahf:'3f', pforma:'geo', pk:1.091, pcomum:105,
+const M = { kgFAH:22, fahf:'3f', pforma:'geo', ppiso:80, ptopo:500,
             modelo:'fisico', baseModo:'tabela', banc:37.5, bexp:0.828,
             q:0.70, pexp:1, m0:1, fexp:2, r0:136, r0exp:0.70,
             vexp:1.5, corrida:0.333, giro:0.167, escala:true };
@@ -211,9 +210,13 @@ const fah = (f) => {
 const faa = (f) => cl(2*f.forca + f.atletismo + f.arremesso);
 // O homem comum é Força 2, Halterofilismo 0 (Atletismo 1 na fórmula antiga)
 const fahComum = () => M.fahf === '3f' ? 6 : M.fahf === '2f' ? 4 : 5;
+// Piso = Força 1 sem perícia; topo = tudo no 6. As duas pontas ficam presas,
+// então trocar a fórmula muda só como a escada entre elas é dividida.
+const fahTopo = () => M.fahf === 'atual' ? 24 : M.fahf === '3f' ? 24 : 18;
+const passoP = () => Math.pow(M.ptopo/M.ppiso, 1/(fahTopo() - fahMin()));
 const pmax = (f) => M.pforma === 'lin'
   ? M.kgFAH * fah(f)
-  : M.pcomum * Math.pow(M.pk, fah(f) - fahComum());
+  : M.ppiso * Math.pow(passoP(), fah(f) - fahMin());
 const base = (f) => M.baseModo === 'tabela' ? BASE_TBL[faa(f)]
                                             : M.banc * Math.pow(faa(f)/22, M.bexp);
 
@@ -385,14 +388,22 @@ function pinta(){
     const f = FICHAS.find((z) => z.id === d.dataset.ficha), v = f[d.dataset.k];
     d.querySelectorAll('.dot').forEach((p) => p.classList.toggle('on', +p.dataset.d <= v));
   });
-  const pF = (fh) => M.pforma === 'lin' ? M.kgFAH*fh : M.pcomum*Math.pow(M.pk, fh - fahComum());
+  const pF = (fh) => M.pforma === 'lin' ? M.kgFAH*fh
+                   : M.ppiso*Math.pow(passoP(), fh - fahMin());
+  const deg = fahTopo() - fahMin();
+  const fmt2 = (v) => v.toFixed(2).replace('.', ',');
+  const tec = pF(fahComum()+6)/pF(fahComum());
+  const cor = pF(fah({forca:6,atletismo:0,arremesso:0,halterofilismo:0}))
+            / pF(fah({forca:1,atletismo:0,arremesso:0,halterofilismo:0}));
+  const dentro = (v, a, b) => v >= a && v <= b ? '' : ' style="color:var(--s2)"';
   document.getElementById('pnota').innerHTML =
-      `Homem comum (Força 2, Halt 0) = FAH ${fahComum()} → <b>${Math.round(pF(fahComum()))} kg</b>. `
-    + `Pico humano (FAH 24) → <b>${Math.round(pF(24))} kg</b>. Hoje a regra dá 35 e 525.<br>`
-    + `Halterofilismo 0→6 multiplica por <b>×${(pF(fahComum()+6)/pF(fahComum())).toFixed(2).replace('.',',')}</b> `
-    + `<span class="old">(medido na vida real: ×1,4 a ×2,0)</span> e a Força 1→6 por `
-    + `<b>×${(pF(fah({forca:6,atletismo:0,arremesso:0,halterofilismo:0}))/pF(fah({forca:1,atletismo:0,arremesso:0,halterofilismo:0}))).toFixed(2).replace('.',',')}</b> `
-    + `<span class="old">(real: ×4 a ×5)</span>.`;
+      `Escada de <b>${deg}</b> degraus, de ${Math.round(pF(fahMin()))} a ${Math.round(pF(fahTopo()))} kg`
+    + (M.pforma === 'geo' ? `, <b>+${((passoP()-1)*100).toFixed(1).replace('.',',')}%</b> cada` : '')
+    + `. Halterofilismo pega <b>${Math.round(6/deg*100)}%</b> do caminho.<br>`
+    + `Homem comum (Força 2, Halt 0) = FAH ${fahComum()} → <b>${Math.round(pF(fahComum()))} kg</b> `
+    + `<span class="old">(alvo 90 a 110)</span><br>`
+    + `técnica <b${dentro(tec,1.4,2.0)}>×${fmt2(tec)}</b> <span class="old">(alvo 1,4 a 2,0)</span> · `
+    + `corpo <b${dentro(cor,3.5,5.5)}>×${fmt2(cor)}</b> <span class="old">(alvo 4 a 5)</span>`;
   document.querySelectorAll('[data-only]').forEach((el) => {
     const alvo = el.dataset.only;
     const on = alvo === 'anc'      ? (M.baseModo === 'anc' && M.modelo !== 'fisico')
@@ -419,7 +430,6 @@ const liga = (id, chave, fmt) => {
   if (out) out.textContent = fmt(+el.value);
 };
 liga('kgfah','kgFAH', (v) => v);
-liga('pk','pk',      (v) => '+' + ((v-1)*100).toFixed(1).replace('.',',') + '%');
 liga('q','q',        (v) => Math.round(v*100)+'%');
 liga('pexp','pexp',  (v) => v.toFixed(1).replace('.',','));
 liga('m0','m0',      (v) => v.toFixed(2).replace('.',','));
@@ -427,7 +437,8 @@ liga('fexp','fexp',  (v) => v.toFixed(1).replace('.',','));
 liga('vexp','vexp',  (v) => v.toFixed(2).replace('.',','));
 liga('corr','corrida',(v) => '+'+Math.round(v*100)+'%');
 liga('giro','giro',  (v) => '+'+Math.round(v*100)+'%');
-document.getElementById('pcomum').addEventListener('input', (e) => { M.pcomum = +e.target.value; pinta(); });
+document.getElementById('ppiso').addEventListener('input', (e) => { M.ppiso = +e.target.value; pinta(); });
+document.getElementById('ptopo').addEventListener('input', (e) => { M.ptopo = +e.target.value; pinta(); });
 document.querySelectorAll('input[name=fahf]').forEach((r) =>
   r.addEventListener('change', () => { M.fahf = r.value; pinta(); }));
 document.querySelectorAll('input[name=pforma]').forEach((r) =>
