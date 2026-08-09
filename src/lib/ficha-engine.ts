@@ -1396,16 +1396,28 @@ export function montarFicha(opts: FichaOpts) {
     // proporção direta que derrubou a tentativa anterior de log. Leve, Média e Máxima
     // saem com a mesma largura (cada uma dobra a anterior); a Mínima é larga porque vai
     // de zero a P/8, que em log são muitas dobras.
-    // Abaixo de 1 kg a curva sobe até o ápice, e esse trecho já esteve comprimido a 5% da
-    // largura. Agora fica em log puro como o resto: é a faixa de adagas, dardos e pedras, e
-    // é preciso enxergar o quanto o arrasto cobra ali para ninguém arremessar uma moeda
-    // achando que ela vai longe.
-    const wMin = 0.05;
-    const lnW0 = Math.log(wMin), spanX = Math.log(maxKg) - lnW0;
-    const xposW = (w: number) => xB + ((Math.log(Math.max(wMin, w)) - lnW0) / spanX) * pw;
-    const wAtX = (x: number) => Math.exp(lnW0 + ((x - xB) / pw) * spanX);
-    const xt = [0.1, 0.25, 0.5, 1, 2, 5, 10, 25, 50, 100, 250, 500].filter((w) => w > wMin && w < maxKg / 1.25);
-    xt.unshift(wMin); xt.push(maxKg);
+    // Abaixo de 1 kg não há o que consultar: é só a subida até o ápice, e em log puro esse
+    // trecho comia um terço do quadro para mostrar uma curva que ninguém precisa ler ponto
+    // a ponto (a tabela ao lado dá 0,1 e 0,5 kg em número). Ele fica comprimido nos
+    // primeiros 5% da largura, ainda em log para a subida sair curva e não em bico, e os
+    // 95% restantes ficam com o que se usa de fato, de 1 kg ao peso máximo.
+    const wMin = 0.05, fSub = 0.05;
+    const lnW0 = Math.log(wMin), lnSub = -lnW0, spanX = Math.log(maxKg);
+    const xposW = (w: number) => {
+      const v = Math.max(wMin, w);
+      return v <= 1
+        ? xB + ((Math.log(v) - lnW0) / lnSub) * fSub * pw
+        : xB + (fSub + (Math.log(v) / spanX) * (1 - fSub)) * pw;
+    };
+    const wAtX = (x: number) => {
+      const f = (x - xB) / pw;
+      return f <= fSub
+        ? Math.exp(lnW0 + (f / fSub) * lnSub)
+        : Math.exp(((f - fSub) / (1 - fSub)) * spanX);
+    };
+    // sem marcas abaixo de 1 kg: naquela faixa comprimida não cabe rótulo nenhum
+    const xt = [2, 5, 10, 25, 50, 100, 250, 500, 1000].filter((w) => w < maxKg / 1.25);
+    xt.unshift(1); xt.push(maxKg);
     const tw = [0.1, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
     tw.push(maxKg);
     // Correr antes de soltar rende +1/3 e o giro no lugar metade disso, mas só quem corre
@@ -1524,10 +1536,10 @@ export function montarFicha(opts: FichaOpts) {
       // à esquerda), senão colidem com o maior número de cada eixo
       const titles = `<text class="axlbl" x="${(xB + xR) / 2}" y="${H - 4}" text-anchor="middle">Peso (kg)</text>`
         + `<text class="axlbl" transform="rotate(-90 11 ${mt + ph / 2})" x="11" y="${mt + ph / 2}" text-anchor="middle">Arremesso (m)</text>`;
-      // legenda no alto à esquerda: é o único canto que a curva não visita, porque ela
-      // sobe da base até o ápice em 1 kg, no meio do quadro, e volta a descer
+      // legenda no rodapé, afastada 10% da esquerda: encostada na borda ela cairia em cima
+      // da subida quase vertical até 1 kg, que ocupa os primeiros 5% da largura
       const leg = defs.map((d, i) => {
-        const y = mt + 12 + i * 13, x = xB + 10;
+        const y = yB - 42 + i * 13, x = xB + pw * 0.1;
         return `<line class="${d.cls} fa-legln" x1="${x.toFixed(1)}" y1="${y}" x2="${(x + 18).toFixed(1)}" y2="${y}"/>`
           + `<text class="fa-leglbl" x="${(x + 24).toFixed(1)}" y="${y + 3.5}">${d.nome}</text>`;
       }).join('');
