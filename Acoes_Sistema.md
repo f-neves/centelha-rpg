@@ -659,39 +659,101 @@ nadar a favor da corrente **−4**; corda de segurança **−2**; boia, tábua o
 
 ### 6.3 Cair
 
-**Modo** · **sem modo para cair**, que é consequência e não tentativa. O que existe é uma
-**Reflexiva** para amortecer, e ela só acontece se houver o que agarrar ou como rolar.
+**Modo** · **sem modo para cair**, que é consequência e não tentativa. O que existe são duas
+**Reflexivas**: agarrar a borda antes, e amortecer depois.
 
-**Dano** · **1d6 de Impacto a cada 2 metros completos**, teto de 20d6. A Absorção natural de
-Impacto é o Vigor, e a armadura conta pela Absorção de Impacto dela.
+#### O que a física diz, e por que isso importa aqui
 
-| Queda | Dano | O que costuma acontecer com uma pessoa comum |
-|---|:--:|---|
-| 2 a 4 m | 1d6 a 2d6 | tropeço feio, torção |
-| 6 m | 3d6 | Machucado |
-| 10 m | 5d6 | Ferido, ossos quebrados |
-| 14 m | 7d6 | Grave |
-| 20 m | 10d6 | Crítico ou Caído: a altura em que se costuma morrer |
-| 24 m ou mais | 12d6 e acima | não se sobrevive sem Centelha |
+O que machuca não é a altura, é a **velocidade na hora do impacto**, e essa velocidade não cresce
+para sempre: o ar segura. Um corpo humano em queda descontrolada satura perto de **55 m/s**, e a
+partir daí mais altura quase não acrescenta nada.
 
-O teto em 20d6 existe porque acima de uns 40 metros a queda já vem na velocidade terminal, e mais
-altura quase não acrescenta.
+| Altura | Velocidade ao chegar |
+|:--:|:--:|
+| 5 m | 10 m/s |
+| 15 m | 17 m/s |
+| 30 m | 23 m/s |
+| 50 m | 29 m/s |
+| 100 m | 38 m/s |
+| 200 m | 47 m/s |
+| 500 m ou mais | 54 a 55 m/s |
 
-**A Reflexiva de amortecer** · Destreza + Atletismo contra **Dificuldade 10**. O sucesso tira
-**2 dados** de dano; **cada Margem tira mais 2**. Uma boa jogada numa queda de 10 metros derruba
-5d6 para 1d6: você agarrou a sacada, bateu no toldo, rolou ao chegar.
+Disso sai o **teto**, e ele não é uma regra inventada: **cair de mil metros machuca praticamente o
+mesmo que cair de duzentos**. Do alto de uma torre para o alto de uma montanha a diferença é
+narrativa, não mecânica.
 
-**Agarrar a borda** · quando há uma borda ao alcance, existe uma segunda Reflexiva, **antes** da
-primeira: Destreza + Atletismo contra **Dificuldade 15**. Passando, a queda não acontece, e o
-personagem fica pendurado.
+#### O dano
 
-**Falha** · não há o que falhar: a queda já é a falha de outra coisa.
+**Valor fixo, não jogada.** O dano vai de 5 a mais de 300, e rolar cem dados não é jogo. A
+variação de "como você caiu" mora na Reflexiva de amortecer, que é onde ela é interessante.
 
-**Circunstância** · água funda **−4** (e passa a valer Nadar); neve, feno, lama ou mato **−2**;
-pedra, escada, estacas ou entulho **+2**; cair de costas ou desacordado **anula a Reflexiva**.
+<p class="formula">Dano de Impacto, e a Absorção natural de Impacto é o Vigor (+ Centelha), mais a armadura</p>
 
-**Onde mais mora** · a Absorção e os estados de ferimento estão em Vida, Ferimentos & Cura; a
-queda costuma ser consequência de Escalar ou de Equilibrar-se.
+| Altura | Dano | Altura | Dano |
+|:--:|:--:|:--:|:--:|
+| 2 m | **5** | 30 m | **63** |
+| 3 m | **7** | 40 m | **81** |
+| 5 m | **11** | 50 m | **98** |
+| 7 m | **16** | 75 m | **137** |
+| 10 m | **22** | 100 m | **169** |
+| 12 m | **27** | 150 m | **221** |
+| 15 m | **33** | 200 m | **258** |
+| 20 m | **43** | 300 m ou mais | **304**, teto em **355** |
+| 25 m | **53** | | |
+
+**Regra de bolso do Mestre:** até uns 30 metros, **dano ≈ altura × 2,2**. Acima disso, tabela.
+
+#### A altura que mata um não mata outro
+
+Esta é a propriedade que o desenho tinha de ter, e ela sai sozinha do Vigor, que entra **duas
+vezes**: nos PV e na Absorção de Impacto.
+
+| Quem cai | PV | Absorção | Morre a partir de |
+|---|:--:|:--:|:--:|
+| Pessoa comum · Vigor 2 | 31 | 2 | **15 m** |
+| Robusto · Vigor 4 | 37 | 4 | **19 m** |
+| Herói · Vigor 6, Centelha 2 | 43 | 8 | **24 m** |
+| Colosso · Vigor 6, Centelha 6 | 43 | 12 | **26 m** |
+
+E os 15 metros da pessoa comum não são chute: é a altura em que, na vida real, cerca de metade
+dos adultos morre numa queda. Aos 25 metros morrem nove em cada dez, e a tabela concorda.
+
+#### Amortecer · Reflexiva
+
+Destreza + Atletismo, com a secundária **Ginástica** pela §5.5, contra **Dificuldade 10**.
+
+O sucesso não tira dano bruto: **tira 4 metros da altura efetiva**, e **cada Margem tira mais 3**.
+É o que um bom rolamento faz de verdade, alongar a parada em vez de anular a queda.
+
+| Altura | Sem jogada | Sucesso | Uma Margem | Duas Margens |
+|:--:|:--:|:--:|:--:|:--:|
+| 7 m | 16 | 7 | **0** | 0 |
+| 10 m | 22 | 13 | 6 | **0** |
+| 15 m | 33 | 24 | 17 | 10 |
+| 20 m | 43 | 34 | 27 | 20 |
+| 30 m | 63 | 54 | 47 | 40 |
+| 50 m | 98 | 89 | 82 | 75 |
+
+Repare no que a tabela diz: a jogada **salva de verdade** entre 7 e 20 metros, que é exatamente a
+faixa em que a queda decide se você vive. Acima de 30 metros ela vira consolo, e está certo: não
+existe rolar no chão que resolva uma queda de prédio.
+
+#### Agarrar a borda · Reflexiva
+
+Quando há borda, telhado, galho ou corda ao alcance, existe uma **primeira** Reflexiva, antes da
+de amortecer: Destreza + Atletismo contra **Dificuldade 15**. Passando, a queda não acontece e o
+personagem fica pendurado. Cada Margem sobe um trecho, ou permite agarrar com uma das mãos
+ocupada.
+
+**Falha** · não há o que falhar na queda: ela já é a falha de outra coisa. Falhar nas Reflexivas é
+simplesmente cair inteiro.
+
+**Circunstância** (na Dificuldade das Reflexivas) · água funda **−4**, e a partir dali vale Nadar;
+neve funda, feno, lama ou copa de árvore **−2**; pedra, escada, estacas ou entulho **+2**; cair de
+costas, surpreendido ou desacordado **anula as duas Reflexivas**.
+
+**Onde mais mora** · Absorção e estados de ferimento em Vida, Ferimentos & Cura; a queda costuma
+ser consequência de Escalar ou de Equilibrar-se.
 
 ### 6.4 Feito de força
 
@@ -763,6 +825,24 @@ uma porta enquanto o guarda se vira).
 Havendo mais de um vigia, vale **o maior Valor Passivo**, e cada vigia a mais soma **+1** por
 estarem cobrindo ângulos diferentes.
 
+**O Valor Passivo não é um alarme ligado o tempo todo.** Ficar abaixo dele não significa, por si
+só, que o vigia notou alguma coisa: significa que você não passou limpo. O que acontece depois
+depende de **em que estado ele está**, e são três:
+
+| Estado do vigia | Ficou abaixo por menos de 6 | Ficou abaixo por 6 ou mais |
+|---|---|---|
+| **Desatento** · dorme, bebe, conversa, está absorto no trabalho | nada | **suspeita**: ergue a cabeça, escuta |
+| **Normal** · rotina, ronda de sempre, não espera ninguém | **suspeita** | **notado** |
+| **Alerta** · esperando alguém, alarme dado, sabe que há intrusos | **notado** | **notado** |
+
+A leitura é simples: **o estado de alerta é o que apaga a banda morta**. Um guarda de casa que já
+viu alguém pular o muro detecta automaticamente quem não superar o Valor Passivo dele, sem
+tolerância nenhuma. O mesmo guarda numa noite comum, entediado, deixa passar o que raspou.
+
+**Suspeita** não é ser visto. É o vigia parar, olhar na direção, esperar. Custa o intervalo, e o
+próximo sai com Dificuldade **+2**. Duas suspeitas seguidas promovem o vigia de **Normal** para
+**Alerta**, e aí a banda morta some.
+
 **Acúmulo e intervalo** · o Acúmulo é o **comprimento do trecho exposto, em metros**. Intervalo
 **Tick** no corredor com ronda passando, **minuto** no pátio, **hora** para atravessar um
 acampamento adormecido.
@@ -770,10 +850,10 @@ acampamento adormecido.
 **A Margem compra** · terreno e tempo. Cada Margem avança **mais 4 metros**, ou, se o jogador
 preferir, **congela um intervalo**: o vigia olha para o outro lado e o relógio da cena não anda.
 
-**Falha** · **diverge do padrão, e é a divergência mais importante deste capítulo.** Raspar não
-custa progresso, custa **suspeita**: o guarda para, escuta, e o próximo intervalo sai com
-Dificuldade **+2**. Errar por **6 ou mais** não faz perder metros: faz ser **notado**, e o
-Acúmulo deixa de importar. Em furtividade não existe escorregar um pouco.
+**Falha** · **diverge do padrão, e é a divergência mais importante deste capítulo.** A banda morta
+existe, mas ela não devolve metros: devolve **suspeita ou detecção**, pela tabela dos três estados
+acima. Em furtividade não se escorrega um pouco, e o progresso conquistado nunca é perdido. O que
+se perde é o anonimato, e esse não volta.
 
 **Ajuda** · **teste coletivo** (§3.5), e é o caso que aquela regra foi escrita para cobrir. A
 Dificuldade sobe +2 por pessoa, rola quem tem o pior pool, e os outros apoiam. O sujeito de
