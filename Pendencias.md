@@ -1,6 +1,6 @@
 # Pendências do Centelha · mapa geral
 
-> Foto de **2026-07-31**. Índice único de tudo que está aberto, em todas as frentes.
+> Foto de **2026-08-09**. Índice único de tudo que está aberto, em todas as frentes.
 > Cada item diz **o que falta**, **onde mora o detalhe** e **o que ele trava**. Quando um item
 > fecha, marque a caixa e registre a decisão no doc da frente, que é a fonte de verdade.
 >
@@ -9,7 +9,7 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 34 itens abertos · 15 [DECIDIR] · 15 [FAZER] · 4 [AUTOR]
+**Placar:** 38 itens abertos · 17 [DECIDIR] · 17 [FAZER] · 4 [AUTOR]
 
 ---
 
@@ -126,6 +126,28 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
 - [ ] **F6 · [AUTOR] Deuses locais e espíritos de lugar** por cidade e região, casando com as
   cidades que você está escrevendo.
 
+## G. Ações & Sistema
+
+Frente aberta em **2026-08-09**. Detalhe em `Acoes_Sistema.md`. Modelo: o capítulo **Drama and
+Systems** do Exalted 2ª edição. Nada disso existe no site: hoje o sistema só tem número para o
+que acontece **dentro** do combate, e toda ação fora dele é improviso de mesa.
+
+- [ ] **G1 · [FAZER] O capítulo de Ações & Sistema.** O catálogo já está montado em
+  `Acoes_Sistema.md` §4, dividido em sete famílias (corpo e movimento, resistir, sentidos e mente,
+  furtividade e roubo, social, ofício e mundo, fé e sobrenatural), com a jogada sugerida e o
+  estado de cada linha. **Arremesso** já está preenchido (§5.1), com o texto que saiu da ficha.
+- [ ] **G2 · [DECIDIR] A régua comum das ações** (`Acoes_Sistema.md` §3): os quatro modos de ação
+  (Direta, Acumulada, Longa, Reflexa) e a regra de **não rolar** quando a Dificuldade é ≤ metade
+  do pool. As duas vêm do Exalted e são o que faz o resto do capítulo caber em pouca regra.
+  **Trava G1.**
+- [ ] **G3 · [FAZER] As seis fichas mais urgentes:** Escalada, Queda, Veneno, Ambiente,
+  Esgueirar-se e **Construir/forjar**. As cinco primeiras porque aparecem em toda sessão; a
+  última porque é o maior buraco do sistema hoje: um jogador com Ferraria 5 não tem como saber
+  quanto tempo leva para fazer uma espada nem o que sai dela.
+- [ ] **G4 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
+  capítulo que já existe (movimento em Combate, resistir em Vida & Ferimentos, social em
+  Relações). A aposta atual é capítulo único, porque a régua comum precisa de um lugar só.
+
 ---
 
 ## Ordem sugerida
@@ -134,3 +156,5 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
 2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
 3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
+5. **G2 → G3**, a régua comum das ações e depois as seis fichas: é a única frente que cobre um
+   vazio em vez de corrigir algo existente, e é a que mais aparece em mesa.

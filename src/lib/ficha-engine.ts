@@ -1464,7 +1464,10 @@ export function montarFicha(opts: FichaOpts) {
     const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt} <span class="muted">(Atletismo não entra: erguer o máximo é força parada)</span>`
       + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(vel(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(vel(cLeve) * 100)}%</i></span>`
       + `<span>Média <b>${kg(cMedia)}</b> <i>só anda, ${Math.round(vel(cMedia) * 100)}%</i></span><span>Máxima <b>${kg(maxKg)}</b> <i>ergue, não desloca</i></span></div>`
-      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg é o ápice: vai a ${r1(dist(1))} m parado. Mais pesado que isso o braço perde velocidade e o alcance cai, até o peso máximo (${maxKg} kg), que não sai do lugar. Mais leve também cai, e mais rápido, porque falta massa para levar o impulso contra o ar: meio quilo já vai à metade e cem gramas não passam de ${r1(dist(0.1))} m. Correr acrescenta até <b>+1/3</b> e girar no lugar até <b>+1/6</b>, e os dois encolhem junto com a velocidade que se alcança carregando o objeto, até as três curvas virarem uma só no peso máximo.</span></div>`;
+      // Só a conta. O porquê da curva (o ápice em 1 kg, a queda dos dois lados, o ganho
+      // de correr e girar) é matéria do capítulo de Ações & Sistema, não da ficha: aqui
+      // o jogador quer o número, e o gráfico ao lado já mostra a forma.
+      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr}</div>`;
     // No celular não existe hover: sem estes botões o toque só conseguiria ler a curva
     // que estivesse desenhada por cima. Eles escolhem qual delas o toque lê.
     const botoes = `<div class="fa-curvas" role="group" aria-label="Curva em destaque">`
