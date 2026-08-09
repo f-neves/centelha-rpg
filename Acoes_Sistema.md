@@ -49,7 +49,7 @@ repete a regra:
 
 ## 3. A régua comum
 
-> **§3.1 a §3.5 estão DECIDIDAS** (2026-08-09). §3.6 e §3.7 seguem em aberto.
+> **Tudo DECIDIDO** (2026-08-09), exceto §3.6 (o que custa Fôlego fora do combate).
 
 ### 3.1 De onde sai a Dificuldade
 
@@ -111,10 +111,20 @@ A tarefa declara **dois** números: a **Dificuldade**, que é o quanto custa cad
 Subir uma muralha: **Dificuldade 7, Acúmulo 10**. Quem tira 17 sobe de primeira, porque 17 − 7 são
 os 10 pontos inteiros. Quem tira 12 sobe metade e continua no próximo intervalo.
 
-Quando a jogada fica **abaixo da Dificuldade**, o padrão é **perder a diferença**: escorregou,
-desceu. A ficha pode declarar outro comportamento quando o padrão não fizer sentido:
+Quando a jogada fica **abaixo da Dificuldade**, vale a **banda morta de uma Margem**, a mesma
+regra que o capítulo de Relações Sociais já usa no cortejo:
 
-- **rende zero**, quando regredir é absurdo (o que já foi decifrado não se desdecifra);
+| Ficou abaixo por | O que acontece |
+|---|---|
+| **menos de 6** | nada. Raspou: passou o tempo do intervalo e o progresso fica onde estava |
+| **6 ou mais** | **perde a diferença**. Escorregou de verdade |
+
+É a Margem valendo nos dois sentidos: para cima ela compra efeito melhor, para baixo ela cobra
+terreno. Errar por pouco custa **tempo**; errar por muito custa **progresso**.
+
+A ficha pode declarar outro comportamento quando este não fizer sentido:
+
+- **nunca retrocede**, quando regredir é absurdo (o que já foi decifrado não se desdecifra);
 - **falha completa e recomeço**, quando a tarefa é do tipo que desmorona inteira (a peça rachou
   no forno, o disfarce foi desmascarado).
 
@@ -249,30 +259,26 @@ O capítulo de Fôlego já cobra por golpe no combate. Fora dele, a proposta é 
 forçada), na mesma moeda: um ponto por intervalo, recuperando no respiro. A Longa não cobraria
 nada, porque ela já pressupõe ritmo sustentável.
 
-### 3.7 O que precisa casar com Relações Sociais
+### 3.7 O acerto com Relações Sociais
 
-> **[DECIDIR]** · quatro colisões achadas em 2026-08-09.
+> **Resolvido em 2026-08-09.** As quatro colisões estão fechadas e o capítulo publicado já foi
+> corrigido.
 
-O capítulo **Relações Sociais** já implementa a mesma ideia dos modos, na seção *Cortejo com
-calma: a Influência Estendida*. Ele chegou lá antes e por outro caminho, e agora os dois precisam
-falar a mesma língua.
+O capítulo **Relações Sociais** tinha chegado a esta mesma máquina antes e por outro caminho, na
+seção *Cortejo com calma: a Influência Estendida*. Os dois agora falam a mesma língua:
 
-1. **O nome "Passivo" está ocupado.** Lá, "Passivo" é o modo de tomar a média sem rolar, que aqui
-   se chama **Longa**. E "Ativo" é o que aqui é Direta ou Acumulada. Aqui, **Passiva** é outra
-   coisa: o valor parado de 2 × (Atributo + Habilidade), que funciona como Defesa. Dois sentidos
-   para a mesma palavra em dois capítulos é insustentável.
-2. **A média arredonda ou não.** Lá está escrito que a média "é fixa (arredonda para baixo)", com
-   tabela publicada (1d6=3, 2d6=7, 3d6=10, 4d6=14, 5d6=17, 6d6=21). Aqui ficou decidido **não
-   arredondar**. Um dos dois muda.
-3. **Existem duas escalas de Stunt no livro.** A geral, em *Atributos & Perícias*, é +2 · +1d6 ·
-   +2d6. A social, em *Relações*, é +1 · +2 · +4, com nível 0 valendo nada e Contra Stunt
-   subtraindo. A divergência tem uma razão boa: **em modo média não há dado para rolar**, então a
-   escala social precisou ser plana. A regra que falta enunciar é a ponte: em Longa, **stunt em
-   dado vale a média do dado**.
-4. **A falha rasa.** Lá, o modo Ativo já resolve exatamente o que aqui ficou em aberto: "falha por
-   6+ retrocede 1 passo; falha rasa não mexe". É a Margem usada para baixo, e é mais generoso que
-   o padrão que fechamos para a Acumulada (perder sempre a diferença). Vale considerar adotar o
-   corte de Relações na Acumulada também, pela consistência e porque ele já foi publicado.
+1. **Vocabulário.** Relações adotou os nomes daqui: o que era "Ativo" agora é **Acumulada**, e o
+   que era "Passivo" agora é **Longa**. A palavra **Passiva** fica reservada, no livro inteiro,
+   para o valor parado de 2 × (Atributo + Habilidade).
+2. **A média não arredonda, em lugar nenhum.** A tabela publicada em Relações passou a mostrar as
+   frações (3,5 · 7 · 10,5 · 14 · 17,5 · 21). O meio ponto quase não muda um confronto único
+   contra a Defesa Social, mas na Longa ele se acumula e vira intervalos inteiros.
+3. **As duas escalas de Stunt ficam.** A geral (+2 · +1d6 · +2d6) é de uma jogada só; a social
+   (+1 · +2 · +4, teto de +7 por período, Contra Stunt subtraindo) empilha ao longo de
+   intervalos e tem trava anti-abuso. A ponte que faltava: **em modo Longa, stunt em dado vale a
+   média do dado** (nível 2 vale +3,5 e nível 3 vale +7).
+4. **A falha rasa de Relações virou lei geral.** A banda morta de uma Margem, escrita acima na
+   Acumulada, é a mesma regra que o cortejo já usava.
 
 ## 4. O catálogo
 
@@ -493,9 +499,11 @@ com mochila: o primeiro décimo do peso máximo quase não custa nada, e o estra
 2. ~~**[DECIDIR]** O piso da jogada.~~ **Dissolvido em 2026-08-09:** não existe piso numérico.
    Quem escolhe entre rolar e tomar a média é o jogador, e o critério é a pressa (§3.4). Junto
    fecharam ajuda, apoio e teste coletivo (§3.5).
-3. **[DECIDIR]** O que custa Fôlego fora do combate (§3.6).
-4. **[DECIDIR]** As quatro colisões com Relações Sociais (§3.7): o nome "Passivo", o
-   arredondamento da média, as duas escalas de Stunt, e a falha rasa.
+3. **[DECIDIR]** O que custa Fôlego fora do combate (§3.6). **É a última peça da régua comum.**
+4. ~~**[DECIDIR]** As colisões com Relações Sociais.~~ **Fechadas em 2026-08-09** (§3.7), e o
+   capítulo publicado já foi corrigido: vocabulário dos modos, média sem arredondar na tabela, e
+   a banda morta de uma Margem promovida a regra geral.
+5. **[DECIDIR]** Trocar a palavra "stunt" em Relações Sociais por um termo em português.
 4. **[FAZER]** Preencher as fichas na ordem: **Escalada**, **Queda**, **Veneno**, **Ambiente**,
    **Esgueirar-se**, **Construir/forjar**. São as seis mais pedidas em mesa e as que hoje o
    mestre inventa do zero toda vez.

@@ -158,16 +158,16 @@ Quando o alvo **não** paga a Vontade, ele **cede o ponto** daquela troca: aceit
 
 Quando não há pressa nem plateia (um cortejo de meses, uma amizade cultivada, um vassalo trabalhado com paciência), em vez de rolar você pode **tomar a média** do seu pool de influência e ir **empilhando gestos (stunts)** até furar a Defesa Social do alvo. Numa cena tensa ao vivo, volta o Combate Social com dados.
 
-**A média** de um pool é fixa (arredonda para baixo); os bônus (o +2 de soma ímpar, o Peso, a Centelha, os stunts) continuam somando:
+**A média** de um pool é fixa e **não se arredonda** — o meio ponto é real, porque 3d6 tira 10,5 mesmo. Os bônus (o +2 de soma ímpar, o Peso, a Centelha, os stunts) continuam somando:
 
 | Dados | 1d6 | 2d6 | 3d6 | 4d6 | 5d6 | 6d6 |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|
-| **Média** | 3 | 7 | 10 | 14 | 17 | 21 |
+| **Média** | 3,5 | 7 | 10,5 | 14 | 17,5 | 21 |
 
-**Dois modos, no mesmo intervalo de tempo:**
+**Dois modos, no mesmo intervalo de tempo.** São os mesmos do capítulo de [Ações & Sistema](/regras/acoes-e-sistema), aplicados ao cortejo:
 
-- **Ativo (o carisma):** você **rola de verdade** a cada interação. Sucesso avança a régua; **falha por 6+ retrocede 1 passo**; falha rasa não mexe. Sobe rápido, mas pode cair.
-- **Passivo (o cortejo):** você toma a **média + stunts acumulados**, sem rolar. Seguro (nunca retrocede), porém lento. O alvo vai caindo na teia.
+- **Acumulada (o carisma):** você **rola de verdade** a cada interação. Sucesso avança a régua; **falha por 6+ retrocede 1 passo**; falha rasa não mexe. Sobe rápido, mas pode cair.
+- **Longa (o cortejo):** você toma a **média + stunts acumulados**, sem rolar. Seguro (nunca retrocede), porém lento. O alvo vai caindo na teia.
 
 **Os stunts** somam conforme a qualidade da descrição e o alinhamento com as motivações do alvo:
 
@@ -192,4 +192,4 @@ Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o inter
 - **Move por:** atos (saltos fixos), conversa (Ataque vs [Defesa Social](/regras/defesas), +1 passo por 6 de folga) e gasto de crédito ao cobrar. Sair do Neutro = 3 passos; lábia sozinha para em +2. Esfria 1 passo por estação.
 - **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social; **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance; se não pagar, cede o ponto e a régua anda **Margem** passos. Não vale contra leitura.
-- **Influência Estendida** (calma): tome a média (3/7/10/14/17/21) + stunts (0/+1/+2/+4, teto +7/período), modo ativo (arrisca) ou passivo (seguro), leitura vs Defesa Social para saber quanto falta.
+- **Influência Estendida** (calma): tome a média (3,5/7/10,5/14/17,5/21) + stunts (0/+1/+2/+4, teto +7/período), modo **Acumulada** (arrisca) ou **Longa** (seguro), leitura vs Defesa Social para saber quanto falta.
