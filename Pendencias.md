@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 47 itens abertos · 23 [DECIDIR] · 20 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: Arcano 12 · **Ações & Sistema 13** · Lore 6 · Proezas 6 · Trilhas 4 · Bestiário 3 · Social 3
+**Placar:** 45 itens abertos · 21 [DECIDIR] · 20 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · **Ações & Sistema 11** · Lore 6 · Proezas 6 · Trilhas 4 · Bestiário 3 · Social 3
 
 ---
 
@@ -141,60 +141,55 @@ Margem como expertise excedente, banda morta de uma Margem na falha, ajuda por s
 o teste coletivo. Como efeito colateral, o capítulo publicado de **Relações Sociais** foi
 corrigido para falar a mesma língua.
 
-**Fechar a régua (bloqueia todo o resto):**
-
-- [ ] **G1 · [DECIDIR] Escalas de tempo.** A última das sete decisões estruturais que ninguém
-  tocou. Falta o vocabulário fechado de intervalo (Tick, minuto, hora, dia, semana, estação) que
-  toda ficha de Acumulada e de Longa vai declarar. Sem essa lista, 73 fichas inventam 73
-  intervalos.
-- [ ] **G2 · [DECIDIR] O que custa Fôlego fora do combate** (`Acoes_Sistema.md` §3.6). Proposta
-  no doc: só Acumulada de esforço físico cobra, um ponto por intervalo, e a Longa não cobra nada
-  porque já pressupõe ritmo sustentável.
+**A régua comum está FECHADA** desde 2026-08-09. As sete decisões estruturais saíram, incluindo a
+escada de seis intervalos (Tick, minuto, hora, dia, semana, estação) e o Fôlego, que morde só em
+intervalo de Tick e não exigiu regra nova. **Ressalva do autor:** o Fôlego é módulo opcional e
+pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 
 **Antes da primeira ficha:**
 
-- [ ] **G3 · [FAZER] O gabarito de ficha.** A régua fechou e não existe forma padrão. Toda ficha
+- [ ] **G1 · [FAZER] O gabarito de ficha.** A régua fechou e não existe forma padrão. Toda ficha
   precisa declarar, na mesma ordem: **modo**, **Dificuldade** (com exemplos na régua de âncoras),
   **Acúmulo e intervalo** quando houver, **o que a Margem compra**, **o que a falha faz** (banda
   morta, ou a exceção declarada), **ajuda** (soma ou apoia) e **Fôlego**. A ficha de Arremesso
   (§5.1) já mostrou que o gabarito precisa prever o caso sem modo, em que o número é derivado e
   só o acerto é jogada.
-- [ ] **G4 · [FAZER] Normalizar a tabela §4 do `Acoes_Sistema.md`.** Ela é anterior aos modos e
+- [ ] **G2 · [FAZER] Normalizar a tabela §4 do `Acoes_Sistema.md`.** Ela é anterior aos modos e
   fala a língua antiga: diz "Longa: uma jogada só" (a Longa não rola) e "uma jogada por dia"
   (quer dizer Acumulada com intervalo diário), e nenhuma linha declara Acúmulo nem intervalo. Sai
   linha a linha conforme cada ficha for escrita.
 
 **Escrever:**
 
-- [ ] **G5 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
+- [ ] **G3 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
   subsistema pequeno, com oito perguntas próprias listadas no doc. É o maior vazio do sistema:
   um jogador com Ferraria 5 não sabe quanto tempo leva para fazer uma espada nem o que sai dela.
   Destrava também o **ajuste de peça** que a ficha já oferece (uma Espada Longa Ótima) sem dizer
   como se chega a ela.
-- [ ] **G6 · [FAZER] As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força e
+- [ ] **G4 · [FAZER] As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força e
   Esgueirar-se. Feito de força está meio pronto: o FAH já dá o peso máximo, falta a tabela de
   "com esse FAH você arromba o quê", nos moldes da tabela de proezas do Exalted.
-- [ ] **G7 · [DECIDIR] Uma escada de exaustão única?** Vale para veneno, doença, ambiente,
+- [ ] **G5 · [DECIDIR] Uma escada de exaustão única?** Vale para veneno, doença, ambiente,
   sufocamento e privação de sono de uma vez, e é por isso que a família **Resistir** se decide em
   bloco e não ficha a ficha. O modelo mais limpo é o de níveis de exaustão do D&D 5e.
-- [ ] **G8 · [DECIDIR] Percepção passiva.** Encolheu com a decisão dos modos: o modo **Passiva**
+- [ ] **G6 · [DECIDIR] Percepção passiva.** Encolheu com a decisão dos modos: o modo **Passiva**
   já dá o valor parado (2 × Atributo + Habilidade). Falta confirmar que a Prontidão sem procurar
   usa esse valor, e dizer contra o quê ele é comparado.
 
 **Arrumação:**
 
-- [ ] **G9 · [DECIDIR] Duas ações levantadas e nunca catalogadas** (`Acoes_Catalogo.md` §12):
+- [ ] **G7 · [DECIDIR] Duas ações levantadas e nunca catalogadas** (`Acoes_Catalogo.md` §12):
   **escapar de amarras** e **sinalizar à distância**. Entram ou não?
-- [ ] **G10 · [DECIDIR] Trocar a palavra "stunt" por um termo em português.** São 15 ocorrências
+- [ ] **G8 · [DECIDIR] Trocar a palavra "stunt" por um termo em português.** São 15 ocorrências
   em `atributos-e-pericias.md`, `combate.md`, `relacoes-sociais.md` e `glossario.json`, então é
   melhor trocar de uma vez. Sugestão do autor em Relações: "ações que beneficiam a intenção".
-- [ ] **G11 · [FAZER] Três listas paralelas das mesmas ações** (catálogo, texto e tabela §4) já
+- [ ] **G9 · [FAZER] Três listas paralelas das mesmas ações** (catálogo, texto e tabela §4) já
   divergem: "Apostar" e "Levantar o peso máximo" existem em duas das três. Definir qual é a fonte
   de verdade, ou fundir.
-- [ ] **G12 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
+- [ ] **G10 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
   capítulo que já existe (movimento em Combate, resistir em Vida & Ferimentos, social em
   Relações). A aposta atual é capítulo único, porque a régua comum precisa de um lugar só.
-- [ ] **G13 · [FAZER] `regras.json → acoes`** para as tabelas que o motor precisar ler, quando o
+- [ ] **G11 · [FAZER] `regras.json → acoes`** para as tabelas que o motor precisar ler, quando o
   capítulo fechar.
 
 ---
@@ -205,6 +200,6 @@ corrigido para falar a mesma língua.
 2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
 3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
-5. **G1 → G2 → G3**, o fim da régua comum das ações (escalas de tempo, Fôlego) e o gabarito de
-   ficha. São duas decisões curtas e um documento de uma página, e depois disso as 73 fichas
-   podem sair em série. É a única frente que cobre um vazio em vez de corrigir algo existente.
+5. **G1**, o gabarito de ficha das Ações. A régua comum fechou inteira; falta um documento de uma
+   página dizendo o que toda ficha declara, e depois disso as 73 saem em série. É a única frente
+   que cobre um vazio em vez de corrigir algo existente.

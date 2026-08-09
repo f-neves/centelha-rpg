@@ -182,7 +182,7 @@ O salto para +4 no nível 3 é de propósito: a excelência paga dobrado. Um ges
 
 **A leitura** ("já é o suficiente?") é opcional e **exige acesso ao alvo**: você rola **Perspicácia + Empatia** contra a Defesa Social dele. No sucesso, você sabe **se já passou**; a cada **6 de folga** na leitura, descobre **+1 ponto** do que ainda falta. A sua influência é confiável (média), mas saber se pegou é incerto (você rola a leitura): ler mal faz você parar cedo ou gastar stunts à toa.
 
-Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o intervalo-base **escala com a longevidade da raça** (um elfo corteja em estações onde um humano leva semanas). Furar a Defesa concede o pedido; furar **por 6+** rende passos na régua, sempre respeitando o **teto de vidro** (±2 por stunts sozinhos) e o **favor alugado**.
+Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o intervalo-base **escala com a longevidade da raça** (um elfo corteja em estações onde um humano leva semanas). O **período** do teto acima é esse mesmo intervalo, escolhido na [escada de seis degraus](/regras/acoes-e-sistema) — Tick, minuto, hora, dia, semana, estação. Furar a Defesa concede o pedido; furar **por 6+** rende passos na régua, sempre respeitando o **teto de vidro** (±2 por stunts sozinhos) e o **favor alugado**.
 
 ---
 

@@ -46,11 +46,9 @@ cada um foi para um lado (sinal de que a decisão é de gosto, não de física).
 Estas sete decisões valem para o capítulo inteiro. Nenhuma ficha individual fecha antes delas,
 porque todas as fichas vão se apoiar nelas.
 
-> **Estado em 2026-08-09: cinco fechadas, duas abertas.** Fecharam 1.1 (modos), 1.2 (quando não
-> se rola), 1.3 (graus de sucesso), 1.4 (ajuda e grupo) e 1.5 (ferramenta e circunstância), e o
-> texto delas está em `Acoes_Sistema.md` §3. Seguem abertas **1.6 (escalas de tempo)** e a parte
-> do Fôlego dentro de 1.7. As notas abaixo são o material de pesquisa que sustentou cada decisão,
-> e ficam como registro.
+> **FECHADAS, todas as sete, em 2026-08-09.** O texto delas está em `Acoes_Sistema.md` §3. As
+> notas abaixo são o material de pesquisa que sustentou cada decisão, e ficam como registro do
+> porquê.
 
 **1.1 · Modos de ação.** **FECHADA:** cinco modos, Direta, Acumulada, Longa, Reflexiva e Passiva,
 sendo que Longa e Passiva não rolam dado. Ver `Acoes_Sistema.md` §3.3.
@@ -563,8 +561,7 @@ Anotado para não voltar à discussão toda vez:
 
 *Atualizada em 2026-08-09, depois de a régua comum fechar quase inteira.*
 
-1. ~~As sete decisões da §1.~~ **Cinco fechadas.** Faltam as **escalas de tempo** (§1.6) e o
-  **custo em Fôlego** fora do combate.
+1. ~~As sete decisões da §1.~~ **Todas fechadas em 2026-08-09.**
 2. **O gabarito de ficha.** Antes de escrever a primeira: o que toda ficha declara, na mesma
   ordem, para as 73 não saírem cada uma de um jeito.
 3. **Construção (§7).** É o maior vazio, é subsistema e não ficha, e destrava o ajuste de peça

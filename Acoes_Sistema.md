@@ -49,7 +49,9 @@ repete a regra:
 
 ## 3. A régua comum
 
-> **Tudo DECIDIDO** (2026-08-09), exceto §3.6 (o que custa Fôlego fora do combate).
+> **A régua comum está FECHADA** (2026-08-09). As sete decisões estruturais foram tomadas e o
+> capítulo publicado de Relações Sociais já foi acertado com elas. O que falta agora é o
+> **gabarito de ficha** e as fichas em si.
 
 ### 3.1 De onde sai a Dificuldade
 
@@ -191,6 +193,40 @@ outro lado, por Proezas e Artes de quem está tentando passar.
 
 Casos específicos podem pedir outra conta, e a ficha diz quando.
 
+#### O intervalo
+
+Acumulada e Longa declaram um terceiro número, além de Dificuldade e Acúmulo: **em que ritmo o
+progresso acontece**. A escada é **fechada**, em seis degraus, e a ficha escolhe um deles em vez
+de inventar uma medida própria.
+
+| Intervalo | Ordem de grandeza | O que cabe nele |
+|---|---|---|
+| **Tick** | ~1 segundo | a muralha com a ronda virando a esquina, o corredor sob fogo |
+| **Minuto** | dezenas de segundos | arrombar a fechadura, estancar o sangramento |
+| **Hora** | uma sentada | vasculhar a biblioteca, decifrar a página, costurar o ferimento |
+| **Dia** | uma jornada | marcha forçada, caçar e forragear, rastrear a caravana |
+| **Semana** | uma empreitada | forjar a espada, a viagem entre cidades, o treino |
+| **Estação** | uma obra | erguer o muro, administrar a terra, o cortejo longo |
+
+Os degraus estão longe uns dos outros de propósito (o salto vai de dez a sessenta vezes em tempo
+real), e é isso que faz a escolha ser fácil: **nenhuma tarefa fica entre dois degraus**. O Mestre
+narra quarenta minutos ou uma hora e meia à vontade; o que a ficha declara é o degrau.
+
+O degrau também é o que revela o modo. Tick e minuto são território de **Acumulada**, porque ali
+o dado tem função; semana e estação são território de **Longa**, porque ninguém rola trinta vezes
+por uma espada. Hora e dia aceitam os dois, e é a pressão da cena que decide (§3.4). Não há
+fronteira rígida: escalar sob vigia é Acumulada em Tick, escalar sozinho é Longa em hora, e é a
+mesma parede.
+
+Dois encaixes com o que já existe:
+
+- **O Tick é o mesmo do Combate** (≈1 segundo), e é por isso que uma ação de Ações & Sistema pode
+  acontecer no meio de uma luta sem tradução nenhuma.
+- **"Período", em Relações Sociais, é o intervalo declarado.** O teto anti-abuso de stunts vale
+  por intervalo, seja ele semana ou estação. Isso também casa com a regra de lá de que o
+  intervalo-base **escala com a longevidade da raça**: o elfo corteja em estações onde o humano
+  corteja em semanas, e o degrau muda sem que a regra mude.
+
 ### 3.4 Quem escolhe o modo é o jogador
 
 Acumulada e Longa compartilham a mesma dupla de números. **O que escolhe entre elas é a pressão,
@@ -252,12 +288,26 @@ grande, é punido por levar gente que não sabe o que está fazendo.
 
 ### 3.6 O que custa Fôlego
 
-> **[DECIDIR]**
+> **Resolvido em 2026-08-09, e de propósito sem escrever regra nenhuma.**
+>
+> Ressalva do autor: **o Fôlego é módulo opcional e pode vir a ser ocultado.** Nenhuma ficha deste
+> capítulo deve depender dele. A decisão abaixo foi escolhida justamente por ser a única que
+> sobrevive intacta se o módulo sair do livro.
 
-O capítulo de Fôlego já cobra por golpe no combate. Fora dele, a proposta é cobrar Fôlego só de
-**ação Acumulada de esforço físico** (escalar uma parede longa, remar contra a corrente, marcha
-forçada), na mesma moeda: um ponto por intervalo, recuperando no respiro. A Longa não cobraria
-nada, porque ela já pressupõe ritmo sustentável.
+O Fôlego **só morde em intervalo de Tick**, e isso já acontece sem nenhuma regra nova.
+
+A razão é aritmética. O Fôlego repõe **+Vigor por Tick**, ou seja, por segundo. Um herói de Vigor
+3 com Fôlego 43 sai do zero ao cheio em **quinze segundos**. Num intervalo de um minuto ou mais,
+portanto, ele já encheu no caminho: cobrar um ponto por intervalo numa escalada de duas horas não
+faria diferença nenhuma, e cobrar o bastante para fazer diferença exigiria uma segunda escala de
+custo e uma segunda taxa de recuperação.
+
+<p class="formula">Intervalo Tick: o Fôlego custa como no combate · Intervalo minuto ou maior: o Fôlego não é a moeda</p>
+
+O que sobra é a leitura certa e ela é boa: **o Fôlego mede pressa, não esforço**. A subida
+desesperada com a ronda chegando cobra fôlego porque acontece segundo a segundo; a mesma parede
+subida com calma não cobra, e está certo assim. O desgaste de horas, dias e estações é assunto de
+outra família, **Resistir**, e vai depender da escada de exaustão (item G7).
 
 ### 3.7 O acerto com Relações Sociais
 
@@ -510,7 +560,10 @@ com mochila: o primeiro décimo do peso máximo quase não custa nada, e o estra
 2. ~~**[DECIDIR]** O piso da jogada.~~ **Dissolvido em 2026-08-09:** não existe piso numérico.
    Quem escolhe entre rolar e tomar a média é o jogador, e o critério é a pressa (§3.4). Junto
    fecharam ajuda, apoio e teste coletivo (§3.5).
-3. **[DECIDIR]** O que custa Fôlego fora do combate (§3.6). **É a última peça da régua comum.**
+3. ~~**[DECIDIR]** Escalas de tempo e o custo em Fôlego.~~ **Fechados em 2026-08-09:** escada de
+   seis intervalos (Tick, minuto, hora, dia, semana, estação), fechada, com "período" de Relações
+   passando a significar o intervalo declarado (§3.3); e o Fôlego mordendo só em intervalo de
+   Tick, sem regra nova (§3.6). **Com isso a régua comum está inteira.**
 4. ~~**[DECIDIR]** As colisões com Relações Sociais.~~ **Fechadas em 2026-08-09** (§3.7), e o
    capítulo publicado já foi corrigido: vocabulário dos modos, média sem arredondar na tabela, e
    a banda morta de uma Margem promovida a regra geral.
