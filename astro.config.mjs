@@ -86,13 +86,20 @@ export default defineConfig({
         short_name: 'Centelha D6',
         description: 'Sistema de RPG de mesa em d6, do mortal ao semideus.',
         lang: 'pt-BR',
-        theme_color: '#1f3f8f',
-        background_color: '#f3e9d2',
+        // Cores do ícone novo. As antigas (azul #1f3f8f e creme #f3e9d2) vinham do
+        // d6 azul que o favicon era antes, e destoavam do app instalado.
+        theme_color: '#15171c',
+        background_color: '#15171c',
         display: 'standalone',
+        // Os PNGs saem de public/favicon.svg (rasterizados), para o ícone da aba e
+        // o do app instalado não divergirem. O maskable é um arquivo à parte porque
+        // o recorte circular do Android come os cantos da moldura arredondada: o
+        // extremo do canto fica a 428 do centro e a zona segura tem raio 410, então
+        // o maskable traz a mesma arte encolhida a 78% sobre o fundo.
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
-          { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: {

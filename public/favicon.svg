@@ -1,9 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#1f3f8f"/>
-  <g fill="#f3e9d2">
-    <circle cx="20" cy="20" r="4"/><circle cx="44" cy="20" r="4"/>
-    <circle cx="32" cy="32" r="4"/>
-    <circle cx="20" cy="44" r="4"/><circle cx="44" cy="44" r="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Centelha">
+  <title>Centelha</title>
+  <rect width="1024" height="1024" fill="#15171c"/>
+  <rect x="160" y="160" width="704" height="704" rx="168" fill="none" stroke="#3fc9c2" stroke-width="66"/>
+  <g fill="#d9b85f">
+    <circle cx="384" cy="384" r="46"/>
+    <circle cx="384" cy="512" r="46"/>
+    <circle cx="384" cy="640" r="46"/>
+    <circle cx="640" cy="512" r="46"/>
+    <circle cx="640" cy="640" r="46"/>
+    <polygon points="640.00,376.00 655.59,349.00 640.00,322.00 624.41,349.00"/>
+    <polygon points="646.93,380.00 678.11,380.00 693.69,353.00 662.52,353.00"/>
+    <polygon points="646.93,388.00 662.52,415.00 693.69,415.00 678.11,388.00"/>
+    <polygon points="640.00,392.00 624.41,419.00 640.00,446.00 655.59,419.00"/>
+    <polygon points="633.07,388.00 601.89,388.00 586.31,415.00 617.48,415.00"/>
+    <polygon points="633.07,380.00 617.48,353.00 586.31,353.00 601.89,380.00"/>
   </g>
-  <path d="M32 6 L34 14 L32 12 L30 14 Z" fill="#b08d3a"/>
 </svg>
