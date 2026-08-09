@@ -667,13 +667,21 @@ import '../styles/arte-equip.css';
   .fa-chart .fa-bandlbl { fill: var(--ink-soft); font-family: 'Cinzel'; font-size: 9px; letter-spacing: .06em; }
   .fa-chart .fa-vline { stroke: var(--accent-strong); stroke-width: 1; stroke-dasharray: 3 3; opacity: .7; }
   .fa-chart .fa-dot { fill: var(--accent-strong); stroke: var(--paper, #fff); stroke-width: 1.5; }
-  .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -125%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: #fff; font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .18rem .45rem; border-radius: var(--r-sm); box-shadow: 0 1px 4px rgba(0,0,0,.3); text-align: center; line-height: 1.35; }
+  /* o texto do balão usa o par do próprio fundo (--on-accent-strong): no tema escuro o
+     --accent-strong é teal pálido e pede tinta escura, no claro é petróleo e pede clara */
+  .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -125%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: var(--on-accent-strong); font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .22rem .5rem; border-radius: var(--r-sm); box-shadow: 0 1px 4px rgba(0,0,0,.3); text-align: center; line-height: 1.45; }
+  /* cada distância na sua linha: em uma só, as três viravam uma tira comprida que
+     empurrava o balão para fora do quadro nas pontas do eixo */
+  .fa-chartwrap .fa-tip span { display: block; }
   /* das três distâncias no balão, a curva escolhida vem sublinhada */
   .fa-chartwrap .fa-tip .sel { text-decoration: underline; text-underline-offset: 2px; }
   /* no celular o gráfico é baixo e o balão flutuante cobriria quase tudo: a leitura vira
      uma faixa embaixo dele, e no gráfico ficam só a vertical e os três pontos */
   @media (max-width: 900px) {
     .fa-chartwrap .fa-tip { position: static; transform: none; white-space: normal; margin: .4rem 0 0; }
+    /* na faixa há largura de sobra e altura nenhuma: as três voltam para a mesma linha */
+    .fa-chartwrap .fa-tip span { display: inline; }
+    .fa-chartwrap .fa-tip span + span::before { content: ' · '; }
   }
   /* margin: 0 anula o `table { margin: 1em 0 }` global, que desalinhava o topo da
      tabela em relação ao do gráfico ao lado */

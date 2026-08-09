@@ -1576,8 +1576,10 @@ export function montarFicha(opts: FichaOpts) {
           if (d.k === sel) cySel = cy;
         }
         const faixa = bandas.find((b) => w <= b.ate) || bandas[bandas.length - 1];
+        // uma linha por curva, na mesma ordem em que elas aparecem no gráfico (a de cima
+        // primeiro); no celular o balão vira faixa e elas voltam a caber lado a lado
         tip.innerHTML = `${r1(w)} kg · carga ${faixa.nome}<br>`
-          + defs.map((d) => `<span${d.k === sel ? ' class="sel"' : ''}>${d.nome} ${r1(d.f(w))}</span>`).join(' · ') + ' m';
+          + defs.map((d) => `<span${d.k === sel ? ' class="sel"' : ''}>${d.nome} ${r1(d.f(w))} m</span>`).join('');
         tip.style.display = '';
         // o balão não pode sangrar para fora do quadro nas pontas do eixo
         const px = (cx / W) * rect.width, meia = tip.offsetWidth / 2;
