@@ -122,21 +122,32 @@ const {
      background-position exatamente um tile (o próprio background-size), então o
      laço fecha sem emenda. Duas velocidades para render profundidade: as miúdas
      passam rápido, as borradas arrastam. */
+  /* Densidade calibrada por medição, não no olho. Com os raios que vieram no
+     desenho (1 a 1,6px em tile de 300) as duas camadas juntas pintavam 0,189% da
+     tela: existiam no DOM e não se viam. O fundo anterior, que se via, tinha
+     raios de 1,6 a 2,4px em tile de 260, ou seja quase o triplo de tinta. Aqui os
+     raios subiram ~35% e o tile ganhou pontos (5 → 9 na miúda), o que recompõe a
+     mancha sem engrossar cada ponto a ver navios. */
   .cfundo .bg-sparks, .cfundo .bg-sparks2 { z-index: -3; background-repeat: repeat; }
   .cfundo .bg-sparks { opacity: calc(var(--deco-strength, 1) * .9); background-size: 300px 300px;
     background-image:
-      radial-gradient(1.6px 1.6px at 40px 60px, var(--gold), transparent 2.4px),
-      radial-gradient(1.2px 1.2px at 210px 110px, var(--gold), transparent 2px),
-      radial-gradient(1.4px 1.4px at 130px 240px, var(--accent-strong), transparent 2.2px),
-      radial-gradient(1px 1px at 260px 280px, var(--gold), transparent 1.8px),
-      radial-gradient(1.2px 1.2px at 80px 200px, var(--accent), transparent 2px);
+      radial-gradient(2.2px 2.2px at 40px 60px, var(--gold), transparent 3.2px),
+      radial-gradient(1.6px 1.6px at 210px 110px, var(--gold), transparent 2.6px),
+      radial-gradient(1.9px 1.9px at 130px 240px, var(--accent-strong), transparent 2.9px),
+      radial-gradient(1.4px 1.4px at 260px 280px, var(--gold), transparent 2.4px),
+      radial-gradient(1.6px 1.6px at 80px 200px, var(--accent), transparent 2.6px),
+      radial-gradient(2px 2px at 170px 20px, var(--gold), transparent 3px),
+      radial-gradient(1.4px 1.4px at 285px 175px, var(--accent-strong), transparent 2.4px),
+      radial-gradient(1.8px 1.8px at 20px 145px, var(--gold), transparent 2.8px),
+      radial-gradient(1.5px 1.5px at 105px 292px, var(--gold), transparent 2.5px);
     animation: cfSobe1 34s linear infinite; }
   .cfundo .bg-sparks2 { opacity: calc(var(--deco-strength, 1) * .55); background-size: 340px 340px; background-position: 60px 30px;
     background-image:
-      radial-gradient(7px 7px at 42px 62px, color-mix(in srgb, var(--gold) 45%, transparent), transparent 70%),
-      radial-gradient(6px 6px at 132px 242px, color-mix(in srgb, var(--accent) 40%, transparent), transparent 70%),
-      radial-gradient(1.4px 1.4px at 300px 90px, var(--gold), transparent 2.2px),
-      radial-gradient(1.2px 1.2px at 190px 300px, var(--accent-strong), transparent 2px);
+      radial-gradient(9px 9px at 42px 62px, color-mix(in srgb, var(--gold) 45%, transparent), transparent 70%),
+      radial-gradient(8px 8px at 132px 242px, color-mix(in srgb, var(--accent) 40%, transparent), transparent 70%),
+      radial-gradient(7px 7px at 265px 150px, color-mix(in srgb, var(--gold) 34%, transparent), transparent 70%),
+      radial-gradient(1.9px 1.9px at 300px 90px, var(--gold), transparent 2.9px),
+      radial-gradient(1.6px 1.6px at 190px 300px, var(--accent-strong), transparent 2.6px);
     animation: cfTwinkle 7s ease-in-out infinite, cfSobe2 62s linear infinite; }
   @keyframes cfTwinkle { 0%,100%{ opacity: calc(var(--deco-strength,1) * .35) } 50%{ opacity: calc(var(--deco-strength,1) * .62) } }
   /* o tile é 300, então -300 recoloca o padrão idêntico ao ponto de partida */

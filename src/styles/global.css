@@ -639,14 +639,11 @@ html:not([data-fundo]):not([data-theme='legivel']) body,
 html[data-fundo="ficha"]:not([data-theme='legivel']) body.page-ficha { background: transparent; }
 html:not([data-theme='legivel']) { background: var(--bg); }
 
-/* Superfície calma atrás do conteúdo. No desenho era .md-content (MkDocs); aqui o
-   container equivalente é o main.content, que já traz o respiro. Obrigatória
-   sempre que o fundo está ligado: sem ela as páginas densas de texto ficam sobre
-   as brasas. Só entra quando há fundo, para não virar caixa à toa. */
-html[data-fundo="site"]:not([data-theme='legivel']) .content,
-html:not([data-fundo]):not([data-theme='legivel']) .content,
-html[data-fundo="ficha"]:not([data-theme='legivel']) body.page-ficha .content {
-  background: color-mix(in srgb, var(--bg) 88%, transparent); border-radius: 12px; }
+/* Aqui existia uma "superfície calma" atrás do conteúdo: o .content ganhava
+   `color-mix(in srgb, var(--bg) 88%, transparent)`, um véu que abafava o fundo
+   em 88% na área de leitura. Saiu a pedido: com o selo novo, era justamente o
+   miolo do desenho que ficava escondido. O texto agora lê direto sobre o fundo,
+   então quem regula a legibilidade é o --deco-strength em /configuracoes. */
 
 /* ---- Moldura ornamentada da Ficha ---- */
 /* O respiro é uma variável porque não é só padding: a barra grudenta das abas
