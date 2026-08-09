@@ -670,18 +670,22 @@ import '../styles/arte-equip.css';
   /* o texto do balão usa o par do próprio fundo (--on-accent-strong): no tema escuro o
      --accent-strong é teal pálido e pede tinta escura, no claro é petróleo e pede clara */
   .fa-chartwrap .fa-tip { position: absolute; transform: translate(-50%, -125%); pointer-events: none; white-space: nowrap; background: var(--accent-strong); color: var(--on-accent-strong); font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .22rem .5rem; border-radius: var(--r-sm); box-shadow: 0 1px 4px rgba(0,0,0,.3); text-align: center; line-height: 1.45; }
-  /* cada distância na sua linha: em uma só, as três viravam uma tira comprida que
-     empurrava o balão para fora do quadro nas pontas do eixo */
-  .fa-chartwrap .fa-tip span { display: block; }
-  /* das três distâncias no balão, a curva escolhida vem sublinhada */
-  .fa-chartwrap .fa-tip .sel { text-decoration: underline; text-underline-offset: 2px; }
+  /* o peso centrado no alto e as distâncias em duas colunas alinhadas, sem fio nenhum:
+     em uma linha só, as três viravam uma tira comprida que empurrava o balão para fora
+     do quadro nas pontas do eixo */
+  .fa-chartwrap .fa-tip b { display: block; text-align: center; }
+  .fa-chartwrap .fa-tip .fa-tipg { display: grid; grid-template-columns: auto auto; column-gap: .55rem; }
+  .fa-chartwrap .fa-tip .fa-tipg span:nth-child(odd) { text-align: left; }
+  .fa-chartwrap .fa-tip .fa-tipg span:nth-child(even) { text-align: right; font-variant-numeric: tabular-nums; }
   /* no celular o gráfico é baixo e o balão flutuante cobriria quase tudo: a leitura vira
      uma faixa embaixo dele, e no gráfico ficam só a vertical e os três pontos */
   @media (max-width: 900px) {
     .fa-chartwrap .fa-tip { position: static; transform: none; white-space: normal; margin: .4rem 0 0; }
-    /* na faixa há largura de sobra e altura nenhuma: as três voltam para a mesma linha */
-    .fa-chartwrap .fa-tip span { display: inline; }
-    .fa-chartwrap .fa-tip span + span::before { content: ' · '; }
+    /* na faixa há largura de sobra e altura nenhuma: tudo volta para a mesma linha */
+    .fa-chartwrap .fa-tip b,
+    .fa-chartwrap .fa-tip .fa-tipg { display: inline; }
+    .fa-chartwrap .fa-tip .fa-tipg span:nth-child(odd)::before { content: ' · '; }
+    .fa-chartwrap .fa-tip .fa-tipg span:nth-child(even)::before { content: '\00a0'; }
   }
   /* margin: 0 anula o `table { margin: 1em 0 }` global, que desalinhava o topo da
      tabela em relação ao do gráfico ao lado */
