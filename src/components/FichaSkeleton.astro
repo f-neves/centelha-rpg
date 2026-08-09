@@ -513,9 +513,11 @@ import '../styles/arte-equip.css';
   .dots[data-kind="centelha"] .dot {
     width: 19px; height: 19px; border: 0; border-radius: 0; background: none;
     display: inline-flex; align-items: center; justify-content: center;
-    /* a faísca apagada é contorno, não silhueta, então ela já lê como vazia sem
-       precisar sumir: 65% só a manda para trás sem deixá-la fantasma no tema claro */
-    color: color-mix(in srgb, var(--gold) 65%, transparent);
+    /* apagada ela vai no teal das outras bolinhas, e não em ouro esmaecido: o ouro
+       passa a significar "acesa" e só. É var(--accent) e não o #3fc9c2 cru porque
+       esse hex já é o próprio token no tema escuro, e no claro o token escurece
+       para #00BAB4, que é o que se enxerga sobre papel */
+    color: var(--accent);
   }
   .dots[data-kind="centelha"] .dot.on { background: none; color: var(--gold); }
   .dots[data-kind="centelha"] .dot:hover { box-shadow: none; color: var(--gold); }

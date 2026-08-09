@@ -47,14 +47,15 @@ export const T_PICO = 2.5;
  *
  * O contorno usa `vector-effect="non-scaling-stroke"` para a espessura sair em
  * pixels da tela e não em unidades do viewBox, que aqui são 60× menores: assim
- * ele fica com a mesma grossura da borda das bolinhas comuns, sem depender do
- * tamanho em que a faísca for renderizada.
+ * ele sai com a mesma grossura em qualquer tamanho de render. São 0,75px, metade
+ * da borda das bolinhas comuns, porque a faísca tem seis pétalas e um miolo, e
+ * no traço cheio o desenho fechava.
  */
 export function sparkSVG(acesa: boolean, cls = ''): string {
   const classe = `centelha-spark${acesa ? '' : ' apagada'}${cls ? ' ' + cls : ''}`;
   const abre = `<svg class="${classe}" viewBox="${VIEWBOX}" aria-hidden="true" focusable="false"`;
   if (!acesa) {
-    return `${abre} fill="none" stroke="currentColor" stroke-width="1.5"`
+    return `${abre} fill="none" stroke="currentColor" stroke-width="0.75"`
       + ` vector-effect="non-scaling-stroke" stroke-linejoin="round">`
       + `<g transform="translate(512 512) scale(0.96) translate(-512 -512)">`
       + `<path d="${VALE}" vector-effect="non-scaling-stroke"/></g></svg>`;
