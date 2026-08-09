@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 45 itens abertos · 21 [DECIDIR] · 20 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · **Ações & Sistema 11** · Lore 6 · Proezas 6 · Trilhas 4 · Bestiário 3 · Social 3
+**Placar:** 46 itens abertos · 22 [DECIDIR] · 20 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · **Ações & Sistema 12** · Lore 6 · Proezas 6 · Trilhas 4 · Bestiário 3 · Social 3
 
 ---
 
@@ -154,42 +154,49 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   morta, ou a exceção declarada), **ajuda** (soma ou apoia) e **Fôlego**. A ficha de Arremesso
   (§6.2) já mostrou que o gabarito precisa prever o caso sem modo, em que o número é derivado e
   só o acerto é jogada.
-- [ ] **G2 · [FAZER] Normalizar a tabela §4 do `Acoes_Sistema.md`.** Ela é anterior aos modos e
+- [ ] **G2 · [DECIDIR] Reequilibrar a Especialidade.** Efeito colateral assumido da regra de
+  primária + secundária (`Acoes_Sistema.md` §5.5): a maior entra no pool e a **menor inteira**
+  vira bônus fixo, o que torna a secundária cerca de duas vezes e meia mais eficiente por XP do
+  que a Especialidade (secundária 4 custa 18 XP e dá +4; dois níveis de Especialidade custam 28 e
+  dão ~+2,4). Ou a Especialidade barateia, ou fica claro que ela serve para o que **não tem**
+  secundária pronta ("espada longa", "nas sombras"), que é o caso da maioria. **Não trava as
+  fichas**, mas mexe na economia de XP.
+- [ ] **G3 · [FAZER] Normalizar a tabela §4 do `Acoes_Sistema.md`.** Ela é anterior aos modos e
   fala a língua antiga: diz "Longa: uma jogada só" (a Longa não rola) e "uma jogada por dia"
   (quer dizer Acumulada com intervalo diário), e nenhuma linha declara Acúmulo nem intervalo. Sai
   linha a linha conforme cada ficha for escrita.
 
 **Escrever:**
 
-- [ ] **G3 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
+- [ ] **G4 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
   subsistema pequeno, com oito perguntas próprias listadas no doc. É o maior vazio do sistema:
   um jogador com Ferraria 5 não sabe quanto tempo leva para fazer uma espada nem o que sai dela.
   Destrava também o **ajuste de peça** que a ficha já oferece (uma Espada Longa Ótima) sem dizer
   como se chega a ela.
-- [ ] **G4 · [FAZER] As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força e
+- [ ] **G5 · [FAZER] As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força e
   Esgueirar-se. Feito de força está meio pronto: o FAH já dá o peso máximo, falta a tabela de
   "com esse FAH você arromba o quê", nos moldes da tabela de proezas do Exalted.
-- [ ] **G5 · [DECIDIR] Uma escada de exaustão única?** Vale para veneno, doença, ambiente,
+- [ ] **G6 · [DECIDIR] Uma escada de exaustão única?** Vale para veneno, doença, ambiente,
   sufocamento e privação de sono de uma vez, e é por isso que a família **Resistir** se decide em
   bloco e não ficha a ficha. O modelo mais limpo é o de níveis de exaustão do D&D 5e.
-- [ ] **G6 · [DECIDIR] Percepção passiva.** Encolheu com a decisão dos modos: o modo **Passiva**
+- [ ] **G7 · [DECIDIR] Percepção passiva.** Encolheu com a decisão dos modos: o modo **Passiva**
   já dá o valor parado (2 × Atributo + Habilidade). Falta confirmar que a Prontidão sem procurar
   usa esse valor, e dizer contra o quê ele é comparado.
 
 **Arrumação:**
 
-- [ ] **G7 · [DECIDIR] Duas ações levantadas e nunca catalogadas** (`Acoes_Catalogo.md` §12):
+- [ ] **G8 · [DECIDIR] Duas ações levantadas e nunca catalogadas** (`Acoes_Catalogo.md` §12):
   **escapar de amarras** e **sinalizar à distância**. Entram ou não?
-- [ ] **G8 · [DECIDIR] Trocar a palavra "stunt" por um termo em português.** São 15 ocorrências
+- [ ] **G9 · [DECIDIR] Trocar a palavra "stunt" por um termo em português.** São 15 ocorrências
   em `atributos-e-pericias.md`, `combate.md`, `relacoes-sociais.md` e `glossario.json`, então é
   melhor trocar de uma vez. Sugestão do autor em Relações: "ações que beneficiam a intenção".
-- [ ] **G9 · [FAZER] Três listas paralelas das mesmas ações** (catálogo, texto e tabela §4) já
+- [ ] **G10 · [FAZER] Três listas paralelas das mesmas ações** (catálogo, texto e tabela §4) já
   divergem: "Apostar" e "Levantar o peso máximo" existem em duas das três. Definir qual é a fonte
   de verdade, ou fundir.
-- [ ] **G10 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
+- [ ] **G11 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
   capítulo que já existe (movimento em Combate, resistir em Vida & Ferimentos, social em
   Relações). A aposta atual é capítulo único, porque a régua comum precisa de um lugar só.
-- [ ] **G11 · [FAZER] `regras.json → acoes`** para as tabelas que o motor precisar ler, quando o
+- [ ] **G12 · [FAZER] `regras.json → acoes`** para as tabelas que o motor precisar ler, quando o
   capítulo fechar.
 
 ---

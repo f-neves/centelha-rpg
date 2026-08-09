@@ -480,7 +480,7 @@ ter quatro linhas.
 | Campo | Quando escrever | O que diz |
 |---|---|---|
 | **Modo** | **sempre** | Direta, Acumulada, Longa, Reflexiva, Passiva, ou "sem modo" quando o número é derivado |
-| **Jogada** | **sempre**, salvo Longa e Passiva | Atributo + Perícia |
+| **Jogada** | **sempre**, salvo Longa e Passiva | Atributo + Perícia, e a **secundária** que cobre a ação, se houver (§5.5) |
 | **Dificuldade** | **sempre** | com dois a quatro exemplos concretos na régua |
 | **Acúmulo e intervalo** | se Acumulada ou Longa | o Acúmulo e o degrau da escada de seis |
 | **A Margem compra** | **sempre** | o que o excedente de expertise faz nesta ação |
@@ -540,14 +540,39 @@ mudar o Acúmulo muda **quanto demora**.
 
 > **[DECIDIR]**, as duas.
 
-1. **Perícia secundária ou Especialidade?** Escalar é Atletismo, mas existe a secundária
-   **Escalada**. Nadar é Atletismo, mas existe **Natação**. A ficha nomeia qual? O personagem usa
-   a maior das duas? A secundária é uma Especialidade de Atletismo com outro nome? Isso se repete
-   em Escalar, Nadar, Equilibrar-se, Acrobacia, Roubar, Arrombar, Disfarçar e mais uma dúzia.
+1. ~~Perícia secundária ou Especialidade?~~ **Resolvido em 2026-08-09.** Ver §5.5 abaixo.
 2. ~~A âncora "Difícil" tem dois valores no projeto.~~ **Resolvido em 2026-08-09, e era pior do
    que parecia:** o `regras.json` divergia do capítulo em **três** linhas (soma 8 contra 9, 10
    contra 12, 12 contra 15) e ainda trocava os nomes dos degraus. O capítulo estava certo, porque
    os somas dele seguem a régua ×5/3 e conferem na probabilidade. O `regras.json` foi corrigido.
+
+### 5.5 Quando a primária e a secundária cobrem a mesma ação
+
+Escalar é **Atletismo**, e existe a secundária **Escalada**. Nadar é Atletismo, e existe
+**Natação**. Isso se repete em mais de uma dúzia de ações, e a regra é uma só:
+
+<p class="formula">A <b>maior</b> das duas entra no pool · a <b>menor</b> vira <b>bônus fixo</b> ao total</p>
+
+| O personagem tem | Rola | Soma |
+|---|---|:--:|
+| Atletismo 4, Escalada 2 | pool com Atletismo 4 | **+2** |
+| Atletismo 4, Escalada 4 | pool com qualquer uma | **+4** |
+| Atletismo 2, Escalada 6 | pool com Escalada 6 | **+2** |
+| Atletismo 4, sem Escalada | pool com Atletismo 4 | +0 |
+| Sem Atletismo, Escalada 4 | pool com Escalada 4 | +0 |
+
+A regra é simétrica, então tanto faz qual das duas é a "principal": vale sempre a maior no pool e
+a menor somando. Investir nas duas nunca é desperdício, e quem se especializou de verdade tem um
+número visivelmente melhor do que quem só tem o tronco.
+
+**Só vale para a secundária que a ficha nomear.** Cada ficha diz qual secundária cobre aquela
+ação, e o Mestre não precisa julgar caso a caso. Onde a ficha não nomeia nenhuma, a primária
+trabalha sozinha.
+
+**Consequência assumida:** isto torna a secundária mais eficiente por XP do que a Especialidade
+(uma secundária 4 custa 18 XP e dá +4; dois níveis de Especialidade custam 28 e dão cerca de
++2,4). A decisão foi tomada de olhos abertos, e o reequilíbrio da Especialidade fica como item
+próprio, fora deste capítulo.
 
 ---
 
@@ -560,7 +585,8 @@ mudar o Acúmulo muda **quanto demora**.
 
 **Modo** · Acumulada com pressa, Longa com calma. O par de números é o mesmo nos dois.
 
-**Jogada** · Força + Atletismo.
+**Jogada** · Força + Atletismo, com a secundária **Escalada** pela §5.5: a maior das duas entra no
+pool e a menor vira bônus fixo.
 
 **Dificuldade** · a superfície, e só ela:
 
