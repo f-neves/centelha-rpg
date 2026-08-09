@@ -1,0 +1,235 @@
+---
+/**
+ * FundoCentelha.astro — fundo arcano com o selo Centelha oscilando.
+ * Primeiro filho do <body>, em Base.astro. Instância única por página.
+ *
+ * Tudo sai dos tokens do site (--bg, --gold, --accent, --accent-strong, --rule,
+ * --deco-strength). O único valor cru é o preto da vinheta, que é sombra e não
+ * cor de tema, e o dourado do selo, que é a cor da marca.
+ *
+ * O selo respira com os MESMOS parâmetros do CentelhaSpark: gap de 50 a 100 e
+ * diagonal curta de 100% a 70%, ponta a 450 do centro. Conferido na conta de
+ * markPoints, então a marca da capa e a do fundo são o mesmo desenho.
+ *
+ * Respeita prefers-reduced-motion: congela num quadro em vez de animar.
+ */
+interface Props {
+  /** teto de opacidade do selo atrás do conteúdo (0–100). Baixo de propósito. */
+  intensidade?: number;
+  rt?: number;                 // tamanho da estrela (Rt)
+  rotacao?: number;            // graus
+  rotMode?: 'osc' | 'spin';    // oscilar (vai e volta) | contínua
+  gapInicio?: number; gapFim?: number;
+  curtaInicio?: number; curtaFim?: number;   // % da diagonal curta
+  corInicio?: number; corFim?: number;       // % ouro→pálido
+  aura?: number;               // % brilho
+  pulsoFundo?: number;         // % anéis + flare
+  duracaoSeg?: number;
+}
+const {
+  intensidade = 22,
+  rt = 450,
+  rotacao = 0,
+  rotMode = 'spin',
+  gapInicio = 50, gapFim = 100,
+  curtaInicio = 100, curtaFim = 70,
+  corInicio = 0, corFim = 50,
+  aura = 75, pulsoFundo = 50,
+  duracaoSeg = 5,
+} = Astro.props;
+---
+
+<div class="cfundo" aria-hidden="true">
+  <div class="bg"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-sparks"></div>
+  <div class="bg-sparks2"></div>
+  <div class="bg-grain"></div>
+
+  <svg
+    class="bg-seal" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet"
+    style={`--seal-intensity:${intensidade / 100}`}
+    data-rt={rt} data-rot={rotacao} data-mode={rotMode}
+    data-g0={gapInicio} data-g1={gapFim}
+    data-n0={curtaInicio} data-n1={curtaFim}
+    data-c0={corInicio} data-c1={corFim}
+    data-a={aura} data-b={pulsoFundo} data-d={duracaoSeg}
+  >
+    <defs>
+      <filter id="cfGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur id="cfGlowNode" stdDeviation="20"></feGaussianBlur>
+      </filter>
+      <radialGradient id="cfFlare" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#d9b85f" stop-opacity="0.85"></stop>
+        <stop offset="52%" stop-color="#d9b85f" stop-opacity="0.16"></stop>
+        <stop offset="100%" stop-color="#d9b85f" stop-opacity="0"></stop>
+      </radialGradient>
+    </defs>
+    <rect id="cfFlareRect" x="0" y="0" width="1024" height="1024" fill="url(#cfFlare)" opacity="0"></rect>
+    <g class="runering" stroke="currentColor" fill="none" opacity=".55">
+      <circle cx="512" cy="512" r="470" stroke-width="2"></circle>
+      <circle cx="512" cy="512" r="410" stroke-width="1.2"></circle>
+      <g stroke-width="2">
+        <path d="M512 30 v46 M512 948 v46 M30 512 h46 M948 512 h46"></path>
+        <path d="M150 150 l30 30 M874 150 l-30 30 M150 874 l30 -30 M874 874 l-30 -30"></path>
+      </g>
+    </g>
+    <g id="cfRings" fill="none"></g>
+    <g id="cfGlowLayer" filter="url(#cfGlow)" fill="#d9b85f"></g>
+    <g id="cfWrap"><g id="cfMark" fill="#d9b85f"></g></g>
+  </svg>
+</div>
+
+<style>
+  /* display:contents = o wrapper não vira caixa; as camadas ficam como
+     filhas diretas do body, então o z-index negativo funciona atrás do texto. */
+  .cfundo { display: contents; }
+
+  /* Liga e desliga, do mesmo jeito que o fundo antigo: por data-fundo, escrito
+     no <html> pelo script do <head> antes da primeira pintura. Sem atributo vale
+     "site", para o fundo aparecer mesmo se aquele script não rodar. O Legível
+     existe para contraste máximo, e brasas e vinheta trabalham contra ele, então
+     vem por último e vence o empate de especificidade. */
+  html:not([data-fundo]) .cfundo,
+  html[data-fundo='site'] .cfundo { display: contents; }
+  html[data-fundo='ficha'] .cfundo { display: none; }
+  html[data-fundo='ficha'] body.page-ficha .cfundo { display: contents; }
+  html[data-theme='legivel'] .cfundo { display: none; }
+
+  .cfundo .bg,
+  .cfundo .bg-glow,
+  .cfundo .bg-sparks,
+  .cfundo .bg-sparks2,
+  .cfundo .bg-grain,
+  .cfundo .bg-seal { position: fixed; inset: 0; pointer-events: none; }
+
+  /* --bg, e não --ground: este site nunca teve --ground. O desenho de origem
+     falava em --ground/--ground-2/--border, que aqui são --bg/--bg-soft/
+     --panel-border. Com o nome de lá a camada sairia transparente. */
+  .cfundo .bg      { z-index: -6; background: var(--bg); }
+  .cfundo .bg-glow { z-index: -5;
+    background:
+      radial-gradient(1200px 820px at 50% 116%, color-mix(in srgb, var(--gold) calc(14% * var(--deco-strength, 1)), transparent), transparent 62%),
+      radial-gradient(1000px 700px at 50% -12%, color-mix(in srgb, var(--accent) calc(9% * var(--deco-strength, 1)), transparent), transparent 60%),
+      radial-gradient(150% 130% at 50% 42%, transparent 52%, var(--vignette, rgba(0,0,0,.55))); }
+
+  .cfundo .bg-seal { inset: auto; top: 50%; left: 50%; translate: -50% -50%;
+    width: min(94vw, 780px); height: min(94vw, 780px); z-index: -4;
+    color: var(--rule);
+    opacity: calc(var(--seal-intensity, .22) * (0.15 + 0.85 * var(--deco-strength, 1))); }
+
+  /* As partículas SOBEM, que é o que dá vida ao fundo. Cada camada desloca o
+     background-position exatamente um tile (o próprio background-size), então o
+     laço fecha sem emenda. Duas velocidades para render profundidade: as miúdas
+     passam rápido, as borradas arrastam. */
+  .cfundo .bg-sparks, .cfundo .bg-sparks2 { z-index: -3; background-repeat: repeat; }
+  .cfundo .bg-sparks { opacity: calc(var(--deco-strength, 1) * .9); background-size: 300px 300px;
+    background-image:
+      radial-gradient(1.6px 1.6px at 40px 60px, var(--gold), transparent 2.4px),
+      radial-gradient(1.2px 1.2px at 210px 110px, var(--gold), transparent 2px),
+      radial-gradient(1.4px 1.4px at 130px 240px, var(--accent-strong), transparent 2.2px),
+      radial-gradient(1px 1px at 260px 280px, var(--gold), transparent 1.8px),
+      radial-gradient(1.2px 1.2px at 80px 200px, var(--accent), transparent 2px);
+    animation: cfSobe1 34s linear infinite; }
+  .cfundo .bg-sparks2 { opacity: calc(var(--deco-strength, 1) * .55); background-size: 340px 340px; background-position: 60px 30px;
+    background-image:
+      radial-gradient(7px 7px at 42px 62px, color-mix(in srgb, var(--gold) 45%, transparent), transparent 70%),
+      radial-gradient(6px 6px at 132px 242px, color-mix(in srgb, var(--accent) 40%, transparent), transparent 70%),
+      radial-gradient(1.4px 1.4px at 300px 90px, var(--gold), transparent 2.2px),
+      radial-gradient(1.2px 1.2px at 190px 300px, var(--accent-strong), transparent 2px);
+    animation: cfTwinkle 7s ease-in-out infinite, cfSobe2 62s linear infinite; }
+  @keyframes cfTwinkle { 0%,100%{ opacity: calc(var(--deco-strength,1) * .35) } 50%{ opacity: calc(var(--deco-strength,1) * .62) } }
+  /* o tile é 300, então -300 recoloca o padrão idêntico ao ponto de partida */
+  @keyframes cfSobe1 { to { background-position: 0 -300px; } }
+  /* esta parte de 60px 30px, e o tile é 340: 30 − 340 = −310 */
+  @keyframes cfSobe2 { from { background-position: 60px 30px; } to { background-position: 60px -310px; } }
+
+  .cfundo .bg-grain { z-index: -2; mix-blend-mode: overlay; opacity: calc(var(--deco-strength, 1) * .16);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cfundo .bg-sparks, .cfundo .bg-sparks2 { animation: none; }
+  }
+</style>
+
+<script>
+  const CX = 512, CY = 512;
+  const svg = document.querySelector<SVGSVGElement>('.bg-seal');
+  if (svg) {
+    const d = svg.dataset;
+    const P = {
+      Rt:+d.rt!, ROT:+d.rot!, mode:d.mode as string,
+      G0:+d.g0!, G1:+d.g1!, N0:+d.n0!/100, N1:+d.n1!/100,
+      C0:+d.c0!/100, C1:+d.c1!/100, A:+d.a!/100, B:+d.b!/100, D:+d.d!,
+    };
+    const mark = svg.querySelector('#cfMark')!;
+    const glow = svg.querySelector('#cfGlowLayer') as SVGGElement;
+    const wrap = svg.querySelector('#cfWrap')!;
+    const flare = svg.querySelector('#cfFlareRect')!;
+    const blur = svg.querySelector('#cfGlowNode')!;
+    const ringsG = svg.querySelector('#cfRings')!;
+    const NS = 'http://www.w3.org/2000/svg';
+    const markP:Element[] = [], glowP:Element[] = [], ringEls:Element[] = [];
+    for (let i=0;i<6;i++){ const a=document.createElementNS(NS,'polygon'); mark.appendChild(a); markP.push(a);
+      const b=document.createElementNS(NS,'polygon'); glow.appendChild(b); glowP.push(b); }
+    for (let i=0;i<2;i++){ const c=document.createElementNS(NS,'circle');
+      c.setAttribute('cx',''+CX); c.setAttribute('cy',''+CY); c.setAttribute('stroke','#e9cf86');
+      ringsG.appendChild(c); ringEls.push(c); }
+
+    function markPoints(Rt:number,G:number,narrow:number){
+      const R0=Rt+G, t=G/2, hs=0.2886751*R0, sx=(hs-1.1547005*t)*narrow;
+      const base=[[0,-2*t],[sx,-R0/2],[0,-(R0-2*t)],[-sx,-R0/2]], out:string[]=[];
+      for(let k=0;k<6;k++){ const a=k*Math.PI/3, ca=Math.cos(a), sa=Math.sin(a);
+        out.push(base.map(([x,y])=>`${(CX+x*ca-y*sa).toFixed(2)},${(CY+x*sa+y*ca).toFixed(2)}`).join(' ')); }
+      return out;
+    }
+    const lerp=(a:number,b:number,t:number)=>a+(b-a)*t;
+    const GOLD=[217,184,95], PALE=[248,236,192];
+    const mix=(a:number[],b:number[],t:number)=>`rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*t)).join(',')})`;
+
+    function renderRings(phase:number,amt:number){ for(let i=0;i<2;i++){ const pr=(phase+i*0.5)%1;
+      ringEls[i].setAttribute('r',(150+pr*440).toFixed(1));
+      ringEls[i].setAttribute('opacity',(Math.max(0,1-pr)*amt*0.4).toFixed(3));
+      ringEls[i].setAttribute('stroke-width',(1+7*(1-pr)).toFixed(2)); } }
+
+    function render(e:number,rot:number){
+      const G=lerp(P.G0,P.G1,e), N=lerp(P.N0,P.N1,e), colM=lerp(P.C0,P.C1,e), sc=0.96+0.05*e;
+      const pts=markPoints(P.Rt,G,N);
+      for(let i=0;i<6;i++){ markP[i].setAttribute('points',pts[i]); glowP[i].setAttribute('points',pts[i]); }
+      wrap.setAttribute('transform',`translate(${CX} ${CY}) scale(${sc.toFixed(4)}) rotate(${rot.toFixed(2)}) translate(${-CX} ${-CY})`);
+      mark.setAttribute('fill',mix(GOLD,PALE,Math.min(1,colM)));
+      glow.setAttribute('opacity',(P.A*(0.22+0.78*e)*0.9).toFixed(3));
+      blur.setAttribute('stdDeviation',(4+P.A*46*(0.35+0.65*e)).toFixed(1));
+      flare.setAttribute('opacity',(P.B*(0.1+0.9*e)*0.6).toFixed(3));
+    }
+    const pulse=(p:number)=>Math.pow((1-Math.cos(p*2*Math.PI))/2,1.4);
+
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      render(1, 0); renderRings(0.3, P.B);          // quadro estático
+    } else {
+      /* O laço só roda quando o fundo está de fato na tela. Sem esta guarda ele
+         seguiria recalculando seis polígonos, dois anéis e um desfoque por quadro
+         no tema Legível e nas páginas onde o fundo está desligado, pintando nada.
+         Quem liga e desliga é atributo no <html>, daí o observador. */
+      const naTela = () => svg.getClientRects().length > 0;
+      let rodando = false, phase = 0, last: number|null = null, spin = 0;
+      function frame(now:number){
+        if(!rodando) return;
+        if(last==null)last=now; const dt=(now-last)/1000; last=now;
+        phase=(phase+dt/Math.max(0.1,P.D))%1;
+        const e=pulse(phase);
+        let rot:number;
+        if(P.mode==='spin'){ spin=(spin+P.ROT*(dt/Math.max(0.1,P.D)))%360; rot=spin; }
+        else rot=P.ROT*e;
+        render(e,rot); renderRings(phase,P.B);
+        requestAnimationFrame(frame);
+      }
+      const ligar = () => { if(rodando) return; rodando = true; last = null; requestAnimationFrame(frame); };
+      const parar = () => { rodando = false; };
+      new MutationObserver(() => (naTela() ? ligar() : parar()))
+        .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'data-fundo'] });
+      if (naTela()) ligar(); else { render(1, 0); renderRings(0.3, P.B); }
+    }
+  }
+</script>
