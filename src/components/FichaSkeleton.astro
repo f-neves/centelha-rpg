@@ -186,7 +186,8 @@ import '../styles/arte-equip.css';
 {/* Ampliação da arte de uma peça, no mesmo desenho do lightbox do bestiário. */}
 <div class="eq-lb" id="eq-lightbox" hidden>
   <button class="eq-lb-fechar" type="button" aria-label="Fechar">✕</button>
-  <figure><img id="eq-lb-img" src="" alt="" /><figcaption id="eq-lb-cap" class="cinzel"></figcaption></figure>
+  {/* dois corpos: foto do jogador vai no <img>, arte do sistema vai no recorte de CSS */}
+  <figure><img id="eq-lb-img" src="" alt="" /><span id="eq-lb-arte" class="eq-arte" role="img" hidden></span><figcaption id="eq-lb-cap" class="cinzel"></figcaption></figure>
 </div>
 
 <FormasPop />
@@ -199,15 +200,37 @@ import '../styles/arte-equip.css';
     const lb = document.getElementById('eq-lightbox');
     const lbImg = document.getElementById('eq-lb-img') as HTMLImageElement | null;
     const lbCap = document.getElementById('eq-lb-cap');
-    if (lb && lbImg && lbCap) {
-      const fechar = () => { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; };
+    const lbArte = document.getElementById('eq-lb-arte');
+    if (lb && lbImg && lbCap && lbArte) {
+      const fechar = () => {
+        lb.hidden = true; lbImg.src = ''; lbArte.className = 'eq-arte';
+        document.body.style.overflow = '';
+      };
+      const abrir = (nome: string) => {
+        lbCap.textContent = nome;
+        lb.hidden = false; document.body.style.overflow = 'hidden';
+      };
       document.addEventListener('click', (e) => {
-        const z = (e.target as HTMLElement).closest<HTMLElement>('[data-eq-zoom]');
+        const z = (e.target as HTMLElement).closest<HTMLElement>('[data-eq-zoom], [data-eq-zoom-arte]');
         if (z) {
+          const nome = z.dataset.eqZoomNome || '';
+          // Arte do sistema: o desenho é um recorte de atlas feito em CSS. O lightbox
+          // repete a classe `.arte-<id>` e herda a proporção da peça de origem, que é
+          // quem sabe se aquele quadro é de arma, escudo ou armadura.
+          const arte = z.dataset.eqZoomArte;
+          if (arte) {
+            const molde = z.closest('.eq-img')?.querySelector('.eq-arte') || z;
+            lbImg.hidden = true; lbArte.hidden = false;
+            lbArte.className = 'eq-arte arte-' + arte;
+            lbArte.style.setProperty('--arte-ar', getComputedStyle(molde).getPropertyValue('--arte-ar'));
+            lbArte.setAttribute('aria-label', 'Imagem de ' + (nome || 'item'));
+            abrir(nome);
+            return;
+          }
+          lbArte.hidden = true; lbImg.hidden = false;
           lbImg.src = z.dataset.eqZoom!;
-          lbImg.alt = 'Imagem de ' + (z.dataset.eqZoomNome || 'item');
-          lbCap.textContent = z.dataset.eqZoomNome || '';
-          lb.hidden = false; document.body.style.overflow = 'hidden';
+          lbImg.alt = 'Imagem de ' + (nome || 'item');
+          abrir(nome);
           return;
         }
         if (!lb.hidden && (e.target === lb || (e.target as HTMLElement).closest('.eq-lb-fechar'))) fechar();
@@ -746,6 +769,12 @@ import '../styles/arte-equip.css';
      60x80 abria numa caixinha de 79x99. */
   .eq-lb img { width: 100%; height: min(78vh, 40rem); object-fit: scale-down; border-radius: var(--r-lg);
     background: var(--panel); padding: .6rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+  .eq-lb img[hidden], .eq-lb .eq-arte[hidden] { display: none; }
+  /* A arte do sistema é fundo recortado, e o recorte é medido sobre a caixa do elemento:
+     nada de padding aqui, senão o quadro desliza. A altura manda e a largura sai da
+     proporção da peça, que o script copia da peça de origem. */
+  .eq-lb .eq-arte { width: auto; max-width: 100%; height: min(78vh, 40rem);
+    border-radius: var(--r-lg); background-color: var(--panel); box-shadow: 0 18px 50px rgba(0,0,0,.5); }
   .eq-lb figcaption { color: #f3e8cf; font-size: var(--fs-h3); letter-spacing: .02em; }
   .eq-lb-fechar { position: absolute; top: 1rem; right: 1.2rem; width: 2.6rem; height: 2.6rem; border-radius: 50%;
     border: none; background: rgba(255,255,255,.12); color: #fff; font-size: var(--fs-h3); cursor: pointer; }

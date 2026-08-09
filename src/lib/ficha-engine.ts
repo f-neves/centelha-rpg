@@ -978,8 +978,9 @@ export function montarFicha(opts: FichaOpts) {
    *    continua no canto, porque trocar por uma foto sua segue valendo;
    * 3. nada: o quadro inteiro é o seletor de arquivo.
    *
-   * A arte do sistema não abre no zoom de propósito: quem manda nela é o CSS
-   * (`.arte-<id>` recorta o atlas), e o zoom trabalha com uma URL de imagem só.
+   * A arte do sistema também abre no zoom, mas por outro caminho: quem manda nela
+   * é o CSS (`.arte-<id>` recorta o atlas), então em vez de uma URL o botão leva o
+   * id da arte e o lightbox refaz o recorte grande.
    */
   function imgSlot(chave: string, url: string | undefined, classe: string, ro: boolean, nome = '', arte = '', enq?: any) {
     if (url) {
@@ -998,9 +999,12 @@ export function montarFicha(opts: FichaOpts) {
     }
     if (arte) {
       const desenho = `<span class="eq-arte arte-${escapeHtml(arte)}" role="img" aria-label="${escapeHtml(nome || 'Arte da peça')}"></span>`;
-      if (ro) return `<span class="eq-img ${classe} arte">${desenho}</span>`;
+      // A arte do sistema é um recorte de atlas feito no CSS, não uma URL: o zoom
+      // recebe o id da arte e reproduz o mesmo recorte em tamanho grande.
+      const lupa = `<button type="button" class="eq-img-zoom" data-eq-zoom-arte="${escapeHtml(arte)}" data-eq-zoom-nome="${escapeHtml(nome)}" title="Ampliar" aria-label="Ampliar a imagem de ${escapeHtml(nome)}"></button>`;
+      if (ro) return `<span class="eq-img ${classe} arte">${desenho}${lupa}</span>`;
       return `<div class="eq-img ${classe} arte">
-        ${desenho}
+        ${desenho}${lupa}
         <label class="eq-img-troca" title="Usar uma imagem sua"><input type="file" accept="image/*" data-eq-img="${chave}" hidden /><span aria-hidden="true">✎</span><span class="sr-only">Usar uma imagem sua</span></label>
       </div>`;
     }
