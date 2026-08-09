@@ -1,0 +1,142 @@
+---
+/* CentelhaSpark: a faísca da marca, animada, feita para viver inline no meio de
+   uma linha de texto. É ícone de marca (capa, títulos, logo): não instanciar aos
+   montes numa página, porque morph e filtro custam.
+
+   O QUE ANIMA. A faísca respira entre um vale (fechada) e um pico (aberta). Do
+   vale ao pico o vão entre os losangos vai de 20 a 80 e a diagonal curta afina de
+   90% para 60%, então ela abre e adelgaça ao mesmo tempo. Some brilho (+18% de
+   brightness) e uma aura que floresce no pico. Ciclo de 5s, 2,5s abrindo e 2,5s
+   fechando, com ease-in-out nas duas metades. Sem giro e sem anéis de fundo.
+
+   Os dois estados dividem os mesmos extremos (122,29→901,71 por 62→962), então o
+   getBBox do path é 779,4×900 em TODOS os quadros: a caixa não muda e o ícone
+   respira sem empurrar o texto. A escala do respiro é interna ao SVG, então
+   também não reflui.
+
+   TÉCNICA. Morph e escala em SMIL, aura e brilho em CSS.
+   O <animate> sobre d é o que interpola os seis subcaminhos (a propriedade CSS d
+   resolveria também, mas o suporte é irregular e o fallback pediria duplicar a
+   geometria; SMIL cobre Chrome, Firefox e Safari sem JS e sobrevive ao SSR).
+   A escala vai junto em SMIL, e não em CSS, por causa de relógio: SMIL e CSS têm
+   timelines separadas, e escala fora de fase com o morph apareceria. No mesmo
+   <g>/SMIL as duas ficam travadas por construção. Sobra só o filtro em CSS, onde
+   meio quadro de defasagem é invisível. O centro da escala sai dos <g> aninhados
+   (translate → escala → translate), que é a via SMIL para transform-origin.
+
+   COR. Nada de cor fixa aqui: fill="currentColor" e o brilho por filter, para o
+   ícone seguir o tema (--gold é #b08d3a no claro e #d9b85f no escuro) e para que
+   <span style="color:var(--gold)"><CentelhaSpark /></span> funcione como esperado.
+   Efeito colateral pequeno: no ouro escuro o canal vermelho satura em 1,18
+   (217 × 1,18 = 256), então o pico dessatura um tico para amarelo-claro, o que
+   numa faísca flamejando joga a favor.
+
+   Sem alt sai aria-hidden, que é o certo ao lado de texto; com alt vira role=img
+   rotulado, para quando a faísca for a marca e não enfeite. */
+interface Props { class?: string; alt?: string }
+const { class: cls, alt } = Astro.props;
+
+const VALE =
+  'M 512.00 492.00 L 623.72 277.00 L 512.00 62.00 L 400.28 277.00 Z ' +
+  'M 529.32 502.00 L 771.37 491.25 L 901.71 287.00 L 659.66 297.75 Z ' +
+  'M 529.32 522.00 L 659.66 726.25 L 901.71 737.00 L 771.37 532.75 Z ' +
+  'M 512.00 532.00 L 400.28 747.00 L 512.00 962.00 L 623.72 747.00 Z ' +
+  'M 494.68 522.00 L 252.63 532.75 L 122.29 737.00 L 364.34 726.25 Z ' +
+  'M 494.68 502.00 L 364.34 297.75 L 122.29 287.00 L 252.63 491.25 Z';
+
+const PICO =
+  'M 512.00 432.00 L 576.09 247.00 L 512.00 62.00 L 447.91 247.00 Z ' +
+  'M 581.28 472.00 L 773.54 435.00 L 901.71 287.00 L 709.45 324.00 Z ' +
+  'M 581.28 552.00 L 709.45 700.00 L 901.71 737.00 L 773.54 589.00 Z ' +
+  'M 512.00 592.00 L 447.91 777.00 L 512.00 962.00 L 576.09 777.00 Z ' +
+  'M 442.72 552.00 L 250.46 589.00 L 122.29 737.00 L 314.55 700.00 Z ' +
+  'M 442.72 472.00 L 314.55 324.00 L 122.29 287.00 L 250.46 435.00 Z';
+
+/* Um par de tempos só, usado pela forma E pela escala, que é o que garante as
+   duas no mesmo relógio. O CSS lá embaixo repete a mesma curva em cubic-bezier. */
+const DUR = '5s';
+const KEY_TIMES = '0;0.5;1';
+const KEY_SPLINES = '0.4 0 0.6 1;0.4 0 0.6 1';
+
+/* O d estático é o PICO: é o que aparece se o SMIL não rodar, e é também onde a
+   animação congela em prefers-reduced-motion. */
+---
+<svg
+  class:list={['centelha-spark', cls]}
+  viewBox="122.29 62 779.42 900"
+  fill="currentColor"
+  role={alt ? 'img' : undefined}
+  aria-label={alt}
+  aria-hidden={alt ? undefined : 'true'}
+>
+  <g transform="translate(512 512)">
+    <g>
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        values="0.96;1;0.96"
+        dur={DUR}
+        repeatCount="indefinite"
+        calcMode="spline"
+        keyTimes={KEY_TIMES}
+        keySplines={KEY_SPLINES}
+      />
+      <g transform="translate(-512 -512)">
+        <path d={PICO}>
+          <animate
+            attributeName="d"
+            values={`${VALE};${PICO};${VALE}`}
+            dur={DUR}
+            repeatCount="indefinite"
+            calcMode="spline"
+            keyTimes={KEY_TIMES}
+            keySplines={KEY_SPLINES}
+          />
+        </path>
+      </g>
+    </g>
+  </g>
+</svg>
+
+<script>
+  /* SMIL não se desliga por CSS, então o congelamento pede script. Vai aqui
+     dentro, e não no chamador, para o componente ser self-contained. Script
+     hoisted do Astro é bundlado uma vez, não por instância. 2,5s é o pico. */
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.querySelectorAll('svg.centelha-spark').forEach((el) => {
+      const svg = /** @type {SVGSVGElement} */ (el);
+      svg.setCurrentTime(2.5);
+      svg.pauseAnimations();
+    });
+</script>
+
+<style>
+  .centelha-spark {
+    display: inline-block;
+    height: 0.9em;
+    width: auto; /* resolve pela razão do viewBox: 0,8654 da altura */
+    vertical-align: -0.12em;
+    overflow: visible; /* a aura vaza um pouco */
+    animation: cs-respiro 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  /* Mesma curva e mesmos 5s do SMIL. Em CSS a timing-function vale por intervalo
+     entre keyframes, então 0/50/100 com esta bezier casa com o keySplines lá em
+     cima. A aura sai de raio zero em vez de sair de transparente: com raio 0 a
+     sombra é a silhueta exata atrás de uma forma opaca, ou seja invisível, e daí
+     floresce. Isso evita interpolar cor e mantém tudo em currentColor. */
+  @keyframes cs-respiro {
+    0%,
+    100% {
+      filter: brightness(1) drop-shadow(0 0 0 currentColor);
+    }
+    50% {
+      filter: brightness(1.18) drop-shadow(0 0 0.085em currentColor);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .centelha-spark {
+      animation: none;
+      filter: brightness(1.18) drop-shadow(0 0 0.085em currentColor);
+    }
+  }
+</style>
