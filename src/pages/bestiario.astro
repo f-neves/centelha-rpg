@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import CentelhaSpark from '../components/CentelhaSpark.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
 import monsters from '../data/monsters.json';
@@ -126,7 +127,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
                    data-full={url(i.imagem)} data-nome={i.nome} />
             : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
           <span class="arte-ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
-          {i.centelha > 0 && <span class="arte-cent" title={`Centelha ${i.centelha}`}>✦ {i.centelha}</span>}
+          {i.centelha > 0 && <span class="arte-cent" title={`Centelha ${i.centelha}`}><CentelhaSpark /> {i.centelha}</span>}
         </figure>
 
         <div class="besta-corpo">
@@ -223,7 +224,10 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
   <div class="lightbox" id="lightbox" hidden>
     <button class="lb-fechar" aria-label="Fechar">✕</button>
-    <figure><img id="lb-img" src="" alt="" /><figcaption id="lb-cap" class="cinzel"></figcaption></figure>
+    {/* A arte precisa da moldura de pergaminho por baixo: as fontes vêm com fundo
+        branco chapado, e é o multiply contra o pergaminho que faz esse branco
+        sumir. Por isso o gradiente fica aqui e não na img. */}
+    <figure><span class="lb-moldura"><img id="lb-img" src="" alt="" /></span><figcaption id="lb-cap" class="cinzel"></figcaption></figure>
   </div>
 
   <button id="ao-topo" class="ao-topo" aria-label="Voltar ao topo" title="Voltar ao topo" hidden>↑</button>
@@ -404,7 +408,14 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   .lightbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: color-mix(in srgb, #1a120a 82%, transparent); backdrop-filter: blur(3px); animation: lb-in .18s ease; }
   .lightbox[hidden] { display: none; }
   .lightbox figure { margin: 0; max-width: min(680px, 92vw); max-height: 88vh; display: flex; flex-direction: column; align-items: center; gap: .6rem; }
-  .lightbox img { max-width: 100%; max-height: 78vh; object-fit: contain; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7, #e4d5b2); border-radius: var(--r-lg); padding: 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+  /* Mesma receita do card: pergaminho na moldura, multiply na arte. Sem isso o
+     fundo branco do PNG fica opaco por cima do gradiente e o zoom sai branco. */
+  .lb-moldura {
+    display: flex; max-width: 100%; min-height: 0;
+    background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%);
+    border-radius: var(--r-lg); padding: 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5);
+  }
+  .lightbox img { max-width: 100%; max-height: calc(78vh - 2rem); object-fit: contain; mix-blend-mode: multiply; filter: saturate(1.02); }
   .lb-cap, #lb-cap { color: #f3e8cf; font-size: var(--fs-h3); letter-spacing: .02em; }
   .lb-fechar { position: absolute; top: 1rem; right: 1.2rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: none; background: rgba(255,255,255,.12); color: #fff; font-size: var(--fs-h3); cursor: pointer; transition: background .15s; }
   .lb-fechar:hover { background: rgba(255,255,255,.25); }

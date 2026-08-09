@@ -180,6 +180,7 @@ import Base from '../layouts/Base.astro';
   import artesData from '../data/artes.json';
   import { pv, defesa, iniciativa, regras } from '../lib/calc';
   import { resumoCombatePC } from '../lib/combate-resumo';
+  import { sparkSVG, T_PICO } from '../lib/centelha-spark';
   import { uiConfirmar, uiErro, uiFormulario, uiPerguntar } from '../lib/ui-dialog';
   import { atualizarUltimoCrumb, definirCrumbs } from '../lib/crumbs';
 
@@ -772,7 +773,7 @@ import Base from '../layouts/Base.astro';
     const cb = m.combate || {};
     const en = m.nomeIngles && m.nomeIngles.toLowerCase() !== m.nome.toLowerCase() ? ` <span class="besta-nome-en">(${esc(m.nomeIngles)})</span>` : '';
     const arte = m.imagem
-      ? `<figure class="arte"><img src="${u(m.imagem)}" alt="${esc(m.nome)}" /><span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${stars(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">✦ ${m.centelha}</span>` : ''}</figure>`
+      ? `<figure class="arte"><img src="${u(m.imagem)}" alt="${esc(m.nome)}" /><span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${stars(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">${sparkSVG(true)} ${m.centelha}</span>` : ''}</figure>`
       : `<figure class="arte sem-arte"><span class="capitular cinzel">${esc((m.nome || '?').trim()[0])}</span><span class="arte-ameaca">${stars(m.ameaca)}</span></figure>`;
     const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
     const porte = m.porte ? `<p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">${esc(m.porte)}</span><span class="pt-sep">·</span>${esc(m.dimensoes?.medida || '')}<span class="pt-sep">·</span>${esc(m.dimensoes?.peso || '')}</p>` : '';
@@ -800,7 +801,12 @@ import Base from '../layouts/Base.astro';
   function abrirCard(monId: string) {
     const m = MON[monId]; if (!m) return;
     const dlg = document.getElementById('card-modal')!;
-    document.getElementById('card-modal-body')!.innerHTML = cardHTML(m);
+    const corpo = document.getElementById('card-modal-body')!;
+    corpo.innerHTML = cardHTML(m);
+    /* A faísca nasce depois do script do componente, então o congelamento de
+       prefers-reduced-motion não a alcança: SMIL não se desliga por CSS. */
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches)
+      corpo.querySelectorAll<SVGSVGElement>('svg.centelha-spark').forEach((s) => { s.setCurrentTime(T_PICO); s.pauseAnimations(); });
     dlg.hidden = false; document.body.style.overflow = 'hidden';
   }
   function fecharCard() { document.getElementById('card-modal')!.hidden = true; document.body.style.overflow = ''; }
@@ -1196,6 +1202,17 @@ import Base from '../layouts/Base.astro';
   .card-modal .capitular { font-size: 4.6rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f); }
   .card-modal .arte-ameaca { position: absolute; left: .55rem; bottom: .45rem; color: var(--gold); letter-spacing: .08em; font-size: var(--fs-h3); text-shadow: 0 1px 2px rgba(0,0,0,.55); }
   .card-modal .arte-cent { position: absolute; left: .5rem; top: .5rem; font-family: 'Cinzel'; font-size: var(--fs-aux); font-weight: 600; padding: .18rem .68rem; border-radius: 999px; color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000); }
+  /* A faísca aqui vem do sparkSVG, montada em runtime, então não carrega o escopo
+     do CentelhaSpark.astro e precisa da própria regra: sem isto ela cairia no
+     tamanho default do SVG e estouraria o badge. Mesmos números do componente. */
+  .card-modal .arte-cent .centelha-spark { display: inline-block; height: .9em; width: auto; vertical-align: -.12em; overflow: visible; animation: cs-respiro 5s cubic-bezier(.4, 0, .6, 1) infinite; }
+  @keyframes cs-respiro {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 0 currentColor); }
+    50% { filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-modal .arte-cent .centelha-spark { animation: none; filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
+  }
   .card-modal .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
   .card-modal .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
   .card-modal .besta-nome { font-size: var(--fs-corpo); color: var(--accent-texto); line-height: 1.15; }

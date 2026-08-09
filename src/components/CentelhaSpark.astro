@@ -94,15 +94,35 @@ const { class: cls, alt } = Astro.props;
 </svg>
 
 <script>
-  /* SMIL não se desliga por CSS, então o congelamento pede script. Vai aqui
-     dentro, e não no chamador, para o componente ser self-contained. Script
-     hoisted do Astro é bundlado uma vez, não por instância. 2,5s é o pico. */
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches)
-    document.querySelectorAll('svg.centelha-spark:not(.apagada)').forEach((el) => {
-      const svg = /** @type {SVGSVGElement} */ (el);
-      svg.setCurrentTime(2.5);
-      svg.pauseAnimations();
-    });
+  /* Script hoisted do Astro: bundlado uma vez, não por instância. Cuida das duas
+     coisas que CSS não alcança, porque SMIL não se desliga por folha de estilo. */
+  import { T_PICO } from '../lib/centelha-spark';
+
+  const faiscas = /** @type {SVGSVGElement[]} */ (
+    [...document.querySelectorAll('svg.centelha-spark:not(.apagada)')]
+  );
+
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (const s of faiscas) { s.setCurrentTime(T_PICO); s.pauseAnimations(); }
+  } else if (faiscas.length) {
+    /* Faísca fora da tela não precisa gastar relógio. Isto não é zelo preventivo:
+       medido, o bestiário com 202 delas cai de 60 para 31 fps (quadro mediano de
+       16,7ms para 33,3ms). Pausando as que estão fora, só as poucas visíveis
+       animam e a página volta aos 60. A margem deixa a faísca já em movimento
+       quando entra na tela, em vez de acordar na borda. */
+    const io = new IntersectionObserver(
+      (entradas) => {
+        for (const e of entradas) {
+          const s = /** @type {SVGSVGElement} */ (e.target);
+          s.classList.toggle('fora-de-vista', !e.isIntersecting);
+          if (e.isIntersecting) s.unpauseAnimations();
+          else s.pauseAnimations();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+    for (const s of faiscas) io.observe(s);
+  }
 </script>
 
 <style>
@@ -128,6 +148,10 @@ const { class: cls, alt } = Astro.props;
     50% {
       filter: brightness(1.18) drop-shadow(0 0 0.128em currentColor);
     }
+  }
+  /* Par CSS do observer lá em cima: o SMIL ele pausa por script, o brilho aqui. */
+  .centelha-spark.fora-de-vista {
+    animation-play-state: paused;
   }
   @media (prefers-reduced-motion: reduce) {
     .centelha-spark {
