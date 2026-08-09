@@ -32,10 +32,29 @@
    da linha de base), a base cai 0,05em abaixo da linha. O viewBox está cortado
    rente ao desenho para que essas medidas sejam de tinta mesmo, sem margem morta.
 
-   Herda currentColor, então segue a cor de quem o contém (em .tag-orn, o --gold). */
+   Herda currentColor, então segue a cor de quem o contém (em .tag-orn, o --gold).
+
+   ANIMAÇÃO (prop anim). As variantes da série cheia são os MESMOS seis polígonos,
+   com os MESMOS quatro pontos cada, na mesma ordem: só as coordenadas mudam. Isso
+   permite interpolar de uma para a outra em vez de trocar de desenho, então em vez
+   de piscar entre quatro arquivos o ornamento respira: o vão do miolo abre e fecha
+   num movimento contínuo. Quem faz isso é o <animate> do SMIL sobre o atributo
+   points, que é a única via para morfar polígono (CSS não anima points).
+
+   O ciclo é v3 → v2 → v4 → v5 e volta, que é a ordem de vão abrindo. Cada perna
+   tem easing próprio, então as quatro formas ainda se leem como estados distintos
+   antes de a próxima começar, e não como um borrão. Sem SMIL, o polígono fica no
+   points estático, que é o primeiro quadro do ciclo. */
 export type OrnV = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-interface Props { v?: OrnV; class?: string; alt?: string }
-const { v = 1, class: cls, alt } = Astro.props;
+interface Props { v?: OrnV; class?: string; alt?: string; anim?: boolean; fase?: number }
+const { v = 1, class: cls, alt, anim = false, fase = 0 } = Astro.props;
+
+/* Um ciclo inteiro do respiro, em segundos, e o vaivém de variantes que ele
+   percorre. As sete entradas dão seis pernas, daí os seis keySplines. */
+const ORN_CICLO = 5.4;
+const SEQ: OrnV[] = [3, 2, 4, 5, 4, 2, 3];
+const KEY_TIMES = SEQ.map((_, i) => (i / (SEQ.length - 1)).toFixed(4)).join(';');
+const KEY_SPLINES = SEQ.slice(1).map(() => '0.45 0 0.55 1').join(';');
 
 const VARIANTES: Record<number, string[]> = {
   1: [
@@ -103,7 +122,9 @@ const VARIANTES: Record<number, string[]> = {
     '494.68,502.00 345.72,330.00 122.29,287.00 271.24,459.00',
   ],
 };
-const pontos = VARIANTES[v] ?? VARIANTES[1];
+/* Animado, o desenho parado é o primeiro quadro do ciclo (é o que aparece se o
+   SMIL não rodar). Parado, é a variante que o chamador pediu. */
+const pontos = anim ? VARIANTES[SEQ[0]] : (VARIANTES[v] ?? VARIANTES[1]);
 ---
 <svg
   class:list={['orn-centelha', cls]}
@@ -113,7 +134,22 @@ const pontos = VARIANTES[v] ?? VARIANTES[1];
   aria-label={alt}
   aria-hidden={alt ? undefined : 'true'}
 >
-  {pontos.map((p) => <polygon points={p} />)}
+  {pontos.map((p, i) => (
+    <polygon points={p}>
+      {anim && (
+        <animate
+          attributeName="points"
+          values={SEQ.map((s) => VARIANTES[s][i]).join(';')}
+          dur={`${ORN_CICLO}s`}
+          begin={`${fase}s`}
+          repeatCount="indefinite"
+          calcMode="spline"
+          keyTimes={KEY_TIMES}
+          keySplines={KEY_SPLINES}
+        />
+      )}
+    </polygon>
+  ))}
 </svg>
 
 <style>

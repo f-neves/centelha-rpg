@@ -12,7 +12,19 @@ const capitulos = NAV.filter((n) => n.numeral);
   <header style="text-align:center;margin:1.5rem 0 2.5rem">
     <p class="muted cinzel" style="letter-spacing:.4em;text-transform:uppercase;font-size: var(--fs-micro)">Sistema de Interpretação</p>
     <h1 style="font-size:clamp(2.2rem,6vw,3.4rem);margin:.2em 0">Centelha <span style="color:var(--accent-strong)">D6</span></h1>
-    <p class="tag-orn"><OrnCentelha v={5} /> <OrnCentelha v={3} /> <OrnCentelha v={4} /></p>
+    {/* Os três respiram o mesmo ciclo de 5,4s, defasados de um terço dele (1,8s),
+        então o movimento atravessa a linha como onda em vez de os três pulsarem
+        juntos. Fase negativa entra com a animação já em curso. */}
+    <p class="tag-orn"><OrnCentelha anim fase={0} /> <OrnCentelha anim fase={-1.8} /> <OrnCentelha anim fase={-3.6} /></p>
+    <script is:inline>
+      /* SMIL não se desliga por CSS, então quem pede menos movimento no sistema
+         precisa de script. Congela no quadro em que cada um estiver no load: como
+         o vaivém é simétrico e a defasagem é de um terço, nesse instante os dois
+         últimos calham na mesma forma. Fica v3, v4, v4 parados, que é uma linha
+         boa o bastante e não vale amarrar tempos de descongelamento às fases. */
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches)
+        for (const s of document.querySelectorAll('.tag-orn .orn-centelha')) s.pauseAnimations?.();
+    </script>
     <p class="lead" style="max-width:34rem;margin:.5rem auto 0;font-style:italic">Do mortal ao semideus, um dado de cada vez.</p>
     <p style="max-width:40rem;margin:1rem auto 0" class="muted">
       Um sistema de pool de d6 que equilibra realismo tático e agilidade cinematográfica —
