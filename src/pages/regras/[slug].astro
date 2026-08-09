@@ -21,7 +21,11 @@ const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regr
     Capítulo {entry.data.numeral}
   </p>
   <h1>{entry.data.titulo}</h1>
-  <p class="tag-orn" style="text-align:left"><OrnCentelha /></p>
+  {/* Este template serve todos os capítulos, daí a variante vir por slug: Coração
+      do Sistema está testando a roseta de pontas finas, o resto segue no padrão. */}
+  <p class="tag-orn" style="text-align:left">
+    <OrnCentelha v={entry.id === 'coracao-do-sistema' ? 6 : 1} />
+  </p>
   <Content />
 
   <nav class="cap-nav" aria-label="Navegação entre capítulos">

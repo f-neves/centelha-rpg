@@ -10,7 +10,13 @@
      v3 · vão estreito,        preenche 41,5%
      v2 · vão médio,           preenche 37,6%
      v4 · vão largo,           preenche 33,8%
-     v5 · vão máximo,          preenche 30,2% (a mais leve)
+     v5 · vão máximo,          preenche 30,2% (a mais leve dessa série)
+
+   A v6 sai dessa série: não é um passo de vão, é outra geometria. O par vertical
+   vira um losango estreito e os quatro braços viram paralelogramos inclinados,
+   puxando o desenho para uma estrela de pontas finas. Preenche 20,3% da caixa,
+   bem menos que qualquer uma das cinco, então no mesmo tamanho ela lê bem mais
+   leve ao lado das outras.
 
    Calibragem de tamanho: medido no navegador, a 100px de fonte o ❖ marca uma
    caixa de tinta de 74×73px, indo de −2px (abaixo da linha de base) a +71px. O
@@ -21,7 +27,7 @@
    rente ao desenho para que essas medidas sejam de tinta mesmo, sem margem morta.
 
    Herda currentColor, então segue a cor de quem o contém (em .tag-orn, o --gold). */
-interface Props { v?: 1 | 2 | 3 | 4 | 5; class?: string; alt?: string }
+interface Props { v?: 1 | 2 | 3 | 4 | 5 | 6; class?: string; alt?: string }
 const { v = 1, class: cls, alt } = Astro.props;
 
 const VARIANTES: Record<number, string[]> = {
@@ -64,6 +70,14 @@ const VARIANTES: Record<number, string[]> = {
     '512.00,612.00 410.96,787.00 512.00,962.00 613.04,787.00',
     '425.40,562.00 223.32,562.00 122.29,737.00 324.36,737.00',
     '425.40,462.00 324.36,287.00 122.29,287.00 223.32,462.00',
+  ],
+  6: [
+    '512.00,432.00 576.09,247.00 512.00,62.00 447.91,247.00',
+    '581.28,472.00 773.54,435.00 901.71,287.00 709.45,324.00',
+    '581.28,552.00 709.45,700.00 901.71,737.00 773.54,589.00',
+    '512.00,592.00 447.91,777.00 512.00,962.00 576.09,777.00',
+    '442.72,552.00 250.46,589.00 122.29,737.00 314.55,700.00',
+    '442.72,472.00 314.55,324.00 122.29,287.00 250.46,435.00',
   ],
 };
 const pontos = VARIANTES[v] ?? VARIANTES[1];
