@@ -81,6 +81,11 @@ forçada), na mesma moeda: um ponto por intervalo, recuperando no respiro.
 
 ## 4. O catálogo
 
+> **A descrição de cada ação e as referências de sistema (Exalted, D&D, Pathfinder, Cyberpunk e
+> companhia) ficam em `Acoes_Catalogo.md`.** Lá cada verbete diz o que a ação é e quem já
+> resolveu aquilo antes; aqui fica só a jogada sugerida e o estado. Ao acrescentar uma ação,
+> acrescente nos dois.
+
 **Estado de cada linha:**
 **`MOTOR`** a conta já existe no código e na ficha, falta a prosa ·
 **`DOC`** existe num documento de frente, falta virar capítulo ·

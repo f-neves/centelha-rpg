@@ -9,7 +9,7 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 38 itens abertos · 17 [DECIDIR] · 17 [FAZER] · 4 [AUTOR]
+**Placar:** 41 itens abertos · 19 [DECIDIR] · 18 [FAZER] · 4 [AUTOR]
 
 ---
 
@@ -128,23 +128,35 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
 
 ## G. Ações & Sistema
 
-Frente aberta em **2026-08-09**. Detalhe em `Acoes_Sistema.md`. Modelo: o capítulo **Drama and
-Systems** do Exalted 2ª edição. Nada disso existe no site: hoje o sistema só tem número para o
-que acontece **dentro** do combate, e toda ação fora dele é improviso de mesa.
+Frente aberta em **2026-08-09**. Dois documentos: `Acoes_Sistema.md` é o **rascunho do capítulo**
+(régua comum, jogada sugerida, fichas prontas) e `Acoes_Catalogo.md` é a **bancada** (o que cada
+ação é, sem número, com as referências de Exalted, D&D 3.5/5e, Pathfinder 1/2, Cyberpunk RED,
+Chronicles of Darkness, GURPS, Blades in the Dark, Burning Wheel e Ars Magica). Modelo do
+capítulo: **Drama and Systems** do Exalted 2ª edição. Nada disso existe no site: hoje o sistema
+só tem número para o que acontece **dentro** do combate, e toda ação fora dele é improviso.
 
-- [ ] **G1 · [FAZER] O capítulo de Ações & Sistema.** O catálogo já está montado em
-  `Acoes_Sistema.md` §4, dividido em sete famílias (corpo e movimento, resistir, sentidos e mente,
-  furtividade e roubo, social, ofício e mundo, fé e sobrenatural), com a jogada sugerida e o
-  estado de cada linha. **Arremesso** já está preenchido (§5.1), com o texto que saiu da ficha.
-- [ ] **G2 · [DECIDIR] A régua comum das ações** (`Acoes_Sistema.md` §3): os quatro modos de ação
-  (Direta, Acumulada, Longa, Reflexa) e a regra de **não rolar** quando a Dificuldade é ≤ metade
-  do pool. As duas vêm do Exalted e são o que faz o resto do capítulo caber em pouca regra.
-  **Trava G1.**
-- [ ] **G3 · [FAZER] As seis fichas mais urgentes:** Escalada, Queda, Veneno, Ambiente,
-  Esgueirar-se e **Construir/forjar**. As cinco primeiras porque aparecem em toda sessão; a
-  última porque é o maior buraco do sistema hoje: um jogador com Ferraria 5 não tem como saber
-  quanto tempo leva para fazer uma espada nem o que sai dela.
-- [ ] **G4 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
+- [ ] **G1 · [FAZER] O capítulo de Ações & Sistema.** Catálogo montado em oito famílias
+  (movimento e corpo, resistir, percepção e mente, furtividade e subterfúgio, sociais, construção
+  e ofício, mundo e viagem, fé e sobrenatural), com descrição e referências em `Acoes_Catalogo.md`
+  e jogada sugerida em `Acoes_Sistema.md` §4. **Arremesso** já está preenchido (§5.1).
+- [ ] **G2 · [DECIDIR] As sete decisões estruturais** (`Acoes_Catalogo.md` §1): modos de ação,
+  quando não se rola, graus de sucesso, ajuda e ação em grupo, ferramenta e oficina, escalas de
+  tempo, e o que acontece na falha. Nenhuma ficha fecha antes delas. As duas que mais mudam o
+  formato de todas as outras são **modos de ação** e **graus de sucesso**. **Trava G1 e G3.**
+- [ ] **G3 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
+  subsistema pequeno, com oito perguntas próprias listadas no doc. É o maior vazio do sistema:
+  um jogador com Ferraria 5 não sabe quanto tempo leva para fazer uma espada nem o que sai dela.
+  Destrava também o **ajuste de peça** que a ficha já oferece (uma Espada Longa Ótima) sem dizer
+  como se chega a ela.
+- [ ] **G4 · [FAZER] As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força e
+  Esgueirar-se. Feito de força está meio pronto: o FAH já dá o peso máximo, falta a tabela de
+  "com esse FAH você arromba o quê", nos moldes da tabela de proezas do Exalted.
+- [ ] **G5 · [DECIDIR] Uma escada de exaustão única?** Vale para veneno, doença, ambiente,
+  sufocamento e privação de sono de uma vez, e é por isso que a família **Resistir** se decide em
+  bloco e não ficha a ficha. O modelo mais limpo é o de níveis de exaustão do D&D 5e.
+- [ ] **G6 · [DECIDIR] Percepção passiva ou rolada?** Pré-requisito de Esgueirar-se, Disfarce,
+  Roubo e Emboscada. Rolar na mesa entrega a resposta pelo próprio ato de rolar.
+- [ ] **G7 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
   capítulo que já existe (movimento em Combate, resistir em Vida & Ferimentos, social em
   Relações). A aposta atual é capítulo único, porque a régua comum precisa de um lugar só.
 
@@ -156,5 +168,6 @@ que acontece **dentro** do combate, e toda ação fora dele é improviso de mesa
 2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
 3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
-5. **G2 → G3**, a régua comum das ações e depois as seis fichas: é a única frente que cobre um
-   vazio em vez de corrigir algo existente, e é a que mais aparece em mesa.
+5. **G2 → G3**, as decisões estruturais das ações e depois a construção: é a única frente que
+   cobre um vazio em vez de corrigir algo existente, e a construção é o maior vazio isolado do
+   sistema.
