@@ -1355,15 +1355,19 @@ export function montarFicha(opts: FichaOpts) {
     const maxKg = F.levantamento[fah] as number;
     const r0 = F.arremessoR0[faa] as number;
     const m0 = F.arremessoMassaBraco as number;
-    // Ao arremessar, o braço acelera o objeto E a si mesmo, o que dá
+    // De 1 kg para cima: ao arremessar, o braço acelera o objeto E a si mesmo, o que dá
     // v(m) = vmax·√(m₀/(m+m₀)) e portanto alcance ∝ m₀/(m+m₀). Calibrando com arremesso de
-    // peso e dardo, m₀ dá 1 kg: é por isso que 1 kg é o ponto onde a curva vira, e abaixo
-    // dele o alcance faz um platô em vez de desabar (uma pedra de 100 g vai MAIS longe que
-    // uma de 1 kg). O último fator é a parede da força: perto do peso máximo não há como
-    // acelerar nada. Assim o Arremesso manda no leve e o Halterofilismo assume no pesado,
-    // sem precisar de regra separada para a troca.
+    // peso e dardo, m₀ dá 1 kg, que é justamente onde a curva vira. O último fator é a
+    // parede da força: perto do peso máximo não há como acelerar nada. Assim o Arremesso
+    // manda no leve e o Halterofilismo assume no pesado, sem regra separada para a troca.
+    const pesado = (w: number) => r0 * (m0 / (w + m0)) * Math.pow(1 - w / maxKg, F.arremessoParedeExp);
+    // Abaixo de 1 kg o arrasto do ar manda, e manda rápido: falta massa para carregar o
+    // impulso contra o vento, então a distância desaba em vez de continuar subindo. O ápice
+    // fica em 1 kg exato e dali para baixo a curva cai suave até zero (3w²−2w³), o que põe
+    // meio quilo em metade do alcance e cem gramas em menos de 3%.
+    const d1 = pesado(1);
     const dist = (w: number) => w <= 0 || w >= maxKg ? 0
-      : r0 * (m0 / (w + m0)) * Math.pow(1 - w / maxKg, F.arremessoParedeExp);
+      : w < 1 ? d1 * (3 * w * w - 2 * w * w * w) : pesado(w);
     const r1 = (n: number) => (n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10)).replace('.', ',');
     // Gráfico Arremesso × Peso. O eixo X é o peso porque é ele que o jogador tem em mãos
     // ("esta pedra tem 8 kg, vai até onde?"), e a distância é a resposta, no Y. Na mesma
@@ -1392,10 +1396,10 @@ export function montarFicha(opts: FichaOpts) {
     // proporção direta que derrubou a tentativa anterior de log. Leve, Média e Máxima
     // saem com a mesma largura (cada uma dobra a anterior); a Mínima é larga porque vai
     // de zero a P/8, que em log são muitas dobras.
-    // O trecho abaixo de 1 kg já foi comprimido aqui, quando o modelo antigo fazia a
-    // distância desabar até zero e não havia nada para consultar ali. Agora há: é onde o
-    // alcance é maior, num platô, e é a faixa de adagas, dardos e pedras. Log puro dos dois
-    // lados.
+    // Abaixo de 1 kg a curva sobe até o ápice, e esse trecho já esteve comprimido a 5% da
+    // largura. Agora fica em log puro como o resto: é a faixa de adagas, dardos e pedras, e
+    // é preciso enxergar o quanto o arrasto cobra ali para ninguém arremessar uma moeda
+    // achando que ela vai longe.
     const wMin = 0.05;
     const lnW0 = Math.log(wMin), spanX = Math.log(maxKg) - lnW0;
     const xposW = (w: number) => xB + ((Math.log(Math.max(wMin, w)) - lnW0) / spanX) * pw;
@@ -1426,8 +1430,8 @@ export function montarFicha(opts: FichaOpts) {
       : v < 100 ? Math.ceil(v / 5) * 5
       : v < 500 ? Math.ceil(v / 10) * 10
       : Math.ceil(v / 50) * 50;
-    // o pico agora fica no extremo leve, não em 1 kg: o teto tem de olhar para lá
-    const yMax = teto(Math.max(...tw.map(dCorrida), dCorrida(wMin)));
+    // o pico está em 1 kg, que já é uma das linhas da tabela
+    const yMax = teto(Math.max(...tw.map(dCorrida), dCorrida(1)));
     // marcas do eixo Y no menor passo redondo (1, 2, 2.5 ou 5 × 10ⁿ) que caiba em 4
     // intervalos, com o teto sempre rotulado no fim
     const passoY = (() => {
@@ -1448,7 +1452,7 @@ export function montarFicha(opts: FichaOpts) {
     const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt} <span class="muted">(Atletismo não entra: erguer o máximo é força parada)</span>`
       + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(vel(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(vel(cLeve) * 100)}%</i></span>`
       + `<span>Média <b>${kg(cMedia)}</b> <i>só anda, ${Math.round(vel(cMedia) * 100)}%</i></span><span>Máxima <b>${kg(maxKg)}</b> <i>ergue, não desloca</i></span></div>`
-      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg vai a ${r1(dist(1))} m parado. Objeto mais leve voa mais longe, até empatar com o peso do próprio braço (1 kg); mais pesado que isso o alcance cai, e no peso máximo (${maxKg} kg) não sai do lugar. Correr acrescenta até <b>+1/3</b> e girar no lugar até <b>+1/6</b>, e os dois encolhem junto com a velocidade que se alcança carregando o objeto, até as três curvas virarem uma só no peso máximo.</span></div>`;
+      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg é o ápice: vai a ${r1(dist(1))} m parado. Mais pesado que isso o braço perde velocidade e o alcance cai, até o peso máximo (${maxKg} kg), que não sai do lugar. Mais leve também cai, e mais rápido, porque falta massa para levar o impulso contra o ar: meio quilo já vai à metade e cem gramas não passam de ${r1(dist(0.1))} m. Correr acrescenta até <b>+1/3</b> e girar no lugar até <b>+1/6</b>, e os dois encolhem junto com a velocidade que se alcança carregando o objeto, até as três curvas virarem uma só no peso máximo.</span></div>`;
     // No celular não existe hover: sem estes botões o toque só conseguiria ler a curva
     // que estivesse desenhada por cima. Eles escolhem qual delas o toque lê.
     const botoes = `<div class="fa-curvas" role="group" aria-label="Curva em destaque">`
@@ -1520,10 +1524,10 @@ export function montarFicha(opts: FichaOpts) {
       // à esquerda), senão colidem com o maior número de cada eixo
       const titles = `<text class="axlbl" x="${(xB + xR) / 2}" y="${H - 4}" text-anchor="middle">Peso (kg)</text>`
         + `<text class="axlbl" transform="rotate(-90 11 ${mt + ph / 2})" x="11" y="${mt + ph / 2}" text-anchor="middle">Arremesso (m)</text>`;
-      // legenda no rodapé, afastada 10% da esquerda: encostada na borda ela caía em cima
-      // da subida quase vertical até 1 kg, que agora ocupa os primeiros 5% da largura
+      // legenda no alto à esquerda: é o único canto que a curva não visita, porque ela
+      // sobe da base até o ápice em 1 kg, no meio do quadro, e volta a descer
       const leg = defs.map((d, i) => {
-        const y = yB - 42 + i * 13, x = xB + pw * 0.1;
+        const y = mt + 12 + i * 13, x = xB + 10;
         return `<line class="${d.cls} fa-legln" x1="${x.toFixed(1)}" y1="${y}" x2="${(x + 18).toFixed(1)}" y2="${y}"/>`
           + `<text class="fa-leglbl" x="${(x + 24).toFixed(1)}" y="${y + 3.5}">${d.nome}</text>`;
       }).join('');
