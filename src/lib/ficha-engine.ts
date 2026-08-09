@@ -1443,7 +1443,10 @@ export function montarFicha(opts: FichaOpts) {
     yt.push(yMax);
     const rows = tw.map((w) =>
       `<tr><td>${w}</td><td>${r1(dist(w))}</td><td>${r1(dGiro(w))}</td><td>${r1(dCorrida(w))}</td></tr>`).join('');
-    const table = `<table class="fa-tbl"><thead><tr><th rowspan="2">Peso (kg)</th><th colspan="3">Arremesso (m)</th></tr><tr><th>Parado</th><th>Giro</th><th>Corrida</th></tr></thead><tbody>${rows}</tbody></table>`;
+    // o <colgroup> é o que manda nas larguras com table-layout: fixed, porque a primeira
+    // linha do cabeçalho tem só duas células (uma com rowspan, outra com colspan)
+    const table = `<table class="fa-tbl"><colgroup><col /><col /><col /><col /></colgroup>`
+      + `<thead><tr><th rowspan="2">Peso (kg)</th><th colspan="3">Arremesso (m)</th></tr><tr><th>Parado</th><th>Giro</th><th>Corrida</th></tr></thead><tbody>${rows}</tbody></table>`;
     const kg = (n: number) => `${Math.round(n)} kg`;
     const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×2 + Atletismo ${atl} + Halterofilismo ${halt}`
       + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(vel(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(vel(cLeve) * 100)}%</i></span>`

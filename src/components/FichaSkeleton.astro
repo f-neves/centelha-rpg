@@ -677,14 +677,19 @@ import '../styles/arte-equip.css';
   }
   /* margin: 0 anula o `table { margin: 1em 0 }` global, que desalinhava o topo da
      tabela em relação ao do gráfico ao lado */
-  .fa-tbl { border-collapse: collapse; font-size: var(--fs-rotulo); margin: 0; }
+  /* table-layout: fixed porque as três colunas de distância têm de sair iguais; deixado
+     ao automático, quem mandava na largura era o cabeçalho, e "Corrida" ficava com o
+     dobro de "Giro" sem nenhum motivo de leitura */
+  .fa-tbl { border-collapse: collapse; font-size: var(--fs-rotulo); margin: 0; width: 100%; table-layout: fixed; }
+  .fa-tbl col:first-child { width: 2.6rem; }
+  .fa-tbl col + col { width: calc((100% - 2.6rem) / 3); }
   /* o padding vertical é o que dá altura à tabela, e o gráfico ao lado copia essa
      altura: mexer aqui estica os dois juntos */
   .fa-tbl th, .fa-tbl td { border: 1px solid var(--rule); padding: .31rem .55rem; text-align: center; }
   /* a coluna de peso é só um número: o cabeçalho quebra em duas linhas para não impor
      a largura de "Peso (kg)" inteiro, e o que sobra vai para o gráfico */
   .fa-tbl th:first-child, .fa-tbl td:first-child { padding-left: .2rem; padding-right: .2rem; }
-  .fa-tbl thead th:first-child { width: 2.6rem; white-space: normal; line-height: 1.2; }
+  .fa-tbl thead th:first-child { white-space: normal; line-height: 1.2; }
   .fa-tbl th { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); font-weight: 700; }
   /* o thead herda o fundo --accent-strong da regra global; com --ink-soft dava 1,5:1 */
   .fa-tbl thead th { color: var(--on-accent-strong); }
