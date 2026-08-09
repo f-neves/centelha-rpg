@@ -106,14 +106,20 @@ const {
   /* --bg, e não --ground: este site nunca teve --ground. O desenho de origem
      falava em --ground/--ground-2/--border, que aqui são --bg/--bg-soft/
      --panel-border. Com o nome de lá a camada sairia transparente. */
+  /* --fundo-cx é o centro horizontal da coluna de leitura, em px, publicado pelo
+     script. Tudo que tem eixo se pendura nele em vez de em 50%: o site tem barra
+     lateral de 17rem, então o centro da JANELA cai fora do texto. O 50vw é só o
+     fallback de antes do script rodar. O eixo vertical segue na janela: a coluna
+     rola e é mais alta que a tela, então "centro vertical do conteúdo" não é um
+     ponto fixo que dê para mirar. */
   .cfundo .bg      { z-index: -6; background: var(--bg); }
   .cfundo .bg-glow { z-index: -5;
     background:
-      radial-gradient(1200px 820px at 50% 116%, color-mix(in srgb, var(--gold) calc(14% * var(--deco-strength, 1)), transparent), transparent 62%),
-      radial-gradient(1000px 700px at 50% -12%, color-mix(in srgb, var(--accent) calc(9% * var(--deco-strength, 1)), transparent), transparent 60%),
-      radial-gradient(150% 130% at 50% 42%, transparent 52%, var(--vignette, rgba(0,0,0,.55))); }
+      radial-gradient(1200px 820px at var(--fundo-cx, 50vw) 116%, color-mix(in srgb, var(--gold) calc(14% * var(--deco-strength, 1)), transparent), transparent 62%),
+      radial-gradient(1000px 700px at var(--fundo-cx, 50vw) -12%, color-mix(in srgb, var(--accent) calc(9% * var(--deco-strength, 1)), transparent), transparent 60%),
+      radial-gradient(150% 130% at var(--fundo-cx, 50vw) 42%, transparent 52%, var(--vignette, rgba(0,0,0,.55))); }
 
-  .cfundo .bg-seal { inset: auto; top: 50%; left: 50%; translate: -50% -50%;
+  .cfundo .bg-seal { inset: auto; top: 50%; left: var(--fundo-cx, 50vw); translate: -50% -50%;
     width: min(94vw, 780px); height: min(94vw, 780px); z-index: -4;
     color: var(--rule);
     opacity: calc(var(--seal-intensity, .22) * (0.15 + 0.85 * var(--deco-strength, 1))); }
@@ -140,8 +146,13 @@ const {
       radial-gradient(1.4px 1.4px at 285px 175px, var(--accent-strong), transparent 2.4px),
       radial-gradient(1.8px 1.8px at 20px 145px, var(--gold), transparent 2.8px),
       radial-gradient(1.5px 1.5px at 105px 292px, var(--gold), transparent 2.5px);
+    /* meio tile à esquerda do centro = o tile fica centrado na coluna */
+    background-position-x: calc(var(--fundo-cx, 50vw) - 150px);
     animation: cfSobe1 34s linear infinite; }
-  .cfundo .bg-sparks2 { opacity: calc(var(--deco-strength, 1) * .55); background-size: 340px 340px; background-position: 60px 30px;
+  .cfundo .bg-sparks2 { opacity: calc(var(--deco-strength, 1) * .55); background-size: 340px 340px;
+    /* meio tile de 340 é 170; os 60px que sobram são o descolamento que esta
+       camada já tinha, para os dois campos de pontos não se sobreporem */
+    background-position-x: calc(var(--fundo-cx, 50vw) - 110px); background-position-y: 30px;
     background-image:
       radial-gradient(9px 9px at 42px 62px, color-mix(in srgb, var(--gold) 45%, transparent), transparent 70%),
       radial-gradient(8px 8px at 132px 242px, color-mix(in srgb, var(--accent) 40%, transparent), transparent 70%),
@@ -150,10 +161,12 @@ const {
       radial-gradient(1.6px 1.6px at 190px 300px, var(--accent-strong), transparent 2.6px);
     animation: cfTwinkle 7s ease-in-out infinite, cfSobe2 62s linear infinite; }
   @keyframes cfTwinkle { 0%,100%{ opacity: calc(var(--deco-strength,1) * .35) } 50%{ opacity: calc(var(--deco-strength,1) * .62) } }
-  /* o tile é 300, então -300 recoloca o padrão idêntico ao ponto de partida */
-  @keyframes cfSobe1 { to { background-position: 0 -300px; } }
-  /* esta parte de 60px 30px, e o tile é 340: 30 − 340 = −310 */
-  @keyframes cfSobe2 { from { background-position: 60px 30px; } to { background-position: 60px -310px; } }
+  /* Só o eixo Y. Animar `background-position` cheio reescreveria também o X, e
+     com ele o alinhamento com a coluna de leitura.
+     O tile é 300, então −300 recoloca o padrão idêntico ao ponto de partida. */
+  @keyframes cfSobe1 { to { background-position-y: -300px; } }
+  /* esta parte de 30px, e o tile é 340: 30 − 340 = −310 */
+  @keyframes cfSobe2 { from { background-position-y: 30px; } to { background-position-y: -310px; } }
 
   .cfundo .bg-grain { z-index: -2; mix-blend-mode: overlay; opacity: calc(var(--deco-strength, 1) * .16);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
@@ -164,6 +177,24 @@ const {
 </style>
 
 <script>
+  /* Centro horizontal da coluna de leitura, em px de janela, publicado como
+     --fundo-cx para as camadas do CSS se pendurarem nele. Medir é mais confiável
+     que deduzir da grade: o mesmo número já cobre o recolher da barra lateral, o
+     celular (onde ela vira gaveta e o conteúdo ocupa tudo) e as larguras de
+     /configuracoes. O ResizeObserver pega os três, porque nos três o .content
+     muda de largura; o listener de resize cobre o caso de a janela mudar sem o
+     conteúdo mudar de tamanho. */
+  const coluna = document.querySelector<HTMLElement>('main.content');
+  if (coluna) {
+    const medirCentro = () => {
+      const r = coluna.getBoundingClientRect();
+      document.documentElement.style.setProperty('--fundo-cx', (r.left + r.width / 2).toFixed(1) + 'px');
+    };
+    medirCentro();
+    new ResizeObserver(medirCentro).observe(coluna);
+    addEventListener('resize', medirCentro, { passive: true });
+  }
+
   const CX = 512, CY = 512;
   const svg = document.querySelector<SVGSVGElement>('.bg-seal');
   if (svg) {
