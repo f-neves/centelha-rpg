@@ -1,18 +1,53 @@
 ---
-/* Ornamento da Centelha: seis losangos em roseta, o ícone do sistema (D&D/centelha.svg).
+/* Ornamento da Centelha: seis losangos em roseta, o ícone do sistema.
    Substitui o antigo glifo ❖ (U+2756).
 
-   Calibragem de tamanho: medido no navegador, a 100px de fonte o ❖ marca uma caixa de
-   tinta de 74×73px, indo de −2px (abaixo da linha de base) a +71px. O desenho aqui tem
-   caixa 779,42×900 (razão 0,866 de largura por altura), então para manter a MESMA área
-   de tinta: h = √(5402/0,866) ≈ 79 e w ≈ 68,4, ou seja 0,79em × 0,684em. Centrando a
-   mancha no mesmo eixo do glifo antigo (+0,345em da linha de base), a base cai 0,05em
-   abaixo da linha. O viewBox está cortado rente ao desenho para que essas medidas sejam
-   de tinta mesmo, sem margem morta.
+   Três variantes, que mudam só o vão entre os losangos (o miolo aperta ou abre).
+   As três dividem a MESMA caixa externa (122,29→901,71 por 62→962), então a
+   calibragem de tamanho vale igual para todas; o que muda é a mancha:
+     v1 · vão fechado, preenche 45,7% da caixa (a mais cheia)
+     v2 · vão aberto,  preenche 37,6% da caixa (a mais leve)
+     v3 · vão médio,   preenche 41,5% da caixa
+
+   Calibragem de tamanho: medido no navegador, a 100px de fonte o ❖ marca uma
+   caixa de tinta de 74×73px, indo de −2px (abaixo da linha de base) a +71px. O
+   desenho aqui tem caixa 779,42×900 (razão 0,866 de largura por altura), então
+   para manter a MESMA área de caixa: h = √(5402/0,866) ≈ 79 e w ≈ 68,4, ou seja
+   0,79em × 0,684em. Centrando a mancha no mesmo eixo do glifo antigo (+0,345em
+   da linha de base), a base cai 0,05em abaixo da linha. O viewBox está cortado
+   rente ao desenho para que essas medidas sejam de tinta mesmo, sem margem morta.
 
    Herda currentColor, então segue a cor de quem o contém (em .tag-orn, o --gold). */
-interface Props { class?: string; alt?: string }
-const { class: cls, alt } = Astro.props;
+interface Props { v?: 1 | 2 | 3; class?: string; alt?: string }
+const { v = 1, class: cls, alt } = Astro.props;
+
+const VARIANTES: Record<number, string[]> = {
+  1: [
+    '512.00,492.00 636.13,277.00 512.00,62.00 387.87,277.00',
+    '529.32,502.00 777.58,502.00 901.71,287.00 653.45,287.00',
+    '529.32,522.00 653.45,737.00 901.71,737.00 777.58,522.00',
+    '512.00,532.00 387.87,747.00 512.00,962.00 636.13,747.00',
+    '494.68,522.00 246.42,522.00 122.29,737.00 370.55,737.00',
+    '494.68,502.00 370.55,287.00 122.29,287.00 246.42,502.00',
+  ],
+  2: [
+    '512.00,452.00 624.58,257.00 512.00,62.00 399.42,257.00',
+    '563.96,482.00 789.13,482.00 901.71,287.00 676.54,287.00',
+    '563.96,542.00 676.54,737.00 901.71,737.00 789.13,542.00',
+    '512.00,572.00 399.42,767.00 512.00,962.00 624.58,767.00',
+    '460.04,542.00 234.87,542.00 122.29,737.00 347.46,737.00',
+    '460.04,482.00 347.46,287.00 122.29,287.00 234.87,482.00',
+  ],
+  3: [
+    '512.00,472.00 630.36,267.00 512.00,62.00 393.64,267.00',
+    '546.64,492.00 783.35,492.00 901.71,287.00 665.00,287.00',
+    '546.64,532.00 665.00,737.00 901.71,737.00 783.35,532.00',
+    '512.00,552.00 393.64,757.00 512.00,962.00 630.36,757.00',
+    '477.36,532.00 240.65,532.00 122.29,737.00 359.00,737.00',
+    '477.36,492.00 359.00,287.00 122.29,287.00 240.65,492.00',
+  ],
+};
+const pontos = VARIANTES[v] ?? VARIANTES[1];
 ---
 <svg
   class:list={['orn-centelha', cls]}
@@ -22,12 +57,7 @@ const { class: cls, alt } = Astro.props;
   aria-label={alt}
   aria-hidden={alt ? undefined : 'true'}
 >
-  <polygon points="512.00,492.00 636.13,277.00 512.00,62.00 387.87,277.00" />
-  <polygon points="529.32,502.00 777.58,502.00 901.71,287.00 653.45,287.00" />
-  <polygon points="529.32,522.00 653.45,737.00 901.71,737.00 777.58,522.00" />
-  <polygon points="512.00,532.00 387.87,747.00 512.00,962.00 636.13,747.00" />
-  <polygon points="494.68,522.00 246.42,522.00 122.29,737.00 370.55,737.00" />
-  <polygon points="494.68,502.00 370.55,287.00 122.29,287.00 246.42,502.00" />
+  {pontos.map((p) => <polygon points={p} />)}
 </svg>
 
 <style>
