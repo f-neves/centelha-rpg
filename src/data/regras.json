@@ -345,7 +345,7 @@
     "custoMult": 2,
     "curva": {
       "0": -5,
-        "1": -4,
+      "1": -4,
       "2": -3,
       "3": -2,
       "4": -1,
@@ -381,180 +381,79 @@
   "orcamentoVeterano": 2000,
   "orcamentoHeroico": 2600,
   "forca": {
-    "notaLevantamento": "FAH = (Força × 2) + Atletismo + Halterofilismo, de 2 a 24 para quem usa músculo. A tabela vai até 30 porque o Efeito de Empurrão usa (nível da Arte) × 5 no lugar do FAH, e a Arte 6 chega a 30. Define o peso que se ergue: Leve (carrega e ainda corre/salta/luta), Médio (ergue com esforço, devagar, penalidade), Máximo (limite absoluto, ergue por instantes, não se desloca com ele). Valores-base em kg, antes de Proeza Carga (×2…×100) e Centelha.",
-    "notaArremesso": "FAA = (Força × 2) + Atletismo + Arremesso, de 2 a 24 (Halterofilismo NÃO entra). 'distMax1kg' é o alcance de um arremesso normal (sem impulso nem giro) de 1 kg. A distância cai com o peso: Distância = distMax1kg × (1 − ln(peso) ÷ ln(pesoMáximo)). No peso máximo que a pessoa ergue, distância 0 m; no mínimo (1 kg), distância máxima.",
+    "notaLevantamento": "FAH = (Força × 3) + Halterofilismo, de 3 a 40. Atletismo NÃO entra: um levantamento máximo é contração estática de poucos segundos, e Atletismo é mobilidade e fôlego (corrida, salto, escalada). A tabela é uma lei de potência ancorada em três pontos reais: Força 1 sem treino ergue 30 kg, o adulto comum (Força 2, sem Halterofilismo) ergue 76 kg, e o pico humano (Força 6 + Halterofilismo 6 = FAH 24) ergue 500 kg, que é o recorde mundial de levantamento terra. Acima de 24 a tabela serve a criaturas grandes e a Efeitos de Arte, chegando a 1 tonelada no FAH 40. O valor é o peso MÁXIMO: ergue por instantes e não se desloca com ele. Como a curva é uma potência, o Halterofilismo rende mais a quem é fraco (×2,5 do 0 ao 6) do que a quem já é forte (×1,5), que é como treino funciona. Valores-base em kg, antes de Proeza Carga (×2…×100) e Centelha.",
+    "notaCarga": "As quatro faixas de carga saem do peso máximo P: Mínima até P/8, Leve até P/4, Média até P/2 e Máxima até P, cada uma o dobro da anterior. A velocidade que se alcança carregando um peso é velocidade ÷ máxima = (1 − (peso ÷ P)^expoente)², com expoente 1,5. Isso dá ~91% da velocidade na carga Mínima (corre quase igual), 77% na Leve (corre sentindo o peso), 42% na Média (não corre mais, anda rápido) e 0% na Máxima (ergue, mas não sai do lugar). A forma foi ajustada contra medições de corrida e marcha com carga: o primeiro décimo do peso máximo quase não custa nada, e a perda acelera depois.",
+    "notaArremesso": "FAA = (Força × 2) + Atletismo + Arremesso, de 2 a 24. Halterofilismo não entra aqui, mas entra pelo peso máximo, que é a parede do arremesso. Alcance = R0 × massaBraco ÷ (peso + massaBraco) × (1 − peso ÷ pesoMáximo)^paredeExp. O termo do meio é técnica e manda nos pesos leves; o último é força e manda nos pesados, então o comando troca sozinho entre Arremesso e Halterofilismo conforme o objeto pesa. massaBraco = 1 kg é a massa efetiva do braço: ao arremessar, o braço acelera o objeto E a si mesmo, e é por isso que 1 kg é o ponto onde a curva vira. Abaixo de 1 kg o alcance faz um platô (uma pedra de 100 g vai mais longe que uma de 1 kg, não menos); o que derruba objetos leves de verdade é o formato, e isso é trabalho do fator de forma, não do peso. R0 é o alcance extrapolado para massa zero, em metros, e sai de R0 = 136 × (FAA ÷ 24)^0,69, ajustado contra sete marcas reais (recorde do dardo, arremesso de peso mundial e nacional, disco de elite, pedra e bola de 1 kg de pessoa comum, beisebol amador). Correr antes de soltar acrescenta até +1/3 e girar no lugar até +1/6, os dois multiplicados pela velocidade que se alcança carregando aquele objeto, então as três curvas se fundem numa só no peso máximo.",
     "levantamento": {
-      "2": [
-        5,
-        10,
-        15
-      ],
-      "3": [
-        7,
-        14,
-        20
-      ],
-      "4": [
-        9,
-        18,
-        27
-      ],
-      "5": [
-        12,
-        24,
-        35
-      ],
-      "6": [
-        15,
-        30,
-        45
-      ],
-      "7": [
-        18,
-        36,
-        55
-      ],
-      "8": [
-        22,
-        44,
-        65
-      ],
-      "9": [
-        26,
-        52,
-        78
-      ],
-      "10": [
-        30,
-        60,
-        90
-      ],
-      "11": [
-        36,
-        72,
-        108
-      ],
-      "12": [
-        42,
-        84,
-        125
-      ],
-      "13": [
-        48,
-        96,
-        145
-      ],
-      "14": [
-        56,
-        112,
-        168
-      ],
-      "15": [
-        64,
-        128,
-        190
-      ],
-      "16": [
-        72,
-        144,
-        215
-      ],
-      "17": [
-        82,
-        164,
-        245
-      ],
-      "18": [
-        93,
-        186,
-        280
-      ],
-      "19": [
-        105,
-        210,
-        315
-      ],
-      "20": [
-        118,
-        236,
-        355
-      ],
-      "21": [
-        132,
-        264,
-        395
-      ],
-      "22": [
-        147,
-        294,
-        440
-      ],
-      "23": [
-        160,
-        320,
-        480
-      ],
-      "24": [
-        175,
-        350,
-        525
-      ],
-      "25": [
-        195,
-        390,
-        585
-      ],
-      "26": [
-        215,
-        430,
-        645
-      ],
-      "27": [
-        235,
-        470,
-        705
-      ],
-      "28": [
-        260,
-        520,
-        780
-      ],
-      "29": [
-        285,
-        570,
-        855
-      ],
-      "30": [
-        315,
-        630,
-        945
-      ]
+      "3": 30,
+      "4": 44,
+      "5": 60,
+      "6": 76,
+      "7": 94,
+      "8": 115,
+      "9": 135,
+      "10": 155,
+      "11": 175,
+      "12": 195,
+      "13": 220,
+      "14": 240,
+      "15": 260,
+      "16": 290,
+      "17": 310,
+      "18": 340,
+      "19": 360,
+      "20": 390,
+      "21": 420,
+      "22": 440,
+      "23": 470,
+      "24": 500,
+      "25": 525,
+      "26": 550,
+      "27": 575,
+      "28": 625,
+      "29": 650,
+      "30": 675,
+      "31": 700,
+      "32": 750,
+      "33": 775,
+      "34": 800,
+      "35": 825,
+      "36": 875,
+      "37": 900,
+      "38": 925,
+      "39": 975,
+      "40": 1000
     },
-    "arremessoDistMax1kg": {
-      "2": 4,
-      "3": 5,
-      "4": 6,
-      "5": 8,
-      "6": 10,
-      "7": 12,
-      "8": 14,
-      "9": 16,
-      "10": 19,
-      "11": 22,
-      "12": 25,
-      "13": 28,
-      "14": 32,
-      "15": 36,
-      "16": 40,
-      "17": 44,
-      "18": 48,
-      "19": 52,
-      "20": 56,
-      "21": 60,
-      "22": 64,
-      "23": 68,
-      "24": 72
-    }
+    "cargaExpoente": 1.5,
+    "arremessoR0": {
+      "2": 24,
+      "3": 32,
+      "4": 39,
+      "5": 46,
+      "6": 52,
+      "7": 58,
+      "8": 63,
+      "9": 69,
+      "10": 74,
+      "11": 79,
+      "12": 84,
+      "13": 89,
+      "14": 93,
+      "15": 98,
+      "16": 102,
+      "17": 107,
+      "18": 111,
+      "19": 115,
+      "20": 119,
+      "21": 124,
+      "22": 128,
+      "23": 132,
+      "24": 136
+    },
+    "arremessoMassaBraco": 1,
+    "arremessoParedeExp": 2,
+    "arremessoGanhoCorrida": 0.3333333333333333,
+    "arremessoGanhoGiro": 0.16666666666666666
   },
   "progressaoPorSessao": [
     10,

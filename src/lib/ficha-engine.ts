@@ -1347,17 +1347,23 @@ export function montarFicha(opts: FichaOpts) {
     const box = el('forca-arremesso'); if (!box) return;
     const F = (regras as any).forca; if (!F) { box.innerHTML = ''; return; }
     const forca = A('forca'), atl = SK('atletismo'), halt = S.skills2['halterofilismo'] || 0, arr = SK('arremesso');
-    const clampFA = (v: number) => Math.max(2, Math.min(24, v));
-    const fah = clampFA(2 * forca + atl + halt), faa = clampFA(2 * forca + atl + arr);
-    const [leve, medio, maxKg] = F.levantamento[fah] as number[];
-    const dmax = F.arremessoDistMax1kg[faa] as number;
-    const lnM = Math.log(maxKg);
-    // Abaixo de 1 kg nada voa mais longe: o que falta é massa para carregar o impulso,
-    // então a distância sobe de 0 m (peso nenhum) até o alcance máximo em 1 kg, numa
-    // curva suave (3w²−2w³). De 1 kg ao peso máximo vale a regra, que decai com o log.
-    const dist = (w: number) => w <= 0 ? 0
-      : w < 1 ? dmax * (3 * w * w - 2 * w * w * w)
-      : w >= maxKg ? 0 : dmax * (1 - Math.log(w) / lnM);
+    // Atletismo não entra no levantamento: erguer o máximo é contração estática, e Atletismo
+    // é mobilidade e fôlego. No arremesso ele entra, porque lá é cadeia cinética de corpo
+    // inteiro, com corrida de aproximação e giro de quadril.
+    const fah = Math.max(3, Math.min(40, 3 * forca + halt));
+    const faa = Math.max(2, Math.min(24, 2 * forca + atl + arr));
+    const maxKg = F.levantamento[fah] as number;
+    const r0 = F.arremessoR0[faa] as number;
+    const m0 = F.arremessoMassaBraco as number;
+    // Ao arremessar, o braço acelera o objeto E a si mesmo, o que dá
+    // v(m) = vmax·√(m₀/(m+m₀)) e portanto alcance ∝ m₀/(m+m₀). Calibrando com arremesso de
+    // peso e dardo, m₀ dá 1 kg: é por isso que 1 kg é o ponto onde a curva vira, e abaixo
+    // dele o alcance faz um platô em vez de desabar (uma pedra de 100 g vai MAIS longe que
+    // uma de 1 kg). O último fator é a parede da força: perto do peso máximo não há como
+    // acelerar nada. Assim o Arremesso manda no leve e o Halterofilismo assume no pesado,
+    // sem precisar de regra separada para a troca.
+    const dist = (w: number) => w <= 0 || w >= maxKg ? 0
+      : r0 * (m0 / (w + m0)) * Math.pow(1 - w / maxKg, F.arremessoParedeExp);
     const r1 = (n: number) => (n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10)).replace('.', ',');
     // Gráfico Arremesso × Peso. O eixo X é o peso porque é ele que o jogador tem em mãos
     // ("esta pedra tem 8 kg, vai até onde?"), e a distância é a resposta, no Y. Na mesma
@@ -1365,12 +1371,13 @@ export function montarFicha(opts: FichaOpts) {
     // vira uma reta e quem não repara nos números do eixo lê como proporção direta.
     const W = 580, ml = 42, mr = 16, mt = 14, mb = 34;
     const xB = ml, xR = W - mr, pw = xR - xB;
-    // Velocidade de corrida com carga. A perda acelera com o peso em vez de ser
-    // proporcional, e o quadrado é a forma que reproduz os pontos medidos: em P/8 ainda
-    // se corre a ~77% da velocidade, em P/4 a ~56%, em P/2 já é só andar (25%), e no
-    // peso máximo não se desloca. Daí saem as quatro faixas de carga, cada uma o dobro
-    // da anterior.
-    const vel = (w: number) => Math.max(0, 1 - w / maxKg) ** 2;
+    // Velocidade de corrida com carga, ajustada contra medições de sprint com colete e de
+    // marcha com mochila. A perda não é proporcional: o primeiro décimo do peso máximo quase
+    // não custa nada e o estrago acelera depois. Em P/8 ainda se corre a 91%, em P/4 a 77%,
+    // em P/2 já é só andar rápido (42%) e no peso máximo não se desloca. Daí saem as quatro
+    // faixas de carga, cada uma o dobro da anterior.
+    const vel = (w: number) =>
+      Math.max(0, 1 - Math.pow(Math.min(1, w / maxKg), F.cargaExpoente)) ** 2;
     const cMin = maxKg / 8, cLeve = maxKg / 4, cMedia = maxKg / 2;
     const bandas = [
       { de: 0, ate: cMin, nome: 'Mínima', op: '.04' },
@@ -1385,35 +1392,24 @@ export function montarFicha(opts: FichaOpts) {
     // proporção direta que derrubou a tentativa anterior de log. Leve, Média e Máxima
     // saem com a mesma largura (cada uma dobra a anterior); a Mínima é larga porque vai
     // de zero a P/8, que em log são muitas dobras.
-    // Abaixo de 1 kg, porém, não há nada para consultar: é só a subida até o pico, e em
-    // log puro esse trecho comia um terço do quadro. Ele fica comprimido nos primeiros
-    // 5% da largura (ainda em log, para a subida sair curva e não em bico) e os 95%
-    // restantes ficam com o que se usa de fato, de 1 kg ao peso máximo.
-    const wMin = 0.05, fSub = 0.05;
-    const lnW0 = Math.log(wMin), lnSub = -lnW0, spanX = Math.log(maxKg);
-    const xposW = (w: number) => {
-      const v = Math.max(wMin, w);
-      return v <= 1
-        ? xB + ((Math.log(v) - lnW0) / lnSub) * fSub * pw
-        : xB + (fSub + (Math.log(v) / spanX) * (1 - fSub)) * pw;
-    };
-    const wAtX = (x: number) => {
-      const f = (x - xB) / pw;
-      return f <= fSub
-        ? Math.exp(lnW0 + (f / fSub) * lnSub)
-        : Math.exp(((f - fSub) / (1 - fSub)) * spanX);
-    };
-    // sem marcas abaixo de 1 kg: naquela faixa comprimida não cabe rótulo nenhum
-    const xt = [2, 5, 10, 25, 50, 100, 250, 500, 1000].filter((w) => w < maxKg / 1.25);
-    xt.unshift(1); xt.push(maxKg);
-    const tw = [1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
+    // O trecho abaixo de 1 kg já foi comprimido aqui, quando o modelo antigo fazia a
+    // distância desabar até zero e não havia nada para consultar ali. Agora há: é onde o
+    // alcance é maior, num platô, e é a faixa de adagas, dardos e pedras. Log puro dos dois
+    // lados.
+    const wMin = 0.05;
+    const lnW0 = Math.log(wMin), spanX = Math.log(maxKg) - lnW0;
+    const xposW = (w: number) => xB + ((Math.log(Math.max(wMin, w)) - lnW0) / spanX) * pw;
+    const wAtX = (x: number) => Math.exp(lnW0 + ((x - xB) / pw) * spanX);
+    const xt = [0.1, 0.25, 0.5, 1, 2, 5, 10, 25, 50, 100, 250, 500].filter((w) => w > wMin && w < maxKg / 1.25);
+    xt.unshift(wMin); xt.push(maxKg);
+    const tw = [0.1, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
     tw.push(maxKg);
     // Correr antes de soltar rende +1/3 e o giro no lugar metade disso, mas só quem corre
     // de verdade cobra o valor cheio: o ganho segue a velocidade que se alcança com aquele
     // peso, então ele desce junto com ela e as três curvas se fundem numa só no peso
     // máximo, sem degrau nenhum no caminho.
-    const dGiro = (w: number) => dist(w) * (1 + vel(w) / 6);
-    const dCorrida = (w: number) => dist(w) * (1 + vel(w) / 3);
+    const dGiro = (w: number) => dist(w) * (1 + vel(w) * F.arremessoGanhoGiro);
+    const dCorrida = (w: number) => dist(w) * (1 + vel(w) * F.arremessoGanhoCorrida);
     // as três curvas em um lugar só: desenho, legenda, pontos do cursor e balão saem
     // todos daqui, na ordem em que se leem (a de cima primeiro)
     const defs = [
@@ -1430,7 +1426,8 @@ export function montarFicha(opts: FichaOpts) {
       : v < 100 ? Math.ceil(v / 5) * 5
       : v < 500 ? Math.ceil(v / 10) * 10
       : Math.ceil(v / 50) * 50;
-    const yMax = teto(Math.max(...tw.map(dCorrida), dCorrida(1)));
+    // o pico agora fica no extremo leve, não em 1 kg: o teto tem de olhar para lá
+    const yMax = teto(Math.max(...tw.map(dCorrida), dCorrida(wMin)));
     // marcas do eixo Y no menor passo redondo (1, 2, 2.5 ou 5 × 10ⁿ) que caiba em 4
     // intervalos, com o teto sempre rotulado no fim
     const passoY = (() => {
@@ -1442,16 +1439,16 @@ export function montarFicha(opts: FichaOpts) {
     for (let v = 0; v <= yMax - passoY * 0.35; v += passoY) yt.push(Math.round(v * 100) / 100);
     yt.push(yMax);
     const rows = tw.map((w) =>
-      `<tr><td>${w}</td><td>${r1(dist(w))}</td><td>${r1(dGiro(w))}</td><td>${r1(dCorrida(w))}</td></tr>`).join('');
+      `<tr><td>${String(w).replace('.', ',')}</td><td>${r1(dist(w))}</td><td>${r1(dGiro(w))}</td><td>${r1(dCorrida(w))}</td></tr>`).join('');
     // o <colgroup> é o que manda nas larguras com table-layout: fixed, porque a primeira
     // linha do cabeçalho tem só duas células (uma com rowspan, outra com colspan)
     const table = `<table class="fa-tbl"><colgroup><col /><col /><col /><col /></colgroup>`
       + `<thead><tr><th rowspan="2">Peso (kg)</th><th colspan="3">Arremesso (m)</th></tr><tr><th>Parado</th><th>Giro</th><th>Corrida</th></tr></thead><tbody>${rows}</tbody></table>`;
     const kg = (n: number) => `${Math.round(n)} kg`;
-    const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×2 + Atletismo ${atl} + Halterofilismo ${halt}`
+    const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt} <span class="muted">(Atletismo não entra: erguer o máximo é força parada)</span>`
       + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(vel(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(vel(cLeve) * 100)}%</i></span>`
       + `<span>Média <b>${kg(cMedia)}</b> <i>só anda, ${Math.round(vel(cMedia) * 100)}%</i></span><span>Máxima <b>${kg(maxKg)}</b> <i>ergue, não desloca</i></span></div>`
-      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg voa ${dmax} m, o mais longe que se alcança: abaixo disso falta massa para levar o impulso, e o peso máximo (${maxKg} kg) não sai do lugar. Correr acrescenta até <b>+1/3</b> e girar no lugar até <b>+1/6</b>, e os dois encolhem junto com a velocidade que se alcança carregando o objeto, até as três curvas virarem uma só no peso máximo.</span></div>`;
+      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} · <span class="muted">1 kg vai a ${r1(dist(1))} m parado. Objeto mais leve voa mais longe, até empatar com o peso do próprio braço (1 kg); mais pesado que isso o alcance cai, e no peso máximo (${maxKg} kg) não sai do lugar. Correr acrescenta até <b>+1/3</b> e girar no lugar até <b>+1/6</b>, e os dois encolhem junto com a velocidade que se alcança carregando o objeto, até as três curvas virarem uma só no peso máximo.</span></div>`;
     // No celular não existe hover: sem estes botões o toque só conseguiria ler a curva
     // que estivesse desenhada por cima. Eles escolhem qual delas o toque lê.
     const botoes = `<div class="fa-curvas" role="group" aria-label="Curva em destaque">`
@@ -1511,9 +1508,13 @@ export function montarFicha(opts: FichaOpts) {
       // três faixas de cima são estreitas e um rótulo centrado invadiria a vizinha
       const faixas = bandas.map((b) => {
         const x1 = xposW(b.de), x2 = xposW(b.ate);
+        // Leve, Média e Máxima têm exatamente a mesma largura em log (cada uma dobra a
+        // anterior), e num quadro estreito o nome inteiro de uma invade a vizinha. Aí as
+        // três encolhem juntas para três letras, em vez de umas sumirem e outras não.
+        const nome = x2 - x1 > b.nome.length * 7 + 8 ? b.nome : b.nome.slice(0, 3);
         return `<rect class="fa-band" x="${x1.toFixed(1)}" y="${mt}" width="${(x2 - x1).toFixed(1)}" height="${ph}" opacity="${b.op}"/>`
           + (b.de > 0 ? `<line class="fa-bandsep" x1="${x1.toFixed(1)}" y1="${mt}" x2="${x1.toFixed(1)}" y2="${yB}"/>` : '')
-          + `<text class="fa-bandlbl" x="${(x2 - 3).toFixed(1)}" y="${mt + 11}" text-anchor="end">${b.nome}</text>`;
+          + `<text class="fa-bandlbl" x="${(x2 - 3).toFixed(1)}" y="${mt + 11}" text-anchor="end">${nome}</text>`;
       }).join('');
       // os rótulos de unidade ficam fora da área de plotagem (título embaixo e girado
       // à esquerda), senão colidem com o maior número de cada eixo
