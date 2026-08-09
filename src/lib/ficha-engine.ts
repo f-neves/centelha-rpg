@@ -13,6 +13,7 @@ import EFEITO_D from '../data/efeitos.json';
 import RACA_D from '../data/racas.json';
 // a mesma formatação de parâmetros do capítulo XV, para a ficha não inventar outra
 import { ordemPar, valorPar, formaDe, rank, PAR_FORMA } from './artes-fmt';
+import { sparkSVG } from './centelha-spark';
 import {
   ARMA, ARMADURA, ESCUDO, ARMAS, ARMADURAS, ESCUDOS, ID_ARMADURA_LIVRE, baseArmadura,
   CAMPOS_ARMA, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
@@ -274,7 +275,8 @@ export function montarFicha(opts: FichaOpts) {
     for (let d = 1; d <= max; d++) {
       const capped = d > cap;
       const tip = capped ? ' title="Limite de criação — ative \'Evolução\' na barra de XP para passar daqui"' : '';
-      h += `<span class="dot${d <= value ? ' on' : ''}${d <= floor ? ' free' : ''}${capped ? ' cap' : ''}" data-d="${d}"${tip}></span>`;
+      h += `<span class="dot${d <= value ? ' on' : ''}${d <= floor ? ' free' : ''}${capped ? ' cap' : ''}" data-d="${d}"${tip}>`
+        + (kind === 'centelha' ? sparkSVG(d <= value) : '') + `</span>`;
     }
     return h + '</span>';
   };
@@ -1749,7 +1751,14 @@ export function montarFicha(opts: FichaOpts) {
     const span = document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`); if (!span) return;
     const floor = floorOf[kind], val = valOf(kind, key);
     span.setAttribute('aria-valuenow', String(val));
-    span.querySelectorAll('.dot').forEach((d) => { const dd = +(d as HTMLElement).dataset.d!; d.classList.toggle('on', dd <= val); d.classList.toggle('free', dd <= floor); });
+    span.querySelectorAll('.dot').forEach((d) => {
+      const dd = +(d as HTMLElement).dataset.d!, acesa = dd <= val;
+      d.classList.toggle('on', acesa); d.classList.toggle('free', dd <= floor);
+      // a faísca acesa e a apagada são markup diferente, não classe: SMIL não se
+      // desliga por CSS, então a apagada simplesmente não leva animação nenhuma
+      if (kind === 'centelha' && d.querySelector('svg')?.classList.contains('apagada') === acesa)
+        d.innerHTML = sparkSVG(acesa);
+    });
   }
   function refreshCaps(kind: string) {
     document.querySelectorAll(`.dots[data-kind="${kind}"]`).forEach((span) => {

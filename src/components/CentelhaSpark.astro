@@ -45,39 +45,20 @@
 
    Sem alt sai aria-hidden, que é o certo ao lado de texto; com alt vira role=img
    rotulado, para quando a faísca for a marca e não enfeite. */
+/* A geometria e os tempos moram em src/lib/centelha-spark.ts, porque a ficha do
+   personagem monta o DOM em tempo de execução e precisa dos mesmos caminhos sem
+   passar por um componente Astro. O que sobrou aqui é só a montagem. */
+import { VALE, PICO, VIEWBOX, DUR, KEY_TIMES, KEY_SPLINES, T_PICO } from '../lib/centelha-spark';
+
 interface Props { class?: string; alt?: string }
 const { class: cls, alt } = Astro.props;
-
-/* gap 50, curta 100: anel sólido, pétalas encostadas, 39,5% de tinta. */
-const VALE =
-  'M 512.00 462.00 L 627.47 262.00 L 512.00 62.00 L 396.53 262.00 Z ' +
-  'M 555.30 487.00 L 786.24 487.00 L 901.71 287.00 L 670.77 287.00 Z ' +
-  'M 555.30 537.00 L 670.77 737.00 L 901.71 737.00 L 786.24 537.00 Z ' +
-  'M 512.00 562.00 L 396.53 762.00 L 512.00 962.00 L 627.47 762.00 Z ' +
-  'M 468.70 537.00 L 237.76 537.00 L 122.29 737.00 L 353.23 737.00 Z ' +
-  'M 468.70 487.00 L 353.23 287.00 L 122.29 287.00 L 237.76 487.00 Z';
-
-/* gap 100, curta 70: pétalas soltas e afiladas, 21,2% de tinta. */
-const PICO =
-  'M 512.00 412.00 L 582.73 237.00 L 512.00 62.00 L 441.27 237.00 Z ' +
-  'M 598.60 462.00 L 785.52 435.75 L 901.71 287.00 L 714.79 313.25 Z ' +
-  'M 598.60 562.00 L 714.79 710.75 L 901.71 737.00 L 785.52 588.25 Z ' +
-  'M 512.00 612.00 L 441.27 787.00 L 512.00 962.00 L 582.73 787.00 Z ' +
-  'M 425.40 562.00 L 238.48 588.25 L 122.29 737.00 L 309.21 710.75 Z ' +
-  'M 425.40 462.00 L 309.21 313.25 L 122.29 287.00 L 238.48 435.75 Z';
-
-/* Um par de tempos só, usado pela forma E pela escala, que é o que garante as
-   duas no mesmo relógio. O CSS lá embaixo repete a mesma curva em cubic-bezier. */
-const DUR = '5s';
-const KEY_TIMES = '0;0.5;1';
-const KEY_SPLINES = '0.4 0 0.6 1;0.4 0 0.6 1';
 
 /* O d estático é o PICO: é o que aparece se o SMIL não rodar, e é também onde a
    animação congela em prefers-reduced-motion. */
 ---
 <svg
   class:list={['centelha-spark', cls]}
-  viewBox="122.29 62 779.42 900"
+  viewBox={VIEWBOX}
   fill="currentColor"
   role={alt ? 'img' : undefined}
   aria-label={alt}
@@ -117,7 +98,7 @@ const KEY_SPLINES = '0.4 0 0.6 1;0.4 0 0.6 1';
      dentro, e não no chamador, para o componente ser self-contained. Script
      hoisted do Astro é bundlado uma vez, não por instância. 2,5s é o pico. */
   if (matchMedia('(prefers-reduced-motion: reduce)').matches)
-    document.querySelectorAll('svg.centelha-spark').forEach((el) => {
+    document.querySelectorAll('svg.centelha-spark:not(.apagada)').forEach((el) => {
       const svg = /** @type {SVGSVGElement} */ (el);
       svg.setCurrentTime(2.5);
       svg.pauseAnimations();

@@ -504,6 +504,37 @@ import '../styles/arte-equip.css';
   .dots:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--r-sm); }
   .cam-tools { margin: 0 0 .5rem; }
   .dot.cap { opacity: .25; cursor: not-allowed; border-style: dotted; } .dot.cap:hover { box-shadow: none; }
+
+  /* CENTELHA. Aqui o marcador não é bolinha, é a faísca da marca: a caixa perde
+     borda e fundo e vira só o berço do SVG, um pouco maior que os 15px das outras
+     porque a faísca é vazada e some se apertada demais. O clique continua chegando
+     no .dot porque o SVG não recebe ponteiro. */
+  .dots[data-kind="centelha"] { gap: 5px; }
+  .dots[data-kind="centelha"] .dot {
+    width: 19px; height: 19px; border: 0; border-radius: 0; background: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    /* a faísca apagada é contorno, não silhueta, então ela já lê como vazia sem
+       precisar sumir: 65% só a manda para trás sem deixá-la fantasma no tema claro */
+    color: color-mix(in srgb, var(--gold) 65%, transparent);
+  }
+  .dots[data-kind="centelha"] .dot.on { background: none; color: var(--gold); }
+  .dots[data-kind="centelha"] .dot:hover { box-shadow: none; color: var(--gold); }
+  .dots[data-kind="centelha"] .dot.cap { border-style: none; }
+  .dots[data-kind="centelha"] .dot svg { width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  /* só a acesa respira; a apagada é o primeiro quadro parado e não leva SMIL nenhum.
+     Mesma curva e mesmos 5s do SMIL, para o brilho não sair de fase com a forma. */
+  .dots[data-kind="centelha"] .dot svg.centelha-spark:not(.apagada) {
+    animation: cs-respiro 5s cubic-bezier(.4, 0, .6, 1) infinite;
+  }
+  @keyframes cs-respiro {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 0 currentColor); }
+    50% { filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dots[data-kind="centelha"] .dot svg.centelha-spark:not(.apagada) {
+      animation: none; filter: brightness(1.18) drop-shadow(0 0 .128em currentColor);
+    }
+  }
   .rollv { background: none; border: none; cursor: pointer; font-size: var(--fs-rotulo); opacity: .35; margin-left: .35rem; padding: 0; line-height: 1; }
   .rollv:hover { opacity: 1; }
   .specbtn { background: none; border: none; cursor: pointer; font-size: var(--fs-micro); opacity: .4; margin-left: .35rem; padding: 0; line-height: 1; color: var(--gold); }
