@@ -3,11 +3,23 @@
    uma linha de texto. É ícone de marca (capa, títulos, logo): não instanciar aos
    montes numa página, porque morph e filtro custam.
 
+   PARÂMETROS. A geometria sai de três números, com o centro em (512, 512):
+     Rt 450   · raio da ponta. Distância do centro até a ponta de cada losango,
+                que é o que fixa o tamanho externo (512−450 = 62, e as diagonais
+                em 450·cos30° = 389,71, daí os extremos 122,29 e 901,71).
+     gap      · raio do vazio central, ou seja onde fica o vértice interno.
+     curta    · a diagonal curta do losango, em % de (Rt−gap)·tan30°. Essa
+                referência é o losango de 60°/120°, então em curta 100% cada
+                pétala abre exatos 60°, 6 × 60° = 360°, e elas se tocam de
+                aresta a aresta: o vazio entre pétalas some e sobra só o miolo.
+
    O QUE ANIMA. A faísca respira entre um vale (fechada) e um pico (aberta). Do
-   vale ao pico o vão entre os losangos vai de 20 a 80 e a diagonal curta afina de
-   90% para 60%, então ela abre e adelgaça ao mesmo tempo. Some brilho (+18% de
-   brightness) e uma aura que floresce no pico. Ciclo de 5s, 2,5s abrindo e 2,5s
-   fechando, com ease-in-out nas duas metades. Sem giro e sem anéis de fundo.
+   vale ao pico o gap vai de 50 a 100 e a curta afina de 100% para 70%, então ela
+   parte de um anel sólido e abre em pétalas separadas, deixando 39,5% e 21,2% de
+   tinta na caixa. Some brilho (+18% de brightness) e uma aura que floresce no
+   pico. Ciclo de 5s, 2,5s abrindo e 2,5s fechando, com ease-in-out nas duas
+   metades. Sem giro (o que mantém o viewBox cortado rente, porque girar jogaria
+   as pontas para fora dele) e sem anéis de fundo.
 
    Os dois estados dividem os mesmos extremos (122,29→901,71 por 62→962), então o
    getBBox do path é 779,4×900 em TODOS os quadros: a caixa não muda e o ícone
@@ -36,21 +48,23 @@
 interface Props { class?: string; alt?: string }
 const { class: cls, alt } = Astro.props;
 
+/* gap 50, curta 100: anel sólido, pétalas encostadas, 39,5% de tinta. */
 const VALE =
-  'M 512.00 492.00 L 623.72 277.00 L 512.00 62.00 L 400.28 277.00 Z ' +
-  'M 529.32 502.00 L 771.37 491.25 L 901.71 287.00 L 659.66 297.75 Z ' +
-  'M 529.32 522.00 L 659.66 726.25 L 901.71 737.00 L 771.37 532.75 Z ' +
-  'M 512.00 532.00 L 400.28 747.00 L 512.00 962.00 L 623.72 747.00 Z ' +
-  'M 494.68 522.00 L 252.63 532.75 L 122.29 737.00 L 364.34 726.25 Z ' +
-  'M 494.68 502.00 L 364.34 297.75 L 122.29 287.00 L 252.63 491.25 Z';
+  'M 512.00 462.00 L 627.47 262.00 L 512.00 62.00 L 396.53 262.00 Z ' +
+  'M 555.30 487.00 L 786.24 487.00 L 901.71 287.00 L 670.77 287.00 Z ' +
+  'M 555.30 537.00 L 670.77 737.00 L 901.71 737.00 L 786.24 537.00 Z ' +
+  'M 512.00 562.00 L 396.53 762.00 L 512.00 962.00 L 627.47 762.00 Z ' +
+  'M 468.70 537.00 L 237.76 537.00 L 122.29 737.00 L 353.23 737.00 Z ' +
+  'M 468.70 487.00 L 353.23 287.00 L 122.29 287.00 L 237.76 487.00 Z';
 
+/* gap 100, curta 70: pétalas soltas e afiladas, 21,2% de tinta. */
 const PICO =
-  'M 512.00 432.00 L 576.09 247.00 L 512.00 62.00 L 447.91 247.00 Z ' +
-  'M 581.28 472.00 L 773.54 435.00 L 901.71 287.00 L 709.45 324.00 Z ' +
-  'M 581.28 552.00 L 709.45 700.00 L 901.71 737.00 L 773.54 589.00 Z ' +
-  'M 512.00 592.00 L 447.91 777.00 L 512.00 962.00 L 576.09 777.00 Z ' +
-  'M 442.72 552.00 L 250.46 589.00 L 122.29 737.00 L 314.55 700.00 Z ' +
-  'M 442.72 472.00 L 314.55 324.00 L 122.29 287.00 L 250.46 435.00 Z';
+  'M 512.00 412.00 L 582.73 237.00 L 512.00 62.00 L 441.27 237.00 Z ' +
+  'M 598.60 462.00 L 785.52 435.75 L 901.71 287.00 L 714.79 313.25 Z ' +
+  'M 598.60 562.00 L 714.79 710.75 L 901.71 737.00 L 785.52 588.25 Z ' +
+  'M 512.00 612.00 L 441.27 787.00 L 512.00 962.00 L 582.73 787.00 Z ' +
+  'M 425.40 562.00 L 238.48 588.25 L 122.29 737.00 L 309.21 710.75 Z ' +
+  'M 425.40 462.00 L 309.21 313.25 L 122.29 287.00 L 238.48 435.75 Z';
 
 /* Um par de tempos só, usado pela forma E pela escala, que é o que garante as
    duas no mesmo relógio. O CSS lá embaixo repete a mesma curva em cubic-bezier. */
@@ -123,20 +137,21 @@ const KEY_SPLINES = '0.4 0 0.6 1;0.4 0 0.6 1';
      entre keyframes, então 0/50/100 com esta bezier casa com o keySplines lá em
      cima. A aura sai de raio zero em vez de sair de transparente: com raio 0 a
      sombra é a silhueta exata atrás de uma forma opaca, ou seja invisível, e daí
-     floresce. Isso evita interpolar cor e mantém tudo em currentColor. */
+     floresce. Isso evita interpolar cor e mantém tudo em currentColor. O raio de
+     0,128em é a aura em 75 (era 0,085em quando ela estava em 50). */
   @keyframes cs-respiro {
     0%,
     100% {
       filter: brightness(1) drop-shadow(0 0 0 currentColor);
     }
     50% {
-      filter: brightness(1.18) drop-shadow(0 0 0.085em currentColor);
+      filter: brightness(1.18) drop-shadow(0 0 0.128em currentColor);
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .centelha-spark {
       animation: none;
-      filter: brightness(1.18) drop-shadow(0 0 0.085em currentColor);
+      filter: brightness(1.18) drop-shadow(0 0 0.128em currentColor);
     }
   }
 </style>
