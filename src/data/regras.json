@@ -557,32 +557,32 @@
     {
       "dif": 5,
       "desafio": "Fácil",
-      "aaltura": "3 — competente"
+      "aaltura": "3 · Iniciante"
     },
     {
       "dif": 10,
       "desafio": "Média",
-      "aaltura": "6 — bom no ofício"
+      "aaltura": "6 · Competente"
     },
     {
       "dif": 15,
       "desafio": "Difícil",
-      "aaltura": "8 — perito"
+      "aaltura": "9 · Perito"
     },
     {
       "dif": 20,
-      "desafio": "Muito difícil",
-      "aaltura": "10 · mestre"
+      "desafio": "Limite humano",
+      "aaltura": "12 · Mestre"
     },
     {
       "dif": 25,
-      "desafio": "Limite humano",
-      "aaltura": "12 · pico humano"
+      "desafio": "Excepcional",
+      "aaltura": "15 · Herói"
     },
     {
       "dif": 30,
       "desafio": "Sobre-humano",
-      "aaltura": "requer Centelha ou Proezas"
+      "aaltura": "18 · Semideus"
     }
   ],
   "ferimentos": [

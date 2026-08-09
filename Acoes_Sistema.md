@@ -59,14 +59,19 @@ Da **tabela de âncoras** do Coração do Sistema, e não de uma fração do poo
 muralha é tão difícil quanto ela é, independentemente de quem sobe: a Dificuldade descreve a
 **tarefa**, nunca o personagem.
 
-| Dif | Desafio | Atrib + Hab à altura |
-|:--:|---|---|
-| 5 | Fácil | 3 · iniciante |
-| 10 | Média | 6 · competente |
-| 15 | Difícil | 9 · perito |
-| 20 | Muito difícil | 10 · mestre |
-| 25 | Limite humano | 12 · pico humano |
-| 30 | Sobre-humano | exige Centelha ou Proezas |
+| Dif | Desafio | Atrib + Hab à altura | Nível |
+|:--:|---|:--:|---|
+| 5 | Fácil | 3 | Iniciante |
+| 10 | Média | 6 | Competente |
+| 15 | Difícil | 9 | Perito |
+| 20 | Limite humano | 12 | Mestre |
+| 25 | Excepcional | 15 | Herói |
+| 30 | Sobre-humano | 18 | Semideus |
+
+Os somas andam de três em três porque a régua é essa: **a Dificuldade à altura é a soma × 5/3**, e
+a conta confere na probabilidade (soma 9 contra Dif 15 dá 56%; soma 12 contra Dif 20 dá 55%). Como
+o teto mortal de Atributo + Habilidade é **12**, tudo de Dif 25 para cima já pede Centelha,
+Proezas ou Artes, e é por isso que os degraus se chamam Herói e Semideus.
 
 A régua de ×4/3, ×5/3 e ×2 da Área do Mestre continua valendo para o **Mestre improvisar** uma
 Dificuldade na hora, a partir de quem está tentando. Ela não é o caminho deste capítulo: aqui
@@ -498,25 +503,29 @@ produz isto:
 | Fácil | 3 | 5 | 0,5 |
 | Média | 6 | 10 | 0,5 |
 | Difícil | 9 | 15 | 1,0 |
-| Muito difícil | 10 | 20 | **−2,5** |
-| Limite humano | 12 | 25 | **−4,0** |
+| Limite humano | 12 | 20 | 1,0 |
+| Excepcional | 15 | 25 | 1,5 |
 
-O personagem exatamente à altura de uma tarefa Média avançaria meio ponto por intervalo, e o de
-uma tarefa Muito difícil **regrediria para sempre**. Está errado.
+O personagem exatamente à altura de uma tarefa Média avançaria **meio ponto por intervalo**: vinte
+e dois intervalos para um Acúmulo de 10. Está errado.
 
 A calibragem certa sai de uma pergunta simples: **quantos intervalos o personagem à altura deve
-levar?** A resposta boa é **cerca de três**, e dela sai a régua abaixo. Ela reproduz exatamente o
-par que já tínhamos na mão para uma muralha (Dificuldade 7, Acúmulo 10, para soma 6).
+levar?** A resposta boa é **cerca de três**. E a régua que sai dela é surpreendentemente limpa:
 
-<p class="formula">Dificuldade de Acumulada e Longa ≈ 2/3 da média de quem está à altura da tarefa</p>
+<p class="formula">Dificuldade de Acumulada e Longa = <b>70% da Dificuldade de Direta</b>, arredondando para cima</p>
 
-| Desafio | Soma à altura | Média | **Dif** | Progresso | **Acúmulo** para ~3 intervalos |
-|---|:--:|:--:|:--:|:--:|:--:|
-| Fácil | 3 | 5,5 | **4** | 1,5 | **5** |
-| Média | 6 | 10,5 | **7** | 3,5 | **11** |
-| Difícil | 9 | 16 | **11** | 5,0 | **15** |
-| Muito difícil | 10 | 17,5 | **12** | 5,5 | **17** |
-| Limite humano | 12 | 21 | **14** | 7,0 | **21** |
+| Desafio | Dif na Direta | **Dif na Acumulada** | Soma à altura | Média | Progresso | **Acúmulo** para ~3 intervalos |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|
+| Fácil | 5 | **4** | 3 | 5,5 | 1,5 | **5** |
+| Média | 10 | **7** | 6 | 10,5 | 3,5 | **11** |
+| Difícil | 15 | **11** | 9 | 16 | 5,0 | **15** |
+| Limite humano | 20 | **14** | 12 | 21 | 7,0 | **21** |
+| Excepcional | 25 | **18** | 15 | 26,5 | 8,5 | **26** |
+| Sobre-humano | 30 | **21** | 18 | 31,5 | 10,5 | **32** |
+
+Os 70% não são arbitrários: eles caem exatamente em **dois terços da média** de quem está à
+altura, que é o que faz esse personagem terminar em três intervalos. E a régua **reproduz o par
+que já tínhamos na mão** para uma muralha, Dificuldade 7 e Acúmulo 10 para soma 6.
 
 E o par tem uma divisão de trabalho que vale decorar:
 
@@ -535,9 +544,10 @@ mudar o Acúmulo muda **quanto demora**.
    **Escalada**. Nadar é Atletismo, mas existe **Natação**. A ficha nomeia qual? O personagem usa
    a maior das duas? A secundária é uma Especialidade de Atletismo com outro nome? Isso se repete
    em Escalar, Nadar, Equilibrar-se, Acrobacia, Roubar, Arrombar, Disfarçar e mais uma dúzia.
-2. **A âncora "Difícil" tem dois valores no projeto.** `regras.json` diz que a soma à altura é
-   **8**; o capítulo do Coração do Sistema e a Área do Mestre dizem **9**. A tabela acima usou 9,
-   por ser o valor de duas das três fontes. Um dos lados precisa ceder.
+2. ~~A âncora "Difícil" tem dois valores no projeto.~~ **Resolvido em 2026-08-09, e era pior do
+   que parecia:** o `regras.json` divergia do capítulo em **três** linhas (soma 8 contra 9, 10
+   contra 12, 12 contra 15) e ainda trocava os nomes dos degraus. O capítulo estava certo, porque
+   os somas dele seguem a régua ×5/3 e conferem na probabilidade. O `regras.json` foi corrigido.
 
 ---
 
