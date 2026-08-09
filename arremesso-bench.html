@@ -100,7 +100,7 @@
 <body>
 <div class="max">
   <h1>Bancada de arremesso</h1>
-  <p class="sub">Duas fichas lado a lado com os mesmos parâmetros de modelo. <b>P</b> é o peso máximo: aquilo que a pessoa ergue e segura por instantes sem conseguir sair do lugar. Hoje a regra dá 35 kg para o homem comum (Força 2, Atletismo 1); a física de carga põe esse ponto perto de 150% do peso corporal, ou seja ~105 kg. Os dois números embaixo de cada bloco de parâmetro dizem o que o modelo entrega e o que a vida real mede, para você ver na hora se a escolha fecha.</p>
+  <p class="sub">Duas fichas lado a lado com os mesmos parâmetros de modelo. <b>P</b> é o peso máximo: aquilo que a pessoa ergue e segura por instantes sem conseguir sair do lugar. Hoje a regra dá 35 kg para o homem comum (Força 2, Atletismo 1). As três âncoras em uso são 30 kg no Força 1, 80 no homem comum e 500 no pico humano. Na lei de potência o expoente sai <b>só das duas pontas</b>, então o valor do meio cai onde cair: o erro dele contra o alvo é o teste de se a fórmula do FAH é coerente com as três âncoras ao mesmo tempo.</p>
 
   <div class="card params">
     <div class="pgrp">
@@ -111,13 +111,16 @@
         <label><input type="radio" name="fahf" value="atual">2×Força + Atl + Halt</label>
       </div>
       <div class="radios">
-        <label><input type="radio" name="pforma" value="geo" checked>P geométrica</label>
+        <label><input type="radio" name="pforma" value="pot" checked>P lei de potência</label>
+        <label><input type="radio" name="pforma" value="geo">P geométrica</label>
         <label><input type="radio" name="pforma" value="lin">P linear</label>
       </div>
-      <div class="fld" data-only="geo"><label for="ppiso">piso · Força 1, Halt 0 (kg)</label>
-        <input type="number" id="ppiso" min="20" max="200" step="5" value="80"></div>
-      <div class="fld" data-only="geo"><label for="ptopo">topo · Força 6, Halt 6 (kg)</label>
+      <div class="fld" data-only="pontas"><label for="ppiso">piso · Força 1, Halt 0 (kg)</label>
+        <input type="number" id="ppiso" min="10" max="200" step="5" value="30"></div>
+      <div class="fld" data-only="pontas"><label for="ptopo">topo · Força 6, Halt 6 (kg)</label>
         <input type="number" id="ptopo" min="150" max="1500" step="10" value="500"></div>
+      <div class="fld" data-only="pontas"><label for="palvo">alvo do homem comum (kg)</label>
+        <input type="number" id="palvo" min="30" max="300" step="5" value="80"></div>
       <div class="fld" data-only="lin"><label for="kgfah">kg por ponto de FAH</label>
         <input type="range" id="kgfah" min="4" max="40" step="1" value="22">
         <span class="val" id="kgfah_v">22</span></div>
@@ -187,7 +190,7 @@ const BASE_TBL = {2:4,3:5,4:6,5:8,6:10,7:12,8:14,9:16,10:19,11:22,12:25,13:28,14
                   15:36,16:40,17:44,18:48,19:52,20:56,21:60,22:64,23:68,24:72};
 const P_HOJE = {2:15,3:20,4:27,5:35,6:45,7:55,8:65,9:78,10:90,11:108,12:125,13:145,14:168,
                 15:190,16:215,17:245,18:280,19:315,20:355,21:395,22:440,23:480,24:525};
-const M = { kgFAH:22, fahf:'3f', pforma:'geo', ppiso:80, ptopo:500,
+const M = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
             modelo:'fisico', baseModo:'tabela', banc:37.5, bexp:0.828,
             q:0.70, pexp:1, m0:1, fexp:2, r0:136, r0exp:0.70,
             vexp:1.5, corrida:0.333, giro:0.167, escala:true };
@@ -214,9 +217,14 @@ const fahComum = () => M.fahf === '3f' ? 6 : M.fahf === '2f' ? 4 : 5;
 // então trocar a fórmula muda só como a escada entre elas é dividida.
 const fahTopo = () => M.fahf === 'atual' ? 24 : M.fahf === '3f' ? 24 : 18;
 const passoP = () => Math.pow(M.ptopo/M.ppiso, 1/(fahTopo() - fahMin()));
-const pmax = (f) => M.pforma === 'lin'
-  ? M.kgFAH * fah(f)
-  : M.ppiso * Math.pow(passoP(), fah(f) - fahMin());
+// Lei de potência: P = piso × (FAH/FAHmin)^b, com b saindo das duas pontas.
+// O meio (homem comum) NÃO é ajustado, ele cai onde cai, e é justamente isso
+// que revela se a fórmula do FAH é coerente com as três âncoras.
+const expP = () => Math.log(M.ptopo/M.ppiso) / Math.log(fahTopo()/fahMin());
+const pPorFah = (fh) => M.pforma === 'lin' ? M.kgFAH * fh
+  : M.pforma === 'geo' ? M.ppiso * Math.pow(passoP(), fh - fahMin())
+  : M.ppiso * Math.pow(fh/fahMin(), expP());
+const pmax = (f) => pPorFah(fah(f));
 const base = (f) => M.baseModo === 'tabela' ? BASE_TBL[faa(f)]
                                             : M.banc * Math.pow(faa(f)/22, M.bexp);
 
@@ -388,27 +396,28 @@ function pinta(){
     const f = FICHAS.find((z) => z.id === d.dataset.ficha), v = f[d.dataset.k];
     d.querySelectorAll('.dot').forEach((p) => p.classList.toggle('on', +p.dataset.d <= v));
   });
-  const pF = (fh) => M.pforma === 'lin' ? M.kgFAH*fh
-                   : M.ppiso*Math.pow(passoP(), fh - fahMin());
-  const deg = fahTopo() - fahMin();
+  const pF = pPorFah, deg = fahTopo() - fahMin(), C = fahComum();
   const fmt2 = (v) => v.toFixed(2).replace('.', ',');
-  const tec = pF(fahComum()+6)/pF(fahComum());
-  const cor = pF(fah({forca:6,atletismo:0,arremesso:0,halterofilismo:0}))
-            / pF(fah({forca:1,atletismo:0,arremesso:0,halterofilismo:0}));
   const dentro = (v, a, b) => v >= a && v <= b ? '' : ' style="color:var(--s2)"';
+  const erroMeio = pF(C)/M.palvo - 1;
+  const passo1 = (fh) => pF(fh+1)/pF(fh) - 1;
   document.getElementById('pnota').innerHTML =
-      `Escada de <b>${deg}</b> degraus, de ${Math.round(pF(fahMin()))} a ${Math.round(pF(fahTopo()))} kg`
-    + (M.pforma === 'geo' ? `, <b>+${((passoP()-1)*100).toFixed(1).replace('.',',')}%</b> cada` : '')
-    + `. Halterofilismo pega <b>${Math.round(6/deg*100)}%</b> do caminho.<br>`
-    + `Homem comum (Força 2, Halt 0) = FAH ${fahComum()} → <b>${Math.round(pF(fahComum()))} kg</b> `
-    + `<span class="old">(alvo 90 a 110)</span><br>`
-    + `técnica <b${dentro(tec,1.4,2.0)}>×${fmt2(tec)}</b> <span class="old">(alvo 1,4 a 2,0)</span> · `
-    + `corpo <b${dentro(cor,3.5,5.5)}>×${fmt2(cor)}</b> <span class="old">(alvo 4 a 5)</span>`;
+      `Escada de <b>${deg}</b> degraus, ${Math.round(pF(fahMin()))} a ${Math.round(pF(fahTopo()))} kg. `
+    + `Halterofilismo pega <b>${Math.round(6/deg*100)}%</b> deles.<br>`
+    + (M.pforma === 'pot' ? `Expoente <b>${expP().toFixed(3).replace('.',',')}</b>, achado só pelas pontas. ` : '')
+    + `Homem comum (Força 2, Halt 0) = FAH ${C} cai em <b${dentro(Math.abs(erroMeio), 0, 0.06)}>`
+    + `${Math.round(pF(C))} kg</b> <span class="old">(alvo ${M.palvo}, erro ${(erroMeio*100).toFixed(1).replace('.',',')}%)</span><br>`
+    + `+1 Halterofilismo vale <b>+${Math.round(passo1(C)*100)}%</b> e +1 Força vale `
+    + `<b>+${Math.round((pF(C + (M.fahf==='3f'?3:2))/pF(C) - 1)*100)}%</b> aqui.<br>`
+    + `Técnica 0→6: <b${dentro(pF(C+6)/pF(C), 1.4, 2.6)}>×${fmt2(pF(C+6)/pF(C))}</b> para o fraco, `
+    + `<b>×${fmt2(pF(fahTopo())/pF(fahTopo()-6))}</b> para o forte `
+    + `<span class="old">(medido: ×1,4 a ×2,0)</span>`;
   document.querySelectorAll('[data-only]').forEach((el) => {
     const alvo = el.dataset.only;
     const on = alvo === 'anc'      ? (M.baseModo === 'anc' && M.modelo !== 'fisico')
              : alvo === 'tabelado' ? M.modelo !== 'fisico'
-             : (alvo === 'geo' || alvo === 'lin') ? alvo === M.pforma
+             : alvo === 'pontas' ? M.pforma !== 'lin'
+             : (alvo === 'geo' || alvo === 'lin' || alvo === 'pot') ? alvo === M.pforma
              : alvo === M.modelo;
     el.style.display = on ? '' : 'none';
   });
@@ -439,6 +448,7 @@ liga('corr','corrida',(v) => '+'+Math.round(v*100)+'%');
 liga('giro','giro',  (v) => '+'+Math.round(v*100)+'%');
 document.getElementById('ppiso').addEventListener('input', (e) => { M.ppiso = +e.target.value; pinta(); });
 document.getElementById('ptopo').addEventListener('input', (e) => { M.ptopo = +e.target.value; pinta(); });
+document.getElementById('palvo').addEventListener('input', (e) => { M.palvo = +e.target.value; pinta(); });
 document.querySelectorAll('input[name=fahf]').forEach((r) =>
   r.addEventListener('change', () => { M.fahf = r.value; pinta(); }));
 document.querySelectorAll('input[name=pforma]').forEach((r) =>
