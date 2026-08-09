@@ -5,125 +5,259 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bancada de arremesso · Centelha</title>
 <style>
+  /* As fontes do site, servidas do próprio node_modules: abrindo o arquivo por
+     file:// a partir da raiz do repositório elas carregam e o gráfico sai igual ao
+     da ficha. Sem node_modules, cai no fallback serif e só o desenho continua. */
+  @font-face { font-family:'Cinzel'; font-style:normal; font-weight:600;
+    src:url('node_modules/@fontsource/cinzel/files/cinzel-latin-600-normal.woff2') format('woff2'); font-display:swap }
+  @font-face { font-family:'Cinzel'; font-style:normal; font-weight:700;
+    src:url('node_modules/@fontsource/cinzel/files/cinzel-latin-700-normal.woff2') format('woff2'); font-display:swap }
+  @font-face { font-family:'EB Garamond'; font-style:normal; font-weight:400;
+    src:url('node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-400-normal.woff2') format('woff2'); font-display:swap }
+  @font-face { font-family:'EB Garamond'; font-style:normal; font-weight:600;
+    src:url('node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-600-normal.woff2') format('woff2'); font-display:swap }
+
+  /* Os tokens são os do site (global.css), copiados com os mesmos valores, para o
+     gráfico daqui e o da ficha saírem na mesma cor sem depender do build. */
   :root{
     color-scheme: light;
-    --surface:#fcfcfb; --plane:#f4f4f1; --sunk:#eeeeea;
-    --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
-    --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.12);
+    --plane:#f3e9d2; --surface:#fbf6e7; --sunk:#f4ebd0; --paper:#fbf6e7;
+    --ink:#2a2720; --ink-soft:#574f3d; --muted:#8a8069;
+    --accent:#00BAB4; --accent-strong:#0B3B47; --on-accent-strong:#f6efda;
+    --rule:#cdbd92; --ring:#d8c79c;
     --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
-    --band:rgba(11,11,11,.04); --dotoff:#dcdbd4; --fora:rgba(11,11,11,.055);
+    --fs-rotulo:.875rem; --fs-micro:.78rem;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       color-scheme: dark;
-      --surface:#1a1a19; --plane:#0d0d0d; --sunk:#232322;
-      --ink:#fff; --ink2:#c3c2b7; --muted:#898781;
-      --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.13);
+      --plane:#15171c; --surface:#1e222a; --sunk:#232732; --paper:#1e222a;
+      --ink:#e9e5d7; --ink-soft:#afa994; --muted:#8b8878;
+      --accent:#3fc9c2; --accent-strong:#8fe3dd; --on-accent-strong:#11151f;
+      --rule:#39414f; --ring:#333a47;
       --s1:#3987e5; --s2:#d95926; --s3:#199e70;
-      --band:rgba(255,255,255,.05); --dotoff:#3a3a37; --fora:rgba(255,255,255,.07);
     }
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--plane);color:var(--ink);
-       font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;
+       font-family:'EB Garamond',Georgia,serif;font-size:15px;
        padding:20px 18px 48px}
   .max{max-width:1360px;margin:0 auto}
-  h1{font-size:1.2rem;margin:0 0 .25rem;font-weight:650;letter-spacing:-.01em}
-  .sub{color:var(--ink2);font-size:.83rem;margin:0 0 1.1rem;line-height:1.55;max-width:78ch}
+  h1{font-family:'Cinzel',Georgia,serif;font-size:1.2rem;margin:0 0 .25rem;font-weight:700;letter-spacing:.01em}
+  .sub{color:var(--ink-soft);font-size:.86rem;margin:0 0 1.1rem;line-height:1.6;max-width:82ch}
   .card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:14px 16px}
+  h3.tit{font-family:'Cinzel',Georgia,serif;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;
+         color:var(--muted);font-weight:700;margin:0 0 8px}
 
   /* ---- painel de parametros ---- */
   .params{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px 20px;margin-bottom:18px}
   .pgrp{display:flex;flex-direction:column;gap:6px}
-  .pgrp > b{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:650}
-  .fld{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--ink2)}
+  .pgrp > b{font-family:'Cinzel',Georgia,serif;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+  .fld{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--ink-soft)}
   .fld label{flex:1;min-width:0}
   .fld input[type=number]{width:74px;padding:3px 6px;border:1px solid var(--ring);border-radius:5px;
-       background:var(--sunk);color:var(--ink);font:inherit;font-size:.8rem;font-variant-numeric:tabular-nums}
-  .fld input[type=range]{flex:1.2;accent-color:var(--s1);min-width:0}
-  .fld .val{width:44px;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+       background:var(--sunk);color:var(--ink);font:inherit;font-size:.82rem;font-variant-numeric:tabular-nums}
+  .fld input[type=range]{flex:1.2;accent-color:var(--accent);min-width:0}
+  .fld .val{width:46px;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
   .radios{display:flex;gap:6px;flex-wrap:wrap}
-  .radios label{font-size:.78rem;padding:4px 9px;border:1px solid var(--ring);border-radius:99px;
-       cursor:pointer;color:var(--ink2);user-select:none}
-  .radios label:has(input:checked){background:var(--s1);border-color:var(--s1);color:#fff}
+  .radios label{font-size:.8rem;padding:4px 9px;border:1px solid var(--ring);border-radius:99px;
+       cursor:pointer;color:var(--ink-soft);user-select:none}
+  .radios label:has(input:checked){background:var(--accent-strong);border-color:var(--accent-strong);color:var(--on-accent-strong)}
   .radios input{display:none}
-  .chk{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--ink2);cursor:pointer}
-  .chk input{accent-color:var(--s1)}
-  .warn{font-size:.74rem;color:var(--muted);line-height:1.45}
+  .chk{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--ink-soft);cursor:pointer}
+  .chk input{accent-color:var(--accent)}
+  .warn{font-size:.76rem;color:var(--muted);line-height:1.5}
+
+  /* ---- a fórmula ----
+     Os números que dá para mexer moram DENTRO da fórmula, e não só nos controles
+     acima: o campo é o próprio símbolo. Tudo aqui é estático no HTML (só o que é
+     resultado se redesenha), senão o foco pularia do campo a cada tecla. */
+  .form{margin-bottom:18px}
+  .fx{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 14px;align-items:baseline}
+  .fx > dt{font-family:'Cinzel',Georgia,serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;
+           color:var(--muted);white-space:nowrap;padding-top:2px}
+  .fx > dd{margin:0 0 6px}
+  .eq{font-size:.95rem;line-height:1.9;color:var(--ink)}
+  .eq i{font-style:italic}
+  .eq sub{font-size:.72em} .eq sup{font-size:.72em}
+  .eq .op{color:var(--muted);padding:0 .12em}
+  .num{width:4.6ch;padding:1px 2px;border:0;border-bottom:1px dashed var(--accent);
+       background:transparent;color:var(--accent-strong);font:inherit;font-weight:600;
+       font-variant-numeric:tabular-nums;text-align:center;border-radius:0}
+  /* sem as setinhas: elas comem metade da largura do campo e cortavam o número */
+  .num{appearance:textfield;-moz-appearance:textfield}
+  .num::-webkit-outer-spin-button,.num::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .num:focus{outline:none;background:var(--sunk);border-bottom-style:solid}
+  .num.w5{width:6.2ch} .num.w3{width:3.6ch}
+  /* dentro de um expoente a fonte é menor, então o ch também: precisa de mais deles */
+  .eq sup .num{width:5ch}
+  .out{color:var(--accent-strong);font-weight:600;font-variant-numeric:tabular-nums}
+  .inst{font-size:.78rem;color:var(--muted);line-height:1.6;margin-top:1px}
+  .inst b{font-variant-numeric:tabular-nums;color:var(--ink-soft);font-weight:600}
+  .inst .pip{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px}
+  .inst span + span{margin-left:16px}
 
   /* ---- painel de comparação das fórmulas ---- */
   .cmp{margin-bottom:18px}
-  .cmp h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
-          font-weight:650;margin:0 0 8px}
   .cmp .cols{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px}
   @media (max-width:1050px){ .cmp .cols{grid-template-columns:1fr} }
   .cmp table{margin:0}
   .cmp td, .cmp th{padding:4px 8px}
   .cmp tr.sel td{background:var(--sunk);font-weight:600}
-  .cmp tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--s1)}
+  .cmp tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
   .bom{color:var(--s3);font-weight:600}
   .ruim{color:var(--s2);font-weight:600}
   .escada{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
   .escada b{display:inline-flex;flex-direction:column;align-items:center;gap:1px;
-            background:var(--sunk);border-radius:5px;padding:3px 7px;font-size:.72rem;
+            background:var(--sunk);border-radius:5px;padding:3px 7px;font-size:.74rem;
             font-weight:600;font-variant-numeric:tabular-nums;min-width:44px}
-  .escada b i{font-style:normal;font-weight:400;font-size:.63rem;color:var(--muted)}
-  .escada b.marco{background:var(--s1);color:#fff}
-  .escada b.marco i{color:rgba(255,255,255,.8)}
+  .escada b i{font-style:normal;font-weight:400;font-size:.65rem;color:var(--muted)}
+  .escada b.marco{background:var(--accent-strong);color:var(--on-accent-strong)}
+  .escada b.marco i{color:var(--on-accent-strong);opacity:.75}
   .mtz td.h{color:var(--muted);font-weight:600;font-variant-numeric:normal}
-  .mtz td{padding:3px 6px;font-size:.74rem}
-  .nota{font-size:.74rem;color:var(--muted);line-height:1.5;margin-top:10px}
+  .mtz td{padding:3px 6px;font-size:.76rem}
+  .nota{font-size:.76rem;color:var(--muted);line-height:1.55;margin-top:10px}
 
   /* ---- as duas fichas ---- */
   .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:1050px){ .duo{grid-template-columns:1fr} }
-  .ficha h2{font-size:.95rem;margin:0 0 10px;font-weight:650;display:flex;align-items:center;gap:8px}
+  .ficha h2{font-family:'Cinzel',Georgia,serif;font-size:.95rem;margin:0 0 10px;font-weight:700;
+            display:flex;align-items:center;gap:8px}
   .ficha h2 .pip{width:9px;height:9px;border-radius:50%}
   .attrs{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;margin-bottom:12px}
-  .attr{display:flex;align-items:center;gap:8px;font-size:.79rem;color:var(--ink2)}
+  .attr{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--ink-soft)}
   .attr span{flex:1;min-width:0}
   .dots{display:flex;gap:3px}
-  .dot{width:13px;height:13px;border-radius:50%;background:var(--dotoff);cursor:pointer;
-       border:1px solid transparent;transition:background .1s}
-  .dot.on{background:var(--s1)}
-  .dot:hover{border-color:var(--axis)}
-  .deriv{background:var(--sunk);border-radius:7px;padding:9px 11px;font-size:.79rem;line-height:1.65;margin-bottom:12px}
+  .dot{width:13px;height:13px;border-radius:50%;background:var(--sunk);cursor:pointer;
+       border:1px solid var(--ring);transition:background .1s}
+  .dot.on{background:var(--accent);border-color:var(--accent)}
+  .dot:hover{border-color:var(--accent-strong)}
+  .deriv{background:var(--sunk);border-radius:7px;padding:9px 11px;font-size:.82rem;line-height:1.65;margin-bottom:12px}
   .deriv b{font-variant-numeric:tabular-nums}
-  .deriv .old{color:var(--muted);font-size:.74rem}
-  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
-  .tier{background:var(--surface);border:1px solid var(--ring);border-radius:6px;padding:5px 7px;font-size:.71rem;line-height:1.45}
-  .tier em{display:block;color:var(--muted);font-style:normal;font-size:.68rem}
-  .tier b{font-variant-numeric:tabular-nums}
+  .deriv .old{color:var(--muted);font-size:.76rem}
 
-  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.75rem;color:var(--ink2);padding:2px 0 6px}
-  .legend i{display:inline-block;width:17px;height:0;border-top-width:2px;border-top-style:solid;vertical-align:middle;margin-right:6px}
-  .wrap{position:relative}
-  svg{display:block;width:100%;height:auto;overflow:visible}
-  .grid{stroke:var(--grid);stroke-width:1}
-  .axis{stroke:var(--axis);stroke-width:1}
-  .tick{fill:var(--muted);font-size:10px;font-variant-numeric:tabular-nums}
-  .bandlbl{fill:var(--muted);font-size:9.5px}
-  .curve{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
-  .cross{stroke:var(--axis);stroke-width:1;stroke-dasharray:3 3;opacity:0}
-  .tip{position:absolute;pointer-events:none;opacity:0;transform:translate(-50%,-118%);
-       background:var(--surface);border:1px solid var(--ring);border-radius:7px;padding:6px 9px;
-       font-size:.73rem;line-height:1.5;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.18);
-       color:var(--ink);transition:opacity .08s}
-  .tip s{display:inline-block;width:8px;height:8px;border-radius:50%;text-decoration:none;margin-right:5px}
-  .tip b{font-variant-numeric:tabular-nums}
+  /* ---- o gráfico, no mesmo desenho da ficha do site (FichaSkeleton.astro) ---- */
+  .fa-head{font-size:var(--fs-rotulo);line-height:1.55}
+  .fa-head b{color:var(--accent-strong);font-family:'Cinzel',Georgia,serif}
+  .fa-tiers{display:flex;gap:.5rem 1.4rem;flex-wrap:wrap;margin:.25rem 0 .5rem}
+  .fa-tiers span{font-size:var(--fs-rotulo)}
+  .fa-tiers span b{font-family:'Cinzel',Georgia,serif;color:var(--accent-strong)}
+  .fa-tiers span i{color:var(--ink-soft);font-size:var(--fs-micro);font-style:italic}
+  .fa-curvas{display:flex;gap:.3rem;flex-wrap:wrap;margin:0 0 .35rem}
+  .fa-curvas button{font-family:'Cinzel',Georgia,serif;font-size:var(--fs-micro);letter-spacing:.04em;
+    color:var(--ink-soft);background:transparent;border:1px solid var(--rule);
+    border-radius:6px;padding:.25rem .7rem;cursor:pointer}
+  .fa-curvas button[aria-pressed="true"]{background:var(--accent-strong);color:var(--on-accent-strong);border-color:var(--accent-strong)}
+  .fa-chartwrap{position:relative;width:100%}
+  .fa-chart{display:block;width:100%;height:auto;touch-action:pan-y}
+  .fa-chart .axis{stroke:var(--rule);stroke-width:1}
+  .fa-chart .grid{stroke:var(--rule);stroke-width:.5;opacity:.45}
+  .fa-chart .curve{fill:none;stroke:var(--accent);stroke-width:2}
+  .fa-chart .curve.giro{stroke-width:1.25;stroke-dasharray:5 3;opacity:.8}
+  .fa-chart .curve.corrida{stroke-width:1.25;stroke-dasharray:1.5 2.5;opacity:.65}
+  .fa-chart[data-sel="giro"] .curve.giro,
+  .fa-chart[data-sel="corrida"] .curve.corrida{stroke-width:2;opacity:1}
+  .fa-chart[data-sel="parado"] .curve.parado{stroke-width:2;opacity:1}
+  .fa-chart .fa-legln{stroke-linecap:round}
+  .fa-chart .fa-leglbl{fill:var(--ink-soft);font-size:9px}
+  .fa-chart .area{fill:var(--accent);opacity:.1}
+  .fa-chart text{fill:var(--ink-soft);font-size:10px;font-family:'EB Garamond',Georgia,serif}
+  .fa-chart .axlbl{font-family:'Cinzel',Georgia,serif;font-size:9px}
+  .fa-chart .fa-band{fill:var(--accent-strong)}
+  .fa-chart .fa-bandsep{stroke:var(--accent);stroke-width:1;stroke-dasharray:2 4;opacity:.55}
+  .fa-chart .fa-bandlbl{fill:var(--ink-soft);font-family:'Cinzel',Georgia,serif;font-size:9px;letter-spacing:.06em}
+  .fa-chart .fa-vline{stroke:var(--accent-strong);stroke-width:1;stroke-dasharray:3 3;opacity:.7}
+  .fa-chart .fa-dot{fill:var(--accent-strong);stroke:var(--paper);stroke-width:1.5}
+  /* o trecho do eixo que esta ficha já não ergue, quando as duas dividem a escala */
+  .fa-chart .fa-fora{fill:var(--rule);opacity:.22}
+  .fa-chart .fa-foraln{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 3}
+  .fa-chartwrap .fa-tip{position:absolute;transform:translate(-50%,-125%);pointer-events:none;
+    white-space:nowrap;background:var(--accent-strong);color:var(--on-accent-strong);
+    font-family:'Cinzel',Georgia,serif;font-size:var(--fs-micro);padding:.22rem .5rem;
+    border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.3);text-align:center;line-height:1.45}
+  .fa-chartwrap .fa-tip b{display:block;text-align:center}
+  .fa-chartwrap .fa-tip .fa-tipg{display:grid;grid-template-columns:auto auto;column-gap:.55rem}
+  .fa-chartwrap .fa-tip .fa-tipg span:nth-child(odd){text-align:left}
+  .fa-chartwrap .fa-tip .fa-tipg span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums}
 
-  table{border-collapse:collapse;width:100%;font-size:.77rem;margin-top:12px}
-  th,td{padding:3px 7px;border-bottom:1px solid var(--grid);text-align:right;font-variant-numeric:tabular-nums}
+  table{border-collapse:collapse;width:100%;font-size:var(--fs-rotulo);margin-top:12px}
+  th,td{padding:3px 7px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums}
   th:first-child,td:first-child{text-align:left}
-  thead th{color:var(--ink2);font-weight:600;border-bottom:1px solid var(--axis);font-size:.72rem}
+  thead th{color:var(--ink-soft);font-weight:600;border-bottom:1px solid var(--ring);
+           font-family:'Cinzel',Georgia,serif;font-size:var(--fs-micro)}
   tbody tr:last-child td{border-bottom:none}
   tbody tr.lim td{color:var(--muted)}
+  /* a tabela da ficha: Peso à esquerda e as três distâncias sob um cabeçalho só */
+  .fa-tbl th, .fa-tbl td{text-align:center}
+  .fa-tbl td:first-child, .fa-tbl th:first-child{text-align:left}
 </style>
 </head>
 <body>
 <div class="max">
   <h1>Bancada de arremesso</h1>
-  <p class="sub">Duas fichas lado a lado com os mesmos parâmetros de modelo. <b>P</b> é o peso máximo: aquilo que a pessoa ergue e segura por instantes sem conseguir sair do lugar. Hoje a regra dá 35 kg para o homem comum (Força 2, Atletismo 1). As três âncoras em uso são 30 kg no Força 1, 80 no homem comum e 500 no pico humano. Na lei de potência o expoente sai <b>só das duas pontas</b>, então o valor do meio cai onde cair: o erro dele contra o alvo é o teste de se a fórmula do FAH é coerente com as três âncoras ao mesmo tempo.</p>
+  <p class="sub">Duas fichas lado a lado com os mesmos parâmetros de modelo. <b>P</b> é o peso máximo: aquilo que a pessoa ergue e segura por instantes sem conseguir sair do lugar. As três âncoras em uso são 30 kg no Força 1, 80 no homem comum e 500 no pico humano. Na lei de potência o expoente sai <b>só das duas pontas</b>, então o valor do meio cai onde cair: o erro dele contra o alvo é o teste de se a fórmula do FAH é coerente com as três âncoras ao mesmo tempo. Os gráficos usam o mesmo desenho da ficha do site: eixo em log com o trecho abaixo do pivô comprimido nos 5% da esquerda, as mesmas faixas de carga e o mesmo balão de leitura.</p>
+
+  <div class="card form">
+    <h3 class="tit">A fórmula · os números sublinhados são editáveis</h3>
+    <dl class="fx">
+      <dt>Reservas</dt>
+      <dd>
+        <div class="eq">FAH <span class="op">=</span> <span class="out" data-out="fahEq"></span>
+          <span class="op">·</span> de <span class="out" data-out="fahLo"></span> a <span class="out" data-out="fahHi"></span></div>
+        <div class="eq">FAA <span class="op">=</span> 2×Força <span class="op">+</span> Atletismo <span class="op">+</span> Arremesso
+          <span class="op">·</span> de <span class="out">2</span> a <span class="out">24</span></div>
+        <div class="inst" data-out="instFah"></div>
+      </dd>
+
+      <dt>Peso máximo</dt>
+      <dd>
+        <div class="eq"><i>P</i> <span class="op">=</span>
+          <input class="num" type="number" data-p="ppiso" min="5" max="200" step="1">
+          <span class="op">×</span> ( FAH <span class="op">/</span> <span class="out" data-out="fahLo2"></span> )<sup class="out" data-out="expP"></sup>
+          <span class="op">,</span> com o topo em
+          <input class="num w5" type="number" data-p="ptopo" min="150" max="1500" step="10"> kg</div>
+        <div class="inst" data-out="instP"></div>
+      </dd>
+
+      <dt>Base</dt>
+      <dd>
+        <div class="eq"><i>R</i><sub>0</sub> <span class="op">=</span>
+          <input class="num w5" type="number" data-p="r0" min="20" max="400" step="1">
+          <span class="op">×</span> ( FAA <span class="op">/</span> 24 )<sup><input class="num w3" type="number" data-p="r0exp" min="0.2" max="2.5" step="0.01"></sup> m</div>
+        <div class="inst" data-out="instR0"></div>
+      </dd>
+
+      <dt>Alcance</dt>
+      <dd>
+        <div class="eq"><i>w</i> ≥ <span class="out" data-out="piv1"></span> kg <span class="op">:</span>
+          <i>R</i><sub>0</sub> <span class="op">×</span>
+          <i>m</i><sub>0</sub> <span class="op">/</span> (<i>w</i> <span class="op">+</span> <i>m</i><sub>0</sub>)
+          <span class="op">×</span> ( 1 <span class="op">−</span> <i>w</i><span class="op">/</span><i>P</i> )<sup><input class="num w3" type="number" data-p="fexp" min="0.5" max="4" step="0.1"></sup>
+          <span class="op">,</span> <i>m</i><sub>0</sub> <span class="op">=</span>
+          <input class="num w3" type="number" data-p="m0" min="0.2" max="3" step="0.05"> kg</div>
+        <div class="eq"><i>w</i> &lt; pivô <span class="op">:</span> alcance(pivô) <span class="op">×</span> ( 3<i>p</i><sup>2</sup> <span class="op">−</span> 2<i>p</i><sup>3</sup> )
+          <span class="op">,</span> <i>p</i> <span class="op">=</span> <i>w</i> <span class="op">/</span>
+          <input class="num w3" type="number" data-p="wpiv" min="0.1" max="10" step="0.1"> kg</div>
+        <div class="inst" data-out="instAlc"></div>
+      </dd>
+
+      <dt>Velocidade</dt>
+      <dd>
+        <div class="eq"><i>vel</i> <span class="op">=</span> ( 1 <span class="op">−</span> (<i>w</i><span class="op">/</span><i>P</i>)<sup><input class="num w3" type="number" data-p="vexp" min="0.6" max="3" step="0.05"></sup> )<sup>2</sup></div>
+        <div class="inst" data-out="instVel"></div>
+      </dd>
+
+      <dt>Impulso</dt>
+      <dd>
+        <div class="eq">Giro <span class="op">=</span> alcance <span class="op">×</span> ( 1 <span class="op">+</span> <i>vel</i> <span class="op">×</span>
+          <input class="num w5" type="number" data-p="giro" min="0" max="0.6" step="0.001"> )</div>
+        <div class="eq">Corrida <span class="op">=</span> alcance <span class="op">×</span> ( 1 <span class="op">+</span> <i>vel</i> <span class="op">×</span>
+          <input class="num w5" type="number" data-p="corrida" min="0" max="0.6" step="0.001"> )</div>
+        <div class="inst" data-out="instImp"></div>
+      </dd>
+    </dl>
+    <p class="nota" data-out="notaForm"></p>
+  </div>
 
   <div class="card params">
     <div class="pgrp">
@@ -138,69 +272,74 @@
         <label><input type="radio" name="pforma" value="geo">P geométrica</label>
         <label><input type="radio" name="pforma" value="lin">P linear</label>
       </div>
-      <div class="fld" data-only="pontas"><label for="ppiso">piso · Força 1, Halt 0 (kg)</label>
-        <input type="number" id="ppiso" min="10" max="200" step="5" value="30"></div>
-      <div class="fld" data-only="pontas"><label for="ptopo">topo · Força 6, Halt 6 (kg)</label>
-        <input type="number" id="ptopo" min="150" max="1500" step="10" value="500"></div>
-      <div class="fld" data-only="pontas"><label for="palvo">alvo do homem comum (kg)</label>
-        <input type="number" id="palvo" min="30" max="300" step="5" value="80"></div>
-      <div class="fld" data-only="lin"><label for="kgfah">kg por ponto de FAH</label>
-        <input type="range" id="kgfah" min="4" max="40" step="1" value="22">
-        <span class="val" id="kgfah_v">22</span></div>
-      <div class="warn" id="pnota"></div>
+      <div class="fld" data-only="pontas"><label>piso · Força 1, Halt 0 (kg)</label>
+        <input type="number" data-p="ppiso" min="10" max="200" step="5"></div>
+      <div class="fld" data-only="pontas"><label>topo · Força 6, Halt 6 (kg)</label>
+        <input type="number" data-p="ptopo" min="150" max="1500" step="10"></div>
+      <div class="fld" data-only="pontas"><label>alvo do homem comum (kg)</label>
+        <input type="number" data-p="palvo" min="30" max="300" step="5"></div>
+      <div class="fld" data-only="lin"><label>kg por ponto de FAH</label>
+        <input type="range" data-p="kgFAH" min="4" max="40" step="1">
+        <span class="val" data-v="kgFAH"></span></div>
+      <div class="warn" data-out="pnota"></div>
     </div>
 
     <div class="pgrp">
       <b>Modelo de distância</b>
       <div class="radios">
-        <label><input type="radio" name="modelo" value="fisico" checked>físico</label>
-        <label><input type="radio" name="modelo" value="ln">logarítmico (atual)</label>
+        <label><input type="radio" name="modelo" value="fisico" checked>físico (o do site)</label>
+        <label><input type="radio" name="modelo" value="ln">logarítmico (antigo)</label>
         <label><input type="radio" name="modelo" value="dobra">queda por dobra</label>
       </div>
-      <div class="fld" data-only="dobra"><label for="q">sobra a cada dobra de peso</label>
-        <input type="range" id="q" min="0.4" max="0.95" step="0.01" value="0.70">
-        <span class="val" id="q_v">70%</span></div>
-      <div class="fld" data-only="dobra"><label for="pexp">dureza da parede em P</label>
-        <input type="range" id="pexp" min="0.2" max="3" step="0.1" value="1">
-        <span class="val" id="pexp_v">1,0</span></div>
-      <div class="fld" data-only="fisico"><label for="m0">massa efetiva do braço (kg)</label>
-        <input type="range" id="m0" min="0.2" max="3" step="0.05" value="1">
-        <span class="val" id="m0_v">1,00</span></div>
-      <div class="fld" data-only="fisico"><label for="fexp">dureza da parede em P</label>
-        <input type="range" id="fexp" min="0.5" max="4" step="0.1" value="2">
-        <span class="val" id="fexp_v">2,0</span></div>
-      <div class="warn" data-only="fisico">De 1 kg para cima: alcance = R₀ · m₀/(peso + m₀) · (1 − peso/P)^n. O termo do meio é técnica, o último é força. Abaixo de 1 kg o arrasto manda e a distância desaba por (3p² − 2p³).</div>
+      <div class="fld" data-only="dobra"><label>sobra a cada dobra de peso</label>
+        <input type="range" data-p="q" min="0.4" max="0.95" step="0.01">
+        <span class="val" data-v="q"></span></div>
+      <div class="fld" data-only="dobra"><label>dureza da parede em P</label>
+        <input type="range" data-p="pexp" min="0.2" max="3" step="0.1">
+        <span class="val" data-v="pexp"></span></div>
+      <div class="fld" data-only="fisico"><label>massa efetiva do braço (kg)</label>
+        <input type="range" data-p="m0" min="0.2" max="3" step="0.05">
+        <span class="val" data-v="m0"></span></div>
+      <div class="fld" data-only="fisico"><label>dureza da parede em P</label>
+        <input type="range" data-p="fexp" min="0.5" max="4" step="0.1">
+        <span class="val" data-v="fexp"></span></div>
+      <div class="fld"><label>pivô do arrasto (kg)</label>
+        <input type="range" data-p="wpiv" min="0.1" max="5" step="0.1">
+        <span class="val" data-v="wpiv"></span></div>
     </div>
 
     <div class="pgrp">
-      <b>Base do arremesso (1 kg, parado)</b>
+      <b>Base do arremesso</b>
       <div class="radios" data-only="tabelado">
         <label><input type="radio" name="basemodo" value="tabela" checked>tabela atual</label>
         <label><input type="radio" name="basemodo" value="anc">ancorada</label>
       </div>
       <div class="warn" data-only="fisico">No modelo físico a base sai de R₀, não da tabela.</div>
-      <div class="fld" data-only="fisico"><label for="r0">R₀ no FAA 24 (m)</label>
-        <input type="number" id="r0" min="20" max="400" step="1" value="136"></div>
-      <div class="fld" data-only="fisico"><label for="r0exp">expoente do FAA</label>
-        <input type="number" id="r0exp" min="0.2" max="2.5" step="0.01" value="0.70"></div>
-      <div class="fld" data-only="anc"><label for="banc">metros no FAA 22</label>
-        <input type="number" id="banc" min="5" max="120" step="0.5" value="37.5"></div>
-      <div class="fld" data-only="anc"><label for="bexp">expoente do FAA</label>
-        <input type="number" id="bexp" min="0.2" max="2.5" step="0.001" value="0.828"></div>
+      <div class="fld" data-only="fisico"><label>R₀ no FAA 24 (m)</label>
+        <input type="number" data-p="r0" min="20" max="400" step="1"></div>
+      <div class="fld" data-only="fisico"><label>expoente do FAA</label>
+        <input type="number" data-p="r0exp" min="0.2" max="2.5" step="0.01"></div>
+      <div class="fld" data-only="anc"><label>metros no FAA 22</label>
+        <input type="number" data-p="banc" min="5" max="120" step="0.5"></div>
+      <div class="fld" data-only="anc"><label>expoente do FAA</label>
+        <input type="number" data-p="bexp" min="0.2" max="2.5" step="0.001"></div>
     </div>
 
     <div class="pgrp">
-      <b>Velocidade com carga</b>
-      <div class="fld"><label for="vexp">expoente n em (1 − x<sup>n</sup>)²</label>
-        <input type="range" id="vexp" min="0.6" max="3" step="0.05" value="1.5">
-        <span class="val" id="vexp_v">1,50</span></div>
-      <div class="fld"><label for="corr">ganho da corrida</label>
-        <input type="range" id="corr" min="0" max="0.6" step="0.01" value="0.333">
-        <span class="val" id="corr_v">+33%</span></div>
-      <div class="fld"><label for="giro">ganho do giro</label>
-        <input type="range" id="giro" min="0" max="0.6" step="0.01" value="0.167">
-        <span class="val" id="giro_v">+17%</span></div>
-      <label class="chk"><input type="checkbox" id="escala" checked>mesma escala nos dois gráficos</label>
+      <b>Velocidade e impulso</b>
+      <div class="fld"><label>expoente n em (1 − x<sup>n</sup>)²</label>
+        <input type="range" data-p="vexp" min="0.6" max="3" step="0.05">
+        <span class="val" data-v="vexp"></span></div>
+      <div class="fld"><label>ganho da corrida</label>
+        <input type="range" data-p="corrida" min="0" max="0.6" step="0.001">
+        <span class="val" data-v="corrida"></span></div>
+      <div class="fld"><label>ganho do giro</label>
+        <input type="range" data-p="giro" min="0" max="0.6" step="0.001">
+        <span class="val" data-v="giro"></span></div>
+      <label class="chk"><input type="checkbox" data-p="escala">mesma escala nos dois gráficos</label>
+      <button type="button" id="reset" title="devolve os parâmetros do modelo aos valores publicados em regras.json; as duas fichas ficam como estão" style="align-self:flex-start;font:inherit;font-size:.78rem;
+        padding:3px 10px;border:1px solid var(--ring);border-radius:6px;background:var(--sunk);
+        color:var(--ink-soft);cursor:pointer">voltar ao que está no site</button>
     </div>
   </div>
 
@@ -215,10 +354,12 @@ const BASE_TBL = {2:4,3:5,4:6,5:8,6:10,7:12,8:14,9:16,10:19,11:22,12:25,13:28,14
                   15:36,16:40,17:44,18:48,19:52,20:56,21:60,22:64,23:68,24:72};
 const P_HOJE = {2:15,3:20,4:27,5:35,6:45,7:55,8:65,9:78,10:90,11:108,12:125,13:145,14:168,
                 15:190,16:215,17:245,18:280,19:315,20:355,21:395,22:440,23:480,24:525};
-const M = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
-            modelo:'fisico', baseModo:'tabela', banc:37.5, bexp:0.828,
-            q:0.70, pexp:1, m0:1, fexp:2, r0:136, r0exp:0.70,
-            vexp:1.5, corrida:0.333, giro:0.167, escala:true };
+// o que está publicado no site hoje (regras.json · bloco forca)
+const SITE = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
+               modelo:'fisico', baseModo:'tabela', banc:37.5, bexp:0.828,
+               q:0.70, pexp:1, m0:1, fexp:2, wpiv:1, r0:136, r0exp:0.70,
+               vexp:1.5, corrida:1/3, giro:1/6, escala:true };
+const M = Object.assign({}, SITE);
 
 const FICHAS = [
   { id:'A', nome:'Homem comum',  cor:'var(--s1)', forca:2, atletismo:1, arremesso:0, halterofilismo:0 },
@@ -230,9 +371,9 @@ const cl = (v) => Math.max(2, Math.min(24, v));
 
 // As três fórmulas de FAH. `pf` é o peso da Força; `atl` diz se o Atletismo entra.
 const FAHDEF = {
-  '3f':    { nome: '3×Força + Halt',       pf: 3, atl: false },
-  '2f':    { nome: '2×Força + Halt',       pf: 2, atl: false },
-  'atual': { nome: '2×Força + Atl + Halt', pf: 2, atl: true  },
+  '3f':    { nome: '3×Força + Halt',       eq: '3×Força + Halterofilismo',              pf: 3, atl: false },
+  '2f':    { nome: '2×Força + Halt',       eq: '2×Força + Halterofilismo',              pf: 2, atl: false },
+  'atual': { nome: '2×Força + Atl + Halt', eq: '2×Força + Atletismo + Halterofilismo',  pf: 2, atl: true  },
 };
 // Piso = Força 1 sem perícia nenhuma; topo = tudo no 6; comum = Força 2 (Atletismo 1
 // quando a fórmula o usa). As duas pontas ficam presas, então trocar a fórmula muda
@@ -264,18 +405,20 @@ const base = (f) => M.baseModo === 'tabela' ? BASE_TBL[faa(f)]
                                             : M.banc * Math.pow(faa(f)/22, M.bexp);
 
 const R0 = (f) => M.r0 * Math.pow(faa(f)/24, M.r0exp);
+// arrasto abaixo do pivô: a queda suave que põe meio pivô em metade do alcance
+const suave = (p) => 3*p*p - 2*p*p*p;
 
 function dist(w, f){
-  const b = base(f), P = pmax(f);
+  const b = base(f), P = pmax(f), pv = M.wpiv;
   if (w <= 0) return 0;
   if (M.modelo === 'fisico'){
     if (w >= P) return 0;
     const pesado = (x) => R0(f) * (M.m0/(x + M.m0)) * Math.pow(1 - x/P, M.fexp);
-    // ápice em 1 kg: abaixo disso o arrasto do ar manda e a distância desaba
-    return w < 1 ? pesado(1) * (3*w*w - 2*w*w*w) : pesado(w);
+    // ápice no pivô: abaixo dele o arrasto do ar manda e a distância desaba
+    return w < pv ? pesado(pv) * suave(w/pv) : pesado(w);
   }
   if (M.modelo === 'ln'){
-    if (w < 1) return b * (3*w*w - 2*w*w*w);
+    if (w < pv) return b * suave(w/pv);
     if (w >= P) return 0;
     return b * (1 - Math.log(w)/Math.log(P));
   }
@@ -289,13 +432,19 @@ const dCorr = (w, f) => dist(w, f) * (1 + M.corrida * vel(w, f));
 
 // ---------------------------------------------------------------- formatação
 const n1  = (v) => (v >= 100 ? Math.round(v) : Math.round(v*10)/10).toString().replace('.', ',');
-const kg  = (v) => (v >= 100 ? Math.round(v) : Math.round(v*10)/10).toString().replace('.', ',') + ' kg';
+const kg  = (v) => n1(v) + ' kg';
 const pc  = (v) => Math.round(v*100) + '%';
 const fw  = (w) => (w >= 10 ? Math.round(w) : Math.round(w*100)/100).toString().replace('.', ',');
 const teto = (v) => v <= 0 ? 1 : v < 10 ? Math.ceil(v)
            : v < 100 ? Math.ceil(v/5)*5 : v < 500 ? Math.ceil(v/10)*10 : Math.ceil(v/50)*50;
 const ATRS = [['forca','Força'],['atletismo','Atletismo'],['arremesso','Arremesso'],['halterofilismo','Halterofilismo']];
-const BANDAS = [[0,.125,'Mínima'],[.125,.25,'Leve'],[.25,.5,'Média'],[.5,1,'Máxima']];
+const BANDAS = [[0,.125,'Mínima','.04'],[.125,.25,'Leve','.08'],[.25,.5,'Média','.13'],[.5,1,'Máxima','.19']];
+// as três curvas na ordem em que se leem no gráfico, igual à ficha
+const DEFS = [
+  { k:'corrida', cls:'curve corrida', nome:'Corrida', f:dCorr },
+  { k:'giro',    cls:'curve giro',    nome:'Giro',    f:dGiro },
+  { k:'parado',  cls:'curve parado',  nome:'Parado',  f:dist  },
+];
 
 // ---------------------------------------------------------------- esqueleto
 document.getElementById('duo').innerHTML = FICHAS.map((f) => `
@@ -308,113 +457,179 @@ document.getElementById('duo').innerHTML = FICHAS.map((f) => `
         </div></div>`).join('')}
     </div>
     <div class="deriv" id="d${f.id}"></div>
-    <div class="legend">
-      <span><i style="border-color:var(--s1)"></i>parado</span>
-      <span><i style="border-color:var(--s2);border-top-style:dashed"></i>giro no lugar</span>
-      <span><i style="border-color:var(--s3);border-top-style:dotted"></i>com corrida</span>
+    <div class="fa-head" id="h${f.id}"></div>
+    <div class="fa-curvas" role="group" aria-label="Curva em destaque" id="bt${f.id}">
+      ${DEFS.map((d) => `<button type="button" data-fa-curva="${d.k}" data-ficha="${f.id}" aria-pressed="false">${d.nome}</button>`).join('')}
     </div>
-    <div class="wrap"><svg id="g${f.id}" viewBox="0 0 560 300"></svg><div class="tip" id="t${f.id}"></div></div>
-    <table id="tb${f.id}">
-      <thead><tr><th>Peso</th><th>Parado</th><th>Giro</th><th>Corrida</th><th>Velocidade</th></tr></thead>
-      <tbody></tbody></table>
+    <div class="fa-chartwrap" id="w${f.id}"></div>
+    <table class="fa-tbl" id="tb${f.id}">
+      <thead>
+        <tr><th rowspan="2">Peso (kg)</th><th colspan="3">Arremesso (m)</th><th rowspan="2">Vel.</th></tr>
+        <tr><th>Parado</th><th>Giro</th><th>Corrida</th></tr>
+      </thead><tbody></tbody></table>
   </div>`).join('');
 
 // ---------------------------------------------------------------- desenho
-const W=560, H=300, ml=42, mr=16, mt=22, mb=34;
+// mesmas medidas do gráfico da ficha (ficha-engine.ts · renderForca)
+const W=580, H=252, ml=42, mr=16, mt=14, mb=34;
 const xB=ml, xR=W-mr, yT=mt, yB=H-mb, pw=xR-xB, ph=yB-yT;
-const WMIN = 0.05;
+const SEL = { A:'corrida', B:'corrida' };   // curva em destaque, por ficha
 
+// pesos da tabela: os mesmos da ficha, com o pivô garantido na lista
 function pesosTabela(P){
-  const l = [0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000].filter((w) => w < P);
-  l.push(Math.round(P));
-  return l;
+  const l = [0.1, 0.5, M.wpiv, 2, 5, 10, 20, 50, 100, 200, 500]
+    .filter((w) => w > 0 && w < P);
+  l.push(P);
+  return [...new Set(l.map((w) => Math.round(w*1000)/1000))].sort((a,b) => a-b);
 }
 
-function pintaFicha(f, yMaxComum, pMaxComum){
-  const P = pmax(f), FAH = fah(f), FAA = faa(f);
+function pintaFicha(f, yMax, pRef0){
+  const P = pmax(f), FAH = fah(f), FAA = faa(f), pv = M.wpiv;
+  // o eixo precisa de espaço à direita do pivô; sem isso um pivô alto com P baixo
+  // zeraria o span e o gráfico sairia em NaN
+  const pRef = Math.max(pRef0, pv*1.5);
 
-  // --- bloco derivado
-  const bandas = BANDAS.map(([a,b,nome]) => ({ nome, de:P*a, ate:P*b }));
+  // --- blocos de texto acima do gráfico
+  const bandas = BANDAS.map(([a,b,nome,op]) => ({ nome, op, de:P*a, ate:P*b }));
   document.getElementById('d'+f.id).innerHTML =
       `FAH <b>${FAH}</b> · peso máximo <b>${kg(P)}</b> `
-    + `<span class="old">(regra de hoje: ${P_HOJE[cl(2*f.forca + f.atletismo + f.halterofilismo)]} kg)</span><br>`
-    + `FAA <b>${FAA}</b> · 1 kg parado vai a <b>${n1(dist(1, f))} m</b>`
-    + (M.modelo === 'fisico' ? ` <span class="old">(braço solta a ${n1(Math.sqrt(R0(f)*9.81))} m/s)</span>` : '')
-    + `<div class="tiers">${bandas.map((b) =>
-        `<div class="tier"><b>${b.nome}</b><em>até ${kg(b.ate)}</em><em>corre a ${pc(vel(b.ate, f))}</em></div>`).join('')}</div>`;
+    + `<span class="old">(regra antiga: ${P_HOJE[cl(2*f.forca + f.atletismo + f.halterofilismo)]} kg)</span><br>`
+    + `FAA <b>${FAA}</b> · ${n1(pv)} kg parado vai a <b>${n1(dist(pv, f))} m</b>`
+    + (M.modelo === 'fisico' ? ` <span class="old">(braço solta a ${n1(Math.sqrt(R0(f)*9.81))} m/s)</span>` : '');
 
-  // --- gráfico
-  const lnW0 = Math.log(WMIN), spanX = Math.log(pMaxComum) - lnW0;
-  const X = (w) => xB + ((Math.log(Math.max(WMIN, w)) - lnW0)/spanX) * pw;
-  const yMax = yMaxComum;
-  const Y = (d) => yB - (yMax > 0 ? Math.min(1, d/yMax) : 0) * ph;
+  const kgr = (n) => `${Math.round(n)} kg`;
+  document.getElementById('h'+f.id).innerHTML =
+      `<b>Carga</b> · FAH ${FAH} = ${FAHDEF[M.fahf].eq}`
+    + `<div class="fa-tiers">`
+    + bandas.map((b, i) =>
+        `<span>${b.nome} <b>${kgr(b.ate)}</b> <i>${i === 3 ? 'ergue, não desloca' : (i === 2 ? 'só anda, ' : 'corre a ') + pc(vel(b.ate, f))}</i></span>`).join('')
+    + `</div><b>Arremesso</b> · FAA ${FAA} = Força ${f.forca}×2 + Atletismo ${f.atletismo} + Arremesso ${f.arremesso}`;
 
-  let s = '';
-  if (P < pMaxComum * 0.999){   // trecho do eixo que já passou do peso máximo desta ficha
-    const x0 = X(P);
-    s += `<rect x="${x0.toFixed(1)}" y="${yT}" width="${(xR-x0).toFixed(1)}" height="${ph}" fill="var(--fora)"/>`;
-    s += `<line class="axis" x1="${x0.toFixed(1)}" y1="${yT}" x2="${x0.toFixed(1)}" y2="${yB}" stroke-dasharray="2 3"/>`;
-    s += `<text class="bandlbl" x="${(x0+4).toFixed(1)}" y="${yB-6}">não ergue</text>`;
-  }
-  bandas.forEach((b, i) => {
-    const x1 = X(Math.max(WMIN, b.de)), x2 = X(Math.min(pMaxComum, b.ate));
-    if (x2 <= x1) return;
-    if (i % 2 === 1) s += `<rect x="${x1.toFixed(1)}" y="${yT}" width="${(x2-x1).toFixed(1)}" height="${ph}" fill="var(--band)"/>`;
-    s += `<text class="bandlbl" x="${(x2-3).toFixed(1)}" y="${yT+11}" text-anchor="end">${b.nome}</text>`;
-  });
+  // --- eixo X comprimido, igual ao da ficha: abaixo do pivô cabe nos 5% da esquerda
+  const wMin = Math.min(0.05, pv/20), fSub = 0.05;
+  const lnW0 = Math.log(wMin), lnPv = Math.log(pv);
+  const lnSub = lnPv - lnW0, spanX = Math.log(pRef) - lnPv;
+  const xposW = (w) => {
+    const v = Math.max(wMin, w);
+    return v <= pv
+      ? xB + ((Math.log(v) - lnW0)/lnSub) * fSub * pw
+      : xB + (fSub + ((Math.log(v) - lnPv)/spanX) * (1 - fSub)) * pw;
+  };
+  const wAtX = (x) => {
+    const fr = (x - xB)/pw;
+    return fr <= fSub ? Math.exp(lnW0 + (fr/fSub) * lnSub)
+                      : Math.exp(lnPv + ((fr - fSub)/(1 - fSub)) * spanX);
+  };
+  const ypos = (d) => yB - (yMax > 0 ? Math.min(1.02, d/yMax) : 0) * ph;
+
+  // marcas do eixo X: sem nada abaixo do pivô, que ali não cabe rótulo
+  const xt = [2,5,10,25,50,100,250,500,1000,2500].filter((w) => w > pv && w < pRef/1.25);
+  xt.unshift(pv); xt.push(pRef);
+  // marcas do eixo Y no menor passo redondo que caiba em 4 intervalos
   const passoY = (() => { const alvo = yMax/4;
     for (let e=-2; e<8; e++) for (const m of [1,2,2.5,5]){ const p = m*Math.pow(10,e); if (p >= alvo) return p; }
     return alvo; })();
-  for (let v=0; v <= yMax + 1e-9; v += passoY){
-    s += `<line class="grid" x1="${xB}" y1="${Y(v).toFixed(1)}" x2="${xR}" y2="${Y(v).toFixed(1)}"/>`;
-    s += `<text class="tick" x="${xB-7}" y="${(Y(v)+3.5).toFixed(1)}" text-anchor="end">${n1(v)}</text>`;
+  const yt = [];
+  for (let v=0; v <= yMax - passoY*0.35; v += passoY) yt.push(Math.round(v*100)/100);
+  yt.push(yMax);
+
+  // amostragem uniforme em pixels: o pivô cai exatamente numa amostra, então o ápice
+  // sai em bico e não arredondado
+  const N = 200;
+  const amostras = Array.from({length: N+1}, (_, i) => wAtX(xB + pw*i/N));
+  const traco = (fn) => amostras.map((w) => `${xposW(w).toFixed(1)},${ypos(fn(w, f)).toFixed(1)}`).join(' ');
+
+  const seq = traco(dist);
+  const area = `M${xB},${yB} L${seq.split(' ').join(' L')} L${xR},${yB} Z`;
+  const fmtW = (w) => (w >= 10 ? String(Math.round(w)) : String(Math.round(w*100)/100)).replace('.', ',');
+
+  const faixas = bandas.map((b) => {
+    const x1 = xposW(Math.max(wMin, b.de)), x2 = xposW(Math.min(pRef, b.ate));
+    if (x2 <= x1 + 0.5) return '';
+    const nome = x2 - x1 > b.nome.length*7 + 8 ? b.nome : b.nome.slice(0,3);
+    return `<rect class="fa-band" x="${x1.toFixed(1)}" y="${mt}" width="${(x2-x1).toFixed(1)}" height="${ph}" opacity="${b.op}"/>`
+      + (b.de > 0 ? `<line class="fa-bandsep" x1="${x1.toFixed(1)}" y1="${mt}" x2="${x1.toFixed(1)}" y2="${yB}"/>` : '')
+      + `<text class="fa-bandlbl" x="${(x2-3).toFixed(1)}" y="${mt+11}" text-anchor="end">${nome}</text>`;
+  }).join('');
+
+  // quando as duas fichas dividem a escala, o trecho que ESTA não ergue fica apagado
+  let fora = '';
+  if (P < pRef*0.999){
+    const x0 = xposW(P);
+    fora = `<rect class="fa-fora" x="${x0.toFixed(1)}" y="${mt}" width="${(xR-x0).toFixed(1)}" height="${ph}"/>`
+      + `<line class="fa-foraln" x1="${x0.toFixed(1)}" y1="${mt}" x2="${x0.toFixed(1)}" y2="${yB}"/>`
+      + `<text class="fa-bandlbl" x="${(x0+4).toFixed(1)}" y="${yB-6}">não ergue</text>`;
   }
-  const xt = [0.05,0.1,0.25,0.5,1,2,5,10,25,50,100,250,500,1000,2500]
-              .filter((w) => w >= WMIN && w < pMaxComum/1.3);
-  xt.push(pMaxComum);
-  xt.forEach((w) => {
-    s += `<line class="axis" x1="${X(w).toFixed(1)}" y1="${yB}" x2="${X(w).toFixed(1)}" y2="${yB+4}"/>`;
-    s += `<text class="tick" x="${X(w).toFixed(1)}" y="${yB+15}" text-anchor="middle">${fw(w)}</text>`;
-  });
-  s += `<line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>`;
-  s += `<text class="tick" x="${(xB+xR)/2}" y="${yB+29}" text-anchor="middle">peso arremessado (kg) · escala log</text>`;
-  s += `<text class="tick" x="${-(yT+yB)/2}" y="11" text-anchor="middle" transform="rotate(-90)">alcance (m)</text>`;
 
-  const N = 220;
-  const traco = (fn) => { let d = '';
-    for (let i=0; i<=N; i++){ const w = Math.exp(lnW0 + spanX*i/N);
-      d += (i ? ' L' : 'M') + X(w).toFixed(1) + ',' + Y(fn(w, f)).toFixed(1); }
-    return d; };
-  s += `<path class="curve" d="${traco(dCorr)}" stroke="var(--s3)" stroke-dasharray="1.5 3"/>`;
-  s += `<path class="curve" d="${traco(dGiro)}" stroke="var(--s2)" stroke-dasharray="6 4"/>`;
-  s += `<path class="curve" d="${traco(dist)}" stroke="var(--s1)"/>`;
-  s += `<line class="cross" id="c${f.id}" y1="${yT}" y2="${yB}"/>`;
-  s += `<rect x="${xB}" y="${yT}" width="${pw}" height="${ph}" fill="transparent" data-hit="${f.id}"/>`;
-  const svg = document.getElementById('g'+f.id);
-  svg.innerHTML = s;
+  const xticks = xt.map((w, i) => {
+    const x = xposW(w), anc = i === xt.length-1 ? 'end' : 'middle';
+    return `<line class="grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${yB}"/>`
+      + `<text x="${x.toFixed(1)}" y="${yB+14}" text-anchor="${anc}">${fmtW(w)}</text>`;
+  }).join('');
+  const yticks = yt.map((d) => {
+    const y = ypos(d);
+    return `<line class="grid" x1="${xB}" y1="${y.toFixed(1)}" x2="${xR}" y2="${y.toFixed(1)}"/>`
+      + `<text x="${xB-6}" y="${(y+3).toFixed(1)}" text-anchor="end">${n1(d)}</text>`;
+  }).join('');
+  const titles = `<text class="axlbl" x="${(xB+xR)/2}" y="${H-4}" text-anchor="middle">Peso (kg)</text>`
+    + `<text class="axlbl" transform="rotate(-90 11 ${mt+ph/2})" x="11" y="${mt+ph/2}" text-anchor="middle">Arremesso (m)</text>`;
+  // legenda no rodapé, afastada 10% da esquerda: encostada na borda cairia em cima da
+  // subida quase vertical até o pivô
+  const leg = DEFS.map((d, i) => {
+    const y = yB - 42 + i*13, x = xB + pw*0.1;
+    return `<line class="${d.cls} fa-legln" x1="${x.toFixed(1)}" y1="${y}" x2="${(x+18).toFixed(1)}" y2="${y}"/>`
+      + `<text class="fa-leglbl" x="${(x+24).toFixed(1)}" y="${y+3.5}">${d.nome}</text>`;
+  }).join('');
+  const sel = SEL[f.id];
+  const curvas = [...DEFS].sort((a,b) => Number(a.k === sel) - Number(b.k === sel))
+    .map((d) => `<polyline class="${d.cls}" data-c="${d.k}" points="${traco(d.f)}"/>`).join('');
+  const pontos = DEFS.map((d) => `<circle class="fa-dot" data-c="${d.k}" r="3"/>`).join('');
 
-  const tip = document.getElementById('t'+f.id), cross = document.getElementById('c'+f.id);
-  const hit = svg.querySelector('[data-hit]');
-  hit.onpointermove = (e) => {
-    const r = svg.getBoundingClientRect(), k = W/r.width;
-    const px = Math.max(xB, Math.min(xR, (e.clientX - r.left)*k));
-    const w = Math.exp(lnW0 + ((px - xB)/pw)*spanX);
-    cross.setAttribute('x1', X(w)); cross.setAttribute('x2', X(w)); cross.style.opacity = 1;
-    const b = bandas.find((z) => w <= z.ate) || bandas[3];
-    tip.innerHTML = `<b>${fw(w)} kg</b> · carga ${b.nome} · corre a <b>${pc(vel(w,f))}</b><br>`
-      + `<s style="background:var(--s1)"></s>parado <b>${n1(dist(w,f))} m</b><br>`
-      + `<s style="background:var(--s2)"></s>giro <b>${n1(dGiro(w,f))} m</b><br>`
-      + `<s style="background:var(--s3)"></s>corrida <b>${n1(dCorr(w,f))} m</b>`;
-    tip.style.left = (X(w)/k) + 'px';
-    tip.style.top  = (Y(dCorr(w,f))/k) + 'px';
-    tip.style.opacity = 1;
+  const wrap = document.getElementById('w'+f.id);
+  wrap.innerHTML = `<svg class="fa-chart" data-sel="${sel}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distância de arremesso por peso, parado, girando e correndo">`
+    + `${faixas}${yticks}${xticks}<path class="area" d="${area}"/>`
+    + `<g class="fa-curvas-g">${curvas}</g>${fora}${leg}`
+    + `<line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/>`
+    + `<line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>${titles}`
+    + `<rect class="fa-capture" x="${xB}" y="${mt}" width="${pw}" height="${ph}" fill="transparent"/>`
+    + `<g class="fa-hover" style="display:none; pointer-events:none"><line class="fa-vline" y1="${mt}" y2="${yB}"/>${pontos}</g>`
+    + `</svg><div class="fa-tip" style="display:none"></div>`;
+
+  const svg = wrap.querySelector('svg.fa-chart');
+  const tip = wrap.querySelector('.fa-tip');
+  const hov = wrap.querySelector('.fa-hover');
+  const vline = wrap.querySelector('.fa-vline');
+  const mostraW = (w) => {
+    const rect = svg.getBoundingClientRect(), cx = xposW(w);
+    hov.style.display = '';
+    vline.setAttribute('x1', cx); vline.setAttribute('x2', cx);
+    let cySel = ypos(dCorr(w, f));
+    for (const d of DEFS){
+      const p = hov.querySelector(`.fa-dot[data-c="${d.k}"]`); if (!p) continue;
+      const cy = ypos(d.f(w, f));
+      p.setAttribute('cx', cx.toFixed(1)); p.setAttribute('cy', cy.toFixed(1));
+      p.setAttribute('r', d.k === sel ? '5' : '3');
+      if (d.k === sel) cySel = cy;
+    }
+    tip.innerHTML = `<b>${n1(w)} kg</b><div class="fa-tipg">`
+      + DEFS.map((d) => `<span>${d.nome}</span><span>${n1(d.f(w, f))} m</span>`).join('') + `</div>`;
+    tip.style.display = '';
+    const px = (cx/W)*rect.width, meia = tip.offsetWidth/2;
+    tip.style.left = Math.max(meia, Math.min(rect.width - meia, px)) + 'px';
+    tip.style.top  = (cySel/H)*rect.height + 'px';
   };
-  hit.onpointerleave = () => { tip.style.opacity = 0; cross.style.opacity = 0; };
+  const lePonteiro = (clientX) => {
+    const rect = svg.getBoundingClientRect();
+    mostraW(Math.max(0, Math.min(P, wAtX(((clientX - rect.left)/rect.width)*W))));
+  };
+  svg.addEventListener('pointermove', (e) => lePonteiro(e.clientX));
+  svg.addEventListener('pointerdown', (e) => lePonteiro(e.clientX));
+  svg.addEventListener('pointerleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
 
   // --- tabela
   document.querySelector('#tb'+f.id+' tbody').innerHTML = pesosTabela(P).map((w) => {
     const lim = w >= P*0.999;
-    return `<tr class="${lim ? 'lim' : ''}"><td>${fw(w)} kg</td><td>${n1(dist(w,f))}</td>`
+    return `<tr class="${lim ? 'lim' : ''}"><td>${fw(w)}</td><td>${n1(dist(w,f))}</td>`
          + `<td>${n1(dGiro(w,f))}</td><td>${n1(dCorr(w,f))}</td><td>${pc(vel(w,f))}</td></tr>`;
   }).join('');
 }
@@ -454,15 +669,15 @@ function pintaCmp(){
   const mtz = `<table class="mtz"><tbody>`
     + `<tr><td class="h"></td>${[0,1,2,3,4,5,6].map((h) => `<td class="h">H ${h}</td>`).join('')}</tr>`
     + [1,2,3,4,5,6].map((F) => `<tr><td class="h">Força ${F}</td>`
-        + [0,1,2,3,4,5,6].map((H) => {
-            const v = arred(dP(k, dFah(k, F, H, 0)));
-            const dest = (F === 1 && H === 0) || (F === 2 && H === 0) || (F === 6 && H === 6);
+        + [0,1,2,3,4,5,6].map((Hh) => {
+            const v = arred(dP(k, dFah(k, F, Hh, 0)));
+            const dest = (F === 1 && Hh === 0) || (F === 2 && Hh === 0) || (F === 6 && Hh === 6);
             return `<td${dest ? ' style="font-weight:700"' : ''}>${v}</td>`;
           }).join('') + `</tr>`).join('')
     + `</tbody></table>`;
 
   document.getElementById('cmp').innerHTML = `
-    <h3>Como cada fórmula reparte a escada entre as âncoras</h3>
+    <h3 class="tit">Como cada fórmula reparte a escada entre as âncoras</h3>
     <div style="overflow-x:auto"><table>
       <thead><tr><th>fórmula</th><th>FAH</th><th>degraus</th><th>fatia do Halt</th>
         <th>homem comum</th><th>erro vs alvo</th><th>bico se partida</th>
@@ -476,11 +691,11 @@ function pintaCmp(){
 
     <div class="cols" style="margin-top:18px">
       <div>
-        <h3>A escada de ${FAHDEF[k].nome}</h3>
+        <h3 class="tit">A escada de ${FAHDEF[k].nome}</h3>
         <div class="escada">${escada}</div>
       </div>
       <div>
-        <h3>Força × Halterofilismo, em kg</h3>
+        <h3 class="tit">Força × Halterofilismo, em kg</h3>
         ${mtz}
         <p class="nota">${FAHDEF[k].atl ? 'Atletismo fixado em 0 nesta matriz. ' : ''}Em negrito as
           três âncoras. A linha <b>Força 1</b> é o caso que separa as fórmulas: é o franzino que
@@ -489,42 +704,77 @@ function pintaCmp(){
     </div>`;
 }
 
+// ---------------------------------------------------------------- a fórmula
+// Só os resultados se redesenham; os campos de entrada são estáticos, senão o foco
+// pularia fora a cada tecla digitada.
+const pipe = (f) => `<span class="pip" style="background:${f.cor}"></span>`;
+function pintaFormula(){
+  const put = (nome, html) => { const el = document.querySelector(`[data-out="${nome}"]`); if (el) el.innerHTML = html; };
+  const k = M.fahf, pv = M.wpiv;
+  put('fahEq', FAHDEF[k].eq);
+  put('fahLo', dMin(k)); put('fahLo2', dMin(k)); put('fahHi', dTopo(k));
+  put('expP', M.pforma === 'pot' ? vg(dExp(k), 3)
+    : M.pforma === 'geo' ? '(geométrica)' : '(linear)');
+  put('piv1', n1(pv));
+
+  const linha = (fn) => FICHAS.map((f) => `<span>${pipe(f)}${f.nome}: ${fn(f)}</span>`).join('');
+  put('instFah', linha((f) => `FAH <b>${fah(f)}</b> · FAA <b>${faa(f)}</b>`));
+  put('instP',   linha((f) => `<b>${kg(pmax(f))}</b>`));
+  put('instR0',  linha((f) => `<b>${n1(R0(f))} m</b>`));
+  put('instAlc', linha((f) => `${n1(pv)} kg → <b>${n1(dist(pv, f))} m</b> · `
+    + `10 kg → <b>${n1(dist(10, f))} m</b> · 0,1 kg → <b>${n1(dist(0.1, f))} m</b>`));
+  put('instVel', linha((f) => `P/8 → <b>${pc(vel(pmax(f)/8, f))}</b> · P/4 → <b>${pc(vel(pmax(f)/4, f))}</b> · `
+    + `P/2 → <b>${pc(vel(pmax(f)/2, f))}</b>`));
+  put('instImp', linha((f) => `no pivô, giro <b>+${Math.round(M.giro*vel(pv,f)*100)}%</b> e `
+    + `corrida <b>+${Math.round(M.corrida*vel(pv,f)*100)}%</b>`));
+  put('notaForm', M.modelo === 'fisico'
+    ? `O termo <i>m</i><sub>0</sub>/(<i>w</i>+<i>m</i><sub>0</sub>) é técnica: ao arremessar, o braço acelera o objeto `
+      + `E a si mesmo, e daí sai <i>v</i>(<i>m</i>) = <i>v</i><sub>max</sub>·√(<i>m</i><sub>0</sub>/(<i>m</i>+<i>m</i><sub>0</sub>)). `
+      + `O termo (1 − <i>w</i>/<i>P</i>)<sup>n</sup> é força: perto do peso máximo não há como acelerar nada. `
+      + `Abaixo do pivô a conta deixa de ser física e vira regra de jogo, para o ápice ficar exatamente no pivô.`
+    : `Modelo antigo, mantido só para comparação: o site usa o físico.`);
+}
+
+// ---------------------------------------------------------------- pintura geral
 function pinta(){
-  const Ps  = FICHAS.map(pmax);
-  const pico = (f) => Math.max(...pesosTabela(pmax(f)).map((w) => dCorr(w, f)), dCorr(1, f));
+  const pico = (f) => Math.max(...pesosTabela(pmax(f)).map((w) => dCorr(w, f)), dCorr(M.wpiv, f));
   const yCada = FICHAS.map(pico);
   const yCom  = teto(Math.max(...yCada));
-  const pCom  = Math.max(...Ps);
+  const pCom  = Math.max(...FICHAS.map(pmax));
   FICHAS.forEach((f, i) => pintaFicha(f,
       M.escala ? yCom : teto(yCada[i]),
       M.escala ? pCom : pmax(f)));
   pintaCmp();
+  pintaFormula();
   // pontinhos
   document.querySelectorAll('.dots').forEach((d) => {
     const f = FICHAS.find((z) => z.id === d.dataset.ficha), v = f[d.dataset.k];
     d.querySelectorAll('.dot').forEach((p) => p.classList.toggle('on', +p.dataset.d <= v));
   });
+  document.querySelectorAll('[data-fa-curva]').forEach((b) =>
+    b.setAttribute('aria-pressed', String(b.dataset.faCurva === SEL[b.dataset.ficha])));
+
   const pF = pPorFah, deg = fahTopo() - fahMin(), C = fahComum();
   const fmt2 = (v) => v.toFixed(2).replace('.', ',');
   const dentro = (v, a, b) => v >= a && v <= b ? '' : ' style="color:var(--s2)"';
   const erroMeio = pF(C)/M.palvo - 1;
   const passo1 = (fh) => pF(fh+1)/pF(fh) - 1;
-  document.getElementById('pnota').innerHTML =
+  document.querySelector('[data-out="pnota"]').innerHTML =
       `Escada de <b>${deg}</b> degraus, ${Math.round(pF(fahMin()))} a ${Math.round(pF(fahTopo()))} kg. `
     + `Halterofilismo pega <b>${Math.round(6/deg*100)}%</b> deles.<br>`
-    + (M.pforma === 'pot' ? `Expoente <b>${dExp(M.fahf).toFixed(3).replace('.',',')}</b>, achado só pelas pontas. ` : '')
+    + (M.pforma === 'pot' ? `Expoente <b>${vg(dExp(M.fahf), 3)}</b>, achado só pelas pontas. ` : '')
     + `Homem comum (Força 2, Halt 0) = FAH ${C} cai em <b${dentro(Math.abs(erroMeio), 0, 0.06)}>`
-    + `${Math.round(pF(C))} kg</b> <span class="old">(alvo ${M.palvo}, erro ${(erroMeio*100).toFixed(1).replace('.',',')}%)</span><br>`
+    + `${Math.round(pF(C))} kg</b> (alvo ${M.palvo}, erro ${vg(erroMeio*100, 1)}%)<br>`
     + `+1 Halterofilismo vale <b>+${Math.round(passo1(C)*100)}%</b> e +1 Força vale `
-    + `<b>+${Math.round((pF(C + (M.fahf==='3f'?3:2))/pF(C) - 1)*100)}%</b> aqui.<br>`
+    + `<b>+${Math.round((pF(C + FAHDEF[M.fahf].pf)/pF(C) - 1)*100)}%</b> aqui.<br>`
     + `Técnica 0→6: <b${dentro(pF(C+6)/pF(C), 1.4, 2.6)}>×${fmt2(pF(C+6)/pF(C))}</b> para o fraco, `
-    + `<b>×${fmt2(pF(fahTopo())/pF(fahTopo()-6))}</b> para o forte `
-    + `<span class="old">(medido: ×1,4 a ×2,0)</span>`;
+    + `<b>×${fmt2(pF(fahTopo())/pF(fahTopo()-6))}</b> para o forte (medido: ×1,4 a ×2,0)`;
+
   document.querySelectorAll('[data-only]').forEach((el) => {
     const alvo = el.dataset.only;
     const on = alvo === 'anc'      ? (M.baseModo === 'anc' && M.modelo !== 'fisico')
              : alvo === 'tabelado' ? M.modelo !== 'fisico'
-             : alvo === 'pontas' ? M.pforma !== 'lin'
+             : alvo === 'pontas'   ? M.pforma !== 'lin'
              : (alvo === 'geo' || alvo === 'lin' || alvo === 'pot') ? alvo === M.pforma
              : alvo === M.modelo;
     el.style.display = on ? '' : 'none';
@@ -532,7 +782,55 @@ function pinta(){
 }
 
 // ---------------------------------------------------------------- controles
+// Um parâmetro pode ter vários campos apontando para ele (o da fórmula e o do painel):
+// quem digita manda, e todos os outros campos e leituras acompanham.
+const FMT = {
+  kgFAH:   (v) => String(v),
+  q:       (v) => Math.round(v*100)+'%',
+  pexp:    (v) => vg(v, 1), fexp: (v) => vg(v, 1),
+  m0:      (v) => vg(v, 2), wpiv: (v) => vg(v, 2),
+  vexp:    (v) => vg(v, 2),
+  corrida: (v) => '+'+Math.round(v*100)+'%',
+  giro:    (v) => '+'+Math.round(v*100)+'%',
+};
+const CAMPO = { corrida: 3, giro: 3, r0exp: 2, bexp: 3, vexp: 2, m0: 2, wpiv: 1, fexp: 1, pexp: 1, q: 2 };
+const numFmt = (chave, v) => CAMPO[chave] != null ? +v.toFixed(CAMPO[chave]) : v;
+
+function sync(exceto){
+  document.querySelectorAll('input[data-p]').forEach((el) => {
+    if (el === exceto) return;
+    const chave = el.dataset.p;
+    if (el.type === 'checkbox') el.checked = !!M[chave];
+    else if (el.type !== 'radio') el.value = String(numFmt(chave, M[chave]));
+  });
+  document.querySelectorAll('[data-v]').forEach((el) => {
+    const chave = el.dataset.v;
+    el.textContent = (FMT[chave] || String)(M[chave]);
+  });
+}
+
+document.addEventListener('input', (e) => {
+  const el = e.target;
+  if (!(el instanceof HTMLInputElement) || !el.dataset.p) return;
+  const chave = el.dataset.p;
+  if (el.type === 'checkbox') M[chave] = el.checked;
+  else {
+    const v = parseFloat(el.value);
+    if (!isFinite(v)) return;          // campo vazio no meio da digitação: espera
+    M[chave] = v;
+  }
+  sync(el); pinta();
+});
+document.addEventListener('change', (e) => {
+  const el = e.target;
+  if (!(el instanceof HTMLInputElement) || el.type !== 'radio') return;
+  const alvo = { fahf:'fahf', pforma:'pforma', modelo:'modelo', basemodo:'baseModo' }[el.name];
+  if (!alvo) return;
+  M[alvo] = el.value; pinta();
+});
 document.getElementById('duo').addEventListener('click', (e) => {
+  const bt = e.target.closest('[data-fa-curva]');
+  if (bt){ SEL[bt.dataset.ficha] = bt.dataset.faCurva; pinta(); return; }
   const dot = e.target.closest('.dot'); if (!dot) return;
   const box = dot.closest('.dots');
   const f = FICHAS.find((z) => z.id === box.dataset.ficha);
@@ -540,37 +838,16 @@ document.getElementById('duo').addEventListener('click', (e) => {
   f[box.dataset.k] = (f[box.dataset.k] === v) ? Math.max(0, v-1) : v;
   pinta();
 });
+document.getElementById('reset').addEventListener('click', () => {
+  Object.assign(M, SITE);
+  document.querySelectorAll('input[type=radio]').forEach((r) => {
+    const alvo = { fahf:'fahf', pforma:'pforma', modelo:'modelo', basemodo:'baseModo' }[r.name];
+    if (alvo) r.checked = r.value === M[alvo];
+  });
+  sync(null); pinta();
+});
 
-const liga = (id, chave, fmt) => {
-  const el = document.getElementById(id), out = document.getElementById(id+'_v');
-  el.addEventListener('input', () => { M[chave] = +el.value; if (out) out.textContent = fmt(+el.value); pinta(); });
-  if (out) out.textContent = fmt(+el.value);
-};
-liga('kgfah','kgFAH', (v) => v);
-liga('q','q',        (v) => Math.round(v*100)+'%');
-liga('pexp','pexp',  (v) => v.toFixed(1).replace('.',','));
-liga('m0','m0',      (v) => v.toFixed(2).replace('.',','));
-liga('fexp','fexp',  (v) => v.toFixed(1).replace('.',','));
-liga('vexp','vexp',  (v) => v.toFixed(2).replace('.',','));
-liga('corr','corrida',(v) => '+'+Math.round(v*100)+'%');
-liga('giro','giro',  (v) => '+'+Math.round(v*100)+'%');
-document.getElementById('ppiso').addEventListener('input', (e) => { M.ppiso = +e.target.value; pinta(); });
-document.getElementById('ptopo').addEventListener('input', (e) => { M.ptopo = +e.target.value; pinta(); });
-document.getElementById('palvo').addEventListener('input', (e) => { M.palvo = +e.target.value; pinta(); });
-document.querySelectorAll('input[name=fahf]').forEach((r) =>
-  r.addEventListener('change', () => { M.fahf = r.value; pinta(); }));
-document.querySelectorAll('input[name=pforma]').forEach((r) =>
-  r.addEventListener('change', () => { M.pforma = r.value; pinta(); }));
-document.getElementById('r0').addEventListener('input', (e) => { M.r0 = +e.target.value; pinta(); });
-document.getElementById('r0exp').addEventListener('input', (e) => { M.r0exp = +e.target.value; pinta(); });
-document.getElementById('banc').addEventListener('input', (e) => { M.banc = +e.target.value; pinta(); });
-document.getElementById('bexp').addEventListener('input', (e) => { M.bexp = +e.target.value; pinta(); });
-document.getElementById('escala').addEventListener('change', (e) => { M.escala = e.target.checked; pinta(); });
-document.querySelectorAll('input[name=modelo]').forEach((r) =>
-  r.addEventListener('change', () => { M.modelo = r.value; pinta(); }));
-document.querySelectorAll('input[name=basemodo]').forEach((r) =>
-  r.addEventListener('change', () => { M.baseModo = r.value; pinta(); }));
-
+sync(null);
 pinta();
 </script>
 </body>
