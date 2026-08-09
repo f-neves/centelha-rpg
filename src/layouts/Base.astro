@@ -47,8 +47,18 @@ if (partes.length) crumbs.push({ label: title });
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={descricao} />
-  <link rel="icon" href={url('favicon.svg')} />
+  {/* Duas marcas diferentes de propósito, cada uma no tamanho em que funciona.
+      Na ABA vai a faísca sozinha na moldura: o d6 com as cinco pintas empastava
+      a 16px, que é o tamanho em que a aba de fato renderiza. O .ico entra como
+      reserva (navegador antigo, atalho do Windows, leitor que só entende ico) e
+      traz rasters próprios de 16, 32 e 48; quem entende SVG pega o SVG. Como o
+      site mora num subcaminho, o /favicon.ico automático da raiz não existe,
+      daí ele precisar de link explícito. */}
+  <link rel="icon" href={url('favicon.ico')} sizes="32x32" />
+  <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
   <link rel="manifest" href={url('manifest.webmanifest')} />
+  {/* No APP (tela de início do iOS, como no Android pelo manifest) vai o d6
+      completo: ali ele aparece grande e o detalhe rende. */}
   <link rel="apple-touch-icon" href={url('icon-192.png')} />
   <meta name="theme-color" content="#0B3B47" />
   <meta property="og:type" content="website" />

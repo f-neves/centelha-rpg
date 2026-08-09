@@ -1,18 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Centelha">
-  <title>Centelha</title>
-  <rect width="1024" height="1024" fill="#15171c"/>
-  <rect x="160" y="160" width="704" height="704" rx="168" fill="none" stroke="#3fc9c2" stroke-width="66"/>
-  <g fill="#d9b85f">
-    <circle cx="384" cy="384" r="46"/>
-    <circle cx="384" cy="512" r="46"/>
-    <circle cx="384" cy="640" r="46"/>
-    <circle cx="640" cy="512" r="46"/>
-    <circle cx="640" cy="640" r="46"/>
-    <polygon points="640.00,376.00 655.59,349.00 640.00,322.00 624.41,349.00"/>
-    <polygon points="646.93,380.00 678.11,380.00 693.69,353.00 662.52,353.00"/>
-    <polygon points="646.93,388.00 662.52,415.00 693.69,415.00 678.11,388.00"/>
-    <polygon points="640.00,392.00 624.41,419.00 640.00,446.00 655.59,419.00"/>
-    <polygon points="633.07,388.00 601.89,388.00 586.31,415.00 617.48,415.00"/>
-    <polygon points="633.07,380.00 617.48,353.00 586.31,353.00 601.89,380.00"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Centelha"><title>Centelha</title><rect width="1024" height="1024" fill="#15171c"/><rect x="160" y="160" width="704" height="704" rx="168" fill="none" stroke="#3fc9c2" stroke-width="72"/><g fill="#d9b85f"><polygon points="512.00,498.00 567.14,402.50 512.00,307.00 456.86,402.50"/><polygon points="524.12,505.00 634.40,505.00 689.54,409.50 579.26,409.50"/><polygon points="524.12,519.00 579.26,614.50 689.54,614.50 634.40,519.00"/><polygon points="512.00,526.00 456.86,621.50 512.00,717.00 567.14,621.50"/><polygon points="499.88,519.00 389.60,519.00 334.46,614.50 444.74,614.50"/><polygon points="499.88,505.00 444.74,409.50 334.46,409.50 389.60,505.00"/></g></svg>
