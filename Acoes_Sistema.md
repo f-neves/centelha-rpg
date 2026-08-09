@@ -49,7 +49,7 @@ repete a regra:
 
 ## 3. A régua comum
 
-> **§3.1 a §3.3 estão DECIDIDAS** (2026-08-09). §3.4 e §3.5 seguem em aberto.
+> **§3.1 a §3.5 estão DECIDIDAS** (2026-08-09). §3.6 e §3.7 seguem em aberto.
 
 ### 3.1 De onde sai a Dificuldade
 
@@ -145,11 +145,15 @@ Forjar uma espada: **Dificuldade 7, Acúmulo 10**, intervalo de uma semana. O fe
 sai.
 
 **A Centelha não entra na Longa.** Quem quebra a parede do trabalho longo são **Proezas e Artes**.
-Disso decorre a propriedade mais importante deste modo, e ela merece estar escrita no capítulo:
 
-> Como a Longa é determinística, **quem tem média igual ou menor que a Dificuldade nunca termina**,
-> por mais tempo que trabalhe. Não é azar, é falta de capacidade. É exatamente aí que uma Proeza
-> ou uma Arte deixa de ser luxo e vira a única porta.
+**Média igual ou menor que a Dificuldade não impede tentar.** O personagem simplesmente não
+avança: cada intervalo passa e o Acúmulo não sobe. O caminho não é insistir, é **levantar a
+média** ou **abaixar a Dificuldade**, e para isso vale tudo o que não é dado: stunt, ajuda,
+ferramenta certa, oficina, material melhor, Proeza, Arte. O aprendiz que não consegue a peça
+sozinho consegue com o mestre ao lado e a bigorna certa.
+
+> A Longa é o modo em que **a competência substitui a sorte**. Não existe azar: existe capacidade
+> suficiente, ou não existe.
 
 #### Reflexiva
 
@@ -177,23 +181,66 @@ outro lado, por Proezas e Artes de quem está tentando passar.
 
 Casos específicos podem pedir outra conta, e a ficha diz quando.
 
-#### A mesma tarefa em dois modos
+### 3.4 Quem escolhe o modo é o jogador
 
-*Proposta, decorre do desenho acima.* Acumulada e Longa compartilham a mesma dupla de números, e
-o que escolhe entre elas não é a tarefa, é a **pressão**. Escalar sob vigia é Acumulada, porque
-cada intervalo importa e o dado tem de aparecer; escalar treinando sozinho é Longa. Forjar com o
-exército a três dias de marcha é Acumulada; forjar em paz é Longa. A ficha declara Dificuldade e
-Acúmulo uma vez só, e a cena decide se há dado.
+Acumulada e Longa compartilham a mesma dupla de números. **O que escolhe entre elas é a pressão,
+e quem decide é o jogador**, não uma tabela.
 
-### 3.4 Quando não se rola
+Quer subir o muro **agora**? Role. Mesmo com chance mínima de falhar, role: pressa é justamente o
+que põe o dado na mesa. Quer subir o muro **sem pressa**, com calma e tempo? Tome a média e suba
+em quantos intervalos forem precisos.
 
-> **[DECIDIR]**
+<p class="formula">Com pressa ou sob risco: Acumulada, com dado · Sem pressa: Longa, pela média</p>
 
-O Coração do Sistema já diz o princípio: "os dados só entram quando o resultado é **incerto e
-importa**". Falta decidir se existe também um **piso numérico** (por exemplo, Dificuldade menor ou
-igual à metade do pool dispensa a jogada), ou se o princípio basta.
+E é por isso que **não existe piso numérico** neste capítulo. A pergunta "quando não se rola?" não
+precisa de número: não se rola quando não há pressa, e essa é uma escolha declarada na mesa. O
+princípio do Coração do Sistema ("os dados só entram quando o resultado é incerto e importa")
+continua bastando, agora com um par de modos que o torna operacional em vez de conselho.
 
-### 3.5 O que custa Fôlego
+A escolha vale nos dois sentidos. Um personagem com média abaixo da Dificuldade **pode** escolher
+a Longa: ele não vai avançar sozinho, mas pode passar a avançar assim que somar stunt, ajuda ou
+ferramenta à média. E um personagem com média muito acima **pode** escolher rolar, se a cena tem
+pressa, e aceitar o risco que o dado traz.
+
+### 3.5 Ajuda e ação em grupo
+
+Duas formas, e a ficha diz qual vale para aquela tarefa.
+
+#### Somar Acúmulo
+
+Em tarefa **simples e divisível**, os Acúmulos somam: dois cavando o mesmo túnel produzem o dobro
+de progresso por intervalo. É o caso quando o trabalho pode ser fatiado sem perda.
+
+#### Apoiar o principal
+
+Quando o trabalho **não se divide** (uma fechadura, um paciente, uma peça no torno), um age e os
+outros apoiam. O ajudante **rola contra a mesma Dificuldade**:
+
+| O ajudante | Dá ao principal |
+|---|---|
+| falhou | nada |
+| passou | **+2** |
+| passou com Margem | **+2** e mais **+1d6 por Margem** |
+
+É a mesma escala dos Stunts (+2 fixo, depois dados), e pela mesma razão: excedente de expertise
+vira dado. Ajudar exige saber fazer, e quem não sabe não atrapalha nem ajuda.
+
+#### Teste coletivo
+
+Quando **o grupo inteiro** enfrenta a mesma coisa e o pior estraga para todos (o corredor
+silencioso, a travessia da geleira), o normal continua sendo **cada um por si**. Quando a cena
+pedir um resultado único:
+
+1. A Dificuldade sobe **+2 por pessoa**.
+2. Rola quem tem o **pior pool**, e o resultado é o do grupo.
+3. Cada um dos outros pode rolar para ajudar, pela tabela de apoio acima.
+
+Repare no que esses números fazem sozinhos: cada pessoa a mais sobe a Dificuldade em 2, e essa
+mesma pessoa devolve +2 se passar. **O companheiro competente é neutro, o incompetente é peso, e
+o perito melhora o grupo** (porque a Margem dele vira dado). O grupo grande não é punido por ser
+grande, é punido por levar gente que não sabe o que está fazendo.
+
+### 3.6 O que custa Fôlego
 
 > **[DECIDIR]**
 
@@ -201,6 +248,31 @@ O capítulo de Fôlego já cobra por golpe no combate. Fora dele, a proposta é 
 **ação Acumulada de esforço físico** (escalar uma parede longa, remar contra a corrente, marcha
 forçada), na mesma moeda: um ponto por intervalo, recuperando no respiro. A Longa não cobraria
 nada, porque ela já pressupõe ritmo sustentável.
+
+### 3.7 O que precisa casar com Relações Sociais
+
+> **[DECIDIR]** · quatro colisões achadas em 2026-08-09.
+
+O capítulo **Relações Sociais** já implementa a mesma ideia dos modos, na seção *Cortejo com
+calma: a Influência Estendida*. Ele chegou lá antes e por outro caminho, e agora os dois precisam
+falar a mesma língua.
+
+1. **O nome "Passivo" está ocupado.** Lá, "Passivo" é o modo de tomar a média sem rolar, que aqui
+   se chama **Longa**. E "Ativo" é o que aqui é Direta ou Acumulada. Aqui, **Passiva** é outra
+   coisa: o valor parado de 2 × (Atributo + Habilidade), que funciona como Defesa. Dois sentidos
+   para a mesma palavra em dois capítulos é insustentável.
+2. **A média arredonda ou não.** Lá está escrito que a média "é fixa (arredonda para baixo)", com
+   tabela publicada (1d6=3, 2d6=7, 3d6=10, 4d6=14, 5d6=17, 6d6=21). Aqui ficou decidido **não
+   arredondar**. Um dos dois muda.
+3. **Existem duas escalas de Stunt no livro.** A geral, em *Atributos & Perícias*, é +2 · +1d6 ·
+   +2d6. A social, em *Relações*, é +1 · +2 · +4, com nível 0 valendo nada e Contra Stunt
+   subtraindo. A divergência tem uma razão boa: **em modo média não há dado para rolar**, então a
+   escala social precisou ser plana. A regra que falta enunciar é a ponte: em Longa, **stunt em
+   dado vale a média do dado**.
+4. **A falha rasa.** Lá, o modo Ativo já resolve exatamente o que aqui ficou em aberto: "falha por
+   6+ retrocede 1 passo; falha rasa não mexe". É a Margem usada para baixo, e é mais generoso que
+   o padrão que fechamos para a Acumulada (perder sempre a diferença). Vale considerar adotar o
+   corte de Relações na Acumulada também, pela consistência e porque ele já foi publicado.
 
 ## 4. O catálogo
 
@@ -418,8 +490,12 @@ com mochila: o primeiro décimo do peso máximo quase não custa nada, e o estra
    Longa sem Centelha e sem arredondamento, e a Passiva valendo o dobro de Atributo + Habilidade.
    Junto fecharam a origem da Dificuldade (§3.1, tabela de âncoras) e o papel da Margem (§3.2,
    níveis de expertise excedente).
-2. **[DECIDIR]** O piso da jogada (§3.4): basta o "incerto e importa", ou existe um número?
-3. **[DECIDIR]** O que custa Fôlego fora do combate (§3.5).
+2. ~~**[DECIDIR]** O piso da jogada.~~ **Dissolvido em 2026-08-09:** não existe piso numérico.
+   Quem escolhe entre rolar e tomar a média é o jogador, e o critério é a pressa (§3.4). Junto
+   fecharam ajuda, apoio e teste coletivo (§3.5).
+3. **[DECIDIR]** O que custa Fôlego fora do combate (§3.6).
+4. **[DECIDIR]** As quatro colisões com Relações Sociais (§3.7): o nome "Passivo", o
+   arredondamento da média, as duas escalas de Stunt, e a falha rasa.
 4. **[FAZER]** Preencher as fichas na ordem: **Escalada**, **Queda**, **Veneno**, **Ambiente**,
    **Esgueirar-se**, **Construir/forjar**. São as seis mais pedidas em mesa e as que hoje o
    mestre inventa do zero toda vez.

@@ -86,20 +86,24 @@ export default defineConfig({
         short_name: 'Centelha D6',
         description: 'Sistema de RPG de mesa em d6, do mortal ao semideus.',
         lang: 'pt-BR',
-        // Cores do ícone novo. As antigas (azul #1f3f8f e creme #f3e9d2) vinham do
-        // d6 azul que o favicon era antes, e destoavam do app instalado.
+        // Cores do fundo do ícone. As antigas (azul #1f3f8f e creme #f3e9d2)
+        // vinham do d6 azul e faziam a splash abrir creme para entregar um ícone
+        // escuro.
         theme_color: '#15171c',
         background_color: '#15171c',
         display: 'standalone',
-        // Os PNGs saem de public/favicon.svg (rasterizados), para o ícone da aba e
-        // o do app instalado não divergirem. O maskable é um arquivo à parte porque
-        // o recorte circular do Android come os cantos da moldura arredondada: o
-        // extremo do canto fica a 428 do centro e a zona segura tem raio 410, então
-        // o maskable traz a mesma arte encolhida a 78% sobre o fundo.
+        // Os PNGs são rasterizados de D&D/favicon/centelha_teste2.svg.
+        //
+        // O "-v2" no nome não é enfeite: launcher e navegador guardam o ícone pelo
+        // NOME do arquivo, então trocar só o conteúdo deixa o desenho velho grudado
+        // em quem já instalou. Mudou o desenho, muda o nome.
+        //
+        // O maskable é arquivo à parte porque precisa de fundo opaco e de caber na
+        // zona segura (círculo de raio 40% do lado). Detalhe da conta no gerador.
         icons: [
-          { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
-          { src: 'icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'icon-192-v2.png', sizes: '192x192', type: 'image/png' },
+          { src: 'icon-512-v2.png', sizes: '512x512', type: 'image/png' },
+          { src: 'icon-maskable-512-v2.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: {
