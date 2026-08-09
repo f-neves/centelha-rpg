@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import OrnCentelha from '../components/OrnCentelha.astro';
 import { url, NAV, FERRAMENTAS } from '../lib/site';
 import { getCollection } from 'astro:content';
 const nTec = (await getCollection('tecnicas')).length;
@@ -11,7 +12,7 @@ const capitulos = NAV.filter((n) => n.numeral);
   <header style="text-align:center;margin:1.5rem 0 2.5rem">
     <p class="muted cinzel" style="letter-spacing:.4em;text-transform:uppercase;font-size: var(--fs-micro)">Sistema de Interpretação</p>
     <h1 style="font-size:clamp(2.2rem,6vw,3.4rem);margin:.2em 0">Centelha <span style="color:var(--accent-strong)">D6</span></h1>
-    <p class="tag-orn">❖ ❖ ❖</p>
+    <p class="tag-orn"><OrnCentelha /> <OrnCentelha /> <OrnCentelha /></p>
     <p class="lead" style="max-width:34rem;margin:.5rem auto 0;font-style:italic">Do mortal ao semideus, um dado de cada vez.</p>
     <p style="max-width:40rem;margin:1rem auto 0" class="muted">
       Um sistema de pool de d6 que equilibra realismo tático e agilidade cinematográfica —

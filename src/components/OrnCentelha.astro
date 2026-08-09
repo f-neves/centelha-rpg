@@ -1,0 +1,41 @@
+---
+/* Ornamento da Centelha: seis losangos em roseta, o ícone do sistema (D&D/centelha.svg).
+   Substitui o antigo glifo ❖ (U+2756).
+
+   Calibragem de tamanho: medido no navegador, a 100px de fonte o ❖ marca uma caixa de
+   tinta de 74×73px, indo de −2px (abaixo da linha de base) a +71px. O desenho aqui tem
+   caixa 779,42×900 (razão 0,866 de largura por altura), então para manter a MESMA área
+   de tinta: h = √(5402/0,866) ≈ 79 e w ≈ 68,4, ou seja 0,79em × 0,684em. Centrando a
+   mancha no mesmo eixo do glifo antigo (+0,345em da linha de base), a base cai 0,05em
+   abaixo da linha. O viewBox está cortado rente ao desenho para que essas medidas sejam
+   de tinta mesmo, sem margem morta.
+
+   Herda currentColor, então segue a cor de quem o contém (em .tag-orn, o --gold). */
+interface Props { class?: string; alt?: string }
+const { class: cls, alt } = Astro.props;
+---
+<svg
+  class:list={['orn-centelha', cls]}
+  viewBox="122.29 62 779.42 900"
+  fill="currentColor"
+  role={alt ? 'img' : undefined}
+  aria-label={alt}
+  aria-hidden={alt ? undefined : 'true'}
+>
+  <polygon points="512.00,492.00 636.13,277.00 512.00,62.00 387.87,277.00" />
+  <polygon points="529.32,502.00 777.58,502.00 901.71,287.00 653.45,287.00" />
+  <polygon points="529.32,522.00 653.45,737.00 901.71,737.00 777.58,522.00" />
+  <polygon points="512.00,532.00 387.87,747.00 512.00,962.00 636.13,747.00" />
+  <polygon points="494.68,522.00 246.42,522.00 122.29,737.00 370.55,737.00" />
+  <polygon points="494.68,502.00 370.55,287.00 122.29,287.00 246.42,502.00" />
+</svg>
+
+<style>
+  .orn-centelha {
+    display: inline-block;
+    height: 0.79em;
+    width: 0.684em;
+    vertical-align: -0.05em;
+    flex: 0 0 auto;
+  }
+</style>
