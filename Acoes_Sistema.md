@@ -49,35 +49,158 @@ repete a regra:
 
 ## 3. A régua comum
 
-> Toda esta seção é **proposta**, não decisão. Marcada **[DECIDIR]** no `Pendencias.md`.
+> **§3.1 a §3.3 estão DECIDIDAS** (2026-08-09). §3.4 e §3.5 seguem em aberto.
 
-### 3.1 Os quatro modos de ação
+### 3.1 De onde sai a Dificuldade
 
-Exalted separa ação simples, estendida, dramática e reflexa, e essa separação é o que faz o resto
-do capítulo caber em pouca regra. A proposta é adotar o mesmo corte com nomes de Centelha:
+Da **tabela de âncoras** do Coração do Sistema, e não de uma fração do pool de quem tenta. Uma
+muralha é tão difícil quanto ela é, independentemente de quem sobe: a Dificuldade descreve a
+**tarefa**, nunca o personagem.
 
-| Modo | O que é | Como se resolve |
-|---|---|---|
-| **Direta** | uma tentativa, resultado imediato | uma jogada contra a Dificuldade |
-| **Acumulada** | esforço repetido até juntar o bastante | soma sucessos ao longo de N tentativas, cada uma custando um intervalo de tempo |
-| **Longa** | trabalho de horas, dias ou meses | **uma** jogada que representa o todo, com o tempo fixado de antemão |
-| **Reflexa** | não consome a ação do turno | jogada avulsa, sem custo de Velocidade |
+| Dif | Desafio | Atrib + Hab à altura |
+|:--:|---|---|
+| 5 | Fácil | 3 · iniciante |
+| 10 | Média | 6 · competente |
+| 15 | Difícil | 9 · perito |
+| 20 | Muito difícil | 10 · mestre |
+| 25 | Limite humano | 12 · pico humano |
+| 30 | Sobre-humano | exige Centelha ou Proezas |
 
-A diferença entre **Acumulada** e **Longa** é a que mais importa na mesa: forjar uma espada é
-Longa (uma jogada, uma semana de trabalho), escavar um túnel é Acumulada (o grupo soma sucessos
-por hora até chegar do outro lado, e pode desistir no meio).
+A régua de ×4/3, ×5/3 e ×2 da Área do Mestre continua valendo para o **Mestre improvisar** uma
+Dificuldade na hora, a partir de quem está tentando. Ela não é o caminho deste capítulo: aqui
+cada ficha **nomeia** a Dificuldade da tarefa, tirada da tabela acima.
 
-### 3.2 Quando não se rola
+Circunstância entra como **±2 ou ±4 na Dificuldade**, exatamente como a Área do Mestre já fixa.
+Ferramenta certa, apoio, terreno e tempo abaixam; pressa, distração e condição ruim sobem. É por
+aqui que oficina, corda, gazua e lanterna entram, sem mecânica nova.
 
-Herança direta do Exalted e vale a pena importar: **se a Dificuldade é menor ou igual à metade do
-pool, não se rola**. Um ferreiro veterano não erra uma dobradiça, e pedir jogada para isso só
-gera falha absurda. A jogada volta a existir quando há pressa, perigo, plateia ou sabotagem.
+### 3.2 A Margem mede expertise, não dificuldade
 
-### 3.3 O que custa Fôlego
+A cada **6 pontos acima do alvo**, uma Margem. Ela não serve para escolher a Dificuldade: ela
+mede **quantos níveis de expertise sobraram** depois de a tarefa estar resolvida. Um total de 22
+contra Dificuldade 10 são 12 acima, ou seja **duas Margens**: dois degraus de excedente.
+
+Cada ficha declara **o que a Margem compra ali**. Em combate a conversão já é lei (+1d6 de dano);
+fora dele o padrão é a ficha dizer: mais rápido, mais fino, mais duradouro, mais silencioso,
+mais material aproveitado.
+
+### 3.3 Os cinco modos de ação
+
+Nem todo modo é jogado. Dois deles dispensam o dado.
+
+| Modo | Rola? | Custa a ação? | Como se resolve |
+|---|:--:|:--:|---|
+| **Direta** | sim | sim | uma jogada, efeito imediato |
+| **Acumulada** | sim | sim | Dificuldade **e** Acúmulo: cada jogada rende (resultado − Dificuldade), soma até fechar |
+| **Longa** | **não** | fora de cena | mesma dupla, mas usando a **média** do pool por intervalo |
+| **Reflexiva** | sim | **não** | uma jogada avulsa |
+| **Passiva** | **não** | **não** | um valor parado: **2 × (Atributo + Habilidade)** |
+
+#### Direta
+
+Uma jogada contra a Dificuldade, resultado na hora. É o modo padrão e o único que a maior parte
+das mesas usa hoje. Arrombar a porta, saltar o vão, mentir para o guarda.
+
+#### Acumulada
+
+A tarefa declara **dois** números: a **Dificuldade**, que é o quanto custa cada tentativa, e o
+**Acúmulo**, que é o total de progresso necessário para terminar.
+
+<p class="formula">Progresso da jogada = resultado − Dificuldade · A tarefa fecha quando o progresso somado alcança o Acúmulo</p>
+
+Subir uma muralha: **Dificuldade 7, Acúmulo 10**. Quem tira 17 sobe de primeira, porque 17 − 7 são
+os 10 pontos inteiros. Quem tira 12 sobe metade e continua no próximo intervalo.
+
+Quando a jogada fica **abaixo da Dificuldade**, o padrão é **perder a diferença**: escorregou,
+desceu. A ficha pode declarar outro comportamento quando o padrão não fizer sentido:
+
+- **rende zero**, quando regredir é absurdo (o que já foi decifrado não se desdecifra);
+- **falha completa e recomeço**, quando a tarefa é do tipo que desmorona inteira (a peça rachou
+  no forno, o disfarce foi desmascarado).
+
+O progresso nunca fica **abaixo de zero**. Quem não tem pool para a Dificuldade oscila em torno
+do fundo e não avança, o que é a maneira certa de dizer "esta parede não é para você".
+
+#### Longa
+
+Mesma dupla Dificuldade e Acúmulo da Acumulada, e **nenhuma jogada**. Em vez de rolar, usa-se a
+**média** do pool, somada uma vez por intervalo.
+
+<p class="formula">Média = 3,5 × (número de dados) + 2 se a soma for ímpar<br />Progresso por intervalo = média − Dificuldade</p>
+
+A média **não se arredonda**: o meio ponto é real, porque 3d6 tira 10,5 mesmo. Progresso
+fracionário é normal, e o Acúmulo fecha quando o total o alcança.
+
+| Soma | Pool | Média |
+|:--:|:--:|:--:|
+| 4 | 2d6 | 7 |
+| 6 | 3d6 | 10,5 |
+| 7 | 3d6+2 | 12,5 |
+| 8 | 4d6 | 14 |
+| 10 | 5d6 | 17,5 |
+| 12 | 6d6 | 21 |
+
+Forjar uma espada: **Dificuldade 7, Acúmulo 10**, intervalo de uma semana. O ferreiro tem Atributo
++ Habilidade 7, média 12,5, então rende **5,5 por semana**: na segunda semana chega a 11 e a peça
+sai.
+
+**A Centelha não entra na Longa.** Quem quebra a parede do trabalho longo são **Proezas e Artes**.
+Disso decorre a propriedade mais importante deste modo, e ela merece estar escrita no capítulo:
+
+> Como a Longa é determinística, **quem tem média igual ou menor que a Dificuldade nunca termina**,
+> por mais tempo que trabalhe. Não é azar, é falta de capacidade. É exatamente aí que uma Proeza
+> ou uma Arte deixa de ser luxo e vira a única porta.
+
+#### Reflexiva
+
+Uma jogada que não consome a ação do turno. Notar o vulto, reagir ao chão que cede, lembrar de
+uma coisa no meio de outra.
+
+#### Passiva
+
+Sem jogada e sem dado: um **valor parado**.
+
+<p class="formula">Valor Passivo = 2 × (Atributo + Habilidade)</p>
+
+Ele funciona como uma **Defesa**: é o número que o mundo tem de superar para passar despercebido
+por você, para enganá-lo, para escondê-lo de você. Por isso ele **quebra de propósito** o
+escalonamento de ×1,75 da média (soma 12 dá média 21 e Valor Passivo 24), e a compensação vem do
+outro lado, por Proezas e Artes de quem está tentando passar.
+
+| Soma | Valor Passivo |
+|:--:|:--:|
+| 4 | 8 |
+| 6 | 12 |
+| 8 | 16 |
+| 10 | 20 |
+| 12 | 24 |
+
+Casos específicos podem pedir outra conta, e a ficha diz quando.
+
+#### A mesma tarefa em dois modos
+
+*Proposta, decorre do desenho acima.* Acumulada e Longa compartilham a mesma dupla de números, e
+o que escolhe entre elas não é a tarefa, é a **pressão**. Escalar sob vigia é Acumulada, porque
+cada intervalo importa e o dado tem de aparecer; escalar treinando sozinho é Longa. Forjar com o
+exército a três dias de marcha é Acumulada; forjar em paz é Longa. A ficha declara Dificuldade e
+Acúmulo uma vez só, e a cena decide se há dado.
+
+### 3.4 Quando não se rola
+
+> **[DECIDIR]**
+
+O Coração do Sistema já diz o princípio: "os dados só entram quando o resultado é **incerto e
+importa**". Falta decidir se existe também um **piso numérico** (por exemplo, Dificuldade menor ou
+igual à metade do pool dispensa a jogada), ou se o princípio basta.
+
+### 3.5 O que custa Fôlego
+
+> **[DECIDIR]**
 
 O capítulo de Fôlego já cobra por golpe no combate. Fora dele, a proposta é cobrar Fôlego só de
 **ação Acumulada de esforço físico** (escalar uma parede longa, remar contra a corrente, marcha
-forçada), na mesma moeda: um ponto por intervalo, recuperando no respiro.
+forçada), na mesma moeda: um ponto por intervalo, recuperando no respiro. A Longa não cobraria
+nada, porque ela já pressupõe ritmo sustentável.
 
 ## 4. O catálogo
 
@@ -290,9 +413,14 @@ com mochila: o primeiro décimo do peso máximo quase não custa nada, e o estra
 
 ## 6. Pendências deste documento
 
-1. **[DECIDIR]** Os quatro modos de ação (§3.1) e os nomes deles.
-2. **[DECIDIR]** A regra de não rolar quando Dificuldade ≤ metade do pool (§3.2).
-3. **[FAZER]** Preencher as fichas na ordem: **Escalada**, **Queda**, **Veneno**, **Ambiente**,
+1. ~~**[DECIDIR]** Os modos de ação.~~ **Fechado em 2026-08-09:** cinco modos (Direta, Acumulada,
+   Longa, Reflexiva, Passiva), com Acumulada e Longa dividindo a dupla Dificuldade e Acúmulo, a
+   Longa sem Centelha e sem arredondamento, e a Passiva valendo o dobro de Atributo + Habilidade.
+   Junto fecharam a origem da Dificuldade (§3.1, tabela de âncoras) e o papel da Margem (§3.2,
+   níveis de expertise excedente).
+2. **[DECIDIR]** O piso da jogada (§3.4): basta o "incerto e importa", ou existe um número?
+3. **[DECIDIR]** O que custa Fôlego fora do combate (§3.5).
+4. **[FAZER]** Preencher as fichas na ordem: **Escalada**, **Queda**, **Veneno**, **Ambiente**,
    **Esgueirar-se**, **Construir/forjar**. São as seis mais pedidas em mesa e as que hoje o
    mestre inventa do zero toda vez.
 4. **[FAZER]** Decidir se isto vira **um** capítulo ou se cada família entra no capítulo que já

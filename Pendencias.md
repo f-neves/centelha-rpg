@@ -139,10 +139,13 @@ só tem número para o que acontece **dentro** do combate, e toda ação fora de
   (movimento e corpo, resistir, percepção e mente, furtividade e subterfúgio, sociais, construção
   e ofício, mundo e viagem, fé e sobrenatural), com descrição e referências em `Acoes_Catalogo.md`
   e jogada sugerida em `Acoes_Sistema.md` §4. **Arremesso** já está preenchido (§5.1).
-- [ ] **G2 · [DECIDIR] As sete decisões estruturais** (`Acoes_Catalogo.md` §1): modos de ação,
-  quando não se rola, graus de sucesso, ajuda e ação em grupo, ferramenta e oficina, escalas de
-  tempo, e o que acontece na falha. Nenhuma ficha fecha antes delas. As duas que mais mudam o
-  formato de todas as outras são **modos de ação** e **graus de sucesso**. **Trava G1 e G3.**
+- [ ] **G2 · [DECIDIR] As decisões estruturais** (`Acoes_Catalogo.md` §1). **Quatro das sete já
+  fecharam em 2026-08-09** e estão escritas em `Acoes_Sistema.md` §3: os **cinco modos de ação**
+  (Direta, Acumulada, Longa, Reflexiva, Passiva), a **origem da Dificuldade** (tabela de âncoras,
+  a tarefa e não o pool de quem tenta), o papel da **Margem** (níveis de expertise excedente, não
+  escolha de Dificuldade) e a **circunstância** (±2/±4, que já era lei). Faltam três: o **piso da
+  jogada**, **ajuda e ação em grupo**, e **o que acontece na falha** fora da Acumulada.
+  **Trava G1 e G3.**
 - [ ] **G3 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
   subsistema pequeno, com oito perguntas próprias listadas no doc. É o maior vazio do sistema:
   um jogador com Ferraria 5 não sabe quanto tempo leva para fazer uma espada nem o que sai dela.
