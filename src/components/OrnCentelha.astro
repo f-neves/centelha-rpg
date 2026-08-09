@@ -37,24 +37,39 @@
    ANIMAÇÃO (prop anim). As variantes da série cheia são os MESMOS seis polígonos,
    com os MESMOS quatro pontos cada, na mesma ordem: só as coordenadas mudam. Isso
    permite interpolar de uma para a outra em vez de trocar de desenho, então em vez
-   de piscar entre quatro arquivos o ornamento respira: o vão do miolo abre e fecha
-   num movimento contínuo. Quem faz isso é o <animate> do SMIL sobre o atributo
-   points, que é a única via para morfar polígono (CSS não anima points).
+   de piscar entre quatro arquivos o ornamento pulsa. Quem faz isso é o <animate>
+   do SMIL sobre o atributo points, que é a única via para morfar polígono (CSS
+   não anima points).
 
-   O ciclo é v3 → v2 → v4 → v5 e volta, que é a ordem de vão abrindo. Cada perna
-   tem easing próprio, então as quatro formas ainda se leem como estados distintos
-   antes de a próxima começar, e não como um borrão. Sem SMIL, o polígono fica no
-   points estático, que é o primeiro quadro do ciclo. */
+   O ritmo é de batida de coração: um golpe rápido que abre, um instante no topo,
+   um golpe que fecha e então uma pausa longa em repouso. As quatro variantes são
+   igualmente espaçadas (o primeiro ponto do losango de cima anda de 20 em 20: v3
+   em 472, v2 em 452, v4 em 432, v5 em 412), então interpolar direto de v3 a v5
+   passa exatamente por v2 a um terço do caminho e por v4 a dois terços. As quatro
+   formas continuam sendo percorridas, mas como trajetória de um golpe só, e não
+   como quatro paradas: é isso que dá a batida em vez do respiro.
+
+   Sem SMIL, o polígono fica no points estático, que é a forma de repouso. */
 export type OrnV = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 interface Props { v?: OrnV; class?: string; alt?: string; anim?: boolean; fase?: number }
 const { v = 1, class: cls, alt, anim = false, fase = 0 } = Astro.props;
 
-/* Um ciclo inteiro do respiro, em segundos, e o vaivém de variantes que ele
-   percorre. As sete entradas dão seis pernas, daí os seis keySplines. */
-const ORN_CICLO = 5.4;
-const SEQ: OrnV[] = [3, 2, 4, 5, 4, 2, 3];
-const KEY_TIMES = SEQ.map((_, i) => (i / (SEQ.length - 1)).toFixed(4)).join(';');
-const KEY_SPLINES = SEQ.slice(1).map(() => '0.45 0 0.55 1').join(';');
+/* A batida, em segundos corridos: onde cada golpe começa e termina. O ciclo de
+   1,5s dá 40 batidas por minuto, um pulso calmo. Os 0,48s de movimento contra
+   1,02s de repouso são o que faz o olho ler golpe, e não vaivém. */
+const ORN_CICLO = 1.5;
+const BATIDA: { t: number; v: OrnV }[] = [
+  { t: 0.00, v: 3 }, // repouso, fechado
+  { t: 0.18, v: 5 }, // golpe que abre
+  { t: 0.30, v: 5 }, // instante no topo
+  { t: 0.48, v: 3 }, // golpe que fecha
+  { t: 1.50, v: 3 }, // pausa até a próxima
+];
+/* Golpe sai rápido e desacelera na chegada; trecho parado não precisa de curva. */
+const GOLPE = '0.15 0.85 0.3 1';
+const PARADO = '0 0 1 1';
+const KEY_TIMES = BATIDA.map((b) => (b.t / ORN_CICLO).toFixed(4)).join(';');
+const KEY_SPLINES = [GOLPE, PARADO, GOLPE, PARADO].join(';');
 
 const VARIANTES: Record<number, string[]> = {
   1: [
@@ -122,9 +137,9 @@ const VARIANTES: Record<number, string[]> = {
     '494.68,502.00 345.72,330.00 122.29,287.00 271.24,459.00',
   ],
 };
-/* Animado, o desenho parado é o primeiro quadro do ciclo (é o que aparece se o
-   SMIL não rodar). Parado, é a variante que o chamador pediu. */
-const pontos = anim ? VARIANTES[SEQ[0]] : (VARIANTES[v] ?? VARIANTES[1]);
+/* Animado, o desenho estático é a forma de repouso da batida (é o que aparece se
+   o SMIL não rodar). Sem animação, é a variante que o chamador pediu. */
+const pontos = anim ? VARIANTES[BATIDA[0].v] : (VARIANTES[v] ?? VARIANTES[1]);
 ---
 <svg
   class:list={['orn-centelha', cls]}
@@ -139,7 +154,7 @@ const pontos = anim ? VARIANTES[SEQ[0]] : (VARIANTES[v] ?? VARIANTES[1]);
       {anim && (
         <animate
           attributeName="points"
-          values={SEQ.map((s) => VARIANTES[s][i]).join(';')}
+          values={BATIDA.map((b) => VARIANTES[b.v][i]).join(';')}
           dur={`${ORN_CICLO}s`}
           begin={`${fase}s`}
           repeatCount="indefinite"
