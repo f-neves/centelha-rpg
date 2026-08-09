@@ -9,7 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 41 itens abertos · 19 [DECIDIR] · 18 [FAZER] · 4 [AUTOR]
+**Placar:** 47 itens abertos · 23 [DECIDIR] · 20 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: Arcano 12 · **Ações & Sistema 13** · Lore 6 · Proezas 6 · Trilhas 4 · Bestiário 3 · Social 3
 
 ---
 
@@ -128,40 +129,73 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
 
 ## G. Ações & Sistema
 
-Frente aberta em **2026-08-09**. Dois documentos: `Acoes_Sistema.md` é o **rascunho do capítulo**
-(régua comum, jogada sugerida, fichas prontas) e `Acoes_Catalogo.md` é a **bancada** (o que cada
-ação é, sem número, com as referências de Exalted, D&D 3.5/5e, Pathfinder 1/2, Cyberpunk RED,
-Chronicles of Darkness, GURPS, Blades in the Dark, Burning Wheel e Ars Magica). Modelo do
-capítulo: **Drama and Systems** do Exalted 2ª edição. Nada disso existe no site: hoje o sistema
-só tem número para o que acontece **dentro** do combate, e toda ação fora dele é improviso.
+Frente aberta em **2026-08-09**. Três documentos: `Acoes_Catalogo.md` é a **bancada** (o que cada
+ação é, com referências de Exalted, D&D 3.5/5e, Pathfinder 1/2, Cyberpunk RED, Chronicles of
+Darkness, GURPS, Blades in the Dark, Burning Wheel e Ars Magica), `Acoes_Texto.md` é o **texto do
+capítulo** na voz do livro (73 verbetes, sem regra), e `Acoes_Sistema.md` é a **regra**.
+Modelo: **Drama and Systems** do Exalted 2ª edição.
 
-- [ ] **G1 · [FAZER] O capítulo de Ações & Sistema.** Catálogo montado em oito famílias
-  (movimento e corpo, resistir, percepção e mente, furtividade e subterfúgio, sociais, construção
-  e ofício, mundo e viagem, fé e sobrenatural), com descrição e referências em `Acoes_Catalogo.md`
-  e jogada sugerida em `Acoes_Sistema.md` §4. **Arremesso** já está preenchido (§5.1).
-- [ ] **G2 · [DECIDIR] As decisões estruturais** (`Acoes_Catalogo.md` §1). **Quatro das sete já
-  fecharam em 2026-08-09** e estão escritas em `Acoes_Sistema.md` §3: os **cinco modos de ação**
-  (Direta, Acumulada, Longa, Reflexiva, Passiva), a **origem da Dificuldade** (tabela de âncoras,
-  a tarefa e não o pool de quem tenta), o papel da **Margem** (níveis de expertise excedente, não
-  escolha de Dificuldade) e a **circunstância** (±2/±4, que já era lei). Faltam três: o **piso da
-  jogada**, **ajuda e ação em grupo**, e **o que acontece na falha** fora da Acumulada.
-  **Trava G1 e G3.**
-- [ ] **G3 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
+**A régua comum fechou quase inteira em 2026-08-09** e está em `Acoes_Sistema.md` §3: cinco modos
+de ação (Direta, Acumulada, Longa, Reflexiva, Passiva), Dificuldade pela tabela de âncoras, a
+Margem como expertise excedente, banda morta de uma Margem na falha, ajuda por soma ou apoio, e
+o teste coletivo. Como efeito colateral, o capítulo publicado de **Relações Sociais** foi
+corrigido para falar a mesma língua.
+
+**Fechar a régua (bloqueia todo o resto):**
+
+- [ ] **G1 · [DECIDIR] Escalas de tempo.** A última das sete decisões estruturais que ninguém
+  tocou. Falta o vocabulário fechado de intervalo (Tick, minuto, hora, dia, semana, estação) que
+  toda ficha de Acumulada e de Longa vai declarar. Sem essa lista, 73 fichas inventam 73
+  intervalos.
+- [ ] **G2 · [DECIDIR] O que custa Fôlego fora do combate** (`Acoes_Sistema.md` §3.6). Proposta
+  no doc: só Acumulada de esforço físico cobra, um ponto por intervalo, e a Longa não cobra nada
+  porque já pressupõe ritmo sustentável.
+
+**Antes da primeira ficha:**
+
+- [ ] **G3 · [FAZER] O gabarito de ficha.** A régua fechou e não existe forma padrão. Toda ficha
+  precisa declarar, na mesma ordem: **modo**, **Dificuldade** (com exemplos na régua de âncoras),
+  **Acúmulo e intervalo** quando houver, **o que a Margem compra**, **o que a falha faz** (banda
+  morta, ou a exceção declarada), **ajuda** (soma ou apoia) e **Fôlego**. A ficha de Arremesso
+  (§5.1) já mostrou que o gabarito precisa prever o caso sem modo, em que o número é derivado e
+  só o acerto é jogada.
+- [ ] **G4 · [FAZER] Normalizar a tabela §4 do `Acoes_Sistema.md`.** Ela é anterior aos modos e
+  fala a língua antiga: diz "Longa: uma jogada só" (a Longa não rola) e "uma jogada por dia"
+  (quer dizer Acumulada com intervalo diário), e nenhuma linha declara Acúmulo nem intervalo. Sai
+  linha a linha conforme cada ficha for escrita.
+
+**Escrever:**
+
+- [ ] **G5 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
   subsistema pequeno, com oito perguntas próprias listadas no doc. É o maior vazio do sistema:
   um jogador com Ferraria 5 não sabe quanto tempo leva para fazer uma espada nem o que sai dela.
   Destrava também o **ajuste de peça** que a ficha já oferece (uma Espada Longa Ótima) sem dizer
   como se chega a ela.
-- [ ] **G4 · [FAZER] As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força e
+- [ ] **G6 · [FAZER] As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força e
   Esgueirar-se. Feito de força está meio pronto: o FAH já dá o peso máximo, falta a tabela de
   "com esse FAH você arromba o quê", nos moldes da tabela de proezas do Exalted.
-- [ ] **G5 · [DECIDIR] Uma escada de exaustão única?** Vale para veneno, doença, ambiente,
+- [ ] **G7 · [DECIDIR] Uma escada de exaustão única?** Vale para veneno, doença, ambiente,
   sufocamento e privação de sono de uma vez, e é por isso que a família **Resistir** se decide em
   bloco e não ficha a ficha. O modelo mais limpo é o de níveis de exaustão do D&D 5e.
-- [ ] **G6 · [DECIDIR] Percepção passiva ou rolada?** Pré-requisito de Esgueirar-se, Disfarce,
-  Roubo e Emboscada. Rolar na mesa entrega a resposta pelo próprio ato de rolar.
-- [ ] **G7 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
+- [ ] **G8 · [DECIDIR] Percepção passiva.** Encolheu com a decisão dos modos: o modo **Passiva**
+  já dá o valor parado (2 × Atributo + Habilidade). Falta confirmar que a Prontidão sem procurar
+  usa esse valor, e dizer contra o quê ele é comparado.
+
+**Arrumação:**
+
+- [ ] **G9 · [DECIDIR] Duas ações levantadas e nunca catalogadas** (`Acoes_Catalogo.md` §12):
+  **escapar de amarras** e **sinalizar à distância**. Entram ou não?
+- [ ] **G10 · [DECIDIR] Trocar a palavra "stunt" por um termo em português.** São 15 ocorrências
+  em `atributos-e-pericias.md`, `combate.md`, `relacoes-sociais.md` e `glossario.json`, então é
+  melhor trocar de uma vez. Sugestão do autor em Relações: "ações que beneficiam a intenção".
+- [ ] **G11 · [FAZER] Três listas paralelas das mesmas ações** (catálogo, texto e tabela §4) já
+  divergem: "Apostar" e "Levantar o peso máximo" existem em duas das três. Definir qual é a fonte
+  de verdade, ou fundir.
+- [ ] **G12 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
   capítulo que já existe (movimento em Combate, resistir em Vida & Ferimentos, social em
   Relações). A aposta atual é capítulo único, porque a régua comum precisa de um lugar só.
+- [ ] **G13 · [FAZER] `regras.json → acoes`** para as tabelas que o motor precisar ler, quando o
+  capítulo fechar.
 
 ---
 
@@ -171,6 +205,6 @@ só tem número para o que acontece **dentro** do combate, e toda ação fora de
 2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
 3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
-5. **G2 → G3**, as decisões estruturais das ações e depois a construção: é a única frente que
-   cobre um vazio em vez de corrigir algo existente, e a construção é o maior vazio isolado do
-   sistema.
+5. **G1 → G2 → G3**, o fim da régua comum das ações (escalas de tempo, Fôlego) e o gabarito de
+   ficha. São duas decisões curtas e um documento de uma página, e depois disso as 73 fichas
+   podem sair em série. É a única frente que cobre um vazio em vez de corrigir algo existente.

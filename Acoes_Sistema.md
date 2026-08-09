@@ -294,6 +294,12 @@ seção *Cortejo com calma: a Influência Estendida*. Os dois agora falam a mesm
 
 A coluna **Jogada** é **sugestão de partida**, não decisão fechada.
 
+> **Esta tabela é anterior aos cinco modos (§3.3) e ainda fala a língua antiga.** Onde ela diz
+> "Longa: uma jogada só", está errada, porque a Longa não rola. Onde diz "uma jogada por dia",
+> está querendo dizer Acumulada com intervalo diário. Nenhuma linha declara **Acúmulo** nem
+> **intervalo**, que agora são obrigatórios. Cada linha será normalizada quando a ficha dela for
+> escrita; até lá, leia a coluna como indicação de perícia, não de mecânica.
+
 ### 4.1 Corpo e movimento
 
 | Ação | Jogada | Estado |
@@ -406,6 +412,11 @@ Ferraria 5 não tem como saber quanto tempo leva para fazer uma espada nem o que
 ## 5. Fichas de ação preenchidas
 
 ### 5.1 Arremessar um objeto
+
+> **Modo:** nenhum. O **alcance** é um número derivado, como os PV ou o Deslocamento: sai de
+> tabela e não se rola. Quem rola é o **acerto**, que é **Direta** e vive no capítulo de Combate.
+> Esta ficha é o caso-limite que o gabarito precisa prever: nem toda entrada do capítulo é uma
+> ação com modo.
 
 **Estado: preenchida.** A conta já roda no motor e aparece na ficha, no bloco Força & Arremesso.
 Esta seção é o **porquê** dela, que saiu da ficha em 2026-08-09 (lá ficou só a fórmula do FAA,

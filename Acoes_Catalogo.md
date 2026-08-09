@@ -46,8 +46,14 @@ cada um foi para um lado (sinal de que a decisão é de gosto, não de física).
 Estas sete decisões valem para o capítulo inteiro. Nenhuma ficha individual fecha antes delas,
 porque todas as fichas vão se apoiar nelas.
 
-**1.1 · Modos de ação.** Quantos tipos de ação existem e como cada um consome tempo. A proposta
-em `Acoes_Sistema.md` §3.1 é quatro: Direta, Acumulada, Longa, Reflexa.
+> **Estado em 2026-08-09: cinco fechadas, duas abertas.** Fecharam 1.1 (modos), 1.2 (quando não
+> se rola), 1.3 (graus de sucesso), 1.4 (ajuda e grupo) e 1.5 (ferramenta e circunstância), e o
+> texto delas está em `Acoes_Sistema.md` §3. Seguem abertas **1.6 (escalas de tempo)** e a parte
+> do Fôlego dentro de 1.7. As notas abaixo são o material de pesquisa que sustentou cada decisão,
+> e ficam como registro.
+
+**1.1 · Modos de ação.** **FECHADA:** cinco modos, Direta, Acumulada, Longa, Reflexiva e Passiva,
+sendo que Longa e Passiva não rolam dado. Ver `Acoes_Sistema.md` §3.3.
 `refs:` EX2 separa simple / extended / dramatic / reflexive, e é essa separação que faz o
 capítulo dele caber em pouca regra. `CofD` tem instant / extended / reflexive / contested, com a
 estendida definida por alvo de sucessos e intervalo. `BitD` resolve todo trabalho longo com
@@ -553,15 +559,27 @@ Anotado para não voltar à discussão toda vez:
 
 ---
 
-## 11. Ordem de trabalho proposta
+## 11. Ordem de trabalho
 
-1. **As sete decisões da §1.** Nenhuma ficha fecha antes, e a §1.1 (modos de ação) e a §1.3
-  (graus de sucesso) são as que mais mudam o formato de todas as outras.
-2. **Construção (§7).** É o maior vazio, é subsistema e não ficha, e destrava o ajuste de peça
+*Atualizada em 2026-08-09, depois de a régua comum fechar quase inteira.*
+
+1. ~~As sete decisões da §1.~~ **Cinco fechadas.** Faltam as **escalas de tempo** (§1.6) e o
+  **custo em Fôlego** fora do combate.
+2. **O gabarito de ficha.** Antes de escrever a primeira: o que toda ficha declara, na mesma
+  ordem, para as 73 não saírem cada uma de um jeito.
+3. **Construção (§7).** É o maior vazio, é subsistema e não ficha, e destrava o ajuste de peça
   que a ficha já oferece sem regra.
-3. **As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força, Esgueirar-se.
-4. **Resistir (§3) como bloco único**, porque a decisão de adotar ou não uma escada de exaustão
+4. **As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força, Esgueirar-se.
+5. **Resistir (§3) como bloco único**, porque a decisão de adotar ou não uma escada de exaustão
   vale para veneno, doença, ambiente, sufocamento e sono de uma vez.
-5. **Percepção (§4)**, começando pela decisão de passiva ou rolada, que é pré-requisito de
-  Esgueirar-se e de Disfarce.
-6. O resto, por demanda de mesa.
+6. **Percepção (§4)**, confirmando que a Prontidão passiva é o Valor Passivo do modo Passiva.
+7. O resto, por demanda de mesa.
+
+## 12. Ações levantadas e ainda não catalogadas
+
+Apareceram enquanto o texto era escrito e **não** entraram em nenhuma família. Decidir se entram:
+
+- **Escapar de amarras** · sair de corda, algema ou agarrão de que já não se sai pela força.
+  Acrobacia cobre passar por espaço apertado, não se soltar.
+- **Sinalizar à distância** · fogo, bandeira, assobio combinado, espelho. Aparece em toda campanha
+  com o grupo dividido e hoje não tem casa.
