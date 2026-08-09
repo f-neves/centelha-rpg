@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bancada de arremesso · Centelha</title>
+<style>
+  :root{
+    color-scheme: light;
+    --surface:#fcfcfb; --plane:#f4f4f1; --sunk:#eeeeea;
+    --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.12);
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+    --band:rgba(11,11,11,.04); --dotoff:#dcdbd4; --fora:rgba(11,11,11,.055);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --surface:#1a1a19; --plane:#0d0d0d; --sunk:#232322;
+      --ink:#fff; --ink2:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.13);
+      --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+      --band:rgba(255,255,255,.05); --dotoff:#3a3a37; --fora:rgba(255,255,255,.07);
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--plane);color:var(--ink);
+       font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;
+       padding:20px 18px 48px}
+  .max{max-width:1360px;margin:0 auto}
+  h1{font-size:1.2rem;margin:0 0 .25rem;font-weight:650;letter-spacing:-.01em}
+  .sub{color:var(--ink2);font-size:.83rem;margin:0 0 1.1rem;line-height:1.55;max-width:78ch}
+  .card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:14px 16px}
+
+  /* ---- painel de parametros ---- */
+  .params{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px 20px;margin-bottom:18px}
+  .pgrp{display:flex;flex-direction:column;gap:6px}
+  .pgrp > b{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:650}
+  .fld{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--ink2)}
+  .fld label{flex:1;min-width:0}
+  .fld input[type=number]{width:74px;padding:3px 6px;border:1px solid var(--ring);border-radius:5px;
+       background:var(--sunk);color:var(--ink);font:inherit;font-size:.8rem;font-variant-numeric:tabular-nums}
+  .fld input[type=range]{flex:1.2;accent-color:var(--s1);min-width:0}
+  .fld .val{width:44px;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .radios{display:flex;gap:6px;flex-wrap:wrap}
+  .radios label{font-size:.78rem;padding:4px 9px;border:1px solid var(--ring);border-radius:99px;
+       cursor:pointer;color:var(--ink2);user-select:none}
+  .radios label:has(input:checked){background:var(--s1);border-color:var(--s1);color:#fff}
+  .radios input{display:none}
+  .chk{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--ink2);cursor:pointer}
+  .chk input{accent-color:var(--s1)}
+  .warn{font-size:.74rem;color:var(--muted);line-height:1.45}
+
+  /* ---- as duas fichas ---- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:1050px){ .duo{grid-template-columns:1fr} }
+  .ficha h2{font-size:.95rem;margin:0 0 10px;font-weight:650;display:flex;align-items:center;gap:8px}
+  .ficha h2 .pip{width:9px;height:9px;border-radius:50%}
+  .attrs{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;margin-bottom:12px}
+  .attr{display:flex;align-items:center;gap:8px;font-size:.79rem;color:var(--ink2)}
+  .attr span{flex:1;min-width:0}
+  .dots{display:flex;gap:3px}
+  .dot{width:13px;height:13px;border-radius:50%;background:var(--dotoff);cursor:pointer;
+       border:1px solid transparent;transition:background .1s}
+  .dot.on{background:var(--s1)}
+  .dot:hover{border-color:var(--axis)}
+  .deriv{background:var(--sunk);border-radius:7px;padding:9px 11px;font-size:.79rem;line-height:1.65;margin-bottom:12px}
+  .deriv b{font-variant-numeric:tabular-nums}
+  .deriv .old{color:var(--muted);font-size:.74rem}
+  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+  .tier{background:var(--surface);border:1px solid var(--ring);border-radius:6px;padding:5px 7px;font-size:.71rem;line-height:1.45}
+  .tier em{display:block;color:var(--muted);font-style:normal;font-size:.68rem}
+  .tier b{font-variant-numeric:tabular-nums}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.75rem;color:var(--ink2);padding:2px 0 6px}
+  .legend i{display:inline-block;width:17px;height:0;border-top-width:2px;border-top-style:solid;vertical-align:middle;margin-right:6px}
+  .wrap{position:relative}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  .grid{stroke:var(--grid);stroke-width:1}
+  .axis{stroke:var(--axis);stroke-width:1}
+  .tick{fill:var(--muted);font-size:10px;font-variant-numeric:tabular-nums}
+  .bandlbl{fill:var(--muted);font-size:9.5px}
+  .curve{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+  .cross{stroke:var(--axis);stroke-width:1;stroke-dasharray:3 3;opacity:0}
+  .tip{position:absolute;pointer-events:none;opacity:0;transform:translate(-50%,-118%);
+       background:var(--surface);border:1px solid var(--ring);border-radius:7px;padding:6px 9px;
+       font-size:.73rem;line-height:1.5;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.18);
+       color:var(--ink);transition:opacity .08s}
+  .tip s{display:inline-block;width:8px;height:8px;border-radius:50%;text-decoration:none;margin-right:5px}
+  .tip b{font-variant-numeric:tabular-nums}
+
+  table{border-collapse:collapse;width:100%;font-size:.77rem;margin-top:12px}
+  th,td{padding:3px 7px;border-bottom:1px solid var(--grid);text-align:right;font-variant-numeric:tabular-nums}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--ink2);font-weight:600;border-bottom:1px solid var(--axis);font-size:.72rem}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.lim td{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="max">
+  <h1>Bancada de arremesso</h1>
+  <p class="sub">Duas fichas lado a lado com os mesmos parâmetros de modelo. <b>P</b> é o peso máximo: aquilo que a pessoa ergue e segura por instantes sem conseguir sair do lugar. Hoje a tabela do sistema dá 35 kg para o homem comum (Força 2, Atletismo 1); a física de carga diz que esse ponto fica perto de 150% do peso corporal, ou seja ~110 kg. Mexa em <b>kg por ponto de FAH</b> para ver o efeito disso no arremesso.</p>
+
+  <div class="card params">
+    <div class="pgrp">
+      <b>Peso máximo</b>
+      <div class="fld"><label for="kgfah">kg por ponto de FAH</label>
+        <input type="range" id="kgfah" min="4" max="40" step="1" value="22">
+        <span class="val" id="kgfah_v">22</span></div>
+      <div class="warn" id="pnota"></div>
+    </div>
+
+    <div class="pgrp">
+      <b>Modelo de distância</b>
+      <div class="radios">
+        <label><input type="radio" name="modelo" value="ln" checked>logarítmico (atual)</label>
+        <label><input type="radio" name="modelo" value="dobra">queda por dobra</label>
+      </div>
+      <div class="fld" data-only="dobra"><label for="q">sobra a cada dobra de peso</label>
+        <input type="range" id="q" min="0.4" max="0.95" step="0.01" value="0.70">
+        <span class="val" id="q_v">70%</span></div>
+      <div class="fld" data-only="dobra"><label for="pexp">dureza da parede em P</label>
+        <input type="range" id="pexp" min="0.2" max="3" step="0.1" value="1">
+        <span class="val" id="pexp_v">1,0</span></div>
+    </div>
+
+    <div class="pgrp">
+      <b>Base do arremesso (1 kg, parado)</b>
+      <div class="radios">
+        <label><input type="radio" name="basemodo" value="tabela" checked>tabela atual</label>
+        <label><input type="radio" name="basemodo" value="anc">ancorada no dardo</label>
+      </div>
+      <div class="fld" data-only="anc"><label for="banc">metros no FAA 22</label>
+        <input type="number" id="banc" min="5" max="120" step="0.5" value="37.5"></div>
+      <div class="fld" data-only="anc"><label for="bexp">expoente do FAA</label>
+        <input type="number" id="bexp" min="0.2" max="2.5" step="0.001" value="0.828"></div>
+    </div>
+
+    <div class="pgrp">
+      <b>Velocidade com carga</b>
+      <div class="fld"><label for="vexp">expoente n em (1 − x<sup>n</sup>)²</label>
+        <input type="range" id="vexp" min="0.6" max="3" step="0.05" value="1.5">
+        <span class="val" id="vexp_v">1,50</span></div>
+      <div class="fld"><label for="corr">ganho da corrida</label>
+        <input type="range" id="corr" min="0" max="0.6" step="0.01" value="0.333">
+        <span class="val" id="corr_v">+33%</span></div>
+      <div class="fld"><label for="giro">ganho do giro</label>
+        <input type="range" id="giro" min="0" max="0.6" step="0.01" value="0.167">
+        <span class="val" id="giro_v">+17%</span></div>
+      <label class="chk"><input type="checkbox" id="escala" checked>mesma escala nos dois gráficos</label>
+    </div>
+  </div>
+
+  <div class="duo" id="duo"></div>
+</div>
+
+<script>
+// ---------------------------------------------------------------- parâmetros
+const BASE_TBL = {2:4,3:5,4:6,5:8,6:10,7:12,8:14,9:16,10:19,11:22,12:25,13:28,14:32,
+                  15:36,16:40,17:44,18:48,19:52,20:56,21:60,22:64,23:68,24:72};
+const P_HOJE = {2:15,3:20,4:27,5:35,6:45,7:55,8:65,9:78,10:90,11:108,12:125,13:145,14:168,
+                15:190,16:215,17:245,18:280,19:315,20:355,21:395,22:440,23:480,24:525};
+const M = { kgFAH:22, modelo:'ln', baseModo:'tabela', banc:37.5, bexp:0.828,
+            q:0.70, pexp:1, vexp:1.5, corrida:0.333, giro:0.167, escala:true };
+
+const FICHAS = [
+  { id:'A', nome:'Homem comum',  cor:'var(--s1)', forca:2, atletismo:1, arremesso:0, halterofilismo:0 },
+  { id:'B', nome:'Veterano',     cor:'var(--s2)', forca:3, atletismo:3, arremesso:3, halterofilismo:2 },
+];
+
+// ---------------------------------------------------------------- o modelo
+const cl = (v) => Math.max(2, Math.min(24, v));
+const fah = (f) => cl(2*f.forca + f.atletismo + f.halterofilismo);
+const faa = (f) => cl(2*f.forca + f.atletismo + f.arremesso);
+const pmax = (f) => M.kgFAH * fah(f);
+const base = (f) => M.baseModo === 'tabela' ? BASE_TBL[faa(f)]
+                                            : M.banc * Math.pow(faa(f)/22, M.bexp);
+
+function dist(w, f){
+  const b = base(f), P = pmax(f);
+  if (w <= 0) return 0;
+  if (M.modelo === 'ln'){
+    if (w < 1) return b * (3*w*w - 2*w*w*w);
+    if (w >= P) return 0;
+    return b * (1 - Math.log(w)/Math.log(P));
+  }
+  const queda  = Math.pow(M.q, Math.abs(Math.log2(w)));
+  const parede = Math.pow(Math.max(0, 1 - w/P), M.pexp);
+  return b * queda * parede;
+}
+const vel   = (w, f) => Math.pow(Math.max(0, 1 - Math.pow(Math.min(1, w/pmax(f)), M.vexp)), 2);
+const dGiro = (w, f) => dist(w, f) * (1 + M.giro    * vel(w, f));
+const dCorr = (w, f) => dist(w, f) * (1 + M.corrida * vel(w, f));
+
+// ---------------------------------------------------------------- formatação
+const n1  = (v) => (v >= 100 ? Math.round(v) : Math.round(v*10)/10).toString().replace('.', ',');
+const kg  = (v) => (v >= 100 ? Math.round(v) : Math.round(v*10)/10).toString().replace('.', ',') + ' kg';
+const pc  = (v) => Math.round(v*100) + '%';
+const fw  = (w) => (w >= 10 ? Math.round(w) : Math.round(w*100)/100).toString().replace('.', ',');
+const teto = (v) => v <= 0 ? 1 : v < 10 ? Math.ceil(v)
+           : v < 100 ? Math.ceil(v/5)*5 : v < 500 ? Math.ceil(v/10)*10 : Math.ceil(v/50)*50;
+const ATRS = [['forca','Força'],['atletismo','Atletismo'],['arremesso','Arremesso'],['halterofilismo','Halterofilismo']];
+const BANDAS = [[0,.125,'Mínima'],[.125,.25,'Leve'],[.25,.5,'Média'],[.5,1,'Máxima']];
+
+// ---------------------------------------------------------------- esqueleto
+document.getElementById('duo').innerHTML = FICHAS.map((f) => `
+  <div class="card ficha" id="f${f.id}">
+    <h2><span class="pip" style="background:${f.cor}"></span>${f.nome}</h2>
+    <div class="attrs">${ATRS.map(([k,rot]) => `
+      <div class="attr"><span>${rot}</span>
+        <div class="dots" data-ficha="${f.id}" data-k="${k}">
+          ${[1,2,3,4,5,6].map((d) => `<i class="dot" data-d="${d}"></i>`).join('')}
+        </div></div>`).join('')}
+    </div>
+    <div class="deriv" id="d${f.id}"></div>
+    <div class="legend">
+      <span><i style="border-color:var(--s1)"></i>parado</span>
+      <span><i style="border-color:var(--s2);border-top-style:dashed"></i>giro no lugar</span>
+      <span><i style="border-color:var(--s3);border-top-style:dotted"></i>com corrida</span>
+    </div>
+    <div class="wrap"><svg id="g${f.id}" viewBox="0 0 560 300"></svg><div class="tip" id="t${f.id}"></div></div>
+    <table id="tb${f.id}">
+      <thead><tr><th>Peso</th><th>Parado</th><th>Giro</th><th>Corrida</th><th>Velocidade</th></tr></thead>
+      <tbody></tbody></table>
+  </div>`).join('');
+
+// ---------------------------------------------------------------- desenho
+const W=560, H=300, ml=42, mr=16, mt=22, mb=34;
+const xB=ml, xR=W-mr, yT=mt, yB=H-mb, pw=xR-xB, ph=yB-yT;
+const WMIN = 0.05;
+
+function pesosTabela(P){
+  const l = [0.1, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000].filter((w) => w < P);
+  l.push(Math.round(P));
+  return l;
+}
+
+function pintaFicha(f, yMaxComum, pMaxComum){
+  const P = pmax(f), FAH = fah(f), FAA = faa(f);
+
+  // --- bloco derivado
+  const bandas = BANDAS.map(([a,b,nome]) => ({ nome, de:P*a, ate:P*b }));
+  document.getElementById('d'+f.id).innerHTML =
+      `FAH <b>${FAH}</b> · peso máximo <b>${kg(P)}</b> `
+    + `<span class="old">(tabela de hoje: ${P_HOJE[FAH]} kg)</span><br>`
+    + `FAA <b>${FAA}</b> · base do arremesso <b>${n1(base(f))} m</b> para 1 kg, parado`
+    + `<div class="tiers">${bandas.map((b) =>
+        `<div class="tier"><b>${b.nome}</b><em>até ${kg(b.ate)}</em><em>corre a ${pc(vel(b.ate, f))}</em></div>`).join('')}</div>`;
+
+  // --- gráfico
+  const lnW0 = Math.log(WMIN), spanX = Math.log(pMaxComum) - lnW0;
+  const X = (w) => xB + ((Math.log(Math.max(WMIN, w)) - lnW0)/spanX) * pw;
+  const yMax = yMaxComum;
+  const Y = (d) => yB - (yMax > 0 ? Math.min(1, d/yMax) : 0) * ph;
+
+  let s = '';
+  if (P < pMaxComum * 0.999){   // trecho do eixo que já passou do peso máximo desta ficha
+    const x0 = X(P);
+    s += `<rect x="${x0.toFixed(1)}" y="${yT}" width="${(xR-x0).toFixed(1)}" height="${ph}" fill="var(--fora)"/>`;
+    s += `<line class="axis" x1="${x0.toFixed(1)}" y1="${yT}" x2="${x0.toFixed(1)}" y2="${yB}" stroke-dasharray="2 3"/>`;
+    s += `<text class="bandlbl" x="${(x0+4).toFixed(1)}" y="${yB-6}">não ergue</text>`;
+  }
+  bandas.forEach((b, i) => {
+    const x1 = X(Math.max(WMIN, b.de)), x2 = X(Math.min(pMaxComum, b.ate));
+    if (x2 <= x1) return;
+    if (i % 2 === 1) s += `<rect x="${x1.toFixed(1)}" y="${yT}" width="${(x2-x1).toFixed(1)}" height="${ph}" fill="var(--band)"/>`;
+    s += `<text class="bandlbl" x="${(x2-3).toFixed(1)}" y="${yT+11}" text-anchor="end">${b.nome}</text>`;
+  });
+  const passoY = (() => { const alvo = yMax/4;
+    for (let e=-2; e<8; e++) for (const m of [1,2,2.5,5]){ const p = m*Math.pow(10,e); if (p >= alvo) return p; }
+    return alvo; })();
+  for (let v=0; v <= yMax + 1e-9; v += passoY){
+    s += `<line class="grid" x1="${xB}" y1="${Y(v).toFixed(1)}" x2="${xR}" y2="${Y(v).toFixed(1)}"/>`;
+    s += `<text class="tick" x="${xB-7}" y="${(Y(v)+3.5).toFixed(1)}" text-anchor="end">${n1(v)}</text>`;
+  }
+  const xt = [0.05,0.1,0.25,0.5,1,2,5,10,25,50,100,250,500,1000,2500]
+              .filter((w) => w >= WMIN && w < pMaxComum/1.3);
+  xt.push(pMaxComum);
+  xt.forEach((w) => {
+    s += `<line class="axis" x1="${X(w).toFixed(1)}" y1="${yB}" x2="${X(w).toFixed(1)}" y2="${yB+4}"/>`;
+    s += `<text class="tick" x="${X(w).toFixed(1)}" y="${yB+15}" text-anchor="middle">${fw(w)}</text>`;
+  });
+  s += `<line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>`;
+  s += `<text class="tick" x="${(xB+xR)/2}" y="${yB+29}" text-anchor="middle">peso arremessado (kg) · escala log</text>`;
+  s += `<text class="tick" x="${-(yT+yB)/2}" y="11" text-anchor="middle" transform="rotate(-90)">alcance (m)</text>`;
+
+  const N = 220;
+  const traco = (fn) => { let d = '';
+    for (let i=0; i<=N; i++){ const w = Math.exp(lnW0 + spanX*i/N);
+      d += (i ? ' L' : 'M') + X(w).toFixed(1) + ',' + Y(fn(w, f)).toFixed(1); }
+    return d; };
+  s += `<path class="curve" d="${traco(dCorr)}" stroke="var(--s3)" stroke-dasharray="1.5 3"/>`;
+  s += `<path class="curve" d="${traco(dGiro)}" stroke="var(--s2)" stroke-dasharray="6 4"/>`;
+  s += `<path class="curve" d="${traco(dist)}" stroke="var(--s1)"/>`;
+  s += `<line class="cross" id="c${f.id}" y1="${yT}" y2="${yB}"/>`;
+  s += `<rect x="${xB}" y="${yT}" width="${pw}" height="${ph}" fill="transparent" data-hit="${f.id}"/>`;
+  const svg = document.getElementById('g'+f.id);
+  svg.innerHTML = s;
+
+  const tip = document.getElementById('t'+f.id), cross = document.getElementById('c'+f.id);
+  const hit = svg.querySelector('[data-hit]');
+  hit.onpointermove = (e) => {
+    const r = svg.getBoundingClientRect(), k = W/r.width;
+    const px = Math.max(xB, Math.min(xR, (e.clientX - r.left)*k));
+    const w = Math.exp(lnW0 + ((px - xB)/pw)*spanX);
+    cross.setAttribute('x1', X(w)); cross.setAttribute('x2', X(w)); cross.style.opacity = 1;
+    const b = bandas.find((z) => w <= z.ate) || bandas[3];
+    tip.innerHTML = `<b>${fw(w)} kg</b> · carga ${b.nome} · corre a <b>${pc(vel(w,f))}</b><br>`
+      + `<s style="background:var(--s1)"></s>parado <b>${n1(dist(w,f))} m</b><br>`
+      + `<s style="background:var(--s2)"></s>giro <b>${n1(dGiro(w,f))} m</b><br>`
+      + `<s style="background:var(--s3)"></s>corrida <b>${n1(dCorr(w,f))} m</b>`;
+    tip.style.left = (X(w)/k) + 'px';
+    tip.style.top  = (Y(dCorr(w,f))/k) + 'px';
+    tip.style.opacity = 1;
+  };
+  hit.onpointerleave = () => { tip.style.opacity = 0; cross.style.opacity = 0; };
+
+  // --- tabela
+  document.querySelector('#tb'+f.id+' tbody').innerHTML = pesosTabela(P).map((w) => {
+    const lim = w >= P*0.999;
+    return `<tr class="${lim ? 'lim' : ''}"><td>${fw(w)} kg</td><td>${n1(dist(w,f))}</td>`
+         + `<td>${n1(dGiro(w,f))}</td><td>${n1(dCorr(w,f))}</td><td>${pc(vel(w,f))}</td></tr>`;
+  }).join('');
+}
+
+function pinta(){
+  const Ps  = FICHAS.map(pmax);
+  const pico = (f) => Math.max(...pesosTabela(pmax(f)).map((w) => dCorr(w, f)), dCorr(1, f));
+  const yCada = FICHAS.map(pico);
+  const yCom  = teto(Math.max(...yCada));
+  const pCom  = Math.max(...Ps);
+  FICHAS.forEach((f, i) => pintaFicha(f,
+      M.escala ? yCom : teto(yCada[i]),
+      M.escala ? pCom : pmax(f)));
+  // pontinhos
+  document.querySelectorAll('.dots').forEach((d) => {
+    const f = FICHAS.find((z) => z.id === d.dataset.ficha), v = f[d.dataset.k];
+    d.querySelectorAll('.dot').forEach((p) => p.classList.toggle('on', +p.dataset.d <= v));
+  });
+  document.getElementById('pnota').textContent =
+      `Homem comum (FAH 5): ${M.kgFAH*5} kg. Pico humano (FAH 24): ${M.kgFAH*24} kg. `
+    + `A tabela de hoje diz 35 kg e 525 kg.`;
+  document.querySelectorAll('[data-only]').forEach((el) => {
+    const alvo = el.dataset.only;
+    el.style.display = (alvo === 'dobra' && M.modelo === 'dobra') || (alvo === 'anc' && M.baseModo === 'anc') ? '' : 'none';
+  });
+}
+
+// ---------------------------------------------------------------- controles
+document.getElementById('duo').addEventListener('click', (e) => {
+  const dot = e.target.closest('.dot'); if (!dot) return;
+  const box = dot.closest('.dots');
+  const f = FICHAS.find((z) => z.id === box.dataset.ficha);
+  const v = +dot.dataset.d;
+  f[box.dataset.k] = (f[box.dataset.k] === v) ? Math.max(0, v-1) : v;
+  pinta();
+});
+
+const liga = (id, chave, fmt) => {
+  const el = document.getElementById(id), out = document.getElementById(id+'_v');
+  el.addEventListener('input', () => { M[chave] = +el.value; if (out) out.textContent = fmt(+el.value); pinta(); });
+  if (out) out.textContent = fmt(+el.value);
+};
+liga('kgfah','kgFAH', (v) => v);
+liga('q','q',        (v) => Math.round(v*100)+'%');
+liga('pexp','pexp',  (v) => v.toFixed(1).replace('.',','));
+liga('vexp','vexp',  (v) => v.toFixed(2).replace('.',','));
+liga('corr','corrida',(v) => '+'+Math.round(v*100)+'%');
+liga('giro','giro',  (v) => '+'+Math.round(v*100)+'%');
+document.getElementById('banc').addEventListener('input', (e) => { M.banc = +e.target.value; pinta(); });
+document.getElementById('bexp').addEventListener('input', (e) => { M.bexp = +e.target.value; pinta(); });
+document.getElementById('escala').addEventListener('change', (e) => { M.escala = e.target.checked; pinta(); });
+document.querySelectorAll('input[name=modelo]').forEach((r) =>
+  r.addEventListener('change', () => { M.modelo = r.value; pinta(); }));
+document.querySelectorAll('input[name=basemodo]').forEach((r) =>
+  r.addEventListener('change', () => { M.baseModo = r.value; pinta(); }));
+
+pinta();
+</script>
+</body>
+</html>
