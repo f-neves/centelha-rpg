@@ -361,7 +361,7 @@ A coluna **Jogada** é **sugestão de partida**, não decisão fechada.
 |---|---|:--:|
 | Correr, perseguir, fugir | distância direta pelo Deslocamento (Arranque nos 3 primeiros Ticks, Corrida depois) | `MOTOR` |
 | Saltar (vertical, horizontal parado, com corrida) | distância direta, sem jogada | `MOTOR` |
-| **Arremessar um objeto** | distância direta pelo FAA · acerto é jogada à parte | `MOTOR` · §6.2 |
+| **Arremessar um objeto** | distância direta pelo FAA · acerto é jogada à parte | `MOTOR` · §6.6 |
 | Levantar o peso máximo | sem jogada: o FAH dá o teto | `MOTOR` |
 | Deslocar-se carregando peso | velocidade × faixa de carga (Mínima, Leve, Média, Máxima) | `MOTOR` |
 | **Escalar** | Força + Atletismo (esp. Escalada), Acumulada por trecho | `ABERTO` |
@@ -625,7 +625,168 @@ apoio pela tabela da §3.5, e quem tem a corda amarrada normalmente também abai
 **Onde mais mora** · a queda é ficha própria; carga e faixas de peso estão em Força & Arremesso;
 o custo em Fôlego só existe quando o intervalo é Tick (§3.6).
 
-### 6.2 Arremessar um objeto
+### 6.2 Nadar
+
+**Modo** · Acumulada com correnteza ou pressa, Longa na travessia calma.
+
+**Jogada** · Vigor + Atletismo, com a secundária **Natação** pela §5.5.
+
+**Dificuldade** · a água:
+
+| Dif | Água |
+|:--:|---|
+| **4** | piscina, lago parado, mar de bonança |
+| **7** | rio de corrente mansa, mar com ondulação, água gelada |
+| **11** | correnteza forte, mar agitado, água muito fria |
+| **14** | corredeira, ressaca, arrebentação sobre pedra |
+| **18** | cachoeira, remoinho, mar de tempestade |
+
+**Acúmulo e intervalo** · o Acúmulo é a **distância em metros**. Intervalo **Tick** quando é fuga
+ou naufrágio, **minuto** na travessia curta, **hora** na travessia longa.
+
+**A Margem compra** · distância. Cada Margem avança **mais 5 metros** naquele intervalo. A água
+devolve mais que a parede: quem nada bem desliza.
+
+**Falha** · o padrão, com uma divergência que importa: **zerar o Acúmulo sobre água funda é
+começar a afundar**, e daí em diante vale a ficha de Sufocar, não esta.
+
+**Ajuda** · não soma, apoia. Corda amarrada à margem é apoio e circunstância ao mesmo tempo.
+
+**Circunstância** · armadura pesada **+4**; carga acima da faixa Leve **+2**; roupa pesada **+2**;
+nadar a favor da corrente **−4**; corda de segurança **−2**; boia, tábua ou odre inflado **−2**.
+
+**Onde mais mora** · faixas de carga em Força & Arremesso; o ar que acaba é a ficha de Sufocar.
+
+### 6.3 Cair
+
+**Modo** · **sem modo para cair**, que é consequência e não tentativa. O que existe é uma
+**Reflexiva** para amortecer, e ela só acontece se houver o que agarrar ou como rolar.
+
+**Dano** · **1d6 de Impacto a cada 2 metros completos**, teto de 20d6. A Absorção natural de
+Impacto é o Vigor, e a armadura conta pela Absorção de Impacto dela.
+
+| Queda | Dano | O que costuma acontecer com uma pessoa comum |
+|---|:--:|---|
+| 2 a 4 m | 1d6 a 2d6 | tropeço feio, torção |
+| 6 m | 3d6 | Machucado |
+| 10 m | 5d6 | Ferido, ossos quebrados |
+| 14 m | 7d6 | Grave |
+| 20 m | 10d6 | Crítico ou Caído: a altura em que se costuma morrer |
+| 24 m ou mais | 12d6 e acima | não se sobrevive sem Centelha |
+
+O teto em 20d6 existe porque acima de uns 40 metros a queda já vem na velocidade terminal, e mais
+altura quase não acrescenta.
+
+**A Reflexiva de amortecer** · Destreza + Atletismo contra **Dificuldade 10**. O sucesso tira
+**2 dados** de dano; **cada Margem tira mais 2**. Uma boa jogada numa queda de 10 metros derruba
+5d6 para 1d6: você agarrou a sacada, bateu no toldo, rolou ao chegar.
+
+**Agarrar a borda** · quando há uma borda ao alcance, existe uma segunda Reflexiva, **antes** da
+primeira: Destreza + Atletismo contra **Dificuldade 15**. Passando, a queda não acontece, e o
+personagem fica pendurado.
+
+**Falha** · não há o que falhar: a queda já é a falha de outra coisa.
+
+**Circunstância** · água funda **−4** (e passa a valer Nadar); neve, feno, lama ou mato **−2**;
+pedra, escada, estacas ou entulho **+2**; cair de costas ou desacordado **anula a Reflexiva**.
+
+**Onde mais mora** · a Absorção e os estados de ferimento estão em Vida, Ferimentos & Cura; a
+queda costuma ser consequência de Escalar ou de Equilibrar-se.
+
+### 6.4 Feito de força
+
+Esta ficha tem **duas faces**, e confundi-las é o erro comum.
+
+#### Erguer, segurar, arrastar
+
+**Modo** · **sem modo**: não se rola. O peso máximo do personagem (o **FAH**) já responde, e ele
+está calculado na ficha de personagem, em Força & Arremesso.
+
+Está dentro do FAH? Ergue. Passou? Não ergue, e nenhuma jogada muda isso. O que muda é ajuda,
+alavanca, roldana e Proeza.
+
+#### Romper
+
+**Modo** · Direta. É o instante em que alguma coisa cede ou não cede.
+
+**Jogada** · Força + Atletismo, com a secundária **Halterofilismo** pela §5.5.
+
+**Dificuldade** · o material, e o que o segura:
+
+| Dif | O que se rompe |
+|:--:|---|
+| **5** | tábua apodrecida, corda fina, gesso, porta já frouxa nas dobradiças |
+| **10** | porta de madeira comum, cadeado barato, corrente leve, tranca de madeira |
+| **15** | porta reforçada com ferragens, grade de ferro fina, corda grossa, cadeado bom |
+| **20** | porta de carvalho com barra, grade grossa, algemas, tranca de ferro |
+| **25** | portão gradeado, parede de tijolo, corrente de âncora |
+| **30** | porta de metal, cantaria, grade de masmorra feita para segurar coisas piores |
+
+O teto mortal de Atributo + Habilidade é 12, então **Dif 20 é o limite do que um homem
+excepcional arromba** com meia chance. De 25 para cima é território de Proeza, Arte ou aríete.
+
+**A Margem compra** · silêncio e inteireza. Sem Margem a coisa cede com estrondo e em pedaços;
+**com uma Margem** ela cede limpa, e a porta ainda fecha depois; **com duas**, cede em silêncio.
+Numa fuga, essa diferença é a fuga inteira.
+
+**Falha** · nada cede, e **cada tentativa faz barulho**. Não há progresso a perder porque não há
+progresso: ou cedeu, ou não.
+
+**Ajuda** · apoia. Um segundo ombro na mesma porta é apoio pela §3.5; três pessoas não cabem no
+mesmo batente.
+
+**Circunstância** · alavanca, pé de cabra ou marreta **−4**; correr para tomar impulso **−2**;
+espaço apertado, sem apoio para os pés **+2**; tentar sem fazer barulho **+4**.
+
+**Onde mais mora** · o peso máximo e as faixas de carga estão em Força & Arremesso; arrombar
+fechadura sem quebrar nada é outra ficha, na família de Furtividade.
+
+### 6.5 Esgueirar-se
+
+**Modo** · Acumulada para atravessar um trecho vigiado; Direta quando é um momento só (passar por
+uma porta enquanto o guarda se vira).
+
+**Jogada** · Destreza + Furtividade, com a secundária **Ocultação** pela §5.5.
+
+**Dificuldade** · aqui ela **não sai de tabela: sai do observador**. Quem vigia tem um
+**Valor Passivo de Prontidão** (§3.3), que é 2 × (Percepção + Prontidão).
+
+<p class="formula">Direta: passe do <b>Valor Passivo</b> do vigia · Acumulada: a Dificuldade é <b>70% do Valor Passivo</b></p>
+
+| Quem vigia | Perc + Pront | Valor Passivo | Dif na Acumulada |
+|---|:--:|:--:|:--:|
+| Servo distraído, bêbado, criança | 3 | 6 | **4** |
+| Guarda de portão, sentinela comum | 5 | 10 | **7** |
+| Batedor, caçador, guarda de elite | 8 | 16 | **11** |
+| Mestre de espiões, besta de faro apurado | 10 | 20 | **14** |
+
+Havendo mais de um vigia, vale **o maior Valor Passivo**, e cada vigia a mais soma **+1** por
+estarem cobrindo ângulos diferentes.
+
+**Acúmulo e intervalo** · o Acúmulo é o **comprimento do trecho exposto, em metros**. Intervalo
+**Tick** no corredor com ronda passando, **minuto** no pátio, **hora** para atravessar um
+acampamento adormecido.
+
+**A Margem compra** · terreno e tempo. Cada Margem avança **mais 4 metros**, ou, se o jogador
+preferir, **congela um intervalo**: o vigia olha para o outro lado e o relógio da cena não anda.
+
+**Falha** · **diverge do padrão, e é a divergência mais importante deste capítulo.** Raspar não
+custa progresso, custa **suspeita**: o guarda para, escuta, e o próximo intervalo sai com
+Dificuldade **+2**. Errar por **6 ou mais** não faz perder metros: faz ser **notado**, e o
+Acúmulo deixa de importar. Em furtividade não existe escorregar um pouco.
+
+**Ajuda** · **teste coletivo** (§3.5), e é o caso que aquela regra foi escrita para cobrir. A
+Dificuldade sobe +2 por pessoa, rola quem tem o pior pool, e os outros apoiam. O sujeito de
+armadura de placas é o problema do grupo, e a regra diz isso com número.
+
+**Circunstância** · escuridão **−4**; chuva, vento ou barulho de fundo **−2**; distração criada
+por outro personagem **−2**; armadura pesada **+4**; carga acima da faixa Leve **+2**; piso de
+cascalho, folha seca ou tábua solta **+2**; atravessar campo aberto e iluminado **+4**.
+
+**Onde mais mora** · esconder-se e criar distração são fichas próprias; Aparência alta atrapalha
+quem quer não ser lembrado (`Antecedentes.md`).
+
+### 6.6 Arremessar um objeto
 
 > **Modo:** nenhum. O **alcance** é um número derivado, como os PV ou o Deslocamento: sai de
 > tabela e não se rola. Quem rola é o **acerto**, que é **Direta** e vive no capítulo de Combate.

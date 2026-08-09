@@ -171,7 +171,7 @@ com velocidade calculada).
 **Decide:** o alcance máximo, o alcance útil, e como o peso do objeto muda os dois.
 `refs:` `GURPS` é o único que leva a sério a relação peso/distância, com tabela por razão entre
 peso e Basic Lift. `D35`/`PF2` resolvem por incrementos de alcance por arma. EX2 dá alcance fixo
-por arma. **Centelha: `MOTOR` + ficha escrita** em `Acoes_Sistema.md` §6.2. É a única ficha
+por arma. **Centelha: `MOTOR` + ficha escrita** em `Acoes_Sistema.md` §6.6. É a única ficha
 pronta.
 
 **Cavalgar e conduzir** · Montaria, carroça, barco pequeno, e o que muda quando o veículo tem
