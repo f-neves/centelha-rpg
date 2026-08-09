@@ -356,7 +356,7 @@ A coluna **Jogada** é **sugestão de partida**, não decisão fechada.
 |---|---|:--:|
 | Correr, perseguir, fugir | distância direta pelo Deslocamento (Arranque nos 3 primeiros Ticks, Corrida depois) | `MOTOR` |
 | Saltar (vertical, horizontal parado, com corrida) | distância direta, sem jogada | `MOTOR` |
-| **Arremessar um objeto** | distância direta pelo FAA · acerto é jogada à parte | `MOTOR` · §5.1 |
+| **Arremessar um objeto** | distância direta pelo FAA · acerto é jogada à parte | `MOTOR` · §6.2 |
 | Levantar o peso máximo | sem jogada: o FAH dá o teto | `MOTOR` |
 | Deslocar-se carregando peso | velocidade × faixa de carga (Mínima, Leve, Média, Máxima) | `MOTOR` |
 | **Escalar** | Força + Atletismo (esp. Escalada), Acumulada por trecho | `ABERTO` |
@@ -459,9 +459,137 @@ Ferraria 5 não tem como saber quanto tempo leva para fazer uma espada nem o que
 
 ---
 
-## 5. Fichas de ação preenchidas
+## 5. O gabarito de ficha
 
-### 5.1 Arremessar um objeto
+### 5.1 O princípio: a ficha só escreve o que desvia
+
+Tudo o que a §3 decidiu já vale para todas as ações, sem repetição. Uma ficha que não fala de
+falha usa a **banda morta de uma Margem**; uma que não fala de ajuda usa o **apoio**; uma que não
+fala de Fôlego não cobra Fôlego. **A ficha só escreve o campo quando o campo diverge do padrão.**
+
+É isso que permite setenta e três fichas caberem num capítulo em vez de num volume. A maioria vai
+ter quatro linhas.
+
+### 5.2 Os campos
+
+| Campo | Quando escrever | O que diz |
+|---|---|---|
+| **Modo** | **sempre** | Direta, Acumulada, Longa, Reflexiva, Passiva, ou "sem modo" quando o número é derivado |
+| **Jogada** | **sempre**, salvo Longa e Passiva | Atributo + Perícia |
+| **Dificuldade** | **sempre** | com dois a quatro exemplos concretos na régua |
+| **Acúmulo e intervalo** | se Acumulada ou Longa | o Acúmulo e o degrau da escada de seis |
+| **A Margem compra** | **sempre** | o que o excedente de expertise faz nesta ação |
+| **Falha** | só se divergir | "nunca retrocede" ou "falha completa e recomeço" |
+| **Ajuda** | só se divergir | "os Acúmulos somam", quando a tarefa se divide |
+| **Circunstância** | se houver as típicas | os ±2/±4 recorrentes desta ação |
+| **Onde mais mora** | se houver | remissão a outro capítulo |
+
+**Ordem fixa**, sempre a mesma, para o leitor achar o campo sem ler a ficha inteira.
+
+### 5.3 Calibrar Dificuldade e Acúmulo
+
+Aqui está a armadilha, e ela é séria: **a tabela de âncoras da §3.1 foi calibrada para passa ou
+não passa, e não serve como está para Acumulada e Longa.** Na Direta a Dificuldade é uma barra que
+se transpõe uma vez; na Acumulada ela é **atrito cobrado a cada intervalo**. Usar a mesma âncora
+produz isto:
+
+| Desafio | Soma à altura | Dif da âncora | Progresso por intervalo |
+|---|:--:|:--:|:--:|
+| Fácil | 3 | 5 | 0,5 |
+| Média | 6 | 10 | 0,5 |
+| Difícil | 9 | 15 | 1,0 |
+| Muito difícil | 10 | 20 | **−2,5** |
+| Limite humano | 12 | 25 | **−4,0** |
+
+O personagem exatamente à altura de uma tarefa Média avançaria meio ponto por intervalo, e o de
+uma tarefa Muito difícil **regrediria para sempre**. Está errado.
+
+A calibragem certa sai de uma pergunta simples: **quantos intervalos o personagem à altura deve
+levar?** A resposta boa é **cerca de três**, e dela sai a régua abaixo. Ela reproduz exatamente o
+par que já tínhamos na mão para uma muralha (Dificuldade 7, Acúmulo 10, para soma 6).
+
+<p class="formula">Dificuldade de Acumulada e Longa ≈ 2/3 da média de quem está à altura da tarefa</p>
+
+| Desafio | Soma à altura | Média | **Dif** | Progresso | **Acúmulo** para ~3 intervalos |
+|---|:--:|:--:|:--:|:--:|:--:|
+| Fácil | 3 | 5,5 | **4** | 1,5 | **5** |
+| Média | 6 | 10,5 | **7** | 3,5 | **11** |
+| Difícil | 9 | 16 | **11** | 5,0 | **15** |
+| Muito difícil | 10 | 17,5 | **12** | 5,5 | **17** |
+| Limite humano | 12 | 21 | **14** | 7,0 | **21** |
+
+E o par tem uma divisão de trabalho que vale decorar:
+
+<p class="formula">A Dificuldade diz <b>quão duro</b> · o Acúmulo diz <b>quanto tem</b></p>
+
+Numa parede, a Dificuldade é a superfície e o Acúmulo é a altura. Numa espada, a Dificuldade é a
+qualidade pretendida e o Acúmulo é o tamanho da peça. Numa cifra, a Dificuldade é o quanto o
+código é fechado e o Acúmulo é o quanto há de texto. Mudar a Dificuldade muda **quem consegue**;
+mudar o Acúmulo muda **quanto demora**.
+
+### 5.4 Duas coisas que toda ficha vai esbarrar
+
+> **[DECIDIR]**, as duas.
+
+1. **Perícia secundária ou Especialidade?** Escalar é Atletismo, mas existe a secundária
+   **Escalada**. Nadar é Atletismo, mas existe **Natação**. A ficha nomeia qual? O personagem usa
+   a maior das duas? A secundária é uma Especialidade de Atletismo com outro nome? Isso se repete
+   em Escalar, Nadar, Equilibrar-se, Acrobacia, Roubar, Arrombar, Disfarçar e mais uma dúzia.
+2. **A âncora "Difícil" tem dois valores no projeto.** `regras.json` diz que a soma à altura é
+   **8**; o capítulo do Coração do Sistema e a Área do Mestre dizem **9**. A tabela acima usou 9,
+   por ser o valor de duas das três fontes. Um dos lados precisa ceder.
+
+---
+
+## 6. Fichas
+
+### 6.1 Escalar
+
+> **Números de partida, não fechados.** Esta é a primeira ficha escrita no gabarito e serve de
+> modelo para as outras. A descrição da ação está em `Acoes_Texto.md`, família Corpo e movimento.
+
+**Modo** · Acumulada com pressa, Longa com calma. O par de números é o mesmo nos dois.
+
+**Jogada** · Força + Atletismo.
+
+**Dificuldade** · a superfície, e só ela:
+
+| Dif | Superfície |
+|:--:|---|
+| **4** | corda com nós, escada de mão, árvore de galhos baixos, muro de pedra seca com juntas fundas |
+| **7** | muralha de pedra lavrada com frestas, encosta íngreme de terra e raiz, casco de navio atracado |
+| **11** | tijolo bem assentado, penhasco molhado, chaminé estreita pelo atrito das costas |
+| **12** | pedra lisa e polida, madeira encerada, gelo com piqueta |
+| **14** | trecho invertido curto, vidro, gelo sem equipamento |
+
+**Acúmulo e intervalo** · o Acúmulo é a **altura em metros**. O intervalo é o botão de velocidade
+da cena:
+
+| Intervalo | Quando | O que parece |
+|---|---|---|
+| **Tick** | perseguição, a ronda dobrando a esquina | subida atlética e desesperada, metros por segundo |
+| **Minuto** | infiltração, tem pressa mas não desespero | subida cuidadosa, alguns metros por minuto |
+| **Hora** | a parede longa, com paradas e equipamento | escalada de verdade |
+
+**A Margem compra** · altura. Cada Margem sobe **mais 3 metros** naquele intervalo, além do
+progresso normal. Quem tem folga de sobra passa a mão numa saliência que o outro teria de
+procurar.
+
+**Falha** · o padrão. Raspar (menos de 6 abaixo) custa o intervalo e nada mais; errar por 6 ou
+mais **perde a diferença em metros**, que é escorregar de verdade. Zerar o Acúmulo é voltar ao
+chão, e **quem volta ao chão de uma altura considerável não volta inteiro**: a queda é a ficha de
+Cair.
+
+**Ajuda** · não soma, apoia. Um só sobe de cada vez. Quem já está em cima e larga uma corda dá o
+apoio pela tabela da §3.5, e quem tem a corda amarrada normalmente também abaixa a Dificuldade.
+
+**Circunstância** · corda e equipamento **−4**; superfície molhada ou com gelo **+2**; escuridão
+**+2**; carga acima da faixa Leve **+2**; escalar com uma das mãos ocupada **+4**.
+
+**Onde mais mora** · a queda é ficha própria; carga e faixas de peso estão em Força & Arremesso;
+o custo em Fôlego só existe quando o intervalo é Tick (§3.6).
+
+### 6.2 Arremessar um objeto
 
 > **Modo:** nenhum. O **alcance** é um número derivado, como os PV ou o Deslocamento: sai de
 > tabela e não se rola. Quem rola é o **acerto**, que é **Direta** e vive no capítulo de Combate.
@@ -550,7 +678,7 @@ com mochila: o primeiro décimo do peso máximo quase não custa nada, e o estra
 
 ---
 
-## 6. Pendências deste documento
+## 7. Pendências deste documento
 
 1. ~~**[DECIDIR]** Os modos de ação.~~ **Fechado em 2026-08-09:** cinco modos (Direta, Acumulada,
    Longa, Reflexiva, Passiva), com Acumulada e Longa dividindo a dupla Dificuldade e Acúmulo, a
@@ -568,9 +696,16 @@ com mochila: o primeiro décimo do peso máximo quase não custa nada, e o estra
    capítulo publicado já foi corrigido: vocabulário dos modos, média sem arredondar na tabela, e
    a banda morta de uma Margem promovida a regra geral.
 5. **[DECIDIR]** Trocar a palavra "stunt" em Relações Sociais por um termo em português.
-4. **[FAZER]** Preencher as fichas na ordem: **Escalada**, **Queda**, **Veneno**, **Ambiente**,
-   **Esgueirar-se**, **Construir/forjar**. São as seis mais pedidas em mesa e as que hoje o
-   mestre inventa do zero toda vez.
+4. ~~**[FAZER]** O gabarito de ficha.~~ **Escrito em 2026-08-09** (§5), com **Escalar** (§6.1)
+   como ficha-modelo. Junto saiu a régua de calibragem da §5.3, que corrige um erro real: as
+   âncoras de Dificuldade não servem para Acumulada e Longa sem serem rebaixadas a ~2/3 da média.
+5. **[DECIDIR]** As duas coisas da §5.4 que toda ficha vai esbarrar: **perícia secundária ou
+   Especialidade** (Escalada contra Atletismo, Natação contra Atletismo, e mais uma dúzia), e a
+   **âncora "Difícil" com dois valores** no projeto (8 em `regras.json`, 9 no capítulo e na Área
+   do Mestre).
+6. **[FAZER]** Preencher as fichas na ordem: **Queda**, **Veneno**, **Ambiente**,
+   **Esgueirar-se**, **Construir/forjar**. São as mais pedidas em mesa e as que hoje o mestre
+   inventa do zero toda vez. Escalar já saiu como modelo do gabarito.
 4. **[FAZER]** Decidir se isto vira **um** capítulo ou se cada família entra no capítulo que já
    existe (movimento em Combate, resistir em Vida & Ferimentos, social em Relações). A aposta
    atual é capítulo único, porque a régua comum da §3 precisa de um lugar só.

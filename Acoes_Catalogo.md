@@ -58,40 +58,41 @@ estendida definida por alvo de sucessos e intervalo. `BitD` resolve todo trabalh
 **relógios de progresso**, que é a versão mais limpa da Acumulada. `PF2` tem economia de três
 ações no combate e **downtime** fora dele, com atividades que duram dias.
 
-**1.2 · Quando não se rola.** Precisa existir um piso abaixo do qual a jogada não acontece, senão
-o competente falha no trivial e a mesa para toda hora.
+**1.2 · Quando não se rola.** **FECHADA:** não existe piso numérico. Quem escolhe entre rolar e
+tomar a média é o jogador, e o critério é a pressa. Ver §3.4.
 `refs:` EX2 dá sucesso automático quando a Dificuldade é baixa contra o pool. `BW` tem o **Let It
 Ride** (rolou uma vez, vale para a situação inteira, não se rola de novo) e é a formulação mais
 útil das que conheço. `D5` resolve por "só role quando houver consequência interessante".
 
-**1.3 · Graus de sucesso.** Passou e não passou, ou quatro faixas? Muda toda ficha do capítulo.
+**1.3 · Graus de sucesso.** **FECHADA:** a Margem, que já era lei, vale nos dois sentidos. Para
+cima compra efeito; para baixo, com banda morta de 6, cobra progresso. Ver §3.2 e §3.3.
 `refs:` `PF2` tem quatro graus (sucesso crítico, sucesso, falha, falha crítica) e é o sistema que
 mais tira proveito disso: cada ação descreve os quatro. `CofD` tem sucesso excepcional em 5+
 sucessos. Centelha já tem a margem (total menos Dificuldade) disponível de graça, então a
 pergunta é o que fazer com ela.
 
-**1.4 · Ajuda e ação em grupo.** Dois cavando o mesmo túnel, cinco remando o mesmo barco, o
-grupo inteiro tentando passar despercebido.
+**1.4 · Ajuda e ação em grupo.** **FECHADA:** em tarefa divisível os Acúmulos somam; quando não
+se divide, o ajudante rola e dá +2 mais +1d6 por Margem. Ver §3.5.
 `refs:` `CofD` tem teamwork (o secundário rola e passa sucessos ao primário). `D5` tem group
 check (metade do grupo passando basta). `PF2` tem Aid como reação preparada. `EX2` deixa vago,
 e é uma das lacunas mais sentidas dele. Centelha vai precisar dos dois casos: **somar esforço**
 (o túnel) e **o elo mais fraco** (a furtividade do grupo).
 
-**1.5 · Ferramenta, oficina e circunstância.** O modificador por ter ou não ter o instrumento
-certo, o lugar certo e o tempo certo.
+**1.5 · Ferramenta, oficina e circunstância.** **FECHADA:** entra pelo ±2/±4 na Dificuldade que a
+Área do Mestre já fixava. Nenhuma mecânica nova. Ver §3.1.
 `refs:` `D35`/`PF1` usam masterwork tools como bônus fixo e improvisação como penalidade fixa.
 `CPR` amarra isso a equipamento comprável, e o Tech tem bancada própria. `ArM` faz do
 **laboratório** um traço do personagem, com qualidade própria. Para Centelha isso conversa
 direto com o capítulo de Custo de Serviços & Itens, que já existe.
 
-**1.6 · Escalas de tempo.** O capítulo precisa de um vocabulário fechado: Tick, minuto, hora,
-dia, semana, estação. Cada ficha declara em qual escala vive.
+**1.6 · Escalas de tempo.** **FECHADA:** escada de seis degraus, Tick, minuto, hora, dia, semana e
+estação. "Período", em Relações, passou a significar o intervalo declarado. Ver §3.3.
 `refs:` `ArM` organiza a campanha inteira em **estações**. `BitD` tem downtime entre scores.
 `PF1` *Ultimate Campaign* tem dias de downtime com capital acumulável. `EX2` tem uma seção só
 sobre marcar a passagem do tempo.
 
-**1.7 · O que acontece na falha.** Falhar não pode ser sempre "nada acontece", senão a mesa
-repete a jogada até passar.
+**1.7 · O que acontece na falha.** **FECHADA:** banda morta de uma Margem. Errar por menos de 6
+custa o intervalo; por 6 ou mais, perde a diferença. Ver §3.3.
 `refs:` `BitD` responde com consequência e posição (a falha sempre move a ficção). `PF2` responde
 com a falha crítica escrita em cada ação. `EX2` responde com o botch. Esta é a decisão que mais
 muda o **tom** do capítulo.
@@ -170,7 +171,7 @@ com velocidade calculada).
 **Decide:** o alcance máximo, o alcance útil, e como o peso do objeto muda os dois.
 `refs:` `GURPS` é o único que leva a sério a relação peso/distância, com tabela por razão entre
 peso e Basic Lift. `D35`/`PF2` resolvem por incrementos de alcance por arma. EX2 dá alcance fixo
-por arma. **Centelha: `MOTOR` + ficha escrita** em `Acoes_Sistema.md` §5.1. É a única ficha
+por arma. **Centelha: `MOTOR` + ficha escrita** em `Acoes_Sistema.md` §6.2. É a única ficha
 pronta.
 
 **Cavalgar e conduzir** · Montaria, carroça, barco pequeno, e o que muda quando o veículo tem

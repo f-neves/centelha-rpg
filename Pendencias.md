@@ -152,7 +152,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   precisa declarar, na mesma ordem: **modo**, **Dificuldade** (com exemplos na régua de âncoras),
   **Acúmulo e intervalo** quando houver, **o que a Margem compra**, **o que a falha faz** (banda
   morta, ou a exceção declarada), **ajuda** (soma ou apoia) e **Fôlego**. A ficha de Arremesso
-  (§5.1) já mostrou que o gabarito precisa prever o caso sem modo, em que o número é derivado e
+  (§6.2) já mostrou que o gabarito precisa prever o caso sem modo, em que o número é derivado e
   só o acerto é jogada.
 - [ ] **G2 · [FAZER] Normalizar a tabela §4 do `Acoes_Sistema.md`.** Ela é anterior aos modos e
   fala a língua antiga: diz "Longa: uma jogada só" (a Longa não rola) e "uma jogada por dia"
