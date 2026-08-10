@@ -48,9 +48,9 @@ Fora do território, a regra é uma só:
 
 O primeiro é um degrau, não uma parede: um faz-tudo excepcional bate uma espada simples, e leva três dias e meio nela. O segundo é a parede de verdade, e é o que fecha a fechadura de segredo, a placa completa sob medida, a peça de joalheria e o casco de navio a quem não tem o ofício.
 
-Os ofícios são **Habilidades Secundárias**, ilimitadas e mais baratas: Ferraria, Armaria, Carpintaria, Alvenaria, Curtume, Alfaiataria, Joalheria, Serralheria, Culinária, Herbalismo, Iluminura, Olaria, Vidraria, Construção Naval, o que a história pedir. O Atributo é **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo.
+Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**, ilimitadas e mais baratas: Ferreiro, Carpintaria, Marcenaria, Alvenaria, Couraria, Costura, Joalheria, Gastronomia, Artesanato, Navegação, e o que mais a história pedir (Olaria, Vidraria, Construção Naval). O Atributo é **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>O ferreiro tem Ferraria 5 e Ofícios Gerais 3. Pela <a href="/regras/acoes-e-sistema">regra da maior e da menor</a>, ele rola com Ferraria e soma +3 ao total.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>O ferreiro tem Ferreiro 5 e Ofícios Gerais 3. Pela <a href="/regras/acoes-e-sistema">regra da maior e da menor</a>, ele rola com Ferreiro e soma +3 ao total.</div>
 
 ## A montagem se paga uma vez: o lote
 
@@ -88,10 +88,10 @@ A espada serve de gabarito da régua inteira:
 
 | Grau | Req | Dif | Acúmulo | Intervalo | Quem faz, e em quanto tempo |
 |---|:--:|:--:|:--:|---|---|
-| Sucata | 1 | 1 | 6 | dia | Ferraria 1, meio dia |
+| Sucata | 1 | 1 | 6 | dia | Ferreiro 1, meio dia |
 | Tosca | 2 | 4 | 11 | dia | oficial, 1,7 dia |
 | **Comum** | 3 | 7 | 22 | dia | oficial, 6,3 dias |
-| Boa | 4 | 10 | 33 | dia | Ferraria 4 e soma 10, 4,4 dias |
+| Boa | 4 | 10 | 33 | dia | Ferreiro 4 e soma 10, 4,4 dias |
 | Ótima | 5 | 13 | 50 | **semana** | mestre (soma 12), 6,3 semanas |
 | Excepcional | 6 | 16 | 74 | semana | mestre em oficina de mestre, 8 semanas |
 
@@ -131,9 +131,9 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Peça | Ofício | Req | Dif | Mont. | Peça | Oficial |
 |---|---|:--:|:--:|:--:|:--:|:--:|
 | Prego, gancho, dobradiça | Gerais | 1 | 4 | 2 | 1 | menos de 1 h |
-| Ferradura, corrente, grampo | Ferraria, Gerais | 1 | 4 | 3 | 2 | menos de 1 h |
+| Ferradura, corrente, grampo | Ferreiro, Gerais | 1 | 4 | 3 | 2 | menos de 1 h |
 | Flecha rústica (dúzia) | Gerais | 1 | 4 | 2 | 5 | 1 h |
-| Refeição farta para dez | Culinária, Gerais | 1 | 4 | 2 | 4 | 1 h |
+| Refeição farta para dez | Gastronomia, Gerais | 1 | 4 | 2 | 4 | 1 h |
 | Flecha de guerra (dúzia) | Arcos | 2 | 7 | 2 | 6 | 2 h |
 | Emplastro, tintura, tinta | Herbalismo | 2 | 7 | 2 | 5 | 2 h |
 | Página iluminada, cópia fiel | Iluminura | 3 | 7 | 1 | 6 | 2 h |
@@ -146,10 +146,10 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Porta, banco, mesa tosca, cerca de 20 m | Carpintaria, Gerais | 1 | 4 | 2 | 4 | 1 dia |
 | Escudo | Carpintaria | 1 | 4 | 2 | 6 | 1 dia |
 | Gambeson | Alfaiataria | 1 | 4 | 3 | 20 | 3,5 dias |
-| Faca, machado, ponta de lança | Ferraria | 2 | 4 | 6 | 3 | 1,5 dia |
+| Faca, machado, ponta de lança | Ferreiro | 2 | 4 | 6 | 3 | 1,5 dia |
 | Sela, arreio, bota, couro endurecido | Curtume | 2 | 7 | 3 | 9 | 3,5 dias |
 | Móvel bem-acabado, arca | Carpintaria | 3 | 7 | 3 | 8 | 3 dias |
-| **Espada, machado de guerra, arma marcial** | Ferraria | 3 | 7 | 12 | 10 | 6,3 dias |
+| **Espada, machado de guerra, arma marcial** | Ferreiro | 3 | 7 | 12 | 10 | 6,3 dias |
 | Arco longo, besta (madeira já curada) | Arcos, Carpintaria | 3 | 7 | 4 | 12 | 4,5 dias |
 | Anel, broche, peça de joalheria | Joalheria | 4 | 11 | 3 | 6 | fechada ao oficial |
 | Fechadura, engenho, autômato de corda | Serralheria | 5 | 11 | 4 | 10 | fechada ao oficial |

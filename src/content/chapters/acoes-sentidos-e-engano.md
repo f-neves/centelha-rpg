@@ -85,12 +85,12 @@ A leitura é simples: **o estado de alerta é o que apaga a banda morta**. Um gu
 - **Esconder-se.** Sumir de vista e continuar sumido, que é coisa diferente de atravessar. Direta, Destreza + Furtividade, secundária Ocultação.
 - **Criar distração.** Uma pedra jogada longe, um barulho na hora certa. Direta, Raciocínio + Manha, e o efeito é rebaixar o estado do vigia por um intervalo.
 - **Roubar.** A bolsa no cinto, a chave no gancho. Direta, Destreza + Prestidigitação contra Prontidão.
-- **Arrombar fechadura.** Acumulada, Destreza + Prestidigitação, secundária Arrombamento, intervalo de minuto.
-- **Desarmar armadilha.** Direta, Destreza + Prestidigitação.
+- **Arrombar fechadura.** Acumulada, Destreza + Prestidigitação, secundária Abrir Mecanismos, intervalo de minuto.
+- **Desarmar armadilha.** Direta, Destreza + Prestidigitação, secundária Abrir Mecanismos. **Achar** a armadilha antes de pisar nela é outra ação, com Ocultação.
 - **Disfarçar-se.** Passiva contra quem olha, Influência + Manha, secundária Disfarce. **Aparência alta atrapalha**: quem é memorável tem mais trabalho para não ser lembrado.
 - **Mentir** é ataque social, e vive em [Relações Sociais](/regras/relacoes-sociais).
-- **Falsificar.** Documento, selo, assinatura. Longa, Inteligência + Falsificação.
-- **Contrabandear.** Passiva, Destreza + Furtividade contra a revista.
+- **Falsificar.** Documento, selo, assinatura. Longa, Inteligência + Ocultação.
+- **Contrabandear.** Passiva, Destreza + Furtividade contra a revista, secundária Ocultação.
 - **Trapacear no jogo.** Carta na manga, dado viciado, sinal combinado. Direta, Destreza + Prestidigitação contra a Prontidão da mesa.
 
 ---
@@ -101,8 +101,8 @@ Quase tudo o que é troca social prolongada vive em [Relações Sociais](/regras
 
 O que fica de fora dele, e ainda espera ficha:
 
-- **Barganhar.** Chegar num preço. Acumulada, Influência + Sociabilidade, secundária Comércio.
-- **Apostar.** Dado, carta, briga de galo, e a mesa em volta deles. O que se descobre sentado ali costuma valer mais que o dinheiro. Direta, Perspicácia + Manha, secundária Jogatina. Trapacear é outra ação, na família de Furtividade.
+- **Barganhar.** Chegar num preço. Acumulada, Influência + Sociabilidade, secundária Comerciante.
+- **Apostar.** Dado, carta, briga de galo, e a mesa em volta deles. O que se descobre sentado ali costuma valer mais que o dinheiro. Direta, Perspicácia + Manha, secundária Submundo quando a mesa é do ramo. Trapacear é outra ação, na família de Furtividade.
 - **Etiqueta.** Não dar vexame onde as regras não estão escritas. Passiva, Compostura + Sociabilidade.
 - **Interrogar.** Arrancar informação de quem não quer dar. Acumulada, Influência + Manha ou Oratória contra Integridade.
 - **Colher boato** e **plantar boato.** Longa, Influência + Manha, intervalo de dia. Um boato bem posto trabalha sozinho.

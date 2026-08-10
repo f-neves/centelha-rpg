@@ -92,7 +92,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Especialidades | Furtividade, Atirador, Sobrevivência | 36 |
 | Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 64 |
 | Força de Vontade | 0 → 7 | 56 |
-| Aparência | 0 → 4 (comum) | 20 |
+| Aparência | 0 → 4 (feio, −1) | 20 |
 | Centelha | 0 → 3 (Herói) | grátis |
 | Técnicas | 29, de Olho de Águia, Sombra e Vento (níveis 1 a 3, já com o Desperto) | 450 |
 | **Total** | | **1230** |
@@ -126,7 +126,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Especialidades | cinco (Ocultismo, Fogo…) | 60 |
 | Virtudes | Convicção 4 · Temperança 4 · Bravura 3 · Compaixão 3 | 96 |
 | Força de Vontade | 0 → 8 | 72 |
-| Aparência | 0 → 4 (comum) | 20 |
+| Aparência | 0 → 4 (feio, −1) | 20 |
 | Centelha | 0 → 4 (Grande herói) | grátis |
 | Artes | seis: Fogo e Forças no nível 4 · Cura, Raio, Proteção e Fortuna no 3 | 420 |
 | Técnicas | 34, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 615 |
@@ -149,11 +149,11 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Secundárias | oito (Astronomia, Alquimia, Caligrafia, História, Herbologia, Genealogia…) | 66 |
 | Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos…) | 48 |
 | Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 63 |
-| Força de Vontade | 1 → 9 | 88 |
-| Aparência | 1 → 4 (comum) | 18 |
-| Centelha | 0 → 1 (Tocado) | 10 |
+| Força de Vontade | 0 → 9 | 90 |
+| Aparência | 0 → 4 (feio, −1) | 20 |
+| Centelha | 0 → 1 (Tocado) | grátis |
 | Artes | sete: Adivinhação, Forças, Proteção, Cura e Fogo no **nível 5** · Fascinação e mais uma no 3 | 870 |
 | Técnicas | 12, de Mente Afiada e Erudito (nível 1) | 120 |
-| **Total** | | **1999** |
+| **Total** | | **1993** |
 
 <p class="muted">Derivados: PV 34 · Defesa 13 · Def. Mental 13 · Def. Social 9 · Energia 10 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Fecha no orçamento. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong>: ele conhece magia tão funda quanto Veil, mas o tanque o obriga a poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível: o feiticeiro de torre, não o de campo.</p>
