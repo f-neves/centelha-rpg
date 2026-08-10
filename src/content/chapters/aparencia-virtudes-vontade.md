@@ -32,14 +32,30 @@ E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, i
 
 ## As Quatro Virtudes
 
-As Virtudes são **o que move o personagem por dentro**. Cada uma vai de 1 a 6 e descreve tanto o que te impulsiona quanto aquilo a que você resiste.
+Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que ele **aprendeu** a fazer, a Virtude é o que ele **vai** fazer quando a escolha for difícil. Cada uma vai de **1 a 6** e tem duas faces: o que ela te empurra a fazer, e aquilo que, por causa dela, não te dobra.
 
-| Virtude | Governa | Resiste a… |
+| Virtude | Empurra você a… | Resiste… |
 |---|---|---|
-| **Compaixão** | empatia e misericórdia | a crueldade |
-| **Convicção** | determinação inabalável | a dor, a tortura e o desânimo |
-| **Temperança** | disciplina e autocontrole | a tentação e a provocação |
-| **Bravura** | coragem diante do perigo | o medo e a intimidação |
+| **Compaixão** | poupar, socorrer e cuidar | à crueldade |
+| **Convicção** | seguir apesar de tudo | à dor, à tortura e ao desânimo |
+| **Temperança** | segurar o próprio impulso | à tentação e à provocação |
+| **Bravura** | ficar e encarar | ao medo e à intimidação |
+
+**Nota importante antes de escolher os números:** aqui **não existe Virtude ruim**. A régua corta dos dois lados, e uma Virtude **baixa** é conduta esperada tanto quanto uma alta: a Bravura 1 que abandona o posto e salva a pele está sendo tão fiel a si mesma quanto a Bravura 5 que marcha sozinha contra o exército, e as duas rendem a mesma recompensa. Um personagem de Virtudes todas altas não é melhor, é só mais previsível.
+
+### Os verbetes
+
+**Compaixão** · O que você faz com a dor dos outros: o impulso de poupar, socorrer e cuidar, e o peso que sobra em quem escolhe não fazer nada. É a Virtude que mais decide cena fora do combate, porque quase toda escolha difícil de uma campanha passa por ela: matar o prisioneiro ou não, gastar a última bandagem em quem não é do grupo, entregar o refugiado para salvar a aldeia. Não confunda com Empatia: a Empatia entende o que o outro está sentindo, a Compaixão decide o que você faz com isso.
+
+**Convicção** · A teimosia da alma: o que mantém você de pé quando já não há motivo visível para continuar. É a Virtude do propósito, e quem a testa não é o inimigo que argumenta, é o que dói e cansa: a marcha que não acaba, o cerco no terceiro mês, o ferro em brasa, a notícia de que tudo foi em vão. Integridade é não ceder ao que os outros fazem com você; a Convicção é não ceder quando ninguém está fazendo nada, só o tempo e a dor.
+
+**Temperança** · O domínio sobre o que vem de dentro: apetite, raiva, pressa, orgulho e a vontade de responder à provocação. É a Virtude do freio, e ela decide as cenas em que o erro não veio do inimigo, veio de você: o insulto que não devia ter sido respondido, a bolsa de ouro que não devia ter sido aceita, o gole a mais na véspera da batalha. Onde a Convicção aguenta o que vem de fora e dói, a Temperança aguenta o que vem de dentro e agrada.
+
+**Bravura** · A disposição de encarar o que assusta: ficar quando o corpo inteiro manda correr, avançar contra o que é maior, dizer não a quem tem poder de destruir você. É a Virtude que decide se a cena chega a acontecer, porque quase toda cena perigosa começa com alguém escolhendo não sair dali. Não é ausência de medo, é o medo não mandando: a Bravura decide se você fica, e a Temperança decide se você mantém a cabeça fria enquanto fica.
+
+<p class="muted">Cada Virtude tem os seis degraus escritos, com a <strong>conduta</strong> esperada em cada um. Clique no nome da Virtude na ficha, ou aqui no texto, para ver a régua inteira.</p>
+
+### O que elas fazem na mesa
 
 As Virtudes não são só interpretação, elas têm peso mecânico em três frentes:
 
