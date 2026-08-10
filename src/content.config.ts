@@ -7,7 +7,14 @@ const custo = z.object({
   vontade: z.number().int().nonnegative().optional(),
 });
 
-const escala = z.array(z.object({ nivel: z.number().int(), texto: z.string(), conduta: z.string().optional() }));
+// Um degrau de qualquer régua do jogo. `rotulo` é o nome do degrau, em campo próprio para o
+// modal poder destacá-lo: sem ele, metade dos traços saía sem negrito e sem alinhamento.
+const escala = z.array(z.object({
+  nivel: z.number().int(),
+  rotulo: z.string().optional(),
+  texto: z.string(),
+  conduta: z.string().optional(),
+}));
 
 const atributos = defineCollection({
   loader: file('src/data/atributos.json'),
@@ -29,6 +36,7 @@ const habilidades = defineCollection({
     atributos: z.array(z.string()).optional(),
     secundaria: z.boolean().optional(),
     descricao: z.string(),
+    niveis: escala.optional(),
   }),
 });
 
@@ -41,6 +49,7 @@ const habilidadesSecundarias = defineCollection({
     nome: z.string(),
     grupo: z.enum(['corpo', 'sociais', 'conhecimento', 'oficio', 'expressao', 'subterfugio', 'interior']),
     descricao: z.string(),
+    niveis: escala.optional(),
   }),
 });
 

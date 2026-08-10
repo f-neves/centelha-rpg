@@ -7,7 +7,44 @@
       "forca",
       "destreza"
     ],
-    "descricao": "A luta sem arma e a luta agarrada: soco, joelhada, cotovelada, gravata, projeção, chave de braço e a rolação no chão da taverna. É também o que resolve tudo que envolve pôr as mãos em alguém sem querer matá-lo, como segurar quem foge, imobilizar, desarmar ou empurrar para fora do parapeito. Vale igualmente para as armas que são extensão do punho, como soqueira e manopla. Aparece toda vez que a cena não permite ou não pede uma lâmina: prisões, bebedeiras, guardas que precisam prender e não executar."
+    "descricao": "A luta sem arma e a luta agarrada: soco, joelhada, cotovelada, gravata, projeção, chave de braço e a rolação no chão da taverna. É também o que resolve tudo que envolve pôr as mãos em alguém sem querer matá-lo, como segurar quem foge, imobilizar, desarmar ou empurrar para fora do parapeito. Vale igualmente para as armas que são extensão do punho, como soqueira e manopla. Aparece toda vez que a cena não permite ou não pede uma lâmina: prisões, bebedeiras, guardas que precisam prender e não executar.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Briga de bêbado: soco largo, guarda aberta, cai no primeiro empurrão."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe fechar o punho sem quebrar o polegar e não abre a guarda de cara."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "O valentão que ganha as brigas de taverna do próprio bairro."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Lutador treinado: derruba, imobiliza e escolhe se machuca ou não."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Vence de mãos vazias quem está de faca, e sai quase inteiro."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Poucos no mundo o tocam desarmado; se ele agarra, a briga acabou."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Projeta e imobiliza três homens sem que nenhum encoste um dedo nele."
+      }
+    ]
   },
   {
     "id": "armas",
@@ -17,7 +54,44 @@
       "destreza",
       "forca"
     ],
-    "descricao": "O treino de lutar com uma arma na mão, qualquer arma branca: adaga, espada, machado, maça, lança, martelo, montante, de uma ou de duas mãos. É uma perícia só para todas porque o que muda de uma arma para a outra (peso, alcance, tipo de dano, número de mãos) é propriedade da arma, não do lutador; o que separa o duelista do brutamontes é o Atributo que ele usa e a Especialidade em que treinou. Cobre atacar, aparar com a própria lâmina e brigar em formação. Não cobre lutar de mãos vazias, que é Briga, nem lançar a arma, que é Arremesso. Junto com a sua defesa preferida, é a perícia mais rolada de qualquer personagem que entre em combate."
+    "descricao": "O treino de lutar com uma arma na mão, qualquer arma branca: adaga, espada, machado, maça, lança, martelo, montante, de uma ou de duas mãos. É uma perícia só para todas porque o que muda de uma arma para a outra (peso, alcance, tipo de dano, número de mãos) é propriedade da arma, não do lutador; o que separa o duelista do brutamontes é o Atributo que ele usa e a Especialidade em que treinou. Cobre atacar, aparar com a própria lâmina e brigar em formação. Não cobre lutar de mãos vazias, que é Briga, nem lançar a arma, que é Arremesso. Junto com a sua defesa preferida, é a perícia mais rolada de qualquer personagem que entre em combate.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Nunca empunhou nada: segura a espada com força demais e o gume não morde."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "A guarda que a milícia ensina numa semana; sabe pelo menos o lado certo da lâmina."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Soldado de linha: luta na formação e sobrevive ao primeiro choque."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Veterano de campanha; ganha a maioria dos duelos contra quem não é soldado."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Mestre de armas de uma guarnição: ensina, e o que ensina funciona."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Um dos melhores gumes do reino; duelistas viajam para enfrentá-lo."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "A espada de que se fala em canção: desarma três homens antes de o quarto sacar."
+      }
+    ]
   },
   {
     "id": "arremesso",
@@ -27,7 +101,44 @@
       "destreza",
       "forca"
     ],
-    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, dardo, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a perícia dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador."
+    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, dardo, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a perícia dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Joga como quem espanta galinha: força de sobra, direção nenhuma."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Acerta um alvo parado a dez passos, se ninguém estiver atirando de volta."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Caçador de aldeia com funda ou azagaia: leva um coelho para casa."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Acerta homem em movimento a trinta passos e crava a adaga onde mirou."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Acerta o que mal se vê, e acerta com o que estiver na mão."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Fura o olho de um alvo em disparada; a arma vira extensão do braço."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Acerta a fresta da viseira de cima de um cavalo a galope."
+      }
+    ]
   },
   {
     "id": "atirador",
@@ -37,7 +148,44 @@
       "percepcao",
       "destreza"
     ],
-    "descricao": "O tiro com arma de disparo: arco curto, arco longo, besta e o que mais se aponte e solte. É a perícia da paciência e da mira, de julgar a distância, o vento e o instante, e soltar quando o alvo está onde deveria estar. Rende o melhor do jogo quando você tem tempo e posição, e sofre muito quando o inimigo encosta. Lançar com o braço é Arremesso; a briga de perto é Armas ou Briga."
+    "descricao": "O tiro com arma de disparo: arco curto, arco longo, besta e o que mais se aponte e solte. É a perícia da paciência e da mira, de julgar a distância, o vento e o instante, e soltar quando o alvo está onde deveria estar. Rende o melhor do jogo quando você tem tempo e posição, e sofre muito quando o inimigo encosta. Lançar com o braço é Arremesso; a briga de perto é Armas ou Briga.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Puxa a corda torto, erra o celeiro e ainda machuca o próprio braço."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Recruta de leva: acerta a formação inimiga, desde que ela seja grande."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Arqueiro de milícia; acerta um alvo do tamanho de um homem a cinquenta passos."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Caçador profissional: corrige vento e distância sem precisar pensar."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Arqueiro de elite; acerta o vulto entre as ameias já na primeira flecha."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Um dos melhores arcos vivos: acerta o que os outros nem enxergam."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Derruba o cavaleiro pela fresta do elmo, a duzentos passos, com vento cruzado."
+      }
+    ]
   },
   {
     "id": "esquiva",
@@ -46,7 +194,44 @@
     "atributos": [
       "destreza"
     ],
-    "descricao": "Não estar onde o golpe chega: o passo para o lado, o corpo que gira, o mergulho para trás do muro. É uma das duas maneiras de não ser atingido, e a mais versátil, porque serve contra qualquer coisa, do soco à flecha, da armadilha ao desabamento. Em compensação exige espaço e pés livres: encurralado, em meio à multidão ou preso à formação, ela vale pouco. Sustenta a Defesa por Esquiva, e como toda defesa é usada em praticamente todo turno de combate."
+    "descricao": "Não estar onde o golpe chega: o passo para o lado, o corpo que gira, o mergulho para trás do muro. É uma das duas maneiras de não ser atingido, e a mais versátil, porque serve contra qualquer coisa, do soco à flecha, da armadilha ao desabamento. Em compensação exige espaço e pés livres: encurralado, em meio à multidão ou preso à formação, ela vale pouco. Sustenta a Defesa por Esquiva, e como toda defesa é usada em praticamente todo turno de combate.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Fica parado no lugar errado e reage depois do golpe."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sai da frente do óbvio, desde que tenha espaço e um instante."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Desvia do soco e da flechada solitária; briga de rua não o pega."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Escapa do que a maioria não vê chegar, e ainda avança um passo."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Move-se entre golpes como se soubesse a ordem em que vêm."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Dois inimigos atacam ao mesmo tempo e nenhum dos dois encosta."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Atravessa uma saraivada de flechas e chega do outro lado sem um arranhão."
+      }
+    ]
   },
   {
     "id": "bloqueio",
@@ -56,7 +241,44 @@
       "destreza",
       "forca"
     ],
-    "descricao": "Interceptar o golpe em vez de sair da frente dele: aparar com o escudo, encostar a lâmina para desviar a do outro, receber no antebraço, na manopla ou no que estiver na mão. É a outra maneira de não ser atingido, e a que funciona quando não há para onde correr, no corredor estreito, na parede de escudos, no cerco. Sustenta a Defesa por Bloqueio e vale seja lá o que você esteja empunhando. Contra o projétil rápido só serve com escudo de verdade, porque ninguém apara uma flecha com a espada."
+    "descricao": "Interceptar o golpe em vez de sair da frente dele: aparar com o escudo, encostar a lâmina para desviar a do outro, receber no antebraço, na manopla ou no que estiver na mão. É a outra maneira de não ser atingido, e a que funciona quando não há para onde correr, no corredor estreito, na parede de escudos, no cerco. Sustenta a Defesa por Bloqueio e vale seja lá o que você esteja empunhando. Contra o projétil rápido só serve com escudo de verdade, porque ninguém apara uma flecha com a espada.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Levanta o braço tarde demais e leva o golpe junto com o escudo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe pôr o escudo entre o corpo e o que vem, quando vê chegar."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Escudeiro de parede: aguenta a linha enquanto a linha aguentar."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Apara com arma ou escudo sem perder o ritmo do próprio ataque."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Fecha a guarda contra dois de uma vez e sai inteiro."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Quase nada passa: bloqueia o que os outros nem tentariam aparar."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Segura sozinho um vão de porta contra uma dúzia, e nenhum entra."
+      }
+    ]
   },
   {
     "id": "atletismo",
@@ -67,7 +289,44 @@
       "destreza",
       "vigor"
     ],
-    "descricao": "O corpo em movimento e em esforço: correr, saltar, escalar, nadar, rolar, se pendurar e atravessar o que estiver no caminho. É a perícia que define o quanto você anda por turno e a que distância consegue saltar, e a primeira a ser pedida em qualquer perseguição, fuga ou subida. O que ela mede é o desempenho do corpo inteiro; a mão fina fica com Prestidigitação e o fôlego longo da marcha, com Resistência."
+    "descricao": "O corpo em movimento e em esforço: correr, saltar, escalar, nadar, rolar, se pendurar e atravessar o que estiver no caminho. É a perícia que define o quanto você anda por turno e a que distância consegue saltar, e a primeira a ser pedida em qualquer perseguição, fuga ou subida. O que ela mede é o desempenho do corpo inteiro; a mão fina fica com Prestidigitação e o fôlego longo da marcha, com Resistência.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Corre pouco, salta menos, e uma escada íngreme já o derruba."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Corpo de gente comum: corre um trecho, sobe um muro baixo com esforço."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Trabalhador ou soldado; aguenta um dia inteiro de esforço físico."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Atleta de vila: sobe a fachada, salta o vão, atravessa o rio."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Campeão regional; faz de primeira o que os outros ensaiam a semana toda."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Recorde vivo: corre mais rápido e salta mais longe que qualquer um de que se tenha notícia."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Sobe uma torre lisa e salta entre telhados como se o vão não existisse."
+      }
+    ]
   },
   {
     "id": "furtividade",
@@ -76,7 +335,44 @@
     "atributos": [
       "destreza"
     ],
-    "descricao": "Não ser notado: pisar sem barulho, usar sombra e cobertura, escolher a hora de atravessar o corredor e ficar imóvel quando o guarda vira a cabeça. Serve para se aproximar, para se esconder e para seguir alguém sem que perceba, e vale tanto para o batedor no mato quanto para o ladrão no telhado. Desanda com armadura pesada, luz na mão, companhia barulhenta e pressa. Esconder um objeto, e não a si mesmo, é Prestidigitação."
+    "descricao": "Não ser notado: pisar sem barulho, usar sombra e cobertura, escolher a hora de atravessar o corredor e ficar imóvel quando o guarda vira a cabeça. Serve para se aproximar, para se esconder e para seguir alguém sem que perceba, e vale tanto para o batedor no mato quanto para o ladrão no telhado. Desanda com armadura pesada, luz na mão, companhia barulhenta e pressa. Esconder um objeto, e não a si mesmo, é Prestidigitação.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Anuncia a chegada: pisa em tudo, respira alto, esbarra no resto."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Consegue não ser ouvido se ficar parado e o outro estiver distraído."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Batedor ou gatuno de bairro: atravessa um pátio escuro sem ser visto."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Passa por sentinelas atentas e some numa rua movimentada."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Move-se a um passo de um guarda desperto sem que ele desconfie."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Some numa sala iluminada e vazia, e ninguém entende por onde saiu."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Atravessa um salão cheio, à luz de tochas, e ninguém jura tê-lo visto."
+      }
+    ]
   },
   {
     "id": "prontidao",
@@ -86,7 +382,44 @@
       "percepcao",
       "raciocinio"
     ],
-    "descricao": "Estar de guarda: reparar no perigo antes que ele chegue e reagir a tempo quando chega. É a perícia mais pedida da ficha, porque o Mestre a rola contra emboscadas, perseguidores, armadilhas e qualquer coisa que se aproxime enquanto vocês conversam, muitas vezes sem avisar que rolou. Também é a metade treinada da Iniciativa, ou seja, de quem age primeiro quando a briga começa. Vasculhar uma cena com calma é Investigação; Prontidão é o que você percebe sem estar procurando."
+    "descricao": "Estar de guarda: reparar no perigo antes que ele chegue e reagir a tempo quando chega. É a perícia mais pedida da ficha, porque o Mestre a rola contra emboscadas, perseguidores, armadilhas e qualquer coisa que se aproxime enquanto vocês conversam, muitas vezes sem avisar que rolou. Também é a metade treinada da Iniciativa, ou seja, de quem age primeiro quando a briga começa. Vasculhar uma cena com calma é Investigação; Prontidão é o que você percebe sem estar procurando.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Sonha acordado: a emboscada começa e ele ainda está de costas."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Nota o barulho alto e o vulto grande, quando já estão em cima."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sentinela comum; dá o alarme na hora certa na maioria das noites."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Batedor confiável: sente que tem gente no telhado antes de olhar para cima."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Quase nunca é surpreendido, e reage antes de os companheiros entenderem."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Acorda antes de a mão tocar o punhal; a emboscada vira armadilha para quem a armou."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Percebe o assassino três telhados antes, e já está de pé quando ele salta."
+      }
+    ]
   },
   {
     "id": "resistencia",
@@ -95,7 +428,44 @@
     "atributos": [
       "vigor"
     ],
-    "descricao": "Aguentar: a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o veneno e a bebida na mesa do senhor local. É a perícia da duração, e por isso raramente decide uma cena sozinha, mas decide em que estado você chega na cena seguinte. Também é ela que se rola para não desmaiar, para segurar o fôlego e para continuar de pé depois do que deveria ter derrubado você."
+    "descricao": "Aguentar: a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o veneno e a bebida na mesa do senhor local. É a perícia da duração, e por isso raramente decide uma cena sozinha, mas decide em que estado você chega na cena seguinte. Também é ela que se rola para não desmaiar, para segurar o fôlego e para continuar de pé depois do que deveria ter derrubado você.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Falta o fôlego no primeiro esforço, e dor pequena já o tira do sério."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Aguenta um dia duro e paga por ele no dia seguinte."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Trabalhador de campo: marcha, carrega e dorme mal sem reclamar."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Veterano de campanha; fome, frio e ferimento não param a coluna."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Segue de pé onde os outros desistiram, e ainda faz a vigília da noite."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Atravessa tortura, veneno e privação que matariam qualquer um."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Sobrevive ao que não se sobrevive, e chega andando para contar."
+      }
+    ]
   },
   {
     "id": "integridade",
@@ -107,7 +477,44 @@
       "inteligencia",
       "raciocinio"
     ],
-    "descricao": "A firmeza do que você é quando alguém tenta mudar isso: manipulação, chantagem, terror, tortura, sedução e a magia que mexe com a mente. É a perícia defensiva do social e do mental, e é ela que sustenta a Defesa Mental. Não é teimosia nem frieza: você sente o medo e a tentação como qualquer um, só não age por causa deles. Esconder o que sente é assunto de Compostura; Integridade é não ceder."
+    "descricao": "A firmeza do que você é quando alguém tenta mudar isso: manipulação, chantagem, terror, tortura, sedução e a magia que mexe com a mente. É a perícia defensiva do social e do mental, e é ela que sustenta a Defesa Mental. Não é teimosia nem frieza: você sente o medo e a tentação como qualquer um, só não age por causa deles. Esconder o que sente é assunto de Compostura; Integridade é não ceder.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Cede à primeira pressão: qualquer ameaça ou promessa o vira do avesso."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Segura o que acredita enquanto ninguém insistir muito."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Não se vende barato, e desconfia do que é bom demais para ser verdade."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Aguenta chantagem, terror e sedução sem mudar de rumo."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Interrogadores desistem antes dele, e a proposta grande não o compra."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Nem a magia que entra na mente encontra por onde puxar."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Nada humano nem sobrenatural o dobra: quebra antes de virar outra pessoa."
+      }
+    ]
   },
   {
     "id": "prestidigitacao",
@@ -116,7 +523,44 @@
     "atributos": [
       "destreza"
     ],
-    "descricao": "A mão que engana o olho, e o ofício do furto em volta dela: escamotear, sacar sem que se veja, bater uma carteira, cortar uma bolsa, plantar uma prova, trocar um dado viciado, esconder a adaga sob a manga. É o faz-tudo de quem vive de pegar o que não é seu, e como todo faz-tudo cobre o serviço comum inteiro: escolher o alvo na multidão, a hora, o caminho de entrada que não é a porta e a saída antes que dê falta. O que importa aqui não é a velocidade, é a testemunha: sozinho num quarto trancado ninguém rola Prestidigitação. Esconder o corpo inteiro é Furtividade, e a tranca no meio do caminho é Abrir Mecanismos."
+    "descricao": "A mão que engana o olho, e o ofício do furto em volta dela: escamotear, sacar sem que se veja, bater uma carteira, cortar uma bolsa, plantar uma prova, trocar um dado viciado, esconder a adaga sob a manga. É o faz-tudo de quem vive de pegar o que não é seu, e como todo faz-tudo cobre o serviço comum inteiro: escolher o alvo na multidão, a hora, o caminho de entrada que não é a porta e a saída antes que dê falta. O que importa aqui não é a velocidade, é a testemunha: sozinho num quarto trancado ninguém rola Prestidigitação. Esconder o corpo inteiro é Furtividade, e a tranca no meio do caminho é Abrir Mecanismos.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Dedos duros: derruba o que tenta esconder e é pego olhando para a mão."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Truque de baralho que engana criança e tio bêbado."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Batedor de feira: bolsa fácil, dono distraído, dia de mercado."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Vive disso; tira o anel do dedo e a chave do cinto sem que se note."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Troca a joia pela cópia com o dono olhando para a mesa."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Ninguém no salão vê o que a sua mão fez, nem quem estava procurando."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Furta o selo do rei durante a audiência, e o rei agradece a visita."
+      }
+    ]
   },
   {
     "id": "persuasao",
@@ -125,7 +569,44 @@
     "atributos": [
       "influencia"
     ],
-    "descricao": "Convencer alguém de que fazer o que você quer é uma boa ideia: argumentar, negociar, apelar, prometer, seduzir, pedir o favor. É a perícia social de uso mais amplo, a do cara a cara com uma pessoa ou um punhado delas, e funciona pela razão, pelo charme ou pela boa-fé, verdadeira ou fingida. O que decide não é a sua sinceridade, é o que o outro tem a ganhar. Falar para uma plateia é Oratória; vencer no papo rápido e no descaramento é Manha."
+    "descricao": "Convencer alguém de que fazer o que você quer é uma boa ideia: argumentar, negociar, apelar, prometer, seduzir, pedir o favor. É a perícia social de uso mais amplo, a do cara a cara com uma pessoa ou um punhado delas, e funciona pela razão, pelo charme ou pela boa-fé, verdadeira ou fingida. O que decide não é a sua sinceridade, é o que o outro tem a ganhar. Falar para uma plateia é Oratória; vencer no papo rápido e no descaramento é Manha.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Fala, e o outro decide o contrário só pelo jeito de pedir."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Consegue um favor pequeno de quem já ia dizer sim."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Vendedor de feira: fecha o negócio comum, pelo preço comum."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Convence o cético e tira um sim de quem não queria dar."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Negocia com quem tem tudo a perder e ainda sai com o acordo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Faz um inimigo declarado reconsiderar de que lado está."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Convence um rei a voltar atrás numa sentença, na frente da corte."
+      }
+    ]
   },
   {
     "id": "oratoria",
@@ -134,7 +615,44 @@
     "atributos": [
       "influencia"
     ],
-    "descricao": "Falar para muitos: o discurso na praça, a arenga antes da batalha, o sermão, a acusação no julgamento, a defesa diante da corte. Diferente da conversa, aqui o alvo é uma plateia, e o que conta é ritmo, imagem e a capacidade de dizer uma frase que trezentas pessoas levem para casa. É perícia de cena grande, aparece poucas vezes por campanha e costuma virar o rumo da história quando aparece. Convencer um sujeito de cada vez é Persuasão."
+    "descricao": "Falar para muitos: o discurso na praça, a arenga antes da batalha, o sermão, a acusação no julgamento, a defesa diante da corte. Diferente da conversa, aqui o alvo é uma plateia, e o que conta é ritmo, imagem e a capacidade de dizer uma frase que trezentas pessoas levem para casa. É perícia de cena grande, aparece poucas vezes por campanha e costuma virar o rumo da história quando aparece. Convencer um sujeito de cada vez é Persuasão.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Gagueja, perde o fio, e a plateia começa a conversar entre si."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Lê um anúncio em voz alta sem perder ninguém pelo caminho."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sargento ou pregador de aldeia: a mensagem chega ao fundo do salão."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Prende cem pessoas por meia hora, e elas repetem a frase no dia seguinte."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Vira uma multidão hostil e a manda para casa concordando."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Um discurso seu decide uma votação, um cerco ou um motim."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Levanta uma cidade inteira, e a cidade marcha por causa do que ouviu."
+      }
+    ]
   },
   {
     "id": "sociabilidade",
@@ -144,7 +662,44 @@
       "influencia",
       "compostura"
     ],
-    "descricao": "Circular bem entre gente: puxar conversa, entrar numa roda, saber a hora de calar, agradar sem bajular e sair de uma saia justa sem deixar mágoa. É a perícia de estar à vontade em qualquer meio, do salão ao acampamento de mercenários, e a que constrói contatos antes de você precisar deles. Ela não pede nada de ninguém, e é justamente por isso que funciona. No instante em que vira pedido, passa a ser Persuasão; quando vira protocolo de corte, é a secundária Etiqueta."
+    "descricao": "Circular bem entre gente: puxar conversa, entrar numa roda, saber a hora de calar, agradar sem bajular e sair de uma saia justa sem deixar mágoa. É a perícia de estar à vontade em qualquer meio, do salão ao acampamento de mercenários, e a que constrói contatos antes de você precisar deles. Ela não pede nada de ninguém, e é justamente por isso que funciona. No instante em que vira pedido, passa a ser Persuasão; quando vira protocolo de corte, é a secundária Etiqueta.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Constrange sem querer: erra o tom e insiste no assunto errado."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Puxa conversa e não passa vergonha, se o assunto for leve."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Boa companhia; entra numa roda de estranhos e sai de lá com nomes."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "À vontade em qualquer meio, do salão à taverna de estivadores."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Numa noite conhece quem importa e é convidado a voltar."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sai de qualquer sala com aliados que nem pretendia fazer."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Uma corte inteira o trata como se ele sempre tivesse pertencido ali."
+      }
+    ]
   },
   {
     "id": "empatia",
@@ -154,7 +709,44 @@
       "percepcao",
       "perspicacia"
     ],
-    "descricao": "Entender o que se passa dentro do outro e responder a isso: perceber que a resposta foi ensaiada, que o luto ainda está aberto, que aquela raiva toda é medo. Serve para desconfiar (mentira, disfarce, intenção escondida) e serve para acolher: acalmar quem surta, ganhar a confiança de uma testemunha, consolar de verdade. É a perícia que o Mestre mais rola às escondidas, porque o resultado dela informa você de coisas que a cena não disse em voz alta."
+    "descricao": "Entender o que se passa dentro do outro e responder a isso: perceber que a resposta foi ensaiada, que o luto ainda está aberto, que aquela raiva toda é medo. Serve para desconfiar (mentira, disfarce, intenção escondida) e serve para acolher: acalmar quem surta, ganhar a confiança de uma testemunha, consolar de verdade. É a perícia que o Mestre mais rola às escondidas, porque o resultado dela informa você de coisas que a cena não disse em voz alta.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não lê ninguém: confunde educação com afeto e ironia com elogio."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Percebe raiva e tristeza quando estão escancaradas."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sente quando a conversa azedou, e por causa de quê."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Fareja a resposta ensaiada e o assunto que o outro está evitando."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Enxerga o medo por trás da bravata e o luto por trás da raiva."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sabe o que o outro quer antes de ele saber, e o outro sente que foi entendido."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Desmonta a mentira de um mestre da mentira só de olhar para ele."
+      }
+    ]
   },
   {
     "id": "manha",
@@ -166,7 +758,44 @@
       "raciocinio",
       "percepcao"
     ],
-    "descricao": "A esperteza de quem se criou na rua: blefar, enrolar, sacar a conversa fiada alheia, saber com quem falar num bairro estranho e farejar a cilada antes de entrar nela. Reúne a lábia rápida, o faro para golpe e o conhecimento prático do submundo, quem compra, quem entrega, quanto custa um silêncio. Onde a Persuasão constrói um argumento, a Manha ganha no improviso e na cara de pau."
+    "descricao": "A esperteza de quem se criou na rua: blefar, enrolar, sacar a conversa fiada alheia, saber com quem falar num bairro estranho e farejar a cilada antes de entrar nela. Reúne a lábia rápida, o faro para golpe e o conhecimento prático do submundo, quem compra, quem entrega, quanto custa um silêncio. Onde a Persuasão constrói um argumento, a Manha ganha no improviso e na cara de pau.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Cara de forasteiro: cai no primeiro golpe e paga o dobro por tudo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe que não deve mostrar a bolsa nem entrar naquela viela."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Se vira: acha quem vende, regateia e não é passado para trás."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Blefa bem, cheira a cilada e sabe com quem falar em qualquer bairro."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Sai de uma emboscada só na conversa, e ainda leva alguma coisa."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Domina o jogo do submundo; golpistas o evitam porque não compensa."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Enrola um interrogatório inteiro e sai de lá com o interrogador em dívida."
+      }
+    ]
   },
   {
     "id": "politica",
@@ -177,7 +806,44 @@
       "perspicacia",
       "inteligencia"
     ],
-    "descricao": "O jogo do poder: quem manda de verdade, quem deve favor a quem, qual aliança está apodrecendo e quanto custa uma audiência. Cobre a intriga de corte, a negociação entre casas, a leitura de uma sala de conselho e a manobra que faz uma decisão passar sem parecer sua. É a perícia das campanhas de trono e conspiração, e nelas pesa tanto quanto Armas pesa numa campanha de guerra. O papel, a lei e o registro são Burocracia."
+    "descricao": "O jogo do poder: quem manda de verdade, quem deve favor a quem, qual aliança está apodrecendo e quanto custa uma audiência. Cobre a intriga de corte, a negociação entre casas, a leitura de uma sala de conselho e a manobra que faz uma decisão passar sem parecer sua. É a perícia das campanhas de trono e conspiração, e nelas pesa tanto quanto Armas pesa numa campanha de guerra. O papel, a lei e o registro são Burocracia.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Diz a verdade errada na sala errada e não entende por que caiu em desgraça."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe quem é o senhor local e a quem não convém dever favor."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Conselheiro de vila: entende as brigas da região e onde não se meter."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Lê uma sala de conselho e sabe qual aliança está para arrebentar."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Monta e desmonta acordos; a decisão sai como você queria, sem o seu nome nela."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Move casas nobres como peças, e elas agradecem pelo movimento."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Decide uma sucessão sem aparecer em documento nenhum."
+      }
+    ]
   },
   {
     "id": "investigacao",
@@ -188,7 +854,44 @@
       "raciocinio",
       "inteligencia"
     ],
-    "descricao": "Procurar e concluir: vasculhar uma cena, achar o que foi escondido, reparar na peça que não encaixa, juntar os cacos e chegar ao que de fato aconteceu. Cobre a busca deliberada, o interrogatório conduzido com método e a dedução feita depois, com a cabeça fria. Difere de Prontidão pelo tempo e pela intenção: Prontidão é o que salta aos olhos, Investigação é o que você foi atrás."
+    "descricao": "Procurar e concluir: vasculhar uma cena, achar o que foi escondido, reparar na peça que não encaixa, juntar os cacos e chegar ao que de fato aconteceu. Cobre a busca deliberada, o interrogatório conduzido com método e a dedução feita depois, com a cabeça fria. Difere de Prontidão pelo tempo e pela intenção: Prontidão é o que salta aos olhos, Investigação é o que você foi atrás.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Olha para a cena e vê só bagunça."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Acha o que está à vista e pergunta o óbvio às testemunhas."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Guarda de cidade: junta as pistas fáceis e chega a um culpado provável."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Encontra o que foi escondido às pressas e monta a sequência dos fatos."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Reconstitui a noite pelos vestígios e pega a contradição no depoimento."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Resolve o caso que a cidade já tinha arquivado."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Reconstitui o que houve num quarto onde alguém apagou tudo de propósito."
+      }
+    ]
   },
   {
     "id": "conhecimentos",
@@ -197,7 +900,44 @@
     "atributos": [
       "inteligencia"
     ],
-    "descricao": "A instrução ampla de quem estudou: história, geografia, povos, línguas, literatura, teoria, o nome das coisas e o contexto delas. É a perícia que responde à pergunta \"o que eu sei sobre isso?\" quando o assunto não cai num campo específico, e é ela que separa o letrado do camponês esperto. Quanto mais fundo o assunto, mais ela cede lugar às secundárias como História, Heráldica, Religião e Bestiário; Conhecimentos Gerais dá a resposta que qualquer erudito daria."
+    "descricao": "A instrução ampla de quem estudou: história, geografia, povos, línguas, literatura, teoria, o nome das coisas e o contexto delas. É a perícia que responde à pergunta \"o que eu sei sobre isso?\" quando o assunto não cai num campo específico, e é ela que separa o letrado do camponês esperto. Quanto mais fundo o assunto, mais ela cede lugar às secundárias como História, Heráldica, Religião e Bestiário; Conhecimentos Gerais dá a resposta que qualquer erudito daria.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não sabe o que existe depois da próxima colina."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe ler, e conhece a história do reino como se conta na praça."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Escriba ou clérigo de vila: lê, escreve e conhece o essencial."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Homem de estudo; reconhece o brasão, a língua morta e a data."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Erudito de universidade, procurado de longe para consulta."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Um dos nomes que se citam ao discutir o assunto, em qualquer reino."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Escreveu o livro pelo qual os outros estudam."
+      }
+    ]
   },
   {
     "id": "ocultismo",
@@ -207,7 +947,44 @@
       "inteligencia",
       "percepcao"
     ],
-    "descricao": "O saber do que está fora da ordem natural: espíritos, mortos que não descansam, maldições, presságios, sigilos, os nomes que não se dizem alto e a lógica por trás da feitiçaria. Serve para reconhecer o que se está enfrentando, ler uma inscrição, entender o que um ritual pretendia e saber o preço de mexer naquilo. Num mundo em que a magia existe e cobra caro, é uma das perícias mais úteis da ficha, inclusive para quem não conjura nada."
+    "descricao": "O saber do que está fora da ordem natural: espíritos, mortos que não descansam, maldições, presságios, sigilos, os nomes que não se dizem alto e a lógica por trás da feitiçaria. Serve para reconhecer o que se está enfrentando, ler uma inscrição, entender o que um ritual pretendia e saber o preço de mexer naquilo. Num mundo em que a magia existe e cobra caro, é uma das perícias mais úteis da ficha, inclusive para quem não conjura nada.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Chama tudo de bruxaria e faz o sinal contra o mau-olhado."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conhece as superstições, e uma ou outra que é verdade."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sabe o que é um espírito, o que é um morto e por que não se mexe com nenhum dos dois."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Reconhece o sigilo, o tipo de maldição e o que aquele ritual pretendia."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Sabe o preço de cada coisa que se pede ao outro lado, e cobra o dele."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Poucos vivos entendem tanto do que não deveria ser entendido."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Nomeia o que não tem nome, e sabe o que acontece com quem o nomeia."
+      }
+    ]
   },
   {
     "id": "burocracia",
@@ -217,7 +994,44 @@
       "inteligencia",
       "raciocinio"
     ],
-    "descricao": "Fazer a máquina funcionar a seu favor: leis, licenças, registros, impostos, guildas, hierarquias, arquivos e a arte de descobrir com quem se fala e qual papel resolve. Cobre também logística de verdade, abastecer uma tropa, organizar uma caravana, calcular o que uma cidade sitiada come. É a perícia do poder formal, enquanto Política é a do poder real, e as duas juntas mandam mais do que qualquer espada."
+    "descricao": "Fazer a máquina funcionar a seu favor: leis, licenças, registros, impostos, guildas, hierarquias, arquivos e a arte de descobrir com quem se fala e qual papel resolve. Cobre também logística de verdade, abastecer uma tropa, organizar uma caravana, calcular o que uma cidade sitiada come. É a perícia do poder formal, enquanto Política é a do poder real, e as duas juntas mandam mais do que qualquer espada.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Entra na fila errada e perde o dia com o funcionário errado."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe que existe um papel para aquilo, e mais ou menos onde pedi-lo."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Escrivão de repartição: resolve o trâmite comum sem atropelo."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Sabe com quem falar para pular três meses de espera."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Abastece uma tropa em campanha sem que falte nada a ninguém."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Move a máquina de um reino; a licença impossível sai numa tarde."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz aparecer, com todos os selos, um direito que nunca existiu."
+      }
+    ]
   },
   {
     "id": "sobrevivencia",
@@ -228,7 +1042,44 @@
       "inteligencia",
       "vigor"
     ],
-    "descricao": "Durar longe da estrada: achar água e comida, caçar, armar acampamento, ler o tempo, orientar-se sem mapa, rastrear e evitar ser rastreado. Cobre também conhecer o bicho e a planta do lugar o bastante para não comer o que mata nem acampar onde não se deve. É a perícia que segura a viagem em pé, e numa campanha de estrada ou de ermo ela rola quase toda sessão."
+    "descricao": "Durar longe da estrada: achar água e comida, caçar, armar acampamento, ler o tempo, orientar-se sem mapa, rastrear e evitar ser rastreado. Cobre também conhecer o bicho e a planta do lugar o bastante para não comer o que mata nem acampar onde não se deve. É a perícia que segura a viagem em pé, e numa campanha de estrada ou de ermo ela rola quase toda sessão.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Perde-se a duas horas da estrada e come o que não devia."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Acende fogo, arma abrigo tosco e volta pelo caminho por onde veio."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Caçador de aldeia: come do mato e não passa frio."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Batedor; rastreia, orienta-se sem mapa e conduz um grupo por semanas."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Atravessa deserto, pântano ou serra e chega com todo mundo vivo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Vive onde ninguém vive, e some quando não quer ser rastreado."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Some no ermo por um ano e volta mais saudável do que saiu."
+      }
+    ]
   },
   {
     "id": "oficios-gerais",
@@ -238,6 +1089,43 @@
       "inteligencia",
       "destreza"
     ],
-    "descricao": "A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola; o serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferraria, Marcenaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade."
+    "descricao": "A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola; o serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferraria, Marcenaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Estraga o que tenta consertar e não sabe segurar a ferramenta."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Prega um prego, escora uma prateleira, remenda o que não faz falta."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Faz-tudo de vila: conserta porta, telhado e carroça."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Improvisa a peça que falta e devolve ao uso quase qualquer coisa."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Entende como foi feito e refaz sem o desenho, com o que tiver à mão."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Resolve com ferramenta emprestada o que um oficial resolveria na oficina."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Conserta o que o próprio fabricante já tinha dado por perdido."
+      }
+    ]
   }
 ]

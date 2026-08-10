@@ -3,420 +3,2924 @@
     "id": "halterofilismo",
     "nome": "Halterofilismo",
     "grupo": "corpo",
-    "descricao": "O treino específico de erguer peso morto: postura, respiração, o jeito certo de pegar e a segurança de saber quando a carga vai vencer. Entra direto na conta de quanto você levanta, empurra e arremessa, e é a única perícia que faz um personagem carregar mais do que o músculo bruto sugeriria."
+    "descricao": "O treino específico de erguer peso morto: postura, respiração, o jeito certo de pegar e a segurança de saber quando a carga vai vencer. Entra direto na conta de quanto você levanta, empurra e arremessa, e é a única perícia que faz um personagem carregar mais do que o músculo bruto sugeriria.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Levanta com as costas e se machuca."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe agachar e empurrar com as pernas."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Carrega saco de grãos o dia inteiro."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Ergue sozinho o que dois carregam."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Levantador de feira, quebra recordes de aldeia."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Ergue peso que vira história contada."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Segura um portão em queda com as duas mãos."
+      }
+    ]
   },
   {
     "id": "natacao",
     "nome": "Natação",
     "grupo": "corpo",
-    "descricao": "Nadar de verdade, não apenas não afundar: cruzar um rio de correnteza, mergulhar e voltar, boiar durante horas, nadar vestido ou com carga. Num mundo de barcos, pontes e enchentes, é a diferença entre um contratempo e um afogamento."
+    "descricao": "Nadar de verdade, não apenas não afundar: cruzar um rio de correnteza, mergulhar e voltar, boiar durante horas, nadar vestido ou com carga. Num mundo de barcos, pontes e enchentes, é a diferença entre um contratempo e um afogamento.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Afunda; entra em pânico com água na cintura."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Boia e se arrasta uns metros."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cruza um lago calmo sem apuro."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Nada em correnteza e mergulha fundo."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Atravessa um rio vestido, puxando alguém."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Nada em mar bravo por horas."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Sobrevive a um naufrágio e chega à costa distante."
+      }
+    ]
   },
   {
     "id": "ginastica",
     "nome": "Ginástica",
     "grupo": "corpo",
-    "descricao": "Acrobacia: cambalhota, salto mortal, rolamento de queda, passar por um vão apertado, cair de altura sem quebrar nada. É a perícia do corpo que se dobra e se joga, e ela aparece toda vez que a saída é por cima ou por baixo, e não pela porta."
+    "descricao": "Acrobacia: cambalhota, salto mortal, rolamento de queda, passar por um vão apertado, cair de altura sem quebrar nada. É a perícia do corpo que se dobra e se joga, e ela aparece toda vez que a saída é por cima ou por baixo, e não pela porta.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Cai feio de qualquer altura."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Rola no chão sem bater a cabeça."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cambalhota, salto simples, queda amortecida."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Acrobata de trupe: gira, salta e cai de pé."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Passa por vãos improváveis e cai de dois andares inteiro."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Número que a cidade lembra por anos."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz no ar o que um corpo humano não deveria fazer."
+      }
+    ]
   },
   {
     "id": "equilibrio",
     "nome": "Equilíbrio",
     "grupo": "corpo",
-    "descricao": "Manter-se de pé onde não se deveria: viga, corrimão, telhado inclinado, corda bamba, convés no mar bravo, gelo. Também é o que segura você quando o chão treme, quando alguém empurra ou quando o cavalo empina."
+    "descricao": "Manter-se de pé onde não se deveria: viga, corrimão, telhado inclinado, corda bamba, convés no mar bravo, gelo. Também é o que segura você quando o chão treme, quando alguém empurra ou quando o cavalo empina.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Tropeça no chão plano."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Anda num muro baixo, devagar."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Atravessa uma viga larga sem pensar."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Corre em telhado inclinado e em convés no mar bravo."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Luta de pé numa viga estreita."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Corda bamba sobre a praça, sem vara."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Fica de pé onde não há onde ficar de pé."
+      }
+    ]
   },
   {
     "id": "malabarismo",
     "nome": "Malabarismo",
     "grupo": "corpo",
-    "descricao": "Manter vários objetos no ar e sob controle, com as mãos ou com o corpo. Vale como número de rua e vale como treino: quem faz malabarismo pega no ar a chave jogada, a tocha caindo e o frasco que escorregou da mesa."
+    "descricao": "Manter vários objetos no ar e sob controle, com as mãos ou com o corpo. Vale como número de rua e vale como treino: quem faz malabarismo pega no ar a chave jogada, a tocha caindo e o frasco que escorregou da mesa.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Derruba dois objetos."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Três bolas, devagar e parado."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Número de rua que junta gente."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Tochas acesas e facas, andando."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Artista de corte: cinco objetos e plateia calada."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Faz com sete o que os outros fazem com três."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Pega no ar tudo o que cai à sua volta, ao mesmo tempo."
+      }
+    ]
   },
   {
     "id": "escalada",
     "nome": "Escalada",
     "grupo": "corpo",
-    "descricao": "Subir o que não tem escada: muralha, penhasco, fachada, mastro, poço. Cobre a técnica e o equipamento (corda, gancho, cunha, nó certo), e é o que transforma uma parede intransponível numa entrada de serviço."
+    "descricao": "Subir o que não tem escada: muralha, penhasco, fachada, mastro, poço. Cobre a técnica e o equipamento (corda, gancho, cunha, nó certo), e é o que transforma uma parede intransponível numa entrada de serviço.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Sobe escada e já olha para baixo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sobe um muro com corda e apoio farto."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sobe fachada de pedra de juntas fundas."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Escala penhasco e muralha com equipamento."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Sobe parede lisa e ainda conduz os outros."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sobe onde não há apoio visível."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Vence a face que ninguém venceu, sem corda."
+      }
+    ]
   },
-
   {
     "id": "lideranca",
     "nome": "Liderança",
     "grupo": "sociais",
-    "descricao": "Fazer um grupo funcionar como grupo: dar a ordem que é cumprida, dividir tarefa, segurar o moral quando a coisa desanda e ser aquele para quem os outros olham quando ninguém sabe o que fazer. É diferente de convencer uma pessoa, porque aqui já existe um vínculo de comando ou de confiança, e o que se testa é se ele aguenta a pressão."
+    "descricao": "Fazer um grupo funcionar como grupo: dar a ordem que é cumprida, dividir tarefa, segurar o moral quando a coisa desanda e ser aquele para quem os outros olham quando ninguém sabe o que fazer. É diferente de convencer uma pessoa, porque aqui já existe um vínculo de comando ou de confiança, e o que se testa é se ele aguenta a pressão.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Dá a ordem e ninguém se mexe."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Comanda dois amigos numa tarefa simples."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cabo de esquadra: mantém dez homens na linha."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Capitão respeitado; o grupo o segue no aperto."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Segura uma tropa que já estava quebrando."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Homens morrem por ordem sua sem hesitar."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Um exército inteiro se mantém de pé porque você está lá."
+      }
+    ]
   },
   {
     "id": "etiqueta",
     "nome": "Etiqueta",
     "grupo": "sociais",
-    "descricao": "O protocolo de cada meio: como se dirige a um duque, o que se veste, quem entra primeiro, o que não se pergunta à mesa, qual presente ofende. Vale para a corte e vale para o acampamento mercenário e o templo, porque todo grupo fechado tem as suas regras, e errá-las custa mais caro do que parece."
+    "descricao": "O protocolo de cada meio: como se dirige a um duque, o que se veste, quem entra primeiro, o que não se pergunta à mesa, qual presente ofende. Vale para a corte e vale para o acampamento mercenário e o templo, porque todo grupo fechado tem as suas regras, e errá-las custa mais caro do que parece.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Come com as mãos na mesa do barão."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe cumprimentar e a quem tirar o chapéu."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Passa por gente de bem numa festa de província."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Circula numa corte sem errar tratamento nem lugar à mesa."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Domina o protocolo de mais de uma corte, e o de templos e guildas."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Mestre de cerimônias de casa real."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Corrige um embaixador e é agradecido por isso."
+      }
+    ]
   },
   {
     "id": "negociacao",
     "nome": "Negociação",
     "grupo": "sociais",
-    "descricao": "Chegar ao acordo: abrir com o número certo, ceder no que não importa, achar o limite do outro e fechar antes que ele repense. É a conversa em que os dois lados querem sair ganhando, ao contrário da Persuasão, em que só um lado tem algo a defender."
+    "descricao": "Chegar ao acordo: abrir com o número certo, ceder no que não importa, achar o limite do outro e fechar antes que ele repense. É a conversa em que os dois lados querem sair ganhando, ao contrário da Persuasão, em que só um lado tem algo a defender.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Aceita o primeiro preço e ainda paga a mais."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Regateia no mercado sem passar vergonha."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Fecha um contrato justo entre iguais."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Sai com mais do que entrou pedindo."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Fecha acordo entre partes que se odeiam."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Negocia tréguas e casamentos entre casas."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz os dois lados saírem certos de que ganharam."
+      }
+    ]
   },
   {
     "id": "labia",
     "nome": "Lábia",
     "grupo": "sociais",
-    "descricao": "Falar muito e dizer pouco: desconversar, dourar a pílula, ganhar tempo, sair pela tangente, encher o guarda de assunto até ele perder a vontade de conferir a carroça. Não é o argumento que convence, é o palavrório que dissolve a pergunta."
+    "descricao": "Falar muito e dizer pouco: desconversar, dourar a pílula, ganhar tempo, sair pela tangente, encher o guarda de assunto até ele perder a vontade de conferir a carroça. Não é o argumento que convence, é o palavrório que dissolve a pergunta.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Enrola-se sozinho e se entrega."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Desconversa uma pergunta fácil."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Enrola o guarda o bastante para passar."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Sustenta meia hora de conversa sem dizer nada."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Sai de uma acusação direta falando de outra coisa."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Deixa o interrogador convencido de que já perguntou tudo."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Fala uma tarde inteira e ninguém percebe que não respondeu nada."
+      }
+    ]
   },
   {
     "id": "intimidacao",
     "nome": "Intimidação",
     "grupo": "sociais",
-    "descricao": "Conseguir pelo medo: a ameaça dita ou implícita, o olhar, o silêncio no lugar errado, a mão que descansa no cabo da espada. Funciona rápido e cobra caro, porque quem cede por medo obedece enquanto tem medo e cobra a conta na primeira oportunidade."
+    "descricao": "Conseguir pelo medo: a ameaça dita ou implícita, o olhar, o silêncio no lugar errado, a mão que descansa no cabo da espada. Funciona rápido e cobra caro, porque quem cede por medo obedece enquanto tem medo e cobra a conta na primeira oportunidade.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Ameaça e provoca risada."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Assusta quem já estava com medo."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cala uma mesa de bêbados."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Faz um homem armado recuar sem sacar nada."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Quebra a resistência de um prisioneiro só com a presença."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Um olhar seu esvazia uma taverna."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz um comandante entregar o portão sem cerco."
+      }
+    ]
   },
   {
     "id": "atuacao",
     "nome": "Atuação",
     "grupo": "sociais",
-    "descricao": "Sustentar um papel diante de quem importa, sem palco e sem aviso: o entusiasmo que você não sente, a indiferença ensaiada, a mágoa exibida na medida certa, a lealdade de fachada, a história de vida que não é a sua. É o jogo da realeza, em que todo mundo sabe que todo mundo está representando e ainda assim representar bem decide quem sobe e quem cai. Compostura esconde o que você sente; a Atuação exibe o que você não sente. Anda de mãos dadas com Disfarce, que resolve a aparência enquanto a Atuação resolve o comportamento."
+    "descricao": "Sustentar um papel diante de quem importa, sem palco e sem aviso: o entusiasmo que você não sente, a indiferença ensaiada, a mágoa exibida na medida certa, a lealdade de fachada, a história de vida que não é a sua. É o jogo da realeza, em que todo mundo sabe que todo mundo está representando e ainda assim representar bem decide quem sobe e quem cai. Compostura esconde o que você sente; a Atuação exibe o que você não sente. Anda de mãos dadas com Disfarce, que resolve a aparência enquanto a Atuação resolve o comportamento.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Mente com cara de quem está mentindo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Finge entusiasmo por um instante."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sustenta um papel simples por uma noite."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Passa por outra pessoa durante dias."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Vive um papel por estações inteiras sem uma falha."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Engana quem convive com você todo dia."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Passa a vida sendo outro, e ninguém jamais desconfia."
+      }
+    ]
   },
   {
     "id": "seducao",
     "nome": "Sedução",
     "grupo": "sociais",
-    "descricao": "Despertar desejo e interesse e conduzir o que vem depois: o flerte, a insinuação, a atenção que faz alguém querer ficar mais um pouco. Não é garantia de nada, é a arte de tornar-se a alternativa mais atraente que a pessoa tem naquela noite."
+    "descricao": "Despertar desejo e interesse e conduzir o que vem depois: o flerte, a insinuação, a atenção que faz alguém querer ficar mais um pouco. Não é garantia de nada, é a arte de tornar-se a alternativa mais atraente que a pessoa tem naquela noite.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Investe na hora errada e constrange."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Flerta sem estragar tudo."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Chama atenção numa festa."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Vira o interesse de quem não estava interessado."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Seduz quem tem tudo a perder com isso."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Faz alguém trair o que jurou defender."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Uma corte inteira se divide por causa de você."
+      }
+    ]
   },
   {
     "id": "disfarce",
     "nome": "Disfarce",
     "grupo": "sociais",
-    "descricao": "Mudar a própria aparência a ponto de não ser reconhecido: roupa, postura, marcha, voz, barba, tinta, cicatriz falsa. Cobre desde vestir o hábito de um monge até imitar uma pessoa específica, o que é muito mais difícil e não sobrevive a quem a conhece bem."
+    "descricao": "Mudar a própria aparência a ponto de não ser reconhecido: roupa, postura, marcha, voz, barba, tinta, cicatriz falsa. Cobre desde vestir o hábito de um monge até imitar uma pessoa específica, o que é muito mais difícil e não sobrevive a quem a conhece bem.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "A peruca cai e a roupa não serve."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Muda de roupa e passa despercebido de longe."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Vira outra classe social de forma convincente."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Passa por um estranho específico, à distância."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Sustenta o disfarce de perto, debaixo de conversa."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Imita alguém diante de quem convive com ele."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Toma o lugar de uma pessoa e vive a vida dela."
+      }
+    ]
   },
   {
     "id": "interrogatorio",
     "nome": "Interrogatório",
     "grupo": "sociais",
-    "descricao": "Tirar informação de quem não quer dar: a ordem das perguntas, a pergunta repetida com outras palavras, a mentira plantada para ver se o outro a corrige, a pausa que faz alguém falar só para preencher o silêncio. Serve para prisioneiro, testemunha e aliado que está omitindo alguma coisa."
+    "descricao": "Tirar informação de quem não quer dar: a ordem das perguntas, a pergunta repetida com outras palavras, a mentira plantada para ver se o outro a corrige, a pausa que faz alguém falar só para preencher o silêncio. Serve para prisioneiro, testemunha e aliado que está omitindo alguma coisa.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Pergunta e acredita na primeira resposta."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Repete a pergunta e nota se a resposta mudou."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Guarda de cidade: tira a verdade de gente comum."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Pega a contradição e a usa na hora certa."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Quebra quem foi treinado para calar."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Faz o outro entregar o que nem sabia que sabia."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Sai com a confissão sem ter feito uma única pergunta direta."
+      }
+    ]
   },
-
   {
     "id": "acerto-arcano",
     "nome": "Acerto Arcano",
     "grupo": "conhecimento",
-    "descricao": "A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a perícia de ataque de quem conjura, e sem ela o feitiço mais devastador do mundo passa a um palmo do inimigo."
+    "descricao": "A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a perícia de ataque de quem conjura, e sem ela o feitiço mais devastador do mundo passa a um palmo do inimigo.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "O efeito sai da mão e morre no chão."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Acerta alvo parado e grande."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Acerta um homem a vinte passos."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Acerta quem se mexe, corrigindo a distância."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Acerta dentro da multidão sem pegar o aliado ao lado."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Acerta o vulto entre as árvores, de primeira."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Acerta o que mal viu, do outro lado do campo."
+      }
+    ]
   },
   {
     "id": "ritualismo",
     "nome": "Ritualismo",
     "grupo": "conhecimento",
-    "descricao": "Conduzir um trabalho longo e formal sem errar um passo: preparar o espaço, respeitar a hora, traçar o símbolo certo, dizer o que deve ser dito na ordem certa e não interromper. Enquanto o Ocultismo sabe o que o rito significa, o Ritualismo é a disciplina de executá-lo."
+    "descricao": "Conduzir um trabalho longo e formal sem errar um passo: preparar o espaço, respeitar a hora, traçar o símbolo certo, dizer o que deve ser dito na ordem certa e não interromper. Enquanto o Ocultismo sabe o que o rito significa, o Ritualismo é a disciplina de executá-lo.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Erra a ordem e o rito não pega."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Repete um rito simples que decorou."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Conduz as cerimônias comuns sem tropeço."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Conduz rito longo, com preparo e assistentes."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Adapta um rito ao que tem à mão sem perdê-lo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Conduz o que exige noites seguidas sem uma falha."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Executa um rito que só existia descrito, e ele funciona."
+      }
+    ]
   },
   {
     "id": "cura",
     "nome": "Cura",
     "grupo": "conhecimento",
-    "descricao": "Tratar o corpo ferido e doente: estancar sangramento, costurar corte, entalar osso, limpar infecção, reconhecer a doença, reconhecer o veneno e saber o que fazer com ele. É uma das secundárias mais valiosas de qualquer grupo, porque em Centelha um ferimento mal tratado piora sozinho."
+    "descricao": "Tratar o corpo ferido e doente: estancar sangramento, costurar corte, entalar osso, limpar infecção, reconhecer a doença, reconhecer o veneno e saber o que fazer com ele. É uma das secundárias mais valiosas de qualquer grupo, porque em Centelha um ferimento mal tratado piora sozinho.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Amarra o pano por cima e piora tudo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Estanca sangue e lava ferida."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Barbeiro-cirurgião: costura, entala e trata febre."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Médico de cidade; reconhece a doença e o veneno."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Salva quem já tinha sido dado por perdido."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Opera o que os outros nem se atrevem a abrir."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Traz de volta quem já estava do outro lado."
+      }
+    ]
   },
   {
     "id": "ciencias",
     "nome": "Ciências",
     "grupo": "conhecimento",
-    "descricao": "A filosofia natural: matemática, geometria, óptica, mecânica, a natureza dos materiais e o hábito de procurar a causa antes da explicação sobrenatural. Não constrói nada sozinha, mas é ela que diz por que a coisa funciona, e o que aconteceria se você mudasse um pedaço."
+    "descricao": "A filosofia natural: matemática, geometria, óptica, mecânica, a natureza dos materiais e o hábito de procurar a causa antes da explicação sobrenatural. Não constrói nada sozinha, mas é ela que diz por que a coisa funciona, e o que aconteceria se você mudasse um pedaço.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não conta além dos dedos."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Soma, mede e conhece o básico."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sabe geometria e por que a alavanca funciona."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Explica o fenômeno e prevê o resultado."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Filósofo natural respeitado: formula e testa."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Descobre um princípio que ninguém tinha visto."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Muda o que uma época inteira acreditava saber."
+      }
+    ]
   },
   {
     "id": "herbologia",
     "nome": "Herbologia",
     "grupo": "conhecimento",
-    "descricao": "Plantas: reconhecer, colher na hora certa, secar, preparar e saber para que serve cada uma, como remédio, tempero, tinta ou veneno. Também é o que impede a confusão fatal entre duas folhas parecidas, uma que cura e outra que mata."
+    "descricao": "Plantas: reconhecer, colher na hora certa, secar, preparar e saber para que serve cada uma, como remédio, tempero, tinta ou veneno. Também é o que impede a confusão fatal entre duas folhas parecidas, uma que cura e outra que mata.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Come o que não devia."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conhece as ervas do próprio quintal."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Colhe e seca remédio simples."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Reconhece a planta rara e o veneno pelo cheiro."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Prepara o que a região inteira não sabe preparar."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Encontra a planta que dizem não existir mais."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Conhece toda folha que nasce, e o que cada uma faz."
+      }
+    ]
   },
   {
     "id": "historia",
     "nome": "História",
     "grupo": "conhecimento",
-    "descricao": "O passado com nome, data e causa: dinastias, guerras, tratados, ruínas, por que aquela cidade odeia a vizinha há trezentos anos. Costuma valer menos pelo detalhe erudito e mais por explicar o presente que o grupo está pisando."
+    "descricao": "O passado com nome, data e causa: dinastias, guerras, tratados, ruínas, por que aquela cidade odeia a vizinha há trezentos anos. Costuma valer menos pelo detalhe erudito e mais por explicar o presente que o grupo está pisando.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não sabe o nome do rei anterior."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conhece as histórias que se contam na taverna."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sabe as dinastias e as guerras principais."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Data um evento e explica a causa dele."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Conhece o arquivo e desmonta a versão oficial."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Autoridade citada por outros historiadores."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Sabe o que foi apagado dos registros, e por quem."
+      }
+    ]
   },
   {
     "id": "religiao",
     "nome": "Religião",
     "grupo": "conhecimento",
-    "descricao": "Os cultos e o que os move: dogmas, liturgia, calendário sagrado, símbolos, relíquias, hierarquia dos templos e as brigas entre elas. Serve para participar sem cometer sacrilégio, para reconhecer uma ordem pelo hábito e para saber o que um sacerdote pode e não pode recusar."
-  },
-  {
-    "id": "heraldica",
-    "nome": "Heráldica",
-    "grupo": "conhecimento",
-    "descricao": "Ler brasões: identificar a casa pelo escudo, entender o que as cores e as partições dizem, notar o ramo bastardo e a marca de uma aliança. É a perícia que responde, no meio de uma estrada, de quem são aqueles cavaleiros que se aproximam."
+    "descricao": "Os cultos e o que os move: dogmas, liturgia, calendário sagrado, símbolos, relíquias, hierarquia dos templos e as brigas entre elas. Serve para participar sem cometer sacrilégio, para reconhecer uma ordem pelo hábito e para saber o que um sacerdote pode e não pode recusar.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Confunde os cultos e ofende sem querer."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conhece o próprio culto e as festas dele."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Participa de qualquer liturgia sem errar um passo."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Conhece dogmas, hierarquias e as brigas entre templos."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Discute teologia com um bispo de igual para igual."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sua interpretação de um texto vira doutrina."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Conhece o que os templos negam ter escrito."
+      }
+    ]
   },
   {
     "id": "astronomia",
     "nome": "Astronomia",
     "grupo": "conhecimento",
-    "descricao": "O céu e o que se tira dele: orientar-se por estrela, marcar o calendário, prever a fase da lua, a maré e o eclipse. Numa terra sem estrada marcada, saber o céu é saber onde se está."
+    "descricao": "O céu e o que se tira dele: orientar-se por estrela, marcar o calendário, prever a fase da lua, a maré e o eclipse. Numa terra sem estrada marcada, saber o céu é saber onde se está.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Acha que a estrela do norte muda de lugar."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Reconhece as constelações principais."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Orienta-se pelo céu numa noite limpa."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Prevê fase da lua, maré e virada de estação."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Calcula eclipse e corrige um calendário."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Cartografa o céu melhor do que as cartas existentes."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Prevê o que ainda não aconteceu no céu, e acerta."
+      }
+    ]
   },
   {
     "id": "geografia",
     "nome": "Geografia",
     "grupo": "conhecimento",
-    "descricao": "As terras e o caminho entre elas: rotas, distâncias, passagens de montanha, rios navegáveis, clima de cada estação, o que se encontra em cada região e quanto tempo leva chegar lá. É a perícia que planeja a viagem antes de ela começar."
+    "descricao": "As terras e o caminho entre elas: rotas, distâncias, passagens de montanha, rios navegáveis, clima de cada estação, o que se encontra em cada região e quanto tempo leva chegar lá. É a perícia que planeja a viagem antes de ela começar.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não sabe para que lado fica o mar."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conhece a própria região e as estradas dela."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Conhece o reino: cidades, rotas e distâncias."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Planeja viagem longa com tempo e provisão certos."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Conhece as terras vizinhas como quem morou nelas."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sabe do caminho que não está em mapa nenhum."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Descreve terras que quase ninguém alcançou, e descreve certo."
+      }
+    ]
   },
   {
     "id": "alquimia",
     "nome": "Alquimia",
     "grupo": "conhecimento",
-    "descricao": "Extrair, destilar e combinar substâncias em preparados que fazem alguma coisa: elixir, ácido, fogo que gruda, sal que revela, fumaça que derruba. É trabalho de bancada, com tempo, material e risco, e a fronteira com a Herbologia é simples, uma colhe o ingrediente, a outra o transforma."
+    "descricao": "Extrair, destilar e combinar substâncias em preparados que fazem alguma coisa: elixir, ácido, fogo que gruda, sal que revela, fumaça que derruba. É trabalho de bancada, com tempo, material e risco, e a fronteira com a Herbologia é simples, uma colhe o ingrediente, a outra o transforma.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Mistura e a mistura estoura na cara."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Segue receita simples, com alguém olhando."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Prepara tinturas, ácidos fracos e sais úteis."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Boticário completo: elixir, veneno, fogo alquímico."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Cria fórmula própria a partir do princípio."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Produz o que as guildas guardam a sete chaves."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz o preparado que a tradição jura ser impossível."
+      }
+    ]
   },
   {
     "id": "arquitetura",
     "nome": "Arquitetura",
     "grupo": "conhecimento",
-    "descricao": "Projetar e ler edifícios: o que sustenta o quê, onde ficam os vãos, por que aquele arco está rachando, como uma muralha foi levantada e por onde ela cede. Serve tanto para construir quanto para invadir e derrubar, que é o uso que a mesa costuma dar."
+    "descricao": "Projetar e ler edifícios: o que sustenta o quê, onde ficam os vãos, por que aquele arco está rachando, como uma muralha foi levantada e por onde ela cede. Serve tanto para construir quanto para invadir e derrubar, que é o uso que a mesa costuma dar.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não sabe o que segura o teto."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Distingue parede de sustentação de divisória."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Projeta e ergue uma casa que fica de pé."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Projeta torre e ponte, e sabe por onde a muralha cede."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Ergue catedral, e planeja um cerco pelo desenho da fortaleza."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sua obra vira referência de um século."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Constrói o que se dizia que a pedra não aguentaria."
+      }
+    ]
   },
   {
     "id": "engenharia",
     "nome": "Engenharia",
     "grupo": "conhecimento",
-    "descricao": "O cálculo das máquinas e das grandes obras: engenho de cerco, moinho, ponte, comporta, guindaste, alavanca e contrapeso, escoramento de galeria. Onde a Arquitetura pensa o que fica de pé, a Engenharia pensa o que se move e o que vence uma força."
+    "descricao": "O cálculo das máquinas e das grandes obras: engenho de cerco, moinho, ponte, comporta, guindaste, alavanca e contrapeso, escoramento de galeria. Onde a Arquitetura pensa o que fica de pé, a Engenharia pensa o que se move e o que vence uma força.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não entende como o balde sobe do poço."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Monta polia e alavanca simples."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cuida de moinho e de roda-d’água."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Constrói aríete, catapulta e comporta."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Projeta engenho de cerco novo e a mina que passa por baixo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Uma máquina sua muda como se toma uma fortaleza."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Constrói o que a época acha que só a magia faria."
+      }
+    ]
   },
   {
     "id": "direito",
     "nome": "Direito",
     "grupo": "conhecimento",
-    "descricao": "A lei como ela é escrita: códigos, jurisdições, o que cabe a cada corte, prazos, contratos, provas aceitas e a brecha que salva um cliente. Burocracia move a máquina; o Direito discute o que ela tem o poder de fazer com você."
+    "descricao": "A lei como ela é escrita: códigos, jurisdições, o que cabe a cada corte, prazos, contratos, provas aceitas e a brecha que salva um cliente. Burocracia move a máquina; o Direito discute o que ela tem o poder de fazer com você.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Assina o que puserem na frente."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe que existe lei e que ela vale."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Redige e entende um contrato comum."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Advoga um caso e conhece a jurisdição certa."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Acha a brecha que salva o condenado."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sua sustentação vira jurisprudência."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Reescreve o código de um reino."
+      }
+    ]
   },
   {
     "id": "bestiario",
     "nome": "Bestiário",
     "grupo": "conhecimento",
-    "descricao": "Criaturas: onde vivem, o que comem, como caçam, como se reproduzem, o que as afugenta e onde é o ponto fraco. É a perícia que transforma um monstro desconhecido num problema com solução conhecida, e vale ouro antes de uma caçada."
+    "descricao": "Criaturas: onde vivem, o que comem, como caçam, como se reproduzem, o que as afugenta e onde é o ponto fraco. É a perícia que transforma um monstro desconhecido num problema com solução conhecida, e vale ouro antes de uma caçada.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Chama tudo de monstro e corre."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conhece os bichos perigosos da região."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sabe hábitos e território das feras comuns."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Reconhece a criatura pelo rastro e sabe a fraqueza dela."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Conhece o que quase ninguém viu vivo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Escreveu o que os caçadores usam como manual."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Reconhece o bicho que só existe numa história antiga, e acerta."
+      }
+    ]
   },
   {
     "id": "estrategia",
     "nome": "Estratégia",
     "grupo": "conhecimento",
-    "descricao": "A guerra acima do nível do soldado: terreno, formação, suprimento, momento de atacar e de recuar, leitura da intenção do inimigo pelo movimento das tropas. Liderança faz um grupo obedecer; Estratégia decide para onde mandá-lo."
+    "descricao": "A guerra acima do nível do soldado: terreno, formação, suprimento, momento de atacar e de recuar, leitura da intenção do inimigo pelo movimento das tropas. Liderança faz um grupo obedecer; Estratégia decide para onde mandá-lo.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Ataca de frente, sempre."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe que o terreno alto é melhor."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Comanda uma escaramuça sem perder metade da gente."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Comanda uma companhia em batalha aberta."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Vence em desvantagem numérica, pelo terreno."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "General de nome; a campanha é estudada depois."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Ganha a guerra sem precisar dar a batalha."
+      }
+    ]
   },
   {
     "id": "genealogia",
     "nome": "Genealogia",
     "grupo": "conhecimento",
-    "descricao": "As linhagens: quem descende de quem, qual casamento uniu quais casas, quem tem direito ao quê e qual herdeiro foi convenientemente esquecido. Numa campanha de sucessão e herança, uma linha de árvore genealógica vale mais que um exército."
+    "descricao": "As linhagens: quem descende de quem, qual casamento uniu quais casas, quem tem direito ao quê e qual herdeiro foi convenientemente esquecido. Numa campanha de sucessão e herança, uma linha de árvore genealógica vale mais que um exército.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não sabe o nome do próprio avô."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conhece a própria linhagem."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Conhece as casas da região e os laços entre elas."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Traça a descendência de qualquer casa do reino."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Encontra o herdeiro que ninguém achava."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sua palavra decide uma disputa de sangue."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Prova uma linhagem que a história tinha enterrado."
+      }
+    ]
   },
   {
     "id": "folclore",
     "nome": "Folclore",
     "grupo": "conhecimento",
-    "descricao": "O que o povo conta: superstição, cantiga, conto de aldeia, o costume de deixar leite na soleira e o nome que ninguém diz depois do anoitecer. Muito daquilo é bobagem, e é justamente por saber tudo que você identifica o pedaço que é verdade antiga mal contada."
+    "descricao": "O que o povo conta: superstição, cantiga, conto de aldeia, o costume de deixar leite na soleira e o nome que ninguém diz depois do anoitecer. Muito daquilo é bobagem, e é justamente por saber tudo que você identifica o pedaço que é verdade antiga mal contada.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não conhece nem as histórias do próprio vilarejo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe o que a avó contava."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Conhece o costume e a superstição da região."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Reconhece a variante e o que ela guarda de verdade."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Sabe qual conto descreve um perigo real."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Reuniu o que se conta em meio continente."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Encontra, numa cantiga de ninar, o que ninguém mais sabia."
+      }
+    ]
   },
   {
     "id": "veterinaria",
     "nome": "Veterinária",
     "grupo": "conhecimento",
-    "descricao": "O corpo dos animais: doença, ferimento, casco, dente, parto difícil, o que o bicho pode comer e quando ele está apenas cansado ou realmente morrendo. Vale para o cavalo do grupo, para o rebanho de uma vila e para a fera de guerra que custou uma fortuna."
+    "descricao": "O corpo dos animais: doença, ferimento, casco, dente, parto difícil, o que o bicho pode comer e quando ele está apenas cansado ou realmente morrendo. Vale para o cavalo do grupo, para o rebanho de uma vila e para a fera de guerra que custou uma fortuna.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Trata o cavalo como se fosse gente."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe alimentar e ferrar sem machucar."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cuida do rebanho: parto, casco e ferida."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Reconhece doença de animal e trata a tempo."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Salva a montaria que outro teria sacrificado."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Cuida do bicho de guerra que vale uma fortuna."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Trata a criatura que nunca ninguém tinha tratado."
+      }
+    ]
   },
-
   {
     "id": "cavalgar",
     "nome": "Cavalgar",
     "grupo": "oficio",
-    "descricao": "Montar e conduzir animal de sela: manter-se firme, guiar sem rédea, saltar obstáculo, acalmar a montaria assustada e brigar de cima dela. Também cobre atrelar e tocar carroça, que é o transporte que a maioria dos grupos de fato usa."
+    "descricao": "Montar e conduzir animal de sela: manter-se firme, guiar sem rédea, saltar obstáculo, acalmar a montaria assustada e brigar de cima dela. Também cobre atrelar e tocar carroça, que é o transporte que a maioria dos grupos de fato usa.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Cai."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Monta e conduz a passo."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cavalga o dia inteiro e cuida da montaria."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Galopa em terreno ruim e salta obstáculo."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Luta a cavalo e monta o que não quer ser montado."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Cavaleiro que a região inteira aponta."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz o cavalo obedecer no meio do fogo e da carga."
+      }
+    ]
   },
   {
     "id": "ferreiro",
     "nome": "Ferreiro",
     "grupo": "oficio",
-    "descricao": "O trabalho do metal na forja, do começo ao fim: aquecer, malhar, temperar, soldar, rebitar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina, de anel de malha a peça de placa. Cobre a arma e a armadura junto com o resto, porque é a mesma bigorna e o mesmo par de mãos; o que muda de uma peça para a outra é a dificuldade e o tempo, não o ofício. É o ofício mais presente de qualquer vila, e o único que devolve a uma espada lascada a qualidade que ela tinha."
+    "descricao": "O trabalho do metal na forja, do começo ao fim: aquecer, malhar, temperar, soldar, rebitar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina, de anel de malha a peça de placa. Cobre a arma e a armadura junto com o resto, porque é a mesma bigorna e o mesmo par de mãos; o que muda de uma peça para a outra é a dificuldade e o tempo, não o ofício. É o ofício mais presente de qualquer vila, e o único que devolve a uma espada lascada a qualidade que ela tinha.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Queima o metal e quebra o cabo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Aprendiz: prego, gancho e conserto tosco."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Ferreiro de vila: ferradura, ferramenta, remendo."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Forja lâmina e cota que aguentam combate."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Mestre da guilda; peça encomendada de longe."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sua marca vale mais do que o metal."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "A arma que sai da sua forja ganha nome próprio."
+      }
+    ]
   },
   {
     "id": "carpintaria",
     "nome": "Carpintaria",
     "grupo": "oficio",
-    "descricao": "A madeira que sustenta: viga, telhado, assoalho, porta, escada, ponte, casco de barco, escoramento de mina. É o ofício da estrutura, e o que se pede dele é que aguente peso e tempo, não que seja bonito."
+    "descricao": "A madeira que sustenta: viga, telhado, assoalho, porta, escada, ponte, casco de barco, escoramento de mina. É o ofício da estrutura, e o que se pede dele é que aguente peso e tempo, não que seja bonito.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Serra torto e o prego entorta."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Prega tábua e monta um banco."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Levanta telhado, porta e assoalho."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Constrói casa, ponte pequena e escoramento de mina."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Mestre de obra: dirige uma construção inteira."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Constrói o que os outros dizem que não fica de pé."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "A estrutura atravessa séculos sem ceder um dedo."
+      }
+    ]
   },
   {
     "id": "marcenaria",
     "nome": "Marcenaria",
     "grupo": "oficio",
-    "descricao": "A madeira que se vê de perto: móvel, baú, encaixe justo, arco e cabo de arma, acabamento e verniz. Onde a Carpintaria resolve o que fica de pé, a Marcenaria resolve o que se usa com as mãos todo dia."
+    "descricao": "A madeira que se vê de perto: móvel, baú, encaixe justo, arco e cabo de arma, acabamento e verniz. Onde a Carpintaria resolve o que fica de pé, a Marcenaria resolve o que se usa com as mãos todo dia.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "O encaixe não encaixa."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Faz caixa e banco simples."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Móvel comum, sólido e sem graça."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Encaixe justo, acabamento fino, arco e cabo de arma."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Móvel de casa nobre, feito sob medida."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Peça que se herda e se disputa em inventário."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz a madeira fazer o que só o metal deveria fazer."
+      }
+    ]
   },
   {
     "id": "alvenaria",
     "nome": "Alvenaria",
     "grupo": "oficio",
-    "descricao": "Pedra e argamassa: assentar, levantar parede, fechar arco e abóbada, cortar bloco, calçar rua, reparar muralha. É obra de tempo longo e muita mão, e o ofício que separa a casa de pedra que atravessa gerações da que cai na primeira cheia."
+    "descricao": "Pedra e argamassa: assentar, levantar parede, fechar arco e abóbada, cortar bloco, calçar rua, reparar muralha. É obra de tempo longo e muita mão, e o ofício que separa a casa de pedra que atravessa gerações da que cai na primeira cheia.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "A parede sai torta e cai."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Assenta pedra em muro baixo."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Levanta parede e chaminé que duram."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Fecha arco e abóbada, calça rua, repara muralha."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Mestre pedreiro: conduz obra grande."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Ergue o que se avista a léguas de distância."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Constrói o que os séculos não conseguem derrubar."
+      }
+    ]
   },
   {
     "id": "costura",
     "nome": "Costura",
     "grupo": "oficio",
-    "descricao": "Tecido e agulha: cortar, montar, ajustar, remendar, forrar, e a diferença entre a roupa que passa por nobre e a que denuncia o disfarce a três passos. Cobre também tenda, vela de barco, saco e o acolchoado que vai por baixo da armadura."
+    "descricao": "Tecido e agulha: cortar, montar, ajustar, remendar, forrar, e a diferença entre a roupa que passa por nobre e a que denuncia o disfarce a três passos. Cobre também tenda, vela de barco, saco e o acolchoado que vai por baixo da armadura.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "A costura abre no primeiro uso."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Remenda e prega botão."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Faz roupa comum, que veste bem."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Corta sob medida e copia um corte estrangeiro."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Alfaiate de corte; a roupa dá status a quem a veste."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "A peça é reconhecida de longe como sua."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz o traje que uma geração inteira lembra."
+      }
+    ]
   },
   {
     "id": "couraria",
     "nome": "Couraria",
     "grupo": "oficio",
-    "descricao": "O couro do começo ao fim: curtir a pele, cortar, costurar e endurecer para virar bota, cinto, arreio, bainha, bolsa ou peça de armadura leve. Ofício sujo, malcheiroso e presente em toda vila, porque quase tudo que se veste ou se carrega passa por ele."
+    "descricao": "O couro do começo ao fim: curtir a pele, cortar, costurar e endurecer para virar bota, cinto, arreio, bainha, bolsa ou peça de armadura leve. Ofício sujo, malcheiroso e presente em toda vila, porque quase tudo que se veste ou se carrega passa por ele.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "O couro racha e fede."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Corta e costura tira e bolsa."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Curte e faz bota, cinto e arreio."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Faz bainha justa e armadura de couro batido."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Peça que dura uma vida inteira de uso duro."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Couro seu vira presente de nobre."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz do couro o que se esperaria do aço."
+      }
+    ]
   },
   {
     "id": "joalheria",
     "nome": "Joalheria",
     "grupo": "oficio",
-    "descricao": "O metal precioso e a pedra: fundir, cravejar, lapidar, engastar, consertar peça fina e avaliar o que se tem na mão, inclusive reconhecer a falsificação. É o ofício das peças pequenas, caras e cheias de significado, que são exatamente as que movem uma trama."
+    "descricao": "O metal precioso e a pedra: fundir, cravejar, lapidar, engastar, consertar peça fina e avaliar o que se tem na mão, inclusive reconhecer a falsificação. É o ofício das peças pequenas, caras e cheias de significado, que são exatamente as que movem uma trama.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Estraga a pedra ao tentar montá-la."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conserta corrente e limpa peça."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Funde, monta e engasta com competência."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Lapida, crava fino, avalia e reconhece falsificação."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Ourives de casa nobre, peça por encomenda."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "A joia é descrita em cartas e inventários."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz a peça que vira símbolo de uma casa."
+      }
+    ]
   },
   {
     "id": "artesanato",
     "nome": "Artesanato",
     "grupo": "oficio",
-    "descricao": "O acabamento e o adorno: entalhe decorativo, marchetaria, incrustação, filigrana, gravação, pintura de peça e o ornamento que transforma um objeto útil num objeto que vale ser mostrado. Não fabrica a peça, isso é o ofício de base, mas é o que faz dela um presente digno de um senhor ou uma prova de quem a encomendou."
+    "descricao": "O acabamento e o adorno: entalhe decorativo, marchetaria, incrustação, filigrana, gravação, pintura de peça e o ornamento que transforma um objeto útil num objeto que vale ser mostrado. Não fabrica a peça, isso é o ofício de base, mas é o que faz dela um presente digno de um senhor ou uma prova de quem a encomendou.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "O enfeite estraga a peça."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Entalha um desenho simples."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Ornamento honesto, de mercado."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Marchetaria, filigrana e gravação de bom gosto."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Peça de presente entre casas nobres."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "O ornamento faz o objeto valer o triplo."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "O adorno vira a razão de a peça existir."
+      }
+    ]
   },
   {
     "id": "gastronomia",
     "nome": "Gastronomia",
     "grupo": "oficio",
-    "descricao": "Cozinhar, do ensopado de acampamento ao banquete de corte: escolher o ingrediente, conservar, temperar, servir e montar uma mesa que diga alguma coisa sobre quem a ofereceu. Cobre também o paladar treinado, que reconhece a procedência de um vinho, o tempero fora de lugar e, com sorte, o veneno."
+    "descricao": "Cozinhar, do ensopado de acampamento ao banquete de corte: escolher o ingrediente, conservar, temperar, servir e montar uma mesa que diga alguma coisa sobre quem a ofereceu. Cobre também o paladar treinado, que reconhece a procedência de um vinho, o tempero fora de lugar e, com sorte, o veneno.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Queima a água e envenena por descuido."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Cozinha o que mata a fome."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cozinheiro de estalagem: bom, farto e simples."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Cozinha de casa grande; sabe o que servir e a quem."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Banquete que a região comenta por meses."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Cozinheiro disputado entre cortes."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "O jantar entra para a história junto com o tratado assinado nele."
+      }
+    ]
   },
   {
     "id": "agricultura",
     "nome": "Agricultura",
     "grupo": "oficio",
-    "descricao": "Tirar comida da terra: preparar solo, plantar na estação certa, irrigar, colher, armazenar sem apodrecer e cuidar do rebanho da lavoura. É o ofício de nove entre dez pessoas do mundo, e o que permite a um personagem entender uma aldeia por dentro."
+    "descricao": "Tirar comida da terra: preparar solo, plantar na estação certa, irrigar, colher, armazenar sem apodrecer e cuidar do rebanho da lavoura. É o ofício de nove entre dez pessoas do mundo, e o que permite a um personagem entender uma aldeia por dentro.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Planta fora da estação e perde tudo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Cuida de uma horta."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Toca uma roça de família e um rebanho pequeno."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Administra terra e colheita de uma propriedade."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Tira safra de terra que os outros deram por morta."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Muda como uma região inteira planta."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Alimenta um reino em ano de fome."
+      }
+    ]
   },
   {
     "id": "pesca",
     "nome": "Pesca",
     "grupo": "oficio",
-    "descricao": "Tirar comida da água: linha, rede, armadilha, arpão, e o saber de onde o peixe está a cada hora, maré e estação. Sustenta comunidades inteiras, e numa viagem por rio ou litoral é o que mantém o grupo alimentado sem gastar provisão."
+    "descricao": "Tirar comida da água: linha, rede, armadilha, arpão, e o saber de onde o peixe está a cada hora, maré e estação. Sustenta comunidades inteiras, e numa viagem por rio ou litoral é o que mantém o grupo alimentado sem gastar provisão.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Volta com a rede vazia e ainda molhado."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Pesca de linha, com sorte."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Sustenta a família com o que tira do rio."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Sabe o ponto, a hora e a maré."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Conduz uma frota pequena de pesca."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Encontra cardume onde ninguém procura."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Tira do mar o que a aldeia jura não existir mais."
+      }
+    ]
   },
   {
     "id": "navegacao",
     "nome": "Navegação",
     "grupo": "oficio",
-    "descricao": "Conduzir uma embarcação e achar o rumo: vela, leme, corrente, maré, vento, sondagem, e a decisão de encarar ou contornar a tempestade. Cobre desde a barcaça de rio até o navio de mar aberto, e é uma perícia de campanha inteira, porque quem a tem define por onde a história pode ir."
+    "descricao": "Conduzir uma embarcação e achar o rumo: vela, leme, corrente, maré, vento, sondagem, e a decisão de encarar ou contornar a tempestade. Cobre desde a barcaça de rio até o navio de mar aberto, e é uma perícia de campanha inteira, porque quem a tem define por onde a história pode ir.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Enjoa e atrapalha a tripulação."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Rema e ajuda no convés."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Marinheiro: cumpre a função e lê o vento."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Piloto; conduz costa afora, lê carta e sonda."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Capitão: atravessa mar aberto e encara tempestade."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Chega onde as cartas param."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz a travessia que afundou todos os que tentaram."
+      }
+    ]
   },
   {
     "id": "cartografia",
     "nome": "Cartografia",
     "grupo": "oficio",
-    "descricao": "Fazer e ler mapas: medir distância, marcar acidente do terreno, projetar uma costa no papel, entender a convenção de um mapa alheio e desconfiar do que ele omite. Um mapa mal feito não é um mapa errado, é uma emboscada com anos de antecedência."
+    "descricao": "Fazer e ler mapas: medir distância, marcar acidente do terreno, projetar uma costa no papel, entender a convenção de um mapa alheio e desconfiar do que ele omite. Um mapa mal feito não é um mapa errado, é uma emboscada com anos de antecedência.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "O mapa não bate com o chão."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Lê um mapa simples sem se perder."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Desenha o caminho percorrido de forma útil."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Levanta e desenha uma região com precisão."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Cartas suas são compradas por navegadores."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Corrige o erro que se repetia havia gerações."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Mapeia o que ninguém tinha mapeado, e o mapa está certo."
+      }
+    ]
   },
   {
     "id": "escrivao",
     "nome": "Escrivão",
     "grupo": "oficio",
-    "descricao": "O ofício do papel: redigir carta, contrato e ata na fórmula que a lei aceita, copiar sem erro, manter livro de registro, preparar tinta e pena e decifrar letra ruim ou documento antigo. É a perícia que permite a um personagem produzir um documento que ninguém questiona, e numa terra em que quase ninguém lê, quem escreve tem poder sobre o que ficou escrito."
+    "descricao": "O ofício do papel: redigir carta, contrato e ata na fórmula que a lei aceita, copiar sem erro, manter livro de registro, preparar tinta e pena e decifrar letra ruim ou documento antigo. É a perícia que permite a um personagem produzir um documento que ninguém questiona, e numa terra em que quase ninguém lê, quem escreve tem poder sobre o que ficou escrito.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Mal assina o próprio nome."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Escreve bilhete legível."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Copia e redige documento comum."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Redige contrato e ata na fórmula que a lei aceita."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Escrivão de casa grande; decifra documento antigo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "O papel que você lavra ninguém contesta."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Redige o tratado que dois reinos assinam."
+      }
+    ]
   },
   {
     "id": "comerciante",
     "nome": "Comerciante",
     "grupo": "oficio",
-    "descricao": "Viver de comprar e vender: saber quanto vale, onde vale mais, o que está em falta nesta estação, avaliar uma carga no olho, tocar uma loja ou uma rota, manter livro de contas e perceber quando o livro do outro foi adulterado. Negociação fecha o acordo; o Comerciante é quem sabe se aquele acordo é bom."
+    "descricao": "Viver de comprar e vender: saber quanto vale, onde vale mais, o que está em falta nesta estação, avaliar uma carga no olho, tocar uma loja ou uma rota, manter livro de contas e perceber quando o livro do outro foi adulterado. Negociação fecha o acordo; o Comerciante é quem sabe se aquele acordo é bom.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Vende barato o que comprou caro."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Faz troca justa no mercado."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Toca uma banca e não fecha no vermelho."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Avalia carga, mantém livro e sente a demanda."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Toca uma rota lucrativa e sobrevive a uma má estação."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Casa comercial sua move o preço de uma região."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Financia um reino, e o reino passa a depender disso."
+      }
+    ]
   },
   {
     "id": "adestramento",
     "nome": "Adestramento",
     "grupo": "oficio",
-    "descricao": "Ensinar um animal a fazer o que você quer: cão de guarda e de caça, falcão, cavalo de guerra, mula de carga, pombo de mensagem. Leva tempo e paciência, e o resultado é um companheiro que obedece sob barulho, sangue e fogo, coisa que nenhum animal faz por natureza."
+    "descricao": "Ensinar um animal a fazer o que você quer: cão de guarda e de caça, falcão, cavalo de guerra, mula de carga, pombo de mensagem. Leva tempo e paciência, e o resultado é um companheiro que obedece sob barulho, sangue e fogo, coisa que nenhum animal faz por natureza.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "O bicho não obedece e ainda morde."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Ensina o cão a sentar e a vir."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Cão de guarda e de caça bem treinados."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Falcão, cavalo de guerra e mula de carga."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "O animal obedece sob barulho, sangue e fogo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Ensina o que se diz que aquele bicho não aprende."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Faz obedecer o que não deveria obedecer a ninguém."
+      }
+    ]
   },
-
   {
     "id": "performance",
     "nome": "Performance",
     "grupo": "expressao",
-    "descricao": "O palco: encarnar um papel diante de uma plateia que sabe que aquilo é encenação, e ainda assim se esquece disso. Cobre o texto decorado, a marcação, a voz que chega ao fundo do salão, a mímica, a máscara, o número de rua e a paciência de ensaiar com uma trupe. Presença e tempo valem tanto quanto o papel: saber quando parar e como trazer de volta um público que estava indo embora. Representar fora do palco, para gente que precisa acreditar de verdade, é Atuação."
+    "descricao": "O palco: encarnar um papel diante de uma plateia que sabe que aquilo é encenação, e ainda assim se esquece disso. Cobre o texto decorado, a marcação, a voz que chega ao fundo do salão, a mímica, a máscara, o número de rua e a paciência de ensaiar com uma trupe. Presença e tempo valem tanto quanto o papel: saber quando parar e como trazer de volta um público que estava indo embora. Representar fora do palco, para gente que precisa acreditar de verdade, é Atuação.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Congela no palco e esquece o texto."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Faz figuração e não atrapalha."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Ator de trupe de estrada; a plateia aplaude."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Sustenta um papel principal e prende a casa."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Nome que enche o teatro."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "A interpretação é lembrada e imitada."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "O papel morre com você: ninguém mais consegue fazê-lo."
+      }
+    ]
   },
   {
     "id": "tocar-instrumento",
     "nome": "Tocar Instrumento",
     "grupo": "expressao",
-    "descricao": "Tocar um instrumento com competência real: repertório, afinação, acompanhar outros músicos e improvisar sobre o que está acontecendo. Cada Especialidade nomeia um instrumento, porque quem é bom de alaúde não é automaticamente bom de tambor."
+    "descricao": "Tocar um instrumento com competência real: repertório, afinação, acompanhar outros músicos e improvisar sobre o que está acontecendo. Cada Especialidade nomeia um instrumento, porque quem é bom de alaúde não é automaticamente bom de tambor.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Desafina e erra o tempo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Toca três canções decoradas."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Músico de taverna: anima a noite."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Toca de ouvido, acompanha e improvisa."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Músico de corte, disputado."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Faz o instrumento fazer o que ele não faz."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Quem ouve uma vez lembra pelo resto da vida."
+      }
+    ]
   },
   {
     "id": "canto",
     "nome": "Canto",
     "grupo": "expressao",
-    "descricao": "A voz como instrumento: afinação, fôlego, projeção e o repertório que serve à ocasião, do lamento fúnebre à cantiga de marcha que faz uma tropa andar mais rápido. É a arte mais portátil que existe, não pesa nada e funciona em qualquer lugar."
+    "descricao": "A voz como instrumento: afinação, fôlego, projeção e o repertório que serve à ocasião, do lamento fúnebre à cantiga de marcha que faz uma tropa andar mais rápido. É a arte mais portátil que existe, não pesa nada e funciona em qualquer lugar.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Desafina e some no meio da estrofe."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Canta junto sem estragar."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Voz agradável de roda de fogueira."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Canta sozinho e a sala silencia."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Voz de catedral e de salão."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "O seu canto faz gente chorar sem entender por quê."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Uma canção sua atravessa gerações."
+      }
+    ]
   },
   {
     "id": "danca",
     "nome": "Dança",
     "grupo": "expressao",
-    "descricao": "Dançar bem, do salão de corte, onde saber os passos é obrigação social, à dança de festa e à dança ritual. Uma dança é uma conversa em público sem palavras, e é onde muita coisa importante se resolve sem que ninguém perceba."
+    "descricao": "Dançar bem, do salão de corte, onde saber os passos é obrigação social, à dança de festa e à dança ritual. Uma dança é uma conversa em público sem palavras, e é onde muita coisa importante se resolve sem que ninguém perceba.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Pisa no pé de todo mundo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe os passos da dança da aldeia."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Dança de salão sem passar vergonha."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Conduz e é convidado; sabe as danças de corte."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Bailarino de espetáculo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Uma dança sua é descrita em carta."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "O corpo diz o que nenhuma palavra da corte poderia dizer."
+      }
+    ]
   },
   {
     "id": "poesia",
     "nome": "Poesia",
     "grupo": "expressao",
-    "descricao": "Compor com métrica e imagem: verso, canção, epitáfio, sátira, elogio encomendado e a estrofe que gruda na boca do povo. Uma sátira bem feita destrói uma reputação melhor do que uma acusação formal, e é muito mais difícil de responder."
+    "descricao": "Compor com métrica e imagem: verso, canção, epitáfio, sátira, elogio encomendado e a estrofe que gruda na boca do povo. Uma sátira bem feita destrói uma reputação melhor do que uma acusação formal, e é muito mais difícil de responder.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Rima pobre e métrica quebrada."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Faz um verso de ocasião."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Escreve elogio e epitáfio decentes."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Compõe canção que o povo repete."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Uma sátira sua derruba uma reputação."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Poeta que as cortes disputam."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Um verso seu vira provérbio."
+      }
+    ]
   },
   {
     "id": "contacao-de-historias",
     "nome": "Contação de Histórias",
     "grupo": "expressao",
-    "descricao": "Narrar de modo que quem ouve fique: escolher o que contar, guardar a virada para a hora certa, imitar as vozes e fazer uma sala inteira prender a respiração. É a perícia que transforma o que o grupo fez numa lenda, e lenda é influência que trabalha sozinha."
+    "descricao": "Narrar de modo que quem ouve fique: escolher o que contar, guardar a virada para a hora certa, imitar as vozes e fazer uma sala inteira prender a respiração. É a perícia que transforma o que o grupo fez numa lenda, e lenda é influência que trabalha sozinha.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Estraga a piada e entrega o final."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Conta o que aconteceu sem perder ninguém."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Anima a mesa de uma taverna."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Segura uma sala pela noite inteira."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "A história corre de cidade em cidade com o seu nome."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "O que você conta vira o que aconteceu."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Uma noite sua vira lenda que dura séculos."
+      }
+    ]
   },
   {
     "id": "pintura",
     "nome": "Pintura",
     "grupo": "expressao",
-    "descricao": "Pintar e desenhar: retrato, painel, afresco, esboço de memória e o cartaz que a guarda vai pregar na praça. Além da arte, é a perícia que registra um rosto, um lugar ou um símbolo com precisão suficiente para outra pessoa reconhecer."
+    "descricao": "Pintar e desenhar: retrato, painel, afresco, esboço de memória e o cartaz que a guarda vai pregar na praça. Além da arte, é a perícia que registra um rosto, um lugar ou um símbolo com precisão suficiente para outra pessoa reconhecer.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "O retrato não parece com ninguém."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Esboça de forma reconhecível."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Pinta placa, cartaz e retrato simples."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Retrato por encomenda, com semelhança e caráter."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Painel de igreja ou de salão nobre."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Obra disputada ainda em vida."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "A tela sobrevive ao nome de quem a encomendou."
+      }
+    ]
   },
   {
     "id": "escultura",
     "nome": "Escultura",
     "grupo": "expressao",
-    "descricao": "Dar forma à matéria dura: pedra, madeira, marfim, cera e molde de bronze, do busto encomendado ao ídolo de templo e à gárgula de telhado. É trabalho lento, caro e que dura séculos, o que faz dele um instrumento de poder tanto quanto de arte."
+    "descricao": "Dar forma à matéria dura: pedra, madeira, marfim, cera e molde de bronze, do busto encomendado ao ídolo de templo e à gárgula de telhado. É trabalho lento, caro e que dura séculos, o que faz dele um instrumento de poder tanto quanto de arte.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Lasca a pedra e perde o bloco."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Talha forma tosca em madeira."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Faz busto e ornamento de fachada."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Escultura por encomenda, com proporção e expressão."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Estátua de praça, referência da região."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "A obra vira o símbolo da cidade."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "A pedra parece prestes a respirar."
+      }
+    ]
   },
   {
     "id": "caligrafia",
     "nome": "Caligrafia",
     "grupo": "expressao",
-    "descricao": "A letra como obra: traço firme, iluminura, capitular, dourado e o cuidado que separa um manuscrito de valor de um rascunho. Escrivania produz o documento que a lei aceita; a Caligrafia produz o documento que impressiona quem o recebe."
+    "descricao": "A letra como obra: traço firme, iluminura, capitular, dourado e o cuidado que separa um manuscrito de valor de um rascunho. Escrivania produz o documento que a lei aceita; a Caligrafia produz o documento que impressiona quem o recebe.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Letra que ninguém decifra."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Escreve legível e reto."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Letra bonita de escritório."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Iluminura, capitular e traço firme."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Manuscrito de biblioteca nobre."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Uma cópia sua vale mais que o original."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "A página é olhada antes de ser lida."
+      }
+    ]
   },
-
   {
     "id": "abrir-mecanismos",
     "nome": "Abrir Mecanismos",
     "grupo": "subterfugio",
-    "descricao": "Vencer o que foi feito para não abrir, ou para se fechar em cima de você: cadeado, tranca, ferrolho, cofre, corrente, e também a armadilha já localizada, o alçapão engatilhado e o engenho que prende a porta. Cobre sentir o pino com a gazua, forçar sem quebrar, deixar a fechadura sem marca quando isso importa, e desarmar o gatilho sem que ele dispare. É a perícia da mão parada e do pulso firme, e a que mais aparece numa masmorra. Ela abre e desarma; encontrar o mecanismo escondido antes de tropeçar nele é Ocultação."
+    "descricao": "Vencer o que foi feito para não abrir, ou para se fechar em cima de você: cadeado, tranca, ferrolho, cofre, corrente, e também a armadilha já localizada, o alçapão engatilhado e o engenho que prende a porta. Cobre sentir o pino com a gazua, forçar sem quebrar, deixar a fechadura sem marca quando isso importa, e desarmar o gatilho sem que ele dispare. É a perícia da mão parada e do pulso firme, e a que mais aparece numa masmorra. Ela abre e desarma; encontrar o mecanismo escondido antes de tropeçar nele é Ocultação.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Quebra a gazua dentro da fechadura."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Abre cadeado tosco, com tempo e barulho."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Ladrão de bairro: tranca comum, porta comum."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Abre fechadura boa e desarma armadilha simples."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Cofre de mercador e gatilho de cripta."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Abre o que foi feito para não abrir."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Desarma o mecanismo que matou todos os que tentaram antes."
+      }
+    ]
   },
   {
     "id": "ocultacao",
     "nome": "Ocultação",
     "grupo": "subterfugio",
-    "descricao": "Esconder e achar o escondido, dos dois lados: compartimento falso, fundo duplo, tijolo solto, forro de capa, o vão sob a tábua, a passagem atrás da estante, e a armadilha, tanto montar a sua quanto farejar a alheia antes do primeiro passo. Cobre também esconder o que não cabe no bolso, que é o contrabando (carga declarada por outro nome, rota alternativa, esconderijo que aguenta inspeção de verdade) e esconder a mentira dentro de um papel, que é a falsificação de assinatura, selo, salvo-conduto ou moeda, e o inverso, apontar onde um documento foi forjado. O princípio é sempre o mesmo: quem sabe esconder sabe onde procurar."
+    "descricao": "Esconder e achar o escondido, dos dois lados: compartimento falso, fundo duplo, tijolo solto, forro de capa, o vão sob a tábua, a passagem atrás da estante, e a armadilha, tanto montar a sua quanto farejar a alheia antes do primeiro passo. Cobre também esconder o que não cabe no bolso, que é o contrabando (carga declarada por outro nome, rota alternativa, esconderijo que aguenta inspeção de verdade) e esconder a mentira dentro de um papel, que é a falsificação de assinatura, selo, salvo-conduto ou moeda, e o inverso, apontar onde um documento foi forjado. O princípio é sempre o mesmo: quem sabe esconder sabe onde procurar.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Esconde mal e é achado na primeira revista."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Guarda no lugar óbvio e disfarça um pouco."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Fundo duplo simples; passa por revista distraída."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Monta esconderijo bom e acha o esconderijo alheio."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Passa carga por inspeção séria e fareja a armadilha antes do passo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Falsifica selo e esconde o que não deveria caber em lugar nenhum."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Esconde o que um reino inteiro está procurando."
+      }
+    ]
   },
   {
     "id": "submundo",
     "nome": "Submundo",
     "grupo": "subterfugio",
-    "descricao": "Conhecer o lado de baixo de uma cidade: quem manda em cada bairro, o linguajar e os sinais que as gangues deixam nos muros, qual taverna é neutra, quem compra o que não tem procedência, onde se acha veneno, arma proibida ou um par de braços que não faz perguntas. Não é uma habilidade de fazer, é de saber com quem falar e o que não dizer, e é ela que transforma uma cidade estranha e hostil num lugar onde você tem por onde começar."
+    "descricao": "Conhecer o lado de baixo de uma cidade: quem manda em cada bairro, o linguajar e os sinais que as gangues deixam nos muros, qual taverna é neutra, quem compra o que não tem procedência, onde se acha veneno, arma proibida ou um par de braços que não faz perguntas. Não é uma habilidade de fazer, é de saber com quem falar e o que não dizer, e é ela que transforma uma cidade estranha e hostil num lugar onde você tem por onde começar.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não sabe que existe um submundo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Sabe qual viela evitar."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Conhece o crime do próprio bairro."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Sabe com quem falar em qualquer cidade da região."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Tem nome nas ruas, e portas se abrem por causa dele."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Conhece quem manda de verdade em meio continente."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Uma palavra sua move o crime de um reino."
+      }
+    ]
   },
-
   {
     "id": "energia-espiritual",
     "nome": "Energia Espiritual",
     "grupo": "interior",
-    "descricao": "O cultivo da fonte interior que alimenta a Mana: o quanto se guarda, com que rapidez volta e o quanto se pode sacar de uma vez sem passar mal. Não conjura nada por si, é o fôlego de quem conjura, e sem ela a magia mais bem aprendida acaba na terceira cena."
+    "descricao": "O cultivo da fonte interior que alimenta a Mana: o quanto se guarda, com que rapidez volta e o quanto se pode sacar de uma vez sem passar mal. Não conjura nada por si, é o fôlego de quem conjura, e sem ela a magia mais bem aprendida acaba na terceira cena.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "A fonte seca no primeiro esforço."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Guarda pouco e recupera devagar."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Aguenta uma cena de magia sem apagar."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Sustenta um dia inteiro de trabalho arcano."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Saca fundo sem passar mal depois."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "A fonte parece não ter fundo."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Repõe mais rápido do que consegue gastar."
+      }
+    ]
   },
   {
     "id": "meditacao",
     "nome": "Meditação",
     "grupo": "interior",
-    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas."
+    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não consegue ficar parado."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Acalma-se, depois de um tempo."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Descansa de verdade em pouco tempo."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Entra em quietude à vontade e se recupera nela."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Medita em meio ao barulho e à dor."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Alcança estados que os outros só descrevem."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Some do mundo por dias e volta inteiro."
+      }
+    ]
   },
   {
     "id": "autocontrole",
     "nome": "Autocontrole",
     "grupo": "interior",
-    "descricao": "Segurar o que vem de dentro: raiva, pânico, vício, luxúria, luto, o impulso de responder à provocação. Integridade resiste ao que os outros fazem com você; Autocontrole resiste ao que você faz consigo mesmo, e é a perícia dos personagens que carregam alguma coisa perigosa por dentro."
+    "descricao": "Segurar o que vem de dentro: raiva, pânico, vício, luxúria, luto, o impulso de responder à provocação. Integridade resiste ao que os outros fazem com você; Autocontrole resiste ao que você faz consigo mesmo, e é a perícia dos personagens que carregam alguma coisa perigosa por dentro.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Explode, cede ao vício e foge do medo."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Segura o impulso pequeno."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Não responde à provocação comum."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Domina raiva, pânico e desejo quando precisa."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Não cede nem quando ceder seria mais fácil."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Ninguém consegue tirá-lo do sério."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Escolhe o que sentir, e sente só aquilo."
+      }
+    ]
   },
   {
     "id": "concentracao",
     "nome": "Concentração",
     "grupo": "interior",
-    "descricao": "Manter a atenção onde ela precisa estar apesar de dor, barulho, medo e gente falando com você. É o que sustenta uma tarefa delicada no meio do caos, e o que impede que um trabalho longo se perca porque alguém abriu a porta na hora errada."
+    "descricao": "Manter a atenção onde ela precisa estar apesar de dor, barulho, medo e gente falando com você. É o que sustenta uma tarefa delicada no meio do caos, e o que impede que um trabalho longo se perca porque alguém abriu a porta na hora errada.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Perde o fio se alguém falar."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Mantém o foco no silêncio."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Trabalha com barulho ao redor."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Sustenta tarefa delicada sob pressão."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Não erra nem com gente gritando e sangue escorrendo."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Trabalha horas sem que nada entre."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "O mundo pode desabar: a mão não treme."
+      }
+    ]
   },
   {
     "id": "leitura-corporal",
     "nome": "Leitura Corporal",
     "grupo": "interior",
-    "descricao": "Ler o corpo em vez das palavras: para onde o olho vai, onde a respiração muda, qual pé está pronto para sair, a mão que procura a arma. Empatia sente o que a pessoa está sentindo; a Leitura Corporal é o método técnico que percebe o sinal físico e diz o que ela está prestes a fazer."
+    "descricao": "Ler o corpo em vez das palavras: para onde o olho vai, onde a respiração muda, qual pé está pronto para sair, a mão que procura a arma. Empatia sente o que a pessoa está sentindo; a Leitura Corporal é o método técnico que percebe o sinal físico e diz o que ela está prestes a fazer.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Não lê nem o que o corpo grita."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Percebe nervosismo evidente."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Nota o olhar que foge e a mão inquieta."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Antecipa o golpe pelo ombro que arma."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Sabe o que a pessoa vai fazer antes de ela decidir."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Lê uma sala inteira pelo corpo de cada um."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Nenhum treino de disfarce esconde um corpo de você."
+      }
+    ]
   },
   {
     "id": "interpretacao-de-sonhos",
     "nome": "Interpretação de Sonhos",
     "grupo": "interior",
-    "descricao": "Tratar o sonho como mensagem: reconhecer o símbolo, separar o que é resto de um dia ruim do que é aviso e saber qual sonho não deve ser contado a ninguém. Num mundo em que o sobrenatural fala, ele fala muitas vezes enquanto se dorme."
+    "descricao": "Tratar o sonho como mensagem: reconhecer o símbolo, separar o que é resto de um dia ruim do que é aviso e saber qual sonho não deve ser contado a ninguém. Num mundo em que o sobrenatural fala, ele fala muitas vezes enquanto se dorme.",
+    "niveis": [
+      {
+        "nivel": 0,
+        "rotulo": "Leigo",
+        "texto": "Sonho é sonho, e pronto."
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Iniciado",
+        "texto": "Distingue pesadelo de presságio."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Competente",
+        "texto": "Conhece os símbolos comuns."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Profissional",
+        "texto": "Separa resto de dia ruim de aviso verdadeiro."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Perito",
+        "texto": "Interpreta o sonho alheio com precisão."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Mestre",
+        "texto": "Sabe qual sonho não deve ser contado a ninguém."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Lendário",
+        "texto": "Lê no sonho o que ainda não aconteceu."
+      }
+    ]
   }
 ]

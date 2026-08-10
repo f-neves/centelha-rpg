@@ -169,6 +169,9 @@
     restore();
   };
   const esc = (s: string) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  // Um degrau de régua, desenhado igual no modal e na comparação lado a lado: número,
+  // rótulo em negrito e o texto. Antes as duas telas divergiam no separador.
+  const linhaNivel = (n: any) => `<div class="rm-lv"><span class="rm-n">${n.nivel}</span><span>${n.rotulo ? `<b>${esc(n.rotulo)}</b> · ` : ''}${esc(n.texto)}${n.conduta ? `<span class="rm-conduta"><b>Conduta:</b> ${esc(n.conduta)}</span>` : ''}</span></div>`;
   function refModal(payload: { tipo?: string; nome?: string; descricao?: string; niveis?: any[]; url?: string }) {
     if (!modal) return;
     const body = modal.querySelector('.ref-modal-body')!;
@@ -176,7 +179,7 @@
     if (payload.descricao) h += `<p class="rm-desc">${esc(payload.descricao)}</p>`;
     if (Array.isArray(payload.niveis) && payload.niveis.length) {
       h += '<div class="rm-niveis">';
-      for (const n of payload.niveis) h += `<div class="rm-lv"><span class="rm-n">${n.nivel}</span><span>${n.rotulo ? `<b>${esc(n.rotulo)}</b> — ` : ''}${esc(n.texto)}${n.conduta ? `<span class="rm-conduta"><b>Conduta:</b> ${esc(n.conduta)}</span>` : ''}</span></div>`;
+      for (const n of payload.niveis) h += linhaNivel(n);
       h += '</div>';
     }
     if (payload.url) h += `<a class="rm-go" href="${payload.url}">ver no livro →</a>`;
@@ -192,7 +195,7 @@
     let h = '<div class="rm-compare">';
     for (const it of list) {
       h += `<div class="rm-col"><span class="ref-tipo">${esc(cap(it.tipo))}</span><b class="rm-cnome">${esc(it.nome)}</b><p class="rm-cdesc">${esc(it.detalhe?.descricao ?? it.resumo ?? '')}</p>`;
-      if (Array.isArray(it.detalhe?.niveis)) h += '<div class="rm-niveis">' + it.detalhe.niveis.map((n: any) => `<div class="rm-lv"><span class="rm-n">${n.nivel}</span><span>${n.rotulo ? `<b>${esc(n.rotulo)}</b> ` : ''}${esc(n.texto)}${n.conduta ? `<span class="rm-conduta"><b>Conduta:</b> ${esc(n.conduta)}</span>` : ''}</span></div>`).join('') + '</div>';
+      if (Array.isArray(it.detalhe?.niveis)) h += '<div class="rm-niveis">' + it.detalhe.niveis.map(linhaNivel).join('') + '</div>';
       h += `<a class="rm-go" href="${it.url}">abrir →</a></div>`;
     }
     body.innerHTML = h + '</div>';

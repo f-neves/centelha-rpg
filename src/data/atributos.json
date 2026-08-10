@@ -5,12 +5,36 @@
     "grupo": "fisico",
     "descricao": "O poder bruto do corpo: o quanto você ergue, empurra, arromba e machuca com o peso do golpe. Aparece sempre que a resposta depende de músculo e não de jeito, seja levantar um portão de ferro, segurar a corda que escorrega, derrubar uma porta a ombradas ou prender quem se debate. Em combate é a Força que faz um golpe doer, e fora dele é ela que decide quanto peso você carrega sem virar lesma e a que distância você joga alguma coisa. Não confunda com Vigor: a Força é o pico do esforço (o quanto você consegue de uma vez), o Vigor é a duração dele.",
     "niveis": [
-      { "nivel": 1, "texto": "Fraco: perde a queda de braço para quase qualquer adulto e cansa carregando a própria bagagem." },
-      { "nivel": 2, "texto": "Comum: a força de quem não treina; ergue um saco de grãos, empurra a carroça atolada com ajuda." },
-      { "nivel": 3, "texto": "Forte: o braço de quem trabalha pesado; arromba uma porta comum em algumas ombradas." },
-      { "nivel": 4, "texto": "Excepcional: força de atleta; ergue outra pessoa acima da cabeça e ainda anda com ela." },
-      { "nivel": 5, "texto": "Pico humano: um dos mais fortes que já viveram; entorta uma barra de ferro com as mãos." },
-      { "nivel": 6, "texto": "Ápice absoluto: força que vira história de taverna; arranca a porta dos gonzos e a usa de escudo." }
+      {
+        "nivel": 1,
+        "rotulo": "Fraco",
+        "texto": "Perde a queda de braço para quase qualquer adulto e cansa carregando a própria bagagem."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "A força de quem não treina; ergue um saco de grãos, empurra a carroça atolada com ajuda."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Forte",
+        "texto": "O braço de quem trabalha pesado; arromba uma porta comum em algumas ombradas."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Força de atleta; ergue outra pessoa acima da cabeça e ainda anda com ela."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Um dos mais fortes que já viveram; entorta uma barra de ferro com as mãos."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Força que vira história de taverna; arranca a porta dos gonzos e a usa de escudo."
+      }
     ]
   },
   {
@@ -19,12 +43,36 @@
     "grupo": "fisico",
     "descricao": "A precisão do corpo: reflexo, equilíbrio, mão firme e o jeito de pôr o corpo exatamente onde ele precisa estar. É o Atributo que mais aparece na mesa, porque governa tanto o gume e a mira quanto o dedo que abre a fechadura e o pé que não faz barulho. Quando o problema é acertar, desviar ou manipular sem estragar, é aqui que se olha. A Força diz o quanto o golpe machuca; a Destreza diz se ele acerta.",
     "niveis": [
-      { "nivel": 1, "texto": "Desajeitado: tropeça no próprio pé e derruba o que pega; leva a vida com as mãos pesadas." },
-      { "nivel": 2, "texto": "Comum: a coordenação de qualquer um; corre, escreve e joga uma pedra sem se atrapalhar." },
-      { "nivel": 3, "texto": "Ágil: reflexo rápido e mão firme; se sai bem em qualquer esporte e em qualquer telhado." },
-      { "nivel": 4, "texto": "Excepcional: acrobata de trupe, batedor de carteira, espadachim de estocada limpa." },
-      { "nivel": 5, "texto": "Pico humano: velocidade e precisão no limite do que um corpo alcança; acerta o que ninguém vê." },
-      { "nivel": 6, "texto": "Ápice absoluto: movimento tão exato que parece truque; quem assiste jura ter visto magia." }
+      {
+        "nivel": 1,
+        "rotulo": "Desajeitado",
+        "texto": "Tropeça no próprio pé e derruba o que pega; leva a vida com as mãos pesadas."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "A coordenação de qualquer um; corre, escreve e joga uma pedra sem se atrapalhar."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Ágil",
+        "texto": "Reflexo rápido e mão firme; se sai bem em qualquer esporte e em qualquer telhado."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Acrobata de trupe, batedor de carteira, espadachim de estocada limpa."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Velocidade e precisão no limite do que um corpo alcança; acerta o que ninguém vê."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Movimento tão exato que parece truque; quem assiste jura ter visto magia."
+      }
     ]
   },
   {
@@ -33,12 +81,36 @@
     "grupo": "fisico",
     "descricao": "O quanto o corpo aguenta antes de parar: fôlego, saúde, resistência à dor e a teimosia da carne. É o mais passivo dos Atributos, quase nunca é ele que motiva a rolagem, mas é ele que está por trás de você continuar de pé: quantos ferimentos leva antes de cair, quanto do golpe a própria carne absorve, quantos dias de marcha e de fome você atravessa. Onde a Força é o pico do esforço, o Vigor é a duração dele.",
     "niveis": [
-      { "nivel": 1, "texto": "Doentio: cansa numa ladeira, sente cada noite mal dormida, uma febre o derruba." },
-      { "nivel": 2, "texto": "Comum: saúde mediana; um dia inteiro de trabalho pesado e o corpo cobra à noite." },
-      { "nivel": 3, "texto": "Resistente: aguenta esforço, frio e dor bem acima da média; marcha o dia todo." },
-      { "nivel": 4, "texto": "Excepcional: cobre distâncias absurdas, dorme ao relento, custa muito a cair." },
-      { "nivel": 5, "texto": "Pico humano: constituição de ferro; sobrevive ao que mataria quase qualquer um." },
-      { "nivel": 6, "texto": "Ápice absoluto: resistência de lenda; segue de pé depois do que mataria os mais duros." }
+      {
+        "nivel": 1,
+        "rotulo": "Doentio",
+        "texto": "Cansa numa ladeira, sente cada noite mal dormida, uma febre o derruba."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "Saúde mediana; um dia inteiro de trabalho pesado e o corpo cobra à noite."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Resistente",
+        "texto": "Aguenta esforço, frio e dor bem acima da média; marcha o dia todo."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Cobre distâncias absurdas, dorme ao relento, custa muito a cair."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Constituição de ferro; sobrevive ao que mataria quase qualquer um."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Resistência de lenda; segue de pé depois do que mataria os mais duros."
+      }
     ]
   },
   {
@@ -47,12 +119,36 @@
     "grupo": "social",
     "descricao": "A força com que você age sobre o que os outros pensam e fazem: convencer, comandar, inspirar, seduzir, ameaçar. É o lado ofensivo do trato social e funciona como um ataque, o alvo resiste com a própria firmeza. Vale tanto para o discurso na praça quanto para a frase certa dita baixo num corredor. Não mede o quanto você é agradável, mede o quanto você tira alguém do lugar onde estava.",
     "niveis": [
-      { "nivel": 1, "texto": "Inábil: você fala e o assunto muda; ninguém sai do lugar por sua causa." },
-      { "nivel": 2, "texto": "Comum: consegue o trivial, no tom certo, de quem já estava disposto." },
-      { "nivel": 3, "texto": "Persuasivo: conduz a conversa e vira quem está em cima do muro." },
-      { "nivel": 4, "texto": "Excepcional: comanda uma sala, dobra uma vontade já decidida, acende uma multidão." },
-      { "nivel": 5, "texto": "Pico humano: poucos resistem; a sua palavra reorganiza os planos de quem a ouve." },
-      { "nivel": 6, "texto": "Ápice absoluto: presença que dobra quase qualquer vontade humana pela pura convicção." }
+      {
+        "nivel": 1,
+        "rotulo": "Inábil",
+        "texto": "Você fala e o assunto muda; ninguém sai do lugar por sua causa."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "Consegue o trivial, no tom certo, de quem já estava disposto."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Persuasivo",
+        "texto": "Conduz a conversa e vira quem está em cima do muro."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Comanda uma sala, dobra uma vontade já decidida, acende uma multidão."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Poucos resistem; a sua palavra reorganiza os planos de quem a ouve."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Presença que dobra quase qualquer vontade humana pela pura convicção."
+      }
     ]
   },
   {
@@ -61,12 +157,36 @@
     "grupo": "social",
     "descricao": "A leitura das pessoas: o que sentem, o que querem, o que estão escondendo e para onde o clima de uma sala está indo. É o sensor do social e trabalha mesmo quando você não pede, é ela que dá aquele incômodo de que o mercador está mentindo antes de você saber por quê. Enquanto a Percepção nota o mundo (a porta entreaberta, o cheiro fora do lugar), a Perspicácia nota gente.",
     "niveis": [
-      { "nivel": 1, "texto": "Cego social: não vê o óbvio nas pessoas e cai duas vezes no mesmo truque." },
-      { "nivel": 2, "texto": "Comum: lê a emoção evidente; sabe quando alguém está bravo ou triste." },
-      { "nivel": 3, "texto": "Perspicaz: fareja a mentira pequena e sente o humor da roda ao entrar nela." },
-      { "nivel": 4, "texto": "Excepcional: enxerga a intenção escondida e o que ficou por dizer." },
-      { "nivel": 5, "texto": "Pico humano: quase nada nas pessoas lhe escapa; a máscara alheia é de vidro." },
-      { "nivel": 6, "texto": "Ápice absoluto: lê gente como quem lê em voz alta; nada humano passa despercebido." }
+      {
+        "nivel": 1,
+        "rotulo": "Cego social",
+        "texto": "Não vê o óbvio nas pessoas e cai duas vezes no mesmo truque."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "Lê a emoção evidente; sabe quando alguém está bravo ou triste."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Perspicaz",
+        "texto": "Fareja a mentira pequena e sente o humor da roda ao entrar nela."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Enxerga a intenção escondida e o que ficou por dizer."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Quase nada nas pessoas lhe escapa; a máscara alheia é de vidro."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Lê gente como quem lê em voz alta; nada humano passa despercebido."
+      }
     ]
   },
   {
@@ -75,12 +195,36 @@
     "grupo": "social",
     "descricao": "O controle da máscara que você mostra: postura, tom, trejeitos e o quanto do que se passa por dentro chega ao rosto. É a defesa do social e a metade calada da conversa, sustenta o blefe, segura a mão que tremeria e impede que a Perspicácia alheia leia as suas intenções. Também é ela que decide o quanto da própria aparência você consegue disfarçar, para o bem e para o mal.",
     "niveis": [
-      { "nivel": 1, "texto": "Transparente: o rosto entrega tudo; é um livro aberto e mal encadernado." },
-      { "nivel": 2, "texto": "Comum: disfarça o incômodo pequeno, desde que ninguém insista." },
-      { "nivel": 3, "texto": "Controlado: mantém a pose sob pressão e mostra só o que decidiu mostrar." },
-      { "nivel": 4, "texto": "Excepcional: insondável; alterna sinceridade e fachada sem que se veja a emenda." },
-      { "nivel": 5, "texto": "Pico humano: máscara perfeita; ninguém atravessa a fachada que você escolheu." },
-      { "nivel": 6, "texto": "Ápice absoluto: nem o mais arguto acha a fresta; você é exatamente o que aparenta ser." }
+      {
+        "nivel": 1,
+        "rotulo": "Transparente",
+        "texto": "O rosto entrega tudo; é um livro aberto e mal encadernado."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "Disfarça o incômodo pequeno, desde que ninguém insista."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Controlado",
+        "texto": "Mantém a pose sob pressão e mostra só o que decidiu mostrar."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Insondável; alterna sinceridade e fachada sem que se veja a emenda."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Máscara perfeita; ninguém atravessa a fachada que você escolheu."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Nem o mais arguto acha a fresta; você é exatamente o que aparenta ser."
+      }
     ]
   },
   {
@@ -89,12 +233,36 @@
     "grupo": "mental",
     "descricao": "O quanto do mundo chega até você: visão, audição, faro e a atenção que separa o detalhe importante do ruído. É o Atributo do reparar, e o Mestre o usa muito de ofício, sem avisar, para decidir quem viu a emboscada, quem sentiu cheiro de óleo e quem notou a marca fresca no batente. Também guia o tiro à distância, porque acertar longe é antes de tudo enxergar direito.",
     "niveis": [
-      { "nivel": 1, "texto": "Distraído: passa direto pelo óbvio e é pego de surpresa quase sempre." },
-      { "nivel": 2, "texto": "Comum: nota o que salta aos olhos, e pouco mais." },
-      { "nivel": 3, "texto": "Observador: capta o detalhe fora do lugar e o barulho que não devia estar ali." },
-      { "nivel": 4, "texto": "Excepcional: percebe o quase imperceptível; é difícil de emboscar e de enganar." },
-      { "nivel": 5, "texto": "Pico humano: lê um salão num relance e sente o perigo antes de vê-lo." },
-      { "nivel": 6, "texto": "Ápice absoluto: sentidos no limite do humano; percebe o que os outros não têm como perceber." }
+      {
+        "nivel": 1,
+        "rotulo": "Distraído",
+        "texto": "Passa direto pelo óbvio e é pego de surpresa quase sempre."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "Nota o que salta aos olhos, e pouco mais."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Observador",
+        "texto": "Capta o detalhe fora do lugar e o barulho que não devia estar ali."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Percebe o quase imperceptível; é difícil de emboscar e de enganar."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Lê um salão num relance e sente o perigo antes de vê-lo."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Sentidos no limite do humano; percebe o que os outros não têm como perceber."
+      }
     ]
   },
   {
@@ -103,12 +271,36 @@
     "grupo": "mental",
     "descricao": "O que você sabe e a capacidade de usar isso: memória, estudo, raciocínio estruturado, planejamento e invenção. É o Atributo do tempo de pensar, do plano armado com calma e do saber acumulado em anos, está por trás de reconhecer um brasão, projetar uma ponte e reconstituir um crime pelas peças. Não confunda com Raciocínio: a Inteligência é a profundidade do pensamento, o Raciocínio é a velocidade dele.",
     "niveis": [
-      { "nivel": 1, "texto": "Simplório: se perde em abstrações; planos com mais de dois passos escapam." },
-      { "nivel": 2, "texto": "Comum: senso prático mediano e o saber que a vida ensinou." },
-      { "nivel": 3, "texto": "Culto: bem informado, deduz sozinho e monta um plano que se sustenta." },
-      { "nivel": 4, "texto": "Excepcional: erudito; resolve o que trava os outros e ensina o que sabe." },
-      { "nivel": 5, "texto": "Pico humano: gênio de uma era; enxerga o padrão que ninguém mais vê." },
-      { "nivel": 6, "texto": "Ápice absoluto: mente que redefine o que se julgava possível saber." }
+      {
+        "nivel": 1,
+        "rotulo": "Simplório",
+        "texto": "Se perde em abstrações; planos com mais de dois passos escapam."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "Senso prático mediano e o saber que a vida ensinou."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Culto",
+        "texto": "Bem informado, deduz sozinho e monta um plano que se sustenta."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Erudito; resolve o que trava os outros e ensina o que sabe."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Gênio de uma era; enxerga o padrão que ninguém mais vê."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Mente que redefine o que se julgava possível saber."
+      }
     ]
   },
   {
@@ -117,12 +309,36 @@
     "grupo": "mental",
     "descricao": "A velocidade da mente: reagir, improvisar e decidir com o chão fugindo. É o que aparece quando não há tempo de pensar direito, e por isso governa a ordem em que todos agem quando a briga começa. Também é o que salva a mentira pega no meio, a resposta atravessada e o plano que desandou. A Inteligência sabe a resposta certa; o Raciocínio a encontra antes de ser tarde.",
     "niveis": [
-      { "nivel": 1, "texto": "Lento: demora a entender o que houve e congela quando a crise chega." },
-      { "nivel": 2, "texto": "Comum: reage no tempo de todo mundo, nem antes nem depois." },
-      { "nivel": 3, "texto": "Rápido: pensa de pé e improvisa sem gaguejar." },
-      { "nivel": 4, "texto": "Excepcional: age enquanto os outros ainda estão entendendo o que aconteceu." },
-      { "nivel": 5, "texto": "Pico humano: decide certo no meio do caos, num piscar de olhos." },
-      { "nivel": 6, "texto": "Ápice absoluto: entre o susto e a resposta não há intervalo perceptível." }
+      {
+        "nivel": 1,
+        "rotulo": "Lento",
+        "texto": "Demora a entender o que houve e congela quando a crise chega."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Comum",
+        "texto": "Reage no tempo de todo mundo, nem antes nem depois."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Rápido",
+        "texto": "Pensa de pé e improvisa sem gaguejar."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Excepcional",
+        "texto": "Age enquanto os outros ainda estão entendendo o que aconteceu."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Pico humano",
+        "texto": "Decide certo no meio do caos, num piscar de olhos."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Ápice absoluto",
+        "texto": "Entre o susto e a resposta não há intervalo perceptível."
+      }
     ]
   }
 ]

@@ -15,6 +15,7 @@ import RACA_D from '../data/racas.json';
 // a mesma formatação de parâmetros do capítulo XV, para a ficha não inventar outra
 import { ordemPar, valorPar, formaDe, rank, PAR_FORMA } from './artes-fmt';
 import { sparkSVG } from './centelha-spark';
+import { url } from './site';
 import {
   ARMA, ARMADURA, ESCUDO, ARMAS, ARMADURAS, ESCUDOS, ID_ARMADURA_LIVRE, baseArmadura,
   CAMPOS_ARMA, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
@@ -58,22 +59,30 @@ export function montarFicha(opts: FichaOpts) {
 
   const SEC_NOME: Record<string, string> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.nome]));
   const SEC_DESC: Record<string, string> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.descricao]));
+  const SEC_NIV: Record<string, any[]> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.niveis]));
   const TRACO_DESC: Record<string, string> = {
     centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana.',
-    willpower: 'Reserva de determinação (0–12, piso 0, custo ×2 por nível). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
-    aparencia: 'Traço próprio (0–12, piso 0, custo ×2 por nível). Modificador direcional na jogada social: ajuda alinhado (seduzir/impressionar), atrapalha invertido (intimidar). A Compostura mascara parte dele.',
+    willpower: 'Reserva de determinação (0 a 12, piso 0, custo ×2 por nível). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
+    aparencia: 'Traço próprio (0 a 12, piso 0, custo ×2 por nível). Modificador direcional na jogada social: ajuda alinhado (seduzir, impressionar) e atrapalha invertido (intimidar). A Compostura mascara parte dele.',
   };
+  /**
+   * Todo traço da ficha abre o MESMO modal, com a mesma informação e na mesma ordem:
+   * tipo · nome · descrição em um parágrafo · régua de níveis (número, rótulo, texto) ·
+   * link para o capítulo onde ele mora. Antes cada tipo entregava um formato diferente, e as
+   * 92 perícias caíam todas na régua genérica; agora cada uma traz a sua, vinda do dado.
+   */
   function openTraitModal(nm: HTMLElement) {
     const dots = nm.closest('.trow')?.querySelector('.dots') as HTMLElement | null; if (!dots) return;
     const k = dots.dataset.kind!, key = dots.dataset.key!;
+    const escala = (n: string) => (regras as any)[n];
     let p: any = null;
-    if (k === 'attr') { const a = (ATTRS_D as any[]).find((x) => x.id === key); p = { tipo: 'atributo', nome: a.nome, descricao: a.descricao, niveis: a.niveis }; }
-    else if (k === 'skill') { const h = (HAB_D as any[]).find((x) => x.id === key); p = { tipo: 'habilidade', nome: h.nome, descricao: h.descricao, niveis: (regras as any).escalaHabilidade }; }
-    else if (k === 'skill2') { p = { tipo: 'habilidade secundária', nome: SEC_NOME[key] || key, descricao: SEC_DESC[key] || 'Conhecimento ou ofício específico (custo reduzido). Segue a mesma escala de competência.', niveis: (regras as any).escalaHabilidade }; }
-    else if (k === 'virtue') { const v = (VIRT_D as any[]).find((x) => x.id === key); p = { tipo: 'virtude', nome: v.nome, descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: v.niveis }; }
-    else if (k === 'centelha') { p = { tipo: 'traço', nome: 'Centelha', descricao: TRACO_DESC.centelha, niveis: (regras as any).escalaCentelha }; }
-    else if (k === 'willpower') { p = { tipo: 'traço', nome: 'Força de Vontade', descricao: TRACO_DESC.willpower, niveis: (regras as any).escalaVontade }; }
-    else if (k === 'aparencia') { p = { tipo: 'traço', nome: 'Aparência', descricao: TRACO_DESC.aparencia, niveis: (regras as any).escalaAparencia }; }
+    if (k === 'attr') { const a = (ATTRS_D as any[]).find((x) => x.id === key); p = { tipo: 'atributo', nome: a.nome, descricao: a.descricao, niveis: a.niveis, url: url('regras/atributos') }; }
+    else if (k === 'skill') { const h = (HAB_D as any[]).find((x) => x.id === key); p = { tipo: 'habilidade', nome: h.nome, descricao: h.descricao, niveis: h.niveis || escala('escalaHabilidade'), url: url('regras/habilidades') }; }
+    else if (k === 'skill2') { p = { tipo: 'habilidade secundária', nome: SEC_NOME[key] || key, descricao: SEC_DESC[key] || 'Conhecimento ou ofício específico, de custo reduzido. Segue a mesma escala de competência das primárias.', niveis: SEC_NIV[key] || escala('escalaHabilidade'), url: url('regras/habilidades-secundarias') + '#sec-' + key }; }
+    else if (k === 'virtue') { const v = (VIRT_D as any[]).find((x) => x.id === key); p = { tipo: 'virtude', nome: v.nome, descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: v.niveis, url: url('regras/aparencia-virtudes-vontade') }; }
+    else if (k === 'centelha') { p = { tipo: 'traço', nome: 'Centelha', descricao: TRACO_DESC.centelha, niveis: escala('escalaCentelha'), url: url('regras/centelha') }; }
+    else if (k === 'willpower') { p = { tipo: 'traço', nome: 'Força de Vontade', descricao: TRACO_DESC.willpower, niveis: escala('escalaVontade'), url: url('regras/aparencia-virtudes-vontade') }; }
+    else if (k === 'aparencia') { p = { tipo: 'traço', nome: 'Aparência', descricao: TRACO_DESC.aparencia, niveis: escala('escalaAparencia'), url: url('regras/aparencia-virtudes-vontade') }; }
     if (p && (window as any).refModal) (window as any).refModal(p);
   }
   const CAM_ORDER = (CAM_D as any[]).map((c) => c.id);
