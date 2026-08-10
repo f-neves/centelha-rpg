@@ -291,6 +291,8 @@ export async function abrirMesa(aba: string): Promise<CtxMesa | null> {
   document.querySelectorAll<HTMLAnchorElement>('.mesa-abas a[data-slug]').forEach((a) => {
     a.href = u(a.dataset.slug!) + '?id=' + id;
   });
+  const voltar = elo('mesa-voltar') as HTMLAnchorElement | null;
+  if (voltar) voltar.href = u('mesas');
   definirCrumbs([
     { label: 'Mesas / Fichas', href: u('mesas') },
     { label: mesa.nome, href: aba === 'escudo' ? undefined : u('mesa') + '?id=' + id },

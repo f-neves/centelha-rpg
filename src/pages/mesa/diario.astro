@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
 ---
-<Base title="Diário" largura="wide" descricao="Sessões e anotações da campanha.">
+<Base title="Diário" largura="full" telaCheia descricao="Sessões e anotações da campanha.">
   <MesaCab aba="diario">
 
     <section class="bloco">
@@ -27,7 +27,7 @@ import MesaCab from '../../components/MesaCab.astro';
 </Base>
 
 <style is:global>
-  .ss-lista, .nt-lista { display: flex; flex-direction: column; gap: .8rem; }
+  .ss-lista, .nt-lista { display: flex; flex-direction: column; gap: .6rem; }
   .ss-card { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
   .ss-card.privada { border-style: dashed; }
   .ss-cab { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; padding: .55rem .8rem;

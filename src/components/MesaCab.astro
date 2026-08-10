@@ -18,36 +18,35 @@ const { aba } = Astro.props;
 <div id="mesa-erro" class="erro" hidden></div>
 
 <div id="mesa-topo" hidden>
-  <header class="mesa-cab">
-    <div class="mesa-cab-id">
+  {/* Uma barra só, grudada no topo: identidade da mesa e abas na mesma peça.
+      Antes eram trilha + título + descrição + abas em blocos separados, ~155px
+      antes da primeira linha útil. Agora são ~66px. */}
+  <div class="mesa-barra" id="mesa-barra">
+    <div class="mb-linha">
+      <button class="mb-icone" id="mesa-menu" aria-label="Mostrar o menu do site" title="Mostrar o menu do site">☰</button>
+      <a class="mb-icone" id="mesa-voltar" href="#" aria-label="Voltar para Mesas / Fichas" title="Voltar para Mesas / Fichas">‹</a>
+      <h1 id="mesa-nome" class="cinzel mb-nome"></h1>
       <span id="mesa-papel" class="papel"></span>
-      <h1 id="mesa-nome" class="cinzel"></h1>
-      <p id="mesa-desc" class="muted"></p>
+      <p id="mesa-desc" class="mb-desc muted"></p>
+      <span class="mb-espaco"></span>
+      <span id="mesa-convite" class="mb-convite" hidden>
+        <code id="mesa-codigo" title="Código de convite"></code>
+        <button class="mb-icone" id="mesa-copiar" title="Copiar o código de convite">⧉</button>
+        <button class="mb-icone" id="mesa-regen" title="Gerar um novo código (invalida o atual)">↻</button>
+      </span>
+      <button class="btn mini" id="mesa-editar" hidden>Editar</button>
+      <button class="btn mini" id="mesa-sair" hidden>Sair</button>
     </div>
-    <div class="mesa-cab-acoes">
-      <div id="mesa-convite" class="convite" hidden>
-        <span class="muted">Código de convite</span>
-        <div class="convite-linha">
-          <code id="mesa-codigo"></code>
-          <button class="btn mini" id="mesa-copiar" title="Copiar código">Copiar</button>
-          <button class="btn mini" id="mesa-regen" title="Gerar um novo código (invalida o atual)">↻</button>
-        </div>
-      </div>
-      <div class="cab-btns">
-        <button class="btn mini" id="mesa-editar" hidden>Editar mesa</button>
-        <button class="btn mini" id="mesa-sair" hidden>Sair da mesa</button>
-      </div>
-    </div>
-  </header>
 
-  <nav class="mesa-abas" aria-label="Seções da mesa">
-    {ABAS.map((a) => (
-      <a data-slug={a.slug} href="#" title={a.dica} class={a.id === aba ? 'atual' : ''}
-         aria-current={a.id === aba ? 'page' : undefined}>
-        <span class="ab-i" aria-hidden="true">{a.icone}</span><span class="ab-n">{a.nome}</span>
-      </a>
-    ))}
-  </nav>
+    <nav class="mesa-abas" aria-label="Seções da mesa">
+      {ABAS.map((a) => (
+        <a data-slug={a.slug} href="#" title={a.dica} class={a.id === aba ? 'atual' : ''}
+           aria-current={a.id === aba ? 'page' : undefined}>
+          <span class="ab-i" aria-hidden="true">{a.icone}</span><span class="ab-n">{a.nome}</span>
+        </a>
+      ))}
+    </nav>
+  </div>
 </div>
 
 <div id="mesa-corpo" hidden><slot /></div>
@@ -77,45 +76,60 @@ const { aba } = Astro.props;
     background: color-mix(in srgb, var(--gold) 12%, transparent); max-width: 44rem; }
   .aviso p { margin: .3rem 0 0; }
 
-  /* ---- cabeçalho ---- */
-  .mesa-cab { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
-    flex-wrap: wrap; padding-bottom: .8rem; }
-  .mesa-cab-id { min-width: 0; }
-  .mesa-cab h1 { margin: .2rem 0 0; font-size: var(--fs-h1); line-height: 1.1; }
-  .mesa-cab-id p { margin: .25rem 0 0; font-size: var(--fs-rotulo); max-width: 46rem; }
-  .mesa-cab-acoes { display: flex; flex-direction: column; gap: .5rem; align-items: flex-end; }
-  .convite { text-align: right; font-size: var(--fs-micro); }
-  .convite-linha { display: flex; align-items: center; gap: .4rem; margin-top: .15rem; }
-  .convite code { font-size: var(--fs-aux); letter-spacing: .14em; background: var(--panel);
-    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .18rem .55rem; }
-  .cab-btns { display: flex; gap: .4rem; flex-wrap: wrap; justify-content: flex-end; }
+  /* ---- barra de comando (identidade + abas, grudada no topo) ---- */
+  .mesa-barra { position: sticky; top: 0; z-index: 40; margin-bottom: .7rem;
+    background: color-mix(in srgb, var(--bg) 93%, transparent); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule); }
+  /* Com wrap: no celular o código de convite e o botão desceram para a segunda
+     linha em vez de empurrar o documento para fora da tela. No notebook nada
+     quebra, porque sobra largura. */
+  .mb-linha { display: flex; align-items: center; flex-wrap: wrap; gap: .18rem .45rem;
+    min-width: 0; padding: .3rem 0 .25rem; }
+  .mb-nome { margin: 0; font-size: var(--fs-h3); line-height: 1.15; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; max-width: 22rem; flex-shrink: 0; }
+  .mb-desc { margin: 0; font-size: var(--fs-micro); white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; min-width: 0; flex: 0 1 auto; }
+  .mb-espaco { flex: 1 1 auto; min-width: .5rem; }
+  .mb-icone { background: none; border: 1px solid transparent; border-radius: var(--r-sm);
+    color: var(--ink-soft); cursor: pointer; padding: .1rem .35rem; font-size: var(--fs-aux);
+    line-height: 1.2; text-decoration: none; flex-shrink: 0; }
+  .mb-icone:hover { color: var(--accent-texto); border-color: var(--rule); background: var(--panel); }
+  .mb-convite { display: inline-flex; align-items: center; gap: .15rem; flex-shrink: 0; }
+  .mb-convite code { font-size: var(--fs-micro); letter-spacing: .12em; background: var(--panel);
+    border: 1px solid var(--rule); border-radius: var(--r-sm); padding: .1rem .4rem; }
+  /* Numa tela estreita a descrição é a primeira coisa a sair: ela é contexto,
+     e o resto da linha é comando. */
+  @media (max-width: 1180px) { .mb-desc { display: none; } }
+  @media (max-width: 900px) { .mesa-barra { top: 0; } .mb-nome { max-width: 11rem; font-size: var(--fs-aux); } }
 
   .papel { font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .06em;
-    padding: .1rem .55rem; border-radius: 999px; font-weight: 700; }
+    padding: .05rem .45rem; border-radius: 999px; font-weight: 700; flex-shrink: 0; }
   .p-mestre { background: color-mix(in srgb, var(--gold) 25%, transparent); color: var(--ink); }
   .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
 
   /* ---- abas ---- */
-  .mesa-abas { display: flex; gap: .15rem; overflow-x: auto; overflow-y: hidden;
-    border-bottom: 1px solid var(--rule); margin-bottom: 1.2rem; padding-bottom: 0;
-    scrollbar-width: thin; position: sticky; top: 0; z-index: 30;
-    background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); }
+  .mesa-abas { display: flex; gap: .1rem; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }
   .mesa-abas a { display: inline-flex; align-items: center; gap: .3rem; white-space: nowrap;
-    padding: .5rem .55rem; text-decoration: none; color: var(--ink-soft);
+    padding: .28rem .55rem .34rem; text-decoration: none; color: var(--ink-soft);
     font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .01em;
     border-bottom: 2px solid transparent; transition: color .15s, border-color .15s, background .15s; }
   .mesa-abas a:hover { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }
   .mesa-abas a.atual { color: var(--accent-texto); border-bottom-color: var(--accent); font-weight: 700; }
   .mesa-abas .ab-i { font-size: var(--fs-aux); line-height: 1; opacity: .8; }
-  @media (max-width: 640px) { .mesa-abas .ab-n { display: none; } .mesa-abas a { padding: .55rem .8rem; } .mesa-abas .ab-i { font-size: var(--fs-h3); } }
-  @media (max-width: 640px) { .mesa-abas a.atual .ab-n { display: inline; } }
+  @media (max-width: 720px) {
+    .mesa-abas .ab-n { display: none; }
+    .mesa-abas a { padding: .4rem .7rem; }
+    .mesa-abas .ab-i { font-size: var(--fs-h3); }
+    .mesa-abas a.atual .ab-n { display: inline; }
+  }
 
   /* ---- blocos e painéis ---- */
-  .area-mesa .bloco { margin-top: 1.6rem; }
+  .area-mesa .bloco { margin-top: 1.1rem; }
   .area-mesa .bloco:first-child { margin-top: 0; }
   .bloco-cab { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem;
-    flex-wrap: wrap; border-bottom: 1px solid var(--rule); padding-bottom: .3rem; margin-bottom: .8rem; }
-  .bloco-cab h2 { margin: 0; font-size: var(--fs-h3); }
+    flex-wrap: wrap; border-bottom: 1px solid var(--rule); padding-bottom: .2rem; margin-bottom: .55rem; }
+  .bloco-cab h2 { margin: 0; font-size: var(--fs-aux); font-family: 'Cinzel'; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--accent-texto); }
   .bloco-cab h2 small { font-weight: 400; font-size: var(--fs-micro); color: var(--ink-soft);
     font-family: 'EB Garamond'; letter-spacing: 0; text-transform: none; }
   .bloco-acoes { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; }
@@ -234,7 +248,9 @@ const { aba } = Astro.props;
     background: var(--panel); color: var(--ink); max-width: 30rem; width: 94%;
     box-shadow: 0 12px 40px rgba(0,0,0,.35); }
   .mesa-dlg::backdrop { background: color-mix(in srgb, #12100c 66%, transparent); backdrop-filter: blur(2px); }
-  .mesa-dlg form { display: flex; flex-direction: column; gap: .65rem; padding: 1.05rem 1.15rem 1.15rem; max-height: 84vh; overflow: auto; }
+  /* 88vh e não 84: numa tela de 720px são 29px a mais de formulário, e o
+     diálogo de editar combatente tem doze campos. */
+  .mesa-dlg form { display: flex; flex-direction: column; gap: .5rem; padding: .85rem 1rem 1rem; max-height: 88vh; overflow: auto; }
   .mesa-dlg h3 { margin: 0; color: var(--accent-strong); font-size: var(--fs-aux); font-family: 'Cinzel'; }
   .mesa-dlg label { display: flex; flex-direction: column; gap: .22rem; font-family: 'Cinzel';
     font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
@@ -357,4 +373,24 @@ const { aba } = Astro.props;
   const fechar = () => { if (modal) { modal.hidden = true; document.body.style.overflow = ''; } };
   document.querySelectorAll('#card-modal [data-fechar]').forEach((el) => el.addEventListener('click', fechar));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal && !modal.hidden) fechar(); });
+
+  // O menu do site volta por aqui, e só nesta visita: a preferência global de
+  // barra lateral (localStorage) continua sendo do leitor, não da mesa.
+  document.getElementById('mesa-menu')?.addEventListener('click', () => {
+    document.documentElement.classList.toggle('menu-mesa');
+  });
+
+  /**
+   * Publica a altura real da barra em `--mesa-barra-h`. Quem gruda embaixo dela
+   * (o painel do turno, os cabeçalhos de coluna) precisa desse número, e ele
+   * muda: a descrição some abaixo de 1180px e as abas quebram no celular.
+   */
+  const barra = document.getElementById('mesa-barra');
+  if (barra) {
+    const medir = () => document.documentElement.style.setProperty(
+      '--mesa-barra-h', Math.round(barra.getBoundingClientRect().height) + 'px');
+    medir();
+    new ResizeObserver(medir).observe(barra);
+    addEventListener('resize', medir, { passive: true });
+  }
 </script>

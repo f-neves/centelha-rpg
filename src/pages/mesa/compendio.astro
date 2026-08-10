@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
 ---
-<Base title="Compêndio" largura="wide" descricao="NPCs, lugares, facções, itens e ganchos da campanha.">
+<Base title="Compêndio" largura="full" telaCheia descricao="NPCs, lugares, facções, itens e ganchos da campanha.">
   <MesaCab aba="compendio">
 
     <section class="bloco">
@@ -94,7 +94,7 @@ import MesaCab from '../../components/MesaCab.astro';
   .cx-tipo-btn:hover { color: var(--ink); border-color: var(--accent); }
   .cx-tipo-btn.on { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--ink);
     border-color: var(--accent); font-weight: 700; }
-  .cx-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: .7rem; }
+  .cx-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: .55rem; }
   .cx-card { display: grid; grid-template-columns: auto 1fr; gap: .15rem .7rem; align-items: start;
     border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: var(--r-lg);
     background: var(--panel); padding: .6rem .75rem; }

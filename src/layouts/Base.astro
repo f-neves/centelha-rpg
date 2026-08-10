@@ -13,8 +13,15 @@ import Marcadores from '../components/Marcadores.astro';
 import NestaPagina from '../components/NestaPagina.astro';
 import Busca from '../components/Busca.astro';
 
-interface Props { title: string; descricao?: string; largura?: 'prose' | 'wide' | 'full'; }
-const { title, descricao = 'Centelha — sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose' } = Astro.props;
+/**
+ * `telaCheia` é o modo da área da mesa: a barra lateral sai, a coluna toma a
+ * tela inteira e as margens encolhem. Vem por prop (e não por JavaScript) para
+ * valer já na primeira pintura — num notebook de 13" a página não pode nascer
+ * com 17rem de menu e pular depois. A preferência global de menu do leitor não
+ * é tocada: quem quiser o menu de volta usa o ☰ da própria barra da mesa.
+ */
+interface Props { title: string; descricao?: string; largura?: 'prose' | 'wide' | 'full'; telaCheia?: boolean; }
+const { title, descricao = 'Centelha — sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose', telaCheia = false } = Astro.props;
 
 const here = Astro.url.pathname.replace(/\/+$/, '');
 const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
@@ -47,7 +54,7 @@ if (partes.length) crumbs.push({ label: title });
 <!doctype html>
 <!-- data-theme já no HTML para o tema escuro valer mesmo sem JavaScript; o script do
      <head> troca em seguida se o leitor tiver escolhido outro -->
-<html lang="pt-BR" data-theme="escuro">
+<html lang="pt-BR" data-theme="escuro" class={telaCheia ? 'tela-mesa' : undefined}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />

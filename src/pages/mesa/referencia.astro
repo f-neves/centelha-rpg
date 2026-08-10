@@ -69,7 +69,7 @@ const PORTE_NOME: Record<string, string> = {
   enorme: 'Enorme', imenso: 'Imenso', colossal: 'Colossal',
 };
 ---
-<Base title="Referência" largura="wide" descricao="O escudo do mestre: todas as tabelas de consulta rápida.">
+<Base title="Referência" largura="full" telaCheia descricao="O escudo do mestre: todas as tabelas de consulta rápida.">
   <MesaCab aba="referencia">
 
     <p class="ref-intro muted">Tudo que um escudo de papel teria, sem o limite de quatro painéis. Cada bloco abre e
@@ -304,13 +304,17 @@ const PORTE_NOME: Record<string, string> = {
 </Base>
 
 <style is:global>
-  .ref-intro { font-size: var(--fs-rotulo); max-width: 46rem; margin: 0 0 1rem; }
-  .ref-indice { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: 1.4rem; }
+  .ref-intro { font-size: var(--fs-rotulo); max-width: 46rem; margin: 0 0 .6rem; }
+  /* O índice acompanha a rolagem: numa tela de notebook a página tem uns cinco
+     rolares de altura, e voltar ao topo para trocar de tabela custa a cena. */
+  .ref-indice { display: flex; flex-wrap: wrap; gap: .25rem; margin-bottom: 1rem;
+    position: sticky; top: var(--mesa-barra-h, 66px); z-index: 20; padding: .35rem 0;
+    background: color-mix(in srgb, var(--bg) 93%, transparent); backdrop-filter: blur(8px); }
   .ref-indice a { font-family: 'Cinzel'; font-size: var(--fs-micro); text-decoration: none;
-    padding: .18rem .6rem; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink-soft); }
+    padding: .12rem .55rem; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink-soft); }
   .ref-indice a:hover { border-color: var(--accent); color: var(--accent-texto); }
-  .ref-bloco { margin-bottom: 2rem; scroll-margin-top: 3.4rem; }
-  .ref-bloco > h2 { font-size: var(--fs-h3); border-bottom: 1px solid var(--rule); padding-bottom: .25rem; margin: 0 0 .6rem; }
+  .ref-bloco { margin-bottom: 1.6rem; scroll-margin-top: calc(var(--mesa-barra-h, 66px) + 2.6rem); }
+  .ref-bloco > h2 { font-size: var(--fs-h3); border-bottom: 1px solid var(--rule); padding-bottom: .2rem; margin: 0 0 .45rem; }
   .ref-bloco h3 { font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--accent-strong);
     margin: 1rem 0 .35rem; }
   .ref-bloco h3 small { font-weight: 400; font-family: 'EB Garamond'; font-size: var(--fs-micro); color: var(--ink-soft); }

@@ -10,7 +10,7 @@ const ANCORAS = regras.dificuldade as { dif: number; desafio: string; aaltura: s
 const FERIMENTOS = regras.ferimentos as { minPct: number; maxPct: number; estado: string; penAcao: number | null; penDefesa: number | null }[];
 const MODS = (regras.combateTatico as any).modificadores as { nome: string; valor: number; alvo: string; nota: string }[];
 ---
-<Base title="Mesa" largura="wide" descricao="Escudo do Mestre: o painel da campanha.">
+<Base title="Mesa" largura="full" telaCheia descricao="Escudo do Mestre: o painel da campanha.">
   <MesaCab aba="escudo">
 
     <!-- ================= COMBATE ================= -->
@@ -33,6 +33,11 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
       <div id="grupo-faixa" class="grupo-faixa"><p class="vazio">Carregando o grupo…</p></div>
     </section>
 
+    {/* Daqui para baixo é consulta, não comando: em duas colunas cabe na tela de
+        um notebook sem rolagem, em vez de virar uma fita de dois metros. */}
+    <div class="escudo-baixo">
+    <div class="eb-col">
+
     <!-- ================= RELÓGIOS ================= -->
     <section class="bloco">
       <div class="bloco-cab">
@@ -50,6 +55,9 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
       </div>
       <div id="ganchos"></div>
     </section>
+
+    </div>
+    <div class="eb-col">
 
     <!-- ================= NOTAS RÁPIDAS ================= -->
     <section class="bloco">
@@ -106,6 +114,9 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
       </div>
     </section>
 
+    </div>
+    </div>
+
   </MesaCab>
 
   <dialog id="rel-dlg" class="mesa-dlg">
@@ -138,7 +149,7 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
 <style is:global>
   /* ---- faixa de combate ---- */
   .cmb-faixa { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap;
-    border: 1px solid var(--accent); border-radius: var(--r-lg); padding: .7rem .9rem;
+    border: 1px solid var(--accent); border-radius: var(--r-lg); padding: .45rem .8rem;
     background: color-mix(in srgb, var(--accent) 9%, var(--panel)); }
   .cmb-faixa .agora { display: flex; align-items: center; gap: .6rem; }
   .cmb-faixa .agora-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
@@ -150,26 +161,34 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
   .cmb-faixa .espaco { flex: 1; }
   .sem-combate { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
 
+  /* ---- duas colunas na metade de baixo ---- */
+  .escudo-baixo { display: grid; grid-template-columns: 1fr; gap: 0 1.6rem; }
+  .eb-col { min-width: 0; }
+  @media (min-width: 1240px) { .escudo-baixo { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1240px) { .eb-col > .bloco:first-child { margin-top: 1.1rem; } }
+
   /* ---- faixa do grupo ---- */
-  .grupo-faixa { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: .7rem; }
-  .pj { display: grid; grid-template-columns: auto 1fr; gap: .1rem .7rem; align-items: start;
-    border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .65rem .75rem;
+  .grupo-faixa { display: grid; grid-template-columns: repeat(auto-fill, minmax(18.5rem, 1fr)); gap: .5rem; }
+  .pj { display: grid; grid-template-columns: auto 1fr; gap: .05rem .6rem; align-items: start;
+    border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .5rem .6rem;
     border-left: 3px solid var(--rule); }
   .pj.ferido { border-left-color: #e6a91d; }
   .pj.grave  { border-left-color: #e8791f; }
   .pj.critico{ border-left-color: #cf3327; }
   .pj.caido  { border-left-color: #6a6a6a; opacity: .82; }
   .pj-av { grid-row: span 4; }
+  .pj-av .av { --av-t: 3.1rem; }
   .pj-topo { display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; min-width: 0; }
   .pj-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); color: var(--ink);
-    text-decoration: none; }
+    text-decoration: none; line-height: 1.15; }
   .pj-nome:hover { color: var(--accent-texto); }
   .pj-sub { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
-  .pj-barras { display: flex; flex-direction: column; gap: .2rem; margin: .3rem 0 .25rem; }
-  .pj-linha { display: flex; align-items: center; gap: .35rem; }
-  .pj-linha .rot { flex: 0 0 2.6rem; }
-  .pj-nums { display: flex; flex-wrap: wrap; gap: .15rem .5rem; font-size: var(--fs-micro); }
-  .pj-conds { margin-top: .28rem; }
+  /* As duas barras dividem a linha, como no rastreador de combate. */
+  .pj-barras { display: flex; flex-flow: row wrap; gap: .2rem .35rem; margin: .22rem 0 .18rem; }
+  .pj-linha { display: flex; align-items: center; gap: .3rem; flex: 1 1 8rem; min-width: 7rem; }
+  .pj-linha .rot { flex: 0 0 auto; font-size: calc(var(--fs-micro) * .9); }
+  .pj-nums { display: flex; flex-wrap: wrap; gap: .1rem .45rem; font-size: var(--fs-micro); }
+  .pj-conds { margin-top: .22rem; }
 
   /* ---- relógios ---- */
   .relogios { display: flex; flex-wrap: wrap; gap: .8rem; }
@@ -323,8 +342,8 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
           <span class="pj-sub">${esc(p.conceito || '')}${p.conceito && nomes[p.dono_id] ? ' · ' : ''}${esc(nomes[p.dono_id] || '')}</span>
         </div>
         <div class="pj-barras">
-          <div class="pj-linha"><span class="rot">Vida</span>${hpBarHTML(pvAt, pvMax, 'pj-' + p.id, 'mini')}</div>
-          ${enMax ? `<div class="pj-linha"><span class="rot">Energia</span><div class="hpbar mini enbar"><div class="hpbar-fill" style="width:${enMax ? Math.max(0, Math.min(100, (en / enMax) * 100)) : 0}%"></div><span class="hpbar-txt">${en}<span class="hp-sep">/</span>${enMax}</span></div></div>` : ''}
+          <div class="pj-linha">${hpBarHTML(pvAt, pvMax, 'pj-' + p.id, 'mini')}</div>
+          ${enMax ? `<div class="pj-linha"><div class="hpbar mini enbar" title="Energia"><div class="hpbar-fill" style="width:${Math.max(0, Math.min(100, (en / enMax) * 100))}%"></div><span class="hpbar-txt">En ${en}<span class="hp-sep">/</span>${enMax}</span></div></div>` : ''}
         </div>
         <div class="pj-nums pilha">${nums}</div>
         ${conds ? `<div class="pj-conds conds">${conds}</div>` : ''}

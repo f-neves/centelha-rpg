@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
 ---
-<Base title="Criaturas" largura="wide" descricao="O bestiário desta campanha.">
+<Base title="Criaturas" largura="full" telaCheia descricao="O bestiário desta campanha.">
   <MesaCab aba="criaturas">
 
     <section class="bloco">
@@ -83,7 +83,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
   .cri-filtros { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; margin-bottom: .9rem; }
   .cri-filtros .espaco { flex: 1; }
-  .cri-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: .8rem; }
+  .cri-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .6rem; }
   .cri-secao { grid-column: 1 / -1; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
     letter-spacing: .06em; color: var(--accent-strong); border-bottom: 1px solid var(--rule);
     padding-bottom: .2rem; margin-top: .5rem; }

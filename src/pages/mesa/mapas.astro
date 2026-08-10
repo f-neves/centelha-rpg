@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
 ---
-<Base title="Mapas" largura="wide" descricao="Mapas e cenas da campanha, com pinos.">
+<Base title="Mapas" largura="full" telaCheia descricao="Mapas e cenas da campanha, com pinos.">
   <MesaCab aba="mapas">
 
     <section class="bloco">
@@ -62,7 +62,7 @@ import MesaCab from '../../components/MesaCab.astro';
 </Base>
 
 <style is:global>
-  .mp-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: .8rem; }
+  .mp-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: .6rem; }
   .mp-card { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); overflow: hidden;
     display: flex; flex-direction: column; }
   .mp-card.privado { border-style: dashed; }

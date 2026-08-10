@@ -2,38 +2,40 @@
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
 ---
-<Base title="Combate" largura="full" descricao="Rastreador de combate da mesa: Ticks, dano, condições.">
+<Base title="Combate" largura="full" telaCheia descricao="Rastreador de combate da mesa: Ticks, dano, condições.">
   <MesaCab aba="combate">
 
     <div id="enc-vazio" hidden></div>
 
     <div id="enc-tudo" hidden>
-      <!-- ---------- barra do encontro ---------- -->
+      {/* Uma barra só para tudo que é do ENCONTRO (o que ele é, o que se faz com
+          ele, quem entra nele). Eram duas caixas empilhadas; juntas custavam
+          uma faixa inteira de card num notebook. */}
       <div class="enc-barra">
-        <div class="enc-id">
+        <span class="enc-id">
           <span class="enc-rot">Encontro</span>
           <strong id="enc-nome" class="cinzel"></strong>
           <span class="enc-relogio"><span id="enc-rodada"></span> · <span id="enc-tick"></span></span>
-        </div>
-        <div class="enc-btns" id="enc-btns"></div>
-      </div>
-
-      <div class="enc-add" id="enc-add" hidden>
-        <button class="btn mini" id="add-pcs">+ personagens</button>
-        <button class="btn mini" id="add-criatura">+ criatura</button>
-        <button class="btn mini" id="add-npc">+ NPC</button>
-        <button class="btn mini" id="add-avulso">+ avulso</button>
-        <span class="sep-v"></span>
-        <label class="mini-chk"><input type="checkbox" id="ver-ocultos" checked /> ver ocultos</label>
+        </span>
+        <span class="enc-add" id="enc-add" hidden>
+          <span class="sep-v"></span>
+          <button class="btn mini" id="add-pcs">+ PCs</button>
+          <button class="btn mini" id="add-criatura">+ criatura</button>
+          <button class="btn mini" id="add-npc">+ NPC</button>
+          <button class="btn mini" id="add-avulso">+ avulso</button>
+          <label class="mini-chk"><input type="checkbox" id="ver-ocultos" checked /> ocultos</label>
+        </span>
         <span class="espaco"></span>
-        <button class="btn mini" id="btn-desfazer" disabled title="Desfaz a última alteração de Vida ou de Tick">↶ desfazer</button>
-        <button class="btn mini" id="btn-recarregar" title="Buscar o estado mais recente">↻</button>
+        <span class="enc-btns" id="enc-btns"></span>
+        <span class="enc-add" id="enc-add2" hidden>
+          <button class="btn mini" id="btn-desfazer" disabled title="Desfaz a última alteração de Vida ou de Tick">↶</button>
+          <button class="btn mini" id="btn-recarregar" title="Buscar o estado mais recente">↻</button>
+        </span>
       </div>
 
       <!-- ---------- corpo em duas colunas ---------- -->
       <div class="cmb-grade">
         <div class="cmb-col-ordem">
-          <h3 class="col-h">Ordem dos Ticks</h3>
           <div id="cmb-lista" class="cmb-lista"></div>
           <div id="cmb-fora-wrap" hidden>
             <h3 class="col-h col-h-fora">Fora de combate</h3>
@@ -250,47 +252,55 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <style is:global>
   /* ---------------- barra do encontro ---------------- */
-  .enc-barra { display: flex; align-items: center; justify-content: space-between; gap: .8rem;
-    flex-wrap: wrap; border: 1px solid var(--rule); border-radius: var(--r-lg);
-    background: var(--panel); padding: .55rem .8rem; margin-bottom: .5rem; }
-  .enc-id { display: flex; align-items: baseline; gap: .55rem; flex-wrap: wrap; min-width: 0; }
+  .enc-barra { display: flex; align-items: center; gap: .2rem .35rem; flex-wrap: wrap;
+    border: 1px solid var(--rule); border-radius: var(--r-lg);
+    background: var(--panel); padding: .3rem .6rem; margin-bottom: .45rem; }
+  .enc-id { display: inline-flex; align-items: baseline; gap: .45rem; flex-wrap: wrap; min-width: 0; margin-right: .3rem; }
   .enc-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
     letter-spacing: .06em; color: var(--ink-soft); }
-  .enc-id strong { font-size: var(--fs-h3); }
-  .enc-relogio { font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--accent-texto);
+  .enc-id strong { font-size: var(--fs-aux); }
+  .enc-relogio { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-texto);
     font-variant-numeric: tabular-nums; }
-  .enc-btns { display: flex; gap: .35rem; flex-wrap: wrap; }
-  .enc-add { display: flex; gap: .35rem; flex-wrap: wrap; align-items: center; margin-bottom: .9rem; }
-  .enc-add .espaco { flex: 1; }
-  .enc-add .sep-v { width: 1px; height: 1.2rem; background: var(--rule); }
+  .enc-btns { display: inline-flex; gap: .3rem; flex-wrap: wrap; }
+  .enc-add { display: inline-flex; gap: .3rem; flex-wrap: wrap; align-items: center; }
+  .enc-barra .espaco { flex: 1 1 auto; }
+  .enc-add .sep-v { width: 1px; height: 1.1rem; background: var(--rule); margin: 0 .15rem; }
   .mini-chk { display: inline-flex; align-items: center; gap: .3rem; font-size: var(--fs-micro); color: var(--ink-soft); }
 
-  /* ---------------- grade ---------------- */
-  .cmb-grade { display: grid; grid-template-columns: minmax(0, 1fr) 22rem; gap: 1.2rem; align-items: start; }
+  /* ---------------- grade ----------------
+     A coluna lateral é GRUDADA: num notebook a lista de combatentes passa da
+     altura da tela, e o painel de quem age não pode sumir junto com ela. */
+  .cmb-grade { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: .9rem; align-items: start; }
+  .cmb-col-lado { position: sticky; top: calc(var(--mesa-barra-h, 66px) + .4rem); }
   /* Numa coluna só, o painel de quem age tem de vir ANTES da lista: no celular
      o mestre olha primeiro "de quem é a vez", e rolar até o fim para descobrir
      isso é o oposto do que a página promete. O `display: contents` dissolve a
      coluna lateral para os dois blocos entrarem na grade e poderem ser ordenados. */
-  @media (max-width: 1100px) {
+  @media (max-width: 1180px) {
     .cmb-grade { grid-template-columns: 1fr; }
-    .cmb-col-lado { display: contents; }
-    .painel-turno { order: -1; }
+    .cmb-col-lado { display: contents; position: static; }
+    .painel-turno { order: -1; position: sticky; top: calc(var(--mesa-barra-h, 66px) + .3rem); z-index: 20; }
     .cmb-col-ordem { order: 0; }
     .log-caixa { order: 1; }
   }
+  /* Duas colunas de lista foram medidas e DESCARTADAS: numa tela de 1920 cada
+     coluna fica com ~700px, o miolo do card quebra em duas faixas e o card sobe
+     de 101px para 126px. Resultado: 6 combatentes visíveis contra 8 em coluna
+     única. Só compensaria acima de ~1950px, que é fora do alvo (13" a 17"). */
+  @media (min-width: 1750px) { .cmb-grade { grid-template-columns: minmax(0, 1fr) 23rem; } }
   .col-h { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .07em;
-    color: var(--ink-soft); margin: 0 0 .45rem; border-bottom: 1px solid var(--rule); padding-bottom: .2rem; }
-  .col-h-fora { margin-top: 1.2rem; }
-  .cmb-lista { display: flex; flex-direction: column; gap: .45rem; }
+    color: var(--ink-soft); margin: 0 0 .3rem; border-bottom: 1px solid var(--rule); padding-bottom: .15rem; }
+  .col-h-fora { margin-top: .8rem; }
+  .cmb-lista { display: flex; flex-direction: column; gap: .4rem; }
   .cmb-lista-fora { opacity: .72; }
 
   /* ---------------- card do combatente ---------------- */
   /* Flex e não grade: o card tem um número variável de faixas (barras, stats,
      condições, nota), e com `grid-row: span N` no avatar as que faltam ou sobram
      empurram as outras para cima da linha de botões. */
-  .cbt { display: flex; align-items: flex-start; gap: .65rem;
+  .cbt { display: flex; align-items: flex-start; gap: .55rem;
     border: 1px solid var(--rule); border-left: 4px solid var(--rule); border-radius: var(--r-lg);
-    background: var(--panel); padding: .5rem .65rem; position: relative; }
+    background: var(--panel); padding: .38rem .55rem; position: relative; }
   .cbt.g-aliado  { border-left-color: var(--accent); }
   .cbt.g-inimigo { border-left-color: #c1352c; }
   .cbt.g-neutro  { border-left-color: var(--gold); }
@@ -298,24 +308,33 @@ import MesaCab from '../../components/MesaCab.astro';
     background: color-mix(in srgb, var(--accent) 7%, var(--panel)); }
   .cbt.fora { filter: grayscale(.6); }
   .cbt.oculto { border-style: dashed; }
-  .cbt-tick { flex: 0 0 2.4rem; align-self: center; text-align: center; font-family: 'Cinzel';
-    font-weight: 700; font-size: var(--fs-h3); color: var(--accent-texto); font-variant-numeric: tabular-nums; line-height: 1; }
-  .cbt-tick small { display: block; font-size: var(--fs-micro); font-weight: 400; color: var(--ink-soft); letter-spacing: .04em; }
+  .cbt-tick { flex: 0 0 2rem; align-self: center; text-align: center; font-family: 'Cinzel';
+    font-weight: 700; font-size: var(--fs-aux); color: var(--accent-texto); font-variant-numeric: tabular-nums; line-height: 1.05; }
+  .cbt.atual .cbt-tick { font-size: var(--fs-h3); }
+  .cbt-tick small { display: block; font-size: calc(var(--fs-micro) * .85); font-weight: 400; color: var(--ink-soft); letter-spacing: .04em; }
   .cbt-av { flex: 0 0 auto; position: relative; }
-  .cbt-av .av { --av-t: 3.4rem; }
-  .cbt.atual .cbt-av .av { --av-t: 4.4rem; box-shadow: 0 0 0 2px var(--accent); }
-  .cbt-olho { position: absolute; right: -.2rem; bottom: -.2rem; font-size: .7rem; background: var(--panel);
-    border: 1px solid var(--rule); border-radius: 50%; width: 1.2rem; height: 1.2rem; display: grid; place-items: center; }
-  .cbt-corpo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .25rem; }
-  .cbt-topo { display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; min-width: 0; }
-  .cbt-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); }
+  .cbt-av .av { --av-t: 2.7rem; }
+  .cbt.atual .cbt-av .av { --av-t: 3.6rem; box-shadow: 0 0 0 2px var(--accent); }
+  .cbt-olho { position: absolute; right: -.2rem; bottom: -.2rem; font-size: .65rem; background: var(--panel);
+    border: 1px solid var(--rule); border-radius: 50%; width: 1.1rem; height: 1.1rem; display: grid; place-items: center; }
+  .cbt-corpo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .16rem; }
+  .cbt-topo { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; min-width: 0; }
+  /* Barras e números na mesma faixa: são as duas coisas que o mestre lê de
+     relance, e lado a lado economizam uma linha por combatente. */
+  .cbt-meio { display: flex; align-items: center; gap: .25rem .9rem; flex-wrap: wrap; }
+  .cbt-meio .cbt-barras { flex: 1 1 20rem; }
+  .cbt-meio .cbt-stats { flex: 1 1 16rem; }
+  .cbt-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); line-height: 1.15; }
   .cbt.atual .cbt-nome { font-size: var(--fs-h3); color: var(--accent-texto); }
   .cbt-meta { font-size: var(--fs-micro); color: var(--ink-soft); }
-  .cbt-barras { display: flex; flex-direction: column; gap: .18rem; max-width: 30rem; }
-  .cbt-linha { display: flex; align-items: center; gap: .35rem; }
+  /* Vida e Energia lado a lado, e não empilhadas: é uma faixa de 20px a menos
+     por combatente, o que numa tela de 720px vale um card inteiro. */
+  .cbt-barras { display: flex; flex-flow: row wrap; gap: .25rem .4rem; max-width: 34rem; }
+  .cbt-linha { display: flex; align-items: center; gap: .3rem; flex: 1 1 11rem; min-width: 9rem; }
   .cbt-stats { font-size: var(--fs-micro); }
-  .cbt-acoes { display: flex; gap: .25rem; flex-wrap: wrap; align-items: center; margin-top: .15rem; }
-  .cbt-acoes .hp-amt { width: 3.2rem; }
+  .cbt-acoes { display: flex; gap: .2rem; flex-wrap: wrap; align-items: center; margin-top: .1rem; }
+  .cbt-acoes .hp-amt { width: 2.9rem; padding: .12rem .25rem; }
+  .cbt-acoes .btn.mini { padding: .12rem .45rem; }
   .cbt-acoes .hp-tipo { font-size: var(--fs-micro); padding: .15rem .2rem; }
   .cbt-acoes .btn.agir { border-color: var(--accent); color: var(--accent-texto); font-weight: 700; }
   .cbt-acoes .btn.agir:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
@@ -326,7 +345,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
   /* ---------------- painel do turno ---------------- */
   .painel-turno { border: 1px solid var(--accent); border-radius: var(--r-lg);
-    background: color-mix(in srgb, var(--accent) 8%, var(--panel)); padding: .7rem .85rem; margin-bottom: 1rem; }
+    background: color-mix(in srgb, var(--accent) 8%, var(--panel)); padding: .55rem .75rem; margin-bottom: .6rem; }
   .painel-turno h3 { margin: 0 0 .3rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
     text-transform: uppercase; letter-spacing: .07em; color: var(--accent-strong); }
   .pt-quem { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
@@ -346,7 +365,10 @@ import MesaCab from '../../components/MesaCab.astro';
   .log-cab .col-h { border: none; margin: 0; padding: 0; }
   .log-add { display: inline-flex; gap: .25rem; }
   .log-add input { min-width: 8rem; font-size: var(--fs-micro); padding: .15rem .35rem; }
-  .cmb-log { display: flex; flex-direction: column; gap: .05rem; max-height: 26rem; overflow-y: auto; margin-top: .4rem; }
+  /* O registro come o que sobrar da altura da janela e nada mais: sem o teto
+     calculado ele empurrava o painel grudado para fora da tela num notebook. */
+  .cmb-log { display: flex; flex-direction: column; gap: .05rem; margin-top: .35rem; overflow-y: auto;
+    max-height: clamp(8rem, calc(100vh - var(--mesa-barra-h, 66px) - 22rem), 26rem); }
   .log-linha { display: flex; align-items: baseline; gap: .4rem; padding: .18rem .1rem;
     border-bottom: 1px solid color-mix(in srgb, var(--rule) 55%, transparent); font-size: var(--fs-micro); }
   .log-linha:last-child { border-bottom: none; }
@@ -619,9 +641,9 @@ import MesaCab from '../../components/MesaCab.astro';
         <div class="cbt-topo">
           <span class="cbt-nome">${esc(c.nome)}</span>
           <span class="cbt-meta">${esc(tipoTxt)} · ini ${c.iniciativa ?? 0} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
+          ${conds.length ? `<span class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</span>` : ''}
         </div>
-        ${barras}${stats}
-        ${conds.length ? `<div class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</div>` : ''}
+        <div class="cbt-meio">${barras}${stats}</div>
         ${acoes}
         ${(EH_MESTRE && c.notas) ? `<div class="cbt-nota">${esc(c.notas)}</div>` : ''}
       </div>
@@ -775,6 +797,7 @@ import MesaCab from '../../components/MesaCab.astro';
       <button class="btn mini" id="btn-reiniciar">Reiniciar</button>
       <button class="btn mini perigo" id="btn-encerrar">Encerrar</button>` : '';
     el('enc-add').hidden = !EH_MESTRE;
+    el('enc-add2').hidden = !EH_MESTRE;
     el('log-add').hidden = !EH_MESTRE;
     if (!EH_MESTRE) return;
 

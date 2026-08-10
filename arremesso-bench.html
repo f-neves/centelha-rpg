@@ -1052,15 +1052,33 @@ const TABPESO = [
 const GW = 580, GH = 320, gml = 44, gmr = 16, gmt = 16, gmb = 34;
 const gxB = gml, gxR = GW - gmr, gyT = gmt, gyB = GH - gmb;
 const gpw = gxR - gxB, gph = gyB - gyT;
-const GMASSA = [0.004, 300], GALC = [0.6, 300];
+
+/** passo redondo (1, 2, 2,5 ou 5 × 10ⁿ) que cabe em ~6 intervalos */
+function passoBom(faixa, alvoN = 6){
+  const bruto = faixa/alvoN;
+  const e = Math.floor(Math.log10(bruto)), base = Math.pow(10, e);
+  for (const m of [1, 2, 2.5, 5, 10]) if (m*base >= bruto) return m*base;
+  return 10*base;
+}
 
 function plotRegra(){
-  const lx = Math.log, spanX = lx(GMASSA[1]) - lx(GMASSA[0]);
-  const X = (m) => gxB + ((lx(Math.max(GMASSA[0], Math.min(GMASSA[1], m))) - lx(GMASSA[0]))/spanX)*gpw;
-  const spanY = lx(GALC[1]) - lx(GALC[0]);
-  const Y = (d) => gyB - ((lx(Math.max(GALC[0], Math.min(GALC[1], d))) - lx(GALC[0]))/spanY)*gph;
-  const dentro = (d) => d >= GALC[0] && d <= GALC[1];
+  // Escala linear nos dois eixos. O preço é que o ápice fica colado no zero:
+  // em 25 kg de eixo, os 100 g do ápice são 0,4% da largura. Por isso o teto do
+  // eixo é ajustável, para poder aproximar a faixa que interessa.
+  const xMax = M.gxMax;
+  const X = (m) => gxB + (Math.min(m, xMax)/xMax)*gpw;
   const LA = M.rTeto*M.pA, LB = M.rTeto*M.pB;
+  // o teto do eixo Y sai do maior valor visível, arredondado para cima
+  let yPico = 0;
+  for (let i = 0; i <= 400; i++){
+    const m = xMax*i/400;
+    yPico = Math.max(yPico, alcanceRegra(M.faaA, m, M.pA), alcanceRegra(M.faaB, m, M.pB));
+  }
+  for (const [, m, real] of CONF) if (m <= xMax) yPico = Math.max(yPico, real);
+  const pY = passoBom(yPico, 5);
+  const yMax = Math.ceil(yPico/pY)*pY || 1;
+  const Y = (d) => gyB - (Math.max(0, Math.min(d, yMax))/yMax)*gph;
+  const dentro = (d) => d >= 0 && d <= yMax;
 
   let s = '';
   // os três regimes ao fundo, medidos pelo topo humano (a curva cheia)

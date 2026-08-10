@@ -333,6 +333,29 @@ html:not([data-barra='nativa']) ::-webkit-scrollbar-corner { background: var(--s
   html.sidebar-collapsed .sidebar-expand { display: inline-flex; }
 }
 
+/* ---------- tela cheia da área da mesa ----------
+   O Escudo do Mestre é usado num notebook, com o livro fechado: o menu de
+   capítulos não serve para nada ali e come 17rem de largura que a mesa quer.
+   Numa tela de 13" a 17" o recurso escasso é a ALTURA (720 a 900px, menos a
+   moldura do navegador), então aqui a margem vertical também encolhe.
+   O ☰ da barra da mesa traz o menu de volta sem gravar preferência. */
+@media (min-width: 901px) {
+  html.tela-mesa .shell { grid-template-columns: 1fr; }
+  html.tela-mesa .sidebar { display: none; }
+  html.tela-mesa .sidebar-expand { display: none; }
+  html.tela-mesa .content { padding: 0 clamp(.7rem, 1.4vw, 1.4rem) 2.5rem; }
+  html.tela-mesa.menu-mesa .shell { grid-template-columns: 17rem 1fr; }
+  html.tela-mesa.menu-mesa .sidebar { display: block; }
+}
+/* A trilha de navegação sai: as abas já dizem onde se está, e o "‹ Mesas" mora
+   na própria barra. São 30px de altura devolvidos à lista de combatentes. */
+html.tela-mesa .crumbs { display: none; }
+html.tela-mesa .content { padding-top: 0; }
+/* O "Nesta página" indexa títulos de capítulo; nas abas da mesa não há títulos
+   para indexar, e o botão flutuante ficava por cima da lista de combatentes. */
+html.tela-mesa #otp-fab, html.tela-mesa #otp-panel { display: none; }
+@media (max-width: 900px) { html.tela-mesa .content { padding: 0 .7rem 4rem; } }
+
 /* ---------- nav ---------- */
 .brand { font-family: 'Cinzel'; font-weight: 700; color: var(--accent-texto); font-size: var(--fs-h3); text-decoration: none; display: block; line-height: 1.1; }
 .brand .d6 { color: var(--accent-strong); }

@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
 ---
-<Base title="Grupo" largura="wide" descricao="Os personagens da mesa: fichas, passivos e aprovação.">
+<Base title="Grupo" largura="full" telaCheia descricao="Os personagens da mesa: fichas, passivos e aprovação.">
   <MesaCab aba="grupo">
 
     <section class="bloco">
@@ -50,7 +50,7 @@ import MesaCab from '../../components/MesaCab.astro';
 </Base>
 
 <style is:global>
-  .pers-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr)); gap: .8rem; }
+  .pers-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: .6rem; }
   .pc-card { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
   .pc-topo { display: grid; grid-template-columns: auto 1fr; gap: .2rem .75rem; padding: .7rem .8rem; }
   .pc-av { grid-row: span 3; }
