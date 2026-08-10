@@ -109,6 +109,13 @@
   @media (max-width:1050px){ .regragrid{grid-template-columns:1fr} }
   .regrapar{display:flex;flex-direction:column;gap:14px}
   .eq.big{font-size:1.15rem;line-height:2.2}
+  .persbox{background:var(--sunk);border-radius:7px;padding:8px 10px;margin-bottom:8px}
+  .persnome{font-family:'Cinzel',Georgia,serif;font-size:.8rem;color:var(--ink);
+            display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px}
+  .persnome .pip{width:8px;height:8px;border-radius:50%}
+  .persnome i{font-style:normal;font-family:'EB Garamond',Georgia,serif;font-size:.76rem;
+              color:var(--accent-strong);font-variant-numeric:tabular-nums}
+  .persbox .attr{font-size:.78rem;gap:6px}
   .regraleg{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:8px;font-size:.78rem;color:var(--ink-soft)}
   .regraleg span{display:inline-flex;align-items:center;gap:6px}
   .regraleg svg{width:20px;height:12px;overflow:visible}
@@ -296,10 +303,7 @@
 
         <div class="pgrp">
           <b>As duas referências</b>
-          <div class="fld"><label>FAA do topo humano</label>
-            <input type="number" data-p="faaA" min="2" max="24" step="1"></div>
-          <div class="fld"><label>FAA do humano médio</label>
-            <input type="number" data-p="faaB" min="2" max="24" step="1"></div>
+          <div id="regrapers"></div>
           <div class="warn" data-out="regranota"></div>
         </div>
       </div>
@@ -352,18 +356,12 @@
       </div>
       <div class="pgrp">
         <b>As duas referências do sistema</b>
-        <div class="fld"><label>reserva do topo (atributo + habilidade)</label>
-          <input type="number" data-p="resA" min="1" max="12" step="1"></div>
-        <div class="fld"><label>reserva do humano médio</label>
-          <input type="number" data-p="resB" min="1" max="12" step="1"></div>
-        <div class="fld"><label>peso máximo do topo (kg)</label>
-          <input type="number" data-p="pA" min="50" max="1000" step="10"></div>
-        <div class="fld"><label>peso máximo do médio (kg)</label>
-          <input type="number" data-p="pB" min="20" max="500" step="5"></div>
-        <div class="warn">As duas curvas cheias nos gráficos são o modelo de hoje nessas duas
-          reservas, com R₀ = <b>136 m</b> no topo e expoente <b>0,70</b> (os campos estão na
-          carta da fórmula, junto com m₀, o pivô e a dureza da parede). É a comparação direta
-          entre o que a regra promete e o que o corpo humano já fez.</div>
+        <div class="warn" data-out="refnota"></div>
+        <div class="warn">As duas curvas cheias nos gráficos são o modelo <b>antigo</b> nessas
+          duas fichas, com R₀ = <b>136 m</b> no FAA 24 e expoente <b>0,70</b> (os campos estão
+          na carta da fórmula, junto com m₀, o pivô e a dureza da parede). É a comparação direta
+          entre o que a regra prometia e o que o corpo humano já fez. Para editar os quatro
+          traços, use a carta da regra nova, lá em cima: tudo na página sai dela.</div>
       </div>
     </div>
 
@@ -539,18 +537,21 @@ const SITE = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
                modelo:'fisico', baseModo:'tabela', banc:37.5, bexp:0.828,
                q:0.70, pexp:1, m0:1, fexp:2, wpiv:1, r0:136, r0exp:0.70,
                vexp:1.5, corrida:1/3, giro:1/6, escala:true,
-               resA:12, resB:3, pA:500, pB:80,
                // a regra nova (Arremesso_Regra.md)
                rConst:2, rExpMeio:0.5, rApice:0.10, rExpLeve:0.15,
-               rTeto:0.25, rQueda:0.80, faaA:24, faaB:5, gxMax:150, gEsc:'lin' };
+               rTeto:0.25, rQueda:0.80, gxMax:150, gEsc:'lin' };
 const M = Object.assign({}, SITE);
 
-// As duas referências que estamos usando: o topo humano (atributo 6 + habilidade 6)
-// e o adulto destreinado (atributo 2 + habilidade 1).
+/* As duas referências. Tudo na página sai daqui: FAA, FAH, peso máximo, teto de
+   arremesso e as duas curvas. Não existe FAA nem P avulso em lugar nenhum.
+     FAA = 2×Força + Atletismo + Arremesso   ·  2 (Força 1, resto 0) a 24 (tudo 6)
+     FAH = 3×Força + Halterofilismo          ·  3 (Força 1, Halt 0)  a 24 (tudo 6)
+   Régua de Força: 1 é um adolescente de 12 a 14 anos, 2 é um de 17 a 18. */
 const FICHAS = [
-  { id:'A', nome:'Humano máximo · 6 + 6', cor:'var(--s1)', forca:6, atletismo:6, arremesso:6, halterofilismo:6 },
-  { id:'B', nome:'Humano médio · 2 + 1',  cor:'var(--s2)', forca:2, atletismo:1, arremesso:0, halterofilismo:0 },
+  { id:'A', nome:'Topo humano', cor:'var(--s1)', forca:6, atletismo:6, arremesso:6, halterofilismo:6 },
+  { id:'B', nome:'Pessoa média', cor:'var(--s2)', forca:2, atletismo:1, arremesso:0, halterofilismo:0 },
 ];
+const fichaDe = (id) => FICHAS.find((f) => f.id === id);
 
 // ------------------------------------------------------- os fatos medidos
 // [nome, massa kg, marca, 'd' distância | 'h' altura, altura de soltura, família, nota]
@@ -1092,13 +1093,15 @@ function plotRegra(){
   const mAtX = log
     ? (px) => Math.exp(lgx0 + ((px - gxB)/gpw)*lgxs)
     : (px) => ((px - gxB)/gpw)*xMax;
-  const LA = M.rTeto*M.pA, LB = M.rTeto*M.pB;
+  const fA = FICHAS[0], fB = FICHAS[1];
+  const faaA = faa(fA), faaB = faa(fB), pA = pmax(fA), pB = pmax(fB);
+  const LA = M.rTeto*pA, LB = M.rTeto*pB;
 
   // o teto do eixo Y sai do maior valor visível
   let yPico = 0;
   for (let i = 0; i <= 400; i++){
     const m = log ? Math.exp(lgx0 + lgxs*i/400) : xMax*i/400;
-    yPico = Math.max(yPico, alcanceRegra(M.faaA, m, M.pA), alcanceRegra(M.faaB, m, M.pB));
+    yPico = Math.max(yPico, alcanceRegra(faaA, m, pA), alcanceRegra(faaB, m, pB));
   }
   for (const [, m, real] of CONF) if (m <= xMax) yPico = Math.max(yPico, real);
   const yMin = 0.5;
@@ -1173,19 +1176,19 @@ function plotRegra(){
     }
     return pts.join(' ');
   };
-  s += `<polyline class="rmedio" points="${traco(M.faaB, M.pB)}"/>`;
-  s += `<polyline class="rtopo" points="${traco(M.faaA, M.pA)}"/>`;
+  s += `<polyline class="rmedio" points="${traco(faaB, pB)}"/>`;
+  s += `<polyline class="rtopo" points="${traco(faaA, pA)}"/>`;
   // Rótulo direto na curva, no lugar de legenda separada. Fica no trecho que DESCE:
   // texto correndo para a direita acima de uma curva que cai nunca a cruza. Cada
   // curva escolhe o próprio ponto, limitado a metade do teto DELA: com o eixo em
   // 140 kg, a do médio já acabou em 20 e o rótulo cairia no chão junto com a outra.
-  const rot = [['topo', M.faaA, M.pA], ['médio', M.faaB, M.pB]].map(([nome, faa, P]) => {
+  const rot = [[fA.nome, faaA, pA], [fB.nome, faaB, pB]].map(([nome, fa, P]) => {
     const m = Math.min(Math.max(M.rApice*2, log ? M.rApice*8 : xMax*0.12), M.rTeto*P*0.5);
-    return { nome, faa, x: X(m) + 5, y: Y(alcanceRegra(faa, m, P)) - 8 };
+    return { nome, fa, x: X(m) + 5, y: Y(alcanceRegra(fa, m, P)) - 8 };
   });
   // e se mesmo assim caírem um em cima do outro, o de baixo desce
   if (Math.abs(rot[0].y - rot[1].y) < 13) rot[1].y = rot[0].y + 15;
-  s += rot.map((r) => `<text class="rlbl" x="${r.x.toFixed(1)}" y="${r.y.toFixed(1)}">${r.nome} · FAA ${r.faa}</text>`).join('');
+  s += rot.map((r) => `<text class="rlbl" x="${r.x.toFixed(1)}" y="${r.y.toFixed(1)}">${r.nome} · FAA ${r.fa}</text>`).join('');
 
   s += `<line class="axis" x1="${gxB}" y1="${gyT}" x2="${gxB}" y2="${gyB}"/>`
      + `<line class="axis" x1="${gxB}" y1="${gyB}" x2="${gxR}" y2="${gyB}"/>`
@@ -1203,7 +1206,7 @@ function plotRegra(){
     const r = svg.getBoundingClientRect(), k = GW/r.width;
     const px = Math.max(gxB, Math.min(gxR, (e.clientX - r.left)*k));
     const m = mAtX(px);
-    const da = alcanceRegra(M.faaA, m, M.pA), db = alcanceRegra(M.faaB, m, M.pB);
+    const da = alcanceRegra(faaA, m, pA), db = alcanceRegra(faaB, m, pB);
     hov.style.display = ''; vl.setAttribute('x1', px); vl.setAttribute('x2', px);
     for (const [c, d] of [['a', da], ['b', db]]){
       const p = hov.querySelector(`[data-c="${c}"]`);
@@ -1224,19 +1227,36 @@ function plotRegra(){
   svg.addEventListener('pointerleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
 
   document.getElementById('regraleg').innerHTML =
-      `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2.5"/></svg>topo humano</span>`
-    + `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/></svg>humano médio</span>`
-    + `<span><svg viewBox="0 0 20 12"><circle cx="10" cy="6" r="2.6" fill="var(--ink-soft)" opacity=".45"/></svg>marcas reais, para conferir</span>`;
+      `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2.5"/></svg>${fA.nome} · FAA ${faaA}</span>`
+    + `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/></svg>${fB.nome} · FAA ${faaB}</span>`
+    + `<span><svg viewBox="0 0 20 12"><circle cx="10" cy="6" r="2.6" fill="var(--ink-soft)" opacity=".45"/></svg>marcas reais, de gente com quase tudo no máximo</span>`;
 }
 
 function pintaRegra(){
+  // os quatro traços de cada referência, editáveis; tudo o mais é derivado
+  document.getElementById('regrapers').innerHTML = FICHAS.map((f) => `
+    <div class="persbox">
+      <div class="persnome"><span class="pip" style="background:${f.cor}"></span>${f.nome}
+        <i>FAA ${faa(f)} · FAH ${fah(f)} · P ${Math.round(pmax(f))} kg</i></div>
+      ${ATRS.map(([k, rot]) => `
+        <div class="attr"><span>${rot}</span>
+          <div class="dots" data-ficha="${f.id}" data-k="${k}">
+            ${[1,2,3,4,5,6].map((d) => `<i class="dot${d <= f[k] ? ' on' : ''}" data-d="${d}"></i>`).join('')}
+          </div></div>`).join('')}
+    </div>`).join('');
+
   plotRegra();
-  const LA = M.rTeto*M.pA, LB = M.rTeto*M.pB;
+  const A = FICHAS[0], B = FICHAS[1];
+  const LA = M.rTeto*pmax(A), LB = M.rTeto*pmax(B);
   document.querySelector('[data-out="regranota"]').innerHTML =
-      `Topo: P <b>${M.pA} kg</b>, teto de arremesso <b>${n1(LA)} kg</b>, queda a partir de <b>${n1(M.rQueda*LA)} kg</b>.<br>`
-    + `Médio: P <b>${M.pB} kg</b>, teto <b>${n1(LB)} kg</b>.<br>`
-    + `Um objeto de 1 kg vai a <b>${n1(alcanceRegra(M.faaA, 1, M.pA))} m</b> no topo e `
-    + `<b>${n1(alcanceRegra(M.faaB, 1, M.pB))} m</b> no médio.`;
+      `FAA = 2×Força + Atletismo + Arremesso, de <b>2</b> a <b>24</b>. `
+    + `FAH = 3×Força + Halterofilismo, de <b>3</b> a <b>24</b>.<br>`
+    + `Força <b>1</b> é um adolescente de 12 a 14 anos; Força <b>2</b>, um de 17 a 18.<br>`
+    + `${A.nome}: teto de arremesso <b>${n1(LA)} kg</b>, queda a partir de <b>${n1(M.rQueda*LA)} kg</b>; `
+    + `1 kg vai a <b>${n1(alcanceRegra(faa(A), 1, pmax(A)))} m</b>.<br>`
+    + `${B.nome}: teto <b>${n1(LB)} kg</b>; 1 kg vai a <b>${n1(alcanceRegra(faa(B), 1, pmax(B)))} m</b>.<br>`
+    + `<b>As marcas reais são de gente com quase tudo no máximo</b>, então é a curva do topo `
+    + `que se compara com elas.`;
 
   document.getElementById('regratbl').innerHTML =
     `<thead><tr><th>peso</th><th>médio</th><th>topo</th><th style="text-align:left">objeto típico</th></tr></thead><tbody>`
@@ -1250,7 +1270,7 @@ function pintaRegra(){
         };
         const ap = Math.abs(m - M.rApice) < 1e-9;
         return `<tr${ap ? ' style="font-weight:600"' : ''}><td>${fw(m)} kg</td>`
-          + `<td>${cel(M.faaB, M.pB)}</td><td>${cel(M.faaA, M.pA)}</td>`
+          + `<td>${cel(faa(FICHAS[1]), pmax(FICHAS[1]))}</td><td>${cel(faa(FICHAS[0]), pmax(FICHAS[0]))}</td>`
           + `<td style="text-align:left;color:var(--muted)">${obj}${ap ? ' · o ápice' : ''}</td></tr>`;
       }).join('') + `</tbody>`;
 
@@ -1274,7 +1294,7 @@ function pintaRegra(){
 
 // ---------------------------------------------------------------- os fatos
 // O modelo de hoje avaliado numa reserva qualquer (atributo + habilidade, 0 a 12).
-const r0Res = (res) => M.r0 * Math.pow(Math.max(0, res)/Math.max(1, M.resA), M.r0exp);
+const r0Res = (res) => M.r0 * Math.pow(Math.max(0, res)/24, M.r0exp);
 function alcModelo(w, res, P){
   const R0 = r0Res(res), pv = M.wpiv, m0 = M.m0;
   if (w <= 0 || w >= P) return 0;
@@ -1401,7 +1421,7 @@ function plotFatos(alvo, campo, faixaY, rotY, ajustes){
   }
 
   // o modelo de hoje nas duas reservas
-  for (const [res, P, cls] of [[M.resA, M.pA, 'modelo'], [M.resB, M.pB, 'modelo medio']]){
+  for (const [res, P, cls] of [[faa(FICHAS[0]), pmax(FICHAS[0]), 'modelo'], [faa(FICHAS[1]), pmax(FICHAS[1]), 'modelo medio']]){
     const pts = [];
     for (let i = 0; i <= 160; i++){
       const m = Math.exp(lx(MASSA[0]) + spanX*i/160);
@@ -1413,7 +1433,7 @@ function plotFatos(alvo, campo, faixaY, rotY, ajustes){
     if (pts.length > 1) s += `<polyline class="${cls}" points="${pts.join(' ')}"/>`;
   }
   // rótulo direto nas duas curvas do modelo, para não depender só da legenda
-  for (const [res, P, dy] of [[M.resA, M.pA, -5], [M.resB, M.pB, 12]]){
+  for (const [res, P, dy] of [[faa(FICHAS[0]), pmax(FICHAS[0]), -5], [faa(FICHAS[1]), pmax(FICHAS[1]), 12]]){
     const a = alcModelo(0.35, res, P);
     const val = campo === 'v' ? vDeAlcance(a, 1.8) : a;
     if (a > 0 && dentroY(val))
@@ -1455,7 +1475,7 @@ function plotFatos(alvo, campo, faixaY, rotY, ajustes){
       + `<span>Massa</span><span>${fw(melhor.m)} kg</span>`
       + `<span>${melhor.tipo === 'd' ? 'Alcance' : 'Altura'}</span><span>${n1(melhor.marca)} m</span>`
       + `<span>Saída</span><span>${n1(melhor.v)} m/s</span>`
-      + `<span>Regra · ${M.resA}</span><span>${n1(alcModelo(melhor.m, M.resA, M.pA))} m</span>`
+      + `<span>Regra · FAA ${faa(FICHAS[0])}</span><span>${n1(alcModelo(melhor.m, faa(FICHAS[0]), pmax(FICHAS[0])))} m</span>`
       + `</div><div style="font-size:.9em;opacity:.8">${melhor.nota}</div>`;
     tip.style.display = '';
     const meia = tip.offsetWidth/2, cx = (X(melhor.m)/FW)*r.width;
@@ -1480,6 +1500,11 @@ function pintaFatos(){
   // 430 g com o mesmo atleta, que é faixa de sobra para ajustar o k de verdade)
   plotFatos('wR', 'r', [2, 500], 'Alcance (m)', ajustes);
   plotFatos('wV', 'v', [3, 50], 'Velocidade de saída (m/s)', ajustes);
+
+  document.querySelector('[data-out="refnota"]').innerHTML = FICHAS.map((f) =>
+    `<b>${f.nome}</b> · Força ${f.forca}, Atletismo ${f.atletismo}, Arremesso ${f.arremesso}, `
+    + `Halterofilismo ${f.halterofilismo} → FAA <b>${faa(f)}</b>, FAH <b>${fah(f)}</b>, `
+    + `P <b>${Math.round(pmax(f))} kg</b>`).join('<br>');
 
   document.getElementById('famleg').innerHTML = Object.entries(FAM).map(([k, f]) =>
     `<label class="${FAM_ON[k] ? '' : 'off'}" data-fam="${k}">
@@ -1532,12 +1557,12 @@ function pintaFatos(){
       <td style="text-align:left">${nome}${nota ? ` <span class="old" style="color:var(--muted)">(${nota})</span>` : ''}</td>
       <td>${fw(kg)} kg</td><td>${vg(sobe, 2)} m</td><td>${vg(fim, 2)} m</td>
       <td>${vg(fr, 2)} × P</td>
-      <td>${Math.round(fr*M.pA)} kg</td>
+      <td>${Math.round(fr*pmax(FICHAS[0]))} kg</td>
       <td style="text-align:left;color:var(--muted)">${quem}</td></tr>`;
   }).join('');
   document.getElementById('escadatbl').innerHTML =
     `<thead><tr><th style="text-align:left">feito</th><th>peso</th><th>sobe</th><th>termina a</th>
-      <th>fração de P</th><th>com P = ${M.pA} kg</th><th style="text-align:left">quem</th></tr></thead><tbody>${esc}</tbody>`;
+      <th>fração de P</th><th>com P = ${Math.round(pmax(FICHAS[0]))} kg</th><th style="text-align:left">quem</th></tr></thead><tbody>${esc}</tbody>`;
 }
 
 // ---------------------------------------------------------------- pintura geral
@@ -1646,12 +1671,14 @@ document.getElementById('famleg').addEventListener('click', (e) => {
   FAM_ON[lb.dataset.fam] = !FAM_ON[lb.dataset.fam];
   pinta();
 });
-document.getElementById('duo').addEventListener('click', (e) => {
+// os pontinhos valem em qualquer lugar da página: os mesmos dois personagens
+// aparecem na carta da regra e nas fichas de baixo, e editam o mesmo objeto
+document.addEventListener('click', (e) => {
   const bt = e.target.closest('[data-fa-curva]');
   if (bt){ SEL[bt.dataset.ficha] = bt.dataset.faCurva; pinta(); return; }
   const dot = e.target.closest('.dot'); if (!dot) return;
-  const box = dot.closest('.dots');
-  const f = FICHAS.find((z) => z.id === box.dataset.ficha);
+  const box = dot.closest('.dots'); if (!box || !box.dataset.ficha) return;
+  const f = fichaDe(box.dataset.ficha); if (!f) return;
   const v = +dot.dataset.d;
   f[box.dataset.k] = (f[box.dataset.k] === v) ? Math.max(0, v-1) : v;
   pinta();
