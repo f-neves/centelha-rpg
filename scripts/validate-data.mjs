@@ -105,6 +105,25 @@ for (const w of data.armas || []) {
   if (!H.has(w.pericia)) fail(`arma "${w.id}": perícia inexistente "${w.pericia}"`);
 }
 
+// Fraquezas e resistências do bestiário (satélite semeado por gen-elementos.mjs).
+// Vocabulário FECHADO de propósito: palavra nova aqui é decisão de regra, não digitação.
+const ELEM_VOCAB = new Set([
+  'fogo', 'agua', 'gelo', 'raio', 'vento', 'terra', 'luz', 'sombra',
+  'corte', 'perfuracao', 'impacto', 'sagrado', 'profano', 'prata', 'sol',
+]);
+if (fs.existsSync(path.join(DIR, 'elementos-bestiario.json'))) {
+  const ELE = read('elementos-bestiario.json');
+  const idsBesta = new Set((data.inimigos || []).map((i) => i.id));
+  for (const [id, v] of Object.entries(ELE)) {
+    if (!idsBesta.has(id)) fail(`elementos-bestiario "${id}": criatura inexistente`);
+    const f = v.fraquezas || [], r = v.resistencias || [];
+    if (!f.length && !r.length) fail(`elementos-bestiario "${id}": entrada vazia`);
+    for (const k of [...f, ...r]) if (!ELEM_VOCAB.has(k)) fail(`elementos-bestiario "${id}": palavra fora do vocabulário "${k}"`);
+    const choque = f.filter((x) => r.includes(x));
+    if (choque.length) fail(`elementos-bestiario "${id}": "${choque.join(', ')}" é fraqueza e resistência ao mesmo tempo (as duas se anulam)`);
+  }
+}
+
 if (erros.length) {
   console.error(`\n✘ Validação de dados FALHOU (${erros.length} erro(s)):`);
   for (const e of erros) console.error('  • ' + e);

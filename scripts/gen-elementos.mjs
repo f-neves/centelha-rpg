@@ -11,7 +11,14 @@
 // resistência ao mesmo tipo se anulam.
 //
 // Duas camadas, e é de propósito: a REGRA cobre o grosso e é reprodutível, as
-// EXCECOES são escritas à mão e vencem a regra. Rodar de novo não perde nada.
+// EXCECOES são escritas à mão e vencem a regra. As duas moram NESTE arquivo:
+// o JSON de saída é descartável e não deve ser editado à mão, porque rodar o
+// script de novo o reescreve inteiro. Exceção nova entra na tabela EXCECOES.
+//
+// Ordem, quando as fontes do bestiário mudarem:
+//   node scripts/gen-monsters.mjs   (para o categoria/tags ficarem em dia)
+//   node scripts/gen-elementos.mjs  (semeia daqui)
+//   node scripts/gen-monsters.mjs   (embute o satélite no monsters.json)
 //
 // uso: node scripts/gen-elementos.mjs
 import fs from 'node:fs';

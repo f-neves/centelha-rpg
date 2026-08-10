@@ -353,13 +353,35 @@ material de que a criatura é feita também manda.
 - **Por material:** criatura de folha, madeira, palha ou gelo tem fraqueza a fogo; criatura de
   fogo ou de terra tem fraqueza a água; criatura de metal ou pedra tem resistência a fogo.
 
-Campo novo no bestiário, a criar: `fraquezas` e `resistencias`, listas de palavras-chave
-(`luz`, `sagrado`, `profano`, `fogo`, `agua`, `prata`, `sol`). O bestiário tem 308 criaturas,
-das quais 32 são Corruptor e 15 Morto-vivo, ou seja, o alvo natural do Luz é cerca de 15% do
-livro. Luz é Arte de especialista: contra o resto ela vale por cegar e revelar.
+**FEITO em 2026-08-10.** Os campos `fraquezas` e `resistencias` existem, como listas de
+palavras-chave, e já aparecem no bloco do bestiário. Moram em **`src/data/elementos-bestiario.json`**,
+o sétimo satélite (`inimigos.json` é gerado e não podia guardá-los), semeado por
+`scripts/gen-elementos.mjs` e embutido no `monsters.json` pelo `gen-monsters.mjs`.
 
-Falta definir o que fraqueza e resistência fazem **em número** para os outros elementos (o Luz
-já está definido: agravado, ignora resistência). Ver Pendência 4.
+O vocabulário ficou **fechado em 15 palavras**, e o validador falha o build em qualquer palavra
+fora dele: `fogo` `agua` `gelo` `raio` `vento` `terra` `luz` `sombra` (elementos) · `corte`
+`perfuracao` `impacto` (dano físico) · `sagrado` `profano` `prata` `sol` (natureza e material).
+
+**97 das 308 criaturas** têm alguma coisa, ou seja 31%, e as outras 69% não têm nenhuma, que é o
+que esta seção previa. A previsão do alvo do Luz bateu na mosca: são **47 criaturas com fraqueza
+a luz e sagrado**, os 32 Corruptores mais os 15 Mortos-vivos, exatamente os 15% do livro.
+
+| Fraqueza | criaturas | | Resistência | criaturas |
+|---|:--:|---|---|:--:|
+| luz, sagrado | 47 | | perfuracao | 38 |
+| fogo | 13 | | fogo | 21 |
+| profano | 8 | | corte | 10 |
+| agua | 7 | | gelo | 3 |
+| prata | 2 | | impacto | 3 |
+| sol | 1 | | raio | 1 |
+
+O preenchimento tem duas camadas, as duas dentro do script: a **regra** por categoria e tag
+(67 criaturas) e as **exceções à mão** (30), que vencem a regra. O JSON de saída é descartável.
+
+**Ainda falta**, e é a única coisa que falta aqui: definir o que a **fraqueza** faz **em número**
+para os outros elementos. O Luz já está definido (agravado, ignora resistência) e a resistência
+também (metade, arredondando para cima, depois da armadura e antes da Absorção). A fraqueza dos
+outros catorze, não. Ver Pendência 4c.
 
 ---
 
@@ -439,10 +461,15 @@ faz com o que passou. Resistência e fraqueza se anulam quando a mesma criatura 
 Exemplos travados: objeto e estrutura, morto-vivo, esqueleto e planta resistem a **Perfuração**;
 criatura de água ou de terra resiste a **fogo**; criatura de metal ou pedra também.
 
-**4b. Preencher o bestiário.** Agora destravado. Criar `fraquezas` e `resistencias` na criatura,
-como listas de palavras-chave. O preenchimento inicial sai por regra (Morto-vivo e Corruptor
-recebem luz e sagrado, Planta recebe fogo, Elemental e Construto saem pelo material) e depois se
-curam as exceções à mão. Das 308 criaturas, 32 são Corruptor e 15 Morto-vivo.
+**4b. Preencher o bestiário. FEITO em 2026-08-10**, exatamente como estava previsto: regra por
+categoria e tag para o grosso, exceções à mão por cima. 97 das 308 criaturas têm alguma coisa, e
+as 47 com fraqueza a luz e sagrado são os 32 Corruptores mais os 15 Mortos-vivos. Detalhe na §9.
+
+**4c. O que a fraqueza faz em número, fora do Luz. ABERTO.** É o que sobrou das duas pontas: a
+resistência tem número (4) e o Luz tem o dele (agravado, ignora resistência), mas a fraqueza a
+fogo, água, prata, sol, sagrado e profano ainda não tem. Os candidatos são **dobrar o dano**,
+**virar agravado** como o Luz, ou **ignorar a Absorção natural**. Não trava o dado, que já está
+preenchido: trava só a leitura na mesa.
 
 **5. Rolagem das Artes.** *(o **Acerto Arcano** já existe e já está na ficha: **Habilidade
 Secundária do grupo Conhecimento**, ao lado de Alquimia e Arquitetura, usada com Percepção ou

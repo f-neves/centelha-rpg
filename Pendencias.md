@@ -9,7 +9,7 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 38 itens abertos · 19 [DECIDIR] · 15 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+**Placar:** 38 itens abertos · 20 [DECIDIR] · 14 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
 Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Trilhas 4 · Ações & Sistema 4 · Bestiário 3 · Social 3
 
 ---
@@ -51,11 +51,22 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
 
 ## B. Bestiário
 
-- [ ] **B1 · [FAZER] Preencher `fraquezas` e `resistencias` nas 308 criaturas.** Destravado: a regra
-  fechou (metade do dano arredondando para cima, **depois** da armadura e **antes** da Absorção
-  natural). O grosso sai por regra (Morto-vivo e Corruptor recebem luz e sagrado, Planta recebe
-  fogo, Elemental e Construto saem pelo material) e depois se curam as exceções à mão. São 32
-  Corruptores e 15 Mortos-vivos. **É o maior item pronto para executar da lista inteira.**
+- [x] ~~**B1 · Preencher `fraquezas` e `resistencias` nas 308 criaturas.**~~ **FEITO em
+  2026-08-10.** Os campos não cabiam no `inimigos.json`, que é gerado, então viraram o **sétimo
+  satélite** do bestiário: `src/data/elementos-bestiario.json`, semeado por
+  `scripts/gen-elementos.mjs` e embutido no `monsters.json` pelo `gen-monsters.mjs`. Duas camadas
+  dentro do script, a regra por categoria e tag (67 criaturas) e as exceções à mão (30), que
+  vencem a regra; o JSON de saída é descartável. **97 das 308 têm alguma coisa (31%)**, e a
+  previsão do `Arcano_revisao.md` bateu na mosca: são **47 com fraqueza a luz e sagrado**, os 32
+  Corruptores mais os 15 Mortos-vivos, os 15% do livro que o Luz mira. O vocabulário ficou fechado
+  em 15 palavras e o **validador falha o build** em qualquer palavra fora dele ou em fraqueza e
+  resistência ao mesmo tipo. Aparece no bloco do bestiário, em duas linhas novas.
+- [ ] **B1b · [DECIDIR] O que a fraqueza faz em número, fora do Luz** (`Arcano_revisao.md`
+  pendência 4c). A resistência tem número (metade, arredondando para cima, depois da armadura e
+  antes da Absorção) e o Luz tem o dele (agravado, ignora resistência). A fraqueza a fogo, água,
+  prata, sol, sagrado e profano, não. Candidatos: **dobrar o dano**, **virar agravado**, ou
+  **ignorar a Absorção natural**. Não trava o dado, que já está preenchido: trava a leitura na
+  mesa.
 - [ ] **B2 · [FAZER] Modificadores de Defesa por porte.** Criatura não média não tem ajuste de
   Defesa hoje; o porte já mexe em PV e Absorção, falta a esquiva.
 - [ ] **B3 · [FAZER] Rebalancear os brutos grandes.** O pool de ataque deles está acima da régua da
@@ -244,9 +255,11 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 
 ## Ordem sugerida
 
-1. **B1**, fraquezas e resistências do bestiário: único item grande 100% destravado, execução pura.
-2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
-3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
+1. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar, e é o mesmo tipo de
+   trabalho que a frente de Ações acabou de receber, então sai com o caminho quente.
+2. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
+3. **B1b**, o número da fraqueza: barato, e fecha a última ponta solta do dano elemental agora que
+   o bestiário inteiro está preenchido.
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
 5. **G8**, trocar a palavra "stunt" por um termo em português. A frente de Ações caiu de 11 itens
    para 4 e o capítulo já está publicado; este é o que sobrou de mais barato, e agora são quatro
