@@ -161,6 +161,14 @@ cavalo). `D35` tem Strength check e Break DC por material. `PF2` tem **Force Ope
 deriva tudo de Basic Lift. **Centelha: `MOTOR` pela metade:** o FAH já dá o peso máximo, falta a
 tabela de "com esse FAH você arromba o quê".
 
+**Levantar o peso máximo** · O teto absoluto do que o corpo tira do chão, uma vez, sem andar com
+ele.
+**Decide:** o número que separa "pesado" de "impossível", e que serve de parede para meia dúzia
+de outras ações.
+`refs:` `GURPS` tem Basic Lift como número derivado, e todo o resto sai dele. `D35`/`PF1` têm
+tabela de carga por Força, com máximo levantado ao dobro do heavy load. EX2 resolve por
+Dificuldade de Feat of Strength. **Centelha: `MOTOR`** (o FAH, com progressão geométrica).
+
 **Carregar peso** · Andar, correr e lutar com carga nas costas.
 **Decide:** quanto se leva, e o que a carga custa em velocidade e em fôlego.
 `refs:` `D35`/`PF1` têm light/medium/heavy load por Força. `D5` tem carrying capacity e a regra
@@ -181,6 +189,14 @@ assusta.
 `refs:` `D35` tem Ride com uma lista de manobras (guiar com os joelhos, cair de pé, usar a
 montaria como cobertura). `CPR` tem Drive Land Vehicle e Pilot, com manobras e colisão. `PF2`
 tem Command an Animal. **Centelha: `ABERTO`** (secundárias Cavalgar, Adestramento).
+
+**Escapar de amarras** · Sair de corda, algema, saco ou agarrão de que já não se sai pela força.
+**Decide:** se dá para sair, em quanto tempo, e se dá para sair sem que ninguém veja.
+`refs:` `D35`/`PF1` têm **Escape Artist**, com DC por tipo de amarra e a regra de que corda é
+mais fácil que algema. `PF2` funde tudo em **Escape**, deixando o jogador escolher entre
+Acrobatics, Athletics e Thievery. `CofD` resolve por Dexterity + Athletics estendido. **Centelha:
+`ABERTO`.** Entrou no catálogo em 2026-08-10, junto com Sinalizar à distância, fechando a §12.
+Cabe bem como **Acumulada**, porque o que interessa quase sempre é o tempo até soltar.
 
 **Agarrar, imobilizar, derrubar** · Combate sem arma que não é dano, é controle.
 **Decide:** quem prende quem, e como se sai.
@@ -258,6 +274,15 @@ Search de Spot. `PF2` funde em Seek com área. **Centelha: `ABERTO`.**
 **Enxergar longe, no escuro, na névoa** · A condição do ambiente contra o olho.
 `refs:` EX2 tem uma tabela só de Vision, por distância e iluminação. `D35`/`PF2` têm faixas de
 luz (brilhante, penumbra, escuridão) com efeito mecânico. **Centelha: `ABERTO`.**
+
+**Sinalizar à distância** · Fogo, fumaça, bandeira, espelho, assobio combinado, corno. O
+contrário de enxergar longe: ser visto ou ouvido de propósito, por quem se quer e só por quem se
+quer.
+**Decide:** a que distância a mensagem chega, quanto ela consegue dizer, e quem mais a vê.
+`refs:` é um vazio quase universal. `GURPS` é o único com perícia própria (Heliograph e
+sinalização). `CPR` resolve por tecnologia (rádio, agente) em vez de perícia. Os d20 não têm
+nada. **Centelha: `ABERTO`.** Entrou no catálogo em 2026-08-10 e é a que menos tem de onde
+copiar, o que também quer dizer que é barata de desenhar.
 
 **Investigar** · Juntar peças, não achar objetos. É o passo depois de procurar.
 **Decide:** o que a cena conta, e se o personagem chega à conclusão certa ou a uma plausível.
@@ -393,6 +418,14 @@ Persuasion com plateia. **Centelha: `DOC`/`ABERTO`**, a parte de multidão está
 **Barganhar** · Chegar num preço.
 `refs:` `CPR` tem **Trading**, que é avaliar e negociar juntos. `D35` usa Diplomacy. `PF1` tem
 Day Job e Earn Income. **Centelha: `ABERTO`** (secundárias Negociação, Comércio).
+
+**Apostar** · Dado, carta, briga de galo, e a mesa em volta deles.
+**Decide:** quanto se ganha e se perde, e o que se descobre sentado ali, que costuma valer mais
+que o dinheiro.
+`refs:` `D35`/`PF1` resolvem por Profession (gambler), com Sleight of Hand para trapacear.
+`PF2` trata jogatina como Lore. `CPR` tem **Gamble** como perícia própria. `BitD` usa a jogatina
+como cenário de downtime, não como perícia. **Centelha: `ABERTO`.** O jogo limpo é Perspicácia +
+Manha; trapacear é a linha separada de **Trapacear no jogo**, na família de Furtividade.
 
 **Etiqueta** · Não dar vexame onde as regras não estão escritas.
 `refs:` `CofD` tem Socialize. `CPR` tem Wardrobe & Style e Etiquette embutidas na Persuasion.
@@ -568,7 +601,7 @@ Anotado para não voltar à discussão toda vez:
 
 1. ~~As sete decisões da §1.~~ **Todas fechadas em 2026-08-09.**
 2. **O gabarito de ficha.** Antes de escrever a primeira: o que toda ficha declara, na mesma
-  ordem, para as 73 não saírem cada uma de um jeito.
+  ordem, para as 75 não saírem cada uma de um jeito.
 3. **Construção (§7).** É o maior vazio, é subsistema e não ficha, e destrava o ajuste de peça
   que a ficha já oferece sem regra.
 4. **As cinco físicas de toda sessão:** Escalar, Nadar, Cair, Feito de força, Esgueirar-se.
@@ -579,9 +612,8 @@ Anotado para não voltar à discussão toda vez:
 
 ## 12. Ações levantadas e ainda não catalogadas
 
-Apareceram enquanto o texto era escrito e **não** entraram em nenhuma família. Decidir se entram:
-
-- **Escapar de amarras** · sair de corda, algema ou agarrão de que já não se sai pela força.
-  Acrobacia cobre passar por espaço apertado, não se soltar.
-- **Sinalizar à distância** · fogo, bandeira, assobio combinado, espelho. Aparece em toda campanha
-  com o grupo dividido e hoje não tem casa.
+> **Vazia desde 2026-08-10.** As duas que estavam aqui **entraram**, e por um motivo simples:
+> as duas aparecem em mesa toda hora e nenhuma tinha casa. **Escapar de amarras** foi para
+> Ações físicas, depois de Cavalgar; **Sinalizar à distância** foi para Percepção e mente,
+> depois de Enxergar longe, que é a ação de que ela é o oposto. Com elas a frente tem **75
+> ações em sete famílias**, e a lista canônica passou a ser a do `Acoes_Texto.md`.

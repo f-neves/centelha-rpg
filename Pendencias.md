@@ -1,6 +1,6 @@
 # Pendências do Centelha · mapa geral
 
-> Foto de **2026-08-09**. Índice único de tudo que está aberto, em todas as frentes.
+> Foto de **2026-08-10**. Índice único de tudo que está aberto, em todas as frentes.
 > Cada item diz **o que falta**, **onde mora o detalhe** e **o que ele trava**. Quando um item
 > fecha, marque a caixa e registre a decisão no doc da frente, que é a fonte de verdade.
 >
@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 45 itens abertos · 22 [DECIDIR] · 19 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · **Ações & Sistema 11** · Lore 6 · Proezas 6 · Trilhas 4 · Bestiário 3 · Social 3
+**Placar:** 39 itens abertos · 20 [DECIDIR] · 15 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Ações & Sistema 5 · Trilhas 4 · Bestiário 3 · Social 3
 
 ---
 
@@ -132,7 +132,7 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
 Frente aberta em **2026-08-09**. Três documentos: `Acoes_Catalogo.md` é a **bancada** (o que cada
 ação é, com referências de Exalted, D&D 3.5/5e, Pathfinder 1/2, Cyberpunk RED, Chronicles of
 Darkness, GURPS, Blades in the Dark, Burning Wheel e Ars Magica), `Acoes_Texto.md` é o **texto do
-capítulo** na voz do livro (73 verbetes, sem regra), e `Acoes_Sistema.md` é a **regra**.
+capítulo** na voz do livro (75 verbetes, sem regra), e `Acoes_Sistema.md` é a **regra**.
 Modelo: **Drama and Systems** do Exalted 2ª edição.
 
 **A régua comum fechou quase inteira em 2026-08-09** e está em `Acoes_Sistema.md` §3: cinco modos
@@ -159,10 +159,11 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   dão ~+2,4). Ou a Especialidade barateia, ou fica claro que ela serve para o que **não tem**
   secundária pronta ("espada longa", "nas sombras"), que é o caso da maioria. **Não trava as
   fichas**, mas mexe na economia de XP.
-- [ ] **G3 · [FAZER] Normalizar a tabela §4 do `Acoes_Sistema.md`.** Ela é anterior aos modos e
-  fala a língua antiga: diz "Longa: uma jogada só" (a Longa não rola) e "uma jogada por dia"
-  (quer dizer Acumulada com intervalo diário), e nenhuma linha declara Acúmulo nem intervalo. Sai
-  linha a linha conforme cada ficha for escrita.
+- [x] ~~**G3 · Normalizar a tabela §4 do `Acoes_Sistema.md`.**~~ **Refeita em 2026-08-10**, de
+  uma vez e não linha a linha, junto com o G9. A tabela agora tem coluna de **Modo** e fala a
+  língua dos cinco, e a coluna de Estado aponta a ficha (**§x.y**) quando ela existe. Ganhou uma
+  §4.8 com o placar da frente: **22 das 75 ações têm ficha**, e as duas famílias intactas são
+  Sentidos e mente e Fé e o sobrenatural, ambas travadas por decisões de fora deste documento.
 
 **Escrever:**
 
@@ -211,14 +212,21 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 
 **Arrumação:**
 
-- [ ] **G7 · [DECIDIR] Duas ações levantadas e nunca catalogadas** (`Acoes_Catalogo.md` §12):
-  **escapar de amarras** e **sinalizar à distância**. Entram ou não?
+- [x] ~~**G7 · Duas ações levantadas e nunca catalogadas.**~~ **Entraram, em 2026-08-10.** As
+  duas aparecem em mesa toda hora e nenhuma tinha casa. **Escapar de amarras** foi para Corpo e
+  movimento, depois de Cavalgar, e cabe como Acumulada, porque o que interessa é o tempo até
+  soltar. **Sinalizar à distância** foi para Sentidos e mente, depois de Enxergar longe, que é a
+  ação de que ela é o oposto, e é a que menos tem de onde copiar: só o `GURPS` tem perícia
+  própria para isso. As duas estão nos três documentos, e a §12 do catálogo ficou vazia.
 - [ ] **G8 · [DECIDIR] Trocar a palavra "stunt" por um termo em português.** São 15 ocorrências
   em `habilidades.md`, `combate.md`, `relacoes-sociais.md` e `glossario.json`, então é
   melhor trocar de uma vez. Sugestão do autor em Relações: "ações que beneficiam a intenção".
-- [ ] **G9 · [FAZER] Três listas paralelas das mesmas ações** (catálogo, texto e tabela §4) já
-  divergem: "Apostar" e "Levantar o peso máximo" existem em duas das três. Definir qual é a fonte
-  de verdade, ou fundir.
+- [x] ~~**G9 · Três listas paralelas das mesmas ações.**~~ **Unificadas em 2026-08-10.** A regra
+  ficou escrita na §4.0 do `Acoes_Sistema.md`: **a lista é do `Acoes_Texto.md`, as referências são
+  do `Acoes_Catalogo.md`, a mecânica é do `Acoes_Sistema.md`**, e os três carregam as mesmas
+  **sete famílias e setenta e cinco ações**, com os mesmos nomes e na mesma ordem. As divergências
+  reais eram duas, e foram fechadas: **Apostar** e **Levantar o peso máximo** faltavam no
+  catálogo.
 - [ ] **G10 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
   capítulo que já existe (movimento em Combate, resistir em Vida & Ferimentos, social em
   Relações). A aposta atual é capítulo único, porque a régua comum precisa de um lugar só.
@@ -233,6 +241,6 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
 3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
-5. **G9**, as três listas paralelas das mesmas ações. A régua comum, o gabarito, o ofício e o
-   Resistir já fecharam, e o `Acoes_Sistema.md` passou de mil e quinhentas linhas com uma tabela
-   §4 que ainda fala a língua anterior aos modos. Antes de escrever mais ficha, vale unificar.
+5. **G10**, capítulo único ou distribuído. A frente de Ações caiu de 11 itens para 5, e os que
+   sobraram ou são arrumação barata (**G8**, trocar "stunt") ou dependem desta: enquanto não se
+   sabe onde o texto mora, não adianta portar as 75 ações para `src/content/chapters/` (**G11**).

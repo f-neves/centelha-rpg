@@ -337,130 +337,155 @@ seção *Cortejo com calma: a Influência Estendida*. Os dois agora falam a mesm
 
 ## 4. O catálogo
 
-> **A descrição de cada ação e as referências de sistema (Exalted, D&D, Pathfinder, Cyberpunk e
-> companhia) ficam em `Acoes_Catalogo.md`.** Lá cada verbete diz o que a ação é e quem já
-> resolveu aquilo antes; aqui fica só a jogada sugerida e o estado. Ao acrescentar uma ação,
-> acrescente nos dois.
+### 4.0 Três documentos, uma lista só
+
+Esta frente tem três documentos, e por um tempo cada um teve a sua lista de ações, o que já estava
+produzindo divergências. A regra agora é uma:
+
+<p class="formula">A <b>lista</b> é do <code>Acoes_Texto.md</code> · as <b>referências</b> são do <code>Acoes_Catalogo.md</code> · a <b>mecânica</b> é daqui</p>
+
+**Sete famílias e setenta e cinco ações**, com os mesmos nomes e na mesma ordem nos três. Ao
+acrescentar ou remover uma ação, mexa nos três, ou a divergência volta.
 
 **Estado de cada linha:**
-**`MOTOR`** a conta já existe no código e na ficha, falta a prosa ·
-**`DOC`** existe num documento de frente, falta virar capítulo ·
-**`ABERTO`** nada escrito ainda.
+**§x.y** a ficha está escrita, neste documento ·
+**`MOTOR`** a conta já existe no código e na ficha ·
+**`DOC`** a regra vive em outro documento da frente ·
+**`ABERTO`** ainda não escrita.
 
-A coluna **Jogada** é **sugestão de partida**, não decisão fechada.
-
-> **Esta tabela é anterior aos cinco modos (§3.3) e ainda fala a língua antiga.** Onde ela diz
-> "Longa: uma jogada só", está errada, porque a Longa não rola. Onde diz "uma jogada por dia",
-> está querendo dizer Acumulada com intervalo diário. Nenhuma linha declara **Acúmulo** nem
-> **intervalo**, que agora são obrigatórios. Cada linha será normalizada quando a ficha dela for
-> escrita; até lá, leia a coluna como indicação de perícia, não de mecânica.
+As colunas **Modo** e **Jogada** de uma linha `ABERTO` são **ponto de partida**, não decisão
+fechada: valem como indicação de perícia e de forma, e a ficha manda quando existir.
 
 ### 4.1 Corpo e movimento
 
-| Ação | Jogada | Estado |
-|---|---|:--:|
-| Correr, perseguir, fugir | distância direta pelo Deslocamento (Arranque nos 3 primeiros Ticks, Corrida depois) | `MOTOR` |
-| Saltar (vertical, horizontal parado, com corrida) | distância direta, sem jogada | `MOTOR` |
-| **Arremessar um objeto** | distância direta pelo FAA · acerto é jogada à parte | `MOTOR` · §6.6 |
-| Levantar o peso máximo | sem jogada: o FAH dá o teto | `MOTOR` |
-| Deslocar-se carregando peso | velocidade × faixa de carga (Mínima, Leve, Média, Máxima) | `MOTOR` |
-| **Escalar** | Força + Atletismo (esp. Escalada), Acumulada por trecho | `ABERTO` |
-| **Nadar** | Vigor + Atletismo (esp. Natação), Acumulada contra a corrente | `ABERTO` |
-| **Cair** | sem jogada de evitar: dano por altura, com Atletismo reduzindo | `ABERTO` |
-| **Feito de força** (arrombar porta, dobrar grade, erguer portão) | Força + Atletismo ou Halterofilismo contra Dificuldade fixa | `ABERTO` |
-| Equilibrar-se, atravessar viga, corda bamba | Destreza + Atletismo (esp. Equilíbrio) | `ABERTO` |
-| Prender a respiração, apneia | Vigor + Resistência, Acumulada | `ABERTO` |
-| Cavalgar, conduzir carroça, montaria em pânico | Destreza + Cavalgar | `ABERTO` |
-| Marcha forçada, dias sem parar | Vigor + Resistência, uma jogada por dia | `ABERTO` |
-| Acrobacia, rolamento, amortecer queda | Destreza + Atletismo (esp. Ginástica) | `ABERTO` |
+| Ação | Modo | Jogada | Estado |
+|---|---|---|:--:|
+| Correr | sem modo | distância pelo Deslocamento, com Arranque nos três primeiros Ticks | `MOTOR` |
+| Saltar | sem modo | distância direta, sem jogada | `MOTOR` |
+| **Escalar** | Acumulada | Força + Atletismo, secundária Escalada | **§6.1** |
+| **Nadar** | Acumulada | Vigor + Atletismo, secundária Natação | **§6.2** |
+| Equilibrar-se | Direta | Destreza + Atletismo, secundária Equilíbrio | `ABERTO` |
+| Acrobacia | Reflexiva | Destreza + Atletismo, secundária Ginástica | **§6.3** parcial |
+| **Cair** | sem modo, com Reflexiva de amortecer | dano fixo pela altura efetiva; Destreza + Atletismo para amortecer | **§6.3** |
+| **Feito de força** | Direta | Força + Atletismo ou Halterofilismo | **§6.4** |
+| Levantar o peso máximo | sem modo | o FAH dá o teto | `MOTOR` |
+| Carregar peso | sem modo | velocidade pela faixa de carga | `MOTOR` |
+| **Arremessar** | sem modo | alcance pelo FAA; o acerto é Direta e vive em Combate | **§6.6** |
+| Cavalgar e conduzir | Direta | Destreza + Cavalgar | `ABERTO` |
+| Escapar de amarras | Acumulada | Destreza + Prestidigitação, secundária Escapismo | `ABERTO` |
+| Agarrar, imobilizar, derrubar | Direta | vive no capítulo de Combate | `DOC` |
 
 ### 4.2 Resistir
 
-| Ação | Jogada | Estado |
-|---|---|:--:|
-| **Resistir a veneno** | Vigor + Resistência contra a potência do veneno, por dose e por intervalo | `ABERTO` |
-| Resistir a doença | Vigor + Resistência, Acumulada ao longo de dias | `ABERTO` |
-| **Resistir ao ambiente** (frio, calor, sede, fome, altitude) | Vigor + Resistência, Sobrevivência dá bônus de preparo | `ABERTO` |
-| Sufocamento, afogamento, fumaça | Vigor + Resistência, agrava a cada intervalo | `ABERTO` |
-| Resistir a medo, dominação e imposição | Defesa Mental · Vontade + Integridade | `DOC` |
-| Aguentar dor, tortura, mutilação | Vontade + Integridade | `ABERTO` |
-| Ficar acordado, privação de sono | Vigor + Resistência | `ABERTO` |
-| Embriaguez, drogas, entorpecentes | Vigor + Resistência | `ABERTO` |
+| Ação | Modo | Jogada | Estado |
+|---|---|---|:--:|
+| **Veneno** | Direta, uma por dose | Vigor + Resistência contra a Potência | **§8.3** |
+| **Doença** | Direta repetida, por estágios | Vigor + Resistência contra a Virulência | **§8.4** |
+| **Ambiente** | Direta repetida | Vigor + Resistência contra a Severidade | **§8.5** |
+| **Sufocar, afogar e prender a respiração** | sem jogada, relógio | (Vigor + Resistência) × 10 Ticks de ar | **§8.6** |
+| **Privação de sono** | Passiva | sem jogada, tabela de noites | **§8.7** |
+| Bebida e entorpecente | Direta, uma por dose | roda no motor de Veneno, com Potência baixa | **§8.3** parcial |
+| Dor e tortura | Direta | Vontade + Integridade | `ABERTO` |
+| Medo, dominação e imposição | Passiva | Defesa Mental | `DOC` |
 
 ### 4.3 Sentidos e mente
 
-| Ação | Jogada | Estado |
-|---|---|:--:|
-| Notar algo sem estar procurando | Percepção + Prontidão, passiva, o mestre rola | `ABERTO` |
-| Vasculhar um cômodo, revistar um corpo | Percepção + Investigação, Acumulada por quarto de hora | `ABERTO` |
-| Ver ao longe, no escuro, na neblina | Percepção + Prontidão com penalidade por condição | `ABERTO` |
-| Rastrear pegada, farejar trilha | Percepção + Sobrevivência | `ABERTO` |
-| Saber alguma coisa (lembrar, reconhecer) | Inteligência + Conhecimentos Gerais ou a secundária do assunto | `ABERTO` |
-| Pesquisar em biblioteca ou arquivo | Inteligência + Conhecimentos Gerais, Longa (horas a dias) | `ABERTO` |
-| **Ler motivações**, farejar mentira | Percepção + Empatia contra a Defesa Social do alvo | `DOC` |
-| **Avaliar um item** (valor, autenticidade, procedência) | Inteligência + Comércio, ou o Ofício da peça, ou Heráldica/História para relíquia | `ABERTO` |
-| Diagnosticar ferimento ou doença | Inteligência + Cura | `ABERTO` |
-| Primeiros socorros, estancar sangramento | Raciocínio + Cura | parcial |
-| Orientar-se, ler mapa, achar o caminho | Percepção + Sobrevivência ou Geografia | `ABERTO` |
-| Decifrar código, língua morta, criptografia | Inteligência + Conhecimentos ou Ocultismo | `ABERTO` |
+| Ação | Modo | Jogada | Estado |
+|---|---|---|:--:|
+| Notar sem procurar | Passiva | 2 × (Percepção + Prontidão) | **§6.5** parcial |
+| Procurar | Acumulada | Percepção + Investigação, intervalo de minuto | `ABERTO` |
+| Enxergar longe, no escuro, na névoa | sem modo | penalidade por condição sobre tudo que use Percepção | `ABERTO` |
+| Sinalizar à distância | Direta | Percepção + Sobrevivência, ou nada, se o código estiver combinado | `ABERTO` |
+| Investigar | Direta | Raciocínio + Investigação | `ABERTO` |
+| Saber alguma coisa | Direta | Inteligência + Conhecimentos Gerais, ou a secundária do assunto | `ABERTO` |
+| Pesquisar | Longa | Inteligência + Conhecimentos Gerais, intervalo de hora ou dia | `ABERTO` |
+| Ler motivações | Direta | Percepção + Empatia contra a Defesa Social | `DOC` |
+| Avaliar um item | Direta | Inteligência + o Ofício da peça | `ABERTO` |
+| Decifrar | Acumulada | Inteligência + Conhecimentos Gerais ou Ocultismo | `ABERTO` |
+| Diagnosticar e socorrer | Direta | Inteligência + Cura para ler, Raciocínio + Cura para agir | parcial |
+| Orientar-se | Direta | Percepção + Sobrevivência | `ABERTO` |
+| Rastrear | Acumulada | Percepção + Sobrevivência | `ABERTO` |
 
-### 4.4 Furtividade, roubo e engano
+### 4.4 Furtividade e engano
 
-| Ação | Jogada | Estado |
-|---|---|:--:|
-| **Esgueirar-se**, mover-se em silêncio | Destreza + Furtividade contra Percepção + Prontidão | `ABERTO` |
-| Esconder-se, sumir de vista | Destreza + Furtividade (esp. Ocultação) | `ABERTO` |
-| **Roubar** (bater carteira, cortar bolsa) | Destreza + Prestidigitação contra Prontidão | `ABERTO` |
-| Arrombar fechadura, forçar cofre | Destreza + Abrir Fechaduras, Acumulada | `ABERTO` |
-| Desarmar armadilha | Destreza + Ladinagem | `ABERTO` |
-| **Disfarçar-se**, passar por outra pessoa | Influência + Manha (esp. Disfarce) contra Percepção + Prontidão; a **Aparência penaliza** o disfarce | `ABERTO` |
-| Falsificar documento, selo, assinatura | Inteligência + Falsificação | `ABERTO` |
-| Esconder objeto no corpo, contrabandear | Destreza + Contrabando contra revista | `ABERTO` |
-| Trapacear no jogo | Destreza + Prestidigitação contra Prontidão dos outros jogadores | `ABERTO` |
+| Ação | Modo | Jogada | Estado |
+|---|---|---|:--:|
+| **Esgueirar-se** | Acumulada | Destreza + Furtividade contra o Valor Passivo de Prontidão | **§6.5** |
+| Esconder-se | Direta | Destreza + Furtividade, secundária Ocultação | `ABERTO` |
+| Criar distração | Direta | Raciocínio + Manha | `ABERTO` |
+| Roubar | Direta | Destreza + Prestidigitação contra Prontidão | `ABERTO` |
+| Arrombar fechadura | Acumulada | Destreza + Prestidigitação, secundária Arrombamento | `ABERTO` |
+| Desarmar armadilha | Direta | Destreza + Prestidigitação | `ABERTO` |
+| Disfarçar-se | Passiva contra quem olha | Influência + Manha, secundária Disfarce; a **Aparência penaliza** | `ABERTO` |
+| Mentir | Direta | ataque social, em Relações | `DOC` |
+| Falsificar | Longa | Inteligência + Falsificação | `ABERTO` |
+| Contrabandear | Passiva | Destreza + Furtividade contra a revista | `ABERTO` |
+| Trapacear no jogo | Direta | Destreza + Prestidigitação contra a Prontidão da mesa | `ABERTO` |
 
 ### 4.5 Social
 
-Quase tudo aqui já está desenhado em `Combate_Social.md`, `Relacoes.md` e `Regua_Relacao.md`. O
-capítulo de Ações só recolhe o que **não** é troca social prolongada:
+Quase tudo aqui já está desenhado em `Combate_Social.md`, `Relacoes.md` e `Regua_Relacao.md`, e o
+capítulo publicado de **Relações Sociais** já fala a língua dos modos (§3.7). O que fica nesta
+tabela é a remissão, não a regra.
 
-| Ação | Jogada | Estado |
-|---|---|:--:|
-| Persuadir, intimidar, seduzir, enganar | ataque social contra Defesa Social | `DOC` |
-| Discursar para uma multidão | Influência + Oratória, alvo coletivo | `DOC` |
-| Barganhar preço, fechar negócio | Influência + Negociação ou Comércio | `ABERTO` |
-| Etiqueta na corte, não dar vexame | Compostura + Etiqueta | `ABERTO` |
-| Apostar, ler a mesa | Perspicácia + Apostar | `ABERTO` |
-| Interrogar, arrancar informação | Influência + Interrogatório contra Integridade | `ABERTO` |
-| Acalmar ou intimidar um animal | Influência + Adestramento ou Veterinário | `ABERTO` |
-| Espalhar boato, plantar rumor | Influência + Manha, Longa (dias) | `ABERTO` |
+| Ação | Modo | Jogada | Estado |
+|---|---|---|:--:|
+| Persuadir, intimidar, seduzir e enganar | Acumulada | ataque social contra a Defesa Social | `DOC` |
+| Discursar | Acumulada | Influência + Oratória, alvo coletivo | `DOC` |
+| Barganhar | Acumulada | Influência + Sociabilidade, secundária Comércio | `ABERTO` |
+| Apostar | Direta | Perspicácia + Manha, secundária Jogatina | `ABERTO` |
+| Etiqueta | Passiva | Compostura + Sociabilidade, secundária Etiqueta | `ABERTO` |
+| Interrogar | Acumulada | Influência + Manha ou Oratória contra Integridade | `ABERTO` |
+| Colher boato | Longa | Influência + Manha, intervalo de dia | `ABERTO` |
+| Plantar boato | Longa | Influência + Manha, intervalo de dia | `ABERTO` |
+| Lidar com animal | Direta | Influência + Adestramento | `ABERTO` |
+| Reputação | Passiva | não é ação, é estado; conversa com `Antecedentes.md` | `DOC` |
 
 ### 4.6 Ofício e mundo
 
-O maior buraco do sistema hoje: **não existe regra de construir coisa nenhuma**. Um jogador com
-Ferraria 5 não tem como saber quanto tempo leva para fazer uma espada nem o que sai dela.
-
-| Ação | Jogada | Estado |
-|---|---|:--:|
-| **Construir / forjar / fabricar** um objeto | Inteligência + o Ofício, **Longa**: tempo e material fixados pela peça, uma jogada só; margem de sucesso define a qualidade | `ABERTO` |
-| Reparar peça danificada | mesma jogada, Dificuldade menor, tempo menor | `ABERTO` |
-| Improvisar com o que tem à mão | Raciocínio + Ofício, Dificuldade maior | `ABERTO` |
-| Cozinhar, conservar comida | Inteligência + Culinária | `ABERTO` |
-| Preparar remédio, extrair veneno | Inteligência + Herbologia ou Alquimia, Longa | `ABERTO` |
-| Caçar, forragear, montar abrigo | Percepção + Sobrevivência, uma jogada por dia | `ABERTO` |
-| Navegar embarcação | Percepção + Navegação | `ABERTO` |
-| Administrar terra, tropa ou negócio | Inteligência + Burocracia, Longa (estação) | `ABERTO` |
-| Construir obra grande (muro, ponte, casa) | Inteligência + Arquitetura ou Alvenaria, Acumulada em semanas, com mão de obra somando | `ABERTO` |
+| Ação | Modo | Jogada | Estado |
+|---|---|---|:--:|
+| **Fabricar** | Longa | Destreza ou Inteligência + o Ofício, contra a Dificuldade da peça | **§7** |
+| **Reparar** | Longa | a mesma jogada, com o Acúmulo cortado | **§7.8** |
+| **Melhorar** | Longa | a mesma jogada, um grau de cada vez | **§7.8** |
+| **Improvisar** | Direta | Raciocínio + Ofício, Dificuldade +4, dura um uso | **§7.8** |
+| **Desmontar** | Direta | Inteligência + o Ofício | **§7.8** |
+| **Erguer obra** | Longa | Inteligência + Alvenaria, com direção de obra e Acúmulos somando | **§7** |
+| **Preparar** | Longa | Inteligência + Herbalismo ou Culinária, intervalo de hora | **§7** |
+| **Ganhar a vida com o ofício** | Longa | intervalo de semana, limitado pela demanda do lugar | **§7.9** |
+| Sobreviver no ermo | Direta, uma por dia | Percepção + Sobrevivência; é a camada que **evita** o Ambiente | **§8.5** parcial |
+| Viajar | Longa | intervalo de dia; o Ambiente cobra em paralelo | `ABERTO` |
+| Navegar | Direta | Percepção + Navegação | `ABERTO` |
+| Administrar | Longa | Inteligência + Burocracia, intervalo de estação | `ABERTO` |
+| Comandar em batalha | Direta | Influência + Liderança | `ABERTO` |
 
 ### 4.7 Fé e o sobrenatural
 
-| Ação | Jogada | Estado |
-|---|---|:--:|
-| **Rezar**, atrair a atenção de um deus | Vontade + Religião, **Longa**; o que se ganha é atenção, não milagre garantido | `ABERTO` |
-| Meditar, recolher-se, recuperar Vontade | Compostura + Meditação | parcial |
-| Exorcizar, benzer, afastar espírito | Vontade + Religião ou Ocultismo | `ABERTO` |
-| Ritual menor (bênção, praga, adivinhação) | Inteligência + Ritualismo, Longa | `DOC` |
-| Reconhecer manifestação sobrenatural | Inteligência + Ocultismo | `ABERTO` |
-| Interpretar presságio ou sonho | Perspicácia + Interpretação de Sonhos | `ABERTO` |
+| Ação | Modo | Jogada | Estado |
+|---|---|---|:--:|
+| Rezar | Longa | Vontade + Religião; o que se ganha é atenção, não milagre garantido | `ABERTO` |
+| Ritual menor | Longa | Inteligência + Ritualismo | `DOC` |
+| Exorcizar | Acumulada | Vontade + Ocultismo ou Religião | `ABERTO` |
+| Reconhecer o sobrenatural | Direta | Inteligência + Ocultismo | `ABERTO` |
+| Meditar | Longa | Compostura + Meditação | parcial |
+| Interpretar presságio | Direta | Perspicácia + Ocultismo | `ABERTO` |
+
+### 4.8 Onde a frente está
+
+| Família | Ações | Com ficha |
+|---|:--:|:--:|
+| Corpo e movimento | 14 | 5, mais 4 no motor |
+| Resistir | 8 | 6 |
+| Sentidos e mente | 13 | 1 |
+| Furtividade e engano | 11 | 1 |
+| Social | 10 | 0, e 4 vivem em Relações |
+| Ofício e mundo | 13 | 9 |
+| Fé e o sobrenatural | 6 | 0 |
+| **Total** | **75** | **22** |
+
+As duas famílias que sobraram inteiras são **Sentidos e mente** e **Fé e o sobrenatural**, e as
+duas dependem de decisões de fora deste documento: a primeira espera a confirmação da percepção
+passiva, a segunda espera a mecânica de clérigo e paladino da frente de Lore.
 
 ---
 
@@ -472,7 +497,7 @@ Tudo o que a §3 decidiu já vale para todas as ações, sem repetição. Uma fi
 falha usa a **banda morta de uma Margem**; uma que não fala de ajuda usa o **apoio**; uma que não
 fala de Fôlego não cobra Fôlego. **A ficha só escreve o campo quando o campo diverge do padrão.**
 
-É isso que permite setenta e três fichas caberem num capítulo em vez de num volume. A maioria vai
+É isso que permite setenta e cinco fichas caberem num capítulo em vez de num volume. A maioria vai
 ter quatro linhas.
 
 ### 5.2 Os campos

@@ -103,6 +103,12 @@ o cavalo em particular tem medo, cansaço e vontade própria. Aparece na fuga a 
 estreita atravessada com a carroça carregada, no animal que empaca diante do fogo. O que está em
 jogo é o controle, e perder o controle costuma custar mais caro montado do que a pé.
 
+**Escapar de amarras.** Sair de uma corda, de uma algema, de um saco, de um agarrão que já não
+cede à força. Nunca aparece numa hora conveniente: aparece com as mãos nas costas, no escuro, com
+alguém do outro lado da porta. Aparece depois da emboscada que deu errado, na cela, no porão do
+navio, no acampamento inimigo. O que está em jogo raramente é se dá para sair, é se dá para sair
+antes de alguém voltar.
+
 **Agarrar, imobilizar, derrubar.** Prender alguém, derrubar, torcer o braço até a arma cair. É
 corpo contra corpo com intenção de controlar em vez de ferir, e por isso vive no capítulo de
 Combate, não aqui.
@@ -188,6 +194,13 @@ as outras acontecem. A mesma sentinela que enxerga um vulto a duzentos passos ao
 enxerga a própria mão na neblina, e o mundo do jogo tem muito mais penumbra que sol a pino.
 Aparece na muralha à noite, na floresta fechada, no porão sem janela. O que está em jogo é o
 alcance dos seus olhos, e todo mundo esquece que ele encolhe.
+
+**Sinalizar à distância.** Fazer uma mensagem chegar a quem está longe demais para ouvir: fogo no
+alto do morro, coluna de fumaça, bandeira na torre, espelho ao sol, um assobio que só o grupo
+conhece. É o contrário de enxergar longe, porque aqui você **quer** ser visto, e a dificuldade é
+ser visto só por quem deve. Aparece com o grupo dividido, com o batedor à frente, com o cerco
+montado e a hora combinada. O que está em jogo é se a mensagem chega, se ela diz o suficiente, e
+quem mais estava olhando naquela direção.
 
 **Investigar.** Juntar peças, não achar objetos. É o passo seguinte ao procurar: você já tem a
 faca, a marca no batente e o horário do jantar, e investigar é dizer o que isso conta. Aparece
