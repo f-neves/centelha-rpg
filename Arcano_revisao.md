@@ -220,8 +220,13 @@ entrega.
 | Água | 1d6 por nível, Impacto | Impacto, normal | empurra; a menos letal |
 | Gelo | 1d6 por nível | depende: fenômeno não, matéria sim | prender e retardar |
 | Ar | **sem dano direto** | n/a | empurrar, derrubar, desarmar, negar projéteis |
-| Luz | 1d6 por nível, **agravado**, e **só** contra quem tem fraqueza | ignora resistência | cegar e revelar |
+| Luz | 1d6 por nível | só Centelha, **salvo** contra quem tem fraqueza ao sagrado | cegar e revelar |
 | Sombra | **sem dano direto**; os Efeitos dela ferem (Impacto que **ignora armadura**) | ignora armadura | esconder, agarrar, sufocar, amedrontar |
+
+A coluna Absorção vale para o alvo **comum**. Contra quem tem **fraqueza** àquele tipo, nada
+absorve e o dano é agravado, seja ele Luz, Fogo, Raio ou uma adaga de prata (§9 e pendência 4c).
+O Luz não é especial: ele só é a Arte cujo alvo natural são justamente as criaturas que carregam
+a fraqueza, e por isso parece regra própria.
 
 Referência para calibragem: as armas dão de 1 a 3 dados por peso mais o fixo da Força. Um
 montante com Força 4 fica em 3d6+8. Um alvo de Vigor 4 e Centelha 3 absorve 7 de Impacto sem
@@ -465,11 +470,34 @@ criatura de água ou de terra resiste a **fogo**; criatura de metal ou pedra tam
 categoria e tag para o grosso, exceções à mão por cima. 97 das 308 criaturas têm alguma coisa, e
 as 47 com fraqueza a luz e sagrado são os 32 Corruptores mais os 15 Mortos-vivos. Detalhe na §9.
 
-**4c. O que a fraqueza faz em número, fora do Luz. ABERTO.** É o que sobrou das duas pontas: a
-resistência tem número (4) e o Luz tem o dele (agravado, ignora resistência), mas a fraqueza a
-fogo, água, prata, sol, sagrado e profano ainda não tem. Os candidatos são **dobrar o dano**,
-**virar agravado** como o Luz, ou **ignorar a Absorção natural**. Não trava o dado, que já está
-preenchido: trava só a leitura na mesa.
+**4c. O que a fraqueza faz em número. RESOLVIDO em 2026-08-10**, e a resposta é a mesma para
+todos os tipos:
+
+<p class="formula">Fraqueza: o dano <b>não é absorvido por nada</b> e é <b>agravado</b></p>
+
+Nem armadura, nem resistência, nem Absorção natural, nem a Centelha. Passa inteiro, e ainda não
+fecha com descanso nem com a perícia Cura: só com tempo longo ou com a Arte de Cura.
+
+**Com isso o Luz deixa de ser exceção e vira o caso mais visível da regra.** A linha dele na
+tabela de dano dizia "agravado, e só contra quem tem fraqueza", o que agora é simplesmente o que
+acontece com qualquer elemento: o Luz é agravado contra as criaturas das trevas porque elas têm a
+fraqueza, não porque o Luz seja especial. **Uma criatura de água atingida por Raio sofre dano
+agravado exatamente pela mesma razão.**
+
+A simetria com a resistência é imperfeita de propósito, e é o que dá peso à ferramenta certa:
+
+| | Efeito |
+|---|---|
+| **Resistência** | metade, arredondando para cima, e nunca agravado. Entra **entre** a armadura e a Absorção |
+| **Fraqueza** | inteiro, **sem absorção nenhuma**, e agravado |
+
+O que isso faz na mesa, com criaturas reais do bestiário:
+
+| Ataque | Hoje | Com a fraqueza |
+|---|:--:|:--:|
+| Fogo 3d6 no Treant (Centelha 3) | 7,5 · dez conjurações | **10,5 agravado** · sete |
+| Adaga de prata no Lobisomem (Absorção 5) | 1,5 · vinte e cinco golpes | **6,5 agravado** · seis |
+| Raio 2d6 no Elemental da Água | 6 | **7 agravado** |
 
 **5. Rolagem das Artes.** *(o **Acerto Arcano** já existe e já está na ficha: **Habilidade
 Secundária do grupo Conhecimento**, ao lado de Alquimia e Arquitetura, usada com Percepção ou

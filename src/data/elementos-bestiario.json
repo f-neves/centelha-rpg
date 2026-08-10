@@ -85,6 +85,9 @@
   ]
  },
  "mon-iron-cobra": {
+  "fraquezas": [
+   "raio"
+  ],
   "resistencias": [
    "fogo",
    "perfuracao"
@@ -191,6 +194,9 @@
   ]
  },
  "mon-small-water-elemental": {
+  "fraquezas": [
+   "raio"
+  ],
   "resistencias": [
    "fogo"
   ]
@@ -321,6 +327,9 @@
   ]
  },
  "mon-iron-golem": {
+  "fraquezas": [
+   "raio"
+  ],
   "resistencias": [
    "fogo",
    "perfuracao"
@@ -409,6 +418,9 @@
   ]
  },
  "mon-marid": {
+  "fraquezas": [
+   "raio"
+  ],
   "resistencias": [
    "fogo"
   ]
@@ -501,6 +513,9 @@
   ]
  },
  "mon-retriever": {
+  "fraquezas": [
+   "raio"
+  ],
   "resistencias": [
    "fogo",
    "perfuracao"

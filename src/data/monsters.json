@@ -6424,6 +6424,9 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "raio"
+   ],
    "resistencias": [
     "fogo",
     "perfuracao"
@@ -12172,6 +12175,9 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "raio"
+   ],
    "resistencias": [
     "fogo"
    ],
@@ -18302,6 +18308,9 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "raio"
+   ],
    "resistencias": [
     "fogo",
     "perfuracao"
@@ -24435,6 +24444,9 @@
     "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "raio"
+   ],
    "resistencias": [
     "fogo"
    ],
@@ -30574,6 +30586,9 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 1,
+   "fraquezas": [
+    "raio"
+   ],
    "resistencias": [
     "fogo",
     "perfuracao"

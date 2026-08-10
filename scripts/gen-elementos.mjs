@@ -5,10 +5,12 @@
 // imagens / ecologia: `inimigos.json` é GERADO e não pode guardar isto, então mora
 // aqui e o gen-monsters.mjs junta por id.
 //
-// A regra está em Arcano_revisao.md §9 e na pendência 4: resistência corta o dano
-// daquele tipo pela metade (arredondando para cima) e nunca deixa ele agravado;
-// a ordem é armadura, depois resistência, depois Absorção natural. Fraqueza e
-// resistência ao mesmo tipo se anulam.
+// A regra está em Arcano_revisao.md §9 e nas pendências 4 e 4c:
+//   RESISTÊNCIA corta o dano daquele tipo pela metade (arredondando para cima) e
+//   nunca deixa ele agravado. A ordem é armadura, resistência, Absorção natural.
+//   FRAQUEZA passa por cima de TUDO: não é absorvida por nada, nem armadura nem
+//   Absorção natural, e o dano é agravado (não fecha com descanso nem com Cura).
+// Fraqueza e resistência ao mesmo tipo se anulam.
 //
 // Duas camadas, e é de propósito: a REGRA cobre o grosso e é reprodutível, as
 // EXCECOES são escritas à mão e vencem a regra. As duas moram NESTE arquivo:
@@ -70,18 +72,19 @@ const EXCECOES = {
   'mon-small-fire-elemental': { fraquezas: ['agua'], resistencias: ['fogo'] },
   'mon-salamandra': { fraquezas: ['agua'], resistencias: ['fogo'] },
   'mon-efreeti': { fraquezas: ['agua'], resistencias: ['fogo'] },
-  'mon-small-water-elemental': { resistencias: ['fogo'] },
-  'mon-marid': { resistencias: ['fogo'] },
+  // Água conduz: o raio atravessa o corpo inteiro em vez de tocar a superfície
+  'mon-small-water-elemental': { fraquezas: ['raio'], resistencias: ['fogo'] },
+  'mon-marid': { fraquezas: ['raio'], resistencias: ['fogo'] },
   'mon-small-earth-elemental': { fraquezas: ['agua'], resistencias: ['fogo'] },
   'mon-elemental-da-terra-grande': { fraquezas: ['agua'], resistencias: ['fogo'] },
   'mon-shaitan': { fraquezas: ['agua'], resistencias: ['fogo'] },
   'mon-xorn': { fraquezas: ['agua'], resistencias: ['fogo'] },
   // Ar não tem nada: não há material que o fogo queime nem que a água apague
 
-  // Construtos, pelo material
-  'mon-iron-golem': { resistencias: ['fogo', 'perfuracao'] },
-  'mon-iron-cobra': { resistencias: ['fogo', 'perfuracao'] },
-  'mon-retriever': { resistencias: ['fogo', 'perfuracao'] },
+  // Construtos, pelo material. Metal conduz o raio pela mesma razão que a água.
+  'mon-iron-golem': { fraquezas: ['raio'], resistencias: ['fogo', 'perfuracao'] },
+  'mon-iron-cobra': { fraquezas: ['raio'], resistencias: ['fogo', 'perfuracao'] },
+  'mon-retriever': { fraquezas: ['raio'], resistencias: ['fogo', 'perfuracao'] },
   'mon-stone-golem': { resistencias: ['fogo', 'perfuracao'] },
   'mon-clay-golem': { resistencias: ['fogo', 'perfuracao'] },
   'mon-ice-golem': { fraquezas: ['fogo'], resistencias: ['gelo', 'perfuracao'] },

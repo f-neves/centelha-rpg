@@ -70,6 +70,8 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
 
   <div class="callout"><span class="lbl">Valores médios</span>Atributos, Habilidades, Proezas e dimensões (tamanho e peso) são a <strong>média da espécie</strong>: um indivíduo pode ser maior, mais forte ou mais fraco. Ajuste à vontade para dar cara a um chefe nomeado ou a um espécime fora da curva. Os números derivados (PV, Defesa, Absorção, Iniciativa) seguem as mesmas fórmulas dos personagens.</div>
 
+  <div class="callout"><span class="lbl">Fraqueza & Resistência</span>Poucas criaturas têm (97 das 308), e quando têm, muda a luta. <strong>Fraqueza</strong>: o dano daquele tipo <strong>não é absorvido por nada</strong> (nem armadura, nem Absorção natural, nem Centelha) e é <strong>agravado</strong>, ou seja, não fecha com descanso nem com a perícia Cura. <strong>Resistência</strong>: o dano cai <strong>pela metade</strong>, arredondando para cima, e nunca fica agravado; ela entra <strong>entre</strong> a armadura e a Absorção. As duas se anulam quando a mesma criatura tem as duas para o mesmo tipo. É por isso que se leva fogo para o treant e prata para o lobisomem.</div>
+
   <div class="callout"><span class="lbl">Regra de Horda</span>Muitos capangas iguais lutam como um <strong>esquadrão único</strong>: o tamanho vira <strong>Magnitude</strong> (2–3 = +1d6, 4–7 = +2, 8–15 = +3…), somada ao <strong>acerto e ao dano</strong>; a Defesa cai <strong>−2</strong> (aglomerado). <a href={url('regras/combate') + '#regra-de-horda'}>Regra completa →</a></div>
 
   <div class="filtros panel">
@@ -165,7 +167,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
           {(i.combate.fraquezas?.length || i.combate.resistencias?.length) && (
             <div class="besta-elem">
               {i.combate.fraquezas?.length && (
-                <span class="el-linha" title="Dano deste tipo é agravado contra esta criatura.">
+                <span class="el-linha" title="Dano deste tipo não é absorvido por nada (nem armadura, nem Absorção natural, nem Centelha) e é agravado: não fecha com descanso nem com a perícia Cura.">
                   <span class="el-lbl">Fraqueza</span>
                   {i.combate.fraquezas.map((k: string) => <span class="el el-fra">{ELEM[k] ?? k}</span>)}
                 </span>

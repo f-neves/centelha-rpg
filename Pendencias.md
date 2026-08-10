@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 38 itens abertos · 20 [DECIDIR] · 14 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Trilhas 4 · Ações & Sistema 4 · Bestiário 3 · Social 3
+**Placar:** 37 itens abertos · 19 [DECIDIR] · 14 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Trilhas 4 · Ações & Sistema 4 · Social 3 · Bestiário 2
 
 ---
 
@@ -61,12 +61,14 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   Corruptores mais os 15 Mortos-vivos, os 15% do livro que o Luz mira. O vocabulário ficou fechado
   em 15 palavras e o **validador falha o build** em qualquer palavra fora dele ou em fraqueza e
   resistência ao mesmo tipo. Aparece no bloco do bestiário, em duas linhas novas.
-- [ ] **B1b · [DECIDIR] O que a fraqueza faz em número, fora do Luz** (`Arcano_revisao.md`
-  pendência 4c). A resistência tem número (metade, arredondando para cima, depois da armadura e
-  antes da Absorção) e o Luz tem o dele (agravado, ignora resistência). A fraqueza a fogo, água,
-  prata, sol, sagrado e profano, não. Candidatos: **dobrar o dano**, **virar agravado**, ou
-  **ignorar a Absorção natural**. Não trava o dado, que já está preenchido: trava a leitura na
-  mesa.
+- [x] ~~**B1b · O que a fraqueza faz em número.**~~ **Decidido em 2026-08-10**, e a resposta é uma
+  só para todos os tipos: **o dano não é absorvido por nada e é agravado.** Nem armadura, nem
+  resistência, nem Absorção natural, nem Centelha; e ainda não fecha com descanso nem com a
+  perícia Cura. **Com isso o Luz deixa de ser exceção**: ele é agravado contra as criaturas das
+  trevas porque elas têm a fraqueza, não porque a Arte seja especial, e uma criatura de água
+  atingida por Raio sofre agravado pela mesma razão. Isso rendeu dado novo: **água e metal
+  ganharam fraqueza a raio** (condutividade), cinco criaturas. Escrito em `Arcano_revisao.md` §9,
+  pendência 4c e na tabela de dano, e explicado num callout do bestiário.
 - [ ] **B2 · [FAZER] Modificadores de Defesa por porte.** Criatura não média não tem ajuste de
   Defesa hoje; o porte já mexe em PV e Absorção, falta a esquiva.
 - [ ] **B3 · [FAZER] Rebalancear os brutos grandes.** O pool de ataque deles está acima da régua da
