@@ -59,6 +59,14 @@ export function montarFicha(opts: FichaOpts) {
   };
   const SECONDARY: [string, string][] = (SEC_D as any[]).map((s) => [s.nome, SEC_GRP[s.grupo]]);
 
+  // Três vagas em branco no fim das Secundárias, para o que o catálogo não previu. A regra já
+  // diz que as Secundárias são ilimitadas e criadas conforme a história pede; sem estas vagas
+  // a ficha era a única parte do sistema que não deixava. A chave é fixa (livre-1 a livre-3) e
+  // o nome digitado vive à parte, em S.livreNome, para não virar chave e quebrar ao ser trocado.
+  const LIVRES = ['livre-1', 'livre-2', 'livre-3'];
+  const ehSecLivre = (k: string) => LIVRES.includes(k);
+  const nomeLivre = (k: string) => (S?.livreNome?.[k] || '').trim();
+
   const SEC_NOME: Record<string, string> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.nome]));
   const SEC_DESC: Record<string, string> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.descricao]));
   const SEC_NIV: Record<string, any[]> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.niveis]));
@@ -80,6 +88,7 @@ export function montarFicha(opts: FichaOpts) {
     let p: any = null;
     if (k === 'attr') { const a = (ATTRS_D as any[]).find((x) => x.id === key); p = { tipo: 'atributo', nome: a.nome, descricao: a.descricao, niveis: a.niveis, url: url('regras/atributos') }; }
     else if (k === 'skill') { const h = (HAB_D as any[]).find((x) => x.id === key); p = { tipo: 'habilidade', nome: h.nome, descricao: h.descricao, niveis: h.niveis || escala('escalaHabilidade'), url: url('regras/habilidades') }; }
+    else if (k === 'skill2' && ehSecLivre(key)) { p = { tipo: 'habilidade secundária', nome: nomeLivre(key) || 'Secundária livre', descricao: 'Uma Secundária criada nesta mesa, fora do catálogo sugerido. Vale exatamente como qualquer outra: custa metade de uma primária, aceita Especialidade e segue a mesma escala de competência.', niveis: escala('escalaHabilidade'), url: url('regras/habilidades-secundarias') }; }
     else if (k === 'skill2') { p = { tipo: 'habilidade secundária', nome: SEC_NOME[key] || key, descricao: SEC_DESC[key] || 'Conhecimento ou ofício específico, de custo reduzido. Segue a mesma escala de competência das primárias.', niveis: SEC_NIV[key] || escala('escalaHabilidade'), url: url('regras/habilidades-secundarias') + '#sec-' + key }; }
     else if (k === 'virtue') { const v = (VIRT_D as any[]).find((x) => x.id === key); p = { tipo: 'virtude', nome: v.nome, descricao: `${v.descricao} Resiste ${v.resiste}.`, niveis: v.niveis, url: url('regras/aparencia-virtudes-vontade') }; }
     else if (k === 'centelha') { p = { tipo: 'traço', nome: 'Centelha', descricao: TRACO_DESC.centelha, niveis: escala('escalaCentelha'), url: url('regras/centelha') }; }
@@ -130,6 +139,7 @@ export function montarFicha(opts: FichaOpts) {
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
     SECONDARY.forEach(([n]) => { S.skills2[slug(n)] = 0; S.spec2[slug(n)] = []; });
+    S.livreNome = {}; LIVRES.forEach((k) => { S.skills2[k] = 0; S.spec2[k] = []; });
   }
   // Especialidades: lista nomeada [{s, v}]. Teto por Habilidade = [nível/2] especialidades, cada uma até [nível/2].
   // Também converte o formato antigo (número solto) e reaplica os tetos a cada carga.
@@ -240,7 +250,7 @@ export function montarFicha(opts: FichaOpts) {
     const RENOMES: [string, string][] = [
       ['culinaria', 'gastronomia'], ['veterinario', 'veterinaria'],
       ['ferraria', 'ferreiro'], ['escrivania', 'escrivao'], ['comercio', 'comerciante'],
-      ['abrir-fechaduras', 'abrir-mecanismos'], ['ladinagem', 'abrir-mecanismos'],
+      ['abrir-fechaduras', 'abrir-mecanismos'], ['ladinagem', 'abrir-mecanismos'], ['marcenaria', 'carpintaria'],
       ['contrabando', 'ocultacao'], ['falsificacao', 'ocultacao'],
     ];
     for (const [velho, novo] of RENOMES) {
@@ -295,6 +305,8 @@ export function montarFicha(opts: FichaOpts) {
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id] || 0); });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
     SECONDARY.forEach(([n]) => { const k = slug(n); S.skills2[k] ??= 0; S.spec2[k] = clampSpecs(S.spec2[k], S.skills2[k] || 0); });
+    S.livreNome ??= {};
+    LIVRES.forEach((k) => { S.skills2[k] ??= 0; S.spec2[k] = clampSpecs(S.spec2[k], S.skills2[k] || 0); });
   }
   const save = () => { if (opts.readOnly) return; try { opts.salvar(S); } catch {} };
 
@@ -341,7 +353,10 @@ export function montarFicha(opts: FichaOpts) {
     const cap = Math.floor(specSkill(scope, key) / 2); if (cap <= 0) return;
     const arr = specArr(scope, key);
     const anchor = document.querySelector<HTMLElement>(`[data-specbtn="${scope}:${key}"]`); if (!anchor) return;
-    const nome = anchor.closest('.trow')?.querySelector('.nm')?.textContent?.trim() || 'Habilidade';
+    // Nas Secundárias livres o nome está num <input>, e textContent daria vazio.
+    const alvo = anchor.closest('.trow')?.querySelector('.nm');
+    const nome = alvo?.querySelector<HTMLInputElement>('input')?.value.trim()
+      || alvo?.textContent?.trim() || 'Habilidade';
     if (!specPop) {
       specPop = document.createElement('div'); specPop.className = 'specpop'; document.body.appendChild(specPop);
       // cliques dentro do popover não sobem até o handler de documento (senão o repaint
@@ -420,8 +435,14 @@ export function montarFicha(opts: FichaOpts) {
     const groups: Record<string, string[]> = {}; SECONDARY.forEach(([n, g]) => (groups[g] ??= []).push(n));
     Object.values(groups).forEach((arr) => arr.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' })));
     const ordem = ['Corpo', 'Sociais', 'Conhecimento', 'Ofício', 'Expressão', 'Subterfúgio', 'Interior'];
-    el('secondary').innerHTML = ordem.filter((g) => (groups[g] || []).length).map((g) =>
+    const catalogo = ordem.filter((g) => (groups[g] || []).length).map((g) =>
       grupoHTML(g, groups[g].map((n) => { const k = slug(n); return trow(n, dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specBtn('s', k, S.skills2[k] || 0, specCount(S.spec2[k]))); }))).join('');
+    // As três vagas em branco, no fim. O nome é um campo de texto e não abre o modal do traço;
+    // o resto da linha (bolinhas e ✦) se comporta como qualquer outra Secundária.
+    const livres = grupoHTML('Livres', LIVRES.map((k) => trow(
+      `<input class="livre-nm" type="text" data-livre="${k}" value="${(nomeLivre(k)).replace(/"/g, '&quot;')}" placeholder="perícia da sua mesa" aria-label="Nome da secundária livre"${opts.readOnly ? ' readonly' : ''}>`,
+      dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specBtn('s', k, S.skills2[k] || 0, specCount(S.spec2[k])))));
+    el('secondary').innerHTML = catalogo + livres;
   }
   function renderCaminhos() {
     const card = (cam: string) => {
@@ -1757,7 +1778,7 @@ export function montarFicha(opts: FichaOpts) {
     xw = custoPontos('vontade', undefined, S.willpower ?? 0);
     xap = custoPontos('aparencia', undefined, S.aparencia ?? 0);
     xc = custoPontos('centelha', undefined, S.centelha || 0);   // grátis: sempre 0, mantido p/ a barra
-    SECONDARY.forEach(([n]) => { const k = slug(n); x2 += custoPontos('habilidadeSecundaria', undefined, S.skills2[k] || 0) + specCostSum(S.spec2[k], true); });
+    [...SECONDARY.map(([n]) => slug(n)), ...LIVRES].forEach((k) => { x2 += custoPontos('habilidadeSecundaria', undefined, S.skills2[k] || 0) + specCostSum(S.spec2[k], true); });
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += custoTecnica(TECNIV[id]); });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
     (EFEITO_D as any[]).forEach((e) => { if (S.efeito[e.id]) xef += custoEfeito(e.nivel); });
@@ -1841,8 +1862,10 @@ export function montarFicha(opts: FichaOpts) {
     if (t.closest('[data-specpop-close]')) { closeSpecPop(); return; }
     if (specPopFor && !t.closest('.specpop') && !t.closest('.spec .sq')) closeSpecPop();
     if (popPreso && !t.closest('.arte-head, [data-efpop]') && !t.closest('.ficha-pop')) fecharPop();
+    // O nome de uma Secundária livre é campo de texto: clicar nele é para escrever, não
+    // para abrir o modal do traço (que continua acessível pelo resto da linha).
     const nm = t.closest<HTMLElement>('.trow .nm');
-    if (nm) { openTraitModal(nm); return; }
+    if (nm && !(t instanceof HTMLInputElement)) { openTraitModal(nm); return; }
     const dot = t.closest<HTMLElement>('.dots .dot');
     if (dot) { if (opts.readOnly || dot.classList.contains('cap')) return; const s = dot.parentElement as HTMLElement; setDot(s.dataset.kind!, s.dataset.key!, +dot.dataset.d!); return; }
     const rb = t.closest<HTMLElement>('.rollv');
@@ -1908,6 +1931,13 @@ export function montarFicha(opts: FichaOpts) {
 
   // idrow + budget
   document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { if (opts.readOnly) return; S.id[inp.dataset.id!] = inp.value; save(); }));
+  // Delegado, porque renderSecondary() refaz o painel a cada mudança de bolinha. Só salva:
+  // re-renderizar aqui tiraria o foco do campo no meio da digitação.
+  el('secondary').addEventListener('input', (e) => {
+    const inp = (e.target as HTMLElement).closest<HTMLInputElement>('[data-livre]');
+    if (!inp || opts.readOnly) return;
+    S.livreNome[inp.dataset.livre!] = inp.value; save();
+  });
   (el('xpBudget') as HTMLInputElement).addEventListener('input', (e) => {
     if (opts.budgetLocked || opts.readOnly) return;
     S.budget = +(e.target as HTMLInputElement).value || 0; recompute();

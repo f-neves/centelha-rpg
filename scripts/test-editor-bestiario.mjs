@@ -1,0 +1,97 @@
+// test-editor-bestiario.mjs — dirige o editor de criaturas do /bestiario num Edge
+// headless e confere que ele não mente: os derivados do modal têm de bater com o
+// bloco impresso no card, campo a campo.
+//
+// Foi este teste que pegou os três erros da primeira versão: o porte vindo como
+// rótulo ("Enorme") onde o calc.ts espera slug, a Integridade e a Prontidão que
+// não sobrevivem no monsters.json (são entrada do gerador, não saída) e o botão
+// de editar abrindo o infobox junto por compartilhar a classe .besta-info.
+//
+// uso: node scripts/test-editor-bestiario.mjs
+import puppeteer from 'puppeteer-core';
+import { spawn, execSync } from 'node:child_process';
+const EDGE='C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+const strip=(s)=>s.replace(/\x1b\[[0-9;]*m/g,'');
+const {child,url}=await new Promise((res,rej)=>{
+  const c=spawn('npm run dev',{shell:true,stdio:['ignore','pipe','pipe']});
+  let o=''; const on=(b)=>{o+=strip(b.toString());const m=o.match(/http:\/\/localhost:(\d+)\/centelha-rpg/);if(m)res({child:c,url:`http://localhost:${m[1]}/centelha-rpg`});};
+  c.stdout.on('data',on);c.stderr.on('data',on);setTimeout(()=>rej(new Error('dev')),45000);});
+const browser=await puppeteer.launch({executablePath:EDGE,headless:'new',args:['--no-sandbox']});
+let falhas=0; const ok=(c,m)=>{console.log(`  ${c?'✓':'✘'} ${m}`); if(!c)falhas++;};
+try{
+  const page=await browser.newPage();
+  await page.setViewport({width:1400,height:1000});
+  const erros=[]; page.on('pageerror',(e)=>erros.push(String(e)));
+  await page.goto(`${url}/bestiario`,{waitUntil:'networkidle0'});
+
+  ok((await page.$$('.besta-editar')).length===308,`botao Editar em todas as criaturas (${(await page.$$('.besta-editar')).length})`);
+  ok(!!(await page.$('#besta-nova')),'botao Nova criatura na barra');
+  ok(await page.$eval('#editbox',(e)=>e.hidden),'modal comeca fechado');
+
+  // abre o do Treant
+  await page.evaluate(()=>{ document.querySelector('#mon-treant .besta-editar').click(); });
+  await new Promise(s=>setTimeout(s,300));
+  ok(!(await page.$eval('#editbox',(e)=>e.hidden)),'modal abre no clique');
+  const nome=await page.$eval('[data-ed="nome"]',(e)=>e.value);
+  ok(nome==='Treant',`nome veio preenchido (${nome})`);
+  const vig=await page.$eval('[data-ed="atributos.vigor"]',(e)=>e.value);
+  ok(vig==='8',`Vigor veio preenchido (${vig})`);
+  const fogo=await page.$eval('.ed-el[data-el="fogo"]',(e)=>e.dataset.estado);
+  ok(fogo==='1',`fraqueza a fogo marcada (estado ${fogo})`);
+  const perf=await page.$eval('.ed-el[data-el="perfuracao"]',(e)=>e.dataset.estado);
+  ok(perf==='2',`resistencia a perfuracao marcada (estado ${perf})`);
+  const pv0=await page.$eval('#ed-der dd',(e)=>e.textContent);
+  ok(pv0==='75',`PV derivado bate com o card, respeitando o porte Enorme (${pv0})`);
+
+  // os derivados do modal tem de bater com o bloco impresso no card, sem excecao
+  const bate=await page.evaluate(()=>{
+    const card=document.getElementById('mon-treant');
+    const dd=[...card.querySelectorAll('.besta-stats dd')].map(e=>e.textContent.trim());
+    const ed=[...document.querySelectorAll('#ed-der dd')].map(e=>e.textContent.trim());
+    return { pv:[dd[0],ed[0]], defesa:[dd[1],ed[1]], social:[dd[2],ed[2]], mental:[dd[3],ed[3]], ini:[dd[5],ed[5]] };
+  });
+  for (const [k,[a,b]] of Object.entries(bate)) ok(a===b, `${k}: card ${a} = modal ${b}`);
+
+  // muda o Vigor e ve o PV recalcular
+  await page.$eval('[data-ed="atributos.vigor"]',(e)=>{e.value='10';e.dispatchEvent(new Event('input',{bubbles:true}));});
+  await new Promise(s=>setTimeout(s,150));
+  const pv1=await page.$eval('#ed-der dd',(e)=>e.textContent);
+  ok(Number(pv1)>75,`PV recalcula ao vivo com Vigor 10 (75 -> ${pv1})`);
+
+  // alterna um elemento
+  await page.evaluate(()=>document.querySelector('.ed-el[data-el="raio"]').click());
+  ok(await page.$eval('.ed-el[data-el="raio"]',(e)=>e.dataset.estado)==='1','clique marca fraqueza');
+  await page.evaluate(()=>document.querySelector('.ed-el[data-el="raio"]').click());
+  ok(await page.$eval('.ed-el[data-el="raio"]',(e)=>e.dataset.estado)==='2','segundo clique marca resistencia');
+
+  ok(await page.$eval('#infobox',(e)=>e.hidden),'o infobox de Informacoes NAO abre junto');
+  await page.screenshot({path:'_shots/editor-modal.png'});
+
+  // salvar e conferir que persiste
+  await page.evaluate(()=>document.getElementById('ed-salvar').click());
+  await new Promise(s=>setTimeout(s,200));
+  const salvo=await page.evaluate(()=>JSON.parse(localStorage.getItem('centelha:bestiario:edicoes')||'{}'));
+  ok(!!salvo['mon-treant'],'edicao gravada no localStorage');
+  ok(salvo['mon-treant']?.atributos?.vigor===10,`Vigor gravado (${salvo['mon-treant']?.atributos?.vigor})`);
+  ok(await page.$eval('#mon-treant',(e)=>e.classList.contains('editada')),'card marcado como editado');
+
+  // reverter
+  await page.evaluate(()=>document.getElementById('ed-reverter').click());
+  await new Promise(s=>setTimeout(s,200));
+  const depois=await page.evaluate(()=>JSON.parse(localStorage.getItem('centelha:bestiario:edicoes')||'{}'));
+  ok(!depois['mon-treant'],'reverter apaga a edicao');
+
+  // criatura nova
+  await page.evaluate(()=>document.querySelector('.ed-fechar').click());
+  await page.evaluate(()=>document.getElementById('besta-nova').click());
+  await new Promise(s=>setTimeout(s,250));
+  ok(await page.$eval('#ed-titulo',(e)=>e.textContent)==='Nova criatura','botao Nova abre em branco');
+  ok(await page.$eval('[data-ed="nome"]',(e)=>e.value)==='','nome vazio na criatura nova');
+
+  ok(erros.length===0,`sem erro de JS na pagina${erros.length?': '+erros[0]:''}`);
+}finally{
+  await browser.close();
+  try{execSync(`taskkill /pid ${child.pid} /T /F`,{stdio:'ignore'});}catch{}
+}
+console.log(falhas?`\n✘ ${falhas} falha(s)`:'\n✓ editor OK');
+process.exit(falhas?1:0);

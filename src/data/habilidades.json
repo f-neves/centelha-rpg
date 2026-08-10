@@ -1042,7 +1042,7 @@
       "inteligencia",
       "vigor"
     ],
-    "descricao": "Durar longe da estrada: achar água e comida, caçar, armar acampamento, ler o tempo, orientar-se sem mapa, rastrear e evitar ser rastreado. Cobre também conhecer o bicho e a planta do lugar o bastante para não comer o que mata nem acampar onde não se deve. É a perícia que segura a viagem em pé, e numa campanha de estrada ou de ermo ela rola quase toda sessão.",
+    "descricao": "Durar longe da estrada: achar água e comida, caçar, pescar, armar acampamento, ler o tempo, orientar-se sem mapa, rastrear e evitar ser rastreado. Vale para a armadilha de caça, para a linha e para a rede. Cobre também conhecer o bicho e a planta do lugar o bastante para não comer o que mata nem acampar onde não se deve. É a perícia que segura a viagem em pé, e numa campanha de estrada ou de ermo ela rola quase toda sessão.",
     "niveis": [
       {
         "nivel": 0,
@@ -1089,7 +1089,7 @@
       "inteligencia",
       "destreza"
     ],
-    "descricao": "A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola; o serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferreiro, Marcenaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade.",
+    "descricao": "A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola; o serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferreiro, Carpintaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade.",
     "niveis": [
       {
         "nivel": 0,

@@ -496,6 +496,18 @@ import '../styles/arte-equip.css';
   .trow { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .12rem 0; }
   .trow .nm { font-size: var(--fs-aux); cursor: help; } .trow .nm:hover { text-decoration: underline dotted var(--accent-soft); }
   .trow .nm small { color: var(--ink-soft); font-size: var(--fs-micro); }
+  /* Secundárias livres: o nome é digitado, então a linha vira campo. Sublinhado pontilhado
+     em repouso para dizer "escreva aqui" sem pesar; o hover de .nm não vale, é campo e não
+     traço. Ocupa a largura que sobra da linha, para nome longo não estourar as bolinhas. */
+  .trow .nm:has(.livre-nm) { cursor: auto; flex: 1 1 auto; min-width: 0; }
+  .trow .nm:has(.livre-nm):hover { text-decoration: none; }
+  .livre-nm {
+    width: 100%; font-family: 'EB Garamond', Georgia, serif; font-size: var(--fs-aux);
+    color: var(--ink); background: transparent; border: none;
+    border-bottom: 1px dotted var(--rule); padding: 0 0 1px;
+  }
+  .livre-nm::placeholder { color: var(--ink-soft); opacity: .7; font-style: italic; }
+  .livre-nm:focus { outline: none; border-bottom: 1px solid var(--accent); }
   .tr-r { display: flex; align-items: center; }
   .dots { display: inline-flex; gap: 3px; align-items: center; }
   .dot { width: 15px; height: 15px; border: 1.5px solid var(--accent); border-radius: 50%; cursor: pointer; background: transparent; transition: background .08s; flex: 0 0 auto; }

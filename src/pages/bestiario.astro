@@ -4,6 +4,7 @@ import CentelhaSpark from '../components/CentelhaSpark.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
 import monsters from '../data/monsters.json';
+import BestiaEditor from '../components/BestiaEditor.astro';
 const d = await loadData();
 // Fonte ÚNICA da página: monsters.json (gerado por scripts/gen-monsters.mjs a partir dos arquivos-fonte).
 const inimigos = ([...monsters] as any[]).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
@@ -75,6 +76,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
   <div class="callout"><span class="lbl">Regra de Horda</span>Muitos capangas iguais lutam como um <strong>esquadrão único</strong>: o tamanho vira <strong>Magnitude</strong> (2–3 = +1d6, 4–7 = +2, 8–15 = +3…), somada ao <strong>acerto e ao dano</strong>; a Defesa cai <strong>−2</strong> (aglomerado). <a href={url('regras/combate') + '#regra-de-horda'}>Regra completa →</a></div>
 
   <div class="filtros panel">
+    <button type="button" class="btn besta-nova" id="besta-nova">✚ Nova criatura</button>
     <label class="busca">Buscar <input type="search" data-bf="q" placeholder="nome, conceito, efeito…" /></label>
     <label class="ord">Ordenar por
       <span class="ord-row">
@@ -128,7 +130,13 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
         data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')} data-semimg={i.semImagem ? '1' : ''}
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
         data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
-        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}>
+        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}
+        data-besta={JSON.stringify({ id: i.id, nome: i.nome, conceito: i.conceito, ameaca: i.ameaca, centelha: i.centelha, porte: i.porte, atributos: i.atributos, vontade: i.vontade, /* Integridade é ENTRADA do gerador e não sobrevive no monsters.json. Recupera-se
+           invertendo a Defesa Mental (= Integridade + Raciocínio + Vontade + Centelha),
+           senão o modal abriria com 0 e mostraria uma Defesa Mental que não é a da criatura. */
+        integridade: Math.max(0, (i.combate.defesaMental === '-' ? 0 : i.combate.defesaMental) - (i.atributos?.raciocinio ?? 0) - (i.vontade ?? 0) - (i.centelha ?? 0)),
+        /* Prontidão: mesma história, invertida da Iniciativa (= 1d6 + Raciocínio + Prontidão). */
+        prontidao: Math.max(0, Number(/\+\s*(\d+)/.exec(String(i.combate.iniciativa))?.[1] ?? 0) - (i.atributos?.raciocinio ?? 0)), fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], notas: i.notas || '' })}>
 
         <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
           {i.imagem
@@ -211,8 +219,9 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
             ))}
           </ul>
 
-          {(temMec(i) || i.lore?.length > 0) && (
+          {(
             <div class="besta-foot">
+              <button class="besta-info besta-editar" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✎</span> Editar</button>
               {temMec(i) && (
                 <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades &amp; Poderes</button>
               )}
@@ -271,6 +280,8 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
       <div class="ib-body" id="ib-body"></div>
     </div>
   </div>
+
+  <BestiaEditor />
 </Base>
 
 <style>
@@ -619,7 +630,9 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     (ib.querySelector('.ib-fechar') as HTMLElement)?.focus();
   }
   function fecharInfo() { ib.hidden = true; ibBody.replaceChildren(); document.body.style.overflow = ''; }
-  document.querySelectorAll<HTMLButtonElement>('.besta-foot .besta-info').forEach((b) => {
+  // :not(.besta-editar) — o botão de editar compartilha o estilo .besta-info mas abre
+  // OUTRO modal (BestiaEditor). Sem isto, um clique abria os dois empilhados.
+  document.querySelectorAll<HTMLButtonElement>('.besta-foot .besta-info:not(.besta-editar)').forEach((b) => {
     b.addEventListener('click', () => {
       const card = b.closest('.besta') as HTMLElement;
       if (card) abrirModal(card, b.classList.contains('besta-mech') ? '.mech-tpl' : '.lore-tpl');

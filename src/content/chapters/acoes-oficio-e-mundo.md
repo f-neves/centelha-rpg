@@ -48,7 +48,7 @@ Fora do território, a regra é uma só:
 
 O primeiro é um degrau, não uma parede: um faz-tudo excepcional bate uma espada simples, e leva três dias e meio nela. O segundo é a parede de verdade, e é o que fecha a fechadura de segredo, a placa completa sob medida, a peça de joalheria e o casco de navio a quem não tem o ofício.
 
-Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**, ilimitadas e mais baratas: Ferreiro, Carpintaria, Marcenaria, Alvenaria, Couraria, Costura, Joalheria, Gastronomia, Artesanato, Navegação, e o que mais a história pedir (Olaria, Vidraria, Construção Naval). O Atributo é **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo.
+Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**, ilimitadas e mais baratas: Ferreiro, Carpintaria, Alvenaria, Couraria, Costura, Joalheria, Gastronomia, Artesanato, Navegação, e o que mais a história pedir (Olaria, Vidraria, Construção Naval). O Atributo é **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>O ferreiro tem Ferreiro 5 e Ofícios Gerais 3. Pela <a href="/regras/acoes-e-sistema">regra da maior e da menor</a>, ele rola com Ferreiro e soma +3 ao total.</div>
 

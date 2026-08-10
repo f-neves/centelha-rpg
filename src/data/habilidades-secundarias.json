@@ -1508,7 +1508,7 @@
     "id": "carpintaria",
     "nome": "Carpintaria",
     "grupo": "oficio",
-    "descricao": "A madeira que sustenta: viga, telhado, assoalho, porta, escada, ponte, casco de barco, escoramento de mina. É o ofício da estrutura, e o que se pede dele é que aguente peso e tempo, não que seja bonito.",
+    "descricao": "A madeira, da viga ao móvel: cortar, aparelhar, encaixar, montar e acabar. Cobre o que sustenta (telhado, assoalho, porta, escada, ponte, escoramento de mina, casco de barco) e o que se usa de perto (móvel, baú, cabo de arma, arco, acabamento), porque é a mesma madeira, a mesma ferramenta e o mesmo par de mãos; o que muda de uma peça para a outra é a tolerância do encaixe, não o ofício. É o ofício mais pedido de qualquer acampamento, porque quase tudo que quebra numa viagem é de madeira.",
     "niveis": [
       {
         "nivel": 0,
@@ -1518,75 +1518,32 @@
       {
         "nivel": 1,
         "rotulo": "Iniciado",
-        "texto": "Prega tábua e monta um banco."
+        "texto": "Prega tábua e monta um banco que não balança."
       },
       {
         "nivel": 2,
         "rotulo": "Competente",
-        "texto": "Levanta telhado, porta e assoalho."
+        "texto": "Levanta telhado, porta e assoalho, e faz o móvel comum de uma casa."
       },
       {
         "nivel": 3,
         "rotulo": "Profissional",
-        "texto": "Constrói casa, ponte pequena e escoramento de mina."
+        "texto": "Constrói casa, ponte pequena e escoramento de mina, com encaixe justo."
       },
       {
         "nivel": 4,
         "rotulo": "Perito",
-        "texto": "Mestre de obra: dirige uma construção inteira."
+        "texto": "Mestre de obra: dirige uma construção inteira, e faz móvel de casa nobre sob medida."
       },
       {
         "nivel": 5,
         "rotulo": "Mestre",
-        "texto": "Constrói o que os outros dizem que não fica de pé."
+        "texto": "Constrói o que os outros dizem que não fica de pé, e assina peça que se disputa em inventário."
       },
       {
         "nivel": 6,
         "rotulo": "Lendário",
-        "texto": "A estrutura atravessa séculos sem ceder um dedo."
-      }
-    ]
-  },
-  {
-    "id": "marcenaria",
-    "nome": "Marcenaria",
-    "grupo": "oficio",
-    "descricao": "A madeira que se vê de perto: móvel, baú, encaixe justo, arco e cabo de arma, acabamento e verniz. Onde a Carpintaria resolve o que fica de pé, a Marcenaria resolve o que se usa com as mãos todo dia.",
-    "niveis": [
-      {
-        "nivel": 0,
-        "rotulo": "Leigo",
-        "texto": "O encaixe não encaixa."
-      },
-      {
-        "nivel": 1,
-        "rotulo": "Iniciado",
-        "texto": "Faz caixa e banco simples."
-      },
-      {
-        "nivel": 2,
-        "rotulo": "Competente",
-        "texto": "Móvel comum, sólido e sem graça."
-      },
-      {
-        "nivel": 3,
-        "rotulo": "Profissional",
-        "texto": "Encaixe justo, acabamento fino, arco e cabo de arma."
-      },
-      {
-        "nivel": 4,
-        "rotulo": "Perito",
-        "texto": "Móvel de casa nobre, feito sob medida."
-      },
-      {
-        "nivel": 5,
-        "rotulo": "Mestre",
-        "texto": "Peça que se herda e se disputa em inventário."
-      },
-      {
-        "nivel": 6,
-        "rotulo": "Lendário",
-        "texto": "Faz a madeira fazer o que só o metal deveria fazer."
+        "texto": "A estrutura atravessa séculos sem ceder um dedo, e a madeira faz o que só o metal deveria fazer."
       }
     ]
   },
@@ -1888,49 +1845,6 @@
         "nivel": 6,
         "rotulo": "Lendário",
         "texto": "Alimenta um reino em ano de fome."
-      }
-    ]
-  },
-  {
-    "id": "pesca",
-    "nome": "Pesca",
-    "grupo": "oficio",
-    "descricao": "Tirar comida da água: linha, rede, armadilha, arpão, e o saber de onde o peixe está a cada hora, maré e estação. Sustenta comunidades inteiras, e numa viagem por rio ou litoral é o que mantém o grupo alimentado sem gastar provisão.",
-    "niveis": [
-      {
-        "nivel": 0,
-        "rotulo": "Leigo",
-        "texto": "Volta com a rede vazia e ainda molhado."
-      },
-      {
-        "nivel": 1,
-        "rotulo": "Iniciado",
-        "texto": "Pesca de linha, com sorte."
-      },
-      {
-        "nivel": 2,
-        "rotulo": "Competente",
-        "texto": "Sustenta a família com o que tira do rio."
-      },
-      {
-        "nivel": 3,
-        "rotulo": "Profissional",
-        "texto": "Sabe o ponto, a hora e a maré."
-      },
-      {
-        "nivel": 4,
-        "rotulo": "Perito",
-        "texto": "Conduz uma frota pequena de pesca."
-      },
-      {
-        "nivel": 5,
-        "rotulo": "Mestre",
-        "texto": "Encontra cardume onde ninguém procura."
-      },
-      {
-        "nivel": 6,
-        "rotulo": "Lendário",
-        "texto": "Tira do mar o que a aldeia jura não existir mais."
       }
     ]
   },
