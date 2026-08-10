@@ -268,6 +268,67 @@ E as âncoras do outro extremo da escala, para calibrar gente comum:
 
 ---
 
+## 8. Onde a curva muda de caráter (e a parede que não existe)
+
+Pergunta: existe um X onde a queda deixa de ser suave e vira despencamento?
+
+### O envelope não tem joelho
+
+Tomando o melhor caso humano por massa, só objeto compacto segurado na mão, sem
+cabo e sem nada que plane, a inclinação em escala log-log de ponta a ponta é:
+
+```
+alcance ∝ massa^−0,55        de 145 g a 83,5 kg
+```
+
+Três ordens de grandeza de massa, e a inclinação média não muda. As oscilações
+locais (de −0,2 a −1,1 entre pontos vizinhos) são troca de técnica e diferença de
+atleta, não mudança de regime. Para referência: energia constante daria −1,00 e
+velocidade constante daria 0,00. O corpo humano fica exatamente no meio.
+
+### O teste que fecha a questão
+
+O ajuste do Jacko Gill, medido **só entre 1 e 8 kg** (k = 5,21 kg, R² = 0,982),
+estendido a massas 10 vezes maiores **sem nenhuma parede**:
+
+| massa | previsto sem parede | real | razão |
+|---|---|---|---|
+| 25 kg (barril, equivalente) | 8,7 m | 12,1 m | 139% |
+| 61,25 kg (pedra suíça) | 4,6 m | **4,66 m** | **102%** |
+| 83,5 kg (Unspunnen) | 3,7 m | **4,16 m** | **113%** |
+| 84 kg (Arnold) | 3,7 m | **3,47 m** | **95%** |
+
+Uma hipérbole calibrada em arremesso de peso acerta a pedra suíça de 61 kg em 2%.
+**Não existe parede nenhuma até 84 kg**, que é o objeto mais pesado que já se
+arremessou. A regra de hoje, com a parede em 500 kg, corta 23% aos 61 kg e 31% aos
+83,5 kg, e os dados dizem que não há corte a cortar.
+
+### O teto é uma escada, não uma rampa
+
+O que existe não é uma curva que mergulha, é uma sequência de coisas que deixam de
+ser possíveis:
+
+| o que dá para fazer | peso máximo | em fração do levantamento terra |
+|---|---|---|
+| **arremessar** (pedra de Unspunnen, vai a 4,2 m) | **83,5 kg** | **P/6** |
+| lançar por cima da barra com uma mão (6,17 m de altura) | 25,5 kg | P/20 |
+| erguer acima da cabeça (log lift, Iron Biby) | 231 kg | P/2,2 |
+| pôr sobre plataforma de 1,2 m (pedra de atlas, Shaw) | 252 kg | P/2 |
+| tirar do chão (levantamento terra, Björnsson) | 501 kg | P |
+
+**O limite do arremesso é P/6, não P.** E nele o arremesso ainda vale 4 metros: não
+é uma curva chegando a zero, é uma curva sendo interrompida.
+
+Onde ela chegaria a zero de verdade não foi medido por ninguém: entre 85 e 230 kg
+não existe registro de arremesso nenhum. O limite físico defensável é o
+**levantamento acima da cabeça**, 231 kg, porque ali a velocidade de saída é zero
+por definição (é o peso máximo que sobe, e sobe devagar). A hipérbole pura prevê 1,4 m
+de arremesso com 231 kg, o que é obviamente falso.
+
+Ou seja: a parede existe, mas mora entre 85 e 231 kg, e não em 500. E ela não é uma
+rampa longa como `(1 − m/P)²`, que já cobra 10% aos 25 kg. É o contrário: fica
+imperceptível até quase o fim e aí desaba em poucos quilos.
+
 ## Fontes
 
 - [Guinness · Longest baseball throw](https://www.guinnessworldrecords.com/world-records/64701-longest-baseball-throw-male)
@@ -291,3 +352,7 @@ E as âncoras do outro extremo da escala, para calibrar gente comum:
 - Linthorne · "Throwing and jumping for maximum horizontal range" ([arXiv](https://arxiv.org/pdf/physics/0601148)) · v = √(2Fl/m), F₀ = 460 N e l = 1,65 m para um arremessador de peso de elite
 - [Linthorne 2001 · Optimum release angle in the shot put](https://pubmed.ncbi.nlm.nih.gov/11266667/)
 - [Australian Athletics · glide × rotational no peso](https://coachathletics.com.au/coaching-education/glide-vs-rotational-shot-put-which-technique-is-superior-a-very-deep-dive)
+- [Fitness Volt · recorde de log lift, 231 kg, Iron Biby](https://fitnessvolt.com/cheick-iron-biby-sanou-231-kg-log-lift-world-record/)
+- [Wikipedia · Weight over bar (25,5 kg a 6,17 m, Björnsson)](https://en.wikipedia.org/wiki/Weight_over_bar)
+- [Stark Center · o levantamento terra de 501 kg de Björnsson](https://starkcenter.org/2020/04/records-vitriol-and-hafthor-bjornssons-quest-for-the-501-kilo-deadlift/)
+- [Giants Live · pedra de atlas de 252 kg sobre plataforma de 1,2 m](https://giants-live.com/news/the-heaviest-weight-ever-lifted/)

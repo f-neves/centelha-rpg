@@ -122,6 +122,10 @@
   .fa-chart .pt{stroke:var(--paper);stroke-width:1}
   .fa-chart .pt.vazado{fill:none!important;stroke-width:1.6}
   .fa-chart .ajuste{fill:none;stroke-width:1.5;stroke-dasharray:4 3;opacity:.75}
+  /* a hipérbole medida em 1 a 8 kg, estendida a toda a faixa sem parede nenhuma */
+  .fa-chart .extrap{fill:none;stroke-width:1;stroke-dasharray:1.5 3;opacity:.55}
+  .fa-chart .teto{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
+  .fa-chart .tetolbl{text-anchor:start;font-size:8px}
   .fa-chart .modelo{fill:none;stroke:var(--accent);stroke-width:2}
   .fa-chart .modelo.medio{stroke-dasharray:5 3;stroke-width:1.5}
   .fa-chart .anot{fill:var(--muted);font-size:9px;font-family:'Cinzel',Georgia,serif}
@@ -913,7 +917,17 @@ function alcModelo(w, res, P){
 const FW = 580, FH = 300, fml = 46, fmr = 14, fmt = 14, fmb = 34;
 const fxB = fml, fxR = FW - fmr, fyT = fmt, fyB = FH - fmb;
 const fpw = fxR - fxB, fph = fyB - fyT;
-const MASSA = [0.08, 120];   // faixa do eixo X, em kg
+// vai até 600 kg para caber o teto do levantamento terra: é lá que a regra de hoje
+// põe a parede, e o gráfico precisa mostrar quanto isso fica longe do que se arremessa
+const MASSA = [0.08, 600];
+// o que o corpo humano consegue fazer com cada peso, do mais exigente ao menos
+// (a pedra de atlas sobre plataforma de 1,2 m, 252 kg, fica de fora: em log ela
+// encosta na do levantamento acima da cabeça e os dois rótulos se atropelam)
+const TETOS = [
+  [83.5,  'arremessa'],
+  [231,   'ergue acima da cabeça'],
+  [501,   'tira do chão'],
+];
 
 // marcador com forma própria por família: a cor sozinha não pode carregar a
 // identidade, e sob daltonismo o par verde/laranja fica no limite
@@ -937,7 +951,7 @@ function plotFatos(alvo, campo, faixaY, rotY, ajustes){
   const dentroY = (v) => v >= faixaY[0] && v <= faixaY[1];
 
   let s = '';
-  const marcasX = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100].filter((v) => v >= MASSA[0] && v <= MASSA[1]);
+  const marcasX = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].filter((v) => v >= MASSA[0] && v <= MASSA[1]);
   for (const v of marcasX){
     s += `<line class="grid" x1="${X(v).toFixed(1)}" y1="${fyT}" x2="${X(v).toFixed(1)}" y2="${fyB}"/>`
        + `<text x="${X(v).toFixed(1)}" y="${fyB+14}" text-anchor="middle">${fw(v)}</text>`;
@@ -946,6 +960,31 @@ function plotFatos(alvo, campo, faixaY, rotY, ajustes){
   for (const v of passo){
     s += `<line class="grid" x1="${fxB}" y1="${Y(v).toFixed(1)}" x2="${fxR}" y2="${Y(v).toFixed(1)}"/>`
        + `<text x="${fxB-6}" y="${(Y(v)+3).toFixed(1)}" text-anchor="end">${v}</text>`;
+  }
+
+  // os quatro tetos do corpo humano, do que se arremessa ao que só sai do chão:
+  // é o que mostra o quanto a parede da regra (em 500 kg) está longe do que se joga
+  for (const [m, rot] of TETOS){
+    if (m > MASSA[1]) continue;
+    const x = X(m);
+    s += `<line class="teto" x1="${x.toFixed(1)}" y1="${fyT}" x2="${x.toFixed(1)}" y2="${fyB}"/>`
+       + `<text class="anot tetolbl" transform="rotate(-90 ${(x-3).toFixed(1)} ${fyB-4})" x="${(x-3).toFixed(1)}" y="${fyB-4}">${rot} ${m} kg</text>`;
+  }
+
+  // A hipérbole do Gill (k = 5,21, medida só entre 1 e 8 kg) estendida a TODA a
+  // faixa, sem parede nenhuma. Se os pontos pesados caírem em cima dela, é porque
+  // parede não existe até onde já se mediu.
+  const gl = ajustes.gill;
+  if (gl && FAM_ON.ombro){
+    const pts = [];
+    for (let i = 0; i <= 120; i++){
+      const m = Math.exp(lx(MASSA[0]) + spanX*i/120);
+      if (m + gl.k <= 0) continue;
+      const v = Math.sqrt(gl.A/(m + gl.k));
+      const val = campo === 'v' ? v : alcOtimo(v, gl.h);
+      if (dentroY(val)) pts.push(`${X(m).toFixed(1)},${Y(val).toFixed(1)}`);
+    }
+    if (pts.length > 1) s += `<polyline class="extrap" points="${pts.join(' ')}" stroke="${FAM.ombro.cor}"/>`;
   }
 
   // curvas de ajuste, cada uma só dentro da faixa de massa que a série cobre: nada
@@ -1061,6 +1100,9 @@ function pintaFatos(){
     + `<span style="color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px">
          <svg viewBox="0 0 16 12"><line x1="0" y1="6" x2="16" y2="6" stroke="var(--accent)" stroke-width="2"/></svg>
          regra de hoje</span>`
+    + `<span style="color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px">
+         <svg viewBox="0 0 16 12"><line x1="0" y1="6" x2="16" y2="6" stroke="var(--f2)" stroke-width="1" stroke-dasharray="1.5 3"/></svg>
+         hipérbole do Gill sem parede</span>`
     + `<span style="color:var(--muted);font-size:.74rem">marcador vazado = marca de altura, não de distância</span>`;
 
   const ordem = ['chicoteEst', 'gill', 'braemar', 'mckim', 'tyler', 'barril', 'stein'];
