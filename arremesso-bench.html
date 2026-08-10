@@ -103,6 +103,24 @@
   .inst .pip{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px}
   .inst span + span{margin-left:16px}
 
+  /* ---- a regra nova ---- */
+  .regra{margin-bottom:18px}
+  .regragrid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:24px;align-items:start}
+  @media (max-width:1050px){ .regragrid{grid-template-columns:1fr} }
+  .regrapar{display:flex;flex-direction:column;gap:14px}
+  .eq.big{font-size:1.15rem;line-height:2.2}
+  .regraleg{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:8px;font-size:.78rem;color:var(--ink-soft)}
+  .regraleg span{display:inline-flex;align-items:center;gap:6px}
+  .regraleg svg{width:20px;height:12px;overflow:visible}
+  /* o gráfico da regra: pouca tinta, os três regimes ao fundo */
+  .fa-chart .zona{fill:var(--accent-strong)}
+  .fa-chart .zonalbl{fill:var(--ink-soft);font-family:'Cinzel',Georgia,serif;font-size:8.5px;letter-spacing:.05em}
+  .fa-chart .lim{stroke:var(--accent);stroke-width:1;stroke-dasharray:3 3;opacity:.6}
+  .fa-chart .rtopo{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round}
+  .fa-chart .rmedio{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:6 4;opacity:.75}
+  .fa-chart .rreal{fill:var(--ink-soft);opacity:.45}
+  .fa-chart .rlbl{fill:var(--accent-strong);font-family:'Cinzel',Georgia,serif;font-size:10px}
+
   /* ---- os fatos: recordes reais ---- */
   .fatos{margin-bottom:18px}
   .fatgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -229,6 +247,60 @@
 <div class="max">
   <h1>Bancada de arremesso</h1>
   <p class="sub">Duas fichas lado a lado com os mesmos parâmetros de modelo. <b>P</b> é o peso máximo: aquilo que a pessoa ergue e segura por instantes sem conseguir sair do lugar. As três âncoras em uso são 30 kg no Força 1, 80 no homem comum e 500 no pico humano. Na lei de potência o expoente sai <b>só das duas pontas</b>, então o valor do meio cai onde cair: o erro dele contra o alvo é o teste de se a fórmula do FAH é coerente com as três âncoras ao mesmo tempo. Os gráficos usam o mesmo desenho da ficha do site: eixo em log com o trecho abaixo do pivô comprimido nos 5% da esquerda, as mesmas faixas de carga e o mesmo balão de leitura.</p>
+
+  <div class="card regra">
+    <h3 class="tit">A regra nova · três regimes</h3>
+    <div class="regragrid">
+      <div>
+        <div class="fa-chartwrap" id="wG"></div>
+        <div class="regraleg" id="regraleg"></div>
+      </div>
+      <div class="regrapar">
+        <div class="eq big">Alcance <span class="op">=</span>
+          <input class="num w3" type="number" data-p="rConst" min="0.5" max="6" step="0.1">
+          <span class="op">×</span> FAA <span class="op">÷</span> massa<sup><input class="num w3" type="number" data-p="rExpMeio" min="0.2" max="1" step="0.01"></sup>
+        </div>
+        <div class="warn">É a faixa do meio, que vale da maioria dos objetos. Abaixo do ápice
+          e perto do teto entram os outros dois regimes.</div>
+
+        <div class="pgrp">
+          <b>Os três regimes</b>
+          <div class="fld"><label>ápice · onde a curva vira (kg)</label>
+            <input type="number" data-p="rApice" min="0.01" max="2" step="0.01"></div>
+          <div class="fld"><label>expoente abaixo do ápice</label>
+            <input type="range" data-p="rExpLeve" min="0" max="0.5" step="0.01">
+            <span class="val" data-v="rExpLeve"></span></div>
+          <div class="fld"><label>teto de arremesso, em frações de P</label>
+            <input type="range" data-p="rTeto" min="0.05" max="1" step="0.01">
+            <span class="val" data-v="rTeto"></span></div>
+          <div class="fld"><label>a queda começa em, do teto</label>
+            <input type="range" data-p="rQueda" min="0.3" max="1" step="0.01">
+            <span class="val" data-v="rQueda"></span></div>
+        </div>
+
+        <div class="pgrp">
+          <b>As duas referências</b>
+          <div class="fld"><label>FAA do topo humano</label>
+            <input type="number" data-p="faaA" min="2" max="24" step="1"></div>
+          <div class="fld"><label>FAA do humano médio</label>
+            <input type="number" data-p="faaB" min="2" max="24" step="1"></div>
+          <div class="warn" data-out="regranota"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cols2" style="margin-top:16px">
+      <div>
+        <h3 class="tit">A tabela que sai disso</h3>
+        <div style="overflow-x:auto"><table class="famtbl" id="regratbl"></table></div>
+      </div>
+      <div>
+        <h3 class="tit">Conferência contra o que já se fez</h3>
+        <div style="overflow-x:auto"><table class="famtbl" id="errotbl"></table></div>
+        <p class="nota" data-out="erronota"></p>
+      </div>
+    </div>
+  </div>
 
   <div class="card fatos">
     <h3 class="tit">O que existe medido · recordes reais de lançamento</h3>
@@ -451,7 +523,10 @@ const SITE = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
                modelo:'fisico', baseModo:'tabela', banc:37.5, bexp:0.828,
                q:0.70, pexp:1, m0:1, fexp:2, wpiv:1, r0:136, r0exp:0.70,
                vexp:1.5, corrida:1/3, giro:1/6, escala:true,
-               resA:12, resB:3, pA:500, pB:80 };
+               resA:12, resB:3, pA:500, pB:80,
+               // a regra nova (Arremesso_Regra.md)
+               rConst:2, rExpMeio:0.5, rApice:0.10, rExpLeve:0.15,
+               rTeto:0.25, rQueda:0.80, faaA:24, faaB:5 };
 const M = Object.assign({}, SITE);
 
 // As duas referências que estamos usando: o topo humano (atributo 6 + habilidade 6)
@@ -933,6 +1008,204 @@ function pintaFormula(){
     : `Modelo antigo, mantido só para comparação: o site usa o físico.`);
 }
 
+// ---------------------------------------------------------------- a regra nova
+/**
+ * Alcance em três regimes.
+ *  · abaixo do ápice a velocidade do braço satura, então o alcance para de crescer
+ *    e só perde para o ar: cada metade de peso custa ~10%
+ *  · no meio vale a raiz pura, que é o que sai de k ≈ 1,7 × massa
+ *  · nos últimos 20% até o teto a curva desaba linearmente até zero
+ */
+function alcanceRegra(faa, m, P, forma = 1){
+  const ap = M.rApice, L = M.rTeto*P, q = M.rQueda;
+  if (m <= 0 || m > L) return 0;
+  const base = m < ap
+    ? (M.rConst*faa/Math.pow(ap, M.rExpMeio)) * Math.pow(m/ap, M.rExpLeve)
+    : M.rConst*faa/Math.pow(m, M.rExpMeio);
+  const parede = m > q*L ? (L - m)/((1 - q)*L) : 1;
+  return base*parede*forma;
+}
+
+// as marcas usadas na conferência, com o FAA e o P estimados de cada atleta
+const CONF = [
+  ['Bola de golfe · Bradstock',  0.0459, 155.45, 24, 400],
+  ['Beisebol · Gorbous',         0.145,  135.89, 24, 400],
+  ['Celular · Bradstock',        0.150,  120.70, 24, 400],
+  ['Bola de futebol, uma mão',   0.430,   89.00, 24, 400],
+  ['Peso 1 kg · Gill',           1.000,   37.00, 20, 450],
+  ['Peso 5 kg · Hoffa',          5.000,   25.20, 22, 500],
+  ['Peso 7,26 kg · Crouser',     7.257,   23.56, 24, 500],
+  ['Pedra Braemar 10 kg',       10.000,   15.45, 20, 500],
+  ['Barril 25 kg (equiv.)',     25.000,   12.12, 20, 500],
+  ['Pedra suíça 61 kg',         61.250,    4.66, 18, 400],
+  ['Unspunnen 83,5 kg',         83.500,    4.16, 18, 400],
+  ['Beisebol · destreinado',     0.145,   25.00,  5, 150],
+];
+const TABPESO = [
+  [0.01, 'moeda, pedrinha'], [0.05, 'bola de golfe'], [0.1, 'ovo, pedra pequena'],
+  [0.2, 'adaga de arremesso'], [0.5, 'machadinha'], [1, 'pedra, martelo'],
+  [2, 'machado, tijolo'], [5, 'pedra grande'], [10, 'bigorna pequena'],
+  [25, 'barril'], [50, 'saco de grãos'], [80, 'pedra de levantar'],
+  [100, 'começa a queda'], [120, 'quase zero'],
+];
+
+const GW = 580, GH = 320, gml = 44, gmr = 16, gmt = 16, gmb = 34;
+const gxB = gml, gxR = GW - gmr, gyT = gmt, gyB = GH - gmb;
+const gpw = gxR - gxB, gph = gyB - gyT;
+const GMASSA = [0.004, 300], GALC = [0.6, 300];
+
+function plotRegra(){
+  const lx = Math.log, spanX = lx(GMASSA[1]) - lx(GMASSA[0]);
+  const X = (m) => gxB + ((lx(Math.max(GMASSA[0], Math.min(GMASSA[1], m))) - lx(GMASSA[0]))/spanX)*gpw;
+  const spanY = lx(GALC[1]) - lx(GALC[0]);
+  const Y = (d) => gyB - ((lx(Math.max(GALC[0], Math.min(GALC[1], d))) - lx(GALC[0]))/spanY)*gph;
+  const dentro = (d) => d >= GALC[0] && d <= GALC[1];
+  const LA = M.rTeto*M.pA, LB = M.rTeto*M.pB;
+
+  let s = '';
+  // os três regimes ao fundo, medidos pelo topo humano (a curva cheia)
+  const zonas = [
+    [GMASSA[0], M.rApice, '.07', 'satura'],
+    [M.rApice, M.rQueda*LA, '.03', 'raiz do peso'],
+    [M.rQueda*LA, LA, '.11', 'desaba'],
+  ];
+  for (const [a, b, op, rot] of zonas){
+    const x1 = X(a), x2 = X(b);
+    if (x2 - x1 < 2) continue;
+    s += `<rect class="zona" x="${x1.toFixed(1)}" y="${gyT}" width="${(x2-x1).toFixed(1)}" height="${gph}" opacity="${op}"/>`
+       + `<text class="zonalbl" x="${((x1+x2)/2).toFixed(1)}" y="${gyT+11}" text-anchor="middle">${rot}</text>`;
+  }
+  // só as marcas que interessam, e poucas: eixo limpo é metade do gráfico
+  for (const v of [0.01, 0.1, 1, 10, 100]){
+    s += `<line class="grid" x1="${X(v).toFixed(1)}" y1="${gyT}" x2="${X(v).toFixed(1)}" y2="${gyB}"/>`
+       + `<text x="${X(v).toFixed(1)}" y="${gyB+14}" text-anchor="middle">${fw(v)}</text>`;
+  }
+  for (const v of [1, 10, 100]){
+    s += `<line class="grid" x1="${gxB}" y1="${Y(v).toFixed(1)}" x2="${gxR}" y2="${Y(v).toFixed(1)}"/>`
+       + `<text x="${gxB-6}" y="${(Y(v)+3).toFixed(1)}" text-anchor="end">${v}</text>`;
+  }
+  // as três fronteiras, tracejadas e rotuladas de pé
+  // O início da queda e o teto ficam a poucos por cento um do outro, e em log isso
+  // são poucos pixels: os dois rótulos alternam de altura para não se atropelarem.
+  const marcos = [[M.rApice, 'ápice', 0], [M.rQueda*LA, 'começa a queda', 0], [LA, 'teto', 1]];
+  for (const [m, rot, alt] of marcos){
+    if (m < GMASSA[0] || m > GMASSA[1]) continue;
+    const x = X(m), yb = alt ? gyT + gph*0.52 : gyB - 4;
+    s += `<line class="lim" x1="${x.toFixed(1)}" y1="${gyT}" x2="${x.toFixed(1)}" y2="${gyB}"/>`
+       + `<text class="zonalbl" transform="rotate(-90 ${(x-3).toFixed(1)} ${yb.toFixed(1)})" x="${(x-3).toFixed(1)}" y="${yb.toFixed(1)}">${rot} ${fw(m)} kg</text>`;
+  }
+
+  // os recordes reais, discretos: aqui eles são conferência, não protagonista
+  for (const [nome, m, real] of CONF){
+    if (m < GMASSA[0] || !dentro(real)) continue;
+    s += `<circle class="rreal" cx="${X(m).toFixed(1)}" cy="${Y(real).toFixed(1)}" r="2.6"/>`;
+  }
+
+  // as duas curvas da regra
+  const traco = (faa, P) => {
+    const pts = [];
+    for (let i = 0; i <= 300; i++){
+      const m = Math.exp(lx(GMASSA[0]) + spanX*i/300);
+      const d = alcanceRegra(faa, m, P);
+      if (d <= 0) continue;
+      pts.push(`${X(m).toFixed(1)},${Y(Math.max(GALC[0], d)).toFixed(1)}`);
+    }
+    return pts.join(' ');
+  };
+  s += `<polyline class="rmedio" points="${traco(M.faaB, M.pB)}"/>`;
+  s += `<polyline class="rtopo" points="${traco(M.faaA, M.pA)}"/>`;
+  // Rótulo direto na curva, no lugar de legenda separada. Fica no trecho da raiz,
+  // onde as duas descem: texto correndo para a direita acima de uma curva que cai
+  // nunca a cruza, e é por isso que o rótulo não vai no trecho que sobe.
+  const mRot = Math.max(M.rApice*3, 0.3);
+  s += `<text class="rlbl" x="${(X(mRot)+5).toFixed(1)}" y="${(Y(alcanceRegra(M.faaA, mRot, M.pA))-8).toFixed(1)}">topo · FAA ${M.faaA}</text>`
+     + `<text class="rlbl" x="${(X(mRot)+5).toFixed(1)}" y="${(Y(alcanceRegra(M.faaB, mRot, M.pB))-8).toFixed(1)}">médio · FAA ${M.faaB}</text>`;
+
+  s += `<line class="axis" x1="${gxB}" y1="${gyT}" x2="${gxB}" y2="${gyB}"/>`
+     + `<line class="axis" x1="${gxB}" y1="${gyB}" x2="${gxR}" y2="${gyB}"/>`
+     + `<text class="axlbl" x="${(gxB+gxR)/2}" y="${GH-4}" text-anchor="middle">Peso do objeto (kg)</text>`
+     + `<text class="axlbl" transform="rotate(-90 11 ${gmt+gph/2})" x="11" y="${gmt+gph/2}" text-anchor="middle">Alcance máximo (m)</text>`
+     + `<g class="fa-hover" style="display:none;pointer-events:none"><line class="fa-vline" y1="${gyT}" y2="${gyB}"/>`
+     + `<circle class="fa-dot" data-c="a" r="4"/><circle class="fa-dot" data-c="b" r="4"/></g>`;
+
+  const wrap = document.getElementById('wG');
+  wrap.innerHTML = `<svg class="fa-chart" viewBox="0 0 ${GW} ${GH}" role="img" aria-label="Alcance de arremesso por peso do objeto, nas duas referências">${s}</svg><div class="fa-tip" style="display:none"></div>`;
+
+  const svg = wrap.querySelector('svg'), tip = wrap.querySelector('.fa-tip');
+  const hov = wrap.querySelector('.fa-hover'), vl = wrap.querySelector('.fa-vline');
+  svg.addEventListener('pointermove', (e) => {
+    const r = svg.getBoundingClientRect(), k = GW/r.width;
+    const px = Math.max(gxB, Math.min(gxR, (e.clientX - r.left)*k));
+    const m = Math.exp(lx(GMASSA[0]) + ((px - gxB)/gpw)*spanX);
+    const da = alcanceRegra(M.faaA, m, M.pA), db = alcanceRegra(M.faaB, m, M.pB);
+    hov.style.display = ''; vl.setAttribute('x1', px); vl.setAttribute('x2', px);
+    for (const [c, d] of [['a', da], ['b', db]]){
+      const p = hov.querySelector(`[data-c="${c}"]`);
+      p.setAttribute('cx', px.toFixed(1));
+      p.setAttribute('cy', d > 0 ? Y(Math.max(GALC[0], d)).toFixed(1) : gyB);
+      p.style.display = d > 0 ? '' : 'none';
+    }
+    const regime = m < M.rApice ? 'satura' : m > M.rQueda*LA ? 'desaba' : 'raiz do peso';
+    tip.innerHTML = `<b>${fw(m)} kg</b><div class="fa-tipg">`
+      + `<span>Topo</span><span>${da > 0 ? n1(da) + ' m' : 'não joga'}</span>`
+      + `<span>Médio</span><span>${db > 0 ? n1(db) + ' m' : 'não joga'}</span>`
+      + `</div><div style="font-size:.9em;opacity:.75">${regime}</div>`;
+    tip.style.display = '';
+    const meia = tip.offsetWidth/2, cx = (px/GW)*r.width;
+    tip.style.left = Math.max(meia, Math.min(r.width - meia, cx)) + 'px';
+    tip.style.top = (Y(Math.max(GALC[0], da || GALC[0]))/GH)*r.height + 'px';
+  });
+  svg.addEventListener('pointerleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
+
+  document.getElementById('regraleg').innerHTML =
+      `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2.5"/></svg>topo humano</span>`
+    + `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/></svg>humano médio</span>`
+    + `<span><svg viewBox="0 0 20 12"><circle cx="10" cy="6" r="2.6" fill="var(--ink-soft)" opacity=".45"/></svg>marcas reais, para conferir</span>`;
+}
+
+function pintaRegra(){
+  plotRegra();
+  const LA = M.rTeto*M.pA, LB = M.rTeto*M.pB;
+  document.querySelector('[data-out="regranota"]').innerHTML =
+      `Topo: P <b>${M.pA} kg</b>, teto de arremesso <b>${n1(LA)} kg</b>, queda a partir de <b>${n1(M.rQueda*LA)} kg</b>.<br>`
+    + `Médio: P <b>${M.pB} kg</b>, teto <b>${n1(LB)} kg</b>.<br>`
+    + `Um objeto de 1 kg vai a <b>${n1(alcanceRegra(M.faaA, 1, M.pA))} m</b> no topo e `
+    + `<b>${n1(alcanceRegra(M.faaB, 1, M.pB))} m</b> no médio.`;
+
+  document.getElementById('regratbl').innerHTML =
+    `<thead><tr><th>peso</th><th>médio</th><th>topo</th><th style="text-align:left">objeto típico</th></tr></thead><tbody>`
+    // acima do teto ele ainda ERGUE o objeto, só não consegue lançar; só acima do
+    // próprio P é que nem do chão ele tira
+    + TABPESO.map(([m, obj]) => {
+        const cel = (faa, P) => {
+          const d = alcanceRegra(faa, m, P);
+          return d > 0 ? n1(d) + ' m'
+            : `<span class="old">${m > P ? 'não ergue' : 'não arremessa'}</span>`;
+        };
+        const ap = Math.abs(m - M.rApice) < 1e-9;
+        return `<tr${ap ? ' style="font-weight:600"' : ''}><td>${fw(m)} kg</td>`
+          + `<td>${cel(M.faaB, M.pB)}</td><td>${cel(M.faaA, M.pA)}</td>`
+          + `<td style="text-align:left;color:var(--muted)">${obj}${ap ? ' · o ápice' : ''}</td></tr>`;
+      }).join('') + `</tbody>`;
+
+  let soma = 0, pior = 0;
+  const linhas = CONF.map(([nome, m, real, faa, P]) => {
+    const r = alcanceRegra(faa, m, P), e = (r/real - 1)*100;
+    soma += Math.abs(e); pior = Math.max(pior, Math.abs(e));
+    const cls = Math.abs(e) <= 15 ? 'bom' : Math.abs(e) <= 30 ? '' : 'ruim';
+    return `<tr><td style="text-align:left">${nome}</td><td>${fw(m)} kg</td>`
+      + `<td>${n1(real)} m</td><td>${n1(r)} m</td>`
+      + `<td class="${cls}">${e >= 0 ? '+' : ''}${Math.round(e)}%</td></tr>`;
+  }).join('');
+  document.getElementById('errotbl').innerHTML =
+    `<thead><tr><th style="text-align:left">marca</th><th>peso</th><th>real</th><th>a regra</th><th>erro</th></tr></thead><tbody>${linhas}</tbody>`;
+  const med = soma/CONF.length;
+  document.querySelector('[data-out="erronota"]').innerHTML =
+      `Erro médio absoluto <b class="${med <= 20 ? 'bom' : 'ruim'}">${Math.round(med)}%</b>, pior caso `
+    + `<b class="${pior <= 40 ? '' : 'ruim'}">${Math.round(pior)}%</b>. O FAA e o P de cada atleta são `
+    + `estimados por julgamento, não medidos: a conferência mede a forma da curva, não a calibração fina.`;
+}
+
 // ---------------------------------------------------------------- os fatos
 // O modelo de hoje avaliado numa reserva qualquer (atributo + habilidade, 0 a 12).
 const r0Res = (res) => M.r0 * Math.pow(Math.max(0, res)/Math.max(1, M.resA), M.r0exp);
@@ -1210,6 +1483,7 @@ function pinta(){
   FICHAS.forEach((f, i) => pintaFicha(f,
       M.escala ? yCom : teto(yCada[i]),
       M.escala ? pCom : pmax(f)));
+  pintaRegra();
   pintaCmp();
   pintaFormula();
   pintaFatos();
@@ -1259,8 +1533,12 @@ const FMT = {
   vexp:    (v) => vg(v, 2),
   corrida: (v) => '+'+Math.round(v*100)+'%',
   giro:    (v) => '+'+Math.round(v*100)+'%',
+  rExpLeve:(v) => vg(v, 2),
+  rTeto:   (v) => 'P/' + (1/v).toFixed(1).replace('.', ','),
+  rQueda:  (v) => Math.round(v*100)+'%',
 };
-const CAMPO = { corrida: 3, giro: 3, r0exp: 2, bexp: 3, vexp: 2, m0: 2, wpiv: 1, fexp: 1, pexp: 1, q: 2 };
+const CAMPO = { corrida: 3, giro: 3, r0exp: 2, bexp: 3, vexp: 2, m0: 2, wpiv: 1, fexp: 1, pexp: 1, q: 2,
+                rConst: 1, rExpMeio: 2, rApice: 2, rExpLeve: 2, rTeto: 2, rQueda: 2 };
 const numFmt = (chave, v) => CAMPO[chave] != null ? +v.toFixed(CAMPO[chave]) : v;
 
 function sync(exceto){
