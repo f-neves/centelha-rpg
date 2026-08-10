@@ -1406,21 +1406,29 @@ export function montarFicha(opts: FichaOpts) {
     const fah = Math.max(3, Math.min(40, 3 * forca + halt));
     const faa = Math.max(2, Math.min(24, 2 * forca + atl + arr));
     const maxKg = F.levantamento[fah] as number;
-    const r0 = F.arremessoR0[faa] as number;
-    const m0 = F.arremessoMassaBraco as number;
-    // De 1 kg para cima: ao arremessar, o braço acelera o objeto E a si mesmo, o que dá
-    // v(m) = vmax·√(m₀/(m+m₀)) e portanto alcance ∝ m₀/(m+m₀). Calibrando com arremesso de
-    // peso e dardo, m₀ dá 1 kg, que é justamente onde a curva vira. O último fator é a
-    // parede da força: perto do peso máximo não há como acelerar nada. Assim o Arremesso
-    // manda no leve e o Halterofilismo assume no pesado, sem regra separada para a troca.
-    const pesado = (w: number) => r0 * (m0 / (w + m0)) * Math.pow(1 - w / maxKg, F.arremessoParedeExp);
-    // Abaixo de 1 kg o arrasto do ar manda, e manda rápido: falta massa para carregar o
-    // impulso contra o vento, então a distância desaba em vez de continuar subindo. O ápice
-    // fica em 1 kg exato e dali para baixo a curva cai suave até zero (3w²−2w³), o que põe
-    // meio quilo em metade do alcance e cem gramas em menos de 3%.
-    const d1 = pesado(1);
-    const dist = (w: number) => w <= 0 || w >= maxKg ? 0
-      : w < 1 ? d1 * (3 * w * w - 2 * w * w * w) : pesado(w);
+    // O peso máximo não é um número só: quanto mais alto o peso precisa ir, menos peso vai.
+    // Do chão ao quadril é o maxKg cheio; acima da cabeça, metade; arremessar, um quarto.
+    const acimaKg = maxKg * (F.levantamentoAcimaCabeca as number);
+    const tetoKg = maxKg * (F.arremessoTeto as number);
+    const apice = F.arremessoApice as number;
+    // Alcance = C × FAA^a ÷ peso^b, e o número já supõe a melhor situação possível,
+    // correndo e girando. O FAA entra com expoente porque dobrar a reserva não dobra o
+    // alcance: o alcance vai com v², e a velocidade não cresce proporcional a pontos.
+    const cabeca = (F.arremessoConst as number) * Math.pow(faa, F.arremessoExpFaa as number);
+    const pesado = (w: number) => cabeca / Math.pow(w, F.arremessoExpMassa as number);
+    // Abaixo do ápice a velocidade do braço SATURA: um objeto de 2 g e um de 50 g saem à
+    // mesma velocidade, porque a inércia do próprio braço domina os dois. Dali para baixo
+    // não se ganha velocidade e só se perde para o ar, então o alcance para de crescer e
+    // cai devagar: cada vez que o peso cai pela metade, perde 10%.
+    const leve = (w: number) => pesado(apice) * Math.pow(w / apice, F.arremessoExpLeve as number);
+    // e nos últimos 20% até o teto ele desaba até zero, que é onde o objeto deixa de ser
+    // arremessável e passa a ser só erguível
+    const qIni = tetoKg * (F.arremessoQueda as number);
+    const dist = (w: number) => {
+      if (w <= 0 || w > tetoKg) return 0;
+      const d = w < apice ? leve(w) : pesado(w);
+      return w > qIni ? d * (tetoKg - w) / (tetoKg - qIni) : d;
+    };
     const r1 = (n: number) => (n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10)).replace('.', ',');
     // Gráfico Arremesso × Peso. O eixo X é o peso porque é ele que o jogador tem em mãos
     // ("esta pedra tem 8 kg, vai até onde?"), e a distância é a resposta, no Y. Na mesma
@@ -1442,113 +1450,121 @@ export function montarFicha(opts: FichaOpts) {
       { de: cLeve, ate: cMedia, nome: 'Média', op: '.13' },
       { de: cMedia, ate: maxKg, nome: 'Máxima', op: '.19' },
     ];
-    // Eixo X em log: tudo o que interessa no arremesso acontece entre 100 g e uns 50 kg,
-    // e no linear isso ficava espremido nos primeiros 12% da largura, com as três curvas
-    // grudadas. Em log a curva deixa de ser uma rampa colada na esquerda e mostra o que
-    // ela é — um pico em 1 kg, com subida e descida —, o que também afasta a leitura de
-    // proporção direta que derrubou a tentativa anterior de log. Leve, Média e Máxima
-    // saem com a mesma largura (cada uma dobra a anterior); a Mínima é larga porque vai
-    // de zero a P/8, que em log são muitas dobras.
-    // Abaixo de 1 kg não há o que consultar: é só a subida até o ápice, e em log puro esse
-    // trecho comia um terço do quadro para mostrar uma curva que ninguém precisa ler ponto
-    // a ponto (a tabela ao lado dá 0,1 e 0,5 kg em número). Ele fica comprimido nos
-    // primeiros 5% da largura, ainda em log para a subida sair curva e não em bico, e os
-    // 95% restantes ficam com o que se usa de fato, de 1 kg ao peso máximo.
-    const wMin = 0.05, fSub = 0.05;
-    const lnW0 = Math.log(wMin), lnSub = -lnW0, spanX = Math.log(maxKg);
-    const xposW = (w: number) => {
-      const v = Math.max(wMin, w);
-      return v <= 1
-        ? xB + ((Math.log(v) - lnW0) / lnSub) * fSub * pw
-        : xB + (fSub + (Math.log(v) / spanX) * (1 - fSub)) * pw;
-    };
+    // Duas escalas, e o jogador escolhe. A NORMAL mostra o que a mesa sente: quase todo o
+    // alcance está nos primeiros quilos e a diferença entre 5 e 25 kg é quase nada. A LOG
+    // mostra a forma da lei, com o ápice e os dois regimes visíveis de uma vez. O eixo vai
+    // do zero (ou de 20 g, em log) ao teto de arremesso, que é onde a curva acaba.
+    const escLog = (box as any)._faEsc === 'log';
+    const wMin = Math.min(0.02, apice / 5);
+    const lnW0 = Math.log(wMin), spanX = Math.log(tetoKg) - lnW0;
+    const xposW = (w: number) => escLog
+      ? xB + ((Math.log(Math.min(Math.max(w, wMin), tetoKg)) - lnW0) / spanX) * pw
+      : xB + (Math.min(Math.max(w, 0), tetoKg) / tetoKg) * pw;
     const wAtX = (x: number) => {
-      const f = (x - xB) / pw;
-      return f <= fSub
-        ? Math.exp(lnW0 + (f / fSub) * lnSub)
-        : Math.exp(((f - fSub) / (1 - fSub)) * spanX);
+      const f = Math.max(0, Math.min(1, (x - xB) / pw));
+      return escLog ? Math.exp(lnW0 + f * spanX) : f * tetoKg;
     };
-    // sem marcas abaixo de 1 kg: naquela faixa comprimida não cabe rótulo nenhum
-    const xt = [2, 5, 10, 25, 50, 100, 250, 500, 1000].filter((w) => w < maxKg / 1.25);
-    xt.unshift(1); xt.push(maxKg);
-    const tw = [0.1, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].filter((w) => w < maxKg);
-    tw.push(maxKg);
-    // Correr antes de soltar rende +1/3 e o giro no lugar metade disso, mas só quem corre
-    // de verdade cobra o valor cheio: o ganho segue a velocidade que se alcança com aquele
-    // peso, então ele desce junto com ela e as três curvas se fundem numa só no peso
-    // máximo, sem degrau nenhum no caminho.
-    const dGiro = (w: number) => dist(w) * (1 + vel(w) * F.arremessoGanhoGiro);
-    const dCorrida = (w: number) => dist(w) * (1 + vel(w) * F.arremessoGanhoCorrida);
-    // as três curvas em um lugar só: desenho, legenda, pontos do cursor e balão saem
-    // todos daqui, na ordem em que se leem (a de cima primeiro)
-    const defs = [
-      { k: 'corrida', cls: 'curve corrida', nome: 'Corrida', f: dCorrida },
-      { k: 'giro', cls: 'curve giro', nome: 'Giro', f: dGiro },
-      { k: 'parado', cls: 'curve', nome: 'Parado', f: dist },
-    ];
-    // Teto do eixo Y: sobe até a corrida (senão a curva de cima sai do quadro) e arredonda
-    // para cima até um número redondo — inteiro abaixo de 10, múltiplo de 5 abaixo de 100,
-    // de 10 abaixo de 500, de 50 acima disso. Sempre para cima, nunca para o mais próximo,
-    // senão um pico logo acima do múltiplo ficaria cortado.
+    // marcas do eixo: décadas em log, passo redondo no normal
+    const passoBom = (faixa: number, n: number) => {
+      const bruto = faixa / n, e = Math.floor(Math.log10(bruto)), base = Math.pow(10, e);
+      for (const m of [1, 2, 2.5, 5, 10]) if (m * base >= bruto) return m * base;
+      return 10 * base;
+    };
+    const xt: number[] = [];
+    if (escLog) {
+      for (let e = Math.floor(Math.log10(wMin)); e <= Math.ceil(Math.log10(tetoKg)); e++) {
+        const v = Math.pow(10, e);
+        if (v >= wMin * 0.999 && v <= tetoKg * 1.001) xt.push(v);
+      }
+      xt.push(tetoKg);
+    } else {
+      const p = passoBom(tetoKg, 6);
+      for (let v = 0; v <= tetoKg + p * 1e-6; v += p) xt.push(Math.round(v * 1000) / 1000);
+    }
+    /* Os doze pesos da tabela: 0,1 · 0,5 · 1 e mais nove entre 1 kg e o teto, espaçados
+       em progressão geométrica e encaixados no número redondo mais próximo, para a coluna
+       ficar legível. O último é sempre o teto exato, porque é o número que decide se o
+       objeto sai da mão ou não. */
+    const tw = (() => {
+      // arredonda pela ordem de grandeza, em vez de encaixar numa lista fixa de números
+      // redondos: a lista esgotava quando o teto era pequeno e a tabela saía com menos
+      // linhas do que devia
+      const red = (v: number) => v < 10 ? Math.round(v * 10) / 10
+        : v < 100 ? Math.round(v)
+        : Math.round(v / 5) * 5;
+      const out: number[] = [];
+      for (let i = 1; i <= 8; i++) {
+        let v = red(Math.pow(tetoKg, i / 9));
+        // se o arredondamento colidiu com o anterior, empurra um passo para cima
+        while (out.includes(v) || v <= 1) v = red(v + (v < 10 ? 0.1 : v < 100 ? 1 : 5));
+        if (v < tetoKg) out.push(v);
+      }
+      out.sort((a, b) => a - b);
+      return [0.1, 0.5, 1, ...out, Math.round(tetoKg * 10) / 10];
+    })();
+    // Teto do eixo Y, arredondado para cima até um número redondo. Sempre para cima, nunca
+    // para o mais próximo, senão o ápice ficaria cortado.
     const teto = (v: number) => v <= 0 ? 1
       : v < 10 ? Math.ceil(v)
       : v < 100 ? Math.ceil(v / 5) * 5
       : v < 500 ? Math.ceil(v / 10) * 10
       : Math.ceil(v / 50) * 50;
-    // o pico está em 1 kg, que já é uma das linhas da tabela
-    const yMax = teto(Math.max(...tw.map(dCorrida), dCorrida(1)));
+    const yMax = teto(dist(apice));
     // marcas do eixo Y no menor passo redondo (1, 2, 2.5 ou 5 × 10ⁿ) que caiba em 4
     // intervalos, com o teto sempre rotulado no fim
-    const passoY = (() => {
-      const alvo = yMax / 4;
-      for (let e = -2; e < 8; e++) for (const m of [1, 2, 2.5, 5]) { const p = m * Math.pow(10, e); if (p >= alvo) return p; }
-      return alvo;
-    })();
+    const passoY = passoBom(yMax, 4);
     const yt: number[] = [];
     for (let v = 0; v <= yMax - passoY * 0.35; v += passoY) yt.push(Math.round(v * 100) / 100);
     yt.push(yMax);
-    const rows = tw.map((w) =>
-      `<tr><td>${String(w).replace('.', ',')}</td><td>${r1(dist(w))}</td><td>${r1(dGiro(w))}</td><td>${r1(dCorrida(w))}</td></tr>`).join('');
-    // o <colgroup> é o que manda nas larguras com table-layout: fixed, porque a primeira
-    // linha do cabeçalho tem só duas células (uma com rowspan, outra com colspan)
-    const table = `<table class="fa-tbl"><colgroup><col /><col /><col /><col /></colgroup>`
-      + `<thead><tr><th rowspan="2">Peso (kg)</th><th colspan="3">Arremesso (m)</th></tr><tr><th>Parado</th><th>Giro</th><th>Corrida</th></tr></thead><tbody>${rows}</tbody></table>`;
+    const fmtKg = (w: number) => (w >= 10 ? String(Math.round(w))
+      : w >= 0.1 ? String(Math.round(w * 100) / 100)
+      : String(Math.round(w * 1000) / 1000)).replace('.', ',');
+    const rows = tw.map((w) => {
+      const d = dist(w);
+      // a última linha é o teto exato, onde o alcance é zero por construção: ali o número
+      // que interessa é o peso, não a distância
+      const cls = w === apice ? ' class="ap"' : d <= 0 ? ' class="lim"' : '';
+      return `<tr${cls}><td>${fmtKg(w)}</td><td>${d > 0 ? r1(d) : 'não arremessa'}</td></tr>`;
+    }).join('');
+    const table = `<table class="fa-tbl"><colgroup><col /><col /></colgroup>`
+      + `<thead><tr><th>Peso (kg)</th><th>Alcance (m)</th></tr></thead><tbody>${rows}</tbody></table>`;
     const kg = (n: number) => `${Math.round(n)} kg`;
     const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt} <span class="muted">(Atletismo não entra: erguer o máximo é força parada)</span>`
       + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(vel(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(vel(cLeve) * 100)}%</i></span>`
       + `<span>Média <b>${kg(cMedia)}</b> <i>só anda, ${Math.round(vel(cMedia) * 100)}%</i></span><span>Máxima <b>${kg(maxKg)}</b> <i>ergue, não desloca</i></span></div>`
-      // Só a conta. O porquê da curva (o ápice em 1 kg, a queda dos dois lados, o ganho
-      // de correr e girar) é matéria do capítulo de Ações & Sistema, não da ficha: aqui
-      // o jogador quer o número, e o gráfico ao lado já mostra a forma.
-      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr}</div>`;
-    // No celular não existe hover: sem estes botões o toque só conseguiria ler a curva
-    // que estivesse desenhada por cima. Eles escolhem qual delas o toque lê.
-    const botoes = `<div class="fa-curvas" role="group" aria-label="Curva em destaque">`
-      + defs.map((d) => `<button type="button" data-fa-curva="${d.k}" aria-pressed="false">${d.nome}</button>`).join('') + `</div>`;
+      // As três alturas do levantamento, que é o que o jogador consulta antes de perguntar
+      // se dá para jogar: do chão, acima da cabeça (metade) e arremessar (um quarto).
+      + `<b>Levanta</b> · <span class="fa-alt">do chão <b>${kg(maxKg)}</b></span>`
+      + `<span class="fa-alt">acima da cabeça <b>${kg(acimaKg)}</b></span>`
+      + `<span class="fa-alt">arremessa até <b>${kg(tetoKg)}</b></span><br>`
+      // Só a conta. O porquê da curva (o ápice em 100 g, a saturação abaixo dele, a queda
+      // perto do teto) é matéria do capítulo de Corpo e Movimento, não da ficha: aqui o
+      // jogador quer o número, e o gráfico ao lado já mostra a forma.
+      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr} `
+      + `<span class="muted">· na melhor situação: correndo e girando</span></div>`;
+    // A escolha da escala. Normal mostra o que a mesa sente (quase todo o alcance está nos
+    // primeiros quilos); logarítmica mostra a forma da lei, com o ápice visível.
+    const botoes = `<div class="fa-curvas" role="group" aria-label="Escala do gráfico">`
+      + [['lin', 'Escala normal'], ['log', 'Logarítmica']].map(([k, n]) =>
+          `<button type="button" data-fa-esc="${k}" aria-pressed="${escLog === (k === 'log')}">${n}</button>`).join('')
+      + `</div>`;
+    // uma curva só: o alcance já é o da melhor situação possível
+    const defs = [{ k: 'alcance', cls: 'curve', nome: 'Alcance', f: dist }];
     box.innerHTML = `<div class="fa-wrap">${head}${botoes}<div class="fa-row"><div class="fa-chartwrap"></div>${table}</div></div>`;
     const wrap = box.querySelector('.fa-chartwrap') as any;
     const tbl = box.querySelector('.fa-tbl') as any;
     if (!wrap || !tbl) return;
 
-    // curva em destaque: no desktop é sempre a Corrida (o hover já lê as três de uma
-    // vez); no celular é a que os botões escolherem. Sobrevive ao redesenho.
-    let sel: string = (box as any)._faSel || 'corrida';
+    const sel = 'alcance';
     let ultW: number | null = null;
     let mostraW: ((w: number) => void) | null = null;
-    const aplicaSel = () => {
-      (box as any)._faSel = sel;
-      box.querySelectorAll('[data-fa-curva]').forEach((b: any) =>
-        b.setAttribute('aria-pressed', String(b.getAttribute('data-fa-curva') === sel)));
-      const svgEl = wrap.querySelector('svg.fa-chart');
-      if (!svgEl) return;
-      svgEl.setAttribute('data-sel', sel);
-      // desenhada por último é desenhada por cima
-      const g = svgEl.querySelector('.fa-curvas-g'), node = g && g.querySelector(`[data-c="${sel}"]`);
-      if (g && node) g.appendChild(node);
-      if (ultW != null) mostraW?.(ultW);
-    };
-    box.querySelectorAll('[data-fa-curva]').forEach((b: any) =>
-      b.addEventListener('click', () => { sel = b.getAttribute('data-fa-curva'); aplicaSel(); }));
+    const aplicaSel = () => {};
+    // trocar a escala guarda a escolha na caixa e redesenha tudo: o eixo inteiro muda
+    box.querySelectorAll('[data-fa-esc]').forEach((b: any) =>
+      b.addEventListener('click', () => {
+        (box as any)._faEsc = b.getAttribute('data-fa-esc');
+        renderForca();
+      }));
 
     let curH = 0;
     // desenha o gráfico com a altura de viewBox pedida e religa o hover
@@ -1556,16 +1572,17 @@ export function montarFicha(opts: FichaOpts) {
       curH = H;
       const ph = H - mt - mb, yB = mt + ph;
       const ypos = (d: number) => yB - (yMax > 0 ? d / yMax : 0) * ph;
-      // amostragem uniforme em pixels do eixo: como ele é log dos dois lados do pico,
-      // isso dá um ponto a cada ~2,6 px em qualquer trecho, e o 1 kg (5% da largura)
-      // cai exatamente numa amostra, então o pico sai em bico e não arredondado
+      // amostragem uniforme em pixels do eixo, que serve às duas escalas: dá um ponto a
+      // cada ~2,6 px em qualquer trecho, e o ápice cai numa amostra, então ele sai em bico
+      // e não arredondado
       const N = 200;
       const amostras = Array.from({ length: N + 1 }, (_, i) => wAtX(xB + (pw * i) / N));
+      amostras.push(apice); amostras.sort((a, b) => a - b);
       const traco = (f: (w: number) => number) =>
         amostras.map((w) => `${xposW(w).toFixed(1)},${ypos(f(w)).toFixed(1)}`).join(' ');
       const seq = traco(dist);
       const area = `M${xB},${yB} L${seq.split(' ').join(' L')} L${xR},${yB} Z`;
-      const fmtW = (w: number) => (w >= 10 ? String(Math.round(w)) : String(Math.round(w * 100) / 100)).replace('.', ',');
+      const fmtW = fmtKg;
       const xticks = xt.map((w, i) => {
         const x = xposW(w), anc = i === xt.length - 1 ? 'end' : 'middle';
         return `<line class="grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${yB}"/><text x="${x.toFixed(1)}" y="${yB + 14}" text-anchor="${anc}">${fmtW(w)}</text>`;
@@ -1578,34 +1595,28 @@ export function montarFicha(opts: FichaOpts) {
       // no alto; a separação entre elas ganha um tracejado
       // o rótulo vai encostado na borda DIREITA da faixa, alinhado à direita: em log as
       // três faixas de cima são estreitas e um rótulo centrado invadiria a vizinha
-      const faixas = bandas.map((b) => {
-        const x1 = xposW(b.de), x2 = xposW(b.ate);
-        // Leve, Média e Máxima têm exatamente a mesma largura em log (cada uma dobra a
-        // anterior), e num quadro estreito o nome inteiro de uma invade a vizinha. Aí as
-        // três encolhem juntas para três letras, em vez de umas sumirem e outras não.
+      // o eixo acaba no teto de arremesso, que é P/4, ou seja exatamente o fim da faixa
+      // Leve: só as duas primeiras faixas cabem aqui, e Média e Máxima ficam de fora
+      const faixas = bandas.filter((b) => b.de < tetoKg - 1e-9).map((b) => {
+        const x1 = xposW(b.de), x2 = xposW(Math.min(b.ate, tetoKg));
+        if (x2 - x1 < 1) return '';
         const nome = x2 - x1 > b.nome.length * 7 + 8 ? b.nome : b.nome.slice(0, 3);
         return `<rect class="fa-band" x="${x1.toFixed(1)}" y="${mt}" width="${(x2 - x1).toFixed(1)}" height="${ph}" opacity="${b.op}"/>`
           + (b.de > 0 ? `<line class="fa-bandsep" x1="${x1.toFixed(1)}" y1="${mt}" x2="${x1.toFixed(1)}" y2="${yB}"/>` : '')
           + `<text class="fa-bandlbl" x="${(x2 - 3).toFixed(1)}" y="${mt + 11}" text-anchor="end">${nome}</text>`;
       }).join('');
+      // a marca do ápice, que é a única fronteira que o jogador precisa enxergar
+      const marcaApice = `<line class="fa-bandsep" x1="${xposW(apice).toFixed(1)}" y1="${mt}" x2="${xposW(apice).toFixed(1)}" y2="${yB}"/>`
+        + `<text class="fa-bandlbl" x="${(xposW(apice) + 3).toFixed(1)}" y="${yB - 5}">ápice ${fmtKg(apice)} kg</text>`;
       // os rótulos de unidade ficam fora da área de plotagem (título embaixo e girado
       // à esquerda), senão colidem com o maior número de cada eixo
       const titles = `<text class="axlbl" x="${(xB + xR) / 2}" y="${H - 4}" text-anchor="middle">Peso (kg)</text>`
         + `<text class="axlbl" transform="rotate(-90 11 ${mt + ph / 2})" x="11" y="${mt + ph / 2}" text-anchor="middle">Arremesso (m)</text>`;
-      // legenda no rodapé, afastada 10% da esquerda: encostada na borda ela cairia em cima
-      // da subida quase vertical até 1 kg, que ocupa os primeiros 5% da largura
-      const leg = defs.map((d, i) => {
-        const y = yB - 42 + i * 13, x = xB + pw * 0.1;
-        return `<line class="${d.cls} fa-legln" x1="${x.toFixed(1)}" y1="${y}" x2="${(x + 18).toFixed(1)}" y2="${y}"/>`
-          + `<text class="fa-leglbl" x="${(x + 24).toFixed(1)}" y="${y + 3.5}">${d.nome}</text>`;
-      }).join('');
-      // a curva em destaque vai por último para ficar por cima das outras
-      const curvas = [...defs].sort((a, b) => Number(a.k === sel) - Number(b.k === sel))
-        .map((d) => `<polyline class="${d.cls}" data-c="${d.k}" points="${traco(d.f)}"/>`).join('');
-      // um ponto por curva na mesma vertical: uma passada só lê as três
-      const pontos = defs.map((d) => `<circle class="fa-dot" data-c="${d.k}" r="3"/>`).join('');
-      wrap.innerHTML = `<svg class="fa-chart" data-sel="${sel}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distância de arremesso por peso, parado, girando e correndo">${faixas}${yticks}${xticks}<path class="area" d="${area}"/>`
-        + `<g class="fa-curvas-g">${curvas}</g>${leg}`
+      // uma curva só: não há legenda a fazer, o eixo Y já diz o que ela é
+      const curvas = defs.map((d) => `<polyline class="${d.cls}" data-c="${d.k}" points="${traco(d.f)}"/>`).join('');
+      const pontos = defs.map((d) => `<circle class="fa-dot" data-c="${d.k}" r="4"/>`).join('');
+      wrap.innerHTML = `<svg class="fa-chart" data-sel="${sel}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distância de arremesso por peso do objeto">${faixas}${yticks}${xticks}<path class="area" d="${area}"/>`
+        + `<g class="fa-curvas-g">${curvas}</g>${marcaApice}`
         + `<line class="axis" x1="${xB}" y1="${mt}" x2="${xB}" y2="${yB}"/><line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>${titles}<rect class="fa-capture" x="${xB}" y="${mt}" width="${pw}" height="${ph}" fill="transparent"/><g class="fa-hover" style="display:none; pointer-events:none"><line class="fa-vline" y1="${mt}" y2="${yB}"/>${pontos}</g></svg><div class="fa-tip" style="display:none"></div>`;
       const svgEl = wrap.querySelector('svg.fa-chart') as any;
       const tip = wrap.querySelector('.fa-tip') as any;
@@ -1619,7 +1630,7 @@ export function montarFicha(opts: FichaOpts) {
         const cx = xposW(w);
         hov.style.display = '';
         vline.setAttribute('x1', String(cx)); vline.setAttribute('x2', String(cx));
-        let cySel = ypos(dCorrida(w));
+        let cySel = ypos(dist(w));
         for (const d of defs) {
           const p = hov.querySelector(`.fa-dot[data-c="${d.k}"]`);
           if (!p) continue;
