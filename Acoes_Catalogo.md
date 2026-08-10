@@ -422,6 +422,10 @@ dependência, não como ficha.
 
 ## 7. Construção e ofício
 
+> **Resolvido em 2026-08-09**, em `Acoes_Sistema.md` §7. A aposta de que seria um subsistema
+> estava errada: é a **Jogada Longa com tabela**. As oito perguntas da §7.1 abaixo estão todas
+> respondidas lá. Esta seção fica como registro da bancada e das referências.
+
 **O maior vazio do sistema hoje.** Um personagem com Ferraria 5 não tem como saber quanto tempo
 leva para fazer uma espada, o que precisa ter em mãos, nem o que sai diferente de uma espada
 comprada. Esta seção precisa de mais desenho que qualquer outra, porque não é uma ficha: é um

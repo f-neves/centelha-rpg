@@ -148,12 +148,10 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 
 **Antes da primeira ficha:**
 
-- [ ] **G1 · [FAZER] O gabarito de ficha.** A régua fechou e não existe forma padrão. Toda ficha
-  precisa declarar, na mesma ordem: **modo**, **Dificuldade** (com exemplos na régua de âncoras),
-  **Acúmulo e intervalo** quando houver, **o que a Margem compra**, **o que a falha faz** (banda
-  morta, ou a exceção declarada), **ajuda** (soma ou apoia) e **Fôlego**. A ficha de Arremesso
-  (§6.6) já mostrou que o gabarito precisa prever o caso sem modo, em que o número é derivado e
-  só o acerto é jogada.
+- [x] ~~**G1 · O gabarito de ficha.**~~ **Escrito em 2026-08-09** (`Acoes_Sistema.md` §5): nove
+  campos em ordem fixa, o princípio de que a ficha só escreve o que **desvia** do padrão da §3, a
+  régua de calibragem da §5.3 (Dificuldade de Acumulada e Longa a 70% da de Direta) e a regra
+  §5.5 de primária + secundária. O caso sem modo está previsto, com Arremesso (§6.6) de exemplo.
 - [ ] **G2 · [DECIDIR] Reequilibrar a Especialidade.** Efeito colateral assumido da regra de
   primária + secundária (`Acoes_Sistema.md` §5.5): a maior entra no pool e a **menor inteira**
   vira bônus fixo, o que torna a secundária cerca de duas vezes e meia mais eficiente por XP do
@@ -168,19 +166,33 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 
 **Escrever:**
 
-- [ ] **G4 · [FAZER] Construção e ofício** (`Acoes_Catalogo.md` §7). Não é uma ficha, é um
-  subsistema pequeno, com oito perguntas próprias listadas no doc. É o maior vazio do sistema:
-  um jogador com Ferraria 5 não sabe quanto tempo leva para fazer uma espada nem o que sai dela.
-  Destrava também o **ajuste de peça** que a ficha já oferece (uma Espada Longa Ótima) sem dizer
-  como se chega a ela.
+- [x] ~~**G4 · Construção e ofício.**~~ **Escrito em 2026-08-09** (`Acoes_Sistema.md` §7), e
+  **não virou subsistema**: é a Jogada Longa com tabela. A peça tem quatro números (Dificuldade =
+  técnica, Montagem = o que se paga uma vez por lote, Peça = por unidade, intervalo) e às vezes um
+  **Piso**, para o serviço que é mão e não técnica. Fecharam junto: o **lote** (a montagem se paga
+  uma vez, o que explica por que ninguém acende a forja para uma espada só), o **+4 sem o ofício**
+  no lugar de um teto para Ofícios Gerais, a **qualidade por Margem** (+6 de Dificuldade por grau,
+  que é como se chega à Espada Longa Ótima do painel de ajuste), oficina e material como os ±2/±4,
+  a **direção de obra** (ajudante sem ofício trabalha contra Dificuldade 4 sob supervisão, até dez
+  por supervisor) e as quatro tabelas de referência por escala. Ficaram fora, na §7.10: preço da
+  peça pronta, material sobrenatural, a oficina como traço e a etapa de colheita e extração.
 - [x] ~~**As cinco físicas de toda sessão.**~~ **Escritas em 2026-08-09**
   (`Acoes_Sistema.md` §6.1 a §6.5): Escalar, Nadar, Cair, Feito de força e Esgueirar-se. Feito de
   força saiu com as duas faces separadas (erguer não rola, romper rola) e ganhou a tabela de
   material que faltava. Esgueirar-se resolveu na prática o **Valor Passivo de Prontidão** como
   alvo, o que encaminha o G7.
-- [ ] **G5 · [DECIDIR] Uma escada de exaustão única?** Vale para veneno, doença, ambiente,
-  sufocamento e privação de sono de uma vez, e é por isso que a família **Resistir** se decide em
-  bloco e não ficha a ficha. O modelo mais limpo é o de níveis de exaustão do D&D 5e.
+- [x] ~~**G5 · Uma escada de exaustão única?**~~ **Decidido em 2026-08-09: não existe.** Os cinco
+  casos não medem a mesma coisa (veneno é dose, doença é estado que piora, ambiente é pressão
+  constante, sufocamento é contagem regressiva, sono é dívida), e cada um tem relógio, dano e
+  penalidade próprios. Veneno e sono nem sequer usam o mesmo modo: um tem jogada, o outro é
+  Passiva. O esqueleto das cinco está em `Acoes_Sistema.md` §8.1.
+- [ ] **G5b · [FAZER] Escrever as cinco fichas de Resistir** (`Acoes_Sistema.md` §8.2 lista o que
+  falta em cada uma). Veneno precisa da dose e do dano que ignora Absorção; doença precisa de
+  estágios nomeados; ambiente precisa de tabela por tipo (frio, calor, sede, fome, altitude);
+  sufocamento precisa da conta em Ticks sem depender do Fôlego; sono precisa da dívida em dias.
+  **Decidir primeiro** o que atravessa as cinco: como se somam duas condições ao mesmo tempo
+  (somam sem teto, vale a pior, ou somam com teto), porque o náufrago tem frio, sede e sono
+  juntos.
 - [ ] **G6 · [DECIDIR] Percepção passiva: confirmar.** A ficha de Esgueirar-se (§6.5) já usa o
   **Valor Passivo de Prontidão** (2 × Percepção + Prontidão) como alvo, e a calibragem sai
   razoável: servo distraído 6, sentinela comum 10, batedor de elite 16, mestre de espiões 20.
@@ -211,6 +223,6 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
 3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
-5. **G1**, o gabarito de ficha das Ações. A régua comum fechou inteira; falta um documento de uma
-   página dizendo o que toda ficha declara, e depois disso as 73 saem em série. É a única frente
-   que cobre um vazio em vez de corrigir algo existente.
+5. **G5b**, as cinco fichas de Resistir. A régua comum, o gabarito e o ofício já fecharam; esta é
+   a última família grande sem regra, e duas fichas já escritas (Nadar e Cair) apontam para um
+   sufocamento que ainda não existe.

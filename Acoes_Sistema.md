@@ -955,7 +955,324 @@ com mochila: o primeiro décimo do peso máximo quase não custa nada, e o estra
 
 ---
 
-## 7. Pendências deste documento
+## 7. Construção e ofício
+
+### 7.1 Não é um subsistema, é a Longa com tabela
+
+O catálogo chamava esta família de "o maior vazio do sistema" e previa um subsistema pequeno.
+Ele não é necessário. Fabricar alguma coisa é exatamente a estrutura que a §3.3 já fechou para a
+**Jogada Longa**, e a divisão de trabalho da §5.3 cai em cima do ofício com uma precisão que
+nenhum outro caso teve:
+
+<p class="formula">A <b>Dificuldade</b> é a técnica da peça · o <b>Acúmulo</b> é o tamanho do serviço · o <b>intervalo</b> é o ritmo do ofício</p>
+
+Uma espada e um punhal exigem a mesma técnica e serviços diferentes. Uma espada e uma espada
+**boa** exigem serviços parecidos e técnicas diferentes. Isso resolve sozinho a pergunta que
+travava a família: **o que separa o ferreiro competente do mestre não é velocidade, é o que ele
+consegue fazer.** A Longa é uma parede, não uma ladeira: quem tem média igual ou menor que a
+Dificuldade não termina nunca, por mais meses que passe na bigorna. É deliberado, e no ofício é
+justamente o comportamento certo. Paciência não faz uma lâmina melhor.
+
+Fabricar é **Longa** por padrão. Vira **Acumulada** só quando há pressa real com consequência
+(consertar a ponte antes da cheia, forjar as pontas de lança antes do cerco fechar), e aí se rola
+a cada intervalo em vez de tomar a média.
+
+### 7.2 Ofícios Gerais e os ofícios
+
+**Ofícios Gerais** é o faz-tudo: pregos e dobradiças, cabo de arma, flecha rústica, entalhe,
+porta, cerca, polimento, remendo de armadura, engenhoca pequena. É uma primária, e é honesta
+dentro do escopo dela.
+
+**Ofícios Gerais cobre sozinho tudo o que for Dificuldade 4 ou menos.** Acima disso falta escola,
+e a regra é uma só:
+
+<p class="formula">Sem o ofício específico, a Dificuldade sobe <b>+4</b></p>
+
+Não é uma parede, é um degrau. Um faz-tudo excepcional (Ofícios Gerais 5, Destreza 4, média 16)
+consegue bater uma espada simples: Dificuldade 7 vira 11, e ele avança 5 por dia. O que ele não
+consegue é uma espada **boa**, que exigiria média acima de 17. É o resultado que se quer: o
+generalista chega ao funcional e para ali.
+
+Algumas peças o Mestre pode declarar **fechadas** ao generalista, sem número nenhum: placa
+completa sob medida, fechadura de segredo, lente, casco de navio. Não é penalidade, é
+conhecimento que não se improvisa.
+
+Os ofícios são **Habilidades Secundárias**, ilimitadas e mais baratas (Ferraria, Armaria,
+Carpintaria, Alvenaria, Curtume, Alfaiataria, Joalheria, Serralheria, Culinária, Herbalismo,
+Iluminura, Olaria, Vidraria, Construção Naval, o que a história pedir). E aqui a **§5.5** vale
+inteira, porque Ofícios Gerais e o ofício cobrem a mesma ação:
+
+<p class="formula">A <b>maior</b> das duas entra no pool · a <b>menor</b> vira <b>bônus fixo</b></p>
+
+O ferreiro com Ferraria 5 e Ofícios Gerais 3 rola com Ferraria e soma +3. O atributo é
+**Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo; quem
+decide qual é a peça, não o jogador.
+
+### 7.3 A peça em quatro números
+
+Cada peça do catálogo carrega quatro números, e às vezes um quinto:
+
+| Número | O que é |
+|---|---|
+| **Dificuldade** | a técnica que a peça exige |
+| **Montagem** | o Acúmulo que se paga **uma vez por lote**: acender a forja, montar o tear, bater a argamassa, armar o cavalete |
+| **Peça** | o Acúmulo de **cada unidade** |
+| **Intervalo** | o degrau da escada de seis em que aquele ofício respira |
+| **Piso** | quando há, o número mínimo de intervalos, por mais hábil que seja o artesão |
+
+<p class="formula">Acúmulo total = Montagem + (Peça × unidades)</p>
+
+O **Piso** existe por um motivo concreto: há serviço que não é técnica, é mão. Uma cota de malha
+são milhares de anéis abertos, passados e rebitados um a um, e nenhuma perícia do mundo cria dedos
+extras. O mestre armeiro faz uma cota **melhor** que o oficial, não uma cota em três dias. Poucas
+peças precisam de Piso: as de trabalho repetitivo em massa e as obras.
+
+### 7.4 A montagem se paga uma vez: o lote
+
+É o ponto que mais muda a mesa, e sai direto da oficina real: **ninguém mantém uma forja acesa
+para fazer uma espada só.** Aquecer, preparar o carvão, temperar a água, arrumar as bancadas:
+isso custa o mesmo para uma peça ou para oito. Só o trabalho da peça se repete.
+
+Por isso a Montagem entra uma vez por **lote**, e não por unidade. O efeito é grande:
+
+| Espadas no mesmo lote | Acúmulo total | Dias para o oficial | Dias por espada |
+|:--:|:--:|:--:|:--:|
+| 1 | 22 | 6,3 | 6,3 |
+| 3 | 42 | 12,0 | 4,0 |
+| 5 | 62 | 17,7 | 3,5 |
+| 8 | 92 | 26,3 | 3,3 |
+
+O ganho é real e satura, que é como funciona de verdade. O **limite do lote** é físico, não
+numérico: quantas peças cabem no fogo, na bancada, no tear. Na falta de um número melhor, **oito**
+serve para peça de mão e **três** para peça grande.
+
+O lote exige que as unidades sejam **iguais**. Cinco espadas do mesmo modelo são um lote; uma
+espada, um elmo e uma panela são três montagens.
+
+### 7.5 A qualidade sai da técnica, não do tempo
+
+A peça sai **Comum** por padrão. Quem encomenda pode pedir melhor, e cada grau acima soma **uma
+Margem inteira** à Dificuldade:
+
+| Grau | Dificuldade | O que ganha |
+|---|:--:|---|
+| **Comum** | base | nada, e é a esmagadora maioria |
+| **Boa** | base **+6** | +1 num número da peça |
+| **Ótima** | base **+12** | +2 no total, no máximo +2 no mesmo número |
+| **Excepcional** | base **+18** | +3 no total, no máximo +2 no mesmo número |
+
+O "número da peça" é o que aquela peça tem para dar: acerto, defesa da arma, dado de dano,
+Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. É exatamente o
+painel de **ajuste** que a ficha já oferece hoje, e que até agora não tinha como ser conquistado.
+Uma Espada Longa Ótima deixa de ser um nome que o jogador escreve e passa a ser uma encomenda com
+preço e prazo.
+
+A conta fica dura de propósito. Uma espada Boa pede média acima de 13, o que exige soma 8; uma
+Ótima pede média acima de 19, soma 11; uma Excepcional pede média acima de 25, soma 15, que é
+território de herói. **Ninguém faz uma peça Excepcional sozinho numa forja de vila**, e é aí que
+entram a oficina e o material, na seção seguinte. É o que se quer: aço bom e boas ferramentas são
+metade de uma boa lâmina.
+
+**Especialidade na Longa.** A Especialidade dá +1d6 com descarte do menor, o que não é um número
+fixo. Na média, cada nível vale **cerca de +2**. Um ferreiro com Especialidade "espada longa" nos
+dois níveis soma cerca de +4 na média, e é frequentemente o que separa a Boa da Ótima. Vale para
+qualquer Longa, não só para o ofício.
+
+### 7.6 Oficina, material, ajuda
+
+São os ±2 e ±4 de circunstância que já são lei (§2), e no ofício eles são o principal caminho
+para a qualidade:
+
+| | −4 na Dificuldade | −2 | +0 | +2 | +4 |
+|---|---|---|---|---|---|
+| **Oficina** | de mestre, completa | bem equipada | oficina comum | ferramenta de campo | improviso, sem bancada |
+| **Material** | excepcional, raro | selecionado | corrente | de segunda, remendado | sucata |
+
+O material precisa **alcançar o grau pretendido**: não sai peça Excepcional de aço corrente, por
+melhor que seja o ferreiro. Regra de bolso para o Mestre: o material custa cerca de **um terço**
+do preço da peça pronta, e **metade ou mais** em alvenaria e construção naval, onde a pedra e a
+madeira é que pesam. Cada grau de qualidade **dobra** o preço da peça.
+
+Para as armaduras existe um atalho, porque elas já carregam um campo de acesso:
+
+<p class="formula">Dificuldade da armadura ≈ 12 − acesso, com piso 4</p>
+
+O gambeson cai em 4, a cota de malha em 8, a brigandina em 6, a placa completa em 11. Bate com a
+tabela abaixo, que foi escrita antes da fórmula.
+
+**Ajuda** segue a §3.5. Ofício é quase sempre tarefa divisível, então os **Acúmulos somam**: cinco
+carpinteiros levantam a casa em um quinto do tempo. Mas atenção ao que **não** se divide: a
+qualidade é da mão que conduz. Dez aprendizes aceleram uma espada Comum e não fazem uma Ótima.
+
+**Direção de obra.** Aqui aparece um problema que a §3.5 sozinha não resolve. O braçal tem soma 4
+e média 7, então numa obra de Dificuldade 11 ele contribui com um número negativo: pela regra
+crua, carregar pedra atrapalha. O que falta é a figura do mestre de obras.
+
+<p class="formula">Sob direção de quem tem o ofício, o ajudante sem ofício trabalha contra <b>Dificuldade 4</b></p>
+
+Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples é Dificuldade 4 em
+qualquer obra. Cada supervisor dirige até **dez** ajudantes, e passar disso exige contramestres,
+que é como as obras grandes de fato se organizavam. O ajudante nunca contribui para a
+**qualidade**, só para o Acúmulo.
+
+**Apressar.** Dobrar as horas rende **um intervalo extra** a cada dois, e custa **+2 na
+Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruinoso em peça fina.
+
+### 7.7 Tabela de referência
+
+O oficial da tabela é o artesão comum de vila (soma 6, média 10,5). O perito é soma 9 (média 16)
+e o mestre é soma 12 (média 21). Os tempos da última coluna são do **oficial**, uma unidade, sem
+ajuda, em qualidade Comum.
+
+#### Escala de horas
+
+| Peça | Ofício | Dif | Mont. | Peça | Oficial |
+|---|---|:--:|:--:|:--:|:--:|
+| Prego, gancho, dobradiça | Gerais | 4 | 2 | 1 | menos de 1 h |
+| Ferradura, corrente, grampo | Ferraria, Gerais | 4 | 3 | 2 | menos de 1 h |
+| Flecha rústica (dúzia) | Gerais | 4 | 2 | 5 | 1 h |
+| Flecha de guerra (dúzia) | Arcos | 7 | 2 | 6 | 2 h |
+| Refeição farta para dez | Culinária, Gerais | 4 | 2 | 4 | 1 h |
+| Emplastro, tintura, tinta | Herbalismo | 7 | 2 | 5 | 2 h |
+| Página iluminada, cópia fiel | Iluminura | 7 | 1 | 6 | 2 h |
+| Chave copiada de molde | Serralheria | 11 | 2 | 3 | fechado ao oficial |
+
+#### Escala de dias
+
+| Peça | Ofício | Dif | Mont. | Peça | Oficial |
+|---|---|:--:|:--:|:--:|:--:|
+| Porta, banco, mesa tosca, cerca de 20 m | Carpintaria, Gerais | 4 | 2 | 4 | 1 dia |
+| Escudo | Carpintaria | 4 | 2 | 6 | 1 dia |
+| Faca, machado, ponta de lança | Ferraria | 4 | 6 | 3 | 1,5 dia |
+| Gambeson | Alfaiataria | 4 | 3 | 20 | 3,5 dias |
+| Móvel bem-acabado, arca | Carpintaria | 7 | 3 | 8 | 3 dias |
+| Sela, arreio, bota, couro endurecido | Curtume | 7 | 3 | 9 | 3,5 dias |
+| **Espada, machado de guerra, arma marcial** | Ferraria | 7 | 12 | 10 | 6,3 dias |
+| Arco longo, besta (madeira já curada) | Arcos, Carpintaria | 7 | 4 | 12 | 4,5 dias |
+| Fechadura, engenho, autômato de corda | Serralheria | 11 | 4 | 10 | fechado ao oficial |
+| Anel, broche, peça de joalheria | Joalheria | 11 | 3 | 6 | fechado ao oficial |
+
+#### Escala de semanas
+
+| Peça | Ofício | Dif | Mont. | Peça | Piso | Oficial |
+|---|---|:--:|:--:|:--:|:--:|:--:|
+| Casa de madeira, celeiro | Carpintaria | 4 | 4 | 40 | 2 | 7 semanas |
+| Brigandina | Armaria | 6 | 3 | 10 | 2 | 3 semanas |
+| Cota de malha | Armaria | 8 | 2 | 12 | 3 | 6 semanas |
+| Lamelar | Armaria | 9 | 3 | 10 | 3 | 9 semanas |
+| Carroça, barco de pesca | Carpintaria | 7 | 4 | 20 | 2 | 7 semanas |
+| Forja, moinho, oficina montada | Alvenaria | 7 | 6 | 40 | 4 | 13 semanas |
+| Placa de munição | Armaria | 8 | 4 | 14 | 3 | 7 semanas |
+| Placa completa sob medida | Armaria | 11 | 6 | 24 | 6 | fechada ao oficial |
+
+#### Escala de estações
+
+| Obra | Ofício | Dif | Mont. | Peça | Piso | Oficial |
+|---|---|:--:|:--:|:--:|:--:|:--:|
+| Casa de pedra, torre pequena | Alvenaria | 7 | 2 | 8 | 1 | 3 estações |
+| Muralha, ponte de pedra | Engenharia | 11 | 3 | 20 | 2 | fechada ao oficial |
+| Navio de guerra, catedral | Naval, Alvenaria | 11 | 4 | 40 | 4 | fechada ao oficial |
+
+As obras da última tabela **não são feitas sozinho**, e é por isso que aparecem fechadas: elas
+existem para serem tocadas por equipe, com os Acúmulos somando e sob direção (§7.6). Uma muralha
+tocada por um mestre de obras (média 16, contra a Dificuldade 11 da obra: 5 por estação) e dez
+braçais (média 7, contra a Dificuldade 4 da direção: 3 cada) avança **35 por estação**. Um trecho
+de Acúmulo 23 sai numa estação de trabalho e sai da obra na segunda, que é o piso.
+
+### 7.8 Reparar, melhorar, improvisar, desmontar
+
+**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado: **um quarto** do
+Acúmulo da peça para dano leve, **metade** para dano pesado, **inteiro** para peça arruinada que
+ainda tem material aproveitável. A Montagem se paga igual. E há uma distinção que vale a pena:
+
+<p class="formula">Ofícios Gerais devolve a peça ao <b>uso</b> · só o ofício devolve a <b>qualidade</b></p>
+
+Uma Espada Longa Ótima remendada no acampamento volta a cortar como uma espada Comum. Os graus
+voltam quando um ferreiro de verdade puser a mão nela.
+
+**Melhorar.** Subir um grau de uma peça pronta: Dificuldade do grau pretendido, Acúmulo de
+**metade** da Peça, mesma Montagem. Só se sobe um grau de cada vez, e material e oficina precisam
+alcançar o grau novo. É por aqui que uma espada de saque vira a espada do personagem.
+
+**Improvisar.** É **Direta** ou Acumulada em minutos, não Longa: uma tala, uma tocha, um arpéu com
+o que está na mochila. Dificuldade da peça **+4**, sem material nem ferramenta certos, e o que sai
+é frágil: serve para **um uso** ou até o fim da cena, o que vier primeiro.
+
+**Desmontar.** Direta contra a Dificuldade da peça. Passando, recupera **metade** do material;
+com uma Margem, recupera tudo o que era aproveitável. Falhando, recupera sucata.
+
+### 7.9 Ganhar a vida com o ofício
+
+No tempo morto entre aventuras, o artesão trabalha. Não se rola: é uma **Longa** de intervalo
+**semana** contra a demanda do lugar, e o que ela produz é dinheiro em vez de peça.
+
+<p class="formula">Ganho por semana = (média − 4) × 10 pc, limitado pela demanda do lugar</p>
+
+O oficial (média 10,5) tira 65 pc por semana, o perito 120, o mestre 170. O teto é o mercado:
+uma aldeia absorve talvez 50 pc por semana de qualquer ofício, uma vila 150, uma cidade 500, e uma
+capital não tem teto prático. É o que faz o mestre armeiro se mudar para a cidade.
+
+### 7.10 O que falta nesta família
+
+- **Preço da peça pronta.** A tabela de `precos.json` cobre equipamento de aventura e não cobre
+  armas, armaduras nem obra. Enquanto não cobrir, o material é o terço de um preço que o Mestre
+  arbitra.
+- **Peças mágicas e material sobrenatural**, que é a ponte com Artes e com o bestiário (couro,
+  osso e escama de criatura como material de grau alto).
+- **A oficina como traço do personagem**, com qualidade própria, no espírito do laboratório de
+  `ArM`. Hoje ela é só um modificador de circunstância.
+- **Colheita e extração**: minerar, abater madeira, curtir, curar madeira por um ano. São a etapa
+  antes da forja e nenhuma está escrita.
+
+---
+
+## 8. Resistir
+
+> **Estado: esqueleto.** As cinco fichas ainda não estão escritas; o que segue é a decisão de
+> estrutura que elas vão seguir, e ela fecha a pendência G5.
+
+### 8.1 Não existe uma escada única
+
+A tentação era uma escada de exaustão só, servindo os cinco casos. Não serve, e o motivo é que
+**os cinco não medem a mesma coisa**. Veneno é uma dose que age e passa. Doença é um estado que
+dura e piora. Ambiente é uma pressão constante que o corpo aguenta até não aguentar. Sufocamento é
+uma conta regressiva curta. Sono é uma dívida que se acumula por dias.
+
+O que os cinco **compartilham** é a forma: um relógio próprio, um dano próprio e uma penalidade
+própria. O que muda é tudo o mais, inclusive se há jogada.
+
+| | Modo | Jogada | Intervalo | O que causa | Penalidade |
+|---|---|---|---|---|---|
+| **Veneno** | Direta por dose | Vigor + Resistência | do veneno (Tick a hora) | dano direto, ou Atributo derrubado | conforme o veneno |
+| **Doença** | Acumulada às avessas | Vigor + Resistência | dia | estágios que avançam | acumula e não sai sozinha |
+| **Ambiente** | Direta repetida | Vigor + Resistência | hora ou dia | dano que não se absorve | fadiga crescente |
+| **Sufocamento** | **sem jogada**, relógio | nenhuma | Tick | contagem até a asfixia | nenhuma, e depois tudo |
+| **Sono** | **Passiva** | nenhuma | dia | dívida acumulada | dados do pool, geral |
+
+**Veneno tem jogada e sufocamento não** porque o corpo de fato reage ao veneno de formas
+diferentes, e não reage à falta de ar: todo mundo desmaia, a diferença é quando. Sono é passivo
+pelo mesmo motivo, mas com o relógio em dias em vez de segundos.
+
+### 8.2 O que ainda falta decidir em cada uma
+
+1. **Veneno.** Se o dano ignora Absorção (deveria), o que é uma "dose", e se um veneno derruba
+   Atributo em vez de PV (é o que dá sabor: cicuta derruba Vigor, curare derruba Destreza).
+2. **Doença.** Quantos estágios, e se a jogada diária empurra para cima e para baixo ou só segura
+   onde está. É a única das cinco que precisa de estados nomeados.
+3. **Ambiente.** Frio, calor, sede, fome e altitude no mesmo motor, com um relógio por tipo. É a
+   que mais precisa de tabela e a que menos precisa de regra nova.
+4. **Sufocamento.** Já é meia-devida por Nadar (§6.2) e por Cair; precisa da conta em Ticks e da
+   relação com Fôlego, lembrando da ressalva da §3.6 (o módulo pode ser ocultado, então nada pode
+   depender dele).
+5. **Sono.** A dívida em dias, o que ela tira do pool, e se Centelha compra dias sem dormir.
+
+E uma pergunta atravessa as cinco: **um personagem pode estar sob duas ao mesmo tempo**, e quase
+sempre está (o náufrago tem frio, sede e sono). Ou as penalidades somam sem teto, ou vale a pior,
+ou somam com teto. É a primeira coisa a decidir quando estas fichas forem escritas.
+
+---
+
+## 9. Pendências deste documento
 
 1. ~~**[DECIDIR]** Os modos de ação.~~ **Fechado em 2026-08-09:** cinco modos (Direta, Acumulada,
    Longa, Reflexiva, Passiva), com Acumulada e Longa dividindo a dupla Dificuldade e Acúmulo, a
@@ -972,19 +1289,29 @@ com mochila: o primeiro décimo do peso máximo quase não custa nada, e o estra
 4. ~~**[DECIDIR]** As colisões com Relações Sociais.~~ **Fechadas em 2026-08-09** (§3.7), e o
    capítulo publicado já foi corrigido: vocabulário dos modos, média sem arredondar na tabela, e
    a banda morta de uma Margem promovida a regra geral.
-5. **[DECIDIR]** Trocar a palavra "stunt" em Relações Sociais por um termo em português.
-4. ~~**[FAZER]** O gabarito de ficha.~~ **Escrito em 2026-08-09** (§5), com **Escalar** (§6.1)
+5. ~~**[FAZER]** O gabarito de ficha.~~ **Escrito em 2026-08-09** (§5), com **Escalar** (§6.1)
    como ficha-modelo. Junto saiu a régua de calibragem da §5.3, que corrige um erro real: as
    âncoras de Dificuldade não servem para Acumulada e Longa sem serem rebaixadas a ~2/3 da média.
-5. **[DECIDIR]** As duas coisas da §5.4 que toda ficha vai esbarrar: **perícia secundária ou
-   Especialidade** (Escalada contra Atletismo, Natação contra Atletismo, e mais uma dúzia), e a
-   **âncora "Difícil" com dois valores** no projeto (8 em `regras.json`, 9 no capítulo e na Área
-   do Mestre).
-6. **[FAZER]** Preencher as fichas na ordem: **Queda**, **Veneno**, **Ambiente**,
-   **Esgueirar-se**, **Construir/forjar**. São as mais pedidas em mesa e as que hoje o mestre
-   inventa do zero toda vez. Escalar já saiu como modelo do gabarito.
-4. **[FAZER]** Decidir se isto vira **um** capítulo ou se cada família entra no capítulo que já
-   existe (movimento em Combate, resistir em Vida & Ferimentos, social em Relações). A aposta
-   atual é capítulo único, porque a régua comum da §3 precisa de um lugar só.
-5. **[FAZER]** Quando fechar, virar `src/content/chapters/acoes-e-sistema.md` e provavelmente
-   `regras.json → acoes` para as tabelas que o motor precisar ler.
+6. ~~**[DECIDIR]** As duas coisas da §5.4.~~ **Fechadas em 2026-08-09:** a secundária que cobre a
+   mesma ação entra pela §5.5 (a maior no pool, a menor inteira de bônus), e a âncora "Difícil"
+   estava errada no `regras.json`, em três linhas, já corrigida.
+7. ~~**[FAZER]** As cinco fichas físicas.~~ **Escritas em 2026-08-09** (§6.1 a §6.5): Escalar,
+   Nadar, Cair, Feito de força e Esgueirar-se, mais Arremessar (§6.6) como caso sem modo.
+8. ~~**[FAZER]** Construção e ofício.~~ **Escrito em 2026-08-09** (§7). Não virou subsistema:
+   é a Longa com tabela, e o que precisou de invenção foi o **lote**, o **Piso**, a **qualidade
+   por Margem** e a **direção de obra**.
+9. ~~**[DECIDIR]** Uma escada de exaustão única para Resistir.~~ **Decidido em 2026-08-09: não
+   existe** (§8.1). Os cinco casos têm relógio, dano e penalidade próprios, e dois deles nem
+   rolam.
+10. **[FAZER]** As **cinco fichas de Resistir** (§8.2), decidindo antes como duas condições
+    simultâneas se somam.
+11. **[DECIDIR]** Trocar a palavra "stunt" em Relações Sociais por um termo em português.
+12. **[DECIDIR]** Reequilibrar a **Especialidade**, efeito colateral assumido da §5.5. A §7.5
+    acrescentou um dado novo à conta: na Longa, cada nível de Especialidade vale cerca de **+2**
+    na média.
+13. **[FAZER]** Normalizar a **tabela §4**, que é anterior aos modos e fala a língua antiga.
+14. **[FAZER]** Decidir se isto vira **um** capítulo ou se cada família entra no capítulo que já
+    existe (movimento em Combate, resistir em Vida & Ferimentos, social em Relações). A aposta
+    atual é capítulo único, porque a régua comum da §3 precisa de um lugar só.
+15. **[FAZER]** Quando fechar, virar `src/content/chapters/acoes-e-sistema.md` e provavelmente
+    `regras.json → acoes` para as tabelas que o motor precisar ler.
