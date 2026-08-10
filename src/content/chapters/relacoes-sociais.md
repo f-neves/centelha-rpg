@@ -1,6 +1,6 @@
 ---
-ordem: 10
-numeral: "VIII"
+ordem: 11
+numeral: "IX"
 titulo: "Relações Sociais"
 resumo: "O lado social do jogo em três marchas: a régua de disposição do dia a dia, o duelo de vontade quando a aposta é alta (Combate Social), e o cortejo com calma (Influência Estendida)."
 ---

@@ -1645,8 +1645,10 @@ ou Arte**, como em toda a régua (§3.3).
     acrescentou um dado novo à conta: na Longa, cada nível de Especialidade vale cerca de **+2**
     na média.
 13. **[FAZER]** Normalizar a **tabela §4**, que é anterior aos modos e fala a língua antiga.
-14. **[FAZER]** Decidir se isto vira **um** capítulo ou se cada família entra no capítulo que já
-    existe (movimento em Combate, resistir em Vida & Ferimentos, social em Relações). A aposta
-    atual é capítulo único, porque a régua comum da §3 precisa de um lugar só.
-15. **[FAZER]** Quando fechar, virar `src/content/chapters/acoes-e-sistema.md` e provavelmente
-    `regras.json → acoes` para as tabelas que o motor precisar ler.
+14. ~~**[FAZER]** Decidir se isto vira um capítulo ou se cada família entra no capítulo que já
+    existe.~~ **Capítulo único, publicado em 2026-08-10** como
+    `src/content/chapters/acoes-e-sistema.md`, capítulo **VII**, logo depois de Raças. **Este
+    documento passa a ser a bancada da regra, e o capítulo é o que vale.** Ao mexer numa regra,
+    mexer nos dois.
+15. **[FAZER]** `regras.json → acoes`, para as tabelas que o motor precisar ler. As mais úteis
+    são o dano por queda, o Desgaste e os cinco números das peças do ofício.

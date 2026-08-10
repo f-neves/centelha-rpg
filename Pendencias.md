@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 39 itens abertos · 20 [DECIDIR] · 15 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Ações & Sistema 5 · Trilhas 4 · Bestiário 3 · Social 3
+**Placar:** 38 itens abertos · 19 [DECIDIR] · 15 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Trilhas 4 · Ações & Sistema 4 · Bestiário 3 · Social 3
 
 ---
 
@@ -227,11 +227,15 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   **sete famílias e setenta e cinco ações**, com os mesmos nomes e na mesma ordem. As divergências
   reais eram duas, e foram fechadas: **Apostar** e **Levantar o peso máximo** faltavam no
   catálogo.
-- [ ] **G10 · [DECIDIR] Capítulo único ou distribuído?** A alternativa é jogar cada família no
-  capítulo que já existe (movimento em Combate, resistir em Vida & Ferimentos, social em
-  Relações). A aposta atual é capítulo único, porque a régua comum precisa de um lugar só.
-- [ ] **G11 · [FAZER] `regras.json → acoes`** para as tabelas que o motor precisar ler, quando o
-  capítulo fechar.
+- [x] ~~**G10 · Capítulo único ou distribuído?**~~ **Capítulo único, e já publicado**
+  (2026-08-10), a pedido do autor: `src/content/chapters/acoes-e-sistema.md`, **capítulo VII,
+  logo depois de Raças**. Combate em diante andou um numeral, e de quebra corrigiu-se uma
+  divergência que já existia: Fôlego, Criação de Personagem e Qual Sistema tinham no frontmatter
+  um numeral a menos do que o `site.ts` mostrava na barra lateral.
+- [ ] **G11 · [FAZER] `regras.json → acoes`.** O capítulo já está no site, mas as tabelas dele
+  são texto: nada disso é lido pelo motor nem aparece na ficha. Os melhores candidatos são a
+  tabela de dano por queda, o Desgaste e os cinco números das peças do ofício, que destravariam
+  o ajuste de peça na ficha deixar de ser um campo livre.
 
 ---
 
@@ -241,6 +245,6 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
 3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
-5. **G10**, capítulo único ou distribuído. A frente de Ações caiu de 11 itens para 5, e os que
-   sobraram ou são arrumação barata (**G8**, trocar "stunt") ou dependem desta: enquanto não se
-   sabe onde o texto mora, não adianta portar as 75 ações para `src/content/chapters/` (**G11**).
+5. **G8**, trocar a palavra "stunt" por um termo em português. A frente de Ações caiu de 11 itens
+   para 4 e o capítulo já está publicado; este é o que sobrou de mais barato, e agora são quatro
+   capítulos citando a palavra em vez de três.

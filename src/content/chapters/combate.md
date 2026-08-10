@@ -1,6 +1,6 @@
 ---
-ordem: 9
-numeral: "VII"
+ordem: 10
+numeral: "VIII"
 titulo: "Combate Físico"
 resumo: "Como uma luta funciona: a linha do tempo, o ataque, o dano, a defesa, o movimento, a vantagem tática e as Técnicas."
 ---

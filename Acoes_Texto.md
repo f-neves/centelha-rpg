@@ -1,7 +1,9 @@
 # Ações & Sistema
 
 > Rascunho do **texto do capítulo**, na voz do livro, para o leitor que nunca jogou.
-> Destino: `src/content/chapters/acoes-e-sistema.md`.
+> **Publicado em 2026-08-10** como `src/content/chapters/acoes-e-sistema.md`, capítulo VII.
+> Este arquivo continua sendo a **lista canônica** das 75 ações; o capítulo é o que vale para
+> quem lê. Ao mexer numa ação, mexer nos dois.
 >
 > Companheiro de `Acoes_Catalogo.md` (a bancada: o que cada ação é, com referências de outros
 > sistemas) e de `Acoes_Sistema.md` (o rascunho da regra: jogada, Dificuldade, tempo). Aqui
