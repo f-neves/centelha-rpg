@@ -265,13 +265,18 @@
 
         <div class="pgrp">
           <b>O eixo</b>
+          <div class="radios">
+            <label><input type="radio" name="gesc" value="lin" checked>escala normal</label>
+            <label><input type="radio" name="gesc" value="log">logarítmica</label>
+          </div>
           <div class="fld"><label>até quantos kg mostrar</label>
-            <input type="range" data-p="gxMax" min="1" max="140" step="1">
+            <input type="range" data-p="gxMax" min="50" max="600" step="10">
             <span class="val" data-v="gxMax"></span></div>
-          <div class="warn">Escala linear nos dois eixos. Em <b>2 kg</b> se vê o ápice e a
-            faixa de combate; em <b>25</b>, tudo que um personagem joga; em <b>140</b>, o teto
-            e a queda. Num eixo linear que vá longe, os 100 g do ápice somem contra o zero,
-            e é por isso que este controle existe.</div>
+          <div class="warn">As duas escalas mostram coisas diferentes. Na <b>normal</b> se lê o
+            que a mesa sente: quase todo o alcance está abaixo de 2 kg e a diferença entre 5 e
+            25 kg é quase nada. Na <b>logarítmica</b> se lê a forma da lei, com o ápice e os
+            três regimes visíveis de uma vez. Num eixo normal que vá longe, os 100 g do ápice
+            somem contra o zero.</div>
         </div>
 
         <div class="pgrp">
@@ -537,7 +542,7 @@ const SITE = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
                resA:12, resB:3, pA:500, pB:80,
                // a regra nova (Arremesso_Regra.md)
                rConst:2, rExpMeio:0.5, rApice:0.10, rExpLeve:0.15,
-               rTeto:0.25, rQueda:0.80, faaA:24, faaB:5, gxMax:25 };
+               rTeto:0.25, rQueda:0.80, faaA:24, faaB:5, gxMax:150, gEsc:'lin' };
 const M = Object.assign({}, SITE);
 
 // As duas referências que estamos usando: o topo humano (atributo 6 + habilidade 6)
@@ -1073,23 +1078,47 @@ function passoBom(faixa, alvoN = 6){
 }
 
 function plotRegra(){
-  // Escala linear nos dois eixos. O preço é que o ápice fica colado no zero:
-  // em 25 kg de eixo, os 100 g do ápice são 0,4% da largura. Por isso o teto do
-  // eixo é ajustável, para poder aproximar a faixa que interessa.
-  const xMax = M.gxMax;
-  const X = (m) => gxB + (Math.min(m, xMax)/xMax)*gpw;
+  // Duas escalas. Na normal o ápice fica colado no zero (em 150 kg de eixo, os
+  // 100 g dele são 0,07% da largura), e é por isso que o teto do eixo é ajustável.
+  // Na log o ápice aparece inteiro, mas a leitura de "quase tudo está abaixo de
+  // 2 kg" se perde, porque log achata justamente isso.
+  const log = M.gEsc === 'log';
+  const xMax = M.gxMax, xMin = 0.005;
+  const lgx0 = Math.log(xMin), lgxs = Math.log(xMax) - lgx0;
+  const X = log
+    ? (m) => gxB + ((Math.log(Math.min(Math.max(m, xMin), xMax)) - lgx0)/lgxs)*gpw
+    : (m) => gxB + (Math.min(m, xMax)/xMax)*gpw;
+  // e a inversa, que o cursor usa
+  const mAtX = log
+    ? (px) => Math.exp(lgx0 + ((px - gxB)/gpw)*lgxs)
+    : (px) => ((px - gxB)/gpw)*xMax;
   const LA = M.rTeto*M.pA, LB = M.rTeto*M.pB;
-  // o teto do eixo Y sai do maior valor visível, arredondado para cima
+
+  // o teto do eixo Y sai do maior valor visível
   let yPico = 0;
   for (let i = 0; i <= 400; i++){
-    const m = xMax*i/400;
+    const m = log ? Math.exp(lgx0 + lgxs*i/400) : xMax*i/400;
     yPico = Math.max(yPico, alcanceRegra(M.faaA, m, M.pA), alcanceRegra(M.faaB, m, M.pB));
   }
   for (const [, m, real] of CONF) if (m <= xMax) yPico = Math.max(yPico, real);
+  const yMin = 0.5;
   const pY = passoBom(yPico, 5);
-  const yMax = Math.ceil(yPico/pY)*pY || 1;
-  const Y = (d) => gyB - (Math.max(0, Math.min(d, yMax))/yMax)*gph;
-  const dentro = (d) => d >= 0 && d <= yMax;
+  const yMax = log ? Math.pow(10, Math.ceil(Math.log10(yPico))) : (Math.ceil(yPico/pY)*pY || 1);
+  const lgy0 = Math.log(yMin), lgys = Math.log(yMax) - lgy0;
+  const Y = log
+    ? (d) => gyB - ((Math.log(Math.min(Math.max(d, yMin), yMax)) - lgy0)/lgys)*gph
+    : (d) => gyB - (Math.max(0, Math.min(d, yMax))/yMax)*gph;
+  const dentro = (d) => d >= (log ? yMin : 0) && d <= yMax;
+  /** as marcas de um eixo: décadas em log, passo redondo no normal */
+  const marcasEixo = (lo, hi, passo) => {
+    if (!log){ const t = []; for (let v = 0; v <= hi + passo*1e-6; v += passo) t.push(v); return t; }
+    const t = [];
+    for (let e = Math.floor(Math.log10(lo)); e <= Math.ceil(Math.log10(hi)); e++){
+      const v = Math.pow(10, e);
+      if (v >= lo*0.999 && v <= hi*1.001) t.push(v);
+    }
+    return t;
+  };
 
   let s = '';
   // os três regimes ao fundo, medidos pelo topo humano (a curva cheia)
@@ -1103,17 +1132,16 @@ function plotRegra(){
     const x1 = X(a), x2 = X(b);
     if (x2 - x1 < 1) continue;
     s += `<rect class="zona" x="${x1.toFixed(1)}" y="${gyT}" width="${(x2-x1).toFixed(1)}" height="${gph}" opacity="${op}"/>`;
-    // no eixo linear a zona de saturação encosta no zero e some: o nome dela só
+    // no eixo normal a zona de saturação encosta no zero e some: o nome dela só
     // cabe quando a faixa do eixo é estreita o bastante para ela ter largura
     if (x2 - x1 > rot.length*5 + 10)
       s += `<text class="zonalbl" x="${((x1+x2)/2).toFixed(1)}" y="${gyT+11}" text-anchor="middle">${rot}</text>`;
   }
-  const pX = passoBom(xMax, 6);
-  for (let v = 0; v <= xMax + pX*1e-6; v += pX){
+  for (const v of marcasEixo(xMin, xMax, passoBom(xMax, 6))){
     s += `<line class="grid" x1="${X(v).toFixed(1)}" y1="${gyT}" x2="${X(v).toFixed(1)}" y2="${gyB}"/>`
        + `<text x="${X(v).toFixed(1)}" y="${gyB+14}" text-anchor="middle">${fw(Math.round(v*1000)/1000)}</text>`;
   }
-  for (let v = 0; v <= yMax + pY*1e-6; v += pY){
+  for (const v of marcasEixo(yMin, yMax, pY)){
     s += `<line class="grid" x1="${gxB}" y1="${Y(v).toFixed(1)}" x2="${gxR}" y2="${Y(v).toFixed(1)}"/>`
        + `<text x="${gxB-6}" y="${(Y(v)+3).toFixed(1)}" text-anchor="end">${n1(v)}</text>`;
   }
@@ -1138,7 +1166,7 @@ function plotRegra(){
   const traco = (faa, P) => {
     const pts = [];
     for (let i = 0; i <= 1000; i++){
-      const m = xMax*i/1000;
+      const m = log ? Math.exp(lgx0 + lgxs*i/1000) : xMax*i/1000;
       const d = alcanceRegra(faa, m, P);
       if (d <= 0) continue;
       pts.push(`${X(m).toFixed(1)},${Y(d).toFixed(1)}`);
@@ -1152,7 +1180,7 @@ function plotRegra(){
   // curva escolhe o próprio ponto, limitado a metade do teto DELA: com o eixo em
   // 140 kg, a do médio já acabou em 20 e o rótulo cairia no chão junto com a outra.
   const rot = [['topo', M.faaA, M.pA], ['médio', M.faaB, M.pB]].map(([nome, faa, P]) => {
-    const m = Math.min(Math.max(M.rApice*2, xMax*0.12), M.rTeto*P*0.5);
+    const m = Math.min(Math.max(M.rApice*2, log ? M.rApice*8 : xMax*0.12), M.rTeto*P*0.5);
     return { nome, faa, x: X(m) + 5, y: Y(alcanceRegra(faa, m, P)) - 8 };
   });
   // e se mesmo assim caírem um em cima do outro, o de baixo desce
@@ -1174,7 +1202,7 @@ function plotRegra(){
   svg.addEventListener('pointermove', (e) => {
     const r = svg.getBoundingClientRect(), k = GW/r.width;
     const px = Math.max(gxB, Math.min(gxR, (e.clientX - r.left)*k));
-    const m = ((px - gxB)/gpw)*xMax;
+    const m = mAtX(px);
     const da = alcanceRegra(M.faaA, m, M.pA), db = alcanceRegra(M.faaB, m, M.pB);
     hov.style.display = ''; vl.setAttribute('x1', px); vl.setAttribute('x2', px);
     for (const [c, d] of [['a', da], ['b', db]]){
@@ -1608,7 +1636,7 @@ document.addEventListener('input', (e) => {
 document.addEventListener('change', (e) => {
   const el = e.target;
   if (!(el instanceof HTMLInputElement) || el.type !== 'radio') return;
-  const alvo = { fahf:'fahf', pforma:'pforma', modelo:'modelo', basemodo:'baseModo' }[el.name];
+  const alvo = { fahf:'fahf', pforma:'pforma', modelo:'modelo', basemodo:'baseModo', gesc:'gEsc' }[el.name];
   if (!alvo) return;
   M[alvo] = el.value; pinta();
 });
@@ -1631,7 +1659,7 @@ document.getElementById('duo').addEventListener('click', (e) => {
 document.getElementById('reset').addEventListener('click', () => {
   Object.assign(M, SITE);
   document.querySelectorAll('input[type=radio]').forEach((r) => {
-    const alvo = { fahf:'fahf', pforma:'pforma', modelo:'modelo', basemodo:'baseModo' }[r.name];
+    const alvo = { fahf:'fahf', pforma:'pforma', modelo:'modelo', basemodo:'baseModo', gesc:'gEsc' }[r.name];
     if (alvo) r.checked = r.value === M[alvo];
   });
   sync(null); pinta();
