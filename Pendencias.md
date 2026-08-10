@@ -172,8 +172,9 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   intervalo) e às vezes um **Piso**, para o serviço que é mão e não técnica. Requisito e
   Dificuldade não são a mesma coisa dita duas vezes: cota de malha é Requisito 2 com Acúmulo
   enorme, fechadura é Requisito 5 com Acúmulo pequeno. Fecharam junto: o **lote** (a montagem se
-  paga uma vez, o que explica por que ninguém acende a forja para uma espada só), o **+4 sem o
-  ofício** e o **Ofícios Gerais valendo metade no Requisito** no lugar de um teto, a **régua de
+  paga uma vez, o que explica por que ninguém acende a forja para uma espada só), o território de
+  **Ofícios Gerais** (cobre sozinho Dificuldade até o **nível da Habilidade**; fora dele, **+4**;
+  e vale **metade** ao conferir o Requisito), a **régua de
   qualidade simétrica** de seis graus (Sucata a Excepcional; cada grau mexe em Requisito ±1,
   Dificuldade ±3, Acúmulo ×1,5 ou ×0,5, preço, e sobe o intervalo a cada dois graus, que é como se
   chega à Espada Longa Ótima do painel de ajuste), oficina e material como os ±2/±4, a **direção

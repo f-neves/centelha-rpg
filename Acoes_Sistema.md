@@ -984,15 +984,28 @@ a cada intervalo em vez de tomar a média.
 porta, cerca, polimento, remendo de armadura, engenhoca pequena. É uma primária, e é honesta
 dentro do escopo dela.
 
-**Ofícios Gerais cobre sozinho tudo o que for Dificuldade 4 ou menos.** Acima disso falta escola,
-e a regra é uma só:
+O escopo dele não é um número fixo: **cresce com a perícia.**
+
+<p class="formula">Ofícios Gerais cobre sozinho toda peça de <b>Dificuldade até o nível da Habilidade</b></p>
+
+Ofícios Gerais 4 faz porta, cerca, escudo, flecha e gambeson (Dificuldade 4) como se fosse do
+ramo. Ofícios Gerais 2 já não faz: para ele a porta é peça de carpinteiro, e falta escola. Cada
+nível de Ofícios Gerais, portanto, compra duas coisas ao mesmo tempo, um pool melhor e um
+território maior, que é o que uma perícia de faz-tudo deveria comprar.
+
+Fora do território, a regra é uma só:
 
 <p class="formula">Sem o ofício específico, a Dificuldade sobe <b>+4</b></p>
 
-Não é uma parede, é um degrau. Um faz-tudo excepcional (Ofícios Gerais 6, Destreza 4, média 16)
-consegue bater uma espada simples: Dificuldade 7 vira 11, e ele avança 5 por dia. O que ele não
-consegue é uma espada **boa**, nem uma fechadura, nem uma placa. É o resultado que se quer: o
-generalista chega ao funcional e para ali.
+E aí aparece um caminho que vale a pena notar, porque é exatamente como se aprende um ofício de
+verdade: **quem não alcança a peça Comum faz a peça Tosca.** Um grau abaixo derruba a Dificuldade
+em 3 (§7.5), e a porta que era Dificuldade 4 vira 1. O aprendiz de Ofícios Gerais 1 não hesita
+diante da porta: ele faz uma porta ruim, e vai fazendo melhor conforme sobe.
+
+Não é uma parede, é um degrau. Um faz-tudo excepcional (Ofícios Gerais 6, Destreza 4, média 17,5)
+consegue bater uma espada simples, que está fora do território dele: Dificuldade 7 vira 11, ele
+avança 6,5 por dia e sai em 3,4 dias. O que ele não consegue é uma espada **boa**, nem uma
+fechadura, nem uma placa. É o resultado que se quer: o generalista chega ao funcional e para ali.
 
 A parede, quando existe, é o **Requisito** (§7.3), e para ela vale a outra metade da regra:
 
