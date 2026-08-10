@@ -264,6 +264,17 @@
           e perto do teto entram os outros dois regimes.</div>
 
         <div class="pgrp">
+          <b>O eixo</b>
+          <div class="fld"><label>até quantos kg mostrar</label>
+            <input type="range" data-p="gxMax" min="1" max="140" step="1">
+            <span class="val" data-v="gxMax"></span></div>
+          <div class="warn">Escala linear nos dois eixos. Em <b>2 kg</b> se vê o ápice e a
+            faixa de combate; em <b>25</b>, tudo que um personagem joga; em <b>140</b>, o teto
+            e a queda. Num eixo linear que vá longe, os 100 g do ápice somem contra o zero,
+            e é por isso que este controle existe.</div>
+        </div>
+
+        <div class="pgrp">
           <b>Os três regimes</b>
           <div class="fld"><label>ápice · onde a curva vira (kg)</label>
             <input type="number" data-p="rApice" min="0.01" max="2" step="0.01"></div>
@@ -526,7 +537,7 @@ const SITE = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
                resA:12, resB:3, pA:500, pB:80,
                // a regra nova (Arremesso_Regra.md)
                rConst:2, rExpMeio:0.5, rApice:0.10, rExpLeve:0.15,
-               rTeto:0.25, rQueda:0.80, faaA:24, faaB:5 };
+               rTeto:0.25, rQueda:0.80, faaA:24, faaB:5, gxMax:25 };
 const M = Object.assign({}, SITE);
 
 // As duas referências que estamos usando: o topo humano (atributo 6 + habilidade 6)
@@ -1083,31 +1094,34 @@ function plotRegra(){
   let s = '';
   // os três regimes ao fundo, medidos pelo topo humano (a curva cheia)
   const zonas = [
-    [GMASSA[0], M.rApice, '.07', 'satura'],
+    [0, M.rApice, '.07', 'satura'],
     [M.rApice, M.rQueda*LA, '.03', 'raiz do peso'],
     [M.rQueda*LA, LA, '.11', 'desaba'],
   ];
   for (const [a, b, op, rot] of zonas){
+    if (a >= xMax) continue;
     const x1 = X(a), x2 = X(b);
-    if (x2 - x1 < 2) continue;
-    s += `<rect class="zona" x="${x1.toFixed(1)}" y="${gyT}" width="${(x2-x1).toFixed(1)}" height="${gph}" opacity="${op}"/>`
-       + `<text class="zonalbl" x="${((x1+x2)/2).toFixed(1)}" y="${gyT+11}" text-anchor="middle">${rot}</text>`;
+    if (x2 - x1 < 1) continue;
+    s += `<rect class="zona" x="${x1.toFixed(1)}" y="${gyT}" width="${(x2-x1).toFixed(1)}" height="${gph}" opacity="${op}"/>`;
+    // no eixo linear a zona de saturação encosta no zero e some: o nome dela só
+    // cabe quando a faixa do eixo é estreita o bastante para ela ter largura
+    if (x2 - x1 > rot.length*5 + 10)
+      s += `<text class="zonalbl" x="${((x1+x2)/2).toFixed(1)}" y="${gyT+11}" text-anchor="middle">${rot}</text>`;
   }
-  // só as marcas que interessam, e poucas: eixo limpo é metade do gráfico
-  for (const v of [0.01, 0.1, 1, 10, 100]){
+  const pX = passoBom(xMax, 6);
+  for (let v = 0; v <= xMax + pX*1e-6; v += pX){
     s += `<line class="grid" x1="${X(v).toFixed(1)}" y1="${gyT}" x2="${X(v).toFixed(1)}" y2="${gyB}"/>`
-       + `<text x="${X(v).toFixed(1)}" y="${gyB+14}" text-anchor="middle">${fw(v)}</text>`;
+       + `<text x="${X(v).toFixed(1)}" y="${gyB+14}" text-anchor="middle">${fw(Math.round(v*1000)/1000)}</text>`;
   }
-  for (const v of [1, 10, 100]){
+  for (let v = 0; v <= yMax + pY*1e-6; v += pY){
     s += `<line class="grid" x1="${gxB}" y1="${Y(v).toFixed(1)}" x2="${gxR}" y2="${Y(v).toFixed(1)}"/>`
-       + `<text x="${gxB-6}" y="${(Y(v)+3).toFixed(1)}" text-anchor="end">${v}</text>`;
+       + `<text x="${gxB-6}" y="${(Y(v)+3).toFixed(1)}" text-anchor="end">${n1(v)}</text>`;
   }
-  // as três fronteiras, tracejadas e rotuladas de pé
-  // O início da queda e o teto ficam a poucos por cento um do outro, e em log isso
-  // são poucos pixels: os dois rótulos alternam de altura para não se atropelarem.
+  // as três fronteiras, tracejadas e rotuladas de pé. O início da queda e o teto
+  // ficam perto um do outro: os rótulos alternam de altura para não se atropelarem.
   const marcos = [[M.rApice, 'ápice', 0], [M.rQueda*LA, 'começa a queda', 0], [LA, 'teto', 1]];
   for (const [m, rot, alt] of marcos){
-    if (m < GMASSA[0] || m > GMASSA[1]) continue;
+    if (m > xMax) continue;
     const x = X(m), yb = alt ? gyT + gph*0.52 : gyB - 4;
     s += `<line class="lim" x1="${x.toFixed(1)}" y1="${gyT}" x2="${x.toFixed(1)}" y2="${gyB}"/>`
        + `<text class="zonalbl" transform="rotate(-90 ${(x-3).toFixed(1)} ${yb.toFixed(1)})" x="${(x-3).toFixed(1)}" y="${yb.toFixed(1)}">${rot} ${fw(m)} kg</text>`;
@@ -1115,29 +1129,35 @@ function plotRegra(){
 
   // os recordes reais, discretos: aqui eles são conferência, não protagonista
   for (const [nome, m, real] of CONF){
-    if (m < GMASSA[0] || !dentro(real)) continue;
+    if (m > xMax || !dentro(real)) continue;
     s += `<circle class="rreal" cx="${X(m).toFixed(1)}" cy="${Y(real).toFixed(1)}" r="2.6"/>`;
   }
 
-  // as duas curvas da regra
+  // As duas curvas. A amostragem é uniforme em pixels do eixo: no linear isso põe
+  // um ponto a cada meio pixel, e o bico do ápice sai em bico, não arredondado.
   const traco = (faa, P) => {
     const pts = [];
-    for (let i = 0; i <= 300; i++){
-      const m = Math.exp(lx(GMASSA[0]) + spanX*i/300);
+    for (let i = 0; i <= 1000; i++){
+      const m = xMax*i/1000;
       const d = alcanceRegra(faa, m, P);
       if (d <= 0) continue;
-      pts.push(`${X(m).toFixed(1)},${Y(Math.max(GALC[0], d)).toFixed(1)}`);
+      pts.push(`${X(m).toFixed(1)},${Y(d).toFixed(1)}`);
     }
     return pts.join(' ');
   };
   s += `<polyline class="rmedio" points="${traco(M.faaB, M.pB)}"/>`;
   s += `<polyline class="rtopo" points="${traco(M.faaA, M.pA)}"/>`;
-  // Rótulo direto na curva, no lugar de legenda separada. Fica no trecho da raiz,
-  // onde as duas descem: texto correndo para a direita acima de uma curva que cai
-  // nunca a cruza, e é por isso que o rótulo não vai no trecho que sobe.
-  const mRot = Math.max(M.rApice*3, 0.3);
-  s += `<text class="rlbl" x="${(X(mRot)+5).toFixed(1)}" y="${(Y(alcanceRegra(M.faaA, mRot, M.pA))-8).toFixed(1)}">topo · FAA ${M.faaA}</text>`
-     + `<text class="rlbl" x="${(X(mRot)+5).toFixed(1)}" y="${(Y(alcanceRegra(M.faaB, mRot, M.pB))-8).toFixed(1)}">médio · FAA ${M.faaB}</text>`;
+  // Rótulo direto na curva, no lugar de legenda separada. Fica no trecho que DESCE:
+  // texto correndo para a direita acima de uma curva que cai nunca a cruza. Cada
+  // curva escolhe o próprio ponto, limitado a metade do teto DELA: com o eixo em
+  // 140 kg, a do médio já acabou em 20 e o rótulo cairia no chão junto com a outra.
+  const rot = [['topo', M.faaA, M.pA], ['médio', M.faaB, M.pB]].map(([nome, faa, P]) => {
+    const m = Math.min(Math.max(M.rApice*2, xMax*0.12), M.rTeto*P*0.5);
+    return { nome, faa, x: X(m) + 5, y: Y(alcanceRegra(faa, m, P)) - 8 };
+  });
+  // e se mesmo assim caírem um em cima do outro, o de baixo desce
+  if (Math.abs(rot[0].y - rot[1].y) < 13) rot[1].y = rot[0].y + 15;
+  s += rot.map((r) => `<text class="rlbl" x="${r.x.toFixed(1)}" y="${r.y.toFixed(1)}">${r.nome} · FAA ${r.faa}</text>`).join('');
 
   s += `<line class="axis" x1="${gxB}" y1="${gyT}" x2="${gxB}" y2="${gyB}"/>`
      + `<line class="axis" x1="${gxB}" y1="${gyB}" x2="${gxR}" y2="${gyB}"/>`
@@ -1154,13 +1174,13 @@ function plotRegra(){
   svg.addEventListener('pointermove', (e) => {
     const r = svg.getBoundingClientRect(), k = GW/r.width;
     const px = Math.max(gxB, Math.min(gxR, (e.clientX - r.left)*k));
-    const m = Math.exp(lx(GMASSA[0]) + ((px - gxB)/gpw)*spanX);
+    const m = ((px - gxB)/gpw)*xMax;
     const da = alcanceRegra(M.faaA, m, M.pA), db = alcanceRegra(M.faaB, m, M.pB);
     hov.style.display = ''; vl.setAttribute('x1', px); vl.setAttribute('x2', px);
     for (const [c, d] of [['a', da], ['b', db]]){
       const p = hov.querySelector(`[data-c="${c}"]`);
       p.setAttribute('cx', px.toFixed(1));
-      p.setAttribute('cy', d > 0 ? Y(Math.max(GALC[0], d)).toFixed(1) : gyB);
+      p.setAttribute('cy', d > 0 ? Y(d).toFixed(1) : gyB);
       p.style.display = d > 0 ? '' : 'none';
     }
     const regime = m < M.rApice ? 'satura' : m > M.rQueda*LA ? 'desaba' : 'raiz do peso';
@@ -1171,7 +1191,7 @@ function plotRegra(){
     tip.style.display = '';
     const meia = tip.offsetWidth/2, cx = (px/GW)*r.width;
     tip.style.left = Math.max(meia, Math.min(r.width - meia, cx)) + 'px';
-    tip.style.top = (Y(Math.max(GALC[0], da || GALC[0]))/GH)*r.height + 'px';
+    tip.style.top = (Y(da > 0 ? da : 0)/GH)*r.height + 'px';
   });
   svg.addEventListener('pointerleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
 
@@ -1554,6 +1574,7 @@ const FMT = {
   rExpLeve:(v) => vg(v, 2),
   rTeto:   (v) => 'P/' + (1/v).toFixed(1).replace('.', ','),
   rQueda:  (v) => Math.round(v*100)+'%',
+  gxMax:   (v) => v + ' kg',
 };
 const CAMPO = { corrida: 3, giro: 3, r0exp: 2, bexp: 3, vexp: 2, m0: 2, wpiv: 1, fexp: 1, pexp: 1, q: 2,
                 rConst: 1, rExpMeio: 2, rApice: 2, rExpLeve: 2, rTeto: 2, rQueda: 2 };
