@@ -900,7 +900,7 @@
     "atributos": [
       "inteligencia"
     ],
-    "descricao": "A instrução ampla de quem estudou: história, geografia, povos, línguas, literatura, teoria, o nome das coisas e o contexto delas. É a perícia que responde à pergunta \"o que eu sei sobre isso?\" quando o assunto não cai num campo específico, e é ela que separa o letrado do camponês esperto. Quanto mais fundo o assunto, mais ela cede lugar às secundárias como História, Heráldica, Religião e Bestiário; Conhecimentos Gerais dá a resposta que qualquer erudito daria.",
+    "descricao": "A instrução ampla de quem estudou: história, geografia, povos, línguas, literatura, teoria, o nome das coisas e o contexto delas. É a perícia que responde à pergunta \"o que eu sei sobre isso?\" quando o assunto não cai num campo específico, e é ela que separa o letrado do camponês esperto. Quanto mais fundo o assunto, mais ela cede lugar às secundárias como História, Religião, Genealogia e Bestiário; Conhecimentos Gerais dá a resposta que qualquer erudito daria.",
     "niveis": [
       {
         "nivel": 0,
@@ -1089,7 +1089,7 @@
       "inteligencia",
       "destreza"
     ],
-    "descricao": "A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola; o serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferraria, Marcenaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade.",
+    "descricao": "A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola; o serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferreiro, Marcenaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade.",
     "niveis": [
       {
         "nivel": 0,

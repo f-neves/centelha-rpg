@@ -60,7 +60,7 @@
     "nome": "Mão Veloz",
     "trilha": "corpo",
     "atributo": "destreza",
-    "habilidade_ancora": "Ladinagem",
+    "habilidade_ancora": "Prestidigitação",
     "descricao": "prestidigitação, desarmar, controle fino"
   },
   {
@@ -148,7 +148,7 @@
     "nome": "Estandarte",
     "trilha": "voz",
     "atributo": "influencia",
-    "habilidade_ancora": "Oratória / Tática",
+    "habilidade_ancora": "Oratória / Liderança",
     "descricao": "liderança, coordenar, moral"
   },
   {
@@ -236,7 +236,7 @@
     "nome": "Camaleão",
     "trilha": "voz",
     "atributo": "compostura",
-    "habilidade_ancora": "Ladinagem / Manha",
+    "habilidade_ancora": "Disfarce / Manha",
     "descricao": "alterar a própria aparência"
   },
   {

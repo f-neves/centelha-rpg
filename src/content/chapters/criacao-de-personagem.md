@@ -146,7 +146,7 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 |---|---|:---:|
 | Atributos | Inteligência 6 (pico) · Influência, Percepção 4 · Raciocínio, Vigor, Destreza, Perspicácia 3 · Força, Compostura 2 | 496 |
 | Habilidades | Ocultismo 5 (pico) · Conhecimentos, Investigação, Esquiva, Prontidão 3 · Cura, Resistência, Furtividade, Sociabilidade, Ciências 2 · Persuasão 1 | 220 |
-| Secundárias | oito (Astronomia, Alquimia, Heráldica, Caligrafia, História, Botânica…) | 66 |
+| Secundárias | oito (Astronomia, Alquimia, Caligrafia, História, Herbologia, Genealogia…) | 66 |
 | Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos…) | 48 |
 | Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 63 |
 | Força de Vontade | 1 → 9 | 88 |

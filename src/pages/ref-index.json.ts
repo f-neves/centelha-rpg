@@ -32,7 +32,7 @@ export const GET: APIRoute = async () => {
     items.push({ id: 'sec-' + s.id, tipo: 'habilidade secundária', nome: s.nome, url: url('regras/habilidades-secundarias') + '#sec-' + s.id, resumo: s.descricao, termos: [s.nome], autolink: multipalavra(s.nome), detalhe: { descricao: s.descricao, niveis: (s as any).niveis ?? escalaH } });
 
   for (const v of d.virtudes)
-    items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/aparencia-virtudes-vontade'), resumo: `${v.descricao} Resiste a ${v.resiste}.`, termos: [v.nome], autolink: true, detalhe: { descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: (v as any).niveis } });
+    items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/aparencia-virtudes-vontade'), resumo: `${v.descricao} Resiste ${v.resiste}.`, termos: [v.nome], autolink: true, detalhe: { descricao: `${v.descricao} Resiste ${v.resiste}.`, niveis: (v as any).niveis } });
 
   for (const c of d.caminhos)
     items.push({ id: c.id, tipo: 'caminho', nome: c.nome, url: url('caminhos/' + c.id), resumo: short(`${d.A[c.atributo.id].nome} · ${c.descricao}`), caminho: c.id, termos: [c.nome], autolink: multipalavra(c.nome) });

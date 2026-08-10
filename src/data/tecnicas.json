@@ -6224,7 +6224,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+3 em Tática; lê o campo num instante.",
+    "texto": "+3 em Estratégia; lê o campo num instante.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"

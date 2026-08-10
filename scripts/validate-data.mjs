@@ -80,6 +80,14 @@ for (const k of Object.keys(S)) {
 const setOf = (k) => new Set((data[k] || []).map((x) => x.id));
 const A = setOf('atributos'), C = setOf('caminhos'), T = setOf('tecnicas');
 for (const c of data.caminhos || []) if (!A.has(c.atributo)) fail(`caminho "${c.id}": atributo inexistente "${c.atributo}"`);
+// `habilidade_ancora` é texto livre ("Oratória / Liderança"), e por isso apodrecia calado: a
+// revisão de 2026-08 encontrou três Caminhos ancorados em perícias que não existiam mais
+// (Ladinagem, que virou Prestidigitação, e Tática, que nunca existiu). Cada nome separado por
+// barra tem de existir na data viva. Virtude também vale como âncora, porque também entra em pool.
+const NOMES_PERICIA = new Set([...(data.habilidades || []), ...(data['habilidades-secundarias'] || []), ...(data.virtudes || [])].map((h) => h.nome));
+for (const c of data.caminhos || [])
+  for (const n of String(c.habilidade_ancora || '').split('/').map((s) => s.trim()).filter(Boolean))
+    if (!NOMES_PERICIA.has(n)) fail(`caminho "${c.id}": habilidade_ancora inexistente "${n}"`);
 for (const t of data.tecnicas || []) {
   if (!C.has(t.caminho)) fail(`técnica "${t.id}": caminho inexistente "${t.caminho}"`);
   if (!A.has(t.atributo)) fail(`técnica "${t.id}": atributo inexistente "${t.atributo}"`);
