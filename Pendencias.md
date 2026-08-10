@@ -167,15 +167,19 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 **Escrever:**
 
 - [x] ~~**G4 · Construção e ofício.**~~ **Escrito em 2026-08-09** (`Acoes_Sistema.md` §7), e
-  **não virou subsistema**: é a Jogada Longa com tabela. A peça tem quatro números (Dificuldade =
-  técnica, Montagem = o que se paga uma vez por lote, Peça = por unidade, intervalo) e às vezes um
-  **Piso**, para o serviço que é mão e não técnica. Fecharam junto: o **lote** (a montagem se paga
-  uma vez, o que explica por que ninguém acende a forja para uma espada só), o **+4 sem o ofício**
-  no lugar de um teto para Ofícios Gerais, a **qualidade por Margem** (+6 de Dificuldade por grau,
-  que é como se chega à Espada Longa Ótima do painel de ajuste), oficina e material como os ±2/±4,
-  a **direção de obra** (ajudante sem ofício trabalha contra Dificuldade 4 sob supervisão, até dez
-  por supervisor) e as quatro tabelas de referência por escala. Ficaram fora, na §7.10: preço da
-  peça pronta, material sobrenatural, a oficina como traço e a etapa de colheita e extração.
+  **não virou subsistema**: é a Jogada Longa com tabela. A peça tem cinco números (**Requisito** =
+  a porta, Dificuldade = o ritmo, Montagem = o que se paga uma vez por lote, Peça = por unidade,
+  intervalo) e às vezes um **Piso**, para o serviço que é mão e não técnica. Requisito e
+  Dificuldade não são a mesma coisa dita duas vezes: cota de malha é Requisito 2 com Acúmulo
+  enorme, fechadura é Requisito 5 com Acúmulo pequeno. Fecharam junto: o **lote** (a montagem se
+  paga uma vez, o que explica por que ninguém acende a forja para uma espada só), o **+4 sem o
+  ofício** e o **Ofícios Gerais valendo metade no Requisito** no lugar de um teto, a **régua de
+  qualidade simétrica** de seis graus (Sucata a Excepcional; cada grau mexe em Requisito ±1,
+  Dificuldade ±3, Acúmulo ×1,5 ou ×0,5, preço, e sobe o intervalo a cada dois graus, que é como se
+  chega à Espada Longa Ótima do painel de ajuste), oficina e material como os ±2/±4, a **direção
+  de obra** (ajudante sem ofício trabalha contra Dificuldade 4 sob supervisão, até dez por
+  supervisor) e as quatro tabelas de referência por escala. Ficaram fora, na §7.10: preço da peça
+  pronta, material sobrenatural, a oficina como traço e a etapa de colheita e extração.
 - [x] ~~**As cinco físicas de toda sessão.**~~ **Escritas em 2026-08-09**
   (`Acoes_Sistema.md` §6.1 a §6.5): Escalar, Nadar, Cair, Feito de força e Esgueirar-se. Feito de
   força saiu com as duas faces separadas (erguer não rola, romper rola) e ganhou a tabela de

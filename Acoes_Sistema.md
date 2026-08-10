@@ -966,10 +966,11 @@ nenhum outro caso teve:
 
 <p class="formula">A <b>Dificuldade</b> é a técnica da peça · o <b>Acúmulo</b> é o tamanho do serviço · o <b>intervalo</b> é o ritmo do ofício</p>
 
-Uma espada e um punhal exigem a mesma técnica e serviços diferentes. Uma espada e uma espada
-**boa** exigem serviços parecidos e técnicas diferentes. Isso resolve sozinho a pergunta que
-travava a família: **o que separa o ferreiro competente do mestre não é velocidade, é o que ele
-consegue fazer.** A Longa é uma parede, não uma ladeira: quem tem média igual ou menor que a
+Uma espada e um punhal exigem a mesma técnica e serviços de tamanhos diferentes. Uma espada e uma
+espada **boa** exigem técnicas diferentes, e a §7.5 acrescenta a essas três medidas uma quarta, o
+**Requisito**, que é a porta. Isso resolve sozinho a pergunta que travava a família: **o que
+separa o ferreiro competente do mestre não é velocidade, é o que ele consegue fazer.** A Longa é
+uma parede, não uma ladeira: quem tem média igual ou menor que a
 Dificuldade não termina nunca, por mais meses que passe na bigorna. É deliberado, e no ofício é
 justamente o comportamento certo. Paciência não faz uma lâmina melhor.
 
@@ -988,14 +989,18 @@ e a regra é uma só:
 
 <p class="formula">Sem o ofício específico, a Dificuldade sobe <b>+4</b></p>
 
-Não é uma parede, é um degrau. Um faz-tudo excepcional (Ofícios Gerais 5, Destreza 4, média 16)
+Não é uma parede, é um degrau. Um faz-tudo excepcional (Ofícios Gerais 6, Destreza 4, média 16)
 consegue bater uma espada simples: Dificuldade 7 vira 11, e ele avança 5 por dia. O que ele não
-consegue é uma espada **boa**, que exigiria média acima de 17. É o resultado que se quer: o
+consegue é uma espada **boa**, nem uma fechadura, nem uma placa. É o resultado que se quer: o
 generalista chega ao funcional e para ali.
 
-Algumas peças o Mestre pode declarar **fechadas** ao generalista, sem número nenhum: placa
-completa sob medida, fechadura de segredo, lente, casco de navio. Não é penalidade, é
-conhecimento que não se improvisa.
+A parede, quando existe, é o **Requisito** (§7.3), e para ela vale a outra metade da regra:
+
+<p class="formula">Ao conferir o Requisito de uma peça de ofício, <b>Ofícios Gerais vale metade</b>, arredondando para baixo</p>
+
+Ofícios Gerais 6 satisfaz Requisito 3, e nada acima disso. É o que fecha a fechadura de segredo, a
+placa completa sob medida, a peça de joalheria e o casco de navio ao faz-tudo, sem que o Mestre
+precise arbitrar caso a caso. Não é penalidade, é conhecimento que não se improvisa.
 
 Os ofícios são **Habilidades Secundárias**, ilimitadas e mais baratas (Ferraria, Armaria,
 Carpintaria, Alvenaria, Curtume, Alfaiataria, Joalheria, Serralheria, Culinária, Herbalismo,
@@ -1008,19 +1013,33 @@ O ferreiro com Ferraria 5 e Ofícios Gerais 3 rola com Ferraria e soma +3. O atr
 **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo; quem
 decide qual é a peça, não o jogador.
 
-### 7.3 A peça em quatro números
+### 7.3 A peça em cinco números
 
-Cada peça do catálogo carrega quatro números, e às vezes um quinto:
+Cada peça do catálogo carrega cinco números, e às vezes um sexto:
 
 | Número | O que é |
 |---|---|
-| **Dificuldade** | a técnica que a peça exige |
+| **Requisito** | o nível mínimo de Habilidade no ofício. Abaixo dele a peça não se tenta, e nenhum modificador abre a porta |
+| **Dificuldade** | o atrito de cada intervalo: quem passa dela avança, e quanto mais passa, mais rápido |
 | **Montagem** | o Acúmulo que se paga **uma vez por lote**: acender a forja, montar o tear, bater a argamassa, armar o cavalete |
 | **Peça** | o Acúmulo de **cada unidade** |
 | **Intervalo** | o degrau da escada de seis em que aquele ofício respira |
 | **Piso** | quando há, o número mínimo de intervalos, por mais hábil que seja o artesão |
 
+<p class="formula">O <b>Requisito</b> é a porta · a <b>Dificuldade</b> é o ritmo · o <b>Acúmulo</b> é o tamanho</p>
 <p class="formula">Acúmulo total = Montagem + (Peça × unidades)</p>
+
+Requisito e Dificuldade parecem a mesma coisa dita duas vezes, e não são. **O Requisito é
+conhecimento e a Dificuldade é execução**, e as duas se separam de verdade nos dois extremos da
+bancada. Uma **cota de malha** é Requisito 2 e Acúmulo enorme: qualquer armeiro sabe abrir, passar
+e rebitar um anel, e são milhares deles. Uma **fechadura de segredo** é Requisito 5 e Acúmulo
+pequeno: são poucos dias de trabalho que quase ninguém sabe fazer. Uma sem a outra não descreveria
+nenhuma das duas.
+
+Só a **Habilidade** conta para o Requisito, nunca a soma com o Atributo: destreza de mão não
+substitui não saber. O Requisito confere contra a perícia que entra no pool pela §5.5, com Ofícios
+Gerais valendo metade (§7.2). O ajudante sob direção (§7.6) não tem Requisito nenhum: quem sabe é
+quem dirige.
 
 O **Piso** existe por um motivo concreto: há serviço que não é técnica, é mão. Uma cota de malha
 são milhares de anéis abertos, passados e rebitados um a um, e nenhuma perícia do mundo cria dedos
@@ -1049,29 +1068,56 @@ serve para peça de mão e **três** para peça grande.
 O lote exige que as unidades sejam **iguais**. Cinco espadas do mesmo modelo são um lote; uma
 espada, um elmo e uma panela são três montagens.
 
-### 7.5 A qualidade sai da técnica, não do tempo
+### 7.5 A qualidade move os cinco números de uma vez
 
-A peça sai **Comum** por padrão. Quem encomenda pode pedir melhor, e cada grau acima soma **uma
-Margem inteira** à Dificuldade:
+A peça sai **Comum** por padrão, e é o que sai em quase todo lugar. A régua vai para os dois
+lados, e cada grau mexe em tudo:
 
-| Grau | Dificuldade | O que ganha |
-|---|:--:|---|
-| **Comum** | base | nada, e é a esmagadora maioria |
-| **Boa** | base **+6** | +1 num número da peça |
-| **Ótima** | base **+12** | +2 no total, no máximo +2 no mesmo número |
-| **Excepcional** | base **+18** | +3 no total, no máximo +2 no mesmo número |
+| Por grau **acima** de Comum | Por grau **abaixo** |
+|---|---|
+| Requisito **+1** | Requisito **−1**, nunca abaixo de **1** |
+| Dificuldade **+3** | Dificuldade **−3**, nunca abaixo de **1** |
+| Montagem e Peça **× 1,5** | Montagem e Peça **× 0,5** |
+| Intervalo sobe um degrau **a cada dois graus** | o Mestre **pode** descer um degrau em −2 |
+| Preço **dobra** | Preço **cai pela metade** |
+| **+1** num número da peça | **−1** num número da peça |
+
+Seis graus, e o eixo inteiro cabe numa linha:
+
+| Grau | −2 | −1 | 0 | +1 | +2 | +3 |
+|---|---|---|---|---|---|---|
+| | **Sucata** | **Tosca** | **Comum** | **Boa** | **Ótima** | **Excepcional** |
 
 O "número da peça" é o que aquela peça tem para dar: acerto, defesa da arma, dado de dano,
-Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. É exatamente o
-painel de **ajuste** que a ficha já oferece hoje, e que até agora não tinha como ser conquistado.
-Uma Espada Longa Ótima deixa de ser um nome que o jogador escreve e passa a ser uma encomenda com
-preço e prazo.
+Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. No máximo **+2 ou
+−2 no mesmo número**, para que uma Excepcional espalhe o ganho em vez de empilhar. É exatamente o
+painel de **ajuste** que a ficha já oferece hoje, e que até agora não tinha como ser conquistado:
+uma Espada Longa Ótima deixa de ser um nome que o jogador escreve e passa a ser uma encomenda com
+Requisito, preço e prazo.
 
-A conta fica dura de propósito. Uma espada Boa pede média acima de 13, o que exige soma 8; uma
-Ótima pede média acima de 19, soma 11; uma Excepcional pede média acima de 25, soma 15, que é
-território de herói. **Ninguém faz uma peça Excepcional sozinho numa forja de vila**, e é aí que
-entram a oficina e o material, na seção seguinte. É o que se quer: aço bom e boas ferramentas são
-metade de uma boa lâmina.
+**Os quatro custos juntos são o freio, não a Dificuldade sozinha.** Por isso o grau só soma +3, e
+não a Margem inteira de 6 que a versão anterior desta seção usava: o Requisito já fecha a porta
+para quem não tem escola, e o Acúmulo já cobra o tempo. A espada, que é Requisito 3, Dificuldade
+7, Montagem 12, Peça 10 e intervalo de dia, fica assim:
+
+| Grau | Req | Dif | Acúmulo | Intervalo | Quem faz, e em quanto tempo |
+|---|:--:|:--:|:--:|---|---|
+| Sucata | 1 | 1 | 6 | dia | Ferraria 1, meio dia |
+| Tosca | 2 | 4 | 11 | dia | oficial, 1,7 dia |
+| **Comum** | 3 | 7 | 22 | dia | oficial, 6,3 dias |
+| Boa | 4 | 10 | 33 | dia | Ferraria 4 e soma 10, 4,4 dias |
+| Ótima | 5 | 13 | 50 | **semana** | mestre (soma 12), 6,3 semanas |
+| Excepcional | 6 | 16 | 74 | semana | mestre em oficina de mestre, 8 semanas |
+
+A subida do intervalo em Ótima é o que impede a peça fina de sair no ritmo da peça de tropa. E a
+última linha mostra o teto do sistema funcionando: a soma máxima de um humano é **12** (Habilidade
+6 e Atributo 6), o que dá média 21 e cinco pontos por semana contra a Dificuldade 16. Quinze
+semanas. Uma espada Excepcional **não sai numa forja de vila**: o que a torna viável é a oficina
+de mestre, os quatro pontos de Dificuldade que ela derruba, o bônus fixo de Ofícios Gerais pela
+§5.5 e a Especialidade. É o que se quer: aço bom e boas ferramentas são metade de uma boa lâmina.
+
+Para baixo a régua serve à mesa tanto quanto para cima. É o que o bando forja no acampamento, o
+que o exército distribui à tropa, e o que o mercador tenta empurrar como Comum.
 
 **Especialidade na Longa.** A Especialidade dá +1d6 com descarte do menor, o que não é um número
 fixo. Na média, cada nível vale **cerca de +2**. Um ferreiro com Especialidade "espada longa" nos
@@ -1091,7 +1137,7 @@ para a qualidade:
 O material precisa **alcançar o grau pretendido**: não sai peça Excepcional de aço corrente, por
 melhor que seja o ferreiro. Regra de bolso para o Mestre: o material custa cerca de **um terço**
 do preço da peça pronta, e **metade ou mais** em alvenaria e construção naval, onde a pedra e a
-madeira é que pesam. Cada grau de qualidade **dobra** o preço da peça.
+madeira é que pesam.
 
 Para as armaduras existe um atalho, porque elas já carregam um campo de acesso:
 
@@ -1126,52 +1172,52 @@ ajuda, em qualidade Comum.
 
 #### Escala de horas
 
-| Peça | Ofício | Dif | Mont. | Peça | Oficial |
-|---|---|:--:|:--:|:--:|:--:|
-| Prego, gancho, dobradiça | Gerais | 4 | 2 | 1 | menos de 1 h |
-| Ferradura, corrente, grampo | Ferraria, Gerais | 4 | 3 | 2 | menos de 1 h |
-| Flecha rústica (dúzia) | Gerais | 4 | 2 | 5 | 1 h |
-| Flecha de guerra (dúzia) | Arcos | 7 | 2 | 6 | 2 h |
-| Refeição farta para dez | Culinária, Gerais | 4 | 2 | 4 | 1 h |
-| Emplastro, tintura, tinta | Herbalismo | 7 | 2 | 5 | 2 h |
-| Página iluminada, cópia fiel | Iluminura | 7 | 1 | 6 | 2 h |
-| Chave copiada de molde | Serralheria | 11 | 2 | 3 | fechado ao oficial |
+| Peça | Ofício | Req | Dif | Mont. | Peça | Oficial |
+|---|---|:--:|:--:|:--:|:--:|:--:|
+| Prego, gancho, dobradiça | Gerais | 1 | 4 | 2 | 1 | menos de 1 h |
+| Ferradura, corrente, grampo | Ferraria, Gerais | 1 | 4 | 3 | 2 | menos de 1 h |
+| Flecha rústica (dúzia) | Gerais | 1 | 4 | 2 | 5 | 1 h |
+| Refeição farta para dez | Culinária, Gerais | 1 | 4 | 2 | 4 | 1 h |
+| Flecha de guerra (dúzia) | Arcos | 2 | 7 | 2 | 6 | 2 h |
+| Emplastro, tintura, tinta | Herbalismo | 2 | 7 | 2 | 5 | 2 h |
+| Página iluminada, cópia fiel | Iluminura | 3 | 7 | 1 | 6 | 2 h |
+| Chave copiada de molde | Serralheria | 4 | 11 | 2 | 3 | fechada ao oficial |
 
 #### Escala de dias
 
-| Peça | Ofício | Dif | Mont. | Peça | Oficial |
-|---|---|:--:|:--:|:--:|:--:|
-| Porta, banco, mesa tosca, cerca de 20 m | Carpintaria, Gerais | 4 | 2 | 4 | 1 dia |
-| Escudo | Carpintaria | 4 | 2 | 6 | 1 dia |
-| Faca, machado, ponta de lança | Ferraria | 4 | 6 | 3 | 1,5 dia |
-| Gambeson | Alfaiataria | 4 | 3 | 20 | 3,5 dias |
-| Móvel bem-acabado, arca | Carpintaria | 7 | 3 | 8 | 3 dias |
-| Sela, arreio, bota, couro endurecido | Curtume | 7 | 3 | 9 | 3,5 dias |
-| **Espada, machado de guerra, arma marcial** | Ferraria | 7 | 12 | 10 | 6,3 dias |
-| Arco longo, besta (madeira já curada) | Arcos, Carpintaria | 7 | 4 | 12 | 4,5 dias |
-| Fechadura, engenho, autômato de corda | Serralheria | 11 | 4 | 10 | fechado ao oficial |
-| Anel, broche, peça de joalheria | Joalheria | 11 | 3 | 6 | fechado ao oficial |
+| Peça | Ofício | Req | Dif | Mont. | Peça | Oficial |
+|---|---|:--:|:--:|:--:|:--:|:--:|
+| Porta, banco, mesa tosca, cerca de 20 m | Carpintaria, Gerais | 1 | 4 | 2 | 4 | 1 dia |
+| Escudo | Carpintaria | 1 | 4 | 2 | 6 | 1 dia |
+| Gambeson | Alfaiataria | 1 | 4 | 3 | 20 | 3,5 dias |
+| Faca, machado, ponta de lança | Ferraria | 2 | 4 | 6 | 3 | 1,5 dia |
+| Sela, arreio, bota, couro endurecido | Curtume | 2 | 7 | 3 | 9 | 3,5 dias |
+| Móvel bem-acabado, arca | Carpintaria | 3 | 7 | 3 | 8 | 3 dias |
+| **Espada, machado de guerra, arma marcial** | Ferraria | 3 | 7 | 12 | 10 | 6,3 dias |
+| Arco longo, besta (madeira já curada) | Arcos, Carpintaria | 3 | 7 | 4 | 12 | 4,5 dias |
+| Anel, broche, peça de joalheria | Joalheria | 4 | 11 | 3 | 6 | fechada ao oficial |
+| Fechadura, engenho, autômato de corda | Serralheria | 5 | 11 | 4 | 10 | fechada ao oficial |
 
 #### Escala de semanas
 
-| Peça | Ofício | Dif | Mont. | Peça | Piso | Oficial |
-|---|---|:--:|:--:|:--:|:--:|:--:|
-| Casa de madeira, celeiro | Carpintaria | 4 | 4 | 40 | 2 | 7 semanas |
-| Brigandina | Armaria | 6 | 3 | 10 | 2 | 3 semanas |
-| Cota de malha | Armaria | 8 | 2 | 12 | 3 | 6 semanas |
-| Lamelar | Armaria | 9 | 3 | 10 | 3 | 9 semanas |
-| Carroça, barco de pesca | Carpintaria | 7 | 4 | 20 | 2 | 7 semanas |
-| Forja, moinho, oficina montada | Alvenaria | 7 | 6 | 40 | 4 | 13 semanas |
-| Placa de munição | Armaria | 8 | 4 | 14 | 3 | 7 semanas |
-| Placa completa sob medida | Armaria | 11 | 6 | 24 | 6 | fechada ao oficial |
+| Peça | Ofício | Req | Dif | Mont. | Peça | Piso | Oficial |
+|---|---|:--:|:--:|:--:|:--:|:--:|:--:|
+| Casa de madeira, celeiro | Carpintaria | 2 | 4 | 4 | 40 | 2 | 7 semanas |
+| Cota de malha | Armaria | 2 | 8 | 2 | 12 | 3 | 6 semanas |
+| Brigandina | Armaria | 2 | 6 | 3 | 10 | 2 | 3 semanas |
+| Lamelar | Armaria | 3 | 9 | 3 | 10 | 3 | 9 semanas |
+| Carroça, barco de pesca | Carpintaria | 3 | 7 | 4 | 20 | 2 | 7 semanas |
+| Forja, moinho, oficina montada | Alvenaria | 3 | 7 | 6 | 40 | 4 | 13 semanas |
+| Placa de munição | Armaria | 4 | 8 | 4 | 14 | 3 | 7 semanas |
+| Placa completa sob medida | Armaria | 5 | 11 | 6 | 24 | 6 | fechada ao oficial |
 
 #### Escala de estações
 
-| Obra | Ofício | Dif | Mont. | Peça | Piso | Oficial |
-|---|---|:--:|:--:|:--:|:--:|:--:|
-| Casa de pedra, torre pequena | Alvenaria | 7 | 2 | 8 | 1 | 3 estações |
-| Muralha, ponte de pedra | Engenharia | 11 | 3 | 20 | 2 | fechada ao oficial |
-| Navio de guerra, catedral | Naval, Alvenaria | 11 | 4 | 40 | 4 | fechada ao oficial |
+| Obra | Ofício | Req | Dif | Mont. | Peça | Piso | Oficial |
+|---|---|:--:|:--:|:--:|:--:|:--:|:--:|
+| Casa de pedra, torre pequena | Alvenaria | 3 | 7 | 2 | 8 | 1 | 3 estações |
+| Muralha, ponte de pedra | Engenharia | 4 | 11 | 3 | 20 | 2 | fechada ao oficial |
+| Navio de guerra, catedral | Naval, Alvenaria | 5 | 11 | 4 | 40 | 4 | fechada ao oficial |
 
 As obras da última tabela **não são feitas sozinho**, e é por isso que aparecem fechadas: elas
 existem para serem tocadas por equipe, com os Acúmulos somando e sob direção (§7.6). Uma muralha
@@ -1190,13 +1236,15 @@ ainda tem material aproveitável. A Montagem se paga igual. E há uma distinçã
 Uma Espada Longa Ótima remendada no acampamento volta a cortar como uma espada Comum. Os graus
 voltam quando um ferreiro de verdade puser a mão nela.
 
-**Melhorar.** Subir um grau de uma peça pronta: Dificuldade do grau pretendido, Acúmulo de
-**metade** da Peça, mesma Montagem. Só se sobe um grau de cada vez, e material e oficina precisam
-alcançar o grau novo. É por aqui que uma espada de saque vira a espada do personagem.
+**Melhorar.** Subir **um grau de cada vez** numa peça pronta, com o **Requisito, a Dificuldade e o
+intervalo do grau pretendido** e o Acúmulo de **metade** do que aquele grau custaria de novo. Uma
+espada Comum vira Boa por 17 em vez de 33, com Ferraria 4 e Dificuldade 10. Material e oficina
+precisam alcançar o grau novo. É por aqui que uma espada de saque vira a espada do personagem.
 
 **Improvisar.** É **Direta** ou Acumulada em minutos, não Longa: uma tala, uma tocha, um arpéu com
 o que está na mochila. Dificuldade da peça **+4**, sem material nem ferramenta certos, e o que sai
-é frágil: serve para **um uso** ou até o fim da cena, o que vier primeiro.
+é frágil: serve para **um uso** ou até o fim da cena, o que vier primeiro. Não confundir com a
+peça **Sucata** da §7.5, que é ruim mas é uma peça de verdade e dura.
 
 **Desmontar.** Direta contra a Dificuldade da peça. Passando, recupera **metade** do material;
 com uma Margem, recupera tudo o que era aproveitável. Falhando, recupera sucata.
