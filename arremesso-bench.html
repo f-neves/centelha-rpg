@@ -269,6 +269,15 @@
           entre o que a regra promete e o que o corpo humano já fez.</div>
       </div>
     </div>
+
+    <h3 class="tit" style="margin-top:20px">O peso máximo não é um número só · ele cai conforme a altura</h3>
+    <div style="overflow-x:auto"><table class="famtbl" id="escadatbl"></table></div>
+    <p class="nota">Ordenado pela altura que o peso precisa percorrer. Tirar do chão até o
+      quadril é a referência <b>P</b>. Levar o mesmo peso até acima da cabeça já custa metade,
+      e <b>arremessar custa um sexto</b>. A coluna da direita traduz a fração para o P que
+      estiver no campo acima, que é o que a regra usaria. Confere dentro de um atleta só:
+      Björnsson tem 510 kg de terra e 213 kg de log lift, exatamente 0,42 do próprio terra,
+      em cima da razão que sai da população inteira.</p>
   </div>
 
   <div class="card form">
@@ -921,13 +930,29 @@ const fpw = fxR - fxB, fph = fyB - fyT;
 // põe a parede, e o gráfico precisa mostrar quanto isso fica longe do que se arremessa
 const MASSA = [0.08, 600];
 // o que o corpo humano consegue fazer com cada peso, do mais exigente ao menos
-// (a pedra de atlas sobre plataforma de 1,2 m, 252 kg, fica de fora: em log ela
-// encosta na do levantamento acima da cabeça e os dois rótulos se atropelam)
+// (a pedra de atlas sobre barra de 1,2 m, 286 kg, fica de fora do gráfico: em log
+// ela encosta na do levantamento acima da cabeça e os dois rótulos se atropelam)
 const TETOS = [
   [83.5,  'arremessa'],
-  [231,   'ergue acima da cabeça'],
-  [501,   'tira do chão'],
+  [267,   'ergue acima da cabeça'],
+  [510,   'tira do chão'],
 ];
+// A escada completa: o peso máximo cai conforme sobe a altura que ele precisa
+// percorrer. Referência P = o levantamento terra.
+// [feito, kg, sobe (m), termina a (m), quem, nota]
+const ESCADA = [
+  ['Back lift · plataforma nas costas', 2840, 0.03, 0.45, 'Paul Anderson, 1957', 'contestado'],
+  ['Silver dollar deadlift · barra a 45 cm', 580, 0.30, 0.75, 'Rauno Heinla, 2022', ''],
+  ['Deadlift de 18 polegadas', 540, 0.28, 0.74, 'Rauno Heinla, 2023', ''],
+  ['Agachamento · barra nas costas', 525, 0.50, 1.45, 'Vlad Alhazov', 'raw com faixas'],
+  ['Levantamento terra · chão ao quadril', 510, 0.60, 0.60, 'Hafþór Björnsson, 2025', 'a referência P'],
+  ['Pedra de atlas sobre barra de 1,2 m', 286, 1.20, 1.20, 'Tom Stoltman, 2024', ''],
+  ['Chão a acima da cabeça · arremesso olímpico', 267, 2.10, 2.10, 'Lasha Talakhadze, 2021', ''],
+  ['Log lift · ombro a acima da cabeça', 231, 0.70, 2.30, 'Iron Biby, 2024', 'com impulso de perna'],
+  ['Press estrito no eixo · sem perna', 218, 0.70, 2.30, 'Mitchell Hooper, 2024', ''],
+  ['ARREMESSAR · pedra de Unspunnen', 83.5, 1.40, 1.40, 'Urs Hutmacher, 2025', 'sai a 5,4 m/s'],
+];
+const P_REF = 510;   // o levantamento terra, contra o qual as frações são medidas
 
 // marcador com forma própria por família: a cor sozinha não pode carregar a
 // identidade, e sob daltonismo o par verde/laranja fica no limite
@@ -1128,6 +1153,19 @@ function pintaFatos(){
   }).join('');
   document.getElementById('famtbl').innerHTML =
     `<thead><tr><th>série</th><th>pontos</th><th>faixa</th><th>k</th><th>qualidade</th></tr></thead><tbody>${linhas}</tbody>`;
+
+  const esc = ESCADA.map(([nome, kg, sobe, fim, quem, nota]) => {
+    const fr = kg/P_REF, arr = nome.startsWith('ARREMESSAR');
+    return `<tr${arr ? ' style="font-weight:600"' : ''}>
+      <td style="text-align:left">${nome}${nota ? ` <span class="old" style="color:var(--muted)">(${nota})</span>` : ''}</td>
+      <td>${fw(kg)} kg</td><td>${vg(sobe, 2)} m</td><td>${vg(fim, 2)} m</td>
+      <td>${vg(fr, 2)} × P</td>
+      <td>${Math.round(fr*M.pA)} kg</td>
+      <td style="text-align:left;color:var(--muted)">${quem}</td></tr>`;
+  }).join('');
+  document.getElementById('escadatbl').innerHTML =
+    `<thead><tr><th style="text-align:left">feito</th><th>peso</th><th>sobe</th><th>termina a</th>
+      <th>fração de P</th><th>com P = ${M.pA} kg</th><th style="text-align:left">quem</th></tr></thead><tbody>${esc}</tbody>`;
 }
 
 // ---------------------------------------------------------------- pintura geral

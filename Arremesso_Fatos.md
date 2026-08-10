@@ -306,28 +306,69 @@ arremessou. A regra de hoje, com a parede em 500 kg, corta 23% aos 61 kg e 31% a
 ### O teto é uma escada, não uma rampa
 
 O que existe não é uma curva que mergulha, é uma sequência de coisas que deixam de
-ser possíveis:
+ser possíveis. A escada completa está na seção 9. Em resumo: **o limite do arremesso
+é P/6, não P**, e nele o arremesso ainda vale 4 metros. Não é uma curva chegando a
+zero, é uma curva sendo interrompida.
 
-| o que dá para fazer | peso máximo | em fração do levantamento terra |
-|---|---|---|
-| **arremessar** (pedra de Unspunnen, vai a 4,2 m) | **83,5 kg** | **P/6** |
-| lançar por cima da barra com uma mão (6,17 m de altura) | 25,5 kg | P/20 |
-| erguer acima da cabeça (log lift, Iron Biby) | 231 kg | P/2,2 |
-| pôr sobre plataforma de 1,2 m (pedra de atlas, Shaw) | 252 kg | P/2 |
-| tirar do chão (levantamento terra, Björnsson) | 501 kg | P |
-
-**O limite do arremesso é P/6, não P.** E nele o arremesso ainda vale 4 metros: não
-é uma curva chegando a zero, é uma curva sendo interrompida.
-
-Onde ela chegaria a zero de verdade não foi medido por ninguém: entre 85 e 230 kg
+Onde ela chegaria a zero de verdade não foi medido por ninguém: entre 85 e 267 kg
 não existe registro de arremesso nenhum. O limite físico defensável é o
-**levantamento acima da cabeça**, 231 kg, porque ali a velocidade de saída é zero
-por definição (é o peso máximo que sobe, e sobe devagar). A hipérbole pura prevê 1,4 m
-de arremesso com 231 kg, o que é obviamente falso.
+**levantamento acima da cabeça**, 267 kg, porque ali a velocidade de saída é zero
+por definição (é o peso máximo que sobe, e sobe devagar). A hipérbole pura prevê 1,3 m
+de arremesso com 267 kg, o que é obviamente falso.
 
-Ou seja: a parede existe, mas mora entre 85 e 231 kg, e não em 500. E ela não é uma
+Ou seja: a parede existe, mas mora entre 85 e 267 kg, e não em 500. E ela não é uma
 rampa longa como `(1 − m/P)²`, que já cobra 10% aos 25 kg. É o contrário: fica
-imperceptível até quase o fim e aí desaba em poucos quilos.
+imperceptível até quase o fim e aí desaba em poucas dezenas de quilos.
+
+---
+
+## 9. O peso máximo não é um número só: cai conforme a altura
+
+Tirar do chão até o quadril e erguer acima da cabeça são coisas diferentes, e a
+diferença é grande. Ordenando pelos recordes registrados, do que quase não sobe até
+o que precisa sair da mão com velocidade:
+
+| feito | peso | sobe | termina a | fração de P | quem |
+|---|---|---|---|---|---|
+| Back lift, plataforma nas costas | 2840 kg | 3 cm | 45 cm | 5,57 × P | Paul Anderson, 1957 (contestado) |
+| Silver dollar deadlift, barra a 45 cm | 580 kg | 30 cm | 75 cm | 1,14 × P | Rauno Heinla, 2022 |
+| Deadlift de 18 polegadas | 540 kg | 28 cm | 74 cm | 1,06 × P | Rauno Heinla, 2023 |
+| Agachamento com barra nas costas | 525 kg | 50 cm | 1,45 m | 1,03 × P | Vlad Alhazov (raw com faixas) |
+| **Levantamento terra, chão ao quadril** | **510 kg** | 60 cm | 60 cm | **1,00 × P** | Hafþór Björnsson, 2025 |
+| Pedra de atlas sobre barra de 1,2 m | 286 kg | 1,20 m | 1,20 m | 0,56 × P | Tom Stoltman, 2024 |
+| Chão a acima da cabeça (arremesso olímpico) | 267 kg | 2,10 m | 2,10 m | 0,52 × P | Lasha Talakhadze, 2021 |
+| Log lift, ombro a acima da cabeça | 231 kg | 70 cm | 2,30 m | 0,45 × P | Iron Biby, 2024 |
+| Press estrito no eixo, sem impulso de perna | 218 kg | 70 cm | 2,30 m | 0,43 × P | Mitchell Hooper, 2024 |
+| **ARREMESSAR** (pedra de Unspunnen) | **83,5 kg** | 1,40 m | sai a 5,4 m/s | **0,16 × P** | Urs Hutmacher, 2025 |
+
+### As quatro faixas que saem disso
+
+```
+mover sem tirar do chão de verdade (até ~30 cm)   1,14 × P
+tirar do chão até o quadril                        1,00 × P   ← a referência
+erguer até o peito ou uma plataforma de 1,2 m      0,56 × P
+erguer acima da cabeça                             0,52 × P   (0,43 sem impulso de perna)
+ARREMESSAR                                         0,16 × P
+```
+
+Erguer acima da cabeça custa **metade** do que se tira do chão. Arremessar custa
+**um sexto**. E o degrau entre "até o peito" e "acima da cabeça" é pequeno (0,56 para
+0,52): o que dói é sair do chão e passar do quadril, não os últimos 90 cm.
+
+### O teste de coerência interna
+
+A razão não é artefato de comparar atletas diferentes. Björnsson tem marca em quase
+tudo: 510 kg de levantamento terra e 213 kg de log lift, ou seja **0,42 do próprio
+terra**, exatamente em cima da razão que sai da população inteira (0,43 a 0,52).
+
+### Por que a escada tem essa forma
+
+Não é trabalho mecânico: o back lift de Anderson são 836 J e o arremesso olímpico do
+Talakhadze são 5500 J, e o back lift levanta 10 vezes mais peso. O que manda é a
+**pior alavanca do trajeto**. Quanto mais alto o peso vai, mais articulações entram e
+mais desfavorável fica a pior posição delas. No back lift o quadril mal se move e o
+peso fica colado ao corpo; no arremesso o objeto tem que atravessar o ombro estendido,
+que é a articulação mais fraca da cadeia, e ainda sair com velocidade.
 
 ## Fontes
 
@@ -354,5 +395,11 @@ imperceptível até quase o fim e aí desaba em poucos quilos.
 - [Australian Athletics · glide × rotational no peso](https://coachathletics.com.au/coaching-education/glide-vs-rotational-shot-put-which-technique-is-superior-a-very-deep-dive)
 - [Fitness Volt · recorde de log lift, 231 kg, Iron Biby](https://fitnessvolt.com/cheick-iron-biby-sanou-231-kg-log-lift-world-record/)
 - [Wikipedia · Weight over bar (25,5 kg a 6,17 m, Björnsson)](https://en.wikipedia.org/wiki/Weight_over_bar)
-- [Stark Center · o levantamento terra de 501 kg de Björnsson](https://starkcenter.org/2020/04/records-vitriol-and-hafthor-bjornssons-quest-for-the-501-kilo-deadlift/)
-- [Giants Live · pedra de atlas de 252 kg sobre plataforma de 1,2 m](https://giants-live.com/news/the-heaviest-weight-ever-lifted/)
+- [Guinness · levantamento terra de 510 kg, Björnsson, 2025](https://www.guinnessworldrecords.com/world-records/heaviest-deadlift)
+- [BarBend · pedra de atlas de 286 kg sobre a barra, Tom Stoltman](https://barbend.com/news/strongman-tom-stoltman-world-record-286kg-atlas-stone/)
+- [All Things Gym · arremesso olímpico de 267 kg, Talakhadze](https://www.allthingsgym.com/lasha-talakhadze-225kg-snatch-267kg-clean-jerk-world-records/)
+- [BarBend · silver dollar deadlift de 580 kg, Rauno Heinla](https://barbend.com/news/rauno-heinla-world-record-silver-dollar-deadlift-580-kilograms/)
+- [BarBend · deadlift de 18 polegadas, 540 kg, Rauno Heinla](https://barbend.com/news/rauno-heinla-18-inch-deadlift-world-record-540-kilograms/)
+- [BarBend · press no eixo de 218 kg, Mitchell Hooper](https://barbend.com/news/axle-press-world-record-mitchell-hooper-2024-strongman-classic/)
+- [Fitness Volt · agachamento raw de 525 kg, Vlad Alhazov](https://fitnessvolt.com/31744/powerlifter-vlad-alhazov-squats-525-kg/)
+- [Wikipedia · Paul Anderson e o back lift de 2840 kg (contestado)](https://en.wikipedia.org/wiki/Paul_Anderson_(weightlifter))
