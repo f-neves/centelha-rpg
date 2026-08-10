@@ -280,17 +280,22 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
     if (!pcs?.length) { box.innerHTML = '<p class="vazio">Nenhum personagem nesta mesa ainda.</p>'; return; }
 
-    const nomes = await nomesDe(sb, pcs.map((p: any) => p.dono_id));
-    const imgs = await urlsImagens(sb, pcs.map((p: any) => p.imagem_path), 'personagens');
-
-    // Se houver combate rolando, a Vida e as condições vêm de lá: é o número
-    // que está valendo agora, e não o do papel.
-    const emCombate: Record<string, any> = {};
-    const { data: encs } = await sb.from('encontros').select('id').eq('mesa_id', id).eq('ativo', true).limit(1);
-    if (encs?.length) {
-      const { data: combs } = await sb.from('combatentes').select('*').eq('encontro_id', encs[0].id);
-      for (const c of combs || []) if (c.personagem_id) emCombate[c.personagem_id] = c;
-    }
+    // As três buscas seguintes não dependem uma da outra: em série somavam mais
+    // de um segundo de "Carregando o grupo…" numa conexão real.
+    const [nomes, imgs, emCombate] = await Promise.all([
+      nomesDe(sb, pcs.map((p: any) => p.dono_id)),
+      urlsImagens(sb, pcs.map((p: any) => p.imagem_path), 'personagens'),
+      // Havendo combate, a Vida e as condições vêm de lá: é o número que está
+      // valendo agora, e não o do papel.
+      (async () => {
+        const mapa: Record<string, any> = {};
+        const { data: encs } = await sb.from('encontros').select('id').eq('mesa_id', id).eq('ativo', true).limit(1);
+        if (!encs?.length) return mapa;
+        const { data: combs } = await sb.from('combatentes').select('*').eq('encontro_id', encs[0].id);
+        for (const c of combs || []) if (c.personagem_id) mapa[c.personagem_id] = c;
+        return mapa;
+      })(),
+    ]);
 
     box.innerHTML = pcs.map((p: any) => {
       let R: any = null;
