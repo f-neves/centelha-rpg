@@ -191,13 +191,18 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   constante, sufocamento é contagem regressiva, sono é dívida), e cada um tem relógio, dano e
   penalidade próprios. Veneno e sono nem sequer usam o mesmo modo: um tem jogada, o outro é
   Passiva. O esqueleto das cinco está em `Acoes_Sistema.md` §8.1.
-- [ ] **G5b · [FAZER] Escrever as cinco fichas de Resistir** (`Acoes_Sistema.md` §8.2 lista o que
-  falta em cada uma). Veneno precisa da dose e do dano que ignora Absorção; doença precisa de
-  estágios nomeados; ambiente precisa de tabela por tipo (frio, calor, sede, fome, altitude);
-  sufocamento precisa da conta em Ticks sem depender do Fôlego; sono precisa da dívida em dias.
-  **Decidir primeiro** o que atravessa as cinco: como se somam duas condições ao mesmo tempo
-  (somam sem teto, vale a pior, ou somam com teto), porque o náufrago tem frio, sede e sono
-  juntos.
+- [x] ~~**G5b · Escrever as cinco fichas de Resistir.**~~ **Escritas em 2026-08-10**
+  (`Acoes_Sistema.md` §8.3 a §8.7). As três decisões que atravessavam a família saíram juntas:
+  as penalidades **somam com teto 4**, a moeda comum é o **Desgaste** (−1d6 por degrau, pool nunca
+  abaixo de 1d6) e **cada veneno declara** se derruba Atributo, tira PV ou dá Desgaste, sempre
+  ignorando Absorção. Nenhuma condição mata pelo Desgaste: mata pelo relógio próprio dela.
+  Destaques: doença roda por **cinco estágios** com a banda morta de uma Margem e foi calibrada
+  contra o **camponês**, de modo que a cura vem de quem cuida (as circunstâncias de cama e
+  curandeiro) e não da ficha do doente; no ambiente, **agasalho não muda a Severidade, muda o
+  intervalo**, e Sobrevivência evita enquanto Resistência aguenta; sufocamento são dois relógios
+  ((Vigor + Resistência) × 10 Ticks de ar, depois Vigor × 20 de socorro) e não toca em Fôlego.
+  Pendências novas na §8.8, sendo a que mais importa: **Desgaste ainda não conversa com as
+  penalidades de ferimento** de Vida & Ferimentos, e as duas vão se somar em mesa.
 - [ ] **G6 · [DECIDIR] Percepção passiva: confirmar.** A ficha de Esgueirar-se (§6.5) já usa o
   **Valor Passivo de Prontidão** (2 × Percepção + Prontidão) como alvo, e a calibragem sai
   razoável: servo distraído 6, sentinela comum 10, batedor de elite 16, mestre de espiões 20.
@@ -228,6 +233,6 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 2. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar.
 3. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
-5. **G5b**, as cinco fichas de Resistir. A régua comum, o gabarito e o ofício já fecharam; esta é
-   a última família grande sem regra, e duas fichas já escritas (Nadar e Cair) apontam para um
-   sufocamento que ainda não existe.
+5. **G9**, as três listas paralelas das mesmas ações. A régua comum, o gabarito, o ofício e o
+   Resistir já fecharam, e o `Acoes_Sistema.md` passou de mil e quinhentas linhas com uma tabela
+   §4 que ainda fala a língua anterior aos modos. Antes de escrever mais ficha, vale unificar.

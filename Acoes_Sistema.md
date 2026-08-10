@@ -1289,47 +1289,293 @@ capital não tem teto prático. É o que faz o mestre armeiro se mudar para a ci
 
 ## 8. Resistir
 
-> **Estado: esqueleto.** As cinco fichas ainda não estão escritas; o que segue é a decisão de
-> estrutura que elas vão seguir, e ela fecha a pendência G5.
-
-### 8.1 Não existe uma escada única
+### 8.1 Não existe uma escada única, existe uma moeda única
 
 A tentação era uma escada de exaustão só, servindo os cinco casos. Não serve, e o motivo é que
 **os cinco não medem a mesma coisa**. Veneno é uma dose que age e passa. Doença é um estado que
 dura e piora. Ambiente é uma pressão constante que o corpo aguenta até não aguentar. Sufocamento é
-uma conta regressiva curta. Sono é uma dívida que se acumula por dias.
+uma conta regressiva curta. Sono é uma dívida que se acumula por dias. Dois deles nem sequer
+rolam.
 
-O que os cinco **compartilham** é a forma: um relógio próprio, um dano próprio e uma penalidade
-própria. O que muda é tudo o mais, inclusive se há jogada.
+O que eles **podem** compartilhar é a moeda, e compartilham:
 
-| | Modo | Jogada | Intervalo | O que causa | Penalidade |
-|---|---|---|---|---|---|
-| **Veneno** | Direta por dose | Vigor + Resistência | do veneno (Tick a hora) | dano direto, ou Atributo derrubado | conforme o veneno |
-| **Doença** | Acumulada às avessas | Vigor + Resistência | dia | estágios que avançam | acumula e não sai sozinha |
-| **Ambiente** | Direta repetida | Vigor + Resistência | hora ou dia | dano que não se absorve | fadiga crescente |
-| **Sufocamento** | **sem jogada**, relógio | nenhuma | Tick | contagem até a asfixia | nenhuma, e depois tudo |
-| **Sono** | **Passiva** | nenhuma | dia | dívida acumulada | dados do pool, geral |
+<p class="formula"><b>Desgaste</b>: cada degrau é <b>−1d6</b> em todas as jogadas</p>
+
+| Desgaste | Efeito |
+|:--:|---|
+| 1 | −1d6 |
+| 2 | −2d6 |
+| 3 | −3d6 |
+| 4 | −4d6, e é o teto |
+
+O pool **nunca desce abaixo de 1d6**, e o +2 da soma ímpar continua valendo: mesmo arrasado, o
+personagem ainda joga alguma coisa. Escolhi o dado, e não um valor fixo, porque é a moeda que a
+ficha já fala em Especialidade, empunhadura dupla e guarda, e porque ela morde mais em quem tem
+pool pequeno, o que é o que se quer: o fraco desaba primeiro.
+
+**Os degraus de condições diferentes somam, e a soma para em 4.** O náufrago com frio, sede e sono
+não morre de aritmética. **O que mata é o relógio próprio de cada condição**, não o Desgaste: o
+sufocamento tem a asfixia, a doença tem o estágio Terminal, o veneno tem a dose letal. O Desgaste
+é o preço de estar aguentando, não a forma de morrer.
+
+**Recuperação padrão: um degrau por noite de sono com abrigo, comida e água.** Cada ficha diverge
+onde precisa divergir.
+
+### 8.2 O que muda em cada uma
+
+| | Modo | Jogada | Intervalo | O que causa |
+|---|---|---|---|---|
+| **Veneno** | Direta, uma por dose | Vigor + Resistência | do veneno, do Tick à hora | o que o veneno declarar |
+| **Doença** | Direta repetida, com estágios | Vigor + Resistência | dia, às vezes hora ou semana | sobe e desce numa escada de cinco |
+| **Ambiente** | Direta repetida | Vigor + Resistência | do minuto ao dia | Desgaste |
+| **Sufocamento** | **sem jogada**, relógio | nenhuma | Tick | apagão e morte |
+| **Sono** | **Passiva** | nenhuma | dia | Desgaste |
 
 **Veneno tem jogada e sufocamento não** porque o corpo de fato reage ao veneno de formas
-diferentes, e não reage à falta de ar: todo mundo desmaia, a diferença é quando. Sono é passivo
-pelo mesmo motivo, mas com o relógio em dias em vez de segundos.
+diferentes, e não reage à falta de ar: todo mundo apaga, a diferença é quando. Sono é passivo pelo
+mesmo motivo, com o relógio em dias em vez de segundos.
 
-### 8.2 O que ainda falta decidir em cada uma
+A perícia é **Resistência** nas três que rolam, e ela é de Vigor puro. A descrição dela na ficha já
+nomeia os cinco casos ("a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o
+veneno"), então nada aqui é perícia nova.
 
-1. **Veneno.** Se o dano ignora Absorção (deveria), o que é uma "dose", e se um veneno derruba
-   Atributo em vez de PV (é o que dá sabor: cicuta derruba Vigor, curare derruba Destreza).
-2. **Doença.** Quantos estágios, e se a jogada diária empurra para cima e para baixo ou só segura
-   onde está. É a única das cinco que precisa de estados nomeados.
-3. **Ambiente.** Frio, calor, sede, fome e altitude no mesmo motor, com um relógio por tipo. É a
-   que mais precisa de tabela e a que menos precisa de regra nova.
-4. **Sufocamento.** Já é meia-devida por Nadar (§6.2) e por Cair; precisa da conta em Ticks e da
-   relação com Fôlego, lembrando da ressalva da §3.6 (o módulo pode ser ocultado, então nada pode
-   depender dele).
-5. **Sono.** A dívida em dias, o que ela tira do pool, e se Centelha compra dias sem dormir.
+---
 
-E uma pergunta atravessa as cinco: **um personagem pode estar sob duas ao mesmo tempo**, e quase
-sempre está (o náufrago tem frio, sede e sono). Ou as penalidades somam sem teto, ou vale a pior,
-ou somam com teto. É a primeira coisa a decidir quando estas fichas forem escritas.
+### 8.3 Veneno
+
+> **Modo:** Direta, **uma jogada por dose**. Não é Acumulada: cada dose é um evento fechado, e o
+> que se acumula é o efeito, não o progresso.
+
+**Jogada:** Vigor + Resistência contra a **Potência** do veneno.
+
+**Todo dano de veneno ignora a Absorção**, natural e de armadura. Peçonha não se para com aço.
+
+**O resultado usa a Margem nos dois sentidos:**
+
+| Resultado | O que acontece |
+|---|---|
+| Passa por **uma Margem** ou mais | nada, o corpo dá conta |
+| Passa | **metade** do efeito da dose, arredondando para cima |
+| Falha | o efeito **inteiro** |
+| Falha por **uma Margem** ou mais | o efeito inteiro **e uma dose a mais** do que o veneno previa |
+
+**Cada veneno declara o que faz.** É a linha que dá sabor à família inteira, e ela custa barato:
+
+| Veneno | Potência | Início | Doses | Efeito por dose |
+|---|:--:|---|---|---|
+| Bebida forte do senhor local | 5 | 10 min | 1 por copo | Desgaste 1 |
+| Cicuta | 10 | minuto | 3, uma por hora | −1 Vigor |
+| Peçonha de víbora | 14 | minuto | 3, uma por hora | 8 PV |
+| Curare | 14 | Tick | 1 | −3 Destreza por uma cena |
+| Peçonha de aranha gigante | 18 | Tick | 2, uma por minuto | −2 Destreza e Desgaste 1 |
+| Hálito de basilisco | 22 | minuto | 4, uma por minuto | 12 PV |
+
+**Atributo derrubado volta a um ponto por dia de descanso.** Um Atributo em **0** incapacita
+naquele eixo, e o que isso significa depende de qual é: Vigor 0 é o corpo desligando, Destreza 0 é
+paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata sem precisar de regra de morte
+própria.
+
+**Tratar** é Inteligência + Cura contra a Potência, uma vez por dose pendente. Passando, cancela as
+doses que faltam. Com uma Margem, cancela e devolve um ponto de Atributo.
+
+**Circunstância:** sangrar a ferida no primeiro Tick, −2 na Potência. Dose dobrada ou aplicada
+direto no sangue, +4. Antídoto específico em mãos, a jogada de tratar ganha +4.
+
+**Onde mais mora:** armas envenenadas, em Combate. A criatura que envenena traz a Potência no
+próprio bloco, no Bestiário.
+
+---
+
+### 8.4 Doença
+
+> **Modo:** Direta repetida por intervalo, mas o que ela move não é Acúmulo, é **estágio**. Uma
+> doença não tem uma barra que enche: tem um estado em que o doente está hoje.
+
+**Jogada:** Vigor + Resistência contra a **Virulência**, uma por intervalo.
+
+**Cinco estágios**, e o Desgaste sai deles:
+
+| Estágio | Desgaste | Como está |
+|---|:--:|---|
+| **Incubação** | 0 | não parece nada ainda |
+| **Instalada** | 1 | febre, tosse, fraqueza declarada |
+| **Grave** | 2 | de cama, não viaja, não luta |
+| **Terminal** | 3 | delírio e queda; sem cuidado, é questão de dias |
+| **Morte** | | falhar por uma Margem estando em Terminal |
+
+**A jogada de cada intervalo move o doente na escada, e usa a banda morta de uma Margem que já é
+lei (§3):**
+
+| Resultado | O doente |
+|---|---|
+| Passa | **desce** um estágio; em Incubação, cura |
+| Falha por menos de 6 | **segura** onde está |
+| Falha por 6 ou mais | **sobe** um estágio |
+
+**Virulências:**
+
+| Doença | Virulência | Intervalo |
+|---|:--:|---|
+| Resfriado forte, indisposição | 4 | dia |
+| Disenteria de acampamento | 7 | dia |
+| Definhamento (o mal que consome devagar) | 8 | **semana** |
+| Febre dos pântanos | 10 | dia |
+| Peste | 14 | dia |
+| Praga arcana | 18 | **hora** |
+
+A calibragem foi feita contra o **camponês** (Vigor 2, Resistência 1, soma 3), não contra o
+aventureiro, porque doença é o que acontece com todo mundo. E ela sai onde deveria sair: o
+camponês nunca piora de uma disenteria e sara em cerca de seis dias; a febre dos pântanos ele não
+vence sozinho, e sem cuidado ele fica nela; a peste o mata em quatro dias.
+
+**Circunstância**, e aqui elas são o coração da ficha:
+
+| | Virulência |
+|---|:--:|
+| De cama, aquecido, sem trabalhar | **−2** |
+| Um curandeiro cuidando todo dia | **−2** |
+| Casa de cura, ordem, hospital de guerra | **−4** no total |
+| Viajando doente, passando fome, em campanha | **+2** |
+
+É isso que faz "põe ele na cama" ser um ato mecânico e não um floreio. A febre dos pântanos que o
+camponês não vence de jeito nenhum vira Virulência 6 com cama e cuidado, e ele desce um estágio a
+cada três dias. **Doença não é vencida pela ficha do doente, é vencida por quem cuida dele.**
+
+**Ajuda:** o curandeiro que quiser mais do que a circunstância de −2 rola Inteligência + Cura
+contra a Virulência e apoia pela §3.5 (+2 passando, +1d6 por Margem). Cuidar de mais de um doente
+divide a atenção: o −2 de circunstância vale para até três, e some acima disso.
+
+**Contágio:** quem convive com um doente Instalado ou pior faz a jogada uma vez por dia contra
+metade da Virulência. Não é para rolar em toda cena, é para quando a mesa perguntar.
+
+---
+
+### 8.5 Ambiente
+
+> **Modo:** Direta repetida. É a mais simples das cinco e a que mais precisa de tabela.
+
+**Jogada:** Vigor + Resistência contra a **Severidade**, uma por intervalo. **Falhando, +1
+Desgaste.** Passando, nada. Passando por uma Margem, nada e **o intervalo seguinte não se rola**:
+o corpo achou o ritmo.
+
+**A roupa e o abrigo não mudam a Severidade, mudam o intervalo.** É o efeito real de um casaco:
+não é que você aguente melhor o frio, é que ele deixa de ser testado a toda hora.
+
+<p class="formula">Agasalho ou abrigo adequado sobe o intervalo <b>um degrau</b> na escada dos seis</p>
+
+| Ambiente | Intervalo | Severidade |
+|---|---|:--:|
+| Frio ou calor incômodo, chuva fria | **dia** | 5 |
+| Frio cortante, calor de deserto, roupa encharcada | **hora** | 5 |
+| Nevasca, sol do meio-dia sem sombra | **hora** | 10 |
+| Frio de montanha alta, água gelada, casa em chamas | **minuto** | 10 |
+| Lava por perto, ventania de inverno no pico | **minuto** | 15 |
+
+**Sede e fome** rodam no mesmo motor, com a Severidade subindo sozinha:
+
+| | Começa | Severidade |
+|---|---|---|
+| **Sede** | no 2º dia sem beber | 10, **+5 por dia** |
+| **Fome** | no 4º dia sem comer | 5, **+1 por dia** |
+
+A sede aperta rápido e a fome aperta devagar, que é como funciona. Beber ou comer para o relógio na
+hora; o Desgaste já ganho sai pela recuperação normal, um degrau por noite.
+
+**Ajuda, e é onde a família tem duas camadas.** Uma coisa é **aguentar** o ambiente, outra é **não
+ser exposto a ele**:
+
+<p class="formula">Sobrevivência <b>evita</b> · Resistência <b>aguenta</b></p>
+
+Uma jogada de Percepção ou Inteligência + **Sobrevivência** contra a Severidade, uma por dia,
+resolve o abrigo, o fogo, a água e a leitura do tempo para o grupo inteiro. Passando, **todos**
+sobem um degrau de intervalo. Com uma Margem, o dia não se rola. É a jogada que o batedor faz e que
+salva quem não tem Vigor.
+
+**Onde mais mora:** viagem e estações, quando o capítulo de Mundo existir. Água gelada conversa com
+Nadar (§6.2).
+
+---
+
+### 8.6 Sufocamento
+
+> **Modo:** nenhum. É um **relógio**, e não se rola. Todo mundo apaga sem ar; a única pergunta é
+> quando.
+
+<p class="formula">Ticks de ar = (Vigor + Resistência) × 10</p>
+
+Um Tick é cerca de um segundo, então a conta se lê direto: a pessoa comum (soma 3) segura trinta
+segundos, o aventureiro (soma 7) setenta, o mergulhador de pérolas (soma 12) dois minutos.
+
+| Situação | Ticks |
+|---|---|
+| Encheu o peito antes | cheio |
+| **Pego de surpresa**, sem tempo de respirar | **metade** |
+| **Em esforço**: nadando, lutando, subindo | **metade** |
+| As duas coisas | **um quarto** |
+
+**No último quarto dos Ticks, +1 Desgaste**, e é o aviso que o jogador precisa: o corpo começa a
+gritar por ar antes de desligar.
+
+**Quando os Ticks acabam, o personagem apaga na hora.** Não há queda gradual, não há jogada de
+resistir: a hipóxia derruba. E aí começa o segundo relógio:
+
+<p class="formula">Janela de socorro = <b>Vigor × 20</b> Ticks, e depois disso morre</p>
+
+Vigor 3 dá um minuto para tirar da água, virar de lado e fazer voltar a respirar. Reanimar é
+Raciocínio + **Cura** contra Dificuldade 10, uma jogada por Tick de socorro, e cada jogada custa a
+ação de quem socorre.
+
+Quem volta acorda com **Desgaste 2**, que sai em dois dias e não em um: quase se afogar cobra.
+
+**Vale igual** para afogamento, estrangulamento, soterramento, fumaça e vácuo. A fumaça acrescenta
+o dano dela por Tick; o soterramento acrescenta o peso, que é Feito de força (§6.4).
+
+**Onde mais mora:** Nadar (§6.2) e Cair na água. **Não depende de Fôlego**, de propósito, pela
+ressalva da §3.6.
+
+---
+
+### 8.7 Sono
+
+> **Modo:** Passiva. Não se rola nada. A dívida chega sozinha, e o corpo cobra.
+
+| Noites sem dormir | Desgaste |
+|:--:|:--:|
+| 1 | 0 |
+| 2 | 1 |
+| 3 | 2 |
+| 4 | 3 |
+| 5 ou mais | 4 |
+
+**Vigor + Resistência 8 ou mais desloca a tabela uma linha**: quem é feito de couro ganha a segunda
+noite de graça.
+
+Em **Desgaste 4 por sono**, o personagem **apaga sozinho** assim que a adrenalina baixa. Não é uma
+jogada de Compostura, não é uma escolha: acabou a cena de perigo, ele dorme onde estiver. É o
+único efeito da família que tira o personagem do jogador sem passar por dado nenhum, e é
+deliberado.
+
+**Recuperar:** uma noite completa tira **um** degrau. Doze horas tiram **dois**. A dívida de cinco
+noites, portanto, custa três noites para pagar, e é isso que faz uma vigília longa ter preço depois
+que a crise passa.
+
+**Cochilo não conta**, e turnos de vigia também não: quem passou a noite acordado três horas de
+guarda dormiu, quem passou a noite inteira de guarda não dormiu.
+
+**Não existe Centelha que compre noites.** Quem atravessa semanas sem dormir faz isso por **Proeza
+ou Arte**, como em toda a régua (§3.3).
+
+---
+
+### 8.8 O que falta nesta família
+
+- **O catálogo de venenos de verdade**, com preço, disponibilidade e legalidade. As seis linhas da
+  §8.3 são âncoras, não catálogo, e veneno é assunto de Antecedentes tanto quanto de perícia.
+- **A doença como enredo.** As virulências cobrem a doença que acontece; a peste que assola uma
+  cidade é outra escala e provavelmente é um relógio de campanha, não uma jogada por personagem.
+- **Frio e calor mágicos**, e a fronteira com as Artes: o gelo de uma Arte causa dano ou Severidade?
+- **Desgaste e ferimento.** Hoje o Desgaste não conversa com PV nem com as penalidades de ferimento
+  do capítulo de Vida & Ferimentos. Os dois vão se somar em mesa, e alguém precisa dizer como.
 
 ---
 
@@ -1362,10 +1608,13 @@ ou somam com teto. É a primeira coisa a decidir quando estas fichas forem escri
    é a Longa com tabela, e o que precisou de invenção foi o **lote**, o **Piso**, a **qualidade
    por Margem** e a **direção de obra**.
 9. ~~**[DECIDIR]** Uma escada de exaustão única para Resistir.~~ **Decidido em 2026-08-09: não
-   existe** (§8.1). Os cinco casos têm relógio, dano e penalidade próprios, e dois deles nem
-   rolam.
-10. **[FAZER]** As **cinco fichas de Resistir** (§8.2), decidindo antes como duas condições
-    simultâneas se somam.
+   existe uma escada, existe uma moeda** (§8.1). Os cinco casos têm relógio próprio e dois deles
+   nem rolam, mas todos pagam em **Desgaste**, −1d6 por degrau, somando com teto 4. O que mata é
+   o relógio de cada condição, nunca o Desgaste.
+10. ~~**[FAZER]** As cinco fichas de Resistir.~~ **Escritas em 2026-08-10** (§8.3 a §8.7):
+    Veneno, Doença, Ambiente, Sufocamento e Sono. Doença foi calibrada contra o **camponês** e
+    não contra o aventureiro, e a consequência é a melhor coisa da família: a febre se vence por
+    quem cuida, não pela ficha do doente.
 11. **[DECIDIR]** Trocar a palavra "stunt" em Relações Sociais por um termo em português.
 12. **[DECIDIR]** Reequilibrar a **Especialidade**, efeito colateral assumido da §5.5. A §7.5
     acrescentou um dado novo à conta: na Longa, cada nível de Especialidade vale cerca de **+2**
