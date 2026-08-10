@@ -9,6 +9,8 @@ import MesaCab from '../../components/MesaCab.astro';
       <div class="bloco-cab">
         <h2>Personagens</h2>
         <div class="bloco-acoes">
+          <button class="btn mini" id="assumir-cod">Assumir ficha por código</button>
+          <button class="btn mini" id="nova-vaga" hidden>+ ficha de vaga</button>
           <button class="btn primary mini" id="novo-pers">Novo personagem</button>
         </div>
       </div>
@@ -47,11 +49,73 @@ import MesaCab from '../../components/MesaCab.astro';
     </section>
 
   </MesaCab>
+
+  <dialog id="vaga-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3>Nova ficha de vaga</h3>
+      <p class="muted dlg-txt">Uma ficha sem dono, guardada na mesa. Monte agora e entregue quando o jogador chegar:
+        ele assume com o código, ou você atribui pelo nome dele aqui.</p>
+      <label>Rótulo da vaga <input type="text" id="vg-rotulo" placeholder="Vaga do arqueiro" /></label>
+      <div class="grade2">
+        <label>Nome do personagem <input type="text" id="vg-nome" placeholder="pode ficar em branco" /></label>
+        <label>Conceito <input type="text" id="vg-conceito" placeholder="Batedor élfico" /></label>
+      </div>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="vg-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="vg-criar">Criar vaga</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="atrib-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="at-titulo">Atribuir a quem?</h3>
+      <p class="muted dlg-txt" id="at-dica"></p>
+      <div id="at-lista" class="at-lista"></div>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="at-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="at-ok" disabled>Entregar a ficha</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="cod-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3>Assumir uma ficha</h3>
+      <p class="muted dlg-txt">O mestre entrega um código de seis caracteres junto com o convite da mesa.
+        Você precisa já estar na mesa para assumir.</p>
+      <label>Código da ficha <input type="text" id="cd-codigo" placeholder="A1B2C3" maxlength="6" autocomplete="off" /></label>
+      <p class="erro" id="cd-erro" hidden></p>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="cd-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="cd-ok">Assumir</button>
+      </div>
+    </form>
+  </dialog>
 </Base>
 
 <style is:global>
   .pers-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: .6rem; }
   .pc-card { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
+  /* A vaga é uma cadeira vazia: borda tracejada, como um lugar reservado. */
+  .pc-card.vaga { border-style: dashed; border-color: var(--gold);
+    background: color-mix(in srgb, var(--gold) 6%, var(--panel)); }
+  .s-vaga { background: color-mix(in srgb, var(--gold) 34%, transparent); color: var(--ink); }
+  .vg-cod { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; grid-column: 2;
+    margin-top: .35rem; font-size: var(--fs-micro); }
+  .vg-cod code { font-family: 'Cinzel'; font-size: var(--fs-aux); letter-spacing: .18em; font-weight: 700;
+    background: var(--bg); border: 1px solid var(--gold); border-radius: var(--r-sm); padding: .1rem .5rem;
+    color: var(--ink); }
+  .vg-cod .rot { flex-basis: 100%; }
+  .at-lista { display: flex; flex-direction: column; gap: .2rem; max-height: 40vh; overflow-y: auto;
+    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .3rem; }
+  .at-item { display: flex; align-items: center; gap: .5rem; padding: .35rem .5rem; cursor: pointer;
+    border-radius: var(--r-sm); }
+  .at-item:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .at-item.sel { background: color-mix(in srgb, var(--accent) 24%, transparent); }
+  .at-item .ai-n { flex: 1; font-size: var(--fs-aux); }
+  .at-item .ai-m { font-size: var(--fs-micro); color: var(--ink-soft); }
+  .dlg-txt { font-size: var(--fs-rotulo); margin: 0; }
   .pc-topo { display: grid; grid-template-columns: auto 1fr; gap: .2rem .75rem; padding: .7rem .8rem; }
   .pc-av { grid-row: span 3; }
   .pc-av .av { --av-t: 4.6rem; }
@@ -92,7 +156,7 @@ import MesaCab from '../../components/MesaCab.astro';
 <script>
   import { abrirMesa, u, esc, avatarHTML, urlsImagens, hpBarHTML, nomesDe, tierDe } from '../../lib/mesa-core';
   import { resumoFicha } from '../../lib/mesa-ficha';
-  import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
+  import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
   import HAB_D from '../../data/habilidades.json';
   import ATR_D from '../../data/atributos.json';
 
@@ -104,6 +168,7 @@ import MesaCab from '../../components/MesaCab.astro';
   };
 
   let SB: any, ID = '', MESTRE = false, EU = '';
+  let MEMBROS: { id: string; nome: string; papel: string; fichas: number }[] = [];
 
   async function main() {
     const ctx = await abrirMesa('grupo');
@@ -111,8 +176,11 @@ import MesaCab from '../../components/MesaCab.astro';
     SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id;
 
     el('novo-pers').addEventListener('click', () => { location.href = u('personagem') + '?novo=1&mesa=' + ID; });
+    el('assumir-cod').addEventListener('click', abrirCodigo);
 
     if (MESTRE) {
+      el('nova-vaga').hidden = false;
+      el('nova-vaga').addEventListener('click', abrirNovaVaga);
       el('sec-xp').hidden = false;
       const inp = el('xp-inicial') as HTMLInputElement;
       inp.value = String(ctx.mesa.xp_inicial ?? 0);
@@ -132,17 +200,28 @@ import MesaCab from '../../components/MesaCab.astro';
 
   async function pintarPersonagens() {
     const box = el('pers-grade');
-    const { data, error } = await SB.from('personagens')
-      .select('id, nome, conceito, dono_id, status, imagem_path, ficha, revisao_nota')
+    // `vaga` e `codigo_vaga` chegam com a migração 12; sem ela a consulta falha
+    // por coluna inexistente, e aí o Grupo volta ao que era antes.
+    let { data, error } = await SB.from('personagens')
+      .select('id, nome, conceito, dono_id, status, imagem_path, ficha, revisao_nota, vaga, codigo_vaga')
       .eq('mesa_id', ID).order('nome', { ascending: true });
+    if (error && /vaga/i.test(error.message)) {
+      el('nova-vaga').hidden = true; el('assumir-cod').hidden = true;
+      ({ data, error } = await SB.from('personagens')
+        .select('id, nome, conceito, dono_id, status, imagem_path, ficha, revisao_nota')
+        .eq('mesa_id', ID).order('nome', { ascending: true }));
+    }
     if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
     if (!data?.length) {
       box.innerHTML = `<p class="vazio">${MESTRE
-        ? 'Nenhum personagem nesta mesa. Os jogadores criam os seus, ou crie um você mesmo.'
-        : 'Você ainda não tem personagem nesta mesa. Clique em "Novo personagem".'}</p>`;
+        ? 'Nenhum personagem nesta mesa. Os jogadores criam os seus, você cria o seu, ou monta uma ficha de vaga para entregar depois.'
+        : 'Você ainda não tem personagem nesta mesa. Clique em "Novo personagem", ou use um código que o mestre tenha passado.'}</p>`;
       el('sec-passivos').hidden = true; el('sec-visao').hidden = true;
       return;
     }
+    // As vagas sobem: são o que está esperando uma decisão.
+    data = data.slice().sort((a: any, b: any) =>
+      (b.vaga ? 1 : 0) - (a.vaga ? 1 : 0) || String(a.nome).localeCompare(String(b.nome)));
     const nomes = await nomesDe(SB, data.map((p: any) => p.dono_id));
     const imgs = await urlsImagens(SB, data.map((p: any) => p.imagem_path), 'personagens');
 
@@ -155,8 +234,9 @@ import MesaCab from '../../components/MesaCab.astro';
       let R: any = null;
       try { R = resumoFicha(p.ficha || {}); } catch {}
       resumos[p.id] = R;
-      const [rot, cls] = SELO[p.status] || SELO.rascunho;
-      const meu = p.dono_id === EU;
+      const ehVaga = !!p.vaga;
+      const [rot, cls] = ehVaga ? ['Vaga livre', 's-vaga'] : (SELO[p.status] || SELO.rascunho);
+      const meu = !ehVaga && p.dono_id === EU;
       const nums = R ? `<div class="pilha pc-nums">
         <span class="pl"><span class="pl-l">Vida</span><span class="pl-v">${R.pv}</span></span>
         <span class="pl"><span class="pl-l">Energia</span><span class="pl-v">${R.energia}</span></span>
@@ -198,26 +278,52 @@ import MesaCab from '../../components/MesaCab.astro';
           ${R.tecnicas.length ? `<div><h4 class="pc-h">Técnicas (${R.tecnicas.length})</h4><div class="hab-linha">${R.tecnicas.map((t: string) => `<span>${esc(t.replace(/-/g, ' '))}</span>`).join('')}</div></div>` : ''}
         </div></details>` : '';
 
-      const acoes: string[] = [`<a class="btn mini" href="${u('personagem')}?id=${p.id}">Abrir ficha ›</a>`];
+      const acoes: string[] = [];
+      if (MESTRE || !ehVaga) acoes.push(`<a class="btn mini" href="${u('personagem')}?id=${p.id}">Abrir ficha ›</a>`);
       if (MESTRE) {
-        if (p.status === 'enviado') {
-          acoes.push(`<button class="btn mini ok" data-ap="${p.id}">Aprovar</button>`);
-          acoes.push(`<button class="btn mini" data-dev="${p.id}">Devolver</button>`);
-        } else if (p.status === 'aprovado') {
-          acoes.push(`<button class="btn mini" data-reab="${p.id}">Reabrir para edição</button>`);
+        if (ehVaga) {
+          acoes.push(`<button class="btn mini primary" data-atrib="${p.id}" data-nome="${esc(p.nome)}">Atribuir a um jogador…</button>`);
+        } else {
+          if (p.status === 'enviado') {
+            acoes.push(`<button class="btn mini ok" data-ap="${p.id}">Aprovar</button>`);
+            acoes.push(`<button class="btn mini" data-dev="${p.id}">Devolver</button>`);
+          } else if (p.status === 'aprovado') {
+            acoes.push(`<button class="btn mini" data-reab="${p.id}">Reabrir para edição</button>`);
+          }
+          acoes.push(`<button class="btn-fant" data-atrib="${p.id}" data-nome="${esc(p.nome)}" title="Passar esta ficha para outro jogador da mesa">⇄ transferir</button>`);
+          acoes.push(`<button class="btn-fant" data-liberar="${p.id}" data-nome="${esc(p.nome)}" title="Tirar o dono e devolver a ficha para a lista de vagas">↩ virar vaga</button>`);
         }
-        acoes.push(`<button class="btn mini perigo" data-rm="${p.id}" data-nome="${esc(p.nome || 'Personagem')}">Excluir</button>`);
+        acoes.push(`<button class="btn-fant perigo" data-rm="${p.id}" data-nome="${esc(p.nome || 'Personagem')}">Excluir</button>`);
+      } else if (ehVaga) {
+        acoes.push(`<button class="btn mini primary" data-assumir="${p.id}" data-cod="${esc(p.codigo_vaga || '')}">Assumir esta ficha</button>`);
       }
 
-      return `<article class="pc-card">
+      // Só o mestre vê o código: é ele que decide para quem entregar.
+      const codigo = (MESTRE && ehVaga && p.codigo_vaga) ? `<div class="vg-cod">
+        <span class="rot">Código de acesso</span>
+        <code>${esc(p.codigo_vaga)}</code>
+        <button class="btn-fant" data-copcod="${esc(p.codigo_vaga)}" title="Copiar o código">⧉</button>
+        <button class="btn-fant" data-novocod="${p.id}" title="Gerar outro código">↻</button>
+        <button class="btn-fant" data-coplink="${p.id}" title="Copiar o link direto da ficha">🔗 link</button>
+        <span class="salvo" data-fb="${p.id}"></span>
+      </div>` : '';
+
+      const quem = ehVaga
+        ? `<em>${esc(p.vaga)}</em> · sem dono`
+        : `${meu ? 'seu personagem' : esc(nomes[p.dono_id] || 'jogador')}`;
+
+      return `<article class="pc-card${ehVaga ? ' vaga' : ''}">
         <div class="pc-topo">
           <span class="pc-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null)}</span>
           <div class="pc-nome-linha">
-            <a class="pc-nome" href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a>
+            ${(MESTRE || !ehVaga)
+              ? `<a class="pc-nome" href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a>`
+              : `<span class="pc-nome">${esc(p.nome || 'Personagem')}</span>`}
             <span class="selo ${cls}">${rot}</span>
           </div>
-          <span class="pc-sub">${esc(p.conceito || '')}${p.conceito ? ' · ' : ''}${meu ? 'seu personagem' : esc(nomes[p.dono_id] || 'jogador')}${R?.raca ? ' · ' + esc(R.raca) : ''}</span>
+          <span class="pc-sub">${esc(p.conceito || '')}${p.conceito ? ' · ' : ''}${quem}${R?.raca ? ' · ' + esc(R.raca) : ''}</span>
           ${nums}
+          ${codigo}
           ${p.revisao_nota ? `<p class="pc-sub" style="grid-column:2">Devolvida: ${esc(p.revisao_nota)}</p>` : ''}
         </div>
         <div class="pc-acoes">${acoes.join('')}</div>
@@ -252,7 +358,128 @@ import MesaCab from '../../components/MesaCab.astro';
       await pintarPersonagens();
     }));
 
+    // ---- vagas ----
+    const piscar = (id: string, txt: string) => {
+      const fb = box.querySelector<HTMLElement>(`[data-fb="${id}"]`);
+      if (!fb) return;
+      fb.textContent = txt; setTimeout(() => (fb.textContent = ''), 1600);
+    };
+    box.querySelectorAll<HTMLElement>('[data-copcod]').forEach((b) => b.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(b.dataset.copcod!); b.textContent = '✓'; setTimeout(() => (b.textContent = '⧉'), 1400); } catch {}
+    }));
+    box.querySelectorAll<HTMLElement>('[data-coplink]').forEach((b) => b.addEventListener('click', async () => {
+      const link = new URL(u('personagem') + '?id=' + b.dataset.coplink, location.origin).href;
+      try { await navigator.clipboard.writeText(link); piscar(b.dataset.coplink!, 'link copiado'); } catch {}
+    }));
+    box.querySelectorAll<HTMLElement>('[data-novocod]').forEach((b) => b.addEventListener('click', async () => {
+      if (!await uiConfirmar('Gerar outro código? O atual deixa de funcionar.', { titulo: 'Novo código', ok: 'Gerar' })) return;
+      const { error } = await SB.rpc('regerar_codigo_vaga', { p_id: b.dataset.novocod });
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarPersonagens();
+    }));
+    box.querySelectorAll<HTMLElement>('[data-atrib]').forEach((b) =>
+      b.addEventListener('click', () => abrirAtribuir(b.dataset.atrib!, b.dataset.nome || 'a ficha')));
+    box.querySelectorAll<HTMLElement>('[data-liberar]').forEach((b) => b.addEventListener('click', async () => {
+      if (!await uiConfirmar(`Tirar o dono de ${b.dataset.nome} e devolver a ficha para a lista de vagas? A ficha em si não muda.`,
+        { titulo: 'Virar vaga', ok: 'Virar vaga' })) return;
+      const { error } = await SB.rpc('liberar_ficha', { p_id: b.dataset.liberar, p_vaga: 'Vaga' });
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarPersonagens();
+    }));
+    box.querySelectorAll<HTMLElement>('[data-assumir]').forEach((b) => b.addEventListener('click', async () => {
+      if (!await uiConfirmar('Assumir esta ficha? Ela passa a ser sua e some da lista de vagas.',
+        { titulo: 'Assumir ficha', ok: 'Assumir' })) return;
+      const { data: novoId, error } = await SB.rpc('reivindicar_ficha', { p_codigo: b.dataset.cod });
+      if (error) return uiErro('Erro: ' + error.message);
+      location.href = u('personagem') + '?id=' + novoId;
+    }));
+
     if (MESTRE) { pintarPassivos(data, resumos, nomes); pintarVisao(data, resumos, nomes); }
+  }
+
+  // =============================================== criar, atribuir, assumir
+  function abrirNovaVaga() {
+    const dlg = el('vaga-dlg') as HTMLDialogElement;
+    const g = (i: string) => el(i) as HTMLInputElement;
+    g('vg-rotulo').value = ''; g('vg-nome').value = ''; g('vg-conceito').value = '';
+    el('vg-cancelar').onclick = () => dlg.close();
+    el('vg-criar').onclick = async () => {
+      dlg.close();
+      const { data, error } = await SB.rpc('criar_vaga', {
+        p_mesa: ID, p_nome: g('vg-nome').value.trim(), p_conceito: g('vg-conceito').value.trim(),
+        p_vaga: g('vg-rotulo').value.trim() || 'Vaga',
+      });
+      if (error) {
+        return uiErro(/criar_vaga|function/i.test(error.message)
+          ? 'As fichas de vaga chegam com a migração 12. Rode supabase/migracao-12.sql no SQL Editor.'
+          : 'Erro: ' + error.message);
+      }
+      await pintarPersonagens();
+      const cod = (data as any)?.codigo_vaga;
+      if (cod) await uiAviso(`Vaga criada. O código para o jogador assumir é ${cod}. Ele também aparece no card, com botão de copiar.`,
+        { titulo: 'Vaga criada' });
+    };
+    dlg.showModal();
+  }
+
+  let AT_ALVO = '', AT_ESCOLHIDO = '';
+  function abrirAtribuir(pid: string, nome: string) {
+    const dlg = el('atrib-dlg') as HTMLDialogElement;
+    AT_ALVO = pid; AT_ESCOLHIDO = '';
+    (el('at-titulo') as HTMLElement).textContent = `Entregar “${nome}”`;
+    (el('at-dica') as HTMLElement).textContent = MEMBROS.length
+      ? 'Só quem já está na mesa aparece aqui. Se o jogador ainda não entrou, mande o convite da mesa e o código da vaga.'
+      : 'Ninguém entrou na mesa ainda. Mande o código de convite primeiro.';
+    (el('at-ok') as HTMLButtonElement).disabled = true;
+    el('at-lista').innerHTML = MEMBROS.map((m) => `<div class="at-item" data-u="${m.id}">
+      ${avatarHTML(m.nome, null, 'av-p')}
+      <span class="ai-n">${esc(m.nome)}${m.id === EU ? ' (você)' : ''}</span>
+      <span class="ai-m">${m.papel === 'mestre' ? 'mestre' : 'jogador'} · ${m.fichas} ficha(s)</span>
+    </div>`).join('') || '<p class="vazio" style="padding:.4rem">sem membros</p>';
+    el('at-lista').querySelectorAll<HTMLElement>('.at-item').forEach((it) => it.addEventListener('click', () => {
+      el('at-lista').querySelectorAll('.at-item').forEach((x) => x.classList.remove('sel'));
+      it.classList.add('sel');
+      AT_ESCOLHIDO = it.dataset.u!;
+      (el('at-ok') as HTMLButtonElement).disabled = false;
+    }));
+    el('at-cancelar').onclick = () => dlg.close();
+    el('at-ok').onclick = async () => {
+      if (!AT_ESCOLHIDO) return;
+      dlg.close();
+      const { error } = await SB.rpc('atribuir_ficha', { p_id: AT_ALVO, p_user: AT_ESCOLHIDO });
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarPersonagens();
+      await pintarMembros(null);
+    };
+    dlg.showModal();
+  }
+
+  function abrirCodigo() {
+    const dlg = el('cod-dlg') as HTMLDialogElement;
+    const inp = el('cd-codigo') as HTMLInputElement;
+    inp.value = ''; el('cd-erro').hidden = true;
+    el('cd-cancelar').onclick = () => dlg.close();
+    const tentar = async () => {
+      const cod = inp.value.trim().toUpperCase();
+      if (!cod) return;
+      const { data, error } = await SB.rpc('reivindicar_ficha', { p_codigo: cod });
+      if (error) {
+        // As mensagens vêm do Postgres, sem acento e em tom de log. Aqui viram
+        // frase de gente, que é o que o jogador merece ler.
+        const m = error.message || '';
+        const e = el('cd-erro'); e.hidden = false;
+        e.textContent = /function|reivindicar_ficha/i.test(m) ? 'As fichas de vaga chegam com a migração 12.'
+          : /codigo invalido|ja assumida/i.test(m) ? 'Código não encontrado. Confira os seis caracteres, ou peça outro ao mestre.'
+          : /entre na mesa/i.test(m) ? 'Entre na mesa primeiro, com o código de convite que o mestre passou.'
+          : m.replace(/^.*?:\s*/, '');
+        return;
+      }
+      dlg.close();
+      location.href = u('personagem') + '?id=' + data;
+    };
+    el('cd-ok').onclick = tentar;
+    inp.onkeydown = (e) => { if ((e as KeyboardEvent).key === 'Enter') { e.preventDefault(); tentar(); } };
+    dlg.showModal();
   }
 
   function pintarPassivos(pcs: any[], resumos: Record<string, any>, nomes: Record<string, string>) {
@@ -277,11 +504,12 @@ import MesaCab from '../../components/MesaCab.astro';
         <th class="num">Abs I/C/P</th><th>Iniciativa</th><th>Status</th></tr></thead>
       <tbody>${pcs.map((p) => {
         const R = resumos[p.id];
-        const [rot] = SELO[p.status] || SELO.rascunho;
-        if (!R) return `<tr><td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome)}</a></td><td class="muted">${esc(nomes[p.dono_id] || '')}</td><td colspan="8" class="muted">ficha em branco</td><td>${rot}</td></tr>`;
+        const [rot] = p.vaga ? ['Vaga livre'] : (SELO[p.status] || SELO.rascunho);
+        const quemVG = p.vaga ? `<em>vaga</em>` : esc(nomes[p.dono_id] || '');
+        if (!R) return `<tr><td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome)}</a></td><td class="muted">${quemVG}</td><td colspan="8" class="muted">ficha em branco</td><td>${rot}</td></tr>`;
         return `<tr>
           <td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a></td>
-          <td class="muted">${esc(nomes[p.dono_id] || '')}</td>
+          <td class="muted">${quemVG}</td>
           <td class="num">${R.centelha}</td><td class="num">${R.pv}</td><td class="num">${R.energia}</td>
           <td class="num">${R.defEsquiva}</td><td class="num">${R.defSocial}</td><td class="num">${R.defMental}</td>
           <td class="num">${R.soak.impacto}/${R.soak.corte}/${R.soak.perfuracao}</td>
@@ -289,12 +517,24 @@ import MesaCab from '../../components/MesaCab.astro';
       }).join('')}</tbody></table>`;
   }
 
-  async function pintarMembros(mestreId: string) {
+  let MESTRE_ID = '';
+  async function pintarMembros(mestreId: string | null) {
+    if (mestreId) MESTRE_ID = mestreId; else mestreId = MESTRE_ID;
     const ul = el('membros');
     const { data, error } = await SB.from('mesa_membros').select('papel, user_id').eq('mesa_id', ID)
       .order('entrou_em', { ascending: true });
     if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
     const nomes = await nomesDe(SB, (data || []).map((m: any) => m.user_id));
+    // Quantas fichas cada um já tem: o diálogo de atribuir mostra isso para o
+    // mestre não entregar a segunda ficha a quem já tem uma sem querer.
+    const contagem: Record<string, number> = {};
+    if (MESTRE) {
+      const { data: fichas } = await SB.from('personagens').select('dono_id, vaga').eq('mesa_id', ID);
+      for (const f of fichas || []) if (!f.vaga) contagem[f.dono_id] = (contagem[f.dono_id] || 0) + 1;
+    }
+    MEMBROS = (data || []).map((m: any) => ({
+      id: m.user_id, nome: nomes[m.user_id] || '(sem nome)', papel: m.papel, fichas: contagem[m.user_id] || 0,
+    }));
     ul.innerHTML = (data || []).map((m: any) => {
       const dono = m.user_id === mestreId;
       const mestre = m.papel === 'mestre' || dono;
@@ -302,7 +542,8 @@ import MesaCab from '../../components/MesaCab.astro';
         <button class="btn mini" data-act="papel" data-u="${m.user_id}" data-p="${m.papel}">${m.papel === 'mestre' ? 'Rebaixar' : 'Promover a mestre'}</button>
         <button class="btn mini perigo" data-act="remover" data-u="${m.user_id}">Remover</button></span>` : '';
       return `<li><span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span>
-        <span class="membro-nome">${esc(nomes[m.user_id] || '(sem nome)')}${m.user_id === EU ? ' (você)' : ''}</span>${acoes}</li>`;
+        <span class="membro-nome">${esc(nomes[m.user_id] || '(sem nome)')}${m.user_id === EU ? ' (você)' : ''}</span>
+        ${MESTRE ? `<span class="muted" style="font-size:var(--fs-micro)">${contagem[m.user_id] || 0} ficha(s)</span>` : ''}${acoes}</li>`;
     }).join('');
     if (!MESTRE) return;
     ul.querySelectorAll<HTMLElement>('[data-act="papel"]').forEach((b) => b.addEventListener('click', async () => {

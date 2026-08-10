@@ -47,6 +47,15 @@ Supabase pelo navegador. Passos para ligar tudo:
     Sem ela o site **não quebra**: as abas que dependem de tabela nova avisam que falta rodar a
     migração, e o resto continua funcionando com o que já existe. O bucket `itens` da migração 10
     é o que guarda os retratos do compêndio, então rode as duas.
+13. Rode [`migracao-12.sql`](./migracao-12.sql): **fichas de vaga**. O mestre monta a ficha antes
+    de saber quem vai jogar com ela, e entrega depois. Adiciona `vaga` e `codigo_vaga` em
+    `personagens`, deixa os membros da mesa **verem** as fichas marcadas como vaga (só essas, além
+    das próprias) e cria as funções `criar_vaga`, `atribuir_ficha`, `liberar_ficha`,
+    `reivindicar_ficha` e `regerar_codigo_vaga`. Idempotente.
+
+    O `dono_id` continua obrigatório de propósito: a RLS inteira se apoia nele, e afrouxá-lo abriria
+    buraco em tudo. A vaga é uma ficha do próprio mestre com duas marcas; atribuir é trocar o dono e
+    limpar as marcas.
 
 ## 3. Ajustes no painel
 
