@@ -443,6 +443,82 @@ troca de técnica, que já está na seção 3. A conclusão da ponta leve contin
 porque cai **dentro** da janela medida, de 46 g a 430 g, e o que a estende para baixo
 é física de arrasto, que é bem conhecida.
 
+---
+
+## 11. A força cresce linear? Não, ela multiplica
+
+A curva FAH → peso máximo do sistema é uma lei de potência ancorada em três pontos
+escolhidos (30 kg no FAH 3, 500 kg no FAH 24). Ela nunca tinha sido conferida contra
+distribuição real de força. Conferindo agora:
+
+### Os padrões reais
+
+Strength Level, levantamento terra 1RM de homem adulto, sobre **6,4 milhões de marcas
+registradas** (de quase 23 milhões levantadas):
+
+| nível | 1RM | salto sobre o anterior |
+|---|---|---|
+| Iniciante | 80 kg | |
+| Novato | 113 kg | ×1,41 |
+| Intermediário | 154 kg | ×1,36 |
+| Avançado | 202 kg | ×1,31 |
+| Elite (corpo de 80 kg) | 253 kg | ×1,25 |
+
+**Cada degrau multiplica, não soma.** A média é ×1,33 por nível de treino. A força não
+cresce linear, e também não cresce por acréscimos fixos: ela cresce por fator.
+
+Ressalva da amostra: são pessoas que registram levantamento num aplicativo. Quem nunca
+levantou, que é a maioria da população, não está aí dentro.
+
+### O confronto com a curva
+
+Mapeando os cinco níveis nos seis pontos de Halterofilismo, com a Força fixa em 2 (o
+mapeamento é suposição; o que é medido é o kg):
+
+| Halt | FAH | a curva | real | nível | erro |
+|---|---|---|---|---|---|
+| 0 | 6 | 77 kg | 80 kg | Iniciante | −4% |
+| 1,5 | 7,5 | 104 kg | 113 kg | Novato | −8% |
+| 3 | 9 | 133 kg | 154 kg | Intermediário | −14% |
+| 4,5 | 10,5 | 163 kg | 202 kg | Avançado | −19% |
+| 6 | 12 | 196 kg | 253 kg | Elite | −23% |
+
+Erro médio de 14%, mas o que importa é o **sinal**: o erro cresce monotonicamente, o
+que denuncia forma errada e não calibragem errada.
+
+### O defeito de forma
+
+A lei de potência dá ganhos **decrescentes** por ponto:
+
+| FAH | P | +1 ponto vale |
+|---|---|---|
+| 3 | 30 kg | +48% |
+| 6 | 77 kg | +23% |
+| 9 | 133 kg | +15% |
+| 12 | 196 kg | +11% |
+| 18 | 339 kg | +8% |
+| 23 | 472 kg | +6% |
+
+O treino real dá **+21% constante** (×1,33 por nível, ×1,21 por ponto de Halterofilismo).
+A curva do sistema faz o contrário: é generosa no começo e mesquinha no fim.
+
+Uma curva **geométrica** (mesma porcentagem por ponto) casaria melhor com o treino. A
+tensão é que a Força carrega o tamanho do corpo, e aí o degrau de Força talvez precise
+crescer de outro jeito que o de Halterofilismo. Hoje os dois valem o mesmo tipo de passo,
+e isso é o que a evidência põe em dúvida.
+
+### As âncoras de baixo
+
+| ficha | FAH | a curva | real |
+|---|---|---|---|
+| Força 1 = 12 a 14 anos | 3 | 30 kg | 45 a 61 kg (média de quem levanta, 14-15 anos) |
+| Força 2 = 17 a 18 anos | 6 | 77 kg | 91 a 107 kg aos 18, ou 80 kg de iniciante adulto |
+| Força 4, sem treino | 12 | 196 kg | 154 kg é a média de quem registra levantamento |
+| tudo em 6 | 24 | 500 kg | 510 kg, recorde mundial |
+
+O piso de 30 kg parece baixo contra os adolescentes que levantam, mas defensável contra
+a população inteira, que inclui quem nunca tentou.
+
 ## Fontes
 
 - [Guinness · Longest baseball throw](https://www.guinnessworldrecords.com/world-records/64701-longest-baseball-throw-male)
@@ -465,6 +541,9 @@ porque cai **dentro** da janela medida, de 46 g a 430 g, e o que a estende para 
 - New Studies in Athletics 1.2014 · "Shot Put With Lighter Implements" ([PDF, World Athletics](https://worldathletics.org/download/downloadnsa?filename=ddf02314-d55b-48be-bde2-92751f855235.pdf&urlslug=shot-put-with-lighter-implements)) · fonte da série do Jacko Gill e do ajuste L = l/(m+k)
 - Linthorne · "Throwing and jumping for maximum horizontal range" ([arXiv](https://arxiv.org/pdf/physics/0601148)) · v = √(2Fl/m), F₀ = 460 N e l = 1,65 m para um arremessador de peso de elite
 - [Linthorne 2001 · Optimum release angle in the shot put](https://pubmed.ncbi.nlm.nih.gov/11266667/)
+- [Strength Level · padrões de levantamento terra, 6,4 milhões de marcas](https://strengthlevel.com/strength-standards/deadlift/kg)
+- [PubMed · dados normativos de agachamento, supino e terra em 809.986 inscrições de powerlifting](https://pubmed.ncbi.nlm.nih.gov/39060209/)
+- [Gunsmith Fitness · média de levantamento terra por idade na adolescência](https://gunsmithfitness.com/blogs/news/average-deadlift-for-a-teenager-14-15-16-17-18)
 - [Australian Athletics · glide × rotational no peso](https://coachathletics.com.au/coaching-education/glide-vs-rotational-shot-put-which-technique-is-superior-a-very-deep-dive)
 - [Fitness Volt · recorde de log lift, 231 kg, Iron Biby](https://fitnessvolt.com/cheick-iron-biby-sanou-231-kg-log-lift-world-record/)
 - [Wikipedia · Weight over bar (25,5 kg a 6,17 m, Björnsson)](https://en.wikipedia.org/wiki/Weight_over_bar)

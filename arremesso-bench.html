@@ -1342,6 +1342,19 @@ const LEVREC = [
   ['Arremesso olímpico · Talakhadze 2021', 267, 'cabeca'],
   ['Log lift · Iron Biby 2024',            231, 'cabeca'],
 ];
+/* Os padrões reais de levantamento terra, do Strength Level (6,4 milhões de marcas
+   registradas). Os cinco níveis de treino, mapeados nos seis pontos de
+   Halterofilismo com a Força fixa em 2, mais as duas âncoras de adolescente.
+   O MAPEAMENTO É SUPOSIÇÃO minha, não medida: o que é medido é o kg. */
+const LEVPAD = [
+  [3.0,  53, 'média aos 14-15 anos'],
+  [6.0,  80, 'iniciante adulto'],
+  [6.0,  99, 'média aos 18 anos'],
+  [7.5, 113, 'novato'],
+  [9.0, 154, 'intermediário · média de quem registra'],
+  [10.5, 202, 'avançado'],
+  [12.0, 253, 'elite de 80 kg de corpo'],
+];
 function plotLev(){
   const W = 580, H = 300, ml = 50, mr = 16, mt = 16, mb = 34;
   const xB = ml, xR = W - mr, yT = mt, yB = H - mb, pw = xR - xB, ph = yB - yT;
@@ -1374,6 +1387,12 @@ function plotLev(){
     s += `<circle class="fa-dot" cx="${X(f).toFixed(1)}" cy="${Y(chao(f)).toFixed(1)}" r="2.4"/>`
        + `<circle class="fa-dot" cx="${X(f).toFixed(1)}" cy="${Y(cabeca(f)).toFixed(1)}" r="2.4"/>`;
   }
+  // os padrões de treino reais, para conferir a FORMA da curva
+  for (const [f, kg, rot] of LEVPAD){
+    if (f < FAH0 || f > FAH1) continue;
+    const x = X(f), y = Y(kg);
+    s += `<rect class="rreal" x="${(x-3).toFixed(1)}" y="${(y-3).toFixed(1)}" width="6" height="6"/>`;
+  }
   // os recordes reais, todos no FAH 24
   for (const [nome, kg, tipo] of LEVREC){
     const x = X(FAH1), y = Y(kg);
@@ -1401,9 +1420,24 @@ function pintaLev(){
   document.getElementById('levleg').innerHTML =
       `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2.5"/></svg>do chão até o quadril (terra)</span>`
     + `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/></svg>acima da cabeça</span>`
-    + `<span><svg viewBox="0 0 20 12"><circle cx="10" cy="6" r="3.4" fill="var(--ink-soft)" opacity=".45"/></svg>recordes reais</span>`;
-  document.querySelector('[data-out="levnota"]').innerHTML = ESCADA.map(([nome, kg, sobe, fim]) =>
-    `${nome.split(' · ')[0]} <b>${vg(kg/P_REF, 2)} × P</b>`).join(' · ');
+    + `<span><svg viewBox="0 0 20 12"><circle cx="10" cy="6" r="3.4" fill="var(--ink-soft)" opacity=".45"/></svg>recordes reais</span>`
+    + `<span><svg viewBox="0 0 20 12"><rect x="7" y="3" width="6" height="6" fill="var(--ink-soft)" opacity=".45"/></svg>padrões de treino (Strength Level)</span>`;
+
+  // o teste de forma: quanto vale +1 ponto de FAH, na curva e na realidade
+  const passo = (f) => (dP('3f', f+1)/dP('3f', f) - 1)*100;
+  const real = (Math.pow(253/80, 1/6) - 1)*100;
+  const erro = LEVPAD.map(([f, kg]) => Math.abs(dP('3f', f)/kg - 1)*100);
+  document.querySelector('[data-out="levnota"]').innerHTML =
+      `<b>+1 ponto de FAH vale</b> ${vg(passo(6),0)}% no FAH 6, ${vg(passo(12),0)}% no 12 e `
+    + `${vg(passo(20),0)}% no 20. Os padrões de treino reais dão <b>${vg(real,0)}% sempre</b>: `
+    + `cada nível multiplica por ×1,25 a ×1,41, e a média é ×1,33.<br>`
+    + `<b>A força não cresce linear</b>, ela multiplica. E a lei de potência achata para o alto, `
+    + `que é o contrário do que o treino faz. Erro médio contra os padrões: `
+    + `<b class="${erro.reduce((a,b)=>a+b,0)/erro.length <= 20 ? '' : 'ruim'}">`
+    + `${Math.round(erro.reduce((a,b)=>a+b,0)/erro.length)}%</b>.<br>`
+    + `<span style="color:var(--muted)">O mapeamento dos níveis de treino em pontos de `
+    + `Halterofilismo é suposição minha; o que é medido é o kg. Dá para testar a forma `
+    + `alternando P entre potência, geométrica e linear no painel de parâmetros.</span>`;
   const linhas = [];
   for (let f = 3; f <= 24; f++){
     const p = dP('3f', f), F = Math.ceil((f - 6)/3) >= 0 ? null : null;
