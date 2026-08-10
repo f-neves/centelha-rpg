@@ -27,6 +27,11 @@
     --rule:#cdbd92; --ring:#d8c79c;
     --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
     --fs-rotulo:.875rem; --fs-micro:.78rem;
+    /* as cinco famílias de técnica. Paleta conferida no validador: banda de
+       luminosidade, piso de croma, separação sob daltonismo e contraste contra o
+       papel, nos dois temas. Cada família leva também um marcador de forma
+       diferente, que é o que sustenta a leitura quando a cor falha. */
+    --f1:#0072B2; --f2:#D55E00; --f3:#009E73; --f4:#A24BC9; --f5:#8C6D1F;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -36,6 +41,7 @@
       --accent:#3fc9c2; --accent-strong:#8fe3dd; --on-accent-strong:#11151f;
       --rule:#39414f; --ring:#333a47;
       --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+      --f1:#3f8cc4; --f2:#d97029; --f3:#26a074; --f4:#ab6cc4; --f5:#9c8235;
     }
   }
   *{box-sizing:border-box}
@@ -96,6 +102,29 @@
   .inst b{font-variant-numeric:tabular-nums;color:var(--ink-soft);font-weight:600}
   .inst .pip{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px}
   .inst span + span{margin-left:16px}
+
+  /* ---- os fatos: recordes reais ---- */
+  .fatos{margin-bottom:18px}
+  .fatgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:1050px){ .fatgrid{grid-template-columns:1fr} }
+  .fatcap{font-family:'Cinzel',Georgia,serif;font-size:.74rem;color:var(--ink-soft);margin:0 0 4px}
+  .fatcap i{font-style:normal;color:var(--muted);font-size:.72rem}
+  .famleg{display:flex;flex-wrap:wrap;gap:6px 16px;margin:12px 0 4px;font-size:.78rem}
+  .famleg label{display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:var(--ink-soft);user-select:none}
+  .famleg label.off{opacity:.4}
+  .famleg input{display:none}
+  .famleg svg{width:16px;height:12px;overflow:visible}
+  .cols2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;margin-top:14px}
+  @media (max-width:1050px){ .cols2{grid-template-columns:1fr} }
+  .famtbl td, .famtbl th{padding:4px 8px;font-size:.78rem}
+  .famtbl td:first-child{white-space:nowrap}
+  /* pontos e curvas dos dados reais */
+  .fa-chart .pt{stroke:var(--paper);stroke-width:1}
+  .fa-chart .pt.vazado{fill:none!important;stroke-width:1.6}
+  .fa-chart .ajuste{fill:none;stroke-width:1.5;stroke-dasharray:4 3;opacity:.75}
+  .fa-chart .modelo{fill:none;stroke:var(--accent);stroke-width:2}
+  .fa-chart .modelo.medio{stroke-dasharray:5 3;stroke-width:1.5}
+  .fa-chart .anot{fill:var(--muted);font-size:9px;font-family:'Cinzel',Georgia,serif}
 
   /* ---- painel de comparação das fórmulas ---- */
   .cmp{margin-bottom:18px}
@@ -196,6 +225,47 @@
 <div class="max">
   <h1>Bancada de arremesso</h1>
   <p class="sub">Duas fichas lado a lado com os mesmos parâmetros de modelo. <b>P</b> é o peso máximo: aquilo que a pessoa ergue e segura por instantes sem conseguir sair do lugar. As três âncoras em uso são 30 kg no Força 1, 80 no homem comum e 500 no pico humano. Na lei de potência o expoente sai <b>só das duas pontas</b>, então o valor do meio cai onde cair: o erro dele contra o alvo é o teste de se a fórmula do FAH é coerente com as três âncoras ao mesmo tempo. Os gráficos usam o mesmo desenho da ficha do site: eixo em log com o trecho abaixo do pivô comprimido nos 5% da esquerda, as mesmas faixas de carga e o mesmo balão de leitura.</p>
+
+  <div class="card fatos">
+    <h3 class="tit">O que existe medido · recordes reais de lançamento</h3>
+    <div class="fatgrid">
+      <div>
+        <div class="fatcap">Alcance × massa <i>· só as marcas de distância, escala log nos dois eixos</i></div>
+        <div class="fa-chartwrap" id="wR"></div>
+      </div>
+      <div>
+        <div class="fatcap">Velocidade de saída × massa <i>· tudo, inclusive o que é lançado para altura (vazado)</i></div>
+        <div class="fa-chartwrap" id="wV"></div>
+      </div>
+    </div>
+    <div class="famleg" id="famleg"></div>
+    <div class="cols2">
+      <div>
+        <h3 class="tit" style="margin-top:8px">A massa efetiva do corpo, por técnica</h3>
+        <table class="famtbl" id="famtbl"></table>
+        <p class="nota">Ajuste de <b>v² = A/(m + k)</b> dentro de cada família, que é a mesma
+          fórmula do sistema escrita em velocidade. O <b>k</b> é quanto de corpo acelera junto
+          com o objeto: chicote de braço move a mão, empurrão de ombro move o tronco, duas mãos
+          movem o corpo inteiro. Ajustes com poucos pontos, ou com pontos concentrados numa
+          faixa estreita de massa, não extrapolam: estão marcados.</p>
+      </div>
+      <div class="pgrp">
+        <b>As duas referências do sistema</b>
+        <div class="fld"><label>reserva do topo (atributo + habilidade)</label>
+          <input type="number" data-p="resA" min="1" max="12" step="1"></div>
+        <div class="fld"><label>reserva do humano médio</label>
+          <input type="number" data-p="resB" min="1" max="12" step="1"></div>
+        <div class="fld"><label>peso máximo do topo (kg)</label>
+          <input type="number" data-p="pA" min="50" max="1000" step="10"></div>
+        <div class="fld"><label>peso máximo do médio (kg)</label>
+          <input type="number" data-p="pB" min="20" max="500" step="5"></div>
+        <div class="warn">As duas curvas cheias nos gráficos são o modelo de hoje nessas duas
+          reservas, com R₀ = <b>136 m</b> no topo e expoente <b>0,70</b> (os campos estão na
+          carta da fórmula, junto com m₀, o pivô e a dureza da parede). É a comparação direta
+          entre o que a regra promete e o que o corpo humano já fez.</div>
+      </div>
+    </div>
+  </div>
 
   <div class="card form">
     <h3 class="tit">A fórmula · os números sublinhados são editáveis</h3>
@@ -358,13 +428,108 @@ const P_HOJE = {2:15,3:20,4:27,5:35,6:45,7:55,8:65,9:78,10:90,11:108,12:125,13:1
 const SITE = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
                modelo:'fisico', baseModo:'tabela', banc:37.5, bexp:0.828,
                q:0.70, pexp:1, m0:1, fexp:2, wpiv:1, r0:136, r0exp:0.70,
-               vexp:1.5, corrida:1/3, giro:1/6, escala:true };
+               vexp:1.5, corrida:1/3, giro:1/6, escala:true,
+               resA:12, resB:3, pA:500, pB:80 };
 const M = Object.assign({}, SITE);
 
+// As duas referências que estamos usando: o topo humano (atributo 6 + habilidade 6)
+// e o adulto destreinado (atributo 2 + habilidade 1).
 const FICHAS = [
-  { id:'A', nome:'Homem comum',  cor:'var(--s1)', forca:2, atletismo:1, arremesso:0, halterofilismo:0 },
-  { id:'B', nome:'Veterano',     cor:'var(--s2)', forca:3, atletismo:3, arremesso:3, halterofilismo:2 },
+  { id:'A', nome:'Humano máximo · 6 + 6', cor:'var(--s1)', forca:6, atletismo:6, arremesso:6, halterofilismo:6 },
+  { id:'B', nome:'Humano médio · 2 + 1',  cor:'var(--s2)', forca:2, atletismo:1, arremesso:0, halterofilismo:0 },
 ];
+
+// ------------------------------------------------------- os fatos medidos
+// [nome, massa kg, marca, 'd' distância | 'h' altura, altura de soltura, família, nota]
+// Fontes e discussão em Arremesso_Fatos.md.
+const FAM = {
+  chicote: { nome:'Por cima, uma mão',    cor:'var(--f1)', forma:'circ' },
+  ombro:   { nome:'Empurrão de ombro',    cor:'var(--f2)', forma:'quad' },
+  cabo:    { nome:'Giro ou cabo, uma mão',cor:'var(--f3)', forma:'tri'  },
+  duas:    { nome:'Duas mãos',            cor:'var(--f4)', forma:'losa' },
+  aero:    { nome:'Plana (dardo, disco)', cor:'var(--f5)', forma:'cruz' },
+};
+// o campo `serie` marca os conjuntos homogêneos: mesmo atleta (ou mesma prova),
+// mesma técnica, mesmo implemento, só a massa mudando. Só neles o ajuste vale.
+const REC = [
+  ['Beisebol · Gorbous 1957',        0.145, 135.89, 'd', 2.00, 'chicote', 'corrida, vento a favor', ''],
+  ['Criquete · Percival 1882',       0.155, 128.60, 'd', 2.00, 'chicote', 'contestado', ''],
+  ['Criquete · melhor amador 2001',  0.155,  80.40, 'd', 2.00, 'chicote', 'torneio moderno', ''],
+  ['Beisebol · adulto sem treino',   0.145,  25.00, 'd', 2.00, 'chicote', 'faixa medida 18 a 27 m', ''],
+
+  ['Peso 7,26 kg · Crouser 2023',    7.257,  23.56, 'd', 2.10, 'ombro', 'giro, recorde mundial', ''],
+  ['Peso 5 kg · Hoffa 2012',         5.000,  25.20, 'd', 2.10, 'ombro', 'giro', ''],
+  ['Peso 1 kg · Gill',               1.000,  37.00, 'd', 2.00, 'ombro', 'mesmo atleta', 'gill'],
+  ['Peso 5 kg · Gill 2011',          5.000,  24.45, 'd', 2.00, 'ombro', 'mesmo atleta', 'gill'],
+  ['Peso 6 kg · Gill 2011',          6.000,  22.31, 'd', 2.00, 'ombro', 'mesmo atleta', 'gill'],
+  ['Peso 7,25 kg · Gill 2011',       7.250,  20.38, 'd', 2.00, 'ombro', 'mesmo atleta', 'gill'],
+  ['Peso 8 kg · Gill',               8.000,  18.20, 'd', 2.00, 'ombro', 'mesmo atleta', 'gill'],
+  ['Pedra aberta · Kahanic 2013',    7.300,  19.30, 'd', 1.95, 'ombro', 'com aproximação', ''],
+  ['Pedra Braemar · Capes 1981',     9.100,  17.37, 'd', 1.95, 'ombro', 'PARADO', 'braemar'],
+  ['Pedra Braemar · Lambrechts 2025',10.000, 15.45, 'd', 1.95, 'ombro', 'PARADO', 'braemar'],
+  ['Pedra Braemar · Guðmundsson',   13.500,  11.65, 'd', 1.95, 'ombro', 'PARADO', 'braemar'],
+
+  ['Martelo olímpico · Sedykh 1986', 7.257,  86.74, 'd', 1.60, 'cabo', '4 giros, cabo de 1,2 m', ''],
+  ['Martelo escocês · McKim 2014',   7.257,  48.04, 'd', 1.60, 'cabo', 'pés fixos', 'mckim'],
+  ['Martelo escocês 22 lb · McKim',  9.979,  40.49, 'd', 1.60, 'cabo', 'pés fixos', 'mckim'],
+  ['Peso p/ distância · Tyler 2019', 12.500, 29.76, 'd', 1.00, 'cabo', 'uma mão, giro', 'tyler'],
+  ['Peso pesado · Tyler 2019',       25.500, 15.62, 'd', 1.00, 'cabo', 'uma mão, giro', 'tyler'],
+  ['Peso indoor · Deal',             15.880, 25.86, 'd', 1.60, 'cabo', 'duas mãos permitidas', ''],
+  ['Peso sobre a barra · Tyler 2019',25.400,  5.92, 'h', 0.50, 'cabo', 'uma mão, para altura', ''],
+
+  ['Arremesso lateral · Grønnemark', 0.430,  51.33, 'd', 2.20, 'duas', 'duas mãos, com mortal', ''],
+  ['Pedra suíça · Marx 2009',       61.250,   4.66, 'd', 1.40, 'duas', 'corrida de 6 m', 'stein'],
+  ['Unspunnen · Hutmacher 2025',    83.500,   4.16, 'd', 1.40, 'duas', 'duas mãos', 'stein'],
+  ['Arnold 84 kg · Kieliszkowski',  84.000,   3.47, 'd', 1.40, 'duas', 'duas mãos', ''],
+  ['Barril 12,5 kg · Björnsson',    12.500,   8.54, 'h', 0.60, 'duas', 'para altura', 'barril'],
+  ['Barril 15 kg · WSM 2024',       15.000,   7.76, 'h', 0.60, 'duas', 'para altura', 'barril'],
+  ['Barril 25 kg · Björnsson',      25.000,   6.00, 'h', 0.60, 'duas', 'para altura', 'barril'],
+  ['Feixe no forcado · Riley 2017',  7.260,  12.80, 'h', 0.60, 'duas', 'ferramenta, para altura', ''],
+
+  ['Dardo antigo · Hohn 1984',       0.800, 104.80, 'd', 2.00, 'aero', 'modelo pré-1986', ''],
+  ['Dardo atual · Železný 1996',     0.800,  98.48, 'd', 2.00, 'aero', 'modelo atual', ''],
+  ['Disco · Alekna 2025',            2.000,  75.56, 'd', 1.50, 'aero', 'plana', ''],
+  ['Bumerangue · Schummy 2005',      0.100, 427.20, 'd', 1.80, 'aero', 'plana, volta', ''],
+];
+// as séries que valem ajuste, e a estimativa do chicote
+const SER = {
+  gill:    { nome:'Jacko Gill · peso, 1 a 8 kg',        fam:'ombro' },
+  braemar: { nome:'Pedra Braemar · parado',             fam:'ombro' },
+  mckim:   { nome:'Dan McKim · martelo escocês',        fam:'cabo'  },
+  tyler:   { nome:'Spencer Tyler · peso p/ distância',  fam:'cabo'  },
+  barril:  { nome:'Björnsson · barril, duas mãos',      fam:'duas'  },
+  stein:   { nome:'Pedra suíça · duas mãos',            fam:'duas'  },
+};
+const FAM_ON = { chicote:true, ombro:true, cabo:true, duas:true, aero:true };
+
+// Balística com altura de soltura, no ângulo ótimo. Não precisa de busca numérica:
+// o alcance máximo saindo da altura h é R = v·√(v² + 2gh)/g, e daí sai a inversa
+// exata v = √( g·(√(h² + R²) − h) ). É o que deixa comparar marcas tiradas de
+// esportes com alturas de mão diferentes, e o que converte altura em alcance.
+const G = 9.81;
+const alcOtimo = (v, h) => (v/G) * Math.sqrt(v*v + 2*G*h);
+const vDeAlcance = (R, h) => Math.sqrt(G * (Math.sqrt(h*h + R*R) - h));
+const vDeAltura = (H, h) => Math.sqrt(Math.max(0, 2*G*(H-h)));
+// cada recorde ganha a sua velocidade de saída uma vez só
+const PTS = REC.map(([nome, m, marca, tipo, h, fam, nota, serie]) => ({
+  nome, m, marca, tipo, h, fam, nota, serie,
+  v: tipo === 'd' ? vDeAlcance(marca, h) : vDeAltura(marca, h),
+}));
+// ajuste v² = A/(m+k)  <=>  1/v² = (m+k)/A, reta em m
+function ajustaFam(pts){
+  const n = pts.length;
+  if (n < 2) return null;
+  const xs = pts.map((p) => p.m), ys = pts.map((p) => 1/(p.v*p.v));
+  const mx = xs.reduce((a,b) => a+b, 0)/n, my = ys.reduce((a,b) => a+b, 0)/n;
+  const sxx = xs.reduce((s,x) => s + (x-mx)**2, 0);
+  if (!sxx) return null;
+  const a = xs.reduce((s,x,i) => s + (x-mx)*(ys[i]-my), 0)/sxx;
+  if (a <= 0) return { A:NaN, k:NaN, r2:NaN, n, ruim:true, faixa:[Math.min(...xs), Math.max(...xs)] };
+  const b = my - a*mx, A = 1/a, k = b*A;
+  const st = ys.reduce((s,y) => s + (y-my)**2, 0);
+  const ss = ys.reduce((s,y,i) => s + (y - (a*xs[i]+b))**2, 0);
+  return { A, k, r2: st ? 1 - ss/st : 1, n, faixa:[Math.min(...xs), Math.max(...xs)] };
+}
 
 // ---------------------------------------------------------------- o modelo
 const cl = (v) => Math.max(2, Math.min(24, v));
@@ -735,6 +900,194 @@ function pintaFormula(){
     : `Modelo antigo, mantido só para comparação: o site usa o físico.`);
 }
 
+// ---------------------------------------------------------------- os fatos
+// O modelo de hoje avaliado numa reserva qualquer (atributo + habilidade, 0 a 12).
+const r0Res = (res) => M.r0 * Math.pow(Math.max(0, res)/Math.max(1, M.resA), M.r0exp);
+function alcModelo(w, res, P){
+  const R0 = r0Res(res), pv = M.wpiv, m0 = M.m0;
+  if (w <= 0 || w >= P) return 0;
+  const pesado = (x) => R0 * (m0/(x + m0)) * Math.pow(1 - x/P, M.fexp);
+  return w < pv ? pesado(pv) * suave(w/pv) : pesado(w);
+}
+
+const FW = 580, FH = 300, fml = 46, fmr = 14, fmt = 14, fmb = 34;
+const fxB = fml, fxR = FW - fmr, fyT = fmt, fyB = FH - fmb;
+const fpw = fxR - fxB, fph = fyB - fyT;
+const MASSA = [0.08, 120];   // faixa do eixo X, em kg
+
+// marcador com forma própria por família: a cor sozinha não pode carregar a
+// identidade, e sob daltonismo o par verde/laranja fica no limite
+function marcador(forma, x0, y0, cor, vazado){
+  const x = +x0, y = +y0;   // chegam de toFixed, e string + número concatena
+  const f = vazado ? 'none' : cor, e = `stroke="${vazado ? cor : 'var(--paper)'}"`;
+  const cls = `pt${vazado ? ' vazado' : ''}`;
+  if (forma === 'circ') return `<circle class="${cls}" cx="${x}" cy="${y}" r="4" fill="${f}" ${e}/>`;
+  if (forma === 'quad') return `<rect class="${cls}" x="${x-3.5}" y="${y-3.5}" width="7" height="7" fill="${f}" ${e}/>`;
+  if (forma === 'tri')  return `<polygon class="${cls}" points="${x},${y-4.4} ${x+4},${y+3} ${x-4},${y+3}" fill="${f}" ${e}/>`;
+  if (forma === 'losa') return `<polygon class="${cls}" points="${x},${y-4.8} ${x+4.2},${y} ${x},${y+4.8} ${x-4.2},${y}" fill="${f}" ${e}/>`;
+  return `<path d="M${x-4},${y} h8 M${x},${y-4} v8" stroke="${cor}" stroke-width="1.8" fill="none"/>`;
+}
+
+/** Um gráfico log-log de massa × (alcance | velocidade). */
+function plotFatos(alvo, campo, faixaY, rotY, ajustes){
+  const lx = (v) => Math.log(v), spanX = lx(MASSA[1]) - lx(MASSA[0]);
+  const X = (m) => fxB + ((lx(Math.max(MASSA[0], Math.min(MASSA[1], m))) - lx(MASSA[0]))/spanX) * fpw;
+  const spanY = lx(faixaY[1]) - lx(faixaY[0]);
+  const Y = (v) => fyB - ((lx(Math.max(faixaY[0], Math.min(faixaY[1], v))) - lx(faixaY[0]))/spanY) * fph;
+  const dentroY = (v) => v >= faixaY[0] && v <= faixaY[1];
+
+  let s = '';
+  const marcasX = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100].filter((v) => v >= MASSA[0] && v <= MASSA[1]);
+  for (const v of marcasX){
+    s += `<line class="grid" x1="${X(v).toFixed(1)}" y1="${fyT}" x2="${X(v).toFixed(1)}" y2="${fyB}"/>`
+       + `<text x="${X(v).toFixed(1)}" y="${fyB+14}" text-anchor="middle">${fw(v)}</text>`;
+  }
+  const passo = [1,2,3,5,10,20,30,50,100,200,300,500].filter((v) => v >= faixaY[0] && v <= faixaY[1]);
+  for (const v of passo){
+    s += `<line class="grid" x1="${fxB}" y1="${Y(v).toFixed(1)}" x2="${fxR}" y2="${Y(v).toFixed(1)}"/>`
+       + `<text x="${fxB-6}" y="${(Y(v)+3).toFixed(1)}" text-anchor="end">${v}</text>`;
+  }
+
+  // curvas de ajuste, cada uma só dentro da faixa de massa que a série cobre: nada
+  // de extrapolar um k medido entre 12 e 25 kg até o objeto de 1 kg
+  for (const [id, aj] of Object.entries(ajustes)){
+    const fam = aj && aj.fam;
+    if (!aj || aj.ruim || !FAM_ON[fam]) continue;
+    const [m1, m2] = aj.faixa, pts = [];
+    for (let i = 0; i <= 40; i++){
+      const m = Math.exp(lx(m1) + (lx(m2) - lx(m1))*i/40);
+      if (m + aj.k <= 0) continue;
+      const v = Math.sqrt(aj.A/(m + aj.k));
+      const val = campo === 'v' ? v : alcOtimo(v, aj.h);
+      if (dentroY(val)) pts.push(`${X(m).toFixed(1)},${Y(val).toFixed(1)}`);
+    }
+    if (pts.length > 1) s += `<polyline class="ajuste" points="${pts.join(' ')}" stroke="${FAM[fam].cor}"/>`;
+  }
+
+  // o modelo de hoje nas duas reservas
+  for (const [res, P, cls] of [[M.resA, M.pA, 'modelo'], [M.resB, M.pB, 'modelo medio']]){
+    const pts = [];
+    for (let i = 0; i <= 160; i++){
+      const m = Math.exp(lx(MASSA[0]) + spanX*i/160);
+      const a = alcModelo(m, res, P);
+      if (a <= 0.01) continue;
+      const val = campo === 'v' ? vDeAlcance(a, 1.8) : a;
+      if (dentroY(val)) pts.push(`${X(m).toFixed(1)},${Y(val).toFixed(1)}`);
+    }
+    if (pts.length > 1) s += `<polyline class="${cls}" points="${pts.join(' ')}"/>`;
+  }
+  // rótulo direto nas duas curvas do modelo, para não depender só da legenda
+  for (const [res, P, dy] of [[M.resA, M.pA, -5], [M.resB, M.pB, 12]]){
+    const a = alcModelo(0.35, res, P);
+    const val = campo === 'v' ? vDeAlcance(a, 1.8) : a;
+    if (a > 0 && dentroY(val))
+      s += `<text class="anot" x="${(X(0.35)+6).toFixed(1)}" y="${(Y(val)+dy).toFixed(1)}">regra · ${res}</text>`;
+  }
+
+  // os pontos por último, para ficarem por cima das curvas
+  const vis = PTS.filter((p) => FAM_ON[p.fam] && (campo === 'v' || p.tipo === 'd'));
+  for (const p of vis){
+    const val = campo === 'v' ? p.v : p.marca;
+    if (!dentroY(val)) continue;
+    s += marcador(FAM[p.fam].forma, X(p.m).toFixed(1), Y(val).toFixed(1), FAM[p.fam].cor, p.tipo === 'h');
+  }
+
+  s += `<line class="axis" x1="${fxB}" y1="${fyT}" x2="${fxB}" y2="${fyB}"/>`
+     + `<line class="axis" x1="${fxB}" y1="${fyB}" x2="${fxR}" y2="${fyB}"/>`
+     + `<text class="axlbl" x="${(fxB+fxR)/2}" y="${FH-4}" text-anchor="middle">Massa (kg)</text>`
+     + `<text class="axlbl" transform="rotate(-90 11 ${fmt+fph/2})" x="11" y="${fmt+fph/2}" text-anchor="middle">${rotY}</text>`
+     + `<rect x="${fxB}" y="${fyT}" width="${fpw}" height="${fph}" fill="transparent"/>`;
+
+  const wrap = document.getElementById(alvo);
+  wrap.innerHTML = `<svg class="fa-chart" viewBox="0 0 ${FW} ${FH}" role="img" aria-label="${rotY} por massa do objeto">${s}</svg><div class="fa-tip" style="display:none"></div>`;
+
+  // leitura por proximidade: o ponto mais perto do cursor, em pixels
+  const svg = wrap.querySelector('svg'), tip = wrap.querySelector('.fa-tip');
+  svg.addEventListener('pointermove', (e) => {
+    const r = svg.getBoundingClientRect(), k = FW/r.width;
+    const px = (e.clientX - r.left)*k, py = (e.clientY - r.top)*(FH/r.height);
+    let melhor = null, dist = 20*20;
+    for (const p of vis){
+      const val = campo === 'v' ? p.v : p.marca;
+      if (!dentroY(val)) continue;
+      const d = (X(p.m)-px)**2 + (Y(val)-py)**2;
+      if (d < dist){ dist = d; melhor = p; }
+    }
+    if (!melhor){ tip.style.display = 'none'; return; }
+    const val = campo === 'v' ? melhor.v : melhor.marca;
+    tip.innerHTML = `<b>${melhor.nome}</b><div class="fa-tipg">`
+      + `<span>Massa</span><span>${fw(melhor.m)} kg</span>`
+      + `<span>${melhor.tipo === 'd' ? 'Alcance' : 'Altura'}</span><span>${n1(melhor.marca)} m</span>`
+      + `<span>Saída</span><span>${n1(melhor.v)} m/s</span>`
+      + `<span>Regra · ${M.resA}</span><span>${n1(alcModelo(melhor.m, M.resA, M.pA))} m</span>`
+      + `</div><div style="font-size:.9em;opacity:.8">${melhor.nota}</div>`;
+    tip.style.display = '';
+    const meia = tip.offsetWidth/2, cx = (X(melhor.m)/FW)*r.width;
+    tip.style.left = Math.max(meia, Math.min(r.width - meia, cx)) + 'px';
+    tip.style.top = (Y(val)/FH)*r.height + 'px';
+  });
+  svg.addEventListener('pointerleave', () => { tip.style.display = 'none'; });
+}
+
+function pintaFatos(){
+  const ajustes = {};
+  for (const [id, s] of Object.entries(SER)){
+    const pts = PTS.filter((p) => p.serie === id);
+    const aj = ajustaFam(pts);
+    if (!aj) continue;
+    // altura média de soltura da série: é a que devolve a curva ao eixo do alcance
+    aj.fam = s.fam; aj.nome = s.nome;
+    aj.h = pts.reduce((t, p) => t + p.h, 0)/pts.length;
+    ajustes[id] = aj;
+  }
+  // O chicote não tem série: beisebol e criquete pesam quase o mesmo, e ajuste em
+  // faixa nula não existe. Fica a estimativa por velocidade de soltura medida
+  // (beisebol de elite ~45 m/s com 0,145 kg, dardo ~30 m/s com 0,8 kg), ancorada
+  // no recorde do Gorbous. Entra tracejada e marcada como estimativa.
+  const anc = PTS.find((p) => p.serie === '' && p.fam === 'chicote');
+  const kEst = (0.8 - 0.145*2.25)/(2.25 - 1);
+  ajustes.chicoteEst = { A: anc.v*anc.v*(anc.m + kEst), k: kEst, r2: NaN, n: 0,
+    faixa: [0.1, 2], fam: 'chicote', h: 2.0, estimativa: true,
+    nome: 'Por cima, uma mão · estimativa' };
+
+  plotFatos('wR', 'r', [2, 500], 'Alcance (m)', ajustes);
+  plotFatos('wV', 'v', [3, 50], 'Velocidade de saída (m/s)', ajustes);
+
+  document.getElementById('famleg').innerHTML = Object.entries(FAM).map(([k, f]) =>
+    `<label class="${FAM_ON[k] ? '' : 'off'}" data-fam="${k}">
+       <input type="checkbox" ${FAM_ON[k] ? 'checked' : ''}>
+       <svg viewBox="0 0 16 12">${marcador(f.forma, 8, 6, f.cor, false)}</svg>${f.nome}</label>`).join('')
+    + `<span style="color:var(--muted)">·</span>`
+    + `<span style="color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px">
+         <svg viewBox="0 0 16 12"><line x1="0" y1="6" x2="16" y2="6" stroke="var(--accent)" stroke-width="2"/></svg>
+         regra de hoje</span>`
+    + `<span style="color:var(--muted);font-size:.74rem">marcador vazado = marca de altura, não de distância</span>`;
+
+  const ordem = ['chicoteEst', 'gill', 'braemar', 'mckim', 'tyler', 'barril', 'stein'];
+  const linhas = ordem.map((id) => {
+    const a = ajustes[id]; if (!a) return '';
+    const f = FAM[a.fam];
+    const larga = a.faixa[1]/a.faixa[0];
+    const qual = a.estimativa ? '<span class="ruim">estimativa</span>'
+      : a.ruim ? '<span class="ruim">não ajusta</span>'
+      : a.n === 2 ? '2 pontos' : `R² ${vg(a.r2, 3)}`;
+    // k negativo não existe: massa efetiva não pode ser menor que zero. Quando
+    // aparece, é sinal de que a série não é homogênea de verdade (atletas ou
+    // implementos diferentes) ou de que a faixa de massa é curta demais.
+    const alerta = a.estimativa || a.ruim ? ''
+      : a.k < 0 ? ' <span class="ruim" title="massa efetiva negativa não existe: a série mistura atletas ou implementos">k negativo</span>'
+      : larga < 2.2 ? ' <span class="ruim" title="faixa de massa estreita demais para extrapolar">faixa curta</span>' : '';
+    return `<tr${FAM_ON[a.fam] ? '' : ' style="opacity:.4"'}>
+      <td><svg viewBox="0 0 16 12" style="width:16px;height:12px;overflow:visible;vertical-align:-1px">${marcador(f.forma, 8, 6, f.cor, false)}</svg> ${a.nome}</td>
+      <td>${a.n || '·'}</td>
+      <td>${fw(a.faixa[0])} a ${fw(a.faixa[1])} kg</td>
+      <td><b>${a.ruim ? '·' : vg(a.k, 2) + ' kg'}</b>${alerta}</td>
+      <td>${qual}</td></tr>`;
+  }).join('');
+  document.getElementById('famtbl').innerHTML =
+    `<thead><tr><th>série</th><th>pontos</th><th>faixa</th><th>k</th><th>qualidade</th></tr></thead><tbody>${linhas}</tbody>`;
+}
+
 // ---------------------------------------------------------------- pintura geral
 function pinta(){
   const pico = (f) => Math.max(...pesosTabela(pmax(f)).map((w) => dCorr(w, f)), dCorr(M.wpiv, f));
@@ -746,6 +1099,7 @@ function pinta(){
       M.escala ? pCom : pmax(f)));
   pintaCmp();
   pintaFormula();
+  pintaFatos();
   // pontinhos
   document.querySelectorAll('.dots').forEach((d) => {
     const f = FICHAS.find((z) => z.id === d.dataset.ficha), v = f[d.dataset.k];
@@ -827,6 +1181,12 @@ document.addEventListener('change', (e) => {
   const alvo = { fahf:'fahf', pforma:'pforma', modelo:'modelo', basemodo:'baseModo' }[el.name];
   if (!alvo) return;
   M[alvo] = el.value; pinta();
+});
+document.getElementById('famleg').addEventListener('click', (e) => {
+  const lb = e.target.closest('[data-fam]'); if (!lb) return;
+  e.preventDefault();
+  FAM_ON[lb.dataset.fam] = !FAM_ON[lb.dataset.fam];
+  pinta();
 });
 document.getElementById('duo').addEventListener('click', (e) => {
   const bt = e.target.closest('[data-fa-curva]');
