@@ -25,7 +25,19 @@ export const NAV = [
   { slug: 'regras/vida-ferimentos-cura', titulo: 'Vida, Ferimentos & Cura', numeral: 'IV' },
   { slug: 'regras/centelha', titulo: 'Centelha', numeral: 'V' },
   { slug: 'regras/racas', titulo: 'Raças', numeral: 'VI' },
-  { slug: 'regras/acoes-e-sistema', titulo: 'Ações & Sistema', numeral: 'VII' },
+  {
+    // Como os capítulos II e XVI, o VII são cinco páginas: o link do capítulo abre a
+    // primeira (a régua comum, que as outras quatro usam), e as cinco só aparecem na
+    // barra lateral enquanto se está dentro dele.
+    slug: 'regras/acoes-e-sistema', titulo: 'Ações & Sistema', numeral: 'VII',
+    sub: [
+      { slug: 'regras/acoes-e-sistema', titulo: 'A Régua Comum' },
+      { slug: 'regras/acoes-corpo-e-movimento', titulo: 'Corpo e Movimento' },
+      { slug: 'regras/acoes-resistir', titulo: 'Resistir' },
+      { slug: 'regras/acoes-sentidos-e-engano', titulo: 'Sentidos & Engano' },
+      { slug: 'regras/acoes-oficio-e-mundo', titulo: 'Ofício e Mundo' },
+    ],
+  },
   { slug: 'regras/combate', titulo: 'Combate Físico', numeral: 'VIII' },
   { slug: 'regras/relacoes-sociais', titulo: 'Relações Sociais', numeral: 'IX' },
   { slug: 'regras/defesas', titulo: 'As Três Defesas', numeral: 'X' },

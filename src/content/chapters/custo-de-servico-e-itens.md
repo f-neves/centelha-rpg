@@ -1,5 +1,5 @@
 ---
-ordem: 15
+ordem: 19
 numeral: "XIII"
 titulo: "Custo de Serviço & Itens"
 resumo: "Moedas, renda por estrato, qualidade de armas e armaduras e o catálogo de preços do mundo."

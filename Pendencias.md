@@ -227,11 +227,14 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   **sete famílias e setenta e cinco ações**, com os mesmos nomes e na mesma ordem. As divergências
   reais eram duas, e foram fechadas: **Apostar** e **Levantar o peso máximo** faltavam no
   catálogo.
-- [x] ~~**G10 · Capítulo único ou distribuído?**~~ **Capítulo único, e já publicado**
-  (2026-08-10), a pedido do autor: `src/content/chapters/acoes-e-sistema.md`, **capítulo VII,
-  logo depois de Raças**. Combate em diante andou um numeral, e de quebra corrigiu-se uma
-  divergência que já existia: Fôlego, Criação de Personagem e Qual Sistema tinham no frontmatter
-  um numeral a menos do que o `site.ts` mostrava na barra lateral.
+- [x] ~~**G10 · Capítulo único ou distribuído?**~~ **Capítulo único, publicado em 2026-08-10** a
+  pedido do autor: **capítulo VII, logo depois de Raças**. Combate em diante andou um numeral, e
+  de quebra corrigiu-se uma divergência que já existia: Fôlego, Criação de Personagem e Qual
+  Sistema tinham no frontmatter um numeral a menos do que o `site.ts` mostrava na barra lateral.
+  **Fatiado em cinco sub-páginas** logo em seguida, no padrão dos capítulos II e XVI (53 mil
+  caracteres eram o dobro do maior capítulo do livro): `acoes-e-sistema` (A Régua Comum),
+  `acoes-corpo-e-movimento`, `acoes-resistir`, `acoes-sentidos-e-engano` e `acoes-oficio-e-mundo`.
+  As quatro famílias que ainda não têm ficha couberam numa página só.
 - [ ] **G11 · [FAZER] `regras.json → acoes`.** O capítulo já está no site, mas as tabelas dele
   são texto: nada disso é lido pelo motor nem aparece na ficha. Os melhores candidatos são a
   tabela de dano por queda, o Desgaste e os cinco números das peças do ofício, que destravariam
