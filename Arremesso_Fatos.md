@@ -370,6 +370,79 @@ mais desfavorável fica a pior posição delas. No back lift o quadril mal se mo
 peso fica colado ao corpo; no arremesso o objeto tem que atravessar o ombro estendido,
 que é a articulação mais fraca da cadeia, e ainda sair com velocidade.
 
+## 10. A ponta leve: entre 0 e 1 kg
+
+Aqui a regra de hoje está **invertida**. Ela põe o ápice em 1 kg e faz a distância
+desabar abaixo disso (100 g valem 2,8% do 1 kg, ou seja 1,9 m no topo humano). O que
+existe medido diz o contrário.
+
+### A prova direta
+
+| objeto | massa | marca | quem |
+|---|---|---|---|
+| **Bola de golfe** | **45,9 g** | **155,45 m** | Roald Bradstock, 170 jardas |
+| iPod classic | 140 g | 140,82 m | Bradstock, 154 jardas |
+| Beisebol | 145 g | 135,89 m | Glen Gorbous, 1957 |
+| Celular | 150 g | 120,70 m | Bradstock, 132 jardas |
+| Celular (Guinness) | 170 g | 110,42 m | Dries Feremans |
+| Bola de futebol, uma mão | 430 g | 75,00 m | Bradstock, 82 jardas |
+
+**A bola de golfe de 46 g vai mais longe que a de beisebol de 145 g.** Não há colapso
+nenhum abaixo de 1 kg: a distância continua subindo.
+
+E a série do Bradstock é do mesmo atleta, cobrindo de 46 g a 430 g, quase uma década
+de massa. Ajustando `v² = A/(m + k)` nela: **k = 0,30 kg, R² = 1,000**. Bate com o
+0,38 que eu tinha estimado por velocidade de soltura, e confirma que o chicote de
+braço move meio quilo de corpo, não mais.
+
+### Onde fica o ápice de verdade
+
+Integrando a trajetória com arrasto (esfera, Cd 0,47 a 0,50), com a velocidade de
+saída `v² = 1411/(m + 0,35)` calibrada no recorde do beisebol:
+
+| material | densidade | ápice | alcance no ápice | a 2 g | a 1 kg |
+|---|---|---|---|---|---|
+| Chumbo | 11340 kg/m³ | **58 g** | 245 m | 172 m | 103 m |
+| Ferro | 7800 | **65 g** | 227 m | 151 m | 101 m |
+| Pedra | 2600 | **109 g** | 170 m | 94 m | 94 m |
+| Madeira | 700 | **185 g** | 114 m | 52 m | 80 m |
+| Cortiça | 240 | **283 g** | 78 m | 31 m | 64 m |
+
+**O ápice fica entre 50 e 280 g, não em 1 kg**, e quem o desloca é a **densidade**, não
+a massa. A mesma massa em chumbo voa o dobro do que em madeira, porque o que conta é a
+razão entre massa e área frontal.
+
+Por que existe ápice: a velocidade de saída satura. Com k = 0,35, um objeto de 2 g e um
+de 50 g saem quase à mesma velocidade (63 e 59 m/s), porque a inércia do braço domina
+os dois. Abaixo do ápice não se ganha mais velocidade e só se perde para o ar.
+
+### Abaixo do ápice a queda é suave, e o que acaba é a energia
+
+| massa (pedra) | tamanho | alcance | energia na saída | energia a 20 m | efeito |
+|---|---|---|---|---|---|
+| 2 g | 1,1 cm | 94 m | 4 J | 2 J | não machuca |
+| 5 g | 1,5 cm | 114 m | 10 J | 6 J | dói |
+| 10 g | 1,9 cm | 130 m | 20 J | 13 J | dói |
+| 20 g | 2,4 cm | 145 m | 38 J | 28 J | machuca de verdade |
+| 50 g | 3,3 cm | 164 m | 88 J | 69 J | machuca de verdade |
+| 100 g | 4,2 cm | 170 m | 157 J | 129 J | quebra osso |
+| 500 g | 7,2 cm | 131 m | 415 J | 362 J | quebra osso |
+| 1 kg | 9,0 cm | 94 m | 523 J | 462 J | quebra osso |
+
+(referências: picada 5 J, flecha de arco 60 J, soco forte 150 J)
+
+Uma pedrinha de 2 gramas voa 94 metros e chega com 2 joules. **O que morre na ponta
+leve não é o alcance, é a carga.** É esse o limite que faz sentido para o jogo: abaixo
+de uns 20 g o objeto vai longe e não faz nada.
+
+### Ressalva
+
+O modelo de um k só exagera na ponta pesada: extrapolado com k = 0,35 ele daria 94 m
+para 1 kg, e a melhor marca real com 1 kg é 37 m (arremesso de peso). A diferença é a
+troca de técnica, que já está na seção 3. A conclusão da ponta leve continua de pé
+porque cai **dentro** da janela medida, de 46 g a 430 g, e o que a estende para baixo
+é física de arrasto, que é bem conhecida.
+
 ## Fontes
 
 - [Guinness · Longest baseball throw](https://www.guinnessworldrecords.com/world-records/64701-longest-baseball-throw-male)
@@ -403,3 +476,7 @@ que é a articulação mais fraca da cadeia, e ainda sair com velocidade.
 - [BarBend · press no eixo de 218 kg, Mitchell Hooper](https://barbend.com/news/axle-press-world-record-mitchell-hooper-2024-strongman-classic/)
 - [Fitness Volt · agachamento raw de 525 kg, Vlad Alhazov](https://fitnessvolt.com/31744/powerlifter-vlad-alhazov-squats-525-kg/)
 - [Wikipedia · Paul Anderson e o back lift de 2840 kg (contestado)](https://en.wikipedia.org/wiki/Paul_Anderson_(weightlifter))
+- [RecordSetter · bola de golfe a 170 jardas, Roald Bradstock](https://recordsetter.com/world-record/world-record-for-throwing-golf-ball/7349)
+- [Roald Bradstock · lista de marcas com objetos variados](https://roaldbradstock.net/roald/accomplishment/)
+- [Wikipedia · Mobile phone throwing (110,42 m, Dries Feremans)](https://en.wikipedia.org/wiki/Mobile_phone_throwing)
+- [Guinness · carta de baralho a 65,96 m, Rick Smith Jr.](https://www.guinnessworldrecords.com/world-records/farthest-throw-of-a-playing-card)

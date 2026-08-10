@@ -247,6 +247,15 @@
       <div>
         <h3 class="tit" style="margin-top:8px">A massa efetiva do corpo, por técnica</h3>
         <table class="famtbl" id="famtbl"></table>
+        <h3 class="tit" style="margin-top:18px">O ápice não fica em 1 kg · e não é a massa que manda, é a densidade</h3>
+        <table class="famtbl" id="apicetbl"></table>
+        <p class="nota">Trajetória integrada com arrasto de verdade, com a velocidade de saída
+          calibrada no recorde do beisebol. O que decide não é a massa e sim a razão entre ela
+          e a área frontal: <b>a mesma massa em chumbo voa o dobro do que em madeira</b>. Abaixo
+          do ápice a distância cai devagar, mas a energia que chega ao alvo desaba: uma pedrinha
+          de 2 g ainda voa 94 m e entrega 2 J a 20 m, que não machuca ninguém. É a energia que
+          acaba primeiro, não o alcance.</p>
+
         <p class="nota">Ajuste de <b>v² = A/(m + k)</b> dentro de cada família, que é a mesma
           fórmula do sistema escrita em velocidade. O <b>k</b> é quanto de corpo acelera junto
           com o objeto: chicote de braço move a mão, empurrão de ombro move o tronco, duas mãos
@@ -465,6 +474,11 @@ const FAM = {
 // o campo `serie` marca os conjuntos homogêneos: mesmo atleta (ou mesma prova),
 // mesma técnica, mesmo implemento, só a massa mudando. Só neles o ajuste vale.
 const REC = [
+  ['Bola de golfe · Bradstock',      0.0459,155.45, 'd', 2.00, 'chicote', '170 jardas; passa o beisebol', 'brad'],
+  ['iPod classic · Bradstock',       0.140, 140.82, 'd', 2.00, 'chicote', '154 jardas', ''],
+  ['Celular · Bradstock',            0.150, 120.70, 'd', 2.00, 'chicote', '132 jardas', 'brad'],
+  ['Celular · Feremans (Guinness)',  0.170, 110.42, 'd', 2.00, 'chicote', 'recorde oficial', ''],
+  ['Bola de futebol · Bradstock',    0.430,  75.00, 'd', 2.00, 'chicote', '82 jardas, uma mão', 'brad'],
   ['Beisebol · Gorbous 1957',        0.145, 135.89, 'd', 2.00, 'chicote', 'corrida, vento a favor', ''],
   ['Criquete · Percival 1882',       0.155, 128.60, 'd', 2.00, 'chicote', 'contestado', ''],
   ['Criquete · melhor amador 2001',  0.155,  80.40, 'd', 2.00, 'chicote', 'torneio moderno', ''],
@@ -503,9 +517,11 @@ const REC = [
   ['Dardo atual · Železný 1996',     0.800,  98.48, 'd', 2.00, 'aero', 'modelo atual', ''],
   ['Disco · Alekna 2025',            2.000,  75.56, 'd', 1.50, 'aero', 'plana', ''],
   ['Bumerangue · Schummy 2005',      0.100, 427.20, 'd', 1.80, 'aero', 'plana, volta', ''],
+  ['Carta de baralho · Smith Jr.',   0.0018, 65.96, 'd', 1.80, 'aero', 'gira, plana como um disco', ''],
 ];
 // as séries que valem ajuste, e a estimativa do chicote
 const SER = {
+  brad:    { nome:'Roald Bradstock · 46 g a 430 g',     fam:'chicote' },
   gill:    { nome:'Jacko Gill · peso, 1 a 8 kg',        fam:'ombro' },
   braemar: { nome:'Pedra Braemar · parado',             fam:'ombro' },
   mckim:   { nome:'Dan McKim · martelo escocês',        fam:'cabo'  },
@@ -612,7 +628,11 @@ const dCorr = (w, f) => dist(w, f) * (1 + M.corrida * vel(w, f));
 const n1  = (v) => (v >= 100 ? Math.round(v) : Math.round(v*10)/10).toString().replace('.', ',');
 const kg  = (v) => n1(v) + ' kg';
 const pc  = (v) => Math.round(v*100) + '%';
-const fw  = (w) => (w >= 10 ? Math.round(w) : Math.round(w*100)/100).toString().replace('.', ',');
+// precisão que acompanha a ordem de grandeza: com duas casas fixas, os gramas do
+// pé esquerdo do eixo (2 g, 5 g) arredondavam todos para zero
+const fw  = (w) => (w >= 10 ? Math.round(w)
+                 : w >= 0.1 ? Math.round(w*100)/100
+                 : Math.round(w*1000)/1000).toString().replace('.', ',');
 const teto = (v) => v <= 0 ? 1 : v < 10 ? Math.ceil(v)
            : v < 100 ? Math.ceil(v/5)*5 : v < 500 ? Math.ceil(v/10)*10 : Math.ceil(v/50)*50;
 const ATRS = [['forca','Força'],['atletismo','Atletismo'],['arremesso','Arremesso'],['halterofilismo','Halterofilismo']];
@@ -928,7 +948,7 @@ const fxB = fml, fxR = FW - fmr, fyT = fmt, fyB = FH - fmb;
 const fpw = fxR - fxB, fph = fyB - fyT;
 // vai até 600 kg para caber o teto do levantamento terra: é lá que a regra de hoje
 // põe a parede, e o gráfico precisa mostrar quanto isso fica longe do que se arremessa
-const MASSA = [0.08, 600];
+const MASSA = [0.0015, 600];
 // o que o corpo humano consegue fazer com cada peso, do mais exigente ao menos
 // (a pedra de atlas sobre barra de 1,2 m, 286 kg, fica de fora do gráfico: em log
 // ela encosta na do levantamento acima da cabeça e os dois rótulos se atropelam)
@@ -954,6 +974,18 @@ const ESCADA = [
 ];
 const P_REF = 510;   // o levantamento terra, contra o qual as frações são medidas
 
+// Onde fica o ápice de alcance, por densidade do objeto. Sai da integração da
+// trajetória com arrasto (Cd 0,47 a 0,50, esfera), com a velocidade de saída
+// v² = 1411/(m + 0,35) calibrada no recorde do beisebol.
+// [material, densidade, ápice em g, alcance no ápice, alcance com 2 g, com 1 kg]
+const APICE = [
+  ['Chumbo',  11340,  58, 245, 172, 103],
+  ['Ferro',    7800,  65, 227, 151, 101],
+  ['Pedra',    2600, 109, 170,  94,  94],
+  ['Madeira',   700, 185, 114,  52,  80],
+  ['Cortiça',   240, 283,  78,  31,  64],
+];
+
 // marcador com forma própria por família: a cor sozinha não pode carregar a
 // identidade, e sob daltonismo o par verde/laranja fica no limite
 function marcador(forma, x0, y0, cor, vazado){
@@ -976,7 +1008,8 @@ function plotFatos(alvo, campo, faixaY, rotY, ajustes){
   const dentroY = (v) => v >= faixaY[0] && v <= faixaY[1];
 
   let s = '';
-  const marcasX = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].filter((v) => v >= MASSA[0] && v <= MASSA[1]);
+  const marcasX = [0.002, 0.005, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500]
+    .filter((v) => v >= MASSA[0] && v <= MASSA[1]);
   for (const v of marcasX){
     s += `<line class="grid" x1="${X(v).toFixed(1)}" y1="${fyT}" x2="${X(v).toFixed(1)}" y2="${fyB}"/>`
        + `<text x="${X(v).toFixed(1)}" y="${fyB+14}" text-anchor="middle">${fw(v)}</text>`;
@@ -1104,16 +1137,8 @@ function pintaFatos(){
     aj.h = pts.reduce((t, p) => t + p.h, 0)/pts.length;
     ajustes[id] = aj;
   }
-  // O chicote não tem série: beisebol e criquete pesam quase o mesmo, e ajuste em
-  // faixa nula não existe. Fica a estimativa por velocidade de soltura medida
-  // (beisebol de elite ~45 m/s com 0,145 kg, dardo ~30 m/s com 0,8 kg), ancorada
-  // no recorde do Gorbous. Entra tracejada e marcada como estimativa.
-  const anc = PTS.find((p) => p.serie === '' && p.fam === 'chicote');
-  const kEst = (0.8 - 0.145*2.25)/(2.25 - 1);
-  ajustes.chicoteEst = { A: anc.v*anc.v*(anc.m + kEst), k: kEst, r2: NaN, n: 0,
-    faixa: [0.1, 2], fam: 'chicote', h: 2.0, estimativa: true,
-    nome: 'Por cima, uma mão · estimativa' };
-
+  // (o chicote já não precisa de estimativa: a série do Bradstock cobre de 46 g a
+  // 430 g com o mesmo atleta, que é faixa de sobra para ajustar o k de verdade)
   plotFatos('wR', 'r', [2, 500], 'Alcance (m)', ajustes);
   plotFatos('wV', 'v', [3, 50], 'Velocidade de saída (m/s)', ajustes);
 
@@ -1130,7 +1155,7 @@ function pintaFatos(){
          hipérbole do Gill sem parede</span>`
     + `<span style="color:var(--muted);font-size:.74rem">marcador vazado = marca de altura, não de distância</span>`;
 
-  const ordem = ['chicoteEst', 'gill', 'braemar', 'mckim', 'tyler', 'barril', 'stein'];
+  const ordem = ['brad', 'gill', 'braemar', 'mckim', 'tyler', 'barril', 'stein'];
   const linhas = ordem.map((id) => {
     const a = ajustes[id]; if (!a) return '';
     const f = FAM[a.fam];
@@ -1153,6 +1178,14 @@ function pintaFatos(){
   }).join('');
   document.getElementById('famtbl').innerHTML =
     `<thead><tr><th>série</th><th>pontos</th><th>faixa</th><th>k</th><th>qualidade</th></tr></thead><tbody>${linhas}</tbody>`;
+
+  document.getElementById('apicetbl').innerHTML =
+    `<thead><tr><th style="text-align:left">material</th><th>densidade</th><th>ápice</th>
+      <th>alcance no ápice</th><th>a 2 g</th><th>a 1 kg</th></tr></thead><tbody>`
+    + APICE.map(([mat, rho, apg, apm, g2, kg1]) =>
+        `<tr><td style="text-align:left">${mat}</td><td>${rho} kg/m³</td>
+          <td><b>${apg} g</b></td><td><b>${apm} m</b></td><td>${g2} m</td><td>${kg1} m</td></tr>`).join('')
+    + `</tbody>`;
 
   const esc = ESCADA.map(([nome, kg, sobe, fim, quem, nota]) => {
     const fr = kg/P_REF, arr = nome.startsWith('ARREMESSAR');
