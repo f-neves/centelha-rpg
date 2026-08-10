@@ -264,8 +264,9 @@
       </div>
       <div class="regrapar">
         <div class="eq big">Alcance <span class="op">=</span>
-          <input class="num w3" type="number" data-p="rConst" min="0.5" max="6" step="0.1">
-          <span class="op">×</span> FAA <span class="op">÷</span> massa<sup><input class="num w3" type="number" data-p="rExpMeio" min="0.2" max="1" step="0.01"></sup>
+          <input class="num w5" type="number" data-p="rConst" min="0.5" max="20" step="0.01">
+          <span class="op">×</span> FAA<sup><input class="num w3" type="number" data-p="rExpFaa" min="0.2" max="1.5" step="0.01"></sup>
+          <span class="op">÷</span> massa<sup><input class="num w3" type="number" data-p="rExpMeio" min="0.2" max="1" step="0.01"></sup>
         </div>
         <div class="warn">É a faixa do meio, que vale da maioria dos objetos. Abaixo do ápice
           e perto do teto entram os outros dois regimes.</div>
@@ -320,6 +321,36 @@
         <p class="nota" data-out="erronota"></p>
       </div>
     </div>
+  </div>
+
+  <div class="card regra">
+    <h3 class="tit">Levantamento · FAH × peso máximo, nas duas alturas</h3>
+    <div class="regragrid">
+      <div>
+        <div class="fa-chartwrap" id="wL"></div>
+        <div class="regraleg" id="levleg"></div>
+      </div>
+      <div class="regrapar">
+        <div class="eq big">FAH <span class="op">=</span> 3 <span class="op">×</span> Força
+          <span class="op">+</span> Halterofilismo</div>
+        <div class="pgrp">
+          <b>As duas alturas</b>
+          <div class="fld"><label>acima da cabeça, em frações do chão</label>
+            <input type="range" data-p="fracAcima" min="0.2" max="1" step="0.01">
+            <span class="val" data-v="fracAcima"></span></div>
+          <div class="warn">A curva de baixo é o levantamento terra, que é a tabela de P do
+            sistema. A de cima da cabeça é uma fração dela, medida nos recordes: 267 kg de
+            arremesso olímpico contra 510 de terra dá <b>0,52</b>. Confere dentro de um atleta
+            só: Björnsson tem 510 de terra e 213 de log lift, ou <b>0,42</b> do próprio terra.
+            Os pontos marcados são recordes reais no FAH 24.</div>
+        </div>
+        <div class="pgrp">
+          <b>A escada completa</b>
+          <div class="warn" data-out="levnota"></div>
+        </div>
+      </div>
+    </div>
+    <div style="overflow-x:auto;margin-top:12px"><table class="famtbl" id="levtbl"></table></div>
   </div>
 
   <div class="card fatos">
@@ -538,8 +569,8 @@ const SITE = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
                q:0.70, pexp:1, m0:1, fexp:2, wpiv:1, r0:136, r0exp:0.70,
                vexp:1.5, corrida:1/3, giro:1/6, escala:true,
                // a regra nova (Arremesso_Regra.md)
-               rConst:2, rExpMeio:0.5, rApice:0.10, rExpLeve:0.15,
-               rTeto:0.25, rQueda:0.80, gxMax:150, gEsc:'lin' };
+               rConst:6.79, rExpFaa:0.64, rExpMeio:0.5, rApice:0.10, rExpLeve:0.15,
+               rTeto:0.25, rQueda:0.80, gxMax:150, gEsc:'lin', fracAcima:0.52 };
 const M = Object.assign({}, SITE);
 
 /* As duas referências. Tudo na página sai daqui: FAA, FAH, peso máximo, teto de
@@ -1036,9 +1067,12 @@ function pintaFormula(){
 function alcanceRegra(faa, m, P, forma = 1){
   const ap = M.rApice, L = M.rTeto*P, q = M.rQueda;
   if (m <= 0 || m > L) return 0;
+  // FAA entra com expoente, não linear: dobrar a reserva NÃO dobra o alcance.
+  // Linear, o adulto comum saía com metade do que joga de verdade.
+  const cab = M.rConst*Math.pow(faa, M.rExpFaa);
   const base = m < ap
-    ? (M.rConst*faa/Math.pow(ap, M.rExpMeio)) * Math.pow(m/ap, M.rExpLeve)
-    : M.rConst*faa/Math.pow(m, M.rExpMeio);
+    ? (cab/Math.pow(ap, M.rExpMeio)) * Math.pow(m/ap, M.rExpLeve)
+    : cab/Math.pow(m, M.rExpMeio);
   const parede = m > q*L ? (L - m)/((1 - q)*L) : 1;
   return base*parede*forma;
 }
@@ -1056,7 +1090,12 @@ const CONF = [
   ['Barril 25 kg (equiv.)',     25.000,   12.12, 20, 500],
   ['Pedra suíça 61 kg',         61.250,    4.66, 18, 400],
   ['Unspunnen 83,5 kg',         83.500,    4.16, 18, 400],
-  ['Beisebol · destreinado',     0.145,   25.00,  5, 150],
+  // A âncora da ponta comum. Havia duas leituras em conflito: uma fonte dizia 18 a
+  // 27 m e outras duas diziam 40 a 60. Quem desempata é a velocidade, que é medida
+  // e não estimada: adulto comum solta a bola perto de 55 mph, ou 24,6 m/s, e isso
+  // integrado com arrasto dá 50 m. Os 25 m que eu usava antes eram a fonte torta, e
+  // eram eles que empurravam o FAA para entrar linear.
+  ['Beisebol · adulto comum',    0.145,   50.00,  5, 150],
 ];
 const TABPESO = [
   [0.01, 'moeda, pedrinha'], [0.05, 'bola de golfe'], [0.1, 'ovo, pedra pequena'],
@@ -1290,6 +1329,94 @@ function pintaRegra(){
       `Erro médio absoluto <b class="${med <= 20 ? 'bom' : 'ruim'}">${Math.round(med)}%</b>, pior caso `
     + `<b class="${pior <= 40 ? '' : 'ruim'}">${Math.round(pior)}%</b>. O FAA e o P de cada atleta são `
     + `estimados por julgamento, não medidos: a conferência mede a forma da curva, não a calibração fina.`;
+}
+
+// ---------------------------------------------------------------- levantamento
+/* FAH × peso máximo, nas duas alturas que importam. A de baixo é a tabela de P do
+   sistema (chão até o quadril). A de cima é uma fração dela: erguer acima da cabeça
+   custa cerca de metade, e isso sai dos recordes (267 kg de arremesso olímpico
+   contra 510 de levantamento terra) e confere dentro de um atleta só (Björnsson,
+   510 de terra e 213 de log lift). Detalhes em Arremesso_Fatos.md, seção 9. */
+const LEVREC = [
+  ['Levantamento terra · Björnsson 2025', 510, 'chao'],
+  ['Arremesso olímpico · Talakhadze 2021', 267, 'cabeca'],
+  ['Log lift · Iron Biby 2024',            231, 'cabeca'],
+];
+function plotLev(){
+  const W = 580, H = 300, ml = 50, mr = 16, mt = 16, mb = 34;
+  const xB = ml, xR = W - mr, yT = mt, yB = H - mb, pw = xR - xB, ph = yB - yT;
+  const FAH0 = 3, FAH1 = 24;
+  const X = (f) => xB + ((f - FAH0)/(FAH1 - FAH0))*pw;
+  const chao = (f) => dP('3f', f);
+  const cabeca = (f) => M.fracAcima*chao(f);
+  const pico = Math.max(chao(FAH1), ...LEVREC.map((r) => r[1]));
+  const pY = passoBom(pico, 5), yMax = Math.ceil(pico/pY)*pY;
+  const Y = (kg) => yB - (Math.max(0, Math.min(kg, yMax))/yMax)*ph;
+
+  let s = '';
+  for (let v = 0; v <= yMax + pY*1e-6; v += pY){
+    s += `<line class="grid" x1="${xB}" y1="${Y(v).toFixed(1)}" x2="${xR}" y2="${Y(v).toFixed(1)}"/>`
+       + `<text x="${xB-6}" y="${(Y(v)+3).toFixed(1)}" text-anchor="end">${Math.round(v)}</text>`;
+  }
+  for (let f = FAH0; f <= FAH1; f += 3){
+    s += `<line class="grid" x1="${X(f).toFixed(1)}" y1="${yT}" x2="${X(f).toFixed(1)}" y2="${yB}"/>`
+       + `<text x="${X(f).toFixed(1)}" y="${yB+14}" text-anchor="middle">${f}</text>`;
+  }
+  const traco = (fn) => {
+    const pts = [];
+    for (let f = FAH0; f <= FAH1; f++) pts.push(`${X(f).toFixed(1)},${Y(fn(f)).toFixed(1)}`);
+    return pts.join(' ');
+  };
+  s += `<polyline class="rmedio" points="${traco(cabeca)}"/>`
+     + `<polyline class="rtopo" points="${traco(chao)}"/>`;
+  // um ponto por degrau de FAH: a reserva é inteira, a curva entre eles não existe
+  for (let f = FAH0; f <= FAH1; f++){
+    s += `<circle class="fa-dot" cx="${X(f).toFixed(1)}" cy="${Y(chao(f)).toFixed(1)}" r="2.4"/>`
+       + `<circle class="fa-dot" cx="${X(f).toFixed(1)}" cy="${Y(cabeca(f)).toFixed(1)}" r="2.4"/>`;
+  }
+  // os recordes reais, todos no FAH 24
+  for (const [nome, kg, tipo] of LEVREC){
+    const x = X(FAH1), y = Y(kg);
+    s += `<circle class="rreal" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4"/>`
+       + `<text class="zonalbl" x="${(x-6).toFixed(1)}" y="${(y-5).toFixed(1)}" text-anchor="end">${kg} kg · ${nome.split(' · ')[0]}</text>`;
+  }
+  // as duas fichas, marcadas onde caem
+  for (const f of FICHAS){
+    const fh = fah(f), x = X(fh);
+    s += `<line class="lim" x1="${x.toFixed(1)}" y1="${yT}" x2="${x.toFixed(1)}" y2="${yB}"/>`
+       + `<text class="zonalbl" transform="rotate(-90 ${(x-3).toFixed(1)} ${yB-4})" x="${(x-3).toFixed(1)}" y="${yB-4}">${f.nome} · FAH ${fh}</text>`;
+  }
+  s += `<text class="rlbl" x="${(X(FAH1*0.55)).toFixed(1)}" y="${(Y(chao(Math.round(FAH1*0.55)))-8).toFixed(1)}">do chão (terra)</text>`
+     + `<text class="rlbl" x="${(X(FAH1*0.55)).toFixed(1)}" y="${(Y(cabeca(Math.round(FAH1*0.55)))-8).toFixed(1)}">acima da cabeça</text>`
+     + `<line class="axis" x1="${xB}" y1="${yT}" x2="${xB}" y2="${yB}"/>`
+     + `<line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>`
+     + `<text class="axlbl" x="${(xB+xR)/2}" y="${H-4}" text-anchor="middle">FAH = 3 × Força + Halterofilismo</text>`
+     + `<text class="axlbl" transform="rotate(-90 11 ${mt+ph/2})" x="11" y="${mt+ph/2}" text-anchor="middle">Peso máximo (kg)</text>`;
+  document.getElementById('wL').innerHTML =
+    `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Peso máximo levantado por FAH, do chão e acima da cabeça">${s}</svg>`;
+}
+
+function pintaLev(){
+  plotLev();
+  document.getElementById('levleg').innerHTML =
+      `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2.5"/></svg>do chão até o quadril (terra)</span>`
+    + `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/></svg>acima da cabeça</span>`
+    + `<span><svg viewBox="0 0 20 12"><circle cx="10" cy="6" r="3.4" fill="var(--ink-soft)" opacity=".45"/></svg>recordes reais</span>`;
+  document.querySelector('[data-out="levnota"]').innerHTML = ESCADA.map(([nome, kg, sobe, fim]) =>
+    `${nome.split(' · ')[0]} <b>${vg(kg/P_REF, 2)} × P</b>`).join(' · ');
+  const linhas = [];
+  for (let f = 3; f <= 24; f++){
+    const p = dP('3f', f), F = Math.ceil((f - 6)/3) >= 0 ? null : null;
+    linhas.push(`<tr><td>${f}</td><td>${Math.round(p)} kg</td><td>${Math.round(M.fracAcima*p)} kg</td>`
+      + `<td>${Math.round(M.rTeto*p)} kg</td>`
+      + `<td style="text-align:left;color:var(--muted)">${
+          FICHAS.filter((x) => fah(x) === f).map((x) => x.nome).join(', ')
+          || (f === 3 ? 'Força 1, sem treino' : f === 6 ? 'Força 2, sem treino' : f === 9 ? 'Força 3, sem treino' : '')
+        }</td></tr>`);
+  }
+  document.getElementById('levtbl').innerHTML =
+    `<thead><tr><th>FAH</th><th>do chão</th><th>acima da cabeça</th><th>arremessa até</th>`
+    + `<th style="text-align:left">quem</th></tr></thead><tbody>${linhas.join('')}</tbody>`;
 }
 
 // ---------------------------------------------------------------- os fatos
@@ -1575,6 +1702,7 @@ function pinta(){
       M.escala ? yCom : teto(yCada[i]),
       M.escala ? pCom : pmax(f)));
   pintaRegra();
+  pintaLev();
   pintaCmp();
   pintaFormula();
   pintaFatos();
@@ -1628,9 +1756,11 @@ const FMT = {
   rTeto:   (v) => 'P/' + (1/v).toFixed(1).replace('.', ','),
   rQueda:  (v) => Math.round(v*100)+'%',
   gxMax:   (v) => v + ' kg',
+  rExpFaa: (v) => vg(v, 2),
+  fracAcima:(v) => vg(v, 2) + ' × P',
 };
 const CAMPO = { corrida: 3, giro: 3, r0exp: 2, bexp: 3, vexp: 2, m0: 2, wpiv: 1, fexp: 1, pexp: 1, q: 2,
-                rConst: 1, rExpMeio: 2, rApice: 2, rExpLeve: 2, rTeto: 2, rQueda: 2 };
+                rConst: 2, rExpFaa: 2, rExpMeio: 2, rApice: 2, rExpLeve: 2, rTeto: 2, rQueda: 2, fracAcima: 2 };
 const numFmt = (chave, v) => CAMPO[chave] != null ? +v.toFixed(CAMPO[chave]) : v;
 
 function sync(exceto){
