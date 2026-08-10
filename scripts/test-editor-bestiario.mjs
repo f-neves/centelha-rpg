@@ -24,6 +24,15 @@ try{
   const erros=[]; page.on('pageerror',(e)=>erros.push(String(e)));
   await page.goto(`${url}/bestiario`,{waitUntil:'networkidle0'});
 
+  // O PORTAO: sem administrador, os botoes nao aparecem.
+  const visivelDeslogado = await page.evaluate(()=>{
+    const b=document.querySelector('.besta-editar');
+    return !!b && getComputedStyle(b).display!=='none';
+  });
+  ok(!visivelDeslogado,'deslogado NAO ve o botao Editar');
+  // dali em diante o teste finge ser admin, que e o caso que interessa exercitar
+  await page.evaluate(()=>document.body.classList.add('pode-editar'));
+
   const nCards=(await page.$$('.besta')).length, nEdit=(await page.$$('.besta-editar')).length;
   ok(nCards>300&&nEdit===nCards,`botao Editar em todas as criaturas (${nEdit} de ${nCards})`);
   ok(!!(await page.$('#mon-exemplo-espantalho')),'criatura do inimigos-custom.json aparece no bestiario');
@@ -53,13 +62,21 @@ try{
   ok(pv0==='75',`PV derivado bate com o card, respeitando o porte Enorme (${pv0})`);
 
   // os derivados do modal tem de bater com o bloco impresso no card, sem excecao
+  // Casa por RÓTULO, nunca por posição: o painel de derivados cresceu e um índice
+  // fixo passou a comparar Iniciativa com outra coisa.
   const bate=await page.evaluate(()=>{
     const card=document.getElementById('mon-treant');
-    const dd=[...card.querySelectorAll('.besta-stats dd')].map(e=>e.textContent.trim());
-    const ed=[...document.querySelectorAll('#ed-der dd')].map(e=>e.textContent.trim());
-    return { pv:[dd[0],ed[0]], defesa:[dd[1],ed[1]], social:[dd[2],ed[2]], mental:[dd[3],ed[3]], ini:[dd[5],ed[5]] };
+    const doCard={}; card.querySelectorAll('.besta-stats div').forEach(d=>{
+      doCard[d.querySelector('dt').textContent.trim()]=d.querySelector('dd').textContent.trim();
+    });
+    const doModal={}; document.querySelectorAll('#ed-der div').forEach(d=>{
+      doModal[d.querySelector('dt').textContent.trim()]=d.querySelector('dd').textContent.trim();
+    });
+    const par={};
+    for (const k of ['PV','Defesa','Def. Social','Def. Mental','Iniciativa']) par[k]=[doCard[k],doModal[k]];
+    return par;
   });
-  for (const [k,[a,b]] of Object.entries(bate)) ok(a===b, `${k}: card ${a} = modal ${b}`);
+  for (const [k,[a,b]] of Object.entries(bate)) ok(a!=null&&a===b, `${k}: card ${a} = modal ${b}`);
 
   // muda o Vigor e ve o PV recalcular
   await page.$eval('[data-ed="atributos.vigor"]',(e)=>{e.value='10';e.dispatchEvent(new Event('input',{bubbles:true}));});

@@ -5,6 +5,7 @@ import { url } from '../lib/site';
 import { loadData } from '../lib/data';
 import monsters from '../data/monsters.json';
 import BestiaEditor from '../components/BestiaEditor.astro';
+import armasCat from '../data/armas.json';
 const d = await loadData();
 // Fonte ÚNICA da página: monsters.json (gerado por scripts/gen-monsters.mjs a partir dos arquivos-fonte).
 const inimigos = ([...monsters] as any[]).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
@@ -60,6 +61,20 @@ const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
 const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
 // tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
 const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || (i.tecnicas?.length) || (i.artes?.length) || i.notas);
+
+// Opções do editor colhidas do bestiário e da data viva INTEIROS: o form oferece o
+// que já existe (categorias, etiquetas, tipos de ecologia, perícias, armas) em vez
+// de pedir que se digite do zero e se invente um vocabulário paralelo ao do livro.
+const opcoesEditor = {
+  categorias: categoriasUsadas,
+  tags: [...new Set(inimigos.flatMap((i) => i.tags || []))].sort(),
+  ecoTipos: [...new Set(inimigos.map((i) => i.ecologia?.tipo).filter(Boolean))].sort() as string[],
+  terrenos: terrenosUsados,
+  climas: climasUsados,
+  atributos: ATR.map(([k]) => k),
+  pericias: [...new Set([...d.habilidades.map((h) => h.id), ...d.secundarias.map((s) => s.id)])].sort(),
+  armas: [...armasCat].map((a) => ({ id: a.id, nome: a.nome })).sort((a, b) => a.nome.localeCompare(b.nome, 'pt')),
+};
 ---
 <Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — do goblin ao dragão ancião, com blocos de combate calculados, arte de referência e poderes traduzidos em Proezas e Feitiçarias.">
   <h1>Bestiário & NPCs</h1>
@@ -136,7 +151,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
            senão o modal abriria com 0 e mostraria uma Defesa Mental que não é a da criatura. */
         integridade: Math.max(0, (i.combate.defesaMental === '-' ? 0 : i.combate.defesaMental) - (i.atributos?.raciocinio ?? 0) - (i.vontade ?? 0) - (i.centelha ?? 0)),
         /* Prontidão: mesma história, invertida da Iniciativa (= 1d6 + Raciocínio + Prontidão). */
-        prontidao: Math.max(0, Number(/\+\s*(\d+)/.exec(String(i.combate.iniciativa))?.[1] ?? 0) - (i.atributos?.raciocinio ?? 0)), fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], notas: i.notas || '' })}>
+        prontidao: Math.max(0, Number(/\+\s*(\d+)/.exec(String(i.combate.iniciativa))?.[1] ?? 0) - (i.atributos?.raciocinio ?? 0)), fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
 
         <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
           {i.imagem
@@ -281,7 +296,7 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     </div>
   </div>
 
-  <BestiaEditor />
+  <BestiaEditor opcoes={opcoesEditor} />
 </Base>
 
 <style>

@@ -1,0 +1,23 @@
+{
+  "_nota": "Vocabulário de fraquezas e resistências, e fonte ÚNICA dele: o validador falha o build em palavra que não esteja aqui, o gen-elementos semeia com ela e o editor do /bestiario desenha os botões nesta ordem e com estes rótulos. Para OFICIALIZAR uma palavra nova, acrescente-a ao grupo certo e ponha o rótulo em `rotulos`. O editor também aceita palavra avulsa direto na criatura (campo `fraquezas`/`resistencias` do inimigos-custom.json), que vale sem estar aqui; a diferença é que a palavra daqui aparece como botão para todas as criaturas.",
+  "grupos": [
+    {
+      "nome": "Elementos",
+      "palavras": ["fogo", "agua", "gelo", "raio", "vento", "terra", "luz", "sombra"]
+    },
+    {
+      "nome": "Dano físico",
+      "palavras": ["corte", "perfuracao", "impacto"]
+    },
+    {
+      "nome": "Natureza e material",
+      "palavras": ["sagrado", "profano", "prata", "sol"]
+    }
+  ],
+  "rotulos": {
+    "fogo": "Fogo", "agua": "Água", "gelo": "Gelo", "raio": "Raio", "vento": "Vento",
+    "terra": "Terra", "luz": "Luz", "sombra": "Sombra",
+    "corte": "Corte", "perfuracao": "Perfuração", "impacto": "Impacto",
+    "sagrado": "Sagrado", "profano": "Profano", "prata": "Prata", "sol": "Sol"
+  }
+}

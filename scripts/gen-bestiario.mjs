@@ -95,6 +95,21 @@ function stat(b) {
     notas: b.notas || '', pendente: b.pendente ?? false,
   };
   if (b.poderes && b.poderes.length) out.poderes = b.poderes;
+
+  // Bônus nos valores fixos. Existem porque nem toda criatura cabe na fórmula: um
+  // couro grosso, uma casca, um corpo que simplesmente aguenta mais. O bônus SOMA
+  // ao calculado em vez de substituí-lo, então a criatura continua ancorada na
+  // régua e a diferença fica visível para quem for reequilibrar depois.
+  const bn = b.bonus || {};
+  if (bn.pv) out.pv += bn.pv;
+  if (bn.defesa) out.defesa += bn.defesa;
+  if (bn.defesaSocial && out.defesaSocial !== '-') out.defesaSocial += bn.defesaSocial;
+  if (bn.defesaMental && out.defesaMental !== '-') out.defesaMental += bn.defesaMental;
+  if (bn.vontade) out.vontade += bn.vontade;
+  if (bn.resistPerf) out.resistPerf += bn.resistPerf;
+  if (bn.iniciativa) out.iniciativa = `1d6 + ${ini + bn.iniciativa}`;
+  if (bn.absorcao) for (const m of SOAKCATS) out.soak[m] += bn.absorcao;
+  for (const m of SOAKCATS) if (bn[`absorcao_${m}`]) out.soak[m] += bn[`absorcao_${m}`];
   return out;
 }
 // categoria dos NPCs feitos à mão (pelos tags), quando não vem explícita

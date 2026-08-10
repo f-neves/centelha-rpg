@@ -2,21 +2,29 @@
 // Editor de criatura: um modal que abre com os dados da criatura preenchidos e
 // recalcula os derivados ao vivo, pelas mesmas fórmulas dos personagens.
 //
-// Onde as edições ficam: no NAVEGADOR (localStorage), por criatura. A página é
-// estática e não escreve no repositório, então o modal também entrega o JSON
-// pronto para colar em `src/data/inimigos-custom.json`, que é o que faz a
-// criatura entrar no livro de verdade.
+// PORTÃO: só aparece para o administrador (`ehAdmin()` de src/lib/auth.ts). Como no
+// resto do site, é portão de INTERFACE e não de segurança: a página é estática e o
+// HTML existe para quem souber a URL. O que ele guarda são os botões, não segredo.
 //
-// O que se edita são os campos de ORIGEM (atributos, Vontade, porte, armadura,
-// fraquezas). PV, Defesa, Absorção e Iniciativa não se editam: são calculados,
-// e é isso que impede o bloco de sair fora da régua.
-import { VOCAB_ELEM, PORTE_LBL } from '../lib/bestia-editor';
+// Onde as edições ficam: no NAVEGADOR (localStorage), por criatura. A página não
+// escreve no repositório, então o modal também entrega o JSON pronto para colar em
+// `src/data/inimigos-custom.json`, que é o que faz a criatura entrar no livro.
+//
+// O que se edita são os campos de ORIGEM. PV, Defesa, Absorção e Iniciativa não se
+// digitam: são calculados. Quem precisa fugir da fórmula usa a seção de BÔNUS, que
+// soma ao calculado em vez de substituí-lo, e por isso continua visível.
+import { GRUPOS_ELEM, ROTULO_ELEM, PORTE_LBL, TIPOS_INIMIGO, ARMADURAS, MATERIAIS, TIPOS_DANO } from '../lib/bestia-editor';
 
-const ATRIB: [string, string][] = [
-  ['forca', 'Força'], ['destreza', 'Destreza'], ['vigor', 'Vigor'],
-  ['influencia', 'Influência'], ['perspicacia', 'Perspicácia'], ['compostura', 'Compostura'],
-  ['percepcao', 'Percepção'], ['inteligencia', 'Inteligência'], ['raciocinio', 'Raciocínio'],
-];
+interface Props {
+  /** Listas colhidas do bestiário inteiro, para o form oferecer o que já existe. */
+  opcoes: {
+    categorias: string[]; tags: string[]; ecoTipos: string[];
+    terrenos: { k: string; nome: string }[]; climas: { k: string; nome: string }[];
+    pericias: string[]; atributos: string[];
+    armas: { id: string; nome: string }[];
+  };
+}
+const { opcoes } = Astro.props;
 const PORTES = Object.keys(PORTE_LBL);
 ---
 
@@ -25,46 +33,154 @@ const PORTES = Object.keys(PORTE_LBL);
     <button class="ed-fechar" type="button" aria-label="Fechar">✕</button>
     <h3 id="ed-titulo" class="cinzel">Editar criatura</h3>
 
-    <div class="ed-grid">
-      <section class="ed-col">
-        <h4>Identidade</h4>
-        <label class="ed-f ed-wide">Nome <input type="text" data-ed="nome" /></label>
-        <label class="ed-f ed-wide">Conceito <input type="text" data-ed="conceito" placeholder="músculo pesado" /></label>
-        <label class="ed-f">Ameaça <input type="number" data-ed="ameaca" min="1" max="6" /></label>
-        <label class="ed-f">Centelha <input type="number" data-ed="centelha" min="0" max="10" /></label>
-        <label class="ed-f ed-wide">Porte
-          <select data-ed="porte">{PORTES.map((p) => <option value={p}>{PORTE_LBL[p]}</option>)}</select>
-        </label>
+    <nav class="ed-abas" role="tablist">
+      <button type="button" class="ed-aba" data-aba="quem" aria-selected="true">Quem é</button>
+      <button type="button" class="ed-aba" data-aba="numeros" aria-selected="false">Números</button>
+      <button type="button" class="ed-aba" data-aba="combate" aria-selected="false">Combate</button>
+      <button type="button" class="ed-aba" data-aba="mundo" aria-selected="false">Mundo</button>
+      <button type="button" class="ed-aba" data-aba="texto" aria-selected="false">Texto &amp; arte</button>
+    </nav>
 
+    <div class="ed-corpo">
+      <section class="ed-painel" data-painel="quem">
+        <div class="ed-grid">
+          <label class="ed-f ed-wide">Nome <input type="text" data-ed="nome" /></label>
+          <label class="ed-f ed-wide">Nome em inglês <input type="text" data-ed="nomeIngles" /></label>
+          <label class="ed-f ed-wide">Conceito <input type="text" data-ed="conceito" placeholder="músculo pesado" /></label>
+          <label class="ed-f ed-wide">Categoria <input type="text" data-ed="categoria" list="ed-dl-categorias" placeholder="Construto" /></label>
+          <label class="ed-f ed-wide">Papel em combate
+            <select data-ed="tipo">{TIPOS_INIMIGO.map((t) => <option value={t}>{t}</option>)}</select>
+          </label>
+          <label class="ed-f ed-wide">Porte
+            <select data-ed="porte">{PORTES.map((p) => <option value={p}>{PORTE_LBL[p]}</option>)}</select>
+          </label>
+          <label class="ed-f">Ameaça <input type="number" data-ed="ameaca" min="1" max="6" /></label>
+          <label class="ed-f">Centelha <input type="number" data-ed="centelha" min="0" max="10" /></label>
+        </div>
+        <label class="ed-f ed-wide">Descrição <textarea data-ed="descricao" rows="2"></textarea></label>
+        <h4>Etiquetas</h4>
+        <div class="ed-chips" id="ed-tags"></div>
+        <label class="ed-f ed-wide">Acrescentar etiqueta <input type="text" id="ed-tag-nova" list="ed-dl-tags" placeholder="digite e tecle Enter" /></label>
+      </section>
+
+      <section class="ed-painel" data-painel="numeros" hidden>
         <h4>Atributos</h4>
         <div class="ed-atr">
-          {ATRIB.map(([k, lbl]) => (
-            <label class="ed-f"><span>{lbl}</span><input type="number" data-ed={`atributos.${k}`} min="0" max="12" /></label>
+          {opcoes.atributos.map((k) => (
+            <label class="ed-f"><span class="ed-cap">{k}</span><input type="number" data-ed={`atributos.${k}`} min="0" max="12" /></label>
           ))}
         </div>
-
         <h4>Traços</h4>
-        <label class="ed-f">Vontade <input type="number" data-ed="vontade" min="0" max="12" /></label>
-        <label class="ed-f">Integridade <input type="number" data-ed="integridade" min="0" max="12" /></label>
-        <label class="ed-f" title="Única perícia aqui: ela entra na Iniciativa (1d6 + Raciocínio + Prontidão).">Prontidão <input type="number" data-ed="prontidao" min="0" max="12" /></label>
+        <div class="ed-atr">
+          <label class="ed-f"><span>Vontade</span><input type="number" data-ed="vontade" min="0" max="12" /></label>
+          <label class="ed-f"><span>Integridade</span><input type="number" data-ed="integridade" min="0" max="12" /></label>
+          <label class="ed-f"><span>Prontidão</span><input type="number" data-ed="prontidao" min="0" max="12" /></label>
+        </div>
+        <h4>Perícias <span class="ed-sub muted">(só as que a criatura usa)</span></h4>
+        <div class="ed-lista" id="ed-pericias"></div>
+        <button type="button" class="ed-mais" data-add="pericia">+ perícia</button>
+
+        <h4>Bônus <span class="ed-sub muted">(somam ao calculado, não substituem)</span></h4>
+        <p class="ed-nota muted">Para a criatura que não cabe na fórmula: um couro grosso, uma casca, um corpo que aguenta mais. Deixe em zero quando a fórmula bastar.</p>
+        <div class="ed-atr">
+          <label class="ed-f"><span>PV</span><input type="number" data-ed="bonus.pv" /></label>
+          <label class="ed-f"><span>Defesa</span><input type="number" data-ed="bonus.defesa" /></label>
+          <label class="ed-f"><span>Def. Social</span><input type="number" data-ed="bonus.defesaSocial" /></label>
+          <label class="ed-f"><span>Def. Mental</span><input type="number" data-ed="bonus.defesaMental" /></label>
+          <label class="ed-f"><span>Absorção</span><input type="number" data-ed="bonus.absorcao" /></label>
+          <label class="ed-f"><span>Resist. Perf.</span><input type="number" data-ed="bonus.resistPerf" /></label>
+          <label class="ed-f"><span>Vontade</span><input type="number" data-ed="bonus.vontade" /></label>
+          <label class="ed-f"><span>Iniciativa</span><input type="number" data-ed="bonus.iniciativa" /></label>
+        </div>
       </section>
 
-      <section class="ed-col">
+      <section class="ed-painel" data-painel="combate" hidden>
+        <label class="ed-f ed-wide">Armadura
+          <select data-ed="armadura">{ARMADURAS.map((a) => <option value={a.id}>{a.nome}</option>)}</select>
+        </label>
+
+        <h4>Ataques</h4>
+        <div class="ed-lista" id="ed-ataques"></div>
+        <div class="ed-mais-linha">
+          <button type="button" class="ed-mais" data-add="ataque">+ ataque</button>
+          <label class="ed-f">a partir de uma arma
+            <select id="ed-arma-catalogo">
+              <option value="">catálogo de armas…</option>
+              {opcoes.armas.map((a) => <option value={a.id}>{a.nome}</option>)}
+            </select>
+          </label>
+        </div>
+
         <h4>Fraquezas e resistências</h4>
         <p class="ed-nota muted">Clique para alternar: nada → <b class="ed-fr">fraqueza</b> → <b class="ed-re">resistência</b>. A fraqueza passa por cima de toda absorção e é agravada; a resistência corta pela metade.</p>
-        <div class="ed-elem">
-          {VOCAB_ELEM.map((k) => (
-            <button type="button" class="ed-el" data-el={k} data-estado="0">{k}</button>
-          ))}
+        {GRUPOS_ELEM.map((g) => (
+          <div class="ed-elem-grupo">
+            <span class="ed-elem-lbl">{g.nome}</span>
+            <div class="ed-elem">
+              {g.palavras.map((k) => (
+                <button type="button" class="ed-el" data-el={k} data-estado="0">{ROTULO_ELEM[k] ?? k}</button>
+              ))}
+            </div>
+          </div>
+        ))}
+        <div class="ed-elem-grupo">
+          <span class="ed-elem-lbl">Suas</span>
+          <div class="ed-elem" id="ed-elem-extra"></div>
         </div>
+        <label class="ed-f ed-wide">Acrescentar fraqueza ou resistência <input type="text" id="ed-el-nova" placeholder="digite e tecle Enter (ex.: ferro-frio)" /></label>
 
-        <h4>Notas</h4>
+        <label class="ed-f ed-wide">Material
+          <select data-ed="material">
+            <option value="">nenhum (vale só o que estiver marcado acima)</option>
+            {MATERIAIS.map((m) => <option value={m}>{m}</option>)}
+          </select>
+        </label>
+        <p class="ed-nota muted">Escolher um material <b>substitui</b> as marcações acima quando o gerador rodar: ele resolve fraqueza e resistência a partir dele.</p>
+      </section>
+
+      <section class="ed-painel" data-painel="mundo" hidden>
+        <div class="ed-grid">
+          <label class="ed-f ed-wide">Medida <input type="text" data-ed="dimensoes.medida" placeholder="1,8 m de altura" /></label>
+          <label class="ed-f ed-wide">Peso <input type="text" data-ed="dimensoes.peso" placeholder="40 kg" /></label>
+          <label class="ed-f ed-wide">Tipo (ecologia) <input type="text" data-ed="ecologia.tipo" list="ed-dl-ecotipos" placeholder="Construct" /></label>
+        </div>
+        <h4>Terreno</h4>
+        <div class="ed-chk">
+          {opcoes.terrenos.map((t) => (<label class="ed-chkb"><input type="checkbox" data-eco="terreno" value={t.k} />{t.nome}</label>))}
+        </div>
+        <h4>Clima</h4>
+        <div class="ed-chk">
+          {opcoes.climas.map((c) => (<label class="ed-chkb"><input type="checkbox" data-eco="clima" value={c.k} />{c.nome}</label>))}
+        </div>
+      </section>
+
+      <section class="ed-painel" data-painel="texto" hidden>
+        <h4>Imagem</h4>
+        <div class="ed-img-linha">
+          <label class="ed-f ed-wide">Caminho ou endereço <input type="text" data-ed="imagem" placeholder="bestiario/minha-criatura.png" /></label>
+          <label class="ed-arquivo">Escolher arquivo…<input type="file" id="ed-img-file" accept="image/*" hidden /></label>
+        </div>
+        <p class="ed-nota muted">O caminho é relativo a <code>public/</code>. Um arquivo escolhido aqui vira imagem embutida, boa para ver na hora; para entrar no livro, salve a arte em <code>public/bestiario/</code> e use o caminho.</p>
+        <div class="ed-img-prev" id="ed-img-prev" hidden><img id="ed-img-el" alt="" /></div>
+
+        <h4>Habilidades</h4>
+        <div class="ed-lista" id="ed-habilidades"></div>
+        <button type="button" class="ed-mais" data-add="habilidade">+ habilidade</button>
+
+        <h4>Lore</h4>
+        <div class="ed-lista" id="ed-lore"></div>
+        <button type="button" class="ed-mais" data-add="lore">+ seção</button>
+
+        <h4>Notas de mesa</h4>
         <label class="ed-f ed-wide"><textarea data-ed="notas" rows="3" placeholder="Como usar em mesa, fraqueza tática, o que evitar…"></textarea></label>
-
-        <h4>Derivados <span class="ed-sub muted">(calculados, não se editam)</span></h4>
-        <dl class="ed-der" id="ed-der"></dl>
       </section>
     </div>
+
+    <aside class="ed-derivados">
+      <h4>Derivados <span class="ed-sub muted">(calculados)</span></h4>
+      <dl class="ed-der" id="ed-der"></dl>
+      <div id="ed-der-atk" class="ed-der-atk"></div>
+    </aside>
 
     <footer class="ed-foot">
       <button type="button" class="btn" id="ed-salvar">Salvar neste navegador</button>
@@ -75,102 +191,364 @@ const PORTES = Object.keys(PORTE_LBL);
   </div>
 </div>
 
+<datalist id="ed-dl-categorias">{opcoes.categorias.map((c) => <option value={c} />)}</datalist>
+<datalist id="ed-dl-tags">{opcoes.tags.map((t) => <option value={t} />)}</datalist>
+<datalist id="ed-dl-ecotipos">{opcoes.ecoTipos.map((t) => <option value={t} />)}</datalist>
+<datalist id="ed-dl-pericias">{opcoes.pericias.map((p) => <option value={p} />)}</datalist>
+
+<template id="tpl-pericia">
+  <div class="ed-linha" data-linha="pericia">
+    <input type="text" data-campo="nome" list="ed-dl-pericias" placeholder="perícia" class="ed-c-per" />
+    <input type="number" data-campo="valor" min="0" max="12" value="1" />
+    <button type="button" class="ed-tira" aria-label="Remover">✕</button>
+  </div>
+</template>
+<template id="tpl-ataque">
+  <div class="ed-linha ed-linha-atk" data-linha="ataque">
+    <input type="text" data-campo="nome" placeholder="nome do ataque" class="ed-c-nome" />
+    <select data-campo="atrib" title="Atributo">{opcoes.atributos.map((a) => <option value={a}>{a.slice(0, 3)}</option>)}</select>
+    <input type="text" data-campo="pericia" list="ed-dl-pericias" placeholder="perícia" class="ed-c-per" />
+    <label class="ed-mini" title="Dados de dano">d<input type="number" data-campo="dado" min="1" max="4" value="1" /></label>
+    <select data-campo="tipo" title="Tipo de dano">{TIPOS_DANO.map((t) => <option value={t}>{t}</option>)}</select>
+    <label class="ed-mini" title="Acerto">ac<input type="number" data-campo="acerto" value="0" /></label>
+    <label class="ed-mini" title="Penetração">pen<input type="number" data-campo="perf" min="0" max="5" value="0" /></label>
+    <label class="ed-mini" title="Velocidade, em Ticks">vel<input type="number" data-campo="ticks" min="1" value="6" /></label>
+    <label class="ed-mini" title="Defesa que a arma dá">def<input type="number" data-campo="defesaArma" value="0" /></label>
+    <label class="ed-mini" title="Mãos">m<input type="number" data-campo="mao" min="1" max="2" value="1" /></label>
+    <label class="ed-chkb" title="Ataque à distância"><input type="checkbox" data-campo="distancia" />dist</label>
+    <label class="ed-mini" title="Alcance máximo, em metros">alc<input type="number" data-campo="distMax" min="0" /></label>
+    <input type="text" data-campo="notas" placeholder="notas" class="ed-c-nota" />
+    <button type="button" class="ed-tira" aria-label="Remover">✕</button>
+  </div>
+</template>
+<template id="tpl-habilidade">
+  <div class="ed-linha" data-linha="habilidade">
+    <input type="text" data-campo="nome" placeholder="nome" class="ed-c-nome" />
+    <input type="text" data-campo="descricao" placeholder="o que faz" class="ed-c-larga" />
+    <button type="button" class="ed-tira" aria-label="Remover">✕</button>
+  </div>
+</template>
+<template id="tpl-lore">
+  <div class="ed-linha" data-linha="lore">
+    <input type="text" data-campo="titulo" placeholder="título" class="ed-c-nome" />
+    <textarea data-campo="texto" rows="2" placeholder="texto" class="ed-c-larga"></textarea>
+    <button type="button" class="ed-tira" aria-label="Remover">✕</button>
+  </div>
+</template>
+
 <style is:global>
-  /* O modal é construído por JS e vive fora do escopo do componente. */
   .editbox { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 1rem; background: color-mix(in srgb, #000 62%, transparent); backdrop-filter: blur(2px); }
   .editbox[hidden] { display: none; }
-  .ed-card { position: relative; width: min(60rem, 100%); max-height: 88vh; overflow: auto; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: 1.4rem 1.5rem 1.1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
-  .ed-fechar { position: absolute; top: .6rem; right: .7rem; background: none; border: 0; color: var(--ink-soft); font-size: 1.1rem; cursor: pointer; }
+  .ed-card { position: relative; width: min(74rem, 100%); max-height: 90vh; display: grid; grid-template-columns: 1fr 13rem; grid-template-areas: "tit tit" "abas abas" "corpo der" "foot foot"; gap: 0 1.1rem; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: 1.3rem 1.4rem 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+  @media (max-width: 60rem) { .ed-card { grid-template-columns: 1fr; grid-template-areas: "tit" "abas" "der" "corpo" "foot"; } }
+  .ed-card h3 { grid-area: tit; margin: 0 0 .7rem; }
+  .ed-fechar { position: absolute; top: .55rem; right: .7rem; background: none; border: 0; color: var(--ink-soft); font-size: 1.1rem; cursor: pointer; z-index: 2; }
   .ed-fechar:hover { color: var(--accent-strong); }
-  .ed-card h3 { margin: 0 0 .9rem; }
-  .ed-card h4 { font-family: 'Cinzel'; font-size: var(--fs-aux); color: var(--accent-strong); margin: 1rem 0 .45rem; padding-bottom: .2rem; border-bottom: 1px dotted var(--rule); }
-  .ed-card h4:first-child { margin-top: 0; }
-  .ed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.6rem; }
-  @media (max-width: 46rem) { .ed-grid { grid-template-columns: 1fr; } }
-  .ed-f { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .25rem 0; font-size: var(--fs-aux); }
+  .ed-card h4 { font-family: 'Cinzel'; font-size: var(--fs-aux); color: var(--accent-strong); margin: .95rem 0 .4rem; padding-bottom: .18rem; border-bottom: 1px dotted var(--rule); }
+  .ed-painel > h4:first-child, .ed-derivados h4 { margin-top: 0; }
+
+  .ed-abas { grid-area: abas; display: flex; flex-wrap: wrap; gap: .25rem; margin-bottom: .8rem; border-bottom: 1px solid var(--rule); }
+  .ed-aba { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; padding: .3rem .7rem; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--ink-soft); cursor: pointer; }
+  .ed-aba[aria-selected="true"] { color: var(--accent-strong); border-bottom-color: var(--accent); }
+
+  .ed-corpo { grid-area: corpo; overflow: auto; max-height: 62vh; padding-right: .4rem; }
+  .ed-derivados { grid-area: der; align-self: start; background: var(--bg-soft); border: 1px solid var(--rule); border-radius: var(--r-sm); padding: .6rem .7rem; }
+
+  .ed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+  @media (max-width: 40rem) { .ed-grid { grid-template-columns: 1fr; } }
+  .ed-f { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .22rem 0; font-size: var(--fs-aux); }
   .ed-f.ed-wide { display: block; }
-  .ed-f.ed-wide input, .ed-f.ed-wide select, .ed-f.ed-wide textarea { width: 100%; margin-top: .18rem; }
-  .ed-f input, .ed-f select, .ed-f textarea { background: var(--bg-soft); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--r-sm); padding: .22rem .4rem; font: inherit; font-size: var(--fs-aux); }
-  .ed-f input[type=number] { width: 4.2rem; text-align: center; font-variant-numeric: tabular-nums; }
-  .ed-atr { display: grid; grid-template-columns: repeat(3, 1fr); gap: .1rem .6rem; }
-  @media (max-width: 30rem) { .ed-atr { grid-template-columns: repeat(2, 1fr); } }
-  .ed-nota { font-size: var(--fs-micro); margin: 0 0 .45rem; }
-  .ed-fr { color: var(--dano, #d98a6a); }
-  .ed-re { color: var(--accent-strong); }
+  .ed-f.ed-wide input, .ed-f.ed-wide select, .ed-f.ed-wide textarea { width: 100%; margin-top: .15rem; }
+  .ed-f input, .ed-f select, .ed-f textarea, .ed-linha input, .ed-linha select, .ed-linha textarea { background: var(--bg-soft); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--r-sm); padding: .2rem .4rem; font: inherit; font-size: var(--fs-aux); }
+  .ed-f input[type=number] { width: 4rem; text-align: center; font-variant-numeric: tabular-nums; }
+  .ed-cap { text-transform: capitalize; }
+  .ed-atr { display: grid; grid-template-columns: repeat(3, 1fr); gap: .1rem .8rem; }
+  @media (max-width: 40rem) { .ed-atr { grid-template-columns: repeat(2, 1fr); } }
+  .ed-nota { font-size: var(--fs-micro); margin: 0 0 .4rem; }
+  .ed-sub { font-family: var(--fonte-corpo); text-transform: none; letter-spacing: 0; }
+
+  .ed-chips { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .3rem; }
+  .ed-chip { font-size: var(--fs-micro); padding: .1rem .45rem; border-radius: var(--r-sm); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--ink-soft); }
+  .ed-chip button { background: none; border: 0; color: inherit; cursor: pointer; margin-left: .25rem; opacity: .7; }
+  .ed-chip button:hover { opacity: 1; color: var(--accent-strong); }
+
+  .ed-elem-grupo { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .3rem; }
+  .ed-elem-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; color: var(--ink-soft); min-width: 7rem; }
   .ed-elem { display: flex; flex-wrap: wrap; gap: .3rem; }
-  .ed-el { font-size: var(--fs-micro); padding: .12rem .5rem; border-radius: var(--r-sm); border: 1px solid var(--rule); background: transparent; color: var(--ink-soft); cursor: pointer; }
+  .ed-el { font-size: var(--fs-micro); padding: .1rem .5rem; border-radius: var(--r-sm); border: 1px solid var(--rule); background: transparent; color: var(--ink-soft); cursor: pointer; }
   .ed-el[data-estado="1"] { color: var(--dano, #d98a6a); border-color: color-mix(in srgb, var(--dano, #d98a6a) 55%, transparent); background: color-mix(in srgb, var(--dano, #d98a6a) 14%, transparent); }
   .ed-el[data-estado="2"] { color: var(--accent-strong); border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
-  .ed-der { display: grid; grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr)); gap: .3rem; margin: 0; }
+  .ed-fr { color: var(--dano, #d98a6a); }
+  .ed-re { color: var(--accent-strong); }
+
+  .ed-chk { display: flex; flex-wrap: wrap; gap: .2rem .8rem; }
+  .ed-chkb { display: inline-flex; align-items: center; gap: .2rem; font-size: var(--fs-micro); }
+
+  .ed-lista { display: flex; flex-direction: column; gap: .25rem; }
+  .ed-linha { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; }
+  .ed-linha .ed-c-nome { flex: 0 1 9rem; }
+  .ed-linha .ed-c-per { flex: 0 1 7rem; }
+  .ed-linha .ed-c-larga { flex: 1 1 14rem; }
+  .ed-linha .ed-c-nota { flex: 1 1 8rem; }
+  .ed-linha input[type=number] { width: 3.1rem; text-align: center; }
+  .ed-mini { display: inline-flex; align-items: center; gap: .15rem; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .ed-tira { background: none; border: 0; color: var(--ink-soft); cursor: pointer; padding: 0 .2rem; }
+  .ed-tira:hover { color: var(--dano, #d98a6a); }
+  .ed-mais { font-size: var(--fs-micro); background: none; border: 1px dashed var(--rule); border-radius: var(--r-sm); color: var(--ink-soft); padding: .15rem .6rem; cursor: pointer; margin-top: .3rem; }
+  .ed-mais:hover { color: var(--accent-strong); border-color: var(--accent); }
+  .ed-mais-linha { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+
+  .ed-img-linha { display: flex; align-items: flex-end; gap: .6rem; }
+  .ed-arquivo { font-size: var(--fs-micro); border: 1px dashed var(--rule); border-radius: var(--r-sm); padding: .25rem .6rem; cursor: pointer; color: var(--ink-soft); white-space: nowrap; }
+  .ed-arquivo:hover { color: var(--accent-strong); border-color: var(--accent); }
+  .ed-img-prev { margin-top: .4rem; }
+  .ed-img-prev img { max-width: 9rem; max-height: 9rem; border-radius: var(--r-sm); border: 1px solid var(--rule); }
+
+  .ed-der { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem; margin: 0; }
   .ed-der div { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .ed-der dt { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong); text-transform: uppercase; }
   .ed-der dd { margin: 0; font-size: var(--fs-aux); font-weight: 600; font-variant-numeric: tabular-nums; }
-  .ed-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1.1rem; padding-top: .8rem; border-top: 1px solid var(--rule); }
+  .ed-der-atk { margin-top: .5rem; font-size: var(--fs-micro); display: flex; flex-direction: column; gap: .2rem; }
+  .ed-der-atk b { color: var(--accent-strong); font-weight: 600; }
+  .ed-der-atk .ed-livro { opacity: .8; }
+  .ed-der-atk i { font-size: .9em; opacity: .7; }
+
+  .ed-foot { grid-area: foot; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .9rem; padding-top: .7rem; border-top: 1px solid var(--rule); }
   .ed-msg { font-size: var(--fs-micro); color: var(--accent-strong); }
   .ed-reset { margin-left: auto; }
-  /* Marca a criatura que tem edição local guardada */
+
+  /* Portão de interface: os botões só aparecem para o administrador.
+     A especificidade é alta de propósito: `.besta-editar` sozinho empata com
+     `.besta-info`, que é a classe de estilo que ele compartilha, e perdia a
+     cascata por vir antes. O portão precisa ganhar sempre. */
+  .besta-foot button.besta-editar, .filtros button.besta-nova { display: none !important; }
+  body.pode-editar .besta-foot button.besta-editar,
+  body.pode-editar .filtros button.besta-nova { display: inline-flex !important; }
   .besta.editada .besta-nome::after { content: ' ✎'; color: var(--accent-strong); font-size: .8em; }
 </style>
 
 <script>
-  import { VOCAB_ELEM, derivados, lerEdicoes, salvarEdicao, apagarEdicao, paraJson, porteSlug } from '../lib/bestia-editor';
+  import armasCat from '../data/armas.json';
+  import { derivados, rolagemAtaque, lerEdicoes, salvarEdicao, apagarEdicao, paraJson, porteSlug } from '../lib/bestia-editor';
   import type { CriaturaEdit } from '../lib/bestia-editor';
+  import { ehAdmin } from '../lib/auth';
 
   const box = document.getElementById('editbox') as HTMLElement | null;
   if (box) {
-    const q = <T extends Element>(s: string, r: ParentNode = box) => r.querySelector(s) as T | null;
-    const msg = q<HTMLElement>('#ed-msg')!;
-    const derBox = q<HTMLElement>('#ed-der')!;
-    const titulo = q<HTMLElement>('#ed-titulo')!;
+    const $ = <T extends Element>(s: string, r: ParentNode = document) => r.querySelector(s) as T | null;
+    const $$ = <T extends Element>(s: string, r: ParentNode = box!) => Array.from(r.querySelectorAll(s)) as T[];
+    const msg = $<HTMLElement>('#ed-msg')!;
+    const ATRIBS = ['forca', 'destreza', 'vigor', 'influencia', 'perspicacia', 'compostura', 'percepcao', 'inteligencia', 'raciocinio'];
+    const num = (v: string) => (v === '' ? 0 : Number(v));
+
     let atual: CriaturaEdit | null = null;
     let original: CriaturaEdit | null = null;
     let cardAtual: HTMLElement | null = null;
+    /** Palavras de fraqueza que o usuário criou. Ficam guardadas para reaparecerem. */
+    let extras: string[] = JSON.parse(localStorage.getItem('centelha:bestiario:elem-extra') || '[]');
+    let tags: string[] = [];
 
-    const campos = () => Array.from(box.querySelectorAll('[data-ed]')) as (HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement)[];
-    const num = (v: string) => (v === '' ? 0 : Number(v));
+    // ————— abas —————
+    box.addEventListener('click', (e) => {
+      const aba = (e.target as HTMLElement).closest('.ed-aba') as HTMLElement | null;
+      if (!aba) return;
+      $$('.ed-aba').forEach((b) => b.setAttribute('aria-selected', String(b === aba)));
+      $$('.ed-painel').forEach((p) => { (p as HTMLElement).hidden = (p as HTMLElement).dataset.painel !== aba.dataset.aba; });
+    });
 
-    /** Lê o formulário de volta para o objeto. */
-    function coletar(): CriaturaEdit {
-      const c: any = { ...(atual as any) };
-      c.atributos = { ...(atual?.atributos || {}) };
-      for (const el of campos()) {
-        const chave = el.dataset.ed!;
-        const bruto = (el as HTMLInputElement).value;
-        const v = el.getAttribute('type') === 'number' ? num(bruto) : bruto;
-        if (chave.startsWith('atributos.')) c.atributos[chave.slice(10)] = v;
-        else c[chave] = v;
+    // ————— listas repetíveis —————
+    const ALVO: Record<string, string> = { pericia: '#ed-pericias', ataque: '#ed-ataques', habilidade: '#ed-habilidades', lore: '#ed-lore' };
+    const alvoDe = (tipo: string) => $<HTMLElement>(ALVO[tipo])!;
+
+    function novaLinha(tipo: string, dados: Record<string, unknown> = {}) {
+      const tpl = $<HTMLTemplateElement>('#tpl-' + tipo)!;
+      const el = tpl.content.firstElementChild!.cloneNode(true) as HTMLElement;
+      for (const c of Array.from(el.querySelectorAll('[data-campo]')) as HTMLInputElement[]) {
+        const v = dados[c.dataset.campo!];
+        if (v == null) continue;
+        if (c.type === 'checkbox') c.checked = !!v; else c.value = String(v);
       }
+      return el;
+    }
+    function lerLinhas(tipo: string): Record<string, unknown>[] {
+      return $$('[data-linha="' + tipo + '"]', alvoDe(tipo)).map((el) => {
+        const o: Record<string, unknown> = {};
+        for (const c of Array.from(el.querySelectorAll('[data-campo]')) as HTMLInputElement[]) {
+          o[c.dataset.campo!] = c.type === 'checkbox' ? c.checked : (c.type === 'number' ? num(c.value) : c.value);
+        }
+        return o;
+      });
+    }
+
+    // ————— etiquetas —————
+    function desenhaTags() {
+      $<HTMLElement>('#ed-tags')!.innerHTML = tags.length
+        ? tags.map((t) => '<span class="ed-chip">' + t + '<button type="button" data-tag="' + t + '" aria-label="Remover">✕</button></span>').join('')
+        : '<span class="muted" style="font-size:var(--fs-micro)">nenhuma</span>';
+    }
+    $<HTMLInputElement>('#ed-tag-nova')!.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const el = e.target as HTMLInputElement;
+      const v = el.value.trim().toLowerCase();
+      if (v && !tags.includes(v)) { tags.push(v); desenhaTags(); recalcular(); }
+      el.value = '';
+    });
+
+    // ————— fraquezas que o usuário cria —————
+    function desenhaExtras() {
+      $<HTMLElement>('#ed-elem-extra')!.innerHTML = extras.length
+        ? extras.map((k) => '<button type="button" class="ed-el" data-el="' + k + '" data-estado="0">' + k + '</button>').join('')
+        : '<span class="muted" style="font-size:var(--fs-micro)">nenhuma ainda</span>';
+    }
+    $<HTMLInputElement>('#ed-el-nova')!.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const el = e.target as HTMLInputElement;
+      const v = el.value.trim().toLowerCase().replace(/\s+/g, '-');
+      if (v && !extras.includes(v) && !box!.querySelector('.ed-el[data-el="' + v + '"]')) {
+        extras.push(v);
+        localStorage.setItem('centelha:bestiario:elem-extra', JSON.stringify(extras));
+        desenhaExtras();
+        msg.textContent = '"' + v + '" criada. Para valer no livro inteiro, acrescente-a em src/data/elementos-vocab.json.';
+      }
+      el.value = '';
+    });
+
+    // ————— cliques gerais dentro do modal —————
+    box.addEventListener('click', (e) => {
+      const alvo = e.target as HTMLElement;
+
+      const add = alvo.closest('[data-add]') as HTMLElement | null;
+      if (add) { alvoDe(add.dataset.add!).appendChild(novaLinha(add.dataset.add!)); recalcular(); return; }
+
+      const tira = alvo.closest('.ed-tira') as HTMLElement | null;
+      if (tira) { tira.closest('.ed-linha')?.remove(); recalcular(); return; }
+
+      const tag = alvo.closest('[data-tag]') as HTMLElement | null;
+      if (tag) { tags = tags.filter((t) => t !== tag.dataset.tag); desenhaTags(); recalcular(); return; }
+
+      const el = alvo.closest('.ed-el') as HTMLElement | null;
+      if (el) { el.dataset.estado = String((Number(el.dataset.estado || 0) + 1) % 3); recalcular(); return; }
+
+      if (alvo === box || alvo.classList.contains('ed-fechar')) fechar();
+    });
+
+    // ————— arma do catálogo vira ataque —————
+    $<HTMLSelectElement>('#ed-arma-catalogo')!.addEventListener('change', (e) => {
+      const sel = e.target as HTMLSelectElement;
+      const a = (armasCat as any[]).find((x) => x.id === sel.value);
+      sel.value = '';
+      if (!a) return;
+      alvoDe('ataque').appendChild(novaLinha('ataque', {
+        nome: a.nome, atrib: a.atrib, pericia: a.pericia, dado: a.dado, tipo: a.tipoDano,
+        acerto: a.acerto, perf: a.pen, ticks: a.ticks, defesaArma: a.defesaArma, mao: a.maos,
+        distancia: a.classe === 'distancia' || a.classe === 'arremesso', distMax: a.distMax,
+      }));
+      recalcular();
+    });
+
+    // ————— imagem —————
+    const prev = $<HTMLElement>('#ed-img-prev')!, prevImg = $<HTMLImageElement>('#ed-img-el')!;
+    function desenhaImg(src: string) {
+      if (!src) { prev.hidden = true; return; }
+      prevImg.src = /^(data:|https?:)/.test(src) ? src : import.meta.env.BASE_URL + src.replace(/^\//, '');
+      prev.hidden = false;
+    }
+    $<HTMLInputElement>('#ed-img-file')!.addEventListener('change', (e) => {
+      const f = (e.target as HTMLInputElement).files?.[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = () => { ($$('[data-ed="imagem"]')[0] as HTMLInputElement).value = String(r.result); recalcular(); };
+      r.readAsDataURL(f);
+    });
+
+    // ————— ler e escrever o formulário —————
+    const campos = () => $$('[data-ed]') as (HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement)[];
+
+    function coletar(): CriaturaEdit {
+      const c: any = { ...(atual as any), atributos: {}, bonus: {}, dimensoes: {}, ecologia: {} };
+      for (const el of campos()) {
+        const ch = el.dataset.ed!;
+        const v = (el as HTMLInputElement).type === 'number' ? num((el as HTMLInputElement).value) : (el as HTMLInputElement).value;
+        const parte = ch.split('.');
+        if (parte.length === 2) { c[parte[0]] = c[parte[0]] || {}; c[parte[0]][parte[1]] = v; } else c[ch] = v;
+      }
+      c.tags = [...tags];
+      c.pericias = Object.fromEntries(lerLinhas('pericia').filter((p) => p.nome).map((p) => [String(p.nome).trim(), Number(p.valor) || 0]));
+      c.ataques = lerLinhas('ataque').filter((a) => a.nome);
+      c.habilidades = lerLinhas('habilidade').filter((h) => h.nome);
+      c.lore = lerLinhas('lore').filter((s) => s.titulo || s.texto);
+      c.ecologia.terreno = ($$('[data-eco="terreno"]:checked') as HTMLInputElement[]).map((i) => i.value);
+      c.ecologia.clima = ($$('[data-eco="clima"]:checked') as HTMLInputElement[]).map((i) => i.value);
       c.fraquezas = []; c.resistencias = [];
-      for (const b of Array.from(box.querySelectorAll('.ed-el')) as HTMLElement[]) {
-        const e = b.dataset.estado;
-        if (e === '1') c.fraquezas.push(b.dataset.el!);
-        else if (e === '2') c.resistencias.push(b.dataset.el!);
+      for (const b of $$('.ed-el') as HTMLElement[]) {
+        if (b.dataset.estado === '1') c.fraquezas.push(b.dataset.el!);
+        else if (b.dataset.estado === '2') c.resistencias.push(b.dataset.el!);
       }
       return c as CriaturaEdit;
     }
 
-    /** Recalcula os derivados e desenha. */
     function recalcular() {
       atual = coletar();
       const d = derivados(atual);
-      derBox.innerHTML = [
-        ['PV', d.pv], ['Defesa', d.defesa], ['Def. Social', d.defesaSocial],
-        ['Def. Mental', d.defesaMental], ['Absorção', d.absorcao], ['Iniciativa', d.iniciativa],
-      ].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+      const ab = d.absorcao;
+      $<HTMLElement>('#ed-der')!.innerHTML = ([
+        ['PV', d.pv], ['Defesa', d.defesa], ['Def. Social', d.defesaSocial], ['Def. Mental', d.defesaMental],
+        ['Vontade', d.vontade], ['Res. Perf.', d.resistPerf],
+        ['Absorção', ab.impacto + '/' + ab.corte + '/' + ab.perfuracao], ['Iniciativa', d.iniciativa],
+      ] as [string, unknown][]).map(([k, v]) => '<div><dt>' + k + '</dt><dd>' + v + '</dd></div>').join('');
+      // Ataque editado mostra a conta ao vivo. Na falta dele, mostra o do livro:
+      // o monsters.json guarda o ataque JÁ CALCULADO ("3d6 +11 corte") e não a
+      // origem dele, então ele não volta para o formulário. Melhor exibir o que
+      // existe do que fingir que a criatura não ataca.
+      const editaveis = (atual.ataques || []) as any[];
+      $<HTMLElement>('#ed-der-atk')!.innerHTML = editaveis.length
+        ? editaveis.map((a) => {
+            const r = rolagemAtaque(atual!, a);
+            return '<span><b>' + a.nome + '</b><br>' + r.pool + ' · ' + r.dano + ' · vel ' + a.ticks + (a.distMax ? ' · ' + a.distMax + ' m' : '') + '</span>';
+          }).join('')
+        : (((atual as any).ataquesLivro || []) as any[]).map((a) =>
+            '<span class="ed-livro"><b>' + a.nome + '</b> <i>no livro</i><br>' + a.pool + ' · ' + a.dano + ' · vel ' + a.speed + '</span>').join('');
+      desenhaImg(atual.imagem || '');
     }
 
-    /** Preenche o formulário com uma criatura. */
     function preencher(c: CriaturaEdit) {
       atual = JSON.parse(JSON.stringify(c));
       for (const el of campos()) {
-        const chave = el.dataset.ed!;
-        let v = chave.startsWith('atributos.')
-          ? (c.atributos || {})[chave.slice(10)]
-          : (c as any)[chave];
-        if (chave === 'porte') v = porteSlug(v as string);
+        const ch = el.dataset.ed!;
+        const parte = ch.split('.');
+        let v: any = parte.length === 2 ? (c as any)[parte[0]]?.[parte[1]] : (c as any)[ch];
+        if (ch === 'porte') v = porteSlug(v);
+        if (ch === 'armadura' && !v) v = 'nenhuma';
         (el as HTMLInputElement).value = v == null ? '' : String(v);
       }
-      for (const b of Array.from(box.querySelectorAll('.ed-el')) as HTMLElement[]) {
+      tags = [...(c.tags || [])];
+      desenhaTags();
+
+      const listas: [string, Record<string, unknown>[]][] = [
+        ['pericia', Object.entries(c.pericias || {}).map(([nome, valor]) => ({ nome, valor }))],
+        ['ataque', (c.ataques || []) as unknown as Record<string, unknown>[]],
+        ['habilidade', (c.habilidades || []) as unknown as Record<string, unknown>[]],
+        ['lore', (c.lore || []) as unknown as Record<string, unknown>[]],
+      ];
+      for (const [tipo, itens] of listas) {
+        const alvo = alvoDe(tipo);
+        alvo.replaceChildren();
+        for (const it of itens) alvo.appendChild(novaLinha(tipo, it));
+      }
+
+      for (const i of $$('[data-eco]') as HTMLInputElement[]) {
+        const lista = i.dataset.eco === 'terreno' ? c.ecologia?.terreno : c.ecologia?.clima;
+        i.checked = !!lista?.includes(i.value);
+      }
+
+      // palavra da criatura que não tem botão vira botão extra, para poder ser desmarcada
+      for (const k of [...(c.fraquezas || []), ...(c.resistencias || [])]) {
+        if (!box!.querySelector('.ed-el[data-el="' + k + '"]') && !extras.includes(k)) extras.push(k);
+      }
+      desenhaExtras();
+      for (const b of $$('.ed-el') as HTMLElement[]) {
         const k = b.dataset.el!;
         b.dataset.estado = c.fraquezas?.includes(k) ? '1' : c.resistencias?.includes(k) ? '2' : '0';
       }
@@ -180,37 +558,34 @@ const PORTES = Object.keys(PORTE_LBL);
     function abrir(c: CriaturaEdit, card: HTMLElement | null, tit: string) {
       original = JSON.parse(JSON.stringify(c));
       cardAtual = card;
-      titulo.textContent = tit;
+      $<HTMLElement>('#ed-titulo')!.textContent = tit;
       const guardada = lerEdicoes()[c.id];
       preencher(guardada ? ({ ...c, ...guardada } as CriaturaEdit) : c);
       msg.textContent = guardada ? 'Mostrando a sua versão salva neste navegador.' : '';
-      box.hidden = false;
+      box!.hidden = false;
       document.body.style.overflow = 'hidden';
-      (q<HTMLInputElement>('[data-ed="nome"]'))?.focus();
+      ($$('[data-ed="nome"]')[0] as HTMLInputElement)?.focus();
     }
-    function fechar() { box.hidden = true; document.body.style.overflow = ''; msg.textContent = ''; }
+    function fechar() { box!.hidden = true; document.body.style.overflow = ''; msg.textContent = ''; }
 
-    // --- eventos do formulário ---
-    box.addEventListener('input', (e) => { if ((e.target as HTMLElement).dataset?.ed) recalcular(); });
-    box.addEventListener('click', (e) => {
-      const alvo = e.target as HTMLElement;
-      if (alvo.classList.contains('ed-el')) {
-        alvo.dataset.estado = String((Number(alvo.dataset.estado || 0) + 1) % 3);
-        recalcular();
-      }
-      if (alvo === box || alvo.classList.contains('ed-fechar')) fechar();
+    box.addEventListener('input', (e) => {
+      const t = e.target as HTMLElement;
+      if (t.dataset?.ed || t.dataset?.campo) recalcular();
     });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !box.hidden) fechar(); });
+    box.addEventListener('change', (e) => {
+      const t = e.target as HTMLElement;
+      if (t.dataset?.eco || t.dataset?.ed || t.dataset?.campo) recalcular();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !box!.hidden) fechar(); });
 
-    q<HTMLElement>('#ed-salvar')!.addEventListener('click', () => {
+    $<HTMLElement>('#ed-salvar')!.addEventListener('click', () => {
       const c = coletar();
       salvarEdicao(c.id, c);
       if (cardAtual) {
         cardAtual.classList.add('editada');
         cardAtual.dataset.besta = JSON.stringify(c);
-        // atualiza o que aparece no card sem recarregar a página
         const nome = cardAtual.querySelector('.besta-nome');
-        if (nome && c.nome) nome.childNodes[0].textContent = c.nome;
+        if (nome && c.nome && nome.childNodes[0]) nome.childNodes[0].textContent = c.nome;
         const d = derivados(c);
         const dds = cardAtual.querySelectorAll('.besta-stats dd');
         if (dds[0]) dds[0].textContent = String(d.pv);
@@ -219,13 +594,13 @@ const PORTES = Object.keys(PORTE_LBL);
       msg.textContent = 'Salvo neste navegador.';
     });
 
-    q<HTMLElement>('#ed-copiar')!.addEventListener('click', async () => {
+    $<HTMLElement>('#ed-copiar')!.addEventListener('click', async () => {
       const txt = paraJson(coletar());
       try { await navigator.clipboard.writeText(txt); msg.textContent = 'JSON copiado. Cole em src/data/inimigos-custom.json.'; }
       catch { msg.textContent = 'Não consegui copiar; o JSON está no console.'; console.log(txt); }
     });
 
-    q<HTMLElement>('#ed-reverter')!.addEventListener('click', () => {
+    $<HTMLElement>('#ed-reverter')!.addEventListener('click', () => {
       if (!original) return;
       apagarEdicao(original.id);
       preencher(original);
@@ -233,7 +608,6 @@ const PORTES = Object.keys(PORTE_LBL);
       msg.textContent = 'Voltou ao original do livro.';
     });
 
-    // --- botões da página ---
     document.addEventListener('click', (e) => {
       const b = (e.target as HTMLElement).closest('.besta-editar') as HTMLElement | null;
       if (b) {
@@ -244,16 +618,20 @@ const PORTES = Object.keys(PORTE_LBL);
       if ((e.target as HTMLElement).closest('#besta-nova')) {
         abrir({
           id: 'mon-nova-' + Date.now().toString(36),
-          nome: '', conceito: '', ameaca: 1, centelha: 0, porte: 'medio',
-          atributos: Object.fromEntries(['forca','destreza','vigor','influencia','perspicacia','compostura','percepcao','inteligencia','raciocinio'].map((k) => [k, 2])),
-          vontade: 4, integridade: 2, prontidao: 1, fraquezas: [], resistencias: [], notas: '',
+          nome: '', conceito: '', ameaca: 1, centelha: 0, porte: 'medio', tipo: 'soldado',
+          atributos: Object.fromEntries(ATRIBS.map((k) => [k, 2])),
+          pericias: {}, vontade: 4, integridade: 2, prontidao: 1,
+          armadura: 'nenhuma', fraquezas: [], resistencias: [], tags: [],
+          ataques: [], habilidades: [], lore: [], notas: '',
         } as CriaturaEdit, null, 'Nova criatura');
       }
     });
 
-    // marca no carregamento quais criaturas têm edição local
-    const guardadas = lerEdicoes();
-    for (const id of Object.keys(guardadas)) document.getElementById(id)?.classList.add('editada');
-    void VOCAB_ELEM;
+    for (const id of Object.keys(lerEdicoes())) document.getElementById(id)?.classList.add('editada');
+
+    // ————— o portão —————
+    // Falha FECHADO: os botões nascem escondidos pelo CSS, e só a confirmação de
+    // administrador acrescenta a classe que os revela. Erro de rede deixa fechado.
+    ehAdmin().then((ok) => { if (ok) document.body.classList.add('pode-editar'); }).catch(() => {});
   }
 </script>
