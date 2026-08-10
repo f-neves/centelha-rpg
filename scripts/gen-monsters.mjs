@@ -1,6 +1,6 @@
 // Unifica os 5 arquivos de dados do bestiário num único src/data/monsters.json.
 // Fonte: inimigos.json (stat block, GERADO por gen-bestiario.mjs) + os satélites
-// habilidades / dimensoes / lore / imagens (editáveis à mão), todos por id.
+// habilidades / dimensoes / lore / imagens / ecologia / elementos, todos por id.
 // Rodar: node scripts/gen-monsters.mjs   (rode gen-bestiario.mjs antes se mexeu nas builds)
 import { readFileSync, writeFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -16,6 +16,7 @@ const DIM = read('dimensoes-bestiario.json');
 const LORE = read('lore-bestiario.json');
 const IMG = read('imagens-bestiario.json');
 const ECO = read('ecologia-bestiario.json'); // tipo (PF2e) + terreno + clima, por id
+const ELE = read('elementos-bestiario.json'); // fraquezas e resistencias, por id (gen-elementos.mjs)
 
 // Categoria = tipo de criatura no molde do Bestiary 1 (Pathfinder 1e, pág. 318 "Monsters by Type"),
 // derivada do ecologia.tipo + ajustes por criatura. Vai para o badge de Categoria.
@@ -141,6 +142,10 @@ function build(c) {
       defesaMental: c.defesaMental,
       absorcao: { impacto: c.soak.impacto, corte: c.soak.corte, perfuracao: c.soak.perfuracao },
       resistenciaPerfuracao: c.resistPerf || 0,
+      // Fraqueza e resistência a elemento, tipo de dano ou natureza. A maioria das
+      // criaturas não tem nenhuma, então os campos só aparecem em quem tem.
+      ...(ELE[c.id]?.fraquezas ? { fraquezas: ELE[c.id].fraquezas } : {}),
+      ...(ELE[c.id]?.resistencias ? { resistencias: ELE[c.id].resistencias } : {}),
       iniciativa: c.iniciativa,
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, speed: a.ticks, ...(a.notas ? { notas: a.notas } : {}) })),
     },

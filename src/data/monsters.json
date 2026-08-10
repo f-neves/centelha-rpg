@@ -934,6 +934,9 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "profano"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -1083,6 +1086,9 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "profano"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -1192,6 +1198,9 @@
     "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "profano"
+   ],
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
@@ -1533,6 +1542,15 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "corte",
+    "impacto",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -1779,6 +1797,10 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
@@ -1888,6 +1910,10 @@
     "perfuracao": 17
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
@@ -2173,6 +2199,10 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -2278,6 +2308,12 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -2508,6 +2544,10 @@
     "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -3218,6 +3258,13 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -3905,6 +3952,10 @@
     "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -4844,6 +4895,10 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -5367,6 +5422,10 @@
     "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
@@ -6365,6 +6424,10 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -7327,6 +7390,10 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "corte",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 0",
    "ataques": [
     {
@@ -8099,6 +8166,9 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "profano"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -8256,6 +8326,10 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -8403,6 +8477,10 @@
     "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
@@ -8517,6 +8595,10 @@
     "perfuracao": 12
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
@@ -8670,6 +8752,10 @@
     "perfuracao": 16
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 13",
    "ataques": [
     {
@@ -8849,6 +8935,10 @@
     "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -8962,6 +9052,10 @@
     "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -9115,6 +9209,10 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -9790,6 +9888,9 @@
     "perfuracao": 14
    },
    "resistenciaPerfuracao": 1,
+   "resistencias": [
+    "raio"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -9956,6 +10057,12 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "gelo"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -10115,6 +10222,9 @@
     "perfuracao": 16
    },
    "resistenciaPerfuracao": 1,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
@@ -10458,6 +10568,9 @@
     "perfuracao": 14
    },
    "resistenciaPerfuracao": 1,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -10626,6 +10739,9 @@
     "perfuracao": 19
    },
    "resistenciaPerfuracao": 2,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
@@ -10796,6 +10912,9 @@
     "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -10951,6 +11070,10 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -11788,6 +11911,12 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "agua"
+   ],
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -12043,6 +12172,9 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -12149,6 +12281,12 @@
     "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "agua"
+   ],
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -12286,6 +12424,12 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "agua"
+   ],
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -12495,6 +12639,12 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "agua"
+   ],
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -13564,6 +13714,10 @@
     "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -13990,6 +14144,15 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "corte",
+    "impacto",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -14137,6 +14300,14 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "corte",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -14775,6 +14946,13 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -15117,6 +15295,9 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -15628,6 +15809,12 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -15733,6 +15920,10 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -15964,6 +16155,10 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "corte",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 0",
    "ataques": [
     {
@@ -16073,6 +16268,9 @@
     "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "profano"
+   ],
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
@@ -16226,6 +16424,13 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -16356,6 +16561,13 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -17486,6 +17698,10 @@
     "perfuracao": 15
    },
    "resistenciaPerfuracao": 1,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
@@ -17864,6 +18080,10 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -17969,6 +18189,9 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -18079,6 +18302,10 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -18188,6 +18415,13 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "gelo",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -18294,6 +18528,10 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -18743,6 +18981,9 @@
     "perfuracao": 26
    },
    "resistenciaPerfuracao": 3,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 11",
    "ataques": [
     {
@@ -18917,6 +19158,10 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -19484,6 +19729,10 @@
     "perfuracao": 11
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -20403,6 +20652,9 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -20511,6 +20763,12 @@
     "perfuracao": 22
    },
    "resistenciaPerfuracao": 3,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "gelo"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -21446,6 +21704,10 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -22160,6 +22422,10 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 1",
    "ataques": [
     {
@@ -22508,6 +22774,13 @@
     "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -22673,6 +22946,9 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "profano"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -22787,6 +23063,10 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "corte",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 0",
    "ataques": [
     {
@@ -22892,6 +23172,9 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "prata"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -24152,6 +24435,9 @@
     "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -24260,6 +24546,10 @@
     "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -25245,6 +25535,13 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -25476,6 +25773,12 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -26030,6 +26333,14 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo",
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -26172,6 +26483,10 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -26643,6 +26958,10 @@
     "perfuracao": 15
    },
    "resistenciaPerfuracao": 1,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
@@ -26867,6 +27186,10 @@
     "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -27128,6 +27451,9 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 0",
    "ataques": [
     {
@@ -27847,6 +28173,12 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 1,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
@@ -28095,6 +28427,10 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -28463,6 +28799,9 @@
     "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "profano"
+   ],
    "iniciativa": "1d6 + 11",
    "ataques": [
     {
@@ -29133,6 +29472,10 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 1,
+   "resistencias": [
+    "corte",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 0",
    "ataques": [
     {
@@ -29242,6 +29585,10 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -30227,6 +30574,10 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 1,
+   "resistencias": [
+    "fogo",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
@@ -30801,6 +31152,12 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "agua"
+   ],
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -31506,6 +31863,12 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "agua"
+   ],
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -31728,6 +32091,10 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 1,
+   "resistencias": [
+    "corte",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -31953,6 +32320,14 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "corte",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -32180,6 +32555,9 @@
     "perfuracao": 16
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "profano"
+   ],
    "iniciativa": "1d6 + 12",
    "ataques": [
     {
@@ -32464,6 +32842,15 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "corte",
+    "impacto",
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -32709,6 +33096,10 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
@@ -33802,6 +34193,12 @@
     "perfuracao": 11
    },
    "resistenciaPerfuracao": 1,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -33943,6 +34340,12 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -35084,6 +35487,16 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo",
+    "luz",
+    "prata",
+    "sagrado",
+    "sol"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -35267,6 +35680,10 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -35374,6 +35791,12 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -35808,6 +36231,12 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -35921,6 +36350,10 @@
     "perfuracao": 11
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
@@ -36069,6 +36502,13 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -36439,6 +36879,10 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
@@ -36553,6 +36997,12 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "agua"
+   ],
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
@@ -36688,6 +37138,10 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
@@ -36914,6 +37368,13 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "perfuracao"
+   ],
    "iniciativa": "1d6 + 3",
    "ataques": [
     {

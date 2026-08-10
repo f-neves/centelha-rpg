@@ -23,6 +23,13 @@ const ATR: [string, string, string][] = [
   ['influencia', 'Inf', 'Influência'], ['perspicacia', 'Psp', 'Perspicácia'], ['compostura', 'Cmp', 'Compostura'],
   ['percepcao', 'Per', 'Percepção'], ['inteligencia', 'Int', 'Inteligência'], ['raciocinio', 'Rac', 'Raciocínio'],
 ];
+// Fraquezas e resistências: a palavra-chave crua vira rótulo de leitura. O vocabulário
+// mistura três eixos de propósito (elemento das Artes, tipo de dano físico, natureza).
+const ELEM: Record<string, string> = {
+  fogo: 'Fogo', agua: 'Água', gelo: 'Gelo', raio: 'Raio', vento: 'Vento', terra: 'Terra',
+  luz: 'Luz', sombra: 'Sombra', corte: 'Corte', perfuracao: 'Perfuração', impacto: 'Impacto',
+  sagrado: 'Sagrado', profano: 'Profano', prata: 'Prata', sol: 'Sol',
+};
 // Modificador social da Aparência (curva do sistema, extrapolada além de 1–10 para criaturas extremas).
 const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
 const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : AP_CURVA[n]);
@@ -154,6 +161,23 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
             <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}</dd></div>
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
           </dl>
+
+          {(i.combate.fraquezas?.length || i.combate.resistencias?.length) && (
+            <div class="besta-elem">
+              {i.combate.fraquezas?.length && (
+                <span class="el-linha" title="Dano deste tipo é agravado contra esta criatura.">
+                  <span class="el-lbl">Fraqueza</span>
+                  {i.combate.fraquezas.map((k: string) => <span class="el el-fra">{ELEM[k] ?? k}</span>)}
+                </span>
+              )}
+              {i.combate.resistencias?.length && (
+                <span class="el-linha" title="Dano deste tipo cai pela metade, arredondando para cima, depois da armadura e antes da Absorção.">
+                  <span class="el-lbl">Resiste</span>
+                  {i.combate.resistencias.map((k: string) => <span class="el el-res">{ELEM[k] ?? k}</span>)}
+                </span>
+              )}
+            </div>
+          )}
 
           {i.atributos && (
             <div class="besta-atrib">
@@ -372,6 +396,14 @@ const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || 
     .atr-ab { display: none; }
     .atr-full { display: inline; }
   }
+
+  /* Fraqueza e resistência. Só aparece em quem tem: 97 das 308 criaturas. */
+  .besta-elem { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .25rem; }
+  .el-linha { display: flex; align-items: center; flex-wrap: wrap; gap: .25rem; }
+  .el-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); margin-right: .1rem; }
+  .el { font-size: var(--fs-micro); padding: .05rem .4rem; border-radius: var(--r-sm); border: 1px solid transparent; white-space: nowrap; }
+  .el-fra { color: var(--dano, #d98a6a); border-color: color-mix(in srgb, var(--dano, #d98a6a) 45%, transparent); background: color-mix(in srgb, var(--dano, #d98a6a) 10%, transparent); }
+  .el-res { color: var(--ink-soft); border-color: color-mix(in srgb, var(--accent) 35%, transparent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
 
   /* Traços derivados (Vontade · Aparência · Virtudes) */
   .besta-tracos { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .28rem; }

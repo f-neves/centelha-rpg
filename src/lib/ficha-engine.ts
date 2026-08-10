@@ -42,7 +42,9 @@ export interface FichaOpts {
 export function montarFicha(opts: FichaOpts) {
   const RACA: Record<string, any> = Object.fromEntries((RACA_D as any[]).map((r) => [r.id, r]));
   const racApMod = () => (RACA[S?.raca]?.aparenciaMod || 0);
-  const apEfetiva = (v: number) => Math.max(1, Math.min(12, (v || 1) + racApMod()));
+  // A régua da Aparência vai de 0 a 12, e o 0 é o piso grátis (curva −5). O clamp antigo
+  // era [1,12] com `v || 1`, então quem não investia nada aparecia como 1 e nunca via o −5.
+  const apEfetiva = (v: number) => Math.max(0, Math.min(12, (v ?? 0) + racApMod()));
   const el = (id: string) => document.getElementById(id)!;
   const slug = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 

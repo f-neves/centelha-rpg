@@ -250,9 +250,14 @@
   },
   "escalaVontade": [
     {
+      "nivel": 0,
+      "rotulo": "Sem reserva",
+      "texto": "Não há nada a queimar: nenhuma ação turbinada, nenhuma resistência extra, nenhuma conjuração que peça Vontade. O piso grátis, de quem não investe nada."
+    },
+    {
       "nivel": 1,
       "rotulo": "Frágil",
-      "texto": "Vontade fraca: cede fácil ao medo, à manipulação e ao cansaço. O piso de quem nada investe."
+      "texto": "Vontade fraca: cede fácil ao medo, à manipulação e ao cansaço, e a reserva acaba na primeira cena dura."
     },
     {
       "nivel": 5,
@@ -277,9 +282,14 @@
   ],
   "escalaAparencia": [
     {
+      "nivel": 0,
+      "rotulo": "Monstruoso (−5)",
+      "texto": "Provoca horror ou repulsa imediata em quem olha; o piso grátis, de quem não investe nada. −5 nas jogadas sociais alinhadas, e +5 ao INTIMIDAR."
+    },
+    {
       "nivel": 1,
       "rotulo": "Deformado (−4)",
-      "texto": "Repulsivo ou desfigurado; o piso (grátis). −4 nas jogadas sociais alinhadas, mas +4 ao INTIMIDAR."
+      "texto": "Repulsivo ou desfigurado. −4 nas jogadas sociais alinhadas, mas +4 ao INTIMIDAR."
     },
     {
       "nivel": 2,
@@ -339,8 +349,8 @@
   ],
   "aparencia": {
     "nota": "Traço próprio 0 a 12 (não é atributo), piso 0, custo ×2 por ponto (ver xp.aparencia). Bônus DIRECIONAL somado FLAT: é o bônus social GERAL, entra em TODA jogada social (incluindo o Combate Social), separado da pilha situacional dos Antecedentes (que só move a Régua de Relação, teto +6). + quando a aparência ajuda o objetivo (seduzir, impressionar), − quando atrapalha (intimidar, e o inverso para os feios). ALÉM do social: aparência muito alta é MEMORÁVEL e atrapalha passar despercebido (penalidade em furtividade urbana, seguir alguém, se misturar à multidão); o Mestre pode aplicar o mesmo a uma deformidade marcante, também inesquecível. A Compostura define o raio de quanto da Aparência real você consegue mascarar.",
-    "piso": 1,
-    "min": 1,
+    "piso": 0,
+    "min": 0,
     "max": 12,
     "custoMult": 2,
     "curva": {
@@ -363,10 +373,10 @@
     "atributo": 1,
     "habilidade": 0,
     "virtude": 1,
-    "vontade": 1,
+    "vontade": 0,
     "centelha": 0,
     "caminho": 0,
-    "aparencia": 1
+    "aparencia": 0
   },
   "limitesCriacao": {
     "atributo": 5,
