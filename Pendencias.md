@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 37 itens abertos · 19 [DECIDIR] · 14 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Trilhas 4 · Ações & Sistema 4 · Social 3 · Bestiário 2
+**Placar:** 40 itens abertos · 22 [DECIDIR] · 14 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Trilhas 4 · Ações & Sistema 4 · Bestiário 5 · Social 3
 
 ---
 
@@ -69,6 +69,15 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   atingida por Raio sofre agravado pela mesma razão. Isso rendeu dado novo: **água e metal
   ganharam fraqueza a raio** (condutividade), cinco criaturas. Escrito em `Arcano_revisao.md` §9,
   pendência 4c e na tabela de dano, e explicado num callout do bestiário.
+- [ ] **B4 · [DECIDIR] Nada causa dano `sagrado` nem `profano`.** As duas palavras só existem
+  hoje *dentro* de dois Efeitos de Luz, como condição. São **47 criaturas com fraqueza a sagrado**
+  e 8 a profano esperando uma fonte de dano que o livro não tem. Ela viria da mecânica de clérigo
+  e paladino: **depende de F3**. Enquanto não vier, metade das fraquezas do bestiário é decorativa.
+- [ ] **B5 · [DECIDIR] `prata` não é representável.** `armas.json` não tem campo de material, então
+  "adaga de prata" não existe como dado. Vampiro e lobisomem têm fraqueza que nenhuma arma do livro
+  dispara. Ou entra um campo `material` na arma, ou vira etiqueta narrativa que o Mestre aplica.
+- [ ] **B6 · [DECIDIR] `sol` é ambiente, não ataque.** Só o vampiro tem, e quem dispara é a cena.
+  Talvez pertença à ficha de **Ambiente** (`Acoes_Sistema.md` §8.5) em vez da régua de dano.
 - [ ] **B2 · [FAZER] Modificadores de Defesa por porte.** Criatura não média não tem ajuste de
   Defesa hoje; o porte já mexe em PV e Absorção, falta a esquiva.
 - [ ] **B3 · [FAZER] Rebalancear os brutos grandes.** O pool de ataque deles está acima da régua da

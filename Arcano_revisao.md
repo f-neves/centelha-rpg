@@ -380,8 +380,58 @@ a luz e sagrado**, os 32 Corruptores mais os 15 Mortos-vivos, exatamente os 15% 
 | prata | 2 | | impacto | 3 |
 | sol | 1 | | raio | 1 |
 
-O preenchimento tem duas camadas, as duas dentro do script: a **regra** por categoria e tag
-(67 criaturas) e as **exceções à mão** (30), que vencem a regra. O JSON de saída é descartável.
+O preenchimento tem **três camadas**, da mais geral para a mais específica, cada uma vencendo a
+anterior: **categoria** (64 criaturas) · **material** (22) · **exceção à mão** (14).
+
+### O material
+
+Saber de que a criatura é feita é mais específico do que saber a família dela, e por isso o
+material manda. **Nem todo material tem fraqueza, e é esse o ponto:** se carne tivesse uma, todo
+mundo teria e a regra deixaria de significar alguma coisa.
+
+| Material | Fraqueza | Resistência | Por quê |
+|---|---|---|---|
+| **pedra** | nenhuma | fogo, corte, perfuração | não queima, a lâmina lasca e a ponta não entra. O que quebra pedra é a marreta, e por isso **Impacto fica de fora** |
+| **metal** | **raio** | fogo, corte, perfuração | igual à pedra no físico, mas **conduz** |
+| **madeira** | **fogo** | perfuração | queima; a ponta atravessa e não encontra nada vital |
+| **planta** | **fogo** | perfuração | verde queima mais devagar que madeira seca, mas queima |
+| **carne** | nenhuma | nenhuma | é a linha de base do sistema |
+| **carne animada** | nenhuma | perfuração | sem órgão que importe: a ponta entra e não acha o que furar |
+| **gosma** | nenhuma | corte, perfuração | nada para furar nem estrutura para cortar; o impacto espalha e ela se junta de novo |
+| **gelo** | **fogo** | gelo, perfuração | derrete |
+| **água** | **raio** | fogo | conduz, e apaga fogo |
+| **fogo** | **água** | fogo | a água apaga |
+| **terra** | **água** | fogo | a água leva |
+| **ar** | nenhuma | corte, perfuração | não há o que queimar nem o que cortar |
+
+**Metade dos materiais não tem fraqueza nenhuma**, e três deles (carne, pedra, gosma) são
+justamente os mais comuns. É o que mantém a fraqueza como exceção e não como estatística.
+
+A linha de **carne animada** rendeu uma unificação: a resistência a Perfuração do morto-vivo
+deixa de ser regra própria dos mortos-vivos e passa a ser a mesma regra do golem de carne. Ossos
+soltos continuam exceção à mão, porque ali o fio também passa entre as costelas.
+
+A tabela mora em `scripts/lib-materiais.mjs`, e não dentro de um gerador, porque **dois** a usam:
+o `gen-elementos.mjs`, que semeia as 308 do livro, e o `gen-monsters.mjs`, que resolve o campo
+`material` de uma criatura escrita à mão em `inimigos-custom.json`.
+
+### Três dúvidas que a auditoria levantou, e nenhuma é de classificação
+
+São de **coisas que não existem do outro lado**:
+
+1. **Nada no sistema causa dano `sagrado` ou `profano`.** As duas palavras só aparecem hoje
+   *dentro* de dois Efeitos de Luz, como condição ("quem tem fraqueza a luz ou ao sagrado"). São
+   **47 criaturas com fraqueza a sagrado e 8 a profano** esperando uma fonte de dano que o livro
+   ainda não tem. Ela viria da mecânica de clérigo e paladino, que é a pendência **F3** do Lore.
+2. **`prata` não é representável.** `armas.json` não tem campo de material, então "adaga de
+   prata" não existe como dado. O vampiro e o lobisomem têm uma fraqueza que nenhuma arma do
+   livro consegue disparar.
+3. **`sol` não é um ataque, é um ambiente.** Só o vampiro tem, e quem a dispara é a cena, não uma
+   jogada. Talvez pertença à ficha de **Ambiente** (Ações & Sistema §8.5) em vez de à régua de
+   dano.
+
+Nenhuma das três impede o dado de existir, e por isso ficaram registradas em vez de travarem o
+preenchimento. As três viram itens no `Pendencias.md`.
 
 **Ainda falta**, e é a única coisa que falta aqui: definir o que a **fraqueza** faz **em número**
 para os outros elementos. O Luz já está definido (agravado, ignora resistência) e a resistência

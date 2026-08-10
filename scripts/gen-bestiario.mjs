@@ -471,7 +471,25 @@ for (const c of CONV) {
   if (h.atributos) Object.assign(c.atributos, h.atributos);
 }
 
-const inimigos = [...NPCS.map(stat), ...CONV];
+// Criaturas suas, de `src/data/inimigos-custom.json`. Entram pelo mesmo `stat()`
+// dos NPCs escritos à mão, então PV, Defesa, Absorção, Iniciativa e os pools saem
+// pelas fórmulas de sempre: uma criatura sua nunca nasce fora da régua.
+// O arquivo é a fonte ÚNICA da criatura: o que for de satélite (habilidades,
+// dimensões, lore, ecologia, fraquezas) viaja no mesmo objeto e o gen-monsters.mjs
+// o distribui. É o oposto do resto do bestiário, onde a criatura mora em sete arquivos.
+const CUSTOM = (() => {
+  const f = path.join(ROOT, 'src/data/inimigos-custom.json');
+  if (!fs.existsSync(f)) return [];
+  const lista = JSON.parse(fs.readFileSync(f, 'utf8')).filter((c) => c && c.id);
+  const vistos = new Set([...NPCS, ...CONV].map((c) => c.id));
+  for (const c of lista) {
+    if (vistos.has(c.id)) throw new Error(`inimigos-custom.json: o id "${c.id}" já existe no bestiário`);
+    vistos.add(c.id);
+  }
+  return lista;
+})();
+
+const inimigos = [...NPCS.map(stat), ...CUSTOM.map(stat), ...CONV];
 fs.writeFileSync(path.join(ROOT, 'src/data/inimigos.json'), JSON.stringify(inimigos, null, 2) + '\n', 'utf8');
 const byCat = {};
 for (const n of inimigos) byCat[n.categoria] = (byCat[n.categoria] || 0) + 1;

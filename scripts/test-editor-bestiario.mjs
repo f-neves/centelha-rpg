@@ -24,7 +24,16 @@ try{
   const erros=[]; page.on('pageerror',(e)=>erros.push(String(e)));
   await page.goto(`${url}/bestiario`,{waitUntil:'networkidle0'});
 
-  ok((await page.$$('.besta-editar')).length===308,`botao Editar em todas as criaturas (${(await page.$$('.besta-editar')).length})`);
+  const nCards=(await page.$$('.besta')).length, nEdit=(await page.$$('.besta-editar')).length;
+  ok(nCards>300&&nEdit===nCards,`botao Editar em todas as criaturas (${nEdit} de ${nCards})`);
+  ok(!!(await page.$('#mon-exemplo-espantalho')),'criatura do inimigos-custom.json aparece no bestiario');
+  const esp=await page.$eval('#mon-exemplo-espantalho',(e)=>{
+    const dd=[...e.querySelectorAll('.besta-stats dd')].map(x=>x.textContent.trim());
+    const el=[...e.querySelectorAll('.besta-elem .el')].map(x=>x.textContent.trim());
+    return {pv:dd[0],elem:el};
+  });
+  ok(esp.pv==='34',`criatura sua tem PV calculado pela formula (${esp.pv})`);
+  ok(esp.elem.join(',')==='Fogo,Perfuração',`material madeira virou fraqueza e resistencia (${esp.elem.join(', ')})`);
   ok(!!(await page.$('#besta-nova')),'botao Nova criatura na barra');
   ok(await page.$eval('#editbox',(e)=>e.hidden),'modal comeca fechado');
 

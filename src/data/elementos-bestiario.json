@@ -89,6 +89,7 @@
    "raio"
   ],
   "resistencias": [
+   "corte",
    "fogo",
    "perfuracao"
   ]
@@ -144,6 +145,12 @@
   "fraquezas": [
    "luz",
    "sagrado"
+  ]
+ },
+ "mon-djinn": {
+  "resistencias": [
+   "corte",
+   "perfuracao"
   ]
  },
  "mon-dragao-azul-adulto": {
@@ -217,6 +224,12 @@
    "fogo"
   ]
  },
+ "mon-small-air-elemental": {
+  "resistencias": [
+   "corte",
+   "perfuracao"
+  ]
+ },
  "mon-small-fire-elemental": {
   "fraquezas": [
    "agua"
@@ -276,6 +289,7 @@
  },
  "mon-gargula": {
   "resistencias": [
+   "corte",
    "fogo",
    "perfuracao"
   ]
@@ -317,6 +331,7 @@
  },
  "mon-clay-golem": {
   "resistencias": [
+   "corte",
    "fogo",
    "perfuracao"
   ]
@@ -331,6 +346,7 @@
    "raio"
   ],
   "resistencias": [
+   "corte",
    "fogo",
    "perfuracao"
   ]
@@ -346,6 +362,7 @@
  },
  "mon-stone-golem": {
   "resistencias": [
+   "corte",
    "fogo",
    "perfuracao"
   ]
@@ -378,6 +395,12 @@
   ],
   "resistencias": [
    "gelo"
+  ]
+ },
+ "mon-invisible-stalker": {
+  "resistencias": [
+   "corte",
+   "perfuracao"
   ]
  },
  "mon-kyton": {
@@ -517,6 +540,7 @@
    "raio"
   ],
   "resistencias": [
+   "corte",
    "fogo",
    "perfuracao"
   ]

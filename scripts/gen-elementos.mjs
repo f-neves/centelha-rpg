@@ -12,10 +12,9 @@
 //   Absorção natural, e o dano é agravado (não fecha com descanso nem com Cura).
 // Fraqueza e resistência ao mesmo tipo se anulam.
 //
-// Duas camadas, e é de propósito: a REGRA cobre o grosso e é reprodutível, as
-// EXCECOES são escritas à mão e vencem a regra. As duas moram NESTE arquivo:
-// o JSON de saída é descartável e não deve ser editado à mão, porque rodar o
-// script de novo o reescreve inteiro. Exceção nova entra na tabela EXCECOES.
+// Três camadas, da mais geral para a mais específica, cada uma sobrescrevendo a
+// anterior: CATEGORIA → MATERIAL → EXCEÇÃO. As três moram NESTE arquivo, e o JSON
+// de saída é descartável: rodar o script o reescreve inteiro.
 //
 // Ordem, quando as fontes do bestiário mudarem:
 //   node scripts/gen-monsters.mjs   (para o categoria/tags ficarem em dia)
@@ -25,10 +24,18 @@
 // uso: node scripts/gen-elementos.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { POR_MATERIAL } from './lib-materiais.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const p = (f) => path.join(ROOT, 'src/data', f);
-const M = JSON.parse(fs.readFileSync(p('monsters.json'), 'utf8'));
+const TODAS = JSON.parse(fs.readFileSync(p('monsters.json'), 'utf8'));
+// Criatura sua se descreve sozinha, no próprio objeto do inimigos-custom.json
+// (por `material` ou por `fraquezas`/`resistencias`). Este satélite é só do livro.
+const CUSTOM_IDS = new Set((() => {
+  const f = p('inimigos-custom.json');
+  return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')).filter((c) => c && c.id).map((c) => c.id) : [];
+})());
+const M = TODAS.filter((m) => !CUSTOM_IDS.has(m.id));
 
 // Vocabulário fechado. Mistura três eixos de propósito, porque as três coisas
 // machucam: elemento das Artes, tipo de dano físico, e natureza ou material.
@@ -41,6 +48,9 @@ const VOCAB = new Set([
 // --- camada 1: a regra, por categoria -------------------------------------
 // "Não é coisa comum: a maioria das criaturas não tem nenhuma." Só estas famílias
 // recebem por regra; Animal, Humanoide, Fera e companhia saem vazias.
+//
+// Morto-vivo, Planta, Limo e Construto poderiam sair só do material, e saem para
+// quem tem material declarado. A categoria fica como rede para o resto.
 const POR_CATEGORIA = {
   'Morto-vivo': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao'] },
   'Corruptor': { fraquezas: ['luz', 'sagrado'] },
@@ -55,42 +65,35 @@ const POR_TAG = {
   'incorpóreo': { resistencias: ['corte', 'perfuracao', 'impacto'] },
 };
 
-// --- camada 2: as exceções, à mão -----------------------------------------
-// Cada linha tem um porquê. Onde o material manda, vale a régua da §9: folha,
-// madeira, palha e gelo têm fraqueza a fogo; fogo e terra têm fraqueza a água;
-// água, terra, metal e pedra resistem a fogo.
+// --- camada 2: o material de que a criatura é feita ------------------------
+// A tabela mora em ./lib-materiais.mjs, porque o gen-monsters.mjs também precisa
+// dela para resolver o `material` de uma criatura sua sem uma segunda passada.
+
+// De que a criatura é feita. Só quem não é de carne precisa aparecer aqui.
+const MATERIAL_DE = {
+  'mon-stone-golem': 'pedra', 'mon-gargula': 'pedra', 'mon-clay-golem': 'pedra',
+  'mon-iron-golem': 'metal', 'mon-iron-cobra': 'metal', 'mon-retriever': 'metal',
+  'mon-treant': 'madeira',
+  'mon-ice-golem': 'gelo',
+  'mon-flesh-golem': 'carne animada', 'mon-homunculus': 'carne animada',
+  'mon-small-fire-elemental': 'fogo', 'mon-salamandra': 'fogo', 'mon-efreeti': 'fogo',
+  'mon-small-water-elemental': 'agua', 'mon-marid': 'agua',
+  'mon-small-earth-elemental': 'terra', 'mon-elemental-da-terra-grande': 'terra',
+  'mon-shaitan': 'terra', 'mon-xorn': 'terra',
+  'mon-small-air-elemental': 'ar', 'mon-djinn': 'ar', 'mon-invisible-stalker': 'ar',
+};
+
+// --- camada 3: as exceções, à mão -----------------------------------------
+// Só o que não sai nem da categoria nem do material: natureza sobrenatural e o
+// sopro do dragão. Cada linha tem um porquê.
 const EXCECOES = {
-  // Natureza sobrenatural, os casos nomeados no doc
   'mon-vampiro': { fraquezas: ['luz', 'sagrado', 'sol', 'prata', 'fogo'], resistencias: ['perfuracao'] },
   'mon-werewolf': { fraquezas: ['prata'] },
+  // Bandagem e pele secas: a múmia queima como estopa
   'mon-mumia': { fraquezas: ['luz', 'sagrado', 'fogo'], resistencias: ['perfuracao'] },
   // Osso solto: a ponta e o fio passam entre as costelas, a maça não
   'mon-esqueleto-humano': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
   'mon-skeletal-champion': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
-
-  // Elementais, pelo elemento
-  'mon-small-fire-elemental': { fraquezas: ['agua'], resistencias: ['fogo'] },
-  'mon-salamandra': { fraquezas: ['agua'], resistencias: ['fogo'] },
-  'mon-efreeti': { fraquezas: ['agua'], resistencias: ['fogo'] },
-  // Água conduz: o raio atravessa o corpo inteiro em vez de tocar a superfície
-  'mon-small-water-elemental': { fraquezas: ['raio'], resistencias: ['fogo'] },
-  'mon-marid': { fraquezas: ['raio'], resistencias: ['fogo'] },
-  'mon-small-earth-elemental': { fraquezas: ['agua'], resistencias: ['fogo'] },
-  'mon-elemental-da-terra-grande': { fraquezas: ['agua'], resistencias: ['fogo'] },
-  'mon-shaitan': { fraquezas: ['agua'], resistencias: ['fogo'] },
-  'mon-xorn': { fraquezas: ['agua'], resistencias: ['fogo'] },
-  // Ar não tem nada: não há material que o fogo queime nem que a água apague
-
-  // Construtos, pelo material. Metal conduz o raio pela mesma razão que a água.
-  'mon-iron-golem': { fraquezas: ['raio'], resistencias: ['fogo', 'perfuracao'] },
-  'mon-iron-cobra': { fraquezas: ['raio'], resistencias: ['fogo', 'perfuracao'] },
-  'mon-retriever': { fraquezas: ['raio'], resistencias: ['fogo', 'perfuracao'] },
-  'mon-stone-golem': { resistencias: ['fogo', 'perfuracao'] },
-  'mon-clay-golem': { resistencias: ['fogo', 'perfuracao'] },
-  'mon-ice-golem': { fraquezas: ['fogo'], resistencias: ['gelo', 'perfuracao'] },
-
-  // Pedra viva, mesmo não sendo Construto na ficha
-  'mon-gargula': { resistencias: ['fogo', 'perfuracao'] },
 
   // Dragões: o bicho resiste ao que ele mesmo cospe
   'mon-dragao-vermelho-adulto': { resistencias: ['fogo'] },
@@ -107,7 +110,7 @@ const EXCECOES = {
 // --- montagem --------------------------------------------------------------
 const uniq = (a) => [...new Set(a)];
 const saida = {};
-let porRegra = 0, porExcecao = 0;
+let porRegra = 0, porMaterial = 0, porExcecao = 0;
 
 for (const m of M) {
   let f = [], r = [];
@@ -119,8 +122,18 @@ for (const m of M) {
   }
   const veioDaRegra = f.length || r.length;
 
+  // O material MANDA sobre a categoria: saber do que a criatura é feita é mais
+  // específico do que saber a família dela.
+  const mat = MATERIAL_DE[m.id];
+  if (mat) {
+    const pm = POR_MATERIAL[mat];
+    if (!pm) throw new Error(`material desconhecido em ${m.id}: ${mat}`);
+    f = [...(pm.fraquezas || [])]; r = [...(pm.resistencias || [])];
+  }
+
   const ex = EXCECOES[m.id];
   if (ex) { f = [...(ex.fraquezas || [])]; r = [...(ex.resistencias || [])]; porExcecao++; }
+  else if (mat) porMaterial++;
   else if (veioDaRegra) porRegra++;
 
   f = uniq(f); r = uniq(r);
@@ -137,11 +150,13 @@ for (const m of M) {
 }
 
 const idsBons = new Set(M.map((m) => m.id));
-const orfaos = Object.keys(EXCECOES).filter((id) => !idsBons.has(id));
-if (orfaos.length) throw new Error(`exceção para id inexistente: ${orfaos.join(', ')}`);
+for (const [rotulo, tabela] of [['exceção', EXCECOES], ['material', MATERIAL_DE]]) {
+  const orfaos = Object.keys(tabela).filter((id) => !idsBons.has(id));
+  if (orfaos.length) throw new Error(`${rotulo} para id inexistente: ${orfaos.join(', ')}`);
+}
 
 const out = p('elementos-bestiario.json');
 fs.writeFileSync(out, JSON.stringify(saida, null, 1) + '\n');
 const n = Object.keys(saida).length;
 console.log(`elementos-bestiario.json: ${n} de ${M.length} criaturas com fraqueza ou resistência (${(100 * n / M.length).toFixed(0)}%).`);
-console.log(`  ${porRegra} por regra de categoria ou tag · ${porExcecao} por exceção escrita à mão.`);
+console.log(`  ${porRegra} por categoria ou tag · ${porMaterial} pelo material · ${porExcecao} por exceção à mão.`);

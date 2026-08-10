@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod';
+import { POR_MATERIAL as MATERIAIS } from './lib-materiais.mjs';
 
 const DIR = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..', 'src', 'data');
 const read = (f) => JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8'));
@@ -121,6 +122,25 @@ if (fs.existsSync(path.join(DIR, 'elementos-bestiario.json'))) {
     for (const k of [...f, ...r]) if (!ELEM_VOCAB.has(k)) fail(`elementos-bestiario "${id}": palavra fora do vocabulário "${k}"`);
     const choque = f.filter((x) => r.includes(x));
     if (choque.length) fail(`elementos-bestiario "${id}": "${choque.join(', ')}" é fraqueza e resistência ao mesmo tempo (as duas se anulam)`);
+  }
+}
+
+// Criaturas suas: id único e material conhecido. Um material com erro de digitação
+// passaria silenciosamente como "sem fraqueza nenhuma", que é o pior tipo de bug.
+if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
+  const CUSTOM = read('inimigos-custom.json');
+  const vistos = new Set();
+  for (const c of CUSTOM) {
+    if (!c?.id) { fail('inimigos-custom: entrada sem id'); continue; }
+    if (vistos.has(c.id)) fail(`inimigos-custom "${c.id}": id repetido`);
+    vistos.add(c.id);
+    if (!c.nome) fail(`inimigos-custom "${c.id}": sem nome`);
+    if (c.material && !MATERIAIS[String(c.material).toLowerCase()]) {
+      fail(`inimigos-custom "${c.id}": material desconhecido "${c.material}" (conhecidos: ${Object.keys(MATERIAIS).join(', ')})`);
+    }
+    for (const k of [...(c.fraquezas || []), ...(c.resistencias || [])]) {
+      if (!ELEM_VOCAB.has(k)) fail(`inimigos-custom "${c.id}": palavra fora do vocabulário "${k}"`);
+    }
   }
 }
 

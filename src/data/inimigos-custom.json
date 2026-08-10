@@ -1,0 +1,72 @@
+[
+  {
+    "_comentario": "Criaturas suas, escritas à mão ou vindas do botão Editar do /bestiario. Uma criatura, um objeto, TUDO aqui dentro: o gerador espalha pelos lugares certos. Apague este exemplo à vontade.",
+    "id": "mon-exemplo-espantalho",
+    "nome": "Espantalho Desperto",
+    "nomeIngles": "Awakened Scarecrow",
+    "tipo": "soldado",
+    "categoria": "Construto",
+    "ameaca": 2,
+    "centelha": 1,
+    "porte": "Médio",
+    "conceito": "palha com intenção",
+    "descricao": "Fica parado no meio da plantação até alguém passar perto demais, e então vira a cabeça.",
+    "tags": [
+      "monstro",
+      "centelha"
+    ],
+    "attrs": {
+      "forca": 3,
+      "destreza": 2,
+      "vigor": 3,
+      "percepcao": 4
+    },
+    "pericias": {
+      "briga": 3,
+      "esquiva": 1,
+      "furtividade": 4,
+      "prontidao": 3
+    },
+    "vontade": 5,
+    "integridade": 3,
+    "material": "madeira",
+    "ataques": [
+      {
+        "nome": "Foice enferrujada",
+        "atrib": "forca",
+        "pericia": "armas",
+        "dado": 2,
+        "mao": 1,
+        "tipo": "corte",
+        "acerto": 0,
+        "ticks": 6
+      }
+    ],
+    "habilidades": [
+      {
+        "nome": "Imóvel",
+        "descricao": "Parado entre outros espantalhos, só é notado com Percepção + Prontidão contra o Valor Passivo dele."
+      }
+    ],
+    "dimensoes": {
+      "medida": "1,8 m de altura",
+      "peso": "40 kg"
+    },
+    "ecologia": {
+      "tipo": "Construct",
+      "terreno": [
+        "Plains"
+      ],
+      "clima": [
+        "Temperate"
+      ]
+    },
+    "lore": [
+      {
+        "titulo": "Comportamento",
+        "texto": "Não persegue para longe: guarda o campo que lhe deram e volta ao poste quando a ameaça se afasta."
+      }
+    ],
+    "notas": "Feito de madeira e palha: fogo o resolve depressa, e a foice do camponês quase não o machuca."
+  }
+]

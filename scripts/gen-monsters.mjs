@@ -4,6 +4,7 @@
 // Rodar: node scripts/gen-monsters.mjs   (rode gen-bestiario.mjs antes se mexeu nas builds)
 import { readFileSync, writeFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { elementosDoMaterial } from './lib-materiais.mjs';
 import { dirname, join } from 'node:path';
 
 const dir = dirname(fileURLToPath(import.meta.url));
@@ -17,6 +18,12 @@ const LORE = read('lore-bestiario.json');
 const IMG = read('imagens-bestiario.json');
 const ECO = read('ecologia-bestiario.json'); // tipo (PF2e) + terreno + clima, por id
 const ELE = read('elementos-bestiario.json'); // fraquezas e resistencias, por id (gen-elementos.mjs)
+// Criaturas suas: o arquivo é a fonte ÚNICA delas, então os satélites vêm dentro
+// do próprio objeto em vez de morarem nos seis arquivos por id.
+const CUSTOM = Object.fromEntries((() => {
+  try { return JSON.parse(readFileSync(join(data, 'inimigos-custom.json'), 'utf8')); }
+  catch (e) { if (e.code === 'ENOENT') return []; throw e; }
+})().filter((c) => c && c.id).map((c) => [c.id, c]));
 
 // Categoria = tipo de criatura no molde do Bestiary 1 (Pathfinder 1e, pág. 318 "Monsters by Type"),
 // derivada do ecologia.tipo + ajustes por criatura. Vai para o badge de Categoria.
@@ -109,7 +116,20 @@ const DESC_OVER = {
 };
 
 function build(c) {
-  const h = HAB[c.id] || {}, d = DIM[c.id] || {}, l = LORE[c.id] || {}, e = ECO[c.id] || {};
+  const cu = CUSTOM[c.id];
+  // Fraqueza e resistência, na ordem: o que a criatura declara explicitamente
+  // vence o `material` dela, que vence o satélite do bestiário.
+  const doMat = cu ? elementosDoMaterial(cu.material) : null;
+  const elem = {
+    fraquezas: cu?.fraquezas ?? doMat?.fraquezas ?? ELE[c.id]?.fraquezas ?? [],
+    resistencias: cu?.resistencias ?? doMat?.resistencias ?? ELE[c.id]?.resistencias ?? [],
+  };
+  // Para a criatura sua, o satélite vem de dentro dela. Assim ela não precisa de
+  // uma linha em cada um dos seis arquivos só para passar no portão de integridade.
+  const h = cu ? { en: cu.nomeIngles || null, hab: (cu.habilidades || []).map((x) => ({ n: x.nome, d: x.descricao })) } : (HAB[c.id] || {});
+  const d = cu ? { porte: cu.porte || 'Médio', medida: cu.dimensoes?.medida || 'sem medida', peso: cu.dimensoes?.peso || 'sem peso' } : (DIM[c.id] || {});
+  const l = cu ? { secoes: (cu.lore || []).map((s) => ({ t: s.titulo, d: s.texto })) } : (LORE[c.id] || {});
+  const e = cu ? { tipo: cu.ecologia?.tipo || 'Construct', terreno: cu.ecologia?.terreno || [], clima: cu.ecologia?.clima || [] } : (ECO[c.id] || {});
   const categoria = catDe(c.id, e.tipo) || c.categoria || null;
   let descricao = c.descricao || '';
   if (DESC_OVER[c.id]) descricao = DESC_OVER[c.id];
@@ -144,8 +164,8 @@ function build(c) {
       resistenciaPerfuracao: c.resistPerf || 0,
       // Fraqueza e resistência a elemento, tipo de dano ou natureza. A maioria das
       // criaturas não tem nenhuma, então os campos só aparecem em quem tem.
-      ...(ELE[c.id]?.fraquezas ? { fraquezas: ELE[c.id].fraquezas } : {}),
-      ...(ELE[c.id]?.resistencias ? { resistencias: ELE[c.id].resistencias } : {}),
+      ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),
+      ...(elem.resistencias.length ? { resistencias: elem.resistencias } : {}),
       iniciativa: c.iniciativa,
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, speed: a.ticks, ...(a.notas ? { notas: a.notas } : {}) })),
     },
