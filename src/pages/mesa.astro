@@ -1,1266 +1,478 @@
 ---
 import Base from '../layouts/Base.astro';
+import MesaCab from '../components/MesaCab.astro';
+import RoladorDados from '../components/RoladorDados.astro';
+import { regras } from '../lib/calc';
+
+// A régua de dificuldade do Escudo sai calculada no build (as três colunas são
+// função da soma Atributo + Habilidade), igual à da página /mestre.
+const ANCORAS = regras.dificuldade as { dif: number; desafio: string; aaltura: string }[];
+const FERIMENTOS = regras.ferimentos as { minPct: number; maxPct: number; estado: string; penAcao: number | null; penDefesa: number | null }[];
+const MODS = (regras.combateTatico as any).modificadores as { nome: string; valor: number; alvo: string; nota: string }[];
 ---
-<Base title="Mesa" largura="wide" descricao="Página da mesa: membros, personagens e recursos.">
-  <div id="setup" class="aviso" hidden>
-    <strong>Área de contas ainda não configurada.</strong>
-    <p class="muted">Falta ligar o Supabase. Veja <code>supabase/README.md</code>.</p>
-  </div>
+<Base title="Mesa" largura="wide" descricao="Escudo do Mestre: o painel da campanha.">
+  <MesaCab aba="escudo">
 
-  <div id="carregando" class="muted">Carregando…</div>
-  <div id="erro" class="erro" hidden></div>
-
-  <div id="mesa" hidden>
-    <header class="mesa-cab">
-      <div>
-        <span id="papel" class="papel"></span>
-        <h1 id="nome" class="cinzel" style="margin:.2rem 0 0"></h1>
-        <p id="descricao" class="muted"></p>
+    <!-- ================= COMBATE ================= -->
+    <section class="bloco" id="sec-combate">
+      <div class="bloco-cab">
+        <h2>Em cena</h2>
+        <div class="bloco-acoes" id="combate-acoes"></div>
       </div>
-      <div class="mesa-cab-acoes">
-        <div id="box-convite" class="convite" hidden>
-          <span class="muted">Código de convite</span>
-          <div class="convite-linha">
-            <code id="codigo"></code>
-            <button class="btn" id="btn-copiar" title="Copiar código">Copiar</button>
-            <button class="btn" id="btn-regen" title="Gerar um novo código (invalida o atual)">↻</button>
-          </div>
-        </div>
-        <div class="cab-btns">
-          <button class="btn" id="btn-editar-mesa" hidden>Editar mesa</button>
-          <button class="btn" id="btn-sair-mesa" hidden>Sair da mesa</button>
+      <div id="combate-faixa"></div>
+    </section>
+
+    <!-- ================= O GRUPO ================= -->
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>O grupo <small>· quem está em pé e como</small></h2>
+        <div class="bloco-acoes">
+          <a class="btn mini" id="ir-grupo" href="#">Ver fichas ›</a>
         </div>
       </div>
-    </header>
-
-    <section class="bloco">
-      <h2>Membros</h2>
-      <ul id="membros" class="membros"></ul>
+      <div id="grupo-faixa" class="grupo-faixa"><p class="vazio">Carregando o grupo…</p></div>
     </section>
 
+    <!-- ================= RELÓGIOS ================= -->
     <section class="bloco">
       <div class="bloco-cab">
-        <h2>Personagens</h2>
-        <button class="btn primary" id="btn-novo-pers">Novo personagem</button>
+        <h2>Relógios <small>· o que avança sozinho</small></h2>
+        <div class="bloco-acoes"><button class="btn mini" id="rel-novo" hidden>+ relógio</button></div>
       </div>
-      <div id="xp-inicial-box" class="xp-inicial" hidden>
-        <label for="xp-inicial">XP inicial das fichas</label>
-        <input type="number" id="xp-inicial" min="0" step="10" />
-        <button class="btn" id="xp-inicial-salvar">Salvar</button>
-        <span class="salvo" id="xp-inicial-salvo"></span>
-        <p class="muted xp-inicial-dica">Orçamento com que os jogadores montam a ficha nesta mesa.
-          Vale para quem ainda não tem XP próprio; se você definir o XP de um personagem na página dele, o individual manda.</p>
-      </div>
-      <div id="personagens"></div>
+      <div id="relogios" class="relogios"></div>
     </section>
 
-    <section class="bloco" id="visao-geral-sec" hidden>
-      <h2>Visão geral do grupo</h2>
-      <div id="visao-geral" class="tabela-wrap"></div>
-    </section>
-
+    <!-- ================= GANCHOS ================= -->
     <section class="bloco">
       <div class="bloco-cab">
-        <h2>Arquivos da mesa</h2>
-        <label class="btn primary" id="mesa-arq-lbl" hidden>Enviar arquivo
-          <input type="file" id="mesa-arq-file" hidden />
-        </label>
+        <h2>Ganchos &amp; próxima cena</h2>
+        <div class="bloco-acoes"><a class="btn mini" id="ir-compendio" href="#">Compêndio ›</a></div>
       </div>
-      <p class="muted" id="mesa-arq-dica" hidden>Marque a caixa "visível" para liberar o arquivo aos jogadores. Sem marcar, só você (mestre) vê.</p>
-      <ul id="mesa-arqs" class="arqs"></ul>
+      <div id="ganchos"></div>
     </section>
 
+    <!-- ================= NOTAS RÁPIDAS ================= -->
     <section class="bloco">
       <div class="bloco-cab">
-        <h2>Notas de sessão</h2>
-        <button class="btn primary" id="nota-nova" hidden>Nova nota</button>
+        <h2>Notas rápidas</h2>
+        <div class="bloco-acoes"><a class="btn mini" id="ir-diario" href="#">Diário ›</a></div>
       </div>
-      <div id="notas"></div>
+      <div id="notas-rapidas"></div>
     </section>
 
-    <section class="bloco escudo">
-      <div class="bloco-cab">
-        <h2>Escudo do Mestre <small>· criaturas da campanha</small></h2>
-      </div>
-      <div id="escudo-busca-wrap" class="escudo-busca-wrap" hidden>
-        <input type="search" id="escudo-busca" placeholder="Buscar criatura no bestiário para adicionar…" autocomplete="off" />
-        <ul id="escudo-result" class="escudo-result" hidden></ul>
-      </div>
-      <div id="escudo-lista" class="escudo-lista"></div>
+    <!-- ================= ROLAGEM ================= -->
+    <section class="bloco" id="sec-rolagem">
+      <div class="bloco-cab"><h2>Rolagem atrás do escudo</h2></div>
+      <RoladorDados compact />
     </section>
 
+    <!-- ================= REFERÊNCIA RELÂMPAGO ================= -->
     <section class="bloco">
       <div class="bloco-cab">
-        <h2>Combate &amp; Iniciativa <small>· ticks</small></h2>
+        <h2>Referência relâmpago</h2>
+        <div class="bloco-acoes"><a class="btn mini" id="ir-referencia" href="#">Escudo completo ›</a></div>
       </div>
-      <div id="combate-area"></div>
+      <div class="ref-rapida">
+        <details open>
+          <summary>Dificuldades</summary>
+          <div class="tab-wrap"><table class="tab-mesa">
+            <thead><tr><th class="num">Dif</th><th>Desafio</th><th>À altura de</th></tr></thead>
+            <tbody>{ANCORAS.map((a) => (<tr><td class="num">{a.dif}</td><td>{a.desafio}</td><td class="muted">{a.aaltura}</td></tr>))}</tbody>
+          </table></div>
+          <p class="muted nota-mini">Sucesso quando o <strong>total supera</strong> a Dificuldade. Cada 6 pontos acima é uma <strong>Margem</strong>.</p>
+        </details>
+        <details>
+          <summary>Limiares de Ferimento</summary>
+          <div class="tab-wrap"><table class="tab-mesa">
+            <thead><tr><th>Vida</th><th>Estado</th><th class="num">Ação</th><th class="num">Defesa</th></tr></thead>
+            <tbody>{FERIMENTOS.map((f) => (
+              <tr><td class="num">{f.minPct === f.maxPct ? f.minPct : `${f.minPct}–${f.maxPct}`}%</td>
+                <td>{f.estado}</td>
+                <td class="num">{f.penAcao == null ? '—' : f.penAcao || '0'}</td>
+                <td class="num">{f.penDefesa == null ? '—' : f.penDefesa || '0'}</td></tr>))}</tbody>
+          </table></div>
+        </details>
+        <details>
+          <summary>Modificadores de combate</summary>
+          <div class="tab-wrap"><table class="tab-mesa">
+            <thead><tr><th>Situação</th><th class="num">Defesa</th><th>Quando</th></tr></thead>
+            <tbody>{MODS.map((m) => (
+              <tr><td>{m.nome}</td>
+                <td class="num">{m.valor > 0 ? `+${m.valor}` : m.valor}</td>
+                <td class="muted">{m.nota}</td></tr>))}</tbody>
+          </table></div>
+          <p class="muted nota-mini">Teto de <strong>±{(regras.combateTatico as any).modificadorCap}</strong> somando tudo. O porte entra no <em>acerto</em>, fora deste teto.</p>
+        </details>
+      </div>
     </section>
-  </div>
 
-  <div id="card-modal" class="card-modal" hidden role="dialog" aria-modal="true">
-    <div class="card-modal-back" data-fechar></div>
-    <div class="card-modal-box">
-      <button class="card-modal-x" data-fechar aria-label="Fechar">✕</button>
-      <div id="card-modal-body"></div>
-    </div>
-  </div>
+  </MesaCab>
 
-  <dialog id="acao-dlg" class="acao-dlg">
-    <form method="dialog" class="acao-form">
-      <h3 id="acao-titulo" class="cinzel">Ação</h3>
-      <label>Tipo de ação
-        <select id="acao-tipo">
-          <option value="ataque">Ataque</option>
-          <option value="acao">Outra ação</option>
+  <dialog id="rel-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="rel-titulo">Relógio</h3>
+      <label>Nome <input type="text" id="rel-nome" placeholder="A guarda chega…" /></label>
+      <div class="grade2">
+        <label>Segmentos <input type="number" id="rel-seg" min="2" max="12" value="6" /></label>
+        <label>Cheios <input type="number" id="rel-cheios" min="0" value="0" /></label>
+      </div>
+      <label>Cor
+        <select id="rel-cor">
+          <option value="perigo">Perigo (vermelho)</option>
+          <option value="alerta">Alerta (dourado)</option>
+          <option value="bom">Bom (verde)</option>
+          <option value="arcano">Arcano (roxo)</option>
         </select>
       </label>
-      <label id="acao-alvo-wrap">Alvo
-        <select id="acao-alvo"></select>
-      </label>
-      <label id="acao-outro-wrap">Descrição
-        <input type="text" id="acao-outro" placeholder="descreva…" />
-      </label>
-      <div id="acao-dano-wrap" class="acao-dano-row">
-        <label>Dano (bruto rolado)
-          <input type="number" id="acao-dano" min="0" placeholder="0 = sem dano" />
-        </label>
-        <label>Tipo de dano
-          <select id="acao-dano-tipo">
-            <option value="impacto">Impacto</option>
-            <option value="corte">Cortante</option>
-            <option value="perfurante">Perfurante</option>
-          </select>
-        </label>
-      </div>
-      <label>Velocidade (Ticks até a próxima ação)
-        <input type="number" id="acao-speed" min="0" value="5" />
-      </label>
-      <div class="acao-btns">
-        <button type="button" class="btn" id="acao-cancelar">Cancelar</button>
-        <button type="button" class="btn primary" id="acao-confirmar">Confirmar</button>
-      </div>
-    </form>
-  </dialog>
-
-  <dialog id="edit-dlg" class="acao-dlg edit-dlg">
-    <form method="dialog" class="acao-form">
-      <h3 id="edit-titulo" class="cinzel">Editar combatente</h3>
-      <label>Nome
-        <input type="text" id="edit-nome" placeholder="nome do combatente" />
-      </label>
-      <div class="edit-grid">
-        <label>PV máximo <input type="number" id="edit-pvmax" min="0" /></label>
-        <label>PV atual <input type="number" id="edit-pvat" min="0" /></label>
-        <label>Iniciativa <input type="number" id="edit-ini" /></label>
-      </div>
-      <label>Ataque <input type="text" id="edit-atq" placeholder="ex.: 4d6+2 +1" /></label>
-      <label>Dano <input type="text" id="edit-dano" placeholder="ex.: 3d6 +2 (C)" /></label>
-      <div class="edit-grid">
-        <label>Defesa física <input type="number" id="edit-def" /></label>
-        <label>Resist. Perf. (Nível) <input type="number" id="edit-rperf" min="0" /></label>
-      </div>
-      <div class="edit-grid">
-        <label>Abs. Impacto <input type="number" id="edit-abs-i" min="0" /></label>
-        <label>Abs. Corte <input type="number" id="edit-abs-c" min="0" /></label>
-        <label>Abs. Perfuração <input type="number" id="edit-abs-p" min="0" /></label>
-      </div>
-      <div class="acao-btns">
-        <button type="button" class="btn" id="edit-cancelar">Cancelar</button>
-        <button type="button" class="btn primary" id="edit-salvar">Salvar</button>
+      <label>Nota <textarea id="rel-nota" rows="2" placeholder="O que acontece quando encher?"></textarea></label>
+      <label class="chk"><input type="checkbox" id="rel-vis" /> visível para os jogadores</label>
+      <div class="dlg-btns">
+        <button type="button" class="btn mini perigo esq" id="rel-excluir" hidden>Excluir</button>
+        <button type="button" class="btn" id="rel-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="rel-salvar">Salvar</button>
       </div>
     </form>
   </dialog>
 </Base>
 
+<style is:global>
+  /* ---- faixa de combate ---- */
+  .cmb-faixa { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap;
+    border: 1px solid var(--accent); border-radius: var(--r-lg); padding: .7rem .9rem;
+    background: color-mix(in srgb, var(--accent) 9%, var(--panel)); }
+  .cmb-faixa .agora { display: flex; align-items: center; gap: .6rem; }
+  .cmb-faixa .agora-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .06em; color: var(--accent-strong); }
+  .cmb-faixa .agora-nome { font-family: 'Cinzel'; font-size: var(--fs-h3); color: var(--ink); line-height: 1.1; }
+  .cmb-faixa .fila { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+  .cmb-faixa .fila .av { --av-t: 2.1rem; }
+  .cmb-faixa .fila .prox { opacity: .55; }
+  .cmb-faixa .espaco { flex: 1; }
+  .sem-combate { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+
+  /* ---- faixa do grupo ---- */
+  .grupo-faixa { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: .7rem; }
+  .pj { display: grid; grid-template-columns: auto 1fr; gap: .1rem .7rem; align-items: start;
+    border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .65rem .75rem;
+    border-left: 3px solid var(--rule); }
+  .pj.ferido { border-left-color: #e6a91d; }
+  .pj.grave  { border-left-color: #e8791f; }
+  .pj.critico{ border-left-color: #cf3327; }
+  .pj.caido  { border-left-color: #6a6a6a; opacity: .82; }
+  .pj-av { grid-row: span 4; }
+  .pj-topo { display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; min-width: 0; }
+  .pj-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); color: var(--ink);
+    text-decoration: none; }
+  .pj-nome:hover { color: var(--accent-texto); }
+  .pj-sub { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
+  .pj-barras { display: flex; flex-direction: column; gap: .2rem; margin: .3rem 0 .25rem; }
+  .pj-linha { display: flex; align-items: center; gap: .35rem; }
+  .pj-linha .rot { flex: 0 0 2.6rem; }
+  .pj-nums { display: flex; flex-wrap: wrap; gap: .15rem .5rem; font-size: var(--fs-micro); }
+  .pj-conds { margin-top: .28rem; }
+
+  /* ---- relógios ---- */
+  .relogios { display: flex; flex-wrap: wrap; gap: .8rem; }
+  .relogio { display: flex; flex-direction: column; align-items: center; gap: .25rem; width: 8.5rem;
+    border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .6rem .5rem; }
+  .relogio svg { width: 5rem; height: 5rem; cursor: pointer; }
+  .relogio .rl-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); text-align: center; line-height: 1.2; }
+  .relogio .rl-n { font-variant-numeric: tabular-nums; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .relogio .rl-btns { display: flex; gap: .2rem; }
+  .relogio.oculto { border-style: dashed; opacity: .75; }
+  .rl-seg { transition: fill .25s ease; cursor: pointer; }
+  .rl-seg.on.c-perigo { fill: #c1352c; }
+  .rl-seg.on.c-alerta { fill: var(--gold); }
+  .rl-seg.on.c-bom    { fill: #3f9e57; }
+  .rl-seg.on.c-arcano { fill: #8a5bbf; }
+  .rl-seg.off { fill: color-mix(in srgb, var(--ink) 10%, transparent); }
+  .rl-seg:hover { filter: brightness(1.2); }
+
+  /* ---- ganchos e notas ---- */
+  .gancho-lista, .nota-lista { display: flex; flex-direction: column; gap: .45rem; }
+  .gancho { display: flex; gap: .55rem; align-items: flex-start; padding: .5rem .7rem;
+    border: 1px solid var(--rule); border-left: 3px solid var(--gold); border-radius: var(--r-md); background: var(--panel); }
+  .gancho .g-t { font-family: 'Cinzel'; font-size: var(--fs-rotulo); }
+  .gancho .g-r { font-size: var(--fs-rotulo); color: var(--ink-soft); }
+  .nota-mini-card { border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+    border-radius: var(--r-md); background: var(--panel); padding: .5rem .7rem; }
+  .nota-mini-card h4 { margin: 0 0 .2rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo); }
+  .nota-mini-card p { margin: 0; font-size: var(--fs-rotulo); white-space: pre-wrap; }
+
+  /* ---- referência ---- */
+  .ref-rapida details { border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--panel);
+    padding: .45rem .7rem; margin-bottom: .5rem; }
+  .ref-rapida summary { cursor: pointer; font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--accent-texto); }
+  .ref-rapida .tab-wrap { margin-top: .5rem; }
+  .nota-mini { font-size: var(--fs-micro); margin: .4rem 0 0; }
+  .mesa-dlg label.chk { flex-direction: row; align-items: center; gap: .4rem; text-transform: none; }
+</style>
+
 <script>
-  import { getSupabase } from '../lib/supabase';
-  import { exigirLogin, supabaseConfigurado } from '../lib/auth';
-  import monstersData from '../data/monsters.json';
-  import tecnicasData from '../data/tecnicas.json';
-  import artesData from '../data/artes.json';
-  import { pv, defesa, iniciativa, regras } from '../lib/calc';
-  import { resumoCombatePC } from '../lib/combate-resumo';
-  import { sparkSVG, T_PICO } from '../lib/centelha-spark';
-  import { uiConfirmar, uiErro, uiFormulario, uiPerguntar } from '../lib/ui-dialog';
-  import { atualizarUltimoCrumb, definirCrumbs } from '../lib/crumbs';
+  import {
+    abrirMesa, ligarCabecalho, u, esc, avatarHTML, urlsImagens, hpBarHTML, tierDe, tierCls,
+    condChipHTML, COND, nomesDe, norm, bancoAntigo,
+  } from '../lib/mesa-core';
+  import { resumoFicha } from '../lib/mesa-ficha';
+  import { uiConfirmar, uiErro, uiFormulario } from '../lib/ui-dialog';
 
-  const base = import.meta.env.BASE_URL;
-  const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
-  const esc = (s: string) => (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
-  // dano das criaturas: tipo por extenso → sigla (I)/(C)/(P), igual ao bestiário
-  const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
-  const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
-  const norm = (s: string) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-  const id = new URLSearchParams(location.search).get('id');
-
-  // Faixas de ferimento (mesmas de regras.json): definem cor da barra e estado.
-  const FERIMENTOS = regras.ferimentos as { minPct: number; maxPct: number; estado: string; penAcao: number | null; penDefesa: number | null }[];
-  const tierDe = (cur: number, max: number) => {
-    if (!max || max <= 0) return FERIMENTOS[0];
-    if (cur <= 0) return FERIMENTOS[FERIMENTOS.length - 1];
-    const pct = Math.max(1, Math.floor((cur / max) * 100));
-    return FERIMENTOS.find((f) => pct >= f.minPct && pct <= f.maxPct) || FERIMENTOS[FERIMENTOS.length - 1];
-  };
-  const tierCls = (estado: string) => 't-' + norm(estado).replace(/\s+/g, '-');
-  const pctDe = (cur: number, max: number) => (max && max > 0 ? Math.max(0, Math.min(100, (cur / max) * 100)) : 0);
-  const penTexto = (t: { penAcao: number | null; penDefesa: number | null }) =>
-    t.penAcao == null ? 'fora de combate' : (t.penAcao || t.penDefesa) ? `ação ${t.penAcao} · defesa ${t.penDefesa}` : 'sem penalidade';
-  // Barra de vida com estado e cor por faixa de ferimento.
-  const hpBarHTML = (c: any) => {
-    const t = tierDe(c.pv_atual, c.pv_max);
-    return `<div class="hpbar ${tierCls(t.estado)}" data-c="${c.id}" title="${esc(penTexto(t))}">
-      <div class="hpbar-fill" style="width:${pctDe(c.pv_atual, c.pv_max)}%"></div>
-      <span class="hpbar-txt"><span class="hp-cur">${c.pv_atual}</span><span class="hp-sep">/</span><span class="hp-max">${c.pv_max}</span> <span class="hp-est">· ${esc(t.estado)}</span></span>
-    </div>`;
-  };
-
-  const MON: Record<string, any> = Object.fromEntries((monstersData as any[]).map((m) => [m.id, m]));
-  const TEC: Record<string, any> = Object.fromEntries((tecnicasData as any[]).map((t) => [t.id, t]));
-  const ARTE_NOME: Record<string, string> = Object.fromEntries((artesData as any[]).map((a) => [a.id, a.nome]));
-  const MON_LIST = (monstersData as any[]).map((m) => ({ id: m.id, nome: m.nome, nomeIngles: m.nomeIngles || '', ameaca: m.ameaca }));
-  let ESCUDO_CACHE: any[] = [];
-  const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
-  const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
-
-  const mostraErro = (t: string) => {
-    document.getElementById('carregando')!.hidden = true;
-    const el = document.getElementById('erro')!; el.hidden = false; el.textContent = t;
-  };
+  const el = (i: string) => document.getElementById(i)!;
 
   async function main() {
-    if (!supabaseConfigurado) {
-      document.getElementById('carregando')!.hidden = true;
-      document.getElementById('setup')!.hidden = false;
-      return;
+    const ctx = await abrirMesa('escudo');
+    if (!ctx) return;
+    const { sb, ehMestre, id } = ctx;
+    await ligarCabecalho(ctx, uiConfirmar, uiErro, uiFormulario);
+
+    for (const [alvo, slug] of [['ir-grupo', 'mesa/grupo'], ['ir-compendio', 'mesa/compendio'],
+      ['ir-diario', 'mesa/diario'], ['ir-referencia', 'mesa/referencia']] as [string, string][]) {
+      (el(alvo) as HTMLAnchorElement).href = u(slug) + '?id=' + id;
     }
-    if (!id) return mostraErro('Mesa não informada.');
-    const user = await exigirLogin(base);
-    if (!user) return;
+    if (!ehMestre) el('sec-rolagem').hidden = true;
 
-    const sb = getSupabase();
-    const { data: mesa, error } = await sb.from('mesas').select('*').eq('id', id).maybeSingle();
-    if (error) return mostraErro('Erro: ' + error.message);
-    if (!mesa) return mostraErro('Mesa não encontrada ou você não tem acesso a ela.');
-
-    const ehMestre = mesa.mestre_id === user.id;
-    document.getElementById('carregando')!.hidden = true;
-    document.getElementById('mesa')!.hidden = false;
-    document.getElementById('nome')!.textContent = mesa.nome;
-    document.getElementById('descricao')!.textContent = mesa.descricao || '';
-    definirCrumbs([{ label: 'Mesas / Fichas', href: u('mesas') }, { label: mesa.nome }]);
-    const papel = document.getElementById('papel')!;
-    papel.textContent = ehMestre ? 'Mestre' : 'Jogador';
-    papel.classList.add(ehMestre ? 'p-mestre' : 'p-jogador');
-
-    if (ehMestre) {
-      const box = document.getElementById('box-convite')!; box.hidden = false;
-      const codigoEl = document.getElementById('codigo')!;
-      codigoEl.textContent = mesa.codigo_convite;
-      document.getElementById('btn-copiar')!.addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText(codigoEl.textContent || ''); (document.getElementById('btn-copiar') as HTMLButtonElement).textContent = 'Copiado!'; setTimeout(() => (document.getElementById('btn-copiar')!.textContent = 'Copiar'), 1400); } catch {}
-      });
-      document.getElementById('btn-regen')!.addEventListener('click', async () => {
-        if (!await uiConfirmar('Gerar um novo código? O código atual deixa de funcionar.', { titulo: 'Novo código de convite', ok: 'Gerar novo' })) return;
-        const { data, error } = await sb.rpc('regenerar_codigo', { p_mesa: id });
-        if (error) return uiErro('Erro: ' + error.message);
-        codigoEl.textContent = data;
-      });
-      const editarBtn = document.getElementById('btn-editar-mesa') as HTMLButtonElement;
-      editarBtn.hidden = false;
-      editarBtn.addEventListener('click', async () => {
-        const v = await uiFormulario('Editar mesa', [
-          { nome: 'nome', rotulo: 'Nome da mesa', valor: mesa.nome, obrigatorio: true },
-          { nome: 'descricao', rotulo: 'Descrição', valor: mesa.descricao || '', tipo: 'longo', placeholder: 'Cenário, tom, horário das sessões…' },
-        ]);
-        if (!v) return;
-        const nome = v.nome.trim() || mesa.nome;
-        const descricao = v.descricao;
-        const { error } = await sb.from('mesas').update({ nome, descricao }).eq('id', id);
-        if (error) return uiErro('Erro: ' + error.message);
-        document.getElementById('nome')!.textContent = nome;
-        document.getElementById('descricao')!.textContent = descricao;
-        mesa.nome = nome; mesa.descricao = descricao;
-        atualizarUltimoCrumb(nome);
-      });
-    } else {
-      const sairBtn = document.getElementById('btn-sair-mesa')! as HTMLButtonElement;
-      sairBtn.hidden = false;
-      sairBtn.addEventListener('click', async () => {
-        if (!await uiConfirmar('Sair desta mesa? Seus personagens deixam de ficar ligados a ela.', { titulo: 'Sair da mesa', ok: 'Sair', perigo: true })) return;
-        await sb.from('mesa_membros').delete().eq('mesa_id', id).eq('user_id', user.id);
-        location.href = u('mesas');
-      });
-    }
-
-    await renderMembros(sb, mesa.mestre_id, ehMestre, user.id);
-
-    document.getElementById('btn-novo-pers')!.addEventListener('click', () => {
-      location.href = u('personagem') + '?novo=1&mesa=' + id;
-    });
-
-    // XP inicial da mesa: orçamento das fichas que ainda não têm XP individual.
-    if (ehMestre) {
-      document.getElementById('xp-inicial-box')!.hidden = false;
-      const xpIni = document.getElementById('xp-inicial') as HTMLInputElement;
-      const salvo = document.getElementById('xp-inicial-salvo')!;
-      xpIni.value = String(mesa.xp_inicial ?? 0);
-      document.getElementById('xp-inicial-salvar')!.addEventListener('click', async () => {
-        const xp = Math.max(0, +xpIni.value || 0);
-        const { error } = await sb.from('mesas').update({ xp_inicial: xp }).eq('id', id);
-        if (error) {
-          return uiErro(/xp_inicial/i.test(error.message)
-            ? 'A coluna xp_inicial ainda não existe no banco. Rode supabase/migracao-8.sql no SQL Editor.'
-            : 'Erro: ' + error.message);
-        }
-        mesa.xp_inicial = xp; xpIni.value = String(xp);
-        salvo.textContent = 'Salvo'; setTimeout(() => (salvo.textContent = ''), 1400);
-      });
-    }
-    await renderPersonagens(sb, ehMestre, user.id);
-
-    if (ehMestre) { document.getElementById('visao-geral-sec')!.hidden = false; await renderVisaoGeral(sb); }
-
-    if (ehMestre) {
-      const nn = document.getElementById('nota-nova')!; nn.hidden = false;
-      nn.addEventListener('click', async () => {
-        const { error } = await sb.from('mesa_notas').insert({ mesa_id: id, titulo: 'Nova nota', corpo: '', visivel_jogadores: false });
-        if (error) return uiErro('Erro: ' + error.message);
-        await renderNotas(sb, true);
-      });
-    }
-    await renderNotas(sb, ehMestre);
-
-    if (ehMestre) {
-      document.getElementById('mesa-arq-lbl')!.hidden = false;
-      document.getElementById('mesa-arq-dica')!.hidden = false;
-      (document.getElementById('mesa-arq-file') as HTMLInputElement).addEventListener('change', (e) => subirArquivoMesa(sb, user.id, (e.target as HTMLInputElement).files?.[0]));
-    }
-    const membrosJog = ehMestre ? await membrosParaHandout(sb) : [];
-    await listarArquivosMesa(sb, ehMestre, membrosJog);
-
-    if (ehMestre) {
-      document.getElementById('escudo-busca-wrap')!.hidden = false;
-      const busca = document.getElementById('escudo-busca') as HTMLInputElement;
-      const res = document.getElementById('escudo-result')!;
-      busca.addEventListener('input', () => {
-        const q = norm(busca.value.trim());
-        if (q.length < 2) { res.hidden = true; return; }
-        const hits = MON_LIST.filter((m) => norm(m.nome).includes(q) || norm(m.nomeIngles).includes(q)).slice(0, 8);
-        res.innerHTML = hits.length
-          ? hits.map((m) => `<li data-mon="${m.id}">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted">(${esc(m.nomeIngles)})</span>` : ''} <span class="muted">· A${m.ameaca}</span></li>`).join('')
-          : '<li class="muted vazio">nada encontrado</li>';
-        res.hidden = false;
-        res.querySelectorAll<HTMLElement>('li[data-mon]').forEach((li) => li.addEventListener('click', () => addCriatura(sb, li.dataset.mon!)));
-      });
-      document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('#escudo-busca-wrap')) res.hidden = true; });
-    }
-    await renderEscudo(sb, ehMestre);
-    await renderIniciativa(sb, ehMestre);
+    await Promise.all([
+      pintarCombate(ctx),
+      pintarGrupo(ctx),
+      pintarRelogios(ctx),
+      pintarGanchos(ctx),
+      pintarNotas(ctx),
+    ]);
   }
 
-  const d6 = () => 1 + Math.floor(Math.random() * 6);
-  function iniDeMonstro(m: any): number {
-    const s = m?.combate?.iniciativa || '';
-    const mt = /([+-]?\s*\d+)\s*$/.exec(s.replace(/\dd6/, ''));
-    const bonus = mt ? parseInt(mt[1].replace(/\s/g, ''), 10) : 0;
-    return d6() + (isNaN(bonus) ? 0 : bonus);
-  }
-
-  async function renderIniciativa(sb: any, ehMestre: boolean) {
-    const area = document.getElementById('combate-area')!;
-    const { data: encs } = await sb.from('encontros').select('*').eq('mesa_id', id).eq('ativo', true).order('criado_em', { ascending: false }).limit(1);
+  // ------------------------------------------------------------ em cena
+  async function pintarCombate({ sb, ehMestre, id }: any) {
+    const faixa = el('combate-faixa'); const acoes = el('combate-acoes');
+    const { data: encs } = await sb.from('encontros').select('*').eq('mesa_id', id)
+      .eq('ativo', true).order('criado_em', { ascending: false }).limit(1);
     const enc = (encs || [])[0];
+    const irCombate = `<a class="btn primary mini" href="${u('mesa/combate')}?id=${id}">Abrir o combate ›</a>`;
     if (!enc) {
-      area.innerHTML = ehMestre
-        ? '<p class="muted">Nenhum encontro ativo.</p><button class="btn primary" id="enc-novo">Iniciar encontro</button>'
-        : '<p class="muted">Sem combate ativo.</p>';
-      if (ehMestre) document.getElementById('enc-novo')!.addEventListener('click', async () => {
-        const nome = await uiPerguntar('Nome do encontro', 'Encontro', { titulo: 'Iniciar encontro', ok: 'Iniciar' });
-        if (nome === null) return;
-        const { error } = await sb.from('encontros').insert({ mesa_id: id, nome: nome.trim() || 'Encontro', ativo: true });
-        if (error) return uiErro('Erro: ' + error.message);
-        await renderIniciativa(sb, true);
-      });
+      faixa.innerHTML = `<div class="sem-combate painel"><span class="muted">Nenhum encontro em andamento.</span>
+        ${ehMestre ? `<a class="btn mini" href="${u('mesa/combate')}?id=${id}">Preparar um encontro ›</a>` : ''}</div>`;
       return;
     }
-
-    const { data: combs, error } = await sb.from('combatentes').select('*').eq('encontro_id', enc.id);
-    if (error) { area.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
-    const lista = (combs || []).slice().sort((a: any, b: any) => (a.tick - b.tick) || ((b.iniciativa || 0) - (a.iniciativa || 0)));
-    const atualId = lista.length ? lista[0].id : null;
-
-    // Resumo de combate (Ataque/Dano/Defesa/Absorção) por combatente, keyed por id.
-    // Base: PCs da ficha (o mestre lê todas; o jogador só a própria, via RLS) e criaturas do
-    // bestiário. Sobre a base entram os ajustes que o mestre salvou em `c.dados` (por instância).
-    const RESUMO: Record<string, any> = {};
-    const pcIds = [...new Set((combs || []).filter((c: any) => c.tipo === 'pc' && c.personagem_id).map((c: any) => c.personagem_id))];
-    let byPid: Record<string, any> = {};
-    if (pcIds.length) {
-      const { data: fichas } = await sb.from('personagens').select('id, ficha').in('id', pcIds);
-      byPid = Object.fromEntries((fichas || []).map((f: any) => [f.id, f.ficha]));
-    }
-    const baseResumo = (c: any) => {
-      if (c.tipo === 'pc' && byPid[c.personagem_id]) { try { return resumoCombatePC(byPid[c.personagem_id]); } catch { return null; } }
-      if (c.tipo === 'criatura') {
-        const cb = MON[c.monstro_id]?.combate || {};
-        const a0 = (cb.ataques || [])[0];
-        const ab = cb.absorcao;
-        return {
-          arma: a0?.nome || '', ataque: a0?.pool || '', dano: a0 ? fmtDano(a0.dano) : '', defesa: cb.defesa ?? null,
-          soak: ab ? { impacto: ab.impacto || 0, corte: ab.corte || 0, perfuracao: ab.perfuracao || 0 } : { impacto: 0, corte: 0, perfuracao: 0 },
-          resistPerf: cb.resistenciaPerfuracao || 0,
-        };
-      }
-      return null;
-    };
-    for (const c of (combs || [])) {
-      const base = baseResumo(c);
-      const ov = (c.dados && typeof c.dados === 'object') ? c.dados : {};
-      if (!base && !Object.keys(ov).length) continue; // avulso sem ajustes: sem stats
-      const bs = base?.soak || {}; const os = ov.soak || {};
-      RESUMO[c.id] = {
-        arma: ov.arma ?? base?.arma ?? '',
-        ataque: ov.ataque ?? base?.ataque ?? '',
-        dano: ov.dano ?? base?.dano ?? '',
-        defesa: ov.defesa ?? base?.defesa ?? null,
-        soak: { impacto: os.impacto ?? bs.impacto ?? 0, corte: os.corte ?? bs.corte ?? 0, perfuracao: os.perfuracao ?? bs.perfuracao ?? 0 },
-        resistPerf: ov.resistPerf ?? base?.resistPerf ?? 0,
-      };
-    }
-
-    const controles = ehMestre ? `<div class="enc-ctrl">
-      <button class="btn" id="enc-add-pcs">Adicionar PCs</button>
-      ${ESCUDO_CACHE.length ? `<span class="enc-add-cri"><select id="enc-cri-sel">${ESCUDO_CACHE.map((c: any) => `<option value="${c.monstro_id}">${esc((MON[c.monstro_id]?.nome) || c.monstro_id)}</option>`).join('')}</select><button class="btn" id="enc-add-cri-btn">+ criatura</button></span>` : ''}
-      <button class="btn" id="enc-add-custom">+ avulso</button>
-      <button class="btn perigo" id="enc-encerrar">Encerrar encontro</button>
-    </div>` : '';
-
-    const linhas = lista.map((c: any) => {
-      const atual = c.id === atualId;
-      const tipo = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? 'Criatura' : '—';
-      const mostra = ehMestre || c.tipo === 'pc';
-      const rz = RESUMO[c.id];
-      const stats = (mostra && rz && (rz.ataque || rz.dano || rz.defesa != null || rz.soak)) ? `<div class="cmb-stats">
-        ${rz.ataque ? `<span class="cst"><span class="cst-l">Atq</span> ${esc(rz.ataque)}</span>` : ''}
-        ${rz.dano ? `<span class="cst"><span class="cst-l">Dano</span> ${esc(rz.dano)}</span>` : ''}
-        ${rz.defesa != null ? `<span class="cst"><span class="cst-l">Def</span> ${rz.defesa}</span>` : ''}
-        ${rz.soak ? `<span class="cst"><span class="cst-l">Abs</span> I ${rz.soak.impacto} / C ${rz.soak.corte} / P ${rz.soak.perfuracao}${rz.resistPerf ? ` · N${rz.resistPerf}` : ''}</span>` : ''}
-      </div>` : '';
-      const hp = mostra && c.pv_max != null ? `<div class="cmb-hp-linha">
-        ${hpBarHTML(c)}
-        ${ehMestre ? `<span class="cmb-hpctrl">
-          <input type="number" class="hp-amt" data-c="${c.id}" min="1" value="5" title="Quantidade de PV" aria-label="Quantidade" />
-          <select class="hp-tipo" data-c="${c.id}" title="Tipo de dano (define a Absorção que abate)"><option value="impacto">Impacto</option><option value="corte">Cortante</option><option value="perfurante">Perfurante</option></select>
-          <button class="btn mini hp-dano" data-c="${c.id}" title="Aplicar dano (abate a Absorção do tipo)">− dano</button>
-          <button class="btn mini hp-cura" data-c="${c.id}" title="Curar">＋ cura</button>
-          <span class="hp-fb" data-c="${c.id}"></span>
-        </span>` : ''}
-      </div>` : '';
-      const act = ehMestre ? `<span class="cmb-act"><input type="number" class="spd" data-c="${c.id}" value="5" title="Velocidade da ação" /><button class="btn mini agir" data-c="${c.id}" data-tick="${c.tick}">agiu</button><button class="btn mini editc" data-c="${c.id}" title="Editar dados">✎</button><button class="btn mini perigo rm" data-c="${c.id}">✕</button></span>` : '';
-      return `<div class="cmb-row${atual ? ' atual' : ''}">
-        <span class="cmb-tick" title="tick da próxima ação">t${c.tick}</span>
-        <div class="cmb-main">
-          <div class="cmb-nome">${esc(c.nome)} <small class="muted">${tipo} · ini ${c.iniciativa ?? 0}</small></div>
-          ${stats}
-          ${hp}
-        </div>
-        ${act}
-      </div>`;
-    }).join('');
-
-    const logWrap = ehMestre ? `<div class="combate-log-wrap">
-      <div class="log-cab"><h3>Log de ações</h3><span class="log-add"><input type="text" id="log-nota" placeholder="Registrar uma nota…" /><button class="btn mini" id="log-nota-btn">+ nota</button></span></div>
-      <div id="combate-log" class="combate-log"></div>
-    </div>` : '';
-    area.innerHTML = `<div class="enc-cab"><strong>${esc(enc.nome)}</strong> <span class="muted">· ${lista.length} combatente(s)${atualId ? ' · agora: ' + esc(lista[0].nome) : ''}</span></div>${controles}<div class="cmb-lista">${linhas || '<p class="muted">Sem combatentes. Adicione PCs e criaturas.</p>'}</div>${logWrap}`;
-
-    if (!ehMestre) return;
-    const reload = () => renderIniciativa(sb, true);
-
-    // ---- Log de ações do encontro (persistido em encontros.log) ----
-    let LOG: any[] = Array.isArray((enc as any).log) ? (enc as any).log.slice() : [];
-    const novoId = () => (self.crypto?.randomUUID?.() || `l${Date.now()}${Math.floor(Math.random() * 1e6)}`);
-    const persistLog = async () => { try { await sb.from('encontros').update({ log: LOG }).eq('id', enc.id); } catch {} };
-    const fmtHora = (ts: string) => { try { return new Date(ts).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); } catch { return ''; } };
-    const nomeC = (cid: string) => (combs || []).find((x: any) => x.id === cid)?.nome || 'combatente';
-    const renderLog = () => {
-      const box = document.getElementById('combate-log'); if (!box) return;
-      if (!LOG.length) { box.innerHTML = '<p class="muted log-vazio">Sem ações registradas ainda.</p>'; return; }
-      box.innerHTML = LOG.slice().reverse().map((e: any) => `<div class="log-linha" data-log="${e.id}">
-        <span class="log-hora">${fmtHora(e.ts)}</span>
-        <span class="log-txt" data-log="${e.id}">${esc(e.txt)}</span>
-        <button class="log-edit" data-log="${e.id}" title="Editar">✎</button>
-        <button class="log-del" data-log="${e.id}" title="Excluir">✕</button>
-      </div>`).join('');
-      box.querySelectorAll<HTMLElement>('.log-del').forEach((b) => b.addEventListener('click', async () => { LOG = LOG.filter((e: any) => e.id !== b.dataset.log); renderLog(); await persistLog(); }));
-      box.querySelectorAll<HTMLElement>('.log-edit').forEach((b) => b.addEventListener('click', () => {
-        const span = box.querySelector<HTMLElement>(`.log-txt[data-log="${b.dataset.log}"]`); if (!span) return;
-        const e = LOG.find((x: any) => x.id === b.dataset.log); if (!e) return;
-        const inp = document.createElement('input'); inp.type = 'text'; inp.className = 'log-inp'; inp.value = e.txt;
-        span.replaceWith(inp); inp.focus(); inp.select();
-        const salvar = async () => { e.txt = inp.value; renderLog(); await persistLog(); };
-        inp.addEventListener('blur', salvar);
-        inp.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') { ev.preventDefault(); inp.blur(); } else if (ev.key === 'Escape') { renderLog(); } });
-      }));
-    };
-    const logAcao = async (txt: string) => {
-      LOG.push({ id: novoId(), ts: new Date().toISOString(), txt });
-      if (LOG.length > 300) LOG = LOG.slice(-300);
-      renderLog(); await persistLog();
-    };
-    renderLog();
-    document.getElementById('log-nota-btn')?.addEventListener('click', async () => {
-      const inp = document.getElementById('log-nota') as HTMLInputElement; const v = (inp?.value || '').trim();
-      if (!v) return; inp.value = ''; await logAcao(v);
-    });
-    document.getElementById('log-nota')?.addEventListener('keydown', (ev) => { if ((ev as KeyboardEvent).key === 'Enter') { ev.preventDefault(); (document.getElementById('log-nota-btn') as HTMLElement)?.click(); } });
-
-    document.getElementById('enc-encerrar')?.addEventListener('click', async () => {
-      if (!await uiConfirmar('Encerrar este encontro? O log de ações fica salvo neste encontro.', { titulo: 'Encerrar encontro', ok: 'Encerrar' })) return;
-      await logAcao('Encontro encerrado.');
-      await sb.from('encontros').update({ ativo: false }).eq('id', enc.id);
-      await reload();
-    });
-    document.getElementById('enc-add-pcs')?.addEventListener('click', async () => {
-      const { data: pcs } = await sb.from('personagens').select('id, nome, ficha').eq('mesa_id', id);
-      const jaTem = new Set((combs || []).map((c: any) => c.personagem_id).filter(Boolean));
-      const novos = (pcs || []).filter((p: any) => !jaTem.has(p.id)).map((p: any) => {
-        const S = p.ficha || {}; const at = S.attrs || {}; const sk = S.skills || {};
-        const pvv = pv(at.vigor || 0);
-        return { encontro_id: enc.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC', pv_max: pvv, pv_atual: pvv, tick: 0, iniciativa: d6() + (at.raciocinio || 0) + (sk.prontidao || 0) };
-      });
-      if (novos.length) {
-        const { error } = await sb.from('combatentes').insert(novos); if (error) return uiErro('Erro: ' + error.message);
-        for (const n of novos) await logAcao(`${n.nome} entrou no combate (ini ${n.iniciativa}).`);
-      }
-      await reload();
-    });
-    document.getElementById('enc-add-cri-btn')?.addEventListener('click', () => {
-      const mid = (document.getElementById('enc-cri-sel') as HTMLSelectElement).value; const m = MON[mid];
-      const pvv = m?.combate?.pv ?? null;
-      abrirEditar({ tipo: 'criatura', monstro_id: mid, nome: m?.nome || mid, pv_max: pvv, pv_atual: pvv, iniciativa: iniDeMonstro(m) }, baseResumo({ tipo: 'criatura', monstro_id: mid }));
-    });
-    document.getElementById('enc-add-custom')?.addEventListener('click', () => {
-      abrirEditar({ tipo: 'custom', nome: '', pv_max: null, pv_atual: null, iniciativa: 0 }, {});
-    });
-    const dlg = document.getElementById('acao-dlg') as HTMLDialogElement;
-    const abrirAcao = (cid: string, tickAtual: number) => {
-      const ator = (lista as any[]).find((x) => x.id === cid); if (!ator) return;
-      const spdRow = parseInt((area.querySelector(`.spd[data-c="${cid}"]`) as HTMLInputElement)?.value || '5', 10) || 5;
-      (document.getElementById('acao-titulo') as HTMLElement).textContent = `Ação de ${ator.nome}`;
-      const tipoSel = document.getElementById('acao-tipo') as HTMLSelectElement;
-      const alvoSel = document.getElementById('acao-alvo') as HTMLSelectElement;
-      const alvoWrap = document.getElementById('acao-alvo-wrap') as HTMLElement;
-      const outroWrap = document.getElementById('acao-outro-wrap') as HTMLElement;
-      const outroInp = document.getElementById('acao-outro') as HTMLInputElement;
-      const danoWrap = document.getElementById('acao-dano-wrap') as HTMLElement;
-      const danoInp = document.getElementById('acao-dano') as HTMLInputElement;
-      const danoTipoSel = document.getElementById('acao-dano-tipo') as HTMLSelectElement;
-      const spdInp = document.getElementById('acao-speed') as HTMLInputElement;
-      // Alvos com barra de vida (dá para aplicar dano); "Outro" para alvo fora da lista.
-      tipoSel.value = 'ataque';
-      alvoSel.innerHTML = (lista as any[]).filter((x) => x.id !== cid).map((x) => `<option value="${x.id}">${esc(x.nome)}</option>`).join('') + '<option value="__outro__">Outro (digitar)…</option>';
-      outroInp.value = ''; danoInp.value = '';
-      spdInp.value = String(spdRow);
-      const alvoListado = () => tipoSel.value === 'ataque' && alvoSel.value !== '__outro__';
-      const sync = () => {
-        const atk = tipoSel.value === 'ataque';
-        alvoWrap.style.display = atk ? '' : 'none';
-        outroWrap.style.display = (!atk || alvoSel.value === '__outro__') ? '' : 'none';
-        outroInp.placeholder = atk ? 'nome do alvo / detalhe' : 'descreva a ação (opcional)';
-        // Dano só quando o alvo é um combatente da lista (tem barra p/ aplicar).
-        danoWrap.style.display = alvoListado() ? 'flex' : 'none';
-      };
-      tipoSel.onchange = sync; alvoSel.onchange = sync; sync();
-      (document.getElementById('acao-cancelar') as HTMLElement).onclick = () => dlg.close();
-      (document.getElementById('acao-confirmar') as HTMLElement).onclick = async () => {
-        const spd = Math.max(0, parseInt(spdInp.value || '0', 10) || 0);
-        const novoTick = tickAtual + spd;
-        const atk = tipoSel.value === 'ataque';
-        const alvoC = (atk && alvoSel.value !== '__outro__') ? (combs || []).find((x: any) => x.id === alvoSel.value) : null;
-        const alvoNome = atk ? (alvoSel.value === '__outro__' ? (outroInp.value.trim() || 'alvo indefinido') : (alvoC?.nome || 'alvo')) : '';
-        const txt = atk ? `${ator.nome} atacou ${alvoNome}` : (outroInp.value.trim() ? `${ator.nome}: ${outroInp.value.trim()}` : `${ator.nome} agiu`);
-        const bruto = Math.max(0, parseInt(danoInp.value || '0', 10) || 0);
-        const aplica = !!alvoC && alvoC.pv_max != null && bruto > 0;
-        dlg.close();
-        await sb.from('combatentes').update({ tick: novoTick }).eq('id', cid);
-        await logAcao(`${txt} · tick ${tickAtual} → ${novoTick} (Velocidade ${spd}).`);
-        if (aplica) {
-          const dmgTipo = danoTipoSel.value;
-          const soak = RESUMO[alvoC.id]?.soak?.[CAT_SOAK[dmgTipo]] ?? 0;
-          const liquido = Math.max(0, bruto - soak);
-          await aplicarHp(alvoC.id, -liquido);
-          feedback(alvoC.id, soak > 0 ? `−${liquido} (${bruto} − ${soak} abs)` : `−${liquido}`);
-          const est = tierDe(alvoC.pv_atual, alvoC.pv_max).estado;
-          await logAcao(`${alvoNome} sofreu ${liquido} de dano (${TIPO_LBL[dmgTipo]})${soak > 0 ? ` [${bruto} − ${soak} abs]` : ''} · ${alvoC.pv_atual}/${alvoC.pv_max} (${est}).`);
-          setTimeout(reload, 700); // deixa a animação da barra do alvo rodar antes de reordenar
-        } else {
-          await reload();
-        }
-      };
-      dlg.showModal();
-    };
-    area.querySelectorAll<HTMLElement>('.agir').forEach((b) => b.addEventListener('click', () => abrirAcao(b.dataset.c!, parseInt(b.dataset.tick || '0', 10) || 0)));
-
-    // ---- Editar dados do combatente (novo ao adicionar, ou existente) ----
-    const editDlg = document.getElementById('edit-dlg') as HTMLDialogElement;
-    const gv = (id: string) => document.getElementById(id) as HTMLInputElement;
-    const abrirEditar = (row: any, resumo: any) => {
-      const r = resumo || {}; const sk = r.soak || {};
-      (document.getElementById('edit-titulo') as HTMLElement).textContent = row.id ? `Editar ${row.nome || 'combatente'}` : (row.tipo === 'criatura' ? `Adicionar ${row.nome || 'criatura'}` : 'Novo combatente avulso');
-      gv('edit-nome').value = row.nome || '';
-      gv('edit-pvmax').value = row.pv_max != null ? String(row.pv_max) : '';
-      gv('edit-pvat').value = row.pv_atual != null ? String(row.pv_atual) : '';
-      gv('edit-ini').value = row.iniciativa != null ? String(row.iniciativa) : '0';
-      gv('edit-atq').value = r.ataque || '';
-      gv('edit-dano').value = r.dano || '';
-      gv('edit-def').value = r.defesa != null ? String(r.defesa) : '';
-      gv('edit-rperf').value = r.resistPerf ? String(r.resistPerf) : '';
-      gv('edit-abs-i').value = sk.impacto != null ? String(sk.impacto) : '';
-      gv('edit-abs-c').value = sk.corte != null ? String(sk.corte) : '';
-      gv('edit-abs-p').value = sk.perfuracao != null ? String(sk.perfuracao) : '';
-      (document.getElementById('edit-cancelar') as HTMLElement).onclick = () => editDlg.close();
-      (document.getElementById('edit-salvar') as HTMLElement).onclick = async () => {
-        const numOrNull = (v: string) => { const n = parseInt(v, 10); return v.trim() === '' || isNaN(n) ? null : n; };
-        const num0 = (v: string) => { const n = parseInt(v, 10); return isNaN(n) ? 0 : n; };
-        const nome = gv('edit-nome').value.trim() || row.nome || 'Combatente';
-        const pvmax = numOrNull(gv('edit-pvmax').value);
-        let pvat = numOrNull(gv('edit-pvat').value);
-        if (pvat == null && pvmax != null) pvat = pvmax;
-        if (pvat != null && pvmax != null) pvat = Math.min(pvat, pvmax);
-        const ini = num0(gv('edit-ini').value);
-        const dados = {
-          ataque: gv('edit-atq').value.trim(), dano: gv('edit-dano').value.trim(),
-          defesa: numOrNull(gv('edit-def').value), resistPerf: num0(gv('edit-rperf').value),
-          soak: { impacto: num0(gv('edit-abs-i').value), corte: num0(gv('edit-abs-c').value), perfuracao: num0(gv('edit-abs-p').value) },
-        };
-        const cols: any = { nome, pv_max: pvmax, pv_atual: pvat, iniciativa: ini };
-        editDlg.close();
-        const semColuna = (e: any) => e && /dados/i.test(e.message || '');
-        if (row.id) {
-          let { error } = await sb.from('combatentes').update({ ...cols, dados }).eq('id', row.id);
-          if (semColuna(error)) ({ error } = await sb.from('combatentes').update(cols).eq('id', row.id));
-          if (error) return uiErro('Erro: ' + error.message);
-          await logAcao(`${nome}: dados editados pelo mestre.`);
-        } else {
-          const ins: any = { encontro_id: enc.id, tipo: row.tipo || 'custom', tick: 0, ...cols, dados };
-          if (row.monstro_id) ins.monstro_id = row.monstro_id;
-          let { error } = await sb.from('combatentes').insert(ins);
-          if (semColuna(error)) { delete ins.dados; ({ error } = await sb.from('combatentes').insert(ins)); }
-          if (error) return uiErro('Erro: ' + error.message);
-          await logAcao(`${nome} entrou${row.tipo === 'criatura' ? ' (criatura)' : ''}.`);
-        }
-        await reload();
-      };
-      editDlg.showModal();
-    };
-    area.querySelectorAll<HTMLElement>('.editc').forEach((b) => b.addEventListener('click', () => {
-      const c = (combs || []).find((x: any) => x.id === b.dataset.c); if (c) abrirEditar(c, RESUMO[c.id]);
-    }));
-
-    // Atualiza a barra em-lugar (anima largura/cor), sem re-renderizar a lista toda.
-    const atualizarBarra = (cid: string, c: any) => {
-      const bar = area.querySelector<HTMLElement>(`.hpbar[data-c="${cid}"]`); if (!bar) return;
-      const t = tierDe(c.pv_atual, c.pv_max);
-      (bar.querySelector('.hpbar-fill') as HTMLElement).style.width = pctDe(c.pv_atual, c.pv_max) + '%';
-      bar.className = 'hpbar ' + tierCls(t.estado);
-      bar.title = penTexto(t);
-      (bar.querySelector('.hp-cur') as HTMLElement).textContent = String(c.pv_atual);
-      (bar.querySelector('.hp-est') as HTMLElement).textContent = '· ' + t.estado;
-    };
-    const aplicarHp = async (cid: string, delta: number) => {
-      const c = (combs || []).find((x: any) => x.id === cid); if (!c || c.pv_atual == null || c.pv_max == null) return;
-      const novo = Math.max(0, Math.min(c.pv_max, c.pv_atual + delta));
-      if (novo === c.pv_atual) return;
-      c.pv_atual = novo;
-      atualizarBarra(cid, c);
-      await sb.from('combatentes').update({ pv_atual: novo }).eq('id', cid);
-    };
-    const amt = (cid: string) => Math.max(1, parseInt((area.querySelector(`.hp-amt[data-c="${cid}"]`) as HTMLInputElement)?.value || '1', 10) || 1);
-    const feedback = (cid: string, txt: string) => {
-      const fb = area.querySelector<HTMLElement>(`.hp-fb[data-c="${cid}"]`); if (!fb) return;
-      fb.textContent = txt; fb.classList.add('mostra');
-      setTimeout(() => { fb.classList.remove('mostra'); }, 2600);
-    };
-    const CAT_SOAK: Record<string, string> = { impacto: 'impacto', corte: 'corte', perfurante: 'perfuracao' };
-    const TIPO_LBL: Record<string, string> = { impacto: 'Impacto', corte: 'Cortante', perfurante: 'Perfurante' };
-    area.querySelectorAll<HTMLElement>('.hp-dano').forEach((b) => b.addEventListener('click', async () => {
-      const cid = b.dataset.c!;
-      const bruto = amt(cid);
-      const tipo = (area.querySelector(`.hp-tipo[data-c="${cid}"]`) as HTMLSelectElement)?.value || 'impacto';
-      const soak = RESUMO[cid]?.soak?.[CAT_SOAK[tipo]] ?? 0;
-      const liquido = Math.max(0, bruto - soak);
-      await aplicarHp(cid, -liquido);
-      feedback(cid, soak > 0 ? `−${liquido} (${bruto} − ${soak} abs)` : `−${liquido}`);
-      const c = (combs || []).find((x: any) => x.id === cid);
-      const est = c ? tierDe(c.pv_atual, c.pv_max).estado : '';
-      await logAcao(`${nomeC(cid)} sofreu ${liquido} de dano (${TIPO_LBL[tipo]})${soak > 0 ? ` [${bruto} − ${soak} abs]` : ''}${c ? ` · ${c.pv_atual}/${c.pv_max} (${est})` : ''}.`);
-    }));
-    area.querySelectorAll<HTMLElement>('.hp-cura').forEach((b) => b.addEventListener('click', async () => {
-      const cid = b.dataset.c!; const q = amt(cid);
-      await aplicarHp(cid, +q); feedback(cid, `+${q}`);
-      const c = (combs || []).find((x: any) => x.id === cid);
-      await logAcao(`${nomeC(cid)} recuperou ${q}${c ? ` · ${c.pv_atual}/${c.pv_max}` : ''}.`);
-    }));
-    area.querySelectorAll<HTMLElement>('.rm').forEach((b) => b.addEventListener('click', async () => {
-      const cid = b.dataset.c!; const nm = nomeC(cid);
-      await sb.from('combatentes').delete().eq('id', cid);
-      await logAcao(`${nm} saiu do combate.`);
-      await reload();
-    }));
-  }
-
-  async function addCriatura(sb: any, monId: string) {
-    const { error } = await sb.from('mesa_criaturas').insert({ mesa_id: id, monstro_id: monId });
-    if (error && !/duplicate|unique/i.test(error.message)) return uiErro('Erro: ' + error.message);
-    (document.getElementById('escudo-busca') as HTMLInputElement).value = '';
-    document.getElementById('escudo-result')!.hidden = true;
-    await renderEscudo(sb, true);
-  }
-
-  async function renderEscudo(sb: any, ehMestre: boolean) {
-    const { data, error } = await sb.from('mesa_criaturas').select('*').eq('mesa_id', id)
-      .order('ordem', { ascending: true }).order('criado_em', { ascending: true });
-    const box = document.getElementById('escudo-lista')!;
-    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
-    ESCUDO_CACHE = data || [];
-    if (!data?.length) {
-      box.innerHTML = ehMestre
-        ? '<p class="muted">Nenhuma criatura separada ainda. Busque acima para montar seu bestiário da campanha.</p>'
-        : '<p class="muted">O mestre ainda não separou criaturas.</p>';
-      return;
-    }
-    box.innerHTML = data.map((c: any) => {
-      const m = MON[c.monstro_id];
-      if (!m) return `<div class="cr-card"><span class="muted">Criatura removida do bestiário (${esc(c.monstro_id)})</span>${ehMestre ? ` <button class="btn cr-rm" data-cr="${c.id}">✕</button>` : ''}</div>`;
-      const cb = m.combate || {};
-      const badges = `<span class="cr-b">A${m.ameaca}</span><span class="cr-b">Centelha ${m.centelha}</span><span class="cr-b">PV ${cb.pv ?? '-'}</span><span class="cr-b">Def ${cb.defesa ?? '-'}</span>${m.porte ? `<span class="cr-b">${esc(m.porte)}</span>` : ''}`;
-      const atk0 = (cb.ataques || [])[0];
-      const atkLinha = atk0 ? `<div class="cr-atk"><span class="cr-atk-nm">${esc(atk0.nome)}</span> ataque <b>${esc(atk0.pool)}</b> · dano <b>${fmtDano(esc(atk0.dano))}</b>${atk0.speed != null ? ` · Velocidade ${atk0.speed}` : ''}</div>` : '';
-      const notas = ehMestre
-        ? `<textarea class="cr-notas" data-cr="${c.id}" rows="2" placeholder="Anotações do mestre (só você vê nesta lista)">${esc(c.notas || '')}</textarea>`
-        : (c.notas ? `<p class="cr-notas-ro">${esc(c.notas)}</p>` : '');
-      return `<div class="cr-card">
-        <div class="cr-top">
-          <span class="cr-nome cinzel">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted cr-en">(${esc(m.nomeIngles)})</span>` : ''}</span>
-          ${ehMestre ? `<button class="btn cr-rm" data-cr="${c.id}" title="Remover">✕</button>` : ''}
-        </div>
-        <div class="cr-badges">${badges}</div>
-        ${atkLinha}
-        <button class="cr-link cr-abrir" type="button" data-mon="${m.id}">ver card completo ›</button>
-        ${notas}
-      </div>`;
-    }).join('');
-
-    box.querySelectorAll<HTMLElement>('.cr-rm').forEach((b) => b.addEventListener('click', async () => {
-      if (!await uiConfirmar('Remover esta criatura da campanha?', { titulo: 'Remover criatura', ok: 'Remover', perigo: true })) return;
-      await sb.from('mesa_criaturas').delete().eq('id', b.dataset.cr);
-      await renderEscudo(sb, true);
-    }));
-    box.querySelectorAll<HTMLTextAreaElement>('.cr-notas').forEach((ta) => {
-      let t: any; ta.addEventListener('input', () => { clearTimeout(t); t = setTimeout(async () => { await sb.from('mesa_criaturas').update({ notas: ta.value }).eq('id', ta.dataset.cr); }, 700); });
-    });
-    box.querySelectorAll<HTMLElement>('.cr-abrir').forEach((b) => b.addEventListener('click', () => abrirCard(b.dataset.mon!)));
-  }
-
-  // ---- Card completo da criatura (igual ao do bestiário), em modal ----
-  const ATR: [string, string][] = [['forca', 'Força'], ['destreza', 'Destreza'], ['vigor', 'Vigor'], ['influencia', 'Influência'], ['perspicacia', 'Perspicácia'], ['compostura', 'Compostura'], ['percepcao', 'Percepção'], ['inteligencia', 'Inteligência'], ['raciocinio', 'Raciocínio']];
-  const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
-  const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : (AP_CURVA[n] ?? 0));
-  const stars = (a: number) => '★'.repeat(a) + '☆'.repeat(Math.max(0, 6 - a));
-
-  function cardHTML(m: any): string {
-    const cb = m.combate || {};
-    const en = m.nomeIngles && m.nomeIngles.toLowerCase() !== m.nome.toLowerCase() ? ` <span class="besta-nome-en">(${esc(m.nomeIngles)})</span>` : '';
-    const arte = m.imagem
-      ? `<figure class="arte"><img src="${u(m.imagem)}" alt="${esc(m.nome)}" /><span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${stars(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">${sparkSVG(true)} ${m.centelha}</span>` : ''}</figure>`
-      : `<figure class="arte sem-arte"><span class="capitular cinzel">${esc((m.nome || '?').trim()[0])}</span><span class="arte-ameaca">${stars(m.ameaca)}</span></figure>`;
-    const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
-    const porte = m.porte ? `<p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">${esc(m.porte)}</span><span class="pt-sep">·</span>${esc(m.dimensoes?.medida || '')}<span class="pt-sep">·</span>${esc(m.dimensoes?.peso || '')}</p>` : '';
-    const abs = cb.absorcao ? `${cb.absorcao.impacto}/${cb.absorcao.corte}/${cb.absorcao.perfuracao}${cb.resistenciaPerfuracao ? `·N${cb.resistenciaPerfuracao}` : ''}` : '-';
-    const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
-    const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>`;
-    const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
-    const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Val ${m.virtudes.valor}</span></div></div>` : '';
-    const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
-    const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
-    const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
-    const refTec = (m.tecnicas || []).length ? `<p class="ib-ref"><b>Técnicas:</b> ${m.tecnicas.map((t: string) => `<a href="${u('caminhos/' + (TEC[t]?.caminho || ''))}#${t}">${esc(TEC[t]?.nome || t)}</a>`).join(' · ')}</p>` : '';
-    const refArte = (m.artes || []).length ? `<p class="ib-ref"><b>Artes:</b> ${m.artes.map((a: any) => `<a href="${u('arcano')}#${a.id}">${esc(ARTE_NOME[a.id] || a.id)}</a> ${a.nivel}`).join(' · ')}</p>` : '';
-    const refs = (refTec || refArte) ? `<h4 class="cc-h">Técnicas &amp; Artes</h4>${refTec}${refArte}` : '';
-    const notas = m.notas ? `<h4 class="cc-h">Notas</h4><p class="ib-notas">${esc(m.notas)}</p>` : '';
-    const lore = (m.lore || []).length ? `<h4 class="cc-h">Informações</h4>${m.lore.map((s: any) => `<div class="ib-lore"><h5>${esc(s.titulo)}</h5><p>${esc(s.texto)}</p></div>`).join('')}` : '';
-    return `<article class="besta cc-besta">${arte}<div class="besta-corpo">
-      <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
-      ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
-      ${porte}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
-      ${stats}${atrib}${tracos}${atk}${habs}${pods}${refs}${notas}${lore}
-    </div></article>`;
-  }
-
-  function abrirCard(monId: string) {
-    const m = MON[monId]; if (!m) return;
-    const dlg = document.getElementById('card-modal')!;
-    const corpo = document.getElementById('card-modal-body')!;
-    corpo.innerHTML = cardHTML(m);
-    /* A faísca nasce depois do script do componente, então o congelamento de
-       prefers-reduced-motion não a alcança: SMIL não se desliga por CSS. */
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches)
-      corpo.querySelectorAll<SVGSVGElement>('svg.centelha-spark').forEach((s) => { s.setCurrentTime(T_PICO); s.pauseAnimations(); });
-    dlg.hidden = false; document.body.style.overflow = 'hidden';
-  }
-  function fecharCard() { document.getElementById('card-modal')!.hidden = true; document.body.style.overflow = ''; }
-
-  async function subirArquivoMesa(sb: any, userId: string, file?: File) {
-    if (!file) return;
-    const nomeSeguro = file.name.replace(/[^\w.\-]+/g, '_');
-    const path = `${id}/${Date.now()}-${nomeSeguro}`;
-    const { error } = await sb.storage.from('mesa').upload(path, file, { contentType: file.type });
-    if (error) return uiErro('Erro ao enviar: ' + error.message);
-    const { error: e2 } = await sb.from('arquivos').insert({
-      mesa_id: id, dono_id: userId, nome: file.name, storage_path: path,
-      bucket: 'mesa', tipo: file.type, categoria: 'handout-mestre', visivel_jogadores: false,
-    });
-    if (e2) return uiErro('Enviado, mas erro ao registrar: ' + e2.message);
-    await listarArquivosMesa(sb, true);
-  }
-
-  async function membrosParaHandout(sb: any): Promise<{ id: string; nome: string }[]> {
-    const { data } = await sb.from('mesa_membros').select('user_id, papel').eq('mesa_id', id).eq('papel', 'jogador');
-    const nomes = await nomesDe(sb, (data || []).map((m: any) => m.user_id));
-    return (data || []).map((m: any) => ({ id: m.user_id, nome: nomes[m.user_id] || '(jogador)' }));
-  }
-
-  async function listarArquivosMesa(sb: any, ehMestre: boolean, membros: { id: string; nome: string }[] = []) {
-    const { data, error } = await sb.from('arquivos').select('*').eq('mesa_id', id).eq('bucket', 'mesa').order('criado_em', { ascending: false });
-    const ul = document.getElementById('mesa-arqs')!;
-    if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
-    if (!data?.length) { ul.innerHTML = `<li class="muted">${ehMestre ? 'Nenhum arquivo ainda. Envie handouts, mapas, documentos.' : 'O mestre ainda não compartilhou arquivos.'}</li>`; return; }
-    ul.innerHTML = data.map((a: any) => {
-      const alvo = a.visivel_para || [];
-      const picker = (ehMestre && membros.length) ? `<details class="arq-alvo"><summary>por jogador${alvo.length ? ` (${alvo.length})` : ''}</summary>${membros.map((m) => `<label><input type="checkbox" class="arq-alvo-cb" data-u="${m.id}"${alvo.includes(m.id) ? ' checked' : ''}/> ${esc(m.nome)}</label>`).join('')}</details>` : '';
-      return `<li data-arq="${a.id}" data-path="${esc(a.storage_path)}">
-        <a href="#" class="arq-abrir">${esc(a.nome)}</a>
-        <span class="muted arq-tipo">${esc((a.tipo || '').split('/')[1] || '')}</span>
-        ${ehMestre ? `<label class="arq-vis" title="Liberar para todos os jogadores"><input type="checkbox" class="arq-vis-cb"${a.visivel_jogadores ? ' checked' : ''}/> todos</label>${picker}<button class="btn arq-rm" title="Remover">✕</button>` : ''}
-      </li>`;
-    }).join('');
-    ul.querySelectorAll<HTMLElement>('.arq-abrir').forEach((a) => a.addEventListener('click', async (e) => {
-      e.preventDefault();
-      const li = a.closest('li')!; const { data: s } = await sb.storage.from('mesa').createSignedUrl(li.dataset.path!, 3600);
-      if (s?.signedUrl) window.open(s.signedUrl, '_blank');
-    }));
-    ul.querySelectorAll<HTMLInputElement>('.arq-vis-cb').forEach((cb) => cb.addEventListener('change', async () => {
-      const li = cb.closest('li')!;
-      await sb.from('arquivos').update({ visivel_jogadores: cb.checked }).eq('id', li.dataset.arq);
-    }));
-    ul.querySelectorAll<HTMLElement>('.arq-alvo').forEach((det) => det.querySelectorAll<HTMLInputElement>('.arq-alvo-cb').forEach((cb) => cb.addEventListener('change', async () => {
-      const li = cb.closest('li')!;
-      const ids = [...det.querySelectorAll<HTMLInputElement>('.arq-alvo-cb')].filter((x) => x.checked).map((x) => x.dataset.u);
-      await sb.from('arquivos').update({ visivel_para: ids }).eq('id', li.dataset.arq);
-      det.querySelector('summary')!.textContent = 'por jogador' + (ids.length ? ` (${ids.length})` : '');
-    })));
-    ul.querySelectorAll<HTMLElement>('.arq-rm').forEach((b) => b.addEventListener('click', async () => {
-      const li = b.closest('li')!;
-      if (!await uiConfirmar('Remover este arquivo? Ele sai da mesa para todo mundo.', { titulo: 'Remover arquivo', ok: 'Remover', perigo: true })) return;
-      await sb.storage.from('mesa').remove([li.dataset.path!]);
-      await sb.from('arquivos').delete().eq('id', li.dataset.arq);
-      await listarArquivosMesa(sb, true, membros);
-    }));
-  }
-
-  async function renderPersonagens(sb: any, ehMestre: boolean, userId: string) {
-    const { data, error } = await sb
-      .from('personagens')
-      .select('id, nome, conceito, dono_id, imagem_path, status')
-      .eq('mesa_id', id)
-      .order('atualizado_em', { ascending: false });
-    const box = document.getElementById('personagens')!;
-    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
-    const nomes = await nomesDe(sb, (data || []).map((p: any) => p.dono_id));
-    const SELO: Record<string, [string, string]> = { rascunho: ['Rascunho', 's-rascunho'], enviado: ['Aguardando aprovação', 's-enviado'], aprovado: ['Aprovada', 's-aprovado'] };
-    const enviadas = (data || []).filter((p: any) => p.status === 'enviado').length;
-    if (ehMestre && enviadas) {
-      const aviso = document.createElement('p');
-      aviso.className = 'enviadas-aviso';
-      aviso.textContent = `${enviadas} ficha(s) aguardando sua aprovação.`;
-      box.before(aviso);
-    }
-    if (!data?.length) {
-      box.innerHTML = ehMestre
-        ? '<p class="muted">Nenhum personagem nesta mesa ainda. Os jogadores criam os seus, ou crie um você mesmo.</p>'
-        : '<p class="muted">Você ainda não tem personagem nesta mesa. Clique em "Novo personagem".</p>';
-      return;
-    }
-    box.innerHTML = '<div class="pers-grid">' + data.map((p: any) => {
-      const dono = nomes[p.dono_id] || '(jogador)';
-      const meu = p.dono_id === userId;
-      const [rot, cls] = SELO[p.status] || SELO.rascunho;
-      // O botão fica FORA do <a>: âncora não aceita botão dentro, e clicar em
-      // excluir não pode navegar para a ficha por acidente.
-      return `<div class="pers-card-box">
-        <a class="pers-card" href="${u('personagem')}?id=${p.id}">
-          <span class="selo ${cls}">${rot}</span>
-          <span class="pers-card-nome cinzel">${esc(p.nome || 'Personagem')}</span>
-          ${p.conceito ? `<span class="pers-card-conc">${esc(p.conceito)}</span>` : ''}
-          <span class="pers-card-dono muted">${meu ? 'Seu personagem' : 'Jogador: ' + esc(dono)}</span>
-        </a>
-        ${ehMestre ? `<button type="button" class="btn mini perigo pers-rm" data-pers="${p.id}"
-          data-nome="${esc(p.nome || 'Personagem')}" title="Excluir este personagem">Excluir</button>` : ''}
-      </div>`;
-    }).join('') + '</div>';
-    // Excluir personagem é do mestre, e mora aqui: na ficha ele dividia espaço
-    // com as ações de aprovação, que são de outra natureza.
-    box.querySelectorAll<HTMLElement>('.pers-rm').forEach((b) => b.addEventListener('click', async () => {
-      const nome = b.dataset.nome || 'este personagem';
-      if (!await uiConfirmar(`Excluir ${nome}? A ficha do jogador some junto, e isto não pode ser desfeito.`,
-        { titulo: 'Excluir personagem', ok: 'Excluir', perigo: true })) return;
-      const { error } = await sb.from('personagens').delete().eq('id', b.dataset.pers);
-      if (error) return uiErro('Erro: ' + error.message);
-      await renderPersonagens(sb, ehMestre, userId);
-    }));
-  }
-
-  async function renderNotas(sb: any, ehMestre: boolean) {
-    const { data, error } = await sb.from('mesa_notas').select('*').eq('mesa_id', id).order('ordem', { ascending: true }).order('criado_em', { ascending: true });
-    const box = document.getElementById('notas')!;
-    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
-    if (!data?.length) { box.innerHTML = ehMestre ? '<p class="muted">Sem notas ainda. Crie uma e marque "compartilhar" para os jogadores verem.</p>' : '<p class="muted">O mestre ainda não compartilhou notas.</p>'; return; }
-    if (!ehMestre) {
-      box.innerHTML = data.map((n: any) => `<div class="nota-ro"><h3>${esc(n.titulo || '(sem título)')}</h3><div class="nota-corpo">${esc(n.corpo || '').replace(/\n/g, '<br>')}</div></div>`).join('');
-      return;
-    }
-    box.innerHTML = data.map((n: any) => `<div class="nota" data-nota="${n.id}">
-      <input class="nota-tit" value="${esc(n.titulo || '')}" placeholder="Título" />
-      <textarea class="nota-txt" rows="4" placeholder="Anotações…">${esc(n.corpo || '')}</textarea>
-      <div class="nota-foot">
-        <label class="nota-vis"><input type="checkbox" class="nota-vis-cb"${n.visivel_jogadores ? ' checked' : ''}/> compartilhar com jogadores</label>
-        <span class="salvo nota-salvo"></span>
-        <button class="btn mini perigo nota-rm">Excluir</button>
+    const { data: combs } = await sb.from('combatentes').select('*').eq('encontro_id', enc.id);
+    const lista = (combs || []).filter((c: any) => c.ativo !== false)
+      .sort((a: any, b: any) => (a.tick - b.tick) || ((b.iniciativa || 0) - (a.iniciativa || 0)));
+    const atual = lista[0];
+    const mapaImg = await urlsImagens(sb, lista.map((c: any) => c.imagem).filter(Boolean), 'mesa');
+    const av = (c: any, cls = '') => avatarHTML(c.nome, c.imagem ? (mapaImg[c.imagem] || null) : null, cls);
+    faixa.innerHTML = `<div class="cmb-faixa">
+      <div class="agora">
+        ${atual ? av(atual) : ''}
+        <div><div class="agora-rot">Agora · tick ${atual?.tick ?? 0}</div>
+          <div class="agora-nome">${esc(atual?.nome || 'ninguém')}</div></div>
       </div>
-    </div>`).join('');
-    box.querySelectorAll<HTMLElement>('.nota').forEach((card) => {
-      const nid = card.dataset.nota!;
-      const tit = card.querySelector<HTMLInputElement>('.nota-tit')!;
-      const txt = card.querySelector<HTMLTextAreaElement>('.nota-txt')!;
-      const salvo = card.querySelector<HTMLElement>('.nota-salvo')!;
-      let t: any;
-      const salvar = () => { clearTimeout(t); t = setTimeout(async () => { await sb.from('mesa_notas').update({ titulo: tit.value, corpo: txt.value }).eq('id', nid); salvo.textContent = 'Salvo'; setTimeout(() => (salvo.textContent = ''), 1000); }, 700); };
-      tit.addEventListener('input', salvar); txt.addEventListener('input', salvar);
-      card.querySelector<HTMLInputElement>('.nota-vis-cb')!.addEventListener('change', async (e) => { await sb.from('mesa_notas').update({ visivel_jogadores: (e.target as HTMLInputElement).checked }).eq('id', nid); });
-      card.querySelector<HTMLElement>('.nota-rm')!.addEventListener('click', async () => { if (!await uiConfirmar('Excluir esta nota?', { titulo: 'Excluir nota', ok: 'Excluir', perigo: true })) return; await sb.from('mesa_notas').delete().eq('id', nid); await renderNotas(sb, true); });
-    });
+      <div class="fila">${lista.slice(1, 7).map((c: any) => av(c, 'prox av-p')).join('')}
+        ${lista.length > 7 ? `<span class="muted">+${lista.length - 7}</span>` : ''}</div>
+      <span class="espaco"></span>
+      <div><strong>${esc(enc.nome)}</strong> <span class="muted">· ${lista.length} em campo</span></div>
+    </div>`;
+    acoes.innerHTML = irCombate;
   }
 
-  const SELO_R: Record<string, string> = { rascunho: 'Rascunho', enviado: 'Aguardando', aprovado: 'Aprovada' };
-  async function renderVisaoGeral(sb: any) {
-    const { data, error } = await sb.from('personagens').select('id, nome, dono_id, status, ficha').eq('mesa_id', id).order('nome', { ascending: true });
-    const box = document.getElementById('visao-geral')!;
+  // ------------------------------------------------------------- o grupo
+  async function pintarGrupo({ sb, id }: any) {
+    const box = el('grupo-faixa');
+    const { data: pcs, error } = await sb.from('personagens')
+      .select('id, nome, conceito, dono_id, status, imagem_path, ficha')
+      .eq('mesa_id', id).order('nome', { ascending: true });
     if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
-    if (!data?.length) { box.innerHTML = '<p class="muted">Sem personagens para resumir.</p>'; return; }
-    const nomes = await nomesDe(sb, data.map((p: any) => p.dono_id));
-    const linhas = data.map((p: any) => {
-      const S = p.ficha || {}; const at = S.attrs || {}; const sk = S.skills || {}; const sp = S.spec || {}; const C = S.centelha || 0;
-      const pvv = pv(at.vigor || 0);
-      const def = defesa({ destreza: at.destreza || 0, habilidade: sk.esquiva || 0, especialidade: sp.esquiva || 0, centelha: C });
-      const ini = iniciativa({ raciocinio: at.raciocinio || 0, prontidao: sk.prontidao || 0 }).str;
-      return `<tr>
-        <td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a></td>
-        <td class="muted">${esc(nomes[p.dono_id] || '')}</td>
-        <td class="num">${C}</td><td class="num">${pvv}</td><td class="num">${def}</td><td>${esc(ini)}</td>
-        <td>${SELO_R[p.status] || 'Rascunho'}</td>
-      </tr>`;
+    if (!pcs?.length) { box.innerHTML = '<p class="vazio">Nenhum personagem nesta mesa ainda.</p>'; return; }
+
+    const nomes = await nomesDe(sb, pcs.map((p: any) => p.dono_id));
+    const imgs = await urlsImagens(sb, pcs.map((p: any) => p.imagem_path), 'personagens');
+
+    // Se houver combate rolando, a Vida e as condições vêm de lá: é o número
+    // que está valendo agora, e não o do papel.
+    const emCombate: Record<string, any> = {};
+    const { data: encs } = await sb.from('encontros').select('id').eq('mesa_id', id).eq('ativo', true).limit(1);
+    if (encs?.length) {
+      const { data: combs } = await sb.from('combatentes').select('*').eq('encontro_id', encs[0].id);
+      for (const c of combs || []) if (c.personagem_id) emCombate[c.personagem_id] = c;
+    }
+
+    box.innerHTML = pcs.map((p: any) => {
+      let R: any = null;
+      try { R = resumoFicha(p.ficha || {}); } catch {}
+      const c = emCombate[p.id];
+      const pvMax = c?.pv_max ?? R?.pv ?? null;
+      const pvAt = c?.pv_atual ?? R?.pv ?? null;
+      const t = tierDe(pvAt, pvMax);
+      const conds = (c?.condicoes || []).map((k: any) => condChipHTML({ ...(COND[k.id] || {}), ...k })).join('');
+      const en = c?.energia_atual ?? R?.energia ?? null;
+      const enMax = c?.energia_max ?? R?.energia ?? null;
+      const nums = R ? `
+        <span class="pl"><span class="pl-l">Def</span><span class="pl-v">${R.defEsquiva}</span></span>
+        <span class="pl"><span class="pl-l">Soc</span><span class="pl-v">${R.defSocial}</span></span>
+        <span class="pl"><span class="pl-l">Men</span><span class="pl-v">${R.defMental}</span></span>
+        <span class="pl"><span class="pl-l">Abs</span><span class="pl-v">${R.soak.impacto}/${R.soak.corte}/${R.soak.perfuracao}</span></span>
+        <span class="pl"><span class="pl-l">Ini</span><span class="pl-v">${esc(R.iniciativa)}</span></span>
+        <span class="pl"><span class="pl-l">Percep</span><span class="pl-v">${R.passivos[0].media}</span></span>
+        <span class="pl"><span class="pl-l">Furt</span><span class="pl-v">${R.passivos[3].media}</span></span>
+        <span class="pl"><span class="pl-l">Cent</span><span class="pl-v">${R.centelha}</span></span>` : '<span class="muted">ficha em branco</span>';
+      return `<div class="pj ${norm(t.estado).replace(/\s+/g, '-')}">
+        <span class="pj-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null, 'av-g')}</span>
+        <div class="pj-topo">
+          <a class="pj-nome" href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a>
+          <span class="pj-sub">${esc(p.conceito || '')}${p.conceito && nomes[p.dono_id] ? ' · ' : ''}${esc(nomes[p.dono_id] || '')}</span>
+        </div>
+        <div class="pj-barras">
+          <div class="pj-linha"><span class="rot">Vida</span>${hpBarHTML(pvAt, pvMax, 'pj-' + p.id, 'mini')}</div>
+          ${enMax ? `<div class="pj-linha"><span class="rot">Energia</span><div class="hpbar mini enbar"><div class="hpbar-fill" style="width:${enMax ? Math.max(0, Math.min(100, (en / enMax) * 100)) : 0}%"></div><span class="hpbar-txt">${en}<span class="hp-sep">/</span>${enMax}</span></div></div>` : ''}
+        </div>
+        <div class="pj-nums pilha">${nums}</div>
+        ${conds ? `<div class="pj-conds conds">${conds}</div>` : ''}
+      </div>`;
     }).join('');
-    box.innerHTML = `<table class="vg-tab"><thead><tr><th>Personagem</th><th>Jogador</th><th>Centelha</th><th>PV</th><th>Defesa</th><th>Iniciativa</th><th>Status</th></tr></thead><tbody>${linhas}</tbody></table>`;
   }
 
-  async function nomesDe(sb: any, ids: string[]): Promise<Record<string, string>> {
-    const uniq = [...new Set(ids.filter(Boolean))];
-    if (!uniq.length) return {};
-    const { data } = await sb.from('profiles').select('id, nome').in('id', uniq);
-    return Object.fromEntries((data || []).map((p: any) => [p.id, p.nome]));
+  // ---------------------------------------------------------- relógios
+  function relogioSVG(seg: number, cheios: number, cor: string) {
+    const n = Math.max(2, Math.min(12, seg | 0));
+    const R = 46, cx = 50, cy = 50;
+    const arco = (i: number) => {
+      const a0 = (i / n) * 2 * Math.PI - Math.PI / 2;
+      const a1 = ((i + 1) / n) * 2 * Math.PI - Math.PI / 2;
+      const x0 = cx + R * Math.cos(a0), y0 = cy + R * Math.sin(a0);
+      const x1 = cx + R * Math.cos(a1), y1 = cy + R * Math.sin(a1);
+      const grande = (a1 - a0) > Math.PI ? 1 : 0;
+      return `M ${cx} ${cy} L ${x0.toFixed(2)} ${y0.toFixed(2)} A ${R} ${R} 0 ${grande} 1 ${x1.toFixed(2)} ${y1.toFixed(2)} Z`;
+    };
+    const fatias = Array.from({ length: n }, (_, i) =>
+      `<path class="rl-seg ${i < cheios ? 'on c-' + cor : 'off'}" data-seg="${i}" d="${arco(i)}" stroke="var(--rule)" stroke-width="1.2" />`).join('');
+    return `<svg viewBox="0 0 100 100" role="img" aria-label="${cheios} de ${n} segmentos">${fatias}
+      <circle cx="50" cy="50" r="46" fill="none" stroke="var(--rule)" stroke-width="2" /></svg>`;
   }
 
-  async function renderMembros(sb: any, mestreId: string, ehMestre: boolean, userId: string) {
-    const { data, error } = await sb
-      .from('mesa_membros')
-      .select('papel, user_id')
-      .eq('mesa_id', id)
-      .order('entrou_em', { ascending: true });
-    const ul = document.getElementById('membros')!;
-    if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
-    const nomes = await nomesDe(sb, (data || []).map((m: any) => m.user_id));
-    ul.innerHTML = (data || []).map((m: any) => {
-      const nome = nomes[m.user_id] || '(sem nome)';
-      const dono = m.user_id === mestreId; // criador da mesa (não pode ser mexido)
-      const mestre = m.papel === 'mestre' || dono;
-      const acoes = (ehMestre && !dono) ? `<span class="membro-acoes">
-        <button class="btn mini" data-act="papel" data-u="${m.user_id}" data-p="${m.papel}">${m.papel === 'mestre' ? 'Rebaixar' : 'Promover a mestre'}</button>
-        <button class="btn mini perigo" data-act="remover" data-u="${m.user_id}">Remover</button>
-      </span>` : '';
-      return `<li><span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span> <span class="membro-nome">${esc(nome)}${m.user_id === userId ? ' (você)' : ''}</span>${acoes}</li>`;
-    }).join('');
+  async function pintarRelogios(ctx: any) {
+    const { sb, ehMestre, id } = ctx;
+    const box = el('relogios');
+    const { data, error } = await sb.from('mesa_relogios').select('*').eq('mesa_id', id)
+      .order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    if (error) {
+      if (bancoAntigo(error)) { box.innerHTML = '<p class="vazio">Relógios chegam com a migração 11.</p>'; return; }
+      box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return;
+    }
+    if (ehMestre) el('rel-novo').hidden = false;
+    if (!data?.length) {
+      box.innerHTML = `<p class="vazio">${ehMestre ? 'Nenhum relógio. Crie um para marcar o que avança nas costas do grupo.' : 'Nada em contagem.'}</p>`;
+    } else {
+      box.innerHTML = data.map((r: any) => `<div class="relogio ${r.visivel_jogadores ? '' : 'oculto'}" data-rl="${r.id}">
+        ${relogioSVG(r.segmentos, r.preenchidos, r.cor)}
+        <span class="rl-nome">${esc(r.nome || '(sem nome)')}</span>
+        <span class="rl-n">${r.preenchidos}/${r.segmentos}${r.visivel_jogadores ? '' : ' · oculto'}</span>
+        ${ehMestre ? `<span class="rl-btns"><button class="btn-fant rl-menos" title="−1">−</button><button class="btn-fant rl-mais" title="+1">+</button><button class="btn-fant rl-edit" title="Editar">✎</button></span>` : ''}
+        ${r.nota ? `<span class="muted rl-nota" title="${esc(r.nota)}">${esc(r.nota.slice(0, 40))}${r.nota.length > 40 ? '…' : ''}</span>` : ''}
+      </div>`).join('');
+    }
     if (!ehMestre) return;
-    ul.querySelectorAll<HTMLElement>('[data-act="papel"]').forEach((b) => b.addEventListener('click', async () => {
-      const novo = b.dataset.p === 'mestre' ? 'jogador' : 'mestre';
-      const { error } = await sb.from('mesa_membros').update({ papel: novo }).eq('mesa_id', id).eq('user_id', b.dataset.u);
+
+    const mexer = async (rid: string, delta: number) => {
+      const r = data.find((x: any) => x.id === rid); if (!r) return;
+      const novo = Math.max(0, Math.min(r.segmentos, r.preenchidos + delta));
+      if (novo === r.preenchidos) return;
+      r.preenchidos = novo;
+      await sb.from('mesa_relogios').update({ preenchidos: novo }).eq('id', rid);
+      await pintarRelogios(ctx);
+    };
+    box.querySelectorAll<HTMLElement>('.relogio').forEach((card) => {
+      const rid = card.dataset.rl!;
+      card.querySelector('.rl-mais')?.addEventListener('click', () => mexer(rid, +1));
+      card.querySelector('.rl-menos')?.addEventListener('click', () => mexer(rid, -1));
+      // Clicar direto num segmento leva o relógio até ali: mais rápido que somar de um em um.
+      card.querySelectorAll<SVGElement>('.rl-seg').forEach((s) => s.addEventListener('click', async () => {
+        const r = data.find((x: any) => x.id === rid); if (!r) return;
+        const i = parseInt(s.dataset.seg || '0', 10) + 1;
+        const novo = r.preenchidos === i ? i - 1 : i; // clicar no último cheio esvazia ele
+        await sb.from('mesa_relogios').update({ preenchidos: novo }).eq('id', rid);
+        await pintarRelogios(ctx);
+      }));
+      card.querySelector('.rl-edit')?.addEventListener('click', () => abrirRelogio(ctx, data.find((x: any) => x.id === rid)));
+    });
+    el('rel-novo').onclick = () => abrirRelogio(ctx, null);
+  }
+
+  function abrirRelogio(ctx: any, r: any) {
+    const { sb, id } = ctx;
+    const dlg = el('rel-dlg') as HTMLDialogElement;
+    const g = (i: string) => el(i) as HTMLInputElement;
+    (el('rel-titulo') as HTMLElement).textContent = r ? 'Editar relógio' : 'Novo relógio';
+    g('rel-nome').value = r?.nome || '';
+    g('rel-seg').value = String(r?.segmentos ?? 6);
+    g('rel-cheios').value = String(r?.preenchidos ?? 0);
+    (el('rel-cor') as HTMLSelectElement).value = r?.cor || 'perigo';
+    (el('rel-nota') as HTMLTextAreaElement).value = r?.nota || '';
+    g('rel-vis').checked = !!r?.visivel_jogadores;
+    (el('rel-excluir') as HTMLElement).hidden = !r;
+    el('rel-cancelar').onclick = () => dlg.close();
+    el('rel-excluir').onclick = async () => {
+      if (!await uiConfirmar('Excluir este relógio?', { titulo: 'Excluir relógio', ok: 'Excluir', perigo: true })) return;
+      dlg.close();
+      await sb.from('mesa_relogios').delete().eq('id', r.id);
+      await pintarRelogios(ctx);
+    };
+    el('rel-salvar').onclick = async () => {
+      const seg = Math.max(2, Math.min(12, parseInt(g('rel-seg').value, 10) || 6));
+      const linha = {
+        mesa_id: id, nome: g('rel-nome').value.trim() || 'Relógio', segmentos: seg,
+        preenchidos: Math.max(0, Math.min(seg, parseInt(g('rel-cheios').value, 10) || 0)),
+        cor: (el('rel-cor') as HTMLSelectElement).value,
+        nota: (el('rel-nota') as HTMLTextAreaElement).value,
+        visivel_jogadores: g('rel-vis').checked,
+      };
+      dlg.close();
+      const { error } = r
+        ? await sb.from('mesa_relogios').update(linha).eq('id', r.id)
+        : await sb.from('mesa_relogios').insert(linha);
       if (error) return uiErro('Erro: ' + error.message);
-      await renderMembros(sb, mestreId, ehMestre, userId);
-    }));
-    ul.querySelectorAll<HTMLElement>('[data-act="remover"]').forEach((b) => b.addEventListener('click', async () => {
-      if (!await uiConfirmar('Remover este membro da mesa?', { titulo: 'Remover membro', ok: 'Remover', perigo: true })) return;
-      const { error } = await sb.from('mesa_membros').delete().eq('mesa_id', id).eq('user_id', b.dataset.u);
-      if (error) return uiErro('Erro: ' + error.message);
-      await renderMembros(sb, mestreId, ehMestre, userId);
-    }));
+      await pintarRelogios(ctx);
+    };
+    dlg.showModal();
+  }
+
+  // ----------------------------------------------------------- ganchos
+  async function pintarGanchos({ sb, ehMestre, id }: any) {
+    const box = el('ganchos');
+    const { data, error } = await sb.from('mesa_codex').select('id, nome, resumo, tipo, visivel_jogadores')
+      .eq('mesa_id', id).eq('tipo', 'gancho').order('ordem', { ascending: true }).limit(8);
+    if (error) {
+      box.innerHTML = bancoAntigo(error)
+        ? '<p class="vazio">O compêndio chega com a migração 11.</p>'
+        : `<p class="erro">${esc(error.message)}</p>`;
+      return;
+    }
+    // A última sessão costuma trazer o "para a próxima": puxa junto.
+    let proxima = '';
+    const { data: ses } = await sb.from('mesa_sessoes').select('numero, titulo, ganchos')
+      .eq('mesa_id', id).order('numero', { ascending: false }).limit(1);
+    if (ses?.[0]?.ganchos) {
+      proxima = `<div class="gancho"><span>▸</span><div><div class="g-t">Da sessão ${ses[0].numero}${ses[0].titulo ? ' · ' + esc(ses[0].titulo) : ''}</div>
+        <div class="g-r">${esc(ses[0].ganchos)}</div></div></div>`;
+    }
+    const itens = (data || []).map((g: any) => `<div class="gancho"><span>▸</span><div>
+      <div class="g-t">${esc(g.nome)}${g.visivel_jogadores ? '' : ' <span class="muted" title="Só o mestre vê">·oculto</span>'}</div>
+      ${g.resumo ? `<div class="g-r">${esc(g.resumo)}</div>` : ''}</div></div>`).join('');
+    box.innerHTML = (proxima || itens)
+      ? `<div class="gancho-lista">${proxima}${itens}</div>`
+      : `<p class="vazio">${ehMestre ? 'Sem ganchos anotados. Crie no Compêndio o que você quer puxar na próxima cena.' : 'Nada por aqui ainda.'}</p>`;
+  }
+
+  // ------------------------------------------------------------- notas
+  async function pintarNotas({ sb, ehMestre, id }: any) {
+    const box = el('notas-rapidas');
+    const { data, error } = await sb.from('mesa_notas').select('id, titulo, corpo, visivel_jogadores')
+      .eq('mesa_id', id).order('ordem', { ascending: true }).order('criado_em', { ascending: true }).limit(6);
+    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    if (!data?.length) {
+      box.innerHTML = `<p class="vazio">${ehMestre ? 'Nenhuma nota. O Diário guarda as suas.' : 'O mestre ainda não compartilhou notas.'}</p>`;
+      return;
+    }
+    box.innerHTML = `<div class="nota-lista">${data.map((n: any) => `<div class="nota-mini-card">
+      <h4>${esc(n.titulo || '(sem título)')}${n.visivel_jogadores ? '' : ' <span class="muted">·oculta</span>'}</h4>
+      <p>${esc((n.corpo || '').slice(0, 320))}${(n.corpo || '').length > 320 ? '…' : ''}</p>
+    </div>`).join('')}</div>`;
   }
 
   main();
-  document.querySelectorAll('#card-modal [data-fechar]').forEach((el) => el.addEventListener('click', fecharCard));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !document.getElementById('card-modal')!.hidden) fecharCard(); });
 </script>
-
-<!-- is:global: cabeçalho e listas são preenchidos via JS -->
-<style is:global>
-  .mesa-cab { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; margin-bottom: 1rem; }
-  .mesa-cab-acoes { display: flex; flex-direction: column; gap: .6rem; align-items: flex-end; }
-  .convite { text-align: right; }
-  .convite-linha { display: flex; align-items: center; gap: .5rem; }
-  .convite code { font-size: var(--fs-h3); letter-spacing: .12em; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: .2rem .6rem; }
-  .bloco { margin-top: 1.4rem; }
-  .bloco-cab { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-  .xp-inicial { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-top: .8rem;
-    padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); }
-  .xp-inicial label { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
-  .xp-inicial input { width: 6.5rem; font: inherit; color: var(--ink); background: var(--bg);
-    border: 1px solid var(--panel-border); border-radius: var(--r-md); padding: .3rem .5rem; }
-  .xp-inicial .salvo { font-size: var(--fs-rotulo); color: var(--accent-texto); }
-  .xp-inicial-dica { flex-basis: 100%; margin: .1rem 0 0; font-size: var(--fs-rotulo); }
-  .pers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: .8rem; }
-  /* o card e o excluir do mestre: a caixa empilha os dois e é ela que entra na grade */
-  .pers-card-box { display: flex; flex-direction: column; gap: .35rem; }
-  .pers-card-box .pers-card { flex: 1; }
-  .pers-card-box .pers-rm { align-self: flex-end; }
-  .pers-card { display: flex; flex-direction: column; gap: .25rem; padding: .9rem 1rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
-  .pers-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .pers-card-nome { font-size: var(--fs-corpo); font-weight: 700; }
-  .pers-card-conc { color: var(--ink-soft); font-size: var(--fs-rotulo); font-style: italic; }
-  .pers-card-dono { font-size: var(--fs-micro); }
-  .selo { align-self: flex-start; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .05em; font-weight: 700; padding: .12rem .5rem; border-radius: 999px; }
-  .s-rascunho { background: color-mix(in srgb, var(--ink-soft) 22%, transparent); color: var(--ink); }
-  .s-enviado { background: color-mix(in srgb, var(--gold, #b8860b) 30%, transparent); color: var(--ink); }
-  .s-aprovado { background: color-mix(in srgb, var(--accent) 26%, transparent); color: var(--ink); }
-  .enviadas-aviso { color: var(--ink); background: color-mix(in srgb, var(--gold, #b8860b) 18%, transparent); border: 1px solid var(--gold, #b8860b); border-radius: var(--r-md); padding: .5rem .8rem; margin: .4rem 0 0; }
-  .arqs { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; margin-top: .6rem; }
-  .arqs li { display: flex; align-items: center; gap: .6rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
-  .arqs .arq-abrir { flex: 1; color: var(--accent-texto); text-decoration: none; }
-  .arqs .arq-tipo { font-size: var(--fs-micro); text-transform: uppercase; }
-  .arqs .arq-vis { display: inline-flex; align-items: center; gap: .25rem; font-size: var(--fs-micro); color: var(--ink-soft); }
-  .arqs .arq-rm { background: none; border: none; color: var(--perigo); cursor: pointer; }
-  .arq-alvo { font-size: var(--fs-micro); color: var(--ink-soft); }
-  .arq-alvo summary { cursor: pointer; }
-  .arq-alvo label { display: flex; align-items: center; gap: .3rem; padding: .15rem 0 .15rem .6rem; }
-  .cab-btns { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
-  .tabela-wrap { overflow-x: auto; margin-top: .6rem; }
-  .vg-tab { border-collapse: collapse; width: 100%; min-width: 34rem; }
-  .vg-tab th, .vg-tab td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--rule); }
-  .vg-tab th { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
-  .vg-tab td.num { text-align: center; font-family: 'Cinzel'; font-weight: 700; }
-  .vg-tab a { color: var(--accent-texto); text-decoration: none; }
-  .nota { border: 1px solid var(--rule); border-radius: var(--r-lg); padding: .7rem; background: var(--panel); margin-bottom: .8rem; }
-  .nota-tit { width: 100%; font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); border: none; border-bottom: 1px solid var(--rule); background: transparent; color: var(--ink); padding: .2rem 0; margin-bottom: .4rem; }
-  .nota-txt { width: 100%; font: inherit; font-family: 'EB Garamond'; padding: .5rem; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--bg); color: var(--ink); resize: vertical; }
-  .nota-foot { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; margin-top: .4rem; }
-  .nota-vis { flex: 1; font-size: var(--fs-rotulo); color: var(--ink-soft); display: inline-flex; gap: .3rem; align-items: center; }
-  .nota-ro { border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: var(--r-md); padding: .6rem .8rem; background: var(--panel); margin-bottom: .7rem; }
-  .nota-ro h3 { margin: 0 0 .3rem; font-family: 'Cinzel'; }
-  .nota-corpo { font-size: var(--fs-aux); }
-  .membros { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
-  .membros li { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
-  .membro-nome { flex: 1; }
-  .membro-acoes { display: flex; gap: .4rem; flex-wrap: wrap; }
-  .btn.mini { padding: .15rem .5rem; font-size: var(--fs-micro); }
-  .btn.perigo { border-color: var(--perigo); color: var(--perigo); }
-  .btn.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
-  .papel { font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .06em; padding: .1rem .5rem; border-radius: 999px; font-weight: 700; }
-  .p-mestre { background: color-mix(in srgb, var(--gold, #b8860b) 25%, transparent); color: var(--ink); }
-  .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
-  .aviso { border: 1px solid var(--gold, var(--rule)); border-radius: var(--r-lg); padding: 1rem; background: color-mix(in srgb, var(--gold, #caa) 12%, transparent); max-width: 40rem; }
-  .erro { color: var(--perigo); }
-
-  .escudo-busca-wrap { position: relative; max-width: 30rem; margin: .4rem 0 1rem; }
-  .escudo-busca-wrap input { width: 100%; padding: .5rem; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--bg); color: var(--ink); font: inherit; }
-  .escudo-result { position: absolute; z-index: 20; left: 0; right: 0; margin: .2rem 0 0; padding: 0; list-style: none; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r-md); max-height: 16rem; overflow: auto; box-shadow: 0 6px 20px rgba(0,0,0,.15); }
-  .escudo-result li { padding: .45rem .7rem; cursor: pointer; }
-  .escudo-result li:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
-  .escudo-result li.vazio { cursor: default; }
-  .escudo-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
-  .cr-card { border: 1px solid var(--rule); border-radius: var(--r-lg); padding: .8rem .9rem; background: var(--panel); display: flex; flex-direction: column; gap: .4rem; }
-  .cr-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
-  .cr-nome { font-size: var(--fs-aux); font-weight: 700; }
-  .cr-en { font-size: var(--fs-micro); font-weight: 400; font-style: italic; }
-  .cr-badges { display: flex; flex-wrap: wrap; gap: .3rem; }
-  .cr-b { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .03em; padding: .1rem .45rem; border-radius: 999px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); }
-  .cr-link { color: var(--accent-texto); text-decoration: none; font-size: var(--fs-rotulo); }
-  .cr-notas { font: inherit; font-family: 'EB Garamond'; padding: .4rem; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--bg); color: var(--ink); resize: vertical; }
-  .cr-notas-ro { font-size: var(--fs-rotulo); color: var(--ink-soft); font-style: italic; margin: 0; }
-  .cr-rm { background: none; border: none; color: var(--perigo); cursor: pointer; padding: 0 .2rem; }
-
-  .enc-cab { margin-bottom: .6rem; }
-  .enc-ctrl { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .8rem; align-items: center; }
-  .enc-add-cri { display: inline-flex; gap: .3rem; align-items: center; }
-  .enc-add-cri select { max-width: 12rem; }
-  .cmb-lista { display: flex; flex-direction: column; gap: .4rem; }
-  .cmb-row { display: flex; align-items: flex-start; gap: .7rem; padding: .5rem .6rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); }
-  .cmb-row.atual { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
-  .cmb-tick { font-family: 'Cinzel'; font-weight: 700; color: var(--accent-texto); min-width: 2.4rem; padding-top: .1rem; }
-  .cmb-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .35rem; }
-  .cmb-nome { min-width: 8rem; }
-  .cmb-act { display: inline-flex; align-items: center; gap: .3rem; flex-shrink: 0; }
-  .cmb-act .spd { width: 3.2rem; padding: .2rem; border: 1px solid var(--rule); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); }
-
-  /* Linha de stats (Ataque / Dano / Defesa física) */
-  .cmb-stats { display: flex; flex-wrap: wrap; gap: .3rem .7rem; font-size: var(--fs-micro); color: var(--ink-soft); }
-  .cmb-stats .cst { white-space: nowrap; }
-  .cmb-stats .cst-l { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); margin-right: .15rem; }
-
-  /* Barra de vida */
-  .cmb-hp-linha { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
-  .hpbar { position: relative; flex: 0 0 auto; width: 16rem; max-width: 100%; height: 1.25rem; border-radius: 999px; overflow: hidden; background: color-mix(in srgb, var(--ink) 12%, transparent); border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
-  .hpbar-fill { height: 100%; width: 100%; border-radius: inherit; transition: width .55s cubic-bezier(.22,.61,.36,1), background-color .55s ease, background-image .55s ease; }
-  .hpbar-txt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: var(--fs-micro); font-weight: 700; font-variant-numeric: tabular-nums; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.55); letter-spacing: .01em; }
-  .hpbar-txt .hp-sep { opacity: .8; margin: 0 .05rem; }
-  .hpbar-txt .hp-est { font-weight: 600; opacity: .95; margin-left: .25rem; }
-  .hpbar.t-saudavel  .hpbar-fill { background: linear-gradient(90deg, var(--ok), #43b85c); }
-  .hpbar.t-machucado .hpbar-fill { background: linear-gradient(90deg, #7fa61c, #a9c22b); }
-  .hpbar.t-ferido    .hpbar-fill { background: linear-gradient(90deg, #d08c12, #e6a91d); }
-  .hpbar.t-grave     .hpbar-fill { background: linear-gradient(90deg, #d5661a, #e8791f); }
-  .hpbar.t-critico   .hpbar-fill { background: linear-gradient(90deg, #b02a20, #cf3327); }
-  .hpbar.t-caido     .hpbar-fill { background: linear-gradient(90deg, #4a4a4a, #6a6a6a); }
-
-  /* Controles de dano/cura */
-  .cmb-hpctrl { display: inline-flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
-  .cmb-hpctrl .hp-amt { width: 3.4rem; padding: .2rem; border: 1px solid var(--rule); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); }
-  .cmb-hpctrl .hp-tipo { padding: .2rem; border: 1px solid var(--rule); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font: inherit; font-size: var(--fs-micro); }
-  .cmb-hpctrl .hp-dano { border-color: var(--perigo); color: var(--perigo); }
-  .cmb-hpctrl .hp-dano:hover { background: var(--perigo-bg); color: var(--on-perigo); }
-  .cmb-hpctrl .hp-cura { border-color: var(--ok); color: var(--ok); }
-  .cmb-hpctrl .hp-cura:hover { background: var(--ok); color: #fff; }
-  .hp-fb { font-size: var(--fs-micro); font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent-strong); opacity: 0; transform: translateY(.2rem); transition: opacity .2s, transform .2s; }
-  .hp-fb.mostra { opacity: 1; transform: translateY(0); }
-
-  /* Log de ações do combate */
-  .combate-log-wrap { margin-top: 1rem; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .6rem .8rem; }
-  .log-cab { display: flex; align-items: center; justify-content: space-between; gap: .6rem; flex-wrap: wrap; margin-bottom: .4rem; }
-  .log-cab h3 { margin: 0; font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--accent-strong); }
-  .log-add { display: inline-flex; gap: .3rem; align-items: center; }
-  .log-add input { padding: .25rem .4rem; border: 1px solid var(--rule); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font: inherit; font-size: var(--fs-micro); min-width: 12rem; }
-  .combate-log { display: flex; flex-direction: column; gap: .1rem; max-height: 16rem; overflow-y: auto; }
-  .log-vazio { margin: .2rem 0; font-size: var(--fs-rotulo); }
-  .log-linha { display: flex; align-items: center; gap: .5rem; padding: .22rem .2rem; border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent); font-size: var(--fs-rotulo); }
-  .log-linha:last-child { border-bottom: none; }
-  .log-hora { font-variant-numeric: tabular-nums; font-size: var(--fs-micro); color: var(--ink-soft); flex-shrink: 0; min-width: 2.6rem; }
-  .log-txt { flex: 1; min-width: 0; }
-  .log-inp { flex: 1; min-width: 0; font: inherit; font-size: var(--fs-rotulo); padding: .1rem .3rem; border: 1px solid var(--accent); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); }
-  .log-edit, .log-del { background: none; border: none; cursor: pointer; padding: 0 .2rem; font-size: var(--fs-micro); line-height: 1; opacity: .55; transition: opacity .15s; flex-shrink: 0; }
-  .log-linha:hover .log-edit, .log-linha:hover .log-del { opacity: 1; }
-  .log-edit { color: var(--accent-texto); }
-  .log-del { color: var(--perigo); }
-
-  /* Diálogo de ação (Agir) */
-  .acao-dlg { border: 1px solid var(--rule); border-radius: var(--r-lg); padding: 0; background: var(--panel); color: var(--ink); max-width: 24rem; width: 92%; box-shadow: 0 12px 40px rgba(0,0,0,.3); }
-  .acao-dlg::backdrop { background: color-mix(in srgb, #1a120a 62%, transparent); backdrop-filter: blur(2px); }
-  .acao-form { display: flex; flex-direction: column; gap: .7rem; padding: 1.1rem 1.2rem 1.2rem; }
-  .acao-form h3 { margin: 0; color: var(--accent-strong); font-size: var(--fs-aux); }
-  .acao-form label { display: flex; flex-direction: column; gap: .25rem; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
-  .acao-form input { padding: .42rem .5rem; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--bg); color: var(--ink); font: inherit; font-size: var(--fs-aux); text-transform: none; letter-spacing: normal; }
-  .acao-form select { font-size: var(--fs-aux); text-transform: none; letter-spacing: normal; }
-  .acao-dano-row { display: flex; gap: .6rem; }
-  .acao-dano-row label { flex: 1; }
-  .acao-btns { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .3rem; }
-  .edit-dlg { max-width: 30rem; }
-  .edit-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
-  .edit-grid label { min-width: 0; }
-  .cmb-act .editc { border-color: var(--accent); color: var(--accent-texto); }
-  .cmb-act .editc:hover { background: color-mix(in srgb, var(--accent) 18%, transparent); }
-
-  .cr-atk { font-size: var(--fs-rotulo); color: var(--ink-soft); }
-  .cr-atk .cr-atk-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
-  .cr-atk b { color: var(--accent-strong); }
-  .cr-link.cr-abrir { background: none; border: none; padding: 0; text-align: left; }
-
-  /* Modal do card completo (mesmo visual do bestiário) */
-  .card-modal { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center; padding: 1.2rem; }
-  .card-modal[hidden] { display: none; }
-  .card-modal-back { position: absolute; inset: 0; background: color-mix(in srgb, #1a120a 78%, transparent); backdrop-filter: blur(3px); }
-  .card-modal-box { position: relative; z-index: 1; max-width: 32rem; width: 100%; max-height: 88vh; overflow: auto; border-radius: var(--r-lg); }
-  .card-modal-x { position: absolute; top: .5rem; right: .5rem; z-index: 3; width: 2rem; height: 2rem; border-radius: 50%; border: none; background: color-mix(in srgb, var(--ink) 14%, transparent); color: var(--ink); font-size: var(--fs-aux); cursor: pointer; }
-
-  .card-modal .besta { display: flex; flex-direction: column; border: 1px solid var(--panel-border); border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
-  .card-modal .arte { position: relative; margin: 0; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%); border-bottom: 1px solid var(--panel-border); overflow: hidden; }
-  .card-modal .arte img { width: 100%; height: 100%; object-fit: contain; padding: .5rem .6rem .2rem; mix-blend-mode: multiply; }
-  .card-modal .capitular { font-size: 4.6rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f); }
-  .card-modal .arte-ameaca { position: absolute; left: .55rem; bottom: .45rem; color: var(--gold); letter-spacing: .08em; font-size: var(--fs-h3); text-shadow: 0 1px 2px rgba(0,0,0,.55); }
-  .card-modal .arte-cent { position: absolute; left: .5rem; top: .5rem; font-family: 'Cinzel'; font-size: var(--fs-aux); font-weight: 600; padding: .18rem .68rem; border-radius: 999px; color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000); }
-  /* A faísca aqui vem do sparkSVG, montada em runtime, então não carrega o escopo
-     do CentelhaSpark.astro e precisa da própria regra: sem isto ela cairia no
-     tamanho default do SVG e estouraria o badge. Mesmos números do componente. */
-  .card-modal .arte-cent .centelha-spark { display: inline-block; height: .9em; width: auto; vertical-align: -.12em; overflow: visible; animation: cs-respiro 5s cubic-bezier(.4, 0, .6, 1) infinite; }
-  @keyframes cs-respiro {
-    0%, 100% { filter: brightness(1) drop-shadow(0 0 0 currentColor); }
-    50% { filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .card-modal .arte-cent .centelha-spark { animation: none; filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
-  }
-  .card-modal .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
-  .card-modal .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
-  .card-modal .besta-nome { font-size: var(--fs-corpo); color: var(--accent-texto); line-height: 1.15; }
-  .card-modal .besta-nome-en { font-size: var(--fs-micro); font-weight: 400; color: var(--muted); font-style: italic; }
-  .card-modal .besta-badges { display: flex; flex-wrap: wrap; gap: .3rem; margin: .3rem 0 .1rem; }
-  .card-modal .badge { font-size: var(--fs-micro); padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--panel-border); background: var(--panel-2, color-mix(in srgb, var(--ink) 6%, transparent)); color: var(--ink); }
-  .card-modal .badge.cat { background: var(--accent-strong); color: var(--on-accent-strong); border-color: transparent; }
-  .card-modal .badge.terr { background: color-mix(in srgb, #4b7a3f 20%, transparent); }
-  .card-modal .badge.clima { background: color-mix(in srgb, #8a5bbf 24%, transparent); }
-  .card-modal .besta-porte { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; margin: .35rem 0 .5rem; font-size: var(--fs-rotulo); color: var(--ink-soft); }
-  .card-modal .pt-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
-  .card-modal .pt-cat { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
-  .card-modal .pt-sep { color: color-mix(in srgb, var(--ink) 35%, transparent); }
-  .card-modal .besta-con { font-style: italic; margin: .3rem 0 .4rem; font-size: var(--fs-rotulo); }
-  .card-modal .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr)); gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
-  .card-modal .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
-  .card-modal .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; }
-  .card-modal .besta-stats dd { margin: 0; font-size: var(--fs-aux); font-variant-numeric: tabular-nums; font-weight: 600; }
-  .card-modal .besta-atrib { margin: 0 0 .55rem; }
-  .card-modal .atr-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .04em; color: var(--accent-strong); }
-  .card-modal .atr-grid { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: .2rem .4rem; margin-top: .3rem; }
-  .card-modal .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
-  .card-modal .atr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .card-modal .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
-  .card-modal .besta-tracos { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .28rem; }
-  .card-modal .tr-linha { display: flex; gap: .4rem; }
-  .card-modal .tr { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: .3rem; padding: .1rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
-  .card-modal .tr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
-  .card-modal .tr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
-  .card-modal .tr-mod { font-weight: 600; font-size: var(--fs-micro); color: var(--ink-soft); }
-  .card-modal .tr-virt { display: flex; align-items: baseline; gap: .45rem; padding: .1rem .4rem; }
-  .card-modal .tr-vv { font-variant-numeric: tabular-nums; font-size: var(--fs-micro); color: var(--ink-soft); }
-  .card-modal .besta-atk { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: var(--fs-rotulo); display: flex; flex-direction: column; gap: .3rem; }
-  .card-modal .besta-atk li { display: flex; flex-direction: column; gap: .05rem; padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
-  .card-modal .atk-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
-  .card-modal .atk-rolls b { color: var(--accent-strong); }
-  .card-modal .atk-nota { font-size: var(--fs-micro); font-style: italic; }
-  .card-modal .cc-h { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong); text-transform: uppercase; letter-spacing: .04em; margin: .6rem 0 .3rem; }
-  .card-modal .ib-hab, .card-modal .ib-pod { list-style: none; padding: 0; margin: 0 0 .4rem; display: flex; flex-direction: column; gap: .35rem; font-size: var(--fs-rotulo); }
-  .card-modal .ib-hab li b { color: var(--accent-strong); }
-  .card-modal .ib-pod li { padding-left: .6rem; border-left: 2px solid color-mix(in srgb, var(--accent) 40%, transparent); }
-  .card-modal .pw-alvo { color: var(--ink-soft); }
-  .card-modal .ib-ref { font-size: var(--fs-rotulo); margin: 0 0 .3rem; }
-  .card-modal .ib-ref b { color: var(--accent-strong); }
-  .card-modal .ib-ref a { color: var(--accent-texto); text-decoration: none; }
-  .card-modal .ib-ref a:hover { text-decoration: underline; }
-  .card-modal .ib-lore { margin: 0 0 .4rem; }
-  .card-modal .ib-lore h5 { margin: .35rem 0 .05rem; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); letter-spacing: .02em; }
-  .card-modal .ib-lore p { margin: 0; font-size: var(--fs-rotulo); }
-  .card-modal .ib-notas { font-size: var(--fs-rotulo); font-style: italic; color: var(--ink-soft); }
-</style>

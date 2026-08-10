@@ -31,9 +31,22 @@ Supabase pelo navegador. Passos para ligar tudo:
    personagens, para o enquadramento do retrato no card (pan/zoom). Idempotente.
 9. Rode [`migracao-7.sql`](./migracao-7.sql): permite que um "arquivo" seja um link externo
    (coluna `url`, `storage_path` deixa de ser obrigatório). Idempotente.
-10. Rode por fim [`migracao-8.sql`](./migracao-8.sql): adiciona a coluna `xp_inicial` às mesas,
+10. Rode [`migracao-8.sql`](./migracao-8.sql): adiciona a coluna `xp_inicial` às mesas,
     o XP com que as fichas da mesa começam (o XP individual, quando o mestre define, manda).
     Idempotente.
+11. Rode [`migracao-9.sql`](./migracao-9.sql) (preferências de diagramação por conta) e
+    [`migracao-10.sql`](./migracao-10.sql) (bucket público `itens`, para as imagens de armas,
+    escudos e armaduras da ficha). Idempotentes.
+12. Rode por fim [`migracao-11.sql`](./migracao-11.sql): é o que liga o **Escudo do Mestre**, a
+    área da mesa em nove abas. Cria `mesa_codex` (NPCs, lugares, facções, itens, ganchos e lore),
+    `mesa_sessoes` (o diário) e `mesa_relogios` (os relógios de progressão); dá aos combatentes
+    condições, lado, retrato, Energia e o campo `oculto`; dá aos encontros um estado
+    (preparado / ativo / encerrado); e abre em `arquivos` o campo `meta`, onde os mapas guardam
+    os pinos. Idempotente.
+
+    Sem ela o site **não quebra**: as abas que dependem de tabela nova avisam que falta rodar a
+    migração, e o resto continua funcionando com o que já existe. O bucket `itens` da migração 10
+    é o que guarda os retratos do compêndio, então rode as duas.
 
 ## 3. Ajustes no painel
 

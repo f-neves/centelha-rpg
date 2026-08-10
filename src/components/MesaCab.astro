@@ -1,0 +1,360 @@
+---
+// Cabeçalho e abas da área da mesa, mais o estilo que as nove páginas dividem.
+//
+// A marcação nasce no HTML (e não em JS) para a barra de abas aparecer na
+// primeira pintura; o `?id=` de cada link é preenchido por `abrirMesa()`, que
+// é quem sabe em qual mesa estamos.
+import { ABAS } from '../lib/mesa-abas';
+interface Props { aba: string }
+const { aba } = Astro.props;
+---
+
+<div id="mesa-setup" class="aviso" hidden>
+  <strong>Área de contas ainda não configurada.</strong>
+  <p class="muted">Falta ligar o Supabase. Veja <code>supabase/README.md</code>.</p>
+</div>
+
+<div id="mesa-carregando" class="mesa-carregando"><span class="girando">◈</span> Carregando a mesa…</div>
+<div id="mesa-erro" class="erro" hidden></div>
+
+<div id="mesa-topo" hidden>
+  <header class="mesa-cab">
+    <div class="mesa-cab-id">
+      <span id="mesa-papel" class="papel"></span>
+      <h1 id="mesa-nome" class="cinzel"></h1>
+      <p id="mesa-desc" class="muted"></p>
+    </div>
+    <div class="mesa-cab-acoes">
+      <div id="mesa-convite" class="convite" hidden>
+        <span class="muted">Código de convite</span>
+        <div class="convite-linha">
+          <code id="mesa-codigo"></code>
+          <button class="btn mini" id="mesa-copiar" title="Copiar código">Copiar</button>
+          <button class="btn mini" id="mesa-regen" title="Gerar um novo código (invalida o atual)">↻</button>
+        </div>
+      </div>
+      <div class="cab-btns">
+        <button class="btn mini" id="mesa-editar" hidden>Editar mesa</button>
+        <button class="btn mini" id="mesa-sair" hidden>Sair da mesa</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mesa-abas" aria-label="Seções da mesa">
+    {ABAS.map((a) => (
+      <a data-slug={a.slug} href="#" title={a.dica} class={a.id === aba ? 'atual' : ''}
+         aria-current={a.id === aba ? 'page' : undefined}>
+        <span class="ab-i" aria-hidden="true">{a.icone}</span><span class="ab-n">{a.nome}</span>
+      </a>
+    ))}
+  </nav>
+</div>
+
+<div id="mesa-corpo" hidden><slot /></div>
+
+<!-- Modal do card completo de criatura: nasce vazio aqui e é preenchido pelas
+     abas que o usam (Criaturas, Combate). -->
+<div id="card-modal" class="card-modal" hidden role="dialog" aria-modal="true">
+  <div class="card-modal-back" data-fechar></div>
+  <div class="card-modal-box">
+    <button class="card-modal-x" data-fechar aria-label="Fechar">✕</button>
+    <div id="card-modal-body"></div>
+  </div>
+</div>
+
+<style is:global>
+  /* ================================================================
+     Área da mesa · estilo compartilhado pelas nove abas
+     ================================================================ */
+
+  .mesa-carregando { color: var(--ink-soft); padding: 2rem 0; font-size: var(--fs-aux); }
+  .mesa-carregando .girando { display: inline-block; color: var(--accent); animation: mesa-gira 2.4s linear infinite; }
+  @keyframes mesa-gira { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .mesa-carregando .girando { animation: none; } }
+
+  .area-mesa .erro { color: var(--perigo); }
+  .aviso { border: 1px solid var(--gold); border-radius: var(--r-lg); padding: 1rem;
+    background: color-mix(in srgb, var(--gold) 12%, transparent); max-width: 44rem; }
+  .aviso p { margin: .3rem 0 0; }
+
+  /* ---- cabeçalho ---- */
+  .mesa-cab { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+    flex-wrap: wrap; padding-bottom: .8rem; }
+  .mesa-cab-id { min-width: 0; }
+  .mesa-cab h1 { margin: .2rem 0 0; font-size: var(--fs-h1); line-height: 1.1; }
+  .mesa-cab-id p { margin: .25rem 0 0; font-size: var(--fs-rotulo); max-width: 46rem; }
+  .mesa-cab-acoes { display: flex; flex-direction: column; gap: .5rem; align-items: flex-end; }
+  .convite { text-align: right; font-size: var(--fs-micro); }
+  .convite-linha { display: flex; align-items: center; gap: .4rem; margin-top: .15rem; }
+  .convite code { font-size: var(--fs-aux); letter-spacing: .14em; background: var(--panel);
+    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .18rem .55rem; }
+  .cab-btns { display: flex; gap: .4rem; flex-wrap: wrap; justify-content: flex-end; }
+
+  .papel { font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .06em;
+    padding: .1rem .55rem; border-radius: 999px; font-weight: 700; }
+  .p-mestre { background: color-mix(in srgb, var(--gold) 25%, transparent); color: var(--ink); }
+  .p-jogador { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--ink); }
+
+  /* ---- abas ---- */
+  .mesa-abas { display: flex; gap: .15rem; overflow-x: auto; overflow-y: hidden;
+    border-bottom: 1px solid var(--rule); margin-bottom: 1.2rem; padding-bottom: 0;
+    scrollbar-width: thin; position: sticky; top: 0; z-index: 30;
+    background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); }
+  .mesa-abas a { display: inline-flex; align-items: center; gap: .3rem; white-space: nowrap;
+    padding: .5rem .55rem; text-decoration: none; color: var(--ink-soft);
+    font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .01em;
+    border-bottom: 2px solid transparent; transition: color .15s, border-color .15s, background .15s; }
+  .mesa-abas a:hover { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .mesa-abas a.atual { color: var(--accent-texto); border-bottom-color: var(--accent); font-weight: 700; }
+  .mesa-abas .ab-i { font-size: var(--fs-aux); line-height: 1; opacity: .8; }
+  @media (max-width: 640px) { .mesa-abas .ab-n { display: none; } .mesa-abas a { padding: .55rem .8rem; } .mesa-abas .ab-i { font-size: var(--fs-h3); } }
+  @media (max-width: 640px) { .mesa-abas a.atual .ab-n { display: inline; } }
+
+  /* ---- blocos e painéis ---- */
+  .area-mesa .bloco { margin-top: 1.6rem; }
+  .area-mesa .bloco:first-child { margin-top: 0; }
+  .bloco-cab { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem;
+    flex-wrap: wrap; border-bottom: 1px solid var(--rule); padding-bottom: .3rem; margin-bottom: .8rem; }
+  .bloco-cab h2 { margin: 0; font-size: var(--fs-h3); }
+  .bloco-cab h2 small { font-weight: 400; font-size: var(--fs-micro); color: var(--ink-soft);
+    font-family: 'EB Garamond'; letter-spacing: 0; text-transform: none; }
+  .bloco-acoes { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; }
+  .painel { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .8rem .9rem; }
+  .vazio { color: var(--ink-soft); font-style: italic; font-size: var(--fs-aux); margin: .4rem 0; }
+
+  /* ---- botões ---- */
+  .area-mesa .btn.mini, .card-modal .btn.mini { padding: .18rem .55rem; font-size: var(--fs-micro); }
+  .btn.perigo { border-color: var(--perigo); color: var(--perigo); }
+  .btn.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo, #fff); }
+  .btn.ok { border-color: var(--ok); color: var(--ok); }
+  .btn.ok:hover { background: var(--ok); color: #fff; }
+  .btn[disabled] { opacity: .45; pointer-events: none; }
+  .btn-fant { background: none; border: none; color: var(--ink-soft); cursor: pointer;
+    padding: .1rem .3rem; font-size: var(--fs-micro); opacity: .6; transition: opacity .15s, color .15s; }
+  .btn-fant:hover { opacity: 1; color: var(--ink); }
+  .btn-fant.perigo:hover { color: var(--perigo); }
+
+  /* ---- campos ---- */
+  .area-mesa input[type=text], .area-mesa input[type=number], .area-mesa input[type=search],
+  .area-mesa input[type=date], .area-mesa select, .area-mesa textarea,
+  .mesa-dlg input, .mesa-dlg select, .mesa-dlg textarea {
+    font: inherit; font-size: var(--fs-aux); color: var(--ink); background: var(--bg);
+    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .32rem .5rem; }
+  .area-mesa textarea, .mesa-dlg textarea { font-family: 'EB Garamond'; resize: vertical; width: 100%; }
+  .area-mesa input:focus-visible, .area-mesa select:focus-visible, .area-mesa textarea:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 1px; }
+  .rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .04em; color: var(--ink-soft); }
+  .salvo { font-size: var(--fs-micro); color: var(--accent-texto); }
+
+  /* ---- retratos ---- */
+  .av { display: inline-grid; place-items: center; overflow: hidden; flex: 0 0 auto;
+    width: var(--av-t, 2.6rem); height: var(--av-t, 2.6rem); border-radius: 50%;
+    border: 1px solid var(--panel-border); background: var(--panel-2); }
+  .av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .av-vazio { background: hsl(var(--av-h, 40) 30% 32%); border-color: hsl(var(--av-h, 40) 30% 45%); }
+  .av-vazio .av-i { color: #fff; font-weight: 700; font-size: calc(var(--av-t, 2.6rem) * .44); line-height: 1; opacity: .92; }
+  .av-g { --av-t: 4.2rem; }
+  .av-p { --av-t: 1.9rem; }
+  .av-quad { border-radius: var(--r-md); }
+  /* A arte do bestiário é recortada em fundo claro: no tema escuro ela precisa
+     do multiply para não virar um selo branco dentro do círculo. */
+  .av-besta img { mix-blend-mode: multiply; background: #efe4c9; }
+
+  /* ---- barra de vida ---- */
+  .hpbar { position: relative; flex: 1 1 8rem; min-width: 6rem; height: 1.25rem; border-radius: 999px;
+    overflow: hidden; background: color-mix(in srgb, var(--ink) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+  .hpbar.mini { height: .85rem; }
+  .hpbar-fill { height: 100%; width: 100%; border-radius: inherit;
+    transition: width .55s cubic-bezier(.22,.61,.36,1), background-color .55s ease, background-image .55s ease; }
+  .hpbar-txt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: var(--fs-micro); font-weight: 700; font-variant-numeric: tabular-nums; color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.55); letter-spacing: .01em; }
+  .hpbar.mini .hpbar-txt { font-size: calc(var(--fs-micro) * .88); }
+  .hpbar-txt .hp-sep { opacity: .8; margin: 0 .05rem; }
+  .hpbar-txt .hp-est { font-weight: 600; opacity: .95; margin-left: .25rem; }
+  .hpbar.mini .hp-est { display: none; }
+  .hpbar.t-saudavel  .hpbar-fill { background: linear-gradient(90deg, var(--ok), #43b85c); }
+  .hpbar.t-machucado .hpbar-fill { background: linear-gradient(90deg, #7fa61c, #a9c22b); }
+  .hpbar.t-ferido    .hpbar-fill { background: linear-gradient(90deg, #d08c12, #e6a91d); }
+  .hpbar.t-grave     .hpbar-fill { background: linear-gradient(90deg, #d5661a, #e8791f); }
+  .hpbar.t-critico   .hpbar-fill { background: linear-gradient(90deg, #b02a20, #cf3327); }
+  .hpbar.t-caido     .hpbar-fill { background: linear-gradient(90deg, #4a4a4a, #6a6a6a); }
+  /* barra de Energia: mesma caixa, outra cor */
+  .enbar .hpbar-fill { background: linear-gradient(90deg, #3b6fb0, #5b9bd8) !important; }
+
+  /* ---- condições ---- */
+  .conds { display: flex; flex-wrap: wrap; gap: .22rem; align-items: center; }
+  .cond { display: inline-flex; align-items: center; gap: .22rem; font-size: var(--fs-micro);
+    line-height: 1.3; padding: .08rem .38rem; border-radius: 999px; border: 1px solid transparent;
+    background: color-mix(in srgb, var(--ink) 8%, transparent); color: var(--ink); cursor: default;
+    white-space: nowrap; max-width: 100%; }
+  .cond-i { font-size: .9em; line-height: 1; }
+  .cond-n { font-family: 'Cinzel'; letter-spacing: .01em; }
+  .cond-m { opacity: .75; font-variant-numeric: tabular-nums; }
+  .cond-x { background: none; border: none; color: inherit; cursor: pointer; opacity: .5;
+    padding: 0 0 0 .1rem; font-size: .85em; line-height: 1; }
+  .cond-x:hover { opacity: 1; color: var(--perigo); }
+  .cond-perigo { background: color-mix(in srgb, #c1352c 26%, transparent); border-color: color-mix(in srgb, #c1352c 45%, transparent); }
+  .cond-alerta { background: color-mix(in srgb, var(--gold) 26%, transparent); border-color: color-mix(in srgb, var(--gold) 42%, transparent); }
+  .cond-bom    { background: color-mix(in srgb, var(--ok) 24%, transparent); border-color: color-mix(in srgb, var(--ok) 42%, transparent); }
+  .cond-arcano { background: color-mix(in srgb, #8a5bbf 28%, transparent); border-color: color-mix(in srgb, #8a5bbf 46%, transparent); }
+  .cond-morte  { background: color-mix(in srgb, var(--ink) 45%, transparent); border-color: color-mix(in srgb, var(--ink) 60%, transparent); color: var(--panel); }
+  .cond-neutro { border-color: var(--rule); }
+
+  /* ---- selos de status de ficha ---- */
+  .selo { align-self: flex-start; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .05em; font-weight: 700; padding: .1rem .5rem; border-radius: 999px; }
+  .s-rascunho { background: color-mix(in srgb, var(--ink-soft) 22%, transparent); color: var(--ink); }
+  .s-enviado  { background: color-mix(in srgb, var(--gold) 30%, transparent); color: var(--ink); }
+  .s-aprovado { background: color-mix(in srgb, var(--accent) 26%, transparent); color: var(--ink); }
+
+  /* ---- pastilhas de número (stats em linha) ---- */
+  .pilha { display: flex; flex-wrap: wrap; gap: .25rem .5rem; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .pilha .pl { white-space: nowrap; }
+  .pilha .pl-l { font-family: 'Cinzel'; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--accent-strong); margin-right: .18rem; }
+  .pilha .pl-v { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink); }
+
+  /* ---- tabelas ---- */
+  .tab-wrap { overflow-x: auto; }
+  .tab-mesa { border-collapse: collapse; width: 100%; font-size: var(--fs-rotulo); }
+  .tab-mesa th, .tab-mesa td { text-align: left; padding: .35rem .55rem; border-bottom: 1px solid var(--rule); }
+  .tab-mesa th { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .04em; color: var(--ink-soft); white-space: nowrap; }
+  .tab-mesa td.num, .tab-mesa th.num { text-align: center; font-variant-numeric: tabular-nums; }
+  .tab-mesa td.num { font-family: 'Cinzel'; font-weight: 700; }
+  .tab-mesa tbody tr:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .tab-mesa a { color: var(--accent-texto); text-decoration: none; }
+  .tab-mesa a:hover { text-decoration: underline; }
+
+  /* ---- diálogos ---- */
+  .mesa-dlg { border: 1px solid var(--rule); border-radius: var(--r-lg); padding: 0;
+    background: var(--panel); color: var(--ink); max-width: 30rem; width: 94%;
+    box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+  .mesa-dlg::backdrop { background: color-mix(in srgb, #12100c 66%, transparent); backdrop-filter: blur(2px); }
+  .mesa-dlg form { display: flex; flex-direction: column; gap: .65rem; padding: 1.05rem 1.15rem 1.15rem; max-height: 84vh; overflow: auto; }
+  .mesa-dlg h3 { margin: 0; color: var(--accent-strong); font-size: var(--fs-aux); font-family: 'Cinzel'; }
+  .mesa-dlg label { display: flex; flex-direction: column; gap: .22rem; font-family: 'Cinzel';
+    font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-soft); }
+  .mesa-dlg label input, .mesa-dlg label select, .mesa-dlg label textarea { text-transform: none; letter-spacing: normal; }
+  .mesa-dlg .grade2 { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .mesa-dlg .grade3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
+  .mesa-dlg .grade2 label, .mesa-dlg .grade3 label { min-width: 0; }
+  .dlg-btns { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .2rem; }
+  .dlg-btns .esq { margin-right: auto; }
+  .dlg-larga { max-width: 44rem; }
+
+  /* ================================================================
+     Modal do card de criatura (mesmo visual do bestiário)
+     ================================================================ */
+  .card-modal { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center;
+    justify-content: center; padding: 1.2rem; }
+  .card-modal[hidden] { display: none; }
+  .card-modal-back { position: absolute; inset: 0; background: color-mix(in srgb, #1a120a 78%, transparent); backdrop-filter: blur(3px); }
+  .card-modal-box { position: relative; z-index: 1; max-width: 32rem; width: 100%; max-height: 88vh; overflow: auto; border-radius: var(--r-lg); }
+  .card-modal-x { position: absolute; top: .5rem; right: .5rem; z-index: 3; width: 2rem; height: 2rem;
+    border-radius: 50%; border: none; background: color-mix(in srgb, var(--ink) 14%, transparent);
+    color: var(--ink); font-size: var(--fs-aux); cursor: pointer; }
+  .card-modal .besta { display: flex; flex-direction: column; border: 1px solid var(--panel-border);
+    border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
+  .card-modal .arte { position: relative; margin: 0; aspect-ratio: 4 / 3; display: flex; align-items: center;
+    justify-content: center; background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%);
+    border-bottom: 1px solid var(--panel-border); overflow: hidden; }
+  .card-modal .arte img { width: 100%; height: 100%; object-fit: contain; padding: .5rem .6rem .2rem; mix-blend-mode: multiply; }
+  .card-modal .capitular { font-size: 4.6rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f); }
+  .card-modal .arte-ameaca { position: absolute; left: .55rem; bottom: .45rem; color: var(--gold);
+    letter-spacing: .08em; font-size: var(--fs-h3); text-shadow: 0 1px 2px rgba(0,0,0,.55); }
+  .card-modal .arte-cent { position: absolute; left: .5rem; top: .5rem; font-family: 'Cinzel';
+    font-size: var(--fs-aux); font-weight: 600; padding: .18rem .68rem; border-radius: 999px;
+    color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000); }
+  /* A faísca aqui vem do sparkSVG, montada em runtime, então não carrega o escopo
+     do CentelhaSpark.astro e precisa da própria regra. Mesmos números do componente. */
+  .card-modal .arte-cent .centelha-spark { display: inline-block; height: .9em; width: auto;
+    vertical-align: -.12em; overflow: visible; animation: cs-respiro 5s cubic-bezier(.4, 0, .6, 1) infinite; }
+  @keyframes cs-respiro {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 0 currentColor); }
+    50% { filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-modal .arte-cent .centelha-spark { animation: none; filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
+  }
+  .card-modal .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
+  .card-modal .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
+  .card-modal .besta-nome { font-size: var(--fs-corpo); color: var(--accent-texto); line-height: 1.15; }
+  .card-modal .besta-nome-en { font-size: var(--fs-micro); font-weight: 400; color: var(--muted); font-style: italic; }
+  .card-modal .besta-badges { display: flex; flex-wrap: wrap; gap: .3rem; margin: .3rem 0 .1rem; }
+  .card-modal .badge { font-size: var(--fs-micro); padding: .1rem .5rem; border-radius: 999px;
+    border: 1px solid var(--panel-border); background: var(--panel-2); color: var(--ink); }
+  .card-modal .badge.cat { background: var(--accent-strong); color: var(--on-accent-strong, #fff); border-color: transparent; }
+  .card-modal .badge.terr { background: color-mix(in srgb, #4b7a3f 20%, transparent); }
+  .card-modal .badge.clima { background: color-mix(in srgb, #8a5bbf 24%, transparent); }
+  .card-modal .besta-porte { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem;
+    margin: .35rem 0 .5rem; font-size: var(--fs-rotulo); color: var(--ink-soft); }
+  .card-modal .pt-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .04em; color: var(--accent-strong); }
+  .card-modal .pt-cat { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
+  .card-modal .pt-sep { color: color-mix(in srgb, var(--ink) 35%, transparent); }
+  .card-modal .besta-con { font-style: italic; margin: .3rem 0 .4rem; font-size: var(--fs-rotulo); }
+  .card-modal .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr));
+    gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
+  .card-modal .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
+  .card-modal .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-micro);
+    text-transform: uppercase; letter-spacing: .04em; }
+  .card-modal .besta-stats dd { margin: 0; font-size: var(--fs-aux); font-variant-numeric: tabular-nums; font-weight: 600; }
+  .card-modal .besta-elem { display: flex; flex-wrap: wrap; gap: .25rem; margin: 0 0 .5rem; }
+  .besta-elem .el { font-size: var(--fs-micro); padding: .06rem .45rem; border-radius: 999px; }
+  .besta-elem .el-fraco { background: color-mix(in srgb, #c1352c 24%, transparent); }
+  .besta-elem .el-forte { background: color-mix(in srgb, #3b6fb0 26%, transparent); }
+  .card-modal .besta-atrib { margin: 0 0 .55rem; }
+  .card-modal .atr-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .04em; color: var(--accent-strong); }
+  .card-modal .atr-grid { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: .2rem .4rem; margin-top: .3rem; }
+  .card-modal .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem;
+    padding: .1rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .card-modal .atr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card-modal .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
+  .card-modal .besta-tracos { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .28rem; }
+  .card-modal .tr-linha { display: flex; gap: .4rem; }
+  .card-modal .tr { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: .3rem;
+    padding: .1rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .card-modal .tr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .03em; color: var(--ink-soft); }
+  .card-modal .tr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
+  .card-modal .tr-mod { font-weight: 600; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .card-modal .tr-virt { display: flex; align-items: baseline; gap: .45rem; padding: .1rem .4rem; }
+  .card-modal .tr-vv { font-variant-numeric: tabular-nums; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .card-modal .besta-atk { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: var(--fs-rotulo);
+    display: flex; flex-direction: column; gap: .3rem; }
+  .card-modal .besta-atk li { display: flex; flex-direction: column; gap: .05rem; padding-left: .7rem;
+    border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+  .card-modal .atk-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
+  .card-modal .atk-rolls b { color: var(--accent-strong); }
+  .card-modal .atk-nota { font-size: var(--fs-micro); font-style: italic; }
+  .card-modal .cc-h { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong);
+    text-transform: uppercase; letter-spacing: .04em; margin: .6rem 0 .3rem; }
+  .card-modal .ib-hab, .card-modal .ib-pod { list-style: none; padding: 0; margin: 0 0 .4rem;
+    display: flex; flex-direction: column; gap: .35rem; font-size: var(--fs-rotulo); }
+  .card-modal .ib-hab li b { color: var(--accent-strong); }
+  .card-modal .ib-pod li { padding-left: .6rem; border-left: 2px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+  .card-modal .pw-alvo { color: var(--ink-soft); }
+  .card-modal .ib-ref { font-size: var(--fs-rotulo); margin: 0 0 .3rem; }
+  .card-modal .ib-ref b { color: var(--accent-strong); }
+  .card-modal .ib-ref a { color: var(--accent-texto); text-decoration: none; }
+  .card-modal .ib-ref a:hover { text-decoration: underline; }
+  .card-modal .ib-lore { margin: 0 0 .4rem; }
+  .card-modal .ib-lore h5 { margin: .35rem 0 .05rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
+    color: var(--ink); letter-spacing: .02em; }
+  .card-modal .ib-lore p { margin: 0; font-size: var(--fs-rotulo); }
+  .card-modal .ib-notas { font-size: var(--fs-rotulo); font-style: italic; color: var(--ink-soft); }
+</style>
+
+<script>
+  // Fechar o modal de criatura: mesma tecla e mesmo clique em todas as abas.
+  const modal = document.getElementById('card-modal');
+  const fechar = () => { if (modal) { modal.hidden = true; document.body.style.overflow = ''; } };
+  document.querySelectorAll('#card-modal [data-fechar]').forEach((el) => el.addEventListener('click', fechar));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal && !modal.hidden) fechar(); });
+</script>

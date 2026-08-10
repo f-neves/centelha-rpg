@@ -1,0 +1,323 @@
+---
+import Base from '../../layouts/Base.astro';
+import MesaCab from '../../components/MesaCab.astro';
+---
+<Base title="Grupo" largura="wide" descricao="Os personagens da mesa: fichas, passivos e aprovação.">
+  <MesaCab aba="grupo">
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Personagens</h2>
+        <div class="bloco-acoes">
+          <button class="btn primary mini" id="novo-pers">Novo personagem</button>
+        </div>
+      </div>
+      <div id="aviso-fichas"></div>
+      <div id="pers-grade" class="pers-grade"><p class="vazio">Carregando…</p></div>
+    </section>
+
+    <section class="bloco" id="sec-passivos" hidden>
+      <div class="bloco-cab">
+        <h2>Passivos do grupo <small>· para rolar atrás do escudo</small></h2>
+      </div>
+      <div class="tab-wrap" id="passivos"></div>
+      <p class="muted nota-mini">O número é a <strong>média</strong> do pool (dados × 3,5 + bônus): serve de valor passivo
+        quando você não quer parar a cena para pedir uma rolagem. Entre parênteses, o pool para rolar de verdade.</p>
+    </section>
+
+    <section class="bloco" id="sec-visao" hidden>
+      <div class="bloco-cab"><h2>Visão geral</h2></div>
+      <div class="tab-wrap" id="visao"></div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-cab"><h2>Membros da mesa</h2></div>
+      <ul id="membros" class="membros"></ul>
+    </section>
+
+    <section class="bloco" id="sec-xp" hidden>
+      <div class="bloco-cab"><h2>XP inicial das fichas</h2></div>
+      <div class="painel xp-caixa">
+        <input type="number" id="xp-inicial" min="0" step="10" />
+        <button class="btn mini" id="xp-salvar">Salvar</button>
+        <span class="salvo" id="xp-salvo"></span>
+        <p class="muted nota-mini">Orçamento com que os jogadores montam a ficha nesta mesa. Vale para quem ainda
+          não tem XP próprio; definido o XP de um personagem na página dele, o individual manda.</p>
+      </div>
+    </section>
+
+  </MesaCab>
+</Base>
+
+<style is:global>
+  .pers-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr)); gap: .8rem; }
+  .pc-card { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
+  .pc-topo { display: grid; grid-template-columns: auto 1fr; gap: .2rem .75rem; padding: .7rem .8rem; }
+  .pc-av { grid-row: span 3; }
+  .pc-av .av { --av-t: 4.6rem; }
+  .pc-nome-linha { display: flex; align-items: baseline; gap: .45rem; flex-wrap: wrap; }
+  .pc-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); color: var(--ink); text-decoration: none; }
+  .pc-nome:hover { color: var(--accent-texto); }
+  .pc-sub { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
+  .pc-nums { margin-top: .3rem; }
+  .pc-acoes { display: flex; gap: .3rem; flex-wrap: wrap; padding: 0 .8rem .7rem; }
+  .pc-detalhe { border-top: 1px solid var(--rule); }
+  .pc-detalhe > summary { cursor: pointer; padding: .4rem .8rem; font-family: 'Cinzel';
+    font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .05em; color: var(--accent-texto); }
+  .pc-detalhe[open] > summary { border-bottom: 1px solid var(--rule); }
+  .pc-corpo { padding: .7rem .8rem; display: flex; flex-direction: column; gap: .7rem; }
+  .pc-h { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .05em;
+    color: var(--accent-strong); margin: 0 0 .25rem; }
+  .atr-linha { display: grid; grid-template-columns: repeat(3, 1fr); gap: .2rem .4rem; }
+  .atr-cel { display: flex; justify-content: space-between; align-items: baseline; gap: .3rem;
+    padding: .08rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .atr-cel span:first-child { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .atr-cel b { font-variant-numeric: tabular-nums; color: var(--accent-strong); }
+  .hab-linha { display: flex; flex-wrap: wrap; gap: .2rem .55rem; font-size: var(--fs-micro); }
+  .hab-linha .h0 { opacity: .4; }
+  .hab-linha b { font-variant-numeric: tabular-nums; color: var(--accent-strong); }
+  .membros { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+  .membros li { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
+  .membro-nome { flex: 1; }
+  .membro-acoes { display: flex; gap: .35rem; flex-wrap: wrap; }
+  .xp-caixa { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .xp-caixa input { width: 7rem; }
+  .xp-caixa .nota-mini { flex-basis: 100%; margin: .2rem 0 0; }
+  .enviadas-aviso { color: var(--ink); background: color-mix(in srgb, var(--gold) 18%, transparent);
+    border: 1px solid var(--gold); border-radius: var(--r-md); padding: .5rem .8rem; margin: 0 0 .7rem; }
+  .nota-mini { font-size: var(--fs-micro); }
+</style>
+
+<script>
+  import { abrirMesa, u, esc, avatarHTML, urlsImagens, hpBarHTML, nomesDe, tierDe } from '../../lib/mesa-core';
+  import { resumoFicha } from '../../lib/mesa-ficha';
+  import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
+  import HAB_D from '../../data/habilidades.json';
+  import ATR_D from '../../data/atributos.json';
+
+  const el = (i: string) => document.getElementById(i)!;
+  const HABS = (HAB_D as any[]).map((h) => ({ id: h.id, nome: h.nome }));
+  const ATRS = (ATR_D as any[]).map((a) => ({ id: a.id, nome: a.nome }));
+  const SELO: Record<string, [string, string]> = {
+    rascunho: ['Rascunho', 's-rascunho'], enviado: ['Aguardando aprovação', 's-enviado'], aprovado: ['Aprovada', 's-aprovado'],
+  };
+
+  let SB: any, ID = '', MESTRE = false, EU = '';
+
+  async function main() {
+    const ctx = await abrirMesa('grupo');
+    if (!ctx) return;
+    SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id;
+
+    el('novo-pers').addEventListener('click', () => { location.href = u('personagem') + '?novo=1&mesa=' + ID; });
+
+    if (MESTRE) {
+      el('sec-xp').hidden = false;
+      const inp = el('xp-inicial') as HTMLInputElement;
+      inp.value = String(ctx.mesa.xp_inicial ?? 0);
+      el('xp-salvar').addEventListener('click', async () => {
+        const xp = Math.max(0, +inp.value || 0);
+        const { error } = await SB.from('mesas').update({ xp_inicial: xp }).eq('id', ID);
+        if (error) return uiErro(/xp_inicial/i.test(error.message)
+          ? 'A coluna xp_inicial ainda não existe. Rode supabase/migracao-8.sql.'
+          : 'Erro: ' + error.message);
+        el('xp-salvo').textContent = 'Salvo';
+        setTimeout(() => (el('xp-salvo').textContent = ''), 1400);
+      });
+    }
+
+    await Promise.all([pintarPersonagens(), pintarMembros(ctx.mesa.mestre_id)]);
+  }
+
+  async function pintarPersonagens() {
+    const box = el('pers-grade');
+    const { data, error } = await SB.from('personagens')
+      .select('id, nome, conceito, dono_id, status, imagem_path, ficha, revisao_nota')
+      .eq('mesa_id', ID).order('nome', { ascending: true });
+    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    if (!data?.length) {
+      box.innerHTML = `<p class="vazio">${MESTRE
+        ? 'Nenhum personagem nesta mesa. Os jogadores criam os seus, ou crie um você mesmo.'
+        : 'Você ainda não tem personagem nesta mesa. Clique em "Novo personagem".'}</p>`;
+      el('sec-passivos').hidden = true; el('sec-visao').hidden = true;
+      return;
+    }
+    const nomes = await nomesDe(SB, data.map((p: any) => p.dono_id));
+    const imgs = await urlsImagens(SB, data.map((p: any) => p.imagem_path), 'personagens');
+
+    const esperando = data.filter((p: any) => p.status === 'enviado').length;
+    el('aviso-fichas').innerHTML = (MESTRE && esperando)
+      ? `<p class="enviadas-aviso">${esperando} ficha(s) aguardando sua aprovação.</p>` : '';
+
+    const resumos: Record<string, any> = {};
+    box.innerHTML = data.map((p: any) => {
+      let R: any = null;
+      try { R = resumoFicha(p.ficha || {}); } catch {}
+      resumos[p.id] = R;
+      const [rot, cls] = SELO[p.status] || SELO.rascunho;
+      const meu = p.dono_id === EU;
+      const nums = R ? `<div class="pilha pc-nums">
+        <span class="pl"><span class="pl-l">Vida</span><span class="pl-v">${R.pv}</span></span>
+        <span class="pl"><span class="pl-l">Energia</span><span class="pl-v">${R.energia}</span></span>
+        <span class="pl"><span class="pl-l">Mana</span><span class="pl-v">${R.mana}</span></span>
+        <span class="pl"><span class="pl-l">Def</span><span class="pl-v">${R.defEsquiva}</span></span>
+        <span class="pl"><span class="pl-l">Bloq</span><span class="pl-v">${R.defBloqueio}</span></span>
+        <span class="pl"><span class="pl-l">Soc</span><span class="pl-v">${R.defSocial}</span></span>
+        <span class="pl"><span class="pl-l">Men</span><span class="pl-v">${R.defMental}</span></span>
+        <span class="pl"><span class="pl-l">Abs</span><span class="pl-v">${R.soak.impacto}/${R.soak.corte}/${R.soak.perfuracao}</span></span>
+        <span class="pl"><span class="pl-l">Ini</span><span class="pl-v">${esc(R.iniciativa)}</span></span>
+        <span class="pl"><span class="pl-l">Centelha</span><span class="pl-v">${R.centelha}</span></span>
+      </div>` : '<p class="vazio">Ficha ainda em branco.</p>';
+
+      const detalhe = R ? `<details class="pc-detalhe"><summary>Ver a ficha por dentro</summary>
+        <div class="pc-corpo">
+          <div><h4 class="pc-h">Atributos</h4><div class="atr-linha">
+            ${ATRS.map((a) => `<span class="atr-cel"><span>${esc(a.nome)}</span><b>${R.attrs[a.id] ?? 0}</b></span>`).join('')}
+          </div></div>
+          <div><h4 class="pc-h">Habilidades</h4><div class="hab-linha">
+            ${HABS.map((h) => { const v = R.skills[h.id] ?? 0; return `<span class="${v ? '' : 'h0'}">${esc(h.nome)} <b>${v}</b></span>`; }).join('')}
+          </div></div>
+          ${Object.entries(R.skills2 || {}).filter(([, v]) => (v as number) > 0).length ? `<div><h4 class="pc-h">Secundárias</h4><div class="hab-linha">
+            ${Object.entries(R.skills2).filter(([, v]) => (v as number) > 0).map(([k, v]) => `<span>${esc(k.replace(/-/g, ' '))} <b>${v}</b></span>`).join('')}
+          </div></div>` : ''}
+          <div><h4 class="pc-h">Combate</h4><div class="pilha">
+            <span class="pl"><span class="pl-l">Arma</span><span class="pl-v">${esc(R.arma || '—')}</span></span>
+            <span class="pl"><span class="pl-l">Acerto</span><span class="pl-v">${esc(R.ataque || '—')}</span></span>
+            <span class="pl"><span class="pl-l">Dano</span><span class="pl-v">${esc(R.dano || '—')}</span></span>
+            <span class="pl"><span class="pl-l">Resist. Perf</span><span class="pl-v">N${R.resistPerf}</span></span>
+            ${R.armaduras.length ? `<span class="pl"><span class="pl-l">Veste</span><span class="pl-v">${esc(R.armaduras.join(', '))}</span></span>` : ''}
+          </div></div>
+          <div><h4 class="pc-h">Virtudes, Vontade e Aparência</h4><div class="pilha">
+            ${Object.entries(R.virtudes || {}).map(([k, v]) => `<span class="pl"><span class="pl-l">${esc(k)}</span><span class="pl-v">${v}</span></span>`).join('')}
+            <span class="pl"><span class="pl-l">Vontade</span><span class="pl-v">${R.vontade}</span></span>
+            <span class="pl"><span class="pl-l">Aparência</span><span class="pl-v">${R.aparencia}</span></span>
+            <span class="pl"><span class="pl-l">Fôlego</span><span class="pl-v">${R.folego}</span></span>
+          </div></div>
+          ${R.artes.length ? `<div><h4 class="pc-h">Artes</h4><div class="hab-linha">${R.artes.map((a: any) => `<span>${esc(a.id.replace(/-/g, ' '))} <b>${a.nivel}</b></span>`).join('')}</div></div>` : ''}
+          ${R.tecnicas.length ? `<div><h4 class="pc-h">Técnicas (${R.tecnicas.length})</h4><div class="hab-linha">${R.tecnicas.map((t: string) => `<span>${esc(t.replace(/-/g, ' '))}</span>`).join('')}</div></div>` : ''}
+        </div></details>` : '';
+
+      const acoes: string[] = [`<a class="btn mini" href="${u('personagem')}?id=${p.id}">Abrir ficha ›</a>`];
+      if (MESTRE) {
+        if (p.status === 'enviado') {
+          acoes.push(`<button class="btn mini ok" data-ap="${p.id}">Aprovar</button>`);
+          acoes.push(`<button class="btn mini" data-dev="${p.id}">Devolver</button>`);
+        } else if (p.status === 'aprovado') {
+          acoes.push(`<button class="btn mini" data-reab="${p.id}">Reabrir para edição</button>`);
+        }
+        acoes.push(`<button class="btn mini perigo" data-rm="${p.id}" data-nome="${esc(p.nome || 'Personagem')}">Excluir</button>`);
+      }
+
+      return `<article class="pc-card">
+        <div class="pc-topo">
+          <span class="pc-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null)}</span>
+          <div class="pc-nome-linha">
+            <a class="pc-nome" href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a>
+            <span class="selo ${cls}">${rot}</span>
+          </div>
+          <span class="pc-sub">${esc(p.conceito || '')}${p.conceito ? ' · ' : ''}${meu ? 'seu personagem' : esc(nomes[p.dono_id] || 'jogador')}${R?.raca ? ' · ' + esc(R.raca) : ''}</span>
+          ${nums}
+          ${p.revisao_nota ? `<p class="pc-sub" style="grid-column:2">Devolvida: ${esc(p.revisao_nota)}</p>` : ''}
+        </div>
+        <div class="pc-acoes">${acoes.join('')}</div>
+        ${detalhe}
+      </article>`;
+    }).join('');
+
+    // ---- ações do mestre ----
+    box.querySelectorAll<HTMLElement>('[data-ap]').forEach((b) => b.addEventListener('click', async () => {
+      const { error } = await SB.rpc('aprovar_ficha', { p_id: b.dataset.ap });
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarPersonagens();
+    }));
+    box.querySelectorAll<HTMLElement>('[data-dev]').forEach((b) => b.addEventListener('click', async () => {
+      const nota = await uiPerguntar('O que precisa mudar?', '', { titulo: 'Devolver ficha', ok: 'Devolver' });
+      if (nota === null) return;
+      const { error } = await SB.rpc('devolver_ficha', { p_id: b.dataset.dev, p_nota: nota });
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarPersonagens();
+    }));
+    box.querySelectorAll<HTMLElement>('[data-reab]').forEach((b) => b.addEventListener('click', async () => {
+      if (!await uiConfirmar('Reabrir esta ficha para o jogador editar?', { titulo: 'Reabrir ficha', ok: 'Reabrir' })) return;
+      const { error } = await SB.rpc('reabrir_ficha', { p_id: b.dataset.reab });
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarPersonagens();
+    }));
+    box.querySelectorAll<HTMLElement>('[data-rm]').forEach((b) => b.addEventListener('click', async () => {
+      if (!await uiConfirmar(`Excluir ${b.dataset.nome}? A ficha do jogador some junto, e isto não pode ser desfeito.`,
+        { titulo: 'Excluir personagem', ok: 'Excluir', perigo: true })) return;
+      const { error } = await SB.from('personagens').delete().eq('id', b.dataset.rm);
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarPersonagens();
+    }));
+
+    if (MESTRE) { pintarPassivos(data, resumos, nomes); pintarVisao(data, resumos, nomes); }
+  }
+
+  function pintarPassivos(pcs: any[], resumos: Record<string, any>, nomes: Record<string, string>) {
+    const comFicha = pcs.filter((p) => resumos[p.id]);
+    if (!comFicha.length) return;
+    el('sec-passivos').hidden = false;
+    const cols = resumos[comFicha[0].id].passivos as any[];
+    el('passivos').innerHTML = `<table class="tab-mesa">
+      <thead><tr><th>Personagem</th>${cols.map((c) => `<th class="num">${esc(c.nome)}</th>`).join('')}</tr></thead>
+      <tbody>${comFicha.map((p) => {
+        const R = resumos[p.id];
+        return `<tr><td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a></td>
+          ${R.passivos.map((x: any) => `<td class="num" title="${esc(x.str)}">${x.media}<br><small class="muted">${esc(x.str)}</small></td>`).join('')}</tr>`;
+      }).join('')}</tbody></table>`;
+  }
+
+  function pintarVisao(pcs: any[], resumos: Record<string, any>, nomes: Record<string, string>) {
+    el('sec-visao').hidden = false;
+    el('visao').innerHTML = `<table class="tab-mesa">
+      <thead><tr><th>Personagem</th><th>Jogador</th><th class="num">Cent</th><th class="num">Vida</th>
+        <th class="num">Energia</th><th class="num">Def</th><th class="num">Soc</th><th class="num">Men</th>
+        <th class="num">Abs I/C/P</th><th>Iniciativa</th><th>Status</th></tr></thead>
+      <tbody>${pcs.map((p) => {
+        const R = resumos[p.id];
+        const [rot] = SELO[p.status] || SELO.rascunho;
+        if (!R) return `<tr><td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome)}</a></td><td class="muted">${esc(nomes[p.dono_id] || '')}</td><td colspan="8" class="muted">ficha em branco</td><td>${rot}</td></tr>`;
+        return `<tr>
+          <td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a></td>
+          <td class="muted">${esc(nomes[p.dono_id] || '')}</td>
+          <td class="num">${R.centelha}</td><td class="num">${R.pv}</td><td class="num">${R.energia}</td>
+          <td class="num">${R.defEsquiva}</td><td class="num">${R.defSocial}</td><td class="num">${R.defMental}</td>
+          <td class="num">${R.soak.impacto}/${R.soak.corte}/${R.soak.perfuracao}</td>
+          <td>${esc(R.iniciativa)}</td><td>${rot}</td></tr>`;
+      }).join('')}</tbody></table>`;
+  }
+
+  async function pintarMembros(mestreId: string) {
+    const ul = el('membros');
+    const { data, error } = await SB.from('mesa_membros').select('papel, user_id').eq('mesa_id', ID)
+      .order('entrou_em', { ascending: true });
+    if (error) { ul.innerHTML = `<li class="erro">${esc(error.message)}</li>`; return; }
+    const nomes = await nomesDe(SB, (data || []).map((m: any) => m.user_id));
+    ul.innerHTML = (data || []).map((m: any) => {
+      const dono = m.user_id === mestreId;
+      const mestre = m.papel === 'mestre' || dono;
+      const acoes = (MESTRE && !dono) ? `<span class="membro-acoes">
+        <button class="btn mini" data-act="papel" data-u="${m.user_id}" data-p="${m.papel}">${m.papel === 'mestre' ? 'Rebaixar' : 'Promover a mestre'}</button>
+        <button class="btn mini perigo" data-act="remover" data-u="${m.user_id}">Remover</button></span>` : '';
+      return `<li><span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span>
+        <span class="membro-nome">${esc(nomes[m.user_id] || '(sem nome)')}${m.user_id === EU ? ' (você)' : ''}</span>${acoes}</li>`;
+    }).join('');
+    if (!MESTRE) return;
+    ul.querySelectorAll<HTMLElement>('[data-act="papel"]').forEach((b) => b.addEventListener('click', async () => {
+      const novo = b.dataset.p === 'mestre' ? 'jogador' : 'mestre';
+      const { error } = await SB.from('mesa_membros').update({ papel: novo }).eq('mesa_id', ID).eq('user_id', b.dataset.u);
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarMembros(mestreId);
+    }));
+    ul.querySelectorAll<HTMLElement>('[data-act="remover"]').forEach((b) => b.addEventListener('click', async () => {
+      if (!await uiConfirmar('Remover este membro da mesa?', { titulo: 'Remover membro', ok: 'Remover', perigo: true })) return;
+      const { error } = await SB.from('mesa_membros').delete().eq('mesa_id', ID).eq('user_id', b.dataset.u);
+      if (error) return uiErro('Erro: ' + error.message);
+      await pintarMembros(mestreId);
+    }));
+  }
+
+  main();
+</script>

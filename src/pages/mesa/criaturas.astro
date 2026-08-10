@@ -1,0 +1,358 @@
+---
+import Base from '../../layouts/Base.astro';
+import MesaCab from '../../components/MesaCab.astro';
+---
+<Base title="Criaturas" largura="wide" descricao="O bestiário desta campanha.">
+  <MesaCab aba="criaturas">
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Bestiário da campanha</h2>
+        <div class="bloco-acoes">
+          <a class="btn mini" id="ir-bestiario" href="#" target="_blank" rel="noopener">Bestiário completo ↗</a>
+        </div>
+      </div>
+
+      <div id="busca-wrap" class="cri-busca" hidden>
+        <input type="search" id="cri-busca" placeholder="Buscar no bestiário para separar para esta campanha…" autocomplete="off" />
+        <ul id="cri-result" class="cri-result" hidden></ul>
+      </div>
+
+      <div class="cri-filtros" id="cri-filtros" hidden>
+        <input type="search" id="filtro-txt" placeholder="filtrar as separadas…" />
+        <select id="filtro-grupo"><option value="">todos os grupos</option></select>
+        <select id="filtro-ordem">
+          <option value="nome">ordenar por nome</option>
+          <option value="ameaca">por ameaça</option>
+          <option value="pv">por Vida</option>
+          <option value="grupo">por grupo</option>
+        </select>
+        <span class="espaco"></span>
+        <span class="muted" id="cri-conta"></span>
+      </div>
+
+      <div id="cri-grade" class="cri-grade"><p class="vazio">Carregando…</p></div>
+    </section>
+
+  </MesaCab>
+
+  <dialog id="cri-dlg" class="mesa-dlg dlg-larga">
+    <form method="dialog">
+      <h3 id="cri-dlg-t">Variante da casa</h3>
+      <p class="muted dlg-txt">O que você escrever aqui vale só nesta mesa. Em branco, o valor do bestiário continua valendo.</p>
+      <div class="grade2">
+        <label>Apelido <input type="text" id="cv-apelido" placeholder="Grald, o Quebra-Ossos" /></label>
+        <label>Grupo / pasta <input type="text" id="cv-grupo" placeholder="Emboscada da estrada" /></label>
+      </div>
+      <div class="grade3">
+        <label>Vida <input type="number" id="cv-pv" min="0" /></label>
+        <label>Defesa <input type="number" id="cv-def" /></label>
+        <label>Velocidade <input type="number" id="cv-vel" min="0" /></label>
+      </div>
+      <div class="grade2">
+        <label>Ataque <input type="text" id="cv-atq" placeholder="3d6 +2" /></label>
+        <label>Dano <input type="text" id="cv-dano" placeholder="2d6 +3 (C)" /></label>
+      </div>
+      <div class="grade3">
+        <label>Abs. Impacto <input type="number" id="cv-abs-i" min="0" /></label>
+        <label>Abs. Corte <input type="number" id="cv-abs-c" min="0" /></label>
+        <label>Abs. Perfuração <input type="number" id="cv-abs-p" min="0" /></label>
+      </div>
+      <label>Notas do mestre <textarea id="cv-notas" rows="3"></textarea></label>
+      <div class="dlg-btns">
+        <button type="button" class="btn mini esq" id="cv-limpar">Voltar ao original</button>
+        <button type="button" class="btn" id="cv-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="cv-salvar">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+</Base>
+
+<style is:global>
+  .cri-busca { position: relative; max-width: 34rem; margin: 0 0 .8rem; }
+  .cri-busca input { width: 100%; }
+  .cri-result { position: absolute; z-index: 40; left: 0; right: 0; margin: .2rem 0 0; padding: 0; list-style: none;
+    background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r-md);
+    max-height: 20rem; overflow: auto; box-shadow: 0 8px 26px rgba(0,0,0,.25); }
+  .cri-result li { display: flex; align-items: center; gap: .5rem; padding: .35rem .6rem; cursor: pointer; }
+  .cri-result li:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .cri-result li.vazio { cursor: default; }
+  .cri-result .av { --av-t: 2rem; }
+  .cri-result .r-n { flex: 1; font-size: var(--fs-rotulo); }
+  .cri-result .r-m { font-size: var(--fs-micro); color: var(--ink-soft); }
+
+  .cri-filtros { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; margin-bottom: .9rem; }
+  .cri-filtros .espaco { flex: 1; }
+  .cri-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: .8rem; }
+  .cri-secao { grid-column: 1 / -1; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .06em; color: var(--accent-strong); border-bottom: 1px solid var(--rule);
+    padding-bottom: .2rem; margin-top: .5rem; }
+  .cri-card { display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: var(--r-lg);
+    background: var(--panel); overflow: hidden; }
+  .cri-arte { position: relative; margin: 0; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%);
+    border-bottom: 1px solid var(--panel-border); overflow: hidden; cursor: pointer; }
+  .cri-arte img { width: 100%; height: 100%; object-fit: contain; padding: .35rem; mix-blend-mode: multiply;
+    transition: transform .25s ease; }
+  .cri-arte:hover img { transform: scale(1.04); }
+  .cri-arte .cap { font-size: 3.4rem; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f); font-family: 'Cinzel'; }
+  .cri-am { position: absolute; left: .4rem; bottom: .3rem; color: var(--gold); letter-spacing: .06em;
+    font-size: var(--fs-rotulo); text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+  .cri-var { position: absolute; right: .4rem; top: .4rem; font-family: 'Cinzel'; font-size: var(--fs-micro);
+    background: var(--accent-strong); color: var(--on-accent-strong, #fff); padding: .05rem .4rem; border-radius: 999px; }
+  .cri-corpo { display: flex; flex-direction: column; gap: .3rem; padding: .55rem .65rem .65rem; flex: 1; }
+  .cri-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); line-height: 1.15; }
+  .cri-en { font-size: var(--fs-micro); font-weight: 400; font-style: italic; color: var(--ink-soft); }
+  .cri-badges { display: flex; flex-wrap: wrap; gap: .2rem; }
+  .cri-b { font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .05rem .4rem; border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 16%, transparent); }
+  .cri-atk { font-size: var(--fs-micro); color: var(--ink-soft); }
+  .cri-atk b { color: var(--accent-strong); }
+  .cri-el { display: flex; flex-wrap: wrap; gap: .2rem; }
+  .cri-notas { font-family: 'EB Garamond'; font-size: var(--fs-micro); min-height: 2.4rem; }
+  .cri-notas-ro { font-size: var(--fs-micro); font-style: italic; color: var(--ink-soft); margin: 0; }
+  .cri-acoes { display: flex; gap: .25rem; flex-wrap: wrap; margin-top: auto; padding-top: .3rem; }
+  .dlg-txt { font-size: var(--fs-rotulo); margin: 0; }
+</style>
+
+<script>
+  import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo } from '../../lib/mesa-core';
+  import { MON, MON_LIST, cardCriaturaHTML, estrelas, resumoDe, iniDeMonstro } from '../../lib/mesa-bestiario';
+  import { uiConfirmar, uiErro, uiAviso } from '../../lib/ui-dialog';
+
+  const el = (i: string) => document.getElementById(i)!;
+  let SB: any, ID = '', MESTRE = false;
+  let LISTA: any[] = [];
+  let ENC: any = null;
+
+  async function main() {
+    const ctx = await abrirMesa('criaturas');
+    if (!ctx) return;
+    SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre;
+    (el('ir-bestiario') as HTMLAnchorElement).href = u('bestiario');
+
+    if (MESTRE) {
+      el('busca-wrap').hidden = false;
+      ligarBusca();
+      const { data } = await SB.from('encontros').select('id, nome').eq('mesa_id', ID).eq('ativo', true).limit(1);
+      ENC = (data || [])[0] || null;
+    }
+    ['filtro-txt', 'filtro-grupo', 'filtro-ordem'].forEach((i) =>
+      el(i).addEventListener('input', () => pintar()));
+    await carregar();
+  }
+
+  function ligarBusca() {
+    const inp = el('cri-busca') as HTMLInputElement;
+    const res = el('cri-result');
+    inp.addEventListener('input', () => {
+      const q = norm(inp.value.trim());
+      if (q.length < 2) { res.hidden = true; return; }
+      const hits = MON_LIST.filter((m) => m.busca.includes(q)).slice(0, 12);
+      res.innerHTML = hits.length ? hits.map((m) => `<li data-mon="${m.id}">
+        ${avatarHTML(m.nome, m.imagem ? u(m.imagem) : null, 'av-besta av-p')}
+        <span class="r-n">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted">(${esc(m.nomeIngles)})</span>` : ''}</span>
+        <span class="r-m">A${m.ameaca} · PV ${m.pv ?? '—'} · Def ${m.defesa ?? '—'}</span>
+      </li>`).join('') : '<li class="muted vazio">nada encontrado</li>';
+      res.hidden = false;
+      res.querySelectorAll<HTMLElement>('li[data-mon]').forEach((li) => li.addEventListener('click', async () => {
+        const { error } = await SB.from('mesa_criaturas').insert({ mesa_id: ID, monstro_id: li.dataset.mon });
+        if (error && !/duplicate|unique/i.test(error.message)) return uiErro('Erro: ' + error.message);
+        inp.value = ''; res.hidden = true;
+        await carregar();
+      }));
+    });
+    document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('.cri-busca')) res.hidden = true; });
+  }
+
+  async function carregar() {
+    const { data, error } = await SB.from('mesa_criaturas').select('*').eq('mesa_id', ID)
+      .order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    if (error) { el('cri-grade').innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    LISTA = data || [];
+    const grupos = [...new Set(LISTA.map((c: any) => c.grupo).filter(Boolean))].sort();
+    const sel = el('filtro-grupo') as HTMLSelectElement;
+    const antes = sel.value;
+    sel.innerHTML = '<option value="">todos os grupos</option>' + grupos.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('');
+    sel.value = antes;
+    el('cri-filtros').hidden = !LISTA.length;
+    pintar();
+  }
+
+  const nomeExibido = (c: any) => c.apelido || MON[c.monstro_id]?.nome || c.monstro_id;
+
+  function pintar() {
+    const box = el('cri-grade');
+    if (!LISTA.length) {
+      box.innerHTML = `<p class="vazio">${MESTRE
+        ? 'Nenhuma criatura separada ainda. Busque acima para montar o bestiário desta campanha.'
+        : 'O mestre ainda não separou criaturas.'}</p>`;
+      return;
+    }
+    const q = norm((el('filtro-txt') as HTMLInputElement).value.trim());
+    const gFiltro = (el('filtro-grupo') as HTMLSelectElement).value;
+    const ordem = (el('filtro-ordem') as HTMLSelectElement).value;
+
+    let itens = LISTA.filter((c: any) => {
+      const m = MON[c.monstro_id];
+      if (gFiltro && c.grupo !== gFiltro) return false;
+      if (!q) return true;
+      return norm(`${nomeExibido(c)} ${m?.nomeIngles || ''} ${m?.categoria || ''} ${c.notas || ''} ${c.grupo || ''}`).includes(q);
+    });
+    const valor = (c: any, k: string) => {
+      const m = MON[c.monstro_id] || {};
+      if (k === 'ameaca') return -(m.ameaca ?? 0);
+      if (k === 'pv') return -(c.dados?.pv ?? m.combate?.pv ?? 0);
+      if (k === 'grupo') return (c.grupo || 'zzz') + nomeExibido(c);
+      return norm(nomeExibido(c));
+    };
+    itens = itens.slice().sort((a, b) => { const x = valor(a, ordem), y = valor(b, ordem); return x < y ? -1 : x > y ? 1 : 0; });
+    el('cri-conta').textContent = `${itens.length} de ${LISTA.length}`;
+
+    let ultimoGrupo: string | null = null;
+    box.innerHTML = itens.map((c: any) => {
+      const m = MON[c.monstro_id];
+      let cabecalho = '';
+      if (ordem === 'grupo' && (c.grupo || '') !== ultimoGrupo) {
+        ultimoGrupo = c.grupo || '';
+        cabecalho = `<h3 class="cri-secao">${esc(ultimoGrupo || 'sem grupo')}</h3>`;
+      }
+      if (!m) return `${cabecalho}<div class="cri-card"><div class="cri-corpo"><span class="muted">Criatura fora do bestiário (${esc(c.monstro_id)})</span>
+        ${MESTRE ? `<div class="cri-acoes"><button class="btn mini perigo cri-rm" data-cr="${c.id}">Remover</button></div>` : ''}</div></div>`;
+
+      const r = resumoDe({ tipo: 'criatura', monstro_id: c.monstro_id, dados: c.dados || {} });
+      const cb = m.combate || {};
+      const pvv = c.dados?.pv ?? cb.pv;
+      const variante = !!(c.apelido || (c.dados && Object.keys(c.dados).length));
+      const arte = m.imagem
+        ? `<figure class="cri-arte" data-mon="${m.id}"><img src="${u(m.imagem)}" alt="${esc(m.nome)}" loading="lazy" />
+             <span class="cri-am" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>
+             ${variante ? '<span class="cri-var">variante</span>' : ''}</figure>`
+        : `<figure class="cri-arte" data-mon="${m.id}"><span class="cap">${esc((m.nome || '?').trim()[0])}</span>
+             <span class="cri-am">${estrelas(m.ameaca)}</span></figure>`;
+      const el2 = [...(m.fraquezas || []).map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`),
+                   ...(m.resistencias || []).map((x: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(x)}</span>`)].join('');
+      return `${cabecalho}<article class="cri-card" data-cr="${c.id}">
+        ${arte}
+        <div class="cri-corpo">
+          <div class="cri-nome">${esc(nomeExibido(c))}${c.apelido ? ` <span class="cri-en">(${esc(m.nome)})</span>` : (m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="cri-en">(${esc(m.nomeIngles)})</span>` : '')}</div>
+          <div class="cri-badges">
+            <span class="cri-b">A${m.ameaca}</span>
+            ${m.centelha ? `<span class="cri-b">Cent ${m.centelha}</span>` : ''}
+            <span class="cri-b">PV ${pvv ?? '—'}</span>
+            <span class="cri-b">Def ${r?.defesa ?? '—'}</span>
+            ${m.porte ? `<span class="cri-b">${esc(m.porte)}</span>` : ''}
+          </div>
+          ${r?.ataque ? `<div class="cri-atk">${esc(r.arma || 'Ataque')}: <b>${esc(r.ataque)}</b> · dano <b>${esc(r.dano)}</b>${r.velocidade != null ? ` · vel ${r.velocidade}` : ''}</div>` : ''}
+          <div class="cri-atk">Abs <b>${r?.soak.impacto ?? 0}/${r?.soak.corte ?? 0}/${r?.soak.perfuracao ?? 0}</b>${r?.resistPerf ? ` · gate N${r.resistPerf}` : ''}</div>
+          ${el2 ? `<div class="cri-el besta-elem">${el2}</div>` : ''}
+          ${MESTRE
+            ? `<textarea class="cri-notas" data-cr="${c.id}" rows="2" placeholder="Anotações do mestre">${esc(c.notas || '')}</textarea>`
+            : (c.notas ? `<p class="cri-notas-ro">${esc(c.notas)}</p>` : '')}
+          <div class="cri-acoes">
+            <button class="btn mini ver-card" data-mon="${m.id}">Card ›</button>
+            ${MESTRE ? `<button class="btn mini cri-edit" data-cr="${c.id}">✎ variante</button>` : ''}
+            ${(MESTRE && ENC) ? `<button class="btn mini cri-combate" data-cr="${c.id}">⚔ pro combate</button>` : ''}
+            ${MESTRE ? `<button class="btn-fant perigo cri-rm" data-cr="${c.id}" title="Remover da campanha">✕</button>` : ''}
+          </div>
+        </div>
+      </article>`;
+    }).join('');
+
+    box.querySelectorAll<HTMLElement>('.ver-card, .cri-arte').forEach((b) => b.addEventListener('click', () => {
+      const m = MON[b.dataset.mon!]; if (!m) return;
+      el('card-modal-body').innerHTML = cardCriaturaHTML(m);
+      el('card-modal').hidden = false; document.body.style.overflow = 'hidden';
+    }));
+    if (!MESTRE) return;
+
+    box.querySelectorAll<HTMLTextAreaElement>('.cri-notas').forEach((ta) => {
+      const salvar = debounce(async () => { await SB.from('mesa_criaturas').update({ notas: ta.value }).eq('id', ta.dataset.cr); }, 700);
+      ta.addEventListener('input', salvar);
+    });
+    box.querySelectorAll<HTMLElement>('.cri-rm').forEach((b) => b.addEventListener('click', async () => {
+      if (!await uiConfirmar('Remover esta criatura da campanha?', { titulo: 'Remover criatura', ok: 'Remover', perigo: true })) return;
+      await SB.from('mesa_criaturas').delete().eq('id', b.dataset.cr);
+      await carregar();
+    }));
+    box.querySelectorAll<HTMLElement>('.cri-edit').forEach((b) => b.addEventListener('click', () => abrirVariante(b.dataset.cr!)));
+    box.querySelectorAll<HTMLElement>('.cri-combate').forEach((b) => b.addEventListener('click', async () => {
+      const c = LISTA.find((x: any) => x.id === b.dataset.cr); if (!c || !ENC) return;
+      const m = MON[c.monstro_id];
+      const r = resumoDe({ tipo: 'criatura', monstro_id: c.monstro_id, dados: c.dados || {} });
+      const pvv = c.dados?.pv ?? m?.combate?.pv ?? null;
+      const linha: any = {
+        encontro_id: ENC.id, tipo: 'criatura', monstro_id: c.monstro_id, nome: nomeExibido(c),
+        pv_max: pvv, pv_atual: pvv, tick: 0, iniciativa: iniDeMonstro(m), grupo: 'inimigo',
+        condicoes: [], dados: c.dados && Object.keys(c.dados).length ? { ...c.dados, ...(r ? {} : {}) } : {},
+      };
+      let { error } = await SB.from('combatentes').insert(linha);
+      if (error) { delete linha.condicoes; delete linha.grupo; ({ error } = await SB.from('combatentes').insert(linha)); }
+      if (error) return uiErro('Erro: ' + error.message);
+      await uiAviso(`${nomeExibido(c)} entrou em "${ENC.nome}".`, { titulo: 'Mandado para o combate' });
+    }));
+  }
+
+  function abrirVariante(crId: string) {
+    const c = LISTA.find((x: any) => x.id === crId); if (!c) return;
+    const m = MON[c.monstro_id] || {};
+    const cb = m.combate || {};
+    const d = c.dados || {};
+    const dlg = el('cri-dlg') as HTMLDialogElement;
+    const g = (i: string) => el(i) as HTMLInputElement;
+    (el('cri-dlg-t') as HTMLElement).textContent = `Variante de ${m.nome || c.monstro_id}`;
+    g('cv-apelido').value = c.apelido || '';
+    g('cv-grupo').value = c.grupo || '';
+    g('cv-pv').value = d.pv != null ? String(d.pv) : '';
+    g('cv-pv').placeholder = String(cb.pv ?? '');
+    g('cv-def').value = d.defesa != null ? String(d.defesa) : '';
+    g('cv-def').placeholder = String(cb.defesa ?? '');
+    g('cv-vel').value = d.velocidade != null ? String(d.velocidade) : '';
+    g('cv-vel').placeholder = String(cb.ataques?.[0]?.speed ?? '');
+    g('cv-atq').value = d.ataque || '';
+    g('cv-atq').placeholder = cb.ataques?.[0]?.pool || '';
+    g('cv-dano').value = d.dano || '';
+    g('cv-dano').placeholder = cb.ataques?.[0]?.dano || '';
+    for (const [campo, chave] of [['cv-abs-i', 'impacto'], ['cv-abs-c', 'corte'], ['cv-abs-p', 'perfuracao']] as [string, string][]) {
+      g(campo).value = d.soak?.[chave] != null ? String(d.soak[chave]) : '';
+      g(campo).placeholder = String(cb.absorcao?.[chave] ?? 0);
+    }
+    (el('cv-notas') as HTMLTextAreaElement).value = c.notas || '';
+
+    el('cv-cancelar').onclick = () => dlg.close();
+    el('cv-limpar').onclick = async () => {
+      if (!await uiConfirmar('Descartar a variante e voltar ao bloco original do bestiário?', { titulo: 'Voltar ao original', ok: 'Voltar' })) return;
+      dlg.close();
+      await SB.from('mesa_criaturas').update({ apelido: '', dados: {}, grupo: '' }).eq('id', crId);
+      await carregar();
+    };
+    el('cv-salvar').onclick = async () => {
+      const nOuNulo = (i: string) => { const v = g(i).value.trim(); const n = parseInt(v, 10); return v === '' || isNaN(n) ? undefined : n; };
+      const sOuNada = (i: string) => { const v = g(i).value.trim(); return v || undefined; };
+      const soak: any = {};
+      for (const [campo, chave] of [['cv-abs-i', 'impacto'], ['cv-abs-c', 'corte'], ['cv-abs-p', 'perfuracao']] as [string, string][]) {
+        const v = nOuNulo(campo); if (v != null) soak[chave] = v;
+      }
+      const dados: any = {
+        pv: nOuNulo('cv-pv'), defesa: nOuNulo('cv-def'), velocidade: nOuNulo('cv-vel'),
+        ataque: sOuNada('cv-atq'), dano: sOuNada('cv-dano'),
+        ...(Object.keys(soak).length ? { soak: { ...(cb.absorcao || {}), ...soak } } : {}),
+      };
+      for (const k of Object.keys(dados)) if (dados[k] === undefined) delete dados[k];
+      dlg.close();
+      const { error } = await SB.from('mesa_criaturas').update({
+        apelido: g('cv-apelido').value.trim(), grupo: g('cv-grupo').value.trim(),
+        dados, notas: (el('cv-notas') as HTMLTextAreaElement).value,
+      }).eq('id', crId);
+      if (error) {
+        return uiErro(bancoAntigo(error)
+          ? 'As colunas de variante (apelido/dados/grupo) ainda não existem. Rode supabase/migracao-11.sql.'
+          : 'Erro: ' + error.message);
+      }
+      await carregar();
+    };
+    dlg.showModal();
+  }
+
+  main();
+</script>

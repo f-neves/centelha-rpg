@@ -1,0 +1,361 @@
+---
+import Base from '../../layouts/Base.astro';
+import MesaCab from '../../components/MesaCab.astro';
+---
+<Base title="Mapas" largura="wide" descricao="Mapas e cenas da campanha, com pinos.">
+  <MesaCab aba="mapas">
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Mapas &amp; cenas</h2>
+        <div class="bloco-acoes" id="mp-acoes"></div>
+      </div>
+      <p class="muted nota-mini" id="mp-dica" hidden>Um mapa só aparece para os jogadores depois que você marca
+        <strong>liberar</strong>. Os pinos têm liberação própria: dá para deixar o mapa à vista e o esconderijo escondido.</p>
+      <div id="mp-grade" class="mp-grade"><p class="vazio">Carregando…</p></div>
+    </section>
+
+  </MesaCab>
+
+  <div id="mp-visor" class="mp-visor" hidden role="dialog" aria-modal="true">
+    <div class="mp-visor-barra">
+      <strong id="mp-visor-nome" class="cinzel"></strong>
+      <span class="espaco"></span>
+      <span class="mp-zoom"><button class="btn mini" id="mp-menos">−</button><span id="mp-zoom-n">100%</span><button class="btn mini" id="mp-mais">+</button><button class="btn mini" id="mp-reset">ajustar</button></span>
+      <label class="mini-chk" id="mp-modo-wrap" hidden><input type="checkbox" id="mp-modo-pino" /> pôr pinos (clique no mapa)</label>
+      <button class="btn mini" id="mp-fechar">Fechar ✕</button>
+    </div>
+    <div class="mp-palco" id="mp-palco">
+      <div class="mp-mundo" id="mp-mundo">
+        <img id="mp-img" alt="" />
+        <div id="mp-pinos" class="mp-pinos"></div>
+      </div>
+    </div>
+    <div class="mp-legenda" id="mp-legenda"></div>
+  </div>
+
+  <dialog id="pino-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="pino-t">Pino</h3>
+      <div class="grade2">
+        <label>Rótulo <input type="text" id="pino-rot" placeholder="A" maxlength="3" /></label>
+        <label>Cor
+          <select id="pino-cor">
+            <option value="perigo">Vermelho</option>
+            <option value="alerta">Dourado</option>
+            <option value="bom">Verde</option>
+            <option value="arcano">Roxo</option>
+            <option value="neutro">Neutro</option>
+          </select>
+        </label>
+      </div>
+      <label>Nome <input type="text" id="pino-nome" placeholder="Portão dos Fundos" /></label>
+      <label>Nota <textarea id="pino-nota" rows="3"></textarea></label>
+      <label class="chk"><input type="checkbox" id="pino-vis" /> visível para os jogadores</label>
+      <div class="dlg-btns">
+        <button type="button" class="btn mini perigo esq" id="pino-excluir" hidden>Excluir</button>
+        <button type="button" class="btn" id="pino-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="pino-salvar">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+</Base>
+
+<style is:global>
+  .mp-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: .8rem; }
+  .mp-card { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); overflow: hidden;
+    display: flex; flex-direction: column; }
+  .mp-card.privado { border-style: dashed; }
+  .mp-mini { aspect-ratio: 16 / 10; background: var(--panel-2); cursor: pointer; overflow: hidden; }
+  .mp-mini img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+  .mp-mini:hover img { transform: scale(1.05); }
+  .mp-corpo { padding: .5rem .65rem .6rem; display: flex; flex-direction: column; gap: .3rem; flex: 1; }
+  .mp-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-rotulo); }
+  .mp-meta { font-size: var(--fs-micro); color: var(--ink-soft); }
+  .mp-acoes-card { display: flex; gap: .25rem; flex-wrap: wrap; margin-top: auto; }
+
+  .mp-visor { position: fixed; inset: 0; z-index: 96; display: flex; flex-direction: column;
+    background: color-mix(in srgb, #0c0d10 96%, transparent); }
+  .mp-visor[hidden] { display: none; }
+  .mp-visor-barra { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; padding: .5rem .8rem;
+    background: var(--panel); border-bottom: 1px solid var(--rule); }
+  .mp-visor-barra .espaco { flex: 1; }
+  .mp-zoom { display: inline-flex; align-items: center; gap: .3rem; font-size: var(--fs-micro);
+    font-variant-numeric: tabular-nums; }
+  .mp-palco { flex: 1; overflow: hidden; position: relative; cursor: grab; touch-action: none; }
+  .mp-palco.arrastando { cursor: grabbing; }
+  .mp-palco.pinando { cursor: crosshair; }
+  .mp-mundo { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
+  .mp-mundo img { display: block; max-width: none; user-select: none; -webkit-user-drag: none; }
+  .mp-pinos { position: absolute; inset: 0; }
+  .mp-pino { position: absolute; transform: translate(-50%, -50%); width: 1.7rem; height: 1.7rem;
+    border-radius: 50%; display: grid; place-items: center; font-family: 'Cinzel'; font-weight: 700;
+    font-size: .75rem; color: #fff; border: 2px solid rgba(255,255,255,.85); cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.5); }
+  .mp-pino.p-perigo { background: #c1352c; } .mp-pino.p-alerta { background: #b08d3a; }
+  .mp-pino.p-bom { background: #3f9e57; } .mp-pino.p-arcano { background: #8a5bbf; }
+  .mp-pino.p-neutro { background: #4a4a4a; }
+  .mp-pino.oculto { border-style: dashed; opacity: .8; }
+  .mp-legenda { max-height: 30vh; overflow-y: auto; background: var(--panel); border-top: 1px solid var(--rule);
+    padding: .5rem .8rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .mp-leg-item { display: flex; align-items: baseline; gap: .35rem; font-size: var(--fs-micro);
+    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .2rem .5rem; max-width: 22rem; }
+  .mp-leg-item .lg-r { font-family: 'Cinzel'; font-weight: 700; color: var(--accent-texto); }
+  .mp-leg-item .lg-n { font-weight: 700; }
+  .mp-leg-item .lg-t { color: var(--ink-soft); }
+  .mini-chk { display: inline-flex; align-items: center; gap: .3rem; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .mesa-dlg label.chk { flex-direction: row; align-items: center; gap: .4rem; text-transform: none; }
+  .nota-mini { font-size: var(--fs-micro); }
+</style>
+
+<script>
+  import { abrirMesa, esc, urlsImagens, novoId, nomesDe } from '../../lib/mesa-core';
+  import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
+
+  const el = (i: string) => document.getElementById(i)!;
+  let SB: any, ID = '', MESTRE = false, EU = '';
+  let MAPAS: any[] = [];
+  let URLS: Record<string, string> = {};
+  let MEMBROS: { id: string; nome: string }[] = [];
+
+  // ---- estado do visor ----
+  let ATUAL: any = null;
+  let zoom = 1, ox = 0, oy = 0;
+
+  async function main() {
+    const ctx = await abrirMesa('mapas');
+    if (!ctx) return;
+    SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id;
+    if (MESTRE) {
+      el('mp-dica').hidden = false;
+      el('mp-acoes').innerHTML = `<label class="btn primary mini">Enviar mapa<input type="file" id="mp-file" accept="image/*" hidden /></label>`;
+      (el('mp-file') as HTMLInputElement).addEventListener('change', (e) => subir((e.target as HTMLInputElement).files?.[0]));
+      const { data } = await SB.from('mesa_membros').select('user_id, papel').eq('mesa_id', ID).eq('papel', 'jogador');
+      const nomes = await nomesDe(SB, (data || []).map((m: any) => m.user_id));
+      MEMBROS = (data || []).map((m: any) => ({ id: m.user_id, nome: nomes[m.user_id] || '(jogador)' }));
+    }
+    ligarVisor();
+    await carregar();
+  }
+
+  async function subir(file?: File) {
+    if (!file) return;
+    const seguro = file.name.replace(/[^\w.\-]+/g, '_');
+    const path = `${ID}/mapas/${Date.now()}-${seguro}`;
+    const { error } = await SB.storage.from('mesa').upload(path, file, { contentType: file.type });
+    if (error) return uiErro('Erro ao enviar: ' + error.message);
+    const { error: e2 } = await SB.from('arquivos').insert({
+      mesa_id: ID, dono_id: EU, nome: file.name.replace(/\.[^.]+$/, ''), storage_path: path,
+      bucket: 'mesa', tipo: file.type, categoria: 'mapa', visivel_jogadores: false,
+    });
+    if (e2) return uiErro('Enviado, mas erro ao registrar: ' + e2.message);
+    await carregar();
+  }
+
+  async function carregar() {
+    const { data, error } = await SB.from('arquivos').select('*').eq('mesa_id', ID).eq('categoria', 'mapa')
+      .order('ordem', { ascending: true }).order('criado_em', { ascending: false });
+    if (error) { el('mp-grade').innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    MAPAS = data || [];
+    URLS = await urlsImagens(SB, MAPAS.map((m) => m.storage_path), 'mesa');
+    pintar();
+  }
+
+  const pinosDe = (m: any) => (m.meta && Array.isArray(m.meta.pinos)) ? m.meta.pinos : [];
+
+  function pintar() {
+    const box = el('mp-grade');
+    if (!MAPAS.length) {
+      box.innerHTML = `<p class="vazio">${MESTRE
+        ? 'Nenhum mapa ainda. Envie a planta da masmorra, o mapa da região, a arte da cena.'
+        : 'O mestre ainda não compartilhou mapas.'}</p>`;
+      return;
+    }
+    box.innerHTML = MAPAS.map((m) => {
+      const src = URLS[m.storage_path];
+      const pinos = pinosDe(m);
+      const alvo = m.visivel_para || [];
+      return `<article class="mp-card ${m.visivel_jogadores ? '' : 'privado'}" data-mp="${m.id}">
+        <div class="mp-mini" data-abrir="${m.id}">${src ? `<img src="${esc(src)}" alt="${esc(m.nome)}" loading="lazy" />` : ''}</div>
+        <div class="mp-corpo">
+          <div class="mp-nome">${esc(m.nome)}</div>
+          <div class="mp-meta">${pinos.length} pino(s)${m.visivel_jogadores ? ' · liberado' : (alvo.length ? ` · ${alvo.length} jogador(es)` : ' · só você')}</div>
+          ${MESTRE ? `<div class="mp-acoes-card">
+            <button class="btn mini mp-abrir" data-abrir="${m.id}">Abrir</button>
+            <button class="btn-fant mp-vis" data-mp="${m.id}">${m.visivel_jogadores ? '🙈 esconder' : '👁 liberar'}</button>
+            <button class="btn-fant mp-ren" data-mp="${m.id}" title="Renomear">✎</button>
+            <button class="btn-fant perigo mp-rm" data-mp="${m.id}" title="Excluir">✕</button>
+          </div>` : `<div class="mp-acoes-card"><button class="btn mini mp-abrir" data-abrir="${m.id}">Abrir</button></div>`}
+        </div>
+      </article>`;
+    }).join('');
+
+    box.querySelectorAll<HTMLElement>('[data-abrir]').forEach((b) => b.addEventListener('click', () => abrirVisor(b.dataset.abrir!)));
+    if (!MESTRE) return;
+    box.querySelectorAll<HTMLElement>('.mp-vis').forEach((b) => b.addEventListener('click', async () => {
+      const m = MAPAS.find((x) => x.id === b.dataset.mp); if (!m) return;
+      await SB.from('arquivos').update({ visivel_jogadores: !m.visivel_jogadores }).eq('id', m.id);
+      await carregar();
+    }));
+    box.querySelectorAll<HTMLElement>('.mp-ren').forEach((b) => b.addEventListener('click', async () => {
+      const m = MAPAS.find((x) => x.id === b.dataset.mp); if (!m) return;
+      const nome = await uiPerguntar('Novo nome do mapa', m.nome, { titulo: 'Renomear', ok: 'Salvar' });
+      if (nome === null) return;
+      await SB.from('arquivos').update({ nome: nome.trim() || m.nome }).eq('id', m.id);
+      await carregar();
+    }));
+    box.querySelectorAll<HTMLElement>('.mp-rm').forEach((b) => b.addEventListener('click', async () => {
+      const m = MAPAS.find((x) => x.id === b.dataset.mp); if (!m) return;
+      if (!await uiConfirmar(`Excluir o mapa "${m.nome}"? Some para todo mundo.`, { titulo: 'Excluir mapa', ok: 'Excluir', perigo: true })) return;
+      await SB.storage.from('mesa').remove([m.storage_path]);
+      await SB.from('arquivos').delete().eq('id', m.id);
+      await carregar();
+    }));
+  }
+
+  // ============================================================== o visor
+  function ligarVisor() {
+    const palco = el('mp-palco');
+    el('mp-fechar').addEventListener('click', fecharVisor);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !el('mp-visor').hidden) fecharVisor(); });
+    el('mp-mais').addEventListener('click', () => aplicarZoom(zoom * 1.25, palco.clientWidth / 2, palco.clientHeight / 2));
+    el('mp-menos').addEventListener('click', () => aplicarZoom(zoom / 1.25, palco.clientWidth / 2, palco.clientHeight / 2));
+    el('mp-reset').addEventListener('click', ajustar);
+
+    palco.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const r = palco.getBoundingClientRect();
+      aplicarZoom(zoom * (e.deltaY < 0 ? 1.12 : 1 / 1.12), e.clientX - r.left, e.clientY - r.top);
+    }, { passive: false });
+
+    let arrastando = false, lx = 0, ly = 0, moveu = false;
+    palco.addEventListener('pointerdown', (e) => {
+      if ((e.target as HTMLElement).closest('.mp-pino')) return;
+      arrastando = true; moveu = false; lx = e.clientX; ly = e.clientY;
+      palco.setPointerCapture(e.pointerId); palco.classList.add('arrastando');
+    });
+    palco.addEventListener('pointermove', (e) => {
+      if (!arrastando) return;
+      const dx = e.clientX - lx, dy = e.clientY - ly;
+      if (Math.abs(dx) + Math.abs(dy) > 3) moveu = true;
+      lx = e.clientX; ly = e.clientY; ox += dx; oy += dy; aplicar();
+    });
+    const soltar = (e: PointerEvent) => {
+      if (!arrastando) return;
+      arrastando = false; palco.classList.remove('arrastando');
+      // Clicar sem arrastar, no modo pino, crava um pino onde o dedo caiu.
+      if (!moveu && MESTRE && (el('mp-modo-pino') as HTMLInputElement).checked && ATUAL) {
+        const r = palco.getBoundingClientRect();
+        const img = el('mp-img') as HTMLImageElement;
+        const x = ((e.clientX - r.left - ox) / zoom) / img.naturalWidth * 100;
+        const y = ((e.clientY - r.top - oy) / zoom) / img.naturalHeight * 100;
+        if (x >= 0 && x <= 100 && y >= 0 && y <= 100) abrirPino(null, x, y);
+      }
+    };
+    palco.addEventListener('pointerup', soltar);
+    palco.addEventListener('pointercancel', () => { arrastando = false; palco.classList.remove('arrastando'); });
+    (el('mp-modo-pino') as HTMLInputElement).addEventListener('change', (e) => {
+      palco.classList.toggle('pinando', (e.target as HTMLInputElement).checked);
+    });
+  }
+
+  function aplicar() {
+    el('mp-mundo').style.transform = `translate(${ox}px, ${oy}px) scale(${zoom})`;
+    el('mp-zoom-n').textContent = Math.round(zoom * 100) + '%';
+  }
+  function aplicarZoom(novo: number, cx: number, cy: number) {
+    const z = Math.max(0.1, Math.min(8, novo));
+    // Mantém sob o cursor o mesmo ponto do mapa: sem isto, aproximar joga o
+    // alvo para fora da tela e o mestre perde o lugar.
+    ox = cx - (cx - ox) * (z / zoom); oy = cy - (cy - oy) * (z / zoom);
+    zoom = z; aplicar();
+  }
+  function ajustar() {
+    const palco = el('mp-palco'); const img = el('mp-img') as HTMLImageElement;
+    if (!img.naturalWidth) return;
+    zoom = Math.min(palco.clientWidth / img.naturalWidth, palco.clientHeight / img.naturalHeight) * 0.96;
+    ox = (palco.clientWidth - img.naturalWidth * zoom) / 2;
+    oy = (palco.clientHeight - img.naturalHeight * zoom) / 2;
+    aplicar();
+  }
+
+  function abrirVisor(mid: string) {
+    const m = MAPAS.find((x) => x.id === mid); if (!m) return;
+    ATUAL = m;
+    (el('mp-visor-nome') as HTMLElement).textContent = m.nome;
+    el('mp-modo-wrap').hidden = !MESTRE;
+    (el('mp-modo-pino') as HTMLInputElement).checked = false;
+    el('mp-palco').classList.remove('pinando');
+    const img = el('mp-img') as HTMLImageElement;
+    img.src = URLS[m.storage_path] || '';
+    img.onload = () => { ajustar(); pintarPinos(); };
+    el('mp-visor').hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (img.complete && img.naturalWidth) { ajustar(); pintarPinos(); }
+  }
+  function fecharVisor() { el('mp-visor').hidden = true; document.body.style.overflow = ''; ATUAL = null; }
+
+  function pintarPinos() {
+    if (!ATUAL) return;
+    const img = el('mp-img') as HTMLImageElement;
+    const pinos = pinosDe(ATUAL).filter((p: any) => MESTRE || p.visivel);
+    el('mp-pinos').innerHTML = pinos.map((p: any) => `<span class="mp-pino p-${esc(p.cor || 'perigo')}${p.visivel ? '' : ' oculto'}"
+      style="left:${(p.x / 100) * img.naturalWidth}px; top:${(p.y / 100) * img.naturalHeight}px"
+      data-pino="${esc(p.id)}" title="${esc(p.nome || '')}">${esc(p.rotulo || '•')}</span>`).join('');
+    el('mp-pinos').querySelectorAll<HTMLElement>('.mp-pino').forEach((sp) => sp.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const p = pinosDe(ATUAL).find((x: any) => x.id === sp.dataset.pino);
+      if (p && MESTRE) abrirPino(p, p.x, p.y);
+    }));
+    el('mp-legenda').innerHTML = pinos.length ? pinos.map((p: any) => `<span class="mp-leg-item">
+      <span class="lg-r">${esc(p.rotulo || '•')}</span>
+      <span class="lg-n">${esc(p.nome || '')}</span>
+      ${p.nota ? `<span class="lg-t">${esc(p.nota)}</span>` : ''}
+      ${MESTRE && !p.visivel ? '<span class="lg-t">·oculto</span>' : ''}
+    </span>`).join('') : '<span class="muted" style="font-size:var(--fs-micro)">sem pinos</span>';
+  }
+
+  async function gravarPinos(pinos: any[]) {
+    ATUAL.meta = { ...(ATUAL.meta || {}), pinos };
+    const { error } = await SB.from('arquivos').update({ meta: ATUAL.meta }).eq('id', ATUAL.id);
+    if (error) {
+      await uiErro(/meta/i.test(error.message)
+        ? 'A coluna "meta" ainda não existe em arquivos. Rode supabase/migracao-11.sql.'
+        : 'Erro: ' + error.message);
+      return;
+    }
+    pintarPinos();
+  }
+
+  function abrirPino(p: any, x: number, y: number) {
+    const dlg = el('pino-dlg') as HTMLDialogElement;
+    const g = (i: string) => el(i) as HTMLInputElement;
+    (el('pino-t') as HTMLElement).textContent = p ? 'Editar pino' : 'Novo pino';
+    const proximaLetra = String.fromCharCode(65 + (pinosDe(ATUAL).length % 26));
+    g('pino-rot').value = p?.rotulo ?? proximaLetra;
+    (el('pino-cor') as HTMLSelectElement).value = p?.cor || 'perigo';
+    g('pino-nome').value = p?.nome || '';
+    (el('pino-nota') as HTMLTextAreaElement).value = p?.nota || '';
+    g('pino-vis').checked = !!p?.visivel;
+    (el('pino-excluir') as HTMLElement).hidden = !p;
+    el('pino-cancelar').onclick = () => dlg.close();
+    el('pino-excluir').onclick = async () => {
+      dlg.close();
+      await gravarPinos(pinosDe(ATUAL).filter((z: any) => z.id !== p.id));
+    };
+    el('pino-salvar').onclick = async () => {
+      const novo = {
+        id: p?.id || novoId(), x: p ? p.x : x, y: p ? p.y : y,
+        rotulo: g('pino-rot').value.trim() || '•', cor: (el('pino-cor') as HTMLSelectElement).value,
+        nome: g('pino-nome').value.trim(), nota: (el('pino-nota') as HTMLTextAreaElement).value,
+        visivel: g('pino-vis').checked,
+      };
+      dlg.close();
+      const lista = pinosDe(ATUAL);
+      await gravarPinos(p ? lista.map((z: any) => (z.id === p.id ? novo : z)) : [...lista, novo]);
+    };
+    dlg.showModal();
+  }
+
+  main();
+</script>

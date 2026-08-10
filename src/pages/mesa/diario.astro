@@ -1,0 +1,225 @@
+---
+import Base from '../../layouts/Base.astro';
+import MesaCab from '../../components/MesaCab.astro';
+---
+<Base title="Diário" largura="wide" descricao="Sessões e anotações da campanha.">
+  <MesaCab aba="diario">
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Sessões</h2>
+        <div class="bloco-acoes" id="ss-acoes"></div>
+      </div>
+      <p class="muted nota-mini" id="ss-dica" hidden>O <strong>resumo</strong> é a versão que o grupo lê quando você
+        libera a sessão. As <strong>notas</strong> ficam sempre atrás do escudo, liberada ou não.</p>
+      <div id="ss-lista" class="ss-lista"><p class="vazio">Carregando…</p></div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Anotações avulsas</h2>
+        <div class="bloco-acoes" id="nt-acoes"></div>
+      </div>
+      <div id="nt-lista" class="nt-lista"></div>
+    </section>
+
+  </MesaCab>
+</Base>
+
+<style is:global>
+  .ss-lista, .nt-lista { display: flex; flex-direction: column; gap: .8rem; }
+  .ss-card { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
+  .ss-card.privada { border-style: dashed; }
+  .ss-cab { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; padding: .55rem .8rem;
+    border-bottom: 1px solid var(--rule); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .ss-n { font-family: 'Cinzel'; font-weight: 700; color: var(--accent-texto); font-variant-numeric: tabular-nums; }
+  .ss-tit { flex: 1; min-width: 10rem; font-family: 'Cinzel'; font-weight: 700; background: transparent;
+    border: none; border-bottom: 1px dotted transparent; color: var(--ink); font-size: var(--fs-aux); padding: .1rem 0; }
+  .ss-tit:hover, .ss-tit:focus { border-bottom-color: var(--rule); }
+  .ss-cab .ss-data { width: 9.5rem; }
+  .ss-cab .ss-xp { width: 5.5rem; }
+  .ss-corpo { padding: .65rem .8rem; display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+  @media (max-width: 780px) { .ss-corpo { grid-template-columns: 1fr; } }
+  .ss-campo { display: flex; flex-direction: column; gap: .2rem; }
+  .ss-campo h4 { margin: 0; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .05em; color: var(--accent-strong); }
+  .ss-campo textarea { min-height: 6rem; }
+  .ss-ganchos { grid-column: 1 / -1; }
+  .ss-pe { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; padding: .4rem .8rem .6rem; }
+  .ss-pe .espaco { flex: 1; }
+  .ss-ro { padding: .65rem .8rem; }
+  .ss-ro h3 { margin: 0 0 .2rem; font-family: 'Cinzel'; font-size: var(--fs-aux); }
+  .ss-ro p { margin: 0; white-space: pre-wrap; font-size: var(--fs-rotulo); }
+
+  .nt-card { border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: var(--r-lg);
+    background: var(--panel); padding: .6rem .75rem; }
+  .nt-card.privada { border-left-style: dashed; }
+  .nt-tit { width: 100%; font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); background: transparent;
+    border: none; border-bottom: 1px solid var(--rule); color: var(--ink); padding: .15rem 0; margin-bottom: .35rem; }
+  .nt-txt { min-height: 5rem; }
+  .nt-pe { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin-top: .35rem; }
+  .nt-pe .espaco { flex: 1; }
+  .chk-in { display: inline-flex; align-items: center; gap: .35rem; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .nota-mini { font-size: var(--fs-micro); }
+</style>
+
+<script>
+  import { abrirMesa, esc, autoSalvar, bancoAntigo, avisoMigracao } from '../../lib/mesa-core';
+  import { uiConfirmar, uiErro } from '../../lib/ui-dialog';
+
+  const el = (i: string) => document.getElementById(i)!;
+  let SB: any, ID = '', MESTRE = false;
+
+  async function main() {
+    const ctx = await abrirMesa('diario');
+    if (!ctx) return;
+    SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre;
+    if (MESTRE) {
+      el('ss-dica').hidden = false;
+      el('ss-acoes').innerHTML = '<button class="btn primary mini" id="ss-nova">+ nova sessão</button>';
+      el('nt-acoes').innerHTML = '<button class="btn primary mini" id="nt-nova">+ nova nota</button>';
+      el('ss-nova').addEventListener('click', novaSessao);
+      el('nt-nova').addEventListener('click', novaNota);
+    }
+    await Promise.all([carregarSessoes(), carregarNotas()]);
+  }
+
+  // ============================================================== sessões
+  async function novaSessao() {
+    const { data } = await SB.from('mesa_sessoes').select('numero').eq('mesa_id', ID)
+      .order('numero', { ascending: false }).limit(1);
+    const numero = ((data || [])[0]?.numero || 0) + 1;
+    const hoje = new Date().toISOString().slice(0, 10);
+    const { error } = await SB.from('mesa_sessoes').insert({ mesa_id: ID, numero, titulo: '', data: hoje });
+    if (error) return uiErro('Erro: ' + error.message);
+    await carregarSessoes();
+  }
+
+  async function carregarSessoes() {
+    const box = el('ss-lista');
+    const { data, error } = await SB.from('mesa_sessoes').select('*').eq('mesa_id', ID)
+      .order('numero', { ascending: false });
+    if (error) {
+      if (bancoAntigo(error)) return avisoMigracao(box, 'O diário de sessões');
+      box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return;
+    }
+    if (!data?.length) {
+      box.innerHTML = `<p class="vazio">${MESTRE
+        ? 'Nenhuma sessão registrada. Uma entrada por noite de jogo: o que aconteceu, o que ficou pendurado.'
+        : 'O mestre ainda não publicou nenhum resumo de sessão.'}</p>`;
+      return;
+    }
+
+    if (!MESTRE) {
+      box.innerHTML = data.map((s: any) => `<article class="ss-card"><div class="ss-ro">
+        <h3>Sessão ${s.numero}${s.titulo ? ' · ' + esc(s.titulo) : ''} ${s.data ? `<small class="muted">${esc(fmtData(s.data))}</small>` : ''}</h3>
+        <p>${esc(s.resumo || '(sem resumo)')}</p>
+        ${s.xp ? `<p class="muted" style="margin-top:.3rem">XP concedido: ${s.xp}</p>` : ''}
+      </div></article>`).join('');
+      return;
+    }
+
+    box.innerHTML = data.map((s: any) => `<article class="ss-card ${s.visivel_jogadores ? '' : 'privada'}" data-ss="${s.id}">
+      <div class="ss-cab">
+        <span class="ss-n">Sessão ${s.numero}</span>
+        <input class="ss-tit" data-k="titulo" value="${esc(s.titulo || '')}" placeholder="Título da sessão" />
+        <input type="date" class="ss-data" data-k="data" value="${esc(s.data || '')}" />
+        <input type="number" class="ss-xp" data-k="xp" value="${s.xp || 0}" min="0" step="5" title="XP concedido" />
+      </div>
+      <div class="ss-corpo">
+        <div class="ss-campo"><h4>Resumo <span class="muted">(o grupo lê)</span></h4>
+          <textarea data-k="resumo" rows="5" placeholder="O que aconteceu, do ponto de vista da mesa.">${esc(s.resumo || '')}</textarea></div>
+        <div class="ss-campo"><h4>Notas <span class="muted">(só você)</span></h4>
+          <textarea data-k="notas" rows="5" placeholder="O que você viu por trás: o que funcionou, o que reaproveitar.">${esc(s.notas || '')}</textarea></div>
+        <div class="ss-campo ss-ganchos"><h4>Para a próxima</h4>
+          <textarea data-k="ganchos" rows="2" placeholder="Ganchos, promessas feitas, o que está a caminho.">${esc(s.ganchos || '')}</textarea></div>
+      </div>
+      <div class="ss-pe">
+        <label class="chk-in"><input type="checkbox" class="ss-vis" ${s.visivel_jogadores ? 'checked' : ''} /> publicar o resumo</label>
+        <span class="salvo ss-salvo"></span>
+        <span class="espaco"></span>
+        <button class="btn-fant perigo ss-rm">Excluir sessão</button>
+      </div>
+    </article>`).join('');
+
+    box.querySelectorAll<HTMLElement>('.ss-card').forEach((card) => {
+      const sid = card.dataset.ss!;
+      const salvo = card.querySelector<HTMLElement>('.ss-salvo')!;
+      card.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-k]').forEach((campo) => {
+        autoSalvar(campo, async (v) => {
+          const k = campo.dataset.k!;
+          const valor = k === 'xp' ? (parseInt(v, 10) || 0) : (k === 'data' ? (v || null) : v);
+          await SB.from('mesa_sessoes').update({ [k]: valor }).eq('id', sid);
+        }, salvo);
+      });
+      card.querySelector<HTMLInputElement>('.ss-vis')!.addEventListener('change', async (e) => {
+        const on = (e.target as HTMLInputElement).checked;
+        await SB.from('mesa_sessoes').update({ visivel_jogadores: on }).eq('id', sid);
+        card.classList.toggle('privada', !on);
+      });
+      card.querySelector<HTMLElement>('.ss-rm')!.addEventListener('click', async () => {
+        if (!await uiConfirmar('Excluir esta sessão do diário?', { titulo: 'Excluir sessão', ok: 'Excluir', perigo: true })) return;
+        await SB.from('mesa_sessoes').delete().eq('id', sid);
+        await carregarSessoes();
+      });
+    });
+  }
+
+  const fmtData = (d: string) => { try { return new Date(d + 'T12:00:00').toLocaleDateString('pt-BR'); } catch { return d; } };
+
+  // ============================================================= anotações
+  async function novaNota() {
+    const { error } = await SB.from('mesa_notas').insert({ mesa_id: ID, titulo: 'Nova nota', corpo: '', visivel_jogadores: false });
+    if (error) return uiErro('Erro: ' + error.message);
+    await carregarNotas();
+  }
+
+  async function carregarNotas() {
+    const box = el('nt-lista');
+    const { data, error } = await SB.from('mesa_notas').select('*').eq('mesa_id', ID)
+      .order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    if (error) { box.innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
+    if (!data?.length) {
+      box.innerHTML = `<p class="vazio">${MESTRE
+        ? 'Sem notas. Aqui vale tudo que não é sessão: nomes de taberna, ideias soltas, o que perguntar ao jogador.'
+        : 'O mestre ainda não compartilhou notas.'}</p>`;
+      return;
+    }
+    if (!MESTRE) {
+      box.innerHTML = data.map((n: any) => `<div class="nt-card">
+        <h3 style="margin:0 0 .2rem;font-family:'Cinzel';font-size:var(--fs-aux)">${esc(n.titulo || '(sem título)')}</h3>
+        <p style="margin:0;white-space:pre-wrap;font-size:var(--fs-rotulo)">${esc(n.corpo || '')}</p></div>`).join('');
+      return;
+    }
+    box.innerHTML = data.map((n: any) => `<div class="nt-card ${n.visivel_jogadores ? '' : 'privada'}" data-nt="${n.id}">
+      <input class="nt-tit" data-k="titulo" value="${esc(n.titulo || '')}" placeholder="Título" />
+      <textarea class="nt-txt" data-k="corpo" rows="4" placeholder="Anotações…">${esc(n.corpo || '')}</textarea>
+      <div class="nt-pe">
+        <label class="chk-in"><input type="checkbox" class="nt-vis" ${n.visivel_jogadores ? 'checked' : ''} /> compartilhar com os jogadores</label>
+        <span class="salvo nt-salvo"></span>
+        <span class="espaco"></span>
+        <button class="btn-fant perigo nt-rm">Excluir</button>
+      </div>
+    </div>`).join('');
+
+    box.querySelectorAll<HTMLElement>('.nt-card').forEach((card) => {
+      const nid = card.dataset.nt!;
+      const salvo = card.querySelector<HTMLElement>('.nt-salvo')!;
+      card.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-k]').forEach((campo) => {
+        autoSalvar(campo, async (v) => { await SB.from('mesa_notas').update({ [campo.dataset.k!]: v }).eq('id', nid); }, salvo);
+      });
+      card.querySelector<HTMLInputElement>('.nt-vis')!.addEventListener('change', async (e) => {
+        const on = (e.target as HTMLInputElement).checked;
+        await SB.from('mesa_notas').update({ visivel_jogadores: on }).eq('id', nid);
+        card.classList.toggle('privada', !on);
+      });
+      card.querySelector<HTMLElement>('.nt-rm')!.addEventListener('click', async () => {
+        if (!await uiConfirmar('Excluir esta nota?', { titulo: 'Excluir nota', ok: 'Excluir', perigo: true })) return;
+        await SB.from('mesa_notas').delete().eq('id', nid);
+        await carregarNotas();
+      });
+    });
+  }
+
+  main();
+</script>

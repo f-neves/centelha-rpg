@@ -1,0 +1,301 @@
+---
+import Base from '../../layouts/Base.astro';
+import MesaCab from '../../components/MesaCab.astro';
+---
+<Base title="Compêndio" largura="wide" descricao="NPCs, lugares, facções, itens e ganchos da campanha.">
+  <MesaCab aba="compendio">
+
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Compêndio da campanha</h2>
+        <div class="bloco-acoes" id="cx-acoes"></div>
+      </div>
+
+      <div class="cx-barra">
+        <div class="cx-tipos" id="cx-tipos"></div>
+        <span class="espaco"></span>
+        <input type="search" id="cx-busca" placeholder="buscar por nome, resumo ou etiqueta…" />
+      </div>
+
+      <div id="cx-lista" class="cx-lista"><p class="vazio">Carregando…</p></div>
+    </section>
+
+  </MesaCab>
+
+  <dialog id="cx-dlg" class="mesa-dlg dlg-larga">
+    <form method="dialog">
+      <h3 id="cx-dlg-t">Entrada</h3>
+      <div class="grade2">
+        <label>Tipo
+          <select id="cx-tipo">
+            <option value="npc">NPC</option>
+            <option value="lugar">Lugar</option>
+            <option value="faccao">Facção</option>
+            <option value="item">Item</option>
+            <option value="gancho">Gancho</option>
+            <option value="lore">Lore</option>
+          </select>
+        </label>
+        <label>Nome <input type="text" id="cx-nome" /></label>
+      </div>
+      <label>Resumo <span class="muted lbl-dica">(a linha que você lê de relance)</span>
+        <input type="text" id="cx-resumo" placeholder="Ferreira mal-humorada, deve favores ao Sindicato" />
+      </label>
+      <label>Texto <textarea id="cx-corpo" rows="6" placeholder="Tudo o que você quiser guardar."></textarea></label>
+      <div class="grade2">
+        <label>Etiquetas <span class="muted lbl-dica">(separadas por vírgula)</span>
+          <input type="text" id="cx-tags" placeholder="porto, aliado, dívida" /></label>
+        <label>Imagem (URL) <input type="text" id="cx-imagem" placeholder="https://…" /></label>
+      </div>
+      <label class="arq-lbl">Ou envie um arquivo
+        <input type="file" id="cx-arquivo" accept="image/*" />
+      </label>
+      <label class="chk"><input type="checkbox" id="cx-vis" /> visível para os jogadores</label>
+
+      <details id="cx-bloco" class="cx-stats">
+        <summary>Bloco de combate <span class="muted">(só para NPC que pode entrar numa briga)</span></summary>
+        <div class="grade3">
+          <label>Vida <input type="number" id="cx-pv" min="0" /></label>
+          <label>Defesa física <input type="number" id="cx-def" /></label>
+          <label>Iniciativa (bônus) <input type="number" id="cx-ini" /></label>
+        </div>
+        <div class="grade2">
+          <label>Ataque <input type="text" id="cx-atq" placeholder="3d6 +2" /></label>
+          <label>Dano <input type="text" id="cx-dano" placeholder="2d6 +3 (C)" /></label>
+        </div>
+        <div class="grade3">
+          <label>Abs. Impacto <input type="number" id="cx-abs-i" min="0" /></label>
+          <label>Abs. Corte <input type="number" id="cx-abs-c" min="0" /></label>
+          <label>Abs. Perfuração <input type="number" id="cx-abs-p" min="0" /></label>
+        </div>
+        <div class="grade3">
+          <label>Defesa social <input type="number" id="cx-defs" /></label>
+          <label>Defesa mental <input type="number" id="cx-defm" /></label>
+          <label>Resist. Perf. (N) <input type="number" id="cx-rperf" min="0" /></label>
+        </div>
+      </details>
+
+      <div class="dlg-btns">
+        <button type="button" class="btn mini perigo esq" id="cx-excluir" hidden>Excluir</button>
+        <button type="button" class="btn" id="cx-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="cx-salvar">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+</Base>
+
+<style is:global>
+  .cx-barra { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+  .cx-barra .espaco { flex: 1; }
+  .cx-barra input[type=search] { min-width: 14rem; }
+  .cx-tipos { display: flex; gap: .2rem; flex-wrap: wrap; }
+  .cx-tipo-btn { font-family: 'Cinzel'; font-size: var(--fs-micro); padding: .2rem .6rem; border-radius: 999px;
+    border: 1px solid var(--rule); background: transparent; color: var(--ink-soft); cursor: pointer; }
+  .cx-tipo-btn:hover { color: var(--ink); border-color: var(--accent); }
+  .cx-tipo-btn.on { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--ink);
+    border-color: var(--accent); font-weight: 700; }
+  .cx-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: .7rem; }
+  .cx-card { display: grid; grid-template-columns: auto 1fr; gap: .15rem .7rem; align-items: start;
+    border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: var(--r-lg);
+    background: var(--panel); padding: .6rem .75rem; }
+  .cx-card.t-npc { border-left-color: var(--accent); }
+  .cx-card.t-lugar { border-left-color: #4b7a3f; }
+  .cx-card.t-faccao { border-left-color: #8a5bbf; }
+  .cx-card.t-item { border-left-color: var(--gold); }
+  .cx-card.t-gancho { border-left-color: #d5661a; }
+  .cx-card.t-lore { border-left-color: var(--ink-soft); }
+  .cx-card.privada { border-style: dashed; }
+  .cx-av { grid-row: span 4; }
+  .cx-av .av { --av-t: 3.4rem; }
+  .cx-topo { display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; }
+  .cx-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); }
+  .cx-tipo-sel { font-size: var(--fs-micro); color: var(--ink-soft); text-transform: uppercase; letter-spacing: .05em; }
+  .cx-resumo { font-size: var(--fs-rotulo); color: var(--ink-soft); }
+  .cx-tags { display: flex; flex-wrap: wrap; gap: .2rem; margin-top: .2rem; }
+  .cx-tag { font-size: var(--fs-micro); padding: .03rem .4rem; border-radius: 999px;
+    background: color-mix(in srgb, var(--ink) 9%, transparent); }
+  .cx-corpo-txt { grid-column: 2; font-size: var(--fs-rotulo); white-space: pre-wrap; margin: .35rem 0 0; }
+  .cx-acoes-card { grid-column: 2; display: flex; gap: .25rem; flex-wrap: wrap; margin-top: .4rem; }
+  .cx-mais { background: none; border: none; color: var(--accent-texto); font-size: var(--fs-micro);
+    cursor: pointer; padding: 0; text-align: left; }
+  .cx-stats summary { cursor: pointer; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-texto); }
+  .cx-stats > *:not(summary) { margin-top: .45rem; }
+  .lbl-dica { text-transform: none; letter-spacing: normal; font-weight: 400; }
+  .arq-lbl input[type=file] { font-size: var(--fs-micro); }
+  .mesa-dlg label.chk { flex-direction: row; align-items: center; gap: .4rem; text-transform: none; }
+</style>
+
+<script>
+  import { abrirMesa, u, esc, norm, avatarHTML, subirImagemPublica, bancoAntigo, avisoMigracao } from '../../lib/mesa-core';
+  import { uiConfirmar, uiErro } from '../../lib/ui-dialog';
+
+  const el = (i: string) => document.getElementById(i)!;
+  const TIPOS: [string, string][] = [
+    ['', 'Tudo'], ['npc', 'NPCs'], ['lugar', 'Lugares'], ['faccao', 'Facções'],
+    ['item', 'Itens'], ['gancho', 'Ganchos'], ['lore', 'Lore'],
+  ];
+  const TIPO_NOME: Record<string, string> = { npc: 'NPC', lugar: 'Lugar', faccao: 'Facção', item: 'Item', gancho: 'Gancho', lore: 'Lore' };
+
+  let SB: any, ID = '', MESTRE = false, EU = '';
+  let ENTRADAS: any[] = [];
+  let FILTRO = '';
+  const ABERTOS = new Set<string>();
+
+  async function main() {
+    const ctx = await abrirMesa('compendio');
+    if (!ctx) return;
+    SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id;
+
+    el('cx-tipos').innerHTML = TIPOS.map(([k, n]) =>
+      `<button type="button" class="cx-tipo-btn${k === FILTRO ? ' on' : ''}" data-t="${k}">${n}</button>`).join('');
+    el('cx-tipos').querySelectorAll<HTMLElement>('.cx-tipo-btn').forEach((b) => b.addEventListener('click', () => {
+      FILTRO = b.dataset.t!;
+      el('cx-tipos').querySelectorAll('.cx-tipo-btn').forEach((x) => x.classList.toggle('on', (x as HTMLElement).dataset.t === FILTRO));
+      pintar();
+    }));
+    el('cx-busca').addEventListener('input', () => pintar());
+
+    if (MESTRE) {
+      el('cx-acoes').innerHTML = '<button class="btn primary mini" id="cx-novo">+ nova entrada</button>';
+      el('cx-novo').addEventListener('click', () => abrirEdicao(null));
+    }
+    await carregar();
+  }
+
+  async function carregar() {
+    const { data, error } = await SB.from('mesa_codex').select('*').eq('mesa_id', ID)
+      .order('tipo', { ascending: true }).order('ordem', { ascending: true }).order('nome', { ascending: true });
+    if (error) {
+      if (bancoAntigo(error)) return avisoMigracao(el('cx-lista'), 'O compêndio');
+      el('cx-lista').innerHTML = `<p class="erro">${esc(error.message)}</p>`; return;
+    }
+    ENTRADAS = data || [];
+    pintar();
+  }
+
+  function pintar() {
+    const box = el('cx-lista');
+    const q = norm((el('cx-busca') as HTMLInputElement).value.trim());
+    const itens = ENTRADAS.filter((e) => (!FILTRO || e.tipo === FILTRO)
+      && (!q || norm(`${e.nome} ${e.resumo} ${(e.tags || []).join(' ')} ${e.corpo}`).includes(q)));
+    if (!itens.length) {
+      box.innerHTML = `<p class="vazio">${MESTRE
+        ? 'Nada aqui ainda. Uma entrada por NPC, lugar, facção, item, gancho ou pedaço de lore.'
+        : 'O mestre ainda não liberou nada do compêndio.'}</p>`;
+      return;
+    }
+    box.innerHTML = itens.map((e) => {
+      const aberto = ABERTOS.has(e.id);
+      const corpo = e.corpo || '';
+      const curto = corpo.length > 260 && !aberto ? corpo.slice(0, 260) + '…' : corpo;
+      const d = e.dados || {};
+      const temBloco = e.tipo === 'npc' && (d.pv || d.defesa != null || d.ataque);
+      return `<article class="cx-card t-${esc(e.tipo)}${e.visivel_jogadores ? '' : ' privada'}" data-cx="${e.id}">
+        <span class="cx-av">${avatarHTML(e.nome, e.imagem || null)}</span>
+        <div class="cx-topo">
+          <span class="cx-nome">${esc(e.nome || '(sem nome)')}</span>
+          <span class="cx-tipo-sel">${esc(TIPO_NOME[e.tipo] || e.tipo)}${e.visivel_jogadores ? '' : ' · só você'}</span>
+        </div>
+        ${e.resumo ? `<div class="cx-resumo">${esc(e.resumo)}</div>` : ''}
+        ${(e.tags || []).length ? `<div class="cx-tags">${e.tags.map((t: string) => `<span class="cx-tag">${esc(t)}</span>`).join('')}</div>` : ''}
+        ${temBloco ? `<div class="pilha" style="grid-column:2;margin-top:.25rem">
+          ${d.pv ? `<span class="pl"><span class="pl-l">Vida</span><span class="pl-v">${d.pv}</span></span>` : ''}
+          ${d.defesa != null ? `<span class="pl"><span class="pl-l">Def</span><span class="pl-v">${d.defesa}</span></span>` : ''}
+          ${d.ataque ? `<span class="pl"><span class="pl-l">Atq</span><span class="pl-v">${esc(d.ataque)}</span></span>` : ''}
+          ${d.dano ? `<span class="pl"><span class="pl-l">Dano</span><span class="pl-v">${esc(d.dano)}</span></span>` : ''}
+          ${d.soak ? `<span class="pl"><span class="pl-l">Abs</span><span class="pl-v">${d.soak.impacto || 0}/${d.soak.corte || 0}/${d.soak.perfuracao || 0}</span></span>` : ''}
+        </div>` : ''}
+        ${curto ? `<p class="cx-corpo-txt">${esc(curto)}</p>` : ''}
+        ${corpo.length > 260 ? `<button type="button" class="cx-mais" data-mais="${e.id}" style="grid-column:2">${aberto ? '‹ menos' : 'ler tudo ›'}</button>` : ''}
+        ${MESTRE ? `<div class="cx-acoes-card">
+          <button class="btn mini cx-edit" data-cx="${e.id}">✎ editar</button>
+          <button class="btn-fant cx-vis" data-cx="${e.id}">${e.visivel_jogadores ? '🙈 esconder' : '👁 liberar'}</button>
+        </div>` : ''}
+      </article>`;
+    }).join('');
+
+    box.querySelectorAll<HTMLElement>('[data-mais]').forEach((b) => b.addEventListener('click', () => {
+      const k = b.dataset.mais!;
+      ABERTOS.has(k) ? ABERTOS.delete(k) : ABERTOS.add(k);
+      pintar();
+    }));
+    if (!MESTRE) return;
+    box.querySelectorAll<HTMLElement>('.cx-edit').forEach((b) => b.addEventListener('click', () =>
+      abrirEdicao(ENTRADAS.find((e) => e.id === b.dataset.cx))));
+    box.querySelectorAll<HTMLElement>('.cx-vis').forEach((b) => b.addEventListener('click', async () => {
+      const e = ENTRADAS.find((x) => x.id === b.dataset.cx); if (!e) return;
+      const { error } = await SB.from('mesa_codex').update({ visivel_jogadores: !e.visivel_jogadores }).eq('id', e.id);
+      if (error) return uiErro('Erro: ' + error.message);
+      await carregar();
+    }));
+  }
+
+  function abrirEdicao(e: any) {
+    const dlg = el('cx-dlg') as HTMLDialogElement;
+    const g = (i: string) => el(i) as HTMLInputElement;
+    const d = e?.dados || {};
+    (el('cx-dlg-t') as HTMLElement).textContent = e ? `Editar ${e.nome || 'entrada'}` : 'Nova entrada';
+    (el('cx-tipo') as HTMLSelectElement).value = e?.tipo || 'npc';
+    g('cx-nome').value = e?.nome || '';
+    g('cx-resumo').value = e?.resumo || '';
+    (el('cx-corpo') as HTMLTextAreaElement).value = e?.corpo || '';
+    g('cx-tags').value = (e?.tags || []).join(', ');
+    g('cx-imagem').value = e?.imagem || '';
+    g('cx-vis').checked = !!e?.visivel_jogadores;
+    (el('cx-arquivo') as HTMLInputElement).value = '';
+    g('cx-pv').value = d.pv != null ? String(d.pv) : '';
+    g('cx-def').value = d.defesa != null ? String(d.defesa) : '';
+    g('cx-ini').value = d.iniciativa != null ? String(d.iniciativa) : '';
+    g('cx-atq').value = d.ataque || '';
+    g('cx-dano').value = d.dano || '';
+    g('cx-abs-i').value = d.soak?.impacto != null ? String(d.soak.impacto) : '';
+    g('cx-abs-c').value = d.soak?.corte != null ? String(d.soak.corte) : '';
+    g('cx-abs-p').value = d.soak?.perfuracao != null ? String(d.soak.perfuracao) : '';
+    g('cx-defs').value = d.defesaSocial != null ? String(d.defesaSocial) : '';
+    g('cx-defm').value = d.defesaMental != null ? String(d.defesaMental) : '';
+    g('cx-rperf').value = d.resistPerf != null ? String(d.resistPerf) : '';
+    (el('cx-excluir') as HTMLElement).hidden = !e;
+    const sincronizarBloco = () => { (el('cx-bloco') as HTMLElement).hidden = (el('cx-tipo') as HTMLSelectElement).value !== 'npc'; };
+    (el('cx-tipo') as HTMLSelectElement).onchange = sincronizarBloco; sincronizarBloco();
+
+    (el('cx-arquivo') as HTMLInputElement).onchange = async (ev) => {
+      const f = (ev.target as HTMLInputElement).files?.[0]; if (!f) return;
+      const url = await subirImagemPublica(SB, EU, f, 'codex');
+      if (!url) return uiErro('Não consegui enviar a imagem. Confira se o bucket "itens" existe (migração 10).');
+      g('cx-imagem').value = url;
+    };
+    el('cx-cancelar').onclick = () => dlg.close();
+    el('cx-excluir').onclick = async () => {
+      if (!await uiConfirmar(`Excluir "${e.nome}" do compêndio?`, { titulo: 'Excluir entrada', ok: 'Excluir', perigo: true })) return;
+      dlg.close();
+      await SB.from('mesa_codex').delete().eq('id', e.id);
+      await carregar();
+    };
+    el('cx-salvar').onclick = async () => {
+      const n = (i: string) => { const v = g(i).value.trim(); const x = parseInt(v, 10); return v === '' || isNaN(x) ? null : x; };
+      const tipo = (el('cx-tipo') as HTMLSelectElement).value;
+      const dados = tipo === 'npc' ? {
+        pv: n('cx-pv'), defesa: n('cx-def'), iniciativa: n('cx-ini'),
+        ataque: g('cx-atq').value.trim(), dano: g('cx-dano').value.trim(),
+        defesaSocial: n('cx-defs'), defesaMental: n('cx-defm'), resistPerf: n('cx-rperf') ?? 0,
+        soak: { impacto: n('cx-abs-i') ?? 0, corte: n('cx-abs-c') ?? 0, perfuracao: n('cx-abs-p') ?? 0 },
+      } : (e?.dados || {});
+      const linha: any = {
+        mesa_id: ID, tipo, nome: g('cx-nome').value.trim() || 'Sem nome',
+        resumo: g('cx-resumo').value.trim(), corpo: (el('cx-corpo') as HTMLTextAreaElement).value,
+        tags: g('cx-tags').value.split(',').map((t) => t.trim()).filter(Boolean),
+        imagem: g('cx-imagem').value.trim() || null,
+        dados, visivel_jogadores: g('cx-vis').checked,
+      };
+      dlg.close();
+      const { error } = e
+        ? await SB.from('mesa_codex').update({ ...linha, atualizado_em: new Date().toISOString() }).eq('id', e.id)
+        : await SB.from('mesa_codex').insert(linha);
+      if (error) return uiErro('Erro: ' + error.message);
+      await carregar();
+    };
+    dlg.showModal();
+  }
+
+  main();
+</script>

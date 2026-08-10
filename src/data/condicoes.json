@@ -1,0 +1,284 @@
+{
+  "nota": "Catálogo de condições do rastreador de combate e do Escudo do Mestre. Os números seguem o vocabulário do sistema: `acao` é penalidade/bônus FLAT nas jogadas (mesma moeda dos Limiares de Ferimento), `dados` é em d6 (moeda do Desgaste, cap. Resistir), `defesa` é FLAT no valor passivo da Defesa, `ataque` é FLAT na jogada de acerto de quem está com a condição. `defesaCaC` e `defesaDist` substituem `defesa` quando o golpe vem de perto ou de longe. Origem dos valores: regras.json → combateTatico, ferimentos, sangramento; o resto é convenção de mesa, editável pelo mestre na hora.",
+  "grupos": [
+    { "id": "posicao", "nome": "Posição & Postura" },
+    { "id": "sentidos", "nome": "Sentidos & Ocultação" },
+    { "id": "corpo", "nome": "Corpo & Saúde" },
+    { "id": "mente", "nome": "Mente & Social" },
+    { "id": "arcano", "nome": "Arcano & Ambiente" },
+    { "id": "bom", "nome": "Vantagens" }
+  ],
+  "lista": [
+    {
+      "id": "caido", "nome": "Caído", "icone": "⤓", "grupo": "posicao", "cor": "alerta",
+      "defesaCaC": -2, "defesaDist": 2,
+      "nota": "Prono. De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). Levantar consome movimento.",
+      "fonte": "combateTatico · alvo prono"
+    },
+    {
+      "id": "imobilizado", "nome": "Imobilizado", "icone": "⛓", "grupo": "posicao", "cor": "perigo",
+      "defesa": -4, "acao": -2,
+      "nota": "Agarrado, preso ou amarrado. Praticamente sem esquiva ativa.",
+      "fonte": "combateTatico · surpreso, cego ou imobilizado"
+    },
+    {
+      "id": "agarrado", "nome": "Agarrado", "icone": "🤝", "grupo": "posicao", "cor": "alerta",
+      "defesa": -2,
+      "nota": "Em luta corpo a corpo travada. Só ações de força, arma curta ou escapar."
+    },
+    {
+      "id": "flanqueado", "nome": "Flanqueado", "icone": "↹", "grupo": "posicao", "cor": "alerta",
+      "defesa": -2,
+      "nota": "Atacado pelo lado ou pelas costas: não pode usar a melhor defesa contra você.",
+      "fonte": "combateTatico · flanco ou pelas costas"
+    },
+    {
+      "id": "cobertura-parcial", "nome": "Cobertura parcial", "icone": "▤", "grupo": "posicao", "cor": "bom",
+      "defesa": 2,
+      "nota": "Parapeito, batente, aliado à frente.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "cobertura-pesada", "nome": "Cobertura pesada", "icone": "▩", "grupo": "posicao", "cor": "bom",
+      "defesa": 4,
+      "nota": "Só cabeça ou braço expostos, seteira. Cobertura total não pode ser alvejada.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "defesa-total", "nome": "Defesa total", "icone": "🛡", "grupo": "posicao", "cor": "bom",
+      "defesa": 4,
+      "nota": "Abre mão do ataque na rodada para se proteger.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "postura-agressiva", "nome": "Postura agressiva", "icone": "⚔", "grupo": "posicao", "cor": "alerta",
+      "defesa": -2, "ataque": 2,
+      "nota": "+2 no seu ataque, −2 na sua Defesa, até a próxima ação.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "terreno-alto", "nome": "Terreno alto", "icone": "⛰", "grupo": "posicao", "cor": "bom",
+      "ataque": 2,
+      "nota": "Posição superior: +2 ao acerto contra quem está abaixo.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "mirando", "nome": "Mirando", "icone": "◎", "grupo": "posicao", "cor": "bom",
+      "ataque": 2,
+      "nota": "Gastou uma ação preparando o golpe. Some no primeiro ataque.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "erratico", "nome": "Errático", "icone": "〰", "grupo": "posicao", "cor": "bom",
+      "defesaDist": 2,
+      "nota": "Movimento imprevisível: +2 na Defesa contra ataques à distância.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "guarda-quebrada", "nome": "Guarda quebrada", "icone": "✖", "grupo": "posicao", "cor": "perigo",
+      "defesa": -4,
+      "nota": "Fez dois ataques na rodada (empunhadura dupla) ou perdeu a guarda: −4 até o próximo turno.",
+      "fonte": "combate · empunhadura dupla"
+    },
+
+    {
+      "id": "escondido", "nome": "Escondido", "icone": "◐", "grupo": "sentidos", "cor": "bom",
+      "nota": "Não pode ser alvejado enquanto não for encontrado (Percepção + Prontidão contra a Furtividade). O primeiro golpe pega o alvo Surpreso.",
+      "marcaOculto": true
+    },
+    {
+      "id": "invisivel", "nome": "Invisível", "icone": "👁", "grupo": "sentidos", "cor": "arcano",
+      "defesa": 4,
+      "nota": "Quem ataca precisa adivinhar a posição. Ataques contra o invisível também sofrem como se o atacante estivesse Cego."
+    },
+    {
+      "id": "surpreso", "nome": "Surpreso", "icone": "!", "grupo": "sentidos", "cor": "perigo",
+      "defesa": -4,
+      "nota": "Ainda não agiu na cena. Praticamente sem esquiva ativa.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "cego", "nome": "Cego", "icone": "◍", "grupo": "sentidos", "cor": "perigo",
+      "defesa": -4, "acao": -3,
+      "nota": "Não enxerga o golpe chegando nem mira o próprio.",
+      "fonte": "combateTatico"
+    },
+    {
+      "id": "ofuscado", "nome": "Ofuscado", "icone": "☀", "grupo": "sentidos", "cor": "alerta",
+      "acao": -2,
+      "nota": "Clarão, fumaça, poeira ou contraluz. Sem rolagem enquanto durar (Clarão Cegante)."
+    },
+    {
+      "id": "surdo", "nome": "Surdo", "icone": "🔇", "grupo": "sentidos", "cor": "alerta",
+      "nota": "Perde ordens faladas, encantamentos verbais e a aproximação pelas costas."
+    },
+    {
+      "id": "escuridao", "nome": "Na escuridão", "icone": "🌑", "grupo": "sentidos", "cor": "alerta",
+      "acao": -2,
+      "nota": "Vulto e silhueta apenas. Quem tem visão adaptada ignora."
+    },
+
+    {
+      "id": "sangrando", "nome": "Sangrando", "icone": "🩸", "grupo": "corpo", "cor": "perigo",
+      "porRodada": 1,
+      "nota": "No início da rodada perde 1 de Letal (ignora Absorção). Estabilizar: Cura contra Dif 10, ou Vigor + Convicção em si mesmo.",
+      "fonte": "regras.json · sangramento"
+    },
+    {
+      "id": "envenenado", "nome": "Envenenado", "icone": "☠", "grupo": "corpo", "cor": "perigo",
+      "dados": -1, "porRodada": 1,
+      "nota": "Desgaste de veneno: −1d6 por degrau e dano por rodada até resistir (cap. Resistir)."
+    },
+    {
+      "id": "doente", "nome": "Doente", "icone": "🤒", "grupo": "corpo", "cor": "alerta",
+      "dados": -1,
+      "nota": "Doença instalada: um degrau de Desgaste enquanto não for tratada."
+    },
+    {
+      "id": "desgaste-1", "nome": "Desgaste 1", "icone": "①", "grupo": "corpo", "cor": "alerta",
+      "dados": -1, "nota": "Um degrau: −1d6 em todas as jogadas.", "fonte": "acoes-resistir"
+    },
+    {
+      "id": "desgaste-2", "nome": "Desgaste 2", "icone": "②", "grupo": "corpo", "cor": "alerta",
+      "dados": -2, "nota": "Dois degraus: −2d6 em todas as jogadas.", "fonte": "acoes-resistir"
+    },
+    {
+      "id": "desgaste-3", "nome": "Desgaste 3", "icone": "③", "grupo": "corpo", "cor": "perigo",
+      "dados": -3, "nota": "Três degraus: −3d6 em todas as jogadas.", "fonte": "acoes-resistir"
+    },
+    {
+      "id": "desgaste-4", "nome": "Desgaste 4", "icone": "④", "grupo": "corpo", "cor": "perigo",
+      "dados": -4, "nota": "Teto do Desgaste: −4d6 em todas as jogadas.", "fonte": "acoes-resistir"
+    },
+    {
+      "id": "sem-folego", "nome": "Sem fôlego", "icone": "💨", "grupo": "corpo", "cor": "alerta",
+      "dados": -1,
+      "nota": "Abaixo de 25% do Fôlego: −1d6 em toda ação física.",
+      "fonte": "folego"
+    },
+    {
+      "id": "sufocando", "nome": "Sufocando", "icone": "🫁", "grupo": "corpo", "cor": "perigo",
+      "porRodada": 2,
+      "nota": "Afogamento, fumaça, garganta presa: dano crescente por rodada, ignora Absorção."
+    },
+    {
+      "id": "em-chamas", "nome": "Em chamas", "icone": "🔥", "grupo": "corpo", "cor": "perigo",
+      "porRodada": 3,
+      "nota": "Queima por rodada até apagar (ação inteira, rolar no chão ou água)."
+    },
+    {
+      "id": "inconsciente", "nome": "Inconsciente", "icone": "💤", "grupo": "corpo", "cor": "morte",
+      "defesa": -8, "foraDeCombate": true,
+      "nota": "Não age, não defende. Golpe deliberado em quem está inconsciente acerta automaticamente."
+    },
+    {
+      "id": "morrendo", "nome": "Morrendo", "icone": "✝", "grupo": "corpo", "cor": "morte",
+      "foraDeCombate": true, "porRodada": 1,
+      "nota": "Zerou com dano Letal em maioria. Precisa ser estabilizado (Cura, Dif 10) antes que o Letal acumulado alcance o PV máximo."
+    },
+    {
+      "id": "estabilizado", "nome": "Estabilizado", "icone": "✚", "grupo": "corpo", "cor": "bom",
+      "foraDeCombate": true,
+      "nota": "Fora de perigo imediato: para de perder Vida, mas continua fora da luta."
+    },
+    {
+      "id": "morto", "nome": "Morto", "icone": "☠", "grupo": "corpo", "cor": "morte",
+      "foraDeCombate": true, "nota": "Fim."
+    },
+
+    {
+      "id": "amedrontado", "nome": "Amedrontado", "icone": "😨", "grupo": "mente", "cor": "alerta",
+      "acao": -2,
+      "nota": "Não avança em direção à fonte do medo. −2 em tudo enquanto ela estiver à vista."
+    },
+    {
+      "id": "em-panico", "nome": "Em pânico", "icone": "😱", "grupo": "mente", "cor": "perigo",
+      "acao": -4,
+      "nota": "Foge pelo caminho mais curto. Só age para se afastar."
+    },
+    {
+      "id": "dominado", "nome": "Dominado", "icone": "🕸", "grupo": "mente", "cor": "arcano",
+      "nota": "Age pela vontade de outro. Quem controla declara as ações; um novo teste de Defesa Mental a cada cena ou dano sofrido."
+    },
+    {
+      "id": "confuso", "nome": "Confuso", "icone": "🌀", "grupo": "mente", "cor": "alerta",
+      "acao": -2,
+      "nota": "Alvo e intenção erráticos. O mestre decide a direção da ação em metade das rodadas."
+    },
+    {
+      "id": "enfurecido", "nome": "Enfurecido", "icone": "💢", "grupo": "mente", "cor": "alerta",
+      "ataque": 2, "defesa": -2,
+      "nota": "Ataca o que estiver mais perto. Não recua, não defende, não negocia."
+    },
+    {
+      "id": "abalado", "nome": "Abalado", "icone": "💔", "grupo": "mente", "cor": "alerta",
+      "acao": -1,
+      "nota": "Levou um golpe social ou mental que abriu brecha: −1 até se recompor."
+    },
+    {
+      "id": "concentrando", "nome": "Concentrando", "icone": "◈", "grupo": "arcano", "cor": "arcano",
+      "dados": -1,
+      "nota": "Feitiço guardado ou efeito sustentado: Raciocínio conta um nível abaixo e −1d6 em rolagens que o usem.",
+      "fonte": "artes · guardar um feitiço"
+    },
+
+    {
+      "id": "protegido", "nome": "Protegido", "icone": "✧", "grupo": "arcano", "cor": "arcano",
+      "soak": 3,
+      "nota": "Barreira arcana: soma Absorção em todos os modos enquanto durar."
+    },
+    {
+      "id": "congelado", "nome": "Congelado", "icone": "❄", "grupo": "arcano", "cor": "arcano",
+      "acao": -2, "defesa": -2,
+      "nota": "Membros rígidos, movimento pela metade."
+    },
+    {
+      "id": "eletrizado", "nome": "Eletrizado", "icone": "⚡", "grupo": "arcano", "cor": "arcano",
+      "acao": -2,
+      "nota": "Espasmo muscular: falha em ações de precisão e solta o que segura."
+    },
+    {
+      "id": "voando", "nome": "Voando", "icone": "🕊", "grupo": "arcano", "cor": "bom",
+      "nota": "Fora do alcance de quem luta no chão. Corpo a corpo só de quem também voa ou tem alcance."
+    },
+    {
+      "id": "acelerado", "nome": "Acelerado", "icone": "»", "grupo": "arcano", "cor": "bom",
+      "velocidade": -2,
+      "nota": "Suas ações custam 2 Ticks a menos (mínimo 1)."
+    },
+    {
+      "id": "retardado", "nome": "Retardado", "icone": "«", "grupo": "arcano", "cor": "perigo",
+      "velocidade": 2,
+      "nota": "Suas ações custam 2 Ticks a mais."
+    },
+    {
+      "id": "terreno-dificil", "nome": "Terreno difícil", "icone": "⌇", "grupo": "arcano", "cor": "alerta",
+      "velocidade": 1,
+      "nota": "Lama, escombros, gelo, corrente. Movimento pela metade e ações custam 1 Tick a mais."
+    },
+
+    {
+      "id": "inspirado", "nome": "Inspirado", "icone": "★", "grupo": "bom", "cor": "bom",
+      "dados": 1,
+      "nota": "Canção, discurso ou bênção: +1d6 na próxima jogada relevante."
+    },
+    {
+      "id": "abencoado", "nome": "Abençoado", "icone": "✦", "grupo": "bom", "cor": "arcano",
+      "acao": 2,
+      "nota": "Favor declarado: +2 enquanto a bênção durar."
+    },
+    {
+      "id": "amaldicoado", "nome": "Amaldiçoado", "icone": "☾", "grupo": "arcano", "cor": "perigo",
+      "acao": -2,
+      "nota": "Azar dirigido: −2 em tudo até a maldição ser quebrada."
+    },
+    {
+      "id": "preparado", "nome": "Ação preparada", "icone": "⏱", "grupo": "bom", "cor": "bom",
+      "nota": "Declarou um gatilho e espera. Quando o gatilho acontecer, age fora da ordem de Ticks."
+    },
+    {
+      "id": "marcado", "nome": "Marcado", "icone": "⊗", "grupo": "bom", "cor": "alerta",
+      "nota": "Alvo escolhido por alguém. Quem marcou tem vantagem declarada contra ele."
+    }
+  ]
+}
