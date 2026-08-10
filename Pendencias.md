@@ -9,8 +9,9 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 40 itens abertos · 22 [DECIDIR] · 14 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · Lore 6 · Proezas 6 · Trilhas 4 · Ações & Sistema 4 · Bestiário 5 · Social 3
+**Placar:** 51 itens abertos · 28 [DECIDIR] · 19 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · **Bestiário 10** · Ações & Sistema 6 · Lore 6 · Proezas 6 · Trilhas 4 ·
+Arremesso 4 · Social 3
 
 ---
 
@@ -54,9 +55,11 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
 - [x] ~~**B1 · Preencher `fraquezas` e `resistencias` nas 308 criaturas.**~~ **FEITO em
   2026-08-10.** Os campos não cabiam no `inimigos.json`, que é gerado, então viraram o **sétimo
   satélite** do bestiário: `src/data/elementos-bestiario.json`, semeado por
-  `scripts/gen-elementos.mjs` e embutido no `monsters.json` pelo `gen-monsters.mjs`. Duas camadas
-  dentro do script, a regra por categoria e tag (67 criaturas) e as exceções à mão (30), que
-  vencem a regra; o JSON de saída é descartável. **97 das 308 têm alguma coisa (31%)**, e a
+  `scripts/gen-elementos.mjs` e embutido no `monsters.json` pelo `gen-monsters.mjs`. **Três
+  camadas** dentro do script, cada uma vencendo a de cima: a regra por categoria e tag (64
+  criaturas), o **material** de que a criatura é feita (22) e as exceções à mão (14); o JSON de
+  saída é descartável. **100 das 308 têm alguma coisa (32%)**, 101 contando a criatura de
+  `inimigos-custom.json`, que traz as suas inline e não passa por este script. E a
   previsão do `Arcano_revisao.md` bateu na mosca: são **47 com fraqueza a luz e sagrado**, os 32
   Corruptores mais os 15 Mortos-vivos, os 15% do livro que o Luz mira. O vocabulário ficou fechado
   em 15 palavras e o **validador falha o build** em qualquer palavra fora dele ou em fraqueza e
@@ -82,6 +85,43 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   Defesa hoje; o porte já mexe em PV e Absorção, falta a esquiva.
 - [ ] **B3 · [FAZER] Rebalancear os brutos grandes.** O pool de ataque deles está acima da régua da
   Centelha (registrado em `Proezas_revisao.md` e `REVISAR.md`).
+
+**O editor de criaturas** entrou em 2026-08-10 (`BestiaEditor.astro` + `src/lib/bestia-editor.ts`):
+botão no bloco de cada criatura e um "Nova criatura", os dois só para o ADM, abrindo um modal de
+cinco abas que cobre o esquema inteiro e recalcula os derivados ao vivo. Ele nasceu com três
+limitações conhecidas, que são as três de baixo.
+
+- [ ] **B7 · [FAZER] O ataque da criatura do livro não volta para o formulário.** O `monsters.json`
+  guarda o ataque **já calculado** (`pool: "2d6 +1"`, `dano: "1d6 +2 corte"`, `speed`) e não a
+  origem dele (atributo, perícia, dados, mão, penetração), então não há como repopular a linha sem
+  adivinhar. O modal mostra o ataque do livro em leitura, marcado como tal, em vez de deixar a
+  lista vazia fingindo que a criatura não ataca. **O conserto é no gerador**: o `gen-monsters.mjs`
+  preservar os campos de origem ao lado do calculado. Criatura nova não sofre disso, porque ela
+  nasce com os campos de origem.
+- [ ] **B8 · [FAZER] O modal não edita poderes, técnicas nem artes.** As três listas existem no
+  `monsters.json` e o formulário não as toca, então criatura cadastrada por ele sai sem nenhuma das
+  três. Encosta em **A9** (como uma criatura carrega Efeito Especial no stat block): não vale
+  desenhar a UI das artes antes de A9 dizer o formato.
+- [ ] **B9 · [DECIDIR] Onde a criatura editada mora.** O site é estático: o modal guarda a edição no
+  `localStorage` do navegador e oferece o bloco pronto para colar no `inimigos-custom.json`, que é
+  o único caminho que entra no build. Duas pontas soltas nisso. A primeira: **editar criatura do
+  livro não tem para onde ir**, porque o `inimigos.json` é gerado, e a correção teria de voltar à
+  bancada `conversao-monstros.html`. A segunda: o portão de ADM é `ehAdmin()`, **portão de
+  interface e não de segurança**, o que basta enquanto o dado é estático e deixa de bastar no dia
+  em que a edição escrever no Supabase, como as fichas já escrevem.
+- [ ] **B10 · [DECIDIR] `inimigos.json` é gerado, mas fica commitado, e sai de sincronia calado.**
+  Aconteceu: o commit `fa50192` (16/07, "ajustes de Centelha e remapeamentos") mexeu na bancada e
+  o `inimigos.json` só foi regerado em 10/08, quase um mês depois. Ao regerar, **148 criaturas
+  mudaram de Centelha, todas em −1** (toda criatura de 3 para cima), levando junto Defesa, Defesa
+  Social e Defesa Mental, e isso entrou no repositório dentro de um commit sobre fraquezas. Os
+  números novos são os que a bancada manda; os antigos é que estavam velhos. Falta **confirmar que
+  a régua nova é a desejada** e, decidido isso, fazer o validador comparar o gerado com a bancada e
+  falhar o build na divergência, que é o mesmo remédio que já existe para órfãos e ids duplicados.
+- [ ] **B11 · [FAZER] Palavra nova de fraqueza precisa de rito para virar oficial.** O vocabulário
+  vive em `src/data/elementos-vocab.json` (15 palavras, lido pelo validador, pelo gerador e pelo
+  editor) e o **validador falha o build** em qualquer palavra fora dele. O modal aceita palavra
+  avulsa e a guarda no `localStorage`, o que serve para rascunhar mas não atravessa: quem quiser
+  oficializar tem de editar o JSON à mão. Falta o passo que promove a palavra rascunhada.
 
 ## C. Trilhas de Feitiçaria
 
@@ -257,10 +297,56 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   caracteres eram o dobro do maior capítulo do livro): `acoes-e-sistema` (A Régua Comum),
   `acoes-corpo-e-movimento`, `acoes-resistir`, `acoes-sentidos-e-engano` e `acoes-oficio-e-mundo`.
   As quatro famílias que ainda não têm ficha couberam numa página só.
+- [ ] **G12 · [DECIDIR] Desgaste e ferimento não se conhecem.** Levantado na §8.8 do
+  `Acoes_Sistema.md` e é o que mais importa das sobras: o Desgaste (−1d6 por degrau, teto 4) não
+  conversa com PV nem com as penalidades de ferimento do capítulo de Vida & Ferimentos, e os dois
+  **vão se somar em mesa** no primeiro personagem envenenado que também apanhou. Ou o teto 4 passa
+  a valer para a soma dos dois, ou ferimento vira Desgaste, ou eles correm em paralelo de
+  propósito. Enquanto não sair, o Mestre está arbitrando.
+- [ ] **G13 · [FAZER] As sobras das duas famílias escritas.** Sete assuntos que as fichas
+  encostaram e não cobriram. Do ofício (§7.10): **preço da peça pronta** (o `precos.json` não cobre
+  arma, armadura nem obra), **material sobrenatural** como ponte com Artes e bestiário, **a oficina
+  como traço** do personagem em vez de modificador de circunstância, e **colheita e extração**
+  (minerar, abater, curtir), que é a etapa antes da forja. De Resistir (§8.8): o **catálogo de
+  venenos** com preço e legalidade, a **doença como enredo** de campanha em vez de jogada por
+  personagem, e **frio e calor mágicos**, que é decidir se o gelo de uma Arte causa dano ou
+  Severidade.
 - [ ] **G11 · [FAZER] `regras.json → acoes`.** O capítulo já está no site, mas as tabelas dele
   são texto: nada disso é lido pelo motor nem aparece na ficha. Os melhores candidatos são a
   tabela de dano por queda, o Desgaste e os cinco números das peças do ofício, que destravariam
   o ajuste de peça na ficha deixar de ser um campo livre.
+
+## H. Arremesso
+
+Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:
+`Arremesso_Fatos.md` é o levantamento do que se mediu no mundo real, `Arremesso.md` é a regra que
+está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A bancada
+`arremesso-bench.html` compara as duas com gráfico.
+
+- [ ] **H1 · [DECIDIR] Adotar a regra nova ou ficar com a que está no ar.** O que muda: o **ápice
+  sai de 1 kg e vai para 0,1 kg**, a parede sai de P e vai para **P ÷ 4**, e a curva do meio, que
+  hoje é `massaBraço ÷ (peso + massaBraço)`, vira uma **raiz quadrada** (`Alcance = 2 × FAA ÷
+  √massa`). O que fica igual: as duas reservas, as quatro faixas de carga, os quatro fatores de
+  forma, o alcance livre como fração e as quatro bandas de −3. O argumento é medida, não gosto: a
+  massa efetiva do braço não é constante, é ~1,7 × a massa do objeto em quatro séries que cobrem
+  500× de faixa, e com isso a álgebra colapsa numa raiz (ajuste `45,9 × massa^−0,488`, R² 0,971).
+  Erro médio de 15% contra doze marcas reais, pior caso 34%. Na mesa cabe numa frase: **o dobro da
+  Força de Arremesso, dividido pela raiz do peso**.
+- [ ] **H2 · [FAZER] Se adotar, portar.** Hoje o `regras.json` ainda tem a régua antiga inteira
+  (`arremessoMassaBraco: 1`, `arremessoParedeExp`, `arremessoR0` e a `notaArremesso`, que é o texto
+  que a ficha exibe). Mexem junto: a ficha, o painel de Força & Arremesso, os ganhos de corrida e
+  giro e a bancada, que passa a comparar com a antiga como histórico.
+- [ ] **H3 · [DECIDIR] Os quatro assuntos que a proposta levanta e não fecha** (§7). **Funda e
+  ferramentas que estendem o braço**: medido +30% a +70% na funda, +58% na correia grega, +81% no
+  cabo do martelo, e a funda existe como arma do jogo sem número próprio (proposta: ×1,5, ao lado
+  do fator de forma). **A energia que chega**: uma pedrinha de 2 g voa 94 m e entrega 2 J, que não
+  machuca ninguém, e o corte da ponta leve é energia e não distância. **Limite de pegada**: acima
+  de uns 13 cm de diâmetro não sai de uma mão. **Duas mãos**: no objeto leve saem 75% da velocidade
+  de uma mão, no pesado empata, ou seja, é penalidade no leve e é a única opção no pesado.
+- [ ] **H4 · [DECIDIR] O degrau de baixo do fator de forma: ÷2 ou ÷3?** Ressalva já medida na §3 da
+  proposta. Pela densidade seccional, um baralho de cartas e uma bola de beisebol pesam quase o
+  mesmo e o baralho chega a **22% do alcance**, não aos 50% que o ÷2 promete. Fica em ÷2 por
+  simplicidade; se incomodar em mesa, o conserto é uma tecla.
 
 ---
 
@@ -269,8 +355,9 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 1. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar, e é o mesmo tipo de
    trabalho que a frente de Ações acabou de receber, então sai com o caminho quente.
 2. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
-3. **B1b**, o número da fraqueza: barato, e fecha a última ponta solta do dano elemental agora que
-   o bestiário inteiro está preenchido.
+3. **B10**, confirmar a Centelha das 148: é o único item da lista que já está **valendo no
+   repositório** sem ter passado por você. Cinco minutos de conferência, e enquanto não passar,
+   todo número derivado do bestiário está sob suspeita.
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
 5. **G8**, trocar a palavra "stunt" por um termo em português. A frente de Ações caiu de 11 itens
    para 4 e o capítulo já está publicado; este é o que sobrou de mais barato, e agora são quatro
