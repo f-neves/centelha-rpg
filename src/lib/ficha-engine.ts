@@ -5,6 +5,7 @@
 import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, defesa, defesaMental, defesaSocial, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
+import SEC_D from '../data/habilidades-secundarias.json';
 import VIRT_D from '../data/virtudes.json';
 import CAM_D from '../data/caminhos.json';
 import TEC_D from '../data/tecnicas.json';
@@ -46,17 +47,17 @@ export function montarFicha(opts: FichaOpts) {
 
   const ATTR_GRP: Record<string, string> = { fisico: 'Físicos', social: 'Sociais', mental: 'Mentais' };
   const HAB_GRP: Record<string, string> = { combate: 'Combate', fisica: 'Físicas', social: 'Sociais', saber: 'Saber', tecnica: 'Técnicas' };
-  const SECONDARY: [string, string][] = [
-    ['Halterofilismo', 'Corpo'], ['Natação', 'Corpo'], ['Ginástica', 'Corpo'], ['Equilíbrio', 'Corpo'], ['Malabarismo', 'Corpo'], ['Escalada', 'Corpo'],
-    ['Liderança', 'Sociais'], ['Etiqueta', 'Sociais'], ['Negociação', 'Sociais'], ['Lábia', 'Sociais'], ['Intimidação', 'Sociais'], ['Atuação', 'Sociais'], ['Sedução', 'Sociais'], ['Disfarce', 'Sociais'], ['Interrogatório', 'Sociais'],
-    ['Acerto Arcano', 'Conhecimento'], ['Ritualismo', 'Conhecimento'], ['Cura', 'Conhecimento'], ['Ciências', 'Conhecimento'], ['Comércio', 'Conhecimento'], ['Herbologia', 'Conhecimento'], ['História', 'Conhecimento'], ['Religião', 'Conhecimento'], ['Heráldica', 'Conhecimento'], ['Astronomia', 'Conhecimento'], ['Geografia', 'Conhecimento'], ['Alquimia', 'Conhecimento'], ['Arquitetura', 'Conhecimento'], ['Direito', 'Conhecimento'], ['Bestiário', 'Conhecimento'], ['Estratégia', 'Conhecimento'], ['Genealogia', 'Conhecimento'], ['Folclore', 'Conhecimento'],
-    ['Cavalgar', 'Ofício'], ['Ferraria', 'Ofício'], ['Carpintaria', 'Ofício'], ['Costura', 'Ofício'], ['Culinária', 'Ofício'], ['Joalheria', 'Ofício'], ['Couraria', 'Ofício'], ['Alvenaria', 'Ofício'], ['Mineração', 'Ofício'], ['Pesca', 'Ofício'], ['Agricultura', 'Ofício'], ['Navegação', 'Ofício'], ['Marcenaria', 'Ofício'], ['Armadureiro', 'Ofício'], ['Armeiro', 'Ofício'], ['Escrivania', 'Ofício'], ['Cartografia', 'Ofício'], ['Veterinário', 'Ofício'], ['Adestramento', 'Ofício'],
-    ['Performance', 'Expressão'], ['Tocar Instrumento', 'Expressão'], ['Canto', 'Expressão'], ['Dança', 'Expressão'], ['Poesia', 'Expressão'], ['Pintura', 'Expressão'], ['Escultura', 'Expressão'], ['Caligrafia', 'Expressão'], ['Contação de Histórias', 'Expressão'],
-    ['Ladinagem', 'Subterfúgio'], ['Jogos', 'Subterfúgio'], ['Falsificação', 'Subterfúgio'], ['Abrir Fechaduras', 'Subterfúgio'], ['Contrabando', 'Subterfúgio'], ['Apostar', 'Subterfúgio'], ['Roubo', 'Subterfúgio'], ['Ocultação', 'Subterfúgio'], ['Vigilância Urbana', 'Subterfúgio'],
-    ['Energia Espiritual', 'Interior'], ['Meditação', 'Interior'], ['Autocontrole', 'Interior'], ['Concentração', 'Interior'], ['Leitura Corporal', 'Interior'], ['Interpretação de Sonhos', 'Interior'],
-  ];
+  // O catálogo das Secundárias vive em habilidades-secundarias.json, junto com o resto dos
+  // dados: é a mesma fonte que o capítulo II lista e que os hovercards leem. O `id` de cada
+  // uma é o slug do nome, que é a chave usada em S.skills2 desde sempre.
+  const SEC_GRP: Record<string, string> = {
+    corpo: 'Corpo', sociais: 'Sociais', conhecimento: 'Conhecimento', oficio: 'Ofício',
+    expressao: 'Expressão', subterfugio: 'Subterfúgio', interior: 'Interior',
+  };
+  const SECONDARY: [string, string][] = (SEC_D as any[]).map((s) => [s.nome, SEC_GRP[s.grupo]]);
 
-  const SEC_NOME: Record<string, string> = Object.fromEntries(SECONDARY.map(([n]) => [slug(n), n]));
+  const SEC_NOME: Record<string, string> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.nome]));
+  const SEC_DESC: Record<string, string> = Object.fromEntries((SEC_D as any[]).map((s) => [s.id, s.descricao]));
   const TRACO_DESC: Record<string, string> = {
     centelha: 'O nível de poder pessoal, do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana.',
     willpower: 'Reserva de determinação (0–12, piso 0, custo ×2 por nível). Gasta-se para potencializar ações, resistir a medo e manipulação, e conjurar.',
@@ -68,7 +69,7 @@ export function montarFicha(opts: FichaOpts) {
     let p: any = null;
     if (k === 'attr') { const a = (ATTRS_D as any[]).find((x) => x.id === key); p = { tipo: 'atributo', nome: a.nome, descricao: a.descricao, niveis: a.niveis }; }
     else if (k === 'skill') { const h = (HAB_D as any[]).find((x) => x.id === key); p = { tipo: 'habilidade', nome: h.nome, descricao: h.descricao, niveis: (regras as any).escalaHabilidade }; }
-    else if (k === 'skill2') { p = { tipo: 'habilidade secundária', nome: SEC_NOME[key] || key, descricao: 'Conhecimento ou ofício específico (custo reduzido). Segue a mesma escala de competência.', niveis: (regras as any).escalaHabilidade }; }
+    else if (k === 'skill2') { p = { tipo: 'habilidade secundária', nome: SEC_NOME[key] || key, descricao: SEC_DESC[key] || 'Conhecimento ou ofício específico (custo reduzido). Segue a mesma escala de competência.', niveis: (regras as any).escalaHabilidade }; }
     else if (k === 'virtue') { const v = (VIRT_D as any[]).find((x) => x.id === key); p = { tipo: 'virtude', nome: v.nome, descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: v.niveis }; }
     else if (k === 'centelha') { p = { tipo: 'traço', nome: 'Centelha', descricao: TRACO_DESC.centelha, niveis: (regras as any).escalaCentelha }; }
     else if (k === 'willpower') { p = { tipo: 'traço', nome: 'Força de Vontade', descricao: TRACO_DESC.willpower, niveis: (regras as any).escalaVontade }; }
@@ -217,6 +218,15 @@ export function montarFicha(opts: FichaOpts) {
         if (S.skills2[sec] == null) S.skills2[sec] = S.skills[prim];
         if ((S.spec[prim] || []).length && !(S.spec2[sec] || []).length) S.spec2[sec] = S.spec[prim];
         delete S.skills[prim]; delete S.spec[prim];
+      }
+    }
+    // Migração: secundárias renomeadas na revisão de nomenclatura. A chave de S.skills2 é o
+    // slug do nome, então trocar o nome perderia o nível comprado se ele não fosse transferido.
+    for (const [velho, novo] of [['culinaria', 'gastronomia'], ['veterinario', 'veterinaria']]) {
+      if (S.skills2?.[velho] != null) {
+        if (!S.skills2[novo]) S.skills2[novo] = S.skills2[velho];
+        if ((S.spec2?.[velho] || []).length && !(S.spec2?.[novo] || []).length) S.spec2[novo] = S.spec2[velho];
+        delete S.skills2[velho]; delete S.spec2?.[velho];
       }
     }
     S.willpower ??= pisoXp('vontade'); S.aparencia ??= pisoXp('aparencia'); S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.derivCol ??= true; delete S.modo;   // o modo Criacao/Evolucao foi removido

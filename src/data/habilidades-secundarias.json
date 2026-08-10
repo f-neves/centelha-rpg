@@ -1,0 +1,470 @@
+[
+  {
+    "id": "halterofilismo",
+    "nome": "Halterofilismo",
+    "grupo": "corpo",
+    "descricao": "O treino específico de erguer peso morto: postura, respiração, o jeito certo de pegar e a segurança de saber quando a carga vai vencer. Entra direto na conta de quanto você levanta, empurra e arremessa, e é a única perícia que faz um personagem carregar mais do que o músculo bruto sugeriria."
+  },
+  {
+    "id": "natacao",
+    "nome": "Natação",
+    "grupo": "corpo",
+    "descricao": "Nadar de verdade, não apenas não afundar: cruzar um rio de correnteza, mergulhar e voltar, boiar durante horas, nadar vestido ou com carga. Num mundo de barcos, pontes e enchentes, é a diferença entre um contratempo e um afogamento."
+  },
+  {
+    "id": "ginastica",
+    "nome": "Ginástica",
+    "grupo": "corpo",
+    "descricao": "Acrobacia: cambalhota, salto mortal, rolamento de queda, passar por um vão apertado, cair de altura sem quebrar nada. É a perícia do corpo que se dobra e se joga, e ela aparece toda vez que a saída é por cima ou por baixo, e não pela porta."
+  },
+  {
+    "id": "equilibrio",
+    "nome": "Equilíbrio",
+    "grupo": "corpo",
+    "descricao": "Manter-se de pé onde não se deveria: viga, corrimão, telhado inclinado, corda bamba, convés no mar bravo, gelo. Também é o que segura você quando o chão treme, quando alguém empurra ou quando o cavalo empina."
+  },
+  {
+    "id": "malabarismo",
+    "nome": "Malabarismo",
+    "grupo": "corpo",
+    "descricao": "Manter vários objetos no ar e sob controle, com as mãos ou com o corpo. Vale como número de rua e vale como treino: quem faz malabarismo pega no ar a chave jogada, a tocha caindo e o frasco que escorregou da mesa."
+  },
+  {
+    "id": "escalada",
+    "nome": "Escalada",
+    "grupo": "corpo",
+    "descricao": "Subir o que não tem escada: muralha, penhasco, fachada, mastro, poço. Cobre a técnica e o equipamento (corda, gancho, cunha, nó certo), e é o que transforma uma parede intransponível numa entrada de serviço."
+  },
+
+  {
+    "id": "lideranca",
+    "nome": "Liderança",
+    "grupo": "sociais",
+    "descricao": "Fazer um grupo funcionar como grupo: dar a ordem que é cumprida, dividir tarefa, segurar o moral quando a coisa desanda e ser aquele para quem os outros olham quando ninguém sabe o que fazer. É diferente de convencer uma pessoa, porque aqui já existe um vínculo de comando ou de confiança, e o que se testa é se ele aguenta a pressão."
+  },
+  {
+    "id": "etiqueta",
+    "nome": "Etiqueta",
+    "grupo": "sociais",
+    "descricao": "O protocolo de cada meio: como se dirige a um duque, o que se veste, quem entra primeiro, o que não se pergunta à mesa, qual presente ofende. Vale para a corte e vale para o acampamento mercenário e o templo, porque todo grupo fechado tem as suas regras, e errá-las custa mais caro do que parece."
+  },
+  {
+    "id": "negociacao",
+    "nome": "Negociação",
+    "grupo": "sociais",
+    "descricao": "Chegar ao acordo: abrir com o número certo, ceder no que não importa, achar o limite do outro e fechar antes que ele repense. É a conversa em que os dois lados querem sair ganhando, ao contrário da Persuasão, em que só um lado tem algo a defender."
+  },
+  {
+    "id": "labia",
+    "nome": "Lábia",
+    "grupo": "sociais",
+    "descricao": "Falar muito e dizer pouco: desconversar, dourar a pílula, ganhar tempo, sair pela tangente, encher o guarda de assunto até ele perder a vontade de conferir a carroça. Não é o argumento que convence, é o palavrório que dissolve a pergunta."
+  },
+  {
+    "id": "intimidacao",
+    "nome": "Intimidação",
+    "grupo": "sociais",
+    "descricao": "Conseguir pelo medo: a ameaça dita ou implícita, o olhar, o silêncio no lugar errado, a mão que descansa no cabo da espada. Funciona rápido e cobra caro, porque quem cede por medo obedece enquanto tem medo e cobra a conta na primeira oportunidade."
+  },
+  {
+    "id": "atuacao",
+    "nome": "Atuação",
+    "grupo": "sociais",
+    "descricao": "Ser convincentemente outra pessoa numa interação de verdade: sustentar um sotaque, uma história de vida, uma dor que você não sente, um nome que não é o seu. Anda de mãos dadas com Disfarce, que resolve a aparência enquanto a Atuação resolve o comportamento."
+  },
+  {
+    "id": "seducao",
+    "nome": "Sedução",
+    "grupo": "sociais",
+    "descricao": "Despertar desejo e interesse e conduzir o que vem depois: o flerte, a insinuação, a atenção que faz alguém querer ficar mais um pouco. Não é garantia de nada, é a arte de tornar-se a alternativa mais atraente que a pessoa tem naquela noite."
+  },
+  {
+    "id": "disfarce",
+    "nome": "Disfarce",
+    "grupo": "sociais",
+    "descricao": "Mudar a própria aparência a ponto de não ser reconhecido: roupa, postura, marcha, voz, barba, tinta, cicatriz falsa. Cobre desde vestir o hábito de um monge até imitar uma pessoa específica, o que é muito mais difícil e não sobrevive a quem a conhece bem."
+  },
+  {
+    "id": "interrogatorio",
+    "nome": "Interrogatório",
+    "grupo": "sociais",
+    "descricao": "Tirar informação de quem não quer dar: a ordem das perguntas, a pergunta repetida com outras palavras, a mentira plantada para ver se o outro a corrige, a pausa que faz alguém falar só para preencher o silêncio. Serve para prisioneiro, testemunha e aliado que está omitindo alguma coisa."
+  },
+
+  {
+    "id": "acerto-arcano",
+    "nome": "Acerto Arcano",
+    "grupo": "conhecimento",
+    "descricao": "A pontaria da magia: acertar com o efeito que sai da mão e voa até o alvo, calculando distância, movimento e o instante de soltar. É a perícia de ataque de quem conjura, e sem ela o feitiço mais devastador do mundo passa a um palmo do inimigo."
+  },
+  {
+    "id": "ritualismo",
+    "nome": "Ritualismo",
+    "grupo": "conhecimento",
+    "descricao": "Conduzir um trabalho longo e formal sem errar um passo: preparar o espaço, respeitar a hora, traçar o símbolo certo, dizer o que deve ser dito na ordem certa e não interromper. Enquanto o Ocultismo sabe o que o rito significa, o Ritualismo é a disciplina de executá-lo."
+  },
+  {
+    "id": "cura",
+    "nome": "Cura",
+    "grupo": "conhecimento",
+    "descricao": "Tratar o corpo ferido e doente: estancar sangramento, costurar corte, entalar osso, limpar infecção, reconhecer a doença, reconhecer o veneno e saber o que fazer com ele. É uma das secundárias mais valiosas de qualquer grupo, porque em Centelha um ferimento mal tratado piora sozinho."
+  },
+  {
+    "id": "ciencias",
+    "nome": "Ciências",
+    "grupo": "conhecimento",
+    "descricao": "A filosofia natural: matemática, geometria, óptica, mecânica, a natureza dos materiais e o hábito de procurar a causa antes da explicação sobrenatural. Não constrói nada sozinha, mas é ela que diz por que a coisa funciona, e o que aconteceria se você mudasse um pedaço."
+  },
+  {
+    "id": "comercio",
+    "nome": "Comércio",
+    "grupo": "conhecimento",
+    "descricao": "O saber do mercado: quanto vale, onde vale mais, o que está em falta nesta estação, como se avalia uma carga, como se leva um livro de contas e como se descobre que ele está adulterado. Negociação fecha o acordo; Comércio é saber se aquele acordo é bom."
+  },
+  {
+    "id": "herbologia",
+    "nome": "Herbologia",
+    "grupo": "conhecimento",
+    "descricao": "Plantas: reconhecer, colher na hora certa, secar, preparar e saber para que serve cada uma, como remédio, tempero, tinta ou veneno. Também é o que impede a confusão fatal entre duas folhas parecidas, uma que cura e outra que mata."
+  },
+  {
+    "id": "historia",
+    "nome": "História",
+    "grupo": "conhecimento",
+    "descricao": "O passado com nome, data e causa: dinastias, guerras, tratados, ruínas, por que aquela cidade odeia a vizinha há trezentos anos. Costuma valer menos pelo detalhe erudito e mais por explicar o presente que o grupo está pisando."
+  },
+  {
+    "id": "religiao",
+    "nome": "Religião",
+    "grupo": "conhecimento",
+    "descricao": "Os cultos e o que os move: dogmas, liturgia, calendário sagrado, símbolos, relíquias, hierarquia dos templos e as brigas entre elas. Serve para participar sem cometer sacrilégio, para reconhecer uma ordem pelo hábito e para saber o que um sacerdote pode e não pode recusar."
+  },
+  {
+    "id": "heraldica",
+    "nome": "Heráldica",
+    "grupo": "conhecimento",
+    "descricao": "Ler brasões: identificar a casa pelo escudo, entender o que as cores e as partições dizem, notar o ramo bastardo e a marca de uma aliança. É a perícia que responde, no meio de uma estrada, de quem são aqueles cavaleiros que se aproximam."
+  },
+  {
+    "id": "astronomia",
+    "nome": "Astronomia",
+    "grupo": "conhecimento",
+    "descricao": "O céu e o que se tira dele: orientar-se por estrela, marcar o calendário, prever a fase da lua, a maré e o eclipse. Numa terra sem estrada marcada, saber o céu é saber onde se está."
+  },
+  {
+    "id": "geografia",
+    "nome": "Geografia",
+    "grupo": "conhecimento",
+    "descricao": "As terras e o caminho entre elas: rotas, distâncias, passagens de montanha, rios navegáveis, clima de cada estação, o que se encontra em cada região e quanto tempo leva chegar lá. É a perícia que planeja a viagem antes de ela começar."
+  },
+  {
+    "id": "alquimia",
+    "nome": "Alquimia",
+    "grupo": "conhecimento",
+    "descricao": "Extrair, destilar e combinar substâncias em preparados que fazem alguma coisa: elixir, ácido, fogo que gruda, sal que revela, fumaça que derruba. É trabalho de bancada, com tempo, material e risco, e a fronteira com a Herbologia é simples, uma colhe o ingrediente, a outra o transforma."
+  },
+  {
+    "id": "arquitetura",
+    "nome": "Arquitetura",
+    "grupo": "conhecimento",
+    "descricao": "Projetar e ler edifícios: o que sustenta o quê, onde ficam os vãos, por que aquele arco está rachando, como uma muralha foi levantada e por onde ela cede. Serve tanto para construir quanto para invadir e derrubar, que é o uso que a mesa costuma dar."
+  },
+  {
+    "id": "engenharia",
+    "nome": "Engenharia",
+    "grupo": "conhecimento",
+    "descricao": "O cálculo das máquinas e das grandes obras: engenho de cerco, moinho, ponte, comporta, guindaste, alavanca e contrapeso, escoramento de galeria. Onde a Arquitetura pensa o que fica de pé, a Engenharia pensa o que se move e o que vence uma força."
+  },
+  {
+    "id": "direito",
+    "nome": "Direito",
+    "grupo": "conhecimento",
+    "descricao": "A lei como ela é escrita: códigos, jurisdições, o que cabe a cada corte, prazos, contratos, provas aceitas e a brecha que salva um cliente. Burocracia move a máquina; o Direito discute o que ela tem o poder de fazer com você."
+  },
+  {
+    "id": "bestiario",
+    "nome": "Bestiário",
+    "grupo": "conhecimento",
+    "descricao": "Criaturas: onde vivem, o que comem, como caçam, como se reproduzem, o que as afugenta e onde é o ponto fraco. É a perícia que transforma um monstro desconhecido num problema com solução conhecida, e vale ouro antes de uma caçada."
+  },
+  {
+    "id": "estrategia",
+    "nome": "Estratégia",
+    "grupo": "conhecimento",
+    "descricao": "A guerra acima do nível do soldado: terreno, formação, suprimento, momento de atacar e de recuar, leitura da intenção do inimigo pelo movimento das tropas. Liderança faz um grupo obedecer; Estratégia decide para onde mandá-lo."
+  },
+  {
+    "id": "genealogia",
+    "nome": "Genealogia",
+    "grupo": "conhecimento",
+    "descricao": "As linhagens: quem descende de quem, qual casamento uniu quais casas, quem tem direito ao quê e qual herdeiro foi convenientemente esquecido. Numa campanha de sucessão e herança, uma linha de árvore genealógica vale mais que um exército."
+  },
+  {
+    "id": "folclore",
+    "nome": "Folclore",
+    "grupo": "conhecimento",
+    "descricao": "O que o povo conta: superstição, cantiga, conto de aldeia, o costume de deixar leite na soleira e o nome que ninguém diz depois do anoitecer. Muito daquilo é bobagem, e é justamente por saber tudo que você identifica o pedaço que é verdade antiga mal contada."
+  },
+  {
+    "id": "veterinaria",
+    "nome": "Veterinária",
+    "grupo": "conhecimento",
+    "descricao": "O corpo dos animais: doença, ferimento, casco, dente, parto difícil, o que o bicho pode comer e quando ele está apenas cansado ou realmente morrendo. Vale para o cavalo do grupo, para o rebanho de uma vila e para a fera de guerra que custou uma fortuna."
+  },
+
+  {
+    "id": "cavalgar",
+    "nome": "Cavalgar",
+    "grupo": "oficio",
+    "descricao": "Montar e conduzir animal de sela: manter-se firme, guiar sem rédea, saltar obstáculo, acalmar a montaria assustada e brigar de cima dela. Também cobre atrelar e tocar carroça, que é o transporte que a maioria dos grupos de fato usa."
+  },
+  {
+    "id": "ferraria",
+    "nome": "Ferraria",
+    "grupo": "oficio",
+    "descricao": "O trabalho do metal na forja: aquecer, malhar, temperar, soldar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina. É o ofício-tronco do metal, e dele saem os dois especializados, a arma que corta e a armadura que aguenta."
+  },
+  {
+    "id": "armeiro",
+    "nome": "Armeiro",
+    "grupo": "oficio",
+    "descricao": "A fabricação e a manutenção de armas: forjar a lâmina, temperar o gume, montar cabo e guarda, equilibrar a peça na mão, afiar, endireitar e devolver ao serviço a arma que se lascou. É a especialização da Ferraria que decide se a arma é comum ou notável."
+  },
+  {
+    "id": "armadureiro",
+    "nome": "Armadureiro",
+    "grupo": "oficio",
+    "descricao": "A fabricação de armadura de metal: rebitar malha anel a anel, moldar e articular placa, ajustar a peça a um corpo específico e consertar o amassado sem enfraquecer o conjunto. Trabalho lento e caro, medido em semanas, e a diferença entre a armadura que veste e a que machuca."
+  },
+  {
+    "id": "carpintaria",
+    "nome": "Carpintaria",
+    "grupo": "oficio",
+    "descricao": "A madeira que sustenta: viga, telhado, assoalho, porta, escada, ponte, casco de barco, escoramento de mina. É o ofício da estrutura, e o que se pede dele é que aguente peso e tempo, não que seja bonito."
+  },
+  {
+    "id": "marcenaria",
+    "nome": "Marcenaria",
+    "grupo": "oficio",
+    "descricao": "A madeira que se vê de perto: móvel, baú, encaixe justo, arco e cabo de arma, acabamento e verniz. Onde a Carpintaria resolve o que fica de pé, a Marcenaria resolve o que se usa com as mãos todo dia."
+  },
+  {
+    "id": "alvenaria",
+    "nome": "Alvenaria",
+    "grupo": "oficio",
+    "descricao": "Pedra e argamassa: assentar, levantar parede, fechar arco e abóbada, cortar bloco, calçar rua, reparar muralha. É obra de tempo longo e muita mão, e o ofício que separa a casa de pedra que atravessa gerações da que cai na primeira cheia."
+  },
+  {
+    "id": "costura",
+    "nome": "Costura",
+    "grupo": "oficio",
+    "descricao": "Tecido e agulha: cortar, montar, ajustar, remendar, forrar, e a diferença entre a roupa que passa por nobre e a que denuncia o disfarce a três passos. Cobre também tenda, vela de barco, saco e o acolchoado que vai por baixo da armadura."
+  },
+  {
+    "id": "couraria",
+    "nome": "Couraria",
+    "grupo": "oficio",
+    "descricao": "O couro do começo ao fim: curtir a pele, cortar, costurar e endurecer para virar bota, cinto, arreio, bainha, bolsa ou peça de armadura leve. Ofício sujo, malcheiroso e presente em toda vila, porque quase tudo que se veste ou se carrega passa por ele."
+  },
+  {
+    "id": "joalheria",
+    "nome": "Joalheria",
+    "grupo": "oficio",
+    "descricao": "O metal precioso e a pedra: fundir, cravejar, lapidar, engastar, consertar peça fina e avaliar o que se tem na mão, inclusive reconhecer a falsificação. É o ofício das peças pequenas, caras e cheias de significado, que são exatamente as que movem uma trama."
+  },
+  {
+    "id": "artesanato",
+    "nome": "Artesanato",
+    "grupo": "oficio",
+    "descricao": "O acabamento e o adorno: entalhe decorativo, marchetaria, incrustação, filigrana, gravação, pintura de peça e o ornamento que transforma um objeto útil num objeto que vale ser mostrado. Não fabrica a peça, isso é o ofício de base, mas é o que faz dela um presente digno de um senhor ou uma prova de quem a encomendou."
+  },
+  {
+    "id": "gastronomia",
+    "nome": "Gastronomia",
+    "grupo": "oficio",
+    "descricao": "Cozinhar, do ensopado de acampamento ao banquete de corte: escolher o ingrediente, conservar, temperar, servir e montar uma mesa que diga alguma coisa sobre quem a ofereceu. Cobre também o paladar treinado, que reconhece a procedência de um vinho, o tempero fora de lugar e, com sorte, o veneno."
+  },
+  {
+    "id": "agricultura",
+    "nome": "Agricultura",
+    "grupo": "oficio",
+    "descricao": "Tirar comida da terra: preparar solo, plantar na estação certa, irrigar, colher, armazenar sem apodrecer e cuidar do rebanho da lavoura. É o ofício de nove entre dez pessoas do mundo, e o que permite a um personagem entender uma aldeia por dentro."
+  },
+  {
+    "id": "pesca",
+    "nome": "Pesca",
+    "grupo": "oficio",
+    "descricao": "Tirar comida da água: linha, rede, armadilha, arpão, e o saber de onde o peixe está a cada hora, maré e estação. Sustenta comunidades inteiras, e numa viagem por rio ou litoral é o que mantém o grupo alimentado sem gastar provisão."
+  },
+  {
+    "id": "navegacao",
+    "nome": "Navegação",
+    "grupo": "oficio",
+    "descricao": "Conduzir uma embarcação e achar o rumo: vela, leme, corrente, maré, vento, sondagem, e a decisão de encarar ou contornar a tempestade. Cobre desde a barcaça de rio até o navio de mar aberto, e é uma perícia de campanha inteira, porque quem a tem define por onde a história pode ir."
+  },
+  {
+    "id": "cartografia",
+    "nome": "Cartografia",
+    "grupo": "oficio",
+    "descricao": "Fazer e ler mapas: medir distância, marcar acidente do terreno, projetar uma costa no papel, entender a convenção de um mapa alheio e desconfiar do que ele omite. Um mapa mal feito não é um mapa errado, é uma emboscada com anos de antecedência."
+  },
+  {
+    "id": "escrivania",
+    "nome": "Escrivania",
+    "grupo": "oficio",
+    "descricao": "O ofício do papel: redigir carta, contrato e ata na fórmula que a lei aceita, copiar sem erro, manter livro de registro, preparar tinta e pena e decifrar letra ruim ou documento antigo. É a perícia que permite a um personagem produzir um documento que ninguém questiona."
+  },
+  {
+    "id": "adestramento",
+    "nome": "Adestramento",
+    "grupo": "oficio",
+    "descricao": "Ensinar um animal a fazer o que você quer: cão de guarda e de caça, falcão, cavalo de guerra, mula de carga, pombo de mensagem. Leva tempo e paciência, e o resultado é um companheiro que obedece sob barulho, sangue e fogo, coisa que nenhum animal faz por natureza."
+  },
+
+  {
+    "id": "performance",
+    "nome": "Performance",
+    "grupo": "expressao",
+    "descricao": "Estar em cena diante de gente e prender a atenção dela: presença, tempo, saber quando parar e como recuperar um público que está indo embora. É o guarda-chuva do artista de palco, e cada arte específica, cantar, dançar, tocar, contar, tem a sua própria perícia."
+  },
+  {
+    "id": "tocar-instrumento",
+    "nome": "Tocar Instrumento",
+    "grupo": "expressao",
+    "descricao": "Tocar um instrumento com competência real: repertório, afinação, acompanhar outros músicos e improvisar sobre o que está acontecendo. Cada Especialidade nomeia um instrumento, porque quem é bom de alaúde não é automaticamente bom de tambor."
+  },
+  {
+    "id": "canto",
+    "nome": "Canto",
+    "grupo": "expressao",
+    "descricao": "A voz como instrumento: afinação, fôlego, projeção e o repertório que serve à ocasião, do lamento fúnebre à cantiga de marcha que faz uma tropa andar mais rápido. É a arte mais portátil que existe, não pesa nada e funciona em qualquer lugar."
+  },
+  {
+    "id": "danca",
+    "nome": "Dança",
+    "grupo": "expressao",
+    "descricao": "Dançar bem, do salão de corte, onde saber os passos é obrigação social, à dança de festa e à dança ritual. Uma dança é uma conversa em público sem palavras, e é onde muita coisa importante se resolve sem que ninguém perceba."
+  },
+  {
+    "id": "poesia",
+    "nome": "Poesia",
+    "grupo": "expressao",
+    "descricao": "Compor com métrica e imagem: verso, canção, epitáfio, sátira, elogio encomendado e a estrofe que gruda na boca do povo. Uma sátira bem feita destrói uma reputação melhor do que uma acusação formal, e é muito mais difícil de responder."
+  },
+  {
+    "id": "contacao-de-historias",
+    "nome": "Contação de Histórias",
+    "grupo": "expressao",
+    "descricao": "Narrar de modo que quem ouve fique: escolher o que contar, guardar a virada para a hora certa, imitar as vozes e fazer uma sala inteira prender a respiração. É a perícia que transforma o que o grupo fez numa lenda, e lenda é influência que trabalha sozinha."
+  },
+  {
+    "id": "pintura",
+    "nome": "Pintura",
+    "grupo": "expressao",
+    "descricao": "Pintar e desenhar: retrato, painel, afresco, esboço de memória e o cartaz que a guarda vai pregar na praça. Além da arte, é a perícia que registra um rosto, um lugar ou um símbolo com precisão suficiente para outra pessoa reconhecer."
+  },
+  {
+    "id": "escultura",
+    "nome": "Escultura",
+    "grupo": "expressao",
+    "descricao": "Dar forma à matéria dura: pedra, madeira, marfim, cera e molde de bronze, do busto encomendado ao ídolo de templo e à gárgula de telhado. É trabalho lento, caro e que dura séculos, o que faz dele um instrumento de poder tanto quanto de arte."
+  },
+  {
+    "id": "caligrafia",
+    "nome": "Caligrafia",
+    "grupo": "expressao",
+    "descricao": "A letra como obra: traço firme, iluminura, capitular, dourado e o cuidado que separa um manuscrito de valor de um rascunho. Escrivania produz o documento que a lei aceita; a Caligrafia produz o documento que impressiona quem o recebe."
+  },
+
+  {
+    "id": "ladinagem",
+    "nome": "Ladinagem",
+    "grupo": "subterfugio",
+    "descricao": "O repertório técnico do ladrão que não é mão nem fechadura: achar e desarmar armadilha, entender um mecanismo, marcar uma casa, entrar por janela e telhado e saber sempre por onde se sai. É a perícia que mantém o ladrão vivo, e a que mais aparece numa masmorra."
+  },
+  {
+    "id": "abrir-fechaduras",
+    "nome": "Abrir Fechaduras",
+    "grupo": "subterfugio",
+    "descricao": "Cadeado, tranca, ferrolho, cofre e a gazua certa para cada um: sentir o pino, forçar sem quebrar e deixar a fechadura sem marca quando isso importa. Também cobre reconhecer a fechadura boa da ruim, e portanto o quanto vale o que está atrás dela."
+  },
+  {
+    "id": "roubo",
+    "nome": "Roubo",
+    "grupo": "subterfugio",
+    "descricao": "O golpe planejado: escolher o alvo, estudar a rotina, decidir a hora, montar a rota de fuga e saber para quem se escoa o produto depois. Prestidigitação é a mão que pega; Roubo é tudo o que faz aquela mão ir ao lugar certo na hora certa e não ser presa na semana seguinte."
+  },
+  {
+    "id": "ocultacao",
+    "nome": "Ocultação",
+    "grupo": "subterfugio",
+    "descricao": "Esconder coisas e achar o que outros esconderam: compartimento falso, fundo duplo, tijolo solto, forro de capa, o vão sob a tábua. Serve tanto para atravessar uma revista com um punhal quanto para descobrir onde o alvo guarda o que realmente importa."
+  },
+  {
+    "id": "contrabando",
+    "nome": "Contrabando",
+    "grupo": "subterfugio",
+    "descricao": "Mover o que não pode ser movido: rotas alternativas, horário de guarda, suborno na medida, carga declarada por outro nome e o esconderijo que aguenta uma inspeção de verdade. É a perícia que resolve fronteiras, portos e portões de cidade, os três lugares onde toda campanha costuma travar."
+  },
+  {
+    "id": "vigilancia-urbana",
+    "nome": "Vigilância Urbana",
+    "grupo": "subterfugio",
+    "descricao": "Seguir alguém pela cidade sem ser notado e perceber quando estão fazendo isso com você: trocar de posição, usar a multidão, montar tocaia numa esquina e ler o movimento normal de uma rua para enxergar o que destoa. É a Furtividade adaptada ao lugar mais difícil de se esconder, um lugar cheio de gente."
+  },
+  {
+    "id": "jogos",
+    "nome": "Jogos",
+    "grupo": "subterfugio",
+    "descricao": "Jogar bem os jogos de mesa e de rua: dados, cartas, tabuleiro de estratégia, e a leitura do adversário que vale tanto quanto as regras. Numa taverna, uma partida é a maneira mais natural do mundo de passar duas horas conversando com quem você precisa conhecer."
+  },
+  {
+    "id": "apostar",
+    "nome": "Apostar",
+    "grupo": "subterfugio",
+    "descricao": "O lado do dinheiro: calcular o risco, saber a hora de sair, tocar uma banca, ler quem está blefando e trapacear sem ser pego, ou pegar quem está trapaceando. Jogos é ser bom no jogo; Apostar é sair do jogo com o dinheiro."
+  },
+  {
+    "id": "falsificacao",
+    "nome": "Falsificação",
+    "grupo": "subterfugio",
+    "descricao": "Fazer passar por verdadeiro o que não é: assinatura, selo, salvo-conduto, moeda, título de propriedade, relíquia. Também cobre o inverso, examinar um documento e apontar onde ele foi forjado, que é o uso mais comum quando o grupo está do lado de quem recebe o papel."
+  },
+
+  {
+    "id": "energia-espiritual",
+    "nome": "Energia Espiritual",
+    "grupo": "interior",
+    "descricao": "O cultivo da fonte interior que alimenta a Mana: o quanto se guarda, com que rapidez volta e o quanto se pode sacar de uma vez sem passar mal. Não conjura nada por si, é o fôlego de quem conjura, e sem ela a magia mais bem aprendida acaba na terceira cena."
+  },
+  {
+    "id": "meditacao",
+    "nome": "Meditação",
+    "grupo": "interior",
+    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas."
+  },
+  {
+    "id": "autocontrole",
+    "nome": "Autocontrole",
+    "grupo": "interior",
+    "descricao": "Segurar o que vem de dentro: raiva, pânico, vício, luxúria, luto, o impulso de responder à provocação. Integridade resiste ao que os outros fazem com você; Autocontrole resiste ao que você faz consigo mesmo, e é a perícia dos personagens que carregam alguma coisa perigosa por dentro."
+  },
+  {
+    "id": "concentracao",
+    "nome": "Concentração",
+    "grupo": "interior",
+    "descricao": "Manter a atenção onde ela precisa estar apesar de dor, barulho, medo e gente falando com você. É o que sustenta uma tarefa delicada no meio do caos, e o que impede que um trabalho longo se perca porque alguém abriu a porta na hora errada."
+  },
+  {
+    "id": "leitura-corporal",
+    "nome": "Leitura Corporal",
+    "grupo": "interior",
+    "descricao": "Ler o corpo em vez das palavras: para onde o olho vai, onde a respiração muda, qual pé está pronto para sair, a mão que procura a arma. Empatia sente o que a pessoa está sentindo; a Leitura Corporal é o método técnico que percebe o sinal físico e diz o que ela está prestes a fazer."
+  },
+  {
+    "id": "interpretacao-de-sonhos",
+    "nome": "Interpretação de Sonhos",
+    "grupo": "interior",
+    "descricao": "Tratar o sonho como mensagem: reconhecer o símbolo, separar o que é resto de um dia ruim do que é aviso e saber qual sonho não deve ser contado a ninguém. Num mundo em que o sobrenatural fala, ele fala muitas vezes enquanto se dorme."
+  }
+]

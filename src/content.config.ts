@@ -32,6 +32,18 @@ const habilidades = defineCollection({
   }),
 });
 
+// As Secundárias são ilimitadas em número: este arquivo é o catálogo sugerido, o que
+// a ficha desenha e o capítulo lista. Uma perícia criada na mesa não precisa estar aqui.
+const habilidadesSecundarias = defineCollection({
+  loader: file('src/data/habilidades-secundarias.json'),
+  schema: z.object({
+    id: z.string(),
+    nome: z.string(),
+    grupo: z.enum(['corpo', 'sociais', 'conhecimento', 'oficio', 'expressao', 'subterfugio', 'interior']),
+    descricao: z.string(),
+  }),
+});
+
 const virtudes = defineCollection({
   loader: file('src/data/virtudes.json'),
   schema: z.object({
@@ -223,6 +235,7 @@ const chapters = defineCollection({
 export const collections = {
   atributos,
   habilidades,
+  habilidadesSecundarias,
   virtudes,
   caminhos,
   tecnicas,

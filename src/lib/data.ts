@@ -24,8 +24,9 @@ export const TRILHA_SUB: Record<string, string> = {
 };
 
 export async function loadData() {
-  const [atributos, habilidades, virtudes, caminhos, tecnicas, artes, efeitos, glossario] = await Promise.all([
-    getCollection('atributos'), getCollection('habilidades'), getCollection('virtudes'),
+  const [atributos, habilidades, secundarias, virtudes, caminhos, tecnicas, artes, efeitos, glossario] = await Promise.all([
+    getCollection('atributos'), getCollection('habilidades'), getCollection('habilidadesSecundarias'),
+    getCollection('virtudes'),
     getCollection('caminhos'), getCollection('tecnicas'), getCollection('artes'),
     getCollection('efeitos'), getCollection('glossario'),
   ]);
@@ -52,6 +53,7 @@ export async function loadData() {
   return {
     atributos: atributos.map((a) => a.data),
     habilidades: habilidades.map((h) => h.data),
+    secundarias: secundarias.map((s) => s.data),
     virtudes: virtudes.map((v) => v.data),
     caminhos: caminhos.map((c) => c.data),
     tecnicas: tecnicas.map((t) => t.data),

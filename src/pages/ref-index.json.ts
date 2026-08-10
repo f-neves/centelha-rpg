@@ -12,6 +12,8 @@ export const GET: APIRoute = async () => {
   const items: any[] = [];
 
   const escalaH = (regras as any).escalaHabilidade, escalaC = (regras as any).escalaCentelha, escalaW = (regras as any).escalaVontade;
+  // auto-link só de nomes multi-palavra (evita ruído com "Vento", "Fogo", "Gato", "Cura"…)
+  const multipalavra = (n: string) => /[\s-]/.test(n);
 
   for (const g of d.glossario) {
     const niveis = g.id === 'centelha' ? escalaC : (g.id === 'vontade' ? escalaW : undefined);
@@ -24,11 +26,14 @@ export const GET: APIRoute = async () => {
   for (const h of d.habilidades)
     items.push({ id: h.id, tipo: 'habilidade', nome: h.nome, url: url('regras/atributos-e-pericias'), resumo: h.descricao, termos: [h.nome], autolink: true, detalhe: { descricao: h.descricao, niveis: escalaH } });
 
+  // Secundárias: auto-link só nos nomes de mais de uma palavra. "Cura", "Jogos", "Pesca" e
+  // "Roubo" são palavras comuns demais para virarem link em qualquer frase do livro.
+  for (const s of d.secundarias)
+    items.push({ id: 'sec-' + s.id, tipo: 'habilidade secundária', nome: s.nome, url: url('regras/atributos-e-pericias') + '#sec-' + s.id, resumo: s.descricao, termos: [s.nome], autolink: multipalavra(s.nome), detalhe: { descricao: s.descricao, niveis: escalaH } });
+
   for (const v of d.virtudes)
     items.push({ id: v.id, tipo: 'virtude', nome: v.nome, url: url('regras/aparencia-virtudes-vontade'), resumo: `${v.descricao} Resiste a ${v.resiste}.`, termos: [v.nome], autolink: true, detalhe: { descricao: `${v.descricao} Resiste a ${v.resiste}.`, niveis: (v as any).niveis } });
 
-  // caminhos/artes: auto-link só nomes multi-palavra (evita ruído com "Vento", "Fogo", "Gato"…)
-  const multipalavra = (n: string) => /[\s-]/.test(n);
   for (const c of d.caminhos)
     items.push({ id: c.id, tipo: 'caminho', nome: c.nome, url: url('caminhos/' + c.id), resumo: short(`${d.A[c.atributo.id].nome} · ${c.descricao}`), caminho: c.id, termos: [c.nome], autolink: multipalavra(c.nome) });
 
