@@ -38,7 +38,10 @@ const crumbs: { label: string; href?: string }[] = [{ label: 'Início', href: ur
 if (partes[0] === 'regras') crumbs.push({ label: 'Regras' });
 else if (FERRAMENTAS.some((f) => f.slug === partes[0])) crumbs.push({ label: 'Ferramentas' });
 if (partes[0] === 'caminhos' && partes[1]) crumbs.push({ label: 'As Proezas', href: url('caminhos') });
-if (partes[0] === 'artes' && partes[1]) crumbs.push({ label: 'As Artes', href: url('artes/regras') });
+// Capítulos de mais de uma página (o II e o XV): descobre em qual deles estamos pelo próprio
+// `sub` da NAV, e não pelo primeiro segmento da URL, que para /regras/… é sempre "regras".
+const capAtual = NAV.find((n) => (n as any).sub?.some((s: any) => isActive(s.slug)));
+if (capAtual) crumbs.push({ label: capAtual.titulo, href: url(capAtual.slug) });
 if (partes.length) crumbs.push({ label: title });
 ---
 <!doctype html>
@@ -174,11 +177,11 @@ if (partes.length) crumbs.push({ label: title });
         {NAV.map((n) => (
           <>
             {/* dentro do capítulo quem marca a página atual é a sub-página, não o capítulo */}
-            <a href={url(n.slug)} aria-current={isActive(n.slug) && partes[0] !== (n as any).secao ? 'page' : undefined}>
+            <a href={url(n.slug)} aria-current={isActive(n.slug) && capAtual !== n ? 'page' : undefined}>
               {n.numeral && <span class="num">{n.numeral}</span>}
               <span>{n.titulo}</span>
             </a>
-            {partes[0] === (n as any).secao && (n as any).sub?.map((s: any) => (
+            {capAtual === n && (n as any).sub?.map((s: any) => (
               <a class="subcap" href={url(s.slug)} aria-current={isActive(s.slug) ? 'page' : undefined}>
                 <span class="num">·</span><span>{s.titulo}</span>
               </a>

@@ -1,5 +1,5 @@
 ---
-ordem: 17
+ordem: 19
 numeral: "XVII"
 titulo: "Qual Sistema Eu Uso?"
 resumo: "Um mapa de bolso para escolher a regra certa: o grande roteador e os fluxos de Social x Mental, medo, Régua x Combate Social, defesa física e Percepção x Perspicácia."

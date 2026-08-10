@@ -1,5 +1,5 @@
 ---
-ordem: 4
+ordem: 6
 numeral: "IV"
 titulo: "Vida, Ferimentos & Cura"
 resumo: "Pontos de Vida, limiares de ferimento, nocaute, morte e recuperação."

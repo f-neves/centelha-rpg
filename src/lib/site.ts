@@ -11,7 +11,16 @@ export function url(p = ''): string {
 export const NAV = [
   { slug: '', titulo: 'Início', numeral: '' },
   { slug: 'regras/coracao-do-sistema', titulo: 'O Coração do Sistema', numeral: 'I' },
-  { slug: 'regras/atributos-e-pericias', titulo: 'Atributos & Habilidades', numeral: 'II' },
+  {
+    // Como o capítulo XV, o II são três páginas: o link do capítulo abre a primeira, e
+    // as três só aparecem na barra lateral enquanto se está dentro dele.
+    slug: 'regras/atributos', titulo: 'Atributos & Habilidades', numeral: 'II',
+    sub: [
+      { slug: 'regras/atributos', titulo: 'Atributos' },
+      { slug: 'regras/habilidades', titulo: 'Habilidades' },
+      { slug: 'regras/habilidades-secundarias', titulo: 'Secundárias' },
+    ],
+  },
   { slug: 'regras/aparencia-virtudes-vontade', titulo: 'Aparência, Virtudes & Vontade', numeral: 'III' },
   { slug: 'regras/vida-ferimentos-cura', titulo: 'Vida, Ferimentos & Cura', numeral: 'IV' },
   { slug: 'regras/centelha', titulo: 'Centelha', numeral: 'V' },
@@ -27,7 +36,7 @@ export const NAV = [
   {
     // O capítulo XV são três páginas. O link do capítulo abre a primeira delas, e as
     // três só aparecem na barra lateral enquanto se está dentro do capítulo.
-    slug: 'artes/regras', titulo: 'As Artes', numeral: 'XV', secao: 'artes',
+    slug: 'artes/regras', titulo: 'As Artes', numeral: 'XV',
     sub: [
       { slug: 'artes/regras', titulo: 'Regras' },
       { slug: 'artes/efeitos', titulo: 'Efeitos Especiais' },

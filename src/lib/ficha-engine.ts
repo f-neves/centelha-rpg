@@ -220,14 +220,23 @@ export function montarFicha(opts: FichaOpts) {
         delete S.skills[prim]; delete S.spec[prim];
       }
     }
-    // Migração: secundárias renomeadas na revisão de nomenclatura. A chave de S.skills2 é o
-    // slug do nome, então trocar o nome perderia o nível comprado se ele não fosse transferido.
-    for (const [velho, novo] of [['culinaria', 'gastronomia'], ['veterinario', 'veterinaria']]) {
-      if (S.skills2?.[velho] != null) {
-        if (!S.skills2[novo]) S.skills2[novo] = S.skills2[velho];
-        if ((S.spec2?.[velho] || []).length && !(S.spec2?.[novo] || []).length) S.spec2[novo] = S.spec2[velho];
-        delete S.skills2[velho]; delete S.spec2?.[velho];
-      }
+    // Migração: secundárias renomeadas e fundidas na revisão de nomenclatura. A chave de
+    // S.skills2 é o slug do nome, então trocar o nome perderia o nível comprado se ele não
+    // fosse transferido. Nas fusões fica o MAIOR dos dois níveis, e não a soma: quem tinha
+    // Abrir Fechaduras 3 e Ladinagem 2 sai com Abrir Mecanismos 3, sem ganhar de graça.
+    // As que sumiram sem destino (Armadureiro, Armeiro, Jogos, Apostar, Roubo, Vigilância
+    // Urbana, Mineração) simplesmente deixam de ser desenhadas e devolvem o XP.
+    const RENOMES: [string, string][] = [
+      ['culinaria', 'gastronomia'], ['veterinario', 'veterinaria'],
+      ['ferraria', 'ferreiro'], ['escrivania', 'escrivao'], ['comercio', 'comerciante'],
+      ['abrir-fechaduras', 'abrir-mecanismos'], ['ladinagem', 'abrir-mecanismos'],
+      ['contrabando', 'ocultacao'], ['falsificacao', 'ocultacao'],
+    ];
+    for (const [velho, novo] of RENOMES) {
+      if (S.skills2?.[velho] == null) continue;
+      S.skills2[novo] = Math.max(S.skills2[novo] || 0, S.skills2[velho] || 0);
+      if ((S.spec2?.[velho] || []).length && !(S.spec2?.[novo] || []).length) S.spec2[novo] = S.spec2[velho];
+      delete S.skills2[velho]; if (S.spec2) delete S.spec2[velho];
     }
     S.willpower ??= pisoXp('vontade'); S.aparencia ??= pisoXp('aparencia'); S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.derivCol ??= true; delete S.modo;   // o modo Criacao/Evolucao foi removido
     S.equip ??= {};

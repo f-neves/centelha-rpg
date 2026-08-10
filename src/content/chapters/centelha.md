@@ -1,5 +1,5 @@
 ---
-ordem: 5
+ordem: 7
 numeral: "V"
 titulo: "Centelha"
 resumo: "A fagulha de poder que separa o mortal do herói: o eixo de tudo que é extraordinário, do tocado ao semideus."

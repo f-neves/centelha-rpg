@@ -70,7 +70,7 @@
     "id": "atuacao",
     "nome": "Atuação",
     "grupo": "sociais",
-    "descricao": "Ser convincentemente outra pessoa numa interação de verdade: sustentar um sotaque, uma história de vida, uma dor que você não sente, um nome que não é o seu. Anda de mãos dadas com Disfarce, que resolve a aparência enquanto a Atuação resolve o comportamento."
+    "descricao": "Sustentar um papel diante de quem importa, sem palco e sem aviso: o entusiasmo que você não sente, a indiferença ensaiada, a mágoa exibida na medida certa, a lealdade de fachada, a história de vida que não é a sua. É o jogo da realeza, em que todo mundo sabe que todo mundo está representando e ainda assim representar bem decide quem sobe e quem cai. Compostura esconde o que você sente; a Atuação exibe o que você não sente. Anda de mãos dadas com Disfarce, que resolve a aparência enquanto a Atuação resolve o comportamento."
   },
   {
     "id": "seducao",
@@ -114,12 +114,6 @@
     "nome": "Ciências",
     "grupo": "conhecimento",
     "descricao": "A filosofia natural: matemática, geometria, óptica, mecânica, a natureza dos materiais e o hábito de procurar a causa antes da explicação sobrenatural. Não constrói nada sozinha, mas é ela que diz por que a coisa funciona, e o que aconteceria se você mudasse um pedaço."
-  },
-  {
-    "id": "comercio",
-    "nome": "Comércio",
-    "grupo": "conhecimento",
-    "descricao": "O saber do mercado: quanto vale, onde vale mais, o que está em falta nesta estação, como se avalia uma carga, como se leva um livro de contas e como se descobre que ele está adulterado. Negociação fecha o acordo; Comércio é saber se aquele acordo é bom."
   },
   {
     "id": "herbologia",
@@ -219,22 +213,10 @@
     "descricao": "Montar e conduzir animal de sela: manter-se firme, guiar sem rédea, saltar obstáculo, acalmar a montaria assustada e brigar de cima dela. Também cobre atrelar e tocar carroça, que é o transporte que a maioria dos grupos de fato usa."
   },
   {
-    "id": "ferraria",
-    "nome": "Ferraria",
+    "id": "ferreiro",
+    "nome": "Ferreiro",
     "grupo": "oficio",
-    "descricao": "O trabalho do metal na forja: aquecer, malhar, temperar, soldar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina. É o ofício-tronco do metal, e dele saem os dois especializados, a arma que corta e a armadura que aguenta."
-  },
-  {
-    "id": "armeiro",
-    "nome": "Armeiro",
-    "grupo": "oficio",
-    "descricao": "A fabricação e a manutenção de armas: forjar a lâmina, temperar o gume, montar cabo e guarda, equilibrar a peça na mão, afiar, endireitar e devolver ao serviço a arma que se lascou. É a especialização da Ferraria que decide se a arma é comum ou notável."
-  },
-  {
-    "id": "armadureiro",
-    "nome": "Armadureiro",
-    "grupo": "oficio",
-    "descricao": "A fabricação de armadura de metal: rebitar malha anel a anel, moldar e articular placa, ajustar a peça a um corpo específico e consertar o amassado sem enfraquecer o conjunto. Trabalho lento e caro, medido em semanas, e a diferença entre a armadura que veste e a que machuca."
+    "descricao": "O trabalho do metal na forja, do começo ao fim: aquecer, malhar, temperar, soldar, rebitar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina, de anel de malha a peça de placa. Cobre a arma e a armadura junto com o resto, porque é a mesma bigorna e o mesmo par de mãos; o que muda de uma peça para a outra é a dificuldade e o tempo, não o ofício. É o ofício mais presente de qualquer vila, e o único que devolve a uma espada lascada a qualidade que ela tinha."
   },
   {
     "id": "carpintaria",
@@ -309,10 +291,16 @@
     "descricao": "Fazer e ler mapas: medir distância, marcar acidente do terreno, projetar uma costa no papel, entender a convenção de um mapa alheio e desconfiar do que ele omite. Um mapa mal feito não é um mapa errado, é uma emboscada com anos de antecedência."
   },
   {
-    "id": "escrivania",
-    "nome": "Escrivania",
+    "id": "escrivao",
+    "nome": "Escrivão",
     "grupo": "oficio",
-    "descricao": "O ofício do papel: redigir carta, contrato e ata na fórmula que a lei aceita, copiar sem erro, manter livro de registro, preparar tinta e pena e decifrar letra ruim ou documento antigo. É a perícia que permite a um personagem produzir um documento que ninguém questiona."
+    "descricao": "O ofício do papel: redigir carta, contrato e ata na fórmula que a lei aceita, copiar sem erro, manter livro de registro, preparar tinta e pena e decifrar letra ruim ou documento antigo. É a perícia que permite a um personagem produzir um documento que ninguém questiona, e numa terra em que quase ninguém lê, quem escreve tem poder sobre o que ficou escrito."
+  },
+  {
+    "id": "comerciante",
+    "nome": "Comerciante",
+    "grupo": "oficio",
+    "descricao": "Viver de comprar e vender: saber quanto vale, onde vale mais, o que está em falta nesta estação, avaliar uma carga no olho, tocar uma loja ou uma rota, manter livro de contas e perceber quando o livro do outro foi adulterado. Negociação fecha o acordo; o Comerciante é quem sabe se aquele acordo é bom."
   },
   {
     "id": "adestramento",
@@ -325,7 +313,7 @@
     "id": "performance",
     "nome": "Performance",
     "grupo": "expressao",
-    "descricao": "Estar em cena diante de gente e prender a atenção dela: presença, tempo, saber quando parar e como recuperar um público que está indo embora. É o guarda-chuva do artista de palco, e cada arte específica, cantar, dançar, tocar, contar, tem a sua própria perícia."
+    "descricao": "O palco: encarnar um papel diante de uma plateia que sabe que aquilo é encenação, e ainda assim se esquece disso. Cobre o texto decorado, a marcação, a voz que chega ao fundo do salão, a mímica, a máscara, o número de rua e a paciência de ensaiar com uma trupe. Presença e tempo valem tanto quanto o papel: saber quando parar e como trazer de volta um público que estava indo embora. Representar fora do palco, para gente que precisa acreditar de verdade, é Atuação."
   },
   {
     "id": "tocar-instrumento",
@@ -377,58 +365,22 @@
   },
 
   {
-    "id": "ladinagem",
-    "nome": "Ladinagem",
+    "id": "abrir-mecanismos",
+    "nome": "Abrir Mecanismos",
     "grupo": "subterfugio",
-    "descricao": "O repertório técnico do ladrão que não é mão nem fechadura: achar e desarmar armadilha, entender um mecanismo, marcar uma casa, entrar por janela e telhado e saber sempre por onde se sai. É a perícia que mantém o ladrão vivo, e a que mais aparece numa masmorra."
-  },
-  {
-    "id": "abrir-fechaduras",
-    "nome": "Abrir Fechaduras",
-    "grupo": "subterfugio",
-    "descricao": "Cadeado, tranca, ferrolho, cofre e a gazua certa para cada um: sentir o pino, forçar sem quebrar e deixar a fechadura sem marca quando isso importa. Também cobre reconhecer a fechadura boa da ruim, e portanto o quanto vale o que está atrás dela."
-  },
-  {
-    "id": "roubo",
-    "nome": "Roubo",
-    "grupo": "subterfugio",
-    "descricao": "O golpe planejado: escolher o alvo, estudar a rotina, decidir a hora, montar a rota de fuga e saber para quem se escoa o produto depois. Prestidigitação é a mão que pega; Roubo é tudo o que faz aquela mão ir ao lugar certo na hora certa e não ser presa na semana seguinte."
+    "descricao": "Vencer o que foi feito para não abrir, ou para se fechar em cima de você: cadeado, tranca, ferrolho, cofre, corrente, e também a armadilha já localizada, o alçapão engatilhado e o engenho que prende a porta. Cobre sentir o pino com a gazua, forçar sem quebrar, deixar a fechadura sem marca quando isso importa, e desarmar o gatilho sem que ele dispare. É a perícia da mão parada e do pulso firme, e a que mais aparece numa masmorra. Ela abre e desarma; encontrar o mecanismo escondido antes de tropeçar nele é Ocultação."
   },
   {
     "id": "ocultacao",
     "nome": "Ocultação",
     "grupo": "subterfugio",
-    "descricao": "Esconder coisas e achar o que outros esconderam: compartimento falso, fundo duplo, tijolo solto, forro de capa, o vão sob a tábua. Serve tanto para atravessar uma revista com um punhal quanto para descobrir onde o alvo guarda o que realmente importa."
+    "descricao": "Esconder e achar o escondido, dos dois lados: compartimento falso, fundo duplo, tijolo solto, forro de capa, o vão sob a tábua, a passagem atrás da estante, e a armadilha, tanto montar a sua quanto farejar a alheia antes do primeiro passo. Cobre também esconder o que não cabe no bolso, que é o contrabando (carga declarada por outro nome, rota alternativa, esconderijo que aguenta inspeção de verdade) e esconder a mentira dentro de um papel, que é a falsificação de assinatura, selo, salvo-conduto ou moeda, e o inverso, apontar onde um documento foi forjado. O princípio é sempre o mesmo: quem sabe esconder sabe onde procurar."
   },
   {
-    "id": "contrabando",
-    "nome": "Contrabando",
+    "id": "submundo",
+    "nome": "Submundo",
     "grupo": "subterfugio",
-    "descricao": "Mover o que não pode ser movido: rotas alternativas, horário de guarda, suborno na medida, carga declarada por outro nome e o esconderijo que aguenta uma inspeção de verdade. É a perícia que resolve fronteiras, portos e portões de cidade, os três lugares onde toda campanha costuma travar."
-  },
-  {
-    "id": "vigilancia-urbana",
-    "nome": "Vigilância Urbana",
-    "grupo": "subterfugio",
-    "descricao": "Seguir alguém pela cidade sem ser notado e perceber quando estão fazendo isso com você: trocar de posição, usar a multidão, montar tocaia numa esquina e ler o movimento normal de uma rua para enxergar o que destoa. É a Furtividade adaptada ao lugar mais difícil de se esconder, um lugar cheio de gente."
-  },
-  {
-    "id": "jogos",
-    "nome": "Jogos",
-    "grupo": "subterfugio",
-    "descricao": "Jogar bem os jogos de mesa e de rua: dados, cartas, tabuleiro de estratégia, e a leitura do adversário que vale tanto quanto as regras. Numa taverna, uma partida é a maneira mais natural do mundo de passar duas horas conversando com quem você precisa conhecer."
-  },
-  {
-    "id": "apostar",
-    "nome": "Apostar",
-    "grupo": "subterfugio",
-    "descricao": "O lado do dinheiro: calcular o risco, saber a hora de sair, tocar uma banca, ler quem está blefando e trapacear sem ser pego, ou pegar quem está trapaceando. Jogos é ser bom no jogo; Apostar é sair do jogo com o dinheiro."
-  },
-  {
-    "id": "falsificacao",
-    "nome": "Falsificação",
-    "grupo": "subterfugio",
-    "descricao": "Fazer passar por verdadeiro o que não é: assinatura, selo, salvo-conduto, moeda, título de propriedade, relíquia. Também cobre o inverso, examinar um documento e apontar onde ele foi forjado, que é o uso mais comum quando o grupo está do lado de quem recebe o papel."
+    "descricao": "Conhecer o lado de baixo de uma cidade: quem manda em cada bairro, o linguajar e os sinais que as gangues deixam nos muros, qual taverna é neutra, quem compra o que não tem procedência, onde se acha veneno, arma proibida ou um par de braços que não faz perguntas. Não é uma habilidade de fazer, é de saber com quem falar e o que não dizer, e é ela que transforma uma cidade estranha e hostil num lugar onde você tem por onde começar."
   },
 
   {

@@ -1,11 +1,11 @@
 // Regera os catálogos de perícias do capítulo II a partir dos dados.
 //
 // O capítulo listava as 24 primárias à mão e não listava as secundárias de jeito nenhum.
-// Manter 101 descrições copiadas entre o .md e o .json é drift garantido, então os dois
-// catálogos passaram a ser gerados: o script reescreve só o miolo entre os marcadores
-//   <!-- gen:primarias --> … <!-- /gen:primarias -->
-//   <!-- gen:secundarias --> … <!-- /gen:secundarias -->
-// e não toca em mais nada do capítulo. Rodar depois de mexer em habilidades.json ou
+// Manter quase cem descrições copiadas entre o .md e o .json é drift garantido, então os
+// dois catálogos passaram a ser gerados: o script reescreve só o miolo entre os marcadores
+//   <!-- gen:primarias --> … <!-- /gen:primarias -->     (em habilidades.md)
+//   <!-- gen:secundarias --> … <!-- /gen:secundarias -->  (em habilidades-secundarias.md)
+// e não toca em mais nada das páginas. Rodar depois de mexer em habilidades.json ou
 // habilidades-secundarias.json:  node scripts/gen-cap-pericias.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,7 +16,8 @@ const ler = (p) => JSON.parse(fs.readFileSync(path.join(raiz, p), 'utf8'));
 const ATTR = ler('src/data/atributos.json');
 const HAB = ler('src/data/habilidades.json');
 const SEC = ler('src/data/habilidades-secundarias.json');
-const CAP = path.join(raiz, 'src/content/chapters/atributos-e-pericias.md');
+const CAP_PRIM = path.join(raiz, 'src/content/chapters/habilidades.md');
+const CAP_SEC = path.join(raiz, 'src/content/chapters/habilidades-secundarias.md');
 
 // A Vontade entra em pool (é traço, não Atributo), então precisa de nome próprio aqui.
 const NOME_ATTR = { ...Object.fromEntries(ATTR.map((a) => [a.id, a.nome])), vontade: 'Vontade' };
@@ -57,14 +58,13 @@ const blocoSec = GRUPOS_SEC.map(([g, titulo, chapeu]) => {
   return `#### ${titulo}\n\n${chapeu}\n\n${itens}`;
 }).join('\n\n');
 
-let md = fs.readFileSync(CAP, 'utf8');
-const trocar = (marca, corpo) => {
+const trocar = (arquivo, marca, corpo) => {
+  const md = fs.readFileSync(arquivo, 'utf8');
   const re = new RegExp(`(<!-- gen:${marca} -->)[\\s\\S]*?(<!-- /gen:${marca} -->)`);
-  if (!re.test(md)) throw new Error(`marcador gen:${marca} não encontrado em ${CAP}`);
-  md = md.replace(re, `$1\n\n${corpo}\n\n$2`);
+  if (!re.test(md)) throw new Error(`marcador gen:${marca} não encontrado em ${arquivo}`);
+  fs.writeFileSync(arquivo, md.replace(re, `$1\n\n${corpo}\n\n$2`));
 };
-trocar('primarias', blocoPrim);
-trocar('secundarias', blocoSec);
-fs.writeFileSync(CAP, md);
+trocar(CAP_PRIM, 'primarias', blocoPrim);
+trocar(CAP_SEC, 'secundarias', blocoSec);
 
-console.log(`capítulo regerado: ${HAB.length} primárias, ${SEC.length} secundárias`);
+console.log(`capítulo II regerado: ${HAB.length} primárias, ${SEC.length} secundárias`);

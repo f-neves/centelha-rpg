@@ -1,5 +1,5 @@
 ---
-ordem: 10
+ordem: 12
 numeral: "X"
 titulo: "Quase-Acerto"
 resumo: "Errar por pouco ainda raspa: a válvula de dano que mantém o combate vivo mesmo contra guardas altas."

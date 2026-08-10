@@ -1,5 +1,5 @@
 ---
-ordem: 3
+ordem: 5
 numeral: "III"
 titulo: "Aparência, Virtudes & Vontade"
 resumo: "A presença que você causa, a alma que te move e a determinação que você queima para forçar o destino."

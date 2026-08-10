@@ -209,7 +209,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 - [ ] **G7 · [DECIDIR] Duas ações levantadas e nunca catalogadas** (`Acoes_Catalogo.md` §12):
   **escapar de amarras** e **sinalizar à distância**. Entram ou não?
 - [ ] **G8 · [DECIDIR] Trocar a palavra "stunt" por um termo em português.** São 15 ocorrências
-  em `atributos-e-pericias.md`, `combate.md`, `relacoes-sociais.md` e `glossario.json`, então é
+  em `habilidades.md`, `combate.md`, `relacoes-sociais.md` e `glossario.json`, então é
   melhor trocar de uma vez. Sugestão do autor em Relações: "ações que beneficiam a intenção".
 - [ ] **G9 · [FAZER] Três listas paralelas das mesmas ações** (catálogo, texto e tabela §4) já
   divergem: "Apostar" e "Levantar o peso máximo" existem em duas das três. Definir qual é a fonte
