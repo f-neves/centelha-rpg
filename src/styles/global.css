@@ -911,6 +911,152 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .gr-previa .pv-centro { fill: var(--accent); stroke: var(--accent); }
 .gr-previa .pv-vertice { fill: var(--bg); stroke: var(--gold, #c9a227); }
 
+/* ---- os efeitos elementais ----
+   Só `transform` e `opacity` se mexem: as duas o compositor resolve na GPU sem
+   repintar a página. O `--fx-v` é a velocidade escolhida (1 = o ritmo desenhado),
+   o `--fx-d` é o atraso próprio de cada partícula (para não pulsarem em bloco) e
+   o `--fx-i` a intensidade dela.
+
+   Nada aqui anima filtro nem atributo de geometria, que é o que custa caro. */
+.fx-p { animation-duration: calc(var(--fx-dur, 4s) / var(--fx-v, 1));
+  animation-delay: calc(var(--fx-d, 0s) / var(--fx-v, 1));
+  animation-iteration-count: infinite; animation-timing-function: ease-in-out;
+  transform-box: fill-box; transform-origin: center; }
+
+/* Fogo: a brasa sobe, encolhe e apaga. É o movimento que mais lê como fogo. */
+@keyframes fx-sobe {
+  0%   { transform: translateY(6%) scale(1); opacity: 0; }
+  18%  { opacity: var(--fx-i, .8); }
+  100% { transform: translateY(-140%) scale(.35); opacity: 0; }
+}
+.fx-brasa { --fx-dur: 3.6s; animation-name: fx-sobe; }
+
+/* Luz: a fagulha não sobe, ela respira no lugar. */
+@keyframes fx-respira {
+  0%, 100% { transform: scale(.7); opacity: calc(var(--fx-i, .8) * .35); }
+  50%      { transform: scale(1.35); opacity: var(--fx-i, .8); }
+}
+.fx-fagulha { --fx-dur: 4.5s; animation-name: fx-respira; }
+
+/* Água: a bolha sobe devagar e balança de lado. */
+@keyframes fx-boia {
+  0%   { transform: translate(0, 20%); opacity: 0; }
+  25%  { opacity: var(--fx-i, .8); }
+  50%  { transform: translate(14%, -30%); }
+  100% { transform: translate(-8%, -90%); opacity: 0; }
+}
+.fx-bolha { --fx-dur: 6s; animation-name: fx-boia; }
+
+/* Sombra: a treva não brilha nem sobe; ela incha e recua. */
+@keyframes fx-incha {
+  0%, 100% { transform: scale(.5); opacity: calc(var(--fx-i, .8) * .25); }
+  45%      { transform: scale(2.2); opacity: calc(var(--fx-i, .8) * .7); }
+}
+.fx-treva { --fx-dur: 7s; animation-name: fx-incha; }
+
+/* Raio: a faísca não tem meio-termo. Ela existe por dois quadros e some. */
+@keyframes fx-pisca {
+  0%, 22%, 100% { opacity: 0; }
+  3%            { opacity: var(--fx-i, .9); }
+  8%            { opacity: 0; }
+  12%           { opacity: calc(var(--fx-i, .9) * .7); }
+  16%           { opacity: 0; }
+}
+.fx-faisca { --fx-dur: 2.4s; animation-name: fx-pisca;
+  animation-timing-function: steps(1, end); }
+
+/* Vento: o risco atravessa e sai. */
+@keyframes fx-corre {
+  0%   { transform: translateX(-60%); opacity: 0; }
+  20%  { opacity: var(--fx-i, .7); }
+  80%  { opacity: var(--fx-i, .7); }
+  100% { transform: translateX(90%); opacity: 0; }
+}
+.fx-risco { --fx-dur: 3.2s; animation-name: fx-corre; }
+
+/* Gelo e Terra ficam parados: o que muda é o quanto refletem. Um cintilar lento
+   diz "isto está vivo" sem tirar do lugar o que deveria estar firme. */
+@keyframes fx-cintila {
+  0%, 100% { opacity: calc(var(--fx-i, .8) * .25); }
+  50%      { opacity: var(--fx-i, .8); }
+}
+.fx-lasca { --fx-dur: 5s; animation-name: fx-cintila; }
+
+/* Com o efeito ligado, a forma base SOME o preenchimento e fica só com o traço:
+   quem pinta o chão é o véu. Empilhar os dois foi o que deixou tudo opaco na
+   primeira tentativa, e o mapa some por baixo de duas camadas somadas. */
+.gr-ef.com-fx > circle, .gr-ef.com-fx > rect,
+.gr-ef.com-fx > path, .gr-ef.com-fx > polygon { fill: none; }
+
+/* O véu é a forma repintada com o gradiente do elemento: é ele que dá o miolo
+   quente do fogo e o buraco escuro da sombra. */
+.fx-veu > * { stroke: none; }
+.fx-fogo .fx-veu > *   { fill: url(#fx-fogo-g); }
+.fx-gelo .fx-veu > *   { fill: url(#fx-gelo-g); }
+.fx-raio .fx-veu > *   { fill: url(#fx-raio-g); }
+.fx-agua .fx-veu > *   { fill: url(#fx-agua-g); }
+.fx-vento .fx-veu > *  { fill: url(#fx-vento-g); }
+.fx-terra .fx-veu > *  { fill: url(#fx-terra-g); }
+.fx-luz .fx-veu > *    { fill: url(#fx-luz-g); }
+.fx-sombra .fx-veu > * { fill: url(#fx-sombra-g); }
+/* O grão entra só onde ele muda alguma coisa: pedra e brasa. Nos outros o
+   gradiente já basta, e um filtro a mais seria custo sem imagem. */
+.fx-terra .fx-veu { filter: url(#fx-terra-n); }
+.fx-fogo .fx-veu  { filter: url(#fx-fogo-n); }
+
+/* A estrutura que se mexe: a onda da água, a corrente do vento, o arco do raio
+   e a massa da sombra. Mesmo contrato das partículas, só transform e opacity. */
+.fx-onda path, .fx-corrente, .fx-massa, .fx-bolt, .fx-bolt-halo {
+  animation-duration: calc(var(--fx-dur, 5s) / var(--fx-v, 1));
+  animation-delay: calc(var(--fx-d, 0s) / var(--fx-v, 1));
+  animation-iteration-count: infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes fx-ondula {
+  0%, 100% { transform: translateX(-4%); }
+  50%      { transform: translateX(4%); }
+}
+.fx-onda path { --fx-dur: 6s; animation-name: fx-ondula; animation-timing-function: ease-in-out; }
+@keyframes fx-varre {
+  0%   { transform: translateX(-25%); opacity: 0; }
+  25%  { opacity: .45; }
+  75%  { opacity: .45; }
+  100% { transform: translateX(35%); opacity: 0; }
+}
+.fx-corrente { --fx-dur: 4s; animation-name: fx-varre; animation-timing-function: linear; }
+@keyframes fx-arqueia {
+  0%, 100% { transform: scale(1); opacity: .5; }
+  50%      { transform: scale(1.25); opacity: .15; }
+}
+.fx-massa { --fx-dur: 8s; animation-name: fx-arqueia; animation-timing-function: ease-in-out; }
+/* O arco elétrico não desliza: ele existe por dois quadros e some, e é essa
+   descontinuidade que o olho lê como eletricidade. */
+/* A descarga acende em três lampejos curtos e some. Curto demais e o arco vira
+   um piscar que ninguém vê; longo demais e o raio vira um risco desenhado. */
+@keyframes fx-descarga {
+  0%, 30%, 100% { opacity: 0; }
+  4%            { opacity: 1; }
+  9%            { opacity: .15; }
+  13%           { opacity: .85; }
+  18%           { opacity: .2; }
+  23%           { opacity: .6; }
+}
+.fx-bolt { --fx-dur: 2.8s; animation-name: fx-descarga; animation-timing-function: steps(1, end); }
+.fx-bolt-2 { --fx-dur: 3.7s; animation-delay: calc(1.1s / var(--fx-v, 1)); }
+.fx-bolt-halo { --fx-dur: 2.8s; animation-name: fx-descarga;
+  animation-timing-function: steps(1, end); }
+/* A luz respira inteira, raios e núcleo juntos. */
+@keyframes fx-pulsa {
+  0%, 100% { transform: scale(.94); opacity: .75; }
+  50%      { transform: scale(1.06); opacity: 1; }
+}
+.fx-luz .fx-raios, .fx-nucleo {
+  animation: fx-pulsa calc(5s / var(--fx-v, 1)) ease-in-out infinite;
+  transform-box: fill-box; transform-origin: center; }
+
+/* Quem prefere a tela quieta: o sistema manda, e o laço para. */
+@media (prefers-reduced-motion: reduce) {
+  .fx-p { animation: none; opacity: var(--fx-i, .7); }
+}
+
 /* a lista dos efeitos vivos, na coluna lateral */
 .gr-ef-lista { display: grid; gap: .2rem; margin: .4rem 0 .2rem; }
 .gr-efl { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: .4rem;

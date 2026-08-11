@@ -6,7 +6,7 @@
 // mora aqui, e é por isso que `grid.astro` quase não muda para ganhar isso.
 import { esc, novoId, somarCondicoes, COND, tierDe } from './mesa-core';
 import { MON } from './mesa-bestiario';
-import { uiErro, uiConfirmar, uiEscolher } from './ui-dialog';
+import { uiErro, uiConfirmar, uiEscolher, uiPainel } from './ui-dialog';
 import {
   EFEITO, ARTE, CONDICAO, figuraDaArea, rotuloDaFigura, caminhoDaFigura,
   hexesDaFigura, pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
@@ -23,6 +23,9 @@ import {
   centroHex, verticesHex, margemTabuleiro, medidaTabuleiro, larguraHex,
   distanciaHex, nomeHex, type Hex,
 } from './hex';
+import {
+  defsHTML, fxHTML, ehElemental, AJUSTES_PADRAO, LIMITES, type Ajustes,
+} from './artes-grid-fx';
 
 /** O que a aba Grid empresta. Tudo o que este módulo não tem como saber sozinho. */
 export interface CtxGrid {
@@ -64,6 +67,31 @@ export interface CtxGrid {
 
 let ATIVOS: EfeitoAtivo[] = [];
 export const efeitosAtivos = () => ATIVOS;
+
+/**
+ * Os ajustes dos efeitos visuais, guardados NO APARELHO.
+ *
+ * No aparelho e não na arena: é preferência de quem está olhando, e o mestre no
+ * notebook não tem por que impor a decisão ao jogador no celular, que pode ter
+ * uma máquina fraca. Mesma escolha da lista recolhida da coluna lateral.
+ */
+const FX_KEY = 'centelha:grid:efeitos';
+let FX: Ajustes = { ...AJUSTES_PADRAO };
+try {
+  const g = JSON.parse(localStorage.getItem(FX_KEY) || 'null');
+  if (g && typeof g === 'object') FX = { ...AJUSTES_PADRAO, ...g };
+} catch { /* aparelho sem localStorage: fica no padrão */ }
+
+export const ajustesFx = (): Ajustes => ({ ...FX });
+export function definirFx(novo: Partial<Ajustes>): Ajustes {
+  FX = { ...FX, ...novo };
+  const trava = (v: number, l: { min: number; max: number }) => Math.max(l.min, Math.min(l.max, v));
+  FX.opacidade = trava(FX.opacidade, LIMITES.opacidade);
+  FX.particulas = trava(FX.particulas, LIMITES.particulas);
+  FX.velocidade = trava(FX.velocidade, LIMITES.velocidade);
+  try { localStorage.setItem(FX_KEY, JSON.stringify(FX)); } catch { /* sem guardar */ }
+  return { ...FX };
+}
 
 const tickAtual = (ctx: CtxGrid) => Number(ctx.tickAgora?.() ?? ctx.enc?.tick_atual ?? 0);
 const escalaM = (ctx: CtxGrid) => Number(ctx.arena?.escala_m) || 1;
@@ -129,13 +157,41 @@ export function pintarEfeitos(ctx: CtxGrid, svg: SVGElement): void {
   ajustarQuadro(ctx, document.getElementById('gr-previa') as unknown as SVGElement | null);
   const t = tickAtual(ctx);
   const vivos = ATIVOS.filter((e) => !venceu(e, t));
-  svg.innerHTML = vivos.map((ef) => {
+  // Os <defs> saem UMA vez, e só dos elementos presentes: dez fogueiras dividem
+  // o mesmo gradiente e o mesmo filtro.
+  const defs = FX.ligado ? defsHTML(vivos.map((e) => e.elemento || '')) : '';
+  svg.innerHTML = defs + vivos.map((ef) => {
     const restam = turnosRestantes(ef, t);
-    return `<g class="gr-ef gr-ef-${esc(ef.forma)}" data-ef="${esc(ef.id)}"
-      style="--ef-cor:${corDe(ef)}" opacity="${restam <= 1 ? 0.55 : 1}">
+    const vel = Math.max(0.25, FX.velocidade / 100);
+    return `<g class="gr-ef gr-ef-${esc(ef.forma)}${
+      FX.ligado && ehElemental(ef.elemento) ? ' com-fx' : ''}" data-ef="${esc(ef.id)}"
+      style="--ef-cor:${corDe(ef)};--fx-v:${vel}" opacity="${restam <= 1 ? 0.55 : 1}">
       <title>${esc(ef.nome)} · ${esc(rotuloDuracao(restam))}</title>${tracoDe(ctx, ef)}</g>`;
   }).join('');
 }
+
+/**
+ * A figura VIGENTE de um efeito.
+ *
+ * A aura anda com quem a conjurou: ela é "centralizada no conjurador", e deixá-la
+ * onde caiu transformaria um escudo de fogo numa poça de fogo. Por isso a âncora
+ * dela é recalculada da posição ATUAL do token a cada desenho, em vez de sair da
+ * linha gravada. O resto das figuras fica onde caiu, que é o que se espera de uma
+ * muralha e de uma névoa.
+ */
+function figuraVigente(ctx: CtxGrid, ef: EfeitoAtivo): Figura | null {
+  const f = ef.figura;
+  if (!f || !f.tipo) return null;
+  if (ef.forma !== 'aura' || !ef.conjurador_id) return f;
+  const t = ctx.tokens[ef.conjurador_id];
+  if (!t) return f;
+  const c = centroEmMetros(t, escalaM(ctx));
+  return { ...f, ax: c.x, ay: c.y, q: t.q, r: t.r };
+}
+
+/** O efeito com a figura de AGORA, que é o que a aura muda a cada passo. */
+const vigente = (ctx: CtxGrid, ef: EfeitoAtivo): EfeitoAtivo =>
+  (ef.forma === 'aura' ? { ...ef, figura: figuraVigente(ctx, ef) } : ef);
 
 /**
  * O traço de um efeito: a FIGURA quando ela existe, as casas quando não.
@@ -145,11 +201,19 @@ export function pintarEfeitos(ctx: CtxGrid, svg: SVGElement): void {
  * um setor, e não uma colcha de hexágonos aproximando a forma.
  */
 function tracoDe(ctx: CtxGrid, ef: EfeitoAtivo): string {
-  if (ef.figura && ef.figura.tipo) {
-    if (ef.figura.tipo === 'arena') return casasHTML(ctx, hexesDaArenaDe(ctx));
-    return caminhoDaFigura(ef.figura, quadro(ctx));
-  }
-  return casasHTML(ctx, ef.hexes || []);
+  const f = figuraVigente(ctx, ef);
+  if (!f) return casasHTML(ctx, ef.hexes || []);
+  if (f.tipo === 'arena') return casasHTML(ctx, hexesDaArenaDe(ctx));
+  const q = quadro(ctx);
+  const caminho = caminhoDaFigura(f, q);
+  // O efeito visual entra POR DENTRO do recorte da própria forma: nada dele
+  // vaza, e o desenho continua dizendo a verdade sobre onde a Arte pega.
+  const fx = fxHTML({
+    id: ef.id, elemento: ef.elemento || '', figura: f, forma: ef.forma,
+    caminho, cx: f.ax * q.pxPorM + q.margem.x, cy: f.ay * q.pxPorM + q.margem.y,
+    pxPorM: q.pxPorM, ajustes: FX,
+  });
+  return caminho + fx;
 }
 
 const hexesDaArenaDe = (ctx: CtxGrid): Hex[] => {
@@ -228,7 +292,7 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
   box.innerHTML = vivos.map((ef) => {
     const restam = turnosRestantes(ef, t);
     const dentro = ef.forma === 'alvo' || ef.forma === 'token'
-      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens, escalaM(ctx));
+      ? (ef.alvos || []) : dentroDoEfeito(vigente(ctx, ef), ctx.tokens, escalaM(ctx));
     const quem = dentro.map((id) => combDe(ctx, id)?.nome).filter(Boolean);
     const cond = ef.condicao && CONDICAO[ef.condicao] ? CONDICAO[ef.condicao] : null;
     return `<div class="gr-efl" data-ef="${esc(ef.id)}" style="--ef-cor:${corDe(ef)}">
@@ -839,7 +903,7 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
     if (!ef.dano_dados && !ef.condicao) continue;
     if (ef.gatilho === 'armadilha' || ef.gatilho === 'passivo' || ef.gatilho === 'ao-tocar') continue;
     const dentro = ef.forma === 'alvo' || ef.forma === 'token'
-      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens, escalaM(ctx));
+      ? (ef.alvos || []) : dentroDoEfeito(vigente(ctx, ef), ctx.tokens, escalaM(ctx));
     for (const cid of dentro) {
       if (cid === ef.conjurador_id && ef.forma === 'aura') continue;   // a própria aura não queima o dono
       if (jaMordido(ef, cid, t)) continue;
@@ -880,7 +944,7 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
 export async function encerrarEfeito(ctx: CtxGrid, ef: EfeitoAtivo, motivo: string): Promise<void> {
   if (ef.condicao) {
     const quem = ef.forma === 'alvo' || ef.forma === 'token'
-      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens, escalaM(ctx));
+      ? (ef.alvos || []) : dentroDoEfeito(vigente(ctx, ef), ctx.tokens, escalaM(ctx));
     for (const cid of quem) await tirarCondicao(ctx, combDe(ctx, cid), ef.condicao);
   }
   // A peça invocada some com o efeito que a trouxe.
@@ -894,6 +958,68 @@ export async function encerrarEfeito(ctx: CtxGrid, ef: EfeitoAtivo, motivo: stri
   const c = ef.conjurador_id ? combDe(ctx, ef.conjurador_id) : null;
   await ctx.logar(c, `${ef.nome} acabou (${motivo})`, { acao: null });
   await ctx.recarregar();
+}
+
+// ============================================================ o botão e o dial
+/**
+ * Liga o botão dos efeitos e o painel de ajuste.
+ *
+ * O botão troca de ícone (✦ ligado, ✧ desligado) porque é o estado que a pessoa
+ * procura de relance. O ⚙ abre um painel pequeno com o que dá para regular; cada
+ * mexida repinta na hora, senão ajustar opacidade viraria adivinhação.
+ */
+export function ligarBotaoFx(ctx: () => CtxGrid, botao: HTMLElement, engrenagem: HTMLElement): void {
+  const pinta = () => {
+    botao.textContent = FX.ligado ? '✦ efeitos' : '✧ efeitos';
+    botao.classList.toggle('desligado', !FX.ligado);
+    botao.title = FX.ligado
+      ? 'Efeitos elementais ligados · clique para desligar'
+      : 'Efeitos elementais desligados · clique para ligar';
+    engrenagem.hidden = !FX.ligado;
+  };
+  pinta();
+  botao.onclick = () => { definirFx({ ligado: !FX.ligado }); pinta(); ctx().repintar(); };
+  engrenagem.onclick = () => abrirAjustesFx(() => { pinta(); ctx().repintar(); });
+}
+
+function abrirAjustesFx(mudou: () => void): void {
+  const { corpo, fechar } = uiPainel('Efeitos elementais', { classe: 'ui-dlg-arte' });
+  const barra = (chave: keyof Ajustes, rotulo: string, nota: string, passo = 1) => {
+    const l = (LIMITES as any)[chave];
+    return `<label class="ag-f ag-f-full"><span>${rotulo} <b data-v="${chave}">${FX[chave]}</b>${
+      chave === 'particulas' ? '' : chave === 'velocidade' ? '%' : '%'}</span>
+      <input type="range" data-fx="${chave}" min="${l.min}" max="${l.max}" step="${passo}"
+        value="${FX[chave]}" />
+      <small class="ag-nota">${nota}</small></label>`;
+  };
+  corpo.innerHTML = `
+    <p class="ag-nota">Só as oito Artes elementais têm efeito. As universais ficam com a figura
+      lisa: não há um "como isso é" acordado para elas, e inventar seria pior do que não ter.</p>
+    ${barra('opacidade', 'Opacidade do miolo', 'Quanto o elemento cobre o mapa por baixo dele.')}
+    ${barra('particulas', 'Partículas', 'Brasas, faíscas, bolhas. Zero deixa só a textura e a borda.')}
+    ${barra('velocidade', 'Ritmo', 'A velocidade do laço. 100% é o desenhado.', 5)}
+    <div class="ag-acoes">
+      <button type="button" class="btn" id="fx-padrao">Voltar ao padrão</button>
+      <button type="button" class="btn primary" id="fx-ok">Pronto</button>
+    </div>`;
+  const sincroniza = () => {
+    corpo.querySelectorAll<HTMLElement>('[data-v]').forEach((b) => {
+      b.textContent = String(FX[b.dataset.v as keyof Ajustes]);
+    });
+    corpo.querySelectorAll<HTMLInputElement>('[data-fx]').forEach((i) => {
+      i.value = String(FX[i.dataset.fx as keyof Ajustes]);
+    });
+  };
+  corpo.querySelectorAll<HTMLInputElement>('[data-fx]').forEach((i) => {
+    i.oninput = () => {
+      definirFx({ [i.dataset.fx!]: Number(i.value) } as Partial<Ajustes>);
+      sincroniza(); mudou();
+    };
+  });
+  (corpo.querySelector('#fx-padrao') as HTMLElement).onclick = () => {
+    definirFx({ ...AJUSTES_PADRAO, ligado: FX.ligado }); sincroniza(); mudou();
+  };
+  (corpo.querySelector('#fx-ok') as HTMLElement).onclick = fechar;
 }
 
 // ==================================================================== o + NPC
