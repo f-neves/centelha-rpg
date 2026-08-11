@@ -63,7 +63,17 @@ import MesaCab from '../../components/MesaCab.astro';
             <h3 class="col-h">Iniciativa</h3>
             <button class="btn-fant" id="ini-rolar" hidden title="Rolar a iniciativa de todos no tabuleiro">⚄</button>
           </div>
-          <div class="ini-rodada" id="ini-rodada"></div>
+          <div class="ini-rodada">
+            <span class="rd" id="ini-rd"></span>
+            <span class="tk" id="ini-tk"></span>
+            <!-- O custo em Ticks da PRÓXIMA ação. Fica na mesma linha da rodada
+                 porque é o outro número do relógio: um diz onde a cena está, o
+                 outro diz quanto o próximo golpe vai adiantá-la. -->
+            <label class="ini-custo" id="ini-custo-cx" hidden
+              title="Quantos Ticks a próxima ação custa. O 'próximo' soma este número ao tick de quem está agindo.">
+              <span>a ação custa</span><input type="number" id="ini-custo" min="1" max="60" step="1" value="5" /><span>t</span>
+            </label>
+          </div>
           <button class="btn mini primary ini-prox" id="ini-prox" hidden>⏭ próximo</button>
           <div id="gr-ini" class="gr-ini-lista"></div>
         </aside>
@@ -329,6 +339,23 @@ import MesaCab from '../../components/MesaCab.astro';
   .ini-item.vez { background: color-mix(in srgb, var(--vez-cor, #ffd76a) 22%, transparent);
     border-color: var(--vez-cor, #ffd76a); }
   .ini-item.vez .ini-nome { font-weight: 700; }
+  /* Quem AGE agora, dentro do grupo do tick: um triângulo antes do nome. Sem
+     ele, com três acesos ao mesmo tempo, ninguém sabe em quem o "próximo" vai
+     bater. A aura diz "é a vez de vocês"; o triângulo diz "começa por este". */
+  .ini-item.age .ini-nome::before { content: '▸ '; color: var(--vez-cor, #ffd76a); font-weight: 700; }
+  .ini-item.movendo { opacity: .6; border-style: dashed; }
+  .gr-ini-lista .ini-item { cursor: grab; touch-action: none; }
+  .gr-ini-lista .ini-item.movendo { cursor: grabbing; }
+
+  /* O custo da próxima ação, na linha da rodada. */
+  .ini-custo { display: inline-flex; align-items: center; gap: .2rem; flex-basis: 100%;
+    font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft); cursor: help;
+    padding-top: .15rem; }
+  .ini-custo input { width: 2.3rem; padding: 0 .15rem; font: inherit;
+    font-size: calc(var(--fs-micro) * .95); text-align: center; font-variant-numeric: tabular-nums;
+    background: var(--panel-2, var(--panel)); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: var(--r-sm); }
+  .ini-custo input:focus { border-color: var(--accent); outline: none; }
   .ini-vazio { font-size: var(--fs-micro); color: var(--ink-soft); padding: .3rem; }
 
   /* O palco rola; o mundo tem o tamanho do tabuleiro e é ele que o zoom estica.
@@ -487,10 +514,20 @@ import MesaCab from '../../components/MesaCab.astro';
   .tok-cond.mais { font-family: 'Cinzel'; font-size: .55rem; }
 
   /* ---- rodada e o próximo ---- */
-  .ini-rodada { display: flex; align-items: baseline; gap: .35rem; padding: .1rem .1rem .25rem; }
+  /* Duas linhas de propósito: na coluna de 9rem, "Rodada 1 · tick 0" já ocupa a
+     largura toda, e o custo espremido ao lado quebrava as duas coisas no meio
+     das palavras. */
+  .ini-rodada { display: flex; align-items: baseline; gap: .35rem; padding: .1rem .1rem .25rem;
+    flex-wrap: wrap; }
+  .ini-rodada .rd, .ini-rodada .tk { white-space: nowrap; }
   .ini-rodada .rd { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-texto); font-weight: 700; }
   .ini-rodada .tk { font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft);
     font-variant-numeric: tabular-nums; }
+  /* Os pedaços fixos da coluna não encolhem: numa flex-column, todo item cede
+     altura quando falta espaço, e a lista, que tem rolagem própria, deveria ser
+     a única a ceder. Sem isto, o "próximo" chegou a ficar com ZERO de altura
+     numa cena de doze, e virava um botão que existe e não dá para clicar. */
+  .gr-ini > .gr-reg-cab, .gr-ini > .ini-rodada, .gr-ini > .ini-prox { flex: 0 0 auto; }
   .ini-prox { width: 100%; margin-bottom: .3rem; }
   .gr-palco.arrastando-mapa { cursor: grabbing; }
   .seta-txt, .seta-sub { text-anchor: middle; font-family: 'Cinzel', serif; fill: var(--accent-texto);
@@ -816,7 +853,6 @@ import MesaCab from '../../components/MesaCab.astro';
     // A moldura dos rótulos empurra o tabuleiro: quem desenha a grade é quem
     // sabe onde ela começa, então as camadas das Artes pedem em vez de calcular.
     margem, medida,
-    logar,
     // As Artes escrevem em três lugares (o efeito, a peça invocada, a Vida e as
     // condições de quem foi mordido) e sempre terminam chamando um destes dois.
     // A campainha toca AQUI, e não dentro de cada escrita lá: assim o módulo das
@@ -848,6 +884,8 @@ import MesaCab from '../../components/MesaCab.astro';
     ligarMira();
     ligarReguaENavegacao();
     ligarTelaCheia();
+    ligarCusto();
+    ligarIniciativa();
     ligarBotaoFx(ctxArtes, el('gr-fx'), el('gr-fx-cfg'));
     // A altura depende do que sobra da janela: refazer no redimensionamento é o
     // que mantém o mapa colado no pé da tela quando a janela muda de tamanho.
@@ -1477,7 +1515,9 @@ import MesaCab from '../../components/MesaCab.astro';
     // Desenha na ordem das pilhas: dentro de cada casa, o mais novo por último
     // (e portanto por cima).
     const ordenados = Object.values(pilhas).flat();
-    const vez = daVez();
+    // A aura acende em TODOS do tick corrente, e não só em quem age primeiro:
+    // eles estão agindo no mesmo instante, e a mesa precisa ver isso no chão.
+    const naVez = new Set(grupoDaVez().map((c: any) => c.id));
     box.innerHTML = ordenados.map((c: any) => {
       const t = TOKENS[c.id];
       const p = centroHex(t.q, t.r, RAIO);
@@ -1490,7 +1530,7 @@ import MesaCab from '../../components/MesaCab.astro';
       const caido = pct != null && pct <= 0;
       // Abaixo de uns 34px o nome fica mais largo que a peça e vira sujeira em
       // cima do vizinho; nesse tamanho o título do mouse dá conta.
-      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${c.id === vez?.id ? ' vez' : ''}"
+      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${naVez.has(c.id) ? ' vez' : ''}"
         data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
         title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}">
         <span class="tok-quadro">${avatarDe(c)}${anelHTML(pct)}</span>
@@ -1515,10 +1555,68 @@ import MesaCab from '../../components/MesaCab.astro';
     || String(TOKENS[a.id]?.em || '').localeCompare(String(TOKENS[b.id]?.em || ''))
     || String(a.nome).localeCompare(String(b.nome)));
 
-  /** De quem é a vez: o primeiro da fila que ainda está de pé. */
-  function daVez(): any | null {
-    const fila = naFila();
-    return fila.find((c: any) => !noChao(c)) || fila[0] || null;
+  /**
+   * O tick em que a cena está: o menor entre quem ainda pode agir.
+   *
+   * Com as ações custando Ticks diferentes, o relógio deixa de andar de um em
+   * um e passa a pular para onde está a próxima pessoa. Quem está caído não
+   * segura o relógio: ele não vai agir, e o mundo não espera por ele.
+   */
+  function tickDaVez(): number | null {
+    const emPe = naFila().filter((c: any) => !noChao(c));
+    return emPe.length ? (emPe[0].tick ?? 0) : null;
+  }
+
+  /**
+   * Quem está na vez. Agora é um GRUPO, e não uma pessoa.
+   *
+   * Duas ações podem terminar no mesmo Tick, e aí as duas criaturas agem no
+   * mesmo instante: é o que um relógio de Ticks faz, e esconder isso atrás de
+   * "um por vez" inventaria uma ordem que a regra não tem. Todos os do tick
+   * corrente acendem no tabuleiro; a ORDEM entre eles é a da fila, e o mestre
+   * a arrasta na coluna quando quiser escolher quem age primeiro.
+   */
+  function grupoDaVez(): any[] {
+    const t = tickDaVez();
+    if (t == null) return naFila().slice(0, 1);   // todos no chão: sobra o primeiro
+    return naFila().filter((c: any) => !noChao(c) && (c.tick ?? 0) === t);
+  }
+
+  /** Quem recebe o custo da próxima ação: o primeiro do grupo. */
+  const daVez = (): any | null => grupoDaVez()[0] || null;
+
+  // ------------------------------------------------ o custo da próxima ação
+  /**
+   * Quantos Ticks a próxima ação adianta o relógio de quem age.
+   *
+   * Fica no aparelho e não na arena: é o número que o mestre acabou de digitar
+   * para o golpe que está acontecendo, não uma propriedade da cena. O padrão 5
+   * é o do ataque comum; um golpe pesado custa mais, uma ação rápida custa
+   * menos, e quem sabe disso é quem está na mesa.
+   */
+  const CUSTO_KEY = 'centelha:grid:custo-tick';
+  function custoAtual(): number {
+    const el0 = document.getElementById('ini-custo') as HTMLInputElement | null;
+    const v = parseInt(el0?.value || '', 10);
+    return Math.max(1, Math.min(60, Number.isFinite(v) ? v : 5));
+  }
+  function ligarCusto() {
+    if (!MESTRE) return;
+    const inp = el('ini-custo') as HTMLInputElement;
+    el('ini-custo-cx').hidden = false;
+    let guardado = 5;
+    try { guardado = parseInt(localStorage.getItem(CUSTO_KEY) || '5', 10) || 5; } catch {}
+    inp.value = String(Math.max(1, Math.min(60, guardado)));
+    const pinta = () => {
+      const c = custoAtual();
+      el('ini-prox').textContent = `⏭ próximo (+${c}t)`;
+      try { localStorage.setItem(CUSTO_KEY, String(c)); } catch {}
+    };
+    inp.oninput = pinta;
+    // A roda do mouse sobre o campo mexeria no número sem querer enquanto se
+    // rola a coluna; o campo não é lugar de rolagem.
+    inp.addEventListener('wheel', (ev) => ev.preventDefault(), { passive: false });
+    pinta();
   }
 
   function pintarIniciativa() {
@@ -1530,31 +1628,122 @@ import MesaCab from '../../components/MesaCab.astro';
         : 'Ninguém em cena.'}</p>`;
       return;
     }
-    const vez = daVez();
+    const grupo = grupoDaVez();
+    const naVez = new Set(grupo.map((c: any) => c.id));
+    const age = grupo[0]?.id;
     // A rodada sai do tick, como no rastreador: seis ticks fecham uma rodada.
-    const tick = vez?.tick ?? 0;
-    el('ini-rodada').innerHTML = `<span class="rd">Rodada ${Math.floor(tick / 6) + 1}</span>
-      <span class="tk">tick ${tick}</span>`;
+    const tick = tickDaVez() ?? 0;
+    el('ini-rd').textContent = `Rodada ${Math.floor(tick / 6) + 1}`;
+    el('ini-tk').textContent = `tick ${tick}`;
     if (MESTRE) { (el('ini-rolar') as HTMLElement).hidden = false; (el('ini-prox') as HTMLElement).hidden = false; }
     box.innerHTML = fila.map((c: any) => {
       const pct = pctDe100(c);
       const caido = noChao(c);
-      return `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${c.id === vez?.id ? ' vez' : ''}${caido ? ' caido' : ''}"
-        data-c="${c.id}" title="${esc(c.nome)}${c.id === vez?.id ? ' · é a vez dele' : ''}">
+      const ehVez = naVez.has(c.id);
+      const dica = c.id === age ? ' · age agora'
+        : ehVez ? ' · também neste tick' : '';
+      return `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${ehVez ? ' vez' : ''}${
+        c.id === age ? ' age' : ''}${caido ? ' caido' : ''}"
+        data-c="${c.id}" data-t="${c.tick ?? 0}" title="${esc(c.nome)}${dica}">
         <span class="ini-av">${avatarDe(c, 'av-p')}</span>
         <span class="ini-nome">${esc(c.nome)}</span>
         <span class="ini-num">t <b>${c.tick ?? 0}</b> · ini <b>${c.iniciativa ?? 0}</b>${
           pct != null ? ` · ${Math.round(pct)}%` : ''}</span>
       </div>`;
     }).join('');
+  }
+
+  /**
+   * O clique, o botão direito e o arrasto da coluna de iniciativa.
+   *
+   * Ligado UMA vez, no contêiner, e não a cada desenho: `pintarIniciativa`
+   * troca o innerHTML inteiro, e ouvintes presos aos itens morreriam junto com
+   * eles a cada repintura (que agora acontece a cada movimento de peça).
+   */
+  function ligarIniciativa() {
     if (!MESTRE) return;
-    box.querySelectorAll<HTMLElement>('.ini-item').forEach((it) => {
-      // Esquerdo abre o mesmo menu do tabuleiro (é de lá que sai "encerrar a
-      // vez"); direito vai direto ao ajuste dos números, que é o que se faz
-      // nesta coluna.
-      it.addEventListener('click', (ev) => abrirMenu(it.dataset.c!, ev.clientX, ev.clientY));
-      it.addEventListener('contextmenu', (ev) => { ev.preventDefault(); editarIniciativa(it.dataset.c!); });
+    const box = el('gr-ini');
+    let arr: { id: string; tick: string; no: HTMLElement } | null = null;
+    let mexeu = false, y0 = 0;
+
+    box.addEventListener('click', (ev) => {
+      const it = (ev.target as HTMLElement).closest<HTMLElement>('.ini-item');
+      // Depois de arrastar, o navegador ainda manda o clique: sem esta trava,
+      // toda reordenação terminaria com o menu da peça aberto na cara.
+      if (!it || mexeu) return;
+      abrirMenu(it.dataset.c!, ev.clientX, ev.clientY);
     });
+    box.addEventListener('contextmenu', (ev) => {
+      const it = (ev.target as HTMLElement).closest<HTMLElement>('.ini-item');
+      if (!it) return;
+      ev.preventDefault();
+      editarIniciativa(it.dataset.c!);
+    });
+
+    box.addEventListener('pointerdown', (ev) => {
+      const it = (ev.target as HTMLElement).closest<HTMLElement>('.ini-item');
+      if (!it) return;
+      arr = { id: it.dataset.c!, tick: it.dataset.t!, no: it };
+      mexeu = false; y0 = ev.clientY;
+    });
+    box.addEventListener('pointermove', (ev) => {
+      if (!arr) return;
+      if (!mexeu) {
+        if (Math.abs(ev.clientY - y0) < 6) return;   // ainda pode ser um clique
+        mexeu = true;
+        arr.no.classList.add('movendo');
+        box.setPointerCapture?.(ev.pointerId);
+      }
+      const sob = document.elementFromPoint(ev.clientX, ev.clientY)?.closest<HTMLElement>('.ini-item');
+      // Só dentro do MESMO tick: a ordem entre ticks diferentes é do relógio, e
+      // não do mestre. Arrastar para fora do grupo não faz nada, de propósito.
+      if (!sob || sob === arr.no || sob.dataset.t !== arr.tick) return;
+      const r = sob.getBoundingClientRect();
+      sob.parentElement!.insertBefore(arr.no, ev.clientY > r.top + r.height / 2 ? sob.nextSibling : sob);
+    });
+    const soltar = async () => {
+      if (!arr) return;
+      const { tick } = arr;
+      const arrastou = mexeu;
+      arr.no.classList.remove('movendo');
+      arr = null;
+      if (!arrastou) return;
+      await gravarOrdemDoTick(tick);
+      // A trava do clique só sai depois que o evento de clique já passou.
+      setTimeout(() => { mexeu = false; }, 0);
+    };
+    box.addEventListener('pointerup', soltar);
+    box.addEventListener('pointercancel', soltar);
+  }
+
+  /**
+   * Grava a ordem que o mestre arrastou dentro de um tick.
+   *
+   * O desempate dentro do tick é a `iniciativa`, então é ela que muda. Os
+   * NÚMEROS ROLADOS são preservados: o conjunto de valores do grupo é o mesmo,
+   * só passa para a ordem nova. Empate ainda cairia no desempate velho e
+   * desfaria o arrasto, então a sequência é forçada a cair de um em um quando
+   * dois valores se encontram.
+   */
+  async function gravarOrdemDoTick(tick: string) {
+    const ids = [...el('gr-ini').querySelectorAll<HTMLElement>(`.ini-item[data-t="${CSS.escape(tick)}"]`)]
+      .map((e) => e.dataset.c!);
+    const membros = ids.map((i) => COMBS.find((c: any) => c.id === i)).filter(Boolean) as any[];
+    if (membros.length < 2) return;
+    const valores = membros.map((c) => c.iniciativa ?? 0).sort((a, b) => b - a);
+    for (let i = 1; i < valores.length; i++) {
+      if (valores[i] >= valores[i - 1]) valores[i] = valores[i - 1] - 1;
+    }
+    const mudaram = membros.filter((c, i) => c.iniciativa !== valores[i]);
+    if (!mudaram.length) return;
+    membros.forEach((c, i) => { c.iniciativa = valores[i]; });
+    for (const c of mudaram) {
+      const { error } = await SB.from('combatentes').update({ iniciativa: c.iniciativa }).eq('id', c.id);
+      if (error) { await carregarCombatentes(); pintarIniciativa(); return uiErro('Erro: ' + error.message); }
+    }
+    avisarAgora('combatentes');
+    pintarIniciativa(); pintarTokens();
+    await logar(null, `Ordem do tick ${tick}: ${membros.map((c) => c.nome).join(' → ')}`, { acao: null });
   }
 
   /**
@@ -1612,26 +1801,27 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   /**
-   * Encerra a vez: a peça vai para o fim da fila.
+   * Agiu: o relógio DELE anda o custo da ação.
    *
-   * O tick vira o maior da mesa mais um, e não `tick + 1`: com todo mundo em
-   * zero, somar um devolveria a vez para quem acabou de agir assim que o
-   * segundo da fila também agisse. Ir para o fim é a leitura de "passou".
-   *
-   * Quando as velocidades de ação entrarem, este é o lugar onde o custo do
-   * golpe entra no lugar do "+1".
+   * Era "vai para o fim da fila" (o maior tick da mesa mais um), que é a régua
+   * de quem não tem custo de ação: todo mundo agia uma vez por rodada, na mesma
+   * cadência, e uma estocada rápida valia o mesmo que uma marreta. Agora o
+   * número vem do campo ao lado da rodada, e é ele que decide quando esta
+   * criatura volta a aparecer na fila. Quem gastou 3 age de novo antes de quem
+   * gastou 7, e é assim que o relógio de Ticks conta a briga.
    */
-  async function encerrarVez(cid: string) {
+  async function encerrarVez(cid: string, custo = custoAtual()) {
     const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
-    const maior = naFila().reduce((m: number, x: any) => Math.max(m, x.tick ?? 0), 0);
-    const tick = maior + 1;
+    const gasto = Math.max(1, Math.min(60, Math.round(custo)));
+    const tick = Math.max(0, (c.tick ?? 0) + gasto);
     const { error } = await SB.from('combatentes').update({ tick }).eq('id', cid);
     if (error) return uiErro('Erro: ' + error.message);
     c.tick = tick;
     pintarIniciativa(); pintarTokens();
     avisarAgora('combatentes');
     const prox = daVez();
-    await logar(c, `${c.nome} encerrou a vez${prox && prox.id !== cid ? ` · agora é ${prox.nome}` : ''}`,
+    await logar(c, `${c.nome} agiu · +${gasto} tick${gasto > 1 ? 's' : ''} (volta no ${tick})`
+      + (prox && prox.id !== cid ? ` · agora é ${prox.nome}` : ''),
       { acao: null });
     // O relógio andou: é aqui que o fogo que não apaga volta a queimar, e que o
     // efeito vencido sai do tabuleiro levando a condição que tinha posto.
@@ -2192,7 +2382,7 @@ import MesaCab from '../../components/MesaCab.astro';
     const c = COMBS.find((z: any) => z.id === cid); if (!c) return;
     const m = el('tok-menu');
     const item = (id: string, txt: string, cls = '') => `<button data-a="${id}" class="${cls}">${txt}</button>`;
-    const ehAVez = daVez()?.id === cid;
+    const ehAVez = grupoDaVez().some((z: any) => z.id === cid);
     m.innerHTML = `<div class="tm-cab">${avatarDe(c, 'av-p')}<span class="tm-nome">${esc(c.nome)}</span></div>`
       + item('ataque', '⚔ Ataque')
       + item('curar', '✚ Recuperar Vida')
@@ -2200,7 +2390,7 @@ import MesaCab from '../../components/MesaCab.astro';
       + '<div class="tm-sep"></div>'
       + item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance')
       + '<div class="tm-sep"></div>'
-      + item('encerrar', ehAVez ? '⏭ Encerrar a vez' : '⏭ Passar para o fim da fila')
+      + item('encerrar', `⏭ ${ehAVez ? 'Agiu' : 'Adiantar o relógio dele'} (+${custoAtual()} ticks)`)
       + item('ordem', '↕ Iniciativa e ticks')
       + '<div class="tm-sep"></div>'
       + item('tirar', '⏏ Tirar do mapa', 'perigo');
