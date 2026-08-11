@@ -9,9 +9,9 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 51 itens abertos · 28 [DECIDIR] · 19 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · **Bestiário 10** · Ações & Sistema 6 · Lore 6 · Proezas 6 · Trilhas 4 ·
-Arremesso 4 · Social 3
+**Placar:** 59 itens abertos · 30 [DECIDIR] · 25 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · **Bestiário 10** · Mesa 8 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
+Trilhas 4 · Arremesso 4 · Social 3
 
 ---
 
@@ -347,6 +347,50 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   proposta. Pela densidade seccional, um baralho de cartas e uma bola de beisebol pesam quase o
   mesmo e o baralho chega a **22% do alcance**, não aos 50% que o ÷2 promete. Fica em ÷2 por
   simplicidade; se incomodar em mesa, o conserto é uma tecla.
+
+---
+
+## I. Mesa virtual · tempo real
+
+Frente aberta em **2026-08-11**, quando o Grid passou a atualizar sozinho. O desenho está escrito
+em `src/lib/mesa-tempo-real.ts` e no topo de `supabase/migracao-20.sql`: quem escreve toca uma
+**campainha** no canal `mesa:<id>` com uma palavra, e quem ouve relê aquele pedaço pela própria
+view. Nada de estado viaja pelo canal, e é isso que mantém a máscara de coluna da migração 14 de pé.
+Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma consulta por evento.
+
+- [ ] **I1 · [FAZER] Fechar o canal.** Hoje ele é público: quem soubesse o UUID da mesa poderia
+  ouvir as campainhas dela (descobriria que *algo* mexeu, e leria o nome de quem apontou uma casa).
+  As duas policies estão prontas e comentadas no fim de `migracao-20.sql`; falta ligar o
+  `private: true` no cliente e **testar com dois navegadores antes de subir**. O motivo de não estar
+  ligado é o preço de errar: com a policy torta, todo mundo é recusado e o tempo real some sem
+  mensagem de erro na tela.
+- [ ] **I2 · [FAZER] O registro da arena ainda é um `jsonb` reescrito inteiro.** A migração 20
+  barateia a LEITURA (uma linha por entrada, as 60 últimas); a ESCRITA continua subindo o array
+  todo, até uns 45 KB, a cada peça movida. O conserto é o mesmo da migração 19 com os efeitos:
+  `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
+- [ ] **I3 · [FAZER] As outras abas ainda não ouvem.** Grid e Combate estão no canal; Grupo, Mapas,
+  Compêndio, Diário e Arquivos não. A ficha aprovada, o mapa revelado e o handout liberado
+  continuam pedindo F5 do outro lado. É barato: `abrirCanal` + um `carregar()` no aviso, como em
+  `combate.astro`.
+- [ ] **I4 · [FAZER] Nada garante entrega.** Sem número de sequência, uma mensagem perdida deixa a
+  tela velha até o próximo aviso, até religar o canal ou até voltar para a aba. Um contador por
+  mesa (um `int` que sobe a cada campainha) deixaria o ouvinte perceber o buraco e pedir tudo.
+- [ ] **I5 · [FAZER] O anel de Vida remoto aparece em salto.** A peça que anda por ordem de outra
+  tela desliza; a Vida que muda por ordem de outra tela pula direto para o valor final, porque o
+  desenho troca o nó e transição de CSS não roda em elemento recém-nascido. O caminho é o mesmo do
+  `deslizarTokens`: mexer no `stroke-dashoffset` do nó que já está lá.
+- [ ] **I6 · [FAZER] A presença não distingue quem está olhando.** Ela conta abas abertas, e uma
+  aba em segundo plano conta igual. O navegador estrangula os timers da aba escondida, então ela
+  também **atrasa a própria campainha** quando é ela que escreve (não incomoda na prática: quem
+  age está com a aba na frente).
+- [ ] **I7 · [DECIDIR] Névoa de guerra.** É a maior peça que falta para o Grid virar mesa virtual
+  de verdade, e o tempo real acabou de torná-la viável: sem ele, revelar um pedaço do mapa não
+  chegava a ninguém até o F5. Precisa de decisão de mesa antes do código: a névoa é por jogador ou
+  do grupo? O que foi revelado fica revelado? Quem enxerga através de quem?
+- [ ] **I8 · [DECIDIR] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
+  mundo, assinada). O passo seguinte é o cursor de cada um deslizando pelo mapa, que é o que as
+  mesas virtuais grandes fazem. Custa uma mensagem a cada ~50 ms por pessoa que estiver mexendo o
+  mouse, e é a única coisa desta lista que pesa de verdade: vale a pena?
 
 ---
 
