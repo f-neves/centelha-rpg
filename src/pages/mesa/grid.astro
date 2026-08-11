@@ -70,6 +70,12 @@ import MesaCab from '../../components/MesaCab.astro';
           <div class="gr-mundo" id="gr-mundo">
             <div class="gr-fundo-caixa"><img id="gr-fundo" alt="" hidden /></div>
             <svg id="gr-hexes" xmlns="http://www.w3.org/2000/svg"></svg>
+            <!-- As Artes ficam ENTRE os hexágonos e as peças: a mancha cobre o
+                 chão e o desenho da grade, e nunca o retrato de quem está em pé
+                 dentro dela. `gr-previa` é a mesma camada em modo rascunho,
+                 seguindo o ponteiro enquanto o mestre escolhe onde o efeito cai. -->
+            <svg id="gr-efeitos" class="gr-efeitos" xmlns="http://www.w3.org/2000/svg"></svg>
+            <svg id="gr-previa" class="gr-previa" xmlns="http://www.w3.org/2000/svg"></svg>
             <div id="gr-tokens" class="gr-tokens"></div>
           </div>
         </div>
@@ -91,6 +97,8 @@ import MesaCab from '../../components/MesaCab.astro';
           <p class="muted nota-mini" id="gr-dica" hidden>Arraste o retrato até um hexágono para pôr no mapa.
             Arraste de um hexágono para outro para mover, e para cá para tirar do mapa.</p>
           <div id="gr-lista" class="gr-lista"></div>
+
+          <div id="gr-ef-lista" class="gr-ef-lista" hidden></div>
 
           <div class="gr-reg-cab">
             <h3 class="col-h">Registro</h3>
@@ -200,6 +208,12 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-zoom #gr-zval { font-size: var(--fs-micro); min-width: 2.8rem; text-align: center;
     font-variant-numeric: tabular-nums; }
 
+  /* O respiro de 40px que o layout põe no pé de toda página é o que sobrava
+     debaixo do tabuleiro. Aqui ele não serve: não há nada depois do mapa para
+     respirar. A classe entra pelo JS desta página, então nenhuma outra é
+     afetada e nenhum arquivo compartilhado precisa mudar. */
+  body.pagina-grid main#conteudo { padding-bottom: 0; }
+
   /* ---- as três colunas ----
      A barra deixou de ser uma faixa por cima de tudo e passou a ocupar só a
      largura das duas colunas da direita. O palco ganha essa altura porque
@@ -252,9 +266,12 @@ import MesaCab from '../../components/MesaCab.astro';
 
   /* O palco rola; o mundo tem o tamanho do tabuleiro e é ele que o zoom estica.
      Escalar o palco esticaria a barra de rolagem junto. */
+  /* Sem teto de altura: quem manda agora é a altura da grade, que `ajustarAltura`
+     ajusta para o palco encostar no pé da tela. O `max-height` de antes parava
+     o mapa antes do fim e deixava uma faixa morta embaixo. */
   .gr-palco { overflow: auto; border: 1px solid var(--rule); border-radius: var(--r-lg);
-    background: var(--panel-2, var(--panel)); max-height: calc(100vh - var(--mesa-barra-h, 66px) - 6rem);
-    min-height: 20rem; position: relative; }
+    background: var(--panel-2, var(--panel)); min-height: 20rem; position: relative; }
+  @media (max-width: 1100px) { .gr-palco { max-height: 70vh; } }
   /* ---- tela cheia: o tabuleiro toma o monitor ----
      `position: fixed; inset: 0` em vez de esticar o que já existe. É o que
      garante a cobertura total sem depender das margens, da largura máxima e do
@@ -328,6 +345,34 @@ import MesaCab from '../../components/MesaCab.astro';
     paint-order: stroke; stroke: rgba(0,0,0,.85); stroke-width: 3.5; stroke-linejoin: round; }
   .seta-txt { font-size: 15px; font-weight: 700; }
   .seta-sub { font-size: 10.5px; opacity: .85; }
+
+  /* ---- as Artes no chão ----
+     Duas camadas absolutas por cima dos hexágonos e por baixo das peças. Não
+     recebem ponteiro: quem manda no clique continua sendo o token e o hexágono,
+     e uma mancha de fogo não pode roubar o arrasto de quem está em pé nela. */
+  .gr-efeitos, .gr-previa { position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; overflow: visible; }
+  /* A mancha é translúcida e listrada: a cor sozinha some sobre um mapa colorido,
+     e a listra dá textura sem esconder o que está desenhado embaixo. */
+  .gr-ef polygon { fill: color-mix(in srgb, var(--ef-cor) 30%, transparent);
+    stroke: color-mix(in srgb, var(--ef-cor) 70%, transparent); stroke-width: 1; }
+  .gr-ef-aura polygon { fill: color-mix(in srgb, var(--ef-cor) 20%, transparent); }
+  .gr-ef-muro polygon { fill: color-mix(in srgb, var(--ef-cor) 55%, transparent); stroke-width: 1.6; }
+  .gr-previa polygon { fill: color-mix(in srgb, var(--accent) 26%, transparent);
+    stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 4 3; }
+
+  /* ---- a lista dos efeitos vivos, na coluna lateral ---- */
+  .gr-ef-lista { display: grid; gap: .2rem; margin: .4rem 0 .2rem; }
+  .gr-efl { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: .4rem;
+    padding: .22rem .3rem; border: 1px solid var(--rule); border-radius: var(--r-sm); }
+  .gr-efl-b { width: .5rem; height: 1.4rem; border-radius: 2px; background: var(--ef-cor); }
+  .gr-efl-tx { display: grid; min-width: 0; }
+  .gr-efl-tx b { font-size: var(--fs-aux); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gr-efl-tx small { font-size: var(--fs-micro); color: var(--ink-soft);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* Os turnos restantes são o número que a mesa pergunta em voz alta. */
+  .gr-efl-t { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-h3);
+    line-height: 1; color: var(--ef-cor); }
 
   /* ---- tokens no tabuleiro ---- */
   .gr-tokens { position: absolute; inset: 0; }
@@ -511,6 +556,10 @@ import MesaCab from '../../components/MesaCab.astro';
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
+  import {
+    carregarEfeitos, pintarEfeitos, pintarPainelEfeitos, conjurar,
+    verificarEfeitos, novoNPC as novoNPCArtes, type CtxGrid,
+  } from '../../lib/artes-grid-mesa';
 
   const el = (i: string) => document.getElementById(i)!;
 
@@ -535,6 +584,29 @@ import MesaCab from '../../components/MesaCab.astro';
   // Bloco de combate por combatente (defesas e absorção). Só o mestre monta:
   // ele depende da ficha dos personagens, que o jogador não lê dos colegas.
   let RESUMO: Record<string, any> = {};
+  // A ficha crua por personagem, que as Artes leem (Artes, Efeitos comprados,
+  // Centelha e equipamento). Vem do mesmo carregamento que monta o RESUMO.
+  let FICHAS: Record<string, any> = {};
+
+  /**
+   * O que a aba empresta ao módulo das Artes.
+   *
+   * Montado na hora a cada chamada, e não guardado: `ARENA`, `COMBS` e `TOKENS`
+   * trocam de identidade a cada recarga, e um contexto guardado apontaria para
+   * a lista da cena anterior.
+   */
+  const ctxArtes = (): CtxGrid => ({
+    SB, arena: ARENA, enc: ENC, combs: COMBS, tokens: TOKENS,
+    resumo: RESUMO, fichas: FICHAS, raio: RAIO, mestre: MESTRE,
+    hexNaTela,
+    logar,
+    recarregar: carregar,
+    repintar: () => {
+      pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
+      pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
+      pintarTokens(); pintarLista(); pintarIniciativa();
+    },
+  });
 
   // O raio do hexágono em pixels do MUNDO. O zoom é um `scale` por cima, então
   // este número não muda: mudar o raio redesenharia o SVG a cada passo de zoom.
@@ -545,6 +617,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (!ctx) return;
     SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id;
 
+    document.body.classList.add('pagina-grid');
     if (MESTRE) { el('gr-btns').hidden = false; el('gr-dica').hidden = false; }
     ligarBarra();
     ligarAparencia();
@@ -552,6 +625,9 @@ import MesaCab from '../../components/MesaCab.astro';
     ligarMenuToken();
     ligarMira();
     ligarTelaCheia();
+    // A altura depende do que sobra da janela: refazer no redimensionamento é o
+    // que mantém o mapa colado no pé da tela quando a janela muda de tamanho.
+    addEventListener('resize', debounce(() => ajustarAltura(), 150));
     await carregar();
   }
 
@@ -610,6 +686,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
     await carregarCombatentes();
     await carregarTokens();
+    await carregarEfeitos(ctxArtes());
     pintar();
   }
 
@@ -654,6 +731,10 @@ import MesaCab from '../../components/MesaCab.astro';
       // `resumoDe`, que mescla o bloco de origem (ficha ou bestiário) com os
       // ajustes que o mestre salvou naquele combatente.
       for (const c of COMBS) { try { RESUMO[c.id] = resumoDe(c, fichas); } catch { RESUMO[c.id] = null; } }
+      // As Artes precisam da ficha inteira, e não só do resumo de combate: é de
+      // lá que saem as Artes do personagem, os Efeitos que ele comprou, a
+      // Centelha e o equipamento que um efeito pode pegar.
+      FICHAS = fichas;
     }
     const daMesa = COMBS.map((c: any) => c.imagem).filter(Boolean);
     const dosPCs = [...COMBS.map((c: any) => c.retrato).filter(Boolean), ...Object.values(PC_IMG)];
@@ -753,8 +834,11 @@ import MesaCab from '../../components/MesaCab.astro';
     const doPC = c.retrato || PC_IMG[c.personagem_id];
     const src = (c.imagem && IMGS[c.imagem])
       || (doPC && IMGS[doPC])
-      || (c.tipo === 'criatura' && MON[c.monstro_id]?.imagem ? u(MON[c.monstro_id].imagem) : null);
-    const besta = c.tipo === 'criatura' && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
+      // O `monstro_id` vale para qualquer tipo, e não só para a criatura: o NPC
+      // de cena pode emprestar o retrato de um bicho do bestiário sem herdar o
+      // bloco de combate dele.
+      || (MON[c.monstro_id]?.imagem ? u(MON[c.monstro_id].imagem) : null);
+    const besta = MON[c.monstro_id]?.imagem && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
     return avatarHTML(c.nome, src, (extra + besta).trim(), pctDe100(c));
   }
 
@@ -778,12 +862,15 @@ import MesaCab from '../../components/MesaCab.astro';
     LOG = Array.isArray(ARENA.log) ? ARENA.log : [];
     pintarSeletor();
     pintarTabuleiro();
+    pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
     pintarTokens();
     pintarLista();
+    pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
     pintarIniciativa();
     pintarLog();
     aplicarGrade();
     sincronizarControles();
+    ajustarAltura();
   }
 
   function pintarSeletor() {
@@ -829,6 +916,35 @@ import MesaCab from '../../components/MesaCab.astro';
     }
     if (MESTRE) (el('gr-ajustar') as HTMLElement).hidden = false;
     aplicarZoom();
+  }
+
+  /**
+   * Estica a grade até o pé da tela.
+   *
+   * A conta é medida, e não escrita à mão: o que existe acima do tabuleiro (a
+   * barra de abas da mesa, as margens do layout) muda com o tema, com o zoom do
+   * navegador e com a largura, e um `calc(100vh - 6rem)` chutado erra em todas
+   * essas situações. Aqui se pergunta ao próprio elemento onde ele começa.
+   *
+   * Só acima de 1100px: abaixo disso a grade vira uma pilha de blocos, e altura
+   * fixa esmagaria os de baixo.
+   */
+  function ajustarAltura() {
+    const g = document.querySelector<HTMLElement>('.gr-grade');
+    if (!g) return;
+    if (!matchMedia('(min-width: 1101px)').matches || document.fullscreenElement) {
+      g.style.height = ''; return;
+    }
+    // Estica primeiro, mede a sobra depois. Não dá para calcular de uma vez o
+    // que existe abaixo da grade: `scrollHeight` nunca é menor que a janela, e
+    // num layout curto ele devolve o VAZIO da tela em vez do rodapé. Com a
+    // altura já aplicada, a rolagem que aparecer é exatamente o excesso, e o
+    // segundo passo o desconta.
+    const topo = g.getBoundingClientRect().top + (window.scrollY || 0);
+    const alvo = Math.max(320, Math.round(innerHeight - topo - 8));
+    g.style.height = `${alvo}px`;
+    const sobra = document.documentElement.scrollHeight - innerHeight;
+    if (sobra > 0) g.style.height = `${Math.max(320, alvo - sobra)}px`;
   }
 
   // ------------------------------------------------- enquadramento da arte
@@ -1440,6 +1556,9 @@ import MesaCab from '../../components/MesaCab.astro';
     } else {
       await logar(c, `${c?.nome} entrou em ${casa}`, { acao: 'por', cid, de: null, para: { q, r } });
     }
+    // Andar é o gesto que faz alguém pisar numa zona de fogo ou sair de uma
+    // aura, então é aqui que os efeitos são reconferidos.
+    await verificarEfeitos(ctxArtes());
   }
 
   async function tirarDoMapa(cid: string, registrar = true) {
@@ -1572,7 +1691,8 @@ import MesaCab from '../../components/MesaCab.astro';
       if (sair && sair.parentElement !== casa) casa.appendChild(sair);
       // O palco mede a altura da janela, que acabou de mudar: reencaixar o
       // tabuleiro é o gesto que o mestre faria na mão logo em seguida.
-      if (ARENA) setTimeout(() => caber(), 150);
+      ajustarAltura();
+      if (ARENA) setTimeout(() => { ajustarAltura(); caber(); }, 150);
     };
     const alterna = async () => {
       if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch {} return; }
@@ -1763,21 +1883,15 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   /**
-   * Arte: por ora, uma declaração registrada.
+   * Arte: o assistente inteiro mora em `artes-grid-*`.
    *
-   * As Artes têm parâmetros, custo em Mana e absorção pelo teste da matéria, e
-   * fazer isso direito é um capítulo inteiro. Prometer meia mecânica aqui seria
-   * pior do que assumir que ainda não existe: o mestre declara, o registro
-   * guarda, e a conta continua sendo na mesa.
+   * Aqui ficou só a chamada porque a mecânica é grande (24 Artes, 139 Efeitos,
+   * parâmetros, molde, Mana e o teste da matéria) e nada dela é específico deste
+   * arquivo. O contexto abaixo é tudo o que aquele módulo não tem como saber
+   * sozinho: a conexão, a arena, quem está em campo e onde.
    */
   async function usarArte(cid: string) {
-    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
-    const v = await uiFormulario(`Arte · ${c.nome}`, [
-      { nome: 'arte', rotulo: 'Qual Arte', obrigatorio: true, placeholder: 'Chama, Sopro, Véu…' },
-      { nome: 'nota', rotulo: 'O que acontece', tipo: 'longo', placeholder: 'efeito, alvo, grau…' },
-    ], { msg: 'Fica registrado no diário do tabuleiro. Os custos e o teste continuam na mão.', ok: 'Declarar' });
-    if (!v) return;
-    await logar(c, `${c.nome} usou ${v.arte.trim()}${v.nota.trim() ? `: ${v.nota.trim()}` : ''}`, { acao: null });
+    await conjurar(ctxArtes(), cid, el('gr-palco'));
   }
 
   // =============================================================== NPC
@@ -1790,23 +1904,10 @@ import MesaCab from '../../components/MesaCab.astro';
    * merece uma ficha permanente, e o mestre não deveria ter de limpar depois.
    */
   async function novoNPC() {
-    if (!ENC) return uiErro('Não há combate em andamento. O tabuleiro puxa quem está no encontro ativo.');
-    const v = await uiFormulario('NPC da cena', [
-      { nome: 'nome', rotulo: 'Nome', obrigatorio: true, placeholder: 'Taberneiro, Guarda 3, Cavalo…' },
-      { nome: 'pv', rotulo: 'Vida', tipo: 'numero', valor: 10, min: 1 },
-    ], { msg: 'Vale só para este combate: não entra no compêndio nem no bestiário.', ok: 'Pôr em campo' });
-    if (!v) return;
-    const pv = Math.max(1, parseInt(v.pv, 10) || 10);
-    const { error } = await SB.from('combatentes').insert({
-      encontro_id: ENC.id, tipo: 'custom', nome: v.nome.trim() || 'NPC',
-      pv_max: pv, pv_atual: pv, tick: 0, iniciativa: 0,
-      // Neutro por padrão: um NPC não é inimigo até a cena decidir. O lado se
-      // troca na aba Combate, que é onde o resto do bloco dele mora.
-      grupo: 'neutro', condicoes: [],
-    });
-    if (error) return uiErro('Erro: ' + error.message);
-    await carregarCombatentes();
-    pintarLista();
+    // Nome e Vida continuam sendo o caminho curto; a "ficha avançada" abre o
+    // resto (defesas, absorção, ataque, retrato do bestiário) para o figurante
+    // que vai brigar de verdade, e é o mesmo formulário que uma invocação usa.
+    await novoNPCArtes(ctxArtes());
   }
 
   // ============================================================= registro
