@@ -22,7 +22,14 @@ import MesaCab from '../../components/MesaCab.astro';
           <button class="btn mini" id="gr-editar">✎ medidas</button>
           <button class="btn mini" id="gr-fundo-btn">▣ fundo</button>
           <button class="btn mini" id="gr-ajustar" hidden>⤧ arte</button>
+          <!-- Os efeitos elementais. O botão liga e desliga; o ⚙ ao lado abre os
+               ajustes (opacidade, partículas, ritmo). A escolha fica no aparelho
+               de quem clicou, e não na arena: é preferência de quem olha, e a
+               máquina do jogador pode não ser a do mestre. -->
+          <button class="btn mini" id="gr-fx" title="Efeitos elementais">✦ efeitos</button>
+          <button class="btn-fant" id="gr-fx-cfg" title="Ajustar os efeitos">⚙</button>
           <button class="btn mini" id="gr-ativar">◉ em jogo</button>
+          <button class="btn mini" id="gr-registro">☰ registro</button>
           <button class="btn-fant perigo" id="gr-excluir" title="Excluir esta arena">✕</button>
         </span>
         <span class="espaco"></span>
@@ -208,6 +215,22 @@ import MesaCab from '../../components/MesaCab.astro';
       <div class="dlg-btns">
         <button type="button" class="btn" id="fa-cancelar">Cancelar</button>
         <button type="button" class="btn primary" id="fa-concluir">Concluir</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- O registro inteiro, para arrumar depois da cena: apagar o que sobrou de
+       uma tentativa, corrigir um nome escrito errado no calor do combate, e
+       refazer as linhas dos efeitos a partir do que está de fato no chão. -->
+  <dialog id="reg-dlg" class="mesa-dlg dlg-larga">
+    <form method="dialog">
+      <h3>Registro da arena</h3>
+      <p class="muted dlg-txt" id="rg-conta"></p>
+      <div id="rg-lista" class="rg-lista"></div>
+      <div class="dlg-btns">
+        <button type="button" class="btn mini esq" id="rg-refazer"
+          title="Apaga as linhas de Arte e escreve de novo uma por efeito que está no tabuleiro agora">↻ Refazer o log dos efeitos</button>
+        <button type="button" class="btn" id="rg-fechar">Fechar</button>
       </div>
     </form>
   </dialog>
@@ -631,9 +654,18 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-grupo-h { display: flex; align-items: baseline; gap: .3rem; font-family: 'Cinzel';
     font-size: calc(var(--fs-micro) * .85); text-transform: uppercase; letter-spacing: .07em;
     color: var(--ink-soft); padding: .3rem .3rem .1rem; border-bottom: 1px solid var(--rule);
-    margin-bottom: .1rem; }
+    margin-bottom: .1rem; width: 100%; background: none; border-top: 0; border-left: 0;
+    border-right: 0; font-weight: 400; cursor: pointer; text-align: left; }
   .gr-grupo-h:first-child { padding-top: 0; }
+  .gr-grupo-h:hover { color: var(--ink); border-bottom-color: var(--accent); }
   .gr-grupo-h span { font-variant-numeric: tabular-nums; opacity: .7; }
+  /* A seta gira em vez de trocar de glifo: o mesmo desenho virando é o que faz
+     a ligação com as outras duas dobras desta coluna. */
+  .gr-grupo-h .gg-seta { opacity: .8; display: inline-block; transition: transform .18s ease;
+    font-size: 1.1em; line-height: 1; }
+  .gr-grupo-h.fechado .gg-seta { transform: rotate(-90deg); }
+  @media (prefers-reduced-motion: reduce) { .gr-grupo-h .gg-seta { transition: none; } }
+  .gr-grupo-c { display: flex; flex-direction: column; gap: .2rem; }
 
   /* ---- registro ---- */
   /* Com as colunas mais estreitas, "Em campo" e o "+ NPC" já não cabem lado a
@@ -669,6 +701,35 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-log .casa { font-family: 'Cinzel'; color: var(--accent-texto); }
   .nota-mini { font-size: var(--fs-micro); margin: .1rem 0 .4rem; }
 
+  /* ---- o registro inteiro ---- */
+  /* A linha de instrução acompanha o tamanho da lista, e não o do corpo do
+     texto: ela explica dois ícones, e lida maior que as próprias linhas fica
+     com mais peso do que o conteúdo que descreve. */
+  #rg-conta { font-size: var(--fs-micro); margin: 0; }
+  .rg-lista { display: flex; flex-direction: column; gap: .1rem; max-height: 58vh; overflow-y: auto;
+    margin: .3rem 0; padding-right: .2rem; }
+  .rg-l { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: .4rem;
+    padding: .2rem .3rem; border-bottom: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+    font-size: var(--fs-micro); }
+  .rg-l:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .rg-h { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .rg-so { cursor: help; }
+  .rg-t { min-width: 0; overflow-wrap: anywhere; }
+  .rg-t .casa { font-family: 'Cinzel'; color: var(--accent-texto); }
+  /* Os botões só aparecem na linha sob o ponteiro: com trezentas linhas, dois
+     ícones em cada uma viram uma parede de ícones e o texto some no meio. */
+  .rg-acs { display: flex; gap: .1rem; opacity: 0; }
+  .rg-l:hover .rg-acs, .rg-l:focus-within .rg-acs { opacity: 1; }
+  .rg-acs button { background: none; border: 0; color: var(--ink-soft); cursor: pointer;
+    font: inherit; padding: 0 .25rem; line-height: 1; }
+  .rg-acs button:hover { color: var(--accent); }
+  .rg-acs button.perigo:hover { color: var(--perigo); }
+  .rg-in { width: 100%; font: inherit; font-size: var(--fs-micro); padding: .1rem .3rem;
+    background: var(--panel-2, var(--panel)); color: var(--ink);
+    border: 1px solid var(--accent); border-radius: var(--r-sm); }
+  .rg-ef { color: var(--accent-texto); }
+  .rg-vazio { color: var(--ink-soft); font-style: italic; padding: .4rem; }
+
   /* ---- diálogo do fundo ---- */
   .fd-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: .4rem;
     max-height: 46vh; overflow-y: auto; margin: .4rem 0; }
@@ -698,7 +759,7 @@ import MesaCab from '../../components/MesaCab.astro';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
   import {
     carregarEfeitos, pintarEfeitos, pintarPainelEfeitos, conjurar,
-    verificarEfeitos, novoNPC as novoNPCArtes, type CtxGrid,
+    verificarEfeitos, novoNPC as novoNPCArtes, ligarBotaoFx, type CtxGrid,
   } from '../../lib/artes-grid-mesa';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -747,6 +808,11 @@ import MesaCab from '../../components/MesaCab.astro';
     // O agora do tabuleiro é o tick de quem está na vez, o mesmo que a coluna
     // de iniciativa mostra. `encontros.tick_atual` é da aba Combate.
     tickAgora: () => daVez()?.tick ?? ENC?.tick_atual ?? 0,
+    // Tudo que o módulo das Artes escreve no registro sai marcado com `ef`.
+    // É essa marca que o "refazer o log dos efeitos" usa para saber o que
+    // apagar, e marcar aqui, no ponto por onde tudo passa, evita espalhar a
+    // etiqueta por dez chamadas lá dentro.
+    logar: (c: any, txt: string, extra: Record<string, any>) => logar(c, txt, { ...extra, ef: true }),
     // A moldura dos rótulos empurra o tabuleiro: quem desenha a grade é quem
     // sabe onde ela começa, então as camadas das Artes pedem em vez de calcular.
     margem, medida,
@@ -782,6 +848,7 @@ import MesaCab from '../../components/MesaCab.astro';
     ligarMira();
     ligarReguaENavegacao();
     ligarTelaCheia();
+    ligarBotaoFx(ctxArtes, el('gr-fx'), el('gr-fx-cfg'));
     // A altura depende do que sobra da janela: refazer no redimensionamento é o
     // que mantém o mapa colado no pé da tela quando a janela muda de tamanho.
     addEventListener('resize', debounce(() => ajustarAltura(), 150));
@@ -1598,13 +1665,36 @@ import MesaCab from '../../components/MesaCab.astro';
     const gente = COMBS.filter((c: any) => c.tipo !== 'criatura');
     const bichos = COMBS.filter((c: any) => c.tipo === 'criatura');
     // O rótulo do grupo só aparece quando há os dois: com uma cena só de
-    // criaturas, "Criaturas" escrito em cima delas não informa nada.
-    const bloco = (titulo: string, lista: any[]) =>
-      !lista.length ? ''
-        : (gente.length && bichos.length ? `<div class="gr-grupo-h">${titulo} <span>${lista.length}</span></div>` : '')
-          + lista.map(ficha).join('');
-    box.innerHTML = bloco('Personagens e NPCs', gente) + bloco('Criaturas', bichos);
+    // criaturas, "Criaturas" escrito em cima delas não informa nada. Sem
+    // rótulo não há o que recolher, e o bloco sai solto, como antes.
+    const doisGrupos = !!gente.length && !!bichos.length;
+    const bloco = (chave: string, titulo: string, lista: any[]) => {
+      if (!lista.length) return '';
+      if (!doisGrupos) return lista.map(ficha).join('');
+      const fechado = GRUPO_FECHADO[chave];
+      return `<button type="button" class="gr-grupo-h${fechado ? ' fechado' : ''}" data-g="${chave}"
+        aria-expanded="${!fechado}" title="${fechado ? 'Mostrar' : 'Recolher'} ${titulo.toLowerCase()}">
+        <span class="gg-seta">▾</span>${titulo} <span>${lista.length}</span></button>
+        <div class="gr-grupo-c"${fechado ? ' hidden' : ''}>${lista.map(ficha).join('')}</div>`;
+    };
+    box.innerHTML = bloco('gente', 'Personagens e NPCs', gente) + bloco('bichos', 'Criaturas', bichos);
+    box.querySelectorAll<HTMLElement>('.gr-grupo-h').forEach((h) => h.onclick = () => {
+      const g = h.dataset.g!;
+      GRUPO_FECHADO[g] = !GRUPO_FECHADO[g];
+      try { localStorage.setItem(GRUPO_KEY, JSON.stringify(GRUPO_FECHADO)); } catch {}
+      pintarLista();
+    });
   }
+
+  /**
+   * Que grupos de "Em campo" estão recolhidos. Fica no aparelho, e não na
+   * arena: é preferência de quem está olhando, e o mestre no notebook não tem
+   * por que impor a escolha ao jogador no celular.
+   */
+  const GRUPO_KEY = 'centelha:grid:grupos-fechados';
+  let GRUPO_FECHADO: Record<string, boolean> = (() => {
+    try { return JSON.parse(localStorage.getItem(GRUPO_KEY) || '{}') || {}; } catch { return {}; }
+  })();
 
   // ================================================================== zoom
   function aplicarZoom() {
@@ -2815,6 +2905,138 @@ import MesaCab from '../../components/MesaCab.astro';
     await persistirLog();
   }
 
+  // ====================================================== o registro inteiro
+  /**
+   * O registro sai da coluna e abre inteiro, para ser arrumado.
+   *
+   * A coluna mostra as 60 últimas e não deixa mexer em nada, que é o certo
+   * durante a cena. Depois dela sobra trabalho de arquivo: a linha que ficou de
+   * uma tentativa, o nome escrito errado no calor do combate, o efeito que foi
+   * conjurado três vezes até a mesa entender a regra. É isto aqui.
+   */
+  function abrirRegistro() {
+    pintarRegistro();
+    (el('reg-dlg') as HTMLDialogElement).showModal();
+  }
+
+  function pintarRegistro() {
+    const box = el('rg-lista');
+    const n = LOG.length;
+    el('rg-conta').textContent = n
+      ? `${n} linha${n > 1 ? 's' : ''}, a mais nova em cima. O ✎ corrige o texto e o ✕ apaga a linha.`
+      : '';
+    if (!n) { box.innerHTML = '<p class="rg-vazio">Nada registrado nesta arena ainda.</p>'; return; }
+    const hora = (ts: string) => {
+      try { return new Date(ts).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); }
+      catch { return ''; }
+    };
+    box.innerHTML = LOG.slice().reverse().map((e: any) => `<div class="rg-l" data-id="${esc(e.id)}">
+      <span class="rg-h">${hora(e.ts)}</span>
+      <span>${e.pub == null ? '<span class="rg-so" title="Só você lê esta linha">🔒</span>' : ''}${
+        e.ef ? '<span class="rg-ef rg-so" title="Linha de Arte: o &quot;refazer&quot; troca estas">✶</span>' : ''}</span>
+      <span class="rg-t">${realcarCasas(e.txt)}</span>
+      <span class="rg-acs">
+        <button type="button" data-a="ed" title="Editar o texto">✎</button>
+        <button type="button" data-a="rm" class="perigo" title="Excluir esta linha">✕</button>
+      </span>
+    </div>`).join('');
+    box.querySelectorAll<HTMLElement>('.rg-acs button').forEach((b) => b.onclick = () => {
+      const id = b.closest<HTMLElement>('.rg-l')!.dataset.id!;
+      if (b.dataset.a === 'ed') editarLinha(id);
+      else excluirLinha(id);
+    });
+  }
+
+  /**
+   * Editar no lugar, e não num diálogo por cima do diálogo.
+   *
+   * A redação pública acompanha a do mestre SE ela existia: corrigir o nome de
+   * quem levou o golpe tem de corrigir nos dois lados. Se a linha era secreta
+   * (peça oculta), ela continua secreta, e por isso o `pub` nulo não vira texto.
+   */
+  function editarLinha(id: string) {
+    const linha = el('rg-lista').querySelector<HTMLElement>(`.rg-l[data-id="${CSS.escape(id)}"]`);
+    const e = LOG.find((x: any) => x.id === id);
+    const alvo = linha?.querySelector('.rg-t');
+    if (!linha || !e || !alvo) return;
+    const inp = document.createElement('input');
+    inp.className = 'rg-in';
+    inp.value = e.txt || '';
+    alvo.replaceWith(inp);
+    inp.focus(); inp.select();
+    let fechado = false;
+    const fim = async (salvar: boolean) => {
+      if (fechado) return;
+      fechado = true;
+      const novo = inp.value.trim();
+      if (salvar && novo && novo !== e.txt) {
+        if (typeof e.pub === 'string') e.pub = novo;
+        e.txt = novo;
+        pintarLog();
+        await persistirLog();
+      }
+      pintarRegistro();
+    };
+    inp.onkeydown = (ev) => {
+      if (ev.key === 'Enter') { ev.preventDefault(); fim(true); }
+      // O Esc aqui desiste da EDIÇÃO. Sem segurar a tecla, ele fecharia o
+      // diálogo inteiro, que é o que o Esc faz num modal.
+      else if (ev.key === 'Escape') { ev.preventDefault(); ev.stopPropagation(); fim(false); }
+    };
+    inp.onblur = () => fim(true);
+  }
+
+  async function excluirLinha(id: string) {
+    const i = LOG.findIndex((x: any) => x.id === id);
+    if (i < 0) return;
+    LOG.splice(i, 1);
+    pintarLog(); pintarRegistro();
+    await persistirLog();
+  }
+
+  /**
+   * Refaz as linhas de Arte a partir do que está no chão AGORA.
+   *
+   * O assistente de conjuração deixa rastro: a tentativa que não foi adiante, o
+   * efeito que já venceu, a mordida que a mesa refez. Este botão joga fora tudo
+   * que veio dele (as linhas marcadas com `ef`) e escreve uma linha por efeito
+   * que ainda está no tabuleiro, lida do banco.
+   *
+   * O que ele NÃO alcança são as linhas de antes desta marca existir: elas não
+   * têm como ser reconhecidas, e ficam para o ✕ apagar à mão.
+   */
+  async function refazerLogEfeitos() {
+    const { data, error } = await SB.from('arena_efeitos').select('*').eq('arena_id', ARENA.id);
+    if (error) return uiErro(/arena_efeitos/i.test(error.message)
+      ? 'A tabela dos efeitos ainda não existe. Rode supabase/migracao-19.sql.'
+      : 'Não deu para ler os efeitos: ' + error.message);
+    const vivos = data || [];
+    const marcadas = LOG.filter((e: any) => e.ef).length;
+    if (!marcadas && !vivos.length) return uiErro('Não há linhas de Arte nem efeitos no tabuleiro.');
+    if (!await uiConfirmar(
+      `Apagar ${marcadas} linha${marcadas === 1 ? '' : 's'} de Arte do registro e escrever `
+      + `${vivos.length} no lugar, uma por efeito que está no tabuleiro?`,
+      { titulo: 'Refazer o log dos efeitos', ok: 'Refazer', perigo: marcadas > 0 })) return;
+
+    LOG = LOG.filter((e: any) => !e.ef);
+    const agora = daVez()?.tick ?? 0;
+    const nomeDe = (id: string) => COMBS.find((c: any) => c.id === id)?.nome || '';
+    // Na ordem em que entraram em cena, que é a ordem em que a mesa os viu.
+    for (const ef of vivos.slice().sort((a: any, b: any) => (a.desde_tick ?? 0) - (b.desde_tick ?? 0))) {
+      const casas = Array.isArray(ef.hexes) ? ef.hexes.length : 0;
+      const quem = nomeDe(ef.conjurador_id);
+      // Um turno são seis ticks: o que a mesa pergunta é quantos turnos faltam.
+      const turnos = Math.max(0, Math.ceil(((ef.ate_tick ?? 0) - agora) / 6));
+      const txt = `${ef.nome} no tabuleiro${quem ? `, de ${quem}` : ''}`
+        + (casas ? ` · ${casas} casa${casas > 1 ? 's' : ''}` : '')
+        + ` · ${turnos} turno${turnos === 1 ? '' : 's'}`;
+      LOG.push({ id: novoId(), ts: new Date().toISOString(), txt, pub: ef.oculto ? null : txt,
+        acao: null, ef: true });
+    }
+    pintarLog(); pintarRegistro();
+    await persistirLog();
+  }
+
   // ============================================================ a barra
   /**
    * Encolher a lista dá a altura dela ao Registro. Fica guardado no aparelho
@@ -2881,6 +3103,9 @@ import MesaCab from '../../components/MesaCab.astro';
       ev.preventDefault(); encerrarVez(v.id);
     });
     el('gr-desfazer').onclick = () => desfazer();
+    el('gr-registro').onclick = () => abrirRegistro();
+    el('rg-fechar').onclick = () => (el('reg-dlg') as HTMLDialogElement).close();
+    el('rg-refazer').onclick = () => refazerLogEfeitos();
     el('gr-nova').onclick = () => abrirArena(null);
     el('gr-editar').onclick = () => abrirArena(ARENA);
     el('gr-fundo-btn').onclick = () => abrirFundo();
