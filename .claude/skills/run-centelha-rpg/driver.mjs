@@ -91,8 +91,8 @@ async function main() {
     await p.screenshot({ path: `${SHOTS}/ficha.png` });
 
     // 3b) os níveis da Arte vêm num cartão de hover, não abrem embaixo do cabeçalho
-    await p.evaluate(() => document.querySelector('#artes .arte-head .dots .dot[data-d="2"]')?.dispatchEvent(new MouseEvent('click', { bubbles: true })));
-    await (await p.$('#artes .arte-head')).hover();
+    await p.evaluate(() => document.querySelector('#artes .cam-head .dots .dot[data-d="2"]')?.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    await (await p.$('#artes .arte-nm')).hover();
     await new Promise((r) => setTimeout(r, 250));
     const arte = await p.evaluate(() => {
       const el = document.querySelector('.arte-pop');

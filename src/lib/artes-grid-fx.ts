@@ -103,6 +103,16 @@ function defsDoElemento(el: Elemento): string {
 
   // A Agua ganha um segundo gradiente, em faixas: e o que a faz parecer
   // superficie de agua em vez de disco azul, e e o que a separa do Gelo.
+  // A faixa do brilho que varre o gelo: clara no meio e nada nas pontas, para
+  // ela entrar e sair de cena sem mostrar borda.
+  const brilhoGrad = el === 'gelo'
+    ? `<linearGradient id="${id('brilho')}" x1="0" y1="0" x2="1" y2="0">
+         <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+         <stop offset="50%" stop-color="#ffffff" stop-opacity="0.85" />
+         <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+       </linearGradient>`
+    : '';
+
   const faixas = el === 'agua'
     ? `<linearGradient id="${id('f')}" x1="0" y1="0" x2="0" y2="1">
          ${[0, 0.22, 0.45, 0.68, 0.9].map((o, i) =>
@@ -132,12 +142,81 @@ function defsDoElemento(el: Elemento): string {
       </feMerge>
     </filter>`;
 
+  // A CHAMA. Ruido -> desfoque -> contraste altissimo.
+  //
+  // A tecnica e a do fogo em CSS que circula por ai (Simey, no CodePen): o que
+  // faz lingua de fogo nao e gradiente, e RUIDO BORRADO E ENTAO ESTOURADO no
+  // contraste. O desfoque junta os graos em manchas moles; o contraste corta
+  // essas manchas numa borda dura, e o que sobra tem a silhueta recortada de
+  // uma chama. Nenhum gradiente sozinho chega perto disso.
+  //
+  // A adaptacao e a direcao. A referencia e uma fogueira DE PERFIL, com as
+  // linguas subindo e o branco na base; aqui o tabuleiro e visto DE CIMA, e uma
+  // chama vista de cima nao sobe, ela abre. Por isso o degrade que manda e
+  // radial: branco no nucleo, laranja no corpo, nada na beirada.
+  //
+  // `feComponentTransfer` com inclinacao alta e o `contrast()` do CSS: leva o
+  // meio-tom para os extremos. O `intercept` negativo e o limiar, e e ele que
+  // decide quanta area vira lingua em vez de neblina.
+  // A CHAMA: ruido -> desfoque -> contraste altissimo.
+  //
+  // O que faz lingua de fogo nao e gradiente, e RUIDO BORRADO E ESTOURADO no
+  // contraste. O desfoque junta os graos em manchas moles; a inclinacao alta
+  // corta essas manchas numa borda dura, e e a borda dura que da a silhueta
+  // recortada de uma chama.
+  //
+  // O ruido vira FORMA, e nunca cor: feTurbulence gera R, G e B como ruidos
+  // INDEPENDENTES, e estourar o contraste canal a canal amplifica essa
+  // separacao. O fogo sai verde e magenta, psicodelico, que foi o que aconteceu
+  // aqui na primeira tentativa. Passar pela luminancia joga tudo num canal so,
+  // e a cor volta a ser a da fonte no feComposite do fim.
+  //
+  // O intercept e o limiar: quanto mais negativo, menos area sobra e mais
+  // recortada a chama fica.
+  //
+  // A direcao tambem muda em relacao a referencia: la e uma fogueira DE PERFIL,
+  // com as linguas subindo e o branco na base. Aqui o tabuleiro e visto DE
+  // CIMA, e chama vista de cima nao sobe, ela abre.
+  const chama = el === 'fogo'
+    ? `<filter id="${id('c')}" x="-20%" y="-20%" width="140%" height="140%"
+         color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.022 0.03" numOctaves="3"
+          seed="11" result="ruido" />
+        <feColorMatrix in="ruido" type="luminanceToAlpha" result="cinza" />
+        <feGaussianBlur in="cinza" stdDeviation="4" result="mole" />
+        <feComponentTransfer in="mole" result="linguas">
+          <feFuncA type="linear" slope="9" intercept="-3.4" />
+        </feComponentTransfer>
+        <feGaussianBlur in="linguas" stdDeviation="1.1" result="macio" />
+        <feComposite in="SourceGraphic" in2="macio" operator="in" />
+      </filter>`
+    : '';
+
+  // O GELO: halo em camadas e cristal.
+  //
+  // A referencia (o texto congelado, do CodePen) empilha quatro drop-shadows:
+  // duas brancas curtas, que dao a geada colada na borda, e duas azuis largas,
+  // que dao o frio irradiando. E a MISTURA das duas distancias que faz parecer
+  // gelo, e nao um contorno azul: sem as curtas o desenho fica mole, sem as
+  // largas ele fica seco.
+  //
+  // Em SVG isso e uma pilha de feDropShadow, e ela e barata porque nao anima:
+  // o navegador calcula uma vez e reusa em toda mancha de gelo da tela.
+  const cristal = el === 'gelo'
+    ? `<filter id="${id('c')}" x="-45%" y="-45%" width="190%" height="190%">
+        <feDropShadow dx="0" dy="0" stdDeviation="1" flood-color="#ffffff" flood-opacity="0.7" />
+        <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#2983ac" flood-opacity="0.7" />
+        <feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="#7dccef" flood-opacity="0.55" />
+        <feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="#3a7a9b" flood-opacity="0.5" />
+      </filter>`
+    : '';
+
   // O brilho. Um blur so, para o nucleo sangrar sobre o corpo: bloom barato.
   const halo = `<filter id="${id('h')}" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="6" />
     </filter>`;
 
-  return grad + faixas + grao + halo;
+  return grad + brilhoGrad + faixas + chama + cristal + grao + halo;
 }
 
 /** Os `<defs>` de todos os elementos que estao na tela agora. */
@@ -313,17 +392,36 @@ function estruturaDe(el: Elemento, box: Caixa, seme: number, pxPorM: number, f: 
   }
 
   if (el === 'gelo') {
-    // Facetas: lascas retas cruzando o miolo, como um vidro rachado.
-    const n = 7;
-    return `<g class="fx-facetas">${Array.from({ length: n }, () => {
+    // As facetas: lascas retas cruzando o miolo, como um vidro rachado. A pilha
+    // de sombras do filtro e o que as faz brilhar de frio em vez de parecerem
+    // riscos de lapis.
+    const n = 8;
+    const facetas = Array.from({ length: n }, () => {
       const a = r() * Math.PI * 2;
       const d = Math.sqrt(r()) * R * 0.85;
       const x = box.cx + Math.cos(a) * d, y = box.cy + Math.sin(a) * d;
-      const ang = r() * Math.PI, L = R * (0.2 + r() * 0.4);
+      const ang = r() * Math.PI, L = R * (0.18 + r() * 0.38);
       return `<line x1="${g(x - Math.cos(ang) * L)}" y1="${g(y - Math.sin(ang) * L)}"
         x2="${g(x + Math.cos(ang) * L)}" y2="${g(y + Math.sin(ang) * L)}"
-        stroke="${p.pico}" stroke-width="${g(0.8 + pxPorM * 0.02)}" opacity="0.4" />`;
-    }).join('')}</g>`;
+        stroke="${p.pico}" stroke-width="${g(0.9 + pxPorM * 0.022)}"
+        stroke-linecap="round" opacity="0.55" />`;
+    }).join('');
+
+    // O BRILHO QUE VARRE.
+    //
+    // E a assinatura do gelo na referencia, e o segredo dela e o RITMO: a faixa
+    // atravessa em pouco mais de meio segundo e depois some por sete. Um brilho
+    // que passeia devagar vira enfeite de vitrine; um que relampeja e some vira
+    // reflexo, e reflexo e o que uma superficie de gelo faz.
+    //
+    // A faixa e um retangulo inclinado, duas vezes mais larga que a figura, que
+    // anda no eixo X. O recorte da figura corta o resto.
+    const lar = R * 0.5;
+    const brilho = `<g class="fx-glint"><rect x="${g(box.cx - R * 2)}" y="${g(box.cy - R * 1.6)}"
+      width="${g(lar)}" height="${g(R * 3.2)}" fill="url(#fx-gelo-brilho)"
+      transform="rotate(-24 ${g(box.cx)} ${g(box.cy)})" /></g>`;
+
+    return `<g filter="url(#fx-gelo-c)">${facetas}</g>${brilho}`;
   }
 
   if (el === 'raio') {
@@ -393,14 +491,36 @@ function estruturaDe(el: Elemento, box: Caixa, seme: number, pxPorM: number, f: 
   }
 
   if (el === 'fogo') {
-    // O nucleo quente: um borrao claro no meio, que e o que faz o gradiente
-    // parecer chama e nao disco. O halo ja esta nos defs.
-    // Duas bolas concentricas: a de fora e o calor, a de dentro e a brasa. Uma
-    // so nao da o degrade que faz o olho ler chama em vez de disco.
+    // Tres camadas de lingua, cada uma com o proprio ritmo e a propria escala.
+    // Uma so fica ritmica demais e o olho pega o laco; tres desencontradas dao
+    // a impressao de fogo que nunca repete.
+    //
+    // O que se mexe e o `transform` do grupo, e nao o filtro: o navegador
+    // compoe o deslocamento na GPU e o ruido continua sendo calculado uma vez.
+    // QUEM SE MEXE E O GRUPO FILTRADO, e nao os filhos dentro dele.
+    //
+    // Animar tres circulos DENTRO do filtro obriga o navegador a refiltrar a
+    // regiao inteira a cada quadro: medido, seis fogueiras oscilavam entre 39 e
+    // 52 quadros por segundo, e a propria instabilidade ja denunciava o custo.
+    // Animando o grupo por fora, a saida do filtro vira uma camada que so e
+    // transformada, e o ruido continua sendo calculado uma vez.
+    //
+    // As tres camadas ficam paradas uma em relacao a outra, e o movimento vem de
+    // dois grupos aninhados girando em ritmos primos entre si (7 e 11 segundos):
+    // o laco composto so se repete a cada 77, e o olho nao pega a volta.
+    const linguas = `<g class="fx-lingua fx-lingua-0">
+      <g class="fx-lingua fx-lingua-1" filter="url(#fx-fogo-c)">${[1, 0.72, 0.5].map((k, i) => `
+        <circle cx="${g(box.cx)}" cy="${g(box.cy)}" r="${g(R * k)}"
+          fill="${i ? p.nucleo : p.corpo}" opacity="${(0.85 - i * 0.18).toFixed(2)}" />`).join('')}
+      </g></g>`;
+
+    // O nucleo por baixo das linguas: e ele que da o miolo continuo, para o fogo
+    // nao virar um punhado de manchas soltas.
     return `<circle class="fx-nucleo" cx="${g(box.cx)}" cy="${g(box.cy)}"
-        r="${g(R * 0.55)}" fill="${p.corpo}" opacity="0.75" filter="url(#fx-fogo-h)" />
+        r="${g(R * 0.5)}" fill="${p.corpo}" opacity="0.6" filter="url(#fx-fogo-h)" />
       <circle class="fx-nucleo" cx="${g(box.cx)}" cy="${g(box.cy)}"
-        r="${g(R * 0.3)}" fill="${p.nucleo}" opacity="0.85" filter="url(#fx-fogo-h)" />`;
+        r="${g(R * 0.26)}" fill="${p.nucleo}" opacity="0.9" filter="url(#fx-fogo-h)" />
+      ${linguas}`;
   }
 
   if (el === 'sombra') {

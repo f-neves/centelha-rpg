@@ -1043,6 +1043,57 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .fx-bolt-2 { --fx-dur: 3.7s; animation-delay: calc(1.1s / var(--fx-v, 1)); }
 .fx-bolt-halo { --fx-dur: 2.8s; animation-name: fx-descarga;
   animation-timing-function: steps(1, end); }
+/* As línguas de fogo: cada camada gira e respira no seu ritmo, e o que anda é
+   o TRANSFORM do grupo. O ruído dentro do filtro continua sendo calculado uma
+   vez; o navegador só recompõe o deslocamento. Três ritmos primos entre si
+   (7, 11 e 13 segundos) fazem o laço demorar muito a se repetir, que é o que
+   impede o olho de pegar o truque. */
+.fx-lingua { transform-box: fill-box; transform-origin: center;
+  animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+@keyframes fx-lamber-a {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  33%      { transform: rotate(4deg) scale(1.06); }
+  66%      { transform: rotate(-3deg) scale(.96); }
+}
+@keyframes fx-lamber-b {
+  0%, 100% { transform: rotate(0deg) scale(1.02); opacity: .75; }
+  50%      { transform: rotate(-6deg) scale(.92); opacity: 1; }
+}
+@keyframes fx-lamber-c {
+  0%, 100% { transform: rotate(2deg) scale(.94); opacity: .55; }
+  40%      { transform: rotate(-2deg) scale(1.1); opacity: .9; }
+}
+.fx-lingua-0 { animation-name: fx-lamber-a; animation-duration: calc(7s / var(--fx-v, 1)); }
+.fx-lingua-1 { animation-name: fx-lamber-b; animation-duration: calc(11s / var(--fx-v, 1)); }
+.fx-lingua-2 { animation-name: fx-lamber-c; animation-duration: calc(13s / var(--fx-v, 1)); }
+/* O grupo de fora gira, o de dentro respira: dois ritmos primos entre si (7 e
+   11 segundos) fazem o laço composto só se repetir a cada 77. */
+
+/* O brilho que varre o gelo. O ritmo é a peça inteira: a faixa atravessa em
+   pouco mais de meio segundo e depois some por sete. Um brilho que passeia
+   devagar vira enfeite de vitrine; um que relampeja e some vira reflexo, e
+   reflexo é o que uma superfície de gelo faz. É o mesmo desenho de tempo da
+   referência, onde a varredura ocupa 10% do laço e os outros 90% são espera. */
+@keyframes fx-varredura {
+  0%        { transform: translateX(0); opacity: 0; }
+  1%        { opacity: .9; }
+  9%        { opacity: .9; }
+  10%, 100% { transform: translateX(var(--fx-glint, 300%)); opacity: 0; }
+}
+.fx-glint { transform-box: fill-box; transform-origin: center;
+  animation: fx-varredura calc(7s / var(--fx-v, 1)) linear infinite; }
+
+/* A Terra treme, devagar e pouco. É o único gesto que ela tem: pedra não sobe
+   nem corre, ela assenta. Meio pixel de deslocamento em oito segundos basta
+   para o olho saber que aquilo está vivo sem nada sair do lugar. */
+@keyframes fx-treme {
+  0%, 100% { transform: translate(0, 0); }
+  20%      { transform: translate(0.6px, -0.4px); }
+  45%      { transform: translate(-0.5px, 0.5px); }
+  70%      { transform: translate(0.4px, 0.6px); }
+}
+.fx-terra { animation: fx-treme calc(8s / var(--fx-v, 1)) ease-in-out infinite; }
+
 /* A luz respira inteira, raios e núcleo juntos. */
 @keyframes fx-pulsa {
   0%, 100% { transform: scale(.94); opacity: .75; }
