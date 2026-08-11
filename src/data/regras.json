@@ -392,7 +392,7 @@
   "orcamentoHeroico": 2600,
   "forca": {
     "notaLevantamento": "FAH = (Força × 3) + Halterofilismo, de 3 a 24. Atletismo NÃO entra: erguer o máximo é contração estática, e Atletismo é mobilidade e fôlego. O que sai da tabela é o peso que se tira do CHÃO até a altura do quadril, uma vez, sem sair do lugar. Erguer o mesmo peso ACIMA DA CABEÇA custa metade disso, e ARREMESSAR custa um quarto: quanto mais alto o peso precisa ir, menos peso vai.",
-    "notaCarga": "As cinco faixas de carga saem do peso máximo P: Mínima até P/8, Leve até P/4, Média até P/2, Pesada até 3P/4 e Máxima até P. A velocidade de deslocamento é vel = (1 − x^1,5)² × (1 − (x/0,75)^8), com x = peso ÷ P. O primeiro fator é a curva medida contra sprint com colete e marcha com mochila (91% em P/8, 77% em P/4, 42% em P/2); o segundo é o corte, que só morde perto do fim. Na Pesada o deslocamento é pequeno mas existe, de 40% a zero. Acima de 3P/4 não há deslocamento nenhum: o peso se ergue e se segura, e não se leva a lugar nenhum.",
+    "notaCarga": "As cinco faixas de carga saem do peso máximo P: Mínima até P/8, Leve até P/4, Média até P/2, Pesada até 3P/4 e Máxima até P. A velocidade de deslocamento é vel = 1 − (peso ÷ 3P/4)^1,5. O expoente vem do ajuste da literatura de locomoção com carga: quinze soldados com mochila andam a 96% do passo carregando 22% do próprio peso, 87% carregando 44% e 76% carregando 66%, o que dá expoente 1,62 com menos de um ponto percentual de resíduo, e a varredura contra marcha e sprint juntos tem o mínimo em 1,5. Assim a Mínima acaba em 93%, a Leve em 81% e a Média em 46%. Na Pesada o deslocamento é pequeno mas existe, de 46% a zero. Acima de 3P/4 não há deslocamento nenhum: o peso se ergue e se segura, e não se leva a lugar nenhum.",
     "notaArremesso": "FAA = (Força × 2) + Atletismo + Arremesso, de 2 a 24. Halterofilismo não entra aqui, mas entra pelo peso máximo, que é o teto do arremesso. Alcance = 7 × FAA^0,7 ÷ peso^0,4, e o número já supõe a melhor situação possível, correndo e girando. O ápice fica em 0,1 kg: abaixo disso a velocidade do braço satura e só o ar cobra, então cada vez que o peso cai pela metade o alcance perde 10%. O teto de arremesso é um quarto do peso máximo, e nos últimos 20% até ele o alcance desaba até zero.",
     "levantamento": {
       "3": 30,
@@ -443,8 +443,7 @@
     "arremessoTeto": 0.25,
     "arremessoQueda": 0.8,
     "levantamentoAcimaCabeca": 0.5,
-    "cargaCorte": 0.75,
-    "cargaCorteExp": 8
+    "cargaCorte": 0.75
   },
   "progressaoPorSessao": [
     10,

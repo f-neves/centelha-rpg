@@ -449,6 +449,16 @@ tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 5%, tran
   font-size: var(--fs-aux); font-style: normal; line-height: 1.45; }
 .gloss-pop b { font-family: 'Cinzel'; color: var(--accent-texto); display: block; margin-bottom: .15rem; font-size: var(--fs-rotulo); }
 
+/* ---------- hidden vence o componente ----------
+   `[hidden]` é `display: none` só na folha do navegador, que tem a menor força
+   de todas. Qualquer regra nossa do tipo `.x { display: inline-flex }` reacende
+   um elemento marcado como escondido — foi assim que a caixa do código de
+   convite apareceu VAZIA em oito abas da mesa, e que controles de mestre
+   vazaram para a tela do jogador. Três lugares já contornavam isto na mão
+   (nav.toc a[hidden], .card-modal[hidden], .mp-visor[hidden]); a regra abaixo
+   resolve para todos de uma vez. */
+[hidden] { display: none !important; }
+
 /* botões */
 .btn { font-family: 'Cinzel'; font-size: var(--fs-rotulo); cursor: pointer; border: 1px solid var(--panel-border);
   background: var(--panel); color: var(--ink); padding: .45rem .9rem; border-radius: var(--r-sm); }

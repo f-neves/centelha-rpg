@@ -30,7 +30,8 @@ const { aba } = Astro.props;
       <p id="mesa-desc" class="mb-desc muted"></p>
       <span class="mb-espaco"></span>
       <span id="mesa-convite" class="mb-convite" hidden>
-        <code id="mesa-codigo" title="Código de convite"></code>
+        <span class="mb-rot">convite</span>
+        <code id="mesa-codigo" title="Quem tiver este código entra na mesa por Mesas / Fichas › Entrar numa mesa"></code>
         <button class="mb-icone" id="mesa-copiar" title="Copiar o código de convite">⧉</button>
         <button class="mb-icone" id="mesa-regen" title="Gerar um novo código (invalida o atual)">↻</button>
       </span>
@@ -95,8 +96,11 @@ const { aba } = Astro.props;
     line-height: 1.2; text-decoration: none; flex-shrink: 0; }
   .mb-icone:hover { color: var(--accent-texto); border-color: var(--rule); background: var(--panel); }
   .mb-convite { display: inline-flex; align-items: center; gap: .15rem; flex-shrink: 0; }
-  .mb-convite code { font-size: var(--fs-micro); letter-spacing: .12em; background: var(--panel);
-    border: 1px solid var(--rule); border-radius: var(--r-sm); padding: .1rem .4rem; }
+  .mb-rot { font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .88); text-transform: uppercase;
+    letter-spacing: .06em; color: var(--ink-soft); margin-right: .1rem; }
+  .mb-convite code { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-micro);
+    letter-spacing: .14em; background: var(--panel); color: var(--ink);
+    border: 1px solid var(--gold); border-radius: var(--r-sm); padding: .1rem .45rem; cursor: pointer; }
   /* Numa tela estreita a descrição é a primeira coisa a sair: ela é contexto,
      e o resto da linha é comando. */
   @media (max-width: 1180px) { .mb-desc { display: none; } }

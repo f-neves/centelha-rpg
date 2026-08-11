@@ -1436,18 +1436,15 @@ export function montarFicha(opts: FichaOpts) {
     // vira uma reta e quem não repara nos números do eixo lê como proporção direta.
     const W = 580, ml = 42, mr = 16, mt = 14, mb = 34;
     const xB = ml, xR = W - mr, pw = xR - xB;
-    // Velocidade de deslocamento com carga, em fração da normal. O primeiro fator é a curva
-    // medida contra sprint com colete e marcha com mochila: em P/8 ainda se corre a 91%, em
-    // P/4 a 77%, em P/2 já é só andar rápido (42%). O segundo é o corte, que só morde perto
-    // de 3P/4 (expoente alto) e leva a velocidade a zero exatamente lá. Assim as três âncoras
-    // medidas continuam de pé e a faixa Pesada fica com o que sobra: pequeno, mas não nulo.
+    // Velocidade de deslocamento com carga, em fração da normal. Ajuste sobre a literatura de
+    // locomoção com carga: os quinze soldados da MOLLE 4000 andam a 96% do passo com 22% do
+    // corpo nas costas, 87% com 44% e 76% com 66%, o que dá expoente 1,62 com menos de um
+    // ponto percentual de resíduo; a varredura contra marcha e sprint juntos tem o mínimo em
+    // 1,5. Zera no corte por construção. Em P/8 ainda se corre a 93%, em P/4 a 81%, em P/2 a
+    // 46%, e a Pesada leva isso a zero em 3P/4.
     const corte = F.cargaCorte as number;
-    const vel = (w: number) => {
-      const x = w / maxKg;
-      if (x >= corte) return 0;
-      const medida = Math.max(0, 1 - Math.pow(Math.min(1, x), F.cargaExpoente)) ** 2;
-      return medida * (1 - Math.pow(x / corte, F.cargaCorteExp as number));
-    };
+    const vel = (w: number) =>
+      Math.max(0, 1 - Math.pow(w / maxKg / corte, F.cargaExpoente));
     const cMin = maxKg / 8, cLeve = maxKg / 4, cMedia = maxKg / 2, cPesada = maxKg * corte;
     const bandas = [
       { de: 0, ate: cMin, nome: 'Mínima', op: '.03' },

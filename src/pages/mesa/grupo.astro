@@ -154,7 +154,7 @@ import MesaCab from '../../components/MesaCab.astro';
 </style>
 
 <script>
-  import { abrirMesa, u, esc, avatarHTML, urlsImagens, hpBarHTML, nomesDe, tierDe } from '../../lib/mesa-core';
+  import { abrirMesa, copiarTexto, u, esc, avatarHTML, urlsImagens, hpBarHTML, nomesDe, tierDe } from '../../lib/mesa-core';
   import { resumoFicha } from '../../lib/mesa-ficha';
   import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
   import HAB_D from '../../data/habilidades.json';
@@ -365,11 +365,12 @@ import MesaCab from '../../components/MesaCab.astro';
       fb.textContent = txt; setTimeout(() => (fb.textContent = ''), 1600);
     };
     box.querySelectorAll<HTMLElement>('[data-copcod]').forEach((b) => b.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(b.dataset.copcod!); b.textContent = '✓'; setTimeout(() => (b.textContent = '⧉'), 1400); } catch {}
+      await copiarTexto(b.dataset.copcod!, b, b.closest('.vg-cod')?.querySelector('code'));
     }));
     box.querySelectorAll<HTMLElement>('[data-coplink]').forEach((b) => b.addEventListener('click', async () => {
       const link = new URL(u('personagem') + '?id=' + b.dataset.coplink, location.origin).href;
-      try { await navigator.clipboard.writeText(link); piscar(b.dataset.coplink!, 'link copiado'); } catch {}
+      const ok = await copiarTexto(link, b);
+      piscar(b.dataset.coplink!, ok ? 'link copiado' : 'não consegui copiar');
     }));
     box.querySelectorAll<HTMLElement>('[data-novocod]').forEach((b) => b.addEventListener('click', async () => {
       if (!await uiConfirmar('Gerar outro código? O atual deixa de funcionar.', { titulo: 'Novo código', ok: 'Gerar' })) return;

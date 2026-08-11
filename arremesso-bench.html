@@ -127,6 +127,8 @@
   .fa-chart .rmedio{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:6 4;opacity:.75}
   .fa-chart .rreal{fill:var(--ink-soft);opacity:.45}
   .fa-chart .rlbl{fill:var(--accent-strong);font-family:'Cinzel',Georgia,serif;font-size:10px}
+  /* ponto medido: anel na cor do fundo para nao sumir quando cai em cima da curva */
+  .fa-chart .medpt{fill:var(--ink-soft);stroke:var(--surface,#fff);stroke-width:2}
 
   /* ---- os fatos: recordes reais ---- */
   .fatos{margin-bottom:18px}
@@ -361,14 +363,14 @@
         <div class="regraleg" id="velleg"></div>
       </div>
       <div class="regrapar">
-        <div class="eq big"><i>vel</i> <span class="op">=</span> ( 1 <span class="op">−</span>
-          <i>x</i><sup><input class="num w3" type="number" data-p="vexp" min="0.6" max="3" step="0.05"></sup> )<sup>2</sup>
-          <span class="op">×</span> ( 1 <span class="op">−</span> (<i>x</i><span class="op">/</span><i>corte</i>)<sup><input class="num w3" type="number" data-p="cargaCorteExp" min="2" max="20" step="1"></sup> )
+        <div class="eq big"><i>vel</i> <span class="op">=</span> 1 <span class="op">−</span>
+          ( <i>x</i> <span class="op">/</span> <i>corte</i> )<sup><input class="num w3" type="number" data-p="vexp" min="0.6" max="3" step="0.05"></sup>
         </div>
-        <div class="warn">Com <i>x</i> = peso ÷ P. O primeiro fator é a curva medida contra
-          sprint com colete e marcha com mochila; o segundo é o corte, que só morde perto do
-          fim e leva a velocidade a zero exatamente nele. Assim as três âncoras medidas
-          (91% em P/8, 77% em P/4, 42% em P/2) continuam de pé.</div>
+        <div class="warn">Com <i>x</i> = peso ÷ P. O expoente sai do ajuste de
+          1 <span class="op">−</span> <i>v</i> = <i>c</i>·(peso/corpo)<sup><i>n</i></sup> aos quinze
+          soldados da MOLLE 4000, que dá <i>n</i> = 1,62 com menos de um ponto percentual de
+          resíduo; a varredura contra marcha e sprint juntos tem o mínimo em 1,5. Zera no corte
+          por construção, sem segundo fator.</div>
         <div class="pgrp">
           <b>O corte</b>
           <div class="fld"><label>deslocamento zera em, de P</label>
@@ -599,7 +601,7 @@ const SITE = { kgFAH:22, fahf:'3f', pforma:'pot', ppiso:30, ptopo:500, palvo:80,
                // a regra nova (Arremesso_Regra.md)
                rConst:7, rExpFaa:0.7, rExpMeio:0.4, rApice:0.10, rExpLeve:0.15,
                rTeto:0.25, rQueda:0.80, gxMax:150, gEsc:'lin', fracAcima:0.5,
-               cargaCorte:0.75, cargaCorteExp:8 };
+               cargaCorte:0.75 };
 const M = Object.assign({}, SITE);
 
 /* As duas referências. Tudo na página sai daqui: FAA, FAH, peso máximo, teto de
@@ -773,16 +775,12 @@ function dist(w, f){
   return b * queda * parede;
 }
 /* Velocidade de deslocamento com carga, em fração da normal.
-   O primeiro fator é a curva medida contra sprint com colete e marcha com mochila:
-   91% em P/8, 77% em P/4, 42% em P/2. O segundo é o corte, que só morde perto de
-   0,75P (expoente alto) e leva a velocidade a zero exatamente lá. Assim as três
-   âncoras medidas continuam de pé e a faixa Pesada fica com o que sobra: pequeno,
-   mas não nulo. */
-const velFrac = (x) => {
-  if (x >= M.cargaCorte) return 0;
-  const medida = Math.pow(Math.max(0, 1 - Math.pow(Math.min(1, x), M.vexp)), 2);
-  return medida * (1 - Math.pow(x/M.cargaCorte, M.cargaCorteExp));
-};
+   Uma linha só: o peso medido contra o corte, elevado ao expoente que a literatura
+   de locomoção com carga entrega. Ajustando 1 − v = c·(peso/corpo)^n aos quinze
+   soldados da MOLLE 4000 (96% do passo com 22% do corpo, 87% com 44%, 76% com 66%)
+   sai n = 1,62, e a varredura de erro contra marcha e sprint junta fica no fundo do
+   poço em n = 1,5. Zera em cargaCorte por construção, sem precisar de segundo fator. */
+const velFrac = (x) => Math.max(0, 1 - Math.pow(x/M.cargaCorte, M.vexp));
 const vel   = (w, f) => velFrac(w/pmax(f));
 const dGiro = (w, f) => dist(w, f) * (1 + M.giro    * vel(w, f));
 const dCorr = (w, f) => dist(w, f) * (1 + M.corrida * vel(w, f));
@@ -804,6 +802,18 @@ const ATRS = [['forca','Força'],['atletismo','Atletismo'],['arremesso','Arremes
 // e se segura, mas não se leva a lugar nenhum.
 const BANDAS = [[0,.125,'Mínima','.03'],[.125,.25,'Leve','.06'],[.25,.5,'Média','.10'],
                 [.5,.75,'Pesada','.15'],[.75,1,'Máxima','.21']];
+// O que se mediu de verdade. As fontes pesam a carga em fração do CORPO e a regra pesa em
+// fração de P, então a conversão precisa de P/corpo: as duas populações medidas (soldados
+// jovens, atletas de velocidade) ficam por volta de 2,1, e é esse o divisor usado aqui.
+const PCORPO = 2.1;
+const MEDIDAS = [
+  [0.22, 1.87/1.95, 'marcha, 22% do corpo'],
+  [0.44, 1.69/1.95, 'marcha, 44% do corpo'],
+  [0.66, 1.48/1.95, 'marcha, 66% do corpo'],
+  [0.10, 0.955,     'sprint, colete 10%'],
+  [0.20, 0.912,     'sprint, colete 20%'],
+  [0.40, 0.827,     'sprint, colete 40%'],
+];
 // as três curvas na ordem em que se leem no gráfico, igual à ficha
 const DEFS = [
   { k:'corrida', cls:'curve corrida', nome:'Corrida', f:dCorr },
@@ -1385,7 +1395,9 @@ function plotVel(){
   const A = FICHAS[0], B = FICHAS[1];
   const pA = pmax(A), pB = pmax(B), pRef = Math.max(pA, pB);
   const X = (kg) => xB + (Math.min(kg, pRef)/pRef)*pw;
-  const Y = (v) => yB - Math.max(0, Math.min(1, v))*ph;
+  // 8% de folga acima dos 100%: é onde ficam os nomes das faixas, e sem ela os pontos
+  // medidos da faixa Mínima (91% a 96%) sobem em cima do rótulo
+  const Y = (v) => yB - Math.max(0, Math.min(1, v))*ph*0.92;
 
   let s = '';
   // as cinco faixas, medidas pela ficha que ergue mais
@@ -1425,6 +1437,12 @@ function plotVel(){
   }
   // Cada rótulo no trecho em que a SUA curva está sozinha: a da ficha fraca despenca
   // nos primeiros por cento do eixo, então ela é rotulada bem no começo e por baixo.
+  // os pontos medidos, sobre a curva da ficha forte (pA = pRef, então X(f·pRef) cai
+  // exatamente em velFrac(f) e o desvio vertical é o erro do ajuste, visível a olho)
+  for (const [fcorpo, v, nome] of MEDIDAS){
+    const px = X((fcorpo/PCORPO)*pRef);
+    s += `<circle class="medpt" cx="${px.toFixed(1)}" cy="${Y(v).toFixed(1)}" r="4"><title>${nome} · ${Math.round(v*100)}% medido</title></circle>`;
+  }
   const mA = pRef*0.30, mB = pB*0.25;
   s += `<text class="rlbl" x="${(X(mA)+5).toFixed(1)}" y="${(Y(velFrac(mA/pA))-8).toFixed(1)}">${A.nome}</text>`
      + `<text class="rlbl" x="${(X(mB)+6).toFixed(1)}" y="${(Y(velFrac(mB/pB))+14).toFixed(1)}">${B.nome}</text>`
@@ -1470,13 +1488,17 @@ function pintaVel(){
   const A = FICHAS[0], B = FICHAS[1];
   document.getElementById('velleg').innerHTML =
       `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2.5"/></svg>${A.nome} · P ${Math.round(pmax(A))} kg</span>`
-    + `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/></svg>${B.nome} · P ${Math.round(pmax(B))} kg</span>`;
+    + `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/></svg>${B.nome} · P ${Math.round(pmax(B))} kg</span>`
+    + `<span><svg viewBox="0 0 20 12"><circle cx="10" cy="6" r="4" fill="var(--ink-soft)"/></svg>medido · marcha e sprint com carga</span>`;
+  const erro = MEDIDAS.reduce((a, [f, v]) => a + Math.abs(velFrac(f/PCORPO) - v), 0)/MEDIDAS.length;
   document.querySelector('[data-out="velnota"]').innerHTML =
       `As duas curvas têm a MESMA forma: a velocidade só depende da fração de P que está `
     + `nas costas. O que muda entre as duas fichas é quantos quilos cabem em cada fração.<br>`
     + `Fim da Média (P/2): <b>${Math.round(velFrac(0.5)*100)}%</b>. `
     + `Meio da Pesada: <b>${Math.round(velFrac(0.625)*100)}%</b>. `
-    + `Fim da Pesada: <b>0%</b>.`;
+    + `Fim da Pesada: <b>0%</b>.<br>`
+    + `Erro médio contra os seis pontos medidos: <b>${(erro*100).toFixed(1)} pontos percentuais</b> `
+    + `(convertendo carga do corpo para fração de P com P/corpo = ${vg(PCORPO, 1)}).`;
   // a velocidade no COMEÇO e no FIM de cada faixa: só com o fim, a Pesada apareceria
   // como 0% e ninguém veria que dentro dela ainda se anda
   const linhas = BANDAS.map(([a, b, nome]) => {
@@ -1955,10 +1977,9 @@ const FMT = {
   rExpFaa: (v) => vg(v, 2),
   fracAcima:(v) => vg(v, 2) + ' × P',
   cargaCorte:(v) => vg(v, 2) + ' × P',
-  cargaCorteExp:(v) => String(v),
 };
 const CAMPO = { corrida: 3, giro: 3, r0exp: 2, bexp: 3, vexp: 2, m0: 2, wpiv: 1, fexp: 1, pexp: 1, q: 2,
-                rConst: 2, rExpFaa: 2, rExpMeio: 2, rApice: 2, rExpLeve: 2, rTeto: 2, rQueda: 2, fracAcima: 2, cargaCorte: 2, cargaCorteExp: 0 };
+                rConst: 2, rExpFaa: 2, rExpMeio: 2, rApice: 2, rExpLeve: 2, rTeto: 2, rQueda: 2, fracAcima: 2, cargaCorte: 2 };
 const numFmt = (chave, v) => CAMPO[chave] != null ? +v.toFixed(CAMPO[chave]) : v;
 
 function sync(exceto){

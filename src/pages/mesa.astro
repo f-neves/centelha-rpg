@@ -229,11 +229,11 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
 
 <script>
   import {
-    abrirMesa, ligarCabecalho, u, esc, avatarHTML, urlsImagens, hpBarHTML, tierDe, tierCls,
+    abrirMesa, u, esc, avatarHTML, urlsImagens, hpBarHTML, tierDe, tierCls,
     condChipHTML, COND, nomesDe, norm, bancoAntigo,
   } from '../lib/mesa-core';
   import { resumoFicha } from '../lib/mesa-ficha';
-  import { uiConfirmar, uiErro, uiFormulario } from '../lib/ui-dialog';
+  import { uiConfirmar, uiErro } from '../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
 
@@ -241,7 +241,6 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     const ctx = await abrirMesa('escudo');
     if (!ctx) return;
     const { sb, ehMestre, id } = ctx;
-    await ligarCabecalho(ctx, uiConfirmar, uiErro, uiFormulario);
 
     for (const [alvo, slug] of [['ir-grupo', 'mesa/grupo'], ['ir-compendio', 'mesa/compendio'],
       ['ir-diario', 'mesa/diario'], ['ir-referencia', 'mesa/referencia']] as [string, string][]) {

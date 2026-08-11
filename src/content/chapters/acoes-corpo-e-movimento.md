@@ -218,13 +218,15 @@ Erguer o peso máximo não se rola, mas três coisas em volta dele se rolam:
 
 | Faixa | Vai até | Velocidade | O que é |
 |---|:--:|:--:|---|
-| **Mínima** | P/8 | 91% | mal se sente |
-| **Leve** | P/4 | 77% | corre, e ainda é o que dá para arremessar |
-| **Média** | P/2 | 42% | só anda, e ainda é o que dá para pôr acima da cabeça |
-| **Pesada** | 3P/4 | 40% a 0 | arrasta, poucos passos, e cada passo custa |
+| **Mínima** | P/8 | 93% | mal se sente |
+| **Leve** | P/4 | 81% | corre, e ainda é o que dá para arremessar |
+| **Média** | P/2 | 46% | só anda, e ainda é o que dá para pôr acima da cabeça |
+| **Pesada** | 3P/4 | 46% a 0 | arrasta, poucos passos, e cada passo custa |
 | **Máxima** | P | **0** | ergue e segura; não vai a lugar nenhum |
 
-A conta é `velocidade = (1 − x^1,5)² × (1 − (x ÷ 0,75)^8)`, com x sendo o peso dividido por P. O primeiro termo é a curva medida contra sprint com colete e marcha com mochila; o segundo é o corte, que só morde perto do fim. A ficha faz essa conta sozinha.
+A conta é `velocidade = 1 − (peso ÷ 3P/4)^1,5`. A ficha faz essa conta sozinha.
+
+O expoente não foi escolhido, foi medido. Quinze soldados com mochila carregada andam a 96% do passo normal levando 22% do próprio peso, 87% levando 44% e 76% levando 66%: ajustar uma potência a esses três pontos dá 1,62, com resíduo menor que um ponto percentual. Somando o sprint com colete lastrado, o erro fica no fundo do poço em **1,5**. A mesma curva, esticada até zerar em 3P/4, erra em média menos de dois pontos percentuais contra tudo que se mediu.
 
 Repare que a régua de carga e a de altura se encontram: a **Leve** termina exatamente onde o arremesso termina, e a **Média**, exatamente onde termina o que passa da cabeça. Não é coincidência arrumada, é a mesma força medida de três jeitos.
 

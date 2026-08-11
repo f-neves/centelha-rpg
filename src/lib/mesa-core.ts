@@ -13,6 +13,7 @@ import { getSupabase } from './supabase';
 import { exigirLogin, supabaseConfigurado } from './auth';
 import { regras } from './calc';
 import { definirCrumbs } from './crumbs';
+import { uiConfirmar, uiErro, uiFormulario } from './ui-dialog';
 import CONDICOES from '../data/condicoes.json';
 
 // ---------------------------------------------------------------- utilidades
@@ -37,6 +38,40 @@ export const fmtDano = (s: unknown) =>
   String(s ?? '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
 
 export const idDaMesa = () => new URLSearchParams(location.search).get('id');
+
+/**
+ * Copia um texto e avisa o que aconteceu.
+ *
+ * `navigator.clipboard` é negado em vários contextos (permissão recusada, aba
+ * sem foco, página servida sem HTTPS). Antes isso caía num `catch {}` mudo e o
+ * mestre ficava clicando num botão que não fazia nada. Falhando a via moderna,
+ * o texto fica SELECIONADO na tela: o Ctrl+C continua sendo caminho, e a
+ * seleção é a própria mensagem de "copie daqui".
+ */
+export async function copiarTexto(texto: string, origem?: HTMLElement | null, fonte?: HTMLElement | null) {
+  const piscar = (t: string) => {
+    if (!origem) return;
+    const antes = origem.textContent;
+    origem.textContent = t;
+    setTimeout(() => { origem.textContent = antes; }, 1400);
+  };
+  try {
+    await navigator.clipboard.writeText(texto);
+    piscar('✓');
+    return true;
+  } catch {}
+  const alvo = fonte;
+  if (alvo && typeof getSelection === 'function') {
+    const faixa = document.createRange();
+    faixa.selectNodeContents(alvo);
+    const sel = getSelection();
+    sel?.removeAllRanges(); sel?.addRange(faixa);
+    piscar('⌘C');
+    return false;
+  }
+  piscar('✕');
+  return false;
+}
 
 /** Liga um <input>/<textarea> a uma coluna: digita, espera, grava, pisca "Salvo". */
 export function autoSalvar(
@@ -305,22 +340,25 @@ export async function abrirMesa(aba: string): Promise<CtxMesa | null> {
     if (nome) nome.textContent = n;
     if (desc) desc.textContent = d;
   };
-  return { sb, user, mesa, ehMestre, id, renomear };
+  const ctx: CtxMesa = { sb, user, mesa, ehMestre, id, renomear };
+  // O cabeçalho é o mesmo nas nove abas, e o código de convite é a coisa que o
+  // mestre mais procura: ligar aqui garante que ele esteja em TODAS, e não só
+  // na que lembrou de chamar a função.
+  await ligarCabecalho(ctx);
+  return ctx;
 }
 
-/** Liga os botões do cabeçalho (convite, editar, sair). Só o Escudo precisa. */
-export async function ligarCabecalho(ctx: CtxMesa, uiConfirmar: any, uiErro: any, uiFormulario: any) {
+/** Liga os botões do cabeçalho: convite, novo código, editar a mesa, sair dela. */
+export async function ligarCabecalho(ctx: CtxMesa) {
   const { sb, mesa, ehMestre, id, user } = ctx;
   if (ehMestre) {
     const box = elo('mesa-convite'); if (box) box.hidden = false;
     const cod = elo('mesa-codigo'); if (cod) cod.textContent = mesa.codigo_convite;
-    elo('mesa-copiar')?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(cod?.textContent || '');
-        const b = elo('mesa-copiar')!; b.textContent = 'Copiado!';
-        setTimeout(() => (b.textContent = 'Copiar'), 1400);
-      } catch {}
-    });
+    // Copiar clicando no botão OU no próprio código: o código tem cara de
+    // clicável, e ninguém procura o ícone ao lado quando o alvo óbvio é o texto.
+    const copiar = () => copiarTexto(cod?.textContent || '', elo('mesa-copiar'), cod);
+    elo('mesa-copiar')?.addEventListener('click', copiar);
+    cod?.addEventListener('click', copiar);
     elo('mesa-regen')?.addEventListener('click', async () => {
       if (!await uiConfirmar('Gerar um novo código? O código atual deixa de funcionar.', { titulo: 'Novo código de convite', ok: 'Gerar novo' })) return;
       const { data, error } = await sb.rpc('regenerar_codigo', { p_mesa: id });
