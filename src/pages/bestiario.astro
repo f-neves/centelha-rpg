@@ -238,11 +238,18 @@ const opcoesEditor = {
             <div class="besta-foot">
               <button class="besta-info besta-editar" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✎</span> Editar</button>
               {temMec(i) && (
-                <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades &amp; Poderes</button>
+                <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades</button>
               )}
               {i.lore?.length > 0 && (
                 <button class="besta-info" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">ⓘ</span> Informações</button>
               )}
+              {/* Leva a criatura para o bestiário de uma campanha. Nasce neutro
+                  porque o estado (em quantas mesas ela está) só se sabe depois
+                  de perguntar ao banco, e perguntar por 300 cards ao carregar a
+                  página seria caro para uma informação que quase nunca é olhada:
+                  quem clica descobre no diálogo. */}
+              <button class="besta-info besta-mesa" type="button" aria-haspopup="dialog"
+                title="Separar esta criatura para o bestiário de uma campanha sua"><span class="i-ic" aria-hidden="true">⌂</span> Adicionar à Mesa</button>
 
               {temMec(i) && (
                 <template class="mech-tpl">
@@ -295,6 +302,20 @@ const opcoesEditor = {
       <div class="ib-body" id="ib-body"></div>
     </div>
   </div>
+
+  <dialog id="mesa-dlg" class="besta-dlg">
+    <form method="dialog">
+      <h3 id="md-t" class="cinzel">Adicionar à mesa</h3>
+      <p class="md-sub muted" id="md-sub"></p>
+      <div id="md-lista" class="md-lista"></div>
+      <p class="md-nota muted" id="md-nota" hidden>Desmarcar tira a criatura do bestiário daquela campanha.
+        As anotações e a variante que você tiver escrito para ela lá se perdem junto.</p>
+      <div class="md-btns">
+        <button type="button" class="md-b" id="md-cancelar">Cancelar</button>
+        <button type="button" class="md-b md-ok" id="md-salvar">Salvar</button>
+      </div>
+    </form>
+  </dialog>
 
   <BestiaEditor opcoes={opcoesEditor} />
 </Base>
@@ -463,6 +484,34 @@ const opcoesEditor = {
   .besta-info:hover { background: color-mix(in srgb, var(--accent) 16%, transparent); border-color: var(--accent); }
   .besta-info .i-ic { font-size: var(--fs-aux); line-height: 1; }
   .lore-tpl { display: none; }
+
+  /* --- Adicionar à mesa --- */
+  .besta-mesa { background: color-mix(in srgb, var(--ok) 10%, transparent);
+    border-color: color-mix(in srgb, var(--ok) 40%, var(--panel-border)); color: var(--ink); }
+  .besta-mesa:hover { background: color-mix(in srgb, var(--ok) 22%, transparent); border-color: var(--ok); }
+  .besta-dlg { border: 1px solid var(--panel-border); border-radius: var(--r-lg); padding: 0;
+    background: var(--panel); color: var(--ink); max-width: 28rem; width: 94%;
+    box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+  .besta-dlg::backdrop { background: color-mix(in srgb, #1a120a 70%, transparent); backdrop-filter: blur(2px); }
+  .besta-dlg form { display: flex; flex-direction: column; gap: .55rem; padding: .9rem 1.1rem 1.1rem; }
+  .besta-dlg h3 { margin: 0; color: var(--accent-strong); font-size: var(--fs-aux); }
+  .besta-dlg .md-sub, .besta-dlg .md-nota { margin: 0; font-size: var(--fs-micro); }
+  .md-lista { display: flex; flex-direction: column; gap: .2rem; max-height: 44vh; overflow-y: auto; }
+  .md-item { display: flex; align-items: center; gap: .5rem; padding: .4rem .55rem; cursor: pointer;
+    border: 1px solid var(--panel-border); border-radius: var(--r-md); font-size: var(--fs-rotulo); }
+  .md-item:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .md-item input { accent-color: var(--accent); flex: 0 0 auto; }
+  .md-item .mi-n { flex: 1; min-width: 0; }
+  .md-item .mi-e { font-size: var(--fs-micro); color: var(--ink-soft); }
+  /* "Todas" é a primeira linha e tem cara de comando, não de mesa. */
+  .md-item.md-todas { border-style: dashed; font-family: 'Cinzel'; font-size: var(--fs-micro);
+    text-transform: uppercase; letter-spacing: .04em; }
+  .md-btns { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .2rem; }
+  .md-b { font: inherit; font-size: var(--fs-rotulo); padding: .3rem .8rem; cursor: pointer;
+    border: 1px solid var(--panel-border); border-radius: var(--r-md); background: transparent; color: var(--ink); }
+  .md-b:hover { border-color: var(--accent); }
+  .md-b.md-ok { background: var(--accent); border-color: var(--accent); color: var(--on-accent, #fff); }
+  .md-vazio { font-style: italic; color: var(--ink-soft); font-size: var(--fs-rotulo); }
 
   /* --- Lightbox --- */
   .lightbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: color-mix(in srgb, #1a120a 82%, transparent); backdrop-filter: blur(3px); animation: lb-in .18s ease; }
@@ -655,4 +704,112 @@ const opcoesEditor = {
   });
   ib.addEventListener('click', (e) => { if (e.target === ib || (e.target as HTMLElement).classList.contains('ib-fechar')) fecharInfo(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ib.hidden) fecharInfo(); });
+
+  // ==================================================== adicionar à mesa
+  /**
+   * Leva a criatura para o bestiário de uma campanha (a aba Criaturas da mesa).
+   *
+   * O Supabase entra por `import()` dentro do clique, e não no topo do módulo:
+   * o bestiário é página pública, aberta por gente sem conta, e o cliente do
+   * banco são dezenas de KB para um botão que a maioria nunca toca.
+   *
+   * A caixa marcada é "está nesta mesa". Desmarcar remove, o que faz do mesmo
+   * diálogo o lugar de tirar também, sem um segundo botão para isso.
+   */
+  const dlg = document.getElementById('mesa-dlg') as HTMLDialogElement | null;
+  const md = (i: string) => document.getElementById(i)!;
+
+  async function abrirMesas(monstroId: string, nomeCriatura: string) {
+    if (!dlg) return;
+    const [{ getSupabase, supabaseConfigurado }, { uiAviso, uiConfirmar, uiErro }] = await Promise.all([
+      import('../lib/supabase'), import('../lib/ui-dialog'),
+    ]);
+    if (!supabaseConfigurado) {
+      await uiAviso('A área de contas ainda não está ligada neste site.', { titulo: 'Sem mesas' });
+      return;
+    }
+    const sb = getSupabase();
+    const { data: { user } } = await sb.auth.getUser();
+    if (!user) {
+      const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+      if (await uiConfirmar('Entre na sua conta para separar criaturas para as suas campanhas.',
+        { titulo: 'Precisa entrar', ok: 'Entrar' })) location.href = `${base}/entrar`;
+      return;
+    }
+    // Só as mesas em que ele mestra: `mesa_criaturas` é escrita de mestre, e
+    // oferecer uma mesa onde ele é jogador seria oferecer um erro.
+    const { data: linhas, error } = await sb.from('mesa_membros')
+      .select('papel, mesa:mesas(id, nome)').eq('user_id', user.id).eq('papel', 'mestre');
+    if (error) { await uiErro('Erro ao buscar suas mesas: ' + error.message); return; }
+    const mesas = (linhas || []).map((l: any) => l.mesa).filter(Boolean)
+      .sort((a: any, b: any) => String(a.nome).localeCompare(String(b.nome)));
+    if (!mesas.length) {
+      await uiAviso('Crie uma mesa primeiro para adicionar a criatura à ela.', { titulo: 'Nenhuma mesa' });
+      return;
+    }
+    const { data: jaTem } = await sb.from('mesa_criaturas')
+      .select('mesa_id').eq('monstro_id', monstroId).in('mesa_id', mesas.map((m: any) => m.id));
+    const dentro = new Set((jaTem || []).map((r: any) => r.mesa_id));
+
+    (md('md-t') as HTMLElement).textContent = `${nomeCriatura} nas suas mesas`;
+    (md('md-sub') as HTMLElement).textContent = mesas.length === 1
+      ? 'Marque para separar esta criatura para a campanha.'
+      : 'Marque as campanhas que recebem esta criatura.';
+    md('md-nota').hidden = !dentro.size;
+    md('md-lista').innerHTML =
+      (mesas.length > 1 ? `<label class="md-item md-todas"><input type="checkbox" id="md-todas" /> <span class="mi-n">Todas as mesas</span></label>` : '')
+      + mesas.map((m: any) => `<label class="md-item">
+        <input type="checkbox" data-mesa="${m.id}"${dentro.has(m.id) ? ' checked' : ''} />
+        <span class="mi-n">${m.nome.replace(/[&<>"]/g, (c: string) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!))}</span>
+        <span class="mi-e">${dentro.has(m.id) ? 'já está lá' : ''}</span>
+      </label>`).join('');
+
+    const caixas = () => Array.from(md('md-lista').querySelectorAll<HTMLInputElement>('[data-mesa]'));
+    const todas = document.getElementById('md-todas') as HTMLInputElement | null;
+    if (todas) {
+      const sincronizar = () => { todas.checked = caixas().every((c) => c.checked); };
+      todas.addEventListener('change', () => { caixas().forEach((c) => { c.checked = todas.checked; }); });
+      caixas().forEach((c) => c.addEventListener('change', sincronizar));
+      sincronizar();
+    }
+
+    md('md-cancelar').onclick = () => dlg.close();
+    md('md-salvar').onclick = async () => {
+      const entra = caixas().filter((c) => c.checked && !dentro.has(c.dataset.mesa!)).map((c) => c.dataset.mesa!);
+      const sai = caixas().filter((c) => !c.checked && dentro.has(c.dataset.mesa!)).map((c) => c.dataset.mesa!);
+      dlg.close();
+      if (!entra.length && !sai.length) return;
+      if (entra.length) {
+        const { error: e1 } = await sb.from('mesa_criaturas')
+          .insert(entra.map((id) => ({ mesa_id: id, monstro_id: monstroId })));
+        if (e1 && !/duplicate|unique/i.test(e1.message)) { await uiErro('Erro: ' + e1.message); return; }
+      }
+      if (sai.length) {
+        const { error: e2 } = await sb.from('mesa_criaturas')
+          .delete().eq('monstro_id', monstroId).in('mesa_id', sai);
+        if (e2) { await uiErro('Erro: ' + e2.message); return; }
+      }
+      const nomeDe = (id: string) => mesas.find((m: any) => m.id === id)?.nome || 'mesa';
+      const partes = [
+        entra.length ? `entrou em ${entra.map(nomeDe).join(', ')}` : '',
+        sai.length ? `saiu de ${sai.map(nomeDe).join(', ')}` : '',
+      ].filter(Boolean).join(' e ');
+      // A segunda frase só cabe quando algo entrou: dizer "e só chega aos
+      // jogadores quando você liberar" depois de uma remoção é conselho para
+      // uma criatura que não está mais lá.
+      const onde = entra.length
+        ? ' Ela fica na aba Criaturas da mesa, e só chega aos jogadores quando você liberar.' : '';
+      await uiAviso(`${nomeCriatura} ${partes}.${onde}`, { titulo: 'Pronto' });
+    };
+    dlg.showModal();
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.besta-mesa').forEach((b) => {
+    b.addEventListener('click', () => {
+      const card = b.closest('.besta') as HTMLElement | null;
+      if (!card) return;
+      const nome = card.querySelector('.besta-nome')?.childNodes[0]?.textContent?.trim() || 'Criatura';
+      abrirMesas(card.id, nome);
+    });
+  });
 </script>
