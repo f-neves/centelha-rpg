@@ -123,3 +123,26 @@ export function dentro(h: Hex, cols: number, rows: number): boolean {
 }
 
 export const chaveHex = (q: number, r: number) => `${q},${r}`;
+
+// ------------------------------------------------------------ nome de casa
+/**
+ * O nome que se fala em voz alta: coluna em letra, linha em número. "D5".
+ *
+ * `q,r` é bom para a máquina e péssimo para a mesa: ninguém diz "o goblin foi
+ * do menos-dois-três para o menos-um-quatro". A coluna vem do OFFSET, e não do
+ * q, justamente por isso — em axial a coluna anda de lado conforme a linha, e o
+ * nome tem de bater com o que o olho vê na tela.
+ *
+ * Passando de Z a contagem vira AA, AB, como planilha; um tabuleiro de 60
+ * colunas cabe em duas letras.
+ */
+export function letraColuna(col: number): string {
+  let n = col, s = '';
+  do { s = String.fromCharCode(65 + (n % 26)) + s; n = Math.floor(n / 26) - 1; } while (n >= 0);
+  return s;
+}
+
+export function nomeHex(q: number, r: number): string {
+  const { col, row } = axialParaOffset(q, r);
+  return `${letraColuna(col)}${row + 1}`;
+}
