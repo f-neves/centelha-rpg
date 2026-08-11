@@ -26,6 +26,7 @@ import {
 import {
   defsHTML, fxHTML, ehElemental, AJUSTES_PADRAO, LIMITES, type Ajustes,
 } from './artes-grid-fx';
+import { camadaDeGolpes, baterNoAlvo } from './grid-golpe-fx';
 
 /** O que a aba Grid empresta. Tudo o que este módulo não tem como saber sozinho. */
 export interface CtxGrid {
@@ -861,6 +862,30 @@ function soakDe(ctx: CtxGrid, c: any, materia: string | null) {
 }
 
 /** Rola o dano do efeito num alvo, desconta o que tem de descontar e grava. */
+/**
+ * A marca elemental no alvo de um Efeito.
+ *
+ * A direção sai do CONJURADOR para o alvo quando os dois estão no mapa. Quando
+ * não estão (efeito sem dono no tabuleiro, ou dano de zona em quem entrou
+ * sozinho), fica em zero: o estouro elemental é radial e não depende de eixo, ao
+ * contrário do corte e da lança, então zero não mente sobre nada.
+ */
+function marcarGolpeElemental(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any): void {
+  if (!ehElemental(ef.elemento)) return;
+  const t = ctx.tokens[alvo?.id];
+  if (!t) return;
+  const mg = margemDe(ctx);
+  const c = centroHex(t.q, t.r, ctx.raio);
+  const p = { x: c.x + mg.x, y: c.y + mg.y };
+  const dono = ctx.tokens[ef.conjurador_id || ''];
+  let dir = 0;
+  if (dono) {
+    const d = centroHex(dono.q, dono.r, ctx.raio);
+    dir = Math.atan2(p.y - (d.y + mg.y), p.x - (d.x + mg.x));
+  }
+  baterNoAlvo(camadaDeGolpes(), p, ef.elemento, dir, ctx.raio);
+}
+
 async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string): Promise<void> {
   if (!ef || !alvo) return;
   const rolagem = rolar(ef.dano_dados);
@@ -880,6 +905,14 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string): 
   const marcaTurno = { ...(ef.mordidos || {}), [alvo.id]: rodadaDoTick(tickAtual(ctx)) };
   ef.mordidos = marcaTurno;
   await ctx.SB.from('arena_efeitos').update({ mordidos: marcaTurno }).eq('id', ef.id);
+
+  // O estouro na cor do elemento, no corpo de quem levou.
+  //
+  // Ele sai do MESMO lugar de onde saiu a mordida, e não da conjuração: uma zona
+  // de fogo que morde três pessoas em turnos diferentes tem de acender três
+  // vezes, cada uma no seu instante. É o que separa "a poça existe" de "a poça
+  // pegou você".
+  marcarGolpeElemental(ctx, ef, alvo);
 
   if (ef.condicao) await porCondicao(ctx, alvo, ef.condicao, turnosRestantes(ef, tickAtual(ctx)));
   const est = alvo.pv_max ? ` · ${pv}/${alvo.pv_max} (${tierDe(pv, alvo.pv_max).estado})` : '';

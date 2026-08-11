@@ -889,8 +889,17 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 
    Mora aqui, e não no <style> da aba Grid, porque quem cria estes elementos é
    `lib/artes-grid-mesa.ts`: estilo e desenho no mesmo par de mãos. */
-.gr-efeitos, .gr-previa { position: absolute; inset: 0; width: 100%; height: 100%;
+.gr-efeitos, .gr-previa, .gr-golpes { position: absolute; inset: 0; width: 100%; height: 100%;
   pointer-events: none; overflow: visible; }
+/* Os golpes ficam ACIMA das peças, ao contrário das Artes.
+   Uma zona de fogo é chão, e chão não passa por cima de quem está em pé dentro
+   dela; um golpe acontece NO corpo, e escondê-lo atrás do retrato do alvo seria
+   esconder justamente a única coisa que o efeito existe para mostrar. */
+.gr-golpes { z-index: 3; }
+/* A marca não herda a pintura de zona nenhuma: cada peça já nasce com a cor
+   certa no atributo, e uma regra genérica aqui repintaria tudo de novo (foi o
+   que aconteceu com as partículas das Artes). */
+.gr-golpe *, .gr-tiro * { pointer-events: none; }
 /* A figura é UMA forma, e não uma colcha de hexágonos: um <circle> para o
    círculo, um <rect> girado para a faixa e o retângulo, um <path> com arco para
    o leque. O <polygon> sobrou para a arena inteira e para os efeitos gravados

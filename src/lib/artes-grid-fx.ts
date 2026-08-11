@@ -59,7 +59,7 @@ export const LIMITES = {
  * fogo virar casca de ferida, que foi exatamente o que aconteceu na primeira
  * tentativa.
  */
-const PALETA: Record<Elemento, {
+export const PALETA_FX: Record<Elemento, {
   nucleo: string; corpo: string; beira: string; pico: string;
 }> = {
   fogo:   { nucleo: '#fff4c8', corpo: '#ff7a24', beira: '#7d1f04', pico: '#ffd257' },
@@ -72,7 +72,7 @@ const PALETA: Record<Elemento, {
   sombra: { nucleo: '#0a0610', corpo: '#3d2f56', beira: '#8f7ab5', pico: '#b9a6d8' },
 };
 
-export const corDoElemento = (el: Elemento) => PALETA[el].corpo;
+export const corDoElemento = (el: Elemento) => PALETA_FX[el].corpo;
 
 // ============================================================ os <defs>
 /**
@@ -83,7 +83,7 @@ export const corDoElemento = (el: Elemento) => PALETA[el].corpo;
  * escurecem para o fundo; Sombra come as beiradas de dentro para fora.
  */
 function defsDoElemento(el: Elemento): string {
-  const p = PALETA[el];
+  const p = PALETA_FX[el];
   const id = (s2: string) => `fx-${el}-${s2}`;
 
   // Sombra e o unico avesso: o miolo e o buraco, e a beirada e onde ainda ha luz.
@@ -301,7 +301,7 @@ function particulasDe(
   el: Elemento, n: number, box: Caixa, seme: number, pxPorM: number,
 ): string {
   if (n <= 0) return '';
-  const p = PALETA[el];
+  const p = PALETA_FX[el];
   const r = rnd(seme);
   const out: string[] = [];
   for (let i = 0; i < n; i++) {
@@ -367,7 +367,7 @@ function particulasDe(
  * Tudo aqui e desenho parado, dentro do recorte da figura: nada custa por quadro.
  */
 function estruturaDe(el: Elemento, box: Caixa, seme: number, pxPorM: number, f: Figura): string {
-  const p = PALETA[el];
+  const p = PALETA_FX[el];
   const r = rnd(seme + 991);
   const R = box.raio;
   const g = (n: number) => n.toFixed(1);

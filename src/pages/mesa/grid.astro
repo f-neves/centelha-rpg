@@ -63,6 +63,10 @@ const SETAS = [
             <svg id="gr-efeitos" class="gr-efeitos" xmlns="http://www.w3.org/2000/svg"></svg>
             <svg id="gr-previa" class="gr-previa" xmlns="http://www.w3.org/2000/svg"></svg>
             <div id="gr-tokens" class="gr-tokens"></div>
+            <!-- Os golpes ficam por CIMA das peças: a marca acontece no corpo do
+                 alvo, e escondê-la atrás do retrato dele seria esconder a única
+                 coisa que ela existe para mostrar. -->
+            <svg id="gr-golpes" class="gr-golpes" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
         </div>
 
@@ -911,6 +915,10 @@ const SETAS = [
     carregarEfeitos, pintarEfeitos, pintarPainelEfeitos, conjurar,
     verificarEfeitos, novoNPC as novoNPCArtes, ligarBotaoFx, type CtxGrid,
   } from '../../lib/artes-grid-mesa';
+  import {
+    camadaDeGolpes, baterNoAlvo, voarProjetil, projetilDe,
+  } from '../../lib/grid-golpe-fx';
+  import { armaDoSlot } from '../../lib/equip';
 
   const el = (i: string) => document.getElementById(i)!;
 
@@ -3323,6 +3331,29 @@ const SETAS = [
   // ============================================================== ataque
   let MIRA: { atacante: string } | null = null;
 
+  /** O centro de uma peça em pixels do mundo: é onde o golpe acontece. */
+  function pontoDaPeca(cid: string): { x: number; y: number } | null {
+    const t = TOKENS[cid];
+    if (!t) return null;
+    const mg = margem();
+    const c = centroHex(t.q, t.r, RAIO);
+    return { x: c.x + mg.x, y: c.y + mg.y };
+  }
+
+  /**
+   * A marca do golpe no alvo, na direção de quem bateu.
+   *
+   * A direção não é enfeite: é ela que gira o crescente do corte e aponta a
+   * lança da perfuração. Um corte que varre sempre para o mesmo lado, com o
+   * inimigo vindo de outro, lê como decalque.
+   */
+  function marcarGolpe(atacante: any, alvo: any, tipo: string) {
+    const a = pontoDaPeca(atacante?.id), p = pontoDaPeca(alvo?.id);
+    if (!p) return;
+    const dir = a ? Math.atan2(p.y - a.y, p.x - a.x) : 0;
+    baterNoAlvo(camadaDeGolpes(), p, tipo, dir, RAIO);
+  }
+
   function iniciarMira(cid: string) {
     if (!TOKENS[cid]) return uiErro('Ponha o atacante no mapa antes de mirar.');
     MIRA = { atacante: cid };
@@ -3382,6 +3413,23 @@ const SETAS = [
     cancelarMira();
     if (!atacante || !alvo) return;
     const acertou = await perguntarAcerto(atacante, alvo);
+
+    // O TIRO SAI DEPOIS DE O MESTRE DECIDIR, E ANTES DE O DANO SER PEDIDO.
+    //
+    // Depois, porque errar não é a flecha sumir: é a flecha PASSAR, e para ela
+    // passar é preciso saber que errou. Antes do dano, porque a ordem em que a
+    // mesa vê as coisas é a ordem em que elas acontecem: atira, acerta, dói.
+    const proj = projetilDe(
+      atacante, FICHAS[atacante.personagem_id], MON[atacante.monstro_id], armaDoSlot,
+    );
+    const de = pontoDaPeca(atacante.id), pa = pontoDaPeca(alvo.id);
+    if (proj && de && pa) {
+      await voarProjetil(camadaDeGolpes(), de, pa, {
+        tipo: proj, errou: !acertou, raioPx: RAIO,
+        pxPorM: larguraHex(RAIO) / (Number(ARENA?.escala_m) || 1),
+      });
+    }
+
     if (!acertou) {
       await logar(atacante, `${atacante.nome} atacou ${alvo.nome} e errou`, { acao: null });
       return;
@@ -3462,6 +3510,8 @@ const SETAS = [
     const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
     if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
     alvo.pv_atual = pv;
+    // A marca sai antes do registro: o texto explica o que a imagem já mostrou.
+    marcarGolpe(atacante, alvo, tipo);
     // A fila também: Vida a zero tira da ordem na hora, sem esperar a próxima
     // repintura vinda de outro lugar.
     atualizarAnel(alvo); pintarLista(); pintarIniciativa();
