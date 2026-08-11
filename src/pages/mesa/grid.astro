@@ -379,10 +379,18 @@ import MesaCab from '../../components/MesaCab.astro';
   .fa-sec { display: grid; gap: .25rem; padding-top: .35rem; border-top: 1px solid var(--rule); }
   /* A cruz de posição: três colunas, com o ◎ no meio da fileira do meio. */
   .fa-lin-pos { align-items: center; gap: .7rem; }
-  .fa-dpad { display: grid; grid-template-columns: repeat(3, 1.6rem); gap: .1rem; }
-  .fa-dpad button { padding: .05rem 0; line-height: 1.1; }
-  .fa-dpad button[data-mv="cima"] { grid-column: 2; }
-  .fa-dpad button[data-mv="baixo"] { grid-column: 2; }
+  /* Cada botão na célula dele, linha e coluna escritas. Só a coluna não basta:
+     o preenchimento automático da grade segue a ordem do HTML e vai jogando o
+     que sobra na primeira vaga que encontra, e a cruz saía desmontada. */
+  .fa-dpad { display: grid; grid-template-columns: repeat(3, 1.7rem);
+    grid-template-rows: repeat(3, 1.35rem); gap: .12rem; flex: 0 0 auto; }
+  .fa-dpad button { padding: 0; line-height: 1; display: flex;
+    align-items: center; justify-content: center; }
+  .fa-dpad button[data-mv="cima"]   { grid-area: 1 / 2; }
+  .fa-dpad button[data-mv="esq"]    { grid-area: 2 / 1; }
+  .fa-dpad button[data-mv="centro"] { grid-area: 2 / 2; }
+  .fa-dpad button[data-mv="dir"]    { grid-area: 2 / 3; }
+  .fa-dpad button[data-mv="baixo"]  { grid-area: 3 / 2; }
   .fa-pos-rot { display: grid; gap: .1rem; }
   .fa-pos-rot .muted { font-size: var(--fs-micro); font-variant-numeric: tabular-nums; }
   .fa-h { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
