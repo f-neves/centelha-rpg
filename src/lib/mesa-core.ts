@@ -326,11 +326,14 @@ export type NivelVida = 'numero' | 'estado' | 'nada';
 export type NivelFicha = 'nada' | 'fisico' | 'tudo';
 export interface Revelar {
   vidaInimigo: NivelVida; statsInimigo: boolean; condInimigo: boolean;
-  fichaColegas: NivelFicha; energiaColegas: boolean;
+  fichaColegas: NivelFicha; statusColegas: boolean; vidaColegas: boolean; energiaColegas: boolean;
 }
+// `vidaColegas` nasce ligada: a Vida dos aliados sempre apareceu no rastreador,
+// e é o que permite socorrer alguém a tempo. Desligar é escolha da mesa, não
+// efeito colateral de uma versão nova.
 export const REVELAR_PADRAO: Revelar = {
   vidaInimigo: 'estado', statsInimigo: false, condInimigo: true,
-  fichaColegas: 'fisico', energiaColegas: false,
+  fichaColegas: 'fisico', statusColegas: false, vidaColegas: true, energiaColegas: false,
 };
 export const revelarDaMesa = (mesa: any): Revelar => ({ ...REVELAR_PADRAO, ...(mesa?.revelar || {}) });
 

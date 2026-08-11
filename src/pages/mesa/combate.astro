@@ -599,7 +599,11 @@ import MesaCab from '../../components/MesaCab.astro';
     RESUMO = {};
     for (const c of COMBS) {
       if (!verStats(c)) continue;
-      const r = resumoDe(c, FICHAS); if (r) RESUMO[c.id] = r;
+      // Do companheiro o jogador não tem a ficha, e sem ficha não há conta: o
+      // bloco dele vem pronto do cache de derivados, que a view manda quando a
+      // mesa abre "Status". `dados` do combatente continua mandando por cima.
+      const r = resumoDe(c, FICHAS) || (c.resumo_pc ? resumoDe({ ...c, dados: { ...c.resumo_pc, ...(c.dados || {}) } }) : null);
+      if (r) RESUMO[c.id] = r;
     }
 
     pintar();

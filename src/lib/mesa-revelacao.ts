@@ -99,11 +99,34 @@ export async function abrirRevelacao(ctx: CtxMesa, aoSalvar?: (r: Revelar) => vo
   const r = revelarDaMesa(mesa);
   const dlg = el('rev-dlg') as HTMLDialogElement;
 
-  el('rev-inimigos').innerHTML = opcoesHTML('rv-vida', VIDA_OPS, r.vidaInimigo);
-  el('rev-fichas').innerHTML = opcoesHTML('rv-ficha', FICHA_OPS, (r as any).fichaColegas || 'fisico');
+  el('rev-inimigos').innerHTML = opcoesHTML('rv-vida-op', VIDA_OPS, r.vidaInimigo);
+  el('rev-fichas').innerHTML = opcoesHTML('rv-ficha', FICHA_OPS, r.fichaColegas || 'fisico');
   (el('rv-stats') as HTMLInputElement).checked = r.statsInimigo;
   (el('rv-cond') as HTMLInputElement).checked = r.condInimigo;
-  (el('rv-energia') as HTMLInputElement).checked = !!(r as any).energiaColegas;
+  (el('rv-status') as HTMLInputElement).checked = !!r.statusColegas;
+  (el('rv-vida') as HTMLInputElement).checked = r.vidaColegas !== false;
+  (el('rv-energia') as HTMLInputElement).checked = !!r.energiaColegas;
+
+  // "A ficha inteira" já contém as três: marcá-las de novo não muda nada, e
+  // deixá-las clicáveis sugere que mudariam. Travam marcadas, com o aviso do
+  // porquê, e voltam ao que a mesa tinha quando o nível desce.
+  const guardado = { status: !!r.statusColegas, vida: r.vidaColegas !== false, energia: !!r.energiaColegas };
+  const travar = () => {
+    const tudo = (document.querySelector('input[name="rv-ficha"]:checked') as HTMLInputElement)?.value === 'tudo';
+    for (const [id, k] of [['rv-status', 'status'], ['rv-vida', 'vida'], ['rv-energia', 'energia']] as const) {
+      const cx = el(id) as HTMLInputElement;
+      if (tudo) cx.checked = true;
+      else cx.checked = (guardado as any)[k];
+      cx.disabled = tudo;
+      cx.closest('label')?.classList.toggle('travada', tudo);
+    }
+    (el('rv-aviso') as HTMLElement).hidden = !tudo;
+  };
+  el('rev-fichas').querySelectorAll('input').forEach((i) => i.addEventListener('change', travar));
+  for (const [id, k] of [['rv-status', 'status'], ['rv-vida', 'vida'], ['rv-energia', 'energia']] as const) {
+    el(id).addEventListener('change', (e) => { (guardado as any)[k] = (e.target as HTMLInputElement).checked; });
+  }
+  travar();
 
   el('rev-liberado').innerHTML = '<span class="muted">contando…</span>';
   contarLiberado(sb, id).then((c) => {
@@ -122,12 +145,18 @@ export async function abrirRevelacao(ctx: CtxMesa, aoSalvar?: (r: Revelar) => vo
 
   el('rv-cancelar').onclick = () => dlg.close();
   el('rv-salvar').onclick = async () => {
+    const nivel = marcado('rv-ficha') || 'fisico';
     const novo: any = {
-      vidaInimigo: marcado('rv-vida') || 'estado',
+      vidaInimigo: marcado('rv-vida-op') || 'estado',
       statsInimigo: (el('rv-stats') as HTMLInputElement).checked,
       condInimigo: (el('rv-cond') as HTMLInputElement).checked,
-      fichaColegas: marcado('rv-ficha') || 'fisico',
-      energiaColegas: (el('rv-energia') as HTMLInputElement).checked,
+      fichaColegas: nivel,
+      // Com a ficha inteira as três estão travadas marcadas na tela; o que se
+      // grava é a intenção guardada, para o mestre não perder a configuração
+      // ao passear pelos níveis.
+      statusColegas: nivel === 'tudo' ? guardado.status : (el('rv-status') as HTMLInputElement).checked,
+      vidaColegas: nivel === 'tudo' ? guardado.vida : (el('rv-vida') as HTMLInputElement).checked,
+      energiaColegas: nivel === 'tudo' ? guardado.energia : (el('rv-energia') as HTMLInputElement).checked,
     };
     dlg.close();
     const { error } = await sb.from('mesas').update({ revelar: novo }).eq('id', id);

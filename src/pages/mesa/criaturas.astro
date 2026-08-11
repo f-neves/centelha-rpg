@@ -30,6 +30,9 @@ import MesaCab from '../../components/MesaCab.astro';
           <option value="pv">por Vida</option>
           <option value="grupo">por grupo</option>
         </select>
+        {/* Botão que gira em vez de <select>: são três estados e o mestre
+            costuma querer o próximo, não escolher na lista. */}
+        <button class="btn mini" id="filtro-vis" hidden>Todas as criaturas</button>
         <span class="espaco"></span>
         <span class="muted" id="cri-conta"></span>
       </div>
@@ -130,6 +133,14 @@ import MesaCab from '../../components/MesaCab.astro';
   let LISTA: any[] = [];
   let ENC: any = null;
 
+  // O filtro de liberação gira num botão só: todas → liberadas → ocultas.
+  const VIS_CICLO = [
+    { v: 'todas', rot: 'Todas as criaturas', dica: 'Mostrando as duas: as que o grupo já pode ver e as que ainda são só suas. Clique para ver só as liberadas.' },
+    { v: 'sim', rot: '👁 Só as liberadas', dica: 'Só o que o grupo enxerga na aba dele. Clique para ver só as ocultas.' },
+    { v: 'nao', rot: '🙈 Só as ocultas', dica: 'Só o que ainda não foi liberado. Clique para ver todas de novo.' },
+  ];
+  let VIS = 0;
+
   async function main() {
     const ctx = await abrirMesa('criaturas');
     if (!ctx) return;
@@ -139,6 +150,15 @@ import MesaCab from '../../components/MesaCab.astro';
     if (MESTRE) {
       el('busca-wrap').hidden = false;
       el('cri-dica').hidden = false;
+      const bv = el('filtro-vis');
+      bv.hidden = false;
+      const pintarBotao = () => {
+        bv.textContent = VIS_CICLO[VIS].rot;
+        bv.title = VIS_CICLO[VIS].dica;
+        bv.classList.toggle('primary', VIS !== 0);
+      };
+      bv.addEventListener('click', () => { VIS = (VIS + 1) % VIS_CICLO.length; pintarBotao(); pintar(); });
+      pintarBotao();
       ligarBusca();
       const { data } = await SB.from('encontros').select('id, nome').eq('mesa_id', ID).eq('ativo', true).limit(1);
       ENC = (data || [])[0] || null;
@@ -207,9 +227,12 @@ import MesaCab from '../../components/MesaCab.astro';
     const gFiltro = (el('filtro-grupo') as HTMLSelectElement).value;
     const ordem = (el('filtro-ordem') as HTMLSelectElement).value;
 
+    const vis = VIS_CICLO[VIS].v;
     let itens = LISTA.filter((c: any) => {
       const m = MON[c.monstro_id];
       if (gFiltro && c.grupo !== gFiltro) return false;
+      if (vis === 'sim' && !c.visivel_jogadores) return false;
+      if (vis === 'nao' && c.visivel_jogadores) return false;
       if (!q) return true;
       return norm(`${nomeExibido(c)} ${m?.nomeIngles || ''} ${m?.categoria || ''} ${c.notas || ''} ${c.grupo || ''}`).includes(q);
     });
@@ -221,8 +244,17 @@ import MesaCab from '../../components/MesaCab.astro';
       return norm(nomeExibido(c));
     };
     itens = itens.slice().sort((a, b) => { const x = valor(a, ordem), y = valor(b, ordem); return x < y ? -1 : x > y ? 1 : 0; });
-    el('cri-conta').textContent = `${itens.length} de ${LISTA.length}`;
+    const liberadas = LISTA.filter((c: any) => c.visivel_jogadores).length;
+    el('cri-conta').textContent = MESTRE
+      ? `${itens.length} de ${LISTA.length} · ${liberadas} liberada(s)`
+      : `${itens.length} de ${LISTA.length}`;
 
+    if (!itens.length) {
+      box.innerHTML = `<p class="vazio">${vis === 'sim' ? 'Nenhuma criatura liberada para o grupo ainda.'
+        : vis === 'nao' ? 'Todas as criaturas desta campanha já estão liberadas.'
+        : 'Nada com esse filtro.'}</p>`;
+      return;
+    }
     let ultimoGrupo: string | null = null;
     box.innerHTML = itens.map((c: any) => {
       const m = MON[c.monstro_id];

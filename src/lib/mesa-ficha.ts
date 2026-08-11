@@ -98,6 +98,28 @@ export function resumoFicha(S: any): ResumoFicha {
   };
 }
 
+/**
+ * O RESULTADO da ficha, sem a ficha.
+ *
+ * Vai para `personagens.resumo` e é o que um jogador vê do outro quando a mesa
+ * abre "Status" ou "Vida". A conta desses números lê a ficha inteira, então
+ * mandá-la para o navegador do colega e desenhar só a parte permitida seria
+ * esconder na tela, que é o que a área da mesa deixou de fazer. Guardando o
+ * resultado, a fatia sai pronta do banco e o insumo não viaja.
+ *
+ * Quem escreve é quem já tem a ficha em mãos: a página do personagem ao salvar,
+ * e a aba Grupo do mestre, que recalcula e corrige o que estiver velho.
+ */
+export function resumoParaBanco(R: ResumoFicha) {
+  return {
+    pv: R.pv, energia: R.energia, mana: R.mana, folego: R.folego,
+    arma: R.arma, ataque: R.ataque, dano: R.dano,
+    defesa: R.defEsquiva, defBloqueio: R.defBloqueio,
+    defesaSocial: R.defSocial, defesaMental: R.defMental,
+    soak: R.soak, resistPerf: R.resistPerf, iniciativa: R.iniciativa,
+  };
+}
+
 /** Iniciativa rolada para um PC: 1d6 por dado do pool não — aqui é a regra da mesa (d6 + Raciocínio + Prontidão). */
 export function rolarIniciativaPC(S: any) {
   const d6 = () => 1 + Math.floor(Math.random() * 6);

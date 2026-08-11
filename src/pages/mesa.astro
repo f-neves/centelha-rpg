@@ -509,11 +509,15 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
         : r.vidaInimigo === 'estado' ? 'só o estado da Vida' : 'nada da Vida, só a cor do retrato';
       const ficha = r.fichaColegas === 'tudo' ? 'a ficha inteira um do outro'
         : r.fichaColegas === 'nada' ? 'nada da ficha um do outro' : 'só o físico um do outro';
+      // Os três interruptores viram uma lista curta; "e mais nada" quando os
+      // três estão fechados diz mais que o silêncio.
+      const junto = r.fichaColegas === 'tudo' ? []
+        : [r.vidaColegas !== false && 'Vida', r.statusColegas && 'Status', r.energiaColegas && 'Energia'].filter(Boolean);
       el('rev-resumo').innerHTML = `<ul class="rev-lista">
         <li title="Vale para criaturas e NPCs no rastreador. Um inimigo pode fugir da regra pelo selo 👁 no card dele.">
           <span class="rl-i">☠</span> Dos inimigos: <strong>${vida}</strong>${r.statsInimigo ? ' e <strong>os números de ataque e defesa</strong>' : ', <strong>sem os números</strong>'}${r.condInimigo ? '' : ', <strong>sem as condições</strong>'}.</li>
         <li title="A ficha de cada jogador é dele; isto decide quanto dela os companheiros alcançam na aba Grupo.">
-          <span class="rl-i">☗</span> Entre os personagens: <strong>${ficha}</strong>${r.energiaColegas ? ', com Energia e Mana' : ''}.</li>
+          <span class="rl-i">☗</span> Entre os personagens: <strong>${ficha}</strong>${junto.length ? ', mais <strong>' + junto.join('</strong>, <strong>') + '</strong>' : (r.fichaColegas === 'tudo' ? '' : ', e mais nada')}.</li>
         <li class="muted" title="Criaturas, mapas, handouts, compêndio e notas têm interruptor próprio na aba de cada um. O painel mostra o placar.">
           <span class="rl-i">◈</span> Criaturas, mapas e handouts: cada um se libera na aba dele.</li>
       </ul>`;

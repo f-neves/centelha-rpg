@@ -118,6 +118,7 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
   import { exigirLogin, supabaseConfigurado } from '../lib/auth';
   import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../lib/ui-dialog';
   import { atualizarUltimoCrumb, definirCrumbs } from '../lib/crumbs';
+import { resumoFicha, resumoParaBanco } from '../lib/mesa-ficha';
 
   const base = import.meta.env.BASE_URL;
   const u = (p: string) => `${base.replace(/\/$/, '')}/${p}`;
@@ -321,8 +322,14 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     // ficha: editável para o dono em rascunho e para o mestre; senão leitura
     document.getElementById('ficha-wrap')!.hidden = false;
     const salvarFicha = debounce(async (S: any) => {
+      // `resumo` é o cache dos derivados (Vida, ataque, defesas): é por ele que
+      // os companheiros de mesa veem os números uns dos outros sem que a ficha
+      // inteira precise viajar. Gravado junto com a ficha para nascer em dia.
+      let resumo: any = undefined;
+      try { resumo = resumoParaBanco(resumoFicha(S)); } catch {}
       await sb.from('personagens').update({
         ficha: S,
+        ...(resumo ? { resumo } : {}),
         nome: (S.id?.nome || pers.nome || 'Personagem'),
         conceito: (S.id?.conceito || ''),
         atualizado_em: new Date().toISOString(),

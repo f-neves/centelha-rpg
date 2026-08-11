@@ -161,7 +161,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <script>
   import { abrirMesa, copiarTexto, u, esc, avatarHTML, urlsImagens, nomesDe, semMigracao14 } from '../../lib/mesa-core';
-  import { resumoFicha } from '../../lib/mesa-ficha';
+  import { resumoFicha, resumoParaBanco } from '../../lib/mesa-ficha';
   import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
   import HAB_D from '../../data/habilidades.json';
   import ATR_D from '../../data/atributos.json';
@@ -209,7 +209,7 @@ import MesaCab from '../../components/MesaCab.astro';
     // `vaga` e `codigo_vaga` chegam com a migração 12; sem ela a consulta falha
     // por coluna inexistente, e aí o Grupo volta ao que era antes.
     let { data, error } = await SB.from('personagens')
-      .select('id, nome, conceito, dono_id, status, imagem_path, ficha, revisao_nota, vaga, codigo_vaga')
+      .select('id, nome, conceito, dono_id, status, imagem_path, ficha, revisao_nota, vaga, codigo_vaga, resumo')
       .eq('mesa_id', ID).order('nome', { ascending: true });
     if (error && /vaga/i.test(error.message)) {
       el('nova-vaga').hidden = true; el('assumir-cod').hidden = true;
@@ -427,6 +427,27 @@ import MesaCab from '../../components/MesaCab.astro';
     }));
 
     if (MESTRE) { pintarPassivos(data, resumos, nomes); pintarVisao(data, resumos, nomes); }
+    atualizarCache(data, resumos);
+  }
+
+  /**
+   * Mantém `personagens.resumo` em dia.
+   *
+   * É o cache dos derivados (Vida, ataque, defesas) que os companheiros veem
+   * quando a mesa abre "Status" ou "Vida". Quem calcula é quem tem a ficha em
+   * mãos, e quem tem a ficha em mãos é quem está olhando esta aba: o mestre vê
+   * todas, o jogador vê a dele. Grava só o que mudou, e engole a recusa da RLS
+   * sem barulho (ficha aprovada não é editável pelo dono, e tudo bem: a
+   * próxima visita do mestre corrige).
+   */
+  async function atualizarCache(pcs: any[], resumos: Record<string, any>) {
+    for (const p of pcs) {
+      const R = resumos[p.id];
+      if (!R || p.deFora) continue;
+      const novo = resumoParaBanco(R);
+      if (JSON.stringify(novo) === JSON.stringify(p.resumo || {})) continue;
+      try { await SB.from('personagens').update({ resumo: novo }).eq('id', p.id); } catch {}
+    }
   }
 
   // ============================================ os outros, vistos por fora
@@ -462,6 +483,25 @@ import MesaCab from '../../components/MesaCab.astro';
     const dica = p.nivel === 'nada'
       ? 'A mesa não compartilha as fichas entre os jogadores.'
       : 'A ficha é do jogador. Daqui você vê o que se vê na pessoa.';
+    // Vida, Status e Energia vêm do cache de derivados (`extra`), cada um com
+    // seu interruptor no painel de revelação. Não é a ficha: é o resultado dela.
+    const x = p.extra || {};
+    const pil: string[] = [];
+    const pl = (r: string, v: any) => pil.push(`<span class="pl"><span class="pl-l">${r}</span><span class="pl-v">${esc(v)}</span></span>`);
+    if (x.pv != null) pl('Vida', x.pv);
+    if (x.energia != null) { pl('Energia', x.energia); pl('Mana', x.mana ?? 0); pl('Fôlego', x.folego ?? 0); }
+    if (x.ataque != null || x.defesa != null) {
+      if (x.arma) pl('Arma', x.arma);
+      if (x.ataque) pl('Acerto', x.ataque);
+      if (x.dano) pl('Dano', x.dano);
+      if (x.defesa != null) pl('Def', x.defesa);
+      if (x.defBloqueio != null) pl('Bloq', x.defBloqueio);
+      if (x.defesaSocial != null) pl('Soc', x.defesaSocial);
+      if (x.defesaMental != null) pl('Men', x.defesaMental);
+      if (x.soak) pl('Abs', `${x.soak.impacto}/${x.soak.corte}/${x.soak.perfuracao}`);
+      if (x.resistPerf) pl('Resist. Perf', 'N' + x.resistPerf);
+      if (x.iniciativa) pl('Ini', x.iniciativa);
+    }
     return `<article class="pc-card de-fora">
       <div class="pc-topo">
         <span class="pc-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null)}</span>
@@ -473,6 +513,7 @@ import MesaCab from '../../components/MesaCab.astro';
         ${fis.length ? `<div class="atr-linha atr-fora">
           ${fis.map(([r, v]) => `<span class="atr-cel"><span>${esc(r)}</span><b>${v}</b></span>`).join('')}
         </div>` : ''}
+        ${pil.length ? `<div class="pilha pc-nums">${pil.join('')}</div>` : ''}
       </div>
     </article>`;
   }

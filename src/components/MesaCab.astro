@@ -82,10 +82,19 @@ const { aba } = Astro.props;
       <h4 class="rev-h">De um personagem para o outro <small>na aba Grupo</small></h4>
       <p class="rev-nota">A ficha de cada jogador é dele; isto decide quanto dela os companheiros alcançam.</p>
       <div id="rev-fichas"></div>
-      <label class="rev-chk" title="Vida aparece sempre entre aliados no combate: é o que permite socorrer alguém a tempo. Energia e Mana são plano de ação, e por padrão ficam com o dono.">
-        <input type="checkbox" id="rv-energia" />
-        <span><strong>Energia e Mana dos companheiros</strong><small>a Vida dos aliados aparece sempre no combate; estas duas, só se você marcar</small></span>
+      <label class="rev-chk" title="Ataque, dano, as três defesas, absorção e iniciativa de cada um. É o que um grupo que treina junto sabe: dá para combinar tática sem abrir perícias, história e Centelha.">
+        <input type="checkbox" id="rv-status" />
+        <span><strong>Status</strong><small>ataque, dano, defesas, absorção e iniciativa um do outro</small></span>
       </label>
+      <label class="rev-chk" title="Vale na ficha e no rastreador. Desligada, o aliado aparece no combate com a palavra do estado (Ferido, Grave) em vez do número: dá para socorrer sem saber a conta.">
+        <input type="checkbox" id="rv-vida" />
+        <span><strong>Vida</strong><small>a Vida um do outro, na aba Grupo e na barra do combate</small></span>
+      </label>
+      <label class="rev-chk" title="Energia e Mana são plano de ação: quantas vezes ainda dá para usar a Arte, quanto fôlego resta. Por padrão ficam com o dono.">
+        <input type="checkbox" id="rv-energia" />
+        <span><strong>Energia e Mana</strong><small>e o Fôlego, dos companheiros</small></span>
+      </label>
+      <p class="rev-aviso" id="rv-aviso" hidden>Com a ficha inteira à mostra, estes três já vão junto.</p>
     </section>
 
     <section class="rev-sec">
@@ -382,6 +391,8 @@ const { aba } = Astro.props;
   .rev-chk strong { display: block; font-family: 'Cinzel'; font-weight: 400;
     font-size: var(--fs-rotulo); color: var(--ink); line-height: 1.2; }
   .rev-chk small { display: block; font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.3; }
+  .mesa-dlg label.rev-chk.travada { opacity: .55; cursor: not-allowed; }
+  .rev-aviso { margin: .3rem 0 0; font-size: var(--fs-micro); font-style: italic; color: var(--accent-texto); }
   /* O "fora da tela" é a decisão mais forte do diálogo do combatente. */
   .mesa-dlg label.rev-oculto { border: 1px dashed var(--rule); border-radius: var(--r-md);
     padding: .4rem .6rem; margin-bottom: .5rem; }
