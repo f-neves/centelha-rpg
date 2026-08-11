@@ -179,7 +179,13 @@ const { aba } = Astro.props;
   .av-fer { position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
     background: hsl(var(--fer-h, 48) 88% 46%); opacity: var(--fer-op, .3); mix-blend-mode: multiply;
     transition: background-color .5s ease, opacity .5s ease; }
-  .av-ferido { border-color: hsl(var(--fer-h, 48) 60% 42%); }
+  /* O anel do ferimento, na mesma cor da tinta. A tinta sozinha se perde num
+     retrato que já é escuro ou já é avermelhado; o anel é geometria, e não
+     depende da arte por baixo para ser lido. Cresce com o retrato (um anel de
+     4px some numa miniatura de 1.9rem e engorda demais num de 5rem), e como o
+     box-sizing é border-box, engrossar a borda não muda o tamanho do círculo. */
+  .av-ferido { border-color: hsl(var(--fer-h, 48) 70% 45%);
+    border-width: clamp(2px, calc(var(--av-t, 2.6rem) * .07), 4px); }
   @media (prefers-reduced-motion: reduce) { .av-fer { transition: none; } }
   .av img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .av-vazio { background: hsl(var(--av-h, 40) 30% 32%); border-color: hsl(var(--av-h, 40) 30% 45%); }
@@ -187,9 +193,12 @@ const { aba } = Astro.props;
   .av-g { --av-t: 4.2rem; }
   .av-p { --av-t: 1.9rem; }
   .av-quad { border-radius: var(--r-md); }
-  /* A arte do bestiário é recortada em fundo claro: no tema escuro ela precisa
-     do multiply para não virar um selo branco dentro do círculo. */
-  .av-besta img { mix-blend-mode: multiply; background: #efe4c9; }
+  /* A arte do bestiário é recortada em fundo claro, e por isso ganha o disco
+     creme atrás. O `multiply` que vinha junto foi removido: ele resolvia o
+     recorte branco, mas ao custo de multiplicar a arte pelo fundo, e a criatura
+     saía escura demais para se reconhecer numa miniatura. O disco sozinho já
+     assenta o recorte. */
+  .av-besta img { background: #efe4c9; }
 
   /* ---- barra de vida ---- */
   .hpbar { position: relative; flex: 1 1 8rem; min-width: 6rem; height: 1.25rem; border-radius: 999px;
