@@ -1481,12 +1481,15 @@ export function montarFicha(opts: FichaOpts) {
       // a última linha é o teto exato, onde o alcance é zero por construção: ali o número
       // que interessa é o peso, não a distância
       const cls = w === apice ? ' class="ap"' : d <= 0 ? ' class="lim"' : '';
-      return `<tr${cls}><td>${fmtKg(w)}</td><td>${d > 0 ? r1(d) : 'não arremessa'}</td></tr>`;
+      return `<tr${cls}><td>${fmtKg(w)} kg</td>`
+        + `<td>${d > 0 ? `${r1(d)} metros` : 'não arremessa'}</td></tr>`;
     }).join('');
+    // A unidade vai em cada valor, não no cabeçalho: a tabela é feita para ser lida de
+    // relance no meio da cena, e uma linha solta ("8,6 metros") tem de se explicar sozinha.
     // larguras explícitas: sozinha, a coluna de peso encolhe até o cabeçalho quebrar em
     // duas linhas, porque os números dela são os mais curtos da tabela
     const table = `<table class="fa-tbl"><colgroup><col style="width:40%"/><col style="width:60%"/></colgroup>`
-      + `<thead><tr><th>Peso (kg)</th><th>Alcance (m)</th></tr></thead>`
+      + `<thead><tr><th>Peso</th><th>Alcance</th></tr></thead>`
       + `<tbody>${rows}</tbody></table>`;
 
     /* A segunda tabela anda numa régua própria. A de arremesso é geométrica, porque lá o
@@ -1499,11 +1502,11 @@ export function montarFicha(opts: FichaOpts) {
     const rowsV = fracs.map((fr) => {
       const w = maxKg * fr, v = vel(w);
       // a última é o corte: dali para cima ergue-se e segura-se, e não se anda
-      return `<tr${v <= 0 ? ' class="lim"' : ''}><td>${kg1(w)}</td>`
-        + `<td>${v > 0 ? r1(v) : 'não desloca'}</td></tr>`;
+      return `<tr${v <= 0 ? ' class="lim"' : ''}><td>${kg1(w)} kg</td>`
+        + `<td>${v > 0 ? `${r1(v)} m/s` : 'não desloca'}</td></tr>`;
     }).join('');
     const tableV = `<table class="fa-tbl"><colgroup><col style="width:40%"/><col style="width:60%"/></colgroup>`
-      + `<thead><tr><th>Peso (kg)</th><th>Velocidade (m/s)</th></tr></thead>`
+      + `<thead><tr><th>Peso</th><th>Velocidade</th></tr></thead>`
       + `<tbody>${rowsV}</tbody></table>`;
 
     /* O cabeçalho em cinco linhas de forma igual: rótulo em versal, ponto-médio, e o
