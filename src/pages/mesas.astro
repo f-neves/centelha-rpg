@@ -65,7 +65,7 @@ import Base from '../layouts/Base.astro';
     if (!user) return; // já redirecionou
     document.getElementById('carregando')!.hidden = true;
     document.getElementById('mesas-conteudo')!.hidden = false;
-    await Promise.all([render(), renderPersonagens(user.id)]);
+    await Promise.all([render(user.id), renderPersonagens(user.id)]);
 
     document.getElementById('novo-pers')!.addEventListener('click', async () => {
       setMsg('Criando personagem…', false);
@@ -147,10 +147,16 @@ import Base from '../layouts/Base.astro';
     }).join('') + '</div>';
   }
 
-  async function render() {
+  // Só as SUAS filiações. O filtro por user_id é indispensável: a policy
+  // membros_select libera todas as linhas das mesas em que você está (é o que
+  // faz a lista de membros funcionar no Grupo), então sem ele a consulta volta
+  // uma linha por PESSOA de cada mesa. Era isso que duplicava os cards e
+  // pintava um "Mestre" com o código de convite: a linha do mestre de verdade.
+  async function render(userId: string) {
     const { data, error } = await getSupabase()
       .from('mesa_membros')
       .select('papel, mesa:mesas(id, nome, descricao, codigo_convite, mestre_id)')
+      .eq('user_id', userId)
       .order('entrou_em', { ascending: true });
     const lista = document.getElementById('lista')!;
     if (error) { lista.innerHTML = `<p class="erro">Erro ao carregar: ${esc(error.message)}</p>`; return; }
