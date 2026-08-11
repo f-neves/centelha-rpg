@@ -667,12 +667,11 @@ import '../styles/arte-equip.css';
   .fa-wrap { display: flex; flex-direction: column; gap: .6rem; }
   .fa-head { font-size: var(--fs-rotulo); line-height: 1.55; }
   .fa-head b { color: var(--accent-strong); font-family: 'Cinzel'; }
-  .fa-tiers { display: flex; gap: .5rem 1.4rem; flex-wrap: wrap; margin: .25rem 0 .5rem; }
-  .fa-tiers span { font-size: var(--fs-rotulo); } .fa-tiers span b { font-family: 'Cinzel'; color: var(--accent-strong); }
-  .fa-tiers span i { color: var(--ink-soft); font-size: var(--fs-micro); font-style: italic; }
-  /* as três alturas do levantamento, na mesma linha: do chão, acima da cabeça, arremessa */
-  .fa-head .fa-alt { margin-right: 1.1rem; font-size: var(--fs-rotulo); }
-  .fa-head .fa-alt b { font-family: 'Cinzel'; color: var(--accent-strong); }
+  /* Cinco linhas de forma igual, em três grupos: as duas reservas, os dois grupos de
+     números que elas geram, e a velocidade. O respiro entre itens é o mesmo em todas. */
+  .fa-linha + .fa-linha { margin-top: .1rem; }
+  .fa-linha.fa-grupo { margin-top: .55rem; }
+  .fa-item { margin-right: 1.1rem; white-space: nowrap; }
   /* As duas tabelas dividem a linha no desktop e empilham no celular. Cada uma é curta
      demais para merecer a largura toda: esticada, o cabeçalho quebra em duas linhas e as
      células viram campos vazios. */

@@ -1506,21 +1506,34 @@ export function montarFicha(opts: FichaOpts) {
       + `<thead><tr><th>Peso (kg)</th><th>Velocidade (m/s)</th></tr></thead>`
       + `<tbody>${rowsV}</tbody></table>`;
 
-    const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt}`
-      + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(velFrac(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(velFrac(cLeve) * 100)}%</i></span>`
-      + `<span>Média <b>${kg(cMedia)}</b> <i>só anda, ${Math.round(velFrac(cMedia) * 100)}%</i></span>`
-      + `<span>Pesada <b>${kg(cPesada)}</b> <i>arrasta, ${Math.round(velFrac(cMedia) * 100)}% a 0</i></span>`
-      + `<span>Máxima <b>${kg(maxKg)}</b> <i>ergue, não desloca</i></span></div>`
-      // As três alturas do levantamento, que é o que o jogador consulta antes de perguntar
-      // se dá para jogar: do chão, acima da cabeça (metade) e arremessar (um quarto).
-      + `<b>Levanta</b> · <span class="fa-alt">do chão <b>${kg(maxKg)}</b></span>`
-      + `<span class="fa-alt">acima da cabeça <b>${kg(acimaKg)}</b></span>`
-      + `<span class="fa-alt">arremessa até <b>${kg(tetoKg)}</b></span><br>`
+    /* O cabeçalho em cinco linhas de forma igual: rótulo em versal, ponto-médio, e o
+       conteúdo em itens de mesmo respiro. Primeiro as DUAS RESERVAS, que são de onde tudo
+       sai; depois os dois grupos de números que elas geram (as alturas e as faixas de
+       carga); por último a velocidade, que é a ponte para a segunda tabela.
+
+       Entre um item e outro há um espaço de VERDADE no HTML, além da margem: só com a
+       margem, copiar a linha inteira colava "500 kgacima da cabeça 250 kg". */
+    const item = (rot: string, val: string) => `<span class="fa-item">${rot} <b>${val}</b></span>`;
+    const linha = (rot: string, corpo: string, grupo = false) =>
+      `<div class="fa-linha${grupo ? ' fa-grupo' : ''}"><b>${rot}</b> · ${corpo}</div>`;
+    const head = `<div class="fa-head">`
+      + linha('Levantamento de Peso', `FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt}`)
       // Só a conta. O porquê da curva (o ápice em 100 g, a saturação abaixo dele, a queda
       // perto do teto) é matéria do capítulo de Corpo e Movimento, não da ficha: aqui o
       // jogador quer o número, e os gráficos mostram a forma a um clique.
-      + `<b>Arremesso</b> · FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr}<br>`
-      + `<b>Corrida</b> · <span class="fa-alt">sem carga <b>${r1(vBase)} m/s</b></span></div>`;
+      + linha('Distância de Arremesso', `FAA ${faa} = Força ${forca}×2 + Atletismo ${atl} + Arremesso ${arr}`)
+      // As três alturas do levantamento, que é o que o jogador consulta antes de perguntar
+      // se dá para jogar: do chão, acima da cabeça (metade) e arremessar (um quarto).
+      + linha('Levanta', [
+          item('do chão', kg(maxKg)), item('acima da cabeça', kg(acimaKg)),
+          item('arremessa até', kg(tetoKg)),
+        ].join(' '), true)
+      + linha('Cargas', [
+          item('Mínima', kg(cMin)), item('Leve', kg(cLeve)), item('Média', kg(cMedia)),
+          item('Pesada', kg(cPesada)), item('Máxima', kg(maxKg)),
+        ].join(' '))
+      + linha('Velocidade Máxima de Corrida', `<b>${r1(vBase)} m/s</b>`, true)
+      + `</div>`;
     const botoes = `<div class="fa-curvas" role="group" aria-label="Gráficos">`
       + `<button type="button" data-fa-graf="arremesso">Arremesso × Peso</button>`
       + `<button type="button" data-fa-graf="velocidade">Velocidade × Peso</button>`
