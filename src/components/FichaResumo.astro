@@ -1,0 +1,123 @@
+---
+// O modal da ficha resumida. Nasce vazio: quem o preenche é `abrirFichaResumo`
+// em src/lib/ficha-card.ts, que só é carregado quando alguém clica.
+//
+// Fica num componente, e não solto na página, porque a ficha resumida é para
+// aparecer em mais de um lugar (Mesas / Fichas hoje; a aba Grupo amanhã) e o
+// visual dela tem de ser o mesmo em todos.
+---
+
+<div id="fr-modal" class="fr-modal" hidden role="dialog" aria-modal="true" aria-label="Ficha resumida">
+  <div class="fr-back" data-fr-fechar></div>
+  <div class="fr-box">
+    <button class="fr-x" type="button" data-fr-fechar aria-label="Fechar">✕</button>
+    <div id="fr-body"></div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('fr-modal');
+  const fechar = () => { if (modal) { modal.hidden = true; document.body.style.overflow = ''; } };
+  document.querySelectorAll('#fr-modal [data-fr-fechar]').forEach((el) => el.addEventListener('click', fechar));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal && !modal.hidden) fechar(); });
+</script>
+
+<style is:global>
+  /* ================================================================
+     Ficha resumida · mesmo vocabulário visual do card de criatura
+     ================================================================ */
+  .fr-modal { position: fixed; inset: 0; z-index: 95; display: flex; align-items: center;
+    justify-content: center; padding: 1.2rem; }
+  .fr-modal[hidden] { display: none; }
+  .fr-back { position: absolute; inset: 0; background: color-mix(in srgb, #1a120a 78%, transparent);
+    backdrop-filter: blur(3px); }
+  .fr-box { position: relative; z-index: 1; max-width: 38rem; width: 100%; max-height: 90vh;
+    overflow: auto; border-radius: var(--r-lg); }
+  /* Fundo sólido escuro: o botão fica por cima da arte do personagem, que pode
+     ser clara, escura ou as duas na mesma imagem. Translúcido some em metade
+     dos retratos. */
+  .fr-x { position: absolute; top: .5rem; right: .5rem; z-index: 3; width: 2rem; height: 2rem;
+    border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: rgba(20,16,12,.72);
+    color: #f3e8cf; font-size: var(--fs-aux); line-height: 1; cursor: pointer; }
+  .fr-x:hover { background: rgba(20,16,12,.92); }
+
+  .fr-card { display: flex; flex-direction: column; border: 1px solid var(--panel-border);
+    border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
+  /* O retrato é 3/2 e não 4/3 como o do bestiário: arte de personagem quase
+     sempre é vertical, e um recorte mais alto não corta a cabeça. */
+  .fr-arte { position: relative; margin: 0; aspect-ratio: 3 / 2; display: flex; align-items: center;
+    justify-content: center; overflow: hidden; border-bottom: 1px solid var(--panel-border);
+    background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%); }
+  .fr-arte img { width: 100%; height: 100%; object-fit: cover; }
+  /* Sem retrato, a moldura encolhe para uma faixa: 3:2 de pergaminho vazio são
+     quatrocentos pixels dizendo "esta ficha não tem arte", e o que interessa
+     (os números) é empurrado para fora da tela. */
+  .fr-arte.sem-arte { aspect-ratio: auto; height: 4.6rem; }
+  .fr-capitular { font-size: 3rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f); }
+  .fr-cent { position: absolute; left: .5rem; top: .5rem; font-family: 'Cinzel'; font-size: var(--fs-aux);
+    font-weight: 600; padding: .18rem .68rem; border-radius: 999px; color: #fff;
+    background: color-mix(in srgb, var(--accent-strong) 90%, #000); }
+
+  .fr-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .9rem; }
+  .fr-head { display: flex; flex-wrap: wrap; gap: .1rem .5rem; align-items: baseline; }
+  .fr-nome { font-size: var(--fs-corpo); color: var(--accent-texto); line-height: 1.15; }
+  .fr-con { font-size: var(--fs-rotulo); font-style: italic; color: var(--ink-soft); }
+  .fr-badges { display: flex; flex-wrap: wrap; gap: .3rem; margin: .35rem 0 .1rem; }
+  .fr-badge { font-size: var(--fs-micro); padding: .1rem .5rem; border-radius: 999px;
+    border: 1px solid var(--panel-border); background: var(--panel-2); color: var(--ink); }
+  .fr-badge.cat { background: var(--accent-strong); color: var(--on-accent-strong, #fff); border-color: transparent; }
+
+  /* 5.4rem e não 4.2: com a coluna estreita, "Absorção" e "Iniciativa" no
+     nowrap transbordavam para dentro do vizinho e as duas palavras se colavam. */
+  .fr-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(5.4rem, 1fr));
+    gap: .3rem .2rem; margin: .55rem 0; padding: .5rem 0; align-items: start;
+    border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
+  .fr-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
+  /* O rótulo não quebra: um "Absorção" em duas linhas empurraria o número para
+     fora do alinhamento com os vizinhos da mesma faixa. */
+  .fr-stats dt { white-space: nowrap; }
+  .fr-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-micro);
+    text-transform: uppercase; letter-spacing: .04em; }
+  .fr-stats dd { margin: 0; font-size: var(--fs-aux); font-variant-numeric: tabular-nums; font-weight: 600; }
+
+  .fr-h { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-strong);
+    text-transform: uppercase; letter-spacing: .04em; margin: .7rem 0 .35rem; }
+  .fr-sub { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft);
+    margin: .45rem 0 .2rem; }
+
+  /* Atributos em três colunas: é a leitura da ficha, e o olho já sabe onde
+     procurar Força sem ler o rótulo. */
+  .fr-atr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; }
+  .fr-atr-col { display: flex; flex-direction: column; gap: .15rem; min-width: 0; }
+  .fr-atr-g { font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .9); text-transform: uppercase;
+    letter-spacing: .05em; color: var(--ink-soft); }
+  .fr-atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem;
+    padding: .1rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .fr-atr-n { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fr-atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
+  @media (max-width: 460px) { .fr-atr-grid { grid-template-columns: 1fr; } }
+
+  .fr-tracos { display: flex; flex-wrap: wrap; gap: .3rem .8rem; margin-top: .45rem;
+    font-size: var(--fs-rotulo); color: var(--ink-soft); }
+  .fr-tracos b { color: var(--accent-strong); font-variant-numeric: tabular-nums; }
+  .fr-tr-virt { flex-basis: 100%; }
+
+  .fr-chips { display: flex; flex-wrap: wrap; gap: .25rem; }
+  .fr-chip { font-size: var(--fs-micro); padding: .08rem .5rem; border-radius: 999px;
+    border: 1px solid var(--panel-border); background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .fr-chip b { color: var(--accent-strong); font-variant-numeric: tabular-nums; margin-left: .1rem; }
+  .fr-chip[title] { cursor: help; border-style: dashed; }
+  .fr-guardado .fr-chip { background: none; opacity: .8; }
+
+  .fr-cam { margin-bottom: .35rem; }
+  .fr-cam-n { display: block; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink);
+    margin-bottom: .15rem; }
+
+  .fr-eq { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .35rem; }
+  .fr-eq li { display: flex; flex-direction: column; gap: .05rem; padding-left: .7rem;
+    border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); font-size: var(--fs-rotulo); }
+  .fr-eq-n { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
+  .fr-eq-v b { color: var(--accent-strong); }
+  .fr-eq-s { font-size: var(--fs-micro); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+</style>
