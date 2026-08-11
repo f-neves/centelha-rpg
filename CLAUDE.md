@@ -28,6 +28,22 @@ Regras de convívio:
 - Ao terminar, **diga em uma linha quais arquivos você tocou**, para a outra frente
   saber o que mudou debaixo dela.
 
+### Onde as frentes se encostam
+
+A divisão costuma ser: uma frente cuida de `/mesa` (o painel do mestre, o Grid de
+combate, o Supabase), a outra cuida das regras (dados, ficha, capítulos). Elas
+quase não se cruzam, exceto em quatro lugares:
+
+- `src/layouts/Base.astro` e `src/styles/global.css`: as duas mexem, e é o encontro
+  mais provável. Edite o mínimo e diga o que mudou.
+- `src/lib/equip.ts`: contrato silencioso. A ficha escreve o formato da arma; o
+  rastreador de combate da mesa lê esse formato por `armaDoSlot`. Mudar a forma do
+  objeto não gera conflito no git e quebra o combate sem aviso.
+- `src/data/*.json`: a frente das regras escreve, a frente da mesa lê. Renomear
+  perícia, atributo ou chave muda o chão da outra.
+- `src/lib/site.ts` é só da frente das regras (não há entrada de `/mesa` nele), e
+  `src/lib/mesa-*.ts` é só da frente da mesa.
+
 ## O essencial do repositório
 
 - `src/data/*.json` é a fonte da verdade das regras. Os capítulos em
