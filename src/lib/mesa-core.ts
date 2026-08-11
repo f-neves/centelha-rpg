@@ -66,7 +66,8 @@ export async function copiarTexto(texto: string, origem?: HTMLElement | null, fo
     faixa.selectNodeContents(alvo);
     const sel = getSelection();
     sel?.removeAllRanges(); sel?.addRange(faixa);
-    piscar('⌘C');
+    // O atalho é do teclado de quem está lendo, e não do teclado de quem escreveu.
+    piscar(/Mac|iPhone|iPad/i.test(navigator.platform || '') ? '⌘C' : 'Ctrl+C');
     return false;
   }
   piscar('✕');
