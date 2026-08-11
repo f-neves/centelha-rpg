@@ -1481,14 +1481,30 @@ export function montarFicha(opts: FichaOpts) {
       // a última linha é o teto exato, onde o alcance é zero por construção: ali o número
       // que interessa é o peso, não a distância
       const cls = w === apice ? ' class="ap"' : d <= 0 ? ' class="lim"' : '';
-      return `<tr${cls}><td>${fmtKg(w)}</td><td>${d > 0 ? r1(d) : 'não arremessa'}</td>`
-        + `<td>${r1(vel(w))}</td></tr>`;
+      return `<tr${cls}><td>${fmtKg(w)}</td><td>${d > 0 ? r1(d) : 'não arremessa'}</td></tr>`;
     }).join('');
     // larguras explícitas: sozinha, a coluna de peso encolhe até o cabeçalho quebrar em
     // duas linhas, porque os números dela são os mais curtos da tabela
-    const table = `<table class="fa-tbl"><colgroup><col style="width:26%"/><col style="width:37%"/><col style="width:37%"/></colgroup>`
-      + `<thead><tr><th>Peso (kg)</th><th>Alcance (m)</th><th>Velocidade (m/s)</th></tr></thead>`
+    const table = `<table class="fa-tbl"><colgroup><col style="width:40%"/><col style="width:60%"/></colgroup>`
+      + `<thead><tr><th>Peso (kg)</th><th>Alcance (m)</th></tr></thead>`
       + `<tbody>${rows}</tbody></table>`;
+
+    /* A segunda tabela anda numa régua própria. A de arremesso é geométrica, porque lá o
+       que interessa acontece nos primeiros gramas; aqui é o contrário: até um décimo de P
+       nada acontece, e o que decide a cena está entre metade e três quartos, onde o passo
+       fecha para cinco centésimos. Termina em 0,75 P, que é onde o deslocamento acaba. */
+    const kg1 = (n: number) => (n >= 100 ? String(Math.round(n))
+      : String(Math.round(n * 10) / 10)).replace('.', ',');
+    const fracs = [.10, .20, .30, .35, .40, .45, .50, .55, .60, .65, .70, .75];
+    const rowsV = fracs.map((fr) => {
+      const w = maxKg * fr, v = vel(w);
+      // a última é o corte: dali para cima ergue-se e segura-se, e não se anda
+      return `<tr${v <= 0 ? ' class="lim"' : ''}><td>${kg1(w)}</td>`
+        + `<td>${v > 0 ? r1(v) : 'não desloca'}</td></tr>`;
+    }).join('');
+    const tableV = `<table class="fa-tbl"><colgroup><col style="width:40%"/><col style="width:60%"/></colgroup>`
+      + `<thead><tr><th>Peso (kg)</th><th>Velocidade (m/s)</th></tr></thead>`
+      + `<tbody>${rowsV}</tbody></table>`;
 
     const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt}`
       + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(velFrac(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(velFrac(cLeve) * 100)}%</i></span>`
@@ -1509,7 +1525,11 @@ export function montarFicha(opts: FichaOpts) {
       + `<button type="button" data-fa-graf="arremesso">Arremesso × Peso</button>`
       + `<button type="button" data-fa-graf="velocidade">Velocidade × Peso</button>`
       + `</div>`;
-    box.innerHTML = `<div class="fa-wrap">${head}${botoes}${table}</div>`;
+    // as duas tabelas lado a lado: são curtas e respondem a perguntas vizinhas ("vai até
+    // onde?" e "ando com isso?"), então uma embaixo da outra só faria rolar
+    box.innerHTML = `<div class="fa-wrap">${head}${botoes}`
+      + `<div class="fa-tbls"><div class="fa-tblbox"><span class="fa-tbltit">Arremesso</span>${table}</div>`
+      + `<div class="fa-tblbox"><span class="fa-tbltit">Deslocamento com carga</span>${tableV}</div></div></div>`;
 
     // ---- o quadro, que os dois gráficos dividem ------------------------------------
     // Os dois desenham a mesma coisa: peso no X, um número no Y, faixas de carga ao fundo

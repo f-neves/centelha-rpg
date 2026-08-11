@@ -673,9 +673,13 @@ import '../styles/arte-equip.css';
   /* as três alturas do levantamento, na mesma linha: do chão, acima da cabeça, arremessa */
   .fa-head .fa-alt { margin-right: 1.1rem; font-size: var(--fs-rotulo); }
   .fa-head .fa-alt b { font-family: 'Cinzel'; color: var(--accent-strong); }
-  /* Três colunas curtas de números não precisam da largura toda do painel: esticadas,
-     o cabeçalho da primeira quebra em duas linhas e as outras viram campos vazios. */
-  .fa-tbl { max-width: 34rem; }
+  /* As duas tabelas dividem a linha no desktop e empilham no celular. Cada uma é curta
+     demais para merecer a largura toda: esticada, o cabeçalho quebra em duas linhas e as
+     células viram campos vazios. */
+  .fa-tbls { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-start; }
+  .fa-tblbox { flex: 1 1 18rem; min-width: 0; max-width: 26rem; }
+  .fa-tbltit { display: block; font-family: 'Cinzel'; font-size: var(--fs-micro);
+    letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: .3rem; }
   .fa-tbl th, .fa-tbl td { white-space: nowrap; }
   /* a linha do ápice na tabela, que é o peso que vai mais longe */
   .fa-tbl tr.ap td { font-weight: 700; color: var(--accent-strong); }
