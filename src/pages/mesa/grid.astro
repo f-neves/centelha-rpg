@@ -51,6 +51,7 @@ import MesaCab from '../../components/MesaCab.astro';
           <button class="btn-fant" id="gr-mais" title="Aproximar">+</button>
           <button class="btn-fant" id="gr-caber" title="Caber na tela">⤢</button>
         </span>
+        <button class="btn-fant" id="gr-cheia" title="Tela cheia (F)">⛶</button>
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
       </div>
 
@@ -82,6 +83,43 @@ import MesaCab from '../../components/MesaCab.astro';
     </div>
 
   </MesaCab>
+
+  <!-- menu de ações do token (botão direito, ou toque longo no celular) -->
+  <div id="tok-menu" class="tok-menu" hidden role="menu"></div>
+
+  <dialog id="alvo-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="al-titulo">Ataque</h3>
+      <p class="muted dlg-txt" id="al-linha"></p>
+      <div id="al-defesas" class="al-def"></div>
+      <p class="muted dlg-txt">Role o acerto na mesa e responda.</p>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="al-nao">Errou</button>
+        <button type="button" class="btn primary" id="al-sim">Acertou</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dano-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="dn-titulo">Dano</h3>
+      <div class="grade2">
+        <label>Dano rolado <input type="number" id="dn-valor" min="0" value="0" /></label>
+        <label>Modo
+          <select id="dn-tipo">
+            <option value="impacto">Impacto</option>
+            <option value="corte">Cortante</option>
+            <option value="perfurante">Perfurante</option>
+          </select>
+        </label>
+      </div>
+      <div id="dn-conta" class="al-conta"></div>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="dn-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="dn-ok">Aplicar o dano</button>
+      </div>
+    </form>
+  </dialog>
 
   <dialog id="arena-dlg" class="mesa-dlg">
     <form method="dialog">
@@ -139,6 +177,10 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-palco { overflow: auto; border: 1px solid var(--rule); border-radius: var(--r-lg);
     background: var(--panel-2, var(--panel)); max-height: calc(100vh - var(--mesa-barra-h, 66px) - 6rem);
     min-height: 20rem; position: relative; }
+  /* Em tela cheia some a barra do navegador, então o palco pode comer o que
+     sobrou. Sem isto o mapa ficaria do mesmo tamanho com a tela maior. */
+  body.tela-cheia .gr-palco { max-height: calc(100vh - var(--mesa-barra-h, 66px) - 3.4rem); }
+  body.tela-cheia .gr-lado { max-height: calc(100vh - var(--mesa-barra-h, 66px) - 3.4rem); overflow-y: auto; }
   .gr-mundo { position: relative; transform-origin: 0 0; }
   .gr-mundo > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   /* A arte fica numa caixa que corta: o zoom passa de 1 e a imagem transborda o
@@ -192,6 +234,81 @@ import MesaCab from '../../components/MesaCab.astro';
      que o mesmo Médio cobre um hexágono na arena de 1 m e dois na de 0,5 m. */
   .gr-token .av { --av-t: var(--tok, 2.6rem); box-shadow: 0 2px 6px rgba(0,0,0,.5); }
   .gr-token.mini .gr-tn { display: none; }
+
+  /* ---- o anel de vida ----
+     Um arco que se esvazia no sentido do relógio, começando no topo. A conta é
+     `stroke-dasharray`: o traço vale a fração viva da circunferência e a lacuna
+     vale o resto, e por isso o pedaço que falta é literalmente o pedaço de Vida
+     que falta. A cor segue as faixas de ferimento, as mesmas da barra do
+     rastreador — o anel não inventa um vocabulário novo, mostra o mesmo estado.
+     O anel substitui a borda grossa do ferimento AQUI (no tabuleiro ele ocupa
+     esse lugar), mas a tinta por cima do retrato continua: ela é o relance, o
+     anel é a leitura precisa. */
+  /* A peça é HEXAGONAL, e não redonda: ela mora numa casa hexagonal, e o
+     encaixe visual entre a arte e o chão é o que faz o tabuleiro parecer um
+     tabuleiro. A altura é a largura × 2/√3, que é a proporção de um hexágono
+     de ponta para cima — num quadrado o recorte sairia achatado. */
+  .gr-token .tok-quadro { position: relative;
+    width: var(--tok, 2.6rem); height: calc(var(--tok, 2.6rem) * 1.1547); }
+  .gr-token .av { width: 100%; height: 100%; border: 0; border-radius: 0;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
+  .gr-token .tok-anel { position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; overflow: visible; }
+  .gr-token .tok-anel polygon { fill: none; stroke-linejoin: round;
+    transition: stroke-dasharray .4s ease, stroke .4s ease; }
+  /* O fantasma do arrasto é a mesma peça: se ele fosse redondo, o gesto
+     mostraria uma coisa e o pouso entregaria outra. */
+  .gr-ghost .av { border-radius: 0; border: 0;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    height: calc(var(--av-t) * 1.1547); }
+  .gr-token .anel-tr { stroke: rgba(0,0,0,.42); }
+  .gr-token.t-saudavel  .anel-v { stroke: #43b85c; }
+  .gr-token.t-machucado .anel-v { stroke: #a9c22b; }
+  .gr-token.t-ferido    .anel-v { stroke: #e6a91d; }
+  .gr-token.t-grave     .anel-v { stroke: #e8791f; }
+  .gr-token.t-critico   .anel-v { stroke: #cf3327; }
+  .gr-token.t-caido     .anel-v { stroke: #6a6a6a; }
+  .gr-token .av { border-width: 1px; }
+  /* Caído: a peça inteira perde a cor. Não é enfeite — numa fila de doze, o
+     preto e branco é o que diz "este aqui parou" sem precisar de legenda. */
+  .gr-token.caido .av img { filter: grayscale(1) brightness(.75); }
+  .gr-token.caido .gr-tn { text-decoration: line-through; opacity: .75; }
+
+  /* ---- menu do token ---- */
+  .tok-menu { position: fixed; z-index: 210; min-width: 11rem; padding: .25rem;
+    border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
+    box-shadow: 0 10px 30px rgba(0,0,0,.5); display: flex; flex-direction: column; gap: .1rem; }
+  .tok-menu .tm-cab { padding: .25rem .5rem .35rem; border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: .4rem; }
+  .tok-menu .tm-cab .av { --av-t: 1.6rem; }
+  .tok-menu .tm-nome { font-family: 'Cinzel'; font-size: var(--fs-rotulo); font-weight: 700; }
+  .tok-menu button { text-align: left; background: none; border: 0; color: var(--ink);
+    font: inherit; font-size: var(--fs-aux); padding: .3rem .55rem; border-radius: var(--r-md);
+    cursor: pointer; }
+  .tok-menu button:hover { background: color-mix(in srgb, var(--accent) 18%, transparent); }
+  .tok-menu button.perigo:hover { background: var(--perigo-bg); color: var(--on-perigo); }
+  .tok-menu .tm-sep { height: 1px; background: var(--rule); margin: .15rem 0; }
+
+  /* ---- mira do ataque ---- */
+  .gr-token.mirando { cursor: crosshair; }
+  .gr-token.alvo-mira .av { outline: 3px solid #cf3327; box-shadow: 0 0 0 6px rgba(207,51,39,.28); }
+  .gr-token.atacante .av { outline: 3px solid var(--gold); }
+  .seta.ataque { stroke: #cf3327; stroke-dasharray: none; }
+  .gr-palco.mirando { cursor: crosshair; }
+  .mira-aviso { position: absolute; left: 50%; top: .5rem; transform: translateX(-50%); z-index: 30;
+    background: color-mix(in srgb, var(--bg) 88%, transparent); border: 1px solid #cf3327;
+    border-radius: 999px; padding: .2rem .8rem; font-size: var(--fs-micro); }
+
+  /* ---- diálogos do ataque ---- */
+  .al-def { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: .3rem;
+    margin: .5rem 0; }
+  .al-def .d { border: 1px solid var(--rule); border-radius: var(--r-md); padding: .3rem .5rem;
+    background: var(--panel-2, var(--panel)); }
+  .al-def .d-l { display: block; font-family: 'Cinzel'; font-size: var(--fs-micro);
+    text-transform: uppercase; letter-spacing: .05em; color: var(--accent-strong); }
+  .al-def .d-v { font-size: var(--fs-h3); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .al-def .d-n { font-size: calc(var(--fs-micro) * .9); color: var(--ink-soft); }
+  .al-conta { font-size: var(--fs-micro); color: var(--ink-soft); margin-top: .4rem; min-height: 1.2rem; }
   .gr-token .gr-tn { font-size: calc(var(--fs-micro) * .88); line-height: 1; padding: .04rem .25rem;
     border-radius: 999px; background: color-mix(in srgb, var(--bg) 78%, transparent);
     max-width: 6.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -252,9 +369,9 @@ import MesaCab from '../../components/MesaCab.astro';
 <script>
   import {
     abrirMesa, u, esc, avatarHTML, urlsImagens, pctDe, novoId, debounce,
-    semMigracao14, avisoMigracao,
+    semMigracao14, avisoMigracao, tierDe, tierCls, somarCondicoes, COND,
   } from '../../lib/mesa-core';
-  import { MON } from '../../lib/mesa-bestiario';
+  import { MON, resumoDe } from '../../lib/mesa-bestiario';
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
@@ -281,6 +398,9 @@ import MesaCab from '../../components/MesaCab.astro';
   let BASE = 1;            // a escala que faz a arte inteira caber no tabuleiro
   let AJUSTANDO = false;
   let LOG: any[] = [];
+  // Bloco de combate por combatente (defesas e absorção). Só o mestre monta:
+  // ele depende da ficha dos personagens, que o jogador não lê dos colegas.
+  let RESUMO: Record<string, any> = {};
 
   // O raio do hexágono em pixels do MUNDO. O zoom é um `scale` por cima, então
   // este número não muda: mudar o raio redesenharia o SVG a cada passo de zoom.
@@ -295,6 +415,9 @@ import MesaCab from '../../components/MesaCab.astro';
     ligarBarra();
     ligarAparencia();
     ligarArrasto();
+    ligarMenuToken();
+    ligarMira();
+    ligarTelaCheia();
     await carregar();
   }
 
@@ -376,13 +499,21 @@ import MesaCab from '../../components/MesaCab.astro';
     // mas a TABELA `combatentes`, que é o que o mestre lê, não tem essa coluna.
     // Sem esta busca o mestre via os personagens como letra dentro de um
     // círculo, justamente ele, que é quem move as peças.
-    PC_IMG = {};
+    PC_IMG = {}; RESUMO = {};
     if (MESTRE) {
       const ids = [...new Set(COMBS.map((c: any) => c.personagem_id).filter(Boolean))];
+      const fichas: Record<string, any> = {};
       if (ids.length) {
-        const { data: ps } = await SB.from('personagens').select('id, imagem_path').in('id', ids);
-        for (const p of ps || []) if (p.imagem_path) PC_IMG[p.id] = p.imagem_path;
+        const { data: ps } = await SB.from('personagens').select('id, imagem_path, ficha').in('id', ids);
+        for (const p of ps || []) {
+          if (p.imagem_path) PC_IMG[p.id] = p.imagem_path;
+          if (p.ficha) fichas[p.id] = p.ficha;
+        }
       }
+      // As mesmas contas do rastreador: Defesa, Absorção e o resto saem de
+      // `resumoDe`, que mescla o bloco de origem (ficha ou bestiário) com os
+      // ajustes que o mestre salvou naquele combatente.
+      for (const c of COMBS) { try { RESUMO[c.id] = resumoDe(c, fichas); } catch { RESUMO[c.id] = null; } }
     }
     const daMesa = COMBS.map((c: any) => c.imagem).filter(Boolean);
     const dosPCs = [...COMBS.map((c: any) => c.retrato).filter(Boolean), ...Object.values(PC_IMG)];
@@ -395,10 +526,13 @@ import MesaCab from '../../components/MesaCab.astro';
 
   async function carregarTokens() {
     TOKENS = {};
+    // `movido_em` só existe na tabela; pela view do jogador a ordem da pilha
+    // cai na ordem em que as linhas vierem, que é boa o bastante para desenhar.
+    const cols = MESTRE ? 'combatente_id, q, r, movido_em' : 'combatente_id, q, r';
     const { data, error } = await SB.from(MESTRE ? 'arena_tokens' : 'token_visao')
-      .select('combatente_id, q, r').eq('arena_id', ARENA.id);
+      .select(cols).eq('arena_id', ARENA.id);
     if (error) return;
-    for (const t of data || []) TOKENS[t.combatente_id] = { q: t.q, r: t.r };
+    for (const t of data || []) TOKENS[t.combatente_id] = { q: t.q, r: t.r, em: t.movido_em || '' };
   }
 
   // ================================================================= pintar
@@ -436,6 +570,32 @@ import MesaCab from '../../components/MesaCab.astro';
    */
   const pxPorMetro = () => larguraHex(RAIO) / (Number(ARENA?.escala_m) || 1);
   const diametroPx = (c: any) => diametroM(c) * pxPorMetro();
+
+  /**
+   * O anel de Vida em volta do retrato: cheio em 100%, três quartos em 75%.
+   *
+   * `stroke-dasharray` é a peça inteira do truque: o primeiro número é o traço
+   * (a fração viva da circunferência) e o segundo é a lacuna. Não há máscara,
+   * não há corte, e o anel anima sozinho quando o número muda.
+   *
+   * O raio 45 num viewBox de 100 deixa 5 de folga para a espessura não vazar.
+   */
+  // O anel é um HEXÁGONO, igual à casa que a peça ocupa. O viewBox é 86,6 × 100
+  // porque é essa a proporção de um hexágono de ponta para cima (√3 : 2), a
+  // mesma de `.tok-quadro` — assim o SVG cobre o quadro sem distorcer o traço.
+  const ANEL_PTS = verticesHex(43.3, 50, 46);
+  function anelHTML(pct: number | null) {
+    if (pct == null) return '';
+    const p = Math.max(0, Math.min(100, pct));
+    // `pathLength="100"` renomeia o perímetro para 100 unidades, e aí o
+    // `stroke-dasharray` é a própria porcentagem de Vida. Sem isso seria preciso
+    // medir o contorno do hexágono para converter.
+    return `<svg class="tok-anel" viewBox="0 0 86.6 100" aria-hidden="true">
+      <polygon class="anel-tr" points="${ANEL_PTS}" stroke-width="7" pathLength="100" />
+      <polygon class="anel-v" points="${ANEL_PTS}" stroke-width="7" pathLength="100"
+        stroke-dasharray="${p.toFixed(2)} ${(100 - p).toFixed(2)}" />
+    </svg>`;
+  }
 
   function avatarDe(c: any, extra = '') {
     const doPC = c.retrato || PC_IMG[c.personagem_id];
@@ -571,20 +731,58 @@ import MesaCab from '../../components/MesaCab.astro';
     el('fa-arte').hidden = !(ARENA.fundo_path || ARENA.fundo_url);
   }
 
+  /**
+   * Quando dois dividem a casa, nenhum fica no centro.
+   *
+   * O que já estava lá desliza para 45° (zero às 12h, sentido horário) e o que
+   * chegou entra por −135°, o lado oposto: cada um mostra uma meia-lua e nenhum
+   * some debaixo do outro. Com três ou mais, os ângulos se espalham a partir do
+   * mesmo 45°, o que reduz ao par descrito quando são só dois.
+   *
+   * A ordem é a de chegada (`movido_em`): o mais antigo abre caminho, o mais
+   * novo entra por cima, que é a leitura de "alguém pisou aqui agora".
+   */
+  function deslocamentoNaPilha(i: number, n: number, diamPx: number) {
+    if (n < 2) return { dx: 0, dy: 0 };
+    const grau = 45 + i * (360 / n);
+    const rad = (grau * Math.PI) / 180;
+    const passo = diamPx * 0.3;
+    return { dx: Math.sin(rad) * passo, dy: -Math.cos(rad) * passo };
+  }
+
   function pintarTokens() {
     const mg = margemTabuleiro(RAIO);
     const box = el('gr-tokens');
     const postos = COMBS.filter((c: any) => TOKENS[c.id]);
-    box.innerHTML = postos.map((c: any) => {
+    // Agrupa por casa para saber quem está dividindo com quem.
+    const pilhas: Record<string, any[]> = {};
+    for (const c of postos) {
+      const t = TOKENS[c.id];
+      (pilhas[chaveHex(t.q, t.r)] ||= []).push(c);
+    }
+    for (const k of Object.keys(pilhas)) {
+      pilhas[k].sort((a, b) => String(TOKENS[a.id].em || '').localeCompare(String(TOKENS[b.id].em || '')));
+    }
+    // Desenha na ordem das pilhas: dentro de cada casa, o mais novo por último
+    // (e portanto por cima).
+    const ordenados = Object.values(pilhas).flat();
+    box.innerHTML = ordenados.map((c: any) => {
       const t = TOKENS[c.id];
       const p = centroHex(t.q, t.r, RAIO);
+      const pilha = pilhas[chaveHex(t.q, t.r)];
+      const desl = deslocamentoNaPilha(pilha.indexOf(c), pilha.length, diametroPx(c));
+      p.x += desl.dx; p.y += desl.dy;
       const px = diametroPx(c);
+      const pct = pctDe100(c);
+      const faixa = tierDe(pct == null ? null : pct, pct == null ? null : 100);
+      const caido = pct != null && pct <= 0;
       // Abaixo de uns 34px o nome fica mais largo que a peça e vira sujeira em
       // cima do vizinho; nesse tamanho o título do mouse dá conta.
-      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}"
+      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}"
         data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
-        title="${esc(c.nome)} · ${diametroM(c)} m">
-        ${avatarDe(c)}<span class="gr-tn">${esc(c.nome)}</span>
+        title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}">
+        <span class="tok-quadro">${avatarDe(c)}${anelHTML(pct)}</span>
+        <span class="gr-tn">${esc(c.nome)}</span>
       </div>`;
     }).join('');
   }
@@ -649,7 +847,7 @@ import MesaCab from '../../components/MesaCab.astro';
       const naLista = alvo.closest<HTMLElement>('.gr-ficha');
       const noMapa = alvo.closest<HTMLElement>('.gr-token');
       const fonte = naLista || noMapa;
-      if (!fonte || AJUSTANDO) return;
+      if (!fonte || AJUSTANDO || MIRA) return;
       const cid = fonte.dataset.c!;
       const c = COMBS.find((x: any) => x.id === cid);
       if (!c) return;
@@ -848,14 +1046,31 @@ import MesaCab from '../../components/MesaCab.astro';
       <text class="seta-sub" x="${mx.toFixed(1)}" y="${(my + 13).toFixed(1)}">${passos} hex</text>`;
   }
   const limparSeta = () => { const g = document.getElementById('gr-seta'); if (g) g.innerHTML = ''; };
+  // ------------------------------------------------ quem divide o espaço
+  const NO_CHAO = new Set(['caido', 'inconsciente', 'morrendo', 'estabilizado', 'morto']);
+  /** Está no chão: sem Vida, ou com uma condição que o derruba. */
+  function noChao(c: any): boolean {
+    if (c.pv_max != null && (c.pv_atual ?? 0) <= 0) return true;
+    return (c.condicoes || []).some((k: any) => NO_CHAO.has(k.id) || COND[k.id]?.foraDeCombate);
+  }
   /**
-   * Se este ponto está tomado. A conta é em METROS, e não em hexágonos.
+   * Dois corpos no mesmo lugar: quando isso é aceitável.
+   *
+   * Gente miúda cabe junta, e quem está caído virou parte do chão: passa-se por
+   * cima. Fora esses dois casos, um metro quadrado é de um só.
+   */
+  const podeDividir = (a: any, b: any) =>
+    noChao(a) || noChao(b) || (diametroM(a) <= 0.5 && diametroM(b) <= 0.5);
+
+  /**
+   * Se este ponto está bloqueado. A conta é em METROS, e não em hexágonos.
    *
    * Comparar a casa exata funcionava enquanto todo mundo ocupava um hexágono.
    * Com o token no tamanho físico, dois Médios numa arena de 0,5 m ficariam
    * montados um no outro em casas vizinhas, porque cada um tem 1 m de largura e
    * as casas distam 0,5 m. A regra é a de dois círculos: encostam quando a
-   * distância entre os centros é menor que a soma dos raios.
+   * distância entre os centros é menor que a soma dos raios. Encostar só é
+   * proibido para quem não pode dividir o espaço.
    */
   function ocupadoPor(q: number, r: number, exceto?: string) {
     const escala = Number(ARENA?.escala_m) || 1;
@@ -865,6 +1080,7 @@ import MesaCab from '../../components/MesaCab.astro';
       if (cid === exceto) return false;
       const outro = COMBS.find((x: any) => x.id === cid);
       if (!outro) return false;
+      if (meu && podeDividir(meu, outro)) return false;
       const metros = distanciaHex({ q, r }, t) * escala;
       return metros + 1e-9 < raioMeu + diametroM(outro) / 2;
     });
@@ -914,6 +1130,301 @@ import MesaCab from '../../components/MesaCab.astro';
     const c = COMBS.find((x: any) => x.id === cid);
     await logar(c, `${c?.nome} saiu do mapa (estava em ${nomeHex(antes.q, antes.r)})`,
       { acao: 'tirar', cid, de: antes, para: null });
+  }
+
+  // ====================================================== menu do token
+  /**
+   * Botão direito abre o menu; no toque, segurar meio segundo sem arrastar faz
+   * o mesmo. O `mover` cancela porque arrastar e segurar começam idênticos: sem
+   * essa desistência, todo movimento terminaria com um menu na cara.
+   */
+  function ligarMenuToken() {
+    if (!MESTRE) return;
+    const palco = el('gr-palco');
+    palco.addEventListener('contextmenu', (ev) => {
+      const t = (ev.target as HTMLElement).closest<HTMLElement>('.gr-token');
+      if (!t || AJUSTANDO) return;
+      ev.preventDefault();
+      abrirMenu(t.dataset.c!, ev.clientX, ev.clientY);
+    });
+
+    let toque: any = null, x0 = 0, y0 = 0;
+    palco.addEventListener('pointerdown', (ev) => {
+      if (ev.pointerType === 'mouse' || AJUSTANDO) return;
+      const t = (ev.target as HTMLElement).closest<HTMLElement>('.gr-token');
+      if (!t) return;
+      x0 = ev.clientX; y0 = ev.clientY;
+      toque = setTimeout(() => { toque = null; abrirMenu(t.dataset.c!, x0, y0); }, 500);
+    });
+    const desiste = (ev?: PointerEvent) => {
+      if (!toque) return;
+      if (ev && Math.hypot(ev.clientX - x0, ev.clientY - y0) < 8) return;
+      clearTimeout(toque); toque = null;
+    };
+    palco.addEventListener('pointermove', desiste);
+    palco.addEventListener('pointerup', () => { if (toque) { clearTimeout(toque); toque = null; } });
+    document.addEventListener('pointerdown', (ev) => {
+      if (!(ev.target as HTMLElement).closest('#tok-menu')) fecharMenu();
+    }, true);
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key !== 'Escape') return;
+      fecharMenu(); cancelarMira();
+    });
+  }
+
+  const fecharMenu = () => { const m = el('tok-menu'); m.hidden = true; m.innerHTML = ''; };
+
+  function abrirMenu(cid: string, x: number, y: number) {
+    const c = COMBS.find((z: any) => z.id === cid); if (!c) return;
+    const m = el('tok-menu');
+    const item = (id: string, txt: string, cls = '') => `<button data-a="${id}" class="${cls}">${txt}</button>`;
+    m.innerHTML = `<div class="tm-cab">${avatarDe(c, 'av-p')}<span class="tm-nome">${esc(c.nome)}</span></div>`
+      + item('ataque', '⚔ Ataque')
+      + item('curar', '✚ Recuperar Vida')
+      + item('arte', '✶ Arte')
+      + '<div class="tm-sep"></div>'
+      + item('tirar', '⏏ Tirar do mapa', 'perigo');
+    m.hidden = false;
+    // Encosta na borda? O menu volta para dentro em vez de sair da tela.
+    const r = m.getBoundingClientRect();
+    m.style.left = Math.min(x, innerWidth - r.width - 8) + 'px';
+    m.style.top = Math.min(y, innerHeight - r.height - 8) + 'px';
+    m.querySelectorAll<HTMLElement>('button').forEach((b) => b.onclick = () => {
+      fecharMenu();
+      const a = b.dataset.a;
+      if (a === 'ataque') iniciarMira(cid);
+      else if (a === 'curar') curar(cid);
+      else if (a === 'arte') usarArte(cid);
+      else if (a === 'tirar') tirarDoMapa(cid);
+    });
+  }
+
+  /**
+   * A mira intercepta o clique ANTES do arrasto (fase de captura no palco,
+   * contra os ouvintes de `document` que movem a peça). Sem isso, escolher o
+   * alvo arrastaria o alvo.
+   */
+  function ligarMira() {
+    if (!MESTRE) return;
+    el('gr-palco').addEventListener('pointerdown', (ev) => {
+      if (!MIRA) return;
+      ev.preventDefault(); ev.stopPropagation();
+      const t = (ev.target as HTMLElement).closest<HTMLElement>('.gr-token');
+      if (t && t.dataset.c !== MIRA.atacante) escolherAlvo(t.dataset.c!);
+      else cancelarMira();
+    }, true);
+    document.addEventListener('pointermove', (ev) => { if (MIRA) moverMira(ev.clientX, ev.clientY); });
+  }
+
+  // ---------------------------------------------------------- tela cheia
+  /**
+   * Tela cheia de verdade (a do navegador), e não uma classe que estica a
+   * página: o que atrapalha num mapa de batalha é a barra do navegador e a do
+   * sistema, e só a Fullscreen API tira as duas.
+   */
+  function ligarTelaCheia() {
+    const btn = el('gr-cheia');
+    const alvo = document.documentElement;
+    const pinta = () => {
+      const cheia = !!document.fullscreenElement;
+      btn.textContent = cheia ? '⤡' : '⛶';
+      btn.title = cheia ? 'Sair da tela cheia (Esc)' : 'Tela cheia (F)';
+      document.body.classList.toggle('tela-cheia', cheia);
+      // O palco mede a altura da janela, que acabou de mudar: reencaixar o
+      // tabuleiro é o gesto que o mestre faria na mão logo em seguida.
+      if (ARENA) setTimeout(() => caber(), 120);
+    };
+    const alterna = async () => {
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else await alvo.requestFullscreen();
+      } catch { uiErro('O navegador não deixou entrar em tela cheia.'); }
+    };
+    btn.onclick = alterna;
+    document.addEventListener('fullscreenchange', pinta);
+    // "F" só quando não se está digitando: senão escrever "Ferido" numa nota
+    // jogaria a página em tela cheia no meio da palavra.
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key !== 'f' && ev.key !== 'F') return;
+      const a = document.activeElement as HTMLElement | null;
+      if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.tagName === 'SELECT' || a.isContentEditable)) return;
+      if (document.querySelector('dialog[open]')) return;
+      ev.preventDefault(); alterna();
+    });
+  }
+
+  // ============================================================== ataque
+  let MIRA: { atacante: string } | null = null;
+
+  function iniciarMira(cid: string) {
+    if (!TOKENS[cid]) return uiErro('Ponha o atacante no mapa antes de mirar.');
+    MIRA = { atacante: cid };
+    el('gr-palco').classList.add('mirando');
+    document.querySelector(`.gr-token[data-c="${CSS.escape(cid)}"]`)?.classList.add('atacante');
+    const av = document.createElement('div');
+    av.className = 'mira-aviso'; av.id = 'mira-aviso';
+    av.textContent = 'Escolha o alvo · Esc cancela';
+    el('gr-palco').appendChild(av);
+  }
+
+  function cancelarMira() {
+    if (!MIRA) return;
+    MIRA = null;
+    el('gr-palco').classList.remove('mirando');
+    document.getElementById('mira-aviso')?.remove();
+    document.querySelectorAll('.gr-token.atacante, .gr-token.alvo-mira')
+      .forEach((t) => t.classList.remove('atacante', 'alvo-mira'));
+    limparSeta();
+  }
+
+  /** A mira desenha a mesma seta do movimento, em vermelho e até o cursor. */
+  function moverMira(cx: number, cy: number) {
+    if (!MIRA) return;
+    const sob = document.elementFromPoint(cx, cy)?.closest<HTMLElement>('.gr-token');
+    document.querySelectorAll('.gr-token.alvo-mira').forEach((t) => t.classList.remove('alvo-mira'));
+    if (sob && sob.dataset.c !== MIRA.atacante) sob.classList.add('alvo-mira');
+    const de = TOKENS[MIRA.atacante];
+    const g = document.getElementById('gr-seta');
+    if (!de || !g) return;
+    const mg = margemTabuleiro(RAIO);
+    const a = centroHex(de.q, de.r, RAIO);
+    const mundo = el('gr-mundo').getBoundingClientRect();
+    const bx = (cx - mundo.left) / ZOOM, by = (cy - mundo.top) / ZOOM;
+    // A distância sai do hexágono sob o cursor, e não do pixel: é a medida que
+    // a regra usa, e é a que o mestre vai declarar em voz alta.
+    const h = hexEmPonto(bx - mg.x, by - mg.y, RAIO);
+    const metros = distanciaHex(de, h) * (Number(ARENA.escala_m) || 1);
+    g.innerHTML = `
+      <line class="seta ataque" x1="${(a.x + mg.x).toFixed(1)}" y1="${(a.y + mg.y).toFixed(1)}"
+        x2="${bx.toFixed(1)}" y2="${by.toFixed(1)}" marker-end="url(#pta)" />
+      <text class="seta-txt" x="${((a.x + mg.x + bx) / 2).toFixed(1)}"
+        y="${((a.y + mg.y + by) / 2 - 8).toFixed(1)}">${fmtM(metros)}</text>`;
+  }
+
+  async function escolherAlvo(cid: string) {
+    if (!MIRA || cid === MIRA.atacante) return;
+    const atacante = COMBS.find((c: any) => c.id === MIRA!.atacante);
+    const alvo = COMBS.find((c: any) => c.id === cid);
+    cancelarMira();
+    if (!atacante || !alvo) return;
+    const acertou = await perguntarAcerto(atacante, alvo);
+    if (!acertou) {
+      await logar(atacante, `${atacante.nome} atacou ${alvo.nome} e errou`, { acao: null });
+      return;
+    }
+    await pedirDano(atacante, alvo);
+  }
+
+  /** O modal das Defesas do alvo: o número contra o qual a rolagem foi feita. */
+  function perguntarAcerto(atacante: any, alvo: any): Promise<boolean> {
+    const dlg = el('alvo-dlg') as HTMLDialogElement;
+    const r = RESUMO[alvo.id];
+    const cd = somarCondicoes((alvo.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
+    const fer = tierDe(alvo.pv_atual, alvo.pv_max).penDefesa ?? 0;
+    const def = r?.defesa != null ? r.defesa + fer + (cd.defesaCaC || 0) : null;
+    const men = r?.defesaMental ?? null;
+    const de = TOKENS[atacante.id], pa = TOKENS[alvo.id];
+    const dist = de && pa ? distanciaHex(de, pa) * (Number(ARENA.escala_m) || 1) : null;
+    (el('al-titulo') as HTMLElement).textContent = `${atacante.nome} ataca ${alvo.nome}`;
+    (el('al-linha') as HTMLElement).textContent = dist != null
+      ? `Distância: ${fmtM(dist)}${pa ? ` · alvo em ${nomeHex(pa.q, pa.r)}` : ''}` : '';
+    const cel = (l: string, v: any, n = '') => `<div class="d"><span class="d-l">${l}</span>
+      <span class="d-v">${v ?? '—'}</span>${n ? `<span class="d-n">${n}</span>` : ''}</div>`;
+    el('al-defesas').innerHTML =
+      cel('Defesa', def, [fer ? `ferimento ${fer}` : '', cd.defesaCaC ? `condições ${cd.defesaCaC}` : '']
+        .filter(Boolean).join(' · '))
+      + cel('Mental', men)
+      + cel('Absorção', r ? `${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao}` : null,
+        r?.resistPerf ? `gate N${r.resistPerf}` : '');
+    return new Promise((resolve) => {
+      const fim = (v: boolean) => { dlg.close(); resolve(v); };
+      (el('al-sim') as HTMLElement).onclick = () => fim(true);
+      (el('al-nao') as HTMLElement).onclick = () => fim(false);
+      dlg.addEventListener('close', () => resolve(false), { once: true });
+      dlg.showModal();
+    });
+  }
+
+  /** O dano rolado, com a absorção descontada na frente do mestre. */
+  function pedirDano(atacante: any, alvo: any): Promise<void> {
+    const dlg = el('dano-dlg') as HTMLDialogElement;
+    const val = el('dn-valor') as HTMLInputElement;
+    const tipo = el('dn-tipo') as HTMLSelectElement;
+    (el('dn-titulo') as HTMLElement).textContent = `Dano em ${alvo.nome}`;
+    val.value = '0';
+    const conta = () => {
+      const bruto = Math.max(0, +val.value || 0);
+      const s = soakDe(alvo, tipo.value);
+      const liq = Math.max(0, bruto - s);
+      const pv = Math.max(0, (alvo.pv_atual ?? 0) - liq);
+      el('dn-conta').innerHTML = `Absorção <b>${s}</b> · passa <b>${liq}</b>`
+        + (alvo.pv_max ? ` · Vida ficaria <b>${pv}/${alvo.pv_max}</b> (${tierDe(pv, alvo.pv_max).estado})` : '');
+    };
+    val.oninput = conta; tipo.onchange = conta; conta();
+    return new Promise((resolve) => {
+      (el('dn-cancelar') as HTMLElement).onclick = () => { dlg.close(); resolve(); };
+      (el('dn-ok') as HTMLElement).onclick = async () => {
+        dlg.close();
+        await aplicarDano(atacante, alvo, Math.max(0, +val.value || 0), tipo.value);
+        resolve();
+      };
+      dlg.showModal();
+    });
+  }
+
+  const CAT_SOAK: Record<string, string> = { impacto: 'impacto', corte: 'corte', perfurante: 'perfuracao' };
+  const TIPO_LBL: Record<string, string> = { impacto: 'Impacto', corte: 'Corte', perfurante: 'Perfuração' };
+  function soakDe(c: any, tipo: string) {
+    const r = RESUMO[c.id];
+    const cd = somarCondicoes((c.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
+    return (r?.soak?.[CAT_SOAK[tipo]] ?? 0) + (cd.soak || 0);
+  }
+
+  /** Mesma conta do rastreador: bruto − absorção, e o resto sai da Vida. */
+  async function aplicarDano(atacante: any, alvo: any, bruto: number, tipo: string) {
+    const s = soakDe(alvo, tipo);
+    const liquido = Math.max(0, bruto - s);
+    const pv = Math.max(0, (alvo.pv_atual ?? 0) - liquido);
+    const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
+    if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
+    alvo.pv_atual = pv;
+    pintarTokens(); pintarLista();
+    const est = alvo.pv_max ? ` · ${alvo.pv_atual}/${alvo.pv_max} (${tierDe(pv, alvo.pv_max).estado})` : '';
+    await logar(alvo, `${atacante.nome} acertou ${alvo.nome}: ${liquido} de dano (${TIPO_LBL[tipo]})`
+      + (s > 0 ? ` [${bruto} − ${s} abs]` : '') + est, { acao: null });
+  }
+
+  async function curar(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const v = await uiFormulario(`Recuperar Vida · ${c.nome}`, [
+      { nome: 'q', rotulo: 'Quanto', tipo: 'numero', valor: 5, min: 1 },
+    ], { ok: 'Recuperar' });
+    if (!v) return;
+    const q = Math.max(1, parseInt(v.q, 10) || 0);
+    const pv = Math.min(c.pv_max ?? (c.pv_atual ?? 0) + q, (c.pv_atual ?? 0) + q);
+    const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', cid);
+    if (error) return uiErro('Erro: ' + error.message);
+    c.pv_atual = pv;
+    pintarTokens(); pintarLista();
+    await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`, { acao: null });
+  }
+
+  /**
+   * Arte: por ora, uma declaração registrada.
+   *
+   * As Artes têm parâmetros, custo em Mana e absorção pelo teste da matéria, e
+   * fazer isso direito é um capítulo inteiro. Prometer meia mecânica aqui seria
+   * pior do que assumir que ainda não existe: o mestre declara, o registro
+   * guarda, e a conta continua sendo na mesa.
+   */
+  async function usarArte(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const v = await uiFormulario(`Arte · ${c.nome}`, [
+      { nome: 'arte', rotulo: 'Qual Arte', obrigatorio: true, placeholder: 'Chama, Sopro, Véu…' },
+      { nome: 'nota', rotulo: 'O que acontece', tipo: 'longo', placeholder: 'efeito, alvo, grau…' },
+    ], { msg: 'Fica registrado no diário do tabuleiro. Os custos e o teste continuam na mão.', ok: 'Declarar' });
+    if (!v) return;
+    await logar(c, `${c.nome} usou ${v.arte.trim()}${v.nota.trim() ? `: ${v.nota.trim()}` : ''}`, { acao: null });
   }
 
   // =============================================================== NPC
