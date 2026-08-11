@@ -1515,7 +1515,10 @@ export function montarFicha(opts: FichaOpts) {
         if (v < tetoKg) out.push(v);
       }
       out.sort((a, b) => a - b);
-      return [0.1, 0.5, 1, ...out, Math.round(tetoKg * 10) / 10];
+      // o ápice vem do parâmetro, não de um 0,1 escrito à mão: é ele que ganha a linha em
+      // destaque, e um ápice que mudasse de valor deixaria a tabela sem destaque nenhum
+      const leves = [apice, 0.5, 1].filter((v, i, a) => a.indexOf(v) === i).sort((a, b) => a - b);
+      return [...leves, ...out, Math.round(tetoKg * 10) / 10];
     })();
     const rows = tw.map((w) => {
       const d = dist(w);
