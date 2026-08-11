@@ -505,7 +505,13 @@ import MesaCab from '../../components/MesaCab.astro';
       return;
     }
     ARENAS = arenas || [];
-    ARENA = ARENAS.find((a) => a.ativa) || ARENAS[0] || null;
+    // `?arena=` é como a aba Mapas entrega uma arena recém-criada: ela ainda não
+    // está em jogo (pôr em jogo troca o que o grupo vê, e isso é decisão de um
+    // clique só do mestre), então sem este atalho o Grid abriria na arena antiga
+    // e o mapa que acabou de ser escolhido não apareceria.
+    const pedida = new URLSearchParams(location.search).get('arena');
+    ARENA = (pedida && ARENAS.find((a) => a.id === pedida))
+      || ARENAS.find((a) => a.ativa) || ARENAS[0] || null;
 
     if (!ARENA) {
       el('gr-tudo').hidden = true;

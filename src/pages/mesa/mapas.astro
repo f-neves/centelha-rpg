@@ -111,7 +111,7 @@ import MesaCab from '../../components/MesaCab.astro';
 </style>
 
 <script>
-  import { abrirMesa, esc, urlsImagens, novoId, nomesDe, semMigracao14 } from '../../lib/mesa-core';
+  import { abrirMesa, esc, u, urlsImagens, novoId, nomesDe, semMigracao14 } from '../../lib/mesa-core';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -138,6 +138,32 @@ import MesaCab from '../../components/MesaCab.astro';
     }
     ligarVisor();
     await carregar();
+  }
+
+  /**
+   * Leva o mapa para o tabuleiro: cria uma arena com esta arte por baixo dos
+   * hexágonos e abre o Grid já nela.
+   *
+   * A arena NÃO entra em jogo sozinha quando já existe outra ativa. Pôr em jogo
+   * troca o que o grupo está vendo, e fazer isso a partir de um clique na aba
+   * Mapas puxaria o tabuleiro debaixo de uma cena em andamento. A exceção é a
+   * primeira arena da mesa, quando não há nada para atrapalhar.
+   */
+  async function abrirNoGrid(id: string) {
+    const m = MAPAS.find((x) => x.id === id);
+    if (!m) return;
+    const { data: jaTem, error: e0 } = await SB.from('mesa_arenas').select('id').eq('mesa_id', ID);
+    if (e0) return uiErro(/mesa_arenas|does not exist/i.test(e0.message)
+      ? 'O tabuleiro ainda não existe no banco. Rode supabase/migracao-15.sql no SQL Editor do Supabase.'
+      : 'Erro: ' + e0.message);
+    const { data: nova, error } = await SB.from('mesa_arenas').insert({
+      mesa_id: ID, nome: m.nome || 'Arena',
+      fundo_path: m.storage_path, arquivo_id: m.id,
+      ordem: (jaTem || []).length,
+    }).select('id').single();
+    if (error) return uiErro('Não deu para criar a arena: ' + error.message);
+    if (!(jaTem || []).length) await SB.rpc('ativar_arena', { p_id: nova.id });
+    location.href = `${u('mesa/grid')}?id=${ID}&arena=${nova.id}`;
   }
 
   async function subir(file?: File) {
@@ -193,7 +219,9 @@ import MesaCab from '../../components/MesaCab.astro';
           <div class="mp-nome">${esc(m.nome)}</div>
           <div class="mp-meta">${pinos.length} pino(s)${m.visivel_jogadores ? ' · liberado' : (alvo.length ? ` · ${alvo.length} jogador(es)` : ' · só você')}</div>
           ${MESTRE ? `<div class="mp-acoes-card">
-            <button class="btn mini mp-abrir" data-abrir="${m.id}">Abrir</button>
+            <button class="btn mini primary mp-grid" data-grid="${m.id}"
+              title="Cria uma arena no Grid com esta arte por baixo dos hexágonos">⬡ Abrir no Grid</button>
+            <button class="btn mini mp-abrir" data-abrir="${m.id}" title="Ver o mapa e mexer nos pinos">ver</button>
             <button class="btn-fant mp-vis" data-mp="${m.id}">${m.visivel_jogadores ? '🙈 esconder' : '👁 liberar'}</button>
             <button class="btn-fant mp-ren" data-mp="${m.id}" title="Renomear">✎</button>
             <button class="btn-fant perigo mp-rm" data-mp="${m.id}" title="Excluir">✕</button>
@@ -204,6 +232,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
     box.querySelectorAll<HTMLElement>('[data-abrir]').forEach((b) => b.addEventListener('click', () => abrirVisor(b.dataset.abrir!)));
     if (!MESTRE) return;
+    box.querySelectorAll<HTMLElement>('[data-grid]').forEach((b) => b.addEventListener('click', () => abrirNoGrid(b.dataset.grid!)));
     box.querySelectorAll<HTMLElement>('.mp-vis').forEach((b) => b.addEventListener('click', async () => {
       const m = MAPAS.find((x) => x.id === b.dataset.mp); if (!m) return;
       await SB.from('arquivos').update({ visivel_jogadores: !m.visivel_jogadores }).eq('id', m.id);
