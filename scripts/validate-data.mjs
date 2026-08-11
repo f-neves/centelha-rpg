@@ -97,6 +97,7 @@ for (const t of data.tecnicas || []) {
 for (const a of data.artes || []) if (!A.has(a.atributo_conjuracao)) fail(`arte "${a.id}": atributo_conjuracao inexistente "${a.atributo_conjuracao}"`);
 const ART = setOf('artes'), H = setOf('habilidades');
 for (const e of data.efeitos || []) for (const x of e.artes) if (!ART.has(x.id)) fail(`efeito "${e.id}": arte inexistente "${x.id}"`);
+
 for (const i of data.inimigos || []) {
   for (const t of i.tecnicas) if (!T.has(t)) fail(`inimigo "${i.id}": técnica inexistente "${t}"`);
   for (const a of i.artes) if (!ART.has(a.id)) fail(`inimigo "${i.id}": arte inexistente "${a.id}"`);
@@ -112,6 +113,31 @@ const ELEM_VOCAB = new Set([
   'fogo', 'agua', 'gelo', 'raio', 'vento', 'terra', 'luz', 'sombra',
   'corte', 'perfuracao', 'impacto', 'sagrado', 'profano', 'prata', 'sol',
 ]);
+// A projeção no tabuleiro (bloco `grid`, semeado por gen-grid-artes.mjs).
+// Vocabulário fechado e cobertura cobrada: Efeito novo sem `grid` não tem como
+// ser conjurado no Grid, e é melhor o build parar aqui do que a mesa descobrir
+// isso no meio da cena.
+const G_FORMAS = new Set(['nenhuma', 'alvo', 'aura', 'zona', 'muro', 'cone', 'linha', 'cadeia', 'token', 'movimento']);
+const G_ANCORAS = new Set(['nenhuma', 'conjurador', 'ponto', 'alvo', 'objeto']);
+const G_GATILHOS = new Set(['passivo', 'imediato', 'ao-entrar', 'por-turno', 'ao-tocar', 'armadilha']);
+const G_MATERIAS = new Set(['impacto', 'corte', 'perfuracao']);
+const COND_IDS = new Set((read('condicoes.json').lista || []).map((c) => c.id));
+for (const a of data.artes || []) {
+  if (!a.grid) fail(`arte "${a.id}": sem bloco \`grid\` (rode gen-grid-artes.mjs)`);
+  else if (a.grid.elemento && !ELEM_VOCAB.has(a.grid.elemento))
+    fail(`arte "${a.id}": grid.elemento "${a.grid.elemento}" fora do vocabulário`);
+}
+for (const e of data.efeitos || []) {
+  const g = e.grid;
+  if (!g) { fail(`efeito "${e.id}": sem bloco \`grid\` (rode gen-grid-artes.mjs)`); continue; }
+  if (!G_FORMAS.has(g.forma)) fail(`efeito "${e.id}": grid.forma inválida "${g.forma}"`);
+  if (!G_ANCORAS.has(g.ancora)) fail(`efeito "${e.id}": grid.ancora inválida "${g.ancora}"`);
+  if (!G_GATILHOS.has(g.gatilho)) fail(`efeito "${e.id}": grid.gatilho inválido "${g.gatilho}"`);
+  if (g.materia && !G_MATERIAS.has(g.materia)) fail(`efeito "${e.id}": grid.materia inválida "${g.materia}"`);
+  if (g.condicao && !COND_IDS.has(g.condicao))
+    fail(`efeito "${e.id}": grid.condicao "${g.condicao}" não existe em condicoes.json`);
+}
+
 if (fs.existsSync(path.join(DIR, 'elementos-bestiario.json'))) {
   const ELE = read('elementos-bestiario.json');
   const idsBesta = new Set((data.inimigos || []).map((i) => i.id));

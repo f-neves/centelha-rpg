@@ -87,7 +87,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": "fogo",
+      "cor": "#d1542a",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "gelo",
@@ -174,7 +180,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": "gelo",
+      "cor": "#5aa9c9",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "raio",
@@ -259,7 +271,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": "raio",
+      "cor": "#d8b13a",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "agua",
@@ -346,7 +364,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": "agua",
+      "cor": "#3d7ea6",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "vento",
@@ -432,7 +456,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": "vento",
+      "cor": "#9fb3a8",
+      "dadoPorNivel": 1,
+      "danoBruto": false
+    }
   },
   {
     "id": "terra",
@@ -518,7 +548,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": "terra",
+      "cor": "#8a6a43",
+      "dadoPorNivel": 2,
+      "danoBruto": true
+    }
   },
   {
     "id": "luz",
@@ -604,7 +640,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": "luz",
+      "cor": "#e0c86a",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "sombra",
@@ -690,7 +732,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": "sombra",
+      "cor": "#5b4a72",
+      "dadoPorNivel": 1,
+      "danoBruto": false
+    }
   },
   {
     "id": "cura",
@@ -777,7 +825,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#6f9f6a",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "vida",
@@ -860,7 +914,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#7aa05a",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "morte",
@@ -942,7 +1002,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#6b5f6e",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "fascinacao",
@@ -1024,7 +1090,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#a6688f",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "adivinhacao",
@@ -1106,7 +1178,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#7b8fb5",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "fortuna",
@@ -1184,7 +1262,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#c19a5b",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "conjuracao",
@@ -1262,7 +1346,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#8a7fb0",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "forcas",
@@ -1343,7 +1433,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#7d7f8c",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "materia",
@@ -1421,7 +1517,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#94795d",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "tempo",
@@ -1500,7 +1602,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#6d8f9c",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "espirito",
@@ -1579,7 +1687,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#8fa3b8",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "protecao",
@@ -1656,7 +1770,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#7e9ab0",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "ofuscacao",
@@ -1733,7 +1853,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#7a7a86",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "natureza",
@@ -1811,7 +1937,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#6f9256",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "metamorfose",
@@ -1890,7 +2022,13 @@
       }
     ],
     "aliases": [],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#9a7f6b",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   },
   {
     "id": "manipulacao-mana",
@@ -1957,6 +2095,12 @@
       "Mana Manipulation",
       "Manipulação de Mana"
     ],
-    "pendente": false
+    "pendente": false,
+    "grid": {
+      "elemento": null,
+      "cor": "#8b7fa8",
+      "dadoPorNivel": 1,
+      "danoBruto": true
+    }
   }
 ]

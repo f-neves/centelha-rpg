@@ -751,3 +751,114 @@ html[data-theme='classico'][data-fundo="site"] body.page-ficha .sheet-frame,
 html[data-theme='classico']:not([data-fundo]) body.page-ficha .sheet-frame,
 html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   background-image: var(--tex); background-size: var(--tex-size); }
+
+/* ========================================================================
+   AS ARTES NO TABULEIRO
+   O assistente de conjuração e o NPC completo (lib/artes-grid-ui.ts) montam
+   o próprio HTML dentro de um uiPainel, e por isso o estilo mora aqui, junto
+   do resto do .ui-dlg, e não num <style> de página: o mesmo diálogo é aberto
+   pela aba Grid e pode ser aberto por qualquer outra.
+   ==================================================================== */
+.ui-dlg-arte { max-width: min(46rem, 94vw); }
+.ui-dlg-arte .ag-sec { margin-bottom: .9rem; }
+.ui-dlg-arte .ag-h { font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); margin: 0 0 .35rem; font-weight: 700; }
+.ui-dlg-arte .ag-nota { font-size: var(--fs-micro); color: var(--ink-soft); margin: .2rem 0 .6rem; }
+.ui-dlg-arte .ag-vazio { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
+
+/* a Arte: pastilhas coloridas pela própria Arte, com o nível na ponta */
+.ag-chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.ag-chip { display: inline-flex; align-items: center; gap: .35rem; padding: .22rem .5rem;
+  border: 1px solid var(--rule); border-radius: 999px; background: transparent;
+  cursor: pointer; font: inherit; font-size: var(--fs-aux); color: var(--ink); }
+.ag-chip::before { content: ''; width: .6rem; height: .6rem; border-radius: 50%;
+  background: var(--ag-cor, var(--accent)); flex: 0 0 auto; }
+.ag-chip:hover { border-color: var(--accent); }
+.ag-chip.on { border-color: var(--ag-cor, var(--accent)); box-shadow: inset 0 0 0 1px var(--ag-cor, var(--accent)); }
+.ag-chip-nv { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: var(--fs-micro); }
+
+/* o Efeito: um cartão por linha, porque a descrição é o que decide a escolha */
+.ag-efs { display: grid; gap: .3rem; max-height: 15rem; overflow-y: auto; padding-right: .2rem; }
+.ag-ef { display: grid; gap: .12rem; text-align: left; padding: .4rem .55rem; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: var(--r-2, 6px); background: transparent;
+  font: inherit; color: var(--ink); }
+.ag-ef:hover { border-color: var(--accent); }
+.ag-ef.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.ag-ef-top { display: flex; align-items: baseline; gap: .4rem; }
+.ag-ef-nv { font-size: var(--fs-micro); color: var(--ink-soft); border: 1px solid var(--rule);
+  border-radius: 999px; padding: 0 .3rem; font-variant-numeric: tabular-nums; }
+.ag-ef-tx { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.35; }
+.ag-ef-sab { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
+.ag-ef-mc { font-size: calc(var(--fs-micro) * .92); color: var(--ink-soft); letter-spacing: .03em; }
+
+/* os parâmetros: nome, contador, e o que aquilo VALE, que é a coluna que importa */
+.ag-pars { display: grid; gap: .18rem; }
+.ag-p { display: grid; grid-template-columns: 6.5rem auto 1fr auto; align-items: center; gap: .5rem;
+  padding: .18rem .2rem; border-radius: var(--r-2, 6px); }
+.ag-p.esticado { background: color-mix(in srgb, var(--gold, #c9a227) 12%, transparent); }
+.ag-p-nm { font-size: var(--fs-aux); }
+.ag-p-ctr { display: inline-flex; align-items: center; gap: .3rem; }
+/* flex e não line-height: o − e o + são glifos de alturas diferentes, e só
+   centrar pela caixa põe os dois no meio do círculo. */
+.ag-p-b { width: 1.5rem; height: 1.5rem; border: 1px solid var(--rule); border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; padding: 0;
+  background: transparent; cursor: pointer; color: var(--ink); line-height: 1;
+  font: inherit; font-size: var(--fs-aux); }
+.ag-p-b:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.ag-p-b:disabled { opacity: .3; cursor: default; }
+.ag-p-n { min-width: 1rem; text-align: center; font-variant-numeric: tabular-nums; font-weight: 700; }
+.ag-p-v { font-size: var(--fs-micro); color: var(--ink-soft); }
+.ag-p-eq { color: var(--accent); }
+.ag-p-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); font-weight: 700; }
+.ag-fixos { display: flex; flex-wrap: wrap; gap: .1rem .8rem; margin-top: .3rem;
+  font-size: var(--fs-micro); color: var(--ink-soft); }
+
+/* o molde: três botões com o desenho do que vai sair */
+.ag-moldes { display: flex; gap: .3rem; }
+.ag-md { display: inline-flex; align-items: center; gap: .3rem; padding: .25rem .6rem; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: var(--r-2, 6px); background: transparent;
+  font: inherit; font-size: var(--fs-aux); color: var(--ink); }
+.ag-md.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.ag-md-ic { color: var(--accent); }
+
+/* o custo: a única parte que o jogador confere antes de apertar */
+.ag-custo { border-top: 1px solid var(--rule); padding-top: .5rem; margin-top: .3rem; }
+.ag-cst-l { display: flex; flex-wrap: wrap; gap: .2rem 1rem; font-size: var(--fs-aux); }
+.ag-cst-l b { font-variant-numeric: tabular-nums; }
+.ag-cst-l b.gratis { color: var(--accent); }
+.ag-cst-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); margin-top: .2rem; }
+.ag-acoes { display: flex; justify-content: flex-end; gap: .4rem; margin-top: .7rem; }
+
+/* o NPC completo */
+.ag-npc-base { display: grid; grid-template-columns: 1fr 6rem 8rem; gap: .5rem; align-items: end; }
+.ag-npc-base .ag-f-chk { grid-column: 1 / -1; }
+.ag-f { display: grid; gap: .15rem; font-size: var(--fs-micro); color: var(--ink-soft); }
+.ag-f input, .ag-f select, .ag-f textarea { font: inherit; font-size: var(--fs-aux); color: var(--ink);
+  background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px); padding: .22rem .35rem; }
+.ag-f input:focus, .ag-f select:focus, .ag-f textarea:focus { outline: none; border-color: var(--accent); }
+.ag-f-chk { display: flex; align-items: center; gap: .35rem; }
+.ag-f-full { grid-column: 1 / -1; }
+.ag-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; margin-bottom: .5rem; }
+.ag-grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; margin-bottom: .5rem; }
+.ag-mais { display: flex; align-items: baseline; gap: .4rem; width: 100%; margin: .7rem 0 .4rem;
+  padding: .3rem 0; border: none; border-top: 1px solid var(--rule); background: transparent;
+  cursor: pointer; font: inherit; font-size: var(--fs-aux); color: var(--ink); text-align: left; }
+.ag-mais small { color: var(--ink-soft); font-size: var(--fs-micro); }
+.ag-retrato { display: flex; align-items: center; gap: .5rem; margin-top: .5rem; font-size: var(--fs-micro); }
+.ag-ret-lbl { color: var(--ink-soft); text-transform: uppercase; letter-spacing: .08em; }
+.ag-ret-nm { color: var(--ink-soft); font-style: italic; }
+.ag-ret-op { display: flex; align-items: center; gap: .5rem; }
+.ag-ret-op img { width: 2.2rem; height: 2.2rem; object-fit: cover; border-radius: var(--r-2, 6px); flex: 0 0 auto; }
+.ag-ret-op small { display: block; color: var(--ink-soft); font-size: var(--fs-micro); }
+
+/* os deslocamentos, um por linha */
+.ag-emp { display: grid; gap: .3rem; }
+.ag-emp-l { display: grid; grid-template-columns: 1fr auto auto auto; gap: .6rem; align-items: center;
+  padding: .3rem 0; border-bottom: 1px solid var(--rule); }
+.ag-emp-nm { display: grid; font-size: var(--fs-aux); }
+.ag-emp-nm small { color: var(--ink-soft); font-size: var(--fs-micro); }
+.ag-emp-calc { font-size: var(--fs-micro); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.ag-emp-ctr label { display: inline-flex; align-items: center; gap: .25rem;
+  font-size: var(--fs-micro); color: var(--ink-soft); }
+.ag-emp-ctr input { width: 3.4rem; font: inherit; font-size: var(--fs-aux); color: var(--ink);
+  background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px); padding: .15rem .3rem; }

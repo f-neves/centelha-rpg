@@ -126,6 +126,19 @@ Supabase pelo navegador. Passos para ligar tudo:
     Uma ficha que ninguém abriu desde a migração fica com o cache vazio, e os campos aparecem em
     branco até a próxima visita do dono ou do mestre à aba Grupo. Não há o que rodar para isso: o
     cálculo é do navegador, não do banco.
+18. Rode [`migracao-19.sql`](./migracao-19.sql): as **Artes no tabuleiro**. Cria `arena_efeitos`
+    (a mancha de fogo no chão, a aura presa ao conjurador, a marca no alvo) e a view
+    `efeito_visao`, por onde o jogador lê. Idempotente.
+
+    Uma tabela, e não mais um `jsonb` na arena como o registro da migração 17: o log só cresce e só
+    é lido inteiro, enquanto o efeito ativo é consultado por arena, atualizado de um em um (o
+    contador de mordidas muda a cada turno) e apagado quando vence.
+
+    `hexes` guarda as casas **já calculadas**, e não os parâmetros que as geraram. Recalcular no
+    cliente parece mais limpo até a primeira vez que a regra do molde mudar: o muro desenhado na
+    sessão passada viraria outro muro. O que foi conjurado fica como foi conjurado.
+
+    Sem esta migração a aba Grid continua inteira; só o botão **✶ Arte** avisa que falta rodá-la.
 
 ## 3. Ajustes no painel
 

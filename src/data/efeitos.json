@@ -48,7 +48,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Enche o volume de névoa: quem está dentro não enxerga, e quem olha de fora não vê o que acontece lá."
+    "efeito": "Enche o volume de névoa: quem está dentro não enxerga, e quem olha de fora não vê o que acontece lá.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "arma-elemental",
@@ -104,7 +117,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Reveste uma arma empunhada com o elemento. Soma +2 de dano por nível ao dano da arma. Esse dano é do elemento e só pode ser absorvido com a resistência adequada."
+    "efeito": "Reveste uma arma empunhada com o elemento. Soma +2 de dano por nível ao dano da arma. Esse dano é do elemento e só pode ser absorvido com a resistência adequada.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "objeto",
+      "gatilho": "ao-tocar",
+      "alvo": "objeto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": true,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "muro",
@@ -175,7 +201,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Ergue uma barreira numa superfície firme, ou no elemento correspondente. Terra e gelo bloqueiam a passagem; fogo, água e ar atrapalham e ferem quem insiste em passar; luz e sombra apenas tapam a visão. Dá para moldar a área da barreira em vários formatos, inclusive esticar de comprimento ou levantar mais alto, desde que o topo nunca passe do nível da Arte, em metros. As barreiras de terra e de gelo aceitam inclinação de até 45°, e a curvatura máxima de qualquer barreira é um semicírculo."
+    "efeito": "Ergue uma barreira numa superfície firme, ou no elemento correspondente. Terra e gelo bloqueiam a passagem; fogo, água e ar atrapalham e ferem quem insiste em passar; luz e sombra apenas tapam a visão. Dá para moldar a área da barreira em vários formatos, inclusive esticar de comprimento ou levantar mais alto, desde que o topo nunca passe do nível da Arte, em metros. As barreiras de terra e de gelo aceitam inclinação de até 45°, e a curvatura máxima de qualquer barreira é um semicírculo.",
+    "grid": {
+      "forma": "muro",
+      "ancora": "ponto",
+      "gatilho": "imediato",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "aura",
@@ -235,7 +274,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "O elemento envolve você numa esfera. Quem entra nela, encosta, agarra ou ataca no corpo a corpo sofre o dano ou o efeito do elemento (se houver)."
+    "efeito": "O elemento envolve você numa esfera. Quem entra nela, encosta, agarra ou ataca no corpo a corpo sofre o dano ou o efeito do elemento (se houver).",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "prisao",
@@ -289,7 +341,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "O ataque com o elemento prende o alvo no lugar. Exige jogada do conjurador; o ataque é imbloqueável, mas pode ser esquivado. Escapar exige Força + Atletismo contra a Dificuldade, e cada tentativa gasta a ação. Quando a duração acaba, a matéria deixa de ser mágica e solta o alvo, mesmo que tenha sido erguida com terra de verdade."
+    "efeito": "O ataque com o elemento prende o alvo no lugar. Exige jogada do conjurador; o ataque é imbloqueável, mas pode ser esquivado. Escapar exige Força + Atletismo contra a Dificuldade, e cada tentativa gasta a ação. Quando a duração acaba, a matéria deixa de ser mágica e solta o alvo, mesmo que tenha sido erguida com terra de verdade.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "imobilizado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "empurrao-elemental",
@@ -344,7 +409,20 @@
         "nota": "entra na tabela de arremesso e diz a distância"
       }
     ],
-    "efeito": "Empurra ou arremessa o alvo, e o que decide é o PESO dele. A Arte entra no lugar dos músculos nas tabelas de Força: o que ela consegue erguer diz se o alvo sai do lugar, e o que ela consegue arremessar diz a que distância ele vai. Bater em obstáculo duro machuca como uma queda daquela distância."
+    "efeito": "Empurra ou arremessa o alvo, e o que decide é o PESO dele. A Arte entra no lugar dos músculos nas tabelas de Força: o que ela consegue erguer diz se o alvo sai do lugar, e o que ela consegue arremessar diz a que distância ele vai. Bater em obstáculo duro machuca como uma queda daquela distância.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": false,
+      "materia": "impacto",
+      "condicao": "caido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "chao-traicoeiro",
@@ -397,7 +475,20 @@
         "nota": "dobra para quem corre, cavalga ou luta"
       }
     ],
-    "efeito": "O piso deixa de cooperar. Andar exige teste, e quem falha cai; correr, cavalgar ou lutar em cima dobra a dificuldade. Na areia movediça, quem cai afunda a cada turno."
+    "efeito": "O piso deixa de cooperar. Andar exige teste, e quem falha cai; correr, cavalgar ou lutar em cima dobra a dificuldade. Na areia movediça, quem cai afunda a cada turno.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "terreno-dificil",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "arma-conjurada",
@@ -434,7 +525,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Por ser matéria, a armadura absorve normalmente, no modo do formato, e ela abre efeitos secundários como sangramento."
+    "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Por ser matéria, a armadura absorve normalmente, no modo do formato, e ela abre efeitos secundários como sangramento.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "objeto",
+      "gatilho": "ao-tocar",
+      "alvo": "objeto",
+      "persiste": true,
+      "materia": "corte",
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "metal-incandescente",
@@ -492,7 +596,20 @@
         "valor": "Percepção + Acerto Arcano"
       }
     ],
-    "efeito": "Envia um ataque elemental que aquece o metal que acerta, mesmo se o ataque for bloqueado. Quem veste armadura, ou empunha uma arma, de metal se queima e sofre penalidade igual à quantidade de dados de dano jogados enquanto o efeito durar e estiver vestindo ou segurando o objeto."
+    "efeito": "Envia um ataque elemental que aquece o metal que acerta, mesmo se o ataque for bloqueado. Quem veste armadura, ou empunha uma arma, de metal se queima e sofre penalidade igual à quantidade de dados de dano jogados enquanto o efeito durar e estiver vestindo ou segurando o objeto.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "ao-tocar",
+      "alvo": "um",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": true,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "brasa-retardada",
@@ -524,7 +641,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa o efeito preso num ponto, disparando quando alguém passa, toca, ou ao fim de um tempo combinado. É a armadilha do feiticeiro."
+    "efeito": "Deixa o efeito preso num ponto, disparando quando alguém passa, toca, ou ao fim de um tempo combinado. É a armadilha do feiticeiro.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "armadilha",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "em-chamas",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "corrente",
@@ -551,7 +681,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "O raio salta de um alvo ao seguinte, desde que estejam a poucos passos um do outro. Cada salto vale um alvo no parâmetro."
+    "efeito": "O raio salta de um alvo ao seguinte, desde que estejam a poucos passos um do outro. Cada salto vale um alvo no parâmetro.",
+    "grid": {
+      "forma": "cadeia",
+      "ancora": "alvo",
+      "gatilho": "imediato",
+      "alvo": "varios",
+      "persiste": false,
+      "materia": null,
+      "condicao": "eletrizado",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "passo-relampago",
@@ -570,7 +713,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Você percorre a distância como raio e reaparece no destino, atravessando o que estiver no caminho. Precisa de linha de visão."
+    "efeito": "Você percorre a distância como raio e reaparece no destino, atravessando o que estiver no caminho. Precisa de linha de visão.",
+    "grid": {
+      "forma": "linha",
+      "ancora": "conjurador",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "onda",
@@ -597,7 +753,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Arrasta para longe todos que estiverem na área. Exige um corpo de água por perto: rio, lago, chuva forte, cisterna."
+    "efeito": "Arrasta para longe todos que estiverem na área. Exige um corpo de água por perto: rio, lago, chuva forte, cisterna.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": false,
+      "materia": "impacto",
+      "condicao": "caido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "bolha-de-ar",
@@ -629,7 +798,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Respirar embaixo de água, na fumaça ou no gás. Não protege do dano, só do sufocamento."
+    "efeito": "Respirar embaixo de água, na fumaça ou no gás. Não protege do dano, só do sufocamento.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "escudo-de-vento",
@@ -658,7 +840,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Flechas, virotes e dardos erram enquanto o vento durar. Não segura o que é pesado nem o corpo a corpo."
+    "efeito": "Flechas, virotes e dardos erram enquanto o vento durar. Não segura o que é pesado nem o corpo a corpo.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "protegido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "salto-do-vento",
@@ -686,7 +881,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Sobe alto, plana um trecho e cai sem se machucar. Com Duração alta vira voo curto e desajeitado."
+    "efeito": "Sobe alto, plana um trecho e cai sem se machucar. Com Duração alta vira voo curto e desajeitado.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "voando",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "sussurro-distante",
@@ -714,7 +922,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Sua voz chega ao ouvido de quem você escolher, sem que ninguém no caminho escute. Não traz resposta de volta."
+    "efeito": "Sua voz chega ao ouvido de quem você escolher, sem que ninguém no caminho escute. Não traz resposta de volta.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "terremoto",
@@ -754,7 +975,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "O chão sacode e derruba quem estiver dentro da área. Não abre o solo: para isso existe a Fenda."
+    "efeito": "O chão sacode e derruba quem estiver dentro da área. Não abre o solo: para isso existe a Fenda.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": "impacto",
+      "condicao": "caido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "pele-de-pedra",
@@ -791,7 +1025,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Soma Absorção contra dano físico enquanto durar. Pesa: quem está coberto perde um pouco de velocidade."
+    "efeito": "Soma Absorção contra dano físico enquanto durar. Pesa: quem está coberto perde um pouco de velocidade.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "protegido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "lascas",
@@ -822,7 +1069,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Espalha estilhaços num leque à sua frente. É matéria de verdade, então a armadura absorve normalmente, como perfuração."
+    "efeito": "Espalha estilhaços num leque à sua frente. É matéria de verdade, então a armadura absorve normalmente, como perfuração.",
+    "grid": {
+      "forma": "cone",
+      "ancora": "ponto",
+      "gatilho": "imediato",
+      "alvo": "ponto",
+      "persiste": false,
+      "materia": "perfuracao",
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "clarao",
@@ -856,7 +1116,20 @@
         "valor": "(nível da Arte)"
       }
     ],
-    "efeito": "Emite uma luz forte numa área. Quem estiver dentro dela e olhando na direção sofre a Penalidade enquanto durar."
+    "efeito": "Emite uma luz forte numa área. Quem estiver dentro dela e olhando na direção sofre a Penalidade enquanto durar.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "ofuscado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "facho-revelador",
@@ -885,7 +1158,20 @@
         "valor": "instantânea"
       }
     ],
-    "efeito": "Desfaz camuflagem, disfarce e invisibilidade dentro da área, inclusive os que vêm de outra Arte. Contra Ofuscação e Sombra é disputa direta de nível: revela o que for de Arte de nível igual ou inferior ao seu."
+    "efeito": "Desfaz camuflagem, disfarce e invisibilidade dentro da área, inclusive os que vêm de outra Arte. Contra Ofuscação e Sombra é disputa direta de nível: revela o que for de Arte de nível igual ou inferior ao seu.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "aurora",
@@ -917,7 +1203,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar o que teme a luz, enquanto durar."
+    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar o que teme a luz, enquanto durar.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "por-turno",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "cego",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "bracos-do-abismo",
@@ -949,7 +1248,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A sombra ganha corpo e agarra. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir."
+    "efeito": "A sombra ganha corpo e agarra. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "imediato",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "agarrado",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "manto-de-treva",
@@ -982,7 +1294,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "A treva acompanha quem a veste e esconde. Não funciona sob luz forte, e um Facho Revelador a desfaz."
+    "efeito": "A treva acompanha quem a veste e esconde. Não funciona sob luz forte, e um Facho Revelador a desfaz.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "si",
+      "persiste": true,
+      "materia": null,
+      "condicao": "escondido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "mordaca",
@@ -1010,7 +1335,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Nenhum som sai da área: nem grito, nem porta arrombada, nem conjuração falada. Quem está dentro ouve normalmente."
+    "efeito": "Nenhum som sai da área: nem grito, nem porta arrombada, nem conjuração falada. Quem está dentro ouve normalmente.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "escuridao",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "passo-entre-sombras",
@@ -1037,7 +1375,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Entra numa sombra e sai por outra dentro do alcance. Precisa haver sombra dos dois lados, e você chega sem saber o que o espera."
+    "efeito": "Entra numa sombra e sai por outra dentro do alcance. Precisa haver sombra dos dois lados, e você chega sem saber o que o espera.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "fenda",
@@ -1084,7 +1435,20 @@
       }
     ],
     "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair, e o que estava construído em cima racha junto. Só funciona em terreno feito predominantemente de terra ou de pedra.",
-    "notas": "A cada 5 pontos abaixo da Dificuldade, o alvo cai 1 metro, até o limite da Profundidade."
+    "notas": "A cada 5 pontos abaixo da Dificuldade, o alvo cai 1 metro, até o limite da Profundidade.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "caido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "paralisia",
@@ -1123,7 +1487,20 @@
         "valor": "Percepção + Acerto Arcano"
       }
     ],
-    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo recebe 2 × (nível da Arte) de penalidade. Não causa dano."
+    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo recebe 2 × (nível da Arte) de penalidade. Não causa dano.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "um",
+      "persiste": true,
+      "materia": null,
+      "condicao": "imobilizado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "mao-firme",
@@ -1159,7 +1536,20 @@
       }
     ],
     "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada turno enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Não é uma cura muito eficiente, mas impede que o alvo piore.",
-    "notas": "Serve no meio da luta, quando não há tempo de parar para curar direito."
+    "notas": "Serve no meio da luta, quando não há tempo de parar para curar direito.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "por-turno",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": true,
+      "teste": false
+    }
   },
   {
     "id": "transferir-dor",
@@ -1184,7 +1574,20 @@
         "valor": "transfere 3 de dano por nível"
       }
     ],
-    "efeito": "O ferimento sai do alvo e entra em você, do jeito que estava. Não é cura: é mudança de dono. Você não pode transferir para um terceiro, e o que chegou em você cura pelas vias normais."
+    "efeito": "O ferimento sai do alvo e entra em você, do jeito que estava. Não é cura: é mudança de dono. Você não pode transferir para um terceiro, e o que chegou em você cura pelas vias normais.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "um",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": true,
+      "teste": false
+    }
   },
   {
     "id": "campo-de-alivio",
@@ -1214,7 +1617,20 @@
         "nota": "exige concentração o tempo todo"
       }
     ],
-    "efeito": "Dentro da área a dor cessa e nada piora: sangramentos param, venenos e doenças ficam suspensos, e quem está caindo não morre enquanto durar. Nada disso cura; só congela o quadro até alguém tratar de verdade."
+    "efeito": "Dentro da área a dor cessa e nada piora: sangramentos param, venenos e doenças ficam suspensos, e quem está caindo não morre enquanto durar. Nada disso cura; só congela o quadro até alguém tratar de verdade.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "protegido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "cura-guardada",
@@ -1249,7 +1665,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa a cura presa no alvo, dormindo, sem gastar a sua ação depois e sem exigir que você esteja perto. Quem decide a hora é o alvo, e ela dispara sozinha se ele cair incapacitado. Um alvo carrega uma cura guardada por vez."
+    "efeito": "Deixa a cura presa no alvo, dormindo, sem gastar a sua ação depois e sem exigir que você esteja perto. Quem decide a hora é o alvo, e ela dispara sozinha se ele cair incapacitado. Um alvo carrega uma cura guardada por vez.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "armadilha",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": true,
+      "teste": false
+    }
   },
   {
     "id": "sarcal",
@@ -1283,7 +1712,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Levanta uma moita fechada de espinhos. Quem se agacha atrás dela ganha cobertura; quem atravessa anda na metade da velocidade e se fere no caminho. Abrir uma passagem limpa é possível, mas custa uma ação e uma lâmina."
+    "efeito": "Levanta uma moita fechada de espinhos. Quem se agacha atrás dela ganha cobertura; quem atravessa anda na metade da velocidade e se fere no caminho. Abrir uma passagem limpa é possível, mas custa uma ação e uma lâmina.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": "perfuracao",
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "semente-adormecida",
@@ -1328,7 +1770,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Planta o efeito num ponto e ele dorme até alguém pisar, tocar, ou até a hora combinada. Cresce de uma vez, agarra quem estiver em cima e fere. É a armadilha do jardineiro: enquanto espera, é só uma semente no chão."
+    "efeito": "Planta o efeito num ponto e ele dorme até alguém pisar, tocar, ou até a hora combinada. Cresce de uma vez, agarra quem estiver em cima e fere. É a armadilha do jardineiro: enquanto espera, é só uma semente no chão.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "armadilha",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": "perfuracao",
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "enxerto",
@@ -1370,7 +1825,20 @@
       }
     ],
     "efeito": "Empresta ao corpo do alvo um traço vivo que ele não tinha: guelras, olhos de coruja, couro mais grosso, um dedo a mais. Um traço por conjuração, e o corpo o rejeita quando a duração acaba. Em quem não quer, é ataque, e o corpo luta contra.",
-    "notas": "O traço vale +1 por nível no que ele faz: Absorção do couro, distância que o olho enxerga, tempo que a guelra aguenta."
+    "notas": "O traço vale +1 por nível no que ele faz: Absorção do couro, distância que o olho enxerga, tempo que a guelra aguenta.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "podridao",
@@ -1404,7 +1872,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Apodrece o que um dia foi vivo e agora não é: comida, corda, couro, madeira, pano, a haste de uma lança, a armadura de couro no corpo de alguém. Não toca metal nem pedra, e não fere criatura viva."
+    "efeito": "Apodrece o que um dia foi vivo e agora não é: comida, corda, couro, madeira, pano, a haste de uma lança, a armadura de couro no corpo de alguém. Não toca metal nem pedra, e não fere criatura viva.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "objeto",
+      "gatilho": "imediato",
+      "alvo": "objeto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": true,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "marca-do-fim",
@@ -1443,7 +1924,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Marca o alvo. Enquanto durar, o que o fere não fecha sozinho: todo dano que ele sofrer vira agravado e precisa de tratamento ou da Arte de Cura. Não causa dano por si."
+    "efeito": "Marca o alvo. Enquanto durar, o que o fere não fecha sozinho: todo dano que ele sofrer vira agravado e precisa de tratamento ou da Arte de Cura. Não causa dano por si.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "marcado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "mortalha",
@@ -1476,7 +1970,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Uma aura de terror cobre a área. Quem não aguenta foge, e quem aguenta luta pior enquanto estiver dentro. Bicho e gente comum saem correndo sem pensar."
+    "efeito": "Uma aura de terror cobre a área. Quem não aguenta foge, e quem aguenta luta pior enquanto estiver dentro. Bicho e gente comum saem correndo sem pensar.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "amedrontado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "servo-de-ossos",
@@ -1513,7 +2020,20 @@
       }
     ],
     "efeito": "Ergue um cadáver como servo. Ele obedece ordens simples e diretas, não pensa e não improvisa, e cai de novo quando a duração acaba. Fazer isso em praça pública é assunto da Lei.",
-    "notas": "O servo age com metade dos Atributos físicos que o corpo tinha em vida e nenhum dos mentais."
+    "notas": "O servo age com metade dos Atributos físicos que o corpo tinha em vida e nenhum dos mentais.",
+    "grid": {
+      "forma": "token",
+      "ancora": "ponto",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "boa-impressao",
@@ -1551,7 +2071,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "O alvo simplesmente gosta de você um pouco mais do que devia: some a desconfiança de estranho e a conversa começa em outro lugar. Não obriga a nada, e ordem ou pedido fora do razoável quebra o encanto."
+    "efeito": "O alvo simplesmente gosta de você um pouco mais do que devia: some a desconfiança de estranho e a conversa começa em outro lugar. Não obriga a nada, e ordem ou pedido fora do razoável quebra o encanto.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "sugestao-plantada",
@@ -1584,7 +2117,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Deixa uma ordem curta dormindo na cabeça do alvo, com um gatilho combinado: quando o sino tocar, abra o portão. Ele cumpre achando que foi ideia dele, e só percebe se aquilo for absurdo demais."
+    "efeito": "Deixa uma ordem curta dormindo na cabeça do alvo, com um gatilho combinado: quando o sino tocar, abra o portão. Ele cumpre achando que foi ideia dele, e só percebe se aquilo for absurdo demais.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "dominado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "pavor",
@@ -1626,7 +2172,20 @@
         "valor": "(nível da Arte) para quem aguentar e ficar"
       }
     ],
-    "efeito": "Planta terror puro. Quem falha foge do jeito que der, e quem resiste ainda luta abalado. O medo é do lugar, não de você: quem correu não sabe dizer de que fugiu."
+    "efeito": "Planta terror puro. Quem falha foge do jeito que der, e quem resiste ainda luta abalado. O medo é do lugar, não de você: quem correu não sabe dizer de que fugiu.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "amedrontado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "esquecer",
@@ -1654,7 +2213,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Apaga do alvo o que acabou de acontecer, alguns minutos por nível investido. Fica um branco desconfortável, e uma prova física ou um segundo testemunho fura o buraco na hora."
+    "efeito": "Apaga do alvo o que acabou de acontecer, alguns minutos por nível investido. Fica um branco desconfortável, e uma prova física ou um segundo testemunho fura o buraco na hora.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "confuso",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "ver-o-fio",
@@ -1690,7 +2262,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Enxerga o que é arcano: feitiço ativo, objeto encantado, rastro de conjuração recente, o fio de uma barreira. Diz que existe e o quanto é forte; dizer exatamente o que faz exige mais tempo e conversa com o Mestre."
+    "efeito": "Enxerga o que é arcano: feitiço ativo, objeto encantado, rastro de conjuração recente, o fio de uma barreira. Diz que existe e o quanto é forte; dizer exatamente o que faz exige mais tempo e conversa com o Mestre.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "aviso",
@@ -1719,7 +2304,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Enquanto durar, você e quem estiver marcado não são pegos de surpresa: a emboscada avisa, a lâmina nas costas dá o arrepio a tempo. Não diz de onde vem, só que vem."
+    "efeito": "Enquanto durar, você e quem estiver marcado não são pegos de surpresa: a emboscada avisa, a lâmina nas costas dá o arrepio a tempo. Não diz de onde vem, só que vem.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "abencoado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "eco-do-lugar",
@@ -1748,7 +2346,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Vê o que se passou ali, em cenas soltas e sem som: quanto mais fundo o nível, mais para trás chega, de horas a anos. Você assiste, não participa, e não escolhe o que aparece."
+    "efeito": "Vê o que se passou ali, em cenas soltas e sem som: quanto mais fundo o nível, mais para trás chega, de horas a anos. Você assiste, não participa, e não escolhe o que aparece.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "rastro",
@@ -1777,7 +2388,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Pega o rastro de quem passou por ali ou de quem é dono do objeto tocado, e o mostra como uma linha que só você vê. A linha se apaga com o tempo, e água corrente e barreiras a cortam."
+    "efeito": "Pega o rastro de quem passou por ali ou de quem é dono do objeto tocado, e o mostra como uma linha que só você vê. A linha se apaga com o tempo, e água corrente e barreiras a cortam.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "momento-certo",
@@ -1800,7 +2424,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Guarda uma re-rolagem e a solta depois, sua ou de um aliado à vista, mesmo fora do seu turno. Vale o segundo resultado, bom ou ruim."
+    "efeito": "Guarda uma re-rolagem e a solta depois, sua ou de um aliado à vista, mesmo fora do seu turno. Vale o segundo resultado, bom ou ruim.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "abencoado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "porta-aberta",
@@ -1824,7 +2461,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Uma coincidência pequena e plausível cai a seu favor: a porta não estava trancada, sobrou uma corda, o guarda tinha acabado de sair. Nada impossível, nada que já tenha sido dito em mesa, e o Mestre escolhe a forma exata."
+    "efeito": "Uma coincidência pequena e plausível cai a seu favor: a porta não estava trancada, sobrou uma corda, o guarda tinha acabado de sair. Nada impossível, nada que já tenha sido dito em mesa, e o Mestre escolhe a forma exata.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "azar-marcado",
@@ -1857,7 +2507,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Enquanto durar, o alvo tropeça na hora errada: a corda arrebenta, a arma prende na bainha, o pé escorrega. Não é dano nem penalidade fixa; é o Mestre podendo cobrar o azar uma vez por turno."
+    "efeito": "Enquanto durar, o alvo tropeça na hora errada: a corda arrebenta, a arma prende na bainha, o pé escorrega. Não é dano nem penalidade fixa; é o Mestre podendo cobrar o azar uma vez por turno.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "amaldicoado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "ricochete-do-destino",
@@ -1880,7 +2543,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "O ataque que ia acertar erra por um triz, e o que erraria acha alguém: o golpe passa para outro alvo válido a poucos passos. Uma vez por conjuração, e o novo alvo não escolhe você."
+    "efeito": "O ataque que ia acertar erra por um triz, e o que erraria acha alguém: o golpe passa para outro alvo válido a poucos passos. Uma vez por conjuração, e o novo alvo não escolhe você.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "mao-invisivel",
@@ -1909,7 +2585,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Uma mão de força fina, à distância: abre trinco, puxa alavanca, vira página, tira a bolsa do cinto alheio. Não tem força para brigar nem para carregar gente, e trabalho de dedo exige a sua atenção inteira."
+    "efeito": "Uma mão de força fina, à distância: abre trinco, puxa alavanca, vira página, tira a bolsa do cinto alheio. Não tem força para brigar nem para carregar gente, e trabalho de dedo exige a sua atenção inteira.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "chamar-a-mao",
@@ -1932,7 +2621,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Um objeto à vista salta para a sua mão, ou volta para ela depois de arremessado. Se estiver preso ou na mão de alguém, é disputa de Força contra o nível da Arte."
+    "efeito": "Um objeto à vista salta para a sua mão, ou volta para ela depois de arremessado. Se estiver preso ou na mão de alguém, é disputa de Força contra o nível da Arte.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "objeto",
+      "gatilho": "passivo",
+      "alvo": "objeto",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "bolso-torto",
@@ -1957,7 +2659,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Guarda um objeto numa dobra do espaço e o chama de volta quando quiser. Cabe o que caberia nos seus braços, nada vivo, e o bolso se desfaz no fim da duração devolvendo o que tem para o chão."
+    "efeito": "Guarda um objeto numa dobra do espaço e o chama de volta quando quiser. Cabe o que caberia nos seus braços, nada vivo, e o bolso se desfaz no fim da duração devolvendo o que tem para o chão.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "fresta",
@@ -1985,7 +2700,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Abre uma passagem curta entre dois pontos à vista. Dá para atravessar, empurrar alguém através ou enfiar o braço e pegar o que está do outro lado. Fecha no fim da duração, com o que estiver no meio do caminho ficando do lado em que a maior parte dele está."
+    "efeito": "Abre uma passagem curta entre dois pontos à vista. Dá para atravessar, empurrar alguém através ou enfiar o braço e pegar o que está do outro lado. Fecha no fim da duração, com o que estiver no meio do caminho ficando do lado em que a maior parte dele está.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "anteparo",
@@ -2022,7 +2750,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Um escudo invisível que soma Absorção contra tudo o que vem de fora, físico ou elemental, enquanto durar. Não atrapalha o movimento e some ao acabar."
+    "efeito": "Um escudo invisível que soma Absorção contra tudo o que vem de fora, físico ou elemental, enquanto durar. Não atrapalha o movimento e some ao acabar.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "protegido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "peso",
@@ -2061,7 +2802,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Dobra o que puxa o alvo para baixo: quem falha vai ao chão e quem aguenta anda devagar, não salta e não corre enquanto durar. Contra objeto solto, ele desaba."
+    "efeito": "Dobra o que puxa o alvo para baixo: quem falha vai ao chão e quem aguenta anda devagar, não salta e não corre enquanto durar. Contra objeto solto, ele desaba.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "retardado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "arremesso",
@@ -2098,7 +2852,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Pega algo pesado que esteja por perto (uma pedra, um barril, uma mesa, um corpo) e o joga. O dano é físico e a armadura conta, porque o que acerta é matéria de verdade."
+    "efeito": "Pega algo pesado que esteja por perto (uma pedra, um barril, uma mesa, um corpo) e o joga. O dano é físico e a armadura conta, porque o que acerta é matéria de verdade.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "imediato",
+      "alvo": "varios",
+      "persiste": false,
+      "materia": "impacto",
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "esmagar",
@@ -2142,7 +2909,20 @@
       }
     ],
     "efeito": "Comprime o alvo de todos os lados de uma vez. O dano volta a cada turno enquanto durar, e quem está sendo esmagado não fala, não conjura e mal se mexe. Contra objeto, amassa e arrebenta.",
-    "notas": "Contra objeto não há jogada: amassa, entorta e arrebenta o que couber na mão fechada da magia."
+    "notas": "Contra objeto não há jogada: amassa, entorta e arrebenta o que couber na mão fechada da magia.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "por-turno",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": "impacto",
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "remendo",
@@ -2166,7 +2946,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Conserta um objeto quebrado, ou estraga um inteiro. Vale para o que é simples: lâmina lascada, roda rachada, pote em cacos, corrente. Não conserta o que era mágico e não recupera o que virou pó."
+    "efeito": "Conserta um objeto quebrado, ou estraga um inteiro. Vale para o que é simples: lâmina lascada, roda rachada, pote em cacos, corrente. Não conserta o que era mágico e não recupera o que virou pó.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": true,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "chave-mestra",
@@ -2191,7 +2984,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Amolece um trecho pequeno de metal, madeira ou pedra o bastante para ceder: fechadura, grade, algema, dobradiça. O material endurece de novo depois, com a marca do que você fez."
+    "efeito": "Amolece um trecho pequeno de metal, madeira ou pedra o bastante para ceder: fechadura, grade, algema, dobradiça. O material endurece de novo depois, com a marca do que você fez.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": true,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "enferrujar",
@@ -2224,7 +3030,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Come o metal do equipamento alheio: a armadura perde Absorção e a arma perde dano enquanto durar. Em objeto sem dono a peça simplesmente se desfaz."
+    "efeito": "Come o metal do equipamento alheio: a armadura perde Absorção e a arma perde dano enquanto durar. Em objeto sem dono a peça simplesmente se desfaz.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "objeto",
+      "gatilho": "passivo",
+      "alvo": "objeto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": true,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "criar-utensilio",
@@ -2248,7 +3067,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Conjura um objeto simples e sem partes móveis complicadas: corda, escada, chave, tocha, pote de água, tábua, cunha. Nada de arma boa, mecanismo fino ou comida que sustente. Some no fim da duração."
+    "efeito": "Conjura um objeto simples e sem partes móveis complicadas: corda, escada, chave, tocha, pote de água, tábua, cunha. Nada de arma boa, mecanismo fino ou comida que sustente. Some no fim da duração.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "objeto",
+      "gatilho": "passivo",
+      "alvo": "objeto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "passo-lento",
@@ -2292,7 +3124,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "As ações do alvo passam a custar mais Ticks enquanto durar. Não impede nada; só o coloca sempre atrás de todo mundo na ordem das coisas."
+    "efeito": "As ações do alvo passam a custar mais Ticks enquanto durar. Não impede nada; só o coloca sempre atrás de todo mundo na ordem das coisas.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "retardado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "instante",
@@ -2316,7 +3161,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Uma ação a mais, agora, para você ou para quem estiver ao alcance. Repetir na mesma cena cobra o dobro de Mana a cada vez, e o corpo cobra depois: quem abusa termina a cena exausto."
+    "efeito": "Uma ação a mais, agora, para você ou para quem estiver ao alcance. Repetir na mesma cena cobra o dobro de Mana a cada vez, e o corpo cobra depois: quem abusa termina a cena exausto.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "acelerado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "bolha-temporal",
@@ -2349,7 +3207,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Dentro da área o tempo corre mais rápido ou mais devagar, e você escolhe qual ao conjurar. Quem está dentro age no ritmo de dentro; atravessar a borda custa uma ação de reajuste."
+    "efeito": "Dentro da área o tempo corre mais rápido ou mais devagar, e você escolhe qual ao conjurar. Quem está dentro age no ritmo de dentro; atravessar a borda custa uma ação de reajuste.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "acelerado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "reverter-o-golpe",
@@ -2372,7 +3243,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Desfaz o que acabou de acontecer com um alvo: o ferimento não existiu, o copo não caiu, o passo não foi dado. Só alcança os últimos segundos e só uma coisa por vez, e quem viu guarda a lembrança de duas versões."
+    "efeito": "Desfaz o que acabou de acontecer com um alvo: o ferimento não existiu, o copo não caiu, o passo não foi dado. Só alcança os últimos segundos e só uma coisa por vez, e quem viu guarda a lembrança de duas versões.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "aplacar",
@@ -2405,7 +3289,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Acalma um espírito agitado ou o afugenta, e abre espaço para pedir um favor pequeno: passar, apontar, deixar em paz. Espírito forte apenas escuta, e escutar já é muito."
+    "efeito": "Acalma um espírito agitado ou o afugenta, e abre espaço para pedir um favor pequeno: passar, apontar, deixar em paz. Espírito forte apenas escuta, e escutar já é muito.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "servo-menor",
@@ -2434,7 +3331,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Chama um espírito ou elemental menor para servir pelo tempo combinado. Ele faz uma coisa por vez e cobra do seu jeito se for mal tratado. Vai embora no fim da duração, e lembra de você."
+    "efeito": "Chama um espírito ou elemental menor para servir pelo tempo combinado. Ele faz uma coisa por vez e cobra do seu jeito se for mal tratado. Vai embora no fim da duração, e lembra de você.",
+    "grid": {
+      "forma": "token",
+      "ancora": "ponto",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "vincular-ao-objeto",
@@ -2459,7 +3369,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Prende um espírito num objeto, que passa a fazer o que aquele espírito sabe fazer enquanto durar. É assim que se faz item encantado sem forja: por acordo, ou por captura."
+    "efeito": "Prende um espírito num objeto, que passa a fazer o que aquele espírito sabe fazer enquanto durar. É assim que se faz item encantado sem forja: por acordo, ou por captura.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": true,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "banir",
@@ -2493,7 +3416,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Manda o espírito de volta para o lado de lá. Quem foi banido não volta tão cedo e não esquece quem o mandou embora."
+    "efeito": "Manda o espírito de volta para o lado de lá. Quem foi banido não volta tão cedo e não esquece quem o mandou embora.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "salvaguarda",
@@ -2527,7 +3463,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa uma marca de guarda no alvo que engole um efeito arcano de nível igual ou menor ao que você investiu e se gasta ao fazê-lo. Fica esperando até ser usada ou até a duração acabar."
+    "efeito": "Deixa uma marca de guarda no alvo que engole um efeito arcano de nível igual ou menor ao que você investiu e se gasta ao fazê-lo. Fica esperando até ser usada ou até a duração acabar.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "armadilha",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "protegido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "circulo",
@@ -2567,7 +3516,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Um círculo desenhado que uma categoria de criatura não atravessa: mortos-vivos, espíritos, feras, corruptores. Você escolhe a categoria ao traçar. Quebrar a linha desfaz tudo, e quem está dentro pode quebrá-la por descuido."
+    "efeito": "Um círculo desenhado que uma categoria de criatura não atravessa: mortos-vivos, espíritos, feras, corruptores. Você escolhe a categoria ao traçar. Quebrar a linha desfaz tudo, e quem está dentro pode quebrá-la por descuido.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "imobilizado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "dissipar",
@@ -2599,7 +3561,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Desfaz magia alheia. Apaga de uma vez o que for de nível igual ou menor ao que você investiu, e enfraquece o que for maior. Contra magia de outro feiticeiro, é o nível da Arte de cada um que decide."
+    "efeito": "Desfaz magia alheia. Apaga de uma vez o que for de nível igual ou menor ao que você investiu, e enfraquece o que for maior. Contra magia de outro feiticeiro, é o nível da Arte de cada um que decide.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "rosto-esquecivel",
@@ -2629,7 +3604,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Quem olha para você vê, registra e esquece. Descrever o seu rosto depois fica impossível, e o retrato falado nunca fecha. Não esconde nada: só apaga a lembrança de ter visto."
+    "efeito": "Quem olha para você vê, registra e esquece. Descrever o seu rosto depois fica impossível, e o retrato falado nunca fecha. Não esconde nada: só apaga a lembrança de ter visto.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "invisivel",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "rosto-emprestado",
@@ -2659,7 +3647,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Em vez de um rosto qualquer, você usa o de alguém específico que já viu de perto. A voz vem junto; o jeito de andar e o que a pessoa sabe, não. O toque denuncia, como sempre."
+    "efeito": "Em vez de um rosto qualquer, você usa o de alguém específico que já viu de perto. A voz vem junto; o jeito de andar e o que a pessoa sabe, não. O toque denuncia, como sempre.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "esconder-a-carga",
@@ -2693,7 +3694,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Some com um objeto aos olhos dos outros, na sua mão ou na de quem você tocar: a arma no cinto, o livro debaixo do braço, o corpo no carrinho. Quem esbarrar sente, e quem procurar com a mão acha."
+    "efeito": "Some com um objeto aos olhos dos outros, na sua mão ou na de quem você tocar: a arma no cinto, o livro debaixo do braço, o corpo no carrinho. Quem esbarrar sente, e quem procurar com a mão acha.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "escondido",
+      "pegaItem": true,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "sentir-o-ermo",
@@ -2722,7 +3736,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A região responde: por onde há água, o que é seguro comer, o que passou por ali e há quanto tempo, de que lado vem o perigo. Não vê nada; sabe."
+    "efeito": "A região responde: por onde há água, o que é seguro comer, o que passou por ali e há quanto tempo, de que lado vem o perigo. Não vê nada; sabe.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "trilha-fechada",
@@ -2762,7 +3789,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "A vegetação abre para o seu grupo e fecha logo atrás: pegada some, galho volta ao lugar, quem persegue perde o rastro e o tempo. Não funciona onde não há mato."
+    "efeito": "A vegetação abre para o seu grupo e fecha logo atrás: pegada some, galho volta ao lugar, quem persegue perde o rastro e o tempo. Não funciona onde não há mato.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "conjurador",
+      "gatilho": "passivo",
+      "alvo": "si",
+      "persiste": true,
+      "materia": null,
+      "condicao": "terreno-dificil",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "olhos-da-mata",
@@ -2791,7 +3831,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Toma emprestados os sentidos de um bicho da região e vê, ouve e cheira o que ele vê, ouve e cheira. Enquanto está lá, o seu corpo fica parado onde está."
+    "efeito": "Toma emprestados os sentidos de um bicho da região e vê, ouve e cheira o que ele vê, ouve e cheira. Enquanto está lá, o seu corpo fica parado onde está.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "sentidos-de-fera",
@@ -2821,7 +3874,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Troca os seus sentidos pelos de um bicho: enxergar no escuro, farejar quem passou, ouvir do outro lado da parede. Um sentido por conjuração, e o que ganha em um você perde de vista nos outros enquanto durar."
+    "efeito": "Troca os seus sentidos pelos de um bicho: enxergar no escuro, farejar quem passou, ouvir do outro lado da parede. Um sentido por conjuração, e o que ganha em um você perde de vista nos outros enquanto durar.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "conjurador",
+      "gatilho": "passivo",
+      "alvo": "si",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "meio-corpo",
@@ -2846,7 +3912,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Uma parte do corpo vira elemento: névoa, água, brasa, pedra. Golpes atravessam aquela parte, quem o segura por ela se queima ou fica com as mãos vazias, e a parte perde o que sabia fazer como carne."
+    "efeito": "Uma parte do corpo vira elemento: névoa, água, brasa, pedra. Golpes atravessam aquela parte, quem o segura por ela se queima ou fica com as mãos vazias, e a parte perde o que sabia fazer como carne.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "conjurador",
+      "gatilho": "passivo",
+      "alvo": "si",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "asas",
@@ -2876,7 +3955,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Ganha asas que sustentam o seu peso. Voa no lugar de correr, com a mesma distância do seu deslocamento, e mais alto quanto maior o nível. Carga pesada corta o voo, e cair enquanto elas somem é problema seu."
+    "efeito": "Ganha asas que sustentam o seu peso. Voa no lugar de correr, com a mesma distância do seu deslocamento, e mais alto quanto maior o nível. Carga pesada corta o voo, e cair enquanto elas somem é problema seu.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "conjurador",
+      "gatilho": "passivo",
+      "alvo": "si",
+      "persiste": true,
+      "materia": null,
+      "condicao": "voando",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "chuva-de-fogo",
@@ -2908,7 +4000,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "O fogo cai sobre a área e continua caindo: o dano volta a cada turno enquanto durar, e o que é combustível pega e segue queimando depois que a magia acaba. Não separa amigo de inimigo."
+    "efeito": "O fogo cai sobre a área e continua caindo: o dano volta a cada turno enquanto durar, e o que é combustível pega e segue queimando depois que a magia acaba. Não separa amigo de inimigo.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "por-turno",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "em-chamas",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "inverno",
@@ -2936,7 +4041,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto perde Fôlego turno após turno. A região demora a esquecer que você passou por ali."
+    "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto perde Fôlego turno após turno. A região demora a esquecer que você passou por ali.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "terreno-dificil",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "tempestade",
@@ -2978,7 +4096,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Chama a tempestade. A cada turno um raio cai onde você apontar dentro da área, sem gastar a sua ação, e quem veste metal atrai o próximo."
+    "efeito": "Chama a tempestade. A cada turno um raio cai onde você apontar dentro da área, sem gastar a sua ação, e quem veste metal atrai o próximo.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "por-turno",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "eletrizado",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "maremoto",
@@ -3016,7 +4147,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Uma parede de água varre a área e leva embora o que não estiver preso ao chão. Quem falha é arrastado até a borda, e o que estava solto no caminho vira projétil."
+    "efeito": "Uma parede de água varre a área e leva embora o que não estiver preso ao chão. Quem falha é arrastado até a borda, e o que estava solto no caminho vira projétil.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "imediato",
+      "alvo": "um",
+      "persiste": false,
+      "materia": "impacto",
+      "condicao": "caido",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "vendaval",
@@ -3056,7 +4200,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "O vento fecha em volta de você. Ninguém anda contra ele, nada voa em linha reta e nenhum projétil atravessa a área enquanto durar. Quem falha vai ao chão e rola."
+    "efeito": "O vento fecha em volta de você. Ninguém anda contra ele, nada voa em linha reta e nenhum projétil atravessa a área enquanto durar. Quem falha vai ao chão e rola.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "terreno-dificil",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "erguer-a-montanha",
@@ -3084,7 +4241,20 @@
         "valor": "permanente"
       }
     ],
-    "efeito": "Levanta do chão uma formação de pedra do tamanho de uma colina pequena, ou derruba uma que já estava lá. O terreno muda de verdade e continua mudado: quem passar por ali daqui a um ano vai ver a sua obra."
+    "efeito": "Levanta do chão uma formação de pedra do tamanho de uma colina pequena, ou derruba uma que já estava lá. O terreno muda de verdade e continua mudado: quem passar por ali daqui a um ano vai ver a sua obra.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": "impacto",
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "dia",
@@ -3113,7 +4283,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Faz o meio-dia dentro da área, seja qual for a hora. Não existe sombra ali, nada se esconde e nenhuma treva conjurada resiste. Quem tem fraqueza a luz ou ao sagrado queima como se estivesse a céu aberto."
+    "efeito": "Faz o meio-dia dentro da área, seja qual for a hora. Não existe sombra ali, nada se esconde e nenhuma treva conjurada resiste. Quem tem fraqueza a luz ou ao sagrado queima como se estivesse a céu aberto.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "cego",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "noite",
@@ -3142,7 +4325,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Apaga toda a luz da área, mágica ou não: tocha, sol, feitiço. Ninguém enxerga nada lá dentro, exceto você e quem você escolher ao conjurar."
+    "efeito": "Apaga toda a luz da área, mágica ou não: tocha, sol, feitiço. Ninguém enxerga nada lá dentro, exceto você e quem você escolher ao conjurar.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "escuridao",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "maos-sobre-a-multidao",
@@ -3170,7 +4366,20 @@
       }
     ],
     "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
-    "notas": "É a exceção que a Cura não tem: curar em Área. O valor continua sendo dividido entre todos os que estiverem dentro."
+    "notas": "É a exceção que a Cura não tem: curar em Área. O valor continua sendo dividido entre todos os que estiverem dentro.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "imediato",
+      "alvo": "ponto",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": true,
+      "teste": false
+    }
   },
   {
     "id": "coracao-verde",
@@ -3215,7 +4424,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "O lugar vira mata viva e do seu lado: raiz que agarra o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar."
+    "efeito": "O lugar vira mata viva e do seu lado: raiz que agarra o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "por-turno",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "agarrado",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "legiao",
@@ -3249,7 +4471,20 @@
       }
     ],
     "efeito": "Ergue de uma vez todos os cadáveres da área. Obedecem ordens simples, não pensam e caem de novo no fim da duração. Fazer isso em público é declarar ao mundo o que você é.",
-    "notas": "Cada um deles é um Servo de Ossos: metade dos Atributos físicos que tinha em vida, ordens simples e nada de improviso."
+    "notas": "Cada um deles é um Servo de Ossos: metade dos Atributos físicos que tinha em vida, ordens simples e nada de improviso.",
+    "grid": {
+      "forma": "token",
+      "ancora": "ponto",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "reescrever",
@@ -3277,7 +4512,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Troca uma memória ou uma lealdade do alvo, e a troca fica. Ele monta sozinho a explicação para o que mudou e defende a versão nova como se fosse dele. Desfazer exige esta mesma Arte no mesmo nível."
+    "efeito": "Troca uma memória ou uma lealdade do alvo, e a troca fica. Ele monta sozinho a explicação para o que mudou e defende a versão nova como se fosse dele. Desfazer exige esta mesma Arte no mesmo nível.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "dominado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "oraculo",
@@ -3297,7 +4545,20 @@
         "valor": "em você"
       }
     ],
-    "efeito": "Uma pergunta sobre o passado ou o futuro, respondida com o que existe de mais próximo da verdade. O futuro vem como tendência, não como certeza, e a resposta é curta, literal e às vezes cruel."
+    "efeito": "Uma pergunta sobre o passado ou o futuro, respondida com o que existe de mais próximo da verdade. O futuro vem como tendência, não como certeza, e a resposta é curta, literal e às vezes cruel.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "isso-vai-dar-certo",
@@ -3320,7 +4581,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Uma vez, o que era quase impossível simplesmente acontece: o salto alcança, a flecha encontra a fresta, a corda aguenta. Só vale para o que tinha alguma chance, por menor que fosse, e o Mestre é quem diz se tinha."
+    "efeito": "Uma vez, o que era quase impossível simplesmente acontece: o salto alcança, a flecha encontra a fresta, a corda aguenta. Só vale para o que tinha alguma chance, por menor que fosse, e o Mestre é quem diz se tinha.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "portal",
@@ -3348,7 +4622,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Abre uma porta entre onde você está e um lugar que você conhece de verdade. O grupo atravessa a pé, com carga e montaria, enquanto ela durar. Quem estiver no meio quando fechar fica do lado em que estava a maior parte do corpo."
+    "efeito": "Abre uma porta entre onde você está e um lugar que você conhece de verdade. O grupo atravessa a pé, com carga e montaria, enquanto ela durar. Quem estiver no meio quando fechar fica do lado em que estava a maior parte do corpo.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "onde-e-embaixo",
@@ -3387,7 +4674,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Você escolhe para que lado a área cai. Quem está dentro despenca na direção nova, e o que não estava preso vai junto. Voltar ao normal derruba tudo de volta."
+    "efeito": "Você escolhe para que lado a área cai. Quem está dentro despenca na direção nova, e o que não estava preso vai junto. Voltar ao normal derruba tudo de volta.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "um",
+      "persiste": true,
+      "materia": null,
+      "condicao": "caido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "transmutar",
@@ -3416,7 +4716,20 @@
         "valor": "permanente"
       }
     ],
-    "efeito": "Converte qualquer material em qualquer outro: pedra em ouro, ferro em vidro, água em óleo. A mudança fica. O que era vivo não entra nisso, e o que era mágico resiste pelo nível de quem o fez."
+    "efeito": "Converte qualquer material em qualquer outro: pedra em ouro, ferro em vidro, água em óleo. A mudança fica. O que era vivo não entra nisso, e o que era mágico resiste pelo nível de quem o fez.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "parar",
@@ -3441,7 +4754,20 @@
         "valor": "alguns Ticks"
       }
     ],
-    "efeito": "O tempo para para todo mundo menos você, por alguns Ticks. Você anda, tira, coloca e sai; o que você tocar volta a andar junto com o resto. O corpo cobra depois, e cobra caro."
+    "efeito": "O tempo para para todo mundo menos você, por alguns Ticks. Você anda, tira, coloca e sai; o que você tocar volta a andar junto com o resto. O corpo cobra depois, e cobra caro.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "hoste",
@@ -3469,7 +4795,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Chama de uma vez todos os espíritos que aquele lugar guarda, e eles vêm com o que sentem: raiva, luto, fome. Você aponta a direção, não escolhe cada um, e depois é preciso mandá-los de volta."
+    "efeito": "Chama de uma vez todos os espíritos que aquele lugar guarda, e eles vêm com o que sentem: raiva, luto, fome. Você aponta a direção, não escolhe cada um, e depois é preciso mandá-los de volta.",
+    "grid": {
+      "forma": "token",
+      "ancora": "ponto",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "santuario",
@@ -3498,7 +4837,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Consagra um lugar. Nada entra sem permissão, magia alheia se desfaz na borda e quem for expulso não acha o caminho de volta. Dura dias, e cai se você mesmo quebrar a regra que estabeleceu."
+    "efeito": "Consagra um lugar. Nada entra sem permissão, magia alheia se desfaz na borda e quem for expulso não acha o caminho de volta. Dura dias, e cai se você mesmo quebrar a regra que estabeleceu.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "protegido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "ninguem-passou-por-aqui",
@@ -3526,7 +4878,20 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Apaga a passagem do seu grupo: pegada, cheiro, porta aberta, corpo caído e a lembrança de quem viu. Quem esteve presente jura que a sala estava vazia e briga com quem disser o contrário."
+    "efeito": "Apaga a passagem do seu grupo: pegada, cheiro, porta aberta, corpo caído e a lembrança de quem viu. Quem esteve presente jura que a sala estava vazia e briga com quem disser o contrário.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": false,
+      "materia": null,
+      "condicao": "escondido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "a-mata-levanta",
@@ -3555,7 +4920,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A região se volta contra quem você apontar: bicho ataca, cipó agarra, o caminho se fecha, o rio muda de humor. Não é comando, é a mata concordando com você."
+    "efeito": "A região se volta contra quem você apontar: bicho ataca, cipó agarra, o caminho se fecha, o rio muda de humor. Não é comando, é a mata concordando com você.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "fera-de-guerra",
@@ -3580,7 +4958,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Vira uma criatura muito maior do que você: urso de guerra, serpente de rio, ave de rapina do tamanho de um cavalo. Ganha o porte, a força e o alcance dela, e perde as mãos, a fala e o que elas fazem."
+    "efeito": "Vira uma criatura muito maior do que você: urso de guerra, serpente de rio, ave de rapina do tamanho de um cavalo. Ganha o porte, a força e o alcance dela, e perde as mãos, a fala e o que elas fazem.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "conjurador",
+      "gatilho": "passivo",
+      "alvo": "si",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "fogo-que-nao-apaga",
@@ -3622,7 +5013,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "O fogo gruda e continua queimando: o dano volta a cada turno e não sai com água, areia nem rolando no chão. Só acaba quando a duração acaba, ou quando alguém desfaz a magia."
+    "efeito": "O fogo gruda e continua queimando: o dano volta a cada turno e não sai com água, areia nem rolando no chão. Só acaba quando a duração acaba, ou quando alguém desfaz a magia.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "por-turno",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "em-chamas",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "sopro-do-norte",
@@ -3666,7 +5070,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Um cone de frio que arranca o calor de tudo o que pega. Quem falha fica enregelado e age devagar enquanto durar, e o chão atrás vira gelo escorregadio."
+    "efeito": "Um cone de frio que arranca o calor de tudo o que pega. Quem falha fica enregelado e age devagar enquanto durar, e o chão atrás vira gelo escorregadio.",
+    "grid": {
+      "forma": "cone",
+      "ancora": "ponto",
+      "gatilho": "imediato",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "congelado",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "ceu-aberto",
@@ -3703,7 +5120,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Chama um único raio do céu sobre o alvo. É o maior dano concentrado que a Arte alcança, precisa de céu por cima e avisa a todo mundo, pelo som e pela luz, exatamente onde você está."
+    "efeito": "Chama um único raio do céu sobre o alvo. É o maior dano concentrado que a Arte alcança, precisa de céu por cima e avisa a todo mundo, pelo som e pela luz, exatamente onde você está.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "imediato",
+      "alvo": "varios",
+      "persiste": false,
+      "materia": null,
+      "condicao": "eletrizado",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "afogar",
@@ -3742,7 +5172,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e perde Fôlego a cada turno enquanto durar, mesmo em terra seca. Quem estiver ao lado pode gastar uma ação para virá-lo e drenar."
+    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e perde Fôlego a cada turno enquanto durar, mesmo em terra seca. Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "por-turno",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "sufocando",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "tromba",
@@ -3781,7 +5224,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Uma coluna de vento anda pela área e leva junto quem falhar: sobe, gira e cai onde a tromba quiser. O que não estiver preso ao chão vai junto, e o que era leve vira projétil."
+    "efeito": "Uma coluna de vento anda pela área e leva junto quem falhar: sobe, gira e cai onde a tromba quiser. O que não estiver preso ao chão vai junto, e o que era leve vira projétil.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "um",
+      "persiste": true,
+      "materia": "impacto",
+      "condicao": "caido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "engolir",
@@ -3815,7 +5271,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "O chão amolece sob os pés do alvo e endurece por cima dele. Quem falha fica soterrado até o peito, ou inteiro se falhar feio, e sair de lá exige Força contra a Dificuldade a cada ação."
+    "efeito": "O chão amolece sob os pés do alvo e endurece por cima dele. Quem falha fica soterrado até o peito, ou inteiro se falhar feio, e sair de lá exige Força contra a Dificuldade a cada ação.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": false,
+      "materia": "impacto",
+      "condicao": "imobilizado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "julgamento",
@@ -3852,7 +5321,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Uma coluna de luz cai sobre o alvo. Contra quem tem fraqueza a luz ou ao sagrado o dano é agravado e ignora toda a Absorção; contra o resto, cega e derruba, mas fere pouco."
+    "efeito": "Uma coluna de luz cai sobre o alvo. Contra quem tem fraqueza a luz ou ao sagrado o dano é agravado e ignora toda a Absorção; contra o resto, cega e derruba, mas fere pouco.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "imediato",
+      "alvo": "varios",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "devorar-a-luz",
@@ -3881,7 +5363,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado."
+    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado.",
+    "grid": {
+      "forma": "aura",
+      "ancora": "conjurador",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "escuridao",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "refazer-o-corpo",
@@ -3911,7 +5406,20 @@
         "valor": "1d6 por nível, até o máximo do membro recuperado"
       }
     ],
-    "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa."
+    "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": true,
+      "teste": false
+    }
   },
   {
     "id": "dobrar-o-corpo",
@@ -3936,7 +5444,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Passa por qualquer fresta por onde caiba a sua cabeça, escorrega de agarrões e amarras, e cai de qualquer altura sem quebrar nada. O corpo continua seu; só deixa de ter forma fixa."
+    "efeito": "Passa por qualquer fresta por onde caiba a sua cabeça, escorrega de agarrões e amarras, e cai de qualquer altura sem quebrar nada. O corpo continua seu; só deixa de ter forma fixa.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "conjurador",
+      "gatilho": "passivo",
+      "alvo": "si",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "emprestar-o-tempo",
@@ -3969,7 +5490,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Tira Ticks de um alvo e dá a outro: um age mais devagar exatamente na medida em que o outro acelera. Os dois precisam estar à vista, e o que perdeu tempo sabe quem tirou."
+    "efeito": "Tira Ticks de um alvo e dá a outro: um age mais devagar exatamente na medida em que o outro acelera. Os dois precisam estar à vista, e o que perdeu tempo sabe quem tirou.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "imagem-viva",
@@ -4008,7 +5542,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Uma ilusão completa e com som, cheiro e movimento, que reage ao que acontece em volta. Quem duvida e testa fura a mentira, mas atravessar com a mão é preciso querer."
+    "efeito": "Uma ilusão completa e com som, cheiro e movimento, que reage ao que acontece em volta. Quem duvida e testa fura a mentira, mas atravessar com a mão é preciso querer.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "confuso",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "acelerar-a-cura",
@@ -4044,7 +5591,20 @@
       }
     ],
     "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Com Vida 1 ou 2 só acelera o que o corpo já sabe curar depressa, ou seja, dano de Impacto e ferimentos não letais. Curar dano Letal por esta via exige Vida 3.",
-    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível em vez da régua dela."
+    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível em vez da régua dela.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "por-turno",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": true,
+      "teste": false
+    }
   },
   {
     "id": "dreno",
@@ -4086,7 +5646,20 @@
       }
     ],
     "efeito": "Puxa a vida do alvo para dentro de você. O dano é do tipo que a armadura não para, porque não é golpe: é a vida indo embora. O que você recupera é metade do que passou, arredondado para baixo, e nunca passa do seu máximo.",
-    "notas": "Cura mais barata que a da Arte de Cura só na aparência: você precisa acertar, precisa tocar, e o alvo pode aguentar."
+    "notas": "Cura mais barata que a da Arte de Cura só na aparência: você precisa acertar, precisa tocar, e o alvo pode aguentar.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "imediato",
+      "alvo": "um",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": true,
+      "cura": true,
+      "teste": true
+    }
   },
   {
     "id": "definhar",
@@ -4125,7 +5698,20 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "O alvo enfraquece: Força e Vigor contam um nível abaixo por nível investido, com tudo o que isso arrasta atrás (dano, carga, PV, Absorção natural). Não fere; só tira o que sustenta."
+    "efeito": "O alvo enfraquece: Força e Vigor contam um nível abaixo por nível investido, com tudo o que isso arrasta atrás (dano, carga, PV, Absorção natural). Não fere; só tira o que sustenta.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "retardado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "praga",
@@ -4170,7 +5756,20 @@
       }
     ],
     "efeito": "Uma doença cai sobre a área e fica. Quem falha adoece e piora dia após dia, a plantação murcha e o gado morre. Não é conjuração de combate: é o que se faz a uma cidade que fechou os portões para você.",
-    "notas": "Cura, tratamento e tempo vencem a praga em quem sobreviver. O lugar leva mais tempo."
+    "notas": "Cura, tratamento e tempo vencem a praga em quem sobreviver. O lugar leva mais tempo.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "imediato",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "doente",
+      "pegaItem": false,
+      "fere": true,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "encruzilhada",
@@ -4199,7 +5798,20 @@
         "valor": "1 futuro provável por nível"
       }
     ],
-    "efeito": "Você põe uma decisão na mesa e vê para onde cada caminho tende. Não são cenas fechadas: são inclinações, e mudam se alguém agir sabendo delas. Ver o próprio futuro cansa, e repetir na mesma cena não mostra nada de novo."
+    "efeito": "Você põe uma decisão na mesa e vê para onde cada caminho tende. Não são cenas fechadas: são inclinações, e mudam se alguém agir sabendo delas. Ver o próprio futuro cansa, e repetir na mesma cena não mostra nada de novo.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "olho-distante",
@@ -4229,7 +5841,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Abre um olho num lugar que você conhece e assiste ao que acontece lá agora, em tempo real. Não ouve, não toca e não é visto, mas quem tiver Ver o Fio percebe que está sendo observado."
+    "efeito": "Abre um olho num lugar que você conhece e assiste ao que acontece lá agora, em tempo real. Não ouve, não toca e não é visto, mas quem tiver Ver o Fio percebe que está sendo observado.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "destino-torto",
@@ -4257,7 +5882,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Força um alvo a repetir uma rolagem que já tinha dado certo, e vale o segundo resultado. Uma vez por alvo por cena: o destino aceita ser torcido, não amassado."
+    "efeito": "Força um alvo a repetir uma rolagem que já tinha dado certo, e vale o segundo resultado. Uma vez por alvo por cena: o destino aceita ser torcido, não amassado.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "mare-da-sorte",
@@ -4290,7 +5928,20 @@
         "valor": "+1d6 por nível, uma vez por turno, na rolagem que o alvo escolher"
       }
     ],
-    "efeito": "A sorte fica do lado de quem você marcou enquanto durar: a corda aparece, o guarda olha para o outro lado, o dado vira. Não é bônus constante, é uma coincidência por turno."
+    "efeito": "A sorte fica do lado de quem você marcou enquanto durar: a corda aparece, o guarda olha para o outro lado, o dado vira. Não é bônus constante, é uma coincidência por turno.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "abencoado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "convocar",
@@ -4326,7 +5977,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Traz para a sua mão um objeto que é seu, ou que você já teve nas mãos e conhece bem, esteja onde estiver. Se alguém o estiver segurando, é disputa. Não funciona com criatura viva."
+    "efeito": "Traz para a sua mão um objeto que é seu, ou que você já teve nas mãos e conhece bem, esteja onde estiver. Se alguém o estiver segurando, é disputa. Não funciona com criatura viva.",
+    "grid": {
+      "forma": "movimento",
+      "ancora": "objeto",
+      "gatilho": "passivo",
+      "alvo": "objeto",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "escudo-de-forca",
@@ -4359,7 +6023,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Uma parede de força pura, do tamanho da Área, que não deixa passar nada físico nos dois sentidos. Aguenta o dano marcado e depois estoura. Ar passa; flecha, lâmina e corpo, não."
+    "efeito": "Uma parede de força pura, do tamanho da Área, que não deixa passar nada físico nos dois sentidos. Aguenta o dano marcado e depois estoura. Ar passa; flecha, lâmina e corpo, não.",
+    "grid": {
+      "forma": "muro",
+      "ancora": "ponto",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "protegido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "transmutar-semelhante",
@@ -4388,7 +6065,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Converte um material em outro parecido: pedra em barro, ferro em bronze, madeira em osso, pano em couro. Nada de saltar de reino (mineral não vira vivo), e o que era mágico resiste."
+    "efeito": "Converte um material em outro parecido: pedra em barro, ferro em bronze, madeira em osso, pano em couro. Nada de saltar de reino (mineral não vira vivo), e o que era mágico resiste.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "criar-substancia",
@@ -4417,7 +6107,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Conjura matéria bruta de verdade: pedra, água, ferro, óleo, sal. Sai onde você mandar, inclusive em cima de alguém. Comida feita assim enche a barriga mas não sustenta por muitos dias."
+    "efeito": "Conjura matéria bruta de verdade: pedra, água, ferro, óleo, sal. Sai onde você mandar, inclusive em cima de alguém. Comida feita assim enche a barriga mas não sustenta por muitos dias.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "lapso",
@@ -4445,7 +6148,20 @@
         "valor": "−2 Ticks por nível na próxima ação do alvo"
       }
     ],
-    "efeito": "Apressa um aliado por um instante: a próxima ação dele sai mais cedo. Não dá ação extra, só adianta a que já vinha."
+    "efeito": "Apressa um aliado por um instante: a próxima ação dele sai mais cedo. Não dá ação extra, só adianta a que já vinha.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": "acelerado",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "invocar",
@@ -4485,7 +6201,20 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "Chama um espírito poderoso como aliado, não como servo. Ele vem, escuta e negocia: quer nome, oferenda ou promessa. Quebrar o combinado com um desses é o começo de uma história ruim."
+    "efeito": "Chama um espírito poderoso como aliado, não como servo. Ele vem, escuta e negocia: quer nome, oferenda ou promessa. Quebrar o combinado com um desses é o começo de uma história ruim.",
+    "grid": {
+      "forma": "token",
+      "ancora": "ponto",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "barreira",
@@ -4518,7 +6247,20 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Um campo protetor cobrindo a área. Quem está dentro soma a Absorção contra qualquer ataque vindo de fora, físico ou arcano. Quem está dentro e ataca alguém de dentro não ganha nada."
+    "efeito": "Um campo protetor cobrindo a área. Quem está dentro soma a Absorção contra qualquer ataque vindo de fora, físico ou arcano. Quem está dentro e ataca alguém de dentro não ganha nada.",
+    "grid": {
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": "protegido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "manto-alheio",
@@ -4552,7 +6294,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "O que esconde você esconde também companheiros, montaria e carga, desde que fiquem ao seu lado e andem no seu passo. Quem se afasta reaparece, e reaparecer no meio da guarda é problema dele."
+    "efeito": "O que esconde você esconde também companheiros, montaria e carga, desde que fiquem ao seu lado e andem no seu passo. Quem se afasta reaparece, e reaparecer no meio da guarda é problema dele.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "alvo",
+      "gatilho": "passivo",
+      "alvo": "varios",
+      "persiste": true,
+      "materia": null,
+      "condicao": "escondido",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "ausencia",
@@ -4582,7 +6337,20 @@
         "valor": "Defesa Mental do alvo"
       }
     ],
-    "efeito": "Some para todos os sentidos, não só para a vista: som, cheiro, calor, rastro, o ar que você desloca. Nem cão nem magia de busca o encontra. Tocar em alguém ainda denuncia."
+    "efeito": "Some para todos os sentidos, não só para a vista: som, cheiro, calor, rastro, o ar que você desloca. Nem cão nem magia de busca o encontra. Tocar em alguém ainda denuncia.",
+    "grid": {
+      "forma": "alvo",
+      "ancora": "conjurador",
+      "gatilho": "passivo",
+      "alvo": "si",
+      "persiste": true,
+      "materia": null,
+      "condicao": "invisivel",
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": true
+    }
   },
   {
     "id": "chamado",
@@ -4611,7 +6379,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Chama os animais da região e pede um favor simples: guiar, vigiar, atrasar quem vem atrás, carregar. Eles não lutam por você, e o que for pedido além do que um bicho faria por conta própria é recusado."
+    "efeito": "Chama os animais da região e pede um favor simples: guiar, vigiar, atrasar quem vem atrás, carregar. Eles não lutam por você, e o que for pedido além do que um bicho faria por conta própria é recusado.",
+    "grid": {
+      "forma": "token",
+      "ancora": "ponto",
+      "gatilho": "passivo",
+      "alvo": "ponto",
+      "persiste": true,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "voz-da-mata",
@@ -4636,7 +6417,20 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Fala com feras e com árvores antigas, e elas falam de volta, no tempo delas. A mata abre caminho para o seu grupo e fecha atrás dele, e o que ela viu nos últimos dias ela conta."
+    "efeito": "Fala com feras e com árvores antigas, e elas falam de volta, no tempo delas. A mata abre caminho para o seu grupo e fecha atrás dele, e o que ela viu nos últimos dias ela conta.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   },
   {
     "id": "semear-o-ermo",
@@ -4666,6 +6460,19 @@
       }
     ],
     "efeito": "Transforma um ermo em mata: capim onde havia areia, árvore onde havia pedra, água onde o chão estava seco. Leva dias para fechar, não um instante, e fica. O que nasce dali em diante é vida comum, e morre se ninguém cuidar.",
-    "notas": "É o Efeito que muda um lugar no mapa, não uma cena. O Mestre decide quanto tempo a mata leva para valer como mata."
+    "notas": "É o Efeito que muda um lugar no mapa, não uma cena. O Mestre decide quanto tempo a mata leva para valer como mata.",
+    "grid": {
+      "forma": "nenhuma",
+      "ancora": "nenhuma",
+      "gatilho": "passivo",
+      "alvo": "nenhum",
+      "persiste": false,
+      "materia": null,
+      "condicao": null,
+      "pegaItem": false,
+      "fere": false,
+      "cura": false,
+      "teste": false
+    }
   }
 ]
