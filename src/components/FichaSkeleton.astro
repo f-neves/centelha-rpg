@@ -586,6 +586,22 @@ import '../styles/arte-equip.css';
   .ef-esp-head { display: flex; align-items: baseline; gap: .6rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo);
     color: var(--accent-strong); border-bottom: 1px solid var(--rule); padding-bottom: .2rem; margin-bottom: .35rem; }
   .ef-esp-head .muted { margin-left: auto; font-family: 'EB Garamond'; font-size: var(--fs-micro); font-style: italic; }
+  /* filtro e recolher, na própria linha do título */
+  .ef-so { display: inline-flex; align-items: center; gap: .3rem; font-family: 'EB Garamond';
+    font-size: var(--fs-micro); color: var(--ink-soft); cursor: pointer; }
+  .ef-so input { accent-color: var(--accent); cursor: pointer; }
+  .ef-esp-head .btn.ef-all { padding: .1rem .5rem; font-size: var(--fs-micro); }
+  /* Um grupo por Arte. O cabeçalho é botão de verdade, para o teclado chegar nele, mas
+     veste o mesmo cinza dos títulos de grupo do resto da ficha. */
+  .ef-gs { display: flex; flex-direction: column; gap: .5rem; }
+  .ef-g-head { display: flex; align-items: baseline; gap: .4rem; width: 100%; cursor: pointer;
+    background: none; border: 0; border-bottom: 1px dotted var(--rule); padding: .1rem .1rem .18rem;
+    margin-bottom: .3rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--accent-strong); text-align: left; }
+  .ef-g-head:hover { background: var(--panel-2); }
+  .ef-g-head .chev { color: var(--ink-soft); }
+  .ef-g-nm { min-width: 0; }
+  .ef-g-conta { margin-left: auto; font-family: 'EB Garamond'; font-size: var(--fs-micro);
+    font-style: italic; color: var(--ink-soft); flex: none; }
   /* Cada Efeito é um cartão, uma vez só, mesmo cabendo em várias Artes. Duas colunas na
      ficha (24rem de mínimo); min(x,100%) porque 24rem estoura o conteiner de 328px do celular. */
   .ef-esp-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr)); gap: .45rem; }
@@ -1243,6 +1259,13 @@ import '../styles/arte-equip.css';
     .ef-card:not(.on) { display: none; }
     .ef-card.on { break-inside: avoid; }
     .ef-card input[type="checkbox"] { display: none; }
+    /* no papel todo grupo abre (o recolhido é escolha de tela), e a Arte que não tem
+       Efeito comprado nenhum sai inteira: sobraria um título solto sobre o nada */
+    .ef-esp-list { display: grid !important; }
+    .ef-g:not(:has(.ef-card.on)) { display: none; }
+    .ef-g { break-inside: avoid; }
+    .ef-g-head { pointer-events: none; }
+    .ef-g-head .chev, .ef-g-conta, .ef-so, .ef-all { display: none !important; }
     .xpbar { background: none !important; color: var(--ink) !important; border-bottom: 2px solid var(--accent); border-radius: 0; }
     .xpbar .big b, .xpbar .rem { color: var(--accent-texto) !important; }
     h2.barh { background: none !important; color: var(--accent-texto) !important; border-bottom: 1.5px solid var(--accent); border-radius: 0; }

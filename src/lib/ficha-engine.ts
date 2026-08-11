@@ -131,7 +131,11 @@ export function montarFicha(opts: FichaOpts) {
 
   // ---- estado ----
   let S: any;
-  const OPEN = { cam: {} as Record<string, boolean> };
+  // Estado de tela, não de ficha: o que está aberto e o que está filtrado não é escolha
+  // de personagem e não vai para o arquivo salvo.
+  const OPEN = { cam: {} as Record<string, boolean>, ef: {} as Record<string, boolean> };
+  /** Efeitos: mostrar só os comprados, e se os grupos estão abertos. */
+  const EF = { soComprados: false, tudoAberto: true };
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
     S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
@@ -583,43 +587,96 @@ export function montarFicha(opts: FichaOpts) {
   function abrirEfeitoPop(alvo: HTMLElement) {
     const id = alvo.dataset.efpop || alvo.dataset.efbuy!;
     const e = (EFEITO_D as any[]).find((x) => x.id === id); if (!e) return;
-    const sel = `.ef-card[data-efbuy="${id}"]`;
-    abrirPop(alvo.closest<HTMLElement>('.ef-card') || alvo, 'efeito:' + id, 'efeito-pop', sel, () => conteudoEfeitoPop(e));
+    const card = alvo.closest<HTMLElement>('.ef-card');
+    // O mesmo Efeito aparece em cada Arte que o comporta, então `data-efbuy` já não
+    // identifica um cartão só: religar tem de voltar para o cartão de onde o cartãozinho
+    // saiu, e não para o primeiro da página.
+    const sel = card?.dataset.efkey
+      ? `.ef-card[data-efkey="${card.dataset.efkey}"]`
+      : `.ef-card[data-efbuy="${id}"]`;
+    abrirPop(card || alvo, 'efeito:' + id, 'efeito-pop', sel, () => conteudoEfeitoPop(e));
   }
+  /* Um Efeito pode caber em várias Artes, e a compra continua sendo uma só (mesmo id).
+     Ele aparece em CADA Arte que o comporta, porque a pergunta que a lista responde é
+     "o que esta Arte me dá", não "quantos Efeitos existem"; o cartão diz, quando é o caso,
+     em que outras Artes o mesmo Efeito também cabe. */
+  const cardEfeito = (e: any, arteId: string) => {
+    const on = !!S.efeito[e.id];
+    const outras = artesDe(e).map((x: any) => idRef(x.id)).filter((id: string) => id !== arteId);
+    return `<div class="ef-card${on ? ' on' : ''}" data-efbuy="${e.id}" data-efkey="${arteId}:${e.id}">
+      <div class="ef-c-top">
+        <input type="checkbox" data-efeito="${e.id}"${on ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''} aria-label="${e.nome}" />
+        <span class="ef-c-nm" data-efpop="${e.id}">${e.nome}</span>
+        <span class="ef-i-nv" title="exige a Arte no nível ${e.nivel}">${e.nivel}</span>
+        <span class="ef-c-xp">${custoEfeito(e.nivel)} XP</span>
+      </div>
+      ${outras.length ? `<div class="ef-c-ar">também em ${outras.map(nomeArte).join(' · ')}</div>` : ''}
+      <div class="ef-c-tx">${e.efeito}</div>
+      <div class="ef-c-par muted">${parCurto(e)}</div>
+    </div>`;
+  };
+  /** Os Efeitos ao alcance, ou seja, os que cabem numa Arte em que o personagem tem o nível. */
+  const efeitosAoAlcance = () => (EFEITO_D as any[])
+    .filter((e) => artesDe(e).length)
+    .sort((a, b) => a.nivel - b.nivel || a.nome.localeCompare(b.nome, 'pt'));
+  /** Os grupos abertos, um por Arte, na ordem em que as Artes aparecem na grade acima. */
+  const gruposEfeito = () => {
+    const disp = efeitosAoAlcance();
+    return (ARTE_D as any[]).map((a) => ({
+      arte: a,
+      itens: disp.filter((e) => artesDe(e).some((x: any) => idRef(x.id) === a.id))
+        .filter((e) => !EF.soComprados || S.efeito[e.id]),
+    })).filter((g) => g.itens.length);
+  };
+  const corpoEfeitos = () => {
+    const grupos = gruposEfeito();
+    if (!grupos.length) {
+      return `<div class="ef-vazio muted">${EF.soComprados
+        ? 'Nenhum Efeito comprado ainda. Desmarque a caixa para ver os que estão ao alcance.'
+        : 'Os Efeitos Especiais aparecem aqui quando você tiver uma Arte no nível que cada um exige.'}</div>`;
+    }
+    return grupos.map((g) => {
+      // grupo sem escolha própria segue o botão de todos, que é o padrão da tela
+      const aberto = OPEN.ef[g.arte.id] ?? EF.tudoAberto;
+      const nComp = g.itens.filter((e: any) => S.efeito[e.id]).length;
+      return `<div class="ef-g">
+        <button type="button" class="ef-g-head" data-eftog="${g.arte.id}" aria-expanded="${aberto}">
+          <span class="chev">${aberto ? '▾' : '▸'}</span><span class="ef-g-nm">${g.arte.nome}</span>
+          <span class="ef-g-conta">${g.itens.length}${nComp ? ` · ${nComp} comprado${nComp > 1 ? 's' : ''}` : ''}</span>
+        </button>
+        <div class="ef-esp-list" style="display:${aberto ? 'grid' : 'none'}">${g.itens.map((e: any) => cardEfeito(e, g.arte.id)).join('')}</div>
+      </div>`;
+    }).join('');
+  };
   function renderEfeitos() {
     const box = document.getElementById('efeitos-esp');
     if (!box) return;
-    const disp = (EFEITO_D as any[])
-      .filter((e) => artesDe(e).length)
-      .sort((a, b) => a.nivel - b.nivel || a.nome.localeCompare(b.nome, 'pt'));
-    if (!disp.length) {
-      box.innerHTML = '<div class="ef-vazio muted">Os Efeitos Especiais aparecem aqui quando você tiver uma Arte no nível que cada um exige.</div>';
-      religarPop();
-      return;
-    }
-    // Um Efeito pode caber em várias Artes, mas a compra é uma só (mesmo id): ele aparece
-    // uma vez, com as Artes suas que o comportam listadas no próprio cartão. Antes vinha
-    // repetido num grupo por Arte, e metade da lista era a mesma coisa dita de novo.
-    const card = (e: any) => {
-      const on = !!S.efeito[e.id];
-      const artes = artesDe(e).map((x: any) => nomeArte(idRef(x.id))).join(' · ');
-      return `<div class="ef-card${on ? ' on' : ''}" data-efbuy="${e.id}">
-        <div class="ef-c-top">
-          <input type="checkbox" data-efeito="${e.id}"${on ? ' checked' : ''}${opts.readOnly ? ' disabled' : ''} aria-label="${e.nome}" />
-          <span class="ef-c-nm" data-efpop="${e.id}">${e.nome}</span>
-          <span class="ef-i-nv" title="exige a Arte no nível ${e.nivel}">${e.nivel}</span>
-          <span class="ef-c-xp">${custoEfeito(e.nivel)} XP</span>
-        </div>
-        <div class="ef-c-ar">${artes}</div>
-        <div class="ef-c-tx">${e.efeito}</div>
-        <div class="ef-c-par muted">${parCurto(e)}</div>
-      </div>`;
-    };
+    const disp = efeitosAoAlcance();
     const comprados = (EFEITO_D as any[]).filter((e) => S.efeito[e.id]);
     const gastos = comprados.reduce((s, e) => s + custoEfeito(e.nivel), 0);
     const conta = `${disp.length} ao alcance${comprados.length ? ` · ${comprados.length} comprado${comprados.length > 1 ? 's' : ''} · ${gastos} XP` : ' · nenhum comprado'}`;
-    box.innerHTML = `<div class="ef-esp-head"><b>Efeitos Especiais</b><span class="muted">${conta}</span></div>
-      <div class="ef-esp-list">${disp.map(card).join('')}</div>`;
+    const ferramentas = disp.length
+      ? `<label class="ef-so"><input type="checkbox" data-ef-so${EF.soComprados ? ' checked' : ''} /> só os comprados</label>`
+        + `<button type="button" class="btn ef-all" data-ef-all>${EF.tudoAberto ? 'Recolher todos' : 'Expandir todos'}</button>`
+      : '';
+    box.innerHTML = `<div class="ef-esp-head"><b>Efeitos Especiais</b>${ferramentas}<span class="muted">${conta}</span></div>`
+      + `<div class="ef-gs">${corpoEfeitos()}</div>`;
+    religarPop();
+  }
+  /**
+   * Repinta só os grupos, deixando o cabeçalho onde está.
+   *
+   * O filtro é uma caixinha que vive no cabeçalho, e trocar o cabeçalho inteiro no meio do
+   * clique dela arrancava o próprio alvo do evento: o rótulo em volta reativava a caixinha
+   * nova e o estado voltava sozinho. Recolher e filtrar não mudam nenhuma conta do
+   * cabeçalho, então ele não precisa ser redesenhado.
+   */
+  function pintaGruposEfeito() {
+    const gs = document.querySelector('#efeitos-esp .ef-gs');
+    if (!gs) { renderEfeitos(); return; }
+    gs.innerHTML = corpoEfeitos();
+    const bt = document.querySelector('[data-ef-all]');
+    if (bt) bt.textContent = EF.tudoAberto ? 'Recolher todos' : 'Expandir todos';
     religarPop();
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
@@ -2050,6 +2107,17 @@ export function montarFicha(opts: FichaOpts) {
     if (pill) { if (opts.readOnly || pill.classList.contains('locked')) return; const id = pill.dataset.tech!; S.tech[id] = !S.tech[id]; renderCaminhos(); recompute(); return; }
     const ct = t.closest<HTMLElement>('[data-camtog]');
     if (ct) { OPEN.cam[ct.dataset.camtog!] = !OPEN.cam[ct.dataset.camtog!]; renderCaminhos(); return; }
+    // Efeitos: recolher um grupo, recolher todos, ou filtrar pelos comprados. Vêm antes da
+    // compra porque nenhum deles está dentro de um cartão, mas o filtro é uma caixinha e a
+    // compra também: separá-los aqui deixa a ordem explícita.
+    const et = t.closest<HTMLElement>('[data-eftog]');
+    if (et) { const k = et.dataset.eftog!; OPEN.ef[k] = !(OPEN.ef[k] ?? EF.tudoAberto); pintaGruposEfeito(); return; }
+    if (t.closest('[data-ef-all]')) {
+      EF.tudoAberto = !EF.tudoAberto;
+      OPEN.ef = {};   // o botão é de TODOS: as escolhas grupo a grupo caem junto
+      pintaGruposEfeito(); return;
+    }
+    if (t.closest('[data-ef-so]')) return;   // a caixinha do filtro responde no change
     // No toque não há hover: clicar no cabeçalho da Arte ou no nome do Efeito prende o
     // cartão. Vem antes da compra de propósito, senão clicar no nome comprava o Efeito.
     const anc = t.closest<HTMLElement>('.arte-nm, [data-efpop]');
@@ -2066,6 +2134,15 @@ export function montarFicha(opts: FichaOpts) {
       const id = ef.dataset.efeito || ef.dataset.efbuy!;
       S.efeito[id] = !S.efeito[id]; renderEfeitos(); recompute(); return;
     }
+  });
+
+  // O filtro dos Efeitos responde no change, e não no click: a caixinha vive dentro de um
+  // <label>, e no clique o rótulo ainda pode reativá-la depois do handler.
+  document.addEventListener('change', (e) => {
+    const so = (e.target as HTMLElement)?.closest?.('[data-ef-so]') as HTMLInputElement | null;
+    if (!so) return;
+    EF.soComprados = so.checked;
+    pintaGruposEfeito();
   });
 
   document.addEventListener('keydown', (e) => {
