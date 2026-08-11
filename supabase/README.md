@@ -105,6 +105,27 @@ Supabase pelo navegador. Passos para ligar tudo:
     quem é membro da mesa. Sem isso o grupo veria os hexágonos flutuando no vazio, porque o
     download do bucket `mesa` só liberava o que estivesse marcado na aba Mapas. O resto da regra
     não muda: mapa não liberado segue invisível e arena inativa não abre nada.
+17. Rode [`migracao-18.sql`](./migracao-18.sql): o **grupo compartilha números**. Duas chaves novas
+    em `mesas.revelar`, ligadas pelo painel "O que os jogadores veem": `statusColegas` (ataque,
+    dano, as três defesas, absorção e iniciativa uns dos outros) e `vidaColegas`. Idempotente.
+
+    `vidaColegas` nasce **ligada**: a Vida dos aliados sempre apareceu no rastreador, e é o que
+    permite socorrer alguém a tempo. Desligada, o aliado cai para a palavra do estado (Ferido,
+    Grave) em vez do número, e não para o nada.
+
+    A migração 14 dizia que este meio termo entre "só o físico" e "a ficha inteira" não daria para
+    servir com honestidade, porque Vida, Defesa e Absorção saem de uma conta que lê a ficha toda, e
+    mandar o insumo para mostrar só o resultado seria esconder na tela de novo. Continua verdade, e
+    por isso a saída não é mandar a ficha: **`personagens.resumo`** guarda o RESULTADO da conta.
+    Quem escreve é quem já tem a ficha em mãos (a página do personagem ao salvar, e a aba Grupo do
+    mestre, que recalcula e corrige o que estiver velho); a fatia compartilhada sai pronta do banco
+    e o insumo nunca viaja. `grupo_visivel()` ganha a coluna `extra` com essa fatia, e
+    `combate_visao` ganha `resumo_pc`, que é como o rastreador do jogador desenha o bloco de um
+    companheiro cuja ficha ele não pode ler.
+
+    Uma ficha que ninguém abriu desde a migração fica com o cache vazio, e os campos aparecem em
+    branco até a próxima visita do dono ou do mestre à aba Grupo. Não há o que rodar para isso: o
+    cálculo é do navegador, não do banco.
 
 ## 3. Ajustes no painel
 
