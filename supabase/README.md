@@ -158,6 +158,21 @@ Supabase pelo navegador. Passos para ligar tudo:
     recusado e o tempo real some sem mensagem de erro.
 
     Sem esta migração a aba Grid continua inteira; só o botão **✶ Arte** avisa que falta rodá-la.
+20. Rode [`migracao-21.sql`](./migracao-21.sql): a **Mana na mesa**. Idempotente.
+
+    `combatentes` ganha `mana_max` e `mana_atual`, do mesmo feitio da Energia. Nulo quer dizer "não
+    lida com Mana", e não "zero": um lobo não tem reserva nenhuma, e uma reserva vazia é outra
+    coisa. A conta continua sendo da ficha (Centelha ×2 + Vontade, mais o bônus da Arte Manipulação
+    de Mana) e do bloco do bestiário; o banco guarda o resultado porque o **gasto** é da mesa, e a
+    ficha do jogador não tem por que saber quanto sobrou depois da terceira Arte da noite.
+
+    `combate_visao` é recriada com `mana_atual`, `mana_max` e `mana_pct`. A regra de quem vê é a da
+    Energia, e não a da Vida: recurso é plano, então o jogador vê a própria, vê a do colega se a
+    mesa liberou `energiaColegas`, e vê a do inimigo só com `stats` revelado. `mana_pct` sai
+    arredondado de 5 em 5, que é o que a barrinha do token desenha sem entregar o número exato.
+
+    Sem esta migração o tabuleiro continua inteiro: a semeadura falha em silêncio e a barra de Mana
+    simplesmente não aparece.
 
 ## 3. Ajustes no painel
 

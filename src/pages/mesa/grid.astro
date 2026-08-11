@@ -655,6 +655,17 @@ const SETAS = [
     filter: drop-shadow(0 0 2px rgba(0,0,0,.7));
     transition: stroke-dashoffset .75s cubic-bezier(.34, .8, .3, 1), stroke .6s ease; }
   @media (prefers-reduced-motion: reduce) { .gr-token .anel-v { transition: none; } }
+  /* A Mana: um risco do lado de fora do anel, numa face só. Fica FORA (raio
+     53,5 contra os 46 do anel) para não disputar espaço com a Vida, e é por
+     isso que o SVG precisa de `overflow: visible`. */
+  .gr-token .tok-mana { position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; overflow: visible; }
+  .gr-token .tok-mana polyline { fill: none; stroke-linecap: round; }
+  .gr-token .mana-tr { stroke-width: 7.5; stroke: rgba(0,0,0,.55); }
+  .gr-token .mana-v { stroke-width: 5; stroke: #a26bdb;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,.7));
+    transition: stroke-dashoffset .75s cubic-bezier(.34, .8, .3, 1); }
+  @media (prefers-reduced-motion: reduce) { .gr-token .mana-v { transition: none; } }
   /* O fantasma do arrasto é a mesma peça: se ele fosse redondo, o gesto
      mostraria uma coisa e o pouso entregaria outra. */
   .gr-ghost .av { border-radius: 0; border: 0;
@@ -680,6 +691,12 @@ const SETAS = [
     display: flex; align-items: center; gap: .4rem; }
   .tok-menu .tm-cab .av { --av-t: 1.6rem; }
   .tok-menu .tm-nome { font-family: 'Cinzel'; font-size: var(--fs-rotulo); font-weight: 700; }
+  /* O cabeçalho é clicável quando a peça tem bloco no bestiário. O ícone à
+     direita é o aviso de que ali tem porta: sem ele, um cabeçalho que reage ao
+     mouse em algumas peças e não em outras vira adivinhação. */
+  .tok-menu .tm-cab.tem-card { cursor: pointer; border-radius: var(--r-md); }
+  .tok-menu .tm-cab.tem-card:hover { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+  .tok-menu .tm-card-i { margin-left: auto; color: var(--accent-texto); font-size: var(--fs-micro); }
   .tok-menu button { text-align: left; background: none; border: 0; color: var(--ink);
     font: inherit; font-size: var(--fs-aux); padding: .3rem .55rem; border-radius: var(--r-md);
     cursor: pointer; }
@@ -774,6 +791,8 @@ const SETAS = [
     overflow: hidden; text-overflow: ellipsis; }
   .gr-ficha .gr-fq { font-size: calc(var(--fs-micro) * .85); color: var(--accent-texto);
     font-variant-numeric: tabular-nums; }
+  .gr-ficha .gr-mn { font-size: calc(var(--fs-micro) * .85); color: #a26bdb;
+    font-variant-numeric: tabular-nums; white-space: nowrap; }
   .gr-ficha.posto { opacity: .55; }
   .gr-ficha.posto:hover { opacity: 1; }
   .gr-ficha .gr-casa { font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .85);
@@ -878,8 +897,9 @@ const SETAS = [
   import {
     abrirCanal, nomeParaPresenca, type Canal, type Assunto, type Motivo, type Ping,
   } from '../../lib/mesa-tempo-real';
-  import { MON, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
-  import { rolarIniciativaPC } from '../../lib/mesa-ficha';
+  import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML } from '../../lib/mesa-bestiario';
+  import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
+  import { mana as manaDaFicha } from '../../lib/calc';
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
@@ -935,6 +955,12 @@ const SETAS = [
   // A ficha crua por personagem, que as Artes leem (Artes, Efeitos comprados,
   // Centelha e equipamento). Vem do mesmo carregamento que monta o RESUMO.
   let FICHAS: Record<string, any> = {};
+  // A ficha DIGERIDA por combatente, e no mesmo formato para gente e para bicho:
+  // a conta da ficha do personagem e o bloco do bestiário chegam aqui como a
+  // mesma coisa, e quem desenha o tabuleiro não precisa saber de qual dos dois
+  // veio o número. É daqui que sai a Mana, e é aqui que entram os próximos
+  // (Fôlego, Energia, passivos, Artes conhecidas).
+  let PERFIL: Record<string, any> = {};
   // O canal da mesa. Null enquanto a página abre, e null para sempre se o
   // realtime não subir: tudo o que depende dele é opcional por construção.
   let RT: Canal | null = null;
@@ -958,6 +984,10 @@ const SETAS = [
     // apagar, e marcar aqui, no ponto por onde tudo passa, evita espalhar a
     // etiqueta por dez chamadas lá dentro.
     logar: (c: any, txt: string, extra: Record<string, any>) => logar(c, txt, { ...extra, ef: true }),
+    // A Mana sai da reserva de quem conjurou. O módulo calcula o custo e não
+    // sabe o que é reserva; a aba é dona do banco, da barra e da regra de não
+    // ficar devendo.
+    gastarMana,
     // A moldura dos rótulos empurra o tabuleiro: quem desenha a grade é quem
     // sabe onde ela começa, então as camadas das Artes pedem em vez de calcular.
     margem, medida,
@@ -1149,7 +1179,7 @@ const SETAS = [
     // mas a TABELA `combatentes`, que é o que o mestre lê, não tem essa coluna.
     // Sem esta busca o mestre via os personagens como letra dentro de um
     // círculo, justamente ele, que é quem move as peças.
-    PC_IMG = {}; RESUMO = {};
+    PC_IMG = {}; RESUMO = {}; PERFIL = {};
     if (MESTRE) {
       const ids = [...new Set(COMBS.map((c: any) => c.personagem_id).filter(Boolean))];
       const fichas: Record<string, any> = {};
@@ -1163,11 +1193,15 @@ const SETAS = [
       // As mesmas contas do rastreador: Defesa, Absorção e o resto saem de
       // `resumoDe`, que mescla o bloco de origem (ficha ou bestiário) com os
       // ajustes que o mestre salvou naquele combatente.
-      for (const c of COMBS) { try { RESUMO[c.id] = resumoDe(c, fichas); } catch { RESUMO[c.id] = null; } }
+      for (const c of COMBS) {
+        try { RESUMO[c.id] = resumoDe(c, fichas); } catch { RESUMO[c.id] = null; }
+        try { PERFIL[c.id] = perfilDe(c, fichas); } catch { PERFIL[c.id] = null; }
+      }
       // As Artes precisam da ficha inteira, e não só do resumo de combate: é de
       // lá que saem as Artes do personagem, os Efeitos que ele comprou, a
       // Centelha e o equipamento que um efeito pode pegar.
       FICHAS = fichas;
+      await semearMana();
     }
     const daMesa = COMBS.map((c: any) => c.imagem).filter(Boolean);
     const dosPCs = [...COMBS.map((c: any) => c.retrato).filter(Boolean), ...Object.values(PC_IMG)];
@@ -1176,6 +1210,71 @@ const SETAS = [
       urlsImagens(SB, dosPCs, 'personagens'),
     ]);
     IMGS = { ...m1, ...m2 };
+  }
+
+  // ------------------------------------------------------- a ficha digerida
+  /**
+   * O que a ficha (ou o bloco do bestiário) diz desta peça, no mesmo formato
+   * para os dois.
+   *
+   * O tabuleiro sempre soube ler o BLOCO DE COMBATE dos dois lados (`resumoDe`
+   * faz isso desde o começo); o que faltava era o resto da ficha, que é de onde
+   * saem os recursos e o repertório. Uma criatura do bestiário tem atributos,
+   * Vontade, Centelha, Virtudes, Artes e Técnicas escritos exatamente como um
+   * personagem tem, e o mestre precisa dos dois na mesma tela.
+   */
+  function perfilDe(c: any, fichas: Record<string, any>): any {
+    if (c.tipo === 'pc' && fichas[c.personagem_id]) {
+      const R = resumoFicha(fichas[c.personagem_id]);
+      return {
+        origem: 'ficha', centelha: R.centelha, vontade: R.vontade, aparencia: R.aparencia,
+        // Mana só existe para quem despertou: a reserva é da Centelha, e um
+        // mortal com Vontade alta continua sem uma gota.
+        mana: R.centelha > 0 ? R.mana : 0,
+        energia: R.energia, folego: R.folego, pv: R.pv,
+        attrs: R.attrs, skills: R.skills, skills2: R.skills2, virtudes: R.virtudes,
+        artes: R.artes, tecnicas: R.tecnicas, passivos: R.passivos,
+        defesas: { esquiva: R.defEsquiva, bloqueio: R.defBloqueio, social: R.defSocial, mental: R.defMental },
+        iniciativa: R.iniciativa, ficha: R,
+      };
+    }
+    const m = MON[c.monstro_id];
+    if (!m) return null;
+    const nivelArte = (id: string) => (m.artes || []).find((a: any) => a.id === id)?.nivel || 0;
+    const cent = m.centelha || 0, vont = m.vontade || 0;
+    return {
+      origem: 'bestiario', centelha: cent, vontade: vont, aparencia: m.aparencia || 0,
+      mana: cent > 0 ? manaDaFicha({ centelha: cent, vontade: vont, manipulacao: nivelArte('manipulacao-mana') }) : 0,
+      energia: m.combate?.energia ?? null, folego: m.combate?.folego ?? null, pv: m.combate?.pv ?? null,
+      attrs: m.atributos || {}, skills: {}, skills2: {}, virtudes: m.virtudes || {},
+      artes: m.artes || [], tecnicas: m.tecnicas || [], passivos: [],
+      defesas: { esquiva: m.combate?.defesa ?? null, bloqueio: null,
+        social: m.combate?.defesaSocial ?? null, mental: m.combate?.defesaMental ?? null },
+      iniciativa: m.combate?.iniciativa || '', bloco: m,
+    };
+  }
+
+  /**
+   * A reserva de Mana de quem ainda não tem uma, escrita na linha do combatente.
+   *
+   * A conta é da ficha, mas o GASTO é da mesa, e por isso o número precisa morar
+   * no banco: a ficha diz quanto o personagem tem em pé, não quanto sobrou
+   * depois da terceira Arte da noite. Semear aqui, e não ao criar o combatente,
+   * conserta sozinho os encontros que já existiam antes da migração 21.
+   *
+   * Quem não tem Centelha não recebe nada, e é isso que separa "reserva vazia"
+   * (zero de seis) de "não lida com Mana" (nulo).
+   */
+  async function semearMana() {
+    const faltam = COMBS.filter((c: any) => c.mana_max == null && (PERFIL[c.id]?.mana ?? 0) > 0);
+    for (const c of faltam) {
+      const m = PERFIL[c.id].mana;
+      const { error } = await SB.from('combatentes')
+        .update({ mana_max: m, mana_atual: m }).eq('id', c.id);
+      // Banco sem a migração 21: não insiste, e o tabuleiro segue sem a barra.
+      if (error) return;
+      c.mana_max = m; c.mana_atual = m;
+    }
   }
 
   async function carregarTokens() {
@@ -1192,6 +1291,16 @@ const SETAS = [
   // ================================================================= pintar
   const pctDe100 = (c: any) => (c.pv_pct != null ? c.pv_pct
     : (c.pv_max && c.pv_atual != null ? pctDe(c.pv_atual, c.pv_max) : null));
+  /**
+   * A Mana em porcentagem, ou nada para quem não lida com Mana.
+   *
+   * O jogador recebe `mana_pct` mastigado pela view (de 5 em 5, e só quando a
+   * mesa liberou); o mestre lê a linha inteira e faz a conta. Nulo em `mana_max`
+   * quer dizer "não usa Mana", e não "está zerado": um lobo não tem barra, um
+   * feiticeiro exausto tem uma barra vazia.
+   */
+  const manaDe100 = (c: any) => (c.mana_pct != null ? c.mana_pct
+    : (c.mana_max ? pctDe(c.mana_atual ?? 0, c.mana_max) : null));
 
   // ------------------------------------------------------ tamanho no chão
   /**
@@ -1277,6 +1386,34 @@ const SETAS = [
     return `<svg class="tok-anel" viewBox="0 0 86.6 100" aria-hidden="true">
       <polygon class="anel-tr" points="${ANEL_PTS}" pathLength="100" />
       <polygon class="anel-v" points="${ANEL_PTS}" pathLength="100"
+        stroke-dasharray="100 100" stroke-dashoffset="${(p - 100).toFixed(2)}" />
+    </svg>`;
+  }
+
+  /**
+   * A barra de Mana: um sexto do hexágono, na face de cima à esquerda.
+   *
+   * Ela NÃO divide o traço com a Vida. O anel é o perímetro inteiro e se esvazia
+   * girando; a Mana é um risco curto, do lado de fora do anel, numa face só. Uma
+   * some no sentido do relógio, a outra sobe e desce no lugar, e por isso as
+   * duas se leem de relance sem se confundir uma com a outra.
+   *
+   * A face vai do vértice de cima ao vértice de cima à esquerda (o 0 e o 5 de
+   * `verticesHex`, que sai do topo e anda no sentido horário). Como é uma linha
+   * de dois pontos, o `pathLength="100"` mede ESSA face: a porcentagem de Mana é
+   * o comprimento do traço, sem regra de três. O desenho começa no vértice de
+   * baixo, então a barra enche subindo, que é o gesto de encher.
+   */
+  const MANA_PTS = (() => {
+    const v = verticesHex(43.3, 50, 53.5).split(' ');
+    return `${v[0]} ${v[5]}`;
+  })();
+  function manaHTML(pct: number | null) {
+    if (pct == null) return '';
+    const p = Math.max(0, Math.min(100, pct));
+    return `<svg class="tok-mana" viewBox="0 0 86.6 100" aria-hidden="true">
+      <polyline class="mana-tr" points="${MANA_PTS}" pathLength="100" />
+      <polyline class="mana-v" points="${MANA_PTS}" pathLength="100"
         stroke-dasharray="100 100" stroke-dashoffset="${(p - 100).toFixed(2)}" />
     </svg>`;
   }
@@ -1572,6 +1709,23 @@ const SETAS = [
     tok.classList.toggle('caido', pct <= 0);
     arco.setAttribute('stroke-dashoffset', (pct - 100).toFixed(2));
     tok.title = `${c.nome} · ${diametroM(c)} m · ${faixa.estado}`;
+    atualizarMana(c);
+  }
+
+  /**
+   * A barra de Mana no lugar, sem repintar a peça.
+   *
+   * Mesmo motivo do anel: repintar joga fora o nó e mata a transição, e a Mana
+   * caindo de repente é justamente o que se quer ver andar.
+   */
+  function atualizarMana(c: any) {
+    const tok = document.querySelector<HTMLElement>(`.gr-token[data-c="${CSS.escape(c.id)}"]`);
+    const barra = tok?.querySelector('.mana-v');
+    const mn = manaDe100(c);
+    // Ganhou ou perdeu a barra inteira (nasceu a reserva, ou zerou o teto): aí
+    // não há o que mexer, é desenho novo.
+    if (!tok || (!barra && mn != null) || (barra && mn == null)) { pintarTokens(); return; }
+    if (barra && mn != null) barra.setAttribute('stroke-dashoffset', (mn - 100).toFixed(2));
   }
 
   /**
@@ -1643,14 +1797,17 @@ const SETAS = [
       p.x += desl.dx; p.y += desl.dy;
       const px = diametroPx(c);
       const pct = pctDe100(c);
+      const mn = manaDe100(c);
       const faixa = tierDe(pct == null ? null : pct, pct == null ? null : 100);
       const caido = pct != null && pct <= 0;
       // Abaixo de uns 34px o nome fica mais largo que a peça e vira sujeira em
       // cima do vizinho; nesse tamanho o título do mouse dá conta.
       return `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${naVez.has(c.id) ? ' vez' : ''}"
         data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
-        title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}">
-        <span class="tok-quadro">${avatarDe(c)}${anelHTML(pct)}</span>
+        title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}${
+          mn != null ? ` · Mana ${c.mana_max != null && c.mana_atual != null
+            ? `${c.mana_atual}/${c.mana_max}` : `${Math.round(mn)}%`}` : ''}">
+        <span class="tok-quadro">${avatarDe(c)}${anelHTML(pct)}${manaHTML(mn)}</span>
         ${condIconesHTML(c, px)}
         <span class="gr-tn">${esc(c.nome)}</span>
       </div>`;
@@ -2093,6 +2250,7 @@ const SETAS = [
       return `<div class="gr-ficha${t ? ' posto' : ''}" data-c="${c.id}" title="${esc(c.nome)}">
         ${avatarDe(c, 'av-p')}
         <span class="gr-fn">${esc(c.nome)}</span>
+        ${c.mana_max ? `<span class="gr-mn" title="Mana">✦ ${c.mana_atual ?? 0}/${c.mana_max}</span>` : ''}
         ${t ? `<span class="gr-fq">no mapa</span>` : ''}
       </div>`;
     };
@@ -2688,9 +2846,18 @@ const SETAS = [
     const m = el('tok-menu');
     const item = (id: string, txt: string, cls = '') => `<button data-a="${id}" class="${cls}">${txt}</button>`;
     const ehAVez = grupoDaVez().some((z: any) => z.id === cid);
-    m.innerHTML = `<div class="tm-cab">${avatarDe(c, 'av-p')}<span class="tm-nome">${esc(c.nome)}</span></div>`
+    // O cabeçalho vira porta para o card do bestiário quando a peça TEM bloco.
+    // Vale para a criatura e para o figurante que pegou o retrato emprestado de
+    // uma: quem tem `monstro_id` tem card, e olhar a ficha do bicho no meio da
+    // luta era trocar de aba e perder o mapa de vista.
+    const bloco = MON[c.monstro_id];
+    m.innerHTML = `<div class="tm-cab${bloco ? ' tem-card' : ''}"${bloco
+        ? ' role="button" tabindex="0" title="Ver o card completo da criatura"' : ''}
+      >${avatarDe(c, 'av-p')}<span class="tm-nome">${esc(c.nome)}</span>${
+        bloco ? '<span class="tm-card-i" aria-hidden="true">▤</span>' : ''}</div>`
       + item('ataque', '⚔ Ataque')
       + item('curar', '✚ Recuperar Vida')
+      + (temMana(c) ? item('mana', '✦ Mana') : '')
       + item('arte', '✶ Arte')
       + '<div class="tm-sep"></div>'
       + item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance')
@@ -2704,11 +2871,14 @@ const SETAS = [
     const r = m.getBoundingClientRect();
     m.style.left = Math.min(x, innerWidth - r.width - 8) + 'px';
     m.style.top = Math.min(y, innerHeight - r.height - 8) + 'px';
+    const cab = m.querySelector<HTMLElement>('.tm-cab.tem-card');
+    if (cab) cab.onclick = () => { fecharMenu(); abrirCard(cid); };
     m.querySelectorAll<HTMLElement>('button').forEach((b) => b.onclick = () => {
       fecharMenu();
       const a = b.dataset.a;
       if (a === 'ataque') iniciarMira(cid);
       else if (a === 'curar') curar(cid);
+      else if (a === 'mana') ajustarMana(cid);
       else if (a === 'arte') usarArte(cid);
       else if (a === 'alcance') alternarAlcance(cid);
       else if (a === 'encerrar') encerrarVez(cid);
@@ -3321,6 +3491,75 @@ const SETAS = [
     pintarIniciativa();
   }
 
+  // ================================================================== Mana
+  /** Esta peça lida com Mana? A reserva no banco manda; o perfil é o palpite. */
+  const temMana = (c: any) => c.mana_max != null || (PERFIL[c.id]?.mana ?? 0) > 0;
+
+  /**
+   * A reserva de Mana na mão do mestre.
+   *
+   * O teto vem junto porque ele muda em cena: o perfil de invocação, a Arte
+   * Manipulação de Mana e o item que empresta reserva mexem no máximo, e não só
+   * no que sobrou. Deixar os dois no mesmo lugar evita a ida à aba Combate para
+   * corrigir um número que a briga acabou de mudar.
+   */
+  async function ajustarMana(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const teto = c.mana_max ?? PERFIL[c.id]?.mana ?? 0;
+    const v = await uiFormulario(`Mana · ${c.nome}`, [
+      { nome: 'atual', rotulo: 'Mana agora', tipo: 'numero', valor: c.mana_atual ?? teto, min: 0 },
+      { nome: 'max', rotulo: 'Reserva total', tipo: 'numero', valor: teto, min: 0 },
+    ], { ok: 'Salvar', msg: PERFIL[c.id]?.mana
+      ? `A ficha dá ${PERFIL[c.id].mana} (Centelha ${PERFIL[c.id].centelha}, Vontade ${PERFIL[c.id].vontade}).`
+      : undefined });
+    if (!v) return;
+    const max = Math.max(0, parseInt(v.max, 10) || 0);
+    const atual = Math.max(0, Math.min(max, parseInt(v.atual, 10) || 0));
+    const antes = c.mana_atual ?? 0;
+    const { error } = await SB.from('combatentes')
+      .update({ mana_max: max, mana_atual: atual }).eq('id', cid);
+    if (error) return uiErro('Erro: ' + error.message);
+    c.mana_max = max; c.mana_atual = atual;
+    atualizarMana(c); pintarLista();
+    avisarAgora('combatentes');
+    const dif = atual - antes;
+    await logar(c, `${c.nome} · Mana ${atual}/${max}`
+      + (dif ? ` (${dif > 0 ? '+' : ''}${dif})` : ''), { acao: null });
+  }
+
+  /**
+   * Desconta Mana de quem acabou de conjurar.
+   *
+   * Fica aqui, e não dentro do assistente de Artes: o módulo calcula o custo e
+   * não sabe o que é uma reserva. Vai a zero e para: a regra de ficar devendo
+   * Mana é da mesa, e inventá-la em silêncio seria pior que travar.
+   */
+  async function gastarMana(cid: string, quanto: number) {
+    // Desistir de posicionar a Arte não paga. O assistente avisa o custo ao sair
+    // (inclusive quando a pessoa desistiu no meio), e o que separa uma
+    // conjuração feita de uma abandonada é a linha no registro: toda Arte que
+    // aconteceu escreve uma, e nenhuma que foi cancelada escreve.
+    if (MARCO_LOG >= 0 && LOG.length <= MARCO_LOG) return;
+    const c = COMBS.find((x: any) => x.id === cid);
+    if (!c || !(quanto > 0) || c.mana_max == null) return;
+    const atual = Math.max(0, (c.mana_atual ?? 0) - Math.round(quanto));
+    if (atual === c.mana_atual) return;
+    const { error } = await SB.from('combatentes').update({ mana_atual: atual }).eq('id', cid);
+    if (error) return;
+    c.mana_atual = atual;
+    atualizarMana(c); pintarLista();
+    avisarAgora('combatentes');
+  }
+
+  /** O card do bestiário, o mesmo das abas Criaturas e Combate. */
+  function abrirCard(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid);
+    const m = c && MON[c.monstro_id]; if (!m) return;
+    el('card-modal-body').innerHTML = cardCriaturaHTML(m);
+    (el('card-modal') as HTMLElement).hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
   /**
    * Arte: o assistente inteiro mora em `artes-grid-*`.
    *
@@ -3329,8 +3568,11 @@ const SETAS = [
    * arquivo. O contexto abaixo é tudo o que aquele módulo não tem como saber
    * sozinho: a conexão, a arena, quem está em campo e onde.
    */
+  let MARCO_LOG = -1;
   async function usarArte(cid: string) {
-    await conjurar(ctxArtes(), cid, el('gr-palco'));
+    MARCO_LOG = LOG.length;
+    try { await conjurar(ctxArtes(), cid, el('gr-palco')); }
+    finally { MARCO_LOG = -1; }
   }
 
   // =============================================================== NPC

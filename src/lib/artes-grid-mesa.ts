@@ -63,6 +63,11 @@ export interface CtxGrid {
   logar: (c: any, txt: string, extra: Record<string, any>) => Promise<void>;
   recarregar: () => Promise<void>;
   repintar: () => void;
+  /**
+   * Quanto de Mana a conjuração custou. Aqui só se avisa o número: a reserva
+   * mora na linha do combatente, e quem escreve nela é a aba.
+   */
+  gastarMana?: (cid: string, quanto: number) => Promise<void>;
 }
 
 let ATIVOS: EfeitoAtivo[] = [];
@@ -425,18 +430,26 @@ export async function conjurar(ctx: CtxGrid, cid: string, palco: HTMLElement): P
   const g = plano.efeito?.grid;
   const forma: Forma = g?.forma || (plano.areaM2 ? 'zona' : 'alvo');
 
-  // O Dissipar vem antes da saída de "sem representação": ele não tem chão nem
-  // corpo para escolher, mas tem o que apagar, e isso é bem do tabuleiro.
-  if (g?.dissipa) return await dissipar(ctx, c, plano);
-  if (forma === 'nenhuma') {
-    await ctx.logar(c, `${c.nome} conjurou ${plano.resumo}`, { acao: null });
-    return;
+  // A cobrança da Mana envolve todos os caminhos, e por isso está num `finally`:
+  // cada forma sai por um `return` próprio, e repetir a linha em seis lugares
+  // seria esquecê-la no sétimo. Quem recebe o aviso decide se cobra: desistir de
+  // posicionar não gastou Mana nenhuma, e é a aba que sabe disso.
+  try {
+    // O Dissipar vem antes da saída de "sem representação": ele não tem chão nem
+    // corpo para escolher, mas tem o que apagar, e isso é bem do tabuleiro.
+    if (g?.dissipa) return await dissipar(ctx, c, plano);
+    if (forma === 'nenhuma') {
+      await ctx.logar(c, `${c.nome} conjurou ${plano.resumo}`, { acao: null });
+      return;
+    }
+    if (forma === 'token') return await invocar(ctx, c, plano);
+    if (forma === 'movimento') return await deslocar(ctx, c, plano, palco);
+    if (forma === 'cadeia') return await encadear(ctx, c, plano, palco);
+    if (forma === 'alvo') return await grudarNoAlvo(ctx, c, plano, palco);
+    await marcarNoChao(ctx, c, plano, palco, forma);
+  } finally {
+    await ctx.gastarMana?.(c.id, plano.custo.mana);
   }
-  if (forma === 'token') return await invocar(ctx, c, plano);
-  if (forma === 'movimento') return await deslocar(ctx, c, plano, palco);
-  if (forma === 'cadeia') return await encadear(ctx, c, plano, palco);
-  if (forma === 'alvo') return await grudarNoAlvo(ctx, c, plano, palco);
-  await marcarNoChao(ctx, c, plano, palco, forma);
 }
 
 /** Aura, zona, muro, cone e linha: tudo o que ocupa chão. */

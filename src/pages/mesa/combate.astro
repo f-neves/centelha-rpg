@@ -142,6 +142,14 @@ import MesaCab from '../../components/MesaCab.astro';
         <label>Energia atual <input type="number" id="edit-enat" min="0" /></label>
         <label>Tick <input type="number" id="edit-tick" min="0" /></label>
       </div>
+      <!-- Mana em branco quer dizer "não lida com Mana", e é por isso que os
+           campos não têm valor padrão: zero é uma reserva vazia, que é outra
+           coisa. -->
+      <div class="grade3">
+        <label>Mana máx. <input type="number" id="edit-mnmax" min="0" /></label>
+        <label>Mana atual <input type="number" id="edit-mnat" min="0" /></label>
+        <span></span>
+      </div>
       <div class="grade2">
         <label>Ataque <input type="text" id="edit-atq" placeholder="4d6+2 +1" /></label>
         <label>Dano <input type="text" id="edit-dano" placeholder="3d6 +2 (C)" /></label>
@@ -492,7 +500,7 @@ import MesaCab from '../../components/MesaCab.astro';
   import { abrirRevelacao, resumoRevelacao } from '../../lib/mesa-revelacao';
   import { MON, MON_LIST, cardCriaturaHTML, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
-  import { pv as pvDe } from '../../lib/calc';
+  import { pv as pvDe, mana as manaDe } from '../../lib/calc';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -848,6 +856,7 @@ import MesaCab from '../../components/MesaCab.astro';
     const barras = vida === 'numero' && c.pv_max != null ? `<div class="cbt-barras">
       <div class="cbt-linha">${hpBarHTML(c.pv_atual, c.pv_max, c.id)}<span class="hp-fb" data-c="${c.id}"></span></div>
       ${(c.energia_max && verEnergia(c)) ? `<div class="cbt-linha"><div class="hpbar mini enbar"><div class="hpbar-fill" style="width:${Math.max(0, Math.min(100, ((c.energia_atual ?? 0) / c.energia_max) * 100))}%"></div><span class="hpbar-txt">En ${c.energia_atual ?? 0}<span class="hp-sep">/</span>${c.energia_max}</span></div></div>` : ''}
+      ${c.mana_max ? `<div class="cbt-linha"><div class="hpbar mini mnbar" title="Mana"><div class="hpbar-fill" style="width:${Math.max(0, Math.min(100, ((c.mana_atual ?? 0) / c.mana_max) * 100))}%"></div><span class="hpbar-txt">Mn ${c.mana_atual ?? 0}<span class="hp-sep">/</span>${c.mana_max}</span></div></div>` : ''}
     </div>` : '';
     const chip = vida !== 'numero' && vida !== 'nada' ? estadoChipHTML(pct) : '';
     const acoes = EH_MESTRE ? `<div class="cbt-acoes">
@@ -1181,9 +1190,17 @@ import MesaCab from '../../components/MesaCab.astro';
       const S = p.ficha || {}; const at = S.attrs || {};
       const pvv = pvDe(at.vigor || 0);
       const en = (Math.floor(((at.vigor || 0) + (at.compostura || 0) + (at.raciocinio || 0) + (S.willpower || 0)) / 2) + (S.centelha || 0) * 2);
+      // Mana só para quem despertou: a reserva sai da Centelha, e um mortal de
+      // Vontade alta continua sem uma gota. Nulo aqui quer dizer "não lida com
+      // Mana", que é diferente de uma reserva vazia.
+      const mn = (S.centelha || 0) > 0
+        ? manaDe({ centelha: S.centelha || 0, vontade: S.willpower || 0,
+                   manipulacao: S?.arte?.['manipulacao-mana'] || 0 })
+        : null;
       return {
         encontro_id: ENC.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC',
         pv_max: pvv, pv_atual: pvv, energia_max: en, energia_atual: en,
+        mana_max: mn, mana_atual: mn,
         tick: 0, iniciativa: rolarIniciativaPC(S), grupo: 'aliado', condicoes: [],
       };
     });
@@ -1292,6 +1309,8 @@ import MesaCab from '../../components/MesaCab.astro';
     g('edit-ini').value = String(row.iniciativa ?? 0);
     g('edit-enmax').value = row.energia_max != null ? String(row.energia_max) : '';
     g('edit-enat').value = row.energia_atual != null ? String(row.energia_atual) : '';
+    g('edit-mnmax').value = row.mana_max != null ? String(row.mana_max) : '';
+    g('edit-mnat').value = row.mana_atual != null ? String(row.mana_atual) : '';
     g('edit-tick').value = String(row.tick ?? 0);
     g('edit-atq').value = r.ataque || '';
     g('edit-dano').value = r.dano || '';
@@ -1320,6 +1339,7 @@ import MesaCab from '../../components/MesaCab.astro';
         grupo: (el('edit-grupo') as HTMLSelectElement).value,
         pv_max: pvmax, pv_atual: pvat,
         energia_max: numN(g('edit-enmax').value), energia_atual: numN(g('edit-enat').value),
+        mana_max: numN(g('edit-mnmax').value), mana_atual: numN(g('edit-mnat').value),
         iniciativa: num0(g('edit-ini').value), tick: Math.max(0, num0(g('edit-tick').value)),
         imagem: g('edit-img').value.trim() || null,
         notas: (el('edit-notas') as HTMLTextAreaElement).value,
