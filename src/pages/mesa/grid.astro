@@ -32,6 +32,9 @@ import MesaCab from '../../components/MesaCab.astro';
             <input type="range" id="fa-zoom" min="0.2" max="4" step="0.02" value="1" title="Zoom da arte" />
             <button class="btn-fant" id="fa-mais" title="Aproximar a arte">+</button>
             <span id="fa-zval" class="muted">100%</span>
+            <button class="btn-fant" id="fa-girar" title="Girar um quarto de volta">↻</button>
+            <input type="range" id="fa-rot" min="-180" max="180" step="1" value="0" title="Girar a arte" />
+            <span id="fa-rval" class="muted">0°</span>
             <button class="btn mini" id="fa-caber" title="A imagem inteira dentro do tabuleiro">caber</button>
             <button class="btn mini" id="fa-preencher" title="A arte cobre o tabuleiro todo">preencher</button>
             <span class="sep-v"></span>
@@ -193,22 +196,17 @@ import MesaCab from '../../components/MesaCab.astro';
      `position: fixed` no documento é frágil: basta um ancestral com `transform`
      ou `filter` para o "fixo" passar a ser relativo a ele, e aí a cobertura
      total vira cobertura da caixa. */
-  #gr-tudo:fullscreen { background: var(--bg); padding: .35rem .45rem .45rem;
-    display: flex; flex-direction: column; gap: .35rem; overflow: hidden; }
-  #gr-tudo:fullscreen .gr-grade { flex: 1; min-height: 0; }
-  #gr-tudo:fullscreen .gr-palco { max-height: none; height: 100%; }
-  /* A rede de segurança: se o navegador recusar a tela cheia (uma moldura sem
-     permissão, por exemplo), a classe entra assim mesmo e o tabuleiro pelo
-     menos toma a janela. */
-  body.tela-cheia:not(:has(#gr-tudo:fullscreen)) #gr-tudo {
-    position: fixed; inset: 0; z-index: 100; background: var(--bg);
-    padding: .35rem .45rem .45rem; display: flex; flex-direction: column; gap: .35rem; }
-  body.tela-cheia .mesa-barra { display: none; }
-  body.tela-cheia .gr-barra { margin-bottom: 0; }
-  body.tela-cheia .gr-grade { flex: 1; min-height: 0; }
-  body.tela-cheia .gr-palco { max-height: none; height: 100%; }
-  body.tela-cheia .gr-lado { position: static; max-height: 100%; overflow-y: auto; }
-  body.tela-cheia .gr-lado.dobrada .gr-log { max-height: calc(100vh - 9rem); }
+  /* Quem vai a tela cheia é o PALCO, e só ele: em cena não se projeta a barra
+     de ferramentas nem a lista lateral, projeta-se o mapa. O navegador coloca o
+     elemento no monitor inteiro por conta própria, e o resto da página nem é
+     desenhado. */
+  #gr-palco:fullscreen { max-height: none; height: 100%; width: 100%;
+    border: 0; border-radius: 0; background: var(--bg); }
+  /* A rede de segurança: se o navegador recusar (uma moldura sem permissão,
+     por exemplo), a classe entra assim mesmo e o palco toma a janela. */
+  body.tela-cheia:not(:has(#gr-palco:fullscreen)) #gr-palco {
+    position: fixed; inset: 0; z-index: 100; max-height: none; height: auto;
+    border-radius: 0; background: var(--bg); }
   /* O X de saída fica por cima de tudo, no canto de sempre. O Esc também sai
      (é o navegador que trata), mas num telão de mesa o mouse é o que está à
      mão, e um canto vazio não avisa que dá para voltar. */
@@ -445,7 +443,7 @@ import MesaCab from '../../components/MesaCab.astro';
   // Enquadramento da arte: x e y em % do tabuleiro (0 = centrado), z sobre a
   // escala "caber". Guardar em % e não em pixels é o que faz o enquadramento
   // sobreviver a uma mudança no número de colunas.
-  let FUNDO = { x: 0, y: 0, z: 1 };
+  let FUNDO = { x: 0, y: 0, z: 1, rot: 0 };
   let GRADE: { cor?: string; op?: number } = {};
   let BASE = 1;            // a escala que faz a arte inteira caber no tabuleiro
   let AJUSTANDO = false;
@@ -685,7 +683,7 @@ import MesaCab from '../../components/MesaCab.astro';
     el('gr-medida').textContent =
       `${ARENA.cols} × ${ARENA.rows} hexágonos · 1 hex = ${escala} m${ARENA.ativa ? '' : ' · fora de jogo'}`;
     const f = ARENA.fundo && typeof ARENA.fundo === 'object' ? ARENA.fundo : {};
-    FUNDO = { x: +f.x || 0, y: +f.y || 0, z: +f.z || 1 };
+    FUNDO = { x: +f.x || 0, y: +f.y || 0, z: +f.z || 1, rot: +f.rot || 0 };
     GRADE = ARENA.grade && typeof ARENA.grade === 'object' ? { ...ARENA.grade } : {};
     LOG = Array.isArray(ARENA.log) ? ARENA.log : [];
     pintarSeletor();
@@ -748,15 +746,31 @@ import MesaCab from '../../components/MesaCab.astro';
    * tabuleiro, e é dela que o zoom parte: assim `z = 1` significa sempre "vejo o
    * mapa todo", independentemente de a arte ser um panorama ou um quadrado.
    */
+  /**
+   * O tamanho que a arte OCUPA depois de girada.
+   *
+   * Um mapa deitado virado de pé passa a precisar da altura do tabuleiro, e não
+   * da largura. Sem esta conta, "caber" numa arte girada 90° deixaria metade
+   * dela para fora, porque a medida usada seria a da imagem antes do giro.
+   */
+  function caixaGirada(w: number, h: number, graus: number) {
+    const a = (graus * Math.PI) / 180;
+    const c = Math.abs(Math.cos(a)), s = Math.abs(Math.sin(a));
+    return { largura: w * c + h * s, altura: w * s + h * c };
+  }
+
   function aplicarFundo() {
     const img = el('gr-fundo') as HTMLImageElement;
     if (img.hidden || !img.naturalWidth) return;
     const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
-    BASE = Math.min(med.largura / img.naturalWidth, med.altura / img.naturalHeight);
+    const g = caixaGirada(img.naturalWidth, img.naturalHeight, FUNDO.rot || 0);
+    BASE = Math.min(med.largura / g.largura, med.altura / g.altura);
     const dx = (FUNDO.x / 100) * med.largura;
     const dy = (FUNDO.y / 100) * med.altura;
-    img.style.transform =
-      `translate(-50%, -50%) translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px) scale(${(BASE * FUNDO.z).toFixed(4)})`;
+    // A ordem importa: leva ao lugar, gira em torno do próprio centro, e só
+    // então amplia. Girar depois de ampliar jogaria a arte para longe.
+    img.style.transform = `translate(-50%, -50%) translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px)`
+      + ` rotate(${(FUNDO.rot || 0).toFixed(1)}deg) scale(${(BASE * FUNDO.z).toFixed(4)})`;
   }
 
   /** O zoom que faz a arte cobrir o tabuleiro inteiro, em unidades de `z`. */
@@ -764,7 +778,8 @@ import MesaCab from '../../components/MesaCab.astro';
     const img = el('gr-fundo') as HTMLImageElement;
     if (!img.naturalWidth || !BASE) return 1;
     const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
-    return Math.max(med.largura / img.naturalWidth, med.altura / img.naturalHeight) / BASE;
+    const g = caixaGirada(img.naturalWidth, img.naturalHeight, FUNDO.rot || 0);
+    return Math.max(med.largura / g.largura, med.altura / g.altura) / BASE;
   }
 
   function aplicarGrade() {
@@ -788,6 +803,8 @@ import MesaCab from '../../components/MesaCab.astro';
     if (!MESTRE) return;
     (el('fa-zoom') as HTMLInputElement).value = String(FUNDO.z);
     el('fa-zval').textContent = Math.round(FUNDO.z * 100) + '%';
+    (el('fa-rot') as HTMLInputElement).value = String(FUNDO.rot || 0);
+    el('fa-rval').textContent = Math.round(FUNDO.rot || 0) + '°';
     (el('fa-cor') as HTMLInputElement).value = GRADE.cor || '#ffffff';
     const op = GRADE.op != null ? GRADE.op : 1;
     (el('fa-op') as HTMLInputElement).value = String(op);
@@ -947,7 +964,9 @@ import MesaCab from '../../components/MesaCab.astro';
       // ser solta. Com ele, o que se arrasta tem o tamanho do que vai pousar.
       (ghost.firstElementChild as HTMLElement)?.style
         .setProperty('--av-t', `${(diametroPx(c) * ZOOM).toFixed(1)}px`);
-      document.body.appendChild(ghost);
+      // Em tela cheia só o palco é desenhado: um fantasma pendurado no <body>
+      // ficaria invisível justamente durante o arrasto.
+      (document.fullscreenElement || document.body).appendChild(ghost);
       moverGhost(ghost, ev.clientX, ev.clientY);
 
       ARR = { id: cid, deOnde: naLista ? 'lista' : 'mapa', ghost };
@@ -1019,6 +1038,24 @@ import MesaCab from '../../components/MesaCab.astro';
     zoomEl.oninput = () => mudarZ(+zoomEl.value);
     el('fa-caber').onclick = () => { FUNDO.x = 0; FUNDO.y = 0; mudarZ(1); };
     el('fa-preencher').onclick = () => { FUNDO.x = 0; FUNDO.y = 0; mudarZ(zPreencher()); };
+
+    // Girar. O `caber` reavalia junto porque a caixa que a arte ocupa muda com
+    // o ângulo: um mapa deitado, de pé, passa a pedir a altura do tabuleiro.
+    const rotEl = el('fa-rot') as HTMLInputElement;
+    const mudarRot = (g: number) => {
+      let v = Math.round(g);
+      // Mantém a volta dentro de −180..180 para a barra não bater na trave.
+      while (v > 180) v -= 360;
+      while (v < -180) v += 360;
+      FUNDO.rot = v;
+      rotEl.value = String(v);
+      el('fa-rval').textContent = v + '°';
+      aplicarFundo(); salvarAparencia();
+    };
+    rotEl.oninput = () => mudarRot(+rotEl.value);
+    // Um quarto de volta por clique: é o giro que se usa de verdade, quando o
+    // mapa foi digitalizado deitado.
+    el('fa-girar').onclick = () => mudarRot((FUNDO.rot || 0) + 90);
 
     corEl.oninput = () => { GRADE.cor = corEl.value; aplicarGrade(); salvarAparencia(); };
     opEl.oninput = () => {
@@ -1333,7 +1370,7 @@ import MesaCab from '../../components/MesaCab.astro';
     };
     const alterna = async () => {
       if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch {} return; }
-      const alvo = el('gr-tudo');
+      const alvo = el('gr-palco');
       try {
         await alvo.requestFullscreen({ navigationUI: 'hide' } as any);
       } catch {
