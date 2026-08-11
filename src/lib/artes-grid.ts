@@ -121,6 +121,17 @@ const soNumero = (s: string): number => {
   return m ? parseFloat(m[0]) : 0;
 };
 
+/**
+ * A medida crua de um parâmetro no nível `n`, em metros.
+ *
+ * Existe para ninguém mais chamar `parseFloat` num rótulo do livro. Os rótulos
+ * são escritos em português, com VÍRGULA decimal: `parseFloat("0,5 m")` devolve
+ * zero, e `parseFloat("1,5 m")` devolve um. Enquanto a régua da Aura foi de
+ * metros inteiros isso passou despercebido; com meio metro no primeiro degrau,
+ * a aura simplesmente não teria raio.
+ */
+export const medidaNoNivel = (p: Parametro, n: number): number => soNumero(valorNoNivel(p, n));
+
 /** Alcance em metros. "toque" é zero, e não um metro: encostar não é distância. */
 export const alcanceEmMetros = (p: Parametro, n: number): number => {
   const v = valorNoNivel(p, n);

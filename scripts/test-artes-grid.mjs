@@ -61,7 +61,12 @@ ok(M.turnosDeDuracao(6, 'breve') < M.turnosDeDuracao(1, 'longa'),
 eq(M.rotuloDuracao(300), 'a cena toda', 'acima de 50 turnos o número não diz nada');
 
 // ------------------------------------------------- o exemplo da mesa: a Aura
-// Aura de Fogo com Volume 3 (3 m de raio), Dano 2 (2d6) e Duração 2 (2 turnos).
+// Aura de Fogo com Volume 3, Dano 2 (2d6) e Duração 2 (2 turnos).
+//
+// O exemplo da mesa nasceu com "3 m de raio" no Volume 3. A régua da Aura
+// encolheu junto com todas as outras, e hoje o Volume 3 é um metro e meio: para
+// os 3 m do exemplo original, agora se compra o Volume 6. O que o teste guarda é
+// a CONTA (2 + 3 + 2 + 2 = 9 pontos, 6 de Mana com Centelha 3), que não mudou.
 const aura = M.EFEITO['aura'];
 const fogo = M.ARTE['fogo'];
 ok(!!aura && !!fogo, 'Aura e Fogo existem');
@@ -72,7 +77,8 @@ eq(aura.grid.materia, null, 'a Aura não deixa matéria: a armadura não pega');
 
 const pVol = aura.parametros.find((p) => p.nome === 'Volume');
 const pDano = aura.parametros.find((p) => p.nome === 'Dano');
-eq(M.valorNoNivel(pVol, 3), '3 m', 'Volume 3 = 3 m de raio');
+eq(M.valorNoNivel(pVol, 3), '1,5 m', 'Volume 3 = 1,5 m de raio');
+eq(M.valorNoNivel(pVol, 6), '3 m', 'os 3 m do exemplo da mesa hoje são o Volume 6');
 eq(M.dadosDeDano(pDano, 2, fogo), 2, 'Dano 2 em Fogo = 2d6');
 
 // Custo: Efeito 2 + Volume 3 + Dano 2 + Duração 2 = 9 pontos.
@@ -294,8 +300,8 @@ const figuraDoEfeito = (e, n = 3) => {
   return M.figuraDaArea({
     molde, ancora: CENTRO, aberturaGraus: 90,
     areaM2: pArea && !ehRaio ? M.areaEmM2(pArea, n) : 0,
-    raioProprioM: pArea && ehRaio ? parseFloat(M.valorNoNivel(pArea, n)) || 0 : 0,
-    comprimentoProprioM: pComp ? parseFloat(M.valorNoNivel(pComp, n)) || 0
+    raioProprioM: pArea && ehRaio ? M.medidaNoNivel(pArea, n) : 0,
+    comprimentoProprioM: pComp ? M.medidaNoNivel(pComp, n)
       : (forma === 'linha' ? M.alcanceEmMetros(par('Alcance') || { nome: 'Alcance', tipo: 'padrao' }, n) : 0),
   });
 };
@@ -311,8 +317,34 @@ eq(vazios.join(', ') || 'nenhum', 'nenhum',
 
 const muro = figuraDoEfeito(M.EFEITO['muro'], 3);
 eq(muro.tipo, 'linha', 'o Muro é uma faixa, e não um círculo');
-eq(muro.comprimentoM, 8, 'Comprimento 3 são 8 m de parede, e não 8 m² divididos');
+eq(muro.comprimentoM, 5, 'Comprimento 3 são 5 m de parede, e não 5 m² divididos');
 eq(muro.larguraM, 1, 'a parede tem um metro de espessura');
+
+// ------------------------------- as escadas próprias cabem no teto da régua
+//
+// Oito Efeitos compram tamanho na régua deles, e a régua comum não os alcança.
+// Enquanto a comum ia a 64 m², isso não incomodava; depois que ela encolheu para
+// 25, a Aura sozinha cobria 113 m² e a Névoa, 100.
+const CEU = M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, 6);   // o teto genérico
+const chaoDe = (id, n = 6) => {
+  const f = figuraDoEfeito(M.EFEITO[id], n);
+  if (f.raioM) return Math.PI * f.raioM * f.raioM;
+  return (f.comprimentoM || 0) * (f.larguraM || 1);
+};
+for (const id of ['aura', 'neblina', 'terremoto', 'muro']) {
+  const chao = chaoDe(id);
+  ok(chao <= CEU * 1.15, `${id} no nível 6 cobre ${chao.toFixed(0)} m², e o teto da régua é ${CEU}`);
+}
+
+// A ARMADILHA DA VÍRGULA.
+//
+// Os rótulos são escritos em português: `parseFloat("0,5 m")` devolve zero e
+// `parseFloat("1,5 m")` devolve um. Enquanto a Aura foi de metros inteiros isso
+// passou; com meio metro no primeiro degrau, ela ficaria sem raio nenhum.
+const pAura = M.EFEITO['aura'].parametros.find((p) => p.nome === 'Volume');
+eq(M.medidaNoNivel(pAura, 1), 0.5, 'a Aura nível 1 tem meio metro de raio');
+eq(M.medidaNoNivel(pAura, 3), 1.5, 'a Aura nível 3 tem um metro e meio, e não um');
+ok(figuraDoEfeito(M.EFEITO['aura'], 1).raioM > 0, 'e a figura dela não nasce vazia');
 // O escudo continua vindo da área, porque a régua dele é de área mesmo.
 ok(figuraDoEfeito(M.EFEITO['escudo-de-forca'], 3).comprimentoM > 0,
   'o Escudo de Força ainda sai da área comprada');
@@ -328,4 +360,4 @@ if (falhas.length) {
   process.exit(1);
 }
 console.log(`✓ Motor das Artes OK · ${M.ARTES.length} Artes · ${M.EFEITOS.length} Efeitos · `
-  + `Aura de Fogo 3 m/2d6/2 turnos = 9 pontos, 6 de Mana`);
+  + `Aura de Fogo 1,5 m/2d6/2 turnos = 9 pontos, 6 de Mana`);

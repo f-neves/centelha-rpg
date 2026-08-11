@@ -7,7 +7,7 @@
 import { uiPainel, uiEscolher, uiFormulario } from './ui-dialog';
 import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
-  parametrosDoImproviso, custoDe, valorNoNivel, escalaDe, turnosDeDuracao,
+  parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
   figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO,
   type Arte, type Efeito, type Parametro, type Escolhas, type Molde, type Custo,
@@ -133,12 +133,12 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       else if (danoBonus) partes.push(`+${danoBonus} de dano`);
       if (turnos) partes.push(rotuloDuracao(turnos));
       const areaM2 = pArea && nAr && !ehRaio ? areaEmM2(pArea, nAr) : 0;
-      const raioProprio = pArea && nAr && ehRaio ? parseFloat(valorNoNivel(pArea, nAr)) || 0 : 0;
+      const raioProprio = pArea && nAr && ehRaio ? medidaNoNivel(pArea, nAr) : 0;
       // O Muro não compra área nenhuma: compra metros de parede. Sem ler essa
       // régua aqui, a figura nasceria vazia e a parede de chamas sairia do
       // tabuleiro com comprimento zero, cobrando Mana e não desenhando nada.
       const compProprio = pComp && escolhas['Comprimento']
-        ? parseFloat(valorNoNivel(pComp, escolhas['Comprimento'])) || 0
+        ? medidaNoNivel(pComp, escolhas['Comprimento'])
         : 0;
       // A área comprada é o ORÇAMENTO; o molde decide a figura. O raio e o
       // comprimento saem dela, para nenhum molde render mais chão que o outro.

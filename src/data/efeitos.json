@@ -34,11 +34,11 @@
         "unidade": "m³",
         "escala": [
           "1x1x1",
+          "1,5x1,5x1,5",
           "2x2x2",
+          "3x3x3",
           "4x4x4",
-          "6x6x6",
-          "8x8x8",
-          "10x10x10"
+          "5x5x5"
         ],
         "nota": "começa um nível acima da Área; molda em esfera, semiesfera, paralelepípedo ou cilindro"
       },
@@ -183,11 +183,11 @@
         "unidade": "m de parede",
         "escala": [
           "2 m",
-          "4 m",
+          "3 m",
+          "5 m",
           "8 m",
-          "15 m",
-          "25 m",
-          "40 m"
+          "12 m",
+          "20 m"
         ]
       },
       {
@@ -261,12 +261,12 @@
         "substitui": "area",
         "unidade": "m de raio",
         "escala": [
+          "0,5 m",
           "1 m",
+          "1,5 m",
           "2 m",
-          "3 m",
-          "4 m",
-          "5 m",
-          "6 m"
+          "2,5 m",
+          "3 m"
         ],
         "nota": "esfera com você no centro, 1 metro de raio por nível"
       },
@@ -995,11 +995,11 @@
         "unidade": "m",
         "escala": [
           "1x1",
+          "1,5x1,5",
           "2x2",
+          "3x3",
           "4x4",
-          "6x6",
-          "8x8",
-          "10x10"
+          "5x5"
         ],
         "nota": "começa um nível acima da Área; molda em círculo em volta de você ou em linha de pelo menos 1 m de largura"
       },
