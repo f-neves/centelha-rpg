@@ -86,6 +86,9 @@ import MesaCab from '../../components/MesaCab.astro';
 
   </MesaCab>
 
+  <button class="gr-sair" id="gr-sair-cheia" type="button" title="Sair da tela cheia (Esc)"
+    aria-label="Sair da tela cheia">✕</button>
+
   <!-- menu de ações do token (botão direito, ou toque longo no celular) -->
   <div id="tok-menu" class="tok-menu" hidden role="menu"></div>
 
@@ -179,10 +182,28 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-palco { overflow: auto; border: 1px solid var(--rule); border-radius: var(--r-lg);
     background: var(--panel-2, var(--panel)); max-height: calc(100vh - var(--mesa-barra-h, 66px) - 6rem);
     min-height: 20rem; position: relative; }
-  /* Em tela cheia some a barra do navegador, então o palco pode comer o que
-     sobrou. Sem isto o mapa ficaria do mesmo tamanho com a tela maior. */
-  body.tela-cheia .gr-palco { max-height: calc(100vh - var(--mesa-barra-h, 66px) - 3.4rem); }
-  body.tela-cheia .gr-lado { max-height: calc(100vh - var(--mesa-barra-h, 66px) - 3.4rem); overflow-y: auto; }
+  /* ---- tela cheia: o tabuleiro toma o monitor ----
+     `position: fixed; inset: 0` em vez de esticar o que já existe. É o que
+     garante a cobertura total sem depender das margens, da largura máxima e do
+     empilhamento das camadas da página, que são de outro assunto. As abas e o
+     cabeçalho da mesa saem de cena: em tela cheia o que se quer é o mapa. */
+  body.tela-cheia #gr-tudo { position: fixed; inset: 0; z-index: 100; background: var(--bg);
+    padding: .35rem .45rem .45rem; display: flex; flex-direction: column; gap: .35rem; }
+  body.tela-cheia .mesa-barra { display: none; }
+  body.tela-cheia .gr-barra { margin-bottom: 0; }
+  body.tela-cheia .gr-grade { flex: 1; min-height: 0; }
+  body.tela-cheia .gr-palco { max-height: none; height: 100%; }
+  body.tela-cheia .gr-lado { position: static; max-height: 100%; overflow-y: auto; }
+  body.tela-cheia .gr-lado.dobrada .gr-log { max-height: calc(100vh - 9rem); }
+  /* O X de saída fica por cima de tudo, no canto de sempre. O Esc também sai
+     (é o navegador que trata), mas num telão de mesa o mouse é o que está à
+     mão, e um canto vazio não avisa que dá para voltar. */
+  .gr-sair { position: fixed; top: .55rem; right: .55rem; z-index: 130; display: none;
+    width: 2.1rem; height: 2.1rem; border-radius: 50%; align-items: center; justify-content: center;
+    border: 1px solid var(--rule); background: color-mix(in srgb, var(--bg) 85%, transparent);
+    color: var(--ink); font-size: 1rem; line-height: 1; cursor: pointer; backdrop-filter: blur(6px); }
+  .gr-sair:hover { border-color: var(--perigo); color: var(--perigo); }
+  body.tela-cheia .gr-sair { display: flex; }
   .gr-mundo { position: relative; transform-origin: 0 0; }
   .gr-mundo > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   /* A arte fica numa caixa que corta: o zoom passa de 1 e a imagem transborda o
@@ -256,14 +277,21 @@ import MesaCab from '../../components/MesaCab.astro';
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
   .gr-token .tok-anel { position: absolute; inset: 0; width: 100%; height: 100%;
     pointer-events: none; overflow: visible; }
-  .gr-token .tok-anel polygon { fill: none; stroke-linejoin: round;
-    transition: stroke-dasharray .4s ease, stroke .4s ease; }
+  .gr-token .tok-anel polygon { fill: none; stroke-linejoin: round; }
+  /* O sulco: um traço escuro por baixo, um pouco mais grosso, para o anel ter
+     onde assentar. Sem ele a Vida some contra as partes claras do mapa. */
+  .gr-token .anel-tr { stroke-width: 9; stroke: rgba(0,0,0,.55); }
+  /* A Vida. O brilho é sutil de propósito: numa tela com quinze peças, um halo
+     forte em cada uma vira ruído. */
+  .gr-token .anel-v { stroke-width: 6.5; stroke-linecap: round;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,.7));
+    transition: stroke-dashoffset .75s cubic-bezier(.34, .8, .3, 1), stroke .6s ease; }
+  @media (prefers-reduced-motion: reduce) { .gr-token .anel-v { transition: none; } }
   /* O fantasma do arrasto é a mesma peça: se ele fosse redondo, o gesto
      mostraria uma coisa e o pouso entregaria outra. */
   .gr-ghost .av { border-radius: 0; border: 0;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     height: calc(var(--av-t) * 1.1547); }
-  .gr-token .anel-tr { stroke: rgba(0,0,0,.42); }
   .gr-token.t-saudavel  .anel-v { stroke: #43b85c; }
   .gr-token.t-machucado .anel-v { stroke: #a9c22b; }
   .gr-token.t-ferido    .anel-v { stroke: #e6a91d; }
@@ -594,16 +622,28 @@ import MesaCab from '../../components/MesaCab.astro';
   // porque é essa a proporção de um hexágono de ponta para cima (√3 : 2), a
   // mesma de `.tok-quadro` — assim o SVG cobre o quadro sem distorcer o traço.
   const ANEL_PTS = verticesHex(43.3, 50, 46);
+  /**
+   * O anel de Vida.
+   *
+   * `pathLength="100"` renomeia o perímetro para 100 unidades, e a partir daí a
+   * Vida em porcentagem É a medida do traço, sem converter nada.
+   *
+   * O que anda é o `stroke-dashoffset`, e não o `dasharray`: um número só, que
+   * o CSS sabe interpolar. Animar o `dasharray` (dois números que trocam ao
+   * mesmo tempo) dá um salto feio, e era o que acontecia antes.
+   *
+   * O traço vale 100 e a lacuna vale 100. Com deslocamento −(100−p) o desenho
+   * começa (100−p) unidades adiante do vértice de cima: o buraco abre NO TOPO e
+   * cresce no sentido horário, que é a leitura de um relógio esvaziando. Com o
+   * deslocamento em zero o anel fecha inteiro.
+   */
   function anelHTML(pct: number | null) {
     if (pct == null) return '';
     const p = Math.max(0, Math.min(100, pct));
-    // `pathLength="100"` renomeia o perímetro para 100 unidades, e aí o
-    // `stroke-dasharray` é a própria porcentagem de Vida. Sem isso seria preciso
-    // medir o contorno do hexágono para converter.
     return `<svg class="tok-anel" viewBox="0 0 86.6 100" aria-hidden="true">
-      <polygon class="anel-tr" points="${ANEL_PTS}" stroke-width="7" pathLength="100" />
-      <polygon class="anel-v" points="${ANEL_PTS}" stroke-width="7" pathLength="100"
-        stroke-dasharray="${p.toFixed(2)} ${(100 - p).toFixed(2)}" />
+      <polygon class="anel-tr" points="${ANEL_PTS}" pathLength="100" />
+      <polygon class="anel-v" points="${ANEL_PTS}" pathLength="100"
+        stroke-dasharray="100 100" stroke-dashoffset="${(p - 100).toFixed(2)}" />
     </svg>`;
   }
 
@@ -758,6 +798,28 @@ import MesaCab from '../../components/MesaCab.astro';
     const rad = (grau * Math.PI) / 180;
     const passo = diamPx * 0.3;
     return { dx: Math.sin(rad) * passo, dy: -Math.cos(rad) * passo };
+  }
+
+  /**
+   * Mexe no anel de uma peça SEM redesenhar o tabuleiro.
+   *
+   * É o que faz a Vida escoar em vez de pular: `pintarTokens()` troca o
+   * innerHTML, e transição de CSS não roda em elemento recém-nascido — ele já
+   * aparece no valor final. Aqui o mesmo <polygon> continua na página e só o
+   * `stroke-dashoffset` muda, que é exatamente o que a transição sabe animar.
+   */
+  function atualizarAnel(c: any) {
+    const tok = document.querySelector<HTMLElement>(`.gr-token[data-c="${CSS.escape(c.id)}"]`);
+    const arco = tok?.querySelector('.anel-v');
+    if (!tok || !arco) { pintarTokens(); return; }
+    const pct = pctDe100(c);
+    if (pct == null) { pintarTokens(); return; }
+    const faixa = tierDe(pct, 100);
+    [...tok.classList].filter((k) => k.startsWith('t-')).forEach((k) => tok.classList.remove(k));
+    tok.classList.add(tierCls(faixa.estado));
+    tok.classList.toggle('caido', pct <= 0);
+    arco.setAttribute('stroke-dashoffset', (pct - 100).toFixed(2));
+    tok.title = `${c.nome} · ${diametroM(c)} m · ${faixa.estado}`;
   }
 
   function pintarTokens() {
@@ -1101,10 +1163,14 @@ import MesaCab from '../../components/MesaCab.astro';
     if (ocupadoPor(q, r, cid)) return;
     const antes = TOKENS[cid] ? { ...TOKENS[cid] } : null;
     if (antes && antes.q === q && antes.r === r) return;   // largou onde já estava
-    TOKENS[cid] = { q, r };            // otimista: o token pula na hora
+    // Otimista: o token pula na hora. O carimbo entra junto porque é ele que
+    // ordena a pilha quando dois dividem a casa, e quem acabou de chegar tem de
+    // aparecer por cima já no primeiro desenho.
+    const agora = new Date().toISOString();
+    TOKENS[cid] = { q, r, em: agora };
     pintarTokens(); pintarLista();
     const { error } = await SB.from('arena_tokens').upsert(
-      { arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: new Date().toISOString() },
+      { arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: agora },
       { onConflict: 'arena_id,combatente_id' },
     );
     if (error) {
@@ -1251,6 +1317,7 @@ import MesaCab from '../../components/MesaCab.astro';
       } catch { uiErro('O navegador não deixou entrar em tela cheia.'); }
     };
     btn.onclick = alterna;
+    (el('gr-sair-cheia') as HTMLElement).onclick = alterna;
     document.addEventListener('fullscreenchange', pinta);
     // "F" só quando não se está digitando: senão escrever "Ferido" numa nota
     // jogaria a página em tela cheia no meio da palavra.
@@ -1398,7 +1465,7 @@ import MesaCab from '../../components/MesaCab.astro';
     const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
     if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
     alvo.pv_atual = pv;
-    pintarTokens(); pintarLista();
+    atualizarAnel(alvo); pintarLista();
     const est = alvo.pv_max ? ` · ${alvo.pv_atual}/${alvo.pv_max} (${tierDe(pv, alvo.pv_max).estado})` : '';
     await logar(alvo, `${atacante.nome} acertou ${alvo.nome}: ${liquido} de dano (${TIPO_LBL[tipo]})`
       + (s > 0 ? ` [${bruto} − ${s} abs]` : '') + est, { acao: null });
@@ -1415,7 +1482,7 @@ import MesaCab from '../../components/MesaCab.astro';
     const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', cid);
     if (error) return uiErro('Erro: ' + error.message);
     c.pv_atual = pv;
-    pintarTokens(); pintarLista();
+    atualizarAnel(c); pintarLista();
     await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`, { acao: null });
   }
 
