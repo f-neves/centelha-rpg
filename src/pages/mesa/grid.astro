@@ -8,6 +8,7 @@ import MesaCab from '../../components/MesaCab.astro';
     <div id="gr-aviso"></div>
 
     <div id="gr-tudo" hidden>
+      <div class="gr-grade">
       <div class="gr-barra">
         <span class="gr-id">
           <span class="gr-rot">Arena</span>
@@ -20,8 +21,8 @@ import MesaCab from '../../components/MesaCab.astro';
           <button class="btn mini" id="gr-nova">+ arena</button>
           <button class="btn mini" id="gr-editar">✎ medidas</button>
           <button class="btn mini" id="gr-fundo-btn">▣ fundo</button>
-          <button class="btn mini" id="gr-ajustar" hidden>⤧ ajustar arte</button>
-          <button class="btn mini" id="gr-ativar">◉ pôr em jogo</button>
+          <button class="btn mini" id="gr-ajustar" hidden>⤧ arte</button>
+          <button class="btn mini" id="gr-ativar">◉ em jogo</button>
           <button class="btn-fant perigo" id="gr-excluir" title="Excluir esta arena">✕</button>
         </span>
         <span class="gr-ajuste" id="gr-ajuste" hidden>
@@ -44,6 +45,13 @@ import MesaCab from '../../components/MesaCab.astro';
             <input type="color" id="fa-cor" title="Cor do traço dos hexágonos" />
             <input type="range" id="fa-op" min="0" max="1" step="0.02" title="Opacidade do traço" />
             <span id="fa-opval" class="muted">55%</span>
+            <span class="sep-v"></span>
+          </span>
+          <span class="gr-grupo">
+            <span class="gr-rot">Vez</span>
+            <input type="color" id="fa-vez-cor" title="Cor do brilho de quem está na vez" />
+            <input type="range" id="fa-vez" min="0" max="26" step="1" title="Força do brilho" />
+            <span id="fa-vezval" class="muted">10</span>
           </span>
           <button class="btn primary mini" id="fa-concluir">concluir</button>
         </span>
@@ -58,7 +66,6 @@ import MesaCab from '../../components/MesaCab.astro';
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
       </div>
 
-      <div class="gr-grade">
         <div class="gr-palco" id="gr-palco">
           <div class="gr-mundo" id="gr-mundo">
             <div class="gr-fundo-caixa"><img id="gr-fundo" alt="" hidden /></div>
@@ -66,6 +73,13 @@ import MesaCab from '../../components/MesaCab.astro';
             <div id="gr-tokens" class="gr-tokens"></div>
           </div>
         </div>
+
+        <aside class="gr-ini" id="gr-ini-col">
+          <div class="gr-reg-cab">
+            <h3 class="col-h">Iniciativa</h3>
+          </div>
+          <div id="gr-ini" class="gr-ini-lista"></div>
+        </aside>
 
         <aside class="gr-lado" id="gr-lado">
           <div class="gr-reg-cab">
@@ -164,9 +178,19 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <style is:global>
   /* ---- barra da arena ---- */
-  .gr-barra { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap;
+  /* A barra vive numa coluna estreita agora, então tudo nela encolhe: numa
+     largura de 360px o tamanho de antes quebrava em três fileiras e roubava da
+     coluna de iniciativa a altura que o palco tinha acabado de ganhar. */
+  .gr-barra { display: flex; align-items: center; gap: .22rem .3rem; flex-wrap: wrap;
     border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
-    padding: .3rem .6rem; margin-bottom: .5rem; }
+    padding: .3rem .45rem; align-content: flex-start; }
+  .gr-barra .btn.mini { padding: .1rem .35rem; font-size: calc(var(--fs-micro) * .95); }
+  .gr-barra .btn-fant { padding: .05rem .25rem; }
+  .gr-barra .sep-v { display: none; }
+  .gr-barra .espaco { flex-basis: 100%; height: 0; }
+  .gr-id { flex-basis: 100%; }
+  .gr-medida { font-size: calc(var(--fs-micro) * .9); }
+  .gr-barra input[type="range"] { width: 5.5rem; }
   .gr-id { display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; }
   .gr-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
     letter-spacing: .07em; color: var(--ink-soft); }
@@ -176,9 +200,55 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-zoom #gr-zval { font-size: var(--fs-micro); min-width: 2.8rem; text-align: center;
     font-variant-numeric: tabular-nums; }
 
-  /* ---- as duas colunas ---- */
-  .gr-grade { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: .6rem; align-items: start; }
-  @media (max-width: 1100px) { .gr-grade { grid-template-columns: 1fr; } }
+  /* ---- as três colunas ----
+     A barra deixou de ser uma faixa por cima de tudo e passou a ocupar só a
+     largura das duas colunas da direita. O palco ganha essa altura porque
+     atravessa as duas linhas: numa tela de notebook são uns 40px a mais de
+     mapa, que é uma fileira inteira de hexágonos. */
+  .gr-grade { display: grid; gap: .5rem;
+    grid-template-columns: minmax(0, 1fr) 9rem 13rem;
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: "palco barra barra" "palco ini lado"; }
+  .gr-grade > .gr-barra { grid-area: barra; }
+  .gr-grade > .gr-palco { grid-area: palco; }
+  .gr-grade > .gr-ini   { grid-area: ini; }
+  .gr-grade > .gr-lado  { grid-area: lado; }
+  @media (max-width: 1100px) {
+    .gr-grade { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto;
+      grid-template-areas: "barra" "palco" "ini" "lado"; }
+  }
+
+  /* ---- coluna da iniciativa ---- */
+  .gr-ini { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
+    padding: .4rem .35rem; display: flex; flex-direction: column; min-height: 0; }
+  .gr-ini .gr-reg-cab { margin-top: 0; }
+  .gr-ini-lista { display: flex; flex-direction: column; gap: .2rem; overflow-y: auto; min-height: 0;
+    margin-top: .3rem; }
+  /* Cada linha é uma peça na fila: retrato, nome e os dois números que decidem
+     a ordem. Compacta de propósito, porque a coluna toda precisa caber sem
+     rolagem numa cena de dez. */
+  .ini-item { display: grid; grid-template-columns: auto 1fr; gap: .1rem .4rem;
+    align-items: center; padding: .22rem .3rem; border-radius: var(--r-md);
+    border: 1px solid transparent; cursor: pointer; }
+  .ini-item:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .ini-item .av { --av-t: 1.9rem; }
+  .ini-av { grid-row: span 2; position: relative; }
+  .ini-nome { font-size: calc(var(--fs-micro) * .95); line-height: 1.1; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; }
+  .ini-num { font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft);
+    font-variant-numeric: tabular-nums; }
+  .ini-num b { color: var(--accent-texto); }
+  .ini-item.g-aliado  { border-left: 3px solid var(--accent); }
+  .ini-item.g-inimigo { border-left: 3px solid #c1352c; }
+  .ini-item.g-neutro  { border-left: 3px solid var(--gold); }
+  .ini-item.caido { opacity: .55; }
+  .ini-item.caido .ini-nome { text-decoration: line-through; }
+  /* Quem está na vez: a mesma cor do brilho do tabuleiro, para os dois lugares
+     contarem a mesma coisa. */
+  .ini-item.vez { background: color-mix(in srgb, var(--vez-cor, #ffd76a) 22%, transparent);
+    border-color: var(--vez-cor, #ffd76a); }
+  .ini-item.vez .ini-nome { font-weight: 700; }
+  .ini-vazio { font-size: var(--fs-micro); color: var(--ink-soft); padding: .3rem; }
 
   /* O palco rola; o mundo tem o tamanho do tabuleiro e é ele que o zoom estica.
      Escalar o palco esticaria a barra de rolagem junto. */
@@ -360,6 +430,16 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-token.g-neutro  .av { outline: 2px solid var(--gold); }
   .gr-token.oculto { opacity: .6; }
   .gr-token.oculto .av { outline-style: dashed; }
+  /* O brilho de quem está na vez. `drop-shadow` e não `box-shadow`: a peça é
+     recortada em hexágono, e o box-shadow desenharia o halo do RETÂNGULO, não
+     do hexágono. Duas camadas, uma curta e uma larga, dão o miolo aceso e o
+     halo aberto sem precisar de imagem. */
+  .gr-token.vez .tok-quadro {
+    filter: drop-shadow(0 0 calc(var(--vez-forca, 10) * 1px) var(--vez-cor, #ffd76a))
+            drop-shadow(0 0 calc(var(--vez-forca, 10) * 2.2px) var(--vez-cor, #ffd76a));
+    animation: vez-pulsa 2s ease-in-out infinite; }
+  @keyframes vez-pulsa { 50% { opacity: .82; } }
+  @media (prefers-reduced-motion: reduce) { .gr-token.vez .tok-quadro { animation: none; } }
 
   /* O fantasma que segue o dedo. Fora do palco, por cima de tudo. */
   .gr-ghost { position: fixed; z-index: 200; pointer-events: none; transform: translate(-50%, -50%);
@@ -367,7 +447,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
   /* ---- lista lateral ---- */
   .gr-lado { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
-    padding: .5rem .6rem; position: sticky; top: calc(var(--mesa-barra-h, 66px) + .4rem); }
+    padding: .5rem .6rem; display: flex; flex-direction: column; min-height: 0; overflow-y: auto; }
   .gr-lado.solta { outline: 2px dashed var(--perigo); outline-offset: -4px; }
   .gr-lista { display: flex; flex-direction: column; gap: .2rem; max-height: 60vh; overflow-y: auto; }
   .gr-ficha { display: flex; align-items: center; gap: .45rem; padding: .2rem .3rem;
@@ -384,7 +464,11 @@ import MesaCab from '../../components/MesaCab.astro';
     color: var(--accent-texto); letter-spacing: .04em; }
 
   /* ---- registro ---- */
-  .gr-reg-cab { display: flex; align-items: center; gap: .3rem; margin-top: .7rem; }
+  /* Com as colunas mais estreitas, "Em campo" e o "+ NPC" já não cabem lado a
+     lado: o título vira duas linhas e desalinha tudo. Quebrar a FILEIRA em vez
+     do título mantém a palavra inteira e desce o botão. */
+  .gr-reg-cab { display: flex; align-items: center; gap: .3rem; margin-top: .7rem; flex-wrap: wrap; }
+  .gr-reg-cab .col-h { white-space: nowrap; }
   .gr-reg-cab:first-child { margin-top: 0; }
   .gr-reg-cab .col-h { flex: 1; margin: 0; }
   .gr-dobra { flex: 0 0 auto; line-height: 1; transition: transform .18s ease; }
@@ -444,7 +528,7 @@ import MesaCab from '../../components/MesaCab.astro';
   // escala "caber". Guardar em % e não em pixels é o que faz o enquadramento
   // sobreviver a uma mudança no número de colunas.
   let FUNDO = { x: 0, y: 0, z: 1, rot: 0 };
-  let GRADE: { cor?: string; op?: number } = {};
+  let GRADE: { cor?: string; op?: number; vezCor?: string; vezForca?: number } = {};
   let BASE = 1;            // a escala que faz a arte inteira caber no tabuleiro
   let AJUSTANDO = false;
   let LOG: any[] = [];
@@ -696,6 +780,7 @@ import MesaCab from '../../components/MesaCab.astro';
     pintarTabuleiro();
     pintarTokens();
     pintarLista();
+    pintarIniciativa();
     pintarLog();
     aplicarGrade();
     sincronizarControles();
@@ -794,6 +879,11 @@ import MesaCab from '../../components/MesaCab.astro';
     else mundo.style.removeProperty('--hex-cor');
     if (GRADE.op != null) mundo.style.setProperty('--hex-op', String(GRADE.op));
     else mundo.style.removeProperty('--hex-op');
+    // O brilho da vez vai no CORPO, e não no mundo: ele pinta o token no
+    // tabuleiro E a linha na coluna de iniciativa, que são de pais diferentes.
+    const raiz = document.body;
+    raiz.style.setProperty('--vez-cor', GRADE.vezCor || '#ffd76a');
+    raiz.style.setProperty('--vez-forca', String(GRADE.vezForca ?? 10));
   }
 
   const salvarAparencia = debounce(async () => {
@@ -815,6 +905,10 @@ import MesaCab from '../../components/MesaCab.astro';
     const op = GRADE.op != null ? GRADE.op : 1;
     (el('fa-op') as HTMLInputElement).value = String(op);
     el('fa-opval').textContent = Math.round(op * 100) + '%';
+    (el('fa-vez-cor') as HTMLInputElement).value = GRADE.vezCor || '#ffd76a';
+    const vf = GRADE.vezForca ?? 10;
+    (el('fa-vez') as HTMLInputElement).value = String(vf);
+    el('fa-vezval').textContent = String(vf);
     el('fa-arte').hidden = !(ARENA.fundo_path || ARENA.fundo_url);
   }
 
@@ -875,6 +969,7 @@ import MesaCab from '../../components/MesaCab.astro';
     // Desenha na ordem das pilhas: dentro de cada casa, o mais novo por último
     // (e portanto por cima).
     const ordenados = Object.values(pilhas).flat();
+    const vez = daVez();
     box.innerHTML = ordenados.map((c: any) => {
       const t = TOKENS[c.id];
       const p = centroHex(t.q, t.r, RAIO);
@@ -887,13 +982,103 @@ import MesaCab from '../../components/MesaCab.astro';
       const caido = pct != null && pct <= 0;
       // Abaixo de uns 34px o nome fica mais largo que a peça e vira sujeira em
       // cima do vizinho; nesse tamanho o título do mouse dá conta.
-      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}"
+      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${c.id === vez?.id ? ' vez' : ''}"
         data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
         title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}">
         <span class="tok-quadro">${avatarDe(c)}${anelHTML(pct)}</span>
         <span class="gr-tn">${esc(c.nome)}</span>
       </div>`;
     }).join('');
+  }
+
+  // ======================================================== iniciativa
+  /**
+   * A ordem da fila: tick menor age antes; empatando, iniciativa maior; e no
+   * empate dos dois, quem entrou no tabuleiro primeiro.
+   *
+   * O último critério é o que cumpre "todos começam em 0, na ordem em que foram
+   * postos no grid": sem ele, dez peças zeradas ficariam numa ordem qualquer,
+   * mudando a cada repintura.
+   */
+  const naFila = () => COMBS.filter((c: any) => TOKENS[c.id]).slice().sort((a: any, b: any) =>
+    ((a.tick ?? 0) - (b.tick ?? 0))
+    || ((b.iniciativa ?? 0) - (a.iniciativa ?? 0))
+    || String(TOKENS[a.id]?.em || '').localeCompare(String(TOKENS[b.id]?.em || ''))
+    || String(a.nome).localeCompare(String(b.nome)));
+
+  /** De quem é a vez: o primeiro da fila que ainda está de pé. */
+  function daVez(): any | null {
+    const fila = naFila();
+    return fila.find((c: any) => !noChao(c)) || fila[0] || null;
+  }
+
+  function pintarIniciativa() {
+    const box = el('gr-ini');
+    const fila = naFila();
+    if (!fila.length) {
+      box.innerHTML = `<p class="ini-vazio">${MESTRE
+        ? 'Ninguém no tabuleiro ainda. Quem entra no mapa entra na fila.'
+        : 'Ninguém em cena.'}</p>`;
+      return;
+    }
+    const vez = daVez();
+    box.innerHTML = fila.map((c: any) => {
+      const pct = pctDe100(c);
+      const caido = noChao(c);
+      return `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${c.id === vez?.id ? ' vez' : ''}${caido ? ' caido' : ''}"
+        data-c="${c.id}" title="${esc(c.nome)}${c.id === vez?.id ? ' · é a vez dele' : ''}">
+        <span class="ini-av">${avatarDe(c, 'av-p')}</span>
+        <span class="ini-nome">${esc(c.nome)}</span>
+        <span class="ini-num">t <b>${c.tick ?? 0}</b> · ini <b>${c.iniciativa ?? 0}</b>${
+          pct != null ? ` · ${Math.round(pct)}%` : ''}</span>
+      </div>`;
+    }).join('');
+    if (!MESTRE) return;
+    box.querySelectorAll<HTMLElement>('.ini-item').forEach((it) => {
+      // Esquerdo abre o mesmo menu do tabuleiro (é de lá que sai "encerrar a
+      // vez"); direito vai direto ao ajuste dos números, que é o que se faz
+      // nesta coluna.
+      it.addEventListener('click', (ev) => abrirMenu(it.dataset.c!, ev.clientX, ev.clientY));
+      it.addEventListener('contextmenu', (ev) => { ev.preventDefault(); editarIniciativa(it.dataset.c!); });
+    });
+  }
+
+  async function editarIniciativa(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const v = await uiFormulario(`Ordem de ${c.nome}`, [
+      { nome: 'tick', rotulo: 'Tick (menor age antes)', tipo: 'numero', valor: c.tick ?? 0, min: 0 },
+      { nome: 'ini', rotulo: 'Iniciativa (desempata, maior primeiro)', tipo: 'numero', valor: c.iniciativa ?? 0 },
+    ], { ok: 'Salvar' });
+    if (!v) return;
+    const tick = Math.max(0, parseInt(v.tick, 10) || 0);
+    const ini = parseInt(v.ini, 10) || 0;
+    const { error } = await SB.from('combatentes').update({ tick, iniciativa: ini }).eq('id', cid);
+    if (error) return uiErro('Erro: ' + error.message);
+    c.tick = tick; c.iniciativa = ini;
+    pintarIniciativa(); pintarTokens();
+  }
+
+  /**
+   * Encerra a vez: a peça vai para o fim da fila.
+   *
+   * O tick vira o maior da mesa mais um, e não `tick + 1`: com todo mundo em
+   * zero, somar um devolveria a vez para quem acabou de agir assim que o
+   * segundo da fila também agisse. Ir para o fim é a leitura de "passou".
+   *
+   * Quando as velocidades de ação entrarem, este é o lugar onde o custo do
+   * golpe entra no lugar do "+1".
+   */
+  async function encerrarVez(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const maior = naFila().reduce((m: number, x: any) => Math.max(m, x.tick ?? 0), 0);
+    const tick = maior + 1;
+    const { error } = await SB.from('combatentes').update({ tick }).eq('id', cid);
+    if (error) return uiErro('Erro: ' + error.message);
+    c.tick = tick;
+    pintarIniciativa(); pintarTokens();
+    const prox = daVez();
+    await logar(c, `${c.nome} encerrou a vez${prox && prox.id !== cid ? ` · agora é ${prox.nome}` : ''}`,
+      { acao: null });
   }
 
   function pintarLista() {
@@ -1063,6 +1248,15 @@ import MesaCab from '../../components/MesaCab.astro';
     // mapa foi digitalizado deitado.
     el('fa-girar').onclick = () => mudarRot((FUNDO.rot || 0) + 90);
 
+    const vezCorEl = el('fa-vez-cor') as HTMLInputElement;
+    const vezEl = el('fa-vez') as HTMLInputElement;
+    vezCorEl.oninput = () => { GRADE.vezCor = vezCorEl.value; aplicarGrade(); salvarAparencia(); };
+    vezEl.oninput = () => {
+      GRADE.vezForca = +vezEl.value;
+      el('fa-vezval').textContent = String(GRADE.vezForca);
+      aplicarGrade(); salvarAparencia();
+    };
+
     corEl.oninput = () => { GRADE.cor = corEl.value; aplicarGrade(); salvarAparencia(); };
     opEl.oninput = () => {
       GRADE.op = +opEl.value;
@@ -1225,14 +1419,14 @@ import MesaCab from '../../components/MesaCab.astro';
     // aparecer por cima já no primeiro desenho.
     const agora = new Date().toISOString();
     TOKENS[cid] = { q, r, em: agora };
-    pintarTokens(); pintarLista();
+    pintarTokens(); pintarLista(); pintarIniciativa();
     const { error } = await SB.from('arena_tokens').upsert(
       { arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: agora },
       { onConflict: 'arena_id,combatente_id' },
     );
     if (error) {
       if (antes) TOKENS[cid] = antes; else delete TOKENS[cid];
-      pintarTokens(); pintarLista();
+      pintarTokens(); pintarLista(); pintarIniciativa();
       return uiErro('Não deu para mover: ' + error.message);
     }
     if (!registrar) return;
@@ -1251,12 +1445,12 @@ import MesaCab from '../../components/MesaCab.astro';
   async function tirarDoMapa(cid: string, registrar = true) {
     const antes = TOKENS[cid] ? { ...TOKENS[cid] } : null;
     delete TOKENS[cid];
-    pintarTokens(); pintarLista();
+    pintarTokens(); pintarLista(); pintarIniciativa();
     const { error } = await SB.from('arena_tokens').delete()
       .eq('arena_id', ARENA.id).eq('combatente_id', cid);
     if (error) {
       if (antes) TOKENS[cid] = antes;
-      pintarTokens(); pintarLista();
+      pintarTokens(); pintarLista(); pintarIniciativa();
       return uiErro('Não deu para tirar: ' + error.message);
     }
     if (!registrar || !antes) return;
@@ -1311,10 +1505,14 @@ import MesaCab from '../../components/MesaCab.astro';
     const c = COMBS.find((z: any) => z.id === cid); if (!c) return;
     const m = el('tok-menu');
     const item = (id: string, txt: string, cls = '') => `<button data-a="${id}" class="${cls}">${txt}</button>`;
+    const ehAVez = daVez()?.id === cid;
     m.innerHTML = `<div class="tm-cab">${avatarDe(c, 'av-p')}<span class="tm-nome">${esc(c.nome)}</span></div>`
       + item('ataque', '⚔ Ataque')
       + item('curar', '✚ Recuperar Vida')
       + item('arte', '✶ Arte')
+      + '<div class="tm-sep"></div>'
+      + item('encerrar', ehAVez ? '⏭ Encerrar a vez' : '⏭ Passar para o fim da fila')
+      + item('ordem', '↕ Iniciativa e ticks')
       + '<div class="tm-sep"></div>'
       + item('tirar', '⏏ Tirar do mapa', 'perigo');
     m.hidden = false;
@@ -1328,6 +1526,8 @@ import MesaCab from '../../components/MesaCab.astro';
       if (a === 'ataque') iniciarMira(cid);
       else if (a === 'curar') curar(cid);
       else if (a === 'arte') usarArte(cid);
+      else if (a === 'encerrar') encerrarVez(cid);
+      else if (a === 'ordem') editarIniciativa(cid);
       else if (a === 'tirar') tirarDoMapa(cid);
     });
   }
