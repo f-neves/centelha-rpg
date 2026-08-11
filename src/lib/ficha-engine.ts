@@ -531,12 +531,12 @@ export function montarFicha(opts: FichaOpts) {
   function abrirArtePop(head: HTMLElement) {
     const id = head.dataset.artepop!;
     const a = (ARTE_D as any[]).find((x) => x.id === id); if (!a) return;
-    abrirPop(head, 'arte:' + id, 'arte-pop', `.arte-head[data-artepop="${id}"]`, () => conteudoArtePop(a));
+    abrirPop(head, 'arte:' + id, 'arte-pop', `.arte-nm[data-artepop="${id}"]`, () => conteudoArtePop(a));
   }
   function renderArtes() {
     const card = (a: any) => {
       const lvl = S.arte[a.id] || 0;
-      return `<div class="cam"><div class="cam-head arte-head" data-artepop="${a.id}"><span class="cam-nm">${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}</div>${artePrint(a, lvl)}</div>`;
+      return `<div class="cam"><div class="cam-head"><span class="cam-nm arte-nm" data-artepop="${a.id}">${a.nome}</span>${dotsHTML('arte2', a.id, lvl, 6, 0)}</div>${artePrint(a, lvl)}</div>`;
     };
     el('artes').innerHTML = col3(ARTE_D as any[], card);
     religarPop();
@@ -1997,8 +1997,8 @@ export function montarFicha(opts: FichaOpts) {
   // quem chega tabulando na caixinha de compra e não tem onde mais parar.
   const abreDaqui = (elx: HTMLElement) => (elx.dataset.efpop || elx.dataset.efbuy ? abrirEfeitoPop(elx) : abrirArtePop(elx));
   const chaveDe = (elx: HTMLElement) => (elx.dataset.efpop || elx.dataset.efbuy ? 'efeito:' : 'arte:') + (elx.dataset.efpop || elx.dataset.efbuy || elx.dataset.artepop);
-  const achaMouse = (t: EventTarget | null) => (t as HTMLElement)?.closest?.('.arte-head, [data-efpop]') as HTMLElement | null;
-  const achaFoco = (t: EventTarget | null) => (t as HTMLElement)?.closest?.('.arte-head, .ef-card') as HTMLElement | null;
+  const achaMouse = (t: EventTarget | null) => (t as HTMLElement)?.closest?.('.arte-nm, [data-efpop]') as HTMLElement | null;
+  const achaFoco = (t: EventTarget | null) => (t as HTMLElement)?.closest?.('.arte-nm, .ef-card') as HTMLElement | null;
   document.addEventListener('mouseover', (e) => { const h = achaMouse(e.target); if (h) { cancelarPop(); abreDaqui(h); } });
   document.addEventListener('mouseout', (e) => { if (achaMouse(e.target)) agendarPop(); });
   document.addEventListener('focusin', (e) => { const h = achaFoco(e.target); if (h) { cancelarPop(); abreDaqui(h); } });
@@ -2010,7 +2010,7 @@ export function montarFicha(opts: FichaOpts) {
     const t = e.target as HTMLElement;
     if (t.closest('[data-specpop-close]')) { closeSpecPop(); return; }
     if (specPopFor && !t.closest('.specpop') && !t.closest('.spec .sq')) closeSpecPop();
-    if (popPreso && !t.closest('.arte-head, [data-efpop]') && !t.closest('.ficha-pop')) fecharPop();
+    if (popPreso && !t.closest('.arte-nm, [data-efpop]') && !t.closest('.ficha-pop')) fecharPop();
     // O nome de uma Secundária livre é campo de texto: clicar nele é para escrever, não
     // para abrir o modal do traço (que continua acessível pelo resto da linha).
     const nm = t.closest<HTMLElement>('.trow .nm');
@@ -2052,7 +2052,7 @@ export function montarFicha(opts: FichaOpts) {
     if (ct) { OPEN.cam[ct.dataset.camtog!] = !OPEN.cam[ct.dataset.camtog!]; renderCaminhos(); return; }
     // No toque não há hover: clicar no cabeçalho da Arte ou no nome do Efeito prende o
     // cartão. Vem antes da compra de propósito, senão clicar no nome comprava o Efeito.
-    const anc = t.closest<HTMLElement>('.arte-head, [data-efpop]');
+    const anc = t.closest<HTMLElement>('.arte-nm, [data-efpop]');
     if (anc) {
       if (popPreso && popKey === chaveDe(anc)) fecharPop();
       else { abreDaqui(anc); popPreso = true; }
