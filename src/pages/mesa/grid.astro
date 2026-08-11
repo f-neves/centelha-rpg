@@ -63,6 +63,7 @@ import MesaCab from '../../components/MesaCab.astro';
           <button class="btn-fant" id="gr-caber" title="Caber na tela">⤢</button>
         </span>
         <button class="btn-fant" id="gr-cheia" title="Tela cheia (F)">⛶</button>
+        <span class="gr-vivo" id="gr-vivo" hidden><span class="pt"></span><span id="gr-vivo-n"></span></span>
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
       </div>
 
@@ -346,6 +347,40 @@ import MesaCab from '../../components/MesaCab.astro';
   .seta { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 7 5; }
   .seta.regua { stroke: var(--gold); stroke-dasharray: 4 4; stroke-width: 2.5; }
 
+  /* ---- ao vivo: quem está vendo ----
+     Um ponto e um número, do tamanho de um selo. É o que responde à única
+     pergunta que o tempo real levanta ("isto está funcionando?"), e responder
+     com um painel seria maior que a resposta. */
+  .gr-vivo { display: inline-flex; align-items: center; gap: .22rem; padding: .05rem .3rem;
+    border: 1px solid var(--rule); border-radius: 999px; font-size: calc(var(--fs-micro) * .9);
+    font-variant-numeric: tabular-nums; color: var(--ink-soft); cursor: help; }
+  .gr-vivo .pt { width: .42rem; height: .42rem; border-radius: 50%; background: #43b85c;
+    box-shadow: 0 0 0 0 rgba(67,184,92,.6); animation: vivo-pulsa 2.6s ease-out infinite; }
+  .gr-vivo.off { opacity: .6; }
+  .gr-vivo.off .pt { background: var(--ink-soft); animation: none; box-shadow: none; }
+  @keyframes vivo-pulsa { 70%, 100% { box-shadow: 0 0 0 .35rem rgba(67,184,92,0); } }
+  @media (prefers-reduced-motion: reduce) { .gr-vivo .pt { animation: none; } }
+
+  /* ---- o ping ----
+     Dois anéis abrindo a partir da casa. Abrem em tempos diferentes de propósito:
+     um anel só lê como um erro de desenho, dois lêem como alguém batendo o dedo
+     na mesa. O do mestre é dourado, o do jogador é da cor de destaque, para a
+     mesa saber de quem partiu sem ler o nome. */
+  .gr-ping { pointer-events: none; --pg: var(--accent); }
+  .gr-ping.de-mestre { --pg: var(--gold); }
+  .gr-ping .pg-o { fill: none; stroke: var(--pg); stroke-width: 3; transform-box: fill-box;
+    transform-origin: center; animation: ping-abre 1.3s ease-out 2; }
+  .gr-ping .pg-2 { animation-delay: .28s; }
+  .gr-ping .pg-c { fill: var(--pg); animation: ping-mira 2.6s ease-out forwards; }
+  .gr-ping .pg-n { text-anchor: middle; font-family: 'Cinzel', serif; font-size: 11px; fill: var(--pg);
+    paint-order: stroke; stroke: rgba(0,0,0,.8); stroke-width: 3; stroke-linejoin: round;
+    animation: ping-mira 2.6s ease-out forwards; }
+  @keyframes ping-abre { from { transform: scale(.25); opacity: .95; } to { transform: scale(1.15); opacity: 0; } }
+  @keyframes ping-mira { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .gr-ping .pg-o, .gr-ping .pg-c, .gr-ping .pg-n { animation-duration: .01s; animation-iteration-count: 1; }
+  }
+
   /* ---- endereço das casas na moldura ---- */
   .rot-eixo { fill: var(--ink-soft); font-family: 'Cinzel', serif; font-size: 11px;
     text-anchor: middle; opacity: .8; }
@@ -408,6 +443,11 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-token { position: absolute; transform: translate(-50%, -50%); cursor: grab;
     display: flex; flex-direction: column; align-items: center; gap: .05rem; touch-action: none; }
   .gr-token.arrastando { opacity: .35; }
+  /* A peça que andou por ordem de OUTRA tela desliza até a casa nova. A classe
+     entra só nesse caso: no arrasto local o dedo já é a animação, e uma
+     transição atrás do ponteiro daria a impressão de peça pesada. */
+  .gr-token.andando { transition: left .38s cubic-bezier(.3,.8,.35,1), top .38s cubic-bezier(.3,.8,.35,1); }
+  @media (prefers-reduced-motion: reduce) { .gr-token.andando { transition: none; } }
   /* O token é desenhado no TAMANHO FÍSICO dele: `--tok` vem em pixels do mundo,
      calculados a partir do diâmetro em metros e da escala da arena. É por isso
      que o mesmo Médio cobre um hexágono na arena de 1 m e dois na de 0,5 m. */
@@ -577,8 +617,11 @@ import MesaCab from '../../components/MesaCab.astro';
 <script>
   import {
     abrirMesa, u, esc, avatarHTML, urlsImagens, pctDe, novoId, debounce,
-    semMigracao14, avisoMigracao, tierDe, tierCls, somarCondicoes, COND,
+    semMigracao14, avisoMigracao, tierDe, tierCls, somarCondicoes, COND, nomesDe,
   } from '../../lib/mesa-core';
+  import {
+    abrirCanal, nomeParaPresenca, type Canal, type Assunto, type Motivo, type Ping,
+  } from '../../lib/mesa-tempo-real';
   import { MON, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import {
@@ -620,6 +663,9 @@ import MesaCab from '../../components/MesaCab.astro';
   // A ficha crua por personagem, que as Artes leem (Artes, Efeitos comprados,
   // Centelha e equipamento). Vem do mesmo carregamento que monta o RESUMO.
   let FICHAS: Record<string, any> = {};
+  // O canal da mesa. Null enquanto a página abre, e null para sempre se o
+  // realtime não subir: tudo o que depende dele é opcional por construção.
+  let RT: Canal | null = null;
 
   /**
    * O que a aba empresta ao módulo das Artes.
@@ -636,11 +682,16 @@ import MesaCab from '../../components/MesaCab.astro';
     // de iniciativa mostra. `encontros.tick_atual` é da aba Combate.
     tickAgora: () => daVez()?.tick ?? ENC?.tick_atual ?? 0,
     logar,
-    recarregar: carregar,
+    // As Artes escrevem em três lugares (o efeito, a peça invocada, a Vida e as
+    // condições de quem foi mordido) e sempre terminam chamando um destes dois.
+    // A campainha toca AQUI, e não dentro de cada escrita lá: assim o módulo das
+    // Artes continua sem saber que existe tempo real.
+    recarregar: async () => { await carregar(); avisarMudancas(); },
     repintar: () => {
       pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
       pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
+      avisarMudancas();
     },
   });
 
@@ -666,6 +717,10 @@ import MesaCab from '../../components/MesaCab.astro';
     // que mantém o mapa colado no pé da tela quando a janela muda de tamanho.
     addEventListener('resize', debounce(() => ajustarAltura(), 150));
     await carregar();
+    // Depois do primeiro desenho, e não antes: quem acaba de ler tudo não tem o
+    // que ressincronizar, e um aviso chegando no meio do carregamento pediria
+    // uma segunda leitura da mesma coisa.
+    await ligarTempoReal(ctx);
   }
 
   // =============================================================== carregar
@@ -674,15 +729,27 @@ import MesaCab from '../../components/MesaCab.astro';
     aviso.innerHTML = '';
 
     // As arenas. O mestre lê a tabela; o jogador lê a view, que só entrega a ativa.
-    const { data: arenas, error } = await SB.from(MESTRE ? 'mesa_arenas' : 'arena_visao')
-      .select('*').eq('mesa_id', ID).order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    //
+    // A ordenação é só do mestre, e isto não é detalhe: `ordem` e `criado_em`
+    // são colunas de bastidor e não estão na view. Pedi-las ao jogador fazia o
+    // Postgres responder "column arena_visao.ordem does not exist", que a tela
+    // lia como "falta a migração 15" e mandava rodar de novo um SQL já
+    // aplicado. Com uma arena ativa por mesa, a view devolve uma linha só:
+    // ordenar não teria o que ordenar.
+    let consulta = SB.from(MESTRE ? 'mesa_arenas' : 'arena_visao').select('*').eq('mesa_id', ID);
+    if (MESTRE) consulta = consulta.order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    const { data: arenas, error } = await consulta;
     if (error) {
       // Dois erros parecidos e conselhos opostos. Sem a migração, o Postgres diz
       // "does not exist" e a saída é rodar o SQL. Já o PostgREST guarda um cache
       // do schema e, nos primeiros segundos depois de uma tabela nova, responde
       // "Could not find the table … in the schema cache" — a tabela existe, e
       // mandar rodar de novo uma migração já aplicada é o pior palpite possível.
-      const semTabela = /does not exist|undefined table/i.test(error.message);
+      // "relation … does not exist" é tabela faltando; "column … does not exist"
+      // é consulta errada, e mandar rodar uma migração por causa dela é o pior
+      // conselho possível: já aconteceu, e escondeu um bug de verdade por
+      // semanas atrás de uma mensagem tranquilizadora.
+      const semTabela = /relation .* does not exist|undefined table/i.test(error.message);
       const cacheVelho = error.code === 'PGRST205' || /schema cache/i.test(error.message);
       if (semTabela && !cacheVelho) {
         avisoMigracao(aviso, 'O tabuleiro de hexágonos');
@@ -724,7 +791,54 @@ import MesaCab from '../../components/MesaCab.astro';
     await carregarCombatentes();
     await carregarTokens();
     await carregarEfeitos(ctxArtes());
+    await carregarLog();
     pintar();
+  }
+
+  /**
+   * O registro, pelo caminho de cada um.
+   *
+   * O mestre lê a coluna `log` da própria arena, que ele já tem na mão. O
+   * jogador lê `arena_log_visao`, uma linha por entrada, e pede só as 60
+   * últimas: antes ele baixava o log INTEIRO (até 300 entradas) a cada peça
+   * movida, o que num tempo real vira a conta mais cara da página.
+   *
+   * Banco sem a migração 20: a view não existe, e o log volta a vir de dentro
+   * de `arena_visao`, como vinha. O aviso de "rode a migração" não aparece de
+   * propósito, porque nada quebrou.
+   */
+  let SEM_LOG_VISAO = false;
+  async function carregarLog(doBanco = false) {
+    if (MESTRE) {
+      // Na abertura o log já veio junto com a arena, e pedir de novo seria uma
+      // ida ao servidor por nada. `doBanco` é o caso do tempo real: a cópia em
+      // memória desta aba é de antes do que a outra tela acabou de escrever.
+      if (doBanco && ARENA?.id) {
+        const { data } = await SB.from('mesa_arenas').select('log').eq('id', ARENA.id).maybeSingle();
+        if (Array.isArray(data?.log) && ARENA) ARENA.log = data.log;
+      }
+      LOG = Array.isArray(ARENA?.log) ? ARENA.log : [];
+      return;
+    }
+    if (!SEM_LOG_VISAO) {
+      const { data, error } = await SB.from('arena_log_visao')
+        .select('id, ts, txt, ord').eq('arena_id', ARENA.id)
+        .order('ord', { ascending: false }).limit(60);
+      // Vieram do mais novo para o mais velho, para o corte pegar o fim da
+      // história; a tela lê do começo.
+      if (!error) { LOG = (data || []).slice().reverse(); return; }
+      // Uma vez que a view não existe, ela não vai passar a existir no meio da
+      // sessão: insistir custaria uma requisição perdida por peça movida.
+      SEM_LOG_VISAO = true;
+    }
+    // Banco anterior à migração 20: o registro ainda vem pendurado na arena, e
+    // desce inteiro. Por isso só é rebuscado quando chegou linha nova de fato,
+    // e nunca na abertura, quando ele já veio junto.
+    if (doBanco && ARENA?.id) {
+      const { data } = await SB.from('arena_visao').select('log').eq('id', ARENA.id).maybeSingle();
+      if (Array.isArray(data?.log)) ARENA.log = data.log;
+    }
+    LOG = Array.isArray(ARENA?.log) ? ARENA.log : [];
   }
 
   /** O encontro ativo e quem está nele. É de lá que saem os tokens. */
@@ -909,12 +1023,19 @@ import MesaCab from '../../components/MesaCab.astro';
     await resolverFundo();
     el('gr-nome').textContent = ARENA.nome || 'Arena';
     const escala = Number(ARENA.escala_m) || 1;
+    // "fora de jogo" é aviso de bastidor: só o mestre abre arena que não está em
+    // campo. Pela view o jogador nem recebe a coluna `ativa`, e o texto saía
+    // dizendo o contrário do que acontecia.
     el('gr-medida').textContent =
-      `${ARENA.cols} × ${ARENA.rows} hexágonos · 1 hex = ${escala} m${ARENA.ativa ? '' : ' · fora de jogo'}`;
+      `${ARENA.cols} × ${ARENA.rows} hexágonos · 1 hex = ${escala} m${MESTRE && !ARENA.ativa ? ' · fora de jogo' : ''}`;
     const f = ARENA.fundo && typeof ARENA.fundo === 'object' ? ARENA.fundo : {};
     FUNDO = { x: +f.x || 0, y: +f.y || 0, z: +f.z || 1, rot: +f.rot || 0 };
     GRADE = ARENA.grade && typeof ARENA.grade === 'object' ? { ...ARENA.grade } : {};
-    LOG = Array.isArray(ARENA.log) ? ARENA.log : [];
+    // O mestre troca de arena pelo seletor sem passar por `carregar`, e o
+    // registro é de cada arena: reler dele aqui é o que faz o histórico
+    // acompanhar a troca. Para o jogador não existe seletor, e o log já veio
+    // pela view em `carregarLog`.
+    if (MESTRE) LOG = Array.isArray(ARENA.log) ? ARENA.log : [];
     pintarSeletor();
     pintarTabuleiro();
     pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
@@ -927,6 +1048,7 @@ import MesaCab from '../../components/MesaCab.astro';
     aplicarGrade();
     sincronizarControles();
     ajustarAltura();
+    marcarEstado();
   }
 
   function pintarSeletor() {
@@ -984,7 +1106,7 @@ import MesaCab from '../../components/MesaCab.astro';
           points="${verticesHex(c.x + mg.x, c.y + mg.y, RAIO)}" />`;
       }).join('')
       + rotulosHTML(cols, rows, mg)
-      + '<g id="gr-alcance"></g><g id="gr-seta"></g>';
+      + '<g id="gr-alcance"></g><g id="gr-seta"></g><g id="gr-pings"></g>';
 
     const img = el('gr-fundo') as HTMLImageElement;
     const src = ARENA.fundo_url || (ARENA.fundo_path ? IMG_FUNDO : '');
@@ -1092,7 +1214,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (error) uiErro(/grade/i.test(error.message)
       ? 'A coluna "grade" ainda não existe. Rode supabase/migracao-16.sql.'
       : 'Erro ao salvar a aparência: ' + error.message);
-    else { ARENA.fundo = { ...FUNDO }; ARENA.grade = { ...GRADE }; }
+    else { ARENA.fundo = { ...FUNDO }; ARENA.grade = { ...GRADE }; RT?.avisar('arena'); }
   }, 600);
 
   function sincronizarControles() {
@@ -1324,6 +1446,7 @@ import MesaCab from '../../components/MesaCab.astro';
       r.c.iniciativa = r.v; r.c.tick = 0;
     }
     pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
     const ordem = rolado.slice().sort((a, b) => b.v - a.v).map((r) => `${r.c.nome} ${r.v}`).join(' · ');
     await logar(null, `Iniciativa rolada: ${ordem}`, { acao: null });
   }
@@ -1341,6 +1464,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (error) return uiErro('Erro: ' + error.message);
     c.tick = tick; c.iniciativa = ini;
     pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
   }
 
   /**
@@ -1361,6 +1485,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (error) return uiErro('Erro: ' + error.message);
     c.tick = tick;
     pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
     const prox = daVez();
     await logar(c, `${c.nome} encerrou a vez${prox && prox.id !== cid ? ` · agora é ${prox.nome}` : ''}`,
       { acao: null });
@@ -1717,6 +1842,7 @@ import MesaCab from '../../components/MesaCab.astro';
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
       return uiErro('Não deu para mover: ' + error.message);
     }
+    avisarAgora('tokens');
     if (!registrar) return;
     const c = COMBS.find((x: any) => x.id === cid);
     const casa = nomeHex(q, r);
@@ -1744,6 +1870,7 @@ import MesaCab from '../../components/MesaCab.astro';
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
       return uiErro('Não deu para tirar: ' + error.message);
     }
+    avisarAgora('tokens');
     if (!registrar || !antes) return;
     const c = COMBS.find((x: any) => x.id === cid);
     await logar(c, `${c?.nome} saiu do mapa (estava em ${nomeHex(antes.q, antes.r)})`,
@@ -2001,6 +2128,214 @@ import MesaCab from '../../components/MesaCab.astro';
         >${passos} hex · ${nomeHex(ha.q, ha.r)}→${nomeHex(hb.q, hb.r)}</text>`;
   }
 
+  // ============================================================ tempo real
+  /**
+   * O tabuleiro ao vivo.
+   *
+   * A regra é a mesma da campainha em `mesa-tempo-real.ts`: quem escreve avisa
+   * com uma palavra, quem ouve relê aquele pedaço pela própria view. Nada de
+   * estado viaja pelo canal, e por isso o jogador não recebe aqui uma vírgula a
+   * mais do que a migração 14 já lhe dava — a peça oculta continua sem sair de
+   * `token_visao`, e a Vida exata do inimigo continua sem sair de
+   * `combate_visao`.
+   *
+   * O que se ganha com isso é a mesa: o mestre arrasta o goblin e os cinco
+   * celulares em volta da mesa mostram o goblin andando, sem ninguém apertar
+   * nada. Era a última coisa que separava este Grid de uma mesa virtual.
+   */
+  let EU_NOME = '', EU_PAPEL: 'mestre' | 'jogador' = 'jogador';
+
+  async function ligarTempoReal(ctx: any) {
+    EU_PAPEL = MESTRE ? 'mestre' : 'jogador';
+    let perfil = '';
+    try { perfil = (await nomesDe(SB, [EU]))[EU] || ''; } catch {}
+    EU_NOME = nomeParaPresenca(perfil || ctx?.user?.user_metadata?.nome, EU_PAPEL);
+    RT = abrirCanal({
+      sb: SB, mesa: ID,
+      eu: { id: EU, nome: EU_NOME, papel: EU_PAPEL, aba: 'grid' },
+      // Redesenhar por baixo da mão é pior do que atrasar um segundo: quem está
+      // arrastando uma peça, mirando um ataque, alinhando a arte ou com um
+      // diálogo aberto perderia o gesto no meio. O aviso espera e entra depois.
+      ocupado: () => !!ARR || !!MIRA || AJUSTANDO
+        || !el('tok-menu').hidden || !!document.querySelector('dialog[open]'),
+      aoAvisar: aplicarAvisos,
+      aoPingar: mostrarPing,
+      aoPresenca: pintarPresenca,
+      aoEstado: pintarPresenca,
+    });
+    pintarPresenca();
+    ligarPing();
+  }
+
+  /**
+   * A campainha toca pelo que MUDOU, e não por quem mexeu.
+   *
+   * `verificarEfeitos` termina em `repintar()` toda vez que alguém anda, mesmo
+   * sem nenhum efeito no chão. Tocar cego ali custava caro do outro lado: um
+   * aviso de "combatentes" obriga a reler a lista inteira com as fichas e os
+   * retratos, e ainda por cima descarta a peça deslizando, porque o desenho
+   * completo troca o nó. A assinatura abaixo é o preço certo: três linhas de
+   * texto comparadas na memória decidem se vale acordar a mesa.
+   */
+  let ASSIN = { combs: '', tokens: '', efeitos: '' };
+  const assinatura = () => ({
+    combs: COMBS.map((c: any) =>
+      `${c.id}:${c.pv_atual}:${c.tick}:${c.iniciativa}:${(c.condicoes || []).length}`).join('|'),
+    tokens: Object.keys(TOKENS).sort().map((k) => `${k}:${TOKENS[k].q},${TOKENS[k].r}`).join('|'),
+    // O painel lateral é desenhado a partir dos efeitos vivos: o texto dele
+    // muda exatamente quando eles mudam, e sai de graça.
+    efeitos: el('gr-ef-lista').textContent || '',
+  });
+  /** Guarda o estado atual sem tocar nada. Usado depois de todo desenho completo. */
+  const marcarEstado = () => { ASSIN = assinatura(); };
+  /**
+   * Toca a campainha e dá o que mudou por conferido.
+   *
+   * Sem o "por conferido" a mudança seria anunciada duas vezes: uma aqui, na
+   * hora, e outra quando `verificarEfeitos` terminasse em `repintar()` e a
+   * conferência ainda a visse como novidade. O outro lado pagaria duas
+   * releituras por peça movida.
+   */
+  const avisarAgora = (...a: Assunto[]) => { RT?.avisar(...a); marcarEstado(); };
+  function avisarMudancas() {
+    const a = assinatura();
+    const mudou: Assunto[] = [];
+    if (a.combs !== ASSIN.combs) mudou.push('combatentes');
+    if (a.tokens !== ASSIN.tokens) mudou.push('tokens');
+    if (a.efeitos !== ASSIN.efeitos) mudou.push('efeitos');
+    ASSIN = a;
+    if (mudou.length) RT?.avisar(...mudou);
+  }
+
+  /**
+   * O que reler quando a campainha toca.
+   *
+   * Cirúrgico de propósito. `carregar()` inteiro custa a lista de combatentes,
+   * as fichas dos personagens, as URLs assinadas dos retratos e o redesenho do
+   * SVG do tabuleiro; fazer isso a cada peça movida seria trocar o poll de oito
+   * segundos por um poll a cada movimento, que é pior. Só a troca de arena e a
+   * troca de encontro mudam o chão o bastante para valer a recarga completa.
+   */
+  async function aplicarAvisos(assuntos: Set<Assunto>, motivo: Motivo) {
+    if (!ARENA || motivo !== 'aviso' || assuntos.has('arena') || assuntos.has('encontro')) {
+      await carregar();
+      return;
+    }
+    let redesenhar = false;
+    if (assuntos.has('combatentes')) { await carregarCombatentes(); redesenhar = true; }
+    if (assuntos.has('tokens')) {
+      const antes = TOKENS;
+      await carregarTokens();
+      // Deslizar em vez de repintar: é a diferença entre a peça andar e a peça
+      // piscar de um lado para o outro. Só vale quando nada mais mudou, porque
+      // uma repintura já joga fora o nó com a transição.
+      if (redesenhar || !deslizarTokens(antes)) redesenhar = true;
+      else { pintarLista(); pintarIniciativa(); pintarAlcance(); }
+    }
+    if (redesenhar) { pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance(); }
+    if (assuntos.has('efeitos')) {
+      await carregarEfeitos(ctxArtes());
+      pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
+      pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
+    }
+    if (assuntos.has('registro')) { await carregarLog(true); pintarLog(); }
+    // O que veio de fora não é mudança minha: guardar o estado agora evita que a
+    // próxima conferência o devolva ao remetente.
+    marcarEstado();
+  }
+
+  /**
+   * Move as peças que andaram sem redesenhar o tabuleiro.
+   *
+   * `pintarTokens` troca o innerHTML da camada inteira, e transição de CSS não
+   * roda em elemento recém-nascido: ele nasce no valor final. Mexendo só no
+   * `left`/`top` do nó que já está na página, o mesmo elemento continua vivo e
+   * a transição faz o resto. É o mesmo motivo pelo qual o anel de Vida tem o
+   * `atualizarAnel`.
+   *
+   * Desiste (e deixa o desenho completo assumir) sempre que o arranjo mudou de
+   * verdade: alguém entrou, alguém saiu, ou a casa é dividida — nesse caso as
+   * duas peças da casa se deslocam em ângulo, e isso é conta do desenho.
+   */
+  function deslizarTokens(antes: Record<string, any>): boolean {
+    const a = Object.keys(antes), b = Object.keys(TOKENS);
+    if (a.length !== b.length || b.some((i) => !(i in antes))) return false;
+    const mudaram = b.filter((i) => antes[i].q !== TOKENS[i].q || antes[i].r !== TOKENS[i].r);
+    if (!mudaram.length) return true;
+    const quantos = (mapa: Record<string, any>, q: number, r: number) =>
+      Object.values(mapa).filter((t: any) => t.q === q && t.r === r).length;
+    for (const i of mudaram) {
+      if (quantos(antes, antes[i].q, antes[i].r) > 1) return false;
+      if (quantos(TOKENS, TOKENS[i].q, TOKENS[i].r) > 1) return false;
+    }
+    const mg = margem();
+    for (const i of mudaram) {
+      const no = document.querySelector<HTMLElement>(`.gr-token[data-c="${CSS.escape(i)}"]`);
+      if (!no) return false;
+      const p = centroHex(TOKENS[i].q, TOKENS[i].r, RAIO);
+      no.classList.add('andando');
+      no.style.left = `${(p.x + mg.x).toFixed(1)}px`;
+      no.style.top = `${(p.y + mg.y).toFixed(1)}px`;
+    }
+    return true;
+  }
+
+  /** O contador de quem está vendo, e o sinal de que o canal está de pé. */
+  function pintarPresenca() {
+    const caixa = el('gr-vivo');
+    const num = el('gr-vivo-n');
+    if (!RT) { caixa.hidden = true; return; }
+    caixa.hidden = false;
+    const ligado = RT.ligado();
+    const gente = RT.presentes();
+    caixa.classList.toggle('off', !ligado);
+    num.textContent = ligado ? String(Math.max(1, gente.length)) : '—';
+    caixa.title = ligado
+      ? `Ao vivo · ${gente.length ? gente.map((g) =>
+          `${g.nome} (${g.papel === 'mestre' ? 'mestre' : 'jogador'}${g.aba ? ' · ' + g.aba : ''})`).join(', ')
+        : 'só você'}\nDois cliques no mapa apontam uma casa para todo mundo.`
+      : 'Sem tempo real agora. O ↻ ao lado busca as posições na mão.';
+  }
+
+  /**
+   * O ping: dois cliques numa casa e ela pisca na tela de todo mundo.
+   *
+   * É a coisa que a mesa faz o tempo todo em volta de um tabuleiro de verdade,
+   * apontando com o dedo, e que some quando o tabuleiro é uma tela. Vale para
+   * o jogador também, de propósito: "cuidado com aquele canto" é fala dele.
+   */
+  function ligarPing() {
+    el('gr-palco').addEventListener('dblclick', (ev) => {
+      if (AJUSTANDO || MIRA) return;
+      const h = hexNaTela(ev.clientX, ev.clientY);
+      if (!h) return;
+      ev.preventDefault();
+      const casa = nomeHex(h.q, h.r);
+      // O eco local é imediato e não depende do servidor: quem apontou tem de
+      // ver que apontou, mesmo com a rede ruim.
+      mostrarPing({ q: h.q, r: h.r, casa, nome: EU_NOME, papel: EU_PAPEL });
+      RT?.pingar({ q: h.q, r: h.r, casa });
+    });
+  }
+
+  /** Dois anéis abrindo em cima da casa, e o nome de quem apontou. */
+  function mostrarPing(p: Ping) {
+    const g = document.getElementById('gr-pings');
+    if (!g || !ARENA || !dentro({ q: p.q, r: p.r }, ARENA.cols, ARENA.rows)) return;
+    const mg = margem();
+    const c = centroHex(p.q, p.r, RAIO);
+    const x = (c.x + mg.x).toFixed(1);
+    const y = (c.y + mg.y).toFixed(1);
+    const no = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    no.setAttribute('class', 'gr-ping' + (p.papel === 'mestre' ? ' de-mestre' : ''));
+    no.innerHTML = `<circle class="pg-o" cx="${x}" cy="${y}" r="${RAIO}" />
+      <circle class="pg-o pg-2" cx="${x}" cy="${y}" r="${RAIO}" />
+      <circle class="pg-c" cx="${x}" cy="${y}" r="5" />
+      <text class="pg-n" x="${x}" y="${(+y + RAIO + 14).toFixed(1)}">${esc(p.nome)}</text>`;
+    g.appendChild(no);
+    setTimeout(() => no.remove(), 2600);
+  }
+
   // ============================================================== ataque
   let MIRA: { atacante: string } | null = null;
 
@@ -2137,6 +2472,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
     alvo.pv_atual = pv;
     atualizarAnel(alvo); pintarLista();
+    avisarAgora('combatentes');
     const est = alvo.pv_max ? ` · ${alvo.pv_atual}/${alvo.pv_max} (${tierDe(pv, alvo.pv_max).estado})` : '';
     await logar(alvo, `${atacante.nome} acertou ${alvo.nome}: ${liquido} de dano (${TIPO_LBL[tipo]})`
       + (s > 0 ? ` [${bruto} − ${s} abs]` : '') + est, { acao: null });
@@ -2154,6 +2490,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (error) return uiErro('Erro: ' + error.message);
     c.pv_atual = pv;
     atualizarAnel(c); pintarLista();
+    avisarAgora('combatentes');
     await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`, { acao: null });
   }
 
@@ -2204,6 +2541,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
   async function persistirLog() {
     const { error } = await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);
+    if (!error) RT?.avisar('registro');
     if (error) uiErro(/log/i.test(error.message)
       ? 'A coluna "log" da arena ainda não existe. Rode supabase/migracao-17.sql.'
       : 'Erro ao gravar o registro: ' + error.message);
@@ -2306,6 +2644,10 @@ import MesaCab from '../../components/MesaCab.astro';
       const { error } = await SB.rpc('ativar_arena', { p_id: ARENA.id });
       if (error) return uiErro('Erro: ' + error.message);
       await carregar();
+      // Pôr outra arena em jogo troca o chão debaixo do grupo inteiro: é o
+      // aviso que mais precisa chegar, e o único em que o jogador pode estar
+      // olhando um mapa que deixou de existir para ele.
+      RT?.avisar('arena');
     };
     el('gr-excluir').onclick = async () => {
       if (!await uiConfirmar(`Excluir a arena "${ARENA.nome}"? As posições dos tokens nela somem junto.`,
@@ -2313,6 +2655,7 @@ import MesaCab from '../../components/MesaCab.astro';
       const { error } = await SB.from('mesa_arenas').delete().eq('id', ARENA.id);
       if (error) return uiErro('Erro: ' + error.message);
       await carregar();
+      RT?.avisar('arena');
     };
   }
 
@@ -2346,6 +2689,7 @@ import MesaCab from '../../components/MesaCab.astro';
         if (!ARENAS.length) await SB.rpc('ativar_arena', { p_id: data.id });
       }
       await carregar();
+      RT?.avisar('arena');
     };
     dlg.showModal();
   }
@@ -2397,6 +2741,7 @@ import MesaCab from '../../components/MesaCab.astro';
       .update({ fundo_path: path, arquivo_id: arquivoId, fundo_url: null }).eq('id', ARENA.id);
     if (error) return uiErro('Erro: ' + error.message);
     await carregar();
+    RT?.avisar('arena');
   }
 
   main();

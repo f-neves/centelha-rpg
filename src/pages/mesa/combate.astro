@@ -485,8 +485,9 @@ import MesaCab from '../../components/MesaCab.astro';
   import {
     abrirMesa, u, esc, norm, sinal, avatarHTML, urlsImagens, hpBarHTML, estadoChipHTML, atualizarBarra,
     tierDe, pctDe, condChipHTML, somarCondicoes, COND, COND_LISTA, COND_GRUPOS, novoId, bancoAntigo,
-    revelarDaMesa, REVELAR_PADRAO, semMigracao14,
+    revelarDaMesa, REVELAR_PADRAO, semMigracao14, nomesDe,
   } from '../../lib/mesa-core';
+  import { abrirCanal, nomeParaPresenca, type Canal } from '../../lib/mesa-tempo-real';
   import type { Condicao, NivelVida, Revelar } from '../../lib/mesa-core';
   import { abrirRevelacao, resumoRevelacao } from '../../lib/mesa-revelacao';
   import { MON, MON_LIST, cardCriaturaHTML, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
@@ -513,6 +514,9 @@ import MesaCab from '../../components/MesaCab.astro';
   let RESUMO: Record<string, any> = {};
   let LOG: any[] = [];
   let VER_OCULTOS = true;
+  // O canal da mesa (o mesmo do Grid). Null até a página abrir, e null para
+  // sempre se o realtime não subir: tudo que depende dele é opcional.
+  let RT: Canal | null = null;
   const DESFAZER: { rotulo: string; volta: () => Promise<void> }[] = [];
 
   /**
@@ -525,6 +529,10 @@ import MesaCab from '../../components/MesaCab.astro';
       const m = /column "?([a-z_]+)"?/i.exec(error.message || '');
       if (m && m[1] in cols) { const c2 = { ...cols }; delete c2[m[1]]; return upComb(cid, c2); }
     }
+    // Todo dano, toda condição e todo tick desta aba passam por aqui: é o lugar
+    // certo para tocar a campainha uma vez só, em vez de espalhar o aviso por
+    // vinte chamadas.
+    if (!error) RT?.avisar('combatentes');
     return { error };
   }
   async function insComb(linhas: Record<string, any>[]): Promise<any> {
@@ -535,6 +543,7 @@ import MesaCab from '../../components/MesaCab.astro';
         return insComb(linhas.map((l) => { const c = { ...l }; delete c[m[1]]; return c; }));
       }
     }
+    if (!error) RT?.avisar('combatentes');
     return { error };
   }
 
@@ -545,9 +554,42 @@ import MesaCab from '../../components/MesaCab.astro';
     SB = ctx.sb; MESA_ID = ctx.id; EH_MESTRE = ctx.ehMestre; MESA = ctx.mesa; CTX = ctx;
     REV = revelarDaMesa(MESA);
     await carregar();
-    // O jogador não recebe eventos do banco; um pulso de oito segundos mantém a
-    // tela dele perto da verdade sem transformar a página num relógio.
-    if (!EH_MESTRE) setInterval(() => carregar(true), 8000);
+    await ligarTempoReal(ctx);
+    // O pulso de oito segundos deixou de ser o motor e virou a rede: ele só
+    // corre enquanto o canal estiver fora do ar. Antes ele recarregava a página
+    // inteira do jogador 450 vezes por hora, tivesse acontecido alguma coisa ou
+    // não; agora, com o canal de pé, ele não corre nenhuma.
+    if (!EH_MESTRE) setInterval(() => { if (!RT?.ligado()) carregar(true); }, 8000);
+  }
+
+  /**
+   * A aba do combate no mesmo canal do Grid.
+   *
+   * O mesmo aviso serve as duas telas: o mestre que aplica o dano aqui move o
+   * anel de Vida no tabuleiro da TV, e a peça movida no tabuleiro reordena a
+   * fila daqui. São a mesma cena vista de dois ângulos, e até agora cada ângulo
+   * tinha a sua própria verdade até alguém apertar F5.
+   *
+   * O que chega aqui é sempre `carregar(true)`: esta página não tem estado
+   * parcial que valha costurar, e a recarga silenciosa é a mesma que o pulso já
+   * fazia, só que agora quando algo de fato mudou.
+   */
+  async function ligarTempoReal(ctx: any) {
+    const papel: 'mestre' | 'jogador' = EH_MESTRE ? 'mestre' : 'jogador';
+    let perfil = '';
+    try { perfil = (await nomesDe(SB, [ctx.user.id]))[ctx.user.id] || ''; } catch {}
+    RT = abrirCanal({
+      sb: SB, mesa: MESA_ID,
+      eu: { id: ctx.user.id, nome: nomeParaPresenca(perfil, papel), papel, aba: 'combate' },
+      // Redesenhar embaixo de um diálogo aberto ou de um campo em edição perde
+      // o que a pessoa estava escrevendo. O aviso espera a mão sair.
+      ocupado: () => {
+        if (document.querySelector('dialog[open]')) return true;
+        const a = document.activeElement as HTMLElement | null;
+        return !!a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.isContentEditable);
+      },
+      aoAvisar: () => { carregar(true); },
+    });
   }
 
   async function carregar(silencioso = false) {
@@ -689,6 +731,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (error && /estado/i.test(error.message)) { delete linha.estado; ({ error } = await SB.from('encontros').insert(linha)); }
     if (error) return uiErro('Erro: ' + error.message);
     await carregar();
+    RT?.avisar('encontro');
   }
 
   // ================================================================== pintar
@@ -884,7 +927,9 @@ import MesaCab from '../../components/MesaCab.astro';
 
   // ==================================================================== log
   const fmtHora = (ts: string) => { try { return new Date(ts).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); } catch { return ''; } };
-  const persistLog = async () => { try { await SB.from('encontros').update({ log: LOG }).eq('id', ENC.id); } catch {} };
+  const persistLog = async () => {
+    try { await SB.from('encontros').update({ log: LOG }).eq('id', ENC.id); RT?.avisar('registro'); } catch {}
+  };
   /**
    * Escreve no registro em duas redações.
    *
@@ -1049,6 +1094,7 @@ import MesaCab from '../../components/MesaCab.astro';
       let { error } = await SB.from('encontros').update(upd).eq('id', ENC.id);
       if (error && /estado/i.test(error.message)) await SB.from('encontros').update({ ativo: false }).eq('id', ENC.id);
       await carregar();
+      RT?.avisar('encontro');
     };
     el('add-pcs').onclick = adicionarPCs;
     el('add-criatura').onclick = () => abrirAdicionar('criatura');
@@ -1116,6 +1162,7 @@ import MesaCab from '../../components/MesaCab.astro';
       const c = COMBS.find((x) => x.id === b.dataset.c); if (!c) return;
       if (!await uiConfirmar(`Remover ${c.nome} do encontro?`, { titulo: 'Remover', ok: 'Remover', perigo: true })) return;
       await SB.from('combatentes').delete().eq('id', c.id);
+      RT?.avisar('combatentes');
       await logar(`${c.nome} saiu da lista.`, 'sistema', c.oculto ? null : `${c.nome} saiu da lista.`);
       await carregar();
     }));
@@ -1596,6 +1643,7 @@ import MesaCab from '../../components/MesaCab.astro';
       let { error } = await SB.from('encontros').update(upd).eq('id', eid);
       if (error && /estado/i.test(error.message)) await SB.from('encontros').update({ ativo: true }).eq('id', eid);
       await carregar();
+      RT?.avisar('encontro');
     }));
     el('enc-lista').querySelectorAll<HTMLElement>('.ei-rm').forEach((b) => b.addEventListener('click', async () => {
       const eid = b.closest('.enc-item')!.getAttribute('data-e')!;
@@ -1603,6 +1651,7 @@ import MesaCab from '../../components/MesaCab.astro';
       dlg.close();
       await SB.from('encontros').delete().eq('id', eid);
       await carregar();
+      RT?.avisar('encontro');
     }));
     const nomeInp = el('enc-novo-nome') as HTMLInputElement;
     el('enc-novo-prep').onclick = async () => { dlg.close(); await criarEncontro(nomeInp.value.trim() || 'Encontro', false); };

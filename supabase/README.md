@@ -137,6 +137,25 @@ Supabase pelo navegador. Passos para ligar tudo:
     `hexes` guarda as casas **já calculadas**, e não os parâmetros que as geraram. Recalcular no
     cliente parece mais limpo até a primeira vez que a regra do molde mudar: o muro desenhado na
     sessão passada viraria outro muro. O que foi conjurado fica como foi conjurado.
+19. Rode [`migracao-20.sql`](./migracao-20.sql): o peso do **tempo real**. Idempotente, e
+    **opcional**: o tempo real do Grid e do Combate não depende dela para funcionar.
+
+    O tempo real é feito por *broadcast*, e não por `postgres_changes`: quem escreve toca uma
+    campainha no canal `mesa:<id>` e quem ouve relê pela própria view. Nenhuma tabela entra na
+    publicação `supabase_realtime`, nenhum grant novo é dado, e o jogador não recebe uma coluna a
+    mais do que a migração 14 já lhe dava. Entrega direta obrigaria a dar SELECT de LINHA em
+    `combatentes` e `arena_tokens` ao jogador, e o desenho da 14 mascara COLUNA, o que a RLS não
+    sabe fazer.
+
+    O que a migração faz é baratear a releitura, que agora acontece a cada peça movida:
+    `arena_log_visao` entrega o registro **uma linha por entrada** (o cliente pede as 60 últimas,
+    em vez de baixar o log inteiro, até 45 KB, para ler a última linha), e `arena_visao` deixa de
+    carregar a coluna `log`. Sem a migração, o cliente percebe a falta da view e volta a ler o log
+    de dentro de `arena_visao`, como antes.
+
+    No fim do arquivo, comentadas, estão as duas policies que fecham o canal (`private: true` com
+    RLS em `realtime.messages`). Não estão ligadas de propósito: com a policy torta, todo mundo é
+    recusado e o tempo real some sem mensagem de erro.
 
     Sem esta migração a aba Grid continua inteira; só o botão **✶ Arte** avisa que falta rodá-la.
 
