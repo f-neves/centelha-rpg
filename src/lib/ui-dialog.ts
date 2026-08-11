@@ -266,6 +266,38 @@ function montar(cfg: Cfg): Promise<Resultado> {
   });
 }
 
+/**
+ * Painel: um modal que devolve o corpo VAZIO para quem chamou preencher.
+ *
+ * Os outros diálogos daqui perguntam alguma coisa e resolvem uma Promise com a
+ * resposta. Este não pergunta nada: serve ao conteúdo que precisa do próprio
+ * HTML e dos próprios eventos, como um gráfico que se lê passando o ponteiro.
+ * Quem chama recebe o nó do corpo e a função de fechar, e é dono dos dois.
+ */
+export function uiPainel(titulo: string, opts: { classe?: string } = {}):
+  { corpo: HTMLElement; fechar: () => void } {
+  const dlg = document.createElement('dialog');
+  dlg.className = 'ui-dlg ui-dlg-painel' + (opts.classe ? ' ' + opts.classe : '');
+  dlg.innerHTML = `
+    <div class="ui-dlg-form">
+      <div class="ui-dlg-head">
+        <h2 class="ui-dlg-tit">${esc(titulo)}</h2>
+        <button type="button" class="ui-dlg-x" aria-label="Fechar">✕</button>
+      </div>
+      <div class="ui-dlg-corpo"></div>
+    </div>`;
+  document.body.appendChild(dlg);
+  const fechar = () => { if (dlg.open) dlg.close(); else dlg.remove(); };
+  dlg.querySelector('.ui-dlg-x')!.addEventListener('click', fechar);
+  // clique no fundo fecha, clique dentro não: o alvo só é o próprio <dialog>
+  // quando o ponteiro cai fora da caixa
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) fechar(); });
+  dlg.addEventListener('close', () => dlg.remove());
+  dlg.showModal();
+  dlg.querySelector<HTMLElement>('.ui-dlg-x')?.focus();
+  return { corpo: dlg.querySelector('.ui-dlg-corpo') as HTMLElement, fechar };
+}
+
 /** Recado simples, um botão só. */
 export async function uiAviso(msg: string, opts: { titulo?: string; ok?: string } = {}): Promise<void> {
   await montar({ titulo: opts.titulo || 'Aviso', msg, ok: opts.ok || 'Entendi', cancelar: null });

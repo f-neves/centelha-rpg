@@ -75,7 +75,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer — e onde ele ent
 
 ### Armas à Distância
 
-<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Distância</strong>: o alcance máximo do disparo ou do arremesso, em metros. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio. Os valores são o <em>tiro extremo</em>, não a distância em que se acerta com facilidade; para mirar bem, conte com algo em torno de metade. Nas armas de <strong>Arremesso</strong> o número é um teto do objeto, não uma promessa: o braço também limita, e vale <em>o menor</em> entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso (o bloco <em>Força &amp; Arremesso</em> da ficha faz essa conta). Um arco não tem essa segunda trava, porque quem lança a flecha é o arco.</p>
+<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Distância</strong>: o alcance máximo do disparo ou do arremesso, em metros. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio. Os valores são o <em>tiro extremo</em>, não a distância em que se acerta com facilidade; para mirar bem, conte com algo em torno de metade. Nas armas de <strong>Arremesso</strong> o número é um teto do objeto, não uma promessa: o braço também limita, e vale <em>o menor</em> entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso (o bloco <em>Peso, Arremesso e Corrida</em> da ficha faz essa conta). Um arco não tem essa segunda trava, porque quem lança a flecha é o arco.</p>
 
 <div class="table-wrap sem-ultima-coluna">
 

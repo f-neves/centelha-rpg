@@ -119,7 +119,7 @@ import '../styles/arte-equip.css';
 </MolduraFicha>
 
 {/* ---- Segunda folha: o que ele carrega e o que se faz com ele ----
-    Equipamento, Mochila, Força & Arremesso e Rolar. O <slot /> no fim é por onde
+    Equipamento, Mochila, Peso, Arremesso e Corrida e Rolar. O <slot /> no fim é por onde
     /personagem acrescenta Descrição/História/Background/Anotações e Arquivos, que só
     existem na ficha ligada à conta: assim as duas entram nesta folha em vez de virarem
     blocos soltos depois dela. */}
@@ -163,10 +163,10 @@ import '../styles/arte-equip.css';
 <div class="equip-bolsas" id="eq-bolsas"></div>
 </div>
 
-{/* Força &amp; Arremesso é uma tabela de consulta que se usa no momento de rolar, e não
-    ao montar o equipamento: mudou de aba junto com o rolador. */}
+{/* Peso, Arremesso e Corrida é uma tabela de consulta que se usa no momento de rolar, e
+    não ao montar o equipamento: mudou de aba junto com o rolador. */}
 <div class="ftab" data-ftab="rolar">
-<h2 class="barh">Força &amp; Arremesso <small>(levantamento e alcance de arremesso · não custa XP)</small></h2>
+<h2 class="barh">Peso, Arremesso e Corrida <small>(o que se ergue, o quanto longe se joga e o quanto se anda com peso · não custa XP)</small></h2>
 <div class="panel" id="forca-arremesso"></div>
 
 <h2 class="barh">Rolar</h2>
@@ -673,24 +673,19 @@ import '../styles/arte-equip.css';
   /* as três alturas do levantamento, na mesma linha: do chão, acima da cabeça, arremessa */
   .fa-head .fa-alt { margin-right: 1.1rem; font-size: var(--fs-rotulo); }
   .fa-head .fa-alt b { font-family: 'Cinzel'; color: var(--accent-strong); }
+  /* Três colunas curtas de números não precisam da largura toda do painel: esticadas,
+     o cabeçalho da primeira quebra em duas linhas e as outras viram campos vazios. */
+  .fa-tbl { max-width: 34rem; }
+  .fa-tbl th, .fa-tbl td { white-space: nowrap; }
   /* a linha do ápice na tabela, que é o peso que vai mais longe */
   .fa-tbl tr.ap td { font-weight: 700; color: var(--accent-strong); }
   /* a linha do teto: o peso que já não sai da mão */
   .fa-tbl tr.lim td { color: var(--ink-soft); font-style: italic; }
-  .fa-row { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-start; }
-  .fa-chartwrap { position: relative; flex: 1 1 22rem; width: 100%; max-width: 40rem; }
-  /* No desktop os dois ficam lado a lado em proporção fixa, descontando o gap;
-     no celular continuam empilhados pelo flex-wrap. A tabela cedeu ao gráfico o que
-     encolheu na coluna de peso. */
-  @media (min-width: 901px) {
-    .fa-row { flex-wrap: nowrap; }
-    .fa-row .fa-chartwrap { flex: 0 0 calc(63% - .6rem); max-width: calc(63% - .6rem); min-width: 0; }
-    .fa-row .fa-tbl { flex: 0 0 calc(37% - .6rem); width: calc(37% - .6rem); min-width: 0; }
-  }
-  /* No celular não há hover: estes botões dizem qual curva o toque lê e desenham ela por
-     cima das outras. No desktop ficam escondidos, porque o hover já lê as três de uma vez. */
-  /* estes botões escolhem a ESCALA do gráfico, e valem em qualquer tela: antes eram o
-     seletor de curva do celular, que morreu quando as três curvas viraram uma só */
+  /* O gráfico saiu do painel e mora nos modais: o que resta aqui é o quadro em que ele
+     é desenhado lá dentro, e a tabela usa a largura toda do painel. */
+  .fa-chartwrap { position: relative; width: 100%; }
+  /* estes botões abrem os dois gráficos, e dentro do gráfico de arremesso escolhem a
+     escala: mesmo desenho nos dois lugares */
   .fa-curvas { display: flex; gap: .3rem; flex-wrap: wrap; margin: 0 0 .15rem; }
   .fa-curvas button { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .04em;
     color: var(--ink-soft); background: transparent; border: 1px solid var(--rule);
@@ -701,15 +696,6 @@ import '../styles/arte-equip.css';
   .fa-chart .axis { stroke: var(--rule); stroke-width: 1; }
   .fa-chart .grid { stroke: var(--rule); stroke-width: .5; opacity: .45; }
   .fa-chart .curve { fill: none; stroke: var(--accent); stroke-width: 2; }
-  /* giro e corrida saem da mesma cor, distintas pelo traço e pela espessura: são a mesma
-     curva com um acréscimo, e cores diferentes sugeririam grandezas diferentes */
-  .fa-chart .curve.giro { stroke-width: 1.25; stroke-dasharray: 5 3; opacity: .8; }
-  .fa-chart .curve.corrida { stroke-width: 1.25; stroke-dasharray: 1.5 2.5; opacity: .65; }
-  /* a curva escolhida nos botões engrossa junto com o traço da legenda */
-  .fa-chart[data-sel="giro"] .curve.giro,
-  .fa-chart[data-sel="corrida"] .curve.corrida { stroke-width: 2; opacity: 1; }
-  .fa-chart .fa-legln { stroke-linecap: round; }
-  .fa-chart .fa-leglbl { fill: var(--ink-soft); font-size: 9px; }
   .fa-chart .area { fill: var(--accent); opacity: .1; }
   .fa-chart text { fill: var(--ink-soft); font-size: 10px; font-family: 'EB Garamond'; }
   .fa-chart .axlbl { font-family: 'Cinzel'; font-size: 9px; }

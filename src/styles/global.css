@@ -588,6 +588,16 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
   box-shadow: 0 14px 44px var(--shadow); font-family: 'EB Garamond', Georgia, serif;
 }
 .ui-dlg::backdrop { background: rgba(0,0,0,.5); }
+/* O painel hospeda conteúdo largo (um gráfico, uma tabela), não um formulário:
+   ganha a largura que o desenho pede e um respiro embaixo, que nos outros vem
+   do rodapé de botões que ele não tem. */
+.ui-dlg-painel { width: min(46rem, 94vw); }
+.ui-dlg-painel .ui-dlg-corpo { padding-bottom: 1rem; }
+/* dentro do painel o gráfico usa a largura toda: o max-width que ele traz da ficha
+   serve para conviver com a tabela ao lado, e aqui não há tabela ao lado */
+.ui-dlg-painel .fa-chartwrap { max-width: none; }
+.fa-graf-nota { margin: .6rem 0 0; font-size: var(--fs-rotulo); color: var(--ink-soft); line-height: 1.5; }
+.fa-graf-nota b { font-family: 'Cinzel'; color: var(--accent-strong); }
 .ui-dlg.perigo { border-top-color: var(--perigo); }
 .ui-dlg-head { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .85rem 1.1rem .1rem; }
 .ui-dlg-tit { font-family: 'Cinzel'; font-weight: 600; font-size: var(--fs-h3); color: var(--accent-strong); margin: 0; }

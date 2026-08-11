@@ -137,7 +137,7 @@ Havendo borda, telhado, galho ou corda ao alcance, existe uma **primeira** Refle
 
 Esta ação tem **duas faces**, e confundi-las é o erro comum.
 
-**Erguer, segurar, arrastar** não se rola. O peso máximo do personagem já está calculado na [ficha](/ficha), em Força & Arremesso. Está dentro dele? Ergue. Passou? Não ergue, e nenhuma jogada muda isso. O que muda é ajuda, alavanca, roldana e Proeza.
+**Erguer, segurar, arrastar** não se rola. O peso máximo do personagem já está calculado na [ficha](/ficha), em Peso, Arremesso e Corrida. Está dentro dele? Ergue. Passou? Não ergue, e nenhuma jogada muda isso. O que muda é ajuda, alavanca, roldana e Proeza.
 
 **Romper** é **Direta**: o instante em que alguma coisa cede ou não cede.
 
