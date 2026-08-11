@@ -351,7 +351,9 @@ import MesaCab from '../../components/MesaCab.astro';
   .ini-custo { display: inline-flex; align-items: center; gap: .2rem; flex-basis: 100%;
     font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft); cursor: help;
     padding-top: .15rem; }
-  .ini-custo input { width: 2.3rem; padding: 0 .15rem; font: inherit;
+  /* Largura para dois dígitos MAIS a setinha do campo numérico: com 2,3rem o
+     "60" ficava metade escondido atrás dela. */
+  .ini-custo input { width: 3.1rem; padding: 0 0 0 .2rem; font: inherit;
     font-size: calc(var(--fs-micro) * .95); text-align: center; font-variant-numeric: tabular-nums;
     background: var(--panel-2, var(--panel)); color: var(--ink);
     border: 1px solid var(--rule); border-radius: var(--r-sm); }
