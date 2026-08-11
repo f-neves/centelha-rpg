@@ -134,14 +134,22 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       if (turnos) partes.push(rotuloDuracao(turnos));
       const areaM2 = pArea && nAr && !ehRaio ? areaEmM2(pArea, nAr) : 0;
       const raioProprio = pArea && nAr && ehRaio ? parseFloat(valorNoNivel(pArea, nAr)) || 0 : 0;
+      // O Muro não compra área nenhuma: compra metros de parede. Sem ler essa
+      // régua aqui, a figura nasceria vazia e a parede de chamas sairia do
+      // tabuleiro com comprimento zero, cobrando Mana e não desenhando nada.
+      const compProprio = pComp && escolhas['Comprimento']
+        ? parseFloat(valorNoNivel(pComp, escolhas['Comprimento'])) || 0
+        : 0;
       // A área comprada é o ORÇAMENTO; o molde decide a figura. O raio e o
       // comprimento saem dela, para nenhum molde render mais chão que o outro.
       // A âncora e a direção só se sabem no tabuleiro; aqui a figura serve para
       // dizer o TAMANHO antes de conjurar, e por isso nasce na origem.
-      const fig = (areaM2 || raioProprio)
+      const fig = (areaM2 || raioProprio || compProprio)
         ? figuraDaArea({
-            molde, areaM2, ancora: { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' },
-            aberturaGraus: angulo, ladoM: lado, raioProprioM: raioProprio,
+            molde: compProprio ? 'linha' : molde,
+            areaM2, ancora: { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' },
+            aberturaGraus: angulo, ladoM: lado,
+            raioProprioM: raioProprio, comprimentoProprioM: compProprio,
           })
         : null;
       const figura = fig ? rotuloDaFigura(fig) : '';
@@ -152,9 +160,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
         areaM2,
         raioM: fig?.raioM || 0,
-        comprimentoM: pComp && escolhas['Comprimento']
-          ? parseFloat(valorNoNivel(pComp, escolhas['Comprimento'])) || 0
-          : (fig?.comprimentoM || 0),
+        comprimentoM: compProprio || fig?.comprimentoM || 0,
         larguraM: fig?.larguraM || 0,
         danoDados, danoBonus, turnos, figura,
         alvos: escolhas['Alvos'] ?? 1,

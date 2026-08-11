@@ -895,13 +895,18 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    círculo, um <rect> girado para a faixa e o retângulo, um <path> com arco para
    o leque. O <polygon> sobrou para a arena inteira e para os efeitos gravados
    antes de a figura existir. Translúcida porque o mapa vale por baixo dela. */
-.gr-ef circle, .gr-ef rect, .gr-ef path, .gr-ef polygon {
+/* O `>` não é enfeite: sem ele esta regra desce dentro do efeito elemental e
+   repinta CADA partícula com a cor da zona. Atributo de apresentação (`fill=`
+   no elemento) perde para folha de estilo, então a brasa laranja virava um anel
+   translúcido com traço grosso, e a bolha, a lasca e a faísca também. A figura
+   é sempre filha direta do grupo; a partícula, nunca. */
+.gr-ef > circle, .gr-ef > rect, .gr-ef > path, .gr-ef > polygon {
   fill: color-mix(in srgb, var(--ef-cor) 26%, transparent);
   stroke: color-mix(in srgb, var(--ef-cor) 85%, transparent); stroke-width: 1.5;
   stroke-linejoin: round; }
-.gr-ef-aura circle { fill: color-mix(in srgb, var(--ef-cor) 18%, transparent);
+.gr-ef-aura > circle { fill: color-mix(in srgb, var(--ef-cor) 18%, transparent);
   stroke-dasharray: 6 4; }
-.gr-ef-muro rect { fill: color-mix(in srgb, var(--ef-cor) 55%, transparent); stroke-width: 2; }
+.gr-ef-muro > rect { fill: color-mix(in srgb, var(--ef-cor) 55%, transparent); stroke-width: 2; }
 .gr-previa circle, .gr-previa rect, .gr-previa path, .gr-previa polygon {
   fill: color-mix(in srgb, var(--accent) 22%, transparent);
   stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 5 3; }
@@ -1002,7 +1007,9 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 /* O grão entra só onde ele muda alguma coisa: pedra e brasa. Nos outros o
    gradiente já basta, e um filtro a mais seria custo sem imagem. */
 .fx-terra .fx-veu { filter: url(#fx-terra-n); }
-.fx-fogo .fx-veu  { filter: url(#fx-fogo-n); }
+/* O Fogo tirou o grão do véu: as três camadas de chama já trazem ruído próprio,
+   e um quarto turbilhão por fogueira só cobrava quadros. Medido: seis fogueiras
+   voltaram de 35 para 44 por segundo. */
 
 /* A estrutura que se mexe: a onda da água, a corrente do vento, o arco do raio
    e a massa da sombra. Mesmo contrato das partículas, só transform e opacity. */
@@ -1048,7 +1055,14 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    vez; o navegador só recompõe o deslocamento. Três ritmos primos entre si
    (7, 11 e 13 segundos) fazem o laço demorar muito a se repetir, que é o que
    impede o olho de pegar o truque. */
+/* As camadas SOMAM luz, e não se tapam.
+   Empilhadas normalmente, o buraco que o ruído abre numa camada mostra o véu
+   escuro por baixo, e o fogo fica salpicado de carvão. Com `screen`, buraco
+   sobre brasa continua brasa e brasa sobre brasa fica mais quente: é o mesmo
+   princípio do `color-dodge` da referência em CSS, e é o que faz o miolo parecer
+   ter temperatura em vez de textura. */
 .fx-lingua { transform-box: fill-box; transform-origin: center;
+  mix-blend-mode: screen;
   animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
 @keyframes fx-lamber-a {
   0%, 100% { transform: rotate(0deg) scale(1); }

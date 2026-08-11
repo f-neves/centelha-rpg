@@ -66,13 +66,15 @@ const GRAUS = ARC.improviso.graus as Record<string, string[]>;
 export const TICKS_POR_TURNO = 6;
 
 /**
- * A régua "breve" traduzida para turnos de combate.
+ * A régua "breve" já vem escrita em turnos, e cabe inteira dentro de uma briga.
  *
- * Do nível 5 em diante o efeito cobre qualquer briga que caiba numa cena, e o
- * número exato deixa de importar: o que a mesa precisa saber é "dura a cena
- * toda". Continua sendo um número para o relógio não ter caso especial.
+ * Ela era 1 · 5 · 10 · 50 · 300 · 600 turnos, e no tabuleiro isso ficou grotesco:
+ * o nível 4 durava mais que qualquer combate, e do 5 em diante o número deixava
+ * de significar coisa alguma. Agora o topo são 50 turnos, 300 ticks, cinco
+ * minutos: longo o bastante para atravessar a cena, curto o bastante para a mesa
+ * ainda contar.
  */
-const TURNOS_BREVE = [1, 5, 10, 50, 300, 600];
+const TURNOS_BREVE = [1, 2, 4, 10, 20, 50];
 /** A régua "longa" começa onde a briga já acabou. Dez minutos são 100 turnos. */
 const TURNOS_LONGA = [100, 600, 3600, 14400, 100800, 432000];
 
@@ -413,6 +415,22 @@ export const raioDoLeque = (areaM2: number, anguloGraus: number) => {
   return Math.sqrt((2 * Math.max(0, areaM2)) / t);
 };
 
+/**
+ * O chão de quem NÃO compra tamanho nenhum, em metros quadrados.
+ *
+ * Nem todo Efeito de chão compra tamanho. Criar Substância compra QUANTIDADE
+ * ("o que caberia num barril, por nível"), e Passo Relâmpago só compra Alcance.
+ * Sem um piso, a conversão de área para raio devolve zero, e o efeito é gravado
+ * no banco, cobra a Mana e não desenha nada: some. Um metro quadrado é o menor
+ * pedaço de chão que uma pessoa ocupa, e é o que qualquer marca merece.
+ *
+ * É PISO DE AUSÊNCIA, E NÃO MÍNIMO DE TAMANHO. O nível 1 da régua de Área são
+ * 0,5 × 0,5 m, um quarto de metro quadrado: menor que uma pessoa, e menor que
+ * este piso. Aplicá-lo como `Math.max` inflaria de graça a área comprada mais
+ * barata do jogo, que é justamente a que a régua nova quer manter pequena.
+ */
+export const AREA_MINIMA = 1;
+
 const um = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replace('.', ','));
 
 /**
@@ -425,7 +443,7 @@ const um = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replac
  */
 export function figuraDaArea(opts: {
   molde: Molde; areaM2: number; ancora: Encaixe; dir?: number;
-  aberturaGraus?: number; ladoM?: number; raioProprioM?: number;
+  aberturaGraus?: number; ladoM?: number; raioProprioM?: number; comprimentoProprioM?: number;
 }): Figura {
   const { molde, ancora } = opts;
   const base = {
@@ -433,7 +451,19 @@ export function figuraDaArea(opts: {
   };
   // A Aura compra um RAIO, e não uma área: nada a converter.
   if (opts.raioProprioM) return { tipo: 'circulo', ...base, raioM: opts.raioProprioM };
-  const A = Math.max(0, opts.areaM2);
+  // O Muro compra METROS DE PAREDE, e não metros quadrados: o comprimento vem
+  // pronto da régua do Efeito, e a largura é a da faixa. Passar isso pela
+  // divisão da área daria zero, que foi o que sumia com a parede de chamas.
+  if (opts.comprimentoProprioM) {
+    const larg = molde === 'retangulo'
+      ? Math.max(LADO_MINIMO, opts.ladoM ?? LADO_MINIMO)
+      : LARGURA_LINHA;
+    return {
+      tipo: molde === 'retangulo' ? 'retangulo' : 'linha', ...base,
+      larguraM: larg, comprimentoM: opts.comprimentoProprioM,
+    };
+  }
+  const A = opts.areaM2 > 0 ? opts.areaM2 : AREA_MINIMA;
   if (molde === 'linha') {
     return { tipo: 'linha', ...base, larguraM: LARGURA_LINHA, comprimentoM: comprimentoDaLinha(A) };
   }

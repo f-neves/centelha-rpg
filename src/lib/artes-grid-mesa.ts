@@ -462,11 +462,21 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
     : forma === 'cone' ? 'leque'
     : plano.molde;
 
+  // O comprimento próprio, para quem não compra área nenhuma. O Muro compra
+  // metros de parede; o Passo Relâmpago só compra Alcance, e o risco que ele
+  // deixa no chão é justamente a distância percorrida. Sem isto, a divisão de
+  // uma área que vale zero devolve uma faixa de comprimento zero: o efeito é
+  // gravado, cobra a Mana e não aparece.
+  const compProprio = (forma === 'muro' || forma === 'linha') && !plano.areaM2
+    ? (plano.comprimentoM || plano.alcanceM || 0)
+    : 0;
+
   const monta = (ancora: Encaixe, dir: number) => figuraDaArea({
     molde, areaM2: plano.areaM2, ancora, dir,
     aberturaGraus: plano.angulo, ladoM: plano.lado,
     // A aura e o muro compram raio e comprimento, e não área.
     raioProprioM: forma === 'aura' ? plano.raioM : 0,
+    comprimentoProprioM: compProprio,
   });
 
   let ancora: Encaixe = encaixeNoCentro(meu, esc_);

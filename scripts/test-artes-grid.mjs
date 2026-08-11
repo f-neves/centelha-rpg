@@ -27,14 +27,41 @@ const ok = (cond, msg) => { if (!cond) falhas.push(msg); };
 const eq = (a, b, msg) => ok(a === b, `${msg} — esperado ${b}, veio ${a}`);
 
 // ---------------------------------------------------------------- a régua
+//
+// Os degraus ficam presos aqui porque o tabuleiro os tornou visíveis: a régua
+// antiga punha 15 m no nível 3 e uma hora no nível 6, e no grid isso aparecia
+// como um feitiço barato varrendo o mapa inteiro por mais tempo que a cena.
+const escadaDe = (nome, n = 6) => {
+  const p = { nome, tipo: 'padrao', ...(nome === 'Duração' ? { regua: 'breve' } : {}) };
+  return Array.from({ length: n }, (_, i) => M.valorNoNivel(p, i + 1));
+};
+eq(escadaDe('Alcance').join(' · '), 'toque · 2 m · 4 m · 10 m · 20 m · 50 m',
+  'a régua de Alcance');
+eq(escadaDe('Área').join(' · '), '0,5 × 0,5 m · 1 × 1 m · 1,5 × 1,5 m · 2 × 2 m · 3 × 3 m · 5 × 5 m',
+  'a régua de Área');
+eq(escadaDe('Alvos').join(' · '), '1 · 2 · 3 · 4 · 6 · 10', 'a régua de Alvos');
+// A área do topo é um círculo de menos de três metros de raio: cabe no mapa.
+ok(M.raioDoCirculo(M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, 6)) < 3,
+  'a maior área comprável ainda cabe num tabuleiro de mesa');
+// E a menor não é inflada pelo piso de quem não compra tamanho nenhum.
+eq(M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, 1), 0.25, 'Área 1 é um quarto de metro quadrado');
+ok(M.figuraDaArea({ molde: 'circulo', areaM2: 0.25, ancora: M.encaixeNoCentro({ q: 0, r: 0 }, 1) }).raioM < 0.3,
+  'o nível 1 de Área continua menor que uma pessoa');
+
 eq(M.turnosDeDuracao(1), 1, 'Duração 1 = 1 turno');
-eq(M.turnosDeDuracao(2), 5, 'Duração 2 = 5 turnos');
-eq(M.turnosDeDuracao(3), 10, 'Duração 3 (1 minuto) = 10 turnos');
+eq(M.turnosDeDuracao(2), 2, 'Duração 2 = 2 turnos');
+eq(M.turnosDeDuracao(3), 4, 'Duração 3 = 4 turnos');
+eq(M.turnosDeDuracao(6), 50, 'o topo da régua breve são 50 turnos, e não mais uma hora');
 eq(M.TICKS_POR_TURNO, 6, 'um turno são 6 ticks');
+eq(M.turnosDeDuracao(6) * M.TICKS_POR_TURNO, 300, 'a régua breve inteira cabe em 300 ticks');
+// A régua breve acaba onde a longa começa, sem sobreposição: 50 turnos são cinco
+// minutos, e o primeiro degrau da longa são dez.
+ok(M.turnosDeDuracao(6, 'breve') < M.turnosDeDuracao(1, 'longa'),
+  'a régua breve termina antes de a longa começar');
 eq(M.rotuloDuracao(300), 'a cena toda', 'acima de 50 turnos o número não diz nada');
 
 // ------------------------------------------------- o exemplo da mesa: a Aura
-// Aura de Fogo com Volume 3 (3 m de raio), Dano 2 (2d6) e Duração 2 (5 turnos).
+// Aura de Fogo com Volume 3 (3 m de raio), Dano 2 (2d6) e Duração 2 (2 turnos).
 const aura = M.EFEITO['aura'];
 const fogo = M.ARTE['fogo'];
 ok(!!aura && !!fogo, 'Aura e Fogo existem');
@@ -248,6 +275,48 @@ eq(M.hexesDaArena(12, 8).length, 96, 'a arena inteira são cols × rows hexágon
 eq(M.hexesDaFigura({ tipo: 'arena', ax: 0, ay: 0, q: 0, r: 0 }, 1, 12, 8).length, 96,
   'a figura de arena cobre o tabuleiro inteiro, seja qual for a área comprada');
 
+// ------------------------------------------- nenhum Efeito de chão nasce vazio
+//
+// O Muro compra METROS DE PAREDE, e não metros quadrados; o Passo Relâmpago só
+// compra Alcance; Criar Substância só compra Quantidade. Quem lê apenas a régua
+// de área acha zero nos três, e zero vira uma figura sem tamanho: o efeito é
+// gravado, cobra a Mana e não desenha nada. A parede de chamas sumiu assim.
+const CHAO = ['zona', 'muro', 'cone', 'linha', 'aura'];
+const figuraDoEfeito = (e, n = 3) => {
+  const par = (nome) => (e.parametros || []).find((p) => p.nome === nome && p.tipo !== 'fixo');
+  const pArea = par('Área') || par('Volume');
+  const pComp = par('Comprimento');
+  const ehRaio = !!pArea && /de raio/i.test(pArea.unidade || '');
+  const forma = e.grid.forma;
+  const molde = forma === 'aura' ? 'circulo'
+    : forma === 'muro' || forma === 'linha' ? 'linha'
+    : forma === 'cone' ? 'leque' : 'circulo';
+  return M.figuraDaArea({
+    molde, ancora: CENTRO, aberturaGraus: 90,
+    areaM2: pArea && !ehRaio ? M.areaEmM2(pArea, n) : 0,
+    raioProprioM: pArea && ehRaio ? parseFloat(M.valorNoNivel(pArea, n)) || 0 : 0,
+    comprimentoProprioM: pComp ? parseFloat(M.valorNoNivel(pComp, n)) || 0
+      : (forma === 'linha' ? M.alcanceEmMetros(par('Alcance') || { nome: 'Alcance', tipo: 'padrao' }, n) : 0),
+  });
+};
+const vazios = M.EFEITOS
+  .filter((e) => CHAO.includes(e.grid.forma))
+  .filter((e) => {
+    const f = figuraDoEfeito(e);
+    return Math.max(f.raioM || 0, f.comprimentoM || 0) < 0.5;
+  })
+  .map((e) => e.id);
+eq(vazios.join(', ') || 'nenhum', 'nenhum',
+  'Efeito de chão que nasceria sem tamanho no tabuleiro');
+
+const muro = figuraDoEfeito(M.EFEITO['muro'], 3);
+eq(muro.tipo, 'linha', 'o Muro é uma faixa, e não um círculo');
+eq(muro.comprimentoM, 8, 'Comprimento 3 são 8 m de parede, e não 8 m² divididos');
+eq(muro.larguraM, 1, 'a parede tem um metro de espessura');
+// O escudo continua vindo da área, porque a régua dele é de área mesmo.
+ok(figuraDoEfeito(M.EFEITO['escudo-de-forca'], 3).comprimentoM > 0,
+  'o Escudo de Força ainda sai da área comprada');
+
 // ---------------------------------------------------- cobertura da projeção
 eq(M.EFEITOS.filter((e) => !e.grid).length, 0, 'todo Efeito tem bloco grid');
 eq(M.ARTES.filter((a) => !a.grid).length, 0, 'toda Arte tem bloco grid');
@@ -259,4 +328,4 @@ if (falhas.length) {
   process.exit(1);
 }
 console.log(`✓ Motor das Artes OK · ${M.ARTES.length} Artes · ${M.EFEITOS.length} Efeitos · `
-  + `Aura de Fogo 3 m/2d6/5 turnos = 9 pontos, 6 de Mana`);
+  + `Aura de Fogo 3 m/2d6/2 turnos = 9 pontos, 6 de Mana`);

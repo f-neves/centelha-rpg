@@ -142,54 +142,67 @@ function defsDoElemento(el: Elemento): string {
       </feMerge>
     </filter>`;
 
-  // A CHAMA. Ruido -> desfoque -> contraste altissimo.
-  //
-  // A tecnica e a do fogo em CSS que circula por ai (Simey, no CodePen): o que
-  // faz lingua de fogo nao e gradiente, e RUIDO BORRADO E ENTAO ESTOURADO no
-  // contraste. O desfoque junta os graos em manchas moles; o contraste corta
-  // essas manchas numa borda dura, e o que sobra tem a silhueta recortada de
-  // uma chama. Nenhum gradiente sozinho chega perto disso.
-  //
-  // A adaptacao e a direcao. A referencia e uma fogueira DE PERFIL, com as
-  // linguas subindo e o branco na base; aqui o tabuleiro e visto DE CIMA, e uma
-  // chama vista de cima nao sobe, ela abre. Por isso o degrade que manda e
-  // radial: branco no nucleo, laranja no corpo, nada na beirada.
-  //
-  // `feComponentTransfer` com inclinacao alta e o `contrast()` do CSS: leva o
-  // meio-tom para os extremos. O `intercept` negativo e o limiar, e e ele que
-  // decide quanta area vira lingua em vez de neblina.
-  // A CHAMA: ruido -> desfoque -> contraste altissimo.
+  // A CHAMA: ruido -> desfoque -> contraste altissimo, em TRES camadas.
   //
   // O que faz lingua de fogo nao e gradiente, e RUIDO BORRADO E ESTOURADO no
-  // contraste. O desfoque junta os graos em manchas moles; a inclinacao alta
-  // corta essas manchas numa borda dura, e e a borda dura que da a silhueta
-  // recortada de uma chama.
+  // contraste (a tecnica do fogo em CSS do Simey, no CodePen). O desfoque junta
+  // os graos em manchas moles; a inclinacao alta corta essas manchas numa borda
+  // dura, e e a borda dura que da a silhueta recortada de uma chama.
+  //
+  // POR QUE TRES FILTROS, E NAO UM.
+  //
+  // Com um filtro so, as tres camadas de lingua sao recortadas pelo MESMO campo
+  // de ruido: os buracos caem exatamente uns sobre os outros, as tres viram uma
+  // mancha unica e o fogo fica com cara de couro manchado. Foi o que aconteceu.
+  // Com um ruido por camada, cada uma rasga onde a outra e cheia, e o olho le
+  // profundidade em vez de sujeira. Sao tres filtros ESTATICOS, calculados uma
+  // vez e reusados por toda fogueira da tela: o custo e o mesmo de um.
+  //
+  // A ESCALA IMPORTA MAIS QUE O RESTO. `baseFrequency` alto demais vira poeira,
+  // baixo demais vira continente. A camada de fora usa a malha mais grossa (o
+  // recorte da silhueta) e a de dentro a mais fina (o miolo fervendo).
   //
   // O ruido vira FORMA, e nunca cor: feTurbulence gera R, G e B como ruidos
-  // INDEPENDENTES, e estourar o contraste canal a canal amplifica essa
-  // separacao. O fogo sai verde e magenta, psicodelico, que foi o que aconteceu
-  // aqui na primeira tentativa. Passar pela luminancia joga tudo num canal so,
-  // e a cor volta a ser a da fonte no feComposite do fim.
+  // INDEPENDENTES, e estourar o contraste canal a canal amplifica a separacao,
+  // com o fogo saindo verde e magenta. Passar pela luminancia joga tudo num
+  // canal so, e a cor volta a ser a da fonte no feComposite do fim.
   //
-  // O intercept e o limiar: quanto mais negativo, menos area sobra e mais
-  // recortada a chama fica.
-  //
-  // A direcao tambem muda em relacao a referencia: la e uma fogueira DE PERFIL,
-  // com as linguas subindo e o branco na base. Aqui o tabuleiro e visto DE
-  // CIMA, e chama vista de cima nao sobe, ela abre.
+  // A direcao muda em relacao a referencia: la e uma fogueira DE PERFIL, com as
+  // linguas subindo e o branco na base. Aqui o tabuleiro e visto DE CIMA, e
+  // chama vista de cima nao sobe, ela abre.
+  const CAMADAS = [
+    { freq: '0.03 0.038', semente: 11, mole: 3.4, corte: -4.25, macio: 1.3 },
+    { freq: '0.062 0.072', semente: 29, mole: 2.2, corte: -4.6, macio: 0.9 },
+  ];
   const chama = el === 'fogo'
-    ? `<filter id="${id('c')}" x="-20%" y="-20%" width="140%" height="140%"
-         color-interpolation-filters="sRGB">
-        <feTurbulence type="fractalNoise" baseFrequency="0.022 0.03" numOctaves="3"
-          seed="11" result="ruido" />
+    ? CAMADAS.map((c, i) => `<filter id="${id('c' + i)}" x="-18%" y="-18%"
+         width="136%" height="136%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="${c.freq}" numOctaves="2"
+          seed="${c.semente}" result="ruido" />
         <feColorMatrix in="ruido" type="luminanceToAlpha" result="cinza" />
-        <feGaussianBlur in="cinza" stdDeviation="4" result="mole" />
+        <feGaussianBlur in="cinza" stdDeviation="${c.mole}" result="mole" />
         <feComponentTransfer in="mole" result="linguas">
-          <feFuncA type="linear" slope="9" intercept="-3.4" />
+          <feFuncA type="linear" slope="9" intercept="${c.corte}" />
         </feComponentTransfer>
-        <feGaussianBlur in="linguas" stdDeviation="1.1" result="macio" />
+        <feGaussianBlur in="linguas" stdDeviation="${c.macio}" result="macio" />
         <feComposite in="SourceGraphic" in2="macio" operator="in" />
-      </filter>`
+      </filter>`).join('')
+    : '';
+
+  // O CORPO DA CHAMA, que e o que o ruido recorta.
+  //
+  // Recortar uma cor CHAPADA devolve manchas chapadas: para virar fogo, o que
+  // entra no filtro ja precisa ser quente no meio e escuro na beira. Este
+  // degrade e mais opaco e mais branco que o do veu, porque o veu pinta o chao
+  // e este pinta a chama.
+  const brasa = el === 'fogo'
+    ? `<radialGradient id="${id('q')}" cx="50%" cy="50%" r="58%">
+         <stop offset="0%" stop-color="#fffdf2" stop-opacity="1" />
+         <stop offset="26%" stop-color="${p.nucleo}" stop-opacity="0.98" />
+         <stop offset="58%" stop-color="${p.pico}" stop-opacity="0.92" />
+         <stop offset="84%" stop-color="${p.corpo}" stop-opacity="0.72" />
+         <stop offset="100%" stop-color="${p.corpo}" stop-opacity="0.3" />
+       </radialGradient>`
     : '';
 
   // O GELO: halo em camadas e cristal.
@@ -216,7 +229,7 @@ function defsDoElemento(el: Elemento): string {
       <feGaussianBlur stdDeviation="6" />
     </filter>`;
 
-  return grad + brilhoGrad + faixas + chama + cristal + grao + halo;
+  return grad + brilhoGrad + faixas + brasa + chama + cristal + grao + halo;
 }
 
 /** Os `<defs>` de todos os elementos que estao na tela agora. */
@@ -491,35 +504,43 @@ function estruturaDe(el: Elemento, box: Caixa, seme: number, pxPorM: number, f: 
   }
 
   if (el === 'fogo') {
-    // Tres camadas de lingua, cada uma com o proprio ritmo e a propria escala.
-    // Uma so fica ritmica demais e o olho pega o laco; tres desencontradas dao
-    // a impressao de fogo que nunca repete.
+    // Tres camadas de lingua, cada uma com o SEU ruido e o SEU ritmo.
     //
-    // O que se mexe e o `transform` do grupo, e nao o filtro: o navegador
-    // compoe o deslocamento na GPU e o ruido continua sendo calculado uma vez.
-    // QUEM SE MEXE E O GRUPO FILTRADO, e nao os filhos dentro dele.
+    // A de fora passa do raio da figura (1.06) de proposito: o recorte da figura
+    // corta as pontas que escapam, e uma borda ora cheia ora comida le como
+    // fogo, enquanto uma circunferencia perfeita le como marcador de zona.
     //
-    // Animar tres circulos DENTRO do filtro obriga o navegador a refiltrar a
-    // regiao inteira a cada quadro: medido, seis fogueiras oscilavam entre 39 e
-    // 52 quadros por segundo, e a propria instabilidade ja denunciava o custo.
-    // Animando o grupo por fora, a saida do filtro vira uma camada que so e
-    // transformada, e o ruido continua sendo calculado uma vez.
+    // QUEM SE MEXE E O GRUPO FILTRADO, e nao os filhos dentro dele. Animar
+    // dentro do filtro obriga o navegador a refiltrar a regiao a cada quadro:
+    // medido, seis fogueiras oscilavam entre 39 e 52 quadros por segundo, e a
+    // propria instabilidade ja denunciava o custo. Animando o grupo por fora, a
+    // saida do filtro vira uma camada que so e transformada.
     //
-    // As tres camadas ficam paradas uma em relacao a outra, e o movimento vem de
-    // dois grupos aninhados girando em ritmos primos entre si (7 e 11 segundos):
-    // o laco composto so se repete a cada 77, e o olho nao pega a volta.
-    const linguas = `<g class="fx-lingua fx-lingua-0">
-      <g class="fx-lingua fx-lingua-1" filter="url(#fx-fogo-c)">${[1, 0.72, 0.5].map((k, i) => `
+    // Os tres ritmos sao primos entre si (7, 11 e 13 segundos): o laco composto
+    // so se repete a cada mil segundos, e o olho nao pega a volta.
+    const linguas = [1.06, 0.7].map((k, i) => `
+      <g class="fx-lingua fx-lingua-${i}">
         <circle cx="${g(box.cx)}" cy="${g(box.cy)}" r="${g(R * k)}"
-          fill="${i ? p.nucleo : p.corpo}" opacity="${(0.85 - i * 0.18).toFixed(2)}" />`).join('')}
-      </g></g>`;
+          fill="url(#fx-fogo-q)" filter="url(#fx-fogo-c${i})"
+          opacity="${(0.95 - i * 0.1).toFixed(2)}" />
+      </g>`).join('');
 
-    // O nucleo por baixo das linguas: e ele que da o miolo continuo, para o fogo
-    // nao virar um punhado de manchas soltas.
-    return `<circle class="fx-nucleo" cx="${g(box.cx)}" cy="${g(box.cy)}"
-        r="${g(R * 0.5)}" fill="${p.corpo}" opacity="0.6" filter="url(#fx-fogo-h)" />
+    // A CAMA DE BRASA, por baixo de tudo.
+    //
+    // Sem ela o buraco que o ruido abre nas duas camadas mostra o TABULEIRO, que
+    // e quase preto, e cada furo vira uma mancha de carvao no meio da chama. Foi
+    // o que fez o fogo parecer couro queimado nas duas primeiras tentativas.
+    //
+    // A cama e quase opaca no miolo e some na beirada, seguindo o proprio
+    // degrade: e fogo mesmo, e nao se enxerga o chao atraves de uma fogueira, mas
+    // a borda continua translucida, que e onde a mesa precisa ler o mapa para
+    // saber quem esta dentro.
+    return `<circle class="fx-cama" cx="${g(box.cx)}" cy="${g(box.cy)}"
+        r="${g(R)}" fill="url(#fx-fogo-q)" opacity="0.82" />
       <circle class="fx-nucleo" cx="${g(box.cx)}" cy="${g(box.cy)}"
-        r="${g(R * 0.26)}" fill="${p.nucleo}" opacity="0.9" filter="url(#fx-fogo-h)" />
+        r="${g(R * 0.46)}" fill="${p.pico}" opacity="0.55" filter="url(#fx-fogo-h)" />
+      <circle class="fx-nucleo" cx="${g(box.cx)}" cy="${g(box.cy)}"
+        r="${g(R * 0.2)}" fill="#fffdf2" opacity="0.85" filter="url(#fx-fogo-h)" />
       ${linguas}`;
   }
 
