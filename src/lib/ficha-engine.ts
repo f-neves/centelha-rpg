@@ -440,7 +440,7 @@ export function montarFicha(opts: FichaOpts) {
     // As três vagas em branco, no fim. O nome é um campo de texto e não abre o modal do traço;
     // o resto da linha (bolinhas e ✦) se comporta como qualquer outra Secundária.
     const livres = grupoHTML('Livres', LIVRES.map((k) => trow(
-      `<input class="livre-nm" type="text" data-livre="${k}" value="${(nomeLivre(k)).replace(/"/g, '&quot;')}" placeholder="perícia da sua mesa" aria-label="Nome da secundária livre"${opts.readOnly ? ' readonly' : ''}>`,
+      `<input class="livre-nm" type="text" data-livre="${k}" value="${(nomeLivre(k)).replace(/"/g, '&quot;')}" aria-label="Nome da secundária livre"${opts.readOnly ? ' readonly' : ''}>`,
       dotsHTML('skill2', k, S.skills2[k] || 0, 6, 0) + specBtn('s', k, S.skills2[k] || 0, specCount(S.spec2[k])))));
     el('secondary').innerHTML = catalogo + livres;
   }
