@@ -118,25 +118,21 @@ export function hpBarHTML(cur: number | null, max: number | null, chave: string,
 }
 
 /**
- * Barra sem números: só a fatia que sobrou e a palavra do estado.
+ * A palavra, sem a barra: "Ferido", "Grave", "Caído".
  *
- * É o que o jogador recebe quando a Vida do inimigo está no modo "estado": ele
- * vê que o urso está Grave, e não que restam 7 de 41. A largura vem de uma
- * porcentagem que o banco já arredondou de 5 em 5, então nem contando pixel
- * dá para reconstruir o número.
+ * É o que o jogador recebe do inimigo quando o mestre não abriu os números.
+ * Etiqueta e não barra de propósito: uma barra é uma régua, e o olho lê nela
+ * uma fração ("está em um terço") que ninguém deveria conseguir medir. A
+ * palavra diz o que se enxerga da criatura e para por aí.
  *
- * O preço desse arredondamento é que perto da fronteira de duas faixas a
- * palavra pode cair na vizinha (26% vira 25%, e "Ferido" vira "Grave"). Fica
- * assim de propósito: a leitura do inimigo é um palpite treinado, não uma
- * planilha, e o título diz isso.
+ * A faixa vem de uma porcentagem que o banco arredondou de 5 em 5, então perto
+ * da fronteira ela pode cair na vizinha (26% vira 25%, e "Ferido" vira
+ * "Grave"). Fica assim: a leitura do inimigo é palpite treinado, não planilha.
  */
-export function hpBarPctHTML(pct: number | null, classe = '', comEstado = true) {
-  const p = Math.max(0, Math.min(100, pct ?? 0));
-  const t = tierDe(p, 100);
-  return `<div class="hpbar hp-cego ${tierCls(t.estado)} ${classe}" title="${esc(t.estado)} (a olho)">
-    <div class="hpbar-fill" style="width:${p}%"></div>
-    ${comEstado ? `<span class="hpbar-txt"><span class="hp-est-so">${esc(t.estado)}</span></span>` : ''}
-  </div>`;
+export function estadoChipHTML(pct: number | null, classe = '') {
+  if (pct == null) return '';
+  const t = tierDe(Math.max(0, Math.min(100, pct)), 100);
+  return `<span class="est-chip ${tierCls(t.estado)} ${classe}" title="a olho">${esc(t.estado)}</span>`;
 }
 
 /** Redesenha uma barra já no DOM sem re-renderizar a lista (a largura anima). */
@@ -329,9 +325,6 @@ import { ABAS as ABAS_L, ABA_JOGADOR } from './mesa-abas';
 export type NivelVida = 'numero' | 'estado' | 'nada';
 export interface Revelar { vidaInimigo: NivelVida; statsInimigo: boolean; condInimigo: boolean }
 export const REVELAR_PADRAO: Revelar = { vidaInimigo: 'estado', statsInimigo: false, condInimigo: true };
-export const REVELAR_ROTULO: Record<NivelVida, string> = {
-  numero: 'o número exato', estado: 'só o estado (Ferido, Grave…)', nada: 'nada além da cor do retrato',
-};
 export const revelarDaMesa = (mesa: any): Revelar => ({ ...REVELAR_PADRAO, ...(mesa?.revelar || {}) });
 
 // -------------------------------------------------------------- abrir a mesa

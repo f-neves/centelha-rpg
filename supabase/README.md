@@ -72,10 +72,16 @@ Supabase pelo navegador. Passos para ligar tudo:
     liberados) e a função `grupo_fisico(p_mesa)`, que dos personagens dos outros devolve apenas
     Força, Destreza, Vigor e Aparência (uma coluna não pode ser mascarada por RLS, que é por linha).
 
-    A leitura direta de `combatentes` e `mesa_criaturas` passa a ser **só do mestre**, e `arquivos`
-    deixa de entregar `categoria = 'mapa'` ao jogador. Sem isso as views seriam enfeite: ninguém
-    precisa da página para conversar com o PostgREST. O download do mapa não muda, porque as
+    A leitura direta de `combatentes`, `encontros` e `mesa_criaturas` passa a ser **só do mestre**, e
+    `arquivos` deixa de entregar `categoria = 'mapa'` ao jogador. Sem isso as views seriam enfeite:
+    ninguém precisa da página para conversar com o PostgREST. O download do mapa não muda, porque as
     policies de storage passam por `arquivo_visivel()`, que é SECURITY DEFINER.
+
+    Duas coisas mudam de dono no caminho: **Energia e Mana** só saem para quem é dono do personagem
+    (nem os companheiros veem), e o **retrato** passa a sair para todo mundo, porque cara não é
+    ficha. Para isso `st_pers_select` libera aos membros da mesa os arquivos `retrato-*` do bucket
+    `personagens`. O prefixo é a tranca: na mesma pasta moram os `anexo-*` do jogador, que continuam
+    sendo só dele.
 
     Sem esta migração o site continua de pé: as páginas caem na tabela e mascaram no cliente, o que
     desenha a mesma tela sem a tranca.

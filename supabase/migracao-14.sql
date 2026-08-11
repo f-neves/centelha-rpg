@@ -62,10 +62,16 @@ select
   c.nome, c.tick, c.iniciativa, c.grupo, c.ativo, c.imagem, c.criado_em,
   v.vida  as ver_vida,
   v.stats as ver_stats,
+  -- O retrato do PC vive em `personagens`, que o jogador nao le do colega. Sai
+  -- por aqui porque cara nao e segredo: numa fila de doze, a arte e o que
+  -- separa "Goblin 2" de "Goblin 3" mais rapido que qualquer nome.
+  (select p.imagem_path from public.personagens p where p.id = c.personagem_id) as retrato,
   case when v.vida = 'numero' then c.pv_atual end as pv_atual,
   case when v.vida = 'numero' then c.pv_max end as pv_max,
-  case when v.vida = 'numero' then c.energia_atual end as energia_atual,
-  case when v.vida = 'numero' then c.energia_max end as energia_max,
+  -- Energia e Mana sao recurso, e recurso e plano: o jogador ve os do proprio
+  -- personagem e mais nada, nem dos companheiros.
+  case when v.meu then c.energia_atual end as energia_atual,
+  case when v.meu then c.energia_max end as energia_max,
   case when coalesce(c.pv_max, 0) > 0
        then (round((c.pv_atual::numeric / c.pv_max) * 20) * 5)::int
   end as pv_pct,
@@ -83,7 +89,9 @@ cross join lateral (
     case when c.tipo = 'pc' then true
          else coalesce((c.revelar->>'stats')::boolean, (m.revelar->>'statsInimigo')::boolean, false) end as stats,
     case when c.tipo = 'pc' then true
-         else coalesce((m.revelar->>'condInimigo')::boolean, true) end as cond
+         else coalesce((m.revelar->>'condInimigo')::boolean, true) end as cond,
+    c.personagem_id is not null
+      and public.dono_do_personagem(c.personagem_id) = auth.uid() as meu
 ) v
 where c.oculto = false
   and public.eh_membro(e.mesa_id);
@@ -211,6 +219,28 @@ create policy arq_select on public.arquivos for select to authenticated using (
   or (mesa_id is not null and public.eh_mestre(mesa_id))
   or (mesa_id is not null and public.eh_membro(mesa_id) and categoria <> 'mapa'
       and (visivel_jogadores or auth.uid() = any(visivel_para)))
+);
+
+-- ========== O retrato de todo mundo ==========
+-- O bucket `personagens` era do dono e do mestre. Resultado: na mesa, um
+-- jogador via o companheiro como uma letra dentro de um circulo. Cara nao e
+-- ficha: os membros passam a ler os arquivos `retrato-*` dos personagens da
+-- mesa deles.
+--
+-- O prefixo do nome e a tranca, e nao um detalhe: na mesma pasta
+-- `<personagem_id>/` moram os anexos do jogador (`anexo-*`), que sao dele e
+-- continuam sendo. Abrir a pasta inteira entregaria os documentos junto com o
+-- rosto.
+drop policy if exists st_pers_select on storage.objects;
+create policy st_pers_select on storage.objects for select to authenticated using (
+  bucket_id = 'personagens' and (
+    public.dono_do_personagem(((storage.foldername(name))[1])::uuid) = auth.uid()
+    or public.eh_mestre(public.mesa_do_personagem(((storage.foldername(name))[1])::uuid))
+    or (
+      public.eh_membro(public.mesa_do_personagem(((storage.foldername(name))[1])::uuid))
+      and split_part(name, '/', 2) like 'retrato-%'
+    )
+  )
 );
 
 -- Fim da migracao 14.

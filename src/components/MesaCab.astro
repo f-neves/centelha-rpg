@@ -211,12 +211,17 @@ const { aba } = Astro.props;
   .hpbar.t-grave     .hpbar-fill { background: linear-gradient(90deg, #d5661a, #e8791f); }
   .hpbar.t-critico   .hpbar-fill { background: linear-gradient(90deg, #b02a20, #cf3327); }
   .hpbar.t-caido     .hpbar-fill { background: linear-gradient(90deg, #4a4a4a, #6a6a6a); }
-  /* Barra cega: a que o jogador vê do inimigo. Hachurada, para ninguém
-     confundir com a barra do próprio grupo, que tem número. */
-  .hpbar.hp-cego { background-image: repeating-linear-gradient(45deg,
-      transparent 0 4px, color-mix(in srgb, var(--ink) 10%, transparent) 4px 8px); }
-  .hpbar.hp-cego .hp-est-so { font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .95);
-    letter-spacing: .04em; }
+  /* A etiqueta de estado: o que se vê do inimigo quando não há barra. Mesma
+     escada de cor da barra, para o olho aprender uma coisa só. */
+  .est-chip { font-family: 'Cinzel'; font-size: var(--fs-micro); font-weight: 700;
+    letter-spacing: .04em; padding: .05rem .5rem; border-radius: 999px; cursor: help;
+    border: 1px solid transparent; white-space: nowrap; color: var(--ink); }
+  .est-chip.t-saudavel  { background: color-mix(in srgb, var(--ok) 26%, transparent); }
+  .est-chip.t-machucado { background: color-mix(in srgb, #a9c22b 30%, transparent); }
+  .est-chip.t-ferido    { background: color-mix(in srgb, #e6a91d 32%, transparent); }
+  .est-chip.t-grave     { background: color-mix(in srgb, #e8791f 34%, transparent); }
+  .est-chip.t-critico   { background: color-mix(in srgb, #cf3327 36%, transparent); }
+  .est-chip.t-caido     { background: color-mix(in srgb, var(--ink) 30%, transparent); }
   /* barra de Energia: mesma caixa, outra cor */
   .enbar .hpbar-fill { background: linear-gradient(90deg, #3b6fb0, #5b9bd8) !important; }
 
