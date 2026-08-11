@@ -149,12 +149,30 @@ import MesaCab from '../../components/MesaCab.astro';
        tabuleiro continua recebendo o ponteiro, que é como se arrasta a arte
        para o lugar e como a roda a amplia. Um `showModal()` deixaria o mapa
        inerte atrás do fundo escuro, e o gesto principal do ajuste morreria. -->
-  <dialog id="arte-dlg" class="mesa-dlg gr-arte-dlg">
+  <dialog id="arte-dlg" class="mesa-dlg">
     <form method="dialog">
-      <h3>Ajustar a arte e o traço</h3>
-      <p class="muted dlg-txt">Arraste o mapa para mover a arte, e use a roda para aproximar.</p>
+      <h3 id="fa-titulo">Ajustar a arte e o traço</h3>
+      <p class="muted dlg-txt">O que você mexer aqui aparece no tabuleiro na hora.
+        "Cancelar" devolve tudo como estava quando esta janela abriu.</p>
       <div class="fa-sec" id="fa-arte">
         <span class="fa-h">Arte</span>
+        <div class="fa-lin fa-lin-pos">
+          <!-- A cruz de posição existe porque a janela é modal: com ela aberta o
+               tabuleiro fica inerte atrás, e arrastar o mapa com o ponteiro,
+               que era como se enquadrava a arte, deixa de chegar lá. Cada seta
+               empurra 2% da largura do tabuleiro, e o ◎ do meio recentraliza. -->
+          <span class="fa-dpad">
+            <button type="button" class="btn-fant" data-mv="cima" title="Subir a arte">▲</button>
+            <button type="button" class="btn-fant" data-mv="esq" title="Puxar para a esquerda">◀</button>
+            <button type="button" class="btn-fant" data-mv="centro" title="Centralizar a arte">◎</button>
+            <button type="button" class="btn-fant" data-mv="dir" title="Puxar para a direita">▶</button>
+            <button type="button" class="btn-fant" data-mv="baixo" title="Descer a arte">▼</button>
+          </span>
+          <span class="fa-pos-rot">
+            <span class="fa-h">Posição</span>
+            <span class="muted" id="fa-pval">centro</span>
+          </span>
+        </div>
         <div class="fa-lin">
           <button type="button" class="btn-fant" id="fa-menos" title="Afastar a arte">−</button>
           <input type="range" id="fa-zoom" min="0.2" max="4" step="0.02" value="1" title="Zoom da arte" />
@@ -188,6 +206,7 @@ import MesaCab from '../../components/MesaCab.astro';
         </div>
       </div>
       <div class="dlg-btns">
+        <button type="button" class="btn" id="fa-cancelar">Cancelar</button>
         <button type="button" class="btn primary" id="fa-concluir">Concluir</button>
       </div>
     </form>
@@ -354,18 +373,18 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-mundo.ajustando .gr-tokens { pointer-events: none; opacity: .55; }
 
   /* ---- o painel de ajustar a arte ----
-     Encostado no canto de baixo, à direita, e estreito: ele fica aberto ENQUANTO
-     se arrasta o mapa, então o que ele cobrir é mapa que não se pode ver
-     enquanto se alinha. Sem `::backdrop`, porque não é modal. */
-  /* `left: auto` e `top: auto` não são enfeite: a folha do navegador dá a todo
-     <dialog> um `left: 0; right: 0; margin: auto`, e com uma largura fixa o
-     `left: 0` vence o meu `right` e o painel nasce colado na borda esquerda,
-     em cima do mapa. */
-  .gr-arte-dlg { position: fixed; margin: 0; left: auto; top: auto; right: 1rem; bottom: 1rem;
-    max-width: 19rem; width: min(19rem, 92vw); z-index: 140; }
-  .gr-arte-dlg form { gap: .35rem; padding: .7rem .8rem .8rem; }
-  .gr-arte-dlg .dlg-txt { margin: -.15rem 0 .1rem; font-size: calc(var(--fs-micro) * .95); }
+     Sem posicionamento próprio: é o mesmo diálogo centralizado de "medidas" e
+     "fundo", com o mesmo `.mesa-dlg` e o mesmo par de botões no pé. */
+  #arte-dlg .dlg-txt { margin: -.15rem 0 .1rem; font-size: calc(var(--fs-micro) * .95); }
   .fa-sec { display: grid; gap: .25rem; padding-top: .35rem; border-top: 1px solid var(--rule); }
+  /* A cruz de posição: três colunas, com o ◎ no meio da fileira do meio. */
+  .fa-lin-pos { align-items: center; gap: .7rem; }
+  .fa-dpad { display: grid; grid-template-columns: repeat(3, 1.6rem); gap: .1rem; }
+  .fa-dpad button { padding: .05rem 0; line-height: 1.1; }
+  .fa-dpad button[data-mv="cima"] { grid-column: 2; }
+  .fa-dpad button[data-mv="baixo"] { grid-column: 2; }
+  .fa-pos-rot { display: grid; gap: .1rem; }
+  .fa-pos-rot .muted { font-size: var(--fs-micro); font-variant-numeric: tabular-nums; }
   .fa-h { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
     letter-spacing: .07em; color: var(--ink-soft); }
   .fa-lin { display: flex; align-items: center; gap: .35rem; }
@@ -448,38 +467,19 @@ import MesaCab from '../../components/MesaCab.astro';
   .seta-txt { font-size: 15px; font-weight: 700; }
   .seta-sub { font-size: 10.5px; opacity: .85; }
 
-  /* ---- as Artes no chão ----
-     Duas camadas absolutas por cima dos hexágonos e por baixo das peças. Não
-     recebem ponteiro: quem manda no clique continua sendo o token e o hexágono,
-     e uma mancha de fogo não pode roubar o arrasto de quem está em pé nela. */
-  .gr-efeitos, .gr-previa { position: absolute; inset: 0; width: 100%; height: 100%;
-    pointer-events: none; overflow: visible; }
-  /* A mancha é translúcida e listrada: a cor sozinha some sobre um mapa colorido,
-     e a listra dá textura sem esconder o que está desenhado embaixo. */
-  .gr-ef polygon { fill: color-mix(in srgb, var(--ef-cor) 30%, transparent);
-    stroke: color-mix(in srgb, var(--ef-cor) 70%, transparent); stroke-width: 1; }
-  .gr-ef-aura polygon { fill: color-mix(in srgb, var(--ef-cor) 20%, transparent); }
-  .gr-ef-muro polygon { fill: color-mix(in srgb, var(--ef-cor) 55%, transparent); stroke-width: 1.6; }
-  .gr-previa polygon { fill: color-mix(in srgb, var(--accent) 26%, transparent);
-    stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 4 3; }
-
-  /* ---- a lista dos efeitos vivos, na coluna lateral ---- */
-  .gr-ef-lista { display: grid; gap: .2rem; margin: .4rem 0 .2rem; }
-  .gr-efl { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: .4rem;
-    padding: .22rem .3rem; border: 1px solid var(--rule); border-radius: var(--r-sm); }
-  .gr-efl-b { width: .5rem; height: 1.4rem; border-radius: 2px; background: var(--ef-cor); }
-  .gr-efl-tx { display: grid; min-width: 0; }
-  .gr-efl-tx b { font-size: var(--fs-aux); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .gr-efl-tx small { font-size: var(--fs-micro); color: var(--ink-soft);
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  /* Os turnos restantes são o número que a mesa pergunta em voz alta. */
-  .gr-efl-t { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-h3);
-    line-height: 1; color: var(--ef-cor); }
-
   /* ---- tokens no tabuleiro ---- */
   .gr-tokens { position: absolute; inset: 0; }
-  .gr-token { position: absolute; transform: translate(-50%, -50%); cursor: grab;
-    display: flex; flex-direction: column; align-items: center; gap: .05rem; touch-action: none; }
+  /* O deslocamento vertical é meio HEXÁGONO, e não meia peça.
+     `translate(-50%, -50%)` centralizava a caixa inteira no centro da casa, e a
+     caixa não é só o hexágono: embaixo dele vêm o nome e, quando há, os ícones
+     de condição. Com 68px de hexágono numa caixa de 81, a arte subia os 6,5px
+     da diferença, e toda peça do tabuleiro ficava fora da casa pelo mesmo
+     tanto. Agora a conta é a altura do próprio quadro (a largura vezes 1,1547,
+     que é a proporção do hexágono de ponta para cima), dividida por dois: o que
+     pendura embaixo deixa de empurrar a peça para cima. */
+  .gr-token { position: absolute; transform: translate(-50%, calc(var(--tok, 2.6rem) * -0.57735));
+    cursor: grab; display: flex; flex-direction: column; align-items: center; gap: .05rem;
+    touch-action: none; }
   .gr-token.arrastando { opacity: .35; }
   /* A peça que andou por ordem de OUTRA tela desliza até a casa nova. A classe
      entra só nesse caso: no arrasto local o dedo já é a animação, e uma
@@ -1269,14 +1269,21 @@ import MesaCab from '../../components/MesaCab.astro';
     raiz.style.setProperty('--vez-forca', String(GRADE.vezForca ?? 10));
   }
 
-  const salvarAparencia = debounce(async () => {
+  /**
+   * Grava o enquadramento e o traço. Separada da versão com espera porque o
+   * "Cancelar" precisa gravar NA HORA: o que ele desfaz já foi para o banco
+   * enquanto o dedo arrastava a barrinha, e um desfazer que espera 600 ms é um
+   * desfazer que se perde se a página for embora antes.
+   */
+  async function gravarAparencia() {
     const { error } = await SB.from('mesa_arenas')
       .update({ fundo: FUNDO, grade: GRADE }).eq('id', ARENA.id);
-    if (error) uiErro(/grade/i.test(error.message)
+    if (error) return uiErro(/grade/i.test(error.message)
       ? 'A coluna "grade" ainda não existe. Rode supabase/migracao-16.sql.'
       : 'Erro ao salvar a aparência: ' + error.message);
-    else { ARENA.fundo = { ...FUNDO }; ARENA.grade = { ...GRADE }; RT?.avisar('arena'); }
-  }, 600);
+    ARENA.fundo = { ...FUNDO }; ARENA.grade = { ...GRADE }; RT?.avisar('arena');
+  }
+  const salvarAparencia = debounce(gravarAparencia, 600);
 
   function sincronizarControles() {
     if (!MESTRE) return;
@@ -1293,6 +1300,7 @@ import MesaCab from '../../components/MesaCab.astro';
     (el('fa-vez') as HTMLInputElement).value = String(vf);
     el('fa-vezval').textContent = String(vf);
     el('fa-arte').hidden = !(ARENA.fundo_path || ARENA.fundo_url);
+    pintarPosicao();
   }
 
   /**
@@ -1692,21 +1700,80 @@ import MesaCab from '../../components/MesaCab.astro';
    * tabuleiro inteiro vira superfície de arrasto, e um clique num token moveria
    * a peça em vez do mapa. Entrar no modo desliga o arrasto de tokens.
    */
+  /**
+   * O estado da aparência no instante em que a janela abriu. É o que o
+   * "Cancelar" devolve. Guardado como cópia, e não como referência: `FUNDO` e
+   * `GRADE` são mexidos no lugar pelas barrinhas.
+   */
+  let AJUSTE_ANTES: { fundo: typeof FUNDO; grade: typeof GRADE } | null = null;
+
   function modoAjuste(liga: boolean) {
     AJUSTANDO = liga;
     el('gr-mundo').classList.toggle('ajustando', liga);
     (el('gr-ajustar') as HTMLElement).hidden = liga || !MESTRE;
     const dlg = el('arte-dlg') as HTMLDialogElement;
-    // `show()` e não `showModal()`: ver o comentário no HTML. O painel precisa
-    // conviver com o tabuleiro vivo atrás dele, porque arrastar o mapa É o
-    // ajuste. Em tela cheia ele vai morar dentro do palco, senão não apareceria.
     if (liga) {
       if (!dlg.open) {
-        (document.fullscreenElement || document.body).appendChild(dlg);
-        dlg.show();
+        AJUSTE_ANTES = { fundo: { ...FUNDO }, grade: { ...GRADE } };
+        // Em tela cheia de elemento, nada fora do palco é desenhado: a janela
+        // se muda para dentro dele, senão simplesmente não apareceria. Quando
+        // quem está em tela cheia é o documento, o corpo continua servindo.
+        const palco = el('gr-palco');
+        const casa = document.fullscreenElement === palco ? palco : document.body;
+        // A conferência do pai não é zelo: `appendChild` no pai que já é o pai
+        // ainda ARRANCA e recoloca o nó, e quem estivesse segurando uma
+        // referência a ele (um clique a caminho, um teste) fica com um nó que
+        // não pertence mais ao documento.
+        if (dlg.parentElement !== casa) casa.appendChild(dlg);
+        // Modal, como "medidas" e "fundo". O `catch` não é decoração: um
+        // navegador que recuse o modal ainda abre a janela solta, e aí o
+        // tabuleiro atrás continua aceitando o arrasto da arte.
+        try { dlg.showModal(); } catch { dlg.show(); }
       }
       sincronizarControles();
     } else if (dlg.open) dlg.close();
+  }
+
+  /** Devolve a arte e o traço ao que eram quando a janela abriu. */
+  function cancelarAjuste() {
+    if (!AJUSTE_ANTES) return;
+    FUNDO = { ...AJUSTE_ANTES.fundo };
+    GRADE = { ...AJUSTE_ANTES.grade };
+    AJUSTE_ANTES = null;
+    aplicarFundo(); aplicarGrade(); sincronizarControles();
+    gravarAparencia();
+  }
+
+  /**
+   * A cruz de posição, no lugar do arrasto.
+   *
+   * Com a janela modal aberta o tabuleiro fica inerte atrás dela, e o gesto de
+   * empurrar o mapa com o ponteiro não chega mais lá. Um passo são 2% da
+   * largura do tabuleiro, que é fino o bastante para alinhar uma ponte e grosso
+   * o bastante para atravessar o mapa em vinte cliques.
+   */
+  const PASSO_POS = 2;
+  function moverArte(dir: string) {
+    if (dir === 'centro') { FUNDO.x = 0; FUNDO.y = 0; }
+    else if (dir === 'cima') FUNDO.y -= PASSO_POS;
+    else if (dir === 'baixo') FUNDO.y += PASSO_POS;
+    else if (dir === 'esq') FUNDO.x -= PASSO_POS;
+    else if (dir === 'dir') FUNDO.x += PASSO_POS;
+    else return;
+    // O teto é generoso de propósito: com a arte muito ampliada, empurrar duas
+    // vezes a largura do tabuleiro ainda é enquadramento legítimo.
+    FUNDO.x = Math.max(-200, Math.min(200, +FUNDO.x.toFixed(2)));
+    FUNDO.y = Math.max(-200, Math.min(200, +FUNDO.y.toFixed(2)));
+    aplicarFundo(); pintarPosicao(); salvarAparencia();
+  }
+
+  /** O rótulo da posição: "centro", ou o quanto se andou para cada lado. */
+  function pintarPosicao() {
+    const alvo = document.getElementById('fa-pval');
+    if (!alvo) return;
+    const x = Math.round(FUNDO.x || 0), y = Math.round(FUNDO.y || 0);
+    alvo.textContent = !x && !y ? 'centro'
+      : `${x ? `${x > 0 ? '→' : '←'} ${Math.abs(x)}%` : ''}${x && y ? ' · ' : ''}${y ? `${y > 0 ? '↓' : '↑'} ${Math.abs(y)}%` : ''}`;
   }
 
   function ligarAparencia() {
@@ -1719,14 +1786,22 @@ import MesaCab from '../../components/MesaCab.astro';
       FUNDO.z = Math.max(0.2, Math.min(4, +z.toFixed(3)));
       zoomEl.value = String(FUNDO.z);
       el('fa-zval').textContent = Math.round(FUNDO.z * 100) + '%';
-      aplicarFundo(); salvarAparencia();
+      // "caber" e "preencher" recentralizam a arte, então o rótulo da posição
+      // muda junto: ele é atualizado aqui, e não só na cruz.
+      aplicarFundo(); pintarPosicao(); salvarAparencia();
     };
     el('gr-ajustar').onclick = () => modoAjuste(true);
-    el('fa-concluir').onclick = () => modoAjuste(false);
-    // Fechar o painel por qualquer via (o Esc, o botão) sai do modo de ajuste:
-    // ficar com o tabuleiro em modo de arrastar a arte, sem nada na tela
-    // dizendo isso, é a pior das duas metades.
+    el('fa-concluir').onclick = () => { AJUSTE_ANTES = null; modoAjuste(false); };
+    el('fa-cancelar').onclick = () => { cancelarAjuste(); modoAjuste(false); };
+    // O Esc é um cancelamento, e não um "concluir sem clicar": é o que ele
+    // significa nos outros dois diálogos, onde nada foi gravado até o Salvar.
+    // Aqui a gravação já aconteceu, então cancelar é desfazer de verdade.
+    el('arte-dlg').addEventListener('cancel', () => cancelarAjuste());
+    // Fechar por qualquer via sai do modo de ajuste: ficar com o tabuleiro em
+    // modo de ajuste, sem nada na tela dizendo isso, é a pior das duas metades.
     el('arte-dlg').addEventListener('close', () => { if (AJUSTANDO) modoAjuste(false); });
+    el('arte-dlg').querySelectorAll<HTMLElement>('.fa-dpad [data-mv]')
+      .forEach((b) => b.onclick = () => moverArte(b.dataset.mv!));
     el('fa-menos').onclick = () => mudarZ(FUNDO.z - 0.1);
     el('fa-mais').onclick = () => mudarZ(FUNDO.z + 0.1);
     zoomEl.oninput = () => mudarZ(+zoomEl.value);
@@ -2004,8 +2079,12 @@ import MesaCab from '../../components/MesaCab.astro';
     document.addEventListener('keydown', (ev) => {
       if (ev.key !== 'Escape') return;
       fecharMenu(); cancelarMira();
-      // O painel de ajuste não é modal, e o Esc só fecha diálogo modal sozinho.
-      if (AJUSTANDO) modoAjuste(false);
+      // O Esc do ajuste passa por AQUI antes de chegar ao diálogo, e fechar na
+      // mão dispara `close` sem disparar `cancel`. Sem desfazer explicitamente,
+      // o Esc viraria um "concluir" silencioso, que é o contrário do que ele
+      // significa nos outros diálogos. Chamar duas vezes é inofensivo: o
+      // segundo cancelamento não tem mais o que devolver.
+      if (AJUSTANDO) { cancelarAjuste(); modoAjuste(false); }
     });
   }
 
