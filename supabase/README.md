@@ -91,6 +91,21 @@ Supabase pelo navegador. Passos para ligar tudo:
     Sem esta migração o site continua de pé: as páginas caem na tabela e mascaram no cliente, o que
     desenha a mesma tela sem a tranca.
 
+16. Rode [`migracao-15.sql`](./migracao-15.sql): o **tabuleiro de hexágonos** (aba Grid). Cria
+    `mesa_arenas` (várias arenas por campanha, uma ativa, cobrada por índice único parcial) e
+    `arena_tokens` (onde cada combatente está, em coordenada axial `q, r`), mais a RPC
+    `ativar_arena` e as views `arena_visao` e `token_visao`, que são por onde o jogador lê.
+    Idempotente.
+
+    Mesmo desenho da migração 14: a tabela é do mestre e o jogador lê a view, então uma arena
+    preparada para a semana que vem não vaza, e a posição de um combatente **oculto** também não.
+
+    Um detalhe de segurança que vale ler: esta migração **altera `arquivo_visivel()`**. A função
+    ganha uma segunda condição, para que a arte de fundo da arena **ativa** possa ser baixada por
+    quem é membro da mesa. Sem isso o grupo veria os hexágonos flutuando no vazio, porque o
+    download do bucket `mesa` só liberava o que estivesse marcado na aba Mapas. O resto da regra
+    não muda: mapa não liberado segue invisível e arena inativa não abre nada.
+
 ## 3. Ajustes no painel
 
 - **Authentication > Providers > Email**: deixe **Email** ligado. Para um grupo privado, você pode

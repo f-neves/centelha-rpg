@@ -1,0 +1,675 @@
+---
+import Base from '../../layouts/Base.astro';
+import MesaCab from '../../components/MesaCab.astro';
+---
+<Base title="Grid" largura="full" telaCheia descricao="O tabuleiro de hexágonos do combate: onde cada personagem e criatura está.">
+  <MesaCab aba="grid">
+
+    <div id="gr-aviso"></div>
+
+    <div id="gr-tudo" hidden>
+      <div class="gr-barra">
+        <span class="gr-id">
+          <span class="gr-rot">Arena</span>
+          <select id="gr-sel" hidden></select>
+          <strong id="gr-nome" class="cinzel"></strong>
+          <span class="gr-medida muted" id="gr-medida"></span>
+        </span>
+        <span class="gr-btns" id="gr-btns" hidden>
+          <span class="sep-v"></span>
+          <button class="btn mini" id="gr-nova">+ arena</button>
+          <button class="btn mini" id="gr-editar">✎ medidas</button>
+          <button class="btn mini" id="gr-fundo-btn">▣ fundo</button>
+          <button class="btn mini" id="gr-ativar">◉ pôr em jogo</button>
+          <button class="btn-fant perigo" id="gr-excluir" title="Excluir esta arena">✕</button>
+        </span>
+        <span class="espaco"></span>
+        <span class="gr-zoom">
+          <button class="btn-fant" id="gr-menos" title="Afastar">−</button>
+          <span id="gr-zval" class="muted">100%</span>
+          <button class="btn-fant" id="gr-mais" title="Aproximar">+</button>
+          <button class="btn-fant" id="gr-caber" title="Caber na tela">⤢</button>
+        </span>
+        <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
+      </div>
+
+      <div class="gr-grade">
+        <div class="gr-palco" id="gr-palco">
+          <div class="gr-mundo" id="gr-mundo">
+            <img id="gr-fundo" alt="" hidden />
+            <svg id="gr-hexes" xmlns="http://www.w3.org/2000/svg"></svg>
+            <div id="gr-tokens" class="gr-tokens"></div>
+          </div>
+        </div>
+
+        <aside class="gr-lado" id="gr-lado">
+          <h3 class="col-h">Em campo</h3>
+          <p class="muted nota-mini" id="gr-dica" hidden>Arraste o retrato até um hexágono para pôr no mapa.
+            Arraste de um hexágono para outro para mover, e para cá para tirar do mapa.</p>
+          <div id="gr-lista" class="gr-lista"></div>
+        </aside>
+      </div>
+    </div>
+
+  </MesaCab>
+
+  <dialog id="arena-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3 id="ar-titulo">Nova arena</h3>
+      <label>Nome <input type="text" id="ar-nome" placeholder="A ponte velha" /></label>
+      <div class="grade3">
+        <label>Colunas <input type="number" id="ar-cols" min="2" max="60" value="24" /></label>
+        <label>Linhas <input type="number" id="ar-rows" min="2" max="60" value="16" /></label>
+        <label>Metros por hexágono <input type="number" id="ar-escala" min="0.25" max="10" step="0.25" value="1" /></label>
+      </div>
+      <p class="muted dlg-txt">Uma criatura de porte médio ocupa um hexágono.</p>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="ar-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="ar-salvar">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="fundo-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3>Arte por baixo dos hexágonos</h3>
+      <p class="muted dlg-txt">Escolha um mapa já enviado na aba Mapas, ou envie um agora (ele passa a
+        aparecer lá também). Enquanto esta arena estiver em jogo, o grupo enxerga a arte.</p>
+      <div id="fd-lista" class="fd-lista"></div>
+      <div class="dlg-btns">
+        <label class="btn mini">Enviar imagem<input type="file" id="fd-file" accept="image/*" hidden /></label>
+        <button type="button" class="btn mini" id="fd-tirar">Tirar o fundo</button>
+        <span class="espaco"></span>
+        <button type="button" class="btn" id="fd-cancelar">Fechar</button>
+      </div>
+    </form>
+  </dialog>
+</Base>
+
+<style is:global>
+  /* ---- barra da arena ---- */
+  .gr-barra { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap;
+    border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
+    padding: .3rem .6rem; margin-bottom: .5rem; }
+  .gr-id { display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; }
+  .gr-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .07em; color: var(--ink-soft); }
+  .gr-medida { font-size: var(--fs-micro); }
+  .gr-btns { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+  .gr-zoom { display: flex; align-items: center; gap: .2rem; }
+  .gr-zoom #gr-zval { font-size: var(--fs-micro); min-width: 2.8rem; text-align: center;
+    font-variant-numeric: tabular-nums; }
+
+  /* ---- as duas colunas ---- */
+  .gr-grade { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: .6rem; align-items: start; }
+  @media (max-width: 1100px) { .gr-grade { grid-template-columns: 1fr; } }
+
+  /* O palco rola; o mundo tem o tamanho do tabuleiro e é ele que o zoom estica.
+     Escalar o palco esticaria a barra de rolagem junto. */
+  .gr-palco { overflow: auto; border: 1px solid var(--rule); border-radius: var(--r-lg);
+    background: var(--panel-2, var(--panel)); max-height: calc(100vh - var(--mesa-barra-h, 66px) - 6rem);
+    min-height: 20rem; position: relative; }
+  .gr-mundo { position: relative; transform-origin: 0 0; }
+  .gr-mundo > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #gr-fundo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* O traço do hexágono é claro sobre a arte e escuro sobre o vazio: uma cor só
+     some numa das duas situações, e o mapa vive nas duas. */
+  .hx { fill: transparent; stroke: color-mix(in srgb, var(--ink) 22%, transparent); stroke-width: 1; }
+  .gr-mundo.com-arte .hx { stroke: rgba(255,255,255,.34); }
+  .hx.alvo { fill: color-mix(in srgb, var(--accent) 34%, transparent);
+    stroke: var(--accent); stroke-width: 2.5; }
+  .hx.proibido { fill: color-mix(in srgb, var(--perigo) 26%, transparent); stroke: var(--perigo); }
+
+  /* ---- tokens no tabuleiro ---- */
+  .gr-tokens { position: absolute; inset: 0; }
+  .gr-token { position: absolute; transform: translate(-50%, -50%); cursor: grab;
+    display: flex; flex-direction: column; align-items: center; gap: .05rem; touch-action: none; }
+  .gr-token.arrastando { opacity: .35; }
+  .gr-token .av { box-shadow: 0 2px 6px rgba(0,0,0,.5); }
+  .gr-token .gr-tn { font-size: calc(var(--fs-micro) * .88); line-height: 1; padding: .04rem .25rem;
+    border-radius: 999px; background: color-mix(in srgb, var(--bg) 78%, transparent);
+    max-width: 6.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* O lado do token é a cor da borda, a mesma do card do rastreador. */
+  .gr-token.g-aliado  .av { outline: 2px solid var(--accent); }
+  .gr-token.g-inimigo .av { outline: 2px solid #c1352c; }
+  .gr-token.g-neutro  .av { outline: 2px solid var(--gold); }
+  .gr-token.oculto { opacity: .6; }
+  .gr-token.oculto .av { outline-style: dashed; }
+
+  /* O fantasma que segue o dedo. Fora do palco, por cima de tudo. */
+  .gr-ghost { position: fixed; z-index: 200; pointer-events: none; transform: translate(-50%, -50%);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,.55)); }
+
+  /* ---- lista lateral ---- */
+  .gr-lado { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
+    padding: .5rem .6rem; position: sticky; top: calc(var(--mesa-barra-h, 66px) + .4rem); }
+  .gr-lado.solta { outline: 2px dashed var(--perigo); outline-offset: -4px; }
+  .gr-lista { display: flex; flex-direction: column; gap: .2rem; max-height: 60vh; overflow-y: auto; }
+  .gr-ficha { display: flex; align-items: center; gap: .45rem; padding: .2rem .3rem;
+    border-radius: var(--r-md); cursor: grab; touch-action: none; }
+  .gr-ficha:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .gr-ficha .av { --av-t: 2.2rem; }
+  .gr-ficha .gr-fn { flex: 1; min-width: 0; font-size: var(--fs-micro); line-height: 1.15;
+    overflow: hidden; text-overflow: ellipsis; }
+  .gr-ficha .gr-fq { font-size: calc(var(--fs-micro) * .85); color: var(--accent-texto);
+    font-variant-numeric: tabular-nums; }
+  .gr-ficha.posto { opacity: .55; }
+  .gr-ficha.posto:hover { opacity: 1; }
+  .nota-mini { font-size: var(--fs-micro); margin: .1rem 0 .4rem; }
+
+  /* ---- diálogo do fundo ---- */
+  .fd-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: .4rem;
+    max-height: 46vh; overflow-y: auto; margin: .4rem 0; }
+  .fd-item { border: 1px solid var(--rule); border-radius: var(--r-md); overflow: hidden;
+    cursor: pointer; background: var(--panel-2, var(--panel)); }
+  .fd-item.sel { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+  .fd-item img { width: 100%; height: 5rem; object-fit: cover; display: block; }
+  .fd-item span { display: block; padding: .2rem .35rem; font-size: var(--fs-micro);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+</style>
+
+<script>
+  import {
+    abrirMesa, u, esc, avatarHTML, urlsImagens, pctDe,
+    semMigracao14, avisoMigracao,
+  } from '../../lib/mesa-core';
+  import { MON } from '../../lib/mesa-bestiario';
+  import {
+    centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
+    hexEmPonto, dentro, chaveHex,
+  } from '../../lib/hex';
+  import { uiConfirmar, uiErro } from '../../lib/ui-dialog';
+
+  const el = (i: string) => document.getElementById(i)!;
+
+  let SB: any, ID = '', MESTRE = false, EU = '';
+  let ARENAS: any[] = [];
+  let ARENA: any = null;
+  let ENC: any = null;
+  let COMBS: any[] = [];
+  let TOKENS: Record<string, { q: number; r: number }> = {};
+  let IMGS: Record<string, string> = {};
+  let PC_IMG: Record<string, string> = {};
+  let IMG_FUNDO = '';
+  let ZOOM = 1;
+
+  // O raio do hexágono em pixels do MUNDO. O zoom é um `scale` por cima, então
+  // este número não muda: mudar o raio redesenharia o SVG a cada passo de zoom.
+  const RAIO = 34;
+
+  async function main() {
+    const ctx = await abrirMesa('grid');
+    if (!ctx) return;
+    SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id;
+
+    if (MESTRE) { el('gr-btns').hidden = false; el('gr-dica').hidden = false; }
+    ligarBarra();
+    ligarArrasto();
+    await carregar();
+  }
+
+  // =============================================================== carregar
+  async function carregar() {
+    const aviso = el('gr-aviso');
+    aviso.innerHTML = '';
+
+    // As arenas. O mestre lê a tabela; o jogador lê a view, que só entrega a ativa.
+    const { data: arenas, error } = await SB.from(MESTRE ? 'mesa_arenas' : 'arena_visao')
+      .select('*').eq('mesa_id', ID).order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    if (error) {
+      if (/mesa_arenas|arena_visao|relation/i.test(error.message)) {
+        avisoMigracao(aviso, 'O tabuleiro de hexágonos');
+        aviso.querySelector('p')!.innerHTML =
+          'Rode <code>supabase/migracao-15.sql</code> no SQL Editor do Supabase para ligar esta aba.';
+        return;
+      }
+      aviso.innerHTML = `<p class="erro">${esc(error.message)}</p>`;
+      return;
+    }
+    ARENAS = arenas || [];
+    ARENA = ARENAS.find((a) => a.ativa) || ARENAS[0] || null;
+
+    if (!ARENA) {
+      el('gr-tudo').hidden = true;
+      aviso.innerHTML = MESTRE
+        ? `<div class="painel"><p class="vazio">Nenhuma arena ainda. Uma arena é o chão de uma cena: a ponte, a cripta, o pátio.</p>
+           <div class="bloco-acoes"><button class="btn primary" id="gr-primeira">Criar a primeira arena</button></div></div>`
+        : '<div class="painel"><p class="vazio">O mestre ainda não pôs uma arena em jogo.</p></div>';
+      if (MESTRE) el('gr-primeira').onclick = () => abrirArena(null);
+      return;
+    }
+    el('gr-tudo').hidden = false;
+
+    await carregarCombatentes();
+    await carregarTokens();
+    pintar();
+  }
+
+  /** O encontro ativo e quem está nele. É de lá que saem os tokens. */
+  async function carregarCombatentes() {
+    ENC = null; COMBS = [];
+    const { data: encs } = await SB.from(MESTRE ? 'encontros' : 'encontro_visao')
+      .select('*').eq('mesa_id', ID).eq('ativo', true).limit(1);
+    ENC = (encs || [])[0] || null;
+    if (!ENC) return;
+    const { data, error } = await SB.from(MESTRE ? 'combatentes' : 'combate_visao')
+      .select('*').eq('encontro_id', ENC.id);
+    if (error && !MESTRE && semMigracao14(error)) {
+      const r = await SB.from('combatentes').select('*').eq('encontro_id', ENC.id);
+      COMBS = (r.data || []).filter((c: any) => !c.oculto);
+    } else {
+      COMBS = data || [];
+    }
+    COMBS = COMBS.filter((c: any) => c.ativo !== false)
+      .sort((a: any, b: any) => (a.tick - b.tick) || String(a.nome).localeCompare(String(b.nome)));
+
+    // Retratos: o do PC vive no bucket `personagens`, o avulso no `mesa`, e o da
+    // criatura é arte estática do site.
+    //
+    // O caminho do retrato do PC chega de dois jeitos diferentes conforme quem
+    // pergunta: `combate_visao` já entrega a coluna `retrato` pronta ao jogador,
+    // mas a TABELA `combatentes`, que é o que o mestre lê, não tem essa coluna.
+    // Sem esta busca o mestre via os personagens como letra dentro de um
+    // círculo, justamente ele, que é quem move as peças.
+    PC_IMG = {};
+    if (MESTRE) {
+      const ids = [...new Set(COMBS.map((c: any) => c.personagem_id).filter(Boolean))];
+      if (ids.length) {
+        const { data: ps } = await SB.from('personagens').select('id, imagem_path').in('id', ids);
+        for (const p of ps || []) if (p.imagem_path) PC_IMG[p.id] = p.imagem_path;
+      }
+    }
+    const daMesa = COMBS.map((c: any) => c.imagem).filter(Boolean);
+    const dosPCs = [...COMBS.map((c: any) => c.retrato).filter(Boolean), ...Object.values(PC_IMG)];
+    const [m1, m2] = await Promise.all([
+      urlsImagens(SB, daMesa, 'mesa'),
+      urlsImagens(SB, dosPCs, 'personagens'),
+    ]);
+    IMGS = { ...m1, ...m2 };
+  }
+
+  async function carregarTokens() {
+    TOKENS = {};
+    const { data, error } = await SB.from(MESTRE ? 'arena_tokens' : 'token_visao')
+      .select('combatente_id, q, r').eq('arena_id', ARENA.id);
+    if (error) return;
+    for (const t of data || []) TOKENS[t.combatente_id] = { q: t.q, r: t.r };
+  }
+
+  // ================================================================= pintar
+  const pctDe100 = (c: any) => (c.pv_pct != null ? c.pv_pct
+    : (c.pv_max && c.pv_atual != null ? pctDe(c.pv_atual, c.pv_max) : null));
+
+  function avatarDe(c: any, extra = '') {
+    const doPC = c.retrato || PC_IMG[c.personagem_id];
+    const src = (c.imagem && IMGS[c.imagem])
+      || (doPC && IMGS[doPC])
+      || (c.tipo === 'criatura' && MON[c.monstro_id]?.imagem ? u(MON[c.monstro_id].imagem) : null);
+    const besta = c.tipo === 'criatura' && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
+    return avatarHTML(c.nome, src, (extra + besta).trim(), pctDe100(c));
+  }
+
+  /** A URL assinada do fundo é buscada aqui, antes do desenho, para o resto ser síncrono. */
+  async function resolverFundo() {
+    IMG_FUNDO = '';
+    if (!ARENA?.fundo_path) return;
+    const m = await urlsImagens(SB, [ARENA.fundo_path], 'mesa');
+    IMG_FUNDO = m[ARENA.fundo_path] || '';
+  }
+
+  async function pintar() {
+    await resolverFundo();
+    el('gr-nome').textContent = ARENA.nome || 'Arena';
+    const escala = Number(ARENA.escala_m) || 1;
+    el('gr-medida').textContent =
+      `${ARENA.cols} × ${ARENA.rows} hexágonos · 1 hex = ${escala} m${ARENA.ativa ? '' : ' · fora de jogo'}`;
+    pintarSeletor();
+    pintarTabuleiro();
+    pintarTokens();
+    pintarLista();
+  }
+
+  function pintarSeletor() {
+    const sel = el('gr-sel') as HTMLSelectElement;
+    if (!MESTRE || ARENAS.length < 2) { sel.hidden = true; el('gr-nome').hidden = false; return; }
+    sel.hidden = false; el('gr-nome').hidden = true;
+    sel.innerHTML = ARENAS.map((a) =>
+      `<option value="${a.id}"${a.id === ARENA.id ? ' selected' : ''}>${esc(a.nome)}${a.ativa ? ' ◉' : ''}</option>`).join('');
+  }
+
+  /** Desenha o SVG e posiciona a arte de fundo. Só muda quando a arena muda. */
+  function pintarTabuleiro() {
+    const { cols, rows } = ARENA;
+    const med = medidaTabuleiro(cols, rows, RAIO);
+    const mg = margemTabuleiro(RAIO);
+    const mundo = el('gr-mundo');
+    mundo.style.width = med.largura + 'px';
+    mundo.style.height = med.altura + 'px';
+
+    const svg = el('gr-hexes') as unknown as SVGSVGElement;
+    svg.setAttribute('viewBox', `0 0 ${med.largura} ${med.altura}`);
+    svg.innerHTML = tabuleiro(cols, rows).map((h) => {
+      const c = centroHex(h.q, h.r, RAIO);
+      return `<polygon class="hx" data-h="${chaveHex(h.q, h.r)}"
+        points="${verticesHex(c.x + mg.x, c.y + mg.y, RAIO)}" />`;
+    }).join('');
+
+    const img = el('gr-fundo') as HTMLImageElement;
+    const src = ARENA.fundo_url || (ARENA.fundo_path ? IMG_FUNDO : '');
+    if (src) { img.src = src; img.hidden = false; mundo.classList.add('com-arte'); }
+    else { img.removeAttribute('src'); img.hidden = true; mundo.classList.remove('com-arte'); }
+    aplicarZoom();
+  }
+
+  function pintarTokens() {
+    const mg = margemTabuleiro(RAIO);
+    const box = el('gr-tokens');
+    const postos = COMBS.filter((c: any) => TOKENS[c.id]);
+    box.innerHTML = postos.map((c: any) => {
+      const t = TOKENS[c.id];
+      const p = centroHex(t.q, t.r, RAIO);
+      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')}${c.oculto ? ' oculto' : ''}"
+        data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px" title="${esc(c.nome)}">
+        ${avatarDe(c)}<span class="gr-tn">${esc(c.nome)}</span>
+      </div>`;
+    }).join('');
+  }
+
+  function pintarLista() {
+    const box = el('gr-lista');
+    if (!ENC) {
+      box.innerHTML = `<p class="vazio">${MESTRE
+        ? 'Nenhum combate em andamento. O tabuleiro puxa quem está no encontro ativo.'
+        : 'Sem combate ativo.'}</p>`;
+      return;
+    }
+    if (!COMBS.length) { box.innerHTML = '<p class="vazio">Ninguém em campo.</p>'; return; }
+    box.innerHTML = COMBS.map((c: any) => {
+      const t = TOKENS[c.id];
+      return `<div class="gr-ficha${t ? ' posto' : ''}" data-c="${c.id}" title="${esc(c.nome)}">
+        ${avatarDe(c, 'av-p')}
+        <span class="gr-fn">${esc(c.nome)}</span>
+        ${t ? `<span class="gr-fq">no mapa</span>` : ''}
+      </div>`;
+    }).join('');
+  }
+
+  // ================================================================== zoom
+  function aplicarZoom() {
+    const mundo = el('gr-mundo');
+    mundo.style.transform = `scale(${ZOOM})`;
+    // O palco precisa reservar o espaço do mundo JÁ ESCALADO: `transform` não
+    // muda o tamanho que o pai enxerga, e sem isto a barra de rolagem mede o
+    // tabuleiro sem zoom e corta o que passa disso.
+    const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
+    mundo.style.marginRight = `${med.largura * (ZOOM - 1)}px`;
+    mundo.style.marginBottom = `${med.altura * (ZOOM - 1)}px`;
+    el('gr-zval').textContent = Math.round(ZOOM * 100) + '%';
+  }
+  const mudarZoom = (z: number) => { ZOOM = Math.max(0.3, Math.min(2.5, z)); aplicarZoom(); };
+
+  function caber() {
+    const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
+    const palco = el('gr-palco');
+    mudarZoom(Math.min((palco.clientWidth - 8) / med.largura, (palco.clientHeight - 8) / med.altura));
+  }
+
+  // ============================================================== arrastar
+  /**
+   * Arrastar com pointer events, e não com o drag-and-drop do HTML.
+   *
+   * O nativo não funciona em toque (o mestre no tablet ficaria de fora), não
+   * deixa desenhar o fantasma sem uma imagem inventada, e não avisa por cima de
+   * qual hexágono o dedo está — que é justamente o retorno que faz o gesto
+   * parecer um tabuleiro e não um formulário.
+   */
+  let ARR: { id: string; deOnde: 'lista' | 'mapa'; ghost: HTMLElement } | null = null;
+  let ALVO: { q: number; r: number } | null = null;
+
+  function ligarArrasto() {
+    if (!MESTRE) return;
+    const palco = el('gr-palco');
+
+    document.addEventListener('pointerdown', (ev) => {
+      const alvo = ev.target as HTMLElement;
+      const naLista = alvo.closest<HTMLElement>('.gr-ficha');
+      const noMapa = alvo.closest<HTMLElement>('.gr-token');
+      const fonte = naLista || noMapa;
+      if (!fonte) return;
+      const cid = fonte.dataset.c!;
+      const c = COMBS.find((x: any) => x.id === cid);
+      if (!c) return;
+      ev.preventDefault();
+
+      const ghost = document.createElement('div');
+      ghost.className = 'gr-ghost';
+      ghost.innerHTML = avatarDe(c);
+      (ghost.firstElementChild as HTMLElement)?.style.setProperty('--av-t', '3rem');
+      document.body.appendChild(ghost);
+      moverGhost(ghost, ev.clientX, ev.clientY);
+
+      ARR = { id: cid, deOnde: naLista ? 'lista' : 'mapa', ghost };
+      if (noMapa) noMapa.classList.add('arrastando');
+      (ev.target as HTMLElement).setPointerCapture?.(ev.pointerId);
+    });
+
+    document.addEventListener('pointermove', (ev) => {
+      if (!ARR) return;
+      moverGhost(ARR.ghost, ev.clientX, ev.clientY);
+      marcarAlvo(ev.clientX, ev.clientY);
+      // Soltar sobre a lista tira do mapa: destacar a coluna diz isso antes de
+      // o dedo levantar.
+      el('gr-lado').classList.toggle('solta', ARR.deOnde === 'mapa' && sobreALista(ev.clientX, ev.clientY));
+    });
+
+    document.addEventListener('pointerup', async (ev) => {
+      if (!ARR) return;
+      const { id, deOnde } = ARR;
+      ARR.ghost.remove();
+      el('gr-lado').classList.remove('solta');
+      document.querySelectorAll('.gr-token.arrastando').forEach((t) => t.classList.remove('arrastando'));
+      const destino = ALVO;
+      limparAlvo();
+      ARR = null;
+
+      if (deOnde === 'mapa' && sobreALista(ev.clientX, ev.clientY)) { await tirarDoMapa(id); return; }
+      if (!destino) return;
+      await porNoMapa(id, destino.q, destino.r);
+    });
+
+    palco.addEventListener('pointercancel', () => {
+      if (!ARR) return;
+      ARR.ghost.remove(); ARR = null; limparAlvo();
+      document.querySelectorAll('.gr-token.arrastando').forEach((t) => t.classList.remove('arrastando'));
+    });
+  }
+
+  const moverGhost = (g: HTMLElement, x: number, y: number) => { g.style.left = x + 'px'; g.style.top = y + 'px'; };
+
+  /**
+   * O que está debaixo do dedo, medido por coordenada e não por `ev.target`.
+   *
+   * `setPointerCapture` redireciona todos os eventos seguintes para o elemento
+   * que começou o arrasto, então `ev.target` no `pointerup` é sempre o próprio
+   * token — nunca a lista. Perguntar ao documento quem ocupa aquele pixel é o
+   * que faz "soltar na coluna para tirar do mapa" funcionar.
+   */
+  const sobreALista = (x: number, y: number) =>
+    !!document.elementFromPoint(x, y)?.closest('#gr-lado');
+
+  /** Do ponto na tela ao hexágono, descontando o zoom e a rolagem do palco. */
+  function hexNaTela(cx: number, cy: number) {
+    const mundo = el('gr-mundo');
+    const cai = mundo.getBoundingClientRect();
+    const mg = margemTabuleiro(RAIO);
+    // getBoundingClientRect já vem escalado, então dividir por ZOOM devolve o
+    // pixel do mundo (que é o sistema em que o SVG foi desenhado).
+    const x = (cx - cai.left) / ZOOM - mg.x;
+    const y = (cy - cai.top) / ZOOM - mg.y;
+    const h = hexEmPonto(x, y, RAIO);
+    return dentro(h, ARENA.cols, ARENA.rows) ? h : null;
+  }
+
+  function marcarAlvo(cx: number, cy: number) {
+    const h = hexNaTela(cx, cy);
+    if (h && ALVO && h.q === ALVO.q && h.r === ALVO.r) return;
+    limparAlvo();
+    ALVO = h;
+    if (!h) return;
+    const poly = el('gr-hexes').querySelector(`.hx[data-h="${chaveHex(h.q, h.r)}"]`);
+    // Um hexágono já ocupado é recusa e não erro: a mesa decide se dois corpos
+    // dividem um metro quadrado, e por ora a resposta é não.
+    poly?.classList.add(ocupadoPor(h.q, h.r, ARR?.id) ? 'proibido' : 'alvo');
+  }
+  function limparAlvo() {
+    el('gr-hexes').querySelectorAll('.hx.alvo, .hx.proibido').forEach((p) => p.classList.remove('alvo', 'proibido'));
+    ALVO = null;
+  }
+  const ocupadoPor = (q: number, r: number, exceto?: string) =>
+    Object.entries(TOKENS).some(([cid, t]) => cid !== exceto && t.q === q && t.r === r);
+
+  // ============================================================== gravar
+  async function porNoMapa(cid: string, q: number, r: number) {
+    if (ocupadoPor(q, r, cid)) return;
+    const antes = TOKENS[cid];
+    TOKENS[cid] = { q, r };            // otimista: o token pula na hora
+    pintarTokens(); pintarLista();
+    const { error } = await SB.from('arena_tokens').upsert(
+      { arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: new Date().toISOString() },
+      { onConflict: 'arena_id,combatente_id' },
+    );
+    if (error) {
+      if (antes) TOKENS[cid] = antes; else delete TOKENS[cid];
+      pintarTokens(); pintarLista();
+      uiErro('Não deu para mover: ' + error.message);
+    }
+  }
+
+  async function tirarDoMapa(cid: string) {
+    const antes = TOKENS[cid];
+    delete TOKENS[cid];
+    pintarTokens(); pintarLista();
+    const { error } = await SB.from('arena_tokens').delete()
+      .eq('arena_id', ARENA.id).eq('combatente_id', cid);
+    if (error) {
+      if (antes) TOKENS[cid] = antes;
+      pintarTokens(); pintarLista();
+      uiErro('Não deu para tirar: ' + error.message);
+    }
+  }
+
+  // ============================================================ a barra
+  function ligarBarra() {
+    el('gr-recarregar').onclick = () => carregar();
+    el('gr-menos').onclick = () => mudarZoom(ZOOM - 0.15);
+    el('gr-mais').onclick = () => mudarZoom(ZOOM + 0.15);
+    el('gr-caber').onclick = () => caber();
+    (el('gr-sel') as HTMLSelectElement).onchange = async (e) => {
+      ARENA = ARENAS.find((a) => a.id === (e.target as HTMLSelectElement).value) || ARENA;
+      await carregarTokens();
+      pintar();
+    };
+    if (!MESTRE) return;
+    el('gr-nova').onclick = () => abrirArena(null);
+    el('gr-editar').onclick = () => abrirArena(ARENA);
+    el('gr-fundo-btn').onclick = () => abrirFundo();
+    el('gr-ativar').onclick = async () => {
+      const { error } = await SB.rpc('ativar_arena', { p_id: ARENA.id });
+      if (error) return uiErro('Erro: ' + error.message);
+      await carregar();
+    };
+    el('gr-excluir').onclick = async () => {
+      if (!await uiConfirmar(`Excluir a arena "${ARENA.nome}"? As posições dos tokens nela somem junto.`,
+        { titulo: 'Excluir arena', ok: 'Excluir', perigo: true })) return;
+      const { error } = await SB.from('mesa_arenas').delete().eq('id', ARENA.id);
+      if (error) return uiErro('Erro: ' + error.message);
+      await carregar();
+    };
+  }
+
+  // ---- criar / editar arena ----
+  function abrirArena(arena: any) {
+    const dlg = el('arena-dlg') as HTMLDialogElement;
+    const g = (i: string) => el(i) as HTMLInputElement;
+    (el('ar-titulo') as HTMLElement).textContent = arena ? `Editar ${arena.nome}` : 'Nova arena';
+    g('ar-nome').value = arena?.nome || '';
+    g('ar-cols').value = String(arena?.cols ?? 24);
+    g('ar-rows').value = String(arena?.rows ?? 16);
+    g('ar-escala').value = String(arena?.escala_m ?? 1);
+    el('ar-cancelar').onclick = () => dlg.close();
+    el('ar-salvar').onclick = async () => {
+      const linha = {
+        nome: g('ar-nome').value.trim() || 'Arena',
+        cols: Math.max(2, Math.min(60, +g('ar-cols').value || 24)),
+        rows: Math.max(2, Math.min(60, +g('ar-rows').value || 16)),
+        escala_m: Math.max(0.25, +g('ar-escala').value || 1),
+      };
+      dlg.close();
+      if (arena) {
+        const { error } = await SB.from('mesa_arenas').update(linha).eq('id', arena.id);
+        if (error) return uiErro('Erro: ' + error.message);
+      } else {
+        const { data, error } = await SB.from('mesa_arenas')
+          .insert({ ...linha, mesa_id: ID, ordem: ARENAS.length }).select('id').single();
+        if (error) return uiErro('Erro: ' + error.message);
+        // A primeira arena da mesa já entra em jogo: criar e não pôr em campo
+        // seria um passo a mais para chegar ao lugar óbvio.
+        if (!ARENAS.length) await SB.rpc('ativar_arena', { p_id: data.id });
+      }
+      await carregar();
+    };
+    dlg.showModal();
+  }
+
+  // ---- a arte de fundo ----
+  async function abrirFundo() {
+    const dlg = el('fundo-dlg') as HTMLDialogElement;
+    const { data } = await SB.from('arquivos').select('id, nome, storage_path')
+      .eq('mesa_id', ID).eq('categoria', 'mapa').order('criado_em', { ascending: false });
+    const mapas = data || [];
+    const urls = await urlsImagens(SB, mapas.map((m: any) => m.storage_path), 'mesa');
+    el('fd-lista').innerHTML = mapas.length
+      ? mapas.map((m: any) => `<div class="fd-item${m.storage_path === ARENA.fundo_path ? ' sel' : ''}"
+          data-p="${esc(m.storage_path)}" data-a="${m.id}">
+          <img src="${esc(urls[m.storage_path] || '')}" alt="" loading="lazy" /><span>${esc(m.nome)}</span>
+        </div>`).join('')
+      : '<p class="vazio">Nenhum mapa na aba Mapas ainda. Envie um aqui embaixo.</p>';
+    el('fd-lista').querySelectorAll<HTMLElement>('.fd-item').forEach((it) => it.onclick = async () => {
+      dlg.close();
+      await gravarFundo(it.dataset.p!, it.dataset.a!);
+    });
+    (el('fd-file') as HTMLInputElement).onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+      dlg.close();
+      await subirFundo(file);
+    };
+    el('fd-tirar').onclick = async () => { dlg.close(); await gravarFundo(null, null); };
+    el('fd-cancelar').onclick = () => dlg.close();
+    dlg.showModal();
+  }
+
+  /** Envia para o mesmo bucket e registra em `arquivos`: a arte aparece na aba Mapas também. */
+  async function subirFundo(file: File) {
+    const seguro = file.name.replace(/[^\w.\-]+/g, '_');
+    const path = `${ID}/mapas/${Date.now()}-${seguro}`;
+    const { error } = await SB.storage.from('mesa').upload(path, file, { contentType: file.type });
+    if (error) return uiErro('Erro ao enviar: ' + error.message);
+    const { data, error: e2 } = await SB.from('arquivos').insert({
+      mesa_id: ID, dono_id: EU, nome: file.name.replace(/\.[^.]+$/, ''), storage_path: path,
+      bucket: 'mesa', tipo: file.type, categoria: 'mapa', visivel_jogadores: false,
+    }).select('id').single();
+    if (e2) return uiErro('Enviado, mas erro ao registrar: ' + e2.message);
+    await gravarFundo(path, data.id);
+  }
+
+  async function gravarFundo(path: string | null, arquivoId: string | null) {
+    const { error } = await SB.from('mesa_arenas')
+      .update({ fundo_path: path, arquivo_id: arquivoId, fundo_url: null }).eq('id', ARENA.id);
+    if (error) return uiErro('Erro: ' + error.message);
+    await carregar();
+  }
+
+  main();
+</script>
