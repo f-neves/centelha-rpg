@@ -339,8 +339,12 @@ import MesaCab from '../../components/MesaCab.astro';
      o dobro. `auto-fill` é quem decide quantos cabem: num 13" dá dois, num 17"
      dá três, no celular dá um. A ordem do tick continua sendo a ordem dos
      cards, agora lida da esquerda para a direita. */
+  /* `stretch` e não `start`: os cards de uma mesma linha têm alturas diferentes
+     (um tem Energia, outro tem três condições), e alinhados pelo topo deixavam
+     a linha serrilhada. Esticados, a fileira fecha reta e os botões de todos
+     caem na mesma altura, que é o que a mão procura. */
   .cmb-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
-    gap: .5rem; align-items: start; }
+    gap: .5rem; align-items: stretch; }
   .cmb-lista-fora { opacity: .72; }
 
   /* ---------------- card do combatente ---------------- */
@@ -393,8 +397,10 @@ import MesaCab from '../../components/MesaCab.astro';
   .cbt-stats { font-size: var(--fs-micro); display: grid;
     grid-template-columns: repeat(auto-fit, minmax(6.4rem, 1fr)); gap: .05rem .5rem; }
   .cbt .conds { display: flex; flex-wrap: wrap; gap: .2rem; }
-  .cbt-acoes { display: flex; gap: .2rem; flex-wrap: wrap; align-items: center; margin-top: .1rem;
-    padding-top: .3rem; border-top: 1px solid var(--rule); }
+  /* `margin-top: auto` empurra a fileira para o fim do card: com os cards
+     esticados, ela encosta no rodapé em vez de flutuar no meio do vazio. */
+  .cbt-acoes { display: flex; gap: .2rem; flex-wrap: wrap; align-items: center; margin-top: auto;
+    padding-top: .35rem; border-top: 1px solid var(--rule); }
   .cbt-acoes .hp-amt { width: 2.9rem; padding: .12rem .25rem; }
   .cbt-acoes .btn.mini { padding: .12rem .45rem; }
   .cbt-acoes .hp-tipo { font-size: var(--fs-micro); padding: .15rem .2rem; }

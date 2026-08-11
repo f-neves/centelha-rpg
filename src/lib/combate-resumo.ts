@@ -2,7 +2,7 @@
 // Puro e reaproteitável: extrai Ataque, Dano e Defesa física (Esquiva) usando a
 // mesma matemática de ficha-engine (renderCombate/renderDerived), sem tocar no DOM.
 // Serve ao rastreador de combate da mesa, que só tem a ficha crua do personagem.
-import { defesa, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA } from './calc';
+import { defesa, defesaMental, ataqueCentelha, empilharArmaduras, soakNatural, regras, MODO_ORDEM, MODO_SIGLA } from './calc';
 import { ARMA, ESCUDO, armaDoSlot, escudoDoSlot, armadurasDe } from './equip';
 
 export interface Soak { impacto: number; corte: number; perfuracao: number; }
@@ -11,6 +11,7 @@ export interface ResumoCombate {
   ataque: string; // pool de acerto, ex.: "4d6+2 +1"
   dano: string;   // dano base + sigla do modo principal, ex.: "3d6 +2 (C)"
   defesa: number; // Defesa física (Esquiva)
+  defesaMental: number; // Defesa Mental (o bloco da criatura já trazia a dela)
   soak: Soak;     // Absorção por tipo (abate o dano bruto sofrido)
   resistPerf: number; // Resistência a Perfuração (Nível) da armadura
 }
@@ -68,6 +69,16 @@ export function resumoCombatePC(S: any): ResumoCombate {
   // Defesa física passiva = Esquiva: (Destreza + Esquiva)×2 + Centelha − penalidade física
   const def = defesa({ destreza: attrs.destreza || 0, habilidade: skills.esquiva || 0, centelha: C }) - penFisica;
 
+  // Defesa Mental. A criatura sempre trouxe a dela no bloco do bestiário; o PC
+  // não trazia, e por isso a pastilha "Mental" do rastreador nascia vazia em
+  // todo personagem. Mesma conta da ficha: Integridade + Raciocínio + Vontade.
+  const defMental = defesaMental({
+    raciocinio: attrs.raciocinio || 0,
+    integridade: skills.integridade || 0,
+    vontade: S?.willpower || 0,
+    centelha: C,
+  });
+
   // Absorção por tipo: Impacto = Vigor + Centelha + armadura; Corte/Perfuração = Centelha + armadura.
   const cs = (regras.dano as { centelhaNoSoak?: number })?.centelhaNoSoak ?? 0;
   const vig = attrs.vigor || 0;
@@ -77,5 +88,5 @@ export function resumoCombatePC(S: any): ResumoCombate {
     perfuracao: soakNatural(vig, 'perfuracao') + C * cs + (armSt.soak.perfuracao || 0),
   };
 
-  return { arma: w.nome, ataque, dano, defesa: def, soak, resistPerf: armSt.resistPerf || 0 };
+  return { arma: w.nome, ataque, dano, defesa: def, defesaMental: defMental, soak, resistPerf: armSt.resistPerf || 0 };
 }
