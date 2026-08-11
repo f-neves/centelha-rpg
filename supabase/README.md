@@ -60,6 +60,25 @@ Supabase pelo navegador. Passos para ligar tudo:
     O botão já existia na aba Grupo, mas a permissão de apagar era só do dono, e delete negado pela
     RLS não dá erro: apaga zero linhas. O mestre confirmava a exclusão e a ficha continuava lá.
     Idempotente.
+15. Rode [`migracao-14.sql`](./migracao-14.sql): separa **o que o jogador vê** do que o mestre vê,
+    no banco e não só na tela. Até aqui as duas telas eram o mesmo código com `if (EH_MESTRE)`, o
+    que esconde botão mas não esconde segredo: a linha do combatente descia inteira para o
+    navegador do jogador, com a Vida, os números e as notas do mestre. Idempotente.
+
+    Entram `mesas.revelar` (o quadro de chaves: `vidaInimigo` = `numero`/`estado`/`nada`,
+    `statsInimigo`, `condInimigo`), `combatentes.revelar` (a exceção de um combatente só),
+    `mesa_criaturas.visivel_jogadores`, três views **SECURITY DEFINER** por onde o jogador lê
+    (`combate_visao`, `criatura_visao`, `mapa_visao`, esta última remontando `meta` só com os pinos
+    liberados) e a função `grupo_fisico(p_mesa)`, que dos personagens dos outros devolve apenas
+    Força, Destreza, Vigor e Aparência (uma coluna não pode ser mascarada por RLS, que é por linha).
+
+    A leitura direta de `combatentes` e `mesa_criaturas` passa a ser **só do mestre**, e `arquivos`
+    deixa de entregar `categoria = 'mapa'` ao jogador. Sem isso as views seriam enfeite: ninguém
+    precisa da página para conversar com o PostgREST. O download do mapa não muda, porque as
+    policies de storage passam por `arquivo_visivel()`, que é SECURITY DEFINER.
+
+    Sem esta migração o site continua de pé: as páginas caem na tabela e mascaram no cliente, o que
+    desenha a mesma tela sem a tranca.
 
 ## 3. Ajustes no painel
 

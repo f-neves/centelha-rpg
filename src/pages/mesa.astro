@@ -38,7 +38,15 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     <div class="escudo-baixo">
     <div class="eb-col">
 
-    <!-- ================= RELÓGIOS ================= -->
+    {/* ================= RELÓGIOS (desligado) =================
+        Relógios de progressão: um círculo de N fatias que enchia para marcar o
+        que avança sozinho (a guarda chegando, o ritual completando). Bonito de
+        montar e sem uso na mesa: o que pressiona o grupo nesta campanha já está
+        escrito nos ganchos, e um medidor a mais era um medidor a mais para
+        lembrar de girar. Fica comentado, e não apagado, porque a tabela
+        `mesa_relogios` continua no banco (migração 11): religar é descomentar
+        isto, o diálogo, o CSS e as duas funções lá embaixo.
+
     <section class="bloco">
       <div class="bloco-cab">
         <h2>Relógios <small>· o que avança sozinho</small></h2>
@@ -46,6 +54,7 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
       </div>
       <div id="relogios" class="relogios"></div>
     </section>
+    */}
 
     <!-- ================= GANCHOS ================= -->
     <section class="bloco">
@@ -119,6 +128,8 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
 
   </MesaCab>
 
+  {/* Diálogo dos relógios, desligado junto com a seção.
+
   <dialog id="rel-dlg" class="mesa-dlg">
     <form method="dialog">
       <h3 id="rel-titulo">Relógio</h3>
@@ -144,6 +155,7 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
       </div>
     </form>
   </dialog>
+  */}
 </Base>
 
 <style is:global>
@@ -190,7 +202,7 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
   .pj-nums { display: flex; flex-wrap: wrap; gap: .1rem .45rem; font-size: var(--fs-micro); }
   .pj-conds { margin-top: .22rem; }
 
-  /* ---- relógios ---- */
+  /* ---- relógios (desligados) ----
   .relogios { display: flex; flex-wrap: wrap; gap: .8rem; }
   .relogio { display: flex; flex-direction: column; align-items: center; gap: .25rem; width: 8.5rem;
     border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .6rem .5rem; }
@@ -206,6 +218,7 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
   .rl-seg.on.c-arcano { fill: #8a5bbf; }
   .rl-seg.off { fill: color-mix(in srgb, var(--ink) 10%, transparent); }
   .rl-seg:hover { filter: brightness(1.2); }
+  ---- fim dos relógios ---- */
 
   /* ---- ganchos e notas ---- */
   .gancho-lista, .nota-lista { display: flex; flex-direction: column; gap: .45rem; }
@@ -251,7 +264,6 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     await Promise.all([
       pintarCombate(ctx),
       pintarGrupo(ctx),
-      pintarRelogios(ctx),
       pintarGanchos(ctx),
       pintarNotas(ctx),
     ]);
@@ -274,7 +286,10 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
       .sort((a: any, b: any) => (a.tick - b.tick) || ((b.iniciativa || 0) - (a.iniciativa || 0)));
     const atual = lista[0];
     const mapaImg = await urlsImagens(sb, lista.map((c: any) => c.imagem).filter(Boolean), 'mesa');
-    const av = (c: any, cls = '') => avatarHTML(c.nome, c.imagem ? (mapaImg[c.imagem] || null) : null, cls);
+    // A mesma tinta do rastreador: na faixa do Escudo ela é a leitura inteira
+    // da cena, porque aqui não cabe barra nenhuma.
+    const pct = (c: any) => (c.pv_max > 0 ? Math.round((c.pv_atual / c.pv_max) * 100) : null);
+    const av = (c: any, cls = '') => avatarHTML(c.nome, c.imagem ? (mapaImg[c.imagem] || null) : null, cls, pct(c));
     faixa.innerHTML = `<div class="cmb-faixa">
       <div class="agora">
         ${atual ? av(atual) : ''}
@@ -335,7 +350,7 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
         <span class="pl"><span class="pl-l">Furt</span><span class="pl-v">${R.passivos[3].media}</span></span>
         <span class="pl"><span class="pl-l">Cent</span><span class="pl-v">${R.centelha}</span></span>` : '<span class="muted">ficha em branco</span>';
       return `<div class="pj ${norm(t.estado).replace(/\s+/g, '-')}">
-        <span class="pj-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null, 'av-g')}</span>
+        <span class="pj-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null, 'av-g', pvMax ? Math.round((pvAt / pvMax) * 100) : null)}</span>
         <div class="pj-topo">
           <a class="pj-nome" href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a>
           <span class="pj-sub">${esc(p.conceito || '')}${p.conceito && nomes[p.dono_id] ? ' · ' : ''}${esc(nomes[p.dono_id] || '')}</span>
@@ -350,7 +365,12 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     }).join('');
   }
 
-  // ---------------------------------------------------------- relógios
+  /* ---------------------------------------------------------- relógios
+     Desligados (veja a nota na seção comentada lá em cima). O código fica
+     inteiro aqui: a tabela `mesa_relogios` e as policies continuam de pé no
+     banco, então religar é tirar estes dois delimitadores e voltar a chamar
+     `pintarRelogios(ctx)` no Promise.all do main().
+
   function relogioSVG(seg: number, cheios: number, cor: string) {
     const n = Math.max(2, Math.min(12, seg | 0));
     const R = 46, cx = 50, cy = 50;
@@ -453,6 +473,7 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     };
     dlg.showModal();
   }
+  ------------------------------------------------------ fim dos relógios */
 
   // ----------------------------------------------------------- ganchos
   async function pintarGanchos({ sb, ehMestre, id }: any) {

@@ -164,8 +164,10 @@ import Base from '../layouts/Base.astro';
     if (!linhas.length) { lista.innerHTML = '<p class="muted">Você ainda não está em nenhuma mesa. Crie uma ou entre com um código abaixo.</p>'; return; }
     lista.classList.add('tem-mesas');
     lista.innerHTML = '<div class="mesa-grid">' + linhas.map((r: any) => {
-      const m = r.mesa; const mestre = r.papel === 'mestre';
-      return `<a class="mesa-card" href="${u('mesa')}?id=${m.id}">
+      const m = r.mesa; const mestre = r.papel === 'mestre' || m.mestre_id === userId;
+      // O Escudo é do mestre: o jogador entra pelo Grupo, que é a casa dele na
+      // mesa. Mandá-lo para /mesa só produziria um redirecionamento visível.
+      return `<a class="mesa-card" href="${u(mestre ? 'mesa' : 'mesa/grupo')}?id=${m.id}">
         <span class="papel ${mestre ? 'p-mestre' : 'p-jogador'}">${mestre ? 'Mestre' : 'Jogador'}</span>
         <span class="mesa-nome cinzel">${esc(m.nome)}</span>
         ${m.descricao ? `<span class="mesa-desc">${esc(m.descricao)}</span>` : ''}

@@ -40,8 +40,12 @@ const { aba } = Astro.props;
     </div>
 
     <nav class="mesa-abas" aria-label="Seções da mesa">
+      {/* A aba de mestre nasce escondida e só `abrirMesa()` a acende: entre a
+          primeira pintura e a resposta do banco ninguém sabe quem chegou, e é
+          melhor uma aba aparecer do que sumir na cara do jogador. */}
       {ABAS.map((a) => (
-        <a data-slug={a.slug} href="#" title={a.dica} class={a.id === aba ? 'atual' : ''}
+        <a data-slug={a.slug} data-mestre={a.soMestre ? '1' : undefined} hidden={a.soMestre}
+           href="#" title={a.dica} class={a.id === aba ? 'atual' : ''}
            aria-current={a.id === aba ? 'page' : undefined}>
           <span class="ab-i" aria-hidden="true">{a.icone}</span><span class="ab-n">{a.nome}</span>
         </a>
@@ -166,9 +170,17 @@ const { aba } = Astro.props;
   .salvo { font-size: var(--fs-micro); color: var(--accent-texto); }
 
   /* ---- retratos ---- */
-  .av { display: inline-grid; place-items: center; overflow: hidden; flex: 0 0 auto;
+  .av { position: relative; display: inline-grid; place-items: center; overflow: hidden; flex: 0 0 auto;
     width: var(--av-t, 2.6rem); height: var(--av-t, 2.6rem); border-radius: 50%;
     border: 1px solid var(--panel-border); background: var(--panel-2); }
+  /* A tinta do ferimento por cima do retrato. `multiply` e não `opacity` sobre
+     um bloco chapado: o amarelo escurece a arte em vez de lavá-la, então o
+     rosto continua legível enquanto vai apodrecendo para o vermelho. */
+  .av-fer { position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+    background: hsl(var(--fer-h, 48) 88% 46%); opacity: var(--fer-op, .3); mix-blend-mode: multiply;
+    transition: background-color .5s ease, opacity .5s ease; }
+  .av-ferido { border-color: hsl(var(--fer-h, 48) 60% 42%); }
+  @media (prefers-reduced-motion: reduce) { .av-fer { transition: none; } }
   .av img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .av-vazio { background: hsl(var(--av-h, 40) 30% 32%); border-color: hsl(var(--av-h, 40) 30% 45%); }
   .av-vazio .av-i { color: #fff; font-weight: 700; font-size: calc(var(--av-t, 2.6rem) * .44); line-height: 1; opacity: .92; }
@@ -199,6 +211,12 @@ const { aba } = Astro.props;
   .hpbar.t-grave     .hpbar-fill { background: linear-gradient(90deg, #d5661a, #e8791f); }
   .hpbar.t-critico   .hpbar-fill { background: linear-gradient(90deg, #b02a20, #cf3327); }
   .hpbar.t-caido     .hpbar-fill { background: linear-gradient(90deg, #4a4a4a, #6a6a6a); }
+  /* Barra cega: a que o jogador vê do inimigo. Hachurada, para ninguém
+     confundir com a barra do próprio grupo, que tem número. */
+  .hpbar.hp-cego { background-image: repeating-linear-gradient(45deg,
+      transparent 0 4px, color-mix(in srgb, var(--ink) 10%, transparent) 4px 8px); }
+  .hpbar.hp-cego .hp-est-so { font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .95);
+    letter-spacing: .04em; }
   /* barra de Energia: mesma caixa, outra cor */
   .enbar .hpbar-fill { background: linear-gradient(90deg, #3b6fb0, #5b9bd8) !important; }
 

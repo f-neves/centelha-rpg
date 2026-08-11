@@ -13,6 +13,9 @@ import MesaCab from '../../components/MesaCab.astro';
         </div>
       </div>
 
+      <p class="muted nota-mini" id="cri-dica" hidden>Uma criatura só aparece para os jogadores depois que você
+        marca <strong>👁 liberada</strong>. Suas anotações nunca vão junto: elas ficam do seu lado do escudo.</p>
+
       <div id="busca-wrap" class="cri-busca" hidden>
         <input type="search" id="cri-busca" placeholder="Buscar no bestiário para separar para esta campanha…" autocomplete="off" />
         <ul id="cri-result" class="cri-result" hidden></ul>
@@ -89,6 +92,8 @@ import MesaCab from '../../components/MesaCab.astro';
     padding-bottom: .2rem; margin-top: .5rem; }
   .cri-card { display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: var(--r-lg);
     background: var(--panel); overflow: hidden; }
+  /* Tracejado = ainda não liberada. Mesma convenção do mapa privado. */
+  .cri-card.privada { border-style: dashed; }
   .cri-arte { position: relative; margin: 0; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
     background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%);
     border-bottom: 1px solid var(--panel-border); overflow: hidden; cursor: pointer; }
@@ -110,13 +115,13 @@ import MesaCab from '../../components/MesaCab.astro';
   .cri-atk b { color: var(--accent-strong); }
   .cri-el { display: flex; flex-wrap: wrap; gap: .2rem; }
   .cri-notas { font-family: 'EB Garamond'; font-size: var(--fs-micro); min-height: 2.4rem; }
-  .cri-notas-ro { font-size: var(--fs-micro); font-style: italic; color: var(--ink-soft); margin: 0; }
+  .nota-mini { font-size: var(--fs-micro); margin: 0 0 .7rem; }
   .cri-acoes { display: flex; gap: .25rem; flex-wrap: wrap; margin-top: auto; padding-top: .3rem; }
   .dlg-txt { font-size: var(--fs-rotulo); margin: 0; }
 </style>
 
 <script>
-  import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo } from '../../lib/mesa-core';
+  import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo, semMigracao14 } from '../../lib/mesa-core';
   import { MON, MON_LIST, cardCriaturaHTML, estrelas, resumoDe, iniDeMonstro } from '../../lib/mesa-bestiario';
   import { uiConfirmar, uiErro, uiAviso } from '../../lib/ui-dialog';
 
@@ -133,6 +138,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
     if (MESTRE) {
       el('busca-wrap').hidden = false;
+      el('cri-dica').hidden = false;
       ligarBusca();
       const { data } = await SB.from('encontros').select('id, nome').eq('mesa_id', ID).eq('ativo', true).limit(1);
       ENC = (data || [])[0] || null;
@@ -166,8 +172,16 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   async function carregar() {
-    const { data, error } = await SB.from('mesa_criaturas').select('*').eq('mesa_id', ID)
+    // O mestre lê a tabela; o jogador lê a view, que só tem as liberadas e não
+    // traz as notas do mestre. Antes o caderno dele descia inteiro junto com
+    // a criatura, e a aba ainda o imprimia como se fosse legenda.
+    const fonte = MESTRE ? 'mesa_criaturas' : 'criatura_visao';
+    let { data, error } = await SB.from(fonte).select('*').eq('mesa_id', ID)
       .order('ordem', { ascending: true }).order('criado_em', { ascending: true });
+    if (error && !MESTRE && semMigracao14(error)) {
+      ({ data, error } = await SB.from('mesa_criaturas').select('*').eq('mesa_id', ID)
+        .order('criado_em', { ascending: true }));
+    }
     if (error) { el('cri-grade').innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
     LISTA = data || [];
     const grupos = [...new Set(LISTA.map((c: any) => c.grupo).filter(Boolean))].sort();
@@ -186,7 +200,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (!LISTA.length) {
       box.innerHTML = `<p class="vazio">${MESTRE
         ? 'Nenhuma criatura separada ainda. Busque acima para montar o bestiário desta campanha.'
-        : 'O mestre ainda não separou criaturas.'}</p>`;
+        : 'O mestre ainda não liberou nenhuma criatura. Aqui aparece o que o grupo já encontrou.'}</p>`;
       return;
     }
     const q = norm((el('filtro-txt') as HTMLInputElement).value.trim());
@@ -232,7 +246,7 @@ import MesaCab from '../../components/MesaCab.astro';
              <span class="cri-am">${estrelas(m.ameaca)}</span></figure>`;
       const el2 = [...(m.fraquezas || []).map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`),
                    ...(m.resistencias || []).map((x: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(x)}</span>`)].join('');
-      return `${cabecalho}<article class="cri-card" data-cr="${c.id}">
+      return `${cabecalho}<article class="cri-card${(MESTRE && !c.visivel_jogadores) ? ' privada' : ''}" data-cr="${c.id}">
         ${arte}
         <div class="cri-corpo">
           <div class="cri-nome">${esc(nomeExibido(c))}${c.apelido ? ` <span class="cri-en">(${esc(m.nome)})</span>` : (m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="cri-en">(${esc(m.nomeIngles)})</span>` : '')}</div>
@@ -248,9 +262,10 @@ import MesaCab from '../../components/MesaCab.astro';
           ${el2 ? `<div class="cri-el besta-elem">${el2}</div>` : ''}
           ${MESTRE
             ? `<textarea class="cri-notas" data-cr="${c.id}" rows="2" placeholder="Anotações do mestre">${esc(c.notas || '')}</textarea>`
-            : (c.notas ? `<p class="cri-notas-ro">${esc(c.notas)}</p>` : '')}
+            : ''}
           <div class="cri-acoes">
             <button class="btn mini ver-card" data-mon="${m.id}">Card ›</button>
+            ${MESTRE ? `<button class="btn-fant cri-vis" data-cr="${c.id}" title="${c.visivel_jogadores ? 'Esconder dos jogadores' : 'Liberar para os jogadores'}">${c.visivel_jogadores ? '👁 liberada' : '🙈 só você'}</button>` : ''}
             ${MESTRE ? `<button class="btn mini cri-edit" data-cr="${c.id}">✎ variante</button>` : ''}
             ${(MESTRE && ENC) ? `<button class="btn mini cri-combate" data-cr="${c.id}">⚔ pro combate</button>` : ''}
             ${MESTRE ? `<button class="btn-fant perigo cri-rm" data-cr="${c.id}" title="Remover da campanha">✕</button>` : ''}
@@ -270,6 +285,17 @@ import MesaCab from '../../components/MesaCab.astro';
       const salvar = debounce(async () => { await SB.from('mesa_criaturas').update({ notas: ta.value }).eq('id', ta.dataset.cr); }, 700);
       ta.addEventListener('input', salvar);
     });
+    box.querySelectorAll<HTMLElement>('.cri-vis').forEach((b) => b.addEventListener('click', async () => {
+      const c = LISTA.find((x: any) => x.id === b.dataset.cr); if (!c) return;
+      const { error } = await SB.from('mesa_criaturas')
+        .update({ visivel_jogadores: !c.visivel_jogadores }).eq('id', c.id);
+      if (error) {
+        return uiErro(semMigracao14(error)
+          ? 'Liberar criatura chega com a migração 14. Rode supabase/migracao-14.sql no SQL Editor do Supabase.'
+          : 'Erro: ' + error.message);
+      }
+      await carregar();
+    }));
     box.querySelectorAll<HTMLElement>('.cri-rm').forEach((b) => b.addEventListener('click', async () => {
       if (!await uiConfirmar('Remover esta criatura da campanha?', { titulo: 'Remover criatura', ok: 'Remover', perigo: true })) return;
       await SB.from('mesa_criaturas').delete().eq('id', b.dataset.cr);

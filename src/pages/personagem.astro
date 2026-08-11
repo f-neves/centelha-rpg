@@ -155,8 +155,11 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     document.getElementById('pg')!.hidden = false;
 
     // voltar
+    // "Voltar à mesa" precisa saber para ONDE: o Escudo é do mestre, e o
+    // jogador seria devolvido para uma página que o expulsa. Como o papel só
+    // se descobre logo abaixo, o destino é ajustado lá.
     const linkMesa = document.getElementById('link-mesa') as HTMLAnchorElement;
-    if (pers.mesa_id) { linkMesa.href = u('mesa') + '?id=' + pers.mesa_id; linkMesa.textContent = '‹ voltar à mesa'; }
+    if (pers.mesa_id) { linkMesa.href = u('mesa/grupo') + '?id=' + pers.mesa_id; linkMesa.textContent = '‹ voltar à mesa'; }
     else { linkMesa.href = u('mesas'); linkMesa.textContent = '‹ mesas / fichas'; }
 
     document.getElementById('pers-nome')!.textContent = pers.nome || 'Personagem';
@@ -171,9 +174,11 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
       if (mesa) {
         document.getElementById('pers-mesa')!.textContent = 'Mesa: ' + mesa.nome;
         ehMestre = mesa.mestre_id === user.id;
+        const casa = u(ehMestre ? 'mesa' : 'mesa/grupo') + '?id=' + pers.mesa_id;
+        linkMesa.href = casa;
         definirCrumbs([
           { label: 'Mesas / Fichas', href: u('mesas') },
-          { label: mesa.nome, href: u('mesa') + '?id=' + pers.mesa_id },
+          { label: mesa.nome, href: casa },
           { label: nomePers },
         ]);
       }

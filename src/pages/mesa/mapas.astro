@@ -111,7 +111,7 @@ import MesaCab from '../../components/MesaCab.astro';
 </style>
 
 <script>
-  import { abrirMesa, esc, urlsImagens, novoId, nomesDe } from '../../lib/mesa-core';
+  import { abrirMesa, esc, urlsImagens, novoId, nomesDe, semMigracao14 } from '../../lib/mesa-core';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -155,8 +155,18 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   async function carregar() {
-    const { data, error } = await SB.from('arquivos').select('*').eq('mesa_id', ID).eq('categoria', 'mapa')
+    // Qual mapa o jogador vê já era decidido pela RLS. O que vazava era mais
+    // fino: os PINOS escondidos viajavam dentro de `meta` junto com o mapa
+    // liberado, e só não eram desenhados. A view remonta `meta` com os
+    // visíveis, e o esconderijo deixa de estar na resposta.
+    const fonte = MESTRE ? 'arquivos' : 'mapa_visao';
+    let q = () => SB.from(fonte).select('*').eq('mesa_id', ID)
       .order('ordem', { ascending: true }).order('criado_em', { ascending: false });
+    let { data, error } = MESTRE ? await q().eq('categoria', 'mapa') : await q();
+    if (error && !MESTRE && semMigracao14(error)) {
+      ({ data, error } = await SB.from('arquivos').select('*').eq('mesa_id', ID).eq('categoria', 'mapa')
+        .order('criado_em', { ascending: false }));
+    }
     if (error) { el('mp-grade').innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
     MAPAS = data || [];
     URLS = await urlsImagens(SB, MAPAS.map((m) => m.storage_path), 'mesa');

@@ -49,7 +49,7 @@ import MesaCab from '../../components/MesaCab.astro';
             <div class="log-cab">
               <h3 class="col-h">Registro</h3>
               <span class="log-add" id="log-add" hidden>
-                <input type="text" id="log-nota" placeholder="anotar…" />
+                <input type="text" id="log-nota" placeholder="anotar (todos leem)…" />
                 <button class="btn mini" id="log-nota-btn">+</button>
               </span>
             </div>
@@ -163,6 +163,25 @@ import MesaCab from '../../components/MesaCab.astro';
       <label>Retrato (URL ou caminho no bucket) <input type="text" id="edit-img" placeholder="https://… " /></label>
       <label>Notas do mestre <textarea id="edit-notas" rows="2"></textarea></label>
       <label class="chk"><input type="checkbox" id="edit-oculto" /> oculto dos jogadores</label>
+      {/* A exceção à regra da mesa: o chefe que o grupo já estudou, o aliado
+          contratado cujos números eles conhecem. */}
+      <div class="grade2">
+        <label>Vida deste, para os jogadores
+          <select id="edit-rev-vida">
+            <option value="">padrão da mesa</option>
+            <option value="numero">o número exato</option>
+            <option value="estado">só o estado</option>
+            <option value="nada">só a cor do retrato</option>
+          </select>
+        </label>
+        <label>Números deste (atq/dano/def)
+          <select id="edit-rev-stats">
+            <option value="">padrão da mesa</option>
+            <option value="1">mostrar</option>
+            <option value="0">esconder</option>
+          </select>
+        </label>
+      </div>
       <div class="dlg-btns">
         <button type="button" class="btn" id="edit-cancelar">Cancelar</button>
         <button type="button" class="btn primary" id="edit-salvar">Salvar</button>
@@ -232,6 +251,29 @@ import MesaCab from '../../components/MesaCab.astro';
       <div class="dlg-btns">
         <button type="button" class="btn" id="rs-cancelar">Cancelar</button>
         <button type="button" class="btn primary" id="rs-ok">Reiniciar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="rev-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3>O que os jogadores veem</h3>
+      <p class="muted dlg-txt">Vale para inimigos e neutros desta mesa, em todos os encontros. Os personagens
+        do grupo aparecem sempre inteiros: a ficha deles já está na mesa.</p>
+      <label>Vida do inimigo
+        <select id="rv-vida">
+          <option value="numero">o número exato (41/60)</option>
+          <option value="estado">só o estado (Ferido, Grave…)</option>
+          <option value="nada">nada além da cor do retrato</option>
+        </select>
+      </label>
+      <label class="chk"><input type="checkbox" id="rv-stats" /> mostrar ataque, dano, defesa e absorção</label>
+      <label class="chk"><input type="checkbox" id="rv-cond" /> mostrar as condições (cego, sangrando, caído…)</label>
+      <p class="muted dlg-txt">O retrato escurece sozinho a partir da metade da Vida, de âmbar a vermelho,
+        em qualquer um dos três modos. Um inimigo específico pode fugir da regra pelo <strong>✎</strong> dele.</p>
+      <div class="dlg-btns">
+        <button type="button" class="btn" id="rv-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="rv-salvar">Salvar</button>
       </div>
     </form>
   </dialog>
@@ -327,6 +369,8 @@ import MesaCab from '../../components/MesaCab.astro';
   .cbt-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); line-height: 1.15; }
   .cbt.atual .cbt-nome { font-size: var(--fs-h3); color: var(--accent-texto); }
   .cbt-meta { font-size: var(--fs-micro); color: var(--ink-soft); }
+  .cbt-rev { font-size: calc(var(--fs-micro) * .9); padding: .02rem .35rem; border-radius: 999px;
+    background: color-mix(in srgb, var(--gold) 26%, transparent); white-space: nowrap; cursor: help; }
   /* Vida e Energia lado a lado, e não empilhadas: é uma faixa de 20px a menos
      por combatente, o que numa tela de 720px vale um card inteiro. */
   .cbt-barras { display: flex; flex-flow: row wrap; gap: .25rem .4rem; max-width: 34rem; }
@@ -373,6 +417,7 @@ import MesaCab from '../../components/MesaCab.astro';
     border-bottom: 1px solid color-mix(in srgb, var(--rule) 55%, transparent); font-size: var(--fs-micro); }
   .log-linha:last-child { border-bottom: none; }
   .log-hora { font-variant-numeric: tabular-nums; color: var(--ink-soft); flex-shrink: 0; }
+  .log-so { flex-shrink: 0; font-size: .8em; opacity: .7; cursor: help; }
   .log-txt { flex: 1; min-width: 0; }
   .log-linha.l-dano .log-txt { color: var(--perigo); }
   .log-linha.l-cura .log-txt { color: var(--ok); }
@@ -426,10 +471,11 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <script>
   import {
-    abrirMesa, u, esc, norm, sinal, avatarHTML, urlsImagens, hpBarHTML, atualizarBarra,
-    tierDe, condChipHTML, somarCondicoes, COND, COND_LISTA, COND_GRUPOS, novoId, bancoAntigo,
+    abrirMesa, u, esc, norm, sinal, avatarHTML, urlsImagens, hpBarHTML, hpBarPctHTML, atualizarBarra,
+    tierDe, pctDe, condChipHTML, somarCondicoes, COND, COND_LISTA, COND_GRUPOS, novoId, bancoAntigo,
+    revelarDaMesa, REVELAR_PADRAO, semMigracao14,
   } from '../../lib/mesa-core';
-  import type { Condicao } from '../../lib/mesa-core';
+  import type { Condicao, NivelVida, Revelar } from '../../lib/mesa-core';
   import { MON, MON_LIST, cardCriaturaHTML, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe } from '../../lib/calc';
@@ -441,7 +487,12 @@ import MesaCab from '../../components/MesaCab.astro';
   const GRUPO_LBL: Record<string, string> = { aliado: 'Aliado', inimigo: 'Inimigo', neutro: 'Neutro' };
 
   // ---- estado da página ----
-  let SB: any, MESA_ID = '', EH_MESTRE = false;
+  let SB: any, MESA_ID = '', EH_MESTRE = false, MESA: any = null;
+  let REV: Revelar = { ...REVELAR_PADRAO };
+  // O jogador lê pela view `combate_visao`, que já desce mascarada. Quando o
+  // banco ainda não tem a migração 14 isto cai para false e a máscara passa a
+  // ser só de tela: o que muda é a honestidade da coisa, não o desenho.
+  let PELA_VISTA = false;
   let ENC: any = null;
   let COMBS: any[] = [];
   let FICHAS: Record<string, any> = {};
@@ -478,7 +529,8 @@ import MesaCab from '../../components/MesaCab.astro';
   async function main() {
     const ctx = await abrirMesa('combate');
     if (!ctx) return;
-    SB = ctx.sb; MESA_ID = ctx.id; EH_MESTRE = ctx.ehMestre;
+    SB = ctx.sb; MESA_ID = ctx.id; EH_MESTRE = ctx.ehMestre; MESA = ctx.mesa;
+    REV = revelarDaMesa(MESA);
     await carregar();
     // O jogador não recebe eventos do banco; um pulso de oito segundos mantém a
     // tela dele perto da verdade sem transformar a página num relógio.
@@ -486,8 +538,13 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   async function carregar(silencioso = false) {
-    const { data: encs, error } = await SB.from('encontros').select('*').eq('mesa_id', MESA_ID)
+    // O log mora numa coluna de `encontros`, e o log conta tudo. Para o jogador
+    // o encontro também vem por uma view, que entrega só as linhas com redação
+    // pública.
+    const buscarEnc = (t: string) => SB.from(t).select('*').eq('mesa_id', MESA_ID)
       .eq('ativo', true).order('criado_em', { ascending: false }).limit(1);
+    let { data: encs, error } = await buscarEnc(EH_MESTRE ? 'encontros' : 'encontro_visao');
+    if (error && !EH_MESTRE && semMigracao14(error)) ({ data: encs, error } = await buscarEnc('encontros'));
     if (error) { el('enc-vazio').hidden = false; el('enc-vazio').innerHTML = `<p class="erro">${esc(error.message)}</p>`; return; }
     ENC = (encs || [])[0] || null;
     if (!ENC) return semEncontro();
@@ -495,8 +552,7 @@ import MesaCab from '../../components/MesaCab.astro';
     el('enc-vazio').hidden = true;
     el('enc-tudo').hidden = false;
 
-    const { data: combs } = await SB.from('combatentes').select('*').eq('encontro_id', ENC.id);
-    COMBS = combs || [];
+    COMBS = await lerCombatentes();
     LOG = Array.isArray(ENC.log) ? ENC.log.slice() : [];
 
     // Fichas dos PCs em campo: a base dos números que o rastreador mostra.
@@ -514,11 +570,66 @@ import MesaCab from '../../components/MesaCab.astro';
       for (const c of COMBS) if (c.imagem && m2[c.imagem]) IMGS['own:' + c.id] = m2[c.imagem];
     }
 
+    // O resumo NÃO é montado para quem está com os números escondidos. Ele sai
+    // do `monsters.json`, que mora no próprio bundle: se eu montasse e só
+    // deixasse de desenhar, o bloco de combate do inimigo estaria no
+    // navegador do jogador, a um `console.log` de distância.
     RESUMO = {};
-    for (const c of COMBS) { const r = resumoDe(c, FICHAS); if (r) RESUMO[c.id] = r; }
+    for (const c of COMBS) {
+      if (!verStats(c)) continue;
+      const r = resumoDe(c, FICHAS); if (r) RESUMO[c.id] = r;
+    }
 
     pintar();
     if (!silencioso) ligarBarra();
+  }
+
+  /**
+   * Lê os combatentes pelo caminho certo para quem está olhando.
+   *
+   * Mestre lê a tabela (precisa escrever nela). Jogador lê a view, que devolve
+   * a linha já sem a Vida, sem os números e sem as notas do mestre quando a
+   * mesa mandou esconder. É a diferença entre não desenhar e não enviar.
+   */
+  async function lerCombatentes(): Promise<any[]> {
+    if (EH_MESTRE) {
+      const { data } = await SB.from('combatentes').select('*').eq('encontro_id', ENC.id);
+      return data || [];
+    }
+    const { data, error } = await SB.from('combate_visao').select('*').eq('encontro_id', ENC.id);
+    if (!error) { PELA_VISTA = true; return data || []; }
+    if (!semMigracao14(error)) { PELA_VISTA = false; return []; }
+    PELA_VISTA = false;
+    const r = await SB.from('combatentes').select('*').eq('encontro_id', ENC.id);
+    return r.data || [];
+  }
+
+  // ------------------------------------------------------- o que se revela
+  // Duas perguntas diferentes, e confundi-las é o bug clássico daqui: "o que a
+  // mesa mostra deste combatente" (a regra, do ponto de vista do jogador) e "o
+  // que ESTA tela desenha" (que para o mestre é sempre tudo). O registro
+  // precisa da primeira mesmo estando na tela do mestre, porque ele escreve a
+  // linha que o jogador vai ler.
+  /** A regra, do ponto de vista do jogador. */
+  function revelaVida(c: any): NivelVida {
+    if (c.tipo === 'pc') return 'numero';
+    return (c.revelar?.vida as NivelVida) || REV.vidaInimigo;
+  }
+  function revelaStats(c: any): boolean {
+    if (c.tipo === 'pc') return true;
+    if (c.revelar?.stats != null) return !!c.revelar.stats;
+    return REV.statsInimigo;
+  }
+  /** O que esta tela desenha. O jogador já recebeu a linha mascarada. */
+  const verVida = (c: any): NivelVida =>
+    EH_MESTRE ? 'numero' : ((c.ver_vida as NivelVida) || revelaVida(c));
+  const verStats = (c: any): boolean =>
+    EH_MESTRE ? true : (c.ver_stats != null ? !!c.ver_stats : revelaStats(c));
+  /** Vida restante em porcentagem, que é o que pinta o retrato. */
+  function pctVida(c: any): number | null {
+    if (c.pv_pct != null) return c.pv_pct;
+    if (c.pv_max == null || c.pv_max <= 0 || c.pv_atual == null) return null;
+    return pctDe(c.pv_atual, c.pv_max);
   }
 
   function semEncontro() {
@@ -553,9 +664,12 @@ import MesaCab from '../../components/MesaCab.astro';
       || (c.tipo === 'pc' ? IMGS['pc:' + c.personagem_id] : null)
       || (c.tipo === 'criatura' && MON[c.monstro_id]?.imagem ? u(MON[c.monstro_id].imagem) : null);
     const cls = c.tipo === 'criatura' && !IMGS['own:' + c.id] ? 'av-besta' : '';
-    return avatarHTML(c.nome, src, cls);
+    return avatarHTML(c.nome, src, cls, pctVida(c));
   };
 
+  /** Condições: o mestre vê sempre; o jogador vê se a mesa deixar. */
+  const verCondJogador = (c: any) => c.tipo === 'pc' || REV.condInimigo;
+  const verCond = (c: any) => EH_MESTRE || verCondJogador(c);
   const condsDe = (c: any): Condicao[] =>
     (Array.isArray(c.condicoes) ? c.condicoes : []).map((k: any) => ({ ...(COND[k.id] || {}), ...k }));
 
@@ -605,8 +719,10 @@ import MesaCab from '../../components/MesaCab.astro';
 
   function cardCombatente(c: any, atual: boolean) {
     const r = RESUMO[c.id];
-    const mostra = EH_MESTRE || c.tipo === 'pc';
-    const conds = condsDe(c);
+    const mostra = verStats(c);
+    const vida = verVida(c);
+    const pct = pctVida(c);
+    const conds = verCond(c) ? condsDe(c) : [];
     const def = defesaAtual(c);
     const tipoTxt = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? (MON[c.monstro_id]?.nome || 'Criatura') : 'NPC';
     const stats = (mostra && r) ? `<div class="cbt-stats pilha">
@@ -617,10 +733,16 @@ import MesaCab from '../../components/MesaCab.astro';
       ${r.defesaMental != null ? `<span class="pl"><span class="pl-l">Men</span><span class="pl-v">${r.defesaMental}</span></span>` : ''}
       <span class="pl"><span class="pl-l">Abs</span><span class="pl-v">${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao}${r.resistPerf ? `·N${r.resistPerf}` : ''}</span></span>
     </div>` : '';
-    const barras = (mostra && c.pv_max != null) ? `<div class="cbt-barras">
-      <div class="cbt-linha">${hpBarHTML(c.pv_atual, c.pv_max, c.id)}<span class="hp-fb" data-c="${c.id}"></span></div>
-      ${c.energia_max ? `<div class="cbt-linha"><div class="hpbar mini enbar"><div class="hpbar-fill" style="width:${Math.max(0, Math.min(100, ((c.energia_atual ?? 0) / c.energia_max) * 100))}%"></div><span class="hpbar-txt">En ${c.energia_atual ?? 0}<span class="hp-sep">/</span>${c.energia_max}</span></div></div>` : ''}
-    </div>` : '';
+    // Três barras possíveis: a com número, a cega (largura e palavra, sem
+    // conta) e nenhuma, quando só a cor do retrato conta a história.
+    const barras = vida === 'numero'
+      ? (c.pv_max != null ? `<div class="cbt-barras">
+          <div class="cbt-linha">${hpBarHTML(c.pv_atual, c.pv_max, c.id)}<span class="hp-fb" data-c="${c.id}"></span></div>
+          ${c.energia_max ? `<div class="cbt-linha"><div class="hpbar mini enbar"><div class="hpbar-fill" style="width:${Math.max(0, Math.min(100, ((c.energia_atual ?? 0) / c.energia_max) * 100))}%"></div><span class="hpbar-txt">En ${c.energia_atual ?? 0}<span class="hp-sep">/</span>${c.energia_max}</span></div></div>` : ''}
+        </div>` : '')
+      : vida === 'estado' && pct != null
+        ? `<div class="cbt-barras"><div class="cbt-linha">${hpBarPctHTML(pct)}</div></div>`
+        : '';
     const acoes = EH_MESTRE ? `<div class="cbt-acoes">
       <button class="btn mini agir" data-c="${c.id}">agir ▸</button>
       <input type="number" class="hp-amt" data-c="${c.id}" min="1" value="5" title="Quantidade" aria-label="Quantidade" />
@@ -641,6 +763,8 @@ import MesaCab from '../../components/MesaCab.astro';
         <div class="cbt-topo">
           <span class="cbt-nome">${esc(c.nome)}</span>
           <span class="cbt-meta">${esc(tipoTxt)} · ini ${c.iniciativa ?? 0} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
+          ${(EH_MESTRE && c.revelar && (c.revelar.vida || c.revelar.stats != null))
+            ? `<span class="cbt-rev" title="Este foge da regra da mesa: vida ${esc(c.revelar.vida || 'padrão')}, números ${c.revelar.stats == null ? 'padrão' : (c.revelar.stats ? 'à vista' : 'escondidos')}">👁 exceção</span>` : ''}
           ${conds.length ? `<span class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</span>` : ''}
         </div>
         <div class="cbt-meio">${barras}${stats}</div>
@@ -654,14 +778,19 @@ import MesaCab from '../../components/MesaCab.astro';
     const box = el('painel-turno');
     if (!atual) { box.innerHTML = '<h3>Vez de</h3><p class="vazio">ninguém em campo</p>'; return; }
     const r = RESUMO[atual.id];
-    const t = tierDe(atual.pv_atual, atual.pv_max);
+    // Sem a Vida, `tierDe(null, null)` responderia "Saudável", que é pior do
+    // que não responder: o painel diria que o carrasco está inteiro. Com a
+    // Vida escondida, o estado vem da porcentagem.
+    const pct = pctVida(atual);
+    const t = verVida(atual) === 'numero' ? tierDe(atual.pv_atual, atual.pv_max)
+      : pct != null ? tierDe(pct, 100) : null;
     const a = ataqueAtual(atual);
-    const cd = somarCondicoes(condsDe(atual));
+    const cd = somarCondicoes(verCond(atual) ? condsDe(atual) : []);
     const prox = fila.slice(1, 4);
     box.innerHTML = `<h3>Vez de</h3>
       <div class="pt-quem">${avatarDe(atual)}
         <div><div class="pt-nome">${esc(atual.nome)}</div>
-          <div class="pt-sub">tick ${atual.tick} · ${esc(t.estado)}${GRUPO_LBL[atual.grupo] ? ' · ' + GRUPO_LBL[atual.grupo] : ''}</div></div>
+          <div class="pt-sub">tick ${atual.tick}${t ? ' · ' + esc(t.estado) : ''}${GRUPO_LBL[atual.grupo] ? ' · ' + GRUPO_LBL[atual.grupo] : ''}</div></div>
       </div>
       <div class="pt-stats">
         ${r?.ataque ? `<div><b>Acerto</b> ${esc(r.ataque)}${a.flat ? ` <span class="ruim">${sinal(a.flat)}</span>` : ''}${a.dados ? ` <span class="ruim">${sinal(a.dados)}d6</span>` : ''}</div>` : ''}
@@ -684,17 +813,35 @@ import MesaCab from '../../components/MesaCab.astro';
   // ==================================================================== log
   const fmtHora = (ts: string) => { try { return new Date(ts).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); } catch { return ''; } };
   const persistLog = async () => { try { await SB.from('encontros').update({ log: LOG }).eq('id', ENC.id); } catch {} };
-  async function logar(txt: string, classe = '') {
-    LOG.push({ id: novoId(), ts: new Date().toISOString(), txt, cl: classe });
+  /**
+   * Escreve no registro em duas redações.
+   *
+   * `txt` é a do mestre, com tudo. `pub` é a que o jogador lê: por padrão a
+   * mesma, `null` quando a linha é assunto interno (um ajuste de bloco, uma
+   * emboscada entrando em campo). Sem isso o card escondia a Vida e a linha de
+   * baixo do registro entregava, o que é o pior tipo de vazamento: o que está
+   * escrito na tela.
+   */
+  async function logar(txt: string, classe = '', pub: string | null = txt) {
+    LOG.push({ id: novoId(), ts: new Date().toISOString(), txt, cl: classe, pub });
     if (LOG.length > 400) LOG = LOG.slice(-400);
     pintarLog();
     await persistLog();
+  }
+
+  /** Como esta mudança de Vida se conta em voz alta, para quem não vê a ficha. */
+  function fraseVida(c: any, corpo: string) {
+    const vida = revelaVida(c);
+    if (vida === 'numero') return `${corpo} · ${c.pv_atual}/${c.pv_max} (${tierDe(c.pv_atual, c.pv_max).estado}).`;
+    if (vida === 'estado' && c.pv_max > 0) return `${corpo} · ${tierDe(c.pv_atual, c.pv_max).estado}.`;
+    return `${corpo}.`;
   }
   function pintarLog() {
     const box = el('cmb-log');
     if (!LOG.length) { box.innerHTML = '<p class="vazio">Nada registrado ainda.</p>'; return; }
     box.innerHTML = LOG.slice().reverse().map((e: any) => `<div class="log-linha ${e.cl ? 'l-' + esc(e.cl) : ''}">
       <span class="log-hora">${fmtHora(e.ts)}</span>
+      ${(EH_MESTRE && e.pub == null) ? '<span class="log-so" title="Só você lê esta linha">🔒</span>' : ''}
       <span class="log-txt" data-log="${e.id}">${esc(e.txt)}</span>
       ${EH_MESTRE ? `<button class="log-edit" data-log="${e.id}" title="Editar">✎</button><button class="log-del" data-log="${e.id}" title="Excluir">✕</button>` : ''}
     </div>`).join('');
@@ -708,7 +855,13 @@ import MesaCab from '../../components/MesaCab.astro';
       if (!span || !e) return;
       const inp = document.createElement('input'); inp.type = 'text'; inp.className = 'log-inp'; inp.value = e.txt;
       span.replaceWith(inp); inp.focus(); inp.select();
-      const salvar = async () => { e.txt = inp.value; pintarLog(); await persistLog(); };
+      // Editar a linha edita as duas redações quando elas eram a mesma; se o
+      // mestre tinha escrito uma versão pública diferente, ela é preservada.
+      const salvar = async () => {
+        if (e.pub === e.txt) e.pub = inp.value;
+        e.txt = inp.value;
+        pintarLog(); await persistLog();
+      };
       inp.addEventListener('blur', salvar);
       inp.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') { ev.preventDefault(); inp.blur(); } else if (ev.key === 'Escape') pintarLog(); });
     }));
@@ -765,7 +918,14 @@ import MesaCab from '../../components/MesaCab.astro';
     await mexerVida(cid, -liquido);
     feedback(cid, soak > 0 ? `−${liquido} (${bruto}−${soak})` : `−${liquido}`);
     const est = tierDe(c.pv_atual, c.pv_max).estado;
-    await logar(`${origem}${c.nome} sofreu ${liquido} de dano (${TIPO_LBL[tipo]})${soak > 0 ? ` [${bruto} − ${soak} abs]` : ''} · ${c.pv_atual}/${c.pv_max} (${est}).`, 'dano');
+    const conta = soak > 0 ? ` [${bruto} − ${soak} abs]` : '';
+    // A absorção só entra na versão pública se os números dele estiverem à
+    // vista: `[9 − 7 abs]` é a ficha da armadura dita em voz alta.
+    await logar(
+      `${origem}${c.nome} sofreu ${liquido} de dano (${TIPO_LBL[tipo]})${conta} · ${c.pv_atual}/${c.pv_max} (${est}).`,
+      'dano',
+      fraseVida(c, `${origem}${c.nome} sofreu ${liquido} de dano (${TIPO_LBL[tipo]})${revelaStats(c) ? conta : ''}`),
+    );
     return liquido;
   }
 
@@ -784,7 +944,8 @@ import MesaCab from '../../components/MesaCab.astro';
     // de Sangramento define "início da rodada do personagem".
     if (cd.porRodada > 0) {
       await mexerVida(cid, -cd.porRodada, true);
-      await logar(`${c.nome} perdeu ${cd.porRodada} por condição contínua · ${c.pv_atual}/${c.pv_max}.`, 'dano');
+      await logar(`${c.nome} perdeu ${cd.porRodada} por condição contínua · ${c.pv_atual}/${c.pv_max}.`, 'dano',
+        fraseVida(c, `${c.nome} perdeu ${cd.porRodada} por condição contínua`));
     }
     await carregar();
   }
@@ -793,6 +954,7 @@ import MesaCab from '../../components/MesaCab.astro';
   function ligarBarra() {
     const btns = el('enc-btns');
     btns.innerHTML = EH_MESTRE ? `
+      <button class="btn mini" id="btn-revelar" title="O que os jogadores enxergam dos inimigos">👁 ${esc(resumoRevelar())}</button>
       <button class="btn mini" id="btn-encontros">Encontros</button>
       <button class="btn mini" id="btn-reiniciar">Reiniciar</button>
       <button class="btn mini perigo" id="btn-encerrar">Encerrar</button>` : '';
@@ -801,6 +963,7 @@ import MesaCab from '../../components/MesaCab.astro';
     el('log-add').hidden = !EH_MESTRE;
     if (!EH_MESTRE) return;
 
+    el('btn-revelar').onclick = () => abrirRevelar();
     el('btn-encontros').onclick = () => abrirEncontros();
     el('btn-reiniciar').onclick = () => abrirReiniciar();
     el('btn-encerrar').onclick = async () => {
@@ -846,7 +1009,8 @@ import MesaCab from '../../components/MesaCab.astro';
       const cid = b.dataset.c!; const q = qtd(cid);
       await mexerVida(cid, +q); feedback(cid, `+${q}`);
       const c = COMBS.find((x) => x.id === cid);
-      await logar(`${c?.nome} recuperou ${q} · ${c?.pv_atual}/${c?.pv_max}.`, 'cura');
+      await logar(`${c?.nome} recuperou ${q} · ${c?.pv_atual}/${c?.pv_max}.`, 'cura',
+        c ? fraseVida(c, `${c.nome} recuperou ${q}`) : null);
       pintar();
     }));
     raiz.querySelectorAll<HTMLElement>('.agir').forEach((b) => b.addEventListener('click', () => abrirAcao(b.dataset.c!)));
@@ -859,7 +1023,8 @@ import MesaCab from '../../components/MesaCab.astro';
       const c = COMBS.find((x) => x.id === cid); if (!c) return;
       c.condicoes = (c.condicoes || []).filter((k: any) => k.id !== cid2);
       await upComb(cid, { condicoes: c.condicoes });
-      await logar(`${c.nome}: fim de ${COND[cid2]?.nome || cid2}.`, 'sistema');
+      const t = `${c.nome}: fim de ${COND[cid2]?.nome || cid2}.`;
+      await logar(t, 'sistema', verCondJogador(c) ? t : null);
       pintar();
     }));
     raiz.querySelectorAll<HTMLElement>('.olho').forEach((b) => b.addEventListener('click', async () => {
@@ -880,7 +1045,7 @@ import MesaCab from '../../components/MesaCab.astro';
       const c = COMBS.find((x) => x.id === b.dataset.c); if (!c) return;
       if (!await uiConfirmar(`Remover ${c.nome} do encontro?`, { titulo: 'Remover', ok: 'Remover', perigo: true })) return;
       await SB.from('combatentes').delete().eq('id', c.id);
-      await logar(`${c.nome} saiu da lista.`, 'sistema');
+      await logar(`${c.nome} saiu da lista.`, 'sistema', c.oculto ? null : `${c.nome} saiu da lista.`);
       await carregar();
     }));
     raiz.querySelectorAll<HTMLElement>('.ver-card').forEach((b) => b.addEventListener('click', () => {
@@ -987,7 +1152,10 @@ import MesaCab from '../../components/MesaCab.astro';
       }
       const { error } = await insComb(linhas);
       if (error) return uiErro('Erro: ' + error.message);
-      await logar(`${n > 1 ? n + '× ' : ''}${linhas[0].nome.replace(/ \d+$/, '')} ${n > 1 ? 'entraram' : 'entrou'}${oculto ? ' (oculto)' : ''}.`, 'sistema');
+      // Entrada oculta não vira linha de registro: a emboscada seria anunciada
+      // por escrito antes de acontecer.
+      const entrou = `${n > 1 ? n + '× ' : ''}${linhas[0].nome.replace(/ \d+$/, '')} ${n > 1 ? 'entraram' : 'entrou'}`;
+      await logar(`${entrou}${oculto ? ' (oculto)' : ''}.`, 'sistema', oculto ? null : `${entrou}.`);
       await carregar();
     };
     dlg.showModal();
@@ -1020,6 +1188,9 @@ import MesaCab from '../../components/MesaCab.astro';
     g('edit-img').value = row.imagem || '';
     (el('edit-notas') as HTMLTextAreaElement).value = row.notas || '';
     g('edit-oculto').checked = !!row.oculto;
+    (el('edit-rev-vida') as HTMLSelectElement).value = row.revelar?.vida || '';
+    (el('edit-rev-stats') as HTMLSelectElement).value =
+      row.revelar?.stats == null ? '' : (row.revelar.stats ? '1' : '0');
 
     el('edit-cancelar').onclick = () => dlg.close();
     el('edit-salvar').onclick = async () => {
@@ -1038,6 +1209,16 @@ import MesaCab from '../../components/MesaCab.astro';
         imagem: g('edit-img').value.trim() || null,
         notas: (el('edit-notas') as HTMLTextAreaElement).value,
         oculto: g('edit-oculto').checked,
+        // Chave ausente = segue a mesa. Guardar `null` não serviria: o coalesce
+        // da view trata ausência, e um null explícito viraria "esconder".
+        revelar: (() => {
+          const v = (el('edit-rev-vida') as HTMLSelectElement).value;
+          const s = (el('edit-rev-stats') as HTMLSelectElement).value;
+          const o: any = {};
+          if (v) o.vida = v;
+          if (s) o.stats = s === '1';
+          return o;
+        })(),
         dados: {
           ataque: g('edit-atq').value.trim(), dano: g('edit-dano').value.trim(),
           defesa: numN(g('edit-def').value), defesaSocial: numN(g('edit-defs').value),
@@ -1050,7 +1231,7 @@ import MesaCab from '../../components/MesaCab.astro';
       if (row.id) {
         const { error } = await upComb(row.id, cols);
         if (error) return uiErro('Erro: ' + error.message);
-        await logar(`${cols.nome}: dados ajustados pelo mestre.`, 'sistema');
+        await logar(`${cols.nome}: dados ajustados pelo mestre.`, 'sistema', null);
       } else {
         const { error } = await insComb([{ encontro_id: ENC.id, tipo: row.tipo || 'custom', condicoes: [], ...cols }]);
         if (error) return uiErro('Erro: ' + error.message);
@@ -1095,7 +1276,7 @@ import MesaCab from '../../components/MesaCab.astro';
         chip.addEventListener('click', async () => {
           const achou = COND_LISTA.find((x) => x.nome === nome); if (!achou) return;
           c.condicoes = [...(c.condicoes || []), { id: achou.id }];
-          await logar(`${c.nome}: ${achou.nome}.`, 'sistema');
+          await logar(`${c.nome}: ${achou.nome}.`, 'sistema', verCondJogador(c) ? `${c.nome}: ${achou.nome}.` : null);
           await gravar();
         });
       });
@@ -1112,7 +1293,8 @@ import MesaCab from '../../components/MesaCab.astro';
         nota: (el('cc-nota') as HTMLInputElement).value,
       }];
       (el('cc-nome') as HTMLInputElement).value = '';
-      await logar(`${c.nome}: ${nome} (condição caseira).`, 'sistema');
+      await logar(`${c.nome}: ${nome} (condição caseira).`, 'sistema',
+        verCondJogador(c) ? `${c.nome}: ${nome}.` : null);
       await gravar();
     };
     el('cond-fechar').onclick = () => dlg.close();
@@ -1244,6 +1426,41 @@ import MesaCab from '../../components/MesaCab.astro';
         await aplicarDano(alvo.id, bruto, danoTipo.value);
         await carregar();
       }
+    };
+    dlg.showModal();
+  }
+
+  // =============================================================== revelar
+  /** O botão diz o estado sem precisar abrir: "vida oculta", "tudo à vista". */
+  function resumoRevelar() {
+    if (REV.vidaInimigo === 'numero' && REV.statsInimigo) return 'tudo à vista';
+    if (REV.vidaInimigo === 'nada' && !REV.statsInimigo) return 'nada à vista';
+    return REV.vidaInimigo === 'numero' ? 'vida à vista' : 'vida oculta';
+  }
+
+  function abrirRevelar() {
+    const dlg = el('rev-dlg') as HTMLDialogElement;
+    (el('rv-vida') as HTMLSelectElement).value = REV.vidaInimigo;
+    (el('rv-stats') as HTMLInputElement).checked = REV.statsInimigo;
+    (el('rv-cond') as HTMLInputElement).checked = REV.condInimigo;
+    el('rv-cancelar').onclick = () => dlg.close();
+    el('rv-salvar').onclick = async () => {
+      const novo = {
+        vidaInimigo: (el('rv-vida') as HTMLSelectElement).value,
+        statsInimigo: (el('rv-stats') as HTMLInputElement).checked,
+        condInimigo: (el('rv-cond') as HTMLInputElement).checked,
+      };
+      dlg.close();
+      const { error } = await SB.from('mesas').update({ revelar: novo }).eq('id', MESA_ID);
+      if (error) {
+        return uiErro(semMigracao14(error)
+          ? 'O quadro de revelação chega com a migração 14. Rode supabase/migracao-14.sql no SQL Editor do Supabase.'
+          : 'Erro: ' + error.message);
+      }
+      MESA.revelar = novo;
+      REV = revelarDaMesa(MESA);
+      await logar(`Revelação: vida ${novo.vidaInimigo}, números ${novo.statsInimigo ? 'à vista' : 'ocultos'}.`, 'sistema', null);
+      await carregar();
     };
     dlg.showModal();
   }

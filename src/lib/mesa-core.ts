@@ -117,6 +117,28 @@ export function hpBarHTML(cur: number | null, max: number | null, chave: string,
   </div>`;
 }
 
+/**
+ * Barra sem números: só a fatia que sobrou e a palavra do estado.
+ *
+ * É o que o jogador recebe quando a Vida do inimigo está no modo "estado": ele
+ * vê que o urso está Grave, e não que restam 7 de 41. A largura vem de uma
+ * porcentagem que o banco já arredondou de 5 em 5, então nem contando pixel
+ * dá para reconstruir o número.
+ *
+ * O preço desse arredondamento é que perto da fronteira de duas faixas a
+ * palavra pode cair na vizinha (26% vira 25%, e "Ferido" vira "Grave"). Fica
+ * assim de propósito: a leitura do inimigo é um palpite treinado, não uma
+ * planilha, e o título diz isso.
+ */
+export function hpBarPctHTML(pct: number | null, classe = '', comEstado = true) {
+  const p = Math.max(0, Math.min(100, pct ?? 0));
+  const t = tierDe(p, 100);
+  return `<div class="hpbar hp-cego ${tierCls(t.estado)} ${classe}" title="${esc(t.estado)} (a olho)">
+    <div class="hpbar-fill" style="width:${p}%"></div>
+    ${comEstado ? `<span class="hpbar-txt"><span class="hp-est-so">${esc(t.estado)}</span></span>` : ''}
+  </div>`;
+}
+
 /** Redesenha uma barra já no DOM sem re-renderizar a lista (a largura anima). */
 export function atualizarBarra(raiz: ParentNode, chave: string, cur: number, max: number) {
   const bar = raiz.querySelector<HTMLElement>(`.hpbar[data-c="${CSS.escape(chave)}"]`);
@@ -250,20 +272,67 @@ export async function subirImagemPublica(sb: any, userId: string, file: File, pa
 }
 
 /**
+ * A tinta do ferimento: nada até a metade da Vida, amarelo na metade, vermelho
+ * no chão.
+ *
+ * É o número virando cena. Numa fila de doze combatentes, ler "23/60" doze
+ * vezes é trabalho; ver que três retratos estão dourados e um está vermelho é
+ * um golpe de vista. E é o que sobra para o jogador quando a Vida do inimigo
+ * está escondida: ele não sabe quanto falta, mas vê que o bicho está mal.
+ *
+ * O tom vai de 48 (âmbar) a 0 (vermelho) e a opacidade sobe junto, porque só a
+ * matiz não se distingue de relance num retrato já colorido.
+ */
+export function tintaFerimento(pct: number | null | undefined) {
+  if (pct == null) return null;
+  const p = Math.max(0, Math.min(100, pct));
+  if (p > 50) return null;
+  const t = (50 - p) / 50;
+  return { h: Math.round(48 * (1 - t)), op: +(0.2 + t * 0.45).toFixed(2), pct: p };
+}
+
+/**
  * Retrato circular. Sem imagem, cai na inicial do nome sobre um fundo tirado do
  * próprio nome — assim dois NPCs sem arte não ficam iguais na lista.
+ * `pct` é a Vida restante em porcentagem: abaixo de 50% o retrato ganha a tinta.
  */
-export function avatarHTML(nome: string, src?: string | null, extra = '') {
+export function avatarHTML(nome: string, src?: string | null, extra = '', pct?: number | null) {
   const inicial = (String(nome || '?').trim()[0] || '?').toUpperCase();
   const matiz = [...String(nome || '')].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) % 360, 7);
+  const f = tintaFerimento(pct);
+  const ferida = f ? `<span class="av-fer" style="--fer-h:${f.h};--fer-op:${f.op}"></span>` : '';
+  const cls = f ? ' av-ferido' : '';
   return src
-    ? `<span class="av ${extra}"><img src="${esc(src)}" alt="" loading="lazy" /></span>`
-    : `<span class="av av-vazio ${extra}" style="--av-h:${matiz}"><span class="av-i cinzel">${esc(inicial)}</span></span>`;
+    ? `<span class="av ${extra}${cls}"><img src="${esc(src)}" alt="" loading="lazy" />${ferida}</span>`
+    : `<span class="av av-vazio ${extra}${cls}" style="--av-h:${matiz}"><span class="av-i cinzel">${esc(inicial)}</span>${ferida}</span>`;
 }
 
 // ------------------------------------------------------------------- as abas
-export { ABAS } from './mesa-abas';
-import { ABAS as ABAS_L } from './mesa-abas';
+export { ABAS, ABA_JOGADOR } from './mesa-abas';
+import { ABAS as ABAS_L, ABA_JOGADOR } from './mesa-abas';
+
+// --------------------------------------------------------- o que se revela
+/**
+ * O quadro de chaves da mesa: o que os jogadores enxergam do outro lado.
+ *
+ * Mora em `mesas.revelar` (jsonb) e é lido em duas pontas, que precisam
+ * concordar: a view `combate_visao` decide o que SAI do banco, e estas
+ * funções decidem o que a tela DESENHA. Mexer numa sem mexer na outra dá o
+ * pior dos dois mundos: dado que chega e não aparece, ou espaço reservado
+ * para dado que nunca vem.
+ *
+ * Os padrões são a mesa fechada: da Vida do inimigo sai o estado ("Ferido"),
+ * dos números de ataque e defesa não sai nada. Condições saem, porque elas são
+ * a narração ("ele está cego") e escondê-las faz o jogador jogar no escuro
+ * sobre o que ele mesmo causou.
+ */
+export type NivelVida = 'numero' | 'estado' | 'nada';
+export interface Revelar { vidaInimigo: NivelVida; statsInimigo: boolean; condInimigo: boolean }
+export const REVELAR_PADRAO: Revelar = { vidaInimigo: 'estado', statsInimigo: false, condInimigo: true };
+export const REVELAR_ROTULO: Record<NivelVida, string> = {
+  numero: 'o número exato', estado: 'só o estado (Ferido, Grave…)', nada: 'nada além da cor do retrato',
+};
+export const revelarDaMesa = (mesa: any): Revelar => ({ ...REVELAR_PADRAO, ...(mesa?.revelar || {}) });
 
 // -------------------------------------------------------------- abrir a mesa
 export interface CtxMesa {
@@ -312,6 +381,12 @@ export async function abrirMesa(aba: string): Promise<CtxMesa | null> {
     ehMestre = eu?.papel === 'mestre';
   }
 
+  // Aba de mestre com jogador dentro: sai antes de desenhar qualquer coisa. É
+  // uma cortesia de navegação, não a tranca; a tranca é a RLS, que devolve
+  // vazio para o jogador em tudo que é do Escudo.
+  const atual = ABAS_L.find((a) => a.id === aba);
+  if (atual?.soMestre && !ehMestre) { location.replace(u(ABA_JOGADOR) + '?id=' + id); return null; }
+
   const c = elo('mesa-carregando'); if (c) c.hidden = true;
   const topo = elo('mesa-topo'); if (topo) topo.hidden = false;
   const corpo = elo('mesa-corpo'); if (corpo) corpo.hidden = false;
@@ -322,17 +397,22 @@ export async function abrirMesa(aba: string): Promise<CtxMesa | null> {
   const papel = elo('mesa-papel');
   if (papel) { papel.textContent = ehMestre ? 'Mestre' : 'Jogador'; papel.classList.add(ehMestre ? 'p-mestre' : 'p-jogador'); }
 
-  // As abas nascem no HTML (para não piscar) e recebem o ?id= aqui.
-  const atual = ABAS_L.find((a) => a.id === aba);
+  // As abas nascem no HTML (para não piscar) e recebem o ?id= aqui. As de
+  // mestre nascem escondidas: revelar depende de saber quem chegou, e isso só
+  // se sabe agora.
   document.querySelectorAll<HTMLAnchorElement>('.mesa-abas a[data-slug]').forEach((a) => {
     a.href = u(a.dataset.slug!) + '?id=' + id;
+    if (a.dataset.mestre && ehMestre) a.hidden = false;
   });
   const voltar = elo('mesa-voltar') as HTMLAnchorElement | null;
   if (voltar) voltar.href = u('mesas');
+  // Sem Escudo, a "casa" da mesa para o jogador é o Grupo: a trilha tem de
+  // levar para onde ele consegue entrar.
+  const casa = ehMestre ? u('mesa') : u(ABA_JOGADOR);
   definirCrumbs([
     { label: 'Mesas / Fichas', href: u('mesas') },
-    { label: mesa.nome, href: aba === 'escudo' ? undefined : u('mesa') + '?id=' + id },
-    ...(aba === 'escudo' ? [] : [{ label: atual?.nome || '' }]),
+    { label: mesa.nome, href: aba === 'escudo' || (!ehMestre && aba === 'grupo') ? undefined : casa + '?id=' + id },
+    ...(aba === 'escudo' || (!ehMestre && aba === 'grupo') ? [] : [{ label: atual?.nome || '' }]),
   ]);
   document.title = `${atual && aba !== 'escudo' ? atual.nome + ' · ' : ''}${mesa.nome} — Centelha`;
 
@@ -402,6 +482,14 @@ export async function ligarCabecalho(ctx: CtxMesa) {
  */
 export const bancoAntigo = (e: any) =>
   !!e && /(column|relation).*(does not exist)|mesa_codex|mesa_sessoes|mesa_relogios|condicoes|codex_id/i.test(e.message || '');
+
+/**
+ * Diz se o erro é "esta view/coluna chega com a migração 14". As páginas usam
+ * isto para cair no caminho antigo (ler a tabela e mascarar no cliente) em vez
+ * de mostrar erro: um banco sem a 14 continua funcionando, só sem a tranca.
+ */
+export const semMigracao14 = (e: any) =>
+  !!e && /combate_visao|criatura_visao|mapa_visao|grupo_fisico|revelar|visivel_jogadores|does not exist|schema cache/i.test(e.message || '');
 
 export function avisoMigracao(alvo: HTMLElement, oque: string) {
   alvo.innerHTML = `<div class="aviso"><strong>${esc(oque)} ainda não existe no banco.</strong>
