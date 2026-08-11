@@ -58,6 +58,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -127,6 +129,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": true,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -211,6 +215,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -284,6 +290,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -351,6 +359,8 @@
       "materia": null,
       "condicao": "imobilizado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -419,6 +429,8 @@
       "materia": "impacto",
       "condicao": "caido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -485,6 +497,8 @@
       "materia": null,
       "condicao": "terreno-dificil",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -535,6 +549,8 @@
       "materia": "corte",
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -606,6 +622,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": true,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -651,6 +669,8 @@
       "materia": null,
       "condicao": "em-chamas",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -691,6 +711,8 @@
       "materia": null,
       "condicao": "eletrizado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -723,6 +745,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -763,6 +787,8 @@
       "materia": "impacto",
       "condicao": "caido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -808,6 +834,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -850,6 +878,8 @@
       "materia": null,
       "condicao": "protegido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -891,6 +921,8 @@
       "materia": null,
       "condicao": "voando",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -932,6 +964,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -985,6 +1019,8 @@
       "materia": "impacto",
       "condicao": "caido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1035,6 +1071,8 @@
       "materia": null,
       "condicao": "protegido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1079,6 +1117,8 @@
       "materia": "perfuracao",
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -1126,6 +1166,8 @@
       "materia": null,
       "condicao": "ofuscado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1168,6 +1210,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1213,6 +1257,8 @@
       "materia": null,
       "condicao": "cego",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -1258,6 +1304,8 @@
       "materia": null,
       "condicao": "agarrado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -1304,6 +1352,8 @@
       "materia": null,
       "condicao": "escondido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1345,6 +1395,8 @@
       "materia": null,
       "condicao": "escuridao",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1385,6 +1437,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1445,6 +1499,8 @@
       "materia": null,
       "condicao": "caido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -1497,6 +1553,8 @@
       "materia": null,
       "condicao": "imobilizado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1546,6 +1604,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": true,
       "teste": false
@@ -1584,6 +1644,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": true,
       "teste": false
@@ -1627,6 +1689,8 @@
       "materia": null,
       "condicao": "protegido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -1675,6 +1739,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": true,
       "teste": false
@@ -1722,6 +1788,8 @@
       "materia": "perfuracao",
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -1780,6 +1848,8 @@
       "materia": "perfuracao",
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -1835,6 +1905,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -1882,6 +1954,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": true,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -1934,6 +2008,8 @@
       "materia": null,
       "condicao": "marcado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -1980,6 +2056,8 @@
       "materia": null,
       "condicao": "amedrontado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -2030,6 +2108,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -2081,6 +2161,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -2127,6 +2209,8 @@
       "materia": null,
       "condicao": "dominado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -2182,6 +2266,8 @@
       "materia": null,
       "condicao": "amedrontado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -2223,6 +2309,8 @@
       "materia": null,
       "condicao": "confuso",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -2272,6 +2360,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2314,6 +2404,8 @@
       "materia": null,
       "condicao": "abencoado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2356,6 +2448,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2398,6 +2492,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2434,6 +2530,8 @@
       "materia": null,
       "condicao": "abencoado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2471,6 +2569,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2517,6 +2617,8 @@
       "materia": null,
       "condicao": "amaldicoado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -2553,6 +2655,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2595,6 +2699,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2631,6 +2737,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2669,6 +2777,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2710,6 +2820,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2760,6 +2872,8 @@
       "materia": null,
       "condicao": "protegido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2812,6 +2926,8 @@
       "materia": null,
       "condicao": "retardado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -2862,6 +2978,8 @@
       "materia": "impacto",
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -2919,6 +3037,8 @@
       "materia": "impacto",
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -2956,6 +3076,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": true,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -2994,6 +3116,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": true,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3040,6 +3164,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": true,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3077,6 +3203,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3134,6 +3262,8 @@
       "materia": null,
       "condicao": "retardado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3171,6 +3301,8 @@
       "materia": null,
       "condicao": "acelerado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3217,6 +3349,8 @@
       "materia": null,
       "condicao": "acelerado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3253,6 +3387,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3299,6 +3435,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3341,6 +3479,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3379,6 +3519,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": true,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3426,6 +3568,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3473,6 +3617,8 @@
       "materia": null,
       "condicao": "protegido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3526,6 +3672,8 @@
       "materia": null,
       "condicao": "imobilizado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3571,6 +3719,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": true,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3614,6 +3764,8 @@
       "materia": null,
       "condicao": "invisivel",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3657,6 +3809,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3704,6 +3858,8 @@
       "materia": null,
       "condicao": "escondido",
       "pegaItem": true,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3746,6 +3902,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3799,6 +3957,8 @@
       "materia": null,
       "condicao": "terreno-dificil",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -3841,6 +4001,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3884,6 +4046,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3922,6 +4086,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -3965,6 +4131,8 @@
       "materia": null,
       "condicao": "voando",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4010,6 +4178,8 @@
       "materia": null,
       "condicao": "em-chamas",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": false
@@ -4043,14 +4213,16 @@
     ],
     "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto perde Fôlego turno após turno. A região demora a esquecer que você passou por ali.",
     "grid": {
-      "forma": "nenhuma",
-      "ancora": "nenhuma",
-      "gatilho": "passivo",
-      "alvo": "nenhum",
-      "persiste": false,
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
       "materia": null,
       "condicao": "terreno-dificil",
       "pegaItem": false,
+      "arenaInteira": true,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4106,6 +4278,8 @@
       "materia": null,
       "condicao": "eletrizado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -4157,6 +4331,8 @@
       "materia": "impacto",
       "condicao": "caido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -4210,6 +4386,8 @@
       "materia": null,
       "condicao": "terreno-dificil",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -4251,6 +4429,8 @@
       "materia": "impacto",
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4293,6 +4473,8 @@
       "materia": null,
       "condicao": "cego",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4335,6 +4517,8 @@
       "materia": null,
       "condicao": "escuridao",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4376,6 +4560,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": true,
       "teste": false
@@ -4434,6 +4620,8 @@
       "materia": null,
       "condicao": "agarrado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -4481,6 +4669,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4522,6 +4712,8 @@
       "materia": null,
       "condicao": "dominado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -4555,6 +4747,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4591,6 +4785,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4632,6 +4828,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4684,6 +4882,8 @@
       "materia": null,
       "condicao": "caido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -4726,6 +4926,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4756,14 +4958,16 @@
     ],
     "efeito": "O tempo para para todo mundo menos você, por alguns Ticks. Você anda, tira, coloca e sai; o que você tocar volta a andar junto com o resto. O corpo cobra depois, e cobra caro.",
     "grid": {
-      "forma": "nenhuma",
-      "ancora": "nenhuma",
+      "forma": "alvo",
+      "ancora": "conjurador",
       "gatilho": "passivo",
-      "alvo": "nenhum",
-      "persiste": false,
+      "alvo": "si",
+      "persiste": true,
       "materia": null,
-      "condicao": null,
+      "condicao": "fora-do-tempo",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4805,6 +5009,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4847,6 +5053,8 @@
       "materia": null,
       "condicao": "protegido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4888,6 +5096,8 @@
       "materia": null,
       "condicao": "escondido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4930,6 +5140,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -4968,6 +5180,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -5023,6 +5237,8 @@
       "materia": null,
       "condicao": "em-chamas",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -5080,6 +5296,8 @@
       "materia": null,
       "condicao": "congelado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -5130,6 +5348,8 @@
       "materia": null,
       "condicao": "eletrizado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -5182,6 +5402,8 @@
       "materia": null,
       "condicao": "sufocando",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -5234,6 +5456,8 @@
       "materia": "impacto",
       "condicao": "caido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -5281,6 +5505,8 @@
       "materia": "impacto",
       "condicao": "imobilizado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -5331,6 +5557,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -5373,6 +5601,8 @@
       "materia": null,
       "condicao": "escuridao",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -5416,6 +5646,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": true,
       "teste": false
@@ -5454,6 +5686,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -5500,6 +5734,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -5552,6 +5788,8 @@
       "materia": null,
       "condicao": "confuso",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -5601,6 +5839,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": true,
       "teste": false
@@ -5656,6 +5896,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": true,
       "teste": true
@@ -5708,6 +5950,8 @@
       "materia": null,
       "condicao": "retardado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -5766,6 +6010,8 @@
       "materia": null,
       "condicao": "doente",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": true,
       "cura": false,
       "teste": true
@@ -5808,6 +6054,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -5851,6 +6099,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -5892,6 +6142,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -5938,6 +6190,8 @@
       "materia": null,
       "condicao": "abencoado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -5987,6 +6241,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -6033,6 +6289,8 @@
       "materia": null,
       "condicao": "protegido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -6075,6 +6333,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -6117,6 +6377,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -6158,6 +6420,8 @@
       "materia": null,
       "condicao": "acelerado",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -6211,6 +6475,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -6257,6 +6523,8 @@
       "materia": null,
       "condicao": "protegido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -6304,6 +6572,8 @@
       "materia": null,
       "condicao": "escondido",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -6347,6 +6617,8 @@
       "materia": null,
       "condicao": "invisivel",
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": true
@@ -6389,6 +6661,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -6427,6 +6701,8 @@
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false
@@ -6462,14 +6738,16 @@
     "efeito": "Transforma um ermo em mata: capim onde havia areia, árvore onde havia pedra, água onde o chão estava seco. Leva dias para fechar, não um instante, e fica. O que nasce dali em diante é vida comum, e morre se ninguém cuidar.",
     "notas": "É o Efeito que muda um lugar no mapa, não uma cena. O Mestre decide quanto tempo a mata leva para valer como mata.",
     "grid": {
-      "forma": "nenhuma",
-      "ancora": "nenhuma",
-      "gatilho": "passivo",
-      "alvo": "nenhum",
-      "persiste": false,
+      "forma": "zona",
+      "ancora": "ponto",
+      "gatilho": "ao-entrar",
+      "alvo": "ponto",
+      "persiste": true,
       "materia": null,
       "condicao": null,
       "pegaItem": false,
+      "arenaInteira": true,
+      "dissipa": false,
       "fere": false,
       "cura": false,
       "teste": false

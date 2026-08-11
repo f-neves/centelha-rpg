@@ -115,9 +115,10 @@ const FORMA = {
     'empurrao-elemental', 'onda', 'maremoto', 'tromba', 'arremesso', 'engolir', 'onde-e-embaixo'],
   // Área fixa no chão, mesmo sem parâmetro de Área declarado, ou terreno que muda.
   zona: ['brasa-retardada', 'semente-adormecida', 'imagem-viva', 'praga',
-    'sarcal', 'barreira', 'criar-substancia', 'erguer-a-montanha'],
+    'sarcal', 'barreira', 'criar-substancia', 'erguer-a-montanha',
+    'inverno', 'semear-o-ermo'],
   // Gruda no alvo e anda com ele, apesar de parecer terreno.
-  alvo: ['fogo-que-nao-apaga', 'podridao', 'arma-conjurada', 'criar-utensilio'],
+  alvo: ['fogo-que-nao-apaga', 'podridao', 'arma-conjurada', 'criar-utensilio', 'parar'],
   // Sem representação no tabuleiro: acontece na ficção, na mesa ou na ficha.
   nenhuma: ['momento-certo', 'porta-aberta', 'isso-vai-dar-certo', 'ricochete-do-destino',
     'reverter-o-golpe', 'destino-torto', 'oraculo', 'encruzilhada', 'olho-distante',
@@ -125,9 +126,25 @@ const FORMA = {
     'bolso-torto', 'voz-da-mata', 'aplacar', 'vincular-ao-objeto', 'rosto-esquecivel',
     'rosto-emprestado', 'sussurro-distante', 'rastro', 'mao-invisivel', 'olhos-da-mata',
     'eco-do-lugar', 'sentir-o-ermo', 'esquecer', 'reescrever', 'sugestao-plantada',
-    'banir', 'esconder-a-carga', 'refazer-o-corpo', 'semear-o-ermo',
-    'inverno', 'lapso', 'instante', 'parar', 'emprestar-o-tempo', 'dissipar', 'aviso'],
+    'banir', 'esconder-a-carga', 'refazer-o-corpo',
+    'lapso', 'instante', 'emprestar-o-tempo', 'dissipar', 'aviso'],
 };
+
+/**
+ * Cobre a arena inteira, e não uma área medida.
+ *
+ * São os Efeitos de escala de REGIÃO: o Inverno traz o inverno para a região e
+ * o Semear o Ermo transforma um ermo em mata. Qualquer arena cabe dentro disso,
+ * e desenhar um quadrado de 8 × 8 no meio do mapa mentiria sobre o alcance.
+ */
+const ARENA_INTEIRA = ['inverno', 'semear-o-ermo'];
+
+/**
+ * Desfaz magia alheia: em vez de escolher um chão ou um corpo, escolhe um EFEITO
+ * que já está no tabuleiro. `arcano` manda comparar níveis, e o Dissipar apaga
+ * de uma vez o que for de nível igual ou menor ao investido.
+ */
+const DISSIPA = ['dissipar'];
 
 /**
  * Quando o efeito morde.
@@ -171,7 +188,7 @@ const IGNORA_ARMADURA = ['bracos-do-abismo', 'dreno', 'paralisia'];
 
 /** Quem pode ser escolhido. Deriva do Alcance fixo; aqui só o que foge. */
 const ALVO = {
-  si: ['manto-de-treva', 'meio-corpo', 'dobrar-o-corpo', 'fera-de-guerra', 'asas', 'ausencia'],
+  si: ['manto-de-treva', 'meio-corpo', 'dobrar-o-corpo', 'fera-de-guerra', 'asas', 'ausencia', 'parar'],
   objeto: ['arma-elemental', 'enferrujar', 'podridao', 'remendo', 'chave-mestra',
     'vincular-ao-objeto', 'esconder-a-carga', 'bolso-torto', 'chamar-a-mao', 'convocar',
     'arma-conjurada', 'criar-utensilio'],
@@ -226,6 +243,9 @@ const CONDICAO = {
   confuso: ['esquecer', 'imagem-viva'],
   dominado: ['sugestao-plantada', 'reescrever'],
   acelerado: ['lapso', 'instante', 'bolha-temporal'],
+  // O Parar resolvido do lado de quem conjura: as ações dele deixam de custar
+  // Ticks, em vez de o tabuleiro mexer no relógio de todos os outros.
+  'fora-do-tempo': ['parar'],
 };
 
 // ------------------------------------------------------------- as derivações
@@ -292,6 +312,10 @@ function gridDoEfeito(e) {
     condicao,
     // Marca uma peça do equipamento, e não o corpo.
     pegaItem: PEGA_ITEM.includes(e.id),
+    // Cobre a arena inteira: escala de região, não área medida.
+    arenaInteira: ARENA_INTEIRA.includes(e.id),
+    // Escolhe um efeito já no tabuleiro, e não um chão nem um corpo.
+    dissipa: DISSIPA.includes(e.id),
     fere: temPar(e, 'Dano'),
     cura: temPar(e, 'Cura'),
     // Pede rolagem de resistência de quem for pego.
@@ -321,6 +345,8 @@ for (const [tabela, grupos] of tabelas) {
 }
 for (const id of IGNORA_ARMADURA) if (!ids.has(id)) erros.push(`IGNORA_ARMADURA: "${id}" não existe`);
 for (const id of PEGA_ITEM) if (!ids.has(id)) erros.push(`PEGA_ITEM: "${id}" não existe`);
+for (const id of ARENA_INTEIRA) if (!ids.has(id)) erros.push(`ARENA_INTEIRA: "${id}" não existe`);
+for (const id of DISSIPA) if (!ids.has(id)) erros.push(`DISSIPA: "${id}" não existe`);
 for (const a of ARTES) if (!COR[a.id]) erros.push(`COR: falta a cor da Arte "${a.id}"`);
 if (erros.length) {
   console.error('✘ tabelas fora de dia:\n  ' + erros.join('\n  '));

@@ -242,6 +242,15 @@
       "nota": "Fora do alcance de quem luta no chão. Corpo a corpo só de quem também voa ou tem alcance."
     },
     {
+      "id": "fora-do-tempo",
+      "nome": "Fora do tempo",
+      "icone": "⏸",
+      "grupo": "arcano",
+      "cor": "bom",
+      "velocidade": -99,
+      "nota": "As suas ações não custam Ticks: o relógio da mesa não anda enquanto você age. É o Parar, da Arte do Tempo, resolvido do seu lado do relógio em vez do dos outros."
+    },
+    {
       "id": "acelerado", "nome": "Acelerado", "icone": "»", "grupo": "arcano", "cor": "bom",
       "velocidade": -2,
       "nota": "Suas ações custam 2 Ticks a menos (mínimo 1)."

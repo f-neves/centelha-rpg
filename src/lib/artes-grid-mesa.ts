@@ -33,6 +33,15 @@ export interface CtxGrid {
   mestre: boolean;
   /** Converte um ponto da tela no hexágono debaixo dele. Mora na aba. */
   hexNaTela: (cx: number, cy: number) => Hex | null;
+  /**
+   * O relógio do tabuleiro, em Ticks.
+   *
+   * NÃO é `encontros.tick_atual`: essa coluna é avançada pela aba Combate, e a
+   * aba Grid nunca a toca. O agora do tabuleiro é o tick de QUEM ESTÁ NA VEZ,
+   * que é o mesmo número que a coluna de iniciativa mostra. Lendo a coluna
+   * errada, nenhum efeito venceria enquanto a mesa jogasse só pelo Grid.
+   */
+  tickAgora?: () => number;
   logar: (c: any, txt: string, extra: Record<string, any>) => Promise<void>;
   recarregar: () => Promise<void>;
   repintar: () => void;
@@ -41,7 +50,7 @@ export interface CtxGrid {
 let ATIVOS: EfeitoAtivo[] = [];
 export const efeitosAtivos = () => ATIVOS;
 
-const tickAtual = (ctx: CtxGrid) => Number(ctx.enc?.tick_atual ?? 0);
+const tickAtual = (ctx: CtxGrid) => Number(ctx.tickAgora?.() ?? ctx.enc?.tick_atual ?? 0);
 const escalaM = (ctx: CtxGrid) => Number(ctx.arena?.escala_m) || 1;
 const combDe = (ctx: CtxGrid, id: string) => ctx.combs.find((c) => c.id === id);
 
@@ -247,6 +256,9 @@ export async function conjurar(ctx: CtxGrid, cid: string, palco: HTMLElement): P
   const g = plano.efeito?.grid;
   const forma: Forma = g?.forma || (plano.areaM2 ? 'zona' : 'alvo');
 
+  // O Dissipar vem antes da saída de "sem representação": ele não tem chão nem
+  // corpo para escolher, mas tem o que apagar, e isso é bem do tabuleiro.
+  if (g?.dissipa) return await dissipar(ctx, c, plano);
   if (forma === 'nenhuma') {
     await ctx.logar(c, `${c.nome} conjurou ${plano.resumo}`, { acao: null });
     return;
@@ -264,13 +276,22 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
   if (!meu) return uiErro('Ponha o conjurador no mapa antes: a Arte sai de onde ele está.');
   const esc_ = escalaM(ctx);
   const cols = ctx.arena.cols, rows = ctx.arena.rows;
+  const g = plano.efeito?.grid;
   const calc = (centro: Hex, mira: Hex | null) => hexesDoEfeito({
     forma, molde: plano.molde, centro, mira, escalaM: esc_, cols, rows,
     areaM2: plano.areaM2, raioM: plano.raioM, comprimentoM: plano.comprimentoM,
+    arenaInteira: g?.arenaInteira,
   });
 
   let centro: Hex = meu;
   let mira: Hex | null = null;
+  // Escala de região cobre tudo: não há onde clicar, e perguntar seria teatro.
+  if (g?.arenaInteira) {
+    await gravarEfeito(ctx, c, plano, {
+      forma, hexes: calc(meu, null), centro: null, raio_m: null, alvos: [],
+    });
+    return;
+  }
   if (forma === 'aura') {
     // A aura nasce presa ao conjurador: não há onde clicar.
   } else if (forma === 'cone' || forma === 'linha' || forma === 'muro') {
@@ -329,6 +350,44 @@ async function grudarNoAlvo(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
 
   // O dano imediato de quem fere na hora do golpe (Céu Aberto, Julgamento).
   if (plano.danoDados && g?.gatilho === 'imediato') await morder(ctx, ATIVOS[ATIVOS.length - 1], alvo, 'acertou');
+}
+
+/**
+ * Dissipar: escolhe um efeito que já está no tabuleiro e o apaga.
+ *
+ * `arcano` manda comparar níveis: apaga de uma vez o que for de nível igual ou
+ * menor ao investido. O que está acima aparece na lista mesmo assim, e desabilitado
+ * com o motivo escrito, porque saber que não alcança é informação de jogo: o
+ * feiticeiro sente o tamanho do que tem pela frente.
+ */
+async function dissipar(ctx: CtxGrid, c: any, plano: Plano): Promise<void> {
+  const t = tickAtual(ctx);
+  const vivos = ATIVOS.filter((e) => !venceu(e, t) && e.conjurador_id !== c.id);
+  if (!vivos.length) {
+    await ctx.logar(c, `${c.nome} conjurou ${plano.nome}, e não havia magia alheia no tabuleiro`, { acao: null });
+    return;
+  }
+  const meu = plano.custo.total;
+  const escolha = await uiEscolher(`${plano.nome} · o que desfazer`, vivos.map((e) => {
+    const alcanca = (e.nivel || 1) <= meu;
+    return {
+      valor: alcanca ? e.id : `__alto:${e.id}`,
+      rotulo: e.nome,
+      nota: alcanca
+        ? `nível ${e.nivel} · ${rotuloDuracao(turnosRestantes(e, t))} restantes`
+        : `nível ${e.nivel} · acima dos ${meu} pontos investidos`,
+      grupo: alcanca ? 'Ao seu alcance' : 'Forte demais',
+    };
+  }), { msg: `Você investiu ${meu} pontos: apaga o que for de nível ${meu} ou menor.` });
+  if (!escolha) return;
+  if (escolha.startsWith('__alto:')) {
+    const alto = vivos.find((e) => e.id === escolha.slice(7));
+    await ctx.logar(c, `${c.nome} tentou desfazer ${alto?.nome} e não alcançou:`
+      + ` nível ${alto?.nivel} contra ${meu} pontos investidos`, { acao: null });
+    return;
+  }
+  const alvo = vivos.find((e) => e.id === escolha);
+  if (alvo) await encerrarEfeito(ctx, alvo, `desfeito por ${c.nome}`);
 }
 
 /**
@@ -510,6 +569,10 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     efeito_id: plano.efeito?.id || null,
     conjurador_id: c.id,
     nome: plano.nome,
+    // O nível efetivo: o do Efeito comprado, ou o maior parâmetro investido no
+    // improviso, que é a mesma regra de gating de `arcano.composta`.
+    nivel: plano.efeito?.nivel
+      ?? Math.max(1, ...Object.values(plano.escolhas).map((n) => Number(n) || 0)),
     forma: extra.forma,
     molde: plano.molde,
     hexes: extra.hexes.map((h) => ({ q: h.q, r: h.r })),

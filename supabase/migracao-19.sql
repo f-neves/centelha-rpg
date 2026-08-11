@@ -31,6 +31,10 @@ create table if not exists public.arena_efeitos (
   efeito_id      text,
   conjurador_id  uuid references public.combatentes(id) on delete set null,
   nome           text not null default 'Efeito',
+  -- O nivel EFETIVO da conjuracao: o do Efeito comprado, ou o maior parametro
+  -- investido no improviso (a mesma regra de gating de `arcano.composta`). E
+  -- por este numero que o Dissipar decide o que consegue apagar.
+  nivel          integer not null default 1,
 
   -- Como ocupa o espaco. `forma` e `molde` vem do bloco `grid` de efeitos.json.
   forma          text not null default 'zona',
@@ -63,6 +67,9 @@ create table if not exists public.arena_efeitos (
 );
 create index if not exists arena_efeitos_arena_idx on public.arena_efeitos (arena_id);
 
+-- Para quem rodou esta migracao antes da coluna `nivel` existir.
+alter table public.arena_efeitos add column if not exists nivel integer not null default 1;
+
 alter table public.arena_efeitos enable row level security;
 
 drop policy if exists efeitos_select on public.arena_efeitos;
@@ -81,7 +88,7 @@ create policy efeitos_write on public.arena_efeitos for all to authenticated
 drop view if exists public.efeito_visao;
 create view public.efeito_visao
 with (security_invoker = false) as
-select e.id, e.arena_id, e.arte_id, e.efeito_id, e.conjurador_id, e.nome,
+select e.id, e.arena_id, e.arte_id, e.efeito_id, e.conjurador_id, e.nome, e.nivel,
        e.forma, e.molde, e.hexes, e.centro, e.raio_m,
        e.dano_dados, e.dano_bonus, e.condicao, e.elemento, e.materia, e.gatilho,
        e.alvos, e.item, e.desde_tick, e.ate_tick

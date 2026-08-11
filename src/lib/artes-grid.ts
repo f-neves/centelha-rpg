@@ -35,6 +35,10 @@ export interface GridEfeito {
   persiste: boolean; materia: string | null; condicao: string | null;
   /** Marca uma peça do equipamento do alvo, e não o corpo dele. */
   pegaItem: boolean;
+  /** Cobre a arena inteira: escala de região, e não área medida. */
+  arenaInteira: boolean;
+  /** Escolhe um efeito já no tabuleiro, e não um chão nem um corpo. */
+  dissipa: boolean;
   fere: boolean; cura: boolean; teste: boolean;
 }
 export type Forma = 'nenhuma' | 'alvo' | 'aura' | 'zona' | 'muro' | 'cone' | 'linha' | 'cadeia' | 'token' | 'movimento';
@@ -272,6 +276,15 @@ export type Molde = 'circulo' | 'linha' | 'leque';
 export const hexesParaArea = (m2: number, escalaM: number): number =>
   Math.max(1, Math.round(m2 / Math.max(0.01, escalaM * escalaM)));
 
+/** A arena inteira, para o Efeito de escala de região. */
+export function hexesDaArena(cols: number, rows: number): Hex[] {
+  const out: Hex[] = [];
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) out.push({ q: col - Math.floor(row / 2), r: row });
+  }
+  return out;
+}
+
 /** Anéis concêntricos a partir do centro, em ordem de distância. */
 function porAnel(centro: Hex, quantos: number, cols: number, rows: number): Hex[] {
   const out: Hex[] = [];
@@ -365,10 +378,13 @@ export function hexesEmLeque(
  */
 export function hexesDoEfeito(opts: {
   forma: Forma; molde: Molde; centro: Hex; mira?: Hex | null;
-  areaM2?: number; raioM?: number; comprimentoM?: number;
+  areaM2?: number; raioM?: number; comprimentoM?: number; arenaInteira?: boolean;
   escalaM: number; cols: number; rows: number;
 }): Hex[] {
   const { forma, molde, centro, mira, escalaM, cols, rows } = opts;
+  // Escala de região: o Inverno cai sobre a região, e qualquer arena cabe nele.
+  // Desenhar um quadrado medido no meio do mapa mentiria sobre o alcance.
+  if (opts.arenaInteira) return hexesDaArena(cols, rows);
   if (forma === 'aura') return hexesNoRaio(centro, opts.raioM ?? 1, escalaM, cols, rows);
   if (forma === 'muro') {
     const n = Math.max(1, Math.round((opts.comprimentoM ?? escalaM) / escalaM));
@@ -460,6 +476,8 @@ export function rolar(dados: number, faces = 6): { total: number; dados: number[
 export interface EfeitoAtivo {
   id: string;
   arena_id: string;
+  /** O nível efetivo da conjuração. É por ele que o Dissipar decide o que apaga. */
+  nivel: number;
   efeito_id: string | null;     // null = improviso, a Arte crua
   arte_id: string;
   conjurador_id: string | null;

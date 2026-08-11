@@ -149,6 +149,30 @@ ef.mordidos = { a: 1 };
 ok(M.jaMordido(ef, 'a', 0), 'quem já foi mordido nesta rodada não é mordido de novo');
 ok(!M.jaMordido(ef, 'a', 6), 'na rodada seguinte, morde de novo');
 
+// ------------------------------------------- Parar, Dissipar e a região
+// Parar resolve do lado de quem conjura: as ações DELE deixam de custar Ticks,
+// em vez de o tabuleiro mexer no relógio de todos os outros.
+const parar = M.EFEITO['parar'];
+eq(parar.grid.alvo, 'si', 'Parar cai em quem conjura');
+eq(parar.grid.condicao, 'fora-do-tempo', 'Parar deixa a condição Fora do tempo');
+const foraDoTempo = M.CONDICAO['fora-do-tempo'];
+ok(foraDoTempo && foraDoTempo.velocidade <= -50,
+  'Fora do tempo zera o custo em Ticks pela via que o rastreador já soma');
+
+// Dissipar escolhe um efeito no tabuleiro, e não um chão nem um corpo.
+ok(M.EFEITO['dissipar'].grid.dissipa, 'Dissipar apaga efeito alheio');
+ok(!M.EFEITO['aura'].grid.dissipa, 'a Aura não dissipa nada');
+
+// Escala de região cobre a arena inteira, seja qual for o tamanho dela.
+ok(M.EFEITO['inverno'].grid.arenaInteira, 'o Inverno é de escala de região');
+ok(M.EFEITO['semear-o-ermo'].grid.arenaInteira, 'Semear o Ermo também');
+ok(!M.EFEITO['neblina'].grid.arenaInteira, 'a Neblina continua sendo área medida');
+eq(M.hexesDaArena(12, 8).length, 96, 'a arena inteira são cols × rows hexágonos');
+eq(M.hexesDoEfeito({
+  forma: 'zona', molde: 'circulo', centro: { q: 0, r: 0 }, arenaInteira: true,
+  areaM2: 4, escalaM: 1, cols: 12, rows: 8,
+}).length, 96, 'com arenaInteira a área medida é ignorada');
+
 // ---------------------------------------------------- cobertura da projeção
 eq(M.EFEITOS.filter((e) => !e.grid).length, 0, 'todo Efeito tem bloco grid');
 eq(M.ARTES.filter((a) => !a.grid).length, 0, 'toda Arte tem bloco grid');

@@ -632,6 +632,9 @@ import MesaCab from '../../components/MesaCab.astro';
     SB, arena: ARENA, enc: ENC, combs: COMBS, tokens: TOKENS,
     resumo: RESUMO, fichas: FICHAS, raio: RAIO, mestre: MESTRE,
     hexNaTela,
+    // O agora do tabuleiro é o tick de quem está na vez, o mesmo que a coluna
+    // de iniciativa mostra. `encontros.tick_atual` é da aba Combate.
+    tickAgora: () => daVez()?.tick ?? ENC?.tick_atual ?? 0,
     logar,
     recarregar: carregar,
     repintar: () => {
@@ -1361,6 +1364,9 @@ import MesaCab from '../../components/MesaCab.astro';
     const prox = daVez();
     await logar(c, `${c.nome} encerrou a vez${prox && prox.id !== cid ? ` · agora é ${prox.nome}` : ''}`,
       { acao: null });
+    // O relógio andou: é aqui que o fogo que não apaga volta a queimar, e que o
+    // efeito vencido sai do tabuleiro levando a condição que tinha posto.
+    await verificarEfeitos(ctxArtes());
   }
 
   function pintarLista() {
