@@ -9,6 +9,7 @@ import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
   parametrosDoImproviso, custoDe, valorNoNivel, escalaDe, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
+  figuraDaArea, ANGULOS,
   type Arte, type Efeito, type Parametro, type Escolhas, type Molde, type Custo,
 } from './artes-grid';
 
@@ -23,6 +24,8 @@ export interface Plano {
   efeito: Efeito | null;        // null = improviso, a Arte crua
   escolhas: Escolhas;
   molde: Molde;
+  /** A abertura do leque, em graus. Só vale quando o molde é leque. */
+  angulo: number;
   custo: Custo;
   // já resolvido, para quem executa não precisar reabrir as réguas
   alcanceM: number;
@@ -32,6 +35,8 @@ export interface Plano {
   danoDados: number;
   danoBonus: number;
   turnos: number;
+  /** A figura já resolvida em metros: "círculo de 2,3 m de raio". */
+  figura: string;
   alvos: number;
   nome: string;                 // "Aura de Fogo"
   resumo: string;               // a linha que vai para o registro
@@ -69,6 +74,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let efeitoSel: Efeito | null = null;
   let escolhas: Escolhas = {};
   let molde: Molde = 'circulo';
+  let angulo = 90;
 
   const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`, { classe: 'ui-dlg-arte' });
 
@@ -122,14 +128,22 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       if (danoDados) partes.push(`${danoDados}d6`);
       else if (danoBonus) partes.push(`+${danoBonus} de dano`);
       if (turnos) partes.push(rotuloDuracao(turnos));
+      const areaM2 = pArea && nAr && !ehRaio ? areaEmM2(pArea, nAr) : 0;
+      const raioProprio = pArea && nAr && ehRaio ? parseFloat(valorNoNivel(pArea, nAr)) || 0 : 0;
+      // A área comprada é o ORÇAMENTO; o molde decide a figura. O raio e o
+      // comprimento saem dela, para nenhum molde render mais chão que o outro.
+      const fig = areaM2 ? figuraDaArea(molde, areaM2, angulo) : null;
+      const figura = raioProprio ? `círculo de ${raioProprio} m de raio` : (fig?.rotulo || '');
+      if (figura) partes.push(figura);
       return {
-        arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas }, molde, custo,
+        arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas }, molde, angulo, custo,
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
-        areaM2: pArea && nAr && !ehRaio ? areaEmM2(pArea, nAr) : 0,
-        raioM: pArea && nAr && ehRaio ? parseFloat(valorNoNivel(pArea, nAr)) || 0 : 0,
+        areaM2,
+        raioM: raioProprio || fig?.raioM || 0,
         comprimentoM: pComp && escolhas['Comprimento']
-          ? parseFloat(valorNoNivel(pComp, escolhas['Comprimento'])) || 0 : 0,
-        danoDados, danoBonus, turnos,
+          ? parseFloat(valorNoNivel(pComp, escolhas['Comprimento'])) || 0
+          : (fig?.comprimentoM || 0),
+        danoDados, danoBonus, turnos, figura,
         alvos: escolhas['Alvos'] ?? 1,
         nome,
         resumo: `${nome}${partes.length ? ` · ${partes.join(' · ')}` : ''} · ${custo.mana} de Mana`,
@@ -212,9 +226,17 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         ${podeModar ? `<div class="ag-sec"><h3 class="ag-h">Molde</h3>
           <div class="ag-moldes">${(['circulo', 'linha', 'leque'] as Molde[]).map((m) => `
             <button type="button" class="ag-md${molde === m ? ' on' : ''}" data-molde="${m}">
-              <span class="ag-md-ic" aria-hidden="true">${{ circulo: '⬢', linha: '▬', leque: '◣' }[m]}</span>
+              <span class="ag-md-ic" aria-hidden="true">${{ circulo: '●', linha: '▬', leque: '◣' }[m]}</span>
               ${m === 'circulo' ? 'Círculo' : m === 'linha' ? 'Linha' : 'Leque'}</button>`).join('')}</div>
-          <p class="ag-nota">A mesma área, moldada de outro jeito. O tabuleiro mantém o número de casas.</p>
+          ${molde === 'leque' ? `<div class="ag-angs">
+            <span class="ag-ang-l">Abertura</span>
+            ${ANGULOS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
+              data-ang="${a}">${a}°</button>`).join('')}
+          </div>` : ''}
+          <p class="ag-figura">${esc(plano.figura || 'sem área')}</p>
+          <p class="ag-nota">A mesma área, moldada de outro jeito: o círculo abre em volta, a linha
+            vira uma faixa de um metro, e o leque troca abertura por alcance. Você escolhe onde ela
+            começa clicando num hexágono.</p>
         </div>` : ''}
         <div class="ag-custo">
           <div class="ag-cst-l">
@@ -255,6 +277,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       });
       corpo.querySelectorAll<HTMLElement>('[data-molde]').forEach((b) => b.onclick = () => {
         molde = b.dataset.molde as Molde; pintar();
+      });
+      corpo.querySelectorAll<HTMLElement>('[data-ang]').forEach((b) => b.onclick = () => {
+        angulo = Number(b.dataset.ang); pintar();
       });
       (corpo.querySelector('#ag-cancelar') as HTMLElement).onclick = () => sair(null);
       (corpo.querySelector('#ag-ok') as HTMLElement).onclick = () => sair(planoAtual());

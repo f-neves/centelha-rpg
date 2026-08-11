@@ -39,6 +39,9 @@ create table if not exists public.arena_efeitos (
   -- Como ocupa o espaco. `forma` e `molde` vem do bloco `grid` de efeitos.json.
   forma          text not null default 'zona',
   molde          text not null default 'circulo',
+  -- A abertura do leque, em graus. So vale quando o molde e leque; a area
+  -- comprada e o orcamento, e a abertura troca alcance por largura dentro dele.
+  angulo         integer not null default 90,
   hexes          jsonb not null default '[]'::jsonb,
   centro         jsonb,
   raio_m         numeric,
@@ -69,6 +72,7 @@ create index if not exists arena_efeitos_arena_idx on public.arena_efeitos (aren
 
 -- Para quem rodou esta migracao antes da coluna `nivel` existir.
 alter table public.arena_efeitos add column if not exists nivel integer not null default 1;
+alter table public.arena_efeitos add column if not exists angulo integer not null default 90;
 
 alter table public.arena_efeitos enable row level security;
 
@@ -89,7 +93,7 @@ drop view if exists public.efeito_visao;
 create view public.efeito_visao
 with (security_invoker = false) as
 select e.id, e.arena_id, e.arte_id, e.efeito_id, e.conjurador_id, e.nome, e.nivel,
-       e.forma, e.molde, e.hexes, e.centro, e.raio_m,
+       e.forma, e.molde, e.angulo, e.hexes, e.centro, e.raio_m,
        e.dano_dados, e.dano_bonus, e.condicao, e.elemento, e.materia, e.gatilho,
        e.alvos, e.item, e.desde_tick, e.ate_tick
 from public.arena_efeitos e

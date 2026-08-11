@@ -11,7 +11,7 @@ import ARTES_D from '../data/artes.json';
 import EFEITOS_D from '../data/efeitos.json';
 import COND_D from '../data/condicoes.json';
 import { regras } from './calc';
-import { centroHex, distanciaHex, dentro, vizinhos, arredondarHex, type Hex } from './hex';
+import { centroHex, distanciaHex, dentro, type Hex } from './hex';
 
 // ============================================================ os dados crus
 export interface Arte {
@@ -265,17 +265,6 @@ export function artesDe(fonte: { arte?: Record<string, number>; artes?: { id: st
 // ==================================================== o desenho no tabuleiro
 export type Molde = 'circulo' | 'linha' | 'leque';
 
-/**
- * Quantos hexágonos cabem numa área.
- *
- * A conversão preserva a ÁREA, e não o desenho: `arcano.improviso.graus.notaArea`
- * deixa moldar a mesma área em linha, círculo ou leque, e o que não muda entre os
- * três é quanto chão o efeito cobre. Cada hexágono vale `escala²` metros
- * quadrados, então o número de casas é a área dividida por isso.
- */
-export const hexesParaArea = (m2: number, escalaM: number): number =>
-  Math.max(1, Math.round(m2 / Math.max(0.01, escalaM * escalaM)));
-
 /** A arena inteira, para o Efeito de escala de região. */
 export function hexesDaArena(cols: number, rows: number): Hex[] {
   const out: Hex[] = [];
@@ -285,124 +274,197 @@ export function hexesDaArena(cols: number, rows: number): Hex[] {
   return out;
 }
 
-/** Anéis concêntricos a partir do centro, em ordem de distância. */
-function porAnel(centro: Hex, quantos: number, cols: number, rows: number): Hex[] {
-  const out: Hex[] = [];
-  const visto = new Set<string>();
-  let fronteira: Hex[] = [centro];
-  visto.add(`${centro.q},${centro.r}`);
-  while (out.length < quantos && fronteira.length) {
-    for (const h of fronteira) {
-      if (out.length >= quantos) break;
-      if (dentro(h, cols, rows)) out.push(h);
-    }
-    const proxima: Hex[] = [];
-    for (const h of fronteira) {
-      for (const v of vizinhos(h)) {
-        const k = `${v.q},${v.r}`;
-        if (visto.has(k)) continue;
-        visto.add(k);
-        proxima.push(v);
-      }
-    }
-    fronteira = proxima;
-  }
-  return out;
+// ------------------------------------------------------- geometria de verdade
+/**
+ * Onde o centro de um hexágono cai, EM METROS, num plano comum.
+ *
+ * A conta de `distanciaHex` conta PASSOS, e passo não é figura: um "raio de 3"
+ * contado em passos desenha um hexágono, não um círculo. Para a forma da área o
+ * que vale é a posição real no chão, e é ela que sai daqui.
+ *
+ * `centroHex(q, r, 1)` devolve o centro com raio 1, e nessa escala dois vizinhos
+ * de linha distam √3. Dividir por √3 converte para passos, e multiplicar pela
+ * escala da arena converte para metros.
+ */
+const RAIZ3 = Math.sqrt(3);
+export function centroEmMetros(h: Hex, escalaM: number): { x: number; y: number } {
+  const c = centroHex(h.q, h.r, 1);
+  return { x: (c.x / RAIZ3) * escalaM, y: (c.y / RAIZ3) * escalaM };
 }
 
-/** Todos os hexágonos até `raio` metros do centro (a aura, e o círculo cheio). */
-export function hexesNoRaio(centro: Hex, raioM: number, escalaM: number, cols: number, rows: number): Hex[] {
-  const passos = Math.max(0, Math.floor(raioM / Math.max(0.01, escalaM) + 1e-9));
+/** Distância em linha reta entre dois centros, em metros. */
+export const distanciaEmMetros = (a: Hex, b: Hex, escalaM: number): number => {
+  const p = centroEmMetros(a, escalaM), q = centroEmMetros(b, escalaM);
+  return Math.hypot(p.x - q.x, p.y - q.y);
+};
+
+/**
+ * As casas de uma janela quadrada em volta do centro, para varrer sem percorrer
+ * a arena inteira. `alcanceM` é o raio da busca, com uma folga de uma casa.
+ */
+function candidatos(centro: Hex, alcanceM: number, escalaM: number, cols: number, rows: number): Hex[] {
+  const passos = Math.ceil(alcanceM / Math.max(0.01, escalaM)) + 1;
   const out: Hex[] = [];
-  for (let dq = -passos; dq <= passos; dq++) {
+  for (let dq = -passos * 2; dq <= passos * 2; dq++) {
     for (let dr = -passos; dr <= passos; dr++) {
       const h = { q: centro.q + dq, r: centro.r + dr };
-      if (distanciaHex(centro, h) <= passos && dentro(h, cols, rows)) out.push(h);
+      if (dentro(h, cols, rows)) out.push(h);
     }
   }
   return out;
 }
 
-/** Uma reta de `centro` na direção de `mira`, com `quantos` casas. */
-export function hexesEmLinha(centro: Hex, mira: Hex, quantos: number, cols: number, rows: number): Hex[] {
-  const d = distanciaHex(centro, mira) || 1;
-  const out: Hex[] = [];
-  for (let i = 1; i <= quantos; i++) {
-    const t = i / d;
-    const h = arredondarHex(
-      centro.q + (mira.q - centro.q) * t,
-      centro.r + (mira.r - centro.r) * t,
-    );
-    if (!dentro(h, cols, rows)) break;
-    if (!out.some((o) => o.q === h.q && o.r === h.r)) out.push(h);
-  }
-  return out;
+/**
+ * Um CÍRCULO de verdade: toda casa cujo centro está a até `raioM` do centro.
+ *
+ * A borda fica serrilhada, e tem de ficar: o tabuleiro é feito de hexágonos, e
+ * o que se pode prometer é que a casa entra quando o meio dela está dentro do
+ * círculo. É a mesma régua que qualquer mesa usa com um barbante.
+ */
+export function hexesEmCirculo(
+  centro: Hex, raioM: number, escalaM: number, cols: number, rows: number,
+): Hex[] {
+  const r = Math.max(0, raioM);
+  return candidatos(centro, r, escalaM, cols, rows)
+    .filter((h) => distanciaEmMetros(centro, h, escalaM) <= r + 1e-9);
 }
 
 /**
- * Um leque de 120° saindo do conjurador na direção da mira.
+ * Uma LINHA de verdade: um retângulo de `larguraM` de largura e `comprimentoM`
+ * de comprimento, saindo do centro escolhido na direção da mira.
  *
- * O ângulo é medido em pixels do centro de cada hexágono, e não em coordenada
- * axial: em axial os seis vizinhos não estão a 60° uns dos outros na tela, e um
- * cone montado assim sairia torto justamente na diagonal.
+ * A conta é a distância de cada centro ao SEGMENTO, e não a uma sequência de
+ * casas: assim a faixa sai reta em qualquer direção, inclusive nas diagonais em
+ * que uma cadeia de vizinhos serpentearia.
+ */
+export function hexesEmLinha(
+  centro: Hex, mira: Hex, comprimentoM: number, escalaM: number,
+  cols: number, rows: number, larguraM = 1,
+): Hex[] {
+  const o = centroEmMetros(centro, escalaM);
+  const m = centroEmMetros(mira, escalaM);
+  const dx = m.x - o.x, dy = m.y - o.y;
+  const norma = Math.hypot(dx, dy) || 1;
+  const ux = dx / norma, uy = dy / norma;
+  const meia = Math.max(larguraM, escalaM) / 2;
+  return candidatos(centro, comprimentoM, escalaM, cols, rows).filter((h) => {
+    const p = centroEmMetros(h, escalaM);
+    // projeção sobre a direção (quanto andou) e afastamento perpendicular
+    const ao = (p.x - o.x) * ux + (p.y - o.y) * uy;
+    const lado = Math.abs((p.x - o.x) * -uy + (p.y - o.y) * ux);
+    return ao >= -escalaM / 2 && ao <= comprimentoM + 1e-9 && lado <= meia + 1e-9;
+  });
+}
+
+/**
+ * Um LEQUE de verdade: setor de círculo com ângulo e raio.
+ *
+ * O ângulo é medido no plano em metros, e não em coordenada axial: em axial os
+ * seis vizinhos não estão a 60° uns dos outros na tela, e um leque montado
+ * assim sairia torto justamente na diagonal.
  */
 export function hexesEmLeque(
-  centro: Hex, mira: Hex, quantos: number, cols: number, rows: number, abertura = 120,
+  centro: Hex, mira: Hex, raioM: number, anguloGraus: number, escalaM: number,
+  cols: number, rows: number,
 ): Hex[] {
-  const c = centroHex(centro.q, centro.r, 10);
-  const m = centroHex(mira.q, mira.r, 10);
-  const dir = Math.atan2(m.y - c.y, m.x - c.x);
-  const meia = (abertura / 2) * (Math.PI / 180);
-  const cand: { h: Hex; d: number }[] = [];
-  const alcance = quantos + 2;
-  for (let dq = -alcance; dq <= alcance; dq++) {
-    for (let dr = -alcance; dr <= alcance; dr++) {
-      const h = { q: centro.q + dq, r: centro.r + dr };
-      const dist = distanciaHex(centro, h);
-      if (!dist || dist > alcance || !dentro(h, cols, rows)) continue;
-      const pt = centroHex(h.q, h.r, 10);
-      const ang = Math.atan2(pt.y - c.y, pt.x - c.x);
-      let dif = Math.abs(ang - dir);
-      if (dif > Math.PI) dif = 2 * Math.PI - dif;
-      if (dif <= meia) cand.push({ h, d: dist });
-    }
+  const o = centroEmMetros(centro, escalaM);
+  const m = centroEmMetros(mira, escalaM);
+  const dir = Math.atan2(m.y - o.y, m.x - o.x);
+  const meia = (Math.max(1, Math.min(360, anguloGraus)) / 2) * (Math.PI / 180);
+  return candidatos(centro, raioM, escalaM, cols, rows).filter((h) => {
+    const p = centroEmMetros(h, escalaM);
+    const d = Math.hypot(p.x - o.x, p.y - o.y);
+    if (d > raioM + 1e-9) return false;
+    // A casa de origem entra sempre: o leque sai de dentro dela.
+    if (d < 1e-9) return true;
+    let dif = Math.abs(Math.atan2(p.y - o.y, p.x - o.x) - dir);
+    if (dif > Math.PI) dif = 2 * Math.PI - dif;
+    return dif <= meia + 1e-9;
+  });
+}
+
+// ------------------------------------------- da área comprada para a figura
+/** O raio do círculo que tem esta área. */
+export const raioDoCirculo = (areaM2: number) => Math.sqrt(Math.max(0, areaM2) / Math.PI);
+/** O comprimento da faixa que tem esta área, na largura dada. */
+export const comprimentoDaLinha = (areaM2: number, larguraM = 1) =>
+  Math.max(0, areaM2) / Math.max(0.1, larguraM);
+/** O raio do setor que tem esta área, na abertura dada. */
+export const raioDoLeque = (areaM2: number, anguloGraus: number) => {
+  const t = (Math.max(1, Math.min(360, anguloGraus)) * Math.PI) / 180;
+  return Math.sqrt((2 * Math.max(0, areaM2)) / t);
+};
+
+/** A largura padrão da faixa: um metro, como a mesa decidiu. */
+export const LARGURA_LINHA = 1;
+/** As aberturas oferecidas ao leque. */
+export const ANGULOS = [45, 60, 90, 120, 180];
+
+/**
+ * A figura que a área comprada vira, já em metros, para a tela poder dizê-la
+ * antes de o efeito cair ("círculo de 2,3 m de raio", "linha de 16 m").
+ */
+export function figuraDaArea(molde: Molde, areaM2: number, anguloGraus = 90): {
+  rotulo: string; raioM: number; comprimentoM: number;
+} {
+  const um = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replace('.', ','));
+  if (molde === 'linha') {
+    const c = comprimentoDaLinha(areaM2, LARGURA_LINHA);
+    return { rotulo: `linha de ${um(c)} m × ${LARGURA_LINHA} m`, raioM: 0, comprimentoM: c };
   }
-  return cand.sort((a, b) => a.d - b.d).slice(0, quantos).map((x) => x.h);
+  if (molde === 'leque') {
+    const r = raioDoLeque(areaM2, anguloGraus);
+    return { rotulo: `leque de ${anguloGraus}° com ${um(r)} m de raio`, raioM: r, comprimentoM: 0 };
+  }
+  const r = raioDoCirculo(areaM2);
+  return { rotulo: `círculo de ${um(r)} m de raio`, raioM: r, comprimentoM: 0 };
 }
 
 /**
- * Onde o efeito cai, dado o molde escolhido.
+ * Onde o efeito cai.
  *
- * `centro` é a âncora (o conjurador, ou o ponto clicado) e `mira` é para onde
- * ele aponta, que só importa em linha e leque.
+ * `centro` é onde a figura começa (o conjurador, ou o hexágono que a pessoa
+ * escolheu) e `mira` é para onde ela aponta, que só importa em linha e leque.
+ *
+ * A ÁREA comprada é o orçamento, e o molde decide o desenho: a mesma área vira
+ * um círculo largo, uma faixa comprida de um metro ou um leque de abertura
+ * escolhida. Um molde não pode render mais chão que o outro, e é por isso que o
+ * raio e o comprimento saem da área, e não de um número solto.
  */
 export function hexesDoEfeito(opts: {
   forma: Forma; molde: Molde; centro: Hex; mira?: Hex | null;
-  areaM2?: number; raioM?: number; comprimentoM?: number; arenaInteira?: boolean;
-  escalaM: number; cols: number; rows: number;
+  areaM2?: number; raioM?: number; comprimentoM?: number; anguloGraus?: number;
+  arenaInteira?: boolean; escalaM: number; cols: number; rows: number;
 }): Hex[] {
   const { forma, molde, centro, mira, escalaM, cols, rows } = opts;
+  const ang = opts.anguloGraus ?? 90;
+  const area = opts.areaM2 ?? escalaM * escalaM;
   // Escala de região: o Inverno cai sobre a região, e qualquer arena cabe nele.
   // Desenhar um quadrado medido no meio do mapa mentiria sobre o alcance.
   if (opts.arenaInteira) return hexesDaArena(cols, rows);
-  if (forma === 'aura') return hexesNoRaio(centro, opts.raioM ?? 1, escalaM, cols, rows);
+  // A aura já compra um RAIO, e não uma área: nada a converter.
+  if (forma === 'aura') return hexesEmCirculo(centro, opts.raioM ?? 1, escalaM, cols, rows);
+  // O muro compra um comprimento, e é uma faixa de um metro.
   if (forma === 'muro') {
-    const n = Math.max(1, Math.round((opts.comprimentoM ?? escalaM) / escalaM));
-    return mira ? hexesEmLinha(centro, mira, n, cols, rows) : porAnel(centro, n, cols, rows);
+    const c = opts.comprimentoM ?? escalaM;
+    return mira ? hexesEmLinha(centro, mira, c, escalaM, cols, rows, LARGURA_LINHA) : [centro];
   }
   if (forma === 'linha') {
-    const n = hexesParaArea(opts.areaM2 ?? escalaM * escalaM, escalaM);
-    return mira ? hexesEmLinha(centro, mira, n, cols, rows) : porAnel(centro, n, cols, rows);
+    return mira
+      ? hexesEmLinha(centro, mira, comprimentoDaLinha(area, LARGURA_LINHA), escalaM, cols, rows, LARGURA_LINHA)
+      : [centro];
   }
   if (forma === 'cone') {
-    const n = hexesParaArea(opts.areaM2 ?? escalaM * escalaM, escalaM);
-    return mira ? hexesEmLeque(centro, mira, n, cols, rows) : porAnel(centro, n, cols, rows);
+    return mira ? hexesEmLeque(centro, mira, raioDoLeque(area, ang), ang, escalaM, cols, rows) : [centro];
   }
   if (forma === 'zona') {
-    const n = hexesParaArea(opts.areaM2 ?? escalaM * escalaM, escalaM);
-    if (molde === 'linha' && mira) return hexesEmLinha(centro, mira, n, cols, rows);
-    if (molde === 'leque' && mira) return hexesEmLeque(centro, mira, n, cols, rows);
-    return porAnel(centro, n, cols, rows);
+    if (molde === 'linha' && mira) {
+      return hexesEmLinha(centro, mira, comprimentoDaLinha(area, LARGURA_LINHA), escalaM, cols, rows, LARGURA_LINHA);
+    }
+    if (molde === 'leque' && mira) {
+      return hexesEmLeque(centro, mira, raioDoLeque(area, ang), ang, escalaM, cols, rows);
+    }
+    return hexesEmCirculo(centro, raioDoCirculo(area), escalaM, cols, rows);
   }
   return [centro];
 }
@@ -487,6 +549,8 @@ export interface EfeitoAtivo {
   hexes: { q: number; r: number }[];
   centro: { q: number; r: number } | null;
   raio_m: number | null;
+  /** A abertura do leque, em graus. Só vale quando o molde é leque. */
+  angulo: number;
   dano_dados: number;
   dano_bonus: number;
   condicao: string | null;

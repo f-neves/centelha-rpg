@@ -8,7 +8,7 @@ import { esc, novoId, somarCondicoes, COND, tierDe } from './mesa-core';
 import { MON } from './mesa-bestiario';
 import { uiErro, uiConfirmar, uiEscolher } from './ui-dialog';
 import {
-  EFEITO, ARTE, CONDICAO, hexesDoEfeito, hexesNoRaio, danoNoAlvo, rolar,
+  EFEITO, ARTE, CONDICAO, hexesDoEfeito, figuraDaArea, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito,
   rotuloDuracao, TICKS_POR_TURNO, type EfeitoAtivo, type Forma,
 } from './artes-grid';
@@ -42,6 +42,17 @@ export interface CtxGrid {
    * errada, nenhum efeito venceria enquanto a mesa jogasse só pelo Grid.
    */
   tickAgora?: () => number;
+  /**
+   * A margem e o quadro do tabuleiro, EMPRESTADOS pela aba.
+   *
+   * Recalcular aqui com `margemTabuleiro(RAIO)` parece inofensivo e não é: a aba
+   * abre espaço na moldura para as letras e os números das casas, e some com ela
+   * quando os rótulos estão desligados. Copiar a conta deixou as manchas 15 px
+   * fora do lugar assim que a moldura entrou. Quem desenha a grade é quem sabe
+   * onde ela começa.
+   */
+  margem?: () => { x: number; y: number };
+  medida?: () => { largura: number; altura: number };
   logar: (c: any, txt: string, extra: Record<string, any>) => Promise<void>;
   recarregar: () => Promise<void>;
   repintar: () => void;
@@ -82,9 +93,12 @@ const corDe = (ef: EfeitoAtivo) => ARTE[ef.arte_id]?.grid?.cor || ELEM_COR[ef.el
  */
 function ajustarQuadro(ctx: CtxGrid, svg: SVGElement | null): void {
   if (!svg) return;
-  const med = medidaTabuleiro(ctx.arena.cols, ctx.arena.rows, ctx.raio);
+  const med = ctx.medida?.() ?? medidaTabuleiro(ctx.arena.cols, ctx.arena.rows, ctx.raio);
   svg.setAttribute('viewBox', `0 0 ${med.largura} ${med.altura}`);
 }
+
+/** Onde o hexágono (0,0) começa dentro do quadro. Vem da aba, ver `CtxGrid`. */
+const margemDe = (ctx: CtxGrid) => ctx.margem?.() ?? margemTabuleiro(ctx.raio);
 
 /**
  * Pinta as manchas dos efeitos na camada própria, embaixo dos tokens.
@@ -99,7 +113,7 @@ export function pintarEfeitos(ctx: CtxGrid, svg: SVGElement): void {
   ajustarQuadro(ctx, svg);
   ajustarQuadro(ctx, document.getElementById('gr-previa') as unknown as SVGElement | null);
   const t = tickAtual(ctx);
-  const mg = margemTabuleiro(ctx.raio);
+  const mg = margemDe(ctx);
   const vivos = ATIVOS.filter((e) => !venceu(e, t));
   svg.innerHTML = vivos.map((ef) => {
     const cor = corDe(ef);
@@ -173,7 +187,7 @@ function escolherNoMapa(
 ): Promise<Hex | null> {
   return new Promise((resolve) => {
     const svg = document.getElementById('gr-previa') as unknown as SVGElement | null;
-    const mg = margemTabuleiro(ctx.raio);
+    const mg = margemDe(ctx);
     const dica = document.createElement('div');
     dica.className = 'mira-aviso'; dica.textContent = aviso;
     palco.appendChild(dica);
@@ -280,7 +294,7 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
   const calc = (centro: Hex, mira: Hex | null) => hexesDoEfeito({
     forma, molde: plano.molde, centro, mira, escalaM: esc_, cols, rows,
     areaM2: plano.areaM2, raioM: plano.raioM, comprimentoM: plano.comprimentoM,
-    arenaInteira: g?.arenaInteira,
+    anguloGraus: plano.angulo, arenaInteira: g?.arenaInteira,
   });
 
   let centro: Hex = meu;
@@ -292,14 +306,16 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
     });
     return;
   }
+
   if (forma === 'aura') {
     // A aura nasce presa ao conjurador: não há onde clicar.
-  } else if (forma === 'cone' || forma === 'linha' || forma === 'muro') {
-    mira = await escolherNoMapa(ctx, palco, (h) => calc(meu, h), 'Aponte a direção · Esc cancela');
-    if (!mira) return;
   } else {
+    // 1. ONDE COMEÇA. Vale para todos os moldes, e a figura nasce no centro do
+    // hexágono escolhido: é o círculo em volta dele, a ponta da faixa, o bico do
+    // leque. Antes o cone e a linha saíam sempre do conjurador, o que impedia
+    // desenhar o jato a partir da quina do corredor.
     const ponto = await escolherNoMapa(ctx, palco, (h) => calc(h, null),
-      `Onde cai ${plano.nome} · Esc cancela`);
+      `Onde ${plano.nome} começa · Esc cancela`);
     if (!ponto) return;
     // O Alcance é do livro, e vale a pena cobrar: uma zona posta a 50 m com
     // Alcance 1 seria um efeito de graça.
@@ -311,8 +327,13 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
       if (!segue) return;
     }
     centro = ponto;
-    if (plano.molde !== 'circulo') {
-      mira = await escolherNoMapa(ctx, palco, (h) => calc(centro, h), 'Aponte a direção · Esc cancela');
+    // 2. PARA ONDE APONTA. Só a figura que tem direção pergunta: o círculo é
+    // igual para todo lado, e pedir uma direção a ele seria um clique morto.
+    const temDirecao = forma === 'cone' || forma === 'linha' || forma === 'muro'
+      || (forma === 'zona' && plano.molde !== 'circulo');
+    if (temDirecao) {
+      mira = await escolherNoMapa(ctx, palco, (h) => calc(centro, h),
+        `Para onde ${plano.molde === 'leque' ? 'o leque abre' : 'a faixa vai'} · Esc cancela`);
       if (!mira) return;
     }
   }
@@ -575,6 +596,7 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
       ?? Math.max(1, ...Object.values(plano.escolhas).map((n) => Number(n) || 0)),
     forma: extra.forma,
     molde: plano.molde,
+    angulo: plano.angulo,
     hexes: extra.hexes.map((h) => ({ q: h.q, r: h.r })),
     centro: extra.centro ? { q: extra.centro.q, r: extra.centro.r } : null,
     raio_m: extra.raio_m,
@@ -605,7 +627,7 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   if (g?.condicao) for (const id of extra.alvos) await porCondicao(ctx, combDe(ctx, id), g.condicao, turnos);
 
   await ctx.logar(c, `${c.nome} conjurou ${plano.resumo}`
-    + (extra.centro ? ` em ${nomeHex(extra.centro.q, extra.centro.r)}` : '')
+    + (extra.centro ? ` a partir de ${nomeHex(extra.centro.q, extra.centro.r)}` : '')
     + (extra.item ? ` · ${extra.item}` : ''), { acao: null });
   ctx.repintar();
 }
