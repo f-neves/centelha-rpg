@@ -187,7 +187,21 @@ import MesaCab from '../../components/MesaCab.astro';
      garante a cobertura total sem depender das margens, da largura máxima e do
      empilhamento das camadas da página, que são de outro assunto. As abas e o
      cabeçalho da mesa saem de cena: em tela cheia o que se quer é o mapa. */
-  body.tela-cheia #gr-tudo { position: fixed; inset: 0; z-index: 100; background: var(--bg);
+  /* É o ELEMENTO que vai a tela cheia, e não o documento: é assim que um player
+     de vídeo faz. Sendo o elemento, o navegador o projeta sozinho na tela do
+     monitor inteira, e o resto da página nem é desenhado. Depender de
+     `position: fixed` no documento é frágil: basta um ancestral com `transform`
+     ou `filter` para o "fixo" passar a ser relativo a ele, e aí a cobertura
+     total vira cobertura da caixa. */
+  #gr-tudo:fullscreen { background: var(--bg); padding: .35rem .45rem .45rem;
+    display: flex; flex-direction: column; gap: .35rem; overflow: hidden; }
+  #gr-tudo:fullscreen .gr-grade { flex: 1; min-height: 0; }
+  #gr-tudo:fullscreen .gr-palco { max-height: none; height: 100%; }
+  /* A rede de segurança: se o navegador recusar a tela cheia (uma moldura sem
+     permissão, por exemplo), a classe entra assim mesmo e o tabuleiro pelo
+     menos toma a janela. */
+  body.tela-cheia:not(:has(#gr-tudo:fullscreen)) #gr-tudo {
+    position: fixed; inset: 0; z-index: 100; background: var(--bg);
     padding: .35rem .45rem .45rem; display: flex; flex-direction: column; gap: .35rem; }
   body.tela-cheia .mesa-barra { display: none; }
   body.tela-cheia .gr-barra { margin-bottom: 0; }
@@ -1300,21 +1314,40 @@ import MesaCab from '../../components/MesaCab.astro';
    */
   function ligarTelaCheia() {
     const btn = el('gr-cheia');
-    const alvo = document.documentElement;
     const pinta = () => {
       const cheia = !!document.fullscreenElement;
       btn.textContent = cheia ? '⤡' : '⛶';
       btn.title = cheia ? 'Sair da tela cheia (Esc)' : 'Tela cheia (F)';
       document.body.classList.toggle('tela-cheia', cheia);
+      // O menu do token é irmão do tabuleiro, e em tela cheia de ELEMENTO só o
+      // elemento é desenhado: fora dele, o menu simplesmente não apareceria.
+      // Mudá-lo de casa é o preço de projetar só o tabuleiro.
+      const casa = document.fullscreenElement || document.body;
+      const menu = document.getElementById('tok-menu');
+      if (menu && menu.parentElement !== casa) casa.appendChild(menu);
+      const sair = document.getElementById('gr-sair-cheia');
+      if (sair && sair.parentElement !== casa) casa.appendChild(sair);
       // O palco mede a altura da janela, que acabou de mudar: reencaixar o
       // tabuleiro é o gesto que o mestre faria na mão logo em seguida.
-      if (ARENA) setTimeout(() => caber(), 120);
+      if (ARENA) setTimeout(() => caber(), 150);
     };
     const alterna = async () => {
+      if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch {} return; }
+      const alvo = el('gr-tudo');
       try {
-        if (document.fullscreenElement) await document.exitFullscreen();
-        else await alvo.requestFullscreen();
-      } catch { uiErro('O navegador não deixou entrar em tela cheia.'); }
+        await alvo.requestFullscreen({ navigationUI: 'hide' } as any);
+      } catch {
+        // Recusado (moldura sem permissão, política do navegador). Em vez de
+        // não fazer nada, cai para a versão que toma a janela e diz o que houve.
+        // `pinta()` não serve aqui: ele lê `document.fullscreenElement`, que é
+        // nulo, e desfaria a classe que acabou de entrar.
+        document.body.classList.add('tela-cheia');
+        btn.textContent = '⤡';
+        if (ARENA) setTimeout(() => caber(), 150);
+        uiErro('O navegador recusou a tela cheia do monitor, então o tabuleiro tomou só a janela. '
+          + 'Isso costuma acontecer quando a página está aberta dentro de outra (um painel de '
+          + 'pré-visualização, por exemplo): abrindo em uma aba normal do navegador, a tela cheia funciona.');
+      }
     };
     btn.onclick = alterna;
     (el('gr-sair-cheia') as HTMLElement).onclick = alterna;
