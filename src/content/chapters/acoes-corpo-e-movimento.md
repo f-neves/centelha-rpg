@@ -214,7 +214,19 @@ Erguer o peso máximo não se rola, mas três coisas em volta dele se rolam:
 
 **Segurar por mais que um instante.** O peso máximo é para uma vez, um instante, sem sair do lugar. Sustentar é outra coisa: **Acumulada**, Vigor + Atletismo, secundária Resistência, com o intervalo em Ticks e a Dificuldade saindo da fração de P que está nos braços. Metade de P é Difícil; o P inteiro é quase impossível passar de dois Ticks.
 
-**Andar com o peso.** Aí vale a tabela de carga, que é outra régua: Mínima até P/8, Leve até P/4, Média até P/2 e Máxima até P. A velocidade de cada faixa está na ficha, e no peso máximo não se desloca de jeito nenhum.
+**Andar com o peso.** Aí vale a tabela de carga, que é outra régua, com **cinco faixas**:
+
+| Faixa | Vai até | Velocidade | O que é |
+|---|:--:|:--:|---|
+| **Mínima** | P/8 | 91% | mal se sente |
+| **Leve** | P/4 | 77% | corre, e ainda é o que dá para arremessar |
+| **Média** | P/2 | 42% | só anda, e ainda é o que dá para pôr acima da cabeça |
+| **Pesada** | 3P/4 | 40% a 0 | arrasta, poucos passos, e cada passo custa |
+| **Máxima** | P | **0** | ergue e segura; não vai a lugar nenhum |
+
+A conta é `velocidade = (1 − x^1,5)² × (1 − (x ÷ 0,75)^8)`, com x sendo o peso dividido por P. O primeiro termo é a curva medida contra sprint com colete e marcha com mochila; o segundo é o corte, que só morde perto do fim. A ficha faz essa conta sozinha.
+
+Repare que a régua de carga e a de altura se encontram: a **Leve** termina exatamente onde o arremesso termina, e a **Média**, exatamente onde termina o que passa da cabeça. Não é coincidência arrumada, é a mesma força medida de três jeitos.
 
 **Erguer junto.** Duas pessoas somam o peso máximo, mas **perdem um quarto** na coordenação, salvo se treinarem juntas ou se o objeto tiver alças boas para os dois. Três ou mais pessoas em volta de um objeto começam a atrapalhar umas às outras, e a partir da quarta ninguém acrescenta nada sem alavanca ou corda.
 
@@ -228,7 +240,7 @@ Três ações desta família não têm jogada nenhuma: o número sai direto da f
 
 - **Correr.** A distância por Tick vem do Deslocamento, com Arranque nos três primeiros Ticks e Corrida depois.
 - **Saltar.** Três distâncias calculadas na ficha: vertical, horizontal parado e horizontal com corrida.
-- **Carregar peso.** Quatro faixas de carga, cada uma com a sua velocidade: Mínima, Leve, Média e Máxima.
+- **Carregar peso.** Cinco faixas de carga, cada uma com a sua velocidade: Mínima, Leve, Média, Pesada e Máxima.
 
 **Arremessar** é o caso híbrido, e vale entender a divisão: **até onde o objeto chega** sai de tabela, sem jogada, e o gráfico na ficha mostra a curva, em escala normal ou logarítmica. **Se acerta o que mirou** é ataque, e vive no capítulo de Combate. O detalhe que surpreende todo mundo é que a curva tem ápice em **100 gramas**: abaixo disso a velocidade do braço satura, porque a inércia do próprio braço já domina, e o que sobra é o ar cobrando. E o teto é **um quarto do peso máximo**: acima dele o objeto se ergue, mas não voa.
 

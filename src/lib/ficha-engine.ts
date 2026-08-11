@@ -1436,19 +1436,25 @@ export function montarFicha(opts: FichaOpts) {
     // vira uma reta e quem não repara nos números do eixo lê como proporção direta.
     const W = 580, ml = 42, mr = 16, mt = 14, mb = 34;
     const xB = ml, xR = W - mr, pw = xR - xB;
-    // Velocidade de corrida com carga, ajustada contra medições de sprint com colete e de
-    // marcha com mochila. A perda não é proporcional: o primeiro décimo do peso máximo quase
-    // não custa nada e o estrago acelera depois. Em P/8 ainda se corre a 91%, em P/4 a 77%,
-    // em P/2 já é só andar rápido (42%) e no peso máximo não se desloca. Daí saem as quatro
-    // faixas de carga, cada uma o dobro da anterior.
-    const vel = (w: number) =>
-      Math.max(0, 1 - Math.pow(Math.min(1, w / maxKg), F.cargaExpoente)) ** 2;
-    const cMin = maxKg / 8, cLeve = maxKg / 4, cMedia = maxKg / 2;
+    // Velocidade de deslocamento com carga, em fração da normal. O primeiro fator é a curva
+    // medida contra sprint com colete e marcha com mochila: em P/8 ainda se corre a 91%, em
+    // P/4 a 77%, em P/2 já é só andar rápido (42%). O segundo é o corte, que só morde perto
+    // de 3P/4 (expoente alto) e leva a velocidade a zero exatamente lá. Assim as três âncoras
+    // medidas continuam de pé e a faixa Pesada fica com o que sobra: pequeno, mas não nulo.
+    const corte = F.cargaCorte as number;
+    const vel = (w: number) => {
+      const x = w / maxKg;
+      if (x >= corte) return 0;
+      const medida = Math.max(0, 1 - Math.pow(Math.min(1, x), F.cargaExpoente)) ** 2;
+      return medida * (1 - Math.pow(x / corte, F.cargaCorteExp as number));
+    };
+    const cMin = maxKg / 8, cLeve = maxKg / 4, cMedia = maxKg / 2, cPesada = maxKg * corte;
     const bandas = [
-      { de: 0, ate: cMin, nome: 'Mínima', op: '.04' },
-      { de: cMin, ate: cLeve, nome: 'Leve', op: '.08' },
-      { de: cLeve, ate: cMedia, nome: 'Média', op: '.13' },
-      { de: cMedia, ate: maxKg, nome: 'Máxima', op: '.19' },
+      { de: 0, ate: cMin, nome: 'Mínima', op: '.03' },
+      { de: cMin, ate: cLeve, nome: 'Leve', op: '.06' },
+      { de: cLeve, ate: cMedia, nome: 'Média', op: '.10' },
+      { de: cMedia, ate: cPesada, nome: 'Pesada', op: '.15' },
+      { de: cPesada, ate: maxKg, nome: 'Máxima', op: '.21' },
     ];
     // Duas escalas, e o jogador escolhe. A NORMAL mostra o que a mesa sente: quase todo o
     // alcance está nos primeiros quilos e a diferença entre 5 e 25 kg é quase nada. A LOG
@@ -1531,7 +1537,9 @@ export function montarFicha(opts: FichaOpts) {
     const kg = (n: number) => `${Math.round(n)} kg`;
     const head = `<div class="fa-head"><b>Carga</b> · FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt} <span class="muted">(Atletismo não entra: erguer o máximo é força parada)</span>`
       + `<div class="fa-tiers"><span>Mínima <b>${kg(cMin)}</b> <i>corre a ${Math.round(vel(cMin) * 100)}%</i></span><span>Leve <b>${kg(cLeve)}</b> <i>corre a ${Math.round(vel(cLeve) * 100)}%</i></span>`
-      + `<span>Média <b>${kg(cMedia)}</b> <i>só anda, ${Math.round(vel(cMedia) * 100)}%</i></span><span>Máxima <b>${kg(maxKg)}</b> <i>ergue, não desloca</i></span></div>`
+      + `<span>Média <b>${kg(cMedia)}</b> <i>só anda, ${Math.round(vel(cMedia) * 100)}%</i></span>`
+      + `<span>Pesada <b>${kg(cPesada)}</b> <i>arrasta, ${Math.round(vel(cMedia) * 100)}% a 0</i></span>`
+      + `<span>Máxima <b>${kg(maxKg)}</b> <i>ergue, não desloca</i></span></div>`
       // As três alturas do levantamento, que é o que o jogador consulta antes de perguntar
       // se dá para jogar: do chão, acima da cabeça (metade) e arremessar (um quarto).
       + `<b>Levanta</b> · <span class="fa-alt">do chão <b>${kg(maxKg)}</b></span>`
