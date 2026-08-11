@@ -163,25 +163,6 @@ import MesaCab from '../../components/MesaCab.astro';
       <label>Retrato (URL ou caminho no bucket) <input type="text" id="edit-img" placeholder="https://… " /></label>
       <label>Notas do mestre <textarea id="edit-notas" rows="2"></textarea></label>
       <label class="chk"><input type="checkbox" id="edit-oculto" /> oculto dos jogadores</label>
-      {/* A exceção à regra da mesa: o chefe que o grupo já estudou, o aliado
-          contratado cujos números eles conhecem. */}
-      <div class="grade2">
-        <label>Vida deste, para os jogadores
-          <select id="edit-rev-vida">
-            <option value="">padrão da mesa</option>
-            <option value="numero">barra e número</option>
-            <option value="estado">só a palavra</option>
-            <option value="nada">só a cor do retrato</option>
-          </select>
-        </label>
-        <label>Números deste (atq/dano/def)
-          <select id="edit-rev-stats">
-            <option value="">padrão da mesa</option>
-            <option value="1">mostrar</option>
-            <option value="0">esconder</option>
-          </select>
-        </label>
-      </div>
       <div class="dlg-btns">
         <button type="button" class="btn" id="edit-cancelar">Cancelar</button>
         <button type="button" class="btn primary" id="edit-salvar">Salvar</button>
@@ -255,26 +236,22 @@ import MesaCab from '../../components/MesaCab.astro';
     </form>
   </dialog>
 
-  <dialog id="rev-dlg" class="mesa-dlg">
+  {/* A exceção de um combatente só. O painel geral mora no MesaCab, porque é
+      da mesa inteira; este é da linha que está na frente do mestre. */}
+  <dialog id="rev1-dlg" class="mesa-dlg rev-dlg">
     <form method="dialog">
-      <h3>O que os jogadores veem</h3>
-      <p class="muted dlg-txt">Vale para inimigos e neutros desta mesa, em todos os encontros. A barra de Vida
-        do inimigo só aparece no primeiro modo: sem número dentro, ela vira uma régua para medir
-        justamente o que você acabou de esconder. Energia e Mana ninguém vê além das próprias.</p>
-      <label>Vida do inimigo
-        <select id="rv-vida">
-          <option value="numero">barra e número (41/60)</option>
-          <option value="estado">só a palavra: Ferido, Grave, Caído</option>
-          <option value="nada">nada além da cor do retrato</option>
-        </select>
+      <h3 id="rev1-t">O que veem deste</h3>
+      <p class="rev-nota" id="rev1-sub"></p>
+      <label class="rev-chk rev-oculto" title="Some da lista do jogador por inteiro: nome, retrato, tick. É o banco que filtra, então nem abrindo o painel de rede ele descobre. Para emboscada, reforço a caminho, invisível.">
+        <input type="checkbox" id="rev1-oculto" />
+        <span><strong>Fora da tela deles</strong><small>não aparece de jeito nenhum, nem na lista de ordem</small></span>
       </label>
-      <label class="chk"><input type="checkbox" id="rv-stats" /> mostrar ataque, dano, defesa e absorção</label>
-      <label class="chk"><input type="checkbox" id="rv-cond" /> mostrar as condições (cego, sangrando, caído…)</label>
-      <p class="muted dlg-txt">O retrato escurece sozinho a partir da metade da Vida, de âmbar a vermelho,
-        em qualquer um dos três modos. Um inimigo específico pode fugir da regra pelo <strong>✎</strong> dele.</p>
+      <div id="rev1-vida"></div>
+      <div id="rev1-stats"></div>
       <div class="dlg-btns">
-        <button type="button" class="btn" id="rv-cancelar">Cancelar</button>
-        <button type="button" class="btn primary" id="rv-salvar">Salvar</button>
+        <button type="button" class="btn mini esq" id="rev1-mesa" title="Descarta a exceção: este combatente volta a seguir o painel da mesa">Seguir a mesa</button>
+        <button type="button" class="btn" id="rev1-cancelar">Cancelar</button>
+        <button type="button" class="btn primary" id="rev1-salvar">Salvar</button>
       </div>
     </form>
   </dialog>
@@ -500,6 +477,7 @@ import MesaCab from '../../components/MesaCab.astro';
     revelarDaMesa, REVELAR_PADRAO, semMigracao14,
   } from '../../lib/mesa-core';
   import type { Condicao, NivelVida, Revelar } from '../../lib/mesa-core';
+  import { abrirRevelacao, resumoRevelacao } from '../../lib/mesa-revelacao';
   import { MON, MON_LIST, cardCriaturaHTML, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe } from '../../lib/calc';
@@ -511,7 +489,7 @@ import MesaCab from '../../components/MesaCab.astro';
   const GRUPO_LBL: Record<string, string> = { aliado: 'Aliado', inimigo: 'Inimigo', neutro: 'Neutro' };
 
   // ---- estado da página ----
-  let SB: any, MESA_ID = '', EH_MESTRE = false, MESA: any = null;
+  let SB: any, MESA_ID = '', EH_MESTRE = false, MESA: any = null, CTX: any = null;
   let REV: Revelar = { ...REVELAR_PADRAO };
   // O jogador lê pela view `combate_visao`, que já desce mascarada. Quando o
   // banco ainda não tem a migração 14 isto cai para false e a máscara passa a
@@ -553,7 +531,7 @@ import MesaCab from '../../components/MesaCab.astro';
   async function main() {
     const ctx = await abrirMesa('combate');
     if (!ctx) return;
-    SB = ctx.sb; MESA_ID = ctx.id; EH_MESTRE = ctx.ehMestre; MESA = ctx.mesa;
+    SB = ctx.sb; MESA_ID = ctx.id; EH_MESTRE = ctx.ehMestre; MESA = ctx.mesa; CTX = ctx;
     REV = revelarDaMesa(MESA);
     await carregar();
     // O jogador não recebe eventos do banco; um pulso de oito segundos mantém a
@@ -1012,7 +990,7 @@ import MesaCab from '../../components/MesaCab.astro';
   function ligarBarra() {
     const btns = el('enc-btns');
     btns.innerHTML = EH_MESTRE ? `
-      <button class="btn mini" id="btn-revelar" title="O que os jogadores enxergam dos inimigos">👁 ${esc(resumoRevelar())}</button>
+      <button class="btn mini" id="btn-revelar" title="Abrir o painel: o que os jogadores veem dos inimigos, das fichas uns dos outros, e o placar do que já está liberado nas outras abas">👁 ${esc(resumoRevelacao(REV))}</button>
       <button class="btn mini" id="btn-encontros">Encontros</button>
       <button class="btn mini" id="btn-reiniciar">Reiniciar</button>
       <button class="btn mini perigo" id="btn-encerrar">Encerrar</button>` : '';
@@ -1021,7 +999,11 @@ import MesaCab from '../../components/MesaCab.astro';
     el('log-add').hidden = !EH_MESTRE;
     if (!EH_MESTRE) return;
 
-    el('btn-revelar').onclick = () => abrirRevelar();
+    el('btn-revelar').onclick = () => abrirRevelacao(CTX!, async (novo) => {
+      REV = novo;
+      await logar(`Revelação: vida ${novo.vidaInimigo}, números ${novo.statsInimigo ? 'à vista' : 'ocultos'}.`, 'sistema', null);
+      await carregar();
+    });
     el('btn-encontros').onclick = () => abrirEncontros();
     el('btn-reiniciar').onclick = () => abrirReiniciar();
     el('btn-encerrar').onclick = async () => {
@@ -1246,9 +1228,6 @@ import MesaCab from '../../components/MesaCab.astro';
     g('edit-img').value = row.imagem || '';
     (el('edit-notas') as HTMLTextAreaElement).value = row.notas || '';
     g('edit-oculto').checked = !!row.oculto;
-    (el('edit-rev-vida') as HTMLSelectElement).value = row.revelar?.vida || '';
-    (el('edit-rev-stats') as HTMLSelectElement).value =
-      row.revelar?.stats == null ? '' : (row.revelar.stats ? '1' : '0');
 
     el('edit-cancelar').onclick = () => dlg.close();
     el('edit-salvar').onclick = async () => {
@@ -1267,16 +1246,6 @@ import MesaCab from '../../components/MesaCab.astro';
         imagem: g('edit-img').value.trim() || null,
         notas: (el('edit-notas') as HTMLTextAreaElement).value,
         oculto: g('edit-oculto').checked,
-        // Chave ausente = segue a mesa. Guardar `null` não serviria: o coalesce
-        // da view trata ausência, e um null explícito viraria "esconder".
-        revelar: (() => {
-          const v = (el('edit-rev-vida') as HTMLSelectElement).value;
-          const s = (el('edit-rev-stats') as HTMLSelectElement).value;
-          const o: any = {};
-          if (v) o.vida = v;
-          if (s) o.stats = s === '1';
-          return o;
-        })(),
         dados: {
           ataque: g('edit-atq').value.trim(), dano: g('edit-dano').value.trim(),
           defesa: numN(g('edit-def').value), defesaSocial: numN(g('edit-defs').value),
@@ -1489,36 +1458,57 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   // =============================================================== revelar
-  /** O botão diz o estado sem precisar abrir: "vida oculta", "tudo à vista". */
-  function resumoRevelar() {
-    if (REV.vidaInimigo === 'numero' && REV.statsInimigo) return 'tudo à vista';
-    if (REV.vidaInimigo === 'nada' && !REV.statsInimigo) return 'nada à vista';
-    return REV.vidaInimigo === 'numero' ? 'vida à vista' : 'vida oculta';
-  }
+  /**
+   * A exceção de um combatente. Três escolhas com o mesmo desenho do painel
+   * geral, mais uma opção que ele não tem: "como a mesa manda", que é o
+   * estado normal e precisa ser fácil de voltar.
+   */
+  function abrirRevelarUm(cid: string) {
+    const c = COMBS.find((x) => x.id === cid); if (!c) return;
+    const dlg = el('rev1-dlg') as HTMLDialogElement;
+    const rev = c.revelar || {};
+    const padraoVida = REV.vidaInimigo === 'numero' ? 'barra e número'
+      : REV.vidaInimigo === 'estado' ? 'só a palavra' : 'só a cor do retrato';
 
-  function abrirRevelar() {
-    const dlg = el('rev-dlg') as HTMLDialogElement;
-    (el('rv-vida') as HTMLSelectElement).value = REV.vidaInimigo;
-    (el('rv-stats') as HTMLInputElement).checked = REV.statsInimigo;
-    (el('rv-cond') as HTMLInputElement).checked = REV.condInimigo;
-    el('rv-cancelar').onclick = () => dlg.close();
-    el('rv-salvar').onclick = async () => {
-      const novo = {
-        vidaInimigo: (el('rv-vida') as HTMLSelectElement).value,
-        statsInimigo: (el('rv-stats') as HTMLInputElement).checked,
-        condInimigo: (el('rv-cond') as HTMLInputElement).checked,
-      };
+    (el('rev1-t') as HTMLElement).textContent = `O que veem de ${c.nome}`;
+    (el('rev1-sub') as HTMLElement).textContent = c.tipo === 'pc'
+      ? 'Este é um personagem do grupo: a ficha dele já está na mesa, e o card aparece inteiro para todos.'
+      : 'Vale só para ele. Em branco, segue o painel da mesa.';
+    (el('rev1-oculto') as HTMLInputElement).checked = !!c.oculto;
+
+    const grupo = (nome: string, rot: string, ops: [string, string, string][], atual: string) =>
+      `<div class="rev-h rev-h2">${rot}</div><div class="rev-ops">${ops.map(([v, t, d]) => `
+        <label class="rev-op" title="${esc(d)}">
+          <input type="radio" name="${nome}" value="${v}"${v === atual ? ' checked' : ''} />
+          <span class="rev-op-corpo"><span class="rev-op-t">${t}</span><span class="rev-op-d">${esc(d)}</span></span>
+        </label>`).join('')}</div>`;
+
+    el('rev1-vida').innerHTML = c.tipo === 'pc' ? '' : grupo('r1-vida', 'Vida', [
+      ['', 'Como a mesa manda', `Hoje: ${padraoVida}.`],
+      ['numero', 'Barra e número', 'Só este mostra a conta, mesmo com a mesa fechada.'],
+      ['estado', 'Só a palavra', 'Ferido, Grave, Caído.'],
+      ['nada', 'Só a cor do retrato', 'Nada escrito.'],
+    ], rev.vida || '');
+    el('rev1-stats').innerHTML = c.tipo === 'pc' ? '' : grupo('r1-stats', 'Números de ataque e defesa', [
+      ['', 'Como a mesa manda', `Hoje: ${REV.statsInimigo ? 'à vista' : 'escondidos'}.`],
+      ['1', 'Mostrar', 'O grupo já estudou este: sabe o que ele acerta e o que ele aguenta.'],
+      ['0', 'Esconder', 'Nem que a mesa esteja aberta.'],
+    ], rev.stats == null ? '' : (rev.stats ? '1' : '0'));
+
+    const marcado = (n: string) => (dlg.querySelector(`input[name="${n}"]:checked`) as HTMLInputElement)?.value ?? '';
+    const gravar = async (novo: any, oculto: boolean) => {
       dlg.close();
-      const { error } = await SB.from('mesas').update({ revelar: novo }).eq('id', MESA_ID);
-      if (error) {
-        return uiErro(semMigracao14(error)
-          ? 'O quadro de revelação chega com a migração 14. Rode supabase/migracao-14.sql no SQL Editor do Supabase.'
-          : 'Erro: ' + error.message);
-      }
-      MESA.revelar = novo;
-      REV = revelarDaMesa(MESA);
-      await logar(`Revelação: vida ${novo.vidaInimigo}, números ${novo.statsInimigo ? 'à vista' : 'ocultos'}.`, 'sistema', null);
+      const { error } = await upComb(cid, { revelar: novo, oculto });
+      if (error) return uiErro('Erro: ' + error.message);
       await carregar();
+    };
+    el('rev1-cancelar').onclick = () => dlg.close();
+    el('rev1-mesa').onclick = () => gravar({}, (el('rev1-oculto') as HTMLInputElement).checked);
+    el('rev1-salvar').onclick = () => {
+      const o: any = {};
+      const v = marcado('r1-vida'); if (v) o.vida = v;
+      const s = marcado('r1-stats'); if (s) o.stats = s === '1';
+      return gravar(o, (el('rev1-oculto') as HTMLInputElement).checked);
     };
     dlg.showModal();
   }

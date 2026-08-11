@@ -1501,11 +1501,14 @@ export function montarFicha(opts: FichaOpts) {
       : String(Math.round(w * 1000) / 1000)).replace('.', ',');
     const kg = (n: number) => `${Math.round(n)} kg`;
 
-    /* Os doze pesos da tabela: 0,1 · 0,5 · 1 e mais nove entre 1 kg e o teto, espaçados
-       em progressão geométrica e encaixados num número que se diz sem gaguejar, meio quilo
-       abaixo de 10 e cinco quilos acima. O último é sempre o teto exato, porque é o número
-       que decide se o objeto sai da mão ou não. */
+    /* Os pesos da tabela, em três trechos. Na frente o ápice, 0,5 e 1 kg, que são as
+       âncoras leves: a curva sobe até o ápice e despenca depois, e sem elas a tabela
+       começaria já na descida. No meio oito pesos entre 1 kg e o teto, em progressão
+       geométrica, encaixados num número que se diz sem gaguejar (meio quilo abaixo de 10,
+       cinco quilos acima). No fim o teto exato, que é o número que decide se o objeto sai
+       da mão, e antes dele três degraus dentro da PAREDE. */
     const tw = (() => {
+      const limpo = (v: number) => Math.round(v * 1000) / 1000;   // lixo de ponto flutuante
       const red = (v: number) => v < 10 ? Math.round(v * 2) / 2 : Math.round(v / 5) * 5;
       const out: number[] = [];
       for (let i = 1; i <= 8; i++) {
@@ -1515,10 +1518,23 @@ export function montarFicha(opts: FichaOpts) {
         if (v < tetoKg) out.push(v);
       }
       out.sort((a, b) => a - b);
+      /* Nos últimos 20% até o teto o alcance desaba até zero, e a escada geométrica passava
+         por cima disso num salto só: de 75 kg direto para os 125 em que nada mais sai da
+         mão. Três degraus lineares no vão mostram a queda acontecendo. O passo aqui é
+         miúdo, então a casa do arredondamento acompanha o tamanho do vão. */
+      const ult = out.length ? out[out.length - 1] : 1;
+      const vao = tetoKg - ult;
+      const res = vao >= 20 ? 5 : vao >= 4 ? 1 : vao >= 2 ? 0.5 : 0.1;
+      const parede: number[] = [];
+      for (let k = 1; k <= 3; k++) {
+        let v = limpo(Math.round((ult + (vao * k) / 4) / res) * res);
+        while ((v <= ult || parede.includes(v)) && v < tetoKg) v = limpo(v + res);
+        if (v > ult && v < tetoKg && !parede.includes(v)) parede.push(v);
+      }
       // o ápice vem do parâmetro, não de um 0,1 escrito à mão: é ele que ganha a linha em
       // destaque, e um ápice que mudasse de valor deixaria a tabela sem destaque nenhum
       const leves = [apice, 0.5, 1].filter((v, i, a) => a.indexOf(v) === i).sort((a, b) => a - b);
-      return [...leves, ...out, Math.round(tetoKg * 10) / 10];
+      return [...leves, ...out, ...parede, Math.round(tetoKg * 10) / 10];
     })();
     const rows = tw.map((w) => {
       const d = dist(w);
@@ -1537,12 +1553,12 @@ export function montarFicha(opts: FichaOpts) {
       + `<tbody>${rows}</tbody></table>`;
 
     /* A segunda tabela anda numa régua própria. A de arremesso é geométrica, porque lá o
-       que interessa acontece nos primeiros gramas; aqui é o contrário: até um décimo de P
-       nada acontece, e o que decide a cena está entre metade e três quartos, onde o passo
-       fecha para cinco centésimos. Termina em 0,75 P, que é onde o deslocamento acaba. */
+       que interessa acontece nos primeiros gramas; aqui é o contrário, e a régua é linear:
+       todos os múltiplos de 5% de P, de 5% a 75%. Termina em 0,75 P, que é onde o
+       deslocamento acaba. */
     const kg1 = (n: number) => (n >= 100 ? String(Math.round(n))
       : String(Math.round(n * 10) / 10)).replace('.', ',');
-    const fracs = [.10, .20, .30, .35, .40, .45, .50, .55, .60, .65, .70, .75];
+    const fracs = Array.from({ length: 15 }, (_, i) => (i + 1) / 20);
     const rowsV = fracs.map((fr) => {
       const w = maxKg * fr, v = vel(w);
       // a última é o corte: dali para cima ergue-se e segura-se, e não se anda

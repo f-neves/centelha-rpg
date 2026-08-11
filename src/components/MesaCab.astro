@@ -56,6 +56,51 @@ const { aba } = Astro.props;
 
 <div id="mesa-corpo" hidden><slot /></div>
 
+<!-- O painel de revelação mora no cabeçalho porque a pergunta "o que eles estão
+     vendo?" não é de uma aba só: o Escudo e o Combate abrem o mesmo diálogo, e
+     amanhã as Criaturas e os Mapas abrem também. A lógica está em
+     src/lib/mesa-revelacao.ts. -->
+<dialog id="rev-dlg" class="mesa-dlg dlg-larga rev-dlg">
+  <form method="dialog">
+    <h3>O que os jogadores veem</h3>
+
+    <section class="rev-sec">
+      <h4 class="rev-h">Dos inimigos <small>criaturas e NPCs no rastreador</small></h4>
+      <p class="rev-nota">A Vida deles, quando o combate está aberto na tela do jogador.</p>
+      <div id="rev-inimigos"></div>
+      <label class="rev-chk" title="Ataque, dano, defesa e absorção do inimigo. Vale lembrar que criaturas do bestiário são páginas públicas do site: esconder aqui é etiqueta de mesa, não segredo de estado.">
+        <input type="checkbox" id="rv-stats" />
+        <span><strong>Números de ataque e defesa</strong><small>Atq, Dano, Def e Absorção no card do inimigo</small></span>
+      </label>
+      <label class="rev-chk" title="Cego, Sangrando, Caído, Amedrontado. Costuma valer a pena deixar à vista: em geral foi o próprio grupo que causou, e esconder faz o jogador jogar no escuro sobre a própria jogada.">
+        <input type="checkbox" id="rv-cond" />
+        <span><strong>Condições</strong><small>Cego, Sangrando, Caído… normalmente foi o grupo que causou</small></span>
+      </label>
+    </section>
+
+    <section class="rev-sec">
+      <h4 class="rev-h">De um personagem para o outro <small>na aba Grupo</small></h4>
+      <p class="rev-nota">A ficha de cada jogador é dele; isto decide quanto dela os companheiros alcançam.</p>
+      <div id="rev-fichas"></div>
+      <label class="rev-chk" title="Vida aparece sempre entre aliados no combate: é o que permite socorrer alguém a tempo. Energia e Mana são plano de ação, e por padrão ficam com o dono.">
+        <input type="checkbox" id="rv-energia" />
+        <span><strong>Energia e Mana dos companheiros</strong><small>a Vida dos aliados aparece sempre no combate; estas duas, só se você marcar</small></span>
+      </label>
+    </section>
+
+    <section class="rev-sec">
+      <h4 class="rev-h">O que já está liberado <small>clique para ir até lá</small></h4>
+      <p class="rev-nota">Cada item destes tem um interruptor próprio na aba dele. Aqui é só o placar.</p>
+      <div id="rev-liberado" class="rev-contas"></div>
+    </section>
+
+    <div class="dlg-btns">
+      <button type="button" class="btn" id="rv-cancelar">Cancelar</button>
+      <button type="button" class="btn primary" id="rv-salvar">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
 <!-- Modal do card completo de criatura: nasce vazio aqui e é preenchido pelas
      abas que o usam (Criaturas, Combate). -->
 <div id="card-modal" class="card-modal" hidden role="dialog" aria-modal="true">
@@ -297,6 +342,54 @@ const { aba } = Astro.props;
   .dlg-btns { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .2rem; }
   .dlg-btns .esq { margin-right: auto; }
   .dlg-larga { max-width: 44rem; }
+
+  /* ================================================================
+     Painel de revelação
+     ================================================================ */
+  .rev-dlg form { gap: .2rem; }
+  .rev-sec { border-top: 1px solid var(--rule); padding-top: .6rem; margin-top: .5rem; }
+  .rev-sec:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .rev-h { margin: 0 0 .1rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo);
+    color: var(--accent-texto); text-transform: uppercase; letter-spacing: .04em; }
+  .rev-h small { font-family: 'EB Garamond'; text-transform: none; letter-spacing: 0;
+    font-size: var(--fs-micro); color: var(--ink-soft); }
+  .rev-nota { margin: 0 0 .45rem; font-size: var(--fs-micro); color: var(--ink-soft); }
+  /* Uma escolha por linha, com amostra do resultado à direita: a diferença
+     entre "só o estado" e "só a cor" é visual, e descrever coisa visual em
+     palavras gasta mais parágrafo do que desenhar. */
+  .rev-ops { display: flex; flex-direction: column; gap: .25rem; }
+  .rev-op { display: flex; align-items: center; gap: .55rem; cursor: pointer;
+    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .35rem .6rem;
+    text-transform: none; letter-spacing: normal; font-family: 'EB Garamond'; }
+  .rev-op:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .rev-op:has(input:checked) { border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 13%, transparent); }
+  .rev-op input { flex: 0 0 auto; accent-color: var(--accent); }
+  .rev-op-corpo { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .rev-op-t { font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--ink); }
+  .rev-op-d { font-size: var(--fs-micro); color: var(--ink-soft); }
+  .rev-op-am { flex: 0 0 auto; display: inline-flex; align-items: center; min-width: 7rem;
+    justify-content: flex-end; }
+  .rev-op-am .hpbar { flex: 0 0 7rem; }
+  .rev-chk { display: flex; align-items: flex-start; gap: .5rem; cursor: pointer; margin-top: .35rem;
+    text-transform: none; letter-spacing: normal; font-family: 'EB Garamond'; }
+  .rev-chk input { margin-top: .2rem; accent-color: var(--accent); }
+  .rev-chk strong { display: block; font-family: 'Cinzel'; font-weight: 400; font-size: var(--fs-rotulo); color: var(--ink); }
+  .rev-chk small { font-size: var(--fs-micro); color: var(--ink-soft); }
+  /* Placar do que está aberto nas outras abas: número grande, rótulo pequeno,
+     cor dizendo tudo/parte/nada sem precisar ler. */
+  .rev-contas { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .rev-conta { display: flex; flex-direction: column; align-items: center; gap: .05rem;
+    min-width: 4.6rem; padding: .3rem .5rem; border-radius: var(--r-md); text-decoration: none;
+    border: 1px solid var(--rule); color: var(--ink); }
+  .rev-conta:hover { border-color: var(--accent); }
+  .rev-conta .rc-n { font-family: 'Cinzel'; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .rev-conta .rc-de { font-weight: 400; opacity: .6; font-size: .85em; }
+  .rev-conta .rc-r { font-size: var(--fs-micro); color: var(--ink-soft); }
+  .rev-conta.tudo  { background: color-mix(in srgb, var(--ok) 16%, transparent); }
+  .rev-conta.parte { background: color-mix(in srgb, var(--gold) 18%, transparent); }
+  .rev-conta.nada  { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+  .rev-conta.z     { opacity: .5; }
 
   /* ================================================================
      Modal do card de criatura (mesmo visual do bestiário)

@@ -323,8 +323,15 @@ import { ABAS as ABAS_L, ABA_JOGADOR } from './mesa-abas';
  * sobre o que ele mesmo causou.
  */
 export type NivelVida = 'numero' | 'estado' | 'nada';
-export interface Revelar { vidaInimigo: NivelVida; statsInimigo: boolean; condInimigo: boolean }
-export const REVELAR_PADRAO: Revelar = { vidaInimigo: 'estado', statsInimigo: false, condInimigo: true };
+export type NivelFicha = 'nada' | 'fisico' | 'tudo';
+export interface Revelar {
+  vidaInimigo: NivelVida; statsInimigo: boolean; condInimigo: boolean;
+  fichaColegas: NivelFicha; energiaColegas: boolean;
+}
+export const REVELAR_PADRAO: Revelar = {
+  vidaInimigo: 'estado', statsInimigo: false, condInimigo: true,
+  fichaColegas: 'fisico', energiaColegas: false,
+};
 export const revelarDaMesa = (mesa: any): Revelar => ({ ...REVELAR_PADRAO, ...(mesa?.revelar || {}) });
 
 // -------------------------------------------------------------- abrir a mesa
