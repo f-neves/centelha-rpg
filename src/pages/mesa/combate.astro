@@ -169,8 +169,8 @@ import MesaCab from '../../components/MesaCab.astro';
         <label>Vida deste, para os jogadores
           <select id="edit-rev-vida">
             <option value="">padrão da mesa</option>
-            <option value="numero">o número exato</option>
-            <option value="estado">só o estado</option>
+            <option value="numero">barra e número</option>
+            <option value="estado">só a palavra</option>
             <option value="nada">só a cor do retrato</option>
           </select>
         </label>
@@ -258,12 +258,13 @@ import MesaCab from '../../components/MesaCab.astro';
   <dialog id="rev-dlg" class="mesa-dlg">
     <form method="dialog">
       <h3>O que os jogadores veem</h3>
-      <p class="muted dlg-txt">Vale para inimigos e neutros desta mesa, em todos os encontros. Os personagens
-        do grupo aparecem sempre inteiros: a ficha deles já está na mesa.</p>
+      <p class="muted dlg-txt">Vale para inimigos e neutros desta mesa, em todos os encontros. A barra de Vida
+        do inimigo só aparece no primeiro modo: sem número dentro, ela vira uma régua para medir
+        justamente o que você acabou de esconder. Energia e Mana ninguém vê além das próprias.</p>
       <label>Vida do inimigo
         <select id="rv-vida">
-          <option value="numero">o número exato (41/60)</option>
-          <option value="estado">só o estado (Ferido, Grave…)</option>
+          <option value="numero">barra e número (41/60)</option>
+          <option value="estado">só a palavra: Ferido, Grave, Caído</option>
           <option value="nada">nada além da cor do retrato</option>
         </select>
       </label>
@@ -333,50 +334,67 @@ import MesaCab from '../../components/MesaCab.astro';
   .col-h { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .07em;
     color: var(--ink-soft); margin: 0 0 .3rem; border-bottom: 1px solid var(--rule); padding-bottom: .15rem; }
   .col-h-fora { margin-top: .8rem; }
-  .cmb-lista { display: flex; flex-direction: column; gap: .4rem; }
+  /* Grade e não coluna. O card do bestiário é vertical, e doze deles empilhados
+     num fio só viram rolagem sem fim; lado a lado, a mesma altura de tela mostra
+     o dobro. `auto-fill` é quem decide quantos cabem: num 13" dá dois, num 17"
+     dá três, no celular dá um. A ordem do tick continua sendo a ordem dos
+     cards, agora lida da esquerda para a direita. */
+  .cmb-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+    gap: .5rem; align-items: start; }
   .cmb-lista-fora { opacity: .72; }
 
   /* ---------------- card do combatente ---------------- */
-  /* Flex e não grade: o card tem um número variável de faixas (barras, stats,
-     condições, nota), e com `grid-row: span N` no avatar as que faltam ou sobram
-     empurram as outras para cima da linha de botões. */
-  .cbt { display: flex; align-items: flex-start; gap: .55rem;
-    border: 1px solid var(--rule); border-left: 4px solid var(--rule); border-radius: var(--r-lg);
-    background: var(--panel); padding: .38rem .55rem; position: relative; }
-  .cbt.g-aliado  { border-left-color: var(--accent); }
-  .cbt.g-inimigo { border-left-color: #c1352c; }
-  .cbt.g-neutro  { border-left-color: var(--gold); }
+  /* Coluna: cabeçalho (tick e selos), retrato, nome, barras, números, condições,
+     botões. As faixas do meio faltam ou sobram conforme o combatente, e por isso
+     o card é flex e não grade: nada precisa saber quantas linhas o vizinho tem. */
+  .cbt { display: flex; flex-direction: column; gap: .28rem;
+    border: 1px solid var(--rule); border-top: 4px solid var(--rule); border-radius: var(--r-lg);
+    background: var(--panel); padding: .4rem .6rem .55rem; position: relative; }
+  /* A cor do lado passou para o topo: numa grade, a tarja da esquerda fica
+     escondida atrás do card vizinho no canto do olho. */
+  .cbt.g-aliado  { border-top-color: var(--accent); }
+  .cbt.g-inimigo { border-top-color: #c1352c; }
+  .cbt.g-neutro  { border-top-color: var(--gold); }
   .cbt.atual { box-shadow: 0 0 0 2px var(--accent), 0 6px 20px rgba(0,0,0,.18);
     background: color-mix(in srgb, var(--accent) 7%, var(--panel)); }
   .cbt.fora { filter: grayscale(.6); }
   .cbt.oculto { border-style: dashed; }
-  .cbt-tick { flex: 0 0 2rem; align-self: center; text-align: center; font-family: 'Cinzel';
-    font-weight: 700; font-size: var(--fs-aux); color: var(--accent-texto); font-variant-numeric: tabular-nums; line-height: 1.05; }
+  .cbt-cab { display: flex; align-items: center; gap: .3rem; min-height: 1.2rem; }
+  .cbt-cab .espaco { flex: 1; }
+  .cbt-tick { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux);
+    color: var(--accent-texto); font-variant-numeric: tabular-nums; line-height: 1; }
+  .cbt-tick small { font-size: calc(var(--fs-micro) * .85); font-weight: 400; color: var(--ink-soft);
+    letter-spacing: .04em; margin-left: .2rem; }
   .cbt.atual .cbt-tick { font-size: var(--fs-h3); }
-  .cbt-tick small { display: block; font-size: calc(var(--fs-micro) * .85); font-weight: 400; color: var(--ink-soft); letter-spacing: .04em; }
-  .cbt-av { flex: 0 0 auto; position: relative; }
-  .cbt-av .av { --av-t: 2.7rem; }
-  .cbt.atual .cbt-av .av { --av-t: 3.6rem; box-shadow: 0 0 0 2px var(--accent); }
-  .cbt-olho { position: absolute; right: -.2rem; bottom: -.2rem; font-size: .65rem; background: var(--panel);
-    border: 1px solid var(--rule); border-radius: 50%; width: 1.1rem; height: 1.1rem; display: grid; place-items: center; }
-  .cbt-corpo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .16rem; }
-  .cbt-topo { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; min-width: 0; }
-  /* Barras e números na mesma faixa: são as duas coisas que o mestre lê de
-     relance, e lado a lado economizam uma linha por combatente. */
-  .cbt-meio { display: flex; align-items: center; gap: .25rem .9rem; flex-wrap: wrap; }
-  .cbt-meio .cbt-barras { flex: 1 1 20rem; }
-  .cbt-meio .cbt-stats { flex: 1 1 16rem; }
-  .cbt-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); line-height: 1.15; }
+  .cbt-selo { font-size: calc(var(--fs-micro) * .9); white-space: nowrap; }
+  .cbt-av { align-self: center; }
+  .cbt-av .av { --av-t: 4.4rem; }
+  .cbt.atual .cbt-av .av { --av-t: 5.2rem; box-shadow: 0 0 0 2px var(--accent); }
+  /* Criatura: a arte e o nome abrem o card do bestiário. O anel no hover é o que
+     conta isso sem escrever "clique aqui" embaixo de cada retrato. */
+  .cbt-av.ver-card { cursor: pointer; }
+  .cbt-av.ver-card .av { transition: box-shadow .15s, transform .15s; }
+  .cbt-av.ver-card:hover .av { box-shadow: 0 0 0 3px var(--accent); transform: translateY(-1px); }
+  .cbt-nome.ver-card { cursor: pointer; }
+  .cbt-nome.ver-card:hover { color: var(--accent-texto); text-decoration: underline dotted; }
+  .cbt-id { display: flex; flex-direction: column; align-items: center; gap: .05rem;
+    text-align: center; min-width: 0; }
+  .cbt-nome { font-family: 'Cinzel'; font-weight: 700; font-size: var(--fs-aux); line-height: 1.15;
+    overflow-wrap: anywhere; }
   .cbt.atual .cbt-nome { font-size: var(--fs-h3); color: var(--accent-texto); }
   .cbt-meta { font-size: var(--fs-micro); color: var(--ink-soft); }
-  .cbt-rev { font-size: calc(var(--fs-micro) * .9); padding: .02rem .35rem; border-radius: 999px;
-    background: color-mix(in srgb, var(--gold) 26%, transparent); white-space: nowrap; cursor: help; }
-  /* Vida e Energia lado a lado, e não empilhadas: é uma faixa de 20px a menos
-     por combatente, o que numa tela de 720px vale um card inteiro. */
-  .cbt-barras { display: flex; flex-flow: row wrap; gap: .25rem .4rem; max-width: 34rem; }
-  .cbt-linha { display: flex; align-items: center; gap: .3rem; flex: 1 1 11rem; min-width: 9rem; }
-  .cbt-stats { font-size: var(--fs-micro); }
-  .cbt-acoes { display: flex; gap: .2rem; flex-wrap: wrap; align-items: center; margin-top: .1rem; }
+  .cbt-rev { padding: .02rem .35rem; border-radius: 999px;
+    background: color-mix(in srgb, var(--gold) 26%, transparent); cursor: help; }
+  .cbt-barras { display: flex; flex-direction: column; gap: .22rem; }
+  .cbt-linha { display: flex; align-items: center; gap: .3rem; }
+  .cbt-linha .hpbar { flex: 1; }
+  /* Duas colunas de rótulo e número: alinhadas, as pastilhas viram tabela e o
+     olho desce pela coluna em vez de caçar o valor no meio do texto. */
+  .cbt-stats { font-size: var(--fs-micro); display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6.4rem, 1fr)); gap: .05rem .5rem; }
+  .cbt .conds { display: flex; flex-wrap: wrap; gap: .2rem; }
+  .cbt-acoes { display: flex; gap: .2rem; flex-wrap: wrap; align-items: center; margin-top: .1rem;
+    padding-top: .3rem; border-top: 1px solid var(--rule); }
   .cbt-acoes .hp-amt { width: 2.9rem; padding: .12rem .25rem; }
   .cbt-acoes .btn.mini { padding: .12rem .45rem; }
   .cbt-acoes .hp-tipo { font-size: var(--fs-micro); padding: .15rem .2rem; }
@@ -471,7 +489,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <script>
   import {
-    abrirMesa, u, esc, norm, sinal, avatarHTML, urlsImagens, hpBarHTML, hpBarPctHTML, atualizarBarra,
+    abrirMesa, u, esc, norm, sinal, avatarHTML, urlsImagens, hpBarHTML, estadoChipHTML, atualizarBarra,
     tierDe, pctDe, condChipHTML, somarCondicoes, COND, COND_LISTA, COND_GRUPOS, novoId, bancoAntigo,
     revelarDaMesa, REVELAR_PADRAO, semMigracao14,
   } from '../../lib/mesa-core';
@@ -569,6 +587,15 @@ import MesaCab from '../../components/MesaCab.astro';
       const m2 = await urlsImagens(SB, proprias, 'mesa');
       for (const c of COMBS) if (c.imagem && m2[c.imagem]) IMGS['own:' + c.id] = m2[c.imagem];
     }
+    // O retrato dos OUTROS personagens: o jogador não lê a ficha do colega, mas
+    // a view manda o caminho da imagem, e o bucket libera os arquivos
+    // `retrato-*` para quem é da mesa. Sem isto o companheiro de anos vira uma
+    // letra dentro de um círculo.
+    const retratos = COMBS.map((c) => c.retrato).filter(Boolean);
+    if (retratos.length) {
+      const m3 = await urlsImagens(SB, retratos, 'personagens');
+      for (const c of COMBS) if (c.retrato && m3[c.retrato]) IMGS['pc:' + c.personagem_id] = m3[c.retrato];
+    }
 
     // O resumo NÃO é montado para quem está com os números escondidos. Ele sai
     // do `monsters.json`, que mora no próprio bundle: se eu montasse e só
@@ -620,6 +647,13 @@ import MesaCab from '../../components/MesaCab.astro';
     if (c.revelar?.stats != null) return !!c.revelar.stats;
     return REV.statsInimigo;
   }
+  /**
+   * Energia e Mana são recurso, e recurso é plano: só do próprio personagem.
+   * `FICHAS` responde isso de graça, porque a RLS de `personagens` só devolve
+   * ao jogador a ficha dele (e ao mestre, todas).
+   */
+  const verEnergia = (c: any) => EH_MESTRE || !!FICHAS[c.personagem_id];
+
   /** O que esta tela desenha. O jogador já recebeu a linha mascarada. */
   const verVida = (c: any): NivelVida =>
     EH_MESTRE ? 'numero' : ((c.ver_vida as NivelVida) || revelaVida(c));
@@ -725,24 +759,32 @@ import MesaCab from '../../components/MesaCab.astro';
     const conds = verCond(c) ? condsDe(c) : [];
     const def = defesaAtual(c);
     const tipoTxt = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? (MON[c.monstro_id]?.nome || 'Criatura') : 'NPC';
+    // A ordem segue a pergunta que se faz no meio da luta: primeiro o que
+    // atrapalha quem bate NESTE card (as Defesas e a Absorção), depois o que
+    // ele devolve no turno dele. Antes vinha ao contrário.
+    //
+    // A Defesa Social saiu daqui de propósito: dentro da iniciativa ninguém
+    // rola contra ela, e cada pastilha a menos é um card a mais na tela. Ela
+    // continua no bloco da criatura, na ficha e no diálogo de ação, que é onde
+    // um ataque social de fato acontece.
+    const pl = (l: string, v: string, t = '') =>
+      `<span class="pl"${t ? ` title="${esc(t)}"` : ''}><span class="pl-l">${l}</span><span class="pl-v">${v}</span></span>`;
     const stats = (mostra && r) ? `<div class="cbt-stats pilha">
-      ${r.ataque ? `<span class="pl"><span class="pl-l">Atq</span><span class="pl-v">${esc(r.ataque)}</span></span>` : ''}
-      ${r.dano ? `<span class="pl"><span class="pl-l">Dano</span><span class="pl-v">${esc(r.dano)}</span></span>` : ''}
-      ${def ? `<span class="pl" title="base ${def.base}${def.ferimento ? ` · ferimento ${def.ferimento}` : ''}${def.cond ? ` · condições ${sinal(def.cond)}` : ''}"><span class="pl-l">Def</span><span class="pl-v">${def.total}${def.total !== def.base ? '*' : ''}</span></span>` : ''}
-      ${r.defesaSocial != null ? `<span class="pl"><span class="pl-l">Soc</span><span class="pl-v">${r.defesaSocial}</span></span>` : ''}
-      ${r.defesaMental != null ? `<span class="pl"><span class="pl-l">Men</span><span class="pl-v">${r.defesaMental}</span></span>` : ''}
-      <span class="pl"><span class="pl-l">Abs</span><span class="pl-v">${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao}${r.resistPerf ? `·N${r.resistPerf}` : ''}</span></span>
+      ${def ? pl('Def', `${def.total}${def.total !== def.base ? '*' : ''}`,
+        `base ${def.base}${def.ferimento ? ` · ferimento ${def.ferimento}` : ''}${def.cond ? ` · condições ${sinal(def.cond)}` : ''}`) : ''}
+      ${r.defesaMental != null ? pl('Mental', String(r.defesaMental)) : ''}
+      ${pl('Abs', `${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao}${r.resistPerf ? `·N${r.resistPerf}` : ''}`)}
+      ${r.ataque ? pl('Atq', esc(r.ataque)) : ''}
+      ${r.dano ? pl('Dano', esc(r.dano)) : ''}
     </div>` : '';
-    // Três barras possíveis: a com número, a cega (largura e palavra, sem
-    // conta) e nenhuma, quando só a cor do retrato conta a história.
-    const barras = vida === 'numero'
-      ? (c.pv_max != null ? `<div class="cbt-barras">
-          <div class="cbt-linha">${hpBarHTML(c.pv_atual, c.pv_max, c.id)}<span class="hp-fb" data-c="${c.id}"></span></div>
-          ${c.energia_max ? `<div class="cbt-linha"><div class="hpbar mini enbar"><div class="hpbar-fill" style="width:${Math.max(0, Math.min(100, ((c.energia_atual ?? 0) / c.energia_max) * 100))}%"></div><span class="hpbar-txt">En ${c.energia_atual ?? 0}<span class="hp-sep">/</span>${c.energia_max}</span></div></div>` : ''}
-        </div>` : '')
-      : vida === 'estado' && pct != null
-        ? `<div class="cbt-barras"><div class="cbt-linha">${hpBarPctHTML(pct)}</div></div>`
-        : '';
+    // Barra só quando há número para pôr dentro dela. Sem número, o estado sai
+    // como etiqueta lá em cima, junto do nome: uma barra vazia seria uma régua
+    // para medir o que o mestre acabou de esconder.
+    const barras = vida === 'numero' && c.pv_max != null ? `<div class="cbt-barras">
+      <div class="cbt-linha">${hpBarHTML(c.pv_atual, c.pv_max, c.id)}<span class="hp-fb" data-c="${c.id}"></span></div>
+      ${(c.energia_max && verEnergia(c)) ? `<div class="cbt-linha"><div class="hpbar mini enbar"><div class="hpbar-fill" style="width:${Math.max(0, Math.min(100, ((c.energia_atual ?? 0) / c.energia_max) * 100))}%"></div><span class="hpbar-txt">En ${c.energia_atual ?? 0}<span class="hp-sep">/</span>${c.energia_max}</span></div></div>` : ''}
+    </div>` : '';
+    const chip = vida !== 'numero' && vida !== 'nada' ? estadoChipHTML(pct) : '';
     const acoes = EH_MESTRE ? `<div class="cbt-acoes">
       <button class="btn mini agir" data-c="${c.id}">agir ▸</button>
       <input type="number" class="hp-amt" data-c="${c.id}" min="1" value="5" title="Quantidade" aria-label="Quantidade" />
@@ -753,25 +795,35 @@ import MesaCab from '../../components/MesaCab.astro';
       <button class="btn-fant editc" data-c="${c.id}" title="Editar">✎</button>
       <button class="btn-fant olho" data-c="${c.id}" title="${c.oculto ? 'Revelar aos jogadores' : 'Esconder dos jogadores'}">${c.oculto ? '🙈' : '👁'}</button>
       <button class="btn-fant fora-btn" data-c="${c.id}" title="${c.ativo === false ? 'Voltar ao combate' : 'Tirar de combate'}">${c.ativo === false ? '↩' : '⏏'}</button>
-      ${c.tipo === 'criatura' ? `<button class="btn-fant ver-card" data-mon="${esc(c.monstro_id || '')}" title="Ver o card completo">☰</button>` : ''}
       <button class="btn-fant perigo rm" data-c="${c.id}" title="Remover do encontro">✕</button>
     </div>` : '';
-    return `<div class="cbt g-${esc(c.grupo || 'inimigo')}${atual ? ' atual' : ''}${c.ativo === false ? ' fora' : ''}${c.oculto ? ' oculto' : ''}" data-c="${c.id}">
-      <div class="cbt-tick">${c.tick}<small>tick</small></div>
-      <div class="cbt-av">${avatarDe(c)}${c.oculto ? '<span class="cbt-olho" title="Oculto">🙈</span>' : ''}</div>
-      <div class="cbt-corpo">
-        <div class="cbt-topo">
-          <span class="cbt-nome">${esc(c.nome)}</span>
-          <span class="cbt-meta">${esc(tipoTxt)} · ini ${c.iniciativa ?? 0} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
-          ${(EH_MESTRE && c.revelar && (c.revelar.vida || c.revelar.stats != null))
-            ? `<span class="cbt-rev" title="Este foge da regra da mesa: vida ${esc(c.revelar.vida || 'padrão')}, números ${c.revelar.stats == null ? 'padrão' : (c.revelar.stats ? 'à vista' : 'escondidos')}">👁 exceção</span>` : ''}
-          ${conds.length ? `<span class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</span>` : ''}
-        </div>
-        <div class="cbt-meio">${barras}${stats}</div>
-        ${acoes}
-        ${(EH_MESTRE && c.notas) ? `<div class="cbt-nota">${esc(c.notas)}</div>` : ''}
+    // O retrato e o nome de uma criatura ABREM o card do bestiário, como na aba
+    // Criaturas. Reaproveitam o mesmo `.ver-card` que o botão ☰ usava, e ele sai
+    // daqui: com a arte inteira clicável, virou um nono botão redundante numa
+    // fileira que já tinha oito. Só para o mestre, porque `ligarCards` não liga
+    // nada para o jogador, e um alvo que não responde é pior do que nenhum.
+    const abreCard = EH_MESTRE && c.tipo === 'criatura' && !!MON[c.monstro_id];
+    const cCard = abreCard ? ' ver-card' : '';
+    const aCard = abreCard ? ` data-mon="${esc(c.monstro_id)}" title="Ver o card de ${esc(MON[c.monstro_id].nome)}"` : '';
+    return `<article class="cbt g-${esc(c.grupo || 'inimigo')}${atual ? ' atual' : ''}${c.ativo === false ? ' fora' : ''}${c.oculto ? ' oculto' : ''}" data-c="${c.id}">
+      <header class="cbt-cab">
+        <span class="cbt-tick">${c.tick}<small>tick</small></span>
+        <span class="espaco"></span>
+        ${chip}
+        ${c.oculto ? '<span class="cbt-selo" title="Oculto dos jogadores">🙈</span>' : ''}
+        ${(EH_MESTRE && c.revelar && (c.revelar.vida || c.revelar.stats != null))
+          ? `<span class="cbt-selo cbt-rev" title="Este foge da regra da mesa: vida ${esc(c.revelar.vida || 'padrão')}, números ${c.revelar.stats == null ? 'padrão' : (c.revelar.stats ? 'à vista' : 'escondidos')}">👁 exceção</span>` : ''}
+      </header>
+      <div class="cbt-av${cCard}"${aCard}>${avatarDe(c)}</div>
+      <div class="cbt-id">
+        <span class="cbt-nome${cCard}"${aCard}>${esc(c.nome)}</span>
+        <span class="cbt-meta">${esc(tipoTxt)} · ini ${c.iniciativa ?? 0} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
       </div>
-    </div>`;
+      ${barras}${stats}
+      ${conds.length ? `<div class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</div>` : ''}
+      ${acoes}
+      ${(EH_MESTRE && c.notas) ? `<div class="cbt-nota">${esc(c.notas)}</div>` : ''}
+    </article>`;
   }
 
   function pintarPainel(atual: any, fila: any[]) {
