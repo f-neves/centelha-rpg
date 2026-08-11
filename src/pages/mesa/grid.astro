@@ -66,6 +66,8 @@ import MesaCab from '../../components/MesaCab.astro';
 
         <aside class="gr-lado" id="gr-lado">
           <div class="gr-reg-cab">
+            <button class="btn-fant gr-dobra" id="gr-dobrar" aria-expanded="true"
+              aria-controls="gr-lista" title="Ocultar a lista e dar a altura ao Registro">▾</button>
             <h3 class="col-h">Em campo</h3>
             <button class="btn mini" id="gr-npc" hidden title="Um figurante só para esta cena">+ NPC</button>
           </div>
@@ -343,7 +345,15 @@ import MesaCab from '../../components/MesaCab.astro';
 
   /* ---- registro ---- */
   .gr-reg-cab { display: flex; align-items: center; gap: .3rem; margin-top: .7rem; }
+  .gr-reg-cab:first-child { margin-top: 0; }
   .gr-reg-cab .col-h { flex: 1; margin: 0; }
+  .gr-dobra { flex: 0 0 auto; line-height: 1; transition: transform .18s ease; }
+  /* Encolhida, a lista some e o Registro fica com a coluna inteira: numa sessão
+     longa o que se lê é o histórico, e não a lista de quem está em campo, que o
+     próprio tabuleiro já mostra. */
+  .gr-lado.dobrada #gr-lista, .gr-lado.dobrada #gr-dica { display: none; }
+  .gr-lado.dobrada .gr-dobra { transform: rotate(-90deg); }
+  .gr-lado.dobrada .gr-log { max-height: calc(100vh - var(--mesa-barra-h, 66px) - 11rem); }
   .gr-log { display: flex; flex-direction: column; gap: .1rem; max-height: 30vh; overflow-y: auto;
     font-size: var(--fs-micro); margin-top: .3rem; }
   .gr-log .lg { display: flex; gap: .35rem; align-items: baseline;
@@ -1520,7 +1530,31 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   // ============================================================ a barra
+  /**
+   * Encolher a lista dá a altura dela ao Registro. Fica guardado no aparelho
+   * (e não na arena): é preferência de quem está olhando, e o mestre no
+   * notebook não tem por que impor a escolha dele ao jogador no celular.
+   */
+  const DOBRA_KEY = 'centelha:grid:lista-dobrada';
+  function ligarDobra() {
+    const btn = el('gr-dobrar');
+    const aplica = (dobrada: boolean) => {
+      el('gr-lado').classList.toggle('dobrada', dobrada);
+      btn.setAttribute('aria-expanded', String(!dobrada));
+      btn.title = dobrada ? 'Mostrar a lista de quem está em campo' : 'Ocultar a lista e dar a altura ao Registro';
+    };
+    let dobrada = false;
+    try { dobrada = localStorage.getItem(DOBRA_KEY) === '1'; } catch {}
+    aplica(dobrada);
+    btn.onclick = () => {
+      dobrada = !dobrada;
+      aplica(dobrada);
+      try { localStorage.setItem(DOBRA_KEY, dobrada ? '1' : '0'); } catch {}
+    };
+  }
+
   function ligarBarra() {
+    ligarDobra();
     el('gr-recarregar').onclick = () => carregar();
     el('gr-menos').onclick = () => mudarZoom(ZOOM - 0.15);
     el('gr-mais').onclick = () => mudarZoom(ZOOM + 0.15);
