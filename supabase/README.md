@@ -66,11 +66,16 @@ Supabase pelo navegador. Passos para ligar tudo:
     navegador do jogador, com a Vida, os números e as notas do mestre. Idempotente.
 
     Entram `mesas.revelar` (o quadro de chaves: `vidaInimigo` = `numero`/`estado`/`nada`,
-    `statsInimigo`, `condInimigo`), `combatentes.revelar` (a exceção de um combatente só),
-    `mesa_criaturas.visivel_jogadores`, três views **SECURITY DEFINER** por onde o jogador lê
-    (`combate_visao`, `criatura_visao`, `mapa_visao`, esta última remontando `meta` só com os pinos
-    liberados) e a função `grupo_fisico(p_mesa)`, que dos personagens dos outros devolve apenas
-    Força, Destreza, Vigor e Aparência (uma coluna não pode ser mascarada por RLS, que é por linha).
+    `statsInimigo`, `condInimigo`, `fichaColegas` = `nada`/`fisico`/`tudo`, `energiaColegas`),
+    `combatentes.revelar` (a exceção de um combatente só), `mesa_criaturas.visivel_jogadores`,
+    quatro views **SECURITY DEFINER** por onde o jogador lê (`combate_visao`, `encontro_visao`,
+    `criatura_visao`, `mapa_visao`, esta última remontando `meta` só com os pinos liberados) e a
+    função `grupo_visivel(p_mesa)`, que devolve dos personagens dos outros a fatia que a mesa
+    escolheu (uma coluna não pode ser mascarada por RLS, que é por linha).
+
+    Não existe um nível "só os números de combate" entre `fisico` e `tudo`, e não é esquecimento:
+    Vida, Defesa e Absorção saem de uma conta que lê a ficha inteira. Mandar o insumo e mostrar só o
+    resultado seria esconder na tela de novo, que é o que esta migração desfaz.
 
     A leitura direta de `combatentes`, `encontros` e `mesa_criaturas` passa a ser **só do mestre**, e
     `arquivos` deixa de entregar `categoria = 'mapa'` ao jogador. Sem isso as views seriam enfeite:

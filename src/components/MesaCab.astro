@@ -356,26 +356,38 @@ const { aba } = Astro.props;
   .rev-nota { margin: 0 0 .45rem; font-size: var(--fs-micro); color: var(--ink-soft); }
   /* Uma escolha por linha, com amostra do resultado à direita: a diferença
      entre "só o estado" e "só a cor" é visual, e descrever coisa visual em
-     palavras gasta mais parágrafo do que desenhar. */
+     palavras gasta mais parágrafo do que desenhar.
+     Os seletores carregam `.mesa-dlg` de propósito: a regra genérica dos
+     diálogos é `.mesa-dlg label`, que empilha em coluna e caixa-alta (bom para
+     campo de formulário, péssimo para uma escolha com amostra). Classe sozinha
+     perde dela, e a linha nasce empilhada e gritando. */
   .rev-ops { display: flex; flex-direction: column; gap: .25rem; }
-  .rev-op { display: flex; align-items: center; gap: .55rem; cursor: pointer;
-    border: 1px solid var(--rule); border-radius: var(--r-md); padding: .35rem .6rem;
-    text-transform: none; letter-spacing: normal; font-family: 'EB Garamond'; }
-  .rev-op:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, transparent); }
-  .rev-op:has(input:checked) { border-color: var(--accent);
+  .mesa-dlg label.rev-op { display: flex; flex-flow: row nowrap; align-items: center; gap: .55rem;
+    cursor: pointer; border: 1px solid var(--rule); border-radius: var(--r-md); padding: .35rem .6rem;
+    text-transform: none; letter-spacing: normal; font-family: 'EB Garamond'; text-align: left; }
+  .mesa-dlg label.rev-op:hover { border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .mesa-dlg label.rev-op:has(input:checked) { border-color: var(--accent);
     background: color-mix(in srgb, var(--accent) 13%, transparent); }
-  .rev-op input { flex: 0 0 auto; accent-color: var(--accent); }
-  .rev-op-corpo { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-  .rev-op-t { font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--ink); }
-  .rev-op-d { font-size: var(--fs-micro); color: var(--ink-soft); }
-  .rev-op-am { flex: 0 0 auto; display: inline-flex; align-items: center; min-width: 7rem;
-    justify-content: flex-end; }
-  .rev-op-am .hpbar { flex: 0 0 7rem; }
-  .rev-chk { display: flex; align-items: flex-start; gap: .5rem; cursor: pointer; margin-top: .35rem;
-    text-transform: none; letter-spacing: normal; font-family: 'EB Garamond'; }
-  .rev-chk input { margin-top: .2rem; accent-color: var(--accent); }
-  .rev-chk strong { display: block; font-family: 'Cinzel'; font-weight: 400; font-size: var(--fs-rotulo); color: var(--ink); }
-  .rev-chk small { font-size: var(--fs-micro); color: var(--ink-soft); }
+  .rev-op input { flex: 0 0 auto; accent-color: var(--accent); margin: 0; }
+  .rev-op-corpo { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: .05rem; }
+  .rev-op-t { font-family: 'Cinzel'; font-size: var(--fs-rotulo); color: var(--ink); line-height: 1.2; }
+  .rev-op-d { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.3; }
+  .rev-op-am { flex: 0 0 8rem; display: inline-flex; align-items: center; justify-content: flex-end; }
+  .rev-op-am .hpbar { flex: 0 0 7rem; min-width: 0; }
+  .mesa-dlg label.rev-chk { display: flex; flex-flow: row nowrap; align-items: flex-start; gap: .5rem;
+    cursor: pointer; margin-top: .4rem; text-transform: none; letter-spacing: normal;
+    font-family: 'EB Garamond'; text-align: left; }
+  .rev-chk input { flex: 0 0 auto; margin: .25rem 0 0; accent-color: var(--accent); }
+  .rev-chk strong { display: block; font-family: 'Cinzel'; font-weight: 400;
+    font-size: var(--fs-rotulo); color: var(--ink); line-height: 1.2; }
+  .rev-chk small { display: block; font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.3; }
+  /* O "fora da tela" é a decisão mais forte do diálogo do combatente. */
+  .mesa-dlg label.rev-oculto { border: 1px dashed var(--rule); border-radius: var(--r-md);
+    padding: .4rem .6rem; margin-bottom: .5rem; }
+  .mesa-dlg label.rev-oculto:has(input:checked) { border-style: solid; border-color: var(--perigo);
+    background: color-mix(in srgb, var(--perigo) 10%, transparent); }
+  .rev-h2 { margin-top: .5rem; }
   /* Placar do que está aberto nas outras abas: número grande, rótulo pequeno,
      cor dizendo tudo/parte/nada sem precisar ler. */
   .rev-contas { display: flex; flex-wrap: wrap; gap: .35rem; }

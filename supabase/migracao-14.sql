@@ -29,9 +29,11 @@
 -- ========== O quadro de chaves ==========
 -- Um jsonb e nao seis colunas booleanas: as chaves mudam junto com as telas, e
 -- uma mesa antiga com `{}` cai nos padroes do cliente sem precisar de default.
---   vidaInimigo : 'numero' | 'estado' | 'nada'   (padrao 'estado')
---   statsInimigo: boolean                        (padrao false)
---   condInimigo : boolean                        (padrao true)
+--   vidaInimigo   : 'numero' | 'estado' | 'nada'      (padrao 'estado')
+--   statsInimigo  : boolean                           (padrao false)
+--   condInimigo   : boolean                           (padrao true)
+--   fichaColegas  : 'nada' | 'fisico' | 'tudo'        (padrao 'fisico')
+--   energiaColegas: boolean                           (padrao false)
 alter table public.mesas add column if not exists revelar jsonb not null default '{}'::jsonb;
 
 -- A excecao mora no combatente: `{"vida":"numero"}` no unico inimigo cuja Vida
@@ -68,10 +70,10 @@ select
   (select p.imagem_path from public.personagens p where p.id = c.personagem_id) as retrato,
   case when v.vida = 'numero' then c.pv_atual end as pv_atual,
   case when v.vida = 'numero' then c.pv_max end as pv_max,
-  -- Energia e Mana sao recurso, e recurso e plano: o jogador ve os do proprio
-  -- personagem e mais nada, nem dos companheiros.
-  case when v.meu then c.energia_atual end as energia_atual,
-  case when v.meu then c.energia_max end as energia_max,
+  -- Energia e Mana sao recurso, e recurso e plano: por padrao o jogador ve os
+  -- do proprio personagem e mais nada. A mesa pode abrir entre companheiros.
+  case when v.meu or v.en_colega then c.energia_atual end as energia_atual,
+  case when v.meu or v.en_colega then c.energia_max end as energia_max,
   case when coalesce(c.pv_max, 0) > 0
        then (round((c.pv_atual::numeric / c.pv_max) * 20) * 5)::int
   end as pv_pct,
@@ -91,7 +93,8 @@ cross join lateral (
     case when c.tipo = 'pc' then true
          else coalesce((m.revelar->>'condInimigo')::boolean, true) end as cond,
     c.personagem_id is not null
-      and public.dono_do_personagem(c.personagem_id) = auth.uid() as meu
+      and public.dono_do_personagem(c.personagem_id) = auth.uid() as meu,
+    c.tipo = 'pc' and coalesce((m.revelar->>'energiaColegas')::boolean, false) as en_colega
 ) v
 where c.oculto = false
   and public.eh_membro(e.mesa_id);
@@ -161,30 +164,49 @@ grant select on public.mapa_visao to authenticated;
 
 -- ========== O grupo visto por fora ==========
 -- A ficha de um jogador continua sendo dele: pers_select nao muda. O que esta
--- funcao entrega dos OUTROS personagens e o que qualquer um enxerga olhando
--- para a pessoa: quao forte, quao rapido, quao resistente, quao bonito. Uma
--- coluna nao pode ser mascarada por RLS (a policy e por linha), entao a fatia
--- sai daqui, escolhida a dedo.
-create or replace function public.grupo_fisico(p_mesa uuid)
+-- funcao entrega dos OUTROS personagens depende do que a mesa escolheu, e a
+-- fatia e cortada AQUI porque RLS e por linha e nao por coluna.
+--
+--   nada   -> so o que ja esta na mesa: nome, retrato, conceito, jogador
+--   fisico -> mais Forca, Destreza, Vigor, Aparencia e raca (o que se ve na
+--             pessoa em dois dias de estrada). E o padrao.
+--   tudo   -> a ficha inteira, para mesas de peito aberto
+--
+-- Nao existe um nivel "so os numeros de combate" porque nao daria para servir
+-- honestamente: Vida, Defesa e Absorcao saem de uma conta que le a ficha toda
+-- (atributos, pericias, equipamento, Centelha). Mandar o insumo e mostrar so o
+-- resultado seria esconder na tela de novo, que e o que esta migracao desfaz.
+drop function if exists public.grupo_fisico(uuid);
+create or replace function public.grupo_visivel(p_mesa uuid)
 returns table (
   id uuid, nome text, conceito text, dono_id uuid, imagem_path text,
-  raca text, forca int, destreza int, vigor int, aparencia int
+  nivel text, dados jsonb
 )
 language sql security definer stable set search_path = public as $$
   select p.id, p.nome, p.conceito, p.dono_id, p.imagem_path,
-         coalesce(p.ficha->>'raca', ''),
-         coalesce((p.ficha->'attrs'->>'forca')::int, 0),
-         coalesce((p.ficha->'attrs'->>'destreza')::int, 0),
-         coalesce((p.ficha->'attrs'->>'vigor')::int, 0),
-         coalesce((p.ficha->>'aparencia')::int, 0)
+         n.nivel,
+         case n.nivel
+           when 'tudo' then p.ficha
+           when 'fisico' then jsonb_build_object(
+             'raca', coalesce(p.ficha->>'raca', ''),
+             'forca', coalesce(p.ficha->'attrs'->>'forca', '0'),
+             'destreza', coalesce(p.ficha->'attrs'->>'destreza', '0'),
+             'vigor', coalesce(p.ficha->'attrs'->>'vigor', '0'),
+             'aparencia', coalesce(p.ficha->>'aparencia', '0'))
+           else '{}'::jsonb
+         end
   from public.personagens p
+  cross join lateral (
+    select coalesce(nullif(m.revelar->>'fichaColegas', ''), 'fisico') as nivel
+    from public.mesas m where m.id = p_mesa
+  ) n
   where p.mesa_id = p_mesa
     and p.vaga is null
     and public.eh_membro(p_mesa);
 $$;
 
-revoke all on function public.grupo_fisico(uuid) from public;
-grant execute on function public.grupo_fisico(uuid) to authenticated;
+revoke all on function public.grupo_visivel(uuid) from public;
+grant execute on function public.grupo_visivel(uuid) to authenticated;
 
 -- ========== Fechando a porta dos fundos ==========
 -- As tres views acima nao valem NADA enquanto a tabela continuar legivel: o

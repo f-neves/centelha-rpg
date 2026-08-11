@@ -223,7 +223,13 @@ import MesaCab from '../../components/MesaCab.astro';
     // não entregando. O que os companheiros de mesa recebem uns dos outros é o
     // que se vê olhando a pessoa (Força, Destreza, Vigor, Aparência), servido
     // por uma função que escolhe essas colunas a dedo.
-    const fora = MESTRE ? [] : await lerOutros(data || []);
+    let fora = MESTRE ? [] : await lerOutros(data || []);
+    // No nível "tudo" o banco manda a ficha inteira, e aí não há card reduzido:
+    // é o mesmo card dos meus, sem os botões de dono.
+    const abertos = fora.filter((p: any) => p.nivel === 'tudo')
+      .map((p: any) => ({ ...p, ficha: p.dados, status: 'aprovado', deFora: true }));
+    fora = fora.filter((p: any) => p.nivel !== 'tudo');
+    if (abertos.length) data = [...(data || []), ...abertos];
     if (!data?.length && !fora.length) {
       box.innerHTML = `<p class="vazio">${MESTRE
         ? 'Nenhum personagem nesta mesa. Os jogadores criam os seus, você cria o seu, ou monta uma ficha de vaga para entregar depois.'
@@ -293,7 +299,10 @@ import MesaCab from '../../components/MesaCab.astro';
         </div></details>` : '';
 
       const acoes: string[] = [];
-      if (MESTRE || !ehVaga) acoes.push(`<a class="btn mini" href="${u('personagem')}?id=${p.id}">Abrir ficha ›</a>`);
+      // A ficha de outro jogador abre em modo leitura aqui dentro e mais nada:
+      // a página /personagem exige permissão de dono, e mandar para lá seria
+      // oferecer uma porta trancada.
+      if (!p.deFora && (MESTRE || !ehVaga)) acoes.push(`<a class="btn mini" href="${u('personagem')}?id=${p.id}">Abrir ficha ›</a>`);
       if (MESTRE) {
         if (ehVaga) {
           acoes.push(`<button class="btn mini primary" data-atrib="${p.id}" data-nome="${esc(p.nome)}">Atribuir a um jogador…</button>`);
@@ -326,14 +335,14 @@ import MesaCab from '../../components/MesaCab.astro';
         ? `<em>${esc(p.vaga)}</em> · sem dono`
         : `${meu ? 'seu personagem' : esc(nomes[p.dono_id] || 'jogador')}`;
 
-      return `<article class="pc-card${ehVaga ? ' vaga' : ''}">
+      return `<article class="pc-card${ehVaga ? ' vaga' : ''}${p.deFora ? ' de-fora' : ''}">
         <div class="pc-topo">
           <span class="pc-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null)}</span>
           <div class="pc-nome-linha">
-            ${(MESTRE || !ehVaga)
+            ${(!p.deFora && (MESTRE || !ehVaga))
               ? `<a class="pc-nome" href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a>`
               : `<span class="pc-nome">${esc(p.nome || 'Personagem')}</span>`}
-            <span class="selo ${cls}">${rot}</span>
+            <span class="selo ${p.deFora ? 's-fora' : cls}" ${p.deFora ? 'title="Esta mesa compartilha as fichas entre os jogadores"' : ''}>${p.deFora ? 'Do grupo' : rot}</span>
           </div>
           <span class="pc-sub">${esc(p.conceito || '')}${p.conceito ? ' · ' : ''}${quem}${R?.raca ? ' · ' + esc(R.raca) : ''}</span>
           ${nums}
@@ -431,28 +440,39 @@ import MesaCab from '../../components/MesaCab.astro';
    * combine falando.
    */
   async function lerOutros(meus: any[]): Promise<any[]> {
-    const { data, error } = await SB.rpc('grupo_fisico', { p_mesa: ID });
+    const { data, error } = await SB.rpc('grupo_visivel', { p_mesa: ID });
     // Sem a migração 14 a função não existe: a aba volta a mostrar só as
     // minhas fichas, que era o comportamento anterior.
-    if (error) return semMigracao14(error) ? [] : [];
+    if (error) return [];
     const jaVi = new Set(meus.map((p) => p.id));
     return (data || []).filter((p: any) => !jaVi.has(p.id));
   }
 
+  /**
+   * O card de um personagem que não é meu. Quanto ele mostra é decisão da mesa
+   * (painel "Do outro lado do escudo"), e o que chega aqui já vem cortado pelo
+   * banco: no nível "tudo" vem a ficha inteira e o card é o mesmo dos meus.
+   */
   function cardDeFora(p: any, nomes: Record<string, string>, imgs: Record<string, string>) {
-    const fis: [string, number][] = [['Força', p.forca], ['Destreza', p.destreza],
-      ['Vigor', p.vigor], ['Aparência', p.aparencia]];
+    const d = p.dados || {};
+    const n = (k: string) => parseInt(d[k], 10) || 0;
+    const fis = p.nivel === 'fisico'
+      ? [['Força', n('forca')], ['Destreza', n('destreza')], ['Vigor', n('vigor')], ['Aparência', n('aparencia')]] as [string, number][]
+      : [];
+    const dica = p.nivel === 'nada'
+      ? 'A mesa não compartilha as fichas entre os jogadores.'
+      : 'A ficha é do jogador. Daqui você vê o que se vê na pessoa.';
     return `<article class="pc-card de-fora">
       <div class="pc-topo">
         <span class="pc-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null)}</span>
         <div class="pc-nome-linha">
           <span class="pc-nome">${esc(p.nome || 'Personagem')}</span>
-          <span class="selo s-fora" title="A ficha é do jogador; daqui você vê o que se vê por fora">De fora</span>
+          <span class="selo s-fora" title="${esc(dica)}">De fora</span>
         </div>
-        <span class="pc-sub">${esc(p.conceito || '')}${p.conceito ? ' · ' : ''}${esc(nomes[p.dono_id] || 'jogador')}${p.raca ? ' · ' + esc(p.raca) : ''}</span>
-        <div class="atr-linha atr-fora">
-          ${fis.map(([n, v]) => `<span class="atr-cel"><span>${esc(n)}</span><b>${v ?? 0}</b></span>`).join('')}
-        </div>
+        <span class="pc-sub">${esc(p.conceito || '')}${p.conceito ? ' · ' : ''}${esc(nomes[p.dono_id] || 'jogador')}${d.raca ? ' · ' + esc(d.raca) : ''}</span>
+        ${fis.length ? `<div class="atr-linha atr-fora">
+          ${fis.map(([r, v]) => `<span class="atr-cel"><span>${esc(r)}</span><b>${v}</b></span>`).join('')}
+        </div>` : ''}
       </div>
     </article>`;
   }

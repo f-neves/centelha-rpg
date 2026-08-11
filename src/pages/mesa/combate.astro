@@ -348,6 +348,17 @@ import MesaCab from '../../components/MesaCab.astro';
     letter-spacing: .04em; margin-left: .2rem; }
   .cbt.atual .cbt-tick { font-size: var(--fs-h3); }
   .cbt-selo { font-size: calc(var(--fs-micro) * .9); white-space: nowrap; }
+  /* Discreto quando segue a mesa (é a maioria dos cards e não pode virar
+     ruído), dourado quando o combatente tem regra própria, apagado quando ele
+     nem está na tela deles. */
+  .cbt-rev { border: 1px solid transparent; border-radius: 999px; background: none; cursor: pointer;
+    color: var(--ink-soft); padding: .02rem .4rem; opacity: .6; font: inherit;
+    font-size: calc(var(--fs-micro) * .9); transition: opacity .15s, border-color .15s; }
+  .cbt-rev:hover { opacity: 1; border-color: var(--rule); background: var(--panel-2); }
+  .cbt-rev.exc { opacity: 1; color: var(--ink);
+    background: color-mix(in srgb, var(--gold) 26%, transparent); }
+  .cbt-rev.off { opacity: 1; color: var(--ink);
+    background: color-mix(in srgb, var(--ink) 16%, transparent); font-style: italic; }
   .cbt-av { align-self: center; }
   .cbt-av .av { --av-t: 4.4rem; }
   .cbt.atual .cbt-av .av { --av-t: 5.2rem; box-shadow: 0 0 0 2px var(--accent); }
@@ -735,6 +746,29 @@ import MesaCab from '../../components/MesaCab.astro';
     ligarCards();
   }
 
+  /**
+   * O selo de revelação: diz o que os jogadores veem deste combatente e abre o
+   * painel dele num clique.
+   *
+   * Fica no cabeçalho do card e não na fileira de botões porque é sobretudo
+   * INFORMAÇÃO. O mestre precisa saber de relance qual bicho está com regra
+   * própria; virar botão foi só a consequência de já estar ali.
+   */
+  function seloRevelar(c: any) {
+    const exc = !!(c.revelar && (c.revelar.vida || c.revelar.stats != null));
+    const v = revelaVida(c);
+    const comoVe = v === 'numero' ? 'vida à vista' : v === 'estado' ? 'estado' : 'só a cor';
+    const txt = c.oculto ? '🙈 fora da tela' : c.tipo === 'pc' ? '👁' : `👁 ${comoVe}${revelaStats(c) ? ' + números' : ''}`;
+    const dica = c.oculto
+      ? `${c.nome} não aparece na tela dos jogadores: nem na lista de ordem, nem na resposta do banco. Clique para mudar.`
+      : c.tipo === 'pc'
+        ? 'Personagem do grupo: o card aparece inteiro para todos. Clique para tirá-lo da tela deles (o ladino que sumiu na sombra).'
+        : `Os jogadores veem: ${comoVe}${revelaStats(c) ? ', mais os números de ataque e defesa' : ', sem os números'}.`
+          + (exc ? ' Este tem regra própria.' : ' Seguindo o painel da mesa.') + ' Clique para mudar.';
+    return `<button type="button" class="cbt-selo cbt-rev${exc ? ' exc' : ''}${c.oculto ? ' off' : ''}"
+      data-rev1="${c.id}" title="${esc(dica)}">${txt}</button>`;
+  }
+
   function cardCombatente(c: any, atual: boolean) {
     const r = RESUMO[c.id];
     const mostra = verStats(c);
@@ -777,7 +811,6 @@ import MesaCab from '../../components/MesaCab.astro';
       <button class="btn mini ok hp-cura" data-c="${c.id}" title="Curar">＋</button>
       <button class="btn-fant cond-btn" data-c="${c.id}" title="Condições">✚cond</button>
       <button class="btn-fant editc" data-c="${c.id}" title="Editar">✎</button>
-      <button class="btn-fant olho" data-c="${c.id}" title="${c.oculto ? 'Revelar aos jogadores' : 'Esconder dos jogadores'}">${c.oculto ? '🙈' : '👁'}</button>
       <button class="btn-fant fora-btn" data-c="${c.id}" title="${c.ativo === false ? 'Voltar ao combate' : 'Tirar de combate'}">${c.ativo === false ? '↩' : '⏏'}</button>
       <button class="btn-fant perigo rm" data-c="${c.id}" title="Remover do encontro">✕</button>
     </div>` : '';
@@ -794,9 +827,8 @@ import MesaCab from '../../components/MesaCab.astro';
         <span class="cbt-tick">${c.tick}<small>tick</small></span>
         <span class="espaco"></span>
         ${chip}
-        ${c.oculto ? '<span class="cbt-selo" title="Oculto dos jogadores">🙈</span>' : ''}
-        ${(EH_MESTRE && c.revelar && (c.revelar.vida || c.revelar.stats != null))
-          ? `<span class="cbt-selo cbt-rev" title="Este foge da regra da mesa: vida ${esc(c.revelar.vida || 'padrão')}, números ${c.revelar.stats == null ? 'padrão' : (c.revelar.stats ? 'à vista' : 'escondidos')}">👁 exceção</span>` : ''}
+        ${!EH_MESTRE && c.oculto ? '<span class="cbt-selo" title="Oculto dos jogadores">🙈</span>' : ''}
+        ${EH_MESTRE ? seloRevelar(c) : ''}
       </header>
       <div class="cbt-av${cCard}"${aCard}>${avatarDe(c)}</div>
       <div class="cbt-id">
@@ -1067,13 +1099,8 @@ import MesaCab from '../../components/MesaCab.astro';
       await logar(t, 'sistema', verCondJogador(c) ? t : null);
       pintar();
     }));
-    raiz.querySelectorAll<HTMLElement>('.olho').forEach((b) => b.addEventListener('click', async () => {
-      const c = COMBS.find((x) => x.id === b.dataset.c); if (!c) return;
-      c.oculto = !c.oculto;
-      const { error } = await upComb(c.id, { oculto: c.oculto });
-      if (error) return uiErro('A coluna "oculto" ainda não existe. Rode supabase/migracao-11.sql.');
-      pintar();
-    }));
+    raiz.querySelectorAll<HTMLElement>('[data-rev1]').forEach((b) =>
+      b.addEventListener('click', () => abrirRevelarUm(b.dataset.rev1!)));
     raiz.querySelectorAll<HTMLElement>('.fora-btn').forEach((b) => b.addEventListener('click', async () => {
       const c = COMBS.find((x) => x.id === b.dataset.c); if (!c) return;
       c.ativo = c.ativo === false;

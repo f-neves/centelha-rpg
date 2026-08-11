@@ -56,6 +56,15 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     </section>
     */}
 
+    <!-- ============ O QUE OS JOGADORES VEEM ============ -->
+    <section class="bloco">
+      <div class="bloco-cab">
+        <h2>Do outro lado do escudo <small>· o que eles veem</small></h2>
+        <div class="bloco-acoes"><button class="btn mini" id="rev-abrir">Ajustar</button></div>
+      </div>
+      <div id="rev-resumo" class="rev-resumo"></div>
+    </section>
+
     <!-- ================= GANCHOS ================= -->
     <section class="bloco">
       <div class="bloco-cab">
@@ -220,6 +229,15 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
   .rl-seg:hover { filter: brightness(1.2); }
   ---- fim dos relógios ---- */
 
+  /* ---- o que os jogadores veem ---- */
+  .rev-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+  .rev-lista li { display: flex; gap: .45rem; align-items: baseline; font-size: var(--fs-rotulo);
+    border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: var(--r-md);
+    background: var(--panel); padding: .38rem .6rem; cursor: help; }
+  .rev-lista li.muted { border-left-color: var(--rule); }
+  .rev-lista .rl-i { flex: 0 0 auto; opacity: .7; }
+  .rev-lista strong { color: var(--accent-texto); font-weight: 700; }
+
   /* ---- ganchos e notas ---- */
   .gancho-lista, .nota-lista { display: flex; flex-direction: column; gap: .45rem; }
   .gancho { display: flex; gap: .55rem; align-items: flex-start; padding: .5rem .7rem;
@@ -243,8 +261,9 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
 <script>
   import {
     abrirMesa, u, esc, avatarHTML, urlsImagens, hpBarHTML, tierDe, tierCls,
-    condChipHTML, COND, nomesDe, norm, bancoAntigo,
+    condChipHTML, COND, nomesDe, norm, bancoAntigo, revelarDaMesa,
   } from '../lib/mesa-core';
+  import { abrirRevelacao } from '../lib/mesa-revelacao';
   import { resumoFicha } from '../lib/mesa-ficha';
   import { uiConfirmar, uiErro } from '../lib/ui-dialog';
 
@@ -261,6 +280,7 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     }
     if (!ehMestre) el('sec-rolagem').hidden = true;
 
+    pintarRevelacao(ctx);
     await Promise.all([
       pintarCombate(ctx),
       pintarGrupo(ctx),
@@ -474,6 +494,33 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
     dlg.showModal();
   }
   ------------------------------------------------------ fim dos relógios */
+
+  // ------------------------------------------- o que os jogadores veem
+  /**
+   * Três linhas de resumo no Escudo, e o botão que abre o painel.
+   *
+   * Está aqui porque revelação é decisão de preparo, e não de mesa quente: a
+   * hora de decidir se o grupo vê a Vida do dragão é antes de o dragão entrar.
+   * No calor do combate o mesmo painel está a um clique na barra de lá.
+   */
+  function pintarRevelacao(ctx: any) {
+    const desenhar = (r: any) => {
+      const vida = r.vidaInimigo === 'numero' ? 'a Vida em número'
+        : r.vidaInimigo === 'estado' ? 'só o estado da Vida' : 'nada da Vida, só a cor do retrato';
+      const ficha = r.fichaColegas === 'tudo' ? 'a ficha inteira um do outro'
+        : r.fichaColegas === 'nada' ? 'nada da ficha um do outro' : 'só o físico um do outro';
+      el('rev-resumo').innerHTML = `<ul class="rev-lista">
+        <li title="Vale para criaturas e NPCs no rastreador. Um inimigo pode fugir da regra pelo selo 👁 no card dele.">
+          <span class="rl-i">☠</span> Dos inimigos: <strong>${vida}</strong>${r.statsInimigo ? ' e <strong>os números de ataque e defesa</strong>' : ', <strong>sem os números</strong>'}${r.condInimigo ? '' : ', <strong>sem as condições</strong>'}.</li>
+        <li title="A ficha de cada jogador é dele; isto decide quanto dela os companheiros alcançam na aba Grupo.">
+          <span class="rl-i">☗</span> Entre os personagens: <strong>${ficha}</strong>${r.energiaColegas ? ', com Energia e Mana' : ''}.</li>
+        <li class="muted" title="Criaturas, mapas, handouts, compêndio e notas têm interruptor próprio na aba de cada um. O painel mostra o placar.">
+          <span class="rl-i">◈</span> Criaturas, mapas e handouts: cada um se libera na aba dele.</li>
+      </ul>`;
+    };
+    desenhar(revelarDaMesa(ctx.mesa));
+    el('rev-abrir').addEventListener('click', () => abrirRevelacao(ctx, desenhar));
+  }
 
   // ----------------------------------------------------------- ganchos
   async function pintarGanchos({ sb, ehMestre, id }: any) {
