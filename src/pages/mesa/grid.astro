@@ -187,7 +187,11 @@ import MesaCab from '../../components/MesaCab.astro';
   .gr-token { position: absolute; transform: translate(-50%, -50%); cursor: grab;
     display: flex; flex-direction: column; align-items: center; gap: .05rem; touch-action: none; }
   .gr-token.arrastando { opacity: .35; }
-  .gr-token .av { box-shadow: 0 2px 6px rgba(0,0,0,.5); }
+  /* O token é desenhado no TAMANHO FÍSICO dele: `--tok` vem em pixels do mundo,
+     calculados a partir do diâmetro em metros e da escala da arena. É por isso
+     que o mesmo Médio cobre um hexágono na arena de 1 m e dois na de 0,5 m. */
+  .gr-token .av { --av-t: var(--tok, 2.6rem); box-shadow: 0 2px 6px rgba(0,0,0,.5); }
+  .gr-token.mini .gr-tn { display: none; }
   .gr-token .gr-tn { font-size: calc(var(--fs-micro) * .88); line-height: 1; padding: .04rem .25rem;
     border-radius: 999px; background: color-mix(in srgb, var(--bg) 78%, transparent);
     max-width: 6.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -253,7 +257,7 @@ import MesaCab from '../../components/MesaCab.astro';
   import { MON } from '../../lib/mesa-bestiario';
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
-    hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex,
+    hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
 
@@ -401,6 +405,38 @@ import MesaCab from '../../components/MesaCab.astro';
   const pctDe100 = (c: any) => (c.pv_pct != null ? c.pv_pct
     : (c.pv_max && c.pv_atual != null ? pctDe(c.pv_atual, c.pv_max) : null));
 
+  // ------------------------------------------------------ tamanho no chão
+  /**
+   * O diâmetro que cada porte ocupa, em METROS.
+   *
+   * As duas âncoras são da mesa: Médio ocupa 1 m e Grande ocupa 2 m. O resto é a
+   * escada dobrando para os dois lados, que é o que mantém a proporção legível
+   * (um Enorme ao lado de um Médio tem quatro vezes a largura dele, e é assim
+   * que se lê a cena de relance).
+   *
+   * Medir em metros, e não em hexágonos, é o ponto: o token não sabe qual é a
+   * escala da arena. Numa arena de 1 m o Médio cobre um hexágono; na de 0,5 m o
+   * MESMO Médio cobre dois de largura, sem ninguém reconfigurar nada.
+   */
+  const PORTE_M: Record<string, number> = {
+    'Miúdo': 0.25, 'Pequeno': 0.5, 'Médio': 1, 'Grande': 2,
+    'Enorme': 4, 'Imenso': 8, 'Colossal': 16,
+  };
+  /** Diâmetro do combatente em metros. PC e NPC de cena são médios. */
+  const diametroM = (c: any): number =>
+    (c.tipo === 'criatura' ? PORTE_M[MON[c.monstro_id]?.porte] : null) ?? 1;
+
+  /**
+   * Quantos pixels do mundo vale um metro.
+   *
+   * Um passo de hexágono vale `escala_m` metros e mede `larguraHex(RAIO)` px
+   * (a distância de centro a centro entre vizinhos de linha), então a regra de
+   * três sai daí. O zoom não entra: ele é um `scale` no mundo inteiro, e leva
+   * os tokens junto.
+   */
+  const pxPorMetro = () => larguraHex(RAIO) / (Number(ARENA?.escala_m) || 1);
+  const diametroPx = (c: any) => diametroM(c) * pxPorMetro();
+
   function avatarDe(c: any, extra = '') {
     const doPC = c.retrato || PC_IMG[c.personagem_id];
     const src = (c.imagem && IMGS[c.imagem])
@@ -542,8 +578,12 @@ import MesaCab from '../../components/MesaCab.astro';
     box.innerHTML = postos.map((c: any) => {
       const t = TOKENS[c.id];
       const p = centroHex(t.q, t.r, RAIO);
-      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')}${c.oculto ? ' oculto' : ''}"
-        data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px" title="${esc(c.nome)}">
+      const px = diametroPx(c);
+      // Abaixo de uns 34px o nome fica mais largo que a peça e vira sujeira em
+      // cima do vizinho; nesse tamanho o título do mouse dá conta.
+      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}"
+        data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
+        title="${esc(c.nome)} · ${diametroM(c)} m">
         ${avatarDe(c)}<span class="gr-tn">${esc(c.nome)}</span>
       </div>`;
     }).join('');
@@ -618,7 +658,11 @@ import MesaCab from '../../components/MesaCab.astro';
       const ghost = document.createElement('div');
       ghost.className = 'gr-ghost';
       ghost.innerHTML = avatarDe(c);
-      (ghost.firstElementChild as HTMLElement)?.style.setProperty('--av-t', '3rem');
+      // O fantasma é `position: fixed`, então fica FORA do `scale` do mundo: sem
+      // multiplicar pelo zoom, a peça encolheria ao ser levantada e cresceria ao
+      // ser solta. Com ele, o que se arrasta tem o tamanho do que vai pousar.
+      (ghost.firstElementChild as HTMLElement)?.style
+        .setProperty('--av-t', `${(diametroPx(c) * ZOOM).toFixed(1)}px`);
       document.body.appendChild(ghost);
       moverGhost(ghost, ev.clientX, ev.clientY);
 
@@ -804,8 +848,27 @@ import MesaCab from '../../components/MesaCab.astro';
       <text class="seta-sub" x="${mx.toFixed(1)}" y="${(my + 13).toFixed(1)}">${passos} hex</text>`;
   }
   const limparSeta = () => { const g = document.getElementById('gr-seta'); if (g) g.innerHTML = ''; };
-  const ocupadoPor = (q: number, r: number, exceto?: string) =>
-    Object.entries(TOKENS).some(([cid, t]) => cid !== exceto && t.q === q && t.r === r);
+  /**
+   * Se este ponto está tomado. A conta é em METROS, e não em hexágonos.
+   *
+   * Comparar a casa exata funcionava enquanto todo mundo ocupava um hexágono.
+   * Com o token no tamanho físico, dois Médios numa arena de 0,5 m ficariam
+   * montados um no outro em casas vizinhas, porque cada um tem 1 m de largura e
+   * as casas distam 0,5 m. A regra é a de dois círculos: encostam quando a
+   * distância entre os centros é menor que a soma dos raios.
+   */
+  function ocupadoPor(q: number, r: number, exceto?: string) {
+    const escala = Number(ARENA?.escala_m) || 1;
+    const meu = exceto ? COMBS.find((x: any) => x.id === exceto) : null;
+    const raioMeu = (meu ? diametroM(meu) : 1) / 2;
+    return Object.entries(TOKENS).some(([cid, t]) => {
+      if (cid === exceto) return false;
+      const outro = COMBS.find((x: any) => x.id === cid);
+      if (!outro) return false;
+      const metros = distanciaHex({ q, r }, t) * escala;
+      return metros + 1e-9 < raioMeu + diametroM(outro) / 2;
+    });
+  }
 
   // ============================================================== gravar
   async function porNoMapa(cid: string, q: number, r: number, registrar = true) {
