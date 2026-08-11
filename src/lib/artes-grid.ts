@@ -11,7 +11,7 @@ import ARTES_D from '../data/artes.json';
 import EFEITOS_D from '../data/efeitos.json';
 import COND_D from '../data/condicoes.json';
 import { regras } from './calc';
-import { centroHex, distanciaHex, dentro, type Hex } from './hex';
+import { centroHex, distanciaHex, dentro, vizinhos, type Hex } from './hex';
 
 // ============================================================ os dados crus
 export interface Arte {
@@ -263,7 +263,48 @@ export function artesDe(fonte: { arte?: Record<string, number>; artes?: { id: st
 }
 
 // ==================================================== o desenho no tabuleiro
-export type Molde = 'circulo' | 'linha' | 'leque';
+/**
+ * A figura que o efeito ocupa no chão.
+ *
+ * O tabuleiro é feito de hexágonos, mas o efeito NÃO é: um círculo de fogo é um
+ * círculo, e desenhá-lo como um punhado de hexágonos pintados é desenhar a
+ * aproximação no lugar da coisa. Aqui a figura é geometria de verdade, em
+ * METROS, ancorada no centro de um hexágono escolhido. Quem está dentro sai de
+ * um teste de ponto na figura, e não de pertencer a uma lista de casas.
+ *
+ * Todos os campos em metros; `dir` em radianos, medida da horizontal para a
+ * direita e crescendo para baixo, que é o sentido da tela.
+ */
+export type Molde = 'circulo' | 'linha' | 'retangulo' | 'leque';
+
+export interface Figura {
+  tipo: Molde | 'arena' | 'ponto';
+  /**
+   * A âncora, EM METROS, no plano comum. É o miolo do círculo, a ponta da faixa,
+   * o bico do leque.
+   *
+   * Um ponto, e não um hexágono: a figura pode nascer no centro de uma casa ou
+   * num VÉRTICE dela. O vértice é o que permite pôr o círculo exatamente entre
+   * quatro corpos, ou encostar a faixa na parede em vez de no meio do corredor.
+   */
+  ax: number;
+  ay: number;
+  /** A casa mais próxima da âncora. Só para dizer o lugar em voz alta ("D5"). */
+  q: number;
+  r: number;
+  raioM?: number;          // círculo e leque
+  comprimentoM?: number;   // linha e retângulo (o lado que segue a direção)
+  larguraM?: number;       // linha (1 m) e retângulo (o lado escolhido)
+  dir?: number;            // radianos: para onde a figura aponta
+  aberturaGraus?: number;  // leque
+}
+
+/** A largura padrão da faixa: um metro, como a mesa decidiu. */
+export const LARGURA_LINHA = 1;
+/** O lado mínimo de um retângulo. Menos que isto não é chão, é risco. */
+export const LADO_MINIMO = 1;
+/** As aberturas oferecidas ao leque. */
+export const ANGULOS = [45, 60, 90, 120, 180];
 
 /** A arena inteira, para o Efeito de escala de região. */
 export function hexesDaArena(cols: number, rows: number): Hex[] {
@@ -274,13 +315,9 @@ export function hexesDaArena(cols: number, rows: number): Hex[] {
   return out;
 }
 
-// ------------------------------------------------------- geometria de verdade
+// --------------------------------------------------------- o plano em metros
 /**
  * Onde o centro de um hexágono cai, EM METROS, num plano comum.
- *
- * A conta de `distanciaHex` conta PASSOS, e passo não é figura: um "raio de 3"
- * contado em passos desenha um hexágono, não um círculo. Para a forma da área o
- * que vale é a posição real no chão, e é ela que sai daqui.
  *
  * `centroHex(q, r, 1)` devolve o centro com raio 1, e nessa escala dois vizinhos
  * de linha distam √3. Dividir por √3 converte para passos, e multiplicar pela
@@ -299,95 +336,76 @@ export const distanciaEmMetros = (a: Hex, b: Hex, escalaM: number): number => {
 };
 
 /**
- * As casas de uma janela quadrada em volta do centro, para varrer sem percorrer
- * a arena inteira. `alcanceM` é o raio da busca, com uma folga de uma casa.
+ * Um lugar onde a figura pode nascer: o centro de uma casa ou um vértice dela.
+ *
+ * O vértice é o que permite pôr o círculo exatamente entre quatro corpos, ou
+ * encostar a ponta da faixa na quina da parede. Sem ele, toda figura nasceria no
+ * meio de uma casa, e metade das posições que a mesa quer seriam impossíveis.
  */
-function candidatos(centro: Hex, alcanceM: number, escalaM: number, cols: number, rows: number): Hex[] {
-  const passos = Math.ceil(alcanceM / Math.max(0.01, escalaM)) + 1;
-  const out: Hex[] = [];
-  for (let dq = -passos * 2; dq <= passos * 2; dq++) {
-    for (let dr = -passos; dr <= passos; dr++) {
-      const h = { q: centro.q + dq, r: centro.r + dr };
-      if (dentro(h, cols, rows)) out.push(h);
-    }
+export interface Encaixe {
+  x: number; y: number;      // em metros, no plano comum
+  hex: Hex;                  // a casa mais próxima, para dizer o lugar
+  tipo: 'centro' | 'vertice';
+}
+
+/** O circunraio de um hexágono, em metros: do centro até a ponta. */
+export const raioEmMetros = (escalaM: number) => escalaM / RAIZ3;
+
+/** Os sete encaixes de uma casa: o centro e os seis vértices. */
+export function encaixesDoHex(h: Hex, escalaM: number): Encaixe[] {
+  const c = centroEmMetros(h, escalaM);
+  const R = raioEmMetros(escalaM);
+  const out: Encaixe[] = [{ x: c.x, y: c.y, hex: h, tipo: 'centro' }];
+  for (let i = 0; i < 6; i++) {
+    // −90° para a primeira ponta cair em cima, 60° de passo: a mesma convenção
+    // de `verticesHex`, senão o encaixe cairia fora do desenho.
+    const a = (Math.PI / 180) * (60 * i - 90);
+    out.push({ x: c.x + R * Math.cos(a), y: c.y + R * Math.sin(a), hex: h, tipo: 'vertice' });
   }
   return out;
 }
 
 /**
- * Um CÍRCULO de verdade: toda casa cujo centro está a até `raioM` do centro.
+ * O encaixe mais perto de um ponto solto.
  *
- * A borda fica serrilhada, e tem de ficar: o tabuleiro é feito de hexágonos, e
- * o que se pode prometer é que a casa entra quando o meio dela está dentro do
- * círculo. É a mesma régua que qualquer mesa usa com um barbante.
+ * Olha a casa debaixo do ponto e as seis vizinhas: um vértice pertence a três
+ * casas ao mesmo tempo, e considerar só a de baixo faria o encaixe pular quando
+ * o ponteiro cruzasse a aresta.
  */
-export function hexesEmCirculo(
-  centro: Hex, raioM: number, escalaM: number, cols: number, rows: number,
-): Hex[] {
-  const r = Math.max(0, raioM);
-  return candidatos(centro, r, escalaM, cols, rows)
-    .filter((h) => distanciaEmMetros(centro, h, escalaM) <= r + 1e-9);
+export function encaixeMaisProximo(
+  p: { x: number; y: number }, hexDebaixo: Hex, escalaM: number,
+): Encaixe {
+  const cand: Encaixe[] = [...encaixesDoHex(hexDebaixo, escalaM)];
+  for (const v of vizinhos(hexDebaixo)) cand.push(...encaixesDoHex(v, escalaM));
+  let melhor = cand[0], dist = Infinity;
+  for (const e of cand) {
+    const d = Math.hypot(e.x - p.x, e.y - p.y);
+    // Empate vai para o centro: ele é o lugar previsível, e o vértice é a
+    // exceção que a pessoa busca de propósito.
+    if (d < dist - 1e-9 || (Math.abs(d - dist) < 1e-9 && e.tipo === 'centro')) {
+      dist = d; melhor = e;
+    }
+  }
+  return melhor;
 }
 
-/**
- * Uma LINHA de verdade: um retângulo de `larguraM` de largura e `comprimentoM`
- * de comprimento, saindo do centro escolhido na direção da mira.
- *
- * A conta é a distância de cada centro ao SEGMENTO, e não a uma sequência de
- * casas: assim a faixa sai reta em qualquer direção, inclusive nas diagonais em
- * que uma cadeia de vizinhos serpentearia.
- */
-export function hexesEmLinha(
-  centro: Hex, mira: Hex, comprimentoM: number, escalaM: number,
-  cols: number, rows: number, larguraM = 1,
-): Hex[] {
-  const o = centroEmMetros(centro, escalaM);
-  const m = centroEmMetros(mira, escalaM);
-  const dx = m.x - o.x, dy = m.y - o.y;
-  const norma = Math.hypot(dx, dy) || 1;
-  const ux = dx / norma, uy = dy / norma;
-  const meia = Math.max(larguraM, escalaM) / 2;
-  return candidatos(centro, comprimentoM, escalaM, cols, rows).filter((h) => {
-    const p = centroEmMetros(h, escalaM);
-    // projeção sobre a direção (quanto andou) e afastamento perpendicular
-    const ao = (p.x - o.x) * ux + (p.y - o.y) * uy;
-    const lado = Math.abs((p.x - o.x) * -uy + (p.y - o.y) * ux);
-    return ao >= -escalaM / 2 && ao <= comprimentoM + 1e-9 && lado <= meia + 1e-9;
-  });
+/** O encaixe do centro de uma casa, para quem não escolhe ponto. */
+export const encaixeNoCentro = (h: Hex, escalaM: number): Encaixe => {
+  const c = centroEmMetros(h, escalaM);
+  return { x: c.x, y: c.y, hex: h, tipo: 'centro' };
+};
+
+/** A direção de `a` para `b`, em radianos, no plano em metros. */
+export function direcaoEntre(a: Hex, b: Hex, escalaM: number): number {
+  const p = centroEmMetros(a, escalaM), q = centroEmMetros(b, escalaM);
+  return Math.atan2(q.y - p.y, q.x - p.x);
 }
 
-/**
- * Um LEQUE de verdade: setor de círculo com ângulo e raio.
- *
- * O ângulo é medido no plano em metros, e não em coordenada axial: em axial os
- * seis vizinhos não estão a 60° uns dos outros na tela, e um leque montado
- * assim sairia torto justamente na diagonal.
- */
-export function hexesEmLeque(
-  centro: Hex, mira: Hex, raioM: number, anguloGraus: number, escalaM: number,
-  cols: number, rows: number,
-): Hex[] {
-  const o = centroEmMetros(centro, escalaM);
-  const m = centroEmMetros(mira, escalaM);
-  const dir = Math.atan2(m.y - o.y, m.x - o.x);
-  const meia = (Math.max(1, Math.min(360, anguloGraus)) / 2) * (Math.PI / 180);
-  return candidatos(centro, raioM, escalaM, cols, rows).filter((h) => {
-    const p = centroEmMetros(h, escalaM);
-    const d = Math.hypot(p.x - o.x, p.y - o.y);
-    if (d > raioM + 1e-9) return false;
-    // A casa de origem entra sempre: o leque sai de dentro dela.
-    if (d < 1e-9) return true;
-    let dif = Math.abs(Math.atan2(p.y - o.y, p.x - o.x) - dir);
-    if (dif > Math.PI) dif = 2 * Math.PI - dif;
-    return dif <= meia + 1e-9;
-  });
-}
-
-// ------------------------------------------- da área comprada para a figura
+// --------------------------------------------- da área comprada para a figura
 /** O raio do círculo que tem esta área. */
 export const raioDoCirculo = (areaM2: number) => Math.sqrt(Math.max(0, areaM2) / Math.PI);
 /** O comprimento da faixa que tem esta área, na largura dada. */
-export const comprimentoDaLinha = (areaM2: number, larguraM = 1) =>
+export const comprimentoDaLinha = (areaM2: number, larguraM = LARGURA_LINHA) =>
   Math.max(0, areaM2) / Math.max(0.1, larguraM);
 /** O raio do setor que tem esta área, na abertura dada. */
 export const raioDoLeque = (areaM2: number, anguloGraus: number) => {
@@ -395,78 +413,151 @@ export const raioDoLeque = (areaM2: number, anguloGraus: number) => {
   return Math.sqrt((2 * Math.max(0, areaM2)) / t);
 };
 
-/** A largura padrão da faixa: um metro, como a mesa decidiu. */
-export const LARGURA_LINHA = 1;
-/** As aberturas oferecidas ao leque. */
-export const ANGULOS = [45, 60, 90, 120, 180];
+const um = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replace('.', ','));
 
 /**
- * A figura que a área comprada vira, já em metros, para a tela poder dizê-la
- * antes de o efeito cair ("círculo de 2,3 m de raio", "linha de 16 m").
+ * Monta a figura a partir da área comprada.
+ *
+ * A ÁREA é o orçamento e o molde é o desenho: nenhum molde pode render mais
+ * chão que o outro. O que a pessoa escolhe é como gastar: a abertura do leque
+ * (que troca alcance por largura) e o lado do retângulo (que troca comprimento
+ * por profundidade). O outro lado sai da divisão, e nunca de um número solto.
  */
-export function figuraDaArea(molde: Molde, areaM2: number, anguloGraus = 90): {
-  rotulo: string; raioM: number; comprimentoM: number;
-} {
-  const um = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replace('.', ','));
+export function figuraDaArea(opts: {
+  molde: Molde; areaM2: number; ancora: Encaixe; dir?: number;
+  aberturaGraus?: number; ladoM?: number; raioProprioM?: number;
+}): Figura {
+  const { molde, ancora } = opts;
+  const base = {
+    ax: ancora.x, ay: ancora.y, q: ancora.hex.q, r: ancora.hex.r, dir: opts.dir ?? 0,
+  };
+  // A Aura compra um RAIO, e não uma área: nada a converter.
+  if (opts.raioProprioM) return { tipo: 'circulo', ...base, raioM: opts.raioProprioM };
+  const A = Math.max(0, opts.areaM2);
   if (molde === 'linha') {
-    const c = comprimentoDaLinha(areaM2, LARGURA_LINHA);
-    return { rotulo: `linha de ${um(c)} m × ${LARGURA_LINHA} m`, raioM: 0, comprimentoM: c };
+    return { tipo: 'linha', ...base, larguraM: LARGURA_LINHA, comprimentoM: comprimentoDaLinha(A) };
+  }
+  if (molde === 'retangulo') {
+    const lado = Math.max(LADO_MINIMO, opts.ladoM ?? LADO_MINIMO);
+    return { tipo: 'retangulo', ...base, larguraM: lado, comprimentoM: A / lado };
   }
   if (molde === 'leque') {
-    const r = raioDoLeque(areaM2, anguloGraus);
-    return { rotulo: `leque de ${anguloGraus}° com ${um(r)} m de raio`, raioM: r, comprimentoM: 0 };
+    const ab = opts.aberturaGraus ?? 90;
+    return { tipo: 'leque', ...base, aberturaGraus: ab, raioM: raioDoLeque(A, ab) };
   }
-  const r = raioDoCirculo(areaM2);
-  return { rotulo: `círculo de ${um(r)} m de raio`, raioM: r, comprimentoM: 0 };
+  return { tipo: 'circulo', ...base, raioM: raioDoCirculo(A) };
+}
+
+/** A figura dita em palavras, para a caixa e para o registro. */
+export function rotuloDaFigura(f: Figura): string {
+  if (f.tipo === 'arena') return 'a arena inteira';
+  if (f.tipo === 'circulo') return `círculo de ${um(f.raioM || 0)} m de raio`;
+  if (f.tipo === 'linha') return `faixa de ${um(f.comprimentoM || 0)} m × ${um(f.larguraM || 1)} m`;
+  if (f.tipo === 'retangulo') {
+    return `retângulo de ${um(f.larguraM || 1)} m × ${um(f.comprimentoM || 0)} m`;
+  }
+  if (f.tipo === 'leque') return `leque de ${f.aberturaGraus}° com ${um(f.raioM || 0)} m de raio`;
+  return 'um ponto';
+}
+
+// -------------------------------------------------------- quem está dentro
+/**
+ * Um ponto (em metros) está dentro da figura?
+ *
+ * É este teste que decide quem a Arte pega, e ele roda na FIGURA, e não numa
+ * lista de casas: uma criatura no meio do círculo está dentro do círculo, e não
+ * "num hexágono que o rasterizador achou por bem incluir".
+ */
+export function pontoNaFigura(f: Figura, p: { x: number; y: number }): boolean {
+  const dx = p.x - f.ax, dy = p.y - f.ay;
+  if (f.tipo === 'arena') return true;
+  if (f.tipo === 'circulo') return Math.hypot(dx, dy) <= (f.raioM || 0) + 1e-9;
+  if (f.tipo === 'leque') {
+    const d = Math.hypot(dx, dy);
+    if (d > (f.raioM || 0) + 1e-9) return false;
+    if (d < 1e-9) return true;
+    const meia = ((f.aberturaGraus || 90) / 2) * (Math.PI / 180);
+    let dif = Math.abs(Math.atan2(dy, dx) - (f.dir || 0));
+    if (dif > Math.PI) dif = 2 * Math.PI - dif;
+    return dif <= meia + 1e-9;
+  }
+  if (f.tipo === 'linha' || f.tipo === 'retangulo') {
+    // Gira o ponto para o referencial da faixa: aí ela vira um retângulo reto,
+    // e o teste é uma comparação de dois números.
+    const c = Math.cos(-(f.dir || 0)), s = Math.sin(-(f.dir || 0));
+    const ao = dx * c - dy * s;               // quanto andou na direção
+    const lado = Math.abs(dx * s + dy * c);   // quanto se afastou do eixo
+    return ao >= -1e-9 && ao <= (f.comprimentoM || 0) + 1e-9
+      && lado <= (f.larguraM || LARGURA_LINHA) / 2 + 1e-9;
+  }
+  return false;
+}
+
+/** Se o centro deste hexágono cai dentro da figura. */
+export function hexNaFigura(f: Figura, h: Hex, escalaM: number): boolean {
+  return pontoNaFigura(f, centroEmMetros(h, escalaM));
 }
 
 /**
- * Onde o efeito cai.
+ * As casas que a figura toca, para quem precisar de uma lista: o registro, e os
+ * efeitos gravados antes de a figura existir.
  *
- * `centro` é onde a figura começa (o conjurador, ou o hexágono que a pessoa
- * escolheu) e `mira` é para onde ela aponta, que só importa em linha e leque.
- *
- * A ÁREA comprada é o orçamento, e o molde decide o desenho: a mesma área vira
- * um círculo largo, uma faixa comprida de um metro ou um leque de abertura
- * escolhida. Um molde não pode render mais chão que o outro, e é por isso que o
- * raio e o comprimento saem da área, e não de um número solto.
+ * O desenho NÃO passa por aqui. Quem desenha é `caminhoDaFigura`, com a forma.
  */
-export function hexesDoEfeito(opts: {
-  forma: Forma; molde: Molde; centro: Hex; mira?: Hex | null;
-  areaM2?: number; raioM?: number; comprimentoM?: number; anguloGraus?: number;
-  arenaInteira?: boolean; escalaM: number; cols: number; rows: number;
-}): Hex[] {
-  const { forma, molde, centro, mira, escalaM, cols, rows } = opts;
-  const ang = opts.anguloGraus ?? 90;
-  const area = opts.areaM2 ?? escalaM * escalaM;
-  // Escala de região: o Inverno cai sobre a região, e qualquer arena cabe nele.
-  // Desenhar um quadrado medido no meio do mapa mentiria sobre o alcance.
-  if (opts.arenaInteira) return hexesDaArena(cols, rows);
-  // A aura já compra um RAIO, e não uma área: nada a converter.
-  if (forma === 'aura') return hexesEmCirculo(centro, opts.raioM ?? 1, escalaM, cols, rows);
-  // O muro compra um comprimento, e é uma faixa de um metro.
-  if (forma === 'muro') {
-    const c = opts.comprimentoM ?? escalaM;
-    return mira ? hexesEmLinha(centro, mira, c, escalaM, cols, rows, LARGURA_LINHA) : [centro];
-  }
-  if (forma === 'linha') {
-    return mira
-      ? hexesEmLinha(centro, mira, comprimentoDaLinha(area, LARGURA_LINHA), escalaM, cols, rows, LARGURA_LINHA)
-      : [centro];
-  }
-  if (forma === 'cone') {
-    return mira ? hexesEmLeque(centro, mira, raioDoLeque(area, ang), ang, escalaM, cols, rows) : [centro];
-  }
-  if (forma === 'zona') {
-    if (molde === 'linha' && mira) {
-      return hexesEmLinha(centro, mira, comprimentoDaLinha(area, LARGURA_LINHA), escalaM, cols, rows, LARGURA_LINHA);
+export function hexesDaFigura(f: Figura, escalaM: number, cols: number, rows: number): Hex[] {
+  if (f.tipo === 'arena') return hexesDaArena(cols, rows);
+  const alcance = Math.max(f.raioM || 0, f.comprimentoM || 0, f.larguraM || 0) + escalaM * 2;
+  const passos = Math.ceil(alcance / Math.max(0.01, escalaM)) + 1;
+  const out: Hex[] = [];
+  for (let dq = -passos * 2; dq <= passos * 2; dq++) {
+    for (let dr = -passos; dr <= passos; dr++) {
+      const h = { q: f.q + dq, r: f.r + dr };
+      if (dentro(h, cols, rows) && hexNaFigura(f, h, escalaM)) out.push(h);
     }
-    if (molde === 'leque' && mira) {
-      return hexesEmLeque(centro, mira, raioDoLeque(area, ang), ang, escalaM, cols, rows);
-    }
-    return hexesEmCirculo(centro, raioDoCirculo(area), escalaM, cols, rows);
   }
-  return [centro];
+  return out;
+}
+
+// ---------------------------------------------------------------- o traço
+/**
+ * A figura como SVG, em pixels do mundo.
+ *
+ * `pxPorM` converte metro em pixel e `margem` põe a origem onde a aba desenhou o
+ * hexágono (0,0). Sai UM elemento por efeito: um `<circle>` é um círculo, e
+ * nenhuma quantidade de hexágonos pintados vira um.
+ */
+export function caminhoDaFigura(
+  f: Figura, opts: { raioHexPx: number; pxPorM: number; margem: { x: number; y: number } },
+): string {
+  const { pxPorM, margem } = opts;
+  // Metro vira pixel direto: a conversão é exata porque o plano em metros e o
+  // plano em pixels do mundo só diferem por esta escala.
+  const cx = f.ax * pxPorM + margem.x, cy = f.ay * pxPorM + margem.y;
+  const n = (v: number) => v.toFixed(2);
+  if (f.tipo === 'circulo') {
+    return `<circle cx="${n(cx)}" cy="${n(cy)}" r="${n((f.raioM || 0) * pxPorM)}" />`;
+  }
+  if (f.tipo === 'linha' || f.tipo === 'retangulo') {
+    const comp = (f.comprimentoM || 0) * pxPorM;
+    const larg = (f.larguraM || LARGURA_LINHA) * pxPorM;
+    const graus = ((f.dir || 0) * 180) / Math.PI;
+    // O retângulo nasce deitado, com a ponta esquerda na âncora, e gira em volta
+    // dela: assim a origem escolhida é mesmo a origem, e não o meio da peça.
+    return `<rect x="${n(cx)}" y="${n(cy - larg / 2)}" width="${n(comp)}" height="${n(larg)}"`
+      + ` transform="rotate(${n(graus)} ${n(cx)} ${n(cy)})" />`;
+  }
+  if (f.tipo === 'leque') {
+    const R = (f.raioM || 0) * pxPorM;
+    const ab = f.aberturaGraus || 90;
+    if (ab >= 360) return `<circle cx="${n(cx)}" cy="${n(cy)}" r="${n(R)}" />`;
+    const meia = (ab / 2) * (Math.PI / 180);
+    const a1 = (f.dir || 0) - meia, a2 = (f.dir || 0) + meia;
+    const x1 = cx + R * Math.cos(a1), y1 = cy + R * Math.sin(a1);
+    const x2 = cx + R * Math.cos(a2), y2 = cy + R * Math.sin(a2);
+    return `<path d="M ${n(cx)} ${n(cy)} L ${n(x1)} ${n(y1)}`
+      + ` A ${n(R)} ${n(R)} 0 ${ab > 180 ? 1 : 0} 1 ${n(x2)} ${n(y2)} Z" />`;
+  }
+  return '';
 }
 
 // ============================================================== o dano
@@ -546,6 +637,9 @@ export interface EfeitoAtivo {
   nome: string;
   forma: Forma;
   molde: Molde;
+  /** A figura geométrica que o efeito ocupa. Null nos efeitos que não têm chão. */
+  figura: Figura | null;
+  /** As casas que a figura toca. Consequência dela, e não fonte: ver `hexesDaFigura`. */
   hexes: { q: number; r: number }[];
   centro: { q: number; r: number } | null;
   raio_m: number | null;
@@ -583,8 +677,16 @@ export const jaMordido = (ef: EfeitoAtivo, cid: string, tickAtual: number): bool
 
 /** Quem está dentro do efeito, dada a posição de cada token. */
 export function dentroDoEfeito(
-  ef: EfeitoAtivo, tokens: Record<string, { q: number; r: number }>,
+  ef: EfeitoAtivo, tokens: Record<string, { q: number; r: number }>, escalaM = 1,
 ): string[] {
+  // Pela FIGURA quando ela existe: quem está no meio do círculo está no círculo,
+  // e não "numa casa que o rasterizador achou por bem incluir". A lista de casas
+  // continua atendendo os efeitos gravados antes de a figura existir.
+  if (ef.figura && ef.figura.tipo) {
+    return Object.entries(tokens)
+      .filter(([, t]) => pontoNaFigura(ef.figura!, centroEmMetros(t, escalaM)))
+      .map(([cid]) => cid);
+  }
   const casas = new Set((ef.hexes || []).map((h) => `${h.q},${h.r}`));
   return Object.entries(tokens)
     .filter(([, t]) => casas.has(`${t.q},${t.r}`))

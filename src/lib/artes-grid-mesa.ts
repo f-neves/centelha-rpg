@@ -8,16 +8,20 @@ import { esc, novoId, somarCondicoes, COND, tierDe } from './mesa-core';
 import { MON } from './mesa-bestiario';
 import { uiErro, uiConfirmar, uiEscolher } from './ui-dialog';
 import {
-  EFEITO, ARTE, CONDICAO, hexesDoEfeito, figuraDaArea, danoNoAlvo, rolar,
+  EFEITO, ARTE, CONDICAO, figuraDaArea, rotuloDaFigura, caminhoDaFigura,
+  hexesDaFigura, pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
+  raioEmMetros, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito,
-  rotuloDuracao, TICKS_POR_TURNO, type EfeitoAtivo, type Forma,
+  rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA,
+  type EfeitoAtivo, type Forma, type Figura, type Encaixe,
 } from './artes-grid';
 import {
   abrirConjuracao, abrirNPC, abrirEmpurroes, escolherItem, itensDoAlvo,
   npcVazio, type Plano, type Empurrado,
 } from './artes-grid-ui';
 import {
-  centroHex, verticesHex, margemTabuleiro, medidaTabuleiro, distanciaHex, nomeHex, type Hex,
+  centroHex, verticesHex, margemTabuleiro, medidaTabuleiro, larguraHex,
+  distanciaHex, nomeHex, type Hex,
 } from './hex';
 
 /** O que a aba Grid empresta. Tudo o que este módulo não tem como saber sozinho. */
@@ -93,6 +97,17 @@ const corDe = (ef: EfeitoAtivo) => ARTE[ef.arte_id]?.grid?.cor || ELEM_COR[ef.el
  */
 function ajustarQuadro(ctx: CtxGrid, svg: SVGElement | null): void {
   if (!svg) return;
+  // COPIAR o quadro da camada dos hexágonos, e não recalculá-lo.
+  //
+  // Recalcular já saiu errado duas vezes, e a segunda foi sutil: a aba desenha
+  // os hexágonos deslocados pela moldura dos rótulos mas mantém o `viewBox` no
+  // tamanho sem moldura. Dois viewBox diferentes sobre a mesma caixa dão escalas
+  // diferentes, e o desencontro CRESCE conforme se afasta do canto — que é
+  // exatamente a cara de "está um pouco deslocado". Copiando, as camadas passam
+  // a ser iguais por construção, qualquer que seja a conta lá.
+  const hexes = document.getElementById('gr-hexes');
+  const vb = hexes?.getAttribute('viewBox');
+  if (vb) { svg.setAttribute('viewBox', vb); return; }
   const med = ctx.medida?.() ?? medidaTabuleiro(ctx.arena.cols, ctx.arena.rows, ctx.raio);
   svg.setAttribute('viewBox', `0 0 ${med.largura} ${med.altura}`);
 }
@@ -113,21 +128,88 @@ export function pintarEfeitos(ctx: CtxGrid, svg: SVGElement): void {
   ajustarQuadro(ctx, svg);
   ajustarQuadro(ctx, document.getElementById('gr-previa') as unknown as SVGElement | null);
   const t = tickAtual(ctx);
-  const mg = margemDe(ctx);
   const vivos = ATIVOS.filter((e) => !venceu(e, t));
   svg.innerHTML = vivos.map((ef) => {
-    const cor = corDe(ef);
-    const casas = (ef.hexes || []).map((h) => {
-      const c = centroHex(h.q, h.r, ctx.raio);
-      // 0,94 do raio deixa um fio de chão entre casas vizinhas: sem isso a
-      // mancha vira um borrão e ninguém conta quantos hexágonos ela cobre.
-      return `<polygon points="${verticesHex(c.x + mg.x, c.y + mg.y, ctx.raio * 0.94)}" />`;
-    }).join('');
     const restam = turnosRestantes(ef, t);
     return `<g class="gr-ef gr-ef-${esc(ef.forma)}" data-ef="${esc(ef.id)}"
-      style="--ef-cor:${cor}" opacity="${restam <= 1 ? 0.55 : 1}">
-      <title>${esc(ef.nome)} · ${esc(rotuloDuracao(restam))}</title>${casas}</g>`;
+      style="--ef-cor:${corDe(ef)}" opacity="${restam <= 1 ? 0.55 : 1}">
+      <title>${esc(ef.nome)} · ${esc(rotuloDuracao(restam))}</title>${tracoDe(ctx, ef)}</g>`;
   }).join('');
+}
+
+/**
+ * O traço de um efeito: a FIGURA quando ela existe, as casas quando não.
+ *
+ * A lista de casas continua sendo lida porque os efeitos gravados antes de a
+ * figura existir só têm ela. Efeito novo desenha um `<circle>`, um `<rect>` ou
+ * um setor, e não uma colcha de hexágonos aproximando a forma.
+ */
+function tracoDe(ctx: CtxGrid, ef: EfeitoAtivo): string {
+  if (ef.figura && ef.figura.tipo) {
+    if (ef.figura.tipo === 'arena') return casasHTML(ctx, hexesDaArenaDe(ctx));
+    return caminhoDaFigura(ef.figura, quadro(ctx));
+  }
+  return casasHTML(ctx, ef.hexes || []);
+}
+
+const hexesDaArenaDe = (ctx: CtxGrid): Hex[] => {
+  const out: Hex[] = [];
+  for (let row = 0; row < ctx.arena.rows; row++) {
+    for (let col = 0; col < ctx.arena.cols; col++) out.push({ q: col - Math.floor(row / 2), r: row });
+  }
+  return out;
+};
+
+/** Um polígono por casa. Só para a arena inteira e para o que veio de antes. */
+function casasHTML(ctx: CtxGrid, hexes: { q: number; r: number }[]): string {
+  const mg = margemDe(ctx);
+  return hexes.map((h) => {
+    const c = centroHex(h.q, h.r, ctx.raio);
+    return `<polygon points="${verticesHex(c.x + mg.x, c.y + mg.y, ctx.raio * 0.94)}" />`;
+  }).join('');
+}
+
+/** O que `caminhoDaFigura` precisa para converter metro em pixel do mundo. */
+const quadro = (ctx: CtxGrid) => ({
+  raioHexPx: ctx.raio,
+  pxPorM: larguraHex(ctx.raio) / (Number(ctx.arena?.escala_m) || 1),
+  margem: margemDe(ctx),
+});
+
+/**
+ * Onde o ponteiro está, EM METROS, no mesmo plano da figura.
+ *
+ * O caminho é: pixel da tela → pixel do mundo (descontando o zoom e a rolagem)
+ * → metro. `hexNaTela` da aba só devolve a casa, e casa não basta desde que a
+ * âncora pode cair num vértice.
+ */
+function ponteiroEmMetros(ctx: CtxGrid, ev: PointerEvent | null): { x: number; y: number } | null {
+  const mundo = document.getElementById('gr-mundo');
+  if (!ev || !mundo) return null;
+  const cai = mundo.getBoundingClientRect();
+  // O zoom é um `scale` no mundo, então a caixa medida já vem escalada: a razão
+  // entre ela e a largura de layout devolve o fator sem consultar a aba.
+  const zoom = (cai.width / (mundo.offsetWidth || cai.width)) || 1;
+  const q = quadro(ctx);
+  const mg = q.margem;
+  return {
+    x: ((ev.clientX - cai.left) / zoom - mg.x) / q.pxPorM,
+    y: ((ev.clientY - cai.top) / zoom - mg.y) / q.pxPorM,
+  };
+}
+
+/** O encaixe (centro ou vértice) mais perto do ponteiro. */
+function encaixeDoPonteiro(ctx: CtxGrid, ev: PointerEvent | null, casa: Hex): Encaixe {
+  const p = ponteiroEmMetros(ctx, ev);
+  if (!p) return encaixeNoCentro(casa, escalaM(ctx));
+  return encaixeMaisProximo(p, casa, escalaM(ctx));
+}
+
+/** A marca do encaixe, para a pessoa ver onde a figura vai grudar. */
+function marcaEncaixe(ctx: CtxGrid, e: Encaixe): string {
+  const q = quadro(ctx);
+  const x = e.x * q.pxPorM + q.margem.x, y = e.y * q.pxPorM + q.margem.y;
+  return `<circle class="pv-enc pv-${e.tipo}" cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="4" />`;
 }
 
 /**
@@ -146,7 +228,7 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
   box.innerHTML = vivos.map((ef) => {
     const restam = turnosRestantes(ef, t);
     const dentro = ef.forma === 'alvo' || ef.forma === 'token'
-      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens);
+      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens, escalaM(ctx));
     const quem = dentro.map((id) => combDe(ctx, id)?.nome).filter(Boolean);
     const cond = ef.condicao && CONDICAO[ef.condicao] ? CONDICAO[ef.condicao] : null;
     return `<div class="gr-efl" data-ef="${esc(ef.id)}" style="--ef-cor:${corDe(ef)}">
@@ -183,8 +265,8 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
  * ponteiro começaria a arrastar a peça que estivesse embaixo do alvo.
  */
 function escolherNoMapa(
-  ctx: CtxGrid, palco: HTMLElement, previa: (h: Hex) => Hex[], aviso: string,
-): Promise<Hex | null> {
+  ctx: CtxGrid, palco: HTMLElement, previa: (h: Hex, ev: PointerEvent) => string, aviso: string,
+): Promise<{ hex: Hex; ev: PointerEvent | null } | null> {
   return new Promise((resolve) => {
     const svg = document.getElementById('gr-previa') as unknown as SVGElement | null;
     const mg = margemDe(ctx);
@@ -201,27 +283,36 @@ function escolherNoMapa(
       document.removeEventListener('pointermove', moveu);
       document.removeEventListener('keydown', tecla);
     };
-    const desenhar = (h: Hex) => {
-      if (!svg) return;
-      svg.innerHTML = previa(h).map((x) => {
-        const c = centroHex(x.q, x.r, ctx.raio);
-        return `<polygon points="${verticesHex(c.x + mg.x, c.y + mg.y, ctx.raio * 0.94)}" />`;
-      }).join('');
+    const desenhar = (h: Hex, ev: PointerEvent) => {
+      if (svg) svg.innerHTML = previa(h, ev);
     };
     const moveu = (ev: PointerEvent) => {
       const h = ctx.hexNaTela(ev.clientX, ev.clientY);
-      if (h) desenhar(h);
+      if (h) desenhar(h, ev);
     };
     const clicou = (ev: PointerEvent) => {
       ev.preventDefault(); ev.stopPropagation();
       const h = ctx.hexNaTela(ev.clientX, ev.clientY);
-      limpar(); resolve(h);
+      limpar();
+      resolve(h ? { hex: h, ev } : null);
     };
     const tecla = (ev: KeyboardEvent) => { if (ev.key === 'Escape') { limpar(); resolve(null); } };
     palco.addEventListener('pointerdown', clicou, true);
     document.addEventListener('pointermove', moveu);
     document.addEventListener('keydown', tecla);
   });
+}
+
+/**
+ * A direção, em radianos, da âncora até o ponto EXATO do ponteiro.
+ *
+ * Do ponteiro, e não do centro da casa debaixo dele: apontar por casa daria só
+ * os seis ângulos do hexágono, e uma faixa nunca sairia a 20°.
+ */
+function direcaoAoPonteiro(ctx: CtxGrid, de: Encaixe, ev: PointerEvent | null): number {
+  const p = ponteiroEmMetros(ctx, ev);
+  if (!p) return 0;
+  return Math.atan2(p.y - de.y, p.x - de.x);
 }
 
 /** Escolhe um combatente clicando no token dele. */
@@ -289,34 +380,47 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
   const meu = ctx.tokens[c.id];
   if (!meu) return uiErro('Ponha o conjurador no mapa antes: a Arte sai de onde ele está.');
   const esc_ = escalaM(ctx);
-  const cols = ctx.arena.cols, rows = ctx.arena.rows;
   const g = plano.efeito?.grid;
-  const calc = (centro: Hex, mira: Hex | null) => hexesDoEfeito({
-    forma, molde: plano.molde, centro, mira, escalaM: esc_, cols, rows,
-    areaM2: plano.areaM2, raioM: plano.raioM, comprimentoM: plano.comprimentoM,
-    anguloGraus: plano.angulo, arenaInteira: g?.arenaInteira,
-  });
 
-  let centro: Hex = meu;
-  let mira: Hex | null = null;
   // Escala de região cobre tudo: não há onde clicar, e perguntar seria teatro.
   if (g?.arenaInteira) {
-    await gravarEfeito(ctx, c, plano, {
-      forma, hexes: calc(meu, null), centro: null, raio_m: null, alvos: [],
+    const e0 = encaixeNoCentro(meu, esc_);
+    return await gravarEfeito(ctx, c, plano, {
+      forma, figura: { tipo: 'arena', ax: e0.x, ay: e0.y, q: meu.q, r: meu.r }, alvos: [],
     });
-    return;
   }
+
+  // O molde EFETIVO. A aura e o muro não perguntam: uma é sempre um círculo em
+  // volta de quem conjura, o outro é sempre uma faixa. O resto usa o que a
+  // pessoa escolheu no assistente.
+  const molde = forma === 'aura' ? 'circulo'
+    : forma === 'muro' || forma === 'linha' ? 'linha'
+    : forma === 'cone' ? 'leque'
+    : plano.molde;
+
+  const monta = (ancora: Encaixe, dir: number) => figuraDaArea({
+    molde, areaM2: plano.areaM2, ancora, dir,
+    aberturaGraus: plano.angulo, ladoM: plano.lado,
+    // A aura e o muro compram raio e comprimento, e não área.
+    raioProprioM: forma === 'aura' ? plano.raioM : 0,
+  });
+
+  let ancora: Encaixe = encaixeNoCentro(meu, esc_);
+  let dir = 0;
 
   if (forma === 'aura') {
     // A aura nasce presa ao conjurador: não há onde clicar.
   } else {
-    // 1. ONDE COMEÇA. Vale para todos os moldes, e a figura nasce no centro do
-    // hexágono escolhido: é o círculo em volta dele, a ponta da faixa, o bico do
-    // leque. Antes o cone e a linha saíam sempre do conjurador, o que impedia
-    // desenhar o jato a partir da quina do corredor.
-    const ponto = await escolherNoMapa(ctx, palco, (h) => calc(h, null),
-      `Onde ${plano.nome} começa · Esc cancela`);
-    if (!ponto) return;
+    // 1. ONDE COMEÇA. A âncora encaixa no centro da casa OU num vértice dela, o
+    // que estiver mais perto do ponteiro. O vértice é o que permite pôr o
+    // círculo exatamente entre quatro corpos, ou encostar a ponta da faixa na
+    // quina da parede em vez de no meio do corredor.
+    const escolha = await escolherNoMapa(ctx, palco, (h, ev) => {
+      const e = encaixeDoPonteiro(ctx, ev, h);
+      return caminhoDaFigura(monta(e, 0), quadro(ctx)) + marcaEncaixe(ctx, e);
+    }, `Onde ${plano.nome} começa · centro ou vértice · Esc cancela`);
+    if (!escolha) return;
+    const ponto = escolha.hex;
     // O Alcance é do livro, e vale a pena cobrar: uma zona posta a 50 m com
     // Alcance 1 seria um efeito de graça.
     const dist = distanciaHex(meu, ponto) * esc_;
@@ -326,22 +430,21 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
         { titulo: 'Fora de alcance', ok: 'Conjurar' });
       if (!segue) return;
     }
-    centro = ponto;
-    // 2. PARA ONDE APONTA. Só a figura que tem direção pergunta: o círculo é
-    // igual para todo lado, e pedir uma direção a ele seria um clique morto.
-    const temDirecao = forma === 'cone' || forma === 'linha' || forma === 'muro'
-      || (forma === 'zona' && plano.molde !== 'circulo');
-    if (temDirecao) {
-      mira = await escolherNoMapa(ctx, palco, (h) => calc(centro, h),
-        `Para onde ${plano.molde === 'leque' ? 'o leque abre' : 'a faixa vai'} · Esc cancela`);
-      if (!mira) return;
+    ancora = encaixeDoPonteiro(ctx, escolha.ev, ponto);
+
+    // 2. PARA ONDE APONTA. O círculo não pergunta: ele é igual para todo lado, e
+    // pedir uma direção a ele seria um clique morto.
+    if (molde !== 'circulo') {
+      const girou = await escolherNoMapa(ctx, palco, (h, ev) =>
+        caminhoDaFigura(monta(ancora, direcaoAoPonteiro(ctx, ancora, ev)), quadro(ctx))
+        + marcaEncaixe(ctx, ancora),
+        `Gire ${plano.nome} e clique · Esc cancela`);
+      if (!girou) return;
+      dir = direcaoAoPonteiro(ctx, ancora, girou.ev);
     }
   }
 
-  const hexes = calc(centro, mira);
-  await gravarEfeito(ctx, c, plano, {
-    forma, hexes, centro, raio_m: forma === 'aura' ? plano.raioM : null, alvos: [],
-  });
+  await gravarEfeito(ctx, c, plano, { forma, figura: monta(ancora, dir), alvos: [] });
 }
 
 /** Melhoria, marca e item: o efeito gruda numa peça e anda com ela. */
@@ -365,9 +468,7 @@ async function grudarNoAlvo(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
     if (!item) return;
   }
 
-  await gravarEfeito(ctx, c, plano, {
-    forma: 'alvo', hexes: [], centro: null, raio_m: null, alvos: [alvoId], item,
-  });
+  await gravarEfeito(ctx, c, plano, { forma: 'alvo', figura: null, alvos: [alvoId], item });
 
   // O dano imediato de quem fere na hora do golpe (Céu Aberto, Julgamento).
   if (plano.danoDados && g?.gatilho === 'imediato') await morder(ctx, ATIVOS[ATIVOS.length - 1], alvo, 'acertou');
@@ -438,10 +539,7 @@ async function encadear(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
     atual = ctx.tokens[proximo.id];
   }
 
-  await gravarEfeito(ctx, c, plano, {
-    forma: 'cadeia', hexes: cadeia.map((id) => ctx.tokens[id]).filter(Boolean) as Hex[],
-    centro: ctx.tokens[primeiro] || null, raio_m: null, alvos: cadeia,
-  });
+  await gravarEfeito(ctx, c, plano, { forma: 'cadeia', figura: null, alvos: cadeia });
   const ef = ATIVOS[ATIVOS.length - 1];
   for (let i = 0; i < cadeia.length; i++) {
     const alvo = combDe(ctx, cadeia[i]);
@@ -502,8 +600,7 @@ async function invocar(ctx: CtxGrid, c: any, plano: Plano): Promise<void> {
   const novo = (data || [])[0];
   if (novo && d.turnos > 0) {
     await gravarEfeito(ctx, c, plano, {
-      forma: 'token', hexes: [], centro: null, raio_m: null,
-      alvos: [novo.id], item: null, turnos: d.turnos,
+      forma: 'token', figura: null, alvos: [novo.id], item: null, turnos: d.turnos,
     });
   }
   await ctx.logar(c, `${c.nome} invocou ${d.nome}${d.turnos ? ` por ${d.turnos} turnos` : ''} · ${plano.resumo}`,
@@ -578,12 +675,19 @@ function afastar(de: Hex, ate: Hex, passos: number, cols: number, rows: number):
 
 // ==================================================================== gravar
 async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
-  forma: Forma; hexes: Hex[]; centro: Hex | null; raio_m: number | null;
-  alvos: string[]; item?: string | null; turnos?: number;
+  forma: Forma; figura?: Figura | null; alvos: string[];
+  item?: string | null; turnos?: number;
 }): Promise<void> {
   const g = plano.efeito?.grid;
   const t = tickAtual(ctx);
   const turnos = extra.turnos ?? plano.turnos;
+  const fig = extra.figura || null;
+  // A lista de casas continua sendo gravada, mas como CONSEQUÊNCIA da figura, e
+  // não como fonte: serve ao registro e a quem só sabe ler casas. Quem desenha e
+  // quem decide o que está dentro leem a figura.
+  const hexes = fig
+    ? hexesDaFigura(fig, escalaM(ctx), ctx.arena.cols, ctx.arena.rows).map((h) => ({ q: h.q, r: h.r }))
+    : [];
   const linha = {
     arena_id: ctx.arena.id,
     arte_id: plano.arte.id,
@@ -597,9 +701,10 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
     forma: extra.forma,
     molde: plano.molde,
     angulo: plano.angulo,
-    hexes: extra.hexes.map((h) => ({ q: h.q, r: h.r })),
-    centro: extra.centro ? { q: extra.centro.q, r: extra.centro.r } : null,
-    raio_m: extra.raio_m,
+    figura: fig,
+    hexes,
+    centro: fig ? { q: fig.q, r: fig.r } : null,
+    raio_m: fig?.raioM ?? null,
     dano_dados: plano.danoDados,
     dano_bonus: plano.danoBonus,
     condicao: g?.condicao || null,
@@ -617,8 +722,8 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   };
   const { data, error } = await ctx.SB.from('arena_efeitos').insert(linha).select('*').limit(1);
   if (error) {
-    return uiErro(/arena_efeitos/i.test(error.message)
-      ? 'A tabela das Artes ainda não existe. Rode supabase/migracao-19.sql no SQL Editor.'
+    return uiErro(/arena_efeitos|figura/i.test(error.message)
+      ? 'A tabela das Artes está desatualizada. Rode supabase/migracao-19.sql no SQL Editor.'
       : 'Erro ao gravar o efeito: ' + error.message);
   }
   ATIVOS.push({ ...(data || [])[0], mordidos: {} } as EfeitoAtivo);
@@ -627,7 +732,7 @@ async function gravarEfeito(ctx: CtxGrid, c: any, plano: Plano, extra: {
   if (g?.condicao) for (const id of extra.alvos) await porCondicao(ctx, combDe(ctx, id), g.condicao, turnos);
 
   await ctx.logar(c, `${c.nome} conjurou ${plano.resumo}`
-    + (extra.centro ? ` a partir de ${nomeHex(extra.centro.q, extra.centro.r)}` : '')
+    + (fig && fig.tipo !== 'arena' ? ` a partir de ${nomeHex(fig.q, fig.r)}` : '')
     + (extra.item ? ` · ${extra.item}` : ''), { acao: null });
   ctx.repintar();
 }
@@ -734,7 +839,7 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
     if (!ef.dano_dados && !ef.condicao) continue;
     if (ef.gatilho === 'armadilha' || ef.gatilho === 'passivo' || ef.gatilho === 'ao-tocar') continue;
     const dentro = ef.forma === 'alvo' || ef.forma === 'token'
-      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens);
+      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens, escalaM(ctx));
     for (const cid of dentro) {
       if (cid === ef.conjurador_id && ef.forma === 'aura') continue;   // a própria aura não queima o dono
       if (jaMordido(ef, cid, t)) continue;
@@ -775,7 +880,7 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
 export async function encerrarEfeito(ctx: CtxGrid, ef: EfeitoAtivo, motivo: string): Promise<void> {
   if (ef.condicao) {
     const quem = ef.forma === 'alvo' || ef.forma === 'token'
-      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens);
+      ? (ef.alvos || []) : dentroDoEfeito(ef, ctx.tokens, escalaM(ctx));
     for (const cid of quem) await tirarCondicao(ctx, combDe(ctx, cid), ef.condicao);
   }
   // A peça invocada some com o efeito que a trouxe.

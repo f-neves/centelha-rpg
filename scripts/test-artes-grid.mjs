@@ -86,65 +86,96 @@ ok(metal.grid.pegaItem, 'Metal Incandescente marca uma peça de metal');
 ok(!M.EFEITO['aura'].grid.pegaItem, 'a Aura não pega peça nenhuma');
 
 // ------------------------------------------------------------- a geometria
-// As figuras são geométricas de verdade, medidas em METROS a partir do centro
-// de cada hexágono. Contar passos desenharia um hexágono no lugar do círculo.
+// A figura é UMA forma geométrica em metros, e não um punhado de hexágonos que
+// a aproximam. Quem está dentro sai de um teste de ponto na forma.
+const ANC = (q, r, escala = 1) => M.encaixeNoCentro({ q, r }, escala);
+const CENTRO = ANC(0, 0);
 
-// CÍRCULO: toda casa cujo centro cai dentro do raio.
-const circ = M.hexesEmCirculo({ q: 10, r: 10 }, 3, 1, 40, 40);
-ok(circ.some((h) => h.q === 10 && h.r === 10), 'o centro entra no círculo');
-// Um hexágono de 1 m de passo cobre √3/2 ≈ 0,866 m². Um círculo de raio 3 tem
-// 28,3 m², então a mancha tem de ficar perto de 33 casas.
-const esperado = Math.PI * 9 / (Math.sqrt(3) / 2);
-ok(Math.abs(circ.length - esperado) / esperado < 0.15,
-  `o círculo cobre a área que promete (${circ.length} casas, ~${esperado.toFixed(0)} esperadas)`);
-// E é REDONDO: nenhum centro passa do raio.
-ok(circ.every((h) => M.distanciaEmMetros({ q: 10, r: 10 }, h, 1) <= 3 + 1e-9),
-  'nenhuma casa do círculo passa do raio');
-// Numa arena mais fina o mesmo raio cobre mais casas, e a área não muda.
-ok(M.hexesEmCirculo({ q: 20, r: 20 }, 3, 0.5, 60, 60).length > circ.length,
-  'arena mais fina, mais casas para o mesmo raio');
+// CÍRCULO: a área comprada vira raio, e o teste é a distância.
+const circ = M.figuraDaArea({ molde: 'circulo', areaM2: 28.27, ancora: CENTRO });
+eq(circ.tipo, 'circulo', 'o molde círculo vira uma figura de círculo');
+ok(Math.abs(circ.raioM - 3) < 0.01, `28,27 m² viram raio 3 (${circ.raioM.toFixed(2)})`);
+ok(M.pontoNaFigura(circ, { x: 2.9, y: 0 }), 'a 2,9 m está dentro');
+ok(!M.pontoNaFigura(circ, { x: 3.1, y: 0 }), 'a 3,1 m está fora');
+ok(M.pontoNaFigura(circ, { x: 2.1, y: 2.1 }), 'na diagonal, dentro do raio, está dentro');
+ok(!M.pontoNaFigura(circ, { x: 2.2, y: 2.2 }), 'e passando do raio, fora — é redondo, não quadrado');
 
-// LINHA: faixa reta de 1 m de largura.
-const lin = M.hexesEmLinha({ q: 10, r: 10 }, { q: 16, r: 10 }, 6, 1, 40, 40, 1);
-ok(lin.length >= 6 && lin.length <= 9, `a faixa de 6 m tem ~6 casas (${lin.length})`);
-ok(lin.every((h) => h.r === 10), 'a faixa na horizontal não serpenteia');
-// Na diagonal ela continua reta: é a distância ao SEGMENTO que decide.
-const diag = M.hexesEmLinha({ q: 10, r: 10 }, { q: 10, r: 16 }, 6, 1, 40, 40, 1);
-ok(diag.length >= 5 && diag.length <= 9, `a faixa diagonal também é uma faixa (${diag.length})`);
+// LINHA: faixa de 1 m, ancorada na PONTA e girada pela direção.
+const lin = M.figuraDaArea({ molde: 'linha', areaM2: 12, ancora: CENTRO, dir: 0 });
+eq(lin.larguraM, 1, 'a faixa tem um metro de largura');
+eq(lin.comprimentoM, 12, '12 m² de área viram 12 m de faixa');
+ok(M.pontoNaFigura(lin, { x: 6, y: 0.4 }), 'no meio da faixa, dentro');
+ok(!M.pontoNaFigura(lin, { x: 6, y: 0.6 }), 'meio metro para o lado já é fora');
+ok(!M.pontoNaFigura(lin, { x: -0.5, y: 0 }), 'atrás da ponta é fora: a âncora é o começo');
+ok(!M.pontoNaFigura(lin, { x: 12.5, y: 0 }), 'depois do fim é fora');
+// Girada 90°, a mesma faixa desce em vez de ir para a direita.
+const linV = M.figuraDaArea({ molde: 'linha', areaM2: 12, ancora: CENTRO, dir: Math.PI / 2 });
+ok(M.pontoNaFigura(linV, { x: 0, y: 6 }), 'girada 90°, a faixa desce');
+ok(!M.pontoNaFigura(linV, { x: 6, y: 0 }), 'e deixa de pegar quem estava na horizontal');
+// A angulação é contínua: 20° existe, e não só os seis ângulos do hexágono.
+const lin20 = M.figuraDaArea({ molde: 'linha', areaM2: 12, ancora: CENTRO, dir: 20 * Math.PI / 180 });
+ok(M.pontoNaFigura(lin20, { x: 6 * Math.cos(0.349), y: 6 * Math.sin(0.349) }), 'a faixa sai a 20°');
 
-// LEQUE: ângulo e raio. Abrir mais, com a mesma área, encurta o alcance.
-const r90 = M.raioDoLeque(24, 90), r45 = M.raioDoLeque(24, 45);
-ok(r45 > r90, `abrir menos alcança mais longe (45° → ${r45.toFixed(1)} m, 90° → ${r90.toFixed(1)} m)`);
-const leq = M.hexesEmLeque({ q: 10, r: 10 }, { q: 16, r: 10 }, r90, 90, 1, 40, 40);
-ok(leq.length > 1, 'o leque cobre mais de uma casa');
-ok(leq.every((h) => M.distanciaEmMetros({ q: 10, r: 10 }, h, 1) <= r90 + 1e-9),
-  'nenhuma casa do leque passa do raio');
-// Um leque de 90° apontado para a direita não pode pegar quem está atrás.
-ok(!leq.some((h) => h.q < 10 - 1 && h.r === 10), 'o leque não pega quem está atrás');
-// Aberto em 360° o leque vira o círculo do mesmo raio.
-eq(M.hexesEmLeque({ q: 10, r: 10 }, { q: 16, r: 10 }, 3, 360, 1, 40, 40).length, circ.length,
-  'em 360° o leque é o círculo');
+// RETÂNGULO: a pessoa escolhe um lado, o outro sai da divisão da área.
+const ret = M.figuraDaArea({ molde: 'retangulo', areaM2: 24, ancora: CENTRO, dir: 0, ladoM: 4 });
+eq(ret.larguraM, 4, 'o lado escolhido é respeitado');
+eq(ret.comprimentoM, 6, 'o outro lado sai da área (24 / 4 = 6)');
+ok(M.pontoNaFigura(ret, { x: 3, y: 1.9 }), 'dentro do retângulo');
+ok(!M.pontoNaFigura(ret, { x: 3, y: 2.1 }), 'passando da metade da largura, fora');
+// O lado mínimo é um metro, e pedir menos não encolhe o retângulo em nada.
+eq(M.figuraDaArea({ molde: 'retangulo', areaM2: 24, ancora: CENTRO, ladoM: 0.2 }).larguraM,
+  M.LADO_MINIMO, 'o lado mínimo é de um metro');
 
-// A ÁREA COMPRADA É O ORÇAMENTO: os três moldes cobrem o mesmo chão.
-const A = 16;
-ok(Math.abs(Math.PI * M.raioDoCirculo(A) ** 2 - A) < 1e-6, 'o círculo devolve a área comprada');
-eq(M.comprimentoDaLinha(A, 1), 16, 'a faixa de 1 m vira 16 m de comprimento');
-// Setor: area = (theta/2) * r^2, com theta em radianos. 90 graus = pi/2 rad,
-// entao a area e (pi/4) * r^2.
-ok(Math.abs((Math.PI / 4) * M.raioDoLeque(A, 90) ** 2 - A) < 1e-6, 'o setor de 90° devolve a área');
-ok(Math.abs((Math.PI / 8) * M.raioDoLeque(A, 45) ** 2 - A) < 1e-6, 'e o de 45° também');
-ok(/círculo de 2,3 m de raio/.test(M.figuraDaArea('circulo', 16).rotulo),
-  `o rótulo diz a figura (${M.figuraDaArea('circulo', 16).rotulo})`);
-ok(/16 m × 1 m/.test(M.figuraDaArea('linha', 16).rotulo), 'o rótulo da faixa traz a largura');
-ok(/90° com/.test(M.figuraDaArea('leque', 16, 90).rotulo), 'o rótulo do leque traz a abertura');
+// LEQUE: ângulo e raio, com a área como orçamento.
+const leq = M.figuraDaArea({ molde: 'leque', areaM2: 24, ancora: CENTRO, dir: 0, aberturaGraus: 90 });
+eq(leq.aberturaGraus, 90, 'a abertura escolhida é respeitada');
+ok(Math.abs((Math.PI / 4) * leq.raioM ** 2 - 24) < 1e-6, 'o setor devolve a área comprada');
+ok(M.pontoNaFigura(leq, { x: 3, y: 0 }), 'na direção, dentro');
+ok(!M.pontoNaFigura(leq, { x: -3, y: 0 }), 'atrás, fora');
+ok(!M.pontoNaFigura(leq, { x: 0, y: 5 }), 'a 90° do eixo, fora do leque de 90°');
+// Abrir mais encurta o alcance, porque a área não muda.
+ok(M.figuraDaArea({ molde: 'leque', areaM2: 24, ancora: CENTRO, aberturaGraus: 45 }).raioM
+  > M.figuraDaArea({ molde: 'leque', areaM2: 24, ancora: CENTRO, aberturaGraus: 180 }).raioM,
+  'abrir menos alcança mais longe');
 
-// A figura começa onde a pessoa mandou, e não onde o conjurador está.
-const longe = M.hexesDoEfeito({
-  forma: 'zona', molde: 'circulo', centro: { q: 25, r: 25 },
-  areaM2: 16, escalaM: 1, cols: 40, rows: 40,
+// A ÂNCORA PODE SER UM VÉRTICE, e não só o centro da casa.
+const enc = M.encaixesDoHex({ q: 0, r: 0 }, 1);
+eq(enc.length, 7, 'cada casa tem sete encaixes: o centro e seis vértices');
+eq(enc.filter((e) => e.tipo === 'vertice').length, 6, 'seis deles são vértices');
+const R = M.raioEmMetros(1);
+ok(enc.filter((e) => e.tipo === 'vertice')
+  .every((e) => Math.abs(Math.hypot(e.x, e.y) - R) < 1e-9),
+  'os vértices ficam todos no circunraio da casa');
+// O ponteiro bem no meio da casa encaixa no centro; perto da ponta, no vértice.
+eq(M.encaixeMaisProximo({ x: 0.05, y: 0.05 }, { q: 0, r: 0 }, 1).tipo, 'centro',
+  'no miolo da casa, encaixa no centro');
+eq(M.encaixeMaisProximo({ x: 0, y: -R * 0.95 }, { q: 0, r: 0 }, 1).tipo, 'vertice',
+  'junto da ponta, encaixa no vértice');
+// E a figura nasce mesmo ali: um círculo ancorado no vértice de cima tem o miolo
+// meio circunraio acima do centro da casa.
+const noVertice = M.figuraDaArea({
+  molde: 'circulo', areaM2: 12,
+  ancora: M.encaixeMaisProximo({ x: 0, y: -R * 0.95 }, { q: 0, r: 0 }, 1),
 });
-ok(longe.some((h) => h.q === 25 && h.r === 25), 'o círculo nasce no hexágono escolhido');
-ok(!longe.some((h) => h.q === 10 && h.r === 10), 'e não no conjurador');
+ok(Math.abs(noVertice.ay + R) < 1e-9, 'a figura ancora no vértice, e não no centro da casa');
+
+// A lista de casas continua saindo da figura, para o registro.
+const casas = M.hexesDaFigura(
+  M.figuraDaArea({ molde: 'circulo', areaM2: 28.27, ancora: ANC(10, 10) }), 1, 40, 40);
+ok(casas.some((h) => h.q === 10 && h.r === 10), 'a casa da âncora está na lista');
+ok(casas.length > 20 && casas.length < 45, `a lista tem o tamanho do círculo (${casas.length})`);
+
+// O traço é UMA forma, e não uma colcha de polígonos.
+const q = { raioHexPx: 30, pxPorM: 30, margem: { x: 10, y: 10 } };
+ok(/^<circle /.test(M.caminhoDaFigura(circ, q).trim()), 'o círculo desenha um <circle>');
+ok(/^<rect /.test(M.caminhoDaFigura(ret, q).trim()), 'o retângulo desenha um <rect>');
+ok(/rotate\(/.test(M.caminhoDaFigura(lin20, q)), 'a faixa girada leva um rotate');
+ok(/^<path /.test(M.caminhoDaFigura(leq, q).trim()), 'o leque desenha um <path> com arco');
+ok(/ A /.test(M.caminhoDaFigura(leq, q)), 'e o arco é um arco de verdade');
+// Aberto em 360° o leque vira o círculo.
+ok(/^<circle /.test(M.caminhoDaFigura(
+  M.figuraDaArea({ molde: 'leque', areaM2: 24, ancora: CENTRO, aberturaGraus: 360 }), q).trim()),
+  'em 360° o leque vira um círculo');
 
 // -------------------------------------------------------------------- o dano
 // Fenômeno puro: a armadura não pega, só a Absorção natural.
@@ -214,10 +245,8 @@ ok(M.EFEITO['inverno'].grid.arenaInteira, 'o Inverno é de escala de região');
 ok(M.EFEITO['semear-o-ermo'].grid.arenaInteira, 'Semear o Ermo também');
 ok(!M.EFEITO['neblina'].grid.arenaInteira, 'a Neblina continua sendo área medida');
 eq(M.hexesDaArena(12, 8).length, 96, 'a arena inteira são cols × rows hexágonos');
-eq(M.hexesDoEfeito({
-  forma: 'zona', molde: 'circulo', centro: { q: 0, r: 0 }, arenaInteira: true,
-  areaM2: 4, escalaM: 1, cols: 12, rows: 8,
-}).length, 96, 'com arenaInteira a área medida é ignorada');
+eq(M.hexesDaFigura({ tipo: 'arena', ax: 0, ay: 0, q: 0, r: 0 }, 1, 12, 8).length, 96,
+  'a figura de arena cobre o tabuleiro inteiro, seja qual for a área comprada');
 
 // ---------------------------------------------------- cobertura da projeção
 eq(M.EFEITOS.filter((e) => !e.grid).length, 0, 'todo Efeito tem bloco grid');

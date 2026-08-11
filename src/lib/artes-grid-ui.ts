@@ -9,7 +9,7 @@ import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
   parametrosDoImproviso, custoDe, valorNoNivel, escalaDe, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
-  figuraDaArea, ANGULOS,
+  figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO,
   type Arte, type Efeito, type Parametro, type Escolhas, type Molde, type Custo,
 } from './artes-grid';
 
@@ -26,6 +26,8 @@ export interface Plano {
   molde: Molde;
   /** A abertura do leque, em graus. Só vale quando o molde é leque. */
   angulo: number;
+  /** O lado escolhido do retângulo, em metros. O outro sai da divisão da área. */
+  lado: number;
   custo: Custo;
   // já resolvido, para quem executa não precisar reabrir as réguas
   alcanceM: number;
@@ -35,6 +37,7 @@ export interface Plano {
   danoDados: number;
   danoBonus: number;
   turnos: number;
+  larguraM: number;
   /** A figura já resolvida em metros: "círculo de 2,3 m de raio". */
   figura: string;
   alvos: number;
@@ -75,6 +78,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let escolhas: Escolhas = {};
   let molde: Molde = 'circulo';
   let angulo = 90;
+  let lado = LADO_MINIMO;
 
   const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`, { classe: 'ui-dlg-arte' });
 
@@ -132,17 +136,26 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const raioProprio = pArea && nAr && ehRaio ? parseFloat(valorNoNivel(pArea, nAr)) || 0 : 0;
       // A área comprada é o ORÇAMENTO; o molde decide a figura. O raio e o
       // comprimento saem dela, para nenhum molde render mais chão que o outro.
-      const fig = areaM2 ? figuraDaArea(molde, areaM2, angulo) : null;
-      const figura = raioProprio ? `círculo de ${raioProprio} m de raio` : (fig?.rotulo || '');
+      // A âncora e a direção só se sabem no tabuleiro; aqui a figura serve para
+      // dizer o TAMANHO antes de conjurar, e por isso nasce na origem.
+      const fig = (areaM2 || raioProprio)
+        ? figuraDaArea({
+            molde, areaM2, ancora: { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' },
+            aberturaGraus: angulo, ladoM: lado, raioProprioM: raioProprio,
+          })
+        : null;
+      const figura = fig ? rotuloDaFigura(fig) : '';
       if (figura) partes.push(figura);
       return {
-        arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas }, molde, angulo, custo,
+        arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas },
+        molde, angulo, lado, custo,
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
         areaM2,
-        raioM: raioProprio || fig?.raioM || 0,
+        raioM: fig?.raioM || 0,
         comprimentoM: pComp && escolhas['Comprimento']
           ? parseFloat(valorNoNivel(pComp, escolhas['Comprimento'])) || 0
           : (fig?.comprimentoM || 0),
+        larguraM: fig?.larguraM || 0,
         danoDados, danoBonus, turnos, figura,
         alvos: escolhas['Alvos'] ?? 1,
         nome,
@@ -224,19 +237,26 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             `<span><b>${esc(p.nome)}:</b> ${esc(p.valor)}</span>`).join('')}</div>` : ''}
         </div>
         ${podeModar ? `<div class="ag-sec"><h3 class="ag-h">Molde</h3>
-          <div class="ag-moldes">${(['circulo', 'linha', 'leque'] as Molde[]).map((m) => `
+          <div class="ag-moldes">${(['circulo', 'linha', 'retangulo', 'leque'] as Molde[]).map((m) => `
             <button type="button" class="ag-md${molde === m ? ' on' : ''}" data-molde="${m}">
-              <span class="ag-md-ic" aria-hidden="true">${{ circulo: '●', linha: '▬', leque: '◣' }[m]}</span>
-              ${m === 'circulo' ? 'Círculo' : m === 'linha' ? 'Linha' : 'Leque'}</button>`).join('')}</div>
+              <span class="ag-md-ic" aria-hidden="true">${
+                { circulo: '●', linha: '━', retangulo: '▬', leque: '◣' }[m]}</span>
+              ${{ circulo: 'Círculo', linha: 'Linha', retangulo: 'Retângulo', leque: 'Leque' }[m]}</button>`).join('')}</div>
           ${molde === 'leque' ? `<div class="ag-angs">
             <span class="ag-ang-l">Abertura</span>
             ${ANGULOS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
               data-ang="${a}">${a}°</button>`).join('')}
           </div>` : ''}
+          ${molde === 'retangulo' ? `<div class="ag-angs">
+            <span class="ag-ang-l">Um lado</span>
+            <input type="number" id="ag-lado" min="${LADO_MINIMO}" step="0.5" value="${lado}" /> m
+            <span class="ag-ang-n">o outro sai da área</span>
+          </div>` : ''}
           <p class="ag-figura">${esc(plano.figura || 'sem área')}</p>
-          <p class="ag-nota">A mesma área, moldada de outro jeito: o círculo abre em volta, a linha
-            vira uma faixa de um metro, e o leque troca abertura por alcance. Você escolhe onde ela
-            começa clicando num hexágono.</p>
+          <p class="ag-nota">A mesma área, moldada de outro jeito: o círculo abre em volta, a faixa
+            tem um metro de largura, o retângulo troca comprimento por profundidade e o leque troca
+            abertura por alcance. Você escolhe onde a figura começa clicando num hexágono, e para
+            onde ela aponta movendo o ponteiro.</p>
         </div>` : ''}
         <div class="ag-custo">
           <div class="ag-cst-l">
@@ -281,6 +301,16 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       corpo.querySelectorAll<HTMLElement>('[data-ang]').forEach((b) => b.onclick = () => {
         angulo = Number(b.dataset.ang); pintar();
       });
+      const inpLado = corpo.querySelector('#ag-lado') as HTMLInputElement | null;
+      if (inpLado) {
+        inpLado.oninput = () => {
+          lado = Math.max(LADO_MINIMO, parseFloat(inpLado.value) || LADO_MINIMO);
+          // Redesenhar aqui roubaria o foco no meio da digitação: só o rótulo
+          // da figura precisa acompanhar, e ele é uma linha.
+          const alvo = corpo.querySelector('.ag-figura');
+          if (alvo) alvo.textContent = planoAtual().figura;
+        };
+      }
       (corpo.querySelector('#ag-cancelar') as HTMLElement).onclick = () => sair(null);
       (corpo.querySelector('#ag-ok') as HTMLElement).onclick = () => sair(planoAtual());
 
