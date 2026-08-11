@@ -160,7 +160,10 @@ export function montarFicha(opts: FichaOpts) {
       ? b.itens.map((l: any) => ({ item: String(l?.item ?? ''), peso: String(l?.peso ?? ''), preco: String(l?.preco ?? '') }))
       : String(b?.texto ?? '').split(/\r?\n/).map((l) => l.trim()).filter(Boolean).map((l) => ({ item: l, peso: '', preco: '' }));
     while (itens.length < LINHAS_BOLSA) itens.push(linhaBolsa());
-    return { nome, itens };
+    // `pesoTotal` em branco quer dizer "some as linhas". É o que quase sempre vale, e o
+    // campo só existe para quem não quer escrever item por item: dez quilos de miudezas
+    // anotadas como 25 kg de miudezas não escritas.
+    return { nome, itens, pesoTotal: String(b?.pesoTotal ?? '') };
   }
   // Normaliza um slot de mão preservando o que o jogador ajustou: o nome e os números
   // do item improvisado e o `mod` (a variação de qualidade da peça de catálogo).
@@ -301,6 +304,8 @@ export function montarFicha(opts: FichaOpts) {
     S.bolsas = (Array.isArray(S.bolsas) && S.bolsas.length)
       ? S.bolsas.map((b: any, i: number) => normBolsa(b, nomesBolsa[i] || 'Bolsa'))
       : mkBolsas();
+    // vazia quer dizer "use a conta"; qualquer coisa escrita manda nela
+    S.cargaAtual = String(S.cargaAtual ?? '');
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] ??= 1));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] ??= 0; S.spec[h.id] = clampSpecs(S.spec[h.id], S.skills[h.id] || 0); });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] ??= 1));
@@ -667,6 +672,42 @@ export function montarFicha(opts: FichaOpts) {
   }
   /** Peças de armadura vestidas, já com os ajustes do jogador. */
   const pecasArmadura = () => armadurasDe(S);
+
+  // ---- o peso que o personagem leva no corpo -------------------------------------
+  // Todo campo de peso aqui é uma ESTIMATIVA que o jogador pode contradizer: escrever um
+  // número manda nele, apagar devolve a conta. É a única forma honesta, porque a ficha
+  // nunca vai saber de tudo o que o personagem está levando.
+  /** Número curto, com vírgula: 122 · 10 · 1,5. Uma casa só, e nenhuma acima de 100. */
+  const r1n = (n: number) =>
+    (n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10)).replace('.', ',');
+  /** O primeiro número de um campo escrito à mão: "1,5", "2 kg", "≈3" e "3.2" valem igual. */
+  const numPeso = (s: any) => {
+    const m = String(s ?? '').replace(',', '.').match(/\d+(?:\.\d+)?/);
+    return m ? parseFloat(m[0]) : 0;
+  };
+  /** Peso de catálogo de uma peça do arsenal, que guarda armas e escudos no mesmo lugar. */
+  const pesoRef = (ref: any) => {
+    const r = String(ref || '');
+    const b = r.startsWith('a:') ? ARMA[r.slice(2)] : r.startsWith('e:') ? ESCUDO[r.slice(2)] : null;
+    return Number(b?.peso) || 0;
+  };
+  /** Soma das linhas de uma bolsa, ou o total que o jogador escreveu no lugar dela. */
+  const pesoBolsa = (b: any) => {
+    const escrito = String(b?.pesoTotal ?? '').trim();
+    return escrito ? numPeso(escrito)
+      : (b?.itens || []).reduce((s: number, l: any) => s + numPeso(l.peso), 0);
+  };
+  /** As três bolsas, mais o arsenal inteiro, mais a armadura VESTIDA. */
+  const cargaCalculada = () =>
+    (S.bolsas || []).reduce((s: number, b: any) => s + pesoBolsa(b), 0)
+    + (S.arsenal || []).reduce((s: number, p: any) => s + pesoRef(p?.ref), 0)
+    + (S.equip?.armaduras || []).reduce((s: number, p: any) => typeof p === 'string'
+      ? s + (Number(baseArmadura(p)?.peso) || 0)
+      : p?.vestida === false ? s : s + (Number(baseArmadura(p?.base)?.peso) || 0), 0);
+  const cargaAtual = () => {
+    const escrito = String(S.cargaAtual ?? '').trim();
+    return escrito ? numPeso(escrito) : cargaCalculada();
+  };
   const it2H = (it: any) => (it.kind === 'arma' || it.kind === 'custom') && it.w.maos === 2;
   const itVers = (it: any) => (it.kind === 'arma' || it.kind === 'custom') && (it.w.tags || []).includes('versátil');
   function conjAtivo() { const cs = (S.conjuntos || []); return cs.find((c: any) => c.ativo) || cs[0] || { habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' } }; }
@@ -1454,7 +1495,7 @@ export function montarFicha(opts: FichaOpts) {
       { de: cMedia, ate: cPesada, nome: 'Pesada', op: '.15' },
       { de: cPesada, ate: maxKg, nome: 'Máxima', op: '.21' },
     ];
-    const r1 = (n: number) => (n >= 100 ? String(Math.round(n)) : String(Math.round(n * 10) / 10)).replace('.', ',');
+    const r1 = r1n;
     const fmtKg = (w: number) => (w >= 10 ? String(Math.round(w))
       : w >= 0.1 ? String(Math.round(w * 100) / 100)
       : String(Math.round(w * 1000) / 1000)).replace('.', ',');
@@ -1516,6 +1557,7 @@ export function montarFicha(opts: FichaOpts) {
 
        Entre um item e outro há um espaço de VERDADE no HTML, além da margem: só com a
        margem, copiar a linha inteira colava "500 kgacima da cabeça 250 kg". */
+    const carga = cargaAtual();
     const item = (rot: string, val: string) => `<span class="fa-item">${rot} <b>${val}</b></span>`;
     const linha = (rot: string, corpo: string, grupo = false) =>
       `<div class="fa-linha${grupo ? ' fa-grupo' : ''}"><b>${rot}</b> · ${corpo}</div>`;
@@ -1536,6 +1578,14 @@ export function montarFicha(opts: FichaOpts) {
           item('Pesada', kg(cPesada)), item('Máxima', kg(maxKg)),
         ].join(' '))
       + linha('Velocidade Máxima de Corrida', `<b>${r1(vBase)} m/s</b>`, true)
+      // A carga sai da soma das bolsas, do arsenal e da armadura vestida, e é a única
+      // linha editável do cabeçalho: apagar o campo devolve a conta. A velocidade ao lado
+      // é a mesma curva das tabelas, lida no ponto em que o personagem está agora.
+      + `<div class="fa-linha"><b>Carga atual</b> · `
+      + `<span class="fa-edit"><input data-fa-carga value="${escapeHtml(S.cargaAtual || '')}" `
+      + `placeholder="${r1(cargaCalculada())}" inputmode="decimal" aria-label="Carga atual, em quilos"`
+      + `${opts.readOnly ? ' disabled' : ''} /> kg</span> `
+      + `<span class="fa-item">Velocidade atual <b data-fa-velatual>${r1(vel(carga))} m/s</b></span></div>`
       + `</div>`;
     const botoes = `<div class="fa-curvas" role="group" aria-label="Gráficos">`
       + `<button type="button" data-fa-graf="arremesso">Arremesso × Peso</button>`
@@ -1546,6 +1596,15 @@ export function montarFicha(opts: FichaOpts) {
     box.innerHTML = `<div class="fa-wrap">${head}${botoes}`
       + `<div class="fa-tbls"><div class="fa-tblbox"><span class="fa-tbltit">Arremesso</span>${table}</div>`
       + `<div class="fa-tblbox"><span class="fa-tbltit">Deslocamento com carga</span>${tableV}</div></div></div>`;
+    // sem redesenhar o bloco: o campo em edição não pode perder o foco, e o único número
+    // que depende dele é a velocidade ao lado
+    const inpCarga = box.querySelector('[data-fa-carga]') as HTMLInputElement | null;
+    if (inpCarga && !opts.readOnly) inpCarga.addEventListener('input', () => {
+      S.cargaAtual = inpCarga.value;
+      const alvo = box.querySelector('[data-fa-velatual]');
+      if (alvo) alvo.textContent = `${r1(vel(cargaAtual()))} m/s`;
+      save();
+    });
 
     // ---- o quadro, que os dois gráficos dividem ------------------------------------
     // Os dois desenham a mesma coisa: peso no X, um número no Y, faixas de carga ao fundo
@@ -1823,8 +1882,15 @@ export function montarFicha(opts: FichaOpts) {
         <td><input value="${escapeHtml(l.preco)}" data-bolsa="${i}:${j}:preco" inputmode="decimal" aria-label="Preço"${dis} /></td>
         ${ro ? '' : `<td class="bl-x"><button type="button" data-bolsa-rm="${i}:${j}" title="Remover esta linha" aria-label="Remover a linha ${j + 1}">×</button></td>`}
       </tr>`).join('');
+      // o total fica na mesma linha do nome, e o placeholder mostra a soma das linhas: um
+      // campo vazio com "10" apagado dentro diz, sem texto de ajuda, que aquilo é a conta
+      // e que escrever por cima é permitido
+      const soma = (b.itens || []).reduce((s: number, l: any) => s + numPeso(l.peso), 0);
       return `<div class="bolsa">
+        <div class="bolsa-cab">
         <input class="bolsa-nome" data-bolsa-nome="${i}" value="${escapeHtml(b.nome)}" aria-label="Nome do campo de equipamento"${dis} />
+        <span class="bolsa-peso"><input data-bolsa-peso="${i}" value="${escapeHtml(b.pesoTotal || '')}" placeholder="${r1n(soma)}" inputmode="decimal" aria-label="Peso total de ${escapeHtml(b.nome)}, em quilos"${dis} /> kg</span>
+        </div>
         <table class="bolsa-tbl">
           <thead><tr><th>Item</th><th>Peso</th><th>Preço</th>${ro ? '' : '<th><span class="sr-only">Remover</span></th>'}</tr></thead>
           <tbody>${linhas}</tbody>
@@ -2057,7 +2123,7 @@ export function montarFicha(opts: FichaOpts) {
     const sec = h.dataset.sec!; (S.secCol ||= {}); S.secCol[sec] = !S.secCol[sec]; applySecCol(); if (!opts.readOnly) save();
   }));
   // ---- Arsenal: adicionar, marcar o uso, descartar, improvisado ----
-  const redesenhaArmas = () => { renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); save(); };
+  const redesenhaArmas = () => { renderArsenal(); renderConjuntos(); renderDerived(); renderCombate(); renderForca(); save(); };
 
   // ---- Ordem das peças: arrastar pela alça, ou mover pelas setas ----
   // Guardar a ordem é guardar a ordem do ARRAY: quem lê a ficha (a mesa, o
@@ -2156,12 +2222,12 @@ export function montarFicha(opts: FichaOpts) {
     // imagem nova começa enquadrada: o zoom e o deslocamento da anterior não
     // dizem nada sobre esta, e herdá-los mostraria um pedaço qualquer dela
     delete p.enq;
-    renderArsenal(); renderArmaduras(); renderConjuntos(); save();
+    renderArsenal(); renderArmaduras(); renderConjuntos(); renderForca(); save();
   }
   async function tirarImagem(chave: string) {
     const p = pecaPorChave(chave); if (!p || !p.img) return;
     const url = p.img; p.img = undefined; delete p.enq;
-    renderArsenal(); renderArmaduras(); renderConjuntos(); save();
+    renderArsenal(); renderArmaduras(); renderConjuntos(); renderForca(); save();
     const { apagarImagemItem } = await import('./imagens-item');
     void apagarImagemItem(url);
   }
@@ -2327,7 +2393,7 @@ export function montarFicha(opts: FichaOpts) {
     (S.equip.armaduras ||= []).push({ uid, base: escolha, vestida: true });
     // peça personalizada já nasce com o ajuste aberto: ela vem zerada
     if (escolha === ID_ARMADURA_LIVRE) modAberto.add(`arm:${uid}`);
-    renderArmaduras(); renderDerived(); renderCombate(); save();
+    renderArmaduras(); renderDerived(); renderCombate(); renderForca(); save();
   });
   el('eq-armaduras').addEventListener('input', (e) => {
     if (opts.readOnly) return;
@@ -2347,7 +2413,7 @@ export function montarFicha(opts: FichaOpts) {
     if (vest) {
       const p = pecaArm(vest.dataset.armVestir!); if (!p) return;
       p.vestida = !p.vestida;
-      renderArmaduras(); renderDerived(); renderCombate(); save(); return;
+      renderArmaduras(); renderDerived(); renderCombate(); renderForca(); save(); return;
     }
     const rm = (e.target as HTMLElement).closest<HTMLElement>('[data-arm-rm]');
     if (!rm) return;
@@ -2358,7 +2424,7 @@ export function montarFicha(opts: FichaOpts) {
     );
     if (!ok) return;
     S.equip.armaduras = S.equip.armaduras.filter((x: any) => x.uid !== p.uid);
-    renderArmaduras(); renderDerived(); renderCombate(); save();
+    renderArmaduras(); renderDerived(); renderCombate(); renderForca(); save();
   });
   // ---- Ajuste de peça: os valores do catálogo, editáveis por peça POSSUÍDA ----
   // A chave é "arm:<uid>" (peça de armadura) ou "ars:<uid>" (arma ou escudo do arsenal).
@@ -2453,11 +2519,16 @@ export function montarFicha(opts: FichaOpts) {
     const t = e.target as HTMLInputElement;
     const ni = t.getAttribute('data-bolsa-nome');
     if (ni != null) { S.bolsas[+ni].nome = t.value; save(); return; }
+    const pi = t.getAttribute('data-bolsa-peso');
+    if (pi != null) { S.bolsas[+pi].pesoTotal = t.value; renderForca(); save(); return; }
     const cel = t.getAttribute('data-bolsa');
     if (cel != null) {
       const [i, j, campo] = cel.split(':');
       const linha = S.bolsas?.[+i]?.itens?.[+j]; if (!linha) return;
       linha[campo] = t.value; save();   // sem redesenhar: o campo em edição não pode perder o foco
+      // mexer no peso de um item muda a carga, que é lida noutro bloco: aquele redesenha,
+      // e a bolsa fica onde está. Só o placeholder do total espera o próximo desenho.
+      if (campo === 'peso') renderForca();
     }
   });
   el('eq-bolsas').addEventListener('click', (e) => {

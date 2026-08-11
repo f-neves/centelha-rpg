@@ -937,8 +937,24 @@ import '../styles/arte-equip.css';
   @media (min-width: 901px) and (max-width: 1000px) { .equip-bolsas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 700px) { .equip-bolsas { grid-template-columns: minmax(0, 1fr); } }
   .bolsa { display: flex; flex-direction: column; gap: .25rem; }
-  .bolsa-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .03em; color: var(--accent-strong); background: transparent; border: none; border-bottom: 1px solid var(--rule); padding: .1rem .1rem .2rem; text-transform: uppercase; }
-  .bolsa-nome:focus { outline: none; border-bottom-color: var(--accent); }
+  /* nome e peso total dividem a linha: o nome estica, o peso pega o que precisa */
+  .bolsa-cab { display: flex; align-items: baseline; gap: .4rem; border-bottom: 1px solid var(--rule); }
+  .bolsa-cab:focus-within { border-bottom-color: var(--accent); }
+  .bolsa-nome { flex: 1; min-width: 0; font-family: 'Cinzel'; font-size: var(--fs-micro); letter-spacing: .03em; color: var(--accent-strong); background: transparent; border: none; padding: .1rem .1rem .2rem; text-transform: uppercase; }
+  .bolsa-nome:focus { outline: none; }
+  .bolsa-peso { flex: 0 0 auto; font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); }
+  .bolsa-peso input { width: 3.2rem; background: transparent; border: none; padding: .1rem 0 .2rem;
+    font-family: 'EB Garamond'; font-size: var(--fs-rotulo); color: var(--accent-texto);
+    text-align: right; font-variant-numeric: tabular-nums; }
+  .bolsa-peso input:focus { outline: none; }
+  /* o número calculado aparece como placeholder: apagar o campo devolve a conta, e o
+     tom mais claro é o que diz, sem texto de ajuda, que aquilo não foi escrito por ninguém */
+  .bolsa-peso input::placeholder, .fa-edit input::placeholder { color: var(--ink-soft); opacity: .75; }
+  .fa-edit { white-space: nowrap; margin-right: 1.1rem; font-family: 'Cinzel'; color: var(--accent-strong); }
+  .fa-edit input { width: 3.6rem; background: transparent; border: none; border-bottom: 1px dashed var(--rule);
+    padding: 0 .1rem; font-family: 'Cinzel'; font-size: inherit; font-weight: 700; color: var(--accent-strong);
+    text-align: right; font-variant-numeric: tabular-nums; }
+  .fa-edit input:focus { outline: none; border-bottom-color: var(--accent); border-bottom-style: solid; }
   /* cada bolsa é uma tabela Item / Peso / Preço */
   .bolsa-tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
   /* o thead herda o fundo --accent-strong da regra global de tabelas; com --ink-soft por
