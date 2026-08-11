@@ -1158,28 +1158,29 @@
       "escopo": "Os valores abaixo valem para as Artes ELEMENTAIS. As demais Artes têm parâmetros próprios, definidos caso a caso.",
       "graus": {
         "nota": "Níveis 1 a 6. Você só paga os parâmetros que USA: o padrão grátis de qualquer feitiço é um alvo, instantâneo e sem área. O Alcance é a exceção: todo efeito comum precisa de pelo menos Alcance 1 (toque).",
+        "notaTurno": "1 turno = 6 ticks. A régua breve inteira cabe dentro de uma briga: o nível 6 são 50 turnos, 300 ticks, cinco minutos. Passou disso, é caso da régua longa.",
         "alcance": [
           "toque",
-          "5 m",
-          "15 m",
-          "50 m",
-          "100 m",
-          "200 m"
+          "2 m",
+          "4 m",
+          "10 m",
+          "20 m",
+          "50 m"
         ],
         "area": [
           "0,5 × 0,5 m",
           "1 × 1 m",
+          "1,5 × 1,5 m",
           "2 × 2 m",
-          "4 × 4 m",
-          "6 × 6 m",
-          "8 × 8 m"
+          "3 × 3 m",
+          "5 × 5 m"
         ],
         "alvos": [
           "1",
           "2",
           "3",
-          "5",
-          "7",
+          "4",
+          "6",
           "10"
         ],
         "dano": [
@@ -1192,11 +1193,11 @@
         ],
         "duracaoBreve": [
           "1 turno",
-          "5 turnos",
-          "1 minuto",
-          "5 minutos",
-          "30 minutos",
-          "1 hora"
+          "2 turnos",
+          "4 turnos",
+          "10 turnos",
+          "20 turnos",
+          "50 turnos"
         ],
         "duracaoLonga": [
           "10 minutos",
@@ -1211,7 +1212,7 @@
         "notaAlcance": "O efeito comum precisa de pelo menos Alcance 1 (toque). Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano."
       },
       "exemplos": [
-        "Alcance 3 (15 m) + Dano 2 (2d6) + Duração 3 (1 minuto) = 3 + 2 + 3 = 8 pontos. Com Centelha 2, custa 6 de Mana.",
+        "Alcance 3 (4 m) + Dano 2 (2d6) + Duração 3 (4 turnos) = 3 + 2 + 3 = 8 pontos. Com Centelha 2, custa 6 de Mana.",
         "Dano 1 + Alcance 1 = 1 + 1 = 2 pontos. Com Centelha 2 ou mais, sai de graça e pode ser repetido à vontade."
       ]
     },
