@@ -84,6 +84,11 @@ const SETAS = [
           </div>
           <button class="btn mini primary ini-prox" id="ini-prox" hidden>⏭ próximo</button>
           <div id="gr-ini" class="gr-ini-lista"></div>
+          <!-- Quem está no chão sai da FILA, mas não da vista. A fila é a ordem
+               de quem vai agir, e um inconsciente não age; deixá-lo lá só empurra
+               os vivos para baixo. Aqui embaixo ele continua a um clique, que é
+               por onde a cura passa. -->
+          <div id="ini-chao" class="ini-chao" hidden></div>
         </aside>
 
         <aside class="gr-lado" id="gr-lado">
@@ -369,8 +374,6 @@ const SETAS = [
   .ini-item.g-aliado  { border-left: 3px solid var(--accent); }
   .ini-item.g-inimigo { border-left: 3px solid #c1352c; }
   .ini-item.g-neutro  { border-left: 3px solid var(--gold); }
-  .ini-item.caido { opacity: .55; }
-  .ini-item.caido .ini-nome { text-decoration: line-through; }
   /* Quem está na vez: a mesma cor do brilho do tabuleiro, para os dois lugares
      contarem a mesma coisa. */
   .ini-item.vez { background: color-mix(in srgb, var(--vez-cor, #ffd76a) 22%, transparent);
@@ -396,6 +399,21 @@ const SETAS = [
     border: 1px solid var(--rule); border-radius: var(--r-sm); }
   .ini-custo input:focus { border-color: var(--accent); outline: none; }
   .ini-vazio { font-size: var(--fs-micro); color: var(--ink-soft); padding: .3rem; }
+
+  /* Os caídos: fora da fila, ainda em cena. Uma tira no pé da coluna, sem tick
+     e sem iniciativa, porque nenhum dos dois números vale para quem não vai
+     agir. Clicar abre o menu da peça, o mesmo da fila. */
+  .ini-chao { flex: 0 0 auto; margin-top: .35rem; padding-top: .3rem;
+    border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: .1rem;
+    max-height: 34%; overflow-y: auto; }
+  .ini-chao-h { font-size: calc(var(--fs-micro) * .8); color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: .05em; padding: 0 .2rem .1rem; }
+  .ini-caido { display: flex; align-items: center; gap: .35rem; padding: .12rem .25rem;
+    border-radius: var(--r-sm); cursor: pointer; opacity: .55; }
+  .ini-caido:hover { opacity: 1; background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .ini-caido .av { --av-t: 1.4rem; }
+  .ini-caido .nm { font-size: calc(var(--fs-micro) * .9); line-height: 1.1; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; text-decoration: line-through; }
 
   /* O palco rola; o mundo tem o tamanho do tabuleiro e é ele que o zoom estica.
      Escalar o palco esticaria a barra de rolagem junto. */
@@ -934,7 +952,7 @@ const SETAS = [
     hexNaTela,
     // O agora do tabuleiro é o tick de quem está na vez, o mesmo que a coluna
     // de iniciativa mostra. `encontros.tick_atual` é da aba Combate.
-    tickAgora: () => daVez()?.tick ?? ENC?.tick_atual ?? 0,
+    tickAgora: () => relogio(),
     // Tudo que o módulo das Artes escreve no registro sai marcado com `ef`.
     // É essa marca que o "refazer o log dos efeitos" usa para saber o que
     // apagar, e marcar aqui, no ponto por onde tudo passa, evita espalhar a
@@ -1677,12 +1695,96 @@ const SETAS = [
    */
   function grupoDaVez(): any[] {
     const t = tickDaVez();
-    if (t == null) return naFila().slice(0, 1);   // todos no chão: sobra o primeiro
+    if (t == null) return [];   // todos no chão: não é a vez de ninguém
     return naFila().filter((c: any) => !noChao(c) && (c.tick ?? 0) === t);
   }
 
   /** Quem recebe o custo da próxima ação: o primeiro do grupo. */
   const daVez = (): any | null => grupoDaVez()[0] || null;
+
+  /**
+   * Onde a cena está, mesmo quando ninguém está de pé.
+   *
+   * `tickDaVez` devolve nada com todos no chão, e nada não serve para medir
+   * efeito nem para escrever na tela: o relógio não voltou a zero, ele PAROU no
+   * ponto mais adiantado a que a briga chegou. É esse ponto que fica valendo até
+   * alguém levantar.
+   */
+  function relogio(): number {
+    const t = tickDaVez();
+    if (t != null) return t;
+    const f = naFila();
+    return f.length ? Math.max(0, ...f.map((c: any) => c.tick ?? 0)) : (ENC?.tick_atual ?? 0);
+  }
+
+  // ------------------------------------------------ quem caiu, quem levantou
+  /**
+   * O atraso de quem volta a ficar de pé, em Ticks.
+   *
+   * Levantar não é de graça: quem estava no chão não age no instante em que
+   * abre os olhos. Cinco Ticks é o preço de uma ação comum, então quem acorda
+   * entra na fila como se tivesse acabado de agir.
+   */
+  const DELAY_AO_LEVANTAR = 5;
+  /** Quem estava no chão na conferência anterior. `null` = ainda não olhamos. */
+  let CHAO_ANTES: Set<string> | null = null;
+  let LEVANTANDO = false;
+  const noChaoAgora = () => new Set(naFila().filter((c: any) => noChao(c)).map((c: any) => c.id));
+
+  /**
+   * Confere o chão a cada repintura e cobra o atraso de quem levantou.
+   *
+   * Mora no desenho, e não em cada lugar que cura, porque ficar de pé acontece
+   * por caminhos demais: a cura do menu, a Arte que devolve Vida, a condição
+   * "inconsciente" que o mestre tira, o efeito que venceu sozinho e até a
+   * campainha do tempo real trazendo isso pronto de fora. Todos terminam
+   * repintando a coluna, então é aqui que dá para pegar todos de uma vez.
+   *
+   * A primeira conferência só anota: no F5 de uma cena com gente de pé, ninguém
+   * "acabou de levantar", e cobrar atraso ali empurraria a fila inteira.
+   */
+  function conferirChao() {
+    const agora = noChaoAgora();
+    const antes = CHAO_ANTES;
+    CHAO_ANTES = agora;
+    if (!antes || LEVANTANDO || !MESTRE) return;
+    const gente = [...antes].filter((id) => !agora.has(id))
+      // Sair do tabuleiro também tira da fila, e isso não é levantar.
+      .map((id) => COMBS.find((c: any) => c.id === id && TOKENS[id])).filter(Boolean) as any[];
+    if (gente.length) void levantar(gente);
+  }
+
+  /**
+   * Levantou: volta para a fila com o atraso, contado do agora da cena.
+   *
+   * O tick antigo dele é lixo, e não ponto de partida: parou no instante em que
+   * ele caiu, muitas vezes dezenas de Ticks atrás, e usá-lo faria o curado agir
+   * várias vezes seguidas até a cena o alcançar. O agora é medido SEM contar
+   * quem acabou de levantar, justamente porque o tick dele ainda é o velho.
+   */
+  async function levantar(gente: any[]) {
+    const ids = new Set(gente.map((c) => c.id));
+    const outros = naFila().filter((c: any) => !noChao(c) && !ids.has(c.id));
+    const agora = outros.length ? (outros[0].tick ?? 0)
+      : Math.max(0, ...naFila().map((c: any) => c.tick ?? 0));
+    const tick = agora + DELAY_AO_LEVANTAR;
+    LEVANTANDO = true;
+    try {
+      for (const c of gente) {
+        // Quem já estava adiante do atraso não é puxado para trás: o atraso é
+        // piso, e não um lugar marcado na fila.
+        if ((c.tick ?? 0) >= tick) continue;
+        const { error } = await SB.from('combatentes').update({ tick }).eq('id', c.id);
+        if (error) { uiErro('Erro: ' + error.message); continue; }
+        c.tick = tick;
+        await logar(c, `${c.nome} está de pé · volta a agir no tick ${tick}`
+          + ` (+${DELAY_AO_LEVANTAR} do tick ${agora})`, { acao: null });
+      }
+    } finally { LEVANTANDO = false; }
+    CHAO_ANTES = noChaoAgora();
+    pintarIniciativa(); pintarTokens();
+    avisarAgora('combatentes');
+  }
 
   // ------------------------------------------------ o custo da próxima ação
   /**
@@ -1720,7 +1822,11 @@ const SETAS = [
 
   function pintarIniciativa() {
     const box = el('gr-ini');
+    // Antes de desenhar, porque é o desenho que revela quem levantou.
+    conferirChao();
     const fila = naFila();
+    const emPe = fila.filter((c: any) => !noChao(c));
+    pintarChao(fila.filter((c: any) => noChao(c)));
     if (!fila.length) {
       box.innerHTML = `<p class="ini-vazio">${MESTRE
         ? 'Ninguém no tabuleiro ainda. Quem entra no mapa entra na fila.'
@@ -1731,18 +1837,29 @@ const SETAS = [
     const naVez = new Set(grupo.map((c: any) => c.id));
     const age = grupo[0]?.id;
     // A rodada sai do tick, como no rastreador: seis ticks fecham uma rodada.
-    const tick = tickDaVez() ?? 0;
+    const tick = relogio();
     el('ini-rd').textContent = `Rodada ${Math.floor(tick / 6) + 1}`;
     el('ini-tk').textContent = `tick ${tick}`;
-    if (MESTRE) { (el('ini-rolar') as HTMLElement).hidden = false; (el('ini-prox') as HTMLElement).hidden = false; }
-    box.innerHTML = fila.map((c: any) => {
+    if (MESTRE) {
+      (el('ini-rolar') as HTMLElement).hidden = false;
+      const prox = el('ini-prox') as HTMLButtonElement;
+      prox.hidden = false;
+      // Sem ninguém de pé não há vez para encerrar, e o botão passaria a ser um
+      // clique que não faz nada.
+      prox.disabled = !emPe.length;
+      prox.title = emPe.length ? '' : 'Ninguém de pé: a cena espera alguém levantar.';
+    }
+    if (!emPe.length) {
+      box.innerHTML = `<p class="ini-vazio">Todos no chão. O relógio parou no tick ${tick}.</p>`;
+      return;
+    }
+    box.innerHTML = emPe.map((c: any) => {
       const pct = pctDe100(c);
-      const caido = noChao(c);
       const ehVez = naVez.has(c.id);
       const dica = c.id === age ? ' · age agora'
         : ehVez ? ' · também neste tick' : '';
       return `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${ehVez ? ' vez' : ''}${
-        c.id === age ? ' age' : ''}${caido ? ' caido' : ''}"
+        c.id === age ? ' age' : ''}"
         data-c="${c.id}" data-t="${c.tick ?? 0}" title="${esc(c.nome)}${dica}">
         <span class="ini-av">${avatarDe(c, 'av-p')}</span>
         <span class="ini-nome">${esc(c.nome)}</span>
@@ -1750,6 +1867,22 @@ const SETAS = [
           pct != null ? ` · ${Math.round(pct)}%` : ''}</span>
       </div>`;
     }).join('');
+  }
+
+  /** A tira dos caídos, no pé da coluna. Sem números: eles não estão na ordem. */
+  function pintarChao(caidos: any[]) {
+    const tira = el('ini-chao') as HTMLElement;
+    tira.hidden = !caidos.length;
+    if (!caidos.length) { tira.innerHTML = ''; return; }
+    tira.innerHTML = `<div class="ini-chao-h">No chão · ${caidos.length}</div>`
+      + caidos.map((c: any) => {
+        const pct = pctDe100(c);
+        return `<div class="ini-caido g-${esc(c.grupo || 'inimigo')}" data-c="${c.id}"
+          title="${esc(c.nome)} · fora da fila até voltar a ficar de pé${
+            pct != null ? ` · ${Math.round(pct)}%` : ''}">
+          <span>${avatarDe(c, 'av-p')}</span><span class="nm">${esc(c.nome)}</span>
+        </div>`;
+      }).join('');
   }
 
   /**
@@ -1777,6 +1910,13 @@ const SETAS = [
       if (!it) return;
       ev.preventDefault();
       editarIniciativa(it.dataset.c!);
+    });
+    // A tira dos caídos abre o mesmo menu: é dali que sai a cura que põe a
+    // pessoa de pé, e obrigar o mestre a caçar a peça no tabuleiro para isso
+    // seria tirar da mão dele o único movimento que a tira admite.
+    el('ini-chao').addEventListener('click', (ev) => {
+      const it = (ev.target as HTMLElement).closest<HTMLElement>('.ini-caido');
+      if (it) abrirMenu(it.dataset.c!, ev.clientX, ev.clientY);
     });
 
     box.addEventListener('pointerdown', (ev) => {
@@ -3152,7 +3292,9 @@ const SETAS = [
     const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
     if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
     alvo.pv_atual = pv;
-    atualizarAnel(alvo); pintarLista();
+    // A fila também: Vida a zero tira da ordem na hora, sem esperar a próxima
+    // repintura vinda de outro lugar.
+    atualizarAnel(alvo); pintarLista(); pintarIniciativa();
     avisarAgora('combatentes');
     const est = alvo.pv_max ? ` · ${alvo.pv_atual}/${alvo.pv_max} (${tierDe(pv, alvo.pv_max).estado})` : '';
     await logar(alvo, `${atacante.nome} acertou ${alvo.nome}: ${liquido} de dano (${TIPO_LBL[tipo]})`
@@ -3173,6 +3315,10 @@ const SETAS = [
     atualizarAnel(c); pintarLista();
     avisarAgora('combatentes');
     await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`, { acao: null });
+    // Depois do registro, e não antes: quem estava no chão volta à fila aqui, e
+    // a linha do atraso tem de vir DEPOIS da linha da cura para a história ficar
+    // na ordem em que aconteceu.
+    pintarIniciativa();
   }
 
   /**
