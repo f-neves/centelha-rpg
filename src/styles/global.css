@@ -777,19 +777,39 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-chip.on { border-color: var(--ag-cor, var(--accent)); box-shadow: inset 0 0 0 1px var(--ag-cor, var(--accent)); }
 .ag-chip-nv { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: var(--fs-micro); }
 
-/* o Efeito: um cartão por linha, porque a descrição é o que decide a escolha */
-.ag-efs { display: grid; gap: .3rem; max-height: 15rem; overflow-y: auto; padding-right: .2rem; }
-.ag-ef { display: grid; gap: .12rem; text-align: left; padding: .4rem .55rem; cursor: pointer;
-  border: 1px solid var(--rule); border-radius: var(--r-2, 6px); background: transparent;
-  font: inherit; color: var(--ink); }
+/* o Efeito: cartões lado a lado, e não uma fila de um por linha.
+   `auto-fill` com piso de 12rem em vez de um número fixo de colunas: no
+   diálogo aberto dá três ou quatro por fileira, e no celular vira um só, sem
+   ponto de quebra escrito à mão. */
+.ag-efs { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: .35rem; max-height: 22rem; overflow-y: auto; padding-right: .2rem; align-items: stretch; }
+/* Flex em coluna, e não grade: é o que permite empurrar a última linha para o
+   pé do cartão com um `margin-top: auto`. */
+.ag-ef { display: flex; flex-direction: column; gap: .12rem; text-align: left;
+  padding: .45rem .55rem; cursor: pointer; border: 1px solid var(--rule);
+  border-radius: var(--r-2, 6px); background: transparent; font: inherit; color: var(--ink); }
 .ag-ef:hover { border-color: var(--accent); }
 .ag-ef.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .ag-ef-top { display: flex; align-items: baseline; gap: .4rem; }
-.ag-ef-nv { font-size: var(--fs-micro); color: var(--ink-soft); border: 1px solid var(--rule);
+/* O nome fica com a sobra e quebra em duas linhas quando for comprido; o nível
+   não encolhe nem desce, porque é o número que decide se dá para conjurar. */
+.ag-ef-top b { flex: 1 1 auto; min-width: 0; }
+.ag-ef-nv { flex: 0 0 auto; font-size: var(--fs-micro); color: var(--ink-soft); border: 1px solid var(--rule);
   border-radius: 999px; padding: 0 .3rem; font-variant-numeric: tabular-nums; }
-.ag-ef-tx { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.35; }
-.ag-ef-sab { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
-.ag-ef-mc { font-size: calc(var(--fs-micro) * .92); color: var(--ink-soft); letter-spacing: .03em; }
+/* A descrição é o que decide a escolha, e num cartão estreito ela vai de duas a
+   doze linhas, fazendo a fileira inteira crescer junto da mais falante. Cortada
+   em seis linhas os cartões ficam comparáveis, e o texto inteiro continua a um
+   apontar de distância: ele vai no `title` do botão (ver artes-grid-ui.ts). */
+.ag-ef-tx { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.35;
+  display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;
+  overflow: hidden; }
+.ag-ef-sab { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic;
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; }
+/* As marcas descem para o pé: é a linha que se compara entre cartões vizinhos,
+   e comparar exige que ela esteja na mesma altura nos dois. */
+.ag-ef-mc { margin-top: auto; padding-top: .25rem; font-size: calc(var(--fs-micro) * .92);
+  color: var(--ink-soft); letter-spacing: .03em; }
 
 /* os parâmetros: nome, contador, e o que aquilo VALE, que é a coluna que importa */
 .ag-pars { display: grid; gap: .18rem; }

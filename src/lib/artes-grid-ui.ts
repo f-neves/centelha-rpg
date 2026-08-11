@@ -188,10 +188,15 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
           gg.fere ? 'fere' : '',
           gg.condicao && CONDICAO[gg.condicao] ? CONDICAO[gg.condicao].nome.toLowerCase() : '',
         ].filter(Boolean).join(' · ') : 'a Arte crua, sem Efeito comprado';
-        return `<button type="button" class="ag-ef${on ? ' on' : ''}" data-ef="${e ? e.id : ''}">
+        const texto = e ? e.efeito : 'Dano e área montados só com os parâmetros do livro.';
+        // O cartão corta a descrição em seis linhas para os vizinhos ficarem
+        // comparáveis (ver `.ag-ef-tx` no global.css). O texto inteiro fica
+        // aqui: apontar o mouse no cartão devolve o que o corte tirou.
+        return `<button type="button" class="ag-ef${on ? ' on' : ''}" data-ef="${e ? e.id : ''}"
+          title="${esc(texto)}">
           <span class="ag-ef-top"><b>${esc(e ? e.nome : 'Improviso')}</b>
             ${e ? `<span class="ag-ef-nv" title="exige a Arte no nível ${e.nivel}">${e.nivel}</span>` : ''}</span>
-          <span class="ag-ef-tx">${esc(e ? e.efeito : 'Dano e área montados só com os parâmetros do livro.')}</span>
+          <span class="ag-ef-tx">${esc(texto)}</span>
           ${e && sabor(e) ? `<span class="ag-ef-sab">${esc(arteSel.nome)}: ${esc(sabor(e))}</span>` : ''}
           <span class="ag-ef-mc">${esc(marca)}</span>
         </button>`;
