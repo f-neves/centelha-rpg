@@ -83,7 +83,10 @@ import MesaCab from '../../components/MesaCab.astro';
         <aside class="gr-ini" id="gr-ini-col">
           <div class="gr-reg-cab">
             <h3 class="col-h">Iniciativa</h3>
+            <button class="btn-fant" id="ini-rolar" hidden title="Rolar a iniciativa de todos no tabuleiro">⚄</button>
           </div>
+          <div class="ini-rodada" id="ini-rodada"></div>
+          <button class="btn mini primary ini-prox" id="ini-prox" hidden>⏭ próximo</button>
           <div id="gr-ini" class="gr-ini-lista"></div>
         </aside>
 
@@ -341,6 +344,32 @@ import MesaCab from '../../components/MesaCab.astro';
      letra: é o que mantém o número legível tanto sobre a pedra clara do mapa
      quanto sobre a água escura, sem uma tarja por baixo. */
   .seta { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 7 5; }
+  .seta.regua { stroke: var(--gold); stroke-dasharray: 4 4; stroke-width: 2.5; }
+
+  /* ---- endereço das casas na moldura ---- */
+  .rot-eixo { fill: var(--ink-soft); font-family: 'Cinzel', serif; font-size: 11px;
+    text-anchor: middle; opacity: .8; }
+  .gr-mundo.com-arte .rot-eixo { fill: #fff; opacity: .7;
+    paint-order: stroke; stroke: rgba(0,0,0,.7); stroke-width: 2.5; }
+  .rot-lin { text-anchor: end; }
+
+  /* ---- alcance ---- */
+  .hx-alc { fill: color-mix(in srgb, var(--accent) 18%, transparent);
+    stroke: color-mix(in srgb, var(--accent) 55%, transparent); stroke-width: 1; pointer-events: none; }
+
+  /* ---- condições coladas na peça ---- */
+  .tok-conds { display: flex; gap: .08rem; margin-top: -.35rem; max-width: calc(var(--tok) * 1.2); }
+  .tok-cond { font-size: .62rem; line-height: 1; padding: .08rem .16rem; border-radius: 3px;
+    background: color-mix(in srgb, var(--bg) 82%, transparent); border: 1px solid var(--rule); }
+  .tok-cond.mais { font-family: 'Cinzel'; font-size: .55rem; }
+
+  /* ---- rodada e o próximo ---- */
+  .ini-rodada { display: flex; align-items: baseline; gap: .35rem; padding: .1rem .1rem .25rem; }
+  .ini-rodada .rd { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--accent-texto); font-weight: 700; }
+  .ini-rodada .tk { font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft);
+    font-variant-numeric: tabular-nums; }
+  .ini-prox { width: 100%; margin-bottom: .3rem; }
+  .gr-palco.arrastando-mapa { cursor: grabbing; }
   .seta-txt, .seta-sub { text-anchor: middle; font-family: 'Cinzel', serif; fill: var(--accent-texto);
     paint-order: stroke; stroke: rgba(0,0,0,.85); stroke-width: 3.5; stroke-linejoin: round; }
   .seta-txt { font-size: 15px; font-weight: 700; }
@@ -550,10 +579,12 @@ import MesaCab from '../../components/MesaCab.astro';
     abrirMesa, u, esc, avatarHTML, urlsImagens, pctDe, novoId, debounce,
     semMigracao14, avisoMigracao, tierDe, tierCls, somarCondicoes, COND,
   } from '../../lib/mesa-core';
-  import { MON, resumoDe } from '../../lib/mesa-bestiario';
+  import { MON, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
+  import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
     hexEmPonto, dentro, chaveHex, distanciaHex, nomeHex, larguraHex,
+    offsetParaAxial, letraColuna,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
   import {
@@ -581,6 +612,8 @@ import MesaCab from '../../components/MesaCab.astro';
   let BASE = 1;            // a escala que faz a arte inteira caber no tabuleiro
   let AJUSTANDO = false;
   let LOG: any[] = [];
+  let ROTULOS = true;                                  // letras e números nas bordas
+  let ALCANCE: { cid: string; metros: number } | null = null;  // o anel de alcance aceso
   // Bloco de combate por combatente (defesas e absorção). Só o mestre monta:
   // ele depende da ficha dos personagens, que o jogador não lê dos colegas.
   let RESUMO: Record<string, any> = {};
@@ -604,7 +637,7 @@ import MesaCab from '../../components/MesaCab.astro';
     repintar: () => {
       pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
       pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
-      pintarTokens(); pintarLista(); pintarIniciativa();
+      pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
     },
   });
 
@@ -624,6 +657,7 @@ import MesaCab from '../../components/MesaCab.astro';
     ligarArrasto();
     ligarMenuToken();
     ligarMira();
+    ligarReguaENavegacao();
     ligarTelaCheia();
     // A altura depende do que sobra da janela: refazer no redimensionamento é o
     // que mantém o mapa colado no pé da tela quando a janela muda de tamanho.
@@ -789,6 +823,24 @@ import MesaCab from '../../components/MesaCab.astro';
    * três sai daí. O zoom não entra: ele é um `scale` no mundo inteiro, e leva
    * os tokens junto.
    */
+  /**
+   * A borda do tabuleiro, já com o espaço dos rótulos de coordenada.
+   *
+   * Todo cálculo de posição (tokens, setas, o hexágono sob o cursor) passa por
+   * aqui. Foi por isso que virou função: com o número escrito em cinco lugares,
+   * ligar os rótulos deslocaria o desenho e deixaria o clique meio hexágono
+   * fora, que é o tipo de bug que só aparece na mesa.
+   */
+  const CANTO = 15;
+  const margem = () => {
+    const m = margemTabuleiro(RAIO);
+    return ROTULOS ? { x: m.x + CANTO, y: m.y + CANTO } : m;
+  };
+  const medida = () => {
+    const m = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
+    return ROTULOS ? { largura: m.largura + CANTO, altura: m.altura + CANTO } : m;
+  };
+
   const pxPorMetro = () => larguraHex(RAIO) / (Number(ARENA?.escala_m) || 1);
   const diametroPx = (c: any) => diametroM(c) * pxPorMetro();
 
@@ -867,6 +919,7 @@ import MesaCab from '../../components/MesaCab.astro';
     pintarLista();
     pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
     pintarIniciativa();
+    pintarAlcance();
     pintarLog();
     aplicarGrade();
     sincronizarControles();
@@ -881,11 +934,38 @@ import MesaCab from '../../components/MesaCab.astro';
       `<option value="${a.id}"${a.id === ARENA.id ? ' selected' : ''}>${esc(a.nome)}${a.ativa ? ' ◉' : ''}</option>`).join('');
   }
 
+  /**
+   * Letras em cima, números à esquerda: o endereço de cada casa na borda.
+   *
+   * O registro já fala em "D5", e sem a régua na moldura o mestre tem de contar
+   * hexágonos com o dedo para achar a casa que acabou de ler. A letra fica sobre
+   * a coluna do topo e o número à esquerda da linha, nas próprias coordenadas
+   * dos hexágonos, e não em passos regulares: as linhas são desencontradas, e
+   * uma régua reta se descolaria do tabuleiro na primeira linha ímpar.
+   */
+  function rotulosHTML(cols: number, rows: number, mg: { x: number; y: number }) {
+    if (!ROTULOS) return '';
+    const out: string[] = [];
+    for (let col = 0; col < cols; col++) {
+      const h = offsetParaAxial(col, 0);
+      const c = centroHex(h.q, h.r, RAIO);
+      out.push(`<text class="rot-eixo" x="${(c.x + mg.x).toFixed(1)}" y="${(mg.y - RAIO - 3).toFixed(1)}"
+        >${letraColuna(col)}</text>`);
+    }
+    for (let row = 0; row < rows; row++) {
+      const h = offsetParaAxial(0, row);
+      const c = centroHex(h.q, h.r, RAIO);
+      out.push(`<text class="rot-eixo rot-lin" x="${(c.x + mg.x - larguraHex(RAIO) / 2 - 4).toFixed(1)}"
+        y="${(c.y + mg.y + 4).toFixed(1)}">${row + 1}</text>`);
+    }
+    return `<g class="rot-eixos">${out.join('')}</g>`;
+  }
+
   /** Desenha o SVG e posiciona a arte de fundo. Só muda quando a arena muda. */
   function pintarTabuleiro() {
     const { cols, rows } = ARENA;
     const med = medidaTabuleiro(cols, rows, RAIO);
-    const mg = margemTabuleiro(RAIO);
+    const mg = margem();
     const mundo = el('gr-mundo');
     mundo.style.width = med.largura + 'px';
     mundo.style.height = med.altura + 'px';
@@ -900,7 +980,8 @@ import MesaCab from '../../components/MesaCab.astro';
         return `<polygon class="hx" data-h="${chaveHex(h.q, h.r)}"
           points="${verticesHex(c.x + mg.x, c.y + mg.y, RAIO)}" />`;
       }).join('')
-      + '<g id="gr-seta"></g>';
+      + rotulosHTML(cols, rows, mg)
+      + '<g id="gr-alcance"></g><g id="gr-seta"></g>';
 
     const img = el('gr-fundo') as HTMLImageElement;
     const src = ARENA.fundo_url || (ARENA.fundo_path ? IMG_FUNDO : '');
@@ -969,7 +1050,7 @@ import MesaCab from '../../components/MesaCab.astro';
   function aplicarFundo() {
     const img = el('gr-fundo') as HTMLImageElement;
     if (img.hidden || !img.naturalWidth) return;
-    const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
+    const med = medida();
     const g = caixaGirada(img.naturalWidth, img.naturalHeight, FUNDO.rot || 0);
     BASE = Math.min(med.largura / g.largura, med.altura / g.altura);
     const dx = (FUNDO.x / 100) * med.largura;
@@ -984,7 +1065,7 @@ import MesaCab from '../../components/MesaCab.astro';
   function zPreencher() {
     const img = el('gr-fundo') as HTMLImageElement;
     if (!img.naturalWidth || !BASE) return 1;
-    const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
+    const med = medida();
     const g = caixaGirada(img.naturalWidth, img.naturalHeight, FUNDO.rot || 0);
     return Math.max(med.largura / g.largura, med.altura / g.altura) / BASE;
   }
@@ -1069,8 +1150,50 @@ import MesaCab from '../../components/MesaCab.astro';
     tok.title = `${c.nome} · ${diametroM(c)} m · ${faixa.estado}`;
   }
 
+  /**
+   * Os ícones de condição colados na peça.
+   *
+   * Estavam só no card do rastreador, e o mestre que estava olhando o mapa não
+   * tinha como saber que aquele goblin está Cego sem trocar de aba. Quatro no
+   * máximo, e um "+n" para o resto: a fileira não pode ficar mais larga que a
+   * própria peça. Some nas peças pequenas, onde não caberia nada.
+   */
+  function condIconesHTML(c: any, px: number) {
+    if (px < 34) return '';
+    const cs = (c.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k }));
+    if (!cs.length) return '';
+    const mostra = cs.slice(0, 4);
+    return `<span class="tok-conds">${mostra.map((x: any) =>
+      `<span class="tok-cond cond-${esc(x.cor || 'neutro')}" title="${esc(x.nome || x.id)}">${esc(x.icone || '•')}</span>`).join('')}${
+      cs.length > 4 ? `<span class="tok-cond mais" title="${esc(cs.slice(4).map((x: any) => x.nome).join(', '))}">+${cs.length - 4}</span>` : ''}</span>`;
+  }
+
+  /**
+   * O anel de alcance: todas as casas a até N metros de uma peça.
+   *
+   * É o que um tabuleiro hexagonal existe para responder ("eu chego nele?") e
+   * era justamente o que faltava: sem isso o mestre conta hexágonos com o dedo,
+   * que é lento e erra nas diagonais, onde a contagem hexagonal não bate com a
+   * intuição do quadrado.
+   */
+  function pintarAlcance() {
+    const g = document.getElementById('gr-alcance');
+    if (!g) return;
+    if (!ALCANCE || !TOKENS[ALCANCE.cid]) { g.innerHTML = ''; return; }
+    const de = TOKENS[ALCANCE.cid];
+    const escala = Number(ARENA.escala_m) || 1;
+    const passos = Math.floor(ALCANCE.metros / escala);
+    const mg = margem();
+    const casas = tabuleiro(ARENA.cols, ARENA.rows)
+      .filter((h) => distanciaHex(de, h) <= passos && distanciaHex(de, h) > 0);
+    g.innerHTML = casas.map((h) => {
+      const c = centroHex(h.q, h.r, RAIO);
+      return `<polygon class="hx-alc" points="${verticesHex(c.x + mg.x, c.y + mg.y, RAIO)}" />`;
+    }).join('');
+  }
+
   function pintarTokens() {
-    const mg = margemTabuleiro(RAIO);
+    const mg = margem();
     const box = el('gr-tokens');
     const postos = COMBS.filter((c: any) => TOKENS[c.id]);
     // Agrupa por casa para saber quem está dividindo com quem.
@@ -1102,6 +1225,7 @@ import MesaCab from '../../components/MesaCab.astro';
         data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
         title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}">
         <span class="tok-quadro">${avatarDe(c)}${anelHTML(pct)}</span>
+        ${condIconesHTML(c, px)}
         <span class="gr-tn">${esc(c.nome)}</span>
       </div>`;
     }).join('');
@@ -1138,6 +1262,11 @@ import MesaCab from '../../components/MesaCab.astro';
       return;
     }
     const vez = daVez();
+    // A rodada sai do tick, como no rastreador: seis ticks fecham uma rodada.
+    const tick = vez?.tick ?? 0;
+    el('ini-rodada').innerHTML = `<span class="rd">Rodada ${Math.floor(tick / 6) + 1}</span>
+      <span class="tk">tick ${tick}</span>`;
+    if (MESTRE) { (el('ini-rolar') as HTMLElement).hidden = false; (el('ini-prox') as HTMLElement).hidden = false; }
     box.innerHTML = fila.map((c: any) => {
       const pct = pctDe100(c);
       const caido = noChao(c);
@@ -1157,6 +1286,43 @@ import MesaCab from '../../components/MesaCab.astro';
       it.addEventListener('click', (ev) => abrirMenu(it.dataset.c!, ev.clientX, ev.clientY));
       it.addEventListener('contextmenu', (ev) => { ev.preventDefault(); editarIniciativa(it.dataset.c!); });
     });
+  }
+
+  /**
+   * Rola a iniciativa de todo mundo que está no tabuleiro.
+   *
+   * Cada tipo usa a regra dele, e não um d6 genérico: o personagem soma
+   * Raciocínio e Prontidão da ficha (a mesma conta do rastreador), a criatura
+   * soma o bônus escrito no bloco do bestiário, e o figurante de cena, que não
+   * tem ficha nem bloco, rola o dado limpo. Os ticks voltam a zero, porque uma
+   * iniciativa nova é uma cena nova.
+   */
+  async function rolarIniciativas() {
+    const fila = naFila();
+    if (!fila.length) return;
+    if (!await uiConfirmar(`Rolar a iniciativa dos ${fila.length} no tabuleiro? Os ticks voltam a zero.`,
+      { titulo: 'Rolar iniciativa', ok: 'Rolar' })) return;
+    const fichas: Record<string, any> = {};
+    const ids = [...new Set(fila.map((c: any) => c.personagem_id).filter(Boolean))];
+    if (ids.length) {
+      const { data } = await SB.from('personagens').select('id, ficha').in('id', ids);
+      for (const p of data || []) fichas[p.id] = p.ficha;
+    }
+    const rolado: { c: any; v: number }[] = [];
+    for (const c of fila) {
+      let v: number;
+      if (c.tipo === 'pc' && fichas[c.personagem_id]) v = rolarIniciativaPC(fichas[c.personagem_id]);
+      else if (c.tipo === 'criatura' && MON[c.monstro_id]) v = iniDeMonstro(MON[c.monstro_id]);
+      else v = d6();
+      rolado.push({ c, v });
+    }
+    for (const r of rolado) {
+      await SB.from('combatentes').update({ iniciativa: r.v, tick: 0 }).eq('id', r.c.id);
+      r.c.iniciativa = r.v; r.c.tick = 0;
+    }
+    pintarIniciativa(); pintarTokens();
+    const ordem = rolado.slice().sort((a, b) => b.v - a.v).map((r) => `${r.c.nome} ${r.v}`).join(' · ');
+    await logar(null, `Iniciativa rolada: ${ordem}`, { acao: null });
   }
 
   async function editarIniciativa(cid: string) {
@@ -1223,7 +1389,7 @@ import MesaCab from '../../components/MesaCab.astro';
     // O palco precisa reservar o espaço do mundo JÁ ESCALADO: `transform` não
     // muda o tamanho que o pai enxerga, e sem isto a barra de rolagem mede o
     // tabuleiro sem zoom e corta o que passa disso.
-    const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
+    const med = medida();
     mundo.style.marginRight = `${med.largura * (ZOOM - 1)}px`;
     mundo.style.marginBottom = `${med.altura * (ZOOM - 1)}px`;
     el('gr-zval').textContent = Math.round(ZOOM * 100) + '%';
@@ -1231,7 +1397,7 @@ import MesaCab from '../../components/MesaCab.astro';
   const mudarZoom = (z: number) => { ZOOM = Math.max(0.3, Math.min(2.5, z)); aplicarZoom(); };
 
   function caber() {
-    const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
+    const med = medida();
     const palco = el('gr-palco');
     mudarZoom(Math.min((palco.clientWidth - 8) / med.largura, (palco.clientHeight - 8) / med.altura));
   }
@@ -1393,7 +1559,7 @@ import MesaCab from '../../components/MesaCab.astro';
     });
     mundo.addEventListener('pointermove', (ev) => {
       if (!AJUSTANDO || !puxando) return;
-      const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
+      const med = medida();
       FUNDO.x += ((ev.clientX - lx) / ZOOM / med.largura) * 100;
       FUNDO.y += ((ev.clientY - ly) / ZOOM / med.altura) * 100;
       lx = ev.clientX; ly = ev.clientY;
@@ -1431,7 +1597,7 @@ import MesaCab from '../../components/MesaCab.astro';
   function hexNaTela(cx: number, cy: number) {
     const mundo = el('gr-mundo');
     const cai = mundo.getBoundingClientRect();
-    const mg = margemTabuleiro(RAIO);
+    const mg = margem();
     // getBoundingClientRect já vem escalado, então dividir por ZOOM devolve o
     // pixel do mundo (que é o sistema em que o SVG foi desenhado).
     const x = (cx - cai.left) / ZOOM - mg.x;
@@ -1470,7 +1636,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (!g) return;
     const de = ARR && ARR.deOnde === 'mapa' ? TOKENS[ARR.id] : null;
     if (!de) { g.innerHTML = ''; return; }
-    const mg = margemTabuleiro(RAIO);
+    const mg = margem();
     const a = centroHex(de.q, de.r, RAIO), b = centroHex(ate.q, ate.r, RAIO);
     const passos = distanciaHex(de, ate);
     const metros = passos * (Number(ARENA.escala_m) || 1);
@@ -1535,14 +1701,14 @@ import MesaCab from '../../components/MesaCab.astro';
     // aparecer por cima já no primeiro desenho.
     const agora = new Date().toISOString();
     TOKENS[cid] = { q, r, em: agora };
-    pintarTokens(); pintarLista(); pintarIniciativa();
+    pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
     const { error } = await SB.from('arena_tokens').upsert(
       { arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: agora },
       { onConflict: 'arena_id,combatente_id' },
     );
     if (error) {
       if (antes) TOKENS[cid] = antes; else delete TOKENS[cid];
-      pintarTokens(); pintarLista(); pintarIniciativa();
+      pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
       return uiErro('Não deu para mover: ' + error.message);
     }
     if (!registrar) return;
@@ -1564,12 +1730,12 @@ import MesaCab from '../../components/MesaCab.astro';
   async function tirarDoMapa(cid: string, registrar = true) {
     const antes = TOKENS[cid] ? { ...TOKENS[cid] } : null;
     delete TOKENS[cid];
-    pintarTokens(); pintarLista(); pintarIniciativa();
+    pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
     const { error } = await SB.from('arena_tokens').delete()
       .eq('arena_id', ARENA.id).eq('combatente_id', cid);
     if (error) {
       if (antes) TOKENS[cid] = antes;
-      pintarTokens(); pintarLista(); pintarIniciativa();
+      pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
       return uiErro('Não deu para tirar: ' + error.message);
     }
     if (!registrar || !antes) return;
@@ -1630,6 +1796,8 @@ import MesaCab from '../../components/MesaCab.astro';
       + item('curar', '✚ Recuperar Vida')
       + item('arte', '✶ Arte')
       + '<div class="tm-sep"></div>'
+      + item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance')
+      + '<div class="tm-sep"></div>'
       + item('encerrar', ehAVez ? '⏭ Encerrar a vez' : '⏭ Passar para o fim da fila')
       + item('ordem', '↕ Iniciativa e ticks')
       + '<div class="tm-sep"></div>'
@@ -1645,6 +1813,7 @@ import MesaCab from '../../components/MesaCab.astro';
       if (a === 'ataque') iniciarMira(cid);
       else if (a === 'curar') curar(cid);
       else if (a === 'arte') usarArte(cid);
+      else if (a === 'alcance') alternarAlcance(cid);
       else if (a === 'encerrar') encerrarVez(cid);
       else if (a === 'ordem') editarIniciativa(cid);
       else if (a === 'tirar') tirarDoMapa(cid);
@@ -1726,6 +1895,106 @@ import MesaCab from '../../components/MesaCab.astro';
     });
   }
 
+  // ============================================================ alcance
+  let ULTIMO_ALCANCE = 5;
+  async function alternarAlcance(cid: string) {
+    if (ALCANCE?.cid === cid) { ALCANCE = null; pintarAlcance(); return; }
+    const c = COMBS.find((x: any) => x.id === cid);
+    const v = await uiFormulario(`Alcance de ${c?.nome}`, [
+      { nome: 'm', rotulo: 'Metros', tipo: 'numero', valor: ULTIMO_ALCANCE, min: 1 },
+    ], { msg: 'Acende as casas que a peça alcança. Serve para deslocamento e para o alcance de uma arma.', ok: 'Mostrar' });
+    if (!v) return;
+    ULTIMO_ALCANCE = Math.max(1, parseInt(v.m, 10) || 5);
+    ALCANCE = { cid, metros: ULTIMO_ALCANCE };
+    pintarAlcance();
+  }
+
+  // ====================================================== régua e navegação
+  /**
+   * Régua, roda e arrasto do mapa.
+   *
+   * Convenção de mesa virtual, e não invenção: arrastar no vazio mede, a roda
+   * aproxima e o botão do meio empurra o mapa. Cada gesto num botão diferente
+   * porque os três acontecem no mesmo lugar (o chão vazio) e disputá-lo no
+   * mesmo botão faria um atrapalhar o outro.
+   */
+  function ligarReguaENavegacao() {
+    const palco = el('gr-palco');
+    let regua: { x: number; y: number } | null = null;
+    let pan: { x: number; y: number; sx: number; sy: number } | null = null;
+
+    palco.addEventListener('pointerdown', (ev) => {
+      if (AJUSTANDO || MIRA || ARR) return;
+      if (ev.button === 1) {                       // botão do meio: empurra o mapa
+        ev.preventDefault();
+        pan = { x: ev.clientX, y: ev.clientY, sx: palco.scrollLeft, sy: palco.scrollTop };
+        palco.setPointerCapture?.(ev.pointerId);
+        palco.classList.add('arrastando-mapa');
+        return;
+      }
+      if (ev.button !== 0) return;
+      if ((ev.target as HTMLElement).closest('.gr-token')) return;   // peça é assunto do arrasto
+      regua = { x: ev.clientX, y: ev.clientY };
+    });
+
+    palco.addEventListener('pointermove', (ev) => {
+      if (pan) {
+        palco.scrollLeft = pan.sx - (ev.clientX - pan.x);
+        palco.scrollTop = pan.sy - (ev.clientY - pan.y);
+        return;
+      }
+      if (!regua) return;
+      // Só vira régua depois de andar um pouco: senão todo clique no vazio
+      // desenharia uma linha de zero metro.
+      if (Math.hypot(ev.clientX - regua.x, ev.clientY - regua.y) < 6) return;
+      desenharRegua(regua, { x: ev.clientX, y: ev.clientY });
+    });
+
+    const fim = () => {
+      if (pan) { pan = null; palco.classList.remove('arrastando-mapa'); }
+      if (regua) { regua = null; limparSeta(); }
+    };
+    palco.addEventListener('pointerup', fim);
+    palco.addEventListener('pointercancel', fim);
+    palco.addEventListener('pointerleave', fim);
+    // O botão do meio abre aba nova por padrão em alguns navegadores.
+    palco.addEventListener('auxclick', (ev) => { if (ev.button === 1) ev.preventDefault(); });
+
+    palco.addEventListener('wheel', (ev) => {
+      if (AJUSTANDO) return;                       // ajustando, a roda é da arte
+      ev.preventDefault();
+      // Aproxima no ponto do cursor, e não no canto: é o que faz o zoom parecer
+      // que se está chegando perto do que se olha.
+      const antes = ZOOM;
+      mudarZoom(ZOOM * (ev.deltaY < 0 ? 1.12 : 1 / 1.12));
+      const f = ZOOM / antes;
+      const r = palco.getBoundingClientRect();
+      palco.scrollLeft = (palco.scrollLeft + ev.clientX - r.left) * f - (ev.clientX - r.left);
+      palco.scrollTop = (palco.scrollTop + ev.clientY - r.top) * f - (ev.clientY - r.top);
+    }, { passive: false });
+  }
+
+  /** A linha da régua entre dois pontos da tela, com a distância em metros. */
+  function desenharRegua(de: { x: number; y: number }, ate: { x: number; y: number }) {
+    const g = document.getElementById('gr-seta');
+    if (!g) return;
+    const mundo = el('gr-mundo').getBoundingClientRect();
+    const mg = margem();
+    const p = (t: { x: number; y: number }) => ({ x: (t.x - mundo.left) / ZOOM, y: (t.y - mundo.top) / ZOOM });
+    const a = p(de), b = p(ate);
+    const ha = hexEmPonto(a.x - mg.x, a.y - mg.y, RAIO);
+    const hb = hexEmPonto(b.x - mg.x, b.y - mg.y, RAIO);
+    const passos = distanciaHex(ha, hb);
+    const metros = passos * (Number(ARENA.escala_m) || 1);
+    g.innerHTML = `
+      <line class="seta regua" x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}"
+        x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" />
+      <text class="seta-txt" x="${((a.x + b.x) / 2).toFixed(1)}" y="${((a.y + b.y) / 2 - 8).toFixed(1)}"
+        >${fmtM(metros)}</text>
+      <text class="seta-sub" x="${((a.x + b.x) / 2).toFixed(1)}" y="${((a.y + b.y) / 2 + 5).toFixed(1)}"
+        >${passos} hex · ${nomeHex(ha.q, ha.r)}→${nomeHex(hb.q, hb.r)}</text>`;
+  }
+
   // ============================================================== ataque
   let MIRA: { atacante: string } | null = null;
 
@@ -1759,7 +2028,7 @@ import MesaCab from '../../components/MesaCab.astro';
     const de = TOKENS[MIRA.atacante];
     const g = document.getElementById('gr-seta');
     if (!de || !g) return;
-    const mg = margemTabuleiro(RAIO);
+    const mg = margem();
     const a = centroHex(de.q, de.r, RAIO);
     const mundo = el('gr-mundo').getBoundingClientRect();
     const bx = (cx - mundo.left) / ZOOM, by = (cy - mundo.top) / ZOOM;
@@ -2011,6 +2280,18 @@ import MesaCab from '../../components/MesaCab.astro';
     if (!MESTRE) return;
     (el('gr-npc') as HTMLElement).hidden = false;
     el('gr-npc').onclick = () => novoNPC();
+    el('ini-rolar').onclick = () => rolarIniciativas();
+    el('ini-prox').onclick = () => { const v = daVez(); if (v) encerrarVez(v.id); };
+    // Espaço encerra a vez de quem está agindo: é o gesto mais repetido de uma
+    // sessão inteira, e tirar a mão do teclado para caçar o menu custa caro.
+    document.addEventListener('keydown', (ev) => {
+      if (ev.code !== 'Space' || !MESTRE) return;
+      const a = document.activeElement as HTMLElement | null;
+      if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.tagName === 'SELECT' || a.isContentEditable)) return;
+      if (document.querySelector('dialog[open]') || MIRA || AJUSTANDO) return;
+      const v = daVez(); if (!v) return;
+      ev.preventDefault(); encerrarVez(v.id);
+    });
     el('gr-desfazer').onclick = () => desfazer();
     el('gr-nova').onclick = () => abrirArena(null);
     el('gr-editar').onclick = () => abrirArena(ARENA);
