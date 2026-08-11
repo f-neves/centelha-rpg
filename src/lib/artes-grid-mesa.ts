@@ -253,6 +253,7 @@ export async function conjurar(ctx: CtxGrid, cid: string, palco: HTMLElement): P
   }
   if (forma === 'token') return await invocar(ctx, c, plano);
   if (forma === 'movimento') return await deslocar(ctx, c, plano, palco);
+  if (forma === 'cadeia') return await encadear(ctx, c, plano, palco);
   if (forma === 'alvo') return await grudarNoAlvo(ctx, c, plano, palco);
   await marcarNoChao(ctx, c, plano, palco, forma);
 }
@@ -328,6 +329,52 @@ async function grudarNoAlvo(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
 
   // O dano imediato de quem fere na hora do golpe (Céu Aberto, Julgamento).
   if (plano.danoDados && g?.gatilho === 'imediato') await morder(ctx, ATIVOS[ATIVOS.length - 1], alvo, 'acertou');
+}
+
+/**
+ * Corrente: o raio salta de um alvo ao seguinte.
+ *
+ * O salto tem alcance próprio, curto ("desde que estejam a poucos passos um do
+ * outro"), e por isso a cadeia é montada a partir do PRIMEIRO alvo, e não do
+ * conjurador: cada elo mede do anterior. O número de elos é o parâmetro Alvos.
+ * O dano cai um pouco a cada salto, que é a leitura do texto do Efeito.
+ */
+async function encadear(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement): Promise<void> {
+  const primeiro = await escolherAlvoNoMapa(ctx, palco, c.id, `Primeiro alvo de ${plano.nome} · Esc cancela`);
+  if (!primeiro) return;
+  const esc_ = escalaM(ctx);
+  const SALTO_M = 3;   // "a poucos passos um do outro"
+  const cadeia = [primeiro];
+  let atual = ctx.tokens[primeiro];
+  const max = Math.max(1, plano.alvos);
+  while (cadeia.length < max && atual) {
+    const proximo = Object.entries(ctx.tokens)
+      .filter(([id]) => !cadeia.includes(id) && id !== c.id)
+      .map(([id, t]) => ({ id, d: distanciaHex(atual!, t) * esc_ }))
+      .filter((x) => x.d <= SALTO_M)
+      .sort((a, b) => a.d - b.d)[0];
+    if (!proximo) break;
+    cadeia.push(proximo.id);
+    atual = ctx.tokens[proximo.id];
+  }
+
+  await gravarEfeito(ctx, c, plano, {
+    forma: 'cadeia', hexes: cadeia.map((id) => ctx.tokens[id]).filter(Boolean) as Hex[],
+    centro: ctx.tokens[primeiro] || null, raio_m: null, alvos: cadeia,
+  });
+  const ef = ATIVOS[ATIVOS.length - 1];
+  for (let i = 0; i < cadeia.length; i++) {
+    const alvo = combDe(ctx, cadeia[i]);
+    if (!alvo) continue;
+    // Cada salto chega mais fraco: o primeiro leva o dado cheio, e daí em diante
+    // um dado a menos por elo, com o mínimo de um.
+    const dados = Math.max(1, ef.dano_dados - i);
+    await morder(ctx, { ...ef, dano_dados: dados, mordidos: {} }, alvo, i ? `saltou em` : 'acertou');
+  }
+  if (cadeia.length < max) {
+    await ctx.logar(c, `${plano.nome} parou no ${cadeia.length}º alvo: não havia mais ninguém a ${SALTO_M} m`,
+      { acao: null });
+  }
 }
 
 /** Invocação: o Efeito vira uma peça de verdade, pelo formulário já preenchido. */
