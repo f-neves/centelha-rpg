@@ -789,6 +789,8 @@ const dCorr = (w, f) => dist(w, f) * (1 + M.corrida * vel(w, f));
 const n1  = (v) => (v >= 100 ? Math.round(v) : Math.round(v*10)/10).toString().replace('.', ',');
 const kg  = (v) => n1(v) + ' kg';
 const pc  = (v) => Math.round(v*100) + '%';
+// porcentagem com meia casa: 12,5 sai inteiro por meio, mas 25 não vira "25,0"
+const pcx = (v) => (Math.round(v*10)/10).toString().replace('.', ',');
 // precisão que acompanha a ordem de grandeza: com duas casas fixas, os gramas do
 // pé esquerdo do eixo (2 g, 5 g) arredondavam todos para zero
 const fw  = (w) => (w >= 10 ? Math.round(w)
@@ -1386,23 +1388,24 @@ function pintaRegra(){
 }
 
 // ---------------------------------------------------------------- carga
-/* Velocidade × peso, uma curva por referência. O eixo é em kg porque é o que o
-   jogador tem em mãos, e as faixas ao fundo são as da ficha CHEIA (a que ergue
-   mais), com as fronteiras da outra marcadas por baixo. */
+/* Velocidade × peso, os DOIS eixos em porcentagem: a velocidade em fração da
+   normal, o peso em fração de P. Nessa régua as duas referências viram a MESMA
+   curva, porque a velocidade só depende de quanto de P está nas costas, e o que
+   distingue uma ficha da outra é só quantos quilos cabem em cada fração. Uma
+   curva só, então, com a tradução para quilos na tabela e no hover. */
 function plotVel(){
   const W = 580, H = 300, ml = 44, mr = 16, mt = 16, mb = 46;
   const xB = ml, xR = W - mr, yT = mt, yB = H - mb, pw = xR - xB, ph = yB - yT;
   const A = FICHAS[0], B = FICHAS[1];
-  const pA = pmax(A), pB = pmax(B), pRef = Math.max(pA, pB);
-  const X = (kg) => xB + (Math.min(kg, pRef)/pRef)*pw;
+  const pA = pmax(A), pB = pmax(B);
+  const X = (f) => xB + Math.max(0, Math.min(1, f))*pw;
   // 8% de folga acima dos 100%: é onde ficam os nomes das faixas, e sem ela os pontos
   // medidos da faixa Mínima (91% a 96%) sobem em cima do rótulo
   const Y = (v) => yB - Math.max(0, Math.min(1, v))*ph*0.92;
 
   let s = '';
-  // as cinco faixas, medidas pela ficha que ergue mais
   for (const [a, b, nome, op] of BANDAS){
-    const x1 = X(a*pRef), x2 = X(b*pRef);
+    const x1 = X(a), x2 = X(b);
     s += `<rect class="zona" x="${x1.toFixed(1)}" y="${yT}" width="${(x2-x1).toFixed(1)}" height="${ph}" opacity="${op}"/>`;
     if (x2 - x1 > nome.length*5 + 8)
       s += `<text class="zonalbl" x="${((x1+x2)/2).toFixed(1)}" y="${yT+11}" text-anchor="middle">${nome}</text>`;
@@ -1412,73 +1415,52 @@ function plotVel(){
     s += `<line class="grid" x1="${xB}" y1="${Y(v).toFixed(1)}" x2="${xR}" y2="${Y(v).toFixed(1)}"/>`
        + `<text x="${xB-6}" y="${(Y(v)+3).toFixed(1)}" text-anchor="end">${Math.round(v*100)}%</text>`;
   }
-  const pX = passoBom(pRef, 6);
-  for (let v = 0; v <= pRef + pX*1e-6; v += pX){
-    s += `<line class="grid" x1="${X(v).toFixed(1)}" y1="${yT}" x2="${X(v).toFixed(1)}" y2="${yB}"/>`
-       + `<text x="${X(v).toFixed(1)}" y="${yB+14}" text-anchor="middle">${fw(Math.round(v))}</text>`;
+  // o eixo X anda de 12,5 em 12,5 para cair EM CIMA das fronteiras das faixas: assim
+  // P/8, P/4, P/2 e 3P/4 são números lidos no eixo, não estimados entre duas marcas
+  for (let f = 0; f <= 1.0001; f += 0.125){
+    s += `<line class="grid" x1="${X(f).toFixed(1)}" y1="${yT}" x2="${X(f).toFixed(1)}" y2="${yB}"/>`
+       + `<text x="${X(f).toFixed(1)}" y="${yB+14}" text-anchor="middle">${pcx(f*100)}%</text>`;
   }
-  const traco = (P) => {
-    const pts = [];
-    for (let i = 0; i <= 400; i++){
-      const kg = pRef*i/400;
-      if (kg > P) break;
-      pts.push(`${X(kg).toFixed(1)},${Y(velFrac(kg/P)).toFixed(1)}`);
-    }
-    return pts.join(' ');
-  };
-  s += `<polyline class="rmedio" points="${traco(pB)}"/>`
-     + `<polyline class="rtopo" points="${traco(pA)}"/>`;
-  // O corte de cada uma, que é onde o deslocamento acaba. Rótulo de pé na própria
-  // linha: a da ficha fraca fica colada na esquerda e um texto deitado invadia o eixo.
-  for (const [P, nome] of [[pA, A.nome], [pB, B.nome]]){
-    const x = X(M.cargaCorte*P);
-    s += `<line class="lim" x1="${x.toFixed(1)}" y1="${yT}" x2="${x.toFixed(1)}" y2="${yB}"/>`
-       + `<text class="zonalbl" transform="rotate(-90 ${(x-3).toFixed(1)} ${yB-6})" x="${(x-3).toFixed(1)}" y="${yB-6}">para em ${n1(M.cargaCorte*P)} kg</text>`;
-  }
-  // Cada rótulo no trecho em que a SUA curva está sozinha: a da ficha fraca despenca
-  // nos primeiros por cento do eixo, então ela é rotulada bem no começo e por baixo.
-  // os pontos medidos, sobre a curva da ficha forte (pA = pRef, então X(f·pRef) cai
-  // exatamente em velFrac(f) e o desvio vertical é o erro do ajuste, visível a olho)
+  const pts = [];
+  for (let i = 0; i <= 400; i++){ const f = i/400; pts.push(`${X(f).toFixed(1)},${Y(velFrac(f)).toFixed(1)}`); }
+  s += `<polyline class="rtopo" points="${pts.join(' ')}"/>`;
+  // o corte, agora um número só para todo mundo
+  const xc = X(M.cargaCorte);
+  s += `<line class="lim" x1="${xc.toFixed(1)}" y1="${yT}" x2="${xc.toFixed(1)}" y2="${yB}"/>`
+     + `<text class="zonalbl" transform="rotate(-90 ${(xc-4).toFixed(1)} ${yB-6})" x="${(xc-4).toFixed(1)}" y="${yB-6}">o deslocamento acaba</text>`;
+  // os pontos medidos. As fontes pesam a carga em fração do CORPO, então a conversão
+  // para fração de P passa por P/corpo, e o desvio vertical é o erro do ajuste
   for (const [fcorpo, v, nome] of MEDIDAS){
-    const px = X((fcorpo/PCORPO)*pRef);
-    s += `<circle class="medpt" cx="${px.toFixed(1)}" cy="${Y(v).toFixed(1)}" r="4"><title>${nome} · ${Math.round(v*100)}% medido</title></circle>`;
+    s += `<circle class="medpt" cx="${X(fcorpo/PCORPO).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="4"><title>${nome} · ${Math.round(v*100)}% medido</title></circle>`;
   }
-  const mA = pRef*0.30, mB = pB*0.25;
-  s += `<text class="rlbl" x="${(X(mA)+5).toFixed(1)}" y="${(Y(velFrac(mA/pA))-8).toFixed(1)}">${A.nome}</text>`
-     + `<text class="rlbl" x="${(X(mB)+6).toFixed(1)}" y="${(Y(velFrac(mB/pB))+14).toFixed(1)}">${B.nome}</text>`
-     + `<line class="axis" x1="${xB}" y1="${yT}" x2="${xB}" y2="${yB}"/>`
+  s += `<line class="axis" x1="${xB}" y1="${yT}" x2="${xB}" y2="${yB}"/>`
      + `<line class="axis" x1="${xB}" y1="${yB}" x2="${xR}" y2="${yB}"/>`
-     + `<text class="axlbl" x="${(xB+xR)/2}" y="${H-4}" text-anchor="middle">Peso carregado (kg)</text>`
+     + `<text class="axlbl" x="${(xB+xR)/2}" y="${H-4}" text-anchor="middle">Peso carregado, em % do máximo P</text>`
      + `<text class="axlbl" transform="rotate(-90 11 ${mt+ph/2})" x="11" y="${mt+ph/2}" text-anchor="middle">Velocidade</text>`
      + `<g class="fa-hover" style="display:none;pointer-events:none"><line class="fa-vline" y1="${yT}" y2="${yB}"/>`
-     + `<circle class="fa-dot" data-c="a" r="4"/><circle class="fa-dot" data-c="b" r="4"/></g>`;
+     + `<circle class="fa-dot" data-c="a" r="4"/></g>`;
 
   const wrap = document.getElementById('wV2');
-  wrap.innerHTML = `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Velocidade de deslocamento por peso carregado">${s}</svg><div class="fa-tip" style="display:none"></div>`;
+  wrap.innerHTML = `<svg class="fa-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Velocidade de deslocamento por peso carregado, os dois eixos em porcentagem">${s}</svg><div class="fa-tip" style="display:none"></div>`;
   const svg = wrap.querySelector('svg'), tip = wrap.querySelector('.fa-tip');
   const hov = wrap.querySelector('.fa-hover'), vl = wrap.querySelector('.fa-vline');
   svg.addEventListener('pointermove', (e) => {
     const r = svg.getBoundingClientRect(), k = W/r.width;
     const px = Math.max(xB, Math.min(xR, (e.clientX - r.left)*k));
-    const kg = ((px - xB)/pw)*pRef;
+    const f = (px - xB)/pw, v = velFrac(f);
     hov.style.display = ''; vl.setAttribute('x1', px); vl.setAttribute('x2', px);
-    const va = kg <= pA ? velFrac(kg/pA) : null, vb = kg <= pB ? velFrac(kg/pB) : null;
-    for (const [c, v] of [['a', va], ['b', vb]]){
-      const p = hov.querySelector(`[data-c="${c}"]`);
-      p.style.display = v == null ? 'none' : '';
-      if (v != null){ p.setAttribute('cx', px.toFixed(1)); p.setAttribute('cy', Y(v).toFixed(1)); }
-    }
-    const faixa = (v, P) => { const x = kg/P;
-      const b = BANDAS.find(([a2, b2]) => x > a2 && x <= b2);
-      return x > 1 ? 'não ergue' : b ? b[2] : 'Mínima'; };
-    tip.innerHTML = `<b>${n1(kg)} kg</b><div class="fa-tipg">`
-      + `<span>${A.nome}</span><span>${va != null ? Math.round(va*100) + '% · ' + faixa(va, pA) : 'não ergue'}</span>`
-      + `<span>${B.nome}</span><span>${vb != null ? Math.round(vb*100) + '% · ' + faixa(vb, pB) : 'não ergue'}</span>`
+    const p = hov.querySelector('[data-c="a"]');
+    p.setAttribute('cx', px.toFixed(1)); p.setAttribute('cy', Y(v).toFixed(1));
+    const b = BANDAS.find(([a2, b2]) => f > a2 && f <= b2);
+    tip.innerHTML = `<b>${pcx(f*100)}% de P · ${Math.round(v*100)}% da velocidade</b><div class="fa-tipg">`
+      + `<span>faixa</span><span>${b ? b[2] : 'Mínima'}</span>`
+      + `<span>${A.nome}</span><span>${n1(f*pA)} kg</span>`
+      + `<span>${B.nome}</span><span>${n1(f*pB)} kg</span>`
       + `</div>`;
     tip.style.display = '';
     const meia = tip.offsetWidth/2, cx = (px/W)*r.width;
     tip.style.left = Math.max(meia, Math.min(r.width - meia, cx)) + 'px';
-    tip.style.top = (Y(va != null ? va : 0)/H)*r.height + 'px';
+    tip.style.top = (Y(v)/H)*r.height + 'px';
   });
   svg.addEventListener('pointerleave', () => { hov.style.display = 'none'; tip.style.display = 'none'; });
 }
@@ -1487,13 +1469,14 @@ function pintaVel(){
   plotVel();
   const A = FICHAS[0], B = FICHAS[1];
   document.getElementById('velleg').innerHTML =
-      `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2.5"/></svg>${A.nome} · P ${Math.round(pmax(A))} kg</span>`
-    + `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/></svg>${B.nome} · P ${Math.round(pmax(B))} kg</span>`
+      `<span><svg viewBox="0 0 20 12"><line x1="0" y1="6" x2="20" y2="6" stroke="var(--accent)" stroke-width="2.5"/></svg>a regra · vale para qualquer ficha</span>`
     + `<span><svg viewBox="0 0 20 12"><circle cx="10" cy="6" r="4" fill="var(--ink-soft)"/></svg>medido · marcha e sprint com carga</span>`;
   const erro = MEDIDAS.reduce((a, [f, v]) => a + Math.abs(velFrac(f/PCORPO) - v), 0)/MEDIDAS.length;
   document.querySelector('[data-out="velnota"]').innerHTML =
-      `As duas curvas têm a MESMA forma: a velocidade só depende da fração de P que está `
-    + `nas costas. O que muda entre as duas fichas é quantos quilos cabem em cada fração.<br>`
+      `Com os dois eixos em porcentagem sobra UMA curva só: a velocidade não depende de quem `
+    + `carrega nem de quantos quilos são, só da fração de P que está nas costas. `
+    + `${A.nome} e ${B.nome} andam na mesma linha; o que muda é a tradução para quilos `
+    + `(P de ${Math.round(pmax(A))} kg contra ${Math.round(pmax(B))} kg), que está na tabela abaixo.<br>`
     + `Fim da Média (P/2): <b>${Math.round(velFrac(0.5)*100)}%</b>. `
     + `Meio da Pesada: <b>${Math.round(velFrac(0.625)*100)}%</b>. `
     + `Fim da Pesada: <b>0%</b>.<br>`
