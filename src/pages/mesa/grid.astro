@@ -1,6 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
+
+// As duas setas do tabuleiro, com os controles gerados em vez de escritos duas
+// vezes: são seis campos cada uma, e a segunda cópia à mão é a que envelhece
+// diferente da primeira.
+const SETAS = [
+  { p: 'sm', rot: 'movimento', dica: 'A seta que sai da peça enquanto ela é arrastada.' },
+  { p: 'sa', rot: 'ataque', dica: 'A seta que sai do atacante até o alvo escolhido.' },
+];
 ---
 <Base title="Grid" largura="full" telaCheia descricao="O tabuleiro de hexágonos do combate: onde cada personagem e criatura está.">
   <MesaCab aba="grid">
@@ -214,6 +222,35 @@ import MesaCab from '../../components/MesaCab.astro';
           <span id="fa-opval" class="muted">55%</span>
         </div>
       </div>
+      {SETAS.map((s) => (
+        <div class="fa-sec">
+          <span class="fa-h">Seta de {s.rot}</span>
+          <p class="muted dlg-txt fa-mini">{s.dica}</p>
+          <svg class="fa-prev" id={`${s.p}-prev`} viewBox="0 0 214 44" aria-hidden="true"></svg>
+          <div class="fa-lin">
+            <input type="color" id={`${s.p}-cor`} title={`Cor da seta de ${s.rot}`} />
+            <select id={`${s.p}-tipo`} title="Traço da seta">
+              <option value="continua">contínua</option>
+              <option value="tracejada">tracejada</option>
+              <option value="pontilhada">pontilhada</option>
+              <option value="segmentada">segmentada</option>
+            </select>
+            <input type="range" id={`${s.p}-op`} min="0.2" max="1" step="0.05" title="Opacidade" />
+          </div>
+          <div class="fa-lin"><span class="fa-rot">base</span>
+            <input type="range" id={`${s.p}-base`} min="0" max="10" step="0.5" title="Grossura na origem" />
+            <span class="muted" id={`${s.p}-baseval`}></span></div>
+          <div class="fa-lin"><span class="fa-rot">ponta</span>
+            <input type="range" id={`${s.p}-ponta`} min="3" max="26" step="0.5" title="Grossura junto da cabeça" />
+            <span class="muted" id={`${s.p}-pontaval`}></span></div>
+          <div class="fa-lin"><span class="fa-rot">arco</span>
+            <input type="range" id={`${s.p}-arco`} min="-60" max="60" step="1" title="Curvatura: o sinal escolhe o lado" />
+            <span class="muted" id={`${s.p}-arcoval`}></span></div>
+          <div class="fa-lin"><span class="fa-rot">cabeça</span>
+            <input type="range" id={`${s.p}-cabeca`} min="1" max="4" step="0.1" title="Tamanho da cabeça" />
+            <span class="muted" id={`${s.p}-cabecaval`}></span></div>
+        </div>
+      ))}
       <div class="fa-sec">
         <span class="fa-h">Brilho de quem está na vez</span>
         <div class="fa-lin">
@@ -461,8 +498,17 @@ import MesaCab from '../../components/MesaCab.astro';
   /* A seta do caminho e a distância. O `paint-order` põe o contorno ATRÁS da
      letra: é o que mantém o número legível tanto sobre a pedra clara do mapa
      quanto sobre a água escura, sem uma tarja por baixo. */
+  /* A régua continua sendo um TRAÇO: ela mede, não aponta, e uma linha fina de
+     ponta a ponta é o desenho certo para medir. */
   .seta { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 7 5; }
   .seta.regua { stroke: var(--gold); stroke-dasharray: 4 4; stroke-width: 2.5; }
+  /* As setas de movimento e de ataque são FIGURAS preenchidas (ver lib/seta.ts),
+     e não traços: é o que permite engrossar da base para a ponta. A cor e a
+     opacidade vêm da arena, e caem no padrão quando o mestre não escolheu. */
+  .seta-fig { stroke: none; }
+  .seta-mov { fill: var(--sm-cor, var(--accent)); fill-opacity: var(--sm-op, .95); }
+  .seta-atq { fill: var(--sa-cor, #cf3327); fill-opacity: var(--sa-op, .95); }
+  .seta-fig.sombra { fill: rgba(0,0,0,.55); }
 
   /* ---- ao vivo: quem está vendo ----
      Um ponto e um número, do tamanho de um selo. É o que responde à única
@@ -667,6 +713,32 @@ import MesaCab from '../../components/MesaCab.astro';
   @keyframes vez-pulsa { 50% { opacity: .82; } }
   @media (prefers-reduced-motion: reduce) { .gr-token.vez .tok-quadro { animation: none; } }
 
+  /* ---- o alvo sob a mira ----
+     Depois do brilho da vez, de propósito: uma peça pode estar na vez E na
+     mira, e nesse instante o que importa é que ela está prestes a levar o
+     golpe. `drop-shadow` outra vez, porque a peça é recortada em hexágono e um
+     `box-shadow` desenharia o halo do retângulo. O anel branco por dentro
+     separa o halo vermelho do retrato, que costuma ser escuro. */
+  .gr-token.alvo-mira .tok-quadro {
+    filter: drop-shadow(0 0 4px #fff)
+            drop-shadow(0 0 9px var(--sa-cor, #cf3327))
+            drop-shadow(0 0 20px var(--sa-cor, #cf3327));
+    animation: alvo-pulsa .85s ease-in-out infinite; }
+  .gr-token.alvo-mira .av { outline: 3px solid var(--sa-cor, #cf3327); outline-offset: -2px; }
+  .gr-token.alvo-mira .gr-tn { color: var(--sa-cor, #cf3327); font-weight: 700; }
+  @keyframes alvo-pulsa { 50% { transform: scale(1.07); } }
+  @media (prefers-reduced-motion: reduce) { .gr-token.alvo-mira .tok-quadro { animation: none; } }
+
+  /* ---- a prévia das setas, no painel de ajuste ---- */
+  .fa-prev { width: 100%; height: 2.9rem; display: block;
+    background: color-mix(in srgb, var(--ink) 7%, transparent);
+    border: 1px solid var(--rule); border-radius: var(--r-sm); }
+  .fa-mini { margin: -.1rem 0 .1rem; font-size: calc(var(--fs-micro) * .9); }
+  .fa-lin .fa-rot { flex: 0 0 2.6rem; }
+  .fa-lin select { font: inherit; font-size: var(--fs-micro); padding: .05rem .2rem;
+    background: var(--panel-2, var(--panel)); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: var(--r-sm); }
+
   /* O fantasma que segue o dedo. Fora do palco, por cima de tudo. */
   .gr-ghost { position: fixed; z-index: 200; pointer-events: none; transform: translate(-50%, -50%);
     filter: drop-shadow(0 6px 12px rgba(0,0,0,.55)); }
@@ -796,6 +868,7 @@ import MesaCab from '../../components/MesaCab.astro';
     offsetParaAxial, letraColuna,
   } from '../../lib/hex';
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
+  import { caminhoSeta, SETA_PADRAO, type EstiloSeta, type TipoSeta } from '../../lib/seta';
   import {
     carregarEfeitos, pintarEfeitos, pintarPainelEfeitos, conjurar,
     verificarEfeitos, novoNPC as novoNPCArtes, ligarBotaoFx, type CtxGrid,
@@ -817,7 +890,22 @@ import MesaCab from '../../components/MesaCab.astro';
   // escala "caber". Guardar em % e não em pixels é o que faz o enquadramento
   // sobreviver a uma mudança no número de colunas.
   let FUNDO = { x: 0, y: 0, z: 1, rot: 0 };
-  let GRADE: { cor?: string; op?: number; vezCor?: string; vezForca?: number } = {};
+  let GRADE: {
+    cor?: string; op?: number; vezCor?: string; vezForca?: number;
+    setaMov?: EstiloSeta & { cor?: string; op?: number };
+    setaAtq?: EstiloSeta & { cor?: string; op?: number };
+  } = {};
+  /** As duas setas, e onde cada uma mora na aparência da arena. */
+  const SETAS_UI = [
+    { p: 'sm', chave: 'setaMov' as const, padrao: { ...SETA_PADRAO } },
+    // A de ataque nasce pontilhada e mais curva: ela cruza o tabuleiro por cima
+    // de tudo, e precisa não ser confundida com o caminho que alguém andou.
+    { p: 'sa', chave: 'setaAtq' as const, padrao: { ...SETA_PADRAO, tipo: 'pontilhada' as TipoSeta, arco: 24, ponta: 11 } },
+  ];
+  const estiloSeta = (chave: 'setaMov' | 'setaAtq'): EstiloSeta => {
+    const u = SETAS_UI.find((s) => s.chave === chave)!;
+    return { ...u.padrao, ...(GRADE[chave] || {}) };
+  };
   let BASE = 1;            // a escala que faz a arte inteira caber no tabuleiro
   let AJUSTANDO = false;
   let LOG: any[] = [];
@@ -1273,10 +1361,10 @@ import MesaCab from '../../components/MesaCab.astro';
 
     const svg = el('gr-hexes') as unknown as SVGSVGElement;
     svg.setAttribute('viewBox', `0 0 ${med.largura} ${med.altura}`);
-    svg.innerHTML = `<defs><marker id="pta" viewBox="0 0 10 10" refX="8" refY="5"
-        markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" /></marker></defs>`
-      + tabuleiro(cols, rows).map((h) => {
+    // O `<marker>` da ponta saiu daqui: as setas agora trazem a própria cabeça
+    // dentro da figura (lib/seta.ts), e um marcador desenharia a ponta no
+    // ângulo do último segmento, o que numa curva sai torto.
+    svg.innerHTML = tabuleiro(cols, rows).map((h) => {
         const c = centroHex(h.q, h.r, RAIO);
         return `<polygon class="hx" data-h="${chaveHex(h.q, h.r)}"
           points="${verticesHex(c.x + mg.x, c.y + mg.y, RAIO)}" />`;
@@ -1382,6 +1470,14 @@ import MesaCab from '../../components/MesaCab.astro';
     const raiz = document.body;
     raiz.style.setProperty('--vez-cor', GRADE.vezCor || '#ffd76a');
     raiz.style.setProperty('--vez-forca', String(GRADE.vezForca ?? 10));
+    // No CORPO e não no mundo: a prévia das setas mora dentro de um diálogo,
+    // que é irmão do tabuleiro e não filho dele.
+    for (const s of SETAS_UI) {
+      const g: any = GRADE[s.chave] || {};
+      const pre = s.p === 'sm' ? '--sm' : '--sa';
+      if (g.cor) raiz.style.setProperty(`${pre}-cor`, g.cor); else raiz.style.removeProperty(`${pre}-cor`);
+      if (g.op != null) raiz.style.setProperty(`${pre}-op`, String(g.op)); else raiz.style.removeProperty(`${pre}-op`);
+    }
   }
 
   /**
@@ -1416,6 +1512,7 @@ import MesaCab from '../../components/MesaCab.astro';
     el('fa-vezval').textContent = String(vf);
     el('fa-arte').hidden = !(ARENA.fundo_path || ARENA.fundo_url);
     pintarPosicao();
+    for (const s of SETAS_UI) sincronizarSeta(s);
   }
 
   /**
@@ -1784,6 +1881,7 @@ import MesaCab from '../../components/MesaCab.astro';
     avisarAgora('combatentes');
     const ordem = rolado.slice().sort((a, b) => b.v - a.v).map((r) => `${r.c.nome} ${r.v}`).join(' · ');
     await logar(null, `Iniciativa rolada: ${ordem}`, { acao: null });
+    await verificarEfeitos(ctxArtes());
   }
 
   async function editarIniciativa(cid: string) {
@@ -1800,6 +1898,10 @@ import MesaCab from '../../components/MesaCab.astro';
     c.tick = tick; c.iniciativa = ini;
     pintarIniciativa(); pintarTokens();
     avisarAgora('combatentes');
+    // Mexer no tick à mão também adianta o relógio, e um efeito pode ter
+    // vencido nesse pulo. Sem esta conferência ele sumia do desenho (que já
+    // filtra o que venceu) sem nunca escrever "acabou" no registro.
+    await verificarEfeitos(ctxArtes());
   }
 
   /**
@@ -2125,6 +2227,8 @@ import MesaCab from '../../components/MesaCab.astro';
       aplicarGrade(); salvarAparencia();
     };
 
+    ligarSetas();
+
     corEl.oninput = () => { GRADE.cor = corEl.value; aplicarGrade(); salvarAparencia(); };
     opEl.oninput = () => {
       GRADE.op = +opEl.value;
@@ -2164,6 +2268,65 @@ import MesaCab from '../../components/MesaCab.astro';
       ev.preventDefault();
       mudarZ(FUNDO.z * (ev.deltaY < 0 ? 1.08 : 1 / 1.08));
     }, { passive: false });
+  }
+
+  // ------------------------------------------------------------ as setas
+  /**
+   * A cor que o seletor mostra quando o mestre ainda não escolheu nenhuma.
+   *
+   * Sai do tema, e não de um hex escrito aqui: o `--accent` é outro em cada um
+   * dos três temas, e um seletor abrindo em verde-água sobre um tema claro
+   * mentiria sobre a cor que está no tabuleiro.
+   */
+  function corPadraoSeta(p: string): string {
+    if (p === 'sa') return '#cf3327';
+    const v = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+    return /^#[0-9a-f]{6}$/i.test(v) ? v : '#00bab4';
+  }
+
+  /** Põe os controles de uma seta no valor atual e redesenha a prévia. */
+  function sincronizarSeta(s: { p: string; chave: 'setaMov' | 'setaAtq' }) {
+    const e = estiloSeta(s.chave) as Required<EstiloSeta>;
+    const g: any = GRADE[s.chave] || {};
+    const põe = (campo: string, valor: any) => {
+      const inp = document.getElementById(`${s.p}-${campo}`) as HTMLInputElement | null;
+      if (inp) inp.value = String(valor);
+    };
+    const rot = (campo: string, txt: string) => {
+      const n = document.getElementById(`${s.p}-${campo}val`);
+      if (n) n.textContent = txt;
+    };
+    põe('tipo', e.tipo); põe('base', e.base); põe('ponta', e.ponta);
+    põe('arco', e.arco); põe('cabeca', e.cabeca);
+    põe('op', g.op ?? 0.95);
+    põe('cor', g.cor || corPadraoSeta(s.p));
+    rot('base', `${e.base}px`); rot('ponta', `${e.ponta}px`);
+    rot('arco', `${e.arco}°`); rot('cabeca', `×${e.cabeca}`);
+    const prev = document.getElementById(`${s.p}-prev`);
+    if (prev) {
+      // A prévia é a própria seta, desenhada pela mesma função do tabuleiro:
+      // uma amostra desenhada à parte acabaria mentindo na primeira mudança.
+      prev.innerHTML = `<path class="seta-fig ${s.p === 'sm' ? 'seta-mov' : 'seta-atq'}"
+        d="${caminhoSeta({ x: 12, y: 32 }, { x: 200, y: 14 }, e)}" />`;
+    }
+  }
+
+  function ligarSetas() {
+    if (!MESTRE) return;
+    for (const s of SETAS_UI) {
+      for (const campo of ['cor', 'tipo', 'op', 'base', 'ponta', 'arco', 'cabeca']) {
+        const inp = document.getElementById(`${s.p}-${campo}`) as HTMLInputElement | null;
+        if (!inp) continue;
+        const muda = () => {
+          const texto = campo === 'tipo' || campo === 'cor';
+          GRADE[s.chave] = { ...(GRADE[s.chave] || {}), [campo]: texto ? inp.value : +inp.value } as any;
+          aplicarGrade(); sincronizarSeta(s); salvarAparencia();
+        };
+        inp.oninput = muda;
+        inp.onchange = muda;
+      }
+      sincronizarSeta(s);
+    }
   }
 
   const moverGhost = (g: HTMLElement, x: number, y: number) => { g.style.left = x + 'px'; g.style.top = y + 'px'; };
@@ -2230,9 +2393,9 @@ import MesaCab from '../../components/MesaCab.astro';
     // da própria linha.
     const mx = (a.x + b.x) / 2 + mg.x, my = (a.y + b.y) / 2 + mg.y - 8;
     const rotulo = `${Number.isInteger(metros) ? metros : metros.toFixed(1)} m`;
-    g.innerHTML = `
-      <line class="seta" x1="${(a.x + mg.x).toFixed(1)}" y1="${(a.y + mg.y).toFixed(1)}"
-        x2="${(b.x + mg.x).toFixed(1)}" y2="${(b.y + mg.y).toFixed(1)}" marker-end="url(#pta)" />
+    const d = caminhoSeta({ x: a.x + mg.x, y: a.y + mg.y }, { x: b.x + mg.x, y: b.y + mg.y },
+      estiloSeta('setaMov'));
+    g.innerHTML = `<path class="seta-fig seta-mov" d="${d}" />
       <text class="seta-txt" x="${mx.toFixed(1)}" y="${my.toFixed(1)}">${rotulo}<\/text>
       <text class="seta-sub" x="${mx.toFixed(1)}" y="${(my + 13).toFixed(1)}">${passos} hex</text>`;
   }
@@ -2888,11 +3051,18 @@ import MesaCab from '../../components/MesaCab.astro';
     // a regra usa, e é a que o mestre vai declarar em voz alta.
     const h = hexEmPonto(bx - mg.x, by - mg.y, RAIO);
     const metros = distanciaHex(de, h) * (Number(ARENA.escala_m) || 1);
-    g.innerHTML = `
-      <line class="seta ataque" x1="${(a.x + mg.x).toFixed(1)}" y1="${(a.y + mg.y).toFixed(1)}"
-        x2="${bx.toFixed(1)}" y2="${by.toFixed(1)}" marker-end="url(#pta)" />
-      <text class="seta-txt" x="${((a.x + mg.x + bx) / 2).toFixed(1)}"
-        y="${((a.y + mg.y + by) / 2 - 8).toFixed(1)}">${fmtM(metros)}</text>`;
+    // A ponta acompanha o cursor, mas quando ele está sobre um alvo ela pousa no
+    // CENTRO da peça: a seta que encosta no meio do inimigo lê como escolha
+    // feita, e a que para dois dedos antes lê como hesitação.
+    let fim = { x: bx, y: by };
+    if (sob) {
+      const t = TOKENS[sob.dataset.c!];
+      if (t) { const p = centroHex(t.q, t.r, RAIO); fim = { x: p.x + mg.x, y: p.y + mg.y }; }
+    }
+    const d = caminhoSeta({ x: a.x + mg.x, y: a.y + mg.y }, fim, estiloSeta('setaAtq'));
+    g.innerHTML = `<path class="seta-fig seta-atq" d="${d}" />
+      <text class="seta-txt" x="${((a.x + mg.x + fim.x) / 2).toFixed(1)}"
+        y="${((a.y + mg.y + fim.y) / 2 - 8).toFixed(1)}">${fmtM(metros)}</text>`;
   }
 
   async function escolherAlvo(cid: string) {
