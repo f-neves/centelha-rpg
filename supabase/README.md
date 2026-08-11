@@ -56,6 +56,10 @@ Supabase pelo navegador. Passos para ligar tudo:
     O `dono_id` continua obrigatório de propósito: a RLS inteira se apoia nele, e afrouxá-lo abriria
     buraco em tudo. A vaga é uma ficha do próprio mestre com duas marcas; atribuir é trocar o dono e
     limpar as marcas.
+14. Rode [`migracao-13.sql`](./migracao-13.sql): deixa o **mestre excluir um personagem da mesa**.
+    O botão já existia na aba Grupo, mas a permissão de apagar era só do dono, e delete negado pela
+    RLS não dá erro: apaga zero linhas. O mestre confirmava a exclusão e a ficha continuava lá.
+    Idempotente.
 
 ## 3. Ajustes no painel
 

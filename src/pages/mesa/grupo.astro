@@ -353,8 +353,16 @@ import MesaCab from '../../components/MesaCab.astro';
     box.querySelectorAll<HTMLElement>('[data-rm]').forEach((b) => b.addEventListener('click', async () => {
       if (!await uiConfirmar(`Excluir ${b.dataset.nome}? A ficha do jogador some junto, e isto não pode ser desfeito.`,
         { titulo: 'Excluir personagem', ok: 'Excluir', perigo: true })) return;
-      const { error } = await SB.from('personagens').delete().eq('id', b.dataset.rm);
+      // O `.select('id')` não é enfeite: num delete, a linha que a RLS não
+      // alcança não vira erro, vira zero linhas apagadas. Sem conferir o que
+      // voltou, uma exclusão negada some sem deixar rastro e a ficha reaparece
+      // na repintura, como se o clique não tivesse acontecido.
+      const { data, error } = await SB.from('personagens').delete().eq('id', b.dataset.rm).select('id');
       if (error) return uiErro('Erro: ' + error.message);
+      if (!data?.length) return uiErro(
+        'O banco recusou a exclusão. Excluir a ficha de outra pessoa é permissão de mestre '
+        + 'a partir da migração 13: rode supabase/migracao-13.sql no SQL Editor do Supabase.',
+      );
       await pintarPersonagens();
     }));
 
