@@ -3426,27 +3426,38 @@ const SETAS = [
     if (!atacante || !alvo) return;
     const acertou = await perguntarAcerto(atacante, alvo);
 
-    // O TIRO SAI DEPOIS DE O MESTRE DECIDIR, E ANTES DE O DANO SER PEDIDO.
+    // O TIRO SAI QUANDO A MESA JÁ DECIDIU, E NUNCA ANTES.
     //
-    // Depois, porque errar não é a flecha sumir: é a flecha PASSAR, e para ela
-    // passar é preciso saber que errou. Antes do dano, porque a ordem em que a
-    // mesa vê as coisas é a ordem em que elas acontecem: atira, acerta, dói.
+    // Enquanto há caixa aberta na tela, o que aconteceu ainda está sendo
+    // combinado: o mestre está lendo a Defesa, conferindo a rolagem, às vezes
+    // voltando atrás. Uma flecha cruzando o tabuleiro no meio disso conta o fim
+    // da história antes de a história ter fim, e some antes de alguém olhar,
+    // porque ninguém está olhando o tabuleiro: estão olhando a caixa.
+    //
+    // Então o voo espera o ÚLTIMO clique de cada caminho:
+    //   errou   → sai ao fechar a caixa de acerto, e a flecha PASSA pelo alvo;
+    //   acertou → sai no "Aplicar", junto com a marca do golpe e o dano.
+    //
+    // No acerto os dois viram uma coisa só: a flecha chega, e o impacto abre onde
+    // ela chegou. É o mesmo par de tempos do golpe perfurante, agora esticado
+    // pelo tabuleiro inteiro.
     const proj = projetilDe(
       atacante, FICHAS[atacante.personagem_id], MON[atacante.monstro_id], armaDoSlot,
     );
     const de = pontoDaPeca(atacante.id), pa = pontoDaPeca(alvo.id);
-    if (proj && de && pa) {
-      await voarProjetil(camadaDeGolpes(), de, pa, {
+    const atirar = () => (proj && de && pa)
+      ? voarProjetil(camadaDeGolpes(), de, pa, {
         tipo: proj, errou: !acertou, raioPx: RAIO,
         pxPorM: larguraHex(RAIO) / (Number(ARENA?.escala_m) || 1),
-      });
-    }
+      })
+      : Promise.resolve();
 
     if (!acertou) {
+      await atirar();
       await logar(atacante, `${atacante.nome} atacou ${alvo.nome} e errou`, { acao: null });
       return;
     }
-    await pedirDano(atacante, alvo);
+    await pedirDano(atacante, alvo, atirar);
   }
 
   /** O modal das Defesas do alvo: o número contra o qual a rolagem foi feita. */
@@ -3479,8 +3490,15 @@ const SETAS = [
     });
   }
 
-  /** O dano rolado, com a absorção descontada na frente do mestre. */
-  function pedirDano(atacante: any, alvo: any): Promise<void> {
+  /**
+   * O dano rolado, com a absorção descontada na frente do mestre.
+   *
+   * @param antesDoDano o que acontece no tabuleiro no instante do "Aplicar", e
+   *   antes de a Vida mudar: hoje é o voo do projétil. Fica aqui, e não em quem
+   *   chamou, porque o momento certo é o clique, e o clique mora nesta caixa.
+   *   Cancelar não dispara nada: o ataque não terminou de acontecer.
+   */
+  function pedirDano(atacante: any, alvo: any, antesDoDano?: () => Promise<void>): Promise<void> {
     const dlg = el('dano-dlg') as HTMLDialogElement;
     const val = el('dn-valor') as HTMLInputElement;
     const tipo = el('dn-tipo') as HTMLSelectElement;
@@ -3499,6 +3517,10 @@ const SETAS = [
       (el('dn-cancelar') as HTMLElement).onclick = () => { dlg.close(); resolve(); };
       (el('dn-ok') as HTMLElement).onclick = async () => {
         dlg.close();
+        // A caixa fecha primeiro, depois a flecha voa, e só então a Vida muda:
+        // o tabuleiro está livre para ser olhado, e o número no anel do alvo cai
+        // no instante em que o projétil chega, e não antes dele sair.
+        if (antesDoDano) await antesDoDano();
         await aplicarDano(atacante, alvo, Math.max(0, +val.value || 0), tipo.value);
         resolve();
       };
