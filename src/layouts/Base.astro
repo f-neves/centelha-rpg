@@ -267,7 +267,21 @@ if (partes.length) crumbs.push({ label: title });
 
     // (os botões de tema moraram aqui; hoje vivem em /configuracoes)
 
-    // permalink "copiar link" em títulos e em blocos com id (data-permalink)
+    /* --------- permalink "copiar link" (DESLIGADO) ---------
+       Pendurava um 🔗 no fim de todo h2, todo h3 e todo bloco com
+       `data-permalink`, e o clique copiava o endereço da seção. Desligado: era
+       um enfeite em centenas de títulos por causa de um gesto que quase
+       ninguém faz, e no celular ficava sempre visível (o hover não existe lá),
+       comendo espaço de linha em cada cabeçalho.
+
+       Os endereços em si continuam valendo. Os `id` seguem nos títulos, o
+       índice lateral e as referências cruzadas continuam apontando para eles, e
+       quem chegar por um link com #ancora ainda vê o alvo piscar logo abaixo.
+       O que saiu foi só o botão de COPIAR.
+
+       Para religar, tire este bloco de comentário. O CSS de `.anchor` continua
+       em global.css, dormente.
+
     const copy = (hash: string) => {
       const u = location.origin + location.pathname + '#' + hash;
       navigator.clipboard?.writeText(u);
@@ -281,6 +295,7 @@ if (partes.length) crumbs.push({ label: title });
       a.addEventListener('click', (e) => { e.preventDefault(); history.replaceState(null, '', '#' + el.id); copy(el.id); a.textContent = '✓'; setTimeout(() => (a.textContent = '🔗'), 1200); });
       el.appendChild(a);
     });
+    --------- fim do permalink desligado --------- */
 
     // realce ao chegar por permalink (#id) — pisca o alvo
     const flash = () => {

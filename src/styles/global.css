@@ -481,7 +481,10 @@ select:disabled { opacity: .55; cursor: not-allowed; }
 select option { background: var(--panel); color: var(--ink); }
 select option:checked { background: var(--accent); color: var(--on-accent); }
 
-/* permalink âncora */
+/* permalink âncora · DORMENTE
+   Quem criava os `.anchor` era o Base.astro, e o bloco está comentado lá. As
+   regras ficam de pé para o dia em que voltar (e porque `display: none` num
+   seletor que não casa com nada seria enfeite de enfeite). */
 .anchor { color: var(--ink-soft); text-decoration: none; opacity: 0; margin-left: .4rem; font-size: .8em; }
 :hover > .anchor, .anchor:focus { opacity: 1; }
 
