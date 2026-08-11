@@ -666,7 +666,7 @@ const SETAS = [
     pointer-events: none; overflow: visible; }
   .gr-token .tok-mana polyline { fill: none; stroke-linecap: round; }
   .gr-token .mana-tr { stroke-width: 7.5; stroke: rgba(0,0,0,.55); }
-  .gr-token .mana-v { stroke-width: 5; stroke: #a26bdb;
+  .gr-token .mana-v { stroke-width: 5; stroke: #4db3ec;
     filter: drop-shadow(0 0 2px rgba(0,0,0,.7));
     transition: stroke-dashoffset .75s cubic-bezier(.34, .8, .3, 1); }
   @media (prefers-reduced-motion: reduce) { .gr-token .mana-v { transition: none; } }
@@ -795,7 +795,7 @@ const SETAS = [
     overflow: hidden; text-overflow: ellipsis; }
   .gr-ficha .gr-fq { font-size: calc(var(--fs-micro) * .85); color: var(--accent-texto);
     font-variant-numeric: tabular-nums; }
-  .gr-ficha .gr-mn { font-size: calc(var(--fs-micro) * .85); color: #a26bdb;
+  .gr-ficha .gr-mn { font-size: calc(var(--fs-micro) * .85); color: #4db3ec;
     font-variant-numeric: tabular-nums; white-space: nowrap; }
   .gr-ficha.posto { opacity: .55; }
   .gr-ficha.posto:hover { opacity: 1; }
@@ -1411,10 +1411,22 @@ const SETAS = [
    * de dois pontos, o `pathLength="100"` mede ESSA face: a porcentagem de Mana é
    * o comprimento do traço, sem regra de três. O desenho começa no vértice de
    * baixo, então a barra enche subindo, que é o gesto de encher.
+   *
+   * O COMPRIMENTO é o do lado do anel de Vida, e não o do hexágono de fora: como
+   * ela mora num raio maior (53,5 contra 46), acompanhar a face inteira daquele
+   * hexágono a deixaria mais comprida que os lados do anel, e as duas leituras
+   * não bateriam. Num hexágono o lado é igual ao raio, então bastam 46 unidades
+   * centradas no meio da face.
    */
   const MANA_PTS = (() => {
-    const v = verticesHex(43.3, 50, 53.5).split(' ');
-    return `${v[0]} ${v[5]}`;
+    const v = verticesHex(43.3, 50, 53.5).split(' ').map((s) => s.split(',').map(Number));
+    const [ax, ay] = v[0], [bx, by] = v[5];
+    const meio = { x: (ax + bx) / 2, y: (ay + by) / 2 };
+    const d = Math.hypot(bx - ax, by - ay);
+    const u = { x: (bx - ax) / d, y: (by - ay) / d };
+    const meia = 46 / 2;
+    const p = (s: number) => `${(meio.x + u.x * s * meia).toFixed(2)},${(meio.y + u.y * s * meia).toFixed(2)}`;
+    return `${p(-1)} ${p(1)}`;
   })();
   function manaHTML(pct: number | null) {
     if (pct == null) return '';
