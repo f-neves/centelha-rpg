@@ -67,6 +67,11 @@ const SETAS = [
                  alvo, e escondê-la atrás do retrato dele seria esconder a única
                  coisa que ela existe para mostrar. -->
             <svg id="gr-golpes" class="gr-golpes" xmlns="http://www.w3.org/2000/svg"></svg>
+            <!-- Os números que sobem da peça. Camada própria, e a mais alta de
+                 todas, porque ela não pode ser repintada junto com os tokens: o
+                 número vive dois segundos e morre sozinho, e trocar o innerHTML
+                 das peças no meio disso apagaria a animação pela metade. -->
+            <div id="gr-nums" class="gr-nums" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -604,6 +609,32 @@ const SETAS = [
     paint-order: stroke; stroke: rgba(0,0,0,.85); stroke-width: 3.5; stroke-linejoin: round; }
   .seta-txt { font-size: 15px; font-weight: 700; }
   .seta-sub { font-size: 10.5px; opacity: .85; }
+
+  /* ---- os números que sobem da peça ----
+     O que o olho procura depois de um golpe é "quanto". O anel diz o estado e o
+     registro diz a frase, mas os dois pedem que se olhe para outro lugar; o
+     número sobe onde a coisa aconteceu e some sozinho. Vale para todo dano, de
+     onde quer que venha: golpe, Arte, queda, e o que chega de outra tela. */
+  .gr-nums { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
+  .gr-num { position: absolute; transform: translate(-50%, -50%);
+    font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.15rem; line-height: 1;
+    text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 0 8px rgba(0,0,0,.7);
+    animation: gr-sobe 1.5s cubic-bezier(.2,.7,.3,1) forwards; white-space: nowrap; }
+  .gr-num.dano { color: #ff6b5e; }
+  .gr-num.cura { color: #5fd977; }
+  .gr-num.mana { color: #4db3ec; font-size: 1rem; }
+  /* O tranco no começo é o que dá peso: o número salta, freia e sobe morrendo.
+     Sem ele a coisa parece um balão, e não uma pancada. */
+  @keyframes gr-sobe {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(.5); }
+    18%  { opacity: 1; transform: translate(-50%, -85%) scale(1.25); }
+    32%  { transform: translate(-50%, -75%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -215%) scale(.95); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gr-num { animation: gr-apaga 1.5s linear forwards; }
+    @keyframes gr-apaga { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
+  }
 
   /* ---- tokens no tabuleiro ---- */
   .gr-tokens { position: absolute; inset: 0; }
@@ -1718,6 +1749,9 @@ const SETAS = [
    * `stroke-dashoffset` muda, que é exatamente o que a transição sabe animar.
    */
   function atualizarAnel(c: any) {
+    // Aqui também, e não só na repintura: curar e tirar Vida mexem no anel no
+    // lugar, sem redesenhar as peças, e é justamente quando o número importa.
+    conferirNumeros();
     const tok = document.querySelector<HTMLElement>(`.gr-token[data-c="${CSS.escape(c.id)}"]`);
     const arco = tok?.querySelector('.anel-v');
     if (!tok || !arco) { pintarTokens(); return; }
@@ -1732,6 +1766,77 @@ const SETAS = [
     atualizarMana(c);
   }
 
+  // -------------------------------------------- os números que sobem da peça
+  /**
+   * A Vida e a Mana de cada um na última conferência.
+   *
+   * O número sai da DIFERENÇA, e não de quem bateu. Amarrá-lo a `aplicarDano`
+   * cobriria o golpe do mestre e mais nada: a mordida da Arte é escrita pelo
+   * módulo das Artes, a queda pelo menu da peça, e o dano que o jogador lança
+   * chega por tempo real, já pronto, sem passar por nenhuma função daqui.
+   * Comparando o antes com o depois, todos os caminhos ganham o número de uma
+   * vez, inclusive os que ainda vão existir.
+   */
+  let VIDA_VISTA: Record<string, number> = {};
+  let MANA_VISTA: Record<string, number> = {};
+  let PRIMEIRA_CONFERIDA = true;
+
+  function conferirNumeros() {
+    const nova = !PRIMEIRA_CONFERIDA;
+    for (const c of COMBS) {
+      const pv = c.pv_atual, mn = c.mana_atual;
+      if (pv != null) {
+        const antes = VIDA_VISTA[c.id];
+        VIDA_VISTA[c.id] = pv;
+        // Na primeira volta só se anota: acabou de abrir a página, e ninguém
+        // levou dano nenhum entre não existir e existir.
+        if (nova && antes != null && antes !== pv) {
+          flutuar(c.id, `${pv < antes ? '−' : '+'}${Math.abs(pv - antes)}`, pv < antes ? 'dano' : 'cura');
+        }
+      }
+      if (mn != null) {
+        const antes = MANA_VISTA[c.id];
+        MANA_VISTA[c.id] = mn;
+        if (nova && antes != null && antes !== mn && mn < antes) {
+          flutuar(c.id, `−${antes - mn} ✦`, 'mana');
+        }
+      }
+    }
+    PRIMEIRA_CONFERIDA = false;
+  }
+
+  /**
+   * Solta um número em cima da peça.
+   *
+   * Em camada própria e não dentro do token: `pintarTokens` troca o HTML inteiro
+   * das peças, e um número que morasse lá dentro sumiria no meio da animação
+   * assim que qualquer coisa fosse repintada.
+   */
+  function flutuar(cid: string, texto: string, tipo: 'dano' | 'cura' | 'mana') {
+    const caixa = document.getElementById('gr-nums');
+    const t = TOKENS[cid];
+    if (!caixa || !t) return;
+    const c = COMBS.find((z: any) => z.id === cid);
+    const mg = margem();
+    const p = centroHex(t.q, t.r, RAIO);
+    const alto = (c ? diametroPx(c) : RAIO) * 0.6;
+    const n = document.createElement('span');
+    n.className = `gr-num ${tipo}`;
+    n.textContent = texto;
+    n.style.left = `${p.x + mg.x}px`;
+    n.style.top = `${p.y + mg.y - alto}px`;
+    // Dois danos no mesmo instante na mesma peça se escondem um atrás do outro;
+    // um empurrãozinho lateral por número já vivo ali resolve.
+    const juntos = caixa.querySelectorAll(`[data-c="${CSS.escape(cid)}"]`).length;
+    if (juntos) n.style.marginLeft = `${juntos * 18}px`;
+    n.dataset.c = cid;
+    n.addEventListener('animationend', () => n.remove());
+    // Rede de segurança: aba em segundo plano não dispara `animationend`, e sem
+    // isto a camada acumularia números invisíveis até a página ser recarregada.
+    setTimeout(() => n.remove(), 4000);
+    caixa.appendChild(n);
+  }
+
   /**
    * A barra de Mana no lugar, sem repintar a peça.
    *
@@ -1739,6 +1844,7 @@ const SETAS = [
    * caindo de repente é justamente o que se quer ver andar.
    */
   function atualizarMana(c: any) {
+    conferirNumeros();
     const tok = document.querySelector<HTMLElement>(`.gr-token[data-c="${CSS.escape(c.id)}"]`);
     const barra = tok?.querySelector('.mana-v');
     const mn = manaDe100(c);
@@ -1832,6 +1938,7 @@ const SETAS = [
         <span class="gr-tn">${esc(c.nome)}</span>
       </div>`;
     }).join('');
+    conferirNumeros();
   }
 
   // ======================================================== iniciativa
