@@ -42,15 +42,34 @@ cronômetro sincronizado, névoa por jogador e um botão de deitar a peça caíd
 
 ---
 
-## Em obra (2026-08-12)
+## Feito em 2026-08-12
 
-- [ ] **O jogador age sozinho.** Mover a própria peça, mirar o ataque, usar Arte e lançar o dano.
-      Proezas entram depois, pelo mesmo caminho.
-- [ ] **O mestre desfaz.** Toda ação de jogador entra no registro com o inverso, e o desfazer do
-      mestre alcança as ações dele como já alcança as próprias.
-- [ ] **Névoa de guerra**, com interruptor.
-- [ ] **Número de dano subindo da peça.**
-- [ ] **Trilha de fundo por arena.**
+- ✅ **O jogador age sozinho.** Move a própria peça, mira o ataque, conjura e lança o dano. Proezas
+      entram depois, pelo mesmo caminho (o menu da peça e as funções do banco já estão de pé).
+      Migração 22, e o porquê de ser por função e não por RLS está no cabeçalho dela.
+- ✅ **O mestre desfaz.** Toda ação entra no registro com o inverso, e o desfazer alcança as ações
+      dos jogadores como já alcançava as dele. Dano e cura também passaram a ser desfeitos.
+- ✅ **Névoa de guerra**, com interruptor. Migração 23. O que ela ainda não faz está logo abaixo.
+- ✅ **Número de dano subindo da peça.** Sai da diferença de Vida ou de Mana, então vale para todo
+      caminho: golpe, Arte, queda, e o que chega de outra tela.
+- ✅ **Trilha de fundo por arena.** Migração 24.
+
+### O que a névoa ainda não faz
+
+- **Não é por jogador.** É do grupo: o que um revelou, todos veem. Cabe na mesma coluna trocando a
+  lista por um objeto por pessoa, mas isso é decisão de mesa antes de ser código.
+- **Não segue ninguém.** Não há lanterna nem alcance de visão: quem abre o mapa é o mestre, com o
+  pincel. Uma revelação automática em volta de quem anda é o passo seguinte e é barato, já que a
+  conta de distância em hexágonos existe.
+- **Não conhece parede.** Revelar é por casa, não por linha de visão; a névoa não sabe que a
+  esquina esconde o corredor. Linha de visão de verdade depende de existirem paredes no mapa, que
+  hoje não existem.
+- **Não esconde efeito de Arte nem marca de golpe.** `efeito_visao` ainda não filtra por casa
+  coberta: uma aura de fogo acesa no escuro aparece para o jogador. As peças, essas, não chegam.
+- **Não esconde o nome na lista.** "Em campo" continua listando todo mundo do encontro, coberto ou
+  não. Quem está na névoa some do tabuleiro e da fila de iniciativa, mas o nome continua na coluna.
+- **Não guarda memória do que foi visto.** O revelado fica revelado até o mestre cobrir de novo; não
+  existe "eu me lembro deste corredor, mas não sei o que tem nele agora".
 
 ---
 
