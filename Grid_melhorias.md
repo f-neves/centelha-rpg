@@ -85,8 +85,6 @@ Três estados por casa, e dois deles o tabuleiro calcula sozinho:
   coberta: uma aura de fogo acesa no escuro aparece para o jogador. As peças, essas, não chegam.
 - **Não esconde o nome na lista.** "Em campo" continua listando todo mundo do encontro, coberto ou
   não. Quem está na névoa some do tabuleiro e da fila de iniciativa, mas o nome continua na coluna.
-- **Não guarda memória do que foi visto.** O revelado fica revelado até o mestre cobrir de novo; não
-  existe "eu me lembro deste corredor, mas não sei o que tem nele agora".
 
 ---
 
