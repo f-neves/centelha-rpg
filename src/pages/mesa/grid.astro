@@ -3389,6 +3389,35 @@ const SETAS = [
     limparSeta();
   }
 
+  /**
+   * O ponto da borda da peça que fica de frente para quem atira.
+   *
+   * A peça é um hexágono de ponta para cima, e não um círculo: a distância do
+   * centro até a borda muda com a direção. Do centro até uma FACE é sempre
+   * metade da largura (o apótema), e as seis faces têm as normais de 60 em 60
+   * graus, então o raio naquela direção é o apótema dividido pelo cosseno do
+   * desvio até a normal mais próxima. Nos vértices isso dá os 2/√3 do apótema,
+   * que é o raio maior do hexágono, como tem de ser.
+   *
+   * O recuo nunca passa de quase toda a distância: com um Colossal encostado num
+   * Miúdo, a borda do grandão fica atrás de quem atira, e a seta viraria do
+   * avesso.
+   */
+  function naBordaDaPeca(alvo: { x: number; y: number }, deOnde: { x: number; y: number },
+                         larguraPx: number) {
+    const dx = alvo.x - deOnde.x, dy = alvo.y - deOnde.y;
+    const dist = Math.hypot(dx, dy);
+    if (!dist) return alvo;
+    const apotema = larguraPx / 2;
+    const ang = Math.atan2(-dy, -dx);              // do alvo de volta para a origem
+    const passo = Math.PI / 3;
+    const desvio = ang - Math.round(ang / passo) * passo;
+    const raio = Math.min(apotema / Math.cos(desvio), larguraPx / Math.sqrt(3));
+    // Dois pixels de folga: a ponta encosta na borda em vez de morder o retrato.
+    const recuo = Math.max(0, Math.min(raio + 2, dist * 0.9));
+    return { x: alvo.x - (dx / dist) * recuo, y: alvo.y - (dy / dist) * recuo };
+  }
+
   /** A mira desenha a mesma seta do movimento, em vermelho e até o cursor. */
   function moverMira(cx: number, cy: number) {
     if (!MIRA) return;
