@@ -655,8 +655,13 @@ const SETAS = [
      navegador dele (a view corta antes). */
   .gr-nevoa { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
   .gr-nevoa polygon { fill: #0b0d12; }
-  .sou-mestre .gr-nevoa polygon { fill-opacity: .58; stroke: rgba(255,255,255,.14); stroke-width: 1; }
-  .sou-jogador .gr-nevoa polygon { fill-opacity: .97; stroke: #0b0d12; stroke-width: 1.5; }
+  /* Dois pesos. A PESADA é onde ninguém foi: não mostra nem o formato do
+     corredor. A LEVE é onde já estiveram: o chão aparece, escurecido e sem cor,
+     como uma lembrança, e quem está lá não aparece (a peça nem chega). */
+  .sou-mestre .gr-nevoa .nv-pesada { fill-opacity: .62; stroke: rgba(255,255,255,.14); stroke-width: 1; }
+  .sou-mestre .gr-nevoa .nv-leve { fill-opacity: .3; stroke: rgba(255,255,255,.08); stroke-width: 1; }
+  .sou-jogador .gr-nevoa .nv-pesada { fill-opacity: .98; stroke: #0b0d12; stroke-width: 1.5; }
+  .sou-jogador .gr-nevoa .nv-leve { fill-opacity: .72; stroke: rgba(0,0,0,.6); stroke-width: 1.5; }
   /* No modo de pintar, a névoa recebe o ponteiro: é nela que se passa o pincel. */
   .gr-mundo.nevoando .gr-nevoa { pointer-events: none; }
   .gr-mundo.nevoando { cursor: crosshair; }
@@ -669,6 +674,9 @@ const SETAS = [
     box-shadow: 0 8px 24px rgba(0,0,0,.45); font-size: var(--fs-micro); }
   .nevoa-bar .nv-dica { color: var(--ink-soft); }
   .nevoa-bar label { display: inline-flex; align-items: center; gap: .25rem; cursor: pointer; }
+  .nevoa-bar input[type="number"] { width: 3.2rem; padding: 0 0 0 .2rem; font: inherit;
+    text-align: center; font-variant-numeric: tabular-nums; background: var(--panel-2, var(--panel));
+    color: var(--ink); border: 1px solid var(--rule); border-radius: var(--r-sm); }
 
   /* ---- os números que sobem da peça ----
      O que o olho procura depois de um golpe é "quanto". O anel diz o estado e o
@@ -1003,7 +1011,7 @@ const SETAS = [
   import { uiConfirmar, uiErro, uiFormulario } from '../../lib/ui-dialog';
   import { caminhoSeta, SETA_PADRAO, type EstiloSeta, type TipoSeta } from '../../lib/seta';
   import {
-    carregarEfeitos, pintarEfeitos, pintarPainelEfeitos, conjurar,
+    carregarEfeitos, efeitosAtivos, pintarEfeitos, pintarPainelEfeitos, conjurar,
     verificarEfeitos, novoNPC as novoNPCArtes, ligarBotaoFx, type CtxGrid,
   } from '../../lib/artes-grid-mesa';
   import {
@@ -1192,6 +1200,9 @@ const SETAS = [
     // Artes continua sem saber que existe tempo real.
     recarregar: async () => { await carregar(); avisarMudancas(); },
     repintar: () => {
+      // A névoa entra aqui porque fogo e luz clareiam: acender uma fogueira
+      // abre um pedaço do mapa, e apagá-la fecha de volta.
+      pintarNevoa();
       pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
       pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
@@ -1903,39 +1914,124 @@ const SETAS = [
    * A névoa é do GRUPO, e não de cada jogador: o que um revelou, todos veem. É a
    * mesa física, com um mapa só no meio de todo mundo.
    */
-  let NEVOA: { ligada: boolean; revelados: Set<string> } = { ligada: false, revelados: new Set() };
+  /**
+   * O estado da névoa nesta arena.
+   *
+   * `claros` é o pincel do mestre: casa aberta na mão, que não depende de
+   * ninguém estar por perto. `explorado` é a MEMÓRIA: toda casa que já esteve
+   * clara alguma vez, e é ela que separa a névoa leve da pesada.
+   *
+   * `visao` é o alcance de quem enxerga, em hexágonos, e é da CENA: a cripta
+   * escura e o campo aberto ao meio-dia não têm o mesmo. `luz` é o halo que uma
+   * Arte de fogo ou de luz acende em volta do que ela marcou no chão.
+   */
+  let NEVOA = {
+    ligada: false, visao: 6, luz: 2,
+    claros: new Set<string>(), explorado: new Set<string>(),
+  };
   let NEVOANDO = false;
 
   function lerNevoa() {
     const n = (ARENA && ARENA.nevoa) || {};
+    // `revelados` é o nome antigo do mesmo conjunto: as arenas que já existiam
+    // não podem acordar cobertas por causa de uma troca de palavra.
+    const claros: string[] = Array.isArray(n.claros) ? n.claros
+      : Array.isArray(n.revelados) ? n.revelados : [];
     NEVOA = {
       ligada: !!n.ligada,
-      revelados: new Set<string>(Array.isArray(n.revelados) ? n.revelados : []),
+      visao: Math.max(0, Math.min(40, Number(n.visao ?? 6))),
+      luz: Math.max(0, Math.min(20, Number(n.luz ?? 2))),
+      claros: new Set(claros),
+      explorado: new Set(Array.isArray(n.explorado) ? n.explorado : claros),
     };
   }
 
-  /** Desenha uma mancha por casa coberta. Nada de máscara: são 126 polígonos. */
+  /**
+   * Quem enxerga: as peças do grupo, no tabuleiro.
+   *
+   * O jogador consegue fazer esta mesma conta porque peça de aliado sempre
+   * chega a ele: ela está, por definição, dentro do próprio campo de visão. Sem
+   * isso a conta seria circular (só enxergaria quem já está claro).
+   */
+  const olhosNoMapa = () => COMBS.filter((c: any) =>
+    TOKENS[c.id] && c.ativo !== false && (c.tipo === 'pc' || c.grupo === 'aliado'));
+
+  /**
+   * As casas claras AGORA: o pincel do mestre, o que o grupo enxerga, e o que o
+   * fogo e a luz acendem. É a mesma conta que a função `casa_clara` do banco faz
+   * para decidir quais peças o jogador recebe.
+   */
+  function casasClaras(): Set<string> {
+    const claras = new Set<string>(NEVOA.claros);
+    if (!NEVOA.ligada || !ARENA) return claras;
+    const perto = (q: number, r: number, raio: number) => {
+      for (const h of tabuleiro(ARENA.cols, ARENA.rows)) {
+        if (distanciaHex({ q, r }, h) <= raio) claras.add(chaveHex(h.q, h.r));
+      }
+    };
+    for (const c of olhosNoMapa()) {
+      const t = TOKENS[c.id];
+      perto(t.q, t.r, NEVOA.visao);
+    }
+    // Fogo e luz: a tocha e a fogueira são a lanterna mais antiga que existe, e
+    // o Arcano já marca o chão com elas.
+    for (const e of efeitosAtivos() as any[]) {
+      if (e.elemento !== 'fogo' && e.elemento !== 'luz') continue;
+      for (const h of (e.hexes || [])) perto(h.q, h.r, NEVOA.luz);
+    }
+    return claras;
+  }
+
+  /**
+   * Desenha os dois pesos da névoa.
+   *
+   * Leve é onde já estiveram: mostra o chão e esconde quem está lá. Pesada é
+   * onde ninguém foi: não mostra nem o formato do corredor. As peças em névoa
+   * leve nem chegam ao navegador do jogador (a view corta antes), então aqui é
+   * só o desenho do que ele já sabe.
+   */
   function pintarNevoa() {
     const svg = document.getElementById('gr-nevoa');
     if (!svg || !ARENA) return;
     const med = medidaTabuleiro(ARENA.cols, ARENA.rows, RAIO);
     svg.setAttribute('viewBox', `0 0 ${med.largura} ${med.altura}`);
     if (!NEVOA.ligada) { svg.innerHTML = ''; return; }
+    const claras = casasClaras();
     const mg = margem();
     svg.innerHTML = tabuleiro(ARENA.cols, ARENA.rows)
-      .filter((h) => !NEVOA.revelados.has(chaveHex(h.q, h.r)))
       .map((h) => {
+        const k = chaveHex(h.q, h.r);
+        if (claras.has(k)) return '';
         const c = centroHex(h.q, h.r, RAIO);
         // Meio pixel a mais no raio: sem isso as bordas dos hexágonos vizinhos
         // deixam uma teia de linhas claras entre as manchas.
-        return `<polygon points="${verticesHex(c.x + mg.x, c.y + mg.y, RAIO + 0.6)}" />`;
+        return `<polygon class="${NEVOA.explorado.has(k) ? 'nv-leve' : 'nv-pesada'}"
+          points="${verticesHex(c.x + mg.x, c.y + mg.y, RAIO + 0.6)}" />`;
       }).join('');
+    lembrarExplorado(claras);
+  }
+
+  /**
+   * Guarda o que acabou de ser visto.
+   *
+   * Só o mestre escreve: a memória é uma só, e cinco navegadores gravando a
+   * mesma coisa a cada passo seria cinco vezes o mesmo trabalho, com a chance de
+   * um deles atrasado apagar o que o outro acabou de aprender.
+   */
+  function lembrarExplorado(claras: Set<string>) {
+    if (!MESTRE || !NEVOA.ligada) return;
+    let novo = false;
+    for (const k of claras) if (!NEVOA.explorado.has(k)) { NEVOA.explorado.add(k); novo = true; }
+    if (novo) salvarNevoa();
   }
 
   /** Grava a névoa na arena. Junta as pinceladas: uma escrita por parada de mão. */
   const salvarNevoa = debounce(async () => {
     if (!MESTRE || !ARENA) return;
-    const valor = { ligada: NEVOA.ligada, revelados: [...NEVOA.revelados] };
+    const valor = {
+      ligada: NEVOA.ligada, visao: NEVOA.visao, luz: NEVOA.luz,
+      claros: [...NEVOA.claros], explorado: [...NEVOA.explorado],
+    };
     ARENA.nevoa = valor;
     const { error } = await SB.from('mesa_arenas').update({ nevoa: valor }).eq('id', ARENA.id);
     if (error) return uiErro(/nevoa/i.test(error.message)
@@ -1947,12 +2043,12 @@ const SETAS = [
     avisarAgora('arena'); RT?.avisar('tokens');
   }, 400);
 
-  /** Passa o pincel numa casa. `abrir` falso esconde de volta. */
+  /** Passa o pincel numa casa. `abrir` falso fecha de volta. */
   function pincelar(q: number, r: number, abrir: boolean) {
     const k = chaveHex(q, r);
-    const tinha = NEVOA.revelados.has(k);
-    if (abrir === tinha) return;
-    if (abrir) NEVOA.revelados.add(k); else NEVOA.revelados.delete(k);
+    if (abrir === NEVOA.claros.has(k)) return;
+    if (abrir) { NEVOA.claros.add(k); NEVOA.explorado.add(k); }
+    else NEVOA.claros.delete(k);
     pintarNevoa();
     salvarNevoa();
   }
@@ -1967,8 +2063,13 @@ const SETAS = [
     const bar = document.createElement('div');
     bar.className = 'nevoa-bar'; bar.id = 'nevoa-bar';
     bar.innerHTML = `<label><input type="checkbox" id="nv-liga"${NEVOA.ligada ? ' checked' : ''} /> névoa ligada</label>
+      <label title="O quanto cada peça do grupo enxerga em volta">enxerga
+        <input type="number" id="nv-visao" min="0" max="40" step="1" value="${NEVOA.visao}" /> hex</label>
+      <label title="O halo que uma Arte de fogo ou de luz acende em volta do que marcou">luz
+        <input type="number" id="nv-luz" min="0" max="20" step="1" value="${NEVOA.luz}" /> hex</label>
       <button class="btn mini" id="nv-tudo">Revelar tudo</button>
       <button class="btn mini" id="nv-nada">Cobrir tudo</button>
+      <button class="btn mini" id="nv-esquecer" title="Volta tudo a ser desconhecido, inclusive o que já foi explorado">Esquecer</button>
       <span class="nv-dica">arraste para abrir · Alt arrasta para fechar</span>
       <button class="btn mini primary" id="nv-fim">Concluir</button>`;
     el('gr-palco').appendChild(bar);
@@ -1977,11 +2078,26 @@ const SETAS = [
       pintarNevoa(); salvarNevoa();
       logar(null, `Névoa de guerra ${NEVOA.ligada ? 'ligada' : 'desligada'}`, { acao: null });
     };
+    const numero = (id: string, campo: 'visao' | 'luz') => {
+      (el(id) as HTMLInputElement).oninput = (ev) => {
+        NEVOA[campo] = Math.max(0, Math.min(campo === 'visao' ? 40 : 20,
+          parseInt((ev.target as HTMLInputElement).value, 10) || 0));
+        pintarNevoa(); salvarNevoa();
+      };
+    };
+    numero('nv-visao', 'visao'); numero('nv-luz', 'luz');
     el('nv-tudo').onclick = () => {
-      for (const h of tabuleiro(ARENA.cols, ARENA.rows)) NEVOA.revelados.add(chaveHex(h.q, h.r));
+      for (const h of tabuleiro(ARENA.cols, ARENA.rows)) {
+        NEVOA.claros.add(chaveHex(h.q, h.r)); NEVOA.explorado.add(chaveHex(h.q, h.r));
+      }
       pintarNevoa(); salvarNevoa();
     };
-    el('nv-nada').onclick = () => { NEVOA.revelados.clear(); pintarNevoa(); salvarNevoa(); };
+    // Cobrir tira o pincel, e a memória FICA: o grupo continua sabendo por onde
+    // andou. Para tirar a memória também existe o "Esquecer", que é outro gesto.
+    el('nv-nada').onclick = () => { NEVOA.claros.clear(); pintarNevoa(); salvarNevoa(); };
+    el('nv-esquecer').onclick = () => {
+      NEVOA.claros.clear(); NEVOA.explorado.clear(); pintarNevoa(); salvarNevoa();
+    };
     el('nv-fim').onclick = () => modoNevoa(false);
   }
 
@@ -2371,6 +2487,8 @@ const SETAS = [
       </div>`;
     }).join('');
     conferirNumeros();
+    // A névoa anda com as peças: quem se move leva o campo de visão junto.
+    pintarNevoa();
   }
 
   // ======================================================== iniciativa
@@ -3828,6 +3946,8 @@ const SETAS = [
       no.style.left = `${(p.x + mg.x).toFixed(1)}px`;
       no.style.top = `${(p.y + mg.y).toFixed(1)}px`;
     }
+    // A peça deslizou sem repintura, mas o campo de visão dela andou junto.
+    pintarNevoa();
     return true;
   }
 
