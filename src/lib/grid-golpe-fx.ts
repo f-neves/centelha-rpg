@@ -56,11 +56,29 @@ const T = {
   lampejo: 70,
   corpo: 300,
   poeira: 460,
-  /** Metros por segundo do projétil, em escala de tabuleiro. */
-  vooMPorS: 26,
-  vooMin: 170,
-  vooMax: 520,
+  /**
+   * Metros por segundo do projétil, em escala de tabuleiro.
+   *
+   * Não é a velocidade de uma flecha de verdade, e nem deveria ser: uma flecha
+   * real cruza vinte metros em menos de um décimo de segundo, o que na tela é um
+   * quadro e meio, ou seja, nada. O número aqui é o que deixa o olho ACOMPANHAR
+   * o percurso, que é a única coisa que o voo existe para mostrar.
+   */
+  vooMPorS: 13,
+  vooMin: 340,
+  vooMax: 1040,
+  /**
+   * A pausa entre o clique e a flecha sair.
+   *
+   * O clique acontece dentro de uma caixa de diálogo, e o voo acontece no
+   * tabuleiro: são dois lugares diferentes da tela. Sem esta pausa, a flecha sai
+   * enquanto o olho ainda está no botão que acabou de ser apertado, e o começo do
+   * percurso se perde. Um quinto de segundo é o tempo de o olhar mudar de lugar.
+   */
+  espera: 220,
 };
+
+const dormir = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 const quieto = () =>
   typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -482,19 +500,29 @@ export function baterNoAlvo(
  *
  * Devolve quando a flecha chega, para quem chamou encadear o impacto.
  */
-export function voarProjetil(
+export async function voarProjetil(
   svg: SVGElement | null, de: Ponto, ate: Ponto, opts: {
-    tipo?: Projetil; errou?: boolean; pxPorM?: number; raioPx?: number;
+    tipo?: Projetil; errou?: boolean; pxPorM?: number; raioPx?: number; espera?: number;
   } = {},
 ): Promise<void> {
-  if (!svg) return Promise.resolve();
+  if (!svg) return;
   const dx = ate.x - de.x, dy = ate.y - de.y;
   const distPx = Math.hypot(dx, dy);
-  if (distPx < 1) return Promise.resolve();
+  if (distPx < 1) return;
   const dir = Math.atan2(dy, dx);
   const pxPorM = opts.pxPorM || 40;
   const ms = Math.min(T.vooMax, Math.max(T.vooMin, (distPx / pxPorM / T.vooMPorS) * 1000));
-  if (quieto()) return new Promise((r) => setTimeout(r, 120));
+  if (quieto()) return await dormir(120);
+
+  // A pausa vem ANTES de o projétil existir, e não como atraso da animação.
+  //
+  // Com atraso na animação, o elemento já está no DOM esperando a hora: sem
+  // preenchimento para trás ele aparece na origem do SVG (o canto do tabuleiro),
+  // e com preenchimento ele fica parado em cima do atirador feito uma flecha
+  // largada no chão. Não criar nada até a hora não tem nenhum desses dois
+  // problemas, e é uma linha.
+  const espera = opts.espera ?? T.espera;
+  if (espera > 0) await dormir(espera);
 
   const virote = opts.tipo === 'virote';
   const R = Math.max(8, (opts.raioPx || 24) * 0.9);
@@ -548,7 +576,7 @@ export function voarProjetil(
       : []),
   ], { duration: ms, easing: opts.errou ? 'linear' : 'cubic-bezier(.3,.5,.7,1)', fill: 'forwards' });
 
-  return anim.finished.then(() => { gr.remove(); }, () => { gr.remove(); });
+  await anim.finished.then(() => { gr.remove(); }, () => { gr.remove(); });
 }
 
 /**
