@@ -2877,6 +2877,7 @@ const SETAS = [
         bloco ? '<span class="tm-card-i" aria-hidden="true">▤</span>' : ''}</div>`
       + item('ataque', '⚔ Ataque')
       + item('curar', '✚ Recuperar Vida')
+      + item('dano', '✖ Tirar Vida')
       + (temMana(c) ? item('mana', '✦ Mana') : '')
       + item('arte', '✶ Arte')
       + '<div class="tm-sep"></div>'
@@ -2898,6 +2899,7 @@ const SETAS = [
       const a = b.dataset.a;
       if (a === 'ataque') iniciarMira(cid);
       else if (a === 'curar') curar(cid);
+      else if (a === 'dano') tirarVida(cid);
       else if (a === 'mana') ajustarMana(cid);
       else if (a === 'arte') usarArte(cid);
       else if (a === 'alcance') alternarAlcance(cid);
@@ -3572,6 +3574,39 @@ const SETAS = [
     // Depois do registro, e não antes: quem estava no chão volta à fila aqui, e
     // a linha do atraso tem de vir DEPOIS da linha da cura para a história ficar
     // na ordem em que aconteceu.
+    pintarIniciativa();
+  }
+
+  /**
+   * Tirar Vida na mão, sem passar pela conta do combate.
+   *
+   * É o contrário do "Recuperar Vida", e de propósito NÃO é o "⚔ Ataque": o
+   * ataque rola contra a Defesa, desconta a Absorção pelo tipo de dano e pede um
+   * atacante. Aqui a Vida some direto, e é isso que a mesa precisa quando o dano
+   * não veio de um golpe: a queda, o veneno que já passou pelo teste, o fogo da
+   * cena, a decisão do mestre. Resistência e Absorção, se existirem, já foram
+   * consideradas antes de digitar o número.
+   */
+  async function tirarVida(cid: string) {
+    const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
+    const v = await uiFormulario(`Tirar Vida · ${c.nome}`, [
+      { nome: 'q', rotulo: 'Quanto', tipo: 'numero', valor: 5, min: 1,
+        dica: 'Direto na Vida: sem rolagem, sem Absorção e sem resistência.' },
+      { nome: 'causa', rotulo: 'De quê (opcional)', tipo: 'texto', valor: '' },
+    ], { ok: 'Tirar' });
+    if (!v) return;
+    const q = Math.max(1, parseInt(v.q, 10) || 0);
+    const pv = Math.max(0, (c.pv_atual ?? 0) - q);
+    const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', cid);
+    if (error) return uiErro('Erro: ' + error.message);
+    c.pv_atual = pv;
+    atualizarAnel(c); pintarLista();
+    avisarAgora('combatentes');
+    const causa = (v.causa || '').trim();
+    await logar(c, `${c.nome} perdeu ${q} de Vida${causa ? ` (${causa})` : ''}`
+      + (c.pv_max ? ` · ${pv}/${c.pv_max} (${tierDe(pv, c.pv_max).estado})` : ''), { acao: null });
+    // Depois do registro: a Vida a zero tira da fila aqui, e a linha da queda tem
+    // de vir depois da linha do dano.
     pintarIniciativa();
   }
 
