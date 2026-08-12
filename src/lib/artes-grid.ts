@@ -355,6 +355,17 @@ export const CURVATURAS = [0, 30, 45, 60, 90, 120, 180];
 export const CURVATURA_MAXIMA = 180;
 
 /**
+ * O que uma conjuração custa de Velocidade, em ticks, quando ninguém mexe.
+ *
+ * Seis é um turno inteiro: quem conjura perde a vez, e não parte dela. O número
+ * é editável na caixa porque a mesa negocia isso o tempo todo (uma Arte
+ * preparada sai mais rápido, um ritual apressado sai mais devagar), e porque
+ * `regras.json` tem uma régua própria (4 + nível do Efeito) que nem sempre é a
+ * que a mesa quer usar. O campo mostra o padrão e aceita a discordância.
+ */
+export const VELOCIDADE_PADRAO = 6;
+
+/**
  * O círculo que a parede curva percorre.
  *
  * A parede COMPRA METROS DE PAREDE, e curvar não cria nem consome parede: os

@@ -759,7 +759,39 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    do resto do .ui-dlg, e não num <style> de página: o mesmo diálogo é aberto
    pela aba Grid e pode ser aberto por qualquer outra.
    ==================================================================== */
-.ui-dlg-arte { max-width: min(46rem, 94vw); }
+/* ALTURA FIXA, E ELA NÃO É ESTÉTICA.
+   O painel se repinta inteiro a cada clique, e um <dialog> modal é recentrado
+   pelo navegador toda vez que muda de tamanho: escolher um Efeito trocava a
+   lista de parâmetros, a caixa mudava de altura e pulava sob o cursor. Com a
+   altura travada e a rolagem por dentro, a caixa fica parada e só o conteúdo
+   se mexe. */
+.ui-dlg-arte { max-width: min(64rem, 96vw); width: min(64rem, 96vw); }
+.ui-dlg-arte .ui-dlg-form { height: min(42rem, 88vh); display: flex; flex-direction: column; }
+.ui-dlg-arte .ui-dlg-corpo { flex: 1 1 auto; min-height: 0; display: flex; }
+
+/* Duas colunas: o Efeito de um lado, do topo ao pé, e todo o resto do outro.
+   O Efeito é a escolha que muda TUDO o que vem depois, e numa fileira de três
+   cartões ele empurrava os parâmetros para fora da tela; em coluna ele fica
+   inteiro à vista enquanto o resto é ajustado ao lado. */
+.ui-dlg-arte .ag-grade { display: grid; grid-template-columns: minmax(13rem, 18rem) 1fr;
+  gap: 1rem; flex: 1 1 auto; min-height: 0; width: 100%; }
+.ui-dlg-arte .ag-col-ef { display: flex; flex-direction: column; min-height: 0;
+  border-right: 1px solid var(--rule); padding-right: 1rem; }
+.ui-dlg-arte .ag-col-dir { display: flex; flex-direction: column; min-height: 0; }
+/* Só o miolo da direita rola; o custo e os botões ficam presos no pé, onde a
+   mão os encontra sem procurar. */
+.ui-dlg-arte .ag-rolagem { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: .3rem; }
+.ui-dlg-arte .ag-pe { flex: 0 0 auto; padding-top: .5rem; border-top: 1px solid var(--rule); }
+
+@media (max-width: 46rem) {
+  /* No celular a coluna vira fileira: duas colunas de 8rem não servem a nenhum
+     dos dois lados. */
+  .ui-dlg-arte .ag-grade { grid-template-columns: 1fr; overflow-y: auto; }
+  .ui-dlg-arte .ag-col-ef { border-right: none; padding-right: 0;
+    border-bottom: 1px solid var(--rule); padding-bottom: .6rem; max-height: 40vh; }
+  .ui-dlg-arte .ag-rolagem { overflow: visible; }
+}
+
 .ui-dlg-arte .ag-sec { margin-bottom: .9rem; }
 .ui-dlg-arte .ag-h { font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .08em;
   color: var(--ink-soft); margin: 0 0 .35rem; font-weight: 700; }
@@ -781,8 +813,12 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    `auto-fill` com piso de 12rem em vez de um número fixo de colunas: no
    diálogo aberto dá três ou quatro por fileira, e no celular vira um só, sem
    ponto de quebra escrito à mão. */
-.ag-efs { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  gap: .35rem; max-height: 22rem; overflow-y: auto; padding-right: .2rem; align-items: stretch; }
+/* UMA COLUNA, e a altura é a da caixa: a lista de Efeitos é longa (são 139 no
+   total, e uma dezena por Arte), e em três colunas ela empurrava tudo o mais
+   para baixo da dobra. Em coluna única ela rola sozinha, e o resto do painel
+   fica parado ao lado. */
+.ag-efs { display: flex; flex-direction: column; gap: .35rem;
+  flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: .3rem; }
 /* Flex em coluna, e não grade: é o que permite empurrar a última linha para o
    pé do cartão com um `margin-top: auto`. */
 .ag-ef { display: flex; flex-direction: column; gap: .12rem; text-align: left;
@@ -852,8 +888,17 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-ang.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
 .ag-figura { margin: .4rem 0 .15rem; font-size: var(--fs-aux); color: var(--accent-texto, var(--accent)); }
 
-/* o custo: a única parte que o jogador confere antes de apertar */
-.ag-custo { border-top: 1px solid var(--rule); padding-top: .5rem; margin-top: .3rem; }
+/* o custo: a única parte que o jogador confere antes de apertar.
+   O traço de cima saiu porque o pé do painel já tem o seu. */
+.ag-custo { padding-top: .1rem; }
+/* A Velocidade é o único número aqui que se digita: ela não sai de conta
+   nenhuma, é o que a mesa combina que a conjuração custa de tempo. */
+.ag-vel { display: inline-flex; align-items: center; gap: .35rem; }
+.ag-vel input { width: 3.2rem; padding: .1rem .3rem; font: inherit;
+  font-size: var(--fs-aux); text-align: center; font-variant-numeric: tabular-nums;
+  background: transparent; color: var(--ink); border: 1px solid var(--rule);
+  border-radius: var(--r-2, 6px); }
+.ag-vel input:focus { border-color: var(--accent); outline: none; }
 .ag-cst-l { display: flex; flex-wrap: wrap; gap: .2rem 1rem; font-size: var(--fs-aux); }
 .ag-cst-l b { font-variant-numeric: tabular-nums; }
 .ag-cst-l b.gratis { color: var(--accent); }

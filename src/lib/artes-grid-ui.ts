@@ -9,7 +9,7 @@ import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
   parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
-  figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO, CURVATURAS,
+  figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO, CURVATURAS, VELOCIDADE_PADRAO,
   type Arte, type Efeito, type Parametro, type Escolhas, type Molde, type Custo,
 } from './artes-grid';
 
@@ -30,6 +30,8 @@ export interface Plano {
   lado: number;
   /** Quanto a barreira dobra, em graus. Zero é a parede reta. */
   curvaturaGraus: number;
+  /** O que a conjuração custa de Velocidade, em ticks. Editável na caixa. */
+  velocidadeTicks: number;
   custo: Custo;
   // já resolvido, para quem executa não precisar reabrir as réguas
   alcanceM: number;
@@ -82,6 +84,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let angulo = 90;
   let lado = LADO_MINIMO;
   let curvatura = 0;
+  let velocidade = VELOCIDADE_PADRAO;
 
   const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`, { classe: 'ui-dlg-arte' });
 
@@ -160,7 +163,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       if (figura) partes.push(figura);
       return {
         arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas },
-        molde, angulo, lado, curvaturaGraus: curvatura, custo,
+        molde, angulo, lado, curvaturaGraus: curvatura, velocidadeTicks: velocidade, custo,
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
         areaM2,
         raioM: fig?.raioM || 0,
@@ -244,67 +247,91 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       };
 
       const c = plano.custo;
+      // O QUE ESTAVA COM O FOCO, para devolvê-lo depois do repinte.
+      //
+      // `pintar()` refaz o corpo inteiro a cada clique, e o elemento clicado
+      // morre no meio do próprio clique: o foco cai no <body>, o teclado para de
+      // navegar e o navegador rola a página atrás dele. Guardar a identidade do
+      // que estava focado (e não a referência, que não sobrevive) e reencontrar
+      // o equivalente depois resolve, e custa duas linhas.
+      const focado = (() => {
+        const a = document.activeElement as HTMLElement | null;
+        if (!a || !corpo.contains(a)) return '';
+        for (const k of ['data-arte', 'data-ef', 'data-par', 'data-molde', 'data-ang', 'data-curva']) {
+          if (a.hasAttribute(k)) {
+            const d = a.getAttribute('data-d');
+            return `[${k}="${CSS.escape(a.getAttribute(k) || '')}"]${d ? `[data-d="${d}"]` : ''}`;
+          }
+        }
+        return a.id ? `#${a.id}` : '';
+      })();
+
       corpo.innerHTML = `
-        <div class="ag-sec"><h3 class="ag-h">Arte</h3><div class="ag-chips">${chipArte}</div></div>
-        <div class="ag-sec"><h3 class="ag-h">Efeito</h3>
-          <div class="ag-efs">${opcao(null)}${lista.map(opcao).join('')}</div>
-          ${!lista.length ? `<p class="ag-vazio">Nenhum Efeito Especial de ${esc(arteSel.nome)} ao alcance.
-            ${ctx.comprados ? 'Compre um na ficha, ou use o improviso.' : ''}</p>` : ''}
-        </div>
-        <div class="ag-sec"><h3 class="ag-h">Parâmetros</h3>
-          <div class="ag-pars">${pars.map(linhaPar).join('')}</div>
-          ${fixos.length ? `<div class="ag-fixos">${fixos.map((p) =>
-            `<span><b>${esc(p.nome)}:</b> ${esc(p.valor)}</span>`).join('')}</div>` : ''}
-        </div>
-        ${podeModar ? `<div class="ag-sec"><h3 class="ag-h">Molde</h3>
-          <div class="ag-moldes">${(['circulo', 'linha', 'retangulo', 'leque'] as Molde[]).map((m) => `
-            <button type="button" class="ag-md${molde === m ? ' on' : ''}" data-molde="${m}">
-              <span class="ag-md-ic" aria-hidden="true">${
-                { circulo: '●', linha: '━', retangulo: '▬', leque: '◣' }[m]}</span>
-              ${{ circulo: 'Círculo', linha: 'Linha', retangulo: 'Retângulo', leque: 'Leque' }[m]}</button>`).join('')}</div>
-          ${molde === 'leque' ? `<div class="ag-angs">
-            <span class="ag-ang-l">Abertura</span>
-            ${ANGULOS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
-              data-ang="${a}">${a}°</button>`).join('')}
-          </div>` : ''}
-          ${molde === 'retangulo' ? `<div class="ag-angs">
-            <span class="ag-ang-l">Um lado</span>
-            <input type="number" id="ag-lado" min="${LADO_MINIMO}" step="0.5" value="${lado}" /> m
-            <span class="ag-ang-n">o outro sai da área</span>
-          </div>` : ''}
-          <p class="ag-figura">${esc(plano.figura || 'sem área')}</p>
-          <p class="ag-nota">A mesma área, moldada de outro jeito: o círculo abre em volta, a faixa
-            tem um metro de largura, o retângulo troca comprimento por profundidade e o leque troca
-            abertura por alcance. Você escolhe onde a figura começa clicando num hexágono, e para
-            onde ela aponta movendo o ponteiro.</p>
-        </div>` : ''}
-        ${podeCurvar ? `<div class="ag-sec"><h3 class="ag-h">Curvatura</h3>
-          <div class="ag-angs">
-            ${CURVATURAS.map((a) => `<button type="button" class="ag-ang${curvatura === a ? ' on' : ''}"
-              data-curva="${a}">${a ? `${a}°` : 'Reta'}</button>`).join('')}
+        <div class="ag-grade">
+          <div class="ag-col-ef">
+            <h3 class="ag-h">Efeito</h3>
+            <div class="ag-efs">${opcao(null)}${lista.map(opcao).join('')}</div>
+            ${!lista.length ? `<p class="ag-vazio">Nenhum Efeito Especial de ${esc(arteSel.nome)} ao alcance.
+              ${ctx.comprados ? 'Compre um na ficha, ou use o improviso.' : ''}</p>` : ''}
           </div>
-          <p class="ag-figura">${esc(plano.figura || 'sem comprimento')}</p>
-          <p class="ag-nota">Dobrar não gasta parede: são os mesmos metros, erguidos em curva, e
-            por isso curvar mais aproxima as pontas sem encurtar a barreira. O meio-círculo é o
-            limite do livro. Você escolhe onde a parede começa clicando num hexágono, e para onde
-            ela corre movendo o ponteiro; a curva fecha sempre para o mesmo lado, então para a
-            curva espelhada basta começar pela outra ponta.</p>
-        </div>` : ''}
-        <div class="ag-custo">
-          <div class="ag-cst-l">
-            <span>${efeitoSel ? `Efeito ${c.base}` : 'improviso'} + parâmetros ${c.parametros}
-              = <b>${c.total}</b> pontos</span>
-            <span>− Centelha ${c.centelha} = <b class="${c.mana ? '' : 'gratis'}">${c.mana}</b> de Mana
-              ${c.mana ? '' : '<i>(grátis e ilimitado)</i>'}</span>
-            <span>Velocidade <b>${c.ticks}</b> ticks</span>
+
+          <div class="ag-col-dir">
+            <div class="ag-rolagem">
+              <div class="ag-sec"><h3 class="ag-h">Arte</h3><div class="ag-chips">${chipArte}</div></div>
+              <div class="ag-sec"><h3 class="ag-h">Parâmetros</h3>
+                <div class="ag-pars">${pars.map(linhaPar).join('')}</div>
+                ${fixos.length ? `<div class="ag-fixos">${fixos.map((p) =>
+                  `<span><b>${esc(p.nome)}:</b> ${esc(p.valor)}</span>`).join('')}</div>` : ''}
+              </div>
+              ${podeModar ? `<div class="ag-sec"><h3 class="ag-h">Molde</h3>
+                <div class="ag-moldes">${(['circulo', 'linha', 'retangulo', 'leque'] as Molde[]).map((m) => `
+                  <button type="button" class="ag-md${molde === m ? ' on' : ''}" data-molde="${m}">
+                    <span class="ag-md-ic" aria-hidden="true">${
+                      { circulo: '●', linha: '━', retangulo: '▬', leque: '◣' }[m]}</span>
+                    ${{ circulo: 'Círculo', linha: 'Linha', retangulo: 'Retângulo', leque: 'Leque' }[m]}</button>`).join('')}</div>
+                ${molde === 'leque' ? `<div class="ag-angs">
+                  <span class="ag-ang-l">Abertura</span>
+                  ${ANGULOS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
+                    data-ang="${a}">${a}°</button>`).join('')}
+                </div>` : ''}
+                ${molde === 'retangulo' ? `<div class="ag-angs">
+                  <span class="ag-ang-l">Um lado</span>
+                  <input type="number" id="ag-lado" min="${LADO_MINIMO}" step="0.5" value="${lado}" /> m
+                  <span class="ag-ang-n">o outro sai da área</span>
+                </div>` : ''}
+                <p class="ag-figura">${esc(plano.figura || 'sem área')}</p>
+              </div>` : ''}
+              ${podeCurvar ? `<div class="ag-sec"><h3 class="ag-h">Curvatura</h3>
+                <div class="ag-angs">
+                  ${CURVATURAS.map((a) => `<button type="button" class="ag-ang${curvatura === a ? ' on' : ''}"
+                    data-curva="${a}">${a ? `${a}°` : 'Reta'}</button>`).join('')}
+                </div>
+                <p class="ag-figura">${esc(plano.figura || 'sem comprimento')}</p>
+              </div>` : ''}
+            </div>
+
+            <div class="ag-pe">
+              <div class="ag-custo">
+                <div class="ag-cst-l">
+                  <span>${efeitoSel ? `Efeito ${c.base}` : 'improviso'} + parâmetros ${c.parametros}
+                    = <b>${c.total}</b> pontos</span>
+                  <span>− Centelha ${c.centelha} = <b class="${c.mana ? '' : 'gratis'}">${c.mana}</b> de Mana</span>
+                  <span class="ag-vel">Velocidade
+                    <input type="number" id="ag-vel" min="1" max="60" step="1" value="${velocidade}" />
+                    ticks</span>
+                </div>
+                ${c.esticados.length ? `<div class="ag-cst-est">esticado:
+                  ${c.esticados.map((e) => `${esc(e.nome)} ${e.acima} acima (${e.custo})`).join(' · ')}</div>` : ''}
+              </div>
+              <div class="ag-acoes">
+                <button type="button" class="btn" id="ag-cancelar">Cancelar</button>
+                <button type="button" class="btn primary" id="ag-ok">Conjurar</button>
+              </div>
+            </div>
           </div>
-          ${c.esticados.length ? `<div class="ag-cst-est">esticado:
-            ${c.esticados.map((e) => `${esc(e.nome)} ${e.acima} acima (${e.custo})`).join(' · ')}</div>` : ''}
-        </div>
-        <div class="ag-acoes">
-          <button type="button" class="btn" id="ag-cancelar">Cancelar</button>
-          <button type="button" class="btn primary" id="ag-ok">Conjurar</button>
         </div>`;
+
+      if (focado) corpo.querySelector<HTMLElement>(focado)?.focus();
 
       corpo.querySelectorAll<HTMLElement>('[data-arte]').forEach((b) => b.onclick = () => {
         const d = disponiveis.find((x) => x.arte.id === b.dataset.arte)!;
@@ -336,6 +363,15 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       corpo.querySelectorAll<HTMLElement>('[data-curva]').forEach((b) => b.onclick = () => {
         curvatura = Number(b.dataset.curva); pintar();
       });
+      const inpVel = corpo.querySelector('#ag-vel') as HTMLInputElement | null;
+      if (inpVel) {
+        // Sem repintar: o número já está na tela, e refazer o corpo no meio da
+        // digitação roubaria o cursor a cada tecla.
+        inpVel.oninput = () => {
+          velocidade = Math.max(1, Math.min(60, Math.round(Number(inpVel.value) || VELOCIDADE_PADRAO)));
+        };
+        inpVel.onblur = () => { inpVel.value = String(velocidade); };
+      }
       const inpLado = corpo.querySelector('#ag-lado') as HTMLInputElement | null;
       if (inpLado) {
         inpLado.oninput = () => {
