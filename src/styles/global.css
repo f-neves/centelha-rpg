@@ -921,6 +921,20 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 5 3; }
 /* O ponto de encaixe: onde a figura vai grudar. Cheio no centro da casa, vazado
    no vértice, porque o vértice é a escolha deliberada e merece outra cara. */
+/* A régua do Alcance: o anel do que se alcança, a linha até o ponteiro e o
+   número em metros. Vermelha quando o ponto passou do alcance comprado, porque
+   a informação que importa não é a distância, é se dá ou não dá. */
+.gr-previa .pv-regua line { stroke: var(--accent); stroke-width: 1.6;
+  stroke-dasharray: 5 4; fill: none; }
+.gr-previa .pv-regua .pv-regua-o { fill: var(--accent); stroke: none; }
+.gr-previa .pv-alcance { fill: none; stroke: color-mix(in srgb, var(--accent) 55%, transparent);
+  stroke-width: 1.2; stroke-dasharray: 2 6; }
+.gr-previa .pv-regua text { fill: #f1ece0; font-size: 13px; font-weight: 600;
+  stroke: #000a; stroke-width: 3; paint-order: stroke; stroke-linejoin: round; }
+.gr-previa .pv-regua.longe line, .gr-previa .pv-regua.longe .pv-alcance { stroke: #cf3327; }
+.gr-previa .pv-regua.longe .pv-regua-o { fill: #cf3327; }
+.gr-previa .pv-regua.longe text { fill: #ff9b91; }
+
 .gr-previa .pv-enc { stroke-dasharray: none; stroke-width: 2; }
 .gr-previa .pv-centro { fill: var(--accent); stroke: var(--accent); }
 .gr-previa .pv-vertice { fill: var(--bg); stroke: var(--gold, #c9a227); }

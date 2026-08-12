@@ -291,7 +291,15 @@ export function artesDe(fonte: { arte?: Record<string, number>; artes?: { id: st
 export type Molde = 'circulo' | 'linha' | 'retangulo' | 'leque';
 
 export interface Figura {
-  tipo: Molde | 'arena' | 'ponto';
+  /**
+   * `arco` é a parede curvada: a mesma faixa, dobrada.
+   *
+   * Não é um molde que se escolhe na lista de formas, porque não é uma maneira
+   * de gastar área: é uma propriedade da BARREIRA, que compra metros de parede e
+   * decide se os ergue em linha reta ou em curva. O livro dá o teto: "a
+   * curvatura máxima de qualquer barreira é um semicírculo".
+   */
+  tipo: Molde | 'arena' | 'ponto' | 'arco';
   /**
    * A âncora, EM METROS, no plano comum. É o miolo do círculo, a ponta da faixa,
    * o bico do leque.
@@ -308,8 +316,10 @@ export interface Figura {
   raioM?: number;          // círculo e leque
   comprimentoM?: number;   // linha e retângulo (o lado que segue a direção)
   larguraM?: number;       // linha (1 m) e retângulo (o lado escolhido)
-  dir?: number;            // radianos: para onde a figura aponta
+  dir?: number;            // radianos: a tangente na âncora (o arco) ou o eixo
   aberturaGraus?: number;  // leque
+  /** Quanto a parede dobra, em graus. Só o `arco`. Zero seria uma reta. */
+  curvaturaGraus?: number;
 }
 
 /** A largura padrão da faixa: um metro, como a mesa decidiu. */
@@ -318,6 +328,43 @@ export const LARGURA_LINHA = 1;
 export const LADO_MINIMO = 1;
 /** As aberturas oferecidas ao leque. */
 export const ANGULOS = [45, 60, 90, 120, 180];
+/**
+ * As curvaturas oferecidas à barreira. Zero é a parede reta.
+ *
+ * O teto é 180 porque é o teto do livro, e ele tem sentido físico: passando de
+ * meia-volta a parede começaria a se fechar sobre si mesma, e uma barreira que
+ * encosta na própria ponta não é mais barreira, é um cercado. Quem quiser cercar
+ * alguém paga por isso com dois muros.
+ */
+export const CURVATURAS = [0, 30, 45, 60, 90, 120, 180];
+export const CURVATURA_MAXIMA = 180;
+
+/**
+ * O círculo que a parede curva percorre.
+ *
+ * A parede COMPRA METROS DE PAREDE, e curvar não cria nem consome parede: os
+ * mesmos 8 metros, dobrados. Então o comprimento é o comprimento do ARCO, e o
+ * raio sai dele: R = L / θ. É por isso que curvar mais aproxima as pontas sem
+ * mudar quanto de muro existe, que é exatamente o que a mesa espera ao dobrar
+ * uma parede.
+ *
+ * A âncora é a PONTA da parede e `dir` é a tangente ali, igual à parede reta: as
+ * duas se colocam do mesmo jeito, e só a segunda dobra. O centro fica a 90° da
+ * tangente, e é para esse lado que a curva sempre fecha. Um lado só basta:
+ * para a curva espelhada, ancora-se na outra ponta e aponta-se ao contrário.
+ */
+export function arcoDaParede(f: Figura): {
+  cx: number; cy: number; raio: number; de: number; ate: number; volta: number;
+} {
+  const L = f.comprimentoM || 0;
+  const volta = Math.max(1e-6, ((f.curvaturaGraus || 0) * Math.PI) / 180);
+  const raio = L / volta;
+  const perp = (f.dir || 0) + Math.PI / 2;
+  const cx = f.ax + Math.cos(perp) * raio, cy = f.ay + Math.sin(perp) * raio;
+  // O ângulo do centro até a âncora, e é dele que o arco parte.
+  const de = (f.dir || 0) - Math.PI / 2;
+  return { cx, cy, raio, de, ate: de + volta, volta };
+}
 
 /** A arena inteira, para o Efeito de escala de região. */
 export function hexesDaArena(cols: number, rows: number): Hex[] {
@@ -455,10 +502,25 @@ const um = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replac
 export function figuraDaArea(opts: {
   molde: Molde; areaM2: number; ancora: Encaixe; dir?: number;
   aberturaGraus?: number; ladoM?: number; raioProprioM?: number; comprimentoProprioM?: number;
+  /** A barreira dobrada, em graus. Zero (ou ausente) deixa a parede reta. */
+  curvaturaGraus?: number;
 }): Figura {
   const { molde, ancora } = opts;
   const base = {
     ax: ancora.x, ay: ancora.y, q: ancora.hex.q, r: ancora.hex.r, dir: opts.dir ?? 0,
+  };
+  /**
+   * Dobra a faixa, quando é uma barreira curva.
+   *
+   * A curvatura não é um molde à parte porque não muda o que foi comprado: são
+   * os mesmos metros de parede, erguidos torto. Por isso ela entra como um
+   * acabamento sobre a faixa já montada, e não como um ramo próprio: assim a
+   * parede que veio da régua do Muro e a que veio da área do Escudo de Força
+   * dobram exatamente do mesmo jeito.
+   */
+  const dobrar = (f: Figura): Figura => {
+    const c = Math.min(CURVATURA_MAXIMA, Math.max(0, opts.curvaturaGraus ?? 0));
+    return c > 0 ? { ...f, tipo: 'arco', curvaturaGraus: c } : f;
   };
   // A Aura compra um RAIO, e não uma área: nada a converter.
   if (opts.raioProprioM) return { tipo: 'circulo', ...base, raioM: opts.raioProprioM };
@@ -469,14 +531,16 @@ export function figuraDaArea(opts: {
     const larg = molde === 'retangulo'
       ? Math.max(LADO_MINIMO, opts.ladoM ?? LADO_MINIMO)
       : LARGURA_LINHA;
-    return {
+    return dobrar({
       tipo: molde === 'retangulo' ? 'retangulo' : 'linha', ...base,
       larguraM: larg, comprimentoM: opts.comprimentoProprioM,
-    };
+    });
   }
   const A = opts.areaM2 > 0 ? opts.areaM2 : AREA_MINIMA;
   if (molde === 'linha') {
-    return { tipo: 'linha', ...base, larguraM: LARGURA_LINHA, comprimentoM: comprimentoDaLinha(A) };
+    return dobrar({
+      tipo: 'linha', ...base, larguraM: LARGURA_LINHA, comprimentoM: comprimentoDaLinha(A),
+    });
   }
   if (molde === 'retangulo') {
     const lado = Math.max(LADO_MINIMO, opts.ladoM ?? LADO_MINIMO);
@@ -494,6 +558,14 @@ export function rotuloDaFigura(f: Figura): string {
   if (f.tipo === 'arena') return 'a arena inteira';
   if (f.tipo === 'circulo') return `círculo de ${um(f.raioM || 0)} m de raio`;
   if (f.tipo === 'linha') return `faixa de ${um(f.comprimentoM || 0)} m × ${um(f.larguraM || 1)} m`;
+  if (f.tipo === 'arco') {
+    // O raio entra no rótulo porque é a informação que a mesa não consegue
+    // adivinhar: com 8 m de parede, curvar 180° dá pouco mais de dois metros e
+    // meio de raio, e é essa distância que decide se o muro cerca ou não.
+    const a = arcoDaParede(f);
+    return `parede curva de ${um(f.comprimentoM || 0)} m`
+      + ` · ${f.curvaturaGraus}° · raio ${um(a.raio)} m`;
+  }
   if (f.tipo === 'retangulo') {
     return `retângulo de ${um(f.larguraM || 1)} m × ${um(f.comprimentoM || 0)} m`;
   }
@@ -521,6 +593,20 @@ export function pontoNaFigura(f: Figura, p: { x: number; y: number }): boolean {
     let dif = Math.abs(Math.atan2(dy, dx) - (f.dir || 0));
     if (dif > Math.PI) dif = 2 * Math.PI - dif;
     return dif <= meia + 1e-9;
+  }
+  if (f.tipo === 'arco') {
+    // Na parede curva o referencial é o CENTRO do arco: dali ela é uma casca,
+    // e o teste vira "está na espessura certa e dentro da volta".
+    const a = arcoDaParede(f);
+    const meia = (f.larguraM || LARGURA_LINHA) / 2;
+    const d = Math.hypot(p.x - a.cx, p.y - a.cy);
+    if (d < a.raio - meia - 1e-9 || d > a.raio + meia + 1e-9) return false;
+    // O ângulo dá volta em 2π, então a comparação tem de ser feita na volta e
+    // não na reta: sem isto, uma parede que cruza o zero perderia metade de si.
+    let t = Math.atan2(p.y - a.cy, p.x - a.cx) - a.de;
+    const doisPi = Math.PI * 2;
+    t = ((t % doisPi) + doisPi) % doisPi;
+    return t <= a.volta + 1e-9;
   }
   if (f.tipo === 'linha' || f.tipo === 'retangulo') {
     // Gira o ponto para o referencial da faixa: aí ela vira um retângulo reto,
@@ -577,6 +663,21 @@ export function caminhoDaFigura(
   const n = (v: number) => v.toFixed(2);
   if (f.tipo === 'circulo') {
     return `<circle cx="${n(cx)}" cy="${n(cy)}" r="${n((f.raioM || 0) * pxPorM)}" />`;
+  }
+  if (f.tipo === 'arco') {
+    // Um setor de coroa: o arco de fora, a espessura, o arco de dentro de volta.
+    // A bandeira do arco grande fica sempre em zero porque a curvatura para em
+    // meia-volta, e a de sentido fica em um porque o ângulo cresce no sentido em
+    // que a parede é percorrida.
+    const a = arcoDaParede(f);
+    const meia = ((f.larguraM || LARGURA_LINHA) / 2) * pxPorM;
+    const C = { x: a.cx * pxPorM + margem.x, y: a.cy * pxPorM + margem.y };
+    const Re = a.raio * pxPorM + meia, Ri = Math.max(0, a.raio * pxPorM - meia);
+    const em = (r: number, ang: number) =>
+      `${n(C.x + Math.cos(ang) * r)} ${n(C.y + Math.sin(ang) * r)}`;
+    const grande = a.volta > Math.PI ? 1 : 0;
+    return `<path d="M ${em(Re, a.de)} A ${n(Re)} ${n(Re)} 0 ${grande} 1 ${em(Re, a.ate)}`
+      + ` L ${em(Ri, a.ate)} A ${n(Ri)} ${n(Ri)} 0 ${grande} 0 ${em(Ri, a.de)} Z" />`;
   }
   if (f.tipo === 'linha' || f.tipo === 'retangulo') {
     const comp = (f.comprimentoM || 0) * pxPorM;

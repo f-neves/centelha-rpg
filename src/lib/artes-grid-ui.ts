@@ -9,7 +9,7 @@ import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
   parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
-  figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO,
+  figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO, CURVATURAS,
   type Arte, type Efeito, type Parametro, type Escolhas, type Molde, type Custo,
 } from './artes-grid';
 
@@ -28,6 +28,8 @@ export interface Plano {
   angulo: number;
   /** O lado escolhido do retângulo, em metros. O outro sai da divisão da área. */
   lado: number;
+  /** Quanto a barreira dobra, em graus. Zero é a parede reta. */
+  curvaturaGraus: number;
   custo: Custo;
   // já resolvido, para quem executa não precisar reabrir as réguas
   alcanceM: number;
@@ -79,6 +81,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let molde: Molde = 'circulo';
   let angulo = 90;
   let lado = LADO_MINIMO;
+  let curvatura = 0;
 
   const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`, { classe: 'ui-dlg-arte' });
 
@@ -87,23 +90,24 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
     const sair = (v: Plano | null) => { if (resolvido) return; resolvido = true; fechar(); resolve(v); };
     corpo.closest('dialog')?.addEventListener('close', () => sair(null), { once: true });
 
-    /** Zera os parâmetros no nível que a Arte comporta, sem esticar de graça. */
+    /**
+     * TODO PARÂMETRO COMEÇA EM ZERO.
+     *
+     * A caixa não compra nada por conta própria. Antes ela semeava Alcance,
+     * Dano, Duração, Alvos, Área e Cura em 1 para já nascer "útil", e isso
+     * custava Mana que ninguém pediu: quem quisesse um efeito só de Duração
+     * pagava o dado de Dano junto, sem reparar, porque o número já estava lá
+     * quando a caixa abriu.
+     *
+     * Zerado, o total começa em zero e cada ponto que aparece na conta é um
+     * ponto que a pessoa escolheu. O aviso de que o efeito comum precisa de
+     * Alcance 1 (toque) continua sendo regra do livro; a diferença é que agora
+     * ele é uma decisão, e não um padrão silencioso.
+     */
     function semear() {
       escolhas = {};
       const pars = efeitoSel ? parametrosAjustaveis(efeitoSel) : parametrosDoImproviso();
-      for (const p of pars) {
-        // Todo efeito comum precisa de pelo menos Alcance 1 (toque), por regra.
-        // O resto começa em zero: só se paga o parâmetro que se usa.
-        escolhas[p.nome] = p.nome === 'Alcance' ? 1 : 0;
-      }
-      // Um efeito que fere sem dano escolhido não é efeito nenhum; o mesmo para
-      // a duração de quem persiste. Começam em 1 para a caixa já nascer útil.
-      if (escolhas.Dano !== undefined) escolhas.Dano = 1;
-      if (escolhas['Duração'] !== undefined) escolhas['Duração'] = 1;
-      if (escolhas.Alvos !== undefined) escolhas.Alvos = 1;
-      if (escolhas['Área'] !== undefined) escolhas['Área'] = 1;
-      if (escolhas.Volume !== undefined) escolhas.Volume = 1;
-      if (escolhas.Cura !== undefined) escolhas.Cura = 1;
+      for (const p of pars) escolhas[p.nome] = 0;
     }
     semear();
 
@@ -148,7 +152,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         ? figuraDaArea({
             molde: compProprio ? 'linha' : molde,
             areaM2, ancora: { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' },
-            aberturaGraus: angulo, ladoM: lado,
+            aberturaGraus: angulo, ladoM: lado, curvaturaGraus: curvatura,
             raioProprioM: raioProprio, comprimentoProprioM: compProprio,
           })
         : null;
@@ -156,7 +160,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       if (figura) partes.push(figura);
       return {
         arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas },
-        molde, angulo, lado, custo,
+        molde, angulo, lado, curvaturaGraus: curvatura, custo,
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
         areaM2,
         raioM: fig?.raioM || 0,
@@ -176,6 +180,11 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const fixos = (efeitoSel?.parametros || []).filter((p) => p.tipo === 'fixo');
       const temArea = pars.some((p) => p.nome === 'Área' || p.nome === 'Volume');
       const podeModar = temArea && (g?.forma === 'zona' || !efeitoSel);
+      // A barreira não escolhe molde (ela é sempre uma faixa), mas escolhe se
+      // ergue essa faixa reta ou dobrada. Vale para QUALQUER barreira: o livro
+      // diz "a curvatura máxima de qualquer barreira é um semicírculo", e não
+      // "do Muro", então o Escudo de Força dobra também.
+      const podeCurvar = g?.forma === 'muro';
 
       const chipArte = disponiveis.map(({ arte, nivel }) => `
         <button type="button" class="ag-chip${arte.id === arteSel.id ? ' on' : ''}"
@@ -269,6 +278,18 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             abertura por alcance. Você escolhe onde a figura começa clicando num hexágono, e para
             onde ela aponta movendo o ponteiro.</p>
         </div>` : ''}
+        ${podeCurvar ? `<div class="ag-sec"><h3 class="ag-h">Curvatura</h3>
+          <div class="ag-angs">
+            ${CURVATURAS.map((a) => `<button type="button" class="ag-ang${curvatura === a ? ' on' : ''}"
+              data-curva="${a}">${a ? `${a}°` : 'Reta'}</button>`).join('')}
+          </div>
+          <p class="ag-figura">${esc(plano.figura || 'sem comprimento')}</p>
+          <p class="ag-nota">Dobrar não gasta parede: são os mesmos metros, erguidos em curva, e
+            por isso curvar mais aproxima as pontas sem encurtar a barreira. O meio-círculo é o
+            limite do livro. Você escolhe onde a parede começa clicando num hexágono, e para onde
+            ela corre movendo o ponteiro; a curva fecha sempre para o mesmo lado, então para a
+            curva espelhada basta começar pela outra ponta.</p>
+        </div>` : ''}
         <div class="ag-custo">
           <div class="ag-cst-l">
             <span>${efeitoSel ? `Efeito ${c.base}` : 'improviso'} + parâmetros ${c.parametros}
@@ -311,6 +332,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       });
       corpo.querySelectorAll<HTMLElement>('[data-ang]').forEach((b) => b.onclick = () => {
         angulo = Number(b.dataset.ang); pintar();
+      });
+      corpo.querySelectorAll<HTMLElement>('[data-curva]').forEach((b) => b.onclick = () => {
+        curvatura = Number(b.dataset.curva); pintar();
       });
       const inpLado = corpo.querySelector('#ag-lado') as HTMLInputElement | null;
       if (inpLado) {

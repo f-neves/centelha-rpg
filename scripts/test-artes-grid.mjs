@@ -320,6 +320,85 @@ eq(muro.tipo, 'linha', 'o Muro é uma faixa, e não um círculo');
 eq(muro.comprimentoM, 5, 'Comprimento 3 são 5 m de parede, e não 5 m² divididos');
 eq(muro.larguraM, 1, 'a parede tem um metro de espessura');
 
+// ---------------------------------------------------- a barreira curvada
+//
+// "A curvatura máxima de qualquer barreira é um semicírculo", diz o Muro. O que
+// isso quer dizer no tabuleiro: a MESMA parede comprada, dobrada. Dobrar não
+// gasta nem cria muro, então o comprimento continua sendo o do ARCO e o raio sai
+// dele (R = L / θ). Se fosse o contrário, curvar viraria um jeito de comprar
+// parede de graça, ou de perder metade da que se pagou.
+const paredeReta = M.figuraDaArea({
+  molde: 'linha', areaM2: 0, ancora: CENTRO, dir: 0, comprimentoProprioM: 8,
+});
+const paredeMeia = M.figuraDaArea({
+  molde: 'linha', areaM2: 0, ancora: CENTRO, dir: 0, comprimentoProprioM: 8,
+  curvaturaGraus: 180,
+});
+eq(paredeReta.tipo, 'linha', 'sem curvatura a parede continua reta');
+eq(paredeMeia.tipo, 'arco', 'com curvatura ela vira arco');
+eq(paredeMeia.comprimentoM, 8, 'dobrar não muda quantos metros de parede existem');
+eq(paredeMeia.larguraM, 1, 'a espessura continua sendo a da faixa');
+
+const arcoMeia = M.arcoDaParede(paredeMeia);
+ok(Math.abs(arcoMeia.raio - 8 / Math.PI) < 1e-9,
+  `meia-volta com 8 m de parede dá raio 8/π (${arcoMeia.raio.toFixed(3)})`);
+// O arco percorrido tem de bater com o comprimento comprado: é a definição.
+ok(Math.abs(arcoMeia.raio * arcoMeia.volta - 8) < 1e-9, 'raio × ângulo = comprimento');
+
+// A âncora é a PONTA da parede, e a tangente ali é a direção escolhida: é a
+// mesma colocação da parede reta, e é isso que deixa as duas conviverem.
+ok(M.pontoNaFigura(paredeMeia, { x: CENTRO.x, y: CENTRO.y }),
+  'a âncora está na parede curva');
+// A outra ponta de um semicírculo fica a dois raios da primeira.
+const fim = {
+  x: arcoMeia.cx + Math.cos(arcoMeia.ate) * arcoMeia.raio,
+  y: arcoMeia.cy + Math.sin(arcoMeia.ate) * arcoMeia.raio,
+};
+ok(Math.abs(Math.hypot(fim.x - CENTRO.x, fim.y - CENTRO.y) - 2 * arcoMeia.raio) < 1e-6,
+  'as duas pontas do semicírculo ficam a dois raios uma da outra');
+ok(M.pontoNaFigura(paredeMeia, fim), 'e a ponta final também está na parede');
+
+// O miolo do semicírculo é o que a barreira PROTEGE: tem de estar fora dela.
+ok(!M.pontoNaFigura(paredeMeia, { x: arcoMeia.cx, y: arcoMeia.cy }),
+  'o centro da curva fica de fora: é o abrigo, e não a parede');
+// E o que está além da volta também.
+const alem = {
+  x: arcoMeia.cx + Math.cos(arcoMeia.ate + 0.4) * arcoMeia.raio,
+  y: arcoMeia.cy + Math.sin(arcoMeia.ate + 0.4) * arcoMeia.raio,
+};
+ok(!M.pontoNaFigura(paredeMeia, alem), 'passando da volta, já não há parede');
+
+// A CONTA QUE IMPORTA PARA A MESA: dobrar não muda quanto chão a parede ocupa.
+// Se a curva cobrisse mais casas que a reta, curvar seria vantagem gratuita.
+const casasRetas = M.hexesDaFigura(
+  M.figuraDaArea({ molde: 'linha', areaM2: 0, ancora: ANC(10, 8), dir: 0, comprimentoProprioM: 8 }),
+  1, 40, 40).length;
+const casasCurvas = M.hexesDaFigura(
+  M.figuraDaArea({
+    molde: 'linha', areaM2: 0, ancora: ANC(10, 8), dir: 0,
+    comprimentoProprioM: 8, curvaturaGraus: 180,
+  }), 1, 40, 40).length;
+ok(Math.abs(casasRetas - casasCurvas) <= 3,
+  `a parede curva cobre tanto chão quanto a reta (${casasRetas} × ${casasCurvas} casas)`);
+
+// O teto do livro é respeitado mesmo se alguém pedir mais.
+eq(M.figuraDaArea({
+  molde: 'linha', areaM2: 0, ancora: CENTRO, comprimentoProprioM: 8, curvaturaGraus: 270,
+}).curvaturaGraus, 180, 'nenhuma barreira dobra além do semicírculo');
+eq(M.CURVATURAS[0], 0, 'a primeira opção de curvatura é a parede reta');
+eq(M.CURVATURAS[M.CURVATURAS.length - 1], 180, 'e a última é o semicírculo');
+
+// O traço sai como um setor de coroa: dois arcos e o fecho.
+const dArco = M.caminhoDaFigura(paredeMeia, { raioHexPx: 30, pxPorM: 30, margem: { x: 0, y: 0 } });
+ok(/^<path /.test(dArco.trim()), 'a parede curva é um <path>');
+eq((dArco.match(/ A /g) || []).length, 2, 'com dois arcos: o de fora e o de dentro');
+ok(/curva/i.test(M.rotuloDaFigura(paredeMeia)) && /180/.test(M.rotuloDaFigura(paredeMeia)),
+  'e o rótulo diz que é curva e quanto dobra');
+
+// O Escudo de Força também dobra: o livro fala de "qualquer barreira".
+eq(M.EFEITO['escudo-de-forca'].grid.forma, 'muro', 'o Escudo de Força é barreira');
+eq(M.EFEITO['muro'].grid.forma, 'muro', 'e o Muro também');
+
 // ------------------------------- as escadas próprias cabem no teto da régua
 //
 // Oito Efeitos compram tamanho na régua deles, e a régua comum não os alcança.

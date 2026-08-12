@@ -275,6 +275,56 @@ function encaixeDoPonteiro(ctx: CtxGrid, ev: PointerEvent | null, casa: Hex): En
   return encaixeMaisProximo(p, casa, escalaM(ctx));
 }
 
+/**
+ * A régua do Alcance: do centro de quem conjura até o ponteiro.
+ *
+ * O Alcance é um número comprado ("4 m"), e até aqui ele só era conferido DEPOIS
+ * do clique, num aviso. Isso é tarde: a pessoa escolhe o lugar, descobre que não
+ * alcança, e refaz. A régua responde antes, enquanto o ponteiro anda.
+ *
+ * TRÊS DECISÕES QUE MUDAM O NÚMERO:
+ *
+ * A distância é do CENTRO do conjurador, e não da borda da peça nem do canto do
+ * hexágono: é o ponto que o resto do motor já usa como posição dele, e medir de
+ * outro lugar faria a régua discordar da conferência que vem depois do clique.
+ *
+ * É distância EM LINHA, com casas decimais, e não contagem de casas. Contar
+ * casas devolve sempre inteiros e diz que a diagonal custa o mesmo que a reta;
+ * quem está a 4,3 m precisa saber que está a 4,3, e não a "5 casas".
+ *
+ * E o anel do alcance é desenhado junto. Ele é a resposta que a pessoa quer de
+ * verdade: não "que distância é essa?", mas "até onde eu chego?".
+ */
+function reguaDeAlcance(
+  ctx: CtxGrid, de: Hex, plano: Plano, ev: PointerEvent | null,
+): string {
+  // Sem parâmetro de Alcance não há o que medir: o efeito nasce onde nasce.
+  if (plano.escolhas['Alcance'] === undefined) return '';
+  const p = ponteiroEmMetros(ctx, ev);
+  if (!p) return '';
+  const esc_ = escalaM(ctx);
+  const o = encaixeNoCentro(de, esc_);
+  const dist = Math.hypot(p.x - o.x, p.y - o.y);
+  const q = quadro(ctx);
+  const px = (m: { x: number; y: number }) =>
+    ({ x: m.x * q.pxPorM + q.margem.x, y: m.y * q.pxPorM + q.margem.y });
+  const A = px(o), B = px(p);
+  const longe = plano.alcanceM > 0 && dist > plano.alcanceM + 1e-9;
+  const num = (v: number) => v.toFixed(1).replace('.', ',');
+  const anel = plano.alcanceM > 0
+    ? `<circle class="pv-alcance" cx="${A.x.toFixed(1)}" cy="${A.y.toFixed(1)}"
+        r="${(plano.alcanceM * q.pxPorM).toFixed(1)}" />`
+    : '';
+  return `<g class="pv-regua${longe ? ' longe' : ''}">
+    ${anel}
+    <line x1="${A.x.toFixed(1)}" y1="${A.y.toFixed(1)}"
+      x2="${B.x.toFixed(1)}" y2="${B.y.toFixed(1)}" />
+    <circle class="pv-regua-o" cx="${A.x.toFixed(1)}" cy="${A.y.toFixed(1)}" r="3" />
+    <text x="${(B.x + 12).toFixed(1)}" y="${(B.y - 10).toFixed(1)}">${num(dist)} m${
+      plano.alcanceM > 0 ? ` de ${num(plano.alcanceM)}` : ''}</text>
+  </g>`;
+}
+
 /** A marca do encaixe, para a pessoa ver onde a figura vai grudar. */
 function marcaEncaixe(ctx: CtxGrid, e: Encaixe): string {
   const q = quadro(ctx);
@@ -491,6 +541,10 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
     // A aura e o muro compram raio e comprimento, e não área.
     raioProprioM: forma === 'aura' ? plano.raioM : 0,
     comprimentoProprioM: compProprio,
+    // A barreira dobrada. Só a barreira: uma faixa de fogo curva seria uma
+    // figura diferente da que foi comprada, e o livro só dá essa licença à
+    // parede ("a curvatura máxima de qualquer barreira é um semicírculo").
+    curvaturaGraus: forma === 'muro' ? plano.curvaturaGraus : 0,
   });
 
   let ancora: Encaixe = encaixeNoCentro(meu, esc_);
@@ -505,26 +559,36 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
     // quina da parede em vez de no meio do corredor.
     const escolha = await escolherNoMapa(ctx, palco, (h, ev) => {
       const e = encaixeDoPonteiro(ctx, ev, h);
-      return caminhoDaFigura(monta(e, 0), quadro(ctx)) + marcaEncaixe(ctx, e);
+      return reguaDeAlcance(ctx, meu, plano, ev)
+        + caminhoDaFigura(monta(e, 0), quadro(ctx)) + marcaEncaixe(ctx, e);
     }, `Onde ${plano.nome} começa · centro ou vértice · Esc cancela`);
     if (!escolha) return;
     const ponto = escolha.hex;
     // O Alcance é do livro, e vale a pena cobrar: uma zona posta a 50 m com
     // Alcance 1 seria um efeito de graça.
-    const dist = distanciaHex(meu, ponto) * esc_;
+    //
+    // A conferência mede do CENTRO do conjurador até o encaixe escolhido, em
+    // linha, que é a mesma medida que a régua mostrou enquanto o ponteiro andava.
+    // Antes ela contava casas, e casa é inteiro: um efeito de Alcance 4 aceitava
+    // um alvo a 4,9 m e recusava outro a 4,1, dependendo de como a contagem
+    // caísse. Discordar da régua na tela seria pior ainda.
+    const centroMeu = encaixeNoCentro(meu, esc_);
+    const alvoEnc = encaixeDoPonteiro(ctx, escolha.ev, ponto);
+    const dist = Math.hypot(alvoEnc.x - centroMeu.x, alvoEnc.y - centroMeu.y);
     if (plano.alcanceM && dist > plano.alcanceM + 1e-9) {
       const segue = await uiConfirmar(
         `${plano.nome} tem Alcance de ${plano.alcanceM} m e você apontou a ${dist.toFixed(1)} m. Conjurar assim mesmo?`,
         { titulo: 'Fora de alcance', ok: 'Conjurar' });
       if (!segue) return;
     }
-    ancora = encaixeDoPonteiro(ctx, escolha.ev, ponto);
+    ancora = alvoEnc;
 
     // 2. PARA ONDE APONTA. O círculo não pergunta: ele é igual para todo lado, e
     // pedir uma direção a ele seria um clique morto.
     if (molde !== 'circulo') {
       const girou = await escolherNoMapa(ctx, palco, (h, ev) =>
-        caminhoDaFigura(monta(ancora, direcaoAoPonteiro(ctx, ancora, ev)), quadro(ctx))
+        reguaDeAlcance(ctx, meu, plano, ev)
+        + caminhoDaFigura(monta(ancora, direcaoAoPonteiro(ctx, ancora, ev)), quadro(ctx))
         + marcaEncaixe(ctx, ancora),
         `Gire ${plano.nome} e clique · Esc cancela`);
       if (!girou) return;
