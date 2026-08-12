@@ -994,6 +994,22 @@ const SETAS = [
   // A ficha crua por personagem, que as Artes leem (Artes, Efeitos comprados,
   // Centelha e equipamento). Vem do mesmo carregamento que monta o RESUMO.
   let FICHAS: Record<string, any> = {};
+  /**
+   * Quais peças são MINHAS, do ponto de vista de quem está olhando.
+   *
+   * `MEUS` são os personagens do jogador (a RLS de `personagens` só devolve os
+   * dele, então a lista chega pronta do banco). `INVOQUEI` são as peças que ele
+   * trouxe ao mundo nesta sessão: a invocação não é personagem de ninguém, mas
+   * quem a chamou tem de poder movê-la. O banco sabe disso pela coluna
+   * `criado_por`; aqui a memória é da sessão, e por isso um F5 faz o jogador
+   * perder o arrasto da própria invocação (o mestre continua movendo).
+   */
+  let MEUS = new Set<string>();
+  const INVOQUEI = new Set<string>();
+  const minhaPeca = (c: any) => !!c
+    && ((c.personagem_id && MEUS.has(c.personagem_id)) || INVOQUEI.has(c.id));
+  /** Quem pode mandar nesta peça: o mestre em todas, o jogador nas dele. */
+  const mandoNela = (c: any) => MESTRE || minhaPeca(c);
   // A ficha DIGERIDA por combatente, e no mesmo formato para gente e para bicho:
   // a conta da ficha do personagem e o bloco do bestiário chegam aqui como a
   // mesma coisa, e quem desenha o tabuleiro não precisa saber de qual dos dois
@@ -1011,8 +1027,88 @@ const SETAS = [
    * trocam de identidade a cada recarga, e um contexto guardado apontaria para
    * a lista da cena anterior.
    */
+  // ===================================================== quem escreve no banco
+  /**
+   * O mestre escreve direto na tabela; o jogador pede a uma função.
+   *
+   * A migração 22 explica o porquê em detalhe, e o resumo é: RLS filtra LINHA, e
+   * o que precisa ser filtrado quando o jogador lança dano é COLUNA. Uma policy
+   * de update em `combatentes` deixaria a mesma chamada mexer no pv_max, no
+   * nome e no `oculto` do inimigo escondido. As funções `jogador_*` conferem
+   * quem está pedindo e escrevem só o que aquele verbo permite.
+   *
+   * Do lado de cá, o formato de retorno é o mesmo dos dois lados (`{ error }`),
+   * então o resto do arquivo não precisa saber quem está jogando.
+   */
+  const gravarPeca = (cid: string, campos: Record<string, any>) => (MESTRE
+    ? SB.from('combatentes').update(campos).eq('id', cid)
+    : SB.rpc('jogador_muda_peca', { p_comb: cid, p_dados: campos }));
+
+  const gravarToken = (cid: string, q: number, r: number, em: string) => (MESTRE
+    ? SB.from('arena_tokens').upsert({ arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: em },
+        { onConflict: 'arena_id,combatente_id' })
+    : SB.rpc('jogador_mover', { p_arena: ARENA.id, p_comb: cid, p_q: q, p_r: r }));
+
+  const apagarToken = (cid: string) => (MESTRE
+    ? SB.from('arena_tokens').delete().eq('arena_id', ARENA.id).eq('combatente_id', cid)
+    : SB.rpc('jogador_tira_do_mapa', { p_arena: ARENA.id, p_comb: cid }));
+
+  /**
+   * O Supabase que o módulo das Artes recebe quando quem conjura é o jogador.
+   *
+   * Aquele módulo escreve direto (`ctx.SB.from(...).insert(...)`), e está certo:
+   * ele é a cola entre o motor e a aba, e não tem por que saber que existe
+   * mestre e jogador. Então em vez de espalhar o `if` por lá, a aba entrega um
+   * objeto com a mesma cara que desvia as ESCRITAS para as funções do banco. As
+   * leituras passam direto, porque o próprio módulo já escolhe a view do jogador
+   * quando `ctx.mestre` é falso.
+   *
+   * Cobre as cinco formas que aquele arquivo usa (`select`, `insert`, `upsert`,
+   * `update .eq`, `delete .eq`). Uma forma nova falha alto, com função
+   * inexistente, em vez de gravar errado em silêncio.
+   */
+  function sbDoJogador(): any {
+    const pedido = (executa: (st: Record<string, any>) => Promise<any>) => {
+      const st: Record<string, any> = {};
+      const o: any = {
+        eq: (col: string, v: any) => { st[col] = v; return o; },
+        select: () => o, limit: () => o, single: () => o, maybeSingle: () => o,
+        then: (ok: any, ko: any) => executa(st).then(ok, ko),
+      };
+      return o;
+    };
+    const nao = (o: string) => ({ data: null, error: { message: `Jogador não pode ${o}.` } });
+    return {
+      rpc: (...a: any[]) => (SB as any).rpc(...a),
+      from: (tab: string) => ({
+        select: (cols?: string) => SB.from(tab).select(cols),
+        insert: (linha: any) => pedido(async () => {
+          if (tab === 'arena_efeitos') return await SB.rpc('jogador_conjura', { p_dados: linha });
+          if (tab === 'combatentes') {
+            const r = await SB.rpc('jogador_invoca', { p_arena: ARENA.id, p_dados: linha });
+            for (const n of r.data || []) INVOQUEI.add(n.id);
+            return r;
+          }
+          return nao(`criar em ${tab}`);
+        }),
+        upsert: (linha: any) => pedido(async () => (tab === 'arena_tokens'
+          ? await SB.rpc('jogador_mover',
+              { p_arena: linha.arena_id, p_comb: linha.combatente_id, p_q: linha.q, p_r: linha.r })
+          : nao(`gravar em ${tab}`))),
+        update: (campos: any) => pedido(async (st) => {
+          if (tab === 'combatentes') return await SB.rpc('jogador_muda_peca', { p_comb: st.id, p_dados: campos });
+          if (tab === 'arena_efeitos') return await SB.rpc('jogador_muda_efeito', { p_id: st.id, p_dados: campos });
+          return nao(`mudar ${tab}`);
+        }),
+        delete: () => pedido(async (st) => (tab === 'arena_efeitos'
+          ? await SB.rpc('jogador_apaga_efeito', { p_id: st.id })
+          : nao(`apagar de ${tab}`))),
+      }),
+    };
+  }
+
   const ctxArtes = (): CtxGrid => ({
-    SB, arena: ARENA, enc: ENC, combs: COMBS, tokens: TOKENS,
+    SB: MESTRE ? SB : sbDoJogador(), arena: ARENA, enc: ENC, combs: COMBS, tokens: TOKENS,
     resumo: RESUMO, fichas: FICHAS, raio: RAIO, mestre: MESTRE,
     hexNaTela,
     // O agora do tabuleiro é o tick de quem está na vez, o mesmo que a coluna
@@ -1219,6 +1315,12 @@ const SETAS = [
     // Sem esta busca o mestre via os personagens como letra dentro de um
     // círculo, justamente ele, que é quem move as peças.
     PC_IMG = {}; RESUMO = {}; PERFIL = {};
+    // Quais personagens são deste jogador. A RLS de `personagens` já responde
+    // isso sozinha: ao jogador ela devolve só os dele.
+    if (!MESTRE && !MEUS.size) {
+      const { data: meus } = await SB.from('personagens').select('id').eq('mesa_id', ID);
+      MEUS = new Set((meus || []).map((p: any) => p.id));
+    }
     if (MESTRE) {
       const ids = [...new Set(COMBS.map((c: any) => c.personagem_id).filter(Boolean))];
       const fichas: Record<string, any> = {};
@@ -2448,7 +2550,6 @@ const SETAS = [
   let ALVO: { q: number; r: number } | null = null;
 
   function ligarArrasto() {
-    if (!MESTRE) return;
     const palco = el('gr-palco');
 
     document.addEventListener('pointerdown', (ev) => {
@@ -2460,6 +2561,10 @@ const SETAS = [
       const cid = fonte.dataset.c!;
       const c = COMBS.find((x: any) => x.id === cid);
       if (!c) return;
+      // O jogador arrasta a peça DELE, e só. Sair calado, e não avisar: tentar
+      // arrastar o goblin é gesto exploratório, não erro, e um aviso a cada
+      // toque no mapa alheio viraria ruído.
+      if (!mandoNela(c)) return;
       ev.preventDefault();
 
       const ghost = document.createElement('div');
@@ -2876,10 +2981,7 @@ const SETAS = [
     const agora = new Date().toISOString();
     TOKENS[cid] = { q, r, em: agora };
     pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
-    const { error } = await SB.from('arena_tokens').upsert(
-      { arena_id: ARENA.id, combatente_id: cid, q, r, movido_em: agora },
-      { onConflict: 'arena_id,combatente_id' },
-    );
+    const { error } = await gravarToken(cid, q, r, agora);
     if (error) {
       if (antes) TOKENS[cid] = antes; else delete TOKENS[cid];
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
@@ -2906,8 +3008,7 @@ const SETAS = [
     const antes = TOKENS[cid] ? { ...TOKENS[cid] } : null;
     delete TOKENS[cid];
     pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
-    const { error } = await SB.from('arena_tokens').delete()
-      .eq('arena_id', ARENA.id).eq('combatente_id', cid);
+    const { error } = await apagarToken(cid);
     if (error) {
       if (antes) TOKENS[cid] = antes;
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
@@ -2927,7 +3028,6 @@ const SETAS = [
    * essa desistência, todo movimento terminaria com um menu na cara.
    */
   function ligarMenuToken() {
-    if (!MESTRE) return;
     const palco = el('gr-palco');
     palco.addEventListener('contextmenu', (ev) => {
       const t = (ev.target as HTMLElement).closest<HTMLElement>('.gr-token');
@@ -2978,22 +3078,31 @@ const SETAS = [
     // uma: quem tem `monstro_id` tem card, e olhar a ficha do bicho no meio da
     // luta era trocar de aba e perder o mapa de vista.
     const bloco = MON[c.monstro_id];
+    // O menu muda com quem abriu. O jogador age pela peça dele (atacar,
+    // conjurar, gastar Mana) e pode lançar dano em qualquer um, porque é ele que
+    // acabou de rolar o golpe. O que é da mesa (curar, adiantar o relógio,
+    // mexer na ordem, tirar do mapa) continua sendo do mestre.
+    const meu = mandoNela(c);
+    const sep = '<div class="tm-sep"></div>';
+    const linhas = [
+      meu ? item('ataque', '⚔ Ataque') : '',
+      MESTRE ? item('curar', '✚ Recuperar Vida') : '',
+      item('dano', '✖ Tirar Vida'),
+      temMana(c) && meu ? item('mana', '✦ Mana') : '',
+      meu ? item('arte', '✶ Arte') : '',
+      sep,
+      item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance'),
+      MESTRE ? sep : '',
+      MESTRE ? item('encerrar', `⏭ ${ehAVez ? 'Agiu' : 'Adiantar o relógio dele'} (+${custoAtual()} ticks)`) : '',
+      MESTRE ? item('ordem', '↕ Iniciativa e ticks') : '',
+      MESTRE ? sep : '',
+      MESTRE ? item('tirar', '⏏ Tirar do mapa', 'perigo') : '',
+    ];
     m.innerHTML = `<div class="tm-cab${bloco ? ' tem-card' : ''}"${bloco
         ? ' role="button" tabindex="0" title="Ver o card completo da criatura"' : ''}
       >${avatarDe(c, 'av-p')}<span class="tm-nome">${esc(c.nome)}</span>${
         bloco ? '<span class="tm-card-i" aria-hidden="true">▤</span>' : ''}</div>`
-      + item('ataque', '⚔ Ataque')
-      + item('curar', '✚ Recuperar Vida')
-      + item('dano', '✖ Tirar Vida')
-      + (temMana(c) ? item('mana', '✦ Mana') : '')
-      + item('arte', '✶ Arte')
-      + '<div class="tm-sep"></div>'
-      + item('alcance', ALCANCE?.cid === cid ? '◎ Apagar o alcance' : '◎ Mostrar alcance')
-      + '<div class="tm-sep"></div>'
-      + item('encerrar', `⏭ ${ehAVez ? 'Agiu' : 'Adiantar o relógio dele'} (+${custoAtual()} ticks)`)
-      + item('ordem', '↕ Iniciativa e ticks')
-      + '<div class="tm-sep"></div>'
-      + item('tirar', '⏏ Tirar do mapa', 'perigo');
+      + linhas.filter(Boolean).join('');
     m.hidden = false;
     // Encosta na borda? O menu volta para dentro em vez de sair da tela.
     const r = m.getBoundingClientRect();
@@ -3022,7 +3131,6 @@ const SETAS = [
    * alvo arrastaria o alvo.
    */
   function ligarMira() {
-    if (!MESTRE) return;
     el('gr-palco').addEventListener('pointerdown', (ev) => {
       if (!MIRA) return;
       ev.preventDefault(); ev.stopPropagation();
@@ -3663,6 +3771,15 @@ const SETAS = [
     val.value = '0';
     const conta = () => {
       const bruto = Math.max(0, +val.value || 0);
+      // A Absorção do alvo é informação do mestre: ela sai do bloco do bestiário
+      // ou da ficha, e o jogador não lê nem um nem outro. Então na tela dele o
+      // dano vai inteiro e a caixa diz isso, em vez de descontar zero calado e
+      // deixá-lo achar que o couro do ogro não valeu nada.
+      if (!MESTRE) {
+        el('dn-conta').innerHTML = `Vai <b>${bruto}</b> inteiro · a Absorção do alvo`
+          + ' quem desconta é o mestre';
+        return;
+      }
       const s = soakDe(alvo, tipo.value);
       const liq = Math.max(0, bruto - s);
       const pv = Math.max(0, (alvo.pv_atual ?? 0) - liq);
@@ -3696,6 +3813,39 @@ const SETAS = [
   }
 
   /**
+   * Tira Vida, do jeito de quem está pedindo.
+   *
+   * O mestre manda o valor FINAL, porque ele sabe quanto o alvo tem. O jogador
+   * manda QUANTO TIRAR, porque ele não sabe: a view esconde a Vida do inimigo
+   * (ele lê "Ferido", e não "14/20"), e do lado dele `pv_atual` chega nulo.
+   * Mandando o valor pronto, o primeiro golpe zerava o goblin.
+   *
+   * Devolve o que o registro precisa: a frase do estado (vazia para quem não
+   * pode saber) e o inverso, que é o que o desfazer do mestre lê depois.
+   */
+  async function baixarVida(c: any, quanto: number):
+      Promise<{ erro?: string; inverso: any; estado: string }> {
+    if (MESTRE) {
+      const antes = c.pv_atual ?? 0;
+      const pv = Math.max(0, antes - quanto);
+      const { error } = await gravarPeca(c.id, { pv_atual: pv });
+      if (error) return { erro: error.message, inverso: null, estado: '' };
+      c.pv_atual = pv;
+      return {
+        inverso: { acao: 'vida', cid: c.id, de: antes, para: pv },
+        estado: c.pv_max ? ` · ${pv}/${c.pv_max} (${tierDe(pv, c.pv_max).estado})` : '',
+      };
+    }
+    const { error } = await SB.rpc('jogador_dano', { p_comb: c.id, p_quanto: quanto });
+    if (error) return { erro: error.message, inverso: null, estado: '' };
+    // Quando a Vida é conhecida (a peça é dele), acompanha aqui e já dá o número
+    // por conferido, senão a peça ganharia dois: este e o da diferença.
+    if (c.pv_atual != null) { c.pv_atual = Math.max(0, c.pv_atual - quanto); VIDA_VISTA[c.id] = c.pv_atual; }
+    flutuar(c.id, `−${quanto}`, 'dano');
+    return { inverso: { acao: 'vida-menos', cid: c.id, quanto }, estado: '' };
+  }
+
+  /**
    * Mesma conta do rastreador: bruto − absorção, e o resto sai da Vida.
    *
    * @param esperaMarca zero quando um projétil já voou até aqui; deixado de fora
@@ -3704,12 +3854,12 @@ const SETAS = [
   async function aplicarDano(
     atacante: any, alvo: any, bruto: number, tipo: string, esperaMarca?: number,
   ) {
-    const s = soakDe(alvo, tipo);
+    // Pelo lado do jogador a Absorção não existe (ver `pedirDano`): o dano vai
+    // inteiro, o registro diz que foi inteiro, e o mestre corrige se for o caso.
+    const s = MESTRE ? soakDe(alvo, tipo) : 0;
     const liquido = Math.max(0, bruto - s);
-    const pv = Math.max(0, (alvo.pv_atual ?? 0) - liquido);
-    const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
-    if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
-    alvo.pv_atual = pv;
+    const r = await baixarVida(alvo, liquido);
+    if (r.erro) return uiErro('Erro ao aplicar o dano: ' + r.erro);
     // A marca sai antes do registro: o texto explica o que a imagem já mostrou.
     // Não é esperada (nem podia): ela tem a pausa dela, e segurar a Vida por meio
     // segundo travaria a caixa por um enfeite.
@@ -3718,9 +3868,9 @@ const SETAS = [
     // repintura vinda de outro lugar.
     atualizarAnel(alvo); pintarLista(); pintarIniciativa();
     avisarAgora('combatentes');
-    const est = alvo.pv_max ? ` · ${alvo.pv_atual}/${alvo.pv_max} (${tierDe(pv, alvo.pv_max).estado})` : '';
     await logar(alvo, `${atacante.nome} acertou ${alvo.nome}: ${liquido} de dano (${TIPO_LBL[tipo]})`
-      + (s > 0 ? ` [${bruto} − ${s} abs]` : '') + est, { acao: null });
+      + (s > 0 ? ` [${bruto} − ${s} abs]` : '') + (MESTRE ? '' : ' [sem Absorção]') + r.estado,
+      r.inverso);
   }
 
   async function curar(cid: string) {
@@ -3730,13 +3880,15 @@ const SETAS = [
     ], { ok: 'Recuperar' });
     if (!v) return;
     const q = Math.max(1, parseInt(v.q, 10) || 0);
-    const pv = Math.min(c.pv_max ?? (c.pv_atual ?? 0) + q, (c.pv_atual ?? 0) + q);
-    const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', cid);
+    const antesPv = c.pv_atual ?? 0;
+    const pv = Math.min(c.pv_max ?? antesPv + q, antesPv + q);
+    const { error } = await gravarPeca(cid, { pv_atual: pv });
     if (error) return uiErro('Erro: ' + error.message);
     c.pv_atual = pv;
     atualizarAnel(c); pintarLista();
     avisarAgora('combatentes');
-    await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`, { acao: null });
+    await logar(c, `${c.nome} recuperou ${q}${c.pv_max ? ` · ${pv}/${c.pv_max}` : ''}`,
+      { acao: 'vida', cid, de: antesPv, para: pv });
     // Depois do registro, e não antes: quem estava no chão volta à fila aqui, e
     // a linha do atraso tem de vir DEPOIS da linha da cura para a história ficar
     // na ordem em que aconteceu.
@@ -3762,15 +3914,12 @@ const SETAS = [
     ], { ok: 'Tirar' });
     if (!v) return;
     const q = Math.max(1, parseInt(v.q, 10) || 0);
-    const pv = Math.max(0, (c.pv_atual ?? 0) - q);
-    const { error } = await SB.from('combatentes').update({ pv_atual: pv }).eq('id', cid);
-    if (error) return uiErro('Erro: ' + error.message);
-    c.pv_atual = pv;
+    const r = await baixarVida(c, q);
+    if (r.erro) return uiErro('Erro: ' + r.erro);
     atualizarAnel(c); pintarLista();
     avisarAgora('combatentes');
     const causa = (v.causa || '').trim();
-    await logar(c, `${c.nome} perdeu ${q} de Vida${causa ? ` (${causa})` : ''}`
-      + (c.pv_max ? ` · ${pv}/${c.pv_max} (${tierDe(pv, c.pv_max).estado})` : ''), { acao: null });
+    await logar(c, `${c.nome} perdeu ${q} de Vida${causa ? ` (${causa})` : ''}` + r.estado, r.inverso);
     // Depois do registro: a Vida a zero tira da fila aqui, e a linha da queda tem
     // de vir depois da linha do dano.
     pintarIniciativa();
@@ -3791,18 +3940,21 @@ const SETAS = [
   async function ajustarMana(cid: string) {
     const c = COMBS.find((x: any) => x.id === cid); if (!c) return;
     const teto = c.mana_max ?? PERFIL[c.id]?.mana ?? 0;
+    // O teto é do mestre: a reserva total sai da ficha e do que a mesa conceder,
+    // e não de quem está gastando. O jogador só mexe no que sobrou.
     const v = await uiFormulario(`Mana · ${c.nome}`, [
       { nome: 'atual', rotulo: 'Mana agora', tipo: 'numero', valor: c.mana_atual ?? teto, min: 0 },
-      { nome: 'max', rotulo: 'Reserva total', tipo: 'numero', valor: teto, min: 0 },
+      ...(MESTRE ? [{ nome: 'max', rotulo: 'Reserva total', tipo: 'numero' as const, valor: teto, min: 0 }] : []),
     ], { ok: 'Salvar', msg: PERFIL[c.id]?.mana
       ? `A ficha dá ${PERFIL[c.id].mana} (Centelha ${PERFIL[c.id].centelha}, Vontade ${PERFIL[c.id].vontade}).`
       : undefined });
     if (!v) return;
-    const max = Math.max(0, parseInt(v.max, 10) || 0);
+    const max = MESTRE ? Math.max(0, parseInt(v.max, 10) || 0) : teto;
     const atual = Math.max(0, Math.min(max, parseInt(v.atual, 10) || 0));
     const antes = c.mana_atual ?? 0;
-    const { error } = await SB.from('combatentes')
-      .update({ mana_max: max, mana_atual: atual }).eq('id', cid);
+    const { error } = MESTRE
+      ? await SB.from('combatentes').update({ mana_max: max, mana_atual: atual }).eq('id', cid)
+      : await gravarPeca(cid, { mana_atual: atual });
     if (error) return uiErro('Erro: ' + error.message);
     c.mana_max = max; c.mana_atual = atual;
     atualizarMana(c); pintarLista();
@@ -3829,7 +3981,7 @@ const SETAS = [
     if (!c || !(quanto > 0) || c.mana_max == null) return;
     const atual = Math.max(0, (c.mana_atual ?? 0) - Math.round(quanto));
     if (atual === c.mana_atual) return;
-    const { error } = await SB.from('combatentes').update({ mana_atual: atual }).eq('id', cid);
+    const { error } = await gravarPeca(cid, { mana_atual: atual });
     if (error) return;
     c.mana_atual = atual;
     atualizarMana(c); pintarLista();
@@ -3887,13 +4039,29 @@ const SETAS = [
    * emboscada se anuncia por escrito, com casa e tudo.
    */
   async function logar(c: any, txt: string, extra: Record<string, any>) {
-    LOG.push({ id: novoId(), ts: new Date().toISOString(), txt, pub: c?.oculto ? null : txt, ...extra });
+    const linha = { id: novoId(), ts: new Date().toISOString(), txt, pub: c?.oculto ? null : txt, ...extra };
+    LOG.push(linha);
     if (LOG.length > 300) LOG = LOG.slice(-300);
     pintarLog();
-    await persistirLog();
+    await persistirLog(linha);
   }
 
-  async function persistirLog() {
+  /**
+   * Grava o registro. Os dois papéis escrevem de jeitos diferentes, de propósito.
+   *
+   * O mestre sobe o array inteiro, e é isso que lhe permite editar e apagar
+   * linhas. O jogador ACRESCENTA uma linha por uma função do banco: ele não
+   * reescreve o que já está lá, então não há como uma tela atrasada dele apagar
+   * o que aconteceu enquanto isso, nem como ele mexer no que o mestre escreveu.
+   */
+  async function persistirLog(linha?: any) {
+    if (!MESTRE) {
+      if (!linha || !ARENA) return;
+      const { error } = await SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha });
+      if (!error) RT?.avisar('registro');
+      else uiErro('Erro ao registrar: ' + error.message);
+      return;
+    }
     const { error } = await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);
     if (!error) RT?.avisar('registro');
     if (error) uiErro(/log/i.test(error.message)
@@ -3927,6 +4095,17 @@ const SETAS = [
    * do registro em vez de virar uma linha nova, senão desfazer três vezes
    * deixaria seis linhas contando uma história que não aconteceu.
    */
+  /** Põe a Vida de volta onde estava. Usado só pelo desfazer. */
+  async function devolverVida(cid: string, pv: number | null) {
+    const c = COMBS.find((x: any) => x.id === cid);
+    if (!c || pv == null) return;
+    const { error } = await gravarPeca(cid, { pv_atual: pv });
+    if (error) return uiErro('Erro: ' + error.message);
+    c.pv_atual = pv;
+    atualizarAnel(c); pintarLista(); pintarIniciativa();
+    avisarAgora('combatentes');
+  }
+
   async function desfazer() {
     const i = [...LOG].reverse().findIndex((e: any) => e.acao);
     if (i < 0) return;
@@ -3935,6 +4114,15 @@ const SETAS = [
     if (e.acao === 'por') await tirarDoMapa(e.cid, false);
     else if (e.acao === 'mover') await porNoMapa(e.cid, e.de.q, e.de.r, false);
     else if (e.acao === 'tirar') await porNoMapa(e.cid, e.de.q, e.de.r, false);
+    // A Vida volta ao número que tinha ANTES, e não "soma o que foi tirado": se
+    // duas coisas bateram na mesma peça, somar de volta desfaria a errada.
+    else if (e.acao === 'vida') await devolverVida(e.cid, e.de);
+    // Dano de jogador é relativo: ele não sabia o número, então o que voltou
+    // para o registro foi o QUANTO. Devolver é somar de volta, com o teto.
+    else if (e.acao === 'vida-menos') {
+      const c = COMBS.find((x: any) => x.id === e.cid);
+      if (c) await devolverVida(e.cid, Math.min(c.pv_max ?? Infinity, (c.pv_atual ?? 0) + (e.quanto || 0)));
+    }
     LOG.splice(idx, 1);
     pintarLog();
     await persistirLog();

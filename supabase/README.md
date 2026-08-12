@@ -173,6 +173,25 @@ Supabase pelo navegador. Passos para ligar tudo:
 
     Sem esta migração o tabuleiro continua inteiro: a semeadura falha em silêncio e a barra de Mana
     simplesmente não aparece.
+21. Rode [`migracao-22.sql`](./migracao-22.sql): o **jogador agindo no tabuleiro**. Idempotente.
+
+    Até aqui o Grid era de mão única: o mestre escrevia, o jogador olhava. Agora o jogador move a
+    própria peça, mira, conjura e lança o dano. Nenhuma policy nova: o jogador continua sem escrever
+    nas tabelas, e chama **funções `security definer`** que conferem quem ele é antes de gravar.
+
+    Foi por função, e não por RLS, porque RLS filtra **linha** e o que precisa ser filtrado aqui é
+    **coluna**: com policy de update em `combatentes`, quem lançasse dano poderia no mesmo gesto
+    mudar o `pv_max`, o nome ou o `oculto` do inimigo escondido. Grant por coluna também não serve,
+    porque mestre e jogador são o mesmo papel do Postgres (`authenticated`); o que os separa é o
+    `auth.uid()`, que só a função enxerga.
+
+    O dano do jogador é **relativo** (`jogador_dano(peça, quanto)`), e não absoluto: a view esconde
+    a Vida do inimigo, então ele não tem como calcular o valor final. Quem faz a conta é o banco.
+
+    `combatentes` ganha `criado_por`, que é o que deixa quem invocou mover a própria invocação.
+
+    Sem esta migração o Grid continua inteiro para o mestre; o jogador é que volta a só olhar,
+    com um erro de permissão em cada tentativa.
 
 ## 3. Ajustes no painel
 
