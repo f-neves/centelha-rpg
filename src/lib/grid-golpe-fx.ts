@@ -76,6 +76,20 @@ const T = {
    * percurso se perde. Um quinto de segundo é o tempo de o olhar mudar de lugar.
    */
   espera: 220,
+  /**
+   * A pausa da MARCA, quando ela sai direto do botão (o golpe corpo a corpo).
+   *
+   * É o dobro da pausa do tiro, e o dobro é o certo porque as duas coisas não
+   * pedem o mesmo. A flecha atravessa o tabuleiro: ela mesma é o tempo de espera,
+   * e o olho a encontra no meio do caminho. A marca acontece num ponto só e dura
+   * menos de meio segundo: quem chegar atrasado não vê nada. Vale esperar mais
+   * para garantir que o olhar já está lá quando ela abre.
+   *
+   * Quando um projétil voou, esta pausa NÃO se aplica: a chegada da flecha já é o
+   * instante do impacto, e adiar a marca depois disso abriria um buraco entre a
+   * ponta encostando no alvo e o alvo reagindo.
+   */
+  esperaMarca: 440,
 };
 
 const dormir = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -461,12 +475,26 @@ function elemental(gr: SVGElement, R: number, el: Elemento): void {
  * @param tipo  o modo do livro, ou o elemento da Arte
  * @param dir   de onde veio o ataque, em radianos. É o que gira o corte e a lança.
  * @param raioPx  o raio de uma casa, para a marca ter o tamanho do tabuleiro
+ * @param espera  quanto esperar antes de desenhar. O padrão vale para o golpe
+ *   que sai direto do botão; quem já esperou um projétil chegar passa zero, e a
+ *   marca abre no instante em que a ponta encosta.
+ *
+ * O estouro elemental não espera nada por padrão, e é de propósito: ele não vem
+ * de um clique num botão, vem de uma zona mordendo quem passou por ela, e ali
+ * não há olhar nenhum para esperar chegar.
  */
-export function baterNoAlvo(
+export async function baterNoAlvo(
   svg: SVGElement | null, p: Ponto, tipo: Golpe | Elemento | string,
-  dir: number, raioPx: number,
-): void {
+  dir: number, raioPx: number, espera?: number,
+): Promise<void> {
   if (!svg) return;
+  const atraso = espera ?? (ehElemental(tipo) ? 0 : T.esperaMarca);
+  // A pausa vem ANTES de o desenho existir, pela mesma razão do projétil: um
+  // grupo esperando no DOM aparece em algum lugar, e nenhum lugar está certo.
+  if (atraso > 0) await dormir(atraso);
+  // A camada pode ter sido repintada durante a espera (o alvo caiu, o mestre
+  // mudou de arena). Sem esta conferência o grupo iria para um SVG órfão.
+  if (!svg.isConnected) return;
   // Quem pediu tela quieta recebe o lampejo e nada mais: a informação continua
   // chegando (onde bateu), sem nada varrendo a tela.
   const R = Math.max(10, raioPx * 0.92);

@@ -3361,11 +3361,11 @@ const SETAS = [
    * lança da perfuração. Um corte que varre sempre para o mesmo lado, com o
    * inimigo vindo de outro, lê como decalque.
    */
-  function marcarGolpe(atacante: any, alvo: any, tipo: string) {
+  function marcarGolpe(atacante: any, alvo: any, tipo: string, espera?: number) {
     const a = pontoDaPeca(atacante?.id), p = pontoDaPeca(alvo?.id);
     if (!p) return;
     const dir = a ? Math.atan2(p.y - a.y, p.x - a.x) : 0;
-    baterNoAlvo(camadaDeGolpes(), p, tipo, dir, RAIO);
+    baterNoAlvo(camadaDeGolpes(), p, tipo, dir, RAIO, espera);
   }
 
   function iniciarMira(cid: string) {
@@ -3406,13 +3406,24 @@ const SETAS = [
     // a regra usa, e é a que o mestre vai declarar em voz alta.
     const h = hexEmPonto(bx - mg.x, by - mg.y, RAIO);
     const metros = distanciaHex(de, h) * (Number(ARENA.escala_m) || 1);
-    // A ponta acompanha o cursor, mas quando ele está sobre um alvo ela pousa no
-    // CENTRO da peça: a seta que encosta no meio do inimigo lê como escolha
-    // feita, e a que para dois dedos antes lê como hesitação.
+    // A ponta acompanha o cursor, mas quando ele está sobre um alvo ela pousa na
+    // BORDA da peça, do lado de quem atira.
+    //
+    // Mirava no centro, e no centro a seta some: o retrato do alvo é opaco e
+    // fica por cima da camada das setas, então a ponta (justamente a parte
+    // grossa, a que diz para onde o golpe vai) ficava enterrada debaixo da peça.
+    // Encostando na borda, a seta aparece inteira e continua apontando para
+    // dentro do alvo, que é o que ela precisa dizer. O alvo escolhido não fica
+    // por isso menos escolhido: quem marca isso é o halo em volta dele.
     let fim = { x: bx, y: by };
     if (sob) {
       const t = TOKENS[sob.dataset.c!];
-      if (t) { const p = centroHex(t.q, t.r, RAIO); fim = { x: p.x + mg.x, y: p.y + mg.y }; }
+      const alvo = COMBS.find((z: any) => z.id === sob.dataset.c);
+      if (t) {
+        const p = centroHex(t.q, t.r, RAIO);
+        fim = naBordaDaPeca({ x: p.x + mg.x, y: p.y + mg.y },
+          { x: a.x + mg.x, y: a.y + mg.y }, alvo ? diametroPx(alvo) : RAIO);
+      }
     }
     const d = caminhoSeta({ x: a.x + mg.x, y: a.y + mg.y }, fim, estiloSeta('setaAtq'));
     g.innerHTML = `<path class="seta-fig seta-atq" d="${d}" />
@@ -3447,12 +3458,17 @@ const SETAS = [
       atacante, FICHAS[atacante.personagem_id], MON[atacante.monstro_id], armaDoSlot,
     );
     const de = pontoDaPeca(atacante.id), pa = pontoDaPeca(alvo.id);
-    const atirar = () => (proj && de && pa)
-      ? voarProjetil(camadaDeGolpes(), de, pa, {
+    // Devolve se ALGUMA COISA voou, e não só se terminou: quem esperou uma
+    // flecha atravessar o tabuleiro já cumpriu a pausa, e a marca do golpe tem de
+    // abrir no instante em que a ponta encosta, e não meio segundo depois.
+    const atirar = async (): Promise<boolean> => {
+      if (!(proj && de && pa)) return false;
+      await voarProjetil(camadaDeGolpes(), de, pa, {
         tipo: proj, errou: !acertou, raioPx: RAIO,
         pxPorM: larguraHex(RAIO) / (Number(ARENA?.escala_m) || 1),
-      })
-      : Promise.resolve();
+      });
+      return true;
+    };
 
     if (!acertou) {
       await atirar();
@@ -3498,9 +3514,12 @@ const SETAS = [
    * @param antesDoDano o que acontece no tabuleiro no instante do "Aplicar", e
    *   antes de a Vida mudar: hoje é o voo do projétil. Fica aqui, e não em quem
    *   chamou, porque o momento certo é o clique, e o clique mora nesta caixa.
-   *   Cancelar não dispara nada: o ataque não terminou de acontecer.
+   *   Cancelar não dispara nada: o ataque não terminou de acontecer. Devolve se
+   *   algo voou, porque isso decide se a marca do golpe ainda espera ou não.
    */
-  function pedirDano(atacante: any, alvo: any, antesDoDano?: () => Promise<void>): Promise<void> {
+  function pedirDano(
+    atacante: any, alvo: any, antesDoDano?: () => Promise<boolean>,
+  ): Promise<void> {
     const dlg = el('dano-dlg') as HTMLDialogElement;
     const val = el('dn-valor') as HTMLInputElement;
     const tipo = el('dn-tipo') as HTMLSelectElement;
@@ -3522,8 +3541,10 @@ const SETAS = [
         // A caixa fecha primeiro, depois a flecha voa, e só então a Vida muda:
         // o tabuleiro está livre para ser olhado, e o número no anel do alvo cai
         // no instante em que o projétil chega, e não antes dele sair.
-        if (antesDoDano) await antesDoDano();
-        await aplicarDano(atacante, alvo, Math.max(0, +val.value || 0), tipo.value);
+        const voou = antesDoDano ? await antesDoDano() : false;
+        await aplicarDano(
+          atacante, alvo, Math.max(0, +val.value || 0), tipo.value, voou ? 0 : undefined,
+        );
         resolve();
       };
       dlg.showModal();
@@ -3538,8 +3559,15 @@ const SETAS = [
     return (r?.soak?.[CAT_SOAK[tipo]] ?? 0) + (cd.soak || 0);
   }
 
-  /** Mesma conta do rastreador: bruto − absorção, e o resto sai da Vida. */
-  async function aplicarDano(atacante: any, alvo: any, bruto: number, tipo: string) {
+  /**
+   * Mesma conta do rastreador: bruto − absorção, e o resto sai da Vida.
+   *
+   * @param esperaMarca zero quando um projétil já voou até aqui; deixado de fora
+   *   no golpe corpo a corpo, para a marca esperar o olhar chegar ao tabuleiro.
+   */
+  async function aplicarDano(
+    atacante: any, alvo: any, bruto: number, tipo: string, esperaMarca?: number,
+  ) {
     const s = soakDe(alvo, tipo);
     const liquido = Math.max(0, bruto - s);
     const pv = Math.max(0, (alvo.pv_atual ?? 0) - liquido);
@@ -3547,7 +3575,9 @@ const SETAS = [
     if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
     alvo.pv_atual = pv;
     // A marca sai antes do registro: o texto explica o que a imagem já mostrou.
-    marcarGolpe(atacante, alvo, tipo);
+    // Não é esperada (nem podia): ela tem a pausa dela, e segurar a Vida por meio
+    // segundo travaria a caixa por um enfeite.
+    marcarGolpe(atacante, alvo, tipo, esperaMarca);
     // A fila também: Vida a zero tira da ordem na hora, sem esperar a próxima
     // repintura vinda de outro lugar.
     atualizarAnel(alvo); pintarLista(); pintarIniciativa();
