@@ -1168,12 +1168,12 @@
           "50 m"
         ],
         "area": [
-          "0,5 × 0,5 m",
-          "1 × 1 m",
-          "1,5 × 1,5 m",
-          "2 × 2 m",
-          "3 × 3 m",
-          "5 × 5 m"
+          "1 m de diâmetro",
+          "1,5 m de diâmetro",
+          "2 m de diâmetro",
+          "2,5 m de diâmetro",
+          "3 m de diâmetro",
+          "4 m de diâmetro"
         ],
         "alvos": [
           "1",
@@ -1208,7 +1208,7 @@
           "1 mês"
         ],
         "notaDano": "Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
-        "notaArea": "A área pode ser moldada em linha reta, círculo ou leque.",
+        "notaArea": "O nível compra um DIÂMETRO, e a área é a do círculo que ele desenha (nível 3 = 2 m de diâmetro = 3,1 m² de chão). Essa área é o orçamento: ela pode ser moldada em círculo, linha reta, retângulo ou leque, e nenhum molde rende mais chão que o outro. Em círculo, o raio é sempre metade do diâmetro comprado.",
         "notaAlcance": "O efeito comum precisa de pelo menos Alcance 1 (toque). Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano."
       },
       "exemplos": [

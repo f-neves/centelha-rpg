@@ -141,13 +141,28 @@ export const alcanceEmMetros = (p: Parametro, n: number): number => {
 /**
  * A área em metros quadrados.
  *
- * A régua do livro é um quadrado ("4 × 4"), e o Volume de alguns Efeitos é um
- * raio ("3 m") ou um cubo ("4x4x4"). Os três viram m² de chão, porque é isso que
- * o tabuleiro pinta: um cubo de lado L cobre L × L de piso, e um raio R cobre um
- * círculo de πR².
+ * Quatro maneiras de escrever tamanho convivem, e todas viram m² de chão, porque
+ * é isso que o tabuleiro pinta:
+ *
+ *   DIÂMETRO ("2 m de diâmetro")  a régua do livro. O nível compra a largura de
+ *     um círculo, e a área é a dele: π(d/2)². Em círculo o raio sai exatamente
+ *     metade do que se comprou, que é o que faz a régua ser conferível a olho.
+ *   RAIO ("3 m", com unidade "m de raio")  a Aura, que compra distância do corpo.
+ *   CUBO ou QUADRADO ("4x4x4", "2 × 2")  Névoa e Terremoto, que têm régua própria.
+ *     Um cubo de lado L cobre L × L de piso.
+ *   NÚMERO SOLTO  último recurso, e vale um metro quadrado.
+ *
+ * DIÂMETRO E RAIO SÃO SEPARADOS DE PROPÓSITO, e confundi-los dobraria a área
+ * quatro vezes: "2 m" de raio são 12,6 m² e "2 m" de diâmetro são 3,1 m². Por
+ * isso o diâmetro é testado ANTES, e pelo texto do valor, que é onde a diferença
+ * está escrita.
  */
 export function areaEmM2(p: Parametro, n: number): number {
   const v = valorNoNivel(p, n);
+  if (/di[âa]metro/i.test(v) || /di[âa]metro/i.test(p.unidade || '')) {
+    const r = soNumero(v) / 2;
+    return Math.PI * r * r;
+  }
   if (/de raio/i.test(p.unidade || '') || /^\s*\d+([.,]\d+)?\s*m\s*$/i.test(v)) {
     const r = soNumero(v);
     return Math.PI * r * r;
