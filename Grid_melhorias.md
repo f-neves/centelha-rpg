@@ -49,21 +49,38 @@ cronômetro sincronizado, névoa por jogador e um botão de deitar a peça caíd
       Migração 22, e o porquê de ser por função e não por RLS está no cabeçalho dela.
 - ✅ **O mestre desfaz.** Toda ação entra no registro com o inverso, e o desfazer alcança as ações
       dos jogadores como já alcançava as dele. Dano e cura também passaram a ser desfeitos.
-- ✅ **Névoa de guerra**, com interruptor. Migração 23. O que ela ainda não faz está logo abaixo.
+- ✅ **Névoa de guerra**, com interruptor, em três estados, com visão em volta das peças do grupo e
+      luz de fogo abrindo o mapa. Migrações 23 e 25. O quadro completo está logo abaixo.
 - ✅ **Número de dano subindo da peça.** Sai da diferença de Vida ou de Mana, então vale para todo
       caminho: golpe, Arte, queda, e o que chega de outra tela.
 - ✅ **Trilha de fundo por arena.** Migração 24.
 
+### A névoa, como ficou (migrações 23 e 25)
+
+Três estados por casa, e dois deles o tabuleiro calcula sozinho:
+
+| Estado | O que se vê | De onde vem |
+| --- | --- | --- |
+| **Claro** | o chão e quem está nele | alguém do grupo enxergando dali, fogo ou luz acesos, ou o pincel do mestre |
+| **Névoa leve** | só o chão | já esteve claro alguma vez (`explorado`), e agora não há ninguém por perto |
+| **Névoa pesada** | nada | nunca esteve claro |
+
+- **Enxerga** quem é `pc` ou do grupo `aliado`, num raio em hexágonos que é da CENA (`nevoa.visao`,
+  padrão 6): a cripta escura e o campo aberto ao meio-dia não têm o mesmo alcance.
+- **Fogo e luz** de qualquer Arte clareiam as casas do efeito mais um halo (`nevoa.luz`, padrão 2).
+- **A memória** (`nevoa.explorado`) é do grupo e só cresce; o botão "Esquecer" zera.
+
 ### O que a névoa ainda não faz
 
-- **Não é por jogador.** É do grupo: o que um revelou, todos veem. Cabe na mesma coluna trocando a
-  lista por um objeto por pessoa, mas isso é decisão de mesa antes de ser código.
-- **Não segue ninguém.** Não há lanterna nem alcance de visão: quem abre o mapa é o mestre, com o
-  pincel. Uma revelação automática em volta de quem anda é o passo seguinte e é barato, já que a
-  conta de distância em hexágonos existe.
-- **Não conhece parede.** Revelar é por casa, não por linha de visão; a névoa não sabe que a
-  esquina esconde o corredor. Linha de visão de verdade depende de existirem paredes no mapa, que
-  hoje não existem.
+- **Não é por jogador.** É do grupo: o que um viu, todos sabem. Cabe na mesma coluna trocando os
+  conjuntos por um objeto por pessoa, mas isso é decisão de mesa antes de ser código.
+- **Não conhece parede.** O alcance é um círculo de hexágonos, e não linha de visão: a névoa não
+  sabe que a esquina esconde o corredor. Linha de visão de verdade depende de existirem paredes no
+  mapa, que hoje não existem.
+- **Não distingue quem enxerga melhor.** O raio é um só para todo o grupo; o anão que enxerga no
+  escuro e o mago cego usam o mesmo. Um campo por peça resolve, e cabe em `combatentes.dados`.
+- **A luz de um efeito vencido continua acesa** até ele sair do tabuleiro: o banco não conhece o
+  relógio de Ticks, e a conta da névoa mora nele.
 - **Não esconde efeito de Arte nem marca de golpe.** `efeito_visao` ainda não filtra por casa
   coberta: uma aura de fogo acesa no escuro aparece para o jogador. As peças, essas, não chegam.
 - **Não esconde o nome na lista.** "Em campo" continua listando todo mundo do encontro, coberto ou
