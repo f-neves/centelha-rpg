@@ -37,6 +37,7 @@ const SETAS = [
                máquina do jogador pode não ser a do mestre. -->
           <button class="btn mini" id="gr-fx" title="Efeitos elementais">✦ efeitos</button>
           <button class="btn-fant" id="gr-fx-cfg" title="Ajustar os efeitos">⚙</button>
+          <button class="btn mini" id="gr-trilha" title="Trilha de fundo desta arena">♪ trilha</button>
           <button class="btn mini" id="gr-ativar">◉ em jogo</button>
           <button class="btn mini" id="gr-registro">☰ registro</button>
           <button class="btn-fant perigo" id="gr-excluir" title="Excluir esta arena">✕</button>
@@ -47,6 +48,10 @@ const SETAS = [
           <span id="gr-zval" class="muted">100%</span>
           <button class="btn-fant" id="gr-mais" title="Aproximar">+</button>
           <button class="btn-fant" id="gr-caber" title="Caber na tela">⤢</button>
+          <!-- O som de cada um é de cada um: este botão é do APARELHO, e não da
+               arena. O mestre escolhe a música; quem está ouvindo decide o
+               volume dela na casa dele, e o silêncio fica guardado. -->
+          <button class="btn-fant" id="gr-som-btn" hidden title="Volume da trilha">🔊</button>
         </span>
         <button class="btn-fant" id="gr-cheia" title="Tela cheia (F)">⛶</button>
         <span class="gr-vivo" id="gr-vivo" hidden><span class="pt"></span><span id="gr-vivo-n"></span></span>
@@ -317,6 +322,32 @@ const SETAS = [
       </div>
     </form>
   </dialog>
+  <dialog id="trilha-dlg" class="mesa-dlg">
+    <form method="dialog">
+      <h3>Trilha de fundo</h3>
+      <p class="muted dlg-txt">Toca no navegador de todo mundo que estiver com esta arena aberta. O
+        arquivo sai da aba Arquivos, ou de um endereço solto. Quem ouve continua com o próprio
+        controle de volume, no alto-falante ao lado do zoom.</p>
+      <label class="dlg-campo">Arquivo da mesa
+        <select id="tr-arq"><option value="">(nenhum)</option></select>
+      </label>
+      <label class="dlg-campo">Ou um endereço
+        <input type="url" id="tr-url" placeholder="https://…/chuva.mp3" />
+      </label>
+      <label class="dlg-campo">Volume da arena <input type="range" id="tr-vol" min="0" max="100" step="5" /></label>
+      <p class="muted dlg-txt" id="tr-aviso" hidden></p>
+      <div class="dlg-btns">
+        <button type="button" class="btn mini" id="tr-parar">Parar</button>
+        <span class="espaco"></span>
+        <button type="button" class="btn" id="tr-cancelar">Fechar</button>
+        <button type="button" class="btn primary" id="tr-tocar">Tocar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Um só, escondido, com laço. O navegador de cada um toca; o banco só diz
+       qual é a música e se ela está no ar. -->
+  <audio id="gr-som" loop preload="none"></audio>
 </Base>
 
 <style is:global>
@@ -1185,6 +1216,7 @@ const SETAS = [
     ligarMenuToken();
     ligarMira();
     ligarNevoa();
+    ligarSom();
     ligarReguaENavegacao();
     ligarTelaCheia();
     ligarCusto();
@@ -1731,7 +1763,133 @@ const SETAS = [
       (el('gr-nevoa-btn') as HTMLElement).hidden = false;
     }
     pintarNevoa();
+    aplicarTrilha();
     aplicarZoom();
+  }
+
+  // =============================================================== a trilha
+  /**
+   * A música da cena. O servidor não transmite som: ele diz qual é a música e se
+   * ela está no ar, e o navegador de cada um toca.
+   *
+   * Dois volumes, de propósito. O da ARENA é do mestre, e é a mistura da cena
+   * (a chuva baixinha, o tambor alto). O do APARELHO é de quem está ouvindo, e
+   * fica guardado no navegador dele: forçar som na casa dos outros é falta de
+   * educação, e alguém sempre está com o fone no volume errado.
+   */
+  const SOM_KEY = 'centelha:grid:volume';
+  let VOL_LOCAL = 0.7;
+  try { const v = localStorage.getItem(SOM_KEY); if (v != null) VOL_LOCAL = Math.max(0, Math.min(1, +v)); } catch {}
+  let TRILHA_SRC = '';          // o endereço já resolvido do que está tocando
+  let TRILHA_TRAVADA = false;   // o navegador recusou tocar sem um clique antes
+
+  const trilhaDaArena = () => (ARENA?.trilha && typeof ARENA.trilha === 'object' ? ARENA.trilha : {});
+
+  /** Resolve o endereço: o solto vale como está; o do balde precisa ser assinado. */
+  async function enderecoDaTrilha(t: any): Promise<string> {
+    if (t.url) return String(t.url);
+    if (!t.path) return '';
+    const { data } = await SB.storage.from('mesa').createSignedUrl(t.path, 60 * 60 * 6);
+    return data?.signedUrl || '';
+  }
+
+  /** Põe o áudio no estado que a arena manda, sem recomeçar o que já está tocando. */
+  async function aplicarTrilha() {
+    const som = document.getElementById('gr-som') as HTMLAudioElement | null;
+    if (!som) return;
+    const t = trilhaDaArena();
+    const btn = el('gr-som-btn') as HTMLElement;
+    btn.hidden = !(t.tocando && (t.path || t.url));
+    som.volume = Math.max(0, Math.min(1, (t.volume ?? 0.5) * VOL_LOCAL));
+    if (!t.tocando || !(t.path || t.url)) { som.pause(); TRILHA_SRC = ''; return; }
+    const src = await enderecoDaTrilha(t);
+    if (!src) return;
+    // Trocar o `src` recomeça a música: só quando ela mudou mesmo.
+    if (src !== TRILHA_SRC) { TRILHA_SRC = src; som.src = src; }
+    try { await som.play(); TRILHA_TRAVADA = false; }
+    catch { TRILHA_TRAVADA = true; }   // o navegador exige um clique antes: ver `ligarSom`
+    pintarSom();
+  }
+
+  function pintarSom() {
+    const btn = el('gr-som-btn') as HTMLElement;
+    const t = trilhaDaArena();
+    btn.textContent = TRILHA_TRAVADA ? '🔈' : VOL_LOCAL === 0 ? '🔇' : '🔊';
+    btn.title = TRILHA_TRAVADA
+      ? 'Clique para liberar o som (o navegador pede um toque antes)'
+      : `${t.nome || 'Trilha'} · volume ${Math.round(VOL_LOCAL * 100)}%`;
+    btn.classList.toggle('primary', TRILHA_TRAVADA);
+  }
+
+  function ligarSom() {
+    // Um clique no botão dá a volta: 100% → 60% → 30% → mudo → 100%.
+    el('gr-som-btn').onclick = async () => {
+      if (TRILHA_TRAVADA) { await aplicarTrilha(); return; }
+      const escada = [1, 0.6, 0.3, 0];
+      const i = escada.findIndex((v) => Math.abs(v - VOL_LOCAL) < 0.05);
+      VOL_LOCAL = escada[(i + 1) % escada.length] ?? 0.6;
+      try { localStorage.setItem(SOM_KEY, String(VOL_LOCAL)); } catch {}
+      await aplicarTrilha();
+    };
+    // Autoplay bloqueado: o primeiro toque em qualquer lugar da página serve de
+    // permissão, e é o que os navegadores esperam.
+    document.addEventListener('pointerdown', () => {
+      if (TRILHA_TRAVADA) aplicarTrilha();
+    }, { capture: true });
+  }
+
+  /** A janela da trilha, do mestre. */
+  async function abrirTrilha() {
+    const dlg = el('trilha-dlg') as HTMLDialogElement;
+    const t = trilhaDaArena();
+    const sel = el('tr-arq') as HTMLSelectElement;
+    const url = el('tr-url') as HTMLInputElement;
+    const vol = el('tr-vol') as HTMLInputElement;
+    const aviso = el('tr-aviso') as HTMLElement;
+    url.value = t.url || '';
+    vol.value = String(Math.round((t.volume ?? 0.5) * 100));
+    sel.innerHTML = '<option value="">(nenhum)</option>';
+    // Os arquivos da mesa que são som. A aba Arquivos guarda a linha; o balde
+    // guarda o arquivo, e é ele que o navegador vai tocar.
+    const { data: arqs } = await SB.from('arquivos').select('*').eq('mesa_id', ID).eq('bucket', 'mesa');
+    const sons = (arqs || []).filter((a: any) => /audio/i.test(a.tipo || '')
+      || /\.(mp3|ogg|wav|m4a|opus)$/i.test(a.storage_path || a.nome || ''));
+    for (const a of sons) {
+      const o = document.createElement('option');
+      o.value = a.storage_path || ''; o.textContent = a.nome || a.storage_path;
+      if (t.path && t.path === a.storage_path) o.selected = true;
+      sel.appendChild(o);
+    }
+    aviso.hidden = !!sons.length;
+    if (!sons.length) aviso.textContent = 'Nenhum som na aba Arquivos ainda. Envie um mp3 por lá, ou use um endereço.';
+
+    const guardar = async (tocando: boolean) => {
+      const escolhido = sel.value;
+      const nova = {
+        nome: escolhido ? (sel.options[sel.selectedIndex]?.textContent || 'Trilha') : (url.value ? 'Trilha' : ''),
+        path: escolhido || null,
+        url: escolhido ? null : (url.value.trim() || null),
+        volume: Math.max(0, Math.min(1, (+vol.value || 0) / 100)),
+        tocando: tocando && !!(escolhido || url.value.trim()),
+      };
+      ARENA.trilha = nova;
+      const { error } = await SB.from('mesa_arenas').update({ trilha: nova }).eq('id', ARENA.id);
+      if (error) return uiErro(/trilha/i.test(error.message)
+        ? 'A coluna "trilha" ainda não existe. Rode supabase/migracao-24.sql.'
+        : 'Erro: ' + error.message);
+      avisarAgora('arena');
+      await aplicarTrilha();
+      await logar(null, nova.tocando ? `Trilha: ${nova.nome}` : 'Trilha parada', { acao: null });
+    };
+    (el('tr-tocar') as HTMLElement).onclick = async () => { await guardar(true); dlg.close(); };
+    (el('tr-parar') as HTMLElement).onclick = async () => { await guardar(false); dlg.close(); };
+    (el('tr-cancelar') as HTMLElement).onclick = () => dlg.close();
+    // O volume da arena responde na hora, para o mestre misturar de ouvido.
+    vol.oninput = () => {
+      const som = document.getElementById('gr-som') as HTMLAudioElement | null;
+      if (som) som.volume = Math.max(0, Math.min(1, ((+vol.value || 0) / 100) * VOL_LOCAL));
+    };
+    dlg.showModal();
   }
 
   // ============================================================ névoa de guerra
@@ -4485,6 +4643,7 @@ const SETAS = [
     if (!MESTRE) return;
     (el('gr-npc') as HTMLElement).hidden = false;
     el('gr-npc').onclick = () => novoNPC();
+    el('gr-trilha').onclick = () => abrirTrilha();
     el('ini-rolar').onclick = () => rolarIniciativas();
     el('ini-prox').onclick = () => { const v = daVez(); if (v) encerrarVez(v.id); };
     // Espaço encerra a vez de quem está agindo: é o gesto mais repetido de uma

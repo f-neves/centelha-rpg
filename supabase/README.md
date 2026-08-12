@@ -192,6 +192,21 @@ Supabase pelo navegador. Passos para ligar tudo:
 
     Sem esta migração o Grid continua inteiro para o mestre; o jogador é que volta a só olhar,
     com um erro de permissão em cada tentativa.
+22. Rode [`migracao-23.sql`](./migracao-23.sql): a **névoa de guerra**. Idempotente.
+
+    `mesa_arenas` ganha `nevoa` (`{ligada, revelados:["q,r"]}`). Guarda o **revelado**, e não o
+    escondido: o mapa nasce coberto e vai se abrindo conforme o grupo anda. A névoa é do **grupo**,
+    e não de cada jogador.
+
+    O corte é no banco: `token_visao` deixou de entregar a peça que está em casa coberta. Névoa
+    desenhada só no cliente é cortina de teatro, porque a peça continua chegando ao navegador do
+    jogador. A peça dele mesmo sempre viaja, senão ele perderia o personagem de vista no escuro.
+23. Rode [`migracao-24.sql`](./migracao-24.sql): a **trilha de fundo**. Idempotente.
+
+    `mesa_arenas` ganha `trilha` (`{nome, path|url, volume, tocando}`), e `arena_visao` a devolve.
+    O servidor não transmite áudio: ele diz qual é a música e se ela está no ar, e o navegador de
+    cada um toca. O volume da arena é do mestre (a mistura da cena); o de quem ouve fica no
+    aparelho dele.
 
 ## 3. Ajustes no painel
 
