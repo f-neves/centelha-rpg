@@ -391,6 +391,11 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   mundo, assinada). O passo seguinte é o cursor de cada um deslizando pelo mapa, que é o que as
   mesas virtuais grandes fazem. Custa uma mensagem a cada ~50 ms por pessoa que estiver mexendo o
   mouse, e é a única coisa desta lista que pesa de verdade: vale a pena?
+- [ ] **I9 · [DECIDIR] O caderno de melhorias do tabuleiro.** `Grid_melhorias.md` guarda a lista
+  inteira do que as mesas virtuais têm, do que os usuários reclamam que falta nelas e do que os
+  jogos de combate por turno resolveram (Fire Emblem, FFT, Into the Breach, Grandia, Valkyria,
+  XCOM, Divinity, BG3). São ~25 ideias com custo estimado; três delas precisam de decisão de regra
+  antes do código (**terreno por hexágono**, **altura** e **face da peça**).
 
 ---
 
