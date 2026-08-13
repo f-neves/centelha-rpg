@@ -125,7 +125,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <script>
   import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo, semMigracao14 } from '../../lib/mesa-core';
-  import { MON, MON_LIST, cardCriaturaHTML, estrelas, resumoDe, iniDeMonstro } from '../../lib/mesa-bestiario';
+  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, estrelas, resumoDe, iniDeMonstro } from '../../lib/mesa-bestiario';
   import { uiConfirmar, uiErro, uiAviso } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -306,10 +306,15 @@ import MesaCab from '../../components/MesaCab.astro';
       </article>`;
     }).join('');
 
-    box.querySelectorAll<HTMLElement>('.ver-card, .cri-arte').forEach((b) => b.addEventListener('click', () => {
-      const m = MON[b.dataset.mon!]; if (!m) return;
+    // A prosa da criatura não vem no pacote da página (ver mesa-bestiario): a
+    // janela abre com o bloco de jogo e o texto entra quando a busca voltar.
+    box.querySelectorAll<HTMLElement>('.ver-card, .cri-arte').forEach((b) => b.addEventListener('click', async () => {
+      const id = b.dataset.mon!;
+      const m = MON[id]; if (!m) return;
       el('card-modal-body').innerHTML = cardCriaturaHTML(m);
       el('card-modal').hidden = false; document.body.style.overflow = 'hidden';
+      const cheia = await criaturaCompleta(id);
+      if (cheia && !el('card-modal').hidden) el('card-modal-body').innerHTML = cardCriaturaHTML(cheia);
     }));
     if (!MESTRE) return;
 

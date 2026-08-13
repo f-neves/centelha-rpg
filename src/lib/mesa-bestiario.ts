@@ -3,7 +3,14 @@
 // Fica separado de `mesa-core.ts` de propósito: importar isto arrasta
 // `monsters.json` (~900 KB) para o pacote da página. Só as abas Criaturas e
 // Combate pagam esse preço; o Escudo, o Diário e as outras não.
-import monstersData from '../data/monsters.json';
+// E o bestiário entra na versão MAGRA. `monsters.json` tem 709 KB minificados, e
+// mais da metade disso é prosa: habilidades (27%), lore (24%), poderes,
+// descrição, notas, conceito. Nada disso entra em conta nenhuma da mesa; é o
+// texto do card, que o mestre abre para uma criatura de cada vez.
+// `monsters-mesa.json` (gerado por gen-monsters.mjs) tem só o bloco de jogo:
+// 271 KB minificados, 27 KB comprimidos, contra 171 KB comprimidos do inteiro.
+// O card completo vem por `criaturaCompleta()`, um arquivo por criatura.
+import monstersData from '../data/monsters-mesa.json';
 import tecnicasData from '../data/tecnicas.json';
 import artesData from '../data/artes.json';
 import { resumoCombatePC } from './combate-resumo';
@@ -110,7 +117,32 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
   };
 }
 
-/** Card completo da criatura, o mesmo do bestiário. Serve ao modal das duas abas. */
+/**
+ * A criatura INTEIRA, com a prosa que a versão magra não carrega.
+ *
+ * Busca `/dados/criatura/<id>.json` (arquivo estático gerado no build) e guarda
+ * o que veio: abrir o card do mesmo goblin dez vezes numa sessão custa uma ida à
+ * rede. Falhando a busca, devolve o que a mesa já tem, e o card sai sem o texto
+ * em vez de não sair.
+ */
+const CACHE_CRIATURA = new Map<string, any>();
+export async function criaturaCompleta(id: string): Promise<any> {
+  if (!id) return null;
+  if (CACHE_CRIATURA.has(id)) return CACHE_CRIATURA.get(id);
+  const base = MON[id] || null;
+  try {
+    const r = await fetch(u(`dados/criatura/${encodeURIComponent(id)}.json`));
+    if (r.ok) {
+      const cheia = await r.json();
+      CACHE_CRIATURA.set(id, cheia);
+      return cheia;
+    }
+  } catch {}
+  // Não guarda a falha: a próxima tentativa pode dar certo (rede que voltou).
+  return base;
+}
+
+/** Card completo da criatura, o mesmo do bestiário. Serve ao modal das três abas. */
 export function cardCriaturaHTML(m: any): string {
   const cb = m.combate || {};
   const en = m.nomeIngles && m.nomeIngles.toLowerCase() !== m.nome.toLowerCase()

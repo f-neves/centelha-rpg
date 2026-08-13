@@ -498,7 +498,7 @@ import MesaCab from '../../components/MesaCab.astro';
   import { abrirCanal, nomeParaPresenca, type Canal } from '../../lib/mesa-tempo-real';
   import type { Condicao, NivelVida, Revelar } from '../../lib/mesa-core';
   import { abrirRevelacao, resumoRevelacao } from '../../lib/mesa-revelacao';
-  import { MON, MON_LIST, cardCriaturaHTML, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
+  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe } from '../../lib/calc';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
@@ -1175,10 +1175,15 @@ import MesaCab from '../../components/MesaCab.astro';
       await logar(`${c.nome} saiu da lista.`, 'sistema', c.oculto ? null : `${c.nome} saiu da lista.`);
       await carregar();
     }));
-    raiz.querySelectorAll<HTMLElement>('.ver-card').forEach((b) => b.addEventListener('click', () => {
-      const m = MON[b.dataset.mon!]; if (!m) return;
+    // A prosa da criatura não vem no pacote da página (ver mesa-bestiario): a
+    // janela abre com o bloco de jogo e o texto entra quando a busca voltar.
+    raiz.querySelectorAll<HTMLElement>('.ver-card').forEach((b) => b.addEventListener('click', async () => {
+      const id = b.dataset.mon!;
+      const m = MON[id]; if (!m) return;
       el('card-modal-body').innerHTML = cardCriaturaHTML(m);
       el('card-modal').hidden = false; document.body.style.overflow = 'hidden';
+      const cheia = await criaturaCompleta(id);
+      if (cheia && !el('card-modal').hidden) el('card-modal-body').innerHTML = cardCriaturaHTML(cheia);
     }));
   }
 

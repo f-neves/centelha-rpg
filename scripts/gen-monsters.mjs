@@ -199,3 +199,34 @@ if (problemas.length) {
 const out = join(data, 'monsters.json');
 writeFileSync(out, JSON.stringify(monsters, null, 1));
 console.log(`monsters.json: ${monsters.length} criaturas, ${(statSync(out).size / 1024).toFixed(0)} KB.`);
+
+// ------------------------------------------------- a versão que a mesa carrega
+/*
+ * `monsters.json` inteiro pesa 709 KB minificados e ia empacotado nas abas da
+ * mesa (Grid, Combate e Criaturas), que juntas passavam de 1,4 MB de JavaScript.
+ * Mais da metade daquele peso é PROSA: habilidades (27%), lore (24%), poderes,
+ * descrição, notas e conceito. Nada disso entra em conta nenhuma do tabuleiro:
+ * é texto do card, que o mestre abre para UMA criatura de cada vez.
+ *
+ * Então a mesa passa a carregar só o bloco de jogo, e o card completo é buscado
+ * por criatura em /dados/criatura/<id>.json quando alguém o abre.
+ *
+ * A lista de campos é curta de propósito. Um campo novo que a mesa precise tem
+ * de ser acrescentado AQUI, e esquecer disso aparece na hora: o valor chega
+ * `undefined` na tela, e não meio certo.
+ */
+const CAMPOS_MESA = [
+  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem',
+  'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
+  'artes', 'tecnicas', 'combate', 'ecologia', 'dimensoes',
+];
+const mesa = monsters.map((m) => {
+  const o = {};
+  for (const k of CAMPOS_MESA) if (m[k] !== undefined) o[k] = m[k];
+  return o;
+});
+const outMesa = join(data, 'monsters-mesa.json');
+writeFileSync(outMesa, JSON.stringify(mesa, null, 1));
+const kb = (n) => (n / 1024).toFixed(0);
+console.log(`monsters-mesa.json: ${kb(statSync(outMesa).size)} KB `
+  + `(${kb(JSON.stringify(mesa).length)} KB minificado, contra ${kb(JSON.stringify(monsters).length)} KB do inteiro).`);

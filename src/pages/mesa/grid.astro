@@ -1009,7 +1009,7 @@ const SETAS = [
   import {
     abrirCanal, nomeParaPresenca, type Canal, type Assunto, type Motivo, type Ping,
   } from '../../lib/mesa-tempo-real';
-  import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML } from '../../lib/mesa-bestiario';
+  import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
   import { mana as manaDaFicha } from '../../lib/calc';
   import {
@@ -4535,13 +4535,26 @@ const SETAS = [
     avisarAgora('combatentes');
   }
 
-  /** O card do bestiário, o mesmo das abas Criaturas e Combate. */
-  function abrirCard(cid: string) {
+  /**
+   * O card do bestiário, o mesmo das abas Criaturas e Combate.
+   *
+   * A prosa da criatura (habilidades, poderes, lore) não vem no pacote da
+   * página: ela é buscada agora, por criatura. A janela abre na hora com o que
+   * já se tem, e o texto entra quando chegar, porque esperar a rede para mostrar
+   * um card que já está quase todo pronto seria pior do que vê-lo completar.
+   */
+  async function abrirCard(cid: string) {
     const c = COMBS.find((x: any) => x.id === cid);
     const m = c && MON[c.monstro_id]; if (!m) return;
     el('card-modal-body').innerHTML = cardCriaturaHTML(m);
     (el('card-modal') as HTMLElement).hidden = false;
     document.body.style.overflow = 'hidden';
+    const cheia = await criaturaCompleta(c.monstro_id);
+    // Fechou antes de chegar: não escreve por cima de uma janela que já não é
+    // esta.
+    if (cheia && !(el('card-modal') as HTMLElement).hidden) {
+      el('card-modal-body').innerHTML = cardCriaturaHTML(cheia);
+    }
   }
 
   /**
