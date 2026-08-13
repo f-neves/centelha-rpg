@@ -1200,15 +1200,29 @@ const SETAS = [
     // Artes continua sem saber que existe tempo real.
     recarregar: async () => { await carregar(); avisarMudancas(); },
     repintar: () => {
-      // A névoa entra aqui porque fogo e luz clareiam: acender uma fogueira
-      // abre um pedaço do mapa, e apagá-la fecha de volta.
-      pintarNevoa();
-      pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
-      pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
+      repintarEfeitos();
       pintarTokens(); pintarLista(); pintarIniciativa(); pintarAlcance();
       avisarMudancas();
     },
+    repintarEfeitos,
   });
+
+  /**
+   * Só as camadas que as Artes mexem.
+   *
+   * A névoa entra aqui porque fogo e luz clareiam: acender uma fogueira abre um
+   * pedaço do mapa, e apagá-la fecha de volta.
+   *
+   * Separado do `repintar()` cheio porque `verificarEfeitos` roda depois de toda
+   * peça movida e de toda vez encerrada, e nesses caminhos as peças, a fila e o
+   * registro já foram desenhados por quem chamou. Ver `CtxGrid.repintarEfeitos`.
+   */
+  function repintarEfeitos() {
+    pintarNevoa();
+    pintarEfeitos(ctxArtes(), el('gr-efeitos') as unknown as SVGElement);
+    pintarPainelEfeitos(ctxArtes(), el('gr-ef-lista'));
+    avisarMudancas();
+  }
 
   // O raio do hexágono em pixels do MUNDO. O zoom é um `scale` por cima, então
   // este número não muda: mudar o raio redesenharia o SVG a cada passo de zoom.
@@ -3839,8 +3853,8 @@ const SETAS = [
   /**
    * A campainha toca pelo que MUDOU, e não por quem mexeu.
    *
-   * `verificarEfeitos` termina em `repintar()` toda vez que alguém anda, mesmo
-   * sem nenhum efeito no chão. Tocar cego ali custava caro do outro lado: um
+   * `verificarEfeitos` roda toda vez que alguém anda (hoje só repinta quando há
+   * Arte no chão). Tocar cego ali custava caro do outro lado: um
    * aviso de "combatentes" obriga a reler a lista inteira com as fichas e os
    * retratos, e ainda por cima descarta a peça deslizando, porque o desenho
    * completo troca o nó. A assinatura abaixo é o preço certo: três linhas de

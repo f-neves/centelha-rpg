@@ -65,6 +65,20 @@ export interface CtxGrid {
   recarregar: () => Promise<void>;
   repintar: () => void;
   /**
+   * A repintura ESTREITA: só o que as Artes mexem (as manchas, a névoa que o
+   * fogo abre e o painel lateral).
+   *
+   * Existe porque `verificarEfeitos` roda depois de toda peça movida e de toda
+   * vez encerrada, e quem a chamou já pintou o que mexeu (a peça que andou, a
+   * fila que virou). Terminar em `repintar()` cheio ali era a SEGUNDA repintura
+   * completa da ação, e a mais cara: numa arena 40×30 com névoa, 444 KB de HTML
+   * e 3.300 nós recriados idênticos aos que já estavam na página.
+   *
+   * Opcional de propósito: sem ela o módulo cai no `repintar()` de sempre, e
+   * quem não a implementa continua funcionando.
+   */
+  repintarEfeitos?: () => void;
+  /**
    * Quanto de Mana a conjuração custou. Aqui só se avisa o número: a reserva
    * mora na linha do combatente, e quem escreve nela é a aba.
    */
@@ -1014,8 +1028,19 @@ async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano,
 export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promise<void> {
   const t = tickAtual(ctx);
 
+  // A repintura ESTREITA, com o `repintar()` cheio como rede: só as camadas que
+  // as Artes mexem. Ver o comentário de `repintarEfeitos` em `CtxGrid`.
+  const repintarSoEfeitos = () => (ctx.repintarEfeitos ? ctx.repintarEfeitos() : ctx.repintar());
+
   // 1. o que venceu sai de cena, e leva a condição junto
   for (const ef of ATIVOS.filter((e) => venceu(e, t))) await encerrarEfeito(ctx, ef, 'venceu o prazo');
+
+  // Chão limpo: não há aura para reposicionar, prazo para contar nem mordida
+  // para conferir, e quem chamou já pintou o que mexeu. (Se alguma coisa acabou
+  // de vencer, `encerrarEfeito` já passou por `ctx.recarregar()`, que redesenha
+  // a tela inteira.) Esta linha é a que corta pela metade o custo de mover uma
+  // peça numa mesa sem Arte no chão, que é a mesa da maior parte do tempo.
+  if (!ATIVOS.length) return;
 
   // 2. quem está pego e ainda não sofreu a mordida nesta rodada
   const pendentes: { ef: EfeitoAtivo; alvo: any }[] = [];
@@ -1031,7 +1056,11 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
       if (alvo) pendentes.push({ ef, alvo });
     }
   }
-  if (!pendentes.length) { ctx.repintar(); return; }
+  // Há efeito no chão, mas ninguém novo foi pego. Ainda assim é preciso
+  // redesenhar: a aura anda com quem a conjurou, e o fogo e a luz abrem a névoa
+  // por onde passam. O que NÃO é preciso é refazer as peças, a fila e o
+  // registro, que ninguém tocou.
+  if (!pendentes.length) { repintarSoEfeitos(); return; }
 
   const escolha = await uiEscolher('Efeitos pegando alguém', [
     ...pendentes.map((p, i) => ({
@@ -1045,7 +1074,8 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
     { valor: '__todos', rotulo: 'Cobrar todos de uma vez', grupo: 'Confirmar a mordida' },
   ], { msg: 'Cada criatura sofre um mesmo efeito no máximo uma vez por turno.' });
 
-  if (!escolha) { ctx.repintar(); return; }
+  // Fechou a caixa sem cobrar nada: mesma história do caso acima.
+  if (!escolha) { repintarSoEfeitos(); return; }
   const alvos = escolha === '__todos' ? pendentes : [pendentes[Number(escolha)]];
   for (const p of alvos) {
     if (p.ef.dano_dados) await morder(ctx, p.ef, p.alvo, 'pegou');
