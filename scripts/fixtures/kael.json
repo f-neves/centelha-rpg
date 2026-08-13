@@ -1,0 +1,46 @@
+{
+  "_nota": "Ficha de fixação do contrato ficha↔mesa. É o Kael de test-kael.mjs, agora com equipamento, para o teste atravessar equip.ts e combate-resumo.ts. Os atributos e perícias são os mesmos daquele teste (inclusive Resistência 0), de propósito: assim PV, Energia, Mana e Fôlego batem nos dois e a discordância entre eles vira sinal. Editar aqui muda os números esperados em scripts/test-contrato.mjs, e é para ser assim: o teste existe para a mudança doer.",
+  "id": { "nome": "Kael", "conceito": "O Batedor", "jogador": "fixação" },
+  "raca": "humano",
+  "attrs": {
+    "forca": 3, "destreza": 4, "vigor": 4,
+    "influencia": 2, "perspicacia": 2, "compostura": 2,
+    "percepcao": 3, "inteligencia": 2, "raciocinio": 3
+  },
+  "skills": {
+    "armas": 3, "esquiva": 3, "prontidao": 3, "atletismo": 3,
+    "resistencia": 0, "furtividade": 2, "sobrevivencia": 2,
+    "integridade": 0, "investigacao": 1, "empatia": 1, "ocultismo": 0, "conhecimentos": 1
+  },
+  "skills2": {},
+  "spec": {},
+  "spec2": {},
+  "virtues": { "compaixao": 2, "conviccao": 3, "temperanca": 2, "valor": 4 },
+  "willpower": 7,
+  "aparencia": 3,
+  "centelha": 3,
+  "tech": {},
+  "arte": {},
+  "efeito": {},
+  "budget": 1500,
+  "arsenal": [],
+  "conjuntos": [
+    {
+      "ativo": true,
+      "habil": { "ref": "a:espada-longa" },
+      "inabil": { "ref": "e:broquel" }
+    },
+    {
+      "ativo": false,
+      "habil": { "ref": "a:arco-longo" },
+      "inabil": { "ref": "nada" }
+    }
+  ],
+  "equip": {
+    "armaduras": [
+      { "uid": "arm1", "base": "gambeson", "vestida": true },
+      { "uid": "arm2", "base": "couro", "vestida": false }
+    ]
+  },
+  "defSpec": { "esquiva": [], "bloqueio": [], "social": [], "mental": [] }
+}

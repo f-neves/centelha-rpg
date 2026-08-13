@@ -1,0 +1,35 @@
+# O portão, fora do deploy.
+#
+# `deploy.yml` já roda `npm run build`, e o build começa pelos verificadores. Só
+# que ele dispara em push para main: um ramo de trabalho ou um pull request
+# passava sem ninguém conferir, e o erro só aparecia depois de já estar em main.
+# Aqui os mesmos verificadores rodam em qualquer ramo e em todo PR, em ~1,6 s,
+# sem build e sem publicar nada.
+name: Validar dados e regras
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      # Os tipos não travam o build hoje (há erros antigos fora dos módulos do
+      # tabuleiro). Roda assim mesmo, para a lista aparecer no log e não crescer
+      # em silêncio.
+      - name: Tipos (informativo)
+        run: npx tsc --noEmit
+        continue-on-error: true
