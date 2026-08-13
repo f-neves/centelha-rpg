@@ -2,6 +2,8 @@
 node_modules/
 dist/
 .astro/
+# a bancada (astro.bancada.mjs): saída e cache do site rodando com banco de mentira
+.bancada/
 
 # segredos de ambiente (Supabase) — NUNCA versionar
 .env

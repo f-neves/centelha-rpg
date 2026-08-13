@@ -27,6 +27,13 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run validate
+      # O smoke do tabuleiro sobe a bancada (banco de mentira) e dirige um
+      # navegador. Ele PULA sozinho, com código zero, quando não acha nenhum:
+      # é teste de tela, e faltar navegador não é defeito do código.
+      - name: Smoke do Grid
+        run: npm run smoke
+        env:
+          CHROME: /usr/bin/google-chrome
       # Os tipos não travam o build hoje (há erros antigos fora dos módulos do
       # tabuleiro). Roda assim mesmo, para a lista aparecer no log e não crescer
       # em silêncio.

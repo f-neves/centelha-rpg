@@ -1,0 +1,273 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Prova: como repintar a névoa e as peças</title>
+<!--
+  A PERGUNTA: repintar uma camada do tabuleiro por innerHTML custa quanto, e
+  quanto se ganha mexendo só no que mudou?
+
+  Foi esta prova que decidiu as etapas 2 e 3 da auditoria de agosto de 2026. Ela
+  compara três maneiras de pintar a névoa e duas de pintar as peças, com a MESMA
+  conta de visibilidade nas três, para a diferença ser só o que se faz com o
+  resultado. O código dos hexágonos é cópia fiel de src/lib/hex.ts.
+
+  Ela também derrubou a suposição que abriu o trabalho: eu achava que o gargalo
+  fosse o cálculo de quem enxerga o quê, que varre o tabuleiro inteiro por olho.
+  São 0,4 ms num tabuleiro de 1.200 casas com 30 peças. O custo era do DOM.
+
+    node provas/roda.mjs                     (tira as fotos de todas as provas)
+    provas/camadas.html?cols=40&rows=30&tok=30&visao=6
+
+  O resultado sai na página e em window.__PRONTO.
+-->
+<title>Prova: como repintar a névoa e as peças</title>
+<style>
+  body { margin: 0; font: 13px system-ui; background: #15171c; color: #e8e2d4; }
+  #palco { position: relative; width: 1400px; height: 900px; }
+  #palco > svg, #palco > div { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .nv-pesada { fill: #0b0d12; }
+  .nv-leve { fill: #0b0d12; opacity: .55; }
+  .oculto { display: none; }
+  .gr-token { position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+    border-radius: 50%; background: #3a3f4b; border: 2px solid #8a7; }
+  pre { padding: 1rem; }
+</style>
+<div id="palco">
+  <svg id="nevoa" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div id="tokens"></div>
+</div>
+<pre id="saida">medindo…</pre>
+<script type="module">
+// ---------------------------------------------------------------- hexágonos
+// (cópia fiel de src/lib/hex.ts: o protótipo tem de medir a MESMA conta)
+const RAIZ3 = Math.sqrt(3);
+const centroHex = (q, r, raio) => ({ x: raio * RAIZ3 * (q + r / 2), y: raio * 1.5 * r });
+const larguraHex = (raio) => RAIZ3 * raio;
+function verticesHex(cx, cy, raio) {
+  const p = [];
+  for (let i = 0; i < 6; i++) {
+    const a = (Math.PI / 180) * (60 * i - 90);
+    p.push(`${(cx + raio * Math.cos(a)).toFixed(2)},${(cy + raio * Math.sin(a)).toFixed(2)}`);
+  }
+  return p.join(' ');
+}
+const offsetParaAxial = (col, row) => ({ q: col - Math.floor(row / 2), r: row });
+function tabuleiro(cols, rows) {
+  const out = [];
+  for (let row = 0; row < rows; row++) for (let col = 0; col < cols; col++) out.push(offsetParaAxial(col, row));
+  return out;
+}
+const chaveHex = (q, r) => `${q},${r}`;
+const distanciaHex = (a, b) => {
+  const dq = a.q - b.q, dr = a.r - b.r;
+  return (Math.abs(dq) + Math.abs(dq + dr) + Math.abs(dr)) / 2;
+};
+const RAIO = 34, MG = { x: larguraHex(RAIO) / 2, y: RAIO };
+
+// ------------------------------------------------------------------- cena
+const P = new URLSearchParams(location.search);
+const COLS = +(P.get('cols') || 40), ROWS = +(P.get('rows') || 30);
+const NTOK = +(P.get('tok') || 30), VISAO = +(P.get('visao') || 6);
+const HEXES = tabuleiro(COLS, ROWS);
+const TOKENS = [];
+for (let i = 0; i < NTOK; i++) {
+  const h = offsetParaAxial((i * 3) % COLS, Math.floor((i * 3) / COLS) % ROWS);
+  TOKENS.push({ id: 'c' + i, q: h.q, r: h.r, pv: 40 - (i % 7) * 3 });
+}
+
+// ==================================================== A NÉVOA, três maneiras
+// A conta de quem enxerga o quê é a MESMA nas três: o que muda é o que se faz
+// com o resultado. Sem isso a comparação seria entre contas diferentes.
+function casasClaras(tokens) {
+  const claras = new Set();
+  for (const t of tokens) for (const h of HEXES) if (distanciaHex(t, h) <= VISAO) claras.add(chaveHex(h.q, h.r));
+  return claras;
+}
+// A conta EXATAMENTE como está hoje: `tabuleiro()` é chamado dentro do laço, uma
+// vez por olho, e cada chamada aloca cols×rows objetos novos.
+function casasClarasHoje(tokens) {
+  const claras = new Set();
+  const perto = (q, r, raio) => {
+    for (const h of tabuleiro(COLS, ROWS)) if (distanciaHex({ q, r }, h) <= raio) claras.add(chaveHex(h.q, h.r));
+  };
+  for (const t of tokens) perto(t.q, t.r, VISAO);
+  return claras;
+}
+function soConta(tokens) { casasClaras(tokens); }
+function soContaHoje(tokens) { casasClarasHoje(tokens); }
+const explorado = new Set();
+
+const svg = document.getElementById('nevoa');
+svg.setAttribute('viewBox', `0 0 ${larguraHex(RAIO) * COLS + larguraHex(RAIO)} ${RAIO * 1.5 * (ROWS - 1) + 2 * RAIO + RAIO * 0.25}`);
+
+// A) hoje: innerHTML da camada inteira a cada repintura
+function nevoaA(tokens) {
+  const claras = casasClaras(tokens);
+  svg.innerHTML = HEXES.map((h) => {
+    const k = chaveHex(h.q, h.r);
+    if (claras.has(k)) return '';
+    const c = centroHex(h.q, h.r, RAIO);
+    return `<polygon class="${explorado.has(k) ? 'nv-leve' : 'nv-pesada'}" points="${verticesHex(c.x + MG.x, c.y + MG.y, RAIO + 0.6)}" />`;
+  }).join('');
+  for (const k of claras) explorado.add(k);
+}
+
+// B) memória: só refaz quando o conjunto de casas claras mudou de verdade
+let assinaturaB = '';
+function nevoaB(tokens) {
+  const claras = casasClaras(tokens);
+  const assin = [...claras].sort().join('|');
+  if (assin === assinaturaB) return 'pulou';
+  assinaturaB = assin;
+  return nevoaA(tokens);
+}
+
+// C) camada permanente: um <polygon> por casa, nascido uma vez, e a repintura
+//    é só ligar/desligar classe. Nenhum nó morre.
+let poliC = null;
+function prepararC() {
+  svg.innerHTML = HEXES.map((h) => {
+    const c = centroHex(h.q, h.r, RAIO);
+    return `<polygon data-h="${chaveHex(h.q, h.r)}" class="nv-pesada" points="${verticesHex(c.x + MG.x, c.y + MG.y, RAIO + 0.6)}" />`;
+  }).join('');
+  poliC = new Map([...svg.children].map((p) => [p.dataset.h, p]));
+}
+function nevoaC(tokens) {
+  const claras = casasClaras(tokens);
+  for (const [k, p] of poliC) {
+    const clara = claras.has(k);
+    const cls = clara ? 'oculto' : (explorado.has(k) ? 'nv-leve' : 'nv-pesada');
+    if (p.className.baseVal !== cls) p.setAttribute('class', cls);
+  }
+  for (const k of claras) explorado.add(k);
+}
+
+// ================================================= AS PEÇAS, duas maneiras
+const cx = document.getElementById('tokens');
+// um retrato de 1 px em data: — sem rede, para a medida ser do DOM e não do disco
+const IMG = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+const tokHTML = (t) => {
+  const c = centroHex(t.q, t.r, RAIO);
+  // Com <img>, como na aba de verdade: é o retrato que a repintura joga fora e
+  // manda o navegador buscar (e decodificar) de novo.
+  return `<div class="gr-token" data-c="${t.id}" style="left:${(c.x + MG.x).toFixed(1)}px;top:${(c.y + MG.y).toFixed(1)}px" title="${t.id} · ${t.pv}"><img src="${IMG}" alt="" loading="lazy" /><span>${t.id}</span></div>`;
+};
+// A) hoje
+function pecasA(tokens) { cx.innerHTML = tokens.map(tokHTML).join(''); }
+// B) por chave: cria quem nasceu, remove quem saiu, e move quem andou mexendo
+//    só no style. O nó sobrevive, e com ele a transição de CSS.
+const vivos = new Map();
+function pecasB(tokens) {
+  const vistos = new Set();
+  for (const t of tokens) {
+    vistos.add(t.id);
+    let no = vivos.get(t.id);
+    if (!no) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = tokHTML(t);
+      no = tmp.firstElementChild;
+      cx.appendChild(no); vivos.set(t.id, no);
+      no.__q = t.q; no.__r = t.r;
+      continue;
+    }
+    if (no.__q !== t.q || no.__r !== t.r) {
+      const c = centroHex(t.q, t.r, RAIO);
+      no.style.left = (c.x + MG.x).toFixed(1) + 'px';
+      no.style.top = (c.y + MG.y).toFixed(1) + 'px';
+      no.__q = t.q; no.__r = t.r;
+    }
+  }
+  for (const [id, no] of vivos) if (!vistos.has(id)) { no.remove(); vivos.delete(id); }
+}
+
+// ==================================== A SETA DO ARRASTO, duas maneiras
+// A geometria (`caminhoSeta`) é a MESMA nas duas: o que se compara aqui é só o
+// jeito de entregá-la ao DOM. Por isso o `d` é sintético, do tamanho medido na
+// aba de verdade (≈3,9 KB por seta, 26 setas por segundo durante o arrasto).
+function dFalso(n) {
+  const p = [];
+  for (let i = 0; i < n; i++) p.push(`${(100 + i * 1.7).toFixed(1)},${(200 + Math.sin(i / 7) * 60).toFixed(1)}`);
+  return 'M' + p.join('L') + 'Z';
+}
+const setaSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+setaSvg.setAttribute('viewBox', '0 0 1400 900');
+setaSvg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%';
+document.getElementById('palco').appendChild(setaSvg);
+const gSeta = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+setaSvg.appendChild(gSeta);
+
+// A) hoje: innerHTML do <g> com o path e os dois textos
+function setaA(i) {
+  gSeta.innerHTML = `<path class="seta-fig seta-mov" d="${dFalso(200)}" />`
+    + `<text class="seta-txt" x="300" y="400">${i} m</text>`
+    + `<text class="seta-sub" x="300" y="413">${i} hex</text>`;
+}
+// B) os três nós nascem uma vez; a repintura muda só o `d` e os dois textos
+let setaB_p = null, setaB_t1 = null, setaB_t2 = null;
+function prepararSetaB() {
+  gSeta.innerHTML = '';
+  const ns = 'http://www.w3.org/2000/svg';
+  setaB_p = document.createElementNS(ns, 'path');
+  setaB_t1 = document.createElementNS(ns, 'text');
+  setaB_t2 = document.createElementNS(ns, 'text');
+  setaB_t1.setAttribute('x', '300'); setaB_t1.setAttribute('y', '400');
+  setaB_t2.setAttribute('x', '300'); setaB_t2.setAttribute('y', '413');
+  gSeta.append(setaB_p, setaB_t1, setaB_t2);
+}
+function setaB(i) {
+  setaB_p.setAttribute('d', dFalso(200));
+  setaB_t1.textContent = `${i} m`;
+  setaB_t2.textContent = `${i} hex`;
+}
+
+// ================================================================ a medição
+// Uma peça anda um hexágono, e a camada é repintada. É exatamente o que
+// `porNoMapa` provoca. Cada volta mede o par (conta + escrita no DOM) e força
+// o layout, senão o custo real só apareceria no quadro seguinte.
+function medir(nome, fn, voltas = 30) {
+  const t = [];
+  for (let i = 0; i < voltas + 5; i++) {
+    TOKENS[i % TOKENS.length].q += (i % 2) ? 1 : -1;
+    const t0 = performance.now();
+    fn(TOKENS);
+    document.body.getBoundingClientRect();      // força o layout aqui, e não depois
+    const dt = performance.now() - t0;
+    if (i >= 5) t.push(dt);                     // as 5 primeiras são aquecimento
+  }
+  t.sort((a, b) => a - b);
+  return { nome, mediana: t[t.length >> 1], p95: t[Math.floor(t.length * 0.95)], pior: t[t.length - 1] };
+}
+
+const linhas = [];
+const fmt = (r) => `${r.nome.padEnd(38)} mediana ${r.mediana.toFixed(2).padStart(7)} ms · p95 ${r.p95.toFixed(2).padStart(7)} ms · pior ${r.pior.toFixed(2).padStart(7)} ms`;
+
+linhas.push(`cena: ${COLS}×${ROWS} = ${HEXES.length} casas · ${NTOK} peças · visão ${VISAO}`);
+linhas.push('');
+linhas.push('— só a CONTA de quem enxerga (sem tocar no DOM) —');
+linhas.push(fmt(medir('conta como está hoje (aloca por olho)', soContaHoje)));
+linhas.push(fmt(medir('conta com o tabuleiro içado do laço', soConta)));
+linhas.push('');
+linhas.push('— névoa —');
+explorado.clear(); svg.innerHTML = '';
+linhas.push(fmt(medir('A · innerHTML da camada (hoje)', nevoaA)));
+explorado.clear(); svg.innerHTML = ''; assinaturaB = '';
+linhas.push(fmt(medir('B · innerHTML só quando muda', nevoaB)));
+explorado.clear(); prepararC();
+linhas.push(fmt(medir('C · camada fixa, só troca de classe', nevoaC)));
+
+linhas.push('');
+linhas.push('— peças —');
+cx.innerHTML = '';
+linhas.push(fmt(medir('A · innerHTML da camada (hoje)', pecasA)));
+cx.innerHTML = ''; vivos.clear();
+linhas.push(fmt(medir('B · reconciliação por chave', pecasB)));
+
+linhas.push('');
+linhas.push('— a seta, a cada movimento do ponteiro (só a entrega ao DOM) —');
+gSeta.innerHTML = '';
+{ let i = 0; linhas.push(fmt(medir('A · innerHTML do grupo (hoje)', () => setaA(i++), 60))); }
+prepararSetaB();
+{ let i = 0; linhas.push(fmt(medir('B · só o atributo d e os dois textos', () => setaB(i++), 60))); }
+
+document.getElementById('saida').textContent = linhas.join('\n');
+window.__PRONTO = linhas.join('\n');
+</script>

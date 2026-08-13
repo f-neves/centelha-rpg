@@ -8,6 +8,8 @@
     "dev": "astro dev",
     "build": "node scripts/gen-grid-artes.mjs --check && node scripts/gen-mermaid.mjs --check && node scripts/validate-data.mjs && node scripts/test-kael.mjs && node scripts/test-contrato.mjs && node scripts/test-artes-grid.mjs && node scripts/test-seta.mjs && node scripts/test-golpe.mjs && node scripts/gen-monsters.mjs && astro build && pagefind --site dist",
     "validate": "node scripts/gen-grid-artes.mjs --check && node scripts/gen-mermaid.mjs --check && node scripts/validate-data.mjs && node scripts/test-kael.mjs && node scripts/test-contrato.mjs && node scripts/test-artes-grid.mjs && node scripts/test-seta.mjs && node scripts/test-golpe.mjs",
+    "smoke": "node scripts/test-grid.mjs",
+    "bancada": "astro dev --config astro.bancada.mjs --port 4399",
     "preview": "astro preview",
     "astro": "astro"
   },
