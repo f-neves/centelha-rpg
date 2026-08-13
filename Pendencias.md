@@ -9,9 +9,13 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 59 itens abertos · 30 [DECIDIR] · 25 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · **Bestiário 10** · Mesa 8 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
+**Placar:** 60 itens abertos · 30 [DECIDIR] · 27 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
+Por frente: **Arcano 12** · **Bestiário 10** · Mesa 10 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
 Trilhas 4 · Arremesso 4 · Social 3
+
+> **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
+> tabuleiro) e **I10** (as pontas soltas do jogador agindo). O detalhe das duas mora em
+> `Grid_melhorias.md`.
 
 ---
 
@@ -383,10 +387,12 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   aba em segundo plano conta igual. O navegador estrangula os timers da aba escondida, então ela
   também **atrasa a própria campainha** quando é ela que escreve (não incomoda na prática: quem
   age está com a aba na frente).
-- [ ] **I7 · [DECIDIR] Névoa de guerra.** É a maior peça que falta para o Grid virar mesa virtual
-  de verdade, e o tempo real acabou de torná-la viável: sem ele, revelar um pedaço do mapa não
-  chegava a ninguém até o F5. Precisa de decisão de mesa antes do código: a névoa é por jogador ou
-  do grupo? O que foi revelado fica revelado? Quem enxerga através de quem?
+- [x] **I7 · FEITO em 2026-08-12. Névoa de guerra.** Três estados (claro, névoa leve, névoa
+  pesada), visão em volta das peças do grupo, fogo e luz abrindo o mapa, e memória do que já foi
+  explorado. As perguntas de mesa foram respondidas assim: a névoa é **do grupo**, o explorado
+  **fica** (vira névoa leve, que mostra o chão e esconde quem está nele), e o alcance é um **raio da
+  cena**, igual para todos. Migrações 23 e 25; o corte é na view `token_visao`, e não na tela. O
+  quadro completo e os seis limites que sobraram estão em `Grid_melhorias.md`.
 - [ ] **I8 · [DECIDIR] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
   mundo, assinada). O passo seguinte é o cursor de cada um deslizando pelo mapa, que é o que as
   mesas virtuais grandes fazem. Custa uma mensagem a cada ~50 ms por pessoa que estiver mexendo o
@@ -396,6 +402,14 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   jogos de combate por turno resolveram (Fire Emblem, FFT, Into the Breach, Grandia, Valkyria,
   XCOM, Divinity, BG3). São ~25 ideias com custo estimado; três delas precisam de decisão de regra
   antes do código (**terreno por hexágono**, **altura** e **face da peça**).
+- [ ] **I10 · [FAZER] As pontas soltas do jogador no tabuleiro.** Em 2026-08-12 o jogador passou a
+  mover a própria peça, mirar, conjurar e lançar dano (migração 22: funções `jogador_*`, e não
+  policy, porque RLS filtra linha e o que precisa ser filtrado é coluna). Ficaram seis pendências
+  pequenas, listadas em `Grid_melhorias.md` na seção "Pontas soltas": as **Proezas** ainda não são
+  ação de tabuleiro, a **invocação do jogador não sobrevive ao F5**, a **Absorção não entra no dano
+  dele**, a **caixa de acerto vem vazia** do lado dele, o **número de dano só aparece para quem
+  enxerga o número**, e o adaptador `sbDoJogador` conhece cinco formas de escrita (nota de
+  manutenção, para quando o módulo das Artes ganhar outra).
 
 ---
 

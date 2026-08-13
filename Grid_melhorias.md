@@ -86,6 +86,35 @@ Três estados por casa, e dois deles o tabuleiro calcula sozinho:
 - **Não esconde o nome na lista.** "Em campo" continua listando todo mundo do encontro, coberto ou
   não. Quem está na névoa some do tabuleiro e da fila de iniciativa, mas o nome continua na coluna.
 
+### Pontas soltas do que foi feito
+
+Coisas que ficaram sabidamente pela metade em 2026-08-12, e que não estão em nenhum outro lugar.
+Nenhuma delas impede jogar; todas são de uma tarde.
+
+- [ ] **Proezas na mão do jogador** · **P** · o pedido original dizia "e futuramente proezas". O
+      caminho já está aberto: é mais um item no menu da peça, e as funções `jogador_*` da migração
+      22 já cobrem a escrita (Vida, Mana, condições). Falta a Proeza existir como ação de tabuleiro.
+- [ ] **A invocação do jogador não sobrevive ao F5** · **P** · o banco sabe quem invocou
+      (`combatentes.criado_por`), mas a tela do jogador não: ela guarda os ids da sessão. Depois de
+      recarregar, ele deixa de conseguir arrastar a própria invocação (o mestre continua movendo). O
+      conserto é devolver `criado_por` na `combate_visao`.
+- [ ] **A Absorção não entra no dano do jogador** · **P** · ela sai do bloco do bestiário, que é
+      informação do mestre, então o dano dele vai inteiro e a caixa avisa isso. O conserto honesto é
+      o servidor descontar: uma função que leia a Absorção do alvo e aplique, sem devolver o número
+      a quem bateu.
+- [ ] **A caixa de acerto do jogador vem vazia** · **P** · ela compara as três Defesas, e o jogador
+      não lê o `RESUMO` de ninguém. Ou some com a tabela do lado dele, ou mostra o que a mesa
+      liberou (`revelar.statsInimigo` já existe).
+- [ ] **Número de dano só aparece para quem enxerga o número** · **P** · o número sobe da diferença
+      de Vida, e a Vida do inimigo chega nula ao jogador. Quando é ele que bate, o número aparece
+      (ele digitou); quando outro bate, não. Dava para usar o `pv_pct`, que ele recebe.
+- [ ] **O adaptador das Artes conhece cinco formas** · nota de manutenção · quando quem conjura é o
+      jogador, a aba entrega ao módulo das Artes um Supabase de mentira que desvia as escritas para
+      as funções do banco (`sbDoJogador`, em `grid.astro`). Ele cobre `select`, `insert`, `upsert`,
+      `update .eq` e `delete .eq`, que é o que aquele módulo usa hoje. Uma forma nova falha alto, com
+      função inexistente; não grava errado calado. Se `artes-grid-mesa.ts` ganhar outro tipo de
+      escrita, é aqui que se acrescenta.
+
 ---
 
 ## Na fila
