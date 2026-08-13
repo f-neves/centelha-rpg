@@ -1,43 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
-import CentelhaSpark from '../components/CentelhaSpark.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
 import monsters from '../data/monsters.json';
 import BestiaEditor from '../components/BestiaEditor.astro';
+import BestaCard from '../components/BestaCard.astro';
 import armasCat from '../data/armas.json';
 const d = await loadData();
+/**
+ * Quantas fichas nascem na página. O resto vai dentro de <template> e é montado
+ * quando chega perto da tela, ou quando um filtro o escolhe.
+ *
+ * Quarenta é mais do que cabe em qualquer tela, então a primeira rolagem já
+ * encontra o resto montado. Com as 308 de uma vez a página tinha 40.146 nós e
+ * levava 12,7 s até a primeira ficha aparecer numa máquina modesta; assim, 2,8 s.
+ */
+const ABERTAS = 40;
 // Fonte ÚNICA da página: monsters.json (gerado por scripts/gen-monsters.mjs a partir dos arquivos-fonte).
 const inimigos = ([...monsters] as any[]).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
-const TIPO: Record<string, string> = { capanga: 'Capanga', soldado: 'Soldado', elite: 'Elite', fera: 'Fera', chefe: 'Chefe' };
-// Ecologia (tipo PF2e · terreno · clima) → rótulos em português
-const ECO_TIPO: Record<string, string> = { Aberration: 'Aberração', Animal: 'Animal', Astral: 'Astral', Beast: 'Besta', Celestial: 'Celestial', Construct: 'Construto', Dragon: 'Dragão', Dream: 'Onírico', Elemental: 'Elemental', Ethereal: 'Etéreo', Fey: 'Fada', Fiend: 'Corruptor', Fungus: 'Fungo', Giant: 'Gigante', Humanoid: 'Humanoide', Monitor: 'Monitor', Negative: 'Negativo', Ooze: 'Limo', Petitioner: 'Suplicante', Plant: 'Planta', Positive: 'Positivo', Shadow: 'Sombra', Spirit: 'Espírito', Time: 'Tempo', Undead: 'Morto-vivo' };
 const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
 const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
-// Selos do Pathfinder disponíveis (public/icones-bestiario). Sem selo → cai no disco colorido.
-const ICO_TIPO = new Set(['Dragon', 'Undead', 'Ooze', 'Plant', 'Fiend', 'Animal', 'Beast', 'Humanoid', 'Giant']);
-const ICO_TERR = new Set(['Mountain', 'Forest', 'Plains', 'Swamp', 'Water', 'Coast', 'Urban', 'Underground', 'Ruins', 'Sky', 'Cold']);
-const styTipo = (t: string) => (ICO_TIPO.has(t) ? `background-image:url(${url(`icones-bestiario/tipo-${t}.png`)})` : '');
-const styTerr = (t: string) => (ICO_TERR.has(t) ? `background-image:url(${url(`icones-bestiario/terr-${t}.png`)})` : '');
 // Atributos (ordem canônica: físico · social · mental) com rótulo curto e nome cheio
 const ATR: [string, string, string][] = [
   ['forca', 'For', 'Força'], ['destreza', 'Des', 'Destreza'], ['vigor', 'Vig', 'Vigor'],
   ['influencia', 'Inf', 'Influência'], ['perspicacia', 'Psp', 'Perspicácia'], ['compostura', 'Cmp', 'Compostura'],
   ['percepcao', 'Per', 'Percepção'], ['inteligencia', 'Int', 'Inteligência'], ['raciocinio', 'Rac', 'Raciocínio'],
 ];
-// Fraquezas e resistências: a palavra-chave crua vira rótulo de leitura. O vocabulário
-// mistura três eixos de propósito (elemento das Artes, tipo de dano físico, natureza).
-const ELEM: Record<string, string> = {
-  fogo: 'Fogo', agua: 'Água', gelo: 'Gelo', raio: 'Raio', vento: 'Vento', terra: 'Terra',
-  luz: 'Luz', sombra: 'Sombra', corte: 'Corte', perfuracao: 'Perfuração', impacto: 'Impacto',
-  sagrado: 'Sagrado', profano: 'Profano', prata: 'Prata', sol: 'Sol',
-};
-// Modificador social da Aparência (curva do sistema, extrapolada além de 1–10 para criaturas extremas).
-const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
-const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : AP_CURVA[n]);
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
 const camNome: Record<string, string> = Object.fromEntries(d.caminhos.map((c) => [c.id, c.nome]));
-const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
 
 // listas de poderes por criatura (ids p/ filtro)
 const caminhosDe = (i: any) => [...new Set((i.poderes || []).filter((p: any) => p.tipo === 'proeza' && p.caminho).map((p: any) => p.caminho))];
@@ -49,18 +39,6 @@ const artesUsadas = [...new Set(inimigos.flatMap(artesDe))].map((id) => ({ id, n
 const categoriasUsadas = [...new Set(inimigos.map((i) => i.categoria).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt'));
 const terrenosUsados = [...new Set(inimigos.flatMap((i) => i.ecologia?.terreno || []))].map((k) => ({ k, nome: ECO_TERR[k] || k })).sort((a, b) => a.nome.localeCompare(b.nome));
 const climasUsados = [...new Set(inimigos.flatMap((i) => i.ecologia?.clima || []))].map((k) => ({ k, nome: ECO_CLIMA[k] || k })).sort((a, b) => a.nome.localeCompare(b.nome));
-// Linha de ecologia (texto puro, separada por ·): categoria · terrenos · climas
-const ecoLinha = (i: any) => [i.categoria, ...(i.ecologia?.terreno || []).map((t: string) => ECO_TERR[t] || t), ...(i.ecologia?.clima || []).map((c: string) => ECO_CLIMA[c] || c)].filter(Boolean).join(' · ');
-const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
-const cap = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
-// conceito sem o porte repetido (o Porte já aparece à parte), com inicial maiúscula
-const conceitoLimpo = (i: any) => cap(String(i.conceito || '').replace(new RegExp(`\\s*\\b${i.porte}\\b\\s*`, 'i'), ' ').replace(/\s+/g, ' ').trim());
-// ataque: "7d6+2 +8" → "7d6 +2 +8"; dano: tipo por extenso → sigla (I)/(C)/(P)
-const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
-const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
-const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
-// tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
-const temMec = (i: any) => !!((i.habilidades?.length) || (i.poderes?.length) || (i.tecnicas?.length) || (i.artes?.length) || i.notas);
 
 // Opções do editor colhidas do bestiário e da data viva INTEIROS: o form oferece o
 // que já existe (categorias, etiquetas, tipos de ecologia, perícias, armas) em vez
@@ -139,144 +117,24 @@ const opcoesEditor = {
     <p class="muted bf-count"></p>
   </div>
 
-  <div class="besta-list">
-    {inimigos.map((i) => (
-      <article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
-        data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')} data-semimg={i.semImagem ? '1' : ''}
-        data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
-        data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
-        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}
-        data-besta={JSON.stringify({ id: i.id, nome: i.nome, conceito: i.conceito, ameaca: i.ameaca, centelha: i.centelha, porte: i.porte, atributos: i.atributos, vontade: i.vontade, /* Integridade é ENTRADA do gerador e não sobrevive no monsters.json. Recupera-se
-           invertendo a Defesa Mental (= Integridade + Raciocínio + Vontade + Centelha),
-           senão o modal abriria com 0 e mostraria uma Defesa Mental que não é a da criatura. */
-        integridade: Math.max(0, (i.combate.defesaMental === '-' ? 0 : i.combate.defesaMental) - (i.atributos?.raciocinio ?? 0) - (i.vontade ?? 0) - (i.centelha ?? 0)),
-        /* Prontidão: mesma história, invertida da Iniciativa (= 1d6 + Raciocínio + Prontidão). */
-        prontidao: Math.max(0, Number(/\+\s*(\d+)/.exec(String(i.combate.iniciativa))?.[1] ?? 0) - (i.atributos?.raciocinio ?? 0)), fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
+  {/*
+    As primeiras fichas vão para a página; o resto vai dentro de <template>, e o
+    script as monta quando chegam perto da tela ou quando um filtro as escolhe.
 
-        <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
-          {i.imagem
-            ? <img src={url(i.imagem)} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
-                   data-full={url(i.imagem)} data-nome={i.nome} />
-            : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
-          <span class="arte-ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
-          {i.centelha > 0 && <span class="arte-cent" title={`Centelha ${i.centelha}`}><CentelhaSpark /> {i.centelha}</span>}
-        </figure>
+    Por quê: com as 308 de uma vez a página tinha 40.146 nós e levava 12,7 s até
+    a primeira ficha aparecer numa máquina modesta. Com 40 abertas, 2,8 s.
 
-        <div class="besta-corpo">
-          <header class="besta-head">
-            <span class="besta-nome cinzel">{i.nome}{i.nomeIngles && i.nomeIngles.toLowerCase() !== i.nome.toLowerCase() && <span class="besta-nome-en"> ({i.nomeIngles})</span>}</span>
-          </header>
-          <div class="besta-badges">
-            {i.categoria && <span class="badge cat">{i.categoria}</span>}
-            {(i.ecologia?.terreno || []).map((t: string) => <span class="badge terr">{ECO_TERR[t] || t}</span>)}
-            {(i.ecologia?.clima || []).map((c: string) => <span class="badge clima">{ECO_CLIMA[c] || c}</span>)}
-            {i.semImagem && <span class="badge sem-img" title="Arte ainda não adicionada">Sem imagem</span>}
-          </div>
-          {i.porte && (
-            <p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
-          )}
+    <template> e não um corte de verdade: o Pagefind indexa lendo o HTML como
+    texto, no build, e continua enxergando o que está lá dentro. Cortar tiraria
+    268 criaturas da busca do site.
 
-          {i.descricao && <p class="besta-con muted">{i.descricao}</p>}
-
-          <dl class="besta-stats">
-            <div><dt>PV</dt><dd>{i.combate.pv}</dd></div>
-            <div><dt>Defesa</dt><dd>{i.combate.defesa}</dd></div>
-            <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
-            <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
-            <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}</dd></div>
-            <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
-          </dl>
-
-          {(i.combate.fraquezas?.length || i.combate.resistencias?.length) && (
-            <div class="besta-elem">
-              {i.combate.fraquezas?.length && (
-                <span class="el-linha" title="Dano deste tipo não é absorvido por nada (nem armadura, nem Absorção natural, nem Centelha) e é agravado: não fecha com descanso nem com a perícia Cura.">
-                  <span class="el-lbl">Fraqueza</span>
-                  {i.combate.fraquezas.map((k: string) => <span class="el el-fra">{ELEM[k] ?? k}</span>)}
-                </span>
-              )}
-              {i.combate.resistencias?.length && (
-                <span class="el-linha" title="Dano deste tipo cai pela metade, arredondando para cima, depois da armadura e antes da Absorção.">
-                  <span class="el-lbl">Resiste</span>
-                  {i.combate.resistencias.map((k: string) => <span class="el el-res">{ELEM[k] ?? k}</span>)}
-                </span>
-              )}
-            </div>
-          )}
-
-          {i.atributos && (
-            <div class="besta-atrib">
-              <span class="atr-lbl">Atributos</span>
-              <div class="atr-grid">
-                {ATR.map(([k, ab, full]) => (
-                  <span class="atr" title={full}><span class="atr-nm"><span class="atr-ab">{ab}</span><span class="atr-full">{full}</span></span><span class="atr-v">{(i.atributos as any)[k]}</span></span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {i.virtudes && (
-            <div class="besta-tracos">
-              <div class="tr-linha">
-                <span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">{i.vontade}</span></span>
-                <span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">{i.aparencia} <small class="tr-mod">({apMod(i.aparencia) >= 0 ? '+' : ''}{apMod(i.aparencia)})</small></span></span>
-              </div>
-              <div class="tr-virt" title="Virtudes: Compaixão · Convicção · Temperança · Valor">
-                <span class="tr-nm">Virtudes</span>
-                <span class="tr-vv">Comp {i.virtudes.compaixao} · Conv {i.virtudes.conviccao} · Temp {i.virtudes.temperanca} · Val {i.virtudes.valor}</span>
-              </div>
-            </div>
-          )}
-
-          <ul class="besta-atk">
-            {i.combate.ataques.map((a: any) => (
-              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b> · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
-            ))}
-          </ul>
-
-          {(
-            <div class="besta-foot">
-              <button class="besta-info besta-editar" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✎</span> Editar</button>
-              {temMec(i) && (
-                <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades</button>
-              )}
-              {i.lore?.length > 0 && (
-                <button class="besta-info" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">ⓘ</span> Informações</button>
-              )}
-              {/* Leva a criatura para o bestiário de uma campanha. Nasce neutro
-                  porque o estado (em quantas mesas ela está) só se sabe depois
-                  de perguntar ao banco, e perguntar por 300 cards ao carregar a
-                  página seria caro para uma informação que quase nunca é olhada:
-                  quem clica descobre no diálogo. */}
-              <button class="besta-info besta-mesa" type="button" aria-haspopup="dialog"
-                title="Separar esta criatura para o bestiário de uma campanha sua"><span class="i-ic" aria-hidden="true">⌂</span> Adicionar à Mesa</button>
-
-              {temMec(i) && (
-                <template class="mech-tpl">
-                  {i.habilidades?.length > 0 && (<>
-                    <h4>Habilidades</h4>
-                    <ul class="ib-hab">{i.habilidades.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}</li>))}</ul>
-                  </>)}
-                  {i.poderes?.length > 0 && (<>
-                    <h4>Poderes <span class="ib-sub-lbl">(sistema)</span></h4>
-                    <ul class="ib-pod">{i.poderes.map((p: any) => (<li class={`pw-${p.tipo}`}><span class="pw-ef">{p.efeito}</span> <span class="pw-arw">→</span> <span class="pw-alvo">{p.alvo}</span></li>))}</ul>
-                  </>)}
-                  {(i.tecnicas.length > 0 || i.artes.length > 0 || i.notas) && (<>
-                    <h4>Técnicas, Artes &amp; Notas</h4>
-                    {i.tecnicas.length > 0 && (<p class="ib-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t)}>{d.T[t]?.nome ?? t}</a></>))}</p>)}
-                    {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
-                    {i.notas && <p class="ib-notas">{i.notas}</p>}
-                  </>)}
-                </template>
-              )}
-              {i.lore?.length > 0 && (
-                <template class="lore-tpl">{i.lore.map((s: any) => (<><h4>{s.titulo}</h4><p>{s.texto}</p></>))}</template>
-              )}
-            </div>
-          )}
-        </div>
-      </article>
-    ))}
+    Quarenta é mais do que cabe em qualquer tela: a primeira rolagem já encontra
+    o resto montado.
+  */}
+  <div class="besta-list" data-abertas={ABERTAS}>
+    {inimigos.map((i, n) => (n < ABERTAS
+      ? <BestaCard i={i} />
+      : <template class="besta-adiada"><BestaCard i={i} /></template>))}
   </div>
 
   <div class="lightbox" id="lightbox" hidden>
@@ -320,7 +178,7 @@ const opcoesEditor = {
   <BestiaEditor opcoes={opcoesEditor} />
 </Base>
 
-<style>
+<style is:global>
   .filtros { margin: 1rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: flex-end; }
   .filtros > label { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft); display: flex; flex-direction: column; gap: .25rem; }
   .filtros input[type='search'] { padding: .35rem .5rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-family: 'EB Garamond'; font-size: var(--fs-aux); }
@@ -337,7 +195,20 @@ const opcoesEditor = {
   #ord-dir:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--bg)); }
   #ord-dir .ord-arw { font-weight: 700; }
 
+  /* GLOBAL, e não com escopo, desde que a ficha virou componente (BestaCard).
+     O escopo do Astro marca os elementos escritos NESTE arquivo com um atributo
+     e prefixa os seletores com ele; a ficha passou a nascer em outro arquivo, com
+     outra marca, e todas as regras de `.besta*` deixaram de casar. Tirar o escopo
+     é o caminho curto e não vaza: o Astro só entrega esta folha nesta página. */
   .besta-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1.15rem; }
+  /* O navegador pula estilo, layout e pintura das fichas fora da tela. Sozinho
+     isto derrubou o rolar-até-o-fim de 15,6 s para 1,4 s numa máquina modesta.
+     `contain-intrinsic-size` é a altura que ele assume para a ficha que ainda
+     não mediu; sem ela a barra de rolagem pularia enquanto se rola. */
+  .besta { content-visibility: auto; contain-intrinsic-size: auto 420px; }
+  /* Chegando por permalink o adiamento sai, para a conta de onde a ficha está
+     ser exata. Ver o comentário em `encostar`, no script. */
+  .besta-list.sem-cv .besta { content-visibility: visible; }
 
   /* Três colunas em tela larga. O que travava em duas não era a grade: era o artigo,
      preso em 60rem, que não crescia nem a 2560px. Acima de 1400px o painel de filtros e
@@ -592,7 +463,7 @@ const opcoesEditor = {
 </style>
 
 <script>
-  const cards = Array.from(document.querySelectorAll<HTMLElement>('.besta'));
+  let cards = Array.from(document.querySelectorAll<HTMLElement>('.besta'));
   const count = document.querySelector<HTMLElement>('.bf-count')!;
   const val = (s: string) => (document.querySelector(`[data-bf="${s}"]`) as HTMLInputElement | HTMLSelectElement)?.value.trim().toLowerCase() ?? '';
   const checked = (s: string) => Array.from(document.querySelectorAll<HTMLInputElement>(`[data-bf="${s}"]:checked`)).map((c) => c.value);
@@ -647,6 +518,67 @@ const opcoesEditor = {
   ordKey.addEventListener('change', () => { dir = NUM.includes(ordKey.value) ? -1 : 1; setArrow(); sortCards(); });
   ordDir.addEventListener('click', () => { dir = -dir; setArrow(); sortCards(); });
   setArrow(); sortCards();
+
+  // ---------------------------------------------------- as fichas adiadas
+  /**
+   * A página nasce com 40 fichas; as outras 268 vêm dentro de <template>, que o
+   * navegador parseia mas não estiliza, não dispõe e não pinta.
+   *
+   * Aqui elas entram na página, em fatias, uma por quadro. Em fatias porque
+   * montar as 268 de uma vez travaria o principal por segundos numa máquina
+   * modesta, que é justamente o que se veio consertar: a página tinha 40.146 nós
+   * e 12,7 s até a primeira ficha aparecer, contra 2,8 s assim.
+   *
+   * Depois de cada fatia os filtros são reaplicados, senão uma busca digitada no
+   * meio da montagem deixaria passar quem chegou depois dela.
+   */
+  function montarFatia(quantas: number): number {
+    const adiadas = list.querySelectorAll<HTMLTemplateElement>('template.besta-adiada');
+    let n = 0;
+    for (const t of adiadas) {
+      if (n >= quantas) break;
+      t.replaceWith(t.content);
+      n++;
+    }
+    return list.querySelectorAll('template.besta-adiada').length;
+  }
+  function montarTodas() {
+    while (montarFatia(9999) > 0) { /* até acabar */ }
+    cards = Array.from(document.querySelectorAll<HTMLElement>('.besta'));
+    apply(); sortCards();
+  }
+  function montarAosPoucos() {
+    const restam = montarFatia(24);
+    cards = Array.from(document.querySelectorAll<HTMLElement>('.besta'));
+    apply();
+    if (restam) requestAnimationFrame(montarAosPoucos);
+    else sortCards();
+  }
+  // Chegou por permalink (#mon-troll): a ficha pode ser uma das adiadas, e o
+  // navegador já passou pela hora de rolar até ela. Monta tudo de uma vez e
+  // rola na mão. É o caso raro, e pagar caro nele é melhor do que a página
+  // abrir no lugar errado.
+  if (location.hash) {
+    montarTodas();
+    const alvo = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    // Chegando por permalink, o `content-visibility` SAI.
+    //
+    // Ele deixa a altura das fichas ainda não medidas por conta de um palpite
+    // (o `contain-intrinsic-size`), e as fichas variam muito de altura. Numa
+    // lista de 308, o erro acumulado ao longo de 40.000 px é de milhares: rolar
+    // até uma criatura lá embaixo parava longe dela, e insistir quadro a quadro
+    // não convergia, porque as artes carregando por preguiça mudavam a altura de
+    // novo a cada volta.
+    //
+    // Então este caso paga o layout inteiro, que é o preço de acertar o alvo, e
+    // é raro: quem chega por link quer VER aquela criatura.
+    if (alvo) {
+      list.classList.add('sem-cv');
+      requestAnimationFrame(() => alvo.scrollIntoView({ block: 'start' }));
+    }
+  } else {
+    requestAnimationFrame(() => requestAnimationFrame(montarAosPoucos));
+  }
 
   // Voltar ao topo
   const topBtn = document.getElementById('ao-topo') as HTMLButtonElement;

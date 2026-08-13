@@ -13,6 +13,11 @@
 //   http://localhost:4399/centelha-rpg/mesa/grid?id=00000000-0000-4000-8000-0000000000aa&bench=30&cols=40&rows=30&nevoa=1
 //
 // Os parâmetros da cena estão documentados em scripts/mesa-mock.mjs.
+//
+// Um efeito colateral conhecido: rodar por aqui reescreve `.astro/types.d.ts`,
+// que é do projeto e não da bancada, e com isso o `tsc` passa a reclamar de
+// `astro:content` e afins. `npx astro sync` põe de volta. Não vale um desvio a
+// mais na configuração: é uma pasta gerada, e o conserto é um comando.
 import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'node:url';
 

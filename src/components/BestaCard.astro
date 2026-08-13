@@ -1,0 +1,188 @@
+---
+/**
+ * Uma ficha do bestiário.
+ *
+ * Saiu de dentro de `bestiario.astro` para poder ser desenhada de dois jeitos: as
+ * primeiras vão direto para a página, e as demais vão dentro de um <template>,
+ * que o navegador parseia mas não estiliza, não dispõe e não pinta. A página
+ * tinha 308 fichas de uma vez, 40.146 nós e levava 12,7 s até a primeira ficha
+ * aparecer numa máquina modesta; com as 268 últimas adiadas, 2,8 s.
+ *
+ * O <template> em vez de simplesmente não escrever a ficha: o Pagefind indexa
+ * lendo o HTML como TEXTO, no build, e continua enxergando o que está lá dentro.
+ * Cortar de verdade tiraria 268 criaturas da busca do site.
+ */
+import CentelhaSpark from './CentelhaSpark.astro';
+import { url } from '../lib/site';
+import { loadData } from '../lib/data';
+
+interface Props { i: any }
+const { i } = Astro.props;
+const d = await loadData();
+
+const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
+const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
+// Fraquezas e resistências: a palavra-chave crua vira rótulo de leitura. O vocabulário
+// mistura três eixos de propósito (elemento das Artes, tipo de dano físico, natureza).
+const ELEM: Record<string, string> = {
+  fogo: 'Fogo', agua: 'Água', gelo: 'Gelo', raio: 'Raio', vento: 'Vento', terra: 'Terra',
+  luz: 'Luz', sombra: 'Sombra', corte: 'Corte', perfuracao: 'Perfuração', impacto: 'Impacto',
+  sagrado: 'Sagrado', profano: 'Profano', prata: 'Prata', sol: 'Sol',
+};
+// Atributos (ordem canônica: físico · social · mental) com rótulo curto e nome cheio
+const ATR: [string, string, string][] = [
+  ['forca', 'For', 'Força'], ['destreza', 'Des', 'Destreza'], ['vigor', 'Vig', 'Vigor'],
+  ['influencia', 'Inf', 'Influência'], ['perspicacia', 'Psp', 'Perspicácia'], ['compostura', 'Cmp', 'Compostura'],
+  ['percepcao', 'Per', 'Percepção'], ['inteligencia', 'Int', 'Inteligência'], ['raciocinio', 'Rac', 'Raciocínio'],
+];
+// Modificador social da Aparência (curva do sistema, extrapolada além de 1–10 para criaturas extremas).
+const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
+const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : AP_CURVA[n]);
+const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
+const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
+const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
+// ataque: "7d6+2 +8" → "7d6 +2 +8"; dano: tipo por extenso → sigla (I)/(C)/(P)
+const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
+const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
+const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
+// tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
+const temMec = (x: any) => !!((x.habilidades?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length) || x.notas);
+// listas de poderes por criatura (ids p/ filtro)
+const caminhosDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'proeza' && p.caminho).map((p: any) => p.caminho))];
+const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'feiticaria' && p.arte).map((p: any) => p.arte))];
+---
+<article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
+        data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')} data-semimg={i.semImagem ? '1' : ''}
+        data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
+        data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
+        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.efeito + ' ' + p.alvo).join(' ')).toLowerCase()}
+        data-besta={JSON.stringify({ id: i.id, nome: i.nome, conceito: i.conceito, ameaca: i.ameaca, centelha: i.centelha, porte: i.porte, atributos: i.atributos, vontade: i.vontade, /* Integridade é ENTRADA do gerador e não sobrevive no monsters.json. Recupera-se
+           invertendo a Defesa Mental (= Integridade + Raciocínio + Vontade + Centelha),
+           senão o modal abriria com 0 e mostraria uma Defesa Mental que não é a da criatura. */
+        integridade: Math.max(0, (i.combate.defesaMental === '-' ? 0 : i.combate.defesaMental) - (i.atributos?.raciocinio ?? 0) - (i.vontade ?? 0) - (i.centelha ?? 0)),
+        /* Prontidão: mesma história, invertida da Iniciativa (= 1d6 + Raciocínio + Prontidão). */
+        prontidao: Math.max(0, Number(/\+\s*(\d+)/.exec(String(i.combate.iniciativa))?.[1] ?? 0) - (i.atributos?.raciocinio ?? 0)), fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
+
+        <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
+          {i.imagem
+            ? <img src={url(i.imagem)} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
+                   data-full={url(i.imagem)} data-nome={i.nome} />
+            : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
+          <span class="arte-ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
+          {i.centelha > 0 && <span class="arte-cent" title={`Centelha ${i.centelha}`}><CentelhaSpark /> {i.centelha}</span>}
+        </figure>
+
+        <div class="besta-corpo">
+          <header class="besta-head">
+            <span class="besta-nome cinzel">{i.nome}{i.nomeIngles && i.nomeIngles.toLowerCase() !== i.nome.toLowerCase() && <span class="besta-nome-en"> ({i.nomeIngles})</span>}</span>
+          </header>
+          <div class="besta-badges">
+            {i.categoria && <span class="badge cat">{i.categoria}</span>}
+            {(i.ecologia?.terreno || []).map((t: string) => <span class="badge terr">{ECO_TERR[t] || t}</span>)}
+            {(i.ecologia?.clima || []).map((c: string) => <span class="badge clima">{ECO_CLIMA[c] || c}</span>)}
+            {i.semImagem && <span class="badge sem-img" title="Arte ainda não adicionada">Sem imagem</span>}
+          </div>
+          {i.porte && (
+            <p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
+          )}
+
+          {i.descricao && <p class="besta-con muted">{i.descricao}</p>}
+
+          <dl class="besta-stats">
+            <div><dt>PV</dt><dd>{i.combate.pv}</dd></div>
+            <div><dt>Defesa</dt><dd>{i.combate.defesa}</dd></div>
+            <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
+            <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
+            <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}</dd></div>
+            <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
+          </dl>
+
+          {(i.combate.fraquezas?.length || i.combate.resistencias?.length) && (
+            <div class="besta-elem">
+              {i.combate.fraquezas?.length && (
+                <span class="el-linha" title="Dano deste tipo não é absorvido por nada (nem armadura, nem Absorção natural, nem Centelha) e é agravado: não fecha com descanso nem com a perícia Cura.">
+                  <span class="el-lbl">Fraqueza</span>
+                  {i.combate.fraquezas.map((k: string) => <span class="el el-fra">{ELEM[k] ?? k}</span>)}
+                </span>
+              )}
+              {i.combate.resistencias?.length && (
+                <span class="el-linha" title="Dano deste tipo cai pela metade, arredondando para cima, depois da armadura e antes da Absorção.">
+                  <span class="el-lbl">Resiste</span>
+                  {i.combate.resistencias.map((k: string) => <span class="el el-res">{ELEM[k] ?? k}</span>)}
+                </span>
+              )}
+            </div>
+          )}
+
+          {i.atributos && (
+            <div class="besta-atrib">
+              <span class="atr-lbl">Atributos</span>
+              <div class="atr-grid">
+                {ATR.map(([k, ab, full]) => (
+                  <span class="atr" title={full}><span class="atr-nm"><span class="atr-ab">{ab}</span><span class="atr-full">{full}</span></span><span class="atr-v">{(i.atributos as any)[k]}</span></span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {i.virtudes && (
+            <div class="besta-tracos">
+              <div class="tr-linha">
+                <span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">{i.vontade}</span></span>
+                <span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">{i.aparencia} <small class="tr-mod">({apMod(i.aparencia) >= 0 ? '+' : ''}{apMod(i.aparencia)})</small></span></span>
+              </div>
+              <div class="tr-virt" title="Virtudes: Compaixão · Convicção · Temperança · Valor">
+                <span class="tr-nm">Virtudes</span>
+                <span class="tr-vv">Comp {i.virtudes.compaixao} · Conv {i.virtudes.conviccao} · Temp {i.virtudes.temperanca} · Val {i.virtudes.valor}</span>
+              </div>
+            </div>
+          )}
+
+          <ul class="besta-atk">
+            {i.combate.ataques.map((a: any) => (
+              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b> · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+            ))}
+          </ul>
+
+          {(
+            <div class="besta-foot">
+              <button class="besta-info besta-editar" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✎</span> Editar</button>
+              {temMec(i) && (
+                <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades</button>
+              )}
+              {i.lore?.length > 0 && (
+                <button class="besta-info" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">ⓘ</span> Informações</button>
+              )}
+              {/* Leva a criatura para o bestiário de uma campanha. Nasce neutro
+                  porque o estado (em quantas mesas ela está) só se sabe depois
+                  de perguntar ao banco, e perguntar por 300 cards ao carregar a
+                  página seria caro para uma informação que quase nunca é olhada:
+                  quem clica descobre no diálogo. */}
+              <button class="besta-info besta-mesa" type="button" aria-haspopup="dialog"
+                title="Separar esta criatura para o bestiário de uma campanha sua"><span class="i-ic" aria-hidden="true">⌂</span> Adicionar à Mesa</button>
+
+              {temMec(i) && (
+                <template class="mech-tpl">
+                  {i.habilidades?.length > 0 && (<>
+                    <h4>Habilidades</h4>
+                    <ul class="ib-hab">{i.habilidades.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}</li>))}</ul>
+                  </>)}
+                  {i.poderes?.length > 0 && (<>
+                    <h4>Poderes <span class="ib-sub-lbl">(sistema)</span></h4>
+                    <ul class="ib-pod">{i.poderes.map((p: any) => (<li class={`pw-${p.tipo}`}><span class="pw-ef">{p.efeito}</span> <span class="pw-arw">→</span> <span class="pw-alvo">{p.alvo}</span></li>))}</ul>
+                  </>)}
+                  {(i.tecnicas.length > 0 || i.artes.length > 0 || i.notas) && (<>
+                    <h4>Técnicas, Artes &amp; Notas</h4>
+                    {i.tecnicas.length > 0 && (<p class="ib-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t)}>{d.T[t]?.nome ?? t}</a></>))}</p>)}
+                    {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
+                    {i.notas && <p class="ib-notas">{i.notas}</p>}
+                  </>)}
+                </template>
+              )}
+              {i.lore?.length > 0 && (
+                <template class="lore-tpl">{i.lore.map((s: any) => (<><h4>{s.titulo}</h4><p>{s.texto}</p></>))}</template>
+              )}
+            </div>
+          )}
+        </div>
+      </article>
