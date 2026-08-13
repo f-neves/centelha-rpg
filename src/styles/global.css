@@ -255,7 +255,7 @@ html[data-justif='0'] .prose li { text-align: left; hyphens: manual; }
     max-width: calc(var(--cfg-larg-texto, 46rem) * 2 + 2.6rem);
     columns: 2; column-gap: 2.6rem;
   }
-  html[data-colunas='2'] .prose:not(.sem-colunas) > :is(h1, h2, .lead, .table-wrap, .cat-grid, .callout, .formula, pre, .mermaid, .tag-orn, .cinzel, nav, hr) {
+  html[data-colunas='2'] .prose:not(.sem-colunas) > :is(h1, h2, .lead, .table-wrap, .cat-grid, .callout, .formula, pre, .diagrama-caixa, .tag-orn, .cinzel, nav, hr) {
     column-span: all;
   }
 }

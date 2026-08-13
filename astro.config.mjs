@@ -2,18 +2,33 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import AstroPWA from '@vite-pwa/astro';
+import { readFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 const BASE = '/centelha-rpg';
 
-// Converte blocos ```mermaid``` em <pre class="mermaid">…</pre> ANTES do shiki, para o realce de
-// código não estragar a sintaxe do diagrama. O mermaid.run() (no cliente) lê o textContent, então
-// escapamos &<> para o navegador devolver o texto exato.
+// Troca cada bloco ```mermaid``` pelo SVG já desenhado, ANTES do shiki (senão o realce de
+// código estragaria a sintaxe do diagrama).
+//
+// O desenho é feito no build por `scripts/gen-mermaid.mjs` e guardado em
+// `src/data/diagramas.json`, com a chave sendo o hash do próprio código do diagrama. Antes
+// isto virava `<pre class="mermaid">` e o mermaid desenhava no navegador de quem lia, o que
+// custava 3,0 MB de JavaScript no dist (o pacote arrasta cytoscape, katex, dagre e um módulo
+// por tipo de diagrama) para seis caixas com setas que nunca mudam.
+//
+// Bloco sem desenho guardado vira um aviso visível em vez de sumir: `gen-mermaid.mjs --check`
+// roda no portão e já teria barrado, então chegar aqui é sinal de que alguém pulou o portão.
 function remarkMermaid() {
-  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const arquivo = new URL('./src/data/diagramas.json', import.meta.url);
+  const DIAGRAMAS = existsSync(arquivo) ? JSON.parse(readFileSync(arquivo, 'utf8')) : {};
+  const chave = (s) => createHash('sha1').update(s.replace(/\r\n/g, '\n').trimEnd()).digest('hex').slice(0, 12);
   const walk = (node) => {
     if (node.type === 'code' && node.lang === 'mermaid') {
+      const svg = DIAGRAMAS[chave(node.value)];
       node.type = 'html';
-      node.value = `<pre class="mermaid">${esc(node.value)}</pre>`;
+      node.value = svg
+        ? `<figure class="diagrama-caixa">${svg}</figure>`
+        : '<p class="erro">Diagrama sem desenho gravado. Rode <code>node scripts/gen-mermaid.mjs</code>.</p>';
       node.lang = undefined;
       node.meta = undefined;
     }
