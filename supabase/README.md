@@ -207,6 +207,18 @@ Supabase pelo navegador. Passos para ligar tudo:
     O servidor não transmite áudio: ele diz qual é a música e se ela está no ar, e o navegador de
     cada um toca. O volume da arena é do mestre (a mistura da cena); o de quem ouve fica no
     aparelho dele.
+24. Rode [`migracao-25.sql`](./migracao-25.sql): a **névoa em três estados**. Idempotente.
+
+    Claro (alguém enxerga agora), névoa leve (já estiveram lá: veem o chão, não veem quem está)
+    e névoa pesada (nunca exploraram). O que clareia são as peças do grupo, o fogo e a luz das
+    Artes, e o pincel do mestre. `nevoa.explorado` é a memória que separa a leve da pesada.
+25. Rode [`migracao-26.sql`](./migracao-26.sql): **higiene**, sem mudança de comportamento.
+    Idempotente.
+
+    Índices nas 18 chaves estrangeiras que não tinham (a mais quente é
+    `combatentes.encontro_id`, por onde o Grid e o rastreador pedem a lista toda vez que abrem),
+    e `auth.uid()` envolvido em `(select …)` nas policies, o que o faz ser avaliado uma vez por
+    comando em vez de uma vez por linha. Vem de medição: veja `Auditoria_Tecnica.md`, seção 2.6.
 
 ## 3. Ajustes no painel
 

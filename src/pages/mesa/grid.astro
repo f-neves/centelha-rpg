@@ -1506,14 +1506,31 @@ const SETAS = [
    */
   async function semearMana() {
     const faltam = COMBS.filter((c: any) => c.mana_max == null && (PERFIL[c.id]?.mana ?? 0) > 0);
+    if (!faltam.length) return;
+    // Uma ida ao banco para todo mundo, e não uma por peça.
+    //
+    // Era um `await` dentro do laço, e o laço tem o tamanho da cena: abrir um
+    // encontro novo de trinta custava vinte e seis viagens EM FILA antes do
+    // primeiro desenho, cada uma esperando a anterior. Semeado uma vez, o caso
+    // não se repete; mas ele acontece justamente na abertura da cena, que é
+    // quando a mesa está esperando.
+    //
+    // Agrupado por VALOR de Mana, e não por peça: uma cena de doze goblins tem
+    // doze peças e um valor só. `update ... in (ids)` resolve cada grupo de uma
+    // vez, e sobra uma viagem por valor distinto, que na prática é uma ou duas.
+    // (Um `upsert` em lote seria mais curto e falharia: o INSERT é montado antes
+    // de o conflito no id ser resolvido, e as colunas obrigatórias da linha não
+    // estão aqui.)
+    const porValor = new Map<number, string[]>();
     for (const c of faltam) {
       const m = PERFIL[c.id].mana;
-      const { error } = await SB.from('combatentes')
-        .update({ mana_max: m, mana_atual: m }).eq('id', c.id);
-      // Banco sem a migração 21: não insiste, e o tabuleiro segue sem a barra.
-      if (error) return;
-      c.mana_max = m; c.mana_atual = m;
+      (porValor.get(m) || porValor.set(m, []).get(m)!).push(c.id);
     }
+    const idas = await Promise.all([...porValor].map(([m, ids]) =>
+      SB.from('combatentes').update({ mana_max: m, mana_atual: m }).in('id', ids)));
+    // Banco sem a migração 21: não insiste, e o tabuleiro segue sem a barra.
+    if (idas.some((r: any) => r.error)) return;
+    for (const c of faltam) { c.mana_max = PERFIL[c.id].mana; c.mana_atual = PERFIL[c.id].mana; }
   }
 
   async function carregarTokens() {
