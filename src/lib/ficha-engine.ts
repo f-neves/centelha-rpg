@@ -24,6 +24,12 @@ import {
 } from './equip';
 import { uiConfirmar, uiErro, uiEscolher, uiFormulario, uiPainel } from './ui-dialog';
 
+/**
+ * Uma especialidade de perícia, como ela é gravada na ficha: `s` é o nome que o
+ * jogador escreveu ("adagas", "mentir para nobres") e `v` é o nível comprado.
+ */
+export interface Especialidade { s: string; v: number }
+
 export interface FichaOpts {
   /** Carrega o estado inicial (objeto S) ou null para começar do zero. Pode ser assíncrono. */
   carregar: () => any | null | Promise<any | null>;
@@ -343,7 +349,11 @@ export function montarFicha(opts: FichaOpts) {
   // (primária 12·28·48, secundária 6·14·24). Somado sobre as especialidades da perícia.
   const triCost = (v: number, sec = false) => custoEspecialidade(v, sec);
   const specCostSum = (arr: any[], sec = false) => (arr || []).reduce((a: number, e: any) => a + triCost(e.v || 0, sec), 0);
-  const specArr = (scope: string, key: string): string[] => scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
+  // Uma especialidade é o NOME dela mais o nível comprado, e não só o nome: a
+  // anotação dizia `string[]` e o resto do arquivo lia `.s` e `.v` em cima
+  // disso, o que rendia cinco erros de tipo e nenhuma proteção.
+  const specArr = (scope: string, key: string): Especialidade[] =>
+    scope === 'p' ? (S.spec[key] ||= []) : (S.spec2[key] ||= []);
   const specSkill = (scope: string, key: string) => scope === 'p' ? (S.skills[key] || 0) : (S.skills2[key] || 0);
   const specRerender = (scope: string) => { scope === 'p' ? renderSkills() : renderSecondary(); };
   // Modal flutuante para nomear as especialidades de uma perícia (um campo por nível).

@@ -1,8 +1,11 @@
 # Auditoria técnica do Centelha
 
 Levantamento medido do repositório em 13 de agosto de 2026, sobre o commit `547c6f3`.
-Nada foi alterado no código: este documento é o único arquivo novo, e a execução
-espera aprovação (seção 7).
+
+As seções 0 a 7 são o levantamento como ele foi entregue, e ficam como estavam:
+elas contam o que se sabia antes de mexer, inclusive as suposições que a medição
+derrubou. **O plano foi aprovado e executado no mesmo dia**; o que a execução
+mudou, encontrou e mediu está na seção 8, no fim.
 
 ---
 
@@ -598,9 +601,8 @@ O único ganho real de SSR seria não expor o HTML das páginas de mestre, e o
 `auth.ts` já documenta que isso é portão de interface e não de segurança. Trocar de
 arquitetura por isso é caro demais.
 
-**Sobre C.** Astro 5.18.2 está duas majors atrás. Não testei a subida e não vou
-recomendar o que não medi. Proponho uma caixa de meia hora numa árvore separada,
-com `npm run build` como critério, antes de decidir.
+**Sobre C.** Astro 5.18.2 está duas majors atrás. A caixa de tempo foi feita
+depois, na execução: ver 8.1.
 
 ### 4.6 Testes e as provas visuais
 
@@ -845,6 +847,9 @@ arquivos um a um.
 
 ## 7. Portão
 
+> **Resolvido:** o portão foi aberto no mesmo dia, com a opção 3 (tudo). O texto
+> abaixo fica como registro do que foi perguntado. O resultado está na seção 8.
+
 **Nada foi executado.** O único arquivo criado é este. A bancada de medição vive
 inteira no diretório de rascunho da sessão e não entra no repositório sem a etapa
 5.1 ser aprovada.
@@ -862,3 +867,98 @@ recomendo o segundo:
 
 E, se você discordar do veredicto de que a arquitetura estática não é a causa, diga
 qual medida faltou: eu procuro o número.
+
+---
+
+## 8. O que a execução acrescentou
+
+Seções escritas depois de o plano ser aprovado e executado. O resto do documento
+é o levantamento, e fica como estava.
+
+### 8.1 Astro 6 e 7: a caixa de tempo, e o veredicto
+
+Feita numa árvore de trabalho separada (`git worktree`), sem tocar no projeto.
+Astro **7.2.2** instalado por cima do repositório como ele está hoje.
+
+**O que funcionou.** O build completo passa: 106 páginas, 22 s, `sitemap-index.xml`
+e o service worker do PWA emitidos, os seis diagramas pré-desenhados no lugar, o
+bestiário com as 269 fichas adiadas. E o site construído roda: sete rotas abertas
+num navegador (`/`, `/ficha`, `/bestiario`, `/regras/qual-sistema`,
+`/regras/combate`, `/equipamentos`, `/tecnicas`), todas desenhando o que deviam,
+sem um erro de console.
+
+**O que quebra, e é por isso que não subimos agora.** Três coisas, todas
+concretas:
+
+1. **`markdown.remarkPlugins` deixou de vir junto.** O Astro 7 troca o processador
+   de Markdown, e os plugins de `unified` passam a exigir
+   `npm i @astrojs/markdown-remark`. O erro é explícito e a correção é uma linha.
+2. **`@vite-pwa/astro@1.2.0` não declara Astro 7.** O peer dele para em `^5.0.0`,
+   então a instalação só passa com `--legacy-peer-deps`. Funcionou, mas um
+   `npm ci` na integração contínua falharia: é uma árvore que o npm só aceita sob
+   protesto. Precisa de uma versão da integração que suporte 7, ou de largar o PWA.
+3. **`astro dev` virou daemon.** Ele imprime uma linha de JSON, sai com código 0 e
+   deixa o servidor rodando em segundo plano (`astro dev stop/status/logs`). Todo
+   script que dirige o dev server pela saída dele quebra de uma vez:
+   `scripts/test-grid.mjs`, `.claude/skills/run-centelha-rpg/driver.mjs` e os
+   `scripts/shot*.mjs`. É consertável (ler o JSON, parar pelo comando), e é
+   trabalho que ninguém contou.
+
+**Veredicto:** o caminho existe e está mapeado, e a subida não se paga hoje. Ela
+não resolve nenhum dos quatro problemas medidos nesta auditoria, e o item 2 é um
+bloqueio de terceiro que não depende de nós. Quando `@vite-pwa/astro` declarar
+Astro 7, a receita é: instalar `@astrojs/markdown-remark`, reescrever os quatro
+scripts que dirigem o `astro dev`, e rodar `npm run validate && npm run smoke`.
+
+### 8.2 Dois defeitos achados no caminho, e não consertados
+
+Os dois estão em código de regra, não de desempenho, e mudar qualquer um deles
+muda o que acontece na mesa. Ficam anotados para você decidir.
+
+**a) As fraquezas e resistências do bestiário nunca são aplicadas.**
+`src/lib/artes-grid-mesa.ts` (linhas 971 e 1006) e `cardCriaturaHTML` leem
+`m.fraquezas` e `m.resistencias` no TOPO do objeto da criatura. Elas não moram
+ali: moram dentro de `combate`. Medido: **zero** das 309 criaturas têm o campo no
+topo, e **101** o têm dentro de `combate`.
+
+Consequências: o dano de Arte contra um treant não é agravado pelo fogo, o do
+lobisomem não é agravado pela prata, e as resistências não cortam nada. O card da
+mesa também não mostra a linha de Fraqueza/Resiste (o do bestiário mostra, porque
+lê `i.combate.fraquezas`, o caminho certo).
+
+A correção é uma palavra em cada lugar (`m.combate?.fraquezas`). Não a fiz porque
+**muda os números de dano na mesa**, e isso é decisão sua, não minha.
+
+**b) `select profiles` sai três vezes por página da mesa.** `nomesDe` tem cache,
+mas os três chamadores partem antes de ele encher. Não é N+1 (não cresce com a
+cena), são três viagens fixas. Consertável com um mapa de pedidos em voo.
+
+### 8.3 O que ficou medido, do começo ao fim
+
+Mover uma peça no Grid (arena 40×30, 30 peças, névoa ligada):
+
+| | repinturas | HTML | nós recriados | `innerHTML` |
+|---|---:|---:|---:|---:|
+| antes | 28 | 581,1 KB | 3.496 | 61,9 ms |
+| etapa 1 (repintura dupla) | 19 | 231,0 KB | 1.232 | 22,3 ms |
+| etapa 2 (névoa fixa) | 18 | 82,8 KB | 132 | 5,7 ms |
+| etapa 3 (reconciliação) | 16 | **22,7 KB** | **26** | **1,8 ms** |
+
+E dos 22,7 KB que sobram, 21,1 KB são a seta do arrasto, que se redesenha a cada
+movimento do ponteiro e não é custo do movimento.
+
+Peso e carga:
+
+| | antes | depois |
+|---|---:|---:|
+| `/mesa/grid`, JS | 1.446 KB (372 gz) | 1.030 KB (245 gz) |
+| `mesa-bestiario` (o pedaço do bestiário) | 725 KB | 279 KB |
+| `/bestiario`, até servir (máquina modesta) | 12.739 ms | 4.025 ms |
+| `/bestiario`, rolar até o fim (máquina modesta) | 15.562 ms | 1.432 ms |
+| artes do bestiário | 15,06 MB | 7,83 MB |
+| mermaid no `dist/` | 3,02 MB | 0 |
+| `dist/` inteiro | ~31 MB | ~20 MB |
+| consultas ao abrir o Grid (30 peças) | 36 | 12 |
+| erros de `tsc --noEmit` | 15 | 0 |
+
+---

@@ -180,7 +180,9 @@ export function paraJson(c: CriaturaEdit) {
   if (c.material) out.material = c.material;
   if (c.fraquezas?.length) out.fraquezas = [...c.fraquezas].sort();
   if (c.resistencias?.length) out.resistencias = [...c.resistencias].sort();
-  const bn = semVazio(c.bonus || {});
+  // `Bonus` é uma interface de campos nomeados, e `semVazio` só quer um objeto
+  // para varrer: o cast é a ponte entre as duas leituras do mesmo dado.
+  const bn = semVazio((c.bonus || {}) as unknown as Record<string, unknown>);
   if (Object.keys(bn).length) out.bonus = bn;
   if (c.ataques?.length) out.ataques = c.ataques.filter((a) => a.nome).map((a) => semVazio(a as unknown as Record<string, unknown>));
   if (c.habilidades?.length) out.habilidades = c.habilidades.filter((h) => h.nome);

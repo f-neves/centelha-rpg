@@ -21,7 +21,9 @@ const BASE = '/centelha-rpg';
 function remarkMermaid() {
   const arquivo = new URL('./src/data/diagramas.json', import.meta.url);
   const DIAGRAMAS = existsSync(arquivo) ? JSON.parse(readFileSync(arquivo, 'utf8')) : {};
+  /** @param {string} s */
   const chave = (s) => createHash('sha1').update(s.replace(/\r\n/g, '\n').trimEnd()).digest('hex').slice(0, 12);
+  /** @param {any} node */
   const walk = (node) => {
     if (node.type === 'code' && node.lang === 'mermaid') {
       const svg = DIAGRAMAS[chave(node.value)];
@@ -34,7 +36,7 @@ function remarkMermaid() {
     }
     (node.children || []).forEach(walk);
   };
-  return (tree) => walk(tree);
+  return (/** @type {any} */ tree) => walk(tree);
 }
 
 // Envolve toda <table> da prosa num <div class="table-wrap"> (que tem overflow-x: auto).
@@ -42,9 +44,11 @@ function remarkMermaid() {
 // rolagem horizontal. Antes o wrapper era escrito à mão em cada .md — e faltava em vários.
 // Pula quem já está envolvido, para os wrappers manuais existentes não duplicarem.
 function rehypeTableWrap() {
+  /** @param {any} n */
   const ehWrap = (n) =>
     n && n.type === 'element' && n.tagName === 'div'
     && String(n.properties?.className || '').includes('table-wrap');
+  /** @param {any} node */
   const walk = (node) => {
     const filhos = node.children || [];
     for (let i = 0; i < filhos.length; i++) {
@@ -59,11 +63,12 @@ function rehypeTableWrap() {
       walk(filhos[i]);
     }
   };
-  return (tree) => walk(tree);
+  return (/** @type {any} */ tree) => walk(tree);
 }
 
 // Prefixa o base do site em links root-relativos da prosa (markdown) → sem 404 no Pages.
 function rehypeBaseLinks() {
+  /** @param {any} node */
   const walk = (node) => {
     if (node.tagName === 'a' && node.properties && typeof node.properties.href === 'string') {
       const h = node.properties.href;
@@ -73,7 +78,7 @@ function rehypeBaseLinks() {
     }
     (node.children || []).forEach(walk);
   };
-  return (tree) => walk(tree);
+  return (/** @type {any} */ tree) => walk(tree);
 }
 
 export default defineConfig({
