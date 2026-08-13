@@ -1027,6 +1027,7 @@ const SETAS = [
     camadaDeGolpes, baterNoAlvo, voarProjetil, projetilDe,
   } from '../../lib/grid-golpe-fx';
   import { armaDoSlot } from '../../lib/equip';
+  import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
 
   const el = (i: string) => document.getElementById(i)!;
 
@@ -2536,7 +2537,7 @@ const SETAS = [
     // A aura acende em TODOS do tick corrente, e não só em quem age primeiro:
     // eles estão agindo no mesmo instante, e a mesa precisa ver isso no chão.
     const naVez = new Set(grupoDaVez().map((c: any) => c.id));
-    box.innerHTML = ordenados.map((c: any) => {
+    reconciliar(box, ordenados.map((c: any) => {
       const t = TOKENS[c.id];
       const p = centroHex(t.q, t.r, RAIO);
       const pilha = pilhas[chaveHex(t.q, t.r)];
@@ -2549,7 +2550,7 @@ const SETAS = [
       const caido = pct != null && pct <= 0;
       // Abaixo de uns 34px o nome fica mais largo que a peça e vira sujeira em
       // cima do vizinho; nesse tamanho o título do mouse dá conta.
-      return `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${naVez.has(c.id) ? ' vez' : ''}"
+      return { chave: c.id, html: `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${naVez.has(c.id) ? ' vez' : ''}"
         data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
         title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}${
           mn != null ? ` · Mana ${c.mana_max != null && c.mana_atual != null
@@ -2557,8 +2558,8 @@ const SETAS = [
         <span class="tok-quadro">${avatarDe(c)}${anelHTML(pct)}${manaHTML(mn)}</span>
         ${condIconesHTML(c, px)}
         <span class="gr-tn">${esc(c.nome)}</span>
-      </div>`;
-    }).join('');
+      </div>` };
+    }));
     conferirNumeros();
     // A névoa anda com as peças: quem se move leva o campo de visão junto.
     pintarNevoa();
@@ -2735,6 +2736,7 @@ const SETAS = [
     const emPe = fila.filter((c: any) => !noChao(c));
     pintarChao(fila.filter((c: any) => noChao(c)));
     if (!fila.length) {
+      esquecerCaixa(box);
       box.innerHTML = `<p class="ini-vazio">${MESTRE
         ? 'Ninguém no tabuleiro ainda. Quem entra no mapa entra na fila.'
         : 'Ninguém em cena.'}</p>`;
@@ -2757,39 +2759,42 @@ const SETAS = [
       prox.title = emPe.length ? '' : 'Ninguém de pé: a cena espera alguém levantar.';
     }
     if (!emPe.length) {
+      esquecerCaixa(box);
       box.innerHTML = `<p class="ini-vazio">Todos no chão. O relógio parou no tick ${tick}.</p>`;
       return;
     }
-    box.innerHTML = emPe.map((c: any) => {
+    reconciliar(box, emPe.map((c: any) => {
       const pct = pctDe100(c);
       const ehVez = naVez.has(c.id);
       const dica = c.id === age ? ' · age agora'
         : ehVez ? ' · também neste tick' : '';
-      return `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${ehVez ? ' vez' : ''}${
+      return { chave: c.id, html: `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${ehVez ? ' vez' : ''}${
         c.id === age ? ' age' : ''}"
         data-c="${c.id}" data-t="${c.tick ?? 0}" title="${esc(c.nome)}${dica}">
         <span class="ini-av">${avatarDe(c, 'av-p')}</span>
         <span class="ini-nome">${esc(c.nome)}</span>
         <span class="ini-num">t <b>${c.tick ?? 0}</b> · ini <b>${c.iniciativa ?? 0}</b>${
           pct != null ? ` · ${Math.round(pct)}%` : ''}</span>
-      </div>`;
-    }).join('');
+      </div>` };
+    }));
   }
 
   /** A tira dos caídos, no pé da coluna. Sem números: eles não estão na ordem. */
   function pintarChao(caidos: any[]) {
     const tira = el('ini-chao') as HTMLElement;
     tira.hidden = !caidos.length;
-    if (!caidos.length) { tira.innerHTML = ''; return; }
-    tira.innerHTML = `<div class="ini-chao-h">No chão · ${caidos.length}</div>`
-      + caidos.map((c: any) => {
+    if (!caidos.length) { esquecerCaixa(tira); tira.innerHTML = ''; return; }
+    reconciliar(tira, [
+      { chave: '#h', html: `<div class="ini-chao-h">No chão · ${caidos.length}</div>` },
+      ...caidos.map((c: any) => {
         const pct = pctDe100(c);
-        return `<div class="ini-caido g-${esc(c.grupo || 'inimigo')}" data-c="${c.id}"
+        return { chave: c.id, html: `<div class="ini-caido g-${esc(c.grupo || 'inimigo')}" data-c="${c.id}"
           title="${esc(c.nome)} · fora da fila até voltar a ficar de pé${
             pct != null ? ` · ${Math.round(pct)}%` : ''}">
           <span>${avatarDe(c, 'av-p')}</span><span class="nm">${esc(c.nome)}</span>
-        </div>`;
-      }).join('');
+        </div>` };
+      }),
+    ]);
   }
 
   /**
@@ -2982,12 +2987,13 @@ const SETAS = [
   function pintarLista() {
     const box = el('gr-lista');
     if (!ENC) {
+      esquecerCaixa(box);
       box.innerHTML = `<p class="vazio">${MESTRE
         ? 'Nenhum combate em andamento. O tabuleiro puxa quem está no encontro ativo.'
         : 'Sem combate ativo.'}</p>`;
       return;
     }
-    if (!COMBS.length) { box.innerHTML = '<p class="vazio">Ninguém em campo.</p>'; return; }
+    if (!COMBS.length) { esquecerCaixa(box); box.innerHTML = '<p class="vazio">Ninguém em campo.</p>'; return; }
     // Gente primeiro, bicho depois.
     //
     // A lista vinha na ordem do tick, e numa cena com doze goblins os quatro
@@ -3010,16 +3016,34 @@ const SETAS = [
     // criaturas, "Criaturas" escrito em cima delas não informa nada. Sem
     // rótulo não há o que recolher, e o bloco sai solto, como antes.
     const doisGrupos = !!gente.length && !!bichos.length;
-    const bloco = (chave: string, titulo: string, lista: any[]) => {
-      if (!lista.length) return '';
-      if (!doisGrupos) return lista.map(ficha).join('');
-      const fechado = GRUPO_FECHADO[chave];
-      return `<button type="button" class="gr-grupo-h${fechado ? ' fechado' : ''}" data-g="${chave}"
-        aria-expanded="${!fechado}" title="${fechado ? 'Mostrar' : 'Recolher'} ${titulo.toLowerCase()}">
-        <span class="gg-seta">▾</span>${titulo} <span>${lista.length}</span></button>
-        <div class="gr-grupo-c"${fechado ? ' hidden' : ''}>${lista.map(ficha).join('')}</div>`;
-    };
-    box.innerHTML = bloco('gente', 'Personagens e NPCs', gente) + bloco('bichos', 'Criaturas', bichos);
+    const grupos = [
+      { chave: 'gente', titulo: 'Personagens e NPCs', lista: gente },
+      { chave: 'bichos', titulo: 'Criaturas', lista: bichos },
+    ].filter((g) => g.lista.length);
+
+    // Dois níveis: o de cima são os cabeçalhos e as caixas de cada grupo, o de
+    // baixo são os retratos dentro delas. A caixa nasce vazia e com HTML fixo,
+    // então ela nunca é refeita: o `hidden` do recolhimento entra por
+    // propriedade, fora da string, para não contar como mudança de conteúdo.
+    if (!doisGrupos) {
+      reconciliar(box, grupos.flatMap((g) => g.lista.map((c: any) => ({ chave: c.id, html: ficha(c) }))));
+    } else {
+      reconciliar(box, grupos.flatMap((g) => {
+        const fechado = GRUPO_FECHADO[g.chave];
+        return [
+          { chave: `h:${g.chave}`, html: `<button type="button" class="gr-grupo-h${fechado ? ' fechado' : ''}" data-g="${g.chave}"
+            aria-expanded="${!fechado}" title="${fechado ? 'Mostrar' : 'Recolher'} ${g.titulo.toLowerCase()}">
+            <span class="gg-seta">▾</span>${g.titulo} <span>${g.lista.length}</span></button>` },
+          { chave: `c:${g.chave}`, html: `<div class="gr-grupo-c" data-gc="${g.chave}"></div>` },
+        ];
+      }));
+      for (const g of grupos) {
+        const caixa = box.querySelector<HTMLElement>(`.gr-grupo-c[data-gc="${g.chave}"]`);
+        if (!caixa) continue;
+        caixa.hidden = !!GRUPO_FECHADO[g.chave];
+        reconciliar(caixa, g.lista.map((c: any) => ({ chave: c.id, html: ficha(c) })));
+      }
+    }
     box.querySelectorAll<HTMLElement>('.gr-grupo-h').forEach((h) => h.onclick = () => {
       const g = h.dataset.g!;
       GRUPO_FECHADO[g] = !GRUPO_FECHADO[g];
@@ -4603,13 +4627,18 @@ const SETAS = [
     const btn = el('gr-desfazer') as HTMLButtonElement;
     btn.hidden = !MESTRE;
     btn.disabled = !LOG.some((e: any) => e.acao);
-    if (!LOG.length) { box.innerHTML = '<p class="vazio">Nada movido ainda.</p>'; return; }
+    if (!LOG.length) { esquecerCaixa(box); box.innerHTML = '<p class="vazio">Nada movido ainda.</p>'; return; }
     const hora = (ts: string) => { try { return new Date(ts).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); } catch { return ''; } };
-    box.innerHTML = LOG.slice().reverse().slice(0, 60).map((e: any) => `<div class="lg">
+    // Uma linha do registro nunca muda depois de escrita: a chave é o id dela, e
+    // uma peça movida acrescenta UM nó em vez de refazer os sessenta.
+    reconciliar(box, LOG.slice().reverse().slice(0, 60).map((e: any, i: number) => ({
+      chave: String(e.id ?? `${e.ts}#${i}`),
+      html: `<div class="lg">
       <span class="lg-h">${hora(e.ts)}</span>
       ${(MESTRE && e.pub == null) ? '<span class="lg-so" title="Só você lê esta linha">🔒</span>' : ''}
       <span class="lg-t">${realcarCasas(e.txt)}</span>
-    </div>`).join('');
+    </div>`,
+    })));
   }
 
   /**
