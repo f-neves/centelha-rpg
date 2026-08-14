@@ -73,6 +73,32 @@ incandescente, círculo de invocação.
 Consequência desejada: **dois feiticeiros de Fogo 3 são personagens diferentes**, porque o
 repertório de Efeitos de cada um conta onde ele estudou.
 
+### Uma segunda régua, informal e provisória
+
+> **Isto não é regra.** É nota de trabalho, para não recomeçar do zero na próxima vez que aparecer
+> um elemento candidato. Nada no sistema depende dela e ela cede em qualquer caso concreto.
+
+A régua acima separa Arte de Efeito. Falta a que separa **Arte de subdivisão de outra Arte**, que
+foi a pergunta que o Metal e o Raio levantaram em 2026-08-15. A intuição é que só vira Arte quem
+responde sim às três:
+
+1. **Verbos próprios.** Faz coisas que nenhum outro elemento faz.
+2. **Física própria.** Dano, absorção ou parâmetro diferentes.
+3. **Fonte própria.** Uma régua de abundância que não é a de ninguém.
+
+Só verbos, é conjunto de Efeitos. Só raridade, é exigência de Trilha.
+
+De onde ela saiu: o Avatar resolve a mesma questão com quatro elementos mais subdivisões travadas
+por aptidão (metal, lava, sangue, combustão, voo), e nunca com uma trilha de compra separada. **O
+Centelha tem três ferramentas onde o Avatar tem uma:** o Efeito Especial para a subdivisão, a
+conjuração composta para a híbrida (lava é Terra mais Fogo, e a máquina já existe), e a fonte do
+elemento para a condição rara (a lua cheia da dobra de sangue).
+
+E vale registrar que **o Centelha já divergiu do Avatar de propósito**: Gelo é Arte separada de
+Água, e lá gelo é só dobra de água. A régua daqui já é "verbos diferentes mais física diferente",
+não "quatro elementos e o resto é técnica". Adotar a do Avatar hoje obrigaria a fundir Gelo em
+Água também.
+
 ### O mesmo Efeito em Artes diferentes
 
 O Efeito descreve **o resultado**; cada Arte que o comporta descreve **o sabor e o efeito
@@ -676,9 +702,13 @@ afeta este documento: a conjuração deixa de ser Ocultismo para todos e passa a
 **6. Trilhas de ensino.** Serão **6 Tradições**, já escritas no capítulo XIV. O que falta é o mapa
 **Arte × Trilha** e os números de treino. Frente própria, não se decide aqui.
 
-**7. Metal.** Arte elemental desenhada e **engavetada** por ora: mexe no equipamento próprio e
-alheio (afia, enferruja, aquece a armadura no corpo, arranca a arma da mão, reduz Absorção),
-com gancho forte na "magia de ofício" dos anões. É só retomar o desenho quando quiser.
+**7. Metal. RESOLVIDO em 2026-08-15: não vira Arte.** Passa a ser um **bloco de Efeitos de Terra**,
+aberto por **Trilha**. Ele falha nas três perguntas da régua informal da seção 3: os verbos dele
+(afia, enferruja, aquece a armadura no corpo, arranca a arma da mão, reduz Absorção) são todos
+coisas que se fazem com equipamento, e coisa que se faz é Efeito; não tem dano próprio nem
+parâmetro próprio; e a tabela de estado da matéria já o põe junto da Terra, em "sólido, metade".
+O gancho da "magia de ofício dos anões" é gancho de **Trilha**, não de Arte: é o metalbending da
+Toph. Falta escrever os Efeitos e ligar a Trilha, o que é trabalho de conteúdo, não de desenho.
 
 **8. Peso, para o empurrão. RESOLVIDO pela 2.** Não virou traço de ficha: o empurrão passou a
 ler o peso pelas tabelas de Força que já existiam, e a Arte entra no lugar do músculo.
@@ -698,6 +728,19 @@ sofre a Penalidade. Se um dia precisar de resistência, o lugar é aqui.
 
 **13. Efeitos elementais sem número.** Treze ainda estão só com parâmetros padrão, e Fogo, Raio e
 Luz não têm nada de nível 1. Frente de revisão do autor.
+
+**19. O Fogo está magro, e o Raio fica.** A pergunta era se o Raio devia virar subdivisão de Ar ou
+de Fogo. A contagem de Efeitos **exclusivos** (fora os compartilhados, como Muro, Aura e Arma
+Elemental) respondeu o contrário: **Raio 5, Vento 5, Fogo 3**. O Raio é a Arte com mais conteúdo
+próprio das três, e passa nas três perguntas da régua informal: verbos que ninguém tem (saltar de
+alvo em alvo, paralisar sem causar dano, virar o próprio raio), física própria (troca Volume por
+Comprimento, porque descarga é trajeto) e fonte própria (Tempestade e Céu Aberto **precisam de
+céu**). Fundi-lo no Ar era o pior dos dois caminhos: o Ar foi calibrado de propósito **sem dano
+direto**, e receber o Céu Aberto o levaria de menos letal a mais letal de uma vez.
+
+O que sobrou de verdade é a pendência inversa: **o Fogo precisa de Efeitos exclusivos.** Três, para
+o elemento carro-chefe, é pouco, e dois deles (Brasa Retardada e Chuva de Fogo) são variações de
+"fogo que fica". Falta ao Fogo o repertório de verbos que o Raio tem.
 
 **17. A régua de luz, e o halo de Luz e Sombra.** Decidida a ordem: **a régua primeiro**. Hoje o
 site inteiro tem duas linhas sobre luz, e são modificadores de furtividade no capítulo de Sentidos
