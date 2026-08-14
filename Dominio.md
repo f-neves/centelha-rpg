@@ -15,8 +15,11 @@ Hoje o site mora em `https://f-neves.github.io/centelha-rpg/`.
 
 ## 1. A resposta curta
 
-**Se puder gastar R$ 40 por ano: `centelha.rec.br`.** Livre, categoria de recreação e
-jogos, portátil, sem depender de voluntário nenhum, no ar em minutos.
+**Com teto de R$ 100 por ano: `centelha.net`, R$ 64.** É o único jeito de ter o nome
+limpo "centelha" num sufixo que todo mundo reconhece. Detalhe na seção 11.
+
+**Se a conta for a mais barata que presta: `centelha.rec.br`, R$ 40.** Livre, categoria
+de recreação e jogos, portátil, preço fixo em real, no ar em minutos.
 
 **Se for grátis, e ponto: `centelha-rpg.netlify.app` (ou `.pages.dev`).** Feio e preso
 à casa, mas é o único grátis que a gente tem direito de usar sem torcer.
@@ -146,7 +149,85 @@ Consultados via RDAP e via a API do Registro.br (`status: 0` = livre, `2` = regi
 
 O Registro.br cobra R$ 40 por ano para qualquer categoria, no registro e na renovação,
 com CPF, e aceita pagamento de até 10 anos de uma vez. (Eu tinha suposto que existia um
-`rpg.br`; a API do Registro.br respondeu "Categoria inválida". Não existe.)
+`rpg.br`; a API do Registro.br respondeu "Categoria inválida". Não existe. `jogos.br`
+também não.)
+
+### 3.5 Até R$ 100 por ano: o que isso abre
+
+Preços de renovação da Cloudflare Registrar, que vende ao custo de atacado do registro,
+sem margem. Convertidos em 14/08/2026 com o dólar a R$ 5,245 e **mais 3,5% de IOF**, que
+é o que um cartão brasileiro cobra numa compra em moeda estrangeira.
+
+| domínio | situação | US$/ano | **R$/ano com IOF** |
+|---|---|---:|---:|
+| `centelha.page` | **livre** | 10,20 | **55** |
+| `centelha.xyz` | **livre** | 11,20 | **61** |
+| `centelha.net` | **livre** | 11,86 | **64** |
+| `centelha.dev` | **livre** | 12,20 | **66** |
+| `centelha.club` | **livre** | 15,20 | **83** |
+| `centelha.me` | **livre** | 16,56 | **90** |
+| `centelha.com` | registrado | 10,46 | 57 |
+| `centelha.app` | registrado | 14,20 | 77 |
+| `centelha.blog` | livre | 20,20 | 110 · acima do teto |
+| `centelha.info` · `.pro` | livres | 21,20 | 115 |
+| `centelha.wiki` · `.space` · `.ink` | livres | 25,20 | 137 |
+| `centelha.games` | livre | 26,20 | 142 |
+| `centelha.site` | livre | 27,70 | 150 |
+| `centelha.life` | livre | 28,20 | 153 |
+| `centelha.fun` | livre | 30,20 | 164 |
+| `centelha.world` | livre | 32,20 | 175 |
+
+E no Registro.br, a R$ 40 fixos, todos livres: `centelha.rec.br`, `centelha.art.br`,
+`centelha.wiki.br`, `centelha.tec.br`, `centelha.blog.br`, `centelharpg.com.br`,
+`rpgcentelha.com.br`, `sistemacentelha.com.br`, `centelhad6.com.br`.
+(`centelha.com.br`, `.net.br` e `.eco.br` estão registrados.)
+
+**O que o teto de R$ 100 compra, em uma frase: o nome limpo "centelha" num sufixo que as
+pessoas reconhecem.** De graça isso não existia, porque `centelha` está tomado nos três
+hospedeiros, e no `.br` o `.com.br` já foi.
+
+### 3.6 A conta de dez anos, que não é a de um ano
+
+O preço de hoje engana. As duas famílias andam em direções diferentes:
+
+- **`.br`**: R$ 40 por ano, em real, e o Registro.br mantém esse valor há anos. Dá para
+  pagar 10 anos à vista e travar tudo.
+- **gTLDs**: preço em dólar, com aumento contratual previsto. A Verisign **já anunciou
+  alta de 7% no `.com` a partir de 1º de novembro de 2026** (de US$ 10,26 para US$ 10,97),
+  e o contrato dela permite até 7% ao ano em quatro dos seis anos de cada ciclo. No `.net`
+  o teto contratual é de **10% ao ano até meados de 2029**.
+
+Ou seja, `centelha.net` a R$ 64 hoje não é R$ 64 daqui a dez anos: é isso mais os
+aumentos do registro, mais o que o dólar fizer, mais IOF. O `.br` a R$ 40 é R$ 40.
+
+### 3.7 Existe ganho técnico? Quase nenhum, e eu conferi
+
+Vale separar o que é ganho real do que é conversa de vendedor.
+
+**Nada na nossa arquitetura depende do sufixo.** Site estático, Supabase por websocket,
+estado em `localStorage`, service worker: tudo isso enxerga a **origem**, e para a origem
+tanto faz se ela termina em `.net`, `.rec.br` ou `.dev`. Não há aqui um número que
+justifique pagar mais por desempenho, porque não existe diferença de desempenho.
+
+A única diferença técnica de verdade que encontrei é o **HSTS preload**. Confirmei
+direto na fonte do Chromium (`net/http/transport_security_state_static.json`):
+
+```json
+{ "name": "dev",  "policy": "public-suffix", "mode": "force-https", "include_subdomains": true },
+{ "name": "app",  "policy": "public-suffix", "mode": "force-https", "include_subdomains": true },
+{ "name": "page", "policy": "public-suffix", "mode": "force-https", "include_subdomains": true },
+```
+
+`.dev`, `.app` e `.page` são TLDs inteiros marcados como "force-https": o navegador se
+recusa a tentar HTTP, mesmo na primeira visita. O ganho concreto é **um salto de
+redirecionamento a menos** para quem digita o endereço sem `https://`. É real, e é
+pequeno: um RTT, uma vez, por navegador.
+
+**E não é exclusivo.** Qualquer domínio pode ser submetido à lista em `hstspreload.org` e
+ter o mesmo efeito, bastando servir o cabeçalho `Strict-Transport-Security` com
+`preload`. O `.dev` só poupa o pedido.
+
+**Conclusão: o ganho de pagar mais é de nome e de privacidade, não de tecnologia.**
 
 ---
 
@@ -426,15 +507,77 @@ da 5.1 paga duas vezes. É por isso que os R$ 40 continuam parecendo baratos.
 
 ---
 
-## 11. Decisão
+## 11. Com teto de R$ 100, a escolha muda
 
-Precisa de uma escolha, e ela é sua.
+Com o teto novo, os finalistas passam a ser dois, e a diferença entre eles é de R$ 24 por
+ano no primeiro ano.
 
-1. **`centelha.rec.br`**, R$ 40/ano. É o que eu faria: melhor nome, portátil de verdade,
-   sem regulamento de terceiro, e o único em que "uma mudança de origem, para sempre"
-   depende só de a gente lembrar de pagar.
-2. **`centelha-rpg.netlify.app`**, grátis e no ar hoje, ao preço de amarrar a origem à
-   casa. Melhor grátis disponível de fato.
-3. **`centelha.eu.org`**, grátis e bonito, se der para esperar meses.
+### `centelha.net` · R$ 64/ano
+
+**A favor**
+
+- **É o nome limpo.** "Centelha ponto net" se diz inteiro numa mesa de jogo, cabe na capa
+  de um PDF e ninguém pergunta como se escreve. Nenhuma outra opção viável tem isso: no
+  grátis o nome está tomado, e no `.br` o `.com.br` já foi.
+- **Sufixo que todo mundo reconhece**, sem precisar explicar o que é.
+- **Privacidade de graça.** Registradores internacionais dão ocultação de whois sem
+  custo, então seu nome completo não vira registro público. No `.br` isso não existe.
+- **Sem CPF, sem cadastro no Registro.br.**
+- Portátil, como qualquer domínio próprio.
+
+**Contra**
+
+- **Custa 60% mais que o `.br` hoje, e a distância aumenta.** O `.net` tem teto contratual
+  de 10% de aumento ao ano até 2029. Somando dólar e IOF, o valor de daqui a dez anos é
+  desconhecido por três motivos ao mesmo tempo.
+- **Exposição ao câmbio.** Se o dólar for a R$ 6,50, o mesmo domínio custa R$ 80 sem que
+  nada tenha mudado.
+- Herda um sufixo genérico, sem a marca de "brasileiro" que o `.br` carrega.
+
+### `centelha.rec.br` · R$ 40/ano
+
+**A favor**
+
+- **R$ 40, em real, e estável.** Dá para travar 10 anos à vista e nunca mais pensar.
+- **`rec.br` é a categoria de recreação e jogos**, o que é literalmente o que isto é.
+- Diz "brasileiro" sozinho, o que para um livro em português é informação, não enfeite.
+- Portátil, e o painel do Registro.br muda DNS em minutos.
+
+**Contra**
+
+- **`.rec.br` é obscuro.** A maioria dos brasileiros nunca viu, e vai achar que faltou
+  alguma coisa entre o "centelha" e o "br". `centelha.com.br` resolveria isso e está
+  tomado até 2028.
+- **Publica seu nome completo** no whois, com CPF mascarado. Não há privacidade de
+  domínio no `.br`.
+- Exige CPF e cadastro.
+
+### As que perdem, e por quê
+
+- **`centelha.dev` (R$ 66)**: é o mesmo defeito que derrubou o `is-a.dev`, só que
+  pagando. `.dev` sinaliza "programador" para um público de jogadores. Seria incoerente
+  eu criticar `centelha.is-a.dev` pelo nome e recomendar `centelha.dev`.
+- **`centelha.page` (R$ 55)** e **`centelha.xyz` (R$ 61)**: baratos, mas `.page` é uma
+  palavra em inglês sem sentido aqui, e `.xyz` carrega fama de sufixo descartável.
+- **`centelha.club` (R$ 83)**: "clube" funciona em português e combina com jogo de mesa.
+  Perde por preço e por ser menos legível que `.net`.
+- **`centelharpg.com.br` (R$ 40)**: o sufixo mais legível do Brasil, com o nome piorado.
+  Troca um problema pelo outro.
+
+---
+
+## 12. Decisão
+
+Se o teto é R$ 100/ano, eu escolheria **`centelha.net`**, e o raciocínio é o mesmo do
+resto do documento levado até o fim: **a origem é a única decisão cara de refazer.**
+Hospedeiro se troca em minutos, DNS se troca em minutos, preço se renegocia mudando de
+registrador. O nome não: mudar o nome depois custa as 7 chaves de `localStorage` de todo
+mundo, a ficha de personagem junto. Então é nele que faz sentido gastar os R$ 24 a mais.
+
+Se a estabilidade em real pesar mais que o nome, **`centelha.rec.br`** continua uma
+escolha defensável, e a mais barata das boas.
+
+Se for grátis mesmo assim, **`centelha-rpg.netlify.app`**, sabendo que a conta da seção
+5.1 será paga de novo no dia da próxima mudança.
 
 Escolhido o endereço, a fase 1 do `Migracao_Astro7.md` executa sozinha, e eu verifico.

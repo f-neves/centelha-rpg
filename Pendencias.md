@@ -419,7 +419,10 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   disponibilidade, regulamento e preço conferidos em 14/08/2026. Três finalistas:
   `centelha.rec.br` (R$ 40/ano no Registro.br, categoria de recreação e jogos),
   `centelha-rpg.netlify.app` (grátis e imediato) e `centelha.eu.org` (grátis e bonito, mas
-  aprovação manual de semanas a meses). A Freenom (`.tk`, `.ml`, `.ga`) morreu em 2024 e
+  aprovação manual de semanas a meses). **Com teto de R$ 100/ano entra `centelha.net`, a
+  R$ 64 com IOF, que é a única forma de ter o nome limpo "centelha" num sufixo conhecido**
+  (`centelha.com.br` está tomado até 2028). Não há ganho técnico em pagar mais: só de nome
+  e de privacidade. A Freenom (`.tk`, `.ml`, `.ga`) morreu em 2024 e
   voltou em 2026 cobrando; `js.org` e **`is-a.dev`** estão fora por regulamento, os dois
   exigem projeto ligado a desenvolvimento de software. **O que decide não é o preço, é a
   portabilidade:** cada mudança de origem apaga as 7 chaves de `localStorage` dos leitores,
