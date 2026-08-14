@@ -6,20 +6,28 @@ endereço**, porque o endereço é o que fica, e o hospedeiro é o que se troca.
 
 Hoje o site mora em `https://f-neves.github.io/centelha-rpg/`.
 
+> **Correção de 14/08, mesma tarde.** A primeira versão deste documento recomendava
+> `centelha.is-a.dev` como melhor opção grátis. Ao aprofundar a comparação, li os Termos
+> de Serviço deles (atualizados em 3 de agosto de 2026) e **o Centelha muito provavelmente
+> não é elegível**. A seção 8 traz o texto. A recomendação mudou.
+
 ---
 
 ## 1. A resposta curta
 
-**O melhor endereço grátis disponível é `centelha.is-a.dev`.** Está livre (verifiquei
-por dois caminhos independentes), está na Public Suffix List, é um CNAME, e por ser um
-CNAME ele sobrevive a qualquer troca de hospedeiro no futuro.
+**Se puder gastar R$ 40 por ano: `centelha.rec.br`.** Livre, categoria de recreação e
+jogos, portátil, sem depender de voluntário nenhum, no ar em minutos.
 
-**Mas eu discordo da premissa, e o número é R$ 40 por ano.** A seção 6 explica: a nossa
-arquitetura cobra um preço concreto por cada mudança de endereço, e esse preço se paga
-uma vez por endereço, não uma vez por hospedeiro. Um domínio comprado é o único que
-garante que a conta seja paga uma vez só. `centelha.rec.br` está livre no Registro.br.
+**Se for grátis, e ponto: `centelha-rpg.netlify.app` (ou `.pages.dev`).** Feio e preso
+à casa, mas é o único grátis que a gente tem direito de usar sem torcer.
 
-Se a resposta for "grátis, e ponto", a seção 7 tem o passo a passo do `is-a.dev`.
+**`centelha.eu.org` é o grátis bonito**, e a única razão de não estar em primeiro é que
+a aprovação é manual, demora de semanas a meses e não é garantida. Dá para pedir hoje
+sem parar nada, porque pedir não custa.
+
+**`centelha.is-a.dev` saiu da frente.** Está livre, é portátil e seria ótimo, mas o
+regulamento deles restringe o serviço a projetos ligados a desenvolvimento de software.
+Um livro de RPG não é. Detalhe na seção 8.
 
 ---
 
@@ -106,7 +114,7 @@ curl -s -L https://centelha.pages.dev | grep -o '<title>[^<]*'
 
 | nome | situação | evidência |
 |---|---|---|
-| `centelha.is-a.dev` | **LIVRE** | registro devolve 404; a página curinga diz "Available Domain" |
+| `centelha.is-a.dev` | livre (mas ver seção 8) | registro devolve 404; a página curinga diz "Available Domain" |
 | `centelha.js.org` | livre, porém inelegível | não consta na lista de 3.909 nomes ativos |
 | `centelha.pages.dev` | **ocupado** | HTTP 200, título "Centelha · online atelier" |
 | `centelha.vercel.app` | **ocupado** | HTTP 200, título "Alohomora AI" |
@@ -116,8 +124,8 @@ curl -s -L https://centelha.pages.dev | grep -o '<title>[^<]*'
 | `centelha-rpg.vercel.app` | livre | HTTP 404, 107 bytes, igual ao nome aleatório |
 | `centelha.eu.org` | indeterminado | os servidores do `eu.org` não responderam em 2 s |
 
-**O nome limpo "centelha" está tomado nos três hospedeiros e livre no `is-a.dev`.** Nos
-hospedeiros sobra `centelha-rpg`, que é mais feio e ainda por cima preso à casa.
+**O nome limpo "centelha" está tomado nos três hospedeiros.** Nos hospedeiros sobra
+`centelha-rpg`, que é mais feio e ainda por cima preso à casa.
 
 ### 3.4 Pagos, para ter o número da comparação
 
@@ -142,31 +150,7 @@ com CPF, e aceita pagamento de até 10 anos de uma vez. (Eu tinha suposto que ex
 
 ---
 
-## 4. Os candidatos que sobram
-
-| | endereço | grátis | raiz do site | portátil | espera | risco |
-|---|---|:---:|:---:|:---:|---|---|
-| A | ficar em `f-neves.github.io/centelha-rpg/` | sim | **não** | não | zero | nenhum, mas trava a fase 1 |
-| B | `centelha-rpg.pages.dev` (ou `.netlify.app`) | sim | sim | **não** | zero | preso ao hospedeiro |
-| C | **`centelha.is-a.dev`** | sim | sim | **sim** | horas a dias | projeto voluntário |
-| D | `centelha.eu.org` | sim | sim | **sim** | semanas a meses | aprovação manual, sem garantia |
-| E | `centelha.js.org` | sim | sim | sim | — | **inelegível** |
-| F | `centelha.rec.br` | R$ 40/ano | sim | **sim** | minutos | nenhum |
-
-**E está fora por regra, não por gosto.** O js.org exige, com todas as letras, que o
-site seja "*diretamente* relacionado ao ecossistema/comunidade JavaScript (como pacotes
-NPM e ferramentas JS, não páginas pessoais nem portfólios)". Um livro de RPG em pt-BR
-não passa. Pedir seria gastar o tempo de um voluntário para levar um não.
-
-**A está fora porque é justamente o que a fase 1 existe para desfazer.** Enquanto o site
-viver num subdiretório, o `base` continua atravessando o `astro.config.mjs`, o `url()`
-de `src/lib/site.ts`, o manifesto, o escopo do service worker, o ferramental e o
-workflow, e o `rehypeBaseLinks` continua sendo um dos três plugins que nos prendem ao
-pipeline `unified` em vez do Sätteri do Astro 7.
-
----
-
-## 5. O que a PSL faz por nós, com um caso real
+## 4. O que a PSL faz por nós, com um caso real
 
 Em outubro de 2025 o `statichost.eu`, um hospedeiro de sites estáticos que dá um
 subdomínio por cliente, teve **o domínio inteiro bloqueado pelo Google Safe Browsing**
@@ -188,13 +172,13 @@ favor de um domínio próprio.
 
 ---
 
-## 6. O que a nossa arquitetura cobra por uma mudança de endereço
+## 5. O que a nossa arquitetura cobra por uma mudança de endereço
 
 Aqui é onde a análise deixa de ser sobre domínios e passa a ser sobre este projeto.
 
 **Tudo que dói numa mudança está preso à origem, não ao hospedeiro.**
 
-### 6.1 O que os leitores perdem
+### 5.1 O que os leitores perdem
 
 O navegador guarda `localStorage` por origem. Trocar `f-neves.github.io` por qualquer
 outra coisa apaga, para todo mundo que já usa o site, estas 7 chaves:
@@ -213,7 +197,7 @@ Há um paraquedas parcial: `/ficha` sabe ler um estado vindo em base64 no *hash*
 (`src/pages/ficha.astro`, linha 21), então uma ficha atravessa por link. Marcadores e
 configurações, não. E ninguém guarda um link antes de saber que precisava.
 
-### 6.2 O que nós temos de mexer
+### 5.2 O que nós temos de mexer
 
 - **Supabase**: a Site URL e a lista de Redirect URLs. A recuperação de senha monta o
   destino com `${location.origin}${base}redefinir-senha` (`src/pages/conta.astro`,
@@ -227,95 +211,214 @@ configurações, não. E ninguém guarda um link antes de saber que precisava.
   servidor; o que dá para fazer é manter o repositório publicando uma árvore de páginas
   com `meta refresh`. Funciona, mas é um consolo, não um 301.
 
-### 6.3 A conta que decide
+### 5.3 A conta que decide
 
 Esse custo se paga **por mudança de origem**. Então a pergunta certa não é "qual
 endereço é melhor hoje", é **quantas vezes vamos pagar isso**.
 
-- Opção B (`centelha-rpg.pages.dev`) solda a origem à casa. No dia em que a Cloudflare
-  mudar o plano gratuito, ou em que a mesa precisar de algo que ela não faça, mudar de
-  casa é mudar de origem **de novo**, e a conta da 6.1 vem pela segunda vez.
-- Opções C, D e F são CNAME. Trocar de hospedeiro vira editar um registro de DNS, e a
-  origem não se mexe. Os leitores não perdem nada, o Supabase não muda, o Search
-  Console não muda.
-
-**Essa é a razão técnica da recomendação, e ela não tem nada a ver com o preço.** Entre
-grátis-preso e grátis-portátil, portátil ganha por uma diferença que se mede em fichas
-de personagem perdidas.
-
-E é a mesma razão pela qual eu ponho os R$ 40 na mesa. C e D são portáteis **enquanto
-existirem**. O `is-a.dev` vive de um patrocínio da Cloudflare, declarado no README
-deles: "não conseguiríamos operar sem essa ajuda". O `eu.org` é um serviço voluntário
-desde 1996, que responde e-mail "quando houver intervenção humana". Nenhum dos dois vai
-sumir amanhã, e os dois podem sumir. Um domínio comprado é o único em que a promessa de
-"uma mudança de origem só, para sempre" depende apenas de a gente lembrar de pagar.
-
-R$ 40 por ano são R$ 3,33 por mês. A conta da 6.1, paga uma vez a mais, custa mais que
-dez anos disso.
+- Um subdomínio de hospedeiro solda a origem à casa. No dia em que a Cloudflare mudar o
+  plano gratuito, ou em que a mesa precisar de algo que ela não faça, mudar de casa é
+  mudar de origem **de novo**, e a conta da 5.1 vem pela segunda vez.
+- `eu.org`, `is-a.dev` e um domínio comprado são CNAME. Trocar de hospedeiro vira editar
+  um registro de DNS, e a origem não se mexe. Os leitores não perdem nada, o Supabase
+  não muda, o Search Console não muda.
 
 ---
 
-## 7. Se for grátis: `centelha.is-a.dev`, passo a passo
+## 6. A comparação, lado a lado
 
-O `is-a.dev` guarda os nomes num repositório público no GitHub, um arquivo JSON por
-nome, e publica na infraestrutura da Cloudflare. Mudança é *pull request* com revisão
-humana, o que leva de algumas horas a alguns dias.
-
-1. Escolher e criar o projeto no hospedeiro (fase 1.1 do `Migracao_Astro7.md`) e anotar
-   o endereço `*.pages.dev` ou `*.netlify.app` que ele der.
-2. Adicionar o domínio `centelha.is-a.dev` como domínio personalizado no hospedeiro.
-3. Abrir PR em `is-a-dev/register` criando `domains/centelha.json`:
-
-```json
-{
-  "owner": { "username": "f-neves", "email": "neves.mecanica@gmail.com" },
-  "records": { "CNAME": "centelha-rpg.pages.dev" }
-}
-```
-
-4. Esperar a revisão.
-
-**Um detalhe que morde, e é específico da Cloudflare Pages:** justamente por o
-`is-a.dev` estar na PSL, **o painel da Cloudflare não aceita adicionar esse domínio**.
-Tem de ser pela API, e a documentação do próprio `is-a.dev` traz o procedimento e uma
-interface pronta em `cf-pages.is-a.dev` para fazer isso. Com **Netlify ou Vercel o
-problema não existe**: é CNAME e pronto, e há guia oficial do `is-a.dev` para os dois.
-
-Ou seja: se a escolha for `is-a.dev`, **Netlify é o caminho com menos atrito**, ao
-contrário do que a auditoria sugeriu quando só se olhava banda. Se a escolha for
-Cloudflare Pages, é uma volta a mais, uma vez só.
-
-O preço estético, que eu não vou disfarçar: `centelha.is-a.dev` se lê "centelha is a
-dev". A piada é de portfólio de programador e não combina com um livro de RPG em
-português. Para quem joga, é um endereço estranho. Para nós, é um CNAME perfeito.
+| | **A · `centelha.rec.br`** | **B · `centelha.is-a.dev`** | **C · `centelha-rpg.netlify.app`** | **D · `centelha.eu.org`** |
+|---|---|---|---|---|
+| custo | R$ 40/ano (até 10 anos à vista) | grátis | grátis | grátis, sem vencimento |
+| no ar em | minutos | horas a dias (revisão humana) | minutos | **semanas a meses** |
+| podemos usar? | sim | **provavelmente não** (seção 8) | sim | sim |
+| se um dia vender o livro | sem problema | **proibido** (ToS 4.8) | Netlify e Cloudflare sim; **Vercel não** | desencorajado, não proibido |
+| portátil (trocar de casa) | **sim** | sim | **não** | **sim** |
+| trocar o DNS às pressas | minutos, no painel | **um PR e revisão humana** | não existe: é mudar de origem | minutos, no painel |
+| quem pode tirar de você | ninguém, se pagar | eles, "a qualquer tempo, por qualquer razão" | o hospedeiro, se mudar o plano | eles, se o serviço parar |
+| na PSL | não precisa: é domínio próprio | sim | sim | sim |
+| reputação compartilhada | **nenhuma** | herda a dos vizinhos | herda a dos vizinhos | herda a dos vizinhos |
+| como se lê | limpo, e `rec` combina | "centelha **is a dev**" | carrega o nome da empresa | limpo, mas soa europeu |
+| subdomínio (`mesa.centelha.x`) | sim | sim (aninhado é permitido) | não | sim |
+| e-mail no domínio | sim | sim (MX permitido) | não | sim |
+| privacidade do titular | **nome público** no whois, CPF mascarado | usuário do GitHub público, e-mail opcional | nada público | não verificado |
+| como se perde | esquecer de pagar | violar o ToS, ou o projeto acabar | o plano grátis mudar | o serviço acabar |
+| trabalho para configurar | painel + DNS | PR **escrito à mão** (seção 8) | um clique | formulário + espera |
 
 ---
 
-## 8. Se der para esperar: `centelha.eu.org`
+## 7. Cada uma por inteiro
 
-É o melhor nome entre os grátis: neutro, sem piada, sem marca de hospedeiro. Registro
-sem custo e sem vencimento, com delegação de DNS completa, desde 1996.
+### A · `centelha.rec.br` · R$ 40 por ano
 
-O que atrapalha: a aprovação é manual, e os relatos vão de "alguns dias" a semanas ou
-meses, sem garantia de aceitação. E o único teste que fiz não foi animador: os
-servidores de `eu.org` não responderam uma consulta em 2 s pelo 1.1.1.1. É uma amostra
-de um, não é prova de nada, mas combina com a fama.
+**A favor**
 
-Caminho razoável se quiser esse nome: **pedir o `eu.org` hoje e não esperar por ele.**
-Subir no `is-a.dev` ou no subdomínio do hospedeiro enquanto isso e, se sair, aí sim
-decidir se vale a mudança de origem (que custa a conta da 6.1). Ou seja: pedir é grátis,
-mas trocar depois não é.
+- **É seu.** Nenhum voluntário, nenhuma empresa e nenhum regulamento entre você e o
+  endereço. A única forma de perder é não pagar.
+- **Portátil de verdade e rápido.** Trocar de hospedeiro é editar um CNAME no painel do
+  Registro.br, com efeito em minutos. Se o hospedeiro cair numa noite de sessão, você
+  resolve na hora. Nas opções B e D isso depende de terceiros.
+- **A categoria combina.** `rec.br` é a de recreação, entretenimento e jogos. É a caixa
+  certa, e o endereço se explica sozinho.
+- **Zero reputação herdada.** Nenhum vizinho pode derrubar você por phishing, como
+  aconteceu no caso da seção 4.
+- **Não fecha nenhuma porta.** Vender o PDF um dia, pôr `mesa.centelha.rec.br` num
+  servidor separado, ter `contato@centelha.rec.br`: tudo permitido, nada a pedir.
+- **Custo travável.** Dá para pagar 10 anos de uma vez e apagar o risco de esquecimento.
+
+**Contra**
+
+- **Custa dinheiro**, que é exatamente o que você pediu para evitar. R$ 40/ano, R$ 3,33
+  por mês.
+- **Esquecer de pagar tira o site do ar.** O cronograma do Registro.br: no vencimento
+  ainda funciona, 14 dias depois congela (sai do ar), e fica congelado até 90 dias antes
+  de ser liberado para terceiros. Ou seja, há ~104 dias de rede de segurança, mas o site
+  cai já no 14º.
+- **Exige CPF e expõe seu nome.** O whois do Registro.br publica o nome completo do
+  titular e o CPF parcialmente mascarado. Não existe serviço de privacidade de domínio
+  no `.br`, ao contrário dos registradores internacionais.
+- **`centelha.com.br` está tomado** (vence em 2028). Se `.com.br` for inegociável para
+  você, sobra `centelharpg.com.br` ou `centelha-rpg.com.br`, que são piores que
+  `centelha.rec.br`.
+
+### B · `centelha.is-a.dev` · grátis, e quase certamente fora
+
+**A favor**
+
+- **O nome limpo está livre**, o que não acontece em nenhum hospedeiro.
+- Portátil, na PSL, com DNS completo (A, AAAA, CNAME, MX, TXT, NS, SRV, CAA), subdomínio
+  aninhado permitido, e-mail permitido, tudo grátis.
+- Roda sobre a Cloudflare, com patrocínio declarado (programa Project Alexandria).
+
+**Contra**
+
+- **O regulamento provavelmente nos exclui.** Ver seção 8. Este é o item que decide.
+- **Uso comercial é proibido** (ToS 4.8). Se o Centelha um dia virar um PDF à venda, ou
+  ganhar uma vaquinha, o endereço vira irregular.
+- **Toda mudança de DNS é um pull request com revisão humana.** Em dia normal isso é
+  irrelevante. No dia em que o hospedeiro cai e você precisa apontar para outro lugar,
+  é a diferença entre cinco minutos e três dias.
+- **Eles podem encerrar "a qualquer tempo, por qualquer razão"**, e o ToS diz com todas
+  as letras que fazem esforço razoável para avisar antes, mas não são obrigados.
+- **O serviço é "as-is", sem garantia de disponibilidade nem permanência**, e vive de
+  patrocínio.
+- **Eu não posso abrir esse PR por você.** O ToS deles, seção 5, diz que são fortemente
+  contra o uso de IA para criar pull requests e que podem fechar o PR e bloquear o autor.
+  Teria de ser escrito e enviado por você, à mão.
+
+### C · `centelha-rpg.netlify.app` ou `centelha-rpg.pages.dev` · grátis e imediato
+
+**A favor**
+
+- **Zero atrito.** Um clique no painel, no ar em minutos, sem pedir nada a ninguém, sem
+  revisão, sem espera, sem CPF.
+- **Tira o site do subdiretório hoje**, que é o que destrava a fase 1 da migração e mata
+  o `rehypeBaseLinks`.
+- Na PSL, com HTTPS automático.
+- **Nada público sobre você.**
+- **Reversível para cima:** se depois comprar um domínio, o endereço antigo continua
+  funcionando e dá para redirecionar de verdade (aqui o hospedeiro faz 301, coisa que o
+  GitHub Pages não faz).
+
+**Contra**
+
+- **Solda a origem à casa.** Este é o defeito estrutural, e é o mais caro: trocar de
+  hospedeiro passa a custar a conta inteira da seção 5.1, fichas de personagem inclusas.
+- **O nome bom já foi.** `centelha` está ocupado nos três; sobra `centelha-rpg`.
+- **Carrega a marca de outra empresa** no endereço do seu livro, para sempre.
+- **Depende de um plano gratuito continuar existindo** com as regras de hoje. Nenhum dos
+  três prometeu isso a ninguém.
+- **No Vercel, uso comercial é proibido** no plano Hobby. Netlify e Cloudflare Pages não
+  têm essa cláusula.
+- Herda reputação de vizinhança, como qualquer sufixo compartilhado.
+
+### D · `centelha.eu.org` · grátis, bonito, e lento
+
+**A favor**
+
+- **O melhor nome entre os grátis:** neutro, sem piada, sem marca de empresa.
+- **Sem custo e sem vencimento**, desde 1996. Não há renovação para esquecer.
+- **Delegação de DNS completa**, com liberdade total.
+- **Sem restrição de conteúdo relevante para nós.** A política proíbe spam, phishing e
+  malware, e diz explicitamente que **não europeus são bem-vindos**. Comércio pequeno é
+  desencorajado ("apenas como último recurso"), não proibido.
+- Portátil, como A e B.
+
+**Contra**
+
+- **A espera é o problema.** Aprovação manual, e os relatos vão de dias a semanas a
+  meses, sem garantia de aceitação. Isso não combina com destravar a fase 1 agora.
+- **O único teste que fiz não animou:** os servidores de `eu.org` não responderam uma
+  consulta em 2 s pelo 1.1.1.1. É uma amostra de um, e não é prova de nada, mas combina
+  com a fama.
+- **É um serviço voluntário de trinta anos.** Isso é ao mesmo tempo o melhor argumento a
+  favor (durou trinta anos) e o risco (depende de gente).
+- Reputação de vizinhança compartilhada.
 
 ---
 
-## 9. O que não fazer
+## 8. Por que o `is-a.dev` saiu da frente
+
+Os Termos de Serviço deles, atualizados em **3 de agosto de 2026**, seção 3:
+
+> "Subdomains are intended solely for individuals, software developer groups and
+> non-commercial projects that are **related to software development** [...]
+> We reserve the right to deny any subdomain registration request for any reason."
+
+E na seção 4, entre as atividades proibidas:
+
+> "8. Commercial, for-profit, or political purposes"
+> "14. Blogs that are not primarily related to software development"
+
+O Centelha é um livro de regras de RPG em português. O site tem um motor de ficha, um
+bestiário e uma mesa virtual, então há software de verdade aqui, e dá para argumentar.
+Mas o texto não fala em "projeto que usa software", fala em projeto **relacionado a
+desenvolvimento de software**, e a decisão é de um revisor humano que pode negar por
+qualquer razão.
+
+**Isso põe o `is-a.dev` na mesma prateleira do `js.org`:** tecnicamente perfeito,
+regulamentarmente do lado de fora. A diferença é que o `js.org` é um não evidente e o
+`is-a.dev` é um talvez. Apostar num talvez para depois ter o endereço revogado é o pior
+dos mundos, porque revogação depois de publicado custa a conta da seção 5.1.
+
+Some-se a cláusula 4.8: se o Centelha um dia for vendido, ou tiver apoio recorrente, o
+endereço fica irregular por consequência do sucesso.
+
+E há a seção 5 do ToS, que me atinge diretamente: eles são **fortemente contra pull
+requests criados com IA** e podem fechar o PR e bloquear o autor. Então, se você quiser
+tentar mesmo assim, o pedido tem de ser escrito e enviado por você, à mão. Eu não faço
+essa parte.
+
+---
+
+## 9. Quando cada uma ganha
+
+- **A (`rec.br`) ganha** se o site vai continuar existindo daqui a três anos, se um dia
+  pode ter qualquer forma de dinheiro envolvido, ou se você quer poder trocar de casa
+  numa madrugada sem depender de ninguém.
+- **C (`netlify.app`) ganha** se a prioridade é destravar a fase 1 esta semana sem gastar
+  nada nem esperar, e você aceita conscientemente pagar a conta da 5.1 mais uma vez lá na
+  frente.
+- **D (`eu.org`) ganha** se você quer o nome bonito de graça e o calendário não aperta.
+- **B (`is-a.dev`) ganha** só se você tentar, for aceito, e o projeto nunca ganhar
+  dinheiro. Três condições, e a primeira não depende de nós.
+
+**Combinação que eu acho a mais sensata das grátis:** pedir o `eu.org` hoje, subir em
+`centelha-rpg.netlify.app` enquanto ele não sai, e mudar quando (e se) sair. O custo
+disso é honesto e conhecido: **duas mudanças de origem em vez de uma**, ou seja, a conta
+da 5.1 paga duas vezes. É por isso que os R$ 40 continuam parecendo baratos.
+
+---
+
+## 10. O que não fazer
 
 - **Não usar Freenom.** Ver seção 2.
 - **Não usar sufixo fora da PSL** (`is-a.software`, `moe.page`, `runs-on.tech`,
-  `jsid.dev` e a maioria dos que aparecem em listas de blog). Ver seção 5.
+  `jsid.dev` e a maioria dos que aparecem em listas de blog). Ver seção 4.
 - **Não pedir `js.org`.** A regra deles exclui este site explicitamente.
-- **Não subir num subdomínio do hospedeiro "por enquanto".** Não existe "por enquanto"
-  numa origem: cada troca cobra a conta da 6.1 outra vez.
+- **Não pedir `is-a.dev` sem ler a seção 8**, e, se pedir, escrever o PR você mesmo.
+- **Não usar Vercel** se houver qualquer chance de o Centelha gerar receita: o plano
+  Hobby proíbe uso comercial. Netlify e Cloudflare Pages não proíbem.
 - **Não misturar a mudança de endereço com a subida para o Astro 7.** Continua valendo
   o que está no `Migracao_Astro7.md`: superfícies diferentes, riscos de natureza
   diferente, e juntas ninguém sabe qual quebrou o quê.
@@ -323,15 +426,15 @@ mas trocar depois não é.
 
 ---
 
-## 10. Decisão
+## 11. Decisão
 
-Precisa de uma escolha, e ela é sua. As três que fazem sentido:
+Precisa de uma escolha, e ela é sua.
 
-1. **`centelha.rec.br`**, R$ 40/ano no Registro.br. Melhor nome, categoria certa
-   (recreação e jogos), portátil, sem depender de voluntário nenhum. É o que eu faria.
-2. **`centelha.is-a.dev`**, grátis, disponível hoje, portátil, com nome esquisito para
-   o público do site. Melhor opção grátis, e melhor com Netlify que com Cloudflare.
-3. **`centelha-rpg.pages.dev`**, grátis e imediato, sem nenhuma espera nem PR, ao preço
-   de amarrar a origem à Cloudflare para sempre.
+1. **`centelha.rec.br`**, R$ 40/ano. É o que eu faria: melhor nome, portátil de verdade,
+   sem regulamento de terceiro, e o único em que "uma mudança de origem, para sempre"
+   depende só de a gente lembrar de pagar.
+2. **`centelha-rpg.netlify.app`**, grátis e no ar hoje, ao preço de amarrar a origem à
+   casa. Melhor grátis disponível de fato.
+3. **`centelha.eu.org`**, grátis e bonito, se der para esperar meses.
 
 Escolhido o endereço, a fase 1 do `Migracao_Astro7.md` executa sozinha, e eu verifico.

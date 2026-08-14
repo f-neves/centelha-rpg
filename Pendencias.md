@@ -416,16 +416,18 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 ## J. Infraestrutura · endereço, hospedagem e versão
 
 - [ ] **J1 · [DECIDIR] Qual endereço o site vai ter.** Análise completa em `Dominio.md`, com
-  disponibilidade e preço conferidos em 14/08/2026. Grátis, o melhor é `centelha.is-a.dev`
-  (livre, na Public Suffix List, e portátil porque é CNAME); pago, `centelha.rec.br` sai por
-  R$ 40/ano no Registro.br. A Freenom (`.tk`, `.ml`, `.ga`) morreu em 2024 e voltou em 2026
-  cobrando. **O que decide não é o preço, é a portabilidade:** cada mudança de origem apaga
-  as 7 chaves de `localStorage` dos leitores, ficha de personagem inclusa, então a conta se
-  paga por endereço, não por hospedeiro. Um subdomínio do hospedeiro (`*.pages.dev`) solda
-  a origem à casa e cobra a conta de novo no dia da próxima mudança.
-- [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4. Depende de J1: se o
-  endereço for um subdomínio grátis que esteja na PSL, o painel da Cloudflare não o aceita e
-  o Netlify passa à frente.
+  disponibilidade, regulamento e preço conferidos em 14/08/2026. Três finalistas:
+  `centelha.rec.br` (R$ 40/ano no Registro.br, categoria de recreação e jogos),
+  `centelha-rpg.netlify.app` (grátis e imediato) e `centelha.eu.org` (grátis e bonito, mas
+  aprovação manual de semanas a meses). A Freenom (`.tk`, `.ml`, `.ga`) morreu em 2024 e
+  voltou em 2026 cobrando; `js.org` e **`is-a.dev`** estão fora por regulamento, os dois
+  exigem projeto ligado a desenvolvimento de software. **O que decide não é o preço, é a
+  portabilidade:** cada mudança de origem apaga as 7 chaves de `localStorage` dos leitores,
+  ficha de personagem inclusa, então a conta se paga por endereço, não por hospedeiro. Um
+  subdomínio do hospedeiro solda a origem à casa e cobra a conta de novo na próxima mudança.
+- [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4. Depende de J1, e uma
+  ressalva nova: **o plano grátis do Vercel proíbe uso comercial**, então ele só serve se o
+  Centelha nunca gerar receita. Netlify e Cloudflare Pages não têm essa cláusula.
 - [ ] **J3 · [FAZER, depois de J1 e J2] Sair do GitHub Pages, e só então subir para o Astro 7.**
   Fases, verificações e riscos em `Migracao_Astro7.md`. Os dois bloqueios técnicos da subida
   já saíram em 14/08 (o dev server centralizado e a aposentadoria do `@vite-pwa/astro`).

@@ -240,11 +240,17 @@ medida (o bestiário tem 7,8 MB de arte, e um dia isso conta), e é o caminho co
 menos atrito se a mesa algum dia precisar de servidor. Netlify é o mais simples
 de configurar dos três, se a preferência for essa.
 
-**Ressalva vinda do `Dominio.md`:** essa sugestão olhava só para banda. Se o
-endereço escolhido for um subdomínio grátis que esteja na Public Suffix List
-(caso do `is-a.dev`), **o painel da Cloudflare não aceita adicioná-lo** e o
-caminho passa pela API. Com Netlify ou Vercel é CNAME e pronto. Nesse cenário,
-Netlify passa à frente. A escolha do endereço vem antes da escolha da casa.
+**Duas ressalvas vindas do `Dominio.md`:**
+
+1. A sugestão acima olhava só para banda. Se o endereço escolhido for um
+   subdomínio grátis que esteja na Public Suffix List (caso do `is-a.dev`), **o
+   painel da Cloudflare não aceita adicioná-lo** e o caminho passa pela API. Com
+   Netlify ou Vercel é CNAME e pronto. A escolha do endereço vem antes da
+   escolha da casa.
+2. **O plano grátis do Vercel proíbe uso comercial.** Se algum dia o Centelha
+   for vendido, tiver anúncio ou apoio recorrente, o Hobby fica irregular e a
+   saída é US$ 20/mês. Netlify e Cloudflare Pages não têm essa cláusula. Isso
+   tira o Vercel da lista por precaução, e não por medida.
 
 **Isto não é urgente e não bloqueia nada.** O que bloqueava já saiu.
 
