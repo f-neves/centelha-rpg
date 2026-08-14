@@ -133,9 +133,26 @@ dano físico.**
 >
 > **Área e Volume são duas réguas do mesmo parâmetro**, como Duração breve e longa: o efeito usa
 > uma ou a outra, nunca as duas, e custam o mesmo. Quem decide é o que o efeito faz, não o jogador.
-> A maioria ocupa espaço e mede Volume; Área é para o que se espalha por uma superfície sem
-> espessura que importe (fogo rasteiro, gelo escorregadio, água que molha, poeira, luz, sombra).
-> Teste de mesa: **dá para estar dentro dele? Volume. Dá para pisar nele? Área.**
+>
+> A divisão saiu da leitura dos 46 Efeitos que usavam Área, e não é a que a gente supôs. Vinte e
+> oito deles não são matéria nem cobertura: são **jurisdição**, uma região do mapa onde uma regra
+> passa a valer (Noite, Santuário, Barreira, Círculo, Praga, Mordaça, Bolha Temporal). Então:
+>
+> - **Volume mede o corpo do elemento**, quanta matéria ou quanto fenômeno saiu.
+> - **Área mede a jurisdição**, e ali não interessa quanto elemento existe, interessa quem está
+>   dentro.
+>
+> Teste de mesa: **o efeito é matéria ou é regra?** E uma mesma Arte usa as duas conforme o efeito:
+> o Clarão de Luz é corpo, a Noite de Sombra é jurisdição.
+>
+> **O tamanho do Volume varia por estado da matéria** (decidido em 2026-08-15, em
+> `graus.volumePorEstado`), porque um metro cúbico de pedra, de água, de chama e de névoa são
+> esforços muito diferentes. Sólido metade · líquido e gelo normal · fenômeno dobro · gás oito
+> vezes · Raio troca Volume por Comprimento, porque descarga é trajeto e não corpo.
+>
+> Isso fecha uma simetria com a tabela de dano que apareceu sozinha: **a Terra dobra o dado e
+> divide o volume; o Ar não tem dano e multiplica o volume por oito.** As duas exceções de uma
+> tabela são as duas exceções da outra, em direções opostas.
 
 Cada Arte tem cinco parâmetros, mas **nem sempre os mesmos cinco**. Os que não fazem
 sentido são substituídos, e a substituição é fixa e escrita na Arte.
@@ -681,6 +698,23 @@ sofre a Penalidade. Se um dia precisar de resistência, o lugar é aqui.
 
 **13. Efeitos elementais sem número.** Treze ainda estão só com parâmetros padrão, e Fogo, Raio e
 Luz não têm nada de nível 1. Frente de revisão do autor.
+
+**17. A régua de luz, e o halo de Luz e Sombra.** Decidida a ordem: **a régua primeiro**. Hoje o
+site inteiro tem duas linhas sobre luz, e são modificadores de furtividade no capítulo de Sentidos
+(escuridão −4, campo aberto e iluminado +4). Falta uma escada curta (escuro · penumbra · tocha ·
+dia) com o que cada degrau faz nas rolagens e o que cada raça enxerga em cada um. Só depois o halo
+pluga nela: o Volume comprado é o **núcleo**, onde o efeito acontece (cega, revela, queima, ou
+apaga tudo), e até **três vezes o raio do núcleo** existe o **halo**, que não causa o efeito e só
+move a luz do lugar um degrau, para cima na Luz e para baixo na Sombra. O halo sai de graça, não
+custa parâmetro, e é o que dá às duas Artes uma borda macia em vez de uma parede.
+
+**18. Passar os Efeitos pela régua nova de Área e Volume.** Doze dos 46 que hoje usam Área medem
+corpo e deveriam usar Volume: Lascas, Onda, Maremoto, Sopro do Norte, Tromba, Sarçal, Erguer a
+Montanha, Clarão, Aurora, Escudo de Força. Além disso, dois achados da mesma leitura: a **Aura**
+chama de `Volume` um parâmetro cuja unidade é "m de raio", e o nome agora colide com a régua
+padrão; e a escala própria da **Neblina** chega a 125 m³ no grau 6, contra os 64 m³ que a regra do
+gás entrega, um privilégio de quinze vezes sobre a régua base que nunca foi decidido, foi herdado.
+Nenhuma dessas é mecânica: cada uma é um julgamento por Efeito.
 
 **14. A dificuldade do teste de concentração.** A seção 5.2 fechou que sustentar um improviso pede
 **Ocultismo + Vontade** ao sofrer dano, e deixou a dificuldade em **Média** provisoriamente. Falta

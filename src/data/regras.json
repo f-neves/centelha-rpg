@@ -1235,7 +1235,18 @@
           "8 m³"
         ],
         "notaVolume": "O Volume compra um LADO, do mesmo jeito que a Área compra um diâmetro, e o que se ganha é o cubo daquele lado, moldável em esfera, bloco, coluna ou parede. Ele é sempre menor que a Área do mesmo grau esticada até a altura de uma pessoa, e essa diferença é o preço de ENCHER em vez de COBRIR. Em pedra, o grau 4 são 2,7 toneladas; em gelo, com 10 cm de espessura e 2 m de altura, dá cinco metros de muro.",
-        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. A maioria dos efeitos ocupa espaço e mede VOLUME. ÁREA é para o que se espalha por uma superfície e não tem espessura que importe: fogo rasteiro, gelo que deixa o piso escorregadio, água que molha, poeira que assenta, luz que ilumina, sombra que apaga. Teste de mesa: dá para estar DENTRO dele? Volume. Dá para PISAR nele? Área.",
+        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. VOLUME mede o CORPO do elemento, quanta matéria ou quanto fenômeno saiu: as Lascas, a Onda, a Tromba, o Clarão, o Muro. ÁREA mede a JURISDIÇÃO, a região onde a regra passa a valer, e ali não interessa quanto elemento existe, interessa quem está dentro: a Noite, o Santuário, a Barreira, o Círculo, a Praga, a Mordaça, a Bolha Temporal. Teste de mesa: o efeito é MATÉRIA ou é REGRA? Se a pergunta que ele responde é 'quanto elemento?', é Volume. Se é 'quem está dentro?', é Área. Uma mesma Arte usa as duas conforme o efeito: o Clarão de Luz é corpo, a Noite de Sombra é jurisdição.",
+        "volumePorEstado": {
+          "nota": "O Volume mede corpo, e um metro cúbico de pedra, de água, de chama e de névoa são quantidades de esforço muito diferentes. O multiplicador vale só para o VOLUME: a Área é jurisdição e não depende do material. É a mesma verdade da tabela de dano dita pelo outro lado, e por isso as duas exceções são as mesmas em direções opostas: a Terra dobra o dado e divide o volume, o Ar não tem dano e multiplica o volume por oito.",
+          "tabela": [
+            { "estado": "Sólido", "fator": "metade", "artes": "Terra, Metal", "porque": "8 m³ de pedra são 22 toneladas, e metade disso ainda é muito" },
+            { "estado": "Líquido e gelo", "fator": "normal", "artes": "Água, Gelo", "porque": "a régua base" },
+            { "estado": "Fenômeno", "fator": "dobro", "artes": "Fogo, Luz, Sombra", "porque": "não tem massa, mas tem borda" },
+            { "estado": "Gás", "fator": "oito vezes", "artes": "Ar, e os Efeitos de névoa", "porque": "ocupa sem pesar. É o que a Neblina já fazia sem regra escrita" },
+            { "estado": "Caminho", "fator": "vira Comprimento", "artes": "Raio", "porque": "descarga não tem corpo, tem trajeto: usa a régua do Muro" }
+          ],
+          "exemplo": "No grau 4, que na régua base é 1 m³: Terra entrega 0,5 m³ (1,4 tonelada de pedra), Água 1 m³, Fogo 2 m³, Ar 8 m³."
+        },
         "notaAlvos": "O grau 0 é nenhum alvo DESIGNADO, e não \"nenhum alvo\": o dardo continua acertando quem você mira, pela pontaria, e o jorro continua pegando quem está dentro. O parâmetro Alvos serve para ESCOLHER vítimas a dedo, ignorando a geometria, e é por isso que ele quase não aparece nas Artes elementais: o lugar dele é em Cura, Fascinação, Conjuração e nas outras que agem sobre pessoas escolhidas."
       },
       "combinacoes": {

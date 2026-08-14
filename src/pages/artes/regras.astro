@@ -93,6 +93,18 @@ const EX_CONTA: [string, string, number][] = [
     <div class="callout regra"><span class="lbl">Área ou Volume, nunca as duas</span>
       {G.notaAreaOuVolume}
     </div>
+    <p>{G.volumePorEstado.nota}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Estado</th><th>Volume</th><th>Artes</th><th>Por quê</th></tr></thead>
+        <tbody>
+          {G.volumePorEstado.tabela.map((e: any) => (
+            <tr><td><strong>{e.estado}</strong></td><td>{e.fator}</td><td>{e.artes}</td><td class="muted">{e.porque}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="formula">{G.volumePorEstado.exemplo}</p>
     <p class="muted">{G.notaVolume}</p>
     <p class="muted">{G.notaArea}</p>
     <p class="muted">{G.notaAlcance}</p>
@@ -283,6 +295,8 @@ const EX_CONTA: [string, string, number][] = [
         <li>Treze Efeitos <strong>elementais</strong> ainda estão sem número, e Fogo, Raio e Luz não têm nenhum de nível 1.</li>
         <li>Se a penalidade de guardar feitiço acumula por feitiço, e se há teto de quantos dá para carregar.</li>
         <li>A <strong>dificuldade do teste de concentração</strong> ao sofrer dano sustentando um improviso: fixa, ou subindo com o tamanho do golpe.</li>
+        <li>Uma <strong>régua de luz</strong> (escuro, penumbra, tocha, dia): o que cada degrau faz nas rolagens e o que cada raça enxerga. Dela depende o <strong>halo</strong> de Luz e Sombra, que vaza para fora do volume comprado e muda a luz do lugar sem causar o efeito.</li>
+        <li>Passar os <strong>Efeitos que hoje usam Área</strong> pela régua nova: doze deles medem corpo, não jurisdição, e deveriam usar Volume (Lascas, Onda, Maremoto, Sopro do Norte, Tromba, Sarçal, Erguer a Montanha, Clarão, Aurora, Escudo de Força). A Aura chama de <strong>Volume</strong> um parâmetro que é raio, e a escala própria da <strong>Neblina</strong> (125 m³ no topo) precisa ser reconciliada com o gás da tabela acima (64 m³).</li>
       </ul>
     </div>
   </section>
