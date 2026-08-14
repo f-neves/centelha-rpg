@@ -15,11 +15,16 @@ Hoje o site mora em `https://f-neves.github.io/centelha-rpg/`.
 
 ## 1. A resposta curta
 
-**Com teto de R$ 100 por ano: `centelha.net`, R$ 64.** É o único jeito de ter o nome
-limpo "centelha" num sufixo que todo mundo reconhece. Detalhe na seção 11.
+**`centelha.rec.br`, R$ 40 por ano.** Livre, categoria de recreação e jogos, portátil,
+preço fixo em real (travável por 10 anos), e **4,6 vezes mais rápido que o `.net` na
+consulta fria de DNS a partir do Brasil**, o que foi medido na seção 12.2.
 
-**Se a conta for a mais barata que presta: `centelha.rec.br`, R$ 40.** Livre, categoria
-de recreação e jogos, portátil, preço fixo em real, no ar em minutos.
+**`centelha.net`, R$ 64, se o nome pesar mais.** É o único endereço viável em que
+"centelha" aparece limpo num sufixo que qualquer pessoa reconhece. Troca consciente.
+
+**Qualquer um dos dois conserta um defeito que já existe:** hoje o cadastro e a
+recuperação de senha saem pelo SMTP embutido do Supabase, limitado a **2 e-mails por
+hora em todos os planos**, e sair disso exige um domínio próprio. Ver seção 12.1.
 
 **Se for grátis, e ponto: `centelha-rpg.netlify.app` (ou `.pages.dev`).** Feio e preso
 à casa, mas é o único grátis que a gente tem direito de usar sem torcer.
@@ -566,16 +571,153 @@ ano no primeiro ano.
 
 ---
 
-## 12. Decisão
+## 12. Diferenças técnicas de verdade, além do nome
 
-Se o teto é R$ 100/ano, eu escolheria **`centelha.net`**, e o raciocínio é o mesmo do
-resto do documento levado até o fim: **a origem é a única decisão cara de refazer.**
-Hospedeiro se troca em minutos, DNS se troca em minutos, preço se renegocia mudando de
-registrador. O nome não: mudar o nome depois custa as 7 chaves de `localStorage` de todo
-mundo, a ficha de personagem junto. Então é nele que faz sentido gastar os R$ 24 a mais.
+A pergunta é justa e a resposta tem três partes: o que muda mesmo, o que muda pouco, e o
+que as pessoas acham que muda mas é do hospedeiro e não do domínio.
 
-Se a estabilidade em real pesar mais que o nome, **`centelha.rec.br`** continua uma
-escolha defensável, e a mais barata das boas.
+### 12.1 O maior achado: e-mail · hoje estamos em 2 por hora
+
+Este é o item mais concreto de todo o documento, e não tem a ver com velocidade.
+
+O `/entrar` manda e-mail em dois momentos: confirmação de cadastro (`signUp`, em
+`src/lib/auth.ts:54`) e recuperação de senha (`resetPasswordForEmail`, linha 65). Os dois
+saem hoje pelo **SMTP embutido do Supabase**, que é limitado a **2 e-mails por hora**, e
+esse limite **é igual em todos os planos, inclusive no pago**. O próprio `traduzErro`, na
+linha 93, já tem uma tradução para "rate limit", o que sugere que isso já apareceu.
+
+O efeito prático: se três pessoas criarem conta na mesma hora, a terceira não recebe o
+e-mail de confirmação e fica sem conseguir entrar, sem entender por quê.
+
+**A saída é SMTP próprio** (Resend, Brevo e afins têm faixa gratuita), e o Supabase sobe
+o limite assim que houver um configurado. **Mas SMTP próprio exige um domínio seu**, para
+publicar SPF, DKIM e DMARC. Sem isso, ou o provedor recusa, ou a mensagem cai em spam.
+
+Em `centelha-rpg.netlify.app` isso é impossível: os registros de e-mail teriam de estar
+na zona da Netlify, que não é sua. Em `centelha.rec.br`, `centelha.net` ou qualquer
+domínio próprio, é um punhado de registros TXT e MX.
+
+**Ou seja: comprar o domínio conserta um defeito que já existe hoje**, e não é um luxo
+para o futuro. É o único ganho técnico desta análise que se paga sozinho.
+
+### 12.2 Velocidade de DNS: medida, e o `.br` ganha de longe
+
+Medi de duas formas independentes, desta máquina, no Brasil.
+
+**Primeira**, ponta a ponta pelo 1.1.1.1, com nomes aleatórios (que forçam a consulta a
+chegar ao servidor do TLD em vez de sair do cache), 7 amostras, mediana:
+
+| sufixo | mediana | mín | máx |
+|---|---:|---:|---:|
+| `.rec.br` | **38,5 ms** | 34,0 | 43,8 |
+| `.com.br` | 42,1 ms | 33,3 | 46,7 |
+| `.xyz` | 43,2 ms | 40,3 | 50,5 |
+| `.club` | 45,8 ms | 38,8 | 62,2 |
+| `.me` | 91,8 ms | 85,3 | 292,4 |
+| `.dev` | 95,3 ms | 88,3 | 101,5 |
+| `.page` | 96,1 ms | 88,5 | 107,0 |
+| `.net` | **160,4 ms** | 154,1 | 532,7 |
+
+**Segunda**, batendo direto nos servidores autoritativos de cada registro, para tirar o
+1.1.1.1 do meio. E, no caso do `.net`, testei **as treze letras** de `gtld-servers.net`,
+porque seria desonesto condenar o sufixo por uma amostra ruim:
+
+| servidor | mediana |
+|---|---:|
+| `a.dns.br` (o `.br`) | **30,4 ms** |
+| `ns-tld1.charlestonroadregistry.com` (o `.dev`, do Google) | 80,8 ms |
+| melhor das 13 letras do `.net`/`.com` (`j.gtld-servers.net`) | **140,9 ms** |
+| pior das 13 (`b.gtld-servers.net`) | 263,8 ms |
+| `a0.nic.me` | 178,0 ms |
+
+Os dois métodos concordam, e a conclusão é robusta: **do Brasil, o `.br` responde cerca
+de 4,6 vezes mais rápido que o `.net`.** Os 140 ms são a cara de uma ida aos Estados
+Unidos: esta conexão não está alcançando nó local da Verisign.
+
+**Agora a parte honesta, que é o tamanho disso.** Esse custo só é pago na consulta fria
+da delegação, e a delegação fica em cache no resolvedor por cerca de 48 horas. Depois
+disso, as consultas vão direto ao nosso DNS autoritativo e o sufixo não entra mais na
+conta. Então não são 110 ms por visita: são 110 ms uma vez a cada dois dias, por
+resolvedor, e só para quem chegar primeiro.
+
+Para comparar com a régua da própria auditoria: lá, hospedagem estática custava de 52 a
+168 ms de FCP e isso foi considerado aceitável. Este número é da mesma ordem, e mais
+raro. **É real, é a favor do `.br`, e é pequeno.**
+
+### 12.3 O resto, do maior para o menor
+
+**Subdomínios, e o que eles destravam.** Com domínio próprio dá para pôr
+`mesa.centelha.net` num hospedeiro diferente do resto do site, ou atrás de um Worker, sem
+tocar na origem principal. Isso é a "facilidade de mudanças" de verdade: se um dia a mesa
+precisar de servidor (a auditoria não recomendou, mas o dia pode chegar), ela migra
+sozinha e o livro fica onde está. Em `centelha-rpg.netlify.app` não existe subdomínio.
+
+**Pôr um proxy na frente.** Com domínio próprio, a zona pode ficar na Cloudflare
+independentemente de onde o site está hospedado, o que dá cache, regras de
+redirecionamento, Workers e WAF sem trocar de casa. No subdomínio do hospedeiro, você tem
+o que o hospedeiro der, e ponto.
+
+**CAA.** Só em domínio próprio dá para declarar quais autoridades certificadoras podem
+emitir certificado para você. É uma linha de DNS que fecha uma porta de emissão indevida.
+Em subdomínio de terceiro, quem decide isso é o dono da zona.
+
+**DNSSEC.** O Registro.br assina e liga em um clique, e a adoção no `.br` é alta (o
+`centelha.com.br` que consultei está assinado). Nos gTLDs depende do registrador e do
+provedor de DNS, e a Cloudflare também faz em um clique. Empate técnico, com vantagem de
+simplicidade para o `.br`.
+
+**Trava de transferência.** Domínio gTLD fica **60 dias travado** para transferência
+depois do registro e depois de mudança de titular, por regra da ICANN. O `.br` não tem
+essa trava. Só importa se você precisar trocar de registrador às pressas.
+
+**HSTS preload.** Coberto em 3.7: `.dev`, `.app` e `.page` já vêm forçando HTTPS. Vale um
+redirecionamento, e qualquer domínio consegue o mesmo pedindo em `hstspreload.org`.
+
+**Uma ressalva sobre a Cloudflare Registrar:** ela vende ao custo, mas **obriga o domínio
+a usar os servidores de nome dela**. Para nós não atrapalha, e é bom saber antes.
+
+### 12.4 O que NÃO é diferença de domínio, e é fácil confundir
+
+Vale dizer com todas as letras, porque é aqui que a conversa costuma escorregar:
+
+| coisa | de quem é |
+|---|---|
+| cabeçalhos de segurança (CSP, HSTS, X-Frame-Options, Permissions-Policy) | **do hospedeiro** (`_headers`), e o GitHub Pages não deixa |
+| HTTP/3, Brotli, cache, otimização de imagem | **do hospedeiro** |
+| redirecionamento 301 de verdade | **do hospedeiro** |
+| banda, tempo de build, prévia por PR | **do hospedeiro** |
+| velocidade do site depois do primeiro acesso | **do hospedeiro** |
+| tamanho do JS, número de nós, repintura do Grid | **nosso**, e a auditoria já mexeu nisso |
+
+Tudo o que está nessa tabela você ganha **saindo do GitHub Pages**, com qualquer endereço,
+inclusive o grátis. Não é argumento para pagar por domínio.
+
+---
+
+## 13. Decisão
+
+**A medição da seção 12.2 mexeu na minha recomendação.** Eu vinha defendendo
+`centelha.net` por causa do nome. O nome continua sendo o melhor argumento a favor dele,
+e agora existe um argumento medido do outro lado: do Brasil, o `.br` responde 4,6 vezes
+mais rápido na consulta fria, e custa R$ 24 a menos por ano, num preço que não sobe.
+
+Pesando os dois, eu iria de **`centelha.rec.br`**, e mudei de ideia por três razões
+somadas, não por uma:
+
+1. **O número existe e aponta para lá** (30 ms contra 141 ms). É pequeno, e é o único
+   número técnico que apareceu separando um domínio do outro. A regra da auditoria vale
+   nos dois sentidos: se eu não recomendo mudança sem número, também não ignoro o número
+   quando ele aparece.
+2. **O público é brasileiro.** O `.br` no fim de um livro em português informa em vez de
+   atrapalhar, e o `.rec` deixa de ser obscuro no minuto em que alguém pergunta e a
+   resposta é "recreação, é a categoria de jogos".
+3. **R$ 40 fixos em real, travados por até 10 anos.** O `.net` sobe até 10% ao ano por
+   contrato, mais câmbio, mais IOF.
+
+**`centelha.net` continua a escolha certa se o nome pesar mais que tudo**, e é uma
+posição defensável: é o único endereço viável em que "centelha" aparece limpo num sufixo
+que qualquer pessoa reconhece. Não é um erro escolhê-lo. É uma troca consciente de
+110 ms frios e R$ 24 por ano por um nome melhor.
 
 Se for grátis mesmo assim, **`centelha-rpg.netlify.app`**, sabendo que a conta da seção
 5.1 será paga de novo no dia da próxima mudança.

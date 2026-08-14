@@ -428,6 +428,13 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   portabilidade:** cada mudança de origem apaga as 7 chaves de `localStorage` dos leitores,
   ficha de personagem inclusa, então a conta se paga por endereço, não por hospedeiro. Um
   subdomínio do hospedeiro solda a origem à casa e cobra a conta de novo na próxima mudança.
+- [ ] **J1b · [FAZER, depois de J1] SMTP próprio no Supabase.** Achado ao medir as diferenças
+  técnicas entre domínios: o cadastro (`signUp`) e a recuperação de senha saem hoje pelo SMTP
+  embutido do Supabase, **limitado a 2 e-mails por hora em todos os planos, o pago inclusive**.
+  Três cadastros na mesma hora e o terceiro fica sem confirmar a conta. A saída é SMTP próprio
+  (Resend/Brevo têm faixa grátis), que **exige domínio próprio** para publicar SPF, DKIM e
+  DMARC. Detalhe em `Dominio.md` seção 12.1. É o único ganho técnico da compra que se paga
+  sozinho, e conserta um defeito que já existe hoje.
 - [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4. Depende de J1, e uma
   ressalva nova: **o plano grátis do Vercel proíbe uso comercial**, então ele só serve se o
   Centelha nunca gerar receita. Netlify e Cloudflare Pages não têm essa cláusula.
