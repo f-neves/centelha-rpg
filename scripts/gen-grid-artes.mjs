@@ -160,7 +160,7 @@ const GATILHO = {
   'por-turno': ['fogo-que-nao-apaga', 'esmagar', 'chuva-de-fogo', 'tempestade', 'afogar',
     'mao-firme', 'acelerar-a-cura', 'coracao-verde', 'aurora'],
   armadilha: ['brasa-retardada', 'semente-adormecida', 'cura-guardada', 'salvaguarda'],
-  'ao-tocar': ['arma-elemental', 'metal-incandescente', 'arma-conjurada'],
+  'ao-tocar': ['arma-elemental', 'metal-incandescente', 'arma-conjurada', 'projetil-conjurado'],
   // Acontece e acaba, mesmo tendo Área: a Praga fere "uma vez por dia", não por turno.
   imediato: ['maos-sobre-a-multidao', 'dreno', 'praga'],
   passivo: ['ver-o-fio'],
@@ -176,7 +176,7 @@ const GATILHO = {
 const MATERIA = {
   impacto: ['arremesso', 'esmagar', 'maremoto', 'onda', 'terremoto',
     'empurrao-elemental', 'tromba', 'erguer-a-montanha', 'engolir'],
-  perfuracao: ['lascas', 'sarcal', 'semente-adormecida'],
+  perfuracao: ['lascas', 'sarcal', 'semente-adormecida', 'projetil-conjurado'],
   corte: ['arma-conjurada'],
 };
 /**
@@ -191,7 +191,7 @@ const ALVO = {
   si: ['manto-de-treva', 'meio-corpo', 'dobrar-o-corpo', 'fera-de-guerra', 'asas', 'ausencia', 'parar'],
   objeto: ['arma-elemental', 'enferrujar', 'podridao', 'remendo', 'chave-mestra',
     'vincular-ao-objeto', 'esconder-a-carga', 'bolso-torto', 'chamar-a-mao', 'convocar',
-    'arma-conjurada', 'criar-utensilio'],
+    'arma-conjurada', 'projetil-conjurado', 'criar-utensilio'],
 };
 
 /**

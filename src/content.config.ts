@@ -137,6 +137,10 @@ const efeitos = defineCollection({
     })).min(1),
     efeito: z.string(),
     notas: z.string().optional(),
+    // Não consome ação própria: sai junto com o gesto que a usa, como puxar a
+    // arma da cintura ou a flecha da aljava. Ausente = a conjuração normal, que
+    // custa Velocidade como qualquer outra.
+    acaoLivre: z.boolean().optional(),
   }),
 });
 

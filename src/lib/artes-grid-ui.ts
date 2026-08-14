@@ -9,7 +9,7 @@ import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
   parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
-  figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO, CURVATURAS, VELOCIDADE_PADRAO,
+  figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO, CURVATURAS, velocidadePadraoDe,
   type Arte, type Efeito, type Parametro, type Escolhas, type Molde, type Custo,
 } from './artes-grid';
 
@@ -84,7 +84,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let angulo = 90;
   let lado = LADO_MINIMO;
   let curvatura = 0;
-  let velocidade = VELOCIDADE_PADRAO;
+  let velocidade = velocidadePadraoDe(null);
 
   const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`, { classe: 'ui-dlg-arte' });
 
@@ -111,6 +111,11 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       escolhas = {};
       const pars = efeitoSel ? parametrosAjustaveis(efeitoSel) : parametrosDoImproviso();
       for (const p of pars) escolhas[p.nome] = 0;
+      // A Velocidade acompanha o Efeito, e não a caixa: trocar para um Efeito de
+      // ação livre tem de zerar o tempo, e sair dele tem de devolver o padrão.
+      // Quem editou o número à mão perde a edição na troca, que é o certo: o
+      // número era daquele Efeito.
+      velocidade = velocidadePadraoDe(efeitoSel);
     }
     semear();
 
@@ -204,6 +209,8 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
           gg.forma !== 'nenhuma' && gg.forma !== 'alvo' ? gg.forma : '',
           gg.persiste ? 'dura' : '',
           gg.fere ? 'fere' : '',
+          // Vale a tarja porque muda o turno inteiro: este não gasta a vez.
+          e?.acaoLivre ? 'ação livre' : '',
           gg.condicao && CONDICAO[gg.condicao] ? CONDICAO[gg.condicao].nome.toLowerCase() : '',
         ].filter(Boolean).join(' · ') : 'a Arte crua, sem Efeito comprado';
         const texto = e ? e.efeito : 'Dano e área montados só com os parâmetros do livro.';
@@ -317,8 +324,8 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
                     = <b>${c.total}</b> pontos</span>
                   <span>− Centelha ${c.centelha} = <b class="${c.mana ? '' : 'gratis'}">${c.mana}</b> de Mana</span>
                   <span class="ag-vel">Velocidade
-                    <input type="number" id="ag-vel" min="1" max="60" step="1" value="${velocidade}" />
-                    ticks</span>
+                    <input type="number" id="ag-vel" min="0" max="60" step="1" value="${velocidade}" />
+                    ${velocidade ? 'ticks' : '<b class="gratis">livre</b>'}</span>
                 </div>
                 ${c.esticados.length ? `<div class="ag-cst-est">esticado:
                   ${c.esticados.map((e) => `${esc(e.nome)} ${e.acima} acima (${e.custo})`).join(' · ')}</div>` : ''}
@@ -368,7 +375,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         // Sem repintar: o número já está na tela, e refazer o corpo no meio da
         // digitação roubaria o cursor a cada tecla.
         inpVel.oninput = () => {
-          velocidade = Math.max(1, Math.min(60, Math.round(Number(inpVel.value) || VELOCIDADE_PADRAO)));
+          const n = Math.round(Number(inpVel.value));
+          velocidade = Number.isFinite(n) && inpVel.value.trim()
+            ? Math.max(0, Math.min(60, n))
+            : velocidadePadraoDe(efeitoSel);
         };
         inpVel.onblur = () => { inpVel.value = String(velocidade); };
       }

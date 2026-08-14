@@ -561,6 +561,77 @@
     }
   },
   {
+    "id": "projetil-conjurado",
+    "nome": "Projétil Conjurado",
+    "nivel": 1,
+    "escalonavel": true,
+    "artes": [
+      {
+        "id": "fogo",
+        "sabor": "flecha de chama, que segue queimando depois de cravar"
+      },
+      {
+        "id": "gelo",
+        "sabor": "virote de gelo maciço, de ponta polida"
+      },
+      {
+        "id": "raio",
+        "sabor": "adaga de faísca, que estala ao deixar a mão"
+      },
+      {
+        "id": "agua",
+        "sabor": "dardo de água comprimida, duro como osso"
+      },
+      {
+        "id": "terra",
+        "sabor": "lasca de pedra afiada, do peso de uma faca"
+      },
+      {
+        "id": "luz",
+        "sabor": "agulha de luz, que atravessa sem ferir e deixa o alvo aceso"
+      },
+      {
+        "id": "sombra",
+        "sabor": "estilhaço de treva, que não fere e apaga o que toca"
+      }
+    ],
+    "parametros": [
+      {
+        "nome": "Alcance",
+        "tipo": "fixo",
+        "valor": "toque: o projétil nasce na sua mão"
+      },
+      {
+        "nome": "Dano",
+        "tipo": "padrao",
+        "nota": "em Luz e Sombra o projétil sai sem corpo e não fere: voa, marca e apaga, mas não abre ferimento"
+      },
+      {
+        "nome": "Duração",
+        "tipo": "padrao",
+        "regua": "breve"
+      }
+    ],
+    "efeito": "Cria na mão um único projétil do elemento, do tamanho de uma flecha, de um virote, de um dardo ou de uma adaga de arremesso. Ele se arremessa como qualquer arma de arremesso, ou se encaixa num arco ou numa besta já empunhada, e se gasta no golpe. Como deixa matéria no mundo, a armadura absorve normalmente, como perfuração. Em Luz e Sombra o projétil não tem corpo: acerta, ilumina ou apaga, e não fere.",
+    "notas": "Conjurar não pede ação própria: é o mesmo gesto de puxar uma arma da cintura ou tirar uma flecha da aljava, e sai junto com o ataque que usa o projétil. Também não paga Alcance, pela nota do livro sobre quem cria algo para ser arremessado: o objeto voa até acertar, e a jogada é a mundana (Destreza para arremessar, Percepção para atirar), não a do Acerto Arcano. A Duração é só quanto tempo ele existe na mão antes de ser usado.",
+    "acaoLivre": true,
+    "grid": {
+      "forma": "alvo",
+      "ancora": "objeto",
+      "gatilho": "ao-tocar",
+      "alvo": "objeto",
+      "persiste": true,
+      "materia": "perfuracao",
+      "condicao": null,
+      "pegaItem": false,
+      "arenaInteira": false,
+      "dissipa": false,
+      "fere": true,
+      "cura": false,
+      "teste": false
+    }
+  },
+  {
     "id": "metal-incandescente",
     "nome": "Metal Incandescente",
     "nivel": 2,

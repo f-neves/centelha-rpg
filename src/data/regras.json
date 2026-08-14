@@ -1396,6 +1396,7 @@
       "outraArte": "Efeito que você já sabe e que cabe em outra Arte sua não custa XP, só treino; mas é preciso ter cada Arte no nível do Efeito",
       "compra": "só até o nível que você tem na Arte; sem teto de quantidade",
       "ticks": "4 + nível do Efeito + 1 por grau que qualquer parâmetro passe do nível dele",
+      "acaoLivre": "Um punhado de Efeitos não custa Velocidade nenhuma, porque o gesto de conjurar é o mesmo de puxar a arma da cintura ou de tirar a flecha da aljava: sai junto com a ação que o usa, e não no lugar dela. Continuam custando Mana como qualquer conjuração; o que não custam é tempo. São marcados com `acaoLivre` em efeitos.json, e o tabuleiro propõe Velocidade 0 para eles.",
       "custo": "nível do Efeito + a soma dos parâmetros usados; a Centelha desconta do total, como em qualquer conjuração",
       "acimaDaArte": "Alguns Efeitos Especiais têm parâmetros acima do nível da Arte, normalmente por serem mais específicos (a Neblina começa um nível acima em Área, trocando m² por m³).",
       "exemplos": [

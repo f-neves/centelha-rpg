@@ -21,6 +21,12 @@ export interface Arte {
 }
 export interface Efeito {
   id: string; nome: string; nivel: number; efeito: string; notas?: string;
+  /**
+   * Não gasta ação: o gesto de conjurar é o mesmo de sacar a arma ou de tirar a
+   * flecha da aljava, e sai junto com o ataque que a usa. Custa Mana como
+   * qualquer conjuração; o que ele não custa é tempo.
+   */
+  acaoLivre?: boolean;
   artes: { id: string; sabor?: string }[];
   parametros: Parametro[];
   grid: GridEfeito;
@@ -255,9 +261,20 @@ export function custoDe(
  */
 function ticksDe(efeito: Efeito | null, esticados: Custo['esticados']): number {
   const extra = esticados.reduce((s, e) => s + e.acima, 0);
+  // O Efeito de ação livre não entra na conta de tempo nem quando é esticado:
+  // ele não é uma ação, é parte do gesto de outra. Esticá-lo continua custando
+  // Mana, e é assim que se paga por um dardo mais forte sem perder a vez.
+  if (efeito?.acaoLivre) return 0;
   if (efeito) return 4 + efeito.nivel + extra;
   return 5 + extra;
 }
+
+/**
+ * O que a caixa de conjuração propõe de Velocidade, em ticks, antes de a mesa
+ * discordar. Zero para o Efeito de ação livre, seis para todo o resto.
+ */
+export const velocidadePadraoDe = (efeito: Efeito | null): number =>
+  (efeito?.acaoLivre ? 0 : VELOCIDADE_PADRAO);
 
 /** Os parâmetros do improviso: a Arte crua, sem Efeito comprado. */
 export function parametrosDoImproviso(): Parametro[] {

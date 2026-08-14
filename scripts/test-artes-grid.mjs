@@ -492,6 +492,48 @@ ok(figuraDoEfeito(M.EFEITO['aura'], 1).raioM > 0, 'e a figura dela não nasce va
 ok(figuraDoEfeito(M.EFEITO['escudo-de-forca'], 3).comprimentoM > 0,
   'o Escudo de Força ainda sai da área comprada');
 
+// ------------------------------------------------------------- a ação livre
+//
+// O Projétil Conjurado é o primeiro Efeito que não gasta a vez de quem conjura:
+// criar a flecha de fogo é o mesmo gesto de tirar a flecha da aljava. O risco
+// aqui é silencioso e caro, porque a Velocidade some da conta sem ninguém ver:
+// se o campo `acaoLivre` cair no meio de uma edição do JSON, o dardo volta a
+// custar cinco Ticks e ninguém repara até alguém perder um turno na mesa.
+const proj = M.EFEITO['projetil-conjurado'];
+ok(!!proj, 'o Projétil Conjurado existe');
+if (proj) {
+  ok(proj.acaoLivre === true, 'e é de ação livre');
+  eq(proj.nivel, 1, 'o Projétil Conjurado é de nível 1');
+  eq(M.velocidadePadraoDe(proj), 0, 'a caixa propõe Velocidade 0 para ele');
+  eq(M.velocidadePadraoDe(M.EFEITO['arma-conjurada']), M.VELOCIDADE_PADRAO,
+    'e continua propondo o padrão para os outros');
+  // Os parâmetros são exatamente Dano e Duração breve: o Alcance é fixo no toque
+  // porque quem CRIA algo para ser arremessado não compra distância (a nota do
+  // livro em `improviso.graus.notaAlcance`), e parâmetro fixo não custa ponto.
+  const ajust = M.parametrosAjustaveis(proj).map((p) => p.nome).join(', ');
+  eq(ajust, 'Dano, Duração', 'os parâmetros ajustáveis dele');
+  const pAlc = proj.parametros.find((p) => p.nome === 'Alcance');
+  eq(pAlc?.tipo, 'fixo', 'e o Alcance é fixo');
+  // O tempo é zero mesmo quando se estica o Dano acima da Arte. Esticar custa
+  // Mana, e é essa a moeda: um dardo mais forte, e não um dardo mais lento.
+  const arteFogo = M.ARTE['fogo'];
+  const cLiso = M.custoDe(proj, arteFogo, 3, { Dano: 2, Duração: 1 }, 0);
+  eq(cLiso.total, 4, 'Projétil 1 + Dano 2 + Duração 1 = 4 pontos');
+  eq(cLiso.ticks, 0, 'e não custa Tick nenhum');
+  const cEsticado = M.custoDe(proj, arteFogo, 1, { Dano: 3 }, 0);
+  ok(cEsticado.esticados.length > 0, 'esticar o Dano acima da Arte é esticar mesmo');
+  eq(cEsticado.ticks, 0, 'e mesmo esticado ele não gasta a vez');
+  // Deixa matéria no mundo: a armadura pega, como perfuração.
+  eq(proj.grid.materia, 'perfuracao', 'o projétil é matéria, e a armadura o absorve');
+  eq(proj.grid.fere, true, 'e ele fere');
+  // Luz e Sombra entram na lista de propósito, para o dardo que marca sem ferir.
+  const artesProj = proj.artes.map((a) => a.id);
+  ok(artesProj.includes('luz') && artesProj.includes('sombra'),
+    'Luz e Sombra também conjuram o projétil');
+}
+// Nenhum outro Efeito ganhou ação livre sem passar por aqui.
+eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação livre');
+
 // ---------------------------------------------------- cobertura da projeção
 eq(M.EFEITOS.filter((e) => !e.grid).length, 0, 'todo Efeito tem bloco grid');
 eq(M.ARTES.filter((a) => !a.grid).length, 0, 'toda Arte tem bloco grid');
