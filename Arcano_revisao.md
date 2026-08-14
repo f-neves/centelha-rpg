@@ -113,6 +113,14 @@ dano físico.**
 
 ## 5. Parâmetros
 
+> **Atenção: as tabelas desta seção e a fórmula de pontos da 5.1 estão defasadas.** O que vale é
+> `src/data/regras.json → arcano.improviso`, renderizado no capítulo XV. O site usa graus **1 a 6**
+> (alcance toque · 2 · 4 · 10 · 20 · 50 m; área por **diâmetro** 1 · 1,5 · 2 · 2,5 · 3 · 4 m; alvos
+> 1 · 2 · 3 · 4 · 6 · 10; duração breve 1 · 2 · 4 · 10 · 20 · 50 turnos), e a economia é
+> **investir quantos pontos quiser, 1 ponto por nível, e a Centelha desconta do total; o que sobra
+> é o Mana**. Não existe a bolsa fixa de "Arte × 2 + Centelha" descrita na 5.1. A seção **5.2** foi
+> reescrita na régua do site; o resto desta seção é registro histórico e precisa de uma passada.
+
 Cada Arte tem cinco parâmetros, mas **nem sempre os mesmos cinco**. Os que não fazem
 sentido são substituídos, e a substituição é fixa e escrita na Arte.
 
@@ -208,8 +216,9 @@ entrega.
 
 ### 5.2. O que o improviso pode combinar
 
-> **Decidido em 2026-08-14, e ainda não está no site nem em `regras.json`.** É a única parte
-> deste documento acima da seção 10 que ainda não foi portada (item 8 da seção 11).
+> **Decidido em 2026-08-14 e portado em 2026-08-15.** Está em `regras.json →
+> arcano.improviso.combinacoes` e no capítulo XV, na seção "O que o improviso pode combinar".
+> Esta seção é a única da 5 que fala a régua do site.
 
 A Arte crua não desenha: ela **manifesta o elemento**. Fogo sai como labareda, Terra sai como
 pedra, estalactite e estilhaço. Quem dá forma é o Efeito. O risco dos cinco parâmetros soltos é
@@ -222,7 +231,7 @@ forma sai de quais foram pagos. Antes de tudo, o que cada um mede, que o documen
 - **Alcance é onde o efeito começa.**
 - **Área é o tamanho do que ele ocupa.**
 
-Na labareda o efeito começa na mão (alcance zero) e ocupa um leque. No dardo ele começa longe
+Na labareda o efeito começa na mão (Alcance 1, toque) e ocupa um leque. No dardo ele começa longe
 (alcance alto) e ocupa um alvo só. Pagar os dois é cobrar o mesmo espaço por dois caminhos.
 
 > **1. Área nunca é colocada.** Ou ela nasce no corpo do conjurador, ou ela viaja em linha reta a
@@ -231,32 +240,32 @@ Na labareda o efeito começa na mão (alcance zero) e ocupa um leque. No dardo e
 > **2. Improviso mantém, Efeito solta.** Duração improvisada se paga com concentração. Duração
 > que fica de pé sozinha é Efeito.
 
-> **3. Teto de três.** No máximo três parâmetros acima do grau 0. **Alvos nunca entra no
+> **3. Teto de três.** No máximo três parâmetros **além do toque**. **Alvos nunca entra no
 > improviso:** escolher várias vítimas a dedo é precisão, e precisão se compra.
 
 O repertório inteiro que sobra:
 
 | Improviso | Parâmetros | Como se manifesta | Quem é atingido |
 |---|---|---|---|
-| **Dardo** | Alcance + Dano | um pedaço do elemento sai da mão e vai até o alvo | um alvo, ataque normal |
-| **Jorro** | Área + Dano | o elemento sai do corpo, em leque à frente ou irrompendo em volta, conforme o que ele faz por natureza | quem estiver dentro, aliado incluído |
+| **Dardo** | Alcance + Dano | um pedaço do elemento sai da mão e vai até o alvo | um alvo, pela Defesa como qualquer projétil |
+| **Jorro** | Alcance 1 (toque) + Área + Dano | o elemento sai do corpo, em leque à frente ou irrompendo em volta, conforme o que ele faz por natureza | quem estiver dentro, aliado incluído |
 | **Massa lançada** | Alcance + Área + Dano | um bloco do elemento corre em linha reta a partir do conjurador | o primeiro que estiver na reta. Ela **não** para onde o jogador quiser |
-| qualquer um **+ Duração** | + concentração | o conjurador se planta e sustenta | reavaliado a cada turno |
+| **Sustentado** | Dardo ou Jorro **+ Duração** | o conjurador se planta e mantém | reavaliado a cada turno |
 
 O Dardo sustentado é jato contínuo, não tiro repetido: estilhaços saindo da palma por dois
-turnos. O Jorro sustentado é a labareda de três turnos.
+turnos. O Jorro sustentado é a labareda que não apaga.
 
-**O teto de três quase não tira nada**, e é por isso que ele cabe: a conta de pontos da seção 5.1
-já entregava cerca de três parâmetros no máximo, em qualquer ponto da escala. A regra só torna
-explícito um limite que a economia já impunha.
+**A Massa lançada não se sustenta**, e não por proibição: ela viaja e acaba, e somar Duração a ela
+seria o quarto parâmetro além do toque.
 
 **Concentrar custa**, por turno sustentado:
 
 - gasta a **ação** do turno;
 - o conjurador **não sai do lugar**;
 - **defender-se é permitido**, porque proibir defesa faria de sustentar um suicídio;
-- **ao sofrer dano, um teste de Ocultismo + Vontade** para segurar. Falhando, o efeito cai.
-  Dificuldade Média até calibrar (pendência 14).
+- **ao sofrer dano, um teste de Vontade + Acerto Arcano** para segurar. Falhando, o efeito cai.
+  A dificuldade fica em aberto (pendência 14), e a perícia acompanha o que a conjuração por
+  Tradição decidir (pendência 5).
 
 Duas consequências que a mesa vai sentir, e as duas são escolhidas:
 
@@ -699,7 +708,15 @@ a Água continua sem resposta para "quanta água é esta".
 6. Revisar as seções 3 e 4 deste documento quando a rolagem por Tradição fechar.
 7. Portar ao site o que já está escrito e parado em doc: **Antecedentes** (14, com XP ×3) e
    **Ataques Mentais** (o capítulo; a Defesa Mental já está no motor).
-8. Portar a **seção 5.2** (o que o improviso pode combinar). Toca `regras.json → arcano` com um
-   bloco novo de combinações e concentração, o capítulo XV com a tabela dos quatro improvisos, e
-   os textos de `artes.json` que hoje descrevem improvisos ilegais. É a única decisão deste
-   documento acima da seção 10 que ainda não está no ar.
+8. ~~Portar a **seção 5.2**~~ **FEITO em 2026-08-15**: `regras.json →
+   arcano.improviso.combinacoes` e o capítulo XV ganharam as três travas, a tabela dos quatro
+   improvisos e o custo da concentração. A `notaArea` deixou de dizer que o molde se escolhe.
+9. **Alinhar a seção 5 deste documento à régua do site.** As tabelas de graus e a fórmula de pontos
+   ("Arte × 2 + Centelha") descrevem um modelo que não está em lugar nenhum: o site usa graus 1 a 6
+   e a economia de investir livre com desconto de Centelha. Só a 5.2 fala a régua certa.
+10. **Tirar o Ocultismo de `regras.json`.** Dois campos ainda dizem que a conjuração é
+    "Ocultismo + Atributo" (`arcano.nota` e `arcano.resistencia.rolagem`), e nenhum deles aparece
+    na página. A rolagem definitiva é a pendência 5 (Acerto Arcano e conjuração por Tradição).
+11. **Revisar os textos de `artes.json`.** Vários níveis descrevem improvisos que as travas não
+    permitem: Fogo 3 "sustentar uma parede baixa de chamas", Fogo 4 "parede de chamas fechando um
+    corredor" e "explosão que pega quatro inimigos juntos".

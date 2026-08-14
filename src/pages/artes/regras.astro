@@ -18,6 +18,7 @@ const LINHAS_GRAU: [string, string[]][] = [
   ['Duração breve', G.duracaoBreve],
   ['Duração longa', G.duracaoLonga],
 ];
+const COMB = (regras as any).arcano.improviso.combinacoes;
 const RITUAL = (regras as any).arcano.ritual;
 const FONTE = (regras as any).arcano.fonteElemental;
 const CURA = (regras as any).arcano.cura;
@@ -25,9 +26,9 @@ const FRAQ = (regras as any).arcano.fraquezas;
 const RECUP = (regras as any).arcano.recuperacaoMana;
 // conjurações de exemplo: [descrição, contas, total]
 const EX_CONTA: [string, string, number][] = [
-  ['Dardo: Alcance 3 (15 m) + Dano 2 (2d6) + Duração 3 (1 minuto)', '3 + 2 + 3', 8],
-  ['Toque ardente: Dano 1 (1d6) + Alcance 1 (toque)', '1 + 1', 2],
-  ['Labareda em leque: Dano 3 (3d6) + Área 3 (2×2 m) + Alcance 2 (5 m)', '3 + 3 + 2', 8],
+  ['Toque ardente: Alcance 1 (toque) + Dano 1 (1d6)', '1 + 1', 2],
+  ['Dardo: Alcance 3 (4 m) + Dano 2 (2d6)', '3 + 2', 5],
+  ['Labareda de dois turnos: Alcance 1 (toque) + Área 3 (2 m de diâmetro) + Dano 2 (2d6) + Duração 2 (2 turnos)', '1 + 3 + 2 + 2', 8],
 ];
 ---
 <Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
@@ -84,6 +85,30 @@ const EX_CONTA: [string, string, number][] = [
       </table>
     </div>
     <p class="muted">{G.notaArea} {G.notaAlcance}</p>
+
+    <h2 id="combinacoes">O que o improviso pode combinar</h2>
+    <p>{COMB.nota}</p>
+    <p>{COMB.definicoes}</p>
+    <div class="callout regra"><span class="lbl">As três travas</span>
+      <strong>1.</strong> {COMB.areaNuncaColocada}<br />
+      <strong>2.</strong> {COMB.duracaoPedeConcentracao}<br />
+      <strong>3.</strong> {COMB.teto}
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Improviso</th><th>O que paga</th><th>Como se manifesta</th><th>Quem é atingido</th></tr></thead>
+        <tbody>
+          {COMB.lista.map((c: any) => (
+            <tr><td><strong>{c.nome}</strong></td><td>{c.paga}</td><td>{c.forma}</td><td>{c.atinge}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Sustentar cobra por turno.</strong> {COMB.concentracao.acao}, {COMB.concentracao.posicao}, e {COMB.concentracao.defesa}. Ao sofrer dano, {COMB.concentracao.aoSofrerDano}.</p>
+    <ul class="fraq">
+      {COMB.consequencias.map((x: string) => <li>{x}</li>)}
+    </ul>
+    <p class="muted">{COMB.escopo}</p>
 
     <h2 id="custo">O que custa, e o desconto da Centelha</h2>
     <div class="callout regra"><span class="lbl">A conta</span>
@@ -242,6 +267,7 @@ const EX_CONTA: [string, string, number][] = [
         <li>Se o campo <strong>escalonavel</strong> dos Efeitos vira "sucede" (pagar só a diferença de um Efeito para o irmão maior) ou some de vez.</li>
         <li>Treze Efeitos <strong>elementais</strong> ainda estão sem número, e Fogo, Raio e Luz não têm nenhum de nível 1.</li>
         <li>Se a penalidade de guardar feitiço acumula por feitiço, e se há teto de quantos dá para carregar.</li>
+        <li>A <strong>dificuldade do teste de concentração</strong> ao sofrer dano sustentando um improviso: fixa, ou subindo com o tamanho do golpe.</li>
       </ul>
     </div>
   </section>
