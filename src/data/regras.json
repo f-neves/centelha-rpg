@@ -1239,13 +1239,45 @@
         "volumePorEstado": {
           "nota": "O Volume mede corpo, e um metro cúbico de pedra, de água, de chama e de névoa são quantidades de esforço muito diferentes. O multiplicador vale só para o VOLUME: a Área é jurisdição e não depende do material. É a mesma verdade da tabela de dano dita pelo outro lado, e por isso as duas exceções são as mesmas em direções opostas: a Terra dobra o dado e divide o volume, o Ar não tem dano e multiplica o volume por oito.",
           "tabela": [
-            { "estado": "Sólido", "fator": "metade", "artes": "Terra, Metal", "porque": "8 m³ de pedra são 22 toneladas, e metade disso ainda é muito" },
-            { "estado": "Líquido e gelo", "fator": "normal", "artes": "Água, Gelo", "porque": "a régua base" },
-            { "estado": "Fenômeno", "fator": "dobro", "artes": "Fogo, Luz, Sombra", "porque": "não tem massa, mas tem borda" },
-            { "estado": "Gás", "fator": "oito vezes", "artes": "Ar, e os Efeitos de névoa", "porque": "ocupa sem pesar. É o que a Neblina já fazia sem regra escrita" },
-            { "estado": "Caminho", "fator": "vira Comprimento", "artes": "Raio", "porque": "descarga não tem corpo, tem trajeto: usa a régua do Muro" }
+            {
+              "estado": "Sólido",
+              "fator": "metade",
+              "artes": "Terra, Metal",
+              "porque": "8 m³ de pedra são 22 toneladas, e metade disso ainda é muito"
+            },
+            {
+              "estado": "Granular",
+              "fator": "normal",
+              "artes": "areia, cascalho, pó, neve solta, cinza",
+              "porque": "escorre, então rende mais chão que a rocha pelo mesmo esforço, e em troca NÃO dobra o dado como a Terra: material solto não concentra o golpe"
+            },
+            {
+              "estado": "Líquido e gelo",
+              "fator": "normal",
+              "artes": "Água, Gelo",
+              "porque": "a régua base"
+            },
+            {
+              "estado": "Fenômeno",
+              "fator": "dobro",
+              "artes": "Fogo, Luz, Sombra",
+              "porque": "não tem massa, mas tem borda"
+            },
+            {
+              "estado": "Gás",
+              "fator": "oito vezes",
+              "artes": "Ar, e os Efeitos de névoa",
+              "porque": "ocupa sem pesar. É o que a Neblina já fazia sem regra escrita"
+            },
+            {
+              "estado": "Caminho",
+              "fator": "vira Comprimento",
+              "artes": "Raio",
+              "porque": "descarga não tem corpo, tem trajeto: usa a régua do Muro"
+            }
           ],
-          "exemplo": "No grau 4, que na régua base é 1 m³: Terra entrega 0,5 m³ (1,4 tonelada de pedra), Água 1 m³, Fogo 2 m³, Ar 8 m³."
+          "exemplo": "No grau 4, que na régua base é 1 m³: Terra entrega 0,5 m³ (1,4 tonelada de pedra), Água 1 m³, Fogo 2 m³, Ar 8 m³.",
+          "notaGranular": "O granular é a razão de a escola importar. Quem trabalha areia move o mesmo volume que quem trabalha barro e mais chão que quem trabalha rocha, mas perde o dado dobrado da Terra. A escola da Areia troca dano por alcance e a da Pedra troca alcance por dano, e nenhuma das duas precisa de regra própria dizendo isso: sai desta tabela sozinho."
         },
         "notaAlvos": "O grau 0 é nenhum alvo DESIGNADO, e não \"nenhum alvo\": o dardo continua acertando quem você mira, pela pontaria, e o jorro continua pegando quem está dentro. O parâmetro Alvos serve para ESCOLHER vítimas a dedo, ignorando a geometria, e é por isso que ele quase não aparece nas Artes elementais: o lugar dele é em Cura, Fascinação, Conjuração e nas outras que agem sobre pessoas escolhidas."
       },
@@ -1370,7 +1402,8 @@
         "Neblina (Efeito 1) + Alcance 2 (5 m) + Volume 3 (4×4×4) + Duração 2 (5 turnos) = 1 + 2 + 3 + 2 = 8 pontos.",
         "Neblina (Efeito 1) + Alcance 1 (toque) + Volume 2 (2×2×2) + Duração 1 (1 turno) = 1 + 1 + 2 + 1 = 5 pontos.",
         "Terremoto (Efeito 2) + Alcance 1 (toque) + Área 3 (4×4) = 2 + 1 + 3 = 6 pontos."
-      ]
+      ],
+      "fronteira": "Efeito de FRONTEIRA é o que mora em duas Artes vizinhas e empresta os verbos de uma para a outra. É o mesmo mecanismo de \"o Efeito que você já sabe e que cabe em outra Arte sua não custa XP\", visto pelo outro lado: ele é a vantagem concreta que uma Escola entrega. A escola da Areia é a de Terra que faz fronteira com Ar, e por isso alcança Efeitos que a Terra pura não alcançaria. Raio e Ar se tocam pela tempestade e pela velocidade; Gelo e Água pela mesma matéria em dois estados."
     },
     "composta": {
       "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos Manas + sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior nível.",

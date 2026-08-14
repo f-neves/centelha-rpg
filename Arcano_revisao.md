@@ -122,19 +122,35 @@ Sobre Plantas, um detalhe que economiza trabalho: **Vida já tem quase tudo** (S
 Verde, Semear o Ermo, Semente Adormecida). O que a Água acrescenta é justamente o que separa dobra
 de jardinagem, e a composta entrega isso hoje sem escrever uma linha.
 
-### Escola: formas diferentes do mesmo elemento
+### Escola: onde se ensina, e o que o lugar decide
 
-**Decidido em 2026-08-15.** Terra, Areia e Pedra não são Artes diferentes nem apenas sabor. São
-**escolas**, e a diferença entre elas se distribui por três mecanismos que já existem, sem camada
-nova de contabilidade e sem XP a mais:
+**Decidido em 2026-08-15, e no site** (capítulo XV, `/arcano#escolas`).
 
-- **A Trilha carrega o que você aprende.** Quais Efeitos daquela Arte a sua escola abre. Areia
-  cega, soterra e escorre; Pedra ergue, esmaga e bloqueia.
-- **A régua de abundância carrega onde você é forte.** Uma escada por escola em vez de uma só.
-- **A tabela de estado da matéria carrega quanto você move.** Areia é granular, não sólida.
+A **Tradição** diz *como* se ensina, e são seis. A **Escola** é a casa concreta onde se ensina: um
+mosteiro, uma academia, um círculo de anciãos, a corte de um senhor. Ela nasce dentro de uma
+Tradição e herda o método dela, mas **o repertório não sai do método, sai do que existe em volta**.
+Onde o inverno é o ano inteiro ensina-se Gelo e quase ninguém aprende Água; no deserto ensina-se
+Areia e rocha viva é lenda de viajante.
 
-Dois personagens de Terra 4 em escolas diferentes jogam diferente sem nenhum deles ter comprado
-uma Arte a mais. E o modelo é geral: nada impede escolas de Fogo ou de Água mais adiante.
+Isso não é gosto do mestre, é a régua da fonte funcionando: conjurar a partir do elemento abundante
+vale desconto, e ninguém funda escola de pedra onde não há pedra.
+
+**A consequência boa:** explica por que Artes quase iguais existem separadas. Gelo e Água fazem
+coisas próximas e uma vira a outra, e são distintas porque foram **ensinadas distintas**, por gente
+que morava em lugares distintos.
+
+**A vantagem concreta é a fronteira.** Uma Escola costuma morar na divisa entre duas Artes, e é
+isso que ela entrega. A escola da Areia é a de Terra que faz divisa com o **Ar**: areia voa, cega,
+sobe em nuvem. Quem estudou nela alcança o que o talhador de rocha nunca alcançaria, e em troca não
+ergue muralha. O mecanismo é o **Efeito de fronteira** (`regras.json → arcano.efeitos.fronteira`),
+que é o velho "o Efeito que você já sabe e cabe em outra Arte sua não custa XP" visto pelo avesso.
+
+E o tamanho vem junto, sem regra nova: areia é **granular** na tabela de estado, então cobre mais
+chão que a rocha e não dobra o dado como a Terra dobra. **A escola da Areia troca dano por alcance,
+e a da Pedra troca alcance por dano**, e isso sai da tabela sozinho.
+
+Falta o mapa: quais Escolas existem, onde ficam e o que cada uma abre. É trabalho de lore, e ele
+anda junto com a ligação de cada Arte com suas Trilhas.
 
 > **O buraco que revelou tudo isso.** A régua de abundância da Terra hoje **desliza de solo solto
 > para rocha viva conforme sobe** (*saco de terra · terra batida · campo aberto · encosta, pedreira
@@ -773,21 +789,21 @@ sofre a Penalidade. Se um dia precisar de resistência, o lugar é aqui.
 **13. Efeitos elementais sem número.** Treze ainda estão só com parâmetros padrão, e Fogo, Raio e
 Luz não têm nada de nível 1. Frente de revisão do autor.
 
-**20. Decidido e não implementado (2026-08-15).** Três decisões da conversa sobre vizinhança que
-ficaram só no papel, a pedido, e o que cada uma custa quando for liberada:
+**20. A vizinhança, implementada em 2026-08-15.** Feito:
 
-- **A linha "granular" na tabela de estado da matéria.** Entre sólido e líquido: areia, cascalho,
-  pó, neve solta, cinza. Volume normal (escorre, então rende mais que rocha) e **dano normal**, sem
-  o dobro da Terra, porque material solto não concentra o golpe. Vale para qualquer Arte que mexa
-  com material solto. Toca `regras.json → arcano.improviso.graus.volumePorEstado` e a tabela do
-  capítulo XV. É a menor das três: uma linha em cada lugar.
-- **Efeitos compartilhados entre Raio e Ar.** Dois ou três passam a viver nas duas Artes, como o
-  Muro vive em sete, e quem sabe por uma não paga XP de novo pela outra. Candidatos naturais:
-  Escudo de Vento (o ar que desvia também aterra), Passo do Relâmpago com Salto do Vento, e a
-  Tempestade, porque chuva, vento e raio são a mesma cena. Toca só o campo `artes` desses Efeitos
-  em `efeitos.json`. Não mexe na calibragem de nenhuma das duas Artes.
-- **As escolas de Terra.** A maior: exige escrever os Efeitos de cada escola, as Trilhas que os
-  abrem, e **três réguas de abundância** no lugar da atual. Trabalho de conteúdo, não de desenho.
+- **A linha "granular"** entrou na tabela de estado, entre sólido e líquido: areia, cascalho, pó,
+  neve solta, cinza. Volume normal (escorre, rende mais chão que rocha) e **dano normal**, sem o
+  dobro da Terra, porque material solto não concentra o golpe.
+- **Três Efeitos de fronteira entre Raio e Ar:** a **Tempestade** ganhou Vento (*a rajada desce em
+  vez do raio*), o **Escudo de Vento** ganhou Raio (*uma coroa de faíscas que aterra o que vem
+  voando*) e o **Salto do Vento** ganhou Raio (*o lance curto percorrido como fagulha, antes de
+  virar o Passo do Relâmpago*). Quem sabe por uma Arte não paga XP de novo pela outra.
+- **A Escola** ficou definida no capítulo XV (`/arcano#escolas`), com o conceito de Efeito de
+  fronteira em `regras.json → arcano.efeitos.fronteira`.
+
+**Fica em aberto o mapa das Escolas:** quais existem, onde ficam, e quais Efeitos cada uma abre. É
+trabalho de lore, e anda junto com a ligação Arte × Trilha (pendência 6). O caso da Areia está
+descrito e serve de molde, mas os Efeitos dela ainda não foram escritos.
 
 **19. O Fogo está magro, e o Raio fica.** A pergunta era se o Raio devia virar subdivisão de Ar ou
 de Fogo. A contagem de Efeitos **exclusivos** (fora os compartilhados, como Muro, Aura e Arma

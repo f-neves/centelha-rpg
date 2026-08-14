@@ -2,7 +2,9 @@
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data';
+import regras from '../data/regras.json';
 const d = await loadData();
+const FRONTEIRA = (regras as any).arcano.efeitos.fronteira;
 const elem = d.artes.filter((a) => a.categoria === 'elemental');
 const univ = d.artes.filter((a) => a.categoria === 'universal');
 // resumo de uma linha por Arte (a descrição completa mora em As Artes)
@@ -85,6 +87,20 @@ const RESUMO: Record<string, string> = {
         <p class="tl-ex"><em>Exemplo:</em> um xamã goblin que fala com o totem da montanha e guarda os tabus dos ancestrais, nunca desferindo o primeiro golpe num bosque sagrado.</p>
       </div>
     </div>
+  </section>
+
+  <section class="arcano-regras" id="escolas">
+    <h2>As Escolas</h2>
+    <p>A Tradição diz <strong>como</strong> se ensina. A <strong>Escola</strong> é a casa concreta onde se ensina: um mosteiro, uma academia, um círculo de anciãos, a corte de um senhor. Ela nasce dentro de uma das seis Tradições e herda o método dela, mas o <strong>repertório</strong> que ela passa não sai do método: sai do que existe em volta.</p>
+    <p>Onde o inverno é o ano inteiro, ensina-se <strong>Gelo</strong>, e quase ninguém aprende Água. No deserto ensina-se <strong>Areia</strong>, e rocha viva é lenda de viajante. Isso não é gosto do mestre: é a régua da fonte funcionando. Conjurar a partir do elemento abundante vale desconto, e ninguém funda escola de pedra onde não há pedra.</p>
+    <div class="callout regra"><span class="lbl">Por que Artes parecidas existem separadas</span>
+      Gelo e Água fazem coisas próximas, e uma vira a outra na frente dos seus olhos. Elas são Artes distintas porque foram <strong>ensinadas distintas</strong>, por gente que morava em lugares distintos. O que um feiticeiro do norte sabe fazer com a água do rio é o que a escola dele achou que valia a pena ensinar, e não tudo o que a água permite.
+    </div>
+    <h3>A fronteira é a vantagem</h3>
+    <p>Uma Escola costuma morar numa <strong>divisa entre duas Artes</strong>, e é isso que ela entrega de concreto. A escola da <strong>Areia</strong> é a de Terra que faz divisa com o <strong>Ar</strong>: areia voa, cega, sobe em nuvem e se assenta. Quem estudou nela alcança coisas que a Terra pura, a do talhador de rocha, nunca alcançaria, e em troca não ergue muralha nenhuma.</p>
+    <p class="muted">{FRONTEIRA}</p>
+    <p>Isso também aparece no tamanho do que se move. Areia é <strong>granular</strong> na tabela de estado da matéria: escorre, então cobre mais chão que a rocha pelo mesmo esforço, e em troca não dobra o dado como a Terra dobra. <strong>A escola da Areia troca dano por alcance, e a da Pedra troca alcance por dano</strong>, sem que nenhuma regra de Escola precise dizer isso. Sai da tabela sozinho.</p>
+    <p class="muted">O mapa das Escolas do mundo, com os lugares e o que cada uma abre, fica para um próximo passo, junto da ligação de cada Arte com suas Trilhas.</p>
   </section>
 
   <section class="arcano-regras">

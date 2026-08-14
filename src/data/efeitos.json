@@ -856,6 +856,10 @@
       {
         "id": "vento",
         "sabor": "a rajada sustentada desvia o que voa"
+      },
+      {
+        "id": "raio",
+        "sabor": "uma coroa de faíscas que aterra o que vem voando"
       }
     ],
     "parametros": [
@@ -900,6 +904,10 @@
       {
         "id": "vento",
         "sabor": "o ar empurra para cima e segura na descida"
+      },
+      {
+        "id": "raio",
+        "sabor": "o lance curto percorrido como fagulha, antes de virar o Passo do Relâmpago"
       }
     ],
     "parametros": [
@@ -4245,6 +4253,10 @@
       {
         "id": "raio",
         "sabor": "o céu fecha e escolhe alvos"
+      },
+      {
+        "id": "vento",
+        "sabor": "a rajada desce em vez do raio, e arranca do chão quem ela pega"
       }
     ],
     "parametros": [
