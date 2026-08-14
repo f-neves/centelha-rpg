@@ -186,11 +186,11 @@ Vale para o **efeito genérico da Arte** (o improviso: o dardo, acender, aquecer
 
 | Feiticeiro | Pontos | Teto | Exemplos de alocação |
 |---|---|---|---|
-| Fogo 1, Centelha 1 | 3 | 1 | 1d6 a 5 m; ou 1d6 em dois alvos, por toque |
-| Fogo 3, Centelha 3 | 9 | 3 | 3d6 a 50 m num alvo; ou 3d6 a 20 m em quatro alvos |
-| Fogo 6, Centelha 3 | 15 | 6 | 6d6 a 500 m; ou 4d6 a 150 m por uma cena |
-| Fogo 6, Centelha 6 | 18 | 6 | 6d6 a 500 m em quatro alvos |
-| Fogo 1, Centelha 6 | 8 | 1 | nada além do grau 1: sobra ponto sem onde gastar |
+| Fogo 1, Centelha 1 | 3 | 1 | 1d6 a 5 m (dardo); ou 1d6 num jorro de 1 m² sustentado por 1 turno |
+| Fogo 3, Centelha 3 | 9 | 3 | 3d6 num jorro de 15 m²; ou 3d6 a 50 m sustentado por uma cena |
+| Fogo 6, Centelha 3 | 15 | 6 | 6d6 a 500 m; ou 5d6 numa massa lançada de 50 m² a 150 m |
+| Fogo 6, Centelha 6 | 18 | 6 | 6d6 a 1,5 km sustentado por 6 horas: os três parâmetros no teto |
+| Fogo 1, Centelha 6 | 8 | 1 | nada além do grau 1: com três parâmetros no grau 1, gasta 3 dos 8 |
 
 Propriedades que sustentam a escolha da fórmula: o grau 0 é grátis, então magia pequena não pede
 conta nenhuma na mesa; a proporção entre pontos e teto fica estável em toda a escala (dá para
@@ -205,6 +205,74 @@ Descartadas: **Arte + Atributo** (favorecia Arte baixa com Atributo alto) e **Ar
 regra e passam a ser **exemplo de alocação típica** daquele patamar. Hoje aqueles textos sugerem
 que o nível 3 entrega alcance, área e dano de nível 3 ao mesmo tempo, e com esta conta não
 entrega.
+
+### 5.2. O que o improviso pode combinar
+
+> **Decidido em 2026-08-14, e ainda não está no site nem em `regras.json`.** É a única parte
+> deste documento acima da seção 10 que ainda não foi portada (item 8 da seção 11).
+
+A Arte crua não desenha: ela **manifesta o elemento**. Fogo sai como labareda, Terra sai como
+pedra, estalactite e estilhaço. Quem dá forma é o Efeito. O risco dos cinco parâmetros soltos é
+o improviso desenhar sem querer: pagar Alcance e Área ao mesmo tempo é pedir uma bola de fogo, e
+pagar Área com Duração é levantar um muro sem comprar o Muro.
+
+A trava não é uma lista de formas proibidas. É que **os parâmetros não se combinam todos**, e a
+forma sai de quais foram pagos. Antes de tudo, o que cada um mede, que o documento não dizia:
+
+- **Alcance é onde o efeito começa.**
+- **Área é o tamanho do que ele ocupa.**
+
+Na labareda o efeito começa na mão (alcance zero) e ocupa um leque. No dardo ele começa longe
+(alcance alto) e ocupa um alvo só. Pagar os dois é cobrar o mesmo espaço por dois caminhos.
+
+> **1. Área nunca é colocada.** Ou ela nasce no corpo do conjurador, ou ela viaja em linha reta a
+> partir dele. Escolher um ponto do mapa e pôr uma área lá é Efeito.
+
+> **2. Improviso mantém, Efeito solta.** Duração improvisada se paga com concentração. Duração
+> que fica de pé sozinha é Efeito.
+
+> **3. Teto de três.** No máximo três parâmetros acima do grau 0. **Alvos nunca entra no
+> improviso:** escolher várias vítimas a dedo é precisão, e precisão se compra.
+
+O repertório inteiro que sobra:
+
+| Improviso | Parâmetros | Como se manifesta | Quem é atingido |
+|---|---|---|---|
+| **Dardo** | Alcance + Dano | um pedaço do elemento sai da mão e vai até o alvo | um alvo, ataque normal |
+| **Jorro** | Área + Dano | o elemento sai do corpo, em leque à frente ou irrompendo em volta, conforme o que ele faz por natureza | quem estiver dentro, aliado incluído |
+| **Massa lançada** | Alcance + Área + Dano | um bloco do elemento corre em linha reta a partir do conjurador | o primeiro que estiver na reta. Ela **não** para onde o jogador quiser |
+| qualquer um **+ Duração** | + concentração | o conjurador se planta e sustenta | reavaliado a cada turno |
+
+O Dardo sustentado é jato contínuo, não tiro repetido: estilhaços saindo da palma por dois
+turnos. O Jorro sustentado é a labareda de três turnos.
+
+**O teto de três quase não tira nada**, e é por isso que ele cabe: a conta de pontos da seção 5.1
+já entregava cerca de três parâmetros no máximo, em qualquer ponto da escala. A regra só torna
+explícito um limite que a economia já impunha.
+
+**Concentrar custa**, por turno sustentado:
+
+- gasta a **ação** do turno;
+- o conjurador **não sai do lugar**;
+- **defender-se é permitido**, porque proibir defesa faria de sustentar um suicídio;
+- **ao sofrer dano, um teste de Ocultismo + Vontade** para segurar. Falhando, o efeito cai.
+  Dificuldade Média até calibrar (pendência 14).
+
+Duas consequências que a mesa vai sentir, e as duas são escolhidas:
+
+**O improviso perde a bola de fogo.** Pôr uma explosão *ali* sai do vocabulário até alguém comprar
+o Efeito.
+
+**Improvisar área é coisa de linha de frente.** Sem alcance, quem quer área precisa estar a
+distância de toque; quem quer distância tem o dardo e a massa lançada. O feiticeiro que não
+estudou luta perto ou luta um alvo por vez.
+
+E fica barato de explicar por que a **Flecha de Fogo**, para atirar com arco, é Efeito de nível 1:
+ela persiste sem concentração **e** é entregue a outra coisa. Duas violações, nenhuma regra nova.
+
+> Escrito para as Artes elementais, onde "manifestação do elemento" quer dizer alguma coisa. Cura,
+> Fascinação, Adivinhação, Conjuração e Metamorfose já trocam parâmetros nesta seção e precisam do
+> equivalente delas, escrito na própria Arte (pendência 15).
 
 ---
 
@@ -582,6 +650,24 @@ sofre a Penalidade. Se um dia precisar de resistência, o lugar é aqui.
 **13. Efeitos elementais sem número.** Treze ainda estão só com parâmetros padrão, e Fogo, Raio e
 Luz não têm nada de nível 1. Frente de revisão do autor.
 
+**14. A dificuldade do teste de concentração.** A seção 5.2 fechou que sustentar um improviso pede
+**Ocultismo + Vontade** ao sofrer dano, e deixou a dificuldade em **Média** provisoriamente. Falta
+decidir se ela é fixa ou se sobe com o tamanho do golpe (por exemplo, Difícil quando o dano passa
+da Absorção, ou um degrau a mais por ferimento já aberto).
+
+**15. O improviso das Artes não elementais.** A regra da 5.2 nasceu das elementais, onde
+"manifestação do elemento" quer dizer alguma coisa concreta. Cura, Fascinação, Adivinhação,
+Conjuração e Metamorfose já trocam parâmetros na seção 5, e o improviso delas precisa da versão
+própria: o que é "área nunca colocada" numa Arte cuja área virou **Plateia**, e o que é
+concentração numa Arte cuja duração virou **Firmeza do vínculo**.
+
+**16. A unidade da Área.** Discutido em 2026-08-13 e não fechado. Duas coisas na mesa: converter a
+escala de m² para **raio** (0,5 · 1,25 · 2 · 4 · 7 · 12 m, que é a escada atual convertida, sem
+rebalancear nada), e trocar Área por **Volume** nos elementos com corpo (água, gelo, terra), usando
+a máquina de substituição por Arte que a seção 5 já tem. A 5.2 tirou a urgência disso, porque área
+que nunca é colocada não gera as perguntas de ancoragem e de borda que motivaram a discussão, mas
+a Água continua sem resposta para "quanta água é esta".
+
 ---
 
 ## 11. Próximos passos
@@ -613,3 +699,7 @@ Luz não têm nada de nível 1. Frente de revisão do autor.
 6. Revisar as seções 3 e 4 deste documento quando a rolagem por Tradição fechar.
 7. Portar ao site o que já está escrito e parado em doc: **Antecedentes** (14, com XP ×3) e
    **Ataques Mentais** (o capítulo; a Defesa Mental já está no motor).
+8. Portar a **seção 5.2** (o que o improviso pode combinar). Toca `regras.json → arcano` com um
+   bloco novo de combinações e concentração, o capítulo XV com a tabela dos quatro improvisos, e
+   os textos de `artes.json` que hoje descrevem improvisos ilegais. É a única decisão deste
+   documento acima da seção 10 que ainda não está no ar.
