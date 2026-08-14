@@ -156,7 +156,9 @@ exatamente o obstáculo do Sätteri.
 
 | # | o que | como se verifica |
 |---|---|---|
+| 1.0 | Escolher o **endereço** (ver `Dominio.md`, que é anterior a isto) | há um domínio decidido |
 | 1.1 | Escolher o hospedeiro (ver 4) e criar o projeto apontando para o repositório | um deploy de prévia sobe |
+| 1.1b | Pôr o endereço novo na Site URL e nas Redirect URLs do Supabase | "esqueci minha senha" chega com link certo |
 | 1.2 | `base` some do `astro.config.mjs`; `site` passa a ser o domínio novo | `npm run build` verde |
 | 1.3 | `rehypeBaseLinks` é apagado, junto do `BASE` que ele usava | os links da prosa continuam certos no build |
 | 1.4 | `redirects` do `/artes` perde o `BASE` escrito à mão | `/artes` cai em `/artes/regras` |
@@ -237,6 +239,12 @@ Os três servem, e o site é estático hoje. O que os separa aqui:
 medida (o bestiário tem 7,8 MB de arte, e um dia isso conta), e é o caminho com
 menos atrito se a mesa algum dia precisar de servidor. Netlify é o mais simples
 de configurar dos três, se a preferência for essa.
+
+**Ressalva vinda do `Dominio.md`:** essa sugestão olhava só para banda. Se o
+endereço escolhido for um subdomínio grátis que esteja na Public Suffix List
+(caso do `is-a.dev`), **o painel da Cloudflare não aceita adicioná-lo** e o
+caminho passa pela API. Com Netlify ou Vercel é CNAME e pronto. Nesse cenário,
+Netlify passa à frente. A escolha do endereço vem antes da escolha da casa.
 
 **Isto não é urgente e não bloqueia nada.** O que bloqueava já saiu.
 

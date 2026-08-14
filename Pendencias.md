@@ -413,6 +413,29 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 
 ---
 
+## J. Infraestrutura · endereço, hospedagem e versão
+
+- [ ] **J1 · [DECIDIR] Qual endereço o site vai ter.** Análise completa em `Dominio.md`, com
+  disponibilidade e preço conferidos em 14/08/2026. Grátis, o melhor é `centelha.is-a.dev`
+  (livre, na Public Suffix List, e portátil porque é CNAME); pago, `centelha.rec.br` sai por
+  R$ 40/ano no Registro.br. A Freenom (`.tk`, `.ml`, `.ga`) morreu em 2024 e voltou em 2026
+  cobrando. **O que decide não é o preço, é a portabilidade:** cada mudança de origem apaga
+  as 7 chaves de `localStorage` dos leitores, ficha de personagem inclusa, então a conta se
+  paga por endereço, não por hospedeiro. Um subdomínio do hospedeiro (`*.pages.dev`) solda
+  a origem à casa e cobra a conta de novo no dia da próxima mudança.
+- [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4. Depende de J1: se o
+  endereço for um subdomínio grátis que esteja na PSL, o painel da Cloudflare não o aceita e
+  o Netlify passa à frente.
+- [ ] **J3 · [FAZER, depois de J1 e J2] Sair do GitHub Pages, e só então subir para o Astro 7.**
+  Fases, verificações e riscos em `Migracao_Astro7.md`. Os dois bloqueios técnicos da subida
+  já saíram em 14/08 (o dev server centralizado e a aposentadoria do `@vite-pwa/astro`).
+- [ ] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
+  auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
+  `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.
+  Zero das 309 têm no topo; 101 têm dentro. Detalhe em `Auditoria_Tecnica.md` seção 8.2.
+
+---
+
 ## Ordem sugerida
 
 1. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar, e é o mesmo tipo de
