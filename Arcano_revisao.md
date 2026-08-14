@@ -99,6 +99,50 @@ E vale registrar que **o Centelha já divergiu do Avatar de propósito**: Gelo �
 não "quatro elementos e o resto é técnica". Adotar a do Avatar hoje obrigaria a fundir Gelo em
 Água também.
 
+> **Correção do próprio argumento.** Ao discutir o Raio eu usei o Avatar, onde relâmpago é
+> subdivisão do Fogo. Isso não vale aqui, e os dados já diziam: a régua de abundância do Raio, que
+> está no site desde sempre, é inteira de tempo (*ar seco e carregado · trovoada ao longe ·
+> tempestade sobre a cabeça · tempestade em mar aberto*), enquanto a do Fogo é inteira de
+> incêndios. **No Centelha o Raio nasce do céu, não da chama**, e se um dia fosse subdivisão de
+> alguém seria do Ar. Continua Arte própria de qualquer jeito, pelos motivos da pendência 19.
+
+### Vizinhança entre Artes
+
+Elementos vizinhos não precisam virar um só. Cinco relações, e nenhuma delas pede camada nova:
+
+| A relação | Exemplo | A ferramenta |
+|---|---|---|
+| fazem algumas das mesmas coisas | Raio e Ar · Gelo e Água | **Efeito compartilhado** |
+| combinam num terceiro | Lava = Fogo + Terra · Plantas = Água + Vida | **conjuração composta** |
+| um vira o outro | Gelo e Água | **a fonte**: o gelo derrete, e a água que não escorreu serve de fonte de novo |
+| um é caso particular do outro | Metal ⊂ Terra | **Efeitos + Trilha** (pendência 7) |
+| formas diferentes do mesmo elemento | Terra, Areia e Pedra | **escola** (abaixo) |
+
+Sobre Plantas, um detalhe que economiza trabalho: **Vida já tem quase tudo** (Sarçal, Coração
+Verde, Semear o Ermo, Semente Adormecida). O que a Água acrescenta é justamente o que separa dobra
+de jardinagem, e a composta entrega isso hoje sem escrever uma linha.
+
+### Escola: formas diferentes do mesmo elemento
+
+**Decidido em 2026-08-15.** Terra, Areia e Pedra não são Artes diferentes nem apenas sabor. São
+**escolas**, e a diferença entre elas se distribui por três mecanismos que já existem, sem camada
+nova de contabilidade e sem XP a mais:
+
+- **A Trilha carrega o que você aprende.** Quais Efeitos daquela Arte a sua escola abre. Areia
+  cega, soterra e escorre; Pedra ergue, esmaga e bloqueia.
+- **A régua de abundância carrega onde você é forte.** Uma escada por escola em vez de uma só.
+- **A tabela de estado da matéria carrega quanto você move.** Areia é granular, não sólida.
+
+Dois personagens de Terra 4 em escolas diferentes jogam diferente sem nenhum deles ter comprado
+uma Arte a mais. E o modelo é geral: nada impede escolas de Fogo ou de Água mais adiante.
+
+> **O buraco que revelou tudo isso.** A régua de abundância da Terra hoje **desliza de solo solto
+> para rocha viva conforme sobe** (*saco de terra · terra batida · campo aberto · encosta, pedreira
+> · rocha viva · raiz da montanha*), e **areia não aparece em lugar nenhum**. O resultado é
+> perverso: um deserto, que deveria ser o paraíso de quem trabalha areia, cai perto do fundo de uma
+> escada que trata material solto como fraco. Não é lacuna de conteúdo: é o sinal de que "uma Terra
+> só" é uma simplificação que a própria régua já estava forçando.
+
 ### O mesmo Efeito em Artes diferentes
 
 O Efeito descreve **o resultado**; cada Arte que o comporta descreve **o sabor e o efeito
@@ -728,6 +772,22 @@ sofre a Penalidade. Se um dia precisar de resistência, o lugar é aqui.
 
 **13. Efeitos elementais sem número.** Treze ainda estão só com parâmetros padrão, e Fogo, Raio e
 Luz não têm nada de nível 1. Frente de revisão do autor.
+
+**20. Decidido e não implementado (2026-08-15).** Três decisões da conversa sobre vizinhança que
+ficaram só no papel, a pedido, e o que cada uma custa quando for liberada:
+
+- **A linha "granular" na tabela de estado da matéria.** Entre sólido e líquido: areia, cascalho,
+  pó, neve solta, cinza. Volume normal (escorre, então rende mais que rocha) e **dano normal**, sem
+  o dobro da Terra, porque material solto não concentra o golpe. Vale para qualquer Arte que mexa
+  com material solto. Toca `regras.json → arcano.improviso.graus.volumePorEstado` e a tabela do
+  capítulo XV. É a menor das três: uma linha em cada lugar.
+- **Efeitos compartilhados entre Raio e Ar.** Dois ou três passam a viver nas duas Artes, como o
+  Muro vive em sete, e quem sabe por uma não paga XP de novo pela outra. Candidatos naturais:
+  Escudo de Vento (o ar que desvia também aterra), Passo do Relâmpago com Salto do Vento, e a
+  Tempestade, porque chuva, vento e raio são a mesma cena. Toca só o campo `artes` desses Efeitos
+  em `efeitos.json`. Não mexe na calibragem de nenhuma das duas Artes.
+- **As escolas de Terra.** A maior: exige escrever os Efeitos de cada escola, as Trilhas que os
+  abrem, e **três réguas de abundância** no lugar da atual. Trabalho de conteúdo, não de desenho.
 
 **19. O Fogo está magro, e o Raio fica.** A pergunta era se o Raio devia virar subdivisão de Ar ou
 de Fogo. A contagem de Efeitos **exclusivos** (fora os compartilhados, como Muro, Aura e Arma
