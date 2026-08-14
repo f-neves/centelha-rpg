@@ -9,13 +9,10 @@
 //
 // uso: node scripts/test-editor-bestiario.mjs
 import puppeteer from 'puppeteer-core';
-import { spawn, execSync } from 'node:child_process';
+import { subirDev } from './dev-server.mjs';
 const EDGE='C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
-const strip=(s)=>s.replace(/\x1b\[[0-9;]*m/g,'');
-const {child,url}=await new Promise((res,rej)=>{
-  const c=spawn('npm run dev',{shell:true,stdio:['ignore','pipe','pipe']});
-  let o=''; const on=(b)=>{o+=strip(b.toString());const m=o.match(/http:\/\/localhost:(\d+)\/centelha-rpg/);if(m)res({child:c,url:`http://localhost:${m[1]}/centelha-rpg`});};
-  c.stdout.on('data',on);c.stderr.on('data',on);setTimeout(()=>rej(new Error('dev')),45000);});
+const dev=await subirDev();
+const url=dev.url;
 const browser=await puppeteer.launch({executablePath:EDGE,headless:'new',args:['--no-sandbox']});
 let falhas=0; const ok=(c,m)=>{console.log(`  ${c?'✓':'✘'} ${m}`); if(!c)falhas++;};
 try{
@@ -117,7 +114,7 @@ try{
   ok(erros.length===0,`sem erro de JS na pagina${erros.length?': '+erros[0]:''}`);
 }finally{
   await browser.close();
-  try{execSync(`taskkill /pid ${child.pid} /T /F`,{stdio:'ignore'});}catch{}
+  await dev.parar();
 }
 console.log(falhas?`\n✘ ${falhas} falha(s)`:'\n✓ editor OK');
 process.exit(falhas?1:0);

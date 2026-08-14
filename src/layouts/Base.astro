@@ -94,6 +94,11 @@ if (partes.length) crumbs.push({ label: title });
   <script is:inline>
     // PWA desativado por ora: remove qualquer service worker antigo preso (que servia
     // JS desatualizado) e limpa os caches. Sem re-registrar (evita loop de recarga).
+    //
+    // Este é o cinto; o suspensório é `public/sw.js`, que se desregistra sozinho.
+    // Os dois cobrem casos diferentes: daqui só funciona quando a página CHEGA ao
+    // navegador, e um service worker preso pode estar servindo HTML velho, sem
+    // este trecho. Aquele o navegador rebusca por conta própria.
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister())).catch(() => {});
       if (window.caches) caches.keys().then((ks) => ks.forEach((k) => caches.delete(k))).catch(() => {});

@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import AstroPWA from '@vite-pwa/astro';
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
@@ -96,44 +95,18 @@ export default defineConfig({
   },
   integrations: [
     sitemap(),
-    AstroPWA({
-      registerType: 'autoUpdate',
-      // Service worker "self-destroying": remove qualquer SW antigo preso e limpa os caches
-      // nos aparelhos ao abrir o site (resolve versoes velhas travadas). Sem PWA/offline por ora.
-      selfDestroying: true,
-      manifest: {
-        name: 'Centelha',
-        short_name: 'Centelha D6',
-        description: 'Sistema de RPG de mesa em d6, do mortal ao semideus.',
-        lang: 'pt-BR',
-        // Cores do fundo do ícone. As antigas (azul #1f3f8f e creme #f3e9d2)
-        // vinham do d6 azul e faziam a splash abrir creme para entregar um ícone
-        // escuro.
-        theme_color: '#15171c',
-        background_color: '#15171c',
-        display: 'standalone',
-        // Os PNGs são rasterizados de D&D/favicon/centelha_teste2.svg.
-        //
-        // O "-v2" no nome não é enfeite: launcher e navegador guardam o ícone pelo
-        // NOME do arquivo, então trocar só o conteúdo deixa o desenho velho grudado
-        // em quem já instalou. Mudou o desenho, muda o nome.
-        //
-        // O maskable é arquivo à parte porque precisa de fundo opaco e de caber na
-        // zona segura (círculo de raio 40% do lado). Detalhe da conta no gerador.
-        icons: [
-          { src: 'icon-192-v2.png', sizes: '192x192', type: 'image/png' },
-          { src: 'icon-512-v2.png', sizes: '512x512', type: 'image/png' },
-          { src: 'icon-maskable-512-v2.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
-        ],
-      },
-      workbox: {
-        globPatterns: ['**/*.{html,js,css,json,svg,png,woff,woff2}'],
-        navigateFallback: null,
-        maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
-        runtimeCaching: [
-          { urlPattern: ({ url }) => url.pathname.includes('/pagefind/'), handler: 'StaleWhileRevalidate', options: { cacheName: 'pagefind' } },
-        ],
-      },
-    }),
+    // O `@vite-pwa/astro` saiu daqui em agosto de 2026.
+    //
+    // O que ele fazia neste projeto era UMA coisa: gerar um service worker
+    // "self-destroying", de vinte linhas, para matar um SW antigo que ficou preso
+    // em alguns aparelhos. Isso agora mora em `public/sw.js`, escrito à mão, e o
+    // manifesto em `public/manifest.webmanifest`, com caminhos relativos (a versão
+    // gerada gravava `/centelha-rpg/` e teria de ser corrigida quando o site sair
+    // do GitHub Pages).
+    //
+    // Saiu por dois motivos, nesta ordem: o trabalho dele aqui cabia em dois
+    // arquivos estáticos, e o `peerDependency` dele para no Astro 5, o que
+    // travava a subida de versão sem que houvesse correção rio acima (1.2.0 é a
+    // última publicada). Ver `Migracao_Astro7.md`.
   ],
 });

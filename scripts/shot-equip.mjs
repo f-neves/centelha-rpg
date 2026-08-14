@@ -1,25 +1,13 @@
 // one-off: screenshot the ficha equipment area with armor stacked, to verify per-mode Soak.
 import puppeteer from 'puppeteer-core';
-import { spawn, execSync } from 'node:child_process';
 import fs from 'node:fs';
+import { subirDev } from './dev-server.mjs';
 
 const EDGE = process.env.EDGE || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
-const BASE = '/centelha-rpg';
-const stripAnsi = (s) => s.replace(/\x1b\[[0-9;]*m/g, '');
 fs.mkdirSync('_shots', { recursive: true });
 
-function startServer() {
-  return new Promise((resolve, reject) => {
-    const child = spawn('npm run dev', { shell: true, stdio: ['ignore', 'pipe', 'pipe'] });
-    let out = '';
-    const onData = (b) => { out += stripAnsi(b.toString()); const m = out.match(/http:\/\/localhost:(\d+)\/centelha-rpg/); if (m) { clearTimeout(t); resolve({ child, url: `http://localhost:${m[1]}${BASE}` }); } };
-    child.stdout.on('data', onData); child.stderr.on('data', onData);
-    const t = setTimeout(() => { reject(new Error('no server\n' + out)); }, 45000);
-  });
-}
-function kill(child) { try { execSync(`taskkill /pid ${child.pid} /T /F`, { stdio: 'ignore' }); } catch {} }
-
-const { child, url } = await startServer();
+const dev = await subirDev();
+const url = dev.url;
 console.log('server', url);
 const br = await puppeteer.launch({ executablePath: EDGE, headless: 'new', args: ['--no-sandbox'] });
 try {
@@ -47,5 +35,5 @@ try {
   await (await p.$('#eq-armaduras')).screenshot({ path: '_shots/eq-checklist.png' });
   await (await p.$('#combate')).screenshot({ path: '_shots/eq-combate.png' });
   console.log('done');
-} finally { await br.close(); kill(child); }
+} finally { await br.close(); await dev.parar(); }
 process.exit(0);

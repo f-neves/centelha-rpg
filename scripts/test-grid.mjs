@@ -21,11 +21,9 @@
 // Precisa de um navegador. Sem ele o teste AVISA e sai com zero, para não pintar
 // de vermelho uma máquina que só não tem Edge nem Chrome instalado.
 import puppeteer from 'puppeteer-core';
-import { spawn, execSync } from 'node:child_process';
 import fs from 'node:fs';
-import path from 'node:path';
+import { subirDev } from './dev-server.mjs';
 
-const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const VER = process.argv.includes('--ver');
 const MESA = '00000000-0000-4000-8000-0000000000aa';
 
@@ -90,31 +88,6 @@ const SONDA = () => {
 const espera = (ms) => new Promise((r) => setTimeout(r, ms));
 const falhas = [];
 const ok = (c, m) => { console.log((c ? '  ✓ ' : '  ✘ ') + m); if (!c) falhas.push(m); };
-
-function subirServidor() {
-  return new Promise((resolve, reject) => {
-    const filho = spawn('npx astro dev --config astro.bancada.mjs --port 0', {
-      shell: true, cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'],
-      env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' },
-    });
-    let saida = '';
-    const olhar = (b) => {
-      saida += b.toString().replace(/\x1b\[[0-9;]*m/g, '');
-      const m = saida.match(/http:\/\/localhost:(\d+)\/centelha-rpg/);
-      if (m) { clearTimeout(t); resolve({ filho, url: `http://localhost:${m[1]}/centelha-rpg` }); }
-    };
-    filho.stdout.on('data', olhar); filho.stderr.on('data', olhar);
-    const t = setTimeout(() => { matar(filho); reject(new Error('a bancada não subiu em 90 s\n' + saida)); }, 90000);
-    filho.on('exit', (c) => { clearTimeout(t); reject(new Error(`a bancada saiu antes (código ${c})\n` + saida)); });
-  });
-}
-function matar(filho) {
-  if (!filho || filho.killed) return;
-  try {
-    if (process.platform === 'win32') execSync(`taskkill /pid ${filho.pid} /T /F`, { stdio: 'ignore' });
-    else process.kill(-filho.pid);
-  } catch { try { filho.kill('SIGKILL'); } catch {} }
-}
 
 /** Peça visível para pegar, e a casa livre mais longe de todas, dentro do palco. */
 const pontos = (p) => p.evaluate(() => {
@@ -255,14 +228,14 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   await p.close();
 }
 
-const { filho, url } = await subirServidor();
+const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
-  await cena(br, url, { pecas: 12, cols: 24, rows: 16, nevoa: false });
-  await cena(br, url, { pecas: 30, cols: 40, rows: 30, nevoa: true });
+  await cena(br, dev.url, { pecas: 12, cols: 24, rows: 16, nevoa: false });
+  await cena(br, dev.url, { pecas: 30, cols: 40, rows: 30, nevoa: true });
 } finally {
   await br.close();
-  matar(filho);
+  await dev.parar();
 }
 
 if (falhas.length) {
