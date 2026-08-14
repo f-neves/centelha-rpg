@@ -1146,7 +1146,7 @@
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {
-      "regra": "O efeito da Arte se monta investindo PONTOS nos parâmetros. Todo parâmetro custa 1 ponto por nível, linear. O nível de Centelha é desconto no total; o que sobra vira o custo em Mana (1 ponto = 1 Mana). Se o total couber dentro da Centelha, o efeito é GRÁTIS e ilimitado. Não há rolagem para distribuir: a rolagem é só para acertar e vencer a resistência.",
+      "regra": "O efeito da Arte se monta investindo PONTOS nos parâmetros. Todo parâmetro custa 1 ponto por grau, linear, e o grau 0 é grátis em todos. O nível de Centelha é desconto no total; o que sobra vira o custo em Mana (1 ponto = 1 Mana). Se o total couber dentro da Centelha, o efeito é GRÁTIS e ilimitado. Não há rolagem para distribuir: a rolagem é só para acertar e vencer a resistência.",
       "pontos": "invista quantos quiser: 1 ponto = 1 Mana. A Centelha desconta do total.",
       "custoPorNivel": {
         "padrao": 1,
@@ -1157,10 +1157,11 @@
       "tetoPorParametro": "nível da Arte (Efeitos Especiais podem passar disso, ver `efeitos`)",
       "escopo": "Os valores abaixo valem para as Artes ELEMENTAIS. As demais Artes têm parâmetros próprios, definidos caso a caso.",
       "graus": {
-        "nota": "Níveis 1 a 6. Você só paga os parâmetros que USA: o padrão grátis de qualquer feitiço é um alvo, instantâneo e sem área. O Alcance é a exceção: todo efeito comum precisa de pelo menos Alcance 1 (toque).",
+        "nota": "Graus 0 a 6. O grau 0 é o piso de todo parâmetro e é GRÁTIS: toque, uma manifestação mínima do elemento, nenhum alvo designado, nenhum dano e instantâneo. Um feitiço com tudo no grau 0 custa zero pontos, e é assim que se acende uma vela ou se gela uma bebida.",
         "notaTurno": "1 turno = 6 ticks. A régua breve inteira cabe dentro de uma briga: o nível 6 são 50 turnos, 300 ticks, cinco minutos. Passou disso, é caso da régua longa.",
         "alcance": [
           "toque",
+          "1 m",
           "2 m",
           "4 m",
           "10 m",
@@ -1168,6 +1169,7 @@
           "50 m"
         ],
         "area": [
+          "0,1 m de diâmetro",
           "1 m de diâmetro",
           "1,5 m de diâmetro",
           "2 m de diâmetro",
@@ -1176,6 +1178,7 @@
           "4 m de diâmetro"
         ],
         "alvos": [
+          "nenhum designado",
           "1",
           "2",
           "3",
@@ -1184,6 +1187,7 @@
           "10"
         ],
         "dano": [
+          "nenhum",
           "1d6",
           "2d6",
           "3d6",
@@ -1192,6 +1196,7 @@
           "6d6"
         ],
         "duracaoBreve": [
+          "instantâneo (no máximo 1 tick)",
           "1 turno",
           "2 turnos",
           "4 turnos",
@@ -1200,6 +1205,7 @@
           "50 turnos"
         ],
         "duracaoLonga": [
+          "instantâneo (no máximo 1 turno)",
           "10 minutos",
           "1 hora",
           "6 horas",
@@ -1208,15 +1214,36 @@
           "1 mês"
         ],
         "notaDano": "Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
-        "notaArea": "O nível compra um DIÂMETRO, e a área é a do círculo que ele desenha (nível 3 = 2 m de diâmetro = 3,1 m² de chão). Esse é o orçamento de chão, e nenhum molde rende mais chão que o outro. O molde NÃO se escolhe: ele sai da combinação de parâmetros (ver `combinacoes`). No jorro o orçamento vira leque à frente ou estouro em volta; na massa lançada, vira o corpo que viaja. Em círculo, o raio é sempre metade do diâmetro comprado.",
-        "notaAlcance": "O efeito comum precisa de pelo menos Alcance 1 (toque). Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano."
+        "notaArea": "O nível compra um DIÂMETRO, e a área é a do círculo que ele desenha (grau 3 = 2 m de diâmetro = 3,1 m² de chão). Esse é o orçamento de chão, e nenhum molde rende mais chão que o outro. O molde NÃO se escolhe: ele sai da combinação de parâmetros (ver `combinacoes`). Em círculo, o raio é sempre metade do diâmetro comprado.",
+        "notaAlcance": "O toque é o grau 0 e é grátis: nenhum efeito paga para acontecer na própria mão. Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano.",
+        "volume": [
+          "0,02x0,02x0,02",
+          "0,1x0,1x0,1",
+          "0,25x0,25x0,25",
+          "0,5x0,5x0,5",
+          "1x1x1",
+          "1,5x1,5x1,5",
+          "2x2x2"
+        ],
+        "volumeAncora": [
+          "8 cm³, um caroço",
+          "1 litro",
+          "16 litros",
+          "125 litros",
+          "1 m³, cinco metros de muro",
+          "3,4 m³",
+          "8 m³"
+        ],
+        "notaVolume": "O Volume compra um LADO, do mesmo jeito que a Área compra um diâmetro, e o que se ganha é o cubo daquele lado, moldável em esfera, bloco, coluna ou parede. Ele é sempre menor que a Área do mesmo grau esticada até a altura de uma pessoa, e essa diferença é o preço de ENCHER em vez de COBRIR. Em pedra, o grau 4 são 2,7 toneladas; em gelo, com 10 cm de espessura e 2 m de altura, dá cinco metros de muro.",
+        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. A maioria dos efeitos ocupa espaço e mede VOLUME. ÁREA é para o que se espalha por uma superfície e não tem espessura que importe: fogo rasteiro, gelo que deixa o piso escorregadio, água que molha, poeira que assenta, luz que ilumina, sombra que apaga. Teste de mesa: dá para estar DENTRO dele? Volume. Dá para PISAR nele? Área.",
+        "notaAlvos": "O grau 0 é nenhum alvo DESIGNADO, e não \"nenhum alvo\": o dardo continua acertando quem você mira, pela pontaria, e o jorro continua pegando quem está dentro. O parâmetro Alvos serve para ESCOLHER vítimas a dedo, ignorando a geometria, e é por isso que ele quase não aparece nas Artes elementais: o lugar dele é em Cura, Fascinação, Conjuração e nas outras que agem sobre pessoas escolhidas."
       },
       "combinacoes": {
         "nota": "A Arte crua não desenha: ela MANIFESTA o elemento. Fogo sai como labareda, Terra sai como pedra, estilhaço e estalactite. Quem dá forma é o Efeito Especial. Por isso os parâmetros não se combinam todos: a forma do improviso sai de quais foram pagos, e não de uma escolha do jogador.",
-        "definicoes": "Alcance é ONDE o efeito começa. Área é o TAMANHO do que ele ocupa. Na labareda o efeito começa na mão (Alcance 1, toque) e ocupa um leque; no dardo ele começa longe e ocupa um alvo só. Pagar os dois ao mesmo tempo é pedir que o efeito comece longe E ocupe espaço, que é a definição de bola de fogo.",
+        "definicoes": "Alcance é ONDE o efeito começa. Área ou Volume é O TAMANHO do que ele ocupa. Na labareda o efeito começa na mão (Alcance 0, o toque, que é grátis) e ocupa um leque; no dardo ele começa longe e ocupa um alvo só. Pagar os dois ao mesmo tempo é pedir que o efeito comece longe E ocupe espaço, que é a definição de bola de fogo.",
         "areaNuncaColocada": "Área nunca é posta num ponto escolhido do mapa. Ou ela nasce no corpo do conjurador, ou ela viaja em linha reta a partir dele. Escolher um ponto a X metros e pôr uma área lá é Efeito Especial.",
         "duracaoPedeConcentracao": "Duração improvisada se paga com CONCENTRAÇÃO. Duração que fica de pé sozinha, sem o conjurador sustentando, é Efeito Especial.",
-        "teto": "No máximo TRÊS parâmetros além do toque. O parâmetro Alvos nunca entra no improviso: escolher várias vítimas a dedo é precisão, e precisão se compra.",
+        "teto": "No máximo TRÊS parâmetros acima do grau 0. O parâmetro Alvos nunca entra no improviso elemental: escolher várias vítimas a dedo é precisão, e precisão se compra.",
         "lista": [
           {
             "nome": "Dardo",
@@ -1226,13 +1253,13 @@
           },
           {
             "nome": "Jorro",
-            "paga": "Alcance 1 (toque) + Área + Dano",
+            "paga": "Área ou Volume + Dano",
             "forma": "o elemento sai do corpo, em leque à frente ou irrompendo em volta, conforme o que ele faz por natureza",
             "atinge": "quem estiver dentro, aliado incluído"
           },
           {
             "nome": "Massa lançada",
-            "paga": "Alcance + Área + Dano",
+            "paga": "Alcance + Área ou Volume + Dano",
             "forma": "um corpo do elemento corre em linha reta a partir do conjurador",
             "atinge": "o primeiro alvo ou obstáculo da reta. Ela não para onde o jogador quiser"
           },
@@ -1255,12 +1282,13 @@
           "Improvisar área é coisa de linha de frente: sem alcance, quem quer área precisa estar a distância de toque.",
           "Uma flecha de fogo para atirar com arco é Efeito Especial mesmo sendo pequena, porque persiste sem concentração e é entregue a outra coisa."
         ],
-        "escopo": "Escrito para as Artes elementais, onde 'manifestação do elemento' quer dizer alguma coisa concreta. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose já têm parâmetros próprios e precisam da versão delas."
+        "escopo": "Escrito para as Artes elementais, onde 'manifestação do elemento' quer dizer alguma coisa concreta. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose já têm parâmetros próprios e precisam da versão delas.",
+        "grauZero": "Com tudo no grau 0 o feitiço custa zero pontos e é o elemento apenas se manifestando: acender ou apagar uma vela, gelar uma bebida, umedecer uma superfície, faíscas, iluminar como uma tocha, suprimir a luz de uma tocha, assoprar folhas. Dura um tick. Quem tem Centelha 1 paga a Duração 1 com o desconto e sustenta por um turno, e é sustentando turno após turno que a vela vira lareira e a bebida vira gelo. O preço não é Mana, é a ação: sustentar é concentração."
       },
       "exemplos": [
+        "Acender uma vela: tudo no grau 0 = 0 pontos. Sai de graça para qualquer um, e com Centelha 1 dá para pagar Duração 1 (um turno) e ainda sair de graça, sustentando turno após turno até virar uma fogueira.",
         "Dardo: Alcance 3 (4 m) + Dano 2 (2d6) = 5 pontos. Com Centelha 2, custa 3 de Mana.",
-        "Jorro sustentado: Alcance 1 (toque) + Área 3 (2 m de diâmetro) + Dano 2 (2d6) + Duração 2 (2 turnos) = 8 pontos, três parâmetros além do toque. Com Centelha 2, custa 6 de Mana.",
-        "Dano 1 + Alcance 1 = 1 + 1 = 2 pontos. Com Centelha 2 ou mais, sai de graça e pode ser repetido à vontade."
+        "Jorro sustentado: Volume 3 (50 cm de lado) + Dano 2 (2d6) + Duração 2 (2 turnos) = 7 pontos, três parâmetros acima do grau 0. Com Centelha 2, custa 5 de Mana."
       ]
     },
     "esticar": {

@@ -74,14 +74,20 @@ export const TICKS_POR_TURNO = 6;
  * minutos: longo o bastante para atravessar a cena, curto o bastante para a mesa
  * ainda contar.
  */
-const TURNOS_BREVE = [1, 2, 4, 10, 20, 50];
+const TURNOS_BREVE = [0, 1, 2, 4, 10, 20, 50];
 /** A régua "longa" começa onde a briga já acabou. Dez minutos são 100 turnos. */
-const TURNOS_LONGA = [100, 600, 3600, 14400, 100800, 432000];
+const TURNOS_LONGA = [1, 100, 600, 3600, 14400, 100800, 432000];
 
-/** Quantos turnos dura o parâmetro Duração no nível `n` (1 a 6). */
+/**
+ * Quantos turnos dura o parâmetro Duração no grau `n` (0 a 6).
+ *
+ * O grau 0 é instantâneo, e as duas réguas medem "instantâneo" com precisão
+ * diferente: na breve é no máximo um tick, que arredondado em turnos é zero; na
+ * longa é no máximo um turno. Por isso o zero das duas não é o mesmo número.
+ */
 export function turnosDeDuracao(n: number, regua: 'breve' | 'longa' = 'breve'): number {
   const t = regua === 'longa' ? TURNOS_LONGA : TURNOS_BREVE;
-  return t[Math.max(1, Math.min(6, n)) - 1];
+  return t[Math.max(0, Math.min(t.length - 1, n))];
 }
 
 /** "10 turnos", "a cena toda". O número cru não diz nada acima de 50. */
@@ -96,19 +102,26 @@ export function escalaDe(p: Parametro): string[] | null {
   if (p.tipo === 'fixo') return null;
   if (p.tipo === 'substitui' && p.escala) return p.escala;
   const mapa: Record<string, string> = {
-    Alcance: 'alcance', Área: 'area', Alvos: 'alvos', Dano: 'dano',
+    Alcance: 'alcance', Área: 'area', Volume: 'volume', Alvos: 'alvos', Dano: 'dano',
     Duração: p.regua === 'longa' ? 'duracaoLonga' : 'duracaoBreve',
   };
   const k = mapa[p.nome];
   return k && GRAUS[k] ? GRAUS[k] : null;
 }
 
-/** O que o parâmetro vale no nível `n`. `null` quando ele é fixo. */
+/**
+ * O que o parâmetro vale no grau `n`. `null` quando ele é fixo.
+ *
+ * O ÍNDICE É O PRÓPRIO GRAU, e não o grau menos um: desde que todo parâmetro
+ * ganhou o grau 0 (o piso grátis), as escalas têm sete entradas e a primeira é a
+ * do zero. As escalas próprias dos Efeitos seguem a mesma contagem, por isso
+ * todas elas também receberam um degrau 0.
+ */
 export function valorNoNivel(p: Parametro, n: number): string {
   if (p.tipo === 'fixo') return String(p.valor ?? '');
   const esc = escalaDe(p);
   if (!esc) return String(n);
-  return esc[Math.max(1, Math.min(esc.length, n)) - 1];
+  return esc[Math.max(0, Math.min(esc.length - 1, n))];
 }
 
 /** Os parâmetros que o jogador escolhe (os fixos não entram na conta nem na tela). */

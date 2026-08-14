@@ -33,6 +33,7 @@
         "substitui": "area",
         "unidade": "m³",
         "escala": [
+          "0,5x0,5x0,5",
           "1x1x1",
           "1,5x1,5x1,5",
           "2x2x2",
@@ -104,6 +105,7 @@
         "substitui": "dano",
         "unidade": "pontos somados ao dano da arma",
         "escala": [
+          "—",
           "+2",
           "+4",
           "+6",
@@ -182,6 +184,7 @@
         "substitui": "area",
         "unidade": "m de parede",
         "escala": [
+          "1 m",
           "2 m",
           "3 m",
           "5 m",
@@ -261,6 +264,7 @@
         "substitui": "area",
         "unidade": "m de raio",
         "escala": [
+          "0,25 m",
           "0,5 m",
           "1 m",
           "1,5 m",
@@ -583,6 +587,7 @@
         "unidade": "pontos de Mana",
         "escala": [
           "—",
+          "—",
           "1d6",
           "1d6",
           "2d6",
@@ -597,6 +602,7 @@
         "substitui": "duracao",
         "unidade": "turnos",
         "escala": [
+          "1 tick",
           "1 turno",
           "2 turnos",
           "3 turnos",
@@ -994,6 +1000,7 @@
         "substitui": "area",
         "unidade": "m",
         "escala": [
+          "0,5x0,5",
           "1x1",
           "1,5x1,5",
           "2x2",
@@ -1528,6 +1535,7 @@
         "substitui": "duracao",
         "unidade": "turnos",
         "escala": [
+          "—",
           "—",
           "1 turno",
           "1 turno",

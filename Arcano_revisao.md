@@ -114,12 +114,28 @@ dano físico.**
 ## 5. Parâmetros
 
 > **Atenção: as tabelas desta seção e a fórmula de pontos da 5.1 estão defasadas.** O que vale é
-> `src/data/regras.json → arcano.improviso`, renderizado no capítulo XV. O site usa graus **1 a 6**
-> (alcance toque · 2 · 4 · 10 · 20 · 50 m; área por **diâmetro** 1 · 1,5 · 2 · 2,5 · 3 · 4 m; alvos
-> 1 · 2 · 3 · 4 · 6 · 10; duração breve 1 · 2 · 4 · 10 · 20 · 50 turnos), e a economia é
-> **investir quantos pontos quiser, 1 ponto por nível, e a Centelha desconta do total; o que sobra
-> é o Mana**. Não existe a bolsa fixa de "Arte × 2 + Centelha" descrita na 5.1. A seção **5.2** foi
-> reescrita na régua do site; o resto desta seção é registro histórico e precisa de uma passada.
+> `src/data/regras.json → arcano.improviso.graus`, renderizado no capítulo XV, e a economia é
+> **investir quantos pontos quiser, 1 ponto por grau, e a Centelha desconta do total; o que sobra
+> é o Mana**. Não existe a bolsa fixa de "Arte × 2 + Centelha" descrita na 5.1. Só a **5.2** fala
+> a régua certa; o resto desta seção é registro histórico.
+>
+> **A régua do site, decidida em 2026-08-15 (graus 0 a 6, o grau 0 grátis):**
+>
+> | Parâmetro | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+> |---|---|---|---|---|---|---|---|
+> | Alcance | toque | 1 m | 2 m | 4 m | 10 m | 20 m | 50 m |
+> | Área (diâmetro) | 0,1 m | 1 m | 1,5 m | 2 m | 2,5 m | 3 m | 4 m |
+> | Volume (lado) | 2 cm | 10 cm | 25 cm | 50 cm | 1 m | 1,5 m | 2 m |
+> | Alvos | nenhum designado | 1 | 2 | 3 | 4 | 6 | 10 |
+> | Dano | nenhum | 1d6 | 2d6 | 3d6 | 4d6 | 5d6 | 6d6 |
+> | Duração breve | instantâneo (1 tick) | 1 turno | 2 | 4 | 10 | 20 | 50 turnos |
+> | Duração longa | instantâneo (1 turno) | 10 min | 1 h | 6 h | 1 dia | 1 semana | 1 mês |
+>
+> **Área e Volume são duas réguas do mesmo parâmetro**, como Duração breve e longa: o efeito usa
+> uma ou a outra, nunca as duas, e custam o mesmo. Quem decide é o que o efeito faz, não o jogador.
+> A maioria ocupa espaço e mede Volume; Área é para o que se espalha por uma superfície sem
+> espessura que importe (fogo rasteiro, gelo escorregadio, água que molha, poeira, luz, sombra).
+> Teste de mesa: **dá para estar dentro dele? Volume. Dá para pisar nele? Área.**
 
 Cada Arte tem cinco parâmetros, mas **nem sempre os mesmos cinco**. Os que não fazem
 sentido são substituídos, e a substituição é fixa e escrita na Arte.
@@ -240,23 +256,30 @@ Na labareda o efeito começa na mão (Alcance 1, toque) e ocupa um leque. No dar
 > **2. Improviso mantém, Efeito solta.** Duração improvisada se paga com concentração. Duração
 > que fica de pé sozinha é Efeito.
 
-> **3. Teto de três.** No máximo três parâmetros **além do toque**. **Alvos nunca entra no
-> improviso:** escolher várias vítimas a dedo é precisão, e precisão se compra.
+> **3. Teto de três.** No máximo três parâmetros **acima do grau 0**. **Alvos nunca entra no
+> improviso elemental:** escolher várias vítimas a dedo é precisão, e precisão se compra. O lugar
+> natural de Alvos é nas Artes que agem sobre pessoas escolhidas (Cura, Fascinação, Conjuração).
 
 O repertório inteiro que sobra:
 
 | Improviso | Parâmetros | Como se manifesta | Quem é atingido |
 |---|---|---|---|
 | **Dardo** | Alcance + Dano | um pedaço do elemento sai da mão e vai até o alvo | um alvo, pela Defesa como qualquer projétil |
-| **Jorro** | Alcance 1 (toque) + Área + Dano | o elemento sai do corpo, em leque à frente ou irrompendo em volta, conforme o que ele faz por natureza | quem estiver dentro, aliado incluído |
-| **Massa lançada** | Alcance + Área + Dano | um bloco do elemento corre em linha reta a partir do conjurador | o primeiro que estiver na reta. Ela **não** para onde o jogador quiser |
+| **Jorro** | Área ou Volume + Dano | o elemento sai do corpo, em leque à frente ou irrompendo em volta, conforme o que ele faz por natureza | quem estiver dentro, aliado incluído |
+| **Massa lançada** | Alcance + Área ou Volume + Dano | um bloco do elemento corre em linha reta a partir do conjurador | o primeiro que estiver na reta. Ela **não** para onde o jogador quiser |
 | **Sustentado** | Dardo ou Jorro **+ Duração** | o conjurador se planta e mantém | reavaliado a cada turno |
 
 O Dardo sustentado é jato contínuo, não tiro repetido: estilhaços saindo da palma por dois
 turnos. O Jorro sustentado é a labareda que não apaga.
 
 **A Massa lançada não se sustenta**, e não por proibição: ela viaja e acaba, e somar Duração a ela
-seria o quarto parâmetro além do toque.
+seria o quarto parâmetro acima do grau 0.
+
+**Com tudo no grau 0 o feitiço custa zero.** É o elemento apenas se manifestando: acender ou apagar
+uma vela, gelar uma bebida, umedecer uma superfície, faíscas, iluminar como uma tocha, suprimir a
+luz de uma tocha, assoprar folhas. Dura um tick. Quem tem Centelha 1 paga a Duração 1 com o
+desconto e sustenta por um turno, e é **turno após turno** que a vela vira lareira e a bebida vira
+gelo. O preço não é Mana, é a ação.
 
 **Concentrar custa**, por turno sustentado:
 
@@ -712,8 +735,13 @@ a Água continua sem resposta para "quanta água é esta".
    arcano.improviso.combinacoes` e o capítulo XV ganharam as três travas, a tabela dos quatro
    improvisos e o custo da concentração. A `notaArea` deixou de dizer que o molde se escolhe.
 9. **Alinhar a seção 5 deste documento à régua do site.** As tabelas de graus e a fórmula de pontos
-   ("Arte × 2 + Centelha") descrevem um modelo que não está em lugar nenhum: o site usa graus 1 a 6
-   e a economia de investir livre com desconto de Centelha. Só a 5.2 fala a régua certa.
+   ("Arte × 2 + Centelha") descrevem um modelo que não está em lugar nenhum. A régua certa está no
+   aviso no topo da seção 5; falta reescrever o corpo dela.
+12. **Conferir o grau 0 das oito escadas próprias de Efeito.** Quando os parâmetros ganharam o grau
+    0, as escalas dos Efeitos precisaram do degrau correspondente, e eu derivei os oito um passo
+    abaixo do primeiro sem conversa: Neblina 0,5³, Muro 1 m, Aura 0,25 m de raio, Terremoto 0,5×0,5,
+    Metal Incandescente 1 tick de duração, e traço (nada) em Arma Elemental, Metal Incandescente
+    (dano) e Paralisia. Nenhum deles muda o que os graus 1 a 6 já valiam.
 10. **Tirar o Ocultismo de `regras.json`.** Dois campos ainda dizem que a conjuração é
     "Ocultismo + Atributo" (`arcano.nota` e `arcano.resistencia.rolagem`), e nenhum deles aparece
     na página. A rolagem definitiva é a pendência 5 (Acerto Arcano e conjuração por Tradição).

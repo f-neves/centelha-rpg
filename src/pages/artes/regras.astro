@@ -13,11 +13,13 @@ const ESTICAR = (regras as any).arcano.esticar;
 const LINHAS_GRAU: [string, string[]][] = [
   ['Alcance', G.alcance],
   ['Área', G.area],
+  ['Volume', G.volume],
   ['Alvos', G.alvos],
   ['Dano', G.dano],
   ['Duração breve', G.duracaoBreve],
   ['Duração longa', G.duracaoLonga],
 ];
+const GRAU_COLS = [0, 1, 2, 3, 4, 5, 6];
 const COMB = (regras as any).arcano.improviso.combinacoes;
 const RITUAL = (regras as any).arcano.ritual;
 const FONTE = (regras as any).arcano.fonteElemental;
@@ -26,9 +28,10 @@ const FRAQ = (regras as any).arcano.fraquezas;
 const RECUP = (regras as any).arcano.recuperacaoMana;
 // conjurações de exemplo: [descrição, contas, total]
 const EX_CONTA: [string, string, number][] = [
-  ['Toque ardente: Alcance 1 (toque) + Dano 1 (1d6)', '1 + 1', 2],
+  ['Acender uma vela: tudo no grau 0', '0', 0],
+  ['Toque ardente: Dano 1 (1d6)', '1', 1],
   ['Dardo: Alcance 3 (4 m) + Dano 2 (2d6)', '3 + 2', 5],
-  ['Labareda de dois turnos: Alcance 1 (toque) + Área 3 (2 m de diâmetro) + Dano 2 (2d6) + Duração 2 (2 turnos)', '1 + 3 + 2 + 2', 8],
+  ['Labareda de dois turnos: Volume 3 (50 cm de lado) + Dano 2 (2d6) + Duração 2 (2 turnos)', '3 + 2 + 2', 7],
 ];
 ---
 <Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
@@ -72,11 +75,12 @@ const EX_CONTA: [string, string, number][] = [
     <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais.</p>
 
     <h2 id="parametros">Os parâmetros</h2>
-    <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração investindo pontos nos parâmetros. Nenhum parâmetro passa do <strong>nível da Arte</strong> que você tem, e <strong>você só paga o que usa</strong>: um alvo, instantâneo e sem área é o padrão, e sai de graça. O Alcance é a exceção, porque todo efeito comum precisa de pelo menos o toque.</p>
+    <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração investindo pontos nos parâmetros. Cada grau custa <strong>1 ponto</strong>, e nenhum parâmetro passa do <strong>nível da Arte</strong> que você tem.</p>
+    <p><strong>O grau 0 é o piso de tudo, e é grátis.</strong> Toque, uma manifestação mínima do elemento, nenhum alvo escolhido, nenhum dano, instantâneo. Um feitiço inteiro no grau 0 custa zero pontos, e é assim que se acende uma vela.</p>
     <p class="muted">A tabela abaixo vale para as <strong>Artes elementais</strong>. As demais Artes têm parâmetros próprios, definidos caso a caso.</p>
     <div class="table-wrap">
       <table class="graus-tab">
-        <thead><tr><th>Parâmetro</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+        <thead><tr><th>Parâmetro</th>{GRAU_COLS.map((g) => <th>{g}</th>)}</tr></thead>
         <tbody>
           {LINHAS_GRAU.map(([nome, vals]) => (
             <tr><td><strong data-formas={formaDe(nome)} tabindex={formaDe(nome) ? 0 : undefined}>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
@@ -84,7 +88,15 @@ const EX_CONTA: [string, string, number][] = [
         </tbody>
       </table>
     </div>
-    <p class="muted">{G.notaArea} {G.notaAlcance}</p>
+    <p class="muted">O Volume em números redondos: {G.volumeAncora.map((a: string, i: number) => `grau ${i}, ${a}`).join(' · ')}.</p>
+
+    <div class="callout regra"><span class="lbl">Área ou Volume, nunca as duas</span>
+      {G.notaAreaOuVolume}
+    </div>
+    <p class="muted">{G.notaVolume}</p>
+    <p class="muted">{G.notaArea}</p>
+    <p class="muted">{G.notaAlcance}</p>
+    <p class="muted">{G.notaAlvos}</p>
 
     <h2 id="combinacoes">O que o improviso pode combinar</h2>
     <p>{COMB.nota}</p>
@@ -103,6 +115,9 @@ const EX_CONTA: [string, string, number][] = [
           ))}
         </tbody>
       </table>
+    </div>
+    <div class="callout regra"><span class="lbl">O que sai de graça</span>
+      {COMB.grauZero}
     </div>
     <p><strong>Sustentar cobra por turno.</strong> {COMB.concentracao.acao}, {COMB.concentracao.posicao}, e {COMB.concentracao.defesa}. Ao sofrer dano, {COMB.concentracao.aoSofrerDano}.</p>
     <ul class="fraq">
@@ -196,7 +211,7 @@ const EX_CONTA: [string, string, number][] = [
         </tbody>
       </table>
     </div>
-    <p class="formula">Centelha 2, Arte 2, um jorro sustentado. Alcance 1 (toque) + Área 2 + Dano 2 + Duração 2 = <strong>7 pontos</strong>, Velocidade 5. Puxando para Área 3, um nível acima: 1 + 3×2 + 2 + 2 = <strong>11 pontos</strong>, Velocidade 10. Para Área 4, dois acima: 1 + 4×3 + 2 + 2 = <strong>17 pontos</strong>, Velocidade 15.</p>
+    <p class="formula">Centelha 2, Arte 2, um jorro sustentado. Volume 2 + Dano 2 + Duração 2 = <strong>6 pontos</strong>, Velocidade 5. Puxando para Volume 3, um nível acima: 3×2 + 2 + 2 = <strong>10 pontos</strong>, Velocidade 10. Para Volume 4, dois acima: 4×3 + 2 + 2 = <strong>16 pontos</strong>, Velocidade 15.</p>
     <div class="callout regra"><span class="lbl">Você decide no fim</span>
       Não é preciso anunciar de saída até onde vai. No <strong>tick final de cada Velocidade</strong> você escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Numa ação de Velocidade 5, você decide no tick 5; se esticar, decide de novo no 10, e outra vez no 15. Quem interromper você no meio leva a conjuração junto.
     </div>

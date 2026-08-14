@@ -31,12 +31,18 @@ const eq = (a, b, msg) => ok(a === b, `${msg} — esperado ${b}, veio ${a}`);
 // Os degraus ficam presos aqui porque o tabuleiro os tornou visíveis: a régua
 // antiga punha 15 m no nível 3 e uma hora no nível 6, e no grid isso aparecia
 // como um feitiço barato varrendo o mapa inteiro por mais tempo que a cena.
-const escadaDe = (nome, n = 6) => {
+// A contagem começa no GRAU 0, o piso grátis de todo parâmetro.
+const escadaDe = (nome, n = 7) => {
   const p = { nome, tipo: 'padrao', ...(nome === 'Duração' ? { regua: 'breve' } : {}) };
-  return Array.from({ length: n }, (_, i) => M.valorNoNivel(p, i + 1));
+  return Array.from({ length: n }, (_, i) => M.valorNoNivel(p, i));
 };
-eq(escadaDe('Alcance').join(' · '), 'toque · 2 m · 4 m · 10 m · 20 m · 50 m',
+eq(escadaDe('Alcance').join(' · '), 'toque · 1 m · 2 m · 4 m · 10 m · 20 m · 50 m',
   'a régua de Alcance');
+// O grau 0 é grátis em todo parâmetro, e é ele que faz a mágica pequena existir
+// sem custar Mana: acender a vela, gelar a bebida, assoprar as folhas.
+eq(escadaDe('Dano')[0], 'nenhum', 'Dano começa em nenhum');
+eq(escadaDe('Duração')[0], 'instantâneo (no máximo 1 tick)', 'Duração breve começa instantânea');
+eq(M.turnosDeDuracao(0, 'breve'), 0, 'duração breve no grau 0 não chega a um turno');
 // A ÁREA É COMPRADA EM DIÂMETRO, e não em lado de quadrado.
 //
 // O nível diz a largura de um círculo, e a área é a dele. A vantagem sobre o
@@ -44,19 +50,37 @@ eq(escadaDe('Alcance').join(' · '), 'toque · 2 m · 4 m · 10 m · 20 m · 50 
 // 2 m de diâmetro, o círculo desenhado tem 1 m de raio, e dá para contar as
 // casas. Com "2 × 2" ninguém sabia de cabeça que raio aquilo virava.
 eq(escadaDe('Área').join(' · '),
-  '1 m de diâmetro · 1,5 m de diâmetro · 2 m de diâmetro · 2,5 m de diâmetro · 3 m de diâmetro · 4 m de diâmetro',
+  '0,1 m de diâmetro · 1 m de diâmetro · 1,5 m de diâmetro · 2 m de diâmetro · 2,5 m de diâmetro · 3 m de diâmetro · 4 m de diâmetro',
   'a régua de Área');
+// O VOLUME É A OUTRA RÉGUA DO MESMO PARÂMETRO, como a Duração longa é a outra da
+// breve. Ele compra um LADO e entrega o cubo dele, e vem escrito na notação de
+// cubo porque é essa que o tabuleiro já sabia ler (a Neblina usava desde sempre).
+eq(escadaDe('Volume').join(' · '),
+  '0,02x0,02x0,02 · 0,1x0,1x0,1 · 0,25x0,25x0,25 · 0,5x0,5x0,5 · 1x1x1 · 1,5x1,5x1,5 · 2x2x2',
+  'a régua de Volume');
+// E ele é sempre MENOR que a Área do mesmo grau esticada até a altura de uma
+// pessoa: é o preço de encher em vez de cobrir.
+for (const n of [1, 2, 3, 4, 5, 6]) {
+  const lado = M.medidaNoNivel({ nome: 'Volume', tipo: 'padrao' }, n);
+  const tetoM3 = M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, n) * 2;
+  ok(lado ** 3 < tetoM3,
+    `Volume ${n} (${(lado ** 3).toFixed(2)} m³) cabe na Área ${n} de pé (${tetoM3.toFixed(2)} m³)`);
+}
 // O elo entre as duas leituras: em círculo, o raio é METADE do diâmetro comprado.
 for (const [nivel, diam] of [[1, 1], [3, 2], [6, 4]]) {
   const raio = M.raioDoCirculo(M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, nivel));
   ok(Math.abs(raio - diam / 2) < 1e-9,
     `Área ${nivel} são ${diam} m de diâmetro, logo ${diam / 2} m de raio (veio ${raio.toFixed(3)})`);
 }
-// E diâmetro não é raio: confundir os dois quadruplicaria a área.
-ok(M.areaEmM2({ nome: 'Volume', tipo: 'padrao', unidade: 'm de raio' }, 3)
-  > M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, 3) * 3.9,
-  'a mesma medida lida como raio dá quatro vezes a área lida como diâmetro');
-eq(escadaDe('Alvos').join(' · '), '1 · 2 · 3 · 4 · 6 · 10', 'a régua de Alvos');
+// E diâmetro não é raio: confundir os dois quadruplicaria a área. Os DOIS lados
+// da comparação dizem "2 m"; o que muda é só a unidade declarada.
+const comoRaio = {
+  nome: 'Área', tipo: 'substitui', substitui: 'area', unidade: 'm de raio',
+  escala: ['0,25 m', '0,5 m', '1 m', '2 m', '2,5 m', '3 m', '4 m'],
+};
+ok(Math.abs(M.areaEmM2(comoRaio, 3) / M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, 3) - 4) < 1e-9,
+  'os mesmos "2 m" lidos como raio dão quatro vezes a área lida como diâmetro');
+eq(escadaDe('Alvos').join(' · '), 'nenhum designado · 1 · 2 · 3 · 4 · 6 · 10', 'a régua de Alvos');
 // A área do topo é um círculo de menos de três metros de raio: cabe no mapa.
 ok(M.raioDoCirculo(M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, 6)) < 3,
   'a maior área comprável ainda cabe num tabuleiro de mesa');
