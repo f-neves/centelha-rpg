@@ -8,16 +8,16 @@
  *   1. QUE ESPAÇO ocupa            → forma  (aura, zona, muro, cone, alvo…)
  *   2. ONDE nasce                  → ancora (no conjurador, num ponto, num alvo)
  *   3. QUANDO morde                → gatilho (imediato, ao entrar, por turno…)
- *   4. QUE FORMA deixa no mundo    → materia (a lasca fura, a pedra amassa)
+ *   4. A ARMADURA para o dano?     → materia (a regra do "deixou matéria no mundo")
  *   5. QUE ESTADO deixa no alvo    → condicao (do catálogo de 52 da mesa)
  *
- * A quarta é a única que não se lê da estrutura, e ela já valeu mais do que vale
- * hoje: era ela que dizia se a armadura pegava o dano. Não diz mais. `regras.json
- * → arcano.resistencia.armadura` passou a ser uma frase só, todo dano de Arte é
- * do elemento e a armadura não pega nenhum, e o que sobrou para o `materia` é
- * descrever: o que sangra, o que se pega do chão depois, a marca que o tabuleiro
- * desenha. Ele continua morando no EFEITO e o `elemento` na ARTE, porque a mesma
- * Aura é de Fogo ou de Gelo conforme quem a conjura.
+ * A quarta é a única que não se lê da estrutura: `regras.json → arcano.resistencia
+ * .armadura` diz que o que decide não é a aparência do efeito, é se ele deixou
+ * matéria no mundo. Fenômeno puro (fogo, raio, o gelo que evapora) só é absorvido
+ * pela Centelha; matéria conjurada (a lasca, a lança de gelo) ou pré-existente (o
+ * cascalho, o barril arremessado) entra nas trilhas normais. Por isso `materia`
+ * mora no EFEITO e `elemento` mora na ARTE: a mesma Aura é de Fogo ou de Gelo
+ * conforme a Arte que a conjura, mas ela nunca vira matéria em nenhuma das duas.
  *
  * A quinta é o que faz o Efeito valer fora deste arquivo: gravada como condição
  * de verdade no combatente, a penalidade entra sozinha na Defesa, no acerto e nos
@@ -167,17 +167,11 @@ const GATILHO = {
 };
 
 /**
- * A FORMA de que ficou no mundo: a lasca fura, a lâmina corta, a pedra amassa.
+ * Deixou matéria no mundo, então a armadura absorve normalmente.
  *
- * ESTE CAMPO NÃO DECIDE MAIS ABSORÇÃO. Ele decidia, enquanto valeu a regra do
- * "deixou matéria no mundo": quem tinha matéria encontrava a armadura pela
- * frente. Agora `regras.json → arcano.resistencia.armadura` diz que todo dano
- * de Arte é do elemento e a armadura não pega nenhum, então o que sobra aqui é
- * descrição: o que sangra, o que se pega, e a marca que o tabuleiro desenha no
- * corpo de quem levou.
- *
- * A lista continua saindo do texto de cada Efeito, e vale a pena mantê-la
- * honesta: a Aura de Fogo não deixa nada para pegar, e por isso não entra.
+ * A regra está em `regras.json → arcano.resistencia.armadura`, e a lista sai do
+ * texto de cada Efeito: a Lasca diz "é matéria de verdade, então a armadura
+ * absorve normalmente"; a Aura de Fogo não deixa nada, e só a Centelha a apara.
  */
 const MATERIA = {
   impacto: ['arremesso', 'esmagar', 'maremoto', 'onda', 'terremoto',
@@ -185,6 +179,12 @@ const MATERIA = {
   perfuracao: ['lascas', 'sarcal', 'semente-adormecida', 'projetil-conjurado'],
   corte: ['arma-conjurada'],
 };
+/**
+ * Ignora a armadura por escrito, mesmo parecendo físico. Braços do Abismo diz
+ * "o dano é de Impacto e ignora armadura, porque a treva entra pela roupa"; o
+ * Dreno diz "o dano é do tipo que a armadura não para".
+ */
+const IGNORA_ARMADURA = ['bracos-do-abismo', 'dreno', 'paralisia'];
 
 /** Quem pode ser escolhido. Deriva do Alcance fixo; aqui só o que foge. */
 const ALVO = {
@@ -296,6 +296,7 @@ function gridDoEfeito(e) {
   const ancora = ancoraDe(e, forma);
   let materia = null;
   for (const [t, ids] of Object.entries(MATERIA)) if (ids.includes(e.id)) materia = t;
+  if (IGNORA_ARMADURA.includes(e.id)) materia = null;
   let condicao = null;
   for (const [c, ids] of Object.entries(CONDICAO)) if (ids.includes(e.id)) condicao = c;
   return {
@@ -342,6 +343,7 @@ for (const [tabela, grupos] of tabelas) {
     }
   }
 }
+for (const id of IGNORA_ARMADURA) if (!ids.has(id)) erros.push(`IGNORA_ARMADURA: "${id}" não existe`);
 for (const id of PEGA_ITEM) if (!ids.has(id)) erros.push(`PEGA_ITEM: "${id}" não existe`);
 for (const id of ARENA_INTEIRA) if (!ids.has(id)) erros.push(`ARENA_INTEIRA: "${id}" não existe`);
 for (const id of DISSIPA) if (!ids.has(id)) erros.push(`DISSIPA: "${id}" não existe`);

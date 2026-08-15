@@ -930,18 +930,13 @@ async function tirarCondicao(ctx: CtxGrid, c: any, id: string): Promise<void> {
 }
 
 // ==================================================================== a mordida
-/**
- * A absorção do alvo contra dano de Arte.
- *
- * A ARMADURA NÃO ENTRA. Dano de Arte é dano do elemento, e só a resistência ao
- * elemento o apara: aço não protege de fogo nem de gelo conjurado. O que entra
- * é a Absorção que veio de OUTRA magia, porque o Anteparo e a Barreira dizem
- * por escrito que somam "contra tudo o que vem de fora, físico ou elemental",
- * e ela chega aqui pelas condições do combatente.
- */
-function soakDe(c: any) {
+/** A absorção do alvo, no tipo que o efeito usa. */
+function soakDe(ctx: CtxGrid, c: any, materia: string | null) {
+  const r = ctx.resumo[c.id];
   const cd = somarCondicoes((c.condicoes || []).map((k: any) => ({ ...((COND as any)[k.id] || {}), ...k })));
-  return { natural: cd.soak || 0 };
+  const chave = materia === 'perfuracao' ? 'perfuracao' : materia === 'corte' ? 'corte' : 'impacto';
+  const armadura = materia ? (r?.soak?.[chave] ?? 0) + (cd.soak || 0) : 0;
+  return { armadura, natural: 0 };
 }
 
 /** Rola o dano do efeito num alvo, desconta o que tem de descontar e grava. */
@@ -974,8 +969,10 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string): 
   const rolagem = rolar(ef.dano_dados);
   const bruto = rolagem.total + (ef.dano_bonus || 0);
   const m = MON[alvo.monstro_id] || {};
+  const s = soakDe(ctx, alvo, ef.materia);
   const golpe = danoNoAlvo({
-    bruto, elemento: ef.elemento, soakNatural: soakDe(alvo).natural,
+    bruto, elemento: ef.elemento, materia: ef.materia,
+    soakArmadura: s.armadura, soakNatural: s.natural,
     fraquezas: m.fraquezas || [], resistencias: m.resistencias || [],
   });
   const pv = Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido);
@@ -1005,9 +1002,12 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string): 
 /** Dano avulso (colisão do empurrão), pelas mesmas contas. */
 async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano, motivo: string): Promise<void> {
   if (!alvo) return;
+  const g = plano.efeito?.grid;
   const m = MON[alvo.monstro_id] || {};
+  const s = soakDe(ctx, alvo, g?.materia || 'impacto');
   const golpe = danoNoAlvo({
-    bruto, elemento: plano.arte.grid.elemento, soakNatural: soakDe(alvo).natural,
+    bruto, elemento: plano.arte.grid.elemento, materia: g?.materia || 'impacto',
+    soakArmadura: s.armadura, soakNatural: s.natural,
     fraquezas: m.fraquezas || [], resistencias: m.resistencias || [],
   });
   const pv = Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido);

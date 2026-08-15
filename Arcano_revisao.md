@@ -173,27 +173,27 @@ usá-lo por ela.
 
 ## 4. Absorção: o que a armadura para
 
-> **Teste de mesa:** nada. A armadura não para Arte nenhuma.
+> **Teste de mesa:** se o golpe deixou matéria no mundo, a armadura conta. Se não sobra
+> nada no chão, só a Centelha absorve.
 
-**Todo dano conjurado é dano do ELEMENTO, e só a resistência àquele elemento o apara.**
-Aço não segura fogo, raio, nem a lança de gelo que a Arte acabou de fazer. Não importa se
-o efeito deixou matéria no mundo, nem que formato ela tem: o que chega no alvo é o
-elemento. É a frase que a Arma Elemental sempre disse do bônus dela, agora valendo para
-tudo, e é por isso que a feitiçaria assusta o cavaleiro de placas.
+Três casos:
 
-Absorção vinda de outra magia continua contando: o Anteparo e a Barreira somam "contra
-tudo o que vem de fora, físico ou elemental", por escrito.
+1. **Fenômeno puro.** O elemento agindo como energia e se desfazendo no instante. Baforada
+   de fogo, descarga de raio, o ataque de gelo com cara de lança que evapora ao acertar.
+   Armadura não protege.
+2. **Matéria conjurada.** A Arte fabricou um objeto real, que existe antes e depois do
+   golpe e pode ser empunhado, largado ou entregue a outra pessoa. Trilhas normais, e o modo
+   sai do formato: lança é Perfuração, marreta de pedra é Impacto.
+3. **Matéria pré-existente.** A Arte moveu o que já estava lá: o cascalho do chão, a água do
+   rio, a telha do teto. Trilhas normais.
 
-### O que sobrou dos três casos
+**Conjurar matéria é uma escolha com dois lados.** Você fica absorvível e em troca ganha o
+objeto de verdade: corta, esmaga ou perfura conforme a forma, pode ser passado a um aliado,
+e abre efeitos secundários como sangramento.
 
-A divisão antiga (fenômeno puro · matéria conjurada · matéria pré-existente) não decide
-mais absorção, mas não é lixo: ela ainda diz o que o efeito **deixa no mundo**, e isso
-governa o resto. Matéria conjurada pode ser empunhada, largada, entregue a um aliado, e
-abre efeitos secundários como sangramento; fenômeno puro não deixa nada para pegar. No
-dado isso mora em `grid.materia`, que passou de regra de absorção a descrição.
-
-Com a armadura fora, conjurar matéria deixou de ser uma escolha com dois lados: ela só
-tem o lado bom. Se isso desequilibrar, o lugar de corrigir é o custo, e não a armadura.
+Correção pendente no dado: `regras.json → arcano.resistencia.armadura` ainda diz que a
+Absorção de armadura conta normalmente contra dano mágico. **Armaduras só protegem contra
+dano físico.**
 
 ---
 
