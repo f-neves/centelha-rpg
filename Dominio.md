@@ -6,6 +6,10 @@ endereço**, porque o endereço é o que fica, e o hospedeiro é o que se troca.
 
 Hoje o site mora em `https://f-neves.github.io/centelha-rpg/`.
 
+> **DECIDIDO em 15/08/2026: `centelha.rec.br`.** Este documento passa a ser o registro do
+> *porquê*. O *como* está em **`Migracao_Dominio.md`**, com o roteiro executável, os
+> arquivos e linhas a mudar, e o plano de volta atrás.
+
 > **Correção de 14/08, mesma tarde.** A primeira versão deste documento recomendava
 > `centelha.is-a.dev` como melhor opção grátis. Ao aprofundar a comparação, li os Termos
 > de Serviço deles (atualizados em 3 de agosto de 2026) e **o Centelha muito provavelmente

@@ -415,19 +415,21 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 
 ## J. Infraestrutura · endereço, hospedagem e versão
 
-- [ ] **J1 · [DECIDIR] Qual endereço o site vai ter.** Análise completa em `Dominio.md`, com
-  disponibilidade, regulamento e preço conferidos em 14/08/2026. Três finalistas:
-  `centelha.rec.br` (R$ 40/ano no Registro.br, categoria de recreação e jogos),
-  `centelha-rpg.netlify.app` (grátis e imediato) e `centelha.eu.org` (grátis e bonito, mas
-  aprovação manual de semanas a meses). **Com teto de R$ 100/ano entra `centelha.net`, a
-  R$ 64 com IOF, que é a única forma de ter o nome limpo "centelha" num sufixo conhecido**
-  (`centelha.com.br` está tomado até 2028). Não há ganho técnico em pagar mais: só de nome
-  e de privacidade. A Freenom (`.tk`, `.ml`, `.ga`) morreu em 2024 e
-  voltou em 2026 cobrando; `js.org` e **`is-a.dev`** estão fora por regulamento, os dois
-  exigem projeto ligado a desenvolvimento de software. **O que decide não é o preço, é a
-  portabilidade:** cada mudança de origem apaga as 7 chaves de `localStorage` dos leitores,
-  ficha de personagem inclusa, então a conta se paga por endereço, não por hospedeiro. Um
-  subdomínio do hospedeiro solda a origem à casa e cobra a conta de novo na próxima mudança.
+- [x] **J1 · [DECIDIDO 15/08/2026] O endereço será `centelha.rec.br`.** R$ 40/ano no
+  Registro.br, categoria de recreação e jogos, portátil, preço fixo em real, e **4,6× mais
+  rápido que um `.net` na consulta fria de DNS a partir do Brasil** (30,4 ms contra 140,9 ms,
+  medido de duas formas). **O roteiro executável está em `Migracao_Dominio.md`**: as seis
+  fases, os arquivos e linhas a mudar, o portão de verificação e o plano de volta atrás.
+  Falta confirmar no ato da compra se `rec.br` aceita CPF; se pedir CNPJ, os substitutos
+  na ordem são `centelha.art.br`, `centelha.wiki.br` e `centelharpg.com.br`.
+  *Descartados, para não se reabrir a discussão:* Freenom (`.tk`, `.ml`, `.ga`) morreu em
+  2024 e voltou em 2026 cobrando; `js.org` e `is-a.dev` estão fora por regulamento, os dois
+  exigem projeto ligado a desenvolvimento de software; `centelha.eu.org` é grátis e bonito
+  mas a aprovação é manual e leva de semanas a meses; `centelha.net` (R$ 64) tinha o melhor
+  nome e perdeu no DNS e no preço; subdomínio de hospedeiro solda a origem à casa e cobraria
+  a conta de novo na próxima mudança. **O que decidiu foi a portabilidade:** cada mudança de
+  origem apaga as 7 chaves de `localStorage` dos leitores, ficha de personagem inclusa,
+  então a conta se paga por endereço, não por hospedeiro.
 - [ ] **J1b · [FAZER, depois de J1] SMTP próprio no Supabase.** Achado ao medir as diferenças
   técnicas entre domínios: o cadastro (`signUp`) e a recuperação de senha saem hoje pelo SMTP
   embutido do Supabase, **limitado a 2 e-mails por hora em todos os planos, o pago inclusive**.
@@ -435,12 +437,18 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   (Resend/Brevo têm faixa grátis), que **exige domínio próprio** para publicar SPF, DKIM e
   DMARC. Detalhe em `Dominio.md` seção 12.1. É o único ganho técnico da compra que se paga
   sozinho, e conserta um defeito que já existe hoje.
-- [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4. Depende de J1, e uma
-  ressalva nova: **o plano grátis do Vercel proíbe uso comercial**, então ele só serve se o
-  Centelha nunca gerar receita. Netlify e Cloudflare Pages não têm essa cláusula.
-- [ ] **J3 · [FAZER, depois de J1 e J2] Sair do GitHub Pages, e só então subir para o Astro 7.**
-  Fases, verificações e riscos em `Migracao_Astro7.md`. Os dois bloqueios técnicos da subida
-  já saíram em 14/08 (o dev server centralizado e a aposentadoria do `@vite-pwa/astro`).
+- [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4 e `Migracao_Dominio.md`
+  seção 2.1. Com J1 decidido, a sugestão é **Cloudflare Pages com a zona na Cloudflare**
+  (`centelha.rec.br` é ápice, e ápice não aceita CNAME · a Cloudflare resolve com *flattening*;
+  o domínio segue comprado no Registro.br, só o DNS muda de casa). Netlify serve com a zona
+  no próprio Registro.br, via registro A do ápice. **O plano grátis do Vercel proíbe uso
+  comercial**, então ele só serve se o Centelha nunca gerar receita.
+- [ ] **J3 · [FAZER, depois de J2] Sair do GitHub Pages, e só então subir para o Astro 7.**
+  A mudança de endereço tem roteiro próprio em **`Migracao_Dominio.md`** (seis fases, com
+  portão e volta atrás); a subida de versão fica em `Migracao_Astro7.md`. **As duas não se
+  misturam**: superfícies e riscos de natureza diferente, e juntas ninguém sabe qual quebrou
+  o quê. Os dois bloqueios técnicos da subida já saíram em 14/08 (o dev server centralizado
+  e a aposentadoria do `@vite-pwa/astro`), e o `rehypeBaseLinks` sai na fase B do endereço.
 - [ ] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
   auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê
   `m.fraquezas`/`m.resistencias` no topo da criatura, e elas moram dentro de `combate`.

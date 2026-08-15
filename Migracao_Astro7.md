@@ -156,7 +156,7 @@ exatamente o obstáculo do Sätteri.
 
 | # | o que | como se verifica |
 |---|---|---|
-| 1.0 | Escolher o **endereço** (ver `Dominio.md`, que é anterior a isto) | há um domínio decidido |
+| 1.0 | **Endereço DECIDIDO em 15/08: `centelha.rec.br`.** O porquê está em `Dominio.md`; **o roteiro executável desta fase inteira saiu daqui e virou `Migracao_Dominio.md`** | — |
 | 1.1 | Escolher o hospedeiro (ver 4) e criar o projeto apontando para o repositório | um deploy de prévia sobe |
 | 1.1b | Pôr o endereço novo na Site URL e nas Redirect URLs do Supabase | "esqueci minha senha" chega com link certo |
 | 1.2 | `base` some do `astro.config.mjs`; `site` passa a ser o domínio novo | `npm run build` verde |
@@ -240,17 +240,23 @@ medida (o bestiário tem 7,8 MB de arte, e um dia isso conta), e é o caminho co
 menos atrito se a mesa algum dia precisar de servidor. Netlify é o mais simples
 de configurar dos três, se a preferência for essa.
 
-**Duas ressalvas vindas do `Dominio.md`:**
+**Com o endereço decidido (`centelha.rec.br`), a sugestão se confirma e ganha
+um argumento a mais.** A ressalva que existia contra a Cloudflare morreu junto
+com o `is-a.dev`: aquele problema era o painel recusar domínio cujo pai está na
+Public Suffix List. Aqui o pai é `rec.br`, um sufixo público **da seção ICANN**,
+e `centelha.rec.br` é um domínio registrável comum. Caso normal.
 
-1. A sugestão acima olhava só para banda. Se o endereço escolhido for um
-   subdomínio grátis que esteja na Public Suffix List (caso do `is-a.dev`), **o
-   painel da Cloudflare não aceita adicioná-lo** e o caminho passa pela API. Com
-   Netlify ou Vercel é CNAME e pronto. A escolha do endereço vem antes da
-   escolha da casa.
-2. **O plano grátis do Vercel proíbe uso comercial.** Se algum dia o Centelha
-   for vendido, tiver anúncio ou apoio recorrente, o Hobby fica irregular e a
-   saída é US$ 20/mês. Netlify e Cloudflare Pages não têm essa cláusula. Isso
-   tira o Vercel da lista por precaução, e não por medida.
+O argumento a mais: `centelha.rec.br` é **ápice de domínio**, e o DNS não aceita
+CNAME no ápice. A Cloudflare resolve com *CNAME flattening*, desde que a zona
+esteja nela (o domínio segue comprado no Registro.br; só o DNS muda de casa).
+Com Netlify, a zona pode ficar no Registro.br usando o registro A do ápice.
+Detalhe em `Migracao_Dominio.md`, seção 2.1.
+
+**E uma ressalva que continua de pé: o plano grátis do Vercel proíbe uso
+comercial.** Se algum dia o Centelha for vendido, tiver anúncio ou apoio
+recorrente, o Hobby fica irregular e a saída é US$ 20/mês. Netlify e Cloudflare
+Pages não têm essa cláusula. Isso tira o Vercel da lista por precaução, e não
+por medida.
 
 **Isto não é urgente e não bloqueia nada.** O que bloqueava já saiu.
 
