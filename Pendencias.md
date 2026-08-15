@@ -51,8 +51,30 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   (o que a feitiçaria é) ainda não viraram prosa no site.
 - [ ] **A11 · [FAZER] Revisar as seções 3 e 4 do `Arcano_revisao.md`** quando a rolagem por Tradição
   fechar (C1): hoje elas ainda dizem "Ocultismo + Atributo".
-- [ ] **A12 · [ENGAVETADO] Arte Metal.** Desenho pronto e guardado (afia, enferruja, aquece a
-  armadura no corpo, arranca a arma da mão, reduz Absorção). É só retomar quando quiser.
+- [x] **A12 · [RESOLVIDO 2026-08-15] Metal não vira Arte.** Passa a ser um **bloco de Efeitos de
+  Terra** aberto por **Trilha**: os verbos dele são coisas que se fazem com equipamento (e coisa
+  que se faz é Efeito), não tem dano nem parâmetro próprio, e a tabela de estado já o põe junto da
+  Terra em "sólido, metade". Falta escrever os Efeitos, o que é conteúdo e cai na A15.
+- [ ] **A13 · [AUTOR] Revisar Área × Volume.** O parâmetro inteiro está em revisão pelo autor.
+  Tudo que foi calibrado contra ele depende do resultado: a escada de Volume (lado 2 cm · 10 cm ·
+  25 cm · 50 cm · 1 m · 1,5 m · 2 m), a tabela de **estado da matéria** (sólido metade, granular
+  normal, líquido normal, fenômeno dobro, gás oito vezes), o teste de que o Volume cabe embaixo da
+  Área do mesmo grau, e o corte entre **corpo** (Volume) e **jurisdição** (Área).
+- [ ] **A14 · [FAZER] Revisar os textos de Regras das Artes** (`/artes/regras`, capítulo XV). O
+  capítulo cresceu por acréscimo em várias conversas seguidas (grau 0, as três travas do improviso,
+  Área ou Volume, estado da matéria) e precisa de uma passada de edição: ordem das seções, o que
+  ficou repetido e o que ficou sem explicação de por quê.
+- [ ] **A15 · [AUTOR] Revisar as descrições de nível das Artes** em `artes.json`, conforme os
+  Efeitos Especiais e os Parâmetros de hoje. Vários níveis ainda descrevem improvisos que as travas
+  não permitem mais: Fogo 3 "sustentar uma parede baixa de chamas", Fogo 4 "parede de chamas
+  fechando um corredor" e "explosão que pega quatro inimigos juntos". Os seis níveis de cada Arte
+  deixaram de ser regra e passaram a ser **exemplo de alocação típica**, e o texto ainda não sabe
+  disso.
+- [ ] **A16 · [DECIDIR] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
+  oito escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais aparecer. O caso
+  da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,
+  então um deserto cai perto do fundo de uma régua que trata material solto como fraco. Decidir
+  quais materiais ganham escada própria, e se Som é escola de Ar ou outra coisa.
 
 ## B. Bestiário
 

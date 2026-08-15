@@ -789,6 +789,25 @@ sofre a Penalidade. Se um dia precisar de resistência, o lugar é aqui.
 **13. Efeitos elementais sem número.** Treze ainda estão só com parâmetros padrão, e Fogo, Raio e
 Luz não têm nada de nível 1. Frente de revisão do autor.
 
+**21. Revisar Área × Volume.** *(A13 no `Pendencias.md`.)* O parâmetro inteiro está em revisão pelo
+autor, e tudo que foi calibrado contra ele depende do resultado: a escada de Volume, a tabela de
+estado da matéria, o teste de que o Volume cabe embaixo da Área do mesmo grau, e o próprio corte
+entre corpo e jurisdição.
+
+**22. Revisar os textos do capítulo XV.** *(A14.)* Ele cresceu por acréscimo em várias conversas
+seguidas (grau 0, as três travas do improviso, Área ou Volume, estado da matéria) e precisa de uma
+passada de edição: ordem das seções, o que ficou repetido, o que ficou sem o porquê.
+
+**23. Revisar as descrições de nível das Artes.** *(A15, e engole o item 11 da seção 11.)* Os textos
+de `artes.json` ainda descrevem improvisos que as travas não permitem, e ainda soam como regra
+quando viraram exemplo de alocação típica.
+
+**24. A Fonte do Elemento: os elementos que faltam.** *(A16.)* A régua de abundância tem oito
+escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais vier. O caso da areia
+está descrito na seção 3: a escada da Terra desliza de solo solto para rocha viva conforme sobe, e
+por isso um deserto cai perto do fundo dela. Falta decidir quais materiais ganham escada própria, e
+se Som é escola de Ar ou outra coisa.
+
 **20. A vizinhança, implementada em 2026-08-15.** Feito:
 
 - **A linha "granular"** entrou na tabela de estado, entre sólido e líquido: areia, cascalho, pó,
