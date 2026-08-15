@@ -1,0 +1,1244 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bancada de volume · Centelha</title>
+<style>
+  /* As fontes do site, servidas do proprio node_modules: abrindo o arquivo por
+     file:// a partir da raiz do repositorio elas carregam. Sem node_modules,
+     cai no fallback serif e so o desenho continua. */
+  @font-face { font-family:'Cinzel'; font-style:normal; font-weight:600;
+    src:url('node_modules/@fontsource/cinzel/files/cinzel-latin-600-normal.woff2') format('woff2'); font-display:swap }
+  @font-face { font-family:'Cinzel'; font-style:normal; font-weight:700;
+    src:url('node_modules/@fontsource/cinzel/files/cinzel-latin-700-normal.woff2') format('woff2'); font-display:swap }
+  @font-face { font-family:'EB Garamond'; font-style:normal; font-weight:400;
+    src:url('node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-400-normal.woff2') format('woff2'); font-display:swap }
+  @font-face { font-family:'EB Garamond'; font-style:normal; font-weight:600;
+    src:url('node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-600-normal.woff2') format('woff2'); font-display:swap }
+
+  /* Tokens do site (global.css), copiados com os mesmos valores. */
+  :root{
+    color-scheme: light;
+    --plane:#f3e9d2; --surface:#fbf6e7; --sunk:#f4ebd0; --paper:#fbf6e7;
+    --ink:#2a2720; --ink-soft:#574f3d; --muted:#8a8069;
+    --accent:#00BAB4; --accent-strong:#0B3B47; --on-accent-strong:#f6efda;
+    --rule:#cdbd92; --ring:#d8c79c;
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+    --ceu:#e7dcc0; --chao:#efe4c8; --hex:#c9b98f; --corpo:#7a6a4e;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --plane:#15171c; --surface:#1e222a; --sunk:#232732; --paper:#1e222a;
+      --ink:#e9e5d7; --ink-soft:#afa994; --muted:#8b8878;
+      --accent:#3fc9c2; --accent-strong:#8fe3dd; --on-accent-strong:#11151f;
+      --rule:#39414f; --ring:#333a47;
+      --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+      --ceu:#171a21; --chao:#1a1e26; --hex:#39414f; --corpo:#9c9179;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --plane:#15171c; --surface:#1e222a; --sunk:#232732; --paper:#1e222a;
+    --ink:#e9e5d7; --ink-soft:#afa994; --muted:#8b8878;
+    --accent:#3fc9c2; --accent-strong:#8fe3dd; --on-accent-strong:#11151f;
+    --rule:#39414f; --ring:#333a47;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+    --ceu:#171a21; --chao:#1a1e26; --hex:#39414f; --corpo:#9c9179;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--plane);color:var(--ink);
+       font-family:'EB Garamond',Georgia,serif;font-size:15px;padding:18px 16px 40px}
+  .max{max-width:1500px;margin:0 auto}
+  header{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  h1{font-family:'Cinzel',Georgia,serif;font-size:1.2rem;margin:0 0 .25rem;font-weight:700;letter-spacing:.01em}
+  .sub{color:var(--ink-soft);font-size:.86rem;margin:0;line-height:1.6;max-width:78ch}
+  .card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:12px 14px}
+  h3.tit{font-family:'Cinzel',Georgia,serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;
+         color:var(--muted);font-weight:700;margin:0 0 8px;display:flex;justify-content:space-between;align-items:center}
+  .wrap{display:grid;grid-template-columns:344px minmax(0,1fr);gap:14px;align-items:start}
+  @media (max-width:980px){ .wrap{grid-template-columns:1fr} }
+  aside{display:flex;flex-direction:column;gap:12px;max-height:calc(100vh - 120px);overflow:auto;padding-right:4px}
+  @media (max-width:980px){ aside{max-height:none;overflow:visible} }
+
+  /* controles */
+  .linha{display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--ink-soft);margin:5px 0}
+  .linha > label{flex:0 0 84px;min-width:0}
+  .linha .cresce{flex:1;min-width:0}
+  input.num,select{padding:3px 6px;border:1px solid var(--ring);border-radius:5px;
+       background:var(--sunk);color:var(--ink);font:inherit;font-size:.82rem;font-variant-numeric:tabular-nums}
+  /* campo de texto e não `number`: o navegador esvazia um `number` cujo valor
+     tem vírgula decimal, e aqui todo número é escrito em português. */
+  input.num{width:78px;text-align:right}
+  input.num:disabled{opacity:.55}
+  select{width:100%}
+  input[type=range]{flex:1;accent-color:var(--accent);min-width:0;height:18px}
+  .un{color:var(--muted);font-size:.76rem;width:20px}
+  .trava{border:1px solid var(--ring);background:var(--sunk);border-radius:6px;cursor:pointer;
+         width:28px;height:24px;line-height:1;font-size:.85rem;color:var(--muted);padding:0}
+  .trava[aria-pressed="true"]{background:var(--accent-strong);border-color:var(--accent-strong);color:var(--on-accent-strong)}
+  .pills{display:flex;gap:5px;flex-wrap:wrap}
+  .pills button{font:inherit;font-size:.78rem;padding:3px 9px;border:1px solid var(--ring);border-radius:99px;
+       cursor:pointer;color:var(--ink-soft);background:var(--sunk)}
+  .pills button[aria-pressed="true"]{background:var(--accent-strong);border-color:var(--accent-strong);color:var(--on-accent-strong)}
+  .chk{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--ink-soft);cursor:pointer;margin:4px 0}
+  .chk input{accent-color:var(--accent)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:2px 12px}
+  .nota{font-size:.75rem;color:var(--muted);line-height:1.5;margin:6px 0 0}
+  .aviso{font-size:.76rem;color:var(--s2);line-height:1.5;margin:6px 0 0;min-height:0}
+
+  /* palco */
+  .palco{position:relative;background:var(--surface);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+  canvas{display:block;width:100%;height:min(66vh,620px);touch-action:none;cursor:grab}
+  canvas.arrastando{cursor:grabbing}
+  .hud{position:absolute;left:10px;top:10px;pointer-events:none;font-size:.78rem;color:var(--ink-soft);
+       background:color-mix(in srgb, var(--surface) 82%, transparent);border:1px solid var(--ring);
+       border-radius:8px;padding:6px 9px;line-height:1.5;backdrop-filter:blur(2px)}
+  .hud b{color:var(--ink);font-variant-numeric:tabular-nums}
+  .dica{position:absolute;right:10px;bottom:8px;font-size:.72rem;color:var(--muted);pointer-events:none}
+  .vistas{position:absolute;right:10px;top:10px;display:flex;gap:5px}
+  .vistas button{font:inherit;font-size:.74rem;padding:2px 8px;border:1px solid var(--ring);border-radius:99px;
+       cursor:pointer;color:var(--ink-soft);background:color-mix(in srgb, var(--surface) 82%, transparent)}
+
+  /* placar */
+  .placar{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:1px;background:var(--ring);
+          border:1px solid var(--ring);border-radius:10px;overflow:hidden;margin-top:12px}
+  .cel{background:var(--surface);padding:8px 10px}
+  .cel dt{font-family:'Cinzel',Georgia,serif;font-size:.62rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 2px}
+  .cel dd{margin:0;font-size:.95rem;color:var(--ink);font-variant-numeric:tabular-nums}
+  .cel dd small{color:var(--muted);font-size:.72rem}
+  table.tb{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:4px}
+  table.tb th,table.tb td{text-align:left;padding:3px 6px;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
+  table.tb th{font-family:'Cinzel',Georgia,serif;font-size:.62rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
+  table.tb td:last-child,table.tb th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+  .tema{font:inherit;font-size:.74rem;padding:2px 9px;border:1px solid var(--ring);border-radius:99px;
+        cursor:pointer;color:var(--ink-soft);background:var(--sunk)}
+</style>
+</head>
+<body>
+<div class="max">
+
+<header>
+  <div style="flex:1;min-width:280px">
+    <h1>Bancada de volume · que tamanho tem isso</h1>
+    <p class="sub">O Volume compra um <b>lado</b>, e o que se ganha é o cubo daquele lado, moldável em
+    esfera, bloco, coluna ou parede. Aqui a moldagem fica visível: escolha a forma, trave o que precisa
+    ficar de pé (o volume, uma altura, uma espessura) e veja o resto se ajustar. O boneco tem 1,80 m, e o
+    chão é o hexágono do Grid, 1 m de centro a centro.</p>
+  </div>
+  <button class="tema" id="btTema">tema: sistema</button>
+</header>
+
+<div class="wrap">
+<aside>
+
+  <div class="card">
+    <h3 class="tit">Forma</h3>
+    <div class="pills" id="formas"></div>
+    <div class="linha" style="margin-top:9px">
+      <label>Eixo</label>
+      <div class="pills cresce" id="orient">
+        <button data-o="0" aria-pressed="true">em pé</button>
+        <button data-o="1">deitado</button>
+      </div>
+    </div>
+    <div class="linha">
+      <label>Giro</label>
+      <input type="range" id="giro" min="0" max="360" step="1" value="0">
+      <span class="un" id="giroVal" style="width:34px">0&deg;</span>
+    </div>
+    <p class="nota" id="notaForma"></p>
+  </div>
+
+  <div class="card">
+    <h3 class="tit">Medidas <span style="font-weight:400;text-transform:none;letter-spacing:0">cadeado = não muda</span></h3>
+    <div id="params"></div>
+    <div class="linha" style="border-top:1px solid var(--rule);padding-top:8px;margin-top:8px">
+      <label><b>Volume</b></label>
+      <input type="text" inputmode="decimal" id="volNum" class="num cresce" style="width:auto">
+      <select id="volUn" style="width:62px">
+        <option value="1">m&sup3;</option>
+        <option value="0.001">L</option>
+        <option value="0.000001">cm&sup3;</option>
+      </select>
+      <button class="trava" id="volTrava" aria-pressed="false" title="travar o volume">&#128275;</button>
+    </div>
+    <p class="aviso" id="aviso"></p>
+  </div>
+
+  <div class="card">
+    <h3 class="tit">A escada do livro</h3>
+    <div class="linha"><label>Estado</label>
+      <select id="estado" class="cresce"></select>
+    </div>
+    <div class="pills" id="graus" style="margin-top:8px"></div>
+    <p class="nota" id="notaGrau"></p>
+    <div class="linha" style="margin-top:8px"><label>Área</label>
+      <select id="areaGrau" class="cresce"></select>
+    </div>
+    <p class="nota">A Área é jurisdição e não depende do material: entra como o cilindro pontilhado, do
+    diâmetro do grau, até a altura do boneco. É a comparação da <i>notaVolume</i>: encher custa mais que cobrir.</p>
+    <table class="tb" id="tbReguas"><thead><tr><th>Grau</th><th>Volume</th><th>Área até o boneco</th><th>Vezes</th></tr></thead>
+    <tbody></tbody></table>
+    <p class="nota">As duas réguas custam o mesmo em pontos e não crescem no mesmo passo: a distância
+    entre elas despenca conforme o grau sobe. Quem paga Área no grau baixo leva muito mais espaço pelo
+    mesmo ponto do que quem paga Volume, e no grau alto os dois quase se encontram.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="tit">Cena</h3>
+    <div class="linha"><label>Boneco</label>
+      <input type="range" id="bonecoAlt" min="0.5" max="3" step="0.01" value="1.8">
+      <span class="un" id="bonecoVal" style="width:46px">1,80</span>
+    </div>
+    <div class="linha"><label>Afastar</label>
+      <input type="range" id="folga" min="0" max="4" step="0.05" value="0.5">
+      <span class="un" id="folgaVal" style="width:46px">0,50</span>
+    </div>
+    <div class="linha"><label>Elevar</label>
+      <input type="range" id="elev" min="0" max="4" step="0.05" value="0">
+      <span class="un" id="elevVal" style="width:46px">0,00</span>
+    </div>
+    <div class="linha"><label>Hex</label>
+      <input type="range" id="escalaHex" min="0.5" max="3" step="0.1" value="1">
+      <span class="un" id="hexVal" style="width:46px">1,0</span>
+    </div>
+    <div class="grid2" style="margin-top:6px">
+      <label class="chk"><input type="checkbox" id="cMostraHex" checked> hexágonos</label>
+      <label class="chk"><input type="checkbox" id="cSombra" checked> pegada</label>
+      <label class="chk"><input type="checkbox" id="cBoneco" checked> boneco</label>
+      <label class="chk"><input type="checkbox" id="cPorta"> porta 2,10 m</label>
+      <label class="chk"><input type="checkbox" id="cCotas" checked> cotas</label>
+      <label class="chk"><input type="checkbox" id="cArestas" checked> arestas</label>
+      <label class="chk"><input type="checkbox" id="cEncaixa"> na grade</label>
+      <label class="chk"><input type="checkbox" id="cCorte"> corte ao meio</label>
+    </div>
+    <div class="linha" style="margin-top:4px"><label>Opacidade</label>
+      <input type="range" id="alpha" min="0.12" max="1" step="0.01" value="0.55">
+    </div>
+    <div class="pills" style="margin-top:8px">
+      <button id="btFantasma">congelar fantasma</button>
+      <button id="btLimpaFantasma">limpar</button>
+      <button id="btPng">baixar PNG</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="tit">Material</h3>
+    <div class="linha"><label>Feito de</label><select id="material" class="cresce"></select></div>
+    <p class="nota" id="notaMassa"></p>
+  </div>
+
+</aside>
+
+<main>
+  <div class="palco">
+    <canvas id="cv"></canvas>
+    <div class="hud" id="hud"></div>
+    <div class="vistas">
+      <button data-v="iso">iso</button>
+      <button data-v="frente">frente</button>
+      <button data-v="lado">lado</button>
+      <button data-v="topo">topo</button>
+    </div>
+    <div class="dica">arrastar gira &middot; roda aproxima &middot; shift ou botão direito arrasta a cena</div>
+  </div>
+
+  <dl class="placar" id="placar"></dl>
+
+  <div class="card" style="margin-top:12px">
+    <h3 class="tit">O mesmo volume nas oito formas</h3>
+    <table class="tb"><thead><tr><th>Forma</th><th>Medidas para o volume de agora</th><th>Altura</th><th>Pegada</th></tr></thead>
+    <tbody id="tbComp"></tbody></table>
+    <p class="nota">Todas as linhas têm o volume que está no painel. É a leitura que interessa na mesa:
+    o mesmo Volume comprado vira um cubo baixo, uma coluna fina ou uma bolha larga, e o que muda é o que ele alcança.</p>
+  </div>
+</main>
+</div>
+</div>
+
+<script>
+"use strict";
+// =====================================================================
+// Bancada de volume das Artes. Tudo em um arquivo só, sem dependência
+// externa: o 3D é um rasterizador de polígonos em canvas 2D, com
+// ordenação por profundidade (algoritmo do pintor). Chega para sólidos
+// convexos simples e roda em qualquer máquina que abra o arquivo.
+// =====================================================================
+
+// ------------------------------------------------- números e formatos
+const PI = Math.PI;
+const nf = (n, d = 2) => n.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
+function fmtM(m) {
+  if (!isFinite(m)) return '—';
+  if (m < 0.01) return nf(m * 1000, 0) + ' mm';
+  if (m < 1) return nf(m * 100, 1) + ' cm';
+  return nf(m, 2) + ' m';
+}
+function fmtVol(v) {
+  if (!isFinite(v)) return '—';
+  if (v < 0.001) return nf(v * 1e6, 1) + ' cm³';
+  if (v < 1) return nf(v * 1000, 1) + ' L';
+  // duas casas e não três: em português "8,000 m³" se lê como oito mil
+  return nf(v, 2) + ' m³';
+}
+function fmtMassa(kg) {
+  if (kg < 1) return nf(kg * 1000, 0) + ' g';
+  if (kg < 1000) return nf(kg, 1) + ' kg';
+  return nf(kg / 1000, 2) + ' t';
+}
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const parseNum = (s) => {
+  const v = parseFloat(String(s).replace(/\s/g, '').replace(',', '.'));
+  return isFinite(v) ? v : NaN;
+};
+
+// ------------------------------------------------------------ o livro
+// regras.json -> arcano.improviso.graus
+const VOL_LADO = [0.02, 0.1, 0.25, 0.5, 1, 1.5, 2];
+const VOL_ANCORA = ['8 cm³, um caroço', '1 litro', '16 litros', '125 litros',
+  '1 m³, cinco metros de muro', '3,4 m³', '8 m³'];
+const AREA_DIAM = [0.1, 1, 1.5, 2, 2.5, 3, 4];
+const ESTADOS = [
+  { id: 'solido', nome: 'Sólido (Terra, Metal)', fator: 0.5, txt: 'metade' },
+  { id: 'granular', nome: 'Granular (areia, cascalho, neve)', fator: 1, txt: 'normal' },
+  { id: 'liquido', nome: 'Líquido e gelo (Água, Gelo)', fator: 1, txt: 'normal' },
+  { id: 'fenomeno', nome: 'Fenômeno (Fogo, Luz, Sombra)', fator: 2, txt: 'dobro' },
+  { id: 'gas', nome: 'Gás (Ar, neblina)', fator: 8, txt: 'oito vezes' },
+];
+const MATERIAIS = [
+  { id: 'agua', nome: 'Água', d: 1000 }, { id: 'gelo', nome: 'Gelo', d: 917 },
+  { id: 'pedra', nome: 'Pedra (granito)', d: 2700 }, { id: 'terra', nome: 'Terra socada', d: 1500 },
+  { id: 'areia', nome: 'Areia solta', d: 1600 }, { id: 'madeira', nome: 'Madeira', d: 700 },
+  { id: 'ferro', nome: 'Ferro', d: 7850 }, { id: 'chumbo', nome: 'Chumbo', d: 11340 },
+  { id: 'carne', nome: 'Carne e osso', d: 1010 }, { id: 'ar', nome: 'Ar', d: 1.2 },
+];
+const VOL_PESSOA = 0.075; // 1,80 m e ~75 kg, na densidade de gente
+
+// -------------------------------------------------------- as oito formas
+// O volume de todas elas é um MONÔMIO nas medidas (V = k · ∏ p^e), e é isso
+// que faz a conta das travas ser exata em vez de iterativa: para chegar a um
+// volume mexendo só em algumas medidas, basta multiplicar as livres por
+// (alvo/atual)^(1/E), com E a soma dos expoentes das livres.
+const P = {
+  lado: 'Lado', raio: 'Raio', tubo: 'Tubo', altura: 'Altura',
+  comprimento: 'Comprimento', largura: 'Largura',
+};
+const FORMAS = {
+  cubo: { nome: 'Cubo', params: ['lado'], k: 1, e: { lado: 3 }, giraEixo: false,
+    nota: 'O cubo é a forma de referência da escada: o grau compra o lado dele.' },
+  cuboide: { nome: 'Cuboide', params: ['comprimento', 'largura', 'altura'], k: 1,
+    e: { comprimento: 1, largura: 1, altura: 1 }, giraEixo: true,
+    nota: 'A forma do muro. Trave o volume, trave a espessura (largura) e a altura, e o comprimento diz quantos metros de parede saíram.' },
+  esfera: { nome: 'Esfera', params: ['raio'], k: 4 * PI / 3, e: { raio: 3 }, giraEixo: false,
+    nota: 'A bolha. A menor pegada possível para um volume dado, e a que menos se aproveita em briga.' },
+  semiesfera: { nome: 'Semiesfera', params: ['raio'], k: 2 * PI / 3, e: { raio: 3 }, giraEixo: true,
+    nota: 'A cúpula. Em pé, apoia a face plana no chão; deitada, vira concha voltada para o lado.' },
+  cilindro: { nome: 'Cilindro', params: ['raio', 'altura'], k: PI, e: { raio: 2, altura: 1 }, giraEixo: true,
+    nota: 'A coluna em pé, o tronco deitado. Deitar troca a altura pelo diâmetro.' },
+  cone: { nome: 'Cone', params: ['raio', 'altura'], k: PI / 3, e: { raio: 2, altura: 1 }, giraEixo: true,
+    nota: 'O leque da labareda, o jorro. Um terço do cilindro de mesma base e altura.' },
+  piramide: { nome: 'Pirâmide', params: ['lado', 'altura'], k: 1 / 3, e: { lado: 2, altura: 1 }, giraEixo: true,
+    nota: 'Base quadrada. Um terço do cuboide de mesma base e altura.' },
+  torus: { nome: 'Torus', params: ['raio', 'tubo'], k: 2 * PI * PI, e: { raio: 1, tubo: 2 }, giraEixo: true,
+    nota: 'O anel. Em pé é rosca no chão; deitado é roda de pé. O tubo nunca passa do raio maior, senão o anel se atravessa.' },
+};
+
+// ------------------------------------------------------------- estado
+const S = {
+  forma: 'cubo',
+  dims: { lado: 1, raio: 0.5, tubo: 0.15, altura: 1, comprimento: 2, largura: 0.2 },
+  travas: { volume: false, lado: false, raio: false, tubo: false, altura: false, comprimento: false, largura: false },
+  volumeAlvo: 1,
+  deitado: false, giro: 0, elevacao: 0, folga: 0.5, encaixar: false,
+  bonecoAlt: 1.8, mostraBoneco: true, porta: false,
+  estado: 'liquido', material: 'agua',
+  areaGrau: -1, escalaHex: 1, mostraHex: true,
+  alpha: 0.55, arestas: true, cotas: true, sombra: true, corte: false,
+  fantasma: null,
+};
+const forma = () => FORMAS[S.forma];
+const MIN = 0.005, MAX = 40;
+
+function volumeDe(f, d) {
+  let v = f.k;
+  for (const k in f.e) v *= Math.pow(d[k], f.e[k]);
+  return v;
+}
+const volume = () => volumeDe(forma(), S.dims);
+
+/** Multiplica as medidas `livres` pelo fator que leva o volume ao alvo. */
+function resolverVolume(alvo, livres) {
+  const f = forma();
+  let E = 0;
+  livres.forEach((k) => { E += f.e[k] || 0; });
+  if (E === 0 || alvo <= 0) return false;
+  const s = Math.pow(alvo / volume(), 1 / E);
+  if (!isFinite(s) || s <= 0) return false;
+  livres.forEach((k) => { S.dims[k] = clamp(S.dims[k] * s, MIN, MAX); });
+  return true;
+}
+
+let avisoTxt = '';
+const avisar = (t) => { avisoTxt = t; };
+
+/** O torus só existe enquanto o tubo cabe dentro do raio maior. */
+function sanear() {
+  if (S.forma === 'torus' && S.dims.tubo >= S.dims.raio) {
+    S.dims.tubo = S.dims.raio * 0.95;
+    avisar('O tubo não cabe no raio maior: ficou limitado a 95% dele.');
+  }
+  for (const k in S.dims) S.dims[k] = clamp(S.dims[k], MIN, MAX);
+}
+
+/** Mexer numa medida. Com o volume travado, as outras livres compensam. */
+function editarMedida(k, val) {
+  avisar('');
+  S.dims[k] = clamp(val, MIN, MAX);
+  if (S.travas.volume) {
+    const livres = forma().params.filter((p) => p !== k && !S.travas[p]);
+    if (!resolverVolume(S.volumeAlvo, livres)) {
+      avisar('Volume travado e nada livre para compensar: destrave outra medida, ou o volume vai junto.');
+      S.volumeAlvo = volume();
+    }
+  } else {
+    S.volumeAlvo = volume();
+  }
+  sanear();
+  refazer();
+}
+
+/** Digitar um volume: as medidas livres crescem juntas até chegar lá. */
+function editarVolume(v) {
+  avisar('');
+  if (!(v > 0)) return;
+  S.volumeAlvo = v;
+  const livres = forma().params.filter((p) => !S.travas[p]);
+  if (!resolverVolume(v, livres)) avisar('Todas as medidas estão travadas: destrave uma para o volume mudar.');
+  sanear();
+  refazer();
+}
+
+// Trocar de forma preservando o que estava travado. A regra, escrita aqui
+// para não virar mágica: a trava de volume sempre atravessa; a trava de uma
+// medida que existe na forma nova atravessa pelo nome; e a trava de uma
+// medida que a forma nova não tem atravessa pelo PAPEL (altura vira altura,
+// medida de largura vira largura), convertida pela medida TOTAL da caixa e
+// não pelo número cru. É por isso que um raio travado de 1 m vira um lado de
+// 2 m no cubo: o que se quis travar foi a largura, e ela era 2 m.
+function trocarForma(nova) {
+  avisar('');
+  const antiga = forma(), antigaDeitado = S.deitado;
+  const cxAntiga = caixa(malhaDaForma(S.forma, S.dims, S.deitado, 0));
+  const hAlvo = cxAntiga.alt, wAlvo = cxAntiga.larg;
+  const perdidas = antiga.params.filter((p) => S.travas[p] && !FORMAS[nova].params.includes(p));
+  const travouAltura = perdidas.includes('altura') || (perdidas.length && antiga.params.length === 1);
+  const travouLargura = perdidas.some((p) => p !== 'altura');
+  S.forma = nova;
+  if (!FORMAS[nova].giraEixo) S.deitado = false;
+  perdidas.forEach((p) => { S.travas[p] = false; });
+  sanear();
+  // reencaixa as travas perdidas pela medida total, escalando tudo junto
+  if (travouAltura || travouLargura) {
+    const cx = caixa(malhaDaForma(S.forma, S.dims, S.deitado, 0));
+    const alvo = travouAltura ? hAlvo : wAlvo;
+    const atual = travouAltura ? cx.alt : cx.larg;
+    if (atual > 0) {
+      const s = alvo / atual;
+      FORMAS[nova].params.forEach((k) => { S.dims[k] = clamp(S.dims[k] * s, MIN, MAX); });
+    }
+    avisar('A trava de ' + (travouAltura ? 'altura' : 'largura') + ' não existe nesta forma: virou a medida total equivalente.');
+  }
+  if (S.travas.volume) {
+    const livres = FORMAS[nova].params.filter((p) => !S.travas[p]);
+    if (!resolverVolume(S.volumeAlvo, livres)) {
+      avisar('Nesta forma o volume travado não cabe junto com as travas de medida: o volume mudou.');
+      S.volumeAlvo = volume();
+    }
+  } else {
+    S.volumeAlvo = volume();
+  }
+  sanear();
+  montarParams();
+  refazer();
+}
+
+// =====================================================================
+// Malhas. Cada malha e { v: [[x,y,z]...], f: [{i:[...], dura:bool}] }
+// Convenção local: Y para cima, e base em y = 0 quando a forma tem base.
+// =====================================================================
+function unir(a, b) {
+  const off = a.v.length;
+  b.v.forEach((p) => a.v.push(p));
+  b.f.forEach((g) => a.f.push({ i: g.i.map((n) => n + off), dura: g.dura }));
+  return a;
+}
+const face = (i, dura) => ({ i, dura: !!dura });
+
+function mCaixa(w, h, d, cy) {
+  const x = w / 2, z = d / 2, y0 = cy || 0, y1 = y0 + h;
+  return {
+    v: [[-x, y0, -z], [x, y0, -z], [x, y0, z], [-x, y0, z], [-x, y1, -z], [x, y1, -z], [x, y1, z], [-x, y1, z]],
+    f: [face([0, 3, 2, 1], 1), face([4, 5, 6, 7], 1), face([0, 1, 5, 4], 1),
+        face([1, 2, 6, 5], 1), face([2, 3, 7, 6], 1), face([3, 0, 4, 7], 1)],
+  };
+}
+function mCilindro(r, h, N) {
+  N = N || 44; const v = [], f = [];
+  for (let i = 0; i < N; i++) { const a = 2 * PI * i / N; v.push([r * Math.cos(a), 0, r * Math.sin(a)]); }
+  for (let i = 0; i < N; i++) { const a = 2 * PI * i / N; v.push([r * Math.cos(a), h, r * Math.sin(a)]); }
+  for (let i = 0; i < N; i++) { const j = (i + 1) % N; f.push(face([i, j, N + j, N + i], 0)); }
+  const base = [], topo = [];
+  for (let i = 0; i < N; i++) { base.push(N - 1 - i); topo.push(N + i); }
+  f.push(face(base, 1)); f.push(face(topo, 1));
+  return { v, f };
+}
+function mCone(r, h, N) {
+  N = N || 44; const v = [], f = [];
+  for (let i = 0; i < N; i++) { const a = 2 * PI * i / N; v.push([r * Math.cos(a), 0, r * Math.sin(a)]); }
+  v.push([0, h, 0]); const ap = v.length - 1;
+  for (let i = 0; i < N; i++) f.push(face([i, (i + 1) % N, ap], 0));
+  const base = []; for (let i = 0; i < N; i++) base.push(N - 1 - i);
+  f.push(face(base, 1));
+  return { v, f };
+}
+function mPiramide(l, h) {
+  const x = l / 2;
+  return {
+    v: [[-x, 0, -x], [x, 0, -x], [x, 0, x], [-x, 0, x], [0, h, 0]],
+    f: [face([0, 3, 2, 1], 1), face([0, 1, 4], 1), face([1, 2, 4], 1), face([2, 3, 4], 1), face([3, 0, 4], 1)],
+  };
+}
+function mEsfera(r, meia, NU, NV) {
+  NU = NU || 32; NV = NV || (meia ? 9 : 18);
+  const v = [], f = [], vMax = meia ? PI / 2 : PI;
+  const anel = [];
+  for (let j = 0; j <= NV; j++) {
+    const phi = vMax * j / NV, y = r * Math.cos(phi), rr = r * Math.sin(phi), linha = [];
+    if (j === 0 || (!meia && j === NV)) { v.push([0, y, 0]); linha.push(v.length - 1); }
+    else for (let i = 0; i < NU; i++) { const a = 2 * PI * i / NU; v.push([rr * Math.cos(a), y, rr * Math.sin(a)]); linha.push(v.length - 1); }
+    anel.push(linha);
+  }
+  for (let j = 0; j < NV; j++) {
+    const A = anel[j], B = anel[j + 1];
+    for (let i = 0; i < NU; i++) {
+      const i2 = (i + 1) % NU;
+      if (A.length === 1) f.push(face([A[0], B[i], B[i2]], 0));
+      else if (B.length === 1) f.push(face([A[i], A[i2], B[0]], 0));
+      else f.push(face([A[i], A[i2], B[i2], B[i]], 0));
+    }
+  }
+  if (meia) { const ult = anel[NV], disco = []; for (let i = 0; i < NU; i++) disco.push(ult[NU - 1 - i]); f.push(face(disco, 1)); }
+  return { v, f };
+}
+function mTorus(R, rt, NU, NV) {
+  NU = NU || 40; NV = NV || 18; const v = [], f = [];
+  for (let i = 0; i < NU; i++) {
+    const a = 2 * PI * i / NU, cx = R * Math.cos(a), cz = R * Math.sin(a);
+    for (let j = 0; j < NV; j++) {
+      const b = 2 * PI * j / NV, rr = R + rt * Math.cos(b);
+      v.push([rr * Math.cos(a), rt * Math.sin(b), rr * Math.sin(a)]);
+    }
+  }
+  for (let i = 0; i < NU; i++) for (let j = 0; j < NV; j++) {
+    const i2 = (i + 1) % NU, j2 = (j + 1) % NV;
+    f.push(face([i * NV + j, i2 * NV + j, i2 * NV + j2, i * NV + j2], 0));
+  }
+  return { v, f };
+}
+
+/** A malha bruta da forma, no eixo local, já com deitar e girar aplicados. */
+function malhaDaForma(id, d, deitado, giro) {
+  let m;
+  if (id === 'cubo') m = mCaixa(d.lado, d.lado, d.lado);
+  else if (id === 'cuboide') m = mCaixa(d.comprimento, d.altura, d.largura);
+  else if (id === 'esfera') m = mEsfera(d.raio, false);
+  else if (id === 'semiesfera') m = mEsfera(d.raio, true);
+  else if (id === 'cilindro') m = mCilindro(d.raio, d.altura);
+  else if (id === 'cone') m = mCone(d.raio, d.altura);
+  else if (id === 'piramide') m = mPiramide(d.lado, d.altura);
+  else m = mTorus(d.raio, d.tubo);
+  if (deitado) m.v = m.v.map((p) => [p[0], -p[2], p[1]]);   // tomba 90 graus no eixo X
+  if (giro) {
+    const c = Math.cos(giro), s = Math.sin(giro);
+    m.v = m.v.map((p) => [p[0] * c + p[2] * s, p[1], -p[0] * s + p[2] * c]);
+  }
+  return m;
+}
+function caixa(m) {
+  let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, z0 = 1e9, z1 = -1e9;
+  m.v.forEach((p) => {
+    if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0];
+    if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1];
+    if (p[2] < z0) z0 = p[2]; if (p[2] > z1) z1 = p[2];
+  });
+  return { x0, x1, y0, y1, z0, z1, larg: x1 - x0, alt: y1 - y0, prof: z1 - z0 };
+}
+function mover(m, dx, dy, dz) { m.v = m.v.map((p) => [p[0] + dx, p[1] + dy, p[2] + dz]); return m; }
+
+// ------------------------------------------------------------- boneco
+function cilindroEntre(p, q, r, N) {
+  N = N || 10;
+  const d = [q[0] - p[0], q[1] - p[1], q[2] - p[2]];
+  const L = Math.hypot(d[0], d[1], d[2]) || 1e-6;
+  const u = [d[0] / L, d[1] / L, d[2] / L];
+  let t = Math.abs(u[1]) > 0.9 ? [1, 0, 0] : [0, 1, 0];
+  let a = [u[1] * t[2] - u[2] * t[1], u[2] * t[0] - u[0] * t[2], u[0] * t[1] - u[1] * t[0]];
+  const la = Math.hypot(a[0], a[1], a[2]); a = [a[0] / la, a[1] / la, a[2] / la];
+  const b = [u[1] * a[2] - u[2] * a[1], u[2] * a[0] - u[0] * a[2], u[0] * a[1] - u[1] * a[0]];
+  const v = [], f = [];
+  for (let k = 0; k < 2; k++) {
+    const base = k ? q : p;
+    for (let i = 0; i < N; i++) {
+      const ang = 2 * PI * i / N, cs = Math.cos(ang) * r, sn = Math.sin(ang) * r;
+      v.push([base[0] + a[0] * cs + b[0] * sn, base[1] + a[1] * cs + b[1] * sn, base[2] + a[2] * cs + b[2] * sn]);
+    }
+  }
+  for (let i = 0; i < N; i++) { const j = (i + 1) % N; f.push(face([i, j, N + j, N + i], 0)); }
+  const c1 = [], c2 = []; for (let i = 0; i < N; i++) { c1.push(N - 1 - i); c2.push(N + i); }
+  f.push(face(c1, 0)); f.push(face(c2, 0));
+  return { v, f };
+}
+function malhaBoneco(alt) {
+  const s = alt / 1.8;
+  const m = { v: [], f: [] };
+  const E = (x, y, z) => [x * s, y * s, z * s];
+  unir(m, mCaixa(0.40 * s, 0.42 * s, 0.23 * s, 1.03 * s));                 // tronco
+  unir(m, mCaixa(0.34 * s, 0.13 * s, 0.21 * s, 0.90 * s));                 // quadril
+  unir(m, mCaixa(0.45 * s, 0.09 * s, 0.23 * s, 1.45 * s));                 // ombros
+  unir(m, cilindroEntre(E(0, 1.54, 0), E(0, 1.60, 0), 0.055 * s, 8));      // pescoco
+  unir(m, mover(mEsfera(0.105 * s, false, 18, 10), 0, 1.70 * s, 0));       // cabeca
+  [-1, 1].forEach((L) => {
+    unir(m, cilindroEntre(E(L * 0.25, 1.46, 0), E(L * 0.27, 1.16, 0.02), 0.048 * s, 8));
+    unir(m, cilindroEntre(E(L * 0.27, 1.16, 0.02), E(L * 0.27, 0.80, 0.06), 0.040 * s, 8));
+    unir(m, cilindroEntre(E(L * 0.10, 0.92, 0), E(L * 0.11, 0.48, 0), 0.072 * s, 9));
+    unir(m, cilindroEntre(E(L * 0.11, 0.48, 0), E(L * 0.11, 0.05, 0), 0.058 * s, 9));
+    unir(m, mCaixa(0.10 * s, 0.05 * s, 0.26 * s, 0));
+    const n = m.v.length; for (let i = n - 8; i < n; i++) { m.v[i][0] += L * 0.11 * s; m.v[i][2] += 0.04 * s; }
+  });
+  const cx = caixa(m);
+  if (cx.alt > 0) { const k = alt / cx.alt; m.v = m.v.map((p) => [p[0] * k, p[1] * k, p[2] * k]); }
+  return m;
+}
+function malhaPorta() {
+  const m = { v: [], f: [] };
+  unir(m, mCaixa(0.06, 2.10, 0.06, 0)); mover(m, -0.48, 0, 0);
+  const b = mCaixa(0.06, 2.10, 0.06, 0); mover(b, 0.48, 0, 0); unir(m, b);
+  const t = mCaixa(1.02, 0.06, 0.06, 2.10); unir(m, t);
+  return m;
+}
+
+// =====================================================================
+// Câmera e desenho
+// =====================================================================
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const cam = { yaw: -0.72, pitch: 0.30, dist: 6.4, alvo: [1.2, 0.9, 0], fov: 48 * PI / 180 };
+let W = 0, H = 0, DPR = 1, sujo = true, arrastando = false;
+
+function medirCanvas() {
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  const r = cv.getBoundingClientRect();
+  W = Math.max(320, Math.round(r.width)); H = Math.max(260, Math.round(r.height));
+  cv.width = W * DPR; cv.height = H * DPR;
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  sujo = true;
+}
+new ResizeObserver(medirCanvas).observe(cv);
+
+function baseCam() {
+  const { yaw, pitch, dist, alvo } = cam;
+  const pos = [alvo[0] + dist * Math.cos(pitch) * Math.sin(yaw), alvo[1] + dist * Math.sin(pitch),
+               alvo[2] + dist * Math.cos(pitch) * Math.cos(yaw)];
+  let fwd = [alvo[0] - pos[0], alvo[1] - pos[1], alvo[2] - pos[2]];
+  const lf = Math.hypot(fwd[0], fwd[1], fwd[2]); fwd = fwd.map((n) => n / lf);
+  let rt = [fwd[2], 0, -fwd[0]];
+  const lr = Math.hypot(rt[0], rt[1], rt[2]) || 1; rt = rt.map((n) => n / lr);
+  const up = [rt[1] * fwd[2] - rt[2] * fwd[1], rt[2] * fwd[0] - rt[0] * fwd[2], rt[0] * fwd[1] - rt[1] * fwd[0]];
+  return { pos, fwd, rt, up: [-up[0], -up[1], -up[2]] };
+}
+let B = null, foco = 1, ox = 0, oy = 0;
+const PERTO = 0.06;
+function paraCam(p) {
+  const d = [p[0] - B.pos[0], p[1] - B.pos[1], p[2] - B.pos[2]];
+  return [d[0] * B.rt[0] + d[1] * B.rt[1] + d[2] * B.rt[2],
+          d[0] * B.up[0] + d[1] * B.up[1] + d[2] * B.up[2],
+          d[0] * B.fwd[0] + d[1] * B.fwd[1] + d[2] * B.fwd[2]];
+}
+const projetar = (c) => [ox + foco * c[0] / c[2], oy - foco * c[1] / c[2]];
+function recortarPerto(poly) {
+  const out = [];
+  for (let i = 0; i < poly.length; i++) {
+    const a = poly[i], b = poly[(i + 1) % poly.length];
+    const da = a[2] - PERTO, db = b[2] - PERTO;
+    if (da >= 0) out.push(a);
+    if ((da >= 0) !== (db >= 0)) {
+      const t = da / (da - db);
+      out.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, PERTO]);
+    }
+  }
+  return out;
+}
+function linha3d(a, b, cor, larg, tracejo) {
+  const ca = paraCam(a), cb = paraCam(b);
+  if (ca[2] < PERTO && cb[2] < PERTO) return;
+  let A = ca, Bb = cb;
+  if (ca[2] < PERTO || cb[2] < PERTO) {
+    const t = (PERTO - ca[2]) / (cb[2] - ca[2]);
+    const mid = [ca[0] + (cb[0] - ca[0]) * t, ca[1] + (cb[1] - ca[1]) * t, PERTO];
+    if (ca[2] < PERTO) A = mid; else Bb = mid;
+  }
+  const p = projetar(A), q = projetar(Bb);
+  ctx.save(); ctx.strokeStyle = cor; ctx.lineWidth = larg || 1;
+  if (tracejo) ctx.setLineDash(tracejo);
+  ctx.beginPath(); ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); ctx.stroke(); ctx.restore();
+}
+
+// a paleta viva, lida dos tokens do site
+let COR = {};
+function lerCores() {
+  const cs = getComputedStyle(document.documentElement);
+  const g = (n, f) => (cs.getPropertyValue(n) || f).trim();
+  COR = {
+    ink: g('--ink', '#2a2720'), soft: g('--ink-soft', '#574f3d'), muted: g('--muted', '#8a8069'),
+    ring: g('--ring', '#d8c79c'), rule: g('--rule', '#cdbd92'), surf: g('--surface', '#fbf6e7'),
+    plane: g('--plane', '#f3e9d2'), acc: g('--accent', '#00BAB4'), accF: g('--accent-strong', '#0B3B47'),
+    s2: g('--s2', '#eb6834'), chao: g('--chao', '#efe4c8'), hex: g('--hex', '#c9b98f'),
+    corpo: g('--corpo', '#7a6a4e'),
+  };
+  sujo = true;
+}
+function hexRgb(h) {
+  h = h.replace('#', '');
+  if (h.length === 3) h = h.split('').map((c) => c + c).join('');
+  return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+}
+function tom(hex, mult, alpha) {
+  const c = hexRgb(hex);
+  const r = clamp(c[0] * mult, 0, 255) | 0, g = clamp(c[1] * mult, 0, 255) | 0, b = clamp(c[2] * mult, 0, 255) | 0;
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+}
+
+// -------------------------------------------------- a cena, em metros
+let CENA = null;
+function refazer() { CENA = null; sujo = true; atualizarPainel(); }
+
+function montarCena() {
+  sanear();
+  const d = S.dims;
+  const bruta = malhaDaForma(S.forma, d, S.deitado, S.giro * PI / 180);
+  const cx = caixa(bruta);
+  // o objeto encosta no chão (ou sobe pela elevação) e fica ao lado do boneco:
+  // a borda esquerda dele para logo depois do ombro, mais a folga escolhida
+  let px = 0.30 + S.folga - cx.x0;
+  let pz = -(cx.z0 + cx.z1) / 2;
+  if (S.encaixar) {
+    const e = S.escalaHex, cxx = px + (cx.x0 + cx.x1) / 2, czz = pz + (cx.z0 + cx.z1) / 2;
+    const rr = Math.round(czz / (e * Math.sqrt(3) / 2));
+    const qq = Math.round(cxx / e - rr / 2);
+    px += (e * (qq + rr / 2)) - cxx; pz += (e * rr * Math.sqrt(3) / 2) - czz;
+  }
+  const obj = mover(bruta, px, -cx.y0 + S.elevacao, pz);
+  const cxo = caixa(obj);
+  const sup = superficie(S.forma, d);
+  return {
+    obj, cx: cxo, sup,
+    vol: volume(),
+    boneco: S.mostraBoneco ? malhaBoneco(S.bonecoAlt) : null,
+    porta: S.porta ? mover(malhaPorta(), -1.15, 0, 0) : null,
+    pegada: cascoPegada(obj),
+  };
+}
+function cena() { if (!CENA) CENA = montarCena(); return CENA; }
+
+function superficie(id, d) {
+  const r = d.raio, h = d.altura, l = d.lado;
+  if (id === 'cubo') return 6 * l * l;
+  if (id === 'cuboide') return 2 * (d.comprimento * d.largura + d.comprimento * d.altura + d.largura * d.altura);
+  if (id === 'esfera') return 4 * PI * r * r;
+  if (id === 'semiesfera') return 3 * PI * r * r;
+  if (id === 'cilindro') return 2 * PI * r * r + 2 * PI * r * h;
+  if (id === 'cone') return PI * r * r + PI * r * Math.hypot(r, h);
+  if (id === 'piramide') return l * l + 2 * l * Math.hypot(h, l / 2);
+  return 4 * PI * PI * d.raio * d.tubo;
+}
+
+/** Casco convexo da sombra no chão: serve para a pegada e para contar hexágonos. */
+function cascoPegada(m) {
+  const pts = m.v.map((p) => [p[0], p[2]]).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  if (pts.length < 3) return pts;
+  const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const bx = [];
+  for (const p of pts) { while (bx.length >= 2 && cross(bx[bx.length - 2], bx[bx.length - 1], p) <= 0) bx.pop(); bx.push(p); }
+  const tp = [];
+  for (let i = pts.length - 1; i >= 0; i--) { const p = pts[i]; while (tp.length >= 2 && cross(tp[tp.length - 2], tp[tp.length - 1], p) <= 0) tp.pop(); tp.push(p); }
+  bx.pop(); tp.pop();
+  return bx.concat(tp);
+}
+function dentroPoly(x, z, poly) {
+  let d = false;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const a = poly[i], b = poly[j];
+    if ((a[1] > z) !== (b[1] > z) && x < (b[0] - a[0]) * (z - a[1]) / (b[1] - a[1]) + a[0]) d = !d;
+  }
+  return d;
+}
+function areaPoly(poly) {
+  let a = 0;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) a += (poly[j][0] + poly[i][0]) * (poly[j][1] - poly[i][1]);
+  return Math.abs(a / 2);
+}
+
+// ------------------------------------------------------------ o chao
+function hexesVisiveis() {
+  const c = cena(), e = S.escalaHex;
+  const alcance = Math.max(4, Math.ceil((Math.max(Math.abs(c.cx.x1), 2) + 2) / e) + 2);
+  const out = [];
+  for (let r = -alcance; r <= alcance; r++) {
+    for (let q = -alcance; q <= alcance; q++) {
+      if (Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r)) > alcance) continue;
+      out.push({ q, r, x: e * (q + r / 2), z: e * r * Math.sqrt(3) / 2 });
+    }
+  }
+  return out;
+}
+function desenharChao() {
+  const e = S.escalaHex, raio = e / Math.sqrt(3), c = cena();
+  const cantos = [];
+  for (let i = 0; i < 6; i++) { const a = PI / 180 * (60 * i - 90); cantos.push([raio * Math.cos(a), raio * Math.sin(a)]); }
+  let cobertos = 0;
+  const lista = S.mostraHex ? hexesVisiveis() : [];
+  ctx.lineWidth = 1;
+  lista.forEach((h) => {
+    const dentro = dentroPoly(h.x, h.z, c.pegada);
+    if (dentro) cobertos++;
+    const poly = [];
+    let ok = true;
+    for (let i = 0; i < 6; i++) {
+      const cc = paraCam([h.x + cantos[i][0], 0, h.z + cantos[i][1]]);
+      if (cc[2] < PERTO) { ok = false; break; }
+      poly.push(projetar(cc));
+    }
+    if (!ok) return;
+    ctx.beginPath(); ctx.moveTo(poly[0][0], poly[0][1]);
+    for (let i = 1; i < 6; i++) ctx.lineTo(poly[i][0], poly[i][1]);
+    ctx.closePath();
+    ctx.fillStyle = dentro ? tom(COR.acc, 1, 0.16) : tom(COR.chao, 1, 0.55);
+    ctx.fill();
+    ctx.strokeStyle = dentro ? tom(COR.acc, 1, 0.5) : tom(COR.hex, 1, 0.75);
+    ctx.stroke();
+  });
+  return cobertos;
+}
+function desenharPegada() {
+  const c = cena();
+  if (!S.sombra || c.pegada.length < 3) return;
+  const poly = [];
+  for (const p of c.pegada) { const cc = paraCam([p[0], 0.002, p[1]]); if (cc[2] < PERTO) return; poly.push(projetar(cc)); }
+  ctx.beginPath(); ctx.moveTo(poly[0][0], poly[0][1]);
+  for (let i = 1; i < poly.length; i++) ctx.lineTo(poly[i][0], poly[i][1]);
+  ctx.closePath();
+  ctx.fillStyle = tom(COR.accF, 1, 0.14); ctx.fill();
+  ctx.strokeStyle = tom(COR.accF, 1, 0.4); ctx.lineWidth = 1.2; ctx.stroke();
+}
+function desenharArea() {
+  if (S.areaGrau < 0) return;
+  const c = cena(), r = AREA_DIAM[S.areaGrau] / 2, alt = S.bonecoAlt;
+  const cxm = (c.cx.x0 + c.cx.x1) / 2, czm = (c.cx.z0 + c.cx.z1) / 2, N = 48;
+  const anel = (y) => {
+    const pts = [];
+    for (let i = 0; i <= N; i++) { const a = 2 * PI * i / N; pts.push([cxm + r * Math.cos(a), y, czm + r * Math.sin(a)]); }
+    return pts;
+  };
+  const traca = (pts, cor, dash) => {
+    for (let i = 0; i < pts.length - 1; i++) linha3d(pts[i], pts[i + 1], cor, 1.3, dash);
+  };
+  traca(anel(0.004), tom(COR.s2, 1, 0.85), [6, 4]);
+  traca(anel(alt), tom(COR.s2, 1, 0.5), [6, 4]);
+  for (let i = 0; i < 8; i++) {
+    const a = 2 * PI * i / 8;
+    linha3d([cxm + r * Math.cos(a), 0, czm + r * Math.sin(a)], [cxm + r * Math.cos(a), alt, czm + r * Math.sin(a)], tom(COR.s2, 1, 0.32), 1, [4, 5]);
+  }
+}
+
+// ---------------------------------------------------- sólidos ordenados
+function coletar(m, corBase, alpha, dura) {
+  const out = [];
+  const luz = [-0.35, 0.86, 0.37];
+  for (const g of m.f) {
+    let nx = 0, ny = 0, nz = 0, cxs = 0, cys = 0, czs = 0;
+    const n = g.i.length;
+    for (let i = 0; i < n; i++) {
+      const a = m.v[g.i[i]], b = m.v[g.i[(i + 1) % n]];
+      nx += (a[1] - b[1]) * (a[2] + b[2]); ny += (a[2] - b[2]) * (a[0] + b[0]); nz += (a[0] - b[0]) * (a[1] + b[1]);
+      cxs += a[0]; cys += a[1]; czs += a[2];
+    }
+    const ln = Math.hypot(nx, ny, nz) || 1;
+    const lam = Math.abs((nx * luz[0] + ny * luz[1] + nz * luz[2]) / ln);
+    const cc = paraCam([cxs / n, cys / n, czs / n]);
+    if (cc[2] < PERTO * 0.5) continue;
+    out.push({ pts: g.i.map((k) => paraCam(m.v[k])), z: cc[2], cor: tom(corBase, 0.42 + 0.72 * lam, alpha), dura: g.dura && dura });
+  }
+  return out;
+}
+function desenharPolys(lista) {
+  lista.sort((a, b) => b.z - a.z);
+  for (const p of lista) {
+    const poly = p.pts.some((c) => c[2] < PERTO) ? recortarPerto(p.pts) : p.pts;
+    if (poly.length < 3) continue;
+    const s = poly.map(projetar);
+    ctx.beginPath(); ctx.moveTo(s[0][0], s[0][1]);
+    for (let i = 1; i < s.length; i++) ctx.lineTo(s[i][0], s[i][1]);
+    ctx.closePath();
+    ctx.fillStyle = p.cor; ctx.fill();
+    ctx.strokeStyle = p.cor; ctx.lineWidth = 0.8; ctx.stroke();   // costura as juntas do polígono vizinho
+    if (p.dura) { ctx.strokeStyle = tom(COR.ink, 1, 0.30); ctx.lineWidth = 1; ctx.stroke(); }
+  }
+}
+
+// -------------------------------------------------------------- cotas
+function cota(a, b, texto, cor) {
+  linha3d(a, b, cor, 1.2, [5, 4]);
+  const ca = paraCam(a), cb = paraCam(b);
+  if (ca[2] < PERTO || cb[2] < PERTO) return;
+  const pa = projetar(ca), pb = projetar(cb);
+  const mx = (pa[0] + pb[0]) / 2, my = (pa[1] + pb[1]) / 2;
+  ctx.save();
+  ctx.font = '600 11px "EB Garamond", Georgia, serif';
+  const w = ctx.measureText(texto).width + 8;
+  ctx.fillStyle = tom(COR.surf, 1, 0.88);
+  ctx.fillRect(mx - w / 2, my - 8, w, 15);
+  ctx.fillStyle = cor; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(texto, mx, my);
+  ctx.restore();
+}
+function desenharCotas() {
+  if (!S.cotas) return;
+  const c = cena(), cx = c.cx, cor = tom(COR.accF, 1, 0.95);
+  const zf = cx.z1 + 0.12;
+  cota([cx.x1 + 0.14, cx.y0, zf], [cx.x1 + 0.14, cx.y1, zf], 'alt ' + fmtM(cx.alt), cor);
+  cota([cx.x0, 0.003, zf], [cx.x1, 0.003, zf], 'larg ' + fmtM(cx.larg), cor);
+  cota([cx.x1 + 0.14, 0.003, cx.z0], [cx.x1 + 0.14, 0.003, cx.z1], 'prof ' + fmtM(cx.prof), cor);
+  if (S.mostraBoneco) cota([-0.42, 0, 0], [-0.42, S.bonecoAlt, 0], nf(S.bonecoAlt, 2) + ' m', tom(COR.muted, 1, 0.95));
+}
+
+// ------------------------------------------------------------ o quadro
+function desenhar() {
+  B = baseCam();
+  foco = (H / 2) / Math.tan(cam.fov / 2); ox = W / 2; oy = H / 2;
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, tom(COR.plane, 1.02, 1)); g.addColorStop(1, tom(COR.surf, 0.98, 1));
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+  const cobertos = desenharChao();
+  desenharPegada();
+
+  const c = cena();
+  let polys = [];
+  if (S.fantasma) polys = polys.concat(coletar(S.fantasma, COR.muted, 0.16, false));
+  if (c.boneco) polys = polys.concat(coletar(c.boneco, COR.corpo, 0.95, false));
+  if (c.porta) polys = polys.concat(coletar(c.porta, COR.muted, 0.7, true));
+  let objM = c.obj;
+  if (S.corte) {
+    const zc = (c.cx.z0 + c.cx.z1) / 2;
+    objM = { v: c.obj.v, f: c.obj.f.filter((f) => f.i.some((i) => c.obj.v[i][2] <= zc + 1e-9)) };
+  }
+  polys = polys.concat(coletar(objM, COR.acc, S.alpha, S.arestas));
+  desenharPolys(polys);
+  desenharArea();
+  desenharCotas();
+
+  const hud = document.getElementById('hud');
+  hud.innerHTML = '<b>' + fmtVol(c.vol) + '</b> &middot; ' + FORMAS[S.forma].nome.toLowerCase()
+    + '<br>alt <b>' + fmtM(c.cx.alt) + '</b> &middot; larg <b>' + fmtM(c.cx.larg) + '</b> &middot; prof <b>' + fmtM(c.cx.prof) + '</b>'
+    + (S.mostraHex ? '<br><b>' + cobertos + '</b> hexágono' + (cobertos === 1 ? '' : 's') + ' de ' + nf(S.escalaHex, 1) + ' m' : '');
+}
+function laco() {
+  if (sujo) { sujo = false; desenhar(); }
+  requestAnimationFrame(laco);
+}
+
+// ------------------------------------------------------- mouse e toque
+let ultimo = null, modoPan = false;
+cv.addEventListener('pointerdown', (e) => {
+  cv.setPointerCapture(e.pointerId); arrastando = true; cv.classList.add('arrastando');
+  ultimo = { x: e.clientX, y: e.clientY }; modoPan = e.shiftKey || e.button === 2;
+});
+cv.addEventListener('pointermove', (e) => {
+  if (!arrastando || !ultimo) return;
+  const dx = e.clientX - ultimo.x, dy = e.clientY - ultimo.y;
+  ultimo = { x: e.clientX, y: e.clientY };
+  if (modoPan) {
+    const k = cam.dist * 0.0016;
+    cam.alvo[0] -= (B.rt[0] * dx - B.up[0] * dy) * k;
+    cam.alvo[1] -= (B.rt[1] * dx - B.up[1] * dy) * k;
+    cam.alvo[2] -= (B.rt[2] * dx - B.up[2] * dy) * k;
+  } else {
+    cam.yaw -= dx * 0.008;
+    cam.pitch = clamp(cam.pitch + dy * 0.006, 0.02, 1.45);
+  }
+  sujo = true;
+});
+const soltar = () => { arrastando = false; ultimo = null; cv.classList.remove('arrastando'); };
+cv.addEventListener('pointerup', soltar);
+cv.addEventListener('pointercancel', soltar);
+cv.addEventListener('contextmenu', (e) => e.preventDefault());
+cv.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  cam.dist = clamp(cam.dist * Math.pow(1.0016, e.deltaY), 0.35, 120);
+  sujo = true;
+}, { passive: false });
+
+function enquadrar() {
+  const c = cena();
+  const alvoX = (c.cx.x1 + (S.mostraBoneco ? -0.4 : c.cx.x0)) / 2;
+  const alt = Math.max(c.cx.alt, S.mostraBoneco ? S.bonecoAlt : 0);
+  const larg = Math.max(c.cx.x1 + 0.6, 1.6);
+  cam.alvo = [alvoX, alt * 0.45, 0];
+  cam.dist = clamp(Math.max(larg, alt) * 2.1 + 1.2, 1.2, 90);
+  sujo = true;
+}
+document.querySelectorAll('.vistas button').forEach((b) => b.addEventListener('click', () => {
+  const v = b.dataset.v;
+  if (v === 'iso') { cam.yaw = -0.72; cam.pitch = 0.30; }
+  if (v === 'frente') { cam.yaw = 0; cam.pitch = 0.05; }
+  if (v === 'lado') { cam.yaw = -PI / 2; cam.pitch = 0.05; }
+  if (v === 'topo') { cam.yaw = 0; cam.pitch = 1.42; }
+  enquadrar();
+}));
+
+// =====================================================================
+// Painel
+// =====================================================================
+const elParams = document.getElementById('params');
+function montarParams() {
+  const f = forma();
+  elParams.innerHTML = '';
+  f.params.forEach((k) => {
+    const div = document.createElement('div');
+    div.className = 'linha';
+    div.innerHTML = '<label>' + P[k] + '</label>'
+      + '<input type="range" data-r="' + k + '" min="-2.3" max="1.3" step="0.002">'
+      + '<input type="text" inputmode="decimal" class="num" data-n="' + k + '">'
+      + '<span class="un">m</span>'
+      + '<button class="trava" data-t="' + k + '" aria-pressed="false" title="travar">&#128275;</button>';
+    elParams.appendChild(div);
+  });
+  elParams.querySelectorAll('[data-r]').forEach((r) => r.addEventListener('input', () => {
+    editarMedida(r.dataset.r, Math.pow(10, parseFloat(r.value)));
+  }));
+  elParams.querySelectorAll('[data-n]').forEach((n) => n.addEventListener('change', () => {
+    const v = parseNum(n.value); if (isFinite(v)) editarMedida(n.dataset.n, v); else atualizarPainel();
+  }));
+  elParams.querySelectorAll('[data-t]').forEach((t) => t.addEventListener('click', () => {
+    const k = t.dataset.t;
+    S.travas[k] = !S.travas[k];
+    avisar('');
+    atualizarPainel();
+  }));
+  atualizarPainel();
+}
+
+const elPlacar = document.getElementById('placar');
+function atualizarPainel() {
+  const f = forma(), c = { cx: caixa(malhaDaForma(S.forma, S.dims, S.deitado, S.giro * PI / 180)) };
+  const vol = volume();
+  f.params.forEach((k) => {
+    const r = elParams.querySelector('[data-r="' + k + '"]'), n = elParams.querySelector('[data-n="' + k + '"]'),
+      t = elParams.querySelector('[data-t="' + k + '"]');
+    if (!r) return;
+    r.value = clamp(Math.log10(S.dims[k]), -2.3, 1.3);
+    n.value = nf(S.dims[k], S.dims[k] < 0.1 ? 3 : 2);
+    t.setAttribute('aria-pressed', S.travas[k] ? 'true' : 'false');
+    t.innerHTML = S.travas[k] ? '&#128274;' : '&#128275;';
+    r.disabled = S.travas[k]; n.disabled = S.travas[k];
+  });
+  const un = parseFloat(document.getElementById('volUn').value);
+  const vu = vol / un;
+  // casas por grandeza, e nunca três: "1,000" se lê como mil em português
+  document.getElementById('volNum').value = nf(vu, vu >= 100 ? 0 : vu >= 10 ? 1 : vu >= 1 ? 2 : vu >= 0.01 ? 4 : 6);
+  const vt = document.getElementById('volTrava');
+  vt.setAttribute('aria-pressed', S.travas.volume ? 'true' : 'false');
+  vt.innerHTML = S.travas.volume ? '&#128274;' : '&#128275;';
+  document.getElementById('aviso').textContent = avisoTxt;
+  document.getElementById('notaForma').textContent = f.nota;
+
+  // placar
+  const est = ESTADOS.find((e) => e.id === S.estado), mat = MATERIAIS.find((m) => m.id === S.material);
+  const grauEq = grauEquivalente(vol / est.fator);
+  const pegadaM2 = areaPoly(cascoPegada(malhaDaForma(S.forma, S.dims, S.deitado, S.giro * PI / 180)));
+  const cel = (t, v, s) => '<div class="cel"><dt>' + t + '</dt><dd>' + v + (s ? ' <small>' + s + '</small>' : '') + '</dd></div>';
+  elPlacar.innerHTML =
+    cel('Volume', fmtVol(vol), nf(vol * 1000, 0) + ' L')
+    + cel('Grau equivalente', grauEq, 'na escada de ' + est.txt)
+    + cel('Altura', fmtM(c.cx.alt), '')
+    + cel('Pegada', nf(pegadaM2, 2) + ' m²', fmtM(c.cx.larg) + ' × ' + fmtM(c.cx.prof))
+    + cel('Superfície', nf(cena().sup, 2) + ' m²', '')
+    + cel('Massa', fmtMassa(vol * mat.d), mat.nome.toLowerCase())
+    + cel('Gente', nf(vol / VOL_PESSOA, 1) + '×', 'o corpo de uma pessoa')
+    + cel('Hexágonos', String(contarHex()), 'de ' + nf(S.escalaHex, 1) + ' m');
+
+  // a mesma quantidade nas oito formas
+  const tb = document.getElementById('tbComp');
+  tb.innerHTML = Object.keys(FORMAS).map((id) => {
+    const d = medidasParaVolume(id, vol);
+    const cxx = caixa(malhaDaForma(id, d, false, 0));
+    const txt = FORMAS[id].params.map((k) => P[k].toLowerCase() + ' ' + fmtM(d[k])).join(' · ');
+    const marca = id === S.forma ? ' style="color:var(--ink);font-weight:600"' : '';
+    return '<tr' + marca + '><td>' + FORMAS[id].nome + '</td><td>' + txt + '</td><td>' + fmtM(cxx.alt) + '</td><td>' + fmtM(cxx.larg) + '</td></tr>';
+  }).join('');
+
+  document.getElementById('notaMassa').textContent =
+    'Densidade ' + nf(mat.d, 0) + ' kg/m³. ' + fmtVol(vol) + ' de ' + mat.nome.toLowerCase()
+    + ' pesam ' + fmtMassa(vol * mat.d) + '. Peso não é o mesmo que esforço: o que a Arte cobra pelo '
+    + 'material está na escada de estado, logo acima.';
+  atualizarNotaGrau();
+  atualizarReguas();
+}
+function contarHex() {
+  const c = cena();
+  let n = 0;
+  hexesVisiveis().forEach((h) => { if (dentroPoly(h.x, h.z, c.pegada)) n++; });
+  return n;
+}
+function grauEquivalente(v) {
+  const lado = Math.cbrt(v);
+  if (lado <= VOL_LADO[0]) return 'abaixo do 0';
+  if (lado >= VOL_LADO[6]) return 'acima do 6 (' + nf(lado / VOL_LADO[6], 1) + '×)';
+  for (let i = 0; i < 6; i++) {
+    if (lado >= VOL_LADO[i] && lado <= VOL_LADO[i + 1]) {
+      const t = (lado - VOL_LADO[i]) / (VOL_LADO[i + 1] - VOL_LADO[i]);
+      return 'grau ' + nf(i + t, 1);
+    }
+  }
+  return '—';
+}
+/** As medidas de outra forma com o mesmo volume, guardadas as proporções de agora. */
+function medidasParaVolume(id, v) {
+  const f = FORMAS[id], d = Object.assign({}, S.dims);
+  let E = 0; f.params.forEach((k) => { E += f.e[k]; });
+  const s = Math.pow(v / volumeDe(f, d), 1 / E);
+  f.params.forEach((k) => { d[k] = clamp(d[k] * s, MIN, MAX); });
+  if (id === 'torus' && d.tubo >= d.raio) d.tubo = d.raio * 0.95;
+  return d;
+}
+
+// ------------------------------------------------------------- ligacoes
+const elFormas = document.getElementById('formas');
+elFormas.innerHTML = Object.keys(FORMAS).map((id) =>
+  '<button data-f="' + id + '" aria-pressed="' + (id === S.forma) + '">' + FORMAS[id].nome + '</button>').join('');
+elFormas.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+  elFormas.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', 'false'));
+  b.setAttribute('aria-pressed', 'true');
+  trocarForma(b.dataset.f);
+  document.querySelectorAll('#orient button').forEach((x, i) => x.setAttribute('aria-pressed', String(!!S.deitado === !!i)));
+}));
+document.querySelectorAll('#orient button').forEach((b) => b.addEventListener('click', () => {
+  if (!forma().giraEixo) { avisar('Esta forma é igual de todos os lados: deitar não muda nada.'); atualizarPainel(); return; }
+  S.deitado = b.dataset.o === '1';
+  document.querySelectorAll('#orient button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  refazer();
+}));
+const lig = (id, prop, fn) => {
+  const el = document.getElementById(id);
+  el.addEventListener('input', () => { fn(el); refazer(); });
+};
+lig('giro', null, (el) => { S.giro = +el.value; document.getElementById('giroVal').textContent = el.value + '°'; });
+lig('bonecoAlt', null, (el) => { S.bonecoAlt = +el.value; document.getElementById('bonecoVal').textContent = nf(S.bonecoAlt, 2); });
+lig('folga', null, (el) => { S.folga = +el.value; document.getElementById('folgaVal').textContent = nf(S.folga, 2); });
+lig('elev', null, (el) => { S.elevacao = +el.value; document.getElementById('elevVal').textContent = nf(S.elevacao, 2); });
+lig('escalaHex', null, (el) => { S.escalaHex = +el.value; document.getElementById('hexVal').textContent = nf(S.escalaHex, 1); });
+lig('alpha', null, (el) => { S.alpha = +el.value; });
+const chk = (id, prop) => document.getElementById(id).addEventListener('change', (e) => { S[prop] = e.target.checked; refazer(); });
+chk('cMostraHex', 'mostraHex'); chk('cSombra', 'sombra'); chk('cBoneco', 'mostraBoneco');
+chk('cPorta', 'porta'); chk('cCotas', 'cotas'); chk('cArestas', 'arestas');
+chk('cEncaixa', 'encaixar'); chk('cCorte', 'corte');
+
+document.getElementById('volNum').addEventListener('change', (e) => {
+  const v = parseNum(e.target.value) * parseFloat(document.getElementById('volUn').value);
+  if (isFinite(v) && v > 0) editarVolume(v); else atualizarPainel();
+});
+document.getElementById('volUn').addEventListener('change', atualizarPainel);
+document.getElementById('volTrava').addEventListener('click', () => {
+  S.travas.volume = !S.travas.volume;
+  if (S.travas.volume) S.volumeAlvo = volume();
+  avisar(''); atualizarPainel();
+});
+
+const elEstado = document.getElementById('estado');
+elEstado.innerHTML = ESTADOS.map((e) => '<option value="' + e.id + '"' + (e.id === S.estado ? ' selected' : '') + '>' + e.nome + ' · ' + e.txt + '</option>').join('');
+elEstado.addEventListener('change', () => { S.estado = elEstado.value; atualizarPainel(); });
+
+const elMat = document.getElementById('material');
+elMat.innerHTML = MATERIAIS.map((m) => '<option value="' + m.id + '"' + (m.id === S.material ? ' selected' : '') + '>' + m.nome + '</option>').join('');
+elMat.addEventListener('change', () => { S.material = elMat.value; atualizarPainel(); });
+
+const elGraus = document.getElementById('graus');
+elGraus.innerHTML = VOL_LADO.map((l, i) => '<button data-g="' + i + '">grau ' + i + '</button>').join('');
+elGraus.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+  const i = +b.dataset.g, est = ESTADOS.find((e) => e.id === S.estado);
+  editarVolume(Math.pow(VOL_LADO[i], 3) * est.fator);
+}));
+/**
+ * As duas réguas lado a lado. A Área não tem volume próprio (é jurisdição),
+ * então para compará-las é preciso emprestar uma altura, e a altura que a
+ * `notaVolume` empresta é a de uma pessoa. Daí a coluna do meio ser o cilindro
+ * do diâmetro do grau, com a altura do boneco que estiver no palco.
+ */
+function atualizarReguas() {
+  const alt = S.bonecoAlt;
+  document.querySelector('#tbReguas tbody').innerHTML = VOL_LADO.map((l, i) => {
+    const v = Math.pow(l, 3), d = AREA_DIAM[i], va = PI * d * d / 4 * alt;
+    const marca = i === S.areaGrau ? ' style="color:var(--ink);font-weight:600"' : '';
+    return '<tr' + marca + '><td>' + i + '</td><td>' + fmtVol(v) + '</td><td>' + fmtVol(va)
+      + '</td><td>' + nf(va / v, va / v >= 10 ? 0 : 1) + '×</td></tr>';
+  }).join('');
+}
+function atualizarNotaGrau() {
+  const est = ESTADOS.find((e) => e.id === S.estado);
+  document.getElementById('notaGrau').innerHTML = VOL_LADO.map((l, i) =>
+    'grau ' + i + ': lado ' + fmtM(l) + ', base ' + fmtVol(Math.pow(l, 3))
+    + (est.fator !== 1 ? ' &rarr; <b>' + fmtVol(Math.pow(l, 3) * est.fator) + '</b>' : '')
+    + ' <span style="opacity:.7">(' + VOL_ANCORA[i] + ')</span>').join('<br>');
+}
+const elArea = document.getElementById('areaGrau');
+elArea.innerHTML = '<option value="-1">sem Área no palco</option>'
+  + AREA_DIAM.map((d, i) => '<option value="' + i + '">grau ' + i + ' · ' + nf(d, 1) + ' m de diâmetro · ' + nf(PI * d * d / 4, 1) + ' m²</option>').join('');
+elArea.addEventListener('change', () => { S.areaGrau = +elArea.value; refazer(); });
+
+document.getElementById('btFantasma').addEventListener('click', () => {
+  const c = cena();
+  S.fantasma = { v: c.obj.v.map((p) => p.slice()), f: c.obj.f.map((f) => ({ i: f.i.slice(), dura: false })) };
+  sujo = true;
+});
+document.getElementById('btLimpaFantasma').addEventListener('click', () => { S.fantasma = null; sujo = true; });
+document.getElementById('btPng').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.download = 'volume-' + S.forma + '-' + nf(volume(), 3).replace(',', '_') + 'm3.png';
+  a.href = cv.toDataURL('image/png'); a.click();
+});
+
+// tema
+const temas = ['sistema', 'claro', 'escuro'];
+let iTema = 0;
+document.getElementById('btTema').addEventListener('click', (e) => {
+  iTema = (iTema + 1) % 3;
+  const t = temas[iTema];
+  if (t === 'sistema') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', t === 'claro' ? 'light' : 'dark');
+  e.target.textContent = 'tema: ' + t;
+  lerCores();
+});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', lerCores);
+
+// ---------------------------------------------------------------- boot
+lerCores();
+medirCanvas();
+montarParams();
+refazer();
+enquadrar();
+laco();
+</script>
+</body>
+</html>
