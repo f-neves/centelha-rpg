@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import MesaCab from '../../components/MesaCab.astro';
+import FichaResumo from '../../components/FichaResumo.astro';
 ---
 <Base title="Grupo" largura="full" telaCheia descricao="Os personagens da mesa: fichas, passivos e aprovação.">
   <MesaCab aba="grupo">
@@ -49,6 +50,8 @@ import MesaCab from '../../components/MesaCab.astro';
     </section>
 
   </MesaCab>
+
+  <FichaResumo />
 
   <dialog id="vaga-dlg" class="mesa-dlg">
     <form method="dialog">
@@ -131,22 +134,20 @@ import MesaCab from '../../components/MesaCab.astro';
   .pc-sub { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
   .pc-nums { margin-top: .3rem; }
   .pc-acoes { display: flex; gap: .3rem; flex-wrap: wrap; padding: 0 .8rem .7rem; }
-  .pc-detalhe { border-top: 1px solid var(--rule); }
-  .pc-detalhe > summary { cursor: pointer; padding: .4rem .8rem; font-family: 'Cinzel';
-    font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .05em; color: var(--accent-texto); }
-  .pc-detalhe[open] > summary { border-bottom: 1px solid var(--rule); }
-  .pc-corpo { padding: .7rem .8rem; display: flex; flex-direction: column; gap: .7rem; }
-  .pc-h { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .05em;
-    color: var(--accent-strong); margin: 0 0 .25rem; }
+  /* Era o <summary> de um <details>; hoje é a porta da ficha resumida. A faixa
+     continua sendo a mesma: rodapé do card, largura toda, letra pequena. */
+  .pc-detalhe { display: block; width: 100%; padding: .4rem .8rem; border: none;
+    border-top: 1px solid var(--rule); background: none; text-align: left; cursor: pointer;
+    font: inherit; font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .05em; color: var(--accent-texto); }
+  .pc-detalhe:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .pc-detalhe[disabled] { opacity: .6; cursor: default; }
   .atr-linha { display: grid; grid-template-columns: repeat(3, 1fr); gap: .2rem .4rem; }
   .atr-cel { display: flex; justify-content: space-between; align-items: baseline; gap: .3rem;
     padding: .08rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 7%, transparent); }
   .atr-cel span:first-child { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft);
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .atr-cel b { font-variant-numeric: tabular-nums; color: var(--accent-strong); }
-  .hab-linha { display: flex; flex-wrap: wrap; gap: .2rem .55rem; font-size: var(--fs-micro); }
-  .hab-linha .h0 { opacity: .4; }
-  .hab-linha b { font-variant-numeric: tabular-nums; color: var(--accent-strong); }
   .membros { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
   .membros li { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--rule); }
   .membro-nome { flex: 1; }
@@ -163,12 +164,8 @@ import MesaCab from '../../components/MesaCab.astro';
   import { abrirMesa, copiarTexto, u, esc, avatarHTML, urlsImagens, nomesDe, semMigracao14 } from '../../lib/mesa-core';
   import { resumoFicha, resumoParaBanco } from '../../lib/mesa-ficha';
   import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
-  import HAB_D from '../../data/habilidades.json';
-  import ATR_D from '../../data/atributos.json';
 
   const el = (i: string) => document.getElementById(i)!;
-  const HABS = (HAB_D as any[]).map((h) => ({ id: h.id, nome: h.nome }));
-  const ATRS = (ATR_D as any[]).map((a) => ({ id: a.id, nome: a.nome }));
   const SELO: Record<string, [string, string]> = {
     rascunho: ['Rascunho', 's-rascunho'], enviado: ['Aguardando aprovação', 's-enviado'], aprovado: ['Aprovada', 's-aprovado'],
   };
@@ -209,7 +206,7 @@ import MesaCab from '../../components/MesaCab.astro';
     // `vaga` e `codigo_vaga` chegam com a migração 12; sem ela a consulta falha
     // por coluna inexistente, e aí o Grupo volta ao que era antes.
     let { data, error } = await SB.from('personagens')
-      .select('id, nome, conceito, dono_id, status, imagem_path, ficha, revisao_nota, vaga, codigo_vaga, resumo')
+      .select('id, nome, conceito, dono_id, status, imagem_path, imagem_pos, ficha, revisao_nota, vaga, codigo_vaga, resumo')
       .eq('mesa_id', ID).order('nome', { ascending: true });
     if (error && /vaga/i.test(error.message)) {
       el('nova-vaga').hidden = true; el('assumir-cod').hidden = true;
@@ -270,33 +267,13 @@ import MesaCab from '../../components/MesaCab.astro';
         <span class="pl"><span class="pl-l">Centelha</span><span class="pl-v">${R.centelha}</span></span>
       </div>` : '<p class="vazio">Ficha ainda em branco.</p>';
 
-      const detalhe = R ? `<details class="pc-detalhe"><summary>Ver a ficha por dentro</summary>
-        <div class="pc-corpo">
-          <div><h4 class="pc-h">Atributos</h4><div class="atr-linha">
-            ${ATRS.map((a) => `<span class="atr-cel"><span>${esc(a.nome)}</span><b>${R.attrs[a.id] ?? 0}</b></span>`).join('')}
-          </div></div>
-          <div><h4 class="pc-h">Habilidades</h4><div class="hab-linha">
-            ${HABS.map((h) => { const v = R.skills[h.id] ?? 0; return `<span class="${v ? '' : 'h0'}">${esc(h.nome)} <b>${v}</b></span>`; }).join('')}
-          </div></div>
-          ${Object.entries(R.skills2 || {}).filter(([, v]) => (v as number) > 0).length ? `<div><h4 class="pc-h">Secundárias</h4><div class="hab-linha">
-            ${Object.entries(R.skills2).filter(([, v]) => (v as number) > 0).map(([k, v]) => `<span>${esc(k.replace(/-/g, ' '))} <b>${v}</b></span>`).join('')}
-          </div></div>` : ''}
-          <div><h4 class="pc-h">Combate</h4><div class="pilha">
-            <span class="pl"><span class="pl-l">Arma</span><span class="pl-v">${esc(R.arma || '—')}</span></span>
-            <span class="pl"><span class="pl-l">Acerto</span><span class="pl-v">${esc(R.ataque || '—')}</span></span>
-            <span class="pl"><span class="pl-l">Dano</span><span class="pl-v">${esc(R.dano || '—')}</span></span>
-            <span class="pl"><span class="pl-l">Resist. Perf</span><span class="pl-v">N${R.resistPerf}</span></span>
-            ${R.armaduras.length ? `<span class="pl"><span class="pl-l">Veste</span><span class="pl-v">${esc(R.armaduras.join(', '))}</span></span>` : ''}
-          </div></div>
-          <div><h4 class="pc-h">Virtudes, Vontade e Aparência</h4><div class="pilha">
-            ${Object.entries(R.virtudes || {}).map(([k, v]) => `<span class="pl"><span class="pl-l">${esc(k)}</span><span class="pl-v">${v}</span></span>`).join('')}
-            <span class="pl"><span class="pl-l">Vontade</span><span class="pl-v">${R.vontade}</span></span>
-            <span class="pl"><span class="pl-l">Aparência</span><span class="pl-v">${R.aparencia}</span></span>
-            <span class="pl"><span class="pl-l">Fôlego</span><span class="pl-v">${R.folego}</span></span>
-          </div></div>
-          ${R.artes.length ? `<div><h4 class="pc-h">Artes</h4><div class="hab-linha">${R.artes.map((a: any) => `<span>${esc(a.id.replace(/-/g, ' '))} <b>${a.nivel}</b></span>`).join('')}</div></div>` : ''}
-          ${R.tecnicas.length ? `<div><h4 class="pc-h">Técnicas (${R.tecnicas.length})</h4><div class="hab-linha">${R.tecnicas.map((t: string) => `<span>${esc(t.replace(/-/g, ' '))}</span>`).join('')}</div></div>` : ''}
-        </div></details>` : '';
+      // "Por dentro" abre a ficha resumida, o mesmo card de Mesas / Fichas.
+      // Antes era um <details> com uma segunda diagramação da ficha, escrita à
+      // mão aqui: mostrava as 24 habilidades mesmo zeradas, chamava as Artes e
+      // as proezas pelo id com hífen, e divergia do outro card a cada campo
+      // novo. Duas telas para a mesma ficha custam manutenção em dobro e leitura
+      // diferente do mesmo personagem.
+      const detalhe = R ? `<button class="pc-detalhe" type="button" data-resumo="${p.id}">Ver a ficha por dentro</button>` : '';
 
       const acoes: string[] = [];
       // A ficha de outro jogador abre em modo leitura aqui dentro e mais nada:
@@ -353,6 +330,23 @@ import MesaCab from '../../components/MesaCab.astro';
         ${detalhe}
       </article>`;
     }).join('') + fora.map((p: any) => cardDeFora(p, nomes, imgs)).join('');
+
+    // ---- ficha resumida ----
+    // O módulo do card e o dicionário de nomes só descem no clique: são para uma
+    // janela que a maioria das visitas ao Grupo nem abre. A ficha já está aqui,
+    // então não há ida ao banco.
+    box.querySelectorAll<HTMLElement>('[data-resumo]').forEach((b) => b.addEventListener('click', async () => {
+      const p = (data || []).find((x: any) => x.id === b.dataset.resumo);
+      if (!p) return;
+      const antes = b.textContent;
+      b.textContent = 'abrindo…'; (b as HTMLButtonElement).disabled = true;
+      try {
+        const mod = await import('../../lib/ficha-card');
+        await mod.abrirFichaResumo(p.ficha || {}, {
+          nome: p.nome, retrato: imgs[p.imagem_path] || null, pos: p.imagem_pos || null,
+        });
+      } finally { b.textContent = antes; (b as HTMLButtonElement).disabled = false; }
+    }));
 
     // ---- ações do mestre ----
     box.querySelectorAll<HTMLElement>('[data-ap]').forEach((b) => b.addEventListener('click', async () => {

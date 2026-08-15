@@ -16,6 +16,7 @@
 // troca de olhar.
 import { resumoFicha } from './mesa-ficha';
 import { armaDoSlot, escudoDoSlot, armadurasDe, statsArma, statsEscudo, statsArmadura, ARMA } from './equip';
+import { sparkSVG } from './centelha-spark';
 
 const esc = (s: unknown) =>
   String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
@@ -111,16 +112,20 @@ export function cardFichaHTML(
   const nome = opts.nome || S?.id?.nome || 'Personagem';
 
   // O mesmo enquadramento que o jogador ajustou na página do personagem: sem
-  // ele, um retrato de corpo inteiro entra cortado na altura da cintura.
+  // ele, um retrato de corpo inteiro entra cortado na altura da cintura. E é
+  // por isso que a moldura aqui é a `.retrato-frame` de global.css, a mesma da
+  // ficha e dos cards de Mesas / Fichas: o x/y/z foi calibrado NAQUELA caixa,
+  // e numa de outra proporção o recorte sai deslocado.
   const q = opts.pos && typeof opts.pos === 'object' ? opts.pos : null;
   const px = q?.x ?? 50, py = q?.y ?? 30, pz = q?.z ?? 1;
   const estiloArte = ` style="object-position:${px}% ${py}%;transform-origin:${px}% ${py}%;transform:scale(${pz})"`;
 
+  // A faísca da marca, montada em runtime, como no card de criatura.
+  const cent = R.centelha
+    ? `<span class="fr-cent" title="Centelha ${R.centelha}">${sparkSVG(true)} ${R.centelha}</span>` : '';
   const arte = opts.retrato
-    ? `<figure class="fr-arte"><img src="${esc(opts.retrato)}" alt="${esc(nome)}"${estiloArte} />
-        ${R.centelha ? `<span class="fr-cent" title="Centelha">◈ ${R.centelha}</span>` : ''}</figure>`
-    : `<figure class="fr-arte sem-arte"><span class="fr-capitular cinzel">${esc(nome.trim()[0] || '?')}</span>
-        ${R.centelha ? `<span class="fr-cent" title="Centelha">◈ ${R.centelha}</span>` : ''}</figure>`;
+    ? `<figure class="fr-arte retrato-frame"><img src="${esc(opts.retrato)}" alt="${esc(nome)}"${estiloArte} />${cent}</figure>`
+    : `<figure class="fr-arte retrato-frame sem-arte"><span class="fr-capitular cinzel">${esc(nome.trim()[0] || '?')}</span>${cent}</figure>`;
 
   const badges = [
     R.raca ? `<span class="fr-badge cat">${esc(bonito(R.raca))}</span>` : '',

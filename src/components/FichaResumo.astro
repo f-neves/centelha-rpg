@@ -7,7 +7,7 @@
 // visual dela tem de ser o mesmo em todos.
 ---
 
-<div id="fr-modal" class="fr-modal" hidden role="dialog" aria-modal="true" aria-label="Ficha resumida">
+<div id="fr-modal" class="fr-modal" hidden role="dialog" aria-modal="true" aria-label="Ficha Resumida">
   <div class="fr-back" data-fr-fechar></div>
   <div class="fr-box">
     <button class="fr-x" type="button" data-fr-fechar aria-label="Fechar">✕</button>
@@ -43,20 +43,33 @@
 
   .fr-card { display: flex; flex-direction: column; border: 1px solid var(--panel-border);
     border-radius: var(--r-lg); background: var(--panel); overflow: hidden; }
-  /* O retrato é 3/2 e não 4/3 como o do bestiário: arte de personagem quase
-     sempre é vertical, e um recorte mais alto não corta a cabeça. */
-  .fr-arte { position: relative; margin: 0; aspect-ratio: 3 / 2; display: flex; align-items: center;
-    justify-content: center; overflow: hidden; border-bottom: 1px solid var(--panel-border);
-    background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%); }
-  .fr-arte img { width: 100%; height: 100%; object-fit: cover; }
-  /* Sem retrato, a moldura encolhe para uma faixa: 3:2 de pergaminho vazio são
-     quatrocentos pixels dizendo "esta ficha não tem arte", e o que interessa
-     (os números) é empurrado para fora da tela. */
-  .fr-arte.sem-arte { aspect-ratio: auto; height: 4.6rem; }
-  .fr-capitular { font-size: 3rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f); }
-  .fr-cent { position: absolute; left: .5rem; top: .5rem; font-family: 'Cinzel'; font-size: var(--fs-aux);
-    font-weight: 600; padding: .18rem .68rem; border-radius: 999px; color: #fff;
+  /* A moldura NÃO é um banner sangrado como a do card de criatura: é a mesma
+     `.retrato-frame` da ficha e dos cards de Mesas / Fichas, que vem no markup
+     junto com esta classe. Largura, altura, borda e raio saem de
+     styles/global.css e mudam nos três lugares de uma vez. O motivo é o
+     enquadramento: o x/y/z que o jogador salva é calibrado nessa caixa de
+     172×208, e a arte de personagem é quase sempre vertical. Aqui só o que a
+     moldura não diz: onde ela fica dentro do card. */
+  .fr-arte { position: relative; margin: .85rem auto .1rem; display: grid; place-items: center; flex: none; }
+  /* Sem retrato, a moldura fica de pé, com a capitular no lugar da arte: é o
+     mesmo vazio do card na lista de fichas, e uma faixa achatada aqui quebraria
+     a semelhança que justifica reaproveitar a moldura. */
+  .fr-arte.sem-arte { background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%); }
+  .fr-capitular { font-size: 4rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f); }
+  .fr-cent { position: absolute; left: .4rem; top: .4rem; font-family: 'Cinzel'; font-size: var(--fs-rotulo);
+    font-weight: 600; padding: .12rem .5rem; border-radius: 999px; color: #fff;
     background: color-mix(in srgb, var(--accent-strong) 90%, #000); }
+  /* A faísca vem do sparkSVG, montada em runtime, então não carrega o escopo do
+     CentelhaSpark.astro e precisa da própria regra. Mesmos números do componente. */
+  .fr-cent .centelha-spark { display: inline-block; height: .9em; width: auto;
+    vertical-align: -.12em; overflow: visible; animation: cs-respiro 5s cubic-bezier(.4, 0, .6, 1) infinite; }
+  @keyframes cs-respiro {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 0 currentColor); }
+    50% { filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fr-cent .centelha-spark { animation: none; filter: brightness(1.18) drop-shadow(0 0 .128em currentColor); }
+  }
 
   .fr-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .9rem; }
   .fr-head { display: flex; flex-wrap: wrap; gap: .1rem .5rem; align-items: baseline; }
