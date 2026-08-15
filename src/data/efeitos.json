@@ -543,7 +543,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Por ser matéria, a armadura absorve normalmente, no modo do formato, e ela abre efeitos secundários como sangramento.",
+    "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Sendo matéria, ela abre efeitos secundários como sangramento; a armadura, porém, não a segura, porque o dano continua sendo do elemento.",
     "grid": {
       "forma": "alvo",
       "ancora": "objeto",
@@ -612,7 +612,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Cria na mão um único projétil do elemento, do tamanho de uma flecha, de um virote, de um dardo ou de uma adaga de arremesso. Ele se arremessa como qualquer arma de arremesso, ou se encaixa num arco ou numa besta já empunhada, e se gasta no golpe. Como deixa matéria no mundo, a armadura absorve normalmente, como perfuração. Em Luz e Sombra o projétil não tem corpo: acerta, ilumina ou apaga, e não fere.",
+    "efeito": "Cria na mão um único projétil do elemento, do tamanho de uma flecha, de um virote, de um dardo ou de uma adaga de arremesso. Ele se arremessa como qualquer arma de arremesso, ou se encaixa num arco ou numa besta já empunhada, e se gasta no golpe. Fura como perfuração, mas a armadura não o para: o dano é do elemento, e só a resistência a ele apara. Em Luz e Sombra o projétil não tem corpo: acerta, ilumina ou apaga, e não fere.",
     "notas": "Conjurar não pede ação própria: é o mesmo gesto de puxar uma arma da cintura ou tirar uma flecha da aljava, e sai junto com o ataque que usa o projétil. Também não paga Alcance, pela nota do livro sobre quem cria algo para ser arremessado: o objeto voa até acertar, e a jogada é a mundana (Destreza para arremessar, Percepção para atirar), não a do Acerto Arcano. A Duração é só quanto tempo ele existe na mão antes de ser usado.",
     "acaoLivre": true,
     "grid": {
@@ -1193,7 +1193,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Espalha estilhaços num leque à sua frente. É matéria de verdade, então a armadura absorve normalmente, como perfuração.",
+    "efeito": "Espalha estilhaços num leque à sua frente. Fura como perfuração, com tudo o que isso abre depois, mas a armadura não os para: o dano é do elemento.",
     "grid": {
       "forma": "cone",
       "ancora": "ponto",
@@ -1380,7 +1380,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A sombra ganha corpo e agarra. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir.",
+    "efeito": "A sombra ganha corpo e agarra. Aperta como Impacto, e a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -3055,7 +3055,7 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Pega algo pesado que esteja por perto (uma pedra, um barril, uma mesa, um corpo) e o joga. O dano é físico e a armadura conta, porque o que acerta é matéria de verdade.",
+    "efeito": "Pega algo pesado que esteja por perto (uma pedra, um barril, uma mesa, um corpo) e o joga. O que acerta é matéria de verdade e amassa como Impacto, mas quem a arremessou foi a Arte: a armadura não segura o golpe.",
     "grid": {
       "forma": "movimento",
       "ancora": "alvo",
@@ -5976,7 +5976,7 @@
         "valor": "(nível da Arte) × 4"
       }
     ],
-    "efeito": "Puxa a vida do alvo para dentro de você. O dano é do tipo que a armadura não para, porque não é golpe: é a vida indo embora. O que você recupera é metade do que passou, arredondado para baixo, e nunca passa do seu máximo.",
+    "efeito": "Puxa a vida do alvo para dentro de você. Não é golpe: é a vida indo embora, e nada no corpo nem sobre ele fica no caminho. O que você recupera é metade do que passou, arredondado para baixo, e nunca passa do seu máximo.",
     "notas": "Cura mais barata que a da Arte de Cura só na aparência: você precisa acertar, precisa tocar, e o alvo pode aguentar.",
     "grid": {
       "forma": "alvo",

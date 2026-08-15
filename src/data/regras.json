@@ -1142,7 +1142,7 @@
           "ex": "cura, escudo, muralha, luz"
         }
       ],
-      "armadura": "Armadura só protege contra dano FÍSICO. O que decide não é a aparência do efeito, é se ele deixou matéria no mundo: fenômeno puro (fogo, raio, o gelo que evapora ao acertar) é absorvido só pela Centelha; matéria conjurada (a lança de gelo que se pega) ou matéria pré-existente (o cascalho do chão, a água do rio) entra nas trilhas normais, no modo que o formato pedir (lança = Perfuração, pedra = Impacto).",
+      "armadura": "Armadura NÃO protege contra Arte nenhuma. Todo dano conjurado é dano do ELEMENTO, e só a resistência àquele elemento o apara: aço não segura fogo, raio, nem a lança de gelo que a Arte acabou de fazer. Não importa se o efeito deixou matéria no mundo, nem que formato ela tenha: o que chega no alvo é o elemento. É por isso que a feitiçaria assusta o cavaleiro de placas, e é a mesma frase que a Arma Elemental sempre disse do bônus dela, agora valendo para tudo. Absorção vinda de outra magia continua contando (o Anteparo e a Barreira somam contra o que vem de fora, físico ou elemental, por escrito).",
       "margem": "Como no combate: cada 6 pontos acima da resistência do alvo vale +1 Margem (mais dano ou efeito mais forte)."
     },
     "improviso": {
@@ -1379,7 +1379,7 @@
         "aparar de mãos nuas fere: quem tenta bloquear o golpe com o corpo sofre o dano do mesmo jeito"
       ],
       "exemplo": "Um elemental de madeira que tenta aparar uma lâmina feita inteira de fogo leva o dano cheio, sem absorver nada, e a queimadura não fecha sozinha.",
-      "resistencia": "O dano daquele tipo cai pela METADE, arredondando para cima, e nunca é agravado. A ordem importa: primeiro a ARMADURA absorve, depois a resistência corta o que sobrou pela metade, e só então entra a Absorção NATURAL da criatura. A flecha atravessa o couro do mesmo jeito em qualquer um; o que muda é o que o corpo do vampiro faz com o que passou. Resistência é o avesso da fraqueza, e as duas se anulam quando a mesma criatura tem as duas.",
+      "resistencia": "O dano daquele tipo cai pela METADE, arredondando para cima, e nunca é agravado. A ordem importa, e ela depende de quem bate. Em ARMA: primeiro a armadura absorve, depois a resistência corta o que sobrou pela metade, e só então entra a Absorção natural da criatura (a flecha atravessa o couro do mesmo jeito em qualquer um; o que muda é o que o corpo do vampiro faz com o que passou). Em ARTE: não há armadura no caminho, então a resistência ao elemento corta primeiro e a Absorção natural entra depois. Resistência é o avesso da fraqueza, e as duas se anulam quando a mesma criatura tem as duas.",
       "resistenciaExemplos": [
         "Objeto e estrutura resistem a PERFURAÇÃO: furar uma porta não a derruba.",
         "Morto-vivo e esqueleto resistem a Perfuração: não há órgão para a lâmina achar.",

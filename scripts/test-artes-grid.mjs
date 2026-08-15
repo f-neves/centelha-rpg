@@ -255,28 +255,47 @@ ok(/^<circle /.test(M.caminhoDaFigura(
   'em 360° o leque vira um círculo');
 
 // -------------------------------------------------------------------- o dano
-// Fenômeno puro: a armadura não pega, só a Absorção natural.
-let g = M.danoNoAlvo({ bruto: 10, elemento: 'fogo', materia: null, soakArmadura: 6, soakNatural: 2 });
-eq(g.liquido, 8, 'fogo puro ignora a armadura e sofre só a absorção natural');
+//
+// TODO DANO DE ARTE É DO ELEMENTO, e a armadura não pega nenhum.
+//
+// A assinatura de `danoNoAlvo` perdeu `materia` e `soakArmadura` de propósito,
+// e não por descuido: enquanto os dois existiam, bastava alguém continuar
+// passando a armadura para o dano voltar a ser aparado sem ninguém reparar. Sem
+// os campos, uma chamada antiga não compila e não mente.
+let g = M.danoNoAlvo({ bruto: 10, elemento: 'fogo', soakNatural: 2 });
+eq(g.liquido, 8, 'o fogo só encontra a absorção que não é armadura');
 
-// Matéria conjurada: a armadura entra na frente.
-g = M.danoNoAlvo({ bruto: 10, elemento: 'gelo', materia: 'perfuracao', soakArmadura: 6, soakNatural: 2 });
-eq(g.liquido, 2, 'a lasca de gelo encontra a armadura primeiro');
+// O que antes era "matéria conjurada" e batia na placa: agora não bate mais.
+g = M.danoNoAlvo({ bruto: 10, elemento: 'gelo', soakNatural: 0 });
+eq(g.liquido, 10, 'a lasca de gelo passa inteira: aço não segura gelo conjurado');
 
 // Fraqueza: passa inteiro e agrava.
-g = M.danoNoAlvo({ bruto: 10, elemento: 'fogo', materia: null, soakArmadura: 6, soakNatural: 4, fraquezas: ['fogo'] });
+g = M.danoNoAlvo({ bruto: 10, elemento: 'fogo', soakNatural: 4, fraquezas: ['fogo'] });
 eq(g.liquido, 10, 'fraqueza ignora toda a absorção');
 ok(g.agravado, 'fraqueza agrava o ferimento');
 
-// Resistência: corta pela metade DEPOIS da armadura e ANTES da absorção natural.
-g = M.danoNoAlvo({ bruto: 12, elemento: 'fogo', materia: null, soakArmadura: 0, soakNatural: 2, resistencias: ['fogo'] });
-eq(g.liquido, 4, 'resistência corta pela metade e só então entra a absorção natural');
+// Resistência: corta pela metade ANTES da absorção que sobrou.
+g = M.danoNoAlvo({ bruto: 12, elemento: 'fogo', soakNatural: 2, resistencias: ['fogo'] });
+eq(g.liquido, 4, 'resistência corta pela metade e só então entra a absorção');
 ok(!g.agravado, 'resistência nunca agrava');
 
 // As duas ao mesmo tempo se anulam.
-g = M.danoNoAlvo({ bruto: 10, elemento: 'fogo', materia: null, soakArmadura: 0, soakNatural: 3, fraquezas: ['fogo'], resistencias: ['fogo'] });
+g = M.danoNoAlvo({ bruto: 10, elemento: 'fogo', soakNatural: 3, fraquezas: ['fogo'], resistencias: ['fogo'] });
 eq(g.liquido, 7, 'fraqueza e resistência juntas se anulam');
 ok(!g.agravado, 'anuladas, não agrava');
+
+// A CHAVE É SÓ O ELEMENTO.
+//
+// O esqueleto resiste a perfuração de lança de verdade; o dardo de gelo que a
+// Arte lhe atira chega nele como GELO, e a resistência dele não serve de nada.
+// Antes a matéria do Efeito também casava, e o mesmo dardo saía pela metade.
+g = M.danoNoAlvo({ bruto: 10, elemento: 'gelo', soakNatural: 0, resistencias: ['perfuracao'] });
+eq(g.liquido, 10, 'resistir a perfuração não protege do gelo conjurado');
+g = M.danoNoAlvo({ bruto: 10, elemento: 'gelo', soakNatural: 0, resistencias: ['gelo'] });
+eq(g.liquido, 5, 'resistir ao elemento, sim');
+// Arte universal não tem elemento: não há a que ser fraco nem resistente.
+g = M.danoNoAlvo({ bruto: 10, elemento: null, soakNatural: 2, fraquezas: ['impacto'] });
+eq(g.liquido, 8, 'sem elemento, nenhuma fraqueza casa');
 
 // --------------------------------------------------------- quem sabe o quê
 // Personagem: só o que comprou, e só até o nível da Arte.

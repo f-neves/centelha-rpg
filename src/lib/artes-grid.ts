@@ -38,7 +38,14 @@ export interface Parametro {
 }
 export interface GridEfeito {
   forma: Forma; ancora: Ancora; gatilho: Gatilho; alvo: string;
-  persiste: boolean; materia: string | null; condicao: string | null;
+  persiste: boolean;
+  /**
+   * A forma física do que o Efeito deixa no mundo (corte, perfuração, impacto),
+   * ou null quando não deixa nada que se pegue. Descreve; não absorve: a
+   * armadura não pega dano de Arte nenhum (ver `danoNoAlvo`).
+   */
+  materia: string | null;
+  condicao: string | null;
   /** Marca uma peça do equipamento do alvo, e não o corpo dele. */
   pegaItem: boolean;
   /** Cobre a arena inteira: escala de região, e não área medida. */
@@ -770,48 +777,63 @@ export interface Golpe {
 /**
  * O dano de um efeito num alvo, com a fraqueza e a resistência do bestiário.
  *
- * `arcano.fraquezas` manda a ordem, e ela não é a intuitiva: a ARMADURA absorve
- * primeiro, a resistência corta o que sobrou pela metade, e só então entra a
- * Absorção natural. A flecha atravessa o couro do mesmo jeito em qualquer um; o
- * que muda é o que o corpo do vampiro faz com o que passou.
+ * TODO DANO DE ARTE É DANO DO ELEMENTO, e a armadura não o pega.
  *
- * Fraqueza é o avesso: ignora TODA a absorção e o ferimento vira agravado. As
- * duas se anulam quando a mesma criatura tem as duas.
+ * A regra antiga perguntava se o efeito tinha deixado matéria no mundo: a lança
+ * de gelo que se pega na mão encontrava a placa pela frente, o fogo que evapora
+ * ao acertar não. Era uma distinção bonita e cara: obrigava cada Efeito a
+ * declarar um tipo físico, obrigava a mesa a lembrar de qual era, e ainda assim
+ * dizia coisas estranhas (o dardo de água conjurado batia na placa, o mesmo
+ * dardo feito de chama não).
+ *
+ * Agora vale a frase que a Arma Elemental já dizia sozinha: o dano é do
+ * elemento e só a resistência ao elemento o apara. Aço não protege de fogo, de
+ * raio nem de gelo conjurado, e é por isso que a feitiçaria assusta o cavaleiro
+ * de placas. O `materia` do Efeito continua existindo, mas para descrever o que
+ * ficou no mundo (o que sangra, o que se pega, o que a marca desenha), e não
+ * para decidir absorção.
+ *
+ * Sobra o que veio de OUTRA magia: o Anteparo e a Barreira somam Absorção "contra
+ * tudo o que vem de fora, físico ou elemental", por escrito, e entram aqui como
+ * `soakNatural`.
+ *
+ * A ordem: a resistência ao elemento corta pela metade, e só então entra o que
+ * o corpo absorve sozinho. Fraqueza é o avesso: ignora TUDO e o ferimento vira
+ * agravado. As duas se anulam quando a mesma criatura tem as duas.
  */
 export function danoNoAlvo(opts: {
   bruto: number;
   elemento: string | null;
-  materia: string | null;      // null = fenômeno puro: só a Centelha apara
-  soakArmadura: number;        // a absorção de armadura, por tipo físico
-  soakNatural: number;         // o que o corpo absorve sozinho (Centelha inclusa)
+  soakNatural: number;         // o que o corpo absorve sozinho, e o que outra magia deu
   fraquezas?: string[];
   resistencias?: string[];
 }): Golpe {
-  const { bruto, elemento, materia } = opts;
+  const { bruto, elemento } = opts;
   const fr = (opts.fraquezas || []).map((x) => x.toLowerCase());
   const re = (opts.resistencias || []).map((x) => x.toLowerCase());
-  const chaves = [elemento, materia].filter(Boolean) as string[];
-  let fraco = chaves.some((k) => fr.includes(k));
-  let resiste = chaves.some((k) => re.includes(k));
+  // A CHAVE É SÓ O ELEMENTO. A matéria saiu daqui junto com a armadura: um
+  // esqueleto resiste à perfuração da lança de verdade, e não ao gelo que a
+  // Arte lhe atirou, porque o que chega nele é gelo.
+  const chave = (elemento || '').toLowerCase();
+  let fraco = !!chave && fr.includes(chave);
+  let resiste = !!chave && re.includes(chave);
   // As duas ao mesmo tempo se anulam, por escrito nas regras.
   if (fraco && resiste) { fraco = false; resiste = false; }
 
   if (fraco) {
     return {
       bruto, absorcao: 0, liquido: bruto, agravado: true,
-      nota: `fraqueza a ${chaves.filter((k) => fr.includes(k)).join(' e ')}: passa inteiro e agrava`,
+      nota: `fraqueza a ${chave}: passa inteiro e agrava`,
     };
   }
-  // Só o que virou matéria no mundo encontra a armadura pela frente.
-  const armadura = materia ? opts.soakArmadura : 0;
-  let resto = Math.max(0, bruto - armadura);
-  let nota = armadura ? `armadura ${armadura}` : 'fenômeno puro: a armadura não pega';
+  let resto = bruto;
+  let nota = elemento ? `dano de ${chave}: a armadura não pega` : 'a armadura não pega';
   if (resiste) {
     resto = Math.ceil(resto / 2);
-    nota += ` · resistência corta pela metade`;
+    nota += ` · resistência a ${chave} corta pela metade`;
   }
   const liquido = Math.max(0, resto - opts.soakNatural);
-  if (opts.soakNatural) nota += ` · absorção natural ${opts.soakNatural}`;
+  if (opts.soakNatural) nota += ` · absorção ${opts.soakNatural}`;
   return { bruto, absorcao: bruto - liquido, liquido, agravado: false, nota };
 }
 
@@ -848,7 +870,12 @@ export interface EfeitoAtivo {
   condicao: string | null;
   /** O elemento da Arte que conjurou: é ele que casa com fraqueza e resistência. */
   elemento: string | null;
-  /** Tipo físico quando o efeito deixou matéria no mundo; null = fenômeno puro. */
+  /**
+   * A forma física do que ficou no mundo: a lasca fura, a lâmina corta, a pedra
+   * amassa. NÃO decide absorção desde que todo dano de Arte passou a ser do
+   * elemento (ver `danoNoAlvo`); serve para descrever o golpe, abrir efeito
+   * secundário como sangramento e escolher a marca que o tabuleiro desenha.
+   */
   materia: string | null;
   alvos: string[];              // combatentes marcados (melhoria, marca, item)
   item: string | null;          // a peça em brasa, enferrujada, escondida
