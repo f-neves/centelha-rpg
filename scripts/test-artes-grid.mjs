@@ -523,9 +523,28 @@ if (proj) {
   const cEsticado = M.custoDe(proj, arteFogo, 1, { Dano: 3 }, 0);
   ok(cEsticado.esticados.length > 0, 'esticar o Dano acima da Arte é esticar mesmo');
   eq(cEsticado.ticks, 0, 'e mesmo esticado ele não gasta a vez');
-  // Deixa matéria no mundo: a armadura pega, como perfuração.
-  eq(proj.grid.materia, 'perfuracao', 'o projétil é matéria, e a armadura o absorve');
+  // O DANO É DO ELEMENTO, e não da ponta.
+  //
+  // Esta é a exceção do Efeito, e ela vale para as SETE Artes dele, inclusive
+  // gelo, terra e água, que fazem matéria de verdade em todo o resto do livro.
+  // A regra geral do sistema não mudou: quem deixa matéria no mundo continua
+  // encontrando a armadura pela frente (a Lasca, a Arma Conjurada, o Arremesso).
+  // O que muda aqui é a leitura do que o projétil É: chama com formato de
+  // flecha, e não flecha em chamas.
+  eq(proj.grid.materia, null, 'o dano do projétil é do elemento, e a armadura não o pega');
   eq(proj.grid.fere, true, 'e ele fere');
+  const comPlaca = M.danoNoAlvo({
+    bruto: 10, elemento: 'gelo', materia: proj.grid.materia,
+    soakArmadura: 4, soakNatural: 0,
+  });
+  eq(comPlaca.liquido, 10, 'o virote de gelo passa inteiro pela placa');
+  // E a vizinha que continua sendo matéria prova que a regra geral ficou de pé.
+  const lasca = M.EFEITO['lascas'];
+  eq(lasca.grid.materia, 'perfuracao', 'a Lasca continua sendo matéria');
+  eq(M.danoNoAlvo({
+    bruto: 10, elemento: 'gelo', materia: lasca.grid.materia,
+    soakArmadura: 4, soakNatural: 0,
+  }).liquido, 6, 'e a placa ainda a absorve');
   // Luz e Sombra entram na lista de propósito, para o dardo que marca sem ferir.
   const artesProj = proj.artes.map((a) => a.id);
   ok(artesProj.includes('luz') && artesProj.includes('sombra'),

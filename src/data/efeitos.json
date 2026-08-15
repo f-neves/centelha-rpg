@@ -612,7 +612,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Cria na mão um único projétil do elemento, do tamanho de uma flecha, de um virote, de um dardo ou de uma adaga de arremesso. Ele se arremessa como qualquer arma de arremesso, ou se encaixa num arco ou numa besta já empunhada, e se gasta no golpe. Como deixa matéria no mundo, a armadura absorve normalmente, como perfuração. Em Luz e Sombra o projétil não tem corpo: acerta, ilumina ou apaga, e não fere.",
+    "efeito": "Cria na mão um único projétil do elemento, do tamanho de uma flecha, de um virote, de um dardo ou de uma adaga de arremesso. Ele se arremessa como qualquer arma de arremesso, ou se encaixa num arco ou numa besta já empunhada, e se gasta no golpe. O dano é do ELEMENTO, e não da ponta: a flecha de chama não é uma flecha em chamas, é chama com formato de flecha. A armadura não a segura, e só a resistência ao elemento a apara. Vale para as sete Artes, inclusive as que fazem matéria de verdade. Em Luz e Sombra o projétil não tem corpo: acerta, ilumina ou apaga, e não fere.",
     "notas": "Conjurar não pede ação própria: é o mesmo gesto de puxar uma arma da cintura ou tirar uma flecha da aljava, e sai junto com o ataque que usa o projétil. Também não paga Alcance, pela nota do livro sobre quem cria algo para ser arremessado: o objeto voa até acertar, e a jogada é a mundana (Destreza para arremessar, Percepção para atirar), não a do Acerto Arcano. A Duração é só quanto tempo ele existe na mão antes de ser usado.",
     "acaoLivre": true,
     "grid": {
@@ -621,7 +621,7 @@
       "gatilho": "ao-tocar",
       "alvo": "objeto",
       "persiste": true,
-      "materia": "perfuracao",
+      "materia": null,
       "condicao": null,
       "pegaItem": false,
       "arenaInteira": false,

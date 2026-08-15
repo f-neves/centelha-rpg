@@ -176,15 +176,24 @@ const GATILHO = {
 const MATERIA = {
   impacto: ['arremesso', 'esmagar', 'maremoto', 'onda', 'terremoto',
     'empurrao-elemental', 'tromba', 'erguer-a-montanha', 'engolir'],
-  perfuracao: ['lascas', 'sarcal', 'semente-adormecida', 'projetil-conjurado'],
+  perfuracao: ['lascas', 'sarcal', 'semente-adormecida'],
   corte: ['arma-conjurada'],
 };
 /**
  * Ignora a armadura por escrito, mesmo parecendo físico. Braços do Abismo diz
  * "o dano é de Impacto e ignora armadura, porque a treva entra pela roupa"; o
  * Dreno diz "o dano é do tipo que a armadura não para".
+ *
+ * O Projétil Conjurado é o caso mais teimoso da lista, e o único que precisou
+ * de decisão de mesa. Ele PARECE a Lasca: tem ponta, fura, e a Lasca entra na
+ * trilha física sem discussão. A diferença é que a Lasca é um estilhaço, e o
+ * projétil é o elemento inteiro tomando a forma de um dardo, sem deixar de ser
+ * o elemento. A flecha de chama não é uma flecha em chamas, é chama com
+ * formato de flecha, e nada do que se veste segura chama. Vale para as sete
+ * Artes dele, inclusive as que fazem matéria de verdade (gelo, terra, água):
+ * é a forma do Efeito que decide, e não o material da Arte.
  */
-const IGNORA_ARMADURA = ['bracos-do-abismo', 'dreno', 'paralisia'];
+const IGNORA_ARMADURA = ['bracos-do-abismo', 'dreno', 'paralisia', 'projetil-conjurado'];
 
 /** Quem pode ser escolhido. Deriva do Alcance fixo; aqui só o que foge. */
 const ALVO = {
