@@ -493,6 +493,22 @@ inimigos se abrem; ela não. É a resposta para "acertar vários, mesmo não adj
 da Explosão em campo aberto até o grau 5, perdendo só no 6, quando a geometria fica grande o
 bastante para varrer.
 
+Simulado no tabuleiro da bancada (`volume-bench.html`, modo **molde de chão**), no grau 5, contando
+peça por peça em vez de por fórmula:
+
+| Molde | Colados | Frouxos | Espalhados |
+|---|---|---|---|
+| Explosão | 37 | 20 | **10** |
+| Leque | 24 | 13 | 7 |
+| Linha | 16 | 8 | 8 |
+| **Cadeia** | **8** | **8** | **8** |
+
+**A ressalva que só apareceu ao simular:** a Cadeia é indiferente à formação, mas **não é
+indiferente ao caminho**. Ela salta de um alvo ao mais próximo ainda não atingido, e onde o próximo
+estiver além do salto a corrente **arrebenta ali**, perdendo os elos restantes. Então ela não é o
+molde universal: é o molde de quem enfrenta muitos inimigos **em fila ou em cordão**, e é fraca
+contra dois grupos separados por um vão. Isso precisa entrar na regra de salto (pendência 6 abaixo).
+
 E o alcance que cada um compra a partir da âncora, que é a outra moeda:
 
 | | g3 | g4 | g5 | g6 |

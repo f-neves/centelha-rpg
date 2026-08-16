@@ -122,11 +122,15 @@
 
 <header>
   <div style="flex:1;min-width:280px">
-    <h1>Bancada de volume · que tamanho tem isso</h1>
-    <p class="sub">O Volume compra um <b>lado</b>, e o que se ganha é o cubo daquele lado, moldável em
-    esfera, bloco, coluna ou parede. Aqui a moldagem fica visível: escolha a forma, trave o que precisa
-    ficar de pé (o volume, uma altura, uma espessura) e veja o resto se ajustar. O boneco tem 1,80 m, e o
-    chão é o hexágono do Grid, 1 m de centro a centro.</p>
+    <h1>Bancada de volume e molde · que tamanho tem isso</h1>
+    <p class="sub" id="subSolido">O Volume compra um <b>lado</b>, e o que se ganha é o cubo daquele lado,
+    moldável em esfera, bloco, coluna ou parede. Aqui a moldagem fica visível: escolha a forma, trave o
+    que precisa ficar de pé (o volume, uma altura, uma espessura) e veja o resto se ajustar. O boneco tem
+    1,80 m, e o chão é o hexágono do Grid, 1 m de centro a centro.</p>
+    <p class="sub" id="subMolde" hidden>O chão não se compra em medida solta, se compra em <b>molde</b>,
+    e cada molde tem régua própria. Escolha o molde e o grau, ponha inimigos no tabuleiro e veja quantos
+    entram. O conjurador é o boneco, e o Leque e a Linha nascem na mão dele; a Explosão, a Muralha e a
+    Cadeia são postas à distância.</p>
   </div>
   <button class="tema" id="btTema">tema: sistema</button>
 </header>
@@ -135,6 +139,53 @@
 <aside>
 
   <div class="card">
+    <h3 class="tit">O que medir</h3>
+    <div class="pills" id="modos">
+      <button data-m="solido" aria-pressed="true">sólido e volume</button>
+      <button data-m="molde">molde de chão</button>
+    </div>
+  </div>
+
+  <div class="card" data-so="molde" hidden>
+    <h3 class="tit">Molde</h3>
+    <div class="pills" id="moldes"></div>
+    <div class="linha" style="margin-top:9px">
+      <label>Grau</label>
+      <input type="range" id="grauMolde" min="0" max="6" step="1" value="4">
+      <span class="un" id="grauVal" style="width:110px"></span>
+    </div>
+    <div class="linha">
+      <label>Distância</label>
+      <input type="range" id="distMolde" min="0" max="24" step="0.5" value="5">
+      <span class="un" id="distVal" style="width:46px">5,0</span>
+    </div>
+    <div class="linha">
+      <label>Altura</label>
+      <input type="range" id="altMolde" min="0.2" max="6" step="0.1" value="2">
+      <span class="un" id="altMoldeVal" style="width:46px">2,0</span>
+    </div>
+    <div class="linha">
+      <label>Direção</label>
+      <input type="range" id="dirMolde" min="0" max="360" step="1" value="0">
+      <span class="un" id="dirVal" style="width:34px">0&deg;</span>
+    </div>
+    <p class="nota" id="notaMolde"></p>
+  </div>
+
+  <div class="card" data-so="molde" hidden>
+    <h3 class="tit">Inimigos no tabuleiro</h3>
+    <div class="pills" id="inimigos">
+      <button data-i="0" aria-pressed="true">nenhum</button>
+      <button data-i="1">colados</button>
+      <button data-i="2">frouxos</button>
+      <button data-i="4">espalhados</button>
+    </div>
+    <p class="nota">Colados é um inimigo por hexágono, frouxos é um a cada dois e espalhados um a cada
+    quatro, que são as três colunas da tabela de equilíbrio. Quem entra no molde acende; quem escapa
+    fica apagado, e a contagem sai do desenho.</p>
+  </div>
+
+  <div class="card" data-so="solido">
     <h3 class="tit">Forma</h3>
     <div class="pills" id="formas"></div>
     <div class="linha" style="margin-top:9px">
@@ -152,7 +203,7 @@
     <p class="nota" id="notaForma"></p>
   </div>
 
-  <div class="card">
+  <div class="card" data-so="solido">
     <h3 class="tit">Medidas <span style="font-weight:400;text-transform:none;letter-spacing:0">cadeado = não muda</span></h3>
     <div id="params"></div>
     <div class="linha" style="border-top:1px solid var(--rule);padding-top:8px;margin-top:8px">
@@ -168,7 +219,7 @@
     <p class="aviso" id="aviso"></p>
   </div>
 
-  <div class="card">
+  <div class="card" data-so="solido">
     <h3 class="tit">A escada do livro</h3>
     <div class="linha"><label>Estado</label>
       <select id="estado" class="cresce"></select>
@@ -225,7 +276,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-so="solido">
     <h3 class="tit">Material</h3>
     <div class="linha"><label>Feito de</label><select id="material" class="cresce"></select></div>
     <p class="nota" id="notaMassa"></p>
@@ -248,7 +299,18 @@
 
   <dl class="placar" id="placar"></dl>
 
-  <div class="card" style="margin-top:12px">
+  <div class="card" style="margin-top:12px" data-so="molde" hidden>
+    <h3 class="tit">Os cinco moldes, no grau de agora</h3>
+    <table class="tb"><thead><tr><th>Molde</th><th>Compra</th><th>Neste grau</th><th>Hexágonos</th><th>Alcance</th><th>Colados</th><th>Frouxos</th><th>Espalhados</th></tr></thead>
+    <tbody id="tbMoldes"></tbody></table>
+    <p class="nota">A conta de inimigos sai do desenho, e não de fórmula: são os hexágonos que o molde
+    pega, divididos pela formação. A <b>Cadeia</b> é a única linha que não muda entre as três colunas
+    da direita, e é isso que a torna a resposta para inimigos que não estão colados.</p>
+    <table class="tb" id="tbEscadas" style="margin-top:12px"><thead><tr><th>Molde</th><th>g0</th><th>g1</th><th>g2</th><th>g3</th><th>g4</th><th>g5</th><th>g6</th></tr></thead>
+    <tbody></tbody></table>
+  </div>
+
+  <div class="card" style="margin-top:12px" data-so="solido">
     <h3 class="tit">O mesmo volume nas oito formas</h3>
     <table class="tb"><thead><tr><th>Forma</th><th>Medidas para o volume de agora</th><th>Altura</th><th>Pegada</th></tr></thead>
     <tbody id="tbComp"></tbody></table>
@@ -346,8 +408,43 @@ const FORMAS = {
     nota: 'O anel. Em pé é rosca no chão; deitado é roda de pé. O tubo nunca passa do raio maior, senão o anel se atravessa.' },
 };
 
+// ------------------------------------------------- os moldes de chão
+// A outra metade da bancada. O chão não se compra em medida solta, se compra
+// em MOLDE, e cada molde tem régua própria (Arcano_revisao.md §5.3). Aqui eles
+// são desenhados no mesmo tabuleiro, para a conta de "quantos inimigos" sair
+// do desenho e não de fórmula.
+const MOLDES = {
+  explosao: {
+    nome: 'Explosão', compra: 'diâmetro', un: 'm', daMao: false,
+    escala: [0.5, 1, 2, 3.5, 5, 6.5, 8],
+    nota: 'O molde redondo, posto num ponto. Paga Alcance para chegar lá, e em troca escolhe onde cai. É o mais generoso contra quem está junto, e o que mais murcha contra quem se abre.',
+  },
+  leque: {
+    nome: 'Leque', compra: 'comprimento, 60°', un: 'm', daMao: true,
+    escala: [1, 2, 3, 4, 5, 6, 8],
+    nota: 'Nasce na mão e abre para a frente, num sexto do círculo, que é o setor natural do hexágono. Não paga Alcance, e em troca não escolhe onde cai: é a arma de quem luta perto.',
+  },
+  linha: {
+    nome: 'Linha', compra: 'comprimento, 1 m de largura', un: 'm', daMao: true,
+    escala: [2, 4, 6, 8, 12, 16, 24],
+    nota: 'Sai da mão em reta e atravessa tudo no caminho. Compra seis vezes o alcance da Explosão e paga com a largura: pega uma fileira, não um aglomerado. É o Lightning Bolt contra o Fireball.',
+  },
+  muralha: {
+    nome: 'Muralha', compra: 'metros de frente', un: 'm', daMao: false,
+    escala: [1, 2, 3, 5, 8, 12, 20],
+    nota: 'A régua que o Efeito Muro já tem, sem mexer num número. Não fere por si: barra. A altura padrão é 2 m e o topo nunca passa do nível da Arte, em metros.',
+  },
+  cadeia: {
+    nome: 'Cadeia', compra: 'inimigos ligados', un: '', daMao: false, salto: 3,
+    escala: [2, 3, 4, 5, 6, 8, 10],
+    nota: 'Salta de alvo em alvo, até 3 m entre elos. É o único molde que entrega o mesmo número esteja o inimigo colado ou espalhado, e por isso é a resposta para quem não está adjacente. Em troca, ela depende de haver caminho: onde o próximo estiver a mais de 3 m, a corrente arrebenta ali e o resto se perde. Verbo exclusivo do Raio.',
+  },
+};
+
 // ------------------------------------------------------------- estado
 const S = {
+  modo: 'solido',
+  molde: 'explosao', grau: 4, distMolde: 5, altMolde: 2, dirMolde: 0, inimigos: 0,
   forma: 'cubo',
   dims: { lado: 1, raio: 0.5, tubo: 0.15, altura: 1, comprimento: 2, largura: 0.2 },
   travas: { volume: false, lado: false, raio: false, tubo: false, altura: false, comprimento: false, largura: false },
@@ -578,6 +675,154 @@ function caixa(m) {
 }
 function mover(m, dx, dy, dz) { m.v = m.v.map((p) => [p[0] + dx, p[1] + dy, p[2] + dz]); return m; }
 
+// =====================================================================
+// Geometria dos moldes de chão
+// =====================================================================
+/** Todos os centros de hexágono num raio de `alcance` passos, em metros. */
+function gradeHexes(alcance) {
+  const e = S.escalaHex, out = [];
+  for (let r = -alcance; r <= alcance; r++) {
+    for (let q = -alcance; q <= alcance; q++) {
+      if (Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r)) > alcance) continue;
+      out.push({ q, r, x: e * (q + r / 2), z: e * r * Math.sqrt(3) / 2 });
+    }
+  }
+  return out;
+}
+const chave = (h) => h.q + ',' + h.r;
+
+/**
+ * O molde no chão: quais hexágonos ele pega, por onde ele passa e onde ficam
+ * os elos, se for Cadeia. O conjurador está sempre no hexágono (0,0), e a
+ * direção é o ângulo do controle.
+ */
+function molde() {
+  const m = MOLDES[S.molde], val = m.escala[S.grau];
+  const a = S.dirMolde * PI / 180, ux = Math.cos(a), uz = Math.sin(a);
+  const dist = m.daMao ? 0 : S.distMolde;
+  const anc = { x: dist * ux, z: dist * uz };
+  const alcance = Math.ceil((dist + val + 2) / S.escalaHex) + 2;
+  const grade = gradeHexes(Math.min(26, alcance));
+  let dentro = [], elos = [], paredeA = null, paredeB = null;
+
+  if (S.molde === 'explosao') {
+    dentro = grade.filter((h) => Math.hypot(h.x - anc.x, h.z - anc.z) <= val / 2 + 1e-9);
+  } else if (S.molde === 'leque') {
+    dentro = grade.filter((h) => {
+      const dx = h.x - anc.x, dz = h.z - anc.z, r = Math.hypot(dx, dz);
+      if (r < 1e-9 || r > val + 1e-9) return false;
+      // ângulo até o eixo do leque; 60° de abertura é meio setor para cada lado
+      const cos = (dx * ux + dz * uz) / r;
+      return Math.acos(clamp(cos, -1, 1)) <= PI / 6 + 1e-9;
+    });
+  } else if (S.molde === 'linha') {
+    dentro = grade.filter((h) => {
+      const dx = h.x - anc.x, dz = h.z - anc.z;
+      const t = dx * ux + dz * uz, p = Math.abs(-dx * uz + dz * ux);
+      return t >= -S.escalaHex / 2 && t <= val + 1e-9 && p <= S.escalaHex / 2;
+    });
+  } else if (S.molde === 'muralha') {
+    // a parede fica de través ao conjurador, centrada na âncora
+    const vx = -uz, vz = ux;
+    paredeA = { x: anc.x - vx * val / 2, z: anc.z - vz * val / 2 };
+    paredeB = { x: anc.x + vx * val / 2, z: anc.z + vz * val / 2 };
+    dentro = grade.filter((h) => {
+      const dx = h.x - anc.x, dz = h.z - anc.z;
+      const t = dx * vx + dz * vz, p = Math.abs(dx * ux + dz * uz);
+      return Math.abs(t) <= val / 2 + 1e-9 && p <= S.escalaHex / 2;
+    });
+  } else {
+    // Cadeia: os elos caminham para a frente, alternando de lado, com o salto
+    // máximo entre um e o seguinte. Não é um desenho de chão, é uma lista de alvos.
+    const salto = m.salto;
+    let p = { x: anc.x, z: anc.z };
+    for (let i = 0; i < val; i++) {
+      elos.push(p);
+      const lado = (i % 2 === 0 ? 1 : -1) * salto * 0.5;
+      p = { x: p.x + ux * salto * 0.87 - uz * lado, z: p.z + uz * salto * 0.87 + ux * lado };
+    }
+    dentro = elos.map((e) => {
+      let melhor = grade[0], dm = 1e9;
+      grade.forEach((h) => { const d = Math.hypot(h.x - e.x, h.z - e.z); if (d < dm) { dm = d; melhor = h; } });
+      return melhor;
+    }).filter((h, i, arr) => arr.indexOf(h) === i);
+  }
+  // Quantos hexágonos o molde vale na conta. Para quase todos é o número de
+  // casas pintadas. A Muralha é a exceção: ela ATRAVESSA casas em vez de
+  // enchê-las, e a faixa de meio hexágono pega duas casas nas fileiras de
+  // paridade trocada. O que ela compra é frente, então a conta é a frente.
+  const hexConta = S.molde === 'muralha' ? Math.round(val / S.escalaHex)
+    : S.molde === 'cadeia' ? val : dentro.length;
+  return { m, val, dentro, elos, anc, dir: { ux, uz }, paredeA, paredeB, grade, hexConta };
+}
+
+/** Os hexágonos pegos, levantados até a altura da manifestação. */
+function malhaHexes(lista, altura) {
+  const raio = S.escalaHex / Math.sqrt(3), dentro = new Set(lista.map(chave));
+  const viz = [[1, 0], [1, -1], [0, -1], [-1, 0], [-1, 1], [0, 1]];
+  const m = { v: [], f: [] };
+  lista.forEach((h) => {
+    const base = [];
+    for (let i = 0; i < 6; i++) {
+      const a = PI / 180 * (60 * i - 90);
+      base.push([h.x + raio * Math.cos(a), 0, h.z + raio * Math.sin(a)]);
+    }
+    const off = m.v.length;
+    base.forEach((p) => m.v.push(p));
+    base.forEach((p) => m.v.push([p[0], altura, p[2]]));
+    // a parede só existe onde o vizinho está de fora: por dentro do molde não
+    // há face nenhuma, senão a transparência empilha e escurece o miolo
+    for (let i = 0; i < 6; i++) {
+      const v = viz[(i + 4) % 6];
+      if (dentro.has((h.q + v[0]) + ',' + (h.r + v[1]))) continue;
+      const j = (i + 1) % 6;
+      m.f.push(face([off + i, off + j, off + 6 + j, off + 6 + i], 0));
+    }
+    m.f.push(face([off + 6, off + 7, off + 8, off + 9, off + 10, off + 11], 0));
+  });
+  return m;
+}
+
+/** A peça de um inimigo no tabuleiro: base e cabeça, barato de desenhar. */
+function malhaPeca(x, z, alt) {
+  const m = { v: [], f: [] };
+  unir(m, cilindroEntre([x, 0, z], [x, alt * 0.72, z], alt * 0.10, 8));
+  unir(m, mover(mEsfera(alt * 0.13, false, 9, 5), x, alt * 0.85, z));
+  return m;
+}
+
+/**
+ * Onde ficam os inimigos. `densidade` é um inimigo a cada N hexágonos, e as
+ * três malhas são exatamente as três colunas da tabela de equilíbrio:
+ * 1 = todos os hexágonos, 2 = metade deles, 4 = um quarto.
+ *
+ * As peças mais PERTO da âncora vêm primeiro. Ordenar antes de cortar não é
+ * detalhe: cortando na ordem de leitura da grade, as peças caem todas na borda
+ * do tabuleiro, longe do molde, e a conta dá zero pego com o molde cheio.
+ */
+function campoInimigos(densidade, grade, alvo, pegos) {
+  if (!densidade) return [];
+  // um punhado a mais do que o molde pega, para sempre sobrar quem escapou na
+  // borda: um campo inteiro dentro do molde não mostra nada
+  const teto = clamp(Math.round(pegos * 1.8), 24, 80);
+  const cabe = (h) => {
+    if (h.q === 0 && h.r === 0) return false;              // o hexágono do conjurador
+    if (densidade === 1) return true;
+    if (densidade === 2) return (((h.q + h.r) % 2) + 2) % 2 === 0;
+    return (((h.q % 2) + 2) % 2 === 0) && (((h.r % 2) + 2) % 2 === 0);
+  };
+  // a distância é até o MOLDE, e não até um ponto: medindo de um ponto só, o
+  // campo vira um bolo em volta dele e a Linha, que é comprida, fica sem
+  // ninguém na ponta, o que a faz parecer fraca por defeito da bancada
+  const perto = (h) => {
+    let d = 1e9;
+    alvo.forEach((a) => { const v = Math.hypot(h.x - a.x, h.z - a.z); if (v < d) d = v; });
+    return d;
+  };
+  return grade.filter(cabe).map((h) => ({ h, d: perto(h) }))
+    .sort((a, b) => a.d - b.d).slice(0, teto).map((o) => o.h);
+}
+
 // ------------------------------------------------------------- boneco
 function cilindroEntre(p, q, r, N) {
   N = N || 10;
@@ -725,6 +970,7 @@ let CENA = null;
 function refazer() { CENA = null; sujo = true; atualizarPainel(); }
 
 function montarCena() {
+  if (S.modo === 'molde') return montarCenaMolde();
   sanear();
   const d = S.dims;
   const bruta = malhaDaForma(S.forma, d, S.deitado, S.giro * PI / 180);
@@ -748,6 +994,80 @@ function montarCena() {
     boneco: S.mostraBoneco ? malhaBoneco(S.bonecoAlt) : null,
     porta: S.porta ? mover(malhaPorta(), -1.15, 0, 0) : null,
     pegada: cascoPegada(obj),
+  };
+}
+/**
+ * A Cadeia em cima de inimigos de verdade: parte do mais perto da âncora e
+ * salta para o mais perto ainda não atingido, enquanto couber no salto. É aqui
+ * que a força e a fraqueza dela aparecem: ela ignora a geometria, mas depende
+ * de haver um caminho, e arrebenta onde o próximo elo está longe demais.
+ */
+function encadear(alvos, anc, salto, n) {
+  const livres = alvos.slice(), elos = [];
+  let atual = anc;
+  while (elos.length < n && livres.length) {
+    let melhor = -1, dm = 1e9;
+    livres.forEach((h, i) => {
+      const d = Math.hypot(h.x - atual.x, h.z - atual.z);
+      if (d < dm && (elos.length === 0 || d <= salto + 1e-9)) { dm = d; melhor = i; }
+    });
+    if (melhor < 0) break;                       // a corrente arrebentou aqui
+    const h = livres.splice(melhor, 1)[0];
+    elos.push({ x: h.x, z: h.z, h });
+    atual = h;
+  }
+  return elos;
+}
+
+function montarCenaMolde() {
+  const M = molde();
+  const alt = S.altMolde;
+  let obj;
+  if (S.molde === 'muralha') {
+    // a parede é uma laje de verdade, e não os hexágonos levantados: ela fica
+    // na linha e não enche a casa, que é como uma muralha se lê no tabuleiro
+    const c = mCaixa(M.val, alt, 0.4, 0);
+    const ang = Math.atan2(M.paredeB.z - M.paredeA.z, M.paredeB.x - M.paredeA.x);
+    const co = Math.cos(ang), si = Math.sin(ang);
+    c.v = c.v.map((p) => [p[0] * co - p[2] * si + M.anc.x, p[1], p[0] * si + p[2] * co + M.anc.z]);
+    obj = c;
+  } else if (S.molde === 'cadeia') {
+    obj = { v: [], f: [] };
+  } else {
+    obj = malhaHexes(M.dentro, alt);
+  }
+  const foco = M.dentro.length ? M.dentro : [M.anc];
+  // a Cadeia escolhe N de uma multidão, então precisa de multidão em volta do
+  // traçado; os outros moldes só precisam de uma borda de quem escapou
+  const quantos = S.molde === 'cadeia' ? M.val * 3 : Math.ceil(M.hexConta / (S.inimigos || 1));
+  const inim = campoInimigos(S.inimigos, M.grade, foco, quantos);
+  if (S.molde === 'cadeia') {
+    // havendo inimigos no tabuleiro, a corrente salta entre eles; não havendo,
+    // ela mostra o traçado no vazio, com as peças no lugar de cada elo
+    if (inim.length) {
+      M.elos = encadear(inim, M.anc, M.m.salto, M.val);
+      M.dentro = M.elos.map((e) => e.h);
+      M.hexConta = M.elos.length;
+    } else {
+      M.elos.forEach((e) => unir(obj, malhaPeca(e.x, e.z, 1.7)));
+    }
+  }
+  const pegos = new Set(M.dentro.map(chave));
+  // com a Cadeia sobre inimigos a malha do molde fica vazia (quem aparece são
+  // as peças), e a caixa tem de sair dos elos, senão o enquadramento se perde
+  let cx = caixa(obj);
+  if (!obj.v.length) {
+    const pts = M.elos.length ? M.elos : [M.anc];
+    let x0 = 1e9, x1 = -1e9, z0 = 1e9, z1 = -1e9;
+    pts.forEach((p) => { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); z0 = Math.min(z0, p.z); z1 = Math.max(z1, p.z); });
+    cx = { x0, x1, y0: 0, y1: 1.7, z0, z1, larg: x1 - x0, alt: 1.7, prof: z1 - z0 };
+  }
+  return {
+    molde: M, obj, cx, sup: 0, vol: 0,
+    boneco: S.mostraBoneco ? malhaBoneco(S.bonecoAlt) : null,
+    porta: S.porta ? mover(malhaPorta(), -1.15, 0, 0) : null,
+    pegada: [], dentroSet: pegos,
+    inimigos: inim.map((h) => ({ h, pego: pegos.has(chave(h)) })),
   };
 }
 function cena() { if (!CENA) CENA = montarCena(); return CENA; }
@@ -793,7 +1113,8 @@ function areaPoly(poly) {
 // ------------------------------------------------------------ o chao
 function hexesVisiveis() {
   const c = cena(), e = S.escalaHex;
-  const alcance = Math.max(4, Math.ceil((Math.max(Math.abs(c.cx.x1), 2) + 2) / e) + 2);
+  const raio = Math.max(Math.abs(c.cx.x0), Math.abs(c.cx.x1), Math.abs(c.cx.z0), Math.abs(c.cx.z1), 2);
+  const alcance = Math.min(26, Math.max(4, Math.ceil((raio + 2) / e) + 2));
   const out = [];
   for (let r = -alcance; r <= alcance; r++) {
     for (let q = -alcance; q <= alcance; q++) {
@@ -809,9 +1130,10 @@ function desenharChao() {
   for (let i = 0; i < 6; i++) { const a = PI / 180 * (60 * i - 90); cantos.push([raio * Math.cos(a), raio * Math.sin(a)]); }
   let cobertos = 0;
   const lista = S.mostraHex ? hexesVisiveis() : [];
+  const set = c.dentroSet;
   ctx.lineWidth = 1;
   lista.forEach((h) => {
-    const dentro = dentroPoly(h.x, h.z, c.pegada);
+    const dentro = set ? set.has(chave(h)) : dentroPoly(h.x, h.z, c.pegada);
     if (dentro) cobertos++;
     const poly = [];
     let ok = true;
@@ -916,6 +1238,20 @@ function cota(a, b, texto, cor) {
 function desenharCotas() {
   if (!S.cotas) return;
   const c = cena(), cx = c.cx, cor = tom(COR.accF, 1, 0.95);
+  if (S.modo === 'molde') {
+    // no molde a cota que interessa é a medida comprada, e não a caixa
+    const M = c.molde, u = M.dir, d = M.m.un ? M.val : alcanceMolde(M);
+    if (M.m.un && S.molde !== 'explosao') {
+      const o = M.m.daMao ? { x: 0, z: 0 } : M.anc;
+      const e = S.molde === 'muralha' ? M.paredeB : { x: o.x + u.ux * d, z: o.z + u.uz * d };
+      const a = S.molde === 'muralha' ? M.paredeA : o;
+      cota([a.x, 0.02, a.z], [e.x, 0.02, e.z], nf(d, d < 10 ? 1 : 0) + ' m', cor);
+    } else if (S.molde === 'explosao') {
+      cota([M.anc.x - M.val / 2, 0.02, M.anc.z], [M.anc.x + M.val / 2, 0.02, M.anc.z], nf(M.val, 1) + ' m', cor);
+    }
+    if (S.mostraBoneco) cota([-0.42, 0, 0], [-0.42, S.bonecoAlt, 0], nf(S.bonecoAlt, 2) + ' m', tom(COR.muted, 1, 0.95));
+    return;
+  }
   const zf = cx.z1 + 0.12;
   cota([cx.x1 + 0.14, cx.y0, zf], [cx.x1 + 0.14, cx.y1, zf], 'alt ' + fmtM(cx.alt), cor);
   cota([cx.x0, 0.003, zf], [cx.x1, 0.003, zf], 'larg ' + fmtM(cx.larg), cor);
@@ -939,6 +1275,16 @@ function desenhar() {
   if (S.fantasma) polys = polys.concat(coletar(S.fantasma, COR.muted, 0.16, false));
   if (c.boneco) polys = polys.concat(coletar(c.boneco, COR.corpo, 0.95, false));
   if (c.porta) polys = polys.concat(coletar(c.porta, COR.muted, 0.7, true));
+  if (c.inimigos) c.inimigos.forEach((i) => {
+    polys = polys.concat(coletar(malhaPeca(i.h.x, i.h.z, 1.7), i.pego ? COR.s2 : COR.muted, i.pego ? 0.95 : 0.4, false));
+  });
+  if (c.molde && c.molde.elos.length > 1) {
+    // os elos da Cadeia se ligam por um traço, que é o que ela compra
+    for (let i = 0; i < c.molde.elos.length - 1; i++) {
+      const a = c.molde.elos[i], b = c.molde.elos[i + 1];
+      polys = polys.concat(coletar(cilindroEntre([a.x, 0.9, a.z], [b.x, 0.9, b.z], 0.035, 6), COR.acc, 0.9, false));
+    }
+  }
   let objM = c.obj;
   if (S.corte) {
     const zc = (c.cx.z0 + c.cx.z1) / 2;
@@ -950,9 +1296,25 @@ function desenhar() {
   desenharCotas();
 
   const hud = document.getElementById('hud');
-  hud.innerHTML = '<b>' + fmtVol(c.vol) + '</b> &middot; ' + FORMAS[S.forma].nome.toLowerCase()
-    + '<br>alt <b>' + fmtM(c.cx.alt) + '</b> &middot; larg <b>' + fmtM(c.cx.larg) + '</b> &middot; prof <b>' + fmtM(c.cx.prof) + '</b>'
-    + (S.mostraHex ? '<br><b>' + cobertos + '</b> hexágono' + (cobertos === 1 ? '' : 's') + ' de ' + nf(S.escalaHex, 1) + ' m' : '');
+  if (S.modo === 'molde') {
+    const M = c.molde, pegos = c.inimigos.filter((i) => i.pego).length;
+    hud.innerHTML = '<b>' + M.m.nome + '</b>, grau ' + S.grau + ' &middot; ' + M.m.compra + ' <b>'
+      + (M.m.un ? nf(M.val, M.val < 10 ? 1 : 0) + ' ' + M.m.un : M.val) + '</b>'
+      + '<br><b>' + M.hexConta + '</b> hexágono' + (M.hexConta === 1 ? '' : 's')
+      + ' &middot; alcance <b>' + fmtM(alcanceMolde(M)) + '</b>'
+      + (S.inimigos ? '<br><b>' + pegos + '</b> de ' + c.inimigos.length + ' inimigos pegos' : '');
+  } else {
+    hud.innerHTML = '<b>' + fmtVol(c.vol) + '</b> &middot; ' + FORMAS[S.forma].nome.toLowerCase()
+      + '<br>alt <b>' + fmtM(c.cx.alt) + '</b> &middot; larg <b>' + fmtM(c.cx.larg) + '</b> &middot; prof <b>' + fmtM(c.cx.prof) + '</b>'
+      + (S.mostraHex ? '<br><b>' + cobertos + '</b> hexágono' + (cobertos === 1 ? '' : 's') + ' de ' + nf(S.escalaHex, 1) + ' m' : '');
+  }
+}
+/** Até onde o molde chega, a partir do hexágono do conjurador. */
+function alcanceMolde(M) {
+  let d = 0;
+  const alvos = M.dentro.length ? M.dentro : M.elos;
+  alvos.forEach((h) => { d = Math.max(d, Math.hypot(h.x, h.z)); });
+  return d;
 }
 function laco() {
   if (sujo) { sujo = false; desenhar(); }
@@ -991,12 +1353,13 @@ cv.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 function enquadrar() {
-  const c = cena();
-  const alvoX = (c.cx.x1 + (S.mostraBoneco ? -0.4 : c.cx.x0)) / 2;
-  const alt = Math.max(c.cx.alt, S.mostraBoneco ? S.bonecoAlt : 0);
-  const larg = Math.max(c.cx.x1 + 0.6, 1.6);
-  cam.alvo = [alvoX, alt * 0.45, 0];
-  cam.dist = clamp(Math.max(larg, alt) * 2.1 + 1.2, 1.2, 90);
+  const c = cena(), cx = c.cx;
+  // o quadro tem de caber o molde e o conjurador, que está sempre na origem
+  const x0 = Math.min(cx.x0, -0.6), x1 = Math.max(cx.x1, 0.6);
+  const z0 = Math.min(cx.z0, -0.6), z1 = Math.max(cx.z1, 0.6);
+  const alt = Math.max(cx.alt, S.mostraBoneco ? S.bonecoAlt : 0);
+  cam.alvo = [(x0 + x1) / 2, alt * 0.45, (z0 + z1) / 2];
+  cam.dist = clamp(Math.max(x1 - x0, z1 - z0, alt) * 1.5 + 2, 1.2, 120);
   sujo = true;
 }
 document.querySelectorAll('.vistas button').forEach((b) => b.addEventListener('click', () => {
@@ -1042,6 +1405,7 @@ function montarParams() {
 
 const elPlacar = document.getElementById('placar');
 function atualizarPainel() {
+  if (S.modo === 'molde') return atualizarPainelMolde();
   const f = forma(), c = { cx: caixa(malhaDaForma(S.forma, S.dims, S.deitado, S.giro * PI / 180)) };
   const vol = volume();
   f.params.forEach((k) => {
@@ -1096,6 +1460,62 @@ function atualizarPainel() {
   atualizarNotaGrau();
   atualizarReguas();
 }
+/** Quantos hexágonos um molde pega no grau `g`, contados no desenho. */
+function contarMolde(id, g) {
+  const guarda = { molde: S.molde, grau: S.grau };
+  S.molde = id; S.grau = g;
+  const M = molde();
+  S.molde = guarda.molde; S.grau = guarda.grau;
+  return { hex: M.hexConta, alc: alcanceMolde(M), val: M.val };
+}
+function atualizarPainelMolde() {
+  const c = cena(), M = c.molde, m = M.m;
+  const hexN = M.hexConta, area = M.dentro.length * (Math.sqrt(3) / 2) * S.escalaHex * S.escalaHex;
+  const pegos = c.inimigos.filter((i) => i.pego).length;
+  const val = m.un ? nf(M.val, M.val < 10 ? 1 : 0) + ' ' + m.un : String(M.val) + ' inimigos';
+  const cel = (t, v, s) => '<div class="cel"><dt>' + t + '</dt><dd>' + v + (s ? ' <small>' + s + '</small>' : '') + '</dd></div>';
+  // a Cadeia não mede chão: ela pega o que comprou, esteja onde estiver
+  const fixa = S.molde === 'cadeia';
+  elPlacar.innerHTML =
+    cel('Molde', m.nome, 'grau ' + S.grau)
+    + cel(m.compra.split(',')[0], val, '')
+    + cel('Hexágonos', String(hexN), nf(area, 1) + ' m² de chão')
+    + cel('Alcance', fmtM(alcanceMolde(M)), 'do conjurador')
+    + cel('Colados', String(fixa ? M.val : hexN), 'um por hexágono')
+    + cel('Frouxos', String(fixa ? M.val : Math.max(1, Math.round(hexN / 2))), 'um a cada dois')
+    + cel('Espalhados', String(fixa ? M.val : Math.max(1, Math.round(hexN / 4))), 'um a cada quatro')
+    + cel('No tabuleiro', S.inimigos ? pegos + ' de ' + c.inimigos.length : '—', S.inimigos ? 'contados no desenho' : 'ponha inimigos');
+  const quebrou = fixa && S.inimigos && M.elos.length < M.val;
+  document.getElementById('notaMolde').innerHTML = m.nota
+    + (quebrou ? '<br><b style="color:var(--s2)">A corrente arrebentou no elo ' + (M.elos.length + 1)
+      + ': ligou ' + M.elos.length + ' dos ' + M.val + ' comprados, porque o próximo estava a mais de '
+      + m.salto + ' m.</b>' : '');
+  document.getElementById('grauVal').textContent = 'grau ' + S.grau + ' · ' + val;
+  document.getElementById('distMolde').disabled = m.daMao;
+  document.getElementById('distVal').textContent = m.daMao ? 'na mão' : nf(S.distMolde, 1);
+  document.getElementById('altMolde').disabled = (S.molde === 'cadeia');
+
+  // os cinco moldes no grau de agora
+  document.getElementById('tbMoldes').innerHTML = Object.keys(MOLDES).map((id) => {
+    const mm = MOLDES[id], r = contarMolde(id, S.grau);
+    const cad = id === 'cadeia';
+    const v = mm.un ? nf(r.val, r.val < 10 ? 1 : 0) + ' ' + mm.un : r.val + ' inimigos';
+    const marca = id === S.molde ? ' style="color:var(--ink);font-weight:600"' : '';
+    return '<tr' + marca + '><td>' + mm.nome + '</td><td>' + mm.compra + '</td><td>' + v + '</td><td>'
+      + (cad ? '—' : r.hex) + '</td><td>' + fmtM(r.alc) + '</td><td>' + (cad ? r.val : r.hex) + '</td><td>'
+      + (cad ? r.val : Math.max(1, Math.round(r.hex / 2))) + '</td><td>'
+      + (cad ? r.val : Math.max(1, Math.round(r.hex / 4))) + '</td></tr>';
+  }).join('');
+
+  // as cinco escadas inteiras
+  document.querySelector('#tbEscadas tbody').innerHTML = Object.keys(MOLDES).map((id) => {
+    const mm = MOLDES[id];
+    const marca = id === S.molde ? ' style="color:var(--ink);font-weight:600"' : '';
+    return '<tr' + marca + '><td>' + mm.nome + ' <small style="color:var(--muted)">' + mm.compra + '</small></td>'
+      + mm.escala.map((v, g) => '<td' + (g === S.grau ? ' style="color:var(--accent-strong);font-weight:600"' : '') + '>'
+        + (mm.un ? nf(v, v < 10 ? 1 : 0) + ' ' + mm.un : v) + '</td>').join('') + '</tr>';
+  }).join('');
+}
 function contarHex() {
   const c = cena();
   let n = 0;
@@ -1123,6 +1543,40 @@ function medidasParaVolume(id, v) {
   if (id === 'torus' && d.tubo >= d.raio) d.tubo = d.raio * 0.95;
   return d;
 }
+
+// --------------------------------------------------- ligações do molde
+const elModos = document.getElementById('modos');
+elModos.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+  S.modo = b.dataset.m;
+  elModos.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  document.querySelectorAll('[data-so]').forEach((el) => { el.hidden = el.dataset.so !== S.modo; });
+  document.getElementById('subSolido').hidden = S.modo !== 'solido';
+  document.getElementById('subMolde').hidden = S.modo !== 'molde';
+  refazer(); enquadrar();
+}));
+
+const elMoldes = document.getElementById('moldes');
+elMoldes.innerHTML = Object.keys(MOLDES).map((id) =>
+  '<button data-md="' + id + '" aria-pressed="' + (id === S.molde) + '">' + MOLDES[id].nome + '</button>').join('');
+elMoldes.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+  S.molde = b.dataset.md;
+  elMoldes.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  refazer(); enquadrar();
+}));
+const elInim = document.getElementById('inimigos');
+elInim.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+  S.inimigos = +b.dataset.i;
+  elInim.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  refazer();
+}));
+document.getElementById('grauMolde').addEventListener('input', (e) => { S.grau = +e.target.value; refazer(); });
+document.getElementById('distMolde').addEventListener('input', (e) => { S.distMolde = +e.target.value; refazer(); });
+document.getElementById('altMolde').addEventListener('input', (e) => {
+  S.altMolde = +e.target.value; document.getElementById('altMoldeVal').textContent = nf(S.altMolde, 1); refazer();
+});
+document.getElementById('dirMolde').addEventListener('input', (e) => {
+  S.dirMolde = +e.target.value; document.getElementById('dirVal').textContent = e.target.value + '°'; refazer();
+});
 
 // ------------------------------------------------------------- ligacoes
 const elFormas = document.getElementById('formas');
