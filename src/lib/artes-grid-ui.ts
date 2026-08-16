@@ -86,7 +86,12 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let curvatura = 0;
   let velocidade = velocidadePadraoDe(null);
 
-  const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`, { classe: 'ui-dlg-arte' });
+  // Duas classes, e a segunda não é decoração. `ui-dlg-arte` é só a LARGURA que
+  // os três painéis de Arte compartilham; `ui-dlg-conj` é o desenho de duas
+  // colunas com altura travada, que é deste painel e de mais nenhum. Enquanto
+  // as duas coisas moravam na mesma classe, o NPC e os empurrões herdavam um
+  // `display: flex` de fileira e saíam com os blocos lado a lado, fora da tela.
+  const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`, { classe: 'ui-dlg-arte ui-dlg-conj' });
 
   return new Promise<Plano | null>((resolve) => {
     let resolvido = false;
@@ -478,7 +483,7 @@ export interface Empurrado {
  * bate na parede aos 2 m não devia sofrer o dano dos 6 m que a conta previa.
  */
 export function abrirEmpurroes(titulo: string, lista: Empurrado[]): Promise<Empurrado[] | null> {
-  const { corpo, fechar } = uiPainel(titulo, { classe: 'ui-dlg-arte' });
+  const { corpo, fechar } = uiPainel(titulo, { classe: 'ui-dlg-arte ui-dlg-emp' });
   return new Promise((resolve) => {
     let resolvido = false;
     const sair = (v: Empurrado[] | null) => { if (resolvido) return; resolvido = true; fechar(); resolve(v); };

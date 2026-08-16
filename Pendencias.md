@@ -55,7 +55,10 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   Terra** aberto por **Trilha**: os verbos dele são coisas que se fazem com equipamento (e coisa
   que se faz é Efeito), não tem dano nem parâmetro próprio, e a tabela de estado já o põe junto da
   Terra em "sólido, metade". Falta escrever os Efeitos, o que é conteúdo e cai na A15.
-- [ ] **A13 · [AUTOR] Revisar Área × Volume.** O parâmetro inteiro está em revisão pelo autor.
+- [ ] **A13 · [AUTOR] Revisar Área × Volume.** **Encaminhado pela A17**, que separou os dois de vez:
+  chão é molde, matéria é Volume. O que sobra aqui é a escada de Volume em si, e a leitura de que
+  ela está calibrada como massa (169 kg de pedra no grau 3, 10,8 t no grau 6) e não como chão.
+  O parâmetro inteiro está em revisão pelo autor.
   Tudo que foi calibrado contra ele depende do resultado: a escada de Volume (lado 2 cm · 10 cm ·
   25 cm · 50 cm · 1 m · 1,5 m · 2 m), a tabela de **estado da matéria** (sólido metade, granular
   normal, líquido normal, fenômeno dobro, gás oito vezes), o teste de que o Volume cabe embaixo da
@@ -70,6 +73,18 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   fechando um corredor" e "explosão que pega quatro inimigos juntos". Os seis níveis de cada Arte
   deixaram de ser regra e passaram a ser **exemplo de alocação típica**, e o texto ainda não sabe
   disso.
+- [x] **A17 · [DECIDIDO 2026-08-15] O chão se compra por MOLDE, e cada molde tem régua.** Detalhe
+  em `Arcano_revisao.md` §5.3. O problema era que uma régua métrica solta mais liberdade de moldar
+  deixa o jogador **lavar matéria em alcance**: 1 m³ vira 127 m de cilindro fino, e a laje
+  improvisada **vence o Muro comprado com XP** a partir do grau 5 (17 m contra 12; 40 contra 20).
+  A alavanca não é o cuboide (ele é o mais manso dos oito), é a **esbeltez**, então nenhum teto de
+  forma resolve. A escola escolhida é a de D&D 3.5, Pathfinder, Warhammer e FFT: **o molde é o
+  parâmetro**, com nome e régua própria, em metros. Cinco moldes: **Explosão** (diâmetro 0,5 · 1 ·
+  2 · 3,5 · 5 · 6,5 · 8 m), **Leque** (comprimento a 60°), **Linha** (comprimento, 1 m de largura,
+  compra 6× o alcance da Explosão e paga na largura), **Muralha** (a régua que o Muro já tem) e
+  **Cadeia** (inimigos ligados, o único molde imune à formação). A Área do improviso passa a ser a
+  régua da Explosão, e o **Volume fica intacto** e perde só o direito de virar forma. O que falta
+  virar dado está na lista de seis itens no fim da §5.3.
 - [ ] **A16 · [DECIDIR] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
   oito escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais aparecer. O caso
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,

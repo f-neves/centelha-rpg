@@ -471,7 +471,13 @@ const { aba } = Astro.props;
   .card-modal .besta-con { font-style: italic; margin: .3rem 0 .4rem; font-size: var(--fs-rotulo); }
   .card-modal .besta-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr));
     gap: .3rem; margin: 0 0 .55rem; padding: .5rem 0; border-top: 1px dotted var(--rule); border-bottom: 1px dotted var(--rule); }
-  .card-modal .besta-stats div { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .05rem; }
+  /* `space-between` e `min-width: 0`: num celular a fileira quebra em duas e os
+     rótulos longos ("Def. Social") passam a ocupar duas linhas. Com o número
+     logo abaixo do rótulo ele descia junto e deixava de estar na mesma altura
+     do PV ao lado; colado no pé da célula, os seis números voltam a se ler numa
+     linha só. */
+  .card-modal .besta-stats div { display: flex; flex-direction: column; align-items: center;
+    justify-content: space-between; text-align: center; gap: .05rem; min-width: 0; }
   .card-modal .besta-stats dt { font-family: 'Cinzel'; color: var(--accent-strong); font-size: var(--fs-micro);
     text-transform: uppercase; letter-spacing: .04em; }
   .card-modal .besta-stats dd { margin: 0; font-size: var(--fs-aux); font-variant-numeric: tabular-nums; font-weight: 600; }
@@ -482,12 +488,24 @@ const { aba } = Astro.props;
   .card-modal .besta-atrib { margin: 0 0 .55rem; }
   .card-modal .atr-lbl { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
     letter-spacing: .04em; color: var(--accent-strong); }
-  .card-modal .atr-grid { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: .2rem .4rem; margin-top: .3rem; }
+  /* `grid-auto-columns: minmax(0, 1fr)`: sem isso cada coluna nasce do tamanho
+     do maior nome de atributo, as três somadas passavam da largura do card num
+     celular, e o `text-overflow: ellipsis` do nome nunca chegava a valer. */
+  .card-modal .atr-grid { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr); gap: .2rem .4rem; margin-top: .3rem; }
   .card-modal .atr { display: flex; align-items: baseline; justify-content: space-between; gap: .3rem;
     padding: .1rem .4rem; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent) 6%, transparent); }
   .card-modal .atr-nm { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink-soft);
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .card-modal .atr-v { font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--fs-aux); color: var(--accent-strong); }
+  /* No celular o nome vai POR CIMA do número, e não ao lado. As três colunas
+     continuam sendo os três grupos (físico, social, mental), que é a leitura
+     do bloco; o que muda é que "Perspicácia" cabe inteira em 100 px empilhada,
+     e lado a lado saía cortada em "Perspicác…". */
+  @media (max-width: 46rem) {
+    .card-modal .atr { flex-direction: column; align-items: center; gap: 0; }
+    .card-modal .atr-nm { max-width: 100%; }
+  }
   .card-modal .besta-tracos { margin: 0 0 .55rem; display: flex; flex-direction: column; gap: .28rem; }
   .card-modal .tr-linha { display: flex; gap: .4rem; }
   .card-modal .tr { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: .3rem;

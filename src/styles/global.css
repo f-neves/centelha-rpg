@@ -759,37 +759,71 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    do resto do .ui-dlg, e não num <style> de página: o mesmo diálogo é aberto
    pela aba Grid e pode ser aberto por qualquer outra.
    ==================================================================== */
-/* ALTURA FIXA, E ELA NÃO É ESTÉTICA.
-   O painel se repinta inteiro a cada clique, e um <dialog> modal é recentrado
-   pelo navegador toda vez que muda de tamanho: escolher um Efeito trocava a
-   lista de parâmetros, a caixa mudava de altura e pulava sob o cursor. Com a
-   altura travada e a rolagem por dentro, a caixa fica parada e só o conteúdo
-   se mexe. */
+/* TRÊS PAINÉIS, UMA LARGURA SÓ.
+   `ui-dlg-arte` é o que a conjuração, o NPC e os empurrões têm em comum: a
+   caixa larga. O DESENHO de cada um vem da segunda classe (`ui-dlg-conj`,
+   `ui-dlg-npc`, `ui-dlg-emp`), e essa separação não é enfeite: enquanto o
+   layout de duas colunas morava em `ui-dlg-arte`, os outros dois painéis
+   herdavam um `display: flex` de fileira e desenhavam os próprios blocos lado
+   a lado. O formulário do NPC pedia 1.663 px de largura e terminava com os
+   botões fora da tela, em qualquer tamanho de janela. */
 .ui-dlg-arte { max-width: min(64rem, 96vw); width: min(64rem, 96vw); }
-.ui-dlg-arte .ui-dlg-form { height: min(42rem, 88vh); display: flex; flex-direction: column; }
-.ui-dlg-arte .ui-dlg-corpo { flex: 1 1 auto; min-height: 0; display: flex; }
+
+/* ALTURA FIXA, E ELA NÃO É ESTÉTICA.
+   O painel de conjuração se repinta inteiro a cada clique, e um <dialog> modal
+   é recentrado pelo navegador toda vez que muda de tamanho: escolher um Efeito
+   trocava a lista de parâmetros, a caixa mudava de altura e pulava sob o
+   cursor. Com a altura travada e a rolagem por dentro, a caixa fica parada e
+   só o conteúdo se mexe. */
+.ui-dlg-conj .ui-dlg-form { height: min(42rem, 88vh); display: flex; flex-direction: column; }
+.ui-dlg-conj .ui-dlg-corpo { flex: 1 1 auto; min-height: 0; display: flex; }
+
+/* O NPC e os empurrões são formulários comuns: seguem a altura do conteúdo (o
+   NPC de duas linhas não merece uma caixa de 42rem) e rolam por dentro quando
+   passam da tela, para o rodapé de botões nunca sair por baixo. */
+.ui-dlg-npc .ui-dlg-form, .ui-dlg-emp .ui-dlg-form {
+  display: flex; flex-direction: column; max-height: 88vh; }
+.ui-dlg-npc .ui-dlg-corpo, .ui-dlg-emp .ui-dlg-corpo {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-bottom: .9rem; }
 
 /* Duas colunas: o Efeito de um lado, do topo ao pé, e todo o resto do outro.
    O Efeito é a escolha que muda TUDO o que vem depois, e numa fileira de três
    cartões ele empurrava os parâmetros para fora da tela; em coluna ele fica
-   inteiro à vista enquanto o resto é ajustado ao lado. */
-.ui-dlg-arte .ag-grade { display: grid; grid-template-columns: minmax(13rem, 18rem) 1fr;
+   inteiro à vista enquanto o resto é ajustado ao lado.
+   `minmax(0, 1fr)` e não `1fr`: o mínimo de `1fr` é o conteúdo, então uma
+   fileira que não quebrasse (a dos moldes) alargava a coluna e empurrava a
+   grade inteira para fora da caixa, cortando o botão de Conjurar. */
+.ui-dlg-conj .ag-grade { display: grid; grid-template-columns: minmax(13rem, 18rem) minmax(0, 1fr);
   gap: 1rem; flex: 1 1 auto; min-height: 0; width: 100%; }
-.ui-dlg-arte .ag-col-ef { display: flex; flex-direction: column; min-height: 0;
+.ui-dlg-conj .ag-col-ef { display: flex; flex-direction: column; min-height: 0;
   border-right: 1px solid var(--rule); padding-right: 1rem; }
-.ui-dlg-arte .ag-col-dir { display: flex; flex-direction: column; min-height: 0; }
+.ui-dlg-conj .ag-col-dir { display: flex; flex-direction: column; min-height: 0; }
 /* Só o miolo da direita rola; o custo e os botões ficam presos no pé, onde a
    mão os encontra sem procurar. */
-.ui-dlg-arte .ag-rolagem { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: .3rem; }
-.ui-dlg-arte .ag-pe { flex: 0 0 auto; padding-top: .5rem; border-top: 1px solid var(--rule); }
+.ui-dlg-conj .ag-rolagem { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: .3rem; }
+.ui-dlg-conj .ag-pe { flex: 0 0 auto; padding-top: .5rem; border-top: 1px solid var(--rule); }
 
 @media (max-width: 46rem) {
   /* No celular a coluna vira fileira: duas colunas de 8rem não servem a nenhum
      dos dois lados. */
-  .ui-dlg-arte .ag-grade { grid-template-columns: 1fr; overflow-y: auto; }
-  .ui-dlg-arte .ag-col-ef { border-right: none; padding-right: 0;
-    border-bottom: 1px solid var(--rule); padding-bottom: .6rem; max-height: 40vh; }
-  .ui-dlg-arte .ag-rolagem { overflow: visible; }
+  .ui-dlg-conj .ag-grade { grid-template-columns: minmax(0, 1fr); overflow-y: auto; gap: .6rem; }
+  /* 30vh e não 40: em pé a caixa toda tem 88vh, e o pé com o custo, a
+     Velocidade e os dois botões já come uns 20 dela. Com 40 sobravam trinta
+     pixels de parâmetros, que é o mesmo que não mostrar nenhum. A lista de
+     Efeitos rola por dentro, então encurtá-la não esconde nada. */
+  .ui-dlg-conj .ag-col-ef { border-right: none; padding-right: 0;
+    border-bottom: 1px solid var(--rule); padding-bottom: .6rem; max-height: 30vh; }
+  /* `flex: 0 0 auto`, e é este o conserto da sobreposição.
+     Quem rola aqui é a fileira inteira, não o miolo. Com `flex: 1 1 auto` o
+     miolo continuava podendo encolher abaixo do próprio conteúdo para caber na
+     coluna, e, sem recorte (`overflow: visible`), o que sobrava era desenhado
+     POR CIMA do custo e dos botões: os parâmetros saíam escritos em cima do
+     "− Centelha = Mana", da Velocidade e do Conjurar. */
+  .ui-dlg-conj .ag-rolagem { flex: 0 0 auto; overflow: visible; padding-right: 0; }
+  /* E o pé continua ao alcance da mão: gruda no fundo da fileira que rola, em
+     vez de esperar no fim de uma lista de dez parâmetros. */
+  .ui-dlg-conj .ag-pe { position: sticky; bottom: 0; z-index: 1; background: var(--panel);
+    margin-top: .4rem; padding-bottom: .2rem; }
 }
 
 .ui-dlg-arte .ag-sec { margin-bottom: .9rem; }
@@ -869,8 +903,10 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-fixos { display: flex; flex-wrap: wrap; gap: .1rem .8rem; margin-top: .3rem;
   font-size: var(--fs-micro); color: var(--ink-soft); }
 
-/* o molde: três botões com o desenho do que vai sair */
-.ag-moldes { display: flex; gap: .3rem; }
+/* o molde: quatro botões com o desenho do que vai sair.
+   A fileira quebra: os quatro pedem 360 px e num celular a coluna tem 300, e
+   sem quebrar era o Leque que ficava pendurado fora da caixa. */
+.ag-moldes { display: flex; flex-wrap: wrap; gap: .3rem; }
 .ag-md { display: inline-flex; align-items: center; gap: .3rem; padding: .25rem .6rem; cursor: pointer;
   border: 1px solid var(--rule); border-radius: var(--r-2, 6px); background: transparent;
   font: inherit; font-size: var(--fs-aux); color: var(--ink); }
@@ -878,7 +914,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-md-ic { color: var(--accent); }
 /* A abertura do leque, e a figura que a área comprada vira. A figura é o número
    que a mesa vai declarar em voz alta, então vem em destaque e não em nota. */
-.ag-angs { display: flex; align-items: center; gap: .25rem; margin-top: .35rem; }
+.ag-angs { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; margin-top: .35rem; }
 .ag-ang-l { font-size: var(--fs-micro); color: var(--ink-soft);
   text-transform: uppercase; letter-spacing: .06em; margin-right: .2rem; }
 .ag-ang { padding: .12rem .4rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
@@ -908,19 +944,25 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 /* o NPC completo */
 .ag-npc-base { display: grid; grid-template-columns: 1fr 6rem 8rem; gap: .5rem; align-items: end; }
 .ag-npc-base .ag-f-chk { grid-column: 1 / -1; }
-.ag-f { display: grid; gap: .15rem; font-size: var(--fs-micro); color: var(--ink-soft); }
+.ag-f { display: grid; gap: .15rem; font-size: var(--fs-micro); color: var(--ink-soft); min-width: 0; }
+/* `min-width: 0` e `width: 100%`: um <input> nasce com a largura de umas vinte
+   letras, e essa largura é um PISO que a grade respeita. Sem soltá-lo, a coluna
+   de 1fr era empurrada até 185 px, e num celular a fileira Nome · Vida · Lado
+   passava por cima de si mesma e saía da caixa. */
 .ag-f input, .ag-f select, .ag-f textarea { font: inherit; font-size: var(--fs-aux); color: var(--ink);
-  background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px); padding: .22rem .35rem; }
+  background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px); padding: .22rem .35rem;
+  min-width: 0; width: 100%; }
+.ag-f-chk input { width: auto; }
 .ag-f input:focus, .ag-f select:focus, .ag-f textarea:focus { outline: none; border-color: var(--accent); }
 .ag-f-chk { display: flex; align-items: center; gap: .35rem; }
 .ag-f-full { grid-column: 1 / -1; }
-.ag-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; margin-bottom: .5rem; }
-.ag-grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; margin-bottom: .5rem; }
-.ag-mais { display: flex; align-items: baseline; gap: .4rem; width: 100%; margin: .7rem 0 .4rem;
+.ag-grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; margin-bottom: .5rem; }
+.ag-grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; margin-bottom: .5rem; }
+.ag-mais { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem; width: 100%; margin: .7rem 0 .4rem;
   padding: .3rem 0; border: none; border-top: 1px solid var(--rule); background: transparent;
   cursor: pointer; font: inherit; font-size: var(--fs-aux); color: var(--ink); text-align: left; }
 .ag-mais small { color: var(--ink-soft); font-size: var(--fs-micro); }
-.ag-retrato { display: flex; align-items: center; gap: .5rem; margin-top: .5rem; font-size: var(--fs-micro); }
+.ag-retrato { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .5rem; font-size: var(--fs-micro); }
 .ag-ret-lbl { color: var(--ink-soft); text-transform: uppercase; letter-spacing: .08em; }
 .ag-ret-nm { color: var(--ink-soft); font-style: italic; }
 .ag-ret-op { display: flex; align-items: center; gap: .5rem; }
@@ -1214,3 +1256,18 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   font-size: var(--fs-micro); color: var(--ink-soft); }
 .ag-emp-ctr input { width: 3.4rem; font: inherit; font-size: var(--fs-aux); color: var(--ink);
   background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px); padding: .15rem .3rem; }
+
+/* ---- os dois formulários de Arte no celular ----
+   Nos dois o problema é o mesmo: fileiras de três e de quatro campos que num
+   telefone dão colunas de 80 px, estreitas demais para um nome e para o rótulo
+   do campo. Aqui elas quebram em duas, e o campo que é texto corrido fica com
+   a linha inteira. */
+@media (max-width: 46rem) {
+  .ui-dlg-npc .ag-npc-base { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  /* o Nome sozinho em cima: é o campo em que se escreve, não um número */
+  .ui-dlg-npc .ag-npc-base > .ag-f:first-child { grid-column: 1 / -1; }
+  .ui-dlg-npc .ag-grid3, .ui-dlg-npc .ag-grid4 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  /* o nome de quem foi empurrado ganha a linha; os números vêm embaixo */
+  .ui-dlg-emp .ag-emp-l { grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr); gap: .2rem .5rem; }
+  .ui-dlg-emp .ag-emp-nm { grid-column: 1 / -1; }
+}

@@ -411,6 +411,143 @@ ela persiste sem concentração **e** é entregue a outra coisa. Duas violaçõe
 
 ---
 
+## 5.3. Os moldes: o chão se compra por forma, e cada forma tem régua
+
+**Decidido em 2026-08-15.** A escola está fechada; as réguas abaixo são a calibragem proposta e
+esperam mesa. O que motivou: com uma régua métrica única de Área ou Volume, e liberdade de moldar,
+o jogador **lava matéria em alcance**. Medido, com 1 m³ (grau 4) esticado até onde cada forma deixa:
+
+| Molde | 1 m³ esticado | |
+|---|---|---|
+| Cilindro de raio 5 cm | **127 m** | |
+| Cone de raio 10 cm | 95 m | |
+| Torus de tubo 5 cm | anel de 41 m de vão | |
+| Cuboide de 10 cm × 2 m | 5 m | o mais **manso** dos oito |
+| Esfera | 1,24 m | a única presa, por ter **uma** medida |
+
+Então a alavanca **não é o cuboide**: é a esbeltez, e qualquer molde com duas medidas livres a tem.
+Proibir o cuboide e liberar o cilindro piora vinte e cinco vezes.
+
+E o dano ao desenho é concreto, não estético: a laje improvisada **vence o Efeito comprado com XP**
+a partir do grau 5 (17 m contra os 12 m do Muro; 40 m contra 20 m), e abaixo do grau 4 ela não
+chega a um hexágono (0,63 m). Cúbico contra linear sempre se cruza.
+
+### A escola: o molde é o parâmetro
+
+Nenhum jogo que durou entrega volume moldável ao jogador. **D&D 3.5 e Pathfinder 1e** declaram o
+tipo (*burst*, *cone*, *line*, *cylinder*) e fixam a dimensão por feitiço, com assimetria proposital
+no mesmo nível: Fireball 6 m de raio contra Lightning Bolt 36 m de linha. Mudar a geometria custa
+nível (*Widen Spell*, +3). **Pathfinder 2e** vai além e não deixa a área crescer, só o dano.
+**Warhammer** faz do molde um objeto de acrílico. **Final Fantasy Tactics** e **Into the Breach**
+usam padrão de casas. **Ars Magica**, o primo paramétrico, torna o alvo **categoria** e não medida
+(*Individual · Group · Room · Structure · Boundary*), e põe a matéria num parâmetro separado.
+**Mage the Awakening** resolve o desencontro entre alvos e área pondo os dois na mesma régua
+(*Scale*). E o **Wall of Stone** do 5e mostra como permitir a troca sem abrir a rampa: painéis
+indivisíveis, e a troca de espessura por área é fixa em 2×, nunca contínua.
+
+Centelha já tem o vocabulário e não o usa como regra: o `grid.forma` dos 139 Efeitos declara
+**alvo 43 · nenhuma 37 · zona 26 · movimento 12 · aura 10 · token 6 · muro 2 · cone 2 · cadeia 1 ·
+linha 1**. A `zona` genérica engordou e as formas com personalidade ficaram com seis Efeitos
+juntas. Quatro Efeitos já fazem o certo, com régua própria: Muro, Aura, Neblina e Terremoto.
+
+**A regra nova, em uma frase:** o parâmetro de chão não é uma medida solta, é um **molde com nome**,
+e cada molde tem a sua régua. O jogador escolhe a forma; a forma decide as dimensões.
+
+### As cinco réguas
+
+Os hexágonos são coluna de leitura, não unidade: a régua é em metros, e o molde ancora onde o
+efeito nasce.
+
+| Molde | Compra | g0 | g1 | g2 | g3 | g4 | g5 | g6 |
+|---|---|---|---|---|---|---|---|---|
+| **Explosão** | diâmetro | 0,5 m | 1 m | 2 m | 3,5 m | 5 m | 6,5 m | 8 m |
+| | *hexágonos* | *1* | *1* | *7* | *13* | *19* | *37* | *61* |
+| **Leque** | comprimento, 60° | 1 m | 2 m | 3 m | 4 m | 5 m | 6 m | 8 m |
+| | *hexágonos* | *1* | *4* | *7* | *12* | *17* | *24* | *44* |
+| **Linha** | comprimento, 1 m de largura | 2 m | 4 m | 6 m | 8 m | 12 m | 16 m | 24 m |
+| | *hexágonos* | *3* | *5* | *7* | *9* | *13* | *17* | *25* |
+| **Muralha** | metros de frente | 1 m | 2 m | 3 m | 5 m | 8 m | 12 m | 20 m |
+| **Cadeia** | inimigos ligados, salto de 3 m | 2 | 3 | 4 | 5 | 6 | 8 | 10 |
+
+A **Muralha** é a régua que o Muro já tem, sem mexer num número. A **Aura** (10 Efeitos) mantém a
+dela, 0,25 a 3 m de raio, e ela é menor de propósito: acompanha o corpo. A **Cadeia** formaliza o
+"saltar de alvo em alvo" que já é verbo exclusivo do Raio e já existe como Efeito (`corrente`).
+
+### Por que cada molde tem serviço, e não é upgrade do outro
+
+Inimigos pegos, em três formações:
+
+| | g1 | g2 | g3 | g4 | g5 | g6 |
+|---|---|---|---|---|---|---|
+| **Apertada** (um por hexágono) | | | | | | |
+| Explosão | 1 | 7 | 13 | 19 | 37 | **61** |
+| Linha | 5 | 7 | 9 | 13 | 17 | 25 |
+| Cadeia | 3 | 4 | 5 | 6 | 8 | 10 |
+| **Espalhada** (um a cada 4 hexágonos) | | | | | | |
+| Explosão | 1 | 2 | 3 | 5 | 9 | 15 |
+| Linha | 1 | 2 | 2 | 3 | 4 | 6 |
+| **Cadeia** | **3** | **4** | **5** | **6** | **8** | 10 |
+
+**A Cadeia é o único molde que não muda de valor com a formação.** Todo o resto murcha quando os
+inimigos se abrem; ela não. É a resposta para "acertar vários, mesmo não adjacentes", e ela ganha
+da Explosão em campo aberto até o grau 5, perdendo só no 6, quando a geometria fica grande o
+bastante para varrer.
+
+E o alcance que cada um compra a partir da âncora, que é a outra moeda:
+
+| | g3 | g4 | g5 | g6 |
+|---|---|---|---|---|
+| Explosão (raio) | 1,75 m | 2,5 m | 3,25 m | 4 m |
+| Leque | 4 m | 5 m | 6 m | 8 m |
+| **Linha** | **8 m** | **12 m** | **16 m** | **24 m** |
+
+A Linha compra seis vezes o alcance da Explosão e paga com a largura. É o Lightning Bolt contra o
+Fireball, e é a saída positiva para quem quer chegar longe: existe forma para isso, e ela cobra em
+outra moeda.
+
+### O que isso faz com a Área e com o Volume
+
+A **Área** do improviso passa a ser a régua da **Explosão** (0,5 · 1 · 2 · 3,5 · 5 · 6,5 · 8 m de
+diâmetro). Ela cresce de 4× para 8× do grau 1 ao 6, o que a põe em pé de igualdade com as outras
+réguas do sistema, e conserta um desencontro que estava medido: contra inimigos espalhados a Área
+de hoje entrega **um terço** do que a régua de **Alvos** entrega pelo mesmo preço.
+
+| Inimigos espalhados | g1 | g2 | g3 | g4 | g5 | g6 |
+|---|---|---|---|---|---|---|
+| Área de hoje | 1 | 1 | 2 | 2 | 2 | 5 |
+| Explosão nova | 1 | 2 | **3** | 5 | **9** | **15** |
+| Alvos (régua atual) | 1 | 2 | 3 | 4 | 6 | 10 |
+
+O **Volume fica exatamente como está** (8 cm³ a 8 m³) e **perde o direito de virar forma**. Lido
+como matéria ele está calibrado, e o que parecia pequeno era pergunta de chão feita a uma régua de
+massa: o grau 3 são **169 kg de pedra**, o grau 4 são 1,4 t e o grau 6 são 10,8 t. Espalhar o
+Volume por todo o chão que ele alcançaria dá camada de milímetros nos graus baixos, e é isso que
+tem de ser dito em voz alta: **pedra não vira tapete, névoa vira** (o fator de estado já diz isso,
+com Ar valendo oito vezes e Terra metade).
+
+### O cuboide não é proibido: ele ganha nome
+
+O cuboide comprido é a **Muralha**, e a Muralha tem régua calibrada para ser comprida. O cuboide
+maciço é **matéria**, e matéria é Volume em m³. O abuso morre por construção e não por proibição:
+não sobra medida livre para trocar, porque quem escolhe as dimensões é o molde.
+
+### O que falta para isso virar dado
+
+1. `regras.json → arcano.improviso.graus.moldes`: as cinco réguas num lugar só, e a `area` do
+   improviso apontando para a Explosão.
+2. O Efeito passa a **referenciar o molde** em vez de repetir a escala inline. Hoje o Muro carrega
+   a régua dentro dele, e o `grid.forma` já diz qual molde é: as duas informações são a mesma dita
+   duas vezes.
+3. Retaguear os **26 Efeitos de `zona`** para o molde específico, e reconciliar os quatro com
+   escala própria (Muro, Aura, Neblina, Terremoto).
+4. Revisar o `esticar` contra as réguas novas.
+5. A **Aura** tem três pares de graus que cobrem o mesmo número de hexágonos (1-2, 3-4, 5-6):
+   metade da régua dela não muda nada no tabuleiro.
+6. Regra de salto da **Cadeia**: 3 m entre elos, e decidir se o dano cai a cada elo, como o Chain
+   Lightning faz.
+
+---
+
 ## 6. Dano, empurrão e tempo
 
 ### Dano por Arte
