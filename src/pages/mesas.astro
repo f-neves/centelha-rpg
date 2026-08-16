@@ -2,7 +2,9 @@
 import Base from '../layouts/Base.astro';
 import FichaResumo from '../components/FichaResumo.astro';
 ---
-<Base title="Mesas / Fichas" descricao="Suas mesas como mestre e como jogador, e suas fichas de personagem.">
+{/* `wide` e não `prose`: a página é um painel de duas colunas, e 46rem de coluna
+    de leitura partidos ao meio deixariam um card de personagem por linha. */}
+<Base title="Mesas / Fichas" descricao="Suas mesas como mestre e como jogador, e suas fichas de personagem." largura="wide">
   <h1>Mesas / Fichas</h1>
 
   <div id="setup" class="aviso" hidden>
@@ -13,34 +15,43 @@ import FichaResumo from '../components/FichaResumo.astro';
   <div id="carregando" class="muted">Carregando…</div>
 
   <div id="mesas-conteudo" hidden>
-    <section class="secao-fichas">
-      <div class="secao-cab">
-        <h2>Personagens</h2>
-        <button class="btn primary" id="novo-pers" type="button">+ Novo Personagem</button>
+    {/* Duas colunas, uma por assunto: à esquerda quem você é, à direita onde você
+        joga. As duas listas são independentes (nenhuma decisão de uma muda a
+        outra), então lê-las lado a lado poupa a rolagem que havia entre elas. */}
+    <div class="mesas-colunas">
+      <div class="col-pers">
+        <section class="secao-fichas">
+          <div class="secao-cab">
+            <h2>Personagens</h2>
+            <button class="btn primary" id="novo-pers" type="button">+ Novo Personagem</button>
+          </div>
+          <div id="lista-pers"></div>
+        </section>
       </div>
-      <div id="lista-pers"></div>
-    </section>
 
-    <section class="secao-mesas">
-      <h2>Mesas</h2>
-      <div id="lista"></div>
-    </section>
+      <div class="col-mesas">
+        <section class="secao-mesas">
+          <h2>Mesas</h2>
+          <div id="lista"></div>
+        </section>
 
-    <div class="acoes-mesa">
-      <form id="form-criar" class="painel">
-        <h2>Criar mesa</h2>
-        <p class="muted">Você vira o <strong>mestre</strong> desta mesa.</p>
-        <label>Nome da mesa<input name="nome" required maxlength="80" /></label>
-        <label>Descrição (opcional)<input name="descricao" maxlength="200" /></label>
-        <button class="btn primary" type="submit">Criar</button>
-      </form>
+        <div class="acoes-mesa">
+          <form id="form-criar" class="painel">
+            <h2>Criar mesa</h2>
+            <p class="muted">Você vira o <strong>mestre</strong> desta mesa.</p>
+            <label>Nome da mesa<input name="nome" required maxlength="80" /></label>
+            <label>Descrição (opcional)<input name="descricao" maxlength="200" /></label>
+            <button class="btn primary" type="submit">Criar</button>
+          </form>
 
-      <form id="form-entrar" class="painel">
-        <h2>Entrar em uma mesa</h2>
-        <p class="muted">Use o <strong>código de convite</strong> que o mestre te passou.</p>
-        <label>Código<input name="codigo" required maxlength="12" style="text-transform:uppercase" /></label>
-        <button class="btn primary" type="submit">Entrar</button>
-      </form>
+          <form id="form-entrar" class="painel">
+            <h2>Entrar em uma mesa</h2>
+            <p class="muted">Use o <strong>código de convite</strong> que o mestre te passou.</p>
+            <label>Código<input name="codigo" required maxlength="12" style="text-transform:uppercase" /></label>
+            <button class="btn primary" type="submit">Entrar</button>
+          </form>
+        </div>
+      </div>
     </div>
     <p id="msg" class="msg" role="status" aria-live="polite"></p>
   </div>
@@ -225,9 +236,30 @@ import FichaResumo from '../components/FichaResumo.astro';
 
 <!-- is:global: a lista de mesas é criada via JS -->
 <style is:global>
+  /* A página é painel, não capítulo: fica larga e continua encostada à esquerda,
+     como o resto do site (o .wide de global.css centraliza). Quem escolheu
+     "centralizar" em /configuracoes continua sendo obedecido. */
+  .content > article.wide { margin-inline: 0 auto; }
+  html[data-alinha='centro'] .content > article.wide { margin-inline: auto; }
+
+  /* Personagens de um lado; Mesas e as duas portas de entrada do outro.
+     `align-items: start` para a coluna curta não esticar junto com a alta. */
+  .mesas-colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem 2rem; align-items: start; }
+  /* 900px é o mesmo corte em que o card de personagem vira linha, mais abaixo:
+     abaixo disso não há largura para duas colunas de nada. */
+  @media (max-width: 900px) { .mesas-colunas { grid-template-columns: 1fr; gap: 2rem; } }
+
   .secao-cab { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .secao-cab h2, .secao-mesas h2 { margin: 0; }
-  .secao-fichas { margin-bottom: 2rem; }
+  /* Os dois títulos começam na mesma linha: o de Personagens carrega um botão ao
+     lado e o de Mesas não, e sem a altura mínima comum eles saem desencontrados. */
+  .secao-cab, .secao-mesas h2 { min-height: 2.4rem; }
+  .secao-mesas h2 { display: flex; align-items: center; }
+  /* O h2 cresce até o botão para que o filete embaixo dele atravesse a coluna,
+     como o de Mesas do outro lado. Sem isto um título vem sublinhado de ponta a
+     ponta e o outro só embaixo da palavra, e eles estão lado a lado. */
+  .secao-cab h2 { flex: 1 1 auto; }
+  .secao-fichas { margin-bottom: 0; }
   .secao-mesas h2 { margin-bottom: .8rem; }
   .secao-fichas #lista-pers { margin-top: .9rem; }
   /* colunas do tamanho da moldura (172px) + o respiro do card */
@@ -268,8 +300,27 @@ import FichaResumo from '../components/FichaResumo.astro';
     .pc-acoes { flex-direction: row; padding-top: .4rem; }
     .pc-b { flex: 1; }
   }
-  .acoes-mesa { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
-  @media (max-width: 640px) { .acoes-mesa { grid-template-columns: 1fr; } }
+  /* O mesmo card-linha, agora por largura da COLUNA e não da tela. Desde que
+     Personagens virou coluna, um notebook de 1180px dá ~390px de coluna, e a
+     grade de 190px cabe uma só: o card volta a ser aquele de retrato enorme, um
+     por linha, que a regra de cima existe para evitar. O corte de 27rem é onde
+     dois cards de moldura (172px) deixam de caber lado a lado.
+     As declarações repetem as do bloco acima de propósito: uma condição é de
+     tela e a outra é de contêiner, e CSS não deixa somar as duas num seletor. */
+  .col-pers { container-type: inline-size; }
+  @container (max-width: 27rem) {
+    .pers-grid { grid-template-columns: 1fr; gap: .55rem; }
+    .pers-card { padding: .55rem .8rem; }
+    .pc-alvo { display: grid; grid-template-columns: 64px 1fr; column-gap: .85rem; align-items: center; }
+    .pc-alvo .pc-frame { grid-row: 1 / span 3; width: 64px; height: 77px; align-self: center; }
+    .pc-vazio { font-size: 1.6rem; }
+    .pc-nome { margin-top: 0; }
+    .pc-acoes { flex-direction: row; padding-top: .4rem; }
+    .pc-b { flex: 1; }
+  }
+  /* auto-fit e não `1fr 1fr`: os dois formulários agora vivem dentro de uma
+     coluna, e é a largura DELA que decide se cabem lado a lado, não a da tela. */
+  .acoes-mesa { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin-top: 1.6rem; }
   .painel { border: 1px solid var(--rule); border-radius: var(--r-lg); padding: 1rem; background: var(--panel); }
   .painel h2 { margin-top: 0; }
   .painel label { display: block; margin-bottom: .7rem; font-weight: 600; }
