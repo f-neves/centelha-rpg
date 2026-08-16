@@ -63,6 +63,28 @@ const esc = (s: unknown) =>
 const linhas = (s: string) => esc(s).replace(/\n/g, '<br>');
 
 /**
+ * Clicar no fundo fecha, mas só se o clique COMEÇOU no fundo.
+ *
+ * A regra ingênua ("o alvo do clique é o próprio <dialog>") fecha a caixa em
+ * dois casos em que ninguém pediu para fechar:
+ *
+ *   · a caixa aberta de dentro de um `pointerdown`/`pointerup` nasce debaixo do
+ *     dedo, e o `click` que ainda estava em voo cai nela e a fecha antes de
+ *     alguém ler uma palavra. Foi o que aconteceu com o aviso de "fora de
+ *     alcance" na mira do tabuleiro: ele abria e sumia no mesmo gesto;
+ *   · quem seleciona um texto de dentro da caixa e solta o botão fora dela
+ *     perde o que estava preenchendo.
+ *
+ * Exigir que o botão TENHA DESCIDO no fundo resolve os dois: no primeiro caso o
+ * `pointerdown` aconteceu antes de a caixa existir, então nunca foi nela.
+ */
+function fecharNoFundo(dlg: HTMLDialogElement, fechar: () => void): void {
+  let desceuNoFundo = false;
+  dlg.addEventListener('pointerdown', (e) => { desceuNoFundo = e.target === dlg; });
+  dlg.addEventListener('click', (e) => { if (e.target === dlg && desceuNoFundo) fechar(); });
+}
+
+/**
  * Texto pronto para comparar na busca: sem maiúscula e sem acento.
  *
  * Sem tirar o acento, procurar "maca" não acha "Maça" e "lanca" não acha
@@ -247,7 +269,7 @@ function montar(cfg: Cfg): Promise<Resultado> {
         }
       });
     }
-    dlg.addEventListener('click', (e) => { if (e.target === dlg) fechar(null); });
+    fecharNoFundo(dlg, () => fechar(null));
     dlg.addEventListener('cancel', () => { saida = null; }); // Esc
     dlg.addEventListener('close', () => {
       dlg.remove();
@@ -291,7 +313,7 @@ export function uiPainel(titulo: string, opts: { classe?: string } = {}):
   dlg.querySelector('.ui-dlg-x')!.addEventListener('click', fechar);
   // clique no fundo fecha, clique dentro não: o alvo só é o próprio <dialog>
   // quando o ponteiro cai fora da caixa
-  dlg.addEventListener('click', (e) => { if (e.target === dlg) fechar(); });
+  fecharNoFundo(dlg, fechar);
   dlg.addEventListener('close', () => dlg.remove());
   dlg.showModal();
   dlg.querySelector<HTMLElement>('.ui-dlg-x')?.focus();

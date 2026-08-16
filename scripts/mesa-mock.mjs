@@ -40,6 +40,20 @@ const MONS = ['mon-aasimar', 'mon-aguia-gigante', 'mon-aboleth'];
 
 const offsetParaAxial = (col, row) => ({ q: col - Math.floor(row / 2), r: row });
 
+// Uma ficha de mentira, só com o que as Artes precisam: de onde saem as Artes,
+// a Centelha e os Efeitos comprados. Sem ela NINGUÉM na bancada conjura (nenhum
+// dos 309 blocos do bestiário declara `arte`), e a conjuração era a única parte
+// grande do Grid que não dava para exercitar aqui.
+//
+// `efeito` fica nulo de propósito: nulo é "alcança o que a Arte comporta", que é
+// a regra da criatura, e com ele a lista de Efeitos vem cheia sem ter de listar
+// id por id. O improviso continua no topo, como no jogo.
+const FICHA_PC = {
+  centelha: 3,
+  arte: { fogo: 5, terra: 4, vento: 5, protecao: 3, cura: 2 },
+  efeito: null,
+};
+
 const COMBS = [];
 for (let i = 0; i < N_COMB; i++) {
   const ehPC = i < Math.min(4, N_COMB);
@@ -50,7 +64,7 @@ for (let i = 0; i < N_COMB; i++) {
     tipo: ehPC ? 'pc' : 'criatura',
     grupo: ehPC ? 'aliado' : 'inimigo',
     monstro_id: ehPC ? null : MONS[i % MONS.length],
-    personagem_id: null,
+    personagem_id: ehPC ? `p${String(i).padStart(3, '0')}` : null,
     pv_max: 40, pv_atual: 40 - (i % 7) * 3,
     mana_max: ehPC ? 8 : null, mana_atual: ehPC ? 8 - (i % 3) : null,
     tick: i % 4, iniciativa: 20 - i,
@@ -101,7 +115,8 @@ const TABELAS = {
   arena_efeitos: [],
   efeito_visao: [],
   arena_log_visao: LOG,
-  personagens: [],
+  personagens: COMBS.filter((c) => c.personagem_id)
+    .map((c) => ({ id: c.personagem_id, imagem_path: null, ficha: { ...FICHA_PC, nome: c.nome } })),
   profiles: [],
   mesa_membros: [],
   arquivos: [],
@@ -114,6 +129,30 @@ const TABELAS = {
 
 const REG = { log: [] };
 const anotar = (tipo, alvo) => REG.log.push({ tipo, alvo, t: Date.now() });
+
+/**
+ * O `insert` GUARDA, e carimba um id em quem não trouxe.
+ *
+ * Devolver a linha e esquecê-la parece inofensivo e não é: quem insere quase
+ * sempre recarrega logo depois, e a leitura vinha vazia, então nada do que a
+ * bancada criava aparecia na tela. Pior, a linha voltava SEM id (no banco quem
+ * dá o id é o Postgres), e o desenho quebrava ao usá-lo como semente do efeito
+ * visual. Guardar e carimbar é o mínimo para o caminho de escrita ser exercitável.
+ *
+ * Contador fixo em vez de sorteio: a bancada tem de dar a mesma cena a cada
+ * volta, e `Math.random()` faria o teste mudar de resposta sozinho.
+ */
+let SEQ = 0;
+function guardar(tabela, linhas) {
+  const arr = Array.isArray(linhas) ? linhas : [linhas];
+  const novas = arr.map((l) => ({ ...l, id: l?.id ?? `mock-${tabela}-${++SEQ}` }));
+  if (Array.isArray(TABELAS[tabela])) TABELAS[tabela].push(...novas);
+  // As views são a mesma coisa lida por outro nome: quem escreve em
+  // `arena_efeitos` lê de volta em `efeito_visao`, e sem isto a leitura mentiria.
+  const vista = { arena_efeitos: 'efeito_visao', combatentes: 'combate_visao', arena_tokens: 'token_visao' }[tabela];
+  if (vista && Array.isArray(TABELAS[vista]) && TABELAS[vista] !== TABELAS[tabela]) TABELAS[vista].push(...novas);
+  return novas;
+}
 
 function encadeavel(tabela, verbo, valor) {
   const o = {
@@ -149,8 +188,8 @@ export function createClient() {
     },
     from: (tab) => ({
       select: () => encadeavel(tab, 'select', () => TABELAS[tab] ?? []),
-      insert: (l) => encadeavel(tab, 'insert', () => (Array.isArray(l) ? l : [l])),
-      upsert: (l) => encadeavel(tab, 'upsert', () => (Array.isArray(l) ? l : [l])),
+      insert: (l) => encadeavel(tab, 'insert', () => guardar(tab, l)),
+      upsert: (l) => encadeavel(tab, 'upsert', () => guardar(tab, l)),
       update: () => encadeavel(tab, 'update', () => []),
       delete: () => encadeavel(tab, 'delete', () => []),
     }),

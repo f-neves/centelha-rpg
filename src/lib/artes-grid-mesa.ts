@@ -21,7 +21,7 @@ import {
 } from './artes-grid-ui';
 import {
   centroHex, verticesHex, margemTabuleiro, medidaTabuleiro, larguraHex,
-  distanciaHex, nomeHex, type Hex,
+  distanciaHex, nomeHex, vizinhos, type Hex,
 } from './hex';
 import {
   defsHTML, fxHTML, ehElemental, AJUSTES_PADRAO, LIMITES, type Ajustes,
@@ -312,9 +312,23 @@ function encaixeDoPonteiro(ctx: CtxGrid, ev: PointerEvent | null, casa: Hex): En
 function reguaDeAlcance(
   ctx: CtxGrid, de: Hex, plano: Plano, ev: PointerEvent | null,
 ): string {
+  return reguaAtePonto(ctx, de, plano, ponteiroEmMetros(ctx, ev));
+}
+
+/**
+ * A mesma régua, medida até um ponto qualquer, e não até o ponteiro.
+ *
+ * No dedo não há ponteiro parado sobre o mapa: a prévia se posiciona sozinha e
+ * fica lá, e o que a régua tem de medir é a ÂNCORA dela. Separar em duas
+ * funções mantém a régua idêntica nos dois caminhos, que é o que importa: se a
+ * do toque medisse de outro jeito, ela discordaria da conferência de Alcance
+ * que vem depois.
+ */
+function reguaAtePonto(
+  ctx: CtxGrid, de: Hex, plano: Plano, p: { x: number; y: number } | null,
+): string {
   // Sem parâmetro de Alcance não há o que medir: o efeito nasce onde nasce.
   if (plano.escolhas['Alcance'] === undefined) return '';
-  const p = ponteiroEmMetros(ctx, ev);
   if (!p) return '';
   const esc_ = escalaM(ctx);
   const o = encaixeNoCentro(de, esc_);
@@ -392,6 +406,150 @@ export function pintarPainelEfeitos(ctx: CtxGrid, box: HTMLElement): void {
 }
 
 // ============================================================ escolher no mapa
+/**
+ * O aparelho responde a dedo, e não a ponteiro que paira?
+ *
+ * A pergunta é de CAPACIDADE, e não de largura de tela: o que quebra a mira de
+ * sempre é a falta de hover, e um tablet de 900 px sofre dela igual a um
+ * telefone de 360. `pointer: coarse` é exatamente essa pergunta, e um notebook
+ * com tela sensível continua respondendo `fine` para o ponteiro principal, que
+ * é o certo: lá o mouse existe e a mira de sempre funciona.
+ */
+const noDedo = () => {
+  try { return matchMedia('(pointer: coarse)').matches; } catch { return false; }
+};
+
+/** Onde um ponto do plano (em metros) cai na TELA, em pixels. Inverso de `ponteiroEmMetros`. */
+function pontoNaTela(ctx: CtxGrid, p: { x: number; y: number }): { x: number; y: number } | null {
+  const mundo = document.getElementById('gr-mundo');
+  if (!mundo) return null;
+  const cai = mundo.getBoundingClientRect();
+  const zoom = (cai.width / (mundo.offsetWidth || cai.width)) || 1;
+  const q = quadro(ctx);
+  return {
+    x: cai.left + (p.x * q.pxPorM + q.margem.x) * zoom,
+    y: cai.top + (p.y * q.pxPorM + q.margem.y) * zoom,
+  };
+}
+
+/**
+ * A MIRA NO DEDO: posicionar, girar e confirmar sem hover nenhum.
+ *
+ * POR QUE ELA EXISTE
+ * `escolherNoMapa` desenha a prévia no `pointermove` e confirma no
+ * `pointerdown`. Num mouse isso é a coisa certa: o ponteiro passeia, a figura
+ * acompanha, e o clique fecha. Num dedo os dois eventos são o MESMO gesto: não
+ * há `pointermove` antes de encostar, e o primeiro encostar já confirmava. O
+ * resultado era escolher o lugar e o ângulo às cegas, em dois toques, sem ter
+ * visto a figura uma única vez.
+ *
+ * O GESTO
+ *   · a prévia já nasce desenhada, colada no conjurador, na casa ao lado;
+ *   · um toque solto LONGE dela muda a figura de lugar;
+ *   · arrastar gira (ou arrasta a figura junto, quando ela é um círculo e não
+ *     tem para onde apontar), e o que estiver na tela ao soltar é o que fica;
+ *   · um toque solto EM CIMA da marca confirma. É o "toque de novo no mesmo
+ *     lugar": depois de pôr a figura, o dedo já está onde ela está.
+ *
+ * O toque seco e o arrasto se separam no `pointerup`, pela distância andada, e
+ * não no `pointerdown`: no momento em que o dedo encosta ainda não dá para
+ * saber qual dos dois é, e adivinhar erraria metade das vezes.
+ */
+function mirarNoDedo(
+  ctx: CtxGrid, palco: HTMLElement, meu: Hex, plano: Plano,
+  monta: (ancora: Encaixe, dir: number) => Figura, gira: boolean, nome: string,
+): Promise<{ ancora: Encaixe; dir: number } | null> {
+  return new Promise((resolve) => {
+    const svg = document.getElementById('gr-previa') as unknown as SVGElement | null;
+    const esc_ = escalaM(ctx);
+    // Colada no conjurador: a casa vizinha do lado leste. Os tokens não guardam
+    // para onde a pessoa olha, então qualquer "frente" seria inventada; nascer
+    // encostado nunca chuta errado, e o primeiro toque já leva para o lugar.
+    let ancora: Encaixe = encaixeNoCentro(vizinhos(meu)[0], esc_);
+    let dir = 0;
+
+    const dica = document.createElement('div');
+    dica.className = 'mira-aviso mira-dedo';
+    dica.innerHTML = `<span>${esc(nome)} · toque para pôr${
+      gira ? ', arraste para girar' : ''}, toque na marca para conjurar</span>`
+      + '<button type="button" class="mira-x" aria-label="Cancelar a conjuração">✕</button>';
+    palco.appendChild(dica);
+    palco.classList.add('mirando', 'mirando-dedo');
+
+    const desenhar = () => {
+      if (svg) {
+        svg.innerHTML = reguaAtePonto(ctx, meu, plano, ancora)
+          + caminhoDaFigura(monta(ancora, dir), quadro(ctx)) + marcaEncaixe(ctx, ancora);
+      }
+    };
+
+    const limpar = () => {
+      palco.classList.remove('mirando', 'mirando-dedo');
+      dica.remove();
+      if (svg) svg.innerHTML = '';
+      palco.removeEventListener('pointerdown', desceu, true);
+      document.removeEventListener('pointermove', andou, true);
+      document.removeEventListener('pointerup', subiu, true);
+      document.removeEventListener('pointercancel', subiu, true);
+      document.removeEventListener('keydown', tecla);
+    };
+    const sair = (v: { ancora: Encaixe; dir: number } | null) => { limpar(); resolve(v); };
+
+    /** O toque caiu em cima da marca da âncora? O alvo é do tamanho de um dedo. */
+    const naMarca = (ev: PointerEvent) => {
+      const a = pontoNaTela(ctx, ancora);
+      if (!a) return false;
+      return Math.hypot(ev.clientX - a.x, ev.clientY - a.y) <= 32;
+    };
+    const levarPara = (ev: PointerEvent) => {
+      const h = ctx.hexNaTela(ev.clientX, ev.clientY);
+      if (!h) return false;
+      ancora = encaixeDoPonteiro(ctx, ev, h);
+      return true;
+    };
+
+    let x0 = 0, y0 = 0, arrastando = false, ativo = false;
+    const desceu = (ev: PointerEvent) => {
+      // o ✕ do balão é dele, e não do tabuleiro
+      if ((ev.target as HTMLElement).closest('.mira-aviso')) return;
+      ev.preventDefault(); ev.stopPropagation();
+      ativo = true; arrastando = false;
+      x0 = ev.clientX; y0 = ev.clientY;
+    };
+    const andou = (ev: PointerEvent) => {
+      if (!ativo) return;
+      // 10 px de folga: sem ela todo toque vira arrasto, porque dedo treme
+      if (!arrastando && Math.hypot(ev.clientX - x0, ev.clientY - y0) < 10) return;
+      ev.preventDefault(); ev.stopPropagation();
+      arrastando = true;
+      // O círculo é igual para todo lado: nele o arrasto arrasta a figura, que é
+      // o único uso que sobra para o gesto.
+      if (gira) dir = direcaoAoPonteiro(ctx, ancora, ev);
+      else levarPara(ev);
+      desenhar();
+    };
+    const subiu = (ev: PointerEvent) => {
+      if (!ativo) return;
+      ativo = false;
+      if (arrastando) return;              // era arrasto: o que está na tela já ficou
+      ev.preventDefault(); ev.stopPropagation();
+      if (naMarca(ev)) return sair({ ancora, dir });
+      // Fora do tabuleiro é desistir, como na mira de sempre.
+      if (!levarPara(ev)) return sair(null);
+      desenhar();
+    };
+    const tecla = (ev: KeyboardEvent) => { if (ev.key === 'Escape') sair(null); };
+
+    palco.addEventListener('pointerdown', desceu, true);
+    document.addEventListener('pointermove', andou, true);
+    document.addEventListener('pointerup', subiu, true);
+    document.addEventListener('pointercancel', subiu, true);
+    document.addEventListener('keydown', tecla);
+    dica.querySelector('.mira-x')!.addEventListener('click', () => sair(null));
+    desenhar();
+  });
+}
+
 /**
  * Espera um clique num hexágono, com a prévia da mancha seguindo o ponteiro.
  *
@@ -517,6 +675,28 @@ export async function conjurar(ctx: CtxGrid, cid: string, palco: HTMLElement): P
   }
 }
 
+/**
+ * O encaixe escolhido cabe no Alcance comprado? Se não, pergunta antes de seguir.
+ *
+ * O Alcance é do livro, e vale a pena cobrar: uma zona posta a 50 m com Alcance
+ * 1 seria um efeito de graça.
+ *
+ * A conferência mede do CENTRO do conjurador até o encaixe escolhido, em linha,
+ * que é a mesma medida que a régua mostrou na tela. Antes ela contava casas, e
+ * casa é inteiro: um efeito de Alcance 4 aceitava um alvo a 4,9 m e recusava
+ * outro a 4,1, dependendo de como a contagem caísse. Discordar da régua na tela
+ * seria pior ainda, e é por isso que a conta mora aqui, num lugar só: a mira do
+ * ponteiro e a do dedo chegam por caminhos diferentes e têm de cobrar igual.
+ */
+async function dentroDoAlcance(ctx: CtxGrid, meu: Hex, plano: Plano, onde: Encaixe): Promise<boolean> {
+  const o = encaixeNoCentro(meu, escalaM(ctx));
+  const dist = Math.hypot(onde.x - o.x, onde.y - o.y);
+  if (!plano.alcanceM || dist <= plano.alcanceM + 1e-9) return true;
+  return uiConfirmar(
+    `${plano.nome} tem Alcance de ${plano.alcanceM} m e você apontou a ${dist.toFixed(1)} m. Conjurar assim mesmo?`,
+    { titulo: 'Fora de alcance', ok: 'Conjurar' });
+}
+
 /** Aura, zona, muro, cone e linha: tudo o que ocupa chão. */
 async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement, forma: Forma): Promise<void> {
   const meu = ctx.tokens[c.id];
@@ -566,6 +746,14 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
 
   if (forma === 'aura') {
     // A aura nasce presa ao conjurador: não há onde clicar.
+  } else if (noDedo()) {
+    // No dedo os dois passos viram um só: a figura já está na tela desde o
+    // primeiro instante, e posicionar e girar acontecem no mesmo gesto.
+    const mirou = await mirarNoDedo(ctx, palco, meu, plano, monta, molde !== 'circulo', plano.nome);
+    if (!mirou) return;
+    if (!await dentroDoAlcance(ctx, meu, plano, mirou.ancora)) return;
+    ancora = mirou.ancora;
+    dir = mirou.dir;
   } else {
     // 1. ONDE COMEÇA. A âncora encaixa no centro da casa OU num vértice dela, o
     // que estiver mais perto do ponteiro. O vértice é o que permite pôr o
@@ -577,24 +765,8 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
         + caminhoDaFigura(monta(e, 0), quadro(ctx)) + marcaEncaixe(ctx, e);
     }, `Onde ${plano.nome} começa · centro ou vértice · Esc cancela`);
     if (!escolha) return;
-    const ponto = escolha.hex;
-    // O Alcance é do livro, e vale a pena cobrar: uma zona posta a 50 m com
-    // Alcance 1 seria um efeito de graça.
-    //
-    // A conferência mede do CENTRO do conjurador até o encaixe escolhido, em
-    // linha, que é a mesma medida que a régua mostrou enquanto o ponteiro andava.
-    // Antes ela contava casas, e casa é inteiro: um efeito de Alcance 4 aceitava
-    // um alvo a 4,9 m e recusava outro a 4,1, dependendo de como a contagem
-    // caísse. Discordar da régua na tela seria pior ainda.
-    const centroMeu = encaixeNoCentro(meu, esc_);
-    const alvoEnc = encaixeDoPonteiro(ctx, escolha.ev, ponto);
-    const dist = Math.hypot(alvoEnc.x - centroMeu.x, alvoEnc.y - centroMeu.y);
-    if (plano.alcanceM && dist > plano.alcanceM + 1e-9) {
-      const segue = await uiConfirmar(
-        `${plano.nome} tem Alcance de ${plano.alcanceM} m e você apontou a ${dist.toFixed(1)} m. Conjurar assim mesmo?`,
-        { titulo: 'Fora de alcance', ok: 'Conjurar' });
-      if (!segue) return;
-    }
+    const alvoEnc = encaixeDoPonteiro(ctx, escolha.ev, escolha.hex);
+    if (!await dentroDoAlcance(ctx, meu, plano, alvoEnc)) return;
     ancora = alvoEnc;
 
     // 2. PARA ONDE APONTA. O círculo não pergunta: ele é igual para todo lado, e

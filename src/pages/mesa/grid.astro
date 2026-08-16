@@ -830,6 +830,25 @@ const SETAS = [
   .gr-aviso-cheia { border-color: var(--gold); border-radius: var(--r-lg); max-width: min(34rem, 90%);
     text-align: center; line-height: 1.35; padding: .4rem .8rem; }
 
+  /* ---- a mira no dedo ----
+     `touch-action: none` é o que faz o gesto existir: sem ele o arrasto que gira
+     a figura é entendido como rolagem da página e nunca chega ao tabuleiro.
+     Vale para a mira de ataque também, que sofria do mesmo. */
+  .gr-palco.mirando { touch-action: none; }
+  /* O balão do dedo é maior e cabe em duas linhas, porque ele ENSINA um gesto,
+     e traz o ✕: num telefone não há Esc, e sem ele a única saída seria tocar
+     fora do tabuleiro, que ninguém adivinha.
+     E ele desce para o PÉ: a prévia nasce colada no conjurador, e conjurador
+     costuma estar em cima; no topo o balão tapava exatamente a figura que ele
+     está mandando olhar. */
+  .mira-aviso.mira-dedo { display: flex; align-items: center; gap: .5rem; border-radius: var(--r-lg);
+    max-width: min(30rem, 92%); line-height: 1.3; padding: .35rem .4rem .35rem .75rem;
+    text-align: left; top: auto; bottom: .6rem; }
+  .mira-dedo .mira-x { flex: 0 0 auto; width: 1.7rem; height: 1.7rem; border-radius: 50%;
+    border: 1px solid var(--rule); background: var(--panel); color: var(--ink); cursor: pointer;
+    font: inherit; font-size: var(--fs-micro); line-height: 1; }
+  .mira-dedo .mira-x:hover { border-color: #cf3327; color: #cf3327; }
+
   /* ---- diálogos do ataque ---- */
   .al-def { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: .3rem;
     margin: .5rem 0; }
