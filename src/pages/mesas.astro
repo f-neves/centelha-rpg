@@ -238,13 +238,18 @@ import FichaResumo from '../components/FichaResumo.astro';
 <style is:global>
   /* A página é painel, não capítulo: fica larga e continua encostada à esquerda,
      como o resto do site (o .wide de global.css centraliza). Quem escolheu
-     "centralizar" em /configuracoes continua sendo obedecido. */
-  .content > article.wide { margin-inline: 0 auto; }
+     "centralizar" em /configuracoes continua sendo obedecido.
+     A largura do artigo é a das duas colunas somadas, mais o vão entre elas. */
+  .content > article.wide { --col-mesas-max: 48rem; max-width: calc(var(--col-mesas-max) * 2 + 2rem); margin-inline: 0 auto; }
   html[data-alinha='centro'] .content > article.wide { margin-inline: auto; }
 
   /* Personagens de um lado; Mesas e as duas portas de entrada do outro.
      `align-items: start` para a coluna curta não esticar junto com a alta. */
   .mesas-colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem 2rem; align-items: start; }
+  /* Cada coluna para de crescer na largura que a coluna de leitura tinha antes
+     das duas: em tela larga elas ficam do tamanho de sempre e sobra margem, em
+     vez de esticarem até onde a janela deixar. */
+  .col-pers, .col-mesas { max-width: var(--col-mesas-max); }
   /* 900px é o mesmo corte em que o card de personagem vira linha, mais abaixo:
      abaixo disso não há largura para duas colunas de nada. */
   @media (max-width: 900px) { .mesas-colunas { grid-template-columns: 1fr; gap: 2rem; } }
