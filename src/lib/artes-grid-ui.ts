@@ -278,6 +278,17 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         return a.id ? `#${a.id}` : '';
       })();
 
+      // ONDE CADA CAIXA ESTAVA ROLADA, pelo mesmo motivo do foco acima.
+      //
+      // Devolver o foco NÃO devolve a rolagem: o navegador só traz o elemento
+      // focado até a borda mais próxima, e quem estava ajustando a Duração no
+      // pé do painel via a caixa saltar de volta para a lista de Efeitos a cada
+      // clique. As três que rolam são a fileira inteira (no celular), o miolo
+      // da direita (no desktop) e a lista de Efeitos, e as três nascem zeradas
+      // quando o corpo é reescrito.
+      const rolado = ['.ag-grade', '.ag-rolagem', '.ag-efs']
+        .map((s) => [s, corpo.querySelector(s)?.scrollTop || 0] as const);
+
       corpo.innerHTML = `
         <div class="ag-grade">
           <div class="ag-col-ef">
@@ -343,7 +354,13 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
           </div>
         </div>`;
 
-      if (focado) corpo.querySelector<HTMLElement>(focado)?.focus();
+      // A rolagem volta antes do foco, e o foco volta sem rolar: na outra ordem
+      // o `focus()` puxaria a caixa de novo, e o conserto brigaria consigo.
+      for (const [s, t] of rolado) {
+        const e = corpo.querySelector(s);
+        if (e && t) e.scrollTop = t;   // o navegador apara sozinho se a lista encurtou
+      }
+      if (focado) corpo.querySelector<HTMLElement>(focado)?.focus({ preventScroll: true });
 
       corpo.querySelectorAll<HTMLElement>('[data-arte]').forEach((b) => b.onclick = () => {
         const d = disponiveis.find((x) => x.arte.id === b.dataset.arte)!;
@@ -403,7 +420,20 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // A lista de Efeitos rola, e o painel se redesenha inteiro a cada escolha:
       // sem isto o cartão que a pessoa acabou de marcar reaparece fora da vista,
       // e a caixa parece ter esquecido o clique.
-      corpo.querySelector('.ag-ef.on')?.scrollIntoView({ block: 'nearest' });
+      //
+      // Mas o ajuste é feito À MÃO, na lista e em mais nada. `scrollIntoView`
+      // rola TODA caixa que esteja no caminho, e no celular a lista mora dentro
+      // de uma fileira que também rola: aproximar o cartão marcado arrastava o
+      // painel inteiro de volta ao topo, que é justamente onde a lista está.
+      // Quem clicava num Molde lá embaixo perdia o lugar por causa disto.
+      const listaEf = corpo.querySelector('.ag-efs');
+      const marcado = corpo.querySelector('.ag-ef.on');
+      if (listaEf && marcado) {
+        const cx = listaEf.getBoundingClientRect();
+        const cd = marcado.getBoundingClientRect();
+        if (cd.top < cx.top) listaEf.scrollTop -= cx.top - cd.top;
+        else if (cd.bottom > cx.bottom) listaEf.scrollTop += cd.bottom - cx.bottom;
+      }
     }
     pintar();
   });
