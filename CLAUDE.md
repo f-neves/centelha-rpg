@@ -12,10 +12,17 @@ compartilham a mesma árvore de arquivos, o mesmo `dist/` e o mesmo `main`.
 
 Regras de convívio:
 
-- **NUNCA `git add -A`, `git add .` ou `git commit -a`.** Adicione só os arquivos
-  que você mesmo editou, nomeados um a um. Isso já deu errado duas vezes: um commit
-  de ficha levou junto arquivos do bestiário, e um commit de bestiário levou junto
-  arquivos da ficha. Nos dois casos a causa foi adicionar tudo.
+- **Commite com pathspec: `git commit -m "..." -- arquivo1 arquivo2`.** Nada de
+  `git add -A`, `git add .` nem `git commit -a`. E **`git add` dos seus arquivos não
+  basta**: o índice é compartilhado com a outra instância, então se ela já deu `add`
+  nos arquivos dela, o `git commit` sobe o índice **inteiro**, não só o que você
+  adicionou. A forma com `--` commita só aqueles caminhos e ignora o resto do índice.
+  Isso já deu errado três vezes (a última foi `114e31c`, um commit das Artes que levou
+  junto três arquivos da mesa), e as duas primeiras regras falharam porque descreviam
+  o sintoma e não o mecanismo.
+- **Se o `git pull --rebase` falhar com `Please commit or stash them`, tem coisa de
+  outra frente no caminho.** Rode `git status --short` e confira se a coluna da
+  esquerda (staged) tem arquivo que não é seu antes de commitar.
 - **`git pull --rebase` antes de commitar e antes de dar push.** As duas empurram
   para `main`; sem rebase o push é recusado, e com rebase o conflito só aparece se
   ambas tocarem a mesma linha.
