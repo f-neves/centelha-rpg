@@ -191,15 +191,7 @@
         <label>Elemento</label>
         <select id="estadoMolde" class="cresce"></select>
       </div>
-      <div class="linha">
-        <label>Passo</label>
-        <div class="pills cresce" id="passo">
-          <button data-ps="0.5" aria-pressed="true">0,5 m</button>
-          <button data-ps="0.25">0,25</button>
-          <button data-ps="0.1">0,1</button>
-          <button data-ps="0">exato</button>
-        </div>
-      </div>
+
     </div>
     <p class="nota" id="notaMolde"></p>
   </div>
@@ -208,9 +200,10 @@
     <h3 class="tit">A altura de cada fatia</h3>
     <table class="tb" id="tbFatias"><thead><tr><th>Aresta</th><th>60&deg;</th><th>120&deg;</th><th>180&deg;</th><th>240&deg;</th><th>300&deg;</th><th>360&deg;</th></tr></thead>
     <tbody></tbody></table>
-    <p class="nota">Aresta dividida pelo n&uacute;mero de fatias, arredondando para baixo em meio metro.
-    O piso de 0,5 m &eacute; o que impede os dois primeiros n&iacute;veis de se fecharem em volta do
-    conjurador: falta elemento para dar a volta.</p>
+    <p class="nota">Aresta dividida pelo n&uacute;mero de fatias, exata. As c&eacute;lulas vazias s&atilde;o as
+    que a trava corta: <b>o n&uacute;mero de fatias nunca passa do n&iacute;vel</b>. É por isso que s&oacute; o
+    n&iacute;vel 6 d&aacute; a volta inteira em fatias de 60&deg;, e por isso que a altura nunca desce de 1 m,
+    que &eacute; o que sai de dividir pelo pr&oacute;prio n&iacute;vel.</p>
   </div>
 
   <div class="card" data-so="molde" hidden>
@@ -494,7 +487,7 @@ const MOLDES = {
 const S = {
   modo: 'solido',
   molde: 'basica', grau: 4, distMolde: 5, altMolde: 2, dirMolde: 0, inimigos: 0,
-  abertura: 60, fatias: 1, origem: 1.5, passo: 0.5,
+  abertura: 60, fatias: 1, origem: 1.5,
   forma: 'cubo',
   dims: { lado: 1, raio: 0.5, tubo: 0.15, altura: 1, comprimento: 2, largura: 0.2 },
   travas: { volume: false, lado: false, raio: false, tubo: false, altura: false, comprimento: false, largura: false },
@@ -743,28 +736,27 @@ const chave = (h) => h.q + ',' + h.r;
 
 // ------------------------------------------- a manifestação da Arte básica
 /**
- * A altura de cada fatia: a aresta dividida pelo número de fatias, arredondada
- * para baixo no passo escolhido. O arredondamento existe por um motivo de mesa e
- * não de gosto: sem ele, `n ÷ N` cai em valores como 1,67 e o nível 5 fica com
- * MENOS opções que o nível 3, porque 3 e 6 dividem bem e 4 e 5 não.
+ * A altura de cada fatia: a aresta dividida pelo número de fatias, **exata**.
+ * Sem arredondar e sem piso, porque quem manda é a divisão.
  *
- * Mas ele cobra: arredondar para baixo **quebra a conservação do volume** nas
- * células onde morde, e com passo de meio metro a perda chega a 40%. O passo é
- * controle da bancada justamente para o preço ficar à vista.
- *
- * O piso de 0,5 m é outra coisa, e é regra: é ele que impede os dois primeiros
- * níveis de se fecharem em volta do conjurador, porque falta elemento para dar
- * a volta.
+ * Havia um piso de meio metro, e ele saiu (2026-08-17). Arredondar quebrava a
+ * conservação do volume onde mordia (até 40% perdidos em resto de divisão) e
+ * ainda deixava o nível 5 com menos opções que o nível 3. O piso era um jeito
+ * torto de dizer o que a trava de baixo diz direito.
  */
-function alturaFatia(n, N) {
-  const bruta = n / N;
-  if (bruta < 0.5) return 0;
-  if (!S.passo) return bruta;
-  return Math.max(0.5, Math.floor(bruta / S.passo + 1e-9) * S.passo);
-}
+const alturaFatia = (n, N) => n / N;
 
-/** Quantas fatias cabem em 360° com esta abertura. */
-const maxFatias = (abertura) => Math.round(360 / abertura);
+/**
+ * Quantas fatias o feiticeiro pode acender: **no máximo o nível do parâmetro**,
+ * e nunca mais do que fecha o círculo.
+ *
+ * Essa é a trava, e ela faz três coisas de uma vez. Só o nível 6 dá a volta
+ * inteira em fatias de 60°. A progressão é monótona: cada nível compra uma
+ * fatia a mais, e nenhum nível é pior que o anterior. E o piso de altura sai de
+ * graça: dividir pelo próprio nível dá sempre **1 m**, que passa a ser o mínimo
+ * sem precisar de regra própria.
+ */
+const maxFatias = () => Math.min(Math.max(1, S.grau), Math.round(360 / S.abertura));
 
 /**
  * Uma fatia: pirâmide de ápice no feiticeiro, base reta na ponta. Ela nasce
@@ -842,7 +834,7 @@ function molde() {
     // o fator de estado incide na ARESTA: a Terra fica com metade, o Ar com o dobro
     const est = ESTADOS.find((e) => e.id === S.estado) || ESTADOS[2];
     const n = val * est.lado;
-    const N = Math.min(S.fatias, maxFatias(S.abertura));
+    const N = Math.min(S.fatias, maxFatias());
     const alt = alturaFatia(n, N);
     const setores = [];
     for (let k = 0; k < N; k++) {
@@ -1651,30 +1643,33 @@ function atualizarPainelBasica() {
     + cel('Altura', B.alt ? fmtM(B.alt) : 'não fecha', B.alt ? 'da fatia' : 'abaixo do piso de 0,5 m')
     + cel('Frente reta', fmtM(prof), 'do conjurador')
     + cel('Chão', nf(B.area, 1) + ' m²', M.dentro.length + ' hexágonos')
-    + cel('Volume', fmtVol(vol), B.perda > 0.005 ? '−' + nf(B.perda * 100, 0) + '% pelo arredondamento' : 'o do nível, inteiro')
+    + cel('Volume', fmtVol(vol), 'igual em qualquer abertura')
     + cel('Perdido no chão', perdido > 0.005 ? nf(perdido * 100, 0) + '%' : 'nada', 'sai de ' + nf(S.origem, 1) + ' m')
     + cel('No tabuleiro', S.inimigos ? pegos + ' de ' + c.inimigos.length : '—', S.inimigos ? 'contados no desenho' : 'ponha inimigos');
   document.getElementById('notaMolde').innerHTML = M.m.nota
-    + (B.alt === 0 ? '<br><b style="color:var(--s2)">Nesta aresta não dá para abrir tantas fatias: a altura cairia abaixo de meio metro.</b>' : '');
+    + '<br><b>Neste grau, no máximo ' + maxFatias() + ' fatia' + (maxFatias() === 1 ? '' : 's') + ': o número de fatias nunca passa do nível, e dividir pelo próprio nível dá sempre 1 m de altura.</b>';
   document.getElementById('grauVal').textContent = 'grau ' + S.grau + ' · aresta ' + fmtM(B.n);
-  document.getElementById('fatiasVal').textContent = B.N + ' de ' + maxFatias(S.abertura) + ' · ' + (B.N * S.abertura) + '°';
+  document.getElementById('fatiasVal').textContent = B.N + ' de ' + maxFatias() + ' · ' + (B.N * S.abertura) + '°';
   document.getElementById('distMolde').disabled = true;
   document.getElementById('distVal').textContent = 'na mão';
   document.getElementById('altMolde').disabled = true;
 
   // a tabela das alturas: aresta × abertura, já arredondada
-  const esc = MOLDES.basica.escala;
+  // a tabela mostra TODOS os graus, e a trava (fatias ≤ nível) é o que apaga
+  // as células da direita: por isso ela sobe em escada
+  const esc = MOLDES.basica.escala, porCirculo = Math.round(360 / S.abertura);
   document.querySelector('#tbFatias tbody').innerHTML = esc.map((v, g) => {
-    const n = v * B.est.lado;
+    const n = v * B.est.lado, teto = Math.min(Math.max(1, g), porCirculo);
     const cols = [1, 2, 3, 4, 5, 6].map((N) => {
-      if (N > maxFatias(S.abertura)) return '<td>—</td>';
+      if (N > porCirculo) return '<td style="color:var(--muted)">·</td>';
+      if (N > teto) return '<td>—</td>';
       const h = alturaFatia(n, N);
       const aqui = g === S.grau && N === B.N;
       return '<td' + (aqui ? ' style="color:var(--accent-strong);font-weight:600"' : '') + '>'
-        + (h ? nf(h, 1) + ' m' : '—') + '</td>';
+        + nf(h, h < 10 ? 2 : 1) + ' m</td>';
     }).join('');
     const marca = g === S.grau ? ' style="color:var(--ink);font-weight:600"' : '';
-    return '<tr' + marca + '><td>' + fmtM(n) + '</td>' + cols + '</tr>';
+    return '<tr' + marca + '><td>grau ' + g + ' · ' + fmtM(n) + '</td>' + cols + '</tr>';
   }).join('');
 
 }
@@ -1792,24 +1787,30 @@ elInim.querySelectorAll('button').forEach((b) => b.addEventListener('click', () 
   elInim.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
   refazer();
 }));
+/** O controle de fatias segue a trava: no máximo o nível, e no máximo o círculo. */
+function sincronizarFatias() {
+  const teto = maxFatias();
+  S.fatias = clamp(S.fatias, 1, teto);
+  const el = document.getElementById('fatias');
+  el.max = String(teto);
+  el.value = String(S.fatias);
+  el.disabled = teto === 1;
+}
 document.querySelectorAll('#abertura button').forEach((b) => b.addEventListener('click', () => {
   S.abertura = +b.dataset.ab;
-  S.fatias = Math.min(S.fatias, maxFatias(S.abertura));
   document.querySelectorAll('#abertura button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-  document.getElementById('fatias').max = String(maxFatias(S.abertura));
-  document.getElementById('fatias').value = String(S.fatias);
+  sincronizarFatias();
   refazer();
 }));
 document.getElementById('fatias').addEventListener('input', (e) => { S.fatias = +e.target.value; refazer(); });
-document.querySelectorAll('#passo button').forEach((b) => b.addEventListener('click', () => {
-  S.passo = +b.dataset.ps;
-  document.querySelectorAll('#passo button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-  refazer();
-}));
 document.getElementById('origem').addEventListener('input', (e) => {
   S.origem = +e.target.value; document.getElementById('origemVal').textContent = nf(S.origem, 1); refazer();
 });
-document.getElementById('grauMolde').addEventListener('input', (e) => { S.grau = +e.target.value; refazer(); });
+document.getElementById('grauMolde').addEventListener('input', (e) => {
+  S.grau = +e.target.value;
+  sincronizarFatias();
+  refazer();
+});
 document.getElementById('distMolde').addEventListener('input', (e) => { S.distMolde = +e.target.value; refazer(); });
 document.getElementById('altMolde').addEventListener('input', (e) => {
   S.altMolde = +e.target.value; document.getElementById('altMoldeVal').textContent = nf(S.altMolde, 1); refazer();
@@ -1937,6 +1938,7 @@ lerCores();
 medirCanvas();
 montarParams();
 sincronizarCartoes();
+sincronizarFatias();
 document.getElementById('origemVal').textContent = nf(S.origem, 1);
 refazer();
 enquadrar();
