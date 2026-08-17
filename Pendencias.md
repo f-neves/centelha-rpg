@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 68 itens abertos · 34 [DECIDIR] · 27 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 18** · **Bestiário 9** · Mesa 9 · Ações & Sistema 6 · Lore 6 · Proezas 5 ·
+**Placar:** 67 itens abertos · 33 [DECIDIR] · 29 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 18** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
 Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 3
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -385,9 +385,18 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   soltar. **Sinalizar à distância** foi para Sentidos e mente, depois de Enxergar longe, que é a
   ação de que ela é o oposto, e é a que menos tem de onde copiar: só o `GURPS` tem perícia
   própria para isso. As duas estão nos três documentos, e a §12 do catálogo ficou vazia.
-- [ ] **G8 · [DECIDIR] Trocar a palavra "stunt" por um termo em português.** São 15 ocorrências
-  em `habilidades.md`, `combate.md`, `relacoes-sociais.md` e `glossario.json`, então é
-  melhor trocar de uma vez. Sugestão do autor em Relações: "ações que beneficiam a intenção".
+- [x] **G8 · [DECIDIDO 2026-08-17] "Stunt" virou **Manobra**.** A palavra saiu de 14 lugares no
+  site (`habilidades.md`, `combate.md`, `relacoes-sociais.md`, `glossario.json`) e de 29 nos docs
+  de trabalho (`Combate_Social.md`, `Acoes_Sistema.md`, `Regua_Relacao.md`, `Antecedentes.md`,
+  `Relacoes.md`, `Reescala.md`, `resumo-regras.txt`), de uma vez. Três decisões junto da palavra:
+  o oposto é **Manobra Infeliz**, e não "Contra Manobra", que leria como contragolpe; "manobra"
+  **deixou de ser apelido de Técnica** no glossário, para a palavra não ter dois donos (Técnica é o
+  que se compra com XP, Manobra é o que nasce da descrição e vale só naquele lance), e o capítulo
+  de Habilidades ganhou o parágrafo que diz isso em voz alta. O texto foi **reescrito frase a
+  frase**, e não trocado no braço: "empilhando gestos (stunts)" virou "empilhando Manobras", com a
+  explicação de que ali elas são gestos. Fica anotado que existe uma Técnica chamada **Ler a
+  Manobra** (Estrategista N3), que não muda de nome: o sentido dela é o tático, e o contexto
+  separa os dois.
 - [x] ~~**G9 · Três listas paralelas das mesmas ações.**~~ **Unificadas em 2026-08-10.** A regra
   ficou escrita na §4.0 do `Acoes_Sistema.md`: **a lista é do `Acoes_Texto.md`, as referências são
   do `Acoes_Catalogo.md`, a mecânica é do `Acoes_Sistema.md`**, e os três carregam as mesmas
@@ -568,6 +577,8 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 4. ~~**D4**, o retag das Técnicas.~~ **Fechado sem causa em 17/08:** a divergência entre doc e dado
    não existia. A frase da auditoria falava dos Caminhos de Comando e Marionete, e o item a leu
    como duas Técnicas.
-5. **G8**, trocar a palavra "stunt" por um termo em português. A frente de Ações caiu de 11 itens
-   para 4 e o capítulo já está publicado; este é o que sobrou de mais barato, e agora são quatro
-   capítulos citando a palavra em vez de três.
+5. ~~**G8**, trocar a palavra "stunt" por um termo em português.~~ **Feito em 17/08:** é
+   **Manobra**, com **Manobra Infeliz** no lugar do "Contra Stunt".
+
+**Os três primeiros da lista saíram no mesmo dia.** O que sobra de mais barato agora é o **E1**,
+portar os Antecedentes ao site: o doc está fechado e o trabalho é de execução.

@@ -85,7 +85,7 @@ maiores (até 6d6, média 21 contra 17,5):
   difícil" (mestre, soma 10, ~22%); Dif 25 = "Limite humano" (pico soma 12, ~14%); Dif 30 =
   "Sobre-humano" (~1%, exige Centelha). Nada de ×1,2: aquilo valeria para um "esticão", não para a
   extensão de teto escolhida.
-- **Armas, armaduras, stunts, modificadores situacionais, Quase-Acerto, Penetração:** mantidos
+- **Armas, armaduras, Manobras, modificadores situacionais, Quase-Acerto, Penetração:** mantidos
   como estão nesta rodada; o dano por Força já sobe com o teto. Reavaliar se a mesa achar que o
   stat cru pesou demais.
 - **Orçamentos e curva de XP (provisório):** maxar um atributo passa de 150 para 210 XP;
@@ -107,7 +107,7 @@ Defesa (reintroduzir o `−⌊soma/4⌋` ou baixar o mult) numa passada à parte
   `escalaVontade`, `niveis` de atributos e virtudes (add o 6), nomes dos tiers de Proeza. Só
   descrição/rótulo; risco baixo.
 - **Fase 2 · Números fixos:** re-ancorar Dificuldade, `limitesCriacao`, orçamentos, mostradores;
-  decidir armas/armaduras/stunts/situacionais.
+  decidir armas/armaduras/Manobras/situacionais.
 - **Fase 3 · Proezas (renumerar):** `tecnicas.json.nivel` 2→3…5→6; `escalasProeza.trilhas` e
   `mostradores` ganham a 6ª entrada (valores do N2/Desperto provisórios, ver "futuras");
   custos por nível acompanham. Gating checado.

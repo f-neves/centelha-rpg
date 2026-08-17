@@ -156,9 +156,9 @@ Quando o alvo **não** paga a Vontade, ele **cede o ponto** daquela troca: aceit
 
 *(regra opcional, para quando há tempo e nenhuma pressão)*
 
-Quando não há pressa nem plateia (um cortejo de meses, uma amizade cultivada, um vassalo trabalhado com paciência), em vez de rolar você pode **tomar a média** do seu pool de influência e ir **empilhando gestos (stunts)** até furar a Defesa Social do alvo. Numa cena tensa ao vivo, volta o Combate Social com dados.
+Quando não há pressa nem plateia (um cortejo de meses, uma amizade cultivada, um vassalo trabalhado com paciência), em vez de rolar você pode **tomar a média** do seu pool de influência e ir **empilhando Manobras** (aqui elas são gestos: um presente certeiro, um favor lembrado, uma visita na hora certa) até furar a Defesa Social do alvo. Numa cena tensa ao vivo, volta o Combate Social com dados.
 
-**A média** de um pool é fixa e **não se arredonda** — o meio ponto é real, porque 3d6 tira 10,5 mesmo. Os bônus (o +2 de soma ímpar, o Peso, a Centelha, os stunts) continuam somando:
+**A média** de um pool é fixa e **não se arredonda** — o meio ponto é real, porque 3d6 tira 10,5 mesmo. Os bônus (o +2 de soma ímpar, o Peso, a Centelha, as Manobras) continuam somando:
 
 | Dados | 1d6 | 2d6 | 3d6 | 4d6 | 5d6 | 6d6 |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -167,9 +167,9 @@ Quando não há pressa nem plateia (um cortejo de meses, uma amizade cultivada, 
 **Dois modos, no mesmo intervalo de tempo.** São os mesmos do capítulo de [Ações & Sistema](/regras/acoes-e-sistema), aplicados ao cortejo:
 
 - **Acumulada (o carisma):** você **rola de verdade** a cada interação. Sucesso avança a régua; **falha por 6+ retrocede 1 passo**; falha rasa não mexe. Sobe rápido, mas pode cair.
-- **Longa (o cortejo):** você toma a **média + stunts acumulados**, sem rolar. Seguro (nunca retrocede), porém lento. O alvo vai caindo na teia.
+- **Longa (o cortejo):** você toma a **média + as Manobras acumuladas**, sem rolar. Seguro (nunca retrocede), porém lento. O alvo vai caindo na teia.
 
-**Os stunts** somam conforme a qualidade da descrição e o alinhamento com as motivações do alvo:
+**As Manobras** somam conforme a qualidade da descrição e o alinhamento com as motivações do alvo. É a mesma Manobra do [capítulo de Habilidades](/regras/habilidades), lida com a régua daqui: no combate ela premia o uso do cenário, e aqui premia acertar o que o outro quer.
 
 | Nível | Soma | Quando |
 |:---:|:---:|---|
@@ -178,11 +178,11 @@ Quando não há pressa nem plateia (um cortejo de meses, uma amizade cultivada, 
 | **2** | +2 | Boa descrição e/ou bem do interesse do alvo. |
 | **3** | +4 | Descrição incrível e/ou muito alinhado às motivações do alvo. |
 
-O salto para +4 no nível 3 é de propósito: a excelência paga dobrado. Um gesto que **desagrada** é um **Contra Stunt** e subtrai na mesma escala (−1 / −2 / −4). **Trava anti-abuso:** no máximo **um stunt de cada nível por período** (teto de **+7**): repetir o mesmo agrado desperta desconfiança, e o Mestre **sobe a Defesa Social** do alvo. Número alto exige **variedade e qualidade**, não quantidade.
+O salto para +4 no nível 3 é de propósito: a excelência paga dobrado. Um gesto que **desagrada** é uma **Manobra Infeliz** e subtrai na mesma escala (−1 / −2 / −4). **Trava anti-abuso:** no máximo **uma Manobra de cada nível por período** (teto de **+7**): repetir o mesmo agrado desperta desconfiança, e o Mestre **sobe a Defesa Social** do alvo. Número alto exige **variedade e qualidade**, não quantidade.
 
-**A leitura** ("já é o suficiente?") é opcional e **exige acesso ao alvo**: você rola **Perspicácia + Empatia** contra a Defesa Social dele. No sucesso, você sabe **se já passou**; a cada **6 de folga** na leitura, descobre **+1 ponto** do que ainda falta. A sua influência é confiável (média), mas saber se pegou é incerto (você rola a leitura): ler mal faz você parar cedo ou gastar stunts à toa.
+**A leitura** ("já é o suficiente?") é opcional e **exige acesso ao alvo**: você rola **Perspicácia + Empatia** contra a Defesa Social dele. No sucesso, você sabe **se já passou**; a cada **6 de folga** na leitura, descobre **+1 ponto** do que ainda falta. A sua influência é confiável (média), mas saber se pegou é incerto (você rola a leitura): ler mal faz você parar cedo ou gastar Manobras à toa.
 
-Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o intervalo-base **escala com a longevidade da raça** (um elfo corteja em estações onde um humano leva semanas). O **período** do teto acima é esse mesmo intervalo, escolhido na [escada de seis degraus](/regras/acoes-e-sistema) — Tick, minuto, hora, dia, semana, estação. Furar a Defesa concede o pedido; furar **por 6+** rende passos na régua, sempre respeitando o **teto de vidro** (±2 por stunts sozinhos) e o **favor alugado**.
+Cada Manobra **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o intervalo-base **escala com a longevidade da raça** (um elfo corteja em estações onde um humano leva semanas). O **período** do teto acima é esse mesmo intervalo, escolhido na [escada de seis degraus](/regras/acoes-e-sistema) — Tick, minuto, hora, dia, semana, estação. Furar a Defesa concede o pedido; furar **por 6+** rende passos na régua, sempre respeitando o **teto de vidro** (±2 por Manobras sozinhas) e o **favor alugado**.
 
 ---
 
@@ -192,4 +192,4 @@ Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada), e o inter
 - **Move por:** atos (saltos fixos), conversa (Ataque vs [Defesa Social](/regras/defesas), +1 passo por 6 de folga) e gasto de crédito ao cobrar. Sair do Neutro = 3 passos; lábia sozinha para em +2. Esfria 1 passo por estação.
 - **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Peso + Centelha, contra a Defesa Social; **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance; se não pagar, cede o ponto e a régua anda **Margem** passos. Não vale contra leitura.
-- **Influência Estendida** (calma): tome a média (3,5/7/10,5/14/17,5/21) + stunts (0/+1/+2/+4, teto +7/período), modo **Acumulada** (arrisca) ou **Longa** (seguro), leitura vs Defesa Social para saber quanto falta.
+- **Influência Estendida** (calma): tome a média (3,5/7/10,5/14/17,5/21) + Manobras (0/+1/+2/+4, teto +7/período), modo **Acumulada** (arrisca) ou **Longa** (seguro), leitura vs Defesa Social para saber quanto falta.

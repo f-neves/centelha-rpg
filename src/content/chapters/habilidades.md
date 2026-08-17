@@ -2,7 +2,7 @@
 ordem: 3
 numeral: "II"
 titulo: "Habilidades"
-resumo: "As 24 Habilidades primárias em quatro grupos, a régua de 0 a 6, a Especialidade e os Stunts."
+resumo: "As 24 Habilidades primárias em quatro grupos, a régua de 0 a 6, a Especialidade e as Manobras."
 ---
 
 Se o [Atributo](/regras/atributos) é o que você é, a Habilidade é o que você aprendeu a fazer. Elas vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. **0 não é impedimento**, é falta de treino: você ainda rola o Atributo sozinho, e ainda pode dar certo, só que muito mais raramente. São 24, em quatro grupos de seis.
@@ -96,12 +96,19 @@ Cada nível custa **8 + (nível × 4)** numa Habilidade primária (12 · 16 · 2
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Você tem Armas 5 (2 níveis de Especialidade) e escreveu "espada longa" nos dois. Num duelo de espada longa (base 3d6+2), o escopo vale duplo: você rola 5d6+2 e descarta os dois dados mais baixos. Contra um oponente de lança, o escopo não vale e você rola só os 3d6+2.</div>
 
-## Stunts · recompensa à ousadia
+## Manobras · recompensa à ousadia
 
-Descrever uma ação com criatividade e uso do cenário rende um Stunt. O Mestre define o nível:
+Descrever uma ação com criatividade e uso do cenário rende uma **Manobra**: um bônus naquele lance,
+e só nele. O Mestre define o nível:
 
 | Nível | Bônus |
 |:---:|---|
 | 1 | +2 fixo |
 | 2 | +1d6 |
 | 3 | +2d6 |
+
+A Manobra não se compra nem se aprende: ela não é uma [Técnica](/caminhos), não sai de
+catálogo nenhum e está aberta a qualquer personagem, do camponês ao semideus. O que ela cobra é
+atenção ao que está em volta · o lampião pendurado, a mesa entre vocês, o nome que o outro não
+quer ouvir em voz alta · e o preço de repeti-la é que a segunda vez impressiona menos que a
+primeira.

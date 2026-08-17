@@ -165,7 +165,7 @@ sai.
 
 **Média igual ou menor que a Dificuldade não impede tentar.** O personagem simplesmente não
 avança: cada intervalo passa e o Acúmulo não sobe. O caminho não é insistir, é **levantar a
-média** ou **abaixar a Dificuldade**, e para isso vale tudo o que não é dado: stunt, ajuda,
+média** ou **abaixar a Dificuldade**, e para isso vale tudo o que não é dado: Manobra, ajuda,
 ferramenta certa, oficina, material melhor, Proeza, Arte. O aprendiz que não consegue a peça
 sozinho consegue com o mestre ao lado e a bigorna certa.
 
@@ -227,7 +227,7 @@ Dois encaixes com o que já existe:
 
 - **O Tick é o mesmo do Combate** (≈1 segundo), e é por isso que uma ação de Ações & Sistema pode
   acontecer no meio de uma luta sem tradução nenhuma.
-- **"Período", em Relações Sociais, é o intervalo declarado.** O teto anti-abuso de stunts vale
+- **"Período", em Relações Sociais, é o intervalo declarado.** O teto anti-abuso de Manobras vale
   por intervalo, seja ele semana ou estação. Isso também casa com a regra de lá de que o
   intervalo-base **escala com a longevidade da raça**: o elfo corteja em estações onde o humano
   corteja em semanas, e o degrau muda sem que a regra mude.
@@ -249,7 +249,7 @@ princípio do Coração do Sistema ("os dados só entram quando o resultado é i
 continua bastando, agora com um par de modos que o torna operacional em vez de conselho.
 
 A escolha vale nos dois sentidos. Um personagem com média abaixo da Dificuldade **pode** escolher
-a Longa: ele não vai avançar sozinho, mas pode passar a avançar assim que somar stunt, ajuda ou
+a Longa: ele não vai avançar sozinho, mas pode passar a avançar assim que somar Manobra, ajuda ou
 ferramenta à média. E um personagem com média muito acima **pode** escolher rolar, se a cena tem
 pressa, e aceitar o risco que o dado traz.
 
@@ -273,7 +273,7 @@ outros apoiam. O ajudante **rola contra a mesma Dificuldade**:
 | passou | **+2** |
 | passou com Margem | **+2** e mais **+1d6 por Margem** |
 
-É a mesma escala dos Stunts (+2 fixo, depois dados), e pela mesma razão: excedente de expertise
+É a mesma escala das Manobras (+2 fixo, depois dados), e pela mesma razão: excedente de expertise
 vira dado. Ajudar exige saber fazer, e quem não sabe não atrapalha nem ajuda.
 
 #### Teste coletivo
@@ -328,9 +328,9 @@ seção *Cortejo com calma: a Influência Estendida*. Os dois agora falam a mesm
 2. **A média não arredonda, em lugar nenhum.** A tabela publicada em Relações passou a mostrar as
    frações (3,5 · 7 · 10,5 · 14 · 17,5 · 21). O meio ponto quase não muda um confronto único
    contra a Defesa Social, mas na Longa ele se acumula e vira intervalos inteiros.
-3. **As duas escalas de Stunt ficam.** A geral (+2 · +1d6 · +2d6) é de uma jogada só; a social
-   (+1 · +2 · +4, teto de +7 por período, Contra Stunt subtraindo) empilha ao longo de
-   intervalos e tem trava anti-abuso. A ponte que faltava: **em modo Longa, stunt em dado vale a
+3. **As duas escalas de Manobra ficam.** A geral (+2 · +1d6 · +2d6) é de uma jogada só; a social
+   (+1 · +2 · +4, teto de +7 por período, Manobra Infeliz subtraindo) empilha ao longo de
+   intervalos e tem trava anti-abuso. A ponte que faltava: **em modo Longa, Manobra em dado vale a
    média do dado** (nível 2 vale +3,5 e nível 3 vale +7).
 4. **A falha rasa de Relações virou lei geral.** A banda morta de uma Margem, escrita acima na
    Acumulada, é a mesma regra que o cortejo já usava.
@@ -1640,7 +1640,12 @@ ou Arte**, como em toda a régua (§3.3).
     Veneno, Doença, Ambiente, Sufocamento e Sono. Doença foi calibrada contra o **camponês** e
     não contra o aventureiro, e a consequência é a melhor coisa da família: a febre se vence por
     quem cuida, não pela ficha do doente.
-11. **[DECIDIR]** Trocar a palavra "stunt" em Relações Sociais por um termo em português.
+11. ~~**[DECIDIR]** Trocar a palavra "stunt" por um termo em português.~~ **Feito em 17/08/2026:**
+    a palavra é **Manobra**, e vale nos três capítulos que usavam "stunt" (Habilidades, Combate e
+    Relações Sociais). O oposto virou **Manobra Infeliz**, e não "Contra Manobra", que leria como
+    contragolpe. No glossário, "manobra" deixou de ser apelido de **Técnica**, para a palavra não
+    ter dois donos: Técnica é o que se compra com XP, Manobra é o que nasce da descrição e vale
+    só naquele lance.
 12. **[DECIDIR]** Reequilibrar a **Especialidade**, efeito colateral assumido da §5.5. A §7.5
     acrescentou um dado novo à conta: na Longa, cada nível de Especialidade vale cerca de **+2**
     na média.

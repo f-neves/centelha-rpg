@@ -45,7 +45,7 @@ inflar:
 - **Aparência** é o bônus social **geral**: entra em **toda** jogada social (incluindo o Combate
   Social), sempre que a aparência importa, para o bem ou para o mal. É um traço, não um
   situacional.
-- **Stunt normal** (a descrição cinematográfica, +2 / +1d6 / +2d6) entra em **qualquer** jogada,
+- **Manobra normal** (a descrição cinematográfica, +2 / +1d6 / +2d6) entra em **qualquer** jogada,
   social ou não, pela qualidade da descrição.
 - **Bônus situacionais de Antecedente** (Reputação em contexto, um Contato bem posto, uma Posição
   que pesa ali) **só entram nas jogadas que movem a Régua de Relação** (construir ou mover um
@@ -366,7 +366,7 @@ resolve uma cena e acaba. O XP volta como crédito quando a dívida é cobrada.
   Aliado Animal, Segredo, Dívida.
 - **Custo:** tudo por XP, **×3 por ponto**, na criação e em jogo (mesmo orçamento do resto). Teto
   3 na criação para Recursos e Relíquia.
-- **Bônus na jogada:** Aparência é geral (toda jogada social); stunt normal em qualquer jogada;
+- **Bônus na jogada:** Aparência é geral (toda jogada social); Manobra normal em qualquer jogada;
   bônus situacionais de Antecedente só movem a Régua de Relação, somando até +6.
 - **Voláteis:** sobem e caem na ficção; XP perdido volta como crédito.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na **Régua de Relação** e podem

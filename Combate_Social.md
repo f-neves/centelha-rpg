@@ -374,19 +374,19 @@ ataque frontal batia em muralha. É o "cerco" do combate social: lento, indireto
 
 ---
 
-## 15. Regra opcional: Influência Estendida (a média e os stunts)
+## 15. Regra opcional: Influência Estendida (a média e as Manobras)
 
 Modo opcional para influência **sem pressão** (downtime, cortejo, negociação longa, um golpe
 montado com calma). O Mestre libera quando o personagem **não está sob pressão e tem tempo**
 para agir, ou numa passagem de tempo. Numa cena tensa ao vivo, volta o combate normal, com dados.
 
-Aqui você **não aposta no dado**: toma o resultado confiável e o empilha com **stunts** até
+Aqui você **não aposta no dado**: toma o resultado confiável e o empilha com **Manobras** até
 furar a **Defesa Social** do alvo. É o "tomar a média" do Centelha.
 
 ### Tomar a média
 
 Em vez de rolar o pool do Ataque Social, use a **média** dos dados (arredonda para baixo). Os
-bônus fixos (o +2 de soma ímpar, o Peso, a Centelha, os stunts) continuam somando.
+bônus fixos (o +2 de soma ímpar, o Peso, a Centelha, as Manobras) continuam somando.
 
 | Dados | 1d6 | 2d6 | 3d6 | 4d6 | 5d6 | 6d6 |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -399,13 +399,13 @@ A influência estendida corre por um dos dois modos, no **mesmo intervalo de tem
 - **Ativo (o carisma):** você **rola de verdade** a cada interação. Sucesso **avança** a régua;
   **falha por 6+ retrocede 1 passo**; falha rasa não mexe. Menos preparo, mais risco: sobe
   rápido, mas pode cair.
-- **Passivo (o cortejo):** você toma a **média + stunts acumulados**, sem rolar a influência.
+- **Passivo (o cortejo):** você toma a **média + Manobras acumuladas**, sem rolar a influência.
   Mais preparo, mais tempo, mais presentes e cuidado. Seguro (nunca retrocede), porém lento. O
   alvo vai caindo na teia.
 
-### Stunts
+### Manobras
 
-Cada stunt (presente, elogio, favor, suborno, chantagem, um gesto atencioso) soma na média
+Cada Manobra (presente, elogio, favor, suborno, chantagem, um gesto atencioso) soma na média
 conforme o seu **nível**, definido pela **qualidade da descrição** e pelo **alinhamento com as
 Intimacies/motivação do alvo**:
 
@@ -418,11 +418,11 @@ Intimacies/motivação do alvo**:
 
 O salto para +4 no nível 3 é de propósito: a excelência paga dobrado.
 
-**Contra Stunt:** um gesto que **desagrada** subtrai na mesma escala (vacilo leve −1, desagrado
+**Manobra Infeliz:** um gesto que **desagrada** subtrai na mesma escala (vacilo leve −1, desagrado
 claro −2, ofensa grave −4, e o Mestre pode virar Desfavor na régua).
 
-**Trava anti-abuso:** no máximo **um stunt de cada nível por período** (teto de **+7**:
-0+1+2+4). Stunts repetidos caem de nível, e um alvo que percebe o interesse óbvio fica
+**Trava anti-abuso:** no máximo **uma Manobra de cada nível por período** (teto de **+7**:
+0+1+2+4). Manobras repetidas caem de nível, e um alvo que percebe o interesse óbvio fica
 desconfiado (o Mestre **sobe a Defesa Social** dele). Número alto exige **variedade e
 qualidade**, não quantidade.
 
@@ -433,23 +433,23 @@ de verdade** Perspicácia + Empatia contra a **Defesa Social** do alvo:
 
 - **Sucesso:** você sabe **se já passou ou não** da Defesa.
 - **A cada 6 de folga** na leitura, descobre **+1 ponto** do que ainda falta, até o valor exato.
-  Uma leitura brilhante te diz quantos stunts faltam; uma apertada só diz "ainda não".
+  Uma leitura brilhante te diz quantas Manobras faltam; uma apertada só diz "ainda não".
 
 A assimetria é o charme: a sua **influência é confiável** (média), mas **saber se pegou é
-incerto** (você rola a leitura). Ler mal faz você parar cedo (e falhar) ou gastar stunts à toa.
+incerto** (você rola a leitura). Ler mal faz você parar cedo (e falhar) ou gastar Manobras à toa.
 
 ### Tempo e ritmo
 
-Cada stunt **leva tempo** (um +1 é rápido; um +3 é uma empreitada). O intervalo-base **escala
+Cada Manobra **leva tempo** (um +1 é rápido; um +3 é uma empreitada). O intervalo-base **escala
 com a longevidade da raça** (um elfo corteja em estações onde um humano leva semanas), a
 **Compaixão** do cortejador **acelera** e a **Convicção** do alvo o **enrijece**.
 
 ### O gancho com a Régua de Relação
 
 Furar a Defesa Social concede o pedido; furar **por 6+** concede um favor maior **e** rende
-passos na régua (`Regua_Relacao.md`). Mas vale o **teto de vidro**: ataques e stunts sozinhos
+passos na régua (`Regua_Relacao.md`). Mas vale o **teto de vidro**: ataques e Manobras sozinhos
 levam a régua só até **±2**; subir a +3/+4/+5 (arriscar a vida por você) exige um **vínculo**
-de verdade (uma Intimacy, uma lealdade), de marco narrativo, não de contar stunts. E **favor
+de verdade (uma Intimacy, uma lealdade), de marco narrativo, não de contar Manobras. E **favor
 comprado é alugado**: suborno e chantagem sobem rápido, mas caem quando o dinheiro para.
 
 ---

@@ -133,7 +133,7 @@ demais vira a distância (em Ticks) até a vez de cada um.
 --------------------------------------------------------
 
 Monte o pool, some o Acerto da Arma, aplique Especialidade,
-Stunts e Técnicas, e role. Acerta se o total SUPERAR a
+Manobras e Técnicas, e role. Acerta se o total SUPERAR a
 Defesa do alvo (empate erra).
 
     Ataque = (Destreza + Habilidade + Especialidade) + Arma

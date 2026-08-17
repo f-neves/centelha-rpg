@@ -335,12 +335,12 @@ longo prazo:
   se rolar e passar, rende um **favor maior**.
 - **Duradouro** (mudar uma crença, fazer se apaixonar, desconto em tudo): exige **sucessos
   constantes** que movem a régua até o alvo ficar Favorável o bastante para a atitude virar
-  permanente. Corre pelo **modo ativo** (jogadas + stunts, arriscado: falha por 6+ retrocede) ou
-  **passivo** (média + stunts, seguro e lento) da **Influência Estendida** (`Combate_Social.md` §15).
+  permanente. Corre pelo **modo ativo** (jogadas + Manobras, arriscado: falha por 6+ retrocede) ou
+  **passivo** (média + Manobras, seguro e lento) da **Influência Estendida** (`Combate_Social.md` §15).
 
 ### O teto de vidro (±2)
 
-Ataques e stunts sozinhos levam a régua só até **+2 (Apreço)** ou **−2 (Desafeto)**. Subir a
+Ataques e Manobras sozinhos levam a régua só até **+2 (Apreço)** ou **−2 (Desafeto)**. Subir a
 **+3/+4/+5** (alguém arriscar a vida por você) exige um **vínculo** de verdade: o alvo formar uma
 **Intimacy/lealdade** por você, ou você se amarrar a uma Intimacy dele, nascida de **marco
 narrativo** (uma provação juntos, um ato que te torna parte da vida dele), não de contar sucessos.

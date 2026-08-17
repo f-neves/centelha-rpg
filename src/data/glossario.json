@@ -177,10 +177,9 @@
     "termo": "Técnica",
     "aliases": [
       "poder",
-      "manobra",
       "charm"
     ],
-    "definicao": "Cada nó de uma Proeza: uma manobra, dom ou poder, com nível, tipo, custo e pré-requisitos."
+    "definicao": "Cada nó de uma Proeza: um dom ou poder comprado com XP, com nível, tipo, custo e pré-requisitos."
   },
   {
     "id": "arte",
@@ -201,12 +200,14 @@
     "definicao": "Compaixão, Convicção, Temperança, Bravura (1–6): movem a alma e alimentam resistências e façanhas."
   },
   {
-    "id": "stunt",
-    "termo": "Stunt",
+    "id": "manobra",
+    "termo": "Manobra",
     "aliases": [
-      "manobra criativa"
+      "stunt",
+      "manobra criativa",
+      "manobra infeliz"
     ],
-    "definicao": "Bônus por descrever a ação com criatividade e uso do cenário (+2 fixo, +1d6 ou +2d6)."
+    "definicao": "Bônus daquele lance, por descrever a ação com criatividade e uso do cenário: +2 fixo, +1d6 ou +2d6. Não se compra nem se aprende, e vale para qualquer personagem. Nas Relações Sociais é o gesto certeiro e soma +1/+2/+4; o gesto que desagrada é uma Manobra Infeliz e subtrai igual."
   },
   {
     "id": "valor-passivo",
