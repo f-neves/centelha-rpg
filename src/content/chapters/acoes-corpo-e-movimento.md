@@ -1,6 +1,6 @@
 ---
-ordem: 10
-numeral: "VII"
+ordem: 11
+numeral: "VIII"
 titulo: "Corpo e Movimento"
 resumo: "O corpo contra o mundo físico. Fichas de Escalar, Nadar, Cair e Feito de força, mais o que a ficha de personagem já responde sem jogada nenhuma."
 ---

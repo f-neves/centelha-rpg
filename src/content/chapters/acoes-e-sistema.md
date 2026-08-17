@@ -1,6 +1,6 @@
 ---
-ordem: 9
-numeral: "VII"
+ordem: 10
+numeral: "VIII"
 titulo: "A Régua Comum"
 resumo: "O motor que vale para toda ação fora do combate: de onde sai a Dificuldade, o que a Margem mede, os cinco modos de ação, a escada de intervalos e as regras de ajuda."
 ---

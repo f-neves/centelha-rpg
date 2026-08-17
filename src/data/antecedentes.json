@@ -1,0 +1,493 @@
+[
+  {
+    "id": "recursos",
+    "ordem": 1,
+    "nome": "Recursos",
+    "formato": "unico",
+    "descricao": "Sua renda e o seu patrimônio: o que você compra, veste, monta e mantém sem precisar rolar nem pedir favor. Cobre dinheiro vivo, propriedades, crédito e padrão de vida.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "rotulo": "Remediado",
+        "texto": "Tem o que comer e onde dormir; uma arma decente, roupa simples. Uma despesa grande dói."
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Confortável",
+        "texto": "Artesão bem posto ou soldado veterano: boa arma, talvez um cavalo, alguma poupança."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Próspero",
+        "texto": "Mercador estabelecido, cavaleiro com terras pequenas: criados, montaria, armadura de qualidade, crédito na cidade."
+      },
+      {
+        "nivel": 4,
+        "rotulo": "Rico",
+        "texto": "Casa senhorial, vários empregados, luxo real; banca uma expedição, compra silêncio, empresta alto."
+      },
+      {
+        "nivel": 5,
+        "rotulo": "Fortuna de nobre",
+        "texto": "Terras, títulos de crédito, uma pequena guarnição paga; move economias locais, financia guerras pequenas."
+      },
+      {
+        "nivel": 6,
+        "rotulo": "Fortuna de reino",
+        "texto": "Frotas, domínios e tesouros que movem economias inteiras; financia exércitos e compra a lealdade de cidades."
+      }
+    ],
+    "amarra": "o custo dos itens e equipamentos; o \"favor alugado\" da Régua de Relação (suborno e mesada saem daqui, e param quando o dinheiro para). Recursos não compra lealdade de verdade, só serviço enquanto paga.",
+    "tetoCriacao": 3
+  },
+  {
+    "id": "aliados",
+    "ordem": 2,
+    "nome": "Aliados",
+    "formato": "nomeado",
+    "descricao": "Poucos indivíduos capazes e leais que agem **por você** de coração, não por salário. Cada aliado é comprado à parte, com nome e cara. O nível mede a **capacidade** do aliado combinada com a **dedicação** dele.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Um par competente e leal: um companheiro de armas comum, um artesão de confiança, um batedor."
+      },
+      {
+        "nivel": 2,
+        "texto": "Alguém capaz e bem posto: um oficial, um mercador influente no bairro, um duelista respeitado."
+      },
+      {
+        "nivel": 3,
+        "texto": "Uma figura de peso local: um capitão da guarda, um nobre menor, um feiticeiro de Centelha 1 a 2."
+      },
+      {
+        "nivel": 4,
+        "texto": "Poder regional: um comandante, um magistrado, um herói de Centelha alta que atende ao seu chamado."
+      },
+      {
+        "nivel": 5,
+        "texto": "Uma figura de peso no mundo: um general, um arquimago, um senhor de terras que arrisca muito por você."
+      },
+      {
+        "nivel": 6,
+        "texto": "Um dos maiores poderes vivos: um rei, um arquimago lendário, uma figura que move o mundo por você."
+      }
+    ],
+    "amarra": "cada aliado **nasce em Aliança (+3) ou Devoção (+4) na Régua de Relação** e tem ficha própria (some Centelha e perícia conforme o nível). Não é \"+N em algo\", é um NPC. Se você o trata mal, a régua cai e o aliado esfria. Cuidar deles é parte do jogo."
+  },
+  {
+    "id": "contatos",
+    "ordem": 3,
+    "nome": "Contatos",
+    "formato": "nomeado",
+    "descricao": "Muita gente que te deve uma boa palavra num **meio** específico: o informante, o taverneiro, o escrivão, o contrabandista. É **largura**, não profundidade: contatos dão informação, acesso e pequenos favores, não sacrifício. Cada rede é nomeada pelo meio que cobre.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Um punhado de conhecidos num canto: alguns rostos num bairro, numa guilda, numa estrada."
+      },
+      {
+        "nivel": 2,
+        "texto": "Uma rede real num meio: você sabe a quem perguntar sobre o porto, a corte, o submundo local."
+      },
+      {
+        "nivel": 3,
+        "texto": "Presença firme em toda uma cidade ou ofício: pouca coisa acontece ali sem você ouvir."
+      },
+      {
+        "nivel": 4,
+        "texto": "Tentáculos numa região inteira: informação e acesso em várias cidades daquele meio."
+      },
+      {
+        "nivel": 5,
+        "texto": "Uma teia que cruza reinos naquele meio: mercadores, espiões ou o clero te passam recados a distância."
+      },
+      {
+        "nivel": 6,
+        "texto": "Uma teia que cobre o mundo conhecido naquele meio: onde quer que você chegue, alguém já o espera."
+      }
+    ],
+    "exemplo": "**Contatos 3 (submundo do porto) · Contatos 1 (guarda da cidade)**.",
+    "amarra": "a Régua (contatos ficam em Simpatia, +1: ajudam barato, não se sacrificam); alimenta investigação, boatos e a arma social \"Rumor/Fofoca\"."
+  },
+  {
+    "id": "sequito",
+    "ordem": 4,
+    "nome": "Séquito",
+    "formato": "nomeado",
+    "descricao": "Gente comum que trabalha e luta **por salário, voto ou dever**: guardas, criados, capangas, marujos, uma tropa. Diferente de Aliados (poucos e leais) e de Contatos (informação), o Séquito é **mão de obra e músculo em número**. Cada grupo é nomeado.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Uns poucos serviçais ou capangas (2 a 3). | Magnitude 1"
+      },
+      {
+        "nivel": 2,
+        "texto": "Um grupo pequeno (4 a 7): uma escolta, uma equipe. | Magnitude 2"
+      },
+      {
+        "nivel": 3,
+        "texto": "Uma tropa (8 a 15): uma guarda, uma tripulação. | Magnitude 3"
+      },
+      {
+        "nivel": 4,
+        "texto": "Uma companhia (16 a 31): um pelotão, uma casa de criados grande. | Magnitude 4"
+      },
+      {
+        "nivel": 5,
+        "texto": "Um contingente (32 a 63): uma pequena hoste. | Magnitude 5"
+      },
+      {
+        "nivel": 6,
+        "texto": "Uma pequena hoste (64 a 127): quase um exército. | Magnitude 6"
+      }
+    ],
+    "amarra": "as **regras de Horda** já existentes: o nível é a Magnitude do esquadrão em combate. A qualidade (comum, treinado, elite) é separada do número e sai do Mestre ou de mais investimento."
+  },
+  {
+    "id": "mentor",
+    "ordem": 5,
+    "nome": "Mentor",
+    "formato": "nomeado",
+    "descricao": "Um patrono poderoso que te ensinou e ainda te protege, aconselha e abre portas. Diferente de um Aliado, o Mentor está **acima** de você: ele ajuda, mas também cobra, envia em missões e tem a própria agenda. O nível mede o poder e a disposição do mentor.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Um mestre local: o velho ferreiro, a bruxa da aldeia, um veterano. Ensina e dá um teto."
+      },
+      {
+        "nivel": 2,
+        "texto": "Um mestre respeitado: um mago de cidade, um mestre de armas de nome, um sacerdote com influência."
+      },
+      {
+        "nivel": 3,
+        "texto": "Uma autoridade no ofício: acesso a saber e recursos raros, proteção que pesa numa região."
+      },
+      {
+        "nivel": 4,
+        "texto": "Um dos grandes de uma tradição: ensina Proezas ou Artes que quase ninguém tem; a palavra dele move gente poderosa."
+      },
+      {
+        "nivel": 5,
+        "texto": "Uma lenda viva: um dos maiores do mundo naquilo. Ser aluno dele já é um escudo e uma marca."
+      },
+      {
+        "nivel": 6,
+        "texto": "Uma figura de poder mítico: o maior do mundo naquilo; o nome dele abre ou fecha qualquer porta."
+      }
+    ],
+    "amarra": "fonte ficcional de Proezas e Artes raras (o Mestre pode exigir um Mentor para liberar certas trilhas); gancho de trama garantido (o mentor sempre cobra). Régua alta com um NPC de Centelha superior."
+  },
+  {
+    "id": "posicao",
+    "ordem": 6,
+    "nome": "Posição",
+    "formato": "nomeado",
+    "descricao": "Autoridade **formal e reconhecida**: patente militar, cargo público, título de nobreza, posto numa guilda ou ordem. Diferente de Reputação (o que dizem de você), Posição é **poder de direito**: dá comando legítimo, acesso institucional e proteção da lei. Cada instituição é uma instância.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Posição menor: sargento, oficial júnior, membro pleno de uma guilda, fidalgo sem terras."
+      },
+      {
+        "nivel": 2,
+        "texto": "Posição sólida: capitão, funcionário graduado, mestre de guilda de bairro."
+      },
+      {
+        "nivel": 3,
+        "texto": "Autoridade de peso: comandante, magistrado, cavaleiro com terras, cônego."
+      },
+      {
+        "nivel": 4,
+        "texto": "Alto posto: general, conselheiro real, líder de guilda regional, barão."
+      },
+      {
+        "nivel": 5,
+        "texto": "Topo institucional: marechal, ministro, grão-mestre, alto nobre com voz no reino."
+      },
+      {
+        "nivel": 6,
+        "texto": "O ápice do poder: rei, grão-mestre supremo, sumo-sacerdote; sua palavra é lei numa nação inteira."
+      }
+    ],
+    "exemplo": "**Posição 3 (Exército real) · Posição 1 (Guilda dos Mercadores)**.",
+    "amarra": "\"terreno social\" na Régua e no Combate Social (você joga em casa em contextos onde tem posto); bônus a Etiqueta, Intimidação e comando em contexto; abre portas que Recursos e Reputação não abrem. Posição também **obriga**: quem tem posto responde por ele."
+  },
+  {
+    "id": "reputacao",
+    "ordem": 7,
+    "nome": "Reputação",
+    "formato": "nomeado",
+    "descricao": "O que dizem de você **antes de você chegar**. É Nomeada (cada reputação é uma fama específica com um público) e **direcional**: pode ser boa (admiração), temível (medo) ou infame (desprezo), e a mesma fama **ajuda num contexto e atrapalha noutro**. O nível mede o quanto ela é espalhada e forte.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Conhecido num círculo pequeno: um bairro, uma guilda, um regimento sabe quem você é."
+      },
+      {
+        "nivel": 2,
+        "texto": "Fama local firme: uma cidade inteira associa o seu nome àquilo."
+      },
+      {
+        "nivel": 3,
+        "texto": "Nome que corre a região: viajantes e forasteiros já ouviram falar."
+      },
+      {
+        "nivel": 4,
+        "texto": "Fama que cruza reinos: a sua história chega antes de você a lugares onde você nunca pôs o pé."
+      },
+      {
+        "nivel": 5,
+        "texto": "Lenda em vida: quase todos, em toda parte, conhecem o seu nome e o que ele carrega."
+      },
+      {
+        "nivel": 6,
+        "texto": "Mito universal: o seu nome cruzou o mundo e as eras; pouquíssimos nunca ouviram falar de você."
+      }
+    ],
+    "notaFormato": "Nomeado e Direcional",
+    "exemplo": "**Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável)**. A de guarda-costas ajuda a ser contratado e a intimidar, mas atrapalha a passar despercebido; a de cantor abre salões e atrapalha a ser levado a sério numa briga; a de confiável ajuda em tudo que dependa de palavra.",
+    "amarra": "um **bônus situacional às jogadas que movem a Régua de Relação**, no contexto em que a fama pesa (ver \"Antecedentes como bônus na jogada\"): entra quando quem você aborda conhece aquela reputação, some com outros situacionais até +6, e **não** buffa o Combate Social nem perícias soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível ajuda a coagir e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora."
+  },
+  {
+    "id": "reliquia",
+    "ordem": 8,
+    "nome": "Relíquia",
+    "formato": "nomeado",
+    "descricao": "Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a única forma de tocar o sobrenatural. Cada relíquia é nomeada; o nível mede a potência.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Um toque de magia: uma lâmina que nunca cega, um amuleto que aquece, um bônus pequeno e confiável."
+      },
+      {
+        "nivel": 2,
+        "texto": "Um item notável: uma arma que dá vantagem real, uma peça com uma propriedade útil por cena."
+      },
+      {
+        "nivel": 3,
+        "texto": "Um artefato de nome: efeito forte, cobiçado, reconhecível. Teto do que se começa tendo."
+      },
+      {
+        "nivel": 4,
+        "texto": "Uma relíquia de lenda: rivaliza com uma Proeza de tier médio; gente mata por ela."
+      },
+      {
+        "nivel": 5,
+        "texto": "Um tesouro do mundo: poder de semideus preso num objeto; a sua existência é um evento."
+      },
+      {
+        "nivel": 6,
+        "texto": "Uma relíquia única e divina: rivaliza com uma Proeza de tier alto; nações guerreiam por ela."
+      }
+    ],
+    "notaFormato": "Nomeado (teto 3 na criação)",
+    "amarra": "equipamento e Arcano. Uma Relíquia pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubada ou quebrada** (é volátil por natureza): por isso o XP volta como crédito se ela se perde.",
+    "tetoCriacao": 3
+  },
+  {
+    "id": "refugio",
+    "ordem": 9,
+    "nome": "Refúgio",
+    "formato": "nomeado",
+    "descricao": "Uma base sua: uma torre, uma oficina, um santuário, um esconderijo, um solar. Um lugar seguro para descansar, guardar coisas, trabalhar sem pressa e receber gente. O nível mede tamanho, defesa e recursos do lugar.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Um canto seguro: um quarto nos fundos, uma cabana, um porão discreto."
+      },
+      {
+        "nivel": 2,
+        "texto": "Um lugar de verdade: uma casa, uma oficina equipada, uma sala nos fundos de um templo."
+      },
+      {
+        "nivel": 3,
+        "texto": "Uma base sólida: uma torre pequena, uma forja completa, um esconderijo defensável com criados."
+      },
+      {
+        "nivel": 4,
+        "texto": "Um reduto: um solar murado, um laboratório raro, uma fortaleza pequena."
+      },
+      {
+        "nivel": 5,
+        "texto": "Um bastião: um castelo, um santuário de poder, um lugar que é conhecido e temido."
+      },
+      {
+        "nivel": 6,
+        "texto": "Uma cidadela lendária: uma fortaleza ou santuário conhecido no mundo todo, quase inexpugnável."
+      }
+    ],
+    "amarra": "ações estendidas (Craft, Ritual, cura, planejamento) ganham bônus e tempo protegido em casa; \"terreno social\" quando você recebe alguém no seu território."
+  },
+  {
+    "id": "aliado-animal",
+    "ordem": 10,
+    "nome": "Aliado Animal",
+    "formato": "nomeado",
+    "descricao": "Um companheiro animal ou espírito ligado a você: um lobo, um falcão, um cavalo de guerra, um familiar. Diferente do Séquito (gente), é uma criatura vinculada. O nível mede o poder dela.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Um bicho fiel e útil: um cão de caça, um falcão, uma montaria comum."
+      },
+      {
+        "nivel": 2,
+        "texto": "Um animal de guerra ou raro: um cavalo de batalha, um mastim treinado, uma ave grande."
+      },
+      {
+        "nivel": 3,
+        "texto": "Uma fera notável: um lobo enorme, um grande felino, um animal com um toque de magia."
+      },
+      {
+        "nivel": 4,
+        "texto": "Uma besta de lenda: uma criatura mágica leal, forte o bastante para virar uma luta."
+      },
+      {
+        "nivel": 5,
+        "texto": "Um companheiro mítico: um espírito, uma fera colossal, algo que assombra quem vê."
+      },
+      {
+        "nivel": 6,
+        "texto": "Uma besta divina: uma criatura de lenda, única no mundo, capaz de virar uma guerra sozinha."
+      }
+    ],
+    "amarra": "o Bestiário (a criatura tem stat block por nível) e a Proeza Vínculo Animal, que aprofunda o laço."
+  },
+  {
+    "id": "segredo",
+    "ordem": 11,
+    "nome": "Segredo",
+    "formato": "nomeado",
+    "descricao": "Uma **alavanca**: você sabe de algo que vale poder. Uma chantagem guardada, uma prova comprometedora, um saber proibido, a localização de algo. Diferente de Contatos (quem você conhece), Segredo é **o que você sabe** e pode usar. Cada segredo é nomeado; o nível mede o peso de quem ou do que ele atinge.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Uma alavanca pequena: algo que constrange um vizinho, um comerciante, um oficial menor."
+      },
+      {
+        "nivel": 2,
+        "texto": "Um segredo útil: prende alguém influente numa cidade, ou um saber que poucos têm."
+      },
+      {
+        "nivel": 3,
+        "texto": "Um segredo perigoso: derruba um nobre, uma guilda; um conhecimento que muitos matariam para ter."
+      },
+      {
+        "nivel": 4,
+        "texto": "Um segredo que abala uma região: a mentira de uma casa poderosa, um saber proibido de verdade."
+      },
+      {
+        "nivel": 5,
+        "texto": "Um segredo que muda o mundo: a fraqueza de um rei, a origem de uma guerra, algo que reescreve a história."
+      },
+      {
+        "nivel": 6,
+        "texto": "O segredo definitivo: a fraqueza de um deus, a verdade que derruba impérios; guardá-lo é carregar o destino de muitos."
+      }
+    ],
+    "amarra": "o Combate Social (munição para as abordagens de Ruptura, Chantagem e Ameaça) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). O XP volta como crédito quando queima."
+  },
+  {
+    "id": "fe",
+    "ordem": 12,
+    "nome": "Fé",
+    "formato": "unico",
+    "descricao": "Seguidores devotos ou um vínculo com uma ordem religiosa. Diferente do Séquito (pago) e dos Aliados (pessoais), a Fé move gente por **crença**: fiéis que ajudam por convicção, não por salário nem amizade. O nível mede tamanho e devoção.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Um punhado de fiéis ou um lugar numa ordem pequena: apoio simbólico, um teto sagrado."
+      },
+      {
+        "nivel": 2,
+        "texto": "Uma congregação local: gente que te acolhe, esconde e alimenta por fé."
+      },
+      {
+        "nivel": 3,
+        "texto": "Uma comunidade devota ou um posto real numa ordem: recursos, mão de obra crente, alcance."
+      },
+      {
+        "nivel": 4,
+        "texto": "Um movimento: fiéis em várias cidades, uma ordem que responde ao seu chamado."
+      },
+      {
+        "nivel": 5,
+        "texto": "Uma força de fé: uma seita ou culto amplo que faria quase tudo por você ou pela causa."
+      },
+      {
+        "nivel": 6,
+        "texto": "Uma religião de massa: milhares de devotos em muitos povos, movidos pela sua palavra ou pela causa."
+      }
+    ],
+    "notaFormato": "Único (ou Nomeado, se houver mais de um culto)",
+    "amarra": "a Régua de forma coletiva (a fé é uma disposição de muitos de uma vez); recuperação de Vontade em terreno sagrado; ganchos de trama religiosa e de lore."
+  },
+  {
+    "id": "linhagem",
+    "ordem": 13,
+    "nome": "Linhagem",
+    "formato": "unico",
+    "descricao": "A herança de povo ou de família que você carrega: um sangue que abre (ou fecha) portas, explica traços e liga você a uma história maior. Diferente de Posição (poder de direito, formal), Linhagem é **quem são os seus** e o que isso significa no mundo.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Uma família de nome local, ou uma ascendência que alguns reconhecem."
+      },
+      {
+        "nivel": 2,
+        "texto": "Uma casa respeitada numa região, ou um sangue de povo que carrega peso onde você anda."
+      },
+      {
+        "nivel": 3,
+        "texto": "Uma linhagem de renome: portas se abrem (e inimigos herdados aparecem) pelo seu sobrenome."
+      },
+      {
+        "nivel": 4,
+        "texto": "Uma grande casa ou uma ascendência rara: o seu sangue é história viva."
+      },
+      {
+        "nivel": 5,
+        "texto": "Uma linhagem lendária: descender de quem você descende é, por si só, um fato que move o mundo."
+      },
+      {
+        "nivel": 6,
+        "texto": "Sangue mítico: descendência de heróis fundadores ou de um ser divino; o seu sangue é história do mundo."
+      }
+    ],
+    "amarra": "as baselines de povo da Régua de Relação (o seu sangue muda onde as relações começam); ganchos de lore, dívidas e ódios herdados. Linhagem é tão gancho quanto benefício: vem com obrigações e inimigos de brinde."
+  },
+  {
+    "id": "divida",
+    "ordem": 14,
+    "nome": "Dívida",
+    "formato": "nomeado",
+    "descricao": "Alguém te deve **um favor grande, uma vez**. Diferente de um Aliado (que ajuda sempre) ou de Recursos (renda contínua), a Dívida é **capital pontual**: você cobra, ela se resolve e some. Cada dívida é nomeada por quem deve. O nível mede o tamanho do que pode ser cobrado.",
+    "niveis": [
+      {
+        "nivel": 1,
+        "texto": "Um favor pequeno de alguém comum: uma informação, um teto por uma noite, uma vista grossa."
+      },
+      {
+        "nivel": 2,
+        "texto": "Um favor real de alguém posto: um empréstimo, uma carta de recomendação, um silêncio."
+      },
+      {
+        "nivel": 3,
+        "texto": "Um favor caro de alguém influente: esconder você da lei, testemunhar, abrir uma porta fechada."
+      },
+      {
+        "nivel": 4,
+        "texto": "Um favor que custa à pessoa: ela arrisca a posição ou os bens por você, uma vez."
+      },
+      {
+        "nivel": 5,
+        "texto": "Um favor que quase a arruína: ela paga um preço alto, uma única vez, e a dívida está quitada."
+      },
+      {
+        "nivel": 6,
+        "texto": "Um favor que a arruína: ela dá tudo o que tem por você, uma única vez, e fica em ruínas."
+      }
+    ],
+    "notaFormato": "Nomeado e consumível",
+    "amarra": "a Régua (é um pico de capital que você gasta de uma vez, sem construir vínculo); resolve uma cena e acaba. O XP volta como crédito quando a dívida é cobrada."
+  }
+]

@@ -1,6 +1,6 @@
 ---
-ordem: 13
-numeral: "VII"
+ordem: 14
+numeral: "VIII"
 titulo: "Ofício e Mundo"
 resumo: "Construir, reparar, melhorar e ganhar a vida com um ofício, mais viagem e obra. O maior subsistema do capítulo, e ele cabe inteiro na Jogada Longa."
 ---

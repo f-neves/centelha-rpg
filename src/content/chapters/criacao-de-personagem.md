@@ -1,6 +1,6 @@
 ---
-ordem: 23
-numeral: "XVIII"
+ordem: 24
+numeral: "XIX"
 titulo: "Criação de Personagem"
 resumo: "Montar um herói gastando XP a partir de pisos — com a ficha auto-calculável."
 ---

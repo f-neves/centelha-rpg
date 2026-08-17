@@ -1,6 +1,6 @@
 ---
-ordem: 12
-numeral: "VII"
+ordem: 13
+numeral: "VIII"
 titulo: "Sentidos, Engano e Fé"
 resumo: "O que se percebe, o que se esconde, o que se negocia e o que se pede aos deuses. Quatro famílias que ainda esperam ficha, com a jogada de partida de cada ação."
 ---

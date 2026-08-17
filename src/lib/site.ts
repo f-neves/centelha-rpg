@@ -25,11 +25,12 @@ export const NAV = [
   { slug: 'regras/vida-ferimentos-cura', titulo: 'Vida, Ferimentos & Cura', numeral: 'IV' },
   { slug: 'regras/centelha', titulo: 'Centelha', numeral: 'V' },
   { slug: 'regras/racas', titulo: 'Raças', numeral: 'VI' },
+  { slug: 'regras/antecedentes', titulo: 'Antecedentes', numeral: 'VII' },
   {
-    // Como os capítulos II e XVI, o VII são cinco páginas: o link do capítulo abre a
+    // Como os capítulos II e XVII, o VIII são cinco páginas: o link do capítulo abre a
     // primeira (a régua comum, que as outras quatro usam), e as cinco só aparecem na
     // barra lateral enquanto se está dentro dele.
-    slug: 'regras/acoes-e-sistema', titulo: 'Ações & Sistema', numeral: 'VII',
+    slug: 'regras/acoes-e-sistema', titulo: 'Ações & Sistema', numeral: 'VIII',
     sub: [
       { slug: 'regras/acoes-e-sistema', titulo: 'A Régua Comum' },
       { slug: 'regras/acoes-corpo-e-movimento', titulo: 'Corpo e Movimento' },
@@ -38,27 +39,27 @@ export const NAV = [
       { slug: 'regras/acoes-oficio-e-mundo', titulo: 'Ofício e Mundo' },
     ],
   },
-  { slug: 'regras/combate', titulo: 'Combate Físico', numeral: 'VIII' },
-  { slug: 'regras/relacoes-sociais', titulo: 'Relações Sociais', numeral: 'IX' },
-  { slug: 'regras/defesas', titulo: 'As Três Defesas', numeral: 'X' },
-  { slug: 'regras/quase-acerto', titulo: 'Quase-Acerto', numeral: 'XI' },
-  { slug: 'regras/armas-e-armaduras', titulo: 'Armas & Armaduras', numeral: 'XII' },
-  { slug: 'regras/custo-de-servico-e-itens', titulo: 'Custo de Serviço & Itens', numeral: 'XIII' },
-  { slug: 'caminhos', titulo: 'As Proezas', numeral: 'XIV' },
-  { slug: 'arcano', titulo: 'O Arcano', numeral: 'XV' },
+  { slug: 'regras/combate', titulo: 'Combate Físico', numeral: 'IX' },
+  { slug: 'regras/relacoes-sociais', titulo: 'Relações Sociais', numeral: 'X' },
+  { slug: 'regras/defesas', titulo: 'As Três Defesas', numeral: 'XI' },
+  { slug: 'regras/quase-acerto', titulo: 'Quase-Acerto', numeral: 'XII' },
+  { slug: 'regras/armas-e-armaduras', titulo: 'Armas & Armaduras', numeral: 'XIII' },
+  { slug: 'regras/custo-de-servico-e-itens', titulo: 'Custo de Serviço & Itens', numeral: 'XIV' },
+  { slug: 'caminhos', titulo: 'As Proezas', numeral: 'XV' },
+  { slug: 'arcano', titulo: 'O Arcano', numeral: 'XVI' },
   {
-    // O capítulo XVI são três páginas. O link do capítulo abre a primeira delas, e as
+    // O capítulo XVII são três páginas. O link do capítulo abre a primeira delas, e as
     // três só aparecem na barra lateral enquanto se está dentro do capítulo.
-    slug: 'artes/regras', titulo: 'As Artes', numeral: 'XVI',
+    slug: 'artes/regras', titulo: 'As Artes', numeral: 'XVII',
     sub: [
       { slug: 'artes/regras', titulo: 'Regras' },
       { slug: 'artes/efeitos', titulo: 'Efeitos Especiais' },
       { slug: 'artes/catalogo', titulo: 'As 24 Artes' },
     ],
   },
-  { slug: 'regras/folego', titulo: 'Fôlego', numeral: 'XVII' },
-  { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'XVIII' },
-  { slug: 'regras/qual-sistema', titulo: 'Qual Sistema Eu Uso?', numeral: 'XIX' },
+  { slug: 'regras/folego', titulo: 'Fôlego', numeral: 'XVIII' },
+  { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'XIX' },
+  { slug: 'regras/qual-sistema', titulo: 'Qual Sistema Eu Uso?', numeral: 'XX' },
 ];
 
 export const FERRAMENTAS = [

@@ -1,6 +1,6 @@
 ---
-ordem: 11
-numeral: "VII"
+ordem: 12
+numeral: "VIII"
 titulo: "Resistir"
 resumo: "Veneno, doença, ambiente, sufocamento e sono. Cinco relógios diferentes, e uma moeda só para os cinco: o Desgaste."
 ---

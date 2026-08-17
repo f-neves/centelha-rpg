@@ -20,6 +20,15 @@ const S = {
   habilidades: z.object({ id: z.string(), nome: z.string(), grupo: z.enum(['combate', 'fisica', 'social', 'saber', 'tecnica']), atributos: z.array(z.string()).optional(), secundaria: z.boolean().optional(), descricao: z.string(), niveis: escala.optional() }),
   'habilidades-secundarias': z.object({ id: z.string(), nome: z.string(), grupo: z.enum(['corpo', 'sociais', 'conhecimento', 'oficio', 'expressao', 'subterfugio', 'interior']), descricao: z.string(), niveis: escala.optional() }),
   virtudes: z.object({ id: z.string(), nome: z.string(), resiste: z.string(), descricao: z.string(), niveis: escala.optional() }),
+  // Os seis níveis são obrigatórios: um Antecedente com a régua pela metade não tem como
+  // ser comprado nem lido, e o capítulo é gerado direto desta tabela.
+  antecedentes: z.object({
+    id: z.string(), ordem: z.number().int().min(1), nome: z.string(),
+    formato: z.enum(['unico', 'nomeado']), notaFormato: z.string().optional(),
+    descricao: z.string(), niveis: escala.length(6),
+    exemplo: z.string().optional(), amarra: z.string().optional(),
+    tetoCriacao: z.number().int().min(1).max(6).optional(),
+  }),
   caminhos: z.object({ id: z.string(), nome: z.string(), trilha: z.enum(['corpo', 'voz', 'mente']), atributo: z.string(), habilidade_ancora: z.string().optional(), descricao: z.string() }),
   tecnicas: z.object({ id: z.string(), nome: z.string(), caminho: z.string(), atributo: z.string(), nivel: z.number().int().min(1).max(6), efeito: z.enum(['bonus', 'soak', 'dano', 'penetracao', 'carga', 'salto', 'velocidade', 'tamanho', 'estado']), tipo: z.enum(['passiva', 'ativa', 'reflexiva']), custo, prereq: z.array(z.string()), aliases: z.array(z.string()), texto: z.string(), pendente: z.boolean() }),
   artes: z.object({ id: z.string(), nome: z.string(), categoria: z.enum(['elemental', 'universal']), atributo_conjuracao: z.string(), niveis: z.array(z.object({ nivel: z.number().int().min(1).max(6), nome: z.string(), efeito: z.string(), custo: z.object({ mana: z.number().int().min(1).max(6) }).optional(), exemplos: z.array(z.string()).optional() })).min(5).max(6), aliases: z.array(z.string()), pendente: z.boolean() }),

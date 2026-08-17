@@ -23,11 +23,12 @@ o teto do mundo: um Recursos 6 é uma fortuna de reino, não o tesouro de todos 
 
 ### Dois formatos: Único e Nomeado
 
-- **Antecedente Único**: você tem **um valor** dele. Recursos, Posição, Refúgio, Fé, Linhagem.
-  "Recursos 3" é uma coisa só.
+- **Antecedente Único**: você tem **um valor** dele. Recursos, Linhagem e Fé (esta, salvo quando
+  o personagem serve a mais de um culto). "Recursos 3" é uma coisa só.
 - **Antecedente Nomeado**: você compra **instâncias nomeadas e separadas**, e pode ter
-  **várias** no mesmo personagem, cada uma com o seu próprio valor de 1 a 6. Aliados, Contatos,
-  Séquito, Mentor, Reputação, Relíquia, Familiar, Segredo, Dívida.
+  **várias** no mesmo personagem, cada uma com o seu próprio valor de 1 a 6. São os outros onze:
+  Aliados, Contatos, Séquito, Mentor, Posição, Reputação, Relíquia, Refúgio, Aliado Animal,
+  Segredo e Dívida.
 
 O exemplo que resume o formato Nomeado, usando Reputação:
 
@@ -361,9 +362,13 @@ resolve uma cena e acaba. O XP volta como crédito quando a dívida é cobrada.
 
 ## Folha de referência
 
-- **Escala 1 a 6.** **Únicos** (um valor): Recursos, Posição, Refúgio, Fé, Linhagem. **Nomeados**
-  (várias instâncias, cada uma 1 a 6): Aliados, Contatos, Séquito, Mentor, Reputação, Relíquia,
-  Aliado Animal, Segredo, Dívida.
+- **Escala 1 a 6.** **Únicos** (um valor): Recursos, Linhagem, Fé. **Nomeados** (várias
+  instâncias, cada uma 1 a 6): os outros onze, Posição e Refúgio inclusive.
+
+> **Corrigido em 17/08/2026, ao portar para o site:** esta folha listava **Posição** e **Refúgio**
+> como Únicos, contra o que as seções das duas dizem (a de Posição afirma "cada instituição é uma
+> instância" e dá exemplo com duas), e chamava o **Aliado Animal** de "Familiar", nome que não
+> aparece em nenhum outro lugar. As seções é que valem, e o `antecedentes.json` saiu delas.
 - **Custo:** tudo por XP, **×3 por ponto**, na criação e em jogo (mesmo orçamento do resto). Teto
   3 na criação para Recursos e Relíquia.
 - **Bônus na jogada:** Aparência é geral (toda jogada social); Manobra normal em qualquer jogada;
