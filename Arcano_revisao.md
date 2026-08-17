@@ -529,7 +529,7 @@ moldes acima são o que se compra com **XP**. A divisão ficou assim, e ela é l
 
 | | Quem tem | O que é |
 |---|---|---|
-| **Improviso** | a Arte crua, sem XP | fatias de 60° saindo do feiticeiro (§5.4) |
+| **Improviso** | a Arte crua, sem XP | fatias de 60°, 90° ou 120° saindo do feiticeiro (§5.4) |
 | **Efeito Especial** | comprado com XP | um molde com nome e régua própria (esta seção) |
 
 O que o Efeito compra, então, não é "mais tamanho": é **uma forma que a manifestação não faz**.
@@ -550,106 +550,138 @@ não sobra medida livre para trocar, porque quem escolhe as dimensões é o mold
 
 ---
 
-## 5.4. A manifestação da Arte básica: fatias de 60°
+## 5.4. A manifestação da Arte básica: fatias que saem do feiticeiro
 
 **Decidido em 2026-08-17.** Esta é a geometria do **improviso**, o que a Arte crua faz sem nenhum
 Efeito comprado. Os moldes da §5.3 continuam valendo, e são o que se compra com XP.
 
-### A regra, em cinco linhas
+> **Este texto substitui a versão anterior desta seção, e ela estava errada em três pontos.**
+> O que era "0,433 × n³, volume conservado em qualquer abertura" e "duas aberturas" saiu inteiro.
+> Os três erros estão nomeados no fim da seção, em *O que a versão anterior errava*, porque cada um
+> deles ainda é uma armadilha fácil de repetir.
 
-O parâmetro compra uma **aresta**, em metros. A manifestação sai do feiticeiro em **fatias de 60°**,
-e cada fatia é um triângulo de aresta *n* visto de cima: dois lados de *n* partindo dele e a base
-também *n*, porque em 60° o triângulo é equilátero. A **altura** de cada fatia é a aresta dividida
-pelo número de fatias. As fatias são obrigatoriamente **vizinhas**, partindo do mesmo ponto: é o
-mesmo ataque se abrindo, e não vários ataques. E o número de fatias **nunca passa do nível**.
+### A regra, em seis linhas
+
+1. O parâmetro compra uma **base de n × n**: *n* metros de frente somada e *n* metros de altura.
+2. A manifestação sai do **feiticeiro**, em **fatias** que partem todas do mesmo ponto e são
+   obrigatoriamente **vizinhas**: é o mesmo ataque se abrindo, e não vários ataques.
+3. A abertura de cada fatia é **60°, 90° ou 120°**.
+4. Com a base travada, o ângulo e a distância **não são independentes**:
+   `distância = (aresta ÷ 2) ÷ tan(ângulo ÷ 2)`.
+5. Cada fatia é uma **pirâmide**, ápice no feiticeiro e base de pé na ponta:
+   `volume = base × distância ÷ 3`.
+6. O número de fatias **nunca passa do nível**, nem do que fecha o círculo.
 
 | Grau | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
 |---|---|---|---|---|---|---|---|
-| Aresta | 0,5 m | 1 m | 2 m | 3 m | 4 m | 5 m | 6 m |
+| Lado da base | 0,5 m | 1 m | 2 m | 3 m | 4 m | 5 m | 6 m |
 
-### Por que 60°, e por que ele fecha
+Chamando *N* o número de fatias e θ a abertura de cada uma, as três medidas saem de uma linha só:
 
-Seis triângulos equiláteros em volta de um ponto formam **um hexágono regular de lado n**, sem
-fenda e sem sobreposição. 60° é exatamente um sexto do círculo e é o setor nativo do tabuleiro, então
-a regra e o Grid falam a mesma língua sem conversão. Não é sorte: é o único ângulo que fecha.
+<p class="formula">aresta = n ÷ N &middot; distância = (n ÷ 2N) ÷ tan(θ÷2) &middot; volume = n³ ÷ (6 · N · tan(θ÷2))</p>
 
-### As duas travas, e a segunda dispensa uma terceira
+O que se compra é a **superfície**, e ela não se mexe: a frente somada é sempre *n* e a altura é
+sempre *n*, então a base é *n²* em qualquer abertura e em qualquer número de fatias. **Quem paga a
+abertura é a distância**, e o volume vai atrás dela.
 
-**O número de fatias não passa do nível.** Grau 3 abre até três fatias, grau 6 até seis. Daí saem
-três coisas de uma vez:
+### As três aberturas, e por que são exatamente essas
 
-1. A cobertura cresce em todo grau: **60 · 120 · 180 · 240 · 300 · 360**, um grau uma fatia, e
-   nenhum grau é pior que o anterior.
-2. Só o grau 6 fecha o círculo **em fatias de 60°**.
-3. **O piso de altura sai de graça.** Dividir pelo próprio nível dá sempre **1 m**, e esse passa a
-   ser o mínimo sem precisar de regra própria.
+60°, 90° e 120° são **as três que fecham o círculo em número inteiro de fatias**: seis, quatro e três.
+Qualquer outro ângulo deixa fenda ou sobrepõe, e um leque que não fecha obriga a inventar regra para o
+resto. Não é gosto, é a lista completa dos divisores úteis de 360° nessa faixa.
 
-Houve um piso de meio metro, com arredondamento, e ele **saiu**. Arredondar quebrava a conservação do
-volume onde mordia (até 40% perdidos em resto de divisão) e, pior, deixava o grau 5 com menos opções
-que o grau 3, porque 3 e 6 dividem bem e 4 e 5 não. A altura é a divisão **exata**, e 1,33 m ou
-1,67 m se dizem na mesa sem dificuldade.
+No grau 6, com uma fatia (base de 6 × 6 m):
 
-| Grau · aresta | 60° | 120° | 180° | 240° | 300° | 360° |
-|---|---|---|---|---|---|---|
-| 1 · 1 m | **1,00** | — | — | — | — | — |
-| 2 · 2 m | 2,00 | **1,00** | — | — | — | — |
-| 3 · 3 m | 3,00 | 1,50 | **1,00** | — | — | — |
-| 4 · 4 m | 4,00 | 2,00 | 1,33 | **1,00** | — | — |
-| 5 · 5 m | 5,00 | 2,50 | 1,67 | 1,25 | **1,00** | — |
-| 6 · 6 m | 6,00 | 3,00 | 2,00 | 1,50 | 1,20 | **1,00** |
+| Abertura | Distância | Lado do triângulo | Volume | Fração |
+|---|---|---|---|---|
+| **60°** | 5,196 m (3√3) | 6,000 m | **62,35 m³** | 1 |
+| **90°** | 3,000 m (metade da base) | 4,243 m | 36,00 m³ | 1 ÷ √3 = 0,577 |
+| **120°** | 1,732 m (um terço) | 3,464 m (2√3) | 20,78 m³ | 1 ÷ 3 |
 
-### O que é conservado, e o que se troca
+Abrir é uma escolha caríssima e isso é de propósito: **o 120° custa dois terços do volume** e chega a
+um terço da distância. Em troca, ele cobre três vezes mais ângulo por fatia, e é o que serve ao
+feiticeiro de grau baixo, que não tem fatias sobrando para abrir de 60° em 60°.
 
-**O volume não muda.** Área da fatia × altura × número de fatias dá sempre o mesmo, qualquer que
-seja a combinação:
+### A trava das fatias, e o piso que ela dá de graça
 
-<p class="formula">Volume = 0,433 × n³</p>
+**O número de fatias não passa do nível.** Grau 3 abre até três, grau 6 até seis. Daí saem três
+coisas de uma vez:
 
-| Grau | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
-| Volume, em qualquer abertura | 0,43 m³ | 3,5 | 11,7 | 27,7 | 54,1 | **93,5 m³** |
+1. A cobertura cresce em todo grau, e nenhum grau é pior que o anterior.
+2. Em fatias de 60° só o **grau 6** fecha o círculo. Em 90°, o grau 4 já fecha; em 120°, o grau 3.
+3. **O piso sai de graça**: dividir pelo próprio nível dá aresta de **1 m**, então o elemento nunca
+   nasce a menos de 87 cm do peito, sem precisar de regra escrita.
 
-É isso que faz a regra ser um orçamento honesto em vez de uma tabela de exceções: **o feiticeiro não
-ganha nem perde nada ao se abrir, só troca o formato do mesmo tanto de elemento.**
+Houve um piso de meio metro, com arredondamento, e ele **saiu**: arredondar deixava o grau 5 com
+menos opções que o grau 3, porque 3 e 6 dividem bem e 4 e 5 não.
 
-E os dois botões fazem serviços separados, o que é a melhor propriedade do desenho:
+### O que sobe e o que desce quando se abre
 
 | Botão | O que sobe | O que desce |
 |---|---|---|
-| **Número de fatias** | o chão coberto (0,433 × N × n²) | a altura (n ÷ N) |
-| **Abertura** | o ângulo (N × 60° ou N × 120°) | a frente reta (0,87n ou 0,50n) |
+| **Número de fatias** | o ângulo coberto (N × θ) | a distância, a aresta de cada fatia, o volume e o chão |
+| **Abertura** | o ângulo de cada fatia | a distância, o volume e o chão |
 
-No grau 6: a lança de 60° cobre 15,6 m² de chão com 6 m de altura, e o hexágono de 360° cobre
-93,5 m² com 1 m. Seis vezes mais chão, um sexto da altura, o mesmo volume.
+E aqui está a consequência que **não** era esperada e que precisa ficar escrita: como a pegada no
+chão é `N × aresta × distância ÷ 2`, e a distância cai com *N*, **o chão também divide por N**. Não é
+que abrir troque altura por chão: abrir troca ângulo por *tudo o mais*. No grau 6 em fatias de 60°,
+uma fatia cobre 15,6 m² de chão a 5,2 m de distância, e as seis fatias que fecham o círculo cobrem
+2,6 m² a 87 cm. **Cercar-se é caríssimo, e é o preço de não ter flanco.**
 
-### As duas aberturas, e por que não existe uma terceira
+### A base pode ser reta ou em arco (em avaliação)
 
-A área de um triângulo com dois lados *a* e ângulo θ entre eles é `½·a²·sen θ`. Como
-**sen 60° = sen 120° = 0,866**, abrir de 60° para 120° **mantendo a mesma aresta** conserva a área
-exata. Não é preciso encurtar lado nenhum; o que se paga é **profundidade**, que cai de 0,87n para
-0,50n (no grau 6, de 5,2 m para 3 m).
+A base descrita acima é uma **corda**: uma reta a `distância` metros, e o chão é um triângulo. Há uma
+segunda leitura da mesma fatia, na bancada desde 2026-08-17 e **ainda não decidida**: **o lado do
+triângulo vira raio**, a base vira um arco e o chão vira um setor de círculo. No grau 6 a 60°, o lado
+de 6 m vira **um setor de 60° com raio 6 m**.
 
-| Abertura | Área | Base | Frente reta |
+O volume sai da mesma conta da pirâmide, e isso não é analogia: para um cone com ápice na origem,
+`V = ⅓∫(r·n)dA`, e na parede cilíndrica a normal é radial, então `r·n` é o raio em todo ponto. Logo:
+
+<p class="formula">Volume do setor = arco × altura × raio ÷ 3</p>
+
+O arco ganha nas duas pontas que a corda cortava, e o preço aparece inteiro na tabela (grau 6, uma
+fatia):
+
+| Abertura | Corda | Arco (raio = lado) | Quanto o arco rende a mais |
 |---|---|---|---|
-| 60° | **0,43 n²** | 1,00 n | 0,87 n |
-| 90° | 0,50 n² | 1,41 n | 0,71 n |
-| **120°** | **0,43 n²** | 1,73 n | **0,50 n** |
-| 150° | 0,25 n² | 1,93 n | 0,26 n |
-| 180° | 0,00 n² | 2,00 n | 0,00 n |
+| 60° | 62,35 m³ a 5,20 m | **75,40 m³ a 6,00 m** | +21% |
+| 90° | 36,00 m³ a 3,00 m | **56,55 m³ a 4,24 m** | +57% |
+| 120° | 20,78 m³ a 1,73 m | **50,27 m³ a 3,46 m** | +142% |
 
-**Sessenta e cento e vinte são os dois únicos ângulos com a mesma área**, e a geometria fecha a porta
-sozinha: qualquer abertura acima de 120° rende *menos*, despencando para zero. Não existe deslize
-para uma lâmina de 170°, porque ela teria 9% da área. A regra tem duas aberturas por necessidade
-matemática, e não por decreto.
+O fator é `θ ÷ sen θ`, e ele cresce com o ângulo. Isso tem uma consequência de equilíbrio que decide
+a questão: **no arco, abrir fica barato.** Na corda, ir de 60° para 120° corta o volume a um terço;
+no arco, corta só a dois terços. O arco é mais generoso justamente onde a corda cobrava mais caro,
+que é a mão que a regra usa para segurar o leque largo.
 
-Duas consequências a saber. A primeira: em fatias de **120°** o grau 3 já fecha o círculo, com três
-fatias, o que em fatias de 60° só o grau 6 consegue. A segunda, comparando no **mesmo** grau: fechar
-o círculo com três fatias de 120° dá **metade do chão** e **o dobro da altura** de fechar com seis de
-60°, e alcança menos à frente (0,50n contra 0,87n). O 120° é a volta alta e curta; o 60° é a volta
-rasa e funda.
+Por isso a bancada tem **três** bases, e a terceira é a que separa desenho de equilíbrio:
 
-Três fatias de 120° formam um **triângulo equilátero** de circunraio n, do mesmo jeito que seis de
-60° formam o hexágono.
+| Base | Raio | Volume | Chão |
+|---|---|---|---|
+| **corda** | (base reta a `dist`) | referência | referência |
+| **arco** | o próprio lado | +21% / +57% / +142% | +21% / +57% / +142% |
+| **arco justo** | lado × √(sen θ ÷ θ) | **igual ao da corda** | **igual ao da corda** |
+
+O arco justo encolhe o raio o suficiente para o volume e o chão baterem com os da corda em qualquer
+abertura: é a forma redonda de graça, e o que muda de uma para a outra passa a ser só o desenho na
+mesa. No grau 6 a 60° o raio vai de 6,00 m para 5,46 m, e a frente de 6,28 m de arco para 5,71 m.
+
+Uma nota de desenho que rendeu: em **arco**, seis fatias de 60° não formam um hexágono em volta do
+conjurador, formam um **cilindro**. A roda fechada deixa de ter quina.
+
+### O que a versão anterior errava
+
+1. **O volume estava 50% alto.** Ele vinha da área do triângulo visto de cima × a altura, que é a
+   conta de um **prisma**. A fatia é uma **pirâmide**: `base × distância ÷ 3`. A constante do 60° é
+   `√3 ÷ 6 = 0,289`, e não `√3 ÷ 4 = 0,433`. O grau 6 numa fatia de 60° dá **62,35 m³**, e não 93,5.
+2. **O volume não é conservado ao abrir.** O que é conservado é a base comprada, *n × n*. Abrir paga
+   com a distância, e o volume vai atrás; a versão anterior conservava o volume porque pagava a
+   abertura com a **altura**, e aquela versão virava um lençol rasteiro de 1 m no grau 6. Ficou
+   registrada aqui e foi recusada.
+3. **Baixar a altura pela metade não dá 120°, dá 98,2°.** Com a base fixa em 6 m e a altura caindo de
+   5,196 m para 2,598 m, os dois lados iguais ficam em `A√7 ÷ 4 = 3,969 m` (essa parte estava exata) e
+   o ângulo entre eles é 98,2°. Para o ângulo ser 120° a distância vai a **um terço**, não à metade.
+   E 98,2° não fecha o círculo em número inteiro: três fatias dão 295° e quatro dão 393°.
 
 ### As duas alturas: o ápice e o pé da base
 
@@ -665,8 +697,8 @@ porque o ápice teria de acompanhá-la.
 
 **Isso é liberdade que não custa nada**, e vale registrar por que: o volume de uma pirâmide sai da
 área da base e da distância perpendicular até o ápice, e **não** de onde o ápice está sobre ela
-(princípio de Cavalieri). Deslizar o ápice não cobra nem rende. Medido na bancada: 93,5 m³ com o
-ápice a 0, a 0,7, a 1,5 e a 2,2 m.
+(princípio de Cavalieri). Deslizar o ápice não cobra nem rende. Medido na bancada: os mesmos
+62,35 m³ com o ápice a 0, a 0,7, a 1,5 e a 2,2 m.
 
 Com isso o **desperdício no subsolo deixa de existir**. Enquanto a base era centrada no ápice, a
 fatia de 6 m saindo de 1,5 m enterrava um quarto de si; agora basta pousar o pé da base no chão.
@@ -682,9 +714,9 @@ Saindo da mão com o pé da base no chão, a fatia é uma **rampa que passa por 
 deitado** até quase a ponta. Quem quiser varrer o chão desde o próprio pé precisa agachar e sair do
 piso. Não é regra escrita, é consequência da forma, e é boa demais para ficar escondida.
 
-### O estado da matéria incide na ARESTA
+### O estado da matéria incide no LADO DA BASE
 
-<p class="formula">Terra e Metal: metade da aresta · Ar e névoa: o dobro · o resto: igual</p>
+<p class="formula">Terra e Metal: metade do lado · Ar e névoa: o dobro · o resto: igual</p>
 
 No grau 6 isso dá **3 m** para a Terra, **6 m** para água, gelo, fogo, luz e sombra, e **12 m** para
 o Ar. O Ar vira a Arte de domínio de espaço sem precisar de regra própria, o que casa com a decisão
@@ -702,23 +734,28 @@ toma o campo.
 
 ### O que ainda falta
 
-1. **`regras.json → arcano.improviso.manifestacao`**: a escada da aresta, a trava das fatias, as duas
-   aberturas e o fator de estado na aresta. Hoje nada disso está no dado.
-2. **O que a matéria dentro da fatia faz em número.** A regra diz quanto elemento aparece e onde; não
-   diz o que 93,5 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de
+1. **`regras.json → arcano.improviso.manifestacao`**: a escada do lado da base, a trava das fatias, as
+   três aberturas e o fator de estado no lado. Hoje nada disso está no dado.
+2. **A base fica em corda ou vai para arco.** A conta das três está feita e medida na bancada; falta
+   a decisão, e ela mexe no preço da abertura (na corda o 120° custa dois terços do volume, no arco
+   custa um terço). O **arco justo** é a opção que muda o desenho sem mexer em número nenhum.
+3. **O que a matéria dentro da fatia faz em número.** A regra diz quanto elemento aparece e onde; não
+   diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de
    Terra aguenta. Encosta na A9 e no capítulo de Vida & Ferimentos.
-3. **Crescer nas quatro direções foi escolhido**, e o preço está pago (a rampa, e o subsolo quando o
+4. **Crescer nas quatro direções foi escolhido**, e o preço está pago (a rampa, e o subsolo quando o
    pé da base não está no chão). A alternativa era crescer só para cima a partir do ápice, que nunca
    enterra nada e é mais simples. Fica registrada para não se reabrir por engano.
-4. **As Artes não elementais** continuam sem geometria própria: Cura, Fascinação, Adivinhação,
+5. **As Artes não elementais** continuam sem geometria própria: Cura, Fascinação, Adivinhação,
    Conjuração e Metamorfose não manifestam elemento e a fatia não quer dizer nada nelas
    (pendência 15).
-5. **Os textos de nível em `artes.json`** descrevem improvisos que esta geometria não permite mais
+6. **Os textos de nível em `artes.json`** descrevem improvisos que esta geometria não permite mais
    (Fogo 3 "sustentar uma parede baixa de chamas", Fogo 4 "parede de chamas fechando um corredor").
    É a A15, e agora ela tem mais motivo.
 
 A bancada `volume-bench.html`, no modo **molde de chão**, desenha tudo isto no hexágono de 1 m com o
-conjurador no meio, e conta os inimigos pegos em três formações.
+conjurador no meio, e conta os inimigos pegos em três formações. Os controles da manifestação são
+**abertura** (60/90/120), **base** (corda, arco, arco justo), **fatias**, **sai de** (o ápice),
+**pé da base** e **elemento**.
 
 ---
 
@@ -994,9 +1031,11 @@ mato vivo), Metamorfose (ossos, pele, penas, garras). Ver Pendência 9.
 ## 10. Pendências
 
 > **Leia a §5.4 antes desta lista.** A geometria do improviso mudou em 2026-08-17: a manifestação
-> passou a ser fatias de 60° saindo do feiticeiro, com o número de fatias travado pelo nível, e os
-> moldes da §5.3 viraram o que se compra com XP. Várias pendências abaixo foram escritas quando o
-> improviso ainda moldava livremente, e onde as duas discordarem, **valem as §5.3 e §5.4**.
+> passou a ser **fatias de 60°, 90° ou 120°** saindo do feiticeiro, com o número de fatias travado
+> pelo nível, e os moldes da §5.3 viraram o que se compra com XP. Várias pendências abaixo foram
+> escritas quando o improviso ainda moldava livremente, e onde as duas discordarem, **valem as §5.3
+> e §5.4**. A §5.4 foi reescrita três vezes no mesmo dia, e a lista de erros no fim dela é parte da
+> regra: o volume é de **pirâmide** e não de prisma, e o que se conserva ao abrir é a **base**.
 >
 > **Para retomar:** esta seção é o ponto de partida de qualquer próxima conversa sobre o Arcano.
 > Tudo o que está acima dela já foi decidido e já está no site e em `regras.json`. O que está
