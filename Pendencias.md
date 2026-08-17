@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 68 itens abertos · 33 [DECIDIR] · 30 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 17** · **Bestiário 9** · Mesa 9 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
+**Placar:** 67 itens abertos · 33 [DECIDIR] · 29 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 17** · **Bestiário 9** · Mesa 9 · Ações & Sistema 6 · Lore 6 · Proezas 5 ·
 Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 3
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -230,10 +230,19 @@ Detalhe em `Proezas_revisao.md`.
   trilha e deixar o texto como sabor.
 - [ ] **D3 · [DECIDIR] Densidade dos funis.** Caminhos reaproveitados têm ~3 Técnicas no nível 1
   (funil 3·2·1·1·1), mais enxuto que o padrão de Força. Alargar ou aceitar.
-- [ ] **D4 · [FAZER] Retag de `tecnicas.json` pelo roteamento Social x Mental.** A auditoria do
-  `Ataques_Mentais.md` §4 diz que só **Comando** e **Marionete** deveriam citar Defesa Mental; no
-  dado vivo **15 Técnicas** ainda citam (Aterrorizar, Quebrar o Espírito, Palavra de Lei, Fios
-  Invisíveis, Titereiro e companhia). **O doc está à frente do dado.**
+- [x] **D4 · [SEM CAUSA 2026-08-17] O retag já estava feito; o item nasceu de uma leitura errada.**
+  A frase da auditoria (**"Defesa Mental agora só aparece em Comando e Marionete"**) fala dos dois
+  **Caminhos**, não de duas Técnicas, e "Marionete" ser também o nome de uma Técnica de nível 6 é a
+  armadilha. Conferido no dado vivo: as **15 Técnicas** que citam Defesa Mental estão **todas** em
+  Comando (9) e Marionete (6), que é exatamente o que o doc manda. As 12 que a auditoria nomeia
+  estão lá; a 13ª é **Tom de Autoridade**, que **baixa** a Defesa Mental em 3 em vez de rolar contra
+  ela, como o próprio doc prevê; e as outras duas são **Ordem que Pesa** e **Impulso Plantado**, as
+  de nível 2 nascidas depois, na Fase 6 da Reescala, nos mesmos dois Caminhos. Nenhuma Técnica que
+  a auditoria manda para a Social cita Defesa Mental. **O lado Social não precisa de marcação:** o
+  capítulo de Relações Sociais faz da Defesa Social o alvo padrão, e a Mental é a exceção, que é o
+  que se marca. O Arcano também está tagueado, com 15 Efeitos citando Defesa Mental. Sobra só um
+  detalhe cosmético, registrado e não corrigido: 17 Técnicas sociais marcam o alvo padrão e 15
+  vizinhas, de mesmo efeito, não marcam.
 - [ ] **D5 · [FAZER] Reorg de conteúdo.** As árvores novas do doc (Atlas reorganizado, Força de
   Guerra, Presença Aterradora, Arremesso, Salto, Vigarista/Confessor, as novas de Perspicácia) ainda
   não entraram na data viva.
@@ -541,7 +550,9 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 3. ~~**B10**, confirmar a Centelha das 148.~~ **Feito em 17/08.** Era o único item que já estava
    valendo no repositório sem ter passado por você, e a suspeita se confirmou ao contrário do que
    este mapa dizia: o regen tinha desfeito a Reescala, não corrigido nada.
-4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
+4. ~~**D4**, o retag das Técnicas.~~ **Fechado sem causa em 17/08:** a divergência entre doc e dado
+   não existia. A frase da auditoria falava dos Caminhos de Comando e Marionete, e o item a leu
+   como duas Técnicas.
 5. **G8**, trocar a palavra "stunt" por um termo em português. A frente de Ações caiu de 11 itens
    para 4 e o capítulo já está publicado; este é o que sobrou de mais barato, e agora são quatro
    capítulos citando a palavra em vez de três.

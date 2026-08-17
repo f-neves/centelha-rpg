@@ -166,8 +166,17 @@ Mentira Perfeita, Brado de Guerra, Palavras de Veludo, Paranoia, Sedução, Enca
 Calma, Sugestão). Ganharam **"vs Defesa Mental"** explícito as de controle (Ordem Curta, Voz de
 Comando, Comando Irresistível, Aterrorizar, Dominação, Quebrar o Espírito, Palavra de Lei,
 Compulsão, Fios Invisíveis, Titereiro, Reescrever Desejos, Marionete). "Defesa Mental" agora só
-aparece em Comando e Marionete (o que remove a escolha) e no Tom de Autoridade (que baixa a
-Defesa Mental como preparo do combo de dominação).
+aparece nos **Caminhos** de Comando e Marionete (o que remove a escolha) e no Tom de Autoridade
+(que baixa a Defesa Mental como preparo do combo de dominação).
+
+> **Caminhos, não Técnicas.** A frase acima já foi lida como "só duas Técnicas deveriam citar
+> Defesa Mental", e virou uma pendência que não existia (o **D4** do `Pendencias.md`, fechado sem
+> causa em 17/08/2026). A armadilha é que **Marionete** também é o nome de uma Técnica de nível 6.
+> **Conferido no dado em 17/08:** as 15 Técnicas que citam Defesa Mental estão todas em Comando (9)
+> e Marionete (6). Além das 12 listadas acima, são o Tom de Autoridade e as duas de nível 2 que
+> nasceram na Fase 6 da Reescala, nos mesmos dois Caminhos: **Ordem que Pesa** e **Impulso
+> Plantado**. O lado Social não precisa de marcação: a Defesa Social é o alvo padrão pelo capítulo
+> de Relações Sociais, e o que se marca é a exceção.
 
 ---
 
