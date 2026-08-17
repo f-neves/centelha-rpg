@@ -71,7 +71,7 @@
   "nome": "Aboleth",
   "nomeIngles": "Aboleth",
   "ameaca": 4,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Aberração",
   "porte": "Enorme",
   "imagem": "bestiario/aboleth.webp",
@@ -94,7 +94,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 1,
   "artes": [
    {
@@ -117,20 +117,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
-   "defesa": 12,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 13,
+   "defesaSocial": 15,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 12,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 13,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6+2 +4",
+     "pool": "7d6+2 +5",
      "dano": "3d6 +10 perfurante",
      "speed": 7
     }
@@ -363,7 +363,7 @@
   "nome": "Aranha das Fases",
   "nomeIngles": "Phase Spider",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/aranha-das-fases.webp",
@@ -386,7 +386,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 5,
   "artes": [
    {
@@ -397,20 +397,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -504,7 +504,7 @@
   "nome": "Arconte Cão",
   "nomeIngles": "Archon, Hound",
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Celestial",
   "porte": "Médio",
   "imagem": "bestiario/archon-cao.webp",
@@ -527,7 +527,7 @@
    "temperanca": 4,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 10,
   "artes": [
    {
@@ -546,13 +546,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 13,
-   "defesaSocial": 9,
-   "defesaMental": 18,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -562,7 +562,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +3",
+     "pool": "4d6+2 +4",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -659,7 +659,7 @@
   "nome": "Arconte Trombeta",
   "nomeIngles": "Archon, Trumpet",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Celestial",
   "porte": "Médio",
   "imagem": "bestiario/trumpet-archon.webp",
@@ -682,19 +682,19 @@
    "temperanca": 4,
    "valor": 5
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 12,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 49,
-   "defesa": 17,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 18,
+   "defesaSocial": 16,
+   "defesaMental": 27,
    "absorcao": {
-    "impacto": 13,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 14,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -704,7 +704,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +5",
+     "pool": "5d6+2 +6",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -798,7 +798,7 @@
   "nome": "Assassino das Sombras",
   "nomeIngles": "Shadow Assassin",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Humanoide",
   "porte": "Médio",
   "imagem": "bestiario/assassino-das-sombras.webp",
@@ -832,20 +832,20 @@
   ],
   "combate": {
    "pv": 34,
-   "defesa": 19,
-   "defesaSocial": 12,
-   "defesaMental": 14,
+   "defesa": 20,
+   "defesaSocial": 13,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Adaga (Ágil)",
-     "pool": "4d6+2 +4",
+     "pool": "4d6+2 +5",
      "dano": "1d6 +3 perfurante · perf. 0",
      "speed": 5,
      "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
@@ -871,7 +871,7 @@
   "nome": "Assombração",
   "nomeIngles": "Wraith",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Morto-vivo",
   "porte": "Médio",
   "imagem": "bestiario/assombracao-wraith.webp",
@@ -894,7 +894,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 2,
   "artes": [
    {
@@ -903,19 +903,19 @@
    },
    {
     "id": "espirito",
-    "nivel": 2
+    "nivel": 3
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 43,
-   "defesa": 14,
-   "defesaSocial": 12,
-   "defesaMental": 18,
+   "defesa": 15,
+   "defesaSocial": 13,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -931,7 +931,7 @@
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "2d6 necrótico (vs Def. Mental)",
      "speed": 5,
      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -1025,7 +1025,7 @@
   "nome": "Babau",
   "nomeIngles": "Demon, Babau",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/babau.webp",
@@ -1048,19 +1048,19 @@
    "temperanca": 1,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 43,
-   "defesa": 11,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 12,
+   "defesaSocial": 12,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -1071,7 +1071,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -1096,7 +1096,7 @@
   "nome": "Balor",
   "nomeIngles": "Demon, Balor",
   "ameaca": 6,
-  "centelha": 8,
+  "centelha": 9,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/balor.webp",
@@ -1134,13 +1134,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 78,
-   "defesa": 28,
-   "defesaSocial": 24,
-   "defesaMental": 35,
+   "defesa": 29,
+   "defesaSocial": 25,
+   "defesaMental": 36,
    "absorcao": {
-    "impacto": 20,
-    "corte": 16,
-    "perfuracao": 16
+    "impacto": 21,
+    "corte": 17,
+    "perfuracao": 17
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -1151,7 +1151,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +8",
+     "pool": "8d6 +9",
      "dano": "2d6 +11 corte",
      "speed": 6
     }
@@ -1390,7 +1390,7 @@
   "nome": "Basilisco",
   "nomeIngles": "Basilisk",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Besta mágica",
   "porte": "Médio",
   "imagem": "bestiario/basilisco.webp",
@@ -1413,31 +1413,31 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 5,
   "artes": [
    {
     "id": "materia",
-    "nivel": 2
+    "nivel": 3
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "1d6 +5 perfurante",
      "speed": 5
     }
@@ -1463,7 +1463,7 @@
   "nome": "Bebilith",
   "nomeIngles": "Bebilith",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Enorme",
   "imagem": "bestiario/bebilith.webp",
@@ -1486,19 +1486,19 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 80,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 13,
+   "defesaSocial": 11,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 13,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 14,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
    "fraquezas": [
@@ -1509,7 +1509,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +4",
+     "pool": "8d6 +5",
      "dano": "3d6 +11 corte",
      "speed": 7
     }
@@ -1884,7 +1884,7 @@
   "nome": "Bodak",
   "nomeIngles": "Bodak",
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
   "imagem": "bestiario/bodak.webp",
@@ -1907,24 +1907,24 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 2,
   "artes": [
    {
     "id": "morte",
-    "nivel": 3
+    "nivel": 4
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 13,
+   "defesa": 14,
    "defesaSocial": "-",
-   "defesaMental": 17,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -1938,7 +1938,7 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "4d6+2 +3",
+     "pool": "4d6+2 +4",
      "dano": "1d6 +4 impacto",
      "speed": 5
     }
@@ -2032,7 +2032,7 @@
   "nome": "Bralani",
   "nomeIngles": "Bralani",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Outsider",
   "porte": "Médio",
   "imagem": "bestiario/bralani.webp",
@@ -2055,26 +2055,26 @@
    "temperanca": 3,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 6,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 16,
+   "defesaSocial": 12,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -2304,7 +2304,7 @@
   "nome": "Bruxa Noturna",
   "nomeIngles": "Hag, Night",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/night-hag.webp",
@@ -2327,19 +2327,19 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 46,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 17,
+   "defesaSocial": 15,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 12,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -2350,7 +2350,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +4",
+     "pool": "5d6+2 +5",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -2375,7 +2375,7 @@
   "nome": "Bruxa Verde",
   "nomeIngles": "Hag, Green",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
   "imagem": "bestiario/bruxa-verde-hag.webp",
@@ -2398,7 +2398,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 8,
   "artes": [
    {
@@ -2413,20 +2413,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 11,
-   "defesaSocial": 11,
-   "defesaMental": 18,
+   "defesa": 12,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -2655,7 +2655,7 @@
   "nome": "Campeão (herói inimigo)",
   "nomeIngles": "Champion (Minor Demigod)",
   "ameaca": 6,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Humanoide",
   "porte": "Médio",
   "imagem": "bestiario/campeao.webp",
@@ -2688,20 +2688,20 @@
   ],
   "combate": {
    "pv": 37,
-   "defesa": 18,
-   "defesaSocial": 12,
-   "defesaMental": 18,
+   "defesa": 19,
+   "defesaSocial": 13,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 7,
-    "corte": 10,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 11,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Espada longa (golpe duplo)",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +4 corte",
      "speed": 6,
      "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
@@ -3205,7 +3205,7 @@
   "nome": "Cauchemar",
   "nomeIngles": "Cauchemar",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Enorme",
   "imagem": "bestiario/cauchemar.webp",
@@ -3228,19 +3228,19 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 75,
-   "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 20,
+   "defesa": 15,
+   "defesaSocial": 11,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 12,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 13,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
    "fraquezas": [
@@ -3251,7 +3251,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +4",
+     "pool": "8d6 +5",
      "dano": "3d6 +11 corte",
      "speed": 7
     }
@@ -3552,7 +3552,7 @@
   "nome": "Chuul",
   "nomeIngles": "Chuul",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Aberração",
   "porte": "Grande",
   "imagem": "bestiario/chuul.webp",
@@ -3575,26 +3575,26 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 7,
-   "defesaMental": 16,
+   "defesa": 16,
+   "defesaSocial": 8,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6 +3",
+     "pool": "7d6 +4",
      "dano": "2d6 +9 perfurante",
      "speed": 6
     }
@@ -3692,7 +3692,7 @@
   "nome": "Cloaker",
   "nomeIngles": "Cloaker",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Aberração",
   "porte": "Grande",
   "imagem": "bestiario/cloaker.webp",
@@ -3715,26 +3715,26 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 16,
+   "defesaSocial": 12,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -4183,7 +4183,7 @@
   "nome": "Couatl",
   "nomeIngles": "Couatl",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Outsider",
   "porte": "Médio",
   "imagem": "bestiario/couatl.webp",
@@ -4206,7 +4206,7 @@
    "temperanca": 4,
    "valor": 5
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 9,
   "artes": [
    {
@@ -4221,20 +4221,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 20,
-   "defesaSocial": 16,
-   "defesaMental": 24,
+   "defesa": 21,
+   "defesaSocial": 17,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
+     "pool": "4d6+2 +5",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -4260,7 +4260,7 @@
   "nome": "Crag Linnorm",
   "nomeIngles": "Crag Linnorm",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Dragão",
   "porte": "Imenso",
   "imagem": "bestiario/crag-linnorm.webp",
@@ -4283,26 +4283,26 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 9,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 95,
-   "defesa": 17,
+   "defesa": 18,
    "defesaSocial": "-",
-   "defesaMental": 24,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 16,
-    "corte": 17,
-    "perfuracao": 17
+    "impacto": 17,
+    "corte": 18,
+    "perfuracao": 18
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "9d6 +5",
+     "pool": "9d6 +6",
      "dano": "3d6 +13 perfurante",
      "speed": 7
     }
@@ -4879,7 +4879,7 @@
   "nome": "Deva Astral",
   "nomeIngles": "Angel, Astral Deva",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Celestial",
   "porte": "Médio",
   "imagem": "bestiario/deva-astral.webp",
@@ -4902,7 +4902,7 @@
    "temperanca": 4,
    "valor": 5
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 10,
   "artes": [
    {
@@ -4921,13 +4921,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
-   "defesa": 17,
-   "defesaSocial": 17,
-   "defesaMental": 26,
+   "defesa": 18,
+   "defesaSocial": 18,
+   "defesaMental": 28,
    "absorcao": {
-    "impacto": 11,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 12,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -4937,7 +4937,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +5",
+     "pool": "6d6+2 +6",
      "dano": "1d6 +8 corte",
      "speed": 5
     }
@@ -4962,7 +4962,7 @@
   "nome": "Diabo Barbado",
   "nomeIngles": "Devil, Bearded (Barbazu)",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/diabo-barbado.webp",
@@ -4985,7 +4985,7 @@
    "temperanca": 5,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [
    {
@@ -5000,13 +5000,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 13,
+   "defesa": 14,
    "defesaSocial": "-",
-   "defesaMental": 15,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -5017,7 +5017,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +3",
+     "pool": "4d6+2 +4",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -5042,7 +5042,7 @@
   "nome": "Diabo Chifrudo",
   "nomeIngles": "Devil, Horned",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/horned-devil-cornugon.webp",
@@ -5065,19 +5065,19 @@
    "temperanca": 5,
    "valor": 5
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": -1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 70,
-   "defesa": 25,
-   "defesaSocial": 19,
-   "defesaMental": 27,
+   "defesa": 26,
+   "defesaSocial": 20,
+   "defesaMental": 29,
    "absorcao": {
-    "impacto": 15,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 16,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -5088,7 +5088,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +5",
+     "pool": "7d6+2 +6",
      "dano": "2d6 +10 corte",
      "speed": 6
     }
@@ -5113,7 +5113,7 @@
   "nome": "Diabo de Gelo",
   "nomeIngles": "Devil, Ice (Gelugon)",
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/diabo-de-gelo.webp",
@@ -5136,7 +5136,7 @@
    "temperanca": 5,
    "valor": 5
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 0,
   "artes": [
    {
@@ -5151,13 +5151,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 66,
-   "defesa": 21,
-   "defesaSocial": 17,
-   "defesaMental": 27,
+   "defesa": 22,
+   "defesaSocial": 18,
+   "defesaMental": 29,
    "absorcao": {
-    "impacto": 14,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 15,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -5168,7 +5168,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +5",
+     "pool": "7d6 +6",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -5194,7 +5194,7 @@
   "nome": "Diabo do Fosso (Pit Fiend)",
   "nomeIngles": "Pit Fiend",
   "ameaca": 6,
-  "centelha": 8,
+  "centelha": 9,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/diabo-do-fosso-pit-fiend.webp",
@@ -5236,13 +5236,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 74,
-   "defesa": 32,
-   "defesaSocial": 26,
-   "defesaMental": 37,
+   "defesa": 33,
+   "defesaSocial": 27,
+   "defesaMental": 38,
    "absorcao": {
-    "impacto": 19,
-    "corte": 15,
-    "perfuracao": 15
+    "impacto": 20,
+    "corte": 16,
+    "perfuracao": 16
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -5253,7 +5253,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +8",
+     "pool": "8d6+2 +9",
      "dano": "2d6 +12 corte",
      "speed": 6
     }
@@ -5278,7 +5278,7 @@
   "nome": "Diabo Espinhoso",
   "nomeIngles": "Devil, Barbed",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/barbed-devil-hamatula.webp",
@@ -5301,19 +5301,19 @@
    "temperanca": 5,
    "valor": 5
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 46,
-   "defesa": 22,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 23,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 12,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -5324,7 +5324,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "1d6 +7 corte",
      "speed": 5
     }
@@ -5349,7 +5349,7 @@
   "nome": "Diabo Ósseo",
   "nomeIngles": "Devil, Bone (Osyluth)",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/diabo-osseo.webp",
@@ -5372,7 +5372,7 @@
    "temperanca": 5,
    "valor": 5
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [
    {
@@ -5391,13 +5391,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 58,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 17,
+   "defesaSocial": 15,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 12,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -5408,7 +5408,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +4",
+     "pool": "6d6+2 +5",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -5517,7 +5517,7 @@
   "nome": "Djinn",
   "nomeIngles": "Djinn",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Elemental",
   "porte": "Grande",
   "imagem": "bestiario/djinn.webp",
@@ -5540,7 +5540,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 5,
   "artes": [
    {
@@ -5557,19 +5557,19 @@
    },
    {
     "id": "vento",
-    "nivel": 3
+    "nivel": 4
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 50,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 16,
+   "defesaSocial": 12,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -5580,7 +5580,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
      "speed": 6
     }
@@ -5750,7 +5750,7 @@
   "nome": "Dracolisk",
   "nomeIngles": "Dracolisk",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Dragão",
   "porte": "Médio",
   "imagem": "bestiario/dracolisk.webp",
@@ -5773,26 +5773,26 @@
    "temperanca": 3,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 8,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 43,
-   "defesa": 7,
+   "defesa": 8,
    "defesaSocial": "-",
-   "defesaMental": 16,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "1d6 +7 perfurante",
      "speed": 5
     }
@@ -5818,7 +5818,7 @@
   "nome": "Dragão Azul Adulto",
   "nomeIngles": "Dragon, Adult Blue",
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Dragão",
   "porte": "Enorme",
   "imagem": "bestiario/dragao-azul-adulto.webp",
@@ -5841,7 +5841,7 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 9,
   "artes": [
    {
@@ -5860,13 +5860,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
-   "defesa": 9,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 10,
+   "defesaSocial": 16,
+   "defesaMental": 27,
    "absorcao": {
-    "impacto": 14,
-    "corte": 13,
-    "perfuracao": 13
+    "impacto": 15,
+    "corte": 14,
+    "perfuracao": 14
    },
    "resistenciaPerfuracao": 1,
    "resistencias": [
@@ -5876,7 +5876,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6 +5",
+     "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -5902,7 +5902,7 @@
   "nome": "Dragão Branco Jovem",
   "nomeIngles": "Dragon, Young White",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Dragão",
   "porte": "Grande",
   "imagem": "bestiario/dragao-branco-jovem.webp",
@@ -5925,7 +5925,7 @@
    "temperanca": 3,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 8,
   "artes": [
    {
@@ -5940,13 +5940,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 7,
-   "defesaSocial": 7,
-   "defesaMental": 15,
+   "defesa": 8,
+   "defesaSocial": 8,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -5959,7 +5959,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -5985,7 +5985,7 @@
   "nome": "Dragão Dourado Adulto",
   "nomeIngles": "Dragon, Adult Gold",
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "categoria": "Dragão",
   "porte": "Enorme",
   "imagem": "bestiario/dragao-dourado-adulto.webp",
@@ -6008,7 +6008,7 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 11,
+  "vontade": 12,
   "aparencia": 9,
   "artes": [
    {
@@ -6031,13 +6031,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
-   "defesa": 10,
-   "defesaSocial": 20,
-   "defesaMental": 31,
+   "defesa": 11,
+   "defesaSocial": 21,
+   "defesaMental": 33,
    "absorcao": {
-    "impacto": 16,
-    "corte": 15,
-    "perfuracao": 15
+    "impacto": 17,
+    "corte": 16,
+    "perfuracao": 16
    },
    "resistenciaPerfuracao": 1,
    "resistencias": [
@@ -6047,7 +6047,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6+2 +6",
+     "pool": "8d6+2 +7",
      "dano": "3d6 +12 perfurante",
      "speed": 7
     }
@@ -6074,7 +6074,7 @@
   "nome": "Dragão Verde Adulto",
   "nomeIngles": "Dragon, Adult Green",
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Dragão",
   "porte": "Enorme",
   "imagem": "bestiario/dragao-verde-adulto.webp",
@@ -6097,7 +6097,7 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 9,
   "artes": [
    {
@@ -6112,20 +6112,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
-   "defesa": 13,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 14,
+   "defesaSocial": 16,
+   "defesaMental": 27,
    "absorcao": {
-    "impacto": 13,
-    "corte": 13,
-    "perfuracao": 13
+    "impacto": 14,
+    "corte": 14,
+    "perfuracao": 14
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6+2 +5",
+     "pool": "7d6+2 +6",
      "dano": "3d6 +10 perfurante",
      "speed": 7
     }
@@ -6152,7 +6152,7 @@
   "nome": "Dragão Vermelho Adulto",
   "nomeIngles": "Dragon, Adult Red",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Dragão",
   "porte": "Enorme",
   "imagem": "bestiario/dragao-vermelho-adulto.webp",
@@ -6175,7 +6175,7 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 9,
   "artes": [
    {
@@ -6190,13 +6190,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
-   "defesa": 9,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 10,
+   "defesaSocial": 16,
+   "defesaMental": 27,
    "absorcao": {
-    "impacto": 14,
-    "corte": 13,
-    "perfuracao": 13
+    "impacto": 15,
+    "corte": 14,
+    "perfuracao": 14
    },
    "resistenciaPerfuracao": 1,
    "resistencias": [
@@ -6206,7 +6206,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6 +5",
+     "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -6232,7 +6232,7 @@
   "nome": "Dragão Vermelho Ancião",
   "nomeIngles": "Dragon, Ancient Red",
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "categoria": "Dragão",
   "porte": "Imenso",
   "imagem": "bestiario/dragao-vermelho-anciao.webp",
@@ -6255,7 +6255,7 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 11,
+  "vontade": 12,
   "aparencia": 9,
   "artes": [
    {
@@ -6274,13 +6274,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 95,
-   "defesa": 10,
-   "defesaSocial": 18,
-   "defesaMental": 29,
+   "defesa": 11,
+   "defesaSocial": 19,
+   "defesaMental": 31,
    "absorcao": {
-    "impacto": 17,
-    "corte": 18,
-    "perfuracao": 18
+    "impacto": 18,
+    "corte": 19,
+    "perfuracao": 19
    },
    "resistenciaPerfuracao": 2,
    "resistencias": [
@@ -6290,7 +6290,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "9d6+2 +6",
+     "pool": "9d6+2 +7",
      "dano": "3d6 +14 perfurante",
      "speed": 7
     }
@@ -6317,7 +6317,7 @@
   "nome": "Dragão Vermelho Jovem",
   "nomeIngles": "Dragon, Young Red",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Dragão",
   "porte": "Grande",
   "imagem": "bestiario/dragao-vermelho-jovem.webp",
@@ -6340,7 +6340,7 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 9,
   "artes": [
    {
@@ -6353,13 +6353,13 @@
   ],
   "combate": {
    "pv": 54,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 13,
+   "defesaSocial": 11,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -6369,7 +6369,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6 +4",
+     "pool": "7d6 +5",
      "dano": "2d6 +9 perfurante",
      "speed": 6
     }
@@ -6475,7 +6475,7 @@
   "nome": "Dríade",
   "nomeIngles": "Dryad",
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Fada",
   "porte": "Médio",
   "imagem": "bestiario/driade.webp",
@@ -6498,7 +6498,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 8,
   "artes": [
    {
@@ -6517,20 +6517,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 20,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 7,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6 +3",
+     "pool": "3d6 +4",
      "dano": "1d6 +2 perfurante",
      "speed": 5
     }
@@ -6555,7 +6555,7 @@
   "nome": "Drider",
   "nomeIngles": "Drider",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Aberração",
   "porte": "Grande",
   "imagem": "bestiario/drider.webp",
@@ -6578,26 +6578,26 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 14,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +5 perfurante",
      "speed": 6
     }
@@ -6756,7 +6756,7 @@
   "nome": "Duelista",
   "nomeIngles": "Duelist",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Humanoide",
   "porte": "Médio",
   "imagem": "bestiario/duelista.webp",
@@ -6790,20 +6790,20 @@
   ],
   "combate": {
    "pv": 34,
-   "defesa": 19,
-   "defesaSocial": 6,
-   "defesaMental": 15,
+   "defesa": 20,
+   "defesaSocial": 7,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Florete (Ágil)",
-     "pool": "5d6 +4",
+     "pool": "5d6 +5",
      "dano": "1d6 +3 perfurante · perf. 1",
      "speed": 5
     }
@@ -6895,7 +6895,7 @@
   "nome": "Efreeti",
   "nomeIngles": "Genie, Efreeti",
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Elemental",
   "porte": "Grande",
   "imagem": "bestiario/efreeti.webp",
@@ -6918,28 +6918,28 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 5,
   "artes": [
    {
     "id": "fortuna",
-    "nivel": 3
+    "nivel": 4
    },
    {
     "id": "fogo",
-    "nivel": 3
+    "nivel": 4
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 16,
+   "defesaSocial": 12,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -6952,7 +6952,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +3",
+     "pool": "6d6+2 +4",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -7117,7 +7117,7 @@
   "nome": "Elemental da Terra (Grande)",
   "nomeIngles": "Elemental, Large Earth",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Elemental",
   "porte": "Grande",
   "imagem": "bestiario/elemental-da-terra-grande.webp",
@@ -7140,7 +7140,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 5,
   "artes": [
    {
@@ -7148,16 +7148,18 @@
     "nivel": 2
    }
   ],
-  "tecnicas": [],
+  "tecnicas": [
+   "pele-de-pedra"
+  ],
   "combate": {
    "pv": 58,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 13,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 9,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 10,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -7170,7 +7172,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +2",
+     "pool": "7d6 +3",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -8031,7 +8033,7 @@
   "nome": "Erínia",
   "nomeIngles": "Erinyes",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/erinia.webp",
@@ -8054,7 +8056,7 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [
    {
@@ -8069,13 +8071,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
-   "defesa": 22,
-   "defesaSocial": 16,
-   "defesaMental": 24,
+   "defesa": 23,
+   "defesaSocial": 17,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 11,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -8086,7 +8088,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +4",
+     "pool": "5d6+2 +5",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -8178,7 +8180,7 @@
   "nome": "Esfinge (Ginosfinge)",
   "nomeIngles": "Sphinx (Gynosphinx)",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/esfinge-ginosfinge.webp",
@@ -8201,7 +8203,7 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 5,
   "artes": [
    {
@@ -8216,20 +8218,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 15,
+   "defesaSocial": 15,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -8328,7 +8330,7 @@
   "nome": "Espectro",
   "nomeIngles": "Spectre",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
   "imagem": "bestiario/espectro.webp",
@@ -8351,7 +8353,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 2,
   "artes": [
    {
@@ -8366,13 +8368,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 20,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -8388,7 +8390,7 @@
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 necrótico (vs Def. Mental)",
      "speed": 5,
      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -8829,7 +8831,7 @@
   "nome": "Fantasma",
   "nomeIngles": "Ghost",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
   "imagem": "bestiario/ghost.webp",
@@ -8852,19 +8854,19 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 2,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 43,
-   "defesa": 11,
-   "defesaSocial": 13,
-   "defesaMental": 18,
+   "defesa": 12,
+   "defesaSocial": 14,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -8878,7 +8880,7 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "2d6+2 +3",
+     "pool": "2d6+2 +4",
      "dano": "1d6 impacto",
      "speed": 5
     }
@@ -8978,7 +8980,7 @@
   "nome": "Fênix",
   "nomeIngles": "Phoenix",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Besta mágica",
   "porte": "Imenso",
   "imagem": "bestiario/phoenix.webp",
@@ -9001,26 +9003,26 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 5,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 85,
-   "defesa": 25,
-   "defesaSocial": 19,
-   "defesaMental": 29,
+   "defesa": 26,
+   "defesaSocial": 20,
+   "defesaMental": 31,
    "absorcao": {
-    "impacto": 14,
-    "corte": 16,
-    "perfuracao": 16
+    "impacto": 15,
+    "corte": 17,
+    "perfuracao": 17
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 10",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +5",
+     "pool": "8d6 +6",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -9046,7 +9048,7 @@
   "nome": "Filhote de Dragão Vermelho",
   "nomeIngles": "Dragon, Wyrmling Red",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Dragão",
   "porte": "Médio",
   "imagem": "bestiario/filhote-de-dragao-vermelho.webp",
@@ -9069,7 +9071,7 @@
    "temperanca": 3,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 8,
   "artes": [
    {
@@ -9084,13 +9086,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 7,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 8,
+   "defesaSocial": 12,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -9100,7 +9102,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 perfurante",
      "speed": 5
     }
@@ -9126,7 +9128,7 @@
   "nome": "Fogo-fátuo",
   "nomeIngles": "Will-o'-Wisp",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Aberração",
   "porte": "Miúdo",
   "imagem": "bestiario/fogo-fatuo.webp",
@@ -9149,7 +9151,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [
    {
@@ -9168,20 +9170,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 17,
-   "defesa": 27,
-   "defesaSocial": 11,
-   "defesaMental": 20,
+   "defesa": 28,
+   "defesaSocial": 12,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 5,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 6,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +3",
+     "pool": "2d6+2 +4",
      "dano": "1d6 perfurante",
      "speed": 5
     }
@@ -9274,7 +9276,7 @@
   "nome": "Froghemoth",
   "nomeIngles": "Froghemoth",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Aberração",
   "porte": "Enorme",
   "imagem": "bestiario/froghemoth.webp",
@@ -9297,26 +9299,26 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 80,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": "-",
-   "defesaMental": 18,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 13,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 14,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +4",
+     "pool": "8d6 +5",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -9629,7 +9631,7 @@
   "nome": "Ghaele (azata)",
   "nomeIngles": "Ghaele",
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Celestial",
   "porte": "Médio",
   "imagem": "bestiario/ghaele-azata.webp",
@@ -9652,7 +9654,7 @@
    "temperanca": 4,
    "valor": 5
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 12,
   "artes": [
    {
@@ -9667,13 +9669,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 21,
-   "defesaSocial": 19,
-   "defesaMental": 28,
+   "defesa": 22,
+   "defesaSocial": 20,
+   "defesaMental": 30,
    "absorcao": {
-    "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 11,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -9683,7 +9685,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +5",
+     "pool": "5d6+2 +6",
      "dano": "1d6 +6 corte",
      "speed": 5
     }
@@ -9870,7 +9872,7 @@
   "nome": "Gibbering Mouther",
   "nomeIngles": "Gibbering Mouther",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Aberração",
   "porte": "Médio",
   "imagem": "bestiario/gibbering-mouther.webp",
@@ -9893,26 +9895,26 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 46,
-   "defesa": 15,
+   "defesa": 16,
    "defesaSocial": "-",
-   "defesaMental": 16,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 10,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6+2 +3",
+     "pool": "3d6+2 +4",
      "dano": "1d6 +2 perfurante",
      "speed": 5
     }
@@ -10073,7 +10075,7 @@
   "nome": "Gigante da Tempestade",
   "nomeIngles": "Giant, Storm",
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Gigante",
   "porte": "Enorme",
   "imagem": "bestiario/gigante-da-tempestade.webp",
@@ -10096,16 +10098,16 @@
    "temperanca": 2,
    "valor": 5
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 4,
   "artes": [
    {
     "id": "vento",
-    "nivel": 2
+    "nivel": 3
    },
    {
     "id": "raio",
-    "nivel": 2
+    "nivel": 3
    },
    {
     "id": "adivinhacao",
@@ -10115,20 +10117,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
-   "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 19,
+   "defesa": 13,
+   "defesaSocial": 13,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 11,
-    "corte": 10,
-    "perfuracao": 10
+    "impacto": 12,
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "9d6 +2",
+     "pool": "9d6 +3",
      "dano": "3d6 +13 impacto",
      "speed": 7
     }
@@ -10363,7 +10365,7 @@
   "nome": "Girallon",
   "nomeIngles": "Girallon",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/girallon.webp",
@@ -10386,26 +10388,26 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 5,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 15,
+   "defesa": 16,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -10431,7 +10433,7 @@
   "nome": "Glabrezu",
   "nomeIngles": "Demon, Glabrezu",
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Corruptor",
   "porte": "Enorme",
   "imagem": "bestiario/glabrezu.webp",
@@ -10454,7 +10456,7 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 0,
   "artes": [
    {
@@ -10469,13 +10471,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
-   "defesa": 15,
-   "defesaSocial": 17,
-   "defesaMental": 26,
+   "defesa": 16,
+   "defesaSocial": 18,
+   "defesaMental": 28,
    "absorcao": {
-    "impacto": 15,
-    "corte": 14,
-    "perfuracao": 14
+    "impacto": 16,
+    "corte": 15,
+    "perfuracao": 15
    },
    "resistenciaPerfuracao": 1,
    "fraquezas": [
@@ -10486,7 +10488,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +5",
+     "pool": "8d6+2 +6",
      "dano": "3d6 +12 corte",
      "speed": 7
     }
@@ -10648,7 +10650,7 @@
   "nome": "Golem de Argila",
   "nomeIngles": "Golem, Clay",
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Construto",
   "porte": "Grande",
   "imagem": "bestiario/clay-golem.webp",
@@ -10656,151 +10658,6 @@
   "tipo": "chefe",
   "atributos": {
    "forca": 8,
-   "destreza": 2,
-   "vigor": 1,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 1,
-   "percepcao": 2,
-   "inteligencia": 0,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 4
-  },
-  "vontade": 7,
-  "aparencia": 4,
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 34,
-   "defesa": 6,
-   "defesaSocial": "-",
-   "defesaMental": "-",
-   "absorcao": {
-    "impacto": 3,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "resistencias": [
-    "corte",
-    "fogo",
-    "perfuracao"
-   ],
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "6d6+2 +2",
-     "dano": "2d6 +8 corte",
-     "speed": 6
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Construct",
-   "terreno": [
-    "Ruins",
-    "Underground",
-    "Any"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "2,4 m de altura",
-   "peso": "270 kg"
-  }
- },
- {
-  "id": "mon-flesh-golem",
-  "nome": "Golem de Carne",
-  "nomeIngles": "Golem, Flesh",
-  "ameaca": 4,
-  "centelha": 2,
-  "categoria": "Construto",
-  "porte": "Grande",
-  "imagem": "bestiario/flesh-golem.webp",
-  "semImagem": false,
-  "tipo": "elite",
-  "atributos": {
-   "forca": 7,
-   "destreza": 2,
-   "vigor": 1,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 1,
-   "percepcao": 2,
-   "inteligencia": 0,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
-  },
-  "vontade": 7,
-  "aparencia": 4,
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 34,
-   "defesa": 6,
-   "defesaSocial": "-",
-   "defesaMental": "-",
-   "absorcao": {
-    "impacto": 3,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "resistencias": [
-    "perfuracao"
-   ],
-   "iniciativa": "1d6 + 3",
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "6d6 +2",
-     "dano": "2d6 +7 corte",
-     "speed": 6
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Construct",
-   "terreno": [
-    "Ruins",
-    "Any"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "2,4 m de altura",
-   "peso": "225 kg"
-  }
- },
- {
-  "id": "mon-iron-golem",
-  "nome": "Golem de Ferro",
-  "nomeIngles": "Golem, Iron",
-  "ameaca": 5,
-  "centelha": 3,
-  "categoria": "Construto",
-  "porte": "Grande",
-  "imagem": "bestiario/iron-golem.webp",
-  "semImagem": false,
-  "tipo": "chefe",
-  "atributos": {
-   "forca": 11,
    "destreza": 2,
    "vigor": 1,
    "influencia": 0,
@@ -10831,6 +10688,151 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "corte",
+    "fogo",
+    "perfuracao"
+   ],
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "6d6+2 +3",
+     "dano": "2d6 +8 corte",
+     "speed": 6
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Construct",
+   "terreno": [
+    "Ruins",
+    "Underground",
+    "Any"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "2,4 m de altura",
+   "peso": "270 kg"
+  }
+ },
+ {
+  "id": "mon-flesh-golem",
+  "nome": "Golem de Carne",
+  "nomeIngles": "Golem, Flesh",
+  "ameaca": 4,
+  "centelha": 3,
+  "categoria": "Construto",
+  "porte": "Grande",
+  "imagem": "bestiario/flesh-golem.webp",
+  "semImagem": false,
+  "tipo": "elite",
+  "atributos": {
+   "forca": 7,
+   "destreza": 2,
+   "vigor": 1,
+   "influencia": 0,
+   "perspicacia": 0,
+   "compostura": 1,
+   "percepcao": 2,
+   "inteligencia": 0,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 3
+  },
+  "vontade": 8,
+  "aparencia": 4,
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 34,
+   "defesa": 7,
+   "defesaSocial": "-",
+   "defesaMental": "-",
+   "absorcao": {
+    "impacto": 4,
+    "corte": 5,
+    "perfuracao": 5
+   },
+   "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "perfuracao"
+   ],
+   "iniciativa": "1d6 + 3",
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "6d6 +3",
+     "dano": "2d6 +7 corte",
+     "speed": 6
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Construct",
+   "terreno": [
+    "Ruins",
+    "Any"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "2,4 m de altura",
+   "peso": "225 kg"
+  }
+ },
+ {
+  "id": "mon-iron-golem",
+  "nome": "Golem de Ferro",
+  "nomeIngles": "Golem, Iron",
+  "ameaca": 5,
+  "centelha": 4,
+  "categoria": "Construto",
+  "porte": "Grande",
+  "imagem": "bestiario/iron-golem.webp",
+  "semImagem": false,
+  "tipo": "chefe",
+  "atributos": {
+   "forca": 11,
+   "destreza": 2,
+   "vigor": 1,
+   "influencia": 0,
+   "perspicacia": 0,
+   "compostura": 1,
+   "percepcao": 2,
+   "inteligencia": 0,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 4
+  },
+  "vontade": 9,
+  "aparencia": 4,
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 34,
+   "defesa": 8,
+   "defesaSocial": "-",
+   "defesaMental": "-",
+   "absorcao": {
+    "impacto": 5,
+    "corte": 6,
+    "perfuracao": 6
+   },
+   "resistenciaPerfuracao": 0,
    "fraquezas": [
     "raio"
    ],
@@ -10843,7 +10845,7 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "8d6 +3",
+     "pool": "8d6 +4",
      "dano": "2d6 +11 corte",
      "speed": 6
     }
@@ -10945,7 +10947,7 @@
   "nome": "Golem de Pedra",
   "nomeIngles": "Golem, Stone",
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Construto",
   "porte": "Grande",
   "imagem": "bestiario/stone-golem.webp",
@@ -10968,19 +10970,19 @@
    "temperanca": 3,
    "valor": 4
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 4,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 3,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 4,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -10992,7 +10994,7 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "7d6+2 +2",
+     "pool": "7d6+2 +3",
      "dano": "2d6 +10 corte",
      "speed": 6
     }
@@ -11087,7 +11089,7 @@
   "nome": "Górgona (touro de ferro)",
   "nomeIngles": "Gorgon (Iron Bull)",
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/gorgona-touro-de-ferro.webp",
@@ -11110,31 +11112,31 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 5,
   "artes": [
    {
     "id": "materia",
-    "nivel": 2
+    "nivel": 3
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 62,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 10,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 11,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6+2 +2",
+     "pool": "6d6+2 +3",
      "dano": "2d6 +8 perfurante",
      "speed": 6
     }
@@ -11228,7 +11230,7 @@
   "nome": "Grande Wyrm Vermelho",
   "nomeIngles": "Dragon, Great Wyrm Red",
   "ameaca": 6,
-  "centelha": 8,
+  "centelha": 9,
   "categoria": "Dragão",
   "porte": "Colossal",
   "imagem": "bestiario/grande-wyrm-vermelho.webp",
@@ -11270,13 +11272,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 115,
-   "defesa": 12,
-   "defesaSocial": 22,
-   "defesaMental": 34,
+   "defesa": 13,
+   "defesaSocial": 23,
+   "defesaMental": 35,
    "absorcao": {
-    "impacto": 22,
-    "corte": 25,
-    "perfuracao": 25
+    "impacto": 23,
+    "corte": 26,
+    "perfuracao": 26
    },
    "resistenciaPerfuracao": 3,
    "resistencias": [
@@ -11286,7 +11288,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6+2 +8",
+     "pool": "10d6+2 +9",
      "dano": "4d6 +16 perfurante",
      "speed": 7
     }
@@ -11313,7 +11315,7 @@
   "nome": "Greater Barghest",
   "nomeIngles": "Greater Barghest",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/greater-barghest.webp",
@@ -11336,19 +11338,19 @@
    "temperanca": 1,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 14,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -11359,7 +11361,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +3",
+     "pool": "6d6+2 +4",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -11661,7 +11663,7 @@
   "nome": "Hezrou",
   "nomeIngles": "Demon, Hezrou",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/hezrou.webp",
@@ -11684,7 +11686,7 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [
    {
@@ -11699,13 +11701,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 66,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 15,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 13,
-    "corte": 10,
-    "perfuracao": 10
+    "impacto": 14,
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -11716,7 +11718,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +4",
+     "pool": "7d6 +5",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -12286,7 +12288,7 @@
   "nome": "Ice Linnorm",
   "nomeIngles": "Ice Linnorm",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Dragão",
   "porte": "Colossal",
   "imagem": "bestiario/ice-linnorm.webp",
@@ -12309,19 +12311,19 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 9,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 110,
-   "defesa": 23,
+   "defesa": 24,
    "defesaSocial": "-",
-   "defesaMental": 25,
+   "defesaMental": 27,
    "absorcao": {
-    "impacto": 18,
-    "corte": 21,
-    "perfuracao": 21
+    "impacto": 19,
+    "corte": 22,
+    "perfuracao": 22
    },
    "resistenciaPerfuracao": 3,
    "fraquezas": [
@@ -12334,7 +12336,7 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6 +5",
+     "pool": "10d6 +6",
      "dano": "4d6 +15 perfurante",
      "speed": 7
     }
@@ -12359,7 +12361,7 @@
   "nome": "Intellect Devourer",
   "nomeIngles": "Intellect Devourer",
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Aberração",
   "porte": "Pequeno",
   "imagem": "bestiario/intellect-devourer.webp",
@@ -12382,26 +12384,26 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 32,
-   "defesa": 21,
-   "defesaSocial": 11,
-   "defesaMental": 18,
+   "defesa": 22,
+   "defesaSocial": 12,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +3",
+     "pool": "4d6 +4",
      "dano": "1d6 +3 perfurante",
      "speed": 5
     }
@@ -12426,7 +12428,7 @@
   "nome": "Invisible Stalker",
   "nomeIngles": "Invisible Stalker",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Elemental",
   "porte": "Médio",
   "imagem": "bestiario/invisible-stalker.webp",
@@ -12449,19 +12451,19 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 5,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 46,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 18,
+   "defesa": 16,
+   "defesaSocial": 10,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 10,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -12472,7 +12474,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -12768,7 +12770,7 @@
   "nome": "Kraken",
   "nomeIngles": "Kraken",
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "categoria": "Besta mágica",
   "porte": "Colossal",
   "imagem": "bestiario/kraken.webp",
@@ -12791,7 +12793,7 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 11,
+  "vontade": 12,
   "aparencia": 5,
   "artes": [
    {
@@ -12804,20 +12806,20 @@
   ],
   "combate": {
    "pv": 110,
-   "defesa": 10,
-   "defesaSocial": 18,
-   "defesaMental": 29,
+   "defesa": 11,
+   "defesaSocial": 19,
+   "defesaMental": 31,
    "absorcao": {
-    "impacto": 19,
-    "corte": 22,
-    "perfuracao": 22
+    "impacto": 20,
+    "corte": 23,
+    "perfuracao": 23
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "9d6+2 +6",
+     "pool": "9d6+2 +7",
      "dano": "4d6 +14 perfurante",
      "speed": 7
     }
@@ -12842,7 +12844,7 @@
   "nome": "Kyton",
   "nomeIngles": "Kyton",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/kyton.webp",
@@ -12865,19 +12867,19 @@
    "temperanca": 1,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 17,
+   "defesa": 16,
+   "defesaSocial": 10,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -12888,7 +12890,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +3",
+     "pool": "4d6+2 +4",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -13051,7 +13053,7 @@
   "nome": "Lâmia",
   "nomeIngles": "Lamia",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Humanoide monstruoso",
   "porte": "Grande",
   "imagem": "bestiario/lamia.webp",
@@ -13074,7 +13076,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 4,
   "artes": [
    {
@@ -13089,20 +13091,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 19,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 20,
+   "defesaSocial": 14,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
      "speed": 6
     }
@@ -13195,7 +13197,7 @@
   "nome": "Leão Atroz",
   "nomeIngles": "Dire Lion",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Animal",
   "porte": "Médio",
   "imagem": "bestiario/dire-lion-spotted-lion.webp",
@@ -13218,26 +13220,26 @@
    "temperanca": 2,
    "valor": 2
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 4,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 13,
+   "defesa": 14,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "6d6+2 +3",
+     "pool": "6d6+2 +4",
      "dano": "1d6 +8 corte",
      "speed": 5
     }
@@ -13473,7 +13475,7 @@
   "nome": "Lich",
   "nomeIngles": "Lich",
   "ameaca": 5,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Morto-vivo",
   "porte": "Médio",
   "imagem": "bestiario/lich.webp",
@@ -13496,7 +13498,7 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 2,
   "artes": [
    {
@@ -13511,13 +13513,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 24,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 26,
    "absorcao": {
-    "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 11,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -13531,7 +13533,7 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "3d6+2 +5",
+     "pool": "3d6+2 +6",
      "dano": "1d6 +2 impacto",
      "speed": 5
     }
@@ -13557,7 +13559,7 @@
   "nome": "Lillend",
   "nomeIngles": "Lillend",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Celestial",
   "porte": "Grande",
   "imagem": "bestiario/lillend.webp",
@@ -13580,19 +13582,19 @@
    "temperanca": 4,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 10,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 58,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 20,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 10,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 11,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -13602,7 +13604,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -13912,7 +13914,7 @@
   "nome": "Lobo do Inverno",
   "nomeIngles": "Winter Wolf",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/winter-wolf.webp",
@@ -13935,26 +13937,26 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 5,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -14252,7 +14254,7 @@
   "nome": "Mago de Batalha",
   "nomeIngles": "War Mage",
   "ameaca": 6,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Humanoide",
   "porte": "Médio",
   "imagem": "bestiario/mago-de-batalha.webp",
@@ -14290,20 +14292,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 17,
+   "defesa": 15,
+   "defesaSocial": 7,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
    "ataques": [
     {
      "nome": "Bola de fogo (Fogo 3)",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "3d6 fogo (área)",
      "speed": 6,
      "notas": "3 Mana; explosão em área"
@@ -14465,7 +14467,7 @@
   "nome": "Marid",
   "nomeIngles": "Marid",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Elemental",
   "porte": "Grande",
   "imagem": "bestiario/marid.webp",
@@ -14488,19 +14490,19 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 5,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 17,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -14513,7 +14515,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +4",
+     "pool": "6d6+2 +5",
      "dano": "2d6 +8 corte",
      "speed": 6
     }
@@ -14538,7 +14540,7 @@
   "nome": "Marilith",
   "nomeIngles": "Demon, Marilith",
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/marilith.webp",
@@ -14561,7 +14563,7 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 11,
+  "vontade": 12,
   "aparencia": -1,
   "artes": [],
   "tecnicas": [
@@ -14569,13 +14571,13 @@
   ],
   "combate": {
    "pv": 66,
-   "defesa": 26,
-   "defesaSocial": 20,
-   "defesaMental": 29,
+   "defesa": 27,
+   "defesaSocial": 21,
+   "defesaMental": 31,
    "absorcao": {
-    "impacto": 15,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 16,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -14586,7 +14588,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +6",
+     "pool": "7d6+2 +7",
      "dano": "2d6 +10 corte",
      "speed": 6
     }
@@ -14680,7 +14682,7 @@
   "nome": "Medusa",
   "nomeIngles": "Medusa",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
   "imagem": "bestiario/medusa.webp",
@@ -14703,31 +14705,31 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 7,
   "artes": [
    {
     "id": "materia",
-    "nivel": 2
+    "nivel": 3
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 16,
+   "defesa": 13,
+   "defesaSocial": 11,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
+     "pool": "3d6+2 +3",
      "dano": "1d6 +2 corte",
      "speed": 5
     }
@@ -15094,7 +15096,7 @@
   "nome": "Mohrg",
   "nomeIngles": "Mohrg",
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
   "imagem": "bestiario/mohrg.webp",
@@ -15117,19 +15119,19 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 2,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 16,
+   "defesaSocial": 10,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -15143,7 +15145,7 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "1d6 +6 impacto",
      "speed": 5
     }
@@ -15591,7 +15593,7 @@
   "nome": "Múmia",
   "nomeIngles": "Mummy",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
   "imagem": "bestiario/mumia.webp",
@@ -15614,7 +15616,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 2,
   "artes": [
    {
@@ -15625,13 +15627,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 7,
+   "defesa": 8,
    "defesaSocial": "-",
-   "defesaMental": 17,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -15646,7 +15648,7 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "1d6 +7 impacto",
      "speed": 5
     }
@@ -15672,7 +15674,7 @@
   "nome": "Nabasu",
   "nomeIngles": "Demon, Nabasu",
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/nabasu.webp",
@@ -15695,19 +15697,19 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 0,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 46,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 16,
+   "defesaSocial": 14,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 10,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -15718,7 +15720,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "1d6 +7 corte",
      "speed": 5
     }
@@ -15743,7 +15745,7 @@
   "nome": "Naga Espírita",
   "nomeIngles": "Naga, Spirit",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Aberração",
   "porte": "Grande",
   "imagem": "bestiario/naga-espirita.webp",
@@ -15766,7 +15768,7 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 1,
   "artes": [
    {
@@ -15777,20 +15779,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 12,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 13,
+   "defesaSocial": 15,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +4",
+     "pool": "5d6+2 +5",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -15817,7 +15819,7 @@
   "nome": "Naga Guardiã",
   "nomeIngles": "Naga, Guardian",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Aberração",
   "porte": "Grande",
   "imagem": "bestiario/guardian-naga.webp",
@@ -15840,26 +15842,26 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 58,
-   "defesa": 22,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 23,
+   "defesaSocial": 15,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 12,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "2d6 +7 perfurante",
      "speed": 6
     }
@@ -15885,7 +15887,7 @@
   "nome": "Naga Negra",
   "nomeIngles": "Naga, Dark",
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Aberração",
   "porte": "Grande",
   "imagem": "bestiario/dark-naga.webp",
@@ -15908,26 +15910,26 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 19,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 20,
+   "defesaSocial": 14,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +5 perfurante",
      "speed": 6
     }
@@ -15953,7 +15955,7 @@
   "nome": "Nalfeshnee",
   "nomeIngles": "Demon, Nalfeshnee",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Corruptor",
   "porte": "Enorme",
   "imagem": "bestiario/nalfeshnee.webp",
@@ -15976,19 +15978,19 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": -1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 90,
-   "defesa": 13,
-   "defesaSocial": 17,
-   "defesaMental": 28,
+   "defesa": 14,
+   "defesaSocial": 18,
+   "defesaMental": 30,
    "absorcao": {
-    "impacto": 16,
-    "corte": 14,
-    "perfuracao": 14
+    "impacto": 17,
+    "corte": 15,
+    "perfuracao": 15
    },
    "resistenciaPerfuracao": 1,
    "fraquezas": [
@@ -15999,7 +16001,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +5",
+     "pool": "8d6+2 +6",
      "dano": "3d6 +12 corte",
      "speed": 7
     }
@@ -16024,7 +16026,7 @@
   "nome": "Neothelid",
   "nomeIngles": "Neothelid",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Aberração",
   "porte": "Imenso",
   "imagem": "bestiario/neothelid.webp",
@@ -16047,26 +16049,26 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 90,
-   "defesa": 7,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 8,
+   "defesaSocial": 16,
+   "defesaMental": 27,
    "absorcao": {
-    "impacto": 15,
-    "corte": 17,
-    "perfuracao": 17
+    "impacto": 16,
+    "corte": 18,
+    "perfuracao": 18
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6+2 +5",
+     "pool": "8d6+2 +6",
      "dano": "3d6 +12 perfurante",
      "speed": 7
     }
@@ -16091,7 +16093,7 @@
   "nome": "Nessian Warhound",
   "nomeIngles": "Nessian Warhound",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/nessian-warhound.webp",
@@ -16114,19 +16116,19 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 58,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 17,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 12,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -16137,7 +16139,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +4",
+     "pool": "7d6 +5",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -16162,7 +16164,7 @@
   "nome": "Ninfa",
   "nomeIngles": "Nymph",
   "ameaca": 4,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Fada",
   "porte": "Médio",
   "imagem": "bestiario/ninfa.webp",
@@ -16185,7 +16187,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 8,
   "artes": [
    {
@@ -16202,20 +16204,20 @@
   ],
   "combate": {
    "pv": 34,
-   "defesa": 20,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 21,
+   "defesaSocial": 15,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6+2 +4",
+     "pool": "3d6+2 +5",
      "dano": "1d6 +2 perfurante",
      "speed": 5
     }
@@ -16381,7 +16383,7 @@
   "nome": "Ogro Mago (Oni)",
   "nomeIngles": "Ogre Mage (Oni)",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Gigante",
   "porte": "Grande",
   "imagem": "bestiario/ogro-mago-oni.webp",
@@ -16404,12 +16406,12 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [
    {
     "id": "vento",
-    "nivel": 4
+    "nivel": 5
    },
    {
     "id": "fascinacao",
@@ -16429,20 +16431,20 @@
   ],
   "combate": {
    "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 15,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 11,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -16747,7 +16749,7 @@
   "nome": "Pégaso",
   "nomeIngles": "Pegasus",
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/pegaso.webp",
@@ -16770,7 +16772,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 5,
   "artes": [
    {
@@ -16781,20 +16783,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 9,
-   "defesaMental": 17,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -16821,7 +16823,7 @@
   "nome": "Pesadelo",
   "nomeIngles": "Nightmare",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/nightmare.webp",
@@ -16844,19 +16846,19 @@
    "temperanca": 1,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 9,
-   "defesaMental": 17,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -16867,7 +16869,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +6 corte",
      "speed": 6
     }
@@ -16959,7 +16961,7 @@
   "nome": "Pixie",
   "nomeIngles": "Pixie",
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Fada",
   "porte": "Miúdo",
   "imagem": "bestiario/pixie.webp",
@@ -16982,7 +16984,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 8,
   "artes": [
    {
@@ -16993,20 +16995,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 17,
-   "defesa": 19,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 20,
+   "defesaSocial": 14,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 5,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 6,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +3",
+     "pool": "2d6+2 +4",
      "dano": "1d6 +1 perfurante",
      "speed": 5
     }
@@ -17031,7 +17033,7 @@
   "nome": "Planetar",
   "nomeIngles": "Angel, Planetar",
   "ameaca": 6,
-  "centelha": 6,
+  "centelha": 7,
   "categoria": "Celestial",
   "porte": "Grande",
   "imagem": "bestiario/planetar.webp",
@@ -17054,7 +17056,7 @@
    "temperanca": 4,
    "valor": 5
   },
-  "vontade": 11,
+  "vontade": 12,
   "aparencia": 11,
   "artes": [
    {
@@ -17071,13 +17073,13 @@
   ],
   "combate": {
    "pv": 62,
-   "defesa": 18,
-   "defesaSocial": 22,
-   "defesaMental": 32,
+   "defesa": 19,
+   "defesaSocial": 23,
+   "defesaMental": 34,
    "absorcao": {
-    "impacto": 14,
-    "corte": 12,
-    "perfuracao": 12
+    "impacto": 15,
+    "corte": 13,
+    "perfuracao": 13
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -17087,7 +17089,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +6",
+     "pool": "7d6 +7",
      "dano": "2d6 +9 corte",
      "speed": 6
     }
@@ -17606,7 +17608,7 @@
   "nome": "Quimera",
   "nomeIngles": "Chimera",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/quimera.webp",
@@ -17629,7 +17631,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 5,
   "artes": [
    {
@@ -17640,20 +17642,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 10,
+   "defesa": 11,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -17815,7 +17817,7 @@
   "nome": "Rakshasa",
   "nomeIngles": "Rakshasa",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Outsider",
   "porte": "Médio",
   "imagem": "bestiario/rakshasa.webp",
@@ -17838,7 +17840,7 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [
    {
@@ -17861,20 +17863,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 16,
-   "defesaSocial": 12,
-   "defesaMental": 20,
+   "defesa": 17,
+   "defesaSocial": 13,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
+     "pool": "4d6+2 +5",
      "dano": "1d6 +4 corte",
      "speed": 5
     }
@@ -18038,7 +18040,7 @@
   "nome": "Remorhaz",
   "nomeIngles": "Remorhaz",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Enorme",
   "imagem": "bestiario/remorhaz.webp",
@@ -18061,26 +18063,26 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 5,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 75,
-   "defesa": 11,
+   "defesa": 12,
    "defesaSocial": "-",
-   "defesaMental": 15,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 11,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 12,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6 +3",
+     "pool": "7d6 +4",
      "dano": "3d6 +9 perfurante",
      "speed": 7
     }
@@ -18318,7 +18320,7 @@
   "nome": "Roper",
   "nomeIngles": "Roper",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Aberração",
   "porte": "Grande",
   "imagem": "bestiario/roper.webp",
@@ -18341,26 +18343,26 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 70,
-   "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 13,
+   "defesaSocial": 13,
+   "defesaMental": 23,
    "absorcao": {
-    "impacto": 14,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 15,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +4",
+     "pool": "8d6 +5",
      "dano": "2d6 +11 perfurante",
      "speed": 6
     }
@@ -18456,7 +18458,7 @@
   "nome": "Salamandra",
   "nomeIngles": "Salamander",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Elemental",
   "porte": "Médio",
   "imagem": "bestiario/salamandra.webp",
@@ -18479,7 +18481,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 5,
   "artes": [
    {
@@ -18492,13 +18494,13 @@
   ],
   "combate": {
    "pv": 40,
-   "defesa": 10,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 11,
+   "defesaSocial": 11,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 8,
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -18511,7 +18513,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +2",
+     "pool": "5d6 +3",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -18747,7 +18749,7 @@
   "nome": "Serpente Marinha",
   "nomeIngles": "Sea Serpent",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Besta mágica",
   "porte": "Imenso",
   "imagem": "bestiario/sea-serpent.webp",
@@ -18770,26 +18772,26 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 5,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 95,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": "-",
-   "defesaMental": 16,
+   "defesaMental": 18,
    "absorcao": {
-    "impacto": 15,
-    "corte": 16,
-    "perfuracao": 16
+    "impacto": 16,
+    "corte": 17,
+    "perfuracao": 17
    },
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 2",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "9d6 +4",
+     "pool": "9d6 +5",
      "dano": "3d6 +13 perfurante",
      "speed": 7
     }
@@ -18885,7 +18887,7 @@
   "nome": "Shaitan",
   "nomeIngles": "Shaitan",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Elemental",
   "porte": "Grande",
   "imagem": "bestiario/shaitan.webp",
@@ -18908,19 +18910,19 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 5,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 12,
+   "defesaSocial": 12,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -18933,7 +18935,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +3",
+     "pool": "6d6 +4",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -19313,7 +19315,7 @@
   "nome": "Solar",
   "nomeIngles": "Angel, Solar",
   "ameaca": 6,
-  "centelha": 8,
+  "centelha": 9,
   "categoria": "Celestial",
   "porte": "Grande",
   "imagem": "bestiario/solar.webp",
@@ -19355,13 +19357,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
-   "defesa": 24,
-   "defesaSocial": 24,
-   "defesaMental": 36,
+   "defesa": 25,
+   "defesaSocial": 25,
+   "defesaMental": 37,
    "absorcao": {
-    "impacto": 18,
-    "corte": 15,
-    "perfuracao": 15
+    "impacto": 19,
+    "corte": 16,
+    "perfuracao": 16
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -19371,7 +19373,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +8",
+     "pool": "7d6+2 +9",
      "dano": "2d6 +10 corte",
      "speed": 6
     }
@@ -19619,7 +19621,7 @@
   "nome": "Súcubo",
   "nomeIngles": "Demon, Succubus",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/sucubo.webp",
@@ -19642,12 +19644,12 @@
    "temperanca": 1,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 9,
   "artes": [
    {
     "id": "fascinacao",
-    "nivel": 3
+    "nivel": 4
    },
    {
     "id": "materia",
@@ -19655,7 +19657,7 @@
    },
    {
     "id": "conjuracao",
-    "nivel": 3
+    "nivel": 4
    }
   ],
   "tecnicas": [
@@ -19663,13 +19665,13 @@
   ],
   "combate": {
    "pv": 43,
-   "defesa": 15,
-   "defesaSocial": 15,
-   "defesaMental": 22,
+   "defesa": 16,
+   "defesaSocial": 16,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -19680,7 +19682,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6 +3",
+     "pool": "4d6 +4",
      "dano": "1d6 +3 corte",
      "speed": 5
     }
@@ -19772,7 +19774,7 @@
   "nome": "Tarn Linnorm",
   "nomeIngles": "Tarn Linnorm",
   "ameaca": 6,
-  "centelha": 5,
+  "centelha": 6,
   "categoria": "Dragão",
   "porte": "Colossal",
   "imagem": "bestiario/tarn-linnorm.webp",
@@ -19795,26 +19797,26 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 10,
+  "vontade": 11,
   "aparencia": 9,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 115,
-   "defesa": 25,
+   "defesa": 26,
    "defesaSocial": "-",
-   "defesaMental": 28,
+   "defesaMental": 30,
    "absorcao": {
-    "impacto": 19,
-    "corte": 22,
-    "perfuracao": 22
+    "impacto": 20,
+    "corte": 23,
+    "perfuracao": 23
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 9",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6+2 +5",
+     "pool": "10d6+2 +6",
      "dano": "4d6 +16 perfurante",
      "speed": 7
     }
@@ -19840,7 +19842,7 @@
   "nome": "Tarrasque",
   "nomeIngles": "Tarrasque",
   "ameaca": 6,
-  "centelha": 9,
+  "centelha": 10,
   "categoria": "Besta mágica",
   "porte": "Colossal",
   "imagem": "bestiario/tarrasque.webp",
@@ -19880,20 +19882,20 @@
   ],
   "combate": {
    "pv": 115,
-   "defesa": 13,
+   "defesa": 14,
    "defesaSocial": "-",
-   "defesaMental": 27,
+   "defesaMental": 28,
    "absorcao": {
-    "impacto": 23,
-    "corte": 26,
-    "perfuracao": 26
+    "impacto": 24,
+    "corte": 27,
+    "perfuracao": 27
    },
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "10d6+2 +9",
+     "pool": "10d6+2 +10",
      "dano": "4d6 +16 perfurante",
      "speed": 7
     }
@@ -19918,7 +19920,7 @@
   "nome": "Tartaruga-Dragão",
   "nomeIngles": "Dragon Turtle",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Dragão",
   "porte": "Enorme",
   "imagem": "bestiario/dragon-turtle.webp",
@@ -19941,26 +19943,26 @@
    "temperanca": 3,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 9,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 70,
-   "defesa": 8,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 9,
+   "defesaSocial": 11,
+   "defesaMental": 21,
    "absorcao": {
-    "impacto": 11,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 12,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 4",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6+2 +4",
+     "pool": "7d6+2 +5",
      "dano": "3d6 +10 perfurante",
      "speed": 7
     }
@@ -20259,7 +20261,7 @@
   "nome": "Treant",
   "nomeIngles": "Treant",
   "ameaca": 5,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Planta",
   "porte": "Enorme",
   "imagem": "bestiario/treant.webp",
@@ -20282,7 +20284,7 @@
    "temperanca": 1,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 3,
   "artes": [
    {
@@ -20290,16 +20292,18 @@
     "nivel": 2
    }
   ],
-  "tecnicas": [],
+  "tecnicas": [
+   "pele-de-pedra"
+  ],
   "combate": {
    "pv": 75,
-   "defesa": 6,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesa": 7,
+   "defesaSocial": 11,
+   "defesaMental": 19,
    "absorcao": {
-    "impacto": 10,
-    "corte": 10,
-    "perfuracao": 10
+    "impacto": 11,
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 1,
    "fraquezas": [
@@ -20312,7 +20316,7 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +2",
+     "pool": "8d6 +3",
      "dano": "3d6 +11 perfurante",
      "speed": 7
     }
@@ -20752,7 +20756,7 @@
   "nome": "Unicórnio",
   "nomeIngles": "Unicorn",
   "ameaca": 3,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/unicornio.webp",
@@ -20775,7 +20779,7 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 10,
   "artes": [
    {
@@ -20787,23 +20791,25 @@
     "nivel": 2
    }
   ],
-  "tecnicas": [],
+  "tecnicas": [
+   "imunidade"
+  ],
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 17,
-   "defesaMental": 23,
+   "defesa": 16,
+   "defesaSocial": 18,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -21032,7 +21038,7 @@
   "nome": "Vampiro",
   "nomeIngles": "Vampire",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Morto-vivo",
   "porte": "Médio",
   "imagem": "bestiario/vampiro.webp",
@@ -21055,7 +21061,7 @@
    "temperanca": 2,
    "valor": 4
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 2,
   "artes": [
    {
@@ -21080,13 +21086,13 @@
   ],
   "combate": {
    "pv": 49,
-   "defesa": 16,
-   "defesaSocial": 16,
-   "defesaMental": 23,
+   "defesa": 17,
+   "defesaSocial": 17,
+   "defesaMental": 25,
    "absorcao": {
-    "impacto": 12,
-    "corte": 8,
-    "perfuracao": 8
+    "impacto": 13,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -21103,7 +21109,7 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "5d6 +4",
+     "pool": "5d6 +5",
      "dano": "1d6 +5 impacto",
      "speed": 5
     }
@@ -21552,7 +21558,7 @@
   "nome": "Vrock",
   "nomeIngles": "Demon, Vrock",
   "ameaca": 5,
-  "centelha": 4,
+  "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Grande",
   "imagem": "bestiario/vrock.webp",
@@ -21575,7 +21581,7 @@
    "temperanca": 1,
    "valor": 6
   },
-  "vontade": 9,
+  "vontade": 10,
   "aparencia": 0,
   "artes": [
    {
@@ -21590,13 +21596,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 66,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 15,
+   "defesaSocial": 15,
+   "defesaMental": 24,
    "absorcao": {
-    "impacto": 13,
-    "corte": 10,
-    "perfuracao": 10
+    "impacto": 14,
+    "corte": 11,
+    "perfuracao": 11
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -21607,7 +21613,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
+     "pool": "6d6 +5",
      "dano": "2d6 +7 corte",
      "speed": 6
     }
@@ -21780,7 +21786,7 @@
   "nome": "Wyvern",
   "nomeIngles": "Wyvern",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Dragão",
   "porte": "Grande",
   "imagem": "bestiario/wyvern.webp",
@@ -21803,26 +21809,26 @@
    "temperanca": 3,
    "valor": 5
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 8,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 10,
+   "defesa": 11,
    "defesaSocial": "-",
-   "defesaMental": 14,
+   "defesaMental": 16,
    "absorcao": {
-    "impacto": 8,
-    "corte": 7,
-    "perfuracao": 7
+    "impacto": 9,
+    "corte": 8,
+    "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "2d6 +6 perfurante",
      "speed": 6
     }
@@ -21847,7 +21853,7 @@
   "nome": "Xill",
   "nomeIngles": "Xill",
   "ameaca": 4,
-  "centelha": 3,
+  "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
   "imagem": "bestiario/xill.webp",
@@ -21870,19 +21876,19 @@
    "temperanca": 1,
    "valor": 5
   },
-  "vontade": 8,
+  "vontade": 9,
   "aparencia": 1,
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 18,
+   "defesa": 16,
+   "defesaSocial": 10,
+   "defesaMental": 20,
    "absorcao": {
-    "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -21893,7 +21899,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +3",
+     "pool": "5d6 +4",
      "dano": "1d6 +5 corte",
      "speed": 5
     }
@@ -21920,7 +21926,7 @@
   "nome": "Xorn",
   "nomeIngles": "Xorn",
   "ameaca": 4,
-  "centelha": 2,
+  "centelha": 3,
   "categoria": "Elemental",
   "porte": "Médio",
   "imagem": "bestiario/xorn.webp",
@@ -21943,24 +21949,24 @@
    "temperanca": 2,
    "valor": 3
   },
-  "vontade": 7,
+  "vontade": 8,
   "aparencia": 5,
   "artes": [
    {
     "id": "terra",
-    "nivel": 2
+    "nivel": 3
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 43,
-   "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 11,
+   "defesaSocial": 7,
+   "defesaMental": 15,
    "absorcao": {
-    "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -21973,7 +21979,7 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +2",
+     "pool": "5d6+2 +3",
      "dano": "1d6 +6 corte",
      "speed": 5
     }

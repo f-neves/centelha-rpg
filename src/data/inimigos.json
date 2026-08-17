@@ -342,7 +342,7 @@
     "tipo": "elite",
     "categoria": "Humano",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "lâmina silenciosa",
     "descricao": "Surge das sombras, aplica um golpe e some.",
     "tags": [
@@ -350,14 +350,14 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 19,
-    "defesaSocial": 12,
-    "defesaMental": 14,
+    "defesa": 20,
+    "defesaSocial": 13,
+    "defesaMental": 15,
     "vontade": 6,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 4
+      "impacto": 8,
+      "corte": 6,
+      "perfuracao": 5
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 6",
@@ -375,7 +375,7 @@
     "ataques": [
       {
         "nome": "Adaga (Ágil)",
-        "pool": "4d6+2 +4",
+        "pool": "4d6+2 +5",
         "dano": "1d6 +3 perfurante · perf. 0",
         "ticks": 5,
         "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
@@ -397,7 +397,7 @@
     "tipo": "elite",
     "categoria": "Humano",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "esgrimista exímio",
     "descricao": "Vive do duelo: apara, finta e responde com a ripose.",
     "tags": [
@@ -405,14 +405,14 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 19,
-    "defesaSocial": 6,
-    "defesaMental": 15,
+    "defesa": 20,
+    "defesaSocial": 7,
+    "defesaMental": 16,
     "vontade": 6,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 4
+      "impacto": 8,
+      "corte": 6,
+      "perfuracao": 5
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 6",
@@ -430,7 +430,7 @@
     "ataques": [
       {
         "nome": "Florete (Ágil)",
-        "pool": "5d6 +4",
+        "pool": "5d6 +5",
         "dano": "1d6 +3 perfurante · perf. 1",
         "ticks": 5
       }
@@ -560,7 +560,7 @@
     "tipo": "chefe",
     "categoria": "Humano",
     "ameaca": 6,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "herói inimigo",
     "descricao": "Um adversário à altura dos PJs: rápido, forte e com Técnicas de herói.",
     "tags": [
@@ -568,14 +568,14 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 18,
-    "defesaSocial": 12,
-    "defesaMental": 18,
+    "defesa": 19,
+    "defesaSocial": 13,
+    "defesaMental": 19,
     "vontade": 8,
     "soak": {
-      "impacto": 7,
-      "corte": 10,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 11,
+      "perfuracao": 6
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 7",
@@ -593,7 +593,7 @@
     "ataques": [
       {
         "nome": "Espada longa (golpe duplo)",
-        "pool": "5d6 +3",
+        "pool": "5d6 +4",
         "dano": "2d6 +4 corte",
         "ticks": 6,
         "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
@@ -723,7 +723,7 @@
     "tipo": "chefe",
     "categoria": "Conjurador",
     "ameaca": 6,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "artilharia arcana",
     "descricao": "Conjura fogo e força sobre o campo; perigoso a qualquer distância.",
     "tags": [
@@ -732,14 +732,14 @@
       "arcano"
     ],
     "pv": 34,
-    "defesa": 14,
-    "defesaSocial": 6,
-    "defesaMental": 17,
+    "defesa": 15,
+    "defesaSocial": 7,
+    "defesaMental": 18,
     "vontade": 8,
     "soak": {
-      "impacto": 5,
-      "corte": 3,
-      "perfuracao": 3
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -757,7 +757,7 @@
     "ataques": [
       {
         "nome": "Bola de fogo (Fogo 3)",
-        "pool": "5d6 +2",
+        "pool": "5d6 +3",
         "dano": "3d6 fogo (área)",
         "ticks": 6,
         "notas": "3 Mana; explosão em área"
@@ -1647,7 +1647,7 @@
     "tipo": "chefe",
     "categoria": "Gigante",
     "ameaca": 5,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "humanoide Enorme (gigante)",
     "descricao": "Colosso humanoide, força bruta em escala descomunal.",
     "tags": [
@@ -1656,14 +1656,14 @@
       "mágico"
     ],
     "pv": 80,
-    "defesa": 12,
-    "defesaSocial": 12,
-    "defesaMental": 19,
-    "vontade": 7,
+    "defesa": 13,
+    "defesaSocial": 13,
+    "defesaMental": 21,
+    "vontade": 8,
     "soak": {
-      "impacto": 11,
-      "corte": 10,
-      "perfuracao": 10
+      "impacto": 12,
+      "corte": 11,
+      "perfuracao": 11
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 8",
@@ -1681,7 +1681,7 @@
     "ataques": [
       {
         "nome": "Pancada descomunal",
-        "pool": "9d6 +2",
+        "pool": "9d6 +3",
         "dano": "3d6 +13 impacto",
         "ticks": 7
       }
@@ -1690,11 +1690,11 @@
     "artes": [
       {
         "id": "vento",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "raio",
-        "nivel": 2
+        "nivel": 3
       },
       {
         "id": "adivinhacao",
@@ -3049,7 +3049,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -3058,14 +3058,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 10,
+    "defesa": 11,
     "defesaSocial": "-",
-    "defesaMental": 14,
-    "vontade": 7,
+    "defesaMental": 16,
+    "vontade": 8,
     "soak": {
-      "impacto": 8,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 9,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3083,7 +3083,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6+2 +2",
+        "pool": "5d6+2 +3",
         "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
@@ -3117,7 +3117,7 @@
     "tipo": "elite",
     "categoria": "Dragão",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "dragão Grande",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -3125,14 +3125,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 10,
+    "defesa": 11,
     "defesaSocial": "-",
-    "defesaMental": 14,
-    "vontade": 7,
+    "defesaMental": 16,
+    "vontade": 8,
     "soak": {
-      "impacto": 8,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 9,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3150,7 +3150,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "5d6+2 +2",
+        "pool": "5d6+2 +3",
         "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
@@ -3235,7 +3235,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "besta mágica Médio",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -3244,14 +3244,14 @@
       "mágico"
     ],
     "pv": 37,
-    "defesa": 6,
+    "defesa": 7,
     "defesaSocial": "-",
-    "defesaMental": 14,
-    "vontade": 7,
+    "defesaMental": 16,
+    "vontade": 8,
     "soak": {
-      "impacto": 6,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 7,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3269,7 +3269,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6 +2",
+        "pool": "5d6 +3",
         "dano": "1d6 +5 perfurante",
         "ticks": 5
       }
@@ -3278,7 +3278,7 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 2, Prontidão 3.",
@@ -3361,7 +3361,7 @@
     "tipo": "chefe",
     "categoria": "Besta mágica",
     "ameaca": 5,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -3370,14 +3370,14 @@
       "mágico"
     ],
     "pv": 62,
-    "defesa": 6,
+    "defesa": 7,
     "defesaSocial": "-",
-    "defesaMental": 14,
-    "vontade": 7,
+    "defesaMental": 16,
+    "vontade": 8,
     "soak": {
-      "impacto": 10,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 11,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -3395,7 +3395,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "6d6+2 +2",
+        "pool": "6d6+2 +3",
         "dano": "2d6 +8 perfurante",
         "ticks": 6
       }
@@ -3404,7 +3404,7 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Prontidão 4.",
@@ -3495,7 +3495,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -3504,14 +3504,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 14,
+    "defesa": 15,
     "defesaSocial": "-",
-    "defesaMental": 14,
-    "vontade": 7,
+    "defesaMental": 16,
+    "vontade": 8,
     "soak": {
-      "impacto": 8,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 9,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3529,7 +3529,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6+2 +2",
+        "pool": "5d6+2 +3",
         "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
@@ -3795,7 +3795,7 @@
     "tipo": "chefe",
     "categoria": "Planta",
     "ameaca": 5,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "planta Enorme",
     "descricao": "Vegetal desperto, lento e implacável.",
     "tags": [
@@ -3804,14 +3804,14 @@
       "mágico"
     ],
     "pv": 75,
-    "defesa": 6,
-    "defesaSocial": 10,
-    "defesaMental": 17,
-    "vontade": 7,
+    "defesa": 7,
+    "defesaSocial": 11,
+    "defesaMental": 19,
+    "vontade": 8,
     "soak": {
-      "impacto": 10,
-      "corte": 10,
-      "perfuracao": 10
+      "impacto": 11,
+      "corte": 11,
+      "perfuracao": 11
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 6",
@@ -3829,12 +3829,14 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "8d6 +2",
+        "pool": "8d6 +3",
         "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
     ],
-    "tecnicas": [],
+    "tecnicas": [
+      "pele-de-pedra"
+    ],
     "artes": [
       {
         "id": "vida",
@@ -3962,7 +3964,7 @@
     "tipo": "elite",
     "categoria": "Aberração",
     "ameaca": 4,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "aberração Enorme",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -3971,14 +3973,14 @@
       "mágico"
     ],
     "pv": 75,
-    "defesa": 12,
-    "defesaSocial": 14,
-    "defesaMental": 23,
-    "vontade": 9,
+    "defesa": 13,
+    "defesaSocial": 15,
+    "defesaMental": 25,
+    "vontade": 10,
     "soak": {
-      "impacto": 12,
-      "corte": 12,
-      "perfuracao": 12
+      "impacto": 13,
+      "corte": 13,
+      "perfuracao": 13
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 7",
@@ -3996,7 +3998,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "7d6+2 +4",
+        "pool": "7d6+2 +5",
         "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
@@ -4418,7 +4420,7 @@
     "tipo": "elite",
     "categoria": "Morto-vivo",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "morto-vivo Médio (incorpóreo)",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
@@ -4428,14 +4430,14 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 14,
-    "defesaSocial": 12,
-    "defesaMental": 18,
-    "vontade": 7,
+    "defesa": 15,
+    "defesaSocial": 13,
+    "defesaMental": 20,
+    "vontade": 8,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -4453,7 +4455,7 @@
     "ataques": [
       {
         "nome": "Toque dilacerante",
-        "pool": "5d6+2 +2",
+        "pool": "5d6+2 +3",
         "dano": "2d6 necrótico (vs Def. Mental)",
         "ticks": 5,
         "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -4467,7 +4469,7 @@
       },
       {
         "id": "espirito",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 4, Persuasão 3, Prontidão 3.",
@@ -4493,7 +4495,7 @@
     "tipo": "elite",
     "categoria": "Morto-vivo",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "morto-vivo Médio (incorpóreo)",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
@@ -4503,14 +4505,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 15,
-    "defesaSocial": 13,
-    "defesaMental": 20,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 14,
+    "defesaMental": 22,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -4528,7 +4530,7 @@
     "ataques": [
       {
         "nome": "Toque dilacerante",
-        "pool": "5d6 +3",
+        "pool": "5d6 +4",
         "dano": "2d6 necrótico (vs Def. Mental)",
         "ticks": 5,
         "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
@@ -4568,7 +4570,7 @@
     "tipo": "elite",
     "categoria": "Morto-vivo",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "morto-vivo Médio",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
@@ -4577,14 +4579,14 @@
       "mágico"
     ],
     "pv": 37,
-    "defesa": 7,
+    "defesa": 8,
     "defesaSocial": "-",
-    "defesaMental": 17,
-    "vontade": 8,
+    "defesaMental": 19,
+    "vontade": 9,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -4602,7 +4604,7 @@
     "ataques": [
       {
         "nome": "Golpe",
-        "pool": "6d6 +3",
+        "pool": "6d6 +4",
         "dano": "1d6 +7 impacto",
         "ticks": 5
       }
@@ -4637,7 +4639,7 @@
     "tipo": "chefe",
     "categoria": "Morto-vivo",
     "ameaca": 5,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "morto-vivo Médio",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
@@ -4646,14 +4648,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 13,
+    "defesa": 14,
     "defesaSocial": "-",
-    "defesaMental": 17,
-    "vontade": 8,
+    "defesaMental": 19,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -4671,7 +4673,7 @@
     "ataques": [
       {
         "nome": "Golpe",
-        "pool": "4d6+2 +3",
+        "pool": "4d6+2 +4",
         "dano": "1d6 +4 impacto",
         "ticks": 5
       }
@@ -4680,7 +4682,7 @@
     "artes": [
       {
         "id": "morte",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Prontidão 3, Furtividade 2.",
@@ -4700,7 +4702,7 @@
     "tipo": "chefe",
     "categoria": "Morto-vivo",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "morto-vivo Médio",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
@@ -4709,14 +4711,14 @@
       "mágico"
     ],
     "pv": 49,
-    "defesa": 16,
-    "defesaSocial": 16,
-    "defesaMental": 23,
-    "vontade": 9,
+    "defesa": 17,
+    "defesaSocial": 17,
+    "defesaMental": 25,
+    "vontade": 10,
     "soak": {
-      "impacto": 12,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 13,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -4734,7 +4736,7 @@
     "ataques": [
       {
         "nome": "Golpe",
-        "pool": "5d6 +4",
+        "pool": "5d6 +5",
         "dano": "1d6 +5 impacto",
         "ticks": 5
       }
@@ -4801,7 +4803,7 @@
     "tipo": "chefe",
     "categoria": "Morto-vivo",
     "ameaca": 5,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "morto-vivo Médio",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
@@ -4810,14 +4812,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 15,
-    "defesaSocial": 13,
-    "defesaMental": 24,
-    "vontade": 10,
+    "defesa": 16,
+    "defesaSocial": 14,
+    "defesaMental": 26,
+    "vontade": 11,
     "soak": {
-      "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 11,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -4835,7 +4837,7 @@
     "ataques": [
       {
         "nome": "Golpe",
-        "pool": "3d6+2 +5",
+        "pool": "3d6+2 +6",
         "dano": "1d6 +2 impacto",
         "ticks": 5
       }
@@ -5030,7 +5032,7 @@
     "tipo": "elite",
     "categoria": "Demônio",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Médio (demônio)",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -5039,14 +5041,14 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 15,
-    "defesaSocial": 15,
-    "defesaMental": 22,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 16,
+    "defesaMental": 24,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -5064,7 +5066,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "4d6 +3",
+        "pool": "4d6 +4",
         "dano": "1d6 +3 corte",
         "ticks": 5
       }
@@ -5075,7 +5077,7 @@
     "artes": [
       {
         "id": "fascinacao",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "materia",
@@ -5083,7 +5085,7 @@
       },
       {
         "id": "conjuracao",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Persuasão 4, Manha 4, Empatia 3.",
@@ -5121,7 +5123,7 @@
     "tipo": "chefe",
     "categoria": "Demônio",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Grande (demônio)",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -5130,14 +5132,14 @@
       "mágico"
     ],
     "pv": 66,
-    "defesa": 14,
-    "defesaSocial": 14,
-    "defesaMental": 22,
-    "vontade": 9,
+    "defesa": 15,
+    "defesaSocial": 15,
+    "defesaMental": 24,
+    "vontade": 10,
     "soak": {
-      "impacto": 13,
-      "corte": 10,
-      "perfuracao": 10
+      "impacto": 14,
+      "corte": 11,
+      "perfuracao": 11
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -5155,7 +5157,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6 +4",
+        "pool": "6d6 +5",
         "dano": "2d6 +7 corte",
         "ticks": 6
       }
@@ -5194,7 +5196,7 @@
     "tipo": "chefe",
     "categoria": "Demônio",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Grande (demônio)",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -5203,14 +5205,14 @@
       "mágico"
     ],
     "pv": 66,
-    "defesa": 14,
-    "defesaSocial": 14,
-    "defesaMental": 22,
-    "vontade": 9,
+    "defesa": 15,
+    "defesaSocial": 15,
+    "defesaMental": 24,
+    "vontade": 10,
     "soak": {
-      "impacto": 13,
-      "corte": 10,
-      "perfuracao": 10
+      "impacto": 14,
+      "corte": 11,
+      "perfuracao": 11
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -5228,7 +5230,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "7d6 +4",
+        "pool": "7d6 +5",
         "dano": "2d6 +9 corte",
         "ticks": 6
       }
@@ -5267,7 +5269,7 @@
     "tipo": "chefe",
     "categoria": "Demônio",
     "ameaca": 5,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "exterior Enorme (demônio)",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -5276,14 +5278,14 @@
       "mágico"
     ],
     "pv": 85,
-    "defesa": 15,
-    "defesaSocial": 17,
-    "defesaMental": 26,
-    "vontade": 10,
+    "defesa": 16,
+    "defesaSocial": 18,
+    "defesaMental": 28,
+    "vontade": 11,
     "soak": {
-      "impacto": 15,
-      "corte": 14,
-      "perfuracao": 14
+      "impacto": 16,
+      "corte": 15,
+      "perfuracao": 15
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 8",
@@ -5301,7 +5303,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "8d6+2 +5",
+        "pool": "8d6+2 +6",
         "dano": "3d6 +12 corte",
         "ticks": 7
       }
@@ -5345,7 +5347,7 @@
     "tipo": "chefe",
     "categoria": "Demônio",
     "ameaca": 6,
-    "centelha": 6,
+    "centelha": 7,
     "conceito": "exterior Grande (demônio)",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -5353,14 +5355,14 @@
       "centelha"
     ],
     "pv": 66,
-    "defesa": 26,
-    "defesaSocial": 20,
-    "defesaMental": 29,
-    "vontade": 11,
+    "defesa": 27,
+    "defesaSocial": 21,
+    "defesaMental": 31,
+    "vontade": 12,
     "soak": {
-      "impacto": 15,
-      "corte": 12,
-      "perfuracao": 12
+      "impacto": 16,
+      "corte": 13,
+      "perfuracao": 13
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -5378,7 +5380,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "7d6+2 +6",
+        "pool": "7d6+2 +7",
         "dano": "2d6 +10 corte",
         "ticks": 6
       }
@@ -5415,7 +5417,7 @@
     "tipo": "chefe",
     "categoria": "Demônio",
     "ameaca": 6,
-    "centelha": 8,
+    "centelha": 9,
     "conceito": "exterior Grande (demônio)",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -5424,14 +5426,14 @@
       "mágico"
     ],
     "pv": 78,
-    "defesa": 28,
-    "defesaSocial": 24,
-    "defesaMental": 35,
+    "defesa": 29,
+    "defesaSocial": 25,
+    "defesaMental": 36,
     "vontade": 12,
     "soak": {
-      "impacto": 20,
-      "corte": 16,
-      "perfuracao": 16
+      "impacto": 21,
+      "corte": 17,
+      "perfuracao": 17
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 10",
@@ -5449,7 +5451,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "8d6 +8",
+        "pool": "8d6 +9",
         "dano": "2d6 +11 corte",
         "ticks": 6
       }
@@ -5653,7 +5655,7 @@
     "tipo": "elite",
     "categoria": "Diabo",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Médio (diabo)",
     "descricao": "Tirano leal do Inferno, calculista e cruel.",
     "tags": [
@@ -5662,14 +5664,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 13,
+    "defesa": 14,
     "defesaSocial": "-",
-    "defesaMental": 15,
-    "vontade": 8,
+    "defesaMental": 17,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -5687,7 +5689,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "4d6+2 +3",
+        "pool": "4d6+2 +4",
         "dano": "1d6 +4 corte",
         "ticks": 5
       }
@@ -5731,7 +5733,7 @@
     "tipo": "chefe",
     "categoria": "Diabo",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Médio (diabo)",
     "descricao": "Tirano leal do Inferno, calculista e cruel.",
     "tags": [
@@ -5740,14 +5742,14 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 22,
-    "defesaSocial": 16,
-    "defesaMental": 24,
-    "vontade": 9,
+    "defesa": 23,
+    "defesaSocial": 17,
+    "defesaMental": 26,
+    "vontade": 10,
     "soak": {
-      "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 11,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -5765,7 +5767,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +4",
+        "pool": "5d6+2 +5",
         "dano": "1d6 +6 corte",
         "ticks": 5
       }
@@ -5815,7 +5817,7 @@
     "tipo": "chefe",
     "categoria": "Diabo",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Grande (diabo)",
     "descricao": "Tirano leal do Inferno, calculista e cruel.",
     "tags": [
@@ -5824,14 +5826,14 @@
       "mágico"
     ],
     "pv": 58,
-    "defesa": 16,
-    "defesaSocial": 14,
-    "defesaMental": 23,
-    "vontade": 9,
+    "defesa": 17,
+    "defesaSocial": 15,
+    "defesaMental": 25,
+    "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 12,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -5849,7 +5851,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6+2 +4",
+        "pool": "6d6+2 +5",
         "dano": "2d6 +8 corte",
         "ticks": 6
       }
@@ -5898,7 +5900,7 @@
     "tipo": "chefe",
     "categoria": "Diabo",
     "ameaca": 5,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "exterior Grande (diabo)",
     "descricao": "Tirano leal do Inferno, calculista e cruel.",
     "tags": [
@@ -5907,14 +5909,14 @@
       "mágico"
     ],
     "pv": 66,
-    "defesa": 21,
-    "defesaSocial": 17,
-    "defesaMental": 27,
-    "vontade": 10,
+    "defesa": 22,
+    "defesaSocial": 18,
+    "defesaMental": 29,
+    "vontade": 11,
     "soak": {
-      "impacto": 14,
-      "corte": 11,
-      "perfuracao": 11
+      "impacto": 15,
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -5932,7 +5934,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "7d6 +5",
+        "pool": "7d6 +6",
         "dano": "2d6 +9 corte",
         "ticks": 6
       }
@@ -5977,7 +5979,7 @@
     "tipo": "chefe",
     "categoria": "Exterior",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Médio",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -5986,14 +5988,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 16,
-    "defesaSocial": 12,
-    "defesaMental": 20,
-    "vontade": 9,
+    "defesa": 17,
+    "defesaSocial": 13,
+    "defesaMental": 22,
+    "vontade": 10,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -6011,7 +6013,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "4d6+2 +4",
+        "pool": "4d6+2 +5",
         "dano": "1d6 +4 corte",
         "ticks": 5
       }
@@ -6064,7 +6066,7 @@
     "tipo": "chefe",
     "categoria": "Diabo",
     "ameaca": 6,
-    "centelha": 8,
+    "centelha": 9,
     "conceito": "exterior Grande (diabo)",
     "descricao": "Tirano leal do Inferno, calculista e cruel.",
     "tags": [
@@ -6073,14 +6075,14 @@
       "mágico"
     ],
     "pv": 74,
-    "defesa": 32,
-    "defesaSocial": 26,
-    "defesaMental": 37,
+    "defesa": 33,
+    "defesaSocial": 27,
+    "defesaMental": 38,
     "vontade": 12,
     "soak": {
-      "impacto": 19,
-      "corte": 15,
-      "perfuracao": 15
+      "impacto": 20,
+      "corte": 16,
+      "perfuracao": 16
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 13",
@@ -6098,7 +6100,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "8d6+2 +8",
+        "pool": "8d6+2 +9",
         "dano": "2d6 +12 corte",
         "ticks": 6
       }
@@ -6158,7 +6160,7 @@
     "tipo": "soldado",
     "categoria": "Celestial",
     "ameaca": 3,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Médio (celestial)",
     "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
     "tags": [
@@ -6167,14 +6169,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 13,
-    "defesaSocial": 9,
-    "defesaMental": 18,
-    "vontade": 8,
+    "defesa": 14,
+    "defesaSocial": 10,
+    "defesaMental": 20,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -6192,7 +6194,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "4d6+2 +3",
+        "pool": "4d6+2 +4",
         "dano": "1d6 +5 corte",
         "ticks": 5
       }
@@ -6241,7 +6243,7 @@
     "tipo": "chefe",
     "categoria": "Celestial",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "exterior Médio (anjo)",
     "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
     "tags": [
@@ -6250,14 +6252,14 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 17,
-    "defesaSocial": 17,
-    "defesaMental": 26,
-    "vontade": 10,
+    "defesa": 18,
+    "defesaSocial": 18,
+    "defesaMental": 28,
+    "vontade": 11,
     "soak": {
-      "impacto": 11,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 12,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -6275,7 +6277,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6+2 +5",
+        "pool": "6d6+2 +6",
         "dano": "1d6 +8 corte",
         "ticks": 5
       }
@@ -6324,7 +6326,7 @@
     "tipo": "chefe",
     "categoria": "Celestial",
     "ameaca": 6,
-    "centelha": 6,
+    "centelha": 7,
     "conceito": "exterior Grande (anjo)",
     "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
     "tags": [
@@ -6333,14 +6335,14 @@
       "mágico"
     ],
     "pv": 62,
-    "defesa": 18,
-    "defesaSocial": 22,
-    "defesaMental": 32,
-    "vontade": 11,
+    "defesa": 19,
+    "defesaSocial": 23,
+    "defesaMental": 34,
+    "vontade": 12,
     "soak": {
-      "impacto": 14,
-      "corte": 12,
-      "perfuracao": 12
+      "impacto": 15,
+      "corte": 13,
+      "perfuracao": 13
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 11",
@@ -6358,7 +6360,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "7d6 +6",
+        "pool": "7d6 +7",
         "dano": "2d6 +9 corte",
         "ticks": 6
       }
@@ -6405,7 +6407,7 @@
     "tipo": "chefe",
     "categoria": "Celestial",
     "ameaca": 6,
-    "centelha": 8,
+    "centelha": 9,
     "conceito": "exterior Grande (anjo)",
     "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
     "tags": [
@@ -6414,14 +6416,14 @@
       "mágico"
     ],
     "pv": 70,
-    "defesa": 24,
-    "defesaSocial": 24,
-    "defesaMental": 36,
+    "defesa": 25,
+    "defesaSocial": 25,
+    "defesaMental": 37,
     "vontade": 12,
     "soak": {
-      "impacto": 18,
-      "corte": 15,
-      "perfuracao": 15
+      "impacto": 19,
+      "corte": 16,
+      "perfuracao": 16
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 12",
@@ -6439,7 +6441,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "7d6+2 +8",
+        "pool": "7d6+2 +9",
         "dano": "2d6 +10 corte",
         "ticks": 6
       }
@@ -6493,7 +6495,7 @@
     "tipo": "chefe",
     "categoria": "Exterior",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Médio",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -6502,14 +6504,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 20,
-    "defesaSocial": 16,
-    "defesaMental": 24,
-    "vontade": 9,
+    "defesa": 21,
+    "defesaSocial": 17,
+    "defesaMental": 26,
+    "vontade": 10,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -6527,7 +6529,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "4d6+2 +4",
+        "pool": "4d6+2 +5",
         "dano": "1d6 +4 corte",
         "ticks": 5
       }
@@ -6577,7 +6579,7 @@
     "tipo": "chefe",
     "categoria": "Celestial",
     "ameaca": 5,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "exterior Médio (celestial)",
     "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
     "tags": [
@@ -6586,14 +6588,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 21,
-    "defesaSocial": 19,
-    "defesaMental": 28,
-    "vontade": 10,
+    "defesa": 22,
+    "defesaSocial": 20,
+    "defesaMental": 30,
+    "vontade": 11,
     "soak": {
-      "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 11,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -6611,7 +6613,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +5",
+        "pool": "5d6+2 +6",
         "dano": "1d6 +6 corte",
         "ticks": 5
       }
@@ -6655,7 +6657,7 @@
     "tipo": "elite",
     "categoria": "Elemental",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Grande (ar)",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -6664,14 +6666,14 @@
       "mágico"
     ],
     "pv": 50,
-    "defesa": 15,
-    "defesaSocial": 11,
-    "defesaMental": 19,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
+    "defesaMental": 21,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 9,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -6689,7 +6691,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "2d6 +6 corte",
         "ticks": 6
       }
@@ -6710,7 +6712,7 @@
       },
       {
         "id": "vento",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
@@ -6742,7 +6744,7 @@
     "tipo": "chefe",
     "categoria": "Elemental",
     "ameaca": 5,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Grande (fogo)",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -6751,14 +6753,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 15,
-    "defesaSocial": 11,
-    "defesaMental": 19,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
+    "defesaMental": 21,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -6776,7 +6778,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6+2 +3",
+        "pool": "6d6+2 +4",
         "dano": "2d6 +8 corte",
         "ticks": 6
       }
@@ -6785,11 +6787,11 @@
     "artes": [
       {
         "id": "fortuna",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "fogo",
-        "nivel": 3
+        "nivel": 4
       }
     ],
     "notas": "Perícias notáveis: Ofícios 4, Manha 3, Prontidão 3.",
@@ -6821,7 +6823,7 @@
     "tipo": "elite",
     "categoria": "Elemental",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "exterior Médio (fogo)",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -6830,14 +6832,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 10,
-    "defesaSocial": 10,
-    "defesaMental": 17,
-    "vontade": 7,
+    "defesa": 11,
+    "defesaSocial": 11,
+    "defesaMental": 19,
+    "vontade": 8,
     "soak": {
-      "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -6855,7 +6857,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6 +2",
+        "pool": "5d6 +3",
         "dano": "1d6 +5 corte",
         "ticks": 5
       }
@@ -6892,7 +6894,7 @@
     "tipo": "elite",
     "categoria": "Elemental",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "exterior Grande (terra)",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -6901,14 +6903,14 @@
       "mágico"
     ],
     "pv": 58,
-    "defesa": 6,
+    "defesa": 7,
     "defesaSocial": "-",
-    "defesaMental": 13,
-    "vontade": 7,
+    "defesaMental": 15,
+    "vontade": 8,
     "soak": {
-      "impacto": 9,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 10,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -6926,12 +6928,14 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "7d6 +2",
+        "pool": "7d6 +3",
         "dano": "2d6 +9 corte",
         "ticks": 6
       }
     ],
-    "tecnicas": [],
+    "tecnicas": [
+      "pele-de-pedra"
+    ],
     "artes": [
       {
         "id": "terra",
@@ -6961,7 +6965,7 @@
     "tipo": "elite",
     "categoria": "Elemental",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "exterior Médio (terra)",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -6970,14 +6974,14 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 10,
-    "defesaSocial": 6,
-    "defesaMental": 13,
-    "vontade": 7,
+    "defesa": 11,
+    "defesaSocial": 7,
+    "defesaMental": 15,
+    "vontade": 8,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -6995,7 +6999,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +2",
+        "pool": "5d6+2 +3",
         "dano": "1d6 +6 corte",
         "ticks": 5
       }
@@ -7004,7 +7008,7 @@
     "artes": [
       {
         "id": "terra",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Prontidão 3, Furtividade 2.",
@@ -7029,7 +7033,7 @@
     "tipo": "soldado",
     "categoria": "Fada",
     "ameaca": 3,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "fada Médio",
     "descricao": "Espírito da natureza, belo e caprichoso.",
     "tags": [
@@ -7038,14 +7042,14 @@
       "mágico"
     ],
     "pv": 34,
-    "defesa": 15,
-    "defesaSocial": 13,
-    "defesaMental": 20,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 14,
+    "defesaMental": 22,
+    "vontade": 9,
     "soak": {
-      "impacto": 6,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 7,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -7063,7 +7067,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "3d6 +3",
+        "pool": "3d6 +4",
         "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
@@ -7106,7 +7110,7 @@
     "tipo": "elite",
     "categoria": "Fada",
     "ameaca": 4,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "fada Médio",
     "descricao": "Espírito da natureza, belo e caprichoso.",
     "tags": [
@@ -7115,14 +7119,14 @@
       "mágico"
     ],
     "pv": 34,
-    "defesa": 20,
-    "defesaSocial": 14,
-    "defesaMental": 23,
-    "vontade": 9,
+    "defesa": 21,
+    "defesaSocial": 15,
+    "defesaMental": 25,
+    "vontade": 10,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7140,7 +7144,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "3d6+2 +4",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
@@ -7256,7 +7260,7 @@
     "tipo": "soldado",
     "categoria": "Fada",
     "ameaca": 3,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "fada Pequeno",
     "descricao": "Espírito da natureza, belo e caprichoso.",
     "tags": [
@@ -7265,14 +7269,14 @@
       "mágico"
     ],
     "pv": 17,
-    "defesa": 19,
-    "defesaSocial": 13,
-    "defesaMental": 21,
-    "vontade": 8,
+    "defesa": 20,
+    "defesaSocial": 14,
+    "defesaMental": 23,
+    "vontade": 9,
     "soak": {
-      "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 6,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7290,7 +7294,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "2d6+2 +3",
+        "pool": "2d6+2 +4",
         "dano": "1d6 +1 perfurante",
         "ticks": 5
       }
@@ -7330,7 +7334,7 @@
     "tipo": "elite",
     "categoria": "Aberração",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "aberração Pequeno",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -7339,14 +7343,14 @@
       "mágico"
     ],
     "pv": 17,
-    "defesa": 27,
-    "defesaSocial": 11,
-    "defesaMental": 20,
-    "vontade": 8,
+    "defesa": 28,
+    "defesaSocial": 12,
+    "defesaMental": 22,
+    "vontade": 9,
     "soak": {
-      "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 6,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7364,7 +7368,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "2d6+2 +3",
+        "pool": "2d6+2 +4",
         "dano": "1d6 perfurante",
         "ticks": 5
       }
@@ -7413,7 +7417,7 @@
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "humanoide monstruoso Médio",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
@@ -7422,14 +7426,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 12,
-    "defesaSocial": 10,
-    "defesaMental": 16,
-    "vontade": 7,
+    "defesa": 13,
+    "defesaSocial": 11,
+    "defesaMental": 18,
+    "vontade": 8,
     "soak": {
-      "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -7447,7 +7451,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "3d6+2 +2",
+        "pool": "3d6+2 +3",
         "dano": "1d6 +2 corte",
         "ticks": 5
       }
@@ -7456,7 +7460,7 @@
     "artes": [
       {
         "id": "materia",
-        "nivel": 2
+        "nivel": 3
       }
     ],
     "notas": "Perícias notáveis: Furtividade 3, Atirador 2, Manha 2.",
@@ -7560,7 +7564,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 3,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -7569,14 +7573,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 13,
-    "defesaSocial": 9,
-    "defesaMental": 17,
-    "vontade": 8,
+    "defesa": 14,
+    "defesaSocial": 10,
+    "defesaMental": 19,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -7594,7 +7598,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6 +3",
+        "pool": "5d6 +4",
         "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
@@ -7628,7 +7632,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 3,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -7637,14 +7641,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 15,
-    "defesaSocial": 17,
-    "defesaMental": 23,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 18,
+    "defesaMental": 25,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -7662,12 +7666,14 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6 +3",
+        "pool": "5d6 +4",
         "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
     ],
-    "tecnicas": [],
+    "tecnicas": [
+      "imunidade"
+    ],
     "artes": [
       {
         "id": "cura",
@@ -7707,7 +7713,7 @@
     "tipo": "chefe",
     "categoria": "Exterior",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Grande",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -7716,14 +7722,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 14,
-    "defesaSocial": 14,
-    "defesaMental": 22,
-    "vontade": 9,
+    "defesa": 15,
+    "defesaSocial": 15,
+    "defesaMental": 24,
+    "vontade": 10,
     "soak": {
-      "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 11,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -7741,7 +7747,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6 +4",
+        "pool": "6d6 +5",
         "dano": "2d6 +7 corte",
         "ticks": 6
       }
@@ -7752,7 +7758,7 @@
     "artes": [
       {
         "id": "vento",
-        "nivel": 4
+        "nivel": 5
       },
       {
         "id": "fascinacao",
@@ -7796,7 +7802,7 @@
     "tipo": "chefe",
     "categoria": "Besta mágica",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -7805,14 +7811,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 14,
-    "defesaSocial": 14,
-    "defesaMental": 23,
-    "vontade": 9,
+    "defesa": 15,
+    "defesaSocial": 15,
+    "defesaMental": 25,
+    "vontade": 10,
     "soak": {
-      "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 11,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7830,7 +7836,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "6d6 +4",
+        "pool": "6d6 +5",
         "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
@@ -7874,7 +7880,7 @@
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "aberração Grande",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -7883,14 +7889,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 14,
-    "defesaMental": 23,
-    "vontade": 9,
+    "defesa": 13,
+    "defesaSocial": 15,
+    "defesaMental": 25,
+    "vontade": 10,
     "soak": {
-      "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 11,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7908,7 +7914,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6+2 +4",
+        "pool": "5d6+2 +5",
         "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
@@ -8016,7 +8022,7 @@
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "humanoide monstruoso Grande",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
@@ -8025,14 +8031,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 19,
-    "defesaSocial": 13,
-    "defesaMental": 21,
-    "vontade": 8,
+    "defesa": 20,
+    "defesaSocial": 14,
+    "defesaMental": 23,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -8050,7 +8056,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "2d6 +6 corte",
         "ticks": 6
       }
@@ -8089,7 +8095,7 @@
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "humanoide monstruoso Médio",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
@@ -8098,14 +8104,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 11,
-    "defesaSocial": 11,
-    "defesaMental": 18,
-    "vontade": 8,
+    "defesa": 12,
+    "defesaSocial": 12,
+    "defesaMental": 20,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -8123,7 +8129,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "1d6 +6 corte",
         "ticks": 5
       }
@@ -8167,7 +8173,7 @@
     "tipo": "chefe",
     "categoria": "Besta mágica",
     "ameaca": 6,
-    "centelha": 6,
+    "centelha": 7,
     "conceito": "besta mágica Colossal",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -8176,14 +8182,14 @@
       "mágico"
     ],
     "pv": 110,
-    "defesa": 10,
-    "defesaSocial": 18,
-    "defesaMental": 29,
-    "vontade": 11,
+    "defesa": 11,
+    "defesaSocial": 19,
+    "defesaMental": 31,
+    "vontade": 12,
     "soak": {
-      "impacto": 19,
-      "corte": 22,
-      "perfuracao": 22
+      "impacto": 20,
+      "corte": 23,
+      "perfuracao": 23
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 9",
@@ -8201,7 +8207,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "9d6+2 +6",
+        "pool": "9d6+2 +7",
         "dano": "4d6 +14 perfurante",
         "ticks": 7
       }
@@ -8243,7 +8249,7 @@
     "tipo": "chefe",
     "categoria": "Besta mágica",
     "ameaca": 6,
-    "centelha": 9,
+    "centelha": 10,
     "conceito": "besta mágica Colossal",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -8252,14 +8258,14 @@
       "mágico"
     ],
     "pv": 115,
-    "defesa": 13,
+    "defesa": 14,
     "defesaSocial": "-",
-    "defesaMental": 27,
+    "defesaMental": 28,
     "vontade": 12,
     "soak": {
-      "impacto": 23,
-      "corte": 26,
-      "perfuracao": 26
+      "impacto": 24,
+      "corte": 27,
+      "perfuracao": 27
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 4",
@@ -8277,7 +8283,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "10d6+2 +9",
+        "pool": "10d6+2 +10",
         "dano": "4d6 +16 perfurante",
         "ticks": 7
       }
@@ -8324,7 +8330,7 @@
     "tipo": "elite",
     "categoria": "Dragão",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "dragão Médio",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8333,14 +8339,14 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 7,
-    "defesaSocial": 11,
-    "defesaMental": 19,
-    "vontade": 8,
+    "defesa": 8,
+    "defesaSocial": 12,
+    "defesaMental": 21,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -8358,7 +8364,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "1d6 +6 perfurante",
         "ticks": 5
       }
@@ -8397,7 +8403,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "dragão Grande",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8406,14 +8412,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 10,
-    "defesaMental": 19,
-    "vontade": 9,
+    "defesa": 13,
+    "defesaSocial": 11,
+    "defesaMental": 21,
+    "vontade": 10,
     "soak": {
-      "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 11,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -8431,7 +8437,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "7d6 +4",
+        "pool": "7d6 +5",
         "dano": "2d6 +9 perfurante",
         "ticks": 6
       }
@@ -8474,7 +8480,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "dragão Enorme",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8483,14 +8489,14 @@
       "mágico"
     ],
     "pv": 80,
-    "defesa": 9,
-    "defesaSocial": 15,
-    "defesaMental": 25,
-    "vontade": 10,
+    "defesa": 10,
+    "defesaSocial": 16,
+    "defesaMental": 27,
+    "vontade": 11,
     "soak": {
-      "impacto": 14,
-      "corte": 13,
-      "perfuracao": 13
+      "impacto": 15,
+      "corte": 14,
+      "perfuracao": 14
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 7",
@@ -8508,7 +8514,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "8d6 +5",
+        "pool": "8d6 +6",
         "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
@@ -8558,7 +8564,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
-    "centelha": 6,
+    "centelha": 7,
     "conceito": "dragão Imenso",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8567,14 +8573,14 @@
       "mágico"
     ],
     "pv": 95,
-    "defesa": 10,
-    "defesaSocial": 18,
-    "defesaMental": 29,
-    "vontade": 11,
+    "defesa": 11,
+    "defesaSocial": 19,
+    "defesaMental": 31,
+    "vontade": 12,
     "soak": {
-      "impacto": 17,
-      "corte": 18,
-      "perfuracao": 18
+      "impacto": 18,
+      "corte": 19,
+      "perfuracao": 19
     },
     "resistPerf": 2,
     "iniciativa": "1d6 + 9",
@@ -8592,7 +8598,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "9d6+2 +6",
+        "pool": "9d6+2 +7",
         "dano": "3d6 +14 perfurante",
         "ticks": 7
       }
@@ -8645,7 +8651,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
-    "centelha": 8,
+    "centelha": 9,
     "conceito": "dragão Colossal",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8654,14 +8660,14 @@
       "mágico"
     ],
     "pv": 115,
-    "defesa": 12,
-    "defesaSocial": 22,
-    "defesaMental": 34,
+    "defesa": 13,
+    "defesaSocial": 23,
+    "defesaMental": 35,
     "vontade": 12,
     "soak": {
-      "impacto": 22,
-      "corte": 25,
-      "perfuracao": 25
+      "impacto": 23,
+      "corte": 26,
+      "perfuracao": 26
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 11",
@@ -8679,7 +8685,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "10d6+2 +8",
+        "pool": "10d6+2 +9",
         "dano": "4d6 +16 perfurante",
         "ticks": 7
       }
@@ -8733,7 +8739,7 @@
     "tipo": "elite",
     "categoria": "Dragão",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "dragão Grande",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8742,14 +8748,14 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 7,
-    "defesaSocial": 7,
-    "defesaMental": 15,
-    "vontade": 8,
+    "defesa": 8,
+    "defesaSocial": 8,
+    "defesaMental": 17,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -8767,7 +8773,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "6d6 +3",
+        "pool": "6d6 +4",
         "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
@@ -8812,7 +8818,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 5,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "dragão Enorme",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8821,14 +8827,14 @@
       "mágico"
     ],
     "pv": 80,
-    "defesa": 9,
-    "defesaSocial": 15,
-    "defesaMental": 25,
-    "vontade": 10,
+    "defesa": 10,
+    "defesaSocial": 16,
+    "defesaMental": 27,
+    "vontade": 11,
     "soak": {
-      "impacto": 14,
-      "corte": 13,
-      "perfuracao": 13
+      "impacto": 15,
+      "corte": 14,
+      "perfuracao": 14
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 7",
@@ -8846,7 +8852,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "8d6 +5",
+        "pool": "8d6 +6",
         "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
@@ -8895,7 +8901,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 5,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "dragão Enorme",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8904,14 +8910,14 @@
       "mágico"
     ],
     "pv": 75,
-    "defesa": 13,
-    "defesaSocial": 15,
-    "defesaMental": 25,
-    "vontade": 10,
+    "defesa": 14,
+    "defesaSocial": 16,
+    "defesaMental": 27,
+    "vontade": 11,
     "soak": {
-      "impacto": 13,
-      "corte": 13,
-      "perfuracao": 13
+      "impacto": 14,
+      "corte": 14,
+      "perfuracao": 14
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 7",
@@ -8929,7 +8935,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "7d6+2 +5",
+        "pool": "7d6+2 +6",
         "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
@@ -8974,7 +8980,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
-    "centelha": 6,
+    "centelha": 7,
     "conceito": "dragão Enorme (metálico)",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -8983,14 +8989,14 @@
       "mágico"
     ],
     "pv": 85,
-    "defesa": 10,
-    "defesaSocial": 20,
-    "defesaMental": 31,
-    "vontade": 11,
+    "defesa": 11,
+    "defesaSocial": 21,
+    "defesaMental": 33,
+    "vontade": 12,
     "soak": {
-      "impacto": 16,
-      "corte": 15,
-      "perfuracao": 15
+      "impacto": 17,
+      "corte": 16,
+      "perfuracao": 16
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 10",
@@ -9008,7 +9014,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "8d6+2 +6",
+        "pool": "8d6+2 +7",
         "dano": "3d6 +12 perfurante",
         "ticks": 7
       }
@@ -9407,7 +9413,7 @@
     "tipo": "chefe",
     "categoria": "Celestial",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "exterior (anjo) Médio",
     "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
     "tags": [
@@ -9415,14 +9421,14 @@
       "centelha"
     ],
     "pv": 49,
-    "defesa": 17,
-    "defesaSocial": 15,
-    "defesaMental": 25,
-    "vontade": 10,
+    "defesa": 18,
+    "defesaSocial": 16,
+    "defesaMental": 27,
+    "vontade": 11,
     "soak": {
-      "impacto": 13,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 14,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -9440,7 +9446,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +5",
+        "pool": "5d6+2 +6",
         "dano": "1d6 +6 corte",
         "ticks": 5
       }
@@ -9505,7 +9511,7 @@
     "tipo": "elite",
     "categoria": "Exterior",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Médio",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -9513,14 +9519,14 @@
       "centelha"
     ],
     "pv": 40,
-    "defesa": 15,
-    "defesaSocial": 11,
-    "defesaMental": 19,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
+    "defesaMental": 21,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -9538,7 +9544,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "1d6 +6 corte",
         "ticks": 5
       }
@@ -9554,7 +9560,7 @@
     "tipo": "elite",
     "categoria": "Celestial",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior (anjo) Grande",
     "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
     "tags": [
@@ -9562,14 +9568,14 @@
       "centelha"
     ],
     "pv": 58,
-    "defesa": 15,
-    "defesaSocial": 13,
-    "defesaMental": 20,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 14,
+    "defesaMental": 22,
+    "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 11,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -9587,7 +9593,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6 +3",
+        "pool": "6d6 +4",
         "dano": "2d6 +7 corte",
         "ticks": 6
       }
@@ -9652,7 +9658,7 @@
     "tipo": "elite",
     "categoria": "Exterior",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Grande",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -9660,14 +9666,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 13,
-    "defesaSocial": 13,
-    "defesaMental": 21,
-    "vontade": 8,
+    "defesa": 14,
+    "defesaSocial": 14,
+    "defesaMental": 23,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -9685,7 +9691,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6+2 +3",
+        "pool": "6d6+2 +4",
         "dano": "2d6 +8 corte",
         "ticks": 6
       }
@@ -9942,7 +9948,7 @@
     "tipo": "chefe",
     "categoria": "Exterior",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Enorme",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -9950,14 +9956,14 @@
       "centelha"
     ],
     "pv": 80,
-    "defesa": 12,
-    "defesaSocial": 10,
-    "defesaMental": 19,
-    "vontade": 9,
+    "defesa": 13,
+    "defesaSocial": 11,
+    "defesaMental": 21,
+    "vontade": 10,
     "soak": {
-      "impacto": 13,
-      "corte": 12,
-      "perfuracao": 12
+      "impacto": 14,
+      "corte": 13,
+      "perfuracao": 13
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 4",
@@ -9975,7 +9981,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "8d6 +4",
+        "pool": "8d6 +5",
         "dano": "3d6 +11 corte",
         "ticks": 7
       }
@@ -10571,7 +10577,7 @@
     "tipo": "elite",
     "categoria": "Aberração",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "aberração Grande",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -10579,14 +10585,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 15,
-    "defesaSocial": 7,
-    "defesaMental": 16,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 8,
+    "defesaMental": 18,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -10604,7 +10610,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "7d6 +3",
+        "pool": "7d6 +4",
         "dano": "2d6 +9 perfurante",
         "ticks": 6
       }
@@ -10620,7 +10626,7 @@
     "tipo": "elite",
     "categoria": "Aberração",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "aberração Grande",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -10628,14 +10634,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 15,
-    "defesaSocial": 11,
-    "defesaMental": 19,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
+    "defesaMental": 21,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -10653,7 +10659,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "6d6 +3",
+        "pool": "6d6 +4",
         "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
@@ -10912,7 +10918,7 @@
     "tipo": "elite",
     "categoria": "Demônio",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior (demônio) Médio",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -10920,14 +10926,14 @@
       "centelha"
     ],
     "pv": 43,
-    "defesa": 11,
-    "defesaSocial": 11,
-    "defesaMental": 19,
-    "vontade": 8,
+    "defesa": 12,
+    "defesaSocial": 12,
+    "defesaMental": 21,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -10945,7 +10951,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "1d6 +6 corte",
         "ticks": 5
       }
@@ -10961,7 +10967,7 @@
     "tipo": "chefe",
     "categoria": "Demônio",
     "ameaca": 5,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior (demônio) Médio",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -10969,14 +10975,14 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 15,
-    "defesaSocial": 13,
-    "defesaMental": 21,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 14,
+    "defesaMental": 23,
+    "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 11,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -10994,7 +11000,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6 +3",
+        "pool": "6d6 +4",
         "dano": "1d6 +7 corte",
         "ticks": 5
       }
@@ -11010,7 +11016,7 @@
     "tipo": "chefe",
     "categoria": "Demônio",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "exterior (demônio) Enorme",
     "descricao": "Horror caótico do Abismo, feito de fúria e corrupção.",
     "tags": [
@@ -11018,14 +11024,14 @@
       "centelha"
     ],
     "pv": 90,
-    "defesa": 13,
-    "defesaSocial": 17,
-    "defesaMental": 28,
-    "vontade": 10,
+    "defesa": 14,
+    "defesaSocial": 18,
+    "defesaMental": 30,
+    "vontade": 11,
     "soak": {
-      "impacto": 16,
-      "corte": 14,
-      "perfuracao": 14
+      "impacto": 17,
+      "corte": 15,
+      "perfuracao": 15
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 10",
@@ -11043,7 +11049,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "8d6+2 +5",
+        "pool": "8d6+2 +6",
         "dano": "3d6 +12 corte",
         "ticks": 7
       }
@@ -11108,7 +11114,7 @@
     "tipo": "chefe",
     "categoria": "Diabo",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior (diabo) Médio",
     "descricao": "Tirano leal do Inferno, calculista e cruel.",
     "tags": [
@@ -11116,14 +11122,14 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 22,
-    "defesaSocial": 14,
-    "defesaMental": 22,
-    "vontade": 9,
+    "defesa": 23,
+    "defesaSocial": 15,
+    "defesaMental": 24,
+    "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 12,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -11141,7 +11147,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6 +4",
+        "pool": "6d6 +5",
         "dano": "1d6 +7 corte",
         "ticks": 5
       }
@@ -11157,7 +11163,7 @@
     "tipo": "chefe",
     "categoria": "Diabo",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "exterior (diabo) Grande",
     "descricao": "Tirano leal do Inferno, calculista e cruel.",
     "tags": [
@@ -11165,14 +11171,14 @@
       "centelha"
     ],
     "pv": 70,
-    "defesa": 25,
-    "defesaSocial": 19,
-    "defesaMental": 27,
-    "vontade": 10,
+    "defesa": 26,
+    "defesaSocial": 20,
+    "defesaMental": 29,
+    "vontade": 11,
     "soak": {
-      "impacto": 15,
-      "corte": 12,
-      "perfuracao": 12
+      "impacto": 16,
+      "corte": 13,
+      "perfuracao": 13
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -11190,7 +11196,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "7d6+2 +5",
+        "pool": "7d6+2 +6",
         "dano": "2d6 +10 corte",
         "ticks": 6
       }
@@ -11783,7 +11789,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "dragão Enorme",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -11791,14 +11797,14 @@
       "centelha"
     ],
     "pv": 70,
-    "defesa": 8,
-    "defesaSocial": 10,
-    "defesaMental": 19,
-    "vontade": 9,
+    "defesa": 9,
+    "defesaSocial": 11,
+    "defesaMental": 21,
+    "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 11,
-      "perfuracao": 11
+      "impacto": 12,
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 4",
@@ -11816,7 +11822,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "7d6+2 +4",
+        "pool": "7d6+2 +5",
         "dano": "3d6 +10 perfurante",
         "ticks": 7
       }
@@ -11832,7 +11838,7 @@
     "tipo": "elite",
     "categoria": "Aberração",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "aberração Grande",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -11840,14 +11846,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 13,
-    "defesaSocial": 13,
-    "defesaMental": 21,
-    "vontade": 8,
+    "defesa": 14,
+    "defesaSocial": 14,
+    "defesaMental": 23,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -11865,7 +11871,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6 +3",
+        "pool": "5d6 +4",
         "dano": "2d6 +5 perfurante",
         "ticks": 6
       }
@@ -12946,7 +12952,7 @@
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "aberração Enorme",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -12954,14 +12960,14 @@
       "centelha"
     ],
     "pv": 80,
-    "defesa": 12,
+    "defesa": 13,
     "defesaSocial": "-",
-    "defesaMental": 18,
-    "vontade": 9,
+    "defesaMental": 20,
+    "vontade": 10,
     "soak": {
-      "impacto": 13,
-      "corte": 12,
-      "perfuracao": 12
+      "impacto": 14,
+      "corte": 13,
+      "perfuracao": 13
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 3",
@@ -12979,7 +12985,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "8d6 +4",
+        "pool": "8d6 +5",
         "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
@@ -13044,7 +13050,7 @@
     "tipo": "chefe",
     "categoria": "Elemental",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior (água) Grande",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -13052,14 +13058,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 16,
-    "defesaSocial": 14,
-    "defesaMental": 22,
-    "vontade": 9,
+    "defesa": 17,
+    "defesaSocial": 15,
+    "defesaMental": 24,
+    "vontade": 10,
     "soak": {
-      "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 11,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -13077,7 +13083,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6+2 +4",
+        "pool": "6d6+2 +5",
         "dano": "2d6 +8 corte",
         "ticks": 6
       }
@@ -13093,7 +13099,7 @@
     "tipo": "elite",
     "categoria": "Elemental",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior (terra) Grande",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -13101,14 +13107,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 11,
-    "defesaSocial": 11,
-    "defesaMental": 19,
-    "vontade": 8,
+    "defesa": 12,
+    "defesaSocial": 12,
+    "defesaMental": 21,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -13126,7 +13132,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "6d6 +3",
+        "pool": "6d6 +4",
         "dano": "2d6 +7 corte",
         "ticks": 6
       }
@@ -13142,7 +13148,7 @@
     "tipo": "elite",
     "categoria": "Morto-vivo",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "morto-vivo Médio",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
@@ -13150,14 +13156,14 @@
       "centelha"
     ],
     "pv": 43,
-    "defesa": 11,
-    "defesaSocial": 13,
-    "defesaMental": 18,
-    "vontade": 8,
+    "defesa": 12,
+    "defesaSocial": 14,
+    "defesaMental": 20,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -13175,7 +13181,7 @@
     "ataques": [
       {
         "nome": "Golpe",
-        "pool": "2d6+2 +3",
+        "pool": "2d6+2 +4",
         "dano": "1d6 impacto",
         "ticks": 5
       }
@@ -13191,7 +13197,7 @@
     "tipo": "elite",
     "categoria": "Aberração",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "aberração Médio",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -13199,14 +13205,14 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 15,
+    "defesa": 16,
     "defesaSocial": "-",
-    "defesaMental": 16,
-    "vontade": 8,
+    "defesaMental": 18,
+    "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 11,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -13224,7 +13230,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "3d6+2 +3",
+        "pool": "3d6+2 +4",
         "dano": "1d6 +2 perfurante",
         "ticks": 5
       }
@@ -13240,7 +13246,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -13248,14 +13254,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 15,
+    "defesa": 16,
     "defesaSocial": "-",
-    "defesaMental": 14,
-    "vontade": 8,
+    "defesaMental": 16,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -13273,7 +13279,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "2d6 +6 perfurante",
         "ticks": 6
       }
@@ -13289,7 +13295,7 @@
     "tipo": "chefe",
     "categoria": "Monstro",
     "ameaca": 5,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "constructo Grande",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
@@ -13297,14 +13303,14 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 6,
+    "defesa": 7,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 7,
+    "vontade": 8,
     "soak": {
-      "impacto": 3,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 4,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -13322,7 +13328,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "6d6+2 +2",
+        "pool": "6d6+2 +3",
         "dano": "2d6 +8 corte",
         "ticks": 6
       }
@@ -13338,7 +13344,7 @@
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
-    "centelha": 2,
+    "centelha": 3,
     "conceito": "constructo Grande",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
@@ -13346,14 +13352,14 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 6,
+    "defesa": 7,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 7,
+    "vontade": 8,
     "soak": {
-      "impacto": 3,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 4,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -13371,7 +13377,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "6d6 +2",
+        "pool": "6d6 +3",
         "dano": "2d6 +7 corte",
         "ticks": 6
       }
@@ -13436,6 +13442,55 @@
     "tipo": "chefe",
     "categoria": "Monstro",
     "ameaca": 5,
+    "centelha": 4,
+    "conceito": "constructo Grande",
+    "descricao": "Aberração humanoide de lendas antigas.",
+    "tags": [
+      "monstro",
+      "centelha"
+    ],
+    "pv": 34,
+    "defesa": 8,
+    "defesaSocial": "-",
+    "defesaMental": "-",
+    "vontade": 9,
+    "soak": {
+      "impacto": 5,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 11,
+      "destreza": 2,
+      "vigor": 1,
+      "influencia": 0,
+      "perspicacia": 0,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 0,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Arma",
+        "pool": "8d6 +4",
+        "dano": "2d6 +11 corte",
+        "ticks": 6
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true
+  },
+  {
+    "id": "mon-stone-golem",
+    "nome": "Golem de Pedra",
+    "tipo": "chefe",
+    "categoria": "Monstro",
+    "ameaca": 5,
     "centelha": 3,
     "conceito": "constructo Grande",
     "descricao": "Aberração humanoide de lendas antigas.",
@@ -13456,55 +13511,6 @@
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 11,
-      "destreza": 2,
-      "vigor": 1,
-      "influencia": 0,
-      "perspicacia": 0,
-      "compostura": 1,
-      "percepcao": 2,
-      "inteligencia": 0,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Arma",
-        "pool": "8d6 +3",
-        "dano": "2d6 +11 corte",
-        "ticks": 6
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true
-  },
-  {
-    "id": "mon-stone-golem",
-    "nome": "Golem de Pedra",
-    "tipo": "chefe",
-    "categoria": "Monstro",
-    "ameaca": 5,
-    "centelha": 2,
-    "conceito": "constructo Grande",
-    "descricao": "Aberração humanoide de lendas antigas.",
-    "tags": [
-      "monstro",
-      "centelha"
-    ],
-    "pv": 34,
-    "defesa": 6,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 7,
-    "soak": {
-      "impacto": 3,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
-    "atributos": {
       "forca": 10,
       "destreza": 2,
       "vigor": 1,
@@ -13518,7 +13524,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "7d6+2 +2",
+        "pool": "7d6+2 +3",
         "dano": "2d6 +10 corte",
         "ticks": 6
       }
@@ -13583,7 +13589,7 @@
     "tipo": "elite",
     "categoria": "Dragão",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "dragão Médio",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -13591,14 +13597,14 @@
       "centelha"
     ],
     "pv": 43,
-    "defesa": 7,
+    "defesa": 8,
     "defesaSocial": "-",
-    "defesaMental": 16,
-    "vontade": 8,
+    "defesaMental": 18,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -13616,7 +13622,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "6d6 +3",
+        "pool": "6d6 +4",
         "dano": "1d6 +7 perfurante",
         "ticks": 5
       }
@@ -13681,7 +13687,7 @@
     "tipo": "chefe",
     "categoria": "Elemental",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior (fogo) Grande",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -13689,14 +13695,14 @@
       "centelha"
     ],
     "pv": 58,
-    "defesa": 14,
+    "defesa": 15,
     "defesaSocial": "-",
-    "defesaMental": 17,
-    "vontade": 9,
+    "defesaMental": 19,
+    "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 12,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -13714,7 +13720,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "7d6 +4",
+        "pool": "7d6 +5",
         "dano": "2d6 +9 corte",
         "ticks": 6
       }
@@ -14067,7 +14073,7 @@
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "aberração Pequeno",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -14075,14 +14081,14 @@
       "centelha"
     ],
     "pv": 32,
-    "defesa": 21,
-    "defesaSocial": 11,
-    "defesaMental": 18,
-    "vontade": 8,
+    "defesa": 22,
+    "defesaSocial": 12,
+    "defesaMental": 20,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 10,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -14100,7 +14106,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "4d6 +3",
+        "pool": "4d6 +4",
         "dano": "1d6 +3 perfurante",
         "ticks": 5
       }
@@ -14116,7 +14122,7 @@
     "tipo": "elite",
     "categoria": "Elemental",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior (ar) Médio",
     "descricao": "Ser de um único elemento, sem alma mortal.",
     "tags": [
@@ -14124,14 +14130,14 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 15,
-    "defesaSocial": 9,
-    "defesaMental": 18,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 10,
+    "defesaMental": 20,
+    "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 11,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -14149,7 +14155,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6 +3",
+        "pool": "5d6 +4",
         "dano": "1d6 +5 corte",
         "ticks": 5
       }
@@ -14213,7 +14219,7 @@
     "tipo": "elite",
     "categoria": "Exterior",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Médio",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -14221,14 +14227,14 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 15,
-    "defesaSocial": 9,
-    "defesaMental": 17,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 10,
+    "defesaMental": 19,
+    "vontade": 9,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -14246,7 +14252,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "4d6+2 +3",
+        "pool": "4d6+2 +4",
         "dano": "1d6 +4 corte",
         "ticks": 5
       }
@@ -14358,7 +14364,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "dragão Imenso",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -14366,14 +14372,14 @@
       "centelha"
     ],
     "pv": 95,
-    "defesa": 17,
+    "defesa": 18,
     "defesaSocial": "-",
-    "defesaMental": 24,
-    "vontade": 10,
+    "defesaMental": 26,
+    "vontade": 11,
     "soak": {
-      "impacto": 16,
-      "corte": 17,
-      "perfuracao": 17
+      "impacto": 17,
+      "corte": 18,
+      "perfuracao": 18
     },
     "resistPerf": 2,
     "iniciativa": "1d6 + 5",
@@ -14391,7 +14397,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "9d6 +5",
+        "pool": "9d6 +6",
         "dano": "3d6 +13 perfurante",
         "ticks": 7
       }
@@ -14407,7 +14413,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "dragão Colossal",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -14415,14 +14421,14 @@
       "centelha"
     ],
     "pv": 110,
-    "defesa": 23,
+    "defesa": 24,
     "defesaSocial": "-",
-    "defesaMental": 25,
-    "vontade": 10,
+    "defesaMental": 27,
+    "vontade": 11,
     "soak": {
-      "impacto": 18,
-      "corte": 21,
-      "perfuracao": 21
+      "impacto": 19,
+      "corte": 22,
+      "perfuracao": 22
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 6",
@@ -14440,7 +14446,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "10d6 +5",
+        "pool": "10d6 +6",
         "dano": "4d6 +15 perfurante",
         "ticks": 7
       }
@@ -14456,7 +14462,7 @@
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "dragão Colossal",
     "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
     "tags": [
@@ -14464,14 +14470,14 @@
       "centelha"
     ],
     "pv": 115,
-    "defesa": 25,
+    "defesa": 26,
     "defesaSocial": "-",
-    "defesaMental": 28,
-    "vontade": 10,
+    "defesaMental": 30,
+    "vontade": 11,
     "soak": {
-      "impacto": 19,
-      "corte": 22,
-      "perfuracao": 22
+      "impacto": 20,
+      "corte": 23,
+      "perfuracao": 23
     },
     "resistPerf": 3,
     "iniciativa": "1d6 + 9",
@@ -14489,7 +14495,7 @@
     "ataques": [
       {
         "nome": "Garras e mordida",
-        "pool": "10d6+2 +5",
+        "pool": "10d6+2 +6",
         "dano": "4d6 +16 perfurante",
         "ticks": 7
       }
@@ -14505,7 +14511,7 @@
     "tipo": "elite",
     "categoria": "Monstro",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "monstro Médio",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
@@ -14513,14 +14519,14 @@
       "centelha"
     ],
     "pv": 40,
-    "defesa": 13,
+    "defesa": 14,
     "defesaSocial": "-",
-    "defesaMental": 14,
-    "vontade": 8,
+    "defesaMental": 16,
+    "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -14538,7 +14544,7 @@
     "ataques": [
       {
         "nome": "Arma",
-        "pool": "6d6+2 +3",
+        "pool": "6d6+2 +4",
         "dano": "1d6 +8 corte",
         "ticks": 5
       }
@@ -14943,7 +14949,7 @@
     "tipo": "chefe",
     "categoria": "Morto-vivo",
     "ameaca": 5,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "morto-vivo Médio",
     "descricao": "Um morto que não descansa, movido por magia ou ódio.",
     "tags": [
@@ -14951,14 +14957,14 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 15,
-    "defesaSocial": 9,
-    "defesaMental": 16,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 10,
+    "defesaMental": 18,
+    "vontade": 9,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -14976,7 +14982,7 @@
     "ataques": [
       {
         "nome": "Golpe",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "1d6 +6 impacto",
         "ticks": 5
       }
@@ -15041,7 +15047,7 @@
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "aberração Grande",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -15049,14 +15055,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 19,
-    "defesaSocial": 13,
-    "defesaMental": 21,
-    "vontade": 8,
+    "defesa": 20,
+    "defesaSocial": 14,
+    "defesaMental": 23,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -15074,7 +15080,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6 +3",
+        "pool": "5d6 +4",
         "dano": "2d6 +5 perfurante",
         "ticks": 6
       }
@@ -15090,7 +15096,7 @@
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "aberração Grande",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -15098,14 +15104,14 @@
       "centelha"
     ],
     "pv": 58,
-    "defesa": 22,
-    "defesaSocial": 14,
-    "defesaMental": 23,
-    "vontade": 9,
+    "defesa": 23,
+    "defesaSocial": 15,
+    "defesaMental": 25,
+    "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 12,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -15123,7 +15129,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "6d6 +4",
+        "pool": "6d6 +5",
         "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
@@ -15139,7 +15145,7 @@
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "aberração Imenso",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -15147,14 +15153,14 @@
       "centelha"
     ],
     "pv": 90,
-    "defesa": 7,
-    "defesaSocial": 15,
-    "defesaMental": 25,
-    "vontade": 10,
+    "defesa": 8,
+    "defesaSocial": 16,
+    "defesaMental": 27,
+    "vontade": 11,
     "soak": {
-      "impacto": 15,
-      "corte": 17,
-      "perfuracao": 17
+      "impacto": 16,
+      "corte": 18,
+      "perfuracao": 18
     },
     "resistPerf": 2,
     "iniciativa": "1d6 + 7",
@@ -15172,7 +15178,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "8d6+2 +5",
+        "pool": "8d6+2 +6",
         "dano": "3d6 +12 perfurante",
         "ticks": 7
       }
@@ -15188,7 +15194,7 @@
     "tipo": "chefe",
     "categoria": "Exterior",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Médio",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -15196,14 +15202,14 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 16,
-    "defesaSocial": 14,
-    "defesaMental": 23,
-    "vontade": 9,
+    "defesa": 17,
+    "defesaSocial": 15,
+    "defesaMental": 25,
+    "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 12,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -15221,7 +15227,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +4",
+        "pool": "5d6+2 +5",
         "dano": "1d6 +6 corte",
         "ticks": 5
       }
@@ -15237,7 +15243,7 @@
     "tipo": "elite",
     "categoria": "Exterior",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Grande",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -15245,14 +15251,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 13,
-    "defesaSocial": 9,
-    "defesaMental": 17,
-    "vontade": 8,
+    "defesa": 14,
+    "defesaSocial": 10,
+    "defesaMental": 19,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -15270,7 +15276,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6+2 +3",
+        "pool": "5d6+2 +4",
         "dano": "2d6 +6 corte",
         "ticks": 6
       }
@@ -15286,7 +15292,7 @@
     "tipo": "chefe",
     "categoria": "Exterior",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "exterior Enorme",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -15294,14 +15300,14 @@
       "centelha"
     ],
     "pv": 75,
-    "defesa": 14,
-    "defesaSocial": 10,
-    "defesaMental": 20,
-    "vontade": 9,
+    "defesa": 15,
+    "defesaSocial": 11,
+    "defesaMental": 22,
+    "vontade": 10,
     "soak": {
-      "impacto": 12,
-      "corte": 12,
-      "perfuracao": 12
+      "impacto": 13,
+      "corte": 13,
+      "perfuracao": 13
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 5",
@@ -15319,7 +15325,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "8d6 +4",
+        "pool": "8d6 +5",
         "dano": "3d6 +11 corte",
         "ticks": 7
       }
@@ -15529,7 +15535,7 @@
     "tipo": "chefe",
     "categoria": "Besta mágica",
     "ameaca": 6,
-    "centelha": 5,
+    "centelha": 6,
     "conceito": "besta mágica Imenso",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -15537,14 +15543,14 @@
       "centelha"
     ],
     "pv": 85,
-    "defesa": 25,
-    "defesaSocial": 19,
-    "defesaMental": 29,
-    "vontade": 10,
+    "defesa": 26,
+    "defesaSocial": 20,
+    "defesaMental": 31,
+    "vontade": 11,
     "soak": {
-      "impacto": 14,
-      "corte": 16,
-      "perfuracao": 16
+      "impacto": 15,
+      "corte": 17,
+      "perfuracao": 17
     },
     "resistPerf": 2,
     "iniciativa": "1d6 + 10",
@@ -15562,7 +15568,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "8d6 +5",
+        "pool": "8d6 +6",
         "dano": "3d6 +11 perfurante",
         "ticks": 7
       }
@@ -15723,7 +15729,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "besta mágica Enorme",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -15731,14 +15737,14 @@
       "centelha"
     ],
     "pv": 75,
-    "defesa": 11,
+    "defesa": 12,
     "defesaSocial": "-",
-    "defesaMental": 15,
-    "vontade": 8,
+    "defesaMental": 17,
+    "vontade": 9,
     "soak": {
-      "impacto": 11,
-      "corte": 11,
-      "perfuracao": 11
+      "impacto": 12,
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 3",
@@ -15756,7 +15762,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "7d6 +3",
+        "pool": "7d6 +4",
         "dano": "3d6 +9 perfurante",
         "ticks": 7
       }
@@ -15820,7 +15826,7 @@
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "aberração Grande",
     "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
     "tags": [
@@ -15828,14 +15834,14 @@
       "centelha"
     ],
     "pv": 70,
-    "defesa": 12,
-    "defesaSocial": 12,
-    "defesaMental": 21,
-    "vontade": 9,
+    "defesa": 13,
+    "defesaSocial": 13,
+    "defesaMental": 23,
+    "vontade": 10,
     "soak": {
-      "impacto": 14,
-      "corte": 11,
-      "perfuracao": 11
+      "impacto": 15,
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -15853,7 +15859,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "8d6 +4",
+        "pool": "8d6 +5",
         "dano": "2d6 +11 perfurante",
         "ticks": 6
       }
@@ -15967,7 +15973,7 @@
     "tipo": "chefe",
     "categoria": "Besta mágica",
     "ameaca": 5,
-    "centelha": 4,
+    "centelha": 5,
     "conceito": "besta mágica Imenso",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -15975,14 +15981,14 @@
       "centelha"
     ],
     "pv": 95,
-    "defesa": 14,
+    "defesa": 15,
     "defesaSocial": "-",
-    "defesaMental": 16,
-    "vontade": 9,
+    "defesaMental": 18,
+    "vontade": 10,
     "soak": {
-      "impacto": 15,
-      "corte": 16,
-      "perfuracao": 16
+      "impacto": 16,
+      "corte": 17,
+      "perfuracao": 17
     },
     "resistPerf": 2,
     "iniciativa": "1d6 + 2",
@@ -16000,7 +16006,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "9d6 +4",
+        "pool": "9d6 +5",
         "dano": "3d6 +13 perfurante",
         "ticks": 7
       }
@@ -17129,7 +17135,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -17137,14 +17143,14 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 11,
-    "defesaSocial": 9,
-    "defesaMental": 16,
-    "vontade": 8,
+    "defesa": 12,
+    "defesaSocial": 10,
+    "defesaMental": 18,
+    "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 10,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -17162,7 +17168,7 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "6d6 +3",
+        "pool": "6d6 +4",
         "dano": "2d6 +7 perfurante",
         "ticks": 6
       }
@@ -17178,7 +17184,7 @@
     "tipo": "elite",
     "categoria": "Exterior",
     "ameaca": 4,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "exterior Médio",
     "descricao": "Nativo de outro plano, alheio às leis mortais.",
     "tags": [
@@ -17186,14 +17192,14 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 15,
-    "defesaSocial": 9,
-    "defesaMental": 18,
-    "vontade": 8,
+    "defesa": 16,
+    "defesaSocial": 10,
+    "defesaMental": 20,
+    "vontade": 9,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -17211,7 +17217,7 @@
     "ataques": [
       {
         "nome": "Golpe planar",
-        "pool": "5d6 +3",
+        "pool": "5d6 +4",
         "dano": "1d6 +5 corte",
         "ticks": 5
       }

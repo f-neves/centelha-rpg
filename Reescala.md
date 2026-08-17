@@ -156,6 +156,12 @@ Defesa (reintroduzir o `−⌊soma/4⌋` ou baixar o mult) numa passada à parte
     `inimigos.json`: +1 em defesa/defM/defSocial/cada soak e no acerto do pool); `monsters.json`
     regenerado. A fonte `gen-bestiario.mjs` (17 builds inline + `conversao-monstros.html`) ainda tem
     os valores antigos: se regerar do zero, reaplicar o +1 nos ≥2.
+    **Corrigido em 17/08/2026, e o aviso acima está vencido.** Foi exatamente o que aconteceu: o
+    regen de 10/08 desfez o +1 em 148 criaturas, calado, dentro de um commit sobre fraquezas. O +1
+    agora mora **na fonte** (a bancada, o `conversao-extra.json` e os builds inline), o gerador é
+    idempotente e o `gen-bestiario.mjs --check` falha o build se o JSON commitado divergir dela.
+    O degrau 2 passou por triagem em vez de subir em bloco: 19 viraram Herói, 38 ficaram Desperto.
+    Detalhe em `Bestiario_Centelha.md`.
   - [x] **Kael migrado** — Centelha 2→3 (Herói); `test-kael.mjs` atualizado (Defesa 17, Def.M 13,
     Energia 27, Mana 13, Salto V256/HP5/HC14). Build verde.
   - [x] **Artes alinhadas à Centelha 6** — renumeradas 2→3…5→6 (refs do bestiário ajustadas) e o

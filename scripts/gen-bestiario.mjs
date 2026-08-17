@@ -170,7 +170,7 @@ const NPCS = [
     ataques: [{ nome: 'Espada longa', atrib: 'destreza', pericia: 'armas-uma-mao', dado: 2, mao: 1, tipo: 'corte', acerto: 1, ticks: 6 }],
     notas: 'Placa (Soak +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.' },
 
-  { id: 'assassino-das-sombras', nome: 'Assassino das Sombras', tipo: 'elite', ameaca: 4, centelha: 2,
+  { id: 'assassino-das-sombras', nome: 'Assassino das Sombras', tipo: 'elite', ameaca: 4, centelha: 3,
     conceito: 'lâmina silenciosa', descricao: 'Surge das sombras, aplica um golpe e some.', tags: ['humano', 'centelha'],
     attrs: { forca: 3, destreza: 5, vigor: 3, percepcao: 4 }, pericias: { 'armas-uma-mao': 4, furtividade: 5, esquiva: 4, prontidao: 4, manha: 3 }, integridade: 4, vontade: 6,
     armadura: 'couro',
@@ -178,7 +178,7 @@ const NPCS = [
     tecnicas: ['pisar-leve', 'esgueirar', 'bote-silencioso', 'manto-de-sombras'],
     notas: 'Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).' },
 
-  { id: 'duelista', nome: 'Duelista', tipo: 'elite', ameaca: 4, centelha: 2,
+  { id: 'duelista', nome: 'Duelista', tipo: 'elite', ameaca: 4, centelha: 3,
     conceito: 'esgrimista exímio', descricao: 'Vive do duelo: apara, finta e responde com a ripose.', tags: ['humano', 'centelha'],
     attrs: { forca: 3, destreza: 5, vigor: 3 }, pericias: { 'armas-uma-mao': 5, esquiva: 4, prontidao: 4 }, integridade: 5, vontade: 6,
     armadura: 'couro',
@@ -201,7 +201,7 @@ const NPCS = [
     tecnicas: ['pele-curtida', 'aguentar-o-tranco', 'tensionar'],
     notas: 'Placa + Pele de Pedra: Soak altíssimo contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.' },
 
-  { id: 'campeao', nome: 'Campeão (herói inimigo)', tipo: 'chefe', ameaca: 6, centelha: 2,
+  { id: 'campeao', nome: 'Campeão (herói inimigo)', tipo: 'chefe', ameaca: 6, centelha: 3,
     conceito: 'herói inimigo', descricao: 'Um adversário à altura dos PJs: rápido, forte e com Técnicas de herói.', tags: ['humano', 'centelha'],
     attrs: { forca: 4, destreza: 5, vigor: 4, influencia: 4 }, pericias: { 'armas-uma-mao': 5, esquiva: 4, escudos: 3, prontidao: 5, intimidacao: 4, oratoria: 3 }, integridade: 6, vontade: 8,
     armadura: 'malha',
@@ -224,7 +224,7 @@ const NPCS = [
     artes: [{ id: 'morte', nivel: 2 }],
     notas: 'Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.' },
 
-  { id: 'mago-de-batalha', nome: 'Mago de Batalha', tipo: 'chefe', ameaca: 6, centelha: 2,
+  { id: 'mago-de-batalha', nome: 'Mago de Batalha', tipo: 'chefe', ameaca: 6, centelha: 3,
     conceito: 'artilharia arcana', descricao: 'Conjura fogo e força sobre o campo; perigoso a qualquer distância.', tags: ['humano', 'centelha', 'arcano'],
     attrs: { forca: 2, destreza: 3, vigor: 3, inteligencia: 5 }, pericias: { ocultismo: 5, esquiva: 3, prontidao: 3, conhecimentos: 3 }, integridade: 5, vontade: 8,
     ataques: [{ nome: 'Bola de fogo (Fogo 3)', atrib: 'inteligencia', pericia: 'ocultismo', dado: 3, distancia: true, tipo: 'fogo (área)', ticks: 6, notas: '3 Mana; explosão em área' }],
@@ -365,7 +365,10 @@ function poderesDe(name, centelha) {
       const pairs = [...alvo.matchAll(new RegExp(`(${ARTE_LIST})\\s*·\\s*N(\\d)`, 'g'))];
       if (pairs.length) {
         pod.arte = ARTE_NOME2ID[pairs[0][1]];
-        for (const [, an, nv] of pairs) { const id = ARTE_NOME2ID[an]; const n = Math.min(+nv, centelha || 5, 5); if (centelha >= 1) arteMap[id] = Math.max(arteMap[id] || 0, n); }
+        // O teto de nível de Arte é 6 desde a Fase 6 da Reescala (as Artes foram
+        // renumeradas de 5 para 6 níveis); o 5 que estava aqui era da régua velha.
+        // Não muda nenhuma criatura hoje: nenhuma alcança Arte 6.
+        for (const [, an, nv] of pairs) { const id = ARTE_NOME2ID[an]; const n = Math.min(+nv, centelha || 5, 6); if (centelha >= 1) arteMap[id] = Math.max(arteMap[id] || 0, n); }
       }
     } else if (k === 'p') {
       const cam = CAM.find((c) => alvo.includes(c.nome));
@@ -397,7 +400,9 @@ const CONV = DATA.map((m) => {
   const briga = cl(ameaca + (m.cent > 0 ? 1 : 0), 1, 5);
   const notasPart = [];
   if (m.sk && m.sk.length) notasPart.push(`Perícias notáveis: ${m.sk.join(', ')}.`);
-  if (m.cent > 5) notasPart.push('Centelha acima do teto mortal (entidade).');
+  // O teto mortal é 6 (Semideus) desde a Reescala; o 5 daqui era da régua velha e,
+  // com o +1 do B10, passaria a marcar 16 Semideus como entidade.
+  if (m.cent > 6) notasPart.push('Centelha acima do teto mortal (entidade).');
   return stat({
     id,
     nome: m.name, tipo: tipoDe(cat, ameaca), categoria: cat, ameaca, centelha: m.cent,
@@ -505,7 +510,39 @@ const CUSTOM = (() => {
 })();
 
 const inimigos = [...NPCS.map(stat), ...CUSTOM.map(stat), ...CONV];
-fs.writeFileSync(path.join(ROOT, 'src/data/inimigos.json'), JSON.stringify(inimigos, null, 2) + '\n', 'utf8');
+const ALVO = path.join(ROOT, 'src/data/inimigos.json');
+const SAIDA = JSON.stringify(inimigos, null, 2) + '\n';
+
+// --check: o portão do B10. O `inimigos.json` é gerado mas fica commitado, e já
+// saiu de sincronia calado uma vez (a bancada mudou em 16/07 e o JSON só foi
+// regerado em 10/08, desfazendo o +1 da Reescala em 148 criaturas dentro de um
+// commit sobre outro assunto). Com isto, mexer na fonte sem regerar quebra o
+// build em vez de vazar para o site. Mesmo padrão de gen-grid-artes e gen-mermaid.
+if (process.argv.includes('--check')) {
+  const atual = fs.existsSync(ALVO) ? fs.readFileSync(ALVO, 'utf8') : '';
+  if (atual !== SAIDA) {
+    let detalhe = '';
+    try {
+      const A = JSON.parse(atual), B = inimigos;
+      const mA = Object.fromEntries(A.map((x) => [x.id, x]));
+      const dif = B.filter((b) => JSON.stringify(mA[b.id]) !== JSON.stringify(b));
+      const sumiram = A.filter((a) => !B.some((b) => b.id === a.id));
+      detalhe = `  ${dif.length} criatura(s) divergem, ${sumiram.length} sumiram, `
+        + `${B.length - A.length >= 0 ? B.length - A.length : 0} entraram.\n`
+        + dif.slice(0, 5).map((b) => `    · ${b.nome} (${b.id})`).join('\n')
+        + (dif.length > 5 ? `\n    · … e mais ${dif.length - 5}` : '');
+    } catch { detalhe = '  (o inimigos.json commitado não é JSON válido)'; }
+    console.error('✘ inimigos.json está fora de sincronia com a fonte.\n'
+      + detalhe + '\n'
+      + '  A fonte é conversao-monstros.html + conversao-extra.json + os builds\n'
+      + '  inline deste script. Rode: node scripts/gen-bestiario.mjs');
+    process.exit(1);
+  }
+  console.log(`✓ inimigos.json em dia com a fonte (${inimigos.length} criaturas)`);
+  process.exit(0);
+}
+
+fs.writeFileSync(ALVO, SAIDA, 'utf8');
 const byCat = {};
 for (const n of inimigos) byCat[n.categoria] = (byCat[n.categoria] || 0) + 1;
 console.log(`inimigos.json: ${inimigos.length} entradas (${NPCS.length} feitos à mão + ${CONV.length} convertidos).`);

@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 69 itens abertos · 34 [DECIDIR] · 30 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 17** · **Bestiário 10** · Mesa 9 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
+**Placar:** 68 itens abertos · 33 [DECIDIR] · 30 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 17** · **Bestiário 9** · Mesa 9 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
 Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 3
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -181,14 +181,23 @@ limitações conhecidas, que são as três de baixo.
   bancada `conversao-monstros.html`. A segunda: o portão de ADM é `ehAdmin()`, **portão de
   interface e não de segurança**, o que basta enquanto o dado é estático e deixa de bastar no dia
   em que a edição escrever no Supabase, como as fichas já escrevem.
-- [ ] **B10 · [DECIDIR] `inimigos.json` é gerado, mas fica commitado, e sai de sincronia calado.**
-  Aconteceu: o commit `fa50192` (16/07, "ajustes de Centelha e remapeamentos") mexeu na bancada e
-  o `inimigos.json` só foi regerado em 10/08, quase um mês depois. Ao regerar, **148 criaturas
-  mudaram de Centelha, todas em −1** (toda criatura de 3 para cima), levando junto Defesa, Defesa
-  Social e Defesa Mental, e isso entrou no repositório dentro de um commit sobre fraquezas. Os
-  números novos são os que a bancada manda; os antigos é que estavam velhos. Falta **confirmar que
-  a régua nova é a desejada** e, decidido isso, fazer o validador comparar o gerado com a bancada e
-  falhar o build na divergência, que é o mesmo remédio que já existe para órfãos e ids duplicados.
+- [x] **B10 · [RESOLVIDO 2026-08-17] `inimigos.json` saía de sincronia calado.** Detalhe em
+  `Bestiario_Centelha.md`. A suspeita registrada aqui (**"os números novos são os que a bancada
+  manda; os antigos é que estavam velhos"**) estava invertida: **o regen de 10/08 desfez a
+  Reescala**. A prova é tripla: a distribuição antes do regen tinha um buraco exatamente no degrau
+  que a Reescala **inseriu** (nada em Centelha 2); o `Reescala.md` já avisava, na Fase 6, *"se
+  regerar do zero, reaplicar o +1 nos ≥2"*, e o passo não foi refeito; e o **Campeão (herói
+  inimigo)**, cujo conceito é "um adversário à altura dos PJs", lia Desperto 2 enquanto Kael, o
+  herói de referência, é 3. Quatro criaturas ficaram até impossíveis, carregando Técnica de nível 3
+  com Centelha 2. **110 criaturas subiram +1**: as 91 de Centelha ≥3 e 19 das 57 do degrau 2, que
+  passou por **triagem** em vez de subir em bloco (sobe quem tem piso técnico 3 ou ameaça 4+; ficam
+  no Desperto as 38 de tropa, emboscada e bicho de estrada). Os derivados vieram por fórmula, sem
+  delta à mão. **O conserto de fundo:** o +1 passou a morar **na fonte** (bancada,
+  `conversao-extra.json` e os builds inline), o gerador ficou idempotente (verificado byte a byte) e
+  o novo **`gen-bestiario.mjs --check`** falha o `validate` e o `build` se o JSON commitado divergir
+  da fonte, nomeando as criaturas. De quebra, dois resquícios da régua velha saíram do gerador: a
+  nota de "acima do teto mortal" ia marcar 16 Semideus como entidade, e o nível de Arte era cortado
+  em 5 quando as Artes já têm 6.
 - [ ] **B11 · [FAZER] Palavra nova de fraqueza precisa de rito para virar oficial.** O vocabulário
   vive em `src/data/elementos-vocab.json` (15 palavras, lido pelo validador, pelo gerador e pelo
   editor) e o **validador falha o build** em qualquer palavra fora dele. O modal aceita palavra
@@ -529,9 +538,9 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 1. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar, e é o mesmo tipo de
    trabalho que a frente de Ações acabou de receber, então sai com o caminho quente.
 2. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
-3. **B10**, confirmar a Centelha das 148: é o único item da lista que já está **valendo no
-   repositório** sem ter passado por você. Cinco minutos de conferência, e enquanto não passar,
-   todo número derivado do bestiário está sob suspeita.
+3. ~~**B10**, confirmar a Centelha das 148.~~ **Feito em 17/08.** Era o único item que já estava
+   valendo no repositório sem ter passado por você, e a suspeita se confirmou ao contrário do que
+   este mapa dizia: o regen tinha desfeito a Reescala, não corrigido nada.
 4. **D4**, o retag das Técnicas: conserta uma divergência entre doc e dado vivo que já existe hoje.
 5. **G8**, trocar a palavra "stunt" por um termo em português. A frente de Ações caiu de 11 itens
    para 4 e o capítulo já está publicado; este é o que sobrou de mais barato, e agora são quatro
