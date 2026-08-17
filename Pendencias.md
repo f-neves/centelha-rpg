@@ -1,6 +1,6 @@
 # Pendências do Centelha · mapa geral
 
-> Foto de **2026-08-10**. Índice único de tudo que está aberto, em todas as frentes.
+> Foto de **2026-08-17**. Índice único de tudo que está aberto, em todas as frentes.
 > Cada item diz **o que falta**, **onde mora o detalhe** e **o que ele trava**. Quando um item
 > fecha, marque a caixa e registre a decisão no doc da frente, que é a fonte de verdade.
 >
@@ -9,13 +9,19 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 60 itens abertos · 30 [DECIDIR] · 27 [FAZER] · 3 [AUTOR] · 1 [ENGAVETADO]
-Por frente: **Arcano 12** · **Bestiário 10** · Mesa 10 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
-Trilhas 4 · Arremesso 4 · Social 3
+**Placar:** 67 itens abertos · 33 [DECIDIR] · 29 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 15** · **Bestiário 10** · Mesa 9 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
+Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 3
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
 > tabuleiro) e **I10** (as pontas soltas do jogador agindo). O detalhe das duas mora em
 > `Grid_melhorias.md`.
+>
+> **Placar recontado em 2026-08-17.** Ele dizia 60 e vinha de antes de três mudanças: as Artes
+> fecharam **A12** (o Metal virou bloco de Efeitos de Terra) e **A17** (o chão se compra por molde)
+> e abriram **A13** a **A16**; a Mesa fechou o **I7**; e a frente **J · Infraestrutura**, aberta em
+> 15/08, nunca tinha entrado na linha de frentes, apesar de ter quatro itens. A contagem sai do
+> próprio arquivo: uma linha por item com a caixa vazia.
 
 ---
 
