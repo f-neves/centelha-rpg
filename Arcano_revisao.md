@@ -521,25 +521,26 @@ A Linha compra seis vezes o alcance da Explosão e paga com a largura. É o Ligh
 Fireball, e é a saída positiva para quem quer chegar longe: existe forma para isso, e ela cobra em
 outra moeda.
 
-### O que isso faz com a Área e com o Volume
+### Estes cinco moldes são dos EFEITOS, e o improviso tem geometria própria
 
-A **Área** do improviso passa a ser a régua da **Explosão** (0,5 · 1 · 2 · 3,5 · 5 · 6,5 · 8 m de
-diâmetro). Ela cresce de 4× para 8× do grau 1 ao 6, o que a põe em pé de igualdade com as outras
-réguas do sistema, e conserta um desencontro que estava medido: contra inimigos espalhados a Área
-de hoje entrega **um terço** do que a régua de **Alvos** entrega pelo mesmo preço.
+**Corrigido em 2026-08-17.** Uma versão anterior desta seção dizia que a Área do improviso passava
+a ser a régua da Explosão. Não é: o improviso ganhou geometria própria, que é a **§5.4**, e os cinco
+moldes acima são o que se compra com **XP**. A divisão ficou assim, e ela é limpa:
 
-| Inimigos espalhados | g1 | g2 | g3 | g4 | g5 | g6 |
-|---|---|---|---|---|---|---|
-| Área de hoje | 1 | 1 | 2 | 2 | 2 | 5 |
-| Explosão nova | 1 | 2 | **3** | 5 | **9** | **15** |
-| Alvos (régua atual) | 1 | 2 | 3 | 4 | 6 | 10 |
+| | Quem tem | O que é |
+|---|---|---|
+| **Improviso** | a Arte crua, sem XP | fatias de 60° saindo do feiticeiro (§5.4) |
+| **Efeito Especial** | comprado com XP | um molde com nome e régua própria (esta seção) |
 
-O **Volume fica exatamente como está** (8 cm³ a 8 m³) e **perde o direito de virar forma**. Lido
-como matéria ele está calibrado, e o que parecia pequeno era pergunta de chão feita a uma régua de
-massa: o grau 3 são **169 kg de pedra**, o grau 4 são 1,4 t e o grau 6 são 10,8 t. Espalhar o
-Volume por todo o chão que ele alcançaria dá camada de milímetros nos graus baixos, e é isso que
-tem de ser dito em voz alta: **pedra não vira tapete, névoa vira** (o fator de estado já diz isso,
-com Ar valendo oito vezes e Terra metade).
+O que o Efeito compra, então, não é "mais tamanho": é **uma forma que a manifestação não faz**.
+Pôr uma bola num ponto escolhido, esticar uma reta de vinte metros, erguer uma parede plana,
+saltar de alvo em alvo. A manifestação só sabe abrir leque em volta de quem conjura, e é essa a
+fronteira.
+
+O **Volume fica exatamente como está** (8 cm³ a 8 m³) para os Efeitos que criam matéria, e **perde
+o direito de virar forma**. Lido como matéria ele está calibrado, e o que parecia pequeno era
+pergunta de chão feita a uma régua de massa: o grau 3 são **169 kg de pedra**, o grau 4 são 1,4 t
+e o grau 6 são 10,8 t. **Pedra não vira tapete, névoa vira**, e é isso que o fator de estado diz.
 
 ### O cuboide não é proibido: ele ganha nome
 
@@ -547,20 +548,177 @@ O cuboide comprido é a **Muralha**, e a Muralha tem régua calibrada para ser c
 maciço é **matéria**, e matéria é Volume em m³. O abuso morre por construção e não por proibição:
 não sobra medida livre para trocar, porque quem escolhe as dimensões é o molde.
 
-### O que falta para isso virar dado
+---
 
-1. `regras.json → arcano.improviso.graus.moldes`: as cinco réguas num lugar só, e a `area` do
-   improviso apontando para a Explosão.
-2. O Efeito passa a **referenciar o molde** em vez de repetir a escala inline. Hoje o Muro carrega
-   a régua dentro dele, e o `grid.forma` já diz qual molde é: as duas informações são a mesma dita
-   duas vezes.
-3. Retaguear os **26 Efeitos de `zona`** para o molde específico, e reconciliar os quatro com
-   escala própria (Muro, Aura, Neblina, Terremoto).
-4. Revisar o `esticar` contra as réguas novas.
-5. A **Aura** tem três pares de graus que cobrem o mesmo número de hexágonos (1-2, 3-4, 5-6):
-   metade da régua dela não muda nada no tabuleiro.
-6. Regra de salto da **Cadeia**: 3 m entre elos, e decidir se o dano cai a cada elo, como o Chain
-   Lightning faz.
+## 5.4. A manifestação da Arte básica: fatias de 60°
+
+**Decidido em 2026-08-17.** Esta é a geometria do **improviso**, o que a Arte crua faz sem nenhum
+Efeito comprado. Os moldes da §5.3 continuam valendo, e são o que se compra com XP.
+
+### A regra, em cinco linhas
+
+O parâmetro compra uma **aresta**, em metros. A manifestação sai do feiticeiro em **fatias de 60°**,
+e cada fatia é um triângulo de aresta *n* visto de cima: dois lados de *n* partindo dele e a base
+também *n*, porque em 60° o triângulo é equilátero. A **altura** de cada fatia é a aresta dividida
+pelo número de fatias. As fatias são obrigatoriamente **vizinhas**, partindo do mesmo ponto: é o
+mesmo ataque se abrindo, e não vários ataques. E o número de fatias **nunca passa do nível**.
+
+| Grau | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|---|
+| Aresta | 0,5 m | 1 m | 2 m | 3 m | 4 m | 5 m | 6 m |
+
+### Por que 60°, e por que ele fecha
+
+Seis triângulos equiláteros em volta de um ponto formam **um hexágono regular de lado n**, sem
+fenda e sem sobreposição. 60° é exatamente um sexto do círculo e é o setor nativo do tabuleiro, então
+a regra e o Grid falam a mesma língua sem conversão. Não é sorte: é o único ângulo que fecha.
+
+### As duas travas, e a segunda dispensa uma terceira
+
+**O número de fatias não passa do nível.** Grau 3 abre até três fatias, grau 6 até seis. Daí saem
+três coisas de uma vez:
+
+1. A cobertura cresce em todo grau: **60 · 120 · 180 · 240 · 300 · 360**, um grau uma fatia, e
+   nenhum grau é pior que o anterior.
+2. Só o grau 6 fecha o círculo **em fatias de 60°**.
+3. **O piso de altura sai de graça.** Dividir pelo próprio nível dá sempre **1 m**, e esse passa a
+   ser o mínimo sem precisar de regra própria.
+
+Houve um piso de meio metro, com arredondamento, e ele **saiu**. Arredondar quebrava a conservação do
+volume onde mordia (até 40% perdidos em resto de divisão) e, pior, deixava o grau 5 com menos opções
+que o grau 3, porque 3 e 6 dividem bem e 4 e 5 não. A altura é a divisão **exata**, e 1,33 m ou
+1,67 m se dizem na mesa sem dificuldade.
+
+| Grau · aresta | 60° | 120° | 180° | 240° | 300° | 360° |
+|---|---|---|---|---|---|---|
+| 1 · 1 m | **1,00** | — | — | — | — | — |
+| 2 · 2 m | 2,00 | **1,00** | — | — | — | — |
+| 3 · 3 m | 3,00 | 1,50 | **1,00** | — | — | — |
+| 4 · 4 m | 4,00 | 2,00 | 1,33 | **1,00** | — | — |
+| 5 · 5 m | 5,00 | 2,50 | 1,67 | 1,25 | **1,00** | — |
+| 6 · 6 m | 6,00 | 3,00 | 2,00 | 1,50 | 1,20 | **1,00** |
+
+### O que é conservado, e o que se troca
+
+**O volume não muda.** Área da fatia × altura × número de fatias dá sempre o mesmo, qualquer que
+seja a combinação:
+
+<p class="formula">Volume = 0,433 × n³</p>
+
+| Grau | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| Volume, em qualquer abertura | 0,43 m³ | 3,5 | 11,7 | 27,7 | 54,1 | **93,5 m³** |
+
+É isso que faz a regra ser um orçamento honesto em vez de uma tabela de exceções: **o feiticeiro não
+ganha nem perde nada ao se abrir, só troca o formato do mesmo tanto de elemento.**
+
+E os dois botões fazem serviços separados, o que é a melhor propriedade do desenho:
+
+| Botão | O que sobe | O que desce |
+|---|---|---|
+| **Número de fatias** | o chão coberto (0,433 × N × n²) | a altura (n ÷ N) |
+| **Abertura** | o ângulo (N × 60° ou N × 120°) | a frente reta (0,87n ou 0,50n) |
+
+No grau 6: a lança de 60° cobre 15,6 m² de chão com 6 m de altura, e o hexágono de 360° cobre
+93,5 m² com 1 m. Seis vezes mais chão, um sexto da altura, o mesmo volume.
+
+### As duas aberturas, e por que não existe uma terceira
+
+A área de um triângulo com dois lados *a* e ângulo θ entre eles é `½·a²·sen θ`. Como
+**sen 60° = sen 120° = 0,866**, abrir de 60° para 120° **mantendo a mesma aresta** conserva a área
+exata. Não é preciso encurtar lado nenhum; o que se paga é **profundidade**, que cai de 0,87n para
+0,50n (no grau 6, de 5,2 m para 3 m).
+
+| Abertura | Área | Base | Frente reta |
+|---|---|---|---|
+| 60° | **0,43 n²** | 1,00 n | 0,87 n |
+| 90° | 0,50 n² | 1,41 n | 0,71 n |
+| **120°** | **0,43 n²** | 1,73 n | **0,50 n** |
+| 150° | 0,25 n² | 1,93 n | 0,26 n |
+| 180° | 0,00 n² | 2,00 n | 0,00 n |
+
+**Sessenta e cento e vinte são os dois únicos ângulos com a mesma área**, e a geometria fecha a porta
+sozinha: qualquer abertura acima de 120° rende *menos*, despencando para zero. Não existe deslize
+para uma lâmina de 170°, porque ela teria 9% da área. A regra tem duas aberturas por necessidade
+matemática, e não por decreto.
+
+Duas consequências a saber. A primeira: em fatias de **120°** o grau 3 já fecha o círculo, com três
+fatias, o que em fatias de 60° só o grau 6 consegue. A segunda, comparando no **mesmo** grau: fechar
+o círculo com três fatias de 120° dá **metade do chão** e **o dobro da altura** de fechar com seis de
+60°, e alcança menos à frente (0,50n contra 0,87n). O 120° é a volta alta e curta; o 60° é a volta
+rasa e funda.
+
+Três fatias de 120° formam um **triângulo equilátero** de circunraio n, do mesmo jeito que seis de
+60° formam o hexágono.
+
+### As duas alturas: o ápice e o pé da base
+
+O feiticeiro escolhe **duas** alturas. A de onde a pirâmide **começa** (o ápice: no chão, na mão,
+acima da cabeça) e a de onde ela **acaba** (o pé da base). A amarra é uma só:
+
+<p class="formula">o ápice tem de estar dentro da altura da base</p>
+
+Base de 5 m com o pé a 0,5 m ocupa de 0,5 a 5,5 m, então o ápice cabe em qualquer ponto desse
+intervalo e em nenhum de fora. O **alcance do braço** (cerca de 2,2 m) limita as duas, e disso sai de
+graça uma coisa que o `areaNuncaColocada` decreta: a base **não pode ser erguida longe do corpo**,
+porque o ápice teria de acompanhá-la.
+
+**Isso é liberdade que não custa nada**, e vale registrar por que: o volume de uma pirâmide sai da
+área da base e da distância perpendicular até o ápice, e **não** de onde o ápice está sobre ela
+(princípio de Cavalieri). Deslizar o ápice não cobra nem rende. Medido na bancada: 93,5 m³ com o
+ápice a 0, a 0,7, a 1,5 e a 2,2 m.
+
+Com isso o **desperdício no subsolo deixa de existir**. Enquanto a base era centrada no ápice, a
+fatia de 6 m saindo de 1,5 m enterrava um quarto de si; agora basta pousar o pé da base no chão.
+
+E o que a posição do ápice muda de verdade não é quem está em pé, é **quem está no chão**:
+
+| Ápice | A face de baixo é | Toca o chão |
+|---|---|---|
+| 0 m, agachado com a mão no piso | horizontal | desde o pé do conjurador |
+| 1,5 m, na mão | uma rampa descendo | só a **5,2 m** (grau 6) |
+
+Saindo da mão com o pé da base no chão, a fatia é uma **rampa que passa por cima de quem está
+deitado** até quase a ponta. Quem quiser varrer o chão desde o próprio pé precisa agachar e sair do
+piso. Não é regra escrita, é consequência da forma, e é boa demais para ficar escondida.
+
+### O estado da matéria incide na ARESTA
+
+<p class="formula">Terra e Metal: metade da aresta · Ar e névoa: o dobro · o resto: igual</p>
+
+No grau 6 isso dá **3 m** para a Terra, **6 m** para água, gelo, fogo, luz e sombra, e **12 m** para
+o Ar. O Ar vira a Arte de domínio de espaço sem precisar de regra própria, o que casa com a decisão
+já escrita de que ele foi calibrado de propósito **sem dano direto**: a Arte que não fere é a que
+toma o campo.
+
+### O que a manifestação NÃO faz
+
+- **Não põe nada num ponto escolhido.** Ela nasce no feiticeiro, sempre. Pôr num ponto é Efeito.
+- **Não faz parede plana nem reta**, e **não faz bloco que se carregue**. Muro, muralha e reta são
+  Efeito Especial, e isso é escolha de escopo, não sobra.
+- **Não ganha alcance com o nível da Arte.** Foi considerado (o nível da Arte valendo metros de
+  alcance grátis) e **recusado em 2026-08-17**: o nível da Arte segue só como teto do grau do
+  parâmetro, e o alcance continua sendo o que o `areaNuncaColocada` diz.
+
+### O que ainda falta
+
+1. **`regras.json → arcano.improviso.manifestacao`**: a escada da aresta, a trava das fatias, as duas
+   aberturas e o fator de estado na aresta. Hoje nada disso está no dado.
+2. **O que a matéria dentro da fatia faz em número.** A regra diz quanto elemento aparece e onde; não
+   diz o que 93,5 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de
+   Terra aguenta. Encosta na A9 e no capítulo de Vida & Ferimentos.
+3. **Crescer nas quatro direções foi escolhido**, e o preço está pago (a rampa, e o subsolo quando o
+   pé da base não está no chão). A alternativa era crescer só para cima a partir do ápice, que nunca
+   enterra nada e é mais simples. Fica registrada para não se reabrir por engano.
+4. **As Artes não elementais** continuam sem geometria própria: Cura, Fascinação, Adivinhação,
+   Conjuração e Metamorfose não manifestam elemento e a fatia não quer dizer nada nelas
+   (pendência 15).
+5. **Os textos de nível em `artes.json`** descrevem improvisos que esta geometria não permite mais
+   (Fogo 3 "sustentar uma parede baixa de chamas", Fogo 4 "parede de chamas fechando um corredor").
+   É a A15, e agora ela tem mais motivo.
+
+A bancada `volume-bench.html`, no modo **molde de chão**, desenha tudo isto no hexágono de 1 m com o
+conjurador no meio, e conta os inimigos pegos em três formações.
 
 ---
 
@@ -835,6 +993,11 @@ mato vivo), Metamorfose (ossos, pele, penas, garras). Ver Pendência 9.
 
 ## 10. Pendências
 
+> **Leia a §5.4 antes desta lista.** A geometria do improviso mudou em 2026-08-17: a manifestação
+> passou a ser fatias de 60° saindo do feiticeiro, com o número de fatias travado pelo nível, e os
+> moldes da §5.3 viraram o que se compra com XP. Várias pendências abaixo foram escritas quando o
+> improviso ainda moldava livremente, e onde as duas discordarem, **valem as §5.3 e §5.4**.
+>
 > **Para retomar:** esta seção é o ponto de partida de qualquer próxima conversa sobre o Arcano.
 > Tudo o que está acima dela já foi decidido e já está no site e em `regras.json`. O que está
 > aqui, não. A lista curta que aparece no fim do capítulo XV (`/artes/regras`, bloco "Em revisão")

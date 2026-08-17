@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 67 itens abertos · 33 [DECIDIR] · 29 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 15** · **Bestiário 10** · Mesa 9 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
+**Placar:** 69 itens abertos · 34 [DECIDIR] · 30 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 17** · **Bestiário 10** · Mesa 9 · Ações & Sistema 6 · Lore 6 · Proezas 6 ·
 Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 3
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -88,9 +88,34 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   parâmetro**, com nome e régua própria, em metros. Cinco moldes: **Explosão** (diâmetro 0,5 · 1 ·
   2 · 3,5 · 5 · 6,5 · 8 m), **Leque** (comprimento a 60°), **Linha** (comprimento, 1 m de largura,
   compra 6× o alcance da Explosão e paga na largura), **Muralha** (a régua que o Muro já tem) e
-  **Cadeia** (inimigos ligados, o único molde imune à formação). A Área do improviso passa a ser a
-  régua da Explosão, e o **Volume fica intacto** e perde só o direito de virar forma. O que falta
-  virar dado está na lista de seis itens no fim da §5.3.
+  **Cadeia** (inimigos ligados, o único molde imune à formação). O **Volume fica intacto** e perde só
+  o direito de virar forma. **Corrigido em 17/08:** os cinco moldes são o que se compra com **XP**; o
+  improviso ganhou geometria própria, que é a **A18**.
+- [x] **A18 · [DECIDIDO 2026-08-17] A manifestação da Arte básica: fatias de 60°.** Detalhe em
+  `Arcano_revisao.md` §5.4, e desenhada na bancada `volume-bench.html` (modo *molde de chão*). O
+  parâmetro compra uma **aresta** (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) e a Arte sai do feiticeiro em
+  **fatias de 60°**, cada uma um triângulo equilátero de aresta n, com altura = aresta ÷ nº de
+  fatias. Fatias obrigatoriamente **vizinhas**, e o **nº de fatias nunca passa do nível**, o que faz
+  três coisas de uma vez: a cobertura cresce em todo grau (60 · 120 · 180 · 240 · 300 · 360), só o
+  grau 6 fecha o círculo em fatias de 60°, e o **piso de altura sai de graça** (dividir pelo próprio
+  nível dá sempre 1 m). **O volume é conservado**: 0,433 n³ em qualquer combinação, então abrir só
+  troca o formato do mesmo tanto de elemento. Duas aberturas, **60° e 120°**, e só duas, porque
+  sen 60° = sen 120°: abrir para 120° com a mesma aresta conserva a área e paga em profundidade
+  (0,87n → 0,50n); acima de 120° a área despenca para zero, então a geometria fecha a porta sozinha.
+  **Duas alturas**, o ápice e o pé da base, com o ápice preso dentro da altura da base e as duas
+  limitadas pelo alcance do braço; deslizar o ápice não custa nada (Cavalieri) e com isso o
+  desperdício no subsolo virou escolha. **Estado da matéria incide na aresta:** Terra metade, Ar o
+  dobro, o resto igual (grau 6: Terra 3 m, água 6 m, Ar 12 m). Recusado no mesmo dia: o nível da Arte
+  **não** vale alcance grátis. Parede, reta e bloco passam a ser **só Efeito Especial**. As cinco
+  pendências que sobraram estão no fim da §5.4.
+- [ ] **A19 · [DECIDIR] O que a matéria dentro da fatia faz em número.** Aberta pela A18. A
+  manifestação diz **quanto** elemento aparece e **onde**, e não diz o que ele faz além do parâmetro
+  de Dano: o que 93,5 m³ de chama fazem a quem está dentro, o que a espessura de uma fatia de Terra
+  aguenta antes de ceder, o que pesa ao desabar. Encosta na A9 e no capítulo de Vida & Ferimentos.
+- [ ] **A20 · [FAZER] Portar a manifestação para `regras.json`.** A escada da aresta, a trava das
+  fatias, as duas aberturas e o fator de estado na aresta. Nada disso está no dado, e o Grid lê de
+  lá, então é o que liga a decisão à mesa. Junto vai a decisão de onde mora: bloco novo
+  `arcano.improviso.manifestacao`, e o que sobra do `graus.volume` e do `graus.area` de hoje.
 - [ ] **A16 · [DECIDIR] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
   oito escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais aparecer. O caso
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,
