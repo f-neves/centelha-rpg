@@ -305,8 +305,11 @@ de conjurar.
 > custa **1 ponto por grau**, linear. Nenhum parâmetro passa do **nível da Arte** (para isso
 > existe o esticar, seções 6.5 e 6.6). O **Mana é o maior grau usado**.
 
-Divisão de trabalho: **Ocultismo acerta, Arte e Centelha modelam.** A rolagem continua sendo
-Ocultismo + Atributo contra a resistência; os pontos só dizem que forma o feitiço tem.
+Divisão de trabalho: **os pontos modelam, e quase nada rola.** Os pontos dizem que forma o feitiço
+tem; quem resolve o resultado é a Dificuldade fixa do Efeito, a Defesa passiva do alvo ou uma tabela.
+A **única jogada de magia que existe é Percepção + Acerto Arcano**, e ela vale só para efeito
+**mirado**: o que sai da mão e voa até um alvo. Não existe, e nunca existiu na página, uma rolagem
+geral de "Ocultismo + Atributo" para conjurar.
 
 Vale para o **efeito genérico da Arte** (o improviso: o dardo, acender, aquecer, empurrar). O
 **Efeito comprado já vem com os parâmetros impressos** e não se distribui nada nele.
@@ -1158,12 +1161,24 @@ O que isso faz na mesa, com criaturas reais do bestiário:
 | Adaga de prata no Lobisomem (Absorção 5) | 1,5 · vinte e cinco golpes | **6,5 agravado** · seis |
 | Raio 2d6 no Elemental da Água | 6 | **7 agravado** |
 
-**5. Rolagem das Artes.** *(o **Acerto Arcano** já existe e já está na ficha: **Habilidade
-Secundária do grupo Conhecimento**, ao lado de Alquimia e Arquitetura, usada com Percepção ou
-Destreza nos efeitos mirados.)* O resto está sendo desenhado na frente das Trilhas, não aqui, mas
-afeta este documento: a conjuração deixa de ser Ocultismo para todos e passa a variar por
-**Tradição**. Quando fechar, as seções 3 e 4 daqui precisam de revisão, porque hoje dizem
-"Ocultismo + Atributo".
+**5. Rolagem das Artes.** **Limpo em 2026-08-17:** o "Ocultismo + Atributo" saiu de todos os textos
+e de `regras.json`, porque nunca foi regra viva e só criava confusão. O que existe hoje é isto, e é
+pouco de propósito:
+
+| O que | Como se resolve |
+|---|---|
+| Efeito **mirado** (o que sai da mão e voa até o alvo) | **Percepção + Acerto Arcano** contra a Defesa do alvo. É a única jogada de magia do jogo |
+| Efeito com Dificuldade própria | **(nível da Arte) × 4** (16 Efeitos) ou **× 5** (14), e quem rola contra ela é o **alvo** |
+| Efeito mental | **Defesa Mental do alvo** (15 Efeitos), passiva: quem rola é o conjurador |
+| Improviso | por **parâmetro e tabela**: os pontos dizem a forma, e não há rolagem para montá-la |
+
+O **Acerto Arcano** é Habilidade Secundária do grupo Conhecimento, já na ficha, ao lado de Alquimia
+e Arquitetura. A descrição dele é explícita quanto ao escopo: *"a pontaria da magia: acertar com o
+efeito que sai da mão e voa até o alvo"*. **Área não tem pontaria**, e é por isso que a área não usa
+essa jogada (item 25 desta lista, aberto em 2026-08-17).
+
+O que continua aberto, e é da frente das Trilhas: se a **Tradição** muda o par de dados da conjuração.
+Enquanto não fechar, vale a tabela acima.
 
 **6. Trilhas de ensino.** Serão **6 Tradições**, já escritas no capítulo XIV. O que falta é o mapa
 **Arte × Trilha** e os números de treino. Frente própria, não se decide aqui.
@@ -1261,7 +1276,10 @@ gás entrega, um privilégio de quinze vezes sobre a régua base que nunca foi d
 Nenhuma dessas é mecânica: cada uma é um julgamento por Efeito.
 
 **14. A dificuldade do teste de concentração.** A seção 5.2 fechou que sustentar um improviso pede
-**Ocultismo + Vontade** ao sofrer dano, e deixou a dificuldade em **Média** provisoriamente. Falta
+**Vontade + Acerto Arcano** ao sofrer dano (é o que
+`regras.json → arcano.improviso.combinacoes.concentracao.aoSofrerDano` diz, e o texto daqui dizia
+"Ocultismo + Vontade" por engano até 17/08), e deixou a dificuldade em
+**Média** provisoriamente. Falta
 decidir se ela é fixa ou se sobe com o tamanho do golpe (por exemplo, Difícil quando o dano passa
 da Absorção, ou um degrau a mais por ferimento já aberto).
 
@@ -1277,6 +1295,40 @@ rebalancear nada), e trocar Área por **Volume** nos elementos com corpo (água,
 a máquina de substituição por Arte que a seção 5 já tem. A 5.2 tirou a urgência disso, porque área
 que nunca é colocada não gera as perguntas de ancoragem e de borda que motivaram a discussão, mas
 a Água continua sem resposta para "quanta água é esta".
+
+**25. O acerto da Arte em área: quem rola, e quem pode escapar.** Aberta em 2026-08-17, e é a
+pendência que a §5.4 destrava: a manifestação já diz **onde** o elemento aparece, e não diz o que
+acontece com quem está lá. Cinco perguntas na mesa, e as três primeiras estão amarradas:
+
+1. **O acerto é automático?** A área não mira ninguém: ela ocupa espaço que já foi pago em pontos.
+   Cobrar pontaria por cima disso é cobrar duas vezes, e o **Acerto Arcano** é, pela própria
+   descrição, a perícia do que "sai da mão e voa até o alvo". Então o mais provável é que a área
+   **não tenha jogada do conjurador**, e que quem role seja quem está dentro.
+2. **Contra o quê?** A régua de Dificuldade dos Efeitos já existe: **(nível da Arte) × 4** ou **× 5**.
+   O problema é que ela foi calibrada para **um** alvo. Numa fatia que pega dezenas de corpos, ela
+   vira extermínio: com o pool sendo metade da soma em dados, o veterano (Vigor 5 + Resistência 4)
+   passa em 84% contra Arte 3 (Dif 12), 44% contra Arte 4, 10% contra Arte 5 e **0,4%** contra Arte 6
+   (Dif 24). Na régua × 5, o grau 6 vira Dificuldade 30 e nem o teto mortal passa. Ou a área usa
+   outra régua, ou ela precisa custar mais caro em outro lugar.
+3. **Qual jogada?** Duas, e a diferença é de ficção: **Destreza + Esquiva** responde "deu tempo de
+   sair", **Vigor + Resistência** responde "o corpo aguenta". A segunda é a do capítulo *Resistir*,
+   que já tem a escada pronta (`passa por Margem = nada · passa = metade · falha = inteiro`) e já
+   trata casa em chamas como Severidade 10, não como morte automática.
+4. **Quem está imerso pode testar?** Sim, mas não para zerar: para **aguentar**, e aguentar entrega
+   **metade**. Dentro de 62 m³ de chama não se desvia.
+5. **Onde fica a linha entre imerso e parcial?** A geometria da §5.4 já calcula a resposta, porque
+   ela sabe a faixa de altura que o elemento ocupa em cada hexágono. A proposta é: **imerso quando a
+   faixa cobre o corpo inteiro na altura em que ele está** (1,8 m de pé, 0,5 m deitado) **ou quando
+   não há hexágono livre a um passo**. Qualquer um dos dois tira a Esquiva.
+
+O precedente do sistema para "a física do golpe apaga uma rota de defesa" é a regra do **projétil
+rápido**, que usa cobertura (30% do corpo) mais uma lista de estar **apto**. E o precedente para as
+tags está escrito dentro de um Efeito de imobilizar: *"o ataque é imbloqueável, mas pode ser
+esquivado"*.
+
+**Consequência de projeto que essa linha tem de graça, e é o motivo de eu preferi-la:** o **lençol
+rasteiro** do modelo da altura (§5.4) devolve a Esquiva para todo mundo, porque 1 m de teto não cobre
+o peito de quem está de pé. A decisão da A22 ganha um freio automático em vez de precisar de regra.
 
 ---
 
@@ -1320,9 +1372,11 @@ a Água continua sem resposta para "quanta água é esta".
     abaixo do primeiro sem conversa: Neblina 0,5³, Muro 1 m, Aura 0,25 m de raio, Terremoto 0,5×0,5,
     Metal Incandescente 1 tick de duração, e traço (nada) em Arma Elemental, Metal Incandescente
     (dano) e Paralisia. Nenhum deles muda o que os graus 1 a 6 já valiam.
-10. **Tirar o Ocultismo de `regras.json`.** Dois campos ainda dizem que a conjuração é
-    "Ocultismo + Atributo" (`arcano.nota` e `arcano.resistencia.rolagem`), e nenhum deles aparece
-    na página. A rolagem definitiva é a pendência 5 (Acerto Arcano e conjuração por Tradição).
+10. ~~**Tirar o Ocultismo de `regras.json`.**~~ **FEITO em 2026-08-17.** Os dois campos
+    (`arcano.nota` e `arcano.resistencia.rolagem`) agora dizem o que vale: a única jogada de magia é
+    **Percepção + Acerto Arcano**, nos efeitos mirados, e o resto sai de Dificuldade fixa, Defesa
+    passiva ou tabela. A mesma frase saiu deste documento (§5.1 e item 5), do `Ataques_Mentais.md`,
+    do `Pendencias.md` e do `REVISAR.md`.
 11. **Revisar os textos de `artes.json`.** Vários níveis descrevem improvisos que as travas não
     permitem: Fogo 3 "sustentar uma parede baixa de chamas", Fogo 4 "parede de chamas fechando um
     corredor" e "explosão que pega quatro inimigos juntos".

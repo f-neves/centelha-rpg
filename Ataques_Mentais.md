@@ -42,8 +42,11 @@ Quase sempre em **uma jogada**, contra o número passivo:
 1. O atacante rola a competência do poder:
    - **Proeza mundana** (Comando, Marionete, Sussurro no modo mágico): **Atributo + Perícia** do
      poder (em geral Influência + Intimidação ou Manipulação).
-   - **Arte arcana** (Fascinação, Domínio, leitura de mente): **Ocultismo + Atributo de
-     conjuração** da Arte.
+   - **Arte arcana** (Fascinação, Domínio, leitura de mente): **não há par de conjuração**. O
+     Efeito mental declara `Dificuldade = Defesa Mental do alvo` (é assim em 15 Efeitos), e quem
+     rola é o conjurador, com o par que o Efeito pedir. A antiga fórmula "Ocultismo + Atributo"
+     saiu de todo o sistema em 2026-08-17: a única jogada de magia com par fixo é **Percepção +
+     Acerto Arcano**, e ela só vale para efeito **mirado**.
 2. Compara com a **Defesa Mental** passiva do alvo. **Passa se superar** (`>`).
 3. **Margem** (cada 6 acima) fortalece o efeito: dura mais, pega mais fundo, é mais difícil de
    sacudir. É a mesma régua de Margem do combate.
@@ -184,8 +187,9 @@ aparece nos **Caminhos** de Comando e Marionete (o que remove a escolha) e no To
 
 - **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + Centelha + Especialidade
   (soma simples, sem ×2). Rara e menor de propósito: pesa nos tiers altos.
-- **Ataque mental** = Atributo + Perícia (ou Ocultismo + Atributo, nas Artes) vs Defesa Mental.
-  Passa se superar; Margem fortalece e prolonga.
+- **Ataque mental** = Atributo + Perícia do poder vs Defesa Mental. Passa se superar; Margem
+  fortalece e prolonga. Nas **Artes** não há par próprio de conjuração: os 15 Efeitos mentais já
+  declaram `Dificuldade = Defesa Mental do alvo`, e é essa a jogada.
 - **Não há PV mental**: o ataque que passa aplica o efeito de uma vez; a Margem e a duração
   graduam a gravidade.
 - **Força de Vontade** protege: **pontual** (1 nega um golpe) ou **temporária** (1 blinda um tipo

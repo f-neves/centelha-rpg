@@ -1098,7 +1098,7 @@
     "bypassArmadura": "Ignorar a Absorção de armadura (ex.: Punho que Parte Pedra, Esmagar) afeta só a parte da ARMADURA; a Absorção natural do alvo (Vigor no Impacto, Centelha) continua valendo."
   },
   "arcano": {
-    "nota": "Detalhamento do uso das Artes: improviso por parâmetros, conjuração composta (espelha o combo) e Rituais. Mana = nível do efeito; conjura Ocultismo + Atributo.",
+    "nota": "Detalhamento do uso das Artes: improviso por parâmetros, conjuração composta (espelha o combo) e Rituais. Mana = nível do efeito. Não existe rolagem geral de conjuração: a única jogada de magia é Percepção + Acerto Arcano, nos efeitos MIRADOS (o que sai da mão e voa até o alvo); o resto se resolve por tabela ou por Dificuldade fixa do Efeito.",
     "feiticoTicks": [
       {
         "nivel": "1–3",
@@ -1114,7 +1114,7 @@
       }
     ],
     "resistencia": {
-      "rolagem": "Ocultismo + Atributo de conjuração da Arte",
+      "rolagem": "Percepção + Acerto Arcano, e só nos efeitos MIRADOS. Não há rolagem de conjuração para o resto: o que não é mirado se resolve pela Dificuldade fixa do Efeito ((nível da Arte) × 4 ou × 5), pela Defesa passiva do alvo ou por tabela.",
       "tipos": [
         {
           "efeito": "Dano e projéteis",

@@ -478,7 +478,7 @@
       "influencia": 2,
       "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 2,
+      "percepcao": 4,
       "inteligencia": 4,
       "raciocinio": 2
     },
@@ -694,7 +694,7 @@
       "influencia": 4,
       "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 2,
+      "percepcao": 3,
       "inteligencia": 3,
       "raciocinio": 2
     },
@@ -750,7 +750,7 @@
       "influencia": 2,
       "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 2,
+      "percepcao": 5,
       "inteligencia": 5,
       "raciocinio": 2
     },
@@ -760,7 +760,7 @@
         "pool": "5d6 +3",
         "dano": "3d6 fogo (área)",
         "ticks": 6,
-        "notas": "3 Mana; explosão em área"
+        "notas": "3 Mana; explosão em área. O pool vale enquanto a pendência 25 do Arcano não fechar: área talvez não tenha pontaria"
       }
     ],
     "tecnicas": [],

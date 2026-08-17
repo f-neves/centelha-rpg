@@ -211,8 +211,8 @@ Pontos de atenção:
   da terceira. Como o ataque mágico à mente rola a mesma escala de pool que os outros ataques,
   **a Defesa Mental fica estruturalmente mais fácil de furar** conforme os personagens sobem. No
   tier mortal isso é ok (defesa mental é rara e cara). Mas no tier heroico/semideus, onde magia
-  de controle aparece, a mente vira o ponto mais mole de todos, e um feiticeiro de Ocultismo alto
-  passa quase sempre. Verifique se isso é intencional (a mente é o calcanhar) ou um acidente da
+  de controle aparece, a mente vira o ponto mais mole de todos, e um feiticeiro com o par de dados
+  alto passa quase sempre. Verifique se isso é intencional (a mente é o calcanhar) ou um acidente da
   escala. Se for acidente, a correção é alinhar a Mental à mesma família de fórmula (por exemplo
   `(Raciocínio + Integridade) × 2 ... ` ou somar Vontade por dentro do ×2) para que ela não
   fique para trás.

@@ -109,6 +109,15 @@ guarda os tabus deles, e nunca desfere o primeiro golpe num bosque sagrado.*
 
 ## 2b. Jogadas das Artes (proposta · decisão nº 1 + nº 5)
 
+> **Estado em 2026-08-17.** A família **A (mirado)** está viva e no dado: `Percepção + Acerto Arcano`,
+> declarada em 8 Efeitos, e o Acerto Arcano já existe na ficha. A família **B (moldado)** continua
+> **proposta**: hoje ela não rola nada, porque os Efeitos moldados declaram **Dificuldade própria**
+> ((nível da Arte) × 4 em 16 deles, × 5 em 14) ou **Defesa Mental do alvo** (15), e é o alvo ou o
+> conjurador que joga contra esse número fixo. A fórmula geral "Ocultismo + Atributo" **saiu de todo
+> o sistema** no mesmo dia (`regras.json`, `Arcano_revisao.md`, `Ataques_Mentais.md`), porque nunca
+> chegou a aparecer numa página. Então a tabela de perícia por Tradição abaixo é a única proposta em
+> pé para a família B, e ela não colide com nada.
+
 Toda Arte que precisa **vencer um alvo** faz uma jogada de **Atributo + perícia**. A perícia depende do
 que o efeito *faz*. Duas famílias:
 

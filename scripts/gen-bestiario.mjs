@@ -188,8 +188,8 @@ const NPCS = [
 
   { id: 'feiticeiro-menor', nome: 'Feiticeiro Menor', tipo: 'elite', ameaca: 4, centelha: 1,
     conceito: 'conjurador iniciante', descricao: 'Frágil no corpo a corpo, perigoso à distância com fogo.', tags: ['humano', 'centelha', 'arcano'],
-    attrs: { forca: 2, destreza: 3, vigor: 2, inteligencia: 4 }, pericias: { ocultismo: 3, esquiva: 2, prontidao: 2 }, integridade: 5, vontade: 6,
-    ataques: [{ nome: 'Dardo flamejante (Fogo 1)', atrib: 'inteligencia', pericia: 'ocultismo', dado: 1, distancia: true, tipo: 'fogo', ticks: 6, notas: 'Custa 1 Mana; resistido por Soak/Esquiva' }],
+    attrs: { forca: 2, destreza: 3, vigor: 2, inteligencia: 4, percepcao: 4 }, pericias: { ocultismo: 3, 'acerto-arcano': 3, esquiva: 2, prontidao: 2 }, integridade: 5, vontade: 6,
+    ataques: [{ nome: 'Dardo flamejante (Fogo 1)', atrib: 'percepcao', pericia: 'acerto-arcano', dado: 1, distancia: true, tipo: 'fogo', ticks: 6, notas: 'Custa 1 Mana; resistido por Soak/Esquiva' }],
     artes: [{ id: 'fogo', nivel: 2 }],
     notas: 'Mana = Centelha×2 + Vontade = 8. Nível 2 (Labareda, 2d6) custa 2 Mana.' },
 
@@ -219,15 +219,15 @@ const NPCS = [
 
   { id: 'cultista', nome: 'Cultista Sombrio', tipo: 'elite', ameaca: 4, centelha: 1,
     conceito: 'feiticeiro da morte', descricao: 'Servo de poderes proibidos; drena a vida e ergue os mortos.', tags: ['humano', 'centelha', 'arcano'],
-    attrs: { forca: 2, destreza: 3, vigor: 3, influencia: 4, inteligencia: 3 }, pericias: { ocultismo: 4, esquiva: 2, prontidao: 2, manha: 3 }, integridade: 3, vontade: 7,
-    ataques: [{ nome: 'Toque mórbido (Morte 1)', atrib: 'inteligencia', pericia: 'ocultismo', dado: 1, distancia: true, tipo: 'necrótico', ticks: 6, notas: 'Dreno: cura o cultista' }],
+    attrs: { forca: 2, destreza: 3, vigor: 3, influencia: 4, inteligencia: 3, percepcao: 3 }, pericias: { ocultismo: 4, 'acerto-arcano': 4, esquiva: 2, prontidao: 2, manha: 3 }, integridade: 3, vontade: 7,
+    ataques: [{ nome: 'Toque mórbido (Morte 1)', atrib: 'percepcao', pericia: 'acerto-arcano', dado: 1, distancia: true, tipo: 'necrótico', ticks: 6, notas: 'Dreno: cura o cultista' }],
     artes: [{ id: 'morte', nivel: 2 }],
     notas: 'Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.' },
 
   { id: 'mago-de-batalha', nome: 'Mago de Batalha', tipo: 'chefe', ameaca: 6, centelha: 3,
     conceito: 'artilharia arcana', descricao: 'Conjura fogo e força sobre o campo; perigoso a qualquer distância.', tags: ['humano', 'centelha', 'arcano'],
-    attrs: { forca: 2, destreza: 3, vigor: 3, inteligencia: 5 }, pericias: { ocultismo: 5, esquiva: 3, prontidao: 3, conhecimentos: 3 }, integridade: 5, vontade: 8,
-    ataques: [{ nome: 'Bola de fogo (Fogo 3)', atrib: 'inteligencia', pericia: 'ocultismo', dado: 3, distancia: true, tipo: 'fogo (área)', ticks: 6, notas: '3 Mana; explosão em área' }],
+    attrs: { forca: 2, destreza: 3, vigor: 3, inteligencia: 5, percepcao: 5 }, pericias: { ocultismo: 5, 'acerto-arcano': 5, esquiva: 3, prontidao: 3, conhecimentos: 3 }, integridade: 5, vontade: 8,
+    ataques: [{ nome: 'Bola de fogo (Fogo 3)', atrib: 'percepcao', pericia: 'acerto-arcano', dado: 3, distancia: true, tipo: 'fogo (área)', ticks: 6, notas: '3 Mana; explosão em área. O pool vale enquanto a pendência 25 do Arcano não fechar: área talvez não tenha pontaria' }],
     artes: [{ id: 'fogo', nivel: 3 }, { id: 'forcas', nivel: 2 }],
     notas: 'Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.' },
 ];

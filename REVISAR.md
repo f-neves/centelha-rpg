@@ -159,18 +159,20 @@ Pipeline (scripts em `scratchpad`, não versionados; recriáveis):
 - ✅ **Trava de nível por Ocultismo REMOVIDA.** Antes: Arte de nível N exigia Ocultismo ≥ N, e o
   nível efetivo de um Feitiço era limitado pelo Ocultismo. Agora: basta **Centelha > 0** para tocar
   a magia; a profundidade (nível da Arte) se compra com XP; o teto do nível efetivo num Feitiço é o
-  **nível de Arte que você conhece**. Ocultismo continua sendo a **perícia de conjuração** (rola
-  Ocultismo + Atributo), só não é mais gate. Mexido em: `ficha-engine.ts` (capFor 'arte2'),
+  **nível de Arte que você conhece**. *(Corrigido em 2026-08-17: esta entrada dizia que "Ocultismo
+  continua sendo a perícia de conjuração, rola Ocultismo + Atributo". Não é, e nunca chegou à
+  página. A única jogada de magia é **Percepção + Acerto Arcano**, nos efeitos mirados; Ocultismo é
+  saber, não conjuração.)* Mexido em: `ficha-engine.ts` (capFor 'arte2'),
   `arcano.astro`, `regras.json` (blocos de improviso/tetoFeitico), `criacao-de-personagem.md`
   (exemplos, inclusive a seção "mortal-tocado") e `atributos-e-pericias.md`.
-- ⏳ **A DECIDIR: melhorar a relação Feitiçaria x Ocultismo.** Hoje Ocultismo é só a perícia de
-  rolagem, sem requisito de acesso. Rever se e como Ocultismo (ou outra coisa) volta a condicionar
-  o aprendizado, junto do item abaixo.
+- ⏳ **A DECIDIR: melhorar a relação Feitiçaria x Ocultismo.** Hoje Ocultismo **não é nem portão nem
+  rolagem de conjuração**: é o saber sobre o oculto, e nada mais. Rever se e como ele (ou outra
+  coisa) volta a condicionar o aprendizado, junto do item abaixo.
 - 🚧 **Trilhas de Feitiçaria — framework rascunhado (2026-07-28).** Doc de trabalho
   **`Trilhas_Feiticaria.md`** (raiz). Modelo: Trilha = **caminho de aprendizado de uma Arte**, peso
   mecânico **não impeditivo**, relação **muitos-para-muitos** (Arte↔Trilha), cada Trilha pede **treino
   em perícias/virtudes** + **custos de ficção**. **6 Tradições:** Erudição · Sangue/Antecedente · Pacto ·
-  Iniciação · Marcial · Xamânica/Totêmica. Não muda conjuração (Ocultismo+Atributo), XP/nível nem o
+  Iniciação · Marcial · Xamânica/Totêmica. Não muda a conjuração, XP/nível nem o
   portão da Centelha; Ocultismo deixa de ser trava universal e vira o treino típico da Erudição.
   **Decisões pendentes (seção 6 do doc):** conjuração por Tradição?, nível do treino (escala c/ nível da
   Arte?), escopo do catálogo (21 Artes agora ou depois), onde mora no site (`trilhas.json` + Arcano?),
