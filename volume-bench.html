@@ -188,6 +188,11 @@
         <span class="un" id="origemVal" style="width:46px">1,5</span>
       </div>
       <div class="linha">
+        <label>P&eacute; da base</label>
+        <input type="range" id="basePe" min="0" max="2.2" step="0.1" value="0">
+        <span class="un" id="basePeVal" style="width:46px">0,0</span>
+      </div>
+      <div class="linha">
         <label>Elemento</label>
         <select id="estadoMolde" class="cresce"></select>
       </div>
@@ -487,7 +492,7 @@ const MOLDES = {
 const S = {
   modo: 'solido',
   molde: 'basica', grau: 4, distMolde: 5, altMolde: 2, dirMolde: 0, inimigos: 0,
-  abertura: 60, fatias: 1, origem: 1.5,
+  abertura: 60, fatias: 1, origem: 1.5, basePe: 0,
   forma: 'cubo',
   dims: { lado: 1, raio: 0.5, tubo: 0.15, altura: 1, comprimento: 2, largura: 0.2 },
   travas: { volume: false, lado: false, raio: false, tubo: false, altura: false, comprimento: false, largura: false },
@@ -759,17 +764,34 @@ const alturaFatia = (n, N) => n / N;
 const maxFatias = () => Math.min(Math.max(1, S.grau), Math.round(360 / S.abertura));
 
 /**
- * Uma fatia: pirâmide de ápice no feiticeiro, base reta na ponta. Ela nasce
- * num ponto e cresce nas quatro direções até a base, então a metade de baixo
- * some no chão quando a altura passa do dobro da origem.
+ * O pé da base, e o ápice dentro dela.
+ *
+ * O feiticeiro escolhe DUAS alturas: a de onde a pirâmide começa (o ápice, na
+ * mão, no chão, acima da cabeça) e a de onde ela acaba (o pé da base). A amarra
+ * é uma só: **o ápice tem de estar dentro da altura da base**. Base de 5 m com
+ * o pé a 0,5 m ocupa de 0,5 a 5,5 m, então o ápice cabe em qualquer ponto desse
+ * intervalo, e em nenhum de fora.
+ *
+ * Deslizar o ápice dentro da base não custa nada: o volume de uma pirâmide sai
+ * da área da base e da distância perpendicular até o ápice, e não de onde o
+ * ápice está sobre ela (Cavalieri). Então isto é liberdade de graça, e é ela
+ * que faz o desperdício no subsolo virar escolha em vez de imposição.
  */
-function malhaFatia(n, aberturaGrau, altura, origem, dirGrau) {
+function limitesFatia(altura) {
+  const pe = clamp(S.basePe, 0, ALCANCE_BRACO);
+  const teto = pe + altura;
+  return { pe, teto, apice: clamp(S.origem, pe, Math.min(teto, ALCANCE_BRACO)) };
+}
+const ALCANCE_BRACO = 2.2;
+
+/** Uma fatia: pirâmide de ápice no feiticeiro e base reta em pé na ponta. */
+function malhaFatia(n, aberturaGrau, altura, dirGrau) {
   const th = aberturaGrau * PI / 180, meio = dirGrau * PI / 180;
   const a0 = meio - th / 2, a1 = meio + th / 2;
-  const lo = origem - altura / 2, hi = origem + altura / 2;
+  const L = limitesFatia(altura);
   const c0 = [n * Math.cos(a0), n * Math.sin(a0)], c1 = [n * Math.cos(a1), n * Math.sin(a1)];
-  const v = [[0, origem, 0],
-    [c0[0], lo, c0[1]], [c1[0], lo, c1[1]], [c1[0], hi, c1[1]], [c0[0], hi, c0[1]]];
+  const v = [[0, L.apice, 0],
+    [c0[0], L.pe, c0[1]], [c1[0], L.pe, c1[1]], [c1[0], L.teto, c1[1]], [c0[0], L.teto, c0[1]]];
   const f = [face([1, 2, 3, 4], 1), face([0, 2, 1], 1), face([0, 3, 2], 1), face([0, 4, 3], 1), face([0, 1, 4], 1)];
   return cortarChao({ v, f });
 }
@@ -796,8 +818,16 @@ function cortarChao(m) {
   return out;
 }
 
-/** Se o ponto (x,z) está dentro da fatia, e se ela passa na altura de um corpo. */
-function dentroFatia(x, z, n, aberturaGrau, altura, origem, dirGrau) {
+/**
+ * Se o ponto (x,z) está dentro da fatia, e se ela passa na altura de um corpo.
+ *
+ * A altura da fatia é interpolada entre o ápice, que é um ponto, e a base, que
+ * é um retângulo: a `t` do caminho ela vai de `apice` até `pe` embaixo e até
+ * `teto` em cima. É por isso que uma fatia que sai da mão com o pé da base no
+ * chão **passa por cima** de quem está deitado no meio do caminho: a face de
+ * baixo é uma rampa, e só encosta no chão na ponta.
+ */
+function dentroFatia(x, z, n, aberturaGrau, altura, dirGrau) {
   const th = aberturaGrau * PI / 180, meio = dirGrau * PI / 180;
   const r = Math.hypot(x, z);
   if (r < 1e-9) return false;
@@ -808,10 +838,11 @@ function dentroFatia(x, z, n, aberturaGrau, altura, origem, dirGrau) {
   const fundo = n * Math.cos(th / 2);
   const t = (x * Math.cos(meio) + z * Math.sin(meio)) / fundo;
   if (t < 0 || t > 1 + 1e-9) return false;
-  // a fatia cresce nas quatro direções, então perto do ápice ela é uma lâmina
-  const meiaAlt = (altura / 2) * t;
-  return (origem - meiaAlt) < 1.8 && (origem + meiaAlt) > 0;
+  const L = limitesFatia(altura);
+  const baixo = L.apice + (L.pe - L.apice) * t, alto = L.apice + (L.teto - L.apice) * t;
+  return baixo < ALTURA_CORPO && alto > 0;
 }
+const ALTURA_CORPO = 1.8;
 
 /**
  * O molde no chão: quais hexágonos ele pega, por onde ele passa e onde ficam
@@ -843,7 +874,7 @@ function molde() {
       setores.push(S.dirMolde + (k - (N - 1) / 2) * S.abertura);
     }
     dentro = alt > 0 ? grade.filter((h) =>
-      setores.some((d) => dentroFatia(h.x, h.z, n, S.abertura, alt, S.origem, d))) : [];
+      setores.some((d) => dentroFatia(h.x, h.z, n, S.abertura, alt, d))) : [];
     return {
       m, val, dentro, elos: [], anc: { x: 0, z: 0 }, dir: { ux, uz }, paredeA: null, paredeB: null,
       grade, hexConta: dentro.length,
@@ -1177,7 +1208,7 @@ function montarCenaMolde() {
   if (S.molde === 'basica') {
     const B = M.basica;
     obj = { v: [], f: [] };
-    if (B.alt > 0) B.setores.forEach((d) => unir(obj, malhaFatia(B.n, S.abertura, B.alt, S.origem, d)));
+    if (B.alt > 0) B.setores.forEach((d) => unir(obj, malhaFatia(B.n, S.abertura, B.alt, d)));
   } else if (S.molde === 'muralha') {
     // a parede é uma laje de verdade, e não os hexágonos levantados: ela fica
     // na linha e não enche a casa, que é como uma muralha se lê no tabuleiro
@@ -1634,9 +1665,13 @@ function atualizarPainelBasica() {
   const c = cena(), M = c.molde, B = M.basica;
   const cel = (t, v, s) => '<div class="cel"><dt>' + t + '</dt><dd>' + v + (s ? ' <small>' + s + '</small>' : '') + '</dd></div>';
   const vol = B.area * B.alt;
-  const perdido = Math.max(0, B.alt / 2 - S.origem) / (B.alt || 1);
   const pegos = c.inimigos.filter((i) => i.pego).length;
   const prof = B.n * Math.cos(S.abertura * PI / 360);
+  const L = limitesFatia(B.alt);
+  // onde a face de baixo encosta no chão: se o ápice está acima do pé da base,
+  // ela é uma rampa e só toca lá na frente
+  const tChao = L.apice > L.pe ? (L.apice - 0) / (L.apice - L.pe) : 0;
+  const distChao = clamp(tChao, 0, 1) * prof;
   elPlacar.innerHTML =
     cel('Aresta', fmtM(B.n), 'grau ' + S.grau + (B.est.lado !== 1 ? ' · ' + B.est.txt : ''))
     + cel('Abertura', B.N + ' × ' + S.abertura + '°', 'total ' + (B.N * S.abertura) + '°')
@@ -1644,11 +1679,21 @@ function atualizarPainelBasica() {
     + cel('Frente reta', fmtM(prof), 'do conjurador')
     + cel('Chão', nf(B.area, 1) + ' m²', M.dentro.length + ' hexágonos')
     + cel('Volume', fmtVol(vol), 'igual em qualquer abertura')
-    + cel('Perdido no chão', perdido > 0.005 ? nf(perdido * 100, 0) + '%' : 'nada', 'sai de ' + nf(S.origem, 1) + ' m')
+    + cel('Base', nf(L.pe, 1) + ' a ' + nf(L.teto, 1) + ' m', 'ápice em ' + nf(L.apice, 1) + ' m')
+    + cel('Toca o chão', distChao < 0.05 ? 'no pé do conjurador' : 'a ' + fmtM(distChao),
+      distChao > 0.05 ? 'antes disso passa por cima' : 'varre desde o começo')
     + cel('No tabuleiro', S.inimigos ? pegos + ' de ' + c.inimigos.length : '—', S.inimigos ? 'contados no desenho' : 'ponha inimigos');
   document.getElementById('notaMolde').innerHTML = M.m.nota
     + '<br><b>Neste grau, no máximo ' + maxFatias() + ' fatia' + (maxFatias() === 1 ? '' : 's') + ': o número de fatias nunca passa do nível, e dividir pelo próprio nível dá sempre 1 m de altura.</b>';
   document.getElementById('grauVal').textContent = 'grau ' + S.grau + ' · aresta ' + fmtM(B.n);
+  // a amarra na tela: o ápice só anda dentro da base, e só até onde o braço vai
+  const teto = Math.min(L.teto, ALCANCE_BRACO);
+  document.getElementById('origem').min = String(L.pe);
+  document.getElementById('origem').max = String(teto);
+  document.getElementById('origem').value = String(L.apice);
+  document.getElementById('origemVal').textContent = nf(L.apice, 1)
+    + (L.apice !== S.origem ? ' (preso)' : '');
+  document.getElementById('basePeVal').textContent = nf(L.pe, 1);
   document.getElementById('fatiasVal').textContent = B.N + ' de ' + maxFatias() + ' · ' + (B.N * S.abertura) + '°';
   document.getElementById('distMolde').disabled = true;
   document.getElementById('distVal').textContent = 'na mão';
@@ -1805,6 +1850,9 @@ document.querySelectorAll('#abertura button').forEach((b) => b.addEventListener(
 document.getElementById('fatias').addEventListener('input', (e) => { S.fatias = +e.target.value; refazer(); });
 document.getElementById('origem').addEventListener('input', (e) => {
   S.origem = +e.target.value; document.getElementById('origemVal').textContent = nf(S.origem, 1); refazer();
+});
+document.getElementById('basePe').addEventListener('input', (e) => {
+  S.basePe = +e.target.value; document.getElementById('basePeVal').textContent = nf(S.basePe, 1); refazer();
 });
 document.getElementById('grauMolde').addEventListener('input', (e) => {
   S.grau = +e.target.value;
