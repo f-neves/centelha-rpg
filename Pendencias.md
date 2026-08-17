@@ -56,7 +56,11 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
 - [ ] **A10 · [FAZER] Abertura do capítulo para iniciante.** As seções 2 a 4 do `Arcano_revisao.md`
   (o que a feitiçaria é) ainda não viraram prosa no site.
 - [ ] **A11 · [FAZER] Revisar as seções 3 e 4 do `Arcano_revisao.md`** quando a rolagem por Tradição
-  fechar (C1): hoje elas ainda dizem "Ocultismo + Atributo".
+  fechar (C1). **Em 2026-08-17 o "Ocultismo + Atributo" saiu de todos os textos e do
+  `regras.json`**, porque nunca foi regra viva: a única jogada de magia é **Percepção + Acerto
+  Arcano**, nos efeitos mirados, e o resto sai de Dificuldade fixa do Efeito ((nível da Arte) × 4 ou
+  × 5), da Defesa passiva do alvo ou de tabela. O que sobra aqui é reler as duas seções quando a
+  Tradição decidir se muda o par de dados.
 - [x] **A12 · [RESOLVIDO 2026-08-15] Metal não vira Arte.** Passa a ser um **bloco de Efeitos de
   Terra** aberto por **Trilha**: os verbos dele são coisas que se fazem com equipamento (e coisa
   que se faz é Efeito), não tem dano nem parâmetro próprio, e a tabela de estado já o põe junto da
@@ -281,9 +285,20 @@ Detalhe em `Proezas_revisao.md`.
 
 ## E. Social, Mental e Antecedentes
 
-- [ ] **E1 · [FAZER] Portar `Antecedentes.md` ao site.** 14 Antecedentes escritos, escala 1 a 6,
-  XP ×3, Únicos e Nomeados, tetos de criação. Falta capítulo, `antecedentes.json` e lugar na ficha.
-  Nada disso existe no site hoje.
+- [ ] **E1 · [FAZER] Antecedentes na ficha.** Duas das três entregas saíram em **17/08/2026**: o
+  **`antecedentes.json`** (14 verbetes, 84 níveis, extraído do doc e não digitado, com schema
+  próprio no validador, onde os seis níveis são obrigatórios) e o **capítulo VII**, com a prosa à
+  mão e o catálogo **gerado** do JSON entre marcadores, no molde do capítulo II. O
+  `gen-cap-antecedentes.mjs --check` entrou no `validate` e no `build`, então JSON e capítulo não
+  divergem calados. O capítulo entrou depois de Raças, e com isso **treze capítulos andaram um
+  numeral** (Ações VII→VIII … Qual Sistema XIX→XX). Ao portar, duas correções no doc de origem: a
+  folha de referência listava **Posição** e **Refúgio** como Únicos, contra as seções das duas (a
+  de Posição diz "cada instituição é uma instância"), e chamava o Aliado Animal de "Familiar". São
+  **3 Únicos** (Recursos, Linhagem, Fé) e **11 Nomeados**. **O que falta é a ficha:** a seção com
+  os 14 traços, os Nomeados como linhas que o jogador cria (nome livre + régua de 1 a 6), o custo
+  **×3** vindo de `regras.json → xp.antecedente` (a chave ainda não existe), os tetos de criação
+  (3 em Recursos e Relíquia) e a persistência. Encosta no contrato que a mesa lê, então pede
+  passada própria.
 - [ ] **E2 · [FAZER] Portar `Ataques_Mentais.md` ao site.** A Defesa Mental já está no motor e no
   bestiário; o capítulo (as três camadas, a duração dos efeitos, a inimizade ao despertar) não.
 - [ ] **E3 · [DECIDIR] Banda neutra da Régua de Relação: 5 ou 3?** Hoje é 5 (rompe o Neutro em 3
