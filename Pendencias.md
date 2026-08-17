@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 67 itens abertos · 33 [DECIDIR] · 29 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 18** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
+**Placar:** 68 itens abertos · 34 [DECIDIR] · 27 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 19** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
 Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 3
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -101,17 +101,32 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   `volume = base × distância ÷ 3`, ou em fechado `n³ ÷ (6 · N · tan(θ÷2))`. **O nº de fatias nunca
   passa do nível**, o que faz três coisas de uma vez: a cobertura cresce em todo grau, só o grau 6
   fecha o círculo em fatias de 60° (o 4 fecha em 90°, o 3 em 120°) e o **piso sai de graça** (dividir
-  pelo próprio nível dá aresta de 1 m, ou seja 87 cm do peito). **O que é conservado é a base, e não
-  o volume:** abrir paga com a distância, e o volume e o chão vão atrás. No grau 6 com uma fatia:
-  60° → 5,196 m e 62,35 m³; 90° → 3,000 m e 36,00 m³; 120° → 1,732 m e 20,78 m³. **Duas alturas**, o
+  pelo próprio nível dá aresta de 1 m, ou seja 87 cm do peito). **O que é conservado é a base, n²**, e
+  quem paga as fatias a mais ficou aberto na **A22**. No grau 6 com uma fatia (os dois modelos
+  coincidem aí): 60° → 5,196 m e 62,35 m³; 90° → 3,000 m e 36,00 m³; 120° → 1,732 m e 20,78 m³.
+  **Duas alturas**, o
   ápice e o pé da base, com o ápice preso dentro da altura da base e as duas limitadas pelo alcance do
   braço; deslizar o ápice não custa nada (Cavalieri) e com isso o desperdício no subsolo virou
   escolha. **Estado da matéria incide no lado da base:** Terra metade, Ar o dobro, o resto igual
   (grau 6: Terra 3 m, água 6 m, Ar 12 m). Recusado no mesmo dia: o nível da Arte **não** vale alcance
   grátis. Parede, reta e bloco passam a ser **só Efeito Especial**. Três erros de conta foram
   corrigidos no caminho e estão nomeados no fim da §5.4, porque são fáceis de repetir: o volume vinha
-  de um **prisma** e não de uma pirâmide (0,433 n³ em vez de 0,289 n³, 50% alto), o volume **não** é
-  conservado ao abrir, e baixar a altura pela metade dá **98,2°** e não 120°.
+  de um **prisma** e não de uma pirâmide (0,433 n³ em vez de 0,289 n³, 50% alto), a conservação do
+  volume era propriedade **do modelo** e não da forma, e baixar a altura pela metade dá **98,2°** e não
+  120°.
+- [ ] **A22 · [DECIDIR] Quem paga a abertura: a distância ou a altura.** Aberta em 2026-08-17, e os
+  dois modelos estão na bancada no controle **Abrir cobra**. A superfície comprada é n² nos dois, e com
+  **uma** fatia eles são o mesmo desenho; a diferença só aparece ao abrir. Em **distância**, a aresta
+  de cada fatia é n ÷ N: a base se aproxima, e o volume e o chão dividem por N. Em **altura**, a aresta
+  fica em n e a altura vira n ÷ N: a distância **não encolhe nunca** e o volume é **conservado**,
+  enquanto o chão cresce com N. No grau 6 fechando os 360° em fatias de 60°: distância dá 0,87 m de
+  alcance, 6 m de altura, 2,6 m² e 10,4 m³, e pega 6 hexágonos; altura dá 5,20 m de alcance, 1 m de
+  altura, **93,5 m²** (o hexágono regular de lado 6 m) e 62,4 m³, e pega **126** hexágonos, 66 de 80
+  inimigos frouxos. Seis vezes o volume e vinte e uma vezes o chão. **A escolha é de jogo:** o modelo
+  da altura é o que entrega o "raio cada vez maior" pedido no começo da revisão, e em troca faz do
+  lençol rasteiro a jogada quase sempre certa; o da distância protege a decisão do jogador, e em troca
+  não entrega o raio. Há um meio-caminho registrado na §5.4 e não implementado: cobrar as duas em
+  parte (altura em n ÷ √N), com o volume caindo por √N.
 - [ ] **A21 · [DECIDIR] A base da fatia fica em corda ou vai para arco.** Aberta em 2026-08-17, e as
   três versões estão medidas na bancada, no controle **Base**. Na **corda** a base é uma reta a
   `distância` metros e o chão é um triângulo. No **arco** o lado do triângulo vira **raio**: no grau 6
@@ -128,9 +143,9 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   aguenta antes de ceder, o que pesa ao desabar. Encosta na A9 e no capítulo de Vida & Ferimentos.
 - [ ] **A20 · [FAZER] Portar a manifestação para `regras.json`.** A escada do lado da base, a trava
   das fatias, as três aberturas e o fator de estado no lado. Nada disso está no dado, e o Grid lê de
-  lá, então é o que liga a decisão à mesa. Espera a A21, porque a base escolhida muda a fórmula do
-  volume. Junto vai a decisão de onde mora: bloco novo `arcano.improviso.manifestacao`, e o que sobra
-  do `graus.volume` e do `graus.area` de hoje.
+  lá, então é o que liga a decisão à mesa. Espera a **A22** e a **A21**, porque o modelo e a base
+  escolhidos mudam a fórmula do volume. Junto vai a decisão de onde mora: bloco novo
+  `arcano.improviso.manifestacao`, e o que sobra do `graus.volume` e do `graus.area` de hoje.
 - [ ] **A16 · [DECIDIR] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
   oito escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais aparecer. O caso
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,

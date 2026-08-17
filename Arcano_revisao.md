@@ -582,7 +582,8 @@ Chamando *N* o número de fatias e θ a abertura de cada uma, as três medidas s
 
 O que se compra é a **superfície**, e ela não se mexe: a frente somada é sempre *n* e a altura é
 sempre *n*, então a base é *n²* em qualquer abertura e em qualquer número de fatias. **Quem paga a
-abertura é a distância**, e o volume vai atrás dela.
+abertura é a distância**, e o volume vai atrás dela. Esse *quem paga* é a única coisa que separa este
+modelo do outro que está na bancada, e a comparação dos dois tem seção própria mais abaixo.
 
 ### As três aberturas, e por que são exatamente essas
 
@@ -617,6 +618,8 @@ menos opções que o grau 3, porque 3 e 6 dividem bem e 4 e 5 não.
 
 ### O que sobe e o que desce quando se abre
 
+Neste modelo, o da distância:
+
 | Botão | O que sobe | O que desce |
 |---|---|---|
 | **Número de fatias** | o ângulo coberto (N × θ) | a distância, a aresta de cada fatia, o volume e o chão |
@@ -627,6 +630,49 @@ chão é `N × aresta × distância ÷ 2`, e a distância cai com *N*, **o chão
 que abrir troque altura por chão: abrir troca ângulo por *tudo o mais*. No grau 6 em fatias de 60°,
 uma fatia cobre 15,6 m² de chão a 5,2 m de distância, e as seis fatias que fecham o círculo cobrem
 2,6 m² a 87 cm. **Cercar-se é caríssimo, e é o preço de não ter flanco.**
+
+### Quem paga a abertura: os dois modelos (em avaliação)
+
+Há duas maneiras de cobrar as fatias a mais, e as duas estão na bancada desde 2026-08-17, no controle
+**Abrir cobra**. A superfície comprada é *n²* nas duas, e o que muda é **em qual medida ela é cobrada**:
+
+| | **distância** (modelo B) | **altura** (modelo A) |
+|---|---|---|
+| Aresta de cada fatia | n ÷ N | **n**, cheia |
+| Altura de cada fatia | **n**, cheia | n ÷ N |
+| Frente somada | n | N × n |
+| Distância | (n ÷ 2N) ÷ tan(θ÷2) | (n ÷ 2) ÷ tan(θ÷2), **não encolhe** |
+| Volume | n³ ÷ (6·N·tan(θ÷2)), **divide por N** | n³ ÷ (6·tan(θ÷2)), **conservado** |
+| Chão | n² ÷ (4·N·tan(θ÷2)), divide por N | N · n² ÷ (4·tan(θ÷2)), **cresce com N** |
+
+Com **uma** fatia os dois são o mesmo desenho, e a diferença só aparece ao abrir. No grau 6, fatias de
+60°, medido na bancada:
+
+| Fatias | Cobertura | distância: alcance · altura · chão · volume | altura: alcance · altura · chão · volume |
+|---|---|---|---|
+| 1 | 60° | 5,20 m · 6,00 m · 15,6 m² · 62,35 m³ | 5,20 m · 6,00 m · 15,6 m² · 62,35 m³ |
+| 3 | 180° | 1,73 m · 6,00 m · 5,2 m² · 20,78 m³ | 5,20 m · 2,00 m · 46,8 m² · 62,35 m³ |
+| 6 | 360° | 0,87 m · 6,00 m · 2,6 m² · 10,39 m³ | 5,20 m · 1,00 m · **93,5 m²** · 62,35 m³ |
+
+Fechando o círculo, o modelo da altura entrega **seis vezes** o volume e **vinte e uma vezes** o
+número de hexágonos do outro (126 contra 6, contados no tabuleiro), e cobra isso no teto, que desce
+para 1 m. As seis fatias formam exatamente o **hexágono regular de lado 6 m**, 93,53 m² de chão, que é
+o hexágono do Grid seis vezes maior: um lençol que pega quem estiver em pé até 5,2 m em qualquer
+direção. Contra inimigos frouxos na bancada, 66 de 80.
+
+A escolha é de jogo, e é bem definida:
+
+- **O modelo da altura protege o alcance e o volume**, e é o que responde ao pedido de origem desta
+  revisão: no grau 5 e 6 acertar vários inimigos mesmo sem estarem adjacentes, com um raio cada vez
+  maior. Em troca, o improviso de grau alto vira um **lençol rasteiro** que quase sempre é a melhor
+  jogada, e a decisão do jogador some: se abrir não custa volume nem alcance, abre-se sempre.
+- **O modelo da distância protege a decisão**, porque cada fatia a mais cobra caro, e cercar-se é o
+  gesto mais caro que existe. Em troca ele não entrega o raio pedido: no grau 6 girando 360°, o
+  elemento fica a 87 cm do peito.
+
+O meio-caminho que ainda não está na bancada é cobrar **as duas coisas em parte**, por exemplo a
+altura em `n ÷ √N` e a distância no resto, que deixaria o volume caindo com `√N` em vez de `N`. Fica
+registrado como opção; não implementei porque a régua vira irracional na mesa.
 
 ### A base pode ser reta ou em arco (em avaliação)
 
@@ -674,10 +720,11 @@ conjurador, formam um **cilindro**. A roda fechada deixa de ter quina.
 1. **O volume estava 50% alto.** Ele vinha da área do triângulo visto de cima × a altura, que é a
    conta de um **prisma**. A fatia é uma **pirâmide**: `base × distância ÷ 3`. A constante do 60° é
    `√3 ÷ 6 = 0,289`, e não `√3 ÷ 4 = 0,433`. O grau 6 numa fatia de 60° dá **62,35 m³**, e não 93,5.
-2. **O volume não é conservado ao abrir.** O que é conservado é a base comprada, *n × n*. Abrir paga
-   com a distância, e o volume vai atrás; a versão anterior conservava o volume porque pagava a
-   abertura com a **altura**, e aquela versão virava um lençol rasteiro de 1 m no grau 6. Ficou
-   registrada aqui e foi recusada.
+2. **A conservação do volume não era propriedade da geometria, era do modelo.** A versão anterior
+   dizia "o volume não muda, qualquer que seja a combinação" como se fosse um fato da forma; ele só se
+   conserva quando quem paga a abertura é a **altura**. No modelo em que paga a distância, o volume
+   divide por *N*. Os dois estão na seção *Quem paga a abertura*, e nenhum dos dois é o erro: o erro
+   era anunciar a conservação sem dizer de qual dos dois ela vinha.
 3. **Baixar a altura pela metade não dá 120°, dá 98,2°.** Com a base fixa em 6 m e a altura caindo de
    5,196 m para 2,598 m, os dois lados iguais ficam em `A√7 ÷ 4 = 3,969 m` (essa parte estava exata) e
    o ângulo entre eles é 98,2°. Para o ângulo ser 120° a distância vai a **um terço**, não à metade.
@@ -736,26 +783,30 @@ toma o campo.
 
 1. **`regras.json → arcano.improviso.manifestacao`**: a escada do lado da base, a trava das fatias, as
    três aberturas e o fator de estado no lado. Hoje nada disso está no dado.
-2. **A base fica em corda ou vai para arco.** A conta das três está feita e medida na bancada; falta
+2. **Quem paga a abertura: distância ou altura.** As duas estão medidas na bancada e a escolha é de
+   jogo, não de conta: uma protege a decisão do jogador, a outra protege o alcance e entrega o raio
+   grande pedido no começo desta revisão. É a decisão mais pesada que sobrou aqui, porque o resto da
+   seção não muda com ela.
+3. **A base fica em corda ou vai para arco.** A conta das três está feita e medida na bancada; falta
    a decisão, e ela mexe no preço da abertura (na corda o 120° custa dois terços do volume, no arco
    custa um terço). O **arco justo** é a opção que muda o desenho sem mexer em número nenhum.
-3. **O que a matéria dentro da fatia faz em número.** A regra diz quanto elemento aparece e onde; não
+4. **O que a matéria dentro da fatia faz em número.** A regra diz quanto elemento aparece e onde; não
    diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de
    Terra aguenta. Encosta na A9 e no capítulo de Vida & Ferimentos.
-4. **Crescer nas quatro direções foi escolhido**, e o preço está pago (a rampa, e o subsolo quando o
+5. **Crescer nas quatro direções foi escolhido**, e o preço está pago (a rampa, e o subsolo quando o
    pé da base não está no chão). A alternativa era crescer só para cima a partir do ápice, que nunca
    enterra nada e é mais simples. Fica registrada para não se reabrir por engano.
-5. **As Artes não elementais** continuam sem geometria própria: Cura, Fascinação, Adivinhação,
+6. **As Artes não elementais** continuam sem geometria própria: Cura, Fascinação, Adivinhação,
    Conjuração e Metamorfose não manifestam elemento e a fatia não quer dizer nada nelas
    (pendência 15).
-6. **Os textos de nível em `artes.json`** descrevem improvisos que esta geometria não permite mais
+7. **Os textos de nível em `artes.json`** descrevem improvisos que esta geometria não permite mais
    (Fogo 3 "sustentar uma parede baixa de chamas", Fogo 4 "parede de chamas fechando um corredor").
    É a A15, e agora ela tem mais motivo.
 
 A bancada `volume-bench.html`, no modo **molde de chão**, desenha tudo isto no hexágono de 1 m com o
 conjurador no meio, e conta os inimigos pegos em três formações. Os controles da manifestação são
-**abertura** (60/90/120), **base** (corda, arco, arco justo), **fatias**, **sai de** (o ápice),
-**pé da base** e **elemento**.
+**abrir cobra** (distância ou altura), **abertura** (60/90/120), **base** (corda, arco, arco justo),
+**fatias**, **sai de** (o ápice), **pé da base** e **elemento**.
 
 ---
 
