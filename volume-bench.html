@@ -169,7 +169,48 @@
       <input type="range" id="dirMolde" min="0" max="360" step="1" value="0">
       <span class="un" id="dirVal" style="width:34px">0&deg;</span>
     </div>
+    <div data-bas hidden>
+      <div class="linha" style="border-top:1px solid var(--rule);padding-top:8px;margin-top:8px">
+        <label>Abertura</label>
+        <div class="pills cresce" id="abertura">
+          <button data-ab="60" aria-pressed="true">60&deg;</button>
+          <button data-ab="120">120&deg;</button>
+        </div>
+      </div>
+      <div class="linha">
+        <label>Fatias</label>
+        <input type="range" id="fatias" min="1" max="6" step="1" value="1">
+        <span class="un" id="fatiasVal" style="width:96px"></span>
+      </div>
+      <div class="linha">
+        <label>Sai de</label>
+        <input type="range" id="origem" min="0" max="2.2" step="0.1" value="1.5">
+        <span class="un" id="origemVal" style="width:46px">1,5</span>
+      </div>
+      <div class="linha">
+        <label>Elemento</label>
+        <select id="estadoMolde" class="cresce"></select>
+      </div>
+      <div class="linha">
+        <label>Passo</label>
+        <div class="pills cresce" id="passo">
+          <button data-ps="0.5" aria-pressed="true">0,5 m</button>
+          <button data-ps="0.25">0,25</button>
+          <button data-ps="0.1">0,1</button>
+          <button data-ps="0">exato</button>
+        </div>
+      </div>
+    </div>
     <p class="nota" id="notaMolde"></p>
+  </div>
+
+  <div class="card" data-so="molde" data-bas hidden>
+    <h3 class="tit">A altura de cada fatia</h3>
+    <table class="tb" id="tbFatias"><thead><tr><th>Aresta</th><th>60&deg;</th><th>120&deg;</th><th>180&deg;</th><th>240&deg;</th><th>300&deg;</th><th>360&deg;</th></tr></thead>
+    <tbody></tbody></table>
+    <p class="nota">Aresta dividida pelo n&uacute;mero de fatias, arredondando para baixo em meio metro.
+    O piso de 0,5 m &eacute; o que impede os dois primeiros n&iacute;veis de se fecharem em volta do
+    conjurador: falta elemento para dar a volta.</p>
   </div>
 
   <div class="card" data-so="molde" hidden>
@@ -299,8 +340,8 @@
 
   <dl class="placar" id="placar"></dl>
 
-  <div class="card" style="margin-top:12px" data-so="molde" hidden>
-    <h3 class="tit">Os cinco moldes, no grau de agora</h3>
+  <div class="card" style="margin-top:12px" data-so="molde" data-nb hidden>
+    <h3 class="tit">Os moldes de Efeito, no grau de agora</h3>
     <table class="tb"><thead><tr><th>Molde</th><th>Compra</th><th>Neste grau</th><th>Hexágonos</th><th>Alcance</th><th>Colados</th><th>Frouxos</th><th>Espalhados</th></tr></thead>
     <tbody id="tbMoldes"></tbody></table>
     <p class="nota">A conta de inimigos sai do desenho, e não de fórmula: são os hexágonos que o molde
@@ -363,12 +404,15 @@ const VOL_LADO = [0.02, 0.1, 0.25, 0.5, 1, 1.5, 2];
 const VOL_ANCORA = ['8 cm³, um caroço', '1 litro', '16 litros', '125 litros',
   '1 m³, cinco metros de muro', '3,4 m³', '8 m³'];
 const AREA_DIAM = [0.1, 1, 1.5, 2, 2.5, 3, 4];
+// `fator` multiplica o VOLUME (a régua antiga, usada no modo sólido); `lado`
+// multiplica a MEDIDA, que é o que a manifestação da Arte básica compra.
+// Decidido em 2026-08-16: Terra metade do lado, Ar o dobro, o resto igual.
 const ESTADOS = [
-  { id: 'solido', nome: 'Sólido (Terra, Metal)', fator: 0.5, txt: 'metade' },
-  { id: 'granular', nome: 'Granular (areia, cascalho, neve)', fator: 1, txt: 'normal' },
-  { id: 'liquido', nome: 'Líquido e gelo (Água, Gelo)', fator: 1, txt: 'normal' },
-  { id: 'fenomeno', nome: 'Fenômeno (Fogo, Luz, Sombra)', fator: 2, txt: 'dobro' },
-  { id: 'gas', nome: 'Gás (Ar, neblina)', fator: 8, txt: 'oito vezes' },
+  { id: 'solido', nome: 'Sólido (Terra, Metal)', fator: 0.5, lado: 0.5, txt: 'metade' },
+  { id: 'granular', nome: 'Granular (areia, cascalho, neve)', fator: 1, lado: 1, txt: 'normal' },
+  { id: 'liquido', nome: 'Líquido e gelo (Água, Gelo)', fator: 1, lado: 1, txt: 'normal' },
+  { id: 'fenomeno', nome: 'Fenômeno (Fogo, Luz, Sombra)', fator: 2, lado: 1, txt: 'dobro' },
+  { id: 'gas', nome: 'Gás (Ar, neblina)', fator: 8, lado: 2, txt: 'oito vezes' },
 ];
 const MATERIAIS = [
   { id: 'agua', nome: 'Água', d: 1000 }, { id: 'gelo', nome: 'Gelo', d: 917 },
@@ -414,6 +458,11 @@ const FORMAS = {
 // são desenhados no mesmo tabuleiro, para a conta de "quantos inimigos" sair
 // do desenho e não de fórmula.
 const MOLDES = {
+  basica: {
+    nome: 'Arte básica', compra: 'aresta da fatia', un: 'm', daMao: true,
+    escala: [0.5, 1, 2, 3, 4, 5, 6],
+    nota: 'A manifestação do improviso, e a única que não é Efeito. Sai do feiticeiro em fatias de 60° (o sexto do círculo, o setor natural do hexágono), cada fatia um triângulo de aresta n. A altura de cada fatia é n ÷ N, então abrir mais ângulo custa altura e o VOLUME NÃO MUDA: é sempre 0,43 n³, em qualquer combinação. Seis fatias de 60° fecham um hexágono regular de lado n, sem fenda nem sobreposição.',
+  },
   explosao: {
     nome: 'Explosão', compra: 'diâmetro', un: 'm', daMao: false,
     escala: [0.5, 1, 2, 3.5, 5, 6.5, 8],
@@ -444,7 +493,8 @@ const MOLDES = {
 // ------------------------------------------------------------- estado
 const S = {
   modo: 'solido',
-  molde: 'explosao', grau: 4, distMolde: 5, altMolde: 2, dirMolde: 0, inimigos: 0,
+  molde: 'basica', grau: 4, distMolde: 5, altMolde: 2, dirMolde: 0, inimigos: 0,
+  abertura: 60, fatias: 1, origem: 1.5, passo: 0.5,
   forma: 'cubo',
   dims: { lado: 1, raio: 0.5, tubo: 0.15, altura: 1, comprimento: 2, largura: 0.2 },
   travas: { volume: false, lado: false, raio: false, tubo: false, altura: false, comprimento: false, largura: false },
@@ -691,6 +741,86 @@ function gradeHexes(alcance) {
 }
 const chave = (h) => h.q + ',' + h.r;
 
+// ------------------------------------------- a manifestação da Arte básica
+/**
+ * A altura de cada fatia: a aresta dividida pelo número de fatias, arredondada
+ * para baixo no passo escolhido. O arredondamento existe por um motivo de mesa e
+ * não de gosto: sem ele, `n ÷ N` cai em valores como 1,67 e o nível 5 fica com
+ * MENOS opções que o nível 3, porque 3 e 6 dividem bem e 4 e 5 não.
+ *
+ * Mas ele cobra: arredondar para baixo **quebra a conservação do volume** nas
+ * células onde morde, e com passo de meio metro a perda chega a 40%. O passo é
+ * controle da bancada justamente para o preço ficar à vista.
+ *
+ * O piso de 0,5 m é outra coisa, e é regra: é ele que impede os dois primeiros
+ * níveis de se fecharem em volta do conjurador, porque falta elemento para dar
+ * a volta.
+ */
+function alturaFatia(n, N) {
+  const bruta = n / N;
+  if (bruta < 0.5) return 0;
+  if (!S.passo) return bruta;
+  return Math.max(0.5, Math.floor(bruta / S.passo + 1e-9) * S.passo);
+}
+
+/** Quantas fatias cabem em 360° com esta abertura. */
+const maxFatias = (abertura) => Math.round(360 / abertura);
+
+/**
+ * Uma fatia: pirâmide de ápice no feiticeiro, base reta na ponta. Ela nasce
+ * num ponto e cresce nas quatro direções até a base, então a metade de baixo
+ * some no chão quando a altura passa do dobro da origem.
+ */
+function malhaFatia(n, aberturaGrau, altura, origem, dirGrau) {
+  const th = aberturaGrau * PI / 180, meio = dirGrau * PI / 180;
+  const a0 = meio - th / 2, a1 = meio + th / 2;
+  const lo = origem - altura / 2, hi = origem + altura / 2;
+  const c0 = [n * Math.cos(a0), n * Math.sin(a0)], c1 = [n * Math.cos(a1), n * Math.sin(a1)];
+  const v = [[0, origem, 0],
+    [c0[0], lo, c0[1]], [c1[0], lo, c1[1]], [c1[0], hi, c1[1]], [c0[0], hi, c0[1]]];
+  const f = [face([1, 2, 3, 4], 1), face([0, 2, 1], 1), face([0, 3, 2], 1), face([0, 4, 3], 1), face([0, 1, 4], 1)];
+  return cortarChao({ v, f });
+}
+
+/** Corta a malha no plano do chão, face por face. O que ia para baixo se perde. */
+function cortarChao(m) {
+  const out = { v: [], f: [] };
+  m.f.forEach((g) => {
+    const poly = g.i.map((i) => m.v[i]), rec = [];
+    for (let k = 0; k < poly.length; k++) {
+      const A = poly[k], B = poly[(k + 1) % poly.length];
+      if (A[1] >= 0) rec.push(A);
+      if ((A[1] >= 0) !== (B[1] >= 0)) {
+        const t = A[1] / (A[1] - B[1]);
+        rec.push([A[0] + (B[0] - A[0]) * t, 0, A[2] + (B[2] - A[2]) * t]);
+      }
+    }
+    if (rec.length >= 3) {
+      const off = out.v.length;
+      rec.forEach((p) => out.v.push(p));
+      out.f.push(face(rec.map((_, i) => off + i), g.dura));
+    }
+  });
+  return out;
+}
+
+/** Se o ponto (x,z) está dentro da fatia, e se ela passa na altura de um corpo. */
+function dentroFatia(x, z, n, aberturaGrau, altura, origem, dirGrau) {
+  const th = aberturaGrau * PI / 180, meio = dirGrau * PI / 180;
+  const r = Math.hypot(x, z);
+  if (r < 1e-9) return false;
+  const ang = Math.atan2(z, x) - meio;
+  const dif = Math.abs(Math.atan2(Math.sin(ang), Math.cos(ang)));
+  if (dif > th / 2 + 1e-9) return false;
+  // a base é uma reta e não um arco: o limite é a profundidade da corda
+  const fundo = n * Math.cos(th / 2);
+  const t = (x * Math.cos(meio) + z * Math.sin(meio)) / fundo;
+  if (t < 0 || t > 1 + 1e-9) return false;
+  // a fatia cresce nas quatro direções, então perto do ápice ela é uma lâmina
+  const meiaAlt = (altura / 2) * t;
+  return (origem - meiaAlt) < 1.8 && (origem + meiaAlt) > 0;
+}
+
 /**
  * O molde no chão: quais hexágonos ele pega, por onde ele passa e onde ficam
  * os elos, se for Cadeia. O conjurador está sempre no hexágono (0,0), e a
@@ -701,10 +831,39 @@ function molde() {
   const a = S.dirMolde * PI / 180, ux = Math.cos(a), uz = Math.sin(a);
   const dist = m.daMao ? 0 : S.distMolde;
   const anc = { x: dist * ux, z: dist * uz };
-  const alcance = Math.ceil((dist + val + 2) / S.escalaHex) + 2;
+  // a grade tem de cobrir o maior alcance possível, e no Ar a aresta dobra
+  const estL = (ESTADOS.find((e) => e.id === S.estado) || ESTADOS[2]).lado;
+  const bruto = S.molde === 'basica' ? val * estL : val;
+  const alcance = Math.ceil((dist + bruto + 2) / S.escalaHex) + 2;
   const grade = gradeHexes(Math.min(26, alcance));
   let dentro = [], elos = [], paredeA = null, paredeB = null;
 
+  if (S.molde === 'basica') {
+    // o fator de estado incide na ARESTA: a Terra fica com metade, o Ar com o dobro
+    const est = ESTADOS.find((e) => e.id === S.estado) || ESTADOS[2];
+    const n = val * est.lado;
+    const N = Math.min(S.fatias, maxFatias(S.abertura));
+    const alt = alturaFatia(n, N);
+    const setores = [];
+    for (let k = 0; k < N; k++) {
+      // as fatias são obrigatoriamente vizinhas e partem do mesmo ponto: é o
+      // mesmo ataque se abrindo, e não vários ataques
+      setores.push(S.dirMolde + (k - (N - 1) / 2) * S.abertura);
+    }
+    dentro = alt > 0 ? grade.filter((h) =>
+      setores.some((d) => dentroFatia(h.x, h.z, n, S.abertura, alt, S.origem, d))) : [];
+    return {
+      m, val, dentro, elos: [], anc: { x: 0, z: 0 }, dir: { ux, uz }, paredeA: null, paredeB: null,
+      grade, hexConta: dentro.length,
+      basica: {
+        n, N, alt, setores, est,
+        area: 0.5 * n * n * Math.sin(S.abertura * PI / 180) * N,
+        // o volume que o nível prometia, contra o que o arredondamento deixou
+        ideal: 0.5 * n * n * Math.sin(S.abertura * PI / 180) * n,
+        perda: alt > 0 ? 1 - alt / (n / N) : 0,
+      },
+    };
+  }
   if (S.molde === 'explosao') {
     dentro = grade.filter((h) => Math.hypot(h.x - anc.x, h.z - anc.z) <= val / 2 + 1e-9);
   } else if (S.molde === 'leque') {
@@ -1023,7 +1182,11 @@ function montarCenaMolde() {
   const M = molde();
   const alt = S.altMolde;
   let obj;
-  if (S.molde === 'muralha') {
+  if (S.molde === 'basica') {
+    const B = M.basica;
+    obj = { v: [], f: [] };
+    if (B.alt > 0) B.setores.forEach((d) => unir(obj, malhaFatia(B.n, S.abertura, B.alt, S.origem, d)));
+  } else if (S.molde === 'muralha') {
     // a parede é uma laje de verdade, e não os hexágonos levantados: ela fica
     // na linha e não enche a casa, que é como uma muralha se lê no tabuleiro
     const c = mCaixa(M.val, alt, 0.4, 0);
@@ -1296,7 +1459,14 @@ function desenhar() {
   desenharCotas();
 
   const hud = document.getElementById('hud');
-  if (S.modo === 'molde') {
+  if (S.modo === 'molde' && S.molde === 'basica') {
+    const B = c.molde.basica, pegos = c.inimigos.filter((i) => i.pego).length;
+    hud.innerHTML = '<b>Arte básica</b>, grau ' + S.grau + ' &middot; aresta <b>' + fmtM(B.n) + '</b>'
+      + '<br><b>' + B.N + ' × ' + S.abertura + '°</b> = ' + (B.N * S.abertura) + '° &middot; altura <b>'
+      + (B.alt ? fmtM(B.alt) : '—') + '</b>'
+      + '<br>volume <b>' + fmtVol(B.area * B.alt) + '</b> &middot; ' + c.molde.dentro.length + ' hexágonos'
+      + (S.inimigos ? '<br><b>' + pegos + '</b> de ' + c.inimigos.length + ' inimigos pegos' : '');
+  } else if (S.modo === 'molde') {
     const M = c.molde, pegos = c.inimigos.filter((i) => i.pego).length;
     hud.innerHTML = '<b>' + M.m.nome + '</b>, grau ' + S.grau + ' &middot; ' + M.m.compra + ' <b>'
       + (M.m.un ? nf(M.val, M.val < 10 ? 1 : 0) + ' ' + M.m.un : M.val) + '</b>'
@@ -1468,7 +1638,48 @@ function contarMolde(id, g) {
   S.molde = guarda.molde; S.grau = guarda.grau;
   return { hex: M.hexConta, alc: alcanceMolde(M), val: M.val };
 }
+function atualizarPainelBasica() {
+  const c = cena(), M = c.molde, B = M.basica;
+  const cel = (t, v, s) => '<div class="cel"><dt>' + t + '</dt><dd>' + v + (s ? ' <small>' + s + '</small>' : '') + '</dd></div>';
+  const vol = B.area * B.alt;
+  const perdido = Math.max(0, B.alt / 2 - S.origem) / (B.alt || 1);
+  const pegos = c.inimigos.filter((i) => i.pego).length;
+  const prof = B.n * Math.cos(S.abertura * PI / 360);
+  elPlacar.innerHTML =
+    cel('Aresta', fmtM(B.n), 'grau ' + S.grau + (B.est.lado !== 1 ? ' · ' + B.est.txt : ''))
+    + cel('Abertura', B.N + ' × ' + S.abertura + '°', 'total ' + (B.N * S.abertura) + '°')
+    + cel('Altura', B.alt ? fmtM(B.alt) : 'não fecha', B.alt ? 'da fatia' : 'abaixo do piso de 0,5 m')
+    + cel('Frente reta', fmtM(prof), 'do conjurador')
+    + cel('Chão', nf(B.area, 1) + ' m²', M.dentro.length + ' hexágonos')
+    + cel('Volume', fmtVol(vol), B.perda > 0.005 ? '−' + nf(B.perda * 100, 0) + '% pelo arredondamento' : 'o do nível, inteiro')
+    + cel('Perdido no chão', perdido > 0.005 ? nf(perdido * 100, 0) + '%' : 'nada', 'sai de ' + nf(S.origem, 1) + ' m')
+    + cel('No tabuleiro', S.inimigos ? pegos + ' de ' + c.inimigos.length : '—', S.inimigos ? 'contados no desenho' : 'ponha inimigos');
+  document.getElementById('notaMolde').innerHTML = M.m.nota
+    + (B.alt === 0 ? '<br><b style="color:var(--s2)">Nesta aresta não dá para abrir tantas fatias: a altura cairia abaixo de meio metro.</b>' : '');
+  document.getElementById('grauVal').textContent = 'grau ' + S.grau + ' · aresta ' + fmtM(B.n);
+  document.getElementById('fatiasVal').textContent = B.N + ' de ' + maxFatias(S.abertura) + ' · ' + (B.N * S.abertura) + '°';
+  document.getElementById('distMolde').disabled = true;
+  document.getElementById('distVal').textContent = 'na mão';
+  document.getElementById('altMolde').disabled = true;
+
+  // a tabela das alturas: aresta × abertura, já arredondada
+  const esc = MOLDES.basica.escala;
+  document.querySelector('#tbFatias tbody').innerHTML = esc.map((v, g) => {
+    const n = v * B.est.lado;
+    const cols = [1, 2, 3, 4, 5, 6].map((N) => {
+      if (N > maxFatias(S.abertura)) return '<td>—</td>';
+      const h = alturaFatia(n, N);
+      const aqui = g === S.grau && N === B.N;
+      return '<td' + (aqui ? ' style="color:var(--accent-strong);font-weight:600"' : '') + '>'
+        + (h ? nf(h, 1) + ' m' : '—') + '</td>';
+    }).join('');
+    const marca = g === S.grau ? ' style="color:var(--ink);font-weight:600"' : '';
+    return '<tr' + marca + '><td>' + fmtM(n) + '</td>' + cols + '</tr>';
+  }).join('');
+
+}
 function atualizarPainelMolde() {
+  if (S.molde === 'basica') return atualizarPainelBasica();
   const c = cena(), M = c.molde, m = M.m;
   const hexN = M.hexConta, area = M.dentro.length * (Math.sqrt(3) / 2) * S.escalaHex * S.escalaHex;
   const pegos = c.inimigos.filter((i) => i.pego).length;
@@ -1545,13 +1756,24 @@ function medidasParaVolume(id, v) {
 }
 
 // --------------------------------------------------- ligações do molde
+/** Quem aparece: `data-so` casa com o modo, `data-bas` só com a Arte básica. */
+function sincronizarCartoes() {
+  document.querySelectorAll('[data-so]').forEach((el) => {
+    el.hidden = el.dataset.so !== S.modo
+      || (el.hasAttribute('data-bas') && S.molde !== 'basica')
+      || (el.hasAttribute('data-nb') && S.molde === 'basica');
+  });
+  document.querySelectorAll('[data-bas]:not([data-so])').forEach((el) => {
+    el.hidden = S.molde !== 'basica';
+  });
+  document.getElementById('subSolido').hidden = S.modo !== 'solido';
+  document.getElementById('subMolde').hidden = S.modo !== 'molde';
+}
 const elModos = document.getElementById('modos');
 elModos.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
   S.modo = b.dataset.m;
   elModos.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-  document.querySelectorAll('[data-so]').forEach((el) => { el.hidden = el.dataset.so !== S.modo; });
-  document.getElementById('subSolido').hidden = S.modo !== 'solido';
-  document.getElementById('subMolde').hidden = S.modo !== 'molde';
+  sincronizarCartoes();
   refazer(); enquadrar();
 }));
 
@@ -1561,6 +1783,7 @@ elMoldes.innerHTML = Object.keys(MOLDES).map((id) =>
 elMoldes.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
   S.molde = b.dataset.md;
   elMoldes.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  sincronizarCartoes();
   refazer(); enquadrar();
 }));
 const elInim = document.getElementById('inimigos');
@@ -1569,6 +1792,23 @@ elInim.querySelectorAll('button').forEach((b) => b.addEventListener('click', () 
   elInim.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
   refazer();
 }));
+document.querySelectorAll('#abertura button').forEach((b) => b.addEventListener('click', () => {
+  S.abertura = +b.dataset.ab;
+  S.fatias = Math.min(S.fatias, maxFatias(S.abertura));
+  document.querySelectorAll('#abertura button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  document.getElementById('fatias').max = String(maxFatias(S.abertura));
+  document.getElementById('fatias').value = String(S.fatias);
+  refazer();
+}));
+document.getElementById('fatias').addEventListener('input', (e) => { S.fatias = +e.target.value; refazer(); });
+document.querySelectorAll('#passo button').forEach((b) => b.addEventListener('click', () => {
+  S.passo = +b.dataset.ps;
+  document.querySelectorAll('#passo button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  refazer();
+}));
+document.getElementById('origem').addEventListener('input', (e) => {
+  S.origem = +e.target.value; document.getElementById('origemVal').textContent = nf(S.origem, 1); refazer();
+});
 document.getElementById('grauMolde').addEventListener('input', (e) => { S.grau = +e.target.value; refazer(); });
 document.getElementById('distMolde').addEventListener('input', (e) => { S.distMolde = +e.target.value; refazer(); });
 document.getElementById('altMolde').addEventListener('input', (e) => {
@@ -1623,6 +1863,12 @@ document.getElementById('volTrava').addEventListener('click', () => {
 const elEstado = document.getElementById('estado');
 elEstado.innerHTML = ESTADOS.map((e) => '<option value="' + e.id + '"' + (e.id === S.estado ? ' selected' : '') + '>' + e.nome + ' · ' + e.txt + '</option>').join('');
 elEstado.addEventListener('change', () => { S.estado = elEstado.value; atualizarPainel(); });
+
+// o mesmo estado, com o rótulo do que ele faz na ARESTA
+const elEstadoM = document.getElementById('estadoMolde');
+elEstadoM.innerHTML = ESTADOS.map((e) => '<option value="' + e.id + '"' + (e.id === S.estado ? ' selected' : '') + '>'
+  + e.nome + ' · aresta ×' + nf(e.lado, e.lado === 0.5 ? 1 : 0) + '</option>').join('');
+elEstadoM.addEventListener('change', () => { S.estado = elEstadoM.value; elEstado.value = S.estado; refazer(); enquadrar(); });
 
 const elMat = document.getElementById('material');
 elMat.innerHTML = MATERIAIS.map((m) => '<option value="' + m.id + '"' + (m.id === S.material ? ' selected' : '') + '>' + m.nome + '</option>').join('');
@@ -1690,6 +1936,8 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', lerCores);
 lerCores();
 medirCanvas();
 montarParams();
+sincronizarCartoes();
+document.getElementById('origemVal').textContent = nf(S.origem, 1);
 refazer();
 enquadrar();
 laco();
