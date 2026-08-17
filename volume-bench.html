@@ -170,13 +170,6 @@
       <span class="un" id="dirVal" style="width:34px">0&deg;</span>
     </div>
     <div data-bas hidden>
-      <div class="linha" style="border-top:1px solid var(--rule);padding-top:8px;margin-top:8px">
-        <label>Abertura</label>
-        <div class="pills cresce" id="abertura">
-          <button data-ab="60" aria-pressed="true">60&deg;</button>
-          <button data-ab="120">120&deg;</button>
-        </div>
-      </div>
       <div class="linha">
         <label>Fatias</label>
         <input type="range" id="fatias" min="1" max="6" step="1" value="1">
@@ -202,13 +195,14 @@
   </div>
 
   <div class="card" data-so="molde" data-bas hidden>
-    <h3 class="tit">A altura de cada fatia</h3>
-    <table class="tb" id="tbFatias"><thead><tr><th>Aresta</th><th>60&deg;</th><th>120&deg;</th><th>180&deg;</th><th>240&deg;</th><th>300&deg;</th><th>360&deg;</th></tr></thead>
+    <h3 class="tit">A dist&acirc;ncia e o volume, por n&uacute;mero de fatias</h3>
+    <table class="tb" id="tbFatias"><thead><tr><th>Grau</th><th>1 &middot; 60&deg;</th><th>2 &middot; 120&deg;</th><th>3 &middot; 180&deg;</th><th>4 &middot; 240&deg;</th><th>5 &middot; 300&deg;</th><th>6 &middot; 360&deg;</th></tr></thead>
     <tbody></tbody></table>
-    <p class="nota">Aresta dividida pelo n&uacute;mero de fatias, exata. As c&eacute;lulas vazias s&atilde;o as
-    que a trava corta: <b>o n&uacute;mero de fatias nunca passa do n&iacute;vel</b>. É por isso que s&oacute; o
-    n&iacute;vel 6 d&aacute; a volta inteira em fatias de 60&deg;, e por isso que a altura nunca desce de 1 m,
-    que &eacute; o que sai de dividir pelo pr&oacute;prio n&iacute;vel.</p>
+    <p class="nota">A base comprada &eacute; sempre <b>n &times; n</b>: dobrar a base em mais fatias mant&eacute;m a
+    frente somada e a altura, e o que paga &eacute; a <b>dist&acirc;ncia</b>, que divide pelo n&uacute;mero de
+    fatias. O volume vai junto, porque ele &eacute; base &times; dist&acirc;ncia &divide; 3. As c&eacute;lulas vazias s&atilde;o as
+    que a trava corta: <b>o n&uacute;mero de fatias nunca passa do n&iacute;vel</b>, e por isso o elemento
+    nunca fica a menos de 87 cm do corpo.</p>
   </div>
 
   <div class="card" data-so="molde" hidden>
@@ -457,9 +451,9 @@ const FORMAS = {
 // do desenho e não de fórmula.
 const MOLDES = {
   basica: {
-    nome: 'Arte básica', compra: 'aresta da fatia', un: 'm', daMao: true,
+    nome: 'Arte básica', compra: 'lado da base', un: 'm', daMao: true,
     escala: [0.5, 1, 2, 3, 4, 5, 6],
-    nota: 'A manifestação do improviso, e a única que não é Efeito. Sai do feiticeiro em fatias de 60° (o sexto do círculo, o setor natural do hexágono), cada fatia um triângulo de aresta n. A altura de cada fatia é n ÷ N, então abrir mais ângulo custa altura e o VOLUME NÃO MUDA: é sempre 0,43 n³, em qualquer combinação. Seis fatias de 60° fecham um hexágono regular de lado n, sem fenda nem sobreposição.',
+    nota: 'A manifestação do improviso, e a única que não é Efeito. O parâmetro compra uma BASE de n × n, e ela sai do feiticeiro em fatias de 60° (o sexto do círculo, o setor natural do hexágono). Abrir o ângulo dobra a base em mais painéis: a frente somada e a altura ficam, e o que paga é a DISTÂNCIA, que divide pelo número de fatias. O volume vai junto, porque é base × distância ÷ 3. Cercar-se custa caro: a 360° o elemento está a 87 cm do peito e sobrou um sexto dele.',
   },
   explosao: {
     nome: 'Explosão', compra: 'diâmetro', un: 'm', daMao: false,
@@ -492,7 +486,7 @@ const MOLDES = {
 const S = {
   modo: 'solido',
   molde: 'basica', grau: 4, distMolde: 5, altMolde: 2, dirMolde: 0, inimigos: 0,
-  abertura: 60, fatias: 1, origem: 1.5, basePe: 0,
+  fatias: 1, origem: 1.5, basePe: 0,
   forma: 'cubo',
   dims: { lado: 1, raio: 0.5, tubo: 0.15, altura: 1, comprimento: 2, largura: 0.2 },
   travas: { volume: false, lado: false, raio: false, tubo: false, altura: false, comprimento: false, largura: false },
@@ -741,27 +735,36 @@ const chave = (h) => h.q + ',' + h.r;
 
 // ------------------------------------------- a manifestação da Arte básica
 /**
- * A altura de cada fatia: a aresta dividida pelo número de fatias, **exata**.
- * Sem arredondar e sem piso, porque quem manda é a divisão.
+ * O que o parâmetro compra é a BASE, n × n: n metros de frente somados e n
+ * metros de altura. Abrir o ângulo dobra a base em N painéis de 60°, e o que
+ * paga é a DISTÂNCIA (decidido em 2026-08-17, modelo B).
  *
- * Havia um piso de meio metro, e ele saiu (2026-08-17). Arredondar quebrava a
- * conservação do volume onde mordia (até 40% perdidos em resto de divisão) e
- * ainda deixava o nível 5 com menos opções que o nível 3. O piso era um jeito
- * torto de dizer o que a trava de baixo diz direito.
+ * A aresta de cada fatia é n ÷ N, então a frente somada continua sendo n e a
+ * altura continua sendo n: a base tem sempre n² de superfície. O que muda é o
+ * quanto ela avança, e com ela o volume:
+ *
+ *   volume = (base × distância) ÷ 3 = 0,289 n³ ÷ N
+ *
+ * É por isso que se cercar é caro: a 360° o elemento está a 87 cm do peito e
+ * sobrou um sexto dele. A alternativa era pagar com a altura, que conservava o
+ * volume e virava um lençol rasteiro; ficou registrada no doc e foi recusada.
  */
-const alturaFatia = (n, N) => n / N;
+const arestaFatia = (n, N) => n / N;
+const distanciaFatia = (n, N) => (n / N) * Math.cos(PI / 6);
+/** Pirâmide: base retangular na ponta, ápice num ponto. Base × distância ÷ 3. */
+const volumeFatias = (n, N) => (n / N) * n * distanciaFatia(n, N) / 3 * N;
 
 /**
  * Quantas fatias o feiticeiro pode acender: **no máximo o nível do parâmetro**,
  * e nunca mais do que fecha o círculo.
  *
  * Essa é a trava, e ela faz três coisas de uma vez. Só o nível 6 dá a volta
- * inteira em fatias de 60°. A progressão é monótona: cada nível compra uma
- * fatia a mais, e nenhum nível é pior que o anterior. E o piso de altura sai de
- * graça: dividir pelo próprio nível dá sempre **1 m**, que passa a ser o mínimo
- * sem precisar de regra própria.
+ * inteira. A progressão é monótona: cada nível compra uma fatia a mais, e
+ * nenhum nível é pior que o anterior. E o piso sai de graça: dividir pelo
+ * próprio nível dá aresta de **1 m**, ou seja o elemento nunca fica a menos de
+ * 87 cm do corpo, sem precisar de regra própria.
  */
-const maxFatias = () => Math.min(Math.max(1, S.grau), Math.round(360 / S.abertura));
+const maxFatias = () => Math.min(Math.max(1, S.grau), 6);
 
 /**
  * O pé da base, e o ápice dentro dela.
@@ -783,13 +786,15 @@ function limitesFatia(altura) {
   return { pe, teto, apice: clamp(S.origem, pe, Math.min(teto, ALCANCE_BRACO)) };
 }
 const ALCANCE_BRACO = 2.2;
+const ABERTURA = 60;   // a única, e é o sexto do círculo que fecha no hexágono
 
 /** Uma fatia: pirâmide de ápice no feiticeiro e base reta em pé na ponta. */
-function malhaFatia(n, aberturaGrau, altura, dirGrau) {
-  const th = aberturaGrau * PI / 180, meio = dirGrau * PI / 180;
+function malhaFatia(aresta, altura, dirGrau) {
+  const th = ABERTURA * PI / 180, meio = dirGrau * PI / 180;
   const a0 = meio - th / 2, a1 = meio + th / 2;
   const L = limitesFatia(altura);
-  const c0 = [n * Math.cos(a0), n * Math.sin(a0)], c1 = [n * Math.cos(a1), n * Math.sin(a1)];
+  const c0 = [aresta * Math.cos(a0), aresta * Math.sin(a0)];
+  const c1 = [aresta * Math.cos(a1), aresta * Math.sin(a1)];
   const v = [[0, L.apice, 0],
     [c0[0], L.pe, c0[1]], [c1[0], L.pe, c1[1]], [c1[0], L.teto, c1[1]], [c0[0], L.teto, c0[1]]];
   const f = [face([1, 2, 3, 4], 1), face([0, 2, 1], 1), face([0, 3, 2], 1), face([0, 4, 3], 1), face([0, 1, 4], 1)];
@@ -827,15 +832,15 @@ function cortarChao(m) {
  * chão **passa por cima** de quem está deitado no meio do caminho: a face de
  * baixo é uma rampa, e só encosta no chão na ponta.
  */
-function dentroFatia(x, z, n, aberturaGrau, altura, dirGrau) {
-  const th = aberturaGrau * PI / 180, meio = dirGrau * PI / 180;
+function dentroFatia(x, z, aresta, altura, dirGrau) {
+  const th = ABERTURA * PI / 180, meio = dirGrau * PI / 180;
   const r = Math.hypot(x, z);
   if (r < 1e-9) return false;
   const ang = Math.atan2(z, x) - meio;
   const dif = Math.abs(Math.atan2(Math.sin(ang), Math.cos(ang)));
   if (dif > th / 2 + 1e-9) return false;
   // a base é uma reta e não um arco: o limite é a profundidade da corda
-  const fundo = n * Math.cos(th / 2);
+  const fundo = aresta * Math.cos(th / 2);
   const t = (x * Math.cos(meio) + z * Math.sin(meio)) / fundo;
   if (t < 0 || t > 1 + 1e-9) return false;
   const L = limitesFatia(altura);
@@ -862,28 +867,28 @@ function molde() {
   let dentro = [], elos = [], paredeA = null, paredeB = null;
 
   if (S.molde === 'basica') {
-    // o fator de estado incide na ARESTA: a Terra fica com metade, o Ar com o dobro
+    // o fator de estado incide no LADO DA BASE: Terra metade, Ar o dobro
     const est = ESTADOS.find((e) => e.id === S.estado) || ESTADOS[2];
     const n = val * est.lado;
     const N = Math.min(S.fatias, maxFatias());
-    const alt = alturaFatia(n, N);
+    const aresta = arestaFatia(n, N), alt = n;
     const setores = [];
     for (let k = 0; k < N; k++) {
       // as fatias são obrigatoriamente vizinhas e partem do mesmo ponto: é o
       // mesmo ataque se abrindo, e não vários ataques
-      setores.push(S.dirMolde + (k - (N - 1) / 2) * S.abertura);
+      setores.push(S.dirMolde + (k - (N - 1) / 2) * ABERTURA);
     }
-    dentro = alt > 0 ? grade.filter((h) =>
-      setores.some((d) => dentroFatia(h.x, h.z, n, S.abertura, alt, d))) : [];
+    dentro = grade.filter((h) => setores.some((d) => dentroFatia(h.x, h.z, aresta, alt, d)));
     return {
       m, val, dentro, elos: [], anc: { x: 0, z: 0 }, dir: { ux, uz }, paredeA: null, paredeB: null,
       grade, hexConta: dentro.length,
       basica: {
-        n, N, alt, setores, est,
-        area: 0.5 * n * n * Math.sin(S.abertura * PI / 180) * N,
-        // o volume que o nível prometia, contra o que o arredondamento deixou
-        ideal: 0.5 * n * n * Math.sin(S.abertura * PI / 180) * n,
-        perda: alt > 0 ? 1 - alt / (n / N) : 0,
+        n, N, aresta, alt, setores, est,
+        dist: distanciaFatia(n, N),
+        base: n * n,                                    // a superfície comprada, sempre n²
+        chao: 0.5 * aresta * distanciaFatia(n, N) * N,  // a pegada, que encolhe ao abrir
+        vol: volumeFatias(n, N),
+        volCheio: volumeFatias(n, 1),                   // o que uma fatia só entregaria
       },
     };
   }
@@ -1208,7 +1213,7 @@ function montarCenaMolde() {
   if (S.molde === 'basica') {
     const B = M.basica;
     obj = { v: [], f: [] };
-    if (B.alt > 0) B.setores.forEach((d) => unir(obj, malhaFatia(B.n, S.abertura, B.alt, d)));
+    B.setores.forEach((d) => unir(obj, malhaFatia(B.aresta, B.alt, d)));
   } else if (S.molde === 'muralha') {
     // a parede é uma laje de verdade, e não os hexágonos levantados: ela fica
     // na linha e não enche a casa, que é como uma muralha se lê no tabuleiro
@@ -1484,10 +1489,9 @@ function desenhar() {
   const hud = document.getElementById('hud');
   if (S.modo === 'molde' && S.molde === 'basica') {
     const B = c.molde.basica, pegos = c.inimigos.filter((i) => i.pego).length;
-    hud.innerHTML = '<b>Arte básica</b>, grau ' + S.grau + ' &middot; aresta <b>' + fmtM(B.n) + '</b>'
-      + '<br><b>' + B.N + ' × ' + S.abertura + '°</b> = ' + (B.N * S.abertura) + '° &middot; altura <b>'
-      + (B.alt ? fmtM(B.alt) : '—') + '</b>'
-      + '<br>volume <b>' + fmtVol(B.area * B.alt) + '</b> &middot; ' + c.molde.dentro.length + ' hexágonos'
+    hud.innerHTML = '<b>Arte básica</b>, grau ' + S.grau + ' &middot; base <b>' + fmtM(B.n) + ' × ' + fmtM(B.n) + '</b>'
+      + '<br><b>' + B.N + ' × 60°</b> = ' + (B.N * 60) + '° &middot; a <b>' + fmtM(B.dist) + '</b> do corpo'
+      + '<br>volume <b>' + fmtVol(B.vol) + '</b> &middot; ' + c.molde.dentro.length + ' hexágonos'
       + (S.inimigos ? '<br><b>' + pegos + '</b> de ' + c.inimigos.length + ' inimigos pegos' : '');
   } else if (S.modo === 'molde') {
     const M = c.molde, pegos = c.inimigos.filter((i) => i.pego).length;
@@ -1664,28 +1668,29 @@ function contarMolde(id, g) {
 function atualizarPainelBasica() {
   const c = cena(), M = c.molde, B = M.basica;
   const cel = (t, v, s) => '<div class="cel"><dt>' + t + '</dt><dd>' + v + (s ? ' <small>' + s + '</small>' : '') + '</dd></div>';
-  const vol = B.area * B.alt;
   const pegos = c.inimigos.filter((i) => i.pego).length;
-  const prof = B.n * Math.cos(S.abertura * PI / 360);
   const L = limitesFatia(B.alt);
   // onde a face de baixo encosta no chão: se o ápice está acima do pé da base,
   // ela é uma rampa e só toca lá na frente
   const tChao = L.apice > L.pe ? (L.apice - 0) / (L.apice - L.pe) : 0;
-  const distChao = clamp(tChao, 0, 1) * prof;
+  const distChao = clamp(tChao, 0, 1) * B.dist;
   elPlacar.innerHTML =
-    cel('Aresta', fmtM(B.n), 'grau ' + S.grau + (B.est.lado !== 1 ? ' · ' + B.est.txt : ''))
-    + cel('Abertura', B.N + ' × ' + S.abertura + '°', 'total ' + (B.N * S.abertura) + '°')
-    + cel('Altura', B.alt ? fmtM(B.alt) : 'não fecha', B.alt ? 'da fatia' : 'abaixo do piso de 0,5 m')
-    + cel('Frente reta', fmtM(prof), 'do conjurador')
-    + cel('Chão', nf(B.area, 1) + ' m²', M.dentro.length + ' hexágonos')
-    + cel('Volume', fmtVol(vol), 'igual em qualquer abertura')
-    + cel('Base', nf(L.pe, 1) + ' a ' + nf(L.teto, 1) + ' m', 'ápice em ' + nf(L.apice, 1) + ' m')
+    cel('Base', fmtM(B.n) + ' × ' + fmtM(B.n), nf(B.base, 1) + ' m², grau ' + S.grau
+      + (B.est.lado !== 1 ? ' · ' + B.est.txt : ''))
+    + cel('Fatias', B.N + ' × 60°', 'cobre ' + (B.N * 60) + '°')
+    + cel('Aresta de cada', fmtM(B.aresta), 'frente somada ' + fmtM(B.aresta * B.N))
+    + cel('Distância', fmtM(B.dist), B.N > 1 ? '1/' + B.N + ' do que seria' : 'de uma fatia só')
+    + cel('Volume', fmtVol(B.vol), B.N > 1 ? '1/' + B.N + ' de ' + fmtVol(B.volCheio) : 'cheio')
+    + cel('Chão', nf(B.chao, 1) + ' m²', M.dentro.length + ' hexágonos')
+    + cel('Sobe de', nf(L.pe, 1) + ' a ' + nf(L.teto, 1) + ' m', 'ápice em ' + nf(L.apice, 1) + ' m')
     + cel('Toca o chão', distChao < 0.05 ? 'no pé do conjurador' : 'a ' + fmtM(distChao),
       distChao > 0.05 ? 'antes disso passa por cima' : 'varre desde o começo')
     + cel('No tabuleiro', S.inimigos ? pegos + ' de ' + c.inimigos.length : '—', S.inimigos ? 'contados no desenho' : 'ponha inimigos');
   document.getElementById('notaMolde').innerHTML = M.m.nota
-    + '<br><b>Neste grau, no máximo ' + maxFatias() + ' fatia' + (maxFatias() === 1 ? '' : 's') + ': o número de fatias nunca passa do nível, e dividir pelo próprio nível dá sempre 1 m de altura.</b>';
-  document.getElementById('grauVal').textContent = 'grau ' + S.grau + ' · aresta ' + fmtM(B.n);
+    + '<br><b>Neste grau, no máximo ' + maxFatias() + ' fatia' + (maxFatias() === 1 ? '' : 's')
+    + ': o número de fatias nunca passa do nível, e dividir pelo próprio nível deixa o elemento a '
+    + fmtM(Math.cos(PI / 6)) + ' do corpo, que é o mais perto que ele chega.</b>';
+  document.getElementById('grauVal').textContent = 'grau ' + S.grau + ' · base ' + fmtM(B.n) + ' × ' + fmtM(B.n);
   // a amarra na tela: o ápice só anda dentro da base, e só até onde o braço vai
   const teto = Math.min(L.teto, ALCANCE_BRACO);
   document.getElementById('origem').min = String(L.pe);
@@ -1694,27 +1699,27 @@ function atualizarPainelBasica() {
   document.getElementById('origemVal').textContent = nf(L.apice, 1)
     + (L.apice !== S.origem ? ' (preso)' : '');
   document.getElementById('basePeVal').textContent = nf(L.pe, 1);
-  document.getElementById('fatiasVal').textContent = B.N + ' de ' + maxFatias() + ' · ' + (B.N * S.abertura) + '°';
+  document.getElementById('fatiasVal').textContent = B.N + ' de ' + maxFatias() + ' · ' + (B.N * 60) + '°';
   document.getElementById('distMolde').disabled = true;
   document.getElementById('distVal').textContent = 'na mão';
   document.getElementById('altMolde').disabled = true;
 
-  // a tabela das alturas: aresta × abertura, já arredondada
-  // a tabela mostra TODOS os graus, e a trava (fatias ≤ nível) é o que apaga
-  // as células da direita: por isso ela sobe em escada
-  const esc = MOLDES.basica.escala, porCirculo = Math.round(360 / S.abertura);
+  // A tabela mostra todos os graus, e a trava (fatias ≤ nível) é o que apaga as
+  // células da direita: por isso ela sobe em escada. Em cada célula, a distância
+  // e o volume, que são as duas coisas que abrir cobra.
+  const esc = MOLDES.basica.escala;
   document.querySelector('#tbFatias tbody').innerHTML = esc.map((v, g) => {
-    const n = v * B.est.lado, teto = Math.min(Math.max(1, g), porCirculo);
+    const n = v * B.est.lado, teto = Math.max(1, Math.min(g, 6));
     const cols = [1, 2, 3, 4, 5, 6].map((N) => {
-      if (N > porCirculo) return '<td style="color:var(--muted)">·</td>';
       if (N > teto) return '<td>—</td>';
-      const h = alturaFatia(n, N);
       const aqui = g === S.grau && N === B.N;
       return '<td' + (aqui ? ' style="color:var(--accent-strong);font-weight:600"' : '') + '>'
-        + nf(h, h < 10 ? 2 : 1) + ' m</td>';
+        + nf(distanciaFatia(n, N), 2) + ' m<br><small style="color:var(--muted)">'
+        + fmtVol(volumeFatias(n, N)) + '</small></td>';
     }).join('');
     const marca = g === S.grau ? ' style="color:var(--ink);font-weight:600"' : '';
-    return '<tr' + marca + '><td>grau ' + g + ' · ' + fmtM(n) + '</td>' + cols + '</tr>';
+    return '<tr' + marca + '><td>grau ' + g + '<br><small style="color:var(--muted)">base '
+      + fmtM(n) + '</small></td>' + cols + '</tr>';
   }).join('');
 
 }
@@ -1841,12 +1846,6 @@ function sincronizarFatias() {
   el.value = String(S.fatias);
   el.disabled = teto === 1;
 }
-document.querySelectorAll('#abertura button').forEach((b) => b.addEventListener('click', () => {
-  S.abertura = +b.dataset.ab;
-  document.querySelectorAll('#abertura button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-  sincronizarFatias();
-  refazer();
-}));
 document.getElementById('fatias').addEventListener('input', (e) => { S.fatias = +e.target.value; refazer(); });
 document.getElementById('origem').addEventListener('input', (e) => {
   S.origem = +e.target.value; document.getElementById('origemVal').textContent = nf(S.origem, 1); refazer();
