@@ -46,7 +46,7 @@ const GATE = { perfurante: 1 };
 
 // Preparo por classe: a proposta que está em discussão. P + R = a Velocidade de hoje,
 // então a cadência não muda; o que muda é ONDE dentro da janela o golpe cai.
-const PREPARO = { leve: 0, media: 1, haste: 0, pesada: 2 };
+const PREPARO = { leve: 0, media: 1, haste: 0, pesada: 2, arte: 7 };
 
 const ARMAS = {
   Adaga:    { cl: 'leve',   spd: 5, die: 1, acc: 2, hands: 1, mode: 'perfurante', perf: 0 },
@@ -58,6 +58,8 @@ const ARMAS = {
   Lanca:    { cl: 'haste',  spd: 6, die: 2, acc: 1, hands: 2, mode: 'perfurante', perf: 1 },
   Montante: { cl: 'pesada', spd: 7, die: 3, acc: 0, hands: 2, mode: 'corte',      perf: 1 },
   Martelo:  { cl: 'pesada', spd: 7, die: 3, acc: 0, hands: 2, mode: 'impacto',    perf: 2 },
+  // O feiticeiro de grau 6: Preparo 7, Recuperação 0, e um golpe que vale por três.
+  Arte:     { cl: 'arte',   spd: 7, die: 6, acc: 1, hands: 1, mode: 'impacto',    perf: 3 },
 };
 const ARMAD = {
   Nenhuma: { classe: 'nenhuma', i: 0, c: 0,  p: 0, rp: 0, pen: 0 },
@@ -82,16 +84,19 @@ const MODELOS = {
                 aparo: { custo: 3, bonus: 6, limiar: .20, teto: 12, umaPorJanela: true } },
 };
 
-function lutador({ ah = 10, centelha = 1, vigor = 4, dmgAttr = 4, pv = 37, arma = 'EspLonga', armadura = 'Nenhuma' } = {}) {
+function lutador({ ah = 10, centelha = 1, vigor = 4, dmgAttr = 4, pv = 37, arma = 'EspLonga', armadura = 'Nenhuma', carga = null } = {}) {
   const w = ARMAS[arma], a = ARMAD[armadura];
   return {
     nome: arma, ah, centelha, vigor, dmgAttr, pvMax: pv, pv,
     die: w.die, acc: w.acc, hands: w.hands, mode: w.mode, perf: w.perf,
-    spd: w.spd, cl: w.cl, prep: PREPARO[w.cl] ?? 0,
+    // Carga voluntária: N Ticks a mais de Preparo (a Recuperação não muda, então o ciclo
+    // inteiro cresce N) em troca de um bônus na rolagem. É o "Mirar" generalizado.
+    carga,
+    spd: w.spd + (carga?.n || 0), cl: w.cl, prep: (PREPARO[w.cl] ?? 0) + (carga?.n || 0),
     arm: a, armClasse: a.classe, pen: a.pen,
     guard: 0, guardaTravada: false, proxDecl: 0, pend: null, divida: 0, dividaMax: 0, aparosNaJanela: 0,
     // contadores de diagnóstico
-    golpesFeitos: 0, golpesPerdidos: 0, redirecionados: 0, foraDeHora: 0, foraNaJanela: 0, ticksDevidos: 0, empurroesSofridos: 0, aparosGastos: 0, aparosFeitos: 0,
+    golpesFeitos: 0, golpesPerdidos: 0, redirecionados: 0, acoesDeclaradas: 0, acoesConcluidas: 0, foraDeHora: 0, foraNaJanela: 0, ticksDevidos: 0, empurroesSofridos: 0, aparosGastos: 0, aparosFeitos: 0,
     janelasVistas: 0, janelasAproveitadas: 0, declaracoes: 0,
   };
 }
@@ -121,8 +126,9 @@ function atacar(A, D, M, forcado = 0) {
     if (D.pend) D.pend.resolveEm += M.aparo.custo;
   }
 
-  const total = rolarAtaque(A) - forcado;
-  const qaMargem = QA_W[A.die].b + QA_A[D.armClasse].b;
+  const total = rolarAtaque(A) - forcado + (A.carga?.bonus || 0);
+  const qa = QA_W[A.die] || QA_W[3];   // a Arte usa um dado fora da escada das armas
+  const qaMargem = qa.b + QA_A[D.armClasse].b;
   let dano = 0, acertou = false;
   if (total > efDef) {
     acertou = true;
@@ -140,7 +146,7 @@ function atacar(A, D, M, forcado = 0) {
       dano = Math.max(0, dmg);
     }
   } else if (total >= efDef - qaMargem) {
-    dano = Math.max(0, QA_W[A.die].d - QA_A[D.armClasse].r);
+    dano = Math.max(0, qa.d - QA_A[D.armClasse].r);
   }
 
   // Empurrão: o golpe que conecta em quem está montando o próprio atrasa o dele.
@@ -152,7 +158,15 @@ function atacar(A, D, M, forcado = 0) {
   if (K === 'espelho') K = A.spd;
   if (acertou && D.pend && K) {
     if (K === 'cancela') { D.pend = null; D.abortados = (D.abortados || 0) + 1; }
-    else if (K) { D.pend.resolveEm += K; D.proxDecl += K; }
+    else if (K) {
+      let k = K;
+      if (M.tetoAtraso) {                       // o atraso total de uma ação não passa do teto
+        const jaAtrasado = D.pend.atraso || 0;
+        k = Math.max(0, Math.min(k, Math.round(D.spd * M.tetoAtraso) - jaAtrasado));
+        D.pend.atraso = jaAtrasado + k;
+      }
+      D.pend.resolveEm += k; D.proxDecl += k;
+    }
     D.empurroesSofridos++;
     A.janelasAproveitadas++;
   }
@@ -181,10 +195,10 @@ function cena(timeA, timeB, M, tetoTicks = 4000) {
       // Foco de fogo: mira em quem tem menos PV (é o que uma mesa faz).
       const alvo = alvos.reduce((a, b) => (b.pv < a.pv ? b : a));
       // Contador da janela tática: o alvo já estava em Preparo quando declarei?
-      c.declaracoes++;
+      c.declaracoes++; c.acoesDeclaradas++;
       if (M.preparo && alvo.pend && alvo.pend.resolveEm > t) c.janelasVistas++;
       const prep = M.preparo ? c.prep : 0;
-      c.pend = { resolveEm: t + prep, alvo };
+      c.pend = { resolveEm: t + prep, alvo, atraso: 0 };
       c.proxDecl = t + c.spd;
       if (M.guardaEm === 'declara') c.guard = 0;
       // A dívida foi paga: a ação que ela empurrou acabou de sair. A janela reabre.
@@ -235,6 +249,7 @@ function cena(timeA, timeB, M, tetoTicks = 4000) {
       const alvo = c.pend.alvo;
       c.pend = null;
       if (c.pv <= 0) { c.golpesPerdidos++; continue; }     // morreu montando o golpe
+      c.acoesConcluidas++;
       let vitima = alvo;
       if (vitima.pv <= 0) {                                 // o alvo caiu antes de o golpe chegar
         const outros = inimigosDe(c);
@@ -259,6 +274,7 @@ function bateria(specA, specB, M, n = N, semente = SEED) {
   reseed(semente);
   let a = 0, b = 0, emp = 0, somaT = 0, perdidos = 0, feitos = 0;
   let janelasV = 0, janelasA = 0, empurroes = 0, aparo = 0, dividaMax = 0, decls = 0, aparosN = 0, fora = 0;
+  let artesDecl = 0, artesSai = 0;
   for (let i = 0; i < n; i++) {
     const A = lutador(specA), B = lutador(specB);
     const { r, t } = cena([A], [B], M);
@@ -269,6 +285,7 @@ function bateria(specA, specB, M, n = N, semente = SEED) {
       janelasV += c.janelasVistas; janelasA += c.janelasAproveitadas;
       empurroes += c.empurroesSofridos; aparo += c.aparosGastos;
       decls += c.declaracoes; aparosN += c.aparosFeitos; fora += c.foraDeHora;
+      if (c.nome === 'Arte') { artesDecl += c.acoesDeclaradas; artesSai += c.acoesConcluidas; }
       dividaMax = Math.max(dividaMax, c.dividaMax);
     }
   }
@@ -277,6 +294,7 @@ function bateria(specA, specB, M, n = N, semente = SEED) {
     perdidosPct: feitos ? perdidos / (feitos + perdidos) : 0,
     janelasV: janelasV / n, janelasA: janelasA / n,
     janelaTaxa: decls ? janelasV / decls : 0, aparosN: aparosN / n, fora: fora / n,
+    arteSai: artesDecl ? artesSai / artesDecl : 0, artesDecl: artesDecl / n,
     empurroes: empurroes / n, aparo: aparo / n, dividaMax,
   };
 }
@@ -294,7 +312,7 @@ linha(`Preparo por classe: leve ${PREPARO.leve} · média ${PREPARO.media} · ha
 // ---- A) sanidade: espelho ------------------------------------------------
 titulo('A) Sanidade — espelho (a mesma arma dos dois lados). Win% tem de ficar em 50%.');
 linha('  arma        modelo hoje        modelo P/R         Δ ticks de duração');
-for (const arma of Object.keys(ARMAS)) {
+for (const arma of Object.keys(ARMAS).filter((k) => ARMAS[k].cl !== 'arte')) {
   const h = bateria({ arma }, { arma }, MODELOS.hoje);
   const p = bateria({ arma }, { arma }, MODELOS.PR);
   linha(`  ${arma.padEnd(10)}  ${pct(h.win)} · ${h.ticks.toFixed(1)}t     ${pct(p.win)} · ${p.ticks.toFixed(1)}t      ${sgn(p.ticks - h.ticks)}t`);
@@ -302,7 +320,7 @@ for (const arma of Object.keys(ARMAS)) {
 
 // ---- B) round-robin: quem ganha e quem perde com o Preparo ---------------
 titulo('B) Round-robin 1v1 — win% de cada arma contra todas as outras (sem armadura).');
-const nomes = Object.keys(ARMAS);
+const nomes = Object.keys(ARMAS).filter((k) => ARMAS[k].cl !== 'arte');
 function roundRobin(M) {
   const acc = {};
   for (const a of nomes) { acc[a] = { soma: 0, n: 0 }; }
@@ -529,4 +547,48 @@ trava('sem a trava da guarda (ela se refaz)', { guardaCongela: false });
 trava('sem a trava de uma por ação', { umaPorJanela: false });
 trava('custo meia Velocidade em vez da inteira', { meio: true });
 trava('sem trava nenhuma (guarda, encadeia, meio custo)', { guardaCongela: false, umaPorJanela: false, meio: true });
+linha();
+
+// ---- M) carga voluntária: comprar Preparo por um bônus ---------------------
+titulo('M) Carga voluntária — pagar N Ticks a mais de Preparo em troca de bônus na rolagem.');
+linha('  O "Mirar" de hoje (−2 na Defesa do alvo por uma ação gasta) generalizado: o ciclo inteiro');
+linha('  cresce N Ticks e o golpe sai N Ticks mais tarde, mais exposto. Qual bônus paga isso?');
+linha('  Duelo espelho: A carrega, B joga normal. 50% = troca neutra.');
+linha();
+for (const arma of ['EspCurta', 'EspLonga', 'Martelo']) {
+  linha(`  ${arma} (Velocidade ${ARMAS[arma].spd}, Preparo ${PREPARO[ARMAS[arma].cl]})`);
+  linha('    N      +2      +4      +6      +8     +10     +12');
+  for (const n of [1, 2, 3]) {
+    const cels = [2, 4, 6, 8, 10, 12].map((b) => {
+      const r = bateria({ arma, carga: { n, bonus: b } }, { arma }, MODELOS.PR, Math.max(6000, floor(N / 2)));
+      return pct(r.win).padStart(6);
+    });
+    linha(`    ${n}   ${cels.join('  ')}`);
+  }
+  linha();
+}
+linha('  (o bônus que cruza 50% é o preço justo de 1 Tick de Preparo comprado)');
+linha();
+
+// ---- N) o feiticeiro sob pressão ------------------------------------------
+titulo('N) O feiticeiro sob pressão — a Arte é 7/0, o extremo do eixo, e o alvo mais fácil de interromper.');
+linha('  A regra do espelho foi calibrada em duelos de 1 a 2 Ticks de Preparo. Contra 7, ela pode');
+linha('  virar tranca: cada golpe que conecta adia a Arte pela Velocidade de quem bateu.');
+linha();
+linha('  regra da interrupção                     Artes que saem            win% do   duração');
+linha('                                           nu       de Placa    feiticeiro de Placa');
+function feiticeiro(lbl, M) {
+  // Dois cenários: o feiticeiro nu (que morre de qualquer jeito, e serve só para medir
+  // quantas Artes saem) e o feiticeiro protegido por Placa, que é o caso de mesa.
+  const nu = bateria({ arma: 'Arte' }, { arma: 'EspLonga' }, M, Math.max(4000, floor(N / 2)));
+  const pr = bateria({ arma: 'Arte', armadura: 'Placa' }, { arma: 'EspLonga' }, M, Math.max(4000, floor(N / 2)));
+  linha(`  ${lbl.padEnd(40)} ${pct(nu.arteSai).padStart(6)}        ${pct(pr.arteSai).padStart(6)}        ${pct(pr.win).padStart(6)}        ${pr.ticks.toFixed(1)}t`);
+}
+const FORA = { gatilho: 'janela', pen: 0, guardaCongela: true, umaPorJanela: true, teto: 99 };
+feiticeiro('sem interrupção nenhuma (referência)', MODELOS.PR);
+feiticeiro('só o empurrão passivo de 1 Tick', { ...MODELOS.PR, empurrao: 1 });
+feiticeiro('espelho, sem teto', { ...MODELOS.PR, interrupcao: 'espelho', fora: FORA });
+feiticeiro('espelho, teto = metade da Velocidade', { ...MODELOS.PR, interrupcao: 'espelho', tetoAtraso: 0.5, fora: FORA });
+feiticeiro('espelho, teto = a Velocidade inteira', { ...MODELOS.PR, interrupcao: 'espelho', tetoAtraso: 1, fora: FORA });
+feiticeiro('atraso fixo de 2 Ticks, sem teto', { ...MODELOS.PR, interrupcao: 2, fora: FORA });
 linha();
