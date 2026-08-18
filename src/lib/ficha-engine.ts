@@ -7,6 +7,7 @@ import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
 import SEC_D from '../data/habilidades-secundarias.json';
 import VIRT_D from '../data/virtudes.json';
+import ANTE_D from '../data/antecedentes.json';
 import CAM_D from '../data/caminhos.json';
 import TEC_D from '../data/tecnicas.json';
 import ARTE_D from '../data/artes.json';
@@ -70,6 +71,16 @@ export function montarFicha(opts: FichaOpts) {
   // a ficha era a única parte do sistema que não deixava. A chave é fixa (livre-1 a livre-3) e
   // o nome digitado vive à parte, em S.livreNome, para não virar chave e quebrar ao ser trocado.
   const LIVRES = ['livre-1', 'livre-2', 'livre-3'];
+  // Antecedentes: os Únicos têm um valor só; os Nomeados são listas de instâncias com
+  // nome próprio (três Reputações diferentes no mesmo personagem, cada uma com a sua régua).
+  const ANTE_UNI = (ANTE_D as any[]).filter((a) => a.formato === 'unico');
+  const ANTE_NOM = (ANTE_D as any[]).filter((a) => a.formato === 'nomeado');
+  const ANTE_INFO: Record<string, any> = Object.fromEntries((ANTE_D as any[]).map((a) => [a.id, a]));
+  /** Instância Nomeada por chave "id~uid". Devolve null se ela sumiu (ficha antiga). */
+  const anteInst = (key: string) => {
+    const [id, uid] = key.split('~');
+    return ((S.anteNom?.[id] || []) as any[]).find((x) => x.u === uid) || null;
+  };
   const ehSecLivre = (k: string) => LIVRES.includes(k);
   const nomeLivre = (k: string) => (S?.livreNome?.[k] || '').trim();
 
@@ -100,6 +111,10 @@ export function montarFicha(opts: FichaOpts) {
     else if (k === 'centelha') { p = { tipo: 'traço', nome: 'Centelha', descricao: TRACO_DESC.centelha, niveis: escala('escalaCentelha'), url: url('regras/centelha') }; }
     else if (k === 'willpower') { p = { tipo: 'traço', nome: 'Força de Vontade', descricao: TRACO_DESC.willpower, niveis: escala('escalaVontade'), url: url('regras/aparencia-virtudes-vontade') }; }
     else if (k === 'aparencia') { p = { tipo: 'traço', nome: 'Aparência', descricao: TRACO_DESC.aparencia, niveis: escala('escalaAparencia'), url: url('regras/aparencia-virtudes-vontade') }; }
+    else if (k === 'ante' || k === 'anten') {
+      const a = ANTE_INFO[k === 'ante' ? key : key.split('~')[0]];
+      if (a) p = { tipo: 'antecedente', nome: a.nome, descricao: a.descricao, niveis: a.niveis, url: url('regras/antecedentes') };
+    }
     if (p && (window as any).refModal) (window as any).refModal(p);
   }
   const CAM_ORDER = (CAM_D as any[]).map((c) => c.id);
@@ -131,7 +146,7 @@ export function montarFicha(opts: FichaOpts) {
     // a profundidade (nível da Arte) é comprada com XP. (Relação com Ocultismo será refeita nas Trilhas de Feitiçaria.)
     if (kind === 'arte2') return (S.centelha || 0) > 0 ? 6 : 0;
     const rac = kind === 'attr' ? racialAttr(key) : 0;
-    const teto: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12 };
+    const teto: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12, ante: 6, anten: 6 };
     return (teto[kind] ?? 6) + rac;
   }
 
@@ -144,7 +159,7 @@ export function montarFicha(opts: FichaOpts) {
   const EF = { soComprados: false, tudoAberto: true };
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, ante: {}, anteNom: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoXp('atributo')));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
@@ -273,6 +288,12 @@ export function montarFicha(opts: FichaOpts) {
       delete S.skills2[velho]; if (S.spec2) delete S.spec2[velho];
     }
     S.willpower ??= pisoXp('vontade'); S.aparencia ??= pisoXp('aparencia'); S.centelha ??= 0; S.raca ??= 'humano'; if (!RACA[S.raca]) S.raca = 'humano'; S.budget ??= 1500; S.derivCol ??= true; delete S.modo;   // o modo Criacao/Evolucao foi removido
+    S.ante ??= {}; S.anteNom ??= {};
+    // Cada Nomeado é uma lista; entrada sem uid ganha um, senão a linha não tem chave estável.
+    for (const a of ANTE_NOM) {
+      const arr = Array.isArray(S.anteNom[a.id]) ? S.anteNom[a.id] : [];
+      S.anteNom[a.id] = arr.map((x: any) => ({ u: x.u || novoUid(), n: String(x.n ?? ''), v: +x.v || 0 }));
+    }
     S.equip ??= {};
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
@@ -1998,11 +2019,14 @@ export function montarFicha(opts: FichaOpts) {
     Object.keys(S.tech).forEach((id) => { if (S.tech[id] && TECNIV[id]) xt += custoTecnica(TECNIV[id]); });
     (ARTE_D as any[]).forEach((a) => (xar += custoArte(S.arte[a.id] || 0)));
     (EFEITO_D as any[]).forEach((e) => { if (S.efeito[e.id]) xef += custoEfeito(e.nivel); });
+    let xan = 0;
+    ANTE_UNI.forEach((a) => (xan += custoPontos('antecedente', undefined, S.ante?.[a.id] || 0)));
+    ANTE_NOM.forEach((a) => ((S.anteNom?.[a.id] || []) as any[]).forEach((i) => (xan += custoPontos('antecedente', undefined, i.v || 0))));
     const xr = RACA[S.raca]?.custo || 0;
-    const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar + xef + xr;
+    const total = xa + xs + xsp + xv + xw + xap + xc + x2 + xt + xar + xef + xan + xr;
     el('xpSpent').textContent = String(total);
     const rem = (S.budget || 0) - total, re = el('xpRem'); re.textContent = String(rem); re.className = 'rem ' + (rem < 0 ? 'neg' : 'ok');
-    el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap}` + (xc ? ` · Centelha ${xc}` : '') + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Proezas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '') + (xef ? ` · Efeitos ${xef}` : '') + (xr ? ` · Raça ${xr}` : '');
+    el('xpBreak').innerHTML = `Atrib ${xa} · Habilidades ${xs + xsp} · Virtudes ${xv} · Vontade ${xw} · Aparência ${xap}` + (xc ? ` · Centelha ${xc}` : '') + (x2 ? ` · Secund. ${x2}` : '') + (xt ? ` · Proezas ${xt}` : '') + (xar ? ` · Artes ${xar}` : '') + (xef ? ` · Efeitos ${xef}` : '') + (xan ? ` · Antecedentes ${xan}` : '') + (xr ? ` · Raça ${xr}` : '');
     renderConjuntos(); renderDerived(); renderCombate(); renderForca(); save();
   }
 
@@ -2011,9 +2035,9 @@ export function montarFicha(opts: FichaOpts) {
   const floorOf: Record<string, number> = {
     attr: pisoXp('atributo'), skill: pisoXp('habilidadePrimaria'), skill2: pisoXp('habilidadeSecundaria'),
     virtue: pisoXp('virtude'), centelha: pisoXp('centelha'), willpower: pisoXp('vontade'),
-    aparencia: pisoXp('aparencia'), arte2: pisoXp('arte'),
+    aparencia: pisoXp('aparencia'), arte2: pisoXp('arte'), ante: 0, anten: 0,
   };
-  const valOf = (k: string, key: string) => ({ attr: S.attrs[key], skill: S.skills[key], skill2: S.skills2[key] || 0, virtue: S.virtues[key], centelha: S.centelha, willpower: S.willpower, aparencia: S.aparencia, arte2: S.arte[key] || 0 } as any)[k] || 0;
+  const valOf = (k: string, key: string) => ({ attr: S.attrs[key], skill: S.skills[key], skill2: S.skills2[key] || 0, virtue: S.virtues[key], centelha: S.centelha, willpower: S.willpower, aparencia: S.aparencia, arte2: S.arte[key] || 0, ante: S.ante?.[key] || 0, anten: anteInst(key)?.v || 0 } as any)[k] || 0;
   function refreshDots(kind: string, key: string) {
     const span = document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`); if (!span) return;
     const floor = floorOf[kind], val = valOf(kind, key);
@@ -2045,7 +2069,9 @@ export function montarFicha(opts: FichaOpts) {
     else if (kind === 'willpower') S.willpower = nv;
     else if (kind === 'aparencia') S.aparencia = nv;
     else if (kind === 'arte2') { S.arte[key] = nv; renderArtes(); }
-    if (['attr', 'virtue', 'centelha', 'willpower', 'aparencia'].includes(kind)) refreshDots(kind, key);
+    else if (kind === 'ante') S.ante[key] = nv;
+    else if (kind === 'anten') { const i = anteInst(key); if (i) i.v = nv; }
+    if (['attr', 'virtue', 'centelha', 'willpower', 'aparencia', 'ante', 'anten'].includes(kind)) refreshDots(kind, key);
     if (kind === 'aparencia') { const m = aparenciaMod(apEfetiva(nv)); const sp = document.querySelector('.apmod'); if (sp) sp.textContent = (m >= 0 ? '+' : '') + m; }
     recompute();
   }
@@ -2057,6 +2083,15 @@ export function montarFicha(opts: FichaOpts) {
     applyVal(kind, key, valOf(kind, key) + delta);
     (document.querySelector(`.dots[data-kind="${kind}"][data-key="${key}"]`) as HTMLElement)?.focus();
   }
+  // O nome da instância salva ao digitar e NÃO redesenha a seção: redesenhar tiraria o
+  // foco do campo a cada tecla. O valor já está no S, e o XP não depende do nome.
+  document.addEventListener('input', (e) => {
+    const inp = (e.target as HTMLElement)?.closest?.<HTMLInputElement>('[data-ante-nome]');
+    if (!inp || opts.readOnly) return;
+    const [id, uid] = inp.dataset.anteNome!.split('~');
+    const i = ((S.anteNom[id] || []) as any[]).find((x) => x.u === uid);
+    if (i) { i.n = inp.value; save(); }
+  });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeSpecPop(); fecharPop(); } });
   // O cartão abre no mouse e no foco. No mouse a âncora é estreita de propósito (o
   // cabeçalho da Arte, o nome do Efeito): varrer a grade de Efeitos com o ponteiro não
@@ -2084,6 +2119,24 @@ export function montarFicha(opts: FichaOpts) {
     if (nm && !(t instanceof HTMLInputElement)) { openTraitModal(nm); return; }
     const dot = t.closest<HTMLElement>('.dots .dot');
     if (dot) { if (opts.readOnly || dot.classList.contains('cap')) return; const s = dot.parentElement as HTMLElement; setDot(s.dataset.kind!, s.dataset.key!, +dot.dataset.d!); return; }
+    // Antecedentes Nomeados: criar, renomear e remover instância.
+    const anAdd = t.closest<HTMLElement>('[data-ante-add]');
+    if (anAdd && !opts.readOnly) {
+      const id = anAdd.dataset.anteAdd!;
+      (S.anteNom[id] ??= []).push({ u: novoUid(), n: '', v: 0 });
+      renderAntecedentes(); recompute();
+      // foca o campo de nome recém-criado: quem clica em "+ Aliados" quer dizer QUEM.
+      const campos = document.querySelectorAll<HTMLInputElement>(`[data-ante-nome^="${id}~"]`);
+      campos[campos.length - 1]?.focus();
+      return;
+    }
+    const anRm = t.closest<HTMLElement>('[data-ante-rm]');
+    if (anRm && !opts.readOnly) {
+      const [id, uid] = anRm.dataset.anteRm!.split('~');
+      S.anteNom[id] = ((S.anteNom[id] || []) as any[]).filter((x) => x.u !== uid);
+      renderAntecedentes(); recompute();
+      return;
+    }
     const rb = t.closest<HTMLElement>('.rollv');
     if (rb) { const [k, key] = rb.dataset.roll!.split(':'); const rd = (n: string) => document.querySelector<HTMLInputElement>(`[data-rd="${n}"]`);
       if (k === 'attr') { const a = rd('atr'); if (a) { a.value = String(S.attrs[key] || 0); a.dispatchEvent(new Event('input')); } }
@@ -2197,7 +2250,46 @@ export function montarFicha(opts: FichaOpts) {
     const modStr = mods.length ? `<span class="mods">${mods.join(' · ')}</span>. ` : '';
     el('raca-info').innerHTML = r.descricao ? `${custo}${modStr}${r.descricao}${(r.tracos || []).length ? ' <em>' + (r.tracos as string[]).join(' ') + '</em>' : ''}` : '';
   }
-  function renderAll() { syncInputs(); renderRaca(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); populateEquip(); recompute(); applyDerivCol(); applySecCol(); }
+  /**
+   * Antecedentes · o capital externo (capítulo VII).
+   *
+   * Duas naturezas na mesma seção. O **Único** é uma linha fixa, como uma Virtude:
+   * Recursos 3 é uma coisa só. O **Nomeado** é uma lista que o jogador cria, porque
+   * três Reputações diferentes no mesmo personagem são três traços separados, cada um
+   * com nome e régua própria. Por isso a chave do Nomeado é "id~uid" e não o id: o uid
+   * sobrevive a reordenar e a apagar a linha de cima, e o índice não.
+   *
+   * O teto de criação (3 em Recursos e Relíquia) aparece como aviso e NÃO trava a
+   * bolinha: o modo Criação/Evolução saiu do motor, e travar aqui seria a única
+   * trava de criação da ficha inteira.
+   */
+  function renderAntecedentes() {
+    const alvo = document.getElementById('antecedentes');
+    if (!alvo) return;
+    const teto = (a: any) => (a.tetoCriacao
+      ? ` <span class="ante-teto" title="Acima disso, só com curadoria do Mestre">criação até ${a.tetoCriacao}</span>`
+      : '');
+    let h = '<div class="ante-bloco"><h3>Únicos <small>(um valor cada)</small></h3>';
+    for (const a of ANTE_UNI) h += trow(`${a.nome}${teto(a)}`, dotsHTML('ante', a.id, S.ante[a.id] || 0, 6, 0));
+    h += '</div><div class="ante-bloco"><h3>Nomeados <small>(quantos quiser, cada um com o seu nome e a sua régua)</small></h3>';
+    for (const a of ANTE_NOM) {
+      const lista = (S.anteNom[a.id] || []) as any[];
+      h += `<div class="ante-grupo"><div class="ante-cab"><span class="ante-tit">${a.nome}${teto(a)}</span>`
+        + (opts.readOnly ? '' : `<button class="btn ante-add" data-ante-add="${a.id}" type="button">+ ${a.nome}</button>`)
+        + '</div>';
+      if (!lista.length) h += '<p class="muted ante-vazio">Nenhum comprado.</p>';
+      for (const i of lista) {
+        const key = a.id + '~' + i.u;
+        const nome = `<input class="ante-nome" data-ante-nome="${key}" value="${escapeHtml(i.n)}" placeholder="quem, o quê, onde" maxlength="40"${opts.readOnly ? ' disabled' : ''} />`;
+        const rm = opts.readOnly ? '' : `<button class="ante-rm" data-ante-rm="${key}" title="Remover" aria-label="Remover">✕</button>`;
+        h += trow(nome, dotsHTML('anten', key, i.v || 0, 6, 0) + rm);
+      }
+      h += '</div>';
+    }
+    alvo.innerHTML = h + '</div>';
+  }
+
+  function renderAll() { syncInputs(); renderRaca(); renderAttrs(); renderPower(); renderSkills(); renderSecondary(); renderCaminhos(); renderArtes(); renderAntecedentes(); populateEquip(); recompute(); applyDerivCol(); applySecCol(); }
 
   // botões
   el('f-export').addEventListener('click', () => {

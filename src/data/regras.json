@@ -473,6 +473,13 @@
       "piso": 0,
       "nota": "Metade exata da primária em todos os níveis: 3·4·5·6·7·8 · acumulado 3·7·12·18·25·33."
     },
+    "antecedente": {
+      "tipo": "acum",
+      "base": 0,
+      "mult": 3,
+      "piso": 0,
+      "nota": "O custo do próximo ponto é o novo valor × 3: 3·6·9·12·15·18 · acumulado 3·9·18·30·45·63. Fica entre a Habilidade secundária e a primária, porque é poder de campanha e não de dado. Teto 3 na criação em Recursos e Relíquia (regra de mesa, o motor não trava)."
+    },
     "especialidadePrimaria": {
       "tipo": "acum",
       "base": 8,

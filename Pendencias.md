@@ -9,9 +9,9 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 68 itens abertos · 34 [DECIDIR] · 27 [FAZER] · 5 [AUTOR]
+**Placar:** 67 itens abertos · 34 [DECIDIR] · 28 [FAZER] · 5 [AUTOR]
 Por frente: **Arcano 19** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
-Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 3
+Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
 > tabuleiro) e **I10** (as pontas soltas do jogador agindo). O detalhe das duas mora em
@@ -285,20 +285,24 @@ Detalhe em `Proezas_revisao.md`.
 
 ## E. Social, Mental e Antecedentes
 
-- [ ] **E1 · [FAZER] Antecedentes na ficha.** Duas das três entregas saíram em **17/08/2026**: o
-  **`antecedentes.json`** (14 verbetes, 84 níveis, extraído do doc e não digitado, com schema
-  próprio no validador, onde os seis níveis são obrigatórios) e o **capítulo VII**, com a prosa à
-  mão e o catálogo **gerado** do JSON entre marcadores, no molde do capítulo II. O
-  `gen-cap-antecedentes.mjs --check` entrou no `validate` e no `build`, então JSON e capítulo não
-  divergem calados. O capítulo entrou depois de Raças, e com isso **treze capítulos andaram um
-  numeral** (Ações VII→VIII … Qual Sistema XIX→XX). Ao portar, duas correções no doc de origem: a
-  folha de referência listava **Posição** e **Refúgio** como Únicos, contra as seções das duas (a
-  de Posição diz "cada instituição é uma instância"), e chamava o Aliado Animal de "Familiar". São
-  **3 Únicos** (Recursos, Linhagem, Fé) e **11 Nomeados**. **O que falta é a ficha:** a seção com
-  os 14 traços, os Nomeados como linhas que o jogador cria (nome livre + régua de 1 a 6), o custo
-  **×3** vindo de `regras.json → xp.antecedente` (a chave ainda não existe), os tetos de criação
-  (3 em Recursos e Relíquia) e a persistência. Encosta no contrato que a mesa lê, então pede
-  passada própria.
+- [x] **E1 · [FEITO 2026-08-18] Antecedentes portados: dado, capítulo e ficha.** As três entregas
+  saíram. O **`antecedentes.json`** (14 verbetes, 84 níveis, extraído do doc e não digitado) tem
+  schema próprio no validador, onde os seis níveis são obrigatórios. O **capítulo VII** traz a
+  prosa à mão e o catálogo **gerado** do JSON entre marcadores, com
+  `gen-cap-antecedentes.mjs --check` no `validate` e no `build`, então dado e capítulo não
+  divergem calados; ele entrou depois de Raças e **treze capítulos andaram um numeral** (Ações
+  VII→VIII … Qual Sistema XIX→XX). Na **ficha**, a seção fica depois das Secundárias e tem duas
+  naturezas: os **3 Únicos** são linhas fixas, e os **11 Nomeados** são listas que o jogador cria,
+  cada instância com nome livre e régua própria (três Reputações diferentes são três traços). A
+  chave de instância é `id~uid`, e não o índice, para sobreviver a apagar a linha de cima. O custo
+  saiu de `regras.json → xp.antecedente` (**×3 por ponto**: 3·6·9·12·15·18, acumulado até 63), e
+  entra na quebra de XP com nome próprio. Ao portar, duas correções no doc de origem: a folha de
+  referência listava **Posição** e **Refúgio** como Únicos, contra as seções das duas, e chamava o
+  Aliado Animal de "Familiar".
+  **Duas coisas ficaram de fora, de propósito:** o **teto de criação** (3 em Recursos e Relíquia)
+  aparece como aviso na linha e **não trava a bolinha**, porque o modo Criação/Evolução já tinha
+  saído do motor e essa seria a única trava de criação da ficha inteira; e a **ficha resumida**
+  (`FichaResumo`) ainda não mostra Antecedentes.
 - [ ] **E2 · [FAZER] Portar `Ataques_Mentais.md` ao site.** A Defesa Mental já está no motor e no
   bestiário; o capítulo (as três camadas, a duração dos efeitos, a inimizade ao despertar) não.
 - [ ] **E3 · [DECIDIR] Banda neutra da Régua de Relação: 5 ou 3?** Hoje é 5 (rompe o Neutro em 3
