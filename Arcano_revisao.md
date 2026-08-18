@@ -874,21 +874,68 @@ ela sai, come. As saídas são duas, e só uma é grátis.
 
 **1. Na sua vez, o Deslocamento livre.** `(Destreza + Atletismo) ÷ 2` metros, de graça, durante
 qualquer outra ação, inclusive atacar ou conjurar. São 1,5 m para o camponês, 3,5 para o aventureiro,
-5 para o herói. Quem leu o sinal com Ticks de sobra simplesmente **não está mais lá**, e não paga
-nada por isso.
+5 para o herói. Quem leu o sinal com Ticks de sobra simplesmente **não está mais lá**, e não paga nada
+por isso.
+
+E aqui há uma consequência da regra do último Tick que muda o que "sair da área" quer dizer: como a
+**mira e a forma só travam no fim**, durante o preparo **o molde ainda não tem lugar no chão**. Não se
+sai de uma área que ainda não existe. O que se faz é ficar **fora do alcance dela**, e o alcance do
+improviso é o próprio lado da base, porque a área nasce no feiticeiro e nunca é colocada. No grau 6
+isso são 5,2 m de raio útil contra um passo grátis de 3,5 m: **andando você não escapa, correndo sim**
+(7 m no primeiro Tick da Corrida). É por isso que a mesa não precisa de gabarito desenhado durante os
+sete Ticks: o que está em jogo é distância do feiticeiro, não a borda de um desenho.
 
 **2. Fora da vez, no Tick em que a Arte sai: o desvio de emergência.** Custa **1 Tick por metro** que
 falte para o corpo sair, e esses Ticks **empurram para frente a próxima ação do alvo**. É a única
 coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque **não é grátis**:
 é emprestada do próprio futuro, como uma ação lenta atrasa a seguinte.
 
-<p class="formula">Ticks de desvio = metros até ficar fora, pela direção mais barata</p>
+<p class="formula">Ticks de desvio = metros até ficar fora, pela direção mais barata<br />
+Dificuldade = 8 + 2 × esses mesmos metros</p>
 
-| Onde o alvo está | Metros até fora | Custa |
-|---|---|---|
-| **Borda** do molde | ~1 m | 1 Tick |
-| Meio de um molde pequeno | 2 m | 2 Ticks |
-| **Núcleo** de um molde grande | 3 a 4 m | 3 a 4 Ticks |
+**A distância é a única variável, e ela move as duas coisas: o preço e o risco.** Um metro na borda é
+Dificuldade **10**, que a régua do capítulo de Ações chama de Média; quatro metros no núcleo é **16**,
+acima do Difícil. É cobrar duas vezes pela mesma distância, e é de propósito: atravessar mais elemento
+é mais lento **e** mais arriscado.
+
+| Onde o alvo está | Metros até fora | Custa | Dificuldade |
+|---|---|---|---|
+| **Borda** do molde | 1 m | 1 Tick | **10** |
+| Meio de um molde pequeno | 2 m | 2 Ticks | 12 |
+| **Núcleo** de um molde grande | 3 a 4 m | 3 a 4 Ticks | 14 a **16** |
+
+**Uma Dificuldade só, e a Margem dá o segundo patamar.** Não são dois números: é o número e a régua de
+Margem que o sistema já usa, exatamente como a tabela do veneno no capítulo *Resistir*.
+
+| Resultado do desvio | O alvo sofre |
+|---|---|
+| Passa por uma **Margem** (6 acima) | **nada**: saiu antes de a coisa fechar |
+| Passa | **metade**, arredondando para cima: pegou a beirada ao sair |
+| Falha | o dano **inteiro** |
+| Falha por uma Margem | o dano inteiro **e cai**: foi pego no meio do movimento |
+
+Três condições fecham a regra:
+
+- **Para rolar é preciso tentar sair de verdade.** Quem fica no lugar não testa e come inteiro. Não
+  existe "me encolho e rolo os dados".
+- **Os Ticks são gastos de qualquer maneira**, passando ou falhando. É o que torna a decisão uma
+  decisão, e não um bônus grátis.
+- **Ter identificado o efeito rende bônus na jogada:** +2 no total, ou **+4** se a identificação
+  passou com Margem. Lê-se cedo para escapar melhor, e é o prêmio do teste de Ocultismo.
+
+E o número faz o que se queria dele, que é deixar **ficar parado** ser uma escolha defensável. Contra
+uma Arte de grau 6 (6d6, 21 de dano médio), o dano poupado por Tick gasto:
+
+| Quem tenta | Borda, 1 m | 2 m | 3 m | Núcleo, 4 m |
+|---|---|---|---|---|
+| Soldado (Des 3 + Esq 2) | 2,9 | 0,9 | 0 | 0 |
+| Aventureiro (4 + 3) | 9,5 | 5,7 | 2,8 | **1,0** |
+| Veterano (5 + 4) | 15,8 | 12,4 | 8,6 | 5,2 |
+| Herói (5 + 5) | 17,5 | 14,7 | 11,4 | 7,9 |
+
+O aventureiro tenta na borda sem pensar e **fica parado no núcleo**, porque quatro Ticks para poupar um
+ponto de dano é um mau negócio. O veterano tenta em qualquer lugar. O soldado só tenta na borda. E o
+camponês nunca passa de 10, o que também está certo: gente comum não sai de dentro de uma explosão.
 
 **As três direções valem, e todas cobram.** Sair pelos lados, **jogar-se ao chão** (quando a faixa do
 elemento não encosta no piso) ou **saltar por cima** (quando ela é rasteira) são a mesma conta: o que
@@ -918,12 +965,16 @@ que um passo. **É argumento de peso na A22**, e não estava na mesa quando ela 
 
 ### O que continua aberto
 
-1. **A Dificuldade do teste de desvio.** Está decidido que desviar custa Ticks **e** pede teste; o
-   número, não. Três candidatos: a Dificuldade fixa do Efeito (`(nível da Arte) × 4`, a régua que 16
-   Efeitos já usam), uma régua própria mais mansa porque a área acerta muita gente de uma vez, ou a
-   própria distância a vencer virando a Dificuldade.
-2. **Falhar custa os Ticks?** Falhando, o alvo come o efeito. Falta dizer se ele paga os Ticks de
-   qualquer maneira (tentou e se atrapalhou) ou se falhar significa que nem saiu do lugar.
+1. **A calibragem de `8 + 2 × metros` precisa de mesa.** A forma está decidida e os números são
+   provisórios: eles foram escolhidos para que o aventureiro tente na borda e desista no núcleo, e
+   isso confere na conta, mas nunca passou por jogo. Os dois botões são o **8** (que move todo mundo)
+   e o **2 por metro** (que move só quem está fundo). Descartado no caminho: usar a régua dos Efeitos
+   (`(nível da Arte) × 4`), porque ela faria o grau da Arte cobrar uma quarta vez, depois de já ter
+   comprado tamanho, dano e duração.
+2. **Metade por cobertura e metade por desvio não deveriam se multiplicar.** Quem está com só as
+   pernas dentro da faixa já sofre metade por física (§5.5, mais acima), e passando no desvio sofreria
+   metade disso. Um quarto é pouco, e a regra fica com duas metades de origens diferentes. A saída
+   provável é **vale a melhor das duas, não o produto**, mas falta decidir.
 3. **A Dificuldade da identificação, e o quanto ela cai por Tick.** Precisa casar com a régua do
    capítulo de Ações (5 · 10 · 15 · 20 · 25 · 30) e com o fato de que o teste é escolha de momento.
 4. **A pendência 14 virou central.** Com cinco a sete Ticks de exposição, quebrar a conjuração é a
@@ -1438,11 +1489,16 @@ Dificuldade caindo a cada Tick e **um teste por efeito**; a área **não se esqu
 e as saídas são o **Deslocamento livre** na própria vez (grátis) ou o **desvio de emergência** fora
 da vez, a **1 Tick por metro** até ficar fora, pelos lados, pelo chão ou por cima.
 
-Sobrou o que a §5.5 lista no fim, e são três números e uma promoção: a **Dificuldade do desvio**, se
-**falhar custa os Ticks**, a **Dificuldade da identificação** (e o quanto ela cai por Tick), e a
-pendência **14**, que virou central porque quebrar a conjuração passou a ser a contrajogada do corpo
-a corpo. As **Proezas de Destreza** ficaram registradas como o lugar da exceção, no formato "sair mais
-barato" e nunca no formato "rolar para desviar".
+O desvio também fechou de forma, no mesmo dia: **Dificuldade = 8 + 2 × metros até ficar fora**, uma
+Dificuldade só com a **Margem** dando o patamar de dano zero (passa por Margem nada · passa metade ·
+falha inteiro · falha por Margem inteiro e cai), **Ticks gastos mesmo falhando**, só rola quem tenta
+sair de verdade, e **identificar o efeito rende +2** (ou +4 com Margem).
+
+Sobrou a **calibragem** desses números, que nunca passou por mesa; a pergunta de **metade por cobertura
+e metade por desvio não se multiplicarem**; a **Dificuldade da identificação** e o quanto ela cai por
+Tick; e a pendência **14**, que virou central porque quebrar a conjuração passou a ser a contrajogada
+do corpo a corpo. As **Proezas de Destreza** ficaram registradas como o lugar da exceção, no formato
+"sair mais barato" e nunca no formato "rolar para desviar".
 
 ---
 

@@ -138,16 +138,19 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   não prende ninguém. A do modelo da **altura** tem raio de **5,20 m**: sair custa até 5 Ticks, e é o
   primeiro molde do jogo que não caiba num passo grátis. Se o Volume tem de valer contra quem pode se
   mexer, o modelo da altura é o único dos dois que entrega isso.
-- [ ] **A23 · [DECIDIR] Os três números que faltam na área.** Aberto em 2026-08-18 pela **§5.5** do
-  `Arcano_revisao.md`, que fechou a mecânica e deixou os números. (1) **A Dificuldade do teste de
-  desvio**: desviar de uma área custa Ticks (1 por metro) **e** pede teste, e o número não está
-  escolhido. Candidatos: a régua dos Efeitos (`(nível da Arte) × 4`, que no grau 6 dá 24 e ninguém
-  passa), uma régua própria mais mansa porque a área acerta muita gente de uma vez, ou a distância a
-  vencer virando a Dificuldade. (2) **Falhar custa os Ticks?** (3) **A Dificuldade da identificação**
-  (Inteligência + Ocultismo para saber o que está sendo conjurado) e **o quanto ela cai a cada Tick**
-  de preparo. Junto vai a promoção da pendência 14 do doc: a Dificuldade do teste de concentração
-  virou central, porque quebrar a conjuração nos 5 a 7 Ticks de preparo é a contrajogada do corpo a
-  corpo, e falta dizer se ela vale para o preparo e se o Mana volta.
+- [ ] **A23 · [DECIDIR] A calibragem da área, e a Dificuldade de identificar.** Aberto em 2026-08-18
+  pela **§5.5** do `Arcano_revisao.md`. O **desvio já tem forma e número provisório**:
+  `Dificuldade = 8 + 2 × metros até ficar fora` (borda 1 m = 10, núcleo 4 m = 16), uma Dificuldade só
+  com a **Margem** dando o dano zero, **Ticks gastos mesmo falhando**, e **+2 por ter identificado** o
+  efeito (+4 com Margem). Os números foram escolhidos para que o aventureiro tente na borda (9,5 de
+  dano poupado por Tick) e desista no núcleo (1,0), e isso confere na conta mas **não passou por mesa**.
+  O que falta: (1) a **calibragem** dos dois botões, o 8 e o 2 por metro; (2) **metade por cobertura
+  vertical e metade por desvio não deveriam se multiplicar** (provavelmente vale a melhor das duas);
+  (3) a **Dificuldade da identificação** (Inteligência + Ocultismo) e o quanto ela cai a cada Tick de
+  preparo, sendo `5 + 2 × Ticks restantes` a proposta em pé. Junto vai a promoção da pendência 14 do
+  doc: a Dificuldade do teste de concentração virou central, porque quebrar a conjuração nos 5 a 7
+  Ticks de preparo é a contrajogada do corpo a corpo, e falta dizer se ela vale para o preparo e se o
+  Mana volta.
 - [ ] **A21 · [DECIDIR] A base da fatia fica em corda ou vai para arco.** Aberta em 2026-08-17, e as
   três versões estão medidas na bancada, no controle **Base**. Na **corda** a base é uma reta a
   `distância` metros e o chão é um triângulo. No **arco** o lado do triângulo vira **raio**: no grau 6
