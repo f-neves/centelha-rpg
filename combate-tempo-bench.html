@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bancada da Linha do Tempo · Centelha</title>
+<style>
+:root {
+  --bg: #14100c; --painel: #1c1712; --painel2: #241d16; --linha: #3a2f24;
+  --ink: #e8e0d0; --ink-soft: #a89880; --acento: #c9a227; --acento2: #7fb3a5;
+  --bom: #6fbf73; --ruim: #d4736a; --morno: #d9b04a;
+  --fonte: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--fonte); }
+header { padding: 1.4rem 1.6rem .9rem; border-bottom: 1px solid var(--linha); background: linear-gradient(180deg,#1e1811,#14100c); }
+h1 { margin: 0 0 .2rem; font-size: 1.35rem; letter-spacing: .02em; }
+h1 small { color: var(--acento); font-weight: 400; font-size: .72em; letter-spacing: .14em; text-transform: uppercase; display: block; margin-bottom: .25rem; }
+.sub { color: var(--ink-soft); font-size: .88rem; max-width: 90ch; }
+nav.abas { display: flex; gap: .3rem; padding: .6rem 1.6rem 0; border-bottom: 1px solid var(--linha); flex-wrap: wrap; background: #191410; position: sticky; top: 0; z-index: 20; }
+nav.abas button { background: transparent; border: 1px solid transparent; border-bottom: none; color: var(--ink-soft); padding: .5rem .9rem; border-radius: 6px 6px 0 0; cursor: pointer; font: inherit; font-size: .9rem; }
+nav.abas button:hover { color: var(--ink); }
+nav.abas button.on { background: var(--painel); border-color: var(--linha); color: var(--acento); }
+main { padding: 1.2rem 1.6rem 4rem; max-width: 1500px; }
+section.aba { display: none; }
+section.aba.on { display: block; }
+.grade { display: grid; grid-template-columns: 320px 1fr; gap: 1.2rem; align-items: start; }
+@media (max-width: 1000px) { .grade { grid-template-columns: 1fr; } }
+.painel { background: var(--painel); border: 1px solid var(--linha); border-radius: 8px; padding: .9rem 1rem; }
+.painel h3 { margin: 0 0 .6rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--acento); }
+.painel.grudado { position: sticky; top: 3.4rem; max-height: calc(100vh - 4.5rem); overflow: auto; }
+fieldset { border: 1px solid var(--linha); border-radius: 6px; margin: 0 0 .8rem; padding: .55rem .7rem .7rem; }
+legend { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-soft); padding: 0 .3rem; }
+label.linha { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .28rem 0; font-size: .86rem; }
+label.linha span.rot { color: var(--ink-soft); }
+input[type=number], select { background: #100d0a; color: var(--ink); border: 1px solid var(--linha); border-radius: 4px; padding: .22rem .35rem; font: inherit; font-size: .84rem; width: 5.6rem; }
+select { width: 8.4rem; }
+input[type=checkbox] { accent-color: var(--acento); width: 1rem; height: 1rem; }
+button.acao { background: var(--acento); color: #1a1409; border: none; border-radius: 5px; padding: .5rem .9rem; font: inherit; font-weight: 600; cursor: pointer; }
+button.acao:hover { filter: brightness(1.1); }
+button.acao.fantasma { background: transparent; border: 1px solid var(--linha); color: var(--ink); font-weight: 400; }
+button.acao[disabled] { opacity: .5; cursor: wait; }
+.botoes { display: flex; gap: .5rem; flex-wrap: wrap; margin: .3rem 0 1rem; }
+.cartao { background: var(--painel); border: 1px solid var(--linha); border-radius: 8px; padding: .9rem 1.1rem; margin: 0 0 1rem; }
+.cartao h4 { margin: 0 0 .5rem; font-size: 1rem; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.selo { font-size: .64rem; text-transform: uppercase; letter-spacing: .1em; padding: .12rem .45rem; border-radius: 999px; border: 1px solid; }
+.selo.decidido { color: var(--bom); border-color: #2f5c33; background: #16240f; }
+.selo.aberto { color: var(--morno); border-color: #5c4a1f; background: #241d0f; }
+.selo.desenhado { color: var(--acento2); border-color: #2c4f49; background: #0f2320; }
+.nota { color: var(--ink-soft); font-size: .86rem; margin: .5rem 0 0; }
+.knob { font-size: .7rem; color: var(--acento); border: 1px dashed #5c4a1f; border-radius: 4px; padding: 0 .3rem; }
+ol.bordas { margin: .2rem 0 0; padding-left: 1.2rem; }
+ol.bordas li { margin: .35rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .84rem; margin: .3rem 0 .8rem; }
+th, td { border-bottom: 1px solid var(--linha); padding: .3rem .5rem; text-align: right; }
+th:first-child, td:first-child { text-align: left; }
+thead th { color: var(--acento); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; border-bottom-color: #5a4a33; }
+tbody tr:hover { background: #221b14; }
+table.mini td, table.mini th { font-size: .84rem; }
+.num { font-family: var(--mono); }
+.bom { color: var(--bom); } .ruim { color: var(--ruim); } .morno { color: var(--morno); }
+.resultado { background: var(--painel2); border: 1px solid var(--linha); border-radius: 8px; padding: .8rem 1rem; margin: 0 0 1rem; }
+.resultado h4 { margin: 0 0 .2rem; font-size: .95rem; color: var(--acento); }
+.resultado p.expl { color: var(--ink-soft); font-size: .85rem; margin: .1rem 0 .7rem; max-width: 95ch; }
+pre.log { background: #100d0a; border: 1px solid var(--linha); border-radius: 6px; padding: .7rem .9rem; font: 12.5px/1.5 var(--mono); overflow: auto; max-height: 60vh; white-space: pre-wrap; }
+pre.log b { color: var(--acento); }
+.status { color: var(--ink-soft); font-size: .82rem; min-height: 1.2em; }
+.aviso { border-left: 3px solid var(--acento); background: #221b12; padding: .6rem .9rem; border-radius: 0 6px 6px 0; margin: 0 0 1.2rem; font-size: .88rem; color: #ddd2ba; }
+.barra { display: inline-block; height: .55rem; border-radius: 2px; vertical-align: middle; }
+.legenda { color: var(--ink-soft); font-size: .78rem; margin: .2rem 0 .8rem; }
+.trilho { font-family: var(--mono); font-size: 12px; line-height: 1.35; white-space: pre; overflow-x: auto; background:#100d0a; border:1px solid var(--linha); border-radius:6px; padding:.7rem .9rem; }
+.trilho .prep { color: #e0b84c; }
+.trilho .rec { color: #6d7f8a; }
+.trilho .sai { color: var(--bom); font-weight: 700; }
+</style>
+</head>
+<body>
+<header>
+  <h1><small>Centelha · banco de provas</small>Bancada da Linha do Tempo do Combate</h1>
+  <p class="sub">Preparo e Recuperação, a ação fora de hora e a dívida de Ticks. Todo número de regra é
+  um botão do painel; toda afirmação do documento é uma bateria que roda aqui. O motor é o mesmo de
+  <code>scripts/lib-tempo.mjs</code>, inlinado sem uma linha de diferença, e o catálogo é o de verdade
+  (<code>armas.json</code>, <code>armaduras.json</code>). Página gerada por
+  <code>scripts/gen-bench-tempo.mjs</code>.</p>
+</header>
+
+<nav class="abas">
+  <button data-aba="regras" class="on">As regras</button>
+  <button data-aba="provas">As provas</button>
+  <button data-aba="duelo">Duelo narrado</button>
+  <button data-aba="catalogo">Catálogo</button>
+</nav>
+
+<main>
+<section class="aba on" id="aba-regras">
+  <div class="aviso"><b>Como ler os números desta bancada.</b> O robô é ganancioso: usa toda regra nova
+  sempre que ela é legal, o que é mais agressivo do que qualquer mesa. Os desvios medidos são o
+  <b>teto do abuso</b>, não a jogada esperada. Um resultado perto da referência quer dizer "nem usado ao
+  máximo isso quebra". Não prova que a regra é divertida, só que ela não desmonta.</div>
+  <div id="regras"></div>
+</section>
+
+<section class="aba" id="aba-provas">
+  <div class="grade">
+    <div class="painel grudado" id="painel"></div>
+    <div>
+      <div class="botoes">
+        <button class="acao" data-bat="roundrobin">Round-robin por arma</button>
+        <button class="acao" data-bat="classes">Média por classe</button>
+        <button class="acao" data-bat="refrega">Refrega 3v3</button>
+        <button class="acao" data-bat="janela">A janela tática</button>
+        <button class="acao" data-bat="armadura">Contra armadura</button>
+        <button class="acao" data-bat="carga">Carga voluntária</button>
+        <button class="acao" data-bat="feiticeiro">Feiticeiro sob pressão</button>
+        <button class="acao" data-bat="distancia">Arqueiro e distância</button>
+        <button class="acao" data-bat="travas">As travas do preço</button>
+        <button class="acao fantasma" data-bat="tudo">Rodar tudo</button>
+        <button class="acao fantasma" id="limpar">Limpar</button>
+      </div>
+      <p class="status" id="status"></p>
+      <div id="saida"></div>
+    </div>
+  </div>
+</section>
+
+<section class="aba" id="aba-duelo">
+  <div class="grade">
+    <div class="painel grudado" id="painel-duelo"></div>
+    <div>
+      <div class="botoes">
+        <button class="acao" id="narrar">Narrar um duelo</button>
+        <button class="acao fantasma" id="narrar-outro">Outra semente</button>
+      </div>
+      <p class="legenda">O trilho mostra cada combatente numa linha: <span class="prep">▓ Preparo</span>
+      (visível, interrompível) · <span class="rec">░ Recuperação</span> (exposto, não interrompível) ·
+      <span class="sai">█ o golpe sai</span>. É o desenho que a aba de Combate da mesa deveria ter.</p>
+      <div id="trilho"></div>
+      <pre class="log" id="log"></pre>
+    </div>
+  </div>
+</section>
+
+<section class="aba" id="aba-catalogo">
+  <p class="legenda">O catálogo real, com o Preparo que a régua atribui a cada classe. Mexa no painel da
+  aba "As provas" e volte aqui: os números acompanham.</p>
+  <div id="catalogo"></div>
+</section>
+</main>
+
+<script>
+// ===================== o motor, inlinado de scripts/lib-tempo.mjs =====================
+// lib-tempo.mjs — o motor da linha do tempo do combate.
+//
+// UM motor só, usado por dois lugares:
+//   · `scripts/sim-ticks.mjs`, o relatório em lote no terminal;
+//   · `combate-tempo-bench.html`, a bancada interativa (gerada por `gen-bench-tempo.mjs`,
+//     que inlina ESTE arquivo dentro da página).
+// Se os dois divergirem, o teste deixa de valer, então não existe uma segunda cópia.
+//
+// O motor NÃO carrega dado nenhum: quem chama passa o catálogo (armas.json, armaduras.json)
+// já lido. Assim ele roda igual no Node e no navegador.
+//
+// O que ele implementa, além das regras do capítulo IX:
+//   · Preparo/Recuperação (P + R = a Velocidade de hoje), com o Preparo por classe;
+//   · a guarda que se refaz no golpe ou na declaração (interruptor);
+//   · redirecionar o golpe quando o alvo cai antes de ele sair;
+//   · a ação fora de hora, paga com Ticks do próprio futuro;
+//   · a interrupção (espelho, atraso fixo ou cancelamento);
+//   · a carga voluntária (comprar Preparo por bônus na rolagem);
+//   · o aparo desesperado (a variante que compra Defesa, e que os testes reprovaram).
+
+// ---------------------------------------------------------------- gerador semeado
+// Um teste de balanceamento que muda de resposta a cada rodada não serve para decidir nada.
+function criarRng(semente) {
+  let s = (semente >>> 0) || 1;
+  const rnd = () => {
+    s ^= s << 13; s >>>= 0;
+    s ^= s >>> 17;
+    s ^= s << 5; s >>>= 0;
+    return s / 4294967296;
+  };
+  rnd.reseed = (n) => { s = (n >>> 0) || 1; };
+  rnd.d6 = () => 1 + Math.floor(rnd() * 6);
+  return rnd;
+}
+
+// ---------------------------------------------------------------- tabelas do sistema
+// Quase-Acerto, por classe de arma e de armadura (capítulo XII).
+const QA_ARMA = {
+  leve: { b: 3, d: 2 }, media: { b: 2, d: 4 }, pesada: { b: 1, d: 6 },
+  haste: { b: 2, d: 4 }, distancia: { b: 2, d: 4 }, arremesso: { b: 2, d: 4 },
+};
+const QA_ARMAD = {
+  nenhuma: { b: 0, r: 0 }, leve: { b: 1, r: 0 }, media: { b: 2, r: 2 }, pesada: { b: 3, r: 4 },
+};
+const CAT_DANO = { corte: 'corte', impacto: 'impacto', perfurante: 'perfuracao' };
+
+/** Os parâmetros que a bancada deixa mexer. Tudo que é número de regra mora aqui. */
+const REGRAS_PADRAO = {
+  // --- fase 1: a régua
+  preparo: { leve: 0, media: 1, haste: 0, pesada: 2, distancia: 2, arremesso: 0, arte: 7 },
+  usarPreparo: true,
+  guardaEm: 'resolve',        // 'resolve' | 'declara'
+  redirecionar: true,
+  pressao: 2,                 // Guarda sob pressão: −2 por ataque feito ou recebido
+
+  // --- fase 2: agir fora da vez
+  fora: {
+    ligada: true,
+    gatilho: 'janela',        // 'janela' | 'finalizar' | 'ambos' | 'sempre' | 'nunca'
+    custo: 1,                 // fração da Velocidade da ação (1 = a Velocidade inteira)
+    pen: 0,                   // penalidade na rolagem
+    guardaCongela: true,      // a guarda NÃO se refaz na próxima ação
+    umaPorJanela: true,       // uma ação fora de hora por ação sua
+    emPreparoPodeReagir: false, // quem está montando um golpe não reage
+    antesDaPrimeira: false,   // não dá para agir fora da hora antes da sua estreia na cena
+                              // (senão a dívida dissolve a penalidade de Iniciativa)
+    teto: 99,                 // teto de dívida acumulada (a trava de "uma por ação" já basta)
+  },
+  interrupcao: 'espelho',     // 'espelho' | número de Ticks | 'cancela' | 0
+  tetoAtraso: 0,              // 0 = sem teto; senão, fração da Velocidade da ação atrasada
+
+  // --- carga voluntária
+  carga: { bonusPorTick: 2, teto: 3 },
+
+  // --- a variante reprovada, mantida para poder mostrar que ela quebra
+  aparo: null,                // { custo, bonus, limiar, teto, umaPorJanela, umaPorCena }
+};
+
+/** Mistura profunda de regras (para a bancada mexer num campo sem repetir o resto). */
+function comRegras(base, patch = {}) {
+  const out = { ...base };
+  for (const [k, v] of Object.entries(patch)) {
+    out[k] = (v && typeof v === 'object' && !Array.isArray(v) && base[k] && typeof base[k] === 'object')
+      ? { ...base[k], ...v } : v;
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------- catálogo → motor
+/** Traduz uma linha de `armas.json` para o que o motor precisa. */
+function montarArma(w) {
+  const principal = (w.modos || []).find((m) => m.principal) || { tipo: w.tipoDano, perf: 0 };
+  return {
+    id: w.id, nome: w.nome, classe: w.classe,
+    ticks: w.ticks,
+    dado: w.dado, danoBonus: w.danoBonus || 0,
+    acerto: w.acerto || 0,
+    maos: w.maos,
+    // A haste de estocada (Lança e afins) traz `forcaMult: 1` no dado: ela fere por alcance e
+    // precisão, não por peso, e NÃO soma o dobro da Força como as outras de duas mãos.
+    forcaMult: w.forcaMult ?? (w.maos === 2 ? 2 : 1),
+    modo: principal.tipo, perf: principal.perf || 0,
+    pen: w.pen || 0,
+    distancia: (w.tags || []).includes('distância'),
+    projetilVeloz: (w.tags || []).includes('projétil veloz'),
+  };
+}
+
+/** Traduz uma linha de `armaduras.json`. */
+function montarArmadura(a) {
+  return {
+    id: a.id, nome: a.nome, classe: a.classe,
+    soak: a.soak, resistPerf: a.resistPerf || 0, penalidade: a.penalidade || 0,
+  };
+}
+
+// ---------------------------------------------------------------- lutador
+function lutador(spec, cat) {
+  const w = cat.armas[spec.arma] || Object.values(cat.armas)[0];
+  const a = cat.armaduras[spec.armadura || 'nenhuma'] || cat.armaduras.nenhuma;
+  const R = spec.regras;
+  const cargaN = spec.carga?.n || 0;
+  const prepBase = R.usarPreparo ? (R.preparo[w.classe] ?? 0) : 0;
+  return {
+    // ficha
+    nome: spec.rotulo || w.nome, arma: w, armadura: a,
+    ah: spec.ah ?? 10, centelha: spec.centelha ?? 1, vigor: spec.vigor ?? 4,
+    forca: spec.forca ?? 4, pvMax: spec.pv ?? 37, pv: spec.pv ?? 37,
+    // tempo
+    spd: w.ticks + cargaN, prep: prepBase + cargaN, carga: spec.carga || null,
+    // estado
+    guard: 0, guardaTravada: false, proxDecl: 0, pend: null,
+    divida: 0, dividaMax: 0, aparosNaJanela: 0, foraNaJanela: 0, ticksDevidos: 0,
+    interrompendo: false,
+    // contadores
+    golpesFeitos: 0, golpesPerdidos: 0, redirecionados: 0, danoCausado: 0,
+    acoesDeclaradas: 0, acoesConcluidas: 0, declaracoes: 0, jaAgiu: false,
+    foraDeHora: 0, aparosFeitos: 0, aparosGastos: 0,
+    empurroesSofridos: 0, janelasVistas: 0, janelasAproveitadas: 0,
+  };
+}
+
+const defesaBase = (c) => c.ah * 2 + c.centelha * 2 - c.armadura.penalidade;
+const dadosPool = (c) => Math.floor(c.ah / 2);
+
+// ---------------------------------------------------------------- o golpe
+/**
+ * Resolve um golpe. `log` recebe linhas do narrador (ou null).
+ * Devolve { dano, total, defesa, acertou, margem, raspao }.
+ */
+function atacar(A, D, R, rnd, log = null) {
+  A.golpesFeitos++;
+  let efDef = defesaBase(D) - R.pressao * D.guard;
+
+  // A variante reprovada: comprar Defesa com Ticks. Fica aqui para a bancada poder
+  // ligar e ver o combate dobrar de tamanho.
+  if (R.aparo && D.pv > 0 && D.pv / D.pvMax < R.aparo.limiar
+      && D.divida + R.aparo.custo <= (R.aparo.teto ?? 99)
+      && !(R.aparo.umaPorJanela && D.aparosNaJanela > 0)
+      && !(R.aparo.umaPorCena && D.aparosFeitos > 0)) {
+    efDef += R.aparo.bonus;
+    D.divida += R.aparo.custo; D.dividaMax = Math.max(D.dividaMax, D.divida);
+    D.aparosGastos += R.aparo.custo; D.aparosFeitos++; D.aparosNaJanela++;
+    D.proxDecl += R.aparo.custo;
+    if (D.pend) D.pend.resolveEm += R.aparo.custo;
+    if (log) log(`${D.nome} apara na marra: +${R.aparo.bonus} de Defesa por ${R.aparo.custo} Ticks de dívida.`);
+  }
+
+  // Rolagem: [(Atributo + Habilidade) / 2]d6, +2 se ímpar, + acerto da arma + Centelha×2
+  // − penalidade de armadura − penalidade da arma, − a penalidade da ação fora de hora,
+  // + o bônus da carga voluntária.
+  let total = 0;
+  for (let i = 0; i < dadosPool(A); i++) total += rnd.d6();
+  total += (A.ah % 2 ? 2 : 0) + A.arma.acerto + A.centelha * 2
+    - A.armadura.penalidade - A.arma.pen
+    - (A.penalidadeAgora || 0)
+    + (A.carga ? (A.carga.n * R.carga.bonusPorTick) : 0);
+
+  const qa = QA_ARMA[A.arma.classe] || QA_ARMA.media;
+  const qaMargem = qa.b + (QA_ARMAD[D.armadura.classe] || QA_ARMAD.nenhuma).b;
+  let dano = 0, acertou = false, margem = 0, raspao = false;
+
+  if (total > efDef) {
+    acertou = true;
+    margem = Math.floor((total - efDef) / 6);
+    const cat = CAT_DANO[A.arma.modo] || 'impacto';
+    const armSoak = D.armadura.soak[cat] || 0;
+    const soakNat = A.arma.modo === 'impacto' ? D.vigor + D.centelha : D.centelha;
+    const soak = soakNat + armSoak;
+    const gateFechado = A.arma.modo === 'perfurante' && A.arma.perf < D.armadura.resistPerf;
+    if (!gateFechado) {
+      let d = A.forca * A.arma.forcaMult + A.arma.danoBonus - soak;
+      for (let i = 0; i < A.arma.dado + margem; i++) d += rnd.d6();
+      dano = Math.max(0, d);
+    } else if (log) {
+      log(`${A.nome} acerta, mas a ponta resvala na armadura (Perfuração ${A.arma.perf} contra Nível ${D.armadura.resistPerf}).`);
+    }
+  } else if (total >= efDef - qaMargem) {
+    raspao = true;
+    dano = Math.max(0, qa.d - (QA_ARMAD[D.armadura.classe] || QA_ARMAD.nenhuma).r);
+  }
+
+  // Interrupção: o golpe que conecta em quem está montando uma ação.
+  if (acertou && D.pend) {
+    let K = A.interrompendo ? R.interrupcao : 0;
+    if (K === 'espelho') K = A.spd;
+    if (K === 'cancela') {
+      D.pend = null; D.empurroesSofridos++; A.janelasAproveitadas++;
+      if (log) log(`A ação de ${D.nome} se perde: o golpe quebrou o gesto no meio.`);
+    } else if (K) {
+      let k = K;
+      if (R.tetoAtraso) {
+        const ja = D.pend.atraso || 0;
+        k = Math.max(0, Math.min(k, Math.round(D.spd * R.tetoAtraso) - ja));
+        D.pend.atraso = ja + k;
+      }
+      D.pend.resolveEm += k; D.proxDecl += k;
+      D.empurroesSofridos++; A.janelasAproveitadas++;
+      if (k && log) log(`Espelho: a ação de ${D.nome} atrasa ${k} Ticks (o que ${A.nome} pagou).`);
+    }
+  }
+
+  D.pv -= dano;
+  A.danoCausado += dano;
+  A.guard += R.pressao; D.guard += R.pressao;
+  if (log) {
+    const como = acertou ? `acerta (${total} contra ${efDef}${margem ? `, ${margem} de Margem` : ''})`
+      : raspao ? `raspa (${total} contra ${efDef})` : `erra (${total} contra ${efDef})`;
+    log(`${A.nome} ${como} e causa ${dano}. ${D.nome} fica com ${Math.max(0, D.pv)} de Vida.`);
+  }
+  return { dano, total, defesa: efDef, acertou, margem, raspao };
+}
+
+// ---------------------------------------------------------------- a cena
+/**
+ * Roda uma cena até alguém cair. Devolve { vencedor, ticks, log }.
+ * `timeA` e `timeB` são listas de lutadores já montados.
+ */
+function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } = {}) {
+  const todos = [...timeA, ...timeB];
+  const linhas = [];
+  const log = narrar ? (s) => linhas.push(s) : null;
+  const inimigosDe = (c) => (timeA.includes(c) ? timeB : timeA).filter((x) => x.pv > 0);
+
+  for (const c of todos) c.proxDecl = 1 + Math.floor(rnd() * c.spd);
+  if (log) for (const c of todos) log(`[T${c.proxDecl}] ${c.nome} entra na linha (Velocidade ${c.spd}, Preparo ${c.prep}).`);
+
+  for (let t = 1; t <= tetoTicks; t++) {
+    // 1) declarações
+    for (const c of todos) {
+      if (c.pv <= 0 || c.pend || c.proxDecl !== t) continue;
+      const alvos = inimigosDe(c);
+      if (!alvos.length) continue;
+      const alvo = alvos.reduce((a, b) => (b.pv < a.pv ? b : a));
+      c.declaracoes++; c.acoesDeclaradas++; c.jaAgiu = true;
+      if (R.usarPreparo && alvo.pend && alvo.pend.resolveEm > t) c.janelasVistas++;
+      c.pend = { resolveEm: t + c.prep, alvo, atraso: 0 };
+      c.proxDecl = t + c.spd;
+      if (R.guardaEm === 'declara') c.guard = 0;
+      c.divida = 0; c.aparosNaJanela = 0; c.ticksDevidos = 0; c.foraNaJanela = 0;
+      if (log) log(`[T${t}] ${c.nome} declara contra ${alvo.nome}. Sai no T${c.pend.resolveEm}, volta a declarar no T${c.proxDecl}.`);
+    }
+
+    // 1b) ação fora de hora: quem está em recuperação compra Ticks do próprio futuro
+    if (R.fora?.ligada && R.fora.gatilho !== 'nunca') {
+      for (const c of todos) {
+        if (c.pv <= 0 || c.proxDecl <= t) continue;
+        if (!c.jaAgiu && !R.fora.antesDaPrimeira) continue;    // ainda não estreou na cena
+        if (c.pend && !R.fora.emPreparoPodeReagir) continue;   // comprometido com uma ação
+        const custo = Math.max(1, Math.round(c.spd * R.fora.custo));
+        if (c.ticksDevidos + custo > R.fora.teto) continue;
+        if (R.fora.umaPorJanela && c.foraNaJanela > 0) continue;
+        const alvos = inimigosDe(c);
+        if (!alvos.length) continue;
+        const naJanela = alvos.filter((x) => x.pend && x.pend.resolveEm > t);
+        const quaseMortos = alvos.filter((x) => x.pv / x.pvMax < 0.25);
+        let pool = alvos;
+        if (R.fora.gatilho === 'janela') { if (!naJanela.length) continue; pool = naJanela; }
+        else if (R.fora.gatilho === 'finalizar') { if (!quaseMortos.length) continue; pool = quaseMortos; }
+        else if (R.fora.gatilho === 'ambos') {
+          const u = [...new Set([...naJanela, ...quaseMortos])];
+          if (!u.length) continue; pool = u;
+        }
+        const alvo = pool.reduce((a, b) => (b.pv < a.pv ? b : a));
+        c.proxDecl += custo; c.ticksDevidos += custo;
+        c.foraDeHora++; c.foraNaJanela++;
+        if (R.fora.guardaCongela) c.guardaTravada = true;
+        c.interrompendo = !!(alvo.pend && alvo.pend.resolveEm > t);
+        c.penalidadeAgora = R.fora.pen;
+        if (log) log(`[T${t}] ${c.nome} age FORA DA HORA contra ${alvo.nome}: paga ${custo} Ticks, próxima ação vai para o T${c.proxDecl}.`);
+        atacar(c, alvo, R, rnd, log);
+        c.interrompendo = false; c.penalidadeAgora = 0;
+      }
+    }
+
+    // 2) resoluções, em ordem sorteada (sem viés de lado)
+    const prontos = todos.filter((c) => c.pend && c.pend.resolveEm === t);
+    for (let i = prontos.length - 1; i > 0; i--) {
+      const j = Math.floor(rnd() * (i + 1)); [prontos[i], prontos[j]] = [prontos[j], prontos[i]];
+    }
+    for (const c of prontos) {
+      if (!c.pend || c.pend.resolveEm !== t) continue;   // pode ter sido empurrado agora
+      const alvo = c.pend.alvo;
+      c.pend = null;
+      if (c.pv <= 0) { c.golpesPerdidos++; continue; }
+      c.acoesConcluidas++;
+      let vitima = alvo;
+      if (vitima.pv <= 0) {
+        const outros = inimigosDe(c);
+        if (!R.redirecionar || !outros.length) {
+          c.golpesPerdidos++;
+          if (log) log(`[T${t}] o golpe de ${c.nome} se perde no vazio: o alvo já tinha caído.`);
+          continue;
+        }
+        vitima = outros.reduce((a, b) => (b.pv < a.pv ? b : a));
+        c.redirecionados++;
+        if (log) log(`[T${t}] o alvo de ${c.nome} caiu; o golpe redireciona para ${vitima.nome}.`);
+      }
+      if (R.guardaEm === 'resolve') {
+        if (c.guardaTravada) { c.guardaTravada = false; if (log) log(`[T${t}] ${c.nome} agiu fora da hora: a guarda NÃO se refaz.`); }
+        else c.guard = 0;
+      }
+      if (log) log(`[T${t}] sai o golpe de ${c.nome}.`);
+      atacar(c, vitima, R, rnd, log);
+    }
+
+    const vivosA = timeA.some((c) => c.pv > 0), vivosB = timeB.some((c) => c.pv > 0);
+    if (!vivosA && !vivosB) return { vencedor: 'empate', ticks: t, log: linhas };
+    if (!vivosB) return { vencedor: 'A', ticks: t, log: linhas };
+    if (!vivosA) return { vencedor: 'B', ticks: t, log: linhas };
+  }
+  return { vencedor: 'empate', ticks: tetoTicks, log: linhas };
+}
+
+// ---------------------------------------------------------------- baterias
+/** Duelo 1v1 repetido. Devolve as médias que interessam. */
+function bateria(specA, specB, R, cat, { n = 8000, semente = 20260818 } = {}) {
+  const rnd = criarRng(semente);
+  let a = 0, b = 0, emp = 0, somaT = 0;
+  const soma = { perdidos: 0, feitos: 0, janelasV: 0, janelasA: 0, decls: 0, fora: 0, aparos: 0, red: 0 };
+  let artesDecl = 0, artesSai = 0, dividaMax = 0;
+  for (let i = 0; i < n; i++) {
+    const A = lutador({ ...specA, regras: R }, cat), B = lutador({ ...specB, regras: R }, cat);
+    const r = cena([A], [B], R, rnd);
+    if (r.vencedor === 'A') a++; else if (r.vencedor === 'B') b++; else emp++;
+    somaT += r.ticks;
+    for (const c of [A, B]) {
+      soma.perdidos += c.golpesPerdidos; soma.feitos += c.golpesFeitos;
+      soma.janelasV += c.janelasVistas; soma.janelasA += c.janelasAproveitadas;
+      soma.decls += c.declaracoes; soma.fora += c.foraDeHora;
+      soma.aparos += c.aparosFeitos; soma.red += c.redirecionados;
+      dividaMax = Math.max(dividaMax, c.dividaMax);
+    }
+    if (A.arma.classe === 'arte') { artesDecl += A.acoesDeclaradas; artesSai += A.acoesConcluidas; }
+  }
+  return {
+    win: a / n, perda: b / n, empate: emp / n, ticks: somaT / n,
+    perdidosPct: soma.feitos + soma.perdidos ? soma.perdidos / (soma.feitos + soma.perdidos) : 0,
+    janelasPorDuelo: soma.janelasV / n,
+    janelaTaxa: soma.decls ? soma.janelasV / soma.decls : 0,
+    foraPorDuelo: soma.fora / n, aparosPorDuelo: soma.aparos / n,
+    redirecionados: soma.red / n, dividaMax,
+    arteSai: artesDecl ? artesSai / artesDecl : 0,
+  };
+}
+
+/** Refrega de times iguais (n contra n), com foco de fogo. */
+function refrega(armaA, armaB, R, cat, { lado = 3, n = 3000, semente = 20260818, specA = {}, specB = {} } = {}) {
+  const rnd = criarRng(semente);
+  let a = 0, somaT = 0, perdidos = 0, feitos = 0, red = 0;
+  for (let i = 0; i < n; i++) {
+    const A = Array.from({ length: lado }, () => lutador({ arma: armaA, ...specA, regras: R }, cat));
+    const B = Array.from({ length: lado }, () => lutador({ arma: armaB, ...specB, regras: R }, cat));
+    const r = cena(A, B, R, rnd);
+    if (r.vencedor === 'A') a++;
+    somaT += r.ticks;
+    for (const c of [...A, ...B]) { perdidos += c.golpesPerdidos; feitos += c.golpesFeitos; red += c.redirecionados; }
+  }
+  return { win: a / n, ticks: somaT / n, perdidosPct: perdidos / (feitos + perdidos), redirecionados: red / n };
+}
+
+/** Round-robin de um conjunto de armas: win% médio de cada uma contra todas as outras. */
+function roundRobin(armas, R, cat, { n = 4000, semente = 20260818, spec = {} } = {}) {
+  const out = {};
+  for (const a of armas) {
+    let soma = 0, k = 0;
+    for (const b of armas) {
+      if (a === b) continue;
+      soma += bateria({ arma: a, ...spec }, { arma: b, ...spec }, R, cat, { n, semente }).win;
+      k++;
+    }
+    out[a] = k ? soma / k : 0;
+  }
+  return out;
+}
+
+/** Agrupa um round-robin por classe de arma. */
+function porClasse(rr, cat) {
+  const g = {};
+  for (const [id, v] of Object.entries(rr)) {
+    const cl = cat.armas[id]?.classe || '?';
+    (g[cl] ||= []).push(v);
+  }
+  return Object.fromEntries(Object.entries(g).map(([c, v]) => [c, v.reduce((x, y) => x + y, 0) / v.length]));
+}
+
+// ---------------------------------------------------------------- duelo a distância
+/**
+ * O arqueiro parado contra o guerreiro que fecha a distância. Serve para responder à
+ * pergunta do K4: o Preparo só custa alguma coisa se alguém puder te alcançar durante ele,
+ * e o arqueiro normalmente está longe.
+ *
+ * O guerreiro corre (a Corrida é Velocidade 3 e interrompível a qualquer Tick, então ele
+ * simplesmente avança `mPorTick` por Tick até o contato); o arqueiro atira. A partir do
+ * contato, os dois jogam a linha normal, e o guerreiro passa a poder interromper o arco.
+ */
+function cenaDistancia(arq, gue, R, rnd, { dist = 60, mPorTick = 7, contato = 2, tetoTicks = 600, narrar = false } = {}) {
+  const linhas = [];
+  const log = narrar ? (s) => linhas.push(s) : null;
+  let d = dist, tirosAntes = 0, tirosDepois = 0, tContato = null;
+  // Entrada sorteada, como na cena normal: sem isso o modelo fica determinístico e a curva
+  // do Preparo sai serrilhada por quantização (o tiro cai sempre no mesmo Tick).
+  arq.proxDecl = 1 + Math.floor(rnd() * arq.spd);
+  gue.proxDecl = 1;
+  d += Math.floor(rnd() * mPorTick);   // a posição inicial não é redonda
+  const vivos = () => arq.pv > 0 && gue.pv > 0;
+
+  for (let t = 1; t <= tetoTicks && vivos(); t++) {
+    // o guerreiro corre enquanto não chegou
+    if (d > contato) {
+      d = Math.max(contato, d - mPorTick);
+      if (d <= contato && tContato == null) {
+        tContato = t; gue.proxDecl = t + 1;
+        if (log) log(`[T${t}] contato: ${gue.nome} alcança ${arq.nome}.`);
+      }
+    }
+    const emContato = d <= contato;
+
+    // declarações
+    for (const c of [arq, gue]) {
+      if (c.pv <= 0 || c.pend || c.proxDecl !== t) continue;
+      if (c === gue && !emContato) continue;              // ainda correndo
+      c.declaracoes++; c.acoesDeclaradas++; c.jaAgiu = true;
+      const alvo = c === arq ? gue : arq;
+      c.pend = { resolveEm: t + c.prep, alvo, atraso: 0 };
+      c.proxDecl = t + c.spd;
+      if (R.guardaEm === 'declara') c.guard = 0;
+      c.divida = 0; c.foraNaJanela = 0; c.ticksDevidos = 0;
+      if (log) log(`[T${t}] ${c.nome} declara. Sai no T${c.pend.resolveEm}.`);
+    }
+
+    // ação fora de hora: só em contato, e só o guerreiro tem quem interromper
+    if (emContato && R.fora?.ligada && R.fora.gatilho !== 'nunca') {
+      for (const [c, alvo] of [[gue, arq], [arq, gue]]) {
+        if (c.pv <= 0 || c.proxDecl <= t) continue;
+        if (!c.jaAgiu && !R.fora.antesDaPrimeira) continue;
+        if (c.pend && !R.fora.emPreparoPodeReagir) continue;
+        if (R.fora.umaPorJanela && c.foraNaJanela > 0) continue;
+        const naJanela = !!(alvo.pend && alvo.pend.resolveEm > t);
+        if (R.fora.gatilho === 'janela' && !naJanela) continue;
+        const custo = Math.max(1, Math.round(c.spd * R.fora.custo));
+        c.proxDecl += custo; c.ticksDevidos += custo; c.foraDeHora++; c.foraNaJanela++;
+        if (R.fora.guardaCongela) c.guardaTravada = true;
+        c.interrompendo = naJanela; c.penalidadeAgora = R.fora.pen;
+        if (log) log(`[T${t}] ${c.nome} age fora da hora (paga ${custo}).`);
+        atacar(c, alvo, R, rnd, log);
+        c.interrompendo = false; c.penalidadeAgora = 0;
+      }
+    }
+
+    // resoluções
+    for (const c of [arq, gue]) {
+      if (!c.pend || c.pend.resolveEm !== t || c.pv <= 0) continue;
+      const alvo = c.pend.alvo; c.pend = null; c.acoesConcluidas++;
+      if (R.guardaEm === 'resolve') {
+        if (c.guardaTravada) c.guardaTravada = false; else c.guard = 0;
+      }
+      if (c === arq) { if (emContato) tirosDepois++; else tirosAntes++; }
+      atacar(c, alvo, R, rnd, log);
+    }
+  }
+  return {
+    vencedor: gue.pv <= 0 ? 'arqueiro' : arq.pv <= 0 ? 'guerreiro' : 'empate',
+    tirosAntes, tirosDepois, tContato, log: linhas,
+  };
+}
+
+/** Repete o duelo a distância e devolve as médias. */
+function bateriaDistancia(specArq, specGue, R, cat, { n = 4000, semente = 20260818, dist = 60, mPorTick = 7 } = {}) {
+  const rnd = criarRng(semente);
+  let venceArq = 0, tirosA = 0, tirosD = 0, contato = 0, comContato = 0;
+  for (let i = 0; i < n; i++) {
+    const A = lutador({ ...specArq, regras: R }, cat), G = lutador({ ...specGue, regras: R }, cat);
+    const r = cenaDistancia(A, G, R, rnd, { dist, mPorTick });
+    if (r.vencedor === 'arqueiro') venceArq++;
+    tirosA += r.tirosAntes; tirosD += r.tirosDepois;
+    if (r.tContato != null) { contato += r.tContato; comContato++; }
+  }
+  return {
+    winArqueiro: venceArq / n, tirosAntes: tirosA / n, tirosDepois: tirosD / n,
+    tickDoContato: comContato ? contato / comContato : null,
+  };
+}
+
+// ===================== catálogo =====================
+const ARMAS_JSON = [{"id":"adaga","nome":"Adaga","classe":"leve","atrib":"destreza","pericia":"armas","dado":1,"acerto":2,"defesaArma":1,"maos":1,"ticks":5,"folego":15,"tipoDano":"perfurante","peso":0.3,"pen":0,"modos":[{"tipo":"perfurante","perf":0,"principal":true},{"tipo":"corte","principal":false}],"tags":["ágil","arremessável"],"notas":"Rápida e precisa; perfura pele (N0), mas para em couro duro. Contra armadura, mira na fresta.","danoBonus":-2},{"id":"espada-curta","nome":"Espada Curta","classe":"leve","atrib":"destreza","pericia":"armas","dado":1,"acerto":2,"defesaArma":1,"maos":1,"ticks":5,"folego":15,"tipoDano":"corte","peso":0.9,"pen":0,"modos":[{"tipo":"corte","principal":true},{"tipo":"perfurante","perf":1,"principal":false}],"tags":[],"notas":"Veloz e defensiva. Corta (principal) ou estoca (N1).","danoBonus":-2},{"id":"espada-longa","nome":"Espada Longa","classe":"media","atrib":"destreza","pericia":"armas","dado":1,"acerto":1,"defesaArma":1,"maos":1,"ticks":6,"folego":24,"tipoDano":"corte","peso":1.4,"pen":0,"modos":[{"tipo":"corte","principal":true},{"tipo":"perfurante","perf":1,"principal":false}],"tags":["versátil"],"notas":"A clássica adaptável (versátil: com uma mão soma Força, com duas soma Força×2). Corta ou estoca nas frestas (N1).","danoBonus":0},{"id":"machado","nome":"Machado","classe":"media","atrib":"forca","pericia":"armas","dado":1,"acerto":1,"defesaArma":0,"maos":1,"ticks":6,"folego":24,"tipoDano":"corte","peso":1.2,"pen":0,"modos":[{"tipo":"corte","principal":true},{"tipo":"impacto","principal":false}],"tags":[],"notas":"Corte pesado; pode bater de chapa (impacto) contra placa.","danoBonus":0},{"id":"espada-serrilhada","nome":"Espada Serrilhada","classe":"media","atrib":"forca","pericia":"armas","dado":1,"acerto":0,"defesaArma":1,"maos":1,"ticks":6,"folego":24,"tipoDano":"corte","peso":1.5,"pen":0,"modos":[{"tipo":"corte","principal":true},{"tipo":"perfurante","perf":1,"principal":false}],"tags":["sangramento"],"notas":"Sangramento: um golpe com Margem abre Sangramento igual à Margem (máx 3). Troca um pouco de Acerto pelo dano contínuo.","danoBonus":0},{"id":"maca","nome":"Maça","classe":"media","atrib":"forca","pericia":"armas","dado":1,"acerto":1,"defesaArma":1,"maos":1,"ticks":6,"folego":24,"tipoDano":"impacto","peso":1.3,"pen":0,"modos":[{"tipo":"impacto","principal":true}],"tags":[],"notas":"Anti-placa: o Impacto sofre pouca absorção de armadura (a energia atravessa o aço e quebra o corpo dentro).","danoBonus":0},{"id":"picareta-de-guerra","nome":"Picareta de Guerra","classe":"media","atrib":"forca","pericia":"armas","dado":1,"acerto":1,"defesaArma":1,"maos":1,"ticks":6,"folego":24,"tipoDano":"perfurante","peso":1.3,"pen":2,"modos":[{"tipo":"perfurante","perf":2,"principal":true},{"tipo":"impacto","principal":false}],"tags":[],"notas":"O bico concentrado (N2) vence a placa pelo ponto; o lado do martelo bate (impacto). A arma-de-mão anti-placa.","danoBonus":0},{"id":"lanca","nome":"Lança","classe":"haste","atrib":"destreza","pericia":"armas","dado":1,"acerto":1,"defesaArma":2,"maos":2,"ticks":6,"folego":24,"forcaMult":1,"tipoDano":"perfurante","peso":2,"pen":1,"modos":[{"tipo":"perfurante","perf":1,"principal":true}],"tags":["alcance","arremessável"],"notas":"Alcance + estocada (N1): fura couro e malha, mas resvala na placa.","danoBonus":2},{"id":"alabarda","nome":"Alabarda","classe":"haste","atrib":"forca","pericia":"armas","dado":1,"acerto":1,"defesaArma":2,"maos":2,"ticks":6,"folego":32,"tipoDano":"corte","peso":2.7,"pen":0,"modos":[{"tipo":"corte","principal":true},{"tipo":"perfurante","perf":1,"principal":true},{"tipo":"impacto","principal":true}],"tags":["alcance","pesada"],"notas":"Lâmina, ponta e malho num só cabo: Cortante, Perfurante e Impacto, todos PRINCIPAIS (sem penalidade ao alternar). Lenta. Cobre as três frentes contra qualquer armadura.","danoBonus":2},{"id":"montante","nome":"Montante","classe":"pesada","atrib":"forca","pericia":"armas","dado":2,"acerto":0,"defesaArma":-2,"maos":2,"ticks":7,"folego":38,"tipoDano":"corte","peso":2.8,"pen":0,"modos":[{"tipo":"corte","principal":true},{"tipo":"perfurante","perf":1,"principal":false},{"tipo":"impacto","principal":false}],"tags":[],"notas":"Espadão de duas mãos: corta com força, meia-espada estoca as frestas (N1) ou golpeia com o pomo (impacto). Lento.","danoBonus":0},{"id":"martelo-de-guerra","nome":"Martelo de Guerra","classe":"pesada","atrib":"forca","pericia":"armas","dado":2,"acerto":0,"defesaArma":-2,"maos":2,"ticks":7,"folego":38,"tipoDano":"impacto","peso":2.5,"pen":0,"modos":[{"tipo":"impacto","principal":true},{"tipo":"perfurante","perf":2,"principal":false}],"tags":[],"notas":"Esmaga placas (Impacto, principal); o bico do reverso (N2) fura quando precisa. O fim da era do escudo.","danoBonus":0},{"id":"arco-curto","nome":"Arco Curto","classe":"distancia","atrib":"percepcao","pericia":"atirador","dado":1,"acerto":1,"defesaArma":0,"maos":2,"ticks":6,"folego":20,"forcaMult":1,"forcaCap":3,"alcance":"curto","tipoDano":"perfurante","peso":0.6,"pen":1,"modos":[{"tipo":"perfurante","perf":1,"principal":true}],"tags":["munição","distância","projétil veloz"],"notas":"Pequeno e fácil de guardar; alcance curto. Soma Força até +3 (a haste curta não aguenta mais tração). Perfura couro e malha (N1), resvala na placa.","danoBonus":-1,"distMax":120},{"id":"arco-longo","nome":"Arco Longo","classe":"distancia","atrib":"percepcao","pericia":"atirador","dado":1,"acerto":0,"defesaArma":0,"maos":2,"ticks":6,"folego":20,"forcaMult":1,"alcance":"longo","tipoDano":"perfurante","peso":0.8,"pen":1,"modos":[{"tipo":"perfurante","perf":1,"principal":true}],"tags":["munição","distância","projétil veloz"],"notas":"Grande, de alcance longo. Soma a Força inteira ao dano. Perfura couro e malha (N1), resvala na placa.","danoBonus":0,"distMax":250},{"id":"arco-composto","nome":"Arco Composto","classe":"distancia","atrib":"percepcao","pericia":"atirador","dado":1,"acerto":0,"defesaArma":0,"maos":2,"ticks":6,"folego":20,"forcaMult":2,"forcaMin":4,"alcance":"longo","tipoDano":"perfurante","peso":0.7,"pen":1,"modos":[{"tipo":"perfurante","perf":1,"principal":true}],"tags":["munição","distância","projétil veloz","caro"],"notas":"Laminado de chifre e tendão: exige Força 4 para armar, e soma Força×2 ao dano. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.","danoBonus":2,"distMax":300},{"id":"besta-pequena","nome":"Besta Pequena","classe":"distancia","atrib":"percepcao","pericia":"atirador","dado":1,"acerto":1,"defesaArma":0,"maos":2,"ticks":6,"folego":20,"forcaMult":0,"alcance":"medio","tipoDano":"perfurante","peso":2.5,"pen":1,"modos":[{"tipo":"perfurante","perf":1,"principal":true}],"tags":["munição","recarga","distância","projétil veloz"],"notas":"Mira e dispara sem Força (mecanismo faz a tração); requer recarga. Alcance médio. Perfura couro e malha (N1).","danoBonus":2,"distMax":100},{"id":"besta-media","nome":"Besta Média","classe":"distancia","atrib":"percepcao","pericia":"atirador","dado":1,"acerto":1,"defesaArma":0,"maos":2,"ticks":6,"folego":20,"forcaMult":0,"alcance":"longo","tipoDano":"perfurante","peso":4.5,"pen":1,"modos":[{"tipo":"perfurante","perf":1,"principal":true}],"tags":["munição","recarga","distância","projétil veloz"],"notas":"O virote (N1) fura couro e malha e resvala na placa; recarga lenta. Alcance longo. A resposta de longe contra tropa e cavalo.","danoBonus":4,"distMax":200},{"id":"besta-grande","nome":"Besta Grande","classe":"distancia","atrib":"percepcao","pericia":"atirador","dado":1,"acerto":1,"defesaArma":0,"maos":2,"ticks":7,"folego":20,"forcaMult":0,"alcance":"longo","tipoDano":"perfurante","peso":7,"pen":2,"modos":[{"tipo":"perfurante","perf":2,"principal":true}],"tags":["munição","recarga","distância","projétil veloz","pesada"],"notas":"Arbalesta de manivela: o virote pesado (N2) fura malha e brigandina, mas ainda resvala na placa completa (N3). Recarga muito lenta, alcance longo; o dano bruto derruba homem e cavalo.","danoBonus":8,"distMax":300},{"id":"adaga-de-arremesso","nome":"Adaga de Arremesso","classe":"arremesso","atrib":"destreza","pericia":"arremesso","dado":1,"acerto":1,"defesaArma":0,"maos":1,"ticks":5,"folego":12,"tipoDano":"perfurante","peso":0.2,"pen":0,"modos":[{"tipo":"perfurante","perf":0,"principal":true}],"tags":["ágil","arremessável","munição","projétil veloz"],"notas":"Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto.","danoBonus":-2,"distMax":10},{"id":"machado-de-arremesso","nome":"Machado de Arremesso","classe":"arremesso","atrib":"forca","pericia":"arremesso","dado":1,"acerto":1,"defesaArma":0,"maos":1,"ticks":5,"folego":20,"tipoDano":"corte","peso":0.7,"pen":0,"modos":[{"tipo":"corte","principal":true},{"tipo":"impacto","principal":false}],"tags":["arremessável"],"notas":"Machado curto e pesado que gira no ar; golpe forte de curto alcance. Recuperável.","danoBonus":2,"distMax":12},{"id":"azagaia","nome":"Azagaia","classe":"arremesso","atrib":"destreza","pericia":"arremesso","dado":1,"acerto":1,"defesaArma":0,"maos":1,"ticks":5,"folego":20,"tipoDano":"perfurante","peso":0.8,"pen":1,"modos":[{"tipo":"perfurante","perf":1,"principal":true}],"tags":["arremessável"],"notas":"Dardo de arremesso (javelina): fura à distância (N1) e ainda serve de lança curta na mão (estocada N1).","danoBonus":1,"distMax":40},{"id":"funda","nome":"Funda","classe":"arremesso","atrib":"destreza","pericia":"arremesso","dado":1,"acerto":1,"defesaArma":0,"maos":1,"ticks":6,"folego":12,"tipoDano":"impacto","peso":0.1,"pen":0,"modos":[{"tipo":"impacto","principal":true}],"tags":["munição","arremessável","projétil veloz"],"notas":"Lança pedras a grande distância; barata e silenciosa. Dano de Impacto (quebra ossos sob a armadura), não passa pelo gate de perfuração.","danoBonus":0,"distMax":200},{"id":"dardos","nome":"Dardos","classe":"arremesso","atrib":"destreza","pericia":"arremesso","dado":1,"acerto":2,"defesaArma":0,"maos":1,"ticks":4,"folego":12,"tipoDano":"perfurante","peso":0.2,"pen":1,"modos":[{"tipo":"perfurante","perf":1,"principal":true}],"tags":["ágil","arremessável","munição","projétil veloz"],"notas":"Pequenos e velozes, lançados em sequência; precisos de perto. Carregados às dezenas.","danoBonus":0,"distMax":30},{"id":"bumerangue","nome":"Bumerangue","classe":"arremesso","atrib":"destreza","pericia":"arremesso","dado":1,"acerto":1,"defesaArma":0,"maos":1,"ticks":5,"folego":12,"tipoDano":"impacto","peso":0.3,"pen":0,"modos":[{"tipo":"impacto","principal":true}],"tags":["arremessável"],"notas":"Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição. Dano de Impacto.","danoBonus":0,"distMax":50},{"id":"rede","nome":"Rede","classe":"arremesso","atrib":"destreza","pericia":"arremesso","dado":1,"acerto":0,"defesaArma":0,"maos":1,"ticks":5,"folego":12,"tipoDano":"impacto","peso":1.5,"pen":0,"modos":[{"tipo":"impacto","principal":true}],"tags":["arremessável","imobiliza"],"notas":"Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento).","danoBonus":0,"distMax":5},{"id":"pilum","nome":"Pilum","classe":"arremesso","atrib":"forca","pericia":"arremesso","dado":1,"acerto":1,"defesaArma":0,"maos":1,"ticks":5,"folego":20,"tipoDano":"perfurante","peso":2,"pen":2,"modos":[{"tipo":"perfurante","perf":2,"principal":true}],"tags":["arremessável"],"notas":"Dardo pesado anti-escudo: fura placa (N2) e entorta ao cravar, inutilizando o escudo atingido.","danoBonus":2,"distMax":25},{"id":"desarmado","nome":"Desarmado / Briga","classe":"leve","atrib":"forca","pericia":"briga","dado":1,"acerto":0,"defesaArma":0,"maos":1,"ticks":5,"folego":15,"tipoDano":"impacto","peso":0,"pen":0,"modos":[{"tipo":"impacto","principal":true}],"tags":[],"notas":"Socos e agarrões; dano de Impacto (Letal só com a Técnica Mão de Ferro).","danoBonus":-2}];
+const ARMADURAS_JSON = [{"id":"nenhuma","nome":"Nenhuma","classe":"nenhuma","soak":{"impacto":0,"corte":0,"perfuracao":0},"resistPerf":0,"penalidade":0,"peso":0,"acesso":10,"notas":"Sem proteção; máxima mobilidade. Só o Soak natural (Vigor) defende você."},{"id":"gambeson","nome":"Gambeson (acolchoado)","classe":"leve","soak":{"impacto":3,"corte":4,"perfuracao":1},"resistPerf":0,"penalidade":1,"peso":3.5,"acesso":9,"notas":"O que quase todo mundo vestia. Vinte a trinta camadas de linho. Bom contra corte e a melhor camada leve contra impacto; ponta passa fácil (Nível 0). Base sob qualquer outra armadura."},{"id":"couro","nome":"Couro endurecido","classe":"leve","soak":{"impacto":2,"corte":2,"perfuracao":1},"resistPerf":1,"penalidade":1,"peso":5,"acesso":8,"notas":"Kit barato; mais para defesas de membro. Para a adaga (N0), mas pouco além disso."},{"id":"malha","nome":"Cota de malha","classe":"media","soak":{"impacto":1,"corte":6,"perfuracao":1},"resistPerf":1,"penalidade":2,"peso":11,"acesso":4,"notas":"Campeã do corte, péssima contra impacto: sem acolchoado a energia passa direto e quebra o osso. Use sobre um gambeson. Cara."},{"id":"brigandina","nome":"Brigandina / coat of plates","classe":"media","soak":{"impacto":4,"corte":6,"perfuracao":3},"resistPerf":1,"penalidade":2,"peso":9,"acesso":6,"notas":"Placas pequenas rebitadas em tecido, sobre malha. Melhor custo-benefício do período: defesa tipo-placa com acesso médio. Ponto fraco nas frestas."},{"id":"lamelar","nome":"Lamelar","classe":"media","soak":{"impacto":3,"corte":6,"perfuracao":3},"resistPerf":1,"penalidade":2,"peso":12,"acesso":3,"notas":"Placas sobrepostas, ótimas contra flecha (cavalaria arqueira). Padrão no Oriente e na estepe. Os cordões de amarração são o ponto fraco."},{"id":"placa-transicao","nome":"Placa de transição","classe":"pesada","soak":{"impacto":4,"corte":8,"perfuracao":3},"resistPerf":2,"penalidade":3,"peso":18,"acesso":2,"notas":"Malha com as primeiras placas rígidas. Etapa cara e cavaleiresca rumo à placa completa."},{"id":"placa-municao","nome":"Placa de munição","classe":"pesada","soak":{"impacto":4,"corte":7,"perfuracao":4},"resistPerf":2,"penalidade":3,"peso":22,"acesso":4,"notas":"Placa produzida em série, aço pior, ajuste genérico. A armadura de tropa, oposta à placa sob medida do nobre."},{"id":"placa-completa","nome":"Placa completa","classe":"pesada","soak":{"impacto":4,"corte":8,"perfuracao":4},"resistPerf":3,"penalidade":3,"peso":25,"acesso":1,"notas":"A prova de arma comum: nenhuma flecha, besta ou picareta (N0–N2) a vence — resvalam (Nível 3). Um golpe bom ainda arranha (o aço não é intransponível), mas quem realmente entra é o Impacto (a placa mal segura a pancada), a perfuração nível 3+ (cerco, aríete, magia, armas épicas), a Proeza ou a feitiçaria; e quando furada, absorve pouco (Soak de Perfuração baixo)."}];
+const REGRAS_TEXTO = [{"id":"eixo","titulo":"O eixo: Preparo e Recuperação","estado":"decidido","corpo":"Toda ação tem dois números, <b>P/R</b>, e <b>P + R é a Velocidade de hoje</b>. A cadência\n    não muda: muda onde dentro da janela o golpe cai. A ação comum resolve cedo e a Velocidade toda é\n    recuperação; a Arte resolve no fim e a Velocidade toda é preparo. São os dois extremos de uma régua só.\n    <p class=\"nota\">Medido neutro: no round-robin do catálogo inteiro o maior desvio por arma fica abaixo de\n    1 ponto percentual, e contra armadura idem. A duração do combate cresce exatamente P Ticks.</p>"},{"id":"guarda","titulo":"A guarda se refaz quando o golpe SAI","estado":"decidido","corpo":"Não quando você começa a montá-lo. É o único ponto sensível de todo o desenho: escrito\n    errado, a arma pesada ganha uns 4 pontos e a haste perde uns 7. Ligue o interruptor\n    <b>guarda na declaração</b> no painel e rode o round-robin para ver."},{"id":"nada","titulo":"O Preparo não compra nada","estado":"decidido","corpo":"Quem se compromete antes não bate mais fundo por isso. Dar Margem extra a quem tem Preparo\n    quebra o equilíbrio e, pior, <b>não ajuda a arma pesada</b>: quem mais ganha é a média, que tem P=1 e\n    cadência boa. O Preparo já se paga sozinho."},{"id":"redirecionar","titulo":"O golpe redireciona","estado":"decidido","corpo":"Se o seu alvo cai antes de o golpe sair, o golpe vai para outro inimigo ao alcance. Sem essa\n    frase, o Preparo vira um imposto de mais de 10 pontos sobre a arma pesada em combate de grupo, e uma\n    frustração de mesa. Desligue <b>redirecionar</b> e rode a refrega 3v3 para ver o tamanho do buraco."},{"id":"fora","titulo":"Agir fora da vez custa Ticks do próprio futuro","estado":"decidido","corpo":"Você age agora; sua próxima ação anda <b>a Velocidade inteira da ação</b> para frente, somada\n    ao que já devia. Sua <b>guarda não se refaz</b>. E cabe <b>uma por ação sua</b>: não dá para encadear.\n    Nenhuma penalidade de rolagem.\n    <p class=\"nota\">As três travas são todas portantes. Tirar qualquer uma leva o desvio de ~5 para mais de\n    20 pontos; tirar todas derruba a duração do combate pela metade, porque todo mundo gasta o futuro\n    inteiro agora.</p>"},{"id":"pen","titulo":"Nenhuma penalidade de rolagem","estado":"decidido","corpo":"Contra a intuição, somar penalidade <b>piora</b> o equilíbrio: transforma a reação num mau\n    negócio e pune quem mais tem oportunidade de usá-la. As penalidades que a intuição pedia já estão lá,\n    embutidas: a <b>de defesa</b> é a guarda que não se refaz (−2 por ataque feito ou recebido, acumulando\n    sem teto), e a <b>de dano</b> vem junto de qualquer penalidade de acerto, pela Margem."},{"id":"catalogo","titulo":"O catálogo das ações fora de hora","estado":"decidido","corpo":"<table class=\"mini\"><tr><th>Ação</th><th>Custo em Ticks</th></tr>\n    <tr><td>Sair da área (já é regra, §5.5 do Arcano)</td><td>1 por metro</td></tr>\n    <tr><td>Levantar-se do chão</td><td>2</td></tr>\n    <tr><td>Avançar para fechar distância</td><td>1 por metro</td></tr>\n    <tr><td>Interpor-se entre o golpe e um aliado</td><td>a distância em metros, mínimo 2</td></tr>\n    <tr><td>Agarrar o braço de quem conjura</td><td>a Velocidade da ação de agarrar</td></tr>\n    <tr><td><b>Atacar</b></td><td>a <b>Velocidade inteira</b> da arma</td></tr></table>\n    <p class=\"nota\">Não é preciso teto de dívida: a trava de \"uma por ação\" já limita a uma Velocidade por\n    ciclo, e ela zera quando a ação empurrada sai.</p>"},{"id":"espelho","titulo":"Interromper compra o espelho","estado":"decidido","corpo":"O golpe que conecta em quem está montando uma ação <b>atrasa essa ação em tantos Ticks quantos\n    o interruptor pagou</b>. Você gasta o seu tempo, ele perde o mesmo tempo. Simétrico, memorável e\n    auto-calibrante: uma arma pesada interrompe por 7, uma leve por 5.\n    <p class=\"nota\">Sai daí uma simetria que ninguém desenhou: a arma pesada é a mais interrompível\n    <b>e</b> a melhor interruptora.</p>"},{"id":"defesa","titulo":"A dívida nunca compra Defesa","estado":"decidido","corpo":"Comprar número de Defesa vira um laço, porque todo golpe é uma nova oportunidade de comprar.\n    Comprar posição ou ação não vira, porque não dá para sair duas vezes do mesmo lugar. Ligue o\n    <b>aparo desesperado</b> no painel e veja o combate quase dobrar de duração."},{"id":"carga","titulo":"Carga voluntária: 1 Tick de Preparo = +2","estado":"em aberto","corpo":"Ao declarar, você pode acrescentar Ticks ao Preparo da ação. O ciclo inteiro cresce, o golpe\n    sai mais tarde e você fica exposto mais tempo. A troca neutra medida é <b>+2 na rolagem por Tick</b>,\n    quase linear até 3 Ticks, mais barata para a arma pesada (+1 a +2) que para a leve (+2,4).\n    <p class=\"nota\">Cai daí que o <b>Mirar de hoje está caro demais</b>: cobra uma ação inteira e entrega o\n    preço de um Tick. Falta travar o teto (proposta: 3 Ticks) e ver se o número sobe quando a interrupção\n    durante a carga entrar na conta.</p>"},{"id":"distancia","titulo":"Distância e arremesso","estado":"em aberto","corpo":"Proposta: arco <b>2</b>, besta <b>3</b>, funda <b>2</b>, arremesso leve <b>0</b>, arremesso\n    pesado <b>1</b>. A pergunta de fundo é que o Preparo só custa se alguém puder te alcançar durante ele,\n    e o arqueiro está longe. Rode a bateria de distância com P do arco em 0, 2 e 3 e compare os tiros que\n    saem antes do contato."},{"id":"leitura","titulo":"Ler o sinal, e a finta","estado":"desenhado","corpo":"Contra uma Arte, <b>Inteligência + Ocultismo</b>, como a §5.5 já manda. Contra um golpe físico,\n    <b>Percepção + Prontidão</b>, e o que se lê não é o que ele vai fazer, é <b>onde</b>. Quem tem a mesma\n    arma e a mesma perícia do atacante lê de graça.\n    <p class=\"nota\">E abre a <b>finta</b>: compre 1 Tick de Preparo e minta sobre o alvo. O preço bate com\n    a carga voluntária (+2, que é um degrau de modificador situacional), e dá à arma leve o primeiro motivo\n    para comprar Preparo. Não está no simulador: é desenho.</p>"},{"id":"bordas","titulo":"As bordas","estado":"em aberto","corpo":"<ol class=\"bordas\">\n    <li><b>Quem está em Preparo pode reagir?</b> Proposta: não. Você já está comprometido. É o custo real\n    do Preparo. <span class=\"knob\">interruptor no painel</span></li>\n    <li><b>Dá para reagir antes da sua primeira ação da cena?</b> Proposta: não, senão a dívida dissolve a\n    penalidade de Iniciativa (quem começa no Tick 7 reagiria no Tick 1). <span class=\"knob\">interruptor no painel</span></li>\n    <li><b>Duas áreas na mesma janela.</b> Uma por ação significa sair de uma e comer a outra. Vale exceção\n    para movimento?</li>\n    <li><b>Reação e Técnica Reflexiva juntas.</b> São moedas diferentes (Energia e Ticks). Proposta: cabem\n    as duas no mesmo gatilho, uma de cada.</li>\n    <li><b>Abortar.</b> Duas categorias: <b>Firme</b> (uma vez declarada, sai: ataques, Artes, Salto) e\n    <b>Solta</b> (abortável, perdendo o que foi gasto: Corrida, ações longas).</li>\n    <li><b>A dívida na virada da cena.</b> Proposta: morre com a cena, como a guarda.</li>\n    <li><b>A Horda.</b> Proposta: esquadrão com P=0. A massa está sempre girando.</li>\n    <li><b>O teto de ±6.</b> O atraso por interrupção não é modificador de Defesa e não entra nele.</li>\n    </ol>"}];
+
+const CAT = {
+  armas: Object.fromEntries(ARMAS_JSON.map((w) => [w.id, montarArma(w)])),
+  armaduras: Object.fromEntries(ARMADURAS_JSON.map((a) => [a.id, montarArmadura(a)])),
+};
+CAT.armas.arte = montarArma({
+  id: 'arte', nome: 'Arte de grau 6', classe: 'arte', dado: 6, danoBonus: 0, acerto: 1,
+  maos: 1, ticks: 7, forcaMult: 0, tipoDano: 'impacto',
+  modos: [{ tipo: 'impacto', principal: true }], tags: [],
+});
+
+const CORPO = ['adaga','espada-curta','espada-longa','machado','maca','picareta-de-guerra',
+  'lanca','alabarda','montante','martelo-de-guerra'];
+const CLASSES = ['leve','media','haste','pesada'];
+const ROT_CLASSE = { leve:'Leve', media:'Média', haste:'Haste', pesada:'Pesada', distancia:'Distância', arremesso:'Arremesso', arte:'Arte' };
+
+// ===================== estado =====================
+const S = {
+  n: 4000, semente: 20260818,
+  regras: JSON.parse(JSON.stringify(REGRAS_PADRAO)),
+  lutador: { ah: 10, centelha: 1, vigor: 4, forca: 4, pv: 37 },
+  duelo: { a: 'espada-longa', b: 'martelo-de-guerra', armA: 'nenhuma', armB: 'nenhuma', semente: 20260818 },
+};
+const HOJE = () => comRegras(S.regras, { usarPreparo: false, redirecionar: false, fora: { ...S.regras.fora, ligada: false }, interrupcao: 0 });
+const SEM_FORA = () => comRegras(S.regras, { fora: { ...S.regras.fora, ligada: false }, interrupcao: 0 });
+
+const el = (id) => document.getElementById(id);
+const pct = (x) => (x * 100).toFixed(1) + '%';
+const sgn = (x, c = 1) => (x >= 0 ? '+' : '−') + Math.abs(x).toFixed(c);
+const cor = (d) => Math.abs(d) < 2 ? 'bom' : Math.abs(d) < 8 ? 'morno' : 'ruim';
+const op = () => ({ n: S.n, semente: S.semente });
+const nomeArma = (id) => CAT.armas[id].nome;
+
+// ===================== abas =====================
+document.querySelectorAll('nav.abas button').forEach((b) => b.addEventListener('click', () => {
+  document.querySelectorAll('nav.abas button').forEach((x) => x.classList.toggle('on', x === b));
+  document.querySelectorAll('section.aba').forEach((s) => s.classList.toggle('on', s.id === 'aba-' + b.dataset.aba));
+  if (b.dataset.aba === 'catalogo') pintarCatalogo();
+}));
+
+// ===================== a aba das regras =====================
+el('regras').innerHTML = REGRAS_TEXTO.map((r) => {
+  const cls = r.estado === 'decidido' ? 'decidido' : r.estado === 'desenhado' ? 'desenhado' : 'aberto';
+  return '<div class="cartao"><h4>' + r.titulo + ' <span class="selo ' + cls + '">' + r.estado + '</span></h4>' + r.corpo + '</div>';
+}).join('');
+
+// ===================== o painel de parâmetros =====================
+function campoNum(rot, val, onChange, passo = 1, min = 0, max = 99) {
+  const id = 'c' + Math.random().toString(36).slice(2, 8);
+  setTimeout(() => { const e = el(id); if (e) e.addEventListener('change', () => onChange(Number(e.value))); }, 0);
+  return '<label class="linha"><span class="rot">' + rot + '</span><input type="number" id="' + id + '" value="' + val + '" step="' + passo + '" min="' + min + '" max="' + max + '" /></label>';
+}
+function campoBool(rot, val, onChange) {
+  const id = 'c' + Math.random().toString(36).slice(2, 8);
+  setTimeout(() => { const e = el(id); if (e) e.addEventListener('change', () => onChange(e.checked)); }, 0);
+  return '<label class="linha"><span class="rot">' + rot + '</span><input type="checkbox" id="' + id + '"' + (val ? ' checked' : '') + ' /></label>';
+}
+function campoSel(rot, val, opcoes, onChange) {
+  const id = 'c' + Math.random().toString(36).slice(2, 8);
+  setTimeout(() => { const e = el(id); if (e) e.addEventListener('change', () => onChange(e.value)); }, 0);
+  return '<label class="linha"><span class="rot">' + rot + '</span><select id="' + id + '">'
+    + opcoes.map(([v, t]) => '<option value="' + v + '"' + (String(v) === String(val) ? ' selected' : '') + '>' + t + '</option>').join('')
+    + '</select></label>';
+}
+
+function pintarPainel() {
+  const R = S.regras;
+  el('painel').innerHTML =
+    '<h3>Parâmetros</h3>'
+    + '<fieldset><legend>A régua</legend>'
+    + campoBool('usar Preparo/Recuperação', R.usarPreparo, (v) => { R.usarPreparo = v; pintarPainel(); })
+    + CLASSES.concat(['distancia','arremesso','arte']).map((c) => campoNum('Preparo · ' + ROT_CLASSE[c], R.preparo[c], (v) => { R.preparo[c] = v; }, 1, 0, 12)).join('')
+    + campoSel('a guarda se refaz', R.guardaEm, [['resolve','quando o golpe sai'],['declara','na declaração']], (v) => { R.guardaEm = v; })
+    + campoBool('redirecionar o golpe', R.redirecionar, (v) => { R.redirecionar = v; })
+    + campoNum('Pressão (por ataque)', R.pressao, (v) => { R.pressao = v; }, 1, 0, 6)
+    + '</fieldset>'
+    + '<fieldset><legend>Agir fora da vez</legend>'
+    + campoBool('ligada', R.fora.ligada, (v) => { R.fora.ligada = v; })
+    + campoSel('gatilho', R.fora.gatilho, [['janela','só na janela'],['finalizar','só para finalizar'],['ambos','janela ou finalizar'],['sempre','sempre que puder'],['nunca','nunca']], (v) => { R.fora.gatilho = v; })
+    + campoNum('custo (× Velocidade)', R.fora.custo, (v) => { R.fora.custo = v; }, 0.25, 0.25, 3)
+    + campoNum('penalidade na rolagem', R.fora.pen, (v) => { R.fora.pen = v; }, 1, 0, 12)
+    + campoBool('a guarda NÃO se refaz', R.fora.guardaCongela, (v) => { R.fora.guardaCongela = v; })
+    + campoBool('uma por ação', R.fora.umaPorJanela, (v) => { R.fora.umaPorJanela = v; })
+    + campoBool('quem está em Preparo reage', R.fora.emPreparoPodeReagir, (v) => { R.fora.emPreparoPodeReagir = v; })
+    + campoBool('reage antes da estreia', R.fora.antesDaPrimeira, (v) => { R.fora.antesDaPrimeira = v; })
+    + '</fieldset>'
+    + '<fieldset><legend>Interromper</legend>'
+    + campoSel('o que compra', R.interrupcao, [['espelho','atrasa o que paguei'],['0','nada'],['1','atrasa 1 Tick'],['2','atrasa 2 Ticks'],['3','atrasa 3 Ticks'],['5','atrasa 5 Ticks'],['cancela','cancela a ação']], (v) => { R.interrupcao = (v === 'espelho' || v === 'cancela') ? v : Number(v); })
+    + campoNum('teto do atraso (× Vel.)', R.tetoAtraso, (v) => { R.tetoAtraso = v; }, 0.25, 0, 3)
+    + '</fieldset>'
+    + '<fieldset><legend>Carga voluntária</legend>'
+    + campoNum('bônus por Tick', R.carga.bonusPorTick, (v) => { R.carga.bonusPorTick = v; }, 1, 0, 12)
+    + campoNum('teto de Ticks', R.carga.teto, (v) => { R.carga.teto = v; }, 1, 0, 8)
+    + '</fieldset>'
+    + '<fieldset><legend>Aparo desesperado (reprovado)</legend>'
+    + campoBool('ligar (compra Defesa)', !!R.aparo, (v) => { R.aparo = v ? { custo: 3, bonus: 6, limiar: .45, teto: 99, umaPorJanela: true } : null; pintarPainel(); })
+    + (R.aparo ? campoNum('custo em Ticks', R.aparo.custo, (v) => { R.aparo.custo = v; }, 1, 1, 12)
+      + campoNum('bônus de Defesa', R.aparo.bonus, (v) => { R.aparo.bonus = v; }, 1, 1, 20)
+      + campoNum('só abaixo de (% da Vida)', Math.round(R.aparo.limiar * 100), (v) => { R.aparo.limiar = v / 100; }, 5, 0, 100)
+      + campoBool('uma por ação', R.aparo.umaPorJanela, (v) => { R.aparo.umaPorJanela = v; }) : '')
+    + '</fieldset>'
+    + '<fieldset><legend>O lutador padrão</legend>'
+    + campoNum('Atributo + Habilidade', S.lutador.ah, (v) => { S.lutador.ah = v; }, 1, 2, 16)
+    + campoNum('Centelha', S.lutador.centelha, (v) => { S.lutador.centelha = v; }, 1, 0, 6)
+    + campoNum('Vigor', S.lutador.vigor, (v) => { S.lutador.vigor = v; }, 1, 0, 8)
+    + campoNum('Força', S.lutador.forca, (v) => { S.lutador.forca = v; }, 1, 0, 8)
+    + campoNum('Vida', S.lutador.pv, (v) => { S.lutador.pv = v; }, 1, 5, 200)
+    + '</fieldset>'
+    + '<fieldset><legend>Precisão</legend>'
+    + campoNum('cenas por célula', S.n, (v) => { S.n = v; }, 500, 200, 60000)
+    + campoNum('semente', S.semente, (v) => { S.semente = v; }, 1, 1, 99999999)
+    + '</fieldset>'
+    + '<p class="nota">Trocar um número aqui não roda nada sozinho: aperte a bateria que você quer ver.</p>';
+}
+pintarPainel();
+
+function pintarPainelDuelo() {
+  const armasOrd = Object.keys(CAT.armas);
+  const armadurasOrd = Object.keys(CAT.armaduras);
+  el('painel-duelo').innerHTML = '<h3>O duelo</h3>'
+    + '<fieldset><legend>Lado A</legend>'
+    + campoSel('arma', S.duelo.a, armasOrd.map((k) => [k, CAT.armas[k].nome]), (v) => { S.duelo.a = v; })
+    + campoSel('armadura', S.duelo.armA, armadurasOrd.map((k) => [k, CAT.armaduras[k].nome]), (v) => { S.duelo.armA = v; })
+    + '</fieldset>'
+    + '<fieldset><legend>Lado B</legend>'
+    + campoSel('arma', S.duelo.b, armasOrd.map((k) => [k, CAT.armas[k].nome]), (v) => { S.duelo.b = v; })
+    + campoSel('armadura', S.duelo.armB, armadurasOrd.map((k) => [k, CAT.armaduras[k].nome]), (v) => { S.duelo.armB = v; })
+    + '</fieldset>'
+    + campoNum('semente', S.duelo.semente, (v) => { S.duelo.semente = v; }, 1, 1, 99999999)
+    + '<p class="nota">As regras vêm do painel da aba "As provas": mexa lá e narre de novo para ver a diferença no mesmo duelo.</p>';
+}
+pintarPainelDuelo();
+
+// ===================== saída =====================
+function bloco(titulo, expl, corpoHtml) {
+  const d = document.createElement('div');
+  d.className = 'resultado';
+  d.innerHTML = '<h4>' + titulo + '</h4>' + (expl ? '<p class="expl">' + expl + '</p>' : '') + corpoHtml;
+  el('saida').prepend(d);
+}
+function tabela(cabec, linhas) {
+  return '<table><thead><tr>' + cabec.map((c) => '<th>' + c + '</th>').join('') + '</tr></thead><tbody>'
+    + linhas.map((l) => '<tr>' + l.map((c) => '<td>' + c + '</td>').join('') + '</tr>').join('') + '</tbody></table>';
+}
+const espera = (ms = 12) => new Promise((r) => setTimeout(r, ms));
+async function comStatus(txt, fn) {
+  el('status').textContent = txt + '…';
+  document.querySelectorAll('button.acao').forEach((b) => { b.disabled = true; });
+  await espera();
+  const t0 = performance.now();
+  try { await fn(); } catch (e) { bloco('Erro', String(e && e.message || e), ''); }
+  el('status').textContent = txt + ' · ' + Math.round(performance.now() - t0) + ' ms';
+  document.querySelectorAll('button.acao').forEach((b) => { b.disabled = false; });
+}
+
+// ===================== as baterias =====================
+const BAT = {};
+
+BAT.roundrobin = () => {
+  const h = roundRobin(CORPO, HOJE(), CAT, { ...op(), spec: S.lutador });
+  const p = roundRobin(CORPO, SEM_FORA(), CAT, { ...op(), spec: S.lutador });
+  const linhas = CORPO.map((a) => {
+    const d = (p[a] - h[a]) * 100;
+    return [nomeArma(a), ROT_CLASSE[CAT.armas[a].classe], S.regras.preparo[CAT.armas[a].classe],
+      '<span class="num">' + pct(h[a]) + '</span>', '<span class="num">' + pct(p[a]) + '</span>',
+      '<span class="num ' + cor(d) + '">' + sgn(d) + '</span>'];
+  });
+  bloco('Round-robin por arma',
+    'Cada arma contra todas as outras, sem armadura. A coluna Δ é o que a régua nova move. Verde é abaixo de 2 pontos.',
+    tabela(['arma', 'classe', 'P', 'hoje', 'com P/R', 'Δ'], linhas));
+};
+
+BAT.classes = () => {
+  const h = porClasse(roundRobin(CORPO, HOJE(), CAT, { ...op(), spec: S.lutador }), CAT);
+  const p = porClasse(roundRobin(CORPO, SEM_FORA(), CAT, { ...op(), spec: S.lutador }), CAT);
+  const c = porClasse(roundRobin(CORPO, S.regras, CAT, { ...op(), spec: S.lutador }), CAT);
+  const linhas = CLASSES.map((k) => {
+    const d1 = (p[k] - h[k]) * 100, d2 = (c[k] - h[k]) * 100;
+    return [ROT_CLASSE[k], '<span class="num">' + pct(h[k]) + '</span>',
+      '<span class="num">' + pct(p[k]) + '</span>', '<span class="num ' + cor(d1) + '">' + sgn(d1) + '</span>',
+      '<span class="num">' + pct(c[k]) + '</span>', '<span class="num ' + cor(d2) + '">' + sgn(d2) + '</span>'];
+  });
+  bloco('Média por classe',
+    'Hoje, só com a régua, e com tudo ligado (a ação fora de hora e a interrupção como estão no painel).',
+    tabela(['classe', 'hoje', 'só a régua', 'Δ', 'tudo ligado', 'Δ'], linhas));
+};
+
+BAT.refrega = () => {
+  const opr = { n: Math.max(800, Math.floor(S.n / 3)), semente: S.semente, specA: S.lutador, specB: S.lutador };
+  const pares = [['martelo-de-guerra','espada-curta'], ['montante','adaga'], ['espada-longa','espada-longa']];
+  const linhas = [];
+  for (const [a, b] of pares) {
+    const h = refrega(a, b, HOJE(), CAT, opr);
+    const s = refrega(a, b, comRegras(SEM_FORA(), { redirecionar: false }), CAT, opr);
+    const r = refrega(a, b, SEM_FORA(), CAT, opr);
+    linhas.push(['3 ' + nomeArma(a) + ' vs 3 ' + nomeArma(b), 'hoje', '<span class="num">' + pct(h.win) + '</span>', '<span class="num">' + pct(h.perdidosPct) + '</span>', '<span class="num">' + h.ticks.toFixed(1) + 't</span>']);
+    linhas.push(['', 'P/R sem redirecionar', '<span class="num ' + cor((s.win - h.win) * 100) + '">' + pct(s.win) + '</span>', '<span class="num">' + pct(s.perdidosPct) + '</span>', '<span class="num">' + s.ticks.toFixed(1) + 't</span>']);
+    linhas.push(['', 'P/R + redirecionar', '<span class="num ' + cor((r.win - h.win) * 100) + '">' + pct(r.win) + '</span>', '<span class="num">' + pct(r.perdidosPct) + '</span>', '<span class="num">' + r.ticks.toFixed(1) + 't</span>']);
+  }
+  bloco('Refrega 3v3 com foco de fogo',
+    'É aqui que o Preparo morde: o golpe montado se perde quando o alvo cai antes de ele sair. A regra de redirecionar recupera quase tudo.',
+    tabela(['time', 'regra', 'vitórias', 'golpes perdidos', 'duração'], linhas));
+};
+
+BAT.janela = () => {
+  const pares = [['espada-curta','martelo-de-guerra'], ['adaga','montante'], ['espada-longa','martelo-de-guerra'],
+    ['lanca','montante'], ['martelo-de-guerra','martelo-de-guerra'], ['espada-longa','espada-longa'], ['espada-curta','espada-curta']];
+  const linhas = pares.map(([a, b]) => {
+    const r = bateria({ arma: a, ...S.lutador }, { arma: b, ...S.lutador }, SEM_FORA(), CAT, op());
+    return [nomeArma(a) + ' vs ' + nomeArma(b), '<span class="num">' + r.janelasPorDuelo.toFixed(2) + '</span>', '<span class="num">' + pct(r.janelaTaxa) + '</span>'];
+  });
+  bloco('A janela tática',
+    'Uma janela é declarar uma ação contra um alvo que está em Preparo: o instante em que interromper e ler valem. Repare que arma leve contra arma leve nunca abre janela.',
+    tabela(['matchup', 'janelas por duelo', '% das declarações'], linhas));
+};
+
+BAT.armadura = () => {
+  const linhas = [];
+  for (const a of ['espada-curta','espada-longa','martelo-de-guerra','lanca']) {
+    for (const ar of ['nenhuma','malha','placa-completa']) {
+      const h = bateria({ arma: a, ...S.lutador }, { arma: 'espada-longa', armadura: ar, ...S.lutador }, HOJE(), CAT, op());
+      const p = bateria({ arma: a, ...S.lutador }, { arma: 'espada-longa', armadura: ar, ...S.lutador }, SEM_FORA(), CAT, op());
+      const d = (p.win - h.win) * 100;
+      linhas.push([nomeArma(a), CAT.armaduras[ar].nome, '<span class="num">' + pct(h.win) + '</span>', '<span class="num">' + pct(p.win) + '</span>', '<span class="num ' + cor(d) + '">' + sgn(d) + '</span>']);
+    }
+  }
+  bloco('Contra armadura',
+    'A relação arma × armadura é o coração do dano em Centelha. Se a régua mexesse aqui, ela estaria reprovada.',
+    tabela(['arma', 'o alvo veste', 'hoje', 'com P/R', 'Δ'], linhas));
+};
+
+BAT.carga = () => {
+  const armas = ['espada-curta','espada-longa','martelo-de-guerra'];
+  const bonus = [2, 4, 6, 8, 10];
+  const linhas = [];
+  for (const a of armas) {
+    for (const n of [1, 2, 3]) {
+      const cels = bonus.map((b) => {
+        const R = comRegras(SEM_FORA(), { carga: { bonusPorTick: b, teto: 8 } });
+        const r = bateria({ arma: a, carga: { n }, ...S.lutador }, { arma: a, ...S.lutador }, R, CAT, { n: Math.max(1500, Math.floor(S.n / 2)), semente: S.semente });
+        const perto = Math.abs(r.win - .5) < .04;
+        return '<span class="num' + (perto ? ' bom' : '') + '">' + pct(r.win) + '</span>';
+      });
+      linhas.push([n === 1 ? nomeArma(a) : '', '+' + n + ' Tick' + (n > 1 ? 's' : ''), ...cels]);
+    }
+  }
+  bloco('Carga voluntária',
+    'Duelo espelho: A carrega, B joga normal. 50% (em verde) é a troca neutra, e o bônus que cruza os 50% é o preço justo de um Tick de Preparo comprado.',
+    tabela(['arma', 'carga', ...bonus.map((b) => 'bônus +' + b)], linhas));
+};
+
+BAT.feiticeiro = () => {
+  const opf = { n: Math.max(1200, Math.floor(S.n / 2)), semente: S.semente };
+  const casos = [
+    ['sem interrupção nenhuma', SEM_FORA()],
+    ['como está no painel', S.regras],
+    ['espelho com teto de 1 Velocidade', comRegras(S.regras, { interrupcao: 'espelho', tetoAtraso: 1 })],
+    ['atraso fixo de 2 Ticks', comRegras(S.regras, { interrupcao: 2 })],
+    ['cancela a ação', comRegras(S.regras, { interrupcao: 'cancela' })],
+  ];
+  const linhas = casos.map(([lbl, R]) => {
+    const nu = bateria({ arma: 'arte', ...S.lutador }, { arma: 'espada-longa', ...S.lutador }, R, CAT, opf);
+    const pl = bateria({ arma: 'arte', armadura: 'placa-completa', ...S.lutador }, { arma: 'espada-longa', ...S.lutador }, R, CAT, opf);
+    return [lbl, '<span class="num">' + pct(nu.arteSai) + '</span>', '<span class="num">' + pct(pl.arteSai) + '</span>'];
+  });
+  bloco('O feiticeiro sob pressão',
+    'A Arte é 7/0, o extremo do eixo e o alvo mais interrompível do jogo. Interromper exige acertar, e é por isso que a armadura vira a defesa de concentração do conjurador.',
+    tabela(['regra da interrupção', 'Artes que saem, nu', 'de Placa Completa'], linhas));
+};
+
+BAT.distancia = () => {
+  const linhas = [];
+  for (const arco of ['arco-longo','besta-media']) {
+    for (const dist of [30, 60, 100]) {
+      for (const p of [0, 2, 3]) {
+        const R = comRegras(S.regras, { preparo: { ...S.regras.preparo, distancia: p } });
+        const r = bateriaDistancia({ arma: arco, ...S.lutador }, { arma: 'espada-longa', ...S.lutador }, R, CAT,
+          { n: Math.max(1200, Math.floor(S.n / 2)), semente: S.semente, dist });
+        linhas.push([p === 0 ? nomeArma(arco) : '', dist + ' m', p,
+          '<span class="num">' + r.tirosAntes.toFixed(2) + '</span>',
+          '<span class="num">' + r.tirosDepois.toFixed(2) + '</span>',
+          '<span class="num">' + (r.tickDoContato == null ? '—' : 'T' + Math.round(r.tickDoContato)) + '</span>',
+          '<span class="num">' + pct(r.winArqueiro) + '</span>']);
+      }
+    }
+  }
+  bloco('O arqueiro e quem fecha a distância',
+    'O guerreiro corre 7 metros por Tick; o arqueiro atira parado; o contato é a 2 metros. A pergunta: o Preparo do arco custa alguma coisa, se ninguém alcança o arqueiro durante ele?',
+    tabela(['arco', 'distância', 'P do arco', 'tiros antes do contato', 'tiros depois', 'Tick do contato', 'win% do arqueiro'], linhas));
+};
+
+BAT.travas = () => {
+  const base = porClasse(roundRobin(CORPO, SEM_FORA(), CAT, { ...op(), spec: S.lutador }), CAT);
+  const casos = [
+    ['(referência, sem ação fora de hora)', SEM_FORA()],
+    ['preço cheio (as três travas)', S.regras],
+    ['sem a trava da guarda', comRegras(S.regras, { fora: { ...S.regras.fora, guardaCongela: false } })],
+    ['sem a trava de uma por ação', comRegras(S.regras, { fora: { ...S.regras.fora, umaPorJanela: false } })],
+    ['custo meia Velocidade', comRegras(S.regras, { fora: { ...S.regras.fora, custo: 0.5 } })],
+    ['quem está em Preparo também reage', comRegras(S.regras, { fora: { ...S.regras.fora, emPreparoPodeReagir: true } })],
+    ['reage antes da estreia na cena', comRegras(S.regras, { fora: { ...S.regras.fora, antesDaPrimeira: true } })],
+    ['gatilho livre', comRegras(S.regras, { fora: { ...S.regras.fora, gatilho: 'sempre' } })],
+    ['sem trava nenhuma', comRegras(S.regras, { fora: { ...S.regras.fora, guardaCongela: false, umaPorJanela: false, custo: 0.5, gatilho: 'sempre' } })],
+  ];
+  const linhas = casos.map(([lbl, R]) => {
+    const cl = porClasse(roundRobin(CORPO, R, CAT, { ...op(), spec: S.lutador }), CAT);
+    const dz = bateria({ arma: 'espada-curta', ...S.lutador }, { arma: 'martelo-de-guerra', ...S.lutador }, R, CAT, op());
+    const desvio = Math.max(...CLASSES.map((c) => Math.abs(cl[c] - base[c]))) * 100;
+    return [lbl, ...CLASSES.map((c) => '<span class="num">' + pct(cl[c]) + '</span>'),
+      '<span class="num ' + cor(desvio) + '">' + sgn(desvio) + '</span>',
+      '<span class="num">' + dz.foraPorDuelo.toFixed(2) + '</span>',
+      '<span class="num">' + dz.ticks.toFixed(1) + 't</span>'];
+  });
+  bloco('As travas do preço',
+    'Tirando uma trava de cada vez. As três são portantes: tirar qualquer uma leva o desvio de perto de 5 para mais de 20 pontos, e tirar todas derruba a duração do combate, porque todo mundo gasta o futuro inteiro agora.',
+    tabela(['variante', ...CLASSES.map((c) => ROT_CLASSE[c]), 'pior desvio', 'ações fora de hora', 'duração'], linhas));
+};
+
+document.querySelectorAll('button.acao[data-bat]').forEach((b) => b.addEventListener('click', () => {
+  const k = b.dataset.bat;
+  if (k === 'tudo') {
+    comStatus('rodando tudo', async () => {
+      for (const nome of ['travas','distancia','feiticeiro','carga','armadura','janela','refrega','classes','roundrobin']) {
+        el('status').textContent = 'rodando ' + nome + '…'; await espera(); BAT[nome]();
+      }
+    });
+  } else comStatus('rodando ' + b.textContent.toLowerCase(), async () => BAT[k]());
+}));
+el('limpar').addEventListener('click', () => { el('saida').innerHTML = ''; el('status').textContent = ''; });
+
+// ===================== duelo narrado + trilho =====================
+function narrar() {
+  const R = S.regras;
+  const rnd = criarRng(S.duelo.semente);
+  const A = lutador({ arma: S.duelo.a, armadura: S.duelo.armA, rotulo: 'A · ' + nomeArma(S.duelo.a), regras: R, ...S.lutador }, CAT);
+  const B = lutador({ arma: S.duelo.b, armadura: S.duelo.armB, rotulo: 'B · ' + nomeArma(S.duelo.b), regras: R, ...S.lutador }, CAT);
+  const r = cena([A], [B], R, rnd, { narrar: true });
+  el('log').innerHTML = r.log.map((l) => l.replace(/\[T(\d+)\]/, '<b>[T$1]</b>')).join('\n')
+    + '\n\n<b>→ ' + (r.vencedor === 'A' ? A.nome : r.vencedor === 'B' ? B.nome : 'empate') + '</b>, no Tick ' + r.ticks + '.';
+  el('trilho').innerHTML = desenharTrilho(r.log, [A.nome, B.nome], r.ticks);
+}
+// Reconstrói o trilho a partir do log: é o desenho que a aba de Combate da mesa deveria ter.
+function desenharTrilho(log, nomes, fim) {
+  const faixas = Object.fromEntries(nomes.map((n) => [n, Array(fim + 2).fill('·')]));
+  for (const l of log) {
+    const m = l.match(/^\[T(\d+)\] (.+?) declara/);
+    if (m) {
+      const t = +m[1], quem = m[2];
+      const saiM = l.match(/Sai no T(\d+)/), voltaM = l.match(/volta a declarar no T(\d+)/);
+      const sai = saiM ? +saiM[1] : t, volta = voltaM ? +voltaM[1] : t;
+      if (!faixas[quem]) continue;
+      for (let i = t; i < sai && i < faixas[quem].length; i++) faixas[quem][i] = 'P';
+      if (sai < faixas[quem].length) faixas[quem][sai] = 'X';
+      for (let i = sai + 1; i < volta && i < faixas[quem].length; i++) faixas[quem][i] = 'R';
+    }
+    const f = l.match(/^\[T(\d+)\] (.+?) age FORA DA HORA/);
+    if (f && faixas[f[2]]) faixas[f[2]][+f[1]] = 'F';
+  }
+  const NL = String.fromCharCode(10);
+  const larg = Math.min(fim + 1, 120);
+  // Régua: um traço a cada 5 Ticks, o número escrito a partir da própria posição.
+  const marcas = Array(larg).fill(' ');
+  const numeros = Array(larg).fill(' ');
+  for (let i = 0; i < larg; i++) {
+    if ((i + 1) % 10 === 0) { marcas[i] = '|'; const n = String(i + 1); for (let k = 0; k < n.length && i + k < larg; k++) numeros[i + k] = n[k]; }
+    else if ((i + 1) % 5 === 0) marcas[i] = '.';
+  }
+  const pad = ' '.repeat(27);
+  const escala = pad + numeros.join('') + NL + pad + marcas.join('');
+  const linhas = nomes.map((n) => {
+    const corpo = faixas[n].slice(1, larg + 1).map((c) =>
+      c === 'P' ? '<span class="prep">▓</span>' : c === 'R' ? '<span class="rec">░</span>'
+      : c === 'X' ? '<span class="sai">█</span>' : c === 'F' ? '<span class="sai">◆</span>' : '<span class="rec">·</span>').join('');
+    return n.padEnd(26).slice(0, 26) + ' ' + corpo;
+  });
+  return '<div class="trilho">' + escala + '\n' + linhas.join('\n')
+    + '\n\n▓ Preparo   █ o golpe sai   ░ Recuperação   ◆ ação fora de hora   · livre</div>';
+}
+el('narrar').addEventListener('click', narrar);
+el('narrar-outro').addEventListener('click', () => { S.duelo.semente = (S.duelo.semente * 7 + 13) % 99999989; pintarPainelDuelo(); narrar(); });
+
+// ===================== catálogo =====================
+function pintarCatalogo() {
+  const linhas = ARMAS_JSON.map((w) => {
+    const a = CAT.armas[w.id];
+    const P = S.regras.preparo[a.classe] ?? 0;
+    const Rc = a.ticks - P;
+    return [a.nome, ROT_CLASSE[a.classe] || a.classe,
+      '<span class="num">' + a.dado + 'd6' + (a.danoBonus ? (a.danoBonus > 0 ? '+' : '') + a.danoBonus : '') + '</span>',
+      '<span class="num">' + sgn(a.acerto, 0) + '</span>',
+      '<span class="num">' + a.maos + '</span>',
+      '<span class="num">×' + a.forcaMult + '</span>',
+      '<span class="num">' + a.ticks + '</span>',
+      '<span class="num bom">' + P + '</span>', '<span class="num">' + Rc + '</span>',
+      a.modo + (a.perf ? ' N' + a.perf : '')];
+  });
+  const armad = ARMADURAS_JSON.map((x) => [x.nome, ROT_CLASSE[x.classe] || x.classe,
+    '<span class="num">' + x.soak.impacto + '</span>', '<span class="num">' + x.soak.corte + '</span>',
+    '<span class="num">' + x.soak.perfuracao + '</span>', '<span class="num">' + (x.resistPerf || 0) + '</span>',
+    '<span class="num">' + (x.penalidade || 0) + '</span>']);
+  el('catalogo').innerHTML =
+    '<div class="resultado"><h4>Armas</h4><p class="expl">O catálogo real, com o par Preparo/Recuperação que a régua atribui. Repare que a Lança traz Força ×1: ela fere por alcance, não por peso, e essa linha do dado já estava certa no JSON.</p>'
+    + tabela(['arma','classe','dado','acerto','mãos','Força','Velocidade','P','R','modo'], linhas) + '</div>'
+    + '<div class="resultado"><h4>Armaduras</h4>' + tabela(['armadura','classe','Imp.','Corte','Perf.','Nível','penalidade'], armad) + '</div>';
+}
+</script>
+</body>
+</html>

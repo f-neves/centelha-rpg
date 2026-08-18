@@ -530,53 +530,59 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
 
 ## K. Combate · a linha do tempo
 
-Frente aberta em **2026-08-18**. Doc de trabalho: `Combate_Tempo.md`. Banco de provas:
-`scripts/sim-ticks.mjs` (motor herdado do `sim-duelo.mjs`, gerador semeado, doze baterias).
-A ideia é trocar a Velocidade única pelo par **Preparo/Recuperação**, com `P + R` igual à
-Velocidade de hoje, e generalizar o desvio de emergência da §5.5 do Arcano numa **dívida de
-Ticks**: agir fora da vez custa tempo emprestado do próprio futuro.
+Frente aberta em **2026-08-18**. Doc de trabalho: `Combate_Tempo.md`. **Bancada interativa:
+`combate-tempo-bench.html`** (abre com duplo clique, sem servidor: quatro abas, todo número de
+regra é um botão, treze cartões de regra com o estado da decisão, nove baterias e um duelo narrado
+Tick a Tick com o trilho desenhado). O motor é `scripts/lib-tempo.mjs`, um só, usado pelo relatório
+em lote (`node scripts/sim-ticks.mjs`) e inlinado na bancada por `scripts/gen-bench-tempo.mjs`. O
+catálogo é o real (`armas.json`, `armaduras.json`).
 
-- [x] **K1 · Fundação decidida (18/08).** O par `P/R` (leve 0/5 · média 1/5 · haste 0/6 ·
-  pesada 2/5), a guarda que se refaz **quando o golpe sai**, o Preparo que **não compra nada**,
-  e o golpe que **redireciona** quando o alvo cai antes de ele sair. Medido neutro: maior desvio
-  de +0,6 ponto em 9 armas e +1,1 em 12 células de arma × armadura.
+A ideia: trocar a Velocidade única pelo par **Preparo/Recuperação** (`P + R` = a Velocidade de
+hoje) e generalizar o desvio de emergência da §5.5 do Arcano numa **dívida de Ticks**.
+
+- [x] **K1 · A régua, decidida (18/08).** `P/R` (leve 0/5 · média 1/5 · haste 0/6 · pesada 2/5), a
+  guarda que se refaz **quando o golpe sai**, o Preparo que **não compra nada** e o golpe que
+  **redireciona** quando o alvo cai. Medido neutro no catálogo real: maior desvio de 0,7 ponto em
+  dez armas e 0,7 em doze células de arma × armadura.
 - [x] **K2 · Catálogo decidido (18/08).** Entra inteiro, **ataque incluso**. Preço: Velocidade
-  inteira em dívida, guarda não se refaz, uma por ação, e **nenhuma penalidade de rolagem** (as
-  três travas juntas dão desvio de +4,7; tirar qualquer uma leva a +22 ou mais, e sem trava
-  nenhuma o combate perde metade da duração). Não é preciso teto de dívida: a trava de "uma por
-  ação" já o dá. As seis linhas do catálogo estão na §4.3 do `Combate_Tempo.md`.
-- [x] **K3 · O que interromper compra, decidido (18/08).** **Espelho:** o golpe que conecta em
-  quem está montando atrasa a ação dele em tantos Ticks quantos o interruptor pagou (desvio
-  +4,7). Cancelar de vez derruba a arma pesada 17 pontos. Sai daí a simetria de que a arma pesada
-  é a mais interrompível e a melhor interruptora.
-- [ ] **K8 · [DECIDIR] As sete bordas da ação fora de hora.** §4.6 do `Combate_Tempo.md`: se quem
-  está em Preparo pode reagir (proposta: não), duas áreas na mesma janela, reação e Reflexiva
-  juntas, abortar (Firme × Solta), a dívida na virada da cena, o Preparo da Horda (proposta: 0) e
-  o atraso não entrar no teto de ±6. É o que falta para a fase 2 fechar.
+  inteira em dívida, guarda não se refaz, uma por ação, gatilho só na janela, e **nenhuma
+  penalidade de rolagem**. As quatro travas juntas dão desvio de +1,7; tirar a de "uma por ação"
+  leva a +35,6 e derruba o combate de 32 para 9,6 Ticks.
+- [x] **K3 · Interromper compra o espelho (18/08).** O alvo perde tantos Ticks quantos o
+  interruptor pagou (desvio +1,7 contra +13,4 do cancelamento e +24,7 do atraso fixo de 1).
+- [x] **K10 · O feiticeiro sob pressão, respondido (18/08).** O espelho custa 4% das Artes ao
+  conjurador nu e nada ao de Placa: **interromper exige acertar**, e a armadura vira a defesa de
+  concentração. Responde à **pendência 14 do Arcano** sem tocar no capítulo das Artes.
+- [x] **K7 · Os fora-de-curva do catálogo, diagnosticados (18/08).** A **Lança em 78,5%** era erro
+  do banco antigo (Força dobrada numa haste de estocada); com o dado real ela fica em 56,7%. Sobram
+  dois problemas de verdade, que existem **hoje** e são independentes desta revisão: a **Alabarda**
+  entre 87% e 96% contra tudo (Força ×2 com Velocidade 6, acerto +1 e Defesa +2, contra o Montante
+  de Velocidade 7 e Defesa −2), e a **Maça** entre 0,7% e 13% (a Absorção natural contra Impacto,
+  `Vigor + Centelha`, come o dano de uma arma de uma mão). Virou item próprio: **K11**.
+- [ ] **K11 · [DECIDIR] Alabarda, Maça e o Impacto de uma mão.** Ou o `forcaMult` da Alabarda cai
+  para 1 (como a Lança), ou o dado dela cai. E a arma de Impacto de uma mão não tem nicho nenhum:
+  contra alvo nu a Absorção natural a esmaga, contra armadura ela perde para a de duas mãos. §9 do
+  `Combate_Tempo.md`.
+- [ ] **K8 · [DECIDIR] Cinco das nove bordas.** Quatro já foram medidas e fechadas (quem está em
+  Preparo não reage, ninguém reage antes da própria estreia na cena, o gatilho é só a janela, e uma
+  por ação). Faltam: duas áreas na mesma janela, reação e Reflexiva no mesmo gatilho, abortar
+  (Firme × Solta), a dívida na virada da cena e **se o golpe normal interrompe** (a mais
+  consequente). §6 do `Combate_Tempo.md`.
+- [ ] **K4 · [DECIDIR] O Preparo de distância e arremesso.** A curva está medida (§7): o Preparo do
+  arco é pago no tiro que não sai antes do contato, e cada ponto custa de 5 a 13 pontos de win rate
+  entre 45 e 100 metros. A 100 m, P=0 dá 68,6% ao arqueiro e P=2 dá 42,6%. Duas leituras
+  defensáveis: caro demais (então P=1), ou o freio que faltava (então P=2). Escolha sua.
 - [ ] **K9 · [DECIDIR] A carga voluntária.** Medido: **1 Tick de Preparo comprado vale +2 na
-  rolagem**, quase linear até 3 Ticks, mais barato para arma pesada (+1 a +2) que para leve
-  (+2,4). Cai daí que o **Mirar de hoje está caro demais** (cobra uma ação inteira e entrega o
-  preço de um Tick). Falta travar o teto (proposta: 3 Ticks, +6) e ver se ele sobe quando a
-  interrupção durante a carga entrar na conta. §3 do `Combate_Tempo.md`.
-- [ ] **K4 · [DECIDIR] O Preparo das armas de distância e de arremesso.** Proposta escrita na
-  §2.5 do `Combate_Tempo.md` (arco 2, besta 3, funda 2, arremesso leve 0, arremesso pesado 1),
-  **sem número testado**: o banco só cobre corpo a corpo. E a pergunta de fundo continua sem
-  resposta: o Preparo só custa se alguém puder te alcançar, e o arqueiro está longe. Três saídas
-  na §2.5, e a mais barata é o Preparo do arqueiro virar alvo de outro arqueiro.
-- [ ] **K5 · [FAZER] A implementação, quando K2 e K3 fecharem.** `armas.json` (campo do Preparo,
-  provavelmente derivado da classe em `regras.json`), capítulo IX, a linha de combate da ficha e
-  o rastreador de Ticks da mesa (a barra de dois tons no trilho compartilhado).
-- [ ] **K6 · [DECIDIR] A leitura do sinal.** Desenhada na §6 do `Combate_Tempo.md`: Percepção +
-  Prontidão para o golpe físico (o Ocultismo da §5.5 segue para a Arte), leitura grátis para quem
-  tem a mesma arma e perícia, e a **finta** comprando 1 Tick de Preparo para mentir sobre o alvo,
-  que dá à arma leve o primeiro motivo para comprar Preparo. É a parte que mais consome tempo de
-  mesa e a que mais precisa de tela (informação assimétrica); fica por último.
-- [x] **K10 · O feiticeiro sob pressão, respondido (18/08).** O espelho não vira tranca: com um
-  espadachim em cima, o feiticeiro **nu** perde 44% das Artes e o **de Placa** perde 1%, porque
-  interromper exige acertar. Cai daí que **a armadura é a defesa de concentração do conjurador**,
-  e isso responde à **pendência 14 do Arcano** sem acrescentar linha ao capítulo das Artes.
-- [ ] **K7 · [FAZER] A Lança está em 78,5%** contra todo o resto no round-robin, e isso já é assim
-  **hoje**, sem P/R nenhum. Não é desta revisão, mas o banco expôs e alguém precisa olhar.
+  rolagem**, subindo devagar (+2,2 no primeiro, ~+2,7 no terceiro) e mais barato para arma pesada.
+  Cai daí que o **Mirar de hoje está caro demais**: cobra uma ação inteira e entrega o preço de um
+  Tick. Falta travar o teto (proposta: 3 Ticks).
+- [ ] **K6 · [DECIDIR] A leitura do sinal.** Desenhada na §8: Percepção + Prontidão para o golpe
+  físico (o Ocultismo da §5.5 segue para a Arte), leitura grátis para quem tem a mesma arma e
+  perícia, e a **finta** comprando 1 Tick de Preparo para mentir sobre o alvo, que dá à arma leve o
+  primeiro motivo para comprar Preparo. Fica por último.
+- [ ] **K5 · [FAZER] A implementação, quando as bordas fecharem.** `armas.json` (Preparo,
+  provavelmente derivado da classe em `regras.json`), capítulo IX, a linha de combate da ficha e o
+  rastreador de Ticks da mesa (a barra de dois tons no trilho compartilhado).
 
 ## H. Arremesso
 
