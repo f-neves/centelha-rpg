@@ -658,10 +658,11 @@ que abrir troque altura por chão: abrir troca ângulo por *tudo o mais*. No gra
 uma fatia cobre 15,6 m² de chão a 5,2 m de distância, e as seis fatias que fecham o círculo cobrem
 2,6 m² a 87 cm. **Cercar-se é caríssimo, e é o preço de não ter flanco.**
 
-### Quem paga a abertura: os dois modelos (em avaliação)
+### Quem paga a abertura: os dois modelos, e a escolha é do CONJURADOR
 
-Há duas maneiras de cobrar as fatias a mais, e as duas estão na bancada desde 2026-08-17, no controle
-**Abrir cobra**. A superfície comprada é *n²* nas duas, e o que muda é **em qual medida ela é cobrada**:
+Há duas maneiras de cobrar as fatias a mais. **Decidido em 2026-08-19: não se escolhe uma, escolhem-se
+as duas**, e quem decide é o conjurador, a cada conjuração. A superfície comprada é *n²* nas duas, e o
+que muda é **em qual medida ela é cobrada**:
 
 | | **distância** (modelo B) | **altura** (modelo A) |
 |---|---|---|
@@ -687,7 +688,9 @@ para 1 m. As seis fatias formam exatamente o **hexágono regular de lado 6 m**, 
 o hexágono do Grid seis vezes maior: um lençol que pega quem estiver em pé até 5,2 m em qualquer
 direção. Contra inimigos frouxos na bancada, 66 de 80.
 
-A escolha é de jogo, e é bem definida:
+A escolha é de jogo, e é bem definida. Por isso ela virou **botão na mesa** em vez de decisão de
+sistema: as duas são jogáveis, cada uma serve a uma intenção diferente, e obrigar a mesa inteira a uma
+delas jogaria fora a outra. O que o feiticeiro escolhe, na hora, é qual dos dois preços ele paga:
 
 - **O modelo da altura protege o alcance e o volume**, e é o que responde ao pedido de origem desta
   revisão: no grau 5 e 6 acertar vários inimigos mesmo sem estarem adjacentes, com um raio cada vez
@@ -701,12 +704,30 @@ O meio-caminho que ainda não está na bancada é cobrar **as duas coisas em par
 altura em `n ÷ √N` e a distância no resto, que deixaria o volume caindo com `√N` em vez de `N`. Fica
 registrado como opção; não implementei porque a régua vira irracional na mesa.
 
-### A base pode ser reta ou em arco (em avaliação)
+**A altura precisa vir escrita.** O tabuleiro é visto de cima e engole a altura inteira, então a
+diferença entre os dois modos seria invisível ali: no grau 6 fechando 180°, os dois desenham a mesma
+meia-lua, e só o número diz que uma tem 6 m de altura com 2 m de raio e a outra tem 2 m de altura com
+6 m de raio. Por isso a figura da manifestação diz as três coisas juntas: quantas fatias, que raio e
+**que altura tem a base**.
 
-A base descrita acima é uma **corda**: uma reta a `distância` metros, e o chão é um triângulo. Há uma
-segunda leitura da mesma fatia, na bancada desde 2026-08-17 e **ainda não decidida**: **o lado do
-triângulo vira raio**, a base vira um arco e o chão vira um setor de círculo. No grau 6 a 60°, o lado
-de 6 m vira **um setor de 60° com raio 6 m**.
+### A base é em ARCO (decidido em 2026-08-19)
+
+A base descrita acima é uma **corda**: uma reta a `distância` metros, e o chão é um triângulo. **Ela
+perdeu.** O que vale é a segunda leitura da mesma fatia: **o lado do triângulo vira raio**, a base vira
+um arco e o chão vira um setor de círculo. No grau 6 a 60°, o lado de 6 m vira **um setor de 60° com
+raio 6 m**.
+
+Duas coisas decidiram, e a segunda não estava na mesa quando esta seção foi escrita. A primeira é o
+desenho: **fechar os 360° dá um círculo completo**, e não um polígono com quinas, o que é a forma que
+a mesa desenha sozinha quando alguém diz "em volta de mim". A segunda é o preço de manter as duas: a
+corda obrigava o tabuleiro a um tipo de figura próprio (um leque de chapas retas, com teste de dentro,
+saída e traço só dele), enquanto o arco **já é o leque** que o Grid desenha desde sempre.
+
+Com o arco, o raio sai direto do que se comprou, sem passar pela perpendicular:
+
+<p class="formula">raio = (n ÷ 2k) ÷ sen(θ÷2) &middot; altura = n · k ÷ N</p>
+
+`k` é quem paga a abertura, e é a **A22**, logo abaixo, que ele responde.
 
 O volume sai da mesma conta da pirâmide, e isso não é analogia: para um cone com ápice na origem,
 `V = ⅓∫(r·n)dA`, e na parede cilíndrica a normal é radial, então `r·n` é o raio em todo ponto. Logo:
@@ -816,13 +837,15 @@ toma o campo.
    fórmula do volume no dado que muda. **Quem compra a base ficou decidido no mesmo dia: é o Volume**,
    com a régua da manifestação ao lado da régua da matéria (`graus.volumeImproviso`), e qualquer outra
    manifestação de volume é Efeito Especial.
-2. **Quem paga a abertura: distância ou altura.** As duas estão medidas na bancada e a escolha é de
-   jogo, não de conta: uma protege a decisão do jogador, a outra protege o alcance e entrega o raio
-   grande pedido no começo desta revisão. É a decisão mais pesada que sobrou aqui, porque o resto da
-   seção não muda com ela.
-3. **A base fica em corda ou vai para arco.** A conta das três está feita e medida na bancada; falta
-   a decisão, e ela mexe no preço da abertura (na corda o 120° custa dois terços do volume, no arco
-   custa um terço). O **arco justo** é a opção que muda o desenho sem mexer em número nenhum.
+2. ~~**Quem paga a abertura: distância ou altura.**~~ **Fechado em 2026-08-19, e não do jeito que a
+   pergunta supunha: as duas valem, e quem escolhe é o CONJURADOR**, a cada conjuração. As duas são
+   jogáveis e servem a intenções diferentes; obrigar a mesa a uma delas jogaria a outra fora. Virou
+   botão na caixa de conjuração, com a altura da base escrita ao lado, porque vista de cima ela some.
+3. ~~**A base fica em corda ou vai para arco.**~~ **Fechado em 2026-08-19: ARCO.** Fechar os 360° dá
+   um círculo completo em vez de um polígono com quinas, e o arco já é o leque que o tabuleiro
+   desenha desde sempre, enquanto a corda pedia um tipo de figura só dela. O **arco justo** fica
+   registrado como a opção que teria mudado o desenho sem mexer em número nenhum, e não foi escolhida
+   porque o ganho do arco (`θ ÷ sen θ`) é parte do que se quis ao adotá-lo.
 4. **O que a matéria dentro da fatia faz em número.** A regra diz quanto elemento aparece e onde; não
    diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de
    Terra aguenta. Encosta na A9 e no capítulo de Vida & Ferimentos.

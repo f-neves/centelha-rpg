@@ -11,8 +11,8 @@ import {
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
   figuraDoEfeito, rotuloDaFigura, LADO_MINIMO, CURVATURAS, velocidadePadraoDe,
   MOLDE, MOLDES_DE_CHAO, moldeDaForma, formaEscolheMolde,
-  ABERTURAS, ABERTURA_PADRAO, volumeDaManifestacao,
-  type Arte, type Efeito, type Parametro, type Escolhas, type Custo,
+  ABERTURAS, ABERTURA_PADRAO, volumeDaManifestacao, ABRIR_COBRA,
+  type Arte, type Efeito, type Parametro, type Escolhas, type Custo, type ModoAbrir,
 } from './artes-grid';
 
 const esc = (s: unknown) =>
@@ -35,6 +35,10 @@ export interface Plano {
   angulo: number;
   /** Quantas fatias vizinhas o improviso abre. Nunca passa do nível da Arte. */
   fatias: number;
+  /** Quem paga a abertura: a distância (o raio encolhe) ou a altura (a base baixa). */
+  abrirCobra: ModoAbrir;
+  /** A altura da base da pirâmide, em metros. O tabuleiro não a mostra sozinho. */
+  alturaM: number;
   /** O lado da base comprado pelo Volume do improviso, em metros. */
   ladoBaseM: number;
   /** O volume que a manifestação entrega, em m³. Só o improviso. */
@@ -66,6 +70,15 @@ export interface Plano {
 export interface CtxConjurar {
   nome: string;
   centelha: number;
+  /**
+   * Chamada a cada mexida na caixa, com o plano de agora.
+   *
+   * É por ela que o tabuleiro desenha a PRÉVIA enquanto se escolhe: o jogador
+   * sobe o Volume, abre mais uma fatia, troca quem paga o abrir, e vê a mancha
+   * mudar atrás da caixa em vez de descobrir o tamanho depois de fechar. Quem a
+   * implementa é a aba, porque só ela sabe onde o conjurador está no mapa.
+   */
+  aoMudar?: (plano: Plano | null) => void;
   /** Ficha do PC (`S`) ou bloco da criatura. É de lá que saem Artes e Efeitos. */
   fonte: any;
   /** Personagem: só o que comprou. Criatura: null, e alcança o que a Arte comporta. */
@@ -96,6 +109,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let molde = 'explosao';
   let angulo = ABERTURA_PADRAO;
   let fatias = 1;
+  let abrirCobra: ModoAbrir = 'distancia';
   let lado = LADO_MINIMO;
   let curvatura = 0;
   let velocidade = velocidadePadraoDe(null);
@@ -109,7 +123,12 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
 
   return new Promise<Plano | null>((resolve) => {
     let resolvido = false;
-    const sair = (v: Plano | null) => { if (resolvido) return; resolvido = true; fechar(); resolve(v); };
+    const sair = (v: Plano | null) => {
+      if (resolvido) return;
+      resolvido = true;
+      ctx.aoMudar?.(null);   // apaga a prévia: a caixa fechou, com plano ou sem
+      fechar(); resolve(v);
+    };
     corpo.closest('dialog')?.addEventListener('close', () => sair(null), { once: true });
 
     /**
@@ -183,15 +202,18 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         efeito: efeitoSel, grau: grauTam,
         ancora: { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' },
         molde, curvaturaGraus: curvatura,
-        ladoM: ladoBaseM, fatias, aberturaGraus: angulo,
+        ladoM: ladoBaseM, fatias, aberturaGraus: angulo, abrirCobra,
       });
       const figura = fig ? rotuloDaFigura(fig) : '';
       if (figura) partes.push(figura);
-      const volumeM3 = fig?.tipo === 'fatias' ? volumeDaManifestacao(fig) : 0;
+      // A manifestação é um setor como qualquer outro leque; o que a distingue é
+      // ter fatias contadas, e é por isso que só ela rende volume em m³.
+      const volumeM3 = fig?.fatias ? volumeDaManifestacao(fig) : 0;
       if (volumeM3) partes.push(`${volumeM3 < 10 ? volumeM3.toFixed(1) : Math.round(volumeM3)} m³`);
       return {
         arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas },
-        molde, angulo, fatias, lado, ladoBaseM, volumeM3,
+        molde, angulo, fatias, abrirCobra, lado, ladoBaseM, volumeM3,
+        alturaM: fig?.alturaM || 0,
         curvaturaGraus: curvatura, velocidadeTicks: velocidade, custo,
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
         areaM2,
@@ -207,6 +229,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
 
     function pintar() {
       const plano = planoAtual();
+      ctx.aoMudar?.(plano);
       const g = efeitoSel?.grid;
       const pars = efeitoSel ? parametrosAjustaveis(efeitoSel) : parametrosDoImproviso();
       const fixos = (efeitoSel?.parametros || []).filter((p) => p.tipo === 'fixo');
@@ -306,7 +329,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const focado = (() => {
         const a = document.activeElement as HTMLElement | null;
         if (!a || !corpo.contains(a)) return '';
-        for (const k of ['data-arte', 'data-ef', 'data-par', 'data-molde', 'data-ang', 'data-curva', 'data-fatias']) {
+        for (const k of ['data-arte', 'data-ef', 'data-par', 'data-molde', 'data-ang', 'data-curva', 'data-fatias', 'data-abrir']) {
           if (a.hasAttribute(k)) {
             const d = a.getAttribute('data-d');
             return `[${k}="${CSS.escape(a.getAttribute(k) || '')}"]${d ? `[data-d="${d}"]` : ''}`;
@@ -344,21 +367,21 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
                   `<span><b>${esc(p.nome)}:</b> ${esc(p.valor)}</span>`).join('')}</div>` : ''}
               </div>
               ${podeFatiar ? `<div class="ag-sec"><h3 class="ag-h">Manifestação</h3>
-                <p class="ag-md-nota">O elemento sai de você, em fatias vizinhas. A base comprada não se
-                  mexe: <b>quem paga a abertura é a distância</b>, e o volume vai atrás dela.</p>
                 <div class="ag-angs">
-                  <span class="ag-ang-l">Fatias</span>
+                  <span class="ag-ang-l" title="O elemento sai em fatias vizinhas do mesmo ápice, e o número delas nunca passa do nível da Arte.">Fatias</span>
                   ${Array.from({ length: Math.max(1, nivelArte) }, (_, i) => i + 1).map((k) => `
                     <button type="button" class="ag-ang${fatias === k ? ' on' : ''}" data-fatias="${k}">${k}</button>`).join('')}
-                  <span class="ag-ang-n">no máximo o nível da Arte</span>
-                </div>
-                <div class="ag-angs">
-                  <span class="ag-ang-l">Abertura</span>
+                  <span class="ag-ang-l" title="As três que fecham o círculo em número inteiro de fatias: seis, quatro e três.">Abertura</span>
                   ${ABERTURAS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
                     data-ang="${a}">${a}°</button>`).join('')}
-                  <span class="ag-ang-n">as três que fecham o círculo</span>
                 </div>
-                <p class="ag-figura">${esc(plano.figura || 'sem volume')}</p>
+                <div class="ag-angs">
+                  <span class="ag-ang-l" title="A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.">Abrir cobra</span>
+                  ${ABRIR_COBRA.map((o) => `<button type="button" class="ag-ang${abrirCobra === o.id ? ' on' : ''}"
+                    data-abrir="${o.id}" title="${esc(o.efeito)}">${esc(o.nome)}</button>`).join('')}
+                  <span class="ag-ang-n">${esc(abrirCobra === 'altura'
+                    ? 'o raio fica, a base baixa' : 'o raio encolhe, a base fica')}</span>
+                </div>
               </div>` : ''}
               ${improvisoSemChao ? `<div class="ag-sec"><h3 class="ag-h">Manifestação</h3>
                 <p class="ag-md-nota">${esc(arteSel.nome)} não manifesta elemento, e a fatia não quer dizer
@@ -402,6 +425,8 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
                 </div>
                 ${c.esticados.length ? `<div class="ag-cst-est">esticado:
                   ${c.esticados.map((e) => `${esc(e.nome)} ${e.acima} acima (${e.custo})`).join(' · ')}</div>` : ''}
+                ${plano.figura ? `<div class="ag-cst-fig">${esc(plano.figura)}${
+                  plano.volumeM3 ? ` · ${plano.volumeM3 < 10 ? plano.volumeM3.toFixed(1) : Math.round(plano.volumeM3)} m³` : ''}</div>` : ''}
               </div>
               <div class="ag-acoes">
                 <button type="button" class="btn" id="ag-cancelar">Cancelar</button>
@@ -448,6 +473,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       });
       corpo.querySelectorAll<HTMLElement>('[data-fatias]').forEach((b) => b.onclick = () => {
         fatias = Number(b.dataset.fatias); pintar();
+      });
+      corpo.querySelectorAll<HTMLElement>('[data-abrir]').forEach((b) => b.onclick = () => {
+        abrirCobra = b.dataset.abrir as ModoAbrir; pintar();
       });
       corpo.querySelectorAll<HTMLElement>('[data-ang]').forEach((b) => b.onclick = () => {
         angulo = Number(b.dataset.ang); pintar();

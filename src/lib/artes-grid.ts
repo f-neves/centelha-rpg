@@ -360,7 +360,7 @@ export interface Figura {
    * decide se os ergue em linha reta ou em curva. O livro dá o teto: "a
    * curvatura máxima de qualquer barreira é um semicírculo".
    */
-  tipo: Molde | 'arena' | 'ponto' | 'arco' | 'fatias';
+  tipo: Molde | 'arena' | 'ponto' | 'arco';
   /**
    * A âncora, EM METROS, no plano comum. É o miolo do círculo, a ponta da faixa,
    * o bico do leque.
@@ -383,15 +383,36 @@ export interface Figura {
   curvaturaGraus?: number;
   /** Quantas fatias vizinhas saem do mesmo ápice. Só a manifestação. */
   fatias?: number;
+  /** A abertura de UMA fatia, em graus. `aberturaGraus` é a soma das N. */
+  fatiaGraus?: number;
   /**
-   * A distância PERPENDICULAR do ápice até a base, em metros. Só a manifestação.
+   * A altura da base, em metros. Só a manifestação.
    *
-   * Não é o raio: na manifestação a base é uma CORDA reta, e o que ela tem de
-   * constante é a perpendicular, não o raio. As pontas ficam mais longe que o
-   * meio, e é essa diferença que separa a fatia de um setor de círculo.
+   * O tabuleiro é visto de cima e não mostra altura nenhuma, mas ela é metade do
+   * que se comprou: no modelo em que abrir cobra a altura, é ela que encolhe a
+   * cada fatia, e um lençol de 1 m passa por cima de quem está deitado e por
+   * baixo de quem está montado. Sem o número escrito, a escolha entre os dois
+   * modelos seria invisível na mesa.
    */
-  distanciaM?: number;
+  alturaM?: number;
+  /** Quem paga a abertura: a distância (o raio encolhe) ou a altura. */
+  abrirCobra?: ModoAbrir;
 }
+/**
+ * As duas maneiras de cobrar as fatias a mais, e a escolha é do conjurador.
+ *
+ * A base comprada é a mesma; o que muda é em qual medida ela é cobrada.
+ *
+ * - `distancia`: a frente de cada fatia é `n ÷ N` e a altura fica cheia. O raio
+ *   encolhe com N, o volume divide por N e o chão também. Cercar-se é o gesto
+ *   mais caro que existe, e no grau 6 fechando 360° o elemento fica a 1 m do
+ *   peito. Protege a decisão: cada fatia a mais cobra caro.
+ * - `altura`: a frente de cada fatia fica cheia e a altura é `n ÷ N`. O raio não
+ *   encolhe, o volume se conserva e o chão CRESCE com N. No grau 6 fechando 360°
+ *   sai um disco de 6 m de raio com 1 m de altura, um lençol rasteiro. Protege o
+ *   alcance e o volume, e entrega o raio grande.
+ */
+export type ModoAbrir = 'distancia' | 'altura';
 
 /** A largura padrão da faixa: um metro, como a mesa decidiu. */
 export const LARGURA_LINHA = 1;
@@ -712,6 +733,9 @@ export function figuraDoMolde(opts: {
 const MANI = (ARC.improviso?.manifestacao?.numeros || {}) as any;
 export const ABERTURAS: number[] = MANI.aberturas || [60, 90, 120];
 export const ABERTURA_PADRAO: number = MANI.aberturaPadrao || 60;
+/** As duas maneiras de cobrar o abrir, com o texto que a caixa mostra. */
+export const ABRIR_COBRA: { id: ModoAbrir; nome: string; efeito: string }[] =
+  (MANI.abrirCobra?.opcoes || []).map((o: any) => ({ id: o.id, nome: o.nome, efeito: o.efeito }));
 /** O fator do estado da matéria, que incide no LADO DA BASE e não no volume. */
 export function ladoPorEstado(elemento: string | null): number {
   const t = (MANI.estadoNoLado || {}) as Record<string, number>;
@@ -719,67 +743,60 @@ export function ladoPorEstado(elemento: string | null): number {
 }
 
 /**
- * A geometria do improviso: fatias vizinhas saindo do feiticeiro.
+ * A geometria do improviso: fatias vizinhas saindo do mesmo ápice.
  *
- * `lado` é a base comprada (n × n): n metros de frente SOMADA e n de altura. Com
- * a base travada, o ângulo e a distância não são independentes, e é por isso que
- * abrir custa caro:
+ * `lado` é a base comprada (n × n): n metros de frente somada e n de altura.
  *
- *     aresta = n ÷ N        distância = (n ÷ 2N) ÷ tan(θ÷2)
+ * A BASE É UM ARCO, decidido em 2026-08-19. O lado do triângulo vira RAIO, a
+ * base vira um arco e o chão vira um setor de círculo, o que tem duas
+ * consequências que a corda não tinha: o arco ganha as duas pontas que a corda
+ * cortava (rende `θ ÷ sen θ` a mais, +21% a 60°, +57% a 90° e +142% a 120°), e
+ * fechar os 360° dá um CÍRCULO COMPLETO em vez de um polígono com quinas.
  *
- * As N fatias partem do mesmo ápice e são obrigatoriamente vizinhas (é o mesmo
- * ataque se abrindo, e não vários ataques), então o que elas desenham no chão é
- * um leque de N chapas retas, e não um setor de círculo: a base de cada uma é
- * uma CORDA, e as pontas ficam mais longe do ápice que o meio.
+ *     raio = (n ÷ 2k) ÷ sen(θ÷2)        altura = n · k ÷ N
+ *
+ * `k` é quem paga a abertura: `N` quando é a distância (o raio encolhe a cada
+ * fatia e o volume vai atrás) e `1` quando é a altura (o raio não se mexe, o
+ * volume se conserva e o chão cresce). Com uma fatia só os dois são o mesmo
+ * desenho, e a diferença só aparece ao abrir.
+ *
+ * Sendo um setor, a figura é um `leque` como qualquer outro: quem está dentro,
+ * quantos metros faltam para sair e o traço na tela já sabem lidar com ela, e a
+ * abertura de 360° já cai no círculo sozinha.
  */
 export function figuraDaManifestacao(opts: {
-  ladoM: number; fatias: number; aberturaGraus: number; ancora: Encaixe; dir?: number;
+  ladoM: number; fatias: number; aberturaGraus: number;
+  abrirCobra?: ModoAbrir; ancora: Encaixe; dir?: number;
 }): Figura {
   const n = Math.max(0, opts.ladoM);
   const N = Math.max(1, Math.round(opts.fatias || 1));
   const th = Math.max(1, opts.aberturaGraus || ABERTURA_PADRAO);
-  const meia = (th / 2) * (Math.PI / 180);
-  const distancia = (n / (2 * N)) / Math.tan(meia);
+  const k = opts.abrirCobra === 'altura' ? 1 : N;
+  const raio = (n / (2 * k)) / Math.sin((th / 2) * (Math.PI / 180));
   return {
-    tipo: 'fatias',
+    tipo: 'leque',
     ax: opts.ancora.x, ay: opts.ancora.y, q: opts.ancora.hex.q, r: opts.ancora.hex.r,
     dir: opts.dir ?? 0,
-    fatias: N, aberturaGraus: th, distanciaM: distancia,
-    // O raio é a ponta, e não a perpendicular: é ele que limita a busca de casas
-    // e o traço, porque é o ponto da figura mais longe do ápice.
-    raioM: distancia / Math.cos(meia),
+    raioM: raio,
+    // O leque inteiro é a soma das fatias, e ele nunca passa da volta completa.
+    aberturaGraus: Math.min(360, N * th),
+    fatias: N, fatiaGraus: th,
+    alturaM: (n * k) / N,
+    abrirCobra: opts.abrirCobra === 'altura' ? 'altura' : 'distancia',
   };
 }
 
-/** O volume da manifestação, em m³: a pirâmide, `base × distância ÷ 3`. */
-export function volumeDaManifestacao(f: Figura): number {
-  const n = (f.fatias || 1) * (f.aberturaGraus || 0);
-  if (!f.distanciaM || !n) return 0;
-  // A base é n², e ela não se mexe: a frente somada e a altura são sempre o lado.
-  const meia = ((f.aberturaGraus || 60) / 2) * (Math.PI / 180);
-  const lado = 2 * (f.fatias || 1) * f.distanciaM * Math.tan(meia);
-  return (lado * lado * f.distanciaM) / 3;
-}
-
 /**
- * Em qual fatia o ponto cai, e a que ângulo do eixo DELA.
+ * O volume da manifestação, em m³.
  *
- * Devolve `null` quando o ponto está fora do leque inteiro. As divisas internas
- * não são borda da figura: as fatias são vizinhas e formam uma peça só.
+ * `arco × altura × raio ÷ 3`, e isso não é analogia com a pirâmide: para um cone
+ * com ápice na origem, `V = ⅓∫(r·n)dA`, e na parede cilíndrica a normal é radial,
+ * então `r·n` é o raio em todo ponto.
  */
-function naFatia(f: Figura, dx: number, dy: number): { desvio: number; meia: number } | null {
-  const N = f.fatias || 1;
-  const th = ((f.aberturaGraus || 60) * Math.PI) / 180;
-  const meia = th / 2;
-  const total = (N * th) / 2;
-  let dif = Math.atan2(dy, dx) - (f.dir || 0);
-  const doisPi = Math.PI * 2;
-  dif = ((dif % doisPi) + doisPi) % doisPi;
-  if (dif > Math.PI) dif -= doisPi;
-  if (Math.abs(dif) > total + 1e-9) return null;
-  const k = Math.min(N - 1, Math.max(0, Math.floor((dif + total) / th)));
-  const eixo = -total + (k + 0.5) * th;
-  return { desvio: dif - eixo, meia };
+export function volumeDaManifestacao(f: Figura): number {
+  if (f.tipo !== 'leque' || !f.raioM || !f.alturaM) return 0;
+  const arco = f.raioM * ((f.aberturaGraus || 0) * (Math.PI / 180));
+  return (arco * f.alturaM * f.raioM) / 3;
 }
 
 /**
@@ -828,8 +845,8 @@ export function figuraDoEfeito(opts: {
   /** O molde escolhido, quando a forma do Efeito deixa escolher (a `zona`). */
   molde?: string;
   curvaturaGraus?: number;
-  /** Só o improviso: a base comprada, quantas fatias e a abertura de cada uma. */
-  ladoM?: number; fatias?: number; aberturaGraus?: number;
+  /** Só o improviso: a base comprada, as fatias, a abertura e quem paga o abrir. */
+  ladoM?: number; fatias?: number; aberturaGraus?: number; abrirCobra?: ModoAbrir;
 }): Figura | null {
   const { efeito, ancora, grau } = opts;
 
@@ -838,7 +855,8 @@ export function figuraDoEfeito(opts: {
     if (!opts.ladoM) return null;
     return figuraDaManifestacao({
       ladoM: opts.ladoM, fatias: opts.fatias || 1,
-      aberturaGraus: opts.aberturaGraus || ABERTURA_PADRAO, ancora, dir: opts.dir,
+      aberturaGraus: opts.aberturaGraus || ABERTURA_PADRAO,
+      abrirCobra: opts.abrirCobra, ancora, dir: opts.dir,
     });
   }
 
@@ -929,13 +947,18 @@ export function rotuloDaFigura(f: Figura): string {
   if (f.tipo === 'retangulo') {
     return `retângulo de ${um(f.larguraM || 1)} m × ${um(f.comprimentoM || 0)} m`;
   }
-  if (f.tipo === 'leque') return `leque de ${f.aberturaGraus}° com ${um(f.raioM || 0)} m de raio`;
-  if (f.tipo === 'fatias') {
-    const N = f.fatias || 1;
-    // A distância é o número que a mesa precisa e não consegue adivinhar: é ela
-    // que abrir cobra, e é ela que diz se o elemento nasce longe ou no peito.
-    return `${N} fatia${N > 1 ? 's' : ''} de ${f.aberturaGraus}°`
-      + ` · ${um((f.distanciaM || 0))} m de distância · ${um(N * (f.aberturaGraus || 0))}° cobertos`;
+  if (f.tipo === 'leque') {
+    const cheio = (f.aberturaGraus || 0) >= 360;
+    const forma = cheio
+      ? `círculo de ${um(f.raioM || 0)} m de raio`
+      : `leque de ${f.aberturaGraus}° com ${um(f.raioM || 0)} m de raio`;
+    // A manifestação diz mais que a forma: quantas fatias a compõem e QUE ALTURA
+    // a base tem. O tabuleiro é visto de cima e engole a altura, e é justamente
+    // ela que separa os dois modos de abrir.
+    if (!f.fatias) return forma;
+    const N = f.fatias;
+    return `${N} fatia${N > 1 ? 's' : ''} de ${f.fatiaGraus}° · ${forma}`
+      + ` · base de ${um(f.alturaM || 0)} m de altura`;
   }
   return 'um ponto';
 }
@@ -974,15 +997,6 @@ export function pontoNaFigura(f: Figura, p: { x: number; y: number }): boolean {
     const doisPi = Math.PI * 2;
     t = ((t % doisPi) + doisPi) % doisPi;
     return t <= a.volta + 1e-9;
-  }
-  if (f.tipo === 'fatias') {
-    // A base de cada fatia é uma CORDA reta, então o que se compara não é o raio,
-    // é a projeção do ponto no eixo daquela fatia: quem está na quina está mais
-    // longe do ápice que quem está no meio, e ainda assim os dois estão dentro.
-    const posto = naFatia(f, dx, dy);
-    if (!posto) return false;
-    const d = Math.hypot(dx, dy);
-    return d * Math.cos(posto.desvio) <= (f.distanciaM || 0) + 1e-9;
   }
   if (f.tipo === 'linha' || f.tipo === 'retangulo') {
     // Gira o ponto para o referencial da faixa: aí ela vira um retângulo reto,
@@ -1063,21 +1077,6 @@ export function caminhoDaFigura(
     // dela: assim a origem escolhida é mesmo a origem, e não o meio da peça.
     return `<rect x="${n(cx)}" y="${n(cy - larg / 2)}" width="${n(comp)}" height="${n(larg)}"`
       + ` transform="rotate(${n(graus)} ${n(cx)} ${n(cy)})" />`;
-  }
-  if (f.tipo === 'fatias') {
-    // Um polígono, e não um setor: o ápice mais os N+1 cantos das cordas. O
-    // desenho é o mesmo em qualquer abertura, e as divisas entre fatias não
-    // aparecem, porque elas são uma peça só e não vários ataques.
-    const N = f.fatias || 1;
-    const th = ((f.aberturaGraus || 60) * Math.PI) / 180;
-    const total = (N * th) / 2;
-    const R = (f.raioM || 0) * pxPorM;
-    const pts: string[] = [`${n(cx)} ${n(cy)}`];
-    for (let k = 0; k <= N; k++) {
-      const a = (f.dir || 0) - total + k * th;
-      pts.push(`${n(cx + Math.cos(a) * R)} ${n(cy + Math.sin(a) * R)}`);
-    }
-    return `<path d="M ${pts.join(' L ')} Z" />`;
   }
   if (f.tipo === 'leque') {
     const R = (f.raioM || 0) * pxPorM;
@@ -1278,25 +1277,6 @@ export function metrosParaSair(f: Figura, p: { x: number; y: number }): number {
     return Math.min(pelaEspessura, pelaPonta);
   }
 
-  if (f.tipo === 'fatias') {
-    // Duas saídas: atravessar a corda da própria fatia (para a frente) ou sair
-    // pelo lado do leque inteiro. As divisas ENTRE fatias não contam: elas são
-    // vizinhas, e passar de uma para a outra é continuar dentro.
-    const posto = naFatia(f, dx, dy);
-    if (!posto) return 0;
-    const d = Math.hypot(dx, dy);
-    const N = f.fatias || 1;
-    const th = ((f.aberturaGraus || 60) * Math.PI) / 180;
-    const total = (N * th) / 2;
-    let dif = Math.atan2(dy, dx) - (f.dir || 0);
-    const doisPi = Math.PI * 2;
-    dif = ((dif % doisPi) + doisPi) % doisPi;
-    if (dif > Math.PI) dif -= doisPi;
-    const pelaCorda = Math.max(0, (f.distanciaM || 0) - d * Math.cos(posto.desvio));
-    const pelaAresta = total >= Math.PI - 1e-9
-      ? Infinity : Math.max(0, d * Math.sin(Math.max(0, total - Math.abs(dif))));
-    return Math.min(pelaCorda, pelaAresta);
-  }
   if (f.tipo === 'linha' || f.tipo === 'retangulo') {
     const c = Math.cos(-(f.dir || 0)), s = Math.sin(-(f.dir || 0));
     const ao = dx * c - dy * s;               // quanto andou na direção

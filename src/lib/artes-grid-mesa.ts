@@ -634,6 +634,36 @@ function escolherAlvoNoMapa(ctx: CtxGrid, palco: HTMLElement, excluir: string, a
 }
 
 // ==================================================================== conjurar
+/**
+ * A prévia no tabuleiro ENQUANTO a caixa está aberta.
+ *
+ * Antes o jogador escolhia tudo no escuro e só via o tamanho depois de fechar a
+ * caixa e apontar. Agora a mancha aparece atrás dela e muda a cada clique: subir
+ * o Volume, abrir mais uma fatia, trocar quem paga o abrir. É a mesma camada da
+ * mira (`#gr-previa`), e ela nasce presa ao conjurador, que é onde a Arte sairia
+ * se a pessoa não escolhesse outro lugar depois.
+ *
+ * Plano nulo apaga: a caixa fechou, com conjuração ou sem.
+ */
+function previaNaCaixa(ctx: CtxGrid, c: any, plano: Plano | null): void {
+  const svg = document.getElementById('gr-previa');
+  if (!svg) return;
+  const meu = ctx.tokens[c.id];
+  if (!plano || !meu) { svg.innerHTML = ''; return; }
+  const anc = encaixeNoCentro(meu, escalaM(ctx));
+  const grau = plano.efeito
+    ? (plano.escolhas['Comprimento'] ?? plano.escolhas['Área'] ?? plano.escolhas['Volume'] ?? 0)
+    : 0;
+  const fig = figuraDoEfeito({
+    efeito: plano.efeito, grau, ancora: anc, dir: 0,
+    molde: plano.molde, curvaturaGraus: plano.curvaturaGraus,
+    ladoM: plano.ladoBaseM, fatias: plano.fatias,
+    aberturaGraus: plano.angulo, abrirCobra: plano.abrirCobra,
+  });
+  svg.innerHTML = fig && fig.tipo !== 'ponto'
+    ? caminhoDaFigura(fig, quadro(ctx)) + marcaEncaixe(ctx, anc) : '';
+}
+
 /** De onde saem as Artes e a Centelha de quem conjura. */
 function fonteDe(ctx: CtxGrid, c: any): { fonte: any; centelha: number; comprados: Record<string, boolean> | null } {
   if (c.tipo === 'pc') {
@@ -649,7 +679,10 @@ export async function conjurar(ctx: CtxGrid, cid: string, palco: HTMLElement): P
   const c = combDe(ctx, cid);
   if (!c) return;
   const { fonte, centelha, comprados } = fonteDe(ctx, c);
-  const plano = await abrirConjuracao({ nome: c.nome, centelha, fonte, comprados });
+  const plano = await abrirConjuracao({
+    nome: c.nome, centelha, fonte, comprados,
+    aoMudar: (p) => previaNaCaixa(ctx, c, p),
+  });
   if (!plano) return;
 
   const g = plano.efeito?.grid;
@@ -733,23 +766,22 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
     // parede ("a curvatura máxima de qualquer barreira é um semicírculo").
     curvaturaGraus: forma === 'muro' ? plano.curvaturaGraus : 0,
     ladoM: plano.ladoBaseM, fatias: plano.fatias, aberturaGraus: plano.angulo,
+    abrirCobra: plano.abrirCobra,
   }) || { tipo: 'ponto' as const, ax: ancora.x, ay: ancora.y, q: ancora.hex.q, r: ancora.hex.r };
 
   let ancora: Encaixe = encaixeNoCentro(meu, esc_);
   let dir = 0;
 
-  // O improviso nasce no feiticeiro, SEMPRE, e por isso ele não pergunta onde.
-  // Pôr o elemento num ponto escolhido é Efeito Especial, e é justamente a
-  // fronteira que a §5.4 desenha. O que sobra a perguntar é para onde ele aponta.
-  if (!plano.efeito) {
-    const girou = await escolherNoMapa(ctx, palco, (h, ev) =>
-      caminhoDaFigura(monta(ancora, direcaoAoPonteiro(ctx, ancora, ev)), quadro(ctx))
-      + marcaEncaixe(ctx, ancora),
-      `Para onde ${plano.nome} sai · clique · Esc cancela`);
-    if (!girou) return;
-    dir = direcaoAoPonteiro(ctx, ancora, girou.ev);
-    return await gravarEfeito(ctx, c, plano, { forma, figura: monta(ancora, dir), alvos: [] });
-  }
+  // O IMPROVISO TAMBÉM ESCOLHE ONDE COMEÇA, por ora.
+  //
+  // A §5.4 diz que a manifestação nasce no feiticeiro e nunca é colocada, e o
+  // tabuleiro obedecia isso à risca: só perguntava para onde. Em 2026-08-19 a
+  // mesa pediu para experimentar o contrário, e o arco passou a poder começar em
+  // qualquer lugar. É afrouxamento provisório, e o Alcance comprado continua
+  // sendo conferido, então a trava não sumiu: ela virou preço.
+  //
+  // Por isso o improviso caiu no mesmo caminho de todo efeito de chão, logo
+  // abaixo, em vez de ter um ramo só dele.
 
   // Girar só faz sentido em figura que tem frente. O círculo é igual para todo
   // lado, e pedir uma direção a ele seria um clique morto. Quem responde não é o

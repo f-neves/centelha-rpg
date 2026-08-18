@@ -9,7 +9,7 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 75 itens abertos · 39 [DECIDIR] · 28 [FAZER] · 6 [AUTOR]
+**Placar:** 75 itens abertos · 40 [DECIDIR] · 27 [FAZER] · 6 [AUTOR]
 Por frente: **Arcano 20** · **Ações & Sistema 11** · **Mesa 10** · **Bestiário 9** · Lore 6 ·
 Proezas 5 · Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
@@ -181,16 +181,27 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   promoção da pendência 14 do doc: a Dificuldade do teste de concentração virou central, porque
   quebrar a conjuração nos 5 a 7 Ticks de preparo é a contrajogada do corpo a corpo, e falta dizer se
   ela vale para o preparo e se o Mana volta.
-- [ ] **A21 · [DECIDIR] A base da fatia fica em corda ou vai para arco.** Aberta em 2026-08-17, e as
-  três versões estão medidas na bancada, no controle **Base**. Na **corda** a base é uma reta a
-  `distância` metros e o chão é um triângulo. No **arco** o lado do triângulo vira **raio**: no grau 6
-  a 60°, o lado de 6 m vira um setor de 60° com raio 6 m, e o volume sai da mesma conta da pirâmide
-  (`arco × altura × raio ÷ 3`). O arco rende `θ ÷ sen θ` a mais que a corda, ou seja **+21% a 60°,
-  +57% a 90° e +142% a 120°**, e é aí que está a decisão: **no arco, abrir fica barato** (ir de 60°
-  para 120° corta o volume a dois terços, contra um terço na corda), justo na alavanca que segura o
-  leque largo. A terceira opção, **arco justo**, encolhe o raio em `√(sen θ ÷ θ)` e bate o volume e o
-  chão da corda em qualquer abertura: é a forma redonda sem mexer em número nenhum. Nota de desenho:
-  em arco, seis fatias de 60° formam um **cilindro** em volta do conjurador, e não um hexágono.
+- [x] **~~A21 · [DECIDIR] A base da fatia fica em corda ou vai para arco.~~ ARCO, em 2026-08-19.** O
+  lado do triângulo vira **raio**, a base vira arco e o chão vira setor: `raio = (n ÷ 2k) ÷ sen(θ÷2)`,
+  e o volume sai de `arco × altura × raio ÷ 3`. Dois motivos, e o segundo só apareceu ao implementar:
+  fechar os 360° dá um **círculo completo** em vez de um polígono com quinas, que é a forma que a mesa
+  desenha sozinha ao dizer "em volta de mim"; e o arco **já é o leque** que o Grid desenha desde
+  sempre, enquanto a corda pedia um tipo de figura só dela, com teste de dentro, de saída e traço
+  próprios. O **arco justo** fica registrado como a opção que mudaria o desenho sem mexer em número
+  nenhum, e não foi escolhida porque o ganho do arco (`θ ÷ sen θ`, +21% a 60°, +57% a 90°, +142% a
+  120°) é parte do que se quis ao adotá-lo.
+- [x] **~~A22 · [DECIDIR] Quem paga a abertura: distância ou altura.~~ AS DUAS, em 2026-08-19, e quem
+  escolhe é o conjurador.** A pergunta supunha que a mesa teria de ficar com uma; as duas são
+  jogáveis e servem a intenções diferentes (a distância protege a decisão, a altura protege o alcance
+  e o volume), então virou botão na caixa de conjuração, a cada conjuração. Junto entrou a obrigação
+  de **escrever a altura da base**: vista de cima, no grau 6 em 180°, as duas desenham a mesma
+  meia-lua, e só o número diz que uma tem 6 m de altura com 2 m de raio e a outra o contrário.
+- [ ] **A26 · [DECIDIR] O improviso pode começar em qualquer lugar?** Aberta em 2026-08-19. A §5.4 diz
+  que a manifestação nasce no feiticeiro e **nunca é colocada**, e era assim que o tabuleiro fazia. A
+  mesa pediu para experimentar o contrário, e por ora o arco começa onde se clicar, com o Alcance
+  comprado sendo conferido. É **afrouxamento provisório**: se ficar, a fronteira que separa improviso
+  de Efeito Especial muda de lugar, porque "pôr num ponto escolhido" era justamente o que se comprava
+  com XP. Decidir depois de jogar.
 - [ ] **A19 · [DECIDIR] O que a matéria dentro da fatia faz em número.** Aberta pela A18. A
   manifestação diz **quanto** elemento aparece e **onde**, e não diz o que ele faz além do parâmetro
   de Dano: o que 62 m³ de chama fazem a quem está dentro, o que a espessura de uma fatia de Terra

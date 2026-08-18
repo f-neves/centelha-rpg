@@ -1447,8 +1447,6 @@
         ],
         "escopo": "Escrito para as Artes elementais. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose não manifestam elemento, e a fatia não quer dizer nada nelas: elas ainda precisam da geometria própria.",
         "emAvaliacao": [
-          "QUEM PAGA A ABERTURA: a distância (o modelo acima, em que o volume divide por N e cercar-se encolhe o molde para 87 cm) ou a ALTURA (em que a aresta fica cheia, a distância não encolhe e o volume se conserva, e as seis fatias do grau 6 viram um hexágono de 93,5 m² de chão a 1 m de altura). Uma protege a decisão do jogador, a outra protege o alcance e entrega o raio grande. As duas estão medidas na bancada.",
-          "A BASE FICA EM CORDA OU VAI PARA ARCO. Na corda a base é uma reta a `distância` metros e o chão é um triângulo; no arco o lado do triângulo vira raio e o chão vira setor de círculo, pela mesma conta da pirâmide (arco × altura × raio ÷ 3). O arco rende θ ÷ sen θ a mais, ou seja +21% a 60°, +57% a 90° e +142% a 120°, e o problema é que no arco ABRIR FICA BARATO, justo na alavanca que segura o leque largo. A terceira opção, o ARCO JUSTO, encolhe o raio em √(sen θ ÷ θ) e bate o volume e o chão da corda em qualquer abertura: é a forma redonda sem mexer em número nenhum.",
           "O QUE A MATÉRIA DENTRO DA FATIA FAZ EM NÚMERO: a regra diz quanto elemento aparece e onde, e não diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de Terra aguenta antes de ceder."
         ],
         "oParametro": "Quem compra a base é o VOLUME, na régua da manifestação, e não a Área: área é jurisdição, uma região onde uma regra passa a valer, e a fatia não é isso, é corpo de elemento ocupando o espaço. O improviso não escolhe entre as duas réguas como o Efeito escolhe, porque ele tem uma geometria só. Decidido em 2026-08-18, junto com a consequência que fecha o escopo: QUALQUER OUTRA MANIFESTAÇÃO DE VOLUME É EFEITO ESPECIAL.",
@@ -1468,7 +1466,29 @@
             "ar": 2,
             "nevoa": 2,
             "padrao": 1
-          }
+          },
+          "base": "arco",
+          "baseNota": "A base é um ARCO: o lado do triângulo vira raio, a base vira arco e o chão vira setor de círculo. Decidido em 2026-08-19. O arco ganha as duas pontas que a corda cortava, rende θ ÷ sen θ a mais (+21% a 60°, +57% a 90°, +142% a 120°), e fechar os 360° dá um círculo completo em vez de um polígono com quinas.",
+          "abrirCobra": {
+            "nota": "Quem paga a abertura é ESCOLHA DO CONJURADOR, a cada conjuração, e não uma regra fixa da mesa. A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.",
+            "padrao": "distancia",
+            "opcoes": [
+              {
+                "id": "distancia",
+                "nome": "a distância",
+                "formula": "raio = (n ÷ 2N) ÷ sen(θ÷2) · altura = n",
+                "efeito": "O raio encolhe a cada fatia, o volume divide por N e o chão também. Cercar-se é o gesto mais caro que existe: no grau 6 fechando 360° o elemento fica a 1 m do peito. Protege a decisão, porque cada fatia a mais cobra caro."
+              },
+              {
+                "id": "altura",
+                "nome": "a altura",
+                "formula": "raio = (n ÷ 2) ÷ sen(θ÷2) · altura = n ÷ N",
+                "efeito": "O raio não se mexe, o volume se conserva e o chão CRESCE com N. No grau 6 fechando 360° sai um disco de 6 m de raio com 1 m de altura, um lençol rasteiro que passa por cima de quem está deitado. Protege o alcance e o volume, e entrega o raio grande."
+              }
+            ],
+            "notaAltura": "O tabuleiro é visto de cima e engole a altura, então ela vem escrita na figura: sem o número, a escolha entre os dois modos seria invisível na mesa."
+          },
+          "ondeNasce": "Por ora o arco pode começar em QUALQUER LUGAR, e não só no conjurador. É afrouxamento provisório da trava de area nunca colocada, para a mesa experimentar; o Alcance comprado continua sendo conferido."
         }
       },
       "exemplos": [

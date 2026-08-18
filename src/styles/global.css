@@ -775,6 +775,14 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    trocava a lista de parâmetros, a caixa mudava de altura e pulava sob o
    cursor. Com a altura travada e a rolagem por dentro, a caixa fica parada e
    só o conteúdo se mexe. */
+/* ENCOSTADA NA DIREITA, E ISSO É PARA O TABULEIRO APARECER.
+   Desde que a caixa desenha a prévia da Arte no mapa enquanto se escolhe, ficar
+   centrada era tapar justamente o que ela manda olhar. Encostando na direita,
+   sobra a faixa esquerda do tabuleiro, que é onde a mancha cresce e encolhe a
+   cada clique. A leitura em número fica no pé da caixa, para quem não tiver
+   tela sobrando. */
+.ui-dlg-conj { margin-left: auto; margin-right: max(.75rem, env(safe-area-inset-right)); }
+@media (max-width: 60rem) { .ui-dlg-conj { margin-right: auto; } }
 .ui-dlg-conj .ui-dlg-form { height: min(42rem, 88vh); display: flex; flex-direction: column; }
 .ui-dlg-conj .ui-dlg-corpo { flex: 1 1 auto; min-height: 0; display: flex; }
 
@@ -939,6 +947,11 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-cst-l b { font-variant-numeric: tabular-nums; }
 .ag-cst-l b.gratis { color: var(--accent); }
 .ag-cst-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); margin-top: .2rem; }
+/* A figura resolvida, no PÉ do painel: é a leitura que muda a cada clique, e o
+   miolo rola, então lá em cima ela cairia abaixo da dobra justo enquanto se
+   escolhe. Aqui ela fica sempre à vista, ao lado do custo. */
+.ag-cst-fig { font-size: var(--fs-micro); color: var(--accent-texto, var(--accent));
+  margin-top: .2rem; font-variant-numeric: tabular-nums; }
 .ag-acoes { display: flex; justify-content: flex-end; gap: .4rem; margin-top: .7rem; }
 
 /* o NPC completo */

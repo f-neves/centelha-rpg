@@ -563,40 +563,62 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
   const perto = (a, b, msg, tol = 0.02) =>
     ok(Math.abs(a - b) <= tol, `${msg} — esperado ${b}, veio ${Number(a).toFixed(3)}`);
   const ancora = { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' };
-  const mani = (lado, fatias, ab) =>
-    M.figuraDaManifestacao({ ladoM: lado, fatias, aberturaGraus: ab, ancora, dir: 0 });
+  const mani = (lado, fatias, ab, abrirCobra) =>
+    M.figuraDaManifestacao({ ladoM: lado, fatias, aberturaGraus: ab, abrirCobra, ancora, dir: 0 });
 
-  // A tabela do doc, grau 6 (lado 6 m), uma fatia. Distância, ponta e volume.
-  const g6 = { 60: [5.196, 6.000, 62.35], 90: [3.000, 4.243, 36.00], 120: [1.732, 3.464, 20.78] };
-  for (const [ab, [dist, ponta, vol]] of Object.entries(g6)) {
+  // A BASE É UM ARCO: o lado do triângulo vira raio e o chão vira setor. A tabela
+  // do doc, grau 6 (lado 6 m), uma fatia: raio e volume nas três aberturas.
+  const g6 = { 60: [6.000, 75.40], 90: [4.243, 56.55], 120: [3.464, 50.27] };
+  for (const [ab, [raio, vol]] of Object.entries(g6)) {
     const f = mani(6, 1, Number(ab));
-    perto(f.distanciaM, dist, `a distância no grau 6 a ${ab}°`);
-    perto(f.raioM, ponta, `o lado do triângulo no grau 6 a ${ab}°`);
-    perto(M.volumeDaManifestacao(f), vol, `o volume no grau 6 a ${ab}°`, 0.05);
+    perto(f.raioM, raio, `o raio no grau 6 a ${ab}°`);
+    perto(M.volumeDaManifestacao(f), vol, `o volume em arco no grau 6 a ${ab}°`, 0.05);
+    perto(f.alturaM, 6, `a base no grau 6 a ${ab}° tem 6 m de altura`);
+  }
+  // O arco rende `θ ÷ sen θ` a mais que a corda: +21%, +57% e +142%.
+  const corda = { 60: 62.35, 90: 36.00, 120: 20.78 };
+  for (const ab of [60, 90, 120]) {
+    const th = (ab * Math.PI) / 180;
+    perto(M.volumeDaManifestacao(mani(6, 1, ab)) / corda[ab], th / Math.sin(th),
+      `a ${ab}° o arco rende θ ÷ sen θ a mais que a corda`, 0.01);
   }
 
-  // Abrir cobra na DISTÂNCIA, e o volume vai atrás: no modelo da corda, as seis
-  // fatias que fecham o círculo dividem tudo por seis.
-  perto(mani(6, 6, 60).distanciaM, 0.866, 'seis fatias põem o elemento a 87 cm do peito');
-  perto(M.volumeDaManifestacao(mani(6, 6, 60)), 62.35 / 6, 'e o volume divide por seis', 0.05);
-  // O piso sai de graça: dividir pelo próprio nível dá sempre 1 m de aresta.
-  perto(mani(3, 3, 60).distanciaM, 0.866, 'o piso de 87 cm vale em qualquer grau');
+  // Abrir cobra a DISTÂNCIA: o raio encolhe com N e o volume vai atrás.
+  perto(mani(6, 6, 60, 'distancia').raioM, 1, 'seis fatias põem o elemento a 1 m do peito');
+  perto(M.volumeDaManifestacao(mani(6, 6, 60, 'distancia')), 75.40 / 6,
+    'e o volume divide por seis', 0.05);
+  perto(mani(6, 6, 60, 'distancia').alturaM, 6, 'a altura fica cheia neste modo');
 
-  // Quem está dentro. No eixo, a fatia vai até a distância; nas quinas ela vai
-  // além, porque a base é uma corda e não um arco.
+  // Abrir cobra a ALTURA: o raio não se mexe, o volume se conserva, o chão cresce.
+  perto(mani(6, 6, 60, 'altura').raioM, 6, 'no modo da altura o raio não encolhe');
+  perto(M.volumeDaManifestacao(mani(6, 6, 60, 'altura')), 75.40,
+    'e o volume se conserva', 0.05);
+  perto(mani(6, 6, 60, 'altura').alturaM, 1, 'o que encolhe é a base: 1 m de altura');
+  // Com UMA fatia os dois modos são o mesmo desenho.
+  perto(mani(6, 1, 60, 'altura').raioM, mani(6, 1, 60, 'distancia').raioM,
+    'com uma fatia só os dois modos coincidem');
+
+  // Fechando os 360° o setor vira um CÍRCULO COMPLETO, sem quina nenhuma.
+  const roda = mani(6, 6, 60, 'altura');
+  eq(roda.aberturaGraus, 360, 'seis fatias de 60° fecham a volta');
+  ok(M.pontoNaFigura(roda, { x: -5, y: 0 }), 'e a volta fechada pega quem está atrás');
+  ok(!M.pontoNaFigura(roda, { x: -7, y: 0 }), 'mas não passa do raio');
+  ok(/circle/.test(M.caminhoDaFigura(roda, { raioHexPx: 30, pxPorM: 30, margem: { x: 0, y: 0 } })),
+    'e o traço dela é um círculo, e não um polígono');
+
+  // Quem está dentro, num setor: o raio manda, e o ângulo também.
   const f60 = mani(6, 1, 60);
-  ok(M.pontoNaFigura(f60, { x: 5.1, y: 0 }), 'no eixo, 5,1 m está dentro da fatia de 60°');
-  ok(!M.pontoNaFigura(f60, { x: 5.3, y: 0 }), 'no eixo, 5,3 m já saiu');
-  const quina = { x: Math.cos(Math.PI / 6) * 5.9, y: Math.sin(Math.PI / 6) * 5.9 };
-  ok(M.pontoNaFigura(f60, quina), 'na quina a fatia chega a 5,9 m, porque a base é corda');
+  ok(M.pontoNaFigura(f60, { x: 5.9, y: 0 }), 'no eixo, 5,9 m está dentro do setor de 60°');
+  ok(!M.pontoNaFigura(f60, { x: 6.1, y: 0 }), 'no eixo, 6,1 m já saiu');
   ok(!M.pontoNaFigura(f60, { x: 0, y: 3 }), 'fora do ângulo não está dentro, por perto que seja');
   // As divisas ENTRE fatias não são borda: as vizinhas formam uma peça só.
   const f3 = mani(6, 3, 60);
   ok(M.pontoNaFigura(f3, { x: 0.5, y: 0.5 }), 'a divisa entre fatias vizinhas não corta a figura');
 
-  // E sair de uma fatia: pela corda à frente ou pelo lado do leque inteiro.
-  perto(M.metrosParaSair(f60, { x: 4.196, y: 0 }), 1, 'do eixo da fatia até a corda');
+  // E sair de um setor: pelo arco à frente ou pelo lado do leque.
+  perto(M.metrosParaSair(f60, { x: 5, y: 0 }), 1, 'do eixo até o arco');
   perto(M.metrosParaSair(f60, { x: 1, y: 0 }), 0.5, 'perto do ápice o lado é mais barato');
+  perto(M.metrosParaSair(roda, { x: 0, y: 0 }), 6, 'da volta fechada só se sai pelo raio');
 
   // Os cinco moldes: o número da régua vai DIRETO para a dimensão, sem passar
   // por orçamento de m². É a §5.3 inteira em uma linha por molde.
