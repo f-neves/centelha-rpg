@@ -30,6 +30,14 @@ Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/artes/regras`,
 `/artes/efeitos`, `/artes/catalogo`) e em `regras.json → arcano`.
 
+> **PRIMEIRA PRIORIDADE desta frente: pôr o site em dia com o `Arcano_revisao.md`.** O doc andou muito
+> à frente do site nas conversas de 17 e 18/08, e hoje a página não sabe de nada disso: a **§5.4** (a
+> manifestação em fatias), a **§5.5** inteira (a Arte sai no **último Tick**; o que trava na declaração
+> e o que trava na hora; identificar um feitiço em preparo; **área não se esquiva nem se bloqueia**, e o
+> desvio a 1 Tick por metro com `5 + 5 × m` para metade e o dobro para dano nenhum; ficar parado com
+> Bravura ou Temperança) e a limpeza do **"Ocultismo + Atributo"**. É a **A20** abaixo, e vale notar que
+> **a maior parte dela não espera decisão nenhuma**: só a geometria da §5.4 depende da A21 e da A22.
+
 - [ ] **A1 · [DECIDIR] Guardar um feitiço: os limites.** A regra base está no site (paga o Mana na
   hora, Raciocínio conta um nível abaixo e −1d6 nas rolagens enquanto carrega). Falta: a penalidade
   **acumula** por feitiço guardado? Há **teto** de quantos dá para carregar? O feitiço guardado
