@@ -188,7 +188,7 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 
 <p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso — Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, o Atletismo controla, a Destreza ajusta — e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
-<div class="callout regra"><span class="lbl">Regra opcional</span>O <strong>Fôlego</strong> — o cansaço que limita as rajadas de golpes, o <strong>Esforço</strong> (forçar o golpe por mais dados) e a ação de <strong>Tomar Fôlego</strong> — é um <strong>módulo avançado</strong>, reunido no capítulo <a href="/regras/folego">Fôlego</a>. As mesas que jogam sem ele simplesmente ignoram custo e recuperação de Fôlego; nada mais no Combate depende disso.</div>
+<div class="callout regra"><span class="lbl">Regra opcional</span>O <strong>Fôlego</strong> — o cansaço que limita as rajadas de golpes, o <strong>Esforço</strong> (forçar o golpe por mais dados) e a ação de <strong>Tomar Fôlego</strong> — é um <strong>módulo avançado, desligado por padrão</strong>: fica guardado à parte, no <a href="/regras/folego">módulo Fôlego</a>, e o site não mostra os números dele. As mesas que quiserem ligá-lo o encontram lá; nada mais no Combate depende disso.</div>
 
 ## Vantagem tática: posição e número
 

@@ -1,6 +1,6 @@
 ---
-ordem: 23
-numeral: "XVIII"
+ordem: 26
+numeral: "XX"
 titulo: "Fôlego"
 resumo: "O corpo que cansa — módulo opcional que acrescenta gestão de cansaço ao combate, gasto em rajadas e reposto no respiro."
 ---

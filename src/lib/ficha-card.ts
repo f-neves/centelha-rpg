@@ -17,6 +17,7 @@
 import { resumoFicha } from './mesa-ficha';
 import { armaDoSlot, escudoDoSlot, armadurasDe, statsArma, statsEscudo, statsArmadura, ARMA } from './equip';
 import { sparkSVG } from './centelha-spark';
+import { MODULOS } from './modulos';
 
 const esc = (s: unknown) =>
   String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
@@ -138,7 +139,7 @@ export function cardFichaHTML(
   // quebra em duas linhas e desalinha o número dos vizinhos. As duas defesas
   // não precisam do "Def." porque estão entre Esquiva e Bloqueio.
   const stats = `<dl class="fr-stats">
-    ${stat('Vida', R.pv)}${stat('Energia', R.energia)}${stat('Mana', R.mana)}${stat('Fôlego', R.folego)}
+    ${stat('Vida', R.pv)}${stat('Energia', R.energia)}${stat('Mana', R.mana)}${MODULOS.folego ? stat('Fôlego', R.folego) : ''}
     ${stat('Esquiva', R.defEsquiva)}${stat('Bloqueio', R.defBloqueio)}
     ${stat('Social', R.defSocial)}${stat('Mental', R.defMental)}
     ${stat('Absorção', `${R.soak.impacto}/${R.soak.corte}/${R.soak.perfuracao}${R.resistPerf ? `·N${R.resistPerf}` : ''}`)}

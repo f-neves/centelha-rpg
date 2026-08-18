@@ -3,13 +3,23 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import CentelhaSpark from '../../components/CentelhaSpark.astro';
 import { url } from '../../lib/site';
+import { MODULOS } from '../../lib/modulos';
 
 export async function getStaticPaths() {
-  const caps = (await getCollection('chapters')).sort((a, b) => a.data.ordem - b.data.ordem);
-  return caps.map((entry, i) => ({
-    params: { slug: entry.id },
-    props: { entry, prev: caps[i - 1], next: caps[i + 1] },
-  }));
+  // Capítulo de módulo opcional desligado: a página continua sendo gerada (os outros
+  // capítulos linkam para ela e o link não pode quebrar), mas sai da corrente de
+  // anterior/próximo, do mesmo jeito que já saiu da navegação em `site.ts`.
+  // Precisa morar aqui dentro: `getStaticPaths` é içado e não enxerga o frontmatter.
+  const OCULTOS = new Set(MODULOS.folego ? [] : ['folego']);
+  const todos = (await getCollection('chapters')).sort((a, b) => a.data.ordem - b.data.ordem);
+  const caps = todos.filter((c) => !OCULTOS.has(c.id));
+  return todos.map((entry) => {
+    const i = caps.findIndex((c) => c.id === entry.id);
+    return {
+      params: { slug: entry.id },
+      props: { entry, prev: i > 0 ? caps[i - 1] : undefined, next: i >= 0 ? caps[i + 1] : undefined },
+    };
+  });
 }
 
 const { entry, prev, next } = Astro.props;

@@ -1,6 +1,6 @@
 ---
 ordem: 24
-numeral: "XIX"
+numeral: "XVIII"
 titulo: "Criação de Personagem"
 resumo: "Montar um herói gastando XP a partir de pisos — com a ficha auto-calculável."
 ---
@@ -21,7 +21,7 @@ Se é a sua primeira vez, siga esta ordem — os detalhes de cada passo estão n
 6. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal por volta de 5–7).
 7. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. A maioria começa em 1; quem quer um herói de saga começa em 3 (Herói).
 8. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte e os Efeitos Especiais.
-9. **Derivados.** PV, Defesas, Energia/Mana, Fôlego e Iniciativa saem de fórmulas — confira na tabela mais abaixo, ou deixe a Ficha calcular.
+9. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas — confira na tabela mais abaixo, ou deixe a Ficha calcular.
 
 <p class="muted">Não há ordem obrigatória de <em>compra</em> — esta é só a sequência mais fácil de raciocinar.</p>
 
@@ -73,7 +73,6 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 | Defesa Social | (Compostura + Sociabilidade) × 2 + Especialidade + Centelha |
 | Energia | (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 [arredonda p/ baixo] + Centelha × 2 |
 | Mana | (Centelha × 2) + Força de Vontade |
-| Fôlego | 10 + (Vigor × 5) + (Resistência × 4) + (Vontade × 2) |
 | Iniciativa | 1d6 + Raciocínio + Prontidão |
 
 ## Três exemplos, um por orçamento

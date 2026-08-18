@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/site';
+import { MODULOS } from '../lib/modulos';
 import { getCollection } from 'astro:content';
 const armas = (await getCollection('armas')).map((e) => e.data);
 const armaduras = (await getCollection('armaduras')).map((e) => e.data);
@@ -42,7 +43,7 @@ const linhaDados = (a: any) => ({
   <h2>Armas Corpo a Corpo</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Velocidade</th><th class="c">Fôlego</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Def.</th><th class="c">Mãos</th><th class="c">Velocidade</th>{MODULOS.folego && <th class="c">Fôlego</th>}<th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
       <tbody>
         {corpoACorpo.map((a) => (
           <tr {...linhaDados(a)}>
@@ -53,7 +54,7 @@ const linhaDados = (a: any) => ({
             <td class="c">{sgn(a.defesaArma)}</td>
             <td class="c">{a.maos}</td>
             <td class="c">{a.ticks}</td>
-            <td class="c">{a.folego}</td>
+            {MODULOS.folego && <td class="c">{a.folego}</td>}
             <td>{modosDe(a)}</td>
             <td>{habs[(a.pericia as any).id] ?? (a.pericia as any).id}</td>
             <td class="muted">{a.tags.join(', ')}</td>
@@ -70,7 +71,7 @@ const linhaDados = (a: any) => ({
   <p class="muted">No lugar da Defesa entra a <strong>Distância</strong>, o alcance máximo: arma de projétil não guarda, então não acrescenta nada ao Bloqueio. É o <em>tiro extremo</em>, e não a distância em que se acerta com facilidade. Nas de <strong>Arremesso</strong> o número é um teto do objeto: o braço também limita, e vale o menor entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso.</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Distância</th><th class="c">Mãos</th><th class="c">Velocidade</th><th class="c">Fôlego</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Distância</th><th class="c">Mãos</th><th class="c">Velocidade</th>{MODULOS.folego && <th class="c">Fôlego</th>}<th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
       <tbody>
         {distancia.map((a) => (
           <tr {...linhaDados(a)}>
@@ -81,7 +82,7 @@ const linhaDados = (a: any) => ({
             <td class="c">{a.distMax ? `${a.distMax} m` : '—'}</td>
             <td class="c">{a.maos}</td>
             <td class="c">{a.ticks}</td>
-            <td class="c">{a.folego}</td>
+            {MODULOS.folego && <td class="c">{a.folego}</td>}
             <td>{modosDe(a)}</td>
             <td>{habs[(a.pericia as any).id] ?? (a.pericia as any).id}</td>
             <td class="muted">{a.tags.join(', ')}</td>

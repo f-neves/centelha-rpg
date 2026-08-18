@@ -164,6 +164,7 @@ import FichaResumo from '../../components/FichaResumo.astro';
   import { abrirMesa, copiarTexto, u, esc, avatarHTML, urlsImagens, nomesDe, semMigracao14 } from '../../lib/mesa-core';
   import { resumoFicha, resumoParaBanco } from '../../lib/mesa-ficha';
   import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
+  import { MODULOS } from '../../lib/modulos';
 
   const el = (i: string) => document.getElementById(i)!;
   const SELO: Record<string, [string, string]> = {
@@ -483,7 +484,7 @@ import FichaResumo from '../../components/FichaResumo.astro';
     const pil: string[] = [];
     const pl = (r: string, v: any) => pil.push(`<span class="pl"><span class="pl-l">${r}</span><span class="pl-v">${esc(v)}</span></span>`);
     if (x.pv != null) pl('Vida', x.pv);
-    if (x.energia != null) { pl('Energia', x.energia); pl('Mana', x.mana ?? 0); pl('Fôlego', x.folego ?? 0); }
+    if (x.energia != null) { pl('Energia', x.energia); pl('Mana', x.mana ?? 0); if (MODULOS.folego) pl('Fôlego', x.folego ?? 0); }
     if (x.ataque != null || x.defesa != null) {
       if (x.arma) pl('Arma', x.arma);
       if (x.ataque) pl('Acerto', x.ataque);
