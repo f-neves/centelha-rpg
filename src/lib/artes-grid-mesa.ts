@@ -8,8 +8,8 @@ import { esc, novoId, somarCondicoes, COND, tierDe } from './mesa-core';
 import { MON } from './mesa-bestiario';
 import { uiErro, uiConfirmar, uiEscolher, uiPainel } from './ui-dialog';
 import {
-  EFEITO, ARTE, CONDICAO, figuraDaArea, rotuloDaFigura, caminhoDaFigura,
-  hexesDaFigura, pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
+  EFEITO, ARTE, CONDICAO, rotuloDaFigura, caminhoDaFigura,
+  figuraDoEfeito, hexesDaFigura, pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
   raioEmMetros, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito,
   metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa,
@@ -653,7 +653,11 @@ export async function conjurar(ctx: CtxGrid, cid: string, palco: HTMLElement): P
   if (!plano) return;
 
   const g = plano.efeito?.grid;
-  const forma: Forma = g?.forma || (plano.areaM2 ? 'zona' : 'alvo');
+  // No improviso quem decide a forma é o Volume: comprou lado da base, é a
+  // manifestação em fatias, que ocupa chão; não comprou, é o Dardo, que voa e
+  // acerta um alvo. As Artes que não manifestam elemento caem no Dardo também,
+  // porque a fatia não quer dizer nada nelas e a geometria delas ainda não existe.
+  const forma: Forma = g?.forma || (plano.ladoBaseM ? 'zona' : 'alvo');
 
   // A cobrança da Mana envolve todos os caminhos, e por isso está num `finally`:
   // cada forma sai por um `return` próprio, e repetir a linha em seis lugares
@@ -714,44 +718,51 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
     });
   }
 
-  // O molde EFETIVO. A aura e o muro não perguntam: uma é sempre um círculo em
-  // volta de quem conjura, o outro é sempre uma faixa. O resto usa o que a
-  // pessoa escolheu no assistente.
-  const molde = forma === 'aura' ? 'circulo'
-    : forma === 'muro' || forma === 'linha' ? 'linha'
-    : forma === 'cone' ? 'leque'
-    : plano.molde;
-
-  // O comprimento próprio, para quem não compra área nenhuma. O Muro compra
-  // metros de parede; o Passo Relâmpago só compra Alcance, e o risco que ele
-  // deixa no chão é justamente a distância percorrida. Sem isto, a divisão de
-  // uma área que vale zero devolve uma faixa de comprimento zero: o efeito é
-  // gravado, cobra a Mana e não aparece.
-  const compProprio = (forma === 'muro' || forma === 'linha') && !plano.areaM2
-    ? (plano.comprimentoM || plano.alcanceM || 0)
+  // A figura sai do MOTOR, num lugar só: quem decide o molde é a forma que o
+  // Efeito declara, e a régua é a do molde. A caixa só tem voz onde a forma
+  // deixa escolher, que hoje é a `zona`. O improviso não tem molde nenhum: ele
+  // tem a manifestação em fatias, e ela sempre nasce no conjurador.
+  const grauTam = plano.efeito
+    ? (plano.escolhas['Comprimento'] ?? plano.escolhas['Área'] ?? plano.escolhas['Volume'] ?? 0)
     : 0;
-
-  const monta = (ancora: Encaixe, dir: number) => figuraDaArea({
-    molde, areaM2: plano.areaM2, ancora, dir,
-    aberturaGraus: plano.angulo, ladoM: plano.lado,
-    // A aura e o muro compram raio e comprimento, e não área.
-    raioProprioM: forma === 'aura' ? plano.raioM : 0,
-    comprimentoProprioM: compProprio,
+  const monta = (ancora: Encaixe, dir: number) => figuraDoEfeito({
+    efeito: plano.efeito, grau: grauTam, ancora, dir,
+    molde: plano.molde,
     // A barreira dobrada. Só a barreira: uma faixa de fogo curva seria uma
     // figura diferente da que foi comprada, e o livro só dá essa licença à
     // parede ("a curvatura máxima de qualquer barreira é um semicírculo").
     curvaturaGraus: forma === 'muro' ? plano.curvaturaGraus : 0,
-  });
+    ladoM: plano.ladoBaseM, fatias: plano.fatias, aberturaGraus: plano.angulo,
+  }) || { tipo: 'ponto' as const, ax: ancora.x, ay: ancora.y, q: ancora.hex.q, r: ancora.hex.r };
 
   let ancora: Encaixe = encaixeNoCentro(meu, esc_);
   let dir = 0;
+
+  // O improviso nasce no feiticeiro, SEMPRE, e por isso ele não pergunta onde.
+  // Pôr o elemento num ponto escolhido é Efeito Especial, e é justamente a
+  // fronteira que a §5.4 desenha. O que sobra a perguntar é para onde ele aponta.
+  if (!plano.efeito) {
+    const girou = await escolherNoMapa(ctx, palco, (h, ev) =>
+      caminhoDaFigura(monta(ancora, direcaoAoPonteiro(ctx, ancora, ev)), quadro(ctx))
+      + marcaEncaixe(ctx, ancora),
+      `Para onde ${plano.nome} sai · clique · Esc cancela`);
+    if (!girou) return;
+    dir = direcaoAoPonteiro(ctx, ancora, girou.ev);
+    return await gravarEfeito(ctx, c, plano, { forma, figura: monta(ancora, dir), alvos: [] });
+  }
+
+  // Girar só faz sentido em figura que tem frente. O círculo é igual para todo
+  // lado, e pedir uma direção a ele seria um clique morto. Quem responde não é o
+  // molde, é a FIGURA que ele montou: o Terremoto e a Explosão saem do mesmo
+  // ramo do motor e só um dos dois tem para onde apontar.
+  const temDirecao = monta(ancora, 0).tipo !== 'circulo';
 
   if (forma === 'aura') {
     // A aura nasce presa ao conjurador: não há onde clicar.
   } else if (noDedo()) {
     // No dedo os dois passos viram um só: a figura já está na tela desde o
     // primeiro instante, e posicionar e girar acontecem no mesmo gesto.
-    const mirou = await mirarNoDedo(ctx, palco, meu, plano, monta, molde !== 'circulo', plano.nome);
+    const mirou = await mirarNoDedo(ctx, palco, meu, plano, monta, temDirecao, plano.nome);
     if (!mirou) return;
     if (!await dentroDoAlcance(ctx, meu, plano, mirou.ancora)) return;
     ancora = mirou.ancora;
@@ -773,7 +784,7 @@ async function marcarNoChao(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLEleme
 
     // 2. PARA ONDE APONTA. O círculo não pergunta: ele é igual para todo lado, e
     // pedir uma direção a ele seria um clique morto.
-    if (molde !== 'circulo') {
+    if (temDirecao) {
       const girou = await escolherNoMapa(ctx, palco, (h, ev) =>
         reguaDeAlcance(ctx, meu, plano, ev)
         + caminhoDaFigura(monta(ancora, direcaoAoPonteiro(ctx, ancora, ev)), quadro(ctx))

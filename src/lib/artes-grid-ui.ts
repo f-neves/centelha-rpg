@@ -7,10 +7,12 @@
 import { uiPainel, uiEscolher, uiFormulario } from './ui-dialog';
 import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
-  parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, turnosDeDuracao,
+  parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, escalaVisivel, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
-  figuraDaArea, rotuloDaFigura, ANGULOS, LADO_MINIMO, CURVATURAS, velocidadePadraoDe,
-  type Arte, type Efeito, type Parametro, type Escolhas, type Molde, type Custo,
+  figuraDoEfeito, rotuloDaFigura, LADO_MINIMO, CURVATURAS, velocidadePadraoDe,
+  MOLDE, MOLDES_DE_CHAO, moldeDaForma, formaEscolheMolde,
+  ABERTURAS, ABERTURA_PADRAO, volumeDaManifestacao,
+  type Arte, type Efeito, type Parametro, type Escolhas, type Custo,
 } from './artes-grid';
 
 const esc = (s: unknown) =>
@@ -23,10 +25,21 @@ export interface Plano {
   nivelArte: number;
   efeito: Efeito | null;        // null = improviso, a Arte crua
   escolhas: Escolhas;
-  molde: Molde;
-  /** A abertura do leque, em graus. Só vale quando o molde é leque. */
+  /**
+   * O molde NOMEADO da §5.3 (`explosao`, `leque`, `linha`, `muralha`, `aura`),
+   * e não mais uma forma geométrica solta. A régua é dele: o jogador escolhe a
+   * forma, a forma decide as dimensões.
+   */
+  molde: string;
+  /** A abertura de cada fatia do improviso, em graus: 60, 90 ou 120. */
   angulo: number;
-  /** O lado escolhido do retângulo, em metros. O outro sai da divisão da área. */
+  /** Quantas fatias vizinhas o improviso abre. Nunca passa do nível da Arte. */
+  fatias: number;
+  /** O lado da base comprado pelo Volume do improviso, em metros. */
+  ladoBaseM: number;
+  /** O volume que a manifestação entrega, em m³. Só o improviso. */
+  volumeM3: number;
+  /** Sobrou da régua velha do retângulo. Segue no plano para não quebrar quem lê. */
   lado: number;
   /** Quanto a barreira dobra, em graus. Zero é a parede reta. */
   curvaturaGraus: number;
@@ -80,8 +93,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let nivelArte = disponiveis[0].nivel;
   let efeitoSel: Efeito | null = null;
   let escolhas: Escolhas = {};
-  let molde: Molde = 'circulo';
-  let angulo = 90;
+  let molde = 'explosao';
+  let angulo = ABERTURA_PADRAO;
+  let fatias = 1;
   let lado = LADO_MINIMO;
   let curvatura = 0;
   let velocidade = velocidadePadraoDe(null);
@@ -145,39 +159,44 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const danoBonus = pDano && nD ? bonusPlano(pDano, nD) : 0;
       const partes: string[] = [];
       if (pAlc && nA) partes.push(`Alcance ${valorNoNivel(pAlc, nA)}`);
-      if (pArea && nAr) partes.push(`${pArea.nome} ${valorNoNivel(pArea, nAr)}`);
+      if (pArea && nAr) {
+        const ev = escalaVisivel(pArea, efeitoSel, molde);
+        partes.push(`${pArea.nome} ${ev ? ev[Math.min(ev.length - 1, nAr)] : valorNoNivel(pArea, nAr)}`);
+      }
       if (danoDados) partes.push(`${danoDados}d6`);
       else if (danoBonus) partes.push(`+${danoBonus} de dano`);
       if (turnos) partes.push(rotuloDuracao(turnos));
-      const areaM2 = pArea && nAr && !ehRaio ? areaEmM2(pArea, nAr) : 0;
-      const raioProprio = pArea && nAr && ehRaio ? medidaNoNivel(pArea, nAr) : 0;
-      // O Muro não compra área nenhuma: compra metros de parede. Sem ler essa
-      // régua aqui, a figura nasceria vazia e a parede de chamas sairia do
-      // tabuleiro com comprimento zero, cobrando Mana e não desenhando nada.
-      const compProprio = pComp && escolhas['Comprimento']
-        ? medidaNoNivel(pComp, escolhas['Comprimento'])
-        : 0;
-      // A área comprada é o ORÇAMENTO; o molde decide a figura. O raio e o
-      // comprimento saem dela, para nenhum molde render mais chão que o outro.
+      // O improviso não tem área nenhuma em m²: ele tem a manifestação, e o que
+      // ele compra é o lado da base. Ler a régua dele como área daria um número
+      // sem sentido (113 m² para "6 m"), e é ele que decidiria a forma lá na mesa.
+      const areaM2 = efeitoSel && pArea && nAr && !ehRaio ? areaEmM2(pArea, nAr) : 0;
+      // O improviso compra o LADO DA BASE, na régua da manifestação. O número
+      // sai direto do parâmetro, e não de conversão nenhuma.
+      const ladoBaseM = !efeitoSel && pArea && nAr && arteSel.grid.elemento
+        ? medidaNoNivel(pArea, nAr) : 0;
+      // O grau do parâmetro de tamanho é o que a régua do molde lê. Num Efeito
+      // que compra metros de parede, quem manda é o Comprimento.
+      const grauTam = pComp ? (escolhas['Comprimento'] ?? 0) : nAr;
       // A âncora e a direção só se sabem no tabuleiro; aqui a figura serve para
       // dizer o TAMANHO antes de conjurar, e por isso nasce na origem.
-      const fig = (areaM2 || raioProprio || compProprio)
-        ? figuraDaArea({
-            molde: compProprio ? 'linha' : molde,
-            areaM2, ancora: { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' },
-            aberturaGraus: angulo, ladoM: lado, curvaturaGraus: curvatura,
-            raioProprioM: raioProprio, comprimentoProprioM: compProprio,
-          })
-        : null;
+      const fig = figuraDoEfeito({
+        efeito: efeitoSel, grau: grauTam,
+        ancora: { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' },
+        molde, curvaturaGraus: curvatura,
+        ladoM: ladoBaseM, fatias, aberturaGraus: angulo,
+      });
       const figura = fig ? rotuloDaFigura(fig) : '';
       if (figura) partes.push(figura);
+      const volumeM3 = fig?.tipo === 'fatias' ? volumeDaManifestacao(fig) : 0;
+      if (volumeM3) partes.push(`${volumeM3 < 10 ? volumeM3.toFixed(1) : Math.round(volumeM3)} m³`);
       return {
         arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas },
-        molde, angulo, lado, curvaturaGraus: curvatura, velocidadeTicks: velocidade, custo,
+        molde, angulo, fatias, lado, ladoBaseM, volumeM3,
+        curvaturaGraus: curvatura, velocidadeTicks: velocidade, custo,
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
         areaM2,
         raioM: fig?.raioM || 0,
-        comprimentoM: compProprio || fig?.comprimentoM || 0,
+        comprimentoM: fig?.comprimentoM || 0,
         larguraM: fig?.larguraM || 0,
         danoDados, danoBonus, turnos, figura,
         alvos: escolhas['Alvos'] ?? 1,
@@ -192,7 +211,20 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const pars = efeitoSel ? parametrosAjustaveis(efeitoSel) : parametrosDoImproviso();
       const fixos = (efeitoSel?.parametros || []).filter((p) => p.tipo === 'fixo');
       const temArea = pars.some((p) => p.nome === 'Área' || p.nome === 'Volume');
-      const podeModar = temArea && (g?.forma === 'zona' || !efeitoSel);
+      // O improviso NÃO escolhe molde: ele tem uma geometria só, as fatias da
+      // §5.4, e qualquer outra manifestação de volume é Efeito Especial. O que
+      // ele escolhe é quantas fatias e com que abertura.
+      const ehImproviso = !efeitoSel;
+      // E a manifestação é das Artes ELEMENTAIS. Cura, Fascinação, Adivinhação,
+      // Conjuração e Metamorfose não manifestam elemento nenhum, e uma fatia de
+      // 60° não quer dizer nada nelas: a geometria própria delas ainda não
+      // existe, e fingir que existe seria pior que dizer que falta.
+      const podeFatiar = ehImproviso && temArea && !!arteSel.grid.elemento;
+      const improvisoSemChao = ehImproviso && temArea && !arteSel.grid.elemento;
+      // Nos Efeitos, a forma declarada já escolheu o molde. Só a `zona` pergunta,
+      // porque é a genérica que engordou e ainda espera o julgamento um a um.
+      const podeModar = temArea && !ehImproviso && formaEscolheMolde(g?.forma);
+      const moldeAtual = MOLDE[molde] || moldeDaForma(g?.forma);
       // A barreira não escolhe molde (ela é sempre uma faixa), mas escolhe se
       // ergue essa faixa reta ou dobrada. Vale para QUALQUER barreira: o livro
       // diz "a curvatura máxima de qualquer barreira é um semicírculo", e não
@@ -234,14 +266,19 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
 
       const linhaPar = (p: Parametro) => {
         const n = escolhas[p.nome] ?? 0;
-        const esc2 = escalaDe(p);
+        // A régua VISÍVEL é a do molde quando é ele que manda. Sem isto a caixa
+        // mente: o parâmetro anunciava "2,5 m de diâmetro" pela régua velha de
+        // Área enquanto a figura saía com 5 m, pela régua da Explosão.
+        const esc2 = escalaVisivel(p, efeitoSel, molde);
         const max = esc2 ? esc2.length : 6;
+        const valor = (k: number) =>
+          (esc2 ? esc2[Math.max(0, Math.min(esc2.length - 1, k))] : valorNoNivel(p, k));
         const acima = Math.max(0, n - nivelArte);
         // A tradução em turnos só aparece quando ela ACRESCENTA: nos degraus em
         // que a régua já diz "5 turnos", repetir seria ruído.
         const emTurnos = p.nome === 'Duração' && n
           ? rotuloDuracao(turnosDeDuracao(n, p.regua || 'breve')) : '';
-        const extra = emTurnos && emTurnos !== valorNoNivel(p, n)
+        const extra = emTurnos && emTurnos !== valor(n)
           ? ` <span class="ag-p-eq">= ${emTurnos}</span>` : '';
         return `<div class="ag-p${acima ? ' esticado' : ''}">
           <span class="ag-p-nm">${esc(p.nome)}</span>
@@ -252,7 +289,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             <button type="button" class="ag-p-b" data-par="${esc(p.nome)}" data-d="1"
               ${n >= max ? 'disabled' : ''} aria-label="mais">+</button>
           </span>
-          <span class="ag-p-v">${n ? esc(valorNoNivel(p, n)) : '<i>não usa</i>'}${extra}</span>
+          <span class="ag-p-v">${n ? esc(valor(n)) : '<i>não usa</i>'}${extra}</span>
           ${acima ? `<span class="ag-p-est" title="acima do nível da Arte: custa ${acima + 1}× por nível">
             ↑${acima}</span>` : ''}
         </div>`;
@@ -269,7 +306,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const focado = (() => {
         const a = document.activeElement as HTMLElement | null;
         if (!a || !corpo.contains(a)) return '';
-        for (const k of ['data-arte', 'data-ef', 'data-par', 'data-molde', 'data-ang', 'data-curva']) {
+        for (const k of ['data-arte', 'data-ef', 'data-par', 'data-molde', 'data-ang', 'data-curva', 'data-fatias']) {
           if (a.hasAttribute(k)) {
             const d = a.getAttribute('data-d');
             return `[${k}="${CSS.escape(a.getAttribute(k) || '')}"]${d ? `[data-d="${d}"]` : ''}`;
@@ -306,22 +343,42 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
                 ${fixos.length ? `<div class="ag-fixos">${fixos.map((p) =>
                   `<span><b>${esc(p.nome)}:</b> ${esc(p.valor)}</span>`).join('')}</div>` : ''}
               </div>
-              ${podeModar ? `<div class="ag-sec"><h3 class="ag-h">Molde</h3>
-                <div class="ag-moldes">${(['circulo', 'linha', 'retangulo', 'leque'] as Molde[]).map((m) => `
-                  <button type="button" class="ag-md${molde === m ? ' on' : ''}" data-molde="${m}">
-                    <span class="ag-md-ic" aria-hidden="true">${
-                      { circulo: '●', linha: '━', retangulo: '▬', leque: '◣' }[m]}</span>
-                    ${{ circulo: 'Círculo', linha: 'Linha', retangulo: 'Retângulo', leque: 'Leque' }[m]}</button>`).join('')}</div>
-                ${molde === 'leque' ? `<div class="ag-angs">
+              ${podeFatiar ? `<div class="ag-sec"><h3 class="ag-h">Manifestação</h3>
+                <p class="ag-md-nota">O elemento sai de você, em fatias vizinhas. A base comprada não se
+                  mexe: <b>quem paga a abertura é a distância</b>, e o volume vai atrás dela.</p>
+                <div class="ag-angs">
+                  <span class="ag-ang-l">Fatias</span>
+                  ${Array.from({ length: Math.max(1, nivelArte) }, (_, i) => i + 1).map((k) => `
+                    <button type="button" class="ag-ang${fatias === k ? ' on' : ''}" data-fatias="${k}">${k}</button>`).join('')}
+                  <span class="ag-ang-n">no máximo o nível da Arte</span>
+                </div>
+                <div class="ag-angs">
                   <span class="ag-ang-l">Abertura</span>
-                  ${ANGULOS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
+                  ${ABERTURAS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
                     data-ang="${a}">${a}°</button>`).join('')}
-                </div>` : ''}
-                ${molde === 'retangulo' ? `<div class="ag-angs">
-                  <span class="ag-ang-l">Um lado</span>
-                  <input type="number" id="ag-lado" min="${LADO_MINIMO}" step="0.5" value="${lado}" /> m
-                  <span class="ag-ang-n">o outro sai da área</span>
-                </div>` : ''}
+                  <span class="ag-ang-n">as três que fecham o círculo</span>
+                </div>
+                <p class="ag-figura">${esc(plano.figura || 'sem volume')}</p>
+              </div>` : ''}
+              ${improvisoSemChao ? `<div class="ag-sec"><h3 class="ag-h">Manifestação</h3>
+                <p class="ag-md-nota">${esc(arteSel.nome)} não manifesta elemento, e a fatia não quer dizer
+                  nada aqui. A geometria própria das Artes que não são elementais ainda não existe:
+                  descreva na mesa e marque o chão à mão.</p>
+              </div>` : ''}
+              ${podeModar ? `<div class="ag-sec"><h3 class="ag-h">Molde</h3>
+                <p class="ag-md-nota">Cada molde tem a régua dele: a forma decide as dimensões.</p>
+                <div class="ag-moldes">${MOLDES_DE_CHAO.map((m) => `
+                  <button type="button" class="ag-md${molde === m.id ? ' on' : ''}" data-molde="${m.id}">
+                    <span class="ag-md-ic" aria-hidden="true">${
+                      { explosao: '●', leque: '◣', linha: '━', muralha: '▬' }[m.id] || '●'}</span>
+                    ${esc(m.nome)}
+                    <small>${esc(m.compra)}</small></button>`).join('')}</div>
+                <p class="ag-figura">${esc(plano.figura || 'sem área')}</p>
+              </div>` : ''}
+              ${!podeModar && !podeFatiar && moldeAtual && temArea ? `<div class="ag-sec">
+                <h3 class="ag-h">Molde</h3>
+                <p class="ag-md-nota"><b>${esc(moldeAtual.nome)}</b>, que é o molde da forma que este Efeito
+                  declara. Ele compra ${esc(moldeAtual.compra)}.</p>
                 <p class="ag-figura">${esc(plano.figura || 'sem área')}</p>
               </div>` : ''}
               ${podeCurvar ? `<div class="ag-sec"><h3 class="ag-h">Curvatura</h3>
@@ -365,6 +422,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       corpo.querySelectorAll<HTMLElement>('[data-arte]').forEach((b) => b.onclick = () => {
         const d = disponiveis.find((x) => x.arte.id === b.dataset.arte)!;
         arteSel = d.arte; nivelArte = d.nivel;
+        // As fatias nunca passam do nível da Arte: descer de Arte tem de encolher
+        // o leque junto, senão um improviso de grau 2 sairia aberto em seis.
+        fatias = Math.max(1, Math.min(fatias, Math.max(1, nivelArte)));
         // O Efeito escolhido pode não caber na Arte nova: some em vez de mentir.
         if (efeitoSel && !efeitosDisponiveis(arteSel.id, nivelArte, ctx.comprados).some((e) => e.id === efeitoSel!.id)) {
           efeitoSel = null;
@@ -384,7 +444,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         pintar();
       });
       corpo.querySelectorAll<HTMLElement>('[data-molde]').forEach((b) => b.onclick = () => {
-        molde = b.dataset.molde as Molde; pintar();
+        molde = b.dataset.molde!; pintar();
+      });
+      corpo.querySelectorAll<HTMLElement>('[data-fatias]').forEach((b) => b.onclick = () => {
+        fatias = Number(b.dataset.fatias); pintar();
       });
       corpo.querySelectorAll<HTMLElement>('[data-ang]').forEach((b) => b.onclick = () => {
         angulo = Number(b.dataset.ang); pintar();

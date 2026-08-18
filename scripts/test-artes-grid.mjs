@@ -338,27 +338,16 @@ eq(M.hexesDaFigura({ tipo: 'arena', ax: 0, ay: 0, q: 0, r: 0 }, 1, 12, 8).length
 // de área acha zero nos três, e zero vira uma figura sem tamanho: o efeito é
 // gravado, cobra a Mana e não desenha nada. A parede de chamas sumiu assim.
 const CHAO = ['zona', 'muro', 'cone', 'linha', 'aura'];
-const figuraDoEfeito = (e, n = 3) => {
-  const par = (nome) => (e.parametros || []).find((p) => p.nome === nome && p.tipo !== 'fixo');
-  const pArea = par('Área') || par('Volume');
-  const pComp = par('Comprimento');
-  const ehRaio = !!pArea && /de raio/i.test(pArea.unidade || '');
-  const forma = e.grid.forma;
-  const molde = forma === 'aura' ? 'circulo'
-    : forma === 'muro' || forma === 'linha' ? 'linha'
-    : forma === 'cone' ? 'leque' : 'circulo';
-  return M.figuraDaArea({
-    molde, ancora: CENTRO, aberturaGraus: 90,
-    areaM2: pArea && !ehRaio ? M.areaEmM2(pArea, n) : 0,
-    raioProprioM: pArea && ehRaio ? M.medidaNoNivel(pArea, n) : 0,
-    comprimentoProprioM: pComp ? M.medidaNoNivel(pComp, n)
-      : (forma === 'linha' ? M.alcanceEmMetros(par('Alcance') || { nome: 'Alcance', tipo: 'padrao' }, n) : 0),
-  });
-};
+// A MESMA função que a mesa usa. Antes o teste tinha uma cópia da regra, e uma
+// cópia de regra só serve para divergir em silêncio: agora o que falha aqui é
+// exatamente o que sairia no tabuleiro.
+const figuraDoEfeito = (e, n = 3) => M.figuraDoEfeito({ efeito: e, grau: n, ancora: CENTRO }) || {};
 const vazios = M.EFEITOS
   .filter((e) => CHAO.includes(e.grid.forma))
   .filter((e) => {
     const f = figuraDoEfeito(e);
+    // Quem cobre a arena inteira não tem medida, e é assim de propósito.
+    if (f.tipo === 'arena') return false;
     return Math.max(f.raioM || 0, f.comprimentoM || 0) < 0.5;
   })
   .map((e) => e.id);
@@ -454,23 +443,30 @@ eq(M.EFEITO['muro'].grid.forma, 'muro', 'e o Muro também');
 // Oito Efeitos compram tamanho na régua deles, e a régua comum não os alcança.
 // Enquanto a comum ia a 64 m², isso não incomodava; depois que ela encolheu para
 // 25, a Aura sozinha cobria 113 m² e a Névoa, 100.
-const CEU = M.areaEmM2({ nome: 'Área', tipo: 'padrao' }, 6);   // o teto genérico
+// O teto genérico não é mais a régua de Área: desde a §5.3 o chão de um Efeito
+// se compra por MOLDE, e o teto de uma zona é a Explosão no grau 6, 8 m de
+// diâmetro. Isso resolveu sozinho a pendência que este bloco registrava: as
+// quatro escadas próprias, que estavam por cima de um teto de 12,6 m², passaram
+// a caber com folga embaixo de 50 m².
+const CEU = Math.PI * (M.medidaDoMolde(M.MOLDE['explosao'], 6) / 2) ** 2;
 const chaoDe = (id, n = 6) => {
   const f = figuraDoEfeito(M.EFEITO[id], n);
   if (f.raioM) return Math.PI * f.raioM * f.raioM;
   return (f.comprimentoM || 0) * (f.larguraM || 1);
 };
 //
-// PENDENTE, E REGISTRADO AQUI DE PROPÓSITO.
+// RESOLVIDO PELA §5.3, e a história fica registrada porque ela se repetiu duas
+// vezes e pode voltar.
 //
 // Quando estas quatro escadas foram baixadas, o teto genérico eram 25 m² (a
 // régua de área era um quadrado de 5 × 5 no nível 6). Depois o nível passou a
-// comprar um DIÂMETRO, e o teto caiu para 12,6 m²: as quatro voltaram a ficar
-// por cima dele, sem ninguém as ter mexido.
+// comprar um DIÂMETRO, o teto caiu para 12,6 m², e as quatro voltaram a ficar
+// por cima dele sem ninguém as ter mexido. Agora o chão se compra por MOLDE, o
+// teto de uma zona é a Explosão (50,3 m²), e as quatro cabem embaixo.
 //
-// O teste não finge que está tudo bem, e também não decide sozinho: ele PRENDE
-// os números de hoje. Assim, quem reescalar de propósito vê o teste falhar e
-// atualiza; e quem mexer sem querer também.
+// O teste não decide sozinho: ele PRENDE os números de hoje. Assim, quem
+// reescalar de propósito vê o teste falhar e atualiza; e quem mexer sem querer
+// também.
 const CHAO_HOJE = { aura: 28, neblina: 25, terremoto: 25, muro: 20 };
 for (const [id, esperado] of Object.entries(CHAO_HOJE)) {
   const chao = chaoDe(id);
@@ -558,6 +554,94 @@ if (proj) {
 }
 // Nenhum outro Efeito ganhou ação livre sem passar por aqui.
 eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação livre');
+
+// ------------------------------------ a manifestação e os moldes com nome
+//
+// A §5.4 e a §5.3 do `Arcano_revisao.md`, conferidas contra os números que o
+// próprio documento mediu. Se a geometria sair do prumo, é aqui que aparece.
+{
+  const perto = (a, b, msg, tol = 0.02) =>
+    ok(Math.abs(a - b) <= tol, `${msg} — esperado ${b}, veio ${Number(a).toFixed(3)}`);
+  const ancora = { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' };
+  const mani = (lado, fatias, ab) =>
+    M.figuraDaManifestacao({ ladoM: lado, fatias, aberturaGraus: ab, ancora, dir: 0 });
+
+  // A tabela do doc, grau 6 (lado 6 m), uma fatia. Distância, ponta e volume.
+  const g6 = { 60: [5.196, 6.000, 62.35], 90: [3.000, 4.243, 36.00], 120: [1.732, 3.464, 20.78] };
+  for (const [ab, [dist, ponta, vol]] of Object.entries(g6)) {
+    const f = mani(6, 1, Number(ab));
+    perto(f.distanciaM, dist, `a distância no grau 6 a ${ab}°`);
+    perto(f.raioM, ponta, `o lado do triângulo no grau 6 a ${ab}°`);
+    perto(M.volumeDaManifestacao(f), vol, `o volume no grau 6 a ${ab}°`, 0.05);
+  }
+
+  // Abrir cobra na DISTÂNCIA, e o volume vai atrás: no modelo da corda, as seis
+  // fatias que fecham o círculo dividem tudo por seis.
+  perto(mani(6, 6, 60).distanciaM, 0.866, 'seis fatias põem o elemento a 87 cm do peito');
+  perto(M.volumeDaManifestacao(mani(6, 6, 60)), 62.35 / 6, 'e o volume divide por seis', 0.05);
+  // O piso sai de graça: dividir pelo próprio nível dá sempre 1 m de aresta.
+  perto(mani(3, 3, 60).distanciaM, 0.866, 'o piso de 87 cm vale em qualquer grau');
+
+  // Quem está dentro. No eixo, a fatia vai até a distância; nas quinas ela vai
+  // além, porque a base é uma corda e não um arco.
+  const f60 = mani(6, 1, 60);
+  ok(M.pontoNaFigura(f60, { x: 5.1, y: 0 }), 'no eixo, 5,1 m está dentro da fatia de 60°');
+  ok(!M.pontoNaFigura(f60, { x: 5.3, y: 0 }), 'no eixo, 5,3 m já saiu');
+  const quina = { x: Math.cos(Math.PI / 6) * 5.9, y: Math.sin(Math.PI / 6) * 5.9 };
+  ok(M.pontoNaFigura(f60, quina), 'na quina a fatia chega a 5,9 m, porque a base é corda');
+  ok(!M.pontoNaFigura(f60, { x: 0, y: 3 }), 'fora do ângulo não está dentro, por perto que seja');
+  // As divisas ENTRE fatias não são borda: as vizinhas formam uma peça só.
+  const f3 = mani(6, 3, 60);
+  ok(M.pontoNaFigura(f3, { x: 0.5, y: 0.5 }), 'a divisa entre fatias vizinhas não corta a figura');
+
+  // E sair de uma fatia: pela corda à frente ou pelo lado do leque inteiro.
+  perto(M.metrosParaSair(f60, { x: 4.196, y: 0 }), 1, 'do eixo da fatia até a corda');
+  perto(M.metrosParaSair(f60, { x: 1, y: 0 }), 0.5, 'perto do ápice o lado é mais barato');
+
+  // Os cinco moldes: o número da régua vai DIRETO para a dimensão, sem passar
+  // por orçamento de m². É a §5.3 inteira em uma linha por molde.
+  const grau = (id, n) => M.medidaDoMolde(M.MOLDE[id], n);
+  eq([0, 1, 2, 3, 4, 5, 6].map((n) => grau('explosao', n)).join(' · '),
+    '0.5 · 1 · 2 · 3.5 · 5 · 6.5 · 8', 'a régua da Explosão, em diâmetro');
+  eq([0, 6].map((n) => grau('linha', n)).join(' · '), '2 · 24', 'a Linha compra seis vezes o alcance');
+  eq(grau('muralha', 6), 20, 'a Muralha é a régua que o Muro já tinha');
+  eq(grau('cadeia', 5), 8, 'a Cadeia compra alvos, e não chão');
+  eq(grau('aura', 6), 3, 'a Aura mantém os 3 m de raio dela');
+  // São cinco moldes no livro mais a Aura, mas só quatro desenham chão: a Cadeia
+  // liga alvos e não ocupa espaço, então ela não entra na lista de escolha.
+  eq(M.MOLDES.length, 6, 'os cinco moldes do livro mais a Aura');
+  eq(M.MOLDES_DE_CHAO.map((m) => m.id).join(' · '), 'explosao · leque · linha · muralha',
+    'e quatro desenham chão');
+
+  const fig = (id, n) => M.figuraDoMolde({ molde: M.MOLDE[id], grau: n, ancora, dir: 0 });
+  eq(fig('explosao', 6).raioM, 4, 'a Explosão do grau 6 tem 4 m de raio (8 de diâmetro)');
+  eq(fig('leque', 6).aberturaGraus, 60, 'o Leque é sempre de 60°');
+  eq(fig('leque', 6).raioM, 8, 'e o número dele é o raio');
+  eq(fig('linha', 4).comprimentoM, 12, 'a Linha do grau 4 tem 12 m');
+  eq(fig('linha', 4).larguraM, 1, 'e um metro de largura');
+  eq(fig('cadeia', 3), null, 'a Cadeia não tem figura de chão');
+  eq(M.figuraDoMolde({ molde: M.MOLDE['muralha'], grau: 6, ancora, dir: 0, curvaturaGraus: 90 }).tipo,
+    'arco', 'só a Muralha dobra');
+
+  // A forma que o Efeito declara já escolheu o molde dele. Só a zona pergunta.
+  eq(M.moldeDaForma('cone').id, 'leque', 'o cone é o Leque');
+  eq(M.moldeDaForma('muro').id, 'muralha', 'o muro é a Muralha');
+  eq(M.moldeDaForma('aura').id, 'aura', 'a aura é a Aura');
+  eq(M.moldeDaForma('zona').id, 'explosao', 'a zona cai na Explosão até ser julgada');
+  ok(M.formaEscolheMolde('zona'), 'e só a zona deixa o mestre trocar');
+  ok(!M.formaEscolheMolde('cone'), 'o cone não troca de molde');
+
+  // O improviso compra a base com o VOLUME, na régua da manifestação.
+  const pars = M.parametrosDoImproviso();
+  ok(!pars.some((p) => p.nome === 'Área'), 'a Área saiu dos parâmetros do improviso');
+  const pv = pars.find((p) => p.nome === 'Volume');
+  ok(pv && pv.regua === 'manifestacao', 'e o Volume dele lê a régua da manifestação');
+  eq([0, 1, 6].map((n) => M.valorNoNivel(pv, n)).join(' · '), '0,5 m · 1 m · 6 m',
+    'a escada do lado da base');
+  // A régua da matéria continua intocada para o Efeito que cria elemento que fica.
+  eq(M.valorNoNivel({ nome: 'Volume', tipo: 'padrao' }, 6), '2x2x2',
+    'sem a marca, o Volume continua sendo o da matéria');
+}
 
 // ------------------------------------------------- sair da área (o desvio)
 //

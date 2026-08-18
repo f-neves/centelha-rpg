@@ -1451,7 +1451,25 @@
           "A BASE FICA EM CORDA OU VAI PARA ARCO. Na corda a base é uma reta a `distância` metros e o chão é um triângulo; no arco o lado do triângulo vira raio e o chão vira setor de círculo, pela mesma conta da pirâmide (arco × altura × raio ÷ 3). O arco rende θ ÷ sen θ a mais, ou seja +21% a 60°, +57% a 90° e +142% a 120°, e o problema é que no arco ABRIR FICA BARATO, justo na alavanca que segura o leque largo. A terceira opção, o ARCO JUSTO, encolhe o raio em √(sen θ ÷ θ) e bate o volume e o chão da corda em qualquer abertura: é a forma redonda sem mexer em número nenhum.",
           "O QUE A MATÉRIA DENTRO DA FATIA FAZ EM NÚMERO: a regra diz quanto elemento aparece e onde, e não diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de Terra aguenta antes de ceder."
         ],
-        "oParametro": "Quem compra a base é o VOLUME, na régua da manifestação, e não a Área: área é jurisdição, uma região onde uma regra passa a valer, e a fatia não é isso, é corpo de elemento ocupando o espaço. O improviso não escolhe entre as duas réguas como o Efeito escolhe, porque ele tem uma geometria só. Decidido em 2026-08-18, junto com a consequência que fecha o escopo: QUALQUER OUTRA MANIFESTAÇÃO DE VOLUME É EFEITO ESPECIAL."
+        "oParametro": "Quem compra a base é o VOLUME, na régua da manifestação, e não a Área: área é jurisdição, uma região onde uma regra passa a valer, e a fatia não é isso, é corpo de elemento ocupando o espaço. O improviso não escolhe entre as duas réguas como o Efeito escolhe, porque ele tem uma geometria só. Decidido em 2026-08-18, junto com a consequência que fecha o escopo: QUALQUER OUTRA MANIFESTAÇÃO DE VOLUME É EFEITO ESPECIAL.",
+        "numeros": {
+          "nota": "A geometria em número, para o tabuleiro não a reescrever. A base é n × n, sai em N fatias vizinhas com o mesmo ápice, e a distância cai com N e com a abertura: distancia = (n ÷ 2N) ÷ tan(θ÷2).",
+          "aberturas": [
+            60,
+            90,
+            120
+          ],
+          "aberturaPadrao": 60,
+          "fatiasMinimo": 1,
+          "fatiasPorNivel": 1,
+          "estadoNoLado": {
+            "terra": 0.5,
+            "metal": 0.5,
+            "ar": 2,
+            "nevoa": 2,
+            "padrao": 1
+          }
+        }
       },
       "exemplos": [
         "Acender uma vela: tudo no grau 0 = 0 pontos. Sai de graça para qualquer um, e com Centelha 1 dá para pagar Duração 1 (um turno) e ainda sair de graça, sustentando turno após turno até virar uma fogueira.",
@@ -1469,6 +1487,9 @@
       },
       "lista": [
         {
+          "id": "explosao",
+          "medida": "diametro",
+          "figura": "circulo",
           "nome": "Explosão",
           "compra": "diâmetro",
           "escala": [
@@ -1492,6 +1513,10 @@
           "serve": "varrer quem está junto. É a que mais cresce em número de alvos e a que mais murcha quando os inimigos se abrem: 37 colados no grau 5, 10 espalhados."
         },
         {
+          "id": "leque",
+          "medida": "raio",
+          "figura": "leque",
+          "aberturaGraus": 60,
           "nome": "Leque",
           "compra": "comprimento, em 60°",
           "escala": [
@@ -1515,6 +1540,10 @@
           "serve": "a linha de frente: cobre um setor à frente do conjurador e compra mais alcance que a Explosão pelo mesmo grau."
         },
         {
+          "id": "linha",
+          "medida": "comprimento",
+          "figura": "linha",
+          "larguraM": 1,
           "nome": "Linha",
           "compra": "comprimento, 1 m de largura",
           "escala": [
@@ -1538,6 +1567,11 @@
           "serve": "chegar longe. Compra seis vezes o alcance da Explosão e paga com a largura: é o Raio contra a bola de fogo, e é a saída positiva para quem quer distância."
         },
         {
+          "id": "muralha",
+          "medida": "comprimento",
+          "figura": "linha",
+          "larguraM": 1,
+          "curvavel": true,
           "nome": "Muralha",
           "compra": "metros de frente",
           "escala": [
@@ -1553,6 +1587,10 @@
           "serve": "barrar. É a régua que o Muro já tem, sem mexer num número."
         },
         {
+          "id": "cadeia",
+          "medida": "alvos",
+          "figura": "cadeia",
+          "saltoM": 3,
           "nome": "Cadeia",
           "compra": "inimigos ligados, salto de 3 m",
           "escala": [
@@ -1594,12 +1632,40 @@
           }
         ]
       },
-      "aura": "A Aura mantém a régua dela, de 0,25 a 3 m de raio, e é menor de propósito: acompanha o corpo em vez de ocupar o campo.",
+      "aura": {
+        "id": "aura",
+        "medida": "raio",
+        "figura": "circulo",
+        "nome": "Aura",
+        "compra": "raio",
+        "escala": [
+          "0,25 m",
+          "0,5 m",
+          "1 m",
+          "1,5 m",
+          "2 m",
+          "2,5 m",
+          "3 m"
+        ],
+        "nota": "A Aura mantém a régua dela e é menor de propósito: ela acompanha o corpo em vez de ocupar o campo. São 10 Efeitos, e o número é raio, não diâmetro."
+      },
       "cadeiaRessalva": "A Cadeia é indiferente à formação, mas não é indiferente ao CAMINHO. Ela salta de um alvo ao mais próximo ainda não atingido, e onde o próximo estiver além do salto a corrente arrebenta ali, perdendo os elos restantes. É o molde de quem enfrenta muitos inimigos em fila ou em cordão, e é fraca contra dois grupos separados por um vão.",
       "cuboide": "O cuboide não é proibido: ele ganha nome. O cuboide comprido é a Muralha, e a Muralha tem régua calibrada para ser comprida; o cuboide maciço é matéria, e matéria é Volume em m³. O abuso morre por construção e não por proibição, porque não sobra medida livre para trocar: quem escolhe as dimensões é o molde.",
       "volume": "O Volume fica exatamente como está (8 cm³ a 8 m³) para os Efeitos que criam matéria, e perde o direito de virar forma. Lido como matéria ele está calibrado: o grau 3 são 169 kg de pedra, o grau 4 são 1,4 t e o grau 6 são 10,8 t. Pedra não vira tapete, névoa vira, e é isso que o fator de estado diz.",
       "hexagonosNota": "Os hexágonos são coluna de leitura, não unidade: a régua é em metros, e o molde ancora onde o efeito nasce.",
-      "aRevisar": "A escola está fechada; as réguas acima são a calibragem proposta e ainda esperam mesa. Falta também passar os Efeitos que hoje usam a `zona` genérica para o molde que lhes cabe."
+      "aRevisar": "A escola está fechada; as réguas acima são a calibragem proposta e ainda esperam mesa. Falta também passar os Efeitos que hoje usam a `zona` genérica para o molde que lhes cabe.",
+      "porForma": {
+        "nota": "A forma que o Efeito declara já diz o molde dele. Só a `zona` fica em aberto, porque ela é a genérica que engordou, e por isso ela pergunta: o padrão é a Explosão, e os 23 Efeitos que ainda a usam esperam o julgamento um a um.",
+        "zona": "explosao",
+        "cone": "leque",
+        "linha": "linha",
+        "muro": "muralha",
+        "cadeia": "cadeia",
+        "aura": "aura",
+        "escolhe": [
+          "zona"
+        ]
+      }
     },
     "tempoDaArte": {
       "nota": "A manifestação diz ONDE o elemento aparece. Esta parte diz o que acontece com quem está lá, e ela nasce de uma regra de tempo: a Arte resolve no ÚLTIMO Tick da ação.",

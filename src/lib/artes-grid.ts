@@ -34,7 +34,16 @@ export interface Efeito {
 export interface Parametro {
   nome: string; tipo: 'padrao' | 'substitui' | 'fixo';
   valor?: string; substitui?: string; unidade?: string; escala?: string[];
-  nota?: string; regua?: 'breve' | 'longa';
+  nota?: string;
+  /**
+   * Qual das réguas do parâmetro vale.
+   *
+   * A Duração sempre teve duas (breve e longa). Desde 2026-08-18 o Volume também
+   * tem: `manifestacao` é o lado da base do improviso, `materia` (o padrão) é o
+   * lado do que um Efeito cria e fica. O improviso marca a dele aqui, e sem essa
+   * marca ele leria a régua da matéria e nasceria oito vezes menor.
+   */
+  regua?: 'breve' | 'longa' | 'manifestacao' | 'materia';
 }
 export interface GridEfeito {
   forma: Forma; ancora: Ancora; gatilho: Gatilho; alvo: string;
@@ -91,7 +100,7 @@ const TURNOS_LONGA = [1, 100, 600, 3600, 14400, 100800, 432000];
  * diferente: na breve é no máximo um tick, que arredondado em turnos é zero; na
  * longa é no máximo um turno. Por isso o zero das duas não é o mesmo número.
  */
-export function turnosDeDuracao(n: number, regua: 'breve' | 'longa' = 'breve'): number {
+export function turnosDeDuracao(n: number, regua: Parametro['regua'] = 'breve'): number {
   const t = regua === 'longa' ? TURNOS_LONGA : TURNOS_BREVE;
   return t[Math.max(0, Math.min(t.length - 1, n))];
 }
@@ -108,7 +117,10 @@ export function escalaDe(p: Parametro): string[] | null {
   if (p.tipo === 'fixo') return null;
   if (p.tipo === 'substitui' && p.escala) return p.escala;
   const mapa: Record<string, string> = {
-    Alcance: 'alcance', Área: 'area', Volume: 'volume', Alvos: 'alvos', Dano: 'dano',
+    Alcance: 'alcance', Área: 'area', Alvos: 'alvos', Dano: 'dano',
+    // O Volume tem duas réguas. Quem não marca qual quer cai na da matéria, que
+    // é a de sempre: só o improviso pede a da manifestação, e ele pede em voz alta.
+    Volume: p.regua === 'manifestacao' ? 'volumeImproviso' : 'volume',
     Duração: p.regua === 'longa' ? 'duracaoLonga' : 'duracaoBreve',
   };
   const k = mapa[p.nome];
@@ -280,7 +292,11 @@ export const velocidadePadraoDe = (efeito: Efeito | null): number =>
 export function parametrosDoImproviso(): Parametro[] {
   return [
     { nome: 'Alcance', tipo: 'padrao' },
-    { nome: 'Área', tipo: 'padrao' },
+    // Quem compra o tamanho do improviso é o VOLUME, na régua da manifestação: o
+    // lado da base de n × n. A Área saiu daqui em 2026-08-18, porque área é
+    // jurisdição (uma região onde uma regra passa a valer) e a fatia não é isso,
+    // é corpo de elemento ocupando o espaço.
+    { nome: 'Volume', tipo: 'padrao', regua: 'manifestacao', unidade: 'm de lado da base' },
     { nome: 'Alvos', tipo: 'padrao' },
     { nome: 'Dano', tipo: 'padrao' },
     { nome: 'Duração', tipo: 'padrao', regua: 'breve' },
@@ -344,7 +360,7 @@ export interface Figura {
    * decide se os ergue em linha reta ou em curva. O livro dá o teto: "a
    * curvatura máxima de qualquer barreira é um semicírculo".
    */
-  tipo: Molde | 'arena' | 'ponto' | 'arco';
+  tipo: Molde | 'arena' | 'ponto' | 'arco' | 'fatias';
   /**
    * A âncora, EM METROS, no plano comum. É o miolo do círculo, a ponta da faixa,
    * o bico do leque.
@@ -362,9 +378,19 @@ export interface Figura {
   comprimentoM?: number;   // linha e retângulo (o lado que segue a direção)
   larguraM?: number;       // linha (1 m) e retângulo (o lado escolhido)
   dir?: number;            // radianos: a tangente na âncora (o arco) ou o eixo
-  aberturaGraus?: number;  // leque
+  aberturaGraus?: number;  // leque, e a abertura de CADA fatia na manifestação
   /** Quanto a parede dobra, em graus. Só o `arco`. Zero seria uma reta. */
   curvaturaGraus?: number;
+  /** Quantas fatias vizinhas saem do mesmo ápice. Só a manifestação. */
+  fatias?: number;
+  /**
+   * A distância PERPENDICULAR do ápice até a base, em metros. Só a manifestação.
+   *
+   * Não é o raio: na manifestação a base é uma CORDA reta, e o que ela tem de
+   * constante é a perpendicular, não o raio. As pontas ficam mais longe que o
+   * meio, e é essa diferença que separa a fatia de um setor de círculo.
+   */
+  distanciaM?: number;
 }
 
 /** A largura padrão da faixa: um metro, como a mesa decidiu. */
@@ -609,6 +635,284 @@ export function figuraDaArea(opts: {
   return { tipo: 'circulo', ...base, raioM: raioDoCirculo(A) };
 }
 
+// ==================================================== os moldes com nome
+/**
+ * Os cinco moldes do livro, e a Aura.
+ *
+ * A regra da §5.3 em uma frase: **o parâmetro de chão não é uma medida solta, é
+ * um molde com nome, e cada molde tem a sua régua.** O jogador escolhe a forma;
+ * a forma decide as dimensões. Antes disso o tabuleiro fazia o contrário (a área
+ * era um orçamento em m² e o molde só decidia como gastá-lo), e era por ali que
+ * a esbeltez virava alcance de graça.
+ */
+export interface MoldeNomeado {
+  id: string; nome: string; compra: string;
+  /** O que o número da régua É: diâmetro, raio, comprimento ou alvos. */
+  medida: 'diametro' | 'raio' | 'comprimento' | 'alvos';
+  figura: Molde | 'cadeia';
+  escala: string[];
+  aberturaGraus?: number; larguraM?: number; curvavel?: boolean; saltoM?: number;
+  serve?: string;
+}
+const MOLDES_D = (ARC.moldes || {}) as any;
+export const MOLDES: MoldeNomeado[] = [...(MOLDES_D.lista || []), MOLDES_D.aura].filter(Boolean);
+export const MOLDE: Record<string, MoldeNomeado> =
+  Object.fromEntries(MOLDES.map((m) => [m.id, m]));
+/** Os cinco que se escolhem. A Aura não entra: ela não é jeito de gastar chão. */
+export const MOLDES_DE_CHAO: MoldeNomeado[] = (MOLDES_D.lista || []).filter(
+  (m: MoldeNomeado) => m.figura !== 'cadeia');
+
+/**
+ * O molde que a forma declarada pelo Efeito já escolheu.
+ *
+ * Só a `zona` fica em aberto, porque é a genérica que engordou: 23 Efeitos ainda
+ * a usam, e passar cada um para o molde que lhe cabe é julgamento de Efeito. Até
+ * lá ela cai na Explosão e o mestre pode trocar na caixa.
+ */
+export const moldeDaForma = (forma: Forma | undefined): MoldeNomeado | null =>
+  MOLDE[(MOLDES_D.porForma || {})[forma || ''] || ''] || null;
+/** Se esta forma deixa o mestre trocar o molde na caixa. */
+export const formaEscolheMolde = (forma: Forma | undefined): boolean =>
+  ((MOLDES_D.porForma || {}).escolhe || []).includes(forma || '');
+
+/** O número que o molde entrega no grau `n`, já em metros (ou em alvos). */
+export function medidaDoMolde(m: MoldeNomeado, n: number): number {
+  const esc = m.escala || [];
+  return soNumero(esc[Math.max(0, Math.min(esc.length - 1, n))] || '0');
+}
+
+/**
+ * A figura de um molde nomeado no grau `n`.
+ *
+ * Nenhuma divisão de área acontece aqui, e é esse o ponto: o número da régua vai
+ * direto para a dimensão que aquele molde compra.
+ */
+export function figuraDoMolde(opts: {
+  molde: MoldeNomeado; grau: number; ancora: Encaixe; dir?: number; curvaturaGraus?: number;
+}): Figura | null {
+  const { molde, ancora } = opts;
+  const v = medidaDoMolde(molde, opts.grau);
+  const base = { ax: ancora.x, ay: ancora.y, q: ancora.hex.q, r: ancora.hex.r, dir: opts.dir ?? 0 };
+  if (molde.medida === 'alvos') return null;          // a Cadeia não é chão
+  if (molde.medida === 'diametro') return { tipo: 'circulo', ...base, raioM: v / 2 };
+  if (molde.medida === 'raio') {
+    return molde.figura === 'leque'
+      ? { tipo: 'leque', ...base, raioM: v, aberturaGraus: molde.aberturaGraus ?? 60 }
+      : { tipo: 'circulo', ...base, raioM: v };
+  }
+  const f: Figura = {
+    tipo: 'linha', ...base, comprimentoM: v, larguraM: molde.larguraM ?? LARGURA_LINHA,
+  };
+  const c = Math.min(CURVATURA_MAXIMA, Math.max(0, opts.curvaturaGraus ?? 0));
+  return molde.curvavel && c > 0 ? { ...f, tipo: 'arco', curvaturaGraus: c } : f;
+}
+
+// ============================================ a manifestação da Arte crua
+/** As três aberturas do livro, as que fecham o círculo em número inteiro. */
+const MANI = (ARC.improviso?.manifestacao?.numeros || {}) as any;
+export const ABERTURAS: number[] = MANI.aberturas || [60, 90, 120];
+export const ABERTURA_PADRAO: number = MANI.aberturaPadrao || 60;
+/** O fator do estado da matéria, que incide no LADO DA BASE e não no volume. */
+export function ladoPorEstado(elemento: string | null): number {
+  const t = (MANI.estadoNoLado || {}) as Record<string, number>;
+  return t[String(elemento || '').toLowerCase()] ?? t.padrao ?? 1;
+}
+
+/**
+ * A geometria do improviso: fatias vizinhas saindo do feiticeiro.
+ *
+ * `lado` é a base comprada (n × n): n metros de frente SOMADA e n de altura. Com
+ * a base travada, o ângulo e a distância não são independentes, e é por isso que
+ * abrir custa caro:
+ *
+ *     aresta = n ÷ N        distância = (n ÷ 2N) ÷ tan(θ÷2)
+ *
+ * As N fatias partem do mesmo ápice e são obrigatoriamente vizinhas (é o mesmo
+ * ataque se abrindo, e não vários ataques), então o que elas desenham no chão é
+ * um leque de N chapas retas, e não um setor de círculo: a base de cada uma é
+ * uma CORDA, e as pontas ficam mais longe do ápice que o meio.
+ */
+export function figuraDaManifestacao(opts: {
+  ladoM: number; fatias: number; aberturaGraus: number; ancora: Encaixe; dir?: number;
+}): Figura {
+  const n = Math.max(0, opts.ladoM);
+  const N = Math.max(1, Math.round(opts.fatias || 1));
+  const th = Math.max(1, opts.aberturaGraus || ABERTURA_PADRAO);
+  const meia = (th / 2) * (Math.PI / 180);
+  const distancia = (n / (2 * N)) / Math.tan(meia);
+  return {
+    tipo: 'fatias',
+    ax: opts.ancora.x, ay: opts.ancora.y, q: opts.ancora.hex.q, r: opts.ancora.hex.r,
+    dir: opts.dir ?? 0,
+    fatias: N, aberturaGraus: th, distanciaM: distancia,
+    // O raio é a ponta, e não a perpendicular: é ele que limita a busca de casas
+    // e o traço, porque é o ponto da figura mais longe do ápice.
+    raioM: distancia / Math.cos(meia),
+  };
+}
+
+/** O volume da manifestação, em m³: a pirâmide, `base × distância ÷ 3`. */
+export function volumeDaManifestacao(f: Figura): number {
+  const n = (f.fatias || 1) * (f.aberturaGraus || 0);
+  if (!f.distanciaM || !n) return 0;
+  // A base é n², e ela não se mexe: a frente somada e a altura são sempre o lado.
+  const meia = ((f.aberturaGraus || 60) / 2) * (Math.PI / 180);
+  const lado = 2 * (f.fatias || 1) * f.distanciaM * Math.tan(meia);
+  return (lado * lado * f.distanciaM) / 3;
+}
+
+/**
+ * Em qual fatia o ponto cai, e a que ângulo do eixo DELA.
+ *
+ * Devolve `null` quando o ponto está fora do leque inteiro. As divisas internas
+ * não são borda da figura: as fatias são vizinhas e formam uma peça só.
+ */
+function naFatia(f: Figura, dx: number, dy: number): { desvio: number; meia: number } | null {
+  const N = f.fatias || 1;
+  const th = ((f.aberturaGraus || 60) * Math.PI) / 180;
+  const meia = th / 2;
+  const total = (N * th) / 2;
+  let dif = Math.atan2(dy, dx) - (f.dir || 0);
+  const doisPi = Math.PI * 2;
+  dif = ((dif % doisPi) + doisPi) % doisPi;
+  if (dif > Math.PI) dif -= doisPi;
+  if (Math.abs(dif) > total + 1e-9) return null;
+  const k = Math.min(N - 1, Math.max(0, Math.floor((dif + total) / th)));
+  const eixo = -total + (k + 0.5) * th;
+  return { desvio: dif - eixo, meia };
+}
+
+/**
+ * A escala que o parâmetro MOSTRA, já contando o molde quando é ele que manda.
+ *
+ * Sem isto a caixa mente: o parâmetro dizia "2,5 m de diâmetro" pela régua velha
+ * de Área enquanto a figura saía com 5 m, pela régua da Explosão. Quem escolhe a
+ * forma escolhe a régua, e a régua tem de aparecer no lugar em que se compra.
+ */
+export function escalaVisivel(
+  p: Parametro, efeito: Efeito | null, moldeId?: string,
+): string[] | null {
+  if (!efeito || p.tipo !== 'padrao') return escalaDe(p);
+  if (p.nome !== 'Área' && p.nome !== 'Volume') return escalaDe(p);
+  const m = formaEscolheMolde(efeito.grid?.forma)
+    ? (MOLDE[moldeId || ''] || moldeDaForma(efeito.grid?.forma))
+    : moldeDaForma(efeito.grid?.forma);
+  if (!m) return escalaDe(p);
+  const como = m.medida === 'diametro' ? 'de diâmetro'
+    : m.medida === 'raio' ? 'de raio'
+    : m.medida === 'alvos' ? '' : 'de comprimento';
+  return m.escala.map((v) => (como ? `${v} ${como}` : `${v} alvos`));
+}
+
+/**
+ * A figura de uma conjuração, num lugar só.
+ *
+ * Três caminhos, e a ordem entre eles é a regra:
+ *
+ * 1. **Improviso**: a manifestação em fatias da §5.4. Não há molde a escolher,
+ *    porque a Arte crua tem uma geometria só, e qualquer outra é Efeito.
+ * 2. **Efeito com régua PRÓPRIA** (`substitui`): a régua dele manda. É o que
+ *    permite à Neblina cobrir mais que o gabarito do nível 1, e é o que a §5.3
+ *    preservou de propósito na Aura ("mantém a dela") e no Muro ("a régua que o
+ *    Muro já tem, sem mexer num número").
+ * 3. **Efeito com a régua do livro** (`padrao`): o MOLDE decide, e o número da
+ *    régua dele vira a dimensão direto. Aqui não há orçamento em m² nenhum, e é
+ *    essa a mudança da §5.3: antes a área era um saco de metros quadrados e o
+ *    molde só escolhia como gastá-lo, o que deixava a esbeltez virar alcance.
+ */
+export function figuraDoEfeito(opts: {
+  efeito: Efeito | null;
+  grau: number;
+  ancora: Encaixe;
+  dir?: number;
+  /** O molde escolhido, quando a forma do Efeito deixa escolher (a `zona`). */
+  molde?: string;
+  curvaturaGraus?: number;
+  /** Só o improviso: a base comprada, quantas fatias e a abertura de cada uma. */
+  ladoM?: number; fatias?: number; aberturaGraus?: number;
+}): Figura | null {
+  const { efeito, ancora, grau } = opts;
+
+  // 1. o improviso
+  if (!efeito) {
+    if (!opts.ladoM) return null;
+    return figuraDaManifestacao({
+      ladoM: opts.ladoM, fatias: opts.fatias || 1,
+      aberturaGraus: opts.aberturaGraus || ABERTURA_PADRAO, ancora, dir: opts.dir,
+    });
+  }
+
+  const g = efeito.grid;
+  if (g?.arenaInteira) {
+    return { tipo: 'arena', ax: ancora.x, ay: ancora.y, q: ancora.hex.q, r: ancora.hex.r };
+  }
+  const pars = (efeito.parametros || []).filter((p) => p.tipo !== 'fixo');
+  const pTam = pars.find((p) => p.nome === 'Área' || p.nome === 'Volume');
+  const pComp = pars.find((p) => p.nome === 'Comprimento');
+  const base = {
+    ax: ancora.x, ay: ancora.y, q: ancora.hex.q, r: ancora.hex.r, dir: opts.dir ?? 0,
+  };
+  const dobrar = (f: Figura): Figura => {
+    const c = Math.min(CURVATURA_MAXIMA, Math.max(0, opts.curvaturaGraus ?? 0));
+    return c > 0 ? { ...f, tipo: 'arco', curvaturaGraus: c } : f;
+  };
+  // A forma declarada pelo Efeito MANDA, e a escolha da caixa só entra onde ela
+  // deixa escolher. Sem esta trava, um cone com a caixa aberta na Explosão
+  // sairia redondo, e o Efeito perderia a forma que ele mesmo declarou.
+  const moldeEfetivo = formaEscolheMolde(g?.forma)
+    ? (MOLDE[opts.molde || ''] || moldeDaForma(g?.forma))
+    : moldeDaForma(g?.forma);
+  /** m² em desenho, no formato do molde. A conversão mora num lugar só. */
+  const converter = (areaM2: number): Figura => figuraDaArea({
+    molde: (moldeEfetivo?.figura === 'cadeia' ? 'circulo' : moldeEfetivo?.figura) || 'circulo',
+    areaM2, ancora, dir: opts.dir,
+    aberturaGraus: moldeEfetivo?.aberturaGraus ?? 60,
+    curvaturaGraus: moldeEfetivo?.curvavel ? opts.curvaturaGraus : 0,
+  });
+
+  // 2. a régua própria do Efeito
+  if (pComp) {
+    return dobrar({
+      tipo: 'linha', ...base,
+      comprimentoM: medidaNoNivel(pComp, grau), larguraM: LARGURA_LINHA,
+    });
+  }
+  if (pTam?.tipo === 'substitui') {
+    if (/de raio/i.test(pTam.unidade || '')) {
+      return { tipo: 'circulo', ...base, raioM: medidaNoNivel(pTam, grau) };
+    }
+    // As outras réguas próprias (m³ da Neblina, m × m do Terremoto) medem
+    // QUANTIDADE, e não forma: elas seguem passando pela conversão de sempre, e
+    // o molde só diz em que desenho essa quantidade se assenta.
+    return converter(areaEmM2(pTam, grau));
+  }
+
+  // 3. a régua do MOLDE
+  if (!moldeEfetivo) return null;
+
+  // Nem todo Efeito de chão compra tamanho, e quem não compra precisa de um
+  // PISO DE AUSÊNCIA, senão é gravado, cobra a Mana e não desenha nada.
+  //
+  // Criar Substância compra QUANTIDADE, e um metro quadrado é o menor pedaço de
+  // chão que uma pessoa ocupa. O Passo do Relâmpago é outro caso: ele só compra
+  // Alcance, e o risco que fica no chão é justamente a distância percorrida, que
+  // é o que faz dele uma faixa e não uma marca.
+  if (!pTam) {
+    const pAlc = pars.find((p) => p.nome === 'Alcance');
+    if (g?.forma === 'linha' && pAlc) {
+      return dobrar({
+        tipo: 'linha', ...base,
+        comprimentoM: alcanceEmMetros(pAlc, grau), larguraM: LARGURA_LINHA,
+      });
+    }
+    return converter(AREA_MINIMA);
+  }
+
+  return figuraDoMolde({
+    molde: moldeEfetivo, grau, ancora, dir: opts.dir, curvaturaGraus: opts.curvaturaGraus,
+  });
+}
+
 /** A figura dita em palavras, para a caixa e para o registro. */
 export function rotuloDaFigura(f: Figura): string {
   if (f.tipo === 'arena') return 'a arena inteira';
@@ -626,6 +930,13 @@ export function rotuloDaFigura(f: Figura): string {
     return `retângulo de ${um(f.larguraM || 1)} m × ${um(f.comprimentoM || 0)} m`;
   }
   if (f.tipo === 'leque') return `leque de ${f.aberturaGraus}° com ${um(f.raioM || 0)} m de raio`;
+  if (f.tipo === 'fatias') {
+    const N = f.fatias || 1;
+    // A distância é o número que a mesa precisa e não consegue adivinhar: é ela
+    // que abrir cobra, e é ela que diz se o elemento nasce longe ou no peito.
+    return `${N} fatia${N > 1 ? 's' : ''} de ${f.aberturaGraus}°`
+      + ` · ${um((f.distanciaM || 0))} m de distância · ${um(N * (f.aberturaGraus || 0))}° cobertos`;
+  }
   return 'um ponto';
 }
 
@@ -663,6 +974,15 @@ export function pontoNaFigura(f: Figura, p: { x: number; y: number }): boolean {
     const doisPi = Math.PI * 2;
     t = ((t % doisPi) + doisPi) % doisPi;
     return t <= a.volta + 1e-9;
+  }
+  if (f.tipo === 'fatias') {
+    // A base de cada fatia é uma CORDA reta, então o que se compara não é o raio,
+    // é a projeção do ponto no eixo daquela fatia: quem está na quina está mais
+    // longe do ápice que quem está no meio, e ainda assim os dois estão dentro.
+    const posto = naFatia(f, dx, dy);
+    if (!posto) return false;
+    const d = Math.hypot(dx, dy);
+    return d * Math.cos(posto.desvio) <= (f.distanciaM || 0) + 1e-9;
   }
   if (f.tipo === 'linha' || f.tipo === 'retangulo') {
     // Gira o ponto para o referencial da faixa: aí ela vira um retângulo reto,
@@ -743,6 +1063,21 @@ export function caminhoDaFigura(
     // dela: assim a origem escolhida é mesmo a origem, e não o meio da peça.
     return `<rect x="${n(cx)}" y="${n(cy - larg / 2)}" width="${n(comp)}" height="${n(larg)}"`
       + ` transform="rotate(${n(graus)} ${n(cx)} ${n(cy)})" />`;
+  }
+  if (f.tipo === 'fatias') {
+    // Um polígono, e não um setor: o ápice mais os N+1 cantos das cordas. O
+    // desenho é o mesmo em qualquer abertura, e as divisas entre fatias não
+    // aparecem, porque elas são uma peça só e não vários ataques.
+    const N = f.fatias || 1;
+    const th = ((f.aberturaGraus || 60) * Math.PI) / 180;
+    const total = (N * th) / 2;
+    const R = (f.raioM || 0) * pxPorM;
+    const pts: string[] = [`${n(cx)} ${n(cy)}`];
+    for (let k = 0; k <= N; k++) {
+      const a = (f.dir || 0) - total + k * th;
+      pts.push(`${n(cx + Math.cos(a) * R)} ${n(cy + Math.sin(a) * R)}`);
+    }
+    return `<path d="M ${pts.join(' L ')} Z" />`;
   }
   if (f.tipo === 'leque') {
     const R = (f.raioM || 0) * pxPorM;
@@ -834,7 +1169,8 @@ export interface EfeitoAtivo {
   conjurador_id: string | null;
   nome: string;
   forma: Forma;
-  molde: Molde;
+  /** O molde NOMEADO da §5.3, ou o primitivo antigo nos efeitos gravados antes. */
+  molde: string;
   /** A figura geométrica que o efeito ocupa. Null nos efeitos que não têm chão. */
   figura: Figura | null;
   /** As casas que a figura toca. Consequência dela, e não fonte: ver `hexesDaFigura`. */
@@ -942,6 +1278,25 @@ export function metrosParaSair(f: Figura, p: { x: number; y: number }): number {
     return Math.min(pelaEspessura, pelaPonta);
   }
 
+  if (f.tipo === 'fatias') {
+    // Duas saídas: atravessar a corda da própria fatia (para a frente) ou sair
+    // pelo lado do leque inteiro. As divisas ENTRE fatias não contam: elas são
+    // vizinhas, e passar de uma para a outra é continuar dentro.
+    const posto = naFatia(f, dx, dy);
+    if (!posto) return 0;
+    const d = Math.hypot(dx, dy);
+    const N = f.fatias || 1;
+    const th = ((f.aberturaGraus || 60) * Math.PI) / 180;
+    const total = (N * th) / 2;
+    let dif = Math.atan2(dy, dx) - (f.dir || 0);
+    const doisPi = Math.PI * 2;
+    dif = ((dif % doisPi) + doisPi) % doisPi;
+    if (dif > Math.PI) dif -= doisPi;
+    const pelaCorda = Math.max(0, (f.distanciaM || 0) - d * Math.cos(posto.desvio));
+    const pelaAresta = total >= Math.PI - 1e-9
+      ? Infinity : Math.max(0, d * Math.sin(Math.max(0, total - Math.abs(dif))));
+    return Math.min(pelaCorda, pelaAresta);
+  }
   if (f.tipo === 'linha' || f.tipo === 'retangulo') {
     const c = Math.cos(-(f.dir || 0)), s = Math.sin(-(f.dir || 0));
     const ao = dx * c - dy * s;               // quanto andou na direção
