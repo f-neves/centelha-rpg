@@ -9,9 +9,9 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 67 itens abertos · 34 [DECIDIR] · 26 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 18** · **Mesa 10** · **Bestiário 9** · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
-Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
+**Placar:** 75 itens abertos · 39 [DECIDIR] · 28 [FAZER] · 6 [AUTOR]
+Por frente: **Arcano 20** · **Ações & Sistema 11** · **Mesa 10** · **Bestiário 9** · Lore 6 ·
+Proezas 5 · Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
 > tabuleiro) e **I10** (as pontas soltas do jogador agindo). O detalhe das duas mora em
@@ -88,6 +88,19 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   capítulo cresceu por acréscimo em várias conversas seguidas (grau 0, as três travas do improviso,
   Área ou Volume, estado da matéria) e precisa de uma passada de edição: ordem das seções, o que
   ficou repetido e o que ficou sem explicação de por quê.
+- [ ] **A24 · [AUTOR] Dar um molde a cada Efeito que ainda declara `zona`.** Aberta em 2026-08-18,
+  quando o Grid passou a ler as réguas da **§5.3** e da **§5.4**. A forma declarada por um Efeito já
+  escolhe o molde dele (`cone` é o Leque, `muro` é a Muralha, `aura` é a Aura), e isso resolveu 12 dos
+  48 sozinho. Sobram os **23 que declaram `zona`**, a genérica que engordou: hoje todos caem na
+  **Explosão**, e o mestre pode trocar na caixa, mas vários pedem outra coisa (a Chuva de Fogo é
+  Explosão mesmo, o Vendaval não). Cada um é um julgamento, não é mecânica. Junto vem o resto da
+  **A13**: doze deles nem chão medem, medem corpo, e deveriam usar Volume.
+- [ ] **A25 · [DECIDIR] A geometria das Artes que não manifestam elemento.** Cura, Fascinação,
+  Adivinhação, Conjuração e Metamorfose não põem elemento no mundo, e a fatia da §5.4 não quer dizer
+  nada nelas. No tabuleiro isso agora está dito em voz alta (a caixa avisa e o improviso delas vira
+  Dardo, que gruda num alvo), mas o que **deveria** acontecer não está decidido: a §5 já promete
+  parâmetros próprios por Arte (Gravidade na Cura, Plateia na Fascinação, Porte na Conjuração) e
+  nenhum deles tem forma no chão.
 - [ ] **A15 · [AUTOR] Revisar as descrições de nível das Artes** em `artes.json`, conforme os
   Efeitos Especiais e os Parâmetros de hoje. Vários níveis ainda descrevem improvisos que as travas
   não permitem mais: Fogo 3 "sustentar uma parede baixa de chamas", Fogo 4 "parede de chamas
