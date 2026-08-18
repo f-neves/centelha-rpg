@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 66 itens abertos · 34 [DECIDIR] · 25 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 18** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
+**Placar:** 67 itens abertos · 34 [DECIDIR] · 26 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 18** · **Mesa 10** · **Bestiário 9** · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
 Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -605,6 +605,17 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   dele**, a **caixa de acerto vem vazia** do lado dele, o **número de dano só aparece para quem
   enxerga o número**, e o adaptador `sbDoJogador` conhece cinco formas de escrita (nota de
   manutenção, para quando o módulo das Artes ganhar outra).
+- [ ] **I11 · [FAZER] A Arte sair no ÚLTIMO Tick, no tabuleiro.** Aberta em 2026-08-18, junto com o
+  desvio de emergência, que **já entrou** (`oferecerSaida` em `artes-grid-mesa.ts`: os metros até a
+  borda são medidos na figura, 1 Tick por metro, `5 + 5 × m` para metade e o dobro para nada, mais o
+  teste de coragem para ficar parado, e o bloco novo na aba Referência). O que **não** entrou é a
+  outra metade da §5.5: no Grid a conjuração ainda resolve na hora, e o livro manda resolver no
+  último Tick dos cinco a sete de preparo. Fazer isso direito pede um estado de **conjuração em
+  preparo** que sobreviva entre a declaração e a saída, e ele não cabe em `arena_efeitos`: a linha de
+  lá exige forma e figura, e a §5.5 diz justamente que **a mira e a forma só travam no fim**, então o
+  molde não pode ter lugar no chão durante o preparo. É migração nova mais um gancho no relógio, e
+  junto vai a janela de **identificar o feitiço** (Inteligência + Ocultismo, com a Dificuldade caindo
+  a cada Tick), que hoje entra na caixa da saída só como o bônus de +2 ou +4 que o mestre marca à mão.
 
 ---
 
