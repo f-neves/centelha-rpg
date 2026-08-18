@@ -43,6 +43,9 @@ const DANO = regras.dano as any;
 const HORDA = regras.horda as any;
 const ESC_HAB = regras.escalaHabilidade as any[];
 const ESC_CENT = regras.escalaCentelha as any[];
+// Sair da área: o Grid mede os metros na figura e propõe a jogada, mas quem
+// arbitra é o mestre, e ele precisa da tabela à mão sem trocar de aba.
+const DESVIO = (regras as any).arcano.tempoDaArte.area.desvio as any;
 const COND_GRUPOS = (CONDICOES as any).grupos as { id: string; nome: string }[];
 const COND_LISTA = (CONDICOES as any).lista as any[];
 
@@ -76,7 +79,7 @@ const PORTE_NOME: Record<string, string> = {
       fecha; o que você usa mais fica aberto. Os números saem de <code>regras.json</code>, então mudam junto com o sistema.</p>
 
     <nav class="ref-indice">
-      <a href="#dificuldade">Dificuldade</a><a href="#ferimentos">Ferimentos</a><a href="#condicoes">Condições</a>
+      <a href="#dificuldade">Dificuldade</a><a href="#area">Sair da área</a><a href="#ferimentos">Ferimentos</a><a href="#condicoes">Condições</a>
       <a href="#combate">Modificadores</a><a href="#porte">Porte</a><a href="#dano">Dano &amp; Absorção</a>
       <a href="#qa">Quase-Acerto</a><a href="#horda">Hordas</a><a href="#escalas">Escalas</a>
     </nav>
@@ -107,6 +110,32 @@ const PORTE_NOME: Record<string, string> = {
             <td class="num">{r.d.D}</td><td class="num muted">{r.d.p}%</td></tr>))}</tbody>
       </table></div>
       <p class="ref-nota"><a href={url('mestre')}>Área do Mestre ›</a> tem o mapa de calor completo e os exemplos.</p>
+    </section>
+
+    <!-- ============ SAIR DA ÁREA ============ -->
+    <section class="ref-bloco" id="area">
+      <h2>Sair da área</h2>
+      <p class="ref-nota"><strong>Contra área não há Esquiva nem Bloqueio.</strong> As duas são números contra um golpe
+        que vem de uma direção, e a área não vem de direção nenhuma: ela ocupa o espaço. Quem está lá quando ela sai,
+        come. As saídas são duas, e só uma é grátis.</p>
+      <p class="ref-nota"><strong>1. Na própria vez, o Deslocamento livre</strong>, de graça, durante qualquer outra
+        ação. <strong>2. Fora da vez, o desvio de emergência</strong>, a <strong>1 Tick por metro</strong> que falte
+        para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. O tabuleiro mede os metros na
+        figura e já propõe a jogada quando o efeito pega alguém.</p>
+      <div class="tab-wrap"><table class="tab-mesa">
+        <thead><tr><th>Metros até ficar fora</th><th class="num">Custa</th><th class="num">Dif. metade</th>
+          <th class="num">Dif. dano nenhum</th></tr></thead>
+        <tbody>{DESVIO.tabela.map((l: any) => (
+          <tr><td>{l.metros}</td><td class="num">{l.custa}</td><td class="num">{l.metade}</td>
+            <td class="num">{l.nada}</td></tr>))}</tbody>
+      </table></div>
+      <p class="ref-nota"><strong>Uma jogada só</strong> (Destreza + Esquiva), lida contra os dois patamares: passando
+        da <strong>dobrada</strong>, o alvo não sofre nada; passando só da <strong>simples</strong>, sofre metade,
+        arredondando para cima; não passando de nenhuma, sofre o dano inteiro.</p>
+      <ul class="ref-lista">
+        {DESVIO.condicoes.map((c: string) => <li>{c}</li>)}
+        <li>{DESVIO.ficarParado}</li>
+      </ul>
     </section>
 
     <!-- ============ FERIMENTOS ============ -->

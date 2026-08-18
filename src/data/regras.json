@@ -1641,6 +1641,19 @@
           "titulo": "Fora da vez, no Tick em que a Arte sai: o desvio de emergência",
           "texto": "Custa 1 Tick por metro que falte para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. É a única coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque não é grátis: é emprestada do próprio futuro, como uma ação lenta atrasa a seguinte. Precisa de pelo menos 1 metro de deslocamento, porque ninguém sai de uma área ficando parado.",
           "formula": "Ticks de desvio = metros até ficar fora, pela direção mais barata · Dificuldade (metade do dano) = 5 + 5 × esses mesmos metros · Dificuldade (dano nenhum) = o DOBRO da anterior",
+          "numeros": {
+            "nota": "A mesma regra em número, para o tabuleiro não a reescrever. O Grid mede na figura quantos metros faltam para o corpo ficar fora, arredonda para cima com o mínimo de 1 m, e daí saem os Ticks e as duas Dificuldades.",
+            "ticksPorMetro": 1,
+            "metrosMinimo": 1,
+            "difBase": 5,
+            "difPorMetro": 5,
+            "fatorDanoNenhum": 2,
+            "bonusIdentificou": 2,
+            "bonusIdentificouMargem": 4,
+            "jogada": "Destreza + Esquiva",
+            "jogadaParado": "Bravura ou Temperança",
+            "fracaoMetade": 0.5
+          },
           "dificuldadeEDaTarefa": "A Dificuldade é da TAREFA, não de quem conjurou. Um efeito de Arte 6 e um de Arte 3 com a mesma área e o mesmo volume cobram o mesmo para atravessar: é a mesma parede de fogo. Um incêndio de verdade, sem magia nenhuma, usa a mesma fórmula pelo próprio tamanho. O que o nível da Arte compra não é uma Dificuldade extra escondida, é o TETO DE TAMANHO que o feiticeiro pode atingir.",
           "tabela": [
             {

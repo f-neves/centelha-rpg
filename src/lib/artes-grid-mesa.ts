@@ -12,9 +12,11 @@ import {
   hexesDaFigura, pontoNaFigura, centroEmMetros, encaixeMaisProximo, encaixeNoCentro,
   raioEmMetros, danoNoAlvo, rolar,
   turnosRestantes, venceu, jaMordido, rodadaDoTick, dentroDoEfeito,
+  metrosParaSair, metrosParaSairDosHexes, desvioDaArea, desEsqDaDefesa,
   rotuloDuracao, TICKS_POR_TURNO, LARGURA_LINHA,
-  type EfeitoAtivo, type Forma, type Figura, type Encaixe,
+  type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
 } from './artes-grid';
+import { pool } from './calc';
 import {
   abrirConjuracao, abrirNPC, abrirEmpurroes, escolherItem, itensDoAlvo,
   npcVazio, type Plano, type Empurrado,
@@ -1101,6 +1103,163 @@ async function tirarCondicao(ctx: CtxGrid, c: any, id: string): Promise<void> {
   c.condicoes = restam;
 }
 
+// ============================================================ sair da área
+//
+// A área não se esquiva nem se bloqueia: ela se abandona. Contra um efeito que
+// ocupa chão não há número de Defesa a opor, e o tabuleiro já fazia essa parte
+// sozinho (a mordida nunca rolou acerto). O que faltava era a saída, e ela é a
+// única coisa do sistema que se faz FORA da própria vez: custa 1 Tick por metro
+// que falte para o corpo ficar fora, e esses Ticks empurram para frente a
+// próxima ação de quem se desvia.
+//
+// O tabuleiro é justamente onde essa regra deixa de ser conversa: os metros até
+// a borda são MEDIDOS na figura, e não estimados de olho, e a Dificuldade sai
+// deles. Quem está na borda paga 1 m; quem está no núcleo de uma Explosão de
+// 8 m paga 4, e aí a própria tabela já diz que a jogada certa é ficar quieto.
+
+/** As formas que ocupam chão: só delas se sai andando. */
+const OCUPA_CHAO = new Set<Forma>(['zona', 'aura', 'muro', 'cone', 'linha']);
+
+/** Quantos metros faltam para este alvo sair deste efeito. */
+function metrosDeSaida(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any): number {
+  const t = ctx.tokens[alvo.id];
+  if (!t) return Infinity;
+  const esc = escalaM(ctx);
+  const f = vigente(ctx, ef).figura;
+  if (f && f.tipo) return metrosParaSair(f, centroEmMetros(t, esc));
+  return metrosParaSairDosHexes(ef.hexes || [], t, esc);
+}
+
+/** Destreza + Esquiva de quem tenta sair: da ficha no PC, da Defesa na criatura. */
+function desEsqDe(ctx: CtxGrid, alvo: any): { soma: number; nota: string } {
+  if (alvo.tipo === 'pc') {
+    const f = ctx.fichas[alvo.personagem_id] || {};
+    const des = Number(f.attrs?.destreza || 0), esq = Number(f.skills?.esquiva || 0);
+    return { soma: des + esq, nota: `Destreza ${des} + Esquiva ${esq}` };
+  }
+  const m = MON[alvo.monstro_id] || {};
+  const soma = desEsqDaDefesa(Number(m.combate?.defesa || 0), Number(m.centelha || 0));
+  return { soma, nota: `Destreza + Esquiva ${soma}, tirados da Defesa ${m.combate?.defesa ?? 0}` };
+}
+
+/** Virtude + Atributo de quem escolhe ficar parado, nos dois pares do capítulo III. */
+function paresDeCoragem(ctx: CtxGrid, alvo: any): { chave: string; rotulo: string; soma: number }[] {
+  const f = alvo.tipo === 'pc' ? (ctx.fichas[alvo.personagem_id] || {}) : null;
+  const m = f ? null : (MON[alvo.monstro_id] || {});
+  const v = (f?.virtues || m?.virtudes || {}) as Record<string, number>;
+  const a = (f?.attrs || m?.atributos || {}) as Record<string, number>;
+  return [
+    { chave: 'valor', rotulo: 'Bravura + Vigor', soma: Number(v.valor || 0) + Number(a.vigor || 0) },
+    { chave: 'temperanca', rotulo: 'Temperança + Raciocínio', soma: Number(v.temperanca || 0) + Number(a.raciocinio || 0) },
+  ];
+}
+
+/**
+ * Rola um pool do sistema e devolve o total já com o +2 do ímpar e o bônus.
+ *
+ * `pool` recebe Atributo e Habilidade separados; aqui a soma já chega pronta,
+ * então o segundo vai zerado. É a mesma conta da ficha, e é de propósito: o
+ * tabuleiro não tem régua própria de dados.
+ */
+function rolarPool(soma: number, bonus = 0): { total: number; nota: string } {
+  const p = pool(soma, 0);
+  const r = rolar(p.dados);
+  const total = r.total + p.bonus + bonus;
+  return {
+    total,
+    nota: `[${r.dados.join('+') || '0'}]${p.bonus ? ` +${p.bonus}` : ''}${bonus ? ` +${bonus}` : ''} = ${total}`,
+  };
+}
+
+/** Os Ticks do desvio empurram para frente a próxima ação de quem se moveu. */
+async function pagarTicks(ctx: CtxGrid, alvo: any, quantos: number): Promise<void> {
+  if (!quantos) return;
+  const antes = Number(alvo.tick ?? 0);
+  const novo = antes + quantos;
+  alvo.tick = novo;
+  await ctx.SB.from('combatentes').update({ tick: novo }).eq('id', alvo.id);
+}
+
+/**
+ * A caixa da saída, aberta antes de cada mordida de efeito que ocupa chão.
+ *
+ * Devolve o FATOR do dano: 1 inteiro, 0,5 metade, 0 nada. O mestre pode fechar a
+ * caixa, e fechar é comer inteiro, que é o que acontece com quem não reage.
+ */
+async function oferecerSaida(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any): Promise<number> {
+  const crus = metrosDeSaida(ctx, ef, alvo);
+  if (!isFinite(crus)) {
+    await ctx.logar(alvo, `${alvo.nome} não tem para onde sair de ${ef.nome}: come inteiro`, { acao: null });
+    return 1;
+  }
+  const d: Desvio = desvioDaArea(crus);
+  const { soma, nota } = desEsqDe(ctx, alvo);
+  const p = pool(soma, 0);
+  const coragem = paresDeCoragem(ctx, alvo);
+  const dado = (s: number, b = 0) => `${Math.floor(s / 2)}d6${s % 2 ? '+2' : ''}${b ? ` +${b}` : ''}`;
+
+  const escolha = await uiEscolher(`Sair da área · ${alvo.nome}`, [
+    { valor: 'sair', rotulo: `Tentar sair · ${dado(soma)}`, nota, grupo: 'Tentar sair' },
+    { valor: 'sair2', rotulo: `Tentar sair, identificou o efeito · ${dado(soma, 2)}`, nota: '+2 por ter lido o sinal', grupo: 'Tentar sair' },
+    { valor: 'sair4', rotulo: `Tentar sair, identificou com Margem · ${dado(soma, 4)}`, nota: '+4 por ter lido o sinal com folga', grupo: 'Tentar sair' },
+    ...coragem.map((c) => ({
+      valor: `parado:${c.chave}`,
+      rotulo: `Ficar parado · ${c.rotulo} · ${dado(c.soma)}`,
+      nota: `Dif ${d.difMetade}. Passando, aguenta no lugar e come inteiro sem gastar Tick; falhando, o corpo sai sozinho`,
+      grupo: 'Ficar parado',
+    })),
+    { valor: 'inteiro', rotulo: 'Não reage: come o dano inteiro', grupo: 'Nem uma coisa nem outra' },
+  ], {
+    msg: `${ef.nome} pega ${alvo.nome}. A borda mais próxima está a ${crus.toFixed(1)} m, `
+      + `então sair custa ${d.ticks} Tick${d.ticks > 1 ? 's' : ''}, que empurram a próxima ação dele.\n`
+      + `Uma jogada só, lida contra os dois patamares: ${d.difMetade} para metade do dano, `
+      + `${d.difNada} para dano nenhum. Os Ticks são gastos passando ou falhando.`,
+  });
+
+  if (!escolha || escolha === 'inteiro') return 1;
+
+  // Ficar parado: coragem contra a mesma Dificuldade da linha "metade". Passando,
+  // aguenta no lugar e ainda come inteiro, porque ficar parado nunca reduz o que
+  // a área faz: só evita o risco e o custo de tentar sair.
+  if (escolha.startsWith('parado:')) {
+    const c = coragem.find((x) => x.chave === escolha.slice(7))!;
+    const r = rolarPool(c.soma);
+    if (r.total > d.difMetade) {
+      await ctx.logar(alvo, `${alvo.nome} ficou parado em ${ef.nome} e aguentou · ${c.rotulo} ${r.nota} vs ${d.difMetade}`
+        + ' · sofre o dano inteiro, sem gastar Tick', { acao: null });
+      return 1;
+    }
+    await ctx.logar(alvo, `${alvo.nome} não aguentou ficar parado em ${ef.nome} · ${c.rotulo} ${r.nota} vs ${d.difMetade}`
+      + ' · o corpo sai sozinho, e vira desvio', { acao: null });
+  }
+
+  const bonus = escolha === 'sair2' ? 2 : escolha === 'sair4' ? 4 : 0;
+  const r = rolarPool(soma, bonus);
+  await pagarTicks(ctx, alvo, d.ticks);
+  const fator = r.total > d.difNada ? 0 : r.total > d.difMetade ? 0.5 : 1;
+  const veredito = fator === 0 ? 'saiu inteiro, sem sofrer nada'
+    : fator === 0.5 ? 'saiu pela metade, e sofre metade' : 'não conseguiu sair, e come inteiro';
+  await ctx.logar(alvo, `${alvo.nome} tentou sair de ${ef.nome} (${d.metros} m, ${d.ticks} Ticks)`
+    + ` · ${r.nota} vs ${d.difMetade}/${d.difNada} · ${veredito}`, { acao: null });
+  if (fator === 0) {
+    // Ninguém sofreu, mas a mordida ACONTECEU: sem a marca, o mesmo efeito
+    // tentaria pegar o alvo de novo na mesma rodada, e a saída viraria um teste
+    // que se repete até passar.
+    const t = tickAtual(ctx);
+    ef.mordidos = { ...(ef.mordidos || {}), [alvo.id]: rodadaDoTick(t) };
+    await ctx.SB.from('arena_efeitos').update({ mordidos: ef.mordidos }).eq('id', ef.id);
+  }
+  return fator;
+}
+
+/** A mordida de um efeito de chão, com a saída oferecida antes. */
+async function morderComSaida(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string): Promise<void> {
+  if (!OCUPA_CHAO.has(ef.forma as Forma)) return morder(ctx, ef, alvo, verbo);
+  const fator = await oferecerSaida(ctx, ef, alvo);
+  if (fator <= 0) return;
+  await morder(ctx, ef, alvo, verbo, fator);
+}
+
 // ==================================================================== a mordida
 /** A absorção do alvo, no tipo que o efeito usa. */
 function soakDe(ctx: CtxGrid, c: any, materia: string | null) {
@@ -1136,10 +1295,13 @@ function marcarGolpeElemental(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any): void {
   baterNoAlvo(camadaDeGolpes(), p, ef.elemento, dir, ctx.raio);
 }
 
-async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string): Promise<void> {
+async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string, fator = 1): Promise<void> {
   if (!ef || !alvo) return;
   const rolagem = rolar(ef.dano_dados);
-  const bruto = rolagem.total + (ef.dano_bonus || 0);
+  // A metade do desvio incide no BRUTO, antes da Absorção: quem se jogou para
+  // fora pegou menos fogo, e a armadura continua fazendo o serviço dela sobre o
+  // que chegou. Arredonda para cima, como o livro manda.
+  const bruto = Math.ceil((rolagem.total + (ef.dano_bonus || 0)) * fator);
   const m = MON[alvo.monstro_id] || {};
   const s = soakDe(ctx, alvo, ef.materia);
   const golpe = danoNoAlvo({
@@ -1250,7 +1412,7 @@ export async function verificarEfeitos(ctx: CtxGrid, palco?: HTMLElement): Promi
   if (!escolha) { repintarSoEfeitos(); return; }
   const alvos = escolha === '__todos' ? pendentes : [pendentes[Number(escolha)]];
   for (const p of alvos) {
-    if (p.ef.dano_dados) await morder(ctx, p.ef, p.alvo, 'pegou');
+    if (p.ef.dano_dados) await morderComSaida(ctx, p.ef, p.alvo, 'pegou');
     else if (p.ef.condicao) {
       await porCondicao(ctx, p.alvo, p.ef.condicao, turnosRestantes(p.ef, t));
       p.ef.mordidos = { ...(p.ef.mordidos || {}), [p.alvo.id]: rodadaDoTick(t) };

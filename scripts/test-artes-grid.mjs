@@ -22,6 +22,12 @@ await build({
 const M = await import(pathToFileURL(saida).href);
 fs.rmSync(saida, { force: true });
 
+/** O bestiário como a mesa o lê. Cru do JSON: aqui não se testa o gerador. */
+const MONSTROS = () => {
+  const bruto = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/monsters-mesa.json'), 'utf8'));
+  return Array.isArray(bruto) ? bruto : (bruto.lista || Object.values(bruto).find(Array.isArray) || []);
+};
+
 const falhas = [];
 const ok = (cond, msg) => { if (!cond) falhas.push(msg); };
 const eq = (a, b, msg) => ok(a === b, `${msg} — esperado ${b}, veio ${a}`);
@@ -552,6 +558,60 @@ if (proj) {
 }
 // Nenhum outro Efeito ganhou ação livre sem passar por aqui.
 eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação livre');
+
+// ------------------------------------------------- sair da área (o desvio)
+//
+// A conta que decide se vale a pena tentar sair, e por isso ela é medida e não
+// estimada: o livro cobra 1 Tick por metro até a borda e tira as duas
+// Dificuldades do mesmo número.
+{
+  const perto = (a, b, msg, tol = 0.02) =>
+    ok(Math.abs(a - b) <= tol, `${msg} — esperado ${b}, veio ${a.toFixed(3)}`);
+
+  // Círculo de raio 4 ancorado na origem: da borda sai de graça, do miolo custa o raio.
+  const circ = { tipo: 'circulo', ax: 0, ay: 0, q: 0, r: 0, raioM: 4 };
+  perto(M.metrosParaSair(circ, { x: 0, y: 0 }), 4, 'do centro do círculo até a borda');
+  perto(M.metrosParaSair(circ, { x: 3.5, y: 0 }), 0.5, 'da beira do círculo até a borda');
+
+  // Faixa de 8 m por 1 m de largura, deitada no eixo x: as saídas são os dois
+  // lados (meio metro) e as duas pontas. No meio da faixa, o lado ganha.
+  const faixa = { tipo: 'linha', ax: 0, ay: 0, q: 0, r: 0, comprimentoM: 8, larguraM: 1, dir: 0 };
+  perto(M.metrosParaSair(faixa, { x: 4, y: 0 }), 0.5, 'do meio da faixa, sai-se pelo lado');
+  perto(M.metrosParaSair(faixa, { x: 0.2, y: 0 }), 0.2, 'perto da ponta, a ponta é mais barata');
+
+  // Leque de 60° e raio 6: quem está no eixo a 5 m sai pelo lado (5·sen30 = 2,5)
+  // e não pelo arco (1 m). Quem está a 5,5 m sai pelo arco.
+  const leque = { tipo: 'leque', ax: 0, ay: 0, q: 0, r: 0, raioM: 6, dir: 0, aberturaGraus: 60 };
+  perto(M.metrosParaSair(leque, { x: 5.5, y: 0 }), 0.5, 'no fundo do leque, o arco é a saída');
+  perto(M.metrosParaSair(leque, { x: 2, y: 0 }), 1, 'no miolo do leque, a aresta é a saída');
+
+  // Quem cobre o mapa inteiro não tem borda: não se sai andando.
+  eq(M.metrosParaSair({ tipo: 'arena', ax: 0, ay: 0, q: 0, r: 0 }, { x: 0, y: 0 }), Infinity,
+    'da arena inteira não se sai');
+
+  // A tabela do livro, linha por linha: metros · Ticks · Dif metade · Dif nada.
+  const linha = (m) => { const d = M.desvioDaArea(m); return `${d.metros} · ${d.ticks} · ${d.difMetade} · ${d.difNada}`; };
+  eq(linha(0.1), '1 · 1 · 10 · 20', 'a borda (arredonda para cima, com o piso de 1 m)');
+  eq(linha(1), '1 · 1 · 10 · 20', 'um metro');
+  eq(linha(1.4), '2 · 2 · 15 · 30', 'dois metros');
+  eq(linha(3), '3 · 3 · 20 · 40', 'três metros');
+  eq(linha(4), '4 · 4 · 25 · 50', 'o núcleo');
+  // Ninguém sai de uma área ficando parado: meio metro ainda é um metro de conta.
+  eq(M.desvioDaArea(0).ticks, 1, 'o desvio nunca sai de graça');
+
+  // A criatura não guarda Destreza e Esquiva separadas: elas saem da Defesa que
+  // o bloco já traz. Se a inversão saísse do prumo, o bestiário inteiro rolaria
+  // o desvio com o pool errado, e ninguém veria.
+  eq(M.desEsqDaDefesa(10, 0), 5, 'Defesa 10 sem Centelha dá Des+Esq 5');
+  eq(M.desEsqDaDefesa(10, 6), 2, 'a Centelha sai antes da divisão');
+  eq(M.desEsqDaDefesa(0, 4), 0, 'a soma nunca fica negativa');
+  const bichos = MONSTROS();
+  const fora = bichos.filter((m) => {
+    const s = M.desEsqDaDefesa(m.combate?.defesa || 0, m.centelha || 0);
+    return s < 0 || s > 12;
+  });
+  eq(fora.length, 0, `nenhuma criatura sai da régua 0–12 no desvio (${fora.slice(0, 3).map((m) => m.nome).join(', ')})`);
+}
 
 // ---------------------------------------------------- cobertura da projeção
 eq(M.EFEITOS.filter((e) => !e.grid).length, 0, 'todo Efeito tem bloco grid');

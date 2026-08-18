@@ -891,6 +891,146 @@ export function dentroDoEfeito(
     .map(([cid]) => cid);
 }
 
+// ================================================= sair da área: o desvio
+/**
+ * Quantos metros faltam para o corpo ficar FORA da figura, pela direção mais
+ * barata.
+ *
+ * É a única variável do desvio de emergência: o livro cobra 1 Tick por metro e
+ * tira as duas Dificuldades do mesmo número. Quem está na borda paga um metro;
+ * quem está no miolo paga o raio inteiro, e é por isso que o núcleo de uma
+ * Explosão grande é o lugar onde tentar sair deixa de valer a pena.
+ *
+ * A conta é a distância do ponto até a BORDA MAIS PRÓXIMA, e cada molde tem a
+ * sua, porque cada um tem bordas de natureza diferente: o círculo só tem o
+ * perímetro, o leque tem o arco e as duas arestas, a faixa tem os dois lados e
+ * as duas pontas, e a parede curva tem a espessura e as duas extremidades. Em
+ * `arena` não há borda nenhuma, e o infinito diz isso sem inventar um número:
+ * de um efeito que cobre o mapa inteiro não se sai andando.
+ */
+export function metrosParaSair(f: Figura, p: { x: number; y: number }): number {
+  if (!f || !f.tipo) return 0;
+  if (f.tipo === 'arena') return Infinity;
+  const dx = p.x - f.ax, dy = p.y - f.ay;
+
+  if (f.tipo === 'circulo') return Math.max(0, (f.raioM || 0) - Math.hypot(dx, dy));
+
+  if (f.tipo === 'leque') {
+    const d = Math.hypot(dx, dy);
+    const meia = ((f.aberturaGraus || 90) / 2) * (Math.PI / 180);
+    let dif = Math.abs(Math.atan2(dy, dx) - (f.dir || 0));
+    if (dif > Math.PI) dif = 2 * Math.PI - dif;
+    const pelaBorda = Math.max(0, (f.raioM || 0) - d);
+    // Pela aresta: a perpendicular do ponto até o lado do setor. Num leque de
+    // meia-volta ou mais os dois lados formam uma reta só, e sair por ali deixa
+    // de ser saída; o arco é a única borda que sobra.
+    const pelaAresta = meia >= Math.PI - 1e-9 ? Infinity : Math.max(0, d * Math.sin(Math.max(0, meia - dif)));
+    return Math.min(pelaBorda, pelaAresta);
+  }
+
+  if (f.tipo === 'arco') {
+    // Mesmo referencial de `pontoNaFigura`: do centro do arco a parede é uma
+    // casca, e as saídas são atravessar a espessura ou contornar uma ponta.
+    const a = arcoDaParede(f);
+    const meiaL = (f.larguraM || LARGURA_LINHA) / 2;
+    const d = Math.hypot(p.x - a.cx, p.y - a.cy);
+    const pelaEspessura = Math.max(0, meiaL - Math.abs(d - a.raio));
+    const doisPi = Math.PI * 2;
+    let t = Math.atan2(p.y - a.cy, p.x - a.cx) - a.de;
+    t = ((t % doisPi) + doisPi) % doisPi;
+    const pelaPonta = d * Math.max(0, Math.min(t, a.volta - t));
+    return Math.min(pelaEspessura, pelaPonta);
+  }
+
+  if (f.tipo === 'linha' || f.tipo === 'retangulo') {
+    const c = Math.cos(-(f.dir || 0)), s = Math.sin(-(f.dir || 0));
+    const ao = dx * c - dy * s;               // quanto andou na direção
+    const lado = Math.abs(dx * s + dy * c);   // quanto se afastou do eixo
+    const meiaL = (f.larguraM || LARGURA_LINHA) / 2;
+    return Math.max(0, Math.min(ao, (f.comprimentoM || 0) - ao, meiaL - lado));
+  }
+  return 0;
+}
+
+/**
+ * O mesmo, para o efeito gravado só como lista de CASAS (os que existem desde
+ * antes da figura). Anda em anéis a partir da casa do alvo até achar a primeira
+ * que não é do efeito, e devolve a distância em metros até o centro dela.
+ *
+ * O teto de busca é o próprio tamanho da mancha: uma área que não acaba em
+ * `limite` anéis é grande demais para se sair andando, e cai no mesmo infinito
+ * da `arena`.
+ */
+export function metrosParaSairDosHexes(
+  hexes: { q: number; r: number }[], onde: Hex, escalaM: number, limite = 12,
+): number {
+  const casas = new Set((hexes || []).map((h) => `${h.q},${h.r}`));
+  if (!casas.has(`${onde.q},${onde.r}`)) return 0;
+  let borda: Hex[] = [onde];
+  const vistos = new Set([`${onde.q},${onde.r}`]);
+  for (let anel = 1; anel <= limite; anel++) {
+    const proxima: Hex[] = [];
+    for (const h of borda) {
+      for (const v of vizinhos(h)) {
+        const k = `${v.q},${v.r}`;
+        if (vistos.has(k)) continue;
+        vistos.add(k);
+        if (!casas.has(k)) return distanciaEmMetros(onde, v, escalaM);
+        proxima.push(v);
+      }
+    }
+    if (!proxima.length) break;
+    borda = proxima;
+  }
+  return Infinity;
+}
+
+/** O que o desvio custa e contra o que ele rola, tudo a partir dos metros. */
+export interface Desvio {
+  /** Metros até ficar fora, arredondados para cima, com o piso do livro (1 m). */
+  metros: number;
+  /** Ticks que empurram para frente a próxima ação de quem se desvia. */
+  ticks: number;
+  /** Passando dela, o alvo sofre metade. */
+  difMetade: number;
+  /** Passando dela, o alvo não sofre nada. É o dobro da outra. */
+  difNada: number;
+}
+/**
+ * A soma Destreza + Esquiva de uma criatura, tirada da Defesa que o bloco dela
+ * já traz.
+ *
+ * O desvio rola `Destreza + Esquiva`, e o bestiário não guarda os dois
+ * separados: guarda a Defesa pronta, que É `(Destreza + Esquiva) × mult +
+ * Centelha × centelhaMult`. Inverter devolve exatamente a soma que o pool pede,
+ * sem inventar número nem abrir um campo novo em 308 criaturas. O PC não passa
+ * por aqui: na ficha os dois estão escritos.
+ */
+export function desEsqDaDefesa(defesa: number, centelha: number): number {
+  const d = (regras.derivados as any).defesa as { mult: number; centelhaMult?: number };
+  const bruta = Number(defesa || 0) - Number(centelha || 0) * (d.centelhaMult ?? 1);
+  return Math.max(0, Math.round(bruta / (d.mult || 2)));
+}
+
+/**
+ * A régua do desvio, saindo de `regras.json`.
+ *
+ * O arredondamento é para CIMA e o piso é 1 m porque o livro diz que ninguém sai
+ * de uma área ficando parado: meio metro de deslocamento ainda é um metro de
+ * conta, e não um desvio de graça.
+ */
+export function desvioDaArea(metrosCrus: number): Desvio {
+  const n = (ARC.tempoDaArte?.area?.desvio?.numeros || {}) as Record<string, number>;
+  const metros = Math.max(n.metrosMinimo ?? 1, Math.ceil(metrosCrus - 1e-9));
+  const difMetade = (n.difBase ?? 5) + (n.difPorMetro ?? 5) * metros;
+  return {
+    metros,
+    ticks: metros * (n.ticksPorMetro ?? 1),
+    difMetade,
+    difNada: difMetade * (n.fatorDanoNenhum ?? 2),
+  };
+}
+
 /**
  * O rótulo do efeito na tela: "Aura de Fogo · 2d6 · 3 m · 7 turnos".
  * É o que vai no cartão, no registro e no `title` da mancha no tabuleiro.
