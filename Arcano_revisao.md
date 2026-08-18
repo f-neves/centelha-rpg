@@ -888,31 +888,47 @@ sete Ticks: o que está em jogo é distância do feiticeiro, não a borda de um 
 **2. Fora da vez, no Tick em que a Arte sai: o desvio de emergência.** Custa **1 Tick por metro** que
 falte para o corpo sair, e esses Ticks **empurram para frente a próxima ação do alvo**. É a única
 coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque **não é grátis**:
-é emprestada do próprio futuro, como uma ação lenta atrasa a seguinte.
+é emprestada do próprio futuro, como uma ação lenta atrasa a seguinte. Precisa de **pelo menos 1
+metro** de deslocamento: ninguém sai de uma área ficando parado.
 
 <p class="formula">Ticks de desvio = metros até ficar fora, pela direção mais barata<br />
-Dificuldade = 8 + 2 × esses mesmos metros</p>
+Dificuldade (metade do dano) = 5 + 5 × esses mesmos metros<br />
+Dificuldade (dano nenhum) = o DOBRO da anterior</p>
 
-**A distância é a única variável, e ela move as duas coisas: o preço e o risco.** Um metro na borda é
-Dificuldade **10**, que a régua do capítulo de Ações chama de Média; quatro metros no núcleo é **16**,
-acima do Difícil. É cobrar duas vezes pela mesma distância, e é de propósito: atravessar mais elemento
-é mais lento **e** mais arriscado.
+**A Dificuldade é da tarefa, não de quem conjurou.** Um efeito de Arte 6 e um de Arte 3 com a mesma
+área e o mesmo volume cobram o mesmo para atravessar: é a mesma parede de fogo, e vale a mesma
+regra do capítulo de Ações ("a Dificuldade descreve o que se está tentando, nunca o personagem que
+tenta"). Um incêndio de verdade, sem magia nenhuma, usa a mesma fórmula pelo próprio tamanho, sem
+precisar de "nível de magia equivalente". O que o nível da Arte compra não é uma Dificuldade extra
+escondida: é o **teto de tamanho** que o feiticeiro pode atingir, e um Arte 6 normalmente faz a coisa
+maior, não a mesma coisa mais grudenta.
 
-| Onde o alvo está | Metros até fora | Custa | Dificuldade |
+**A distância é a única variável, e ela não inventa número novo: é a régua de sempre**, a mesma
+tabela do capítulo de Ações (5 Fácil · 10 Média · 15 Difícil · 20 Limite humano · 25 Excepcional ·
+30 Sobre-humano), um degrau por metro:
+
+| Metros até fora | Custa | Dif. metade | Dif. dano nenhum |
 |---|---|---|---|
-| **Borda** do molde | 1 m | 1 Tick | **10** |
-| Meio de um molde pequeno | 2 m | 2 Ticks | 12 |
-| **Núcleo** de um molde grande | 3 a 4 m | 3 a 4 Ticks | 14 a **16** |
+| 1, a **borda** | 1 Tick | **10**, Média | **20**, Limite humano |
+| 2 | 2 Ticks | 15, Difícil | **30**, Sobre-humano |
+| 3 | 3 Ticks | 20, Limite humano | 40, acima da escada |
+| 4, o **núcleo** | 4 Ticks | 25, Excepcional | 50, acima da escada |
 
-**Uma Dificuldade só, e a Margem dá o segundo patamar.** Não são dois números: é o número e a régua de
-Margem que o sistema já usa, exatamente como a tabela do veneno no capítulo *Resistir*.
+**Uma jogada só, comparada aos dois patamares.** Não existe uma segunda rolagem para "tentar zerar":
+o mesmo resultado é lido contra os dois números.
 
-| Resultado do desvio | O alvo sofre |
+| Resultado | O alvo sofre |
 |---|---|
-| Passa por uma **Margem** (6 acima) | **nada**: saiu antes de a coisa fechar |
-| Passa | **metade**, arredondando para cima: pegou a beirada ao sair |
-| Falha | o dano **inteiro** |
-| Falha por uma Margem | o dano inteiro **e cai**: foi pego no meio do movimento |
+| Total ultrapassa a Dificuldade **dobrada** | **nada** |
+| Total ultrapassa só a Dificuldade simples | **metade**, arredondando para cima |
+| Total não ultrapassa nem a simples | o dano **inteiro** |
+
+E é por isso que dobrar funciona como teto de propósito: sair **ileso** na borda (Dif 20) é o limite
+do que um mortal de ponta consegue: a régua já chama esse patamar de **Limite humano**, e é
+justamente o teto de Atributo + Habilidade sem Centelha (12). Um passo além da borda, zerar o dano
+exige **Dif 30, Sobre-humano**, que a mesma régua já reserva para quem tem Centelha, Proeza ou Arte
+turbinando a rolagem. A partir de 3 metros a Dificuldade dobrada sai da escada inteira: não é
+regra dizendo que é impossível, é a mesma tabela dizendo isso sozinha.
 
 Três condições fecham a regra:
 
@@ -923,19 +939,28 @@ Três condições fecham a regra:
 - **Ter identificado o efeito rende bônus na jogada:** +2 no total, ou **+4** se a identificação
   passou com Margem. Lê-se cedo para escapar melhor, e é o prêmio do teste de Ocultismo.
 
-E o número faz o que se queria dele, que é deixar **ficar parado** ser uma escolha defensável. Contra
-uma Arte de grau 6 (6d6, 21 de dano médio), o dano poupado por Tick gasto:
+**Ficar parado de propósito, para não testar nem gastar Tick, pede coragem, não pernas:** um teste de
+**Bravura ou Temperança** (outra Virtude, com stunt) contra a mesma Dificuldade da linha "metade".
+Passando, o personagem aguenta no lugar sem se mexer, e ainda come o dano inteiro, porque ficar
+parado nunca reduz o que a área faz, só evita o risco e o custo de tentar sair. Falhando, o corpo
+se move sozinho: vira o desvio de emergência de qualquer maneira. **Os números desta escolha ainda
+não foram testados em mesa** (segue na A23).
+
+E o número faz o que se queria dele, que é deixar **ficar parado** ser uma escolha defensável mesmo
+sem o teste de coragem. Contra uma Arte de grau 6 (6d6, 21 de dano médio), o dano poupado por Tick
+gasto tentando sair:
 
 | Quem tenta | Borda, 1 m | 2 m | 3 m | Núcleo, 4 m |
 |---|---|---|---|---|
-| Soldado (Des 3 + Esq 2) | 2,9 | 0,9 | 0 | 0 |
-| Aventureiro (4 + 3) | 9,5 | 5,7 | 2,8 | **1,0** |
-| Veterano (5 + 4) | 15,8 | 12,4 | 8,6 | 5,2 |
-| Herói (5 + 5) | 17,5 | 14,7 | 11,4 | 7,9 |
+| Soldado (Des 3 + Esq 2) | 2,9 | 0 | 0 | 0 |
+| Aventureiro (4 + 3) | 7,8 | 1,7 | 0 | 0 |
+| Veterano (5 + 4) | 11,0 | 5,8 | 1,0 | 0 |
+| Herói (5 + 5) | 12,5 | 7,3 | 2,3 | 0,2 |
 
-O aventureiro tenta na borda sem pensar e **fica parado no núcleo**, porque quatro Ticks para poupar um
-ponto de dano é um mau negócio. O veterano tenta em qualquer lugar. O soldado só tenta na borda. E o
-camponês nunca passa de 10, o que também está certo: gente comum não sai de dentro de uma explosão.
+O soldado só tenta na borda, e mesmo lá o retorno é modesto. O aventureiro desiste a partir de 2 m. O
+veterano e o herói continuam tentando até mais fundo, mas o retorno cai rápido: no núcleo, gastar
+quatro Ticks para poupar menos de um ponto de dano é a prova de que ali a jogada certa é ficar quieto
+(ou testar Bravura) e não correr.
 
 **As três direções valem, e todas cobram.** Sair pelos lados, **jogar-se ao chão** (quando a faixa do
 elemento não encosta no piso) ou **saltar por cima** (quando ela é rasteira) são a mesma conta: o que
@@ -1489,10 +1514,15 @@ Dificuldade caindo a cada Tick e **um teste por efeito**; a área **não se esqu
 e as saídas são o **Deslocamento livre** na própria vez (grátis) ou o **desvio de emergência** fora
 da vez, a **1 Tick por metro** até ficar fora, pelos lados, pelo chão ou por cima.
 
-O desvio também fechou de forma, no mesmo dia: **Dificuldade = 8 + 2 × metros até ficar fora**, uma
-Dificuldade só com a **Margem** dando o patamar de dano zero (passa por Margem nada · passa metade ·
-falha inteiro · falha por Margem inteiro e cai), **Ticks gastos mesmo falhando**, só rola quem tenta
-sair de verdade, e **identificar o efeito rende +2** (ou +4 com Margem).
+**O desvio fechou de vez em 2026-08-18, e a Dificuldade é da tarefa, não de quem conjurou** (mesmo
+princípio de "Uma muralha é tão difícil quanto ela é" do capítulo de Ações): **Dificuldade = 5 + 5 ×
+metros até ficar fora** para reduzir a metade, e **o DOBRO disso** para não sofrer nada, numa jogada
+só lida contra os dois patamares. A escada de metros bate exatamente nos degraus nomeados de sempre
+(borda = Média para metade, Limite humano para zero; 2 m = Sobre-humano para zero; 3 m+ sai da
+escada). **Ticks gastos mesmo falhando**, só rola quem tenta sair de verdade, **identificar o efeito
+rende +2** (ou +4 com Margem), e **ficar parado de propósito pede Bravura ou Temperança** contra a
+Dificuldade da linha "metade" (passando, aguenta no lugar e ainda come o dano inteiro; falhando, o
+corpo se move sozinho e vira desvio de emergência).
 
 Sobrou a **calibragem** desses números, que nunca passou por mesa; a pergunta de **metade por cobertura
 e metade por desvio não se multiplicarem**; a **Dificuldade da identificação** e o quanto ela cai por
