@@ -565,7 +565,7 @@ Efeito comprado. Os moldes da §5.3 continuam valendo, e são o que se compra co
 
 ### A regra, em seis linhas
 
-1. O parâmetro compra uma **base de n × n**: *n* metros de frente somada e *n* metros de altura.
+1. O **Volume** compra uma **base de n × n**: *n* metros de frente somada e *n* metros de altura.
 2. A manifestação sai do **feiticeiro**, em **fatias** que partem todas do mesmo ponto e são
    obrigatoriamente **vizinhas**: é o mesmo ataque se abrindo, e não vários ataques.
 3. A abertura de cada fatia é **60°, 90° ou 120°**.
@@ -578,6 +578,30 @@ Efeito comprado. Os moldes da §5.3 continuam valendo, e são o que se compra co
 | Grau | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
 |---|---|---|---|---|---|---|---|
 | Lado da base | 0,5 m | 1 m | 2 m | 3 m | 4 m | 5 m | 6 m |
+
+**Quem paga a base é o Volume, e não a Área. Decidido em 2026-08-18**, junto com a consequência que
+fecha o escopo: **qualquer outra manifestação de volume é Efeito Especial.** Área é *jurisdição*, uma
+região onde uma regra passa a valer, e a fatia não é isso: é corpo de elemento ocupando o espaço. Daí
+sai que o improviso **não escolhe** entre as duas réguas como o Efeito escolhe, porque ele tem uma
+geometria só. E daí sai também que o **Volume passa a ter duas réguas**, como a Duração tem breve e
+longa, o efeito usando uma ou a outra e nunca as duas:
+
+| Régua | De quem é | O que mede | Escada |
+|---|---|---|---|
+| **Volume · manifestação** | o improviso | elemento que sai do feiticeiro, ocupa o espaço e some | o lado da base, 0,5 a 6 m |
+| **Volume · matéria** | o Efeito Especial | elemento que passa a existir e fica | o lado, 2 cm a 2 m |
+
+A distância entre as duas não é erro de calibragem, é a distância entre as duas coisas. No grau 1 a
+manifestação entrega **289 litros** de chama contra **1 litro** de gelo da matéria, e no grau 6
+entrega 62,35 m³ contra 8 m³. Fabricar um litro de gelo que dura e se carrega é caro; soprar 289
+litros de chama que vivem um Tick e apagam é barato. É a mesma verdade do fator de estado dita por
+outro lado: *pedra não vira tapete, névoa vira*.
+
+Em chão, ao contrário, a manifestação cai quase em cima da escada velha de Área (15,6 m² contra
+12,6 m² no grau 6), e é por isso que **a Área é a régua que sobra sem dono**: nos Efeitos ela virou
+molde (§5.3) e no improviso ela virou esta base. Ela segue na tabela de parâmetros só porque 46
+Efeitos ainda a declaram, e passar cada um para o molde que lhe cabe é julgamento de Efeito, não
+mecânica.
 
 Chamando *N* o número de fatias e θ a abertura de cada uma, as três medidas saem de uma linha só:
 
@@ -789,8 +813,9 @@ toma o campo.
    (a §5.3) e `arcano.tempoDaArte` (a §5.5). O capítulo XV renderiza os três em `#manifestacao`,
    `#moldes` e `#tempo`. O bloco entrou na versão da **corda** com a abertura paga pela **distância**,
    que é como a regra em seis linhas está escrita aqui; quando os itens 2 e 3 abaixo fecharem, é a
-   fórmula do volume no dado que muda. Falta ainda dizer **qual parâmetro compra o lado da base**
-   (Área ou Volume) e o que sobra do outro no improviso.
+   fórmula do volume no dado que muda. **Quem compra a base ficou decidido no mesmo dia: é o Volume**,
+   com a régua da manifestação ao lado da régua da matéria (`graus.volumeImproviso`), e qualquer outra
+   manifestação de volume é Efeito Especial.
 2. **Quem paga a abertura: distância ou altura.** As duas estão medidas na bancada e a escolha é de
    jogo, não de conta: uma protege a decisão do jogador, a outra protege o alcance e entrega o raio
    grande pedido no começo desta revisão. É a decisão mais pesada que sobrou aqui, porque o resto da

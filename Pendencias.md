@@ -74,7 +74,10 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   que se faz é Efeito), não tem dano nem parâmetro próprio, e a tabela de estado já o põe junto da
   Terra em "sólido, metade". Falta escrever os Efeitos, o que é conteúdo e cai na A15.
 - [ ] **A13 · [AUTOR] Revisar Área × Volume.** **Encaminhado pela A17**, que separou os dois de vez:
-  chão é molde, matéria é Volume. O que sobra aqui é a escada de Volume em si, e a leitura de que
+  chão é molde, matéria é Volume. **E encaminhado outra vez em 18/08**, quando o improviso ficou com
+  o Volume: o parâmetro passou a ter duas réguas, a da **manifestação** (o lado da base, 0,5 a 6 m) e
+  a da **matéria** (o lado, 2 cm a 2 m), e a Área ficou sem dono, sobrevivendo na tabela só pelos 46
+  Efeitos que ainda a declaram. O que sobra aqui é a escada de Volume em si, e a leitura de que
   ela está calibrada como massa (169 kg de pedra no grau 3, 10,8 t no grau 6) e não como chão.
   O parâmetro inteiro está em revisão pelo autor.
   Tudo que foi calibrado contra ele depende do resultado: a escada de Volume (lado 2 cm · 10 cm ·
@@ -188,9 +191,13 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   `#manifestacao`, `#moldes` e `#tempo`, e o `combate.md` pagou a promessa dele ("nem tudo se bloqueia
   ou se esquiva") com um parágrafo que aponta para lá. **Duas pontas ficaram, e as duas são decisão:**
   a §5.4 entrou na versão da **corda** com a abertura paga pela **distância** (a A21 e a A22 vão mudar
-  a fórmula do volume quando fecharem), e **onde a manifestação mora na régua de parâmetros** segue em
-  aberto, isto é, se quem compra o lado da base é a Área ou o Volume, e o que sobra do outro no
-  improviso. As três estão listadas na caixa "Em revisão" da própria página, saindo do dado.
+  a fórmula do volume quando fecharem). **Onde a manifestação mora na régua de parâmetros fechou no
+  mesmo dia:** quem compra a base é o **Volume**, que passa a ter duas réguas como a Duração tem breve
+  e longa (`graus.volumeImproviso`, o lado da base do improviso, ao lado de `graus.volume`, o lado da
+  matéria criada por Efeito), e **qualquer outra manifestação de volume é Efeito Especial**. Com isso
+  a **Área ficou sem dono**: nos Efeitos ela virou molde pela A17, no improviso ela virou a base, e só
+  segue na tabela porque 46 Efeitos ainda a declaram. Passar cada um para o molde que lhe cabe é a
+  **A14/A18**, e é julgamento de Efeito, não mecânica.
 - [ ] **A16 · [DECIDIR] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
   oito escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais aparecer. O caso
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,

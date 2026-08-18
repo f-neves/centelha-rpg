@@ -9,15 +9,18 @@ import regras from '../../data/regras.json';
 const d = await loadData();
 const G = (regras as any).arcano.improviso.graus;
 const ESTICAR = (regras as any).arcano.esticar;
-// linhas da tabela de graus (0 a 6), na ordem em que aparecem na página
-const LINHAS_GRAU: [string, string[]][] = [
-  ['Alcance', G.alcance],
-  ['Área', G.area],
-  ['Volume', G.volume],
-  ['Alvos', G.alvos],
-  ['Dano', G.dano],
-  ['Duração breve', G.duracaoBreve],
-  ['Duração longa', G.duracaoLonga],
+// Linhas da tabela de graus (0 a 6), na ordem em que aparecem na página. O Volume tem
+// duas réguas, como a Duração: a da manifestação é a do improviso, a da matéria é a do
+// Efeito que cria elemento que fica. A Área é só dos Efeitos, e está de saída (virou molde).
+const LINHAS_GRAU: [string, string[], string][] = [
+  ['Alcance', G.alcance, ''],
+  ['Volume · manifestação', G.volumeImproviso, 'lado da base, no improviso'],
+  ['Volume · matéria', G.volume, 'lado, no Efeito Especial'],
+  ['Área', G.area, 'diâmetro, no Efeito Especial'],
+  ['Alvos', G.alvos, ''],
+  ['Dano', G.dano, ''],
+  ['Duração breve', G.duracaoBreve, ''],
+  ['Duração longa', G.duracaoLonga, ''],
 ];
 const GRAU_COLS = [0, 1, 2, 3, 4, 5, 6];
 const COMB = (regras as any).arcano.improviso.combinacoes;
@@ -86,13 +89,22 @@ const EX_CONTA: [string, string, number][] = [
       <table class="graus-tab">
         <thead><tr><th>Parâmetro</th>{GRAU_COLS.map((g) => <th>{g}</th>)}</tr></thead>
         <tbody>
-          {LINHAS_GRAU.map(([nome, vals]) => (
-            <tr><td><strong data-formas={formaDe(nome)} tabindex={formaDe(nome) ? 0 : undefined}>{nome}</strong></td>{vals.map((v) => <td>{v}</td>)}</tr>
+          {LINHAS_GRAU.map(([nome, vals, escopo]) => (
+            <tr>
+              <td>
+                <strong data-formas={formaDe(nome)} tabindex={formaDe(nome) ? 0 : undefined}>{nome}</strong>
+                {escopo && <small class="p-escopo">{escopo}</small>}
+              </td>
+              {vals.map((v) => <td>{v}</td>)}
+            </tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p class="muted">O Volume em números redondos: {G.volumeAncora.map((a: string, i: number) => `grau ${i}, ${a}`).join(' · ')}.</p>
+    <div class="callout regra"><span class="lbl">O Volume tem duas réguas</span>
+      {G.notaVolumeImproviso}
+    </div>
+    <p class="muted">A régua da matéria em números redondos: {G.volumeAncora.map((a: string, i: number) => `grau ${i}, ${a}`).join(' · ')}.</p>
 
     <div class="callout regra"><span class="lbl">Área ou Volume, nunca as duas</span>
       {G.notaAreaOuVolume}
@@ -144,6 +156,9 @@ const EX_CONTA: [string, string, number][] = [
 
     <h2 id="manifestacao">Como a Arte crua se manifesta</h2>
     <p>{MANI.nota}</p>
+    <div class="callout regra"><span class="lbl">Quem paga a base</span>
+      {MANI.oParametro}
+    </div>
     <ol class="mani-regra">
       {MANI.regra.map((r: string) => <li>{r}</li>)}
     </ol>
@@ -500,7 +515,7 @@ const EX_CONTA: [string, string, number][] = [
         <li><strong>Moldes:</strong> {MOLDES.aRevisar}</li>
         <li>A <strong>Fonte do Elemento</strong> tem uma escada por elemental e nenhuma para <strong>Areia</strong>, <strong>Som</strong> e o que mais vier. Hoje um deserto cai perto do fundo da régua da Terra, que trata material solto como fraco.</li>
         <li>Uma <strong>régua de luz</strong> (escuro, penumbra, tocha, dia): o que cada degrau faz nas rolagens e o que cada raça enxerga. Dela depende o <strong>halo</strong> de Luz e Sombra, que vaza para fora do volume comprado e muda a luz do lugar sem causar o efeito.</li>
-        <li>Passar os <strong>Efeitos que hoje usam Área</strong> pela régua nova: doze deles medem corpo, não jurisdição, e deveriam usar Volume (Lascas, Onda, Maremoto, Sopro do Norte, Tromba, Sarçal, Erguer a Montanha, Clarão, Aurora, Escudo de Força). A Aura chama de <strong>Volume</strong> um parâmetro que é raio, e a escala própria da <strong>Neblina</strong> (125 m³ no topo) precisa ser reconciliada com o gás da tabela acima (64 m³).</li>
+        <li><strong>Os 46 Efeitos que ainda declaram Área precisam de molde.</strong> A Área ficou sem dono quando o chão passou a se comprar por forma e o improviso passou a comprar a base com o Volume: ela só segue na tabela acima porque esses Efeitos ainda a usam. Cada um precisa do molde que lhe cabe, e isso é julgamento de Efeito, um a um. Doze deles nem chão medem, medem corpo, e deveriam usar Volume (Lascas, Onda, Maremoto, Sopro do Norte, Tromba, Sarçal, Erguer a Montanha, Clarão, Aurora, Escudo de Força). A Aura chama de <strong>Volume</strong> um parâmetro que é raio, e a escala própria da <strong>Neblina</strong> (125 m³ no topo) precisa ser reconciliada com o gás da tabela acima (64 m³).</li>
       </ul>
     </div>
   </section>
@@ -516,6 +531,8 @@ const EX_CONTA: [string, string, number][] = [
 <style>
   .graus-tab { font-size: var(--fs-rotulo); }
   .graus-tab td, .graus-tab th { white-space: nowrap; }
+  /* o escopo de cada régua mora embaixo do nome dela, para a linha não virar frase */
+  .p-escopo { display: block; font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
   .callout.revisao { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
   .callout.revisao ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .callout.revisao li { margin-bottom: .2rem; }

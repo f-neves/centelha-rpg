@@ -1221,7 +1221,7 @@
           "1 mês"
         ],
         "notaDano": "Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
-        "notaArea": "O nível compra um DIÂMETRO, e a área é a do círculo que ele desenha (grau 3 = 2 m de diâmetro = 3,1 m² de chão). Esse é o orçamento de chão, e nenhum molde rende mais chão que o outro. O molde NÃO se escolhe: ele sai da combinação de parâmetros (ver `combinacoes`). Em círculo, o raio é sempre metade do diâmetro comprado.",
+        "notaArea": "O nível compra um DIÂMETRO, e a área é a do círculo que ele desenha (grau 3 = 2 m de diâmetro = 3,1 m² de chão). Em círculo, o raio é sempre metade do diâmetro comprado. Esta régua é a dos Efeitos que ainda declaram Área. Ela está de saída: a decisão de 2026-08-15 é que o chão de um Efeito se compra por MOLDE, com régua por forma, e passar os 46 Efeitos que hoje declaram Área para o molde que lhes cabe é trabalho por julgamento de Efeito, ainda não feito.",
         "notaAlcance": "O toque é o grau 0 e é grátis: nenhum efeito paga para acontecer na própria mão. Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano.",
         "volume": [
           "0,02x0,02x0,02",
@@ -1232,6 +1232,16 @@
           "1,5x1,5x1,5",
           "2x2x2"
         ],
+        "volumeImproviso": [
+          "0,5 m",
+          "1 m",
+          "2 m",
+          "3 m",
+          "4 m",
+          "5 m",
+          "6 m"
+        ],
+        "notaVolumeImproviso": "O Volume tem DUAS RÉGUAS, como a Duração tem breve e longa, e o efeito usa uma ou a outra, nunca as duas. A régua da MANIFESTAÇÃO vale para o improviso: ela compra o lado da base de n × n da geometria em fatias, e mede elemento que sai do feiticeiro, ocupa o espaço e some (a labareda, o jorro, a lufada). A régua da MATÉRIA vale para o Efeito Especial: ela compra um lado de 2 cm a 2 m, mede elemento que passa a existir e fica (a lança de gelo que se pega, o bloco de pedra, o painel do Muro), e está calibrada como massa, com 169 kg de pedra no grau 3 e 10,8 t no grau 6. A distância entre as duas não é erro de calibragem, é a distância entre as duas coisas: fabricar um litro de gelo que dura e se carrega é caro, soprar 289 litros de chama que vivem um Tick e apagam é barato. É a mesma verdade do fator de estado dita por outro lado: pedra não vira tapete, névoa vira.",
         "volumeAncora": [
           "8 cm³, um caroço",
           "1 litro",
@@ -1241,10 +1251,10 @@
           "3,4 m³",
           "8 m³"
         ],
-        "notaVolume": "O Volume compra um LADO, do mesmo jeito que a Área compra um diâmetro, e o que se ganha é o cubo daquele lado, moldável em esfera, bloco, coluna ou parede. Ele é sempre menor que a Área do mesmo grau esticada até a altura de uma pessoa, e essa diferença é o preço de ENCHER em vez de COBRIR. Em pedra, o grau 4 são 2,7 toneladas; em gelo, com 10 cm de espessura e 2 m de altura, dá cinco metros de muro.",
-        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. VOLUME mede o CORPO do elemento, quanta matéria ou quanto fenômeno saiu: as Lascas, a Onda, a Tromba, o Clarão, o Muro. ÁREA mede a JURISDIÇÃO, a região onde a regra passa a valer, e ali não interessa quanto elemento existe, interessa quem está dentro: a Noite, o Santuário, a Barreira, o Círculo, a Praga, a Mordaça, a Bolha Temporal. Teste de mesa: o efeito é MATÉRIA ou é REGRA? Se a pergunta que ele responde é 'quanto elemento?', é Volume. Se é 'quem está dentro?', é Área. Uma mesma Arte usa as duas conforme o efeito: o Clarão de Luz é corpo, a Noite de Sombra é jurisdição.",
+        "notaVolume": "Esta é a régua da MATÉRIA, e ela vale para o Efeito Especial que cria elemento que fica. O Volume compra um LADO e o que se ganha é o cubo daquele lado, mas ele perdeu o direito de virar forma: a forma agora é o molde. Lido como massa ele está calibrado, e o que parecia pequeno era pergunta de chão feita a uma régua de massa: em pedra, o grau 3 são 169 kg, o grau 4 são 1,4 t e o grau 6 são 10,8 t; em gelo, com 10 cm de espessura e 2 m de altura, o grau 4 dá cinco metros de muro.",
+        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. VOLUME mede o CORPO do elemento, quanta matéria ou quanto fenômeno saiu: as Lascas, a Onda, a Tromba, o Clarão, o Muro. ÁREA mede a JURISDIÇÃO, a região onde a regra passa a valer, e ali não interessa quanto elemento existe, interessa quem está dentro: a Noite, o Santuário, a Barreira, o Círculo, a Praga, a Mordaça, a Bolha Temporal. Teste de mesa: o efeito é MATÉRIA ou é REGRA? Se a pergunta que ele responde é 'quanto elemento?', é Volume. Se é 'quem está dentro?', é Área. Uma mesma Arte usa as duas conforme o efeito: o Clarão de Luz é corpo, a Noite de Sombra é jurisdição. ESCOPO, decidido em 2026-08-18: este corte é dos EFEITOS ESPECIAIS. O improviso não escolhe entre Área e Volume, porque ele tem uma geometria só, que é a manifestação em fatias: lá o Volume compra o lado da base, e qualquer outra manifestação de volume é Efeito Especial.",
         "volumePorEstado": {
-          "nota": "O Volume mede corpo, e um metro cúbico de pedra, de água, de chama e de névoa são quantidades de esforço muito diferentes. O multiplicador vale só para o VOLUME: a Área é jurisdição e não depende do material. É a mesma verdade da tabela de dano dita pelo outro lado, e por isso as duas exceções são as mesmas em direções opostas: a Terra dobra o dado e divide o volume, o Ar não tem dano e multiplica o volume por oito.",
+          "nota": "O Volume mede corpo, e um metro cúbico de pedra, de água, de chama e de névoa são quantidades de esforço muito diferentes. O multiplicador vale só para o VOLUME DA MATÉRIA, o dos Efeitos: a Área é jurisdição e não depende do material, e o improviso tem o fator de estado dele, que incide no LADO DA BASE (Terra e Metal metade do lado, Ar e névoa o dobro, o resto igual). É a mesma verdade da tabela de dano dita pelo outro lado, e por isso as duas exceções são as mesmas em direções opostas: a Terra dobra o dado e divide o volume, o Ar não tem dano e multiplica o volume por oito.",
           "tabela": [
             {
               "estado": "Sólido",
@@ -1290,7 +1300,7 @@
       },
       "combinacoes": {
         "nota": "A Arte crua não desenha: ela MANIFESTA o elemento. Fogo sai como labareda, Terra sai como pedra, estilhaço e estalactite. Quem dá forma é o Efeito Especial. Por isso os parâmetros não se combinam todos: a forma do improviso sai de quais foram pagos, e não de uma escolha do jogador.",
-        "definicoes": "Alcance é ONDE o efeito começa. Área ou Volume é O TAMANHO do que ele ocupa. Na labareda o efeito começa na mão (Alcance 0, o toque, que é grátis) e ocupa um leque; no dardo ele começa longe e ocupa um alvo só. Pagar os dois ao mesmo tempo é pedir que o efeito comece longe E ocupe espaço, que é a definição de bola de fogo.",
+        "definicoes": "Alcance é ONDE o efeito começa. Volume é O TAMANHO do que ele ocupa, lido na régua da manifestação: o lado da base de n × n. Na labareda o efeito começa na mão (Alcance 0, o toque, que é grátis) e ocupa um leque; no dardo ele começa longe e ocupa um alvo só. Pagar os dois ao mesmo tempo é pedir que o efeito comece longe E ocupe espaço, que é a definição de bola de fogo.",
         "areaNuncaColocada": "Área nunca é posta num ponto escolhido do mapa. Ou ela nasce no corpo do conjurador, ou ela viaja em linha reta a partir dele. Escolher um ponto a X metros e pôr uma área lá é Efeito Especial.",
         "duracaoPedeConcentracao": "Duração improvisada se paga com CONCENTRAÇÃO. Duração que fica de pé sozinha, sem o conjurador sustentando, é Efeito Especial.",
         "teto": "No máximo TRÊS parâmetros acima do grau 0. O parâmetro Alvos nunca entra no improviso elemental: escolher várias vítimas a dedo é precisão, e precisão se compra.",
@@ -1303,13 +1313,13 @@
           },
           {
             "nome": "Jorro",
-            "paga": "Área ou Volume + Dano",
+            "paga": "Volume + Dano",
             "forma": "o elemento sai do corpo, em leque à frente ou irrompendo em volta, conforme o que ele faz por natureza",
             "atinge": "quem estiver dentro, aliado incluído"
           },
           {
             "nome": "Massa lançada",
-            "paga": "Alcance + Área ou Volume + Dano",
+            "paga": "Alcance + Volume + Dano",
             "forma": "um corpo do elemento corre em linha reta a partir do conjurador",
             "atinge": "o primeiro alvo ou obstáculo da reta. Ela não para onde o jogador quiser"
           },
@@ -1338,7 +1348,7 @@
       "manifestacao": {
         "nota": "A geometria do IMPROVISO: o que a Arte crua faz sem nenhum Efeito comprado. Ela nasce no feiticeiro e sai em fatias; os moldes com nome são o que se compra com XP.",
         "regra": [
-          "O parâmetro de tamanho compra uma BASE de n × n: n metros de frente somada e n metros de altura.",
+          "O VOLUME compra uma BASE de n × n: n metros de frente somada e n metros de altura. Este é o único jeito de o improviso manifestar volume; qualquer outro é Efeito Especial.",
           "A manifestação sai do FEITICEIRO, em fatias que partem todas do mesmo ponto e são obrigatoriamente vizinhas: é o mesmo ataque se abrindo, e não vários ataques.",
           "A abertura de cada fatia é 60°, 90° ou 120°.",
           "Com a base travada, o ângulo e a distância não são independentes: distância = (aresta ÷ 2) ÷ tan(ângulo ÷ 2).",
@@ -1432,15 +1442,16 @@
         "naoFaz": [
           "Não põe nada num ponto escolhido. Ela nasce no feiticeiro, sempre. Pôr num ponto é Efeito Especial.",
           "Não faz parede plana nem reta, e não faz bloco que se carregue. Muro, muralha e reta são Efeito Especial, e isso é escolha de escopo, não sobra.",
-          "Não ganha alcance com o nível da Arte: o nível segue só como teto do grau do parâmetro."
+          "Não ganha alcance com o nível da Arte: o nível segue só como teto do grau do parâmetro.",
+          "Não manifesta volume de nenhuma outra maneira. A fatia é a geometria inteira do improviso, e toda forma fora dela, num ponto escolhido, em parede, em reta, em bloco que se carregue, é Efeito Especial."
         ],
         "escopo": "Escrito para as Artes elementais. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose não manifestam elemento, e a fatia não quer dizer nada nelas: elas ainda precisam da geometria própria.",
         "emAvaliacao": [
           "QUEM PAGA A ABERTURA: a distância (o modelo acima, em que o volume divide por N e cercar-se encolhe o molde para 87 cm) ou a ALTURA (em que a aresta fica cheia, a distância não encolhe e o volume se conserva, e as seis fatias do grau 6 viram um hexágono de 93,5 m² de chão a 1 m de altura). Uma protege a decisão do jogador, a outra protege o alcance e entrega o raio grande. As duas estão medidas na bancada.",
           "A BASE FICA EM CORDA OU VAI PARA ARCO. Na corda a base é uma reta a `distância` metros e o chão é um triângulo; no arco o lado do triângulo vira raio e o chão vira setor de círculo, pela mesma conta da pirâmide (arco × altura × raio ÷ 3). O arco rende θ ÷ sen θ a mais, ou seja +21% a 60°, +57% a 90° e +142% a 120°, e o problema é que no arco ABRIR FICA BARATO, justo na alavanca que segura o leque largo. A terceira opção, o ARCO JUSTO, encolhe o raio em √(sen θ ÷ θ) e bate o volume e o chão da corda em qualquer abertura: é a forma redonda sem mexer em número nenhum.",
-          "ONDE ELA MORA NA RÉGUA DE PARÂMETROS: qual dos dois parâmetros de hoje (Área ou Volume) compra o lado da base, e o que sobra do outro no improviso.",
           "O QUE A MATÉRIA DENTRO DA FATIA FAZ EM NÚMERO: a regra diz quanto elemento aparece e onde, e não diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de Terra aguenta antes de ceder."
-        ]
+        ],
+        "oParametro": "Quem compra a base é o VOLUME, na régua da manifestação, e não a Área: área é jurisdição, uma região onde uma regra passa a valer, e a fatia não é isso, é corpo de elemento ocupando o espaço. O improviso não escolhe entre as duas réguas como o Efeito escolhe, porque ele tem uma geometria só. Decidido em 2026-08-18, junto com a consequência que fecha o escopo: QUALQUER OUTRA MANIFESTAÇÃO DE VOLUME É EFEITO ESPECIAL."
       },
       "exemplos": [
         "Acender uma vela: tudo no grau 0 = 0 pontos. Sai de graça para qualquer um, e com Centelha 1 dá para pagar Duração 1 (um turno) e ainda sair de graça, sustentando turno após turno até virar uma fogueira.",
