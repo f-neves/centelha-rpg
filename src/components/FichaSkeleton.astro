@@ -25,6 +25,7 @@ import '../styles/arte-equip.css';
     <button type="button" role="tab" data-ftab="hab" aria-selected="false">Hab</button>
     <button type="button" role="tab" data-ftab="proezas" aria-selected="false">Proezas</button>
     <button type="button" role="tab" data-ftab="artes" aria-selected="false">Artes</button>
+    <button type="button" role="tab" data-ftab="antec" aria-selected="false">Antec</button>
     <button type="button" role="tab" data-ftab="equip" aria-selected="false">Equip</button>
     <button type="button" role="tab" data-ftab="mochila" aria-selected="false">Mochila</button>
     {/* o painel de História mora na página do personagem salvo, não aqui: em /ficha
@@ -99,11 +100,6 @@ import '../styles/arte-equip.css';
 <h2 class="barh barh-tog" data-sec="secondary"><span class="sec-caret">▾</span> <span class="so-desktop">Habilidades </span>Secundárias <small>(metade da primária: 3/4/5/6/7/8 · esp. 6/8/10 · até [nível÷2])</small></h2>
 <div class="sec-body" id="sec-secondary"><div class="hgrupos" id="secondary"></div></div>
 
-<h2 class="barh barh-tog" data-sec="antecedentes"><span class="sec-caret">▾</span> Antecedentes <small>(o valor × 3 por ponto: 3/6/9/12/15/18 · o que você tem no mundo)</small></h2>
-<div class="sec-body" id="sec-antecedentes">
-  <p class="muted">O capital externo do personagem, do <a href="/regras/antecedentes">capítulo VII</a>: dinheiro, gente, fama, um teto, um segredo. Os <strong>Únicos</strong> têm um valor só; os <strong>Nomeados</strong> você cria quantos quiser, e cada um leva o nome de quem ou do quê (três Reputações diferentes são três traços diferentes). Eles <strong>sobem e caem na ficção</strong>, e o XP de um Antecedente perdido volta como crédito.</p>
-  <div id="antecedentes"></div>
-</div>
 </div>
 
 <div class="ftab" data-ftab="proezas">
@@ -121,6 +117,14 @@ import '../styles/arte-equip.css';
 <h2 class="barh barh-tog" data-sec="artes"><span class="sec-caret">▾</span> Arcano — Artes <small>(nível×10 · exige Centelha &gt; 0)</small></h2>
 <div class="sec-body" id="sec-artes"><div class="cols3" id="artes"></div>
       <div class="ef-esp" id="efeitos-esp"></div></div>
+</div>
+
+<div class="ftab" data-ftab="antec">
+<h2 class="barh barh-tog" data-sec="antecedentes"><span class="sec-caret">▾</span> Antecedentes <small>(o valor × 3 por ponto: 3/6/9/12/15/18 · o que você tem no mundo)</small></h2>
+<div class="sec-body" id="sec-antecedentes">
+  <p class="muted">O capital externo do personagem, do <a href="/regras/antecedentes">capítulo VII</a>: dinheiro, gente, fama, um teto, um segredo. Os <strong>Únicos</strong> têm um valor só; os <strong>Nomeados</strong> você cria quantos quiser, e cada um leva o nome de quem ou do quê (três Reputações diferentes são três traços diferentes). Eles <strong>sobem e caem na ficção</strong>, e o XP de um Antecedente perdido volta como crédito.</p>
+  <div id="antecedentes"></div>
+</div>
 </div>
 </MolduraFicha>
 

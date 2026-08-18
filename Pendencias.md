@@ -315,7 +315,8 @@ Detalhe em `Proezas_revisao.md`.
   prosa à mão e o catálogo **gerado** do JSON entre marcadores, com
   `gen-cap-antecedentes.mjs --check` no `validate` e no `build`, então dado e capítulo não
   divergem calados; ele entrou depois de Raças e **treze capítulos andaram um numeral** (Ações
-  VII→VIII … Qual Sistema XIX→XX). Na **ficha**, a seção fica depois das Secundárias e tem duas
+  VII→VIII … Qual Sistema XIX→XX). Na **ficha**, a seção fica **logo depois das Artes**, com aba
+  própria no celular (entre "Artes" e "Equip"), e tem duas
   naturezas: os **3 Únicos** são linhas fixas, e os **11 Nomeados** são listas que o jogador cria,
   cada instância com nome livre e régua própria (três Reputações diferentes são três traços). A
   chave de instância é `id~uid`, e não o índice, para sobreviver a apagar a linha de cima. O custo
