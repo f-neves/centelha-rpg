@@ -1335,10 +1335,397 @@
         "escopo": "Escrito para as Artes elementais, onde 'manifestação do elemento' quer dizer alguma coisa concreta. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose já têm parâmetros próprios e precisam da versão delas.",
         "grauZero": "Com tudo no grau 0 o feitiço custa zero pontos e é o elemento apenas se manifestando: acender ou apagar uma vela, gelar uma bebida, umedecer uma superfície, faíscas, iluminar como uma tocha, suprimir a luz de uma tocha, assoprar folhas. Dura um tick. Quem tem Centelha 1 paga a Duração 1 com o desconto e sustenta por um turno, e é sustentando turno após turno que a vela vira lareira e a bebida vira gelo. O preço não é Mana, é a ação: sustentar é concentração."
       },
+      "manifestacao": {
+        "nota": "A geometria do IMPROVISO: o que a Arte crua faz sem nenhum Efeito comprado. Ela nasce no feiticeiro e sai em fatias; os moldes com nome são o que se compra com XP.",
+        "regra": [
+          "O parâmetro de tamanho compra uma BASE de n × n: n metros de frente somada e n metros de altura.",
+          "A manifestação sai do FEITICEIRO, em fatias que partem todas do mesmo ponto e são obrigatoriamente vizinhas: é o mesmo ataque se abrindo, e não vários ataques.",
+          "A abertura de cada fatia é 60°, 90° ou 120°.",
+          "Com a base travada, o ângulo e a distância não são independentes: distância = (aresta ÷ 2) ÷ tan(ângulo ÷ 2).",
+          "Cada fatia é uma PIRÂMIDE, ápice no feiticeiro e base de pé na ponta: volume = base × distância ÷ 3.",
+          "O número de fatias nunca passa do nível da Arte, nem do que fecha o círculo."
+        ],
+        "ladoBase": [
+          "0,5 m",
+          "1 m",
+          "2 m",
+          "3 m",
+          "4 m",
+          "5 m",
+          "6 m"
+        ],
+        "formula": "aresta = n ÷ N · distância = (n ÷ 2N) ÷ tan(θ÷2) · volume = n³ ÷ (6 · N · tan(θ÷2))",
+        "formulaNota": "Chamando N o número de fatias e θ a abertura de cada uma. O que se compra é a SUPERFÍCIE, e ela não se mexe: a frente somada é sempre n e a altura é sempre n, então a base é n² em qualquer abertura e em qualquer número de fatias. Quem paga a abertura é a DISTÂNCIA, e o volume vai atrás dela.",
+        "aberturas": {
+          "porque": "60°, 90° e 120° são as três que fecham o círculo em número inteiro de fatias: seis, quatro e três. Qualquer outro ângulo deixa fenda ou sobrepõe, e um leque que não fecha obriga a inventar regra para o resto. Não é gosto, é a lista completa dos divisores úteis de 360° nessa faixa.",
+          "tabela": [
+            {
+              "abertura": "60°",
+              "distancia": "5,196 m (3√3)",
+              "lado": "6,000 m",
+              "volume": "62,35 m³",
+              "fracao": "1"
+            },
+            {
+              "abertura": "90°",
+              "distancia": "3,000 m (metade da base)",
+              "lado": "4,243 m",
+              "volume": "36,00 m³",
+              "fracao": "1 ÷ √3 = 0,577"
+            },
+            {
+              "abertura": "120°",
+              "distancia": "1,732 m (um terço)",
+              "lado": "3,464 m (2√3)",
+              "volume": "20,78 m³",
+              "fracao": "1 ÷ 3"
+            }
+          ],
+          "nota": "Medido no grau 6, com uma fatia só (base de 6 × 6 m). Abrir é uma escolha caríssima, e isso é de propósito: o 120° custa dois terços do volume e chega a um terço da distância. Em troca ele cobre três vezes mais ângulo por fatia, e é o que serve ao feiticeiro de grau baixo, que não tem fatias sobrando para abrir de 60° em 60°."
+        },
+        "travaFatias": {
+          "regra": "O número de fatias não passa do nível da Arte: grau 3 abre até três, grau 6 até seis.",
+          "consequencias": [
+            "A cobertura cresce em todo grau, e nenhum grau é pior que o anterior.",
+            "Em fatias de 60° só o grau 6 fecha o círculo. Em 90°, o grau 4 já fecha; em 120°, o grau 3.",
+            "O piso sai de graça: dividir pelo próprio nível dá aresta de 1 m, então o elemento nunca nasce a menos de 87 cm do peito, sem precisar de regra escrita."
+          ]
+        },
+        "botoes": {
+          "nota": "O que sobe e o que desce quando se abre.",
+          "tabela": [
+            {
+              "botao": "Número de fatias",
+              "sobe": "o ângulo coberto (N × θ)",
+              "desce": "a distância, a aresta de cada fatia, o volume e o chão"
+            },
+            {
+              "botao": "Abertura",
+              "sobe": "o ângulo de cada fatia",
+              "desce": "a distância, o volume e o chão"
+            }
+          ],
+          "cercarSe": "Como a pegada no chão é N × aresta × distância ÷ 2, e a distância cai com N, o chão também divide por N. Não é que abrir troque altura por chão: abrir troca ângulo por tudo o mais. No grau 6 em fatias de 60°, uma fatia cobre 15,6 m² de chão a 5,2 m de distância, e as seis fatias que fecham o círculo cobrem 2,6 m² a 87 cm. Cercar-se é caríssimo, e é o preço de não ter flanco."
+        },
+        "alturas": {
+          "regra": "O feiticeiro escolhe DUAS alturas: a de onde a pirâmide começa (o ápice: no chão, na mão, acima da cabeça) e a de onde ela acaba (o pé da base). A amarra é uma só: o ápice tem de estar dentro da altura da base.",
+          "exemplo": "Base de 5 m com o pé a 0,5 m ocupa de 0,5 a 5,5 m, então o ápice cabe em qualquer ponto desse intervalo e em nenhum de fora. O alcance do braço (cerca de 2,2 m) limita as duas, e daí sai de graça que a base não pode ser erguida longe do corpo: o ápice teria de acompanhá-la.",
+          "deGraca": "Deslizar o ápice não cobra nem rende: o volume da pirâmide sai da área da base e da distância perpendicular até o ápice, e não de onde o ápice está sobre ela. São os mesmos 62,35 m³ com o ápice a 0, a 0,7, a 1,5 e a 2,2 m. Com isso o desperdício no subsolo deixa de existir: basta pousar o pé da base no chão.",
+          "tabela": [
+            {
+              "apice": "0 m, agachado com a mão no piso",
+              "faceDeBaixo": "horizontal",
+              "tocaOChao": "desde o pé do conjurador"
+            },
+            {
+              "apice": "1,5 m, na mão",
+              "faceDeBaixo": "uma rampa descendo",
+              "tocaOChao": "só a 5,2 m (no grau 6)"
+            }
+          ],
+          "consequencia": "Saindo da mão com o pé da base no chão, a fatia é uma rampa que passa por cima de quem está deitado até quase a ponta. Quem quiser varrer o chão desde o próprio pé precisa agachar e sair do piso. Não é regra escrita, é consequência da forma."
+        },
+        "estadoNoLado": {
+          "formula": "Terra e Metal: metade do lado · Ar e névoa: o dobro · o resto: igual",
+          "nota": "O estado da matéria incide no LADO DA BASE, e não no volume final. No grau 6 isso dá 3 m para a Terra, 6 m para água, gelo, fogo, luz e sombra, e 12 m para o Ar. O Ar vira a Arte de domínio de espaço sem precisar de regra própria, o que casa com a decisão de tê-lo calibrado sem dano direto: a Arte que não fere é a que toma o campo."
+        },
+        "naoFaz": [
+          "Não põe nada num ponto escolhido. Ela nasce no feiticeiro, sempre. Pôr num ponto é Efeito Especial.",
+          "Não faz parede plana nem reta, e não faz bloco que se carregue. Muro, muralha e reta são Efeito Especial, e isso é escolha de escopo, não sobra.",
+          "Não ganha alcance com o nível da Arte: o nível segue só como teto do grau do parâmetro."
+        ],
+        "escopo": "Escrito para as Artes elementais. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose não manifestam elemento, e a fatia não quer dizer nada nelas: elas ainda precisam da geometria própria.",
+        "emAvaliacao": [
+          "QUEM PAGA A ABERTURA: a distância (o modelo acima, em que o volume divide por N e cercar-se encolhe o molde para 87 cm) ou a ALTURA (em que a aresta fica cheia, a distância não encolhe e o volume se conserva, e as seis fatias do grau 6 viram um hexágono de 93,5 m² de chão a 1 m de altura). Uma protege a decisão do jogador, a outra protege o alcance e entrega o raio grande. As duas estão medidas na bancada.",
+          "A BASE FICA EM CORDA OU VAI PARA ARCO. Na corda a base é uma reta a `distância` metros e o chão é um triângulo; no arco o lado do triângulo vira raio e o chão vira setor de círculo, pela mesma conta da pirâmide (arco × altura × raio ÷ 3). O arco rende θ ÷ sen θ a mais, ou seja +21% a 60°, +57% a 90° e +142% a 120°, e o problema é que no arco ABRIR FICA BARATO, justo na alavanca que segura o leque largo. A terceira opção, o ARCO JUSTO, encolhe o raio em √(sen θ ÷ θ) e bate o volume e o chão da corda em qualquer abertura: é a forma redonda sem mexer em número nenhum.",
+          "ONDE ELA MORA NA RÉGUA DE PARÂMETROS: qual dos dois parâmetros de hoje (Área ou Volume) compra o lado da base, e o que sobra do outro no improviso.",
+          "O QUE A MATÉRIA DENTRO DA FATIA FAZ EM NÚMERO: a regra diz quanto elemento aparece e onde, e não diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de Terra aguenta antes de ceder."
+        ]
+      },
       "exemplos": [
         "Acender uma vela: tudo no grau 0 = 0 pontos. Sai de graça para qualquer um, e com Centelha 1 dá para pagar Duração 1 (um turno) e ainda sair de graça, sustentando turno após turno até virar uma fogueira.",
         "Dardo: Alcance 3 (4 m) + Dano 2 (2d6) = 5 pontos. Com Centelha 2, custa 3 de Mana.",
         "Jorro sustentado: Volume 3 (50 cm de lado) + Dano 2 (2d6) + Duração 2 (2 turnos) = 7 pontos, três parâmetros acima do grau 0. Com Centelha 2, custa 5 de Mana."
+      ]
+    },
+    "moldes": {
+      "nota": "O parâmetro de chão de um Efeito Especial não é uma medida solta: é um MOLDE com nome, e cada molde tem a sua régua. O jogador escolhe a forma; a forma decide as dimensões.",
+      "porque": "Com uma régua métrica única e liberdade de moldar, o jogador lava matéria em alcance: 1 m³ (grau 4) esticado vira 127 m de cilindro de 5 cm de raio, 95 m de cone ou um anel de 41 m de vão, contra 1,24 m de esfera. A alavanca não é o cuboide, é a esbeltez, e qualquer molde com duas medidas livres a tem. O dano ao desenho é concreto: a laje improvisada vence o Efeito comprado com XP a partir do grau 5 (17 m contra os 12 m do Muro).",
+      "fronteira": {
+        "nota": "Os cinco moldes são dos EFEITOS. O improviso tem geometria própria, que é a manifestação.",
+        "improviso": "a Arte crua, sem XP: fatias de 60°, 90° ou 120° saindo do feiticeiro.",
+        "efeito": "comprado com XP: um molde com nome e régua própria. O que o Efeito compra não é \"mais tamanho\", é uma forma que a manifestação não faz: pôr uma bola num ponto escolhido, esticar uma reta de vinte metros, erguer uma parede plana, saltar de alvo em alvo. A manifestação só sabe abrir leque em volta de quem conjura, e é essa a fronteira."
+      },
+      "lista": [
+        {
+          "nome": "Explosão",
+          "compra": "diâmetro",
+          "escala": [
+            "0,5 m",
+            "1 m",
+            "2 m",
+            "3,5 m",
+            "5 m",
+            "6,5 m",
+            "8 m"
+          ],
+          "hexagonos": [
+            "1",
+            "1",
+            "7",
+            "13",
+            "19",
+            "37",
+            "61"
+          ],
+          "serve": "varrer quem está junto. É a que mais cresce em número de alvos e a que mais murcha quando os inimigos se abrem: 37 colados no grau 5, 10 espalhados."
+        },
+        {
+          "nome": "Leque",
+          "compra": "comprimento, em 60°",
+          "escala": [
+            "1 m",
+            "2 m",
+            "3 m",
+            "4 m",
+            "5 m",
+            "6 m",
+            "8 m"
+          ],
+          "hexagonos": [
+            "1",
+            "4",
+            "7",
+            "12",
+            "17",
+            "24",
+            "44"
+          ],
+          "serve": "a linha de frente: cobre um setor à frente do conjurador e compra mais alcance que a Explosão pelo mesmo grau."
+        },
+        {
+          "nome": "Linha",
+          "compra": "comprimento, 1 m de largura",
+          "escala": [
+            "2 m",
+            "4 m",
+            "6 m",
+            "8 m",
+            "12 m",
+            "16 m",
+            "24 m"
+          ],
+          "hexagonos": [
+            "3",
+            "5",
+            "7",
+            "9",
+            "13",
+            "17",
+            "25"
+          ],
+          "serve": "chegar longe. Compra seis vezes o alcance da Explosão e paga com a largura: é o Raio contra a bola de fogo, e é a saída positiva para quem quer distância."
+        },
+        {
+          "nome": "Muralha",
+          "compra": "metros de frente",
+          "escala": [
+            "1 m",
+            "2 m",
+            "3 m",
+            "5 m",
+            "8 m",
+            "12 m",
+            "20 m"
+          ],
+          "hexagonos": null,
+          "serve": "barrar. É a régua que o Muro já tem, sem mexer num número."
+        },
+        {
+          "nome": "Cadeia",
+          "compra": "inimigos ligados, salto de 3 m",
+          "escala": [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "8",
+            "10"
+          ],
+          "hexagonos": null,
+          "serve": "acertar vários que não estão adjacentes. É o único molde que não muda de valor com a formação: pega os mesmos oito no grau 5, estejam os inimigos colados ou espalhados."
+        }
+      ],
+      "alcance": {
+        "nota": "O alcance que cada molde compra a partir da âncora é a outra moeda.",
+        "tabela": [
+          {
+            "molde": "Explosão (raio)",
+            "g3": "1,75 m",
+            "g4": "2,5 m",
+            "g5": "3,25 m",
+            "g6": "4 m"
+          },
+          {
+            "molde": "Leque",
+            "g3": "4 m",
+            "g4": "5 m",
+            "g5": "6 m",
+            "g6": "8 m"
+          },
+          {
+            "molde": "Linha",
+            "g3": "8 m",
+            "g4": "12 m",
+            "g5": "16 m",
+            "g6": "24 m"
+          }
+        ]
+      },
+      "aura": "A Aura mantém a régua dela, de 0,25 a 3 m de raio, e é menor de propósito: acompanha o corpo em vez de ocupar o campo.",
+      "cadeiaRessalva": "A Cadeia é indiferente à formação, mas não é indiferente ao CAMINHO. Ela salta de um alvo ao mais próximo ainda não atingido, e onde o próximo estiver além do salto a corrente arrebenta ali, perdendo os elos restantes. É o molde de quem enfrenta muitos inimigos em fila ou em cordão, e é fraca contra dois grupos separados por um vão.",
+      "cuboide": "O cuboide não é proibido: ele ganha nome. O cuboide comprido é a Muralha, e a Muralha tem régua calibrada para ser comprida; o cuboide maciço é matéria, e matéria é Volume em m³. O abuso morre por construção e não por proibição, porque não sobra medida livre para trocar: quem escolhe as dimensões é o molde.",
+      "volume": "O Volume fica exatamente como está (8 cm³ a 8 m³) para os Efeitos que criam matéria, e perde o direito de virar forma. Lido como matéria ele está calibrado: o grau 3 são 169 kg de pedra, o grau 4 são 1,4 t e o grau 6 são 10,8 t. Pedra não vira tapete, névoa vira, e é isso que o fator de estado diz.",
+      "hexagonosNota": "Os hexágonos são coluna de leitura, não unidade: a régua é em metros, e o molde ancora onde o efeito nasce.",
+      "aRevisar": "A escola está fechada; as réguas acima são a calibragem proposta e ainda esperam mesa. Falta também passar os Efeitos que hoje usam a `zona` genérica para o molde que lhes cabe."
+    },
+    "tempoDaArte": {
+      "nota": "A manifestação diz ONDE o elemento aparece. Esta parte diz o que acontece com quem está lá, e ela nasce de uma regra de tempo: a Arte resolve no ÚLTIMO Tick da ação.",
+      "ultimoTick": {
+        "regra": "Ação comum resolve no primeiro Tick (ou nos primeiros), e o resto da Velocidade é recuperação. A ARTE resolve no ÚLTIMO: uma conjuração de 7 Ticks acontece no sétimo.",
+        "excecao": "Vale mesmo quando a conjuração ocupa várias ações, e vale a não ser que o Efeito Especial diga o contrário: um Efeito pode comprar o direito de sair na hora, e é dele o ônus de dizer isso na própria ficha.",
+        "porque": "Não é detalhe de cronometragem, é a peça que sustenta o resto. Como a Arte se anuncia por cinco a sete Ticks, sair de perto pode ser movimento normal, na vez do alvo, e não uma reação fora de hora. E é o que faz da Arte uma decisão tomada com antecedência: o feiticeiro compromete cinco a sete Ticks montando uma coisa que os outros podem ver se juntando, e tem de acertar onde o inimigo VAI ESTAR, não onde ele está.",
+        "tabela": [
+          {
+            "momento": "Declaração, no primeiro Tick",
+            "decide": "se é improviso ou Efeito Especial, e QUANTO de cada parâmetro: Duração, Alcance, Volume, Dano, Alvos"
+          },
+          {
+            "momento": "Último Tick, quando sai",
+            "decide": "PARA ONDE e COMO: o alvo, a direção, a abertura das fatias, o ângulo, onde a base pousa"
+          }
+        ],
+        "resumo": "Na declaração se compra o tamanho, no último Tick se dá a forma e a mira. O feiticeiro não fica preso à posição que o inimigo tinha sete Ticks antes, e também não pode trocar de feitiço porque a situação mudou."
+      },
+      "identificar": {
+        "nota": "Nem todo mundo entende o que está vendo se juntar. Há duas maneiras de saber.",
+        "deGraca": "Sem teste: quem tem a mesma Tradição daquela Arte, o nível da Arte e, sendo Efeito Especial, conhece aquele Efeito, reconhece na hora. Você identifica de imediato o que você mesmo saberia fazer.",
+        "teste": "Para todos os outros: Inteligência + Ocultismo (ou a habilidade específica que aquela Arte pedir) contra uma Dificuldade que CAI a cada Tick que passa. No primeiro Tick o sinal é um arrepio no ar; no último é uma bola de fogo pronta na mão.",
+        "regras": [
+          "Um teste por efeito. Não se insiste.",
+          "O jogador escolhe em que Tick testa, e essa é a decisão interessante: cedo é difícil e rende tempo para agir, tarde é fácil e não rende nada.",
+          "Só se repete havendo motivo novo: o feiticeiro diz o nome, o elemento se revela, um aliado identificou e avisou."
+        ],
+        "ocultismo": "É o emprego que o Ocultismo ganhou quando o \"Ocultismo + Atributo\" saiu da conjuração: ele não conjura, ele LÊ."
+      },
+      "area": {
+        "regra": "Contra área não existe Esquiva nem Bloqueio. As duas são números contra um golpe que vem de uma direção, e a área não vem de direção nenhuma: ela OCUPA O ESPAÇO. Quem está lá quando ela sai, come. As saídas são duas, e só uma é grátis.",
+        "deslocamentoLivre": {
+          "titulo": "Na sua vez, o Deslocamento livre",
+          "texto": "(Destreza + Atletismo) ÷ 2 metros, de graça, durante qualquer outra ação, inclusive atacar ou conjurar. São 1,5 m para o camponês, 3,5 para o aventureiro e 5 para o herói. Quem leu o sinal com Ticks de sobra simplesmente não está mais lá, e não paga nada por isso.",
+          "semGabarito": "Como a mira e a forma só travam no último Tick, durante o preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é o próprio lado da base, porque a área nasce no feiticeiro e nunca é colocada. No grau 6 isso são 5,2 m de raio útil contra um passo grátis de 3,5 m: andando você não escapa, correndo sim (7 m no primeiro Tick da Corrida). Por isso a mesa não precisa de gabarito desenhado durante os sete Ticks: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
+        },
+        "desvio": {
+          "titulo": "Fora da vez, no Tick em que a Arte sai: o desvio de emergência",
+          "texto": "Custa 1 Tick por metro que falte para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. É a única coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque não é grátis: é emprestada do próprio futuro, como uma ação lenta atrasa a seguinte. Precisa de pelo menos 1 metro de deslocamento, porque ninguém sai de uma área ficando parado.",
+          "formula": "Ticks de desvio = metros até ficar fora, pela direção mais barata · Dificuldade (metade do dano) = 5 + 5 × esses mesmos metros · Dificuldade (dano nenhum) = o DOBRO da anterior",
+          "dificuldadeEDaTarefa": "A Dificuldade é da TAREFA, não de quem conjurou. Um efeito de Arte 6 e um de Arte 3 com a mesma área e o mesmo volume cobram o mesmo para atravessar: é a mesma parede de fogo. Um incêndio de verdade, sem magia nenhuma, usa a mesma fórmula pelo próprio tamanho. O que o nível da Arte compra não é uma Dificuldade extra escondida, é o TETO DE TAMANHO que o feiticeiro pode atingir.",
+          "tabela": [
+            {
+              "metros": "1, a borda",
+              "custa": "1 Tick",
+              "metade": "10, Média",
+              "nada": "20, Limite humano"
+            },
+            {
+              "metros": "2",
+              "custa": "2 Ticks",
+              "metade": "15, Difícil",
+              "nada": "30, Sobre-humano"
+            },
+            {
+              "metros": "3",
+              "custa": "3 Ticks",
+              "metade": "20, Limite humano",
+              "nada": "40, acima da escada"
+            },
+            {
+              "metros": "4, o núcleo",
+              "custa": "4 Ticks",
+              "metade": "25, Excepcional",
+              "nada": "50, acima da escada"
+            }
+          ],
+          "escada": "A distância é a única variável, e ela não inventa número novo: é a régua de sempre do capítulo de Ações (5 Fácil · 10 Média · 15 Difícil · 20 Limite humano · 25 Excepcional · 30 Sobre-humano), um degrau por metro.",
+          "leitura": {
+            "nota": "Uma jogada só, comparada aos dois patamares. Não existe uma segunda rolagem para tentar zerar: o mesmo resultado é lido contra os dois números.",
+            "tabela": [
+              {
+                "resultado": "Total ultrapassa a Dificuldade DOBRADA",
+                "sofre": "nada"
+              },
+              {
+                "resultado": "Total ultrapassa só a Dificuldade simples",
+                "sofre": "metade, arredondando para cima"
+              },
+              {
+                "resultado": "Total não ultrapassa nem a simples",
+                "sofre": "o dano inteiro"
+              }
+            ],
+            "porqueDobrar": "Dobrar funciona como teto de propósito. Sair ILESO na borda (Dif 20) é o limite do que um mortal de ponta consegue: a régua já chama esse patamar de Limite humano, e é justamente o teto de Atributo + Habilidade sem Centelha (12). Um passo além da borda, zerar o dano exige Dif 30, Sobre-humano, que a mesma régua reserva a quem tem Centelha, Proeza ou Arte turbinando a rolagem. A partir de 3 metros a Dificuldade dobrada sai da escada inteira: não é regra dizendo que é impossível, é a própria tabela dizendo isso sozinha."
+          },
+          "condicoes": [
+            "Para rolar é preciso TENTAR SAIR DE VERDADE. Quem fica no lugar não testa e come inteiro. Não existe \"me encolho e rolo os dados\".",
+            "Os Ticks são gastos de qualquer maneira, passando ou falhando. É o que torna a decisão uma decisão, e não um bônus grátis.",
+            "Ter identificado o efeito rende bônus na jogada: +2 no total, ou +4 se a identificação passou com Margem. Lê-se cedo para escapar melhor, e é o prêmio do teste de Ocultismo."
+          ],
+          "ficarParado": "Ficar parado de propósito, para não testar nem gastar Tick, pede coragem e não pernas: um teste de Bravura ou Temperança (outra Virtude, com Firula) contra a mesma Dificuldade da linha \"metade\". Passando, o personagem aguenta no lugar sem se mexer, e ainda come o dano inteiro, porque ficar parado nunca reduz o que a área faz, só evita o risco e o custo de tentar sair. Falhando, o corpo se move sozinho: vira o desvio de emergência de qualquer maneira.",
+          "retorno": {
+            "nota": "Contra uma Arte de grau 6 (6d6, 21 de dano médio), o dano poupado por Tick gasto tentando sair. O soldado só tenta na borda; o aventureiro desiste a partir de 2 m; no núcleo, gastar quatro Ticks para poupar menos de um ponto é a prova de que ali a jogada certa é ficar quieto.",
+            "tabela": [
+              {
+                "quem": "Soldado (Des 3 + Esq 2)",
+                "m1": "2,9",
+                "m2": "0",
+                "m3": "0",
+                "m4": "0"
+              },
+              {
+                "quem": "Aventureiro (4 + 3)",
+                "m1": "7,8",
+                "m2": "1,7",
+                "m3": "0",
+                "m4": "0"
+              },
+              {
+                "quem": "Veterano (5 + 4)",
+                "m1": "11,0",
+                "m2": "5,8",
+                "m3": "1,0",
+                "m4": "0"
+              },
+              {
+                "quem": "Herói (5 + 5)",
+                "m1": "12,5",
+                "m2": "7,3",
+                "m3": "2,3",
+                "m4": "0,2"
+              }
+            ]
+          },
+          "direcoes": "As três direções valem, e todas cobram. Sair pelos lados, jogar-se ao chão (quando a faixa do elemento não encosta no piso) ou saltar por cima (quando ela é rasteira) são a mesma conta: o que importa é quantos metros faltam para o corpo ficar fora, e cada metro é um Tick. É aqui que as duas alturas da manifestação deixam de ser enfeite: faixa que sobe do chão obriga a sair pelos lados ou a saltar, faixa com o pé a um metro do chão se resolve caindo, e cair é barato. Onde o feiticeiro pousa a base decide qual saída ele deixa aberta."
+        },
+        "contraOPasso": "Um molde só prende quem não sai dele de graça. O Deslocamento livre humano vai de 1,5 a 5 m, e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) atravessa exatamente essa faixa: do grau 1 ao 3 o molde é menor que o passo de quase todos, e serve para pegar quem está preso; do 5 ao 6 ele passa do passo do herói."
+      },
+      "aRevisar": [
+        "A calibragem de `8 + 2 × metros` no desvio precisa de mesa: a forma está decidida e os números são provisórios. Os dois botões são o 8 (que move todo mundo) e o 2 por metro (que move só quem está fundo).",
+        "Metade por cobertura e metade por desvio não deveriam se multiplicar. Quem está com só as pernas dentro da faixa já sofre metade por física, e passando no desvio sofreria metade disso. A saída provável é valer a melhor das duas, não o produto.",
+        "A Dificuldade da identificação, e o quanto ela cai por Tick: precisa casar com a régua do capítulo de Ações e com o fato de que o teste é escolha de momento.",
+        "A Dificuldade do teste de concentração ao sofrer dano: se ela vale para o PREPARO e não só para o sustentar, e se o Mana volta quando o feitiço cai. Com cinco a sete Ticks de exposição, quebrar a conjuração é a contrajogada do corpo a corpo.",
+        "Os números de ficar parado (o teste de Bravura ou Temperança) ainda não passaram por mesa.",
+        "Proezas de Destreza são o lugar da exceção, e não como \"rolar para desviar\": como SAIR MAIS BARATO, com menos Ticks por metro, um Deslocamento livre maior contra área ou o direito comprado de se mover fora da vez sem teste."
       ]
     },
     "esticar": {
@@ -1626,6 +2013,7 @@
       "divide": "Em mais de um alvo, o valor curado é DIVIDIDO entre eles: 2d6 em três pessoas é a rolagem inteira repartida em três, não 2d6 para cada uma. Comprar Alvos compra ação, não quantidade de cura.",
       "nota": "O desconto da Centelha continua valendo sobre o total, e no modo Ritual ele é multiplicado pelo tempo gasto: é assim que o curandeiro trata os feridos depois da luta quase de graça, mesmo tendo pouco Mana para gastar durante ela."
     },
-    "papelDoFeiticeiro": "Feitiçaria não é build barata nem para personagem iniciante: nos primeiros níveis as conjurações são escassas, como o mago de D&D. No Centelha o feiticeiro precisa de um papel secundário, e não necessariamente de combate. Quando o Mana acaba, ele depende de outros recursos para ser útil."
+    "papelDoFeiticeiro": "Feitiçaria não é build barata nem para personagem iniciante: nos primeiros níveis as conjurações são escassas, como o mago de D&D. No Centelha o feiticeiro precisa de um papel secundário, e não necessariamente de combate. Quando o Mana acaba, ele depende de outros recursos para ser útil.",
+    "feiticoTicksNota": "Os Ticks são o tempo de PREPARO, e a Arte resolve no ÚLTIMO deles, ao contrário da ação comum, que resolve no primeiro. Ver `tempoDaArte`."
   }
 }

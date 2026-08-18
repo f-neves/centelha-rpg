@@ -157,6 +157,8 @@ A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe 
 
 Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída.
 
+**Contra área, a saída é sair.** Área não vem de uma direção, ela ocupa o espaço, então não há número de Esquiva nem de Bloqueio a opor. Quem está dentro ou sai **de graça na própria vez**, pelo Deslocamento livre, ou paga **1 Tick por metro** num desvio de emergência fora da vez, e esses Ticks empurram a próxima ação dele para frente. A regra inteira, com as Dificuldades e o que ainda assim se sofre, está em [O tempo da Arte](/artes/regras#tempo).
+
 ## Movimento: Deslocamento, Corrida e Salto
 
 O **Deslocamento livre** é a distância que você desliza **de graça durante outra ação** (atacar, conjurar) — em qualquer direção, sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia:

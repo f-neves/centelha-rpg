@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 67 itens abertos · 34 [DECIDIR] · 26 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 19** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
+**Placar:** 66 itens abertos · 34 [DECIDIR] · 25 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 18** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
 Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -30,13 +30,13 @@ Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/artes/regras`,
 `/artes/efeitos`, `/artes/catalogo`) e em `regras.json → arcano`.
 
-> **PRIMEIRA PRIORIDADE desta frente: pôr o site em dia com o `Arcano_revisao.md`.** O doc andou muito
-> à frente do site nas conversas de 17 e 18/08, e hoje a página não sabe de nada disso: a **§5.4** (a
-> manifestação em fatias), a **§5.5** inteira (a Arte sai no **último Tick**; o que trava na declaração
-> e o que trava na hora; identificar um feitiço em preparo; **área não se esquiva nem se bloqueia**, e o
-> desvio a 1 Tick por metro com `5 + 5 × m` para metade e o dobro para dano nenhum; ficar parado com
-> Bravura ou Temperança) e a limpeza do **"Ocultismo + Atributo"**. É a **A20** abaixo, e vale notar que
-> **a maior parte dela não espera decisão nenhuma**: só a geometria da §5.4 depende da A21 e da A22.
+> **~~PRIMEIRA PRIORIDADE desta frente: pôr o site em dia com o `Arcano_revisao.md`.~~ Feito em 18/08.**
+> As **§5.3** (os cinco moldes), **§5.4** (a manifestação em fatias) e **§5.5** (o tempo da Arte e as
+> duas saídas) foram para `regras.json → arcano` e para o capítulo XV, em três seções novas
+> (`#manifestacao`, `#moldes`, `#tempo`). O `"Ocultismo + Atributo"` já tinha saído em 17/08. O que
+> ficou de fora é só o que **espera decisão**: a §5.4 entrou na versão da **corda** com a abertura paga
+> pela **distância**, que é como a regra em seis linhas do doc está escrita, e a A21 e a A22 seguem
+> abertas na caixa "Em revisão" da própria página.
 
 - [ ] **A1 · [DECIDIR] Guardar um feitiço: os limites.** A regra base está no site (paga o Mana na
   hora, Raciocínio conta um nível abaixo e −1d6 nas rolagens enquanto carrega). Falta: a penalidade
@@ -179,18 +179,18 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   manifestação diz **quanto** elemento aparece e **onde**, e não diz o que ele faz além do parâmetro
   de Dano: o que 62 m³ de chama fazem a quem está dentro, o que a espessura de uma fatia de Terra
   aguenta antes de ceder, o que pesa ao desabar. Encosta na A9 e no capítulo de Vida & Ferimentos.
-- [ ] **A20 · [FAZER] Portar a manifestação para `regras.json`.** A escada do lado da base, a trava
-  das fatias, as três aberturas e o fator de estado no lado. Nada disso está no dado, e o Grid lê de
-  lá, então é o que liga a decisão à mesa. Espera a **A22** e a **A21**, porque o modelo e a base
-  escolhidos mudam a fórmula do volume. Junto vai a decisão de onde mora: bloco novo
-  `arcano.improviso.manifestacao`, e o que sobra do `graus.volume` e do `graus.area` de hoje.
-  **Cresceu em 2026-08-18:** a **§5.5** também precisa ir para o dado e para o site, e essa parte
-  **não espera decisão nenhuma**, porque a mecânica está fechada. São quatro coisas: (a) a Arte sai no
-  **último Tick** (`arcano.feiticoTicks` ganha essa nota, e o capítulo XV diz hoje só "custa Ticks
-  como uma ação"); (b) o que trava na declaração e o que trava no último Tick; (c) identificar o
-  feitiço em preparo; (d) **área não se esquiva nem se bloqueia, sai-se dela a 1 Tick por metro**, que
-  é o pagamento da promessa que o capítulo de combate já faz em `combate.md` ("nem tudo se bloqueia ou
-  se esquiva... cobram outra saída").
+- [x] **~~A20 · [FAZER] Portar a manifestação para `regras.json`.~~ Feito em 2026-08-18.** Entraram
+  três blocos: `arcano.improviso.manifestacao` (a escada do lado da base, a trava das fatias, as três
+  aberturas, os dois botões, as duas alturas e o fator de estado no lado), `arcano.moldes` (a §5.3,
+  que também nunca tinha chegado ao site) e `arcano.tempoDaArte` (a §5.5 inteira: a Arte sai no último
+  Tick, o que trava na declaração e o que trava na hora, identificar o feitiço em preparo, e a área que
+  não se esquiva nem se bloqueia, com o desvio a 1 Tick por metro). O capítulo XV ganhou as seções
+  `#manifestacao`, `#moldes` e `#tempo`, e o `combate.md` pagou a promessa dele ("nem tudo se bloqueia
+  ou se esquiva") com um parágrafo que aponta para lá. **Duas pontas ficaram, e as duas são decisão:**
+  a §5.4 entrou na versão da **corda** com a abertura paga pela **distância** (a A21 e a A22 vão mudar
+  a fórmula do volume quando fecharem), e **onde a manifestação mora na régua de parâmetros** segue em
+  aberto, isto é, se quem compra o lado da base é a Área ou o Volume, e o que sobra do outro no
+  improviso. As três estão listadas na caixa "Em revisão" da própria página, saindo do dado.
 - [ ] **A16 · [DECIDIR] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
   oito escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais aparecer. O caso
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,
@@ -646,8 +646,8 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 
 ## Ordem sugerida
 
-1. **E1**, Antecedentes ao site: o doc está fechado, o trabalho é portar, e é o mesmo tipo de
-   trabalho que a frente de Ações acabou de receber, então sai com o caminho quente.
+1. ~~**E1**, Antecedentes ao site.~~ **Feito em 18/08:** capítulo VII, `antecedentes.json` e a aba
+   própria na ficha.
 2. **C1**, as jogadas das Artes: é a decisão que destrava mais coisa depois dela (A11, C2, C3, F3).
 3. ~~**B10**, confirmar a Centelha das 148.~~ **Feito em 17/08.** Era o único item que já estava
    valendo no repositório sem ter passado por você, e a suspeita se confirmou ao contrário do que
@@ -659,5 +659,8 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
    em 18/08:** é **Firula** (passou por Manobra no caminho), com **Firula Infeliz** no lugar do
    "Contra Stunt".
 
-**Os três primeiros da lista saíram no mesmo dia.** O que sobra de mais barato agora é o **E1**,
-portar os Antecedentes ao site: o doc está fechado e o trabalho é de execução.
+**Quatro dos cinco saíram, e com o A20 fora do caminho a fila de execução do Arcano esvaziou.** O que
+sobra na lista é decisão, e a que destrava mais coisa continua sendo a **C1**. Logo atrás vêm a **A22**
+(quem paga a abertura das fatias) e a **A21** (a base em corda ou em arco): as duas já estão medidas na
+bancada, já estão escritas na página como pendência, e são o que falta para a §5.4 parar de ser
+provisória.

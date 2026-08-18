@@ -21,6 +21,9 @@ const LINHAS_GRAU: [string, string[]][] = [
 ];
 const GRAU_COLS = [0, 1, 2, 3, 4, 5, 6];
 const COMB = (regras as any).arcano.improviso.combinacoes;
+const MANI = (regras as any).arcano.improviso.manifestacao;
+const MOLDES = (regras as any).arcano.moldes;
+const TEMPO = (regras as any).arcano.tempoDaArte;
 const RITUAL = (regras as any).arcano.ritual;
 const FONTE = (regras as any).arcano.fonteElemental;
 const CURA = (regras as any).arcano.cura;
@@ -50,7 +53,7 @@ const EX_CONTA: [string, string, number][] = [
     </a>
   </nav>
 
-  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. &nbsp; <strong>Ritual</strong>, estendido: o cast passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
+  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. Esses Ticks são de <strong>preparo</strong>, e a Arte sai no <a href="#tempo"><strong>último</strong></a> deles, ao contrário da ação comum, que resolve no primeiro. &nbsp; <strong>Ritual</strong>, estendido: o cast passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
 
   <section class="arcano-regras">
     <h2>Como se aprende uma Arte</h2>
@@ -72,6 +75,7 @@ const EX_CONTA: [string, string, number][] = [
         </tbody>
       </table>
     </div>
+    <p><strong>Área é a exceção da primeira linha.</strong> O que voa se esquiva, mas o que ocupa espaço não: contra área não há Esquiva nem Bloqueio, e a saída é <a href="#tempo">sair do lugar</a>, de graça na própria vez ou pagando Ticks fora dela.</p>
     <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais.</p>
 
     <h2 id="parametros">Os parâmetros</h2>
@@ -137,6 +141,200 @@ const EX_CONTA: [string, string, number][] = [
       {COMB.consequencias.map((x: string) => <li>{x}</li>)}
     </ul>
     <p class="muted">{COMB.escopo}</p>
+
+    <h2 id="manifestacao">Como a Arte crua se manifesta</h2>
+    <p>{MANI.nota}</p>
+    <ol class="mani-regra">
+      {MANI.regra.map((r: string) => <li>{r}</li>)}
+    </ol>
+    <div class="table-wrap">
+      <table class="graus-tab">
+        <thead><tr><th>Grau</th>{GRAU_COLS.map((g) => <th>{g}</th>)}</tr></thead>
+        <tbody>
+          <tr><td><strong>Lado da base</strong></td>{MANI.ladoBase.map((v: string) => <td>{v}</td>)}</tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="formula mat">{MANI.formula}</p>
+    <p class="muted">{MANI.formulaNota}</p>
+
+    <h3>As três aberturas</h3>
+    <p>{MANI.aberturas.porque}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Abertura</th><th>Distância</th><th>Lado do triângulo</th><th>Volume</th><th>Fração</th></tr></thead>
+        <tbody>
+          {MANI.aberturas.tabela.map((a: any) => (
+            <tr><td><strong>{a.abertura}</strong></td><td>{a.distancia}</td><td>{a.lado}</td><td>{a.volume}</td><td class="muted">{a.fracao}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">{MANI.aberturas.nota}</p>
+
+    <div class="callout regra"><span class="lbl">A trava das fatias</span>
+      {MANI.travaFatias.regra}
+      <ul class="fraq">
+        {MANI.travaFatias.consequencias.map((c: string) => <li>{c}</li>)}
+      </ul>
+    </div>
+
+    <h3>O que sobe e o que desce quando se abre</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Botão</th><th>O que sobe</th><th>O que desce</th></tr></thead>
+        <tbody>
+          {MANI.botoes.tabela.map((b: any) => (
+            <tr><td><strong>{b.botao}</strong></td><td>{b.sobe}</td><td>{b.desce}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>{MANI.botoes.cercarSe}</p>
+
+    <h3>As duas alturas: o ápice e o pé da base</h3>
+    <p>{MANI.alturas.regra}</p>
+    <p class="muted">{MANI.alturas.exemplo}</p>
+    <p class="muted">{MANI.alturas.deGraca}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Ápice</th><th>A face de baixo é</th><th>Toca o chão</th></tr></thead>
+        <tbody>
+          {MANI.alturas.tabela.map((t: any) => (
+            <tr><td><strong>{t.apice}</strong></td><td>{t.faceDeBaixo}</td><td>{t.tocaOChao}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>{MANI.alturas.consequencia}</p>
+
+    <p class="formula">{MANI.estadoNoLado.formula}</p>
+    <p class="muted">{MANI.estadoNoLado.nota}</p>
+
+    <div class="callout regra"><span class="lbl">O que a manifestação não faz</span>
+      <ul class="fraq">
+        {MANI.naoFaz.map((n: string) => <li>{n}</li>)}
+      </ul>
+    </div>
+    <p class="muted">{MANI.escopo}</p>
+
+    <h2 id="moldes">Os moldes: o chão se compra por forma</h2>
+    <p>{MOLDES.nota}</p>
+    <p class="muted">{MOLDES.porque}</p>
+    <div class="callout regra"><span class="lbl">A fronteira</span>
+      {MOLDES.fronteira.nota}<br />
+      <strong>Improviso:</strong> {MOLDES.fronteira.improviso}<br />
+      <strong>Efeito Especial:</strong> {MOLDES.fronteira.efeito}
+    </div>
+    <div class="table-wrap">
+      <table class="graus-tab">
+        <thead><tr><th>Molde</th><th>Compra</th>{GRAU_COLS.map((g) => <th>{g}</th>)}</tr></thead>
+        <tbody>
+          {MOLDES.lista.map((m: any) => (
+            <>
+              <tr><td><strong>{m.nome}</strong></td><td class="muted">{m.compra}</td>{m.escala.map((v: string) => <td>{v}</td>)}</tr>
+              {m.hexagonos && (
+                <tr class="hex-row"><td></td><td class="muted"><em>hexágonos</em></td>{m.hexagonos.map((v: string) => <td><em>{v}</em></td>)}</tr>
+              )}
+            </>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">{MOLDES.hexagonosNota}</p>
+    <ul class="fraq">
+      {MOLDES.lista.map((m: any) => <li><strong>{m.nome}:</strong> {m.serve}</li>)}
+    </ul>
+    <p>{MOLDES.alcance.nota}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Molde</th><th>g3</th><th>g4</th><th>g5</th><th>g6</th></tr></thead>
+        <tbody>
+          {MOLDES.alcance.tabela.map((a: any) => (
+            <tr><td><strong>{a.molde}</strong></td><td>{a.g3}</td><td>{a.g4}</td><td>{a.g5}</td><td>{a.g6}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">{MOLDES.aura}</p>
+    <p>{MOLDES.cadeiaRessalva}</p>
+    <p>{MOLDES.cuboide}</p>
+    <p class="muted">{MOLDES.volume}</p>
+
+    <h2 id="tempo">O tempo da Arte, e quem está no caminho</h2>
+    <p>{TEMPO.nota}</p>
+    <div class="callout regra"><span class="lbl">A Arte sai no último Tick</span>
+      {TEMPO.ultimoTick.regra}
+    </div>
+    <p class="muted">{TEMPO.ultimoTick.excecao}</p>
+    <p>{TEMPO.ultimoTick.porque}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Momento</th><th>O que fica decidido</th></tr></thead>
+        <tbody>
+          {TEMPO.ultimoTick.tabela.map((t: any) => (
+            <tr><td><strong>{t.momento}</strong></td><td>{t.decide}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p><strong>{TEMPO.ultimoTick.resumo}</strong></p>
+
+    <h3>Ler o sinal: identificar o que está sendo conjurado</h3>
+    <p>{TEMPO.identificar.nota}</p>
+    <p><strong>De graça, por conhecer o ofício.</strong> {TEMPO.identificar.deGraca}</p>
+    <p><strong>Por teste, para todos os outros.</strong> {TEMPO.identificar.teste}</p>
+    <ul class="fraq">
+      {TEMPO.identificar.regras.map((r: string) => <li>{r}</li>)}
+    </ul>
+    <p class="muted">{TEMPO.identificar.ocultismo}</p>
+
+    <h3>A área não se esquiva nem se bloqueia. Ela se abandona.</h3>
+    <p>{TEMPO.area.regra}</p>
+    <p><strong>1. {TEMPO.area.deslocamentoLivre.titulo}.</strong> {TEMPO.area.deslocamentoLivre.texto}</p>
+    <p class="muted">{TEMPO.area.deslocamentoLivre.semGabarito}</p>
+    <p><strong>2. {TEMPO.area.desvio.titulo}.</strong> {TEMPO.area.desvio.texto}</p>
+    <p class="formula">{TEMPO.area.desvio.formula}</p>
+    <p>{TEMPO.area.desvio.dificuldadeEDaTarefa}</p>
+    <p class="muted">{TEMPO.area.desvio.escada}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Metros até ficar fora</th><th>Custa</th><th>Dif. metade do dano</th><th>Dif. dano nenhum</th></tr></thead>
+        <tbody>
+          {TEMPO.area.desvio.tabela.map((l: any) => (
+            <tr><td><strong>{l.metros}</strong></td><td>{l.custa}</td><td>{l.metade}</td><td>{l.nada}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="callout regra"><span class="lbl">Como se lê o resultado</span>
+      {TEMPO.area.desvio.leitura.nota}
+      <ul class="fraq">
+        {TEMPO.area.desvio.leitura.tabela.map((l: any) => (
+          <li>{l.resultado}: o alvo sofre <strong>{l.sofre}</strong>.</li>
+        ))}
+      </ul>
+    </div>
+    <p>{TEMPO.area.desvio.leitura.porqueDobrar}</p>
+    <ul class="fraq">
+      {TEMPO.area.desvio.condicoes.map((c: string) => <li>{c}</li>)}
+    </ul>
+    <p>{TEMPO.area.desvio.ficarParado}</p>
+    <p class="muted">{TEMPO.area.desvio.retorno.nota}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Quem tenta</th><th>Borda, 1 m</th><th>2 m</th><th>3 m</th><th>Núcleo, 4 m</th></tr></thead>
+        <tbody>
+          {TEMPO.area.desvio.retorno.tabela.map((l: any) => (
+            <tr><td><strong>{l.quem}</strong></td><td class="num">{l.m1}</td><td class="num">{l.m2}</td><td class="num">{l.m3}</td><td class="num">{l.m4}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>{TEMPO.area.desvio.direcoes}</p>
+    <div class="callout regra"><span class="lbl">O molde medido contra o passo grátis</span>
+      {TEMPO.area.contraOPasso}
+    </div>
 
     <h2 id="custo">O que custa, e o desconto da Centelha</h2>
     <div class="callout regra"><span class="lbl">A conta</span>
@@ -297,6 +495,9 @@ const EX_CONTA: [string, string, number][] = [
         <li>Se a penalidade de guardar feitiço acumula por feitiço, e se há teto de quantos dá para carregar.</li>
         <li>A <strong>dificuldade do teste de concentração</strong> ao sofrer dano sustentando um improviso: fixa, ou subindo com o tamanho do golpe.</li>
         <li><strong>Área × Volume está em revisão.</strong> A escada de Volume, a tabela de estado da matéria e o corte entre corpo e jurisdição podem mudar juntos.</li>
+        {MANI.emAvaliacao.map((p: string) => <li><strong>Manifestação:</strong> {p}</li>)}
+        {TEMPO.aRevisar.map((p: string) => <li><strong>Tempo e área:</strong> {p}</li>)}
+        <li><strong>Moldes:</strong> {MOLDES.aRevisar}</li>
         <li>A <strong>Fonte do Elemento</strong> tem uma escada por elemental e nenhuma para <strong>Areia</strong>, <strong>Som</strong> e o que mais vier. Hoje um deserto cai perto do fundo da régua da Terra, que trata material solto como fraco.</li>
         <li>Uma <strong>régua de luz</strong> (escuro, penumbra, tocha, dia): o que cada degrau faz nas rolagens e o que cada raça enxerga. Dela depende o <strong>halo</strong> de Luz e Sombra, que vaza para fora do volume comprado e muda a luz do lugar sem causar o efeito.</li>
         <li>Passar os <strong>Efeitos que hoje usam Área</strong> pela régua nova: doze deles medem corpo, não jurisdição, e deveriam usar Volume (Lascas, Onda, Maremoto, Sopro do Norte, Tromba, Sarçal, Erguer a Montanha, Clarão, Aurora, Escudo de Força). A Aura chama de <strong>Volume</strong> um parâmetro que é raio, e a escala própria da <strong>Neblina</strong> (125 m³ no topo) precisa ser reconciliada com o gás da tabela acima (64 m³).</li>
@@ -326,6 +527,14 @@ const EX_CONTA: [string, string, number][] = [
   .focos li { margin-bottom: .25rem; line-height: 1.5; }
   .fraq { margin: .4rem 0 .6rem; padding-left: 1.1rem; }
   .fraq li { margin-bottom: .25rem; line-height: 1.5; }
+  /* as seis linhas da manifestação são uma regra numerada, e a ordem importa */
+  .mani-regra { margin: .4rem 0 .8rem; padding-left: 1.3rem; }
+  .mani-regra li { margin-bottom: .3rem; line-height: 1.5; }
+  /* fórmula com variáveis: o Cinzel não tem caixa baixa, e aqui `n` e `N` são coisas diferentes */
+  .formula.mat { font-family: ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
+    font-weight: 500; letter-spacing: 0; font-size: var(--fs-rotulo); }
+  /* a linha de hexágonos é leitura de apoio da régua acima dela, e vem apagada */
+  .hex-row td { color: var(--ink-soft); font-size: var(--fs-micro); border-top: 0; padding-top: 0; }
   .artes-nav { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; margin: 2rem 0 .5rem; }
   .artes-nav-topo { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); margin: 1rem 0 1.2rem; }
   .cap-card { display: block; padding: .7rem .9rem; border: 1px solid var(--panel-border); border-radius: var(--r-md);

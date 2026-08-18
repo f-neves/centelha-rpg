@@ -784,8 +784,13 @@ toma o campo.
 
 ### O que ainda falta
 
-1. **`regras.json → arcano.improviso.manifestacao`**: a escada do lado da base, a trava das fatias, as
-   três aberturas e o fator de estado no lado. Hoje nada disso está no dado.
+1. ~~**`regras.json → arcano.improviso.manifestacao`**: a escada do lado da base, a trava das fatias,
+   as três aberturas e o fator de estado no lado.~~ **Feito em 2026-08-18**, junto com `arcano.moldes`
+   (a §5.3) e `arcano.tempoDaArte` (a §5.5). O capítulo XV renderiza os três em `#manifestacao`,
+   `#moldes` e `#tempo`. O bloco entrou na versão da **corda** com a abertura paga pela **distância**,
+   que é como a regra em seis linhas está escrita aqui; quando os itens 2 e 3 abaixo fecharem, é a
+   fórmula do volume no dado que muda. Falta ainda dizer **qual parâmetro compra o lado da base**
+   (Área ou Volume) e o que sobra do outro no improviso.
 2. **Quem paga a abertura: distância ou altura.** As duas estão medidas na bancada e a escolha é de
    jogo, não de conta: uma protege a decisão do jogador, a outra protege o alcance e entrega o raio
    grande pedido no começo desta revisão. É a decisão mais pesada que sobrou aqui, porque o resto da
