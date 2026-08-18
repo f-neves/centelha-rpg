@@ -515,6 +515,36 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   tabela de dano por queda, o Desgaste e os cinco números das peças do ofício, que destravariam
   o ajuste de peça na ficha deixar de ser um campo livre.
 
+## K. Combate · a linha do tempo
+
+Frente aberta em **2026-08-18**. Doc de trabalho: `Combate_Tempo.md`. Banco de provas:
+`scripts/sim-ticks.mjs` (motor herdado do `sim-duelo.mjs`, gerador semeado, doze baterias).
+A ideia é trocar a Velocidade única pelo par **Preparo/Recuperação**, com `P + R` igual à
+Velocidade de hoje, e generalizar o desvio de emergência da §5.5 do Arcano numa **dívida de
+Ticks**: agir fora da vez custa tempo emprestado do próprio futuro.
+
+- [x] **K1 · Fundação decidida (18/08).** O par `P/R` (leve 0/5 · média 1/5 · haste 0/6 ·
+  pesada 2/5), a guarda que se refaz **quando o golpe sai**, o Preparo que **não compra nada**,
+  e o golpe que **redireciona** quando o alvo cai antes de ele sair. Medido neutro: maior desvio
+  de +0,6 ponto em 9 armas e +1,1 em 12 células de arma × armadura.
+- [ ] **K2 · [DECIDIR] O catálogo das ações fora de hora.** O preço está calibrado (Velocidade
+  inteira em dívida, guarda não se refaz, uma por ação, e nenhuma penalidade de rolagem: as três
+  travas juntas dão desvio de +4,7, e tirar qualquer uma delas leva a +22 ou mais). Falta decidir
+  **quais ações** entram: sair da área e levantar são consenso, o **ataque fora de hora** é o que
+  pesa. Detalhe na §3 do `Combate_Tempo.md`.
+- [ ] **K3 · [DECIDIR] O que interromper compra.** A proposta medida é **espelho**: o golpe que
+  conecta em quem está montando atrasa a ação dele em tantos Ticks quantos o interruptor pagou
+  (desvio +4,7). Cancelar de vez derruba a arma pesada 17 pontos.
+- [ ] **K4 · [FAZER] O Preparo das armas de distância e de arremesso.** O banco só cobre corpo a
+  corpo. Arco e besta têm Velocidade 6 e 7, arremesso 4 a 6, e nenhum deles tem `P` proposto.
+- [ ] **K5 · [FAZER] A implementação, quando K2 e K3 fecharem.** `armas.json` (campo do Preparo,
+  provavelmente derivado da classe em `regras.json`), capítulo IX, a linha de combate da ficha e
+  o rastreador de Ticks da mesa (a barra de dois tons no trilho compartilhado).
+- [ ] **K6 · [DECIDIR] A leitura do sinal.** Identificar o que vem, e a finta como caso físico do
+  teste de Ocultismo da §5.5. É a parte que mais consome tempo de mesa; fica por último.
+- [ ] **K7 · [FAZER] A Lança está em 78,5%** contra todo o resto no round-robin, e isso já é assim
+  **hoje**, sem P/R nenhum. Não é desta revisão, mas o banco expôs e alguém precisa olhar.
+
 ## H. Arremesso
 
 Frente aberta em **2026-08-10** e até agora sem linha neste mapa. Três documentos:

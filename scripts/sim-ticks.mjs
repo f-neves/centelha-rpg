@@ -89,9 +89,9 @@ function lutador({ ah = 10, centelha = 1, vigor = 4, dmgAttr = 4, pv = 37, arma 
     die: w.die, acc: w.acc, hands: w.hands, mode: w.mode, perf: w.perf,
     spd: w.spd, cl: w.cl, prep: PREPARO[w.cl] ?? 0,
     arm: a, armClasse: a.classe, pen: a.pen,
-    guard: 0, proxDecl: 0, pend: null, divida: 0, dividaMax: 0, aparosNaJanela: 0,
+    guard: 0, guardaTravada: false, proxDecl: 0, pend: null, divida: 0, dividaMax: 0, aparosNaJanela: 0,
     // contadores de diagnóstico
-    golpesFeitos: 0, golpesPerdidos: 0, redirecionados: 0, empurroesSofridos: 0, aparosGastos: 0, aparosFeitos: 0,
+    golpesFeitos: 0, golpesPerdidos: 0, redirecionados: 0, foraDeHora: 0, foraNaJanela: 0, ticksDevidos: 0, empurroesSofridos: 0, aparosGastos: 0, aparosFeitos: 0,
     janelasVistas: 0, janelasAproveitadas: 0, declaracoes: 0,
   };
 }
@@ -104,7 +104,7 @@ function rolarAtaque(c) {
 }
 
 // Resolve um golpe já declarado. `M` é o modelo em vigor.
-function atacar(A, D, M) {
+function atacar(A, D, M, forcado = 0) {
   A.golpesFeitos++;
   let efDef = baseDef(D) - P_GUARDA * D.guard;
 
@@ -121,7 +121,7 @@ function atacar(A, D, M) {
     if (D.pend) D.pend.resolveEm += M.aparo.custo;
   }
 
-  const total = rolarAtaque(A);
+  const total = rolarAtaque(A) - forcado;
   const qaMargem = QA_W[A.die].b + QA_A[D.armClasse].b;
   let dano = 0, acertou = false;
   if (total > efDef) {
@@ -144,8 +144,15 @@ function atacar(A, D, M) {
   }
 
   // Empurrão: o golpe que conecta em quem está montando o próprio atrasa o dele.
-  if (acertou && M.empurrao && D.pend) {
-    D.pend.resolveEm += M.empurrao; D.proxDecl += M.empurrao;
+  // Um golpe desferido FORA DA HORA (forcado > 0 sinaliza a interrupção) pode valer mais:
+  // atrasar por um K maior, ou cancelar a ação montada de vez.
+  let K = A.interrompendo ? (M.interrupcao ?? M.empurrao) : M.empurrao;
+  // 'espelho': o alvo perde exatamente o tempo que o interruptor pagou. Simétrico e
+  // auto-calibrante (uma arma pesada interrompe por 7, uma leve por 5).
+  if (K === 'espelho') K = A.spd;
+  if (acertou && D.pend && K) {
+    if (K === 'cancela') { D.pend = null; D.abortados = (D.abortados || 0) + 1; }
+    else if (K) { D.pend.resolveEm += K; D.proxDecl += K; }
     D.empurroesSofridos++;
     A.janelasAproveitadas++;
   }
@@ -181,8 +188,43 @@ function cena(timeA, timeB, M, tetoTicks = 4000) {
       c.proxDecl = t + c.spd;
       if (M.guardaEm === 'declara') c.guard = 0;
       // A dívida foi paga: a ação que ela empurrou acabou de sair. A janela reabre.
-      c.divida = 0; c.aparosNaJanela = 0;
+      c.divida = 0; c.aparosNaJanela = 0; c.ticksDevidos = 0; c.foraNaJanela = 0;
     }
+    // 1b) AÇÃO FORA DE HORA: quem está em recuperação pode agir agora comprando Ticks
+    //     do próprio futuro. Custa a Velocidade da ação somada ao que ainda se devia,
+    //     rola com penalidade e NÃO refaz a guarda (não houve tempo de recompor).
+    if (M.fora) {
+      for (const c of todos) {
+        if (c.pv <= 0 || c.pend || c.proxDecl <= t) continue;          // já pode agir na hora
+        if (c.ticksDevidos + (M.fora.meio ? Math.ceil(c.spd / 2) : c.spd) > M.fora.teto) continue;            // teto da dívida
+        if (M.fora.umaPorJanela && c.foraNaJanela > 0) continue;        // uma por ação, sem encadear
+        const alvos = inimigosDe(c);
+        if (!alvos.length) continue;
+        // Gatilho: o que faz um jogador de verdade pagar Ticks do próprio futuro.
+        //  'janela'    = interromper quem está montando um golpe;
+        //  'finalizar' = matar quem está quase caindo antes que ele aja;
+        //  'sempre'    = teste de estresse (a política gananciosa, para achar o teto).
+        const naJanela = alvos.filter((x) => x.pend && x.pend.resolveEm > t);
+        const quaseMortos = alvos.filter((x) => x.pv / x.pvMax < 0.25);
+        let pool = alvos;
+        if (M.fora.gatilho === 'janela') { if (!naJanela.length) continue; pool = naJanela; }
+        else if (M.fora.gatilho === 'finalizar') { if (!quaseMortos.length) continue; pool = quaseMortos; }
+        else if (M.fora.gatilho === 'ambos') {
+          const u = [...new Set([...naJanela, ...quaseMortos])];
+          if (!u.length) continue; pool = u;
+        }
+        const alvo = pool.reduce((a, b) => (b.pv < a.pv ? b : a));
+        const custo = M.fora.meio ? Math.ceil(c.spd / 2) : c.spd;
+        c.proxDecl += custo;
+        c.ticksDevidos += custo;
+        c.foraDeHora++; c.foraNaJanela++;
+        if (M.fora.guardaCongela) c.guardaTravada = true;               // a guarda não se refaz
+        c.interrompendo = !!(alvo.pend && alvo.pend.resolveEm > t);
+        atacar(c, alvo, M, M.fora.pen);
+        c.interrompendo = false;
+      }
+    }
+
     // 2) resoluções: os golpes que caem neste tick, em ordem sorteada (sem viés de lado).
     const prontos = todos.filter((c) => c.pend && c.pend.resolveEm === t);
     for (let i = prontos.length - 1; i > 0; i--) {
@@ -201,7 +243,7 @@ function cena(timeA, timeB, M, tetoTicks = 4000) {
         vitima = outros.reduce((a, b) => (b.pv < a.pv ? b : a));
         c.redirecionados++;
       }
-      if (M.guardaEm === 'resolve') c.guard = 0;
+      if (M.guardaEm === 'resolve') { if (c.guardaTravada) c.guardaTravada = false; else c.guard = 0; }
       atacar(c, vitima, M);
     }
     const vivosA = timeA.some((c) => c.pv > 0), vivosB = timeB.some((c) => c.pv > 0);
@@ -216,7 +258,7 @@ function cena(timeA, timeB, M, tetoTicks = 4000) {
 function bateria(specA, specB, M, n = N, semente = SEED) {
   reseed(semente);
   let a = 0, b = 0, emp = 0, somaT = 0, perdidos = 0, feitos = 0;
-  let janelasV = 0, janelasA = 0, empurroes = 0, aparo = 0, dividaMax = 0, decls = 0, aparosN = 0;
+  let janelasV = 0, janelasA = 0, empurroes = 0, aparo = 0, dividaMax = 0, decls = 0, aparosN = 0, fora = 0;
   for (let i = 0; i < n; i++) {
     const A = lutador(specA), B = lutador(specB);
     const { r, t } = cena([A], [B], M);
@@ -226,7 +268,7 @@ function bateria(specA, specB, M, n = N, semente = SEED) {
       perdidos += c.golpesPerdidos; feitos += c.golpesFeitos;
       janelasV += c.janelasVistas; janelasA += c.janelasAproveitadas;
       empurroes += c.empurroesSofridos; aparo += c.aparosGastos;
-      decls += c.declaracoes; aparosN += c.aparosFeitos;
+      decls += c.declaracoes; aparosN += c.aparosFeitos; fora += c.foraDeHora;
       dividaMax = Math.max(dividaMax, c.dividaMax);
     }
   }
@@ -234,7 +276,7 @@ function bateria(specA, specB, M, n = N, semente = SEED) {
     win: a / n, perda: b / n, empate: emp / n, ticks: somaT / n,
     perdidosPct: feitos ? perdidos / (feitos + perdidos) : 0,
     janelasV: janelasV / n, janelasA: janelasA / n,
-    janelaTaxa: decls ? janelasV / decls : 0, aparosN: aparosN / n,
+    janelaTaxa: decls ? janelasV / decls : 0, aparosN: aparosN / n, fora: fora / n,
     empurroes: empurroes / n, aparo: aparo / n, dividaMax,
   };
 }
@@ -412,4 +454,79 @@ titulo('I) O pacote recomendado (P/R guarda-no-resolve + redirecionar + empurrã
   linha();
   linha(`  duração do duelo espelho: hoje ${dur0.ticks.toFixed(1)}t → completo ${dur1.ticks.toFixed(1)}t (${sgn(dur1.ticks - dur0.ticks)}t)`);
 }
+linha();
+
+// ---- J) ação fora de hora: quanto custa para não virar dominante ----------
+titulo('J) Ação fora de hora — atacar comprando Ticks do próprio futuro.');
+linha('  Regra sob teste: você age agora; sua próxima ação anda a Velocidade INTEIRA para frente');
+linha('  (somada ao que já devia), a rolagem leva uma penalidade, a guarda NÃO se refaz e não dá');
+linha('  para encadear duas (uma por ação sua). O gatilho é o que um jogador faria de verdade.');
+linha();
+const PRb = MODELOS.PR;
+const baseCls = porClasse(roundRobin(PRb));
+const baseDur = bateria({ arma: 'EspLonga' }, { arma: 'EspLonga' }, PRb).ticks;
+function economia(gatilho, pen, umaPorJanela = true, teto = 14) {
+  const M = { ...PRb, fora: { gatilho, pen, guardaCongela: true, umaPorJanela, teto } };
+  const cls = porClasse(roundRobin(M));
+  const dz = bateria({ arma: 'EspLonga' }, { arma: 'EspCurta' }, M);
+  const desvio = Math.max(...['leve', 'media', 'haste', 'pesada'].map((c) => Math.abs(cls[c] - baseCls[c])));
+  return { cls, dz, desvio };
+}
+linha('  gatilho     pen.   leve    média   haste   pesada   pior desvio   ações/duelo   duração');
+linha(`  ${'(referência)'.padEnd(11)} ${'—'.padEnd(6)} ${pct(baseCls.leve).padStart(6)}  ${pct(baseCls.media).padStart(6)}  ${pct(baseCls.haste).padStart(6)}  ${pct(baseCls.pesada).padStart(6)}      —            —          ${baseDur.toFixed(1)}t`);
+for (const gat of ['janela', 'finalizar', 'ambos', 'sempre']) {
+  for (const pen of [0, 2, 4, 6]) {
+    const r = economia(gat, pen);
+    linha(`  ${gat.padEnd(11)} ${('−' + pen).padEnd(6)} ${pct(r.cls.leve).padStart(6)}  ${pct(r.cls.media).padStart(6)}  ${pct(r.cls.haste).padStart(6)}  ${pct(r.cls.pesada).padStart(6)}   `
+      + `${sgn(r.desvio * 100).padStart(7)}       ${r.dz.fora.toFixed(2).padStart(5)}        ${r.dz.ticks.toFixed(1)}t`);
+  }
+  linha();
+}
+linha('  sem a trava de "uma por ação" (encadeando enquanto o teto da dívida deixar):');
+for (const gat of ['janela', 'ambos']) {
+  const r = economia(gat, 4, false);
+  linha(`  ${gat.padEnd(11)} ${'−4'.padEnd(6)} ${pct(r.cls.leve).padStart(6)}  ${pct(r.cls.media).padStart(6)}  ${pct(r.cls.haste).padStart(6)}  ${pct(r.cls.pesada).padStart(6)}   `
+    + `${sgn(r.desvio * 100).padStart(7)}       ${r.dz.fora.toFixed(2).padStart(5)}        ${r.dz.ticks.toFixed(1)}t`);
+}
+linha();
+
+// ---- K) o que a interrupção COMPRA -------------------------------------
+titulo('K) O que interromper compra — o golpe fora de hora que conecta em quem está montando.');
+linha('  Em J) a interrupção não comprava nada, e por isso era um péssimo negócio. Aqui ela atrasa');
+linha('  o golpe montado em K Ticks, ou o cancela de vez (a ação se perde, a Velocidade não volta).');
+linha();
+linha('  o que compra        pen.   leve    média   haste   pesada   pior desvio   ações/duelo   duração');
+linha(`  ${'(referência)'.padEnd(19)} ${'—'.padEnd(6)} ${pct(baseCls.leve).padStart(6)}  ${pct(baseCls.media).padStart(6)}  ${pct(baseCls.haste).padStart(6)}  ${pct(baseCls.pesada).padStart(6)}      —            —          ${baseDur.toFixed(1)}t`);
+function interromper(compra, pen) {
+  const M = { ...MODELOS.PR, interrupcao: compra, fora: { gatilho: 'janela', pen, guardaCongela: true, umaPorJanela: true, teto: 14 } };
+  const cls = porClasse(roundRobin(M));
+  const dz = bateria({ arma: 'EspCurta' }, { arma: 'Martelo' }, M);
+  const desvio = Math.max(...['leve', 'media', 'haste', 'pesada'].map((c) => Math.abs(cls[c] - baseCls[c])));
+  return { cls, dz, desvio };
+}
+for (const [compra, lbl] of [[1, 'atrasa 1 Tick'], [2, 'atrasa 2 Ticks'], [3, 'atrasa 3 Ticks'], [5, 'atrasa 5 Ticks'], ['espelho', 'atrasa o que paguei'], ['cancela', 'cancela a ação']]) {
+  for (const pen of [0, 2, 4]) {
+    const r = interromper(compra, pen);
+    linha(`  ${lbl.padEnd(19)} ${('−' + pen).padEnd(6)} ${pct(r.cls.leve).padStart(6)}  ${pct(r.cls.media).padStart(6)}  ${pct(r.cls.haste).padStart(6)}  ${pct(r.cls.pesada).padStart(6)}   `
+      + `${sgn(r.desvio * 100).padStart(7)}       ${r.dz.fora.toFixed(2).padStart(5)}        ${r.dz.ticks.toFixed(1)}t`);
+  }
+  linha();
+}
+
+// ---- L) isolando cada trava do preço --------------------------------------
+titulo('L) Qual trava está segurando o preço — tirando uma de cada vez (interrupção espelho, sem penalidade).');
+linha('  variante                                   leve    média   haste   pesada   pior desvio   ações/duelo  duração');
+linha(`  ${'(referência, sem ação fora de hora)'.padEnd(42)} ${pct(baseCls.leve).padStart(6)}  ${pct(baseCls.media).padStart(6)}  ${pct(baseCls.haste).padStart(6)}  ${pct(baseCls.pesada).padStart(6)}      —           —         ${baseDur.toFixed(1)}t`);
+function trava(lbl, fora, extra = {}) {
+  const M = { ...MODELOS.PR, interrupcao: 'espelho', fora: { gatilho: 'janela', pen: 0, guardaCongela: true, umaPorJanela: true, teto: 14, ...fora }, ...extra };
+  const cls = porClasse(roundRobin(M));
+  const dz = bateria({ arma: 'EspCurta' }, { arma: 'Martelo' }, M);
+  const desvio = Math.max(...['leve', 'media', 'haste', 'pesada'].map((c) => Math.abs(cls[c] - baseCls[c])));
+  linha(`  ${lbl.padEnd(42)} ${pct(cls.leve).padStart(6)}  ${pct(cls.media).padStart(6)}  ${pct(cls.haste).padStart(6)}  ${pct(cls.pesada).padStart(6)}   ${sgn(desvio * 100).padStart(7)}      ${dz.fora.toFixed(2).padStart(5)}       ${dz.ticks.toFixed(1)}t`);
+}
+trava('preço cheio (as três travas)', {});
+trava('sem a trava da guarda (ela se refaz)', { guardaCongela: false });
+trava('sem a trava de uma por ação', { umaPorJanela: false });
+trava('custo meia Velocidade em vez da inteira', { meio: true });
+trava('sem trava nenhuma (guarda, encadeia, meio custo)', { guardaCongela: false, umaPorJanela: false, meio: true });
 linha();
