@@ -9,8 +9,8 @@
 > **[FAZER]** = já decidido, é trabalho de execução.
 > **[AUTOR]** = frente de escrita sua, não minha.
 
-**Placar:** 67 itens abertos · 34 [DECIDIR] · 28 [FAZER] · 5 [AUTOR]
-Por frente: **Arcano 19** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
+**Placar:** 68 itens abertos · 35 [DECIDIR] · 26 [FAZER] · 5 [AUTOR]
+Por frente: **Arcano 20** · **Bestiário 9** · Mesa 9 · Lore 6 · Ações & Sistema 5 · Proezas 5 ·
 Trilhas 4 · Arremesso 4 · Infraestrutura 4 · Social 2
 
 > **Mesa, 2026-08-12:** fechou **I7** (névoa de guerra) e entraram **I9** (caderno de melhorias do
@@ -131,6 +131,23 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   lençol rasteiro a jogada quase sempre certa; o da distância protege a decisão do jogador, e em troca
   não entrega o raio. Há um meio-caminho registrado na §5.4 e não implementado: cobrar as duas em
   parte (altura em n ÷ √N), com o volume caindo por √N.
+  **Argumento novo, de 2026-08-18 (§5.5):** com a saída da área custando **1 Tick por metro**, o
+  **Deslocamento livre** (`(Destreza + Atletismo) ÷ 2`, de 1,5 a 5 m, grátis durante outra ação) passa
+  a ser a régua contra a qual o molde é medido, e ela separa os dois modelos. A roda de 360° do modelo
+  da **distância** tem raio de **0,87 m**: sai-se dela de graça, na própria vez, e o Volume comprado
+  não prende ninguém. A do modelo da **altura** tem raio de **5,20 m**: sair custa até 5 Ticks, e é o
+  primeiro molde do jogo que não caiba num passo grátis. Se o Volume tem de valer contra quem pode se
+  mexer, o modelo da altura é o único dos dois que entrega isso.
+- [ ] **A23 · [DECIDIR] Os três números que faltam na área.** Aberto em 2026-08-18 pela **§5.5** do
+  `Arcano_revisao.md`, que fechou a mecânica e deixou os números. (1) **A Dificuldade do teste de
+  desvio**: desviar de uma área custa Ticks (1 por metro) **e** pede teste, e o número não está
+  escolhido. Candidatos: a régua dos Efeitos (`(nível da Arte) × 4`, que no grau 6 dá 24 e ninguém
+  passa), uma régua própria mais mansa porque a área acerta muita gente de uma vez, ou a distância a
+  vencer virando a Dificuldade. (2) **Falhar custa os Ticks?** (3) **A Dificuldade da identificação**
+  (Inteligência + Ocultismo para saber o que está sendo conjurado) e **o quanto ela cai a cada Tick**
+  de preparo. Junto vai a promoção da pendência 14 do doc: a Dificuldade do teste de concentração
+  virou central, porque quebrar a conjuração nos 5 a 7 Ticks de preparo é a contrajogada do corpo a
+  corpo, e falta dizer se ela vale para o preparo e se o Mana volta.
 - [ ] **A21 · [DECIDIR] A base da fatia fica em corda ou vai para arco.** Aberta em 2026-08-17, e as
   três versões estão medidas na bancada, no controle **Base**. Na **corda** a base é uma reta a
   `distância` metros e o chão é um triângulo. No **arco** o lado do triângulo vira **raio**: no grau 6
@@ -150,6 +167,13 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   lá, então é o que liga a decisão à mesa. Espera a **A22** e a **A21**, porque o modelo e a base
   escolhidos mudam a fórmula do volume. Junto vai a decisão de onde mora: bloco novo
   `arcano.improviso.manifestacao`, e o que sobra do `graus.volume` e do `graus.area` de hoje.
+  **Cresceu em 2026-08-18:** a **§5.5** também precisa ir para o dado e para o site, e essa parte
+  **não espera decisão nenhuma**, porque a mecânica está fechada. São quatro coisas: (a) a Arte sai no
+  **último Tick** (`arcano.feiticoTicks` ganha essa nota, e o capítulo XV diz hoje só "custa Ticks
+  como uma ação"); (b) o que trava na declaração e o que trava no último Tick; (c) identificar o
+  feitiço em preparo; (d) **área não se esquiva nem se bloqueia, sai-se dela a 1 Tick por metro**, que
+  é o pagamento da promessa que o capítulo de combate já faz em `combate.md` ("nem tudo se bloqueia ou
+  se esquiva... cobram outra saída").
 - [ ] **A16 · [DECIDIR] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
   oito escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais aparecer. O caso
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,

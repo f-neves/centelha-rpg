@@ -813,6 +813,129 @@ conjurador no meio, e conta os inimigos pegos em três formações. Os controles
 
 ---
 
+## 5.5. Quem está no caminho: o tempo da Arte, e as duas saídas
+
+**Decidido em 2026-08-18.** A §5.4 diz **onde** o elemento aparece. Esta seção diz o que acontece com
+quem está lá, e ela nasce de uma regra de tempo que nunca esteve escrita em lugar nenhum.
+
+### A Arte sai no ÚLTIMO Tick da ação
+
+> **Ação comum:** resolve no primeiro Tick (ou nos primeiros), e o resto da Velocidade é recuperação.
+> **Arte:** resolve no **último**. Uma conjuração de 7 Ticks acontece **no sétimo**.
+
+Vale mesmo quando a conjuração ocupa várias ações, e vale **a não ser que o Efeito Especial diga o
+contrário**: um Efeito pode comprar o direito de sair na hora, e é dele o ônus de dizer isso na
+própria ficha.
+
+Isso não é detalhe de cronometragem, é a peça que sustenta todo o resto. Como a Arte se anuncia por
+cinco a sete Ticks, **sair de perto pode ser movimento normal, na vez do alvo**, e não uma reação
+fora de hora. O capítulo de combate já prometia essa saída com estas palavras: *"nem tudo se bloqueia
+ou se esquiva: uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída."*
+
+E é o que faz da Arte uma **decisão tomada com antecedência**: o feiticeiro compromete cinco a sete
+Ticks montando uma coisa que os outros podem ver se juntando, e tem de acertar onde o inimigo **vai
+estar**, não onde ele está.
+
+| Momento | O que fica decidido |
+|---|---|
+| **Declaração**, no primeiro Tick | se é improviso ou **Efeito Especial**, e **quanto** de cada parâmetro: Duração, Alcance, Volume, Dano, Alvos |
+| **Último Tick**, quando sai | **para onde e como**: o alvo, a direção, a abertura das fatias, o ângulo, onde a base pousa |
+
+A divisão é essa: **na declaração se compra o tamanho, no último Tick se dá a forma e a mira.** O
+feiticeiro não fica preso à posição que o inimigo tinha sete Ticks antes, e também não pode trocar de
+feitiço porque a situação mudou.
+
+### Ler o sinal: identificar o que está sendo conjurado
+
+Nem todo mundo entende o que está vendo se juntar. Há duas maneiras de saber.
+
+**De graça, por conhecer o ofício.** Quem tem a **mesma Tradição** daquela Arte, **o nível da Arte**
+e, sendo Efeito Especial, **conhece aquele Efeito**, reconhece na hora, sem teste. Você identifica de
+imediato o que você mesmo saberia fazer.
+
+**Por teste, para todos os outros.** **Inteligência + Ocultismo** (ou a habilidade específica que
+aquela Arte pedir) contra uma Dificuldade que **cai a cada Tick que passa**: no primeiro Tick o sinal
+é um arrepio no ar, no último é uma bola de fogo pronta na mão. Regras do teste:
+
+- **Um teste por efeito.** Não se insiste.
+- **O jogador escolhe em que Tick testa**, e essa é a decisão interessante: cedo é difícil e rende
+  tempo para agir; tarde é fácil e não rende nada.
+- Só se repete havendo **motivo novo**: o feiticeiro diz o nome, o elemento se revela, um aliado
+  identificou e avisou.
+
+Isso dá ao **Ocultismo** o emprego que a limpeza de 2026-08-17 deixou vago: ele não conjura, ele
+**lê**.
+
+### A área não se esquiva nem se bloqueia. Ela se abandona.
+
+Contra área não existe Esquiva nem Bloqueio, e isso é escolha: as duas são números contra um golpe que
+vem de uma direção, e a área não vem de direção nenhuma, ela **ocupa o espaço**. Quem está lá quando
+ela sai, come. As saídas são duas, e só uma é grátis.
+
+**1. Na sua vez, o Deslocamento livre.** `(Destreza + Atletismo) ÷ 2` metros, de graça, durante
+qualquer outra ação, inclusive atacar ou conjurar. São 1,5 m para o camponês, 3,5 para o aventureiro,
+5 para o herói. Quem leu o sinal com Ticks de sobra simplesmente **não está mais lá**, e não paga
+nada por isso.
+
+**2. Fora da vez, no Tick em que a Arte sai: o desvio de emergência.** Custa **1 Tick por metro** que
+falte para o corpo sair, e esses Ticks **empurram para frente a próxima ação do alvo**. É a única
+coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque **não é grátis**:
+é emprestada do próprio futuro, como uma ação lenta atrasa a seguinte.
+
+<p class="formula">Ticks de desvio = metros até ficar fora, pela direção mais barata</p>
+
+| Onde o alvo está | Metros até fora | Custa |
+|---|---|---|
+| **Borda** do molde | ~1 m | 1 Tick |
+| Meio de um molde pequeno | 2 m | 2 Ticks |
+| **Núcleo** de um molde grande | 3 a 4 m | 3 a 4 Ticks |
+
+**As três direções valem, e todas cobram.** Sair pelos lados, **jogar-se ao chão** (quando a faixa do
+elemento não encosta no piso) ou **saltar por cima** (quando ela é rasteira) são a mesma conta: o que
+importa é quantos metros faltam para o corpo ficar fora, e cada metro é um Tick.
+
+É aqui que os **dois controles de altura da §5.4** deixam de ser enfeite. Faixa que sobe do chão
+obriga a sair pelos lados ou a saltar; faixa com o pé a um metro do chão se resolve **caindo**, e cair
+é barato. Onde o feiticeiro pousa a base decide **qual saída ele deixa aberta**.
+
+### O tamanho do molde, medido contra o passo grátis
+
+Esta é a régua que faltava na §5.4, e ela é dura: **um molde só prende quem não sai dele de graça.**
+O Deslocamento livre humano vai de 1,5 a 5 m, e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 ·
+6 m) atravessa exatamente essa faixa. Do grau 1 ao 3 o molde é menor que o passo de quase todos, e
+serve para pegar quem está preso; do 5 ao 6 ele passa do passo do herói.
+
+No grau 6 fechando 360°, os dois modelos da A22 respondem de maneira oposta:
+
+| Modelo | A roda de 360° é | Sair pede | Contra um passo grátis de 4 m |
+|---|---|---|---|
+| **distância** | disco de raio **0,87 m** | ~1 m, 1 Tick | sai de graça, na própria vez |
+| **altura** | disco de raio **5,20 m** | até 5,2 m, 5 Ticks | **não sai de graça** |
+
+No modelo da distância, abrir encolhe o molde para dentro do passo de qualquer um, e o Volume
+comprado deixa de prender. No modelo da altura, o grau 6 é o primeiro molde do jogo que custa mais do
+que um passo. **É argumento de peso na A22**, e não estava na mesa quando ela foi escrita.
+
+### O que continua aberto
+
+1. **A Dificuldade do teste de desvio.** Está decidido que desviar custa Ticks **e** pede teste; o
+   número, não. Três candidatos: a Dificuldade fixa do Efeito (`(nível da Arte) × 4`, a régua que 16
+   Efeitos já usam), uma régua própria mais mansa porque a área acerta muita gente de uma vez, ou a
+   própria distância a vencer virando a Dificuldade.
+2. **Falhar custa os Ticks?** Falhando, o alvo come o efeito. Falta dizer se ele paga os Ticks de
+   qualquer maneira (tentou e se atrapalhou) ou se falhar significa que nem saiu do lugar.
+3. **A Dificuldade da identificação, e o quanto ela cai por Tick.** Precisa casar com a régua do
+   capítulo de Ações (5 · 10 · 15 · 20 · 25 · 30) e com o fato de que o teste é escolha de momento.
+4. **A pendência 14 virou central.** Com cinco a sete Ticks de exposição, quebrar a conjuração é a
+   contrajogada do corpo a corpo. Falta a Dificuldade do teste de concentração, se ele vale para o
+   **preparo** (e não só para o sustentar) e se o Mana volta quando o feitiço cai.
+5. **Proezas de Destreza são o lugar da exceção**, e não como "rolar para desviar": como **sair mais
+   barato**. Um desvio que custe menos Ticks por metro, um Deslocamento livre maior contra área ou, no
+   topo, o direito comprado de se mover fora da vez sem teste. É o Evasion do D&D dito na economia de
+   Ticks, e por ser comprado é exceção legítima em vez de regra universal.
+
+---
+
 ## 6. Dano, empurrão e tempo
 
 ### Dano por Arte
@@ -856,6 +979,12 @@ A Neblina de nível 1 com área dois degraus acima gasta 4 + 1 + 2 = 7 Ticks. O 
 que justifica o Efeito ser especial é o que ele paga em tempo. O feitiço genérico continua na
 escada atual (5 Ticks nos níveis 1 a 3, 6 no 4, 7 nos 5 e 6): o genérico é o improviso
 pequeno, o Efeito é a obra ensaiada.
+
+**E esses Ticks são de preparo, não de recuperação.** A Arte sai no **último** Tick da ação, ao
+contrário do golpe de espada, que resolve no primeiro: a conjuração de 7 Ticks acontece no sétimo.
+É o que dá ao alvo uma janela para sair de perto usando a própria vez, e é o que faz a Arte ser
+decisão tomada com antecedência. A regra inteira, com o que trava na declaração e o que trava no
+último Tick, está na **§5.5**.
 
 **Isso é o desenho do Efeito**, o que vem impresso nele. Forçar além do impresso, na hora da
 conjuração, é outra coisa: ver a seção seguinte.
@@ -1084,7 +1213,12 @@ mato vivo), Metamorfose (ossos, pele, penas, garras). Ver Pendência 9.
 
 ## 10. Pendências
 
-> **Leia a §5.4 antes desta lista.** A geometria do improviso mudou em 2026-08-17: a manifestação
+> **Leia a §5.4 e a §5.5 antes desta lista.** A §5.5 é de 2026-08-18 e traz a regra mais
+> estruturante do capítulo, que nunca tinha sido escrita: **a Arte sai no último Tick da ação**. Dela
+> saem o que trava na declaração e o que trava na hora, como se identifica um feitiço em preparo, e o
+> fato de que **área não se esquiva nem se bloqueia: ela se abandona, a 1 Tick por metro**.
+>
+> A geometria do improviso mudou em 2026-08-17: a manifestação
 > passou a ser **fatias de 60°, 90° ou 120°** saindo do feiticeiro, com o número de fatias travado
 > pelo nível, e os moldes da §5.3 viraram o que se compra com XP. Várias pendências abaixo foram
 > escritas quando o improviso ainda moldava livremente, e onde as duas discordarem, **valem as §5.3
@@ -1296,39 +1430,19 @@ a máquina de substituição por Arte que a seção 5 já tem. A 5.2 tirou a urg
 que nunca é colocada não gera as perguntas de ancoragem e de borda que motivaram a discussão, mas
 a Água continua sem resposta para "quanta água é esta".
 
-**25. O acerto da Arte em área: quem rola, e quem pode escapar.** Aberta em 2026-08-17, e é a
-pendência que a §5.4 destrava: a manifestação já diz **onde** o elemento aparece, e não diz o que
-acontece com quem está lá. Cinco perguntas na mesa, e as três primeiras estão amarradas:
+**25. O acerto da Arte em área. RESOLVIDO EM PARTE, em 2026-08-18: virou a §5.5.** O que ficou
+decidido: a Arte sai no **último Tick** (salvo Efeito que diga o contrário); parâmetros travam na
+declaração e **mira e forma travam no último Tick**; identificar o que está sendo conjurado é grátis
+para quem tem a Tradição, o nível e o Efeito, e é **Inteligência + Ocultismo** para os outros, com a
+Dificuldade caindo a cada Tick e **um teste por efeito**; a área **não se esquiva nem se bloqueia**,
+e as saídas são o **Deslocamento livre** na própria vez (grátis) ou o **desvio de emergência** fora
+da vez, a **1 Tick por metro** até ficar fora, pelos lados, pelo chão ou por cima.
 
-1. **O acerto é automático?** A área não mira ninguém: ela ocupa espaço que já foi pago em pontos.
-   Cobrar pontaria por cima disso é cobrar duas vezes, e o **Acerto Arcano** é, pela própria
-   descrição, a perícia do que "sai da mão e voa até o alvo". Então o mais provável é que a área
-   **não tenha jogada do conjurador**, e que quem role seja quem está dentro.
-2. **Contra o quê?** A régua de Dificuldade dos Efeitos já existe: **(nível da Arte) × 4** ou **× 5**.
-   O problema é que ela foi calibrada para **um** alvo. Numa fatia que pega dezenas de corpos, ela
-   vira extermínio: com o pool sendo metade da soma em dados, o veterano (Vigor 5 + Resistência 4)
-   passa em 84% contra Arte 3 (Dif 12), 44% contra Arte 4, 10% contra Arte 5 e **0,4%** contra Arte 6
-   (Dif 24). Na régua × 5, o grau 6 vira Dificuldade 30 e nem o teto mortal passa. Ou a área usa
-   outra régua, ou ela precisa custar mais caro em outro lugar.
-3. **Qual jogada?** Duas, e a diferença é de ficção: **Destreza + Esquiva** responde "deu tempo de
-   sair", **Vigor + Resistência** responde "o corpo aguenta". A segunda é a do capítulo *Resistir*,
-   que já tem a escada pronta (`passa por Margem = nada · passa = metade · falha = inteiro`) e já
-   trata casa em chamas como Severidade 10, não como morte automática.
-4. **Quem está imerso pode testar?** Sim, mas não para zerar: para **aguentar**, e aguentar entrega
-   **metade**. Dentro de 62 m³ de chama não se desvia.
-5. **Onde fica a linha entre imerso e parcial?** A geometria da §5.4 já calcula a resposta, porque
-   ela sabe a faixa de altura que o elemento ocupa em cada hexágono. A proposta é: **imerso quando a
-   faixa cobre o corpo inteiro na altura em que ele está** (1,8 m de pé, 0,5 m deitado) **ou quando
-   não há hexágono livre a um passo**. Qualquer um dos dois tira a Esquiva.
-
-O precedente do sistema para "a física do golpe apaga uma rota de defesa" é a regra do **projétil
-rápido**, que usa cobertura (30% do corpo) mais uma lista de estar **apto**. E o precedente para as
-tags está escrito dentro de um Efeito de imobilizar: *"o ataque é imbloqueável, mas pode ser
-esquivado"*.
-
-**Consequência de projeto que essa linha tem de graça, e é o motivo de eu preferi-la:** o **lençol
-rasteiro** do modelo da altura (§5.4) devolve a Esquiva para todo mundo, porque 1 m de teto não cobre
-o peito de quem está de pé. A decisão da A22 ganha um freio automático em vez de precisar de regra.
+Sobrou o que a §5.5 lista no fim, e são três números e uma promoção: a **Dificuldade do desvio**, se
+**falhar custa os Ticks**, a **Dificuldade da identificação** (e o quanto ela cai por Tick), e a
+pendência **14**, que virou central porque quebrar a conjuração passou a ser a contrajogada do corpo
+a corpo. As **Proezas de Destreza** ficaram registradas como o lugar da exceção, no formato "sair mais
+barato" e nunca no formato "rolar para desviar".
 
 ---
 
