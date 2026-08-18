@@ -200,14 +200,15 @@
     "definicao": "Compaixão, Convicção, Temperança, Bravura (1–6): movem a alma e alimentam resistências e façanhas."
   },
   {
-    "id": "manobra",
-    "termo": "Manobra",
+    "id": "firula",
+    "termo": "Firula",
     "aliases": [
       "stunt",
+      "manobra",
       "manobra criativa",
-      "manobra infeliz"
+      "firula infeliz"
     ],
-    "definicao": "Bônus daquele lance, por descrever a ação com criatividade e uso do cenário: +2 fixo, +1d6 ou +2d6. Não se compra nem se aprende, e vale para qualquer personagem. Nas Relações Sociais é o gesto certeiro e soma +1/+2/+4; o gesto que desagrada é uma Manobra Infeliz e subtrai igual."
+    "definicao": "Bônus daquele lance, por descrever a ação com criatividade e uso do cenário: +2 fixo, +1d6 ou +2d6. Não se compra nem se aprende, e vale para qualquer personagem. Nas Relações Sociais é o gesto certeiro e soma +1/+2/+4; o gesto que desagrada é uma Firula Infeliz e subtrai igual."
   },
   {
     "id": "valor-passivo",

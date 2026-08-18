@@ -89,7 +89,7 @@ subir o vínculo custa esforço. E repare: conversa **afina** o laço (de amigo 
 **atos** que costumam criá-lo do zero.
 
 Para um cortejo longo e sem pressa há um **modo estendido**: em vez de rolar, você toma o
-resultado médio e vai **empilhando gestos (Manobras)** ao longo do tempo, de forma ativa (arriscada)
+resultado médio e vai **empilhando gestos (Firulas)** ao longo do tempo, de forma ativa (arriscada)
 ou passiva (segura e lenta). Veja a *Influência Estendida* no capítulo de Combate Social.
 
 ### Favor gasta crédito

@@ -42,7 +42,7 @@ Cada ação tem uma **Velocidade** — quantos Ticks ela custa antes de você po
 
 ## O ataque: acertar e a Margem
 
-Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Especialidade, Manobras e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
+Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Especialidade, Firulas e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
 
 <p class="formula">Ataque = (Atributo + Habilidade)/2 + Especialidade + Arma + Centelha</p>
 

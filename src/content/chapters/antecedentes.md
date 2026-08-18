@@ -63,7 +63,7 @@ obediência eterna.
 Um Antecedente pode somar a uma jogada, mas com regra estreita, para o social não inflar. Quem
 divide o terreno com ele é a [Aparência](/regras/aparencia-virtudes-vontade), que é o bônus social
 **geral** (entra em toda jogada social, incluindo o [Combate Social](/regras/relacoes-sociais),
-sempre que a aparência importe, para o bem ou para o mal), e a **Manobra**
+sempre que a aparência importe, para o bem ou para o mal), e a **Firula**
 ([Habilidades](/regras/habilidades)), que entra em **qualquer** jogada, social ou não, pela
 qualidade da descrição.
 
@@ -307,7 +307,7 @@ momento.
 - **Únicos:** Recursos, Linhagem, Fé. **Nomeados** (várias instâncias, cada uma de 1 a 6): os
   outros onze.
 - **Teto 3 na criação** para Recursos e Relíquia.
-- **Bônus:** Aparência é geral em toda jogada social; a Manobra entra em qualquer jogada; o
+- **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada; o
   situacional de Antecedente só move a Régua de Relação, somando até +6.
 - **Voláteis:** sobem e caem na ficção, e o XP perdido volta como crédito.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se

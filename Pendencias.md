@@ -415,18 +415,20 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   soltar. **Sinalizar à distância** foi para Sentidos e mente, depois de Enxergar longe, que é a
   ação de que ela é o oposto, e é a que menos tem de onde copiar: só o `GURPS` tem perícia
   própria para isso. As duas estão nos três documentos, e a §12 do catálogo ficou vazia.
-- [x] **G8 · [DECIDIDO 2026-08-17] "Stunt" virou **Manobra**.** A palavra saiu de 14 lugares no
+- [x] **G8 · [DECIDIDO 2026-08-18] "Stunt" virou **Firula**.** A palavra saiu de 14 lugares no
   site (`habilidades.md`, `combate.md`, `relacoes-sociais.md`, `glossario.json`) e de 29 nos docs
   de trabalho (`Combate_Social.md`, `Acoes_Sistema.md`, `Regua_Relacao.md`, `Antecedentes.md`,
-  `Relacoes.md`, `Reescala.md`, `resumo-regras.txt`), de uma vez. Três decisões junto da palavra:
-  o oposto é **Manobra Infeliz**, e não "Contra Manobra", que leria como contragolpe; "manobra"
-  **deixou de ser apelido de Técnica** no glossário, para a palavra não ter dois donos (Técnica é o
-  que se compra com XP, Manobra é o que nasce da descrição e vale só naquele lance), e o capítulo
-  de Habilidades ganhou o parágrafo que diz isso em voz alta. O texto foi **reescrito frase a
-  frase**, e não trocado no braço: "empilhando gestos (stunts)" virou "empilhando Manobras", com a
-  explicação de que ali elas são gestos. Fica anotado que existe uma Técnica chamada **Ler a
-  Manobra** (Estrategista N3), que não muda de nome: o sentido dela é o tático, e o contexto
-  separa os dois.
+  `Relacoes.md`, `Reescala.md`, `resumo-regras.txt`), de uma vez. **Passou por Manobra no
+  caminho:** em 17/08 o termo escolhido foi Manobra, e em 18/08 virou **Firula**, por três razões
+  do autor · ela tem ar cômico, tem significado largo, e não se confunde com manobra de combate
+  nem com a Técnica **Ler a Manobra** (Estrategista N3), que segue com o nome dela. O oposto é
+  **Firula Infeliz**, e não "Contra Firula", que leria como contragolpe. No glossário a entrada
+  guarda **"stunt" e "manobra" como apelidos**, para quem procurar por qualquer um dos dois nomes
+  velhos achar o novo, e "manobra" deixou de ser apelido de **Técnica**, para a palavra não ter
+  dois donos: Técnica é o que se compra com XP, Firula é o que nasce da descrição e vale só
+  naquele lance, e o capítulo de Habilidades diz isso em voz alta. O texto foi **reescrito frase a
+  frase**, e não trocado no braço: "empilhando gestos (stunts)" virou "empilhando Firulas", com a
+  explicação de que ali elas são gestos.
 - [x] ~~**G9 · Três listas paralelas das mesmas ações.**~~ **Unificadas em 2026-08-10.** A regra
   ficou escrita na §4.0 do `Acoes_Sistema.md`: **a lista é do `Acoes_Texto.md`, as referências são
   do `Acoes_Catalogo.md`, a mecânica é do `Acoes_Sistema.md`**, e os três carregam as mesmas
@@ -607,8 +609,9 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
 4. ~~**D4**, o retag das Técnicas.~~ **Fechado sem causa em 17/08:** a divergência entre doc e dado
    não existia. A frase da auditoria falava dos Caminhos de Comando e Marionete, e o item a leu
    como duas Técnicas.
-5. ~~**G8**, trocar a palavra "stunt" por um termo em português.~~ **Feito em 17/08:** é
-   **Manobra**, com **Manobra Infeliz** no lugar do "Contra Stunt".
+5. ~~**G8**, trocar a palavra "stunt" por um termo em português.~~ **Feito em 17/08 e reafinado
+   em 18/08:** é **Firula** (passou por Manobra no caminho), com **Firula Infeliz** no lugar do
+   "Contra Stunt".
 
 **Os três primeiros da lista saíram no mesmo dia.** O que sobra de mais barato agora é o **E1**,
 portar os Antecedentes ao site: o doc está fechado e o trabalho é de execução.

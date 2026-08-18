@@ -2,7 +2,7 @@
 ordem: 3
 numeral: "II"
 titulo: "Habilidades"
-resumo: "As 24 Habilidades primárias em quatro grupos, a régua de 0 a 6, a Especialidade e as Manobras."
+resumo: "As 24 Habilidades primárias em quatro grupos, a régua de 0 a 6, a Especialidade e as Firulas."
 ---
 
 Se o [Atributo](/regras/atributos) é o que você é, a Habilidade é o que você aprendeu a fazer. Elas vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. **0 não é impedimento**, é falta de treino: você ainda rola o Atributo sozinho, e ainda pode dar certo, só que muito mais raramente. São 24, em quatro grupos de seis.
@@ -51,7 +51,7 @@ O que se rola quando o obstáculo é uma pessoa. Cada uma resolve um tipo difere
 - **Manha** · A esperteza de quem se criou na rua: blefar, enrolar, sacar a conversa fiada alheia, saber com quem falar num bairro estranho e farejar a cilada antes de entrar nela. Reúne a lábia rápida, o faro para golpe e o conhecimento prático do submundo, quem compra, quem entrega, quanto custa um silêncio. Onde a Persuasão constrói um argumento, a Manha ganha no improviso e na cara de pau. *(Influência · Compostura · Raciocínio · Percepção)*
 - **Oratória** · Falar para muitos: o discurso na praça, a arenga antes da batalha, o sermão, a acusação no julgamento, a defesa diante da corte. Diferente da conversa, aqui o alvo é uma plateia, e o que conta é ritmo, imagem e a capacidade de dizer uma frase que trezentas pessoas levem para casa. É perícia de cena grande, aparece poucas vezes por campanha e costuma virar o rumo da história quando aparece. Convencer um sujeito de cada vez é Persuasão. *(Influência)*
 - **Persuasão** · Convencer alguém de que fazer o que você quer é uma boa ideia: argumentar, negociar, apelar, prometer, seduzir, pedir o favor. É a perícia social de uso mais amplo, a do cara a cara com uma pessoa ou um punhado delas, e funciona pela razão, pelo charme ou pela boa-fé, verdadeira ou fingida. O que decide não é a sua sinceridade, é o que o outro tem a ganhar. Falar para uma plateia é Oratória; vencer no papo rápido e no descaramento é Manha. *(Influência)*
-- **Política** · O jogo do poder: quem manda de verdade, quem deve favor a quem, qual aliança está apodrecendo e quanto custa uma audiência. Cobre a intriga de corte, a negociação entre casas, a leitura de uma sala de conselho e a manobra que faz uma decisão passar sem parecer sua. É a perícia das campanhas de trono e conspiração, e nelas pesa tanto quanto Armas pesa numa campanha de guerra. O papel, a lei e o registro são Burocracia. *(Influência · Perspicácia · Inteligência)*
+- **Política** · O jogo do poder: quem manda de verdade, quem deve favor a quem, qual aliança está apodrecendo e quanto custa uma audiência. Cobre a intriga de corte, a negociação entre casas, a leitura de uma sala de conselho e a firula que faz uma decisão passar sem parecer sua. É a perícia das campanhas de trono e conspiração, e nelas pesa tanto quanto Armas pesa numa campanha de guerra. O papel, a lei e o registro são Burocracia. *(Influência · Perspicácia · Inteligência)*
 - **Sociabilidade** · Circular bem entre gente: puxar conversa, entrar numa roda, saber a hora de calar, agradar sem bajular e sair de uma saia justa sem deixar mágoa. É a perícia de estar à vontade em qualquer meio, do salão ao acampamento de mercenários, e a que constrói contatos antes de você precisar deles. Ela não pede nada de ninguém, e é justamente por isso que funciona. No instante em que vira pedido, passa a ser Persuasão; quando vira protocolo de corte, é a secundária Etiqueta. *(Influência · Compostura)*
 
 #### Saber
@@ -96,9 +96,9 @@ Cada nível custa **8 + (nível × 4)** numa Habilidade primária (12 · 16 · 2
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Você tem Armas 5 (2 níveis de Especialidade) e escreveu "espada longa" nos dois. Num duelo de espada longa (base 3d6+2), o escopo vale duplo: você rola 5d6+2 e descarta os dois dados mais baixos. Contra um oponente de lança, o escopo não vale e você rola só os 3d6+2.</div>
 
-## Manobras · recompensa à ousadia
+## Firulas · recompensa à ousadia
 
-Descrever uma ação com criatividade e uso do cenário rende uma **Manobra**: um bônus naquele lance,
+Descrever uma ação com criatividade e uso do cenário rende uma **Firula**: um bônus naquele lance,
 e só nele. O Mestre define o nível:
 
 | Nível | Bônus |
@@ -107,7 +107,7 @@ e só nele. O Mestre define o nível:
 | 2 | +1d6 |
 | 3 | +2d6 |
 
-A Manobra não se compra nem se aprende: ela não é uma [Técnica](/caminhos), não sai de
+A Firula não se compra nem se aprende: ela não é uma [Técnica](/caminhos), não sai de
 catálogo nenhum e está aberta a qualquer personagem, do camponês ao semideus. O que ela cobra é
 atenção ao que está em volta · o lampião pendurado, a mesa entre vocês, o nome que o outro não
 quer ouvir em voz alta · e o preço de repeti-la é que a segunda vez impressiona menos que a
