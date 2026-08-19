@@ -739,6 +739,73 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
   eq(fora.length, 0, `nenhuma criatura sai da régua 0–12 no desvio (${fora.slice(0, 3).map((m) => m.nome).join(', ')})`);
 }
 
+// ------------------------------------------------- os moldes do VOLUME
+//
+// A regra em uma frase: o molde muda a FORMA, nunca a quantidade. O teste
+// confere isso pelo caminho contrário ao do motor: pega as medidas que ele
+// devolve e recalcula o volume pela fórmula do sólido, escrita aqui de novo e
+// à mão. Se as duas contas discordarem, uma das duas está errada.
+{
+  const VOLUME_DE = {
+    cubo: (m) => m.ladoM ** 3,
+    cuboide: (m) => m.comprimentoM * m.larguraM * m.alturaM,
+    esfera: (m) => (4 / 3) * Math.PI * m.raioM ** 3,
+    semiesfera: (m) => (2 / 3) * Math.PI * m.raioM ** 3,
+    cilindro: (m) => Math.PI * m.raioM ** 2 * m.alturaM,
+    cone: (m) => (Math.PI * m.raioM ** 2 * m.alturaM) / 3,
+    piramide: (m) => (m.ladoM ** 2 * m.alturaM) / 3,
+    // O raio guardado na pegada é o de FORA (raio maior + tubo), porque é ele
+    // que marca chão; a fórmula do anel pede o raio maior, que é três quartos
+    // dele, já que o tubo é um terço do maior.
+    torus: (m) => {
+      const R = m.raioM * 0.75, t = R / 3;
+      return 2 * Math.PI * Math.PI * R * t * t;
+    },
+  };
+  eq(M.SOLIDOS.length, 8, 'são oito moldes de volume, os mesmos da bancada');
+  ok(M.SOLIDOS.every((x) => VOLUME_DE[x.id]), 'todo molde de volume do JSON tem geometria no motor');
+  for (const V of [0.001, 0.125, 1, 3.375, 125]) {
+    for (const sol of M.SOLIDOS) {
+      const medidas = M.medidasDoSolido(sol.id, V);
+      const volta = VOLUME_DE[sol.id](medidas);
+      ok(Math.abs(volta - V) < V * 1e-6,
+        `${sol.id} de ${V} m³ devolve ${volta.toFixed(4)} m³ nas medidas que anuncia`);
+      ok(medidas.alturaM > 0, `${sol.id} tem altura, que é o que a vista de cima engole`);
+    }
+  }
+  // O padrão é o CUBO, porque é ele que a régua nomeia: comprou "1x1x1", saiu
+  // um cubo de 1 m, e a pegada continua sendo a mesma que o tabuleiro marcava.
+  eq(M.SOLIDO_PADRAO, 'cubo', 'o molde de volume que vem escolhido');
+  const lado = M.medidasDoSolido('cubo', 8).ladoM;
+  ok(Math.abs(lado - 2) < 1e-9, 'o cubo de 8 m³ tem 2 m de lado');
+
+  // Só a matéria é sólida: o Volume da Aura compra raio e o do improviso compra
+  // a base das fatias, e nenhum dos dois vira bolha.
+  const volNeblina = M.EFEITO['neblina'].parametros.find((x) => x.nome === 'Volume');
+  const volAura = M.EFEITO['aura'].parametros.find((x) => x.nome === 'Volume');
+  ok(M.ehVolumeSolido(volNeblina), 'o Volume da Neblina é matéria, e escolhe molde');
+  ok(!M.ehVolumeSolido(volAura), 'o Volume da Aura compra raio, e não escolhe');
+  ok(!M.ehVolumeSolido({ nome: 'Volume', tipo: 'padrao', regua: 'manifestacao' }),
+    'o Volume do improviso é manifestação, e tem geometria própria');
+  ok(Math.abs(M.volumeEmM3(volNeblina, 6) - 125) < 1e-9, 'a Neblina do grau 6 são 125 m³');
+
+  // A régua VISÍVEL do volume é em m³: com molde, "5x5x5" descreveria só um dos
+  // oito, e o que não muda entre eles é a quantidade.
+  const vis = M.escalaVisivel(volNeblina, M.EFEITO['neblina'], 'explosao');
+  eq(vis[6], '125 m³', 'o Volume se mostra em m³, e não na notação do cubo');
+
+  // E a figura sabe dizer que forma é: "cúpula de 0,78 m de raio", não "círculo".
+  const ancora = { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' };
+  const fig = M.figuraDoEfeito({
+    efeito: M.EFEITO['neblina'], grau: 4, ancora, solido: 'semiesfera',
+  });
+  eq(fig.tipo, 'circulo', 'a cúpula marca chão redondo');
+  ok(/^cúpula de /.test(M.rotuloDaFigura(fig)), `a figura se diz pelo molde (veio "${M.rotuloDaFigura(fig)}")`);
+  const cubo = M.figuraDoEfeito({ efeito: M.EFEITO['neblina'], grau: 6, ancora });
+  eq(cubo.tipo, 'retangulo', 'sem escolha, a Neblina sai em cubo');
+  ok(Math.abs(cubo.comprimentoM - 5) < 1e-9, 'e o cubo de 125 m³ marca 5 m de chão, como sempre marcou');
+}
+
 // ---------------------------------------------------- cobertura da projeção
 eq(M.EFEITOS.filter((e) => !e.grid).length, 0, 'todo Efeito tem bloco grid');
 eq(M.ARTES.filter((a) => !a.grid).length, 0, 'toda Arte tem bloco grid');

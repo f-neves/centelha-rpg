@@ -878,16 +878,6 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-chip.on { border-color: var(--ag-cor, var(--accent)); box-shadow: inset 0 0 0 1px var(--ag-cor, var(--accent)); }
 .ag-chip-nv { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: var(--fs-micro); }
 
-/* A Arte em lista, de seis Artes em diante: uma linha só, não importa quantas.
-   A bolinha da cor fica fora do <select> porque dentro dele ela seria um
-   caractere, e o que se quer é a mesma marca que a pastilha usa. */
-.ag-sel { display: inline-flex; align-items: center; gap: .4rem; }
-.ag-sel::before { content: ''; width: .6rem; height: .6rem; border-radius: 50%;
-  background: var(--ag-cor, var(--accent)); flex: 0 0 auto; }
-.ag-sel select { font: inherit; font-size: var(--fs-aux); color: var(--ink);
-  background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
-  padding: .18rem 1.4rem .18rem .45rem; cursor: pointer; }
-.ag-sel select:focus { outline: none; border-color: var(--accent); }
 
 /* o Efeito: cartões lado a lado, e não uma fila de um por linha.
    `auto-fill` com piso de 12rem em vez de um número fixo de colunas: no
@@ -907,11 +897,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
   padding: .15rem .35rem; margin-bottom: .3rem; width: 100%; min-width: 0; }
 .ag-busca:focus { outline: none; border-color: var(--accent); }
-/* Onde cada degrau de nível começa. Não é cabeçalho de seção: é uma régua. */
-.ag-ef-gr { font-size: calc(var(--fs-micro) * .92); color: var(--ink-soft);
-  letter-spacing: .06em; text-transform: uppercase; margin: .25rem 0 .05rem; }
-.ag-ef-gr:first-child { margin-top: 0; }
-.ag-ef-gr[hidden], .ag-ef[hidden] { display: none; }
+.ag-ef[hidden] { display: none; }
 /* O GLIFO DA FORMA, numa coluna de um caractere: é o que separa uma zona de um
    efeito de alvo antes de ler o nome. Fixo, para os nomes alinharem. */
 .ag-ef-ic { flex: 0 0 .85rem; text-align: center; color: var(--accent-texto, var(--accent));
@@ -931,7 +917,10 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    Fica no <body>, acima de qualquer diálogo, porque a caixa que o abre é modal
    e desenha por cima de tudo o mais. Sem ponteiro: ele nunca é alvo, então
    passar o mouse por ele não rouba o `pointerleave` do cartão. */
-.ag-pop { position: fixed; z-index: 1000; pointer-events: none;
+/* Dentro do painel, encostado na coluna dos Efeitos. `absolute` e não `fixed`:
+   o pai é o próprio .ui-dlg-form, e é dele que saem as coordenadas. */
+.ui-dlg-conj .ui-dlg-form { position: relative; }
+.ag-pop { position: absolute; z-index: 5; pointer-events: none;
   width: min(20rem, 80vw); padding: .6rem .7rem; border: 1px solid var(--panel-border);
   border-radius: var(--r-md, 8px); background: var(--panel-2, var(--panel));
   box-shadow: 0 14px 44px var(--shadow); color: var(--ink);
@@ -949,8 +938,8 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    A caixa já desenha a prévia no mapa, mas ela pode estar por cima justamente
    do lugar onde a mancha cresce, e no celular o mapa some atrás dela. O selo
    responde "que forma é essa, e de que tamanho" sem depender do que está atrás. */
-.ag-mini { display: block; width: 100%; height: auto; aspect-ratio: 148 / 74;
-  flex: 0 0 auto; margin: 0 0 .45rem;
+.ag-mini { display: block; width: 100%; height: auto; aspect-ratio: 148 / 64;
+  flex: 0 0 auto; margin: 0 0 .3rem;
   border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
   background: color-mix(in srgb, var(--ink) 4%, transparent); }
 .ag-mini-gr { color: var(--ink-soft); opacity: .28; }
@@ -962,7 +951,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 
 /* A altura da base, logo abaixo de quem paga o abrir: é o número que o
    tabuleiro visto de cima não mostra, e é ele que separa os dois modos. */
-.ag-alt { margin: -.1rem 0 .45rem; font-size: var(--fs-rotulo); color: var(--ink-soft); line-height: 1.3; }
+.ag-alt { margin: -.1rem 0 .3rem; font-size: var(--fs-rotulo); color: var(--ink-soft); line-height: 1.3; }
 .ag-alt b { color: var(--accent-texto); font-variant-numeric: tabular-nums; }
 .ag-alt i { font-size: var(--fs-micro); }
 /* O que o Efeito faz no tabuleiro, no alto da coluna da forma: é a linha que
@@ -1006,6 +995,18 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-md-nm { grid-area: nm; }
 .ag-md small { grid-area: cp; font-size: var(--fs-micro); color: var(--ink-soft); }
 
+/* OS MOLDES DO VOLUME, em duas colunas: são oito, e cada um é só um glifo e um
+   nome. A régua não muda entre eles (o volume comprado é o mesmo), então não há
+   linha de compra a escrever; o que muda são as medidas, e essas ficam escritas
+   uma vez só, em cima, para a forma escolhida. */
+.ag-sols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .18rem; }
+.ag-sol { display: flex; align-items: center; gap: .3rem; text-align: left;
+  padding: .06rem .3rem; line-height: 1.25; cursor: pointer; border: 1px solid var(--rule);
+  border-radius: var(--r-2, 6px); background: transparent; font: inherit;
+  font-size: var(--fs-micro); color: var(--ink); }
+.ag-sol:hover { border-color: var(--accent); }
+.ag-sol.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+
 /* AS FILEIRAS, EM LINHA DE PROPRIEDADE: o rótulo numa coluna fixa à esquerda e
    os botões à direita, como um painel de inspetor. O rótulo já ocupou a linha
    inteira, e três rótulos custavam três linhas de altura para dizer três
@@ -1016,7 +1017,11 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   align-items: baseline; gap: .15rem .4rem; margin-bottom: .35rem; }
 .ag-ang-l { font-size: var(--fs-micro); color: var(--ink-soft);
   text-transform: uppercase; letter-spacing: .06em; margin: 0; }
-.ag-ang-bs { display: flex; flex-wrap: wrap; gap: .25rem; }
+/* Os botões na ordem inversa: o último da régua primeiro. `row-reverse` com
+   `flex-end` inverte a ordem sem desencostar a fileira da esquerda, e a ordem
+   do DOM (que é a do teclado e a da leitura em voz alta) fica de pé. */
+.ag-ang-bs { display: flex; flex-direction: row-reverse; justify-content: flex-end;
+  flex-wrap: wrap; gap: .25rem; }
 .ag-ang-n { grid-column: 1 / -1; font-size: var(--fs-micro); color: var(--ink-soft);
   font-style: italic; line-height: 1.3; margin: .1rem 0 0; }
 .ag-ang { padding: .1rem .32rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
@@ -1027,16 +1032,27 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 
 /* A Velocidade é o único número aqui que se digita: ela não sai de conta
    nenhuma, é o que a mesa combina que a conjuração custa de tempo. */
-.ag-vel { display: inline-flex; align-items: center; gap: .35rem; }
-.ag-vel input { width: 3.2rem; padding: .1rem .3rem; font: inherit;
+/* A CONTA EM TRÊS CÉLULAS: o número em cima, de onde ele saiu embaixo.
+   Era uma fileira de quatro pedaços soltos que quebrava onde desse, com dois
+   sinais de igual na mesma linha e o aviso de esticado ora ao lado da
+   Velocidade, ora debaixo dela. Em três colunas fixas a linha não se desmancha,
+   e a ordem é a de quem paga: pontos, Mana, tempo. */
+.ag-cst-l { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: end; gap: .5rem; font-size: var(--fs-rotulo); }
+.ag-cst-c { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem; min-width: 0; }
+.ag-cst-c b { font-size: var(--fs-aux); font-variant-numeric: tabular-nums; }
+.ag-cst-c b.gratis { color: var(--accent); }
+.ag-cst-c small { flex: 1 1 100%; font-size: var(--fs-micro); color: var(--ink-soft);
+  line-height: 1.2; }
+/* A Velocidade é o único número aqui que se digita: ela não sai de conta
+   nenhuma, é o que a mesa combina que a conjuração custa de tempo. */
+.ag-vel { cursor: text; }
+.ag-vel input { width: 3rem; padding: .05rem .25rem; font: inherit;
   font-size: var(--fs-aux); text-align: center; font-variant-numeric: tabular-nums;
   background: transparent; color: var(--ink); border: 1px solid var(--rule);
   border-radius: var(--r-2, 6px); }
 .ag-vel input:focus { border-color: var(--accent); outline: none; }
-.ag-cst-l { display: flex; flex-wrap: wrap; gap: .1rem .8rem; font-size: var(--fs-rotulo); }
-.ag-cst-l b { font-variant-numeric: tabular-nums; }
-.ag-cst-l b.gratis { color: var(--accent); }
-.ag-cst-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); margin-top: .2rem; }
+.ag-cst-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); margin: .25rem 0 0; }
 /* A figura resolvida, no PÉ do painel: é a leitura que muda a cada clique, e o
    miolo rola, então lá em cima ela cairia abaixo da dobra justo enquanto se
    escolhe. Aqui ela fica sempre à vista, ao lado do custo. */

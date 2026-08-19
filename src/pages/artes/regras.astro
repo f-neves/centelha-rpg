@@ -276,6 +276,32 @@ const EX_CONTA: [string, string, number][] = [
     <p>{MOLDES.cuboide}</p>
     <p class="muted">{MOLDES.volume}</p>
 
+    <h3 id="solidos">Os moldes do volume: a matéria também tem forma</h3>
+    <p>{MOLDES.solidos.nota}</p>
+    <p class="muted">{MOLDES.solidos.porque}</p>
+    <div class="callout regra"><span class="lbl">A proporção é fixa</span>
+      {MOLDES.solidos.trava}
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Molde</th><th>Proporção</th><th>Pegada</th></tr></thead>
+        <tbody>
+          {MOLDES.solidos.lista.map((m: any) => (
+            <tr>
+              <td><strong>{m.nome}</strong></td>
+              <td class="muted">{m.proporcao}</td>
+              <td class="muted">{m.pegada === 'circulo' ? 'redonda' : 'quadrada'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <ul class="fraq">
+      {MOLDES.solidos.lista.map((m: any) => <li><strong>{m.nome}:</strong> {m.serve}</li>)}
+    </ul>
+    <p class="muted">{MOLDES.solidos.padraoPorque}</p>
+    <p class="muted">{MOLDES.solidos.aRevisar}</p>
+
     <h2 id="tempo">O tempo da Arte, e quem está no caminho</h2>
     <p>{TEMPO.nota}</p>
     <div class="callout regra"><span class="lbl">A Arte sai no último Tick</span>

@@ -32,6 +32,9 @@ await new Promise((r) => setTimeout(r, 800));
 // Nem toda peça tem Arte: tenta uma a uma até a caixa de conjuração abrir.
 const EFS = JSON.parse(fs.readFileSync('src/data/efeitos.json', 'utf8'));
 const ZONAS = EFS.filter((e) => e.grid && e.grid.forma === 'zona').map((e) => e.id);
+// Efeitos que compram matéria em m³: a coluna vira a lista de sólidos.
+const VOLUMES = EFS.filter((e) => (e.parametros || []).some(
+  (x) => x.nome === 'Volume' && x.tipo !== 'fixo' && !/de raio/i.test(x.unidade || ''))).map((e) => e.id);
 // Efeito sem chão nenhum a escolher: a coluna da forma tem de sumir.
 const SEM_CHAO = EFS.filter((e) => e.grid
   && ['alvo', 'nenhuma', 'token', 'movimento'].includes(e.grid.forma)).map((e) => e.id);
@@ -49,19 +52,7 @@ const abriu = await p.evaluate(async (ELEM) => {
     it.click();
     await new Promise((r) => setTimeout(r, 600));
     const cx = document.querySelector('.ui-dlg-conj');
-    // A Arte sai em pastilha até cinco e em lista fechada daí em diante, e a
-    // bancada tem de saber escolher nas duas: sem isto, um conjurador de seis
-    // Artes fazia o roteiro desistir da peça achando que ela não tinha Arte.
-    const sel = cx?.querySelector('#ag-arte-sel');
-    if (sel) {
-      const op = [...sel.options].find((o) => ELEM.includes(o.value));
-      if (op) {
-        sel.value = op.value;
-        sel.dispatchEvent(new Event('change', { bubbles: true }));
-        await new Promise((r) => setTimeout(r, 300));
-        return 'ok';
-      }
-    } else if (cx && [...cx.querySelectorAll('[data-arte]')].some((a) => ELEM.includes(a.dataset.arte))) {
+    if (cx && [...cx.querySelectorAll('[data-arte]')].some((a) => ELEM.includes(a.dataset.arte))) {
       [...cx.querySelectorAll('[data-arte]')].find((a) => ELEM.includes(a.dataset.arte)).click();
       await new Promise((r) => setTimeout(r, 300));
       return 'ok';
@@ -146,6 +137,36 @@ if (abriu === 'ok') {
   }, ZONAS);
   console.log('zona:', JSON.stringify(zona, null, 1));
   await p.screenshot({ path: `${OUT}/conj-molde.png` });
+
+  // um Efeito de VOLUME, que é onde a coluna vira lista de sólidos
+  const volume = await p.evaluate(async (vols) => {
+    const b = [...document.querySelectorAll('[data-ef]')].find((x) => vols.includes(x.dataset.ef));
+    if (!b) return 'nenhum Efeito de volume nesta Arte';
+    b.click();
+    await new Promise((r) => setTimeout(r, 300));
+    const mais = [...document.querySelectorAll('[data-par]')]
+      .filter((x) => x.dataset.par === 'Volume' && x.dataset.d === '1');
+    for (let i = 0; i < 4; i++) mais[0]?.click();
+    await new Promise((r) => setTimeout(r, 300));
+    const leitura = () => ({
+      medidas: document.querySelector('.ag-alt')?.textContent?.replace(/\s+/g, ' ').trim(),
+      figura: document.querySelector('.ag-cst-fig')?.textContent?.replace(/\s+/g, ' ').trim(),
+    });
+    const antes = leitura();
+    document.querySelector('[data-solido="cilindro"]')?.click();
+    await new Promise((r) => setTimeout(r, 250));
+    // A coluna tem de caber sem rolar: um molde escondido atrás de rolagem é um
+    // molde que ninguém escolhe.
+    const col = document.querySelector('.ag-col-forma');
+    return {
+      efeito: b.textContent.replace(/\s+/g, ' ').trim(),
+      solidos: [...document.querySelectorAll('[data-solido]')].map((m) => m.textContent.replace(/\s+/g, ' ').trim()),
+      cabe: `${col.scrollHeight} de conteúdo em ${col.clientHeight} de coluna`,
+      cubo: antes, coluna: leitura(),
+    };
+  }, VOLUMES);
+  console.log('volume:', JSON.stringify(volume, null, 1));
+  await p.screenshot({ path: `${OUT}/conj-volume.png` });
 
   // e um Efeito SEM forma nenhuma: a terceira coluna some
   const semForma = await p.evaluate(async (semChao) => {

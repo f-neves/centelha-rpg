@@ -1673,7 +1673,7 @@
       },
       "cadeiaRessalva": "A Cadeia é indiferente à formação, mas não é indiferente ao CAMINHO. Ela salta de um alvo ao mais próximo ainda não atingido, e onde o próximo estiver além do salto a corrente arrebenta ali, perdendo os elos restantes. É o molde de quem enfrenta muitos inimigos em fila ou em cordão, e é fraca contra dois grupos separados por um vão.",
       "cuboide": "O cuboide não é proibido: ele ganha nome. O cuboide comprido é a Muralha, e a Muralha tem régua calibrada para ser comprida; o cuboide maciço é matéria, e matéria é Volume em m³. O abuso morre por construção e não por proibição, porque não sobra medida livre para trocar: quem escolhe as dimensões é o molde.",
-      "volume": "O Volume fica exatamente como está (8 cm³ a 8 m³) para os Efeitos que criam matéria, e perde o direito de virar forma. Lido como matéria ele está calibrado: o grau 3 são 169 kg de pedra, o grau 4 são 1,4 t e o grau 6 são 10,8 t. Pedra não vira tapete, névoa vira, e é isso que o fator de estado diz.",
+      "volume": "A régua do Volume fica exatamente como está (8 cm³ a 8 m³) para os Efeitos que criam matéria: lida como matéria ela está calibrada, e o grau 3 são 169 kg de pedra, o grau 4 são 1,4 t e o grau 6 são 10,8 t. O que ela ganhou foi MOLDE: a quantidade comprada é a mesma, e o molde diz em que forma ela aparece. Pedra não vira tapete e névoa vira, e isso continua sendo o fator de estado, não uma medida livre.",
       "hexagonosNota": "Os hexágonos são coluna de leitura, não unidade: a régua é em metros, e o molde ancora onde o efeito nasce.",
       "aRevisar": "A escola está fechada; as réguas acima são a calibragem proposta e ainda esperam mesa. Falta também passar os Efeitos que hoje usam a `zona` genérica para o molde que lhes cabe.",
       "porForma": {
@@ -1687,6 +1687,72 @@
         "escolhe": [
           "zona"
         ]
+      },
+      "solidos": {
+        "nota": "O Volume compra o LADO DE UM CUBO, e o que se ganha é o cubo dele. O molde não muda quanto se ganha: muda a forma em que aquilo aparece, e por tabela a pegada no chão e a altura. A mesma quantidade vira bolha, cúpula, coluna, bloco, jorro, pirâmide ou anel.",
+        "porque": "Sem molde, o Volume era lido como um quadrado de lado n e assentado no chão pelo molde de área, o que dava uma pegada sem relação com o que a matéria faz de pé. Com molde, a altura passa a existir: 1 m³ de água em coluna tem 1,1 m de altura e meio metro de raio; o mesmo metro cúbico em bloco tem 79 cm de altura e o dobro de chão.",
+        "padrao": "cubo",
+        "padraoPorque": "O cubo, porque é ele que a régua nomeia: comprou \"1x1x1\", saiu um cubo de 1 m. Quem quiser outra forma escolhe, e o que ganha continua sendo o mesmo volume.",
+        "trava": "O molde não é medida livre: cada um tem proporção fixa, e é isso que impede o abuso da esbeltez (esticar 1 m³ em 127 m de fio). Quem quer comprido compra a Muralha, que é molde de chão e tem régua calibrada para ser comprida.",
+        "lista": [
+          {
+            "id": "cubo",
+            "nome": "Cubo",
+            "pegada": "retangulo",
+            "proporcao": "o lado é a raiz cúbica do volume",
+            "serve": "a forma de referência da escada: o grau compra o lado dele, e é dele que as outras saem."
+          },
+          {
+            "id": "cuboide",
+            "nome": "Bloco",
+            "pegada": "retangulo",
+            "proporcao": "o cuboide 2 : 1 : 1, o comprimento em dobro da largura e da altura",
+            "serve": "a laje, o degrau, a mesa de pedra. Espalha no chão o que a bolha guarda em cima."
+          },
+          {
+            "id": "esfera",
+            "nome": "Esfera",
+            "pegada": "circulo",
+            "proporcao": "raio = ∛(3V ÷ 4π), altura de dois raios",
+            "serve": "a bolha. A menor pegada possível para um volume dado, e a que menos se aproveita em briga."
+          },
+          {
+            "id": "semiesfera",
+            "nome": "Cúpula",
+            "pegada": "circulo",
+            "proporcao": "meia esfera apoiada no chão: raio = ∛(3V ÷ 2π), e a altura é o raio",
+            "serve": "o abrigo, o domo. Cobre gente de pé com metade do volume de uma esfera do mesmo raio."
+          },
+          {
+            "id": "cilindro",
+            "nome": "Coluna",
+            "pegada": "circulo",
+            "proporcao": "altura de dois raios: raio = ∛(V ÷ 2π)",
+            "serve": "a coluna em pé, o tronco, o jato parado. É a forma que sobe sem espalhar."
+          },
+          {
+            "id": "cone",
+            "nome": "Cone",
+            "pegada": "circulo",
+            "proporcao": "altura de dois raios: raio = ∛(3V ÷ 2π), e o cone é um terço do cilindro que o contém",
+            "serve": "o jorro, a labareda, o monte de areia. Boca larga embaixo e ponta em cima."
+          },
+          {
+            "id": "piramide",
+            "nome": "Pirâmide",
+            "pegada": "retangulo",
+            "proporcao": "base quadrada com a altura igual ao lado: lado = ∛(3V)",
+            "serve": "a mesma economia do cone, de base quadrada: um terço do bloco que a contém."
+          },
+          {
+            "id": "torus",
+            "nome": "Anel",
+            "pegada": "circulo",
+            "proporcao": "o tubo é um terço do raio maior: raio = ∛(9V ÷ 2π²)",
+            "serve": "a rosca no chão, o cerco baixo. É a única com buraco no meio: cerca sem encher."
+          }
+        ],
+        "aRevisar": "As proporções acima são a calibragem proposta e ainda esperam mesa. Só o Volume da manifestação escapa: aquele tem geometria própria, as fatias da §5.4."
       }
     },
     "tempoDaArte": {

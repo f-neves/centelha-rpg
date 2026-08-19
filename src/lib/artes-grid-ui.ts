@@ -14,6 +14,7 @@ import {
   MOLDE, MOLDES_DE_CHAO, moldeDaForma, formaEscolheMolde,
   ABERTURAS, ABERTURA_PADRAO, volumeDaManifestacao, ABRIR_COBRA, ABRIR_COBRA_PADRAO,
   fatiasMaximas, ALTURA_MINIMA_BASE,
+  SOLIDOS, SOLIDO, SOLIDO_PADRAO, ehVolumeSolido, volumeEmM3, medidasDoSolido,
   type Arte, type Efeito, type Parametro, type Escolhas, type Custo, type ModoAbrir,
 } from './artes-grid';
 
@@ -68,6 +69,36 @@ const GLIFO: Record<string, [string, string]> = {
 };
 
 /**
+ * O CHÃO DO SELO: o mesmo favo do tabuleiro, e não um quadriculado.
+ *
+ * O Grid é de hexágonos de ponta para cima, um metro de centro a centro, e é
+ * nele que a mesa conta casa. Um quadriculado atrás da figura dava a escala mas
+ * mentia na contagem: "cabem quatro quadrados" não é "cabem quatro casas".
+ *
+ * O favo sai de um `<pattern>` de seis hexágonos e não de um laço sobre a
+ * caixa: no selo cabem umas duzentas casas, e desenhá-las uma a uma seriam
+ * vinte e cinco mil letras de marcação a cada clique.
+ */
+function favo(px: number, ox: number, oy: number): string {
+  const n = (v: number) => v.toFixed(2);
+  const R = px / Math.sqrt(3);          // do centro ao vértice, com 1 m entre centros
+  const dy = 1.5 * R;                   // o passo de uma fileira para a outra
+  const hex = (cx: number, cy: number) => `M ${n(cx)} ${n(cy - R)}`
+    + ` L ${n(cx + px / 2)} ${n(cy - R / 2)} L ${n(cx + px / 2)} ${n(cy + R / 2)}`
+    + ` L ${n(cx)} ${n(cy + R)} L ${n(cx - px / 2)} ${n(cy + R / 2)}`
+    + ` L ${n(cx - px / 2)} ${n(cy - R / 2)} Z`;
+  // As seis casas que tocam o ladrilho: as das quinas voltam pelo lado oposto
+  // quando o padrão se repete, e é assim que o favo fecha sem costura.
+  const casas: [number, number][] = [
+    [0, 0], [px, 0], [px / 2, dy], [-px / 2, dy], [0, 2 * dy], [px, 2 * dy],
+  ];
+  return `<defs><pattern id="ag-mini-g" patternUnits="userSpaceOnUse"
+      width="${n(px)}" height="${n(2 * dy)}" x="${n(ox)}" y="${n(oy)}">
+      <path d="${casas.map(([a, b]) => hex(a, b)).join(' ')}" /></pattern></defs>
+    <rect class="ag-mini-gr" width="100%" height="100%" fill="url(#ag-mini-g)" />`;
+}
+
+/**
  * A FIGURA DESENHADA, DO TAMANHO DE UM SELO.
  *
  * A caixa já pinta a prévia no tabuleiro, mas o tabuleiro pode estar tapado por
@@ -81,7 +112,7 @@ const GLIFO: Record<string, [string, string]> = {
  */
 function miniatura(f: Figura | null): string {
   if (!f || f.tipo === 'ponto') return '';
-  const W = 148, H = 74, pad = 6;
+  const W = 148, H = 64, pad = 6;
   const cerca = (dentro: string) =>
     `<svg class="ag-mini" viewBox="0 0 ${W} ${H}" aria-hidden="true">${dentro}</svg>`;
   if (f.tipo === 'arena') {
@@ -129,10 +160,7 @@ function miniatura(f: Figura | null): string {
         x2="${n(m.x + Math.cos(a) * (f.raioM || 0) * px)}"
         y2="${n(m.y + Math.sin(a) * (f.raioM || 0) * px)}" />`;
     }).join('') : '';
-  const grade = px >= 7 ? `<defs><pattern id="ag-mini-g" patternUnits="userSpaceOnUse"
-      width="${n(px)}" height="${n(px)}" x="${n(m.x)}" y="${n(m.y)}">
-      <path d="M ${n(px)} 0 L 0 0 0 ${n(px)}" /></pattern></defs>
-    <rect class="ag-mini-gr" width="100%" height="100%" fill="url(#ag-mini-g)" />` : '';
+  const grade = px >= 7 ? favo(px, m.x, m.y) : '';
   return cerca(`${grade}
     <g class="ag-mini-f">${caminhoDaFigura(f, { raioHexPx: 1, pxPorM: px, margem: m })}</g>
     <g class="ag-mini-r">${raios}</g>
@@ -152,6 +180,11 @@ export interface Plano {
    * forma, a forma decide as dimensões.
    */
   molde: string;
+  /**
+   * O molde do VOLUME (`cubo`, `esfera`, `cilindro`…), quando o Efeito compra
+   * matéria em m³. A quantidade não muda com ele; a forma e a altura, sim.
+   */
+  solido: string;
   /** A abertura de cada fatia do improviso, em graus: 60, 90 ou 120. */
   angulo: number;
   /** Quantas fatias vizinhas o improviso abre. Nunca passa do nível da Arte. */
@@ -226,6 +259,8 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let efeitoSel: Efeito | null = null;
   let escolhas: Escolhas = {};
   let molde = 'explosao';
+  /** O molde do VOLUME: em que forma a matéria comprada aparece. */
+  let solido = SOLIDO_PADRAO;
   let angulo = ABERTURA_PADRAO;
   let fatias = 1;
   let abrirCobra: ModoAbrir = ABRIR_COBRA_PADRAO;
@@ -261,7 +296,14 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   const balao = document.createElement('div');
   balao.className = 'ag-pop';
   balao.hidden = true;
-  document.body.appendChild(balao);
+  // DENTRO DO MODAL, e não no <body>.
+  //
+  // Um <dialog> modal é pintado na camada de cima do navegador, acima de tudo o
+  // que está no documento: nenhum z-index tira um irmão do <body> de baixo dele,
+  // e o balão saía atrás da caixa, apagado pela sombra do fundo. Dentro do
+  // painel ele fica por cima do painel, que é onde ele precisa estar.
+  const painel = corpo.parentElement as HTMLElement;   // .ui-dlg-form
+  painel.appendChild(balao);
   const fecharBalao = () => { balao.hidden = true; };
   const abrirBalao = (alvo: HTMLElement) => {
     let d: any;
@@ -273,13 +315,18 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       + (d.sabor ? `<p class="ag-pop-sab">${esc(d.sabor)}</p>` : '')
       + (d.marca ? `<p class="ag-pop-mc">${esc(d.marca)}</p>` : '');
     balao.hidden = false;
-    // À ESQUERDA do cartão quando couber, à direita quando não: a caixa fica
-    // encostada na direita da tela, então a sobra quase sempre é do outro lado.
+    // ENCOSTADO NA COLUNA DOS EFEITOS, por dentro do painel.
+    //
+    // Fora dele o balão dependia da sobra de tela: com a caixa perto da borda
+    // não havia lado nenhum onde coubesse, e ele saía cortado ou por cima do
+    // nada. Ancorado na coluna, o lugar é sempre o mesmo, o de quem lê da
+    // esquerda para a direita: o cartão à esquerda, o que ele é logo ao lado.
+    const cx = painel.getBoundingClientRect();
+    const col = (corpo.querySelector('.ag-col-ef') || alvo).getBoundingClientRect();
     const r = alvo.getBoundingClientRect();
     const b = balao.getBoundingClientRect();
-    const esquerda = r.left - b.width - 10;
-    balao.style.left = `${Math.round(esquerda >= 8 ? esquerda : Math.min(r.right + 10, innerWidth - b.width - 8))}px`;
-    balao.style.top = `${Math.round(Math.min(Math.max(8, r.top), Math.max(8, innerHeight - b.height - 8)))}px`;
+    balao.style.left = `${Math.round(col.right - cx.left + 10)}px`;
+    balao.style.top = `${Math.round(Math.max(6, Math.min(r.top - cx.top, cx.height - b.height - 6)))}px`;
   };
 
   return new Promise<Plano | null>((resolve) => {
@@ -363,7 +410,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const fig = figuraDoEfeito({
         efeito: efeitoSel, grau: grauTam,
         ancora: { x: 0, y: 0, hex: { q: 0, r: 0 }, tipo: 'centro' },
-        molde, curvaturaGraus: curvatura,
+        molde, solido, curvaturaGraus: curvatura,
         ladoM: ladoBaseM, fatias, aberturaGraus: angulo, abrirCobra,
       });
       ultimaFigura = fig;
@@ -371,11 +418,11 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       if (figura) partes.push(figura);
       // A manifestação é um setor como qualquer outro leque; o que a distingue é
       // ter fatias contadas, e é por isso que só ela rende volume em m³.
-      const volumeM3 = fig?.fatias ? volumeDaManifestacao(fig) : 0;
+      const volumeM3 = fig?.fatias ? volumeDaManifestacao(fig) : (fig?.volumeM3 || 0);
       if (volumeM3) partes.push(`${volumeM3 < 10 ? volumeM3.toFixed(1) : Math.round(volumeM3)} m³`);
       return {
         arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas },
-        molde, angulo, fatias, abrirCobra, ladoBaseM, volumeM3,
+        molde, solido, angulo, fatias, abrirCobra, ladoBaseM, volumeM3,
         alturaM: fig?.alturaM || 0,
         curvaturaGraus: curvatura, velocidadeTicks: velocidade, custo,
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
@@ -407,9 +454,17 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // existe, e fingir que existe seria pior que dizer que falta.
       const podeFatiar = ehImproviso && temArea && !!arteSel.grid.elemento;
       const improvisoSemChao = ehImproviso && temArea && !arteSel.grid.elemento;
+      // O VOLUME TEM MOLDE TAMBÉM, e o dele não é de chão: a matéria comprada
+      // em m³ aparece em cubo, bolha, coluna, laje, jorro, pirâmide ou anel, e
+      // a quantidade é a mesma nos oito. Quem escolhe a forma escolhe a pegada
+      // no chão e a altura, que é o que a vista de cima não mostra.
+      const pTam = pars.find((x) => x.nome === 'Área' || x.nome === 'Volume');
+      const podeSolidar = !ehImproviso && ehVolumeSolido(pTam);
+      const volM3 = podeSolidar ? volumeEmM3(pTam!, escolhas[pTam!.nome] ?? 0) : 0;
+      const medidas = podeSolidar ? medidasDoSolido(solido, volM3) : null;
       // Nos Efeitos, a forma declarada já escolheu o molde. Só a `zona` pergunta,
       // porque é a genérica que engordou e ainda espera o julgamento um a um.
-      const podeModar = temArea && !ehImproviso && formaEscolheMolde(g?.forma);
+      const podeModar = temArea && !ehImproviso && !podeSolidar && formaEscolheMolde(g?.forma);
       const moldeAtual = MOLDE[molde] || moldeDaForma(g?.forma);
       // O que o Efeito faz no tabuleiro (zona · dura · fere · condição) só era
       // legível apontando o cartão. É curto, e é do assunto da coluna da forma:
@@ -426,26 +481,14 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // "do Muro", então o Escudo de Força dobra também.
       const podeCurvar = g?.forma === 'muro';
 
-      // A ARTE: PASTILHAS ATÉ CINCO, LISTA DAÍ EM DIANTE.
-      //
-      // A pastilha é a escolha de um clique, e é o certo enquanto todas cabem na
-      // linha. Só que são 24 Artes no sistema, e um conjurador veterano com dez
-      // delas transformava a faixa do topo em quatro fileiras de pastilha: o
-      // controle que existe para ocupar UMA linha passava a comer um terço da
-      // caixa. Do sexto em diante a mesma escolha vira uma lista fechada, que
-      // não cresce, e o nível vem escrito nela.
-      const muitasArtes = disponiveis.length > 5;
-      const faixaArte = muitasArtes
-        ? `<span class="ag-sel" style="--ag-cor:${arteSel.grid.cor}">
-            <select id="ag-arte-sel" aria-label="Arte">${disponiveis.map(({ arte, nivel }) => `
-              <option value="${arte.id}"${arte.id === arteSel.id ? ' selected' : ''}>${
-                esc(arte.nome)} · nível ${nivel}</option>`).join('')}</select>
-          </span>`
-        : `<div class="ag-chips">${disponiveis.map(({ arte, nivel }) => `
-            <button type="button" class="ag-chip${arte.id === arteSel.id ? ' on' : ''}"
-              data-arte="${arte.id}" style="--ag-cor:${arte.grid.cor}">
-              <span class="ag-chip-nm">${esc(arte.nome)}</span><span class="ag-chip-nv">${nivel}</span>
-            </button>`).join('')}</div>`;
+      // A ARTE, TODA EM PASTILHA. Cada uma é um clique, sem lista para abrir e
+      // sem passo a mais: a faixa quebra em duas linhas quando o conjurador tem
+      // Artes demais, e essa é a troca que a mesa preferiu.
+      const faixaArte = `<div class="ag-chips">${disponiveis.map(({ arte, nivel }) => `
+        <button type="button" class="ag-chip${arte.id === arteSel.id ? ' on' : ''}"
+          data-arte="${arte.id}" style="--ag-cor:${arte.grid.cor}">
+          <span class="ag-chip-nm">${esc(arte.nome)}</span><span class="ag-chip-nv">${nivel}</span>
+        </button>`).join('')}</div>`;
 
       const lista = efeitosDisponiveis(arteSel.id, nivelArte, ctx.comprados);
       const sabor = (e: Efeito) => e.artes.find((a) => a.id === arteSel.id)?.sabor || '';
@@ -478,18 +521,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         </button>`;
       };
 
-      // OS EFEITOS EM GRUPOS DE NÍVEL, e um filtro quando a lista é longa.
-      //
-      // A lista já vem ordenada por nível; escrever onde cada degrau começa custa
-      // uma linha de texto e poupa a contagem à mão de "até onde vai o que eu
-      // alcanço". O filtro só aparece quando há mais de oito, que é quando
-      // procurar pelo nome fica mais rápido do que correr o olho.
-      let nivelAnterior = -1;
-      const cartoes = lista.map((e) => {
-        const cab = e.nivel !== nivelAnterior ? `<span class="ag-ef-gr">nível ${e.nivel}</span>` : '';
-        nivelAnterior = e.nivel;
-        return cab + opcao(e);
-      }).join('');
+      // A lista vem ordenada por nível, e o nível já está escrito na ponta de
+      // cada cartão: um cabeçalho a cada degrau repetia em voz alta o que a
+      // pastilha do lado direito diz sozinha.
+      const cartoes = lista.map(opcao).join('');
 
       const linhaPar = (p: Parametro) => {
         const n = escolhas[p.nome] ?? 0;
@@ -570,8 +605,13 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // assunto da forma ganhou coluna própria, e ela SOME quando não há forma
       // nenhuma a escolher, devolvendo a largura aos parâmetros.
       const semForma = !podeFatiar && !podeModar && !podeCurvar && !improvisoSemChao
-        && !(moldeAtual && temArea);
+        && !podeSolidar && !(moldeAtual && temArea);
       const icone = { explosao: '●', leque: '◣', linha: '━', muralha: '▬' };
+      /** O desenho de cada sólido em um glifo, na ordem da bancada de volume. */
+      const iconeSol: Record<string, string> = {
+        cubo: '■', cuboide: '▬', esfera: '●', semiesfera: '◓',
+        cilindro: '▮', cone: '▲', piramide: '△', torus: '◎',
+      };
       /** Uma fileira de botões da coluna da forma: rótulo à esquerda, botões à direita. */
       const fileira = (rot: string, dica: string, botoes: string, nota = '') => `
         <div class="ag-angs">
@@ -606,6 +646,16 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
           ${semForma ? '' : `<div class="ag-col-forma">
             <span class="ag-h">${podeFatiar || improvisoSemChao ? 'Manifestação' : 'Molde'}</span>
             ${improvisoSemChao ? '' : miniatura(ultimaFigura)}
+            ${podeSolidar ? `
+              ${/* Uma linha só: qual molde está escolhido já se vê no botão aceso,
+                    e repetir o nome aqui empurrava a lista para fora da coluna. */''}
+              <p class="ag-alt">${esc(medidas!.texto)}
+                <i>· ${esc(um(Math.round(volM3 * 100) / 100))} m³</i></p>
+              <div class="ag-sols">${SOLIDOS.map((m) => `
+                <button type="button" class="ag-sol${solido === m.id ? ' on' : ''}" data-solido="${m.id}"
+                  title="${esc(`${m.serve || ''} · ${m.proporcao}`)}">
+                  <span class="ag-md-ic" aria-hidden="true">${iconeSol[m.id] || '■'}</span>
+                  <span>${esc(m.nome)}</span></button>`).join('')}</div>` : ''}
             ${podeFatiar ? `
               ${fileira('Abrir',
                 'A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.',
@@ -638,7 +688,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
                        do título. Escrita nos quatro, a lista passava do pé da
                        coluna e escondia a Muralha atrás de uma rolagem. */''}
                   ${molde === m.id ? `<small>${esc(m.compra)}</small>` : ''}</button>`).join('')}</div>` : ''}
-            ${!podeModar && !podeFatiar && moldeAtual && temArea ? `
+            ${!podeModar && !podeFatiar && !podeSolidar && moldeAtual && temArea ? `
               <p class="ag-md-nota"><b>${esc(moldeAtual.nome)}</b>, o molde que a forma deste Efeito
                 já escolheu. Compra ${esc(moldeAtual.compra)}.</p>` : ''}
             ${podeCurvar ? fileira('Curvatura', 'A barreira ergue-se reta ou dobrada.',
@@ -647,16 +697,25 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
           </div>`}
 
           <div class="ag-pe">
+            ${/* A CONTA EM TRÊS CÉLULAS, e não numa frase que se desmancha.
+                  Eram quatro pedaços soltos numa fileira que quebrava onde
+                  desse: o "esticado" ora ficava ao lado da Velocidade, ora
+                  embaixo dela, e a soma dos pontos e o desconto da Centelha
+                  eram dois "=" na mesma linha, que se liam como um só. Agora
+                  cada célula tem o número em cima e de onde ele saiu embaixo,
+                  na mesma ordem em que se paga: pontos, Mana, tempo. */''}
             <div class="ag-cst-l">
-              <span>${efeitoSel ? `Efeito ${c.base}` : 'improviso'} + parâmetros ${c.parametros}
-                = <b>${c.total}</b> pontos</span>
-              <span>&minus; Centelha ${c.centelha} = <b class="${c.mana ? '' : 'gratis'}">${c.mana}</b> de Mana</span>
-              <span class="ag-vel">Velocidade
+              <span class="ag-cst-c"><b>${c.total}</b> pontos
+                <small>${efeitoSel ? `Efeito ${c.base}` : 'improviso'} + ${c.parametros} de parâmetros</small></span>
+              <span class="ag-cst-c"><b class="${c.mana ? '' : 'gratis'}">${c.mana}</b> de Mana
+                <small>menos Centelha ${c.centelha}</small></span>
+              <label class="ag-cst-c ag-vel">
                 <input type="number" id="ag-vel" min="0" max="60" step="1" value="${velocidade}" />
-                ${velocidade ? 'ticks' : '<b class="gratis">livre</b>'}</span>
-              ${c.esticados.length ? `<span class="ag-cst-est">esticado:
-                ${c.esticados.map((e) => `${esc(e.nome)} ${e.acima} acima (${e.custo})`).join(' · ')}</span>` : ''}
+                ${velocidade ? 'ticks' : '<b class="gratis">livre</b>'}
+                <small>Velocidade</small></label>
             </div>
+            ${c.esticados.length ? `<p class="ag-cst-est">esticado:
+              ${c.esticados.map((e) => `${esc(e.nome)} ${e.acima} acima (${e.custo})`).join(' · ')}</p>` : ''}
             <div class="ag-pe-fim">
               <span class="ag-cst-fig">${plano.figura ? esc(plano.figura) : ''}${
                 plano.volumeM3 ? ` · ${plano.volumeM3 < 10 ? plano.volumeM3.toFixed(1) : Math.round(plano.volumeM3)} m³` : ''}</span>
@@ -694,9 +753,6 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       };
       corpo.querySelectorAll<HTMLElement>('[data-arte]').forEach(
         (b) => b.onclick = () => trocarArte(b.dataset.arte!));
-      const selArte = corpo.querySelector('#ag-arte-sel') as HTMLSelectElement | null;
-      if (selArte) selArte.onchange = () => trocarArte(selArte.value);
-
       // O FILTRO NÃO REPINTA A CAIXA: esconde os cartões que sobraram de fora.
       // Repintar a cada tecla roubaria o cursor do campo, e o corpo inteiro é
       // reescrito por qualquer clique; esconder é uma passada na lista.
@@ -705,8 +761,6 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         corpo.querySelectorAll<HTMLElement>('.ag-ef').forEach((b) => {
           b.hidden = !!t && !semAcento(b.dataset.busca || '').includes(t);
         });
-        // Filtrando, os degraus de nível não descrevem mais o que sobrou na tela.
-        corpo.querySelectorAll<HTMLElement>('.ag-ef-gr').forEach((h) => { h.hidden = !!t; });
       };
       const inpBusca = corpo.querySelector('#ag-busca') as HTMLInputElement | null;
       if (inpBusca) inpBusca.oninput = () => { filtro = inpBusca.value; aplicarFiltro(); };
@@ -737,6 +791,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       });
       corpo.querySelectorAll<HTMLElement>('[data-molde]').forEach((b) => b.onclick = () => {
         molde = b.dataset.molde!; pintar();
+      });
+      corpo.querySelectorAll<HTMLElement>('[data-solido]').forEach((b) => b.onclick = () => {
+        solido = b.dataset.solido!; pintar();
       });
       corpo.querySelectorAll<HTMLElement>('[data-fatias]').forEach((b) => b.onclick = () => {
         fatias = Number(b.dataset.fatias); pintar();

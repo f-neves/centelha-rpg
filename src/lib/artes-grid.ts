@@ -383,6 +383,10 @@ export interface Figura {
   curvaturaGraus?: number;
   /** Quantas fatias vizinhas saem do mesmo ápice. Só a manifestação. */
   fatias?: number;
+  /** O molde de volume que gerou esta pegada (`cubo`, `esfera`…). Só a matéria. */
+  solido?: string;
+  /** O que o sólido enche, em m³. Anda junto com `solido`. */
+  volumeM3?: number;
   /** A abertura de UMA fatia, em graus. `aberturaGraus` é a soma das N. */
   fatiaGraus?: number;
   /**
@@ -683,6 +687,141 @@ export const MOLDE: Record<string, MoldeNomeado> =
 export const MOLDES_DE_CHAO: MoldeNomeado[] = (MOLDES_D.lista || []).filter(
   (m: MoldeNomeado) => m.figura !== 'cadeia');
 
+// ------------------------------------------------- os moldes do VOLUME
+/**
+ * A outra metade da §5.3: o chão se compra em molde, e o volume também.
+ *
+ * A régua não muda. O Volume compra o LADO DE UM CUBO e entrega o cubo dele; o
+ * molde não mexe em quanto se ganha, mexe na FORMA em que aquilo aparece, e por
+ * tabela na pegada que fica no chão e na altura que o tabuleiro visto de cima
+ * não mostra. O mesmo metro cúbico é uma bolha de 62 cm de raio, uma coluna de
+ * 1,08 m de altura ou uma laje de 79 cm.
+ *
+ * As proporções são FIXAS por molde, e é isso que impede o abuso da esbeltez:
+ * com duas medidas livres, 1 m³ vira 127 m de fio de 5 cm. Quem quer comprido
+ * compra a Muralha, que é molde de chão e tem régua calibrada para isso.
+ */
+export interface Solido {
+  id: string; nome: string;
+  /** O que fica marcado no chão: o tabuleiro é visto de cima. */
+  pegada: 'circulo' | 'retangulo';
+  proporcao: string;
+  serve?: string;
+}
+export const SOLIDOS: Solido[] = (MOLDES_D.solidos || {}).lista || [];
+export const SOLIDO: Record<string, Solido> =
+  Object.fromEntries(SOLIDOS.map((m) => [m.id, m]));
+/** O cubo, porque é ele que a régua nomeia: comprou "1x1x1", saiu um cubo de 1 m. */
+export const SOLIDO_PADRAO: string = (MOLDES_D.solidos || {}).padrao || 'cubo';
+
+export interface MedidasDoSolido {
+  raioM?: number;
+  ladoM?: number;
+  comprimentoM?: number;
+  larguraM?: number;
+  /** O que sobe do chão. É o número que o tabuleiro engole e a mesa precisa. */
+  alturaM: number;
+  /** As medidas ditas em palavras: "0,62 m de raio · 1,24 m de altura". */
+  texto: string;
+}
+
+/**
+ * As medidas do sólido que entrega V m³, na proporção fixa de cada um.
+ *
+ * Cada volume é um monômio nas medidas (V = k · ∏ pᵉ), então a conta inversa é
+ * exata e cabe numa linha: fixada a proporção, sobra uma raiz cúbica.
+ */
+export function medidasDoSolido(id: string, volumeM3: number): MedidasDoSolido {
+  const V = Math.max(0, volumeM3);
+  const cbrt = (x: number) => Math.cbrt(Math.max(0, x));
+  const d = (n: number) => um(Math.round(n * 100) / 100);
+  switch (id) {
+    case 'cuboide': {
+      // 2 : 1 : 1, o comprimento em dobro da largura e da altura.
+      const w = cbrt(V / 2);
+      return {
+        comprimentoM: 2 * w, larguraM: w, alturaM: w,
+        texto: `${d(2 * w)} × ${d(w)} m de chão · ${d(w)} m de altura`,
+      };
+    }
+    case 'esfera': {
+      const r = cbrt((3 * V) / (4 * Math.PI));
+      return { raioM: r, alturaM: 2 * r, texto: `${d(r)} m de raio · ${d(2 * r)} m de altura` };
+    }
+    case 'semiesfera': {
+      const r = cbrt((3 * V) / (2 * Math.PI));
+      return { raioM: r, alturaM: r, texto: `${d(r)} m de raio · ${d(r)} m de altura` };
+    }
+    case 'cilindro': {
+      const r = cbrt(V / (2 * Math.PI));
+      return { raioM: r, alturaM: 2 * r, texto: `${d(r)} m de raio · ${d(2 * r)} m de altura` };
+    }
+    case 'cone': {
+      const r = cbrt((3 * V) / (2 * Math.PI));
+      return { raioM: r, alturaM: 2 * r, texto: `${d(r)} m de raio · ${d(2 * r)} m de altura` };
+    }
+    case 'piramide': {
+      const L = cbrt(3 * V);
+      return { ladoM: L, alturaM: L, texto: `base de ${d(L)} m · ${d(L)} m de altura` };
+    }
+    case 'torus': {
+      // O tubo é um terço do raio maior, senão o anel se atravessa.
+      const R = cbrt((9 * V) / (2 * Math.PI * Math.PI));
+      const t = R / 3;
+      return {
+        raioM: R + t, alturaM: 2 * t,
+        texto: `${d(R + t)} m de raio · ${d(2 * t)} m de altura · tubo de ${d(2 * t)} m`,
+      };
+    }
+    default: {
+      const L = cbrt(V);
+      return { ladoM: L, alturaM: L, texto: `${d(L)} m de lado` };
+    }
+  }
+}
+
+/** A pegada do sólido no tabuleiro: é ela que marca casa e pega gente. */
+export function figuraDoSolido(opts: {
+  solido: string; volumeM3: number; ancora: Encaixe; dir?: number;
+}): Figura {
+  const m = medidasDoSolido(opts.solido, opts.volumeM3);
+  const base = {
+    ax: opts.ancora.x, ay: opts.ancora.y,
+    q: opts.ancora.hex.q, r: opts.ancora.hex.r, dir: opts.dir ?? 0,
+  };
+  const comum = { alturaM: m.alturaM, solido: opts.solido, volumeM3: opts.volumeM3 };
+  if ((SOLIDO[opts.solido]?.pegada || 'retangulo') === 'circulo') {
+    return { tipo: 'circulo', ...base, ...comum, raioM: m.raioM || 0 };
+  }
+  return {
+    tipo: 'retangulo', ...base, ...comum,
+    comprimentoM: m.comprimentoM ?? m.ladoM ?? 0,
+    larguraM: m.larguraM ?? m.ladoM ?? 0,
+  };
+}
+
+/**
+ * O parâmetro de tamanho é VOLUME de matéria, e não chão?
+ *
+ * Três Volumes convivem no sistema e só um é sólido: o da manifestação compra a
+ * base das fatias (§5.4), o da Aura compra um raio e diz isso na unidade, e o
+ * resto compra o lado de um cubo, na notação "1x1x1" que o tabuleiro sempre leu.
+ */
+export function ehVolumeSolido(p: Parametro | undefined | null): boolean {
+  if (!p || p.nome !== 'Volume' || p.tipo === 'fixo') return false;
+  if (p.regua === 'manifestacao') return false;
+  return !/de raio/i.test(p.unidade || '');
+}
+
+/** Quantos m³ o parâmetro compra no grau `n`. "1,5x1,5x1,5" são 3,4 m³. */
+export function volumeEmM3(p: Parametro, n: number): number {
+  const v = String(valorNoNivel(p, n) ?? '');
+  const partes = v.split(/[x×]/).map(soNumero).filter((x) => x > 0);
+  if (partes.length >= 3) return partes[0] * partes[1] * partes[2];
+  if (partes.length === 1) return partes[0] ** 3;
+  return 0;
+}
+
 /**
  * O molde que a forma declarada pelo Efeito já escolheu.
  *
@@ -833,6 +972,14 @@ export function volumeDaManifestacao(f: Figura): number {
 export function escalaVisivel(
   p: Parametro, efeito: Efeito | null, moldeId?: string,
 ): string[] | null {
+  // O Volume de matéria se mostra em m³, e não na notação do cubo: com molde, o
+  // lado do cubo é a medida de UM dos oito, e o que não muda entre eles é a
+  // quantidade. Vem antes de tudo porque vale também para a régua PRÓPRIA: a da
+  // Neblina é dela, mas continua sendo volume.
+  if (ehVolumeSolido(p)) {
+    const e = escalaDe(p);
+    return e ? e.map((_, i) => `${um(volumeEmM3(p, i))} m³`) : e;
+  }
   if (!efeito || p.tipo !== 'padrao') return escalaDe(p);
   if (p.nome !== 'Área' && p.nome !== 'Volume') return escalaDe(p);
   const m = formaEscolheMolde(efeito.grid?.forma)
@@ -868,6 +1015,8 @@ export function figuraDoEfeito(opts: {
   dir?: number;
   /** O molde escolhido, quando a forma do Efeito deixa escolher (a `zona`). */
   molde?: string;
+  /** O molde de VOLUME, quando o Efeito compra matéria em m³. */
+  solido?: string;
   curvaturaGraus?: number;
   /** Só o improviso: a base comprada, as fatias, a abertura e quem paga o abrir. */
   ladoM?: number; fatias?: number; aberturaGraus?: number; abrirCobra?: ModoAbrir;
@@ -919,6 +1068,14 @@ export function figuraDoEfeito(opts: {
       comprimentoM: medidaNoNivel(pComp, grau), larguraM: LARGURA_LINHA,
     });
   }
+  // O VOLUME É SÓLIDO, e não chão. A quantidade não muda com o molde; o que
+  // muda é a forma em que ela aparece, e é dela que sai a pegada.
+  if (ehVolumeSolido(pTam)) {
+    return figuraDoSolido({
+      solido: opts.solido || SOLIDO_PADRAO,
+      volumeM3: volumeEmM3(pTam!, grau), ancora, dir: opts.dir,
+    });
+  }
   if (pTam?.tipo === 'substitui') {
     if (/de raio/i.test(pTam.unidade || '')) {
       return { tipo: 'circulo', ...base, raioM: medidaNoNivel(pTam, grau) };
@@ -958,6 +1115,12 @@ export function figuraDoEfeito(opts: {
 /** A figura dita em palavras, para a caixa e para o registro. */
 export function rotuloDaFigura(f: Figura): string {
   if (f.tipo === 'arena') return 'a arena inteira';
+  // O sólido se diz pelo nome do molde: "cúpula de 0,78 m de raio" diz o que
+  // "círculo de 0,78 m de raio" esconde, que é que aquilo tem altura.
+  if (f.solido) {
+    const nome = SOLIDO[f.solido]?.nome || 'sólido';
+    return `${nome.toLowerCase()} de ${medidasDoSolido(f.solido, f.volumeM3 || 0).texto}`;
+  }
   if (f.tipo === 'circulo') return `círculo de ${um(f.raioM || 0)} m de raio`;
   if (f.tipo === 'linha') return `faixa de ${um(f.comprimentoM || 0)} m × ${um(f.larguraM || 1)} m`;
   if (f.tipo === 'arco') {
