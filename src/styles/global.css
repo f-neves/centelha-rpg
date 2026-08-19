@@ -787,7 +787,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    linhas; com o cartão reduzido a nome e nível, e o resto no balão, ela cabe em
    pouco mais de um terço disso e para de tapar o tabuleiro. */
 .ui-dlg-conj.ui-dlg-arte { max-width: min(40rem, 96vw); width: min(40rem, 96vw); }
-.ui-dlg-conj .ui-dlg-form { height: min(41rem, 90vh); display: flex; flex-direction: column; }
+.ui-dlg-conj .ui-dlg-form { height: min(32rem, 88vh); display: flex; flex-direction: column; }
 /* Arrastada, a caixa toma para si a posição que o navegador dava a ela. */
 .ui-dlg.arrastado { position: fixed; margin: 0; }
 .ui-dlg-pega { cursor: grab; user-select: none; touch-action: none; }
@@ -810,42 +810,60 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    `minmax(0, 1fr)` e não `1fr`: o mínimo de `1fr` é o conteúdo, então uma
    fileira que não quebrasse (a dos moldes) alargava a coluna e empurrava a
    grade inteira para fora da caixa, cortando o botão de Conjurar. */
-.ui-dlg-conj .ag-grade { display: grid; grid-template-columns: minmax(8rem, 10rem) minmax(0, 1fr);
-  gap: .8rem; flex: 1 1 auto; min-height: 0; width: 100%; }
-.ui-dlg-conj .ag-col-ef { display: flex; flex-direction: column; min-height: 0;
-  border-right: 1px solid var(--rule); padding-right: .8rem; }
-.ui-dlg-conj .ag-col-dir { display: flex; flex-direction: column; min-height: 0; }
-/* Só o miolo da direita rola; o custo e os botões ficam presos no pé, onde a
-   mão os encontra sem procurar. */
-.ui-dlg-conj .ag-rolagem { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: .3rem; }
-.ui-dlg-conj .ag-pe { flex: 0 0 auto; padding-top: .4rem; border-top: 1px solid var(--rule); }
+/* TRÊS FAIXAS: o que se escolhe em cima, o miolo em três colunas, a
+   conferência embaixo.
+   A caixa era uma coluna de Efeitos ao lado de uma pilha vertical de seções, e
+   a pilha crescia sem parar porque cada assunto trazia o próprio cabeçalho.
+   Como as seções da forma nunca aparecem juntas (um improviso não tem molde,
+   um muro não tem fatias), a caixa ficava alta para caber uma de cada vez
+   enquanto sobrava largura em todas as linhas. */
+.ui-dlg-conj .ag-grade {
+  display: grid;
+  grid-template-columns: minmax(7rem, 8.5rem) minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "arte  arte  arte"
+    "efe   par   forma"
+    "pe    pe    pe";
+  gap: .5rem .75rem;
+  flex: 1 1 auto; min-height: 0; width: 100%;
+}
+/* Sem forma a escolher, a coluna some e a largura volta para os parâmetros. */
+.ui-dlg-conj .ag-grade.sem-forma {
+  grid-template-columns: minmax(7rem, 8.5rem) minmax(0, 1fr);
+  grid-template-areas: "arte arte" "efe par" "pe pe";
+}
+.ui-dlg-conj .ag-fx-arte { grid-area: arte; display: flex; align-items: center; gap: .5rem;
+  flex-wrap: wrap; padding-bottom: .35rem; border-bottom: 1px solid var(--rule); }
+.ui-dlg-conj .ag-col-ef { grid-area: efe; display: flex; flex-direction: column; min-height: 0;
+  border-right: 1px solid var(--rule); padding-right: .7rem; }
+.ui-dlg-conj .ag-col-par { grid-area: par; display: flex; flex-direction: column; min-height: 0;
+  overflow-y: auto; }
+.ui-dlg-conj .ag-col-forma { grid-area: forma; display: flex; flex-direction: column; min-height: 0;
+  overflow-y: auto; border-left: 1px solid var(--rule); padding-left: .75rem; }
+.ui-dlg-conj .ag-pe { grid-area: pe; padding-top: .4rem; border-top: 1px solid var(--rule); }
 
 @media (max-width: 46rem) {
-  /* No celular a coluna vira fileira: duas colunas de 8rem não servem a nenhum
-     dos dois lados. */
-  .ui-dlg-conj .ag-grade { grid-template-columns: minmax(0, 1fr); overflow-y: auto; gap: .6rem; }
-  /* 30vh e não 40: em pé a caixa toda tem 88vh, e o pé com o custo, a
-     Velocidade e os dois botões já come uns 20 dela. Com 40 sobravam trinta
-     pixels de parâmetros, que é o mesmo que não mostrar nenhum. A lista de
-     Efeitos rola por dentro, então encurtá-la não esconde nada. */
+  /* No celular as três colunas viram uma fileira só, e quem rola é ela. */
+  .ui-dlg-conj .ag-grade, .ui-dlg-conj .ag-grade.sem-forma {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "arte" "efe" "par" "forma" "pe";
+    grid-template-rows: auto auto auto auto auto;
+    overflow-y: auto; gap: .5rem;
+  }
   .ui-dlg-conj .ag-col-ef { border-right: none; padding-right: 0;
-    border-bottom: 1px solid var(--rule); padding-bottom: .6rem; max-height: 30vh; }
-  /* `flex: 0 0 auto`, e é este o conserto da sobreposição.
-     Quem rola aqui é a fileira inteira, não o miolo. Com `flex: 1 1 auto` o
-     miolo continuava podendo encolher abaixo do próprio conteúdo para caber na
-     coluna, e, sem recorte (`overflow: visible`), o que sobrava era desenhado
-     POR CIMA do custo e dos botões: os parâmetros saíam escritos em cima do
-     "− Centelha = Mana", da Velocidade e do Conjurar. */
-  .ui-dlg-conj .ag-rolagem { flex: 0 0 auto; overflow: visible; padding-right: 0; }
-  /* E o pé continua ao alcance da mão: gruda no fundo da fileira que rola, em
-     vez de esperar no fim de uma lista de dez parâmetros. */
+    border-bottom: 1px solid var(--rule); padding-bottom: .5rem; max-height: 26vh; }
+  .ui-dlg-conj .ag-col-forma { border-left: none; padding-left: 0;
+    border-top: 1px solid var(--rule); padding-top: .5rem; }
+  .ui-dlg-conj .ag-col-par, .ui-dlg-conj .ag-col-forma { overflow: visible; }
+  /* E o pé continua ao alcance da mão, grudado no fundo da fileira que rola. */
   .ui-dlg-conj .ag-pe { position: sticky; bottom: 0; z-index: 1; background: var(--panel);
-    margin-top: .4rem; padding-bottom: .2rem; }
+    padding-bottom: .2rem; }
 }
 
-.ui-dlg-arte .ag-sec { margin-bottom: .7rem; }
-.ui-dlg-arte .ag-h { font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .08em;
-  color: var(--ink-soft); margin: 0 0 .35rem; font-weight: 700; }
+.ui-dlg-arte .ag-h { display: block; font-size: var(--fs-micro); text-transform: uppercase;
+  letter-spacing: .08em; color: var(--ink-soft); margin: 0 0 .3rem; font-weight: 700; }
+.ui-dlg-conj .ag-fx-arte .ag-h { margin: 0; flex: 0 0 auto; }
 .ui-dlg-arte .ag-nota { font-size: var(--fs-micro); color: var(--ink-soft); margin: .2rem 0 .6rem; }
 .ui-dlg-arte .ag-vazio { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
 
@@ -880,26 +898,8 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-ef-nm { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
 .ag-ef:hover { border-color: var(--accent); }
 .ag-ef.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
-.ag-ef-top { display: flex; align-items: baseline; gap: .4rem; }
-/* O nome fica com a sobra e quebra em duas linhas quando for comprido; o nível
-   não encolhe nem desce, porque é o número que decide se dá para conjurar. */
-.ag-ef-top b { flex: 1 1 auto; min-width: 0; }
 .ag-ef-nv { flex: 0 0 auto; font-size: var(--fs-micro); color: var(--ink-soft); border: 1px solid var(--rule);
   border-radius: 999px; padding: 0 .3rem; font-variant-numeric: tabular-nums; }
-/* A descrição é o que decide a escolha, e num cartão estreito ela vai de duas a
-   doze linhas, fazendo a fileira inteira crescer junto da mais falante. Cortada
-   em seis linhas os cartões ficam comparáveis, e o texto inteiro continua a um
-   apontar de distância: ele vai no `title` do botão (ver artes-grid-ui.ts). */
-.ag-ef-tx { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.35;
-  display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;
-  overflow: hidden; }
-.ag-ef-sab { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic;
-  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;
-  overflow: hidden; }
-/* As marcas descem para o pé: é a linha que se compara entre cartões vizinhos,
-   e comparar exige que ela esteja na mesma altura nos dois. */
-.ag-ef-mc { margin-top: auto; padding-top: .25rem; font-size: calc(var(--fs-micro) * .92);
-  color: var(--ink-soft); letter-spacing: .03em; }
 
 /* O BALÃO DO EFEITO: o que saiu do cartão, a um apontar de distância.
    Fica no <body>, acima de qualquer diálogo, porque a caixa que o abre é modal
@@ -920,11 +920,16 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 
 /* A altura da base, logo abaixo de quem paga o abrir: é o número que o
    tabuleiro visto de cima não mostra, e é ele que separa os dois modos. */
-.ag-alt { margin: .3rem 0 .5rem; font-size: var(--fs-rotulo); color: var(--ink-soft); }
+.ag-alt { margin: .1rem 0 .5rem; font-size: var(--fs-rotulo); color: var(--ink-soft); line-height: 1.3; }
 .ag-alt b { color: var(--accent-texto); font-variant-numeric: tabular-nums; }
+.ag-alt i { font-size: var(--fs-micro); }
+/* O que o Efeito faz no tabuleiro, no alto da coluna da forma: é a linha que
+   antes só existia no balão do cartão, e ela continua valendo depois de escolher. */
+.ag-marcas { margin: 0 0 .45rem; font-size: var(--fs-micro); color: var(--ink-soft);
+  letter-spacing: .03em; }
 
 /* os parâmetros: nome, contador, e o que aquilo VALE, que é a coluna que importa */
-.ag-pars { display: grid; gap: .18rem; }
+.ag-pars { display: grid; gap: .18rem; max-width: 26rem; }
 .ag-p { display: grid; grid-template-columns: 5.4rem auto 1fr auto; align-items: center; gap: .4rem;
   padding: .06rem .2rem; border-radius: var(--r-2, 6px); }
 .ag-p.esticado { background: color-mix(in srgb, var(--gold, #c9a227) 12%, transparent); }
@@ -945,30 +950,34 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-fixos { display: flex; flex-wrap: wrap; gap: .1rem .8rem; margin-top: .3rem;
   font-size: var(--fs-micro); color: var(--ink-soft); }
 
-/* o molde: quatro botões com o desenho do que vai sair.
-   A fileira quebra: os quatro pedem 360 px e num celular a coluna tem 300, e
-   sem quebrar era o Leque que ficava pendurado fora da caixa. */
-.ag-moldes { display: flex; flex-wrap: wrap; gap: .3rem; }
-.ag-md { display: inline-flex; align-items: center; gap: .3rem; padding: .25rem .6rem; cursor: pointer;
+/* O MOLDE, EMPILHADO. Na coluna estreita os quatro botões viram uma pilha, e
+   cada um diz embaixo do nome o que ele compra: é a régua dele, e sem ela o
+   nome sozinho não decide nada. */
+.ag-moldes { display: flex; flex-direction: column; gap: .22rem; }
+.ag-md { display: grid; grid-template-columns: 1.1rem 1fr; grid-template-areas: "ic nm" "ic cp";
+  gap: 0 .35rem; line-height: 1.25; text-align: left; padding: .2rem .4rem; cursor: pointer;
   border: 1px solid var(--rule); border-radius: var(--r-2, 6px); background: transparent;
-  font: inherit; font-size: var(--fs-aux); color: var(--ink); }
+  font: inherit; font-size: var(--fs-rotulo); color: var(--ink); }
+.ag-md:hover { border-color: var(--accent); }
 .ag-md.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
-.ag-md-ic { color: var(--accent); }
-/* A abertura do leque, e a figura que a área comprada vira. A figura é o número
-   que a mesa vai declarar em voz alta, então vem em destaque e não em nota. */
-.ag-angs { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; margin-top: .35rem; }
-.ag-ang-l { font-size: var(--fs-micro); color: var(--ink-soft);
-  text-transform: uppercase; letter-spacing: .06em; margin-right: .2rem; }
+.ag-md-ic { grid-area: ic; align-self: center; color: var(--accent-texto); }
+.ag-md-nm { grid-area: nm; }
+.ag-md small { grid-area: cp; font-size: var(--fs-micro); color: var(--ink-soft); }
+
+/* As fileiras de botões: o rótulo ocupa a linha inteira e os botões vêm
+   embaixo. Na coluna estreita, rótulo e botões lado a lado quebravam no meio
+   da fileira e deixavam um botão órfão na linha de baixo. */
+.ag-angs { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; margin-bottom: .4rem; }
+.ag-ang-l { flex: 0 0 100%; font-size: var(--fs-micro); color: var(--ink-soft);
+  text-transform: uppercase; letter-spacing: .06em; margin: 0; }
+.ag-ang-n { flex: 1 1 100%; font-size: var(--fs-micro); color: var(--ink-soft);
+  font-style: italic; line-height: 1.3; margin: .1rem 0 0; }
 .ag-ang { padding: .12rem .4rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
   background: transparent; cursor: pointer; font: inherit; font-size: var(--fs-micro);
   color: var(--ink); font-variant-numeric: tabular-nums; }
 .ag-ang:hover { border-color: var(--accent); }
 .ag-ang.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
-.ag-figura { margin: .4rem 0 .15rem; font-size: var(--fs-aux); color: var(--accent-texto, var(--accent)); }
 
-/* o custo: a única parte que o jogador confere antes de apertar.
-   O traço de cima saiu porque o pé do painel já tem o seu. */
-.ag-custo { padding-top: .1rem; }
 /* A Velocidade é o único número aqui que se digita: ela não sai de conta
    nenhuma, é o que a mesa combina que a conjuração custa de tempo. */
 .ag-vel { display: inline-flex; align-items: center; gap: .35rem; }
@@ -986,7 +995,12 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    escolhe. Aqui ela fica sempre à vista, ao lado do custo. */
 .ag-cst-fig { font-size: var(--fs-micro); color: var(--accent-texto, var(--accent));
   margin-top: .2rem; font-variant-numeric: tabular-nums; }
-.ag-acoes { display: flex; justify-content: flex-end; gap: .4rem; margin-top: .5rem; }
+.ag-acoes { display: inline-flex; justify-content: flex-end; gap: .4rem; flex: 0 0 auto; }
+/* A leitura da figura e os botões dividem a última linha: ela cresce para a
+   esquerda, eles ficam ancorados na direita, que é onde a mão os procura. */
+.ag-pe-fim { display: flex; align-items: center; justify-content: space-between;
+  gap: .8rem; margin-top: .35rem; }
+.ag-pe-fim .ag-cst-fig { margin-top: 0; flex: 1 1 auto; min-width: 0; }
 
 /* o NPC completo */
 .ag-npc-base { display: grid; grid-template-columns: 1fr 6rem 8rem; gap: .5rem; align-items: end; }

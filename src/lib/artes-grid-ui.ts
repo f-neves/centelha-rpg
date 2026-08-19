@@ -9,7 +9,7 @@ import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
   parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, escalaVisivel, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
-  figuraDoEfeito, rotuloDaFigura, LADO_MINIMO, CURVATURAS, velocidadePadraoDe,
+  figuraDoEfeito, rotuloDaFigura, CURVATURAS, velocidadePadraoDe,
   MOLDE, MOLDES_DE_CHAO, moldeDaForma, formaEscolheMolde,
   ABERTURAS, ABERTURA_PADRAO, volumeDaManifestacao, ABRIR_COBRA, ABRIR_COBRA_PADRAO,
   fatiasMaximas, ALTURA_MINIMA_BASE,
@@ -20,6 +20,26 @@ const esc = (s: unknown) =>
   String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 /** Número curto, com vírgula: "6" e não "6,0", "2,5" e não "2.5". */
 const um = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replace('.', ','));
+
+/**
+ * O que o Efeito faz no tabuleiro, em três ou quatro palavras.
+ *
+ * "zona · dura · terreno difícil". É a linha que se compara entre Efeitos, e a
+ * única do cartão que continua valendo depois de escolher: por isso ela aparece
+ * nos dois lugares, no balão de quem procura e na coluna de quem já escolheu.
+ */
+const marcasDe = (e: Efeito | null) => {
+  const g = e?.grid;
+  if (!g) return 'a Arte crua, sem Efeito comprado';
+  return [
+    g.forma !== 'nenhuma' && g.forma !== 'alvo' ? g.forma : '',
+    g.persiste ? 'dura' : '',
+    g.fere ? 'fere' : '',
+    // Vale a tarja porque muda o turno inteiro: este não gasta a vez.
+    e?.acaoLivre ? 'ação livre' : '',
+    g.condicao && CONDICAO[g.condicao] ? CONDICAO[g.condicao].nome.toLowerCase() : '',
+  ].filter(Boolean).join(' · ');
+};
 
 // ==================================================================== o plano
 /** O que o assistente devolve. Quem chamou é que põe isso no tabuleiro. */
@@ -46,8 +66,6 @@ export interface Plano {
   ladoBaseM: number;
   /** O volume que a manifestação entrega, em m³. Só o improviso. */
   volumeM3: number;
-  /** Sobrou da régua velha do retângulo. Segue no plano para não quebrar quem lê. */
-  lado: number;
   /** Quanto a barreira dobra, em graus. Zero é a parede reta. */
   curvaturaGraus: number;
   /** O que a conjuração custa de Velocidade, em ticks. Editável na caixa. */
@@ -113,7 +131,6 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let angulo = ABERTURA_PADRAO;
   let fatias = 1;
   let abrirCobra: ModoAbrir = ABRIR_COBRA_PADRAO;
-  let lado = LADO_MINIMO;
   let curvatura = 0;
   let velocidade = velocidadePadraoDe(null);
 
@@ -249,7 +266,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       if (volumeM3) partes.push(`${volumeM3 < 10 ? volumeM3.toFixed(1) : Math.round(volumeM3)} m³`);
       return {
         arte: arteSel, nivelArte, efeito: efeitoSel, escolhas: { ...escolhas },
-        molde, angulo, fatias, abrirCobra, lado, ladoBaseM, volumeM3,
+        molde, angulo, fatias, abrirCobra, ladoBaseM, volumeM3,
         alturaM: fig?.alturaM || 0,
         curvaturaGraus: curvatura, velocidadeTicks: velocidade, custo,
         alcanceM: pAlc && nA ? alcanceEmMetros(pAlc, nA) : 0,
@@ -285,6 +302,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // porque é a genérica que engordou e ainda espera o julgamento um a um.
       const podeModar = temArea && !ehImproviso && formaEscolheMolde(g?.forma);
       const moldeAtual = MOLDE[molde] || moldeDaForma(g?.forma);
+      // O que o Efeito faz no tabuleiro (zona · dura · fere · condição) só era
+      // legível apontando o cartão. É curto, e é do assunto da coluna da forma:
+      // vem escrito nela, para não ser preciso caçar o mouse para saber.
+      const marcaSel = efeitoSel ? marcasDe(efeitoSel) : '';
       // O teto de fatias anda com o Volume: no modo da altura a base é n ÷ N, e
       // ela não desce de um metro. Trocar de modo ou baixar o Volume tem de
       // encolher a escolha junto, senão fica um botão aceso que a regra proíbe.
@@ -306,15 +327,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const sabor = (e: Efeito) => e.artes.find((a) => a.id === arteSel.id)?.sabor || '';
       const opcao = (e: Efeito | null) => {
         const on = (efeitoSel?.id ?? null) === (e?.id ?? null);
-        const gg = e?.grid;
-        const marca = gg ? [
-          gg.forma !== 'nenhuma' && gg.forma !== 'alvo' ? gg.forma : '',
-          gg.persiste ? 'dura' : '',
-          gg.fere ? 'fere' : '',
-          // Vale a tarja porque muda o turno inteiro: este não gasta a vez.
-          e?.acaoLivre ? 'ação livre' : '',
-          gg.condicao && CONDICAO[gg.condicao] ? CONDICAO[gg.condicao].nome.toLowerCase() : '',
-        ].filter(Boolean).join(' · ') : 'a Arte crua, sem Efeito comprado';
+        const marca = marcasDe(e);
         const texto = e ? e.efeito : 'Dano e área montados só com os parâmetros do livro.';
         // O CARTÃO É SÓ O NOME E O NÍVEL.
         //
@@ -395,96 +408,111 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // clique. As três que rolam são a fileira inteira (no celular), o miolo
       // da direita (no desktop) e a lista de Efeitos, e as três nascem zeradas
       // quando o corpo é reescrito.
-      const rolado = ['.ag-grade', '.ag-rolagem', '.ag-efs']
+      const rolado = ['.ag-grade', '.ag-col-par', '.ag-efs']
         .map((s) => [s, corpo.querySelector(s)?.scrollTop || 0] as const);
 
+      // ==================================================== o desenho da caixa
+      //
+      // TRÊS FAIXAS, E NÃO DUAS COLUNAS.
+      //
+      // A caixa era uma coluna de Efeitos ao lado de uma pilha vertical de
+      // seções, e a pilha crescia sem parar porque cada assunto trazia o próprio
+      // cabeçalho: Arte, Parâmetros, Manifestação, Molde, Curvatura. Só que as
+      // três últimas NUNCA aparecem juntas (um improviso não tem molde, um muro
+      // não tem fatias), então a caixa ficava alta para caber uma coisa de cada
+      // vez enquanto sobrava largura em todas as linhas.
+      //
+      // Agora a Arte é uma faixa no topo, que é onde uma fileira de pastilhas
+      // quer estar; o miolo são três colunas (o que se escolhe · quanto se
+      // compra · que forma toma); e o pé é a conferência, em faixa cheia. O
+      // assunto da forma ganhou coluna própria, e ela SOME quando não há forma
+      // nenhuma a escolher, devolvendo a largura aos parâmetros.
+      const semForma = !podeFatiar && !podeModar && !podeCurvar && !improvisoSemChao
+        && !(moldeAtual && temArea);
+      const icone = { explosao: '●', leque: '◣', linha: '━', muralha: '▬' };
       corpo.innerHTML = `
-        <div class="ag-grade">
+        <div class="ag-grade${semForma ? ' sem-forma' : ''}">
+          <div class="ag-fx-arte">
+            <span class="ag-h">Arte</span>
+            <div class="ag-chips">${chipArte}</div>
+          </div>
+
           <div class="ag-col-ef">
-            <h3 class="ag-h">Efeito</h3>
+            <span class="ag-h">Efeito</span>
             <div class="ag-efs">${opcao(null)}${lista.map(opcao).join('')}</div>
             ${!lista.length ? `<p class="ag-vazio">Nenhum Efeito Especial de ${esc(arteSel.nome)} ao alcance.
               ${ctx.comprados ? 'Compre um na ficha, ou use o improviso.' : ''}</p>` : ''}
           </div>
 
-          <div class="ag-col-dir">
-            <div class="ag-rolagem">
-              <div class="ag-sec"><h3 class="ag-h">Arte</h3><div class="ag-chips">${chipArte}</div></div>
-              <div class="ag-sec"><h3 class="ag-h">Parâmetros</h3>
-                <div class="ag-pars">${pars.map(linhaPar).join('')}</div>
-                ${fixos.length ? `<div class="ag-fixos">${fixos.map((p) =>
-                  `<span><b>${esc(p.nome)}:</b> ${esc(p.valor)}</span>`).join('')}</div>` : ''}
-              </div>
-              ${podeFatiar ? `<div class="ag-sec"><h3 class="ag-h">Manifestação</h3>
-                <div class="ag-angs">
-                  <span class="ag-ang-l" title="A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.">Abrir cobra</span>
-                  ${ABRIR_COBRA.map((o) => `<button type="button" class="ag-ang${abrirCobra === o.id ? ' on' : ''}"
-                    data-abrir="${o.id}" title="${esc(o.efeito)}">${esc(o.nome)}</button>`).join('')}
-                </div>
-                <p class="ag-alt">base de <b>${esc(um(plano.alturaM))} m</b> de altura${
-                  abrirCobra === 'altura'
-                    ? ` · ${esc(um(plano.ladoBaseM))} m ÷ ${fatias} fatia${fatias > 1 ? 's' : ''}`
-                    : ' · cheia, porque quem paga o abrir é a distância'}</p>
-                <div class="ag-angs">
-                  <span class="ag-ang-l" title="O elemento sai em fatias vizinhas do mesmo ápice.">Fatias</span>
-                  ${Array.from({ length: maxFatias }, (_, i) => i + 1).map((k) => `
-                    <button type="button" class="ag-ang${fatias === k ? ' on' : ''}" data-fatias="${k}">${k}</button>`).join('')}
-                  <span class="ag-ang-l" title="As três que fecham o círculo em número inteiro de fatias: seis, quatro e três.">Abertura</span>
-                  ${ABERTURAS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
-                    data-ang="${a}">${a}°</button>`).join('')}
-                </div>
-                ${maxFatias < nivelArte ? `<p class="ag-ang-n">a base não desce de ${ALTURA_MINIMA_BASE} m,
-                  então este Volume abre no máximo ${maxFatias}</p>` : ''}
-              </div>` : ''}
-              ${improvisoSemChao ? `<div class="ag-sec"><h3 class="ag-h">Manifestação</h3>
-                <p class="ag-md-nota">${esc(arteSel.nome)} não manifesta elemento, e a fatia não quer dizer
-                  nada aqui. A geometria própria das Artes que não são elementais ainda não existe:
-                  descreva na mesa e marque o chão à mão.</p>
-              </div>` : ''}
-              ${podeModar ? `<div class="ag-sec"><h3 class="ag-h">Molde</h3>
-                <p class="ag-md-nota">Cada molde tem a régua dele: a forma decide as dimensões.</p>
-                <div class="ag-moldes">${MOLDES_DE_CHAO.map((m) => `
-                  <button type="button" class="ag-md${molde === m.id ? ' on' : ''}" data-molde="${m.id}">
-                    <span class="ag-md-ic" aria-hidden="true">${
-                      { explosao: '●', leque: '◣', linha: '━', muralha: '▬' }[m.id] || '●'}</span>
-                    ${esc(m.nome)}
-                    <small>${esc(m.compra)}</small></button>`).join('')}</div>
-                <p class="ag-figura">${esc(plano.figura || 'sem área')}</p>
-              </div>` : ''}
-              ${!podeModar && !podeFatiar && moldeAtual && temArea ? `<div class="ag-sec">
-                <h3 class="ag-h">Molde</h3>
-                <p class="ag-md-nota"><b>${esc(moldeAtual.nome)}</b>, que é o molde da forma que este Efeito
-                  declara. Ele compra ${esc(moldeAtual.compra)}.</p>
-                <p class="ag-figura">${esc(plano.figura || 'sem área')}</p>
-              </div>` : ''}
-              ${podeCurvar ? `<div class="ag-sec"><h3 class="ag-h">Curvatura</h3>
-                <div class="ag-angs">
-                  ${CURVATURAS.map((a) => `<button type="button" class="ag-ang${curvatura === a ? ' on' : ''}"
-                    data-curva="${a}">${a ? `${a}°` : 'Reta'}</button>`).join('')}
-                </div>
-                <p class="ag-figura">${esc(plano.figura || 'sem comprimento')}</p>
-              </div>` : ''}
-            </div>
+          <div class="ag-col-par">
+            <span class="ag-h">Parâmetros</span>
+            ${marcaSel ? `<p class="ag-marcas">${esc(marcaSel)}</p>` : ''}
+            <div class="ag-pars">${pars.map(linhaPar).join('')}</div>
+            ${fixos.length ? `<div class="ag-fixos">${fixos.map((p) =>
+              `<span><b>${esc(p.nome)}:</b> ${esc(p.valor)}</span>`).join('')}</div>` : ''}
+          </div>
 
-            <div class="ag-pe">
-              <div class="ag-custo">
-                <div class="ag-cst-l">
-                  <span>${efeitoSel ? `Efeito ${c.base}` : 'improviso'} + parâmetros ${c.parametros}
-                    = <b>${c.total}</b> pontos</span>
-                  <span>− Centelha ${c.centelha} = <b class="${c.mana ? '' : 'gratis'}">${c.mana}</b> de Mana</span>
-                  <span class="ag-vel">Velocidade
-                    <input type="number" id="ag-vel" min="0" max="60" step="1" value="${velocidade}" />
-                    ${velocidade ? 'ticks' : '<b class="gratis">livre</b>'}</span>
-                </div>
-                ${c.esticados.length ? `<div class="ag-cst-est">esticado:
-                  ${c.esticados.map((e) => `${esc(e.nome)} ${e.acima} acima (${e.custo})`).join(' · ')}</div>` : ''}
-                ${plano.figura ? `<div class="ag-cst-fig">${esc(plano.figura)}${
-                  plano.volumeM3 ? ` · ${plano.volumeM3 < 10 ? plano.volumeM3.toFixed(1) : Math.round(plano.volumeM3)} m³` : ''}</div>` : ''}
+          ${semForma ? '' : `<div class="ag-col-forma">
+            <span class="ag-h">${podeFatiar || improvisoSemChao ? 'Manifestação' : 'Molde'}</span>
+            ${podeFatiar ? `
+              <div class="ag-angs">
+                <span class="ag-ang-l" title="A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.">Abrir cobra</span>
+                ${ABRIR_COBRA.map((o) => `<button type="button" class="ag-ang${abrirCobra === o.id ? ' on' : ''}"
+                  data-abrir="${o.id}" title="${esc(o.efeito)}">${esc(o.nome)}</button>`).join('')}
               </div>
-              <div class="ag-acoes">
+              <p class="ag-alt">base de <b>${esc(um(plano.alturaM))} m</b> de altura<br />
+                <i>${abrirCobra === 'altura'
+                  ? `${esc(um(plano.ladoBaseM))} m &divide; ${fatias} fatia${fatias > 1 ? 's' : ''}`
+                  : 'cheia: quem paga o abrir &eacute; a dist&acirc;ncia'}</i></p>
+              <div class="ag-angs">
+                <span class="ag-ang-l" title="O elemento sai em fatias vizinhas do mesmo ápice.">Fatias</span>
+                ${Array.from({ length: maxFatias }, (_, i) => i + 1).map((k) => `
+                  <button type="button" class="ag-ang${fatias === k ? ' on' : ''}" data-fatias="${k}">${k}</button>`).join('')}
+              </div>
+              <div class="ag-angs">
+                <span class="ag-ang-l" title="As três que fecham o círculo em número inteiro de fatias: seis, quatro e três.">Abertura</span>
+                ${ABERTURAS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
+                  data-ang="${a}">${a}&deg;</button>`).join('')}
+              </div>
+              ${maxFatias < nivelArte ? `<p class="ag-ang-n">a base não desce de ${ALTURA_MINIMA_BASE} m,
+                então este Volume abre no máximo ${maxFatias}</p>` : ''}` : ''}
+            ${improvisoSemChao ? `<p class="ag-md-nota">${esc(arteSel.nome)} não manifesta elemento, e a
+              fatia não quer dizer nada aqui. A geometria própria das Artes que não são elementais
+              ainda não existe: descreva na mesa e marque o chão à mão.</p>` : ''}
+            ${podeModar ? `<div class="ag-moldes">${MOLDES_DE_CHAO.map((m) => `
+                <button type="button" class="ag-md${molde === m.id ? ' on' : ''}" data-molde="${m.id}"
+                  title="${esc(m.serve || '')}">
+                  <span class="ag-md-ic" aria-hidden="true">${icone[m.id as keyof typeof icone] || '●'}</span>
+                  <span class="ag-md-nm">${esc(m.nome)}</span>
+                  <small>${esc(m.compra)}</small></button>`).join('')}</div>` : ''}
+            ${!podeModar && !podeFatiar && moldeAtual && temArea ? `
+              <p class="ag-md-nota"><b>${esc(moldeAtual.nome)}</b>, o molde da forma que este Efeito
+                declara. Compra ${esc(moldeAtual.compra)}.</p>` : ''}
+            ${podeCurvar ? `<div class="ag-angs">
+                <span class="ag-ang-l">Curvatura</span>
+                ${CURVATURAS.map((a) => `<button type="button" class="ag-ang${curvatura === a ? ' on' : ''}"
+                  data-curva="${a}">${a ? `${a}&deg;` : 'Reta'}</button>`).join('')}
+              </div>` : ''}
+          </div>`}
+
+          <div class="ag-pe">
+            <div class="ag-cst-l">
+              <span>${efeitoSel ? `Efeito ${c.base}` : 'improviso'} + parâmetros ${c.parametros}
+                = <b>${c.total}</b> pontos</span>
+              <span>&minus; Centelha ${c.centelha} = <b class="${c.mana ? '' : 'gratis'}">${c.mana}</b> de Mana</span>
+              <span class="ag-vel">Velocidade
+                <input type="number" id="ag-vel" min="0" max="60" step="1" value="${velocidade}" />
+                ${velocidade ? 'ticks' : '<b class="gratis">livre</b>'}</span>
+              ${c.esticados.length ? `<span class="ag-cst-est">esticado:
+                ${c.esticados.map((e) => `${esc(e.nome)} ${e.acima} acima (${e.custo})`).join(' · ')}</span>` : ''}
+            </div>
+            <div class="ag-pe-fim">
+              <span class="ag-cst-fig">${plano.figura ? esc(plano.figura) : ''}${
+                plano.volumeM3 ? ` · ${plano.volumeM3 < 10 ? plano.volumeM3.toFixed(1) : Math.round(plano.volumeM3)} m³` : ''}</span>
+              <span class="ag-acoes">
                 <button type="button" class="btn" id="ag-cancelar">Cancelar</button>
                 <button type="button" class="btn primary" id="ag-ok">Conjurar</button>
-              </div>
+              </span>
             </div>
           </div>
         </div>`;
@@ -555,16 +583,6 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             : velocidadePadraoDe(efeitoSel);
         };
         inpVel.onblur = () => { inpVel.value = String(velocidade); };
-      }
-      const inpLado = corpo.querySelector('#ag-lado') as HTMLInputElement | null;
-      if (inpLado) {
-        inpLado.oninput = () => {
-          lado = Math.max(LADO_MINIMO, parseFloat(inpLado.value) || LADO_MINIMO);
-          // Redesenhar aqui roubaria o foco no meio da digitação: só o rótulo
-          // da figura precisa acompanhar, e ele é uma linha.
-          const alvo = corpo.querySelector('.ag-figura');
-          if (alvo) alvo.textContent = planoAtual().figura;
-        };
       }
       (corpo.querySelector('#ag-cancelar') as HTMLElement).onclick = () => sair(null);
       (corpo.querySelector('#ag-ok') as HTMLElement).onclick = () => sair(planoAtual());

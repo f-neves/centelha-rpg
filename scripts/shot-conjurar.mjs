@@ -30,8 +30,11 @@ await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
 await new Promise((r) => setTimeout(r, 800));
 
 // Nem toda peça tem Arte: tenta uma a uma até a caixa de conjuração abrir.
-const ZONAS = JSON.parse(fs.readFileSync('src/data/efeitos.json','utf8'))
-  .filter((e) => e.grid && e.grid.forma === 'zona').map((e) => e.id);
+const EFS = JSON.parse(fs.readFileSync('src/data/efeitos.json', 'utf8'));
+const ZONAS = EFS.filter((e) => e.grid && e.grid.forma === 'zona').map((e) => e.id);
+// Efeito sem chão nenhum a escolher: a coluna da forma tem de sumir.
+const SEM_CHAO = EFS.filter((e) => e.grid
+  && ['alvo', 'nenhuma', 'token', 'movimento'].includes(e.grid.forma)).map((e) => e.id);
 
 const ELEM = JSON.parse(fs.readFileSync('src/data/artes.json','utf8'))
   .filter((a) => a.grid && a.grid.elemento).map((a) => a.id);
@@ -111,6 +114,41 @@ if (abriu === 'ok') {
   });
   console.log('cartão:', JSON.stringify(pop, null, 1));
   await p.screenshot({ path: `${OUT}/conj-balao.png` });
+
+  // um Efeito de ZONA, que é onde a coluna da forma vira lista de moldes
+  const zona = await p.evaluate(async (zonas) => {
+    const b = [...document.querySelectorAll('[data-ef]')].find((x) => zonas.includes(x.dataset.ef));
+    if (!b) return null;
+    b.click();
+    await new Promise((r) => setTimeout(r, 300));
+    const mais = [...document.querySelectorAll('[data-par]')]
+      .filter((x) => (x.dataset.par === 'Área' || x.dataset.par === 'Volume') && x.dataset.d === '1');
+    for (let i = 0; i < 4; i++) mais[0]?.click();
+    await new Promise((r) => setTimeout(r, 300));
+    return {
+      efeito: b.textContent.replace(/\s+/g, ' ').trim(),
+      marcas: document.querySelector('.ag-marcas')?.textContent?.trim(),
+      moldes: [...document.querySelectorAll('[data-molde]')].map((m) => m.textContent.replace(/\s+/g, ' ').trim()),
+      figura: document.querySelector('.ag-cst-fig')?.textContent?.trim(),
+    };
+  }, ZONAS);
+  console.log('zona:', JSON.stringify(zona, null, 1));
+  await p.screenshot({ path: `${OUT}/conj-molde.png` });
+
+  // e um Efeito SEM forma nenhuma: a terceira coluna some
+  const semForma = await p.evaluate(async (semChao) => {
+    const b = [...document.querySelectorAll('[data-ef]')].find((x) => semChao.includes(x.dataset.ef));
+    if (!b) return null;
+    b.click();
+    await new Promise((r) => setTimeout(r, 300));
+    return {
+      efeito: b.textContent.replace(/\s+/g, ' ').trim(),
+      colunas: getComputedStyle(document.querySelector('.ag-grade')).gridTemplateColumns,
+      temForma: !!document.querySelector('.ag-col-forma'),
+    };
+  }, SEM_CHAO);
+  console.log('sem forma:', JSON.stringify(semForma));
+  await p.screenshot({ path: `${OUT}/conj-sem-forma.png` });
 
   // e o arrasto pela cabeça
   const moveu = await p.evaluate(async () => {
