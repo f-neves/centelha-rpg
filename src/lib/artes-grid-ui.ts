@@ -10,6 +10,7 @@ import {
   parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, escalaVisivel, turnosDeDuracao,
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
   figuraDoEfeito, rotuloDaFigura, CURVATURAS, velocidadePadraoDe,
+  caminhoDaFigura, arcoDaParede, type Figura,
   MOLDE, MOLDES_DE_CHAO, moldeDaForma, formaEscolheMolde,
   ABERTURAS, ABERTURA_PADRAO, volumeDaManifestacao, ABRIR_COBRA, ABRIR_COBRA_PADRAO,
   fatiasMaximas, ALTURA_MINIMA_BASE,
@@ -40,6 +41,103 @@ const marcasDe = (e: Efeito | null) => {
     g.condicao && CONDICAO[g.condicao] ? CONDICAO[g.condicao].nome.toLowerCase() : '',
   ].filter(Boolean).join(' · ');
 };
+
+/** Sem acento e em minúscula, para o filtro casar "ilusao" com "Ilusão". */
+const semAcento = (t: string) =>
+  t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+/**
+ * O QUE O EFEITO FAZ NO CHÃO, EM UM GLIFO.
+ *
+ * Numa lista de catorze nomes, a forma é o que separa um do outro antes da
+ * leitura: quem procura uma zona não quer ler catorze descrições para descobrir
+ * quais delas pintam chão. O glifo cabe numa coluna de um caractere e diz isso
+ * de relance, que é o que a lista devia fazer.
+ */
+const GLIFO: Record<string, [string, string]> = {
+  zona: ['●', 'pinta uma zona no chão'],
+  aura: ['◎', 'aura em volta de alguém'],
+  cone: ['◣', 'leque a partir do conjurador'],
+  linha: ['━', 'faixa reta'],
+  muro: ['▬', 'barreira erguida'],
+  alvo: ['✦', 'num alvo'],
+  movimento: ['⇢', 'mexe com quem está no tabuleiro'],
+  token: ['◈', 'põe uma peça em campo'],
+  cadeia: ['⋯', 'salta de alvo em alvo'],
+  nenhuma: ['·', 'não marca o tabuleiro'],
+};
+
+/**
+ * A FIGURA DESENHADA, DO TAMANHO DE UM SELO.
+ *
+ * A caixa já pinta a prévia no tabuleiro, mas o tabuleiro pode estar tapado por
+ * ela mesma, ou a peça longe da borda, ou a tela pequena. O selo responde "que
+ * forma é essa" sem depender de nada, e responde com o MESMO traço do mapa
+ * (`caminhoDaFigura`), só que na escala que couber no quadrado: o que se vê
+ * aqui é o que vai sair lá.
+ *
+ * O fundo é uma grade de um metro. É ela que dá o tamanho sem escrever número
+ * nenhum, e some quando o metro fica pequeno demais para ser lido.
+ */
+function miniatura(f: Figura | null): string {
+  if (!f || f.tipo === 'ponto') return '';
+  const W = 148, H = 74, pad = 6;
+  const cerca = (dentro: string) =>
+    `<svg class="ag-mini" viewBox="0 0 ${W} ${H}" aria-hidden="true">${dentro}</svg>`;
+  if (f.tipo === 'arena') {
+    return cerca(`<rect class="ag-mini-f" x="${pad}" y="${pad}"
+      width="${W - 2 * pad}" height="${H - 2 * pad}" rx="4" />`);
+  }
+  // O contorno em pontos, para achar a caixa que a figura ocupa. Amostrar é mais
+  // curto do que deduzir o retângulo de cada tipo, e não erra no leque de 300°.
+  const pts: [number, number][] = [[0, 0]];
+  if (f.tipo === 'circulo') {
+    const r = f.raioM || 0; pts.push([-r, -r], [r, r]);
+  } else if (f.tipo === 'leque') {
+    const r = f.raioM || 0, meia = ((f.aberturaGraus || 90) / 2) * Math.PI / 180;
+    for (let i = 0; i <= 32; i++) {
+      const a = -meia + (2 * meia * i) / 32;
+      pts.push([Math.cos(a) * r, Math.sin(a) * r]);
+    }
+  } else if (f.tipo === 'linha' || f.tipo === 'retangulo') {
+    const c = f.comprimentoM || 0, l = (f.larguraM || 1) / 2;
+    pts.push([0, -l], [0, l], [c, -l], [c, l]);
+  } else if (f.tipo === 'arco') {
+    const a = arcoDaParede(f), l = (f.larguraM || 1) / 2;
+    for (let i = 0; i <= 32; i++) {
+      const ang = a.de + ((a.ate - a.de) * i) / 32;
+      for (const raio of [a.raio + l, Math.max(0, a.raio - l)]) {
+        pts.push([a.cx + Math.cos(ang) * raio, a.cy + Math.sin(ang) * raio]);
+      }
+    }
+  }
+  const xs = pts.map((q) => q[0]), ys = pts.map((q) => q[1]);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs);
+  const y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const px = Math.min((W - 2 * pad) / Math.max(0.6, x1 - x0), (H - 2 * pad) / Math.max(0.6, y1 - y0));
+  const m = {
+    x: pad + (W - 2 * pad - (x1 - x0) * px) / 2 - x0 * px,
+    y: pad + (H - 2 * pad - (y1 - y0) * px) / 2 - y0 * px,
+  };
+  const n = (v: number) => v.toFixed(1);
+  // As divisas das fatias: o que separa uma manifestação de três de um leque só.
+  const raios = (f.fatias || 0) > 1
+    ? Array.from({ length: (f.fatias || 1) + 1 }, (_, i) => {
+      const meia = ((f.aberturaGraus || 0) / 2) * Math.PI / 180;
+      const a = -meia + i * (f.fatiaGraus || 0) * Math.PI / 180;
+      return `<line x1="${n(m.x)}" y1="${n(m.y)}"
+        x2="${n(m.x + Math.cos(a) * (f.raioM || 0) * px)}"
+        y2="${n(m.y + Math.sin(a) * (f.raioM || 0) * px)}" />`;
+    }).join('') : '';
+  const grade = px >= 7 ? `<defs><pattern id="ag-mini-g" patternUnits="userSpaceOnUse"
+      width="${n(px)}" height="${n(px)}" x="${n(m.x)}" y="${n(m.y)}">
+      <path d="M ${n(px)} 0 L 0 0 0 ${n(px)}" /></pattern></defs>
+    <rect class="ag-mini-gr" width="100%" height="100%" fill="url(#ag-mini-g)" />` : '';
+  return cerca(`${grade}
+    <g class="ag-mini-f">${caminhoDaFigura(f, { raioHexPx: 1, pxPorM: px, margem: m })}</g>
+    <g class="ag-mini-r">${raios}</g>
+    <circle class="ag-mini-o" cx="${n(m.x)}" cy="${n(m.y)}" r="2.4" />`);
+}
 
 // ==================================================================== o plano
 /** O que o assistente devolve. Quem chamou é que põe isso no tabuleiro. */
@@ -133,6 +231,16 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let abrirCobra: ModoAbrir = ABRIR_COBRA_PADRAO;
   let curvatura = 0;
   let velocidade = velocidadePadraoDe(null);
+  /** O que foi digitado no filtro da lista de Efeitos. Vazio = a lista inteira. */
+  let filtro = '';
+  /**
+   * A última figura que `planoAtual()` resolveu, para o selo desenhar.
+   *
+   * O plano leva os NÚMEROS da figura (raio, comprimento, altura), que é o que
+   * quem executa precisa; o desenho precisa da figura inteira, e refazê-la aqui
+   * seria repetir a regra em dois lugares, que foi o que já deu errado antes.
+   */
+  let ultimaFigura: Figura | null = null;
 
   // Duas classes, e a segunda não é decoração. `ui-dlg-arte` é só a LARGURA que
   // os três painéis de Arte compartilham; `ui-dlg-conj` é o desenho de duas
@@ -258,6 +366,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         molde, curvaturaGraus: curvatura,
         ladoM: ladoBaseM, fatias, aberturaGraus: angulo, abrirCobra,
       });
+      ultimaFigura = fig;
       const figura = fig ? rotuloDaFigura(fig) : '';
       if (figura) partes.push(figura);
       // A manifestação é um setor como qualquer outro leque; o que a distingue é
@@ -317,11 +426,26 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // "do Muro", então o Escudo de Força dobra também.
       const podeCurvar = g?.forma === 'muro';
 
-      const chipArte = disponiveis.map(({ arte, nivel }) => `
-        <button type="button" class="ag-chip${arte.id === arteSel.id ? ' on' : ''}"
-          data-arte="${arte.id}" style="--ag-cor:${arte.grid.cor}">
-          <span class="ag-chip-nm">${esc(arte.nome)}</span><span class="ag-chip-nv">${nivel}</span>
-        </button>`).join('');
+      // A ARTE: PASTILHAS ATÉ CINCO, LISTA DAÍ EM DIANTE.
+      //
+      // A pastilha é a escolha de um clique, e é o certo enquanto todas cabem na
+      // linha. Só que são 24 Artes no sistema, e um conjurador veterano com dez
+      // delas transformava a faixa do topo em quatro fileiras de pastilha: o
+      // controle que existe para ocupar UMA linha passava a comer um terço da
+      // caixa. Do sexto em diante a mesma escolha vira uma lista fechada, que
+      // não cresce, e o nível vem escrito nela.
+      const muitasArtes = disponiveis.length > 5;
+      const faixaArte = muitasArtes
+        ? `<span class="ag-sel" style="--ag-cor:${arteSel.grid.cor}">
+            <select id="ag-arte-sel" aria-label="Arte">${disponiveis.map(({ arte, nivel }) => `
+              <option value="${arte.id}"${arte.id === arteSel.id ? ' selected' : ''}>${
+                esc(arte.nome)} · nível ${nivel}</option>`).join('')}</select>
+          </span>`
+        : `<div class="ag-chips">${disponiveis.map(({ arte, nivel }) => `
+            <button type="button" class="ag-chip${arte.id === arteSel.id ? ' on' : ''}"
+              data-arte="${arte.id}" style="--ag-cor:${arte.grid.cor}">
+              <span class="ag-chip-nm">${esc(arte.nome)}</span><span class="ag-chip-nv">${nivel}</span>
+            </button>`).join('')}</div>`;
 
       const lista = efeitosDisponiveis(arteSel.id, nivelArte, ctx.comprados);
       const sabor = (e: Efeito) => e.artes.find((a) => a.id === arteSel.id)?.sabor || '';
@@ -329,13 +453,15 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         const on = (efeitoSel?.id ?? null) === (e?.id ?? null);
         const marca = marcasDe(e);
         const texto = e ? e.efeito : 'Dano e área montados só com os parâmetros do livro.';
-        // O CARTÃO É SÓ O NOME E O NÍVEL.
+        const [gl, oQue] = GLIFO[e?.grid?.forma || 'nenhuma'] || GLIFO.nenhuma;
+        // O CARTÃO: O GLIFO DA FORMA, O NOME E O NÍVEL.
         //
         // Ele já foi um resumo de seis linhas com descrição, sabor e marcas, e
         // isso fazia a lista ocupar a caixa inteira para dizer o que só importa
-        // depois de escolher. Agora o cartão é o suficiente para reconhecer o
-        // Efeito, e o resto abre num balão ao apontar o mouse: quem procura vê
-        // tudo, quem já sabe o nome não paga por isso em espaço.
+        // depois de escolher; depois virou nome e nível, e aí a lista deixou de
+        // dizer qualquer coisa antes da leitura. O glifo é o meio-termo que cabe
+        // numa coluna de um caractere: separa quem pinta chão de quem acerta um
+        // alvo de relance. O resto continua no balão.
         return `<button type="button" class="ag-ef${on ? ' on' : ''}" data-ef="${e ? e.id : ''}"
           data-pop="${esc(JSON.stringify({
             nome: e ? e.nome : 'Improviso',
@@ -343,11 +469,27 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             texto,
             sabor: e && sabor(e) ? `${arteSel.nome}: ${sabor(e)}` : '',
             marca,
-          }))}">
+          }))}"
+          data-busca="${esc(`${e ? e.nome : 'improviso'} ${texto} ${marca}`)}">
+          <span class="ag-ef-ic" aria-hidden="true" title="${esc(e ? oQue : 'a Arte crua')}">${
+            e ? gl : '✧'}</span>
           <b class="ag-ef-nm">${esc(e ? e.nome : 'Improviso')}</b>
           ${e ? `<span class="ag-ef-nv" title="exige a Arte no nível ${e.nivel}">${e.nivel}</span>` : ''}
         </button>`;
       };
+
+      // OS EFEITOS EM GRUPOS DE NÍVEL, e um filtro quando a lista é longa.
+      //
+      // A lista já vem ordenada por nível; escrever onde cada degrau começa custa
+      // uma linha de texto e poupa a contagem à mão de "até onde vai o que eu
+      // alcanço". O filtro só aparece quando há mais de oito, que é quando
+      // procurar pelo nome fica mais rápido do que correr o olho.
+      let nivelAnterior = -1;
+      const cartoes = lista.map((e) => {
+        const cab = e.nivel !== nivelAnterior ? `<span class="ag-ef-gr">nível ${e.nivel}</span>` : '';
+        nivelAnterior = e.nivel;
+        return cab + opcao(e);
+      }).join('');
 
       const linhaPar = (p: Parametro) => {
         const n = escolhas[p.nome] ?? 0;
@@ -374,7 +516,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             <button type="button" class="ag-p-b" data-par="${esc(p.nome)}" data-d="1"
               ${n >= max ? 'disabled' : ''} aria-label="mais">+</button>
           </span>
-          <span class="ag-p-v">${n ? esc(valor(n)) : '<i>não usa</i>'}${extra}</span>
+          <span class="ag-p-v">${n ? `${esc(valor(n))}${extra}` : ''}</span>
           ${acima ? `<span class="ag-p-est" title="acima do nível da Arte: custa ${acima + 1}× por nível">
             ↑${acima}</span>` : ''}
         </div>`;
@@ -430,16 +572,25 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const semForma = !podeFatiar && !podeModar && !podeCurvar && !improvisoSemChao
         && !(moldeAtual && temArea);
       const icone = { explosao: '●', leque: '◣', linha: '━', muralha: '▬' };
+      /** Uma fileira de botões da coluna da forma: rótulo à esquerda, botões à direita. */
+      const fileira = (rot: string, dica: string, botoes: string, nota = '') => `
+        <div class="ag-angs">
+          <span class="ag-ang-l"${dica ? ` title="${esc(dica)}"` : ''}>${esc(rot)}</span>
+          <span class="ag-ang-bs">${botoes}</span>
+          ${nota ? `<p class="ag-ang-n">${nota}</p>` : ''}
+        </div>`;
       corpo.innerHTML = `
         <div class="ag-grade${semForma ? ' sem-forma' : ''}">
           <div class="ag-fx-arte">
             <span class="ag-h">Arte</span>
-            <div class="ag-chips">${chipArte}</div>
+            ${faixaArte}
           </div>
 
           <div class="ag-col-ef">
             <span class="ag-h">Efeito</span>
-            <div class="ag-efs">${opcao(null)}${lista.map(opcao).join('')}</div>
+            ${lista.length > 8 ? `<input type="search" class="ag-busca" id="ag-busca"
+              placeholder="filtrar…" value="${esc(filtro)}" aria-label="filtrar os Efeitos" />` : ''}
+            <div class="ag-efs">${opcao(null)}${cartoes}</div>
             ${!lista.length ? `<p class="ag-vazio">Nenhum Efeito Especial de ${esc(arteSel.nome)} ao alcance.
               ${ctx.comprados ? 'Compre um na ficha, ou use o improviso.' : ''}</p>` : ''}
           </div>
@@ -454,45 +605,45 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
 
           ${semForma ? '' : `<div class="ag-col-forma">
             <span class="ag-h">${podeFatiar || improvisoSemChao ? 'Manifestação' : 'Molde'}</span>
+            ${improvisoSemChao ? '' : miniatura(ultimaFigura)}
             ${podeFatiar ? `
-              <div class="ag-angs">
-                <span class="ag-ang-l" title="A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.">Abrir cobra</span>
-                ${ABRIR_COBRA.map((o) => `<button type="button" class="ag-ang${abrirCobra === o.id ? ' on' : ''}"
-                  data-abrir="${o.id}" title="${esc(o.efeito)}">${esc(o.nome)}</button>`).join('')}
-              </div>
-              <p class="ag-alt">base de <b>${esc(um(plano.alturaM))} m</b> de altura<br />
+              ${fileira('Abrir',
+                'A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.',
+                ABRIR_COBRA.map((o) => `<button type="button" class="ag-ang${abrirCobra === o.id ? ' on' : ''}"
+                  data-abrir="${o.id}" title="${esc(o.efeito)}">${esc(o.nome)}</button>`).join(''))}
+              <p class="ag-alt">base de <b>${esc(um(plano.alturaM))} m</b> de altura
                 <i>${abrirCobra === 'altura'
-                  ? `${esc(um(plano.ladoBaseM))} m &divide; ${fatias} fatia${fatias > 1 ? 's' : ''}`
-                  : 'cheia: quem paga o abrir &eacute; a dist&acirc;ncia'}</i></p>
-              <div class="ag-angs">
-                <span class="ag-ang-l" title="O elemento sai em fatias vizinhas do mesmo ápice.">Fatias</span>
-                ${Array.from({ length: maxFatias }, (_, i) => i + 1).map((k) => `
-                  <button type="button" class="ag-ang${fatias === k ? ' on' : ''}" data-fatias="${k}">${k}</button>`).join('')}
-              </div>
-              <div class="ag-angs">
-                <span class="ag-ang-l" title="As três que fecham o círculo em número inteiro de fatias: seis, quatro e três.">Abertura</span>
-                ${ABERTURAS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
-                  data-ang="${a}">${a}&deg;</button>`).join('')}
-              </div>
-              ${maxFatias < nivelArte ? `<p class="ag-ang-n">a base não desce de ${ALTURA_MINIMA_BASE} m,
-                então este Volume abre no máximo ${maxFatias}</p>` : ''}` : ''}
+                  ? `(${esc(um(plano.ladoBaseM))} m &divide; ${fatias} fatia${fatias > 1 ? 's' : ''})`
+                  : '(cheia: quem paga o abrir &eacute; a dist&acirc;ncia)'}</i></p>
+              ${fileira('Fatias', 'O elemento sai em fatias vizinhas do mesmo ápice.',
+                Array.from({ length: maxFatias }, (_, i) => i + 1).map((k) => `
+                  <button type="button" class="ag-ang${fatias === k ? ' on' : ''}" data-fatias="${k}">${k}</button>`).join(''),
+                maxFatias < nivelArte
+                  ? `a base não desce de ${ALTURA_MINIMA_BASE} m, então este Volume abre no máximo ${maxFatias}`
+                  : '')}
+              ${fileira('Abertura', 'As três que fecham o círculo em número inteiro de fatias: seis, quatro e três.',
+                ABERTURAS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
+                  data-ang="${a}">${a}&deg;</button>`).join(''))}` : ''}
             ${improvisoSemChao ? `<p class="ag-md-nota">${esc(arteSel.nome)} não manifesta elemento, e a
               fatia não quer dizer nada aqui. A geometria própria das Artes que não são elementais
               ainda não existe: descreva na mesa e marque o chão à mão.</p>` : ''}
             ${podeModar ? `<div class="ag-moldes">${MOLDES_DE_CHAO.map((m) => `
                 <button type="button" class="ag-md${molde === m.id ? ' on' : ''}" data-molde="${m.id}"
-                  title="${esc(m.serve || '')}">
+                  title="${esc(`${m.serve || ''} · compra ${m.compra}`)}">
                   <span class="ag-md-ic" aria-hidden="true">${icone[m.id as keyof typeof icone] || '●'}</span>
                   <span class="ag-md-nm">${esc(m.nome)}</span>
-                  <small>${esc(m.compra)}</small></button>`).join('')}</div>` : ''}
+                  ${/* A RÉGUA SÓ DO ESCOLHIDO. Ela é a linha que decide o que o
+                       parâmetro compra, e por isso tem de estar escrita; nos
+                       outros três ela é comparação, e comparação cabe no balão
+                       do título. Escrita nos quatro, a lista passava do pé da
+                       coluna e escondia a Muralha atrás de uma rolagem. */''}
+                  ${molde === m.id ? `<small>${esc(m.compra)}</small>` : ''}</button>`).join('')}</div>` : ''}
             ${!podeModar && !podeFatiar && moldeAtual && temArea ? `
-              <p class="ag-md-nota"><b>${esc(moldeAtual.nome)}</b>, o molde da forma que este Efeito
-                declara. Compra ${esc(moldeAtual.compra)}.</p>` : ''}
-            ${podeCurvar ? `<div class="ag-angs">
-                <span class="ag-ang-l">Curvatura</span>
-                ${CURVATURAS.map((a) => `<button type="button" class="ag-ang${curvatura === a ? ' on' : ''}"
-                  data-curva="${a}">${a ? `${a}&deg;` : 'Reta'}</button>`).join('')}
-              </div>` : ''}
+              <p class="ag-md-nota"><b>${esc(moldeAtual.nome)}</b>, o molde que a forma deste Efeito
+                já escolheu. Compra ${esc(moldeAtual.compra)}.</p>` : ''}
+            ${podeCurvar ? fileira('Curvatura', 'A barreira ergue-se reta ou dobrada.',
+              CURVATURAS.map((a) => `<button type="button" class="ag-ang${curvatura === a ? ' on' : ''}"
+                data-curva="${a}">${a ? `${a}&deg;` : 'Reta'}</button>`).join('')) : ''}
           </div>`}
 
           <div class="ag-pe">
@@ -525,8 +676,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       }
       if (focado) corpo.querySelector<HTMLElement>(focado)?.focus({ preventScroll: true });
 
-      corpo.querySelectorAll<HTMLElement>('[data-arte]').forEach((b) => b.onclick = () => {
-        const d = disponiveis.find((x) => x.arte.id === b.dataset.arte)!;
+      const trocarArte = (id: string) => {
+        const d = disponiveis.find((x) => x.arte.id === id);
+        if (!d) return;
         arteSel = d.arte; nivelArte = d.nivel;
         // As fatias nunca passam do nível da Arte: descer de Arte tem de encolher
         // o leque junto, senão um improviso de grau 2 sairia aberto em seis.
@@ -535,8 +687,31 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         if (efeitoSel && !efeitosDisponiveis(arteSel.id, nivelArte, ctx.comprados).some((e) => e.id === efeitoSel!.id)) {
           efeitoSel = null;
         }
+        // Trocar de Arte troca a lista inteira: um filtro escrito para a lista
+        // velha esconderia a nova sem dizer por quê.
+        filtro = '';
         semear(); pintar();
-      });
+      };
+      corpo.querySelectorAll<HTMLElement>('[data-arte]').forEach(
+        (b) => b.onclick = () => trocarArte(b.dataset.arte!));
+      const selArte = corpo.querySelector('#ag-arte-sel') as HTMLSelectElement | null;
+      if (selArte) selArte.onchange = () => trocarArte(selArte.value);
+
+      // O FILTRO NÃO REPINTA A CAIXA: esconde os cartões que sobraram de fora.
+      // Repintar a cada tecla roubaria o cursor do campo, e o corpo inteiro é
+      // reescrito por qualquer clique; esconder é uma passada na lista.
+      const aplicarFiltro = () => {
+        const t = semAcento(filtro).trim();
+        corpo.querySelectorAll<HTMLElement>('.ag-ef').forEach((b) => {
+          b.hidden = !!t && !semAcento(b.dataset.busca || '').includes(t);
+        });
+        // Filtrando, os degraus de nível não descrevem mais o que sobrou na tela.
+        corpo.querySelectorAll<HTMLElement>('.ag-ef-gr').forEach((h) => { h.hidden = !!t; });
+      };
+      const inpBusca = corpo.querySelector('#ag-busca') as HTMLInputElement | null;
+      if (inpBusca) inpBusca.oninput = () => { filtro = inpBusca.value; aplicarFiltro(); };
+      aplicarFiltro();
+
       corpo.querySelectorAll<HTMLElement>('[data-ef]').forEach((b) => {
         b.onclick = () => {
           efeitoSel = b.dataset.ef ? EFEITO[b.dataset.ef] : null;
@@ -545,7 +720,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         // O balão abre no ponteiro e também no teclado: quem navega por Tab
         // precisa da mesma informação que quem passa o mouse.
         b.onpointerenter = () => abrirBalao(b);
-        b.onfocus = () => abrirBalao(b);
+        // No teclado sim, no clique não: clicar num cartão devolve o foco a ele
+        // depois do repinte, e o balão reabria sozinho e ficava aberto por cima
+        // do tabuleiro, tapando justamente a prévia que a caixa acabou de mexer.
+        b.onfocus = () => { if (b.matches(':focus-visible')) abrirBalao(b); };
         b.onpointerleave = fecharBalao;
         b.onblur = fecharBalao;
       });

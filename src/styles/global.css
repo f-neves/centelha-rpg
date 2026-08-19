@@ -786,7 +786,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 /* ENXUTA. A caixa tinha 64rem × 42rem porque cada Efeito era um resumo de seis
    linhas; com o cartão reduzido a nome e nível, e o resto no balão, ela cabe em
    pouco mais de um terço disso e para de tapar o tabuleiro. */
-.ui-dlg-conj.ui-dlg-arte { max-width: min(40rem, 96vw); width: min(40rem, 96vw); }
+.ui-dlg-conj.ui-dlg-arte { max-width: min(42rem, 96vw); width: min(42rem, 96vw); }
 .ui-dlg-conj .ui-dlg-form { height: min(32rem, 88vh); display: flex; flex-direction: column; }
 /* Arrastada, a caixa toma para si a posição que o navegador dava a ela. */
 .ui-dlg.arrastado { position: fixed; margin: 0; }
@@ -819,7 +819,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    enquanto sobrava largura em todas as linhas. */
 .ui-dlg-conj .ag-grade {
   display: grid;
-  grid-template-columns: minmax(7rem, 8.5rem) minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-columns: minmax(8rem, 9.5rem) minmax(0, 1.12fr) minmax(0, .95fr);
   grid-template-rows: auto minmax(0, 1fr) auto;
   grid-template-areas:
     "arte  arte  arte"
@@ -830,7 +830,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 }
 /* Sem forma a escolher, a coluna some e a largura volta para os parâmetros. */
 .ui-dlg-conj .ag-grade.sem-forma {
-  grid-template-columns: minmax(7rem, 8.5rem) minmax(0, 1fr);
+  grid-template-columns: minmax(8rem, 9.5rem) minmax(0, 1fr);
   grid-template-areas: "arte arte" "efe par" "pe pe";
 }
 .ui-dlg-conj .ag-fx-arte { grid-area: arte; display: flex; align-items: center; gap: .5rem;
@@ -878,6 +878,17 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-chip.on { border-color: var(--ag-cor, var(--accent)); box-shadow: inset 0 0 0 1px var(--ag-cor, var(--accent)); }
 .ag-chip-nv { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: var(--fs-micro); }
 
+/* A Arte em lista, de seis Artes em diante: uma linha só, não importa quantas.
+   A bolinha da cor fica fora do <select> porque dentro dele ela seria um
+   caractere, e o que se quer é a mesma marca que a pastilha usa. */
+.ag-sel { display: inline-flex; align-items: center; gap: .4rem; }
+.ag-sel::before { content: ''; width: .6rem; height: .6rem; border-radius: 50%;
+  background: var(--ag-cor, var(--accent)); flex: 0 0 auto; }
+.ag-sel select { font: inherit; font-size: var(--fs-aux); color: var(--ink);
+  background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
+  padding: .18rem 1.4rem .18rem .45rem; cursor: pointer; }
+.ag-sel select:focus { outline: none; border-color: var(--accent); }
+
 /* o Efeito: cartões lado a lado, e não uma fila de um por linha.
    `auto-fill` com piso de 12rem em vez de um número fixo de colunas: no
    diálogo aberto dá três ou quatro por fileira, e no celular vira um só, sem
@@ -890,8 +901,23 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: .3rem; }
 /* Flex em coluna, e não grade: é o que permite empurrar a última linha para o
    pé do cartão com um `margin-top: auto`. */
-/* UMA LINHA: o nome com a sobra e o nível na ponta. O resto abre no balão. */
-.ag-ef { display: flex; align-items: baseline; gap: .35rem; text-align: left;
+/* O FILTRO, quando a lista passa de oito. Ele nasce vazio e não repinta a caixa:
+   quem digita quer ver a lista encolher, não a caixa piscar. */
+.ag-busca { font: inherit; font-size: var(--fs-micro); color: var(--ink);
+  background: transparent; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
+  padding: .15rem .35rem; margin-bottom: .3rem; width: 100%; min-width: 0; }
+.ag-busca:focus { outline: none; border-color: var(--accent); }
+/* Onde cada degrau de nível começa. Não é cabeçalho de seção: é uma régua. */
+.ag-ef-gr { font-size: calc(var(--fs-micro) * .92); color: var(--ink-soft);
+  letter-spacing: .06em; text-transform: uppercase; margin: .25rem 0 .05rem; }
+.ag-ef-gr:first-child { margin-top: 0; }
+.ag-ef-gr[hidden], .ag-ef[hidden] { display: none; }
+/* O GLIFO DA FORMA, numa coluna de um caractere: é o que separa uma zona de um
+   efeito de alvo antes de ler o nome. Fixo, para os nomes alinharem. */
+.ag-ef-ic { flex: 0 0 .85rem; text-align: center; color: var(--accent-texto, var(--accent));
+  font-size: var(--fs-micro); opacity: .85; }
+/* UMA LINHA: glifo, nome com a sobra, nível na ponta. O resto abre no balão. */
+.ag-ef { display: flex; align-items: baseline; gap: .3rem; text-align: left;
   padding: .3rem .45rem; cursor: pointer; border: 1px solid var(--rule);
   border-radius: var(--r-2, 6px); background: transparent; font: inherit; color: var(--ink);
   font-size: var(--fs-aux); }
@@ -918,9 +944,25 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-pop-mc { margin: .3rem 0 0; font-size: calc(var(--fs-micro) * .92); color: var(--ink-soft);
   letter-spacing: .03em; }
 
+/* O SELO DA FIGURA: o mesmo traço que vai para o tabuleiro, do tamanho de um
+   selo, sobre uma grade de um metro.
+   A caixa já desenha a prévia no mapa, mas ela pode estar por cima justamente
+   do lugar onde a mancha cresce, e no celular o mapa some atrás dela. O selo
+   responde "que forma é essa, e de que tamanho" sem depender do que está atrás. */
+.ag-mini { display: block; width: 100%; height: auto; aspect-ratio: 148 / 74;
+  flex: 0 0 auto; margin: 0 0 .45rem;
+  border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
+  background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.ag-mini-gr { color: var(--ink-soft); opacity: .28; }
+.ag-mini-gr path, .ag-mini pattern path { fill: none; stroke: currentColor; stroke-width: .5; }
+.ag-mini-f { fill: color-mix(in srgb, var(--accent) 30%, transparent);
+  stroke: var(--accent); stroke-width: 1.2; }
+.ag-mini-r line { stroke: var(--accent); stroke-width: .7; opacity: .55; }
+.ag-mini-o { fill: var(--accent-texto, var(--accent)); }
+
 /* A altura da base, logo abaixo de quem paga o abrir: é o número que o
    tabuleiro visto de cima não mostra, e é ele que separa os dois modos. */
-.ag-alt { margin: .1rem 0 .5rem; font-size: var(--fs-rotulo); color: var(--ink-soft); line-height: 1.3; }
+.ag-alt { margin: -.1rem 0 .45rem; font-size: var(--fs-rotulo); color: var(--ink-soft); line-height: 1.3; }
 .ag-alt b { color: var(--accent-texto); font-variant-numeric: tabular-nums; }
 .ag-alt i { font-size: var(--fs-micro); }
 /* O que o Efeito faz no tabuleiro, no alto da coluna da forma: é a linha que
@@ -930,7 +972,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 
 /* os parâmetros: nome, contador, e o que aquilo VALE, que é a coluna que importa */
 .ag-pars { display: grid; gap: .18rem; max-width: 26rem; }
-.ag-p { display: grid; grid-template-columns: 5.4rem auto 1fr auto; align-items: center; gap: .4rem;
+.ag-p { display: grid; grid-template-columns: 4.9rem auto minmax(0, 1fr) auto; align-items: center; gap: .4rem;
   padding: .06rem .2rem; border-radius: var(--r-2, 6px); }
 .ag-p.esticado { background: color-mix(in srgb, var(--gold, #c9a227) 12%, transparent); }
 .ag-p-nm { font-size: var(--fs-aux); }
@@ -944,7 +986,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-p-b:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
 .ag-p-b:disabled { opacity: .3; cursor: default; }
 .ag-p-n { min-width: 1rem; text-align: center; font-variant-numeric: tabular-nums; font-weight: 700; }
-.ag-p-v { font-size: var(--fs-micro); color: var(--ink-soft); }
+.ag-p-v { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 1.2; }
 .ag-p-eq { color: var(--accent); }
 .ag-p-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); font-weight: 700; }
 .ag-fixos { display: flex; flex-wrap: wrap; gap: .1rem .8rem; margin-top: .3rem;
@@ -964,15 +1006,20 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-md-nm { grid-area: nm; }
 .ag-md small { grid-area: cp; font-size: var(--fs-micro); color: var(--ink-soft); }
 
-/* As fileiras de botões: o rótulo ocupa a linha inteira e os botões vêm
-   embaixo. Na coluna estreita, rótulo e botões lado a lado quebravam no meio
-   da fileira e deixavam um botão órfão na linha de baixo. */
-.ag-angs { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; margin-bottom: .4rem; }
-.ag-ang-l { flex: 0 0 100%; font-size: var(--fs-micro); color: var(--ink-soft);
+/* AS FILEIRAS, EM LINHA DE PROPRIEDADE: o rótulo numa coluna fixa à esquerda e
+   os botões à direita, como um painel de inspetor. O rótulo já ocupou a linha
+   inteira, e três rótulos custavam três linhas de altura para dizer três
+   palavras; na coluna fixa eles ainda alinham entre si, que é o que fazia a
+   pilha ser legível. Os botões quebram dentro do próprio espaço, então nenhum
+   fica órfão embaixo do rótulo. */
+.ag-angs { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr);
+  align-items: baseline; gap: .15rem .4rem; margin-bottom: .35rem; }
+.ag-ang-l { font-size: var(--fs-micro); color: var(--ink-soft);
   text-transform: uppercase; letter-spacing: .06em; margin: 0; }
-.ag-ang-n { flex: 1 1 100%; font-size: var(--fs-micro); color: var(--ink-soft);
+.ag-ang-bs { display: flex; flex-wrap: wrap; gap: .25rem; }
+.ag-ang-n { grid-column: 1 / -1; font-size: var(--fs-micro); color: var(--ink-soft);
   font-style: italic; line-height: 1.3; margin: .1rem 0 0; }
-.ag-ang { padding: .12rem .4rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
+.ag-ang { padding: .1rem .32rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
   background: transparent; cursor: pointer; font: inherit; font-size: var(--fs-micro);
   color: var(--ink); font-variant-numeric: tabular-nums; }
 .ag-ang:hover { border-color: var(--accent); }

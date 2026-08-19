@@ -49,7 +49,19 @@ const abriu = await p.evaluate(async (ELEM) => {
     it.click();
     await new Promise((r) => setTimeout(r, 600));
     const cx = document.querySelector('.ui-dlg-conj');
-    if (cx && [...cx.querySelectorAll('[data-arte]')].some((a) => ELEM.includes(a.dataset.arte))) {
+    // A Arte sai em pastilha até cinco e em lista fechada daí em diante, e a
+    // bancada tem de saber escolher nas duas: sem isto, um conjurador de seis
+    // Artes fazia o roteiro desistir da peça achando que ela não tinha Arte.
+    const sel = cx?.querySelector('#ag-arte-sel');
+    if (sel) {
+      const op = [...sel.options].find((o) => ELEM.includes(o.value));
+      if (op) {
+        sel.value = op.value;
+        sel.dispatchEvent(new Event('change', { bubbles: true }));
+        await new Promise((r) => setTimeout(r, 300));
+        return 'ok';
+      }
+    } else if (cx && [...cx.querySelectorAll('[data-arte]')].some((a) => ELEM.includes(a.dataset.arte))) {
       [...cx.querySelectorAll('[data-arte]')].find((a) => ELEM.includes(a.dataset.arte)).click();
       await new Promise((r) => setTimeout(r, 300));
       return 'ok';
@@ -149,6 +161,22 @@ if (abriu === 'ok') {
   }, SEM_CHAO);
   console.log('sem forma:', JSON.stringify(semForma));
   await p.screenshot({ path: `${OUT}/conj-sem-forma.png` });
+
+  // o filtro da lista: digita, e a lista encolhe sem repintar a caixa
+  const filtrado = await p.evaluate(async () => {
+    const inp = document.querySelector('#ag-busca');
+    if (!inp) return 'sem filtro (lista curta)';
+    const antes = [...document.querySelectorAll('.ag-ef')].filter((b) => !b.hidden).length;
+    inp.value = 'zon';
+    inp.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 150));
+    const depois = [...document.querySelectorAll('.ag-ef')].filter((b) => !b.hidden).length;
+    inp.value = '';
+    inp.dispatchEvent(new Event('input', { bubbles: true }));
+    return `${antes} → ${depois} com "zon" → ${
+      [...document.querySelectorAll('.ag-ef')].filter((b) => !b.hidden).length} de volta`;
+  });
+  console.log('filtro:', filtrado);
 
   // e o arrasto pela cabeça
   const moveu = await p.evaluate(async () => {
