@@ -7,7 +7,7 @@
 import { uiPainel, uiEscolher, uiFormulario } from './ui-dialog';
 import {
   svgDoSolido, svgDaManifestacao, svgDaAura,
-  CAMERA_ISO, ALTURA_MIN, ALTURA_MAX, type Camera,
+  CAMERA_ISO, ALTURA_MIN, ALTURA_MAX, SAIDAS, SAIDA_MANIFESTACAO, type Camera,
 } from './artes-3d';
 import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
@@ -267,6 +267,15 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let solido = SOLIDO_PADRAO;
   /** De onde se olha o sólido. Nasce no ângulo de sempre e o mouse gira. */
   let cam: Camera = { ...CAMERA_ISO };
+  /**
+   * A que altura do chão o efeito sai, EM METROS E SÓ NO DESENHO.
+   *
+   * Não entra no plano nem muda casa marcada: o tabuleiro é plano e continua
+   * plano. Serve para responder na mesa a pergunta que sempre aparece, que é se
+   * aquilo passa por cima de quem está deitado, se bate na altura do peito ou
+   * se sai da mão levantada de quem conjura.
+   */
+  let saida = SAIDA_MANIFESTACAO;
   let angulo = ABERTURA_PADRAO;
   let fatias = 1;
   let abrirCobra: ModoAbrir = ABRIR_COBRA_PADRAO;
@@ -369,6 +378,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // Quem editou o número à mão perde a edição na troca, que é o certo: o
       // número era daquele Efeito.
       velocidade = velocidadePadraoDe(efeitoSel);
+      // A matéria aparece apoiada no chão; a manifestação sai da mão. Trocar de
+      // Efeito devolve o padrão do caso novo, como a Velocidade já fazia.
+      saida = efeitoSel ? 0 : SAIDA_MANIFESTACAO;
     }
     semear();
 
@@ -575,14 +587,18 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       const LARG3D = 148, ALT3D = 115;
       const desenhar3d = (): string => {
         if (podeSolidar) {
-          return svgDoSolido({ solido, volumeM3: volM3, cam, largura: LARG3D, altura: ALT3D });
+          return svgDoSolido({
+            solido, volumeM3: volM3, saidaM: saida, cam, largura: LARG3D, altura: ALT3D,
+          });
         }
-        if (auraM) return svgDaAura({ raioM: auraM, cam, largura: LARG3D, altura: ALT3D });
+        if (auraM) {
+          return svgDaAura({ raioM: auraM, saidaM: saida, cam, largura: LARG3D, altura: ALT3D });
+        }
         const f = ultimaFigura;
         return svgDaManifestacao({
           raioM: f?.raioM || 0, alturaM: f?.alturaM || 0,
           fatias: f?.fatias || 1, fatiaGraus: f?.fatiaGraus || 60,
-          cam, largura: LARG3D, altura: ALT3D,
+          saidaM: saida, cam, largura: LARG3D, altura: ALT3D,
         });
       };
       const temVista3d = podeSolidar || !!auraM
@@ -740,6 +756,12 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             ${podeCurvar ? fileira('Curvatura', 'A barreira ergue-se reta ou dobrada.',
               CURVATURAS.map((a) => `<button type="button" class="ag-ang${curvatura === a ? ' on' : ''}"
                 data-curva="${a}">${a ? `${a}&deg;` : 'Reta'}</button>`).join('')) : ''}
+            ${/* Por último, e de propósito: as de cima são regra, esta é só o
+                  ponto de vista. Mexer nela não muda uma casa marcada. */''}
+            ${temVista3d ? fileira('Sai de',
+              'A que altura do chão o efeito aparece. Vale só para o desenho: o tabuleiro é plano.',
+              SAIDAS.map((h) => `<button type="button" class="ag-ang${saida === h ? ' on' : ''}"
+                data-saida="${h}">${esc(um(h))} m</button>`).join('')) : ''}
           </div>`}
 
           <div class="ag-pe">
@@ -840,6 +862,9 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       });
       corpo.querySelectorAll<HTMLElement>('[data-solido]').forEach((b) => b.onclick = () => {
         solido = b.dataset.solido!; pintar();
+      });
+      corpo.querySelectorAll<HTMLElement>('[data-saida]').forEach((b) => b.onclick = () => {
+        saida = Number(b.dataset.saida); pintar();
       });
 
       // GIRAR A PEÇA NÃO REPINTA A CAIXA.

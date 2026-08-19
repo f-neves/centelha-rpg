@@ -101,9 +101,20 @@ if (abriu === 'ok') {
   await new Promise((r) => setTimeout(r, 300));
   console.log('cobrando distância: fatias [' + await fatiasDisponiveis() + '] ·', await altura());
   await p.screenshot({ path: `${OUT}/conj-roda.png` });
-  // a manifestação de perto: as fatias saindo da mão de quem conjura
+  // a manifestação de perto: as fatias saindo da mão de quem conjura, e as três
+  // alturas de saída, que é o controle que só mexe no desenho
   const v3mani = await p.$('#ag-3d');
   if (v3mani) await v3mani.screenshot({ path: `${OUT}/3d-manifestacao.png` });
+  const saidas = await p.evaluate(() =>
+    [...document.querySelectorAll('[data-saida]')].map(
+      (b) => `${b.textContent.trim()}${b.classList.contains('on') ? ' (marcada)' : ''}`));
+  console.log('sai de:', saidas.join(' · '));
+  await clicar('[data-saida="0"]');
+  await new Promise((r) => setTimeout(r, 250));
+  const v3chao = await p.$('#ag-3d');
+  if (v3chao) await v3chao.screenshot({ path: `${OUT}/3d-manifestacao-chao.png` });
+  await clicar('[data-saida="1.5"]');
+  await new Promise((r) => setTimeout(r, 200));
 
   // o balão do Efeito, ao apontar o cartão
   const pop = await p.evaluate(async () => {

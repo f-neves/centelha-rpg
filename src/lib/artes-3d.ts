@@ -187,8 +187,8 @@ export function malhaDoSolido(id: string, m: MedidasDoSolido): Face[] {
  * comprou. É por isso que a fatia não é um triângulo: ela é uma cunha, e o que
  * o tabuleiro visto de cima mostra é só a sombra dela.
  */
-function fatia(raio: number, alt: number, de: number, ate: number, n = 8): Face[] {
-  const bico: V3 = [0, MAO, 0];
+function fatia(raio: number, alt: number, de: number, ate: number, saida: number, n = 8): Face[] {
+  const bico: V3 = [0, saida, 0];
   const arco = (y: number): V3[] => Array.from({ length: n + 1 }, (_, i) => {
     const a = de + ((ate - de) * i) / n;
     return [Math.cos(a) * raio, y, Math.sin(a) * raio] as V3;
@@ -204,24 +204,39 @@ function fatia(raio: number, alt: number, de: number, ate: number, n = 8): Face[
   fs.push(cara([bico, pe[n], topo[n]]));
   return orientar(fs);
 }
-/** A altura da mão de quem conjura. É de lá que a manifestação sai. */
-const MAO = 1.5;
+/** As alturas de saída que a caixa oferece, em metros. A do meio é o peito, a
+ *  última é a mão levantada de quem conjura. */
+export const SAIDAS = [0, 1, 1.5];
+/** A que a manifestação usa quando ninguém escolheu: a mão. */
+export const SAIDA_MANIFESTACAO = 1.5;
+
+/** A altura de quem serve de régua. Fixa, e é o ponto: ela é a única medida
+ *  do desenho que não muda com o grau nem com o molde. */
+export const ALTURA_BONECO = 1.8;
 
 /**
  * O BONECO, de 1,80 m, ao lado da peça.
  *
  * É a única coisa no desenho que não muda de tamanho, e por isso é ela que diz
  * o tamanho de todo o resto: uma esfera de 62 cm não parece nada até estar do
- * lado de alguém pela metade da canela.
+ * lado de alguém pela metade da canela. Por isso a conta fecha no talo: o corpo
+ * mais o pescoço mais a cabeça dão 1,80 m, e não 1,72 m como davam antes, que
+ * era erro pequeno na tela e erro cheio na régua.
  */
 function boneco(x: number, z: number): Face[] {
+  const cabeca = 0.26, pescoco = 0.12;
+  const corpo = ALTURA_BONECO - cabeca - pescoco;
   return [
-    ...caixa(0.42, 1.32, 0.24, 0, 'corpo').map((f) => deslocar(f, x, z)),
-    ...caixa(0.22, 0.26, 0.22, 1.46, 'corpo').map((f) => deslocar(f, x, z)),
+    ...caixa(0.42, corpo, 0.24, 0, 'corpo').map((f) => deslocar(f, x, z)),
+    ...caixa(0.22, cabeca, 0.22, corpo + pescoco, 'corpo').map((f) => deslocar(f, x, z)),
   ];
 }
 const deslocar = (f: Face, dx: number, dz: number): Face =>
   ({ ...f, pts: f.pts.map((p) => [p[0] + dx, p[1], p[2] + dz] as V3) });
+/** Levanta a peça do chão. Só ela: o boneco continua com os pés no piso. */
+const subir = (fs: Face[], dy: number): Face[] => (dy
+  ? fs.map((f) => ({ ...f, pts: f.pts.map((p) => [p[0], p[1] + dy, p[2]] as V3) }))
+  : fs);
 
 // ------------------------------------------------------------- o desenho
 const n2 = (v: number) => v.toFixed(1);
@@ -251,11 +266,13 @@ export interface Cena {
 /** A matéria comprada, no molde escolhido. */
 export function svgDoSolido(opts: {
   solido: string; volumeM3: number; cam: Camera;
+  /** A que altura do chão a matéria aparece. Zero é apoiada. */
+  saidaM?: number;
   largura: number; altura: number; boneco?: boolean;
 }): string {
   const m = medidasDoSolido(opts.solido, opts.volumeM3);
   return cena({
-    faces: malhaDoSolido(opts.solido, m),
+    faces: subir(malhaDoSolido(opts.solido, m), opts.saidaM || 0),
     meia: Math.max(
       (m.raioM || 0), (m.ladoM || 0) / 2, (m.comprimentoM || 0) / 2, (m.larguraM || 0) / 2,
     ),
@@ -274,6 +291,8 @@ export function svgDoSolido(opts: {
  */
 export function svgDaManifestacao(opts: {
   raioM: number; alturaM: number; fatias: number; fatiaGraus: number;
+  /** A altura do BICO: de onde a manifestação sai, do chão à mão levantada. */
+  saidaM?: number;
   cam: Camera; largura: number; altura: number;
 }): string {
   const N = Math.max(1, opts.fatias);
@@ -282,7 +301,8 @@ export function svgDaManifestacao(opts: {
   const faces: Face[] = [];
   for (let k = 0; k < N; k++) {
     const de = -total / 2 + k * th;
-    faces.push(...fatia(opts.raioM, opts.alturaM, de, de + th));
+    faces.push(...fatia(opts.raioM, opts.alturaM, de, de + th,
+      opts.saidaM ?? SAIDA_MANIFESTACAO));
   }
   return cena({
     faces, meia: opts.raioM, cam: opts.cam,
@@ -297,10 +317,11 @@ export function svgDaManifestacao(opts: {
  * forma é uma só, e o que a mesa precisa ver é até onde ela passa do corpo.
  */
 export function svgDaAura(opts: {
-  raioM: number; cam: Camera; largura: number; altura: number;
+  raioM: number; saidaM?: number; cam: Camera; largura: number; altura: number;
 }): string {
   return cena({
-    faces: esfera(opts.raioM, false, 20, 10, Math.max(opts.raioM, 0.9)),
+    faces: esfera(opts.raioM, false, 20, 10,
+      Math.max(opts.raioM, 0.9) + (opts.saidaM || 0)),
     meia: opts.raioM, cam: opts.cam,
     largura: opts.largura, altura: opts.altura, boneco: 'origem',
   });

@@ -846,6 +846,22 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
   const aura = D.svgDaAura({ raioM: 1.5, cam, largura: 148, altura: 76 });
   ok(conta(aura) > 20, 'a esfera da Aura desenha');
   ok(saoNumeros(aura), 'a esfera da Aura sai com número em toda coordenada');
+  // A altura de saída é só do desenho, mas tem de sair desenhada: ela levanta a
+  // peça do chão e deixa o boneco onde estava.
+  eq(D.SAIDAS.join(' · '), '0 · 1 · 1.5', 'as três alturas de saída que a caixa oferece');
+  eq(D.ALTURA_BONECO, 1.8, 'o boneco tem 1,80 m, e é a única medida fixa do desenho');
+  for (const h of D.SAIDAS) {
+    const alto = D.svgDoSolido({
+      solido: 'cubo', volumeM3: 1, saidaM: h, cam, largura: 148, altura: 76,
+    });
+    ok(conta(alto) > 6 && saoNumeros(alto), `o cubo saindo a ${h} m do chão desenha`);
+    const mani = D.svgDaManifestacao({
+      raioM: 4, alturaM: 2, fatias: 2, fatiaGraus: 60, saidaM: h,
+      cam, largura: 148, altura: 76,
+    });
+    ok(conta(mani) > 8 && saoNumeros(mani), `a manifestação saindo a ${h} m desenha`);
+  }
+
   // Sem medida, não há o que desenhar, e isso não pode virar exceção: a caixa
   // abre com todo parâmetro em zero, e o desenho é pintado nesse instante.
   const vazio = D.svgDaManifestacao({
