@@ -572,7 +572,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // O DESENHO DE FORA, nos três casos em que existe volume para ver: a
       // matéria no molde escolhido, a manifestação em fatias e a esfera da Aura.
       // O chão continua sendo visto de cima, no selo, porque chão não tem altura.
-      const LARG3D = 148, ALT3D = 76;
+      const LARG3D = 148, ALT3D = 115;
       const desenhar3d = (): string => {
         if (podeSolidar) {
           return svgDoSolido({ solido, volumeM3: volM3, cam, largura: LARG3D, altura: ALT3D });
@@ -701,7 +701,11 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
             ${podeFatiar ? `
               ${fileira('Abrir',
                 'A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.',
-                ABRIR_COBRA.map((o) => `<button type="button" class="ag-ang${abrirCobra === o.id ? ' on' : ''}"
+                // A altura primeiro, que é o padrão: a régua manda a distância na
+                // frente, mas quem lê a fileira quer achar de cara o modo em que
+                // a caixa já está.
+                [...ABRIR_COBRA].reverse().map((o) => `<button type="button" class="ag-ang${
+                  abrirCobra === o.id ? ' on' : ''}"
                   data-abrir="${o.id}" title="${esc(o.efeito)}">${esc(o.nome)}</button>`).join(''))}
               <p class="ag-alt">base de <b>${esc(um(plano.alturaM))} m</b> de altura
                 <i>${abrirCobra === 'altura'

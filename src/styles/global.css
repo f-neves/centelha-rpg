@@ -787,7 +787,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    linhas; com o cartão reduzido a nome e nível, e o resto no balão, ela cabe em
    pouco mais de um terço disso e para de tapar o tabuleiro. */
 .ui-dlg-conj.ui-dlg-arte { max-width: min(42rem, 96vw); width: min(42rem, 96vw); }
-.ui-dlg-conj .ui-dlg-form { height: min(34rem, 88vh); display: flex; flex-direction: column; }
+.ui-dlg-conj .ui-dlg-form { height: min(40rem, 88vh); display: flex; flex-direction: column; }
 /* Arrastada, a caixa toma para si a posição que o navegador dava a ela. */
 .ui-dlg.arrastado { position: fixed; margin: 0; }
 .ui-dlg-pega { cursor: grab; user-select: none; touch-action: none; }
@@ -1001,7 +1001,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 /* A VISTA EM TRÊS DIMENSÕES do sólido, no lugar em que o chão mostra a pegada.
    Arrasta para girar, e por isso `touch-action: none`: no celular o gesto seria
    engolido pela rolagem da fileira antes de chegar aqui. */
-.ag-3d { position: relative; width: 100%; aspect-ratio: 148 / 76; flex: 0 0 auto;
+.ag-3d { position: relative; width: 100%; aspect-ratio: 148 / 115; flex: 0 0 auto;
   margin: 0 0 .3rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
   background: color-mix(in srgb, var(--ink) 4%, transparent);
   cursor: grab; touch-action: none; user-select: none; }
@@ -1035,11 +1035,10 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   align-items: baseline; gap: .15rem .4rem; margin-bottom: .35rem; }
 .ag-ang-l { font-size: var(--fs-micro); color: var(--ink-soft);
   text-transform: uppercase; letter-spacing: .06em; margin: 0; }
-/* Os botões na ordem inversa: o último da régua primeiro. `row-reverse` com
-   `flex-end` inverte a ordem sem desencostar a fileira da esquerda, e a ordem
-   do DOM (que é a do teclado e a da leitura em voz alta) fica de pé. */
-.ag-ang-bs { display: flex; flex-direction: row-reverse; justify-content: flex-end;
-  flex-wrap: wrap; gap: .25rem; }
+/* As fileiras seguem a ordem da régua: 1 2 3, 60° 90° 120°. A única que troca
+   de ordem é a de quem paga o abrir, e essa troca é feita na marcação, porque é
+   uma escolha de leitura (o padrão primeiro) e não de layout. */
+.ag-ang-bs { display: flex; flex-wrap: wrap; gap: .25rem; }
 .ag-ang-n { grid-column: 1 / -1; font-size: var(--fs-micro); color: var(--ink-soft);
   font-style: italic; line-height: 1.3; margin: .1rem 0 0; }
 .ag-ang { padding: .1rem .32rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
