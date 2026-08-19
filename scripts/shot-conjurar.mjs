@@ -101,6 +101,9 @@ if (abriu === 'ok') {
   await new Promise((r) => setTimeout(r, 300));
   console.log('cobrando distância: fatias [' + await fatiasDisponiveis() + '] ·', await altura());
   await p.screenshot({ path: `${OUT}/conj-roda.png` });
+  // a manifestação de perto: as fatias saindo da mão de quem conjura
+  const v3mani = await p.$('#ag-3d');
+  if (v3mani) await v3mani.screenshot({ path: `${OUT}/3d-manifestacao.png` });
 
   // o balão do Efeito, ao apontar o cartão
   const pop = await p.evaluate(async () => {

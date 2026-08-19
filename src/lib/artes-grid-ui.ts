@@ -5,7 +5,10 @@
 // tela. Este arquivo não sabe gravar no Supabase nem desenhar hexágono; ele
 // pergunta, devolve um PLANO, e quem chamou executa.
 import { uiPainel, uiEscolher, uiFormulario } from './ui-dialog';
-import { svgDoSolido, CAMERA_ISO, ALTURA_MIN, ALTURA_MAX, type Camera } from './artes-3d';
+import {
+  svgDoSolido, svgDaManifestacao, svgDaAura,
+  CAMERA_ISO, ALTURA_MIN, ALTURA_MAX, type Camera,
+} from './artes-3d';
 import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
   parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, escalaVisivel, turnosDeDuracao,
@@ -463,6 +466,12 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // no chão e a altura, que é o que a vista de cima não mostra.
       const pTam = pars.find((x) => x.nome === 'Área' || x.nome === 'Volume');
       const podeSolidar = !ehImproviso && ehVolumeSolido(pTam);
+      // A AURA É VOLUME TAMBÉM, e o dela não escolhe molde: a régua compra raio,
+      // e a forma é uma esfera em volta de quem conjura. Sem molde a escolher,
+      // mas com tudo a mostrar, porque o que a mesa precisa saber é até onde
+      // aquilo passa do corpo.
+      const auraM = !ehImproviso && pTam?.nome === 'Volume' && /de raio/i.test(pTam.unidade || '')
+        ? medidaNoNivel(pTam, escolhas[pTam.nome] ?? 0) : 0;
       const volM3 = podeSolidar ? volumeEmM3(pTam!, escolhas[pTam!.nome] ?? 0) : 0;
       const medidas = podeSolidar ? medidasDoSolido(solido, volM3) : null;
       // Nos Efeitos, a forma declarada já escolheu o molde. Só a `zona` pergunta,
@@ -560,10 +569,27 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         </div>`;
       };
 
-      /** A caixa do 3D. Só o miolo dela se refaz quando o mouse gira a peça. */
-      const vista3d = (id: string, v: number) => `<div class="ag-3d" id="ag-3d"
+      // O DESENHO DE FORA, nos três casos em que existe volume para ver: a
+      // matéria no molde escolhido, a manifestação em fatias e a esfera da Aura.
+      // O chão continua sendo visto de cima, no selo, porque chão não tem altura.
+      const LARG3D = 148, ALT3D = 76;
+      const desenhar3d = (): string => {
+        if (podeSolidar) {
+          return svgDoSolido({ solido, volumeM3: volM3, cam, largura: LARG3D, altura: ALT3D });
+        }
+        if (auraM) return svgDaAura({ raioM: auraM, cam, largura: LARG3D, altura: ALT3D });
+        const f = ultimaFigura;
+        return svgDaManifestacao({
+          raioM: f?.raioM || 0, alturaM: f?.alturaM || 0,
+          fatias: f?.fatias || 1, fatiaGraus: f?.fatiaGraus || 60,
+          cam, largura: LARG3D, altura: ALT3D,
+        });
+      };
+      const temVista3d = podeSolidar || !!auraM
+        || (podeFatiar && !!ultimaFigura?.raioM && !!ultimaFigura?.alturaM);
+      const vista3d = () => `<div class="ag-3d" id="ag-3d"
         title="arraste para girar &middot; dois cliques voltam ao ângulo de sempre">${
-        svgDoSolido({ solido: id, volumeM3: v, cam, largura: 148, altura: 94 })}</div>`;
+        desenhar3d()}</div>`;
 
       const c = plano.custo;
       // O QUE ESTAVA COM O FOCO, para devolvê-lo depois do repinte.
@@ -613,7 +639,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // assunto da forma ganhou coluna própria, e ela SOME quando não há forma
       // nenhuma a escolher, devolvendo a largura aos parâmetros.
       const semForma = !podeFatiar && !podeModar && !podeCurvar && !improvisoSemChao
-        && !podeSolidar && !(moldeAtual && temArea);
+        && !podeSolidar && !auraM && !(moldeAtual && temArea);
       const icone = { explosao: '●', leque: '◣', linha: '━', muralha: '▬' };
       /** O desenho de cada sólido em um glifo, na ordem da bancada de volume. */
       const iconeSol: Record<string, string> = {
@@ -660,7 +686,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
                   inteira. Aqui o sólido aparece em três dimensões, no favo, com
                   um boneco de 1,80 m ao lado, que é o que a bancada de volume
                   faz e é o que faz o número virar tamanho. */''}
-            ${podeSolidar ? vista3d(solido, volM3)
+            ${temVista3d ? vista3d()
               : improvisoSemChao ? '' : miniatura(ultimaFigura)}
             ${podeSolidar ? `
               ${/* Uma linha só: qual molde está escolhido já se vê no botão aceso,
@@ -820,11 +846,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // string de SVG.
       const vista = corpo.querySelector('#ag-3d') as HTMLElement | null;
       if (vista) {
-        const repintar = () => {
-          vista.innerHTML = svgDoSolido({
-            solido, volumeM3: volM3, cam, largura: 148, altura: 94,
-          });
-        };
+        const repintar = () => { vista.innerHTML = desenhar3d(); };
         let de: { x: number; y: number; cam: Camera } | null = null;
         vista.onpointerdown = (e) => {
           de = { x: e.clientX, y: e.clientY, cam: { ...cam } };

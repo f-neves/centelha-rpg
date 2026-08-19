@@ -819,7 +819,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    enquanto sobrava largura em todas as linhas. */
 .ui-dlg-conj .ag-grade {
   display: grid;
-  grid-template-columns: minmax(8rem, 9.5rem) minmax(0, 1.12fr) minmax(0, .95fr);
+  grid-template-columns: minmax(8rem, 9.5rem) minmax(0, .95fr) minmax(0, 1.2fr);
   grid-template-rows: auto minmax(0, 1fr) auto;
   grid-template-areas:
     "arte  arte  arte"
@@ -907,7 +907,10 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   padding: .3rem .45rem; cursor: pointer; border: 1px solid var(--rule);
   border-radius: var(--r-2, 6px); background: transparent; font: inherit; color: var(--ink);
   font-size: var(--fs-aux); }
-.ag-ef-nm { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+/* `break-word` e não `anywhere`: o segundo parte a palavra mesmo quando ela
+   caberia inteira na linha de baixo, e "Projétil Conjurado" saía como
+   "Conjurad" mais um "o" órfão. */
+.ag-ef-nm { flex: 1 1 auto; min-width: 0; overflow-wrap: break-word; }
 .ag-ef:hover { border-color: var(--accent); }
 .ag-ef.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .ag-ef-nv { flex: 0 0 auto; font-size: var(--fs-micro); color: var(--ink-soft); border: 1px solid var(--rule);
@@ -961,7 +964,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 
 /* os parâmetros: nome, contador, e o que aquilo VALE, que é a coluna que importa */
 .ag-pars { display: grid; gap: .18rem; max-width: 26rem; }
-.ag-p { display: grid; grid-template-columns: 4.9rem auto minmax(0, 1fr) auto; align-items: center; gap: .4rem;
+.ag-p { display: grid; grid-template-columns: 4.5rem auto minmax(0, 1fr) auto; align-items: center; gap: .4rem;
   padding: .06rem .2rem; border-radius: var(--r-2, 6px); }
 .ag-p.esticado { background: color-mix(in srgb, var(--gold, #c9a227) 12%, transparent); }
 .ag-p-nm { font-size: var(--fs-aux); }
@@ -998,7 +1001,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 /* A VISTA EM TRÊS DIMENSÕES do sólido, no lugar em que o chão mostra a pegada.
    Arrasta para girar, e por isso `touch-action: none`: no celular o gesto seria
    engolido pela rolagem da fileira antes de chegar aqui. */
-.ag-3d { position: relative; width: 100%; aspect-ratio: 148 / 94; flex: 0 0 auto;
+.ag-3d { position: relative; width: 100%; aspect-ratio: 148 / 76; flex: 0 0 auto;
   margin: 0 0 .3rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
   background: color-mix(in srgb, var(--ink) 4%, transparent);
   cursor: grab; touch-action: none; user-select: none; }

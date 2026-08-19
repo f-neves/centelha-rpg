@@ -120,8 +120,8 @@ function piramide(lado: number, alt: number): Face[] {
 }
 
 /** Esfera ou cúpula, em faixas de latitude. `meia` corta no equador. */
-function esfera(r: number, meia: boolean, nu = 20, nv = 10): Face[] {
-  const y0 = meia ? 0 : r;                       // a inteira apoia num ponto só
+function esfera(r: number, meia: boolean, nu = 20, nv = 10, centroY?: number): Face[] {
+  const y0 = centroY ?? (meia ? 0 : r);          // a inteira apoia num ponto só
   const de = meia ? 0 : -Math.PI / 2, ate = Math.PI / 2;
   const fs: Face[] = [];
   const p = (u: number, v: number): V3 => {
@@ -180,6 +180,34 @@ export function malhaDoSolido(id: string, m: MedidasDoSolido): Face[] {
 }
 
 /**
+ * UMA FATIA DA MANIFESTAÇÃO: a pirâmide de base em arco da §5.4.
+ *
+ * O bico sai da mão do feiticeiro, a um metro e meio do chão, e a base é uma
+ * casca curva plantada no chão a `raio` metros dele, com a altura que o Volume
+ * comprou. É por isso que a fatia não é um triângulo: ela é uma cunha, e o que
+ * o tabuleiro visto de cima mostra é só a sombra dela.
+ */
+function fatia(raio: number, alt: number, de: number, ate: number, n = 8): Face[] {
+  const bico: V3 = [0, MAO, 0];
+  const arco = (y: number): V3[] => Array.from({ length: n + 1 }, (_, i) => {
+    const a = de + ((ate - de) * i) / n;
+    return [Math.cos(a) * raio, y, Math.sin(a) * raio] as V3;
+  });
+  const pe = arco(0), topo = arco(alt);
+  const fs: Face[] = [];
+  for (let i = 0; i < n; i++) {
+    fs.push(cara([pe[i], topo[i], topo[i + 1], pe[i + 1]]));      // a casca de fora
+    fs.push(cara([bico, topo[i], topo[i + 1]]));                   // o teto
+    fs.push(cara([bico, pe[i], pe[i + 1]]));                       // o chão da cunha
+  }
+  fs.push(cara([bico, pe[0], topo[0]]));                           // as duas quinas
+  fs.push(cara([bico, pe[n], topo[n]]));
+  return orientar(fs);
+}
+/** A altura da mão de quem conjura. É de lá que a manifestação sai. */
+const MAO = 1.5;
+
+/**
  * O BONECO, de 1,80 m, ao lado da peça.
  *
  * É a única coisa no desenho que não muda de tamanho, e por isso é ela que diz
@@ -206,20 +234,87 @@ const n2 = (v: number) => v.toFixed(1);
  * porque cada quadradinho da malha é pequeno o bastante para a ordem por
  * profundidade do centro não errar de forma visível.
  */
+export interface Cena {
+  faces: Face[];
+  /** O raio da peça no chão, em metros. Manda no favo e no lugar do boneco. */
+  meia: number;
+  cam: Camera;
+  largura: number; altura: number;
+  /**
+   * Onde fica o boneco de escala: ao LADO da peça (a matéria, que aparece num
+   * ponto qualquer) ou na ORIGEM (a manifestação e a Aura, que saem de quem
+   * conjura). `nenhum` é para quando a peça já é do tamanho de gente.
+   */
+  boneco?: 'lado' | 'origem' | 'nenhum';
+}
+
+/** A matéria comprada, no molde escolhido. */
 export function svgDoSolido(opts: {
   solido: string; volumeM3: number; cam: Camera;
   largura: number; altura: number; boneco?: boolean;
 }): string {
-  const W = opts.largura, H = opts.altura, pad = 4;
   const m = medidasDoSolido(opts.solido, opts.volumeM3);
-  const meia = Math.max(
-    (m.raioM || 0), (m.ladoM || 0) / 2, (m.comprimentoM || 0) / 2, (m.larguraM || 0) / 2,
-  );
-  const faces = malhaDoSolido(opts.solido, m);
+  return cena({
+    faces: malhaDoSolido(opts.solido, m),
+    meia: Math.max(
+      (m.raioM || 0), (m.ladoM || 0) / 2, (m.comprimentoM || 0) / 2, (m.larguraM || 0) / 2,
+    ),
+    cam: opts.cam, largura: opts.largura, altura: opts.altura,
+    boneco: opts.boneco === false ? 'nenhum' : 'lado',
+  });
+}
+
+/**
+ * A MANIFESTAÇÃO DO IMPROVISO: as fatias saindo do feiticeiro.
+ *
+ * As fatias vizinhas dividem o mesmo bico, e cada uma é uma malha própria: com
+ * a matéria translúcida, as costuras entre elas aparecem, e é isso que se quer
+ * ver. Abrir em três de 60° não é o mesmo que abrir uma de 180°, mesmo que a
+ * sombra no chão seja a mesma.
+ */
+export function svgDaManifestacao(opts: {
+  raioM: number; alturaM: number; fatias: number; fatiaGraus: number;
+  cam: Camera; largura: number; altura: number;
+}): string {
+  const N = Math.max(1, opts.fatias);
+  const th = (opts.fatiaGraus * Math.PI) / 180;
+  const total = N * th;
+  const faces: Face[] = [];
+  for (let k = 0; k < N; k++) {
+    const de = -total / 2 + k * th;
+    faces.push(...fatia(opts.raioM, opts.alturaM, de, de + th));
+  }
+  return cena({
+    faces, meia: opts.raioM, cam: opts.cam,
+    largura: opts.largura, altura: opts.altura, boneco: 'origem',
+  });
+}
+
+/**
+ * A ESFERA DA AURA: o volume que nasce em volta de quem conjura.
+ *
+ * A régua dela compra raio, e não lado de cubo, então ela não escolhe molde: a
+ * forma é uma só, e o que a mesa precisa ver é até onde ela passa do corpo.
+ */
+export function svgDaAura(opts: {
+  raioM: number; cam: Camera; largura: number; altura: number;
+}): string {
+  return cena({
+    faces: esfera(opts.raioM, false, 20, 10, Math.max(opts.raioM, 0.9)),
+    meia: opts.raioM, cam: opts.cam,
+    largura: opts.largura, altura: opts.altura, boneco: 'origem',
+  });
+}
+
+function cena(opts: Cena): string {
+  const W = opts.largura, H = opts.altura, pad = 4;
+  const meia = opts.meia;
+  const faces = opts.faces;
 
   // --------------------------------------------------------- a câmera
   const { giro, altura } = opts.cam;
-  const alvo: V3 = [0, Math.min(m.alturaM, 1.8) / 2, 0];
+  const topo = Math.max(...faces.flatMap((f) => f.pts.map((q) => q[1])));
+  const alvo: V3 = [0, Math.min(topo, 2.4) / 2, 0];
   const olho: V3 = [
     alvo[0] + Math.cos(altura) * Math.sin(giro),
     alvo[1] + Math.sin(altura),
@@ -240,15 +335,19 @@ export function svgDoSolido(opts: {
   // voltas, e como a matéria é translúcida o coitado aparecia DENTRO da coluna
   // de água. Pondo-o na direção da direita da câmera, ele fica sempre ao lado,
   // que é onde uma régua serve para alguma coisa.
-  if (opts.boneco !== false) {
+  if (opts.boneco === 'lado') {
     const passo = meia + 0.75;
     faces.push(...boneco(dir[0] * passo, dir[2] * passo));
+  } else if (opts.boneco === 'origem') {
+    // Aqui ele não é régua encostada na peça: é o próprio conjurador, e a peça
+    // sai dele. Fica na origem, e o desenho mostra de onde a Arte nasce.
+    faces.push(...boneco(0, 0));
   }
 
   // ------------------------------------------------- o chão, em hexágonos
   // O mesmo favo do tabuleiro, um metro de centro a centro, para a peça ter
   // onde se apoiar e para a contagem de casas continuar valendo aqui.
-  const alcance = Math.max(2, Math.ceil(meia + (opts.boneco === false ? 1 : 1.6)));
+  const alcance = Math.max(2, Math.ceil(meia + (opts.boneco === 'nenhum' ? 1 : 1.6)));
   const chao: V3[][] = [];
   const R = 1 / Math.sqrt(3);
   for (let cx = -alcance; cx <= alcance; cx++) {
@@ -264,7 +363,10 @@ export function svgDoSolido(opts: {
 
   // ------------------------------------------------ a escala e o encaixe
   const projetadas = faces.map((f) => f.pts.map(olhar));
-  const todos = [...projetadas.flat(), ...chao.flat()];
+  // O ENQUADRAMENTO É PELA PEÇA, e não pelo chão. Com o favo entrando na conta,
+  // uma manifestação de seis metros ficava do tamanho de uma unha no meio de um
+  // terreiro vazio: o chão é fundo, e fundo pode sair pela borda.
+  const todos = projetadas.flat();
   const xs = todos.map((p) => p[0]), ys = todos.map((p) => p[1]);
   const x0 = Math.min(...xs), x1 = Math.max(...xs);
   const y0 = Math.min(...ys), y1 = Math.max(...ys);

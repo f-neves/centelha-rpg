@@ -22,6 +22,17 @@ await build({
 const M = await import(pathToFileURL(saida).href);
 fs.rmSync(saida, { force: true });
 
+// O desenho em três dimensões vive em outro arquivo, e importa este: empacota
+// separado, porque o que se testa nele é outra coisa (que o SVG saia inteiro).
+const saida3d = path.join(os.tmpdir(), `artes-3d-${process.pid}.mjs`);
+await build({
+  entryPoints: [path.join(ROOT, 'src/lib/artes-3d.ts')],
+  outfile: saida3d, bundle: true, format: 'esm', platform: 'node',
+  loader: { '.json': 'json' }, logLevel: 'error',
+});
+const D = await import(pathToFileURL(saida3d).href);
+fs.rmSync(saida3d, { force: true });
+
 /** O bestiário como a mesa o lê. Cru do JSON: aqui não se testa o gerador. */
 const MONSTROS = () => {
   const bruto = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/monsters-mesa.json'), 'utf8'));
@@ -804,6 +815,43 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
   const cubo = M.figuraDoEfeito({ efeito: M.EFEITO['neblina'], grau: 6, ancora });
   eq(cubo.tipo, 'retangulo', 'sem escolha, a Neblina sai em cubo');
   ok(Math.abs(cubo.comprimentoM - 5) < 1e-9, 'e o cubo de 125 m³ marca 5 m de chão, como sempre marcou');
+}
+
+// ------------------------------------------------- o desenho em três dimensões
+//
+// Aqui não se testa beleza, testa-se que o desenho SAI: uma normal virada para
+// dentro some no corte de face oculta e uma medida zerada vira `NaN` no meio do
+// atributo `points`, e nos dois casos o navegador não reclama de nada, só deixa
+// de desenhar. O olho confere o resto na bancada (`node scripts/shot-conjurar.mjs`).
+{
+  const cam = D.CAMERA_ISO;
+  const conta = (svg) => (svg.match(/<polygon/g) || []).length;
+  const saoNumeros = (svg) => !/NaN|Infinity|undefined/.test(svg);
+  for (const sol of M.SOLIDOS) {
+    for (const V of [0.008, 1, 125]) {
+      const svg = D.svgDoSolido({ solido: sol.id, volumeM3: V, cam, largura: 148, altura: 76 });
+      ok(conta(svg) > 6, `${sol.id} de ${V} m³ desenha (${conta(svg)} faces à vista)`);
+      ok(saoNumeros(svg), `${sol.id} de ${V} m³ sai com número em toda coordenada`);
+    }
+  }
+  // A manifestação: uma fatia, três fatias e a volta inteira.
+  for (const [N, ab] of [[1, 60], [3, 60], [6, 60], [4, 90], [3, 120]]) {
+    const svg = D.svgDaManifestacao({
+      raioM: 4, alturaM: 2, fatias: N, fatiaGraus: ab, cam, largura: 148, altura: 76,
+    });
+    ok(conta(svg) > 4 * N, `manifestação de ${N} fatia(s) de ${ab}° desenha`);
+    ok(saoNumeros(svg), `manifestação de ${N}×${ab}° sai com número em toda coordenada`);
+  }
+  // E a esfera da Aura, que não escolhe molde nenhum.
+  const aura = D.svgDaAura({ raioM: 1.5, cam, largura: 148, altura: 76 });
+  ok(conta(aura) > 20, 'a esfera da Aura desenha');
+  ok(saoNumeros(aura), 'a esfera da Aura sai com número em toda coordenada');
+  // Sem medida, não há o que desenhar, e isso não pode virar exceção: a caixa
+  // abre com todo parâmetro em zero, e o desenho é pintado nesse instante.
+  const vazio = D.svgDaManifestacao({
+    raioM: 0, alturaM: 0, fatias: 1, fatiaGraus: 60, cam, largura: 148, altura: 76,
+  });
+  ok(saoNumeros(vazio), 'manifestação zerada não sai com NaN');
 }
 
 // ---------------------------------------------------- cobertura da projeção
