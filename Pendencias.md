@@ -551,6 +551,10 @@ catálogo é o real (`armas.json`, `armaduras.json`).
 A ideia: trocar a Velocidade única pelo par **Preparo/Recuperação** (`P + R` = a Velocidade de
 hoje) e generalizar o desvio de emergência da §5.5 do Arcano numa **dívida de Ticks**.
 
+**Em 19/08/2026 a régua ganhou uma terceira fase e virou `P/G/R`** (§14 do `Combate_Tempo.md`).
+Quando a §14 discordar das §2 a §9, vale a §14, e os itens abaixo marcados `[SUPERADO]` foram
+revistos por ela.
+
 - [x] **K1 · A régua, decidida (18/08).** `P/R` (leve 0/5 · média 1/5 · haste 0/6 · pesada 2/5), a
   guarda que se refaz **quando o golpe sai**, o Preparo que **não compra nada** e o golpe que
   **redireciona** quando o alvo cai. Medido neutro no catálogo real: maior desvio de 0,7 ponto em
@@ -591,6 +595,28 @@ hoje) e generalizar o desvio de emergência da §5.5 do Arcano numa **dívida de
   físico (o Ocultismo da §5.5 segue para a Arte), leitura grátis para quem tem a mesma arma e
   perícia, e a **finta** comprando 1 Tick de Preparo para mentir sobre o alvo, que dá à arma leve o
   primeiro motivo para comprar Preparo. Fica por último.
+- [x] **K15 · A régua P/G/R, decidida (19/08).** A ação tem três fases, com `P + G + R` igual à
+  Velocidade de hoje e **G sempre 1**: leve 0/1/4 · média 1/1/4 · **haste 2/1/3** · pesada 2/1/4 ·
+  arco (Vel−1)/1/0 · arremesso (Vel−2)/1/1 · Arte (2+nível)/1/0. **A ação declarada não custa
+  Defesa por si; no Tick do Golpe a Defesa cai 6**, que é um degrau de Margem. A guarda se refaz no
+  **fim da Recuperação**. Medida em 16,1 de amplitude entre classes contra 16,2 do sistema de hoje
+  e 21,7 do K1, e guardando 5,98 decisões por lado contra 7,21 de hoje. `[SUPERA]` a §2.1 (a guarda
+  se refazia no golpe) e o Preparo da haste do **K1**.
+- [x] **K16 · Empunhadura dupla e cadeia de ataques, desenhadas (19/08).** Os golpes extras **saem
+  da Recuperação** e só estendem o ciclo se ela acabar. Dupla: `P0 · G2 · R3 = 5`, **−1d6 nas duas
+  mãos** (os −1d6/−2d6 do capítulo derrubam a dupla para 26% contra 54%), e nos Ticks de Golpe vale
+  a penalidade de P e R, porque a outra lâmina apara. Cadeia: N repetições de (Preparo + Golpe) e
+  uma Recuperação, declarada de uma vez, freio de **um dado a mais por golpe**, teto 4/3/2 por
+  classe. §14.4 e §14.5.
+- [ ] **K17 · [DECIDIR] O arqueiro ficou forte demais.** 63,9% a 100 metros contra 35,8% do sistema
+  de hoje, por um motivo estrutural: com `R = 0` ele nunca passa pela fase exposta. Conversa com o
+  **K4**, que por sua vez está travado pelo **K13**.
+- [ ] **K18 · [DECIDIR] A Técnica Ambidestria ficou sem função.** O que ela faz hoje (Dança da
+  Lâmina) é exatamente apagar o dado extra da mão fraca, e isso virou o padrão. Ou ela ganha outro
+  benefício, ou a paridade da dupla fica atrás dela e a dupla sem treino continua armadilha
+  (22,9% contra 54,0%). §14.4.
+- [ ] **K19 · [FAZER] A cadeia foi medida só na arma leve.** Na média e na pesada cada elo custa 2
+  e 3 Ticks, e as três curvas de freio não foram varridas ali. Bateria `--so T`.
 - [ ] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
   nem Habilidade**, só a Virtude, e por isso a régua de pool de hoje (`[(A+H)/2]d6`, com +2 se
   ímpar) não se aplica a ele. Duas formas na mesa: **pool** (a Virtude vira dados pela mesma
@@ -616,9 +642,11 @@ hoje) e generalizar o desvio de emergência da §5.5 do Arcano numa **dívida de
   verdade está entre os dois cantos e depende do roteamento das Defesas pelo "como". Enquanto o
   motor não souber escolher entre Esquiva e Bloqueio, **nenhum ajuste de catálogo (K11) deve ser
   feito com base nele**.
-- [ ] **K5 · [FAZER] A implementação, quando as bordas fecharem.** `armas.json` (Preparo,
+- [ ] **K5 · [FAZER] A implementação, quando as bordas fecharem.** `armas.json` (o `P/G/R`,
   provavelmente derivado da classe em `regras.json`), capítulo IX, a linha de combate da ficha e o
-  rastreador de Ticks da mesa (a barra de dois tons no trilho compartilhado).
+  rastreador de Ticks da mesa (a barra de **três** tons no trilho compartilhado, mais o destaque de
+  quem está no Tick do Golpe agora). O rastreio inteiro cabe em dois números por combatente: *sai
+  no Tick X, livre no Tick Y*. §14.7.
 
 ## H. Arremesso
 

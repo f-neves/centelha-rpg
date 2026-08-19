@@ -34,6 +34,64 @@ const armaduras = JSON.parse(ler('src/data/armaduras.json'));
 // Cada bloco vira um cartão na aba "As regras". `n` marca o número que a bancada mexe.
 const REGRAS_TEXTO = [
   {
+    id: 'pgr', titulo: 'Tres fases: Preparo, Golpe e Recuperacao', estado: 'decidido',
+    corpo: `Decidido em <b>19/08/2026</b>. A acao tem <b>P/G/R</b>, com <b>P + G + R</b> igual a
+    Velocidade de hoje. O <b>Golpe e UM Tick</b>: e quando o golpe sai, nao pode ser cancelado, e e
+    onde a Defesa de quem ataca despenca. O Preparo e interrompivel ate o Tick anterior; a
+    Recuperacao e o pos-golpe, sem refresh de guarda, mas e la que cabe a acao fora de hora.
+    <p class="nota">leve 0/1/4 &middot; media 1/1/4 &middot; haste 2/1/3 &middot; pesada 2/1/4 &middot;
+    arco (Vel&minus;1)/1/0 &middot; arremesso (Vel&minus;2)/1/1 &middot; Arte (2+nivel)/1/0.
+    A cadencia nao muda em nada.</p>`,
+  },
+  {
+    id: 'golpedv', titulo: 'A acao declarada nao custa Defesa; o Tick do Golpe custa 6', estado: 'decidido',
+    corpo: `A intuicao pede cobrar DV por estar comprometido, durante o Preparo e a Recuperacao.
+    <b>Medido, isso piora tudo</b>, e o motivo e estrutural: <b>penalizar o Preparo e um imposto que a
+    arma leve nao paga</b>, porque ela nao tem Preparo. Com P=&minus;2 e R=0 a arma leve vai a 72%.
+    O custo mora onde e uniforme: <b>todo mundo tem exatamente um Tick de Golpe</b>.
+    <p class="nota">&minus;6 nao e numero solto: e <b>um degrau de Margem</b>. Quem acerta no Tick do
+    Golpe alheio ganha exatamente +1d6 de dano. Mexa em <b>Golpe &middot; DV</b> e em
+    <b>Preparo &middot; DV</b> no painel e rode a bateria do par.</p>`,
+  },
+  {
+    id: 'dupla', titulo: 'Empunhadura dupla: G de 2 Ticks', estado: 'decidido',
+    corpo: `Os golpes extras <b>saem da Recuperacao</b>, e so estendem o ciclo se ela acabar. Duas
+    espadas curtas ficam <b>P0 &middot; G2 &middot; R3 = 5</b>: mao habil no primeiro Tick, inabil no
+    segundo, ambas a <b>&minus;1d6</b>. Nesses dois Ticks vale a penalidade de P e R, e nao a do Golpe,
+    porque a outra lamina ainda apara.
+    <p class="nota">Com os &minus;1d6/&minus;2d6 do capitulo IX a dupla mede 26% contra 54% de uma arma
+    so: a penalidade de dado so e suportavel quando as Defesas sao baixas. Com &minus;1d6/&minus;1d6 ela
+    mede 51%. Consequencia: a Tecnica <b>Ambidestria</b> fica sem funcao e precisa de outra.</p>`,
+  },
+  {
+    id: 'cadeia', titulo: 'A cadeia de ataques', estado: 'desenhado',
+    corpo: `<b>N repeticoes de (Preparo + Golpe) e UMA Recuperacao</b>, declaradas de uma vez, sem parar
+    no meio. Teto por classe: 4 na leve, 3 na media, 2 na pesada. O freio e <b>perder um dado a mais por
+    golpe</b> (0 &middot; &minus;1d6 &middot; &minus;2d6 &middot; &minus;3d6), e ele funciona porque
+    <b>distingue pelo alvo</b>: o lacaio tem Defesa baixa e apanha ate do quarto golpe; o igual tem
+    Defesa alta e o terceiro ja nao encosta.
+    <p class="nota">Em duelo: 49% &middot; 34% &middot; 16% &middot; 4%. Contra um soldado: a mesma
+    vitoria em 13,0 Ticks em vez de 19,0. E a cadeia se limita sozinha, porque N=4 ja nao melhora.</p>`,
+  },
+  {
+    id: 'pressao-k13', titulo: 'A Pressao estava cobrada em dobro', estado: 'decidido',
+    corpo: `Ate 19/08/2026 este motor fazia <code>guard += pressao</code> e descontava
+    <code>pressao x guard</code>: <b>&minus;4 por ataque</b>, quando o capitulo IX escreve
+    <b>&minus;2</b>. O padrao agora e o correto. <code>node scripts/sim-ticks.mjs --legado</code>
+    reproduz o regime antigo.
+    <p class="nota">Nao e detalhe: a curva do Preparo do arco (&sect;7) <b>inverte</b>. Com &minus;4 o
+    Preparo custa win rate; com &minus;2 ele paga. Ver K13 no Pendencias.md.</p>`,
+  },
+  {
+    id: 'defarma-k14', titulo: 'A bancada so mede o canto "todo mundo esquiva"', estado: 'aberto',
+    corpo: `O motor tem <b>uma</b> Defesa e ignora a <code>defesaArma</code>, que pelo
+    <code>defesas.md</code> entra <b>so no Bloqueio</b>. Ligando-a para todos (o canto oposto), o sistema
+    de <b>hoje</b> vai de 16,3 para <b>50,5 pontos</b> de amplitude entre classes, com a haste em 77% e a
+    arma pesada de duas maos em 27%.
+    <p class="nota">Enquanto o motor nao souber escolher entre Esquiva e Bloqueio, nenhum ajuste de
+    catalogo (Alabarda, Maca) deve sair daqui. Ver K14.</p>`,
+  },
+  {
     id: 'eixo', titulo: 'O eixo: Preparo e Recuperação', estado: 'decidido',
     corpo: `Toda ação tem dois números, <b>P/R</b>, e <b>P + R é a Velocidade de hoje</b>. A cadência
     não muda: muda onde dentro da janela o golpe cai. A ação comum resolve cedo e a Velocidade toda é
@@ -227,7 +285,7 @@ pre.log b { color: var(--acento); }
 <body>
 <header>
   <h1><small>Centelha · banco de provas</small>Bancada da Linha do Tempo do Combate</h1>
-  <p class="sub">Preparo e Recuperação, a ação fora de hora e a dívida de Ticks. Todo número de regra é
+  <p class="sub">Preparo, Golpe e Recuperação, a ação fora de hora e a dívida de Ticks. Todo número de regra é
   um botão do painel; toda afirmação do documento é uma bateria que roda aqui. O motor é o mesmo de
   <code>scripts/lib-tempo.mjs</code>, inlinado sem uma linha de diferença, e o catálogo é o de verdade
   (<code>armas.json</code>, <code>armaduras.json</code>). Página gerada por
@@ -264,6 +322,10 @@ pre.log b { color: var(--acento); }
         <button class="acao" data-bat="feiticeiro">Feiticeiro sob pressão</button>
         <button class="acao" data-bat="distancia">Arqueiro e distância</button>
         <button class="acao" data-bat="travas">As travas do preço</button>
+        <button class="acao" data-bat="regua">A régua P/G/R</button>
+        <button class="acao" data-bat="par">O par: ciclo × Golpe</button>
+        <button class="acao" data-bat="duasarmas">Empunhadura dupla</button>
+        <button class="acao" data-bat="cadeia">A cadeia de ataques</button>
         <button class="acao fantasma" data-bat="tudo">Rodar tudo</button>
         <button class="acao fantasma" id="limpar">Limpar</button>
       </div>
@@ -282,8 +344,10 @@ pre.log b { color: var(--acento); }
         <button class="acao fantasma" id="narrar-outro">Outra semente</button>
       </div>
       <p class="legenda">O trilho mostra cada combatente numa linha: <span class="prep">▓ Preparo</span>
-      (visível, interrompível) · <span class="rec">░ Recuperação</span> (exposto, não interrompível) ·
-      <span class="sai">█ o golpe sai</span>. É o desenho que a aba de Combate da mesa deveria ter.</p>
+      (visível, interrompível até o Tick anterior) · <span class="sai">█ Golpe</span> (um Tick, não
+      cancelável, e a Defesa cai 6) · <span class="rec">░ Recuperação</span> (sem refresh de guarda, mas
+      cabe a ação fora de hora) · <span class="sai">◆</span> a ação fora de hora.
+      É o desenho que a aba de Combate da mesa deveria ter.</p>
       <div id="trilho"></div>
       <pre class="log" id="log"></pre>
     </div>
@@ -323,12 +387,35 @@ const ROT_CLASSE = { leve:'Leve', media:'Média', haste:'Haste', pesada:'Pesada'
 // ===================== estado =====================
 const S = {
   n: 4000, semente: 20260818,
-  regras: JSON.parse(JSON.stringify(REGRAS_PADRAO)),
+  regras: clonar(REGRAS_PGR),
   lutador: { ah: 10, centelha: 1, vigor: 4, forca: 4, pv: 37 },
   duelo: { a: 'espada-longa', b: 'martelo-de-guerra', armA: 'nenhuma', armB: 'nenhuma', semente: 20260818 },
 };
 const HOJE = () => comRegras(S.regras, { usarPreparo: false, redirecionar: false, fora: { ...S.regras.fora, ligada: false }, interrupcao: 0 });
 const SEM_FORA = () => comRegras(S.regras, { fora: { ...S.regras.fora, ligada: false }, interrupcao: 0 });
+
+// As entradas de preparo/velocidade que sao FUNCAO da arma (arco, arremesso) nao sobrevivem
+// a JSON.stringify, entao o clone as preserva.
+function clonar(R) {
+  const out = JSON.parse(JSON.stringify(R));
+  for (const campo of ['preparo', 'velocidade']) {
+    if (!R[campo]) { out[campo] = R[campo]; continue; }
+    out[campo] = { ...out[campo] };
+    for (const [k, v] of Object.entries(R[campo])) if (typeof v === 'function') out[campo][k] = v;
+  }
+  return out;
+}
+/** O Preparo de uma arma, resolvendo as entradas que sao funcao. */
+function prepDe(R, arma) {
+  if (!R.usarPreparo) return 0;
+  const v = R.preparo[arma.classe];
+  return (typeof v === 'function' ? v(arma) : v) ?? 0;
+}
+/** O ciclo total de uma arma (P + G + R). */
+function cicloDe(R, arma) {
+  const v = R.velocidade ? R.velocidade[arma.classe] : undefined;
+  return (typeof v === 'function' ? v(arma) : v) ?? arma.ticks;
+}
 
 const el = (id) => document.getElementById(id);
 const pct = (x) => (x * 100).toFixed(1) + '%';
@@ -371,14 +458,41 @@ function campoSel(rot, val, opcoes, onChange) {
 
 function pintarPainel() {
   const R = S.regras;
+  setTimeout(() => {
+    const a = el('preset-pgr'), b = el('preset-k1');
+    if (a) a.addEventListener('click', () => { S.regras = clonar(REGRAS_PGR); pintarPainel(); });
+    if (b) b.addEventListener('click', () => { S.regras = clonar(REGRAS_PADRAO); pintarPainel(); });
+  }, 0);
   el('painel').innerHTML =
     '<h3>Parâmetros</h3>'
+    + '<div class="botoes" style="margin-bottom:.7rem">'
+    + '<button class="acao fantasma" id="preset-pgr">P/G/R (19/08)</button>'
+    + '<button class="acao fantasma" id="preset-k1">K1 (18/08)</button>'
+    + '</div>'
     + '<fieldset><legend>A régua</legend>'
     + campoBool('usar Preparo/Recuperação', R.usarPreparo, (v) => { R.usarPreparo = v; pintarPainel(); })
-    + CLASSES.concat(['distancia','arremesso','arte']).map((c) => campoNum('Preparo · ' + ROT_CLASSE[c], R.preparo[c], (v) => { R.preparo[c] = v; }, 1, 0, 12)).join('')
-    + campoSel('a guarda se refaz', R.guardaEm, [['resolve','quando o golpe sai'],['declara','na declaração']], (v) => { R.guardaEm = v; })
+    + CLASSES.concat(['distancia','arremesso','arte']).map((c) => (typeof R.preparo[c] === 'function'
+        ? '<label class="linha"><span class="rot">Preparo · ' + ROT_CLASSE[c] + '</span><span class="num">pela Velocidade</span></label>'
+        : campoNum('Preparo · ' + ROT_CLASSE[c], R.preparo[c], (v) => { R.preparo[c] = v; }, 1, 0, 12))).join('')
+    + campoSel('a guarda se refaz', R.guardaEm, [['resolve','quando o golpe sai'],['declara','no fim da Recuperação']], (v) => { R.guardaEm = v; })
     + campoBool('redirecionar o golpe', R.redirecionar, (v) => { R.redirecionar = v; })
     + campoNum('Pressão (por ataque)', R.pressao, (v) => { R.pressao = v; }, 1, 0, 6)
+    + campoBool('Pressão em dobro (K13, o bug antigo)', R.pressaoDupla, (v) => { R.pressaoDupla = v; })
+    + campoBool('a Defesa da arma entra (K14)', R.usarDefesaArma, (v) => { R.usarDefesaArma = v; })
+    + '</fieldset>'
+    + '<fieldset><legend>O Tick do Golpe</legend>'
+    + campoNum('Golpe · DV perdida', R.golpeDV, (v) => { R.golpeDV = v; }, 1, 0, 20)
+    + campoNum('Preparo · DV perdida', R.preparoDV ?? R.compromissoDV, (v) => { R.preparoDV = v; }, 1, 0, 20)
+    + campoNum('Recuperação · DV perdida', R.recupDV ?? R.compromissoDV, (v) => { R.recupDV = v; }, 1, 0, 20)
+    + campoBool('o próprio golpe pesa o ciclo', R.atacarCustaGuarda, (v) => { R.atacarCustaGuarda = v; })
+    + '</fieldset>'
+    + '<fieldset><legend>Golpes múltiplos</legend>'
+    + campoNum('dupla · dados da mão hábil', R.penDadosDupla[0], (v) => { R.penDadosDupla = [v, R.penDadosDupla[1]]; }, 1, 0, 5)
+    + campoNum('dupla · dados da mão inábil', R.penDadosDupla[1], (v) => { R.penDadosDupla = [R.penDadosDupla[0], v]; }, 1, 0, 5)
+    + campoNum('dupla · agravo do Golpe (0 a 1)', R.duplaAlivia, (v) => { R.duplaAlivia = v; }, 0.5, 0, 1)
+    + campoNum('cadeia · dados do 2º golpe', R.penDadosCadeia[1], (v) => { const a = [...R.penDadosCadeia]; a[1] = v; R.penDadosCadeia = a; }, 1, 0, 6)
+    + campoNum('cadeia · dados do 3º golpe', R.penDadosCadeia[2], (v) => { const a = [...R.penDadosCadeia]; a[2] = v; R.penDadosCadeia = a; }, 1, 0, 6)
+    + campoNum('cadeia · dados do 4º golpe', R.penDadosCadeia[3], (v) => { const a = [...R.penDadosCadeia]; a[3] = v; R.penDadosCadeia = a; }, 1, 0, 6)
     + '</fieldset>'
     + '<fieldset><legend>Agir fora da vez</legend>'
     + campoBool('ligada', R.fora.ligada, (v) => { R.fora.ligada = v; })
@@ -626,13 +740,119 @@ document.querySelectorAll('button.acao[data-bat]').forEach((b) => b.addEventList
   const k = b.dataset.bat;
   if (k === 'tudo') {
     comStatus('rodando tudo', async () => {
-      for (const nome of ['travas','distancia','feiticeiro','carga','armadura','janela','refrega','classes','roundrobin']) {
+      for (const nome of ['cadeia','duasarmas','par','regua','travas','distancia','feiticeiro','carga','armadura','janela','refrega','classes','roundrobin']) {
         el('status').textContent = 'rodando ' + nome + '…'; await espera(); BAT[nome]();
       }
     });
   } else comStatus('rodando ' + b.textContent.toLowerCase(), async () => BAT[k]());
 }));
 el('limpar').addEventListener('click', () => { el('saida').innerHTML = ''; el('status').textContent = ''; });
+
+// ---------- as baterias da regua P/G/R (19/08/2026) ----------
+const LIMPO = ['adaga','espada-curta','espada-longa','machado','picareta-de-guerra','lanca','montante','martelo-de-guerra'];
+/** win% por classe e amplitude entre classes, no conjunto sem os fora-de-curva do K11. */
+function perfilPGR(R) {
+  const w = roundRobin(LIMPO, R, CAT, { ...op(), spec: S.lutador });
+  const c = porClasse(w, CAT);
+  const v = CLASSES.map((k) => c[k]).filter((x) => x != null);
+  return { c, amp: (Math.max(...v) - Math.min(...v)) * 100 };
+}
+/** win% de um combatente contra as outras sete armas limpas. */
+function campoPGR(spec, R) {
+  let soma = 0, k = 0;
+  for (const b of LIMPO) {
+    if (b === spec.arma) continue;
+    soma += bateria({ ...S.lutador, ...spec }, { ...S.lutador, arma: b }, R, CAT, op()).win;
+    k++;
+  }
+  return soma / k;
+}
+
+BAT.regua = () => {
+  const linhas = [];
+  for (const [lbl, R] of [['hoje (capítulo IX)', HOJE()], ['K1 (a régua de 18/08)', clonar(REGRAS_PADRAO)], ['o painel, como está', S.regras]]) {
+    const p = perfilPGR(R);
+    const d = bateria({ ...S.lutador, arma: 'espada-longa' }, { ...S.lutador, arma: 'espada-longa' }, R, CAT, op());
+    linhas.push([lbl].concat(CLASSES.map((k) => '<span class="num">' + pct(p.c[k]) + '</span>'))
+      .concat(['<span class="num ' + (p.amp < 18 ? 'bom' : p.amp < 28 ? 'morno' : 'ruim') + '">' + p.amp.toFixed(1) + '</span>',
+        '<span class="num">' + d.ticks.toFixed(1) + 't</span>',
+        '<span class="num">' + (d.declsPorLado + d.foraPorDuelo / 2).toFixed(2) + '</span>']));
+  }
+  const regua = CLASSES.map((k) => {
+    const arma = CORPO.find((a) => CAT.armas[a].classe === k);
+    const c = lutador({ arma, regras: S.regras, ...S.lutador }, CAT);
+    return ROT_CLASSE[k] + ' P' + c.prep + '/G1/R' + (c.spd - c.prep - 1) + ' = ' + c.spd;
+  }).join(' &middot; ');
+  bloco('A régua P/G/R contra o que existe',
+    'Oito armas, sem Alabarda e Maça (os fora-de-curva do K11). A amplitude é a distância entre a melhor e a pior classe: menor é melhor. No painel: ' + regua + '.',
+    tabela(['modelo','leve','média','haste','pesada','amplitude','duelo','decisões/lado'], linhas));
+};
+
+BAT.par = () => {
+  const linhas = [];
+  for (const [pp, rr, gg] of [[2,2,4],[2,2,6],[3,3,6],[4,4,6],[2,0,4],[0,2,4],[0,0,4],[0,0,6],[0,0,8],[0,0,10]]) {
+    const R = comRegras(S.regras, { preparoDV: pp, recupDV: rr, golpeDV: gg });
+    const p = perfilPGR(R);
+    linhas.push(['−' + pp + ' / −' + rr + ' / −' + gg + (pp === 0 && rr === 0 && gg === 6 ? ' ←' : '')]
+      .concat(CLASSES.map((k) => '<span class="num">' + pct(p.c[k]) + '</span>'))
+      .concat(['<span class="num ' + (p.amp < 18 ? 'bom' : p.amp < 28 ? 'morno' : 'ruim') + '">' + p.amp.toFixed(1) + '</span>']));
+  }
+  bloco('O par: quanto custa estar comprometido, e quanto custa o Tick do Golpe',
+    'Penalizar o Preparo é um imposto que a arma leve não paga, porque ela não tem Preparo. Por isso as linhas com P e R a zero medem melhor, e a decidida é −0 / −0 / −6, que é um degrau de Margem.',
+    tabela(['P / R / Golpe','leve','média','haste','pesada','amplitude'], linhas));
+};
+
+BAT.duasarmas = () => {
+  const solo = campoPGR({ arma: 'espada-curta' }, S.regras);
+  const linhas = [];
+  for (const pen of [[1,2],[1,1],[0,1],[2,2]]) {
+    const R = comRegras(S.regras, { penDadosDupla: pen });
+    const a = campoPGR({ arma: 'espada-curta', dupla: true, juntos: true }, R);
+    const b = campoPGR({ arma: 'espada-curta', dupla: true }, R);
+    const cel = (x) => '<span class="num">' + pct(x) + '</span> <span class="num ' + cor((x - solo) * 100) + '">' + sgn((x - solo) * 100) + '</span>';
+    linhas.push(['−' + pen[0] + 'd6 / −' + pen[1] + 'd6' + (pen[0] === 1 && pen[1] === 1 ? ' ←' : ''), cel(a), cel(b)]);
+  }
+  bloco('Empunhadura dupla',
+    'Espada curta sozinha contra as outras sete mede <b>' + pct(solo) + '</b>: é o alvo. Os golpes extras saem da Recuperação, então duas curtas ficam P0/G2/R3 = 5. Nos Ticks de Golpe da dupla vale a penalidade de P e R, porque a outra lâmina ainda apara.',
+    tabela(['dados perdidos','os dois no mesmo Tick','G de 2 Ticks'], linhas));
+};
+
+BAT.cadeia = () => {
+  const LACAIO = { ah: 6, pv: 18, forca: 3, vigor: 3, centelha: 0, arma: 'adaga' };
+  const SOLDADO = { ah: 8, pv: 26, forca: 4, vigor: 3, centelha: 0, arma: 'espada-curta' };
+  const contra = (spec, alvo, quantos, R) => {
+    const rnd = criarRng(S.semente);
+    const reps = Math.max(600, Math.floor(S.n / 4));
+    let v = 0, t = 0;
+    for (let i = 0; i < reps; i++) {
+      const H = lutador({ ...S.lutador, ...spec, regras: R }, CAT);
+      const inim = [];
+      for (let j = 0; j < quantos; j++) inim.push(lutador({ ...alvo, regras: R }, CAT));
+      const r = cena([H], inim, R, rnd);
+      if (r.vencedor === 'A') v++;
+      t += r.ticks;
+    }
+    return { win: v / reps, ticks: t / reps };
+  };
+  const linhas = [];
+  for (const freio of [[0,0,0,0],[0,1,2,3],[0,2,3,4]]) {
+    const R = comRegras(S.regras, { penDadosCadeia: freio });
+    for (let n = 1; n <= 4; n++) {
+      const spec = { arma: 'espada-curta', cadeia: n, extraDaR: false };
+      const c = lutador({ ...S.lutador, ...spec, regras: R }, CAT);
+      const s1 = contra(spec, SOLDADO, 1, R), s2 = contra(spec, LACAIO, 2, R);
+      const duelo = bateria({ ...S.lutador, ...spec }, { ...S.lutador, arma: 'espada-curta' }, R, CAT, op()).win;
+      linhas.push([n === 1 ? freio.map((x) => (x ? '−' + x + 'd6' : '0')).join('/') + (freio[1] === 1 ? ' ←' : '') : '',
+        '<span class="num">' + n + '</span>', '<span class="num">' + c.spd + '</span>',
+        '<span class="num ' + (duelo > 0.55 ? 'ruim' : duelo < 0.45 ? 'bom' : 'morno') + '">' + pct(duelo) + '</span>',
+        '<span class="num">' + pct(s1.win) + ' em ' + s1.ticks.toFixed(1) + 't</span>',
+        '<span class="num">' + pct(s2.win) + ' em ' + s2.ticks.toFixed(1) + 't</span>']);
+    }
+  }
+  bloco('A cadeia de ataques',
+    'N repetições de (Preparo + Golpe) e UMA Recuperação, declaradas de uma vez. O freio é perder um dado a mais por golpe, e ele distingue pelo alvo: o lacaio tem Defesa baixa e apanha até do quarto golpe; o igual tem Defesa alta e o terceiro já não encosta. Verde na coluna do duelo quer dizer que encadear contra um igual é mau negócio, que é o objetivo.',
+    tabela(['freio','N','ciclo','duelo igual','1 soldado','2 lacaios'], linhas));
+};
 
 // ===================== duelo narrado + trilho =====================
 function narrar() {
@@ -652,12 +872,13 @@ function desenharTrilho(log, nomes, fim) {
     const m = l.match(/^\\[T(\\d+)\\] (.+?) declara/);
     if (m) {
       const t = +m[1], quem = m[2];
-      const saiM = l.match(/Sai no T(\\d+)/), voltaM = l.match(/volta a declarar no T(\\d+)/);
-      const sai = saiM ? +saiM[1] : t, volta = voltaM ? +voltaM[1] : t;
-      if (!faixas[quem]) continue;
-      for (let i = t; i < sai && i < faixas[quem].length; i++) faixas[quem][i] = 'P';
-      if (sai < faixas[quem].length) faixas[quem][sai] = 'X';
-      for (let i = sai + 1; i < volta && i < faixas[quem].length; i++) faixas[quem][i] = 'R';
+      const golpeM = l.match(/Golpe em ([T\\d, ]+?), volta a declarar no T(\\d+)/);
+      if (!faixas[quem] || !golpeM) continue;
+      const gs = golpeM[1].split(',').map((x) => Number(x.replace(/[^0-9]/g, ''))).filter((x) => !isNaN(x));
+      const volta = Number(golpeM[2]);
+      const ultimo = gs[gs.length - 1];
+      for (let i = t; i <= ultimo && i < faixas[quem].length; i++) faixas[quem][i] = gs.includes(i) ? 'X' : 'P';
+      for (let i = ultimo + 1; i < volta && i < faixas[quem].length; i++) faixas[quem][i] = 'R';
     }
     const f = l.match(/^\\[T(\\d+)\\] (.+?) age FORA DA HORA/);
     if (f && faixas[f[2]]) faixas[f[2]][+f[1]] = 'F';
@@ -689,15 +910,17 @@ el('narrar-outro').addEventListener('click', () => { S.duelo.semente = (S.duelo.
 function pintarCatalogo() {
   const linhas = ARMAS_JSON.map((w) => {
     const a = CAT.armas[w.id];
-    const P = S.regras.preparo[a.classe] ?? 0;
-    const Rc = a.ticks - P;
+    const P = prepDe(S.regras, a);
+    const ciclo = cicloDe(S.regras, a);
+    const Rc = Math.max(0, ciclo - P - 1);
     return [a.nome, ROT_CLASSE[a.classe] || a.classe,
       '<span class="num">' + a.dado + 'd6' + (a.danoBonus ? (a.danoBonus > 0 ? '+' : '') + a.danoBonus : '') + '</span>',
       '<span class="num">' + sgn(a.acerto, 0) + '</span>',
       '<span class="num">' + a.maos + '</span>',
       '<span class="num">×' + a.forcaMult + '</span>',
-      '<span class="num">' + a.ticks + '</span>',
-      '<span class="num bom">' + P + '</span>', '<span class="num">' + Rc + '</span>',
+      '<span class="num">' + ciclo + '</span>',
+      '<span class="num bom">' + P + '</span>', '<span class="num acento">1</span>',
+      '<span class="num">' + Rc + '</span>',
       a.modo + (a.perf ? ' N' + a.perf : '')];
   });
   const armad = ARMADURAS_JSON.map((x) => [x.nome, ROT_CLASSE[x.classe] || x.classe,
@@ -705,8 +928,8 @@ function pintarCatalogo() {
     '<span class="num">' + x.soak.perfuracao + '</span>', '<span class="num">' + (x.resistPerf || 0) + '</span>',
     '<span class="num">' + (x.penalidade || 0) + '</span>']);
   el('catalogo').innerHTML =
-    '<div class="resultado"><h4>Armas</h4><p class="expl">O catálogo real, com o par Preparo/Recuperação que a régua atribui. Repare que a Lança traz Força ×1: ela fere por alcance, não por peso, e essa linha do dado já estava certa no JSON.</p>'
-    + tabela(['arma','classe','dado','acerto','mãos','Força','Velocidade','P','R','modo'], linhas) + '</div>'
+    '<div class="resultado"><h4>Armas</h4><p class="expl">O catálogo real, com o P/G/R que a régua atribui. O Golpe é sempre um Tick. Repare que a Lança traz Força ×1: ela fere por alcance, não por peso, e essa linha do dado já estava certa no JSON.</p>'
+    + tabela(['arma','classe','dado','acerto','mãos','Força','ciclo','P','G','R','modo'], linhas) + '</div>'
     + '<div class="resultado"><h4>Armaduras</h4>' + tabela(['armadura','classe','Imp.','Corte','Perf.','Nível','penalidade'], armad) + '</div>';
 }
 </script>

@@ -9,14 +9,31 @@
 // O motor NÃO carrega dado nenhum: quem chama passa o catálogo (armas.json, armaduras.json)
 // já lido. Assim ele roda igual no Node e no navegador.
 //
+// A ação tem TRÊS fases, P/G/R (decidido em 19/08/2026):
+//   · Preparo    o gesto que sobe, visível e interrompível até o Tick anterior ao Golpe;
+//   · Golpe      UM Tick, não cancelável, e onde a Defesa de quem ataca despenca;
+//   · Recuperação o pós-golpe, sem refresh de guarda, mas onde cabe a ação fora de hora.
+// `P + G + R` é a Velocidade de hoje, então a cadência não muda.
+//
 // O que ele implementa, além das regras do capítulo IX:
-//   · Preparo/Recuperação (P + R = a Velocidade de hoje), com o Preparo por classe;
-//   · a guarda que se refaz no golpe ou na declaração (interruptor);
+//   · a agenda de Golpes (`offs`), que serve ao golpe simples, à empunhadura dupla e à cadeia;
+//   · a guarda que se refaz no golpe, na declaração ou no fim da Recuperação;
+//   · a Defesa do Tick do Golpe (`golpeDV`) e o custo de estar comprometido (`preparoDV`/`recupDV`);
 //   · redirecionar o golpe quando o alvo cai antes de ele sair;
-//   · a ação fora de hora, paga com Ticks do próprio futuro;
-//   · a interrupção (espelho, atraso fixo ou cancelamento);
+//   · a ação fora de hora, paga com Ticks do próprio futuro, e o abortar de dentro do Preparo;
+//   · a interrupção (espelho, atraso fixo ou cancelamento), e o golpe normal interrompendo;
 //   · a carga voluntária (comprar Preparo por bônus na rolagem);
 //   · o aparo desesperado (a variante que compra Defesa, e que os testes reprovaram).
+//
+// AVISO SOBRE A PRESSÃO. Até 19/08/2026 este motor cobrava a Guarda sob pressão em DOBRO:
+// `guard += pressao` mais `efDef − pressao * guard` dá −4 por ataque, e o capítulo IX
+// (`combate.md:233`) escreve −2. O padrão agora é o correto; `pressaoDupla: true` reproduz o
+// regime antigo, e é o que `sim-ticks.mjs --legado` usa para reconferir as tabelas publicadas
+// antes dessa data. Ver K13 no `Pendencias.md`.
+//
+// LIMITE CONHECIDO. O motor tem UMA Defesa e ignora a `defesaArma`, que pelo `defesas.md:67`
+// entra só no Bloqueio. Todo número de equilíbrio entre classes é, portanto, o canto em que
+// todo mundo esquiva e ninguém apara. `usarDefesaArma: true` mostra o canto oposto. Ver K14.
 
 // ---------------------------------------------------------------- gerador semeado
 // Um teste de balanceamento que muda de resposta a cada rodada não serve para decidir nada.
@@ -52,6 +69,20 @@ export const REGRAS_PADRAO = {
   guardaEm: 'resolve',        // 'resolve' | 'declara'
   redirecionar: true,
   pressao: 2,                 // Guarda sob pressão: −2 por ataque feito ou recebido
+  pressaoDupla: false,        // true = o regime antigo, com a Pressão cobrada em dobro (ver K13)
+  atacarCustaGuarda: true,    // o modelo de HOJE: o golpe que você dá soma −2 na sua guarda
+  compromissoDV: 0,           // pontos de DV da ação declarada (padrão para P e para R)
+  preparoDV: null,            // ...só no Preparo (null = usa compromissoDV)
+  recupDV: null,              // ...só na Recuperação (null = usa compromissoDV)
+  golpeDV: 0,                 // pontos de DV no Tick do Golpe
+  soakImpacto: 'vigor+centelha',
+  usarDefesaArma: false,      // a Defesa da arma (defesaArma) entra na conta
+  pressaoSegundaMao: 1,       // quanto o segundo golpe da dupla custa de guarda
+  golpeNormalInterrompe: 0,   // 0 | nº de Ticks | 'espelho' — o golpe da SUA vez atrasa quem está em Preparo
+  duplaAlivia: 0,             // fração do agravo do Golpe que a dupla ainda sofre (0 = a outra lâmina apara)
+  penDadosDupla: [1, 1],      // empunhadura dupla: dados perdidos por [mão hábil, mão inábil]
+  penDadosCadeia: [0, 1, 2, 3], // cadeia: dados perdidos por golpe da sequência
+  velocidade: null,           // sobrepõe o total P+G+R por classe (null = o `ticks` do catálogo)
 
   // --- fase 2: agir fora da vez
   fora: {
@@ -62,6 +93,7 @@ export const REGRAS_PADRAO = {
     guardaCongela: true,      // a guarda NÃO se refaz na próxima ação
     umaPorJanela: true,       // uma ação fora de hora por ação sua
     emPreparoPodeReagir: false, // quem está montando um golpe não reage
+    emPreparoAborta: false,   // ...ou reage ABORTANDO, perdendo os Ticks já investidos
     antesDaPrimeira: false,   // não dá para agir fora da hora antes da sua estreia na cena
                               // (senão a dívida dissolve a penalidade de Iniciativa)
     teto: 99,                 // teto de dívida acumulada (a trava de "uma por ação" já basta)
@@ -86,13 +118,36 @@ export function comRegras(base, patch = {}) {
   return out;
 }
 
+/**
+ * A régua P/G/R, decidida em 19/08/2026. É a `REGRAS_PADRAO` mais:
+ *   · o Tick do Golpe, com a Defesa caindo 6 (um degrau de Margem) só nele;
+ *   · a ação declarada NÃO custando Defesa por si (ver §14: penalizar o Preparo é imposto
+ *     que a arma leve não paga, porque ela não tem Preparo);
+ *   · a guarda que se refaz no fim da Recuperação, e não no golpe;
+ *   · a haste em P2 (Preparo de arma pesada, ciclo de arma média);
+ *   · arco e besta com R=0, arremesso com R=1, a Arte com P = 2 + nível.
+ */
+export const REGRAS_PGR = comRegras(REGRAS_PADRAO, {
+  preparo: {
+    leve: 0, media: 1, haste: 2, pesada: 2,
+    distancia: (w) => w.ticks - 1,     // a flecha encaixada é preparo; a soltura é instantânea
+    arremesso: (w) => w.ticks - 2,     // um Tick para voltar à postura
+    arte: 8,                           // grau 6: P = 2 + nível
+  },
+  velocidade: { arte: 9 },             // grau 6: ciclo = nível + 3
+  guardaEm: 'declara',                 // a guarda se refaz quando o ciclo fecha
+  atacarCustaGuarda: false,            // o golpe que você dá não pesa o ciclo inteiro...
+  compromissoDV: 0,
+  golpeDV: 6,                          // ...pesa 6 de Defesa, e só no Tick em que ele sai
+});
+
 // ---------------------------------------------------------------- catálogo → motor
 /** Traduz uma linha de `armas.json` para o que o motor precisa. */
 export function montarArma(w) {
   const principal = (w.modos || []).find((m) => m.principal) || { tipo: w.tipoDano, perf: 0 };
   return {
     id: w.id, nome: w.nome, classe: w.classe,
-    ticks: w.ticks,
+    ticks: w.ticks, defesaArma: w.defesaArma || 0,
     dado: w.dado, danoBonus: w.danoBonus || 0,
     acerto: w.acerto || 0,
     maos: w.maos,
@@ -120,14 +175,38 @@ export function lutador(spec, cat) {
   const a = cat.armaduras[spec.armadura || 'nenhuma'] || cat.armaduras.nenhuma;
   const R = spec.regras;
   const cargaN = spec.carga?.n || 0;
-  const prepBase = R.usarPreparo ? (R.preparo[w.classe] ?? 0) : 0;
+  const golpesN = spec.golpes || (spec.dupla ? 2 : 1);
+  const cad = spec.cadeia || 1;                 // repetições de (Preparo + Golpe)
+  const porTempo = spec.juntos ? golpesN : 1;   // golpes que caem no MESMO Tick
+  const nTempos = spec.juntos ? 1 : golpesN;    // Ticks de Golpe por repetição
+  const vRaw = R.velocidade ? R.velocidade[w.classe] : undefined;
+  const total = (typeof vRaw === 'function' ? vRaw(w) : vRaw) ?? w.ticks;
+  const pRaw = R.preparo[w.classe];
+  const prepBase = R.usarPreparo ? ((typeof pRaw === 'function' ? pRaw(w) : pRaw) ?? 0) : 0;
+  // A agenda: em que Ticks (contados da declaração) cai cada Golpe, e quando o ciclo fecha.
+  const agenda = (() => {
+    const P = prepBase, offs = [];
+    for (let r = 0; r < cad; r++) {
+      const base = offs.length ? offs[offs.length - 1] + 1 + P : P;
+      for (let j = 0; j < nTempos; j++) offs.push(base + j);
+    }
+    const ultimo = offs[offs.length - 1];
+    const Rbase = Math.max(0, total - P - 1);         // a Recuperação da classe
+    // Por padrão os Golpes extras COMEM a Recuperação; com `extraDaR: false` eles a empurram.
+    const t2 = spec.extraDaR === false ? ultimo + 1 + Rbase : Math.max(total, ultimo + 1);
+    return { offs, total: t2 };
+  })();
+
   return {
     // ficha
-    nome: spec.rotulo || w.nome, arma: w, armadura: a,
+    nome: spec.rotulo || w.nome, arma: w, armadura: a, usarDefArma: !!R.usarDefesaArma,
     ah: spec.ah ?? 10, centelha: spec.centelha ?? 1, vigor: spec.vigor ?? 4,
     forca: spec.forca ?? 4, pvMax: spec.pv ?? 37, pv: spec.pv ?? 37,
     // tempo
-    spd: w.ticks + cargaN, prep: prepBase + cargaN, carga: spec.carga || null,
+    spd: agenda.total + cargaN, prep: prepBase + cargaN,
+    offs: agenda.offs, porTempo, golpes: golpesN,
+    tipo: cad > 1 ? 'cadeia' : (golpesN > 1 ? 'dupla' : 'simples'),
+    totalGolpes: agenda.offs.length * porTempo, carga: spec.carga || null,
     // estado
     guard: 0, guardaTravada: false, proxDecl: 0, pend: null,
     divida: 0, dividaMax: 0, aparosNaJanela: 0, foraNaJanela: 0, ticksDevidos: 0,
@@ -137,10 +216,17 @@ export function lutador(spec, cat) {
     acoesDeclaradas: 0, acoesConcluidas: 0, declaracoes: 0, jaAgiu: false,
     foraDeHora: 0, aparosFeitos: 0, aparosGastos: 0,
     empurroesSofridos: 0, janelasVistas: 0, janelasAproveitadas: 0,
+    emGolpe: false, emAcao: false, golpesNoGolpe: 0, sofridosNoGolpe: 0, ticksEmGolpe: 0,
   };
 }
 
-export const defesaBase = (c) => c.ah * 2 + c.centelha * 2 - c.armadura.penalidade;
+// Onde a ação está, num Tick qualquer.
+export const noGolpe = (pend, t) => !!pend && pend.offs.includes(t);
+export const emJanela = (pend, t) => !!pend && !pend.offs.includes(t) && pend.offs.some((x) => x > t);
+export const atrasar = (pend, k) => { pend.offs = pend.offs.map((x) => x + k); };
+
+export const defesaBase = (c) => c.ah * 2 + c.centelha * 2 - c.armadura.penalidade
+  + (c.usarDefArma ? c.arma.defesaArma : 0);
 const dadosPool = (c) => Math.floor(c.ah / 2);
 
 // ---------------------------------------------------------------- o golpe
@@ -150,7 +236,22 @@ const dadosPool = (c) => Math.floor(c.ah / 2);
  */
 export function atacar(A, D, R, rnd, log = null) {
   A.golpesFeitos++;
-  let efDef = defesaBase(D) - R.pressao * D.guard;
+  // A guarda tem duas parcelas: o que você RECEBEU no ciclo (contado, −2 cada) e o que a sua
+  // própria ação declarada custa (absoluto, igual em P e em R, mais fundo no Tick do Golpe).
+  let comprom = 0;
+  if (D.emAcao) {
+    if (!D.emGolpe) comprom = D.pend ? (R.preparoDV ?? R.compromissoDV) : (R.recupDV ?? R.compromissoDV);
+    else {
+      // Com arma na outra mão, o Tick do Golpe não agrava tudo: o segundo gume ainda apara.
+      const base = R.preparoDV ?? R.compromissoDV;
+      const al = D.tipo === 'dupla' ? (R.duplaAlivia ?? 1) : 1;
+      comprom = base + (R.golpeDV - base) * al;
+    }
+  }
+  let efDef = defesaBase(D) - R.pressao * D.guard - comprom;
+  if (D.emGolpe) { A.golpesNoGolpe++; D.sofridosNoGolpe++; }
+  D.somaDef = (D.somaDef || 0) + efDef; D.nDef = (D.nDef || 0) + 1;
+  if (D.emGolpe) { D.somaDefG = (D.somaDefG || 0) + efDef; D.nDefG = (D.nDefG || 0) + 1; }
 
   // A variante reprovada: comprar Defesa com Ticks. Fica aqui para a bancada poder
   // ligar e ver o combate dobrar de tamanho.
@@ -170,7 +271,7 @@ export function atacar(A, D, R, rnd, log = null) {
   // − penalidade de armadura − penalidade da arma, − a penalidade da ação fora de hora,
   // + o bônus da carga voluntária.
   let total = 0;
-  for (let i = 0; i < dadosPool(A); i++) total += rnd.d6();
+  for (let i = 0; i < Math.max(1, dadosPool(A) - (A.penDados || 0)); i++) total += rnd.d6();
   total += (A.ah % 2 ? 2 : 0) + A.arma.acerto + A.centelha * 2
     - A.armadura.penalidade - A.arma.pen
     - (A.penalidadeAgora || 0)
@@ -185,7 +286,9 @@ export function atacar(A, D, R, rnd, log = null) {
     margem = Math.floor((total - efDef) / 6);
     const cat = CAT_DANO[A.arma.modo] || 'impacto';
     const armSoak = D.armadura.soak[cat] || 0;
-    const soakNat = A.arma.modo === 'impacto' ? D.vigor + D.centelha : D.centelha;
+    const soakNat = A.arma.modo === 'impacto'
+      ? (R.soakImpacto === 'vigor' ? D.vigor : R.soakImpacto === 'centelha' ? D.centelha : D.vigor + D.centelha)
+      : D.centelha;
     const soak = soakNat + armSoak;
     const gateFechado = A.arma.modo === 'perfurante' && A.arma.perf < D.armadura.resistPerf;
     if (!gateFechado) {
@@ -201,8 +304,9 @@ export function atacar(A, D, R, rnd, log = null) {
   }
 
   // Interrupção: o golpe que conecta em quem está montando uma ação.
-  if (acertou && D.pend) {
-    let K = A.interrompendo ? R.interrupcao : 0;
+  if (acertou && D.pend && emJanela(D.pend, A.tickAgora)) {
+    let K = A.interrompendo ? R.interrupcao : (R.golpeNormalInterrompe || 0);
+    if (K === 'espelho' && !A.interrompendo) K = A.spd;
     if (K === 'espelho') K = A.spd;
     if (K === 'cancela') {
       D.pend = null; D.empurroesSofridos++; A.janelasAproveitadas++;
@@ -214,7 +318,7 @@ export function atacar(A, D, R, rnd, log = null) {
         k = Math.max(0, Math.min(k, Math.round(D.spd * R.tetoAtraso) - ja));
         D.pend.atraso = ja + k;
       }
-      D.pend.resolveEm += k; D.proxDecl += k;
+      atrasar(D.pend, k); D.proxDecl += k;
       D.empurroesSofridos++; A.janelasAproveitadas++;
       if (k && log) log(`Espelho: a ação de ${D.nome} atrasa ${k} Ticks (o que ${A.nome} pagou).`);
     }
@@ -222,7 +326,10 @@ export function atacar(A, D, R, rnd, log = null) {
 
   D.pv -= dano;
   A.danoCausado += dano;
-  A.guard += R.pressao; D.guard += R.pressao;
+  const incP = R.pressaoDupla ? R.pressao : 1;
+  if (A.maoAtual > 0) A.guard += incP * (R.pressaoSegundaMao ?? 1);        // golpes extras da ação
+  else if (R.atacarCustaGuarda) A.guard += incP;                            // e o primeiro, no modelo de hoje
+  D.guard += incP;
   if (log) {
     const como = acertou ? `acerta (${total} contra ${efDef}${margem ? `, ${margem} de Margem` : ''})`
       : raspao ? `raspa (${total} contra ${efDef})` : `erra (${total} contra ${efDef})`;
@@ -246,6 +353,10 @@ export function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } 
   if (log) for (const c of todos) log(`[T${c.proxDecl}] ${c.nome} entra na linha (Velocidade ${c.spd}, Preparo ${c.prep}).`);
 
   for (let t = 1; t <= tetoTicks; t++) {
+    // 0) quem tem o Golpe caindo NESTE Tick fica marcado o Tick inteiro (a ordem de resolução
+    //    não pode decidir quem apanha com a guarda dobrada).
+    for (const c of todos) { c.emGolpe = noGolpe(c.pend, t); c.tickAgora = t; if (c.emGolpe) c.ticksEmGolpe++; }
+
     // 1) declarações
     for (const c of todos) {
       if (c.pv <= 0 || c.pend || c.proxDecl !== t) continue;
@@ -253,12 +364,15 @@ export function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } 
       if (!alvos.length) continue;
       const alvo = alvos.reduce((a, b) => (b.pv < a.pv ? b : a));
       c.declaracoes++; c.acoesDeclaradas++; c.jaAgiu = true;
-      if (R.usarPreparo && alvo.pend && alvo.pend.resolveEm > t) c.janelasVistas++;
-      c.pend = { resolveEm: t + c.prep, alvo, atraso: 0 };
+      if (R.usarPreparo && emJanela(alvo.pend, t)) c.janelasVistas++;
+      c.pend = { offs: c.offs.map((o) => t + o), alvo, atraso: 0, idx: 0 };
       c.proxDecl = t + c.spd;
-      if (R.guardaEm === 'declara') c.guard = 0;
+      if (R.guardaEm === 'declara') {
+        if (c.guardaTravada) c.guardaTravada = false; else c.guard = 0;
+      }
+      c.emAcao = true;
       c.divida = 0; c.aparosNaJanela = 0; c.ticksDevidos = 0; c.foraNaJanela = 0;
-      if (log) log(`[T${t}] ${c.nome} declara contra ${alvo.nome}. Sai no T${c.pend.resolveEm}, volta a declarar no T${c.proxDecl}.`);
+      if (log) log(`[T${t}] ${c.nome} declara contra ${alvo.nome}. Golpe em T${c.pend.offs.join(', T')}, volta a declarar no T${c.proxDecl}.`);
     }
 
     // 1b) ação fora de hora: quem está em recuperação compra Ticks do próprio futuro
@@ -266,26 +380,36 @@ export function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } 
       for (const c of todos) {
         if (c.pv <= 0 || c.proxDecl <= t) continue;
         if (!c.jaAgiu && !R.fora.antesDaPrimeira) continue;    // ainda não estreou na cena
-        if (c.pend && !R.fora.emPreparoPodeReagir) continue;   // comprometido com uma ação
+        const emPrep = emJanela(c.pend, t);
+        if (c.pend && !emPrep) continue;                       // no meio dos Golpes: nada a fazer
+        if (emPrep && !R.fora.emPreparoPodeReagir && !R.fora.emPreparoAborta) continue;
         const custo = Math.max(1, Math.round(c.spd * R.fora.custo));
         if (c.ticksDevidos + custo > R.fora.teto) continue;
         if (R.fora.umaPorJanela && c.foraNaJanela > 0) continue;
         const alvos = inimigosDe(c);
         if (!alvos.length) continue;
-        const naJanela = alvos.filter((x) => x.pend && x.pend.resolveEm > t);
+        const naJanela = alvos.filter((x) => emJanela(x.pend, t));
+        const emSeuGolpe = alvos.filter((x) => noGolpe(x.pend, t));
         const quaseMortos = alvos.filter((x) => x.pv / x.pvMax < 0.25);
         let pool = alvos;
-        if (R.fora.gatilho === 'janela') { if (!naJanela.length) continue; pool = naJanela; }
+        if (R.fora.gatilho === 'janela+golpe') {
+          const u = [...new Set([...naJanela, ...emSeuGolpe])];
+          if (!u.length) continue; pool = u;
+        }
+        else if (R.fora.gatilho === 'janela') { if (!naJanela.length) continue; pool = naJanela; }
         else if (R.fora.gatilho === 'finalizar') { if (!quaseMortos.length) continue; pool = quaseMortos; }
         else if (R.fora.gatilho === 'ambos') {
           const u = [...new Set([...naJanela, ...quaseMortos])];
           if (!u.length) continue; pool = u;
         }
         const alvo = pool.reduce((a, b) => (b.pv < a.pv ? b : a));
-        c.proxDecl += custo; c.ticksDevidos += custo;
-        c.foraDeHora++; c.foraNaJanela++;
+        if (emPrep && R.fora.emPreparoAborta && !R.fora.emPreparoPodeReagir) {
+          c.pend = null; c.abortos = (c.abortos || 0) + 1;     // perde os Ticks já investidos
+          c.proxDecl = t + custo;
+        } else { c.proxDecl += custo; }
+        c.ticksDevidos += custo; c.foraDeHora++; c.foraNaJanela++;
         if (R.fora.guardaCongela) c.guardaTravada = true;
-        c.interrompendo = !!(alvo.pend && alvo.pend.resolveEm > t);
+        c.interrompendo = emJanela(alvo.pend, t);
         c.penalidadeAgora = R.fora.pen;
         if (log) log(`[T${t}] ${c.nome} age FORA DA HORA contra ${alvo.nome}: paga ${custo} Ticks, próxima ação vai para o T${c.proxDecl}.`);
         atacar(c, alvo, R, rnd, log);
@@ -294,16 +418,20 @@ export function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } 
     }
 
     // 2) resoluções, em ordem sorteada (sem viés de lado)
-    const prontos = todos.filter((c) => c.pend && c.pend.resolveEm === t);
+    const prontos = todos.filter((c) => noGolpe(c.pend, t));
     for (let i = prontos.length - 1; i > 0; i--) {
       const j = Math.floor(rnd() * (i + 1)); [prontos[i], prontos[j]] = [prontos[j], prontos[i]];
     }
     for (const c of prontos) {
-      if (!c.pend || c.pend.resolveEm !== t) continue;   // pode ter sido empurrado agora
+      if (!noGolpe(c.pend, t)) continue;   // pode ter sido empurrado agora
       const alvo = c.pend.alvo;
-      c.pend = null;
+      const porTick = c.porTempo;
+      const inicio = c.pend.idx;
+      c.pend.idx += porTick;
+      const ultimo = t === c.pend.offs[c.pend.offs.length - 1];
+      if (ultimo) c.pend = null;
       if (c.pv <= 0) { c.golpesPerdidos++; continue; }
-      c.acoesConcluidas++;
+      if (inicio === 0) c.acoesConcluidas++;
       let vitima = alvo;
       if (vitima.pv <= 0) {
         const outros = inimigosDe(c);
@@ -316,13 +444,20 @@ export function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } 
         c.redirecionados++;
         if (log) log(`[T${t}] o alvo de ${c.nome} caiu; o golpe redireciona para ${vitima.nome}.`);
       }
-      if (R.guardaEm === 'resolve') {
+      if (R.guardaEm === 'resolve' && inicio === 0) {
         if (c.guardaTravada) { c.guardaTravada = false; if (log) log(`[T${t}] ${c.nome} agiu fora da hora: a guarda NÃO se refaz.`); }
         else c.guard = 0;
       }
-      if (log) log(`[T${t}] sai o golpe de ${c.nome}.`);
-      atacar(c, vitima, R, rnd, log);
+      for (let m = inicio; m < inicio + porTick; m++) {
+        c.maoAtual = m;
+        const regua = c.tipo === 'cadeia' ? R.penDadosCadeia : R.penDadosDupla;
+        c.penDados = c.totalGolpes > 1 ? regua[Math.min(m, regua.length - 1)] : 0;
+        if (log) log(`[T${t}] sai o golpe de ${c.nome}${c.golpes > 1 ? ` (mão ${m === 0 ? 'hábil' : 'inábil'})` : ''}.`);
+        atacar(c, vitima, R, rnd, log);
+      }
+      c.penDados = 0; c.maoAtual = 0;
     }
+
 
     const vivosA = timeA.some((c) => c.pv > 0), vivosB = timeB.some((c) => c.pv > 0);
     if (!vivosA && !vivosB) return { vencedor: 'empate', ticks: t, log: linhas };
@@ -337,7 +472,7 @@ export function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } 
 export function bateria(specA, specB, R, cat, { n = 8000, semente = 20260818 } = {}) {
   const rnd = criarRng(semente);
   let a = 0, b = 0, emp = 0, somaT = 0;
-  const soma = { perdidos: 0, feitos: 0, janelasV: 0, janelasA: 0, decls: 0, fora: 0, aparos: 0, red: 0 };
+  const soma = { perdidos: 0, feitos: 0, janelasV: 0, janelasA: 0, decls: 0, fora: 0, aparos: 0, red: 0, noGolpe: 0, tksG: 0 };
   let artesDecl = 0, artesSai = 0, dividaMax = 0;
   for (let i = 0; i < n; i++) {
     const A = lutador({ ...specA, regras: R }, cat), B = lutador({ ...specB, regras: R }, cat);
@@ -349,6 +484,9 @@ export function bateria(specA, specB, R, cat, { n = 8000, semente = 20260818 } =
       soma.janelasV += c.janelasVistas; soma.janelasA += c.janelasAproveitadas;
       soma.decls += c.declaracoes; soma.fora += c.foraDeHora;
       soma.aparos += c.aparosFeitos; soma.red += c.redirecionados;
+      soma.noGolpe += c.golpesNoGolpe; soma.tksG += c.ticksEmGolpe;
+      soma.somaDef = (soma.somaDef || 0) + (c.somaDef || 0); soma.nDef = (soma.nDef || 0) + (c.nDef || 0);
+      soma.somaDefG = (soma.somaDefG || 0) + (c.somaDefG || 0); soma.nDefG = (soma.nDefG || 0) + (c.nDefG || 0);
       dividaMax = Math.max(dividaMax, c.dividaMax);
     }
     if (A.arma.classe === 'arte') { artesDecl += A.acoesDeclaradas; artesSai += A.acoesConcluidas; }
@@ -360,6 +498,10 @@ export function bateria(specA, specB, R, cat, { n = 8000, semente = 20260818 } =
     janelaTaxa: soma.decls ? soma.janelasV / soma.decls : 0,
     foraPorDuelo: soma.fora / n, aparosPorDuelo: soma.aparos / n,
     redirecionados: soma.red / n, dividaMax,
+    golpesNoGolpe: soma.noGolpe / n, declsPorLado: soma.decls / (2 * n),
+    defMedia: soma.nDef ? soma.somaDef / soma.nDef : 0,
+    defNoGolpe: soma.nDefG ? soma.somaDefG / soma.nDefG : 0,
+    taxaNoGolpe: soma.feitos ? soma.noGolpe / soma.feitos : 0,
     arteSai: artesDecl ? artesSai / artesDecl : 0,
   };
 }
@@ -435,6 +577,7 @@ export function cenaDistancia(arq, gue, R, rnd, { dist = 60, mPorTick = 7, conta
       }
     }
     const emContato = d <= contato;
+    for (const c of [arq, gue]) { c.emGolpe = noGolpe(c.pend, t); c.tickAgora = t; if (c.emGolpe) c.ticksEmGolpe++; }
 
     // declarações
     for (const c of [arq, gue]) {
@@ -442,11 +585,14 @@ export function cenaDistancia(arq, gue, R, rnd, { dist = 60, mPorTick = 7, conta
       if (c === gue && !emContato) continue;              // ainda correndo
       c.declaracoes++; c.acoesDeclaradas++; c.jaAgiu = true;
       const alvo = c === arq ? gue : arq;
-      c.pend = { resolveEm: t + c.prep, alvo, atraso: 0 };
+      c.pend = { offs: c.offs.map((o) => t + o), alvo, atraso: 0, idx: 0 };
       c.proxDecl = t + c.spd;
-      if (R.guardaEm === 'declara') c.guard = 0;
+      if (R.guardaEm === 'declara') {
+        if (c.guardaTravada) c.guardaTravada = false; else c.guard = 0;
+      }
+      c.emAcao = true;
       c.divida = 0; c.foraNaJanela = 0; c.ticksDevidos = 0;
-      if (log) log(`[T${t}] ${c.nome} declara. Sai no T${c.pend.resolveEm}.`);
+      if (log) log(`[T${t}] ${c.nome} declara. Golpe em T${c.pend.offs[0]}.`);
     }
 
     // ação fora de hora: só em contato, e só o guerreiro tem quem interromper
@@ -456,7 +602,7 @@ export function cenaDistancia(arq, gue, R, rnd, { dist = 60, mPorTick = 7, conta
         if (!c.jaAgiu && !R.fora.antesDaPrimeira) continue;
         if (c.pend && !R.fora.emPreparoPodeReagir) continue;
         if (R.fora.umaPorJanela && c.foraNaJanela > 0) continue;
-        const naJanela = !!(alvo.pend && alvo.pend.resolveEm > t);
+        const naJanela = emJanela(alvo.pend, t);
         if (R.fora.gatilho === 'janela' && !naJanela) continue;
         const custo = Math.max(1, Math.round(c.spd * R.fora.custo));
         c.proxDecl += custo; c.ticksDevidos += custo; c.foraDeHora++; c.foraNaJanela++;
@@ -470,7 +616,7 @@ export function cenaDistancia(arq, gue, R, rnd, { dist = 60, mPorTick = 7, conta
 
     // resoluções
     for (const c of [arq, gue]) {
-      if (!c.pend || c.pend.resolveEm !== t || c.pv <= 0) continue;
+      if (!noGolpe(c.pend, t) || c.pv <= 0) continue;
       const alvo = c.pend.alvo; c.pend = null; c.acoesConcluidas++;
       if (R.guardaEm === 'resolve') {
         if (c.guardaTravada) c.guardaTravada = false; else c.guard = 0;

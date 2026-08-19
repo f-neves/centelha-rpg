@@ -8,6 +8,8 @@
 //      node scripts/sim-ticks.mjs --n 20000   mais tentativas por célula
 //      node scripts/sim-ticks.mjs --seed 777  outra semente
 //      node scripts/sim-ticks.mjs --so B,L    só algumas baterias
+//      node scripts/sim-ticks.mjs --legado    reproduz as tabelas de antes de 19/08/2026,
+//                                             com a Guarda sob pressão cobrada em dobro (K13)
 //
 // O robô é GANANCIOSO: usa toda regra nova sempre que ela é legal. Os desvios medidos são o
 // teto do abuso, não a jogada esperada.
@@ -16,7 +18,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
-  REGRAS_PADRAO, comRegras, montarArma, montarArmadura,
+  REGRAS_PADRAO, REGRAS_PGR, comRegras, montarArma, montarArmadura,
   bateria, refrega, roundRobin, porClasse, bateriaDistancia, criarRng, lutador, cena,
 } from './lib-tempo.mjs';
 
@@ -31,6 +33,10 @@ const N = Number(ARG.n || 8000);
 const SEMENTE = Number(ARG.seed || 20260818);
 const SO = ARG.so ? new Set(ARG.so.split(',').map((s) => s.trim().toUpperCase())) : null;
 const quer = (letra) => !SO || SO.has(letra);
+// A Pressão em dobro era um bug do motor (K13). O padrão agora é o correto, −2 por ataque;
+// `--legado` volta ao regime antigo, que é o das tabelas publicadas no `Combate_Tempo.md`.
+const LEGADO = ARG.legado ? { pressaoDupla: true } : {};
+const M = (r) => comRegras(r, LEGADO);
 
 // ---------------------------------------------------------------- catálogo
 const armasJson = lerJson('src/data/armas.json');
@@ -52,16 +58,17 @@ const CORPO = ['adaga', 'espada-curta', 'espada-longa', 'machado', 'maca', 'pica
 const CLASSES = ['leve', 'media', 'haste', 'pesada'];
 
 // ---------------------------------------------------------------- modelos
-const HOJE = comRegras(REGRAS_PADRAO, {
+const HOJE = M(comRegras(REGRAS_PADRAO, {
   usarPreparo: false, redirecionar: false,
   fora: { ...REGRAS_PADRAO.fora, ligada: false }, interrupcao: 0,
-});
-const PR = comRegras(REGRAS_PADRAO, {
+}));
+const PR = M(comRegras(REGRAS_PADRAO, {
   fora: { ...REGRAS_PADRAO.fora, ligada: false }, interrupcao: 0,
-});
+}));
 const PR_DECL = comRegras(PR, { guardaEm: 'declara' });
 const PR_SEM_RED = comRegras(PR, { redirecionar: false });
-const COMPLETO = REGRAS_PADRAO;
+const COMPLETO = M(REGRAS_PADRAO);
+const PGR = M(REGRAS_PGR);
 
 // ---------------------------------------------------------------- formatação
 const pct = (x) => `${(x * 100).toFixed(1)}%`;
@@ -78,6 +85,9 @@ L(`Semente ${SEMENTE} · ${N} cenas por célula · catálogo real (armas.json, a
 L('Lutador padrão: Atributo+Habilidade 10, Centelha 1, Vigor 4, Força 4, PV 37.');
 L(`Preparo por classe: ${CLASSES.map((c) => `${c} ${REGRAS_PADRAO.preparo[c]}`).join(' · ')}  (P + R = a Velocidade de hoje)`);
 L('O robô é ganancioso: usa toda regra nova sempre que ela é legal.');
+L(ARG.legado
+  ? 'MODO LEGADO: Guarda sob pressão cobrada em DOBRO (−4 por ataque), como nas tabelas antigas.'
+  : 'Guarda sob pressão a −2 por ataque, como o capítulo IX escreve (K13 corrigido em 19/08).');
 
 // ---- A) sanidade ---------------------------------------------------------
 if (quer('A')) {
@@ -300,3 +310,113 @@ if (quer('P')) {
   L(`  → vencedor: ${r.vencedor === 'A' ? A.nome : r.vencedor === 'B' ? B.nome : 'empate'}, no Tick ${r.ticks}.`);
 }
 L();
+
+// ==========================================================================
+// As baterias da régua P/G/R, decidida em 19/08/2026 (§14 do Combate_Tempo.md).
+// Elas rodam no regime correto da Pressão (−2 por ataque); `--legado` também as afeta,
+// e aí os números não são os do documento.
+// ==========================================================================
+
+const LIMPO = ['adaga', 'espada-curta', 'espada-longa', 'machado', 'picareta-de-guerra',
+  'lanca', 'montante', 'martelo-de-guerra'];
+/** win% por classe e amplitude entre classes, no conjunto sem os fora-de-curva do K11. */
+function perfil(R, armas = LIMPO, n = N) {
+  const w = roundRobin(armas, R, CAT, { n, semente: SEMENTE });
+  const c = porClasse(w, CAT);
+  const v = CLASSES.map((k) => c[k]).filter((x) => x != null);
+  return { c, win: w, amp: (Math.max(...v) - Math.min(...v)) * 100 };
+}
+const linhaPerfil = (lbl, p, extra = '') =>
+  L(`  ${lbl.padEnd(30)} ${CLASSES.map((k) => pct(p.c[k]).padStart(6)).join(' ')}   ${p.amp.toFixed(1).padStart(4)}   ${extra}`);
+
+// ---- Q) a régua P/G/R contra o que existe --------------------------------
+if (quer('Q')) {
+  T('Q) A régua P/G/R contra o sistema de hoje e contra o K1 (8 armas, sem Alabarda e Maça).');
+  L('  A amplitude é a distância entre a melhor e a pior classe. Menor é melhor.');
+  L();
+  L(`  ${'modelo'.padEnd(30)} ${CLASSES.map((k) => k.padStart(6)).join(' ')}   amp    duelo espelho de espada longa`);
+  for (const [lbl, R] of [['hoje (capítulo IX)', HOJE], ['K1 (a régua de 18/08)', COMPLETO], ['P/G/R (19/08)', PGR]]) {
+    const d = bateria({ arma: 'espada-longa' }, { arma: 'espada-longa' }, R, CAT, op);
+    linhaPerfil(lbl, perfil(R),
+      `${d.ticks.toFixed(1)}t · ${(d.declsPorLado + d.foraPorDuelo / 2).toFixed(2)} decisões/lado · DV ${d.defMedia.toFixed(1)}`);
+  }
+  L();
+  L('  A régua P/G/R por classe (P + G + R = a Velocidade de hoje):');
+  for (const k of CLASSES) {
+    const arma = CORPO.find((a) => CAT.armas[a].classe === k);
+    const c = lutador({ arma, regras: PGR }, CAT);
+    L(`    ${k.padEnd(8)} P${c.prep} · G1 · R${c.spd - c.prep - 1} = ${c.spd}`);
+  }
+}
+
+// ---- R) o par (Defesa no ciclo) × (Defesa no Tick do Golpe) --------------
+if (quer('R')) {
+  T('R) O par: quanto a ação declarada custa de Defesa, e quanto custa o Tick do Golpe.');
+  L('  Penalizar o Preparo é um imposto que a arma leve não paga, porque ela não tem Preparo.');
+  L('  Por isso a coluna de baixo (P e R sem custo próprio) é a que mede melhor.');
+  L();
+  const par = (p, r, g) => comRegras(PGR, { preparoDV: p, recupDV: r, golpeDV: g });
+  L(`  ${'P / R / Golpe'.padEnd(30)} ${CLASSES.map((k) => k.padStart(6)).join(' ')}   amp`);
+  for (const [p, r, g] of [[2, 2, 4], [2, 2, 6], [3, 3, 6], [4, 4, 6], [2, 0, 4], [0, 2, 4],
+    [0, 0, 4], [0, 0, 6], [0, 0, 8], [0, 0, 10]]) {
+    linhaPerfil(`−${p} / −${r} / −${g}${p === 0 && r === 0 && g === 6 ? '  ← decidido' : ''}`, perfil(par(p, r, g)));
+  }
+}
+
+// ---- S) empunhadura dupla ------------------------------------------------
+if (quer('S')) {
+  T('S) Empunhadura dupla — G de 2 Ticks, tirados da Recuperação.');
+  const campo = (spec, R) => {
+    let s = 0, k = 0;
+    for (const b of LIMPO) { if (b === spec.arma) continue; s += bateria(spec, { arma: b }, R, CAT, op).win; k++; }
+    return s / k;
+  };
+  const solo = campo({ arma: 'espada-curta' }, PGR);
+  L(`  Referência: espada curta sozinha contra as outras 7 = ${pct(solo)}. O alvo é chegar perto disso.`);
+  L();
+  L(`  ${'dados perdidos'.padEnd(22)} ${'mesmo Tick'.padStart(16)} ${'G de 2 Ticks'.padStart(16)}`);
+  for (const pen of [[1, 2], [1, 1], [0, 1], [2, 2]]) {
+    const R = comRegras(PGR, { penDadosDupla: pen });
+    const a = campo({ arma: 'espada-curta', dupla: true, juntos: true }, R);
+    const b = campo({ arma: 'espada-curta', dupla: true }, R);
+    const f = (x) => `${pct(x)} (${sgn((x - solo) * 100)})`.padStart(16);
+    L(`  ${`−${pen[0]}d6 / −${pen[1]}d6${pen[0] === 1 && pen[1] === 1 ? '  ← decidido' : ''}`.padEnd(22)} ${f(a)} ${f(b)}`);
+  }
+  L();
+  L('  (nos Ticks de Golpe da dupla vale a penalidade de P e R: a outra lâmina ainda apara)');
+}
+
+// ---- T) a cadeia de ataques ---------------------------------------------
+if (quer('T')) {
+  T('T) A cadeia: N repetições de (Preparo + Golpe) e UMA Recuperação, declaradas de uma vez.');
+  L('  O freio é perder um dado a mais por golpe. Ele distingue pelo ALVO: o fraco tem Defesa');
+  L('  baixa e apanha até do quarto golpe; o igual tem Defesa alta e o terceiro já não encosta.');
+  const LACAIO = { ah: 6, pv: 18, forca: 3, vigor: 3, centelha: 0, arma: 'adaga' };
+  const SOLDADO = { ah: 8, pv: 26, forca: 4, vigor: 3, centelha: 0, arma: 'espada-curta' };
+  const contra = (spec, alvo, quantos, R) => {
+    const rnd = criarRng(SEMENTE);
+    let v = 0, t = 0;
+    const reps = Math.max(1000, Math.floor(N / 2));
+    for (let i = 0; i < reps; i++) {
+      const H = lutador({ ...spec, regras: R }, CAT);
+      const inim = Array.from({ length: quantos }, () => lutador({ ...alvo, regras: R }, CAT));
+      const r = cena([H], inim, R, rnd);
+      if (r.vencedor === 'A') v++;
+      t += r.ticks;
+    }
+    return { win: v / reps, ticks: t / reps };
+  };
+  for (const freio of [[0, 0, 0, 0], [0, 1, 2, 3], [0, 2, 3, 4]]) {
+    const R = comRegras(PGR, { penDadosCadeia: freio });
+    L();
+    L(`  freio ${freio.map((x) => (x ? `−${x}d6` : '0')).join(' / ')}${freio[1] === 1 ? '   ← decidido' : ''}`);
+    L('    N  ciclo   duelo igual   1 soldado          2 lacaios');
+    for (const cad = { n: 1 }; cad.n <= 4; cad.n++) {
+      const spec = { arma: 'espada-curta', cadeia: cad.n, extraDaR: false };
+      const c = lutador({ ...spec, regras: R }, CAT);
+      const s = contra(spec, SOLDADO, 1, R), l = contra(spec, LACAIO, 2, R);
+      L(`    ${cad.n}  ${String(c.spd).padEnd(7)} ${pct(bateria(spec, { arma: 'espada-curta' }, R, CAT, op).win).padStart(11)}   `
+        + `${`${pct(s.win)} em ${s.ticks.toFixed(1)}t`.padEnd(18)} ${pct(l.win)} em ${l.ticks.toFixed(1)}t`);
+    }
+  }
+}
