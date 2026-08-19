@@ -591,6 +591,31 @@ hoje) e generalizar o desvio de emergência da §5.5 do Arcano numa **dívida de
   físico (o Ocultismo da §5.5 segue para a Arte), leitura grátis para quem tem a mesma arma e
   perícia, e a **finta** comprando 1 Tick de Preparo para mentir sobre o alvo, que dá à arma leve o
   primeiro motivo para comprar Preparo. Fica por último.
+- [ ] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
+  nem Habilidade**, só a Virtude, e por isso a régua de pool de hoje (`[(A+H)/2]d6`, com +2 se
+  ímpar) não se aplica a ele. Duas formas na mesa: **pool** (a Virtude vira dados pela mesma
+  escada, `1d6 · 1d6+2 · 2d6 ...`) ou **soma única**, mais perto da Iniciativa (`1d6 + Virtude`).
+  A escolha muda a variância e o teto: o pool cresce em média e em dispersão, a soma única mantém
+  a dispersão fixa e faz a Virtude pesar linearmente. Aberto em **19/08/2026**, e vira urgente
+  porque o combate passou a pedir teste de Virtude (continuar o golpe ignorando um perigo visível
+  é teste de **Bravura**, §K).
+- [ ] **K13 · [CONSERTAR] A Guarda sob pressão está em dobro no motor.** `scripts/lib-tempo.mjs`
+  faz `guard += R.pressao` (linha 225) e desconta `R.pressao * guard` (linha 153): com
+  `pressao: 2`, cada ataque feito ou recebido tira **4** de Defesa, e não os **−2** que o capítulo
+  IX (`combate.md:233`) e o comentário da própria linha 54 escrevem. O parâmetro entra ao
+  quadrado. Consequência medida: a curva do **K4 inverte**. Com −4, o Preparo do arco custa win
+  rate (a 45 m, P=0 dá 28,3% e P=2 dá 13,4%, que é a §7 publicada); com −2, o Preparo **paga** (a
+  45 m, P=0 dá 11,7% e P=5 dá 54,0%). **O K4 não pode ser decidido antes disto.**
+- [ ] **K14 · [DECIDIR] A bancada só mede o canto "todo mundo esquiva".** O motor tem **uma**
+  Defesa e ignora a `defesaArma`, que pelo `defesas.md:67` entra **só no Bloqueio**
+  (`Bloqueio = (Des + Bloqueio)×2 + Centelha + Esp + defesa da arma`). Todo número de equilíbrio
+  entre classes, deste documento e do `Combate_Tempo.md`, é portanto o extremo em que ninguém
+  apara. Ligando a `defesaArma` para todos (o extremo oposto, em que todos aparam), o sistema de
+  **hoje** vai de 16,7 para **50,5 pontos** de amplitude entre classes, com a haste em 77,5% e a
+  arma pesada de duas mãos em 27,0% (lança +2 e alabarda +2 contra montante −2 e martelo −2). A
+  verdade está entre os dois cantos e depende do roteamento das Defesas pelo "como". Enquanto o
+  motor não souber escolher entre Esquiva e Bloqueio, **nenhum ajuste de catálogo (K11) deve ser
+  feito com base nele**.
 - [ ] **K5 · [FAZER] A implementação, quando as bordas fecharem.** `armas.json` (Preparo,
   provavelmente derivado da classe em `regras.json`), capítulo IX, a linha de combate da ficha e o
   rastreador de Ticks da mesa (a barra de dois tons no trilho compartilhado).
