@@ -788,6 +788,11 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    pouco mais de um terço disso e para de tapar o tabuleiro. */
 .ui-dlg-conj.ui-dlg-arte { max-width: min(42rem, 96vw); width: min(42rem, 96vw); }
 .ui-dlg-conj .ui-dlg-form { height: min(40rem, 88vh); display: flex; flex-direction: column; }
+/* A caixa recebe o foco no lugar dos controles dela (ver `semFoco`, em
+   ui-dialog.ts), e caixa focada não acende contorno: o anel existe para dizer
+   onde o teclado está, e aqui ele não está em lugar nenhum de propósito. */
+.ui-dlg[tabindex]:focus, .ui-dlg[tabindex]:focus-visible { outline: none; }
+
 /* Arrastada, a caixa toma para si a posição que o navegador dava a ela. */
 .ui-dlg.arrastado { position: fixed; margin: 0; }
 .ui-dlg-pega { cursor: grab; user-select: none; touch-action: none; }

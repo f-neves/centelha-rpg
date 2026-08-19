@@ -346,7 +346,7 @@ function arrastarPelaCabeca(dlg: HTMLDialogElement): void {
  * Quem chama recebe o nó do corpo e a função de fechar, e é dono dos dois.
  */
 export function uiPainel(
-  titulo: string, opts: { classe?: string; arrastavel?: boolean } = {},
+  titulo: string, opts: { classe?: string; arrastavel?: boolean; semFoco?: boolean } = {},
 ): { corpo: HTMLElement; fechar: () => void } {
   const dlg = document.createElement('dialog');
   dlg.className = 'ui-dlg ui-dlg-painel' + (opts.classe ? ' ' + opts.classe : '');
@@ -367,7 +367,29 @@ export function uiPainel(
   fecharNoFundo(dlg, fechar);
   dlg.addEventListener('close', () => dlg.remove());
   dlg.showModal();
-  dlg.querySelector<HTMLElement>('.ui-dlg-x')?.focus();
+  // SEM FOCO NENHUM, quando quem chama pede.
+  //
+  // O padrão é acender o ✕, que é o que um diálogo deve fazer: quem chega pelo
+  // teclado precisa de um ponto de partida dentro da caixa. Só que num painel
+  // que se usa com o mouse e se repinta inteiro a cada clique, esse anel aceso
+  // no alto vira um piscar constante, e passa a impressão de que a caixa saltou
+  // para o começo a cada escolha. Aí o Escape passa a ser tratado à mão, porque
+  // sem foco dentro do diálogo ele pode não chegar até ele.
+  if (opts.semFoco) {
+    // O foco vai para a CAIXA, e não para um controle dela. Sem isto o próprio
+    // navegador acende o primeiro elemento focável do diálogo, que é o ✕: o
+    // `showModal` não deixa o diálogo sem foco, ele escolhe um por conta. Com o
+    // foco no <dialog>, o Escape continua chegando e não há anel aceso nenhum.
+    dlg.tabIndex = -1;
+    dlg.focus({ preventScroll: true });
+    const porEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && dlg.open) { e.preventDefault(); fechar(); }
+    };
+    document.addEventListener('keydown', porEscape);
+    dlg.addEventListener('close', () => document.removeEventListener('keydown', porEscape));
+  } else {
+    dlg.querySelector<HTMLElement>('.ui-dlg-x')?.focus();
+  }
   return { corpo: dlg.querySelector('.ui-dlg-corpo') as HTMLElement, fechar };
 }
 

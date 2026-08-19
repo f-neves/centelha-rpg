@@ -244,6 +244,21 @@ if (abriu === 'ok') {
   });
   console.log('filtro:', filtrado);
 
+  // o foco: a caixa não fica com ele, nem ao abrir nem depois de escolher. Um
+  // clique de verdade (o `.click()` do roteiro não move foco) e a conferência.
+  const foco = await p.evaluate(async () => {
+    const antes = document.activeElement?.className || document.activeElement?.tagName;
+    const b = document.querySelector('[data-par][data-d="1"]');
+    b?.focus();                       // o navegador faz isto no clique de verdade
+    b?.click();
+    await new Promise((r) => setTimeout(r, 250));
+    const a = document.activeElement;
+    const d = document.querySelector('dialog.ui-dlg-conj');
+    return `ao abrir: ${antes} · depois de escolher: ${a?.tagName}`
+      + ` · contorno ${getComputedStyle(d).outlineStyle}`;
+  });
+  console.log('foco:', foco);
+
   // e o arrasto pela cabeça
   const moveu = await p.evaluate(async () => {
     const dlg = document.querySelector('.ui-dlg-conj');

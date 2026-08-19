@@ -298,7 +298,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   // as duas coisas moravam na mesma classe, o NPC e os empurrões herdavam um
   // `display: flex` de fileira e saíam com os blocos lado a lado, fora da tela.
   const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`,
-    { classe: 'ui-dlg-arte ui-dlg-conj', arrastavel: true });
+    { classe: 'ui-dlg-arte ui-dlg-conj', arrastavel: true, semFoco: true });
 
   /**
    * O balão do Efeito, aberto ao apontar o cartão.
@@ -608,34 +608,25 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         desenhar3d()}</div>`;
 
       const c = plano.custo;
-      // O QUE ESTAVA COM O FOCO, para devolvê-lo depois do repinte.
+      // NINGUÉM FICA COM O FOCO DEPOIS DO CLIQUE.
       //
-      // `pintar()` refaz o corpo inteiro a cada clique, e o elemento clicado
-      // morre no meio do próprio clique: o foco cai no <body>, o teclado para de
-      // navegar e o navegador rola a página atrás dele. Guardar a identidade do
-      // que estava focado (e não a referência, que não sobrevive) e reencontrar
-      // o equivalente depois resolve, e custa duas linhas.
-      const focado = (() => {
-        const a = document.activeElement as HTMLElement | null;
-        if (!a || !corpo.contains(a)) return '';
-        for (const k of ['data-arte', 'data-ef', 'data-par', 'data-molde', 'data-ang', 'data-curva', 'data-fatias', 'data-abrir']) {
-          if (a.hasAttribute(k)) {
-            const d = a.getAttribute('data-d');
-            return `[${k}="${CSS.escape(a.getAttribute(k) || '')}"]${d ? `[data-d="${d}"]` : ''}`;
-          }
-        }
-        return a.id ? `#${a.id}` : '';
-      })();
-
-      // ONDE CADA CAIXA ESTAVA ROLADA, pelo mesmo motivo do foco acima.
+      // `pintar()` refaz o corpo inteiro a cada escolha, e o botão clicado morre
+      // no meio do próprio clique. Havia aqui uma engenhoca que guardava a
+      // identidade do focado e o reencontrava depois, para o teclado não se
+      // perder; o preço era o anel de foco pulando de botão em botão a cada
+      // escolha e a caixa parecendo saltar para o topo. Numa caixa que se usa
+      // com o mouse, e que já tem o Escape do próprio <dialog> para sair, isso
+      // custa mais do que rende: o foco fica onde o navegador o deixa, fora dos
+      // controles, e quem navega por Tab entra na caixa quando quiser.
       //
-      // Devolver o foco NÃO devolve a rolagem: o navegador só traz o elemento
-      // focado até a borda mais próxima, e quem estava ajustando a Duração no
-      // pé do painel via a caixa saltar de volta para a lista de Efeitos a cada
-      // clique. As três que rolam são a fileira inteira (no celular), o miolo
-      // da direita (no desktop) e a lista de Efeitos, e as três nascem zeradas
-      // quando o corpo é reescrito.
-      const rolado = ['.ag-grade', '.ag-col-par', '.ag-efs']
+      // ONDE CADA CAIXA ESTAVA ROLADA, isso sim precisa voltar.
+      //
+      // Toda caixa que rola nasce zerada quando o corpo é reescrito, e é ISSO o
+      // que fazia o painel saltar para o começo: quem tinha descido até a
+      // Muralha, escolhia, e voltava para o alto da coluna sem ter pedido. São
+      // quatro: a fileira inteira (no celular), as duas colunas do miolo e a
+      // lista de Efeitos.
+      const rolado = ['.ag-grade', '.ag-col-par', '.ag-col-forma', '.ag-efs']
         .map((s) => [s, corpo.querySelector(s)?.scrollTop || 0] as const);
 
       // ==================================================== o desenho da caixa
@@ -801,7 +792,17 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         const e = corpo.querySelector(s);
         if (e && t) e.scrollTop = t;   // o navegador apara sozinho se a lista encurtou
       }
-      if (focado) corpo.querySelector<HTMLElement>(focado)?.focus({ preventScroll: true });
+      // O FOCO VOLTA PARA A CAIXA, e não para um controle dela.
+      //
+      // O botão clicado morre no repinte e o foco cai no <body>, que é fora do
+      // diálogo: dali o Escape pode não chegar e as setas passam a rolar a
+      // página de trás. Devolvê-lo ao <dialog> resolve os dois sem acender anel
+      // em canto nenhum. O <input> da Velocidade é a exceção, porque ele
+      // sobrevive ao repinte e pode estar sendo digitado.
+      const aceso = document.activeElement as HTMLElement | null;
+      if (!aceso || aceso === document.body || (corpo.contains(aceso) && aceso.tagName !== 'INPUT')) {
+        (corpo.closest('dialog') as HTMLElement | null)?.focus({ preventScroll: true });
+      }
 
       const trocarArte = (id: string) => {
         const d = disponiveis.find((x) => x.arte.id === id);
@@ -840,11 +841,10 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
           semear(); pintar();
         };
         // O balão abre no ponteiro e também no teclado: quem navega por Tab
-        // precisa da mesma informação que quem passa o mouse.
+        // precisa da mesma informação que quem passa o mouse. No clique não,
+        // porque aí ele ficaria aberto por cima do tabuleiro depois da escolha,
+        // tapando justamente a prévia que a caixa acabou de mexer.
         b.onpointerenter = () => abrirBalao(b);
-        // No teclado sim, no clique não: clicar num cartão devolve o foco a ele
-        // depois do repinte, e o balão reabria sozinho e ficava aberto por cima
-        // do tabuleiro, tapando justamente a prévia que a caixa acabou de mexer.
         b.onfocus = () => { if (b.matches(':focus-visible')) abrirBalao(b); };
         b.onpointerleave = fecharBalao;
         b.onblur = fecharBalao;
