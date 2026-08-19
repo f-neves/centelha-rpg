@@ -1471,7 +1471,7 @@
           "baseNota": "A base é um ARCO: o lado do triângulo vira raio, a base vira arco e o chão vira setor de círculo. Decidido em 2026-08-19. O arco ganha as duas pontas que a corda cortava, rende θ ÷ sen θ a mais (+21% a 60°, +57% a 90°, +142% a 120°), e fechar os 360° dá um círculo completo em vez de um polígono com quinas.",
           "abrirCobra": {
             "nota": "Quem paga a abertura é ESCOLHA DO CONJURADOR, a cada conjuração, e não uma regra fixa da mesa. A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.",
-            "padrao": "distancia",
+            "padrao": "altura",
             "opcoes": [
               {
                 "id": "distancia",
@@ -1488,7 +1488,9 @@
             ],
             "notaAltura": "O tabuleiro é visto de cima e engole a altura, então ela vem escrita na figura: sem o número, a escolha entre os dois modos seria invisível na mesa."
           },
-          "ondeNasce": "Por ora o arco pode começar em QUALQUER LUGAR, e não só no conjurador. É afrouxamento provisório da trava de area nunca colocada, para a mesa experimentar; o Alcance comprado continua sendo conferido."
+          "ondeNasce": "Por ora o arco pode começar em QUALQUER LUGAR, e não só no conjurador. É afrouxamento provisório da trava de area nunca colocada, para a mesa experimentar; o Alcance comprado continua sendo conferido.",
+          "alturaMinimaBase": 1,
+          "alturaMinimaNota": "A base nunca fica com menos de 1 m de altura. Menos que isso não é mais uma parede de elemento, é uma faixa rasteira que passa por baixo de qualquer um em pé, e o volume comprado deixaria de prender. Como no modo da ALTURA a base é n ÷ N, o piso vira um teto de fatias: não se abre mais que o lado da base em metros. No modo da DISTÂNCIA a altura fica cheia, e aí quem limita é só o nível da Arte."
         }
       },
       "exemplos": [

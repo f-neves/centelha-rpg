@@ -736,6 +736,30 @@ export const ABERTURA_PADRAO: number = MANI.aberturaPadrao || 60;
 /** As duas maneiras de cobrar o abrir, com o texto que a caixa mostra. */
 export const ABRIR_COBRA: { id: ModoAbrir; nome: string; efeito: string }[] =
   (MANI.abrirCobra?.opcoes || []).map((o: any) => ({ id: o.id, nome: o.nome, efeito: o.efeito }));
+export const ABRIR_COBRA_PADRAO: ModoAbrir = MANI.abrirCobra?.padrao === 'distancia'
+  ? 'distancia' : 'altura';
+/** A base nunca fica mais baixa que isto, em metros. */
+export const ALTURA_MINIMA_BASE: number = MANI.alturaMinimaBase ?? 1;
+
+/**
+ * Quantas fatias cabem, contando o piso da base.
+ *
+ * Duas travas, e a segunda é nova. A primeira é o nível da Arte: grau 3 abre até
+ * três. A segunda é a ALTURA: no modo em que abrir cobra a altura, a base é
+ * `n ÷ N`, e ela não pode ficar com menos de um metro, senão o que sobra não é
+ * mais parede de elemento, é uma faixa rasteira que passa por baixo de quem está
+ * em pé. Daí sai um teto que anda com o Volume comprado: **não se abre mais que
+ * o lado da base em metros.**
+ *
+ * No modo da distância a altura fica cheia em qualquer abertura, então lá quem
+ * limita continua sendo só o nível.
+ */
+export function fatiasMaximas(ladoM: number, nivelArte: number, abrirCobra?: ModoAbrir): number {
+  const porNivel = Math.max(1, Math.floor(nivelArte || 1));
+  if (abrirCobra !== 'altura') return porNivel;
+  const porAltura = Math.max(1, Math.floor((ladoM || 0) / ALTURA_MINIMA_BASE));
+  return Math.min(porNivel, porAltura);
+}
 /** O fator do estado da matéria, que incide no LADO DA BASE e não no volume. */
 export function ladoPorEstado(elemento: string | null): number {
   const t = (MANI.estadoNoLado || {}) as Record<string, number>;

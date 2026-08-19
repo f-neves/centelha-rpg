@@ -606,6 +606,26 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
   ok(/circle/.test(M.caminhoDaFigura(roda, { raioHexPx: 30, pxPorM: 30, margem: { x: 0, y: 0 } })),
     'e o traço dela é um círculo, e não um polígono');
 
+  // A BASE NÃO DESCE DE 1 m, e isso vira um teto de fatias que anda com o
+  // Volume: no modo da altura a base é n ÷ N, então não se abre mais que o lado
+  // da base em metros. No modo da distância a altura fica cheia, e lá quem
+  // limita continua sendo só o nível da Arte.
+  eq(M.ALTURA_MINIMA_BASE, 1, 'o piso da base é um metro');
+  eq(M.fatiasMaximas(0.5, 6, 'altura'), 1, 'no grau 0 a base não se divide');
+  eq(M.fatiasMaximas(1, 6, 'altura'), 1, 'com 1 m de lado, uma fatia só');
+  eq(M.fatiasMaximas(3, 6, 'altura'), 3, 'com 3 m de lado, até três');
+  eq(M.fatiasMaximas(6, 6, 'altura'), 6, 'com 6 m de lado, até seis');
+  eq(M.fatiasMaximas(6, 3, 'altura'), 3, 'e o nível da Arte continua cortando antes');
+  eq(M.fatiasMaximas(1, 6, 'distancia'), 6, 'cobrando a distância a altura fica cheia, sem teto novo');
+  // O teto e a regra não podem discordar: a última fatia permitida tem de deixar
+  // a base exatamente no piso, e a seguinte tem de furá-lo.
+  for (const n of [1, 2, 3, 4, 5, 6]) {
+    const N = M.fatiasMaximas(n, 6, 'altura');
+    perto(mani(n, N, 60, 'altura').alturaM, n / N, `a base no teto de fatias do lado ${n} m`);
+    ok(mani(n, N, 60, 'altura').alturaM >= M.ALTURA_MINIMA_BASE - 1e-9,
+      `e ela não fura o piso com lado ${n} m`);
+  }
+
   // Quem está dentro, num setor: o raio manda, e o ângulo também.
   const f60 = mani(6, 1, 60);
   ok(M.pontoNaFigura(f60, { x: 5.9, y: 0 }), 'no eixo, 5,9 m está dentro do setor de 60°');

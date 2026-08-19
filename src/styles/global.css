@@ -780,10 +780,19 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    centrada era tapar justamente o que ela manda olhar. Encostando na direita,
    sobra a faixa esquerda do tabuleiro, que é onde a mancha cresce e encolhe a
    cada clique. A leitura em número fica no pé da caixa, para quem não tiver
-   tela sobrando. */
+   tela sobrando. E quem quiser outro canto ARRASTA pela cabeça. */
 .ui-dlg-conj { margin-left: auto; margin-right: max(.75rem, env(safe-area-inset-right)); }
 @media (max-width: 60rem) { .ui-dlg-conj { margin-right: auto; } }
-.ui-dlg-conj .ui-dlg-form { height: min(42rem, 88vh); display: flex; flex-direction: column; }
+/* ENXUTA. A caixa tinha 64rem × 42rem porque cada Efeito era um resumo de seis
+   linhas; com o cartão reduzido a nome e nível, e o resto no balão, ela cabe em
+   pouco mais de um terço disso e para de tapar o tabuleiro. */
+.ui-dlg-conj.ui-dlg-arte { max-width: min(40rem, 96vw); width: min(40rem, 96vw); }
+.ui-dlg-conj .ui-dlg-form { height: min(41rem, 90vh); display: flex; flex-direction: column; }
+/* Arrastada, a caixa toma para si a posição que o navegador dava a ela. */
+.ui-dlg.arrastado { position: fixed; margin: 0; }
+.ui-dlg-pega { cursor: grab; user-select: none; touch-action: none; }
+.ui-dlg-pega:active { cursor: grabbing; }
+.ui-dlg-pega .ui-dlg-x { cursor: pointer; }
 .ui-dlg-conj .ui-dlg-corpo { flex: 1 1 auto; min-height: 0; display: flex; }
 
 /* O NPC e os empurrões são formulários comuns: seguem a altura do conteúdo (o
@@ -801,15 +810,15 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    `minmax(0, 1fr)` e não `1fr`: o mínimo de `1fr` é o conteúdo, então uma
    fileira que não quebrasse (a dos moldes) alargava a coluna e empurrava a
    grade inteira para fora da caixa, cortando o botão de Conjurar. */
-.ui-dlg-conj .ag-grade { display: grid; grid-template-columns: minmax(13rem, 18rem) minmax(0, 1fr);
-  gap: 1rem; flex: 1 1 auto; min-height: 0; width: 100%; }
+.ui-dlg-conj .ag-grade { display: grid; grid-template-columns: minmax(8rem, 10rem) minmax(0, 1fr);
+  gap: .8rem; flex: 1 1 auto; min-height: 0; width: 100%; }
 .ui-dlg-conj .ag-col-ef { display: flex; flex-direction: column; min-height: 0;
-  border-right: 1px solid var(--rule); padding-right: 1rem; }
+  border-right: 1px solid var(--rule); padding-right: .8rem; }
 .ui-dlg-conj .ag-col-dir { display: flex; flex-direction: column; min-height: 0; }
 /* Só o miolo da direita rola; o custo e os botões ficam presos no pé, onde a
    mão os encontra sem procurar. */
 .ui-dlg-conj .ag-rolagem { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: .3rem; }
-.ui-dlg-conj .ag-pe { flex: 0 0 auto; padding-top: .5rem; border-top: 1px solid var(--rule); }
+.ui-dlg-conj .ag-pe { flex: 0 0 auto; padding-top: .4rem; border-top: 1px solid var(--rule); }
 
 @media (max-width: 46rem) {
   /* No celular a coluna vira fileira: duas colunas de 8rem não servem a nenhum
@@ -834,7 +843,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
     margin-top: .4rem; padding-bottom: .2rem; }
 }
 
-.ui-dlg-arte .ag-sec { margin-bottom: .9rem; }
+.ui-dlg-arte .ag-sec { margin-bottom: .7rem; }
 .ui-dlg-arte .ag-h { font-size: var(--fs-micro); text-transform: uppercase; letter-spacing: .08em;
   color: var(--ink-soft); margin: 0 0 .35rem; font-weight: 700; }
 .ui-dlg-arte .ag-nota { font-size: var(--fs-micro); color: var(--ink-soft); margin: .2rem 0 .6rem; }
@@ -863,9 +872,12 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: .3rem; }
 /* Flex em coluna, e não grade: é o que permite empurrar a última linha para o
    pé do cartão com um `margin-top: auto`. */
-.ag-ef { display: flex; flex-direction: column; gap: .12rem; text-align: left;
-  padding: .45rem .55rem; cursor: pointer; border: 1px solid var(--rule);
-  border-radius: var(--r-2, 6px); background: transparent; font: inherit; color: var(--ink); }
+/* UMA LINHA: o nome com a sobra e o nível na ponta. O resto abre no balão. */
+.ag-ef { display: flex; align-items: baseline; gap: .35rem; text-align: left;
+  padding: .3rem .45rem; cursor: pointer; border: 1px solid var(--rule);
+  border-radius: var(--r-2, 6px); background: transparent; font: inherit; color: var(--ink);
+  font-size: var(--fs-aux); }
+.ag-ef-nm { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
 .ag-ef:hover { border-color: var(--accent); }
 .ag-ef.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .ag-ef-top { display: flex; align-items: baseline; gap: .4rem; }
@@ -889,10 +901,32 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-ef-mc { margin-top: auto; padding-top: .25rem; font-size: calc(var(--fs-micro) * .92);
   color: var(--ink-soft); letter-spacing: .03em; }
 
+/* O BALÃO DO EFEITO: o que saiu do cartão, a um apontar de distância.
+   Fica no <body>, acima de qualquer diálogo, porque a caixa que o abre é modal
+   e desenha por cima de tudo o mais. Sem ponteiro: ele nunca é alvo, então
+   passar o mouse por ele não rouba o `pointerleave` do cartão. */
+.ag-pop { position: fixed; z-index: 1000; pointer-events: none;
+  width: min(20rem, 80vw); padding: .6rem .7rem; border: 1px solid var(--panel-border);
+  border-radius: var(--r-md, 8px); background: var(--panel-2, var(--panel));
+  box-shadow: 0 14px 44px var(--shadow); color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif; }
+.ag-pop[hidden] { display: none; }
+.ag-pop-nm { font-family: 'Cinzel'; color: var(--accent-texto); font-size: var(--fs-aux); }
+.ag-pop-nv { font-size: var(--fs-micro); color: var(--ink-soft); margin-left: .4rem; }
+.ag-pop-tx { margin: .3rem 0 0; font-size: var(--fs-rotulo); line-height: 1.4; }
+.ag-pop-sab { margin: .3rem 0 0; font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
+.ag-pop-mc { margin: .3rem 0 0; font-size: calc(var(--fs-micro) * .92); color: var(--ink-soft);
+  letter-spacing: .03em; }
+
+/* A altura da base, logo abaixo de quem paga o abrir: é o número que o
+   tabuleiro visto de cima não mostra, e é ele que separa os dois modos. */
+.ag-alt { margin: .3rem 0 .5rem; font-size: var(--fs-rotulo); color: var(--ink-soft); }
+.ag-alt b { color: var(--accent-texto); font-variant-numeric: tabular-nums; }
+
 /* os parâmetros: nome, contador, e o que aquilo VALE, que é a coluna que importa */
 .ag-pars { display: grid; gap: .18rem; }
-.ag-p { display: grid; grid-template-columns: 6.5rem auto 1fr auto; align-items: center; gap: .5rem;
-  padding: .18rem .2rem; border-radius: var(--r-2, 6px); }
+.ag-p { display: grid; grid-template-columns: 5.4rem auto 1fr auto; align-items: center; gap: .4rem;
+  padding: .06rem .2rem; border-radius: var(--r-2, 6px); }
 .ag-p.esticado { background: color-mix(in srgb, var(--gold, #c9a227) 12%, transparent); }
 .ag-p-nm { font-size: var(--fs-aux); }
 .ag-p-ctr { display: inline-flex; align-items: center; gap: .3rem; }
@@ -943,7 +977,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
   background: transparent; color: var(--ink); border: 1px solid var(--rule);
   border-radius: var(--r-2, 6px); }
 .ag-vel input:focus { border-color: var(--accent); outline: none; }
-.ag-cst-l { display: flex; flex-wrap: wrap; gap: .2rem 1rem; font-size: var(--fs-aux); }
+.ag-cst-l { display: flex; flex-wrap: wrap; gap: .1rem .8rem; font-size: var(--fs-rotulo); }
 .ag-cst-l b { font-variant-numeric: tabular-nums; }
 .ag-cst-l b.gratis { color: var(--accent); }
 .ag-cst-est { font-size: var(--fs-micro); color: var(--gold, #c9a227); margin-top: .2rem; }
@@ -952,7 +986,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    escolhe. Aqui ela fica sempre à vista, ao lado do custo. */
 .ag-cst-fig { font-size: var(--fs-micro); color: var(--accent-texto, var(--accent));
   margin-top: .2rem; font-variant-numeric: tabular-nums; }
-.ag-acoes { display: flex; justify-content: flex-end; gap: .4rem; margin-top: .7rem; }
+.ag-acoes { display: flex; justify-content: flex-end; gap: .4rem; margin-top: .5rem; }
 
 /* o NPC completo */
 .ag-npc-base { display: grid; grid-template-columns: 1fr 6rem 8rem; gap: .5rem; align-items: end; }

@@ -289,6 +289,55 @@ function montar(cfg: Cfg): Promise<Resultado> {
 }
 
 /**
+ * Arrastar a caixa pela cabeça, para tirá-la da frente do que ela manda olhar.
+ *
+ * Um `<dialog>` modal é posicionado pelo navegador, que o recentra sozinho toda
+ * vez que ele muda de tamanho. Arrastar exige tomar essa posição para si, e é o
+ * que a classe `arrastado` faz: ela zera as margens e passa a mandar em `left` e
+ * `top`. Antes do primeiro arrasto nada muda, então quem nunca arrastar continua
+ * com a caixa onde o CSS a pôs.
+ *
+ * A posição é presa dentro da janela a cada passo. Sem isso a caixa sai pela
+ * borda e não volta, porque a única alça dela é a cabeça, que foi junto.
+ */
+function arrastarPelaCabeca(dlg: HTMLDialogElement): void {
+  const pega = dlg.querySelector<HTMLElement>('.ui-dlg-pega');
+  if (!pega) return;
+  let dx = 0, dy = 0, arrastando = false;
+
+  const mover = (ev: PointerEvent) => {
+    if (!arrastando) return;
+    const r = dlg.getBoundingClientRect();
+    const x = Math.min(Math.max(0, ev.clientX - dx), Math.max(0, innerWidth - r.width));
+    const y = Math.min(Math.max(0, ev.clientY - dy), Math.max(0, innerHeight - r.height));
+    dlg.style.left = `${x}px`;
+    dlg.style.top = `${y}px`;
+  };
+  const soltar = () => {
+    arrastando = false;
+    document.removeEventListener('pointermove', mover);
+    document.removeEventListener('pointerup', soltar);
+  };
+  pega.addEventListener('pointerdown', (ev) => {
+    // O ✕ mora na cabeça e não é alça: arrastar a partir dele fecharia a caixa
+    // no fim do gesto, que é o contrário do que a mão pediu.
+    if ((ev.target as HTMLElement).closest('button')) return;
+    const r = dlg.getBoundingClientRect();
+    dx = ev.clientX - r.left;
+    dy = ev.clientY - r.top;
+    // Congela onde está ANTES de assumir o controle: sem isto a caixa salta
+    // para o canto no primeiro pixel, porque as margens do CSS somem de uma vez.
+    dlg.style.left = `${r.left}px`;
+    dlg.style.top = `${r.top}px`;
+    dlg.classList.add('arrastado');
+    arrastando = true;
+    document.addEventListener('pointermove', mover);
+    document.addEventListener('pointerup', soltar);
+    ev.preventDefault();
+  });
+}
+
+/**
  * Painel: um modal que devolve o corpo VAZIO para quem chamou preencher.
  *
  * Os outros diálogos daqui perguntam alguma coisa e resolvem uma Promise com a
@@ -296,13 +345,14 @@ function montar(cfg: Cfg): Promise<Resultado> {
  * HTML e dos próprios eventos, como um gráfico que se lê passando o ponteiro.
  * Quem chama recebe o nó do corpo e a função de fechar, e é dono dos dois.
  */
-export function uiPainel(titulo: string, opts: { classe?: string } = {}):
-  { corpo: HTMLElement; fechar: () => void } {
+export function uiPainel(
+  titulo: string, opts: { classe?: string; arrastavel?: boolean } = {},
+): { corpo: HTMLElement; fechar: () => void } {
   const dlg = document.createElement('dialog');
   dlg.className = 'ui-dlg ui-dlg-painel' + (opts.classe ? ' ' + opts.classe : '');
   dlg.innerHTML = `
     <div class="ui-dlg-form">
-      <div class="ui-dlg-head">
+      <div class="ui-dlg-head${opts.arrastavel ? ' ui-dlg-pega' : ''}">
         <h2 class="ui-dlg-tit">${esc(titulo)}</h2>
         <button type="button" class="ui-dlg-x" aria-label="Fechar">✕</button>
       </div>
@@ -311,6 +361,7 @@ export function uiPainel(titulo: string, opts: { classe?: string } = {}):
   document.body.appendChild(dlg);
   const fechar = () => { if (dlg.open) dlg.close(); else dlg.remove(); };
   dlg.querySelector('.ui-dlg-x')!.addEventListener('click', fechar);
+  if (opts.arrastavel) arrastarPelaCabeca(dlg);
   // clique no fundo fecha, clique dentro não: o alvo só é o próprio <dialog>
   // quando o ponteiro cai fora da caixa
   fecharNoFundo(dlg, fechar);

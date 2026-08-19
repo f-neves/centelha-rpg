@@ -59,61 +59,74 @@ const abriu = await p.evaluate(async (ELEM) => {
 console.log('abrir:', abriu);
 
 if (abriu === 'ok') {
-  const previa = () => p.evaluate(() =>
-    (document.getElementById('gr-previa')?.innerHTML || '').slice(0, 90));
-
-  // 1. improviso: sobe o Volume ao topo e fotografa a prévia atrás da caixa
+  const figura = () => p.evaluate(() =>
+    [...document.querySelectorAll('.ag-cst-fig')].map((e) => e.textContent.trim()).join(' | '));
+  const altura = () => p.evaluate(() => document.querySelector('.ag-alt')?.textContent?.replace(/\s+/g, ' ').trim());
+  const fatiasDisponiveis = () => p.evaluate(() =>
+    [...document.querySelectorAll('[data-fatias]')].map((b) => b.textContent.trim()).join(','));
   const sobe = async (par, quantas) => p.evaluate(([nome, n]) => {
     const mais = [...document.querySelectorAll('[data-par]')]
       .filter((b) => b.dataset.par === nome && b.dataset.d === '1');
     for (let i = 0; i < n; i++) mais[0]?.click();
   }, [par, quantas]);
-  const clicar = (sel) => p.evaluate((s) => document.querySelector(s)?.click(), sel);
-  // A leitura mora no PÉ do painel, que nunca rola.
-  const figura = () => p.evaluate(() =>
-    [...document.querySelectorAll('.ag-cst-fig, .ag-figura')].map((e) => e.textContent.trim()).join(' | '));
+  const clicar = (sel) => p.evaluate((x) => document.querySelector(x)?.click(), sel);
 
-  await sobe('Volume', 6);
-  await new Promise((r) => setTimeout(r, 400));
-  console.log('1 fatia .......:', await figura());
-  console.log('   prévia .....:', await previa());
+  // O improviso já abre cobrando a ALTURA, e o teto de fatias anda com o Volume.
+  for (const vol of [1, 2, 3]) {
+    await sobe('Volume', vol === 1 ? 1 : 1);
+    await new Promise((r) => setTimeout(r, 250));
+    console.log(`Volume ${vol} · fatias [${await fatiasDisponiveis()}] · ${await altura()}`);
+  }
+  await sobe('Volume', 3);
+  await new Promise((r) => setTimeout(r, 300));
+  console.log('Volume 6 · fatias [' + await fatiasDisponiveis() + '] ·', await altura());
   await p.screenshot({ path: `${OUT}/conj-improviso.png` });
 
-  // 2. abre em seis, cobrando a DISTÂNCIA: o raio encolhe
-  // O nível da Arte trava quantas fatias existem: clica na última que houver.
+  // abre no máximo e confere que a base parou no piso
   await p.evaluate(() => {
     const bs = [...document.querySelectorAll('[data-fatias]')];
     bs[bs.length - 1]?.click();
   });
   await new Promise((r) => setTimeout(r, 300));
-  console.log('N fatias · distância:', await figura());
+  console.log('aberto ao máximo:', await altura(), '·', await figura());
 
-  // 3. o mesmo cobrando a ALTURA: o raio fica e a base baixa. 360° vira círculo.
-  await clicar('[data-abrir="altura"]');
+  // trocando para a distância, o teto volta a ser só o nível
+  await clicar('[data-abrir="distancia"]');
   await new Promise((r) => setTimeout(r, 300));
-  console.log('N fatias · altura ..:', await figura());
-  console.log('   prévia .....:', await previa());
+  console.log('cobrando distância: fatias [' + await fatiasDisponiveis() + '] ·', await altura());
   await p.screenshot({ path: `${OUT}/conj-roda.png` });
 
-  // 4. um Efeito de ZONA, que é onde a lista de moldes aparece
-  const trocou = await p.evaluate(async (zonas) => {
-    const b = [...document.querySelectorAll('[data-ef]')].find((x) => zonas.includes(x.dataset.ef))
-      || [...document.querySelectorAll('[data-ef]')].find((x) => x.dataset.ef);
-    if (!b) return null;
-    b.click();
-    await new Promise((r) => setTimeout(r, 300));
-    const mais = [...document.querySelectorAll('[data-par]')]
-      .filter((x) => (x.dataset.par === 'Área' || x.dataset.par === 'Volume') && x.dataset.d === '1');
-    for (let i = 0; i < 4; i++) mais[0]?.click();
-    await new Promise((r) => setTimeout(r, 300));
+  // o balão do Efeito, ao apontar o cartão
+  const pop = await p.evaluate(async () => {
+    const cards = [...document.querySelectorAll('[data-ef]')];
+    const alvo = cards.find((c) => c.dataset.ef) || cards[0];
+    alvo.dispatchEvent(new PointerEvent('pointerenter', { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 200));
+    const b = document.querySelector('.ag-pop');
     return {
-      efeito: b.textContent.trim().split(String.fromCharCode(10))[0],
-      figura: (document.querySelector('.ag-cst-fig') || document.querySelector('.ag-figura'))?.textContent?.trim(),
-      moldes: [...document.querySelectorAll('[data-molde]')].map((m) => m.textContent.trim().replace(/\s+/g, ' ')),
+      cartao: alvo.textContent.replace(/\s+/g, ' ').trim(),
+      aberto: !!b && !b.hidden,
+      texto: (b?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 110),
     };
-  }, ZONAS);
-  console.log('efeito:', JSON.stringify(trocou, null, 1));
-  await p.screenshot({ path: `${OUT}/conj-efeito.png` });
+  });
+  console.log('cartão:', JSON.stringify(pop, null, 1));
+  await p.screenshot({ path: `${OUT}/conj-balao.png` });
+
+  // e o arrasto pela cabeça
+  const moveu = await p.evaluate(async () => {
+    const dlg = document.querySelector('.ui-dlg-conj');
+    const pega = dlg.querySelector('.ui-dlg-pega');
+    const antes = dlg.getBoundingClientRect();
+    const r = pega.getBoundingClientRect();
+    pega.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, clientX: r.left + 40, clientY: r.top + 10 }));
+    document.dispatchEvent(new PointerEvent('pointermove', { bubbles: true, clientX: r.left - 160, clientY: r.top + 90 }));
+    document.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 150));
+    const dep = dlg.getBoundingClientRect();
+    return { dx: Math.round(dep.left - antes.left), dy: Math.round(dep.top - antes.top), classe: dlg.className.includes('arrastado') };
+  });
+  console.log('arrasto:', JSON.stringify(moveu));
+  await p.screenshot({ path: `${OUT}/conj-arrastado.png` });
 }
 console.log('erros de página:', erros.length ? erros.slice(0, 3) : 'nenhum');
 await br.close();

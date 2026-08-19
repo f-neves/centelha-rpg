@@ -11,12 +11,15 @@ import {
   alcanceEmMetros, areaEmM2, dadosDeDano, bonusPlano, rotuloDuracao,
   figuraDoEfeito, rotuloDaFigura, LADO_MINIMO, CURVATURAS, velocidadePadraoDe,
   MOLDE, MOLDES_DE_CHAO, moldeDaForma, formaEscolheMolde,
-  ABERTURAS, ABERTURA_PADRAO, volumeDaManifestacao, ABRIR_COBRA,
+  ABERTURAS, ABERTURA_PADRAO, volumeDaManifestacao, ABRIR_COBRA, ABRIR_COBRA_PADRAO,
+  fatiasMaximas, ALTURA_MINIMA_BASE,
   type Arte, type Efeito, type Parametro, type Escolhas, type Custo, type ModoAbrir,
 } from './artes-grid';
 
 const esc = (s: unknown) =>
   String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+/** Número curto, com vírgula: "6" e não "6,0", "2,5" e não "2.5". */
+const um = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replace('.', ','));
 
 // ==================================================================== o plano
 /** O que o assistente devolve. Quem chamou é que põe isso no tabuleiro. */
@@ -109,7 +112,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let molde = 'explosao';
   let angulo = ABERTURA_PADRAO;
   let fatias = 1;
-  let abrirCobra: ModoAbrir = 'distancia';
+  let abrirCobra: ModoAbrir = ABRIR_COBRA_PADRAO;
   let lado = LADO_MINIMO;
   let curvatura = 0;
   let velocidade = velocidadePadraoDe(null);
@@ -119,7 +122,40 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   // colunas com altura travada, que é deste painel e de mais nenhum. Enquanto
   // as duas coisas moravam na mesma classe, o NPC e os empurrões herdavam um
   // `display: flex` de fileira e saíam com os blocos lado a lado, fora da tela.
-  const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`, { classe: 'ui-dlg-arte ui-dlg-conj' });
+  const { corpo, fechar } = uiPainel(`Conjurar · ${ctx.nome}`,
+    { classe: 'ui-dlg-arte ui-dlg-conj', arrastavel: true });
+
+  /**
+   * O balão do Efeito, aberto ao apontar o cartão.
+   *
+   * Ele mora FORA do corpo, no `<body>`, e não dentro da caixa: o corpo é
+   * reescrito inteiro a cada clique, e um balão lá dentro sumiria no meio do
+   * gesto. Do lado de fora ele também não fica preso ao recorte da coluna, que
+   * é o que o cortava pela metade quando o cartão era o último da lista.
+   */
+  const balao = document.createElement('div');
+  balao.className = 'ag-pop';
+  balao.hidden = true;
+  document.body.appendChild(balao);
+  const fecharBalao = () => { balao.hidden = true; };
+  const abrirBalao = (alvo: HTMLElement) => {
+    let d: any;
+    try { d = JSON.parse(alvo.dataset.pop || 'null'); } catch { d = null; }
+    if (!d) return;
+    balao.innerHTML = `<b class="ag-pop-nm">${esc(d.nome)}</b>`
+      + (d.nivel ? `<span class="ag-pop-nv">nível ${d.nivel}</span>` : '')
+      + `<p class="ag-pop-tx">${esc(d.texto)}</p>`
+      + (d.sabor ? `<p class="ag-pop-sab">${esc(d.sabor)}</p>` : '')
+      + (d.marca ? `<p class="ag-pop-mc">${esc(d.marca)}</p>` : '');
+    balao.hidden = false;
+    // À ESQUERDA do cartão quando couber, à direita quando não: a caixa fica
+    // encostada na direita da tela, então a sobra quase sempre é do outro lado.
+    const r = alvo.getBoundingClientRect();
+    const b = balao.getBoundingClientRect();
+    const esquerda = r.left - b.width - 10;
+    balao.style.left = `${Math.round(esquerda >= 8 ? esquerda : Math.min(r.right + 10, innerWidth - b.width - 8))}px`;
+    balao.style.top = `${Math.round(Math.min(Math.max(8, r.top), Math.max(8, innerHeight - b.height - 8)))}px`;
+  };
 
   return new Promise<Plano | null>((resolve) => {
     let resolvido = false;
@@ -127,6 +163,7 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       if (resolvido) return;
       resolvido = true;
       ctx.aoMudar?.(null);   // apaga a prévia: a caixa fechou, com plano ou sem
+      balao.remove();
       fechar(); resolve(v);
     };
     corpo.closest('dialog')?.addEventListener('close', () => sair(null), { once: true });
@@ -248,6 +285,11 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       // porque é a genérica que engordou e ainda espera o julgamento um a um.
       const podeModar = temArea && !ehImproviso && formaEscolheMolde(g?.forma);
       const moldeAtual = MOLDE[molde] || moldeDaForma(g?.forma);
+      // O teto de fatias anda com o Volume: no modo da altura a base é n ÷ N, e
+      // ela não desce de um metro. Trocar de modo ou baixar o Volume tem de
+      // encolher a escolha junto, senão fica um botão aceso que a regra proíbe.
+      const maxFatias = fatiasMaximas(plano.ladoBaseM, nivelArte, abrirCobra);
+      if (fatias > maxFatias) { fatias = maxFatias; return pintar(); }
       // A barreira não escolhe molde (ela é sempre uma faixa), mas escolhe se
       // ergue essa faixa reta ou dobrada. Vale para QUALQUER barreira: o livro
       // diz "a curvatura máxima de qualquer barreira é um semicírculo", e não
@@ -274,16 +316,23 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
           gg.condicao && CONDICAO[gg.condicao] ? CONDICAO[gg.condicao].nome.toLowerCase() : '',
         ].filter(Boolean).join(' · ') : 'a Arte crua, sem Efeito comprado';
         const texto = e ? e.efeito : 'Dano e área montados só com os parâmetros do livro.';
-        // O cartão corta a descrição em seis linhas para os vizinhos ficarem
-        // comparáveis (ver `.ag-ef-tx` no global.css). O texto inteiro fica
-        // aqui: apontar o mouse no cartão devolve o que o corte tirou.
+        // O CARTÃO É SÓ O NOME E O NÍVEL.
+        //
+        // Ele já foi um resumo de seis linhas com descrição, sabor e marcas, e
+        // isso fazia a lista ocupar a caixa inteira para dizer o que só importa
+        // depois de escolher. Agora o cartão é o suficiente para reconhecer o
+        // Efeito, e o resto abre num balão ao apontar o mouse: quem procura vê
+        // tudo, quem já sabe o nome não paga por isso em espaço.
         return `<button type="button" class="ag-ef${on ? ' on' : ''}" data-ef="${e ? e.id : ''}"
-          title="${esc(texto)}">
-          <span class="ag-ef-top"><b>${esc(e ? e.nome : 'Improviso')}</b>
-            ${e ? `<span class="ag-ef-nv" title="exige a Arte no nível ${e.nivel}">${e.nivel}</span>` : ''}</span>
-          <span class="ag-ef-tx">${esc(texto)}</span>
-          ${e && sabor(e) ? `<span class="ag-ef-sab">${esc(arteSel.nome)}: ${esc(sabor(e))}</span>` : ''}
-          <span class="ag-ef-mc">${esc(marca)}</span>
+          data-pop="${esc(JSON.stringify({
+            nome: e ? e.nome : 'Improviso',
+            nivel: e ? e.nivel : 0,
+            texto,
+            sabor: e && sabor(e) ? `${arteSel.nome}: ${sabor(e)}` : '',
+            marca,
+          }))}">
+          <b class="ag-ef-nm">${esc(e ? e.nome : 'Improviso')}</b>
+          ${e ? `<span class="ag-ef-nv" title="exige a Arte no nível ${e.nivel}">${e.nivel}</span>` : ''}
         </button>`;
       };
 
@@ -368,20 +417,24 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
               </div>
               ${podeFatiar ? `<div class="ag-sec"><h3 class="ag-h">Manifestação</h3>
                 <div class="ag-angs">
-                  <span class="ag-ang-l" title="O elemento sai em fatias vizinhas do mesmo ápice, e o número delas nunca passa do nível da Arte.">Fatias</span>
-                  ${Array.from({ length: Math.max(1, nivelArte) }, (_, i) => i + 1).map((k) => `
+                  <span class="ag-ang-l" title="A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.">Abrir cobra</span>
+                  ${ABRIR_COBRA.map((o) => `<button type="button" class="ag-ang${abrirCobra === o.id ? ' on' : ''}"
+                    data-abrir="${o.id}" title="${esc(o.efeito)}">${esc(o.nome)}</button>`).join('')}
+                </div>
+                <p class="ag-alt">base de <b>${esc(um(plano.alturaM))} m</b> de altura${
+                  abrirCobra === 'altura'
+                    ? ` · ${esc(um(plano.ladoBaseM))} m ÷ ${fatias} fatia${fatias > 1 ? 's' : ''}`
+                    : ' · cheia, porque quem paga o abrir é a distância'}</p>
+                <div class="ag-angs">
+                  <span class="ag-ang-l" title="O elemento sai em fatias vizinhas do mesmo ápice.">Fatias</span>
+                  ${Array.from({ length: maxFatias }, (_, i) => i + 1).map((k) => `
                     <button type="button" class="ag-ang${fatias === k ? ' on' : ''}" data-fatias="${k}">${k}</button>`).join('')}
                   <span class="ag-ang-l" title="As três que fecham o círculo em número inteiro de fatias: seis, quatro e três.">Abertura</span>
                   ${ABERTURAS.map((a) => `<button type="button" class="ag-ang${angulo === a ? ' on' : ''}"
                     data-ang="${a}">${a}°</button>`).join('')}
                 </div>
-                <div class="ag-angs">
-                  <span class="ag-ang-l" title="A base comprada é a mesma nos dois; o que muda é em qual medida ela é cobrada.">Abrir cobra</span>
-                  ${ABRIR_COBRA.map((o) => `<button type="button" class="ag-ang${abrirCobra === o.id ? ' on' : ''}"
-                    data-abrir="${o.id}" title="${esc(o.efeito)}">${esc(o.nome)}</button>`).join('')}
-                  <span class="ag-ang-n">${esc(abrirCobra === 'altura'
-                    ? 'o raio fica, a base baixa' : 'o raio encolhe, a base fica')}</span>
-                </div>
+                ${maxFatias < nivelArte ? `<p class="ag-ang-n">a base não desce de ${ALTURA_MINIMA_BASE} m,
+                  então este Volume abre no máximo ${maxFatias}</p>` : ''}
               </div>` : ''}
               ${improvisoSemChao ? `<div class="ag-sec"><h3 class="ag-h">Manifestação</h3>
                 <p class="ag-md-nota">${esc(arteSel.nome)} não manifesta elemento, e a fatia não quer dizer
@@ -456,9 +509,17 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         }
         semear(); pintar();
       });
-      corpo.querySelectorAll<HTMLElement>('[data-ef]').forEach((b) => b.onclick = () => {
-        efeitoSel = b.dataset.ef ? EFEITO[b.dataset.ef] : null;
-        semear(); pintar();
+      corpo.querySelectorAll<HTMLElement>('[data-ef]').forEach((b) => {
+        b.onclick = () => {
+          efeitoSel = b.dataset.ef ? EFEITO[b.dataset.ef] : null;
+          semear(); pintar();
+        };
+        // O balão abre no ponteiro e também no teclado: quem navega por Tab
+        // precisa da mesma informação que quem passa o mouse.
+        b.onpointerenter = () => abrirBalao(b);
+        b.onfocus = () => abrirBalao(b);
+        b.onpointerleave = fecharBalao;
+        b.onblur = fecharBalao;
       });
       corpo.querySelectorAll<HTMLElement>('[data-par]').forEach((b) => b.onclick = () => {
         const nome = b.dataset.par!;
