@@ -158,15 +158,46 @@ if (abriu === 'ok') {
     // A coluna tem de caber sem rolar: um molde escondido atrás de rolagem é um
     // molde que ninguém escolhe.
     const col = document.querySelector('.ag-col-forma');
+    // e a vista em 3D gira: arrastar por cima dela tem de mudar o desenho sem
+    // repintar a caixa (o cartão marcado continua marcado depois do gesto).
+    const v3 = document.querySelector('#ag-3d');
+    let giro = 'sem vista 3D';
+    if (v3) {
+      const antes = v3.innerHTML.length ? v3.innerHTML.slice(0, 400) : '';
+      const r = v3.getBoundingClientRect();
+      const ev = (t, x, y) => v3.dispatchEvent(new PointerEvent(t, {
+        bubbles: true, pointerId: 1, clientX: x, clientY: y,
+      }));
+      ev('pointerdown', r.left + r.width / 2, r.top + r.height / 2);
+      ev('pointermove', r.left + r.width / 2 + 60, r.top + r.height / 2 - 20);
+      ev('pointerup', r.left + r.width / 2 + 60, r.top + r.height / 2 - 20);
+      await new Promise((r2) => setTimeout(r2, 120));
+      giro = `${v3.innerHTML.slice(0, 400) !== antes ? 'girou' : 'NÃO girou'}`
+        + ` · ${v3.querySelectorAll('polygon').length} faces`
+        + ` · marcado ${document.querySelector('.ag-ef.on')?.textContent?.trim().split(/\s+/)[1] || '?'}`;
+    }
     return {
       efeito: b.textContent.replace(/\s+/g, ' ').trim(),
       solidos: [...document.querySelectorAll('[data-solido]')].map((m) => m.textContent.replace(/\s+/g, ' ').trim()),
       cabe: `${col.scrollHeight} de conteúdo em ${col.clientHeight} de coluna`,
+      giro,
       cubo: antes, coluna: leitura(),
     };
   }, VOLUMES);
   console.log('volume:', JSON.stringify(volume, null, 1));
   await p.screenshot({ path: `${OUT}/conj-volume.png` });
+  // e a coluna sozinha, de perto: é onde mora a vista em 3D, e ela é pequena
+  // demais para se conferir na foto da tela inteira.
+  const colForma = await p.$('.ag-col-forma');
+  if (colForma) await colForma.screenshot({ path: `${OUT}/conj-3d.png` });
+  // os oito sólidos, um retrato de cada: é a única conferência possível de
+  // normal virada para dentro e de face que sumiu no corte de face oculta.
+  for (const id of ['cubo', 'cuboide', 'esfera', 'semiesfera', 'cilindro', 'cone', 'piramide', 'torus']) {
+    await p.evaluate((x) => document.querySelector(`[data-solido="${x}"]`)?.click(), id);
+    await new Promise((r) => setTimeout(r, 150));
+    const v = await p.$('#ag-3d');
+    if (v) await v.screenshot({ path: `${OUT}/3d-${id}.png` });
+  }
 
   // e um Efeito SEM forma nenhuma: a terceira coluna some
   const semForma = await p.evaluate(async (semChao) => {

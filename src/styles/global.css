@@ -787,7 +787,7 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
    linhas; com o cartão reduzido a nome e nível, e o resto no balão, ela cabe em
    pouco mais de um terço disso e para de tapar o tabuleiro. */
 .ui-dlg-conj.ui-dlg-arte { max-width: min(42rem, 96vw); width: min(42rem, 96vw); }
-.ui-dlg-conj .ui-dlg-form { height: min(32rem, 88vh); display: flex; flex-direction: column; }
+.ui-dlg-conj .ui-dlg-form { height: min(34rem, 88vh); display: flex; flex-direction: column; }
 /* Arrastada, a caixa toma para si a posição que o navegador dava a ela. */
 .ui-dlg.arrastado { position: fixed; margin: 0; }
 .ui-dlg-pega { cursor: grab; user-select: none; touch-action: none; }
@@ -994,6 +994,21 @@ html[data-theme='classico'][data-fundo="ficha"] body.page-ficha .sheet-frame {
 .ag-md-ic { grid-area: ic; align-self: center; color: var(--accent-texto); }
 .ag-md-nm { grid-area: nm; }
 .ag-md small { grid-area: cp; font-size: var(--fs-micro); color: var(--ink-soft); }
+
+/* A VISTA EM TRÊS DIMENSÕES do sólido, no lugar em que o chão mostra a pegada.
+   Arrasta para girar, e por isso `touch-action: none`: no celular o gesto seria
+   engolido pela rolagem da fileira antes de chegar aqui. */
+.ag-3d { position: relative; width: 100%; aspect-ratio: 148 / 94; flex: 0 0 auto;
+  margin: 0 0 .3rem; border: 1px solid var(--rule); border-radius: var(--r-2, 6px);
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  cursor: grab; touch-action: none; user-select: none; }
+.ag-3d.girando { cursor: grabbing; }
+.ag-3d-svg { display: block; width: 100%; height: 100%; }
+/* O favo do chão em traço fino, a peça na tinta da Arte, o boneco em cinza:
+   três tons chegam para dizer o que é chão, o que é matéria e o que é gente. */
+.ag-3d-ch { fill: none; stroke: var(--ink-soft); stroke-width: .4; opacity: .3; }
+.ag-3d-s { fill: var(--accent); stroke: var(--accent); stroke-width: .3; }
+.ag-3d-b { fill: var(--ink-soft); stroke: var(--ink-soft); stroke-width: .3; }
 
 /* OS MOLDES DO VOLUME, em duas colunas: são oito, e cada um é só um glifo e um
    nome. A régua não muda entre eles (o volume comprado é o mesmo), então não há

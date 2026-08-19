@@ -5,6 +5,7 @@
 // tela. Este arquivo não sabe gravar no Supabase nem desenhar hexágono; ele
 // pergunta, devolve um PLANO, e quem chamou executa.
 import { uiPainel, uiEscolher, uiFormulario } from './ui-dialog';
+import { svgDoSolido, CAMERA_ISO, ALTURA_MIN, ALTURA_MAX, type Camera } from './artes-3d';
 import {
   ARTE, EFEITO, CONDICAO, artesDe, efeitosDisponiveis, parametrosAjustaveis,
   parametrosDoImproviso, custoDe, valorNoNivel, medidaNoNivel, escalaDe, escalaVisivel, turnosDeDuracao,
@@ -261,6 +262,8 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
   let molde = 'explosao';
   /** O molde do VOLUME: em que forma a matéria comprada aparece. */
   let solido = SOLIDO_PADRAO;
+  /** De onde se olha o sólido. Nasce no ângulo de sempre e o mouse gira. */
+  let cam: Camera = { ...CAMERA_ISO };
   let angulo = ABERTURA_PADRAO;
   let fatias = 1;
   let abrirCobra: ModoAbrir = ABRIR_COBRA_PADRAO;
@@ -557,6 +560,11 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
         </div>`;
       };
 
+      /** A caixa do 3D. Só o miolo dela se refaz quando o mouse gira a peça. */
+      const vista3d = (id: string, v: number) => `<div class="ag-3d" id="ag-3d"
+        title="arraste para girar &middot; dois cliques voltam ao ângulo de sempre">${
+        svgDoSolido({ solido: id, volumeM3: v, cam, largura: 148, altura: 94 })}</div>`;
+
       const c = plano.custo;
       // O QUE ESTAVA COM O FOCO, para devolvê-lo depois do repinte.
       //
@@ -645,7 +653,15 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
 
           ${semForma ? '' : `<div class="ag-col-forma">
             <span class="ag-h">${podeFatiar || improvisoSemChao ? 'Manifestação' : 'Molde'}</span>
-            ${improvisoSemChao ? '' : miniatura(ultimaFigura)}
+            ${/* O VOLUME SE VÊ DE FORA, e não de cima.
+                  A pegada em cima do favo responde por qualquer chão, mas não
+                  pelo volume: um círculo de 1,6 m de raio tanto é uma coluna de
+                  3,3 m quanto uma poça, e a diferença entre as duas é a Arte
+                  inteira. Aqui o sólido aparece em três dimensões, no favo, com
+                  um boneco de 1,80 m ao lado, que é o que a bancada de volume
+                  faz e é o que faz o número virar tamanho. */''}
+            ${podeSolidar ? vista3d(solido, volM3)
+              : improvisoSemChao ? '' : miniatura(ultimaFigura)}
             ${podeSolidar ? `
               ${/* Uma linha só: qual molde está escolhido já se vê no botão aceso,
                     e repetir o nome aqui empurrava a lista para fora da coluna. */''}
@@ -795,6 +811,42 @@ export function abrirConjuracao(ctx: CtxConjurar): Promise<Plano | null> {
       corpo.querySelectorAll<HTMLElement>('[data-solido]').forEach((b) => b.onclick = () => {
         solido = b.dataset.solido!; pintar();
       });
+
+      // GIRAR A PEÇA NÃO REPINTA A CAIXA.
+      //
+      // Um `pintar()` por movimento do mouse refaria a lista de Efeitos, os
+      // parâmetros e o pé inteiro dezenas de vezes por segundo, e roubaria o
+      // foco no meio do gesto. Só o miolo desta caixa se refaz, que é uma
+      // string de SVG.
+      const vista = corpo.querySelector('#ag-3d') as HTMLElement | null;
+      if (vista) {
+        const repintar = () => {
+          vista.innerHTML = svgDoSolido({
+            solido, volumeM3: volM3, cam, largura: 148, altura: 94,
+          });
+        };
+        let de: { x: number; y: number; cam: Camera } | null = null;
+        vista.onpointerdown = (e) => {
+          de = { x: e.clientX, y: e.clientY, cam: { ...cam } };
+          vista.setPointerCapture(e.pointerId);
+          vista.classList.add('girando');
+        };
+        vista.onpointermove = (e) => {
+          if (!de) return;
+          cam = {
+            giro: de.cam.giro - (e.clientX - de.x) * 0.012,
+            altura: Math.min(ALTURA_MAX, Math.max(ALTURA_MIN,
+              de.cam.altura + (e.clientY - de.y) * 0.008)),
+          };
+          repintar();
+        };
+        const soltar = () => { de = null; vista.classList.remove('girando'); };
+        vista.onpointerup = soltar;
+        vista.onpointercancel = soltar;
+        // Dois cliques devolvem o ângulo de sempre: girar até se perder é fácil,
+        // e achar de novo o três-quartos na mão é chato.
+        vista.ondblclick = () => { cam = { ...CAMERA_ISO }; repintar(); };
+      }
       corpo.querySelectorAll<HTMLElement>('[data-fatias]').forEach((b) => b.onclick = () => {
         fatias = Number(b.dataset.fatias); pintar();
       });
