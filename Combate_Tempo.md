@@ -750,6 +750,10 @@ Golpe**, porque você nunca está com as duas armas comprometidas ao mesmo tempo
 
 ### 14.5. A cadeia de ataques
 
+> **Superada pela §14.12 (20/08/2026).** A geometria mudou de `P→G→P→G→R` (re-preparar a cada
+> golpe) para a **rajada** `P→G→G→R` (uma preparação, golpes seguidos), e os freios mudaram com
+> ela. O objetivo continua o desta seção; os números abaixo ficam como registro do caminho.
+
 O objetivo é ter como enfrentar inimigos mais fracos sem gastar uma cena inteira, e **não** uma
 manobra de duelo. A geometria:
 
@@ -986,6 +990,88 @@ quebrado: a cadeia já é punitiva sem ele e a dupla continua dependendo da geom
 compra é **de princípio**, e é real: com P ≥ 1 nenhuma ação resolve no Tick em que é declarada,
 então **tudo passa a ser legível e interrompível**, e a cadeia da arma leve deixa de ser
 `G→G→G→R`. É uma troca de 4 pontos de equilíbrio por consistência de leitura.
+
+---
+
+### 14.12. A rajada (20/08/2026)
+
+**Decidida.** Atacar mais de uma vez com a mesma arma é a **rajada**: uma preparação e os golpes
+em Ticks seguidos.
+
+<p class="formula"><b>P → G → G → … → R</b>, declarada de uma vez, sem parar no meio</p>
+
+O preço, por cada golpe além do primeiro:
+
+- **−1d6 no ataque, acumulando** (o 2º golpe rola 1 dado a menos, o 3º rola 2);
+- **+1 Tick de Recuperação**;
+- e a escada de DV da §14.11 como sempre: Preparo −2, **cada** Tick de Golpe −4, Recuperação −2
+  **por golpe dado** (três golpes = −6 até a guarda se refazer).
+
+Teto: **3 golpes** com arma leve ou média, **2** com haste ou pesada. Corpo a corpo apenas: arco,
+besta e arremesso não fazem rajada (recarregar é Preparo, e a Recuperação deles já é 0 ou 1, então
+não há o que comprimir).
+
+| classe | 1 golpe | rajada de 2 | rajada de 3 |
+|---|:---:|:---:|:---:|
+| leve | 5t | 7t | 9t |
+| média | 6t | 8t | 10t |
+| haste | 6t | 8t | (não pode) |
+| pesada | 7t | 9t | (não pode) |
+
+#### Por que esta geometria e não a outra
+
+A alternativa era `P→G→P→G→R`, re-preparando a cada golpe. Ela falha por um defeito estrutural:
+**o preço dela é o Preparo, e o Preparo é radicalmente desigual entre classes** (0 a 2). Medido:
+com dados −1d6 a leve e a média encadeiam **sempre** (58,4% e 55,4% no duelo); subindo para −2d6 o
+duelo fecha, mas a haste e a pesada ficam **mais lentas contra o inimigo fraco do que golpeando
+uma vez** (18,5t contra 17,1t). Nenhuma escala serve às quatro classes.
+
+A rajada com os dois freios (−1d6 acumulativo e +1 R por golpe) é a única célula do estudo em que
+as quatro classes se comportam igual:
+
+| dados 0/−1d6/−2d6 · R +1 por golpe | duelo N=2 | duelo N=3 | 1 soldado, N=2 | N=3 |
+|---|:---:|:---:|:---:|:---:|
+| leve | 40,3% | 18,9% | 13,1t | 13,2t |
+| média | 40,6% | 41,8% | 14,2t | 13,1t |
+| haste | 39,4% | 40,0% | 14,3t | 12,7t |
+| pesada | 43,7% | 40,6% | 12,9t | 11,4t |
+
+*(um golpe só leva 16,5 a 17,6t contra o soldado; o duelo é contra a mesma arma golpeando normal)*
+
+Duelo em ~40% (punitivo, nunca é a jogada padrão) e um quinto a um terço do relógio economizado
+contra o fraco. O freio de "+1 Tick de Recuperação por golpe", que a §14.5 tinha rejeitado, **é
+necessário aqui**: na geometria antiga ele era contagem em triplo (o Preparo repetido já cobrava);
+na rajada ele é o que substitui o Preparo repetido. Sem ele o duelo fica em 52 a 61% e a rajada
+vira a jogada de sempre.
+
+#### O assassino
+
+Vítima surpresa (só a esquiva crua, sem agir; **apenas o primeiro golpe é surpresa**, do segundo em
+diante ela esquiva normal). Chance de a ação inteira matar:
+
+| vítima | arma | 1 golpe | rajada de 2 | rajada de 3 |
+|---|---|:---:|:---:|:---:|
+| lacaio (DV 10, PV 18) | espada curta | 2% | 48% | **83%** |
+| | espada longa | 5% | 70% | **97%** |
+| soldado (DV 12, PV 26) | espada longa | 0% | 5% | 33% |
+| | martelo | 0% | 46% | **79%** |
+| igual (DV 14, PV 37) | qualquer | 0% | ~0% | ~0 a 5% |
+
+O teto certo por si: a rajada executa o lacaio quase sempre, o soldado só com arma pesada, e o
+igual nunca. Matar um par de verdade continua exigindo a luta. (Com a escala −2d6 a rajada de 3
+não mata mais que a de 2, e a fantasia do executor morre; mais um motivo para a escala suave.)
+
+#### As bordas da rajada
+
+1. **Alvos diferentes, golpe a golpe:** pode, qualquer um ao alcance. É o que faz dela a
+   ferramenta contra a horda, e o redirecionamento da §2 já cobre o alvo que cai no meio.
+2. **Interrupção:** só o Preparo é interrompível; os Golpes seguidos não têm janela. O espelho de
+   quem pagou ação fora de hora **empurra os golpes restantes**, não os cancela.
+3. **Sem alvo ao alcance:** os golpes restantes se perdem e a Recuperação começa. Sem reembolso:
+   declarou três, pagou três.
+4. **Não acumula** com a empunhadura dupla nem com Técnicas de ataques extras: uma fonte de golpes
+   múltiplos por ação.
+5. **Carga voluntária e Mirar** valem só para o primeiro golpe (compram Preparo, e há um só).
 
 ---
 
