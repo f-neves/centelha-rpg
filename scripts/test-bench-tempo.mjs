@@ -59,7 +59,7 @@ console.log('trilho:', trilho, 'chars ·', JSON.stringify(marcas));
 // as baterias, uma a uma (com n baixo para ir rápido)
 await clicar(page, 'nav.abas button[data-aba="provas"]');
 await page.evaluate(() => { S.n = 400; });
-for (const bat of ['regua', 'par', 'duasarmas', 'cadeia', 'roundrobin', 'classes']) {
+for (const bat of ['dois', 'escada', 'regua', 'par', 'duasarmas', 'cadeia', 'roundrobin', 'classes']) {
   const t0 = Date.now();
   await clicar(page, `button[data-bat="${bat}"]`);
   await page.waitForFunction(() => /ms$/.test(document.getElementById('status').textContent), { timeout: 180000, polling: 200 }).catch((e) => erros.push('timeout em ' + bat));
@@ -67,14 +67,15 @@ for (const bat of ['regua', 'par', 'duasarmas', 'cadeia', 'roundrobin', 'classes
   console.log(`bateria ${bat}: ${n} bloco(s) em ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 }
 
-// os presets
-await clicar(page, '#preset-k1');
-await new Promise((r) => setTimeout(r, 200));
-const k1 = await page.evaluate(() => S.regras.golpeDV);
-await clicar(page, '#preset-pgr');
-await new Promise((r) => setTimeout(r, 200));
-const pgr = await page.evaluate(() => S.regras.golpeDV);
-console.log('preset K1 golpeDV =', k1, '· preset P/G/R golpeDV =', pgr);
+// o seletor de sistema
+for (const [id, esperado] of [['sis-hoje', false], ['sis-normal', false], ['sis-k1', true], ['sis-pgr', true]]) {
+  await clicar(page, '#' + id);
+  await new Promise((r) => setTimeout(r, 150));
+  const st = await page.evaluate(() => ({ usa: S.regras.usarPreparo, g: S.regras.golpeDV, sis: S.sistema }));
+  if (st.sis !== id) erros.push('seletor não marcou ' + id);
+  if (st.usa !== esperado) erros.push(id + ': usarPreparo deveria ser ' + esperado);
+  console.log('sistema ' + id.padEnd(11) + ' usarPreparo=' + st.usa + ' golpeDV=' + st.g);
+}
 
 await browser.close();
 if (erros.length) { console.error('\n✘ ERROS:\n' + erros.join('\n')); process.exit(1); }

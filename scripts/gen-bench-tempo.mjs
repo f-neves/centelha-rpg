@@ -34,6 +34,58 @@ const armaduras = JSON.parse(ler('src/data/armaduras.json'));
 // Cada bloco vira um cartão na aba "As regras". `n` marca o número que a bancada mexe.
 const REGRAS_TEXTO = [
   {
+    id: 'dois-sistemas', titulo: 'Dois sistemas, um conjunto de regras', estado: 'decidido',
+    corpo: `Decidido em <b>20/08/2026</b> (&sect;15). O jogo tem <b>dois sistemas de tempo</b>, à
+    escolha do mestre: o <b>normal</b> (a ação custa a Velocidade e resolve no primeiro Tick, como
+    hoje) e o <b>P/G/R</b> (a mesma Velocidade partida em três fases). <b>As regras são as
+    mesmas</b>, escritas em moeda comum: Ticks, dados e pontos de Defesa.
+    <p class="nota">Medido: o sistema normal <b>com</b> as regras novas dá 16,9 de amplitude entre
+    classes contra 16,7 de hoje, e as manobras dão o mesmo número nos dois. A única exceção é a
+    dupla de arma média (mesma Velocidade no normal, ciclo +1 no P/G/R). Use o seletor no topo do
+    painel e rode "Os dois sistemas".</p>`,
+  },
+  {
+    id: 'escada', titulo: 'A escada: atacar abre a guarda', estado: 'decidido',
+    corpo: `A moeda é o <b>&minus;2</b> da Guarda sob pressão do capítulo IX, e tudo deriva dela:
+    <b>Preparo &minus;2</b> &middot; <b>Golpe &minus;4</b> (o dobro, porque no instante do golpe
+    não há como defender) &middot; <b>Recuperação &minus;2 por golpe dado</b>. Mais os &minus;2 por
+    ataque recebido, que acumulam sem teto e só zeram quando o ciclo fecha.
+    <p class="nota">A versão de 19/08 ("a ação não custa DV e o Golpe custa &minus;6") está
+    registrada e superada na &sect;14.2. O preço conhecido desta: amplitude 21,4 contra 16,7 de
+    hoje, com a arma leve em 63%.</p>`,
+  },
+  {
+    id: 'rajada', titulo: 'A rajada: atacar de novo com a mesma arma', estado: 'decidido',
+    corpo: `<b>P &rarr; G &rarr; G &rarr; R</b>, declarada de uma vez, sem parar no meio. Cada golpe
+    além do primeiro custa <b>&minus;1d6 acumulativo</b> e <b>+1 Tick de Recuperação</b>. Teto: 3
+    golpes na leve e na média, 2 na haste e na pesada. Só corpo a corpo.
+    <p class="nota">Em duelo mede ~40% nas quatro classes (nunca é a jogada padrão) e corta de um
+    quinto a um terço do relógio contra o inimigo fraco. A rajada de 3 executa o lacaio surpreso
+    (83 a 97%) e nunca o igual. A geometria alternativa (re-preparar a cada golpe) foi descartada:
+    o preço dela é o Preparo, que é desigual entre classes.</p>`,
+  },
+  {
+    id: 'dupla-nova', titulo: 'Uma arma em cada mão', estado: 'decidido',
+    corpo: `Um Tick de Golpe <b>para cada mão</b>, ambas a <b>&minus;1d6</b>. Par de armas leves: o
+    segundo Golpe come a Recuperação e <b>o ciclo não muda</b>. Com arma média na mão hábil, o
+    <b>ciclo cresce 1</b>. A Recuperação conta os dois golpes (&minus;4). E <b>segurando a segunda
+    arma sem golpear com ela</b>, o seu Tick de Golpe fica a &minus;2 em vez de &minus;4: a outra
+    mão continua guardando.
+    <p class="nota">A dupla ganha da rajada em todas as colunas, que era a exigência. E os dados
+    dela não podem ser melhores que os da rajada: com 0/&minus;1d6 ela vai a 80&ndash;85%. O tempo
+    é a identidade da dupla, os dados são o custo dela.</p>`,
+  },
+  {
+    id: 'centelha-k23', titulo: 'A Centelha soma +1, não +2', estado: 'decidido',
+    corpo: `Vale o que <code>regras.json</code>, <code>defesas.md</code> e <code>centelha.md</code>
+    escrevem: <b>+1 por ponto</b> no ataque e nas quatro defesas. O motor usava &times;2 até
+    20/08.
+    <p class="nota">Com &times;2 as pontas colapsam: Centelha 6 contra Centelha 0 acerta <b>99%</b>
+    e o contrário acerta <b>0%</b>. Com &times;1 são 78% e 1%: esmagador, mas ainda dentro do dado.
+    E um tier passa a valer um degrau de modificador situacional, comparável ao resto do sistema.
+    Ver K23.</p>`,
+  },
+  {
     id: 'pgr', titulo: 'Tres fases: Preparo, Golpe e Recuperacao', estado: 'decidido',
     corpo: `Decidido em <b>19/08/2026</b>. A acao tem <b>P/G/R</b>, com <b>P + G + R</b> igual a
     Velocidade de hoje. O <b>Golpe e UM Tick</b>: e quando o golpe sai, nao pode ser cancelado, e e
@@ -229,6 +281,12 @@ nav.abas { display: flex; gap: .3rem; padding: .6rem 1.6rem 0; border-bottom: 1p
 nav.abas button { background: transparent; border: 1px solid transparent; border-bottom: none; color: var(--ink-soft); padding: .5rem .9rem; border-radius: 6px 6px 0 0; cursor: pointer; font: inherit; font-size: .9rem; }
 nav.abas button:hover { color: var(--ink); }
 nav.abas button.on { background: var(--painel); border-color: var(--linha); color: var(--acento); }
+.sistema { display: grid; gap: .3rem; margin-bottom: .8rem; padding: .5rem; border: 1px solid var(--linha); border-radius: 6px; background: #17120e; }
+.rot-sis { font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-soft); margin-bottom: .1rem; }
+button.acao.sis { text-align: left; padding: .35rem .6rem; font-size: .84rem; line-height: 1.2; }
+button.acao.sis small { display: block; font-size: .72rem; opacity: .65; font-weight: 400; }
+button.acao.sis.on { background: var(--acento); color: #1a1409; border-color: var(--acento); }
+button.acao.sis.on small { opacity: .8; }
 main { padding: 1.2rem 1.6rem 4rem; max-width: 1500px; }
 section.aba { display: none; }
 section.aba.on { display: block; }
@@ -326,6 +384,8 @@ pre.log b { color: var(--acento); }
         <button class="acao" data-bat="par">O par: ciclo × Golpe</button>
         <button class="acao" data-bat="duasarmas">Empunhadura dupla</button>
         <button class="acao" data-bat="cadeia">A cadeia de ataques</button>
+        <button class="acao" data-bat="dois">Os dois sistemas</button>
+        <button class="acao" data-bat="escada">A escada, Tick a Tick</button>
         <button class="acao fantasma" data-bat="tudo">Rodar tudo</button>
         <button class="acao fantasma" id="limpar">Limpar</button>
       </div>
@@ -387,6 +447,7 @@ const ROT_CLASSE = { leve:'Leve', media:'Média', haste:'Haste', pesada:'Pesada'
 // ===================== estado =====================
 const S = {
   n: 4000, semente: 20260818,
+  sistema: 'sis-pgr',
   regras: clonar(REGRAS_PGR),
   lutador: { ah: 10, centelha: 1, vigor: 4, forca: 4, pv: 37 },
   duelo: { a: 'espada-longa', b: 'martelo-de-guerra', armA: 'nenhuma', armB: 'nenhuma', semente: 20260818 },
@@ -459,15 +520,20 @@ function campoSel(rot, val, opcoes, onChange) {
 function pintarPainel() {
   const R = S.regras;
   setTimeout(() => {
-    const a = el('preset-pgr'), b = el('preset-k1');
-    if (a) a.addEventListener('click', () => { S.regras = clonar(REGRAS_PGR); pintarPainel(); });
-    if (b) b.addEventListener('click', () => { S.regras = clonar(REGRAS_PADRAO); pintarPainel(); });
+    for (const [id, preset] of [['sis-pgr', REGRAS_PGR], ['sis-normal', REGRAS_NORMAL],
+      ['sis-hoje', REGRAS_HOJE], ['sis-k1', REGRAS_K1]]) {
+      const b = el(id);
+      if (b) b.addEventListener('click', () => { S.regras = clonar(preset); S.sistema = id; pintarPainel(); });
+    }
   }, 0);
   el('painel').innerHTML =
     '<h3>Parâmetros</h3>'
-    + '<div class="botoes" style="margin-bottom:.7rem">'
-    + '<button class="acao fantasma" id="preset-pgr">P/G/R (19/08)</button>'
-    + '<button class="acao fantasma" id="preset-k1">K1 (18/08)</button>'
+    + '<div class="sistema">'
+    + '<div class="rot-sis">o sistema</div>'
+    + [['sis-pgr', 'P/G/R', 'a ação em três fases'], ['sis-normal', 'Normal + regras novas', 'resolve no 1º Tick'],
+       ['sis-hoje', 'Hoje (capítulo IX)', 'sem nada de novo'], ['sis-k1', 'K1 (18/08)', 'a régua antiga']]
+      .map(([id, rot, sub]) => '<button class="acao fantasma sis' + (S.sistema === id ? ' on' : '') + '" id="' + id + '">'
+        + rot + '<small>' + sub + '</small></button>').join('')
     + '</div>'
     + '<fieldset><legend>A régua</legend>'
     + campoBool('usar Preparo/Recuperação', R.usarPreparo, (v) => { R.usarPreparo = v; pintarPainel(); })
@@ -740,7 +806,7 @@ document.querySelectorAll('button.acao[data-bat]').forEach((b) => b.addEventList
   const k = b.dataset.bat;
   if (k === 'tudo') {
     comStatus('rodando tudo', async () => {
-      for (const nome of ['cadeia','duasarmas','par','regua','travas','distancia','feiticeiro','carga','armadura','janela','refrega','classes','roundrobin']) {
+      for (const nome of ['escada','dois','cadeia','duasarmas','par','regua','travas','distancia','feiticeiro','carga','armadura','janela','refrega','classes','roundrobin']) {
         el('status').textContent = 'rodando ' + nome + '…'; await espera(); BAT[nome]();
       }
     });
@@ -852,6 +918,87 @@ BAT.cadeia = () => {
   bloco('A cadeia de ataques',
     'N repetições de (Preparo + Golpe) e UMA Recuperação, declaradas de uma vez. O freio é perder um dado a mais por golpe, e ele distingue pelo alvo: o lacaio tem Defesa baixa e apanha até do quarto golpe; o igual tem Defesa alta e o terceiro já não encosta. Verde na coluna do duelo quer dizer que encadear contra um igual é mau negócio, que é o objetivo.',
     tabela(['freio','N','ciclo','duelo igual','1 soldado','2 lacaios'], linhas));
+};
+
+// ---------- as duas baterias da Fase 3 (os dois sistemas, e a escada) ----------
+/** Os quatro presets, na ordem em que a §15 os apresenta. */
+const PRESETS = () => [
+  ['hoje (capítulo IX)', clonar(REGRAS_HOJE)],
+  ['normal + regras de 20/08', clonar(REGRAS_NORMAL)],
+  ['P/G/R + regras de 20/08', clonar(REGRAS_PGR)],
+];
+
+BAT.dois = () => {
+  const linhas = PRESETS().map(([lbl, R]) => {
+    const p = perfilPGR(R);
+    const d = bateria({ ...S.lutador, arma: 'espada-longa' }, { ...S.lutador, arma: 'espada-longa' }, R, CAT, op());
+    return [lbl].concat(CLASSES.map((k) => '<span class="num">' + pct(p.c[k]) + '</span>'))
+      .concat(['<span class="num ' + (p.amp < 18 ? 'bom' : p.amp < 26 ? 'morno' : 'ruim') + '">' + p.amp.toFixed(1) + '</span>',
+        '<span class="num">' + d.ticks.toFixed(1) + 't</span>',
+        '<span class="num">' + (d.declsPorLado + d.foraPorDuelo / 2).toFixed(2) + '</span>']);
+  });
+  bloco('Os dois sistemas, com o mesmo conjunto de regras',
+    'A §15 decidiu que o jogo terá o sistema normal (a ação resolve no primeiro Tick) e o P/G/R (a mesma Velocidade em três fases), com UMA regra só. A promessa é que as regras novas sejam quase neutras no normal: hoje 16,7 de amplitude, normal com as regras novas 16,9.',
+    tabela(['preset', 'leve', 'média', 'haste', 'pesada', 'amplitude', 'duelo', 'decisões/lado'], linhas));
+
+  const manobras = [
+    ['leve · rajada de 2', 'espada-curta', { golpes: 2, rajada: true, extraDaR: false, rExtra: 1 }],
+    ['leve · rajada de 3', 'espada-curta', { golpes: 3, rajada: true, extraDaR: false, rExtra: 2 }],
+    ['leve · dupla', 'espada-curta', { dupla: true }],
+    ['média · rajada de 2', 'espada-longa', { golpes: 2, rajada: true, extraDaR: false, rExtra: 1 }],
+    ['média · dupla (ciclo +1)', 'espada-longa', { dupla: true, extraDaR: false }],
+  ];
+  const NORM = clonar(REGRAS_NORMAL), PG = clonar(REGRAS_PGR);
+  const linhas2 = manobras.map(([lbl, arma, spec]) => {
+    const a = bateria({ ...S.lutador, arma, ...spec }, { ...S.lutador, arma }, NORM, CAT, op()).win;
+    const b = bateria({ ...S.lutador, arma, ...spec }, { ...S.lutador, arma }, PG, CAT, op()).win;
+    const ca = lutador({ arma, ...spec, regras: NORM, ...S.lutador }, CAT).spd;
+    const cb = lutador({ arma, ...spec, regras: PG, ...S.lutador }, CAT).spd;
+    const dif = Math.abs(a - b) * 100;
+    return [lbl, '<span class="num">' + pct(a) + '</span>', '<span class="num">' + pct(b) + '</span>',
+      '<span class="num ' + (dif < 2 ? 'bom' : 'morno') + '">' + dif.toFixed(1) + '</span>',
+      '<span class="num">' + ca + 't / ' + cb + 't</span>'];
+  });
+  bloco('As manobras nos dois sistemas',
+    'Win% contra a mesma arma golpeando normal. Verde na coluna Δ quer dizer que a regra dá o mesmo número nos dois sistemas, que é o objetivo. A dupla de arma média é a única com calibragem própria: mesma Velocidade no normal, ciclo +1 no P/G/R.',
+    tabela(['manobra', 'normal', 'P/G/R', 'Δ', 'ciclo'], linhas2));
+};
+
+BAT.escada = () => {
+  const R = S.regras;
+  const rnd = criarRng(S.semente);
+  const casos = [
+    ['um golpe (leve)', 'espada-curta', {}],
+    ['um golpe (média)', 'espada-longa', {}],
+    ['um golpe (pesada)', 'martelo-de-guerra', {}],
+    ['dupla de leves', 'espada-curta', { dupla: true }],
+    ['dupla com média (ciclo +1)', 'espada-longa', { dupla: true, extraDaR: false }],
+    ['rajada de 2 (leve)', 'espada-curta', { golpes: 2, rajada: true, extraDaR: false, rExtra: 1 }],
+    ['rajada de 3 (leve)', 'espada-curta', { golpes: 3, rajada: true, extraDaR: false, rExtra: 2 }],
+    ['Arte de grau 6', 'arte', {}],
+  ];
+  const TOM = { P: 'prep', G: 'sai', R: 'rec' };
+  const linhas = casos.map(([lbl, arma, spec]) => {
+    const D = lutador({ arma, regras: R, ...spec, ...S.lutador }, CAT);
+    const A = lutador({ arma: 'adaga', regras: R, ...S.lutador }, CAT);
+    const nua = defesaBase(D);
+    D.emAcao = true; D.nUltimo = D.nGolpes;
+    D.pend = { offs: D.offs.map((o) => o + 1), alvo: A, atraso: 0, idx: 0 };
+    const cels = [];
+    for (let t = 1; t <= Math.min(D.spd, 16); t++) {
+      D.tickAgora = t;
+      D.emGolpe = D.pend ? D.pend.offs.includes(t) : false;
+      if (D.pend && t > D.pend.offs[D.pend.offs.length - 1]) D.pend = null;
+      D.guard = 0; D.pv = 999;
+      const r = atacar(A, D, R, rnd, null);
+      const fase = D.pend ? (D.emGolpe ? 'G' : 'P') : 'R';
+      cels.push('<span class="' + TOM[fase] + '">' + fase + (nua - r.defesa ? '&minus;' + (nua - r.defesa) : '') + '</span>');
+    }
+    return [lbl, '<span class="num">' + D.spd + 't</span>', cels.join(' ')];
+  });
+  bloco('A escada de penalidades, Tick a Tick',
+    'A Defesa PERDIDA em cada Tick da ação, com os números do painel. Preparo &minus;2 &middot; Golpe &minus;4 (o dobro) &middot; Recuperação &minus;2 por golpe dado. Some a isso &minus;2 por ataque recebido, que acumula sem teto e só zera quando o ciclo fecha. Mexa em <b>Golpe &middot; DV</b> no painel e volte aqui.',
+    tabela(['ação', 'ciclo', 'a escada, Tick a Tick'], linhas));
 };
 
 // ===================== duelo narrado + trilho =====================

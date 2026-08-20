@@ -984,11 +984,13 @@ dupla** e **A cadeia de ataques**, e o painel ganhou dois grupos: **O Tick do Go
 penalidades de DV) e **Golpes múltiplos** (os dados da dupla e o freio da cadeia). Os botões
 **P/G/R (19/08)** e **K1 (18/08)** no topo do painel trocam a régua inteira de uma vez.
 
-> **O motor está em dia desde 20/08** (Fase 1 do plano da §15): a escada, a rajada, a dupla e a
-> Centelha ×1 estão em `scripts/lib-tempo.mjs`, com os presets `REGRAS_HOJE`, `REGRAS_NORMAL`,
-> `REGRAS_PGR` e `REGRAS_K1`. Duas baterias novas: `--so U` (as regras nos dois sistemas) e
-> `--so V` (a escada Tick a Tick). `--legado` volta ao regime antigo (Pressão em dobro e Centelha
-> ×2) e reproduz as tabelas das §2 a §9. **A bancada ainda mostra a régua de 19/08**: é a Fase 3.
+> **O motor e a bancada estão em dia desde 20/08** (Fases 1 a 3 do plano da §15): a escada, a
+> rajada, a dupla e a Centelha ×1 estão em `scripts/lib-tempo.mjs`, com os presets `REGRAS_HOJE`,
+> `REGRAS_NORMAL`, `REGRAS_PGR` e `REGRAS_K1`. Baterias novas: `--so U` (as regras nos dois
+> sistemas) e `--so V` (a escada Tick a Tick). Na bancada, o **seletor de sistema** no topo do
+> painel troca entre os quatro presets, e as baterias **Os dois sistemas** e **A escada, Tick a
+> Tick** medem o que as §14.11 a §14.13 decidiram. `--legado` volta ao regime antigo (Pressão em
+> dobro e Centelha ×2) e reproduz as tabelas das §2 a §9.
 
 
 ---
@@ -1306,10 +1308,12 @@ para as tabelas antigas). Critério de pronto: reproduzir as tabelas das §14.11
 sistemas, a rajada nos dois, a dupla nos dois. As baterias Q/R/S/T de 19/08 continuam existindo
 como registro.
 
-**Fase 3 · A bancada.** O painel ganha o seletor de **sistema** (normal × P/G/R), que aplica as
-mesmas regras sobre a base escolhida; os cartões das §14.11 a §14.13 entram na aba de regras; e
-uma bateria "os dois sistemas lado a lado". O smoke (`test-bench-tempo.mjs`) cobre o seletor.
-A partir daqui a bancada volta a ser a verdade única, e o aviso da §14.10 sai.
+**Fase 3 · A bancada. FEITA em 20/08.** O painel ganhou o seletor de **sistema** com os quatro
+presets, cinco cartões novos na aba de regras (os dois sistemas, a escada, a rajada, a dupla e a
+Centelha ×1), e duas baterias: **Os dois sistemas** (o perfil dos três presets mais as manobras
+lado a lado, com a coluna Δ verde quando a regra dá o mesmo número nos dois) e **A escada, Tick a
+Tick** (a Defesa perdida em cada Tick, pintada por fase). O smoke cobre o seletor e as baterias.
+A bancada voltou a ser a verdade única.
 
 **Fase 4 · O capítulo IX** (quando as pendências de decisão fecharem). As regras em moeda comum
 entram no capítulo **valendo já no sistema normal**: a escada, a rajada, a dupla nova (que
@@ -1333,8 +1337,8 @@ K21 (versáteis) e K11 (Alabarda/Maça) são decisões de regra e catálogo; o m
 ficar prontos antes delas. K14 e K21 bloqueiam a Fase 5 do catálogo; K12 e K17 bloqueiam partes
 do texto da Fase 4.
 
-**Ordem recomendada:** 1 → 2 → 3 agora, na sequência; 4 quando K12/K17 fecharem; 5 e 6 combinando
-com a frente da mesa.
+**Estado:** Fases 1, 2 e 3 **feitas** em 20/08. A 4 espera K12/K17; a 5 e a 6 dependem de combinação
+com a frente da mesa (e a 5, do K21 para o catálogo das versáteis).
 
 ---
 
