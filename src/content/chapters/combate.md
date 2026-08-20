@@ -54,7 +54,7 @@ A Defesa é um valor **fixo** e **passivo** — o alvo não rola para se defende
 
 Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha **1 Margem**, e cada Margem vira **+1d6 de dano**. Um acerto raspando arranha; um acerto folgado despedaça.
 
-<p class="muted">A <strong>Centelha</strong> soma <strong>+2 por ponto</strong> dos dois lados — ao ataque e a todas as defesas. Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda.</p>
+<p class="muted">A <strong>Centelha</strong> soma <strong>+1 por ponto</strong> dos dois lados: ao ataque e a todas as defesas. Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda, e cada tier vale um degrau de modificador.</p>
 
 ### Empunhadura dupla: um ataque por mão
 
