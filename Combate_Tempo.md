@@ -973,8 +973,10 @@ enquanto ele não souber escolher entre Esquiva e Bloqueio.
 node scripts/sim-ticks.mjs --so Q     a régua P/G/R contra hoje e contra o K1
 node scripts/sim-ticks.mjs --so R     o par: DV no ciclo × DV no Tick do Golpe
 node scripts/sim-ticks.mjs --so S     empunhadura dupla
-node scripts/sim-ticks.mjs --so T     a cadeia de ataques
-node scripts/sim-ticks.mjs --legado   o regime antigo da Pressão, que reproduz as §2 a §9
+node scripts/sim-ticks.mjs --so T     a cadeia de ataques (a geometria de 19/08)
+node scripts/sim-ticks.mjs --so U     as regras de 20/08 nos DOIS sistemas
+node scripts/sim-ticks.mjs --so V     a escada de penalidades, Tick a Tick
+node scripts/sim-ticks.mjs --legado   Pressão em dobro e Centelha ×2: reproduz as §2 a §9
 ```
 
 Na bancada, os quatro botões novos são **A régua P/G/R**, **O par: ciclo × Golpe**, **Empunhadura
@@ -982,10 +984,11 @@ dupla** e **A cadeia de ataques**, e o painel ganhou dois grupos: **O Tick do Go
 penalidades de DV) e **Golpes múltiplos** (os dados da dupla e o freio da cadeia). Os botões
 **P/G/R (19/08)** e **K1 (18/08)** no topo do painel trocam a régua inteira de uma vez.
 
-> **Atenção:** o motor e a bancada implementam a régua de **19/08** (`golpeDV 6`, sem custo de
-> ciclo, cadeia `P→G→P→G→R`). As decisões de 20/08 (a escada da §14.11, a rajada da §14.12 e a
-> dupla da §14.13) foram medidas num motor estendido à parte e **ainda não foram portadas**: é
-> parte do K5. Até lá, os botões acima reproduzem as §14.1 a §14.10, não as §14.11 a §14.13.
+> **O motor está em dia desde 20/08** (Fase 1 do plano da §15): a escada, a rajada, a dupla e a
+> Centelha ×1 estão em `scripts/lib-tempo.mjs`, com os presets `REGRAS_HOJE`, `REGRAS_NORMAL`,
+> `REGRAS_PGR` e `REGRAS_K1`. Duas baterias novas: `--so U` (as regras nos dois sistemas) e
+> `--so V` (a escada Tick a Tick). `--legado` volta ao regime antigo (Pressão em dobro e Centelha
+> ×2) e reproduz as tabelas das §2 a §9. **A bancada ainda mostra a régua de 19/08**: é a Fase 3.
 
 
 ---

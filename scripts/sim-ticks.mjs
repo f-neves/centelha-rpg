@@ -18,8 +18,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
-  REGRAS_PADRAO, REGRAS_PGR, comRegras, montarArma, montarArmadura,
-  bateria, refrega, roundRobin, porClasse, bateriaDistancia, criarRng, lutador, cena,
+  REGRAS_PADRAO, REGRAS_PGR, REGRAS_HOJE, REGRAS_NORMAL, comRegras, montarArma, montarArmadura,
+  bateria, refrega, roundRobin, porClasse, bateriaDistancia, criarRng, lutador, cena, atacar,
 } from './lib-tempo.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -35,7 +35,7 @@ const SO = ARG.so ? new Set(ARG.so.split(',').map((s) => s.trim().toUpperCase())
 const quer = (letra) => !SO || SO.has(letra);
 // A Pressão em dobro era um bug do motor (K13). O padrão agora é o correto, −2 por ataque;
 // `--legado` volta ao regime antigo, que é o das tabelas publicadas no `Combate_Tempo.md`.
-const LEGADO = ARG.legado ? { pressaoDupla: true } : {};
+const LEGADO = ARG.legado ? { pressaoDupla: true, centelhaMult: 2 } : {};
 const M = (r) => comRegras(r, LEGADO);
 
 // ---------------------------------------------------------------- catálogo
@@ -86,8 +86,8 @@ L('Lutador padrão: Atributo+Habilidade 10, Centelha 1, Vigor 4, Força 4, PV 37
 L(`Preparo por classe: ${CLASSES.map((c) => `${c} ${REGRAS_PADRAO.preparo[c]}`).join(' · ')}  (P + R = a Velocidade de hoje)`);
 L('O robô é ganancioso: usa toda regra nova sempre que ela é legal.');
 L(ARG.legado
-  ? 'MODO LEGADO: Guarda sob pressão cobrada em DOBRO (−4 por ataque), como nas tabelas antigas.'
-  : 'Guarda sob pressão a −2 por ataque, como o capítulo IX escreve (K13 corrigido em 19/08).');
+  ? 'MODO LEGADO: Pressão em DOBRO (−4/ataque) e Centelha ×2, como nas tabelas de antes de 20/08.'
+  : 'Pressão −2 por ataque (K13) e Centelha ×1 no ataque e nas defesas (K23), como o site.');
 
 // ---- A) sanidade ---------------------------------------------------------
 if (quer('A')) {
@@ -419,4 +419,74 @@ if (quer('T')) {
         + `${`${pct(s.win)} em ${s.ticks.toFixed(1)}t`.padEnd(18)} ${pct(l.win)} em ${l.ticks.toFixed(1)}t`);
     }
   }
+}
+
+
+// ---- U) os dois sistemas, com o mesmo conjunto de regras -----------------
+// A §15 do Combate_Tempo.md decidiu que o jogo terá o sistema normal e o P/G/R, com UMA
+// regra só. Esta bateria é o teste dessa promessa: a mesma regra medida nos dois lados.
+if (quer('U')) {
+  T('U) Os dois sistemas · as regras de 20/08 valem no normal e no P/G/R?');
+  L('  O sistema normal resolve tudo no primeiro Tick; o P/G/R parte a Velocidade em três fases.');
+  L('  As regras (escada, rajada, dupla, dívida) são as mesmas, escritas em Ticks e dados.');
+  L();
+  L(`  ${'preset'.padEnd(26)} ${CLASSES.map((k) => k.padStart(6)).join(' ')}   amp    duelo espelho de espada longa`);
+  for (const [lbl, R] of [['hoje, sem regra nova', REGRAS_HOJE], ['normal + regras de 20/08', REGRAS_NORMAL], ['P/G/R + regras de 20/08', REGRAS_PGR]]) {
+    const d = bateria({ arma: 'espada-longa' }, { arma: 'espada-longa' }, M(R), CAT, op);
+    linhaPerfil(lbl, perfil(M(R)),
+      `${d.ticks.toFixed(1)}t · ${(d.declsPorLado + d.foraPorDuelo / 2).toFixed(2)} decisões/lado`);
+  }
+  L();
+  L('  As manobras, nos dois sistemas (win% contra a mesma arma golpeando normal):');
+  L();
+  L(`  ${'manobra'.padEnd(34)} ${'normal'.padStart(9)} ${'P/G/R'.padStart(9)}   ciclo (normal / P/G/R)`);
+  const manobras = [
+    ['leve · rajada de 2', 'espada-curta', { golpes: 2, rajada: true, extraDaR: false, rExtra: 1 }],
+    ['leve · rajada de 3', 'espada-curta', { golpes: 3, rajada: true, extraDaR: false, rExtra: 2 }],
+    ['leve · dupla', 'espada-curta', { dupla: true }],
+    ['média · rajada de 2', 'espada-longa', { golpes: 2, rajada: true, extraDaR: false, rExtra: 1 }],
+    ['média · dupla (ciclo +1)', 'espada-longa', { dupla: true, extraDaR: false }],
+  ];
+  for (const [lbl, arma, spec] of manobras) {
+    const cels = [REGRAS_NORMAL, REGRAS_PGR].map((R) => pct(bateria({ arma, ...spec }, { arma }, M(R), CAT, op).win).padStart(9));
+    const ciclos = [REGRAS_NORMAL, REGRAS_PGR].map((R) => lutador({ arma, ...spec, regras: M(R) }, CAT).spd);
+    L(`  ${lbl.padEnd(34)} ${cels.join(' ')}   ${ciclos[0]}t / ${ciclos[1]}t`);
+  }
+  L();
+  L('  (a dupla de arma média é a ÚNICA regra com calibragem diferente por sistema: mesma');
+  L('   Velocidade no normal, ciclo +1 no P/G/R. Ver §15.2.)');
+}
+
+// ---- V) a escada de penalidades, Tick a Tick ----------------------------
+if (quer('V')) {
+  T('V) A escada · quanto de Defesa cada fase custa, Tick a Tick.');
+  L('  Preparo −2 · Golpe −4 (o dobro) · Recuperação −2 POR GOLPE DADO. Mais −2 por ataque');
+  L('  recebido, que acumula sem teto e só zera quando o ciclo fecha.');
+  L();
+  const rnd = criarRng(SEMENTE);
+  for (const [lbl, arma, spec] of [
+    ['um golpe (leve)', 'espada-curta', {}],
+    ['um golpe (média)', 'espada-longa', {}],
+    ['dupla de leves', 'espada-curta', { dupla: true }],
+    ['rajada de 3 (leve)', 'espada-curta', { golpes: 3, rajada: true, extraDaR: false, rExtra: 2 }],
+    ['Arte de grau 6', 'arte', {}],
+  ]) {
+    const D = lutador({ arma, regras: PGR, ...spec }, CAT);
+    const A = lutador({ arma: 'adaga', regras: PGR }, CAT);
+    D.emAcao = true; D.nUltimo = D.nGolpes;
+    D.pend = { offs: D.offs.map((o) => o + 1), alvo: A, atraso: 0, idx: 0 };
+    const linha = [];
+    for (let t = 1; t <= Math.min(D.spd, 14); t++) {
+      D.tickAgora = t;
+      D.emGolpe = D.pend ? D.pend.offs.includes(t) : false;
+      if (D.pend && t > D.pend.offs[D.pend.offs.length - 1]) D.pend = null;
+      D.guard = 0; D.pv = 999;
+      const r = atacar(A, D, PGR, rnd, null);
+      const fase = D.pend ? (D.emGolpe ? 'G' : 'P') : 'R';
+      linha.push(`${fase}${-(22 - 1 - r.defesa)}`);
+    }
+    L(`  ${lbl.padEnd(20)} ${linha.join(' · ')}`);
+  }
+  L();
+  L('  (Defesa nua 21: A+H 10 ×2 mais Centelha 1. A leitura é a Defesa PERDIDA em cada Tick.)');
 }

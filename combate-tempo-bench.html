@@ -167,31 +167,41 @@ pre.log b { color: var(--acento); }
 // O motor NÃO carrega dado nenhum: quem chama passa o catálogo (armas.json, armaduras.json)
 // já lido. Assim ele roda igual no Node e no navegador.
 //
-// A ação tem TRÊS fases, P/G/R (decidido em 19/08/2026):
-//   · Preparo    o gesto que sobe, visível e interrompível até o Tick anterior ao Golpe;
-//   · Golpe      UM Tick, não cancelável, e onde a Defesa de quem ataca despenca;
-//   · Recuperação o pós-golpe, sem refresh de guarda, mas onde cabe a ação fora de hora.
-// `P + G + R` é a Velocidade de hoje, então a cadência não muda.
+// ---------------------------------------------------------------------------------------
+// DOIS SISTEMAS, UM CONJUNTO DE REGRAS (§15 do Combate_Tempo.md)
 //
-// O que ele implementa, além das regras do capítulo IX:
-//   · a agenda de Golpes (`offs`), que serve ao golpe simples, à empunhadura dupla e à cadeia;
-//   · a guarda que se refaz no golpe, na declaração ou no fim da Recuperação;
-//   · a Defesa do Tick do Golpe (`golpeDV`) e o custo de estar comprometido (`preparoDV`/`recupDV`);
-//   · redirecionar o golpe quando o alvo cai antes de ele sair;
-//   · a ação fora de hora, paga com Ticks do próprio futuro, e o abortar de dentro do Preparo;
-//   · a interrupção (espelho, atraso fixo ou cancelamento), e o golpe normal interrompendo;
-//   · a carga voluntária (comprar Preparo por bônus na rolagem);
-//   · o aparo desesperado (a variante que compra Defesa, e que os testes reprovaram).
+// O jogo terá dois sistemas de tempo, à escolha do mestre, e as MESMAS regras nos dois:
+//   · o **normal**, o de hoje: a ação custa a Velocidade e resolve no primeiro Tick
+//     (`usarPreparo: false`, e todo Preparo vira 0);
+//   · o **P/G/R**: a mesma Velocidade partida em Preparo, Golpe e Recuperação.
+// Tudo o que foi decidido (a escada de penalidades, a rajada, a dupla, a dívida de Ticks) é
+// escrito em moeda comum — Ticks, dados e pontos de Defesa — e vale nos dois. Os presets
+// prontos são REGRAS_HOJE, REGRAS_NORMAL, REGRAS_PGR e REGRAS_K1.
 //
+// A ESCADA (§14.11). Estar comprometido com uma ação custa Defesa, e a moeda é o −2 da Guarda
+// sob pressão do capítulo IX:
+//   · Preparo −2 · Golpe −4 (o dobro) · Recuperação −2 POR GOLPE DADO.
+// Mais os −2 por ataque recebido, que acumulam sem teto e só zeram quando o ciclo fecha.
+//
+// A AGENDA (`offs`). Em que Ticks os golpes caem, contados da declaração. Ela serve aos três
+// casos com o mesmo código: golpe simples `[P]`, empunhadura dupla `[P, P+1]` e rajada
+// `[P, P+1, P+2]` (§14.12 e §14.13).
+//
+// ---------------------------------------------------------------------------------------
 // AVISO SOBRE A PRESSÃO. Até 19/08/2026 este motor cobrava a Guarda sob pressão em DOBRO:
 // `guard += pressao` mais `efDef − pressao * guard` dá −4 por ataque, e o capítulo IX
 // (`combate.md:233`) escreve −2. O padrão agora é o correto; `pressaoDupla: true` reproduz o
 // regime antigo, e é o que `sim-ticks.mjs --legado` usa para reconferir as tabelas publicadas
 // antes dessa data. Ver K13 no `Pendencias.md`.
 //
+// A CENTELHA soma **+1** por ponto no ataque e nas defesas (K23), como `regras.json`,
+// `defesas.md` e `centelha.md`. Até 20/08 este motor usava ×2; em espelho o efeito se cancela,
+// então a direção dos resultados antigos se mantém, mas os absolutos mudam.
+//
 // LIMITE CONHECIDO. O motor tem UMA Defesa e ignora a `defesaArma`, que pelo `defesas.md:67`
 // entra só no Bloqueio. Todo número de equilíbrio entre classes é, portanto, o canto em que
-// todo mundo esquiva e ninguém apara. `usarDefesaArma: true` mostra o canto oposto. Ver K14.
+// todo mundo esquiva e ninguém apara. `usarDefesaArma: true` mostra o canto oposto. Ver K14,
+// e o K25 (a Defesa da arma e a do escudo somam na ficha).
 
 // ---------------------------------------------------------------- gerador semeado
 // Um teste de balanceamento que muda de resposta a cada rodada não serve para decidir nada.
@@ -228,6 +238,7 @@ const REGRAS_PADRAO = {
   redirecionar: true,
   pressao: 2,                 // Guarda sob pressão: −2 por ataque feito ou recebido
   pressaoDupla: false,        // true = o regime antigo, com a Pressão cobrada em dobro (ver K13)
+  centelhaMult: 1,            // a Centelha soma +1 no ataque e nas defesas (K23; era 2 até 20/08)
   atacarCustaGuarda: true,    // o modelo de HOJE: o golpe que você dá soma −2 na sua guarda
   compromissoDV: 0,           // pontos de DV da ação declarada (padrão para P e para R)
   preparoDV: null,            // ...só no Preparo (null = usa compromissoDV)
@@ -239,7 +250,11 @@ const REGRAS_PADRAO = {
   golpeNormalInterrompe: 0,   // 0 | nº de Ticks | 'espelho' — o golpe da SUA vez atrasa quem está em Preparo
   duplaAlivia: 0,             // fração do agravo do Golpe que a dupla ainda sofre (0 = a outra lâmina apara)
   penDadosDupla: [1, 1],      // empunhadura dupla: dados perdidos por [mão hábil, mão inábil]
-  penDadosCadeia: [0, 1, 2, 3], // cadeia: dados perdidos por golpe da sequência
+  penDadosCadeia: [0, 1, 2, 3], // rajada: dados perdidos por golpe da sequência (o 1º é cheio)
+  modFixoDupla: [0, 0],       // modificador fixo de rolagem por mão (a Ambidestria mexe aqui)
+  empateAcerta: false,        // true = igualar a Defesa ja acerta (a convencao >=)
+  escalonar: true,            // as penalidades crescem a cada repeticao da cadeia
+  alivioOffDV: 2,             // DV devolvida no Tick do Golpe por ter algo na outra mão
   velocidade: null,           // sobrepõe o total P+G+R por classe (null = o `ticks` do catálogo)
 
   // --- fase 2: agir fora da vez
@@ -276,28 +291,49 @@ function comRegras(base, patch = {}) {
   return out;
 }
 
+/** A régua P/G/R por classe: em que Tick o golpe cai, contado da declaração. */
+const PREPARO_PGR = {
+  leve: 0, media: 1, haste: 2, pesada: 2,
+  distancia: (w) => w.ticks - 1,     // a flecha encaixada é preparo; a soltura é instantânea
+  arremesso: (w) => w.ticks - 2,     // um Tick para voltar à postura
+  arte: 8,                           // grau 6: P = 2 + nível
+};
+
 /**
- * A régua P/G/R, decidida em 19/08/2026. É a `REGRAS_PADRAO` mais:
- *   · o Tick do Golpe, com a Defesa caindo 6 (um degrau de Margem) só nele;
- *   · a ação declarada NÃO custando Defesa por si (ver §14: penalizar o Preparo é imposto
- *     que a arma leve não paga, porque ela não tem Preparo);
- *   · a guarda que se refaz no fim da Recuperação, e não no golpe;
- *   · a haste em P2 (Preparo de arma pesada, ciclo de arma média);
- *   · arco e besta com R=0, arremesso com R=1, a Arte com P = 2 + nível.
+ * As regras decididas em 20/08/2026, na forma que vale nos DOIS sistemas: a escada de
+ * penalidades, a rajada e a empunhadura dupla. É a base dos presets abaixo.
  */
-const REGRAS_PGR = comRegras(REGRAS_PADRAO, {
-  preparo: {
-    leve: 0, media: 1, haste: 2, pesada: 2,
-    distancia: (w) => w.ticks - 1,     // a flecha encaixada é preparo; a soltura é instantânea
-    arremesso: (w) => w.ticks - 2,     // um Tick para voltar à postura
-    arte: 8,                           // grau 6: P = 2 + nível
-  },
-  velocidade: { arte: 9 },             // grau 6: ciclo = nível + 3
-  guardaEm: 'declara',                 // a guarda se refaz quando o ciclo fecha
-  atacarCustaGuarda: false,            // o golpe que você dá não pesa o ciclo inteiro...
-  compromissoDV: 0,
-  golpeDV: 6,                          // ...pesa 6 de Defesa, e só no Tick em que ele sai
+const DECIDIDO_20_08 = {
+  preparoDV: 2, golpeDV: 4, recupDV: 2,   // a escada (§14.11)
+  // A escada É o custo de atacar, então a regra antiga ("o golpe que você dá soma −2 na sua
+  // guarda") sai: senão o mesmo golpe é cobrado duas vezes. E a guarda se refaz quando o ciclo
+  // fecha, não no golpe (no sistema normal os dois momentos são o mesmo Tick).
+  atacarCustaGuarda: false, guardaEm: 'declara',
+  alivioOffDV: 2,                          // segurar sem golpear alivia o Tick do Golpe
+  pressaoSegundaMao: 0,                    // a Recuperação por golpe dado já cobra o 2º golpe
+  penDadosDupla: [1, 1],                   // dupla: −1d6 nas duas mãos (§14.13)
+  penDadosCadeia: [0, 1, 2, 3],            // rajada: −1d6 acumulativo (§14.12)
+  escalonar: true,
+};
+
+/** O SISTEMA NORMAL como está hoje no site, sem nenhuma regra nova. A referência. */
+const REGRAS_HOJE = comRegras(REGRAS_PADRAO, {
+  usarPreparo: false, redirecionar: false,
+  fora: { ...REGRAS_PADRAO.fora, ligada: false }, interrupcao: 0,
 });
+
+/** O SISTEMA NORMAL com as regras de 20/08 (escada, rajada, dupla, dívida de Ticks). */
+const REGRAS_NORMAL = comRegras(REGRAS_PADRAO, { usarPreparo: false, ...DECIDIDO_20_08 });
+
+/** O SISTEMA P/G/R com as mesmas regras. */
+const REGRAS_PGR = comRegras(REGRAS_PADRAO, {
+  preparo: PREPARO_PGR,
+  velocidade: { arte: 9 },             // grau 6: ciclo = nível + 3
+  ...DECIDIDO_20_08,
+});
+
+/** A régua de 18/08 (o K1), guardada para reproduzir as tabelas das §2 a §9. */
+const REGRAS_K1 = REGRAS_PADRAO;
 
 // ---------------------------------------------------------------- catálogo → motor
 /** Traduz uma linha de `armas.json` para o que o motor precisa. */
@@ -351,19 +387,24 @@ function lutador(spec, cat) {
     const ultimo = offs[offs.length - 1];
     const Rbase = Math.max(0, total - P - 1);         // a Recuperação da classe
     // Por padrão os Golpes extras COMEM a Recuperação; com `extraDaR: false` eles a empurram.
-    const t2 = spec.extraDaR === false ? ultimo + 1 + Rbase : Math.max(total, ultimo + 1);
+    const rx = spec.rExtra || 0;
+    const t2 = spec.extraDaR === false ? ultimo + 1 + Rbase + rx : Math.max(total, ultimo + 1) + rx;
     return { offs, total: t2 };
   })();
 
   return {
     // ficha
-    nome: spec.rotulo || w.nome, arma: w, armadura: a, usarDefArma: !!R.usarDefesaArma,
+    nome: spec.rotulo || w.nome, regrasCentelha: R.centelhaMult ?? 1, off: spec.off || (spec.dupla ? 'arma' : null), escudo: spec.escudo || null, arma: w, armaOff: spec.armaOff ? (cat.armas[spec.armaOff] || null) : null, armadura: a, usarDefArma: !!R.usarDefesaArma,
     ah: spec.ah ?? 10, centelha: spec.centelha ?? 1, vigor: spec.vigor ?? 4,
     forca: spec.forca ?? 4, pvMax: spec.pv ?? 37, pv: spec.pv ?? 37,
     // tempo
     spd: agenda.total + cargaN, prep: prepBase + cargaN,
     offs: agenda.offs, porTempo, golpes: golpesN,
-    tipo: cad > 1 ? 'cadeia' : (golpesN > 1 ? 'dupla' : 'simples'),
+    // A dupla e a rajada compartilham a geometria (Ticks de Golpe seguidos) e diferem na régua:
+    // a dupla é −1d6 nas duas mãos, a rajada é o primeiro golpe cheio e −1d6 acumulativo.
+    tipo: cad > 1 ? 'cadeia' : (spec.rajada ? 'rajada' : (golpesN > 1 ? 'dupla' : 'simples')),
+    porRep: cad > 1 ? 1 : Math.max(1, agenda.offs.length),
+    nGolpes: agenda.offs.length * porTempo,
     totalGolpes: agenda.offs.length * porTempo, carga: spec.carga || null,
     // estado
     guard: 0, guardaTravada: false, proxDecl: 0, pend: null,
@@ -383,7 +424,7 @@ const noGolpe = (pend, t) => !!pend && pend.offs.includes(t);
 const emJanela = (pend, t) => !!pend && !pend.offs.includes(t) && pend.offs.some((x) => x > t);
 const atrasar = (pend, k) => { pend.offs = pend.offs.map((x) => x + k); };
 
-const defesaBase = (c) => c.ah * 2 + c.centelha * 2 - c.armadura.penalidade
+const defesaBase = (c) => c.ah * 2 + c.centelha * (c.regrasCentelha ?? 1) - c.armadura.penalidade
   + (c.usarDefArma ? c.arma.defesaArma : 0);
 const dadosPool = (c) => Math.floor(c.ah / 2);
 
@@ -396,50 +437,45 @@ function atacar(A, D, R, rnd, log = null) {
   A.golpesFeitos++;
   // A guarda tem duas parcelas: o que você RECEBEU no ciclo (contado, −2 cada) e o que a sua
   // própria ação declarada custa (absoluto, igual em P e em R, mais fundo no Tick do Golpe).
+  // A penalidade de estar atacando. Escalona com a REPETICAO (a cadeia prepara de novo a cada
+  // golpe) e a Recuperacao escalona com quantos golpes foram dados.
   let comprom = 0;
   if (D.emAcao) {
-    if (!D.emGolpe) comprom = D.pend ? (R.preparoDV ?? R.compromissoDV) : (R.recupDV ?? R.compromissoDV);
-    else {
-      // Com arma na outra mão, o Tick do Golpe não agrava tudo: o segundo gume ainda apara.
-      const base = R.preparoDV ?? R.compromissoDV;
-      const al = D.tipo === 'dupla' ? (R.duplaAlivia ?? 1) : 1;
-      comprom = base + (R.golpeDV - base) * al;
+    const tAgora = D.tickAgora;
+    if (D.pend) {
+      const jaDados = D.pend.offs.filter((x) => x < tAgora).length;
+      const k = R.escalonar ? Math.floor(jaDados / D.porRep) + 1 : 1;
+      const pk = (R.preparoDV ?? 0) * k;
+      if (!D.emGolpe) comprom = pk;
+      else {
+        // A outra mao continua guardando enquanto a arma principal esta comprometida.
+        const alivio = (D.off && D.tipo !== 'dupla') ? (R.alivioOffDV || 0) : 0;
+        comprom = Math.max(pk, (R.golpeDV ?? 0) * k - alivio);
+      }
+    } else {
+      comprom = (R.recupDV ?? 0) * (R.escalonar ? (D.nUltimo || 1) : 1);
     }
   }
-  let efDef = defesaBase(D) - R.pressao * D.guard - comprom;
+  let efDef = defesaBase(D) + (D.escudo ? D.escudo.bloq : 0) - R.pressao * D.guard - comprom;
   if (D.emGolpe) { A.golpesNoGolpe++; D.sofridosNoGolpe++; }
   D.somaDef = (D.somaDef || 0) + efDef; D.nDef = (D.nDef || 0) + 1;
   if (D.emGolpe) { D.somaDefG = (D.somaDefG || 0) + efDef; D.nDefG = (D.nDefG || 0) + 1; }
-
-  // A variante reprovada: comprar Defesa com Ticks. Fica aqui para a bancada poder
-  // ligar e ver o combate dobrar de tamanho.
-  if (R.aparo && D.pv > 0 && D.pv / D.pvMax < R.aparo.limiar
-      && D.divida + R.aparo.custo <= (R.aparo.teto ?? 99)
-      && !(R.aparo.umaPorJanela && D.aparosNaJanela > 0)
-      && !(R.aparo.umaPorCena && D.aparosFeitos > 0)) {
-    efDef += R.aparo.bonus;
-    D.divida += R.aparo.custo; D.dividaMax = Math.max(D.dividaMax, D.divida);
-    D.aparosGastos += R.aparo.custo; D.aparosFeitos++; D.aparosNaJanela++;
-    D.proxDecl += R.aparo.custo;
-    if (D.pend) D.pend.resolveEm += R.aparo.custo;
-    if (log) log(`${D.nome} apara na marra: +${R.aparo.bonus} de Defesa por ${R.aparo.custo} Ticks de dívida.`);
-  }
 
   // Rolagem: [(Atributo + Habilidade) / 2]d6, +2 se ímpar, + acerto da arma + Centelha×2
   // − penalidade de armadura − penalidade da arma, − a penalidade da ação fora de hora,
   // + o bônus da carga voluntária.
   let total = 0;
   for (let i = 0; i < Math.max(1, dadosPool(A) - (A.penDados || 0)); i++) total += rnd.d6();
-  total += (A.ah % 2 ? 2 : 0) + A.arma.acerto + A.centelha * 2
+  total += (A.ah % 2 ? 2 : 0) + A.arma.acerto + A.centelha * (R.centelhaMult ?? 1)
     - A.armadura.penalidade - A.arma.pen
-    - (A.penalidadeAgora || 0)
+    - (A.penalidadeAgora || 0) + (A.modFixo || 0) - (A.escudo ? A.escudo.pen : 0)
     + (A.carga ? (A.carga.n * R.carga.bonusPorTick) : 0);
 
   const qa = QA_ARMA[A.arma.classe] || QA_ARMA.media;
   const qaMargem = qa.b + (QA_ARMAD[D.armadura.classe] || QA_ARMAD.nenhuma).b;
   let dano = 0, acertou = false, margem = 0, raspao = false;
 
-  if (total > efDef) {
+  if (total > efDef - (R.empateAcerta ? 1 : 0)) {
     acertou = true;
     margem = Math.floor((total - efDef) / 6);
     const cat = CAT_DANO[A.arma.modo] || 'impacto';
@@ -528,7 +564,7 @@ function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } = {}) {
       if (R.guardaEm === 'declara') {
         if (c.guardaTravada) c.guardaTravada = false; else c.guard = 0;
       }
-      c.emAcao = true;
+      c.emAcao = true; c.nUltimo = c.nGolpes;
       c.divida = 0; c.aparosNaJanela = 0; c.ticksDevidos = 0; c.foraNaJanela = 0;
       if (log) log(`[T${t}] ${c.nome} declara contra ${alvo.nome}. Golpe em T${c.pend.offs.join(', T')}, volta a declarar no T${c.proxDecl}.`);
     }
@@ -608,12 +644,16 @@ function cena(timeA, timeB, R, rnd, { narrar = false, tetoTicks = 4000 } = {}) {
       }
       for (let m = inicio; m < inicio + porTick; m++) {
         c.maoAtual = m;
-        const regua = c.tipo === 'cadeia' ? R.penDadosCadeia : R.penDadosDupla;
+        const regua = c.tipo === 'dupla' ? R.penDadosDupla : R.penDadosCadeia;
         c.penDados = c.totalGolpes > 1 ? regua[Math.min(m, regua.length - 1)] : 0;
+        c.modFixo = (c.tipo === 'dupla' && R.modFixoDupla) ? (R.modFixoDupla[Math.min(m, R.modFixoDupla.length - 1)] || 0) : 0;
+        const armaDaVez = c.arma;
+        if (c.tipo === 'dupla' && m > 0 && c.armaOff) c.arma = c.armaOff;
         if (log) log(`[T${t}] sai o golpe de ${c.nome}${c.golpes > 1 ? ` (mão ${m === 0 ? 'hábil' : 'inábil'})` : ''}.`);
         atacar(c, vitima, R, rnd, log);
+        c.arma = armaDaVez;
       }
-      c.penDados = 0; c.maoAtual = 0;
+      c.penDados = 0; c.modFixo = 0; c.maoAtual = 0;
     }
 
 
@@ -748,7 +788,7 @@ function cenaDistancia(arq, gue, R, rnd, { dist = 60, mPorTick = 7, contato = 2,
       if (R.guardaEm === 'declara') {
         if (c.guardaTravada) c.guardaTravada = false; else c.guard = 0;
       }
-      c.emAcao = true;
+      c.emAcao = true; c.nUltimo = c.nGolpes;
       c.divida = 0; c.foraNaJanela = 0; c.ticksDevidos = 0;
       if (log) log(`[T${t}] ${c.nome} declara. Golpe em T${c.pend.offs[0]}.`);
     }
