@@ -157,7 +157,7 @@ aparece**, e você pagou o preço de escrever a regra por nada.
 ### 2.4. O que a régua NÃO muda
 
 - **A Iniciativa** continua como está. O atraso incide na **declaração**, não na resolução.
-- **O Deslocamento livre** continua grátis durante qualquer ação, inclusive durante o Preparo.
+- **O Deslocamento livre** continua grátis durante qualquer ação, inclusive durante o Preparo. *(Superado na Recuperação: pela §14.6 ele passa a custar Ticks ali; K20.)*
 - **A empunhadura dupla** rende dois golpes na mesma ação, que saem juntos no fim do Preparo.
 - **Quase-Acerto, Absorção, gate de Perfuração e Couraça de Porte** não são tocados.
 - **O Fôlego** está desligado do site desde 18/08 e não participa de nada disto.
@@ -400,7 +400,7 @@ Quatro já medidas, cinco ainda por decidir.
    as duas no mesmo gatilho, uma de cada. *Sem decisão.*
 7. **Abortar.** Duas categorias: **Firme** (uma vez declarada, sai: ataques, Artes, Salto) e
    **Solta** (abortável a qualquer Tick, perdendo o que foi gasto: Corrida, ações longas). O
-   capítulo IX já diz isso da Corrida e do Salto sem generalizar. *Sem decisão.*
+   capítulo IX já diz isso da Corrida e do Salto sem generalizar. *Fechada pela §14.6: quem decide é a FASE, não o tipo da ação; as categorias somem.*
 8. **A dívida na virada da cena.** Proposta: morre com a cena, como a guarda. *Sem decisão.*
 9. **O golpe normal interrompe?** No motor, não: só a ação fora de hora atrasa. A alternativa é um
    empurrão passivo pequeno (1 Tick) em qualquer acerto, e o espelho só para quem pagou. *Sem
@@ -541,7 +541,7 @@ de olhar próprio.
 | **Projétil rápido** | inalterado, e ganha uma leitura nova: você reage ao arqueiro, não à flecha (§7) |
 | **Corrida e Salto** | viram os dois exemplos das categorias Solta e Firme (borda 7) |
 | **Regra de Horda** | esquadrão com P=0 |
-| **Empunhadura dupla** | os dois golpes saem juntos, no fim do Preparo |
+| **Empunhadura dupla** | *(superado pela §14.13)* um Tick de Golpe por mão; par de leves no mesmo ciclo, média a +1 |
 | **Fôlego** | desligado do site; não participa |
 
 ---
@@ -580,7 +580,7 @@ isso que o desvio medido é +1,7 e não +25: o que parece um roubo na hora se co
 O princípio: **o papel fica com a regra grossa, jogável de cabeça; a tela fica com a régua fina.**
 As duas dão o mesmo resultado nos casos comuns.
 
-- **A barra de dois tons** por combatente no trilho compartilhado, como o desenho da §11. O mestre
+- **A barra de dois tons** *(três, desde a §14: Preparo, Golpe, Recuperação)* por combatente no trilho compartilhado, como o desenho da §11. O mestre
   **olha** e vê "o martelo cai no Tick 21, você joga no 19".
 - **Destaque de quem está em janela agora**, e o botão de interromper que só acende quando cabe.
 - **A conta do desvio de área** com rota pelo hexágono mais barato: o Grid já sabe onde todo mundo
@@ -625,6 +625,13 @@ fora da vez custa a Velocidade da ação e a sua guarda não se refaz.* Duas fra
 > a Guarda sob pressão estava cobrada em dobro (K13) e a Defesa da arma nunca foi modelada
 > (K14). Os números desta seção estão no regime **corrigido**; os das seções 2 a 9, não.
 > `node scripts/sim-ticks.mjs --legado` reproduz o regime antigo.
+>
+> **Dentro da própria §14 há duas camadas.** As §14.1 a §14.10 foram medidas com a régua de
+> **19/08** (a ação sem custo de DV próprio, Golpe −6); as §14.11 a §14.13, decididas em
+> **20/08**, trocaram isso pela **escada** (Preparo −2 · Golpe −4 · Recuperação −2 por golpe) e
+> pela **rajada**. Onde discordarem, **valem as §14.11 a §14.13**. As superadas estão marcadas
+> (§14.2, §14.4, §14.5). E o motor e a bancada **ainda implementam a régua de 19/08**: portar a
+> escada, a rajada e a dupla nova é parte do K5.
 
 ### 14.1. As três fases
 
@@ -797,10 +804,12 @@ Três leituras:
   levar o golpe adiante pode, com um **teste de Virtude** (ver K12 no `Pendencias.md`: como se
   conta um teste de Virtude ainda não está decidido).
 - **No Golpe:** nada. Não se aborta, não se reage, não se interrompe.
-- **Na Recuperação:** o Deslocamento livre; uma **ação fora de hora** do catálogo da §4.3, pagando
-  a Velocidade dela em dívida, uma por ação; uma **Técnica Reflexiva**, que custa 0 Ticks e se paga
-  em Energia; e testes que envolvem ação (pulo, acrobacia, oferecer ajuda, se interpor), todos a
-  **−1d6**. Não se declara ação nova, não se refaz a guarda, e não há o que abortar.
+- **Na Recuperação:** uma **ação fora de hora** do catálogo da §4.3, pagando a Velocidade dela em
+  dívida, uma por ação; uma **Técnica Reflexiva**, que custa 0 Ticks e se paga em Energia; e testes
+  que envolvem ação (pulo, acrobacia, oferecer ajuda, se interpor), todos a **−1d6**. **O
+  deslocamento aqui não é livre** (decidido em 20/08): custa Ticks, mais caro que o desvio de
+  emergência da §5.5 (proposta: 2 Ticks por metro; K20). Não se declara ação nova, não se refaz a
+  guarda, e não há o que abortar.
 
 A assimetria é o coração da coisa, e vale escrever assim no capítulo: **no Preparo você ainda
 pode desistir; na Recuperação você já não pode, só pode pagar.**
@@ -821,19 +830,21 @@ e joga a arma leve para 74%, e nenhuma regra de reposição conserta:
 O motivo é que a ação fora de hora tem um custo que não se percebe de imediato: quem reage paga a
 Velocidade inteira e fica com a guarda travada, e a arma leve, que tem mais ocasiões de reagir, é
 quem mais se machuca usando a própria regra. **Ela é freio da arma leve, não vantagem dela.**
+*(Esta bateria rodou com a régua de 19/08 e com a Defesa da arma ligada, o canto oposto da K14:
+leia a direção e o tamanho, não as casas decimais.)*
 
 ### 14.7. O rastreio
 
 O estado de qualquer um, em qualquer Tick, é **um de cinco**, e a mesa não precisa carregar mais
-do que **dois números por pessoa**: *sai no Tick X, livre no Tick Y*. Com cadeia ou empunhadura
+do que **dois números por pessoa**: *sai no Tick X, livre no Tick Y*. Com rajada ou empunhadura
 dupla, X vira uma lista curta.
 
-| estado | | interrompível? | age fora da hora? | Defesa |
+| estado | | interrompível? | age fora da hora? | Defesa (a escada da §14.11) |
 |---|:---:|:---:|:---:|:---:|
 | livre | `·` | — | — | cheia |
-| Preparo | `▓` | **sim** | abortando, e só para mover | cheia − Pressão recebida |
-| Golpe | `█` | **não** | não | **−6 por cima** |
-| Recuperação | `░` | não | sim, pagando a Velocidade | cheia − Pressão recebida |
+| Preparo | `▓` | **sim** | abortando, e só para mover | **−2**, mais a Pressão recebida |
+| Golpe | `█` | **não** | não | **−4**, mais a Pressão recebida |
+| Recuperação | `░` | não | sim, pagando a Velocidade | **−2 por golpe dado**, mais a Pressão |
 | devendo | `◆` | — | não (uma por ação) | idem, guarda travada |
 
 ```
@@ -875,7 +886,7 @@ alter table public.combatentes
 ```
 
 `golpes` é a agenda: em que Ticks o golpe sai. Um número no caso comum, dois na empunhadura dupla,
-N na cadeia. `livre` é quando o ciclo fecha. É a mesma estrutura que o motor da bancada usa
+N na rajada. `livre` é quando o ciclo fecha. É a mesma estrutura que o motor da bancada usa
 (`offs`), o que evita duas verdades sobre a mesma coisa.
 
 **Daí sai tudo, sem guardar mais nada.** Com o `tick` da mesa e esses dois campos:
@@ -883,14 +894,14 @@ N na cadeia. `livre` é quando o ciclo fecha. É a mesma estrutura que o motor d
 | pergunta | conta |
 |---|---|
 | em que fase está? | `tick >= livre` → livre · `golpes.inclui(tick)` → **Golpe** · `tick < max(golpes)` → **Preparo** · senão **Recuperação** |
-| quanto de Defesa ele perdeu? | livre 0 · Preparo **−2** · Golpe **−4** · Recuperação **−4**, mais −2 por ataque recebido no ciclo |
+| quanto de Defesa ele perdeu? | livre 0 · Preparo **−2** · Golpe **−4** · Recuperação **−2 por golpe dado**, mais −2 por ataque recebido no ciclo |
 | dá para interromper? | está em Preparo |
 | pode agir fora da hora? | está em Recuperação, ou em Preparo abortando |
 | quanto custa reagir? | `livre − tick` mais a Velocidade da ação |
 
-<p class="nota">Os números da segunda linha são a proposta de <b>20/08/2026</b> (§14.2) e ainda não
-estão travados. Na tela eles não entram como número: entram como <b>tom</b> da célula da fita, e o
-mestre lê a Defesa efetiva no cartão do combatente, como já lê o resto.</p>
+<p class="nota">Os números da segunda linha são a escada da <b>§14.11</b>, decidida em 20/08/2026.
+Na tela eles não entram como número: entram como <b>tom</b> da célula da fita, e o mestre lê a
+Defesa efetiva no cartão do combatente, como já lê o resto.</p>
 
 **Na tela, quatro peças.**
 
@@ -913,6 +924,71 @@ um componente ao lado da fila de iniciativa que já está lá.
 
 **O mínimo, se for para fazer por partes:** a coluna `acao` mais a fita. O anel e o botão são
 ganho de mesa, mas a fita sozinha já entrega o principal, que é *ver o tempo do outro*.
+
+### 14.8. As duas descobertas do motor
+
+**K13 · A Guarda sob pressão estava cobrada em dobro.** `lib-tempo.mjs` fazia `guard += pressao` e
+descontava `pressao × guard`: **−4 por ataque**, quando o capítulo IX (`combate.md:233`) escreve
+**−2**. O parâmetro entrava ao quadrado. Está corrigido, e `--legado` reproduz o regime antigo.
+
+Não é detalhe. **A curva da §7 inverte.** Arco longo contra espada longa, a 45 metros:
+
+| | P=0 | P=2 | P=5 |
+|---|:---:|:---:|:---:|
+| com a Pressão em dobro (as tabelas da §7) | 28,3% | 13,4% | 31,9% |
+| com a Pressão correta | **11,7%** | **28,3%** | **54,0%** |
+
+Com −4, o Preparo do arco custa win rate; com −2, ele **paga**. A conclusão publicada na §7 ("cada
+ponto de Preparo custa de 5 a 13 pontos") é artefato do bug, e **o K4 não pode ser decidido antes
+disso**.
+
+**K14 · A bancada só mede o canto "todo mundo esquiva".** O motor tem **uma** Defesa e ignora a
+`defesaArma`, que pelo `defesas.md:67` entra **só no Bloqueio**
+(`Bloqueio = (Des + Bloqueio)×2 + Centelha + Esp + defesa da arma`). Ligando-a para todos, que é o
+canto oposto, o sistema de **hoje** vai de 16,3 para **50,5 pontos** de amplitude, com a haste em
+77,5% e a arma pesada de duas mãos em 27,0% (lança +2 e alabarda +2 contra montante −2 e martelo
+−2). A verdade está entre os dois cantos e depende do roteamento das Defesas pelo "como".
+
+Consequência prática: **nenhum ajuste de catálogo (o K11, Alabarda e Maça) deve sair deste motor**
+enquanto ele não souber escolher entre Esquiva e Bloqueio.
+
+### 14.9. O que a régua P/G/R deixa em aberto
+
+1. **O arqueiro fica forte demais.** 63,9% a 100 metros contra 35,8% de hoje, e por um motivo
+   estrutural: com `R=0` ele nunca passa pela fase exposta. Conversa com o K4, que está travado
+   pelo K13.
+2. **A Ambidestria** ficou sem função; os candidatos a função nova estão na §14.13 (K18).
+3. **O teste de Virtude** entrou no combate sem régua própria (K12).
+4. **A Arte sai em 86,3%** das conjurações, contra 88,2% do K1 e 99,6% de hoje (medido com a régua
+   de 19/08; reconferir com a escada). Não é tranca, mas precisa ser conferida contra a §5 e a
+   pendência 14 do Arcano.
+5. ~~A cadeia foi medida só na arma leve.~~ **Resolvido pela §14.12:** a rajada foi medida nas
+   quatro classes.
+6. **Nada disso passou por mesa.** Continua valendo o aviso do topo: o robô prova que não quebra,
+   não que é divertido.
+
+### 14.10. Como rodar
+
+```
+node scripts/sim-ticks.mjs --so Q     a régua P/G/R contra hoje e contra o K1
+node scripts/sim-ticks.mjs --so R     o par: DV no ciclo × DV no Tick do Golpe
+node scripts/sim-ticks.mjs --so S     empunhadura dupla
+node scripts/sim-ticks.mjs --so T     a cadeia de ataques
+node scripts/sim-ticks.mjs --legado   o regime antigo da Pressão, que reproduz as §2 a §9
+```
+
+Na bancada, os quatro botões novos são **A régua P/G/R**, **O par: ciclo × Golpe**, **Empunhadura
+dupla** e **A cadeia de ataques**, e o painel ganhou dois grupos: **O Tick do Golpe** (as três
+penalidades de DV) e **Golpes múltiplos** (os dados da dupla e o freio da cadeia). Os botões
+**P/G/R (19/08)** e **K1 (18/08)** no topo do painel trocam a régua inteira de uma vez.
+
+> **Atenção:** o motor e a bancada implementam a régua de **19/08** (`golpeDV 6`, sem custo de
+> ciclo, cadeia `P→G→P→G→R`). As decisões de 20/08 (a escada da §14.11, a rajada da §14.12 e a
+> dupla da §14.13) foram medidas num motor estendido à parte e **ainda não foram portadas**: é
+> parte do K5. Até lá, os botões acima reproduzem as §14.1 a §14.10, não as §14.11 a §14.13.
+
+
+---
 
 ### 14.11. A escada de penalidades (20/08/2026)
 
@@ -938,6 +1014,9 @@ tudo o mais é derivado dela.
 A regra geral: **o k-ésimo Preparo custa −2k, o k-ésimo Golpe custa −4k, e a Recuperação custa −2
 por golpe dado.** Conferido no motor, espada longa com cadeia de 3:
 `P −2 · G −4 · P −4 · G −8 · P −6 · G −12 · R −6 · R −6 · R −6 · R −6`.
+*(Com a rajada da §14.12 só existe **uma** preparação, então a escalada de P e G não chega a
+acontecer: fica P −2, cada Golpe −4, e a Recuperação por golpe dado. O k-ésimo degrau só aparece
+se alguma regra futura voltar a repetir Preparos numa ação.)*
 
 #### As três empunhaduras
 
@@ -965,10 +1044,8 @@ de Recuperação a mata:
 | Golpe +1 e Recuperação +1 (ciclo +2) | **−38** | −21 |
 
 Com o ciclo crescendo dois Ticks, a dupla perde 40% da cadência por um golpe a −1d6. Ninguém
-escolheria. **A geometria tem de ser a do ciclo igual.** E aí sobra o problema de sempre: a arma
-média em +17. Com os dados do capítulo (−1d6/−2d6) inverte, a média vai a +5 e a leve a −18.
-Nenhuma penalidade uniforme serve às duas, o que sustenta a restrição de **dois golpes só com duas
-armas leves**.
+escolheria. E a arma média no ciclo igual fica em +17. *(A resolução veio na §14.13, mais tarde no
+mesmo dia: ciclo igual para o par de leves, ciclo +1 para a média, e a restrição de classe caiu.)*
 
 **A cadeia, com a escada, dispensa qualquer freio de dado.** Ela sozinha faz o serviço:
 
@@ -980,11 +1057,9 @@ armas leves**.
 | média, contra 1 soldado | 100% em 17,6t | 100% em **14,5t** | 100% em 14,1t |
 
 É exatamente o desenho pedido: contra um igual encadear é mau negócio; contra um mais fraco compra
-um terço do relógio por 2 pontos de Vida. **O freio de dado que a §14.5 propunha some**, porque a
-escada já cobra mais do que ele cobrava.
-
-**Acrescentar 1 Tick de Recuperação por golpe é excesso**: leva a cadeia de 2 de −18 para −34 na
-arma leve. A escada já resolve.
+um terço do relógio por 2 pontos de Vida. *(Esta medição é da geometria `P→G→P→G→R`, que a §14.12
+abandonou pela rajada; lá os freios são outros, o −1d6 acumulativo e o +1 de Recuperação por
+golpe, e a conclusão sobre "1 Tick de R por golpe ser excesso" vale só para a geometria antiga.)*
 
 #### O Preparo mínimo, medido
 
@@ -1153,65 +1228,6 @@ fraca atrasa o tempo do par).**
   medir isso está travado pela **K14**.
 - **A empunhadura de DUAS MÃOS** (Força ×2 na mesma arma) apareceu nesta discussão e é um problema
   **de hoje**, maior que esta seção: ver K21 no `Pendencias.md`.
-
----
-
-### 14.8. As duas descobertas do motor
-
-**K13 · A Guarda sob pressão estava cobrada em dobro.** `lib-tempo.mjs` fazia `guard += pressao` e
-descontava `pressao × guard`: **−4 por ataque**, quando o capítulo IX (`combate.md:233`) escreve
-**−2**. O parâmetro entrava ao quadrado. Está corrigido, e `--legado` reproduz o regime antigo.
-
-Não é detalhe. **A curva da §7 inverte.** Arco longo contra espada longa, a 45 metros:
-
-| | P=0 | P=2 | P=5 |
-|---|:---:|:---:|:---:|
-| com a Pressão em dobro (as tabelas da §7) | 28,3% | 13,4% | 31,9% |
-| com a Pressão correta | **11,7%** | **28,3%** | **54,0%** |
-
-Com −4, o Preparo do arco custa win rate; com −2, ele **paga**. A conclusão publicada na §7 ("cada
-ponto de Preparo custa de 5 a 13 pontos") é artefato do bug, e **o K4 não pode ser decidido antes
-disso**.
-
-**K14 · A bancada só mede o canto "todo mundo esquiva".** O motor tem **uma** Defesa e ignora a
-`defesaArma`, que pelo `defesas.md:67` entra **só no Bloqueio**
-(`Bloqueio = (Des + Bloqueio)×2 + Centelha + Esp + defesa da arma`). Ligando-a para todos, que é o
-canto oposto, o sistema de **hoje** vai de 16,3 para **50,5 pontos** de amplitude, com a haste em
-77,5% e a arma pesada de duas mãos em 27,0% (lança +2 e alabarda +2 contra montante −2 e martelo
-−2). A verdade está entre os dois cantos e depende do roteamento das Defesas pelo "como".
-
-Consequência prática: **nenhum ajuste de catálogo (o K11, Alabarda e Maça) deve sair deste motor**
-enquanto ele não souber escolher entre Esquiva e Bloqueio.
-
-### 14.9. O que a régua P/G/R deixa em aberto
-
-1. **O arqueiro fica forte demais.** 63,9% a 100 metros contra 35,8% de hoje, e por um motivo
-   estrutural: com `R=0` ele nunca passa pela fase exposta. Conversa com o K4, que está travado
-   pelo K13.
-2. **A Ambidestria** ficou sem função (§14.4).
-3. **O teste de Virtude** entrou no combate sem régua própria (K12).
-4. **A Arte sai em 86,3%** das conjurações, contra 88,2% do K1 e 99,6% de hoje. Não é tranca, mas
-   é uma perda a mais que precisa ser conferida contra a §5 e a pendência 14 do Arcano.
-5. **A cadeia foi medida só na arma leve.** Na média e na pesada cada elo custa 2 e 3 Ticks, e as
-   três curvas de freio não foram varridas ali.
-6. **Nada disso passou por mesa.** Continua valendo o aviso do topo: o robô prova que não quebra,
-   não que é divertido.
-
-### 14.10. Como rodar
-
-```
-node scripts/sim-ticks.mjs --so Q     a régua P/G/R contra hoje e contra o K1
-node scripts/sim-ticks.mjs --so R     o par: DV no ciclo × DV no Tick do Golpe
-node scripts/sim-ticks.mjs --so S     empunhadura dupla
-node scripts/sim-ticks.mjs --so T     a cadeia de ataques
-node scripts/sim-ticks.mjs --legado   o regime antigo da Pressão, que reproduz as §2 a §9
-```
-
-Na bancada, os quatro botões novos são **A régua P/G/R**, **O par: ciclo × Golpe**, **Empunhadura
-dupla** e **A cadeia de ataques**, e o painel ganhou dois grupos: **O Tick do Golpe** (as três
-penalidades de DV) e **Golpes múltiplos** (os dados da dupla e o freio da cadeia). Os botões
-**P/G/R (19/08)** e **K1 (18/08)** no topo do painel trocam a régua inteira de uma vez.
-
 ---
 
 ## Apêndice: como rodar

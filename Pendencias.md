@@ -595,19 +595,24 @@ revistos por ela.
   físico (o Ocultismo da §5.5 segue para a Arte), leitura grátis para quem tem a mesma arma e
   perícia, e a **finta** comprando 1 Tick de Preparo para mentir sobre o alvo, que dá à arma leve o
   primeiro motivo para comprar Preparo. Fica por último.
-- [x] **K15 · A régua P/G/R, decidida (19/08).** A ação tem três fases, com `P + G + R` igual à
-  Velocidade de hoje e **G sempre 1**: leve 0/1/4 · média 1/1/4 · **haste 2/1/3** · pesada 2/1/4 ·
-  arco (Vel−1)/1/0 · arremesso (Vel−2)/1/1 · Arte (2+nível)/1/0. **A ação declarada não custa
-  Defesa por si; no Tick do Golpe a Defesa cai 6**, que é um degrau de Margem. A guarda se refaz no
-  **fim da Recuperação**. Medida em 16,1 de amplitude entre classes contra 16,2 do sistema de hoje
-  e 21,7 do K1, e guardando 5,98 decisões por lado contra 7,21 de hoje. `[SUPERA]` a §2.1 (a guarda
-  se refazia no golpe) e o Preparo da haste do **K1**.
-- [x] **K16 · Empunhadura dupla e cadeia de ataques, desenhadas (19/08).** Os golpes extras **saem
-  da Recuperação** e só estendem o ciclo se ela acabar. Dupla: `P0 · G2 · R3 = 5`, **−1d6 nas duas
-  mãos** (os −1d6/−2d6 do capítulo derrubam a dupla para 26% contra 54%), e nos Ticks de Golpe vale
-  a penalidade de P e R, porque a outra lâmina apara. Cadeia: N repetições de (Preparo + Golpe) e
-  uma Recuperação, declarada de uma vez, freio de **um dado a mais por golpe**, teto 4/3/2 por
-  classe. §14.4 e §14.5.
+- [x] **K15 · A régua P/G/R, decidida (19/08) e recalibrada (20/08).** A ação tem três fases, com
+  `P + G + R` igual à Velocidade de hoje e **G sempre 1**: leve 0/1/4 · média 1/1/4 · **haste
+  2/1/3** · pesada 2/1/4 · arco (Vel−1)/1/0 · arremesso (Vel−2)/1/1 · Arte (2+nível)/1/0. A guarda
+  se refaz no **fim da Recuperação**. As penalidades de Defesa são a **escada** da §14.11
+  (20/08): **Preparo −2 · Golpe −4 · Recuperação −2 por golpe dado**, tudo derivado do −2 da
+  Guarda sob pressão, mais os −2 por ataque recebido. *(A versão de 19/08, "a ação não custa DV e
+  o Golpe custa −6", está registrada e superada na §14.2.)* Preço conhecido da escada: amplitude
+  21,0 contra 16,6 de hoje, com a arma leve em 63%; a alternativa R −4 media 15,1 e foi rejeitada
+  por princípio (a Recuperação é a penalidade de "já ataquei", que sempre foi −2).
+- [x] **K16 · Rajada e empunhadura dupla, decididas (20/08).** **Rajada** (§14.12): atacar de novo
+  com a mesma arma é `P→G→G→…→R`, declarada de uma vez; cada golpe além do primeiro custa **−1d6
+  acumulativo e +1 Tick de Recuperação**; teto 3 (leve e média) e 2 (haste e pesada); só corpo a
+  corpo. Mede ~40% no duelo em todas as classes e corta um quinto a um terço do relógio contra o
+  inimigo fraco; a rajada de 3 executa o lacaio surpreso (83 a 97%) e nunca o igual. **Dupla**
+  (§14.13): um Tick de Golpe por mão, **−1d6 nas duas**; par de leves no mesmo ciclo, média a
+  ciclo +1; Recuperação −4 (dois golpes); segurando a segunda arma sem golpear, o Tick de Golpe
+  fica a −2. A dupla ganha da rajada em todas as colunas, que era a exigência. *(A geometria de
+  19/08, `P→G→P→G→R` com freio de dado, está registrada e superada nas §14.4/§14.5/§14.11.)*
 - [ ] **K20 · [DECIDIR] O que se pode fazer no Preparo e na Recuperação.** A §14.6 do
   `Combate_Tempo.md` tem um primeiro recorte, mas ele foi escrito antes de duas coisas mudarem, e
   precisa de uma passada inteira. O que já está resolvido: **no Preparo você aborta** (perdendo os
@@ -636,23 +641,30 @@ revistos por ela.
   (22,9% contra 54,0%). §14.4.
 - [ ] **K19 · [FAZER] A cadeia foi medida só na arma leve.** Na média e na pesada cada elo custa 2
   e 3 Ticks, e as três curvas de freio não foram varridas ali. Bateria `--so T`.
-- [ ] **K21 · [DECIDIR] A arma versátil (Força ×1 a uma mão, ×2 a duas) nunca foi medida, e a
-  forma de duas mãos quebra o duelo.** A regra (esclarecida em 20/08/2026): a arma **versátil**
-  pode ser usada com uma ou com as duas mãos; a uma mão soma a Força, a duas soma **o dobro**.
-  Não é qualquer arma: é a propriedade `versátil` do catálogo, que hoje **só a espada longa tem**.
-  O motor da bancada nunca a modelou (lê o multiplicador só do `maos: 2`). Medido: a espada longa
-  a duas mãos vence a própria forma de uma mão em **72,9%** dos duelos (contra ~50% da base), de
-  graça: mesma Velocidade, mesmo dado, mesmo acerto. E a medição das outras armas de uma mão como
-  se fossem versáteis diz que a tag tem de ser dada com muito cuidado: espada curta hipotética
-  90,2%, maça hipotética 82,8% (o ×2 vence a Absorção natural contra Impacto e a arma mais fraca
-  do catálogo viraria uma das mais fortes). Cobrar o Preparo de arma pesada (P2) na forma de duas
-  mãos devolve pouco (73,0%). Três decisões encadeadas: **quais armas ganham a tag** além da
-  espada longa, **qual o preço da forma de duas mãos** (P de pesada é insuficiente sozinho;
-  candidatos: Força ×1,5, ou dado sem Margem, ou Velocidade +1), e a comparação justa com escudo e
-  segunda arma **depende da K14** (o Bloqueio que o motor não vê é exatamente o que se sacrifica
-  ao ocupar as duas mãos). Enquanto isso, as regras da rajada (§14.12) e da dupla (§14.13) são
-  consistentes **dentro de cada empunhadura**: a rajada de duas mãos continua punitiva contra a
-  própria base (72,9% → 66,2%), o problema é a base.
+- [ ] **K21 · [FAZER/DECIDIR] As armas versáteis: a regra, a lista e o preço da forma de duas
+  mãos.** Esclarecido em 20/08/2026, e o catálogo diverge da regra em quase tudo.
+  - **A regra:** a arma **versátil** pode ser usada com uma mão (Força **×1**) ou com as duas
+    (Força **×2**). A exceção segue sendo a haste de estocada, que fere por alcance e não soma o
+    dobro. **A espada longa NÃO é versátil: é arma de duas mãos**, a versão grande da espada.
+  - **A lista das versáteis:** machado, **espada** (a comum, não a curta nem a longa), maça,
+    picareta, lança, **martelo** (o de uma mão), **porrete**, espada serrilhada. As **versões
+    grandes** dessas armas são armas de duas mãos.
+  - **O que o catálogo tem hoje, e o que falta:** `espada-longa` está como 1 mão + tag `versátil`
+    (errado nos dois campos: deve ser 2 mãos, sem a tag); `machado`, `maca`,
+    `picareta-de-guerra` e `espada-serrilhada` existem e precisam ganhar a tag; `lanca` existe
+    (haste, 2 mãos) e vira versátil sem o ×2; **não existem** `espada`, `martelo` de uma mão e
+    `porrete`, nem as versões grandes de machado, maça, picareta e serrilhada (o `montante` e o
+    `martelo-de-guerra` já cobrem espada e martelo). Mudar `espada-longa` para 2 mãos mexe na
+    ficha (o seletor de empunhadura) e no contrato ficha↔mesa (`equip.ts`); armas novas são só
+    adição.
+  - **O preço, que é o problema de balanceamento:** a forma de duas mãos como está é upgrade
+    grátis. Medido em 20/08: espada longa a 2 mãos vence a forma de 1 mão em **72,9%** dos duelos
+    (mesma Velocidade, dado e acerto), e as hipóteses de tag mostram o perigo (espada curta
+    hipotética 90,2%; maça hipotética 82,8%: o ×2 vence a Absorção natural contra Impacto).
+    Cobrar o Preparo de pesada (P2) devolve pouco (73,0%). Candidatos: Força ×1,5, dado sem
+    Margem, ou Velocidade +1. A comparação justa com escudo e segunda arma **depende da K14** (o
+    Bloqueio que o motor não vê é o que se sacrifica ao ocupar as duas mãos). As regras da rajada
+    (§14.12) e da dupla (§14.13) são consistentes dentro de cada empunhadura; o problema é a base.
 - [ ] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
   nem Habilidade**, só a Virtude, e por isso a régua de pool de hoje (`[(A+H)/2]d6`, com +2 se
   ímpar) não se aplica a ele. Duas formas na mesa: **pool** (a Virtude vira dados pela mesma
