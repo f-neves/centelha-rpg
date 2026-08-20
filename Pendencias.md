@@ -608,6 +608,25 @@ revistos por ela.
   a penalidade de P e R, porque a outra lâmina apara. Cadeia: N repetições de (Preparo + Golpe) e
   uma Recuperação, declarada de uma vez, freio de **um dado a mais por golpe**, teto 4/3/2 por
   classe. §14.4 e §14.5.
+- [ ] **K20 · [DECIDIR] O que se pode fazer no Preparo e na Recuperação.** A §14.6 do
+  `Combate_Tempo.md` tem um primeiro recorte, mas ele foi escrito antes de duas coisas mudarem, e
+  precisa de uma passada inteira. O que já está resolvido: **no Preparo você aborta** (perdendo os
+  Ticks investidos, e só para mover, desviar ou se interpor, nunca para atacar); **no Golpe não há
+  nada a fazer**; **na Recuperação você não desiste, só paga** (a ação fora de hora, uma por ação,
+  a Velocidade da ação em dívida e a guarda travada). O que falta decidir:
+  - **O Deslocamento livre deixa de ser grátis na Recuperação** (decidido em 20/08). Ele continua
+    grátis livre e em Preparo, e na Recuperação custa Ticks, **mais caro do que o desvio de
+    emergência da §5.5**, que cobra 1 Tick por metro. Falta o número. Proposta: **2 Ticks por
+    metro**, com a ressalva de que a bancada **não sabe medir isso**: o duelo dela não tem
+    geometria, então movimento não custa nada lá dentro. Isso desmonta a linha da §2.4 que dizia
+    que o Deslocamento livre segue grátis durante qualquer ação.
+  - **Testes de ação na Recuperação** (pulo, acrobacia, oferecer ajuda, se interpor) a **−1d6**:
+    falta conferir se o degrau é esse mesmo e se vale para todos.
+  - **O ataque fora de hora tem de ficar** (medido: tirá-lo dobra a amplitude entre classes, de
+    16,0 para 38,2, e joga a arma leve para 74%). Ou seja, "não pode atacar na Recuperação" precisa
+    ser lido como "não pode fazer o seu ataque **normal**". Falta escrever isso sem ambiguidade.
+  - **Falar, largar item, olhar em volta:** provavelmente livres em qualquer fase, mas nunca foram
+    listados.
 - [ ] **K17 · [DECIDIR] O arqueiro ficou forte demais.** 63,9% a 100 metros contra 35,8% do sistema
   de hoje, por um motivo estrutural: com `R = 0` ele nunca passa pela fase exposta. Conversa com o
   **K4**, que por sua vez está travado pelo **K13**.
