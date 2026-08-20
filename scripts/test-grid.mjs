@@ -136,6 +136,11 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
     nevoaPoli: document.querySelectorAll('#gr-nevoa polygon').length,
     nevoaOff: document.getElementById('gr-nevoa').classList.contains('off'),
     cobertas: document.querySelectorAll('#gr-nevoa .nv-pesada, #gr-nevoa .nv-leve').length,
+    // O tempo do combate (migração 27): a fita na coluna de iniciativa, e o
+    // anel de Golpe nas peças que golpeiam NESTE Tick.
+    fitas: document.querySelectorAll('#gr-ini .ini-fita .fita-c').length,
+    golpes: document.querySelectorAll('#gr-tokens .gr-token.golpe').length,
+    montando: document.querySelectorAll('#gr-tokens .gr-token.montando').length,
   }));
   ok(d.tokens === pecas, `${pecas} peças no tabuleiro (vieram ${d.tokens})`);
   ok(d.hexes === cols * rows, `${cols * rows} hexágonos desenhados (vieram ${d.hexes})`);
@@ -146,6 +151,44 @@ async function cena(br, url, { pecas, cols, rows, nevoa }) {
   ok(d.nevoaPoli === cols * rows, `a névoa tem um polígono por casa (${d.nevoaPoli})`);
   ok(nevoa ? !d.nevoaOff && d.cobertas > 0 : d.nevoaOff && d.cobertas === 0,
     nevoa ? `névoa ligada cobre ${d.cobertas} casas` : 'névoa desligada não cobre nada');
+  // A bancada monta a cena com uma ação no ar a cada três peças, e as três
+  // fases representadas. Se a fita sumir, ou o anel deixar de acender no Tick
+  // do Golpe, é aqui que aparece.
+  ok(d.fitas > 0, `a fita de Ticks desenha na fila (${d.fitas} células)`);
+  ok(d.golpes + d.montando > 0,
+    `as peças com gesto no ar estão marcadas (${d.golpes} golpeando, ${d.montando} montando)`);
+
+  // ------------------------------------------ o painel "como o tempo passa"
+  const tempo = await p.evaluate(async () => {
+    document.getElementById('gr-tempo')?.click();
+    await new Promise((r) => setTimeout(r, 250));
+    const dlg = document.querySelector('dialog.tempo-dlg');
+    if (!dlg) return null;
+    const sis = [...dlg.querySelectorAll('input[name="tp-sis"]')].map((i) => i.value);
+    const marc = [...dlg.querySelectorAll('input[name="tp-marc"]')].map((i) => i.value);
+    const amostra = dlg.querySelectorAll('.tempo-am .fita-c').length;
+    // Trocar para o sistema normal tem de redesenhar a amostra: no normal todo
+    // Preparo vira zero, e nenhuma célula da amostra fica dourada fosca.
+    const normal = dlg.querySelector('input[name="tp-sis"][value="normal"]');
+    normal.checked = true; normal.dispatchEvent(new Event('change', { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 120));
+    const prepDepois = dlg.querySelectorAll('.tempo-am .fita-c.f-prep').length;
+    dlg.querySelector('#tp-cancelar').click();
+    // `close()` e sincrono, mas quem TIRA o no do documento e o ouvinte do
+    // evento `close`, que roda na tarefa seguinte. Perguntar sem esperar acha o
+    // dialogo ainda no lugar, fechado.
+    await new Promise((r) => setTimeout(r, 120));
+    return { sis, marc, amostra, prepDepois, fechou: !document.querySelector('dialog.tempo-dlg') };
+  });
+  if (tempo) {
+    ok(tempo.sis.join(',') === 'normal,pgr', `o painel oferece os dois sistemas (${tempo.sis.join(', ')})`);
+    ok(tempo.marc.join(',') === 'fita,numeros', `e as duas marcações (${tempo.marc.join(', ')})`);
+    ok(tempo.amostra > 0, `a amostra desenha a régua de verdade (${tempo.amostra} células)`);
+    ok(tempo.prepDepois === 0, `no sistema normal a amostra não tem Preparo (${tempo.prepDepois} células)`);
+    ok(tempo.fechou, 'cancelar fecha o painel sem gravar');
+  } else {
+    ok(false, 'o painel "como o tempo passa" não abriu');
+  }
 
   // ------------------------------------------------ mover uma peça, e o custo
   const pt = await pontos(p);

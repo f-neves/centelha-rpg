@@ -2193,5 +2193,126 @@
     },
     "papelDoFeiticeiro": "Feitiçaria não é build barata nem para personagem iniciante: nos primeiros níveis as conjurações são escassas, como o mago de D&D. No Centelha o feiticeiro precisa de um papel secundário, e não necessariamente de combate. Quando o Mana acaba, ele depende de outros recursos para ser útil.",
     "feiticoTicksNota": "Os Ticks são o tempo de PREPARO, e a Arte resolve no ÚLTIMO deles, ao contrário da ação comum, que resolve no primeiro. Ver `tempoDaArte`."
+  },
+  "combate": {
+    "nota": "A linha do tempo do combate. O jogo tem DOIS sistemas de tempo, à escolha do mestre por mesa, e UM conjunto de regras: tudo aqui está escrito em moeda comum (Ticks de Velocidade, dados de rolagem e pontos de Defesa) e vale nos dois. Ver `Combate_Tempo.md`, seção 15.",
+    "sistemaPadrao": "normal",
+    "sistemas": [
+      {
+        "id": "normal",
+        "nome": "Normal",
+        "resumo": "A ação custa a Velocidade e resolve no primeiro Tick. É o sistema do capítulo IX.",
+        "detalhe": "Você declara, rola e resolve na hora; a Velocidade empurra a sua próxima ação. Só as Artes telegrafam, porque só elas têm montagem visível."
+      },
+      {
+        "id": "pgr",
+        "nome": "Três fases (P/G/R)",
+        "resumo": "A mesma Velocidade partida em Preparo, Golpe e Recuperação.",
+        "detalhe": "Tudo com Preparo maior que zero telegrafa: dá para ler o gesto do martelo e interromper, não só o do feiticeiro. No Preparo ainda dá para desistir; na Recuperação já não dá, só dá para pagar."
+      }
+    ],
+    "marcacao": {
+      "nota": "Como a mesa DESENHA o tempo. Independe do sistema: a fita degenera com elegância no normal (Golpe no primeiro Tick, o resto Recuperação).",
+      "padrao": "fita",
+      "modos": [
+        {
+          "id": "fita",
+          "nome": "Fita de Ticks",
+          "resumo": "Uma linha por combatente, uma célula por Tick, três tons: Preparo, Golpe, Recuperação. A coluna do Tick corrente é uma régua por cima de todas as linhas."
+        },
+        {
+          "id": "numeros",
+          "nome": "Só os números",
+          "resumo": "A fila de iniciativa como sempre foi: o Tick de cada um, em ordem. Sem fita. O anel de Golpe no tabuleiro fica: no P/G/R o Tick do golpe não é o Tick da pessoa, e nenhum número da fila responde \"quem bate agora\"."
+        }
+      ]
+    },
+    "pgr": {
+      "nota": "A régua P/G/R por classe de arma: em que Tick o golpe sai, contado da declaração. O Golpe é sempre 1 Tick; a Recuperação é o que sobra da Velocidade (P + G + R = Velocidade).",
+      "preparo": {
+        "leve": {
+          "fixo": 0
+        },
+        "media": {
+          "fixo": 1
+        },
+        "haste": {
+          "fixo": 2
+        },
+        "pesada": {
+          "fixo": 2
+        },
+        "distancia": {
+          "daVelocidade": -1,
+          "nota": "a flecha encaixada é preparo; a soltura é instantânea"
+        },
+        "arremesso": {
+          "daVelocidade": -2,
+          "nota": "um Tick para voltar à postura"
+        }
+      },
+      "arte": {
+        "preparoBase": 2,
+        "preparoPorNivel": 1,
+        "cicloBase": 3,
+        "cicloPorNivel": 1,
+        "nota": "A Arte sai no ÚLTIMO Tick da montagem: Preparo = 2 + nível, ciclo = nível + 3. É a §5.3 do Arcano, já no site."
+      }
+    },
+    "escada": {
+      "nota": "Estar comprometido com uma ação custa Defesa, e a moeda é o −2 da Guarda sob pressão: tudo deriva dela. No sistema normal a escada colapsa para o que o capítulo IX já cobrava, mais o −4 no Tick em que o golpe sai.",
+      "preparo": -2,
+      "golpe": -4,
+      "recuperacaoPorGolpe": -2,
+      "pressaoPorAtaque": -2,
+      "pressaoTeto": null,
+      "alivioSegundaMao": 2,
+      "alivioNota": "Quem empunha duas armas e golpeia com só uma tem −2 no Tick do Golpe em vez de −4: a outra mão continua guardando.",
+      "zeraEm": "livre"
+    },
+    "rajada": {
+      "nota": "Atacar N vezes com a MESMA arma numa ação só, declarado de uma vez, sem parar no meio: P → G → G → R. Só corpo a corpo.",
+      "penDadosPorGolpeExtra": -1,
+      "penDadosAcumula": true,
+      "velocidadePorGolpeExtra": 2,
+      "anatomia": {
+        "golpeExtra": 1,
+        "recuperacaoExtra": 1,
+        "nota": "no P/G/R o +2 de Velocidade é um Tick de Golpe mais um de Recuperação"
+      },
+      "teto": {
+        "leve": 3,
+        "media": 3,
+        "haste": 2,
+        "pesada": 2
+      },
+      "corpoACorpo": true
+    },
+    "dupla": {
+      "nota": "Uma arma em cada mão, um Tick de Golpe para cada mão, ambas a −1d6.",
+      "penDados": -1,
+      "penDadosAmbasAsMaos": true,
+      "cicloExtra": {
+        "leve": 0,
+        "media": 1,
+        "haste": 1,
+        "pesada": 1
+      },
+      "cicloExtraNota": "Vale a classe da arma da mão hábil, e SÓ no sistema P/G/R: o par de leves fecha no mesmo ciclo, com média o ciclo cresce 1.",
+      "cicloExtraNoNormal": 0,
+      "cicloExtraNoNormalNota": "No sistema normal a dupla fecha na mesma Velocidade em qualquer classe. É a única regra que se calibra diferente por sistema (§15.2)."
+    },
+    "recuperacao": {
+      "nota": "O que se pode fazer depois que o golpe saiu e antes de a guarda se refazer.",
+      "deslocamentoTicksPorMetro": 2,
+      "penDadosAcaoNaFase": -1,
+      "declaraAcaoNova": false,
+      "refazGuarda": false
+    },
+    "foraDeHora": {
+      "nota": "Agir fora da sua vez: paga a Velocidade da ação empurrada para o seu próprio futuro, a guarda não se refaz, uma por ação. Interromper atrasa o alvo em tantos Ticks quantos o interruptor pagou (o espelho).",
+      "umaPorAcao": true,
+      "espelho": true
+    }
   }
 }

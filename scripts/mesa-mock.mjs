@@ -28,6 +28,9 @@ const COLS = parseInt(P.get('cols') || '24', 10);
 const ROWS = parseInt(P.get('rows') || '16', 10);
 const NEVOA = P.get('nevoa') === '1';
 const POSTOS = parseInt(P.get('postos') || String(N_COMB), 10);
+// O sistema de tempo da mesa de bancada. `pgr` de propósito: é o caminho novo,
+// e o que o smoke precisa exercitar. `?tempo=normal` volta ao de sempre.
+const TEMPO = P.get('tempo') === 'normal' ? 'normal' : 'pgr';
 
 const UID = '00000000-0000-4000-8000-000000000001';
 const MESA = P.get('id') || '00000000-0000-4000-8000-0000000000aa';
@@ -68,6 +71,12 @@ for (let i = 0; i < N_COMB; i++) {
     pv_max: 40, pv_atual: 40 - (i % 7) * 3,
     mana_max: ehPC ? 8 : null, mana_atual: ehPC ? 8 - (i % 3) : null,
     tick: i % 4, iniciativa: 20 - i,
+    // Uma ação no ar a cada três peças, e as tres fases representadas: uma
+    // ainda montando o gesto, uma golpeando agora, uma se recompondo. Sem isso
+    // a fita e o anel de Golpe nunca seriam desenhados na bancada.
+    acao: i % 3 === 0 ? {}
+      : i % 3 === 1 ? { golpes: [(i % 4) + 2], livre: (i % 4) + 6, tipo: 'simples', arma: 'Espada Longa', pressao: i % 2 }
+      : { golpes: [i % 4], livre: (i % 4) + 4, tipo: 'dupla', arma: 'Adaga', pressao: 0 },
     condicoes: i % 3 === 0 ? [{ id: 'cego' }] : [],
     ativo: true, oculto: false, imagem: null, retrato: null,
   });
@@ -103,6 +112,7 @@ const TABELAS = {
   mesas: [{
     id: MESA, nome: 'Mesa de bancada', descricao: 'bancada de teste',
     mestre_id: UID, codigo_convite: 'BENCH1', revelar: {},
+    combate: { sistema: TEMPO, marcacao: 'fita' },
   }],
   mesa_arenas: ARENAS,
   arena_visao: ARENAS,

@@ -744,15 +744,29 @@ revistos por ela.
   verdade está entre os dois cantos e depende do roteamento das Defesas pelo "como". Enquanto o
   motor não souber escolher entre Esquiva e Bloqueio, **nenhum ajuste de catálogo (K11) deve ser
   feito com base nele**.
-- [ ] **K5 · [FAZER] A implementação: os DOIS sistemas.** Decidido em 20/08: o jogo terá o
-  sistema normal (o de hoje) e o P/G/R como opção por mesa, com **um só conjunto de regras**
+- [ ] **K5 · [FAZER] A implementação: os DOIS sistemas.** Decidido em 20/08: o jogo tem o
+  sistema normal (o de hoje) e o P/G/R como opção **por mesa**, com **um só conjunto de regras**
   escrito em moeda comum, e a dupla de média é a única regra com calibragem diferente por sistema
   (mesma Velocidade no normal, ciclo +1 no P/G/R). O plano em seis fases está na **§15 do
-  `Combate_Tempo.md`**: 1 motor (portar a escada/rajada/dupla de 20/08 e os presets) · 2 relatório
-  em lote · 3 bancada (seletor de sistema; a partir daí ela volta a ser a verdade) · 4 capítulo IX
-  (as regras comuns já no normal, o P/G/R como capítulo opcional) · 5 `regras.json` (bloco
-  `combate`; o catálogo das versáteis é o K21, à parte) · 6 ficha e mesa (a fita da §14.7.1, com
-  a outra frente). Fases 1 a 3 não são bloqueadas por nenhuma pendência aberta.
+  `Combate_Tempo.md`**, e cinco delas fecharam em 20/08:
+
+  - **1 motor · 2 relatório · 3 bancada** — feitas. O motor tem os quatro presets e a bancada
+    ganhou o seletor de sistema, cinco cartões e duas baterias.
+  - **5 `regras.json`** — feita. O bloco `combate` tem os dois sistemas, os dois modos de
+    marcação, a régua P/G/R por classe, a da Arte, a escada, a rajada com os tetos, a dupla e o
+    deslocamento pago.
+  - **6 ficha e mesa** — feita. `src/lib/combate-tempo.ts` (o motor da tela, travado por
+    `scripts/test-combate-tempo.mjs`), a **migração 27** (`mesas.combate` e `combatentes.acao`,
+    com a view escondendo arma e alvo do jogador), o painel **⏱** do mestre nas duas telas, o selo
+    de fase e a fita no rastreador, a manobra no diálogo de ação, e o anel de Golpe mais a fita
+    miúda no Grid. Na ficha, a linha "No tempo" mostra o P/G/R da arma.
+  - **4 capítulo IX** — a única que falta, e espera **K12** (teste de Virtude) e **K17**
+    (arqueiro).
+
+  **O que a mesa ainda não faz** está na §15.4: abortar o Preparo, a ação fora de hora com dívida
+  e espelho, e o deslocamento pago na Recuperação. As três já são conta pronta em
+  `combate-tempo.ts`; falta o gesto na tela, e o mestre resolve na mão empurrando o Tick, como
+  antes desta revisão.
 
 ## H. Arremesso
 

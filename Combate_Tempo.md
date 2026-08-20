@@ -1322,23 +1322,62 @@ hora. O P/G/R entra como capítulo opcional ("O combate em três fases"), com a 
 o abortar, a leitura e o rastreio. Junto: as notas de superação nas seções antigas deste
 documento migram para o texto final e morrem aqui.
 
-**Fase 5 · Os dados.** A régua não pede nada de `armas.json` (P deriva da classe); entra um bloco
-`combate` em `regras.json` com a régua P/G/R por classe, a escada e os tetos de rajada, para a
-ficha e a mesa lerem da fonte em vez de hardcode. **À parte e sem pressa:** o acerto do catálogo
-das versáteis (K21), que tem decisões próprias de preço e não bloqueia nada acima.
+**Fase 5 · Os dados. FEITA em 20/08.** O bloco `combate` entrou em `regras.json`: os dois
+sistemas com o texto de cada um, os dois modos de marcação, a régua P/G/R por classe (com as de
+distância e arremesso derivando da Velocidade), a régua da Arte, a escada, a rajada com os tetos,
+a dupla com o ciclo extra por sistema, o deslocamento pago e a dívida de Ticks. A régua não pediu
+nada de `armas.json`: o Preparo deriva da classe, que já estava lá. **À parte e sem pressa:** o
+acerto do catálogo das versáteis (K21), que tem decisões próprias de preço e não bloqueia nada.
 
-**Fase 6 · Ficha e mesa.** Na ficha, a linha de combate mostra o `P/G/R` da arma (informativo).
-Na mesa, a coluna `acao` e a fita de três tons da §14.7.1, com um campo por mesa escolhendo o
-sistema (`normal` ou `pgr`): a fita degenera com elegância no normal (Golpe no primeiro Tick, o
-resto Recuperação). **É a frente da outra instância: precisa de combinação antes.**
+**Fase 6 · Ficha e mesa. FEITA em 20/08.** Quatro peças:
+
+- **`src/lib/combate-tempo.ts`**, o motor da tela: puro, sem DOM e sem banco, lendo tudo do bloco
+  `combate`. Dá a anatomia da ação (`anatomia`), monta a agenda (`declarar`), lê a fase (`faseEm`),
+  cobra a escada (`defesaPerdida`) e responde as três perguntas da mesa: dá para interromper, dá
+  para agir fora da hora, quanto custa reagir. Usa a MESMA estrutura de agenda do motor da bancada
+  (`offs` lá, `golpes` aqui), para não haver duas verdades sobre a mesma coisa. Travado por
+  `scripts/test-combate-tempo.mjs`, que confere a régua arma a arma contra o catálogo, a escada
+  contra a §14.11 e a degeneração do sistema normal.
+- **A migração 27**: `mesas.combate` (o sistema e a marcação, como o `revelar` da 14) e
+  `combatentes.acao` (a agenda, `livre`, o tipo, a arma, o alvo, a dívida e a Pressão). A view
+  `combate_visao` devolve `acao` **sem `arma` e sem `alvo`** para quem não pode ver os números: o
+  jogador vê QUE alguém está montando alguma coisa, o mestre vê O QUÊ.
+- **O rastreador de combate** (`/mesa/combate`): o botão **⏱** abre o painel do mestre, com os dois
+  sistemas, as duas marcações e uma amostra desenhada com a régua de verdade. O card ganhou o selo
+  de fase e a fita; o painel do turno mostra as fitas de todo mundo alinhadas na coluna do agora,
+  com a lista de quem está montando o gesto. A escada entrou em `defesaAtual`, então o número que
+  o mestre lê já vem com o desconto da fase. O diálogo de ação ganhou a **manobra** (um golpe,
+  dupla, segura-e-golpeia, rajada), que manda na Velocidade e rola **uma jogada por golpe**, cada
+  uma com a penalidade dela.
+- **O Grid**: o anel dourado no token de quem golpeia neste Tick, o contorno tracejado em quem
+  está montando, a fita miúda na coluna de iniciativa e o mesmo painel **⏱** na barra.
+
+A fita degenera com elegância no sistema normal, como prometido: o Golpe cai no Tick da declaração
+e o resto do ciclo é Recuperação. O anel de Golpe fica ligado mesmo com a marcação em "só os
+números", porque no P/G/R o Tick do golpe não é o Tick da pessoa e nenhum número da fila responde
+"quem bate agora".
 
 **O que NÃO bloqueia as fases 1 a 3:** K12 (teste de Virtude), K14 (escudo), K17/K4 (arqueiro),
 K21 (versáteis) e K11 (Alabarda/Maça) são decisões de regra e catálogo; o motor e a bancada podem
-ficar prontos antes delas. K14 e K21 bloqueiam a Fase 5 do catálogo; K12 e K17 bloqueiam partes
-do texto da Fase 4.
+ficar prontos antes delas. K12 e K17 bloqueiam partes do texto da Fase 4.
 
-**Estado:** Fases 1, 2 e 3 **feitas** em 20/08. A 4 espera K12/K17; a 5 e a 6 dependem de combinação
-com a frente da mesa (e a 5, do K21 para o catálogo das versáteis).
+**Estado:** Fases 1, 2, 3, 5 e 6 **feitas** em 20/08. Só a **Fase 4** (o capítulo IX) continua
+aberta, e espera K12 e K17.
+
+### 15.4. O que a mesa ainda não faz
+
+O que está no site é o **rastreio**: a mesa desenha o tempo, cobra a escada e conta os golpes. O
+que ela ainda não faz são as três ações que a §14.6 descreve e que dependem de um botão que
+ninguém desenhou:
+
+- **abortar o Preparo** (perdendo os Ticks investidos, e só para mover, desviar ou se interpor);
+- **a ação fora de hora** com a dívida somada sozinha, e o **espelho** que atrasa quem foi
+  interrompido em tantos Ticks quantos o interruptor pagou;
+- **o deslocamento pago na Recuperação** (2 Ticks por metro, K20).
+
+As três são conta pronta em `combate-tempo.ts` (`podeAgirForaDeHora`, `custoDeReagir`,
+`ticksDeDeslocamento`); falta o gesto na tela. O mestre resolve as três na mão hoje, empurrando o
+Tick, que é o que ele já fazia antes desta revisão.
 
 ---
 

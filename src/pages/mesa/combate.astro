@@ -109,6 +109,22 @@ import MesaCab from '../../components/MesaCab.astro';
       </div>
       <div id="acao-dano-conta" class="acao-conta" hidden></div>
 
+      {/* A manobra manda na Velocidade e na fita: golpear com as duas mãos dá um
+          Tick de Golpe por mão, a rajada gasta +2 Ticks e −1d6 por golpe extra.
+          Vale nos dois sistemas de tempo; o que muda é onde os Golpes caem. */}
+      <div id="acao-manobra-wrap" class="grade2">
+        <label>Manobra
+          <select id="acao-manobra">
+            <option value="simples">Um golpe</option>
+            <option value="dupla">Uma arma em cada mão (dois golpes)</option>
+            <option value="segura">Segura a segunda e golpeia com uma</option>
+            <option value="rajada">Rajada (a mesma arma, várias vezes)</option>
+          </select>
+        </label>
+        <label id="acao-golpes-wrap">Golpes <input type="number" id="acao-golpes" min="2" max="3" value="2" /></label>
+      </div>
+      <div id="acao-tempo" class="acao-conta" hidden></div>
+
       <label>Velocidade (Ticks até a próxima ação)
         <input type="number" id="acao-speed" min="0" value="5" />
       </label>
@@ -393,6 +409,10 @@ import MesaCab from '../../components/MesaCab.astro';
   .cbt-stats { font-size: var(--fs-micro); display: grid;
     grid-template-columns: repeat(auto-fit, minmax(6.4rem, 1fr)); gap: .05rem .5rem; }
   .cbt .conds { display: flex; flex-wrap: wrap; gap: .2rem; }
+  /* A fita de Ticks: o desenho está no MesaCab (o Grid usa a mesma), aqui só a
+     linha que a acomoda no card. */
+  .cbt-fita { display: flex; align-items: center; flex-wrap: wrap; gap: .15rem .4rem; }
+  .fita-alvo { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic; }
   /* `margin-top: auto` empurra a fileira para o fim do card: com os cards
      esticados, ela encosta no rodapé em vez de flutuar no meio do vazio. */
   .cbt-acoes { display: flex; gap: .2rem; flex-wrap: wrap; align-items: center; margin-top: auto;
@@ -422,6 +442,14 @@ import MesaCab from '../../components/MesaCab.astro';
   .pt-prox { margin-top: .55rem; padding-top: .5rem; border-top: 1px dotted var(--rule);
     font-size: var(--fs-micro); color: var(--ink-soft); }
   .pt-prox .av { --av-t: 1.6rem; vertical-align: middle; }
+  /* As fitas do painel: uma linha por quem tem ação no ar, todas alinhadas na
+     mesma coluna do agora. É o alinhamento que faz a leitura, não a cor. */
+  .pt-fitas { display: flex; flex-direction: column; gap: .12rem; margin-bottom: .5rem;
+    padding-bottom: .45rem; border-bottom: 1px dotted var(--rule); }
+  .pt-fita-l { display: flex; align-items: center; gap: .4rem; }
+  .pt-fita-n { flex: 0 0 5.5rem; font-size: var(--fs-micro); color: var(--ink-soft);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pt-fita-dica { font-size: var(--fs-micro); color: var(--ink-soft); margin-top: .25rem; line-height: 1.3; }
 
   /* ---------------- log ---------------- */
   .log-caixa { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel); padding: .6rem .75rem; }
@@ -498,6 +526,12 @@ import MesaCab from '../../components/MesaCab.astro';
   import { abrirCanal, nomeParaPresenca, type Canal } from '../../lib/mesa-tempo-real';
   import type { Condicao, NivelVida, Revelar } from '../../lib/mesa-core';
   import { abrirRevelacao, resumoRevelacao } from '../../lib/mesa-revelacao';
+  import { abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML } from '../../lib/mesa-tempo-ui';
+  import {
+    combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia,
+    classeDeTempo, velocidadeDaArma, tetoDaRajada, FASE_ROTULO,
+    type CombateMesa, type Manobra,
+  } from '../../lib/combate-tempo';
   import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe } from '../../lib/calc';
@@ -511,6 +545,13 @@ import MesaCab from '../../components/MesaCab.astro';
   // ---- estado da página ----
   let SB: any, MESA_ID = '', EH_MESTRE = false, MESA: any = null, CTX: any = null;
   let REV: Revelar = { ...REVELAR_PADRAO };
+  // Como o tempo passa nesta mesa: o sistema (normal ou P/G/R) e a marcação
+  // (fita ou só os números). Mora em `mesas.combate` (migração 27); sem ela, o
+  // padrão do sistema, que é o combate de sempre.
+  let TEMPO: CombateMesa = { ...COMBATE_PADRAO };
+  // O relógio do encontro: o Tick de quem está na vez, que é o menor da fila.
+  // É contra ele que toda fase se lê.
+  let AGORA = 0;
   // O jogador lê pela view `combate_visao`, que já desce mascarada. Quando o
   // banco ainda não tem a migração 14 isto cai para false e a máscara passa a
   // ser só de tela: o que muda é a honestidade da coisa, não o desenho.
@@ -561,6 +602,7 @@ import MesaCab from '../../components/MesaCab.astro';
     if (!ctx) return;
     SB = ctx.sb; MESA_ID = ctx.id; EH_MESTRE = ctx.ehMestre; MESA = ctx.mesa; CTX = ctx;
     REV = revelarDaMesa(MESA);
+    TEMPO = combateDaMesa(MESA);
     await carregar();
     await ligarTempoReal(ctx);
     // O pulso de oito segundos deixou de ser o motor e virou a rede: ele só
@@ -657,6 +699,10 @@ import MesaCab from '../../components/MesaCab.astro';
     }
 
     pintar();
+    // Depois de pintar, e só o mestre: `pintar` é quem descobre o Tick de agora,
+    // e a varredura escreve no banco. Pintar antes deixa a tela certa de
+    // imediato; a limpeza é higiene, e pode chegar no quadro seguinte.
+    if (EH_MESTRE) { const mudou = await limparAcoesVencidas(); if (mudou) pintar(); }
     if (!silencioso) ligarBarra();
   }
 
@@ -764,8 +810,17 @@ import MesaCab from '../../components/MesaCab.astro';
     const ferimento = tierDe(c.pv_atual, c.pv_max).penDefesa ?? 0;
     const cd = somarCondicoes(condsDe(c));
     const cond = alcance === 'dist' ? cd.defesaDist : cd.defesaCaC;
-    return { base, ferimento, cond, total: base + ferimento + cond };
+    // A escada: estar comprometido com uma ação custa Defesa, e a moeda é o −2
+    // da Guarda sob pressão do capítulo IX. Vale nos DOIS sistemas: no normal
+    // ela colapsa para o −4 no Tick em que o golpe sai, mais −2 por golpe dado
+    // até a próxima ação. Ver `combate-tempo.ts` e Combate_Tempo.md §14.11.
+    const dv = defesaPerdida(acaoDe(c), AGORA, { segura: acaoDe(c)?.tipo === 'segura' });
+    return { base, ferimento, cond, escada: dv.acao, pressao: dv.pressao, fase: dv.fase,
+      total: base + ferimento + cond + dv.total };
   }
+
+  /** A ação declarada de um combatente, tolerando banco sem a migração 27. */
+  const acaoDe = (c: any) => (c && c.acao && !acaoVazia(c.acao) ? c.acao : null);
 
   /** Ajustes que entram na jogada de acerto de quem está agindo. */
   function ataqueAtual(c: any) {
@@ -787,6 +842,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
     el('enc-nome').textContent = ENC.nome;
     const tick = atual?.tick ?? 0;
+    AGORA = tick;
     el('enc-rodada').textContent = `Rodada ${Math.floor(tick / 6) + 1}`;
     el('enc-tick').textContent = `Tick ${tick}`;
 
@@ -824,6 +880,22 @@ import MesaCab from '../../components/MesaCab.astro';
       data-rev1="${c.id}" title="${esc(dica)}">${txt}</button>`;
   }
 
+  /**
+   * A fita do card, quando a mesa pediu fita e há o que desenhar.
+   *
+   * O jogador vê QUE alguém está montando alguma coisa; o que ele não vê é O
+   * QUÊ, e disso quem cuida é a view (`combate_visao` devolve `acao` sem os
+   * campos `arma` e `alvo`). Aqui só se decide se desenha.
+   */
+  function fitaDoCard(c: any) {
+    if (TEMPO.marcacao !== 'fita') return '';
+    const a = acaoDe(c);
+    if (!a) return '';
+    const o = a.arma && EH_MESTRE ? `<span class="fita-alvo">${esc(String(a.arma))}${a.alvo ? ` → ${esc(nomeDe(a.alvo))}` : ''}</span>` : '';
+    return `<div class="cbt-fita">${fitaHTML(a, AGORA, { largura: 12, rotulo: true })}${o}</div>`;
+  }
+  const nomeDe = (id: string) => COMBS.find((x) => x.id === id)?.nome || 'alguém';
+
   function cardCombatente(c: any, atual: boolean) {
     const r = RESUMO[c.id];
     const mostra = verStats(c);
@@ -844,7 +916,8 @@ import MesaCab from '../../components/MesaCab.astro';
       `<span class="pl"${t ? ` title="${esc(t)}"` : ''}><span class="pl-l">${l}</span><span class="pl-v">${v}</span></span>`;
     const stats = (mostra && r) ? `<div class="cbt-stats pilha">
       ${def ? pl('Def', `${def.total}${def.total !== def.base ? '*' : ''}`,
-        `base ${def.base}${def.ferimento ? ` · ferimento ${def.ferimento}` : ''}${def.cond ? ` · condições ${sinal(def.cond)}` : ''}`) : ''}
+        `base ${def.base}${def.ferimento ? ` · ferimento ${def.ferimento}` : ''}${def.cond ? ` · condições ${sinal(def.cond)}` : ''}`
+        + `${def.escada ? ` · ${FASE_ROTULO[def.fase]} ${def.escada}` : ''}${def.pressao ? ` · pressão ${def.pressao}` : ''}`) : ''}
       ${r.defesaMental != null ? pl('Mental', String(r.defesaMental)) : ''}
       ${pl('Abs', `${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao}${r.resistPerf ? `·N${r.resistPerf}` : ''}`)}
       ${r.ataque ? pl('Atq', esc(r.ataque)) : ''}
@@ -881,6 +954,7 @@ import MesaCab from '../../components/MesaCab.astro';
     return `<article class="cbt g-${esc(c.grupo || 'inimigo')}${atual ? ' atual' : ''}${c.ativo === false ? ' fora' : ''}${c.oculto ? ' oculto' : ''}" data-c="${c.id}">
       <header class="cbt-cab">
         <span class="cbt-tick">${c.tick}<small>tick</small></span>
+        ${seloFaseHTML(acaoDe(c), AGORA)}
         <span class="espaco"></span>
         ${chip}
         ${!EH_MESTRE && c.oculto ? '<span class="cbt-selo" title="Oculto dos jogadores">🙈</span>' : ''}
@@ -891,11 +965,34 @@ import MesaCab from '../../components/MesaCab.astro';
         <span class="cbt-nome${cCard}"${aCard}>${esc(c.nome)}</span>
         <span class="cbt-meta">${esc(tipoTxt)} · ini ${c.iniciativa ?? 0} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
       </div>
-      ${barras}${stats}
+      ${barras}${stats}${fitaDoCard(c)}
       ${conds.length ? `<div class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</div>` : ''}
       ${acoes}
       ${(EH_MESTRE && c.notas) ? `<div class="cbt-nota">${esc(c.notas)}</div>` : ''}
     </article>`;
+  }
+
+  /**
+   * O que está no ar agora, para quem vai agir.
+   *
+   * Duas perguntas, e as duas se respondem sozinhas quando estão desenhadas:
+   * quem está com o gesto montado (e portanto dá para interromper) e quem já
+   * golpeou (e portanto está com a guarda aberta). No sistema normal a primeira
+   * lista fica vazia quase sempre, porque só a Arte tem montagem visível, e é
+   * exatamente essa a diferença que o P/G/R compra.
+   */
+  function lidoNaFila(fila: any[]) {
+    if (TEMPO.marcacao !== 'fita') return '';
+    const linhas = fila.filter((c) => acaoDe(c)).slice(0, 6);
+    if (!linhas.length) return '';
+    const prep = linhas.filter((c) => faseEm(acaoDe(c), AGORA) === 'preparo');
+    return `<div class="pt-fitas">
+      ${linhas.map((c) => `<div class="pt-fita-l" title="${esc(c.nome)}">
+        <span class="pt-fita-n">${esc(c.nome)}</span>${fitaHTML(acaoDe(c), AGORA, { largura: 10 })}
+      </div>`).join('')}
+      ${prep.length ? `<div class="pt-fita-dica">Montando o gesto: <b>${prep.map((c) => esc(c.nome)).join(', ')}</b>.
+        Só quem está em Preparo pode ser interrompido, e interromper atrasa o alvo em tantos Ticks quantos você pagar.</div>` : ''}
+    </div>`;
   }
 
   function pintarPainel(atual: any, fila: any[]) {
@@ -916,6 +1013,7 @@ import MesaCab from '../../components/MesaCab.astro';
         <div><div class="pt-nome">${esc(atual.nome)}</div>
           <div class="pt-sub">tick ${atual.tick}${t ? ' · ' + esc(t.estado) : ''}${GRUPO_LBL[atual.grupo] ? ' · ' + GRUPO_LBL[atual.grupo] : ''}</div></div>
       </div>
+      ${lidoNaFila(fila)}
       <div class="pt-stats">
         ${r?.ataque ? `<div><b>Acerto</b> ${esc(r.ataque)}${a.flat ? ` <span class="ruim">${sinal(a.flat)}</span>` : ''}${a.dados ? ` <span class="ruim">${sinal(a.dados)}d6</span>` : ''}</div>` : ''}
         ${r?.dano ? `<div><b>Dano</b> ${esc(r.dano)}</div>` : ''}
@@ -1055,15 +1153,54 @@ import MesaCab from '../../components/MesaCab.astro';
     return liquido;
   }
 
-  async function avancarTick(cid: string, quanto: number, txt: string) {
+  /**
+   * Ataque recebido: abre a guarda de quem o recebe.
+   *
+   * Guarda sob pressão, do capítulo IX: −2 por ataque, acumulando sem teto até
+   * o ciclo do defensor fechar. Quem não tem ação declarada acumula do mesmo
+   * jeito, numa ação mínima que só carrega a pressão: sem isso, quem está
+   * parado seria o único imune à regra que existe justamente para punir quem
+   * fica parado apanhando.
+   */
+  async function somarPressao(cid: string, quantos = 1) {
+    const c = COMBS.find((x) => x.id === cid); if (!c) return;
+    const a = acaoDe(c) || { golpes: [], livre: c.tick, tipo: 'simples' as Manobra };
+    const novo = { ...a, pressao: (a.pressao || 0) + quantos };
+    c.acao = novo;
+    await upComb(cid, { acao: novo });
+  }
+
+  /**
+   * Limpa a ação de quem já saiu dela.
+   *
+   * O ciclo fechado é um estado que ninguém escreve: ele chega porque o relógio
+   * andou. Varrer aqui, ao pintar, evita uma coluna de "livre desde" e evita a
+   * fita fantasma de um golpe que saiu há três rodadas.
+   */
+  async function limparAcoesVencidas() {
+    const vencidas = COMBS.filter((c) => {
+      const a = acaoDe(c);
+      return a && AGORA >= a.livre && c.tick <= AGORA;
+    });
+    for (const c of vencidas) { c.acao = {}; await upComb(c.id, { acao: {} }); }
+    return vencidas.length > 0;
+  }
+
+  async function avancarTick(cid: string, quanto: number, txt: string, acao: any = null) {
     const c = COMBS.find((x) => x.id === cid); if (!c) return;
     const antes = c.tick;
+    const antesAcao = c.acao;
     const cd = somarCondicoes(condsDe(c));
     const novo = Math.max(0, antes + Math.max(0, quanto + (cd.velocidade || 0)));
     c.tick = novo;
-    await upComb(cid, { tick: novo });
+    // A ação e o Tick andam juntos: a ação diz o que acontece DENTRO do ciclo
+    // que o Tick acabou de reservar. Gravar em duas idas daria uma janela em
+    // que a fita mostra um ciclo e o relógio mostra outro.
+    c.acao = acao || {};
+    await upComb(cid, { tick: novo, acao: c.acao });
     registrarDesfazer(`Tick de ${c.nome} (${antes} → ${novo})`, async () => {
-      c.tick = antes; await upComb(cid, { tick: antes }); await carregar();
+      c.tick = antes; c.acao = antesAcao;
+      await upComb(cid, { tick: antes, acao: antesAcao || {} }); await carregar();
     });
     await logar(`${txt} · tick ${antes} → ${novo}.`);
     // Efeitos por rodada disparam quando o combatente age: é assim que a regra
@@ -1081,6 +1218,7 @@ import MesaCab from '../../components/MesaCab.astro';
     const btns = el('enc-btns');
     btns.innerHTML = EH_MESTRE ? `
       <button class="btn mini" id="btn-revelar" title="Abrir o painel: o que os jogadores veem dos inimigos, das fichas uns dos outros, e o placar do que já está liberado nas outras abas">👁 ${esc(resumoRevelacao(REV))}</button>
+      <button class="btn mini" id="btn-tempo" title="Como o tempo passa nesta mesa: o sistema de combate (normal ou em três fases) e como a mesa o desenha">⏱ ${esc(resumoDoTempo(TEMPO))}</button>
       <button class="btn mini" id="btn-encontros">Encontros</button>
       <button class="btn mini" id="btn-reiniciar">Reiniciar</button>
       <button class="btn mini perigo" id="btn-encerrar">Encerrar</button>` : '';
@@ -1094,6 +1232,14 @@ import MesaCab from '../../components/MesaCab.astro';
       await logar(`Revelação: vida ${novo.vidaInimigo}, números ${novo.statsInimigo ? 'à vista' : 'ocultos'}.`, 'sistema', null);
       await carregar();
     });
+    el('btn-tempo').onclick = () => abrirEscolhaDoTempo(
+      CTX!, { emAndamento: COMBS.filter((c) => acaoDe(c)).length },
+      async (novo) => {
+        TEMPO = novo;
+        await logar(`O combate desta mesa passa a ser: ${resumoDoTempo(novo)}.`, 'sistema',
+          `O combate desta mesa passa a ser: ${resumoDoTempo(novo)}.`);
+        await carregar();
+      });
     el('btn-encontros').onclick = () => abrirEncontros();
     el('btn-reiniciar').onclick = () => abrirReiniciar();
     el('btn-encerrar').onclick = async () => {
@@ -1471,6 +1617,44 @@ import MesaCab from '../../components/MesaCab.astro';
     const alvoAtual = () => alvos.find((x) => x.id === alvoSel.value) || null;
     const ehAtaque = () => ['ataque', 'social', 'mental'].includes(tipoSel.value);
 
+    // ---- a manobra manda no tempo -------------------------------------
+    // A classe da arma dá o Preparo; a manobra dá quantos Golpes e quanto o
+    // ciclo cresce. Tudo sai de `combate-tempo.ts`, que lê `regras.json`: aqui
+    // não há régua escrita à mão.
+    const manSel = el('acao-manobra') as HTMLSelectElement;
+    const golpesInp = el('acao-golpes') as HTMLInputElement;
+    const classe = classeDeTempo(r?.arma, r?.velocidade);
+    const velBase = r?.velocidade ?? velocidadeDaArma(r?.arma, 5);
+    manSel.value = 'simples'; golpesInp.value = '2';
+    golpesInp.max = String(Math.max(2, tetoDaRajada(classe)));
+
+    const anat = () => anatomia({
+      classe, velocidade: velBase, sistema: TEMPO.sistema,
+      manobra: manSel.value as Manobra,
+      golpes: Math.max(2, parseInt(golpesInp.value || '2', 10) || 2),
+    });
+
+    /** Redesenha a caixa do tempo e joga a Velocidade da manobra no campo. */
+    const syncTempo = () => {
+      const atk = tipoSel.value === 'ataque';
+      el('acao-manobra-wrap').style.display = atk ? '' : 'none';
+      el('acao-tempo').hidden = !atk;
+      el('acao-golpes-wrap').style.display = manSel.value === 'rajada' ? '' : 'none';
+      if (!atk) return;
+      const a = anat();
+      spdInp.value = String(a.ciclo);
+      const dados = a.penDados.map((p, i) => `${i + 1}º ${p ? `${p}d6` : 'cheio'}`).join(' · ');
+      const linha = TEMPO.sistema === 'pgr'
+        ? `<b>Preparo ${a.preparo}</b> · <b>Golpe ${a.golpes}</b> · <b>Recuperação ${a.recuperacao}</b> = ${a.ciclo} Ticks`
+        : `Resolve agora · <b>${a.ciclo} Ticks</b> até a próxima ação`;
+      const quando = a.offs.map((o) => AGORA + o).join(', ');
+      (el('acao-tempo') as HTMLElement).innerHTML =
+        `<div>${linha}</div>
+         <div class="muted">golpe${a.golpes > 1 ? 's' : ''} no Tick ${quando} · livre no ${AGORA + a.ciclo} · dados: ${esc(dados)}</div>
+         ${a.aviso ? `<div class="ruim">${esc(a.aviso)}</div>` : ''}`;
+    };
+    manSel.onchange = syncTempo; golpesInp.oninput = syncTempo;
+
     const sync = () => {
       const atk = ehAtaque();
       el('acao-alvo-wrap').style.display = atk ? '' : 'none';
@@ -1500,25 +1684,33 @@ import MesaCab from '../../components/MesaCab.astro';
              ${aj.ferimento ? `<span class="muted"> · ferimento ${sinal(aj.ferimento)}</span>` : ''}</div>
            ${(RESUMO[alvo.id]?.resistPerf && tipoSel.value === 'ataque') ? `<div class="muted">Gate de Perfuração do alvo: N${RESUMO[alvo.id].resistPerf} — abaixo disso o Perfurante resvala.</div>` : ''}`;
     };
-    tipoSel.onchange = sync; alvoSel.onchange = sync; alcSel.onchange = sync; sync();
+    const syncTudo = () => { sync(); syncTempo(); };
+    tipoSel.onchange = syncTudo; alvoSel.onchange = syncTudo; alcSel.onchange = syncTudo; syncTudo();
 
     el('acao-rolar-atq').onclick = () => {
-      const rolagem = rolarExpr(r?.ataque || '0d6', aj.dados, aj.flat);
       const alvo = alvoAtual();
-      let veredito = '';
-      if (alvo) {
-        const d = tipoSel.value === 'ataque' ? defesaAtual(alvo, alcSel.value as 'cac' | 'dist')?.total
-          : tipoSel.value === 'social' ? RESUMO[alvo.id]?.defesaSocial : RESUMO[alvo.id]?.defesaMental;
+      const d = alvo
+        ? (tipoSel.value === 'ataque' ? defesaAtual(alvo, alcSel.value as 'cac' | 'dist')?.total
+          : tipoSel.value === 'social' ? RESUMO[alvo.id]?.defesaSocial : RESUMO[alvo.id]?.defesaMental)
+        : null;
+      // Um golpe, uma rolagem. A rajada e a empunhadura dupla têm penalidade
+      // PRÓPRIA por golpe (−1d6 acumulativo na rajada, −1d6 nas duas mãos da
+      // dupla), então somá-las numa jogada só seria mentir na primeira e na
+      // última ao mesmo tempo.
+      const pen = tipoSel.value === 'ataque' ? anat().penDados : [0];
+      const linhas = pen.map((p, i) => {
+        const rolagem = rolarExpr(r?.ataque || '0d6', aj.dados + p, aj.flat);
+        let veredito = '';
         if (d != null) {
-          const acertou = rolagem.total > d;
           const erroPor = d - rolagem.total + 1;
-          veredito = acertou
+          veredito = rolagem.total > d
             ? ` <span class="ok">acertou (${rolagem.total} &gt; ${d})</span>`
             : ` <span class="ruim">errou por ${erroPor}</span>${erroPor <= 3 ? ' <span class="muted">· cabe Quase-Acerto?</span>' : ''}`;
         }
-      }
-      (el('acao-res-atq') as HTMLElement).innerHTML =
-        `[${rolagem.rolls.join(', ')}]${rolagem.flat ? ` ${sinal(rolagem.flat)}` : ''} = <b>${rolagem.total}</b>${veredito}`;
+        const rot = pen.length > 1 ? `<b>${i + 1}º</b>${p ? ` <span class="ruim">${p}d6</span>` : ''} ` : '';
+        return `<div>${rot}[${rolagem.rolls.join(', ')}]${rolagem.flat ? ` ${sinal(rolagem.flat)}` : ''} = <b>${rolagem.total}</b>${veredito}</div>`;
+      });
+      (el('acao-res-atq') as HTMLElement).innerHTML = linhas.join('');
     };
 
     el('acao-rolar-dano').onclick = () => {
@@ -1551,7 +1743,20 @@ import MesaCab from '../../components/MesaCab.astro';
           : (outroInp.value.trim() ? `${ator.nome}: ${outroInp.value.trim()}` : `${ator.nome} agiu`);
       const bruto = Math.max(0, parseInt(danoInp.value || '0', 10) || 0);
       dlg.close();
-      await avancarTick(cid, spd, txt);
+      // A ação declarada, antes do Tick andar: ela nasce no Tick de AGORA, que
+      // é onde o ator está, e é dela que a fita e a escada saem.
+      const decl = tipoSel.value === 'ataque'
+        ? declarar(ator.tick, anat(), {
+            tipo: manSel.value as Manobra,
+            arma: r?.arma || null,
+            alvo: alvo?.id || null,
+          })
+        : null;
+      await avancarTick(cid, spd, txt, decl);
+      // A Guarda sob pressão: cada ataque recebido abre a guarda de quem o
+      // recebe em −2, acumulando até o ciclo dele fechar. Conta o ataque, e não
+      // o acerto: quem se defende gasta a guarda mesmo quando o golpe erra.
+      if (alvo && tipoSel.value === 'ataque') await somarPressao(alvo.id, decl ? decl.golpes.length : 1);
       if (alvo && alvo.pv_max != null && bruto > 0 && tipoSel.value === 'ataque') {
         await aplicarDano(alvo.id, bruto, danoTipo.value);
         await carregar();
@@ -1627,7 +1832,9 @@ import MesaCab from '../../components/MesaCab.astro';
       dlg.close();
       for (const c of COMBS) {
         const cols: any = {};
-        if (zTick) cols.tick = 0;
+        // Zerar os Ticks apaga a ação junto: uma fita que aponta para o Tick 9
+        // de um relógio que voltou ao zero é pior que fita nenhuma.
+        if (zTick) { cols.tick = 0; cols.acao = {}; }
         if (zPv && c.pv_max != null) { cols.pv_atual = c.pv_max; if (c.energia_max != null) cols.energia_atual = c.energia_max; }
         if (zCond) cols.condicoes = [];
         if (zFora) cols.ativo = true;

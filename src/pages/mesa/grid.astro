@@ -38,6 +38,10 @@ const SETAS = [
           <button class="btn mini" id="gr-fx" title="Efeitos elementais">✦ efeitos</button>
           <button class="btn-fant" id="gr-fx-cfg" title="Ajustar os efeitos">⚙</button>
           <button class="btn mini" id="gr-trilha" title="Trilha de fundo desta arena">♪ trilha</button>
+          {/* O mesmo painel do rastreador de combate: a escolha é da mesa, e as
+              duas telas leem do mesmo lugar. Aqui porque é no tabuleiro que o
+              mestre está quando a briga começa. */}
+          <button class="btn mini" id="gr-tempo" title="Como o tempo passa nesta mesa">⏱ tempo</button>
           <button class="btn mini" id="gr-ativar">◉ em jogo</button>
           <button class="btn mini" id="gr-registro">☰ registro</button>
           <button class="btn-fant perigo" id="gr-excluir" title="Excluir esta arena">✕</button>
@@ -418,6 +422,9 @@ const SETAS = [
   .ini-num { font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft);
     font-variant-numeric: tabular-nums; }
   .ini-num b { color: var(--accent-texto); }
+  /* A fita ocupa a terceira linha da grade, alinhada com o nome e os números.
+     O desenho dela está no MesaCab: o rastreador de combate usa a mesma. */
+  .ini-fita { grid-column: 2; line-height: 0; }
   .ini-item.g-aliado  { border-left: 3px solid var(--accent); }
   .ini-item.g-inimigo { border-left: 3px solid #c1352c; }
   .ini-item.g-neutro  { border-left: 3px solid var(--gold); }
@@ -879,6 +886,24 @@ const SETAS = [
   @keyframes vez-pulsa { 50% { opacity: .82; } }
   @media (prefers-reduced-motion: reduce) { .gr-token.vez .tok-quadro { animation: none; } }
 
+  /* ---- o gesto no ar: Preparo e Golpe ----
+     Vem ANTES da mira e DEPOIS da vez, e a ordem é a mesma lógica: quem está
+     prestes a levar o golpe importa mais do que quem está prestes a dá-lo.
+
+     O Preparo é um contorno dourado fosco, quieto: ele diz "está montando
+     alguma coisa", e é o que abre a janela de interromper. O Golpe é um anel
+     forte e pulsado, curto: ele dura UM Tick, e é a peça que torna a
+     sincronização jogável, porque o jogador vê que o martelo cai agora e
+     decide. Ver Combate_Tempo.md §14.7.1. */
+  .gr-token.montando .av { outline: 2px dashed color-mix(in srgb, var(--gold) 70%, transparent);
+    outline-offset: -2px; }
+  .gr-token.golpe .tok-quadro {
+    filter: drop-shadow(0 0 5px var(--gold)) drop-shadow(0 0 14px var(--gold));
+    animation: golpe-pulsa .7s ease-in-out infinite; }
+  .gr-token.golpe .av { outline: 3px solid var(--gold); outline-offset: -2px; }
+  @keyframes golpe-pulsa { 50% { transform: scale(1.05); } }
+  @media (prefers-reduced-motion: reduce) { .gr-token.golpe .tok-quadro { animation: none; } }
+
   /* ---- o alvo sob a mira ----
      Depois do brilho da vez, de propósito: uma peça pode estar na vez E na
      mira, e nesse instante o que importa é que ela está prestes a levar o
@@ -1047,10 +1072,21 @@ const SETAS = [
   } from '../../lib/grid-golpe-fx';
   import { armaDoSlot } from '../../lib/equip';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
+  import { abrirEscolhaDoTempo, resumoDoTempo, fitaHTML } from '../../lib/mesa-tempo-ui';
+  import {
+    combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, resumoDaAcao,
+    type CombateMesa,
+  } from '../../lib/combate-tempo';
 
   const el = (i: string) => document.getElementById(i)!;
 
   let SB: any, ID = '', MESTRE = false, EU = '';
+  // O contexto da mesa, guardado porque o painel do tempo precisa dele.
+  let CTX: any = null;
+  // Como o tempo passa nesta mesa: o sistema (normal ou P/G/R) e a marcação.
+  // Mora em `mesas.combate` (migração 27) e é a MESMA escolha do rastreador de
+  // combate: as duas telas leem do mesmo lugar.
+  let TEMPO: CombateMesa = { ...COMBATE_PADRAO };
   let ARENAS: any[] = [];
   let ARENA: any = null;
   let ENC: any = null;
@@ -1260,7 +1296,8 @@ const SETAS = [
   async function main() {
     const ctx = await abrirMesa('grid');
     if (!ctx) return;
-    SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id;
+    SB = ctx.sb; ID = ctx.id; MESTRE = ctx.ehMestre; EU = ctx.user.id; CTX = ctx;
+    TEMPO = combateDaMesa(ctx.mesa);
 
     document.body.classList.add('pagina-grid');
     if (MESTRE) { el('gr-btns').hidden = false; el('gr-dica').hidden = false; }
@@ -2554,6 +2591,15 @@ const SETAS = [
     }).join('');
   }
 
+  /**
+   * A ação declarada de um combatente, ou nada.
+   *
+   * Quem escreve nela é o rastreador de combate (a aba ao lado); aqui só se lê.
+   * Banco sem a migração 27 devolve `undefined`, e o tabuleiro segue igual ao
+   * que sempre foi: sem anel de Golpe, sem fita, sem erro.
+   */
+  const acaoNo = (c: any) => (c && c.acao && !acaoVazia(c.acao) ? c.acao : null);
+
   function pintarTokens() {
     const mg = margem();
     const box = el('gr-tokens');
@@ -2573,6 +2619,7 @@ const SETAS = [
     // A aura acende em TODOS do tick corrente, e não só em quem age primeiro:
     // eles estão agindo no mesmo instante, e a mesa precisa ver isso no chão.
     const naVez = new Set(grupoDaVez().map((c: any) => c.id));
+    const agoraTick = relogio();
     reconciliar(box, ordenados.map((c: any) => {
       const t = TOKENS[c.id];
       const p = centroHex(t.q, t.r, RAIO);
@@ -2584,13 +2631,19 @@ const SETAS = [
       const mn = manaDe100(c);
       const faixa = tierDe(pct == null ? null : pct, pct == null ? null : 100);
       const caido = pct != null && pct <= 0;
+      // A fase do tempo, quando há ação no ar. É a peça que torna a
+      // sincronização jogável: o jogador VÊ que o martelo cai agora, e decide.
+      // Ver `combate-tempo.ts` e Combate_Tempo.md §14.7.1.
+      const fase = faseEm(acaoNo(c), agoraTick);
+      const clsFase = fase === 'golpe' ? ' golpe' : fase === 'preparo' ? ' montando' : '';
       // Abaixo de uns 34px o nome fica mais largo que a peça e vira sujeira em
       // cima do vizinho; nesse tamanho o título do mouse dá conta.
-      return { chave: c.id, html: `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${naVez.has(c.id) ? ' vez' : ''}"
+      return { chave: c.id, html: `<div class="gr-token g-${esc(c.grupo || 'inimigo')} ${tierCls(faixa.estado)}${c.oculto ? ' oculto' : ''}${px < 34 ? ' mini' : ''}${caido ? ' caido' : ''}${naVez.has(c.id) ? ' vez' : ''}${clsFase}"
         data-c="${c.id}" style="left:${p.x + mg.x}px; top:${p.y + mg.y}px; --tok:${px.toFixed(1)}px"
         title="${esc(c.nome)} · ${diametroM(c)} m${pct != null ? ` · ${faixa.estado}` : ''}${
           mn != null ? ` · Mana ${c.mana_max != null && c.mana_atual != null
-            ? `${c.mana_atual}/${c.mana_max}` : `${Math.round(mn)}%`}` : ''}">
+            ? `${c.mana_atual}/${c.mana_max}` : `${Math.round(mn)}%`}` : ''}${
+          clsFase ? ` · ${esc(resumoDaAcao(acaoNo(c), agoraTick))}` : ''}">
         <span class="tok-quadro">${avatarDe(c)}${anelHTML(pct)}${manaHTML(mn)}</span>
         ${condIconesHTML(c, px)}
         <span class="gr-tn">${esc(c.nome)}</span>
@@ -2802,15 +2855,22 @@ const SETAS = [
     reconciliar(box, emPe.map((c: any) => {
       const pct = pctDe100(c);
       const ehVez = naVez.has(c.id);
+      const a = acaoNo(c);
       const dica = c.id === age ? ' · age agora'
         : ehVez ? ' · também neste tick' : '';
+      // A fita mede o tempo DESTA pessoa a partir do relógio da cena, e todas
+      // começam na mesma coluna: é o alinhamento que deixa comparar duas linhas
+      // sem contar casas. Só aparece quando a mesa pediu fita e há gesto no ar.
+      const f = (a && TEMPO.marcacao === 'fita')
+        ? `<span class="ini-fita" title="${esc(resumoDaAcao(a, tick))}">${fitaHTML(a, tick, { largura: 9, mini: true })}</span>` : '';
       return { chave: c.id, html: `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${ehVez ? ' vez' : ''}${
         c.id === age ? ' age' : ''}"
-        data-c="${c.id}" data-t="${c.tick ?? 0}" title="${esc(c.nome)}${dica}">
+        data-c="${c.id}" data-t="${c.tick ?? 0}" title="${esc(c.nome)}${dica}${a ? ' · ' + esc(resumoDaAcao(a, tick)) : ''}">
         <span class="ini-av">${avatarDe(c, 'av-p')}</span>
         <span class="ini-nome">${esc(c.nome)}</span>
         <span class="ini-num">t <b>${c.tick ?? 0}</b> · ini <b>${c.iniciativa ?? 0}</b>${
           pct != null ? ` · ${Math.round(pct)}%` : ''}</span>
+        ${f}
       </div>` };
     }));
   }
@@ -4934,6 +4994,14 @@ const SETAS = [
     el('gr-nova').onclick = () => abrirArena(null);
     el('gr-editar').onclick = () => abrirArena(ARENA);
     el('gr-fundo-btn').onclick = () => abrirFundo();
+    (el('gr-tempo') as HTMLElement).title = `Como o tempo passa nesta mesa: ${resumoDoTempo(TEMPO)}`;
+    el('gr-tempo').onclick = () => abrirEscolhaDoTempo(
+      CTX, { emAndamento: COMBS.filter((c: any) => acaoNo(c)).length },
+      async (novo) => {
+        TEMPO = novo;
+        (el('gr-tempo') as HTMLElement).title = `Como o tempo passa nesta mesa: ${resumoDoTempo(novo)}`;
+        await carregar();
+      });
     el('gr-ativar').onclick = async () => {
       const { error } = await SB.rpc('ativar_arena', { p_id: ARENA.id });
       if (error) return uiErro('Erro: ' + error.message);

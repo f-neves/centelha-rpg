@@ -16,6 +16,7 @@ import EFEITO_D from '../data/efeitos.json';
 import RACA_D from '../data/racas.json';
 // a mesma formatação de parâmetros do capítulo XV, para a ficha não inventar outra
 import { ordemPar, valorPar, formaDe, rank, PAR_FORMA } from './artes-fmt';
+import { anatomia as anatomiaTempo, classeDeTempo, tetoDaRajada } from './combate-tempo';
 import { sparkSVG } from './centelha-spark';
 import { url } from './site';
 import {
@@ -1502,6 +1503,26 @@ export function montarFicha(opts: FichaOpts) {
     el('derived').classList.toggle('collapsed', !!S.derivCol);
     el('deriv-toggle').textContent = S.derivCol ? 'Expandir' : 'Contrair';
   }
+  /**
+   * A anatomia da Velocidade: Preparo · Golpe · Recuperação.
+   *
+   * INFORMATIVA. Ela só muda o jogo se a mesa estiver rodando o combate em três
+   * fases, e isso é escolha do mestre, que a ficha não conhece. O que ela diz
+   * vale de qualquer jeito: onde a arma é lenta e onde ela deixa você exposto.
+   * A régua sai de `regras.json`; a escada, da §14.11 do Combate_Tempo.md.
+   */
+  function linhaPGR(w: any) {
+    const cls = classeDeTempo(w?.id || w?.nome, w?.ticks);
+    const a = anatomiaTempo({ classe: cls, velocidade: w?.ticks ?? 5, sistema: 'pgr' });
+    if (a.ciclo <= 1) return '';
+    const teto = tetoDaRajada(cls);
+    return `<div class="cmb"><b>No tempo</b> — Preparo <b>${a.preparo}</b> · Golpe <b>${a.golpes}</b>`
+      + ` · Recuperação <b>${a.recuperacao}</b> <span class="muted">(os ${a.ciclo} Ticks da Velocidade, repartidos)</span></div>`
+      + `<div class="cmb muted">Atacar abre a guarda: −2 no Preparo, −4 no Tick do Golpe, −2 por golpe dado`
+      + ` na Recuperação.${teto > 1 ? ` Dá para golpear até <b>${teto}</b> vezes numa ação só, a −1d6 acumulativo e +2 Ticks por golpe extra.` : ''}`
+      + ` Numa mesa que não usa as três fases, tudo isso vale igual: só o Preparo some.</div>`;
+  }
+
   function renderCombate() {
     const act = calcConj(conjAtivo());
     const w = act.atk, C = S.centelha || 0, armorPen = act.armorPen;
@@ -1518,6 +1539,7 @@ export function montarFicha(opts: FichaOpts) {
       `<div class="cmb"><b>Conjunto em uso</b> — ${nomeSet}</div>` +
       `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}${MODULOS.folego ? ` · Fôlego ${w.folego ?? 0}` : ''}</div>` +
       `<div class="cmb"><b>Modos</b> — ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>` +
+      linhaPGR(w) +
       (MODULOS.folego ? `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego e +1 Velocidade.</div>` : '') +
       (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
       (escudos.length
