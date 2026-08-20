@@ -1230,6 +1230,111 @@ fraca atrasa o tempo do par).**
   **de hoje**, maior que esta seção: ver K21 no `Pendencias.md`.
 ---
 
+## 15. Os dois sistemas, e o plano de implementação (20/08/2026)
+
+**A decisão de arquitetura:** o jogo terá **dois sistemas de tempo**, à escolha do mestre por
+mesa, e **um só conjunto de regras**:
+
+- o **sistema normal**, o de hoje: a ação custa a Velocidade e resolve no primeiro Tick;
+- o **sistema P/G/R**, o desta revisão: a mesma Velocidade partida em Preparo, Golpe e
+  Recuperação.
+
+Todas as decisões novas (a escada de penalidades, a rajada, a dupla, o deslocamento pago, a
+dívida de Ticks) **valem nos dois**. Para isso elas são escritas em **moeda comum**: Ticks de
+Velocidade, dados de rolagem e pontos de Defesa, nunca em termos que só existem num dos sistemas.
+
+### 15.1. A tabela de tradução
+
+| regra | no sistema normal | no sistema P/G/R |
+|---|---|---|
+| **a escada** | no Tick em que o seu golpe sai, Defesa **−4**; depois, **−2 por golpe dado** até a sua próxima ação | Preparo **−2** · Golpe **−4** · Recuperação **−2 por golpe dado** |
+| **Pressão recebida** | −2 por ataque sofrido, acumulando até agir (como hoje) | idem, zera quando o ciclo fecha |
+| **rajada** | ataque N vezes numa ação: **Velocidade +2 por golpe extra**, −1d6 acumulativo, teto 3/3/2/2 por classe | o mesmo +2, na anatomia: +1 Tick de Golpe e +1 de Recuperação por golpe extra |
+| **dupla (dois golpes)** | **mesma Velocidade**, −1d6 nas duas mãos | par de leves: mesmo ciclo · com média: **ciclo +1** |
+| **dupla (segura e golpeia com uma)** | no Tick do golpe, −2 em vez de −4 | idem (é a fase G) |
+| **deslocar-se depois de atacar** | 2 Ticks por metro, pagos como dívida | idem (é a fase R) |
+| **ação fora de hora, dívida, espelho** | igual | igual |
+| **abortar o que ainda não saiu** | só as Artes (as únicas com montagem visível) | qualquer Preparo |
+| **ler e interromper o gesto** | só as Artes telegrafam | tudo com P ≥ 1 telegrafa |
+
+A última linha é o que o P/G/R **compra**: no sistema normal a camada de leitura e interrupção só
+existe contra conjuradores; no P/G/R ela vale para o martelo também. O resto é idêntico.
+
+### 15.2. A sanidade da tradução, medida
+
+O motor roda o sistema normal com `usarPreparo: false` (todo P vira zero e o Golpe cai no Tick da
+declaração), então as regras novas puderam ser medidas **nos dois lados** (8 armas limpas):
+
+| sistema | leve | média | haste | pesada | amplitude |
+|---|:---:|:---:|:---:|:---:|:---:|
+| hoje, sem nada de novo | 55,7% | 41,0% | 52,6% | 57,1% | 16,2 |
+| **normal + regras novas** | 55,0% | 40,5% | 53,6% | 57,2% | **16,7** |
+| P/G/R + regras novas | 63,3% | 41,6% | 53,6% | 47,6% | 21,7 |
+
+As regras novas são **quase neutras no sistema normal** (16,7 contra 16,2): a escada colapsa para
+o que o capítulo IX já cobrava, mais o −4 no Tick do golpe. E as manobras medem bem nos dois:
+
+| manobra, no sistema normal | ciclo | duelo | 1 soldado |
+|---|:---:|:---:|:---:|
+| leve · rajada de 2 | 7t | 40,3% | 13,1t |
+| leve · dupla (mesma Vel) | 5t | 54,8% | 11,0t |
+| média · rajada de 2 | 8t | 46,3% | 12,9t |
+| média · dupla (mesma Vel) | 6t | **46,7%** | 12,9t |
+
+**A única regra que se calibra diferente por sistema é a dupla de arma média:** no P/G/R ela
+precisa do ciclo +1 (sem ele, 67,7%); no normal ela fecha na **mesma Velocidade** (46,7%; com +1
+despenca para 25,3%). A tabela da §15.1 já registra os dois valores. Todo o resto traduz 1 para 1,
+incluindo a leve, que dá os mesmos números nos dois sistemas (P = 0 os torna idênticos para ela).
+
+### 15.3. O plano, em fases
+
+As incongruências conhecidas hoje são três, e o plano existe para fechá-las: **o motor e a
+bancada implementam a régua de 19/08** (não a escada nem a rajada); **o catálogo diverge da regra
+das versáteis** (K21); e **o capítulo IX não tem nada disto**. Uma fase para cada, mais o chão.
+
+**Fase 1 · O motor** (`scripts/lib-tempo.mjs`). Portar o que foi decidido em 20/08: a escada
+(Preparo/Golpe/Recuperação por golpe dado), a rajada (`P→G→G→R` com +1 R por golpe extra e o
+−1d6 acumulativo), a dupla (as duas geometrias e o alívio do Tick do Golpe), e os quatro presets:
+**HOJE** (o normal puro), **NORMAL+NOVAS**, **P/G/R (20/08)** e os legados (19/08 e `--legado`
+para as tabelas antigas). Critério de pronto: reproduzir as tabelas das §14.11 a §14.13 e da
+§15.2.
+
+**Fase 2 · O relatório em lote** (`sim-ticks.mjs`). Três baterias novas: a escada nos dois
+sistemas, a rajada nos dois, a dupla nos dois. As baterias Q/R/S/T de 19/08 continuam existindo
+como registro.
+
+**Fase 3 · A bancada.** O painel ganha o seletor de **sistema** (normal × P/G/R), que aplica as
+mesmas regras sobre a base escolhida; os cartões das §14.11 a §14.13 entram na aba de regras; e
+uma bateria "os dois sistemas lado a lado". O smoke (`test-bench-tempo.mjs`) cobre o seletor.
+A partir daqui a bancada volta a ser a verdade única, e o aviso da §14.10 sai.
+
+**Fase 4 · O capítulo IX** (quando as pendências de decisão fecharem). As regras em moeda comum
+entram no capítulo **valendo já no sistema normal**: a escada, a rajada, a dupla nova (que
+conserta a armadilha atual dos 22,7%), o deslocamento pós-ataque e o catálogo de ações fora de
+hora. O P/G/R entra como capítulo opcional ("O combate em três fases"), com a régua por classe,
+o abortar, a leitura e o rastreio. Junto: as notas de superação nas seções antigas deste
+documento migram para o texto final e morrem aqui.
+
+**Fase 5 · Os dados.** A régua não pede nada de `armas.json` (P deriva da classe); entra um bloco
+`combate` em `regras.json` com a régua P/G/R por classe, a escada e os tetos de rajada, para a
+ficha e a mesa lerem da fonte em vez de hardcode. **À parte e sem pressa:** o acerto do catálogo
+das versáteis (K21), que tem decisões próprias de preço e não bloqueia nada acima.
+
+**Fase 6 · Ficha e mesa.** Na ficha, a linha de combate mostra o `P/G/R` da arma (informativo).
+Na mesa, a coluna `acao` e a fita de três tons da §14.7.1, com um campo por mesa escolhendo o
+sistema (`normal` ou `pgr`): a fita degenera com elegância no normal (Golpe no primeiro Tick, o
+resto Recuperação). **É a frente da outra instância: precisa de combinação antes.**
+
+**O que NÃO bloqueia as fases 1 a 3:** K12 (teste de Virtude), K14 (escudo), K17/K4 (arqueiro),
+K21 (versáteis) e K11 (Alabarda/Maça) são decisões de regra e catálogo; o motor e a bancada podem
+ficar prontos antes delas. K14 e K21 bloqueiam a Fase 5 do catálogo; K12 e K17 bloqueiam partes
+do texto da Fase 4.
+
+**Ordem recomendada:** 1 → 2 → 3 agora, na sequência; 4 quando K12/K17 fecharem; 5 e 6 combinando
+com a frente da mesa.
+
+---
+
 ## Apêndice: como rodar
 
 ```

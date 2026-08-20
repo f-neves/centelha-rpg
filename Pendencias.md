@@ -690,11 +690,15 @@ revistos por ela.
   verdade está entre os dois cantos e depende do roteamento das Defesas pelo "como". Enquanto o
   motor não souber escolher entre Esquiva e Bloqueio, **nenhum ajuste de catálogo (K11) deve ser
   feito com base nele**.
-- [ ] **K5 · [FAZER] A implementação, quando as bordas fecharem.** `armas.json` (o `P/G/R`,
-  provavelmente derivado da classe em `regras.json`), capítulo IX, a linha de combate da ficha e o
-  rastreador de Ticks da mesa (a barra de **três** tons no trilho compartilhado, mais o destaque de
-  quem está no Tick do Golpe agora). O rastreio inteiro cabe em dois números por combatente: *sai
-  no Tick X, livre no Tick Y*. §14.7.
+- [ ] **K5 · [FAZER] A implementação: os DOIS sistemas.** Decidido em 20/08: o jogo terá o
+  sistema normal (o de hoje) e o P/G/R como opção por mesa, com **um só conjunto de regras**
+  escrito em moeda comum, e a dupla de média é a única regra com calibragem diferente por sistema
+  (mesma Velocidade no normal, ciclo +1 no P/G/R). O plano em seis fases está na **§15 do
+  `Combate_Tempo.md`**: 1 motor (portar a escada/rajada/dupla de 20/08 e os presets) · 2 relatório
+  em lote · 3 bancada (seletor de sistema; a partir daí ela volta a ser a verdade) · 4 capítulo IX
+  (as regras comuns já no normal, o P/G/R como capítulo opcional) · 5 `regras.json` (bloco
+  `combate`; o catálogo das versáteis é o K21, à parte) · 6 ficha e mesa (a fita da §14.7.1, com
+  a outra frente). Fases 1 a 3 não são bloqueadas por nenhuma pendência aberta.
 
 ## H. Arremesso
 
