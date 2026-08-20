@@ -658,6 +658,12 @@ flecha sai, o arqueiro está livre. O **arremesso tem R=1**, o Tick de voltar à
 
 ### 14.2. O que a guarda custa, e onde
 
+> **Superada pela §14.11 (20/08/2026).** Esta seção decidiu que a ação declarada não custaria
+> Defesa por si e que só o Tick do Golpe custaria (−6). O princípio mudou: **toda ação física gera
+> penalidade de Defesa**, e ela agora é uma escada que cresce a cada golpe. O achado desta seção
+> continua valendo (penalizar o Preparo é imposto que a arma leve não paga) e é o que explica o
+> preço da escada nova.
+
 Esta é a decisão que mais custou a achar, e o resultado é contraintuitivo.
 
 <p class="formula"><b>A ação declarada não custa Defesa por si. No Tick do Golpe, a Defesa cai 6.</b></p>
@@ -899,6 +905,89 @@ um componente ao lado da fila de iniciativa que já está lá.
 
 **O mínimo, se for para fazer por partes:** a coluna `acao` mais a fita. O anel e o botão são
 ganho de mesa, mas a fita sozinha já entrega o principal, que é *ver o tempo do outro*.
+
+### 14.11. A escada de penalidades (20/08/2026)
+
+**O princípio.** Toda ação física gera penalidade de Defesa; ações defensivas, não. Atacar gera, e
+receber ataque gera. A penalidade base é a mesma da Guarda sob pressão do capítulo IX, **−2**, e
+tudo o mais é derivado dela.
+
+#### A escada
+
+<p class="formula"><b>Preparo −2 · Golpe −4 · Recuperação −2</b></p>
+
+- **Preparo:** a penalidade normal de atacar. Se a penalidade de atacar mudar, este número muda com
+  ela.
+- **Golpe:** o dobro. (Está amarrado ao −2 por enquanto, mas pode ser desamarrado se decidirmos.)
+- **Recuperação:** a penalidade normal de atacar, **multiplicada por quantos golpes foram dados**.
+
+**Numa cadeia, a escada sobe a cada repetição.** Com três golpes:
+
+| fase | P1 | G1 | P2 | G2 | P3 | G3 | R |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| penalidade | −2 | −4 | −4 | −8 | −6 | −12 | −6 |
+
+A regra geral: **o k-ésimo Preparo custa −2k, o k-ésimo Golpe custa −4k, e a Recuperação custa −2
+por golpe dado.** Conferido no motor, espada longa com cadeia de 3:
+`P −2 · G −4 · P −4 · G −8 · P −6 · G −12 · R −6 · R −6 · R −6 · R −6`.
+
+#### As três empunhaduras
+
+| o que faz | Preparo | Golpe | Recuperação | por quê |
+|---|:---:|:---:|:---:|---|
+| uma arma | −2 | −4 | −2 | a escada normal |
+| **duas armas, golpeia com uma** | −2 | **−2** | −2 | a outra arma (ou o escudo) fica livre para o bloqueio naquele Tick |
+| **duas armas, golpeia com as duas** | −2 | −4 e −4 | **−4** | o Golpe não dobra (há uma arma livre), a Recuperação conta dois golpes |
+
+#### O que a bancada disse
+
+Todos os números abaixo são contra o campo de oito armas limpas, no motor com a escada ligada.
+
+**A escada base** dá amplitude entre classes de **21,0** contra 16,6 do sistema de hoje, com a arma
+leve em **63,1%** e a pesada em 47,7%. O custo está na Recuperação em −2: com −4 a amplitude cai
+para 15,1 e a leve para 56,1%. Fica registrado como o preço conhecido da escolha.
+
+**A dupla depende inteiramente da geometria**, e a proposta de dar um Tick a mais de Golpe **e** um
+de Recuperação a mata:
+
+| geometria da dupla | leve | média |
+|---|:---:|:---:|
+| **o Golpe extra sai da Recuperação (ciclo igual)** | **+5** | +17 |
+| Golpe +1 Tick (ciclo +1) | −23 | −6 |
+| Golpe +1 e Recuperação +1 (ciclo +2) | **−38** | −21 |
+
+Com o ciclo crescendo dois Ticks, a dupla perde 40% da cadência por um golpe a −1d6. Ninguém
+escolheria. **A geometria tem de ser a do ciclo igual.** E aí sobra o problema de sempre: a arma
+média em +17. Com os dados do capítulo (−1d6/−2d6) inverte, a média vai a +5 e a leve a −18.
+Nenhuma penalidade uniforme serve às duas, o que sustenta a restrição de **dois golpes só com duas
+armas leves**.
+
+**A cadeia, com a escada, dispensa qualquer freio de dado.** Ela sozinha faz o serviço:
+
+| | N=1 | N=2 | N=3 |
+|---|:---:|:---:|:---:|
+| leve, contra o campo | 63,4% | **45,2%** | 27,6% |
+| leve, contra 1 soldado | 100% em 16,5t | 100% em **11,3t** | 100% em 10,4t |
+| média, contra o campo | 50,0% | **41,0%** | 31,9% |
+| média, contra 1 soldado | 100% em 17,6t | 100% em **14,5t** | 100% em 14,1t |
+
+É exatamente o desenho pedido: contra um igual encadear é mau negócio; contra um mais fraco compra
+um terço do relógio por 2 pontos de Vida. **O freio de dado que a §14.5 propunha some**, porque a
+escada já cobra mais do que ele cobrava.
+
+**Acrescentar 1 Tick de Recuperação por golpe é excesso**: leva a cadeia de 2 de −18 para −34 na
+arma leve. A escada já resolve.
+
+#### O Preparo mínimo, medido
+
+Subir o P de todas as armas em 1 e baixar a Recuperação em 1 (leve 1/1/3 · média 2/1/3 · haste
+3/1/2 · pesada 3/1/3) **piora a amplitude de 21,0 para 24,8** e não conserta nada que estivesse
+quebrado: a cadeia já é punitiva sem ele e a dupla continua dependendo da geometria. O que ele
+compra é **de princípio**, e é real: com P ≥ 1 nenhuma ação resolve no Tick em que é declarada,
+então **tudo passa a ser legível e interrompível**, e a cadeia da arma leve deixa de ser
+`G→G→G→R`. É uma troca de 4 pontos de equilíbrio por consistência de leitura.
+
+---
 
 ### 14.8. As duas descobertas do motor
 
