@@ -636,6 +636,22 @@ revistos por ela.
   (22,9% contra 54,0%). §14.4.
 - [ ] **K19 · [FAZER] A cadeia foi medida só na arma leve.** Na média e na pesada cada elo custa 2
   e 3 Ticks, e as três curvas de freio não foram varridas ali. Bateria `--so T`.
+- [ ] **K21 · [DECIDIR] A empunhadura de duas mãos (Força ×2) nunca foi medida, e quebra o jogo
+  de hoje.** A regra geral (qualquer arma que possa ser empunhada com as duas soma o **dobro da
+  Força**, exceto as hastes de estocada) nunca entrou no motor da bancada, que lê o multiplicador
+  só do `maos: 2` do catálogo; a ficha a implementa via tag `versátil`, que **só a espada longa
+  tem**, outra divergência a resolver. Medida em 20/08/2026, a empunhadura de duas mãos dá de
+  **15 a 40 pontos de graça** contra a própria arma a uma mão: espada curta 90,2% · maça 82,8% ·
+  espada longa e machado 72,9% · picareta 65,8% (contra ~50% da base). A maça, a arma mais fraca
+  do catálogo, vira uma das mais fortes (o ×2 vence a Absorção natural contra Impacto). Cobrar o
+  Preparo de arma pesada (P2) devolve pouco (73%) e na maça piora a leitura. Três decisões
+  encadeadas: **quais armas podem** ser empunhadas com as duas (o catálogo não diz), **qual o
+  preço** (P de pesada é insuficiente sozinho; candidatos: Força ×1,5, ou dado sem Margem, ou
+  Velocidade +1), e a comparação justa com escudo e segunda arma **depende da K14** (o Bloqueio
+  que o motor não vê é exatamente o que se sacrifica ao ocupar as duas mãos). Enquanto isso, as
+  regras da rajada (§14.12) e da dupla (§14.13) são consistentes **dentro de cada empunhadura**:
+  a rajada de duas mãos continua punitiva contra a própria base (72,9% → 66,2%), o problema é a
+  base.
 - [ ] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
   nem Habilidade**, só a Virtude, e por isso a régua de pool de hoje (`[(A+H)/2]d6`, com +2 se
   ímpar) não se aplica a ele. Duas formas na mesa: **pool** (a Virtude vira dados pela mesma

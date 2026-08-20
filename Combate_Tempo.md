@@ -719,6 +719,10 @@ tempo inteira, o Tick do Golpe e a leitura em três fases, e não cobra por isso
 
 ### 14.4. Empunhadura dupla
 
+> **Superada pela §14.13 (20/08/2026).** A restrição de classe caiu (a arma média pode golpear
+> com as duas, pagando 1 Tick), os dados viraram −1d6/−1d6 e o alívio do Tick do Golpe entrou.
+> Os números abaixo ficam como registro do caminho.
+
 <p class="formula">Os golpes extras <b>saem da Recuperação</b>, e só estendem o ciclo se ela acabar</p>
 
 Duas espadas curtas ficam **`P0 · G2 · R3 = 5`**: mão hábil no primeiro Tick de Golpe, inábil no
@@ -1072,6 +1076,83 @@ não mata mais que a de 2, e a fantasia do executor morre; mais um motivo para a
 4. **Não acumula** com a empunhadura dupla nem com Técnicas de ataques extras: uma fonte de golpes
    múltiplos por ação.
 5. **Carga voluntária e Mirar** valem só para o primeiro golpe (compram Preparo, e há um só).
+
+---
+
+### 14.13. Uma arma em cada mão (20/08/2026)
+
+**Decidida.**
+
+<p class="formula"><b>Golpear com as duas armas: um Tick de Golpe para cada mão, ambas a −1d6.</b><br>
+<b>Par de armas leves: o segundo Golpe come a Recuperação, o ciclo não muda.</b><br>
+<b>Com arma média na mão hábil: o ciclo cresce 1.</b></p>
+
+Escada de DV: Preparo −2 · **cada** Golpe −4 (não dobra: sempre há uma arma que ainda não bateu) ·
+Recuperação −4 (dois golpes dados). E **segurando a segunda arma (ou o escudo) sem golpear com
+ela**, o seu Tick de Golpe fica a **−2** em vez de −4: a outra mão continua guardando.
+
+#### Contra a rajada
+
+| modo | ciclo | duelo | 1 soldado | 2 lacaios |
+|---|:---:|:---:|:---:|:---:|
+| leve · um golpe | 5t | 50,9% | 16,5t | 20,0t |
+| leve · rajada de 2 | 7t | 40,3% | 13,1t | 15,3t |
+| **leve · dupla (ciclo igual)** | **5t** | **54,8%** | **11,0t** | **12,5t** |
+| média · um golpe | 6t | 49,6% | 17,6t | 22,5t |
+| média · rajada de 2 | 8t | 40,6% | 14,2t | 15,8t |
+| **média · dupla (ciclo +1)** | **7t** | **42,2%** | **13,8t** | **15,4t** |
+
+A dupla ganha da rajada em todas as colunas, nas duas classes, que era a exigência ("tem de ser
+mais interessante usar duas armas do que atacar duas vezes com a mesma"). O par de leves fica
+levemente melhor até em duelo (+4, a identidade do lutador de duas adagas, pequena o bastante para
+não virar obrigação); a média em duelo é aposta ruim (−7) e contra os fracos é a ferramenta mais
+rápida da classe.
+
+#### Por que os dados não podem ser melhores que os da rajada
+
+A intuição pede o contrário do decidido: quem investiu em duas armas deveria golpear com **menos**
+penalidade do que quem repete a mesma arma. Medido, quebra em qualquer geometria:
+
+| dupla com dados 0/−1d6 | leve | média |
+|---|:---:|:---:|
+| ciclo igual | 85,5% | 80,4% |
+| ciclo +1 | 61,5% | 56,9% |
+| ciclo +2 (o tempo da rajada) | 40,3% | 40,6% |
+
+As duas primeiras linhas são o "compensa sempre". E a terceira é a prova de identidade: com os
+dados da rajada **e** o tempo da rajada, a dupla dá exatamente os números da rajada (até a casa
+decimal), ou seja, vira a mesma manobra com outro nome. Não há como ter as duas moedas:
+**o tempo é a identidade da dupla, os dados são o custo dela.** A ficção fecha: na rajada o
+primeiro golpe é mirado com tudo, mas o braço recolhe e bate de novo (−1d6 no segundo, +1 R); na
+dupla as mãos batem quase juntas sem recolher nada, mas coordenar dois gumes tira precisão das
+duas.
+
+#### Rajada × dupla, o retrato
+
+Acerto por golpe (pool 5d6+4): cheio 40/78/97% contra DV 22/18/14 · a −1d6 10/44/84% · a −2d6
+0/9/50%. Por ação contra DV 18: um golpe 6,2 de dano · rajada de 2 **9,3** · dupla 6,1. A rajada é
+a **ação** mais forte (o golpe cheio é o único que entra numa guarda alta); a dupla é o **ritmo**
+mais forte (repete mais e se expõe menos, e por isso vence as simulações completas, onde a Defesa
+real média é ~18). Para a mesa: **rajada contra o casco grosso, dupla contra a maré.**
+
+#### Por que a média paga 1 Tick e a leve não
+
+Tirando o Tick extra da média, a dupla dela vai a **67,7%** (contra 49,6% da base): vira
+obrigatória, mata a rajada da classe e apaga a identidade do par de leves. O motivo estrutural é o
+de sempre: o golpe da média entrega ~6,5 depois da Absorção contra ~4,5 da leve, então **golpe
+extra grátis vale mais quanto maior a arma**. A leve aguenta o golpe extra de graça; a média não.
+Na regra: **a rajada paga em Recuperação (o braço recolhe), a dupla de média paga em Golpe (a mão
+fraca atrasa o tempo do par).**
+
+#### O que fica aberto aqui
+
+- **Ambidestria (K18):** os dados não podem melhorar (tabela acima), então os candidatos são o
+  alívio defensivo mesmo golpeando com as duas (Golpes a −2 em vez de −4) ou tratar par com média
+  como par leve (mediria 67,7%: descartado). Sem decisão.
+- **O escudo** entra na mesma estrutura (segurar sem golpear = alívio, mais o Bloqueio dele), mas
+  medir isso está travado pela **K14**.
+- **A empunhadura de DUAS MÃOS** (Força ×2 na mesma arma) apareceu nesta discussão e é um problema
+  **de hoje**, maior que esta seção: ver K21 no `Pendencias.md`.
 
 ---
 
