@@ -869,9 +869,14 @@ N na cadeia. `livre` é quando o ciclo fecha. É a mesma estrutura que o motor d
 | pergunta | conta |
 |---|---|
 | em que fase está? | `tick >= livre` → livre · `golpes.inclui(tick)` → **Golpe** · `tick < max(golpes)` → **Preparo** · senão **Recuperação** |
+| quanto de Defesa ele perdeu? | livre 0 · Preparo **−2** · Golpe **−4** · Recuperação **−4**, mais −2 por ataque recebido no ciclo |
 | dá para interromper? | está em Preparo |
 | pode agir fora da hora? | está em Recuperação, ou em Preparo abortando |
 | quanto custa reagir? | `livre − tick` mais a Velocidade da ação |
+
+<p class="nota">Os números da segunda linha são a proposta de <b>20/08/2026</b> (§14.2) e ainda não
+estão travados. Na tela eles não entram como número: entram como <b>tom</b> da célula da fita, e o
+mestre lê a Defesa efetiva no cartão do combatente, como já lê o resto.</p>
 
 **Na tela, quatro peças.**
 
