@@ -839,6 +839,62 @@ Três regras de tela fazem o resto, e as três cabem em CSS mais um contador:
 3. **A dívida se soma sozinha.** O jogador escolhe *se* paga; a régua empurra o marcador dele e
    mostra o novo Y.
 
+#### 14.7.1. Como isso entra no Grid
+
+Um esboço de implementação, para ver o tamanho da coisa antes de decidir. **A `/mesa` é a outra
+frente**, então isto é proposta, não plano: precisa de combinação antes de virar código.
+
+**O que já existe e serve.** A tabela `combatentes` já tem `tick` e `iniciativa`; `mesa-core.ts` já
+monta a fila; `mesa-tempo-real.ts` já tem a campainha por broadcast no canal `mesa:<id>`; e a
+migração 14 já sabe esconder do jogador o que ele não deveria ver, por view `SECURITY DEFINER`
+comandada por `mesas.revelar`.
+
+**O que falta é uma coluna, não uma tabela.** A ação inteira cabe num `jsonb`:
+
+```sql
+alter table public.combatentes
+  add column if not exists acao jsonb not null default '{}'::jsonb;
+```
+
+```json
+{ "golpes": [7, 8], "livre": 12, "tipo": "dupla", "arma": "espada-curta", "alvo": "<uuid>", "divida": 0 }
+```
+
+`golpes` é a agenda: em que Ticks o golpe sai. Um número no caso comum, dois na empunhadura dupla,
+N na cadeia. `livre` é quando o ciclo fecha. É a mesma estrutura que o motor da bancada usa
+(`offs`), o que evita duas verdades sobre a mesma coisa.
+
+**Daí sai tudo, sem guardar mais nada.** Com o `tick` da mesa e esses dois campos:
+
+| pergunta | conta |
+|---|---|
+| em que fase está? | `tick >= livre` → livre · `golpes.inclui(tick)` → **Golpe** · `tick < max(golpes)` → **Preparo** · senão **Recuperação** |
+| dá para interromper? | está em Preparo |
+| pode agir fora da hora? | está em Recuperação, ou em Preparo abortando |
+| quanto custa reagir? | `livre − tick` mais a Velocidade da ação |
+
+**Na tela, quatro peças.**
+
+1. **A fita**, uma linha por combatente no painel de Combate, uma célula por Tick, três tons: `▓`
+   Preparo (dourado fosco), `█` Golpe (dourado forte), `░` Recuperação (cinza). A coluna do Tick
+   corrente é uma régua vertical por cima de todas as linhas. É o desenho que a bancada já tem na
+   aba do duelo narrado, e o CSS de lá serve.
+2. **O anel do Golpe.** Quem tem `golpes.inclui(tick)` ganha um anel no token do hexágono. É a peça
+   que torna a sincronização jogável: o jogador **vê** que o martelo cai agora, e decide.
+3. **O botão que só acende quando cabe.** No token de cada inimigo em Preparo, um "interromper" que
+   aparece somente para quem está livre ou em Recuperação. Ao clicar, a mesa faz a conta e diz
+   *"custa 6 Ticks; sua próxima ação vai do 14 para o 20"*. O jogador escolhe **se** paga; nunca
+   calcula quanto.
+4. **A assimetria.** O jogador vê que alguém está montando alguma coisa (a fita em `▓`); o mestre
+   vê **o quê** (a arma e o alvo). É a mesma view da migração 14, devolvendo `acao` sem os campos
+   `arma` e `alvo` quando a revelação está desligada.
+
+**O que isso não mexe:** o motor das Artes, o tabuleiro de hexágonos e o `grid-golpe-fx`. A fita é
+um componente ao lado da fila de iniciativa que já está lá.
+
+**O mínimo, se for para fazer por partes:** a coluna `acao` mais a fita. O anel e o botão são
+ganho de mesa, mas a fita sozinha já entrega o principal, que é *ver o tempo do outro*.
+
 ### 14.8. As duas descobertas do motor
 
 **K13 · A Guarda sob pressão estava cobrada em dobro.** `lib-tempo.mjs` fazia `guard += pressao` e
