@@ -665,6 +665,21 @@ revistos por ela.
     Margem, ou Velocidade +1. A comparação justa com escudo e segunda arma **depende da K14** (o
     Bloqueio que o motor não vê é o que se sacrifica ao ocupar as duas mãos). As regras da rajada
     (§14.12) e da dupla (§14.13) são consistentes dentro de cada empunhadura; o problema é a base.
+- [x] **K22 · Empate erra, decidido (20/08).** Ficou o **`>`** (o total precisa **superar** a
+  Defesa ou a Dificuldade; igualar falha), que é o que o capítulo IX, o motor e o modelo de
+  dificuldade já usavam. A alternativa `>=` foi medida e **perde nos três tabuleiros**: no
+  combate, piora a amplitude entre classes em todos os modelos (hoje 16,2→20,0 · normal+novas
+  16,7→19,5 · P/G/R 21,7→29,5), porque o empate-que-vira-acerto é um acerto de Margem 0 e vale
+  mais para quem bate forte por golpe; nas manobras, desloca rajada e dupla 4 a 6 pontos para
+  cima (a dupla leve iria a 61,7% e exigiria recalibragem); e fora de combate infla a régua de
+  Dificuldade que está travada (Média sairia de ~50% para 58 a 67%, e Difícil em 2d6 iria a 42%).
+  O que o `>=` teria de bom fica registrado: a âncora de 50% no duelo espelho do lutador padrão.
+  Dois subprodutos da análise: (a) **usabilidade do /mestre**: a tabela "Probabilidades das
+  jogadas" é `>=` (alcançar X) e a régua de Dificuldade é `>`; vale uma nota na página dizendo
+  que ataque contra Defesa D se consulta na linha D+1; (b) **deriva de escala**: a Defesa cresce
+  2 por ponto de A+H e a média do ataque só 1,75, então o duelo espelho de guarda cheia cai de
+  58% (A+H 4) para 30% (A+H 16) de acerto em qualquer convenção; mascarada pela Pressão em luta
+  real (67 a 91%), mas existe e um dia merece olhar próprio.
 - [ ] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
   nem Habilidade**, só a Virtude, e por isso a régua de pool de hoje (`[(A+H)/2]d6`, com +2 se
   ímpar) não se aplica a ele. Duas formas na mesa: **pool** (a Virtude vira dados pela mesma
