@@ -680,6 +680,31 @@ revistos por ela.
   2 por ponto de A+H e a média do ataque só 1,75, então o duelo espelho de guarda cheia cai de
   58% (A+H 4) para 30% (A+H 16) de acerto em qualquer convenção; mascarada pela Pressão em luta
   real (67 a 91%), mas existe e um dia merece olhar próprio.
+- [x] **K23 · A Centelha soma ×1 no acerto e nas defesas, decidido (20/08).** Vale o que
+  `defesas.md` e `centelha.md` escrevem (**+1 por ponto**, dos dois lados), e não o "+2 por ponto"
+  da nota do `combate.md` nem o `×2` que o motor da bancada usa. Medido, com espada longa dos dois
+  lados: com **×1**, um tier de Centelha acima dá **31%** de acerto contra 22% do espelho, e o
+  degrau é o mesmo em toda a escada (C1 vs C0 = C6 vs C5); com **×2** o mesmo tier dá 40%, e as
+  pontas colapsam: **C6 contra C0 acerta 99%** e **C0 contra C6 acerta 0%** (com ×1 são 78% e 1%).
+  Como a Centelha vai de 0 a 6 na régua nova, o ×2 transforma dois tiers de diferença em
+  impossibilidade matemática, e o mortal deixa de conseguir arranhar o Desperto mesmo com sorte.
+  O ×1 mantém a promessa da `centelha.md` ("entre Centelhas iguais o efeito se cancela e o duelo
+  joga limpo; contra quem tem menos, vira vantagem líquida") com uma vantagem **legível**: um tier
+  vale um degrau de modificador situacional. **A fazer:** corrigir a nota do `combate.md`, alinhar
+  o motor (`defesaBase` e a rolagem usam `centelha * 2`) e refazer as tabelas da frente K, que
+  foram todas medidas no ×2 (em espelho o efeito se cancela, então a direção dos resultados se
+  mantém; os absolutos mudam).
+- [ ] **K24 · [DECIDIR] O montante e o martelo pagam duas vezes, e o dano não conserta.** As duas
+  armas pesadas de duas mãos têm **acerto 0 e Defesa da arma −2**, o pior dos dois lados (a adaga
+  tem +2 e +1: cinco pontos de diferença, ~40 pontos percentuais de acerto). Decidido em 20/08 que
+  **acerto e Defesa estão condizentes** com a ficção da arma grande, e que a compensação, se vier,
+  vem no **dano**. Medido: não vem. Subir o dano do montante e do martelo desequilibra depressa,
+  porque o problema deles não é o mesmo: **o montante já está em 68,2%** (é o segundo fora-de-curva
+  do catálogo, com a Alabarda do K11) e **o martelo em 46,5%**. Qualquer aumento uniforme empurra
+  os dois: +2 de dano fixo leva a classe pesada de 57,4% para 64,4% e a amplitude de 16,9 para
+  26,5; +1 dado leva a 68,7% e 31,8. **O conserto tem de ser por arma, não por classe**, e conversa
+  com o K11 (Alabarda), o K21 (versáteis) e o K14 (o Bloqueio que o motor não vê, que é justamente
+  o que a arma de duas mãos abre mão). Fica agrupado com eles.
 - [ ] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
   nem Habilidade**, só a Virtude, e por isso a régua de pool de hoje (`[(A+H)/2]d6`, com +2 se
   ímpar) não se aplica a ele. Duas formas na mesa: **pool** (a Virtude vira dados pela mesma
