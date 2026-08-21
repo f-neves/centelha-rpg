@@ -573,6 +573,129 @@ const { aba } = Astro.props;
     border-color: color-mix(in srgb, var(--ink-soft) 30%, transparent); color: var(--ink-soft); }
   .fase-selo b { font-variant-numeric: tabular-nums; }
 
+  /* ---------------- a tira da ordem de combate ----------------
+     Uma só, e as duas telas da mesa desenham a mesma: o Grid a põe em cima do
+     tabuleiro, o rastreador em cima da lista de cards. Estava só no Grid, e
+     duplicar sessenta linhas de CSS para o rastreador seria garantir que as
+     duas leituras divergissem no primeiro conserto.
+
+     Quem monta o HTML das peças é `itensDaFila`, em `mesa-tempo-ui.ts`. */
+  /* ---- a tira da iniciativa ----
+     Ela era uma coluna estreita à direita, encostada nos controles do mestre, e
+     virou uma TIRA DEITADA no topo do tabuleiro. A razão é de quem olha: a ordem
+     de combate é a única informação do painel que interessa à mesa inteira, e
+     numa coluna de 9,5rem ela cabia mal (nome cortado, fase quebrada em duas
+     linhas) e ficava longe do mapa, que é para onde todos os olhos estão.
+     Deitada, cada peça é um cartão do tamanho certo e a fila rola na horizontal
+     quando a cena é grande. */
+  .fila-tira { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
+    padding: .35rem .4rem; display: flex; flex-direction: row; align-items: stretch;
+    gap: .45rem; min-width: 0; }
+  /* O canto fixo: relógio e comandos ficam ANCORADOS à esquerda, fora da
+     rolagem. É o número do qual todos os outros dependem, e um relógio que sai
+     da tela quando se rola a fila não é relógio. */
+  .ini-cab { flex: 0 0 auto; display: grid; align-items: center; gap: .1rem .45rem;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "rel cab" "rel prox" "custo custo";
+    padding-right: .5rem; border-right: 1px solid var(--rule); }
+  .ini-cab > .fila-h { grid-area: cab; flex-wrap: nowrap; }
+  .ini-cab > .ini-relogio { grid-area: rel; }
+  .ini-cab > .ini-prox { grid-area: prox; }
+  .ini-cab > .ini-rodada { grid-area: custo; }
+  .fila-h { display: flex; align-items: center; gap: .3rem; flex-wrap: nowrap; margin: 0; }
+  .fila-h .col-h { flex: 1 1 auto; margin: 0; white-space: nowrap; border: none; padding: 0; }
+  .fila-dobra { flex: 0 0 auto; line-height: 1; transition: transform .18s ease; }
+  .fila-dobra[aria-expanded="false"] { transform: rotate(-90deg); }
+  .fila-lista { display: flex; flex-direction: row; align-items: stretch; gap: .3rem;
+    flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden;
+    margin-top: 0; padding-bottom: .1rem; scrollbar-width: thin; }
+  /* ---- o relógio da cena ----
+     O Tick em corpo grande, com a rodada de acompanhante. Tabular para o número
+     não dançar de largura ao virar de 9 para 10. */
+  .ini-relogio { display: grid; grid-template-columns: auto 1fr; align-items: baseline;
+    gap: 0 .3rem; padding: .1rem .2rem .25rem; }
+  .ini-tk-n { font-family: 'Cinzel'; font-weight: 700; font-size: 1.9rem; line-height: 1;
+    color: var(--accent-texto); font-variant-numeric: tabular-nums; }
+  .ini-tk-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
+    letter-spacing: .1em; color: var(--ink-soft); }
+  .ini-rd { grid-column: 2; grid-row: 2; font-size: var(--fs-micro); color: var(--ink-soft);
+    white-space: nowrap; }
+  .ini-tk-n { grid-row: 1 / span 2; }
+
+  /* ---- os degraus da fila ----
+     "AGORA", "em 2 ticks", "em 5 ticks". A fila deixou de ser uma lista lisa e
+     passou a ser uma escada: quem está no mesmo degrau age no mesmo instante, e
+     isso o olho lê antes de ler qualquer nome. */
+  /* Deitada, a fila lê da esquerda para a direita, então o degrau virou um
+     DIVISOR VERTICAL com o rótulo de pé: ele custa 1,1rem de largura, separa os
+     grupos sem linha em branco e diz "daqui para a frente é outro instante". */
+  .ini-grupo { flex: 0 0 auto; align-self: stretch; margin: 0; padding: .15rem .1rem;
+    display: flex; align-items: center; justify-content: center;
+    writing-mode: vertical-rl; white-space: nowrap;
+    border-left: 1px solid var(--rule);
+    font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .88); text-transform: uppercase;
+    letter-spacing: .08em; color: var(--ink-soft); }
+  .fila-lista > .ini-grupo:first-child { border-left: none; padding-left: 0; }
+  .ini-grupo.agora { color: var(--vez-cor, #ffd76a);
+    border-left-color: color-mix(in srgb, var(--vez-cor, #ffd76a) 45%, transparent); }
+
+  /* A fase POR EXTENSO. A cor da fita diz depressa e a palavra diz sem dúvida:
+     quem chega na mesa no meio da luta não decorou a legenda. */
+  .ini-fase { grid-column: 2; font-size: calc(var(--fs-micro) * .95); line-height: 1.15;
+    color: var(--ink-soft); }
+  .ini-fase b { font-family: 'Cinzel'; font-weight: 700; letter-spacing: .02em; }
+  .ini-fase.f-prep b  { color: color-mix(in srgb, var(--gold) 80%, var(--ink)); }
+  .ini-fase.f-golpe b { color: var(--gold); }
+  .ini-fase.f-rec b   { color: var(--ink-soft); }
+
+  /* Cada linha é uma peça na fila: retrato, nome e os dois números que decidem
+     a ordem. Compacta de propósito, porque a coluna toda precisa caber sem
+     rolagem numa cena de dez. */
+  .ini-item { flex: 0 0 11.5rem; display: grid; grid-template-columns: auto 1fr;
+    gap: .1rem .4rem; align-items: center; align-content: center;
+    padding: .22rem .3rem; border-radius: var(--r-md);
+    border: 1px solid transparent; cursor: pointer; }
+  .ini-item:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .ini-item .av { --av-t: 1.9rem; }
+  .ini-av { grid-row: span 2; position: relative; }
+  .ini-nome { font-size: calc(var(--fs-micro) * .95); line-height: 1.1; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; }
+  .ini-num { font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft);
+    font-variant-numeric: tabular-nums; }
+  .ini-num b { color: var(--accent-texto); }
+  /* A fita ocupa a terceira linha da grade, alinhada com o nome e os números.
+     O desenho dela está no MesaCab: o rastreador de combate usa a mesma.
+     Agora a linha leva DUAS coisas, o selo com a palavra e a fita com a cor, e
+     por isso ela virou uma fileira: com `line-height: 0` valendo para os dois
+     (ele existe para matar a sobra embaixo das células da fita), o selo perdia
+     a altura da própria caixa e era desenhado por cima da fita. */
+  .ini-fita { grid-column: 2; display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+  .ini-fita .fita { line-height: 0; }
+  /* Na coluna estreita o selo cede um pouco: ele e a fita dividem a linha. */
+  .ini-fita .fase-selo { font-size: calc(var(--fs-micro) * .9); padding: .02rem .28rem; }
+  .ini-item.g-aliado  { border-left: 3px solid var(--accent); }
+  .ini-item.g-inimigo { border-left: 3px solid #c1352c; }
+  .ini-item.g-neutro  { border-left: 3px solid var(--gold); }
+  /* Quem está na vez: a mesma cor do brilho do tabuleiro, para os dois lugares
+     contarem a mesma coisa. */
+  .ini-item.vez { background: color-mix(in srgb, var(--vez-cor, #ffd76a) 22%, transparent);
+    border-color: var(--vez-cor, #ffd76a); }
+  .ini-item.vez .ini-nome { font-weight: 700; }
+  /* Quem AGE agora, dentro do grupo do tick: um triângulo antes do nome. Sem
+     ele, com três acesos ao mesmo tempo, ninguém sabe em quem o "próximo" vai
+     bater. A aura diz "é a vez de vocês"; o triângulo diz "começa por este". */
+  .ini-item.age .ini-nome::before { content: '▸ '; color: var(--vez-cor, #ffd76a); font-weight: 700; }
+  .ini-item.movendo { opacity: .6; border-style: dashed; }
+
+  .ini-vazio { font-size: var(--fs-micro); color: var(--ink-soft); padding: .3rem; }
+
+  /* Recolhida, a tira vira uma régua fina: some a fila e o relógio deita ao
+     lado do título. O Tick da cena é a última coisa que alguém quer esconder,
+     e por isso ele é justamente o que fica. */
+  .fila-tira.fila-dobrada .fila-lista { display: none; }
+  .fila-tira.fila-dobrada .ini-cab { border-right: none; padding-right: 0; }
+  .fila-tira.fila-dobrada .ini-relogio { padding-bottom: 0; }
+
   /* ---------------- painel "como o tempo passa" ---------------- */
   .tempo-dlg .ui-dlg-corpo { max-width: 40rem; }
   .tempo-intro { margin: 0 0 .5rem; font-size: var(--fs-rotulo); }

@@ -59,6 +59,106 @@ export function seloFaseHTML(acao: Acao | null | undefined, tick: number) {
     ${FASE_ROTULO[f]}${dv.total ? ` <b>${dv.total}</b>` : ''}</span>`;
 }
 
+// ------------------------------------------------------- a tira da ordem
+/**
+ * Uma peça na fila, do jeito que a tira precisa dela.
+ *
+ * Cada tela guarda o combatente à sua maneira (o Grid tem token e grupo, o
+ * rastreador tem card e condições), então o que atravessa é este molde reduzido:
+ * o mínimo para responder QUANDO a pessoa age e EM QUE FASE ela está.
+ */
+export type PecaDaFila = {
+  id: string;
+  nome: string;
+  tick: number;
+  iniciativa?: number | null;
+  grupo?: string | null;
+  /** O retrato já montado: quem sabe achar a imagem é a página, não a tira. */
+  avatar: string;
+  /** Vida em porcentagem, ou null quando a mesa esconde o número. */
+  pct?: number | null;
+  acao?: Acao | null;
+  /** Guarda segurada: a Defesa não cai como cairia num gesto solto. */
+  segura?: boolean;
+  /** Está no mesmo Tick de quem age. */
+  vez?: boolean;
+  /** É a primeira do Tick, a que o "próximo" vai encerrar. */
+  age?: boolean;
+  /** Uma linha extra no cartão, quando a tela tem algo a mais a dizer. */
+  extra?: string;
+};
+
+/**
+ * A FILA É UMA ESCADA, e não uma lista lisa.
+ *
+ * O que se lê primeiro é "quando", e não "quem": as peças entram debaixo de um
+ * degrau ("Agora", "em 2 ticks") em vez de cada uma carregar um Tick absoluto
+ * que o leitor teria de subtrair de cabeça. Numa cena de dez com oito no mesmo
+ * Tick, a coluna antiga dizia "t 0" oito vezes.
+ *
+ * Devolve pares `{chave, html}` porque as duas telas desenham com `reconciliar`:
+ * a fila repinta a cada movimento de peça, e refazer o DOM inteiro para mudar
+ * um número apaga foco, rolagem e animação.
+ */
+export function itensDaFila(
+  pecas: PecaDaFila[],
+  tick: number,
+  opts: { marcacao?: Marcacao } = {},
+): { chave: string; html: string }[] {
+  const itens: { chave: string; html: string }[] = [];
+  let degrau: number | null = null;
+  for (const c of pecas) {
+    const falta = Math.max(0, (c.tick ?? 0) - tick);
+    if (falta !== degrau) {
+      degrau = falta;
+      itens.push({ chave: '#g' + falta, html: `<div class="ini-grupo${falta === 0 ? ' agora' : ''}">${
+        falta === 0 ? 'Agora' : `em ${falta} tick${falta > 1 ? 's' : ''}`}</div>` });
+    }
+    const a = c.acao && !acaoVazia(c.acao) && (c.acao as Acao).golpes?.length ? (c.acao as Acao) : null;
+    const fase = faseEm(a, tick);
+    const dv = defesaPerdida(c.acao ?? null, tick, { segura: !!c.segura });
+    // A fase POR EXTENSO, e com o número que importa nela: no Preparo é quando
+    // o golpe sai, no Golpe é qual dos golpes está saindo, na Recuperação é
+    // quando a guarda volta. A cor diz depressa, a palavra diz sem dúvida, e
+    // quem chega no meio da luta não decorou a legenda.
+    const futuros = a ? a.golpes.filter((g) => g >= tick) : [];
+    const prox = futuros.length ? Math.min(...futuros) : 0;
+    const qual = a && a.golpes.length > 1 ? ` ${a.golpes.indexOf(tick) + 1}/${a.golpes.length}` : '';
+    const fraseFase = !a ? '<b>livre</b>'
+      : fase === 'preparo' ? `<b>Preparo</b> · golpe no ${prox}`
+      : fase === 'golpe' ? `<b>Golpe${qual}</b> · Defesa ${dv.total}`
+      : `<b>Recuperação</b> · livre no ${a.livre}`;
+    // O selo escrito e a fita dizem a mesma coisa em línguas diferentes: quem
+    // pediu números em vez de fita continua tendo a palavra.
+    const f = a
+      ? `<span class="ini-fita" title="${esc(resumoDaAcao(a, tick))}">${
+        (opts.marcacao ?? 'fita') === 'fita' ? fitaHTML(a, tick, { largura: 9, mini: true }) : seloFaseHTML(a, tick)}</span>`
+      : '';
+    const dica = c.age ? ' · age agora' : c.vez ? ' · também neste tick' : '';
+    const cls = fase === 'preparo' ? 'f-prep' : fase === 'golpe' ? 'f-golpe' : fase === 'recuperacao' ? 'f-rec' : '';
+    itens.push({ chave: c.id, html: `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${c.vez ? ' vez' : ''}${
+      c.age ? ' age' : ''}" data-c="${c.id}" data-t="${c.tick ?? 0}"
+      title="${esc(c.nome)}${dica}${a ? ' · ' + esc(resumoDaAcao(a, tick)) : ''}">
+      <span class="ini-av">${c.avatar}</span>
+      <span class="ini-nome">${esc(c.nome)}</span>
+      <span class="ini-fase ${cls}">${fraseFase}</span>
+      ${f}
+      <span class="ini-num">ini <b>${c.iniciativa ?? 0}</b>${
+        c.pct != null ? ` · ${Math.round(c.pct)}%` : ''}${c.extra ? ` · ${esc(c.extra)}` : ''}</span>
+    </div>` });
+  }
+  return itens;
+}
+
+/** O relógio da cena: o Tick em corpo grande, com a rodada de acompanhante. */
+export function relogioHTML(id = 'ini-tk', idRodada = 'ini-rd') {
+  return `<div class="ini-relogio">
+    <span class="ini-tk-n" id="${id}"></span>
+    <span class="ini-tk-rot">Tick</span>
+    <span class="ini-rd" id="${idRodada}"></span>
+  </div>`;
+}
+
 // ------------------------------------------------------------- o abortar
 /** Dá para mostrar o botão de abortar para esta pessoa agora? */
 export const podeAbortar = (acao: Acao | null | undefined, tick: number) => abortar(acao, tick).pode;

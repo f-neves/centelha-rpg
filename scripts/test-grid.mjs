@@ -513,12 +513,59 @@ async function cenaJogador(br, url) {
   await p.close();
 }
 
+/**
+ * A MESMA TIRA, NO RASTREADOR.
+ *
+ * O desenho da fila e o gerador dos cartões passaram a morar em lugar
+ * compartilhado (`MesaCab.astro` e `mesa-tempo-ui.ts`), e as duas telas leem de
+ * lá. Sem uma prova do lado do rastreador, quebrar a fila dele com um conserto
+ * no Grid não faria barulho nenhum até alguém abrir a aba no meio de uma sessão.
+ */
+async function cenaRastreador(br, url) {
+  console.log('\n· a mesma tira, na aba de Combate');
+  const p = await br.newPage();
+  await p.setViewport({ width: 1600, height: 1000 });
+  const erros = [];
+  p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(`${url}/mesa/combate?id=${MESA}&bench=12`, { waitUntil: 'networkidle0', timeout: 60000 });
+  await p.waitForSelector('#cmb-fila .ini-item', { timeout: 30000 });
+  const d = await p.evaluate(() => ({
+    cartoes: document.querySelectorAll('#cmb-fila .ini-item').length,
+    cards: document.querySelectorAll('.cbt').length,
+    degraus: document.querySelectorAll('#cmb-fila .ini-grupo').length,
+    tick: document.getElementById('enc-tick')?.textContent,
+    fases: document.querySelectorAll('#cmb-fila .ini-fase').length,
+    // O desenho vem do MesaCab: se o CSS compartilhado não chegar, a tira
+    // existe no DOM e desaba em coluna, que é o defeito que isto guarda.
+    deitada: (() => { const it = document.querySelectorAll('#cmb-fila .ini-item');
+      return it.length > 1 && it[1].getBoundingClientRect().left > it[0].getBoundingClientRect().left; })(),
+    acima: (() => { const t = document.getElementById('cmb-tira');
+      const l = document.getElementById('cmb-lista');
+      return !!t && !!l && t.getBoundingClientRect().top < l.getBoundingClientRect().top; })(),
+  }));
+  ok(d.cartoes === d.cards && d.cartoes > 0, `um cartão por combatente (${d.cartoes} para ${d.cards} cards)`);
+  ok(d.degraus > 0, `a escada tem degraus (${d.degraus})`);
+  ok(d.fases === d.cartoes, `e todo cartão diz a fase por extenso (${d.fases})`);
+  ok(d.deitada, 'a tira é deitada aqui também, e não uma coluna');
+  ok(d.acima, 'e fica acima da grade de cards');
+  ok(/^\d+$/.test(d.tick || ''), `o relógio mostra só o número (${d.tick})`);
+  const clique = await p.evaluate(async () => {
+    document.querySelectorAll('#cmb-fila .ini-item')[3]?.click();
+    await new Promise((r) => setTimeout(r, 500));
+    return document.querySelectorAll('.cbt.achei').length;
+  });
+  ok(clique === 1, `clicar num cartão acende o card cheio dele (${clique})`);
+  ok(erros.length === 0, `nenhum erro de página (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+  await p.close();
+}
+
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   await cena(br, dev.url, { pecas: 12, cols: 24, rows: 16, nevoa: false });
   await cena(br, dev.url, { pecas: 30, cols: 40, rows: 30, nevoa: true });
   await cenaJogador(br, dev.url);
+  await cenaRastreador(br, dev.url);
 } finally {
   await br.close();
   await dev.parar();
@@ -530,4 +577,4 @@ if (falhas.length) {
   process.exit(1);
 }
 console.log('\n✓ Grid OK · desenho, movimento, registro, névoa e card, nas duas cenas, dentro dos tetos'
-  + ' de repintura, e a mesma mesa vista pelo jogador');
+  + ' de repintura, a mesma mesa vista pelo jogador, e a tira da ordem no rastreador');

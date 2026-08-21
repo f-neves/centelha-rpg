@@ -15,7 +15,6 @@ import MesaCab from '../../components/MesaCab.astro';
         <span class="enc-id">
           <span class="enc-rot">Encontro</span>
           <strong id="enc-nome" class="cinzel"></strong>
-          <span class="enc-relogio"><span id="enc-rodada"></span> · <span id="enc-tick"></span></span>
         </span>
         <span class="enc-add" id="enc-add" hidden>
           <span class="sep-v"></span>
@@ -32,6 +31,29 @@ import MesaCab from '../../components/MesaCab.astro';
           <button class="btn mini" id="btn-recarregar" title="Buscar o estado mais recente">↻</button>
         </span>
       </div>
+
+      {/* A TIRA DA ORDEM DE COMBATE.
+          A mesma do Grid, e de propósito: são a mesma cena vista de dois
+          ângulos, e a mesa que aprendeu a ler a escada no tabuleiro não devia
+          ter de aprender outra leitura ao virar para o rastreador. Aqui ela
+          responde o que a grade de cards não responde: a grade mostra CADA UM
+          por inteiro, e a tira mostra a ORDEM entre eles, agrupada por degrau.
+          Clicar num cartão leva ao card cheio lá embaixo. */}
+      <aside class="fila-tira cmb-tira" id="cmb-tira">
+        <div class="ini-cab">
+          <div class="fila-h">
+            <button class="btn-fant fila-dobra" id="cmb-tira-dobrar" aria-expanded="true"
+              aria-controls="cmb-fila" title="Recolher a tira e dar a altura aos cards">▾</button>
+            <h3 class="col-h">Ordem</h3>
+          </div>
+          <div class="ini-relogio">
+            <span class="ini-tk-n" id="enc-tick"></span>
+            <span class="ini-tk-rot">Tick</span>
+            <span class="ini-rd" id="enc-rodada"></span>
+          </div>
+        </div>
+        <div id="cmb-fila" class="fila-lista"></div>
+      </aside>
 
       <!-- ---------- corpo em duas colunas ---------- -->
       <div class="cmb-grade">
@@ -314,8 +336,18 @@ import MesaCab from '../../components/MesaCab.astro';
   /* ---------------- grade ----------------
      A coluna lateral é GRUDADA: num notebook a lista de combatentes passa da
      altura da tela, e o painel de quem age não pode sumir junto com ela. */
+  /* A tira fica GRUDADA no alto, logo abaixo da barra da mesa: o Tick é o
+     número do qual todos os outros dependem, e numa cena de doze a lista de
+     cards passa da altura da tela. A coluna lateral, que também gruda, desce a
+     altura da tira (medida no JS, porque ela encolhe quando alguém a recolhe).
+     Abaixo de 1180px o painel do turno já é o grudado, e dois grudados no mesmo
+     topo se sobrepõem: aqui ela volta a rolar com a página. */
+  .cmb-tira { margin: 0 0 .6rem; position: sticky; z-index: 21;
+    top: calc(var(--mesa-barra-h, 66px) + .2rem); }
+  @media (max-width: 1180px) { .cmb-tira { position: static; } }
   .cmb-grade { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: .9rem; align-items: start; }
-  .cmb-col-lado { position: sticky; top: calc(var(--mesa-barra-h, 66px) + .4rem); }
+  .cmb-col-lado { position: sticky;
+    top: calc(var(--mesa-barra-h, 66px) + var(--cmb-tira-h, 0px) + .4rem); }
   /* Numa coluna só, o painel de quem age tem de vir ANTES da lista: no celular
      o mestre olha primeiro "de quem é a vez", e rolar até o fim para descobrir
      isso é o oposto do que a página promete. O `display: contents` dissolve a
@@ -347,6 +379,11 @@ import MesaCab from '../../components/MesaCab.astro';
   .cmb-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
     gap: .5rem; align-items: stretch; }
   .cmb-lista-fora { opacity: .72; }
+
+  /* O card que a tira acabou de apontar. Rolar até ele não basta numa grade de
+     doze iguais: o olho precisa de onde pousar, e o brilho morre sozinho. */
+  @keyframes cbt-achei { from { box-shadow: 0 0 0 3px var(--accent); } to { box-shadow: 0 0 0 3px transparent; } }
+  .cbt.achei { animation: cbt-achei 1.4s ease-out; }
 
   /* ---------------- card do combatente ---------------- */
   /* Coluna: cabeçalho (tick e selos), retrato, nome, barras, números, condições,
@@ -531,6 +568,7 @@ import MesaCab from '../../components/MesaCab.astro';
   import { abrirRevelacao, resumoRevelacao } from '../../lib/mesa-revelacao';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
+    itensDaFila,
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, anatomia, declarar, faseEm, defesaPerdida, acaoVazia,
@@ -610,6 +648,7 @@ import MesaCab from '../../components/MesaCab.astro';
     REV = revelarDaMesa(MESA);
     TEMPO = combateDaMesa(MESA);
     await carregar();
+    ligarTira();
     await ligarTempoReal(ctx);
     // O pulso de oito segundos deixou de ser o motor e virou a rede: ele só
     // corre enquanto o canal estiver fora do ar. Antes ele recarregava a página
@@ -850,7 +889,9 @@ import MesaCab from '../../components/MesaCab.astro';
     const tick = atual?.tick ?? 0;
     AGORA = tick;
     el('enc-rodada').textContent = `Rodada ${Math.floor(tick / 6) + 1}`;
-    el('enc-tick').textContent = `Tick ${tick}`;
+    // Só o número: a palavra "Tick" é estática, ao lado dele, na tira.
+    el('enc-tick').textContent = String(tick);
+    pintarTira(emCampo, tick);
 
     el('cmb-lista').innerHTML = emCampo.length
       ? emCampo.map((c, i) => cardCombatente(c, i === 0)).join('')
@@ -861,6 +902,84 @@ import MesaCab from '../../components/MesaCab.astro';
     pintarPainel(atual, emCampo);
     pintarLog();
     ligarCards();
+  }
+
+  /**
+   * A TIRA DA ORDEM, a mesma do Grid.
+   *
+   * A grade de cards mostra cada um por inteiro e responde "como está fulano".
+   * O que ela não responde é "quem age quando": os cards têm o mesmo tamanho,
+   * enchem a linha da esquerda para a direita, e a ordem do tick vira uma
+   * convenção de leitura que ninguém enxerga no meio da luta. A tira responde
+   * isso e só isso, em degraus, e cabe numa faixa.
+   *
+   * Quem monta os cartões é `itensDaFila`; aqui só se traduz o combatente do
+   * rastreador para o molde dela, e se guarda a altura para a coluna lateral
+   * grudada saber onde começar.
+   */
+  function pintarTira(emCampo: any[], tick: number) {
+    const box = el('cmb-fila');
+    const age = emCampo[0]?.id;
+    box.innerHTML = emCampo.length
+      ? itensDaFila(emCampo.map((c) => ({
+        id: c.id, nome: c.nome, tick: c.tick ?? 0, iniciativa: c.iniciativa ?? 0,
+        grupo: c.grupo, avatar: avatarDe(c),
+        // A porcentagem só sai quando a mesa deixa ver a vida: a tira não é
+        // atalho para furar o que o painel de revelação fechou.
+        pct: verVida(c) === 'numero' ? pctVida(c) : null,
+        acao: acaoDe(c), segura: acaoDe(c)?.tipo === 'segura',
+        vez: (c.tick ?? 0) === tick, age: c.id === age,
+      })), tick, { marcacao: TEMPO.marcacao }).map((i) => i.html).join('')
+      : '<p class="ini-vazio">Ninguém em campo.</p>';
+    medirTira();
+  }
+
+  /** A altura da tira vira variável: a coluna lateral gruda logo abaixo dela. */
+  function medirTira() {
+    const t = document.getElementById('cmb-tira');
+    if (!t) return;
+    // Recolhida ela continua grudada, e continua ocupando o topo: medir a
+    // altura de verdade, e não zerar por estar recolhida, senão o painel do
+    // turno gruda DEBAIXO dela e some.
+    const h = getComputedStyle(t).position !== 'sticky'
+      ? 0 : Math.round(t.getBoundingClientRect().height + 8);
+    document.documentElement.style.setProperty('--cmb-tira-h', h + 'px');
+  }
+
+  /**
+   * O clique na tira leva ao card cheio.
+   *
+   * Ligado uma vez, no contêiner: a tira é reescrita a cada repintura, e
+   * ouvintes presos aos cartões morreriam com eles. Rolar não basta numa grade
+   * de doze iguais, então o card pisca ao chegar.
+   */
+  function ligarTira() {
+    el('cmb-fila').addEventListener('click', (ev) => {
+      const it = (ev.target as HTMLElement).closest<HTMLElement>('.ini-item');
+      if (!it) return;
+      const card = document.querySelector<HTMLElement>(`.cbt[data-c="${CSS.escape(it.dataset.c!)}"]`);
+      if (!card) return;
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.classList.remove('achei');
+      void card.offsetWidth;   // reinicia a animação quando é o mesmo card
+      card.classList.add('achei');
+    });
+    const btn = el('cmb-tira-dobrar');
+    const CHAVE = 'centelha:combate:tira-dobrada';
+    let dobrada = false;
+    try { dobrada = localStorage.getItem(CHAVE) === '1'; } catch {}
+    const aplica = () => {
+      el('cmb-tira').classList.toggle('fila-dobrada', dobrada);
+      btn.setAttribute('aria-expanded', String(!dobrada));
+      btn.title = dobrada ? 'Mostrar a ordem de combate' : 'Recolher a tira e dar a altura aos cards';
+      medirTira();
+    };
+    aplica();
+    btn.onclick = () => {
+      dobrada = !dobrada; aplica();
+      try { localStorage.setItem(CHAVE, dobrada ? '1' : '0'); } catch {}
+    };
+    addEventListener('resize', medirTira);
   }
 
   /**

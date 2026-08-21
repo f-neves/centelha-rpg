@@ -68,13 +68,13 @@ const SETAS = [
         <button class="btn mini" id="gr-recarregar" title="Buscar as posições mais recentes">↻</button>
       </div>
 
-        <aside class="gr-ini" id="gr-ini-col">
+        <aside class="gr-ini fila-tira" id="gr-ini-col">
           {/* O CANTO DO RELÓGIO. Cabeçalho, Tick, rodada, custo e o "próximo"
               num bloco só: a tira agora é horizontal, e o que não é peça em
               fila fica ancorado à esquerda, fora da rolagem. */}
           <div class="ini-cab">
-          <div class="gr-reg-cab">
-            <button class="btn-fant gr-dobra" id="ini-dobrar" aria-expanded="true"
+          <div class="fila-h">
+            <button class="btn-fant fila-dobra" id="ini-dobrar" aria-expanded="true"
               aria-controls="gr-ini" title="Recolher a fila">▾</button>
             <h3 class="col-h">Iniciativa</h3>
             <button class="btn-fant" id="ini-rolar" hidden title="Rolar a iniciativa de todos no tabuleiro">⚄</button>
@@ -99,7 +99,7 @@ const SETAS = [
           </div>
           <button class="btn mini primary ini-prox" id="ini-prox" hidden>⏭ próximo</button>
           </div>
-          <div id="gr-ini" class="gr-ini-lista"></div>
+          <div id="gr-ini" class="gr-ini-lista fila-lista"></div>
           <!-- Quem está no chão sai da FILA, mas não da vista. A fila é a ordem
                de quem vai agir, e um inconsciente não age; deixá-lo lá só empurra
                os vivos para baixo. Aqui embaixo ele continua a um clique, que é
@@ -487,16 +487,11 @@ const SETAS = [
     font-size: var(--fs-micro); color: var(--ink-soft); }
   .lt-legenda .fita-c { width: .7rem; height: .7rem; margin-left: .5rem; }
   .lt-legenda .fita-c:first-child { margin-left: 0; }
-  /* A fila recolhida deixa só o cabeçalho e o relógio: o Tick da cena é a
-     última coisa que alguém quer esconder. */
-  .gr-ini.fila-dobrada .gr-ini-lista,
+  /* Recolhida, a tira do Grid esconde também o que só ela tem. O resto da
+     dobra é comum às duas telas e mora no MesaCab. */
   .gr-ini.fila-dobrada .ini-chao,
   .gr-ini.fila-dobrada .ini-prox { display: none; }
-  /* Recolhida, a tira vira uma régua fina: o relógio e a rodada deitam lado a
-     lado e devolvem ao mapa a altura dos cartões. */
-  .gr-ini.fila-dobrada .ini-cab { grid-template-areas: "rel cab" "rel custo";
-    border-right: none; padding-right: 0; }
-  .gr-ini.fila-dobrada .ini-relogio { padding-bottom: 0; }
+  .gr-ini.fila-dobrada .ini-cab { grid-template-areas: "rel cab" "rel custo"; }
   .gr-ini.fila-dobrada .ini-rodada { padding: 0; }
   .gr-dobra { transition: transform .12s ease; }
   .gr-dobra[aria-expanded="false"] { transform: rotate(-90deg); }
@@ -523,112 +518,6 @@ const SETAS = [
   .lt-vazio { font-size: var(--fs-micro); color: var(--ink-soft); font-style: italic;
     padding: .2rem 0; }
 
-  /* ---- a tira da iniciativa ----
-     Ela era uma coluna estreita à direita, encostada nos controles do mestre, e
-     virou uma TIRA DEITADA no topo do tabuleiro. A razão é de quem olha: a ordem
-     de combate é a única informação do painel que interessa à mesa inteira, e
-     numa coluna de 9,5rem ela cabia mal (nome cortado, fase quebrada em duas
-     linhas) e ficava longe do mapa, que é para onde todos os olhos estão.
-     Deitada, cada peça é um cartão do tamanho certo e a fila rola na horizontal
-     quando a cena é grande. */
-  .gr-ini { border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--panel);
-    padding: .35rem .4rem; display: flex; flex-direction: row; align-items: stretch;
-    gap: .45rem; min-width: 0; }
-  /* O canto fixo: relógio e comandos ficam ANCORADOS à esquerda, fora da
-     rolagem. É o número do qual todos os outros dependem, e um relógio que sai
-     da tela quando se rola a fila não é relógio. */
-  .ini-cab { flex: 0 0 auto; display: grid; align-items: center; gap: .1rem .45rem;
-    grid-template-columns: auto minmax(0, 1fr);
-    grid-template-areas: "rel cab" "rel prox" "custo custo";
-    padding-right: .5rem; border-right: 1px solid var(--rule); }
-  .ini-cab > .gr-reg-cab { grid-area: cab; flex-wrap: nowrap; }
-  .ini-cab > .ini-relogio { grid-area: rel; }
-  .ini-cab > .ini-prox { grid-area: prox; }
-  .ini-cab > .ini-rodada { grid-area: custo; }
-  .gr-ini .gr-reg-cab { margin-top: 0; }
-  .gr-ini-lista { display: flex; flex-direction: row; align-items: stretch; gap: .3rem;
-    flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden;
-    margin-top: 0; padding-bottom: .1rem; scrollbar-width: thin; }
-  /* ---- o relógio da cena ----
-     O Tick em corpo grande, com a rodada de acompanhante. Tabular para o número
-     não dançar de largura ao virar de 9 para 10. */
-  .ini-relogio { display: grid; grid-template-columns: auto 1fr; align-items: baseline;
-    gap: 0 .3rem; padding: .1rem .2rem .25rem; }
-  .ini-tk-n { font-family: 'Cinzel'; font-weight: 700; font-size: 1.9rem; line-height: 1;
-    color: var(--accent-texto); font-variant-numeric: tabular-nums; }
-  .ini-tk-rot { font-family: 'Cinzel'; font-size: var(--fs-micro); text-transform: uppercase;
-    letter-spacing: .1em; color: var(--ink-soft); }
-  .ini-rd { grid-column: 2; grid-row: 2; font-size: var(--fs-micro); color: var(--ink-soft);
-    white-space: nowrap; }
-  .ini-tk-n { grid-row: 1 / span 2; }
-
-  /* ---- os degraus da fila ----
-     "AGORA", "em 2 ticks", "em 5 ticks". A fila deixou de ser uma lista lisa e
-     passou a ser uma escada: quem está no mesmo degrau age no mesmo instante, e
-     isso o olho lê antes de ler qualquer nome. */
-  /* Deitada, a fila lê da esquerda para a direita, então o degrau virou um
-     DIVISOR VERTICAL com o rótulo de pé: ele custa 1,1rem de largura, separa os
-     grupos sem linha em branco e diz "daqui para a frente é outro instante". */
-  .ini-grupo { flex: 0 0 auto; align-self: stretch; margin: 0; padding: .15rem .1rem;
-    display: flex; align-items: center; justify-content: center;
-    writing-mode: vertical-rl; white-space: nowrap;
-    border-left: 1px solid var(--rule);
-    font-family: 'Cinzel'; font-size: calc(var(--fs-micro) * .88); text-transform: uppercase;
-    letter-spacing: .08em; color: var(--ink-soft); }
-  .gr-ini-lista > .ini-grupo:first-child { border-left: none; padding-left: 0; }
-  .ini-grupo.agora { color: var(--vez-cor, #ffd76a);
-    border-left-color: color-mix(in srgb, var(--vez-cor, #ffd76a) 45%, transparent); }
-
-  /* A fase POR EXTENSO. A cor da fita diz depressa e a palavra diz sem dúvida:
-     quem chega na mesa no meio da luta não decorou a legenda. */
-  .ini-fase { grid-column: 2; font-size: calc(var(--fs-micro) * .95); line-height: 1.15;
-    color: var(--ink-soft); }
-  .ini-fase b { font-family: 'Cinzel'; font-weight: 700; letter-spacing: .02em; }
-  .ini-fase.f-prep b  { color: color-mix(in srgb, var(--gold) 80%, var(--ink)); }
-  .ini-fase.f-golpe b { color: var(--gold); }
-  .ini-fase.f-rec b   { color: var(--ink-soft); }
-
-  /* Cada linha é uma peça na fila: retrato, nome e os dois números que decidem
-     a ordem. Compacta de propósito, porque a coluna toda precisa caber sem
-     rolagem numa cena de dez. */
-  .ini-item { flex: 0 0 11.5rem; display: grid; grid-template-columns: auto 1fr;
-    gap: .1rem .4rem; align-items: center; align-content: center;
-    padding: .22rem .3rem; border-radius: var(--r-md);
-    border: 1px solid transparent; cursor: pointer; }
-  .ini-item:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
-  .ini-item .av { --av-t: 1.9rem; }
-  .ini-av { grid-row: span 2; position: relative; }
-  .ini-nome { font-size: calc(var(--fs-micro) * .95); line-height: 1.1; overflow: hidden;
-    text-overflow: ellipsis; white-space: nowrap; }
-  .ini-num { font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft);
-    font-variant-numeric: tabular-nums; }
-  .ini-num b { color: var(--accent-texto); }
-  /* A fita ocupa a terceira linha da grade, alinhada com o nome e os números.
-     O desenho dela está no MesaCab: o rastreador de combate usa a mesma.
-     Agora a linha leva DUAS coisas, o selo com a palavra e a fita com a cor, e
-     por isso ela virou uma fileira: com `line-height: 0` valendo para os dois
-     (ele existe para matar a sobra embaixo das células da fita), o selo perdia
-     a altura da própria caixa e era desenhado por cima da fita. */
-  .ini-fita { grid-column: 2; display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
-  .ini-fita .fita { line-height: 0; }
-  /* Na coluna estreita o selo cede um pouco: ele e a fita dividem a linha. */
-  .ini-fita .fase-selo { font-size: calc(var(--fs-micro) * .9); padding: .02rem .28rem; }
-  .ini-item.g-aliado  { border-left: 3px solid var(--accent); }
-  .ini-item.g-inimigo { border-left: 3px solid #c1352c; }
-  .ini-item.g-neutro  { border-left: 3px solid var(--gold); }
-  /* Quem está na vez: a mesma cor do brilho do tabuleiro, para os dois lugares
-     contarem a mesma coisa. */
-  .ini-item.vez { background: color-mix(in srgb, var(--vez-cor, #ffd76a) 22%, transparent);
-    border-color: var(--vez-cor, #ffd76a); }
-  .ini-item.vez .ini-nome { font-weight: 700; }
-  /* Quem AGE agora, dentro do grupo do tick: um triângulo antes do nome. Sem
-     ele, com três acesos ao mesmo tempo, ninguém sabe em quem o "próximo" vai
-     bater. A aura diz "é a vez de vocês"; o triângulo diz "começa por este". */
-  .ini-item.age .ini-nome::before { content: '▸ '; color: var(--vez-cor, #ffd76a); font-weight: 700; }
-  .ini-item.movendo { opacity: .6; border-style: dashed; }
-  .gr-ini-lista .ini-item { cursor: grab; touch-action: none; }
-  .gr-ini-lista .ini-item.movendo { cursor: grabbing; }
-
   /* O custo da próxima ação, na linha da rodada. */
   .ini-custo { display: inline-flex; align-items: center; gap: .2rem; flex-basis: 100%;
     font-size: calc(var(--fs-micro) * .85); color: var(--ink-soft); cursor: help;
@@ -640,7 +529,11 @@ const SETAS = [
     background: var(--panel-2, var(--panel)); color: var(--ink);
     border: 1px solid var(--rule); border-radius: var(--r-sm); }
   .ini-custo input:focus { border-color: var(--accent); outline: none; }
-  .ini-vazio { font-size: var(--fs-micro); color: var(--ink-soft); padding: .3rem; }
+
+  /* Só o Grid reordena a fila arrastando: no rastreador a ordem vem do relógio
+     e do desempate, e não da mão. */
+  .gr-ini-lista .ini-item { cursor: grab; touch-action: none; }
+  .gr-ini-lista .ini-item.movendo { cursor: grabbing; }
 
   /* Os caídos: fora da fila, ainda em cena. Uma tira no pé da coluna, sem tick
      e sem iniciativa, porque nenhum dos dois números vale para quem não vai
@@ -1282,6 +1175,7 @@ const SETAS = [
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
+    itensDaFila,
   } from '../../lib/mesa-tempo-ui';
   import {
     combateDaMesa, COMBATE_PADRAO, faseEm, acaoVazia, temGesto, resumoDaAcao,
@@ -3096,51 +2990,15 @@ const SETAS = [
       box.innerHTML = `<p class="ini-vazio">Todos no chão. O relógio parou no tick ${tick}.</p>`;
       return;
     }
-    // A FILA VIROU UMA ESCADA. O que se lê primeiro é "quando", e não "quem":
-    // as linhas entram debaixo de um degrau ("Agora", "em 2 ticks") em vez de
-    // cada uma carregar um Tick absoluto que o leitor tinha de subtrair. Numa
-    // cena de dez com oito no mesmo Tick, a coluna dizia "t 0" oito vezes.
-    const itens: { chave: string; html: string }[] = [];
-    let degrau: number | null = null;
-    for (const c of emPe) {
-      const falta = Math.max(0, (c.tick ?? 0) - tick);
-      if (falta !== degrau) {
-        degrau = falta;
-        itens.push({ chave: '#g' + falta, html: `<div class="ini-grupo${falta === 0 ? ' agora' : ''}">${
-          falta === 0 ? 'Agora' : `em ${falta} tick${falta > 1 ? 's' : ''}`}</div>` });
-      }
-      const pct = pctDe100(c);
-      const ehVez = naVez.has(c.id);
-      const a = gestoNo(c);
-      const fase = faseEm(a, tick);
-      const dv = defesaPerdida(acaoNo(c), tick, { segura: c.acao?.tipo === 'segura' });
-      // A fase POR EXTENSO, e com o número que importa nela: no Preparo é
-      // quando o golpe sai, no Golpe é qual dos golpes está saindo, na
-      // Recuperação é quando a guarda volta. A cor diz depressa, a palavra diz
-      // sem dúvida, e quem chega no meio da luta não decorou a legenda.
-      const futuros = a ? a.golpes.filter((g: number) => g >= tick) : [];
-      const prox = futuros.length ? Math.min(...futuros) : 0;
-      const qual = a && a.golpes.length > 1 ? ` ${a.golpes.indexOf(tick) + 1}/${a.golpes.length}` : '';
-      const fraseFase = !a ? '<b>livre</b>'
-        : fase === 'preparo' ? `<b>Preparo</b> · golpe no ${prox}`
-        : fase === 'golpe' ? `<b>Golpe${qual}</b> · Defesa ${dv.total}`
-        : `<b>Recuperação</b> · livre no ${a.livre}`;
-      // O selo escrito e a fita saem juntos: a cor diz depressa, a palavra diz
-      // sem dúvida, e no tablet o `title` não existe. Vem da outra frente.
-      const f = a
-        ? `<span class="ini-fita" title="${esc(resumoDaAcao(a, tick))}">${
-          TEMPO.marcacao === 'fita' ? fitaHTML(a, tick, { largura: 9, mini: true }) : seloFaseHTML(a, tick)}</span>` : '';
-      const dica = c.id === age ? ' · age agora' : ehVez ? ' · também neste tick' : '';
-      itens.push({ chave: c.id, html: `<div class="ini-item g-${esc(c.grupo || 'inimigo')}${ehVez ? ' vez' : ''}${
-        c.id === age ? ' age' : ''}"
-        data-c="${c.id}" data-t="${c.tick ?? 0}" title="${esc(c.nome)}${dica}${a ? ' · ' + esc(resumoDaAcao(a, tick)) : ''}">
-        <span class="ini-av">${avatarDe(c, 'av-p')}</span>
-        <span class="ini-nome">${esc(c.nome)}</span>
-        <span class="ini-fase ${fase === 'preparo' ? 'f-prep' : fase === 'golpe' ? 'f-golpe' : fase === 'recuperacao' ? 'f-rec' : ''}">${fraseFase}</span>
-        ${f}
-        <span class="ini-num">ini <b>${c.iniciativa ?? 0}</b>${pct != null ? ` · ${Math.round(pct)}%` : ''}</span>
-      </div>` });
-    }
+    // Quem monta os cartões é `itensDaFila`, no `mesa-tempo-ui`: o rastreador
+    // de combate desenha a mesma tira, e duas cópias da mesma escada divergiriam
+    // no primeiro conserto.
+    const itens = itensDaFila(emPe.map((c: any) => ({
+      id: c.id, nome: c.nome, tick: c.tick ?? 0, iniciativa: c.iniciativa ?? 0,
+      grupo: c.grupo, avatar: avatarDe(c, 'av-p'), pct: pctDe100(c),
+      acao: acaoNo(c), segura: c.acao?.tipo === 'segura',
+      vez: naVez.has(c.id), age: c.id === age,
+    })), tick, { marcacao: TEMPO.marcacao });
     reconciliar(box, itens);
     pintarLinhaDoTempo(tick);
   }
